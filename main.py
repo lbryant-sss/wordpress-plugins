@@ -6,15 +6,9 @@ import zipfile
 import shutil
 from git import Repo
 
-
-REPO_URL = "git@github.com:lbryant-sss/wordpress-plugins.git"
-REPO_DIR = './repo'
-
-# Clone the repository
-Repo.clone_from(REPO_URL, REPO_DIR)
-
-
 # Configuration
+REPO_URL = "git@github.com:lbryant-sss/wordpress-plugins.git"  # SSH URL
+REPO_DIR = './repo'
 CACHE_FILE = "cache.json"
 WORDPRESS_API_URL = "https://api.wordpress.org/plugins/info/1.2/"
 DOWNLOAD_URL = "https://downloads.wordpress.org/plugin/"
@@ -34,7 +28,7 @@ def save_cache(cache):
 
 def get_plugin_list():
     """Return a static list of plugins or fetch dynamically."""
-    return ["woocommerce", "akismet", "jetpack"]
+    return ["woocommerce", "akismet", "jetpack"]  # Example plugins
 
 def download_plugin(plugin_slug, dest_dir):
     """Download and extract a WordPress plugin."""
@@ -62,6 +56,15 @@ def update_plugins(repo_dir, plugin_list):
     for plugin_slug in plugin_list:
         print(f"Processing plugin: {plugin_slug}")
         response = requests.get(f"{WORDPRESS_API_URL}?action=plugin_information&request[slug]={plugin_slug}")
+        
+        # Check for rate limits in the response headers
+        if response.status_code == 429:  # Too many requests
+            reset_time = int(response.headers.get('X-RateLimit-Reset', time.time() + 60))  # Retry after reset time
+            wait_time = reset_time - int(time.time()) + 1  # Add 1 second buffer
+            print(f"Rate limit exceeded. Waiting for {wait_time} seconds...")
+            time.sleep(wait_time)
+            continue  # Retry after sleeping
+
         if response.status_code != 200:
             print(f"Failed to fetch plugin info for {plugin_slug}. Skipping...")
             continue
@@ -100,9 +103,12 @@ def update_plugins(repo_dir, plugin_list):
 
 def main():
     """Main script execution."""
-    print("Cloning repository...")
+    print("Checking if repository exists...")
+
+    # Clone the repository if it doesn't exist yet
     if not os.path.exists(REPO_DIR):
-        Repo.clone_from("https://github.com/lbryant-sss/wordpress-plugins.git", REPO_DIR)
+        print("Cloning repository...")
+        Repo.clone_from(REPO_URL, REPO_DIR)
 
     print("Updating plugins...")
     plugin_list = get_plugin_list()
