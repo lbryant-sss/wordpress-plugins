@@ -14,7 +14,7 @@ REPO_URL = f"https://{GITHUB_TOKEN}:x-oauth-basic@github.com/lbryant-sss/wordpre
 REPO_DIR = './repo'
 
 # Clone the repository
-Repo.clone_from(REPO_URL, REPO_DIR)
+#Repo.clone_from(REPO_URL, REPO_DIR)
 
 
 # Configuration
