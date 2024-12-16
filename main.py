@@ -7,13 +7,6 @@ import shutil
 from git import Repo
 
 
-REPO_URL = "git@github.com/lbryant-sss/wordpress-plugins.git"
-REPO_DIR = './repo'
-
-# Clone the repository
-Repo.clone_from(REPO_URL, REPO_DIR)
-
-
 # Configuration
 REPO_URL = "git@github.com:lbryant-sss/wordpress-plugins.git"  # SSH URL
 REPO_DIR = './repo'
