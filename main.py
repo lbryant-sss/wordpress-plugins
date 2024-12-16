@@ -12,6 +12,10 @@ CACHE_FILE = "cache.json"
 WORDPRESS_API_URL = "https://api.wordpress.org/plugins/info/1.2/"
 DOWNLOAD_URL = "https://downloads.wordpress.org/plugin/"
 TIME_INTERVAL = 1  # Interval between requests in seconds
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")  # Fetch token from environment variables
+REPO_URL = f"https://{GITHUB_TOKEN}@github.com/lbryant-sss/wordpress-plugins.git"
+
+Repo.clone_from(REPO_URL, REPO_DIR)
 
 def load_cache():
     """Load plugin cache file or create a new one."""
