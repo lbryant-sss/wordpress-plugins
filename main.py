@@ -6,19 +6,17 @@ import zipfile
 import shutil
 from git import Repo
 
-# At the top of your script, after imports
-# Ensure the current directory is writable
-os.makedirs(os.path.dirname(CACHE_FILE), exist_ok=True)
-
-
 # Use environment variable for authentication
 GITHUB_TOKEN = os.environ.get('GH_PAT')
 REPO_URL = f"https://oauth2:{GITHUB_TOKEN}@github.com/lbryant-sss/wordpress-plugins.git"
 
-
 # Configuration
 REPO_DIR = './repo'
 CACHE_FILE = "cache.json"
+
+# Ensure cache directory exists
+os.makedirs(os.path.dirname(CACHE_FILE) or '.', exist_ok=True)
+
 WORDPRESS_API_URL = "https://api.wordpress.org/plugins/info/1.2/"
 DOWNLOAD_URL = "https://downloads.wordpress.org/plugin/"
 TIME_INTERVAL = 1  # Interval between requests in seconds
