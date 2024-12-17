@@ -6,6 +6,11 @@ import zipfile
 import shutil
 from git import Repo
 
+# At the top of your script, after imports
+# Ensure the current directory is writable
+os.makedirs(os.path.dirname(CACHE_FILE), exist_ok=True)
+
+
 # Use environment variable for authentication
 GITHUB_TOKEN = os.environ.get('GH_PAT')
 REPO_URL = f"https://oauth2:{GITHUB_TOKEN}@github.com/lbryant-sss/wordpress-plugins.git"
@@ -20,19 +25,33 @@ TIME_INTERVAL = 1  # Interval between requests in seconds
 
 def load_cache():
     """Load plugin cache file or create a new one with default structure."""
-    if os.path.exists(CACHE_FILE):
-        try:
-            with open(CACHE_FILE, "r") as file:
-                return json.load(file)
-        except json.JSONDecodeError:
-            print("Invalid cache file detected. Resetting cache...")
+    # If cache file doesn't exist or is unreadable, return default cache
+    try:
+        if not os.path.exists(CACHE_FILE):
+            return {"timestamp": 0, "plugins": {}}
+        
+        with open(CACHE_FILE, "r") as file:
+            content = file.read().strip()
+            
+            # If file is empty, return default cache
+            if not content:
+                return {"timestamp": 0, "plugins": {}}
+            
+            # Try to parse JSON
+            return json.loads(content)
     
-    # Return a default structure if the file is missing or invalid
-    return {"timestamp": 0, "plugins": {}}
+    except (json.JSONDecodeError, IOError) as e:
+        print(f"Error reading cache file: {e}")
+        # Return default cache structure if there's any error
+        return {"timestamp": 0, "plugins": {}}
+
 def save_cache(cache):
-    """Save the plugin cache."""
-    with open(CACHE_FILE, "w") as file:
-        json.dump(cache, file)
+    """Save the plugin cache, ensuring proper JSON formatting."""
+    try:
+        with open(CACHE_FILE, "w") as file:
+            json.dump(cache, file, indent=2)  # Added indent for readability
+    except IOError as e:
+        print(f"Error saving cache file: {e}")
 
 def get_plugin_list():
     """Return a static list of plugins or fetch dynamically."""
@@ -113,10 +132,12 @@ def main():
     """Main script execution."""
     print("Checking if repository exists...")
 
-    # Clone the repository if it doesn't exist yet
-    if not os.path.exists(REPO_DIR):
-        print("Cloning repository...")
-        Repo.clone_from(REPO_URL, REPO_DIR)
+    # Ensure REPO_DIR exists and is empty before cloning
+    if os.path.exists(REPO_DIR):
+        shutil.rmtree(REPO_DIR)
+    
+    print("Cloning repository...")
+    Repo.clone_from(REPO_URL, REPO_DIR)
 
     print("Updating plugins...")
     plugin_list = get_plugin_list()

@@ -39,4 +39,5 @@ jobs:
       - name: Run Plugin Update Script
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
+          PYTHONUNBUFFERED: 1
         run: python main.py
