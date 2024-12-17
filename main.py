@@ -19,12 +19,16 @@ DOWNLOAD_URL = "https://downloads.wordpress.org/plugin/"
 TIME_INTERVAL = 1  # Interval between requests in seconds
 
 def load_cache():
-    """Load plugin cache file or create a new one."""
+    """Load plugin cache file or create a new one with default structure."""
     if os.path.exists(CACHE_FILE):
-        with open(CACHE_FILE, "r") as file:
-            return json.load(file)
+        try:
+            with open(CACHE_FILE, "r") as file:
+                return json.load(file)
+        except json.JSONDecodeError:
+            print("Invalid cache file detected. Resetting cache...")
+    
+    # Return a default structure if the file is missing or invalid
     return {"timestamp": 0, "plugins": {}}
-
 def save_cache(cache):
     """Save the plugin cache."""
     with open(CACHE_FILE, "w") as file:

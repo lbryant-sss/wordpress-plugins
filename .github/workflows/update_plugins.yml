@@ -25,6 +25,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install GitPython requests
 
+      - name: Initialize Cache
+        run: |
+          if [ ! -f "cache.json" ]; then
+            echo '{"timestamp": 0, "plugins": {}}' > cache.json
+          fi
+
       - name: Configure Git
         run: |
           git config --global user.name 'GitHub Actions Bot'
