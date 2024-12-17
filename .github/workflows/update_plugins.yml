@@ -13,7 +13,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GH_PAT }} # Use the PAT for authentication
+          token: ${{ secrets.GH_PAT }}
+          fetch-depth: 0 # Important for git operations
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -25,19 +26,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install GitPython requests
 
-      - name: Initialize Cache
-        run: |
-          if [ ! -f "cache.json" ]; then
-            echo '{"timestamp": 0, "plugins": {}}' > cache.json
-          fi
-
-      - name: Configure Git
-        run: |
-          git config --global user.name 'GitHub Actions Bot'
-          git config --global user.email '<>'
-
       - name: Run Plugin Update Script
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
           PYTHONUNBUFFERED: 1
-        run: python main.py
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+          python main.py

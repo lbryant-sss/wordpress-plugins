@@ -23,7 +23,6 @@ TIME_INTERVAL = 1  # Interval between requests in seconds
 
 def load_cache():
     """Load plugin cache file or create a new one with default structure."""
-    # If cache file doesn't exist or is unreadable, return default cache
     try:
         if not os.path.exists(CACHE_FILE):
             return {"timestamp": 0, "plugins": {}}
@@ -31,8 +30,8 @@ def load_cache():
         with open(CACHE_FILE, "r") as file:
             content = file.read().strip()
             
-            # If file is empty, return default cache
-            if not content:
+            # If file is empty or malformed, return default cache
+            if not content or content == '{}':
                 return {"timestamp": 0, "plugins": {}}
             
             # Try to parse JSON
@@ -40,8 +39,10 @@ def load_cache():
     
     except (json.JSONDecodeError, IOError) as e:
         print(f"Error reading cache file: {e}")
-        # Return default cache structure if there's any error
-        return {"timestamp": 0, "plugins": {}}
+        # Create a fresh, valid cache file
+        default_cache = {"timestamp": 0, "plugins": {}}
+        save_cache(default_cache)
+        return default_cache
 
 def save_cache(cache):
     """Save the plugin cache, ensuring proper JSON formatting."""
@@ -74,57 +75,108 @@ def update_plugins(repo_dir, plugin_list):
     """Update plugins in the local repository."""
     cache = load_cache()
     plugins_dir = os.path.join(repo_dir, "plugins")
-
+    
     # Create plugins directory if not exists
     os.makedirs(plugins_dir, exist_ok=True)
-
+    
+    # Track if any changes were made
+    changes_made = False
+    
     for plugin_slug in plugin_list:
         print(f"Processing plugin: {plugin_slug}")
-        response = requests.get(f"{WORDPRESS_API_URL}?action=plugin_information&request[slug]={plugin_slug}")
+        try:
+            response = requests.get(f"{WORDPRESS_API_URL}?action=plugin_information&request[slug]={plugin_slug}")
+            
+            # Check for rate limits in the response headers
+            if response.status_code == 429:  # Too many requests
+                reset_time = int(response.headers.get('X-RateLimit-Reset', time.time() + 60))  # Retry after reset time
+                wait_time = reset_time - int(time.time()) + 1  # Add 1 second buffer
+                print(f"Rate limit exceeded. Waiting for {wait_time} seconds...")
+                time.sleep(wait_time)
+                continue  # Retry after sleeping
+            
+            if response.status_code != 200:
+                print(f"Failed to fetch plugin info for {plugin_slug}. Skipping... (Status code: {response.status_code})")
+                continue
+            
+            plugin_data = response.json()
+            latest_version = plugin_data.get("version")
+            plugin_path = os.path.join(plugins_dir, plugin_slug)
+            
+            # Skip download if version is up-to-date
+            if cache["plugins"].get(plugin_slug) == latest_version:
+                print(f"{plugin_slug} is already up-to-date.")
+                continue
+            
+            # Remove old plugin folder and download the latest version
+            if os.path.exists(plugin_path):
+                shutil.rmtree(plugin_path)
+            
+            download_plugin(plugin_slug, plugins_dir)
+            
+            # Update cache
+            cache["plugins"][plugin_slug] = latest_version
+            save_cache(cache)
+            
+            # Mark that changes were made
+            changes_made = True
+            
+            # Respect rate limits
+            time.sleep(TIME_INTERVAL)
         
-        # Check for rate limits in the response headers
-        if response.status_code == 429:  # Too many requests
-            reset_time = int(response.headers.get('X-RateLimit-Reset', time.time() + 60))  # Retry after reset time
-            wait_time = reset_time - int(time.time()) + 1  # Add 1 second buffer
-            print(f"Rate limit exceeded. Waiting for {wait_time} seconds...")
-            time.sleep(wait_time)
-            continue  # Retry after sleeping
-
-        if response.status_code != 200:
-            print(f"Failed to fetch plugin info for {plugin_slug}. Skipping...")
+        except Exception as e:
+            print(f"Error processing plugin {plugin_slug}: {e}")
             continue
-
-        plugin_data = response.json()
-        latest_version = plugin_data.get("version")
-        plugin_path = os.path.join(plugins_dir, plugin_slug)
-
-        # Skip download if version is up-to-date
-        if cache["plugins"].get(plugin_slug) == latest_version:
-            print(f"{plugin_slug} is already up-to-date.")
-            continue
-
-        # Remove old plugin folder and download the latest version
-        if os.path.exists(plugin_path):
-            shutil.rmtree(plugin_path)
-        download_plugin(plugin_slug, plugins_dir)
-
-        # Update cache
-        cache["plugins"][plugin_slug] = latest_version
-        save_cache(cache)
-
-        # Respect rate limits
-        time.sleep(TIME_INTERVAL)
-
+    
     # Commit changes to the repository
-    repo = Repo(repo_dir)
-    repo.git.add(A=True)
-    if repo.is_dirty():
-        print("Committing changes...")
-        repo.index.commit("Update WordPress plugins")
-        print("Pushing changes...")
-        repo.remotes.origin.push()
-    else:
-        print("No changes to commit.")
+    try:
+        repo = Repo(repo_dir)
+        
+        # Stage all changes
+        repo.git.add(A=True)
+        
+        # Check if there are any changes to commit
+        if changes_made and repo.is_dirty():
+            print("Changes detected. Preparing to commit...")
+            
+            # Configure git user for the commit
+            with repo.config_writer() as git_config:
+                git_config.set_value("user", "name", "GitHub Actions Bot")
+                git_config.set_value("user", "email", "actions@github.com")
+            
+            # Commit changes
+            commit_message = f"Update WordPress plugins: {', '.join(plugin_list)}"
+            repo.index.commit(commit_message)
+            
+            print("Committing changes...")
+            
+            # Push changes with more robust error handling
+            try:
+                origin = repo.remote(name='origin')
+                push_result = origin.push()
+                
+                # Check push result
+                for info in push_result:
+                    if info.flags & info.ERROR:
+                        print(f"Push failed: {info.summary}")
+                        raise Exception(f"Git push error: {info.summary}")
+                
+                print("Successfully pushed changes.")
+            
+            except Exception as push_error:
+                print(f"Error during push: {push_error}")
+                # Optionally, you could re-raise the exception if you want the action to fail
+                # raise
+        
+        else:
+            print("No changes to commit.")
+    
+    except Exception as repo_error:
+        print(f"Repository error: {repo_error}")
+        # Optionally, you could re-raise the exception if you want the action to fail
+        # raise
+
+    return changes_made
 
 def main():
     """Main script execution."""
