@@ -6,12 +6,15 @@ import zipfile
 import shutil
 from git import Repo
 
+<<<<<<< HEAD
 REPO_URL = "git@github.com:lbryant-sss/wordpress-plugins.git"
 REPO_DIR = './repo'
 
 # Clone the repository
 Repo.clone_from(REPO_URL, REPO_DIR)
 
+=======
+>>>>>>> d827d8e1c7946f767f9734c0c506aaa26d880abb
 
 # Configuration
 REPO_URL = "git@github.com:lbryant-sss/wordpress-plugins.git"  # SSH URL
