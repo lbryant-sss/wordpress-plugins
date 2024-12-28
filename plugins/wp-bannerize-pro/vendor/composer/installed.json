@@ -1,0 +1,327 @@
+{
+    "packages": [
+        {
+            "name": "eftec/bladeone",
+            "version": "4.16",
+            "version_normalized": "4.16.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EFTEC/BladeOne.git",
+                "reference": "94570df4cd5e81a1efd0bb25d451bd715d529279"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EFTEC/BladeOne/zipball/94570df4cd5e81a1efd0bb25d451bd715d529279",
+                "reference": "94570df4cd5e81a1efd0bb25d451bd715d529279",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5.23"
+            },
+            "suggest": {
+                "eftec/bladeonehtml": "Extension to create forms",
+                "ext-mbstring": "This extension is used if it's active"
+            },
+            "time": "2024-10-11T17:41:08+00:00",
+            "bin": [
+                "lib/bladeonecli"
+            ],
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "eftec\\bladeone\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jorge Patricio Castro Castillo",
+                    "email": "jcastro@eftec.cl"
+                }
+            ],
+            "description": "The standalone version Blade Template Engine from Laravel in a single php file",
+            "homepage": "https://github.com/EFTEC/BladeOne",
+            "keywords": [
+                "blade",
+                "php",
+                "template",
+                "templating",
+                "view"
+            ],
+            "support": {
+                "issues": "https://github.com/EFTEC/BladeOne/issues",
+                "source": "https://github.com/EFTEC/BladeOne/tree/4.16"
+            },
+            "install-path": "../eftec/bladeone"
+        },
+        {
+            "name": "wpbones/geolocalizer",
+            "version": "0.8.2",
+            "version_normalized": "0.8.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpbones/geolocalizer.git",
+                "reference": "d9ac7d35d3301af74069fddebd26a75f92ef5f28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wpbones/geolocalizer/zipball/d9ac7d35d3301af74069fddebd26a75f92ef5f28",
+                "reference": "d9ac7d35d3301af74069fddebd26a75f92ef5f28",
+                "shasum": ""
+            },
+            "time": "2024-07-16T13:22:10+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "WPBannerize\\GeoLocalizer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Giovambattista Fazioli",
+                    "email": "giovambattista.fazioli@gmail.com",
+                    "homepage": "https://wpbones.vercel.app/docs/Packages/official-packages"
+                }
+            ],
+            "description": "Geo provider for WP Bones",
+            "homepage": "https://github.com/wpbones/geolocalizer",
+            "keywords": [
+                "WP Bones",
+                "countries",
+                "geo",
+                "localization"
+            ],
+            "support": {
+                "email": "giovambattista.fazioli@gmail.com",
+                "issues": "https://github.com/wpbones/geolocalizer/issues",
+                "source": "https://github.com/wpbones/geolocalizer/tree/0.8.2"
+            },
+            "install-path": "../wpbones/geolocalizer"
+        },
+        {
+            "name": "wpbones/pure-css-switch",
+            "version": "1.1.3",
+            "version_normalized": "1.1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpbones/pure-css-switch.git",
+                "reference": "e774d8db48123fefcd09a612d2eebd2256232bb6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wpbones/pure-css-switch/zipball/e774d8db48123fefcd09a612d2eebd2256232bb6",
+                "reference": "e774d8db48123fefcd09a612d2eebd2256232bb6",
+                "shasum": ""
+            },
+            "time": "2024-10-01T15:55:40+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "WPBannerize\\PureCSSSwitch\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Giovambattista Fazioli",
+                    "email": "wpbones.info@gmail.com",
+                    "homepage": "https://wpbones.com/docs/Packages/official-packages"
+                }
+            ],
+            "description": "Pure CSS Switch Button for WP Bones",
+            "homepage": "https://github.com/wpbones/pure-css-switch",
+            "keywords": [
+                "WP Bones",
+                "css",
+                "less"
+            ],
+            "support": {
+                "email": "wpbones.info@gmail.com",
+                "issues": "https://github.com/wpbones/pure-css-switch/issues",
+                "source": "https://github.com/wpbones/pure-css-switch/tree/1.1.3"
+            },
+            "install-path": "../wpbones/pure-css-switch"
+        },
+        {
+            "name": "wpbones/pure-css-tabs",
+            "version": "1.0.13",
+            "version_normalized": "1.0.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpbones/pure-css-tabs.git",
+                "reference": "d1ee5c174ce82c0e6867da0a5210db46767897d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wpbones/pure-css-tabs/zipball/d1ee5c174ce82c0e6867da0a5210db46767897d6",
+                "reference": "d1ee5c174ce82c0e6867da0a5210db46767897d6",
+                "shasum": ""
+            },
+            "time": "2024-10-01T15:55:48+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "WPBannerize\\PureCSSTabs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Giovambattista Fazioli",
+                    "email": "wpbones.info@gmail.com",
+                    "homepage": "https://wpbones.com/docs/Packages/official-packages"
+                }
+            ],
+            "description": "Pure CSS tabs for WP Bones",
+            "homepage": "https://github.com/wpbones/pure-css-tabs",
+            "keywords": [
+                "WP Bones",
+                "css",
+                "less"
+            ],
+            "support": {
+                "email": "wpbones.info@gmail.com",
+                "issues": "https://github.com/wpbones/pure-css-tabs/issues",
+                "source": "https://github.com/wpbones/pure-css-tabs/tree/1.0.13"
+            },
+            "install-path": "../wpbones/pure-css-tabs"
+        },
+        {
+            "name": "wpbones/useragent",
+            "version": "1.0.3",
+            "version_normalized": "1.0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpbones/useragent.git",
+                "reference": "e489cc2bfc19af3c33d78ece75ea97e0baee4a07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wpbones/useragent/zipball/e489cc2bfc19af3c33d78ece75ea97e0baee4a07",
+                "reference": "e489cc2bfc19af3c33d78ece75ea97e0baee4a07",
+                "shasum": ""
+            },
+            "time": "2024-10-01T15:55:55+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "WPBannerize\\UserAgent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Giovambattista Fazioli",
+                    "email": "wpbones.info@gmail.com",
+                    "homepage": "https://wpbones.com/docs/Packages/official-packages"
+                }
+            ],
+            "description": "An useful method to detect the useragent",
+            "homepage": "https://github.com/wpbones/useragent",
+            "keywords": [
+                "WP Bones",
+                "user agent"
+            ],
+            "support": {
+                "email": "wpbones.info@gmail.com",
+                "issues": "https://github.com/wpbones/useragent/issues",
+                "source": "https://github.com/wpbones/useragent/tree/1.0.3"
+            },
+            "install-path": "../wpbones/useragent"
+        },
+        {
+            "name": "wpbones/wpbones",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpbones/WPBones.git",
+                "reference": "2b808686c44a308ca97144ab570817c373076823"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wpbones/WPBones/zipball/2b808686c44a308ca97144ab570817c373076823",
+                "reference": "2b808686c44a308ca97144ab570817c373076823",
+                "shasum": ""
+            },
+            "require": {
+                "eftec/bladeone": "^4.13",
+                "php": ">=7.4"
+            },
+            "time": "2024-11-15T12:42:29+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "WPBannerize\\WPBones\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Giovambattista Fazioli",
+                    "email": "wpbones.info@gmail.com",
+                    "homepage": "https://wpbones.com/"
+                }
+            ],
+            "description": "WordPress framework for Laravel developers",
+            "homepage": "https://wpbones.com",
+            "keywords": [
+                "framework",
+                "laravel",
+                "plugins",
+                "themes",
+                "wordpress",
+                "wpbones"
+            ],
+            "support": {
+                "issues": "https://github.com/wpbones/WPBones/issues",
+                "source": "https://github.com/wpbones/WPBones/"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/wpbones",
+                    "type": "github"
+                }
+            ],
+            "install-path": "../wpbones/wpbones"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

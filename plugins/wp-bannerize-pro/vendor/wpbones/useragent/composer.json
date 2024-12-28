@@ -1,0 +1,32 @@
+{
+  "name": "wpbones/useragent",
+  "homepage": "https://github.com/wpbones/useragent",
+  "license": "MIT",
+  "type": "library",
+  "description": "An useful method to detect the useragent",
+  "keywords": [
+    "User Agent",
+    "WP Bones"
+  ],
+  "authors": [
+    {
+      "name": "Giovambattista Fazioli",
+      "email": "wpbones.info@gmail.com",
+      "homepage": "https://wpbones.com/docs/Packages/official-packages"
+    }
+  ],
+  "support": {
+    "email": "wpbones.info@gmail.com",
+    "issues": "https://github.com/wpbones/useragent/issues"
+  },
+  "autoload": {
+    "psr-4": {
+      "WPBannerize\\UserAgent\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

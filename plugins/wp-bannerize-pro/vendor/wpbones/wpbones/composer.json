@@ -1,0 +1,38 @@
+{
+  "authors": [
+    {
+      "name": "Giovambattista Fazioli",
+      "email": "wpbones.info@gmail.com",
+      "homepage": "https://wpbones.com/"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "src/helpers.php"
+    ],
+    "psr-4": {
+      "WPBannerize\\WPBones\\": "src/"
+    }
+  },
+  "description": "WordPress framework for Laravel developers",
+  "homepage": "https://wpbones.com",
+  "keywords": [
+    "wordpress",
+    "laravel",
+    "framework",
+    "wpbones",
+    "plugins",
+    "themes"
+  ],
+  "license": "LGPL-3.0-or-later",
+  "name": "wpbones/wpbones",
+  "require": {
+    "php": ">=7.4",
+    "eftec/bladeone": "^4.13"
+  },
+  "support": {
+    "issues": "https://github.com/wpbones/WPBones/issues",
+    "source": "https://github.com/wpbones/WPBones/"
+  },
+  "type": "library"
+}

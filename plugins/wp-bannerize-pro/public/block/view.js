@@ -1,0 +1,1 @@
+(()=>{"use strict";window.React,console.log("Hello World! (from create-block-wp-bannerize block) - again")})();

@@ -1,0 +1,704 @@
+# Copyright (C) 2024 Giovambattista Fazioli
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Bannerize Pro 1.9.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-bannerize\n"
+"POT-Creation-Date: 2024-09-09T12:26:38+00:00\n"
+"PO-Revision-Date: 2024-09-09 14:33+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Domain: wp-bannerize\n"
+
+#. Plugin Name of the plugin
+#: wp-bannerize.php
+msgid "WP Bannerize Pro"
+msgstr "WP Bannerize Pro"
+
+#. Plugin URI of the plugin
+#: wp-bannerize.php
+msgid "https://bannerize.vercel.app/"
+msgstr ""
+
+#. Description of the plugin
+#: wp-bannerize.php
+msgid ""
+"Bannerize is a WordPress plugin that enables quick and easy creation and "
+"management of advertising banners. It allows you to track views and clicks, "
+"providing insights into the effectiveness of your campaigns."
+msgstr ""
+"Bannerize è un plugin per WordPress che consente la creazione e la gestione "
+"rapida e semplice di banner pubblicitari. Ti consente di monitorare "
+"visualizzazioni e clic, fornendo informazioni sull'efficacia delle tue "
+"campagne."
+
+#. Author of the plugin
+#: wp-bannerize.php
+msgid "Giovambattista Fazioli"
+msgstr "Giovambattista Fazioli"
+
+#. Author URI of the plugin
+#: wp-bannerize.php
+msgid "https://undolog.substack.com/"
+msgstr ""
+
+#: config/menus.php:20 public/apps/settings/settings.js:1
+msgid "Analytics"
+msgstr "Statistiche"
+
+#: plugin/Ajax/WPBannerizeAnalyticsAjaxServiceProvider.php:116
+#: plugin/Ajax/WPBannerizeAnalyticsAjaxServiceProvider.php:131
+msgid "No id set"
+msgstr "Nessun id impostato"
+
+#: plugin/Ajax/WPBannerizeAnalyticsAjaxServiceProvider.php:183
+#: plugin/Ajax/WPBannerizeAnalyticsAjaxServiceProvider.php:212
+msgid "No banner id set"
+msgstr "Nessun ID banner impostato"
+
+#: plugin/Ajax/WPBannerizeAnalyticsAjaxServiceProvider.php:189
+#: plugin/Ajax/WPBannerizeAnalyticsAjaxServiceProvider.php:218
+msgid "No referrer set"
+msgstr "Nessun referrer impostato"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:98
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:110
+#: public/apps/analytics/analytics.js:1 public/block/index.js:1
+msgid "Banners"
+msgstr ""
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:99
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:101
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:111
+#: public/apps/settings/settings.js:1
+msgid "Banner"
+msgstr ""
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:100
+msgid "WP Bannerize"
+msgstr "WP Bannerize"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:102
+msgid "Add New"
+msgstr "Aggiungi Nuovo"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:103
+msgid "Add New Banner"
+msgstr "Aggiungi nuovo Banner"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:104
+msgid "Edit Banner"
+msgstr "Modifica Banner"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:105
+msgid "New Banner"
+msgstr "Nuovo Banner"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:106
+msgid "View Banner"
+msgstr "Vedi Banner"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:107
+msgid "Search Banner"
+msgstr "Cerca Banner"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:108
+msgid "No Banner found"
+msgstr "Nessun Banner trovato"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:109
+msgid "No Banners found in trash"
+msgstr "Nessun banner trovato nella spazzatura"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:177
+msgid "You are not allowed to do this"
+msgstr "Non ti è permesso farlo"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:183
+msgid "Timed"
+msgstr "A tempo"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:209
+msgid "Expired"
+msgstr "Scaduto"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:214
+msgid "Scheduled"
+msgstr "Programmato"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:321
+msgid "Preview"
+msgstr "Anteprima"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:379
+msgid "Enter Banner name"
+msgstr "Inserisci il nome del banner"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:474
+msgid "Thumbnail"
+msgstr "Miniatura"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:481
+#: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+msgid "Impressions"
+msgstr "Impressioni"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:488
+#: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+msgid "Clicks"
+msgstr "Clicks"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:495
+#: public/apps/analytics/analytics.js:1
+msgid "CTR"
+msgstr "CTR"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:502
+msgid "Visible from"
+msgstr "Visibile da"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:509
+msgid "Expires"
+msgstr "Scade"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:584
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:594
+msgid "in %s"
+msgstr "in %s"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:593
+msgid "%s ago"
+msgstr "%s fa"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:56
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:58
+msgid "Banner Campaigns"
+msgstr "Campagne banner"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:57
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:59
+msgid "Banner Campaign"
+msgstr "Campagna banner"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:60
+msgid "Search Banner Campaigns"
+msgstr "Cerca Campagne banner"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:61
+msgid "Popular Banner Campaigns"
+msgstr "Campagne banner popolari"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:62
+msgid "All Banner Campaigns"
+msgstr "Tutte le campagne banner"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:63
+msgid "Edit Banner Campaign"
+msgstr "Modifica campagna banner"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:64
+msgid "View Banner campaign"
+msgstr "Visualizza la campagna banner"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:65
+msgid "Update Banner Campaign"
+msgstr "Aggiorna la campagna banner"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:66
+msgid "Add New Banner Campaign"
+msgstr "Aggiungi nuova campagna banner"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:67
+msgid "New Banner Campaign Name"
+msgstr "Nuovo nome della campagna banner"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:68
+msgid "Separate Banner Campaigns with commas"
+msgstr "Separare le campagne banner con virgole"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:69
+msgid "Add or remove Banner Campaigns"
+msgstr "Aggiungere o rimuovere campagne banner"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:70
+msgid "Choose from the most used Banner Campaigns"
+msgstr "Scegli tra le Campagne Banner più utilizzate"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:71
+msgid "Parent Banner Campaign"
+msgstr "Campagna banner madre"
+
+#: plugin/CustomTaxonomyTypes/WPBannerizeCustomTaxonomyType.php:72
+msgid "Parent Banner Campaign:"
+msgstr "Campagna banner madre:"
+
+#: plugin/Http/Controllers/WPBannerizeImporterController.php:272
+msgid "This term has been import from WP Bannerize Group"
+msgstr "Questo termine è stato importato da WP Bannerize Group"
+
+#: plugin/Models/WPBannersQuery.php:30
+#: plugin/Shortcodes/WPBannerizeShortcode.php:55
+#: plugin/Widgets/WPBannerizeWidget.php:76
+msgid "Use \"orderby\" instead of \"random\""
+msgstr "Usa \"orderby\" invece di \"random\""
+
+#: plugin/Models/WPBannersQuery.php:35
+#: plugin/Shortcodes/WPBannerizeShortcode.php:60
+#: plugin/Widgets/WPBannerizeWidget.php:81
+msgid "Use \"categories\" instead of \"category\""
+msgstr "Usa “categories” invece di “category”"
+
+#: plugin/Models/WPBannersQuery.php:40
+#: plugin/Shortcodes/WPBannerizeShortcode.php:65
+#: plugin/Widgets/WPBannerizeWidget.php:86
+msgid "Use \"campaigns\" instead of \"categories\""
+msgstr "Utilizzare \"campagne\" invece di \"categorie\""
+
+#: plugin/Providers/WPBannerizeServiceProvider.php:57
+#: plugin/Providers/WPBannerizeServiceProvider.php:69
+msgid "Bannerize"
+msgstr ""
+
+#: plugin/Providers/WPBannerizeServiceProvider.php:77
+#: plugin/Providers/WPBannerizeServiceProvider.php:80
+msgid "Add new Banner"
+msgstr "Aggiungi nuovo Banner"
+
+#: plugin/Providers/WPBannerizeServiceProvider.php:87
+msgid "List"
+msgstr "Lista"
+
+#: plugin/Providers/WPBannerizeServiceProvider.php:90
+msgid "Banners List"
+msgstr "Elenco striscioni"
+
+#: plugin/Providers/WPBannerizeServiceProvider.php:104
+msgid "Click Here"
+msgstr "Clicca qui"
+
+#: plugin/Providers/WPBannerizeServiceProvider.php:109
+msgid ""
+"You still got the previous version of WP Bannerize database table! Please"
+msgstr ""
+"Hai ancora la versione precedente della tabella del database WP Bannerize! "
+"Per favore"
+
+#: plugin/Providers/WPBannerizeServiceProvider.php:111
+msgid "to remove!"
+msgstr "da rimuovere!"
+
+#: plugin/Providers/WPBannerizeServiceProvider.php:119
+#: plugin/Providers/WPBannerizeServiceProvider.php:141
+msgid "Import"
+msgstr "Importa"
+
+#: plugin/Providers/WPBannerizeServiceProvider.php:125
+msgid ""
+"You still have to complete the import of the previous version of database "
+"table! Please,"
+msgstr ""
+"Devi ancora completare l'importazione della versione precedente della "
+"tabella del database! Per favore,"
+
+#: plugin/Providers/WPBannerizeServiceProvider.php:127
+msgid "to complete the import!"
+msgstr "per completare l'importazione!"
+
+#: plugin/Providers/WPBannerizeServiceProvider.php:136
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Pick one or more Banners..."
+msgstr "Scegli uno o più banner..."
+
+#: public/apps/analytics/analytics.js:1
+msgid "Bulk Actions"
+msgstr "Azioni in blocco"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Apply"
+msgstr "Applica"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Pick one or more Campaigns..."
+msgstr "Scegli una o più campagne..."
+
+#: public/apps/analytics/analytics.js:1
+msgid "Please confirm your action"
+msgstr "Conferma la tua azione"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Are your sure you want to delete the selected records"
+msgstr "Sei sicuro di voler eliminare i record selezionati"
+
+#: public/apps/analytics/analytics.js:1
+msgid "This action cannot be undone"
+msgstr "Questa azione non può essere ripristinata"
+
+#: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+msgid "Confirm"
+msgstr "Conferma"
+
+#: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+msgid "Cancel"
+msgstr "Annulla"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Deleted"
+msgstr "Cancellata"
+
+#: public/apps/analytics/analytics.js:1
+msgid "have been deleted"
+msgstr "sono stati cancellati"
+
+#: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+msgid "Export"
+msgstr "Esporta"
+
+#: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+msgid "Export CSV"
+msgstr "Esporta CSV"
+
+#: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+msgid "Export SQL"
+msgstr "Esportazione SQL"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Delete"
+msgstr "Elimina"
+
+#: public/apps/analytics/analytics.js:1
+msgid "You do not have permission to delete records"
+msgstr "Non si dispone dell'autorizzazione per eliminare i record"
+
+#: public/apps/analytics/analytics.js:1
+msgid ""
+"Date: %s\n"
+"Banner ID: %s\n"
+"Title: %s\n"
+"Campaigns: %s"
+msgstr ""
+"Datazione: %s\n"
+"ID banner: %s\n"
+"Titolo: %s\n"
+"Campagne: %s"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Are your sure you want to delete the record"
+msgstr "Sei sicuro di voler eliminare il record"
+
+#: public/apps/analytics/analytics.js:1
+msgid "has been deleted"
+msgstr "è stato cancellato"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Total %s"
+msgstr "Totale %s"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Total Banner %s"
+msgstr "Totale dei Banner %s"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Total Banner Count by Referrer"
+msgstr "Conteggio totale dei banner per referrer"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Total Referrer %s"
+msgstr "Referrer totali %s"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Total Unique IP %s"
+msgstr "Totale %s IP univoco"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Line"
+msgstr "Linea"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Bar"
+msgstr "Barre"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Day"
+msgstr "Giorno"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Month"
+msgstr "Mese"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Tools"
+msgstr "Strumenti"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Charts"
+msgstr "Grafici"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Refresh"
+msgstr "Aggiorna"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Viewed"
+msgstr "Visualizzato"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Clicked"
+msgstr "Cliccati"
+
+#: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+#: public/block/index.js:1
+msgid "Campaigns"
+msgstr "Campagne"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Overview"
+msgstr "Panoramica"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Reports"
+msgstr "Rapporti"
+
+#: public/apps/analytics/analytics.js:1
+msgid "Bannerize Analytics"
+msgstr "Statistiche di Bannerize"
+
+#: public/apps/settings/settings.js:1
+msgid "Manually"
+msgstr "Manualmente"
+
+#: public/apps/settings/settings.js:1
+msgid "Twice Daily"
+msgstr "Due volte al giorno"
+
+#: public/apps/settings/settings.js:1
+msgid "Once Daily"
+msgstr "Una volta al giorno"
+
+#: public/apps/settings/settings.js:1
+msgid "Once Weekly"
+msgstr "Una volta a settimana"
+
+#: public/apps/settings/settings.js:1
+msgid "Impressions table maintenance"
+msgstr "Manutenzione della tabella delle impronte"
+
+#: public/apps/settings/settings.js:1
+msgid "The current table contains"
+msgstr "La tabella corrente contiene"
+
+#: public/apps/settings/settings.js:1
+msgid ""
+"%s records. You can enable automatic table maintenance to keep the table "
+"clean."
+msgstr ""
+"%s registri. È possibile abilitare la manutenzione automatica del tavolo per "
+"mantenerlo pulito."
+
+#: public/apps/settings/settings.js:1
+msgid "Disabled"
+msgstr "Disabilitato"
+
+#: public/apps/settings/settings.js:1
+msgid "Max Records"
+msgstr "Record massimi"
+
+#: public/apps/settings/settings.js:1
+msgid "Recent Months"
+msgstr "Ultimi mesi"
+
+#: public/apps/settings/settings.js:1
+msgid "Delete records when the maximum is exceeded"
+msgstr "Elimina i record quando viene superato il massimo"
+
+#: public/apps/settings/settings.js:1
+msgid "Retain Impressions Within Recent Months"
+msgstr "Conserva le impressioni degli ultimi mesi"
+
+#: public/apps/settings/settings.js:1
+msgid ""
+"Are you sure you want to run the clean up process? This action cannot be "
+"undone."
+msgstr ""
+"Sei sicuro di voler eseguire il processo di pulizia? Questa azione non può "
+"essere annullata."
+
+#: public/apps/settings/settings.js:1
+msgid "%s Clean Up successfully"
+msgstr "%s Pulizia riuscita"
+
+#: public/apps/settings/settings.js:1
+msgid "%s %s have been deleted."
+msgstr "%s %s sono stati eliminati."
+
+#: public/apps/settings/settings.js:1
+msgid "%s Clean Up"
+msgstr "%s Pulizia"
+
+#: public/apps/settings/settings.js:1
+msgid "There are no %s to delete"
+msgstr "Non ci sono %s da eliminare"
+
+#: public/apps/settings/settings.js:1
+msgid "Clean up Now"
+msgstr "Pulisci ora"
+
+#: public/apps/settings/settings.js:1
+msgid "Enable Impressions"
+msgstr "Impressioni"
+
+#: public/apps/settings/settings.js:1
+msgid "Enable tracking of banner Impressions"
+msgstr "Abilita il monitoraggio delle impressioni dei banner"
+
+#: public/apps/settings/settings.js:1
+msgid "Enable Clicks"
+msgstr "Abilita Clicks"
+
+#: public/apps/settings/settings.js:1
+msgid "Enable tracking of banner Clicks"
+msgstr "Abilita il monitoraggio dei clic sui banner"
+
+#: public/apps/settings/settings.js:1
+msgid ""
+"To start, or continue using the Geolocalizer features, you must register "
+"with one of the services listed below."
+msgstr ""
+"Per iniziare, o continuare a utilizzare le funzionalità di Geolocalizzatore, "
+"è necessario registrarsi a uno dei servizi elencati di seguito."
+
+#: public/apps/settings/settings.js:1
+msgid "IPStack"
+msgstr ""
+
+#: public/apps/settings/settings.js:1
+msgid "Success!"
+msgstr "Successo!"
+
+#: public/apps/settings/settings.js:1
+msgid "Great! You have an API KEY on"
+msgstr "Benissimo! Hai una CHIAVE API attiva"
+
+#: public/apps/settings/settings.js:1
+msgid "Sign up for Free on"
+msgstr "Registrati gratuitamente su"
+
+#: public/apps/settings/settings.js:1
+msgid "service to get your"
+msgstr "servizio per ottenere il tuo"
+
+#: public/apps/settings/settings.js:1
+msgid "Enter your API KEY to enable the Geolocalizer features"
+msgstr ""
+"Inserisci la tua CHIAVE API per abilitare le funzionalità del "
+"geolocalizzatore"
+
+#: public/apps/settings/settings.js:1
+msgid "Your GEO information"
+msgstr "Le tue informazioni GEO"
+
+#: public/apps/settings/settings.js:1
+msgid "Invalid JSON"
+msgstr "JSON non valido"
+
+#: public/apps/settings/settings.js:1
+msgid "Enable Custom page"
+msgstr "Abilita pagina personalizzata"
+
+#: public/apps/settings/settings.js:1
+msgid "Enable the custom page for the single banners"
+msgstr "Abilita la pagina personalizzata per i singoli banner"
+
+#: public/apps/settings/settings.js:1
+msgid "Additional elements"
+msgstr "Elementi aggiuntivi"
+
+#: public/apps/settings/settings.js:1
+msgid "Header"
+msgstr "Header"
+
+#: public/apps/settings/settings.js:1
+msgid "Display header on the custom page"
+msgstr "Visualizza l'intestazione nella pagina personalizzata"
+
+#: public/apps/settings/settings.js:1
+msgid "Footer"
+msgstr "Footer"
+
+#: public/apps/settings/settings.js:1
+msgid "Display footer on the custom page"
+msgstr "Visualizzare il piè di pagina nella pagina personalizzata"
+
+#: public/apps/settings/settings.js:1
+msgid "Sidebar"
+msgstr "Barra laterale"
+
+#: public/apps/settings/settings.js:1
+msgid "Display sidebar on the custom page"
+msgstr "Visualizza la barra laterale sulla pagina personalizzata"
+
+#: public/apps/settings/settings.js:1
+msgid "Enable custom Campaigns page"
+msgstr "Abilita la pagina Campagne personalizzate"
+
+#: public/apps/settings/settings.js:1
+msgid "Enable the custom page for the campaigns"
+msgstr "Abilita la pagina personalizzata per le campagne"
+
+#: public/apps/settings/settings.js:1
+msgid "Geo Location"
+msgstr "Geolocalizzazione"
+
+#: public/apps/settings/settings.js:1
+msgid "Theme"
+msgstr "Tema"
+
+#: public/apps/settings/settings.js:1
+msgid "Bannerize Settings"
+msgstr "Impostazioni Bannerize"
+
+#: public/block/index.js:1
+msgid "Type to search for banners"
+msgstr "Digita per cercare i banner"
+
+#: public/block/index.js:1
+msgid "Type to search for campaigns"
+msgstr "Digita per cercare le campagne"
+
+#: public/block/index.js:1
+msgid "Filters"
+msgstr "Filtri"
+
+#: public/block/index.js:1
+msgid "Order by"
+msgstr "Ordina per"
+
+#: public/block/index.js:1
+msgid "Set the numbers of banners to show (-1 for all)"
+msgstr "Imposta il numero di striscioni da mostrare (-1 per tutti)"
+
+#: public/block/index.js:1
+msgid "Numbers"
+msgstr "Numeri"
+
+#: public/block/block.json
+msgctxt "block title"
+msgid "Bannerize"
+msgstr ""
+
+#: public/block/block.json
+msgctxt "block description"
+msgid "Display a list of banners in accordance with the settings below."
+msgstr "Visualizza un elenco di banner in base alle impostazioni seguenti."
+
+#: public/block/block.json
+msgctxt "block keyword"
+msgid "ab967f"
+msgstr ""
