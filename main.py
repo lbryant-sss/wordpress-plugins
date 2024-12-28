@@ -55,7 +55,8 @@ def save_cache(cache):
 
 def get_plugin_list():
     """Return a static list of plugins or fetch dynamically."""
-    return ["woocommerce", "akismet", "jetpack"]  # Example plugins
+    return ["woocommerce", "akismet", "jetpack", 'shortcodes-ultimate','ultimate-member','profile-builder','cleantalk-spam-protect','wpcf7-recaptcha','bit-form','wpcf7-redirect','ultimate-addons-for-contact-form-7','cf7-conditional-fields','ninja-forms','formidable','forminator','wpforms-lite','contact-form-7','wp-native-php-sessions','wp-bannerize-pro','upi-qr-code-payment-for-woocommerce','wordfence','captcha-code-authentication','tablepress','insert-headers-and-footers','elementor','wpo-tweaks','team-free','s2member','wp-members','tlp-team','paid-member-subscriptions','simple-membership','members','ultimate-member','armember-membership','buddypress-members-only','user-switching','tarteaucitronjs','cookies-and-content-security-policy','tenweb-speed-optimize','wp-rocket','autoptimize','wp-fastest-cache','w3-total-cache','wp-super-cache','litespeed-cache','comet-cache','hummingbird-performance','wp-optimize','wp-sweep','wp-dbmanager','updraftplus','backwpup','all-in-one-wp-migration','duplicator','backupbuddy','wp-migrate-db','wp-staging','wp-rollback','wp-rollback-core','wp-rollback-theme','wp-rollback-plugin','wp-rollback-wp','wp-rollback-wpml','wp-rollback-woocommerce','wp-rollback-woocommerce-gateway-stripe','wp-rollback-woocommerce-gateway-paypal-express-checkout','wp-rollback-woocommerce-gateway-paypal-powered-by-braintree', 'advanced-custom-fields','custom-post-type-ui',
+]  # Example plugins
 
 def download_plugin(plugin_slug, dest_dir):
     """Download and extract a WordPress plugin."""
