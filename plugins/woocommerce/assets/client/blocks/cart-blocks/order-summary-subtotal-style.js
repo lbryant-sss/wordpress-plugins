@@ -1,1 +1,1 @@
-"use strict";(self.webpackChunkwebpackWcBlocksStylingJsonp=self.webpackChunkwebpackWcBlocksStylingJsonp||[]).push([[1631],{29079:(c,s,e)=>{e.r(s),e.d(s,{default:()=>k});const k=e(54176).A}}]);
+"use strict";(self.webpackChunkwebpackWcBlocksStylingJsonp=self.webpackChunkwebpackWcBlocksStylingJsonp||[]).push([[1631],{29079:(e,s,c)=>{c.r(s),c.d(s,{default:()=>t});var a=c(51609),n=c(54176),l=c(96044);const t=({className:e,heading:s})=>{const c=s||l.N;return(0,a.createElement)(n.A,{headingElement:c,className:e})}}}]);
