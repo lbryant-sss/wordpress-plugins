@@ -619,16 +619,7 @@ Last Row|last_row
 
 	public static function bulk_actions() { 
 		if ( 'wpmem-settings' == wpmem_get( 'page', false, 'get' ) && 'fields' == wpmem_get( 'tab', false, 'get' ) ) {
-		?><script type="text/javascript">
-			(function($) {
-				$(document).ready(function() {
-					$("table").attr("id", "wpmem-fields");
-					/**$("tr").attr('style', 'cursor:move;');**/
-				});
-			})(jQuery);
-			jQuery('<input id="add_field"  name="add_field" class="button action" type="submit" value="<?php _e( 'Add Field', 'wp-members' ); ?>" />').appendTo(".top .bulkactions");
-			jQuery('<input id="add_field2" name="add_field" class="button action" type="submit" value="<?php _e( 'Add Field', 'wp-members' ); ?>" />').appendTo(".bottom .bulkactions");
-		</script><?php
+			?><script type="text/javascript">(function($){$(document).ready(function(){$("table").attr("id","wpmem-fields");});})(jQuery);</script><?php
 		}
 	}
 
