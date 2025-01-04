@@ -104,6 +104,16 @@ class Options {
 				'is_pro'      => true,
 				'description' => esc_html__( 'Add your custom URl for detail profile', 'tlp-team' ),
 			],
+            'ttp_my_resume'        => [
+                'label' => esc_html__( 'Resume URL', 'tlp-team' ),
+                'type'  => 'text',
+                'is_pro'      => true,
+            ],
+            'ttp_hire_me'        => [
+                'label' => esc_html__( 'Hire Me ( URL )', 'tlp-team' ),
+                'type'  => 'text',
+                'is_pro'      => true,
+            ],
 		];
 
 		return apply_filters( 'rttm_member_info_fields', $default );
@@ -159,7 +169,9 @@ class Options {
 			'fax'          => esc_html__( 'Fax', 'tlp-team' ),
 			'location'     => esc_html__( 'Location', 'tlp-team' ),
 			'social'       => esc_html__( 'Social Link', 'tlp-team' ),
-			'readmore_btn' => esc_html__( 'Read More Button', 'tlp-team' ),
+            'readmore_btn' => esc_html__( 'Read More Button', 'tlp-team' ),
+			'resume_btn'   => esc_html__( 'Resume Button', 'tlp-team' ),
+			'hire_me_btn'  => esc_html__( 'Hire Me Button', 'tlp-team' ),
 		];
 
 		return apply_filters( 'rttm_sc_avaiable_fiels', $sc_avaiable_fiels );
@@ -361,10 +373,22 @@ class Options {
 				'label'       => esc_html__( 'After Short Description', 'tlp-team' ),
 				'description' => esc_html__( 'Add something after short description.', 'tlp-team' ),
 			],
+
+            'ttp_my_resume_text'  => [
+                'type'        => 'text',
+                'label'       => esc_html__( 'My Resume Button Text', 'tlp-team' ),
+            ],
+
+            'ttp_hire_me_text'  => [
+                'type'        => 'text',
+                'label'       => esc_html__( 'Hire Me Button Text', 'tlp-team' ),
+            ],
+
 			'ttp_read_more_btn_text'     => [
 				'type'        => 'text',
 				'label'       => esc_html__( 'Read More Button Text', 'tlp-team' ),
 			],
+
 			'ttp_detail_page_link'          => [
 				'type'        => 'switch',
 				'label'       => esc_html__( 'Detail page link', 'tlp-team' ),
@@ -502,36 +526,6 @@ class Options {
 				'label' => esc_html__( 'Primary Color', 'tlp-team' ),
 				'class' => 'tlp-color',
 			],
-			'ttp_button_style' => [
-				'type'    => 'multiple_options',
-				'label'   => esc_html__( 'Button color', 'tlp-team' ),
-				'options' => [
-					'bg'         => [
-						'type'  => 'color',
-						'label' => esc_html__( 'Background', 'tlp-team' ),
-					],
-					'hover_bg'   => [
-						'type'  => 'color',
-						'label' => esc_html__( 'Hover background', 'tlp-team' ),
-					],
-					'active_bg'  => [
-						'type'  => 'color',
-						'label' => esc_html__( 'Active background', 'tlp-team' ),
-					],
-					'text'       => [
-						'type'  => 'color',
-						'label' => esc_html__( 'Text', 'tlp-team' ),
-					],
-					'hover_text' => [
-						'type'  => 'color',
-						'label' => esc_html__( 'Hover text', 'tlp-team' ),
-					],
-					'border'     => [
-						'type'  => 'color',
-						'label' => esc_html__( 'Border', 'tlp-team' ),
-					],
-				],
-			],
 			'name'             => [
 				'type'    => 'multiple_options',
 				'label'   => esc_html__( 'Name', 'tlp-team' ),
@@ -547,8 +541,149 @@ class Options {
 				'label'   => esc_html__( 'Short biography', 'tlp-team' ),
 				'options' => self::scStyleOptions(),
 			],
+            'ttp_resume_btn_style' => [
+                'type'    => 'multiple_options',
+                'label'   => esc_html__( 'Resume Button', 'tlp-team' ),
+                'options' => [
+                    'bg'         => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Background', 'tlp-team' ),
+                    ],
+                    'hover_bg'   => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Hover background', 'tlp-team' ),
+                    ],
+                    'border_color'  => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Border Color', 'tlp-team' ),
+                    ],
+                    'text'       => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Text', 'tlp-team' ),
+                    ],
+                    'hover_text' => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Hover text', 'tlp-team' ),
+                    ],
+                    'border_hover_color'     => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Border Hover Color', 'tlp-team' ),
+                    ],
+                    'border_width'     => [
+                        'type'  => 'select',
+                        'label' => esc_html__( 'Border width', 'tlp-team' ),
+                        'options'  => self::scBorderWidth(),
+                    ],
+                    'border_radius'     => [
+                        'type'  => 'select',
+                        'label' => esc_html__( 'Border Radius', 'tlp-team' ),
+                        'options'  => self::scBorderRadius(),
+                    ],
+                ],
+            ],
+            'ttp_hireme_btn_style' => [
+                'type'    => 'multiple_options',
+                'label'   => esc_html__( 'HireMe Button', 'tlp-team' ),
+                'options' => [
+                    'bg'         => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Background', 'tlp-team' ),
+                    ],
+                    'hover_bg'   => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Hover background', 'tlp-team' ),
+                    ],
+                    'border_color'  => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Border Color', 'tlp-team' ),
+                    ],
+                    'text'       => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Text', 'tlp-team' ),
+                    ],
+                    'hover_text' => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Hover text', 'tlp-team' ),
+                    ],
+                    'border_hover_color'     => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Border Hover Color', 'tlp-team' ),
+                    ],
+                    'border_width'     => [
+                        'type'  => 'select',
+                        'label' => esc_html__( 'Border width', 'tlp-team' ),
+                        'options'  => self::scBorderWidth(),
+                    ],
+                    'border_radius'     => [
+                        'type'  => 'select',
+                        'label' => esc_html__( 'Border Radius', 'tlp-team' ),
+                        'options'  => self::scBorderRadius(),
+                    ],
+                ],
+            ],
+            'ttp_readmore_btn_style' => [
+                'type'    => 'multiple_options',
+                'label'   => esc_html__( 'Read More Button', 'tlp-team' ),
+                'options' => [
+                    'bg'         => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Background', 'tlp-team' ),
+                    ],
+                    'hover_bg'   => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Hover background', 'tlp-team' ),
+                    ],
+                    'border_color'  => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Border Color', 'tlp-team' ),
+                    ],
+                    'text'       => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Text', 'tlp-team' ),
+                    ],
+                    'hover_text' => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Hover text', 'tlp-team' ),
+                    ],
+                    'border_hover_color'     => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Border Hover Color', 'tlp-team' ),
+                    ],
+                    'border_width'     => [
+                        'type'  => 'select',
+                        'label' => esc_html__( 'Border width', 'tlp-team' ),
+                        'options'  => self::scBorderWidth(),
+                    ],
+                    'border_radius'     => [
+                        'type'  => 'select',
+                        'label' => esc_html__( 'Border Radius', 'tlp-team' ),
+                        'options'  => self::scBorderRadius(),
+                    ],
+                ],
+            ],
+            'ttp_button_style' => [
+                'type'    => 'multiple_options',
+                'label'   => esc_html__( 'Load More Button', 'tlp-team' ),
+                'options' => [
+                    'bg'         => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Background', 'tlp-team' ),
+                    ],
+                    'hover_bg'   => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Hover background', 'tlp-team' ),
+                    ],
+                    'text'       => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Text', 'tlp-team' ),
+                    ],
+                    'hover_text' => [
+                        'type'  => 'color',
+                        'label' => esc_html__( 'Hover text', 'tlp-team' ),
+                    ],
+                ],
+            ],
 		];
-
 		return apply_filters( 'rttm_style_fields', $style_fields );
 	}
 
@@ -640,6 +775,7 @@ class Options {
 					'social',
 				],
 			],
+
 			'detail_allow_comments' => [
 				'type'        => 'switch',
 				'label'       => esc_html__( 'Comments', 'tlp-team' ),
@@ -692,6 +828,24 @@ class Options {
 				'description' => esc_html__( 'Slug configuration', 'tlp-team' ),
 				'attr'        => "style='width:100px;'",
 				'value'       => ! empty( $settings['slug'] ) ? trim( $settings['slug'] ) : null,
+			],
+
+			'resume_btn_text' => [
+				'type'        => 'text',
+				'label'       => esc_html__( 'Resume Button Text', 'tlp-team' ),
+				'id'          => 'resume-text',
+				'description' => esc_html__( 'Resume button text change here', 'tlp-team' ),
+				'attr'        => "style='width:100px;'",
+				'value'       => ! empty( $settings['resume_btn_text'] ) ? $settings['resume_btn_text'] : 'Resume',
+			],
+
+			'hire_me_text' => [
+				'type'        => 'text',
+				'label'       => esc_html__( 'Hire Me Button Text', 'tlp-team' ),
+				'id'          => 'hire-me-text',
+				'description' => esc_html__( 'Hire me button text change here', 'tlp-team' ),
+				'attr'        => "style='width:100px;'",
+				'value'       => ! empty( $settings['hire_me_text'] ) ? $settings['hire_me_text'] : 'Hire Me',
 			],
 
 			'tlp_team_block_type' => [
@@ -779,6 +933,22 @@ class Options {
 			$num[ $i ] = $i . 'px';
 		}
 
+		return $num;
+	}
+
+	public static function scBorderWidth() {
+		$num = [];
+		for ( $i = 0; $i <= 5; $i ++ ) {
+			$num[ $i ] = $i . 'px';
+		}
+		return $num;
+	}
+
+	public static function scBorderRadius() {
+		$num = [];
+		for ( $i = 0; $i <= 20; $i ++ ) {
+			$num[ $i ] = $i . 'px';
+		}
 		return $num;
 	}
 

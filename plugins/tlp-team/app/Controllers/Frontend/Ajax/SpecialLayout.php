@@ -50,6 +50,7 @@ class SpecialLayout {
 			] );
 
 		}
+
 		if ( $memberId ) {
 			$name        = get_the_title( $memberId );
 			$designation = wp_strip_all_tags(
@@ -66,6 +67,12 @@ class SpecialLayout {
 			if ( $toggleId ) {
 				$toggle_image_src = Fns::getFeatureImageSrc( $toggleId );
 			}
+
+            $settings     = get_option( rttlp_team()->options['settings'] );
+            $resume_btn_text = isset( $settings['resume_btn_text'] ) ? $settings['resume_btn_text'] : "Resume";
+            $hire_btn_text = isset( $settings['hire_me_text'] ) ? $settings['hire_me_text'] : "Hire Me";
+            $resume_url      = get_post_meta( $memberId, 'ttp_my_resume', true );
+            $hire_me_url     = get_post_meta( $memberId, 'ttp_hire_me', true );
 
 			$fields    = get_post_meta( $scID, 'ttp_selected_field' );
 			$htmlName  = $htmlDesignation = $htmlShortBio = $htmlCInfo = $anchorClass = null;
@@ -136,8 +143,24 @@ class SpecialLayout {
 				$htmlCInfo .= '<li class="tlp-web-url"><i class="fa fa-globe"></i> <a href="' . esc_url( $web_url ) . '">' . esc_html( $web_url ) . '</a> </li>';
 			}
 
-			$htmlCInfo = $htmlCInfo ? '<div class="contact-info"><ul>' . $htmlCInfo . '</ul></div>' : null;
+            $resume  = $resume_url && in_array( 'resume_btn', $fields );
+            $hire_me = $hire_me_url && in_array( 'hire_me_btn', $fields );
+            if( ( $resume && $resume_btn_text ) || ( $hire_me && $hire_btn_text ) ) {
+                $htmlCInfo .= '<div class="rt-team-container">';
+                $htmlCInfo .= '<div class="readmore-btn">';
+                if( $resume && $resume_btn_text ){
+                    $htmlCInfo .= '<a class="rt-resume-btn" data-id="480" target="_self" title="'. esc_attr( $resume_btn_text ) .'" href="'. esc_url( $resume_url ) .'" class="rt-resume-btn">'. esc_html( $resume_btn_text ) .'</a>';
+                }
+                if( $hire_me && $hire_btn_text ){
+                    $htmlCInfo .= '<a class="rt-hire-btn" data-id="480" target="_self" title="'. esc_attr( $hire_btn_text ) .'" href="'. esc_url( $hire_me_url ) .'" class="rt-resume-btn">'. esc_html( $hire_btn_text ) .'</a>';
+                }
+                $htmlCInfo .= '</div>';
+                $htmlCInfo .= '</div>';
+            }
 
+
+
+			$htmlCInfo = $htmlCInfo ? '<div class="contact-info"><ul>' . $htmlCInfo . '</ul></div>' : null;
 			$html .= "<div class='special-selected-top-wrap'><div class='rt-col-xs-6 img'>" . $imgHtml . '</div>';
 			$html .= '<div class="rt-col-xs-6 ttp-label"> <div class="ttp-label-inner">' . $htmlName . $htmlDesignation . '</div></div></div>';
 			$html .= '<div class="rt-col-sm-12">' . $htmlShortBio . $htmlCInfo . '</div>';

@@ -326,9 +326,9 @@
             'dev_requirement' => false,
         ),
         'automattic/jetpack-publicize' => array(
-            'pretty_version' => 'v0.57.0',
-            'version' => '0.57.0.0',
-            'reference' => 'cd8067a0f94c43c54ced409bca9c3799e2087a16',
+            'pretty_version' => 'v0.57.1',
+            'version' => '0.57.1.0',
+            'reference' => 'd0109fc3f57f7bbe1d7e9177fdb5f087e8650577',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../jetpack_vendor/automattic/jetpack-publicize',
             'aliases' => array(),
