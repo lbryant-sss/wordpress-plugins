@@ -1,0 +1,3391 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce PDF Invoices, Packing Slips, Delivery Notes "
+"and Shipping Labels\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-29 06:39+0000\n"
+"PO-Revision-Date: 2024-11-29 06:56+0000\n"
+"Last-Translator: \n"
+"Language-Team: Chinese (Hong Kong)\n"
+"Language: zh-HK\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: en_GB\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: print-invoices-packing-slip-labels-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Loco-Parser: loco_parse_mo"
+
+msgid ""
+"%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels "
+"(Basic) %s is enabled but not effective. It requires %s WooCommerce %s in "
+"order to work."
+msgstr ""
+"%s WooCommerce PDF 發票、裝箱單、送貨單和運輸標籤（基本）%s 已啟用但無效。它需要 %s WooCommerce %s 才能工作。"
+
+msgid "(But customer notes can be added)"
+msgstr "（但可新增客戶備註）"
+
+msgid "(Visual and code editor)"
+msgstr "（視覺和程式碼編輯器）"
+
+msgid "(Visual editor)"
+msgstr "（可視化編輯器）"
+
+msgid "20+ predefined gift card templates"
+msgstr "建立新模板"
+
+msgid "30 Day Money Back Guarantee"
+msgstr "30 天退款保證"
+
+msgid "5.6 or higher recommended"
+msgstr "推薦5.6或更高"
+
+msgid "Accepts payment using multiple Alternative Payment Methods (APM)"
+msgstr "接受使用多種替代付款方式 (APM) 的付款"
+
+msgid "Access denied !!!."
+msgstr "拒絕存取。"
+
+msgid "Action"
+msgstr "啟用"
+
+msgid "Activate"
+msgstr "啟用"
+
+msgid "Activates Stripe checkout"
+msgstr "啟動 Stripe 結帳"
+
+msgid "Active"
+msgstr "啟用"
+
+msgid "Add"
+msgstr "新增"
+
+msgid "Add & update data while importing"
+msgstr "導入時新增和更新數據"
+
+msgid "Add 20+ payment methods"
+msgstr "付款方式："
+
+msgid "Add a custom suffix for order numbers"
+msgstr "為訂單號碼加上自訂後綴"
+
+msgid "Add a payment link to invoice"
+msgstr "新增付款連結到發票"
+
+msgid "Add a print delivery note button to the order email"
+msgstr "在訂單電子郵件中新增列印送貨單按鈕"
+
+msgid "Add a print label button to the order email"
+msgstr "在訂單電子郵件中新增列印標籤按鈕"
+
+msgid "Add a print packing slip button to My account page"
+msgstr "在我的帳戶頁面新增列印裝箱單按鈕"
+
+msgid "Add additional column in product table"
+msgstr "在產品表中添加附加列"
+
+msgid "Add additional column in product table of package documents"
+msgstr "在包裝文件的產品表中添加附加列"
+
+msgid "Add additional data to invoice layout"
+msgstr "添加附加信息"
+
+msgid "Add additional info"
+msgstr "添加附加信息"
+
+msgid "Add additional information"
+msgstr "添加附加信息"
+
+msgid "Add additional order & product meta fields"
+msgstr "在產品表中添加附加列"
+
+msgid "Add additional product & order data fields"
+msgstr "在產品表中添加附加列"
+
+msgid "Add additional product attributes"
+msgstr "在產品表中添加附加列"
+
+msgid "Add and update data while importing"
+msgstr "導入時新增和更新數據"
+
+msgid "Add company logo & return policy to label"
+msgstr "在標籤上新增公司商標和退貨政策"
+
+msgid "Add custom data to documents"
+msgstr "在包裝文檔中添加產品變體"
+
+msgid "Add custom data to invoices"
+msgstr "發票的自定義徽標"
+
+msgid "Add custom fields to shipping label layout"
+msgstr "在運輸標籤中添加頁腳"
+
+msgid "Add custom footer"
+msgstr "顧客備註"
+
+msgid "Add custom footers to packing slips"
+msgstr "在裝箱單中添加客戶註釋"
+
+msgid "Add custom templates for gift cards"
+msgstr "新增禮品卡自訂模板"
+
+msgid "Add customer note"
+msgstr "顧客備註"
+
+msgid "Add date to credit note number"
+msgstr "將日期加入貸項通知單編號"
+
+msgid "Add date to invoice number"
+msgstr "使用設置發票編號"
+
+msgid "Add date to proforma invoice number"
+msgstr "使用訂單號作為發票號"
+
+msgid "Add extra product & order data fields"
+msgstr "新增額外的產品和訂單資料字段"
+
+msgid "Add extra text in received seal"
+msgstr "在收到的印章中添加額外的文字"
+
+msgid "Add extra text in received seal."
+msgstr "在收到的印章中添加額外的文字。"
+
+msgid "Add footer"
+msgstr "添加頁尾"
+
+msgid "Add multiple shipping labels in one page"
+msgstr "在運輸標籤中添加頁腳"
+
+msgid "Add multiple shipping labels on one page"
+msgstr "在運輸標籤中添加頁腳"
+
+msgid "Add new"
+msgstr "新增"
+
+msgid "Add notes like fragile, keep dry, etc."
+msgstr "加入易碎、保持乾燥等註解。"
+
+msgid "Add order & product meta fields"
+msgstr "訂單元字段"
+
+msgid "Add order meta fields"
+msgstr "訂單元字段"
+
+msgid "Add order meta fields "
+msgstr "訂單元字段"
+
+msgid "Add order meta fields to shipping labels"
+msgstr "在運輸標籤中添加頁腳"
+
+msgid "Add print document button to selected order emails"
+msgstr "將列印文件按鈕新增至選定的訂單電子郵件"
+
+msgid "Add product & order meta fields"
+msgstr "添加/編輯訂單元字段"
+
+msgid "Add product attributes"
+msgstr "添加產品變體"
+
+msgid "Add product images to packing slips"
+msgstr "在裝箱單中添加頁腳"
+
+msgid "Add product meta fields"
+msgstr "訂單元字段"
+
+msgid "Add product meta fields & attributes"
+msgstr "支持結帳，訂單和產品元字段（SSN，增值稅等）。"
+
+msgid "Add product variation"
+msgstr "添加產品變體"
+
+msgid "Add product variation in package documents"
+msgstr "在包裝文檔中添加產品變體"
+
+msgid ""
+"Add product variation in product (Works with Packing List, Shipping Label "
+"and Delivery note only)"
+msgstr "在產品中添加產品變體（僅適用於裝箱單、運輸標籤和交貨單）"
+
+msgid "Add product variation. (Works with Invoice and Dispatch label only)"
+msgstr "添加產品變體。 （僅適用於 Invoice 和 Dispatch 標籤）"
+
+msgid "Add quote button to the product & shop pages"
+msgstr "在產品和商店頁面中新增報價按鈕"
+
+msgid "Add shop details"
+msgstr "詳細地址"
+
+msgid "Add usage restrictions for gift cards"
+msgstr "添加禮品卡的使用限制"
+
+msgid "Add ‘Pay Later’ option at checkout"
+msgstr "在結帳時新增「稍後付款」選項"
+
+msgid "Add/Edit Order Meta Field"
+msgstr "添加/編輯訂單元字段"
+
+msgid "Additional feed intervals (30 minutes, 6 hours, 12 hours)"
+msgstr "額外餵食間隔（30 分鐘、6 小時、12 小時）"
+
+msgid "Address Label Add-on"
+msgstr "地址標籤"
+
+msgid "Address details"
+msgstr "詳細地址"
+
+msgid "Address font size"
+msgstr "地址字體大小"
+
+msgid "Address label"
+msgstr "地址標籤"
+
+msgid "Address labels"
+msgstr "地址標籤"
+
+msgid "Address line 1"
+msgstr "地址列 1"
+
+msgid "Address line 2"
+msgstr "地址列 2"
+
+msgid ""
+"Adds Express PayPal Checkout Option on the product page and Mini-cart for "
+"faster checkout"
+msgstr "在產品頁面和迷你購物車上新增 Express PayPal Checkout 選項，以加快結帳速度"
+
+msgid "Adds Footer to the delivery note"
+msgstr "在交貨單中添加頁腳"
+
+msgid "Adds Footer to the packing slip"
+msgstr "在裝箱單中添加頁腳"
+
+msgid "Adds PayPal Smart Button Checkout option"
+msgstr "新增 PayPal 智慧按鈕結帳選項"
+
+msgid "Adds customer note in the dispatch label"
+msgstr "在發貨標籤中添加客戶註釋"
+
+msgid "Adds customer note to the delivery note"
+msgstr "在交貨單中添加客戶單"
+
+msgid "Adds customer note to the packing slip"
+msgstr "在裝箱單中添加客戶註釋"
+
+msgid "Adds footer in dispatch label"
+msgstr "在分派標籤中添加頁腳"
+
+msgid "Adds footer to the  Shipping label"
+msgstr "在運輸標籤中添加頁腳"
+
+msgid "Adds product image to the line items in the product table"
+msgstr "在產品表中添加產品圖片"
+
+msgid ""
+"Admins and customers both can leverage this feature wherever applicable. "
+"Disabling will remove all the provisions. Yet, the invoices are customizable."
+msgstr "管理員和客戶都可以在適用的情況下利用此功能。停用將刪除所有規定。然而，發票是可自訂的。"
+
+msgid "Advanced BOGO Coupons"
+msgstr "高級BOGO優惠券"
+
+msgid "Advanced filters and customizations for import & export"
+msgstr "使用代碼編輯器對模板進行高級定制"
+
+msgid "Advanced filters and customizations for import and export"
+msgstr "使用代碼編輯器對模板進行高級定制"
+
+msgid "Advanced options"
+msgstr "進階選項"
+
+msgid "Advanced visual and code editor"
+msgstr "高級自定義選項以及代碼編輯器。"
+
+msgid "Align"
+msgstr "對齊"
+
+msgid "All document types"
+msgstr "其他文件"
+
+msgid "All fields are mandatory"
+msgstr "所有欄位均為必填"
+
+msgid "All unsaved changes will be lost upon switching to a new layout."
+msgstr "切換到新佈局後，所有未保存的更改都將丟失。"
+
+msgid "All users"
+msgstr "所有用戶"
+
+msgid "Allow coupon combinations"
+msgstr "允許優惠券組合"
+
+msgid "Allow customers to print invoices"
+msgstr "發票的自定義徽標"
+
+msgid "Allow remote stylesheets and images"
+msgstr "允許遠程樣式表和圖像"
+
+msgid "Allows customers to print the invoice from the specified pages."
+msgstr "允許客戶從指定頁面列印發票。"
+
+msgid "Allows guest checkout"
+msgstr "允許客人結帳"
+
+msgid "Already tried the free %s WebToffee mPDF addon %s."
+msgstr "已經嘗試了免費的%s WebToffee mPDF插件%s。"
+
+msgid "Alter additional item meta"
+msgstr "更改附加項目元"
+
+msgid "Alter barcode information"
+msgstr "更改條碼信息"
+
+msgid "Alter billing address"
+msgstr "更改帳單地址"
+
+msgid "Alter dispatch date"
+msgstr "更改發貨日期"
+
+msgid "Alter fee"
+msgstr "變更費"
+
+msgid "Alter formated item price. (Works with Invoice and Dispatch label only)"
+msgstr "更改格式化的項目價格。 （僅適用於 Invoice 和 Dispatch 標籤）"
+
+msgid "Alter formated item total. (Works with Invoice and Dispatch label only)"
+msgstr "更改格式化項目總數。 （僅適用於 Invoice 和 Dispatch 標籤）"
+
+msgid "Alter formated subtotal"
+msgstr "更改格式小計"
+
+msgid "Alter invoice date"
+msgstr "更改發票日期"
+
+msgid "Alter item price"
+msgstr "更改商品價格"
+
+msgid "Alter item price format"
+msgstr "更改商品價格格式"
+
+msgid "Alter item price. (Works with Invoice and Dispatch label only)"
+msgstr "更改商品價格。 （僅適用於 Invoice 和 Dispatch 標籤）"
+
+msgid "Alter item quantity"
+msgstr "更改物品數量"
+
+msgid "Alter item quantity in package documents"
+msgstr "更改包裹文件中的項目數量"
+
+msgid ""
+"Alter item quantity in product table (Works with Packing List, Shipping "
+"Label and Delivery note only)"
+msgstr "更改產品表中的項目數量（僅適用於裝箱單、運輸標籤和交貨單）"
+
+msgid "Alter item quantity. (Works with Invoice and Dispatch label only)"
+msgstr "更改項目數量。 （僅適用於 Invoice 和 Dispatch 標籤）"
+
+msgid "Alter item total"
+msgstr "更改項目總數"
+
+msgid "Alter item total format"
+msgstr "更改項目總格式"
+
+msgid "Alter item total in package documents"
+msgstr "更改包裹文件中的項目總數"
+
+msgid ""
+"Alter item total in product table (Works with Packing List, Shipping Label "
+"and Delivery note only)"
+msgstr "更改產品表中的項目總數（僅適用於裝箱單、運輸標籤和交貨單）"
+
+msgid "Alter item total. (Works with Invoice and Dispatch label only)"
+msgstr "更改項目總數。 （僅適用於 Invoice 和 Dispatch 標籤）"
+
+msgid "Alter order date"
+msgstr "更改訂單日期"
+
+msgid "Alter product name"
+msgstr "更改產品名稱"
+
+msgid ""
+"Alter product name in product (Works with Packing List, Shipping Label and "
+"Delivery note only)"
+msgstr "更改產品中的產品名稱（僅適用於裝箱單、運輸標籤和交貨單）"
+
+msgid "Alter product name. (Works with Invoice and Dispatch label only)"
+msgstr "更改產品名稱。 （僅適用於 Invoice 和 Dispatch 標籤）"
+
+msgid "Alter product table column"
+msgstr "更改產品表列"
+
+msgid "Alter product table column in package documents"
+msgstr "更改包裝文檔中的產品表列"
+
+msgid ""
+"Alter product table column. (Works with Invoice and Dispatch label only)"
+msgstr "更改產品表列。 （僅適用於 Invoice 和 Dispatch 標籤）"
+
+msgid ""
+"Alter product table column. (Works with Packing List, Shipping Label and "
+"Delivery note only)"
+msgstr "更改產品表列。 （僅適用於裝箱單、運輸標籤和交貨單）"
+
+msgid "Alter product table head.(Add, remove, change order)"
+msgstr "更改產品表頭。（添加、刪除、更改訂單）"
+
+msgid "Alter product table head.(Add,remove, change the order)"
+msgstr "更改產品表頭。（添加、刪除、更改順序）"
+
+msgid "Alter shipping address"
+msgstr "更改送貨地址"
+
+msgid "Alter shipping from address"
+msgstr "更改從地址發貨"
+
+msgid "Alter shipping method"
+msgstr "更改運輸方式"
+
+msgid "Alter subtotal"
+msgstr "更改小計"
+
+msgid "Alter subtotal format"
+msgstr "更改小計格式"
+
+msgid "Alter template HTML before printing"
+msgstr "打印前更改模板 HTML"
+
+msgid "Alter template HTML before printing."
+msgstr "打印前更改模板 HTML。"
+
+msgid "Alter the footer data"
+msgstr "更改頁腳數據"
+
+msgid "Alter the footer data."
+msgstr "更改頁腳數據。"
+
+msgid "Alter the product name in package documents"
+msgstr "更改包裝文件中的產品名稱"
+
+msgid "Alter the settings array"
+msgstr "更改設置數組"
+
+msgid "Alter the variation data."
+msgstr "更改變異數據。"
+
+msgid "Alter total fee"
+msgstr "變更總費用"
+
+msgid "Alter total price"
+msgstr "更改總價"
+
+msgid "Alter total price in words"
+msgstr "用文字更改總價"
+
+msgid "Angle"
+msgstr "角度"
+
+msgid ""
+"Assign QR code to all of invoices generated for the orders in your store"
+msgstr "將二維碼分配給為您商店中的訂單生成的所有發票"
+
+msgid "Assign QR codes to all generated invoices"
+msgstr "刪除所有生成的發票編號"
+
+msgid "Assign different types of info in your QR code, including:"
+msgstr "在您的二維碼中分配不同類型的信息，包括："
+
+msgid "Assits in GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA, and CCPA"
+msgstr "協助 GDPR（RGPD、DSVGO）、LGPD、CNIL、POPIA 和 CCPA"
+
+msgid "Attach document to order email"
+msgstr "在訂單電子郵件中附加發票PDF"
+
+msgid "Attach documents to selected order status emails"
+msgstr "為選定的訂單狀態創建發票。"
+
+msgid "Attach invoice PDF to admin email"
+msgstr "在訂單電子郵件中附加發票PDF"
+
+msgid "Attach invoice PDF to order emails"
+msgstr "在訂單電子郵件中附加發票PDF"
+
+msgid "Attach invoice pdf in WooCommerce Email"
+msgstr "在 WooCommerce 電子郵件中附加發票 pdf"
+
+msgid "Attach invoice pdf in customer email"
+msgstr "在訂單電子郵件中附加發票PDF"
+
+msgid "Attach proforma invoice PDF to order emails"
+msgstr "在訂單電子郵件中附加發票PDF"
+
+msgid "Attach sales terms"
+msgstr "附上銷售條款"
+
+msgid "Attach special notes with proforma invoices"
+msgstr "附上形式發票的特別說明"
+
+msgid "Attach transport & sales terms"
+msgstr "附上運輸和銷售條款"
+
+msgid "Attach transport terms"
+msgstr "附上運送條款"
+
+msgid "Auto reset sequence per month/year etc"
+msgstr "每月/每年等自動重置順序"
+
+msgid "Auto-generate invoices, packing slips, and credit notes"
+msgstr "自動產生發票、裝箱單和貸方票據"
+
+msgid "Automate invoice creation"
+msgstr "更改發票日期"
+
+msgid "Automatic cleanup"
+msgstr "更改發票日期"
+
+msgid "Automatic email alerts for admin & users"
+msgstr "管理員和使用者的自動電子郵件警報"
+
+msgid "Automatically add products"
+msgstr "自動新增產品"
+
+msgid "Automatically attach packing slip with order email"
+msgstr "在訂單電子郵件中附加發票PDF"
+
+msgid "Automatically block cookies/script"
+msgstr "自動阻止cookie/腳本"
+
+msgid "Automatically create invoice based on order status"
+msgstr "為選定的訂單狀態創建發票。"
+
+msgid "Automatically creates invoices for selected order statuses."
+msgstr "為選定的訂單狀態創建發票。"
+
+msgid "Automatically email picklists based on order status"
+msgstr "根據訂單狀態自動透過電子郵件發送選擇列表"
+
+msgid ""
+"Automatically generate professional WooCommerce order-related documents for "
+"all your orders"
+msgstr "自動為您的所有訂單產生專業的 WooCommerce 訂單相關文檔"
+
+msgid "Automatically generate suggestions based on order history"
+msgstr "根據訂單歷史自動產生建議"
+
+msgid "Automatically send quotes to users"
+msgstr "自動向使用者發送報價"
+
+msgid "Back"
+msgstr "返回"
+
+msgid "Barcode"
+msgstr "條碼"
+
+msgid "Based on order number"
+msgstr "請輸入數字"
+
+msgid "Basic - 0"
+msgstr "基本 - 0"
+
+msgid "Basic - 1"
+msgstr "基礎 - 1"
+
+msgid ""
+"Before using this tool, please make sure you followed the steps described in "
+"this article %1$s how to reset/delete existing invoice numbers%2$s."
+msgstr "在使用此工具之前，請確保您已按照本文%1$s如何重置/刪除現有發票編號%2$s中所述的步驟進行操作。"
+
+msgid "Better with transparent PNG images"
+msgstr "使用透明的PNG圖像更好"
+
+msgid "Bill to"
+msgstr "帳單地址"
+
+msgid "Billing Address"
+msgstr "帳單地址"
+
+msgid "Billing Address:"
+msgstr "帳單地址："
+
+msgid "Billing address"
+msgstr "帳單地址"
+
+msgid "Bold"
+msgstr "粗體"
+
+msgid "Bolder"
+msgstr "更粗體"
+
+msgid "Border radius"
+msgstr "邊框半徑"
+
+msgid "Border width"
+msgstr "邊框寬度"
+
+msgid "Box name"
+msgstr "箱名"
+
+msgid "Built-in label templates"
+msgstr "無標題的模板"
+
+msgid "Built-in templates to personalize packing slip"
+msgstr "內建模板可個性化裝箱單"
+
+msgid "Bulk generate coupons"
+msgstr "批量生成優惠券"
+
+msgid "Bulk print address labels"
+msgstr "地址標籤"
+
+msgid "Bulk print picklists from the admin order page"
+msgstr "從訂單頁面批量打印所有文件"
+
+msgid "Bulk print shipping labels"
+msgstr "打印運輸標籤"
+
+msgid "Buyer name"
+msgstr "買家姓名"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Cannot close this banner"
+msgstr "無法關閉此橫幅"
+
+msgid "Capture the authorized payment later"
+msgstr "稍後捕獲授權付款"
+
+msgid "Cart Discount"
+msgstr "購物車折扣"
+
+msgid "Cart abandonment coupons"
+msgstr "購物車放棄優惠券"
+
+msgid "Cart discount"
+msgstr "購物車折扣"
+
+msgid "Cash on delivery"
+msgstr "貨到付款"
+
+msgid "Category wise template listing"
+msgstr "建立新模板"
+
+msgid "Caution: Settings here are only for advanced users."
+msgstr "注意：此處的設置僅適用於高級用戶。"
+
+msgid "Center"
+msgstr "置中"
+
+msgid "Change address label layout"
+msgstr "更改佈局"
+
+msgid "Change color, text, background, border & more"
+msgstr "變更顏色、文字、背景、邊框等"
+
+msgid "Change document number format & length"
+msgstr "發票號碼格式"
+
+msgid "Change layout"
+msgstr "更改佈局"
+
+msgid "Checkout Premium"
+msgstr "結帳高級版"
+
+msgid "Choose a country&hellip;"
+msgstr "選擇一個國家&hellip;"
+
+msgid "Choose a layout."
+msgstr "選擇佈局。"
+
+msgid "Choose date"
+msgstr "選擇日期"
+
+msgid "Choose email classes"
+msgstr "選擇電子郵件類別"
+
+msgid "Choose emails for invoice attachment"
+msgstr "選擇發票附件的電子郵件"
+
+msgid "Choose order status"
+msgstr "選擇訂單狀態"
+
+msgid ""
+"Choose the order emails to which you'd like to attach invoices for your "
+"customers"
+msgstr "選擇您想要為客戶附加發票的訂單電子郵件"
+
+msgid "City"
+msgstr "城市"
+
+msgid "Classic"
+msgstr "經典"
+
+msgid "Click here to add Company logo"
+msgstr "單擊此處添加公司徽標"
+
+msgid "Click here to add Company name"
+msgstr "點擊此處添加公司名稱"
+
+msgid "Click here to add From address"
+msgstr "點擊此處添加發件人地址"
+
+msgid "Click here to add Signature"
+msgstr "點擊此處添加簽名"
+
+msgid "Click to append with existing data"
+msgstr "點擊添加現有數據"
+
+msgid "Click to view predefined templates."
+msgstr "單擊以查看預定義的模板。"
+
+msgid "Close"
+msgstr "關閉"
+
+msgid "Code"
+msgstr "代碼"
+
+msgid "Code Copied"
+msgstr "已復制代碼"
+
+msgid "Collect payments with a payment link on the invoice"
+msgstr "透過發票上的付款連結收取款項"
+
+msgid "Color"
+msgstr "顏色"
+
+msgid "Combine with the existing templates"
+msgstr "建立新模板"
+
+msgid "Company Logo"
+msgstr "公司標誌"
+
+msgid "Company Logo / Name"
+msgstr "公司標誌/名稱"
+
+msgid "Company Name"
+msgstr "公司名稱"
+
+msgid "Company Tax ID"
+msgstr "公司資訊"
+
+msgid "Company details"
+msgstr "公司資料"
+
+msgid "Company logo"
+msgstr "公司 Logo"
+
+msgid "Company name"
+msgstr "公司名稱"
+
+msgid "Company name font size"
+msgstr "公司名稱字體大小"
+
+msgid "Compatible with WPML"
+msgstr "與 WPML 相容"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slip & Credit Note (Premium)"
+msgstr "兼容 WooCommerce PDF 發票、裝箱單、送貨單和運輸標籤（免費版和專業版）"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slip & Credit Note (Pro)"
+msgstr "兼容 WooCommerce PDF 發票、裝箱單、送貨單和運輸標籤（免費版和專業版）"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slips, Delivery Notes, and "
+"Shipping Label (Free and Pro versions)"
+msgstr "兼容 WooCommerce PDF 發票、裝箱單、送貨單和運輸標籤（免費版和專業版）"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoices, Packing Slips, Delivery Notes, and "
+"Shipping Labels (Free)"
+msgstr "兼容 WooCommerce PDF 發票、裝箱單、送貨單和運輸標籤（免費版和專業版）"
+
+msgid "Compatible with major 3rd-party plugins"
+msgstr "已驗證與主要插件的兼容性"
+
+msgid "Complete the invoice number format to suit your requirements"
+msgstr "填寫發票號碼格式以滿足您的要求"
+
+msgid "Configure the general settings required for the delivery note."
+msgstr "配置發票所需的常規設置。"
+
+msgid "Configure the general settings required for the dispatch label."
+msgstr "配置運輸標籤所需的常規設置。"
+
+msgid "Configure the general settings required for the invoice."
+msgstr "配置發票所需的常規設置。"
+
+msgid "Configure the general settings required for the packing slip."
+msgstr "配置發票所需的常規設置。"
+
+msgid "Configure the general settings required for the shipping label."
+msgstr "配置運輸標籤所需的常規設置。"
+
+msgid "Contact Number"
+msgstr "連絡號碼"
+
+msgid "Contact Us"
+msgstr "聯絡我們"
+
+msgid "Contact number"
+msgstr "聯繫號碼"
+
+msgid "Copied"
+msgstr "已複製"
+
+msgid "Copy"
+msgstr "複製"
+
+msgid "Copy Code"
+msgstr "複製代碼"
+
+msgid "Could you tell us a bit more?"
+msgstr "你能再告訴我們多一點嗎？"
+
+msgid "Could you tell us more about that feature?"
+msgstr "你能告訴我們更多關於這個功能嗎？"
+
+msgid "Country/State"
+msgstr "國家/地區"
+
+msgid "Coupon Used"
+msgstr "已使用的優惠券"
+
+msgid "Coupon embeds"
+msgstr "已使用的優惠券"
+
+msgid "Coupon info"
+msgstr "優惠券信息"
+
+msgid "Coupons based on past purchases"
+msgstr "基於過去購買的優惠券"
+
+msgid "Create QR code coupons"
+msgstr "創建二維碼優惠券"
+
+msgid "Create QR code that reads order or invoice number"
+msgstr "使用訂單號作為發票號"
+
+msgid "Create a cookie consent banner"
+msgstr "建立 cookie 同意橫幅"
+
+msgid "Create a new template or edit an existing template."
+msgstr "創建一個新模板或編輯現有模板。"
+
+msgid "Create and offer sign-up discount coupons"
+msgstr "建立並提供註冊折扣券"
+
+msgid ""
+"Create and run successful promotional campaigns with the best tools for "
+"WooCommerce"
+msgstr "使用 WooCommerce 的最佳工具創建並進行成功的促銷活動"
+
+msgid "Create attractive gift cards "
+msgstr "製作有吸引力的禮品卡"
+
+msgid "Create cookie policy"
+msgstr "自動創建發票"
+
+msgid "Create delivery notes, shipping & dispatch labels"
+msgstr "在發貨標籤中添加客戶註釋"
+
+msgid "Create new"
+msgstr "新建"
+
+msgid "Create new template"
+msgstr "建立新模板"
+
+msgid "Create or customize picklist templates"
+msgstr "運送標籤"
+
+msgid "Create proforma invoice automatically for selected order statuses"
+msgstr "為選定的訂單狀態創建發票。"
+
+msgid "Create proforma invoices automatically"
+msgstr "自動創建發票"
+
+msgid "Create simple & variable subscriptions"
+msgstr "建立簡單和可變的訂閱"
+
+msgid "Create unlimited gift cards"
+msgstr "創建無限禮品卡"
+
+msgid "Create users on order import"
+msgstr "在訂單匯入時建立用戶"
+
+msgid "Create your unique invoice numbering system"
+msgstr "建立您獨特的發票號碼系統"
+
+msgid "Credit note"
+msgstr "信用票據"
+
+msgid "Creditnote number format"
+msgstr "發票號碼格式"
+
+msgid "Cross-platform compatibility"
+msgstr "WPML 兼容性"
+
+msgid "Custom"
+msgstr "自訂"
+
+msgid "Custom (Pro version)"
+msgstr "專業版"
+
+msgid "Custom PDF name prefix"
+msgstr "自定義 PDF 名稱前綴"
+
+msgid "Custom details, as below:"
+msgstr "自定義細節，如下："
+
+msgid "Custom footer"
+msgstr "會員備註"
+
+msgid "Custom invoice date"
+msgstr "更改發票日期"
+
+msgid "Custom logo for invoice"
+msgstr "發票的自定義徽標"
+
+msgid "Custom number"
+msgstr "自定義號碼系列"
+
+msgid "Custom number series"
+msgstr "自定義號碼系列"
+
+msgid "Custom sequence for free orders"
+msgstr "啟用為免費訂單創建發票。"
+
+msgid "Customer Note"
+msgstr "會員備註"
+
+msgid "Customer Note:"
+msgstr "客戶注意事項："
+
+msgid "Customer note"
+msgstr "客戶備註:"
+
+msgid "Customer note:"
+msgstr "客戶備註:"
+
+msgid "Customizable countdown sales banner"
+msgstr "可自訂的倒數銷售橫幅"
+
+msgid "Customizable tax items, tax fields (SSN, VAT, etc.)"
+msgstr "支持結帳，訂單和產品元字段（SSN，增值稅等）。"
+
+msgid "Customize"
+msgstr "自訂"
+
+msgid "Customize Pay Later option display"
+msgstr "自訂稍後付款選項顯示"
+
+msgid "Customize and send emails to new users on import"
+msgstr "匯入時自訂並向新使用者發送電子郵件"
+
+msgid "Customize cookie banner"
+msgstr "自訂"
+
+msgid "Customize document layout & properties"
+msgstr "自訂文件佈局和屬性"
+
+msgid "Customize individual elements using block editors"
+msgstr "使用區塊編輯器自訂各個元素"
+
+msgid "Customize invoice PDF name format"
+msgstr "發票號碼格式"
+
+msgid "Customize label sizes"
+msgstr "運送標籤"
+
+msgid "Customize layout elements & properties"
+msgstr "自訂佈局元素和屬性"
+
+msgid "Customize layout properties"
+msgstr "自訂佈局屬性"
+
+msgid "Customize shipping label size"
+msgstr "運送標籤"
+
+msgid "Customize the display of the recommended products"
+msgstr "自訂推薦產品的展示"
+
+msgid "Customize the title, button, and label texts"
+msgstr "自訂標題、按鈕和標籤文本"
+
+msgid "Customizer for WooCommerce PDF Invoices"
+msgstr "下載發票"
+
+msgid "Customizer for WooCommerce PDF Invoices Plugin"
+msgstr "WooCommerce PDF 發票外掛程式自訂器"
+
+msgid "Customizer module is not active."
+msgstr "定製程序模塊未激活。"
+
+msgid "Dashed"
+msgstr "虛線"
+
+msgid "Data Import & Export"
+msgstr "數據導入與匯出"
+
+msgid "Date format strings"
+msgstr "日期格式"
+
+msgid "Date formats"
+msgstr "日期格式"
+
+msgid "Date suffix in order numbers"
+msgstr "請輸入數字"
+
+msgid "Date:"
+msgstr "日期："
+
+msgid "Debug"
+msgstr "除錯"
+
+msgid "Delete"
+msgstr "刪除"
+
+msgid "Delete all generated invoice numbers"
+msgstr "刪除所有生成的發票編號"
+
+msgid "Delete all the settings made by this plugin"
+msgstr "刪除該插件所做的所有設置"
+
+msgid "Delivery note"
+msgstr "送貨備註"
+
+msgid "Department/Business unit/Sender name"
+msgstr "部門/業務部門/發件人"
+
+msgid "Description"
+msgstr "描述"
+
+msgid "Developed by"
+msgstr "開發者為"
+
+msgid "Disable guest users from asking for quote"
+msgstr "禁止訪客使用者詢問報價"
+
+msgid "Dispatch Date:"
+msgstr "發貨日期："
+
+msgid "Dispatch Label"
+msgstr "發貨標籤"
+
+msgid "Dispatch Label 1"
+msgstr "發貨標籤"
+
+msgid "Dispatch label"
+msgstr "發貨標籤"
+
+msgid "Display"
+msgstr "顯示"
+
+msgid "Display currency code"
+msgstr "顯示貨幣代碼"
+
+msgid "Display free line items in the invoice"
+msgstr "在發票中顯示免費行項目"
+
+msgid "Display free line items on invoice"
+msgstr "在發票中顯示免費行項目"
+
+msgid "Display options for bundled products"
+msgstr "在產品表中顯示價格"
+
+msgid "Display recommended products on the product pages"
+msgstr "在產品表中顯示價格"
+
+msgid "Display state name"
+msgstr "顯示狀態名稱"
+
+msgid "Display the total number of items on label"
+msgstr "顯示標籤上的項目總數"
+
+msgid ""
+"Displays customer`s VAT number saved in the order details by third-party "
+"plugins in this document. Supported meta keys are"
+msgstr "顯示本文檔中第三方外掛程式儲存在訂單詳細資料中的客戶增值稅號。支援的元鍵是"
+
+msgid ""
+"Displays the currently chosen document template with provisions to modify."
+msgstr "顯示當前選擇的文檔模板以及要修改的條款。"
+
+msgid "Do not reset the templates"
+msgstr "建立新模板"
+
+msgid "Do not show again"
+msgstr "不再顯示"
+
+msgid "Document"
+msgstr "文件"
+
+msgid "Document customizer"
+msgstr "文件"
+
+msgid "Document details"
+msgstr "文件"
+
+msgid "Document title"
+msgstr "文件"
+
+msgid "Documentation"
+msgstr "文件"
+
+msgid "Documents"
+msgstr "文件"
+
+msgid "Dotted"
+msgstr "點線"
+
+msgid "Download"
+msgstr "下載"
+
+msgid "Download Invoice"
+msgstr "下載發票"
+
+msgid "Download Invoices"
+msgstr "下載發票"
+
+msgid "Download Packing slip"
+msgstr "下載裝箱單"
+
+msgid "Download invoice"
+msgstr "下載發票"
+
+msgid "Drag-and-drop easy customization"
+msgstr "拖放式輕鬆自訂"
+
+msgid "E-commerce Promotions"
+msgstr "電商促銷"
+
+msgid "Easy button and form customization"
+msgstr "簡單的按鈕和表單定制"
+
+msgid "Easy invoice layout customization"
+msgstr "輕鬆自訂發票佈局"
+
+msgid "Edit"
+msgstr "編輯"
+
+msgid "Email"
+msgstr "電子郵件"
+
+msgid "Email Field"
+msgstr "電子郵件地址欄位"
+
+msgid "Email customers on order status change"
+msgstr "向客戶發送有關訂單狀態變更的電子郵件"
+
+msgid "Email gift cards to customers"
+msgstr "透過電子郵件向客戶發送禮品卡"
+
+msgid "Email:"
+msgstr "電子郵件："
+
+msgid "Empty order"
+msgstr "空單"
+
+msgid "Enable Invoice"
+msgstr "啟用發票"
+
+msgid "Enable RTL support"
+msgstr "啟用RTL支持"
+
+msgid "Enable a common print button for"
+msgstr "啟用通用列印按鈕"
+
+msgid "Enable additional currency font support"
+msgstr "啟用其他貨幣字體支持"
+
+msgid "Enable customers to Pay Later at checkout"
+msgstr "允許客戶在結帳時稍後付款"
+
+msgid "Enable customers to print invoices & packing slips"
+msgstr "在裝箱單中添加客戶註釋"
+
+msgid "Enable customers to print the documents from order emails"
+msgstr "啟用以在文檔中顯示客戶的註釋。"
+
+msgid "Enable dedicated print buttons for"
+msgstr "啟用專用列印按鈕"
+
+msgid "Enable quotation request for selected products"
+msgstr "啟用所選產品的報價請求"
+
+msgid ""
+"Enable to apply the most recent settings to previous order invoices. This "
+"will match the previous invoices with the upcoming invoices.Changing the "
+"company address, name or any other settings in the future may overwrite "
+"previously created invoices with the most up-to-date information."
+msgstr "啟用以將最新設定套用至先前的訂單發票。這會將先前的發票與即將開立的發票進行比對。"
+
+msgid "Enable to attach invoice PDF to the new order email notification"
+msgstr "在訂單電子郵件中附加發票PDF"
+
+msgid ""
+"Enable to create invoice for orders generated before plugin installation"
+msgstr "啟用為安裝插件之前創建的訂單生成發票。"
+
+msgid "Enable to create invoices for free orders"
+msgstr "啟用為免費訂單創建發票。"
+
+msgid "Enable to create invoices for free orders."
+msgstr "啟用為免費訂單創建發票。"
+
+msgid "Enable to have a preview of the document before the print is initiated"
+msgstr "啟用以在用戶啟動打印時獲取文檔預覽。"
+
+msgid "Enable to print, download, and mail invoices."
+msgstr "啟用列印、下載和郵寄發票。"
+
+msgid "Enable to show currency code instead of currency symbol"
+msgstr "啟用顯示貨幣代碼而不是貨幣符號"
+
+msgid "Enable to show state name in addresses"
+msgstr "啟用在地址中顯示州名稱"
+
+msgid ""
+"Enable to use additional font library to support the currency symbol in pdf"
+msgstr "允許使用附加字體庫來支援 pdf 中的貨幣符號"
+
+msgid "End"
+msgstr "結束"
+
+msgid "Ensure security with base64 & URI printing"
+msgstr "透過 Base64 和 URI 列印確保安全"
+
+msgid "Enter a name for your template"
+msgstr "輸入模板名稱"
+
+msgid "Error"
+msgstr "錯誤"
+
+msgid "Error uploading the file"
+msgstr "上傳文件時發生錯誤"
+
+msgid "Error."
+msgstr "錯誤."
+
+msgid "Error:"
+msgstr "錯誤:"
+
+msgid "Error: Empty JSON file"
+msgstr "錯誤：JSON 檔案為空"
+
+msgid "Error: Invalid JSON data"
+msgstr "錯誤：JSON 資料無效"
+
+msgid "Example Code"
+msgstr "示範代码"
+
+msgid "Exclude out-of-stock products"
+msgstr "排除缺貨產品"
+
+msgid "Exclude specific products"
+msgstr "排除特定產品"
+
+msgid "Exclude virtual items from picklists"
+msgstr "從選項清單中排除虛擬項目"
+
+msgid "Exclude virtual products from picklists"
+msgstr "從選項清單中排除虛擬產品"
+
+msgid "Explicit/Implicit consent"
+msgstr "明示/默示同意"
+
+msgid "Export"
+msgstr "匯出"
+
+msgid "Export and import custom fields and third-party plugin fields"
+msgstr "匯出和匯入自訂字段和第三方插件字段"
+
+msgid "Export product images in a separate zip file"
+msgstr "在產品表中添加產品圖片"
+
+msgid "Export settings (JSON)"
+msgstr "導出設定 (JSON)"
+
+msgid "Export to FTP/SFTP"
+msgstr "匯出到 FTP/SFTP"
+
+msgid "Extensions"
+msgstr "擴展"
+
+msgid "Extra Details"
+msgstr "額外細節"
+
+msgid "Extra detail font size"
+msgstr "額外細節字體大小"
+
+msgid "Fast and Superior Support"
+msgstr "快速並卓越的支援"
+
+msgid "Features"
+msgstr "特色"
+
+msgid "Fee"
+msgstr "費用"
+
+msgid "Field Name"
+msgstr "字段名稱"
+
+msgid "File path"
+msgstr "檔案路徑"
+
+msgid "Filter by user role, email, date, etc"
+msgstr "按使用者角色、電子郵件、日期等過濾"
+
+msgid "Filter export by products, order status, email, date, etc"
+msgstr "按產品、訂單狀態、電子郵件、日期等篩選匯出"
+
+msgid "Filter products based on product type"
+msgstr "在產品表中添加產品圖片"
+
+msgid "Filters"
+msgstr "篩選"
+
+msgid "Finish setup"
+msgstr "完成設置"
+
+msgid "Fit multiple shipping labels on a single page"
+msgstr "在一頁上放置多個運輸標籤"
+
+msgid "Fixed and custom gift card amounts"
+msgstr "固定和自訂禮品卡金額"
+
+msgid "Font size"
+msgstr "字體大小"
+
+msgid "Footer"
+msgstr "頁尾"
+
+msgid "For better RTL integration in PDF documents, please use our"
+msgstr "RTL支持文檔。為了在PDF文檔中更好地進行RTL集成，請使用我們的%s mPDF插件%s。"
+
+msgid "For better performances"
+msgstr "為了更好的表演"
+
+msgid "Format"
+msgstr "格式"
+
+msgid "Fragile"
+msgstr "脆弱的"
+
+msgid "Free"
+msgstr "免費"
+
+msgid "Free version"
+msgstr "免費版"
+
+msgid "Free vs Premium"
+msgstr "免費與Premium"
+
+msgid "Free!"
+msgstr "免費！"
+
+msgid "Frequently Bought Together for WooCommerce"
+msgstr "WooCommerce 的順序訂單號"
+
+msgid "From"
+msgstr "從"
+
+msgid "From Address"
+msgstr "寄件者電子郵件地址"
+
+msgid "From Address:"
+msgstr "從地址："
+
+msgid "From address"
+msgstr "從地址"
+
+msgid "From left"
+msgstr "從左"
+
+msgid "From top"
+msgstr "從頂部"
+
+msgid "From:"
+msgstr "從："
+
+msgid "Full Page"
+msgstr "全頁"
+
+msgid "Full page"
+msgstr "全頁"
+
+msgid "GDPR Cookie Consent Plugin (CCPA Ready)"
+msgstr "GDPR Cookie 同意書（CCPA 就緒）"
+
+msgid "General"
+msgstr "一般"
+
+msgid "General Settings"
+msgstr "一般設定"
+
+msgid "Generate"
+msgstr "產生"
+
+msgid "Generate Billing Address labels"
+msgstr "帳單地址"
+
+msgid "Generate From Address labels"
+msgstr "地址標籤"
+
+msgid "Generate Return Address labels"
+msgstr "地址標籤"
+
+msgid "Generate Shipping Address labels"
+msgstr "運送地址"
+
+msgid ""
+"Generate WooCommerce product feeds for Google Shopping, Facebook Shop, and "
+"Instagram Shop"
+msgstr ""
+"為 Google Shopping、Facebook Shop 和 Instagram Shop 產生 WooCommerce 產品 Feed"
+
+msgid "Generate address labels"
+msgstr "地址標籤"
+
+msgid "Generate custom coupon URLs"
+msgstr "產生自訂優惠券 URL"
+
+msgid "Generate custom-sized shipping labels"
+msgstr "運送標籤"
+
+msgid "Generate dispatch labels and delivery notes"
+msgstr "產生出貨標籤和送貨單"
+
+msgid "Generate gift cards based on order status"
+msgstr "為舊訂單生成發票"
+
+msgid "Generate invoices and credits notes"
+msgstr "為免費訂單生成發票"
+
+msgid "Generate invoices for existing orders"
+msgstr "為免費訂單生成發票"
+
+msgid "Generate invoices for free orders"
+msgstr "為免費訂單生成發票"
+
+msgid "Generate invoices for old orders"
+msgstr "為舊訂單生成發票"
+
+msgid "Generate packing slips and credit notes"
+msgstr "產生裝箱單和貸方票據"
+
+msgid "Generate picklists"
+msgstr "產生選項列表"
+
+msgid "Generate shipping labels and delivery notes"
+msgstr "產生運輸標籤和送貨單"
+
+msgid "Generate shipping labels and dispatch labels"
+msgstr "產生運輸標籤和發貨標籤"
+
+msgid ""
+"Generate ‘Shipping Address’, ‘Billing Address’, ‘From Address’, and ‘Return "
+"Address’ labels"
+msgstr "產生「送貨地址」、「帳單地址」、「寄件者地址」和「退貨地址」標籤"
+
+msgid "Generating"
+msgstr "正在生成"
+
+msgid "Get Add-on"
+msgstr "獲取附加組件"
+
+msgid ""
+"Get Help with Ensuring Compliance to Major Privacy Laws for Your WordPress "
+"Website - GDPR, CCPA, LGPD, CNIL, and More."
+msgstr "取得協助，確保您的 WordPress 網站遵守主要隱私權法 - GDPR、CCPA、LGPD、CNIL 等。"
+
+msgid "Get Plugin"
+msgstr "獲取插件"
+
+msgid "Get advanced features for your"
+msgstr "取得適合您的進階功能"
+
+msgid "Give away product coupons"
+msgstr "贈送產品優惠券"
+
+msgid "Go to plugins page"
+msgstr "轉到外掛頁面"
+
+msgid "Go to support"
+msgstr "去支持"
+
+msgid "Google local product inventory feed"
+msgstr "Google 本地產品庫存 Feed"
+
+msgid "Granular consent based on cookie categories"
+msgstr "基於 cookie 類別的細粒度同意"
+
+msgid "Group products by 'Category'"
+msgstr "按「類別」將產品分組"
+
+msgid "Group products by category"
+msgstr "按類別將產品分組"
+
+msgid "Group products by ‘Category’"
+msgstr "按「類別」將產品分組"
+
+msgid "Group products by ‘Order’"
+msgstr "按「訂單」將產品分組"
+
+msgid "Group products in picklist by order/category"
+msgstr "依訂單/類別將選項清單中的產品分組"
+
+msgid "HTML"
+msgstr "HTML"
+
+msgid "Header Color"
+msgstr "標題顏色"
+
+msgid "Height"
+msgstr "高"
+
+msgid "Hello there! Let’s begin with the basics"
+msgstr "你好呀！讓我們從基礎開始"
+
+msgid "Help Guide"
+msgstr "指南"
+
+msgid "Help Links"
+msgstr "連結"
+
+msgid "Help and Support"
+msgstr "說明與支援"
+
+msgid ""
+"Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s "
+"%5$s. %6$s Less than a minute of your time will motivate us to keep doing "
+"what we do. We would really appreciate if you could take a moment to drop a "
+"quick review that motivate us to keep going."
+msgstr ""
+"您好，我們 %sWebToffee%s 非常感謝您使用 %s %s %s。 %s "
+"不到一分鐘的時間將激勵我們繼續做我們正在做的事情。如果您能花點時間快速回顧一下以激勵我們繼續前進，我們將不勝感激。"
+
+msgid "Hide prices and ‘add to cart’ button"
+msgstr "隱藏價格和“添加到購物車”按鈕"
+
+msgid "Hide/Show received seal in invoice"
+msgstr "在發票中隱藏/顯示收到的印章"
+
+msgid "Hide/Show received seal in invoice."
+msgstr "在發票中隱藏/顯示收到的印章。"
+
+msgid ""
+"I am unable to add customer VAT(or GSTIN or ABN or any other tax id etc)"
+msgstr "我無法添加客戶增值稅（或 GSTIN 或 ABN 或任何其他稅號等）"
+
+msgid "I couldn't understand how to make it work"
+msgstr "我無法理解如何使其工作"
+
+msgid "I found a better plugin"
+msgstr "我找到了一個更好的插件"
+
+msgid "I rather wouldn't say"
+msgstr "我寧願不說"
+
+msgid "INVOICE"
+msgstr "發票"
+
+msgid ""
+"If left blank, default to the logo from General settings. Ensure to select "
+"company logo from ‘Invoice > Customize > Company Logo’ to reflect on the "
+"invoice. Recommended size is 150×50px."
+msgstr "如果留空，則默認為常規設置中的徽標。確保從“發票>自定義>公司徽標”中選擇公司徽標以反映在發票上。建議尺寸為 150x50 像素。"
+
+msgid "If the order number is"
+msgstr "如果訂單號是"
+
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr "如果有時間，請讓我們知道停用的原因："
+
+msgid "Image"
+msgstr "圖片"
+
+msgid "Image Signature"
+msgstr "圖像簽名"
+
+msgid "Image label"
+msgstr "圖片標籤"
+
+msgid "Image text align"
+msgstr "圖片文字對齊"
+
+msgid "Import"
+msgstr "匯入"
+
+msgid "Import & export custom fields and values"
+msgstr "導入和匯出自訂欄位和值"
+
+msgid "Import Export Suite for WooCommerce"
+msgstr "從WooCommerce加載"
+
+msgid "Import and export coupons"
+msgstr "進出口優惠券"
+
+msgid "Import from URL, Google Sheets, FTP/SFTP"
+msgstr "從 URL、Google 表格、FTP/SFTP 匯入"
+
+msgid "Import settings (JSON)"
+msgstr "導入設定 (JSON)"
+
+msgid ""
+"Import/export Products, Orders, Subscriptions, Coupons, Customers, WordPress "
+"Users, Categories & Tags, Reviews"
+msgstr "匯入/匯出產品、訂單、訂閱、優惠券、客戶、WordPress 用戶、類別和標籤、評論"
+
+msgid "Imported successfully"
+msgstr "導入成功"
+
+msgid ""
+"Importing the file will delete all the settings and replace with data from "
+"chosen file"
+msgstr "導入文件將刪除所有設定並替換為所選文件中的數據"
+
+msgid "In minutes. Eg: 1440 for 1 day. Minimum value is 1440"
+msgstr "幾分鐘後。例如：1440 1 天。最小值為 1440"
+
+msgid "Include free(priced as 0) line items in the invoice"
+msgstr "在發票中顯示免費行項目"
+
+msgid "Include or exclude specific categories"
+msgstr "包含或排除特定類別"
+
+msgid "Include product image"
+msgstr "包含產品圖片"
+
+msgid "Include product image in delivery note"
+msgstr "包含產品圖片"
+
+msgid "Include the package number & box names on the label"
+msgstr "在標籤上註明包裹編號和盒子名稱"
+
+msgid "Incorrect file"
+msgstr "文件不正確"
+
+msgid "Increment sequence in custom series"
+msgstr "自訂系列中的增量序列"
+
+msgid ""
+"Input a custom prefix for ‘PDF name format’ that will appear at the "
+"beginning of the name. Defaulted to ‘Invoice_’."
+msgstr "輸入將出現在名稱開頭的“PDF 名稱格式”的自定義前綴。默認為“發票_”。"
+
+msgid "Instruction"
+msgstr "指令"
+
+msgid "Interval"
+msgstr "間隔"
+
+msgid "Invalid access key and mail id"
+msgstr "存取金鑰和郵件 ID 無效"
+
+msgid "Invalid order id"
+msgstr "訂單 ID 無效"
+
+msgid "Invoice"
+msgstr "應收付憑單"
+
+msgid "Invoice > Customize > Company Logo / Name"
+msgstr "公司標誌/名稱"
+
+msgid "Invoice Date"
+msgstr "發票日期"
+
+msgid "Invoice Date:"
+msgstr "账单日期:"
+
+msgid "Invoice Generation In Progress"
+msgstr "發票產生正在進行中"
+
+msgid "Invoice No.:"
+msgstr "應收付憑單:"
+
+msgid "Invoice No:"
+msgstr "應收付憑單:"
+
+msgid "Invoice Number"
+msgstr "發票號碼"
+
+msgid "Invoice date"
+msgstr "帳單日期"
+
+msgid "Invoice date:"
+msgstr "帳單日期"
+
+msgid "Invoice details"
+msgstr "發票明細"
+
+msgid ""
+"Invoice in PDF format will be attached with the order email for chosen order "
+"statuses."
+msgstr "基於上述狀態，訂單電子郵件將隨附發票的PDF版本."
+
+msgid "Invoice no:"
+msgstr "應收付憑單:"
+
+msgid "Invoice number"
+msgstr "發票號碼"
+
+msgid "Invoice number format"
+msgstr "發票號碼格式"
+
+msgid "Invoice number length"
+msgstr "發票號碼長度"
+
+msgid ""
+"Invoice numbers are getting generated in the background. This process may "
+"take a little while, so please be patient."
+msgstr "發票號碼在背景產生。這個過程可能需要一些時間，所以請耐心等待。"
+
+msgid "Invoice setup successfully"
+msgstr "發票設定成功"
+
+msgid "Invoice total"
+msgstr "發票總額"
+
+msgid "Invoice total tax"
+msgstr "發票總稅"
+
+msgid "Invoice/Packing"
+msgstr "揀貨單"
+
+msgid "Invoiced date"
+msgstr "帳單日期"
+
+msgid "Invoices, Packing Slips and Credit Notes Module"
+msgstr "發票、裝箱單和貸項票據模組"
+
+msgid "Invoices, Packing slips and Credit notes"
+msgstr "WooCommerce PDF 發票、包裝單、交貨單和發貨標籤"
+
+msgid ""
+"It seems the products in this order were removed, we cannot proceed this "
+"actoin now."
+msgstr "看來此訂單中的產品已被刪除，我們現在無法繼續此操作。"
+
+msgid "It seems this order is not yours"
+msgstr "看來這個訂單不是你的"
+
+msgid "It seems this order is not yours."
+msgstr "看來這個訂單不是你的。"
+
+msgid "Item with same meta key already exists"
+msgstr "具有相同元鍵的項目已存在"
+
+msgid "Jumbing LED Light Wall Ball"
+msgstr "跳躍的 LED 燈牆球"
+
+msgid "Keep dry"
+msgstr "保持乾燥"
+
+msgid "Key in your company name."
+msgstr "輸入您的公司名稱。"
+
+msgid "Knock, Knock!"
+msgstr "敲，敲！"
+
+msgid "Label"
+msgstr "標籤"
+
+msgid "Language support issues"
+msgstr "語言支持問題"
+
+msgid "Last imported on:"
+msgstr "上次導入時間："
+
+msgid "Last updated on:"
+msgstr "版型已更新。"
+
+msgid "Left"
+msgstr "左"
+
+msgid "Lighter"
+msgstr "打火機"
+
+msgid "Lightning-fast printing"
+msgstr "閃電般的快速列印"
+
+msgid "Limit spams with reCAPTCHA"
+msgstr "使用 reCAPTCHA 限制垃圾郵件"
+
+msgid "Line height"
+msgstr "線條高度"
+
+msgid "Load from WooCommerce"
+msgstr "從WooCommerce加載"
+
+msgid "Location based exclusion for banner"
+msgstr "基於位置的橫幅排除"
+
+msgid "Log all Stripe transactions"
+msgstr "記錄所有 Stripe 交易"
+
+msgid "Logged in users"
+msgstr "已登入的會員"
+
+msgid "Logo"
+msgstr "商標"
+
+msgid "Logo Height"
+msgstr "Logo高度"
+
+msgid "Logo Width"
+msgstr "標誌寬度"
+
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec vehicula "
+"purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
+"et interdum tellus fermentum at. Fusce pellentesque justo rhoncus"
+msgstr ""
+"Lorem ipsum dolor 坐 amet，consectetur adipiscing 精英。 Nunc nec vehicula purus。 "
+"Mauris tempor nec ipsum ac tempus。 Aenean vehicula porttitor tortor, et "
+"interdumtellusfermentum 在。 Fusce pellentesque justo rhoncus"
+
+msgid "Lots of customization options like button style, position, etc"
+msgstr "許多自訂選項，如按鈕樣式、位置等"
+
+msgid "Maintains action history and debug logs"
+msgstr "維護操作歷史記錄和調試日誌"
+
+msgid "Manage user credit balance"
+msgstr "管理使用者信用餘額"
+
+msgid "Manual Signature"
+msgstr "手動簽名"
+
+msgid "Manually create a bought-together list"
+msgstr "手動建立一起購買列表"
+
+msgid "Map categories on product level"
+msgstr "在產品層級映射類別"
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas."
+msgstr ""
+"Mauris dignissim neque ut sapien vulputate, eu sempertellus porttitor。 Cras "
+"porta lectus id augue interdum egestas。暫停潛力。 Phasellus mollis porttitor enim "
+"坐在 amet fringilla。 Nulla sed ligula venenatis, rutrum lectus vel"
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+msgstr ""
+"Mauris dignissim neque ut sapien vulputate, eu sempertellus porttitor。 Cras "
+"porta lectus id augue interdum egestas。暫停潛力。 Phasellus mollis porttitor enim "
+"坐在 amet fringilla。 Nulla sed ligula venenatis, rutrum lectus vel"
+
+msgid "Mention the name of the plugin or meta key if any"
+msgstr "提及插件或元鍵的名稱（如果有）"
+
+msgid "Meta Key"
+msgstr "元鍵"
+
+msgid ""
+"Missing RTL/Unicode language(e.g Chinese, Arabic etc) support for PDF "
+"document."
+msgstr "缺少對PDF文檔的RTL / Unicode語言（例如中文，阿拉伯語等）支持。"
+
+msgid "Monitor payments using Stripe dashboard"
+msgstr "使用 Stripe 儀表板監控付款"
+
+msgid "More order number templates"
+msgstr "建立新模板"
+
+msgid "Multilingual support"
+msgstr "多語言支援"
+
+msgid "Multiple address label layouts"
+msgstr "無標題的模板"
+
+msgid "Multiple display formats for bundled products"
+msgstr "捆綁產品的多種顯示格式"
+
+msgid "Multiple display options for bundle products"
+msgstr "捆綁產品的多種顯示選項"
+
+msgid "Multiple pre-built layouts"
+msgstr "無標題的模板"
+
+msgid "Multiple premium invoice templates to choose from"
+msgstr "多種高級發票範本可供選擇"
+
+msgid "Multiple product recommendation layouts"
+msgstr "多種產品推薦佈局"
+
+msgid "Multiple templates to personalize the document"
+msgstr "無標題的模板"
+
+msgid "Multiple templates to personalize the label"
+msgstr "無標題的模板"
+
+msgid "My account - Order details page"
+msgstr "我的帳戶 - 訂單詳情頁面"
+
+msgid "My account - Order lists page"
+msgstr "我的帳戶 - 訂單列表頁面"
+
+msgid "My templates"
+msgstr "我的模板"
+
+msgid "Name"
+msgstr "名稱"
+
+msgid "Need a field to add the tax id on checkout page"
+msgstr "需要一個字段以在結帳頁面上添加稅號"
+
+msgid "Next"
+msgstr "下一頁"
+
+msgid "No"
+msgstr "否"
+
+msgid "No files found."
+msgstr "找不到文件."
+
+msgid "No modules"
+msgstr "無模組"
+
+msgid "No of Items"
+msgstr "找不到任何項目"
+
+msgid "No template found."
+msgstr "沒有找到模板。"
+
+msgid "No temporary file found"
+msgstr "沒有找到模板。"
+
+msgid "None"
+msgstr "無"
+
+msgid "Normal"
+msgstr "一般"
+
+msgid "Not interested"
+msgstr "不感興趣"
+
+msgid "Note"
+msgstr "備註"
+
+msgid "Note:"
+msgstr "備註："
+
+msgid "Offer store credits"
+msgstr "提供商店積分"
+
+msgid "Offers built-in label templates"
+msgstr "提供內建標籤模板"
+
+msgid "Offers cloud printing of invoice PDFs using PrintNode"
+msgstr "使用 PrintNode 提供發票 PDF 的雲端列印"
+
+msgid "One or more order do not have invoice generated. Generate manually?"
+msgstr "一個或多個訂單沒有生成發票。手動生成？"
+
+msgid "Opacity"
+msgstr "透明度"
+
+msgid "Option to enable in-context checkout"
+msgstr "啟用上下文結帳的選項"
+
+msgid "Option to include/exclude tax to Invoice"
+msgstr "選擇在發票中包含/排除稅費"
+
+msgid "Option to set up a specific PayPal locale"
+msgstr "設定特定 PayPal 區域設定的選項"
+
+msgid "Order"
+msgstr "訂單"
+
+msgid "Order Date"
+msgstr "訂單日期"
+
+msgid "Order Date:"
+msgstr "訂單日期："
+
+msgid "Order Details"
+msgstr "訂單明細"
+
+msgid "Order Discount"
+msgstr "訂單折扣"
+
+msgid "Order Meta"
+msgstr "添加/編輯訂單元字段"
+
+msgid "Order No.:"
+msgstr "訂單日期："
+
+msgid "Order No:"
+msgstr "訂單日期："
+
+msgid "Order Number"
+msgstr "訂單編號"
+
+msgid "Order date"
+msgstr "訂單日期"
+
+msgid "Order date:"
+msgstr "訂單日期："
+
+msgid "Order discount"
+msgstr "訂單折扣"
+
+msgid "Order email"
+msgstr "訂購電子郵件"
+
+msgid "Order meta fields"
+msgstr "訂單元字段"
+
+msgid "Order no:"
+msgstr "訂單日期："
+
+msgid "Order number"
+msgstr "訂單編號"
+
+msgid "Order number (default)"
+msgstr "訂單號（默認）"
+
+msgid "Order, Coupon, Subscription Export Import for WooCommerce"
+msgstr "為 WooCommerce 訂購 XML 文件導出導入"
+
+msgid "Other"
+msgstr "其他"
+
+msgid "Others"
+msgstr "其他"
+
+msgid "Output"
+msgstr "輸出"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF Invoices"
+msgstr "PDF發票"
+
+msgid "PDF library"
+msgstr "資源庫"
+
+msgid "PDF name format"
+msgstr "日期格式"
+
+msgid "PREVIEW"
+msgstr "預覽"
+
+msgid "Package Number"
+msgstr "追蹤號碼"
+
+msgid "Packing slip"
+msgstr "出貨單"
+
+msgid "Partial and Full Refund of the order amount"
+msgstr "訂單金額的部分和全額退款"
+
+msgid "PayPal Express Checkout Payment Gateway for WooCommerce"
+msgstr "用於 WooCommerce 的 PayPal Express Checkout 支付網關"
+
+msgid "Payment & subscription"
+msgstr "付款及訂閱"
+
+msgid "Payment Method"
+msgstr "付款方式"
+
+msgid "Payment Method:"
+msgstr "付款方式："
+
+msgid "Payment method"
+msgstr "付款方式"
+
+msgid "Payment method:"
+msgstr "付款方式："
+
+msgid "Payment method: "
+msgstr "付款方法： "
+
+msgid "Payment received stamp"
+msgstr "付款已收到郵票"
+
+msgid "Ph No:"
+msgstr "電話號碼："
+
+msgid "Phone No:"
+msgstr "電話號碼:"
+
+msgid "Phone no:"
+msgstr "電話號碼:"
+
+msgid "Phone number"
+msgstr "電話號碼"
+
+msgid "Pick list"
+msgstr "選擇列表"
+
+msgid "Pick lists"
+msgstr "選擇列表"
+
+msgid "Picklist"
+msgstr "選擇列表"
+
+msgid "Picklists Add-on"
+msgstr "選擇列表"
+
+msgid "Please enter mandatory fields"
+msgstr "請輸入必填字段"
+
+msgid "Please enter name"
+msgstr "請輸入名稱"
+
+msgid "Please enter order number"
+msgstr "請輸入數字"
+
+msgid "Please fill the `from address` in the plugin's general settings."
+msgstr "請在插件的常規設置中填寫“發件人地址”。"
+
+msgid ""
+"Please save all data before leaving this page. All unsaved data will be lost."
+" Are you sure?"
+msgstr "請保存所有數據，然後再離開此頁面。所有未保存的數據將丟失。你確定嗎？"
+
+msgid "Please select json file"
+msgstr "請輸入名稱"
+
+msgid "Please wait"
+msgstr "請稍候"
+
+msgid "Plugin settings not available in my language"
+msgstr "插件設置無法使用我的語言"
+
+msgid "Postal code"
+msgstr "郵政編碼"
+
+msgid "Pre-built layout for documents"
+msgstr "各種很棒的模板供您選擇"
+
+msgid "Pre-built layouts"
+msgstr "預建佈局"
+
+msgid "Pre-built layouts & customizable templates"
+msgstr "預先建置的佈局和可自訂的模板"
+
+msgid "Pre-built layouts for documents"
+msgstr "各種很棒的模板供您選擇"
+
+msgid "Pre-built proforma invoice layouts"
+msgstr "下載發票"
+
+msgid "Prefix"
+msgstr "前綴"
+
+msgid "Premium"
+msgstr "進階版"
+
+msgid "Premium Extensions"
+msgstr "高級擴展"
+
+msgid "Premium extensions"
+msgstr "進階擴充"
+
+msgid "Premium version"
+msgstr "付費版"
+
+msgid "Present"
+msgstr "出席"
+
+msgid "Preview before printing"
+msgstr "打印前預覽"
+
+msgid "Preview documents before printing"
+msgstr "打印前預覽"
+
+msgid "Preview sample PDF"
+msgstr "預覽樣本PDF"
+
+msgid "Price"
+msgstr "價格"
+
+msgid "Price label"
+msgstr "售價標籤"
+
+msgid "Price text align"
+msgstr "價格文字對齊"
+
+msgid "Print"
+msgstr "列印"
+
+msgid "Print Delivery note"
+msgstr "列印送貨單"
+
+msgid "Print Dispatch Label"
+msgstr "打印調度標籤"
+
+msgid "Print Invoice"
+msgstr "列印發票"
+
+msgid "Print Invoices"
+msgstr "列印發票"
+
+msgid "Print PDF invoices for WooCommerce"
+msgstr "從WooCommerce加載"
+
+msgid "Print Packing slip"
+msgstr "打印裝箱單"
+
+msgid "Print Shipping Label"
+msgstr "打印運輸標籤"
+
+msgid "Print button access for"
+msgstr "列印按鈕訪問"
+
+msgid "Print invoice"
+msgstr "列印發票"
+
+msgid "Print/Download"
+msgstr "下載"
+
+msgid "Print/Download Delivery note"
+msgstr "列印送貨單"
+
+msgid "Print/Download Dispatch Label"
+msgstr "打印調度標籤"
+
+msgid "Print/Download Invoice"
+msgstr "下載發票"
+
+msgid "Print/Download Packing slip"
+msgstr "下載裝箱單"
+
+msgid "Prints Packing List,Invoice,Delivery Note and Shipping Label."
+msgstr "Prints Packing List,Invoice,Delivery Note and Shipping Label."
+
+msgid "Privacy Policy"
+msgstr "隱私權政策"
+
+msgid "Privacy compliance"
+msgstr "隱私權政策"
+
+msgid "Pro Add-on"
+msgstr "Pro附加組件"
+
+msgid "Pro version"
+msgstr "專業版"
+
+msgid "Pro-rate charges till first renewal"
+msgstr "按比例收費至首次續訂"
+
+msgid "Product"
+msgstr "產品"
+
+msgid "Product Import Export Plugin For WooCommerce"
+msgstr "為 WooCommerce 訂購 XML 文件導出導入"
+
+msgid "Product Table"
+msgstr "商品欄位"
+
+msgid "Product attributes"
+msgstr "商品屬性"
+
+msgid "Product label"
+msgstr "顯示產品標籤"
+
+msgid "Product meta fields"
+msgstr "訂單元字段"
+
+msgid "Product text align"
+msgstr "產品文字對齊"
+
+msgid "Proforma Invoices Add-on"
+msgstr "下載發票"
+
+msgid "Proforma invoice"
+msgstr "下載發票"
+
+msgid "Proforma invoice number format"
+msgstr "發票號碼格式"
+
+msgid "Proforma invoices"
+msgstr "形式發票"
+
+msgid "Provide refunds to store credit"
+msgstr "提供商店信用退款"
+
+msgid "QR Code"
+msgstr "QR 碼"
+
+msgid "QR Code Addon for WooCommerce PDF Invoices"
+msgstr "WooCommerce PDF 發票的 QR 碼插件"
+
+msgid "QR code"
+msgstr "QR 碼"
+
+msgid "Qty label"
+msgstr "數量標籤"
+
+msgid "Qty text align"
+msgstr "文字對齊"
+
+msgid "Quantity"
+msgstr "數量"
+
+msgid "Quick setup page to add & edit recommendations"
+msgstr "用於新增和編輯推薦的快速設定頁面"
+
+msgid "RTL support for documents"
+msgstr "其他文件"
+
+msgid "Rate us now"
+msgstr "立即評價我們"
+
+msgid "Recommended 128MB or more"
+msgstr "推薦 128MB 或更多"
+
+msgid "Recommended for better performances"
+msgstr "推薦以獲得更好的性能"
+
+msgid "Recommended size is 150x50px."
+msgstr "如果留空，則默認為常規設置中的徽標。確保從“發票>自定義>公司徽標”中選擇公司徽標以反映在發票上。建議尺寸為 150x50 像素。"
+
+msgid "Recommended size is 150×50px"
+msgstr "建議尺寸為150×50px"
+
+msgid "Recommended to compress PDF documents"
+msgstr "推薦壓縮PDF文檔"
+
+msgid "Recommended, will use fallback functions"
+msgstr "推薦，將使用後備功能"
+
+msgid "Refer to our documentation to setup and get started"
+msgstr "請參閱我們的文檔進行設置和開始"
+
+msgid "Refund"
+msgstr "退款"
+
+msgid ""
+"Refund in this order seems not having credit number yet. Do you want to "
+"manually generate one ?"
+msgstr "此訂單中的退款似乎還沒有信用號碼。您想手動產生一個嗎？"
+
+msgid "Remind me later"
+msgstr "稍後提醒我"
+
+msgid "Remote Print add-on for WooCommerce PDF Invoices - PrintNode"
+msgstr "WooCommerce PDF 發票的遠端列印外掛程式 - PrintNode"
+
+msgid ""
+"Removing year [Y] from the prefix will disable the annual reset functionality"
+msgstr "從前綴中刪除年份 [Y] 將停用年度重置功能"
+
+msgid ""
+"Removing year [Y] from the suffix will disable the annual reset functionality"
+msgstr "從後綴中刪除年份 [Y] 將停用年度重置功能"
+
+msgid "Renewal interval & expiry customizations"
+msgstr "續訂間隔和到期自訂"
+
+msgid "Replace the existing templates"
+msgstr "創建一個新模板或編輯現有模板。"
+
+msgid "Required"
+msgstr "必要"
+
+msgid "Required if you have images in your documents"
+msgstr "如果您的文檔中有圖像，則為必填項"
+
+msgid "Reset"
+msgstr "重設"
+
+msgid "Reset all settings to default"
+msgstr "重置設定到預設值"
+
+msgid "Reset successfully"
+msgstr "重置成功"
+
+msgid ""
+"Reset will delete all the settings, saved templates and reset to the default "
+"settings"
+msgstr "重置將刪除所有設定、儲存的模板並重置為預設設置"
+
+msgid "Restrict coupons by country"
+msgstr "按國家限制優惠券"
+
+msgid "Retain user passwords on import/export"
+msgstr "匯入/匯出時保留使用者密碼"
+
+msgid "Return Policy"
+msgstr "退貨政策"
+
+msgid "Return address"
+msgstr "更改帳單地址"
+
+msgid "Return policy"
+msgstr "退貨政策"
+
+msgid "Review"
+msgstr "評論"
+
+msgid "Review now"
+msgstr "現在評論"
+
+msgid "Right"
+msgstr "右"
+
+msgid "S.NO"
+msgstr "序號"
+
+msgid "S.No"
+msgstr "編號"
+
+msgid "S.no"
+msgstr "編號"
+
+msgid "SKU"
+msgstr "存貨單位"
+
+msgid "SKU label"
+msgstr "SKU標籤"
+
+msgid "SKU text align"
+msgstr "文字對齊"
+
+msgid "SSN"
+msgstr "SSN"
+
+msgid "SSN number"
+msgstr "[數字]"
+
+msgid "SSN:"
+msgstr "SSN:"
+
+msgid "Save"
+msgstr "儲存"
+
+msgid "Save and activate"
+msgstr "提交和停用"
+
+msgid "Save before you proceed."
+msgstr "保存後再繼續。"
+
+msgid "Save document layout as template"
+msgstr "無法加載模板。"
+
+msgid "Saving"
+msgstr "儲存中"
+
+msgid "Saving..."
+msgstr "儲存中..."
+
+msgid "Scan and list cookies"
+msgstr "掃描並列出 cookie"
+
+msgid "Schedule automated import & export"
+msgstr "安排自動匯入和匯出"
+
+msgid "Schedule automated import and export"
+msgstr "安排自動匯入和匯出"
+
+msgid "Secure"
+msgstr "安全"
+
+msgid "Secured payments with SCA and 3D secure"
+msgstr "透過 SCA 和 3D secure 進行安全支付"
+
+msgid "Select One"
+msgstr "請選擇一個"
+
+msgid ""
+"Select a name format for PDF invoice that includes invoice/order number."
+msgstr "為包含發票/訂單號的 PDF 發票選擇一種名稱格式。"
+
+msgid "Select country"
+msgstr "選擇國家"
+
+msgid ""
+"Select email classes that match the order statuses selected under the "
+"'Automate invoice creation option. If no order status is selected, you must "
+"manually generate invoice to attach it with these order emails."
+msgstr ""
+"選擇與「自動建立發票」選項下所選的訂單狀態相符的電子郵件類別。如果未選擇訂單狀態，您必須手動產生發票以將其附加到這些訂單電子郵件中。\n"
+
+msgid ""
+"Select/add order meta to display additional information related to the order "
+"on the invoice."
+msgstr "允許在發票中顯示與您的訂單有關的其他詳細信息。"
+
+msgid "Seller name"
+msgstr "賣家名稱"
+
+msgid "Seller tax ID"
+msgstr "賣家稅號"
+
+msgid "Send automated emails notifications"
+msgstr "發送自動電子郵件通知"
+
+msgid ""
+"Separate tax column in product table for multiple tax options in dispatch "
+"labels"
+msgstr "產品表中的單獨稅收列用於多個稅收選項"
+
+msgid ""
+"Separate tax column in product table for multiple tax options in proforma "
+"invoices"
+msgstr "產品表中的單獨稅收列用於多個稅收選項"
+
+msgid ""
+"Separate tax column in the product table for multiple tax options in invoices"
+msgstr "產品表中的單獨稅收列用於多個稅收選項"
+
+msgid "Sequential Order Number for WooCommerce"
+msgstr "WooCommerce 的順序訂單號"
+
+msgid "Serial No label"
+msgstr "售價標籤"
+
+msgid "Serial no text align"
+msgstr "價格文字對齊"
+
+msgid "Set custom proforma invoice number"
+msgstr "使用訂單號作為發票號"
+
+msgid "Set free trial and sign-up fee"
+msgstr "設定免費試用和註冊費"
+
+msgid "Set quote expiry period"
+msgstr "設定報價有效期限"
+
+msgid ""
+"Set the  Size of the Shipping label to be either full page or custom size."
+msgstr "將運輸標籤的尺寸設定為整頁或自訂尺寸。"
+
+msgid "Set up a redirect page"
+msgstr "設定重定向頁面"
+
+msgid "Set up discounts on the recommended product bundle"
+msgstr "設定推薦產品捆綁的折扣"
+
+msgid "Settings"
+msgstr "設定"
+
+msgid "Settings Updated"
+msgstr "設定已更新"
+
+msgid "Settings are empty"
+msgstr "設定已更新"
+
+msgid "Settings updated."
+msgstr "設定已更新."
+
+msgid "Ship Date:"
+msgstr "發貨日期："
+
+msgid "Ship to"
+msgstr "運送至"
+
+msgid "Shipping"
+msgstr "運送方式"
+
+msgid "Shipping Address"
+msgstr "運送地址"
+
+msgid "Shipping Address:"
+msgstr "運送地址:"
+
+msgid "Shipping Label"
+msgstr "運送標籤"
+
+msgid "Shipping Label 1"
+msgstr "運送標籤"
+
+msgid "Shipping Method"
+msgstr "郵寄方式"
+
+msgid "Shipping address"
+msgstr "運送地址"
+
+msgid "Shipping label"
+msgstr "運送標籤"
+
+msgid "Shipping label size"
+msgstr "運送標籤"
+
+msgid "Shipping labels"
+msgstr "運送標籤"
+
+msgid "Shipping labels, Dispatch labels and Delivery Notes Module"
+msgstr "運輸標籤、出貨標籤和送貨單模組"
+
+msgid "Shipping labels, Dispatch labels and Delivery notes"
+msgstr "運輸標籤、出貨標籤和送貨單"
+
+msgid "Shop name"
+msgstr "商店名稱"
+
+msgid "Shortcode support for the Paypal Express button"
+msgstr "Paypal Express 按鈕的簡碼支持"
+
+msgid "Show Less"
+msgstr "顯示更少"
+
+msgid "Show More"
+msgstr "顯示更多"
+
+msgid "Show Pay Later option at checkout"
+msgstr "結帳時顯示「稍後付款」選項"
+
+msgid "Show different taxes in separate columns"
+msgstr "在單獨的欄位中顯示不同的稅費"
+
+msgid "Show payment link on invoice"
+msgstr "在發票上顯示付款鏈接"
+
+msgid "Show print invoice button for customers"
+msgstr "為客戶顯示打印發票按鈕"
+
+msgid "Show print invoice button to customers"
+msgstr "為客戶顯示打印發票按鈕"
+
+msgid "Show print packing slip button to customers"
+msgstr "為客戶顯示打印發票按鈕"
+
+msgid "Show product variation data"
+msgstr "添加產品變體"
+
+msgid "Show variation data for variable products"
+msgstr "顯示可變產品的變化數據"
+
+msgid "Show variation data of products"
+msgstr "顯示產品的變異數據"
+
+msgid ""
+"Shows a preview of the template on an actual order. Key in an order number "
+"to view the same."
+msgstr "在實際訂單上顯示模板的預覽。鍵入訂單號以進行查看。"
+
+msgid "Signature type"
+msgstr "簽名類型"
+
+msgid "Skip invoice setup"
+msgstr "跳過發票設定"
+
+msgid "Smart Coupons for WooCommerce"
+msgstr "從WooCommerce加載"
+
+msgid "Solid"
+msgstr "實線"
+
+msgid "Some useful `filters` to extend plugin's functionality"
+msgstr "一些有用的“過濾器”來擴展插件的功能"
+
+msgid "Sort order items in product table"
+msgstr "在產品表中添加產品圖片"
+
+msgid "Sort order items in the product table"
+msgstr "在產品表中添加產品圖片"
+
+msgid "Sort order items in the product table "
+msgstr "在產品表中添加產品圖片"
+
+msgid "Sort products based on Name or SKU"
+msgstr "根據名稱或 SKU 對產品進行排序"
+
+msgid ""
+"Specify your company tax ID. For e.g., you may enter as VAT: GB123456789, "
+"GSTIN:0948745 or ABN:51 824 753 556"
+msgstr "指定您的公司稅號。例如您可以輸入增值稅：GB123456789、GSTIN：0948745 或 ABN：51 824 753 556"
+
+msgid "Start"
+msgstr "開始"
+
+msgid "Step 1"
+msgstr "步驟1"
+
+msgid "Step 2"
+msgstr "步驟2"
+
+msgid "Step 3"
+msgstr "步驟3"
+
+msgid "Style"
+msgstr "樣式"
+
+msgid "Submit & Deactivate"
+msgstr "提交和停用"
+
+msgid "Subscriptions for WooCommerce"
+msgstr "從WooCommerce加載"
+
+msgid "Subtotal"
+msgstr "小計"
+
+msgid "Success"
+msgstr "成功"
+
+msgid "Successfully cleared all temp files."
+msgstr "成功清除所有臨時檔案。"
+
+msgid "Suffix"
+msgstr "後綴"
+
+msgid "Summary Table"
+msgstr "匯總表"
+
+msgid "Support"
+msgstr "技術支援"
+
+msgid "Support for additional fields that can be added to the feed"
+msgstr "支援可添加到 Feed 的其他字段"
+
+msgid "Support for multiple product types"
+msgstr "支持多種包裝類型"
+
+msgid "Support for serial and USB scales"
+msgstr "支援串行和 USB 秤"
+
+msgid "Supported address types"
+msgstr "其他文件"
+
+msgid "Supported by a team with 99% Customer Satisfaction Score"
+msgstr "由客戶滿意度高達 99% 的團隊提供支援"
+
+msgid "Supported documents"
+msgstr "其他文件"
+
+msgid "Supports Excel, XML, CSV, and TSV file formats"
+msgstr "支援 Excel、XML、CSV 和 TSV 檔案格式"
+
+msgid "Supports WooCommerce Subscriptions for Express buttons"
+msgstr "支援 Express 按鈕的 WooCommerce 訂閱"
+
+msgid "Supports automatic & manual printing"
+msgstr "支援自動和手動列印"
+
+msgid "Supports recurring discounts"
+msgstr "支持定期折扣"
+
+msgid "Supports recurring payments"
+msgstr "其他文件"
+
+msgid "Switching to order number will disable the annual reset functionality"
+msgstr "切換到訂單號碼將停用年度重置功能"
+
+msgid "Sync WooCommerce products to Facebook catalog"
+msgstr "將 WooCommerce 產品同步到 Facebook 目錄"
+
+msgid "Synchronize subscription renewal"
+msgstr "同步訂閱續訂"
+
+msgid "System Configuration"
+msgstr "系統配置"
+
+msgid "System Info"
+msgstr "系統資訊"
+
+msgid "Table body text color"
+msgstr "表主體文字顏色"
+
+msgid "Table head background"
+msgstr "表頭背景"
+
+msgid "Table head text color"
+msgstr "表頭文字顏色"
+
+msgid "Tax ID"
+msgstr "稅號"
+
+msgid "Tax label"
+msgstr "稅務標籤"
+
+msgid "Tax text align"
+msgstr "文字對齊"
+
+msgid "Tel Field"
+msgstr "電話領域"
+
+msgid "Tel:"
+msgstr "電話："
+
+msgid "Template created and activated."
+msgstr "範本已建立."
+
+msgid "Template created."
+msgstr "範本已建立."
+
+msgid "Template updated and activated."
+msgstr "版型已更新。"
+
+msgid "Template updated."
+msgstr "版型已更新。"
+
+msgid "Template with same name already exists."
+msgstr "同名模板已存在。"
+
+msgid "Templates"
+msgstr "模板"
+
+msgid "Text"
+msgstr "文字"
+
+msgid "Text Color"
+msgstr "文字顏色"
+
+msgid "Text align"
+msgstr "文字對齊"
+
+msgid "Text color"
+msgstr "文字顏色"
+
+msgid ""
+"That’s awesome! We’d love it if you take a moment to share what you think "
+"and help spread the word."
+msgstr "棒極了！如果您能花點時間分享您的想法並幫助傳播訊息，我們將非常高興。"
+
+msgid ""
+"The best-in-the-class import, export, and migration solutions for your "
+"WooCommerce data"
+msgstr "適用於您的 WooCommerce 資料的一流匯入、匯出和遷移解決方案"
+
+msgid ""
+"The company name and the address details from this section will be used as "
+"the sender address in the invoice and other related documents."
+msgstr "以下各節中的公司，收貨地址和地址詳細信息將用於填寫發票和相關文件。"
+
+msgid ""
+"The date is displayed on the invoice. It can be either the order creation "
+"date or the invoiced date."
+msgstr "日期顯示在發票上。它可以是訂單建立日期或發票日期。"
+
+msgid "The default library to be used PDF generation"
+msgstr "生成PDF的默認庫"
+
+msgid "The latest specified starting number will be used after reset"
+msgstr "重置後將使用最新指定的起始編號"
+
+msgid ""
+"The most popular payment gateways and subscription solutions to scale your "
+"business"
+msgstr "最受歡迎的支付網關和訂閱解決方案可擴展您的業務"
+
+msgid "The plugin didn't work as expected"
+msgstr "該插件沒有按預期工作"
+
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr "該插件是偉大的，但我需要特定的功能，你不支持"
+
+msgid ""
+"The plugins %s and %s cannot be active in your store at the same time. "
+"Kindly deactivate one of these prior to activating the other."
+msgstr "插件 %s 和 %s 不能同時在您的商店中處於活動狀態。請先停用其中一個，然後再激活另一個。"
+
+msgid "There is no items in this order."
+msgstr "該訂單中沒有商品。"
+
+msgid "There is no order with this given id"
+msgstr "沒有具有該給定 ID 的訂單"
+
+msgid "There is no order with this id"
+msgstr "沒有該id的訂單"
+
+msgid ""
+"This filter is used to alter the barcode information for all the document "
+"templates"
+msgstr "此過濾器用於更改所有文檔模板的條形碼信息"
+
+msgid ""
+"This filter is used to alter the invoice date in all the document templates"
+msgstr "此過濾器用於更改所有文檔模板中的發票日期"
+
+msgid ""
+"This filter is used to alter the order date in all the document templates"
+msgstr "此過濾器用於更改所有文檔模板中的訂單日期"
+
+msgid ""
+"This is basic template. In order to use premium feature, you need to switch "
+"and activate the premium template"
+msgstr "這是基本模板。為了使用高級功能，您需要切換並啟動高級模板"
+
+msgid "This is premium template which is not compatible with the basic plugin"
+msgstr "此模板不兼容二維碼插件"
+
+msgid "This template is not comaptible with QR Code addon plugin"
+msgstr "此模板不兼容二維碼插件"
+
+msgid "This way up"
+msgstr "往上走這條路"
+
+msgid ""
+"This will remove all invoice numbers created by WooCommerce PDF Invoices, "
+"Packing Slips, Delivery Notes & Shipping Labels by WebToffee."
+msgstr "這將刪除由 WebToffee 的 WooCommerce PDF 發票、裝箱單、交貨單和運輸標籤創建的所有發票編號。"
+
+msgid "Timely compatibility updates and bug fixes"
+msgstr "已驗證與主要插件的兼容性"
+
+msgid "Title"
+msgstr "標題"
+
+msgid "Title font size"
+msgstr "標題字體大小"
+
+msgid "To Address"
+msgstr "講話"
+
+msgid "To add a different meta key"
+msgstr "新增不同的元鍵"
+
+msgid "To add more than one custom order meta,"
+msgstr "要添加多個自定義訂單元,"
+
+msgid "To compress PDF documents"
+msgstr "壓縮 PDF 文檔"
+
+msgid "To help you comply with invoice mandates that require QR Codes"
+msgstr "幫助您遵守需要二維碼的發票要求"
+
+msgid "To include the keyed in name to the Invoice, ensure to select"
+msgstr "若要將鍵入的姓名包含到發票中，請確保選擇"
+
+msgid ""
+"To include the uploaded image as logo to the invoice, ensure to select "
+"Company logo from"
+msgstr "若要將上傳的圖像作為徽標包含到發票中，請確保從以下位置選擇公司徽標"
+
+msgid "To proceed with the import, please type %1$s in the field below"
+msgstr "若要繼續導入，請在下面的欄位中輸入 %1$s"
+
+msgid "To proceed with the reset, please type %1$s in the field below"
+msgstr "若要繼續重置，請在下面的欄位中輸入 %1$s"
+
+msgid "To:"
+msgstr "到："
+
+msgid "Total"
+msgstr "總計"
+
+msgid "Total Price"
+msgstr "價格"
+
+msgid "Total Tax"
+msgstr "稅金總計"
+
+msgid "Total Weight"
+msgstr "總重量標籤"
+
+msgid "Total files"
+msgstr "價格"
+
+msgid "Total label"
+msgstr "總標籤"
+
+msgid "Total price"
+msgstr "總價"
+
+msgid "Total tax"
+msgstr "總稅額"
+
+msgid "Total text align"
+msgstr "總文字對齊"
+
+msgid "Total weight label"
+msgstr "總重量標籤"
+
+msgid "Total weight text align"
+msgstr "總重量文字對齊"
+
+msgid "Tracking Number"
+msgstr "追蹤號碼"
+
+msgid "Tracking Number:"
+msgstr "物流追蹤碼："
+
+msgid "Tracking number"
+msgstr "跟蹤號碼"
+
+msgid "Tracking number:"
+msgstr "追蹤號碼："
+
+msgid "Truncation did not complete as expected."
+msgstr "該插件沒有按預期工作"
+
+msgid "Type in prefix/ suffix / date format if required"
+msgstr "如有需要，輸入前綴/後綴/日期格式"
+
+msgid "Type template name to search"
+msgstr "輸入模板名稱進行搜索"
+
+msgid "URL Coupons for WooCommerce"
+msgstr "從WooCommerce加載"
+
+msgid ""
+"Unable to add from third party plugin that collects customer VAT(or GSTIN or "
+"ABN etc)"
+msgstr "無法從收取客戶增值稅（或 GSTIN 或 ABN 等）的第三方插件添加"
+
+msgid "Unable to generate PDF."
+msgstr "無法生成PDF。"
+
+msgid "Unable to load template."
+msgstr "無法加載模板。"
+
+msgid "Unable to print Delivery note. Please check the items in the order."
+msgstr "無法打印送貨單。請檢查訂單中的項目。"
+
+msgid "Unable to print Packing slip. Please check the items in the order."
+msgstr "無法打印裝箱單。請檢查訂單中的項目。"
+
+msgid "Unable to save theme."
+msgstr "無法保存主題。"
+
+msgid "Unable to switch view."
+msgstr "無法切換視圖。"
+
+msgid ""
+"Unable to update settings due to an internal error. %s To troubleshoot "
+"please click %s here. %s"
+msgstr "由於內部錯誤，無法更新設置。 %s要進行故障排除，請點擊此處的 %s。 %s"
+
+msgid "Unit Price"
+msgstr "單價"
+
+msgid "Unit price"
+msgstr "單價"
+
+msgid ""
+"Unlock limitless possibilities of invoice customization with the addon -"
+msgstr "使用插件解鎖發票定制的無限可能性 -"
+
+msgid "Untitled template"
+msgstr "無標題的模板"
+
+msgid "Update Settings"
+msgstr "更新設置"
+
+msgid "Updated"
+msgstr "已更新"
+
+msgid "Upgrade To Premium"
+msgstr "升級到高級版"
+
+msgid "Upgrade to premium"
+msgstr "升級到高級版"
+
+msgid "Upload logo"
+msgstr "上傳商標"
+
+msgid "Upload your image"
+msgstr "上傳圖片"
+
+msgid "Use custom number format & length"
+msgstr "使用自訂數字格式和長度"
+
+msgid "Use custom number series to number documents"
+msgstr "使用自訂編號系列對文件進行編號"
+
+msgid "Use invoice created date"
+msgstr "發票創建日期"
+
+msgid "Use latest settings for invoice"
+msgstr "使用發票的最新設置"
+
+msgid "Use order date"
+msgstr "更改訂單日期"
+
+msgid "Use order date as input instead."
+msgstr "更改訂單日期"
+
+msgid "Use order number as document number"
+msgstr "使用訂單號作為發票號"
+
+msgid ""
+"Use upsells, cross-sells, & related products as frequently bought products"
+msgstr "使用追加銷售、交叉銷售和相關產品作為經常購買的產品"
+
+msgid "User consent logging"
+msgstr "使用者同意記錄"
+
+msgid "Users who haven`t logged will also be allowed to print"
+msgstr "未登入的用戶也將被允許列印"
+
+msgid "Users will be redirected to login page if not logged in"
+msgstr "如果使用者未登錄，將被重新導向至登入頁面"
+
+msgid "VAT"
+msgstr "附加稅 (VAT)"
+
+msgid "VAT number"
+msgstr "[數字]"
+
+msgid "VAT:"
+msgstr "統一編號："
+
+msgid "Verified compatibility with major plugins"
+msgstr "已驗證與主要插件的兼容性"
+
+msgid "View add-on"
+msgstr "獲取附加組件"
+
+msgid "View live preview of customization"
+msgstr "查看示例定制演示"
+
+msgid "View progress"
+msgstr "查看進度"
+
+msgid "View sample customization demo"
+msgstr "查看示例定制演示"
+
+msgid "Visual"
+msgstr "視覺"
+
+msgid "WPML compatibility"
+msgstr "WPML 兼容性"
+
+msgid "WPML compatibilityCustomize label sizes"
+msgstr "WPML 兼容性"
+
+msgid "WPML multilingual and multicurrency support "
+msgstr "WPML 多語言和多貨幣支持"
+
+msgid "WT PDF Invoice Debug"
+msgstr "PDF發票"
+
+msgid ""
+"We do not collect any personal data when you submit this form. It's your "
+"feedback that we value."
+msgstr "當您提交此表格時，我們不會收集任何個人數據。我們重視您的反饋意見。"
+
+msgid "We would love to help you on any queries or issues."
+msgstr "我們很樂意協助您解決任何詢問或問題。"
+
+msgid "WebToffee"
+msgstr "WebToffee"
+
+msgid "WebToffee WooCommerce Gift Cards"
+msgstr "WebToffee WooCommerce 禮品卡"
+
+msgid "WebToffee WooCommerce Product Feed & Sync Manager"
+msgstr "適用於 Facebook 的 WebTooffee 產品 Feed"
+
+msgid "WebToffee WooCommerce Request A Quote"
+msgstr "WebToffee WooCommerce 請求報價"
+
+msgid "Weight"
+msgstr "重量"
+
+msgid "Weight:"
+msgstr "重量："
+
+msgid "What did you expect?"
+msgstr "你期待什麼？"
+
+msgid "What length would you prefer for your credit note"
+msgstr "您希望信用票據的長度是多少"
+
+msgid "What length would you prefer for your invoice"
+msgstr "您希望發票的長度是多少"
+
+msgid "What length would you prefer for your invoice number"
+msgstr "使用訂單號作為發票號"
+
+msgid "What length would you prefer for your proforma invoice"
+msgstr "您希望形式發票的長度是多少"
+
+msgid "What should be the starting number for your credit notes?"
+msgstr "您的貸方票據的起始編號應該是多少？"
+
+msgid "What should be the starting number for your invoices?"
+msgstr "您的發票的起始編號應該是多少？"
+
+msgid "What should be the starting number for your proforma invoices?"
+msgstr "形式發票的起始編號應該是多少？"
+
+msgid ""
+"When enabled, replaces state code with state name in the from, return, "
+"billing and shipping addresses"
+msgstr "使其能够在发件人、退货、账单和送货地址中显示州名而不是州代码"
+
+msgid "Which language?"
+msgstr "哪種語言？"
+
+msgid "Which plugin?"
+msgstr "哪個插件？"
+
+msgid "Width"
+msgstr "寬度"
+
+msgid "WooCommerce Address Labels plugin"
+msgstr "WooCommerce 地址標籤插件"
+
+msgid "WooCommerce PDF Invoices, Packing Slips and Credit Notes plugin"
+msgstr "WooCommerce PDF 發票、包裝單、交貨單和發貨標籤"
+
+msgid ""
+"WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels"
+msgstr "WooCommerce PDF 發票、裝箱單、交貨單和運輸標籤"
+
+msgid "WooCommerce Pick lists plugin"
+msgstr "WooCommerce 稅收設置"
+
+msgid "WooCommerce Picklists plugin"
+msgstr "WooCommerce 稅收設置"
+
+msgid "WooCommerce Proforma Invoices"
+msgstr "下載發票"
+
+msgid "WooCommerce Proforma Invoices plugin"
+msgstr "WooCommerce 形式發票插件"
+
+msgid "WooCommerce Shipping labels, Dispatch labels and Delivery Notes plugin"
+msgstr "WooCommerce 運輸標籤、出貨標籤和送貨單插件"
+
+msgid "WooCommerce Stripe Payment Gateway"
+msgstr "WooCommerce Stripe 支付網關"
+
+msgid ""
+"Woocommerce PDF invoices, packing slips, delivery notes, and shipping labels"
+msgstr "WooCommerce PDF 發票、裝箱單、交貨單和運輸標籤"
+
+msgid "WordPress Users & WooCommerce Customers Import Export"
+msgstr "導入導出 WordPress 用戶和 WooCommerce 客戶"
+
+msgid "Would you like us to assist you?"
+msgstr "你想我們幫你嗎？"
+
+msgid "Writtable"
+msgstr "可寫"
+
+msgid "Yes"
+msgstr "是"
+
+msgid "You are covered by our 30-Day Money Back Guarantee"
+msgstr "30 天退款保證"
+
+msgid "You are not allowed to access this page"
+msgstr "不允許訪問此頁面"
+
+msgid "You are not allowed to do this action"
+msgstr "您無權查看此網頁。"
+
+msgid "You are not allowed to view this page."
+msgstr "您無權查看此網頁。"
+
+msgid "You are using free version of %1$s. %2$s Checkout premium here %3$s."
+msgstr "您正在使用免費版本的 %1$s。 %2$s在此結帳溢價%3$s。"
+
+msgid ""
+"You can add additional column head via `wf_pklist_alter_product_table_head` "
+"filter. You need to add column data via this filter. (Works with Invoice and "
+"Dispatch label only)"
+msgstr ""
+"您可以通過 `wf_pklist_alter_product_table_head` 過濾器添加其他列標題。您需要通過此過濾器添加列數據。 （僅適用於 "
+"Invoice 和 Dispatch 標籤）"
+
+msgid ""
+"You can add additional column head via `wf_pklist_alter_product_table_head` "
+"filter. You need to add column data via this filter. (Works with Packing "
+"List, Shipping Label and Delivery note only)"
+msgstr ""
+"您可以通過 `wf_pklist_alter_product_table_head` 過濾器添加其他列標題。您需要通過此過濾器添加列數據。 "
+"（僅適用於裝箱單、運輸標籤和交貨單）"
+
+msgid "You can add custom/predefined order meta using its key"
+msgstr "您可以使用其鍵添加自定義/預定義的訂單元"
+
+msgid "You can add more than 1 order meta in"
+msgstr "您可以添加超過 1 個訂單元"
+
+msgid ""
+"You can control the visibility of the seal according to order status via "
+"filters. See filter documentation %s here. %s"
+msgstr "您可以通過過濾器根據訂單狀態控制封條的可見性。請參閱此處的過濾器文檔 %s。 %s"
+
+msgid "You can edit an existing item by using its key."
+msgstr "您可以使用其鍵來編輯現有項目。"
+
+msgid "You can't undo this action. Are you sure?"
+msgstr "您無法撤消此操作。你確定嗎？"
+
+msgid "You have to select order(s) first!"
+msgstr "您必須先選擇訂單！"
+
+msgid "You`ve just created"
+msgstr "您剛剛創建了"
+
+msgid "Your next %s number would be"
+msgstr "您的下一個 %s 號碼將會是"
+
+msgid "[prefix][invoice_no]"
+msgstr "[前綴][发票号码]"
+
+msgid "[prefix][order_no]"
+msgstr "[前綴][订单号]"
+
+msgid "allow_url_fopen disabled"
+msgstr "allow_url_fopen 已禁用"
+
+msgid "commercial documents using"
+msgstr "商業文件使用"
+
+msgid "from"
+msgstr "從"
+
+msgid "https://www.webtoffee.com/"
+msgstr "https://www.webtoffee.com/"
+
+msgid ""
+"https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/"
+msgstr ""
+"https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/"
+
+msgid "incl. tax"
+msgstr "(含稅)"
+
+msgid "is required"
+msgstr "必須的"
+
+msgid "mPDF add-on"
+msgstr "為了獲得更好的Unicode / RTL支持，請使用我們的免費%s mPDF附件%s和該插件。"
+
+msgid "n/a"
+msgstr "n/a"
+
+msgid ""
+"number has not been generated yet. Do you want to manually generate one ?"
+msgstr "編號尚未生成。你想手動生成一個嗎？"
+
+msgid "orders listing page"
+msgstr "我的帳戶 - 訂單列表頁面"
+
+msgctxt "placeholder"
+msgid "Enter "
+msgstr "輸入 "
+
+msgid "search filter"
+msgstr "搜尋過濾器"
+
+msgid "the %s number would be"
+msgstr "%s 數字將會是"
+
+msgid "upgrade to premium version"
+msgstr "升級到高級版"
+
+msgid "via %s"
+msgstr "透過 %s"
+
+msgid ""
+"‘Generate invoice for free orders’ is disabled in Invoice settings > "
+"Advanced. You are attempting to generate invoice for this free order. "
+"Proceed?"
+msgstr "在“發票設置”>“高級”中禁用“為免費訂單生成發票”。您正在嘗試為此免費訂單生成發票。繼續？"

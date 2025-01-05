@@ -1,0 +1,3574 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce PDF Invoices, Packing Slips, Delivery Notes "
+"and Shipping Labels\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-29 06:33+0000\n"
+"PO-Revision-Date: 2024-11-29 06:56+0000\n"
+"Last-Translator: \n"
+"Language-Team: Turkish (Turkey)\n"
+"Language: tr-TR\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: en_GB\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: print-invoices-packing-slip-labels-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Loco-Parser: loco_parse_mo"
+
+msgid ""
+"%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels "
+"(Basic) %s is enabled but not effective. It requires %s WooCommerce %s in "
+"order to work."
+msgstr ""
+"%s WooCommerce PDF Faturaları, Sevkiyat Fişleri, Sevk İrsaliyeleri ve "
+"Gönderi Etiketleri (Temel) %s etkin ancak etkin değil. Çalışması için %s "
+"WooCommerce %s gerekir."
+
+msgid "(But customer notes can be added)"
+msgstr "(Ancak müşteri notları eklenebilir)"
+
+msgid "(Visual and code editor)"
+msgstr "(Görsel ve kod editörü)"
+
+msgid "(Visual editor)"
+msgstr "(Görsel editör)"
+
+msgid "20+ predefined gift card templates"
+msgstr "Yeni şablon oluştur"
+
+msgid "30 Day Money Back Guarantee"
+msgstr "30-gün para iade garantisi"
+
+msgid "5.6 or higher recommended"
+msgstr "5.6 veya üstü önerilir"
+
+msgid "Accepts payment using multiple Alternative Payment Methods (APM)"
+msgstr ""
+"Birden fazla Alternatif Ödeme Yöntemi (APM) kullanılarak ödeme kabul edilir"
+
+msgid "Access denied !!!."
+msgstr "Erişim reddedildi !!!."
+
+msgid "Action"
+msgstr "Eylem"
+
+msgid "Activate"
+msgstr "Etkinleştir"
+
+msgid "Activates Stripe checkout"
+msgstr "Stripe ödemesini etkinleştirir"
+
+msgid "Active"
+msgstr "Aktif"
+
+msgid "Add"
+msgstr "Ekle"
+
+msgid "Add & update data while importing"
+msgstr "İçe aktarma sırasında veri ekleme ve güncelleme"
+
+msgid "Add 20+ payment methods"
+msgstr "Ödeme Yöntemi"
+
+msgid "Add a custom suffix for order numbers"
+msgstr "Sipariş numaraları için özel bir sonek ekleyin"
+
+msgid "Add a payment link to invoice"
+msgstr "Faturaya ödeme bağlantısı ekleyin"
+
+msgid "Add a print delivery note button to the order email"
+msgstr "Sipariş e-postasına teslimat notunu yazdır düğmesi ekleyin"
+
+msgid "Add a print label button to the order email"
+msgstr "Sipariş e-postasına etiketi yazdır düğmesi ekleyin"
+
+msgid "Add a print packing slip button to My account page"
+msgstr "Müşteriler için fatura yazdır düğmesini göster"
+
+msgid "Add additional column in product table"
+msgstr "Ürün tablosuna ek sütun ekle"
+
+msgid "Add additional column in product table of package documents"
+msgstr "Paket belgelerinin ürün tablosuna ek sütun ekleyin"
+
+msgid "Add additional data to invoice layout"
+msgstr "Ek bilgi ekle"
+
+msgid "Add additional info"
+msgstr "Ek bilgi ekle"
+
+msgid "Add additional information"
+msgstr "Ek bilgi ekleyin"
+
+msgid "Add additional order & product meta fields"
+msgstr "Ürün tablosuna ek sütun ekle"
+
+msgid "Add additional product & order data fields"
+msgstr "Ürün tablosuna ek sütun ekle"
+
+msgid "Add additional product attributes"
+msgstr "Ürün varyasyonu ekle"
+
+msgid "Add and update data while importing"
+msgstr "İçe aktarma sırasında veri ekleme ve güncelleme"
+
+msgid "Add company logo & return policy to label"
+msgstr "Etikete şirket logosunu ve iade politikasını ekleyin"
+
+msgid "Add custom data to documents"
+msgstr "Paket belgelerine ürün varyasyonu ekleyin"
+
+msgid "Add custom data to invoices"
+msgstr "Fatura için özel logo"
+
+msgid "Add custom fields to shipping label layout"
+msgstr "Nakliye etiketine altbilgi ekle"
+
+msgid "Add custom footer"
+msgstr "Müşteri notu ekle"
+
+msgid "Add custom footers to packing slips"
+msgstr "Ambalaj listesine müşteri notu ekleyin"
+
+msgid "Add custom templates for gift cards"
+msgstr "Fatura için özel logo"
+
+msgid "Add customer note"
+msgstr "Müşteri notu ekle"
+
+msgid "Add date to credit note number"
+msgstr "Kredi notu numarasına tarih ekleyin"
+
+msgid "Add date to invoice number"
+msgstr "Fatura numarasına tarih ekleyin"
+
+msgid "Add date to proforma invoice number"
+msgstr "Proforma fatura numarasına tarih ekleyin"
+
+msgid "Add extra product & order data fields"
+msgstr "Ekstra ürün ve sipariş veri alanları ekleyin"
+
+msgid "Add extra text in received seal"
+msgstr "Alınan mühüre fazladan metin ekleyin"
+
+msgid "Add extra text in received seal."
+msgstr "Alınan mühüre fazladan metin ekleyin."
+
+msgid "Add footer"
+msgstr "Altbilgi ekle"
+
+msgid "Add multiple shipping labels in one page"
+msgstr "Nakliye etiketine altbilgi ekle"
+
+msgid "Add multiple shipping labels on one page"
+msgstr "Nakliye etiketine altbilgi ekle"
+
+msgid "Add new"
+msgstr "Yeni ekle"
+
+msgid "Add notes like fragile, keep dry, etc."
+msgstr "Kırılabilir, kuru tutun vb. gibi notlar ekleyin."
+
+msgid "Add order & product meta fields"
+msgstr "Mevcut Sipariş Meta Alanını Ekleyin"
+
+msgid "Add order meta fields"
+msgstr "Mevcut Sipariş Meta Alanını Ekleyin"
+
+msgid "Add order meta fields "
+msgstr "Mevcut Sipariş Meta Alanını Ekleyin"
+
+msgid "Add order meta fields to shipping labels"
+msgstr "Nakliye etiketine altbilgi ekle"
+
+msgid "Add print document button to selected order emails"
+msgstr "Seçilen sipariş e-postalarına belgeyi yazdır düğmesi ekleyin"
+
+msgid "Add product & order meta fields"
+msgstr "Mevcut Sipariş Meta Alanını Ekleyin"
+
+msgid "Add product attributes"
+msgstr "Ürün varyasyonu ekle"
+
+msgid "Add product images to packing slips"
+msgstr "Paket listesine altbilgi ekle"
+
+msgid "Add product meta fields"
+msgstr "Mevcut Sipariş Meta Alanını Ekleyin"
+
+msgid "Add product meta fields & attributes"
+msgstr "Ödeme, sipariş ve ürün meta alanlarını (SSN, KDV vb.) Destekler."
+
+msgid "Add product variation"
+msgstr "Ürün varyasyonu ekle"
+
+msgid "Add product variation in package documents"
+msgstr "Paket belgelerine ürün varyasyonu ekleyin"
+
+msgid ""
+"Add product variation in product (Works with Packing List, Shipping Label "
+"and Delivery note only)"
+msgstr ""
+"Ürüne ürün varyasyonu ekleyin (Yalnızca Paket Listesi, Sevkiyat Etiketi ve "
+"Sevk irsaliyesi ile çalışır)"
+
+msgid "Add product variation. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Ürün varyasyonu ekleyin. (Yalnızca Fatura ve İrsaliye etiketi ile çalışır)"
+
+msgid "Add quote button to the product & shop pages"
+msgstr "Ürün ve mağaza sayfalarına teklif butonu ekleyin"
+
+msgid "Add shop details"
+msgstr "Mağaza ayrıntıları ekle"
+
+msgid "Add usage restrictions for gift cards"
+msgstr "Hediye kartları için kullanım kısıtlamaları ekleyin"
+
+msgid "Add ‘Pay Later’ option at checkout"
+msgstr "Ödeme sırasında 'Sonra Öde' seçeneğini ekleyin"
+
+msgid "Add/Edit Order Meta Field"
+msgstr "Sipariş Meta Alanı Ekle/Düzenle"
+
+msgid "Additional feed intervals (30 minutes, 6 hours, 12 hours)"
+msgstr "Ek besleme aralıkları (30 dakika, 6 saat, 12 saat)"
+
+msgid "Address Label Add-on"
+msgstr "Adres Satırı"
+
+msgid "Address details"
+msgstr "Adres detayları"
+
+msgid "Address font size"
+msgstr "Adres satırı 1"
+
+msgid "Address label"
+msgstr "Adres Satırı"
+
+msgid "Address labels"
+msgstr ""
+"Ek belgeler oluşturun ve yazdırın (Adres Etiketleri, Çekme Listeleri, "
+"Proforma Faturalar ve Alacak Dekontları)."
+
+msgid "Address line 1"
+msgstr "Adres satırı 1"
+
+msgid "Address line 2"
+msgstr "Adres satırı 2"
+
+msgid ""
+"Adds Express PayPal Checkout Option on the product page and Mini-cart for "
+"faster checkout"
+msgstr ""
+"Daha hızlı ödeme için ürün sayfasına Ekspres PayPal Ödeme Seçeneği ve Mini "
+"Sepet eklenir"
+
+msgid "Adds Footer to the delivery note"
+msgstr "Teslimat notuna altbilgi ekle"
+
+msgid "Adds Footer to the packing slip"
+msgstr "Paket listesine altbilgi ekle"
+
+msgid "Adds PayPal Smart Button Checkout option"
+msgstr "PayPal Akıllı Düğme Ödeme seçeneğini ekler"
+
+msgid "Adds customer note in the dispatch label"
+msgstr "Sevk etiketine müşteri notu ekle"
+
+msgid "Adds customer note to the delivery note"
+msgstr "Teslimat notuna müşteri notu ekleyin"
+
+msgid "Adds customer note to the packing slip"
+msgstr "Ambalaj listesine müşteri notu ekleyin"
+
+msgid "Adds footer in dispatch label"
+msgstr "Sevk etiketine altbilgi ekle"
+
+msgid "Adds footer to the  Shipping label"
+msgstr "Nakliye etiketine altbilgi ekle"
+
+msgid "Adds product image to the line items in the product table"
+msgstr "Ürün tablosuna ürün resmi ekle"
+
+msgid ""
+"Admins and customers both can leverage this feature wherever applicable. "
+"Disabling will remove all the provisions. Yet, the invoices are customizable."
+msgstr ""
+"Yöneticiler ve müşteriler, uygun olan her yerde bu özellikten yararlanabilir."
+" Devre dışı bırakmak tüm hükümleri kaldıracaktır. Ancak faturalar "
+"özelleştirilebilir."
+
+msgid "Advanced BOGO Coupons"
+msgstr "Gelişmiş seçenekler"
+
+msgid "Advanced filters and customizations for import & export"
+msgstr "Kod düzenleyici ile birlikte gelişmiş özelleştirme seçenekleri"
+
+msgid "Advanced filters and customizations for import and export"
+msgstr "Kod düzenleyici ile birlikte gelişmiş özelleştirme seçenekleri"
+
+msgid "Advanced options"
+msgstr "Gelişmiş seçenekler"
+
+msgid "Advanced visual and code editor"
+msgstr "Gelişmiş görsel ve kod düzenleyici"
+
+msgid "Align"
+msgstr "Hizalama"
+
+msgid "All document types"
+msgstr "Tüm belge türleri"
+
+msgid "All fields are mandatory"
+msgstr "Tüm alanlar zorunlu"
+
+msgid "All unsaved changes will be lost upon switching to a new layout."
+msgstr ""
+"Yeni bir düzene geçildiğinde kaydedilmemiş tüm değişiklikler kaybolacak."
+
+msgid "All users"
+msgstr "Tüm kullanıcılar"
+
+msgid "Allow coupon combinations"
+msgstr "Kupon kombinasyonlarına izin ver"
+
+msgid "Allow customers to print invoices"
+msgstr "Faturaya müşteri notu ekle"
+
+msgid "Allow remote stylesheets and images"
+msgstr "Uzak stil sayfalarına ve resimlere izin ver"
+
+msgid "Allows customers to print the invoice from the specified pages."
+msgstr ""
+"Müşterilerin faturayı belirtilen sayfalardan yazdırmasına olanak tanır."
+
+msgid "Allows guest checkout"
+msgstr "Misafirin ödeme yapmasına izin verir"
+
+msgid "Already tried the free %s WebToffee mPDF addon %s."
+msgstr "Ücretsiz %s WebToffee mPDF eklentisini %s zaten denedim."
+
+msgid "Alter additional item meta"
+msgstr "Ek öğe metasını değiştir"
+
+msgid "Alter barcode information"
+msgstr "Barkod bilgilerini değiştir"
+
+msgid "Alter billing address"
+msgstr "Fatura adresini değiştir"
+
+msgid "Alter dispatch date"
+msgstr "Gönderim tarihini değiştir"
+
+msgid "Alter fee"
+msgstr "Ücreti değiştir"
+
+msgid "Alter formated item price. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Biçimlendirilmiş öğe fiyatını değiştirin. (Yalnızca Fatura ve İrsaliye "
+"etiketi ile çalışır)"
+
+msgid "Alter formated item total. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Biçimlendirilmiş öğe toplamını değiştirin. (Yalnızca Fatura ve İrsaliye "
+"etiketi ile çalışır)"
+
+msgid "Alter formated subtotal"
+msgstr "Biçimlendirilmiş ara toplamı değiştir"
+
+msgid "Alter invoice date"
+msgstr "Fatura tarihini değiştir"
+
+msgid "Alter item price"
+msgstr "Ürün fiyatını değiştir"
+
+msgid "Alter item price format"
+msgstr "Öğe fiyat biçimini değiştirin"
+
+msgid "Alter item price. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Ürün fiyatını değiştirin. (Yalnızca Fatura ve İrsaliye etiketi ile çalışır)"
+
+msgid "Alter item quantity"
+msgstr "Ürün miktarını değiştir"
+
+msgid "Alter item quantity in package documents"
+msgstr "Paket belgelerindeki kalem miktarını değiştir"
+
+msgid ""
+"Alter item quantity in product table (Works with Packing List, Shipping "
+"Label and Delivery note only)"
+msgstr ""
+"Ürün tablosundaki öğe miktarını değiştirin (Yalnızca Paket Listesi, Sevkiyat "
+"Etiketi ve Sevk irsaliyesi ile çalışır)"
+
+msgid "Alter item quantity. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Öğe miktarını değiştirin. (Yalnızca Fatura ve İrsaliye etiketi ile çalışır)"
+
+msgid "Alter item total"
+msgstr "Öğe toplamını değiştir"
+
+msgid "Alter item total format"
+msgstr "Öğe toplam biçimini değiştir"
+
+msgid "Alter item total in package documents"
+msgstr "Paket belgelerindeki öğe toplamını değiştir"
+
+msgid ""
+"Alter item total in product table (Works with Packing List, Shipping Label "
+"and Delivery note only)"
+msgstr ""
+"Ürün tablosundaki öğe toplamını değiştirin (Yalnızca Paket Listesi, Sevkiyat "
+"Etiketi ve Sevk irsaliyesi ile çalışır)"
+
+msgid "Alter item total. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Öğe toplamını değiştirin. (Yalnızca Fatura ve İrsaliye etiketi ile çalışır)"
+
+msgid "Alter order date"
+msgstr "Sipariş tarihini değiştir"
+
+msgid "Alter product name"
+msgstr "Ürün adını değiştir"
+
+msgid ""
+"Alter product name in product (Works with Packing List, Shipping Label and "
+"Delivery note only)"
+msgstr ""
+"Üründeki ürün adını değiştirin (Yalnızca Paket Listesi, Sevkiyat Etiketi ve "
+"Sevk irsaliyesi ile çalışır)"
+
+msgid "Alter product name. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Ürün adını değiştirin. (Yalnızca Fatura ve İrsaliye etiketi ile çalışır)"
+
+msgid "Alter product table column"
+msgstr "Ürün tablosu sütununu değiştir"
+
+msgid "Alter product table column in package documents"
+msgstr "Paket belgelerinde ürün tablosu sütununu değiştir"
+
+msgid ""
+"Alter product table column. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Ürün tablosu sütununu değiştirin. (Yalnızca Fatura ve İrsaliye etiketi ile "
+"çalışır)"
+
+msgid ""
+"Alter product table column. (Works with Packing List, Shipping Label and "
+"Delivery note only)"
+msgstr ""
+"Ürün tablosu sütununu değiştirin. (Yalnızca Paket Listesi, Sevkiyat Etiketi "
+"ve Sevk irsaliyesi ile çalışır)"
+
+msgid "Alter product table head.(Add, remove, change order)"
+msgstr "Ürün tablosu başlığını değiştirin.(Ekle, kaldır, sırayı değiştir)"
+
+msgid "Alter product table head.(Add,remove, change the order)"
+msgstr "Ürün tablosu başlığını değiştirin.(Ekle,kaldır,sıralamayı değiştir)"
+
+msgid "Alter shipping address"
+msgstr "Gönderim adresini değiştir"
+
+msgid "Alter shipping from address"
+msgstr "Adresten gönderimi değiştir"
+
+msgid "Alter shipping method"
+msgstr "Gönderim yöntemini değiştir"
+
+msgid "Alter subtotal"
+msgstr "Ara toplamı değiştir"
+
+msgid "Alter subtotal format"
+msgstr "Ara toplam biçimini değiştir"
+
+msgid "Alter template HTML before printing"
+msgstr "Yazdırmadan önce şablon HTML'sini değiştirin"
+
+msgid "Alter template HTML before printing."
+msgstr "Yazdırmadan önce şablon HTML'sini değiştirin."
+
+msgid "Alter the footer data"
+msgstr "Altbilgi verilerini değiştirin"
+
+msgid "Alter the footer data."
+msgstr "Altbilgi verilerini değiştirin."
+
+msgid "Alter the product name in package documents"
+msgstr "Paket belgelerinde ürün adını değiştirin"
+
+msgid "Alter the settings array"
+msgstr "Ayarlar dizisini değiştirin"
+
+msgid "Alter the variation data."
+msgstr "Varyasyon verilerini değiştirin."
+
+msgid "Alter total fee"
+msgstr "Toplam ücreti değiştir"
+
+msgid "Alter total price"
+msgstr "Toplam fiyatı değiştir"
+
+msgid "Alter total price in words"
+msgstr "Toplam fiyatı kelimelerle değiştirin"
+
+msgid "Angle"
+msgstr "Açı"
+
+msgid ""
+"Assign QR code to all of invoices generated for the orders in your store"
+msgstr "Mağazanızdaki siparişler için oluşturulan tüm faturalara QR kod atayın"
+
+msgid "Assign QR codes to all generated invoices"
+msgstr "Oluşturulan tüm fatura numaralarını sil"
+
+msgid "Assign different types of info in your QR code, including:"
+msgstr "QR kodunuza aşağıdakiler dahil farklı bilgi türleri atayın:"
+
+msgid "Assits in GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA, and CCPA"
+msgstr "GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA ve CCPA'daki yardımlar"
+
+msgid "Attach document to order email"
+msgstr "Fatura PDF'sini e-postaya ekle"
+
+msgid "Attach documents to selected order status emails"
+msgstr "Seçilen sipariş durumları için faturalar oluşturur."
+
+msgid "Attach invoice PDF to admin email"
+msgstr "Fatura PDF'sini e-postaya ekle"
+
+msgid "Attach invoice PDF to order emails"
+msgstr "Fatura PDF'sini e-postaya ekle"
+
+msgid "Attach invoice pdf in WooCommerce Email"
+msgstr "WooCommerce E-postasına fatura pdf'i ekleyin"
+
+msgid "Attach invoice pdf in customer email"
+msgstr "Fatura PDF'sini e-postaya ekle"
+
+msgid "Attach proforma invoice PDF to order emails"
+msgstr "Fatura PDF'sini e-postaya ekle"
+
+msgid "Attach sales terms"
+msgstr "Satış şartlarını ekleyin"
+
+msgid "Attach special notes with proforma invoices"
+msgstr "Proforma faturalara özel notlar ekleyin"
+
+msgid "Attach transport & sales terms"
+msgstr "Taşıma ve satış şartlarını ekleyin"
+
+msgid "Attach transport terms"
+msgstr "Taşıma şartlarını ekleyin"
+
+msgid "Auto reset sequence per month/year etc"
+msgstr "Ay/yıl vb. başına otomatik sıfırlama sırası"
+
+msgid "Auto-generate invoices, packing slips, and credit notes"
+msgstr ""
+"Faturaları, sevk irsaliyelerini ve kredi notlarını otomatik olarak oluşturun"
+
+msgid "Automate invoice creation"
+msgstr "Fatura tarihini değiştir"
+
+msgid "Automatic cleanup"
+msgstr "Otomatik temizleme"
+
+msgid "Automatic email alerts for admin & users"
+msgstr "Yönetici ve kullanıcılar için otomatik e-posta uyarıları"
+
+msgid "Automatically add products"
+msgstr "Ürünleri otomatik olarak ekle"
+
+msgid "Automatically attach packing slip with order email"
+msgstr "PDF Faturasını sipariş e-postasıyla otomatik olarak ekleyin"
+
+msgid "Automatically block cookies/script"
+msgstr "Çerezleri/komut dosyasını otomatik olarak engelle"
+
+msgid "Automatically create invoice based on order status"
+msgstr "Seçilen sipariş durumları için faturalar oluşturur."
+
+msgid "Automatically creates invoices for selected order statuses."
+msgstr "Seçilen sipariş durumları için faturalar oluşturur."
+
+msgid "Automatically email picklists based on order status"
+msgstr ""
+"Sipariş durumuna göre seçim listelerini otomatik olarak e-postayla gönderin"
+
+msgid ""
+"Automatically generate professional WooCommerce order-related documents for "
+"all your orders"
+msgstr ""
+"Tüm siparişleriniz için otomatik olarak profesyonel WooCommerce "
+"siparişleriyle ilgili belgeler oluşturun"
+
+msgid "Automatically generate suggestions based on order history"
+msgstr "Seçilen sipariş durumları için faturalar oluşturur."
+
+msgid "Automatically send quotes to users"
+msgstr "Teklifleri kullanıcılara otomatik olarak gönder"
+
+msgid "Back"
+msgstr "Geri"
+
+msgid "Barcode"
+msgstr "Barkod"
+
+msgid "Based on order number"
+msgstr "Lütfen isim giriniz"
+
+msgid "Basic - 0"
+msgstr "Temel - 0"
+
+msgid "Basic - 1"
+msgstr "Temel - 1"
+
+msgid ""
+"Before using this tool, please make sure you followed the steps described in "
+"this article %1$s how to reset/delete existing invoice numbers%2$s."
+msgstr ""
+"Bu aracı kullanmadan önce, lütfen %1$s mevcut fatura numaralarının nasıl "
+"sıfırlanacağı/silineceği%2$s makalesinde açıklanan adımları uyguladığınızdan "
+"emin olun."
+
+msgid "Better with transparent PNG images"
+msgstr "Şeffaf PNG görüntüleri ile daha iyi"
+
+msgid "Bill to"
+msgstr "Fatura edilecek"
+
+msgid "Billing Address"
+msgstr "Fatura Adresi"
+
+msgid "Billing Address:"
+msgstr "Fatura Adresi:"
+
+msgid "Billing address"
+msgstr "Fatura Adresi"
+
+msgid "Bold"
+msgstr "Kalın"
+
+msgid "Bolder"
+msgstr "Daha Kalın"
+
+msgid "Border radius"
+msgstr "Bordür ovalliği"
+
+msgid "Border width"
+msgstr "Kenarlık Genişliği"
+
+msgid "Box name"
+msgstr "Kutu adı"
+
+msgid "Built-in label templates"
+msgstr "Adsız şablon"
+
+msgid "Built-in templates to personalize packing slip"
+msgstr "Sevk irsaliyesini kişiselleştirmek için yerleşik şablonlar"
+
+msgid "Bulk generate coupons"
+msgstr "Toplu kupon oluşturma"
+
+msgid "Bulk print address labels"
+msgstr "Adres Satırı"
+
+msgid "Bulk print picklists from the admin order page"
+msgstr "Siparişler sayfasından tüm belgeleri toplu olarak yazdırın"
+
+msgid "Bulk print shipping labels"
+msgstr "Kargo etiketi yazdır"
+
+msgid "Buyer name"
+msgstr "Alıcı adı"
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "Cannot close this banner"
+msgstr "Bu banner kapatılamıyor"
+
+msgid "Capture the authorized payment later"
+msgstr "Yetkili ödemeyi daha sonra yakalayın"
+
+msgid "Cart Discount"
+msgstr "Sepet İndirimi"
+
+msgid "Cart abandonment coupons"
+msgstr "Alışveriş sepetini terk etme kuponları"
+
+msgid "Cart discount"
+msgstr "Sepet İndirimi"
+
+msgid "Cash on delivery"
+msgstr "Teslimatta nakit"
+
+msgid "Category wise template listing"
+msgstr "Yeni şablon oluştur"
+
+msgid "Caution: Settings here are only for advanced users."
+msgstr "Dikkat: Buradaki ayarlar yalnızca ileri düzey kullanıcılar içindir."
+
+msgid "Center"
+msgstr "Merkez"
+
+msgid "Change address label layout"
+msgstr "Görünümü Değiştir"
+
+msgid "Change color, text, background, border & more"
+msgstr "Rengi, metni, arka planı, kenarlığı ve daha fazlasını değiştirin"
+
+msgid "Change document number format & length"
+msgstr "Fatura numarası formatı"
+
+msgid "Change layout"
+msgstr "Görünümü Değiştir"
+
+msgid "Checkout Premium"
+msgstr "Premiuma yükselt"
+
+msgid "Choose a country&hellip;"
+msgstr "Bir ülke seçin&hellip;"
+
+msgid "Choose a layout."
+msgstr "Bir görünüm seçin."
+
+msgid "Choose date"
+msgstr "Tarih seçin"
+
+msgid "Choose email classes"
+msgstr "E-posta sınıflarını seçin"
+
+msgid "Choose emails for invoice attachment"
+msgstr "Fatura eki için e-postaları seçin"
+
+msgid "Choose order status"
+msgstr "Sipariş Durumu Seç"
+
+msgid ""
+"Choose the order emails to which you'd like to attach invoices for your "
+"customers"
+msgstr ""
+"Müşterileriniz için fatura eklemek istediğiniz sipariş e-postalarını seçin"
+
+msgid "City"
+msgstr "Şehir"
+
+msgid "Classic"
+msgstr "Klasik"
+
+msgid "Click here to add Company logo"
+msgstr "Şirket logosu eklemek için buraya tıklayın"
+
+msgid "Click here to add Company name"
+msgstr "Şirket adı eklemek için buraya tıklayın"
+
+msgid "Click here to add From address"
+msgstr "Kimden adresini eklemek için buraya tıklayın"
+
+msgid "Click here to add Signature"
+msgstr "İmza eklemek için buraya tıklayın"
+
+msgid "Click to append with existing data"
+msgstr "Mevcut verilerle eklemek için tıklayın"
+
+msgid "Click to view predefined templates."
+msgstr "Önceden tanımlanmış şablonları görüntülemek için tıklayın."
+
+msgid "Close"
+msgstr "Kapat"
+
+msgid "Code"
+msgstr "Kod"
+
+msgid "Code Copied"
+msgstr "Kod Kopyalandı"
+
+msgid "Collect payments with a payment link on the invoice"
+msgstr "Faturadaki ödeme bağlantısını kullanarak ödemeleri alın"
+
+msgid "Color"
+msgstr "Renk"
+
+msgid "Combine with the existing templates"
+msgstr "Mevcut şablonlarla birleştirin"
+
+msgid "Company Logo"
+msgstr "Şirket Logosu"
+
+msgid "Company Logo / Name"
+msgstr "Şirket Logosu / Adı"
+
+msgid "Company Name"
+msgstr "Şirket Adı"
+
+msgid "Company Tax ID"
+msgstr "Şirket Adı"
+
+msgid "Company details"
+msgstr "Firma detayları"
+
+msgid "Company logo"
+msgstr "Şirket logosu"
+
+msgid "Company name"
+msgstr "Şirket Adı"
+
+msgid "Company name font size"
+msgstr "Şirket adı yazı tipi boyutu"
+
+msgid "Compatible with WPML"
+msgstr "WPML ile uyumlu"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slip & Credit Note (Premium)"
+msgstr ""
+"WooCommerce PDF Faturası, İrsaliyeler, Teslimat Notları ve Gönderi Etiketi "
+"ile uyumlu (Ücretsiz ve Pro sürümleri)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slip & Credit Note (Pro)"
+msgstr ""
+"WooCommerce PDF Faturası, İrsaliyeler, Teslimat Notları ve Gönderi Etiketi "
+"ile uyumlu (Ücretsiz ve Pro sürümleri)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slips, Delivery Notes, and "
+"Shipping Label (Free and Pro versions)"
+msgstr ""
+"WooCommerce PDF Faturası, İrsaliyeler, Teslimat Notları ve Gönderi Etiketi "
+"ile uyumlu (Ücretsiz ve Pro sürümleri)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoices, Packing Slips, Delivery Notes, and "
+"Shipping Labels (Free)"
+msgstr ""
+"WooCommerce PDF Faturası, İrsaliyeler, Teslimat Notları ve Gönderi Etiketi "
+"ile uyumlu (Ücretsiz ve Pro sürümleri)"
+
+msgid "Compatible with major 3rd-party plugins"
+msgstr "Başlıca eklentilerle doğrulanmış uyumluluk"
+
+msgid "Complete the invoice number format to suit your requirements"
+msgstr "İhtiyaçlarınıza uyacak şekilde fatura numarası biçimini doldurun"
+
+msgid "Configure the general settings required for the delivery note."
+msgstr "Fatura için gereken genel ayarları yapılandırın."
+
+msgid "Configure the general settings required for the dispatch label."
+msgstr "Fatura için gereken genel ayarları yapılandırın."
+
+msgid "Configure the general settings required for the invoice."
+msgstr "Fatura için gereken genel ayarları yapılandırın."
+
+msgid "Configure the general settings required for the packing slip."
+msgstr "Fatura için gereken genel ayarları yapılandırın."
+
+msgid "Configure the general settings required for the shipping label."
+msgstr "Fatura için gereken genel ayarları yapılandırın."
+
+msgid "Contact Number"
+msgstr "İletişim numarası"
+
+msgid "Contact Us"
+msgstr "Bize Ulaşın"
+
+msgid "Contact number"
+msgstr "İletişim numarası"
+
+msgid "Copied"
+msgstr "Kopyalandı"
+
+msgid "Copy"
+msgstr "Kopya"
+
+msgid "Copy Code"
+msgstr "Kodu Kopyala"
+
+msgid "Could you tell us a bit more?"
+msgstr "Bize biraz daha söyleyebilir misiniz?"
+
+msgid "Could you tell us more about that feature?"
+msgstr "Bize bu özellik hakkında daha fazla bilgi verebilir misiniz?"
+
+msgid "Country/State"
+msgstr "Ülke/Bölge"
+
+msgid "Coupon Used"
+msgstr "Kupon Kullanılmış"
+
+msgid "Coupon embeds"
+msgstr "Kupon Kullanılmış"
+
+msgid "Coupon info"
+msgstr "Kupon bilgisi"
+
+msgid "Coupons based on past purchases"
+msgstr "Geçmişteki satın alımlara dayalı kuponlar"
+
+msgid "Create QR code coupons"
+msgstr "QR kodu kuponları oluşturun"
+
+msgid "Create QR code that reads order or invoice number"
+msgstr "Sipariş numarasını fatura numarası olarak kullan"
+
+msgid "Create a cookie consent banner"
+msgstr "Çerez izni banner'ı oluşturun"
+
+msgid "Create a new template or edit an existing template."
+msgstr "Yeni bir şablon oluşturun veya mevcut bir şablonu düzenleyin."
+
+msgid "Create and offer sign-up discount coupons"
+msgstr "Kayıt indirim kuponları oluşturun ve sunun"
+
+msgid ""
+"Create and run successful promotional campaigns with the best tools for "
+"WooCommerce"
+msgstr ""
+"WooCommerce için en iyi araçlarla başarılı tanıtım kampanyaları oluşturun ve "
+"yürütün"
+
+msgid "Create attractive gift cards "
+msgstr "Çekici hediye kartları oluşturun "
+
+msgid "Create cookie policy"
+msgstr "Çerez politikası oluştur"
+
+msgid "Create delivery notes, shipping & dispatch labels"
+msgstr "Sevk etiketine müşteri notu ekle"
+
+msgid "Create new"
+msgstr "Yeni oluştur"
+
+msgid "Create new template"
+msgstr "Yeni şablon oluştur"
+
+msgid "Create or customize picklist templates"
+msgstr "Nakliye etiketi boyutu"
+
+msgid "Create proforma invoice automatically for selected order statuses"
+msgstr "Seçilen sipariş durumları için faturalar oluşturur."
+
+msgid "Create proforma invoices automatically"
+msgstr "Otomatik olarak fatura oluştur"
+
+msgid "Create simple & variable subscriptions"
+msgstr "Basit ve değişken abonelikler oluşturun"
+
+msgid "Create unlimited gift cards"
+msgstr "Sınırsız hediye kartları oluşturun"
+
+msgid "Create users on order import"
+msgstr "Lütfen isim giriniz"
+
+msgid "Create your unique invoice numbering system"
+msgstr "Benzersiz fatura numaralandırma sisteminizi oluşturun"
+
+msgid "Credit note"
+msgstr "Credit note"
+
+msgid "Creditnote number format"
+msgstr "Kredi notu numarası biçimi"
+
+msgid "Cross-platform compatibility"
+msgstr "Platformlar arası uyumluluk"
+
+msgid "Custom"
+msgstr "Özel"
+
+msgid "Custom (Pro version)"
+msgstr "Profesyonel sürüm"
+
+msgid "Custom PDF name prefix"
+msgstr "Özel PDF adı öneki"
+
+msgid "Custom details, as below:"
+msgstr "Aşağıdaki gibi özel ayrıntılar:"
+
+msgid "Custom footer"
+msgstr "Özel altbilgi"
+
+msgid "Custom invoice date"
+msgstr "Fatura tarihini değiştir"
+
+msgid "Custom logo for invoice"
+msgstr "Fatura için özel logo"
+
+msgid "Custom number"
+msgstr "Özel numara"
+
+msgid "Custom number series"
+msgstr "Özel sayı serisi"
+
+msgid "Custom sequence for free orders"
+msgstr "Ücretsiz siparişler için fatura oluşturmayı etkinleştirin."
+
+msgid "Customer Note"
+msgstr "Müşteri Notu"
+
+msgid "Customer Note:"
+msgstr "Müşteri Notu:"
+
+msgid "Customer note"
+msgstr "Müşteri notu"
+
+msgid "Customer note:"
+msgstr "Müşteri Notu"
+
+msgid "Customizable countdown sales banner"
+msgstr "Özelleştirilebilir geri sayım satış banner'ı"
+
+msgid "Customizable tax items, tax fields (SSN, VAT, etc.)"
+msgstr "Ödeme, sipariş ve ürün meta alanlarını (SSN, KDV vb.) Destekler."
+
+msgid "Customize"
+msgstr "Özelleştir"
+
+msgid "Customize Pay Later option display"
+msgstr "Daha Sonra Öde seçeneğinin görüntülenmesini özelleştirin"
+
+msgid "Customize and send emails to new users on import"
+msgstr ""
+"İçe aktarma sırasında e-postaları özelleştirin ve yeni kullanıcılara gönderin"
+
+msgid "Customize cookie banner"
+msgstr "Çerez bannerını özelleştirin"
+
+msgid "Customize document layout & properties"
+msgstr "Belge düzenini ve özelliklerini özelleştirme"
+
+msgid "Customize individual elements using block editors"
+msgstr "Blok düzenleyicileri kullanarak bireysel öğeleri özelleştirin"
+
+msgid "Customize invoice PDF name format"
+msgstr "Fatura numarası formatı"
+
+msgid "Customize label sizes"
+msgstr "Nakliye etiketi boyutu"
+
+msgid "Customize layout elements & properties"
+msgstr "Düzen öğelerini ve özelliklerini özelleştirme"
+
+msgid "Customize layout properties"
+msgstr "Düzen özelliklerini özelleştirme"
+
+msgid "Customize shipping label size"
+msgstr "Nakliye etiketi boyutu"
+
+msgid "Customize the display of the recommended products"
+msgstr "Önerilen ürünlerin görünümünü özelleştirin"
+
+msgid "Customize the title, button, and label texts"
+msgstr "Başlık, düğme ve etiket metinlerini özelleştirin"
+
+msgid "Customizer for WooCommerce PDF Invoices"
+msgstr "WooCommerce PDF Faturaları için Özelleştirici"
+
+msgid "Customizer for WooCommerce PDF Invoices Plugin"
+msgstr "WooCommerce PDF Faturalar Eklentisi için Özelleştirici"
+
+msgid "Customizer module is not active."
+msgstr "Özelleştirici modülü etkin değil."
+
+msgid "Dashed"
+msgstr "Kesik"
+
+msgid "Data Import & Export"
+msgstr "Verileri İçe ve Dışa Aktarma"
+
+msgid "Date format strings"
+msgstr "Tarih biçimi dizeleri"
+
+msgid "Date formats"
+msgstr "Tarih biçimleri"
+
+msgid "Date suffix in order numbers"
+msgstr "Lütfen isim giriniz"
+
+msgid "Date:"
+msgstr "Tarih:"
+
+msgid "Debug"
+msgstr "Hata ayıklama"
+
+msgid "Delete"
+msgstr "Sil"
+
+msgid "Delete all generated invoice numbers"
+msgstr "Oluşturulan tüm fatura numaralarını sil"
+
+msgid "Delete all the settings made by this plugin"
+msgstr "Bu eklenti tarafından yapılan tüm ayarları silin"
+
+msgid "Delivery note"
+msgstr "Teslimat notu"
+
+msgid "Department/Business unit/Sender name"
+msgstr "Bölüm / İş Birimi / Gönderen"
+
+msgid "Description"
+msgstr "Açıklama"
+
+msgid "Developed by"
+msgstr "Tarafından geliştirilmiş"
+
+msgid "Disable guest users from asking for quote"
+msgstr "Konuk kullanıcıların fiyat teklifi istemesini devre dışı bırakın"
+
+msgid "Dispatch Date:"
+msgstr "Gönderme tarihi:"
+
+msgid "Dispatch Label"
+msgstr "Sevk etiketi"
+
+msgid "Dispatch Label 1"
+msgstr "Sevk etiketi"
+
+msgid "Dispatch label"
+msgstr "Sevk etiketi"
+
+msgid "Display"
+msgstr "Görüntüle"
+
+msgid "Display currency code"
+msgstr "Para birimi kodunu görüntüle"
+
+msgid "Display free line items in the invoice"
+msgstr "Faturada ücretsiz satır öğelerini göster"
+
+msgid "Display free line items on invoice"
+msgstr "Faturada ücretsiz satır öğelerini göster"
+
+msgid "Display options for bundled products"
+msgstr "Ürün tablosunda fiyatı göster"
+
+msgid "Display recommended products on the product pages"
+msgstr "Ürün tablosunda fiyatı göster"
+
+msgid "Display state name"
+msgstr "Görüntüleme durumu adı"
+
+msgid "Display the total number of items on label"
+msgstr "Faturada ücretsiz satır öğelerini göster"
+
+msgid ""
+"Displays customer`s VAT number saved in the order details by third-party "
+"plugins in this document. Supported meta keys are"
+msgstr ""
+"Bu belgedeki üçüncü taraf eklentiler tarafından sipariş ayrıntılarında "
+"kaydedilen müşterinin KDV numarasını görüntüler. Desteklenen meta anahtarlar"
+
+msgid ""
+"Displays the currently chosen document template with provisions to modify."
+msgstr ""
+"Değiştirilecek hükümlerle birlikte seçili olan belge şablonunu görüntüler."
+
+msgid "Do not reset the templates"
+msgstr "Şablonları sıfırlamayın"
+
+msgid "Do not show again"
+msgstr "Tekrar gösterme"
+
+msgid "Document"
+msgstr "Belge"
+
+msgid "Document customizer"
+msgstr "Belgeler"
+
+msgid "Document details"
+msgstr "Belgeler"
+
+msgid "Document title"
+msgstr "Belgeler"
+
+msgid "Documentation"
+msgstr "Belgeler"
+
+msgid "Documents"
+msgstr "Dökümanlar"
+
+msgid "Dotted"
+msgstr "Noktalı"
+
+msgid "Download"
+msgstr "İndir"
+
+msgid "Download Invoice"
+msgstr "Faturayı İndir"
+
+msgid "Download Invoices"
+msgstr "Faturaları İndir"
+
+msgid "Download Packing slip"
+msgstr "Ambalaj Kağıdı"
+
+msgid "Download invoice"
+msgstr "Faturayı İndir"
+
+msgid "Drag-and-drop easy customization"
+msgstr "Sürükle ve bırak özelliğiyle kolay özelleştirme"
+
+msgid "E-commerce Promotions"
+msgstr "E-ticaret Promosyonları"
+
+msgid "Easy button and form customization"
+msgstr "Kolay düğme ve form özelleştirmesi"
+
+msgid "Easy invoice layout customization"
+msgstr "Kolay fatura düzeni özelleştirmesi"
+
+msgid "Edit"
+msgstr "Düzenle"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Email Field"
+msgstr "E-posta Alanı"
+
+msgid "Email customers on order status change"
+msgstr "Sipariş durumu değişikliğinde müşterilere e-posta gönderin"
+
+msgid "Email gift cards to customers"
+msgstr "Müşterilere hediye kartlarını e-postayla gönderin"
+
+msgid "Email:"
+msgstr "E-Posta:"
+
+msgid "Empty order"
+msgstr "Boş sipariş"
+
+msgid "Enable Invoice"
+msgstr "Faturayı etkinleştir"
+
+msgid "Enable RTL support"
+msgstr "RTL Desteği etkinleştir"
+
+msgid "Enable a common print button for"
+msgstr "için ortak bir yazdırma düğmesini etkinleştirin"
+
+msgid "Enable additional currency font support"
+msgstr "Ek para birimi yazı tipi desteğini etkinleştirin"
+
+msgid "Enable customers to Pay Later at checkout"
+msgstr "Müşterilerin ödeme sırasında Daha Sonra Ödeme yapmalarını sağlayın"
+
+msgid "Enable customers to print invoices & packing slips"
+msgstr "Ambalaj listesine müşteri notu ekleyin"
+
+msgid "Enable customers to print the documents from order emails"
+msgstr "Belgede müşterinin notunu görüntülemeyi etkinleştirin."
+
+msgid "Enable dedicated print buttons for"
+msgstr "için özel yazdırma düğmelerini etkinleştirin"
+
+msgid "Enable quotation request for selected products"
+msgstr "Ürün tablosunda fiyatı göster"
+
+msgid ""
+"Enable to apply the most recent settings to previous order invoices. This "
+"will match the previous invoices with the upcoming invoices.Changing the "
+"company address, name or any other settings in the future may overwrite "
+"previously created invoices with the most up-to-date information."
+msgstr ""
+"En son ayarların önceki sipariş faturalarına uygulanmasını etkinleştirin. Bu,"
+" önceki faturaları gelecek faturalarla eşleştirecektir. Gelecekte şirket "
+"adresinin, adının veya diğer ayarların değiştirilmesi, daha önce "
+"oluşturulmuş faturaların en güncel bilgilerin üzerine yazılmasına neden "
+"olabilir."
+
+msgid "Enable to attach invoice PDF to the new order email notification"
+msgstr "Fatura PDF'sini e-postaya ekle"
+
+msgid ""
+"Enable to create invoice for orders generated before plugin installation"
+msgstr ""
+"Eklentinin kurulumundan önce oluşturulan siparişler için fatura oluşturmayı "
+"etkinleştirin."
+
+msgid "Enable to create invoices for free orders"
+msgstr "Ücretsiz siparişler için fatura oluşturmayı etkinleştirin."
+
+msgid "Enable to create invoices for free orders."
+msgstr "Ücretsiz siparişler için fatura oluşturmayı etkinleştirin."
+
+msgid "Enable to have a preview of the document before the print is initiated"
+msgstr ""
+"Bir kullanıcı bir yazdırma başlattığında belgenin önizlemesini almak için "
+"etkinleştirin."
+
+msgid "Enable to print, download, and mail invoices."
+msgstr "Faturaları yazdırmayı, indirmeyi ve postayla göndermeyi etkinleştirin."
+
+msgid "Enable to show currency code instead of currency symbol"
+msgstr "Para birimi simgesi yerine para birimi kodunu göstermeyi etkinleştir"
+
+msgid "Enable to show state name in addresses"
+msgstr "Adreslerde durum adını göstermeyi etkinleştir"
+
+msgid ""
+"Enable to use additional font library to support the currency symbol in pdf"
+msgstr ""
+"PDF'deki para birimi sembolünü desteklemek için ek yazı tipi kitaplığının "
+"kullanılmasını etkinleştirin"
+
+msgid "End"
+msgstr "Son"
+
+msgid "Ensure security with base64 & URI printing"
+msgstr "Base64 ve URI yazdırmayla güvenliği sağlayın"
+
+msgid "Enter a name for your template"
+msgstr "Şablonunuz için bir ad girin"
+
+msgid "Error"
+msgstr "Hata"
+
+msgid "Error uploading the file"
+msgstr "Dosya yüklenirken hata oluştu"
+
+msgid "Error."
+msgstr "Hata."
+
+msgid "Error:"
+msgstr "Hata:"
+
+msgid "Error: Empty JSON file"
+msgstr "Hata: JSON dosyasını boşaltın"
+
+msgid "Error: Invalid JSON data"
+msgstr "Hata: Geçersiz JSON verileri"
+
+msgid "Example Code"
+msgstr "Örnek Kod"
+
+msgid "Exclude out-of-stock products"
+msgstr "Stokta olmayan ürünleri hariç tutun"
+
+msgid "Exclude specific products"
+msgstr "Belirli ürünleri hariç tut"
+
+msgid "Exclude virtual items from picklists"
+msgstr "Sanal öğeleri seçim listelerinden hariç tut"
+
+msgid "Exclude virtual products from picklists"
+msgstr "Sanal ürünleri seçim listelerinden hariç tut"
+
+msgid "Explicit/Implicit consent"
+msgstr "Açık/örtük izin"
+
+msgid "Export"
+msgstr "Dışa Aktar"
+
+msgid "Export and import custom fields and third-party plugin fields"
+msgstr "Özel alanları ve üçüncü taraf eklenti alanlarını dışa ve içe aktarın"
+
+msgid "Export product images in a separate zip file"
+msgstr "Ürün görsellerini ayrı bir zip dosyasına aktarın"
+
+msgid "Export settings (JSON)"
+msgstr "Ayarları dışa aktar (JSON)"
+
+msgid "Export to FTP/SFTP"
+msgstr "FTP/SFTP'ye aktar"
+
+msgid "Extensions"
+msgstr "Uzantılar"
+
+msgid "Extra Details"
+msgstr "Ekstra Ayrıntılar"
+
+msgid "Extra detail font size"
+msgstr "Ekstra ayrıntı yazı tipi boyutu"
+
+msgid "Fast and Superior Support"
+msgstr "Hızlı ve Üstün Destek"
+
+msgid "Features"
+msgstr "Özellikler"
+
+msgid "Fee"
+msgstr "Ücret"
+
+msgid "Field Name"
+msgstr "Alan Adı"
+
+msgid "File path"
+msgstr "Dosya Yolu"
+
+msgid "Filter by user role, email, date, etc"
+msgstr "Kullanıcı rolüne, e-postaya, tarihe vb. göre filtreleyin"
+
+msgid "Filter export by products, order status, email, date, etc"
+msgstr ""
+"Dışa aktarmayı ürünlere, sipariş durumuna, e-postaya, tarihe vb. göre "
+"filtreleyin"
+
+msgid "Filter products based on product type"
+msgstr "Ürünleri ürün türüne göre filtreleyin"
+
+msgid "Filters"
+msgstr "Filtreler"
+
+msgid "Finish setup"
+msgstr "Kurulumu tamamla"
+
+msgid "Fit multiple shipping labels on a single page"
+msgstr "Nakliye etiketine altbilgi ekle"
+
+msgid "Fixed and custom gift card amounts"
+msgstr "Sabit ve özel hediye kartı tutarları"
+
+msgid "Font size"
+msgstr "Yazı Boyutu"
+
+msgid "Footer"
+msgstr "Altbilgi"
+
+msgid "For better RTL integration in PDF documents, please use our"
+msgstr ""
+"Belgeler için RTL desteği. PDF belgelerinde daha iyi RTL entegrasyonu için "
+"lütfen %s mPDF eklentimizi %s kullanın."
+
+msgid "For better performances"
+msgstr "Daha iyi performanslar için"
+
+msgid "Format"
+msgstr "Biçim"
+
+msgid "Fragile"
+msgstr "Kırılabilir"
+
+msgid "Free"
+msgstr "Ücretsiz"
+
+msgid "Free version"
+msgstr "Ücretsiz Sürümü"
+
+msgid "Free vs Premium"
+msgstr "Ücretsiz ve Ücretli Kıyaslaması"
+
+msgid "Free!"
+msgstr "Ücretsiz!"
+
+msgid "Frequently Bought Together for WooCommerce"
+msgstr "WooCommerce için Sıralı Sipariş Numarası"
+
+msgid "From"
+msgstr "Kimden"
+
+msgid "From Address"
+msgstr "Adresinden"
+
+msgid "From Address:"
+msgstr "Adresinden:"
+
+msgid "From address"
+msgstr "Adresten"
+
+msgid "From left"
+msgstr "Soldan"
+
+msgid "From top"
+msgstr "Üstten"
+
+msgid "From:"
+msgstr "Gönderen:"
+
+msgid "Full Page"
+msgstr "Tam Sayfa"
+
+msgid "Full page"
+msgstr "Tam sayfa"
+
+msgid "GDPR Cookie Consent Plugin (CCPA Ready)"
+msgstr "GDPR Cookie Consent Plugin (CCPA Ready)"
+
+msgid "General"
+msgstr "Genel"
+
+msgid "General Settings"
+msgstr "Genel Ayarlar"
+
+msgid "Generate"
+msgstr "Oluştur"
+
+msgid "Generate Billing Address labels"
+msgstr "Fatura Adresi"
+
+msgid "Generate From Address labels"
+msgstr "Adres Satırı"
+
+msgid "Generate Return Address labels"
+msgstr "Adres Satırı"
+
+msgid "Generate Shipping Address labels"
+msgstr "Teslimat Adresi"
+
+msgid ""
+"Generate WooCommerce product feeds for Google Shopping, Facebook Shop, and "
+"Instagram Shop"
+msgstr ""
+"Google Alışveriş, Facebook Mağazası ve Instagram Mağazası için WooCommerce "
+"ürün yayınları oluşturun"
+
+msgid "Generate address labels"
+msgstr "Adres Satırı"
+
+msgid "Generate custom coupon URLs"
+msgstr "Özel kupon URL'leri oluşturun"
+
+msgid "Generate custom-sized shipping labels"
+msgstr "Nakliye etiketi boyutu"
+
+msgid "Generate dispatch labels and delivery notes"
+msgstr "Sevkiyat etiketleri ve teslimat notları oluşturun"
+
+msgid "Generate gift cards based on order status"
+msgstr "Seçilen sipariş durumları için faturalar oluşturur."
+
+msgid "Generate invoices and credits notes"
+msgstr "Ücretsiz siparişler için faturalar oluşturun"
+
+msgid "Generate invoices for existing orders"
+msgstr "Ücretsiz siparişler için faturalar oluşturun"
+
+msgid "Generate invoices for free orders"
+msgstr "Ücretsiz siparişler için faturalar oluşturun"
+
+msgid "Generate invoices for old orders"
+msgstr "Eski siparişler için fatura oluşturun"
+
+msgid "Generate packing slips and credit notes"
+msgstr "Sevk irsaliyeleri ve kredi notları oluşturun"
+
+msgid "Generate picklists"
+msgstr "Seçim listeleri oluştur"
+
+msgid "Generate shipping labels and delivery notes"
+msgstr "Teslimat Adresi"
+
+msgid "Generate shipping labels and dispatch labels"
+msgstr "Teslimat Adresi"
+
+msgid ""
+"Generate ‘Shipping Address’, ‘Billing Address’, ‘From Address’, and ‘Return "
+"Address’ labels"
+msgstr ""
+"'Gönderim Adresi', 'Fatura Adresi', 'Gönderen Adresi' ve 'İade Adresi' "
+"etiketleri oluşturun"
+
+msgid "Generating"
+msgstr "Genel"
+
+msgid "Get Add-on"
+msgstr "Eklentiyi al"
+
+msgid ""
+"Get Help with Ensuring Compliance to Major Privacy Laws for Your WordPress "
+"Website - GDPR, CCPA, LGPD, CNIL, and More."
+msgstr ""
+"WordPress Web Siteniz için Başlıca Gizlilik Yasalarına (GDPR, CCPA, LGPD, "
+"CNIL ve Daha Fazlası) Uyumluluğu Sağlama Konusunda Yardım Alın."
+
+msgid "Get Plugin"
+msgstr "Eklentiyi Alın"
+
+msgid "Get advanced features for your"
+msgstr "Cihazınız için gelişmiş özellikler edinin"
+
+msgid "Give away product coupons"
+msgstr "Ürün kuponlarını dağıtın"
+
+msgid "Go to plugins page"
+msgstr "Eklentiler sayfasına git"
+
+msgid "Go to support"
+msgstr "Desteğe git"
+
+msgid "Google local product inventory feed"
+msgstr "Google yerel ürün envanteri feed'i"
+
+msgid "Granular consent based on cookie categories"
+msgstr "Çerez kategorilerine dayalı ayrıntılı izin"
+
+msgid "Group products by 'Category'"
+msgstr "Ürünleri 'Kategori'ye göre gruplandırın"
+
+msgid "Group products by category"
+msgstr "Ürünleri kategoriye göre gruplandırın"
+
+msgid "Group products by ‘Category’"
+msgstr "Ürünleri ‘Kategori’ye göre gruplandırın"
+
+msgid "Group products by ‘Order’"
+msgstr "Ürünleri 'Sipariş'e göre gruplandırın"
+
+msgid "Group products in picklist by order/category"
+msgstr "Seçim listesindeki ürünleri siparişe/kategoriye göre gruplayın"
+
+msgid "HTML"
+msgstr "HTML"
+
+msgid "Header Color"
+msgstr "Başlık Rengi"
+
+msgid "Height"
+msgstr "Yükseklik"
+
+msgid "Hello there! Let’s begin with the basics"
+msgstr "Selamlar! Temel bilgilerle başlayalım"
+
+msgid "Help Guide"
+msgstr "Yardım rehberi"
+
+msgid "Help Links"
+msgstr "Yardım Bağlantıları"
+
+msgid "Help and Support"
+msgstr "Yardım ve Destek"
+
+msgid ""
+"Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s "
+"%5$s. %6$s Less than a minute of your time will motivate us to keep doing "
+"what we do. We would really appreciate if you could take a moment to drop a "
+"quick review that motivate us to keep going."
+msgstr ""
+"Merhaba, %sWebToffee%s olarak %s %s %s kullandığınız için teşekkür ederiz. "
+"%s Zamanınızın bir dakikadan az olması, yaptığımız şeyi yapmaya devam "
+"etmemiz için bizi motive edecektir. Bizi devam etmeye motive eden hızlı bir "
+"inceleme bırakmak için biraz zaman ayırabilirseniz gerçekten minnettar "
+"oluruz."
+
+msgid "Hide prices and ‘add to cart’ button"
+msgstr "Fiyatları gizle ve 'sepete ekle' düğmesi"
+
+msgid "Hide/Show received seal in invoice"
+msgstr "Faturada alınan mührü gizle/göster"
+
+msgid "Hide/Show received seal in invoice."
+msgstr "Faturada alınan mührü gizle/göster."
+
+msgid ""
+"I am unable to add customer VAT(or GSTIN or ABN or any other tax id etc)"
+msgstr ""
+"Müşteri KDV'sini (veya GSTIN veya ABN'yi veya başka bir vergi kimliğini vb.) "
+"ekleyemiyorum"
+
+msgid "I couldn't understand how to make it work"
+msgstr "Nasıl çalıştığını anlayamıyorum"
+
+msgid "I found a better plugin"
+msgstr "Daha iyi bir eklenti buldum"
+
+msgid "I rather wouldn't say"
+msgstr "Belirtmemeyi tercih ederim"
+
+msgid "INVOICE"
+msgstr "FATURA"
+
+msgid ""
+"If left blank, default to the logo from General settings. Ensure to select "
+"company logo from ‘Invoice > Customize > Company Logo’ to reflect on the "
+"invoice. Recommended size is 150×50px."
+msgstr ""
+"Boş bırakılırsa Genel ayarlardan logo varsayılan olarak alınır.Faturaya "
+"yansıtmak için ‘Fatura > Özelleştir > Firma Logosu’ kısmından firma logosunu "
+"seçtiğinizden emin olunuz. Önerilen boyut 150x50 pikseldir."
+
+msgid "If the order number is"
+msgstr "Sipariş numarası ise"
+
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr ""
+"Biraz zamanınız varsa lütfen neden devre dışı bıraktığınızı bize bildirin:"
+
+msgid "Image"
+msgstr "Resim"
+
+msgid "Image Signature"
+msgstr "İmza İmza"
+
+msgid "Image label"
+msgstr "Fiyat etiketi"
+
+msgid "Image text align"
+msgstr "Fiyat metni hizalaması"
+
+msgid "Import"
+msgstr "İçe Aktar"
+
+msgid "Import & export custom fields and values"
+msgstr "Özel alanları ve değerleri içe ve dışa aktarın"
+
+msgid "Import Export Suite for WooCommerce"
+msgstr "Import Export Suite for WooCommerce"
+
+msgid "Import and export coupons"
+msgstr "Kuponları içe ve dışa aktarma"
+
+msgid "Import from URL, Google Sheets, FTP/SFTP"
+msgstr "URL'den, Google E-Tablolardan, FTP/SFTP'den içe aktar"
+
+msgid "Import settings (JSON)"
+msgstr "Ayarları içe aktar (JSON)"
+
+msgid ""
+"Import/export Products, Orders, Subscriptions, Coupons, Customers, WordPress "
+"Users, Categories & Tags, Reviews"
+msgstr ""
+"Ürünleri İçe/Dışa Aktarma, Siparişler, Abonelikler, Kuponlar, Müşteriler, "
+"WordPress Kullanıcıları, Kategoriler ve Etiketler, İncelemeler"
+
+msgid "Imported successfully"
+msgstr "Başarıyla içe aktarıldı"
+
+msgid ""
+"Importing the file will delete all the settings and replace with data from "
+"chosen file"
+msgstr ""
+"Dosyanın içe aktarılması tüm ayarları silecek ve yerine seçilen dosyadaki "
+"verileri koyacaktır"
+
+msgid "In minutes. Eg: 1440 for 1 day. Minimum value is 1440"
+msgstr "Dakikalar içinde. Örn: 1 gün için 1440. Minimum değer 1440"
+
+msgid "Include free(priced as 0) line items in the invoice"
+msgstr "Faturada ücretsiz satır öğelerini göster"
+
+msgid "Include or exclude specific categories"
+msgstr "Belirli kategorileri dahil edin veya hariç tutun"
+
+msgid "Include product image"
+msgstr "Ürün resmini dahil et"
+
+msgid "Include product image in delivery note"
+msgstr "Ürün resmini dahil et"
+
+msgid "Include the package number & box names on the label"
+msgstr "Paket numarasını ve kutu adlarını etikete ekleyin"
+
+msgid "Incorrect file"
+msgstr "Yanlış dosya"
+
+msgid "Increment sequence in custom series"
+msgstr "Özel serilerdeki artış sırası"
+
+msgid ""
+"Input a custom prefix for ‘PDF name format’ that will appear at the "
+"beginning of the name. Defaulted to ‘Invoice_’."
+msgstr ""
+"Adın başında görünecek olan \"PDF ad biçimi\" için özel bir önek girin. "
+"Varsayılan olarak \"Fatura_\" olarak ayarlanmıştır."
+
+msgid "Instruction"
+msgstr "Talimat"
+
+msgid "Interval"
+msgstr "Aralık"
+
+msgid "Invalid access key and mail id"
+msgstr "Geçersiz erişim anahtarı ve posta kimliği"
+
+msgid "Invalid order id"
+msgstr "Geçersiz sipariş kimliği"
+
+msgid "Invoice"
+msgstr "Fatura"
+
+msgid "Invoice > Customize > Company Logo / Name"
+msgstr "Şirket Logosu / Adı"
+
+msgid "Invoice Date"
+msgstr "Fatura tarihi"
+
+msgid "Invoice Date:"
+msgstr "Fatura Tarihi:"
+
+msgid "Invoice Generation In Progress"
+msgstr "Fatura Oluşturma Devam Ediyor"
+
+msgid "Invoice No.:"
+msgstr "Fatura No:"
+
+msgid "Invoice No:"
+msgstr "Fatura No:"
+
+msgid "Invoice Number"
+msgstr "Fatura Numarası"
+
+msgid "Invoice date"
+msgstr "Fatura Tarihi"
+
+msgid "Invoice date:"
+msgstr "Fatura Tarihi:"
+
+msgid "Invoice details"
+msgstr "Sipariş Detayları"
+
+msgid ""
+"Invoice in PDF format will be attached with the order email for chosen order "
+"statuses."
+msgstr ""
+"PDF formatındaki fatura, seçilen sipariş durumları için sipariş e-postasına "
+"eklenecektir."
+
+msgid "Invoice no:"
+msgstr "Fatura No:"
+
+msgid "Invoice number"
+msgstr "Fatura numarası"
+
+msgid "Invoice number format"
+msgstr "Fatura numarası formatı"
+
+msgid "Invoice number length"
+msgstr "Fatura numarası uzunluğu"
+
+msgid ""
+"Invoice numbers are getting generated in the background. This process may "
+"take a little while, so please be patient."
+msgstr ""
+"Arka planda fatura numaraları üretiliyor. Bu işlem biraz zaman alabilir, "
+"lütfen sabırlı olun."
+
+msgid "Invoice setup successfully"
+msgstr "Fatura kurulumu başarıyla yapıldı"
+
+msgid "Invoice total"
+msgstr "Fatura toplamı"
+
+msgid "Invoice total tax"
+msgstr "Fatura toplam vergisi"
+
+msgid "Invoice/Packing"
+msgstr "Fatura / Paketleme"
+
+msgid "Invoiced date"
+msgstr "Fatura Tarihi"
+
+msgid "Invoices, Packing Slips and Credit Notes Module"
+msgstr ""
+"WooCommerce PDF Faturaları, Ambalaj Fişleri, Teslim Notları ve Nakliye "
+"Etiketleri"
+
+msgid "Invoices, Packing slips and Credit notes"
+msgstr "Faturalar, Sevk irsaliyeleri ve Kredi notları"
+
+msgid ""
+"It seems the products in this order were removed, we cannot proceed this "
+"actoin now."
+msgstr ""
+"Bu siparişteki ürünler kaldırılmış görünüyor, şu anda bu işleme devam "
+"edemiyoruz."
+
+msgid "It seems this order is not yours"
+msgstr "Görünüşe göre bu sipariş senin değil"
+
+msgid "It seems this order is not yours."
+msgstr "Görünüşe göre bu sipariş sana ait değil."
+
+msgid "Item with same meta key already exists"
+msgstr "Aynı meta anahtara sahip öğe zaten var"
+
+msgid "Jumbing LED Light Wall Ball"
+msgstr "Sıçrayan LED Işık Duvar Topu"
+
+msgid "Keep dry"
+msgstr "Kuru tut"
+
+msgid "Key in your company name."
+msgstr "Şirketinizin adını girin."
+
+msgid "Knock, Knock!"
+msgstr "Tak, tak!"
+
+msgid "Label"
+msgstr "Etiket"
+
+msgid "Language support issues"
+msgstr "Dil desteği sorunları"
+
+msgid "Last imported on:"
+msgstr "Son içe aktarma tarihi:"
+
+msgid "Last updated on:"
+msgstr "Son güncelleme tarihi:"
+
+msgid "Left"
+msgstr "Sol"
+
+msgid "Lighter"
+msgstr "İnce"
+
+msgid "Lightning-fast printing"
+msgstr "Işık hızında baskı"
+
+msgid "Limit spams with reCAPTCHA"
+msgstr "reCAPTCHA ile spam'leri sınırlayın"
+
+msgid "Line height"
+msgstr "Satır yüksekliği"
+
+msgid "Load from WooCommerce"
+msgstr "WooCommerce'den Yükle"
+
+msgid "Location based exclusion for banner"
+msgstr "Banner için konuma dayalı hariç tutma"
+
+msgid "Log all Stripe transactions"
+msgstr "Tüm Stripe işlemlerini günlüğe kaydet"
+
+msgid "Logged in users"
+msgstr "Kullanıcılar oturum"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "Logo Height"
+msgstr "Logo Yüksekliği"
+
+msgid "Logo Width"
+msgstr "Logo Genişliği"
+
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec vehicula "
+"purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
+"et interdum tellus fermentum at. Fusce pellentesque justo rhoncus"
+msgstr ""
+"Lorem ipsum dolor sit amet, conectetur adipiscing elit. Nunc nec araç purus. "
+"Mauris tempor nec ipsum ac tempus. Aenean araç porttitor tortor, et interdum "
+"tellus fermentum at. Fusce pellentesque justo rhoncus"
+
+msgid "Lots of customization options like button style, position, etc"
+msgstr "Düğme stili, konumu vb. gibi birçok özelleştirme seçeneği"
+
+msgid "Maintains action history and debug logs"
+msgstr "Eylem geçmişini ve hata ayıklama günlüklerini korur"
+
+msgid "Manage user credit balance"
+msgstr "Kullanıcı kredi bakiyesini yönet"
+
+msgid "Manual Signature"
+msgstr "Manuel İmza"
+
+msgid "Manually create a bought-together list"
+msgstr "Birlikte satın alınanlar listesini manuel olarak oluşturma"
+
+msgid "Map categories on product level"
+msgstr "Kategorileri ürün düzeyinde haritalayın"
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas."
+msgstr ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. Askıya alma potansiyeli. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+msgstr ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. Askıya alma potansiyeli. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+
+msgid "Mention the name of the plugin or meta key if any"
+msgstr "Varsa eklentinin veya meta anahtarın adını belirtin"
+
+msgid "Meta Key"
+msgstr "Anahtar Kelimeler"
+
+msgid ""
+"Missing RTL/Unicode language(e.g Chinese, Arabic etc) support for PDF "
+"document."
+msgstr ""
+"PDF belgesi için eksik RTL/Unicode dili (ör. Çince, Arapça vb.) desteği."
+
+msgid "Monitor payments using Stripe dashboard"
+msgstr "Stripe kontrol panelini kullanarak ödemeleri izleyin"
+
+msgid "More order number templates"
+msgstr "Yeni şablon oluştur"
+
+msgid "Multilingual support"
+msgstr "Çok dilli destek"
+
+msgid "Multiple address label layouts"
+msgstr "Adsız şablon"
+
+msgid "Multiple display formats for bundled products"
+msgstr "Ürün tablosunda fiyatı göster"
+
+msgid "Multiple display options for bundle products"
+msgstr "Paket ürünler için çoklu görüntüleme seçenekleri"
+
+msgid "Multiple pre-built layouts"
+msgstr "Adsız şablon"
+
+msgid "Multiple premium invoice templates to choose from"
+msgstr "Aralarından seçim yapabileceğiniz birden fazla premium fatura şablonu"
+
+msgid "Multiple product recommendation layouts"
+msgstr "Çoklu ürün öneri düzenleri"
+
+msgid "Multiple templates to personalize the document"
+msgstr "Belgeyi kişiselleştirmek için birden fazla şablon"
+
+msgid "Multiple templates to personalize the label"
+msgstr "Etiketi kişiselleştirmek için birden fazla şablon"
+
+msgid "My account - Order details page"
+msgstr "Hesabım - Sipariş ayrıntıları sayfası"
+
+msgid "My account - Order lists page"
+msgstr "Hesabım - Sipariş listeleri sayfası"
+
+msgid "My templates"
+msgstr "Şablonlarım"
+
+msgid "Name"
+msgstr "İsim"
+
+msgid "Need a field to add the tax id on checkout page"
+msgstr "Ödeme sayfasına vergi kimliğini eklemek için bir alana ihtiyacınız var"
+
+msgid "Next"
+msgstr "Sonraki"
+
+msgid "No"
+msgstr "Hayır"
+
+msgid "No files found."
+msgstr "Dosya bulunamadı."
+
+msgid "No modules"
+msgstr "Modül yok"
+
+msgid "No of Items"
+msgstr ""
+"Belgelerin ürün tablosunda sipariş öğelerini kategoriye göre gruplayın."
+
+msgid "No template found."
+msgstr "Şablon bulunamadı."
+
+msgid "No temporary file found"
+msgstr "Geçici dosya bulunamadı"
+
+msgid "None"
+msgstr "Yok"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "Not interested"
+msgstr "İlgilenmiyorum"
+
+msgid "Note"
+msgstr "Not"
+
+msgid "Note:"
+msgstr "Not:"
+
+msgid "Offer store credits"
+msgstr "Mağaza kredileri teklif edin"
+
+msgid "Offers built-in label templates"
+msgstr "Adsız şablon"
+
+msgid "Offers cloud printing of invoice PDFs using PrintNode"
+msgstr "PrintNode kullanarak fatura PDF'lerinin buluttan yazdırılmasını sağlar"
+
+msgid "One or more order do not have invoice generated. Generate manually?"
+msgstr "Bir veya daha fazla siparişin faturası yok. Manuel olarak oluştur?"
+
+msgid "Opacity"
+msgstr "Opaklık"
+
+msgid "Option to enable in-context checkout"
+msgstr "Bağlam içi ödemeyi etkinleştirme seçeneği"
+
+msgid "Option to include/exclude tax to Invoice"
+msgstr "Faturaya vergi dahil etme/hariç tutma seçeneği"
+
+msgid "Option to set up a specific PayPal locale"
+msgstr "Belirli bir PayPal yerel ayarı oluşturma seçeneği"
+
+msgid "Order"
+msgstr "Sipariş"
+
+msgid "Order Date"
+msgstr "Sipariş Tarihi"
+
+msgid "Order Date:"
+msgstr "Sipariş Tarihi:"
+
+msgid "Order Details"
+msgstr "Sipariş Detayları"
+
+msgid "Order Discount"
+msgstr "Sipariş İndirimi"
+
+msgid "Order Meta"
+msgstr "Sipariş Metası"
+
+msgid "Order No.:"
+msgstr "Sipariş No.:"
+
+msgid "Order No:"
+msgstr "Sipariş No:"
+
+msgid "Order Number"
+msgstr "Sipariş Numarası"
+
+msgid "Order date"
+msgstr "Sipariş tarihi"
+
+msgid "Order date:"
+msgstr "Sipariş Tarihi:"
+
+msgid "Order discount"
+msgstr "Sipariş İndirimi"
+
+msgid "Order email"
+msgstr "Sipariş e-postası"
+
+msgid "Order meta fields"
+msgstr "Mevcut Sipariş Meta Alanını Ekleyin"
+
+msgid "Order no:"
+msgstr "Sipariş No:"
+
+msgid "Order number"
+msgstr "Sipariş Numarası"
+
+msgid "Order number (default)"
+msgstr "Sipariş numarası (varsayılan)"
+
+msgid "Order, Coupon, Subscription Export Import for WooCommerce"
+msgstr "Order, Coupon, Subscription Export Import for WooCommerce"
+
+msgid "Other"
+msgstr "Diğer"
+
+msgid "Others"
+msgstr "Diğerleri"
+
+msgid "Output"
+msgstr "Çıktı"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF Invoices"
+msgstr "PDF Faturalar"
+
+msgid "PDF library"
+msgstr "PDF kitaplığı"
+
+msgid "PDF name format"
+msgstr "Tarih biçimleri"
+
+msgid "PREVIEW"
+msgstr "ÖNİZLEME"
+
+msgid "Package Number"
+msgstr "Takip numarası"
+
+msgid "Packing slip"
+msgstr "Ambalaj Kağıdı"
+
+msgid "Partial and Full Refund of the order amount"
+msgstr "Sipariş tutarının Kısmi ve Tam İadesi"
+
+msgid "PayPal Express Checkout Payment Gateway for WooCommerce"
+msgstr "WooCommerce için PayPal Ekspres Ödeme Ödeme Ağ Geçidi"
+
+msgid "Payment & subscription"
+msgstr "Açıklama"
+
+msgid "Payment Method"
+msgstr "Ödeme Yöntemi"
+
+msgid "Payment Method:"
+msgstr "Ödeme Yöntemi:"
+
+msgid "Payment method"
+msgstr "Ödeme Yöntemi"
+
+msgid "Payment method:"
+msgstr "Ödeme yöntemi:"
+
+msgid "Payment method: "
+msgstr "Ödeme yöntemi: "
+
+msgid "Payment received stamp"
+msgstr "Ödeme alındı damgası"
+
+msgid "Ph No:"
+msgstr "Ph No:"
+
+msgid "Phone No:"
+msgstr "Telefon:"
+
+msgid "Phone no:"
+msgstr "Telefon:"
+
+msgid "Phone number"
+msgstr "Telefon numarası"
+
+msgid "Pick list"
+msgstr "Seçim listesi"
+
+msgid "Pick lists"
+msgstr "Seçim listesi"
+
+msgid "Picklist"
+msgstr "Seçim listesi"
+
+msgid "Picklists Add-on"
+msgstr "Seçim listesi"
+
+msgid "Please enter mandatory fields"
+msgstr "Lütfen zorunlu alanları girin"
+
+msgid "Please enter name"
+msgstr "Lütfen isminizi giriniz"
+
+msgid "Please enter order number"
+msgstr "Lütfen isim giriniz"
+
+msgid "Please fill the `from address` in the plugin's general settings."
+msgstr "Lütfen eklentinin genel ayarlarında `adresinden` doldurun."
+
+msgid ""
+"Please save all data before leaving this page. All unsaved data will be lost."
+" Are you sure?"
+msgstr ""
+"Lütfen bu sayfadan ayrılmadan önce tüm verileri kaydedin. Tüm kaydedilmemiş "
+"veriler kaybedilecek. Emin misiniz?"
+
+msgid "Please select json file"
+msgstr "Lütfen json dosyasını seçin"
+
+msgid "Please wait"
+msgstr "Lütfen bekleyin"
+
+msgid "Plugin settings not available in my language"
+msgstr "Eklenti ayarları benim dilimde mevcut değil"
+
+msgid "Postal code"
+msgstr "Posta Kodu"
+
+msgid "Pre-built layout for documents"
+msgstr "Her belge için önceden oluşturulmuş çeşitli şablonlar"
+
+msgid "Pre-built layouts"
+msgstr "Önceden oluşturulmuş düzenler"
+
+msgid "Pre-built layouts & customizable templates"
+msgstr "Önceden oluşturulmuş düzenler ve özelleştirilebilir şablonlar"
+
+msgid "Pre-built layouts for documents"
+msgstr "Her belge için önceden oluşturulmuş çeşitli şablonlar"
+
+msgid "Pre-built proforma invoice layouts"
+msgstr "Proforma Fatura"
+
+msgid "Prefix"
+msgstr "Önek"
+
+msgid "Premium"
+msgstr "Premium"
+
+msgid "Premium Extensions"
+msgstr "Premium Uzantılar"
+
+msgid "Premium extensions"
+msgstr "Premium uzantılar"
+
+msgid "Premium version"
+msgstr "Ücretli versiyon"
+
+msgid "Present"
+msgstr "Mevcut"
+
+msgid "Preview before printing"
+msgstr "Yazdırmadan önce önizleme"
+
+msgid "Preview documents before printing"
+msgstr "Yazdırmadan önce önizleme"
+
+msgid "Preview sample PDF"
+msgstr "Örnek PDF'yi önizleyin"
+
+msgid "Price"
+msgstr "Fiyat"
+
+msgid "Price label"
+msgstr "Fiyat etiketi"
+
+msgid "Price text align"
+msgstr "Fiyat metni hizalaması"
+
+msgid "Print"
+msgstr "Yazdır"
+
+msgid "Print Delivery note"
+msgstr "Teslim notunu yazdır"
+
+msgid "Print Dispatch Label"
+msgstr "Sevk Etiketi Yazdır"
+
+msgid "Print Invoice"
+msgstr "Fatura yazdır"
+
+msgid "Print Invoices"
+msgstr "Faturaları Yazdır"
+
+msgid "Print PDF invoices for WooCommerce"
+msgstr "WooCommerce için abonelikler"
+
+msgid "Print Packing slip"
+msgstr "Ambalaj fişini yazdır"
+
+msgid "Print Shipping Label"
+msgstr "Kargo etiketi yazdır"
+
+msgid "Print button access for"
+msgstr "Yazdırma düğmesi erişimi"
+
+msgid "Print invoice"
+msgstr "BANKA HESAP NUMARALARIMIZ"
+
+msgid "Print/Download"
+msgstr "İndir"
+
+msgid "Print/Download Delivery note"
+msgstr "Teslim notunu yazdır"
+
+msgid "Print/Download Dispatch Label"
+msgstr "Sevk Etiketi Yazdır"
+
+msgid "Print/Download Invoice"
+msgstr "Faturayı İndir"
+
+msgid "Print/Download Packing slip"
+msgstr "Ambalaj Kağıdı"
+
+msgid "Prints Packing List,Invoice,Delivery Note and Shipping Label."
+msgstr "Paket Listesi, Fatura, İrsaliye ve Sevkiyat Etiketini yazdırır."
+
+msgid "Privacy Policy"
+msgstr "Gizlilik Politikası"
+
+msgid "Privacy compliance"
+msgstr "Gizlilik Politikası"
+
+msgid "Pro Add-on"
+msgstr "Profesyonel Eklenti"
+
+msgid "Pro version"
+msgstr "Profesyonel sürüm"
+
+msgid "Pro-rate charges till first renewal"
+msgstr "İlk yenilemeye kadar eşit oranlı ücretler"
+
+msgid "Product"
+msgstr "Ürün"
+
+msgid "Product Import Export Plugin For WooCommerce"
+msgstr "Product Import Export Plugin For WooCommerce"
+
+msgid "Product Table"
+msgstr "Ürün Tablosu"
+
+msgid "Product attributes"
+msgstr "Ürün özellikleri"
+
+msgid "Product label"
+msgstr "Çözüm Etiketi"
+
+msgid "Product meta fields"
+msgstr "Mevcut Sipariş Meta Alanını Ekleyin"
+
+msgid "Product text align"
+msgstr "Ürün metni hizala"
+
+msgid "Proforma Invoices Add-on"
+msgstr "Proforma Fatura"
+
+msgid "Proforma invoice"
+msgstr "Proforma Fatura"
+
+msgid "Proforma invoice number format"
+msgstr "Proforma fatura numarası biçimi"
+
+msgid "Proforma invoices"
+msgstr "Proforma Faturalarda"
+
+msgid "Provide refunds to store credit"
+msgstr "Mağaza kredisine geri ödeme sağlayın"
+
+msgid "QR Code"
+msgstr "QR Kodu"
+
+msgid "QR Code Addon for WooCommerce PDF Invoices"
+msgstr "WooCommerce PDF Faturaları için QR Kod Eklentisi"
+
+msgid "QR code"
+msgstr "Barkod"
+
+msgid "Qty label"
+msgstr "Adet etiket"
+
+msgid "Qty text align"
+msgstr "Adet metin hizalaması"
+
+msgid "Quantity"
+msgstr "Miktar"
+
+msgid "Quick setup page to add & edit recommendations"
+msgstr "Önerileri eklemek ve düzenlemek için hızlı kurulum sayfası"
+
+msgid "RTL support for documents"
+msgstr "Diğer belgeler"
+
+msgid "Rate us now"
+msgstr "Bizi şimdi değerlendirin"
+
+msgid "Recommended 128MB or more"
+msgstr "Önerilen 128MB veya daha fazla"
+
+msgid "Recommended for better performances"
+msgstr "Daha iyi performanslar için önerilir"
+
+msgid "Recommended size is 150x50px."
+msgstr ""
+"Boş bırakılırsa Genel ayarlardan logo varsayılan olarak alınır.Faturaya "
+"yansıtmak için ‘Fatura > Özelleştir > Firma Logosu’ kısmından firma logosunu "
+"seçtiğinizden emin olunuz. Önerilen boyut 150x50 pikseldir."
+
+msgid "Recommended size is 150×50px"
+msgstr "Önerilen boyut 150×50 pikseldir"
+
+msgid "Recommended to compress PDF documents"
+msgstr "PDF belgelerini sıkıştırmak için önerilir"
+
+msgid "Recommended, will use fallback functions"
+msgstr "Önerilen, geri dönüş işlevlerini kullanacak"
+
+msgid "Refer to our documentation to setup and get started"
+msgstr "Ayarlamak ve başlamak için belgelerimize bakın"
+
+msgid "Refund"
+msgstr "İade"
+
+msgid ""
+"Refund in this order seems not having credit number yet. Do you want to "
+"manually generate one ?"
+msgstr "sayı henüz oluşturulmadı. El ile bir tane oluşturmak istiyor musunuz?"
+
+msgid "Remind me later"
+msgstr "Bana daha sonra hatırlat"
+
+msgid "Remote Print add-on for WooCommerce PDF Invoices - PrintNode"
+msgstr "WooCommerce PDF Faturaları için Uzaktan Yazdırma eklentisi - PrintNode"
+
+msgid ""
+"Removing year [Y] from the prefix will disable the annual reset functionality"
+msgstr ""
+"[Y] yılını önekten kaldırmak, yıllık sıfırlama işlevini devre dışı "
+"bırakacaktır"
+
+msgid ""
+"Removing year [Y] from the suffix will disable the annual reset functionality"
+msgstr ""
+"Son ekten [Y] yılını kaldırmak, yıllık sıfırlama işlevini devre dışı "
+"bırakacaktır"
+
+msgid "Renewal interval & expiry customizations"
+msgstr "Yenileme aralığı ve sona erme özelleştirmeleri"
+
+msgid "Replace the existing templates"
+msgstr "Mevcut şablonları değiştirin"
+
+msgid "Required"
+msgstr "Gerekli"
+
+msgid "Required if you have images in your documents"
+msgstr "Belgelerinizde resimleriniz varsa gereklidir"
+
+msgid "Reset"
+msgstr "Sıfırla"
+
+msgid "Reset all settings to default"
+msgstr "Tüm ayarları varsayılana sıfırla"
+
+msgid "Reset successfully"
+msgstr "Başarıyla sıfırla"
+
+msgid ""
+"Reset will delete all the settings, saved templates and reset to the default "
+"settings"
+msgstr ""
+"Sıfırla tüm ayarları, kayıtlı şablonları silecek ve varsayılan ayarlara "
+"sıfırlayacaktır"
+
+msgid "Restrict coupons by country"
+msgstr "Kuponları ülkeye göre kısıtla"
+
+msgid "Retain user passwords on import/export"
+msgstr "İçe/dışa aktarmada kullanıcı şifrelerini koruyun"
+
+msgid "Return Policy"
+msgstr "İade politikasi"
+
+msgid "Return address"
+msgstr "Fatura adresini değiştir"
+
+msgid "Return policy"
+msgstr "Ürün iade politikası"
+
+msgid "Review"
+msgstr "İnceleme"
+
+msgid "Review now"
+msgstr "Şimdi inceleyin"
+
+msgid "Right"
+msgstr "Sağ"
+
+msgid "S.NO"
+msgstr "S.HAYIR"
+
+msgid "S.No"
+msgstr "S.No"
+
+msgid "S.no"
+msgstr "S.NO"
+
+msgid "SKU"
+msgstr "Stok Kodu"
+
+msgid "SKU label"
+msgstr "SKU etiketi"
+
+msgid "SKU text align"
+msgstr "SKU metin hizalaması"
+
+msgid "SSN"
+msgstr "SSN"
+
+msgid "SSN number"
+msgstr "Kimlik numarası"
+
+msgid "SSN:"
+msgstr "SSN:"
+
+msgid "Save"
+msgstr "Kaydet"
+
+msgid "Save and activate"
+msgstr "Gönder & Devre Dışı Bırak"
+
+msgid "Save before you proceed."
+msgstr "Devam etmeden önce kaydedin."
+
+msgid "Save document layout as template"
+msgstr "Şablon yüklenemedi."
+
+msgid "Saving"
+msgstr "Kaydediliyor"
+
+msgid "Saving..."
+msgstr "Kaydediliyor..."
+
+msgid "Scan and list cookies"
+msgstr "Çerezleri tarayın ve listeleyin"
+
+msgid "Schedule automated import & export"
+msgstr "Otomatik içe ve dışa aktarmayı planlama"
+
+msgid "Schedule automated import and export"
+msgstr "Otomatik içe ve dışa aktarmayı zamanlayın"
+
+msgid "Secure"
+msgstr "Güvenli"
+
+msgid "Secured payments with SCA and 3D secure"
+msgstr "SCA ve 3D secure ile güvenli ödemeler"
+
+msgid "Select One"
+msgstr "Birini seç"
+
+msgid ""
+"Select a name format for PDF invoice that includes invoice/order number."
+msgstr "Fatura/sipariş numarası içeren PDF faturası için bir ad biçimi seçin."
+
+msgid "Select country"
+msgstr "Ülke Seç"
+
+msgid ""
+"Select email classes that match the order statuses selected under the "
+"'Automate invoice creation option. If no order status is selected, you must "
+"manually generate invoice to attach it with these order emails."
+msgstr ""
+"'Fatura oluşturmayı otomatikleştir' seçeneğinin altında seçilen sipariş "
+"durumlarıyla eşleşen e-posta sınıflarını seçin. Hiçbir sipariş durumu "
+"seçilmezse, faturayı bu sipariş e-postalarına eklemek için manuel olarak "
+"oluşturmanız gerekir."
+
+msgid ""
+"Select/add order meta to display additional information related to the order "
+"on the invoice."
+msgstr "Siparişinize ait ek detayların faturada görüntülenmesini sağlar."
+
+msgid "Seller name"
+msgstr "Satıcı Adı"
+
+msgid "Seller tax ID"
+msgstr "Satıcı vergi numarası"
+
+msgid "Send automated emails notifications"
+msgstr "Fatura tarihini değiştir"
+
+msgid ""
+"Separate tax column in product table for multiple tax options in dispatch "
+"labels"
+msgstr "Birden çok vergi seçeneği için ürün tablosunda ayrı vergi sütunu"
+
+msgid ""
+"Separate tax column in product table for multiple tax options in proforma "
+"invoices"
+msgstr "Birden çok vergi seçeneği için ürün tablosunda ayrı vergi sütunu"
+
+msgid ""
+"Separate tax column in the product table for multiple tax options in invoices"
+msgstr "Birden çok vergi seçeneği için ürün tablosunda ayrı vergi sütunu"
+
+msgid "Sequential Order Number for WooCommerce"
+msgstr "WooCommerce için Sıralı Sipariş Numarası"
+
+msgid "Serial No label"
+msgstr "Fiyat etiketi"
+
+msgid "Serial no text align"
+msgstr "Fiyat metni hizalaması"
+
+msgid "Set custom proforma invoice number"
+msgstr "Sipariş numarasını fatura numarası olarak kullan"
+
+msgid "Set free trial and sign-up fee"
+msgstr "Ücretsiz deneme ve kayıt ücretini belirleyin"
+
+msgid "Set quote expiry period"
+msgstr "Teklifin geçerlilik süresini ayarlayın"
+
+msgid ""
+"Set the  Size of the Shipping label to be either full page or custom size."
+msgstr ""
+"Gönderi etiketinin Boyutunu tam sayfa veya özel boyut olacak şekilde "
+"ayarlayın."
+
+msgid "Set up a redirect page"
+msgstr "Yönlendirme sayfası ayarlama"
+
+msgid "Set up discounts on the recommended product bundle"
+msgstr "Önerilen ürün paketinde indirimler ayarlayın"
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "Settings Updated"
+msgstr "Ayarlar güncellendi"
+
+msgid "Settings are empty"
+msgstr "Ayarlar boş"
+
+msgid "Settings updated."
+msgstr "Ayarlar güncellendi."
+
+msgid "Ship Date:"
+msgstr "Kargo etiketi:"
+
+msgid "Ship to"
+msgstr "Alıcı"
+
+msgid "Shipping"
+msgstr "Kargo"
+
+msgid "Shipping Address"
+msgstr "Teslimat Adresi"
+
+msgid "Shipping Address:"
+msgstr "Teslimat Adresi:"
+
+msgid "Shipping Label"
+msgstr "Gönderim etiketi"
+
+msgid "Shipping Label 1"
+msgstr "Kargo etiketi"
+
+msgid "Shipping Method"
+msgstr "Gönderi Yöntemi"
+
+msgid "Shipping address"
+msgstr "Teslimat adresi"
+
+msgid "Shipping label"
+msgstr "Kargo etiketi"
+
+msgid "Shipping label size"
+msgstr "Nakliye etiketi boyutu"
+
+msgid "Shipping labels"
+msgstr ""
+"WooCommerce PDF Faturaları, Sevkiyat Fişleri, Teslimat Notları ve Nakliye "
+"Etiketleri"
+
+msgid "Shipping labels, Dispatch labels and Delivery Notes Module"
+msgstr "Gönderi etiketleri, Sevkiyat etiketleri ve Teslimat Notları Modülü"
+
+msgid "Shipping labels, Dispatch labels and Delivery notes"
+msgstr "Gönderi etiketleri, Gönderim etiketleri ve Teslimat notları"
+
+msgid "Shop name"
+msgstr "Mağaza adı"
+
+msgid "Shortcode support for the Paypal Express button"
+msgstr "Paypal Express düğmesi için kısa kod desteği"
+
+msgid "Show Less"
+msgstr "Az göster"
+
+msgid "Show More"
+msgstr "Daha Fazla Göster"
+
+msgid "Show Pay Later option at checkout"
+msgstr "Ödeme sırasında Daha Sonra Öde seçeneğini göster"
+
+msgid "Show different taxes in separate columns"
+msgstr "Farklı vergileri ayrı sütunlarda göster"
+
+msgid "Show payment link on invoice"
+msgstr "Faturada ödeme bağlantısını göster"
+
+msgid "Show print invoice button for customers"
+msgstr "Müşteriler için fatura yazdır düğmesini göster"
+
+msgid "Show print invoice button to customers"
+msgstr "Müşteriler için fatura yazdır düğmesini göster"
+
+msgid "Show print packing slip button to customers"
+msgstr "Müşteriler için fatura yazdır düğmesini göster"
+
+msgid "Show product variation data"
+msgstr "Ürün varyasyonu ekle"
+
+msgid "Show variation data for variable products"
+msgstr "Değişken ürünler için varyasyon verilerini göster"
+
+msgid "Show variation data of products"
+msgstr "Ürünlerin varyasyon verilerini göster"
+
+msgid ""
+"Shows a preview of the template on an actual order. Key in an order number "
+"to view the same."
+msgstr ""
+"Gerçek bir siparişte şablonun bir önizlemesini gösterir. Aynısını "
+"görüntülemek için bir sipariş numarası girin."
+
+msgid "Signature type"
+msgstr "İmza türü"
+
+msgid "Skip invoice setup"
+msgstr "Fatura kurulumunu atla"
+
+msgid "Smart Coupons for WooCommerce"
+msgstr "WooCommerce için Akıllı Kuponlar"
+
+msgid "Solid"
+msgstr "Katı"
+
+msgid "Some useful `filters` to extend plugin's functionality"
+msgstr "Eklentinin işlevselliğini artırmak için bazı yararlı `filtreler`"
+
+msgid "Sort order items in product table"
+msgstr "Ürün tablosuna ürün resmi ekle"
+
+msgid "Sort order items in the product table"
+msgstr "Belgelerin ürün tablosundaki sipariş öğelerini sıralayın."
+
+msgid "Sort order items in the product table "
+msgstr "Belgelerin ürün tablosundaki sipariş öğelerini sıralayın."
+
+msgid "Sort products based on Name or SKU"
+msgstr "Ürünleri Ada veya SKU'ya göre sıralayın"
+
+msgid ""
+"Specify your company tax ID. For e.g., you may enter as VAT: GB123456789, "
+"GSTIN:0948745 or ABN:51 824 753 556"
+msgstr ""
+"Şirket vergi numaranızı belirtin. Örneğin KDV olarak girebilirsiniz: "
+"GB123456789, GSTIN:0948745 veya ABN:51 824 753 556"
+
+msgid "Start"
+msgstr "Başla"
+
+msgid "Step 1"
+msgstr "Adım 1"
+
+msgid "Step 2"
+msgstr "Adım 2"
+
+msgid "Step 3"
+msgstr "Adım 3"
+
+msgid "Style"
+msgstr "Stil"
+
+msgid "Submit & Deactivate"
+msgstr "Gönder & Devre Dışı Bırak"
+
+msgid "Subscriptions for WooCommerce"
+msgstr "WooCommerce için abonelikler"
+
+msgid "Subtotal"
+msgstr "Ara Toplam"
+
+msgid "Success"
+msgstr "Başarılı"
+
+msgid "Successfully cleared all temp files."
+msgstr "Tüm geçici dosyalar başarıyla temizlendi."
+
+msgid "Suffix"
+msgstr "Sonek"
+
+msgid "Summary Table"
+msgstr "Özet Tablosu"
+
+msgid "Support"
+msgstr "Destek"
+
+msgid "Support for additional fields that can be added to the feed"
+msgstr "Feed'e eklenebilecek ek alanlar için destek"
+
+msgid "Support for multiple product types"
+msgstr "Çoklu paketleme türlerini destekler"
+
+msgid "Support for serial and USB scales"
+msgstr "Seri ve USB teraziler için destek"
+
+msgid "Supported address types"
+msgstr "Diğer belgeler"
+
+msgid "Supported by a team with 99% Customer Satisfaction Score"
+msgstr ""
+"%99 Müşteri Memnuniyeti Skoruna sahip bir ekip tarafından desteklenmektedir"
+
+msgid "Supported documents"
+msgstr "Diğer belgeler"
+
+msgid "Supports Excel, XML, CSV, and TSV file formats"
+msgstr "Excel, XML, CSV ve TSV dosya formatlarını destekler"
+
+msgid "Supports WooCommerce Subscriptions for Express buttons"
+msgstr "Ekspres düğmeler için WooCommerce Aboneliklerini destekler"
+
+msgid "Supports automatic & manual printing"
+msgstr "Otomatik ve manuel yazdırmayı destekler"
+
+msgid "Supports recurring discounts"
+msgstr "Diğer belgeler"
+
+msgid "Supports recurring payments"
+msgstr "Diğer belgeler"
+
+msgid "Switching to order number will disable the annual reset functionality"
+msgstr ""
+"Sipariş numarasına geçiş, yıllık sıfırlama işlevini devre dışı bırakacaktır"
+
+msgid "Sync WooCommerce products to Facebook catalog"
+msgstr "WooCommerce ürünlerini Facebook kataloğuyla senkronize edin"
+
+msgid "Synchronize subscription renewal"
+msgstr "Abonelik yenilemeyi senkronize et"
+
+msgid "System Configuration"
+msgstr "Sistem yapılandırması"
+
+msgid "System Info"
+msgstr "Sistem Bilgisi"
+
+msgid "Table body text color"
+msgstr "Tablo gövdesi metin rengi"
+
+msgid "Table head background"
+msgstr "Masa başı arka plan"
+
+msgid "Table head text color"
+msgstr "Masa başı metin rengi"
+
+msgid "Tax ID"
+msgstr "Vergi Numarası"
+
+msgid "Tax label"
+msgstr "Toplam etiket"
+
+msgid "Tax text align"
+msgstr "Toplam metin hizalaması"
+
+msgid "Tel Field"
+msgstr "Tel Alan"
+
+msgid "Tel:"
+msgstr "Tel:"
+
+msgid "Template created and activated."
+msgstr "Şablon oluşturuldu."
+
+msgid "Template created."
+msgstr "Şablon oluşturuldu."
+
+msgid "Template updated and activated."
+msgstr "Şablon güncellendi."
+
+msgid "Template updated."
+msgstr "Şablon güncellendi."
+
+msgid "Template with same name already exists."
+msgstr "Aynı ada sahip şablon zaten var."
+
+msgid "Templates"
+msgstr "Şablonlar"
+
+msgid "Text"
+msgstr "Metin"
+
+msgid "Text Color"
+msgstr "Metin Rengi"
+
+msgid "Text align"
+msgstr "Metin hizalama"
+
+msgid "Text color"
+msgstr "Metin rengi"
+
+msgid ""
+"That’s awesome! We’d love it if you take a moment to share what you think "
+"and help spread the word."
+msgstr ""
+"Bu harika! Bir dakikanızı ayırıp düşüncelerinizi paylaşırsanız ve haberin "
+"yayılmasına yardımcı olursanız çok seviniriz."
+
+msgid ""
+"The best-in-the-class import, export, and migration solutions for your "
+"WooCommerce data"
+msgstr ""
+"WooCommerce verileriniz için sınıfının en iyisi içe aktarma, dışa aktarma ve "
+"taşıma çözümleri"
+
+msgid ""
+"The company name and the address details from this section will be used as "
+"the sender address in the invoice and other related documents."
+msgstr ""
+"Fatura ve ilgili belgeleri uygun şekilde doldurmak için firma ve adres "
+"bölümlerinden aşağıdaki bölümlerden gönderim yapılır."
+
+msgid ""
+"The date is displayed on the invoice. It can be either the order creation "
+"date or the invoiced date."
+msgstr ""
+"Tarih faturada görüntülenir. Siparişin oluşturulma tarihi veya fatura tarihi "
+"olabilir."
+
+msgid "The default library to be used PDF generation"
+msgstr "PDF oluşturmak için varsayılan kitaplık"
+
+msgid "The latest specified starting number will be used after reset"
+msgstr ""
+"Sıfırlamadan sonra belirtilen en son başlangıç numarası kullanılacaktır"
+
+msgid ""
+"The most popular payment gateways and subscription solutions to scale your "
+"business"
+msgstr ""
+"İşletmenizi ölçeklendirmek için en popüler ödeme ağ geçitleri ve abonelik "
+"çözümleri"
+
+msgid "The plugin didn't work as expected"
+msgstr "Eklenti beklendiği gibi çalışmadı"
+
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr ""
+"Eklenti harika, ancak desteklemediğiniz belirli bir özelliğe ihtiyacım var"
+
+msgid ""
+"The plugins %s and %s cannot be active in your store at the same time. "
+"Kindly deactivate one of these prior to activating the other."
+msgstr ""
+"%s ve %s eklentileri mağazanızda aynı anda etkin olamaz. Lütfen diğerini "
+"etkinleştirmeden önce bunlardan birini devre dışı bırakın."
+
+msgid "There is no items in this order."
+msgstr "Bu siparişte öğe yok."
+
+msgid "There is no order with this given id"
+msgstr "Bu verilen kimliğe sahip sipariş yok"
+
+msgid "There is no order with this id"
+msgstr "Bu kimliğe sahip sipariş yok"
+
+msgid ""
+"This filter is used to alter the barcode information for all the document "
+"templates"
+msgstr ""
+"Bu filtre, tüm belge şablonları için barkod bilgilerini değiştirmek için "
+"kullanılır"
+
+msgid ""
+"This filter is used to alter the invoice date in all the document templates"
+msgstr ""
+"Bu filtre, tüm belge şablonlarında fatura tarihini değiştirmek için "
+"kullanılır"
+
+msgid ""
+"This filter is used to alter the order date in all the document templates"
+msgstr ""
+"Bu filtre, tüm belge şablonlarında sipariş tarihini değiştirmek için "
+"kullanılır"
+
+msgid ""
+"This is basic template. In order to use premium feature, you need to switch "
+"and activate the premium template"
+msgstr ""
+"Bu temel şablondur. Premium özelliğini kullanabilmek için premium şablonu "
+"değiştirip etkinleştirmeniz gerekir."
+
+msgid "This is premium template which is not compatible with the basic plugin"
+msgstr "Bu şablon, QR Code eklenti eklentisi ile uyumlu değil"
+
+msgid "This template is not comaptible with QR Code addon plugin"
+msgstr "Bu şablon, QR Code eklenti eklentisi ile uyumlu değil"
+
+msgid "This way up"
+msgstr "Bu taraftan"
+
+msgid ""
+"This will remove all invoice numbers created by WooCommerce PDF Invoices, "
+"Packing Slips, Delivery Notes & Shipping Labels by WebToffee."
+msgstr ""
+"Bu, WebToffee tarafından WooCommerce PDF Faturaları, Paketleme Fişleri, "
+"Teslimat Notları ve Gönderi Etiketleri tarafından oluşturulan tüm fatura "
+"numaralarını kaldıracaktır."
+
+msgid "Timely compatibility updates and bug fixes"
+msgstr "Zamanında uyumluluk güncellemeleri ve hata düzeltmeleri"
+
+msgid "Title"
+msgstr "Başlık"
+
+msgid "Title font size"
+msgstr "Başlık yazı tipi boyutu"
+
+msgid "To Address"
+msgstr "Şu adrese"
+
+msgid "To add a different meta key"
+msgstr "Farklı bir meta anahtar eklemek için"
+
+msgid "To add more than one custom order meta,"
+msgstr "Birden fazla özel sipariş metası eklemek için,"
+
+msgid "To compress PDF documents"
+msgstr "PDF belgelerini sıkıştırmak için"
+
+msgid "To help you comply with invoice mandates that require QR Codes"
+msgstr ""
+"QR Kodları gerektiren fatura talimatlarına uymanıza yardımcı olmak için"
+
+msgid "To include the keyed in name to the Invoice, ensure to select"
+msgstr "Girilen adı Faturaya eklemek için, öğesini seçtiğinizden emin olun"
+
+msgid ""
+"To include the uploaded image as logo to the invoice, ensure to select "
+"Company logo from"
+msgstr ""
+"Yüklenen görseli faturaya logo olarak eklemek için, Şirket logosunu "
+"seçtiğinizden emin olun"
+
+msgid "To proceed with the import, please type %1$s in the field below"
+msgstr ""
+"İçe aktarma işlemine devam etmek için lütfen aşağıdaki alana %1$s yazın"
+
+msgid "To proceed with the reset, please type %1$s in the field below"
+msgstr "Sıfırlama işlemine devam etmek için lütfen aşağıdaki alana %1$s yazın"
+
+msgid "To:"
+msgstr "Kime:"
+
+msgid "Total"
+msgstr "Toplam"
+
+msgid "Total Price"
+msgstr "Toplam Fiyat"
+
+msgid "Total Tax"
+msgstr "Toplam Vergi"
+
+msgid "Total Weight"
+msgstr "Toplam ağırlık"
+
+msgid "Total files"
+msgstr "Toplam dosyalar"
+
+msgid "Total label"
+msgstr "Toplam etiket"
+
+msgid "Total price"
+msgstr "Toplam Fiyat"
+
+msgid "Total tax"
+msgstr "Vergi toplamı"
+
+msgid "Total text align"
+msgstr "Toplam metin hizalaması"
+
+msgid "Total weight label"
+msgstr "Toplam ağırlık etiketi"
+
+msgid "Total weight text align"
+msgstr "Toplam ağırlık metni hizalaması"
+
+msgid "Tracking Number"
+msgstr "Takip numarası"
+
+msgid "Tracking Number:"
+msgstr "Takip numarası:"
+
+msgid "Tracking number"
+msgstr "Kargo Takip No"
+
+msgid "Tracking number:"
+msgstr "Takip numarası:"
+
+msgid "Truncation did not complete as expected."
+msgstr "Kesme işlemi beklendiği gibi tamamlanmadı."
+
+msgid "Type in prefix/ suffix / date format if required"
+msgstr "Gerekirse önek/sonek/tarih biçimini yazın"
+
+msgid "Type template name to search"
+msgstr "Aranacak şablon adını yazın"
+
+msgid "URL Coupons for WooCommerce"
+msgstr "WooCommerce için Akıllı Kuponlar"
+
+msgid ""
+"Unable to add from third party plugin that collects customer VAT(or GSTIN or "
+"ABN etc)"
+msgstr ""
+"Müşteri KDV'sini (veya GSTIN veya ABN vb.) tahsil eden üçüncü taraf "
+"eklentisinden eklenemiyor"
+
+msgid "Unable to generate PDF."
+msgstr "Şablon yüklenemedi."
+
+msgid "Unable to load template."
+msgstr "Şablon yüklenemedi."
+
+msgid "Unable to print Delivery note. Please check the items in the order."
+msgstr "Teslim notu yazdırılamıyor. Lütfen siparişteki maddeleri kontrol edin."
+
+msgid "Unable to print Packing slip. Please check the items in the order."
+msgstr ""
+"Ambalaj fişi yazdırılamıyor. Lütfen siparişteki maddeleri kontrol edin."
+
+msgid "Unable to save theme."
+msgstr "Tema kaydedilemiyor."
+
+msgid "Unable to switch view."
+msgstr "Görünüm değiştirilemiyor."
+
+msgid ""
+"Unable to update settings due to an internal error. %s To troubleshoot "
+"please click %s here. %s"
+msgstr ""
+"Dahili bir hata nedeniyle ayarlar güncellenemiyor. %s Sorun gidermek için "
+"lütfen burayı %s tıklayın. %s"
+
+msgid "Unit Price"
+msgstr "Birim Fiyatı"
+
+msgid "Unit price"
+msgstr "Birim Fiyatı"
+
+msgid ""
+"Unlock limitless possibilities of invoice customization with the addon -"
+msgstr "Eklentiyle sınırsız fatura özelleştirme olanaklarının kilidini açın -"
+
+msgid "Untitled template"
+msgstr "Adsız şablon"
+
+msgid "Update Settings"
+msgstr "Ayarları Güncelle"
+
+msgid "Updated"
+msgstr "Güncellendi"
+
+msgid "Upgrade To Premium"
+msgstr "Premium sürüme yükseltin"
+
+msgid "Upgrade to premium"
+msgstr "Premiuma yükselt"
+
+msgid "Upload logo"
+msgstr "Logo yükleyin"
+
+msgid "Upload your image"
+msgstr "Resminizi yükleyin"
+
+msgid "Use custom number format & length"
+msgstr "Özel sayı biçimini ve uzunluğunu kullan"
+
+msgid "Use custom number series to number documents"
+msgstr "Belgeleri numaralandırmak için özel numara serilerini kullanma"
+
+msgid "Use invoice created date"
+msgstr "Fatura oluşturulma tarihi"
+
+msgid "Use latest settings for invoice"
+msgstr "Fatura için en son ayarları kullanın"
+
+msgid "Use order date"
+msgstr "Sipariş tarihini değiştir"
+
+msgid "Use order date as input instead."
+msgstr "Bunun yerine giriş olarak sipariş tarihini kullanın."
+
+msgid "Use order number as document number"
+msgstr "Sipariş numarasını fatura numarası olarak kullan"
+
+msgid ""
+"Use upsells, cross-sells, & related products as frequently bought products"
+msgstr ""
+"Ek satışları, çapraz satışları ve ilgili ürünleri sık satın alınan ürünler "
+"olarak kullanın"
+
+msgid "User consent logging"
+msgstr "Kullanıcı izni günlüğü"
+
+msgid "Users who haven`t logged will also be allowed to print"
+msgstr "Oturum açmamış kullanıcıların da yazdırma yapmasına izin verilecek"
+
+msgid "Users will be redirected to login page if not logged in"
+msgstr "Oturum açmamışlarsa kullanıcılar oturum açma sayfasına yönlendirilecek"
+
+msgid "VAT"
+msgstr "KDV"
+
+msgid "VAT number"
+msgstr "Vergi numarası"
+
+msgid "VAT:"
+msgstr "KDV:"
+
+msgid "Verified compatibility with major plugins"
+msgstr "Başlıca eklentilerle doğrulanmış uyumluluk"
+
+msgid "View add-on"
+msgstr "Eklentiyi görüntüle"
+
+msgid "View live preview of customization"
+msgstr "Özelleştirmenin canlı önizlemesini görüntüleyin"
+
+msgid "View progress"
+msgstr "İlerlemeyi görüntüle"
+
+msgid "View sample customization demo"
+msgstr "Örnek özelleştirme demosunu görüntüleyin"
+
+msgid "Visual"
+msgstr "Görsel"
+
+msgid "WPML compatibility"
+msgstr "WPML uyumluluğu"
+
+msgid "WPML compatibilityCustomize label sizes"
+msgstr "WPML uyumluluğu"
+
+msgid "WPML multilingual and multicurrency support "
+msgstr "WPML çok dilli ve çoklu para birimi desteği "
+
+msgid "WT PDF Invoice Debug"
+msgstr "WT PDF Fatura Hata Ayıklama"
+
+msgid ""
+"We do not collect any personal data when you submit this form. It's your "
+"feedback that we value."
+msgstr ""
+"Bu formu gönderdiğinizde herhangi bir kişisel veri toplamıyoruz. Değer "
+"verdiğimiz geri bildirimlerinizdir."
+
+msgid "We would love to help you on any queries or issues."
+msgstr ""
+"Herhangi bir soru veya sorunda size yardımcı olmaktan memnuniyet duyarız."
+
+msgid "WebToffee"
+msgstr "Teknik Servis Uzmanı | Premium Servis Hizmeti"
+
+msgid "WebToffee WooCommerce Gift Cards"
+msgstr "WebToffee WooCommerce Gift Cards"
+
+msgid "WebToffee WooCommerce Product Feed & Sync Manager"
+msgstr "WebToffee WooCommerce Product Feed & Sync Manager"
+
+msgid "WebToffee WooCommerce Request A Quote"
+msgstr "WebToffee WooCommerce Fiyat Teklifi İste"
+
+msgid "Weight"
+msgstr "Ağırlık"
+
+msgid "Weight:"
+msgstr "Ağırlık:"
+
+msgid "What did you expect?"
+msgstr "Ne bekliyordun?"
+
+msgid "What length would you prefer for your credit note"
+msgstr "Kredi notunuz için hangi uzunluğu tercih edersiniz"
+
+msgid "What length would you prefer for your invoice"
+msgstr "Faturanız için hangi uzunluğu tercih edersiniz"
+
+msgid "What length would you prefer for your invoice number"
+msgstr "Fatura numaranız için hangi uzunluğu tercih edersiniz"
+
+msgid "What length would you prefer for your proforma invoice"
+msgstr "Proforma faturanız için hangi uzunluğu tercih edersiniz"
+
+msgid "What should be the starting number for your credit notes?"
+msgstr "Kredi notlarınızın başlangıç numarası ne olmalıdır?"
+
+msgid "What should be the starting number for your invoices?"
+msgstr "Faturalarınızın başlangıç numarası ne olmalıdır?"
+
+msgid "What should be the starting number for your proforma invoices?"
+msgstr "Proforma faturalarınızın başlangıç numarası ne olmalıdır?"
+
+msgid ""
+"When enabled, replaces state code with state name in the from, return, "
+"billing and shipping addresses"
+msgstr ""
+"Gönderen, iade, fatura ve sevkıyat adreslerine eyalet kodu yerine eyalet "
+"adını göstermesini sağlayın"
+
+msgid "Which language?"
+msgstr "Hangi eklenti?"
+
+msgid "Which plugin?"
+msgstr "Hangi eklenti?"
+
+msgid "Width"
+msgstr "Genişlik"
+
+msgid "WooCommerce Address Labels plugin"
+msgstr "WooCommerce Adres Etiketleri eklentisi"
+
+msgid "WooCommerce PDF Invoices, Packing Slips and Credit Notes plugin"
+msgstr "WooCommerce PDF Invoices, Packing Slips and Credit Notes plugin"
+
+msgid ""
+"WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels"
+msgstr ""
+"WooCommerce PDF Faturaları, Sevkiyat Fişleri, Teslimat Notları ve Nakliye "
+"Etiketleri"
+
+msgid "WooCommerce Pick lists plugin"
+msgstr "WooCommerce vergi ayarları"
+
+msgid "WooCommerce Picklists plugin"
+msgstr "WooCommerce vergi ayarları"
+
+msgid "WooCommerce Proforma Invoices"
+msgstr "WooCommerce Proforma Invoices"
+
+msgid "WooCommerce Proforma Invoices plugin"
+msgstr "WooCommerce Proforma Faturalar eklentisi"
+
+msgid "WooCommerce Shipping labels, Dispatch labels and Delivery Notes plugin"
+msgstr "WooCommerce Shipping labels, Dispatch labels and Delivery Notes plugin"
+
+msgid "WooCommerce Stripe Payment Gateway"
+msgstr "WooCommerce Stripe Payment Gateway"
+
+msgid ""
+"Woocommerce PDF invoices, packing slips, delivery notes, and shipping labels"
+msgstr ""
+"WooCommerce PDF Faturaları, Sevkiyat Fişleri, Teslimat Notları ve Nakliye "
+"Etiketleri"
+
+msgid "WordPress Users & WooCommerce Customers Import Export"
+msgstr "WordPress Users & WooCommerce Customers Import Export"
+
+msgid "Would you like us to assist you?"
+msgstr "Size yardımcı olmamızı ister misiniz?"
+
+msgid "Writtable"
+msgstr "Yazılabilir"
+
+msgid "Yes"
+msgstr "Evet"
+
+msgid "You are covered by our 30-Day Money Back Guarantee"
+msgstr "30-gün para iade garantisi"
+
+msgid "You are not allowed to access this page"
+msgstr "Bu sayfaya girme yetkiniz bulunmamaktadır"
+
+msgid "You are not allowed to do this action"
+msgstr "Bu eylemi yapmanıza izin verilmiyor"
+
+msgid "You are not allowed to view this page."
+msgstr "Bu sayfayı görüntüleme izniniz yok."
+
+msgid "You are using free version of %1$s. %2$s Checkout premium here %3$s."
+msgstr ""
+"%1$s'ın ücretsiz sürümünü kullanıyorsunuz. %2$s Premium'a buradan göz atın "
+"%3$s."
+
+msgid ""
+"You can add additional column head via `wf_pklist_alter_product_table_head` "
+"filter. You need to add column data via this filter. (Works with Invoice and "
+"Dispatch label only)"
+msgstr ""
+"`wf_pklist_alter_product_table_head` filtresi ile ek sütun başlığı "
+"ekleyebilirsiniz. Bu filtre aracılığıyla sütun verileri eklemeniz gerekir. "
+"(Yalnızca Fatura ve İrsaliye etiketi ile çalışır)"
+
+msgid ""
+"You can add additional column head via `wf_pklist_alter_product_table_head` "
+"filter. You need to add column data via this filter. (Works with Packing "
+"List, Shipping Label and Delivery note only)"
+msgstr ""
+"`wf_pklist_alter_product_table_head` filtresi ile ek sütun başlığı "
+"ekleyebilirsiniz. Bu filtre aracılığıyla sütun verileri eklemeniz gerekir. "
+"(Yalnızca Paket Listesi, Sevkiyat Etiketi ve Sevk irsaliyesi ile çalışır)"
+
+msgid "You can add custom/predefined order meta using its key"
+msgstr ""
+"Anahtarını kullanarak özel/önceden tanımlanmış sipariş meta ekleyebilirsiniz"
+
+msgid "You can add more than 1 order meta in"
+msgstr "1'den fazla sipariş metası ekleyebilirsiniz"
+
+msgid ""
+"You can control the visibility of the seal according to order status via "
+"filters. See filter documentation %s here. %s"
+msgstr ""
+"Filtreler aracılığıyla sipariş durumuna göre mühürün görünürlüğünü kontrol "
+"edebilirsiniz. Buradaki filtre belgelerine %s bakın. %s"
+
+msgid "You can edit an existing item by using its key."
+msgstr "Anahtarını kullanarak mevcut bir öğeyi düzenleyebilirsiniz."
+
+msgid "You can't undo this action. Are you sure?"
+msgstr "Bu işlemi geri alamazsınız. Emin misiniz?"
+
+msgid "You have to select order(s) first!"
+msgstr "Önce emirleri seçmelisiniz!"
+
+msgid "You`ve just created"
+msgstr "Az önce oluşturdunuz"
+
+msgid "Your next %s number would be"
+msgstr "Sonraki %s numaranız şu şekilde olacaktır"
+
+msgid "[prefix][invoice_no]"
+msgstr "[ön ek][fatura_no]"
+
+msgid "[prefix][order_no]"
+msgstr "[ön ek][sipariş_no]"
+
+msgid "allow_url_fopen disabled"
+msgstr "allow_url_fopen devre dışı bırakıldı"
+
+msgid "commercial documents using"
+msgstr "kullanarak ticari belgeler"
+
+msgid "from"
+msgstr "itibaren"
+
+msgid "https://www.webtoffee.com/"
+msgstr "https://www.webtoffee.com/"
+
+msgid ""
+"https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/"
+msgstr ""
+"https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/"
+
+msgid "incl. tax"
+msgstr "vergi dahil"
+
+msgid "is required"
+msgstr "gerekli"
+
+msgid "mPDF add-on"
+msgstr ""
+"pdf Faturaları, Sevkiyat Fişleri, Teslimat Notları ve Sevkiyat Etiketleri "
+"için mPDF eklentisi"
+
+msgid "n/a"
+msgstr "n/a"
+
+msgid ""
+"number has not been generated yet. Do you want to manually generate one ?"
+msgstr "sayı henüz oluşturulmadı. El ile bir tane oluşturmak istiyor musunuz?"
+
+msgid "orders listing page"
+msgstr "sipariş listeleme sayfası"
+
+msgctxt "placeholder"
+msgid "Enter "
+msgstr "Giriş "
+
+msgid "search filter"
+msgstr "arama filtresi"
+
+msgid "the %s number would be"
+msgstr "%s sayısı şöyle olurdu"
+
+msgid "upgrade to premium version"
+msgstr "premium sürüme yükseltin"
+
+msgid "via %s"
+msgstr "%s yolu ile"
+
+msgid ""
+"‘Generate invoice for free orders’ is disabled in Invoice settings > "
+"Advanced. You are attempting to generate invoice for this free order. "
+"Proceed?"
+msgstr ""
+"Fatura ayarları > Gelişmiş'te 'Ücretsiz siparişler için fatura oluştur' "
+"devre dışı bırakıldı. Bu ücretsiz sipariş için fatura oluşturmaya "
+"çalışıyorsunuz. İlerlemek?"

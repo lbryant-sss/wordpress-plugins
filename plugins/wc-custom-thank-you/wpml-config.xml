@@ -1,0 +1,5 @@
+<wpml-config>
+    <admin-texts>
+        <key name="woocommerce_custom_thankyou_page_id"/>
+    </admin-texts>
+</wpml-config>

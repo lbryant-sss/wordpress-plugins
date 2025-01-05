@@ -1,0 +1,3627 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce PDF Invoices, Packing Slips, Delivery Notes "
+"and Shipping Labels\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-29 05:36+0000\n"
+"PO-Revision-Date: 2024-12-18 15:07+0000\n"
+"Last-Translator: \n"
+"Language-Team: Romanian (Romania)\n"
+"Language: ro-RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
+"n%100<=19) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: en_GB\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: print-invoices-packing-slip-labels-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Loco-Parser: loco_parse_mo"
+
+msgid ""
+"%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels "
+"(Basic) %s is enabled but not effective. It requires %s WooCommerce %s in "
+"order to work."
+msgstr ""
+"%s Facturile PDF WooCommerce, buletine de ambalare, note de livrare și "
+"etichete de expediere (de bază) %s sunt activate, dar nu sunt eficiente. "
+"Pentru a funcționa, necesită %s WooCommerce %s."
+
+msgid "(But customer notes can be added)"
+msgstr "(Dar notele clienților pot fi adăugate)"
+
+msgid "(Visual and code editor)"
+msgstr "(Editor vizual și de cod)"
+
+msgid "(Visual editor)"
+msgstr "(Editor vizual)"
+
+msgid "20+ predefined gift card templates"
+msgstr "Peste 20 de șabloane de carduri cadou predefinite"
+
+msgid "30 Day Money Back Guarantee"
+msgstr "Garanție de rambursare în 30 de zile"
+
+msgid "5.6 or higher recommended"
+msgstr "5.6 sau mai mare recomandat"
+
+msgid "Accepts payment using multiple Alternative Payment Methods (APM)"
+msgstr "Acceptă plata folosind mai multe metode alternative de plată (APM)"
+
+msgid "Access denied !!!."
+msgstr "Acces interzis !!!."
+
+msgid "Action"
+msgstr "Acțiune"
+
+msgid "Activate"
+msgstr "Activati"
+
+msgid "Activates Stripe checkout"
+msgstr "Activează checkout Stripe"
+
+msgid "Active"
+msgstr "Activ"
+
+msgid "Add"
+msgstr "Adaugă"
+
+msgid "Add & update data while importing"
+msgstr "Adăugați și actualizați date în timpul importului"
+
+msgid "Add 20+ payment methods"
+msgstr "Adăugați peste 20 de metode de plată"
+
+msgid "Add a custom suffix for order numbers"
+msgstr "Adăugați un sufix personalizat pentru numerele de comandă"
+
+msgid "Add a payment link to invoice"
+msgstr "Adăugați un link de plată la factură"
+
+msgid "Add a print delivery note button to the order email"
+msgstr ""
+"Adăugați un buton de tipărire a bonului de livrare la e-mailul de comandă"
+
+msgid "Add a print label button to the order email"
+msgstr "Adăugați un buton de tipărire a etichetei la e-mailul de comandă"
+
+msgid "Add a print packing slip button to My account page"
+msgstr "Afișați butonul „Tipărește factura” pentru clienți"
+
+msgid "Add additional column in product table"
+msgstr "Adăugați o coloană suplimentară în tabelul de produse"
+
+msgid "Add additional column in product table of package documents"
+msgstr ""
+"Adăugați o coloană suplimentară în tabelul de produse din documentele "
+"pachetului"
+
+msgid "Add additional data to invoice layout"
+msgstr "Adăugați date suplimentare la aspectul facturii"
+
+msgid "Add additional info"
+msgstr "Adăugați informații suplimentare"
+
+msgid "Add additional information"
+msgstr "Adăugați informații suplimentare"
+
+msgid "Add additional order & product meta fields"
+msgstr "Adăugați o coloană suplimentară în tabelul de produse"
+
+msgid "Add additional product & order data fields"
+msgstr "Adăugați câmpuri suplimentare pentru date despre produse și comenzi"
+
+msgid "Add additional product attributes"
+msgstr "Adăugați o variantă de produs"
+
+msgid "Add and update data while importing"
+msgstr "Adăugați și actualizați date în timpul importului"
+
+msgid "Add company logo & return policy to label"
+msgstr "Adăugați sigla companiei și politica de returnare pe etichetă"
+
+msgid "Add custom data to documents"
+msgstr "Adăugați date personalizate în documente"
+
+msgid "Add custom data to invoices"
+msgstr "Adăugați date personalizate la facturi"
+
+msgid "Add custom fields to shipping label layout"
+msgstr "Imprimați eticheta de expediere"
+
+msgid "Add custom footer"
+msgstr "Adăugați subsol personalizat"
+
+msgid "Add custom footers to packing slips"
+msgstr "Adaugă nota de client la bonul de ambalare"
+
+msgid "Add custom templates for gift cards"
+msgstr "Adăugați șabloane personalizate pentru carduri cadou"
+
+msgid "Add customer note"
+msgstr "Adăugați câmpul personalizat"
+
+msgid "Add date to credit note number"
+msgstr "Adăugați data la numărul notei de credit"
+
+msgid "Add date to invoice number"
+msgstr "Adăugați data la numărul facturii"
+
+msgid "Add date to proforma invoice number"
+msgstr "Adăugați data la numărul facturii proforma"
+
+msgid "Add extra product & order data fields"
+msgstr "Adăugați câmpuri suplimentare pentru date despre produse și comenzi"
+
+msgid "Add extra text in received seal"
+msgstr "Adăugați text suplimentar în sigiliul primit"
+
+msgid "Add extra text in received seal."
+msgstr "Adăugați text suplimentar în sigiliul primit."
+
+msgid "Add footer"
+msgstr "Subsol"
+
+msgid "Add multiple shipping labels in one page"
+msgstr "Imprimați eticheta de expediere"
+
+msgid "Add multiple shipping labels on one page"
+msgstr "Adăugați mai multe etichete de expediere pe o singură pagină"
+
+msgid "Add new"
+msgstr "Adaugă nou"
+
+msgid "Add notes like fragile, keep dry, etc."
+msgstr "Adăugați note precum fragil, păstrați uscat etc."
+
+msgid "Add order & product meta fields"
+msgstr "Comandați câmpurile meta"
+
+msgid "Add order meta fields"
+msgstr "Adăugați meta câmpuri de comandă"
+
+msgid "Add order meta fields "
+msgstr "Adăugați meta câmpuri de comandă"
+
+msgid "Add order meta fields to shipping labels"
+msgstr "Imprimați eticheta de expediere"
+
+msgid "Add print document button to selected order emails"
+msgstr ""
+"Adăugați butonul de tipărire a documentului la e-mailurile de comandă "
+"selectate"
+
+msgid "Add product & order meta fields"
+msgstr "Comandați câmpurile meta"
+
+msgid "Add product attributes"
+msgstr "Adăugați atributele produsului"
+
+msgid "Add product images to packing slips"
+msgstr "Adăugați imagini ale produselor la borderourile de ambalare"
+
+msgid "Add product meta fields"
+msgstr "Adăugați meta câmpuri de produs"
+
+msgid "Add product meta fields & attributes"
+msgstr "Adăugați meta câmpuri și atribute ale produsului"
+
+msgid "Add product variation"
+msgstr "Adăugați o variantă de produs"
+
+msgid "Add product variation in package documents"
+msgstr "Adăugați o variantă de produs în documentele pachetului"
+
+msgid ""
+"Add product variation in product (Works with Packing List, Shipping Label "
+"and Delivery note only)"
+msgstr ""
+"Adăugați o variație de produs în produs (funcționează numai cu lista de "
+"ambalare, eticheta de livrare și bonul de livrare)"
+
+msgid "Add product variation. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Adăugați o variantă de produs. (Funcționează numai cu eticheta Factură și "
+"expediere)"
+
+msgid "Add quote button to the product & shop pages"
+msgstr "Adăugați butonul de cotație la paginile de produse și magazin"
+
+msgid "Add shop details"
+msgstr "Adăugați detaliile magazinului"
+
+msgid "Add usage restrictions for gift cards"
+msgstr "Adăugați restricții de utilizare pentru cardurile cadou"
+
+msgid "Add ‘Pay Later’ option at checkout"
+msgstr "Adăugați opțiunea „Plătiți mai târziu” la finalizare"
+
+msgid "Add/Edit Order Meta Field"
+msgstr "Adăugați / Editați Câmpul Meta"
+
+msgid "Additional feed intervals (30 minutes, 6 hours, 12 hours)"
+msgstr "Intervale suplimentare de alimentare (30 minute, 6 ore, 12 ore)"
+
+msgid "Address Label Add-on"
+msgstr "Supliment pentru etichetă de adresă"
+
+msgid "Address details"
+msgstr "Detaliile adresei"
+
+msgid "Address font size"
+msgstr "Dimensiunea fontului adresei"
+
+msgid "Address label"
+msgstr "Etichetă de adresă"
+
+msgid "Address labels"
+msgstr "Etichete de adresă"
+
+msgid "Address line 1"
+msgstr "Adresa 1"
+
+msgid "Address line 2"
+msgstr "Adresa 2"
+
+msgid ""
+"Adds Express PayPal Checkout Option on the product page and Mini-cart for "
+"faster checkout"
+msgstr ""
+"Adaugă opțiunea de plată rapidă PayPal pe pagina produsului și mini-coș "
+"pentru o comandă mai rapidă"
+
+msgid "Adds Footer to the delivery note"
+msgstr "Adaugă Footer la nota de livrare"
+
+msgid "Adds Footer to the packing slip"
+msgstr "Adaugă subsol la bonul de livrare"
+
+msgid "Adds PayPal Smart Button Checkout option"
+msgstr "Adaugă opțiunea PayPal Smart Button Checkout"
+
+msgid "Adds customer note in the dispatch label"
+msgstr "Adaugă nota client în eticheta de expediere"
+
+msgid "Adds customer note to the delivery note"
+msgstr "Adaugă nota client la bonul de livrare"
+
+msgid "Adds customer note to the packing slip"
+msgstr "Adaugă nota de client la bonul de ambalare"
+
+msgid "Adds footer in dispatch label"
+msgstr "Adaugă subsol în eticheta de expediere"
+
+msgid "Adds footer to the  Shipping label"
+msgstr "Adaugă subsol la eticheta de expediere"
+
+msgid "Adds product image to the line items in the product table"
+msgstr "Adaugă imaginea produsului la elementele rând din tabelul de produse"
+
+msgid ""
+"Admins and customers both can leverage this feature wherever applicable. "
+"Disabling will remove all the provisions. Yet, the invoices are customizable."
+msgstr ""
+"Administratorii și clienții pot folosi această funcție oriunde este cazul. "
+"Dezactivarea va elimina toate prevederile. Cu toate acestea, facturile sunt "
+"personalizabile."
+
+msgid "Advanced BOGO Coupons"
+msgstr "Cupoane BOGO avansate"
+
+msgid "Advanced filters and customizations for import & export"
+msgstr "Filtre avansate și personalizări pentru import și export"
+
+msgid "Advanced filters and customizations for import and export"
+msgstr "Filtre avansate și personalizări pentru import și export"
+
+msgid "Advanced options"
+msgstr "Optiuni avansate"
+
+msgid "Advanced visual and code editor"
+msgstr "Editor vizual și de cod avansat"
+
+msgid "Align"
+msgstr "Alinia"
+
+msgid "All document types"
+msgstr "Toate tipurile de documente"
+
+msgid "All fields are mandatory"
+msgstr "Toate campurile sunt obligatorii"
+
+msgid "All unsaved changes will be lost upon switching to a new layout."
+msgstr ""
+"Toate modificările nesalvate se vor pierde la trecerea la un nou aspect."
+
+msgid "All users"
+msgstr "Toți utilizatorii"
+
+msgid "Allow coupon combinations"
+msgstr "Permiteți combinații de cupoane"
+
+msgid "Allow customers to print invoices"
+msgstr "Permiteți clienților să imprime facturile"
+
+msgid "Allow remote stylesheets and images"
+msgstr "Permite foi de stil și imagini la distanță"
+
+msgid "Allows customers to print the invoice from the specified pages."
+msgstr "Permite clienților să imprime factura din paginile specificate."
+
+msgid "Allows guest checkout"
+msgstr "Permite checkout-ul oaspeților"
+
+msgid "Already tried the free %s WebToffee mPDF addon %s."
+msgstr "Am încercat deja %s suplimentul WebToffee mPDF %s."
+
+msgid "Alter additional item meta"
+msgstr "Modificați meta elementul suplimentar"
+
+msgid "Alter barcode information"
+msgstr "Modificați informațiile codului de bare"
+
+msgid "Alter billing address"
+msgstr "Modificați adresa de facturare"
+
+msgid "Alter dispatch date"
+msgstr "Modificați data expedierii"
+
+msgid "Alter fee"
+msgstr "Taxa de modificare"
+
+msgid "Alter formated item price. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Modificați prețul articolului formatat. (Funcționează numai cu eticheta "
+"Factură și expediere)"
+
+msgid "Alter formated item total. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Modificați totalul articolului formatat. (Funcționează numai cu eticheta "
+"Factură și expediere)"
+
+msgid "Alter formated subtotal"
+msgstr "Modificați subtotalul formatat"
+
+msgid "Alter invoice date"
+msgstr "Modificați data facturii"
+
+msgid "Alter item price"
+msgstr "Modificați prețul articolului"
+
+msgid "Alter item price format"
+msgstr "Modificați formatul prețului articolului"
+
+msgid "Alter item price. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Modificați prețul articolului. (Funcționează numai cu eticheta Factură și "
+"expediere)"
+
+msgid "Alter item quantity"
+msgstr "Modificați cantitatea articolului"
+
+msgid "Alter item quantity in package documents"
+msgstr "Modificați cantitatea articolului în documentele de pachet"
+
+msgid ""
+"Alter item quantity in product table (Works with Packing List, Shipping "
+"Label and Delivery note only)"
+msgstr ""
+"Modificați cantitatea articolului în tabelul de produse (funcționează numai "
+"cu lista de ambalare, eticheta de livrare și bonul de livrare)"
+
+msgid "Alter item quantity. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Modificați cantitatea articolului. (Funcționează numai cu eticheta Factură "
+"și expediere)"
+
+msgid "Alter item total"
+msgstr "Modificați totalul articolului"
+
+msgid "Alter item total format"
+msgstr "Modificați formatul total al articolului"
+
+msgid "Alter item total in package documents"
+msgstr "Modificați totalul articolului din documentele pachetului"
+
+msgid ""
+"Alter item total in product table (Works with Packing List, Shipping Label "
+"and Delivery note only)"
+msgstr ""
+"Modificați totalul articolului în tabelul de produse (funcționează numai cu "
+"lista de ambalare, eticheta de livrare și bonul de livrare)"
+
+msgid "Alter item total. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Modificați totalul articolului. (Funcționează numai cu eticheta Factură și "
+"expediere)"
+
+msgid "Alter order date"
+msgstr "Modificați data comenzii"
+
+msgid "Alter product name"
+msgstr "Modificați numele produsului"
+
+msgid ""
+"Alter product name in product (Works with Packing List, Shipping Label and "
+"Delivery note only)"
+msgstr ""
+"Modificați numele produsului în produs (funcționează numai cu lista de "
+"ambalare, eticheta de livrare și bonul de livrare)"
+
+msgid "Alter product name. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Modificați numele produsului. (Funcționează numai cu eticheta Factură și "
+"expediere)"
+
+msgid "Alter product table column"
+msgstr "Modificați coloana tabelului de produse"
+
+msgid "Alter product table column in package documents"
+msgstr "Modificați coloana tabelului de produse din documentele pachetului"
+
+msgid ""
+"Alter product table column. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Modificați coloana tabelului de produse. (Funcționează numai cu eticheta "
+"Factură și expediere)"
+
+msgid ""
+"Alter product table column. (Works with Packing List, Shipping Label and "
+"Delivery note only)"
+msgstr ""
+"Modificați coloana tabelului de produse. (Funcționează numai cu Lista de "
+"ambalare, eticheta de expediere și bonul de livrare)"
+
+msgid "Alter product table head.(Add, remove, change order)"
+msgstr ""
+"Modificați capul tabelului de produse. (Adăugați, eliminați, schimbați "
+"ordinea)"
+
+msgid "Alter product table head.(Add,remove, change the order)"
+msgstr ""
+"Modificați capul tabelului de produse. (Adăugați, eliminați, modificați "
+"comanda)"
+
+msgid "Alter shipping address"
+msgstr "Modificați adresa de expediere"
+
+msgid "Alter shipping from address"
+msgstr "Modificați livrarea de la adresa"
+
+msgid "Alter shipping method"
+msgstr "Modificați metoda de expediere"
+
+msgid "Alter subtotal"
+msgstr "Modificați subtotalul"
+
+msgid "Alter subtotal format"
+msgstr "Modificați formatul subtotalului"
+
+msgid "Alter template HTML before printing"
+msgstr "Modificați codul HTML al șablonului înainte de imprimare"
+
+msgid "Alter template HTML before printing."
+msgstr "Modificați HTML-ul șablonului înainte de imprimare."
+
+msgid "Alter the footer data"
+msgstr "Modificați datele de subsol"
+
+msgid "Alter the footer data."
+msgstr "Modificați datele de subsol."
+
+msgid "Alter the product name in package documents"
+msgstr "Modificați numele produsului în documentele pachetului"
+
+msgid "Alter the settings array"
+msgstr "Modificați matricea de setări"
+
+msgid "Alter the variation data."
+msgstr "Modificați datele de variație."
+
+msgid "Alter total fee"
+msgstr "Modificați taxa totală"
+
+msgid "Alter total price"
+msgstr "Modificați prețul total"
+
+msgid "Alter total price in words"
+msgstr "Modificați prețul total în cuvinte"
+
+msgid "Angle"
+msgstr "Unghi"
+
+msgid ""
+"Assign QR code to all of invoices generated for the orders in your store"
+msgstr ""
+"Atribuiți cod QR tuturor facturilor generate pentru comenzile din magazinul "
+"dvs"
+
+msgid "Assign QR codes to all generated invoices"
+msgstr "Atribuiți coduri QR tuturor facturilor generate"
+
+msgid "Assign different types of info in your QR code, including:"
+msgstr "Atribuiți diferite tipuri de informații în codul dvs. QR, inclusiv:"
+
+msgid "Assits in GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA, and CCPA"
+msgstr "Asistență în GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA și CCPA"
+
+msgid "Attach document to order email"
+msgstr "Atașați documentul la e-mailul comenzii"
+
+msgid "Attach documents to selected order status emails"
+msgstr "Atașați documente la e-mailurile cu starea comenzii selectate"
+
+msgid "Attach invoice PDF to admin email"
+msgstr "Atașați factura PDF în e-mailul comenzii"
+
+msgid "Attach invoice PDF to order emails"
+msgstr "Atașați factura PDF pentru a comanda e-mailuri"
+
+msgid "Attach invoice pdf in WooCommerce Email"
+msgstr "Atașați factura pdf în WooCommerce Email"
+
+msgid "Attach invoice pdf in customer email"
+msgstr "Atașați factura PDF în e-mailul comenzii"
+
+msgid "Attach proforma invoice PDF to order emails"
+msgstr "Atașați factura proforma PDF pentru a comanda e-mailuri"
+
+msgid "Attach sales terms"
+msgstr "Atașați termenii de vânzare"
+
+msgid "Attach special notes with proforma invoices"
+msgstr "Atașați note speciale cu facturile proforma"
+
+msgid "Attach transport & sales terms"
+msgstr "Atașați termenii de transport și vânzare"
+
+msgid "Attach transport terms"
+msgstr "Atașați termenii de transport"
+
+msgid "Auto reset sequence per month/year etc"
+msgstr "Secvență de resetare automată pe lună/an etc"
+
+msgid "Auto-generate invoices, packing slips, and credit notes"
+msgstr "Generați automat facturi, bonuri de ambalare și note de credit"
+
+msgid "Automate invoice creation"
+msgstr "Automatizați crearea facturilor"
+
+msgid "Automatic cleanup"
+msgstr "Curățare automată"
+
+msgid "Automatic email alerts for admin & users"
+msgstr "Alerte automate prin e-mail pentru administrator și utilizatori"
+
+msgid "Automatically add products"
+msgstr "Adăugați automat produse"
+
+msgid "Automatically attach packing slip with order email"
+msgstr "Atașați automat factura PDF cu adresa de e-mail a comenzii"
+
+msgid "Automatically block cookies/script"
+msgstr "Blocați automat cookie-urile/scriptul"
+
+msgid "Automatically create invoice based on order status"
+msgstr "Creați automat o factură în funcție de starea comenzii"
+
+msgid "Automatically creates invoices for selected order statuses."
+msgstr "Creează automat facturi pentru stările de comenzi selectate."
+
+msgid "Automatically email picklists based on order status"
+msgstr "E-mail automat liste de alegere în funcție de starea comenzii"
+
+msgid ""
+"Automatically generate professional WooCommerce order-related documents for "
+"all your orders"
+msgstr ""
+"Generați automat documente profesionale legate de comenzile WooCommerce "
+"pentru toate comenzile dvs"
+
+msgid "Automatically generate suggestions based on order history"
+msgstr "Generați automat sugestii pe baza istoricului comenzilor"
+
+msgid "Automatically send quotes to users"
+msgstr "Trimiteți automat cotații utilizatorilor"
+
+msgid "Back"
+msgstr "Înapoi"
+
+msgid "Barcode"
+msgstr "Cod de bare"
+
+msgid "Based on order number"
+msgstr "Pe baza numărului de comandă"
+
+msgid "Basic - 0"
+msgstr "De bază - 0"
+
+msgid "Basic - 1"
+msgstr "De bază - 1"
+
+msgid ""
+"Before using this tool, please make sure you followed the steps described in "
+"this article %1$s how to reset/delete existing invoice numbers%2$s."
+msgstr ""
+"Înainte de a utiliza acest instrument, asigurați-vă că ați urmat pașii "
+"descriși în acest articol %1$s cum să resetați/Ștergeți numerele de factură "
+"existente%2$s."
+
+msgid "Better with transparent PNG images"
+msgstr "Mai bine cu imagini PNG transparente"
+
+msgid "Bill to"
+msgstr "Client :"
+
+msgid "Billing Address"
+msgstr "Billing Address"
+
+msgid "Billing Address:"
+msgstr "Billing Address:"
+
+msgid "Billing address"
+msgstr "Adresă de facturare"
+
+msgid "Bold"
+msgstr "Îndrăzneţ"
+
+msgid "Bolder"
+msgstr "Bolder"
+
+msgid "Border radius"
+msgstr "Chenar"
+
+msgid "Border width"
+msgstr "Dimensiunea chenarului"
+
+msgid "Box name"
+msgstr "Numele cutiei"
+
+msgid "Built-in label templates"
+msgstr "Personalizați șablonul"
+
+msgid "Built-in templates to personalize packing slip"
+msgstr "Șabloane încorporate pentru a personaliza borderoul de ambalare"
+
+msgid "Bulk generate coupons"
+msgstr "Generați cupoane în vrac"
+
+msgid "Bulk print address labels"
+msgstr "Imprimați în vrac etichete de adresă"
+
+msgid "Bulk print picklists from the admin order page"
+msgstr ""
+"Imprimați în bloc listele de alegere din pagina de comandă administrativă"
+
+msgid "Bulk print shipping labels"
+msgstr "Imprimare în vrac etichete de expediere"
+
+msgid "Buyer name"
+msgstr "Numele cumpărătorului"
+
+msgid "Cancel"
+msgstr "Anulare"
+
+msgid "Cannot close this banner"
+msgstr "Nu se poate închide acest banner"
+
+msgid "Capture the authorized payment later"
+msgstr "Capturați plata autorizată mai târziu"
+
+msgid "Cart Discount"
+msgstr "Cosul de reducere"
+
+msgid "Cart abandonment coupons"
+msgstr "Cupoane de abandonare a coșului"
+
+msgid "Cart discount"
+msgstr "Reducere coș"
+
+msgid "Cash on delivery"
+msgstr "Ramburs la livrare"
+
+msgid "Category wise template listing"
+msgstr "Lista de șabloane în funcție de categorii"
+
+msgid "Caution: Settings here are only for advanced users."
+msgstr "Atenție: setările de aici sunt doar pentru utilizatorii avansați."
+
+msgid "Center"
+msgstr "Centru"
+
+msgid "Change address label layout"
+msgstr "Schimbați aspectul etichetei de adresă"
+
+msgid "Change color, text, background, border & more"
+msgstr "Schimbați culoarea, textul, fundalul, chenarul și multe altele"
+
+msgid "Change document number format & length"
+msgstr "Schimbați formatul și lungimea numărului documentului"
+
+msgid "Change layout"
+msgstr "Modifică format"
+
+msgid "Checkout Premium"
+msgstr "Checkout Premium"
+
+msgid "Choose a country&hellip;"
+msgstr "Alegeți o țară și un vârf;"
+
+msgid "Choose a layout."
+msgstr "Alegeți un aspect de formular."
+
+msgid "Choose date"
+msgstr "Alegeți data"
+
+msgid "Choose email classes"
+msgstr "Alegeți cursuri de e-mail"
+
+msgid "Choose emails for invoice attachment"
+msgstr "Alegeți e-mailuri pentru atașarea facturii"
+
+msgid "Choose order status"
+msgstr "Alegeți Starea comenzii"
+
+msgid ""
+"Choose the order emails to which you'd like to attach invoices for your "
+"customers"
+msgstr ""
+"Alegeți e-mailurile de comandă la care doriți să atașați facturi pentru "
+"clienții dvs"
+
+msgid "City"
+msgstr "Oraș"
+
+msgid "Classic"
+msgstr "Clasic"
+
+msgid "Click here to add Company logo"
+msgstr "Faceți clic aici pentru a adăuga logo-ul companiei"
+
+msgid "Click here to add Company name"
+msgstr "Faceți clic aici pentru a adăuga numele companiei"
+
+msgid "Click here to add From address"
+msgstr "Faceți clic aici pentru a adăuga adresa de la De la"
+
+msgid "Click here to add Signature"
+msgstr "Faceți clic aici pentru a adăuga semnătura"
+
+msgid "Click to append with existing data"
+msgstr "Faceți clic pentru a adăuga date existente"
+
+msgid "Click to view predefined templates."
+msgstr "Faceți clic pentru a vizualiza șabloanele predefinite."
+
+msgid "Close"
+msgstr "Închide"
+
+msgid "Code"
+msgstr "Cod"
+
+msgid "Code Copied"
+msgstr "Cod copiat"
+
+msgid "Collect payments with a payment link on the invoice"
+msgstr "Încasați plățile cu un link de plată pe factură"
+
+msgid "Color"
+msgstr "Culoare"
+
+msgid "Combine with the existing templates"
+msgstr "Combinați cu șabloanele existente"
+
+msgid "Company Logo"
+msgstr "Logoul companiei"
+
+msgid "Company Logo / Name"
+msgstr "Logoul companiei"
+
+msgid "Company Name"
+msgstr "Numele Companiei"
+
+msgid "Company Tax ID"
+msgstr "Numele Companiei"
+
+msgid "Company details"
+msgstr "Detalii companie"
+
+msgid "Company logo"
+msgstr "Logo companie"
+
+msgid "Company name"
+msgstr "Numele Companiei"
+
+msgid "Company name font size"
+msgstr "Dimensiunea fontului companiei"
+
+msgid "Compatible with WPML"
+msgstr "Compatibil cu WPML"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slip & Credit Note (Premium)"
+msgstr ""
+"Compatibil cu factura PDF WooCommerce, borderoul de ambalare și nota de "
+"credit (Premium)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slip & Credit Note (Pro)"
+msgstr ""
+"Compatibil cu factură PDF WooCommerce, borderouri de ambalare, note de "
+"livrare și etichetă de expediere (versiunile gratuite și Pro)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slips, Delivery Notes, and "
+"Shipping Label (Free and Pro versions)"
+msgstr ""
+"Compatibil cu factură PDF WooCommerce, borderouri de ambalare, note de "
+"livrare și etichetă de expediere (versiunile gratuite și Pro)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoices, Packing Slips, Delivery Notes, and "
+"Shipping Labels (Free)"
+msgstr ""
+"Compatibil cu facturi PDF WooCommerce, borderouri de ambalare, note de "
+"livrare și etichete de expediere (gratuit)"
+
+msgid "Compatible with major 3rd-party plugins"
+msgstr "Compatibil cu principalele pluginuri terță parte"
+
+msgid "Complete the invoice number format to suit your requirements"
+msgstr "Completați formatul numărului facturii în funcție de cerințele dvs"
+
+msgid "Configure the general settings required for the delivery note."
+msgstr "Configurați setările generale necesare pentru bonul de livrare."
+
+msgid "Configure the general settings required for the dispatch label."
+msgstr "Configurați setările generale necesare pentru eticheta de expediere."
+
+msgid "Configure the general settings required for the invoice."
+msgstr "Configurați setările generale necesare pentru factură."
+
+msgid "Configure the general settings required for the packing slip."
+msgstr "Configurați setările generale necesare pentru bonul de expediere."
+
+msgid "Configure the general settings required for the shipping label."
+msgstr "Configurați setările generale necesare pentru eticheta de expediere."
+
+msgid "Contact Number"
+msgstr "Numar de contact"
+
+msgid "Contact Us"
+msgstr "Contactează-ne"
+
+msgid "Contact number"
+msgstr "Telefon"
+
+msgid "Copied"
+msgstr "Copiat"
+
+msgid "Copy"
+msgstr "Copiază"
+
+msgid "Copy Code"
+msgstr "Copiere cod"
+
+msgid "Could you tell us a bit more?"
+msgstr "Ne-ai putea spune ceva mai mult?"
+
+msgid "Could you tell us more about that feature?"
+msgstr "Ne-ai putea spune mai multe despre această funcție?"
+
+msgid "Country/State"
+msgstr "Țara de origine"
+
+msgid "Coupon Used"
+msgstr "Cupon folosit"
+
+msgid "Coupon embeds"
+msgstr "Încorporarea cuponului"
+
+msgid "Coupon info"
+msgstr "Informații despre cupoane"
+
+msgid "Coupons based on past purchases"
+msgstr "Cupoane bazate pe achiziții anterioare"
+
+msgid "Create QR code coupons"
+msgstr "Creați cupoane cu coduri QR"
+
+msgid "Create QR code that reads order or invoice number"
+msgstr "Creați un cod QR care citește numărul comenzii sau al facturii"
+
+msgid "Create a cookie consent banner"
+msgstr "Creați un banner de consimțământ pentru cookie-uri"
+
+msgid "Create a new template or edit an existing template."
+msgstr "Creați un șablon nou sau editați un șablon existent."
+
+msgid "Create and offer sign-up discount coupons"
+msgstr "Creați și oferiți cupoane de reducere pentru înscriere"
+
+msgid ""
+"Create and run successful promotional campaigns with the best tools for "
+"WooCommerce"
+msgstr ""
+"Creați și rulați campanii promoționale de succes cu cele mai bune "
+"instrumente pentru WooCommerce"
+
+msgid "Create attractive gift cards "
+msgstr "Creați carduri cadou atractive"
+
+msgid "Create cookie policy"
+msgstr "Creați o politică de cookie-uri"
+
+msgid "Create delivery notes, shipping & dispatch labels"
+msgstr "Creați note de livrare, etichete de expediere și expediere"
+
+msgid "Create new"
+msgstr "Creaza nou"
+
+msgid "Create new template"
+msgstr "Creați un nou șablon"
+
+msgid "Create or customize picklist templates"
+msgstr "Creați sau personalizați șabloanele de liste de selectare"
+
+msgid "Create proforma invoice automatically for selected order statuses"
+msgstr "Creați automat factură proforma pentru stările de comenzi selectate"
+
+msgid "Create proforma invoices automatically"
+msgstr "Creați automat facturi proforma"
+
+msgid "Create simple & variable subscriptions"
+msgstr "Creați abonamente simple și variabile"
+
+msgid "Create unlimited gift cards"
+msgstr "Creați carduri cadou nelimitate"
+
+msgid "Create users on order import"
+msgstr "Creați utilizatori la importul comenzii"
+
+msgid "Create your unique invoice numbering system"
+msgstr "Creați-vă sistemul unic de numerotare a facturilor"
+
+msgid "Credit note"
+msgstr "Notă de credit"
+
+msgid "Creditnote number format"
+msgstr "Formatul numărului notei de credit"
+
+msgid "Cross-platform compatibility"
+msgstr "Compatibilitate multi-platformă"
+
+msgid "Custom"
+msgstr "Personalizat"
+
+msgid "Custom (Pro version)"
+msgstr "Footer personalizat"
+
+msgid "Custom PDF name prefix"
+msgstr "Prefix personalizat pentru nume PDF"
+
+msgid "Custom details, as below:"
+msgstr "Detalii personalizate, după cum urmează:"
+
+msgid "Custom footer"
+msgstr "Subsol personalizat"
+
+msgid "Custom invoice date"
+msgstr "Data facturii personalizată"
+
+msgid "Custom logo for invoice"
+msgstr "Logo personalizat pentru factură"
+
+msgid "Custom number"
+msgstr "Serii de numere personalizate"
+
+msgid "Custom number series"
+msgstr "Serii de numere personalizate"
+
+msgid "Custom sequence for free orders"
+msgstr "Secvență personalizată pentru comenzi gratuite"
+
+msgid "Customer Note"
+msgstr "Mențiune client"
+
+msgid "Customer Note:"
+msgstr "Mențiune client:"
+
+msgid "Customer note"
+msgstr "Mențiune client"
+
+msgid "Customer note:"
+msgstr "Mențiune client:"
+
+msgid "Customizable countdown sales banner"
+msgstr "Banner personalizat de vânzări cu numărătoare inversă"
+
+msgid "Customizable tax items, tax fields (SSN, VAT, etc.)"
+msgstr "Elemente fiscale personalizabile, câmpuri fiscale (SSN, TVA etc.)"
+
+msgid "Customize"
+msgstr "Personalizați"
+
+msgid "Customize Pay Later option display"
+msgstr "Personalizați afișarea opțiunii Plătiți mai târziu"
+
+msgid "Customize and send emails to new users on import"
+msgstr "Personalizați și trimiteți e-mailuri către utilizatori noi la import"
+
+msgid "Customize cookie banner"
+msgstr "Personalizați bannerul cookie"
+
+msgid "Customize document layout & properties"
+msgstr "Personalizați aspectul și proprietățile documentului"
+
+msgid "Customize individual elements using block editors"
+msgstr "Personalizați elementele individuale folosind editori de blocuri"
+
+msgid "Customize invoice PDF name format"
+msgstr "Personalizați formatul de nume PDF al facturii"
+
+msgid "Customize label sizes"
+msgstr "Personalizați dimensiunile etichetelor"
+
+msgid "Customize layout elements & properties"
+msgstr "Personalizați elementele și proprietățile aspectului"
+
+msgid "Customize layout properties"
+msgstr "Personalizați proprietățile aspectului"
+
+msgid "Customize shipping label size"
+msgstr "Personalizați dimensiunea etichetei de expediere"
+
+msgid "Customize the display of the recommended products"
+msgstr "Personalizați afișarea produselor recomandate"
+
+msgid "Customize the title, button, and label texts"
+msgstr "Personalizați titlul, butonul și textele etichetelor"
+
+msgid "Customizer for WooCommerce PDF Invoices"
+msgstr "Personalizator pentru facturi PDF WooCommerce"
+
+msgid "Customizer for WooCommerce PDF Invoices Plugin"
+msgstr "Personalizator pentru WooCommerce PDF Invoices Plugin"
+
+msgid "Customizer module is not active."
+msgstr "Modulul de personalizare nu este activ."
+
+msgid "Dashed"
+msgstr "Punctată"
+
+msgid "Data Import & Export"
+msgstr "Import și export de date"
+
+msgid "Date format strings"
+msgstr "Șiruri de format de dată"
+
+msgid "Date formats"
+msgstr "Formate de dată"
+
+msgid "Date suffix in order numbers"
+msgstr "Sufixul datei în numerele de ordine"
+
+msgid "Date:"
+msgstr "Data:"
+
+msgid "Debug"
+msgstr "Diagnosticare"
+
+msgid "Delete"
+msgstr "Șterge"
+
+msgid "Delete all generated invoice numbers"
+msgstr "Ștergeți toate numerele de factură generate"
+
+msgid "Delete all the settings made by this plugin"
+msgstr "Ștergeți toate setările făcute de acest plugin"
+
+msgid "Delivery note"
+msgstr "Aviz de însoțire"
+
+msgid "Department/Business unit/Sender name"
+msgstr "Departamentul/Unitatea comercială/Numele expeditorului"
+
+msgid "Description"
+msgstr "Descriere"
+
+msgid "Developed by"
+msgstr "Dezvoltat de"
+
+msgid "Disable guest users from asking for quote"
+msgstr "Dezactivați utilizatorilor invitați să solicite o ofertă"
+
+msgid "Dispatch Date:"
+msgstr "Data expedierii:"
+
+msgid "Dispatch Label"
+msgstr "Eticheta de expediere"
+
+msgid "Dispatch Label 1"
+msgstr "Etichetă de expediere 1"
+
+msgid "Dispatch label"
+msgstr "Eticheta de expediere"
+
+msgid "Display"
+msgstr "Afişa"
+
+msgid "Display currency code"
+msgstr "Afișează codul monedei"
+
+msgid "Display free line items in the invoice"
+msgstr "Afișați elemente rând gratuite în factură"
+
+msgid "Display free line items on invoice"
+msgstr "Afișați elementele rând gratuite pe factură"
+
+msgid "Display options for bundled products"
+msgstr "Opțiuni de afișare pentru produsele la pachet"
+
+msgid "Display recommended products on the product pages"
+msgstr "Afișați produsele recomandate pe paginile produselor"
+
+msgid "Display state name"
+msgstr "Afișați numele stării"
+
+msgid "Display the total number of items on label"
+msgstr "Afișați elemente rând gratuite în factură"
+
+msgid ""
+"Displays customer`s VAT number saved in the order details by third-party "
+"plugins in this document. Supported meta keys are"
+msgstr ""
+"Afișează numărul de TVA al clientului salvat în detaliile comenzii de către "
+"pluginuri terțe în acest document. Cheile meta acceptate sunt"
+
+msgid ""
+"Displays the currently chosen document template with provisions to modify."
+msgstr ""
+"Afișează șablonul de document ales în prezent cu dispoziții de modificat."
+
+msgid "Do not reset the templates"
+msgstr "Nu resetați șabloanele"
+
+msgid "Do not show again"
+msgstr "Nu arăta din nou"
+
+msgid "Document"
+msgstr "Document"
+
+msgid "Document customizer"
+msgstr "Personalizator de documente"
+
+msgid "Document details"
+msgstr "Detalii Document"
+
+msgid "Document title"
+msgstr "Titlu document"
+
+msgid "Documentation"
+msgstr "Documentație"
+
+msgid "Documents"
+msgstr "Documente"
+
+msgid "Dotted"
+msgstr "Punctat"
+
+msgid "Download"
+msgstr "Descarcă"
+
+msgid "Download Invoice"
+msgstr "Descărcați factura"
+
+msgid "Download Invoices"
+msgstr "Descărcați facturile"
+
+msgid "Download Packing slip"
+msgstr "Descărcați fișa de ambalare"
+
+msgid "Download invoice"
+msgstr "Descărcați factura"
+
+msgid "Drag-and-drop easy customization"
+msgstr "Personalizare simplă prin glisare și plasare"
+
+msgid "E-commerce Promotions"
+msgstr "Promoții de comerț electronic"
+
+msgid "Easy button and form customization"
+msgstr "Personalizare ușoară a butoanelor și formularelor"
+
+msgid "Easy invoice layout customization"
+msgstr "Personalizare simplă a aspectului facturii"
+
+msgid "Edit"
+msgstr "Editeaza"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Email Field"
+msgstr "Câmp de e-mail"
+
+msgid "Email customers on order status change"
+msgstr ""
+"Trimiteți un e-mail clienților cu privire la schimbarea stării comenzii"
+
+msgid "Email gift cards to customers"
+msgstr "E-mail carduri cadou către clienți"
+
+msgid "Email:"
+msgstr "E-mail:"
+
+msgid "Empty order"
+msgstr "Comanda goală"
+
+msgid "Enable Invoice"
+msgstr "Activați factura"
+
+msgid "Enable RTL support"
+msgstr "Activați suportul RTL"
+
+msgid "Enable a common print button for"
+msgstr "Activați un buton de imprimare comun pentru"
+
+msgid "Enable additional currency font support"
+msgstr "Activați suportul suplimentar pentru fonturi valutare"
+
+msgid "Enable customers to Pay Later at checkout"
+msgstr "Permiteți clienților să plătească mai târziu la finalizarea comenzii"
+
+msgid "Enable customers to print invoices & packing slips"
+msgstr "Permiteți clienților să imprime facturile și borderourile de ambalare"
+
+msgid "Enable customers to print the documents from order emails"
+msgstr "Permiteți clienților să imprime documentele din e-mailurile de comandă"
+
+msgid "Enable dedicated print buttons for"
+msgstr "Activați butoanele de imprimare dedicate pentru"
+
+msgid "Enable quotation request for selected products"
+msgstr "Activați cererea de ofertă pentru produsele selectate"
+
+msgid ""
+"Enable to apply the most recent settings to previous order invoices. This "
+"will match the previous invoices with the upcoming invoices.Changing the "
+"company address, name or any other settings in the future may overwrite "
+"previously created invoices with the most up-to-date information."
+msgstr ""
+"Activați pentru a aplica cele mai recente setări facturilor de comenzi "
+"anterioare. Aceasta va potrivi facturile anterioare cu facturile viitoare. "
+"Schimbarea adresei companiei, a numelui sau a oricăror alte setări în viitor "
+"poate suprascrie facturile create anterior cu cele mai actualizate "
+"informații."
+
+msgid "Enable to attach invoice PDF to the new order email notification"
+msgstr "Atașați factura PDF în e-mailul comenzii"
+
+msgid ""
+"Enable to create invoice for orders generated before plugin installation"
+msgstr ""
+"Activați crearea unei facturi pentru comenzile generate înainte de "
+"instalarea pluginului"
+
+msgid "Enable to create invoices for free orders"
+msgstr "Activați crearea de facturi pentru comenzile gratuite."
+
+msgid "Enable to create invoices for free orders."
+msgstr "Activați crearea de facturi pentru comenzile gratuite."
+
+msgid "Enable to have a preview of the document before the print is initiated"
+msgstr ""
+"Activați pentru a avea o previzualizare a documentului înainte de a începe "
+"imprimarea"
+
+msgid "Enable to print, download, and mail invoices."
+msgstr ""
+"Activați pentru imprimare, descărcare și trimitere prin poștă a facturilor."
+
+msgid "Enable to show currency code instead of currency symbol"
+msgstr "Activați pentru a afișa codul monedei în loc de simbolul monedei"
+
+msgid "Enable to show state name in addresses"
+msgstr "Activați pentru a afișa numele statului în adrese"
+
+msgid ""
+"Enable to use additional font library to support the currency symbol in pdf"
+msgstr ""
+"Activați utilizarea bibliotecii de fonturi suplimentare pentru a accepta "
+"simbolul monedei în format pdf"
+
+msgid "End"
+msgstr "Sfârșit"
+
+msgid "Ensure security with base64 & URI printing"
+msgstr "Asigurați securitatea prin imprimare base64 și URI"
+
+msgid "Enter a name for your template"
+msgstr "Introduceți un nume pentru șablonul dvs"
+
+msgid "Error"
+msgstr "Eroare"
+
+msgid "Error uploading the file"
+msgstr "Eroare la încărcarea fișierului"
+
+msgid "Error."
+msgstr "Eroare."
+
+msgid "Error:"
+msgstr "EROARE:"
+
+msgid "Error: Empty JSON file"
+msgstr "Eroare: Fișier JSON gol"
+
+msgid "Error: Invalid JSON data"
+msgstr "Eroare: date JSON nevalide"
+
+msgid "Example Code"
+msgstr "Exemplu de cod"
+
+msgid "Exclude out-of-stock products"
+msgstr "Excludeți produsele epuizate"
+
+msgid "Exclude specific products"
+msgstr "Excludeți anumite produse"
+
+msgid "Exclude virtual items from picklists"
+msgstr "Excludeți articolele virtuale din listele de selectare"
+
+msgid "Exclude virtual products from picklists"
+msgstr "Excludeți produsele virtuale din listele de selectare"
+
+msgid "Explicit/Implicit consent"
+msgstr "Consimțământ explicit/implicit"
+
+msgid "Export"
+msgstr "Exportă"
+
+msgid "Export and import custom fields and third-party plugin fields"
+msgstr ""
+"Exportați și importați câmpuri personalizate și câmpuri pentru pluginuri "
+"terțe"
+
+msgid "Export product images in a separate zip file"
+msgstr "Exportați imaginile produselor într-un fișier zip separat"
+
+msgid "Export settings (JSON)"
+msgstr "Setări de export (JSON)"
+
+msgid "Export to FTP/SFTP"
+msgstr "Exportați pe FTP/SFTP"
+
+msgid "Extensions"
+msgstr "Extensii"
+
+msgid "Extra Details"
+msgstr "Detalii suplimentare"
+
+msgid "Extra detail font size"
+msgstr "Dimensiune font suplimentar detaliat"
+
+msgid "Fast and Superior Support"
+msgstr "Suport rapid și superior"
+
+msgid "Features"
+msgstr "Caracteristici"
+
+msgid "Fee"
+msgstr "Taxa"
+
+msgid "Field Name"
+msgstr "Numele domeniului"
+
+msgid "File path"
+msgstr "Traiectorie fișier"
+
+msgid "Filter by user role, email, date, etc"
+msgstr "Filtrați după rolul utilizatorului, e-mail, dată etc"
+
+msgid "Filter export by products, order status, email, date, etc"
+msgstr "Filtrați exportul după produse, starea comenzii, e-mail, dată etc"
+
+msgid "Filter products based on product type"
+msgstr "Filtrați produsele în funcție de tipul de produs"
+
+msgid "Filters"
+msgstr "Filtre"
+
+msgid "Finish setup"
+msgstr "Terminați configurarea"
+
+msgid "Fit multiple shipping labels on a single page"
+msgstr "Imprimați eticheta de expediere"
+
+msgid "Fixed and custom gift card amounts"
+msgstr "Sume fixe și personalizate ale cardurilor cadou"
+
+msgid "Font size"
+msgstr "Font size"
+
+msgid "Footer"
+msgstr "Subsol"
+
+msgid "For better RTL integration in PDF documents, please use our"
+msgstr ""
+"Pentru o mai bună integrare RTL în documentele PDF, vă rugăm să utilizați"
+
+msgid "For better performances"
+msgstr "Pentru performanțe mai bune"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Fragile"
+msgstr "Fragile"
+
+msgid "Free"
+msgstr "Gratuit"
+
+msgid "Free version"
+msgstr "Versiune gratuită"
+
+msgid "Free vs Premium"
+msgstr "Gratuit vs Premium"
+
+msgid "Free!"
+msgstr "Gratuit!"
+
+msgid "Frequently Bought Together for WooCommerce"
+msgstr "Cumpărate frecvent împreună pentru WooCommerce"
+
+msgid "From"
+msgstr "De la"
+
+msgid "From Address"
+msgstr "Din adresa"
+
+msgid "From Address:"
+msgstr "Din adresa:"
+
+msgid "From address"
+msgstr "Din adresa"
+
+msgid "From left"
+msgstr "De la stânga"
+
+msgid "From top"
+msgstr "Gratar de bază: Glisați din partea de sus"
+
+msgid "From:"
+msgstr "De la:"
+
+msgid "Full Page"
+msgstr "Toată pagina"
+
+msgid "Full page"
+msgstr "Toată pagina"
+
+msgid "GDPR Cookie Consent Plugin (CCPA Ready)"
+msgstr "Plugin de consimțământ pentru cookie-uri GDPR (pregătit CCPA)"
+
+msgid "General"
+msgstr "General"
+
+msgid "General Settings"
+msgstr "Setări generale"
+
+msgid "Generate"
+msgstr "Genereaza"
+
+msgid "Generate Billing Address labels"
+msgstr "Generați etichete de adresă de facturare"
+
+msgid "Generate From Address labels"
+msgstr "Generați de la etichete de adresă"
+
+msgid "Generate Return Address labels"
+msgstr "Etichetă de adresă"
+
+msgid "Generate Shipping Address labels"
+msgstr "Generați etichete de adresă de expediere"
+
+msgid ""
+"Generate WooCommerce product feeds for Google Shopping, Facebook Shop, and "
+"Instagram Shop"
+msgstr ""
+"Generați fluxuri de produse WooCommerce pentru Google Shopping, Facebook "
+"Shop și Instagram Shop"
+
+msgid "Generate address labels"
+msgstr "Generați etichete de adresă"
+
+msgid "Generate custom coupon URLs"
+msgstr "Generați adrese URL de cupon personalizate"
+
+msgid "Generate custom-sized shipping labels"
+msgstr "Etichetă de livrare"
+
+msgid "Generate dispatch labels and delivery notes"
+msgstr "Generați etichete de expediere și note de livrare"
+
+msgid "Generate gift cards based on order status"
+msgstr "Generați carduri cadou în funcție de starea comenzii"
+
+msgid "Generate invoices and credits notes"
+msgstr "Generați facturi pentru comenzi gratuite"
+
+msgid "Generate invoices for existing orders"
+msgstr "Generați facturi pentru comenzile existente"
+
+msgid "Generate invoices for free orders"
+msgstr "Generați facturi pentru comenzi gratuite"
+
+msgid "Generate invoices for old orders"
+msgstr "Generați facturi pentru comenzile vechi"
+
+msgid "Generate packing slips and credit notes"
+msgstr "Generați bonuri de ambalare și note de credit"
+
+msgid "Generate picklists"
+msgstr "Generați liste de selectare"
+
+msgid "Generate shipping labels and delivery notes"
+msgstr "Adresa de transport"
+
+msgid "Generate shipping labels and dispatch labels"
+msgstr "Adresa de transport"
+
+msgid ""
+"Generate ‘Shipping Address’, ‘Billing Address’, ‘From Address’, and ‘Return "
+"Address’ labels"
+msgstr ""
+"Generați etichetele „Adresa de expediere”, „Adresa de facturare”, „De la "
+"adresa” și „Adresa de retur”"
+
+msgid "Generating"
+msgstr "Generare"
+
+msgid "Get Add-on"
+msgstr "Obțineți supliment"
+
+msgid ""
+"Get Help with Ensuring Compliance to Major Privacy Laws for Your WordPress "
+"Website - GDPR, CCPA, LGPD, CNIL, and More."
+msgstr ""
+"Obțineți ajutor pentru asigurarea conformității cu legile majore de "
+"confidențialitate pentru site-ul dvs. WordPress - GDPR, CCPA, LGPD, CNIL și "
+"altele."
+
+msgid "Get Plugin"
+msgstr "Obțineți pluginul"
+
+msgid "Get advanced features for your"
+msgstr "Obțineți funcții avansate pentru dvs"
+
+msgid "Give away product coupons"
+msgstr "Oferă cupoane de produse"
+
+msgid "Go to plugins page"
+msgstr "Accesați pagina de pluginuri"
+
+msgid "Go to support"
+msgstr "Suport RTL"
+
+msgid "Google local product inventory feed"
+msgstr "Feed de inventar local de produse Google"
+
+msgid "Granular consent based on cookie categories"
+msgstr "Consimțământ granular bazat pe categorii de cookie-uri"
+
+msgid "Group products by 'Category'"
+msgstr "Grupați produsele după „Categorie”"
+
+msgid "Group products by category"
+msgstr "Grupați produsele după „Categorie”"
+
+msgid "Group products by ‘Category’"
+msgstr "Grupați produsele după „Categorie”"
+
+msgid "Group products by ‘Order’"
+msgstr "Grupați produsele după „Comandă”"
+
+msgid "Group products in picklist by order/category"
+msgstr "Grupați produsele în lista de selectare după comandă/categorie"
+
+msgid "HTML"
+msgstr "HTML"
+
+msgid "Header Color"
+msgstr "Culoarea antetului"
+
+msgid "Height"
+msgstr "Înălţime"
+
+msgid "Hello there! Let’s begin with the basics"
+msgstr "Salutare! Să începem cu elementele de bază"
+
+msgid "Help Guide"
+msgstr "Ajutor Ghid"
+
+msgid "Help Links"
+msgstr "Linkuri"
+
+msgid "Help and Support"
+msgstr "Ajutor și asistență"
+
+msgid ""
+"Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s "
+"%5$s. %6$s Less than a minute of your time will motivate us to keep doing "
+"what we do. We would really appreciate if you could take a moment to drop a "
+"quick review that motivate us to keep going."
+msgstr ""
+"Bună, noi, la %sWebToffee%s, dorim să vă mulțumim că ați utilizat %s %s %s. "
+"%s Mai puțin de un minut din timpul dvs. ne va motiva să continuăm să facem "
+"ceea ce facem. Am aprecia cu adevărat dacă ați putea lua un moment pentru a "
+"renunța la o recenzie rapidă care ne motivează să continuăm."
+
+msgid "Hide prices and ‘add to cart’ button"
+msgstr "Ascundeți prețurile și butonul „adăugați în coș”."
+
+msgid "Hide/Show received seal in invoice"
+msgstr "Ascunde/Afișează sigiliul primit în factură"
+
+msgid "Hide/Show received seal in invoice."
+msgstr "Ascunde/Afișează sigiliul primit în factură."
+
+msgid ""
+"I am unable to add customer VAT(or GSTIN or ABN or any other tax id etc)"
+msgstr ""
+"Nu pot adăuga TVA pentru client (sau GSTIN sau ABN sau orice alt cod fiscal "
+"etc.)"
+
+msgid "I couldn't understand how to make it work"
+msgstr "Nu am putut înțelege să-l fac să funcționeze"
+
+msgid "I found a better plugin"
+msgstr "Am găsit un plugin mai bun"
+
+msgid "I rather wouldn't say"
+msgstr "N-aș spune"
+
+msgid "INVOICE"
+msgstr "Factură"
+
+msgid ""
+"If left blank, default to the logo from General settings. Ensure to select "
+"company logo from ‘Invoice > Customize > Company Logo’ to reflect on the "
+"invoice. Recommended size is 150×50px."
+msgstr ""
+"Dacă este lăsat necompletat, implicit la sigla din Setări generale. "
+"Asigurați-vă că selectați sigla companiei din „Factură > Personalizare > "
+"Logo companie” pentru a se reflecta pe factură. Dimensiunea recomandată este "
+"150×50px."
+
+msgid "If the order number is"
+msgstr "Dacă numărul de comandă este"
+
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr "Dacă aveți un moment, vă rugăm să ne anunțați de ce dezactivați:"
+
+msgid "Image"
+msgstr "Imagine"
+
+msgid "Image Signature"
+msgstr "Semnătură de imagine"
+
+msgid "Image label"
+msgstr "Eticheta de imagine"
+
+msgid "Image text align"
+msgstr "Textul textului de aliniere"
+
+msgid "Import"
+msgstr "Import"
+
+msgid "Import & export custom fields and values"
+msgstr "Importați și exportați câmpuri și valori personalizate"
+
+msgid "Import Export Suite for WooCommerce"
+msgstr "Import Export Suite pentru WooCommerce"
+
+msgid "Import and export coupons"
+msgstr "Import și export cupoane"
+
+msgid "Import from URL, Google Sheets, FTP/SFTP"
+msgstr "Importați din URL, Foi de calcul Google, FTP/SFTP"
+
+msgid "Import settings (JSON)"
+msgstr "Setări de import (JSON)"
+
+msgid ""
+"Import/export Products, Orders, Subscriptions, Coupons, Customers, WordPress "
+"Users, Categories & Tags, Reviews"
+msgstr ""
+"Import/export produse, comenzi, abonamente, cupoane, clienți, utilizatori "
+"WordPress, categorii și etichete, recenzii"
+
+msgid "Imported successfully"
+msgstr "Widget-uri importate cu succes."
+
+msgid ""
+"Importing the file will delete all the settings and replace with data from "
+"chosen file"
+msgstr ""
+"Importul fișierului va șterge toate setările și va înlocui cu datele din "
+"fișierul ales"
+
+msgid "In minutes. Eg: 1440 for 1 day. Minimum value is 1440"
+msgstr ""
+"În câteva minute. De exemplu: 1440 pentru 1 zi. Valoarea minimă este 1440"
+
+msgid "Include free(priced as 0) line items in the invoice"
+msgstr "Includeți elemente rând gratuite (la preț ca 0) în factură"
+
+msgid "Include or exclude specific categories"
+msgstr "Includeți sau excludeți anumite categorii"
+
+msgid "Include product image"
+msgstr "Includeți imaginea produsului"
+
+msgid "Include product image in delivery note"
+msgstr "Includeți imaginea produsului"
+
+msgid "Include the package number & box names on the label"
+msgstr "Includeți numărul pachetului și numele cutiei pe etichetă"
+
+msgid "Incorrect file"
+msgstr "Fișier incorect"
+
+msgid "Increment sequence in custom series"
+msgstr "Secvența de creștere în seria personalizată"
+
+msgid ""
+"Input a custom prefix for ‘PDF name format’ that will appear at the "
+"beginning of the name. Defaulted to ‘Invoice_’."
+msgstr ""
+"Introduceți un prefix personalizat pentru „Format nume PDF” care va apărea "
+"la începutul numelui. Implicit la „Factură_”."
+
+msgid "Instruction"
+msgstr "Instrucțiune"
+
+msgid "Interval"
+msgstr "Interval"
+
+msgid "Invalid access key and mail id"
+msgstr "Cheie de acces și ID de e-mail nevalide"
+
+msgid "Invalid order id"
+msgstr "ID de comandă nevalid."
+
+msgid "Invoice"
+msgstr "Factura fiscala"
+
+msgid "Invoice > Customize > Company Logo / Name"
+msgstr "Factură > Personalizare > Logo / Nume companie"
+
+msgid "Invoice Date"
+msgstr "Data facturii"
+
+msgid "Invoice Date:"
+msgstr "Dată Factură:"
+
+msgid "Invoice Generation In Progress"
+msgstr "Generarea facturii în curs"
+
+msgid "Invoice No.:"
+msgstr "Nr Factura:"
+
+msgid "Invoice No:"
+msgstr "Nr Factura:"
+
+msgid "Invoice Number"
+msgstr "Număr de factură"
+
+msgid "Invoice date"
+msgstr "Dată Factură"
+
+msgid "Invoice date:"
+msgstr "Dată Factură:"
+
+msgid "Invoice details"
+msgstr "Detaliile facturii"
+
+msgid ""
+"Invoice in PDF format will be attached with the order email for chosen order "
+"statuses."
+msgstr ""
+"Factura în format PDF va fi atașată la e-mailul comenzii pentru stările "
+"comenzii alese."
+
+msgid "Invoice no:"
+msgstr "Nr Factura:"
+
+msgid "Invoice number"
+msgstr "Număr Factură"
+
+msgid "Invoice number format"
+msgstr "Formatul numărului de factură"
+
+msgid "Invoice number length"
+msgstr "Lungimea numărului facturii"
+
+msgid ""
+"Invoice numbers are getting generated in the background. This process may "
+"take a little while, so please be patient."
+msgstr ""
+"Numerele facturii sunt generate în fundal. Acest proces poate dura puțin, "
+"așa că vă rugăm să aveți răbdare."
+
+msgid "Invoice setup successfully"
+msgstr "Configurarea facturii cu succes"
+
+msgid "Invoice total"
+msgstr "Totalul facturii"
+
+msgid "Invoice total tax"
+msgstr "Facturați taxa totală"
+
+msgid "Invoice/Packing"
+msgstr "Factură / ambalare"
+
+msgid "Invoiced date"
+msgstr "Data facturarii"
+
+msgid "Invoices, Packing Slips and Credit Notes Module"
+msgstr "Modulul Facturi, borderouri și note de credit"
+
+msgid "Invoices, Packing slips and Credit notes"
+msgstr "Modulul Facturi, borderouri și note de credit"
+
+msgid ""
+"It seems the products in this order were removed, we cannot proceed this "
+"actoin now."
+msgstr ""
+"Se pare că produsele din această ordine au fost eliminate, nu putem continua "
+"această acțiune acum."
+
+msgid "It seems this order is not yours"
+msgstr "Se pare că această ordine nu este a ta"
+
+msgid "It seems this order is not yours."
+msgstr "Se pare că această ordine nu este a ta."
+
+msgid "Item with same meta key already exists"
+msgstr "Elementul cu aceeași cheie meta există deja"
+
+msgid "Jumbing LED Light Wall Ball"
+msgstr "Minge de perete cu lumină LED Jumbing"
+
+msgid "Keep dry"
+msgstr "Păstrați uscat"
+
+msgid "Key in your company name."
+msgstr "Introduceți numele companiei dvs."
+
+msgid "Knock, Knock!"
+msgstr "Cioc cioc!"
+
+msgid "Label"
+msgstr "Eticheta"
+
+msgid "Language support issues"
+msgstr "Probleme de asistență lingvistică"
+
+msgid "Last imported on:"
+msgstr "Ultima importare pe:"
+
+msgid "Last updated on:"
+msgstr "Ultima actualizare pe:"
+
+msgid "Left"
+msgstr "Stânga"
+
+msgid "Lighter"
+msgstr "Mai usoara"
+
+msgid "Lightning-fast printing"
+msgstr "Imprimare rapidă"
+
+msgid "Limit spams with reCAPTCHA"
+msgstr "Limitați spam-urile cu reCAPTCHA"
+
+msgid "Line height"
+msgstr "Înălţime linie"
+
+msgid "Load from WooCommerce"
+msgstr "Încărcați din WooCommerce"
+
+msgid "Location based exclusion for banner"
+msgstr "Excluderea bazată pe locație pentru banner"
+
+msgid "Log all Stripe transactions"
+msgstr "Înregistrați toate tranzacțiile Stripe"
+
+msgid "Logged in users"
+msgstr "Autentificat în utilizatori"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "Logo Height"
+msgstr "Logo Înălțime"
+
+msgid "Logo Width"
+msgstr "Logo Lățime"
+
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec vehicula "
+"purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
+"et interdum tellus fermentum at. Fusce pellentesque justo rhoncus"
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec vehicula "
+"purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
+"și interdum tellus fermentum at. Fusce pellentesque justo rhoncus"
+
+msgid "Lots of customization options like button style, position, etc"
+msgstr ""
+"O mulțime de opțiuni de personalizare, cum ar fi stilul butonului, poziția "
+"etc"
+
+msgid "Maintains action history and debug logs"
+msgstr "Menține istoricul acțiunilor și jurnalele de depanare"
+
+msgid "Manage user credit balance"
+msgstr "Gestionați soldul creditului utilizatorului"
+
+msgid "Manual Signature"
+msgstr "Semnătură manuală"
+
+msgid "Manually create a bought-together list"
+msgstr "Creați manual o listă de cumpărături"
+
+msgid "Map categories on product level"
+msgstr "Hartați categoriile la nivel de produs"
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas."
+msgstr ""
+"Mauris dignissim neque ut sapien vulputate, eu sempre tellus porttitor. Cras "
+"porta lectus id augue interdum egestas."
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+msgstr ""
+"Mauris dignissim neque ut sapien vulputate, eu sempre tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+
+msgid "Mention the name of the plugin or meta key if any"
+msgstr "Menționați numele pluginului sau meta cheii, dacă există"
+
+msgid "Meta Key"
+msgstr "Meta-cheie"
+
+msgid ""
+"Missing RTL/Unicode language(e.g Chinese, Arabic etc) support for PDF "
+"document."
+msgstr ""
+"Lipsește compatibilitatea limbii RTL / Unicode (de exemplu, chineză, arabă "
+"etc.) pentru documentul PDF."
+
+msgid "Monitor payments using Stripe dashboard"
+msgstr "Monitorizați plățile folosind tabloul de bord Stripe"
+
+msgid "More order number templates"
+msgstr "Mai multe șabloane de numere de comandă"
+
+msgid "Multilingual support"
+msgstr "Suport multilingv"
+
+msgid "Multiple address label layouts"
+msgstr "Personalizați șablonul"
+
+msgid "Multiple display formats for bundled products"
+msgstr "Afișați prețul în tabelul cu produse"
+
+msgid "Multiple display options for bundle products"
+msgstr "Opțiuni multiple de afișare pentru produse în pachet"
+
+msgid "Multiple pre-built layouts"
+msgstr "Aspecte multiple prefabricate"
+
+msgid "Multiple premium invoice templates to choose from"
+msgstr "Mai multe șabloane de factură premium din care să alegeți"
+
+msgid "Multiple product recommendation layouts"
+msgstr "Aspecte multiple de recomandare de produse"
+
+msgid "Multiple templates to personalize the document"
+msgstr "Mai multe șabloane pentru a personaliza documentul"
+
+msgid "Multiple templates to personalize the label"
+msgstr "Mai multe șabloane pentru a personaliza eticheta"
+
+msgid "My account - Order details page"
+msgstr "Contul meu - Pagina cu detaliile comenzii"
+
+msgid "My account - Order lists page"
+msgstr "Contul meu - Pagina Liste de comenzi"
+
+msgid "My templates"
+msgstr "Șabloanele mele"
+
+msgid "Name"
+msgstr "Nume"
+
+msgid "Need a field to add the tax id on checkout page"
+msgstr ""
+"Aveți nevoie de un câmp pentru a adăuga codul fiscal pe pagina de finalizare "
+"a achiziției"
+
+msgid "Next"
+msgstr "Următor"
+
+msgid "No"
+msgstr "Nu"
+
+msgid "No files found."
+msgstr "Niciun fișier găsit."
+
+msgid "No modules"
+msgstr "Fara module"
+
+msgid "No of Items"
+msgstr "Nr. de elemente"
+
+msgid "No template found."
+msgstr "Nu sa găsit niciun șablon."
+
+msgid "No temporary file found"
+msgstr "Nu a fost găsit niciun fișier temporar"
+
+msgid "None"
+msgstr "Nici unul"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "Not interested"
+msgstr "Nu sunt interesat"
+
+msgid "Note"
+msgstr "Notiță"
+
+msgid "Note:"
+msgstr "Notă:"
+
+msgid "Offer store credits"
+msgstr "Oferiți credite în magazin"
+
+msgid "Offers built-in label templates"
+msgstr "Oferă șabloane de etichete încorporate"
+
+msgid "Offers cloud printing of invoice PDFs using PrintNode"
+msgstr ""
+"Oferă tipărirea în cloud a documentelor PDF de facturi folosind PrintNode"
+
+msgid "One or more order do not have invoice generated. Generate manually?"
+msgstr "Unul sau mai multe comenzi nu au generat factură. Generați manual?"
+
+msgid "Opacity"
+msgstr "Opacitate"
+
+msgid "Option to enable in-context checkout"
+msgstr "Opțiune pentru a activa verificarea în context"
+
+msgid "Option to include/exclude tax to Invoice"
+msgstr "Opțiunea de a include / exclude taxe la factură"
+
+msgid "Option to set up a specific PayPal locale"
+msgstr "Opțiune pentru a configura o anumită locație PayPal"
+
+msgid "Order"
+msgstr "Comanda"
+
+msgid "Order Date"
+msgstr "Data comandă"
+
+msgid "Order Date:"
+msgstr "Data comanda:"
+
+msgid "Order Details"
+msgstr "Detalii comanda"
+
+msgid "Order Discount"
+msgstr "Ordine Reducere"
+
+msgid "Order Meta"
+msgstr "Metadatele Comenzilor"
+
+msgid "Order No.:"
+msgstr "Comandă nu.:"
+
+msgid "Order No:"
+msgstr "Nr. Comanda:"
+
+msgid "Order Number"
+msgstr "Numar de ordine"
+
+msgid "Order date"
+msgstr "Data comandă"
+
+msgid "Order date:"
+msgstr "Dată comandă:"
+
+msgid "Order discount"
+msgstr "Ordine Reducere"
+
+msgid "Order email"
+msgstr "E-mail de comandă"
+
+msgid "Order meta fields"
+msgstr "Comandați câmpurile meta"
+
+msgid "Order no:"
+msgstr "Nr. Comanda:"
+
+msgid "Order number"
+msgstr "Număr Comandă"
+
+msgid "Order number (default)"
+msgstr "Numărul comenzii (implicit)"
+
+msgid "Order, Coupon, Subscription Export Import for WooCommerce"
+msgstr "Comanda, cupon, abonament Export Import pentru WooCommerce"
+
+msgid "Other"
+msgstr "Alte"
+
+msgid "Others"
+msgstr "Altele"
+
+msgid "Output"
+msgstr "Ieșire"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF Invoices"
+msgstr "Facturi PDF"
+
+msgid "PDF library"
+msgstr "Biblioteca PDF"
+
+msgid "PDF name format"
+msgstr "Formate de dată"
+
+msgid "PREVIEW"
+msgstr "PREVIZUALIZARE"
+
+msgid "Package Number"
+msgstr "Numărul pachetului"
+
+msgid "Packing slip"
+msgstr "Eticheta ambalare"
+
+msgid "Partial and Full Refund of the order amount"
+msgstr "Rambursarea parțială și completă a sumei comenzii"
+
+msgid "PayPal Express Checkout Payment Gateway for WooCommerce"
+msgstr "PayPal Express Checkout Payment Gateway pentru WooCommerce"
+
+msgid "Payment & subscription"
+msgstr "Plata si abonament"
+
+msgid "Payment Method"
+msgstr "Modalitate de plată"
+
+msgid "Payment Method:"
+msgstr "Metoda de plată:"
+
+msgid "Payment method"
+msgstr "Modalitate de plată"
+
+msgid "Payment method:"
+msgstr "Metoda de plată:"
+
+msgid "Payment method: "
+msgstr "Metoda de plată:"
+
+msgid "Payment received stamp"
+msgstr "Plată primit timbru"
+
+msgid "Ph No:"
+msgstr "Nu Ph:"
+
+msgid "Phone No:"
+msgstr "Telefon:"
+
+msgid "Phone no:"
+msgstr "Telefon:"
+
+msgid "Phone number"
+msgstr "Număr de telefon"
+
+msgid "Pick list"
+msgstr "Lista de alegere"
+
+msgid "Pick lists"
+msgstr "Liste de alegere"
+
+msgid "Picklist"
+msgstr "Listă de alegere"
+
+msgid "Picklists Add-on"
+msgstr "Supliment pentru liste de alegere"
+
+msgid "Please enter mandatory fields"
+msgstr "Vă rugăm să introduceți câmpuri obligatorii"
+
+msgid "Please enter name"
+msgstr "Introduceți numele"
+
+msgid "Please enter order number"
+msgstr "Vă rugăm să introduceți numărul comenzii"
+
+msgid "Please fill the `from address` in the plugin's general settings."
+msgstr ""
+"Vă rugăm să completați „de la adresa” din setările generale ale pluginului."
+
+msgid ""
+"Please save all data before leaving this page. All unsaved data will be lost."
+" Are you sure?"
+msgstr ""
+"Vă rugăm să salvați toate datele înainte de a părăsi această pagină. Toate "
+"datele nesalvate se vor pierde. Esti sigur?"
+
+msgid "Please select json file"
+msgstr "Vă rugăm să selectați fișierul json"
+
+msgid "Please wait"
+msgstr "Te rog să aștepți"
+
+msgid "Plugin settings not available in my language"
+msgstr "Setările pluginului nu sunt disponibile în limba mea"
+
+msgid "Postal code"
+msgstr "Cod poștal"
+
+msgid "Pre-built layout for documents"
+msgstr "O varietate de șabloane prefabricate pentru fiecare document"
+
+msgid "Pre-built layouts"
+msgstr "Aspecte prefabricate"
+
+msgid "Pre-built layouts & customizable templates"
+msgstr "Aspecte prefabricate și șabloane personalizabile"
+
+msgid "Pre-built layouts for documents"
+msgstr "Aspecte prefabricate pentru documente"
+
+msgid "Pre-built proforma invoice layouts"
+msgstr "Aspecte de facturi proforma prefabricate"
+
+msgid "Prefix"
+msgstr "Prefix"
+
+msgid "Premium"
+msgstr "Premium"
+
+msgid "Premium Extensions"
+msgstr "Extensii Premium"
+
+msgid "Premium extensions"
+msgstr "Extensii premium"
+
+msgid "Premium version"
+msgstr "Versiune Premium"
+
+msgid "Present"
+msgstr "Prezent"
+
+msgid "Preview before printing"
+msgstr "Previzualizare înainte de imprimare"
+
+msgid "Preview documents before printing"
+msgstr "Previzualizare înainte de imprimare"
+
+msgid "Preview sample PDF"
+msgstr "Previzualizați exemplul PDF"
+
+msgid "Price"
+msgstr "Preț"
+
+msgid "Price label"
+msgstr "Etichetă de preț"
+
+msgid "Price text align"
+msgstr "Preț text alin"
+
+msgid "Print"
+msgstr "Printare"
+
+msgid "Print Delivery note"
+msgstr "Imprimați nota de livrare"
+
+msgid "Print Dispatch Label"
+msgstr "Eticheta de expediere a etichetelor"
+
+msgid "Print Invoice"
+msgstr "Imprimare factură"
+
+msgid "Print Invoices"
+msgstr "Imprimare facturi"
+
+msgid "Print PDF invoices for WooCommerce"
+msgstr "Imprimați facturi PDF pentru WooCommerce"
+
+msgid "Print Packing slip"
+msgstr "Imprimați fișa de ambalare"
+
+msgid "Print Shipping Label"
+msgstr "Imprimați eticheta de expediere"
+
+msgid "Print button access for"
+msgstr "Acces butonul de imprimare pentru"
+
+msgid "Print invoice"
+msgstr "Imprimare factură"
+
+msgid "Print/Download"
+msgstr "Imprimare / descărcare"
+
+msgid "Print/Download Delivery note"
+msgstr "Tipăriți / descărcați nota de livrare"
+
+msgid "Print/Download Dispatch Label"
+msgstr "Imprimați / descărcați eticheta de expediere"
+
+msgid "Print/Download Invoice"
+msgstr "Imprimați / descărcați factura"
+
+msgid "Print/Download Packing slip"
+msgstr "Tipăriți / descărcați fișa de ambalare"
+
+msgid "Prints Packing List,Invoice,Delivery Note and Shipping Label."
+msgstr ""
+"Imprimă lista de ambalare, factură, bon de livrare și etichetă de expediere."
+
+msgid "Privacy Policy"
+msgstr "Politică de confidențialitate"
+
+msgid "Privacy compliance"
+msgstr "Respectarea confidențialității"
+
+msgid "Pro Add-on"
+msgstr "Supliment Pro"
+
+msgid "Pro version"
+msgstr "Versiunea PRO"
+
+msgid "Pro-rate charges till first renewal"
+msgstr "Taxe proporționale până la prima reînnoire"
+
+msgid "Product"
+msgstr "Produs"
+
+msgid "Product Import Export Plugin For WooCommerce"
+msgstr "Product Import Export Plugin pentru WooCommerce"
+
+msgid "Product Table"
+msgstr "Tabel de produse"
+
+msgid "Product attributes"
+msgstr "Atribute produs"
+
+msgid "Product label"
+msgstr "Eticheta produsului"
+
+msgid "Product meta fields"
+msgstr "Câmpuri meta de produs"
+
+msgid "Product text align"
+msgstr "Alinierea textului produsului"
+
+msgid "Proforma Invoices Add-on"
+msgstr "Supliment pentru facturi proforma"
+
+msgid "Proforma invoice"
+msgstr "Factură proformă"
+
+msgid "Proforma invoice number format"
+msgstr "Formatul numărului facturii proforma"
+
+msgid "Proforma invoices"
+msgstr "Facturi proforma"
+
+msgid "Provide refunds to store credit"
+msgstr "Oferiți rambursări pentru creditul magazinului"
+
+msgid "QR Code"
+msgstr "Cod QR"
+
+msgid "QR Code Addon for WooCommerce PDF Invoices"
+msgstr "Supliment de cod QR pentru facturi PDF WooCommerce"
+
+msgid "QR code"
+msgstr "Cod QR"
+
+msgid "Qty label"
+msgstr "Eticheta etichetă"
+
+msgid "Qty text align"
+msgstr "Cantitate text aliniat"
+
+msgid "Quantity"
+msgstr "Cantitate"
+
+msgid "Quick setup page to add & edit recommendations"
+msgstr "Pagina de configurare rapidă pentru a adăuga și edita recomandări"
+
+msgid "RTL support for documents"
+msgstr "Suport RTL pentru documente"
+
+msgid "Rate us now"
+msgstr "Evaluează-ne acum"
+
+msgid "Recommended 128MB or more"
+msgstr "Se recomandă 128 MB sau mai mult"
+
+msgid "Recommended for better performances"
+msgstr "Recomandat pentru performanțe mai bune"
+
+msgid "Recommended size is 150x50px."
+msgstr "Dimensiunea recomandată este 150x50px."
+
+msgid "Recommended size is 150×50px"
+msgstr "Dimensiunea recomandată este 150×50px"
+
+msgid "Recommended to compress PDF documents"
+msgstr "Recomandat pentru comprimarea documentelor PDF"
+
+msgid "Recommended, will use fallback functions"
+msgstr "Recomandat, va folosi funcții de rezervă"
+
+msgid "Refer to our documentation to setup and get started"
+msgstr "Consultă documentația noastră pentru a configura și începe"
+
+msgid "Refund"
+msgstr "Rambursa"
+
+msgid ""
+"Refund in this order seems not having credit number yet. Do you want to "
+"manually generate one ?"
+msgstr ""
+"Rambursarea în această comandă pare să nu aibă încă un număr de credit. "
+"Doriți să generați unul manual?"
+
+msgid "Remind me later"
+msgstr "Aminteşte-mi mai târziu"
+
+msgid "Remote Print add-on for WooCommerce PDF Invoices - PrintNode"
+msgstr ""
+"Supliment de imprimare la distanță pentru facturi PDF WooCommerce - PrintNode"
+
+msgid ""
+"Removing year [Y] from the prefix will disable the annual reset functionality"
+msgstr ""
+"Eliminarea anului [Y] din prefix va dezactiva funcționalitatea de resetare "
+"anuală"
+
+msgid ""
+"Removing year [Y] from the suffix will disable the annual reset functionality"
+msgstr ""
+"Eliminarea anului [Y] din sufix va dezactiva funcționalitatea de resetare "
+"anuală"
+
+msgid "Renewal interval & expiry customizations"
+msgstr "Interval de reînnoire și personalizări de expirare"
+
+msgid "Replace the existing templates"
+msgstr "Înlocuiți șabloanele existente"
+
+msgid "Required"
+msgstr "Necesar"
+
+msgid "Required if you have images in your documents"
+msgstr "Obligatoriu dacă aveți imagini în documente"
+
+msgid "Reset"
+msgstr "Reset"
+
+msgid "Reset all settings to default"
+msgstr "Resetați toate setările la valorile implicite"
+
+msgid "Reset successfully"
+msgstr "Resetați cu succes"
+
+msgid ""
+"Reset will delete all the settings, saved templates and reset to the default "
+"settings"
+msgstr ""
+"Resetarea va șterge toate setările, șabloanele salvate și va reseta la "
+"setările implicite"
+
+msgid "Restrict coupons by country"
+msgstr "Restricționați cupoanele în funcție de țară"
+
+msgid "Retain user passwords on import/export"
+msgstr "Păstrați parolele utilizatorului la import/export"
+
+msgid "Return Policy"
+msgstr "Politica de returnare"
+
+msgid "Return address"
+msgstr "Adresa expeditorului"
+
+msgid "Return policy"
+msgstr "Politica de returnare"
+
+msgid "Review"
+msgstr "Recenzie"
+
+msgid "Review now"
+msgstr "Examinați acum"
+
+msgid "Right"
+msgstr "Dreapta"
+
+msgid "S.NO"
+msgstr "S.NR"
+
+msgid "S.No"
+msgstr "S.Nr"
+
+msgid "S.no"
+msgstr "S.nr"
+
+msgid "SKU"
+msgstr "Cod produs"
+
+msgid "SKU label"
+msgstr "Eticheta SKU"
+
+msgid "SKU text align"
+msgstr "SKU text alin"
+
+msgid "SSN"
+msgstr "CNP"
+
+msgid "SSN number"
+msgstr "Număr Inreg. / C.I."
+
+msgid "SSN:"
+msgstr "NAS:"
+
+msgid "Save"
+msgstr "Salvați"
+
+msgid "Save and activate"
+msgstr "Salvați și activați"
+
+msgid "Save before you proceed."
+msgstr "Salvați înainte de a continua."
+
+msgid "Save document layout as template"
+msgstr "Salvați aspectul documentului ca șablon"
+
+msgid "Saving"
+msgstr "Salvăm datele"
+
+msgid "Saving..."
+msgstr "Se salvează…"
+
+msgid "Scan and list cookies"
+msgstr "Scanați și enumerați cookie-urile"
+
+msgid "Schedule automated import & export"
+msgstr "Programați importul și exportul automat"
+
+msgid "Schedule automated import and export"
+msgstr "Programați importul și exportul automat"
+
+msgid "Secure"
+msgstr "Sigur"
+
+msgid "Secured payments with SCA and 3D secure"
+msgstr "Plăți securizate cu SCA și 3D secure"
+
+msgid "Select One"
+msgstr "Selectați unul"
+
+msgid ""
+"Select a name format for PDF invoice that includes invoice/order number."
+msgstr ""
+"Selectați un format de nume pentru factura PDF care include numărul de "
+"factură / comandă."
+
+msgid "Select country"
+msgstr "Selectați Țara"
+
+msgid ""
+"Select email classes that match the order statuses selected under the "
+"'Automate invoice creation option. If no order status is selected, you must "
+"manually generate invoice to attach it with these order emails."
+msgstr ""
+"Selectați clasele de e-mail care se potrivesc cu stările comenzii selectate "
+"în „Opțiunea de creare automată a facturii”. Dacă nu este selectată nicio "
+"stare a comenzii, trebuie să generați manual factura pentru a o atașa la "
+"aceste e-mailuri de comandă."
+
+msgid ""
+"Select/add order meta to display additional information related to the order "
+"on the invoice."
+msgstr ""
+"Selectați/adăugați meta comanda pentru a afișa informații suplimentare "
+"legate de comandă pe factură."
+
+msgid "Seller name"
+msgstr "Numele vânzătorului"
+
+msgid "Seller tax ID"
+msgstr "Codul fiscal al vânzătorului"
+
+msgid "Send automated emails notifications"
+msgstr "Trimiteți notificări automate prin e-mail"
+
+msgid ""
+"Separate tax column in product table for multiple tax options in dispatch "
+"labels"
+msgstr ""
+"Coloana de impozite separate din tabelul de produse pentru mai multe opțiuni "
+"de impozitare"
+
+msgid ""
+"Separate tax column in product table for multiple tax options in proforma "
+"invoices"
+msgstr ""
+"Coloana de taxe separată în tabelul de produse pentru mai multe opțiuni "
+"fiscale în facturile proforma"
+
+msgid ""
+"Separate tax column in the product table for multiple tax options in invoices"
+msgstr ""
+"Coloana de taxe separată în tabelul de produse pentru mai multe opțiuni "
+"fiscale din facturi"
+
+msgid "Sequential Order Number for WooCommerce"
+msgstr "Număr de ordine secvențial pentru WooCommerce"
+
+msgid "Serial No label"
+msgstr "Numărul de serie etichetă"
+
+msgid "Serial no text align"
+msgstr "Serial fără aliniere a textului"
+
+msgid "Set custom proforma invoice number"
+msgstr "Setați numărul personalizat de factură proforma"
+
+msgid "Set free trial and sign-up fee"
+msgstr "Setați proba gratuită și taxa de înregistrare"
+
+msgid "Set quote expiry period"
+msgstr "Setați perioada de expirare a ofertei"
+
+msgid ""
+"Set the  Size of the Shipping label to be either full page or custom size."
+msgstr ""
+"Setați dimensiunea etichetei de expediere să fie fie pentru pagină întreagă, "
+"fie dimensiune personalizată."
+
+msgid "Set up a redirect page"
+msgstr "Configurați o pagină de redirecționare"
+
+msgid "Set up discounts on the recommended product bundle"
+msgstr "Configurați reduceri la pachetul de produse recomandat"
+
+msgid "Settings"
+msgstr "Setări"
+
+msgid "Settings Updated"
+msgstr "Setarile actualizate"
+
+msgid "Settings are empty"
+msgstr "Setările sunt goale"
+
+msgid "Settings updated."
+msgstr "Setările aduse la zi."
+
+msgid "Ship Date:"
+msgstr "Data de expediere:"
+
+msgid "Ship to"
+msgstr "Livrare către"
+
+msgid "Shipping"
+msgstr "Livrare"
+
+msgid "Shipping Address"
+msgstr "Adresa de transport"
+
+msgid "Shipping Address:"
+msgstr "Adresa de transport:"
+
+msgid "Shipping Label"
+msgstr "Eticheta de livrare"
+
+msgid "Shipping Label 1"
+msgstr "Etichetă de livrare"
+
+msgid "Shipping Method"
+msgstr "Metodă de livrare"
+
+msgid "Shipping address"
+msgstr "Adresă de livrare"
+
+msgid "Shipping label"
+msgstr "Eticheta de expediere"
+
+msgid "Shipping label size"
+msgstr "Etichetă de livrare"
+
+msgid "Shipping labels"
+msgstr "Etichete de expediere"
+
+msgid "Shipping labels, Dispatch labels and Delivery Notes Module"
+msgstr ""
+"Modulul Etichete de expediere, Etichete de expediere și Note de livrare"
+
+msgid "Shipping labels, Dispatch labels and Delivery notes"
+msgstr ""
+"Modulul Etichete de expediere, Etichete de expediere și Note de livrare"
+
+msgid "Shop name"
+msgstr "Nume magazin"
+
+msgid "Shortcode support for the Paypal Express button"
+msgstr "Suport pentru coduri scurte pentru butonul Paypal Express"
+
+msgid "Show Less"
+msgstr "Afișați mai puține"
+
+msgid "Show More"
+msgstr "Arată mai multe"
+
+msgid "Show Pay Later option at checkout"
+msgstr "Afișați opțiunea Plătiți mai târziu la finalizare"
+
+msgid "Show different taxes in separate columns"
+msgstr "Afișați taxe diferite în coloane separate"
+
+msgid "Show payment link on invoice"
+msgstr "Afișați linkul de plată pe factură"
+
+msgid "Show print invoice button for customers"
+msgstr "Afișați butonul „Tipărește factura” pentru clienți"
+
+msgid "Show print invoice button to customers"
+msgstr "Afișați butonul „Tipărește factura” pentru clienți"
+
+msgid "Show print packing slip button to customers"
+msgstr "Afișați clienților butonul de tipărire a bonului de ambalare"
+
+msgid "Show product variation data"
+msgstr "Afișați datele despre variațiile produsului"
+
+msgid "Show variation data for variable products"
+msgstr "Afișați datele de variație pentru produse variabile"
+
+msgid "Show variation data of products"
+msgstr "Afișați datele de variație ale produselor"
+
+msgid ""
+"Shows a preview of the template on an actual order. Key in an order number "
+"to view the same."
+msgstr ""
+"Afișează o previzualizare a șablonului pentru o comandă reală. Tastați un "
+"număr de comandă pentru a vedea același lucru."
+
+msgid "Signature type"
+msgstr "Tipul semnăturii"
+
+msgid "Skip invoice setup"
+msgstr "Omiteți configurarea facturii"
+
+msgid "Smart Coupons for WooCommerce"
+msgstr "Cupoane inteligente pentru WooCommerce"
+
+msgid "Solid"
+msgstr "Solid"
+
+msgid "Some useful `filters` to extend plugin's functionality"
+msgstr "Câteva „filtre” utile pentru a extinde funcționalitatea pluginului"
+
+msgid "Sort order items in product table"
+msgstr "Sortați articolele de comandă în tabelul de produse"
+
+msgid "Sort order items in the product table"
+msgstr "Sortați articolele de comandă în tabelul de produse"
+
+msgid "Sort order items in the product table "
+msgstr "Sortați articolele de comandă în tabelul de produse"
+
+msgid "Sort products based on Name or SKU"
+msgstr "Sortați produsele în funcție de Nume sau SKU"
+
+msgid ""
+"Specify your company tax ID. For e.g., you may enter as VAT: GB123456789, "
+"GSTIN:0948745 or ABN:51 824 753 556"
+msgstr ""
+"Specificați codul fiscal al companiei. De ex. puteți introduce ca TVA: "
+"GB123456789, GSTIN: 0948745 sau ABN: 51 824 753 556"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "Step 1"
+msgstr "Pasul 1"
+
+msgid "Step 2"
+msgstr "Pasul 2"
+
+msgid "Step 3"
+msgstr "Pasul 3"
+
+msgid "Style"
+msgstr "Stil"
+
+msgid "Submit & Deactivate"
+msgstr "Trimiteti & dezactivați"
+
+msgid "Subscriptions for WooCommerce"
+msgstr "Abonamente pentru WooCommerce"
+
+msgid "Subtotal"
+msgstr "Subtotal"
+
+msgid "Success"
+msgstr "Personalizați"
+
+msgid "Successfully cleared all temp files."
+msgstr "Au fost șterse cu succes toate fișierele temporare."
+
+msgid "Suffix"
+msgstr "Sufix"
+
+msgid "Summary Table"
+msgstr "Tabel rezumat"
+
+msgid "Support"
+msgstr "A sustine"
+
+msgid "Support for additional fields that can be added to the feed"
+msgstr "Suport pentru câmpuri suplimentare care pot fi adăugate în flux"
+
+msgid "Support for multiple product types"
+msgstr "Suport pentru mai multe tipuri de produse"
+
+msgid "Support for serial and USB scales"
+msgstr "Suport pentru cântare seriale și USB"
+
+msgid "Supported address types"
+msgstr "Tipuri de adrese acceptate"
+
+msgid "Supported by a team with 99% Customer Satisfaction Score"
+msgstr "Sprijinit de o echipă cu un scor de satisfacție a clienților de 99%."
+
+msgid "Supported documents"
+msgstr "Documentație"
+
+msgid "Supports Excel, XML, CSV, and TSV file formats"
+msgstr "Suporta formatele de fișiere Excel, XML, CSV și TSV"
+
+msgid "Supports WooCommerce Subscriptions for Express buttons"
+msgstr "Acceptă abonamente WooCommerce pentru butoanele Express"
+
+msgid "Supports automatic & manual printing"
+msgstr "Suportă imprimare automată și manuală"
+
+msgid "Supports recurring discounts"
+msgstr "Acceptă reduceri recurente"
+
+msgid "Supports recurring payments"
+msgstr "Acceptă plăți recurente"
+
+msgid "Switching to order number will disable the annual reset functionality"
+msgstr ""
+"Trecerea la numărul de comandă va dezactiva funcționalitatea de resetare "
+"anuală"
+
+msgid "Sync WooCommerce products to Facebook catalog"
+msgstr "Sincronizați produsele WooCommerce cu catalogul Facebook"
+
+msgid "Synchronize subscription renewal"
+msgstr "Sincronizați reînnoirea abonamentului"
+
+msgid "System Configuration"
+msgstr "Configuratia sistemului"
+
+msgid "System Info"
+msgstr "Informații sistem"
+
+msgid "Table body text color"
+msgstr "Culoarea textului corpului de masă"
+
+msgid "Table head background"
+msgstr "Fundalul capului mesei"
+
+msgid "Table head text color"
+msgstr "Culoarea textului capului mesei"
+
+msgid "Tax ID"
+msgstr "ID taxă"
+
+msgid "Tax label"
+msgstr "Eticheta Taxa"
+
+msgid "Tax text align"
+msgstr "Aliniere text"
+
+msgid "Tel Field"
+msgstr "Tel Field"
+
+msgid "Tel:"
+msgstr "Telefon:"
+
+msgid "Template created and activated."
+msgstr "Șablonul a fost creat."
+
+msgid "Template created."
+msgstr "Șablonul a fost creat."
+
+msgid "Template updated and activated."
+msgstr "Șablonul a fost actualizat."
+
+msgid "Template updated."
+msgstr "Șablonul a fost actualizat."
+
+msgid "Template with same name already exists."
+msgstr "Șablonul cu același nume există deja."
+
+msgid "Templates"
+msgstr "Template-uri"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Text Color"
+msgstr "Culoare text"
+
+msgid "Text align"
+msgstr "Aliniere text"
+
+msgid "Text color"
+msgstr "Culoarea textului"
+
+msgid ""
+"That’s awesome! We’d love it if you take a moment to share what you think "
+"and help spread the word."
+msgstr ""
+"Asta-i grozav! Ne-ar plăcea să alocați un moment pentru a împărtăși ceea ce "
+"credeți și a ajuta să răspândiți vestea."
+
+msgid ""
+"The best-in-the-class import, export, and migration solutions for your "
+"WooCommerce data"
+msgstr ""
+"Cele mai bune soluții de import, export și migrare pentru datele dvs. "
+"WooCommerce"
+
+msgid ""
+"The company name and the address details from this section will be used as "
+"the sender address in the invoice and other related documents."
+msgstr ""
+"Numele companiei și detaliile adresei din această secțiune vor fi folosite "
+"ca adresă de expeditor în factură și în alte documente aferente."
+
+msgid ""
+"The date is displayed on the invoice. It can be either the order creation "
+"date or the invoiced date."
+msgstr ""
+"Data este afișată pe factură. Poate fi fie data creării comenzii, fie data "
+"facturării."
+
+msgid "The default library to be used PDF generation"
+msgstr "Biblioteca implicită care va fi utilizată generarea PDF"
+
+msgid "The latest specified starting number will be used after reset"
+msgstr "Cel mai recent număr de pornire specificat va fi folosit după resetare"
+
+msgid ""
+"The most popular payment gateways and subscription solutions to scale your "
+"business"
+msgstr ""
+"Cele mai populare gateway-uri de plată și soluții de abonament pentru a vă "
+"extinde afacerea"
+
+msgid "The plugin didn't work as expected"
+msgstr "Pluginul nu a funcționat așa cum era de așteptat"
+
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr ""
+"Pluginul este grozav, dar am nevoie de funcții specifice pe care nu le "
+"acceptați"
+
+msgid ""
+"The plugins %s and %s cannot be active in your store at the same time. "
+"Kindly deactivate one of these prior to activating the other."
+msgstr ""
+"Pluginurile %s și %s nu pot fi active în magazin în același timp. Vă rugăm "
+"să dezactivați una dintre acestea înainte de a o activa pe cealaltă."
+
+msgid "There is no items in this order."
+msgstr "Nu există articole în această ordine."
+
+msgid "There is no order with this given id"
+msgstr "Nu există nicio comandă cu acest ID dat"
+
+msgid "There is no order with this id"
+msgstr "Nu există nicio comandă cu acest id"
+
+msgid ""
+"This filter is used to alter the barcode information for all the document "
+"templates"
+msgstr ""
+"Acest filtru este folosit pentru a modifica informațiile codului de bare "
+"pentru toate șabloanele de documente"
+
+msgid ""
+"This filter is used to alter the invoice date in all the document templates"
+msgstr ""
+"Acest filtru este folosit pentru a modifica data facturii în toate "
+"șabloanele de documente"
+
+msgid ""
+"This filter is used to alter the order date in all the document templates"
+msgstr ""
+"Acest filtru este folosit pentru a modifica data comenzii în toate "
+"șabloanele de document"
+
+msgid ""
+"This is basic template. In order to use premium feature, you need to switch "
+"and activate the premium template"
+msgstr ""
+"Acesta este șablonul de bază. Pentru a utiliza funcția premium, trebuie să "
+"comutați și să activați șablonul premium"
+
+msgid "This is premium template which is not compatible with the basic plugin"
+msgstr ""
+"Acesta este șablonul premium care nu este compatibil cu pluginul de bază"
+
+msgid "This template is not comaptible with QR Code addon plugin"
+msgstr "Acest șablon nu este compatibil cu pluginul addon QR Code"
+
+msgid "This way up"
+msgstr "Pe aici in sus"
+
+msgid ""
+"This will remove all invoice numbers created by WooCommerce PDF Invoices, "
+"Packing Slips, Delivery Notes & Shipping Labels by WebToffee."
+msgstr ""
+"Acest lucru va elimina toate numerele de factură create de WooCommerce "
+"Facturile PDF, borderourile de ambalare, Notele de livrare și Etichetele de "
+"expediere de WebToffee."
+
+msgid "Timely compatibility updates and bug fixes"
+msgstr "Actualizări de compatibilitate în timp util și remedieri de erori"
+
+msgid "Title"
+msgstr "Titlu"
+
+msgid "Title font size"
+msgstr "Dimensiunea fontului titlului"
+
+msgid "To Address"
+msgstr "Pentru a răspunde"
+
+msgid "To add a different meta key"
+msgstr "Pentru a adăuga o altă cheie meta"
+
+msgid "To add more than one custom order meta,"
+msgstr "Pentru a adăuga mai multe meta de comandă personalizată,"
+
+msgid "To compress PDF documents"
+msgstr "Pentru a comprima documente PDF"
+
+msgid "To help you comply with invoice mandates that require QR Codes"
+msgstr ""
+"Pentru a vă ajuta să respectați mandatele de facturare care necesită coduri "
+"QR"
+
+msgid "To include the keyed in name to the Invoice, ensure to select"
+msgstr "Pentru a include numele introdus pe factură, asigurați-vă că selectați"
+
+msgid ""
+"To include the uploaded image as logo to the invoice, ensure to select "
+"Company logo from"
+msgstr ""
+"Pentru a include imaginea încărcată ca siglă pe factură, asigurați-vă că "
+"selectați sigla companiei din"
+
+msgid "To proceed with the import, please type %1$s in the field below"
+msgstr "Pentru a continua cu importul, introduceți %1$s în câmpul de mai jos"
+
+msgid "To proceed with the reset, please type %1$s in the field below"
+msgstr "Pentru a continua cu resetarea, introduceți %1$s în câmpul de mai jos"
+
+msgid "To:"
+msgstr "La:"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Total Price"
+msgstr "Tarif Total"
+
+msgid "Total Tax"
+msgstr "Taxa totală"
+
+msgid "Total Weight"
+msgstr "Greutatea totală"
+
+msgid "Total files"
+msgstr "Total fișiere"
+
+msgid "Total label"
+msgstr "Etichetă totală"
+
+msgid "Total price"
+msgstr "Pret Total"
+
+msgid "Total tax"
+msgstr "Taxa totală"
+
+msgid "Total text align"
+msgstr "Alinierea totală a textului"
+
+msgid "Total weight label"
+msgstr "Etichetă de greutate totală"
+
+msgid "Total weight text align"
+msgstr "Greutatea totală aliniată"
+
+msgid "Tracking Number"
+msgstr "Număr de urmărire"
+
+msgid "Tracking Number:"
+msgstr "Număr de urmărire:"
+
+msgid "Tracking number"
+msgstr "Număr de urmărire"
+
+msgid "Tracking number:"
+msgstr "Număr de urmărire:"
+
+msgid "Truncation did not complete as expected."
+msgstr "Trunchierea nu s-a finalizat conform așteptărilor."
+
+msgid "Type in prefix/ suffix / date format if required"
+msgstr "Introduceți în format prefix/ sufix/ dată dacă este necesar"
+
+msgid "Type template name to search"
+msgstr "Introduceți numele șablonului pentru a căuta"
+
+msgid "URL Coupons for WooCommerce"
+msgstr "Cupoane URL pentru WooCommerce"
+
+msgid ""
+"Unable to add from third party plugin that collects customer VAT(or GSTIN or "
+"ABN etc)"
+msgstr ""
+"Imposibil de adăugat de la un plugin terță parte care colectează TVA-ul "
+"clientului (sau GSTIN sau ABN etc.)"
+
+msgid "Unable to generate PDF."
+msgstr "Imposibil de generat PDF."
+
+msgid "Unable to load template."
+msgstr "Imposibil de încărcat șablonul."
+
+msgid "Unable to print Delivery note. Please check the items in the order."
+msgstr ""
+"Imposibil de imprimat nota de livrare. Vă rugăm să verificați articolele din "
+"comandă."
+
+msgid "Unable to print Packing slip. Please check the items in the order."
+msgstr ""
+"Nu se poate imprima fișa de ambalare. Vă rugăm să verificați articolele din "
+"comandă."
+
+msgid "Unable to save theme."
+msgstr "Imposibil de salvat tema."
+
+msgid "Unable to switch view."
+msgstr "Imposibil de schimbat vizualizarea."
+
+msgid ""
+"Unable to update settings due to an internal error. %s To troubleshoot "
+"please click %s here. %s"
+msgstr ""
+"Setările nu pot fi actualizate din cauza unei erori interne. %s Pentru "
+"depanare, faceți clic pe %s aici. %s"
+
+msgid "Unit Price"
+msgstr "Preț unitar"
+
+msgid "Unit price"
+msgstr "Pret unitar"
+
+msgid ""
+"Unlock limitless possibilities of invoice customization with the addon -"
+msgstr ""
+"Deblocați posibilități nelimitate de personalizare a facturilor cu ajutorul "
+"suplimentului -"
+
+msgid "Untitled template"
+msgstr "Șablon fără titlu"
+
+msgid "Update Settings"
+msgstr "Actualizați setările"
+
+msgid "Updated"
+msgstr "Actualizat"
+
+msgid "Upgrade To Premium"
+msgstr "Treceți la premium"
+
+msgid "Upgrade to premium"
+msgstr "Treceți la premium"
+
+msgid "Upload logo"
+msgstr "Incarca logo"
+
+msgid "Upload your image"
+msgstr "Încărcați imaginea"
+
+msgid "Use custom number format & length"
+msgstr "Utilizați formatul și lungimea numărului personalizat"
+
+msgid "Use custom number series to number documents"
+msgstr "Utilizați seria de numere personalizate pentru a numerota documentele"
+
+msgid "Use invoice created date"
+msgstr "Utilizați data creării facturii"
+
+msgid "Use latest settings for invoice"
+msgstr "Folosiți data comenzii ca dată de facturare proforma"
+
+msgid "Use order date"
+msgstr "Utilizați data comenzii"
+
+msgid "Use order date as input instead."
+msgstr "Data comenzii utilizatorului ca input."
+
+msgid "Use order number as document number"
+msgstr "Utilizați numărul de comandă ca număr de document"
+
+msgid ""
+"Use upsells, cross-sells, & related products as frequently bought products"
+msgstr ""
+"Folosiți vânzările în plus, vânzările încrucișate și produsele conexe ca "
+"produse cumpărate frecvent"
+
+msgid "User consent logging"
+msgstr "Înregistrarea consimțământului utilizatorului"
+
+msgid "Users who haven`t logged will also be allowed to print"
+msgstr ""
+"Utilizatorii care nu s-au autentificat vor avea de asemenea permisiunea de a "
+"imprima"
+
+msgid "Users will be redirected to login page if not logged in"
+msgstr ""
+"Utilizatorii vor fi redirecționați către pagina de autentificare dacă nu s-"
+"au autentificat"
+
+msgid "VAT"
+msgstr "TVA"
+
+msgid "VAT number"
+msgstr "Cod fiscal: "
+
+msgid "VAT:"
+msgstr "TVA:"
+
+msgid "Verified compatibility with major plugins"
+msgstr "Compatibilitate verificată cu pluginuri majore"
+
+msgid "View add-on"
+msgstr "Vizualizați suplimentul"
+
+msgid "View live preview of customization"
+msgstr "Vizualizați previzualizarea live a personalizării"
+
+msgid "View progress"
+msgstr "Vedeți progresul"
+
+msgid "View sample customization demo"
+msgstr "Vizualizați o demonstrație personalizată"
+
+msgid "Visual"
+msgstr "Vizual"
+
+msgid "WPML compatibility"
+msgstr "Compatibilitate WPML"
+
+msgid "WPML compatibilityCustomize label sizes"
+msgstr "Compatibilitate WPMLPersonalizați dimensiunile etichetelor"
+
+msgid "WPML multilingual and multicurrency support "
+msgstr "Suport multilingv și multivalută WPML"
+
+msgid "WT PDF Invoice Debug"
+msgstr "WT PDF Depanare facturi"
+
+msgid ""
+"We do not collect any personal data when you submit this form. It's your "
+"feedback that we value."
+msgstr ""
+"Nu colectăm date cu caracter personal atunci când trimiteți acest formular. "
+"Apreciem feedback-ul dvs."
+
+msgid "We would love to help you on any queries or issues."
+msgstr "Ne-ar plăcea să vă ajutăm cu privire la orice întrebări sau probleme."
+
+msgid "WebToffee"
+msgstr "WebToffee"
+
+msgid "WebToffee WooCommerce Gift Cards"
+msgstr "Carduri cadou WebToffee WooCommerce"
+
+msgid "WebToffee WooCommerce Product Feed & Sync Manager"
+msgstr "WebToffee WooCommerce Product Feed & Sync Manager"
+
+msgid "WebToffee WooCommerce Request A Quote"
+msgstr "WebToffee WooCommerce Solicitați o cotație"
+
+msgid "Weight"
+msgstr "Greutate"
+
+msgid "Weight:"
+msgstr "Greutate:"
+
+msgid "What did you expect?"
+msgstr "La ce te astepti?"
+
+msgid "What length would you prefer for your credit note"
+msgstr "Ce lungime ai prefera pentru nota ta de credit"
+
+msgid "What length would you prefer for your invoice"
+msgstr "Ce lungime preferați pentru factura dvs"
+
+msgid "What length would you prefer for your invoice number"
+msgstr "Ce lungime preferați pentru numărul facturii dvs"
+
+msgid "What length would you prefer for your proforma invoice"
+msgstr "Ce lungime ai prefera pentru factura proforma"
+
+msgid "What should be the starting number for your credit notes?"
+msgstr "Care ar trebui să fie numărul de pornire pentru notele dvs. de credit?"
+
+msgid "What should be the starting number for your invoices?"
+msgstr "Care ar trebui să fie numărul de pornire pentru facturile dvs.?"
+
+msgid "What should be the starting number for your proforma invoices?"
+msgstr ""
+"Care ar trebui să fie numărul de pornire pentru facturile dumneavoastră "
+"proforma?"
+
+msgid ""
+"When enabled, replaces state code with state name in the from, return, "
+"billing and shipping addresses"
+msgstr ""
+"Când este activat, înlocuiește codul de stat cu numele statului în adresele "
+"de la de la, returnare, facturare și expediere"
+
+msgid "Which language?"
+msgstr "Ce limba?"
+
+msgid "Which plugin?"
+msgstr "Care plugin?"
+
+msgid "Width"
+msgstr "Lăţime"
+
+msgid "WooCommerce Address Labels plugin"
+msgstr "Plugin WooCommerce Address Labels"
+
+msgid "WooCommerce PDF Invoices, Packing Slips and Credit Notes plugin"
+msgstr "Plugin WooCommerce Facturi PDF, borderouri și note de credit"
+
+msgid ""
+"WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels"
+msgstr ""
+"Facturi PDF WooCommerce, borderouri de ambalare, note de livrare și etichete "
+"de expediere"
+
+msgid "WooCommerce Pick lists plugin"
+msgstr "Plugin pentru liste de alegere WooCommerce"
+
+msgid "WooCommerce Picklists plugin"
+msgstr "Pluginul WooCommerce Picklists"
+
+msgid "WooCommerce Proforma Invoices"
+msgstr "Facturi proforma WooCommerce"
+
+msgid "WooCommerce Proforma Invoices plugin"
+msgstr "Plugin WooCommerce Proforma Facturi"
+
+msgid "WooCommerce Shipping labels, Dispatch labels and Delivery Notes plugin"
+msgstr ""
+"Etichete de expediere WooCommerce, etichete de expediere și plugin pentru "
+"Note de livrare"
+
+msgid "WooCommerce Stripe Payment Gateway"
+msgstr "Poarta de plată WooCommerce Stripe"
+
+msgid ""
+"Woocommerce PDF invoices, packing slips, delivery notes, and shipping labels"
+msgstr ""
+"Facturi PDF WooCommerce, borderouri de ambalare, note de livrare și etichete "
+"de expediere"
+
+msgid "WordPress Users & WooCommerce Customers Import Export"
+msgstr "Utilizatori WordPress și clienți WooCommerce Import Export"
+
+msgid "Would you like us to assist you?"
+msgstr "Vrei să te ajutăm?"
+
+msgid "Writtable"
+msgstr "Inscriptibil"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "You are covered by our 30-Day Money Back Guarantee"
+msgstr ""
+"Sunteți acoperit de Garanția noastră de rambursare a banilor în 30 de zile"
+
+msgid "You are not allowed to access this page"
+msgstr "Nu aveți voie să accesați această pagină"
+
+msgid "You are not allowed to do this action"
+msgstr "Nu aveți voie să faceți această acțiune"
+
+msgid "You are not allowed to view this page."
+msgstr "Nu aveți permisiunea de a vizualiza această pagină."
+
+msgid "You are using free version of %1$s. %2$s Checkout premium here %3$s."
+msgstr "Utilizați versiunea gratuită a %1$s. %2$s Checkout premium aici %3$s."
+
+msgid ""
+"You can add additional column head via `wf_pklist_alter_product_table_head` "
+"filter. You need to add column data via this filter. (Works with Invoice and "
+"Dispatch label only)"
+msgstr ""
+"Puteți adăuga un cap de coloană suplimentar prin filtrul "
+"`wf_pklist_alter_product_table_head`. Trebuie să adăugați date coloanei prin "
+"acest filtru. (Funcționează numai cu eticheta Factură și expediere)"
+
+msgid ""
+"You can add additional column head via `wf_pklist_alter_product_table_head` "
+"filter. You need to add column data via this filter. (Works with Packing "
+"List, Shipping Label and Delivery note only)"
+msgstr ""
+"Puteți adăuga un cap de coloană suplimentar prin filtrul "
+"`wf_pklist_alter_product_table_head`. Trebuie să adăugați date coloanei prin "
+"acest filtru. (Funcționează numai cu Lista de ambalare, eticheta de "
+"expediere și bonul de livrare)"
+
+msgid "You can add custom/predefined order meta using its key"
+msgstr ""
+"Puteți adăuga meta comanda personalizată/predefinită folosind cheia acesteia"
+
+msgid "You can add more than 1 order meta in"
+msgstr "Puteți adăuga mai mult de 1 meta de comandă"
+
+msgid ""
+"You can control the visibility of the seal according to order status via "
+"filters. See filter documentation %s here. %s"
+msgstr ""
+"Puteți controla vizibilitatea sigiliului în funcție de starea comenzii prin "
+"filtre. Consultați documentația de filtrare %s aici. %s"
+
+msgid "You can edit an existing item by using its key."
+msgstr "Puteți edita un element existent folosind cheia acestuia."
+
+msgid "You can't undo this action. Are you sure?"
+msgstr "Nu puteți anula această acțiune. Esti sigur?"
+
+msgid "You have to select order(s) first!"
+msgstr "Trebuie să selectați ordinele mai întâi!"
+
+msgid "You`ve just created"
+msgstr "Tocmai ai creat"
+
+msgid "Your next %s number would be"
+msgstr "Următorul dvs. număr %s ar fi"
+
+msgid "[prefix][invoice_no]"
+msgstr "[prefix] [număr de factură]"
+
+msgid "[prefix][order_no]"
+msgstr "[prefix] [Numar de ordine]"
+
+msgid "allow_url_fopen disabled"
+msgstr "allow_url_fopen dezactivat"
+
+msgid "commercial documents using"
+msgstr "documente comerciale folosind"
+
+msgid "from"
+msgstr "de la"
+
+msgid "https://www.webtoffee.com/"
+msgstr "https://www.webtoffee.com/"
+
+msgid ""
+"https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/"
+msgstr ""
+"https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/"
+
+msgid "incl. tax"
+msgstr "incl. impozit"
+
+msgid "is required"
+msgstr "este obligatoriu"
+
+msgid "mPDF add-on"
+msgstr "supliment mPDF"
+
+msgid "n/a"
+msgstr "n / A"
+
+msgid ""
+"number has not been generated yet. Do you want to manually generate one ?"
+msgstr "numărul nu a fost încă generat. Doriți să generați unul manual?"
+
+msgid "orders listing page"
+msgstr "pagina de listare a comenzilor"
+
+msgctxt "placeholder"
+msgid "Enter "
+msgstr "Introduce "
+
+msgid "search filter"
+msgstr "filtrul de căutare"
+
+msgid "the %s number would be"
+msgstr "numărul %s ar fi"
+
+msgid "upgrade to premium version"
+msgstr "upgrade la versiunea premium"
+
+msgid "via %s"
+msgstr "prin %s"
+
+msgid ""
+"‘Generate invoice for free orders’ is disabled in Invoice settings > "
+"Advanced. You are attempting to generate invoice for this free order. "
+"Proceed?"
+msgstr ""
+"„Generați factura pentru comenzi gratuite” este dezactivat în Setări factură>"
+" Avansat. Încercați să generați factură pentru această comandă gratuită. "
+"Continua?"
+
+msgid ""
+"Select email types corresponding to the order statuses under Automate "
+"invoice creation option. If none are selected, invoices must be generated "
+"manually to be attached to emails."
+msgstr ""
+"Selectați tipurile de e-mail corespunzătoare stărilor comenzii din opțiunea "
+"Automatizare crearea facturii. Dacă nu sunt selectate, facturile trebuie "
+"generate manual pentru a fi atașate la e-mailuri."
+
+msgid "Shipping Method:"
+msgstr "Metoda de livrare:"
+
+msgid "Attach invoice PDF to selected WooCommerce emails."
+msgstr "Atașați factura PDF la e-mailurile WooCommerce selectate."

@@ -1,0 +1,73 @@
+/*************** Icon Panel ********************/
+.rtl {
+	.editor-panel[data-type='icon'] {
+		.search {
+			position: fixed;
+			width: 335px;
+			z-index: 2;
+			.search-input {
+				width: calc( 100% - 40px );
+				margin-right: 20px;
+			}
+		}
+		.panel-selection {
+			text-align: right;
+			.name {
+				margin-right: 6px;
+			}
+		}
+	}
+}
+.editor-panel[data-type='icon'] {
+	width: 335px;
+
+	.search {
+		position: fixed;
+		width: 335px;
+		z-index: 2;
+		.search-input {
+			width: calc( 100% - 40px );
+			margin-left: 20px;
+		}
+	}
+
+	.back {
+		margin-bottom: 0;
+	}
+
+	.panel-selection {
+		width: 123px;
+		height: 42px;
+		text-align: left;
+	}
+
+	.panel-body ul.icon-controls {
+		padding-top: 35px;
+	}
+
+	.panel-body .presets .fa {
+		font-size: 26px;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		color: #525252;
+	}
+
+	.panel-selection .name {
+		margin-left: 6px;
+		vertical-align: middle;
+	}
+
+	.panel-selection.selected .fa {
+		color: white;
+	}
+
+	.ui-slider-horizontal {
+		width: 65%;
+	}
+	&.customize-open {
+		.slimScrollBar {
+			display: none !important;
+		}
+	}
+}

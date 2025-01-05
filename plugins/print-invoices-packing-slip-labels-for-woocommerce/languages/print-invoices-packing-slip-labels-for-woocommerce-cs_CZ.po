@@ -1,0 +1,3555 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce PDF Invoices, Packing Slips, Delivery Notes "
+"and Shipping Labels\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-28 12:12+0000\n"
+"PO-Revision-Date: 2024-12-18 14:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: Czech (Czech Republic)\n"
+"Language: cs-CZ\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: en_GB\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: print-invoices-packing-slip-labels-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Loco-Parser: loco_parse_mo"
+
+msgid ""
+"%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels "
+"(Basic) %s is enabled but not effective. It requires %s WooCommerce %s in "
+"order to work."
+msgstr ""
+"%s Faktury WooCommerce PDF, dodací listy, dodací listy a přepravní štítky "
+"(základní) %s jsou povoleny, ale nejsou účinné. Aby fungoval, vyžaduje %s "
+"WooCommerce %s."
+
+msgid "(But customer notes can be added)"
+msgstr "(Lze však přidat poznámky zákazníků)"
+
+msgid "(Visual and code editor)"
+msgstr "(vizuální a kódový editor)"
+
+msgid "(Visual editor)"
+msgstr "(vizuální editor)"
+
+msgid "20+ predefined gift card templates"
+msgstr "20+ předdefinovaných šablon dárkových karet"
+
+msgid "30 Day Money Back Guarantee"
+msgstr "30denní záruka vrácení peněz"
+
+msgid "5.6 or higher recommended"
+msgstr "5.6 nebo vyšší doporučeno"
+
+msgid "Accepts payment using multiple Alternative Payment Methods (APM)"
+msgstr "Přijímá platby pomocí několika alternativních platebních metod (APM)"
+
+msgid "Access denied !!!."
+msgstr "Přístup odepřen !!!."
+
+msgid "Action"
+msgstr "Akce"
+
+msgid "Activate"
+msgstr "Aktivovat"
+
+msgid "Activates Stripe checkout"
+msgstr "Aktivuje pokladnu Stripe"
+
+msgid "Active"
+msgstr "Aktivní"
+
+msgid "Add"
+msgstr "Přidat"
+
+msgid "Add & update data while importing"
+msgstr "Přidejte a aktualizujte data během importu"
+
+msgid "Add 20+ payment methods"
+msgstr "Přidejte 20+ platebních metod"
+
+msgid "Add a custom suffix for order numbers"
+msgstr "Přidejte vlastní příponu pro čísla objednávek"
+
+msgid "Add a payment link to invoice"
+msgstr "Přidejte k faktuře platební odkaz"
+
+msgid "Add a print delivery note button to the order email"
+msgstr "Přidejte do e-mailu objednávky vytištěné tlačítko dodacího listu"
+
+msgid "Add a print label button to the order email"
+msgstr "Přidejte tlačítko tisku štítku do e-mailu objednávky"
+
+msgid "Add a print packing slip button to My account page"
+msgstr "Přidejte tlačítko tiskového dodacího listu na stránku Můj účet"
+
+msgid "Add additional column in product table"
+msgstr "Přidejte další sloupec do tabulky produktů"
+
+msgid "Add additional column in product table of package documents"
+msgstr "Přidejte další sloupec do tabulky produktů balíkových dokumentů"
+
+msgid "Add additional data to invoice layout"
+msgstr "Přidejte další data do rozložení faktury"
+
+msgid "Add additional info"
+msgstr "Přidejte další informace"
+
+msgid "Add additional information"
+msgstr "Přidejte další informace"
+
+msgid "Add additional order & product meta fields"
+msgstr "Přidejte další meta pole objednávky a produktu"
+
+msgid "Add additional product & order data fields"
+msgstr "Přidejte další datová pole produktu a objednávky"
+
+msgid "Add additional product attributes"
+msgstr "Přidejte další atributy produktu"
+
+msgid "Add and update data while importing"
+msgstr "Přidejte a aktualizujte data během importu"
+
+msgid "Add company logo & return policy to label"
+msgstr "Přidejte na štítek logo společnosti a zásady vrácení"
+
+msgid "Add custom data like product meta, order meta, attributes etc"
+msgstr ""
+"Přidejte vlastní data, jako jsou meta produktu, meta objednávky, atributy atd"
+
+msgid "Add custom data to documents"
+msgstr "Vlastní logo pro fakturu"
+
+msgid "Add custom data to invoices"
+msgstr "Přidejte vlastní data do faktur"
+
+msgid "Add custom fields to shipping label layout"
+msgstr "Přidejte vlastní pole do rozložení přepravního štítku"
+
+msgid "Add custom footer"
+msgstr "Přidat vlastní zápatí"
+
+msgid "Add custom footers to packing slips"
+msgstr "Přidejte vlastní zápatí do dodacích listů"
+
+msgid "Add custom templates for gift cards"
+msgstr "Přidejte vlastní šablony pro dárkové karty"
+
+msgid "Add customer note"
+msgstr "Přidat poznámku zákazníka"
+
+msgid "Add date to credit note number"
+msgstr "Přidejte datum k číslu dobropisu"
+
+msgid "Add date to invoice number"
+msgstr "K číslu faktury přidejte datum"
+
+msgid "Add date to proforma invoice number"
+msgstr "Přidejte datum k číslu proforma faktury"
+
+msgid "Add extra product & order data fields"
+msgstr "Přidejte další datová pole produktu a objednávky"
+
+msgid "Add extra text in received seal"
+msgstr "Přidejte další text do přijaté pečeti"
+
+msgid "Add extra text in received seal."
+msgstr "Přidejte další text do přijaté pečeti."
+
+msgid "Add footer"
+msgstr "Přidat zápatí"
+
+msgid "Add multiple shipping labels in one page"
+msgstr "Přidejte více přepravních štítků na jednu stránku"
+
+msgid "Add multiple shipping labels on one page"
+msgstr "Přidejte více přepravních štítků na jednu stránku"
+
+msgid "Add new"
+msgstr "Přidat nový"
+
+msgid "Add notes like fragile, keep dry, etc."
+msgstr "Přidejte poznámky jako křehké, uchovávejte v suchu atd."
+
+msgid "Add order & product meta fields"
+msgstr "Přidejte meta pole objednávky a produktu"
+
+msgid "Add order meta fields"
+msgstr "Přidejte meta pole objednávky"
+
+msgid "Add order meta fields "
+msgstr "Přidejte meta pole objednávky "
+
+msgid "Add order meta fields to shipping labels"
+msgstr "Přidejte meta pole objednávky do přepravních štítků"
+
+msgid "Add print document button to selected order emails"
+msgstr "Přidat tlačítko pro tisk dokumentu k vybraným e-mailům objednávek"
+
+msgid "Add product & order meta fields"
+msgstr "Přidejte meta pole produktu a objednávky"
+
+msgid "Add product attributes"
+msgstr "Přidejte atributy produktu"
+
+msgid "Add product images to packing slips"
+msgstr "Přidejte obrázky produktů na dodací listy"
+
+msgid "Add product meta fields"
+msgstr "Přidejte meta pole produktu"
+
+msgid "Add product meta fields & attributes"
+msgstr "Přidejte meta pole a atributy produktu"
+
+msgid "Add product variation"
+msgstr "Přidejte variantu produktu"
+
+msgid "Add product variation in package documents"
+msgstr "Přidejte variantu produktu do dokumentů balíku"
+
+msgid ""
+"Add product variation in product (Works with Packing List, Shipping Label "
+"and Delivery note only)"
+msgstr ""
+"Přidejte variantu produktu v produktu (funguje pouze s balicím listem, "
+"přepravním štítkem a dodacím listem)"
+
+msgid "Add product variation. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Přidejte variantu produktu. (Funguje pouze se štítkem Faktura a Odeslání)"
+
+msgid "Add quote button to the product & shop pages"
+msgstr "Přidat tlačítko nabídky na stránky produktů a obchodu"
+
+msgid "Add shop details"
+msgstr "Přidejte podrobnosti o obchodu"
+
+msgid "Add usage restrictions for gift cards"
+msgstr "Přidejte omezení použití pro dárkové karty"
+
+msgid "Add ‘Pay Later’ option at checkout"
+msgstr "Při pokladně přidejte možnost Zaplatit později"
+
+msgid "Add/Edit Order Meta Field"
+msgstr "Přidat / upravit pole Meta objednávky"
+
+msgid "Additional feed intervals (30 minutes, 6 hours, 12 hours)"
+msgstr "Další intervaly podávání (30 minut, 6 hodin, 12 hodin)"
+
+msgid "Address Label Add-on"
+msgstr "Doplněk štítku adresy"
+
+msgid "Address details"
+msgstr "Podrobnosti adresy"
+
+msgid "Address font size"
+msgstr "Velikost písma adresy"
+
+msgid "Address label"
+msgstr "Cím címke"
+
+msgid "Address labels"
+msgstr "Adresní štítky"
+
+msgid "Address line 1"
+msgstr "Řádek adresy 1"
+
+msgid "Address line 2"
+msgstr "Řádek adresy 2"
+
+msgid ""
+"Adds Express PayPal Checkout Option on the product page and Mini-cart for "
+"faster checkout"
+msgstr ""
+"Přidá možnost expresní platby PayPal na stránku produktu a minikošík pro "
+"rychlejší platbu"
+
+msgid "Adds Footer to the delivery note"
+msgstr "Přidat zápatí do dodacího listu"
+
+msgid "Adds Footer to the packing slip"
+msgstr "Přidá zápatí na dodací list"
+
+msgid "Adds PayPal Smart Button Checkout option"
+msgstr "Přidá možnost PayPal Smart Button Checkout"
+
+msgid "Adds customer note in the dispatch label"
+msgstr "Přidat poznámku zákazníka do expedičního štítku"
+
+msgid "Adds customer note to the delivery note"
+msgstr "Přidá zákaznický list do dodacího listu"
+
+msgid "Adds customer note to the packing slip"
+msgstr "Přidat poznámku zákazníka do seznamu balení"
+
+msgid "Adds footer in dispatch label"
+msgstr "Přidá zápatí do expedičního štítku"
+
+msgid "Adds footer to the  Shipping label"
+msgstr "Přidá zápatí do štítku Doprava"
+
+msgid "Adds product image to the line items in the product table"
+msgstr "Přidá obrázek produktu k řádkovým položkám v tabulce produktů"
+
+msgid ""
+"Admins and customers both can leverage this feature wherever applicable. "
+"Disabling will remove all the provisions. Yet, the invoices are customizable."
+msgstr ""
+"Správci i zákazníci mohou tuto funkci využít všude tam, kde je to možné. "
+"Deaktivací odstraníte všechna ustanovení. Faktury jsou však přizpůsobitelné."
+
+msgid "Advanced BOGO Coupons"
+msgstr "Pokročilé kupóny BOGO"
+
+msgid "Advanced filters and customizations for import & export"
+msgstr "Pokročilé filtry a přizpůsobení pro import a export"
+
+msgid "Advanced filters and customizations for import and export"
+msgstr "Pokročilé filtry a přizpůsobení pro import a export"
+
+msgid "Advanced options"
+msgstr "Rozšířené možnosti"
+
+msgid "Advanced visual and code editor"
+msgstr "Pokročilý vizuální editor a editor kódu"
+
+msgid "Align"
+msgstr "Zarovnání"
+
+msgid "All document types"
+msgstr "Všechny typy dokumentů"
+
+msgid "All fields are mandatory"
+msgstr "Všechna pole jsou povinná"
+
+msgid "All unsaved changes will be lost upon switching to a new layout."
+msgstr "Všechny neuložené změny budou při přepnutí na nový layout ztraceny."
+
+msgid "All users"
+msgstr "Všichni uživatelé"
+
+msgid "Allow coupon combinations"
+msgstr "Povolit kombinace kupónů"
+
+msgid "Allow customers to print invoices"
+msgstr "Umožněte zákazníkům tisknout faktury"
+
+msgid "Allow remote stylesheets and images"
+msgstr "Povolit vzdálené šablony stylů a obrázky"
+
+msgid "Allows customers to print the invoice from the specified pages."
+msgstr "Umožňuje zákazníkům vytisknout fakturu ze zadaných stránek."
+
+msgid "Allows guest checkout"
+msgstr "Umožňuje odbavení hostů"
+
+msgid "Already tried the free %s WebToffee mPDF addon %s."
+msgstr "Již jste vyzkoušeli bezplatný doplněk %s WebToffee mPDF %s."
+
+msgid "Alter additional item meta"
+msgstr "Změnit meta další položky"
+
+msgid "Alter barcode information"
+msgstr "Změňte informace o čárovém kódu"
+
+msgid "Alter billing address"
+msgstr "Změňte fakturační adresu"
+
+msgid "Alter dispatch date"
+msgstr "Změnit datum odeslání"
+
+msgid "Alter fee"
+msgstr "Změna poplatku"
+
+msgid "Alter formated item price. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Změnit formátovanou cenu položky. (Funguje pouze se štítkem Faktura a "
+"Odeslání)"
+
+msgid "Alter formated item total. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Změnit celkový počet naformátovaných položek. (Funguje pouze se štítkem "
+"Faktura a Odeslání)"
+
+msgid "Alter formated subtotal"
+msgstr "Změnit formátovaný mezisoučet"
+
+msgid "Alter invoice date"
+msgstr "Změnit datum faktury"
+
+msgid "Alter item price"
+msgstr "Změnit cenu položky"
+
+msgid "Alter item price format"
+msgstr "Změnit formát ceny položky"
+
+msgid "Alter item price. (Works with Invoice and Dispatch label only)"
+msgstr "Změnit cenu položky. (Funguje pouze se štítkem Faktura a Odeslání)"
+
+msgid "Alter item quantity"
+msgstr "Změňte množství položky"
+
+msgid "Alter item quantity in package documents"
+msgstr "Změňte množství položky v dokumentaci balíku"
+
+msgid ""
+"Alter item quantity in product table (Works with Packing List, Shipping "
+"Label and Delivery note only)"
+msgstr ""
+"Změňte množství položky v tabulce produktů (funguje pouze s balicím listem, "
+"přepravním štítkem a dodacím listem)"
+
+msgid "Alter item quantity. (Works with Invoice and Dispatch label only)"
+msgstr "Změňte množství položky. (Funguje pouze se štítkem Faktura a Odeslání)"
+
+msgid "Alter item total"
+msgstr "Změnit celkový počet položek"
+
+msgid "Alter item total format"
+msgstr "Změnit celkový formát položky"
+
+msgid "Alter item total in package documents"
+msgstr "Změňte celkový počet položek v dokumentech balíku"
+
+msgid ""
+"Alter item total in product table (Works with Packing List, Shipping Label "
+"and Delivery note only)"
+msgstr ""
+"Změňte celkový počet položek v tabulce produktů (funguje pouze s balicím "
+"listem, přepravním štítkem a dodacím listem)"
+
+msgid "Alter item total. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Změnit celkový počet položek. (Funguje pouze se štítkem Faktura a Odeslání)"
+
+msgid "Alter order date"
+msgstr "Změnit datum objednávky"
+
+msgid "Alter product name"
+msgstr "Změňte název produktu"
+
+msgid ""
+"Alter product name in product (Works with Packing List, Shipping Label and "
+"Delivery note only)"
+msgstr ""
+"Změňte název produktu v produktu (funguje pouze s balicím listem, přepravním "
+"štítkem a dodacím listem)"
+
+msgid "Alter product name. (Works with Invoice and Dispatch label only)"
+msgstr "Změňte název produktu. (Funguje pouze se štítkem Faktura a Odeslání)"
+
+msgid "Alter product table column"
+msgstr "Změnit sloupec tabulky produktů"
+
+msgid "Alter product table column in package documents"
+msgstr "Změňte sloupec tabulky produktů v dokumentech balíku"
+
+msgid ""
+"Alter product table column. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Změnit sloupec tabulky produktů. (Funguje pouze se štítkem Faktura a "
+"Odeslání)"
+
+msgid ""
+"Alter product table column. (Works with Packing List, Shipping Label and "
+"Delivery note only)"
+msgstr ""
+"Změnit sloupec tabulky produktů. (Funguje pouze s balicím listem, přepravním "
+"štítkem a dodacím listem)"
+
+msgid "Alter product table head.(Add, remove, change order)"
+msgstr "Změnit hlavu tabulky produktů. (Přidat, odebrat, změnit pořadí)"
+
+msgid "Alter product table head.(Add,remove, change the order)"
+msgstr "Změnit hlavu tabulky produktů. (Přidat, odebrat, změnit pořadí)"
+
+msgid "Alter shipping address"
+msgstr "Změňte dodací adresu"
+
+msgid "Alter shipping from address"
+msgstr "Změnit odeslání z adresy"
+
+msgid "Alter shipping method"
+msgstr "Změnit způsob dopravy"
+
+msgid "Alter subtotal"
+msgstr "Změnit mezisoučet"
+
+msgid "Alter subtotal format"
+msgstr "Změnit formát mezisoučtu"
+
+msgid "Alter template HTML before printing"
+msgstr "Před tiskem změňte HTML šablony"
+
+msgid "Alter template HTML before printing."
+msgstr "Před tiskem změňte HTML šablony."
+
+msgid "Alter the footer data"
+msgstr "Změňte data zápatí"
+
+msgid "Alter the footer data."
+msgstr "Změňte data zápatí."
+
+msgid "Alter the product name in package documents"
+msgstr "Změňte název produktu v dokumentaci balení"
+
+msgid "Alter the settings array"
+msgstr "Změňte pole nastavení"
+
+msgid "Alter the variation data."
+msgstr "Změňte data variace."
+
+msgid "Alter total fee"
+msgstr "Změnit celkový poplatek"
+
+msgid "Alter total price"
+msgstr "Změnit celkovou cenu"
+
+msgid "Alter total price in words"
+msgstr "Změňte celkovou cenu slovy"
+
+msgid "Angle"
+msgstr "Úhel"
+
+msgid ""
+"Assign QR code to all of invoices generated for the orders in your store"
+msgstr ""
+"Přiřaďte QR kód všem fakturám vygenerovaným za objednávky ve vašem obchodě"
+
+msgid "Assign QR codes to all generated invoices"
+msgstr "Přiřaďte QR kódy všem vygenerovaným fakturám"
+
+msgid "Assign different types of info in your QR code, including:"
+msgstr "Přiřaďte svému QR kódu různé typy informací, včetně:"
+
+msgid "Assits in GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA, and CCPA"
+msgstr "Pomáhá v GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA a CCPA"
+
+msgid "Attach document to order email"
+msgstr "Přiložte dokument k e-mailu objednávky"
+
+msgid "Attach documents to selected order status emails"
+msgstr "Přiložte dokumenty k vybraným e-mailům o stavu objednávky"
+
+msgid "Attach invoice PDF to admin email"
+msgstr "Přiložte fakturu ve formátu PDF k e-mailu správce"
+
+msgid "Attach invoice PDF to order emails"
+msgstr "Přiložte fakturu ve formátu PDF k e-mailům s objednávkami"
+
+msgid "Attach invoice pdf in WooCommerce Email"
+msgstr "Přiložte fakturu ve formátu pdf v e-mailu WooCommerce"
+
+msgid "Attach invoice pdf in customer email"
+msgstr "Přiložte fakturu ve formátu pdf do e-mailu zákazníka"
+
+msgid "Attach proforma invoice PDF to order emails"
+msgstr "K e-mailům s objednávkami přiložte proforma fakturu ve formátu PDF"
+
+msgid "Attach sales terms"
+msgstr "Připojte podmínky prodeje"
+
+msgid "Attach special notes with proforma invoices"
+msgstr "K proforma fakturám připojte speciální poznámky"
+
+msgid "Attach transport & sales terms"
+msgstr "Připojte přepravní a prodejní podmínky"
+
+msgid "Attach transport terms"
+msgstr "Připojte přepravní podmínky"
+
+msgid "Auto reset sequence per month/year etc"
+msgstr "Sekvence automatického resetování za měsíc/rok atd"
+
+msgid "Auto-generate invoices, packing slips, and credit notes"
+msgstr "Automatické generování faktur, dodacích listů a dobropisů"
+
+msgid "Automate invoice creation"
+msgstr "Automatizujte vytváření faktur"
+
+msgid "Automatic cleanup"
+msgstr "Automatické čištění"
+
+msgid "Automatic email alerts for admin & users"
+msgstr "Automatická e-mailová upozornění pro správce a uživatele"
+
+msgid "Automatically add products"
+msgstr "Automaticky přidávat produkty"
+
+msgid "Automatically attach packing slip with order email"
+msgstr "Automaticky připojte dodací list k e-mailu objednávky"
+
+msgid "Automatically block cookies/script"
+msgstr "Automaticky blokovat soubory cookie/script"
+
+msgid "Automatically create invoice based on order status"
+msgstr "Automaticky vytvořit fakturu na základě stavu objednávky"
+
+msgid "Automatically creates invoices for selected order statuses."
+msgstr "Vytváří faktury pro vybrané stavy objednávek."
+
+msgid "Automatically email picklists based on order status"
+msgstr "Automaticky e-mailem výběrové seznamy na základě stavu objednávky"
+
+msgid ""
+"Automatically generate professional WooCommerce order-related documents for "
+"all your orders"
+msgstr ""
+"Automaticky generujte profesionální dokumenty týkající se objednávek "
+"WooCommerce pro všechny vaše objednávky"
+
+msgid "Automatically generate suggestions based on order history"
+msgstr "Automaticky generovat návrhy na základě historie objednávek"
+
+msgid "Automatically send quotes to users"
+msgstr "Automaticky odesílat nabídky uživatelům"
+
+msgid "Back"
+msgstr "Zpět"
+
+msgid "Barcode"
+msgstr "Čárový kód"
+
+msgid "Based on order number"
+msgstr "Na základě čísla objednávky"
+
+msgid "Basic - 0"
+msgstr "Základní - 0"
+
+msgid "Basic - 1"
+msgstr "Základní - 1"
+
+msgid ""
+"Before using this tool, please make sure you followed the steps described in "
+"this article %1$s how to reset/delete existing invoice numbers%2$s."
+msgstr ""
+"Před použitím tohoto nástroje se prosím ujistěte, že jste postupovali podle "
+"kroků popsaných v tomto článku, %1$sjak obnovit/smazat stávající čísla "
+"faktur%2$s."
+
+msgid "Better with transparent PNG images"
+msgstr "Lepší s průhlednými obrázky PNG"
+
+msgid "Bill to"
+msgstr "Účtovat"
+
+msgid "Billing Address"
+msgstr "Fakturační adresa"
+
+msgid "Billing Address:"
+msgstr "Fakturační adresa:"
+
+msgid "Billing address"
+msgstr "Fakturační adresa"
+
+msgid "Bold"
+msgstr "Tučně"
+
+msgid "Bolder"
+msgstr "Tučnější"
+
+msgid "Border radius"
+msgstr "Zaoblení okrajů"
+
+msgid "Border width"
+msgstr "Šířka okraje"
+
+msgid "Box name"
+msgstr "Název pole"
+
+msgid "Built-in label templates"
+msgstr "Vybírejte z předem připravených šablon"
+
+msgid "Built-in templates to personalize packing slip"
+msgstr "Vestavěné šablony pro přizpůsobení dodacího listu"
+
+msgid "Bulk generate coupons"
+msgstr "Hromadné generování kuponů"
+
+msgid "Bulk print address labels"
+msgstr "Hromadný tisk adresních štítků"
+
+msgid "Bulk print picklists from the admin order page"
+msgstr "Hromadný tisk výběrových seznamů ze stránky objednávky správce"
+
+msgid "Bulk print shipping labels"
+msgstr "Hromadný tisk přepravních štítků"
+
+msgid "Buyer name"
+msgstr "Jméno kupujícího"
+
+msgid "Cancel"
+msgstr "Zrušit"
+
+msgid "Cannot close this banner"
+msgstr "Tento banner nelze zavřít"
+
+msgid "Capture the authorized payment later"
+msgstr "Zachyťte autorizovanou platbu později"
+
+msgid "Cart Discount"
+msgstr "Sleva na košík"
+
+msgid "Cart abandonment coupons"
+msgstr "Kupóny na opuštění košíku"
+
+msgid "Cart discount"
+msgstr "Sleva do košíku"
+
+msgid "Cash on delivery"
+msgstr "Dobírka"
+
+msgid "Category wise template listing"
+msgstr "Seznam šablon podle kategorií"
+
+msgid "Caution: Settings here are only for advanced users."
+msgstr "Upozornění: Nastavení zde jsou pouze pro pokročilé uživatele."
+
+msgid "Center"
+msgstr "Na střed"
+
+msgid "Change address label layout"
+msgstr "Změnit rozložení štítku s adresou"
+
+msgid "Change color, text, background, border & more"
+msgstr "Změňte barvu, text, pozadí, ohraničení a další"
+
+msgid "Change document number format & length"
+msgstr "Změna formátu a délky čísla dokumentu"
+
+msgid "Change layout"
+msgstr "Změnit rozvržení"
+
+msgid "Checkout Premium"
+msgstr "Pokladna Premium"
+
+msgid "Choose a country&hellip;"
+msgstr "Vyberte zemi&hellip;"
+
+msgid "Choose a layout."
+msgstr "Zvolit šablonu."
+
+msgid "Choose date"
+msgstr "Vybrat termín"
+
+msgid "Choose email classes"
+msgstr "Vyberte e-mailové třídy"
+
+msgid "Choose emails for invoice attachment"
+msgstr "Vyberte e-maily pro přílohu faktury"
+
+msgid "Choose order status"
+msgstr "Zvolte stav objednávky"
+
+msgid ""
+"Choose the order emails to which you'd like to attach invoices for your "
+"customers"
+msgstr ""
+"Vyberte e-maily objednávek, ke kterým chcete přiložit faktury pro své "
+"zákazníky"
+
+msgid "City"
+msgstr "Město"
+
+msgid "Classic"
+msgstr "Klasický"
+
+msgid "Click here to add Company logo"
+msgstr "Kliknutím zde přidáte logo společnosti"
+
+msgid "Click here to add Company name"
+msgstr "Kliknutím zde přidáte název společnosti"
+
+msgid "Click here to add From address"
+msgstr "Kliknutím zde přidáte adresu odesílatele"
+
+msgid "Click here to add Signature"
+msgstr "Klepnutím zde přidáte podpis"
+
+msgid "Click to append with existing data"
+msgstr "Kliknutím přidáte existující data"
+
+msgid "Click to view predefined templates."
+msgstr "Kliknutím zobrazíte předdefinované šablony."
+
+msgid "Close"
+msgstr "Zavřít"
+
+msgid "Code"
+msgstr "Kód"
+
+msgid "Code Copied"
+msgstr "Kód zkopírován"
+
+msgid "Collect payments with a payment link on the invoice"
+msgstr "Inkasujte platby pomocí platebního odkazu na faktuře"
+
+msgid "Color"
+msgstr "Barva"
+
+msgid "Combine with the existing templates"
+msgstr "Kombinujte se stávajícími šablonami"
+
+msgid "Company Logo"
+msgstr "Logo společnosti"
+
+msgid "Company Logo / Name"
+msgstr "Logo / název společnosti"
+
+msgid "Company Name"
+msgstr "Název společnosti"
+
+msgid "Company Tax ID"
+msgstr "Název společnosti"
+
+msgid "Company details"
+msgstr "Detaily o společnosti"
+
+msgid "Company logo"
+msgstr "Logo firmy"
+
+msgid "Company name"
+msgstr "Název společnosti"
+
+msgid "Company name font size"
+msgstr "Velikost písma názvu společnosti"
+
+msgid "Compatible with WPML"
+msgstr "Kompatibilní s WPML"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slip & Credit Note (Premium)"
+msgstr ""
+"Kompatibilní s WooCommerce PDF fakturou, balicím listem a dobropisem "
+"(Premium)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slip & Credit Note (Pro)"
+msgstr ""
+"Kompatibilní s WooCommerce PDF fakturou, balicím listem a dobropisem (Pro)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slips, Delivery Notes, and "
+"Shipping Label (Free and Pro versions)"
+msgstr ""
+"Kompatibilní s WooCommerce PDF fakturou, balicími listy, dodacími listy a "
+"přepravním štítkem (verze zdarma a Pro)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoices, Packing Slips, Delivery Notes, and "
+"Shipping Labels (Free)"
+msgstr ""
+"Kompatibilní s fakturami WooCommerce PDF, balicími listy, dodacími listy a "
+"přepravními štítky (zdarma)"
+
+msgid "Compatible with major 3rd-party plugins"
+msgstr "Kompatibilní s hlavními pluginy třetích stran"
+
+msgid "Complete the invoice number format to suit your requirements"
+msgstr "Vyplňte formát čísla faktury tak, aby vyhovoval vašim požadavkům"
+
+msgid "Configure the general settings required for the delivery note."
+msgstr "Nakonfigurujte obecná nastavení požadovaná pro dodací list."
+
+msgid "Configure the general settings required for the dispatch label."
+msgstr "Nakonfigurujte obecná nastavení požadovaná pro expediční štítek."
+
+msgid "Configure the general settings required for the invoice."
+msgstr "Nakonfigurujte obecná nastavení požadovaná pro fakturu."
+
+msgid "Configure the general settings required for the packing slip."
+msgstr "Nakonfigurujte obecná nastavení požadovaná pro dodací list."
+
+msgid "Configure the general settings required for the shipping label."
+msgstr "Nakonfigurujte obecná nastavení požadovaná pro přepravní štítek."
+
+msgid "Contact Number"
+msgstr "Kontaktní číslo"
+
+msgid "Contact Us"
+msgstr "Napište nám"
+
+msgid "Contact number"
+msgstr "Kontaktní číslo"
+
+msgid "Copied"
+msgstr "Zkopírováno"
+
+msgid "Copy"
+msgstr "Kopírovat"
+
+msgid "Copy Code"
+msgstr "Kopírovat kód"
+
+msgid "Could you tell us a bit more?"
+msgstr "Můžete nám říct něco víc?"
+
+msgid "Could you tell us more about that feature?"
+msgstr "Můžete nám říci více o této funkci?"
+
+msgid "Country/State"
+msgstr "Země / Stát"
+
+msgid "Coupon Used"
+msgstr "Použitý kupón"
+
+msgid "Coupon embeds"
+msgstr "Vložení kupónu"
+
+msgid "Coupon info"
+msgstr "Informace o kupónu"
+
+msgid "Coupons based on past purchases"
+msgstr "Kupóny založené na minulých nákupech"
+
+msgid "Create QR code coupons"
+msgstr "Vytvořte kupóny s QR kódem"
+
+msgid "Create QR code that reads order or invoice number"
+msgstr "Vytvořte QR kód, který přečte číslo objednávky nebo faktury"
+
+msgid "Create a cookie consent banner"
+msgstr "Vytvořte banner souhlasu se soubory cookie"
+
+msgid "Create a new template or edit an existing template."
+msgstr "Vytvořit novou šablonu nebo upravit existující šablonu."
+
+msgid "Create and offer sign-up discount coupons"
+msgstr "Vytvářejte a nabízejte registrační slevové kupóny"
+
+msgid ""
+"Create and run successful promotional campaigns with the best tools for "
+"WooCommerce"
+msgstr ""
+"Vytvářejte a provozujte úspěšné propagační kampaně s nejlepšími nástroji pro "
+"WooCommerce"
+
+msgid "Create attractive gift cards "
+msgstr "Vytvořte atraktivní dárkové karty "
+
+msgid "Create cookie policy"
+msgstr "Vytvořit zásady pro soubory cookie"
+
+msgid "Create delivery notes, shipping & dispatch labels"
+msgstr "Vytvářejte dodací listy, přepravní a expediční štítky"
+
+msgid "Create new"
+msgstr "Vytvořit nový"
+
+msgid "Create new template"
+msgstr "Vytvořit novou šablonu"
+
+msgid "Create or customize picklist templates"
+msgstr "Vytvořte nebo přizpůsobte šablony výběrových seznamů"
+
+msgid "Create proforma invoice automatically for selected order statuses"
+msgstr "Vytvořte proforma fakturu automaticky pro vybrané stavy objednávek"
+
+msgid "Create proforma invoices automatically"
+msgstr "Vytvářejte proforma faktury automaticky"
+
+msgid "Create simple & variable subscriptions"
+msgstr "Vytvářejte jednoduchá a variabilní předplatná"
+
+msgid "Create unlimited gift cards"
+msgstr "Vytvořte neomezené množství dárkových karet"
+
+msgid "Create users on order import"
+msgstr "Vytvořte uživatele při importu objednávky"
+
+msgid "Create your unique invoice numbering system"
+msgstr "Vytvořte si svůj jedinečný systém číslování faktur"
+
+msgid "Credit note"
+msgstr "Dobropis"
+
+msgid "Creditnote number format"
+msgstr "Formát čísla kreditní bankovky"
+
+msgid "Cross-platform compatibility"
+msgstr "Kompatibilita napříč platformami"
+
+msgid "Custom"
+msgstr "Vlastní"
+
+msgid "Custom (Pro version)"
+msgstr "Verze Pro"
+
+msgid "Custom PDF name prefix"
+msgstr "Vlastní předpona názvu PDF"
+
+msgid "Custom details, as below:"
+msgstr "Vlastní podrobnosti, jak je uvedeno níže:"
+
+msgid "Custom footer"
+msgstr "Vlastní zápatí"
+
+msgid "Custom invoice date"
+msgstr "Vlastní datum faktury"
+
+msgid "Custom logo for invoice"
+msgstr "Vlastní logo pro fakturu"
+
+msgid "Custom number"
+msgstr "Vlastní číselná řada"
+
+msgid "Custom number series"
+msgstr "Vlastní číselná řada"
+
+msgid "Custom sequence for free orders"
+msgstr "Vlastní sekvence pro bezplatné objednávky"
+
+msgid "Customer Note"
+msgstr "Poznámka zákazníka"
+
+msgid "Customer Note:"
+msgstr "Poznámky zákazníka:"
+
+msgid "Customer note"
+msgstr "Poznámka zákazníka"
+
+msgid "Customer note:"
+msgstr "Poznámka zákazníka:"
+
+msgid "Customizable countdown sales banner"
+msgstr "Přizpůsobitelný prodejní banner s odpočítáváním"
+
+msgid "Customizable tax items, tax fields (SSN, VAT, etc.)"
+msgstr "Přizpůsobitelné daňové položky, daňová pole (SSN, DPH atd.)"
+
+msgid "Customize"
+msgstr "Přizpůsobit"
+
+msgid "Customize Pay Later option display"
+msgstr "Přizpůsobit zobrazení možnosti Pay Later"
+
+msgid "Customize and send emails to new users on import"
+msgstr "Přizpůsobte a posílejte e-maily novým uživatelům při importu"
+
+msgid "Customize cookie banner"
+msgstr "Přizpůsobte banner cookie"
+
+msgid "Customize document layout & properties"
+msgstr "Přizpůsobte rozvržení a vlastnosti dokumentu"
+
+msgid "Customize individual elements using block editors"
+msgstr "Přizpůsobte jednotlivé prvky pomocí editorů bloků"
+
+msgid "Customize invoice PDF name format"
+msgstr "Přizpůsobte formát názvu faktury PDF"
+
+msgid "Customize label sizes"
+msgstr "Přizpůsobte velikosti štítků"
+
+msgid "Customize layout elements & properties"
+msgstr "Přizpůsobte prvky a vlastnosti rozvržení"
+
+msgid "Customize layout properties"
+msgstr "Přizpůsobte vlastnosti rozvržení"
+
+msgid "Customize shipping label size"
+msgstr "Přizpůsobte velikost přepravního štítku"
+
+msgid "Customize the display of the recommended products"
+msgstr "Přizpůsobte si zobrazení doporučených produktů"
+
+msgid "Customize the title, button, and label texts"
+msgstr "Přizpůsobte text nadpisu, tlačítka a štítku"
+
+msgid "Customizer for WooCommerce PDF Invoices"
+msgstr "Customizer pro WooCommerce PDF faktury"
+
+msgid "Customizer for WooCommerce PDF Invoices Plugin"
+msgstr "Customizer for WooCommerce PDF Invoices Plugin"
+
+msgid "Customizer module is not active."
+msgstr "Modul Customizer není aktivní."
+
+msgid "Dashed"
+msgstr "Přerušovaný"
+
+msgid "Data Import & Export"
+msgstr "Import a export dat"
+
+msgid "Date format strings"
+msgstr "Řetězce formátu data"
+
+msgid "Date formats"
+msgstr "Formát data"
+
+msgid "Date suffix in order numbers"
+msgstr "Přípona data v objednávkových číslech"
+
+msgid "Date:"
+msgstr "Datum:"
+
+msgid "Debug"
+msgstr "Režim ladění"
+
+msgid "Delete"
+msgstr "Odstranit"
+
+msgid "Delete all generated invoice numbers"
+msgstr "Smažte všechna vygenerovaná čísla faktur"
+
+msgid "Delete all the settings made by this plugin"
+msgstr "Smažte všechna nastavení provedená tímto pluginem"
+
+msgid "Delivery note"
+msgstr "Dodací list"
+
+msgid "Department/Business unit/Sender name"
+msgstr "Oddělení/Obchodní jednotka/Jméno odesílatele"
+
+msgid "Description"
+msgstr "Popis"
+
+msgid "Developed by"
+msgstr "Vyvinuto"
+
+msgid "Disable guest users from asking for quote"
+msgstr "Zakázat uživatelům hosta žádat o cenovou nabídku"
+
+msgid "Dispatch Date:"
+msgstr "Datum odeslání:"
+
+msgid "Dispatch Label"
+msgstr "Expediční štítek"
+
+msgid "Dispatch Label 1"
+msgstr "Štítek odeslání 1"
+
+msgid "Dispatch label"
+msgstr "Expediční štítek"
+
+msgid "Display"
+msgstr "Zobrazení"
+
+msgid "Display currency code"
+msgstr "Zobrazit kód měny"
+
+msgid "Display free line items in the invoice"
+msgstr "Zobrazit na faktuře bezplatné řádkové položky"
+
+msgid "Display free line items on invoice"
+msgstr "Zobrazit bezplatné řádkové položky na faktuře"
+
+msgid "Display options for bundled products"
+msgstr "Možnosti zobrazení pro přibalené produkty"
+
+msgid "Display recommended products on the product pages"
+msgstr "Zobrazte doporučené produkty na produktových stránkách"
+
+msgid "Display state name"
+msgstr "Zobrazovat název stavu"
+
+msgid "Display the total number of items on label"
+msgstr "Zobrazení celkového počtu položek na štítku"
+
+msgid ""
+"Displays customer`s VAT number saved in the order details by third-party "
+"plugins in this document. Supported meta keys are"
+msgstr ""
+"Zobrazuje DIČ zákazníka uložené v detailech objednávky pluginy třetích stran "
+"v tomto dokumentu. Podporované meta klíče jsou"
+
+msgid ""
+"Displays the currently chosen document template with provisions to modify."
+msgstr "Zobrazí aktuálně zvolenou šablonu dokumentu s možností úprav."
+
+msgid "Do not reset the templates"
+msgstr "Neresetujte šablony"
+
+msgid "Do not show again"
+msgstr "Znovu nezobrazovat"
+
+msgid "Document"
+msgstr "Dokument"
+
+msgid "Document customizer"
+msgstr "Nástroj pro přizpůsobení dokumentů"
+
+msgid "Document details"
+msgstr "Podrobnosti o dokumentu"
+
+msgid "Document title"
+msgstr "Název dokumentu"
+
+msgid "Documentation"
+msgstr "Dokumentace"
+
+msgid "Documents"
+msgstr "Dokumenty"
+
+msgid "Dotted"
+msgstr "Tečkovaný"
+
+msgid "Download"
+msgstr "Stáhnout"
+
+msgid "Download Invoice"
+msgstr "Stáhnout fakturu"
+
+msgid "Download Invoices"
+msgstr "Stáhnout faktury"
+
+msgid "Download Packing slip"
+msgstr "Stáhnout dodací list"
+
+msgid "Download invoice"
+msgstr "Stáhnout fakturu"
+
+msgid "Drag-and-drop easy customization"
+msgstr "Snadné přizpůsobení přetažením"
+
+msgid "E-commerce Promotions"
+msgstr "Propagace elektronického obchodu"
+
+msgid "Easy button and form customization"
+msgstr "Snadné přizpůsobení tlačítka a formuláře"
+
+msgid "Easy invoice layout customization"
+msgstr "Snadné přizpůsobení rozložení faktury"
+
+msgid "Edit"
+msgstr "Upravit"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Email Field"
+msgstr "E-mail"
+
+msgid "Email customers on order status change"
+msgstr "E-mail zákazníkům o změně stavu objednávky"
+
+msgid "Email gift cards to customers"
+msgstr "E-mailové dárkové karty zákazníkům"
+
+msgid "Email:"
+msgstr "Email:"
+
+msgid "Empty order"
+msgstr "Prázdná objednávka"
+
+msgid "Enable Invoice"
+msgstr "Povolit fakturu"
+
+msgid "Enable RTL support"
+msgstr "Povolit podporu RTL"
+
+msgid "Enable a common print button for"
+msgstr "Povolit společné tlačítko tisku pro"
+
+msgid "Enable additional currency font support"
+msgstr "Povolit další podporu písma měny"
+
+msgid "Enable customers to Pay Later at checkout"
+msgstr "Umožněte zákazníkům zaplatit později u pokladny"
+
+msgid "Enable customers to print invoices & packing slips"
+msgstr "Umožněte zákazníkům tisknout faktury a dodací listy"
+
+msgid "Enable customers to print the documents from order emails"
+msgstr "Umožněte zákazníkům tisknout dokumenty z e-mailů objednávek"
+
+msgid "Enable dedicated print buttons for"
+msgstr "Povolit vyhrazená tlačítka tisku pro"
+
+msgid "Enable quotation request for selected products"
+msgstr "Povolit žádost o cenovou nabídku pro vybrané produkty"
+
+msgid ""
+"Enable to apply the most recent settings to previous order invoices. This "
+"will match the previous invoices with the upcoming invoices.Changing the "
+"company address, name or any other settings in the future may overwrite "
+"previously created invoices with the most up-to-date information."
+msgstr ""
+"Aktivujte, chcete-li použít nejnovější nastavení na faktury předchozích "
+"objednávek. Tím se předchozí faktury shodují s nadcházejícími fakturami. "
+"Změna adresy společnosti, názvu nebo jakéhokoli jiného nastavení v budoucnu "
+"může přepsat dříve vytvořené faktury nejaktuálnějšími informacemi."
+
+msgid "Enable to attach invoice PDF to the new order email notification"
+msgstr ""
+"Povolit připojení faktury ve formátu PDF k e-mailovému oznámení o nové "
+"objednávce"
+
+msgid ""
+"Enable to create invoice for orders generated before plugin installation"
+msgstr ""
+"Povolit vytváření faktur za objednávky vygenerované před instalací pluginu"
+
+msgid "Enable to create invoices for free orders"
+msgstr "Povolit vytváření faktur pro bezplatné objednávky"
+
+msgid "Enable to create invoices for free orders."
+msgstr "Povolit vytváření faktur pro bezplatné objednávky."
+
+msgid "Enable to have a preview of the document before the print is initiated"
+msgstr "Povolením zobrazíte náhled dokumentu před zahájením tisku"
+
+msgid "Enable to print, download, and mail invoices."
+msgstr "Umožňuje tisk, stahování a odesílání faktur."
+
+msgid "Enable to show currency code instead of currency symbol"
+msgstr "Povolit zobrazení kódu měny místo symbolu měny"
+
+msgid "Enable to show state name in addresses"
+msgstr "Povolit zobrazení názvu státu v adresách"
+
+msgid ""
+"Enable to use additional font library to support the currency symbol in pdf"
+msgstr "Povolit použití další knihovny písem pro podporu symbolu měny v pdf"
+
+msgid "End"
+msgstr "Konec"
+
+msgid "Ensure security with base64 & URI printing"
+msgstr "Zajistěte zabezpečení pomocí tisku base64 a URI"
+
+msgid "Enter a name for your template"
+msgstr "Zadejte název šablony"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid "Error uploading the file"
+msgstr "Chyba při nahrávání souboru"
+
+msgid "Error."
+msgstr "Chyba."
+
+msgid "Error:"
+msgstr "Chyba:"
+
+msgid "Error: Empty JSON file"
+msgstr "Chyba: Prázdný soubor JSON"
+
+msgid "Error: Invalid JSON data"
+msgstr "Chyba: Neplatná data JSON"
+
+msgid "Example Code"
+msgstr "Příklad kódu"
+
+msgid "Exclude out-of-stock products"
+msgstr "Vyloučit produkty, které nejsou skladem"
+
+msgid "Exclude specific products"
+msgstr "Vyloučit konkrétní produkty"
+
+msgid "Exclude virtual items from picklists"
+msgstr "Vyloučit virtuální položky z výběrových seznamů"
+
+msgid "Exclude virtual products from picklists"
+msgstr "Vyloučit virtuální produkty z výběrových seznamů"
+
+msgid "Explicit/Implicit consent"
+msgstr "Explicitní/implicitní souhlas"
+
+msgid "Export"
+msgstr "Export"
+
+msgid "Export and import custom fields and third-party plugin fields"
+msgstr "Exportujte a importujte vlastní pole a pole pluginů třetích stran"
+
+msgid "Export product images in a separate zip file"
+msgstr "Exportujte obrázky produktů do samostatného souboru zip"
+
+msgid "Export settings (JSON)"
+msgstr "Exportovat nastavení (JSON)"
+
+msgid "Export to FTP/SFTP"
+msgstr "Export na FTP/SFTP"
+
+msgid "Extensions"
+msgstr "Rozšíření"
+
+msgid "Extra Details"
+msgstr "Extra detaily"
+
+msgid "Extra detail font size"
+msgstr "Velikost písma pro extra detail"
+
+msgid "Fast and Superior Support"
+msgstr "Rychlá a vynikající podpora"
+
+msgid "Features"
+msgstr "Vlastnosti"
+
+msgid "Fee"
+msgstr "Poplatek"
+
+msgid "Field Name"
+msgstr "Jméno Pole"
+
+msgid "File path"
+msgstr "Cesta k souboru"
+
+msgid "Filter by user role, email, date, etc"
+msgstr "Filtrujte podle uživatelské role, e-mailu, data atd"
+
+msgid "Filter export by products, order status, email, date, etc"
+msgstr "Filtrujte export podle produktů, stavu objednávky, e-mailu, data atd"
+
+msgid "Filter products based on product type"
+msgstr "Filtrujte produkty podle typu produktu"
+
+msgid "Filters"
+msgstr "Filtry"
+
+msgid "Finish setup"
+msgstr "Dokončete nastavení"
+
+msgid "Fit multiple shipping labels on a single page"
+msgstr "Umístěte více přepravních štítků na jednu stránku"
+
+msgid "Fixed and custom gift card amounts"
+msgstr "Pevné a vlastní částky dárkových karet"
+
+msgid "Font size"
+msgstr "Velikost písma"
+
+msgid "Footer"
+msgstr "Zápatí"
+
+msgid "For better RTL integration in PDF documents, please use our"
+msgstr "Pro lepší integraci RTL v dokumentech PDF použijte prosím naše"
+
+msgid "For better performances"
+msgstr "Pro lepší výkony"
+
+msgid "Format"
+msgstr "Formát"
+
+msgid "Fragile"
+msgstr "Křehké"
+
+msgid "Free"
+msgstr "Zdarma"
+
+msgid "Free version"
+msgstr "Verze zdarma"
+
+msgid "Free vs Premium"
+msgstr "Zdarma vs Premium"
+
+msgid "Free!"
+msgstr "Zdarma!"
+
+msgid "Frequently Bought Together for WooCommerce"
+msgstr "Často kupované společně pro WooCommerce"
+
+msgid "From"
+msgstr "Od"
+
+msgid "From Address"
+msgstr "Odesílatel"
+
+msgid "From Address:"
+msgstr "Adresa odesílatele:"
+
+msgid "From address"
+msgstr "Adresa odesílatele"
+
+msgid "From left"
+msgstr "Zleva"
+
+msgid "From top"
+msgstr "Od vrchu"
+
+msgid "From:"
+msgstr "Od:"
+
+msgid "Full Page"
+msgstr "Celá stránka"
+
+msgid "Full page"
+msgstr "Celá stránka"
+
+msgid "GDPR Cookie Consent Plugin (CCPA Ready)"
+msgstr "GDPR Cookie Consent (CCPA Ready)"
+
+msgid "General"
+msgstr "Obecné"
+
+msgid "General Settings"
+msgstr "Základní nastavení"
+
+msgid "Generate"
+msgstr "Generovat"
+
+msgid "Generate Billing Address labels"
+msgstr "Generování štítků s fakturační adresou"
+
+msgid "Generate From Address labels"
+msgstr "Generovat z adresních štítků"
+
+msgid "Generate Return Address labels"
+msgstr "Generování štítků se zpáteční adresou"
+
+msgid "Generate Shipping Address labels"
+msgstr "Podporuje vlastní velikosti adresních/přepravních štítků"
+
+msgid ""
+"Generate WooCommerce product feeds for Google Shopping, Facebook Shop, and "
+"Instagram Shop"
+msgstr ""
+"Generujte produkty WooCommerce pro Nákupy Google, Facebook Shop a Instagram "
+"Shop"
+
+msgid "Generate address labels"
+msgstr "Generování adresních štítků"
+
+msgid "Generate custom coupon URLs"
+msgstr "Vygenerujte adresy URL vlastních kuponů"
+
+msgid "Generate custom-sized shipping labels"
+msgstr "Generujte přepravní štítky vlastní velikosti"
+
+msgid "Generate dispatch labels and delivery notes"
+msgstr "Generujte expediční štítky a dodací listy"
+
+msgid "Generate gift cards based on order status"
+msgstr "Vygenerujte dárkové karty na základě stavu objednávky"
+
+msgid "Generate invoices and credits notes"
+msgstr "Vytvářejte faktury a dobropisy"
+
+msgid "Generate invoices for existing orders"
+msgstr "Generování faktur pro existující objednávky"
+
+msgid "Generate invoices for free orders"
+msgstr "Generujte faktury pro bezplatné objednávky"
+
+msgid "Generate invoices for old orders"
+msgstr "Generování faktur za staré objednávky"
+
+msgid "Generate packing slips and credit notes"
+msgstr "Generujte dodací listy a dobropisy"
+
+msgid "Generate picklists"
+msgstr "Vytvářejte výběrové seznamy"
+
+msgid "Generate shipping labels and delivery notes"
+msgstr "Generujte přepravní štítky a dodací listy"
+
+msgid "Generate shipping labels and dispatch labels"
+msgstr "Generování přepravních štítků a štítků pro odeslání"
+
+msgid ""
+"Generate ‘Shipping Address’, ‘Billing Address’, ‘From Address’, and ‘Return "
+"Address’ labels"
+msgstr ""
+"Vygenerujte štítky „Doručovací adresa“, „Fakturační adresa“, „Adresa "
+"odesílatele“ a „Zpáteční adresa“"
+
+msgid "Generating"
+msgstr "Generuji"
+
+msgid "Get Add-on"
+msgstr "Získejte doplněk"
+
+msgid ""
+"Get Help with Ensuring Compliance to Major Privacy Laws for Your WordPress "
+"Website - GDPR, CCPA, LGPD, CNIL, and More."
+msgstr ""
+"Získejte pomoc se zajištěním souladu s hlavními zákony o ochraně osobních "
+"údajů pro váš web WordPress – GDPR, CCPA, LGPD, CNIL a další."
+
+msgid "Get Plugin"
+msgstr "Získat zásuvný modul"
+
+msgid "Get advanced features for your"
+msgstr "Získejte pokročilé funkce pro váš"
+
+msgid "Give away product coupons"
+msgstr "Rozdávejte produktové kupony"
+
+msgid "Go to plugins page"
+msgstr "Přejít na stránku pluginů"
+
+msgid "Go to support"
+msgstr "Přejít na podporu"
+
+msgid "Google local product inventory feed"
+msgstr "Zdroj lokálně dostupného zboží Google"
+
+msgid "Granular consent based on cookie categories"
+msgstr "Granulární souhlas na základě kategorií souborů cookie"
+
+msgid "Group products by 'Category'"
+msgstr "Seskupit produkty podle 'Kategorie'"
+
+msgid "Group products by category"
+msgstr "Seskupit produkty podle 'Kategorie'"
+
+msgid "Group products by ‘Category’"
+msgstr "Seskupit produkty podle 'Kategorie'"
+
+msgid "Group products by ‘Order’"
+msgstr "Seskupit produkty podle 'Objednat'"
+
+msgid "Group products in picklist by order/category"
+msgstr "Seskupte produkty v seznamu podle objednávky/kategorie"
+
+msgid "HTML"
+msgstr "HTML"
+
+msgid "Header Color"
+msgstr "Barva nadpisu"
+
+msgid "Height"
+msgstr "Výška"
+
+msgid "Hello there! Let’s begin with the basics"
+msgstr "Ahoj! Začněme základy"
+
+msgid "Help Guide"
+msgstr "Průvodce nápovědou"
+
+msgid "Help Links"
+msgstr "Odkazy na nápovědu"
+
+msgid "Help and Support"
+msgstr "Pomoc a podpora"
+
+msgid ""
+"Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s "
+"%5$s. %6$s Less than a minute of your time will motivate us to keep doing "
+"what we do. We would really appreciate if you could take a moment to drop a "
+"quick review that motivate us to keep going."
+msgstr ""
+"Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s "
+"%5$s. %6$s Less than a minute of your time will motivate us to keep doing "
+"what we do. We would really appreciate if you could take a moment to drop a "
+"quick review that motivate us to keep going."
+
+msgid "Hide prices and ‘add to cart’ button"
+msgstr "Skrýt ceny a tlačítko „přidat do košíku“"
+
+msgid "Hide/Show received seal in invoice"
+msgstr "Skrýt/Zobrazit přijatou pečeť na faktuře"
+
+msgid "Hide/Show received seal in invoice."
+msgstr "Skrýt/Zobrazit přijatou pečeť na faktuře."
+
+msgid ""
+"I am unable to add customer VAT(or GSTIN or ABN or any other tax id etc)"
+msgstr ""
+"Nemohu přidat DPH zákazníka (nebo GSTIN nebo ABN nebo jakékoli jiné daňové "
+"identifikační číslo atd.)"
+
+msgid "I couldn't understand how to make it work"
+msgstr "Nechápal jsem, jak to udělat"
+
+msgid "I found a better plugin"
+msgstr "Našel jsem lepší plugin"
+
+msgid "I rather wouldn't say"
+msgstr "Raději bych neřekl"
+
+msgid "INVOICE"
+msgstr "FAKTURA"
+
+msgid ""
+"If left blank, default to the logo from General settings. Ensure to select "
+"company logo from ‘Invoice > Customize > Company Logo’ to reflect on the "
+"invoice. Recommended size is 150×50px."
+msgstr ""
+"Pokud ponecháte prázdné, použije se výchozí logo z Obecného nastavení. "
+"Ujistěte se, že jste vybrali logo společnosti z „Faktura > Přizpůsobit > "
+"Logo společnosti“, aby se odrazilo na faktuře. Doporučená velikost je "
+"150×50px."
+
+msgid "If the order number is"
+msgstr "Číslo objednávky"
+
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr "Pokud máte chvilku, sdělte nám prosím, proč deaktivujete:"
+
+msgid "Image"
+msgstr "Obrázek"
+
+msgid "Image Signature"
+msgstr "Obrázkový podpis"
+
+msgid "Image label"
+msgstr "Štítek obrázku"
+
+msgid "Image text align"
+msgstr "Zarovnání textu obrázku"
+
+msgid "Import"
+msgstr "Import"
+
+msgid "Import & export custom fields and values"
+msgstr "Import a export vlastních polí a hodnot"
+
+msgid "Import Export Suite for WooCommerce"
+msgstr "Import Export Suite pro WooCommerce"
+
+msgid "Import and export coupons"
+msgstr "Dovozní a vývozní kupony"
+
+msgid "Import from URL, Google Sheets, FTP/SFTP"
+msgstr "Import z adresy URL, Tabulek Google, FTP/SFTP"
+
+msgid "Import settings (JSON)"
+msgstr "Nastavení importu (JSON)"
+
+msgid ""
+"Import/export Products, Orders, Subscriptions, Coupons, Customers, WordPress "
+"Users, Categories & Tags, Reviews"
+msgstr ""
+"Import/export produktů, objednávky, předplatná, kupóny, zákazníci, uživatelé "
+"WordPress, kategorie a štítky, recenze"
+
+msgid "Imported successfully"
+msgstr "Úspěšně importováno"
+
+msgid ""
+"Importing the file will delete all the settings and replace with data from "
+"chosen file"
+msgstr ""
+"Import souboru smaže všechna nastavení a nahradí je daty z vybraného souboru"
+
+msgid "In minutes. Eg: 1440 for 1 day. Minimum value is 1440"
+msgstr "V minutách. Např.: 1440 za 1 den. Minimální hodnota je 1440"
+
+msgid "Include free(priced as 0) line items in the invoice"
+msgstr "Zahrňte do faktury řádkové položky zdarma (s cenou 0)"
+
+msgid "Include or exclude specific categories"
+msgstr "Zahrnout nebo vyloučit konkrétní kategorie"
+
+msgid "Include product image"
+msgstr "Včetně obrázku produktu"
+
+msgid "Include product image in delivery note"
+msgstr "Do dodacího listu uveďte obrázek produktu"
+
+msgid "Include the package number & box names on the label"
+msgstr "Na štítek uveďte číslo balíku a názvy krabic"
+
+msgid "Incorrect file"
+msgstr "Nesprávný soubor"
+
+msgid "Increment sequence in custom series"
+msgstr "Posloupnost přírůstků ve vlastní řadě"
+
+msgid ""
+"Input a custom prefix for ‘PDF name format’ that will appear at the "
+"beginning of the name. Defaulted to ‘Invoice_’."
+msgstr ""
+"Zadejte vlastní předponu pro „formát názvu PDF“, která se zobrazí na začátku "
+"jména. Výchozí nastavení je „Faktura_“."
+
+msgid "Instruction"
+msgstr "Návod"
+
+msgid "Interval"
+msgstr "Interval"
+
+msgid "Invalid access key and mail id"
+msgstr "Neplatný přístupový klíč a e-mailové ID"
+
+msgid "Invalid order id"
+msgstr "Neplatné ID objednávky"
+
+msgid "Invoice"
+msgstr "FAKTURA"
+
+msgid "Invoice > Customize > Company Logo / Name"
+msgstr "Faktura > Přizpůsobit > Logo / Název společnosti"
+
+msgid "Invoice Date"
+msgstr "Datum fakturace"
+
+msgid "Invoice Date:"
+msgstr "Datum vystavení:"
+
+msgid "Invoice Generation In Progress"
+msgstr "Probíhá generování faktury"
+
+msgid "Invoice No.:"
+msgstr "FAKTURA:"
+
+msgid "Invoice No:"
+msgstr "Faktura č.:"
+
+msgid "Invoice Number"
+msgstr "Faktura číslo"
+
+msgid "Invoice date"
+msgstr "Datum vystavení"
+
+msgid "Invoice date:"
+msgstr "Datum vystavení:"
+
+msgid "Invoice details"
+msgstr "Fakturační údaje"
+
+msgid ""
+"Invoice in PDF format will be attached with the order email for chosen order "
+"statuses."
+msgstr ""
+"Faktura ve formátu PDF bude přiložena k emailu objednávky pro vybrané stavy "
+"objednávky."
+
+msgid "Invoice no:"
+msgstr "Faktura č.:"
+
+msgid "Invoice number"
+msgstr "Číslo faktury"
+
+msgid "Invoice number format"
+msgstr "Formát čísla faktury"
+
+msgid "Invoice number length"
+msgstr "Délka čísla faktury"
+
+msgid ""
+"Invoice numbers are getting generated in the background. This process may "
+"take a little while, so please be patient."
+msgstr ""
+"Čísla faktur se generují na pozadí. Tento proces může chvíli trvat, proto "
+"buďte trpěliví."
+
+msgid "Invoice setup successfully"
+msgstr "Nastavení faktury bylo úspěšné"
+
+msgid "Invoice total"
+msgstr "Faktura celkem"
+
+msgid "Invoice total tax"
+msgstr "Fakturovat celkovou daň"
+
+msgid "Invoice/Packing"
+msgstr "Faktury/Balení"
+
+msgid "Invoiced date"
+msgstr "Datum fakturace"
+
+msgid "Invoices, Packing Slips and Credit Notes Module"
+msgstr "Modul faktur, balicích lístků a dobropisů"
+
+msgid "Invoices, Packing slips and Credit notes"
+msgstr "Faktury, dodací listy a dobropisy"
+
+msgid ""
+"It seems the products in this order were removed, we cannot proceed this "
+"actoin now."
+msgstr ""
+"Zdá se, že produkty v této objednávce byly odstraněny, v této akci nyní "
+"nemůžeme pokračovat."
+
+msgid "It seems this order is not yours"
+msgstr "Zdá se, že tato objednávka není vaše"
+
+msgid "It seems this order is not yours."
+msgstr "Zdá se, že tato objednávka není vaše."
+
+msgid "Item with same meta key already exists"
+msgstr "Položka se stejným meta klíčem již existuje"
+
+msgid "Jumbing LED Light Wall Ball"
+msgstr "Jumbing LED Light Wall Ball"
+
+msgid "Keep dry"
+msgstr "Udržujte v suchu"
+
+msgid "Key in your company name."
+msgstr "Zadejte název vaší společnosti."
+
+msgid "Knock, Knock!"
+msgstr "Ťuk ťuk!"
+
+msgid "Label"
+msgstr "Štítek"
+
+msgid "Language support issues"
+msgstr "Problémy s jazykovou podporou"
+
+msgid "Last imported on:"
+msgstr "Naposledy importováno dne:"
+
+msgid "Last updated on:"
+msgstr "Poslední aktualizace:"
+
+msgid "Left"
+msgstr "Vlevo"
+
+msgid "Lighter"
+msgstr "Světlejší"
+
+msgid "Lightning-fast printing"
+msgstr "Bleskově rychlý tisk"
+
+msgid "Limit spams with reCAPTCHA"
+msgstr "Omezte spamy pomocí reCAPTCHA"
+
+msgid "Line height"
+msgstr "Výška řádku"
+
+msgid "Load from WooCommerce"
+msgstr "Načíst z WooCommerce"
+
+msgid "Location based exclusion for banner"
+msgstr "Vyloučení banneru na základě polohy"
+
+msgid "Log all Stripe transactions"
+msgstr "Zaznamenejte všechny transakce Stripe"
+
+msgid "Logged in users"
+msgstr "Přihlášení uživatelé"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "Logo Height"
+msgstr "Výška loga"
+
+msgid "Logo Width"
+msgstr "Šířka loga"
+
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec vehicula "
+"purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
+"et interdum tellus fermentum at. Fusce pellentesque justo rhoncus"
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elite. Nunc nec "
+"vehiclesula purus. Časová prodleva ipsum ac tempus. Aenean vehicles "
+"porttitor tortor, et interdum tellus fermentum at. Fusce pellentesque justo "
+"rhoncus"
+
+msgid "Lots of customization options like button style, position, etc"
+msgstr "Spousta možností přizpůsobení, jako je styl tlačítka, poloha atd"
+
+msgid "Maintains action history and debug logs"
+msgstr "Udržuje historii akcí a protokoly ladění"
+
+msgid "Manage user credit balance"
+msgstr "Správa zůstatku kreditu uživatele"
+
+msgid "Manual Signature"
+msgstr "Ruční podpis"
+
+msgid "Manually create a bought-together list"
+msgstr "Ručně vytvořte seznam zakoupených položek"
+
+msgid "Map categories on product level"
+msgstr "Mapujte kategorie na úrovni produktu"
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas."
+msgstr ""
+"Nejčastěji se jedná o vulgární data, jako je portugalský semper tellus. Cras "
+"porta lectus id augue interdum egestas."
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+msgstr ""
+"Nejčastěji se jedná o vulgární data, jako je portugalský semper tellus. Cras "
+"porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+
+msgid "Mention the name of the plugin or meta key if any"
+msgstr "Uveďte název pluginu nebo meta klíč, pokud existuje"
+
+msgid "Meta Key"
+msgstr "Meta klíč"
+
+msgid ""
+"Missing RTL/Unicode language(e.g Chinese, Arabic etc) support for PDF "
+"document."
+msgstr ""
+"Chybějící podpora formátu RTL/Unicode (např. Čínština, arabština atd.) Pro "
+"dokument PDF."
+
+msgid "Monitor payments using Stripe dashboard"
+msgstr "Sledujte platby pomocí ovládacího panelu Stripe"
+
+msgid "More order number templates"
+msgstr "Více šablon objednacích čísel"
+
+msgid "Multilingual support"
+msgstr "Vícejazyčná podpora"
+
+msgid "Multiple address label layouts"
+msgstr "Rozložení více adresních štítků"
+
+msgid "Multiple display formats for bundled products"
+msgstr "Více formátů zobrazení pro přibalené produkty"
+
+msgid "Multiple display options for bundle products"
+msgstr "Více možností zobrazení pro balíčky produktů"
+
+msgid "Multiple pre-built layouts"
+msgstr "Více předpřipravených rozložení"
+
+msgid "Multiple premium invoice templates to choose from"
+msgstr "Na výběr je několik šablon prémiových faktur"
+
+msgid "Multiple product recommendation layouts"
+msgstr "Několik rozvržení doporučení produktů"
+
+msgid "Multiple templates to personalize the document"
+msgstr "Více šablon pro přizpůsobení dokumentu"
+
+msgid "Multiple templates to personalize the label"
+msgstr "Více šablon pro přizpůsobení štítku"
+
+msgid "My account - Order details page"
+msgstr "Můj účet – stránka Podrobnosti objednávky"
+
+msgid "My account - Order lists page"
+msgstr "Můj účet – stránka Seznamy objednávek"
+
+msgid "My templates"
+msgstr "Mé šablony"
+
+msgid "Name"
+msgstr "Jméno"
+
+msgid "Need a field to add the tax id on checkout page"
+msgstr "Potřebujete pole pro přidání DIČ na stránku pokladny"
+
+msgid "Next"
+msgstr "Další"
+
+msgid "No"
+msgstr "Ne"
+
+msgid "No files found."
+msgstr "Nebyly nalezeny žádné soubory."
+
+msgid "No modules"
+msgstr "Žádné moduly"
+
+msgid "No of Items"
+msgstr "Sloučit položky"
+
+msgid "No template found."
+msgstr "Nebyla nalezena žádná šablona."
+
+msgid "No temporary file found"
+msgstr "Nebyl nalezen žádný dočasný soubor"
+
+msgid "None"
+msgstr "Žádný"
+
+msgid "Normal"
+msgstr "Normální"
+
+msgid "Not interested"
+msgstr "Nebyly nalezeny žádné tiskárny"
+
+msgid "Note"
+msgstr "Poznámka"
+
+msgid "Note:"
+msgstr "Poznámka:"
+
+msgid "Offer store credits"
+msgstr "Nabídka kreditů do obchodu"
+
+msgid "Offers built-in label templates"
+msgstr "Nabízí vestavěné šablony štítků"
+
+msgid "Offers cloud printing of invoice PDFs using PrintNode"
+msgstr "Nabízí cloudový tisk faktur PDF pomocí PrintNode"
+
+msgid "One or more order do not have invoice generated. Generate manually?"
+msgstr ""
+"Jedna nebo více objednávek nemá vygenerovanou fakturu. Generovat ručně?"
+
+msgid "Opacity"
+msgstr "Průhlednost"
+
+msgid "Option to enable in-context checkout"
+msgstr "Možnost aktivace placení v kontextu"
+
+msgid "Option to include/exclude tax to Invoice"
+msgstr "Možnost zahrnout/vyloučit daň do faktury"
+
+msgid "Option to set up a specific PayPal locale"
+msgstr "Možnost nastavení konkrétního národního prostředí PayPal"
+
+msgid "Order"
+msgstr "Objednávka"
+
+msgid "Order Date"
+msgstr "Datum objednávky"
+
+msgid "Order Date:"
+msgstr "Datum objednávky:"
+
+msgid "Order Details"
+msgstr "Detaily objednávky"
+
+msgid "Order Discount"
+msgstr "Sleva na objednávku"
+
+msgid "Order Meta"
+msgstr "Objednat Meta"
+
+msgid "Order No.:"
+msgstr "Objednávka číslo.:"
+
+msgid "Order No:"
+msgstr "Číslo objednávky:"
+
+msgid "Order Number"
+msgstr "Číslo objednávky"
+
+msgid "Order date"
+msgstr "Datum objednávky"
+
+msgid "Order date:"
+msgstr "Datum objednávky:"
+
+msgid "Order discount"
+msgstr "Sleva"
+
+msgid "Order email"
+msgstr "Objednávka emailem"
+
+msgid "Order meta fields"
+msgstr "Objednejte meta pole"
+
+msgid "Order no:"
+msgstr "Objednávka číslo:"
+
+msgid "Order number"
+msgstr "Číslo objednávky"
+
+msgid "Order number (default)"
+msgstr "Číslo objednávky (výchozí)"
+
+msgid "Order, Coupon, Subscription Export Import for WooCommerce"
+msgstr "Objednávka, kupón, export předplatného Import pro WooCommerce"
+
+msgid "Other"
+msgstr "Jiný"
+
+msgid "Others"
+msgstr "Ostatní"
+
+msgid "Output"
+msgstr "Výstup"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF Invoices"
+msgstr "PDF faktury"
+
+msgid "PDF library"
+msgstr "PDF knihovna"
+
+msgid "PDF name format"
+msgstr "Formáty data"
+
+msgid "PREVIEW"
+msgstr "NÁHLED"
+
+msgid "Package Number"
+msgstr "Číslo balíku"
+
+msgid "Packing slip"
+msgstr "Balení"
+
+msgid "Partial and Full Refund of the order amount"
+msgstr "Částečné a úplné vrácení částky objednávky"
+
+msgid "PayPal Express Checkout Payment Gateway for WooCommerce"
+msgstr "PayPal Express Checkout Platební brána pro WooCommerce"
+
+msgid "Payment & subscription"
+msgstr "Platba a předplatné"
+
+msgid "Payment Method"
+msgstr "Platební metoda"
+
+msgid "Payment Method:"
+msgstr "Způsob platby:"
+
+msgid "Payment method"
+msgstr "Způsob platby"
+
+msgid "Payment method:"
+msgstr "Způsob platby:"
+
+msgid "Payment method: "
+msgstr "Způsob platby: "
+
+msgid "Payment received stamp"
+msgstr "Čas přijetí platby"
+
+msgid "Ph No:"
+msgstr "Ph No:"
+
+msgid "Phone No:"
+msgstr "Telefon:"
+
+msgid "Phone no:"
+msgstr "Telefon:"
+
+msgid "Phone number"
+msgstr "Telefonní číslo"
+
+msgid "Pick list"
+msgstr "Výběrový seznam"
+
+msgid "Pick lists"
+msgstr "Vyberte seznamy"
+
+msgid "Picklist"
+msgstr "Výběr"
+
+msgid "Picklists Add-on"
+msgstr "Doplněk pro výběrové seznamy"
+
+msgid "Please enter mandatory fields"
+msgstr "Zadejte povinná pole"
+
+msgid "Please enter name"
+msgstr "Zadejte prosím jméno"
+
+msgid "Please enter order number"
+msgstr "Prosím zadejte číslo objednávky"
+
+msgid "Please fill the `from address` in the plugin's general settings."
+msgstr "Vyplňte prosím „adresu odesílatele“ v obecných nastaveních pluginu."
+
+msgid ""
+"Please save all data before leaving this page. All unsaved data will be lost."
+" Are you sure?"
+msgstr ""
+"Před opuštěním této stránky si prosím uložte všechna data. Všechna neuložená "
+"data budou ztracena. Pokračovat?"
+
+msgid "Please select json file"
+msgstr "Vyberte soubor json"
+
+msgid "Please wait"
+msgstr "Čekejte prosím"
+
+msgid "Plugin settings not available in my language"
+msgstr "Nastavení pluginu není v mém jazyce k dispozici"
+
+msgid "Postal code"
+msgstr "PSČ"
+
+msgid "Pre-built layout for documents"
+msgstr "Předem vytvořené rozvržení pro dokumenty"
+
+msgid "Pre-built layouts"
+msgstr "Předem připravené rozvržení"
+
+msgid "Pre-built layouts & customizable templates"
+msgstr "Předem vytvořené rozvržení a přizpůsobitelné šablony"
+
+msgid "Pre-built layouts for documents"
+msgstr "Předem vytvořené rozvržení pro dokumenty"
+
+msgid "Pre-built proforma invoice layouts"
+msgstr "Předem vytvořené rozvržení proforma faktury"
+
+msgid "Prefix"
+msgstr "Předpona"
+
+msgid "Premium"
+msgstr "Prémiový"
+
+msgid "Premium Extensions"
+msgstr "Prémiová rozšíření"
+
+msgid "Premium extensions"
+msgstr "Prémiová rozšíření"
+
+msgid "Premium version"
+msgstr "Prémiová verze"
+
+msgid "Present"
+msgstr "Součastnost"
+
+msgid "Preview before printing"
+msgstr "Náhled před tiskem"
+
+msgid "Preview documents before printing"
+msgstr "Náhled dokumentů před tiskem"
+
+msgid "Preview sample PDF"
+msgstr "Náhled ukázkového PDF"
+
+msgid "Price"
+msgstr "Cena"
+
+msgid "Price label"
+msgstr "Cenový štítek"
+
+msgid "Price text align"
+msgstr "Zarovnání textu ceny"
+
+msgid "Print"
+msgstr "Tisk"
+
+msgid "Print Delivery note"
+msgstr "Vytiskni dodací list"
+
+msgid "Print Dispatch Label"
+msgstr "Tisk Expedičního lístku"
+
+msgid "Print Invoice"
+msgstr "Tisk faktury"
+
+msgid "Print Invoices"
+msgstr "Tisk faktur"
+
+msgid "Print PDF invoices for WooCommerce"
+msgstr "Tisk PDF faktur pro WooCommerce"
+
+msgid "Print Packing slip"
+msgstr "Tisk Balení"
+
+msgid "Print Shipping Label"
+msgstr "Vytiskni přepravní štítek"
+
+msgid "Print button access for"
+msgstr "Přístup pomocí tlačítka Tisk pro"
+
+msgid "Print invoice"
+msgstr "Tisk faktury"
+
+msgid "Print/Download"
+msgstr "Tisk / stažení"
+
+msgid "Print/Download Delivery note"
+msgstr "Tisk / stažení dodacího listu"
+
+msgid "Print/Download Dispatch Label"
+msgstr "Tisk / stažení štítku odeslání"
+
+msgid "Print/Download Invoice"
+msgstr "Tisk / stažení faktury"
+
+msgid "Print/Download Packing slip"
+msgstr "Vytisknout / Stáhnout Dodací list"
+
+msgid "Prints Packing List,Invoice,Delivery Note and Shipping Label."
+msgstr "Tiskne seznam balení, fakturu, dodací list a přepravní štítek."
+
+msgid "Privacy Policy"
+msgstr "Zásady ochrany osobních údajů"
+
+msgid "Privacy compliance"
+msgstr "Dodržování ochrany osobních údajů"
+
+msgid "Pro Add-on"
+msgstr "Pro doplněk"
+
+msgid "Pro version"
+msgstr "Verze Pro"
+
+msgid "Pro-rate charges till first renewal"
+msgstr "Poměrné poplatky do prvního obnovení"
+
+msgid "Product"
+msgstr "Produkt"
+
+msgid "Product Import Export Plugin For WooCommerce"
+msgstr "Product Import Export Plugin pro WooCommerce"
+
+msgid "Product Table"
+msgstr "Tabulka produktů"
+
+msgid "Product attributes"
+msgstr "Atributy produktu"
+
+msgid "Product label"
+msgstr "Produkt - označení"
+
+msgid "Product meta fields"
+msgstr "Meta pole produktu"
+
+msgid "Product text align"
+msgstr "Produkt - zarovnání textu"
+
+msgid "Proforma Invoices Add-on"
+msgstr "Doplněk Proforma faktury"
+
+msgid "Proforma invoice"
+msgstr "Proforma faktura"
+
+msgid "Proforma invoice number format"
+msgstr "Formát čísla proforma faktury"
+
+msgid "Proforma invoices"
+msgstr "Proforma faktury"
+
+msgid "Provide refunds to store credit"
+msgstr "Poskytněte vrácení peněz do úložiště kreditu"
+
+msgid "QR Code"
+msgstr "QR kód"
+
+msgid "QR Code Addon for WooCommerce PDF Invoices"
+msgstr "Doplněk QR kódu pro faktury WooCommerce PDF"
+
+msgid "QR code"
+msgstr "QR kód"
+
+msgid "Qty label"
+msgstr "Množství - označení"
+
+msgid "Qty text align"
+msgstr "Množství - zarovnání textu"
+
+msgid "Quantity"
+msgstr "Množství"
+
+msgid "Quick setup page to add & edit recommendations"
+msgstr "Stránka rychlého nastavení pro přidání a úpravu doporučení"
+
+msgid "RTL support for documents"
+msgstr "Podpora RTL pro dokumenty"
+
+msgid "Rate us now"
+msgstr "Ohodnoťte nás nyní"
+
+msgid "Recommended 128MB or more"
+msgstr "Doporučeno 128 MB nebo více"
+
+msgid "Recommended for better performances"
+msgstr "Doporučeno pro lepší výkony"
+
+msgid "Recommended size is 150x50px."
+msgstr ""
+"Vyberte logo společnosti z „Faktura> Přizpůsobit> Logo společnosti“, aby se "
+"odráželo na faktuře. Doporučená velikost je 150 x 50 pixelů."
+
+msgid "Recommended size is 150×50px"
+msgstr "Doporučená velikost je 150×50px"
+
+msgid "Recommended to compress PDF documents"
+msgstr "Doporučeno pro komprimaci dokumentů PDF"
+
+msgid "Recommended, will use fallback functions"
+msgstr "Doporučeno, bude používat záložní funkce"
+
+msgid "Refer to our documentation to setup and get started"
+msgstr "Chcete-li nastavit a začít, podívejte se do naší dokumentace"
+
+msgid "Refund"
+msgstr "Vrácení peněz"
+
+msgid ""
+"Refund in this order seems not having credit number yet. Do you want to "
+"manually generate one ?"
+msgstr ""
+"Zdá se, že refundace v této objednávce zatím nemá číslo kreditu. Chcete jej "
+"ručně vygenerovat?"
+
+msgid "Remind me later"
+msgstr "Připomenout později"
+
+msgid "Remote Print add-on for WooCommerce PDF Invoices - PrintNode"
+msgstr "Doplněk Remote Print pro WooCommerce PDF faktury - PrintNode"
+
+msgid ""
+"Removing year [Y] from the prefix will disable the annual reset functionality"
+msgstr "Odebráním roku [Y] z prefixu deaktivujete funkci ročního resetování"
+
+msgid ""
+"Removing year [Y] from the suffix will disable the annual reset functionality"
+msgstr "Odebráním roku [Y] z přípony deaktivujete funkci ročního resetu"
+
+msgid "Renewal interval & expiry customizations"
+msgstr "Interval obnovy a přizpůsobení vypršení platnosti"
+
+msgid "Replace the existing templates"
+msgstr "Nahraďte stávající šablony"
+
+msgid "Required"
+msgstr "Vyžadováno"
+
+msgid "Required if you have images in your documents"
+msgstr "Povinné, pokud máte v dokumentech obrázky"
+
+msgid "Reset"
+msgstr "Resetovat"
+
+msgid "Reset all settings to default"
+msgstr "Obnovte všechna nastavení na výchozí"
+
+msgid "Reset successfully"
+msgstr "Resetování proběhlo úspěšně"
+
+msgid ""
+"Reset will delete all the settings, saved templates and reset to the default "
+"settings"
+msgstr ""
+"Reset odstraní všechna nastavení, uložené šablony a obnoví výchozí nastavení"
+
+msgid "Restrict coupons by country"
+msgstr "Omezit kupony podle země"
+
+msgid "Retain user passwords on import/export"
+msgstr "Uchovávejte uživatelská hesla při importu/exportu"
+
+msgid "Return Policy"
+msgstr "Návratová politika"
+
+msgid "Return address"
+msgstr "Zpáteční adresa"
+
+msgid "Return policy"
+msgstr "Návratová politika"
+
+msgid "Review"
+msgstr "Hodnocení"
+
+msgid "Review now"
+msgstr "Zkontrolovat nyní"
+
+msgid "Right"
+msgstr "Vpravo"
+
+msgid "S.No"
+msgstr "S.č"
+
+msgid "S.no"
+msgstr "ID A"
+
+msgid "SKU"
+msgstr "SKU"
+
+msgid "SKU label"
+msgstr "Štítek SKU"
+
+msgid "SKU text align"
+msgstr "SKU - zarovnání textu"
+
+msgid "SSN"
+msgstr "IČO"
+
+msgid "SSN number"
+msgstr "IČO"
+
+msgid "SSN:"
+msgstr "DIČ:"
+
+msgid "Save"
+msgstr "Uložit"
+
+msgid "Save and activate"
+msgstr "Uložit a aktivovat"
+
+msgid "Save before you proceed."
+msgstr "Uložte, než budete pokračovat."
+
+msgid "Save document layout as template"
+msgstr "Uložit rozložení dokumentu jako šablonu"
+
+msgid "Saving"
+msgstr "Probíhá ukládání"
+
+msgid "Saving..."
+msgstr "Probíhá ukládání..."
+
+msgid "Scan and list cookies"
+msgstr "Naskenujte a vypište soubory cookie"
+
+msgid "Schedule automated import & export"
+msgstr "Naplánujte si automatický import a export"
+
+msgid "Schedule automated import and export"
+msgstr "Naplánujte si automatický import a export"
+
+msgid "Secure"
+msgstr "Zabezpečená"
+
+msgid "Secured payments with SCA and 3D secure"
+msgstr "Zabezpečené platby pomocí SCA a 3D secure"
+
+msgid "Select One"
+msgstr "Vybrat jedno"
+
+msgid ""
+"Select a name format for PDF invoice that includes invoice/order number."
+msgstr ""
+"Vyberte formát názvu pro fakturu PDF, který obsahuje číslo "
+"faktury/objednávky."
+
+msgid "Select country"
+msgstr "Zvolit zemi"
+
+msgid ""
+"Select email classes that match the order statuses selected under the "
+"'Automate invoice creation option. If no order status is selected, you must "
+"manually generate invoice to attach it with these order emails."
+msgstr ""
+"Vyberte třídy e-mailů, které odpovídají stavům objednávek vybraným pod "
+"'možností Automatizovat vytváření faktur. Pokud není vybrán žádný stav "
+"objednávky, musíte ručně vygenerovat fakturu a připojit ji k těmto e-mailům "
+"s objednávkami."
+
+msgid ""
+"Select/add order meta to display additional information related to the order "
+"on the invoice."
+msgstr ""
+"Vyberte/přidejte meta k objednávce pro zobrazení dalších informací "
+"souvisejících s objednávkou na faktuře."
+
+msgid "Seller name"
+msgstr "Jméno prodejce"
+
+msgid "Seller tax ID"
+msgstr "DIČ prodejce"
+
+msgid "Send automated emails notifications"
+msgstr "Odesílejte automatická upozornění e-mailem"
+
+msgid ""
+"Separate tax column in product table for multiple tax options in dispatch "
+"labels"
+msgstr "Oddělený sloupec daně v tabulce produktů pro více možností daně"
+
+msgid ""
+"Separate tax column in product table for multiple tax options in proforma "
+"invoices"
+msgstr ""
+"Samostatný sloupec daně v tabulce produktů pro více možností daně v proforma "
+"fakturách"
+
+msgid ""
+"Separate tax column in the product table for multiple tax options in invoices"
+msgstr ""
+"Samostatný sloupec daně v tabulce produktů pro více možností daně ve "
+"fakturách"
+
+msgid "Sequential Order Number for WooCommerce"
+msgstr "Sekvenční číslo objednávky pro WooCommerce"
+
+msgid "Serial No label"
+msgstr "Sériové bez štítku"
+
+msgid "Serial no text align"
+msgstr "Sériové žádné zarovnání textu"
+
+msgid "Set custom proforma invoice number"
+msgstr "Nastavit vlastní číslo proforma faktury"
+
+msgid "Set free trial and sign-up fee"
+msgstr "Nastavte bezplatnou zkušební verzi a registrační poplatek"
+
+msgid "Set quote expiry period"
+msgstr "Nastavte dobu platnosti nabídky"
+
+msgid ""
+"Set the  Size of the Shipping label to be either full page or custom size."
+msgstr ""
+"Nastavte Velikost přepravního štítku na celou stránku nebo vlastní velikost."
+
+msgid "Set up a redirect page"
+msgstr "Nastavte stránku přesměrování"
+
+msgid "Set up discounts on the recommended product bundle"
+msgstr "Nastavte slevy na doporučený balíček produktů"
+
+msgid "Settings"
+msgstr "Nastavení"
+
+msgid "Settings Updated"
+msgstr "Nastavení aktualizováno"
+
+msgid "Settings are empty"
+msgstr "Nastavení jsou prázdná"
+
+msgid "Settings updated."
+msgstr "Nastavení upraveno."
+
+msgid "Ship Date:"
+msgstr "Přepravní štítek:"
+
+msgid "Ship to"
+msgstr "Odeslat na"
+
+msgid "Shipping"
+msgstr "Doprava"
+
+msgid "Shipping Address"
+msgstr "Doručovací adresa"
+
+msgid "Shipping Address:"
+msgstr "Doručovací adresa:"
+
+msgid "Shipping Label"
+msgstr "Přepravní štítek"
+
+msgid "Shipping Label 1"
+msgstr "Shipping label"
+
+msgid "Shipping Method"
+msgstr "Způsob dopravy"
+
+msgid "Shipping address"
+msgstr "Dodací adresa"
+
+msgid "Shipping label"
+msgstr "Přepravní štítek"
+
+msgid "Shipping label size"
+msgstr "Velikost Přepravního štítku"
+
+msgid "Shipping labels"
+msgstr "Přepravní štítky"
+
+msgid "Shipping labels, Dispatch labels and Delivery Notes Module"
+msgstr "Modul přepravních štítků, expedičních štítků a dodacích listů"
+
+msgid "Shipping labels, Dispatch labels and Delivery notes"
+msgstr "Přepravní štítky, Expediční štítky a Dodací listy"
+
+msgid "Shop name"
+msgstr "Název obchodu"
+
+msgid "Shortcode support for the Paypal Express button"
+msgstr "Podpora krátkých kódů pro tlačítko Paypal Express"
+
+msgid "Show Less"
+msgstr "Zobrazit méně"
+
+msgid "Show More"
+msgstr "Zobrazit více"
+
+msgid "Show Pay Later option at checkout"
+msgstr "Zobrazit možnost Zaplatit později u pokladny"
+
+msgid "Show different taxes in separate columns"
+msgstr "Zobrazit různé daně v samostatných sloupcích"
+
+msgid "Show payment link on invoice"
+msgstr "Zobrazit odkaz na platbu na faktuře"
+
+msgid "Show print invoice button for customers"
+msgstr "Zobrazit tlačítko faktury pro zákazníky"
+
+msgid "Show print invoice button to customers"
+msgstr "Zobrazit tlačítko faktury pro zákazníky"
+
+msgid "Show print packing slip button to customers"
+msgstr "Ukažte zákazníkům tlačítko vytisknout dodací list"
+
+msgid "Show product variation data"
+msgstr "Zobrazit data o variantách produktu"
+
+msgid "Show variation data for variable products"
+msgstr "Zobrazit data variací pro různé produkty"
+
+msgid "Show variation data of products"
+msgstr "Zobrazit data o variantách produktů"
+
+msgid ""
+"Shows a preview of the template on an actual order. Key in an order number "
+"to view the same."
+msgstr ""
+"Zobrazí náhled šablony na aktuální objednávce. Chcete-li zobrazit vybranou "
+"objednávku, zadejte její číslo."
+
+msgid "Signature type"
+msgstr "Typ podpisu"
+
+msgid "Skip invoice setup"
+msgstr "Přeskočit nastavení faktury"
+
+msgid "Smart Coupons for WooCommerce"
+msgstr "Načíst z WooCommerce"
+
+msgid "Solid"
+msgstr "Plný"
+
+msgid "Some useful `filters` to extend plugin's functionality"
+msgstr "Některé užitečné `filtry` pro rozšíření funkčnosti pluginu"
+
+msgid "Sort order items in product table"
+msgstr "Přidat obrázek produktu do tabulky s produkty"
+
+msgid "Sort order items in the product table"
+msgstr "Seřaďte položky objednávky v produktové tabulce dokumentů"
+
+msgid "Sort order items in the product table "
+msgstr "Seřaďte položky objednávky v produktové tabulce dokumentů "
+
+msgid "Sort products based on Name or SKU"
+msgstr "Seřaďte produkty podle názvu nebo SKU"
+
+msgid ""
+"Specify your company tax ID. For e.g., you may enter as VAT: GB123456789, "
+"GSTIN:0948745 or ABN:51 824 753 556"
+msgstr ""
+"Zadejte DIČ své společnosti. Například pro můžete zadat jako DPH: "
+"GB123456789, GSTIN: 0948745 nebo ABN: 51 824 753 556"
+
+msgid "Start"
+msgstr "Začátek"
+
+msgid "Step 1"
+msgstr "Krok 1"
+
+msgid "Step 2"
+msgstr "Krok 2"
+
+msgid "Step 3"
+msgstr "Krok 3"
+
+msgid "Style"
+msgstr "Styl"
+
+msgid "Submit & Deactivate"
+msgstr "Odeslat & Deaktivovat"
+
+msgid "Subscriptions for WooCommerce"
+msgstr "Předplatné pro WooCommerce"
+
+msgid "Subtotal"
+msgstr "Mezisoučet"
+
+msgid "Success"
+msgstr "Úspěch"
+
+msgid "Successfully cleared all temp files."
+msgstr "Všechny dočasné soubory byly úspěšně vymazány."
+
+msgid "Suffix"
+msgstr "Přípona"
+
+msgid "Summary Table"
+msgstr "Souhrnná tabulka"
+
+msgid "Support"
+msgstr "Podpora"
+
+msgid "Support for additional fields that can be added to the feed"
+msgstr "Podpora pro další pole, která lze přidat do zdroje"
+
+msgid "Support for multiple product types"
+msgstr "Podpora pro více typů produktů"
+
+msgid "Support for serial and USB scales"
+msgstr "Podpora pro sériové a USB váhy"
+
+msgid "Supported address types"
+msgstr "Podporované typy adres"
+
+msgid "Supported by a team with 99% Customer Satisfaction Score"
+msgstr "Podporováno týmem s 99% skóre spokojenosti zákazníků"
+
+msgid "Supported documents"
+msgstr "Další dokumenty"
+
+msgid "Supports Excel, XML, CSV, and TSV file formats"
+msgstr "Podporuje formáty souborů Excel, XML, CSV a TSV"
+
+msgid "Supports WooCommerce Subscriptions for Express buttons"
+msgstr "Podporuje předplatné WooCommerce pro tlačítka Express"
+
+msgid "Supports automatic & manual printing"
+msgstr "Podporuje automatický a ruční tisk"
+
+msgid "Supports recurring discounts"
+msgstr "Podporuje opakující se slevy"
+
+msgid "Supports recurring payments"
+msgstr "Podporuje opakované platby"
+
+msgid "Switching to order number will disable the annual reset functionality"
+msgstr "Přepnutí na číslo objednávky deaktivuje funkci ročního resetování"
+
+msgid "Sync WooCommerce products to Facebook catalog"
+msgstr "Synchronizujte produkty WooCommerce do katalogu Facebooku"
+
+msgid "Synchronize subscription renewal"
+msgstr "Synchronizujte obnovení předplatného"
+
+msgid "System Configuration"
+msgstr "Konfigurace systému"
+
+msgid "System Info"
+msgstr "Systémové informace"
+
+msgid "Table body text color"
+msgstr "Barva textu tabulky"
+
+msgid "Table head background"
+msgstr "Barva pozadí hlavičky tabulky"
+
+msgid "Table head text color"
+msgstr "Barva textu hlavičky tabulky"
+
+msgid "Tax ID"
+msgstr "DIČ"
+
+msgid "Tax label"
+msgstr "Daňový štítek"
+
+msgid "Tax text align"
+msgstr "Zarovnání textu daně"
+
+msgid "Tel Field"
+msgstr "Telefon"
+
+msgid "Tel:"
+msgstr "Tel:"
+
+msgid "Template created and activated."
+msgstr "Šablona vytvořena a aktivována."
+
+msgid "Template created."
+msgstr "Šablona byla vytvořena."
+
+msgid "Template updated and activated."
+msgstr "Šablona aktualizována a aktivována."
+
+msgid "Template updated."
+msgstr "Šablona byla aktualizována."
+
+msgid "Template with same name already exists."
+msgstr "Šablona se stejným názvem již existuje."
+
+msgid "Templates"
+msgstr "Šablony"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Text Color"
+msgstr "Barva textu"
+
+msgid "Text align"
+msgstr "Zarovnání textu"
+
+msgid "Text color"
+msgstr "Barva textu"
+
+msgid ""
+"That’s awesome! We’d love it if you take a moment to share what you think "
+"and help spread the word."
+msgstr ""
+"To je úžasné! Budeme rádi, když si uděláte chvilku a podělíte se o to, co si "
+"myslíte, a pomůžete to šířit dál."
+
+msgid ""
+"The best-in-the-class import, export, and migration solutions for your "
+"WooCommerce data"
+msgstr ""
+"Nejlepší řešení pro import, export a migraci vašich dat WooCommerce ve své "
+"třídě"
+
+msgid ""
+"The company name and the address details from this section will be used as "
+"the sender address in the invoice and other related documents."
+msgstr ""
+"Na faktuře a dalších souvisejících dokumentech bude jako adresa odesílatele "
+"použit název společnosti a podrobnosti o adrese z této části."
+
+msgid ""
+"The date is displayed on the invoice. It can be either the order creation "
+"date or the invoiced date."
+msgstr ""
+"Datum je uvedeno na faktuře. Může to být datum vytvoření objednávky nebo "
+"datum fakturace."
+
+msgid "The default library to be used PDF generation"
+msgstr "Výchozí knihovna pro generování PDF"
+
+msgid "The latest specified starting number will be used after reset"
+msgstr "Po resetování bude použito poslední zadané startovní číslo"
+
+msgid ""
+"The most popular payment gateways and subscription solutions to scale your "
+"business"
+msgstr ""
+"Nejoblíbenější platební brány a řešení předplatného pro rozšíření vašeho "
+"podnikání"
+
+msgid "The plugin didn't work as expected"
+msgstr "Plugin nepracoval podle očekávání"
+
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr "Plugin je skvělý, ale potřebuji konkrétní funkci, kterou nepodporujete"
+
+msgid ""
+"The plugins %s and %s cannot be active in your store at the same time. "
+"Kindly deactivate one of these prior to activating the other."
+msgstr ""
+"Pluginy %s a %s nemohou být ve vašem obchodě aktivní současně. Před aktivací "
+"druhého, laskavě deaktivujte jeden z nich."
+
+msgid "There is no items in this order."
+msgstr ""
+"Nelze vytisknout dodací list. Zkontrolujte prosím položky v objednávce."
+
+msgid "There is no order with this given id"
+msgstr "Neexistuje žádná objednávka s tímto daným ID"
+
+msgid "There is no order with this id"
+msgstr "Neexistuje žádná objednávka s tímto ID"
+
+msgid ""
+"This filter is used to alter the barcode information for all the document "
+"templates"
+msgstr ""
+"Tento filtr se používá ke změně informací o čárových kódech pro všechny "
+"šablony dokumentů"
+
+msgid ""
+"This filter is used to alter the invoice date in all the document templates"
+msgstr ""
+"Tento filtr se používá ke změně data faktury ve všech šablonách dokladů"
+
+msgid ""
+"This filter is used to alter the order date in all the document templates"
+msgstr ""
+"Tento filtr se používá ke změně data objednávky ve všech šablonách dokumentů"
+
+msgid ""
+"This is basic template. In order to use premium feature, you need to switch "
+"and activate the premium template"
+msgstr ""
+"Toto je základní šablona. Abyste mohli používat prémiovou funkci, musíte "
+"přepnout a aktivovat prémiovou šablonu"
+
+msgid "This is premium template which is not compatible with the basic plugin"
+msgstr ""
+"Toto je prémiová šablona, která není kompatibilní se základním pluginem"
+
+msgid "This template is not comaptible with QR Code addon plugin"
+msgstr "Tato šablona není kompatibilní s pluginem QR Code"
+
+msgid "This way up"
+msgstr "Posunout nahoru"
+
+msgid ""
+"This will remove all invoice numbers created by WooCommerce PDF Invoices, "
+"Packing Slips, Delivery Notes & Shipping Labels by WebToffee."
+msgstr ""
+"Tím se odstraní všechna čísla faktur vytvořená ve WooCommerce PDF fakturách, "
+"balicích listech, dodacích listech a přepravních štítcích od WebToffee."
+
+msgid "Timely compatibility updates and bug fixes"
+msgstr "Včasné aktualizace kompatibility a opravy chyb"
+
+msgid "Title"
+msgstr "Titulek"
+
+msgid "Title font size"
+msgstr "Velikost písma názvu"
+
+msgid "To Address"
+msgstr "Na adresu"
+
+msgid "To add a different meta key"
+msgstr "Chcete-li přidat jiný meta klíč"
+
+msgid "To add more than one custom order meta,"
+msgstr "Chcete-li přidat více než jednu metadat vlastní objednávky,"
+
+msgid "To compress PDF documents"
+msgstr "Chcete-li komprimovat dokumenty PDF"
+
+msgid "To help you comply with invoice mandates that require QR Codes"
+msgstr "Abychom vám pomohli splnit fakturační příkazy, které vyžadují QR kódy"
+
+msgid "To include the keyed in name to the Invoice, ensure to select"
+msgstr "Chcete-li do faktury zahrnout zadané jméno, nezapomeňte vybrat"
+
+msgid ""
+"To include the uploaded image as logo to the invoice, ensure to select "
+"Company logo from"
+msgstr ""
+"Chcete-li na fakturu zahrnout nahraný obrázek jako logo, vyberte možnost "
+"Logo společnosti z"
+
+msgid "To proceed with the import, please type %1$s in the field below"
+msgstr "Chcete-li pokračovat v importu, zadejte do pole níže %1$s"
+
+msgid "To proceed with the reset, please type %1$s in the field below"
+msgstr "Chcete-li pokračovat v resetování, zadejte do pole níže %1$s"
+
+msgid "To:"
+msgstr "Do:"
+
+msgid "Total"
+msgstr "Celkem"
+
+msgid "Total Price"
+msgstr "Celková cena"
+
+msgid "Total Tax"
+msgstr "Daň celkem"
+
+msgid "Total Weight"
+msgstr "Hmotnost celkem - označení"
+
+msgid "Total files"
+msgstr "Celkem souborů"
+
+msgid "Total label"
+msgstr "Celkem - štítek"
+
+msgid "Total price"
+msgstr "Celková cena"
+
+msgid "Total tax"
+msgstr "Daň celkem"
+
+msgid "Total text align"
+msgstr "Celkem - zarovnání textu"
+
+msgid "Total weight label"
+msgstr "Hmotnost celkem - označení"
+
+msgid "Total weight text align"
+msgstr "Celkem hmotnost - zarovnání textu"
+
+msgid "Tracking Number"
+msgstr "Sledovací číslo zásilky"
+
+msgid "Tracking Number:"
+msgstr "Sledovací číslo zásilky:"
+
+msgid "Tracking number"
+msgstr "Sledovací číslo"
+
+msgid "Tracking number:"
+msgstr "Sledovací číslo:"
+
+msgid "Truncation did not complete as expected."
+msgstr "Zkrácení neproběhlo podle očekávání."
+
+msgid "Type in prefix/ suffix / date format if required"
+msgstr "V případě potřeby zadejte formát předpony / přípony / data"
+
+msgid "Type template name to search"
+msgstr "Zadejte název šablony pro vyhledání"
+
+msgid "URL Coupons for WooCommerce"
+msgstr "URL kupóny pro WooCommerce"
+
+msgid ""
+"Unable to add from third party plugin that collects customer VAT(or GSTIN or "
+"ABN etc)"
+msgstr ""
+"Nelze přidat plugin od třetí strany, který vybírá DPH zákazníka (nebo GSTIN "
+"nebo ABN atd.)"
+
+msgid "Unable to generate PDF."
+msgstr "Nelze vygenerovat PDF."
+
+msgid "Unable to load template."
+msgstr "Šablonu nelze načíst."
+
+msgid "Unable to print Delivery note. Please check the items in the order."
+msgstr ""
+"Nelze vytisknout dodací list. Zkontrolujte prosím položky v objednávce."
+
+msgid "Unable to print Packing slip. Please check the items in the order."
+msgstr ""
+"Nelze vytisknout Dodací list. Zkontrolujte prosím položky v objednávce."
+
+msgid "Unable to save theme."
+msgstr "Šablonu se nepodařilo uložit."
+
+msgid "Unable to switch view."
+msgstr "Zobrazení nelze přepnout."
+
+msgid ""
+"Unable to update settings due to an internal error. %s To troubleshoot "
+"please click %s here. %s"
+msgstr ""
+"Nastavení nelze aktualizovat z důvodu interní chyby. %s Chcete-li problém "
+"vyřešit, klikněte prosím %s sem. %s"
+
+msgid "Unit Price"
+msgstr "Cena"
+
+msgid "Unit price"
+msgstr "Cena za jednotku"
+
+msgid ""
+"Unlock limitless possibilities of invoice customization with the addon -"
+msgstr "Odemkněte neomezené možnosti přizpůsobení faktur pomocí addonu -"
+
+msgid "Untitled template"
+msgstr "Šablona bez názvu"
+
+msgid "Update Settings"
+msgstr "Aktualizovat nastavení"
+
+msgid "Updated"
+msgstr "Aktualizováno"
+
+msgid "Upgrade To Premium"
+msgstr "Upgradujte na prémium"
+
+msgid "Upgrade to premium"
+msgstr "Upgrade na Premium verzi"
+
+msgid "Upload logo"
+msgstr "Nahrát logo"
+
+msgid "Upload your image"
+msgstr "Nahrajte svůj obrázek"
+
+msgid "Use custom number format & length"
+msgstr "Použijte vlastní formát a délku čísel"
+
+msgid "Use custom number series to number documents"
+msgstr "K číslování dokladů použijte vlastní číselné řady"
+
+msgid "Use invoice created date"
+msgstr "Použít datum vytvoření faktury"
+
+msgid "Use latest settings for invoice"
+msgstr "Jako datum proforma faktury použijte datum objednávky"
+
+msgid "Use order date"
+msgstr "Použijte datum objednávky"
+
+msgid "Use order date as input instead."
+msgstr "Místo toho datum objednávky uživatele."
+
+msgid "Use order number as document number"
+msgstr "Jako číslo dokladu použijte číslo objednávky"
+
+msgid ""
+"Use upsells, cross-sells, & related products as frequently bought products"
+msgstr ""
+"Používejte upsells, cross-sells a související produkty jako často nakupované "
+"produkty"
+
+msgid "User consent logging"
+msgstr "Protokolování souhlasu uživatele"
+
+msgid "Users who haven`t logged will also be allowed to print"
+msgstr "Uživatelé, kteří se nepřihlásili, budou také moci tisknout"
+
+msgid "Users will be redirected to login page if not logged in"
+msgstr ""
+"Pokud uživatelé nebudou přihlášeni, budou přesměrováni na přihlašovací "
+"stránku"
+
+msgid "VAT"
+msgstr "DPH"
+
+msgid "VAT number"
+msgstr "DIČ"
+
+msgid "VAT:"
+msgstr "DIČ:"
+
+msgid "Verified compatibility with major plugins"
+msgstr "Ověřená kompatibilita s hlavními doplňky"
+
+msgid "View add-on"
+msgstr "Zobrazit doplněk"
+
+msgid "View live preview of customization"
+msgstr "Zobrazit živý náhled přizpůsobení"
+
+msgid "View progress"
+msgstr "Zobrazit pokrok"
+
+msgid "View sample customization demo"
+msgstr "Zobrazit ukázku přizpůsobení ukázky"
+
+msgid "Visual"
+msgstr "Vizuální"
+
+msgid "WPML compatibility"
+msgstr "Kompatibilita s WPML"
+
+msgid "WPML compatibilityCustomize label sizes"
+msgstr "Kompatibilita WPML Přizpůsobte velikosti štítků"
+
+msgid "WPML multilingual and multicurrency support "
+msgstr "Podpora vícejazyčnosti a více měn WPML "
+
+msgid "WT PDF Invoice Debug"
+msgstr "Ladění faktur WT PDF"
+
+msgid ""
+"We do not collect any personal data when you submit this form. It's your "
+"feedback that we value."
+msgstr ""
+"Když odešlete tento formulář, neshromažďujeme žádné osobní údaje. Ceníme si "
+"vaší zpětné vazby."
+
+msgid "We would love to help you on any queries or issues."
+msgstr "Rádi bychom vám pomohli při jakýchkoli dotazech nebo problémech."
+
+msgid "WebToffee"
+msgstr "WebToffee"
+
+msgid "WebToffee WooCommerce Gift Cards"
+msgstr "Dárkové karty WebToffee WooCommerce"
+
+msgid "WebToffee WooCommerce Product Feed & Sync Manager"
+msgstr "WebToffee WooCommerce Product Feed & Sync Manager"
+
+msgid "WebToffee WooCommerce Request A Quote"
+msgstr "WebToffee WooCommerce Žádost o cenovou nabídku"
+
+msgid "Weight"
+msgstr "Váha"
+
+msgid "Weight:"
+msgstr "Hmotnost:"
+
+msgid "What did you expect?"
+msgstr "Co jste očekávali?"
+
+msgid "What length would you prefer for your credit note"
+msgstr "Jakou délku byste u svého dobropisu preferovali"
+
+msgid "What length would you prefer for your invoice"
+msgstr "Jakou délku faktury preferujete"
+
+msgid "What length would you prefer for your invoice number"
+msgstr "Jakou délku byste preferovali pro číslo faktury"
+
+msgid "What length would you prefer for your proforma invoice"
+msgstr "Jakou délku byste u své proforma faktury preferovali"
+
+msgid "What should be the starting number for your credit notes?"
+msgstr "Jaké by mělo být startovní číslo pro vaše dobropisy?"
+
+msgid "What should be the starting number for your invoices?"
+msgstr "Jaké by mělo být počáteční číslo vašich faktur?"
+
+msgid "What should be the starting number for your proforma invoices?"
+msgstr "Jaké by mělo být počáteční číslo pro vaše proforma faktury?"
+
+msgid ""
+"When enabled, replaces state code with state name in the from, return, "
+"billing and shipping addresses"
+msgstr ""
+"Je-li povoleno, nahradí kód státu názvem státu v adresách odesílatele, "
+"zpáteční, fakturační a dodací adresy"
+
+msgid "Which language?"
+msgstr "Jaký plugin?"
+
+msgid "Which plugin?"
+msgstr "Jaký plugin?"
+
+msgid "Width"
+msgstr "Šířka"
+
+msgid "WooCommerce Address Labels plugin"
+msgstr "Plugin WooCommerce Address Labels"
+
+msgid "WooCommerce PDF Invoices, Packing Slips and Credit Notes plugin"
+msgstr "Plugin WooCommerce PDF faktury, balicí lístky a kreditní poznámky"
+
+msgid ""
+"WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels"
+msgstr "WooCommerce PDF faktury, balicí listy, dodací listy a přepravní štítky"
+
+msgid "WooCommerce Pick lists plugin"
+msgstr "Plugin WooCommerce Výběr seznamů"
+
+msgid "WooCommerce Picklists plugin"
+msgstr "Plugin WooCommerce Picklists"
+
+msgid "WooCommerce Proforma Invoices"
+msgstr "Proforma faktury WooCommerce"
+
+msgid "WooCommerce Proforma Invoices plugin"
+msgstr "Plugin WooCommerce Proforma Invoices"
+
+msgid "WooCommerce Shipping labels, Dispatch labels and Delivery Notes plugin"
+msgstr "Plugin WooCommerce Shipping labels, Dispatch labels and Delivery Notes"
+
+msgid "WooCommerce Stripe Payment Gateway"
+msgstr "Platební brána WooCommerce Stripe"
+
+msgid ""
+"Woocommerce PDF invoices, packing slips, delivery notes, and shipping labels"
+msgstr "WooCommerce PDF faktury, balicí listy, dodací listy a přepravní štítky"
+
+msgid "WordPress Users & WooCommerce Customers Import Export"
+msgstr "Uživatelé WordPress a zákazníci WooCommerce Import Export"
+
+msgid "Would you like us to assist you?"
+msgstr "Chcete, abychom vám pomohli?"
+
+msgid "Writtable"
+msgstr "Zapisovatelný"
+
+msgid "Yes"
+msgstr "Ano"
+
+msgid "You are covered by our 30-Day Money Back Guarantee"
+msgstr "Jste kryti naší 30denní zárukou vrácení peněz"
+
+msgid "You are not allowed to access this page"
+msgstr "Na tuto stránku nemáte přístup"
+
+msgid "You are not allowed to do this action"
+msgstr "Tuto akci nemáte povoleno provést"
+
+msgid "You are not allowed to view this page."
+msgstr "Nemáte oprávnění pro zobrazení této stránky."
+
+msgid "You are using free version of %1$s. %2$s Checkout premium here %3$s."
+msgstr "Používáte bezplatnou verzi %1$s. %2$s Checkout premium zde %3$s."
+
+msgid ""
+"You can add additional column head via `wf_pklist_alter_product_table_head` "
+"filter. You need to add column data via this filter. (Works with Invoice and "
+"Dispatch label only)"
+msgstr ""
+"Další záhlaví sloupce můžete přidat pomocí filtru "
+"`wf_pklist_alter_product_table_head`. Přes tento filtr musíte přidat data "
+"sloupců. (Funguje pouze se štítkem Faktura a Odeslání)"
+
+msgid ""
+"You can add additional column head via `wf_pklist_alter_product_table_head` "
+"filter. You need to add column data via this filter. (Works with Packing "
+"List, Shipping Label and Delivery note only)"
+msgstr ""
+"Další záhlaví sloupce můžete přidat pomocí filtru "
+"`wf_pklist_alter_product_table_head`. Přes tento filtr musíte přidat data "
+"sloupců. (Funguje pouze s balicím listem, přepravním štítkem a dodacím "
+"listem)"
+
+msgid "You can add custom/predefined order meta using its key"
+msgstr ""
+"Můžete přidat vlastní/předdefinované meta objednávky pomocí jejího klíče"
+
+msgid "You can add more than 1 order meta in"
+msgstr "Můžete přidat více než 1 meta v objednávce"
+
+msgid ""
+"You can control the visibility of the seal according to order status via "
+"filters. See filter documentation %s here. %s"
+msgstr ""
+"Viditelnost těsnění můžete kontrolovat podle stavu objednávky pomocí filtrů. "
+"Dokumentaci k filtru najdete %s zde. %s"
+
+msgid "You can edit an existing item by using its key."
+msgstr "Stávající položku můžete upravit pomocí jejího klíče."
+
+msgid "You can't undo this action. Are you sure?"
+msgstr "Tuto akci nemůžete vrátit zpět. Opravdu pokračovat?"
+
+msgid "You have to select order(s) first!"
+msgstr "Nejprve musíte vybrat objednávku (objednávky)!"
+
+msgid "You`ve just created"
+msgstr "Právě jste vytvořili"
+
+msgid "Your next %s number would be"
+msgstr "Vaše další číslo %s bude"
+
+msgid "[prefix][invoice_no]"
+msgstr "[prefix] [číslo faktury]"
+
+msgid "[prefix][order_no]"
+msgstr "[prefix] [číslo objednávky]"
+
+msgid "allow_url_fopen disabled"
+msgstr "allow_url_fopen zakázáno"
+
+msgid "commercial documents using"
+msgstr "pomocí komerčních dokumentů"
+
+msgid "from"
+msgstr "od"
+
+msgid "https://www.webtoffee.com/"
+msgstr "https://www.webtoffee.com/"
+
+msgid ""
+"https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/"
+msgstr ""
+"https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/"
+
+msgid "incl. tax"
+msgstr "vč. DPH"
+
+msgid "is required"
+msgstr "vyžadováno"
+
+msgid "mPDF add-on"
+msgstr "doplněk mPDF"
+
+msgid "n/a"
+msgstr "n/a"
+
+msgid ""
+"number has not been generated yet. Do you want to manually generate one ?"
+msgstr "číslo ještě nebylo vygenerováno. Chcete jej vygenerovat ručně?"
+
+msgid "orders listing page"
+msgstr "stránka s výpisem objednávek"
+
+msgctxt "placeholder"
+msgid "Enter "
+msgstr "Zadat "
+
+msgid "search filter"
+msgstr "vyhledávací filtr"
+
+msgid "the %s number would be"
+msgstr "číslo %s by bylo"
+
+msgid "upgrade to premium version"
+msgstr "upgrade na prémiovou verzi"
+
+msgid "via %s"
+msgstr "přes %s"
+
+msgid ""
+"‘Generate invoice for free orders’ is disabled in Invoice settings > "
+"Advanced. You are attempting to generate invoice for this free order. "
+"Proceed?"
+msgstr ""
+"Možnost „Generovat fakturu pro bezplatné objednávky“ je v nastavení faktury> "
+"Upřesnit zakázána. Pokoušíte se generovat fakturu pro tuto bezplatnou "
+"objednávku. Pokračovat?"
+
+msgid "Shipping Method:"
+msgstr "Způsob dopravy:"
+
+msgid "Attach invoice PDF to selected WooCommerce emails."
+msgstr "Přiložte fakturu ve formátu PDF k vybraným e-mailům WooCommerce."
+
+msgid ""
+"Select email types corresponding to the order statuses under Automate "
+"invoice creation option. If none are selected, invoices must be generated "
+"manually to be attached to emails."
+msgstr ""
+"Vyberte typy e-mailů odpovídající stavům objednávky pod možností "
+"Automatizace vytváření faktur. Pokud nejsou vybrány žádné, musí být faktury "
+"generovány ručně, aby mohly být připojeny k e-mailům."

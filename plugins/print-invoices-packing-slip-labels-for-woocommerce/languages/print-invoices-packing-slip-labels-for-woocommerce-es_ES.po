@@ -1,0 +1,3641 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce PDF Invoices, Packing Slips, Delivery Notes "
+"and Shipping Labels\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-29 04:28+0000\n"
+"PO-Revision-Date: 2024-12-18 14:07+0000\n"
+"Last-Translator: \n"
+"Language-Team: Spanish (Spain)\n"
+"Language: es-ES\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: en_GB\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: print-invoices-packing-slip-labels-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Loco-Parser: loco_parse_mo"
+
+msgid ""
+"%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels "
+"(Basic) %s is enabled but not effective. It requires %s WooCommerce %s in "
+"order to work."
+msgstr ""
+"%s Facturas en PDF de WooCommerce, albaranes, notas de entrega y etiquetas "
+"de envío (básico) %s está habilitado pero no es efectivo. Requiere %s "
+"WooCommerce %s para funcionar."
+
+msgid "(But customer notes can be added)"
+msgstr "(Pero se pueden agregar notas del cliente)"
+
+msgid "(Visual and code editor)"
+msgstr "(Editor visual y de código)"
+
+msgid "(Visual editor)"
+msgstr "(editor visual)"
+
+msgid "20+ predefined gift card templates"
+msgstr "Más de 20 plantillas de tarjetas de regalo predefinidas"
+
+msgid "30 Day Money Back Guarantee"
+msgstr "Garantía de devolución de dinero de 30 días"
+
+msgid "5.6 or higher recommended"
+msgstr "Se recomienda 5.6 o superior"
+
+msgid "Accepts payment using multiple Alternative Payment Methods (APM)"
+msgstr "Acepta pagos utilizando múltiples métodos de pago alternativos (APM)"
+
+msgid "Access denied !!!."
+msgstr "Acceso denegado!!!."
+
+msgid "Action"
+msgstr "Acción"
+
+msgid "Activate"
+msgstr "Activar"
+
+msgid "Activates Stripe checkout"
+msgstr "Activa el pago de Stripe"
+
+msgid "Active"
+msgstr "Activo"
+
+msgid "Add"
+msgstr "Añadir"
+
+msgid "Add & update data while importing"
+msgstr "Agregar y actualizar datos mientras importa"
+
+msgid "Add 20+ payment methods"
+msgstr "Añade más de 20 métodos de pago"
+
+msgid "Add a custom suffix for order numbers"
+msgstr "Agregue un sufijo personalizado para los números de pedido"
+
+msgid "Add a payment link to invoice"
+msgstr "Agregar un enlace de pago a la factura"
+
+msgid "Add a print delivery note button to the order email"
+msgstr ""
+"Añadir un botón para imprimir el albarán de entrega al correo electrónico "
+"del pedido"
+
+msgid "Add a print label button to the order email"
+msgstr ""
+"Agregue un botón para imprimir etiqueta al correo electrónico del pedido"
+
+msgid "Add a print packing slip button to My account page"
+msgstr "Agregue un botón para imprimir el albarán a la página Mi cuenta"
+
+msgid "Add additional column in product table"
+msgstr "Agregar columna adicional en la tabla de productos"
+
+msgid "Add additional column in product table of package documents"
+msgstr ""
+"Agregue una columna adicional en la tabla de productos de los documentos del "
+"paquete"
+
+msgid "Add additional data to invoice layout"
+msgstr "Agregar datos adicionales al diseño de la factura"
+
+msgid "Add additional info"
+msgstr "Añadir información adicional"
+
+msgid "Add additional information"
+msgstr "Agregar información adicional"
+
+msgid "Add additional order & product meta fields"
+msgstr "Agregar metacampos adicionales de pedidos y productos"
+
+msgid "Add additional product & order data fields"
+msgstr "Agregar campos adicionales de datos de productos y pedidos"
+
+msgid "Add additional product attributes"
+msgstr "Agregar atributos de producto adicionales"
+
+msgid "Add and update data while importing"
+msgstr "Agregar y actualizar datos mientras importa"
+
+msgid "Add company logo & return policy to label"
+msgstr ""
+"Agregue el logotipo de la empresa y la política de devoluciones a la etiqueta"
+
+msgid "Add custom data to documents"
+msgstr "Agregar datos personalizados a los documentos"
+
+msgid "Add custom data to invoices"
+msgstr "Agregar datos personalizados a las facturas"
+
+msgid "Add custom fields to shipping label layout"
+msgstr "Agregar campos personalizados al diseño de la etiqueta de envío"
+
+msgid "Add custom footer"
+msgstr "Agregar pie de página personalizado"
+
+msgid "Add custom footers to packing slips"
+msgstr "Agregar pies de página personalizados a los albaranes"
+
+msgid "Add custom templates for gift cards"
+msgstr "Agregar plantillas personalizadas para tarjetas de regalo"
+
+msgid "Add customer note"
+msgstr "Añadir nota de cliente"
+
+msgid "Add date to credit note number"
+msgstr "Agregar fecha al número de nota de crédito"
+
+msgid "Add date to invoice number"
+msgstr "Agregar fecha al número de factura"
+
+msgid "Add date to proforma invoice number"
+msgstr "Agregar fecha al número de factura proforma"
+
+msgid "Add extra product & order data fields"
+msgstr "Agregar campos adicionales de datos de productos y pedidos"
+
+msgid "Add extra text in received seal"
+msgstr "Agregar texto adicional en el sello recibido"
+
+msgid "Add extra text in received seal."
+msgstr "Añade un texto extra en el sello recibido."
+
+msgid "Add footer"
+msgstr "Añadir el pie de página"
+
+msgid "Add multiple shipping labels in one page"
+msgstr "Agregue varias etiquetas de envío en una página"
+
+msgid "Add multiple shipping labels on one page"
+msgstr "Agregue varias etiquetas de envío en una página"
+
+msgid "Add new"
+msgstr "Añadir nuevo"
+
+msgid "Add notes like fragile, keep dry, etc."
+msgstr "Agregue notas como frágil, mantener seco, etc."
+
+msgid "Add order & product meta fields"
+msgstr "Agregar metacampos de pedido y producto"
+
+msgid "Add order meta fields"
+msgstr "Agregar metacampos de pedido"
+
+msgid "Add order meta fields "
+msgstr "Agregar metacampos de pedido "
+
+msgid "Add order meta fields to shipping labels"
+msgstr "Agregar metacampos de pedido a las etiquetas de envío"
+
+msgid "Add print document button to selected order emails"
+msgstr ""
+"Agregar el botón Imprimir documento a los correos electrónicos de pedidos "
+"seleccionados"
+
+msgid "Add product & order meta fields"
+msgstr "Agregar metacampos de productos y pedidos"
+
+msgid "Add product attributes"
+msgstr "Agregar atributos de producto"
+
+msgid "Add product images to packing slips"
+msgstr "Agregar imágenes de productos a los albaranes"
+
+msgid "Add product meta fields"
+msgstr "Agregar metacampos de producto"
+
+msgid "Add product meta fields & attributes"
+msgstr "Agregar metacampos y atributos del producto"
+
+msgid "Add product variation"
+msgstr "Añadir variación de producto"
+
+msgid "Add product variation in package documents"
+msgstr "Agregar variación de producto en los documentos del paquete"
+
+msgid ""
+"Add product variation in product (Works with Packing List, Shipping Label "
+"and Delivery note only)"
+msgstr ""
+"Agregar la variación del producto en el producto (funciona sólo con la lista "
+"de empaque, la etiqueta de envío y el albarán de entrega)"
+
+msgid "Add product variation. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Añade la variación del producto. (Funciona sólo con la etiqueta de Factura y "
+"Despacho)"
+
+msgid "Add quote button to the product & shop pages"
+msgstr "Agregar botón de cotización a las páginas de productos y tiendas"
+
+msgid "Add shop details"
+msgstr "Agregar detalles de la tienda"
+
+msgid "Add usage restrictions for gift cards"
+msgstr "Agregar restricciones de uso para tarjetas de regalo"
+
+msgid "Add ‘Pay Later’ option at checkout"
+msgstr "Agregue la opción \"Pagar más tarde\" al finalizar la compra"
+
+msgid "Add/Edit Order Meta Field"
+msgstr "Agregar / editar metacampo de pedido"
+
+msgid "Additional feed intervals (30 minutes, 6 hours, 12 hours)"
+msgstr "Intervalos de alimentación adicionales (30 minutos, 6 horas, 12 horas)"
+
+msgid "Address Label Add-on"
+msgstr "Complemento de etiqueta de dirección"
+
+msgid "Address details"
+msgstr "Detalles de dirección"
+
+msgid "Address font size"
+msgstr "El tamaño de la fuente de la dirección"
+
+msgid "Address label"
+msgstr "Etiqueta de dirección"
+
+msgid "Address labels"
+msgstr "Etiquetas de dirección"
+
+msgid "Address line 1"
+msgstr "Línea de dirección 1"
+
+msgid "Address line 2"
+msgstr "Línea de dirección 2"
+
+msgid ""
+"Adds Express PayPal Checkout Option on the product page and Mini-cart for "
+"faster checkout"
+msgstr ""
+"Agrega la opción de pago exprés de PayPal en la página del producto y un "
+"mini carrito para un pago más rápido"
+
+msgid "Adds Footer to the delivery note"
+msgstr "Añade pie de página al albarán de entrega"
+
+msgid "Adds Footer to the packing slip"
+msgstr "Agrega pie de página al albarán"
+
+msgid "Adds PayPal Smart Button Checkout option"
+msgstr "Agrega la opción de pago con botón inteligente de PayPal"
+
+msgid "Adds customer note in the dispatch label"
+msgstr "Agrega nota de cliente en la etiqueta de despacho"
+
+msgid "Adds customer note to the delivery note"
+msgstr "Añade nota de cliente a la nota de entrega"
+
+msgid "Adds customer note to the packing slip"
+msgstr "Agrega una nota del cliente al albarán"
+
+msgid "Adds footer in dispatch label"
+msgstr "Agrega pie de página en la etiqueta de envío"
+
+msgid "Adds footer to the  Shipping label"
+msgstr "Agrega pie de página a la etiqueta de envío"
+
+msgid "Adds product image to the line items in the product table"
+msgstr ""
+"Agrega la imagen del producto a los elementos de línea en la tabla de "
+"productos"
+
+msgid ""
+"Admins and customers both can leverage this feature wherever applicable. "
+"Disabling will remove all the provisions. Yet, the invoices are customizable."
+msgstr ""
+"Tanto los administradores como los clientes pueden aprovechar esta función "
+"siempre que corresponda. La desactivación eliminará todas las disposiciones. "
+"Sin embargo, las facturas son personalizables."
+
+msgid "Advanced BOGO Coupons"
+msgstr "Cupones BOGO avanzados"
+
+msgid "Advanced filters and customizations for import & export"
+msgstr "Filtros avanzados y personalizaciones para importar y exportar"
+
+msgid "Advanced filters and customizations for import and export"
+msgstr "Filtros avanzados y personalizaciones para importar y exportar"
+
+msgid "Advanced options"
+msgstr "Opciones avanzadas"
+
+msgid "Advanced visual and code editor"
+msgstr "Editor visual y de código avanzado"
+
+msgid "Align"
+msgstr "Alinear"
+
+msgid "All document types"
+msgstr "Todo tipo de documentos"
+
+msgid "All fields are mandatory"
+msgstr "Todos los campos son obligatorios"
+
+msgid "All unsaved changes will be lost upon switching to a new layout."
+msgstr ""
+"Todos los cambios no guardados se perderán al cambiar a un nuevo diseño."
+
+msgid "All users"
+msgstr "Todos los usuarios"
+
+msgid "Allow coupon combinations"
+msgstr "Permitir combinaciones de cupones"
+
+msgid "Allow customers to print invoices"
+msgstr "Permitir a los clientes imprimir facturas"
+
+msgid "Allow remote stylesheets and images"
+msgstr "Permitir hojas de estilo e imágenes remotas"
+
+msgid "Allows customers to print the invoice from the specified pages."
+msgstr ""
+"Permite a los clientes imprimir la factura desde las páginas especificadas."
+
+msgid "Allows guest checkout"
+msgstr "Permite el pago de invitados"
+
+msgid "Already tried the free %s WebToffee mPDF addon %s."
+msgstr "Ya he probado el %s gratis %s de WebToffee mPDF addon."
+
+msgid "Alter additional item meta"
+msgstr "Alterar el meta del elemento adicional"
+
+msgid "Alter barcode information"
+msgstr "Alterar la información del código de barras"
+
+msgid "Alter billing address"
+msgstr "Alterar la dirección de facturación"
+
+msgid "Alter dispatch date"
+msgstr "Alterar la fecha de envío"
+
+msgid "Alter fee"
+msgstr "Alterar la tasa"
+
+msgid "Alter formated item price. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Alterar el precio de los artículos. (Funciona sólo con la etiqueta de "
+"Factura y Despacho)"
+
+msgid "Alter formated item total. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Alterar el total del elemento formado. (Funciona sólo con la etiqueta de "
+"Factura y Despacho)"
+
+msgid "Alter formated subtotal"
+msgstr "Subtotal alterado"
+
+msgid "Alter invoice date"
+msgstr "Alterar la fecha de la factura"
+
+msgid "Alter item price"
+msgstr "Modificar el precio del artículo"
+
+msgid "Alter item price format"
+msgstr "Modificar el formato del precio del artículo"
+
+msgid "Alter item price. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Alterar el precio del artículo. (Funciona sólo con la etiqueta de Factura y "
+"Despacho)"
+
+msgid "Alter item quantity"
+msgstr "Modificar la cantidad del artículo"
+
+msgid "Alter item quantity in package documents"
+msgstr "Modificar la cantidad del artículo en los documentos del paquete"
+
+msgid ""
+"Alter item quantity in product table (Works with Packing List, Shipping "
+"Label and Delivery note only)"
+msgstr ""
+"Alterar la cantidad de artículos en la tabla de productos (funciona sólo con "
+"la lista de empaque, la etiqueta de envío y el albarán de entrega)"
+
+msgid "Alter item quantity. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Alterar la cantidad de artículos. (Funciona sólo con la etiqueta de Factura "
+"y Despacho)"
+
+msgid "Alter item total"
+msgstr "Modificar el total del artículo"
+
+msgid "Alter item total format"
+msgstr "Modificar el formato total del artículo"
+
+msgid "Alter item total in package documents"
+msgstr "Modificar el total del artículo en los documentos del paquete"
+
+msgid ""
+"Alter item total in product table (Works with Packing List, Shipping Label "
+"and Delivery note only)"
+msgstr ""
+"Alterar el total del artículo en la tabla de productos (funciona sólo con la "
+"lista de empaque, la etiqueta de envío y el albarán de entrega)"
+
+msgid "Alter item total. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Alterar el total del artículo. (Funciona sólo con la etiqueta de Factura y "
+"Despacho)"
+
+msgid "Alter order date"
+msgstr "Alterar la fecha de pedido"
+
+msgid "Alter product name"
+msgstr "Modificar el nombre del producto"
+
+msgid ""
+"Alter product name in product (Works with Packing List, Shipping Label and "
+"Delivery note only)"
+msgstr ""
+"Alterar el nombre del producto en el producto (funciona sólo con la lista de "
+"empaque, la etiqueta de envío y el albarán de entrega)"
+
+msgid "Alter product name. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Alterar el nombre del producto. (Funciona sólo con la etiqueta de Factura y "
+"Despacho)"
+
+msgid "Alter product table column"
+msgstr "Modificar la columna de la tabla de productos"
+
+msgid "Alter product table column in package documents"
+msgstr ""
+"Modificar la columna de la tabla de productos en los documentos del paquete"
+
+msgid ""
+"Alter product table column. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Alterar la columna de la tabla de productos. (Funciona sólo con la etiqueta "
+"de Factura y Despacho)"
+
+msgid ""
+"Alter product table column. (Works with Packing List, Shipping Label and "
+"Delivery note only)"
+msgstr ""
+"Alterar la columna de la tabla de productos. (Funciona sólo con la lista de "
+"empaque, la etiqueta de envío y el albarán de entrega)"
+
+msgid "Alter product table head.(Add, remove, change order)"
+msgstr ""
+"Alterar la cabeza de la tabla de productos. (Añadir, quitar, cambiar el "
+"orden)"
+
+msgid "Alter product table head.(Add,remove, change the order)"
+msgstr ""
+"Alterar el encabezado de la tabla de productos. (Agregar, eliminar, cambiar "
+"el orden)"
+
+msgid "Alter shipping address"
+msgstr "Alterar la dirección de envío"
+
+msgid "Alter shipping from address"
+msgstr "Alterar el envío desde la dirección"
+
+msgid "Alter shipping method"
+msgstr "Alterar el método de envío"
+
+msgid "Alter subtotal"
+msgstr "Alterar subtotal"
+
+msgid "Alter subtotal format"
+msgstr "Modificar formato de subtotal"
+
+msgid "Alter template HTML before printing"
+msgstr "Alterar la plantilla HTML antes de imprimir"
+
+msgid "Alter template HTML before printing."
+msgstr "Altere la plantilla HTML antes de imprimirla."
+
+msgid "Alter the footer data"
+msgstr "Altere los datos del pie de página"
+
+msgid "Alter the footer data."
+msgstr "Altere los datos del pie de página."
+
+msgid "Alter the product name in package documents"
+msgstr "Modificar el nombre del producto en los documentos del paquete"
+
+msgid "Alter the settings array"
+msgstr "Modificar la matriz de configuración"
+
+msgid "Alter the variation data."
+msgstr "Modificar los datos de variación."
+
+msgid "Alter total fee"
+msgstr "Alterar la tasa total"
+
+msgid "Alter total price"
+msgstr "Modificar precio total"
+
+msgid "Alter total price in words"
+msgstr "Alterar el precio total en palabras"
+
+msgid "Angle"
+msgstr "Ángulo"
+
+msgid ""
+"Assign QR code to all of invoices generated for the orders in your store"
+msgstr ""
+"Asigna código QR a todas las facturas generadas por los pedidos en tu tienda"
+
+msgid "Assign QR codes to all generated invoices"
+msgstr "Asigne códigos QR a todas las facturas generadas"
+
+msgid "Assign different types of info in your QR code, including:"
+msgstr "Asigne diferentes tipos de información en su código QR, que incluyen:"
+
+msgid "Assits in GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA, and CCPA"
+msgstr "Asistencia en GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA y CCPA"
+
+msgid "Attach document to order email"
+msgstr "Adjuntar documento al correo electrónico del pedido"
+
+msgid "Attach documents to selected order status emails"
+msgstr ""
+"Adjunte documentos a correos electrónicos de estado de pedidos seleccionados"
+
+msgid "Attach invoice PDF to admin email"
+msgstr "Adjunte el PDF de la factura al correo electrónico del administrador"
+
+msgid "Attach invoice PDF to order emails"
+msgstr "Adjunte la factura en PDF a los correos electrónicos de pedidos"
+
+msgid "Attach invoice pdf in WooCommerce Email"
+msgstr "Adjuntar factura en pdf en el correo electrónico de WooCommerce"
+
+msgid "Attach invoice pdf in customer email"
+msgstr "Adjuntar factura en pdf al correo electrónico del cliente"
+
+msgid "Attach proforma invoice PDF to order emails"
+msgstr ""
+"Adjunte el PDF de la factura proforma a los correos electrónicos de pedidos"
+
+msgid "Attach sales terms"
+msgstr "Adjuntar condiciones de venta"
+
+msgid "Attach special notes with proforma invoices"
+msgstr "Adjunte notas especiales con facturas proforma"
+
+msgid "Attach transport & sales terms"
+msgstr "Adjuntar condiciones de transporte y venta"
+
+msgid "Attach transport terms"
+msgstr "Adjuntar condiciones de transporte"
+
+msgid "Auto reset sequence per month/year etc"
+msgstr "Secuencia de reinicio automático por mes/año, etc"
+
+msgid "Auto-generate invoices, packing slips, and credit notes"
+msgstr "Generar automáticamente facturas, albaranes y notas de crédito"
+
+msgid "Automate invoice creation"
+msgstr "Automatice la creación de facturas"
+
+msgid "Automatic cleanup"
+msgstr "Limpieza automática"
+
+msgid "Automatic email alerts for admin & users"
+msgstr ""
+"Alertas automáticas por correo electrónico para administradores y usuarios"
+
+msgid "Automatically add products"
+msgstr "Agregar productos automáticamente"
+
+msgid "Automatically attach packing slip with order email"
+msgstr "Adjunte automáticamente el albarán al correo electrónico del pedido"
+
+msgid "Automatically block cookies/script"
+msgstr "Bloquear automáticamente cookies/script"
+
+msgid "Automatically create invoice based on order status"
+msgstr "Crear factura automáticamente según el estado del pedido"
+
+msgid "Automatically creates invoices for selected order statuses."
+msgstr ""
+"Crea facturas automáticamente para los estados de pedido seleccionados."
+
+msgid "Automatically email picklists based on order status"
+msgstr ""
+"Envíe listas de selección por correo electrónico automáticamente según el "
+"estado del pedido"
+
+msgid ""
+"Automatically generate professional WooCommerce order-related documents for "
+"all your orders"
+msgstr ""
+"Genere automáticamente documentos profesionales relacionados con pedidos de "
+"WooCommerce para todos sus pedidos"
+
+msgid "Automatically generate suggestions based on order history"
+msgstr "Genere automáticamente sugerencias basadas en el historial de pedidos"
+
+msgid "Automatically send quotes to users"
+msgstr "Enviar cotizaciones automáticamente a los usuarios"
+
+msgid "Back"
+msgstr "Volver"
+
+msgid "Barcode"
+msgstr "Código de barras"
+
+msgid "Based on order number"
+msgstr "Basado en el número de pedido"
+
+msgid "Basic - 0"
+msgstr "Básico - 0"
+
+msgid "Basic - 1"
+msgstr "Básico - 1"
+
+msgid ""
+"Before using this tool, please make sure you followed the steps described in "
+"this article %1$s how to reset/delete existing invoice numbers%2$s."
+msgstr ""
+"Antes de usar esta herramienta, asegúrese de haber seguido los pasos "
+"descritos en este artículo %1$scómo restablecer/eliminar números de factura "
+"existentes%2$s."
+
+msgid "Better with transparent PNG images"
+msgstr "Funciona mejor con imágenes PNG transparentes"
+
+msgid "Bill to"
+msgstr "Factura a"
+
+msgid "Billing Address"
+msgstr "Dirección de facturación"
+
+msgid "Billing Address:"
+msgstr "Dirección de facturación:"
+
+msgid "Billing address"
+msgstr "Dirección de facturación"
+
+msgid "Bold"
+msgstr "Negrita"
+
+msgid "Bolder"
+msgstr "Más audaz"
+
+msgid "Border radius"
+msgstr "Radio de la frontera"
+
+msgid "Border width"
+msgstr "Ancho de la frontera"
+
+msgid "Box name"
+msgstr "Nombre de la caja"
+
+msgid "Built-in label templates"
+msgstr "Plantillas de etiquetas integradas"
+
+msgid "Built-in templates to personalize packing slip"
+msgstr "Plantillas integradas para personalizar el albarán"
+
+msgid "Bulk generate coupons"
+msgstr "Generar cupones a granel"
+
+msgid "Bulk print address labels"
+msgstr "Impresión masiva de etiquetas de direcciones"
+
+msgid "Bulk print picklists from the admin order page"
+msgstr ""
+"Listas de selección de impresión masiva desde la página de pedidos del "
+"administrador"
+
+msgid "Bulk print shipping labels"
+msgstr "Impresión masiva de etiquetas de envío"
+
+msgid "Buyer name"
+msgstr "Nombre del comprador"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Cannot close this banner"
+msgstr "No se puede cerrar este banner"
+
+msgid "Capture the authorized payment later"
+msgstr "Capturar el pago autorizado más tarde"
+
+msgid "Cart Discount"
+msgstr "Descuento en el carro"
+
+msgid "Cart abandonment coupons"
+msgstr "Cupones de abandono de carrito"
+
+msgid "Cart discount"
+msgstr "Desc. en el Carrito"
+
+msgid "Cash on delivery"
+msgstr "Contra reembolso"
+
+msgid "Category wise template listing"
+msgstr "Listado de plantillas por categorías"
+
+msgid "Caution: Settings here are only for advanced users."
+msgstr "Precaución: La configuración aquí es sólo para usuarios avanzados."
+
+msgid "Center"
+msgstr "Centro"
+
+msgid "Change address label layout"
+msgstr "Cambiar el diseño de la etiqueta de dirección"
+
+msgid "Change color, text, background, border & more"
+msgstr "Cambiar color, texto, fondo, borde y más"
+
+msgid "Change document number format & length"
+msgstr "Cambiar el formato y la longitud del número de documento"
+
+msgid "Change layout"
+msgstr "Cambiar el diseño"
+
+msgid "Checkout Premium"
+msgstr "Comprobar premium"
+
+msgid "Choose a country&hellip;"
+msgstr "Elige un país y hellip;"
+
+msgid "Choose a layout."
+msgstr "Elija un diseño."
+
+msgid "Choose date"
+msgstr "Elija la fecha"
+
+msgid "Choose email classes"
+msgstr "Elige clases por correo electrónico"
+
+msgid "Choose emails for invoice attachment"
+msgstr "Elija correos electrónicos para adjuntar facturas"
+
+msgid "Choose order status"
+msgstr "Elija el estado del pedido"
+
+msgid ""
+"Choose the order emails to which you'd like to attach invoices for your "
+"customers"
+msgstr ""
+"Elija los correos electrónicos de pedidos a los que desea adjuntar las "
+"facturas de sus clientes"
+
+msgid "City"
+msgstr "Ciudad"
+
+msgid "Classic"
+msgstr "Clásico"
+
+msgid "Click here to add Company logo"
+msgstr "Haga clic aquí para añadir el logotipo de la empresa"
+
+msgid "Click here to add Company name"
+msgstr "Haga clic aquí para añadir el nombre de la empresa"
+
+msgid "Click here to add From address"
+msgstr "Haga clic aquí para añadir la dirección de la empresa"
+
+msgid "Click here to add Signature"
+msgstr "Haga clic aquí para añadir la firma"
+
+msgid "Click to append with existing data"
+msgstr "Haga clic para añadir con los datos existentes"
+
+msgid "Click to view predefined templates."
+msgstr "Haga clic para ver las plantillas predefinidas."
+
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "Code"
+msgstr "Código"
+
+msgid "Code Copied"
+msgstr "Código copiado"
+
+msgid "Collect payments with a payment link on the invoice"
+msgstr "Cobrar pagos con un enlace de pago en la factura"
+
+msgid "Color"
+msgstr "Color"
+
+msgid "Combine with the existing templates"
+msgstr "Combinar con las plantillas existentes"
+
+msgid "Company Logo"
+msgstr "Logotipo de la empresa"
+
+msgid "Company Logo / Name"
+msgstr "Logotipo/nombre de la empresa"
+
+msgid "Company Name"
+msgstr "Nombre de la compañía"
+
+msgid "Company Tax ID"
+msgstr "Nombre de la compañía"
+
+msgid "Company details"
+msgstr "Detalles de la compañía"
+
+msgid "Company logo"
+msgstr "Şirket logosu"
+
+msgid "Company name"
+msgstr "Nombre de la empresa"
+
+msgid "Company name font size"
+msgstr "El nombre de la empresa tamaño de la letra"
+
+msgid "Compatible with WPML"
+msgstr "Compatible con WPML"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slip & Credit Note (Premium)"
+msgstr ""
+"Compatible con facturas en PDF, albaranes y notas de crédito de WooCommerce "
+"(Premium)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slip & Credit Note (Pro)"
+msgstr ""
+"Compatible con facturas en PDF, albaranes y notas de crédito de WooCommerce "
+"(Pro)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slips, Delivery Notes, and "
+"Shipping Label (Free and Pro versions)"
+msgstr ""
+"Compatible con WooCommerce PDF Invoice, Packing Slips, Delivery Notes y "
+"Shipping Label (versiones gratuita y Pro)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoices, Packing Slips, Delivery Notes, and "
+"Shipping Labels (Free)"
+msgstr ""
+"Compatible con facturas en PDF, albaranes, albaranes y etiquetas de envío de "
+"WooCommerce (gratis)"
+
+msgid "Compatible with major 3rd-party plugins"
+msgstr "Compatible con los principales complementos de terceros"
+
+msgid "Complete the invoice number format to suit your requirements"
+msgstr "Complete el formato del número de factura según sus necesidades"
+
+msgid "Configure the general settings required for the delivery note."
+msgstr "Configure los parámetros generales necesarios para el albarán."
+
+msgid "Configure the general settings required for the dispatch label."
+msgstr ""
+"Configure los ajustes generales necesarios para la etiqueta de despacho."
+
+msgid "Configure the general settings required for the invoice."
+msgstr "Configure los ajustes generales necesarios para la factura."
+
+msgid "Configure the general settings required for the packing slip."
+msgstr "Configure los ajustes generales necesarios para el albarán."
+
+msgid "Configure the general settings required for the shipping label."
+msgstr "Configure los ajustes generales necesarios para la etiqueta de envío."
+
+msgid "Contact Number"
+msgstr "Número de contacto"
+
+msgid "Contact Us"
+msgstr "Contáctenos"
+
+msgid "Contact number"
+msgstr "Número de contacto"
+
+msgid "Copied"
+msgstr "Copiado"
+
+msgid "Copy"
+msgstr "Copiar"
+
+msgid "Copy Code"
+msgstr "Copiar código"
+
+msgid "Could you tell us a bit more?"
+msgstr "¿Podría contarnos un poco más?"
+
+msgid "Could you tell us more about that feature?"
+msgstr "¿Podría contarnos más sobre esa característica?"
+
+msgid "Country/State"
+msgstr "País/Estado"
+
+msgid "Coupon Used"
+msgstr "Cupón usado"
+
+msgid "Coupon embeds"
+msgstr "Insertos de cupón"
+
+msgid "Coupon info"
+msgstr "Información de los cupones"
+
+msgid "Coupons based on past purchases"
+msgstr "Cupones basados en compras anteriores"
+
+msgid "Create QR code coupons"
+msgstr "Crear cupones de código QR"
+
+msgid "Create QR code that reads order or invoice number"
+msgstr "Cree un código QR que lea el número de pedido o factura"
+
+msgid "Create a cookie consent banner"
+msgstr "Crear un banner de consentimiento de cookies"
+
+msgid "Create a new template or edit an existing template."
+msgstr "Crear una nueva plantilla o editar una plantilla existente."
+
+msgid "Create and offer sign-up discount coupons"
+msgstr "Crear y ofrecer cupones de descuento de registro"
+
+msgid ""
+"Create and run successful promotional campaigns with the best tools for "
+"WooCommerce"
+msgstr ""
+"Cree y ejecute campañas promocionales exitosas con las mejores herramientas "
+"para WooCommerce"
+
+msgid "Create attractive gift cards "
+msgstr "Crea atractivas tarjetas de regalo "
+
+msgid "Create cookie policy"
+msgstr "Crear política de cookies"
+
+msgid "Create delivery notes, shipping & dispatch labels"
+msgstr "Cree albaranes de entrega y etiquetas de envío y despacho"
+
+msgid "Create new"
+msgstr "Crear nuevo"
+
+msgid "Create new template"
+msgstr "Crear una nueva plantilla"
+
+msgid "Create or customize picklist templates"
+msgstr "Crear o personalizar plantillas de listas de selección"
+
+msgid "Create proforma invoice automatically for selected order statuses"
+msgstr ""
+"Cree una factura proforma automáticamente para estados de pedido "
+"seleccionados"
+
+msgid "Create proforma invoices automatically"
+msgstr "Crea facturas proforma automáticamente"
+
+msgid "Create simple & variable subscriptions"
+msgstr "Crea suscripciones simples y variables"
+
+msgid "Create unlimited gift cards"
+msgstr "Crea tarjetas de regalo ilimitadas"
+
+msgid "Create users on order import"
+msgstr "Crear usuarios al importar pedidos"
+
+msgid "Create your unique invoice numbering system"
+msgstr "Cree su sistema único de numeración de facturas"
+
+msgid "Credit note"
+msgstr "Factura rectificativa"
+
+msgid "Creditnote number format"
+msgstr "Formato del número de nota de crédito"
+
+msgid "Cross-platform compatibility"
+msgstr "Compatibilidad multiplataforma"
+
+msgid "Custom"
+msgstr "Personalizada"
+
+msgid "Custom (Pro version)"
+msgstr "Versión Pro"
+
+msgid "Custom PDF name prefix"
+msgstr "Prefijo de nombre de PDF personalizado"
+
+msgid "Custom details, as below:"
+msgstr "Detalles personalizados, como se muestra a continuación:"
+
+msgid "Custom footer"
+msgstr "Pie de página personalizado"
+
+msgid "Custom invoice date"
+msgstr "Fecha de factura personalizada"
+
+msgid "Custom logo for invoice"
+msgstr "Logotipo personalizado para la factura"
+
+msgid "Custom number"
+msgstr "Número personalizado"
+
+msgid "Custom number series"
+msgstr "Serie de números personalizados"
+
+msgid "Custom sequence for free orders"
+msgstr "Secuencia personalizada para pedidos gratuitos"
+
+msgid "Customer Note"
+msgstr "Nota del cliente"
+
+msgid "Customer Note:"
+msgstr "Nota del cliente:"
+
+msgid "Customer note"
+msgstr "Nota del cliente"
+
+msgid "Customer note:"
+msgstr "Nota del cliente:"
+
+msgid "Customizable countdown sales banner"
+msgstr "Banner de ventas de cuenta regresiva personalizable"
+
+msgid "Customizable tax items, tax fields (SSN, VAT, etc.)"
+msgstr ""
+"Elementos fiscales personalizables, campos de impuestos (SSN, IVA, etc.)"
+
+msgid "Customize"
+msgstr "Personaliza"
+
+msgid "Customize Pay Later option display"
+msgstr "Personalizar la visualización de la opción Pagar después"
+
+msgid "Customize and send emails to new users on import"
+msgstr "Personalice y envíe correos electrónicos a nuevos usuarios al importar"
+
+msgid "Customize cookie banner"
+msgstr "Personalizar el banner de cookies"
+
+msgid "Customize document layout & properties"
+msgstr "Personalizar el diseño y las propiedades del documento"
+
+msgid "Customize individual elements using block editors"
+msgstr "Personaliza elementos individuales usando editores de bloques"
+
+msgid "Customize invoice PDF name format"
+msgstr "Personalizar el formato del nombre PDF de la factura"
+
+msgid "Customize label sizes"
+msgstr "Personalizar tamaños de etiquetas"
+
+msgid "Customize layout elements & properties"
+msgstr "Personalizar elementos y propiedades de diseño"
+
+msgid "Customize layout properties"
+msgstr "Personalizar propiedades de diseño"
+
+msgid "Customize shipping label size"
+msgstr "Personalizar el tamaño de la etiqueta de envío"
+
+msgid "Customize the display of the recommended products"
+msgstr "Personaliza la visualización de los productos recomendados"
+
+msgid "Customize the title, button, and label texts"
+msgstr "Personaliza los textos del título, botón y etiqueta"
+
+msgid "Customizer for WooCommerce PDF Invoices"
+msgstr "Personalizador de facturas PDF de WooCommerce"
+
+msgid "Customizer for WooCommerce PDF Invoices Plugin"
+msgstr "Personalizador para el complemento de facturas PDF de WooCommerce"
+
+msgid "Customizer module is not active."
+msgstr "El módulo de personalización no está activo."
+
+msgid "Dashed"
+msgstr "Dashed"
+
+msgid "Data Import & Export"
+msgstr "Importación y exportación de datos"
+
+msgid "Date format strings"
+msgstr "Cadenas de formato de fecha"
+
+msgid "Date formats"
+msgstr "Formatos de fecha"
+
+msgid "Date suffix in order numbers"
+msgstr "Sufijo de fecha en números de pedido"
+
+msgid "Date:"
+msgstr "Fecha:"
+
+msgid "Debug"
+msgstr "Debug"
+
+msgid "Delete"
+msgstr "Eliminar"
+
+msgid "Delete all generated invoice numbers"
+msgstr "Eliminar todos los números de factura generados"
+
+msgid "Delete all the settings made by this plugin"
+msgstr "Eliminar todas las configuraciones realizadas por este complemento"
+
+msgid "Delivery note"
+msgstr "Nota de entrega"
+
+msgid "Department/Business unit/Sender name"
+msgstr "Departamento/Unidad de negocio/Nombre del remitente"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Developed by"
+msgstr "Desarrollado por"
+
+msgid "Disable guest users from asking for quote"
+msgstr "Impedir que los usuarios invitados soliciten cotización"
+
+msgid "Dispatch Date:"
+msgstr "Fecha de Envío:"
+
+msgid "Dispatch Label"
+msgstr "Etiqueta de despacho"
+
+msgid "Dispatch Label 1"
+msgstr "Etiqueta de envío 1"
+
+msgid "Dispatch label"
+msgstr "Etiqueta de despacho"
+
+msgid "Display"
+msgstr "Pantalla"
+
+msgid "Display currency code"
+msgstr "Mostrar código de moneda"
+
+msgid "Display free line items in the invoice"
+msgstr "Mostrar artículos de línea gratuitos en la factura"
+
+msgid "Display free line items on invoice"
+msgstr "Mostrar partidas gratuitas en la factura"
+
+msgid "Display options for bundled products"
+msgstr "Opciones de visualización para productos empaquetados"
+
+msgid "Display recommended products on the product pages"
+msgstr "Mostrar productos recomendados en las páginas de productos"
+
+msgid "Display state name"
+msgstr "Estado"
+
+msgid "Display the total number of items on label"
+msgstr "Mostrar el número total de artículos en la etiqueta"
+
+msgid ""
+"Displays customer`s VAT number saved in the order details by third-party "
+"plugins in this document. Supported meta keys are"
+msgstr ""
+"Muestra el número de IVA del cliente guardado en los detalles del pedido "
+"mediante complementos de terceros en este documento. Las metaclaves "
+"admitidas son"
+
+msgid ""
+"Displays the currently chosen document template with provisions to modify."
+msgstr ""
+"Muestra la plantilla de documento actualmente elegida con las disposiciones "
+"a modificar."
+
+msgid "Do not reset the templates"
+msgstr "No resetear las plantillas"
+
+msgid "Do not show again"
+msgstr "No mostrar de nuevo"
+
+msgid "Document"
+msgstr "Documento"
+
+msgid "Document customizer"
+msgstr "Personalizador de documentos"
+
+msgid "Document details"
+msgstr "Detalles del documento"
+
+msgid "Document title"
+msgstr "Título del documento"
+
+msgid "Documentation"
+msgstr "Documentación"
+
+msgid "Documents"
+msgstr "Documentos"
+
+msgid "Dotted"
+msgstr "Punteado"
+
+msgid "Download"
+msgstr "Descargar"
+
+msgid "Download Invoice"
+msgstr "Descargar factura"
+
+msgid "Download Invoices"
+msgstr "Descarga de facturas"
+
+msgid "Download Packing slip"
+msgstr "Descargar hoja de embalaje"
+
+msgid "Download invoice"
+msgstr "Descargar factura"
+
+msgid "Drag-and-drop easy customization"
+msgstr "Fácil personalización con arrastrar y soltar"
+
+msgid "E-commerce Promotions"
+msgstr "Promociones de comercio electrónico"
+
+msgid "Easy button and form customization"
+msgstr "Fácil personalización de botones y formularios"
+
+msgid "Easy invoice layout customization"
+msgstr "Fácil personalización del diseño de la factura"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Email"
+msgstr "Correo electrónico"
+
+msgid "Email Field"
+msgstr "Campo de correo electrónico"
+
+msgid "Email customers on order status change"
+msgstr ""
+"Envíe un correo electrónico a los clientes sobre el cambio de estado del "
+"pedido"
+
+msgid "Email gift cards to customers"
+msgstr "Enviar tarjetas de regalo por correo electrónico a los clientes"
+
+msgid "Email:"
+msgstr "Correo electrónico:"
+
+msgid "Empty order"
+msgstr "Orden vacía"
+
+msgid "Enable Invoice"
+msgstr "Habilitar factura"
+
+msgid "Enable RTL support"
+msgstr "Habilitar el soporte de RTL"
+
+msgid "Enable a common print button for"
+msgstr "Habilite un botón de impresión común para"
+
+msgid "Enable additional currency font support"
+msgstr "Habilitar compatibilidad con fuentes de moneda adicionales"
+
+msgid "Enable customers to Pay Later at checkout"
+msgstr "Permitir a los clientes pagar más tarde al finalizar la compra"
+
+msgid "Enable customers to print invoices & packing slips"
+msgstr "Permitir a los clientes imprimir facturas y albaranes"
+
+msgid "Enable customers to print the documents from order emails"
+msgstr ""
+"Permitir a los clientes imprimir los documentos desde los correos "
+"electrónicos de pedidos"
+
+msgid "Enable dedicated print buttons for"
+msgstr "Habilite los botones de impresión dedicados para"
+
+msgid "Enable quotation request for selected products"
+msgstr "Habilitar solicitud de cotización para productos seleccionados"
+
+msgid ""
+"Enable to apply the most recent settings to previous order invoices. This "
+"will match the previous invoices with the upcoming invoices.Changing the "
+"company address, name or any other settings in the future may overwrite "
+"previously created invoices with the most up-to-date information."
+msgstr ""
+"Habilite para aplicar la configuración más reciente a las facturas de "
+"pedidos anteriores. Esto hará coincidir las facturas anteriores con las "
+"próximas facturas. Cambiar la dirección de la empresa, el nombre o cualquier "
+"otra configuración en el futuro puede sobrescribir las facturas creadas "
+"anteriormente con la información más actualizada."
+
+msgid "Enable to attach invoice PDF to the new order email notification"
+msgstr ""
+"Habilite la opción de adjuntar el PDF de la factura a la notificación por "
+"correo electrónico del nuevo pedido"
+
+msgid ""
+"Enable to create invoice for orders generated before plugin installation"
+msgstr ""
+"Habilite para crear facturas para pedidos generados antes de la instalación "
+"del complemento"
+
+msgid "Enable to create invoices for free orders"
+msgstr "Habilite para crear facturas para pedidos gratuitos"
+
+msgid "Enable to create invoices for free orders."
+msgstr "Habilite para crear facturas para pedidos gratuitos."
+
+msgid "Enable to have a preview of the document before the print is initiated"
+msgstr ""
+"Habilite para tener una vista previa del documento antes de que se inicie la "
+"impresión"
+
+msgid "Enable to print, download, and mail invoices."
+msgstr "Habilite para imprimir, descargar y enviar facturas por correo."
+
+msgid "Enable to show currency code instead of currency symbol"
+msgstr ""
+"Habilitar para mostrar el código de moneda en lugar del símbolo de moneda"
+
+msgid "Enable to show state name in addresses"
+msgstr "Habilitar para mostrar el nombre del estado en las direcciones"
+
+msgid ""
+"Enable to use additional font library to support the currency symbol in pdf"
+msgstr ""
+"Habilite el uso de una biblioteca de fuentes adicional para admitir el "
+"símbolo de moneda en pdf"
+
+msgid "End"
+msgstr "Fin"
+
+msgid "Ensure security with base64 & URI printing"
+msgstr "Garantice la seguridad con impresión base64 y URI"
+
+msgid "Enter a name for your template"
+msgstr "Introduzca un nombre para su plantilla"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Error uploading the file"
+msgstr "Error al cargar el archivo"
+
+msgid "Error."
+msgstr "Error."
+
+msgid "Error:"
+msgstr "Error:"
+
+msgid "Error: Empty JSON file"
+msgstr "Error: archivo JSON vacío"
+
+msgid "Error: Invalid JSON data"
+msgstr "Error: datos JSON no válidos"
+
+msgid "Example Code"
+msgstr "Ejemplo de código"
+
+msgid "Exclude out-of-stock products"
+msgstr "Excluir productos agotados"
+
+msgid "Exclude specific products"
+msgstr "Excluir productos específicos"
+
+msgid "Exclude virtual items from picklists"
+msgstr "Excluir elementos virtuales de las listas de selección"
+
+msgid "Exclude virtual products from picklists"
+msgstr "Excluir productos virtuales de las listas de selección"
+
+msgid "Explicit/Implicit consent"
+msgstr "Consentimiento explícito/implícito"
+
+msgid "Export"
+msgstr "Exportar"
+
+msgid "Export and import custom fields and third-party plugin fields"
+msgstr ""
+"Exportar e importar campos personalizados y campos de complementos de "
+"terceros"
+
+msgid "Export product images in a separate zip file"
+msgstr "Exporte imágenes de productos en un archivo zip separado"
+
+msgid "Export settings (JSON)"
+msgstr "Exportar ajustes"
+
+msgid "Export to FTP/SFTP"
+msgstr "Exportar a FTP/SFTP"
+
+msgid "Extensions"
+msgstr "Extensiones"
+
+msgid "Extra Details"
+msgstr "Detalles adicionales"
+
+msgid "Extra detail font size"
+msgstr "Tamaño de letra extra detallado"
+
+msgid "Fast and Superior Support"
+msgstr "Apoyo rápido y superior"
+
+msgid "Features"
+msgstr "Características"
+
+msgid "Fee"
+msgstr "Tarifa"
+
+msgid "Field Name"
+msgstr "Nombre del campo"
+
+msgid "File path"
+msgstr "Ruta"
+
+msgid "Filter by user role, email, date, etc"
+msgstr "Filtrar por rol de usuario, correo electrónico, fecha, etc"
+
+msgid "Filter export by products, order status, email, date, etc"
+msgstr ""
+"Filtrar exportación por productos, estado del pedido, correo electrónico, "
+"fecha, etc"
+
+msgid "Filter products based on product type"
+msgstr "Filtrar productos según el tipo de producto"
+
+msgid "Filters"
+msgstr "Filtros"
+
+msgid "Finish setup"
+msgstr "Terminar configuración"
+
+msgid "Fit multiple shipping labels on a single page"
+msgstr "Coloque varias etiquetas de envío en una sola página"
+
+msgid "Fixed and custom gift card amounts"
+msgstr "Montos fijos y personalizados de tarjetas de regalo"
+
+msgid "Font size"
+msgstr "Tamaño de la fuente"
+
+msgid "Footer"
+msgstr "Pie de página"
+
+msgid "For better RTL integration in PDF documents, please use our"
+msgstr "Para una mejor integración de RTL en documentos PDF, utilice nuestro"
+
+msgid "For better performances"
+msgstr "Para mejores actuaciones"
+
+msgid "Format"
+msgstr "Formato"
+
+msgid "Fragile"
+msgstr "Frágil"
+
+msgid "Free"
+msgstr "Gratis"
+
+msgid "Free version"
+msgstr "Versión gratuita"
+
+msgid "Free vs Premium"
+msgstr "Gratis o Premium"
+
+msgid "Free!"
+msgstr "¡Gratis!"
+
+msgid "Frequently Bought Together for WooCommerce"
+msgstr "Comprados juntos con frecuencia para WooCommerce"
+
+msgid "From"
+msgstr "Desde"
+
+msgid "From Address"
+msgstr "De la dirección"
+
+msgid "From Address:"
+msgstr "De la dirección:"
+
+msgid "From address"
+msgstr "De la Dirección"
+
+msgid "From left"
+msgstr "Desde la izquierda"
+
+msgid "From top"
+msgstr "Desde arriba"
+
+msgid "From:"
+msgstr "De:"
+
+msgid "Full Page"
+msgstr "Página completa"
+
+msgid "Full page"
+msgstr "Página completa"
+
+msgid "GDPR Cookie Consent Plugin (CCPA Ready)"
+msgstr ""
+"Complemento de consentimiento de cookies del RGPD (preparado para CCPA)"
+
+msgid "General"
+msgstr "General"
+
+msgid "General Settings"
+msgstr "Ajustes generales"
+
+msgid "Generate"
+msgstr "Generar"
+
+msgid "Generate Billing Address labels"
+msgstr "Generar etiquetas de dirección de facturación"
+
+msgid "Generate From Address labels"
+msgstr "Generar desde etiquetas de dirección"
+
+msgid "Generate Return Address labels"
+msgstr "Generar etiquetas de dirección de remitente"
+
+msgid "Generate Shipping Address labels"
+msgstr "Generar etiquetas de dirección de envío"
+
+msgid ""
+"Generate WooCommerce product feeds for Google Shopping, Facebook Shop, and "
+"Instagram Shop"
+msgstr ""
+"Genere feeds de productos WooCommerce para Google Shopping, Facebook Shop e "
+"Instagram Shop"
+
+msgid "Generate address labels"
+msgstr "Generar etiquetas de dirección"
+
+msgid "Generate custom coupon URLs"
+msgstr "Generar URL de cupones personalizados"
+
+msgid "Generate custom-sized shipping labels"
+msgstr "Genere etiquetas de envío de tamaño personalizado"
+
+msgid "Generate dispatch labels and delivery notes"
+msgstr "Generar etiquetas de despacho y albaranes de entrega"
+
+msgid "Generate gift cards based on order status"
+msgstr "Genere tarjetas de regalo según el estado del pedido"
+
+msgid "Generate invoices and credits notes"
+msgstr "Generar facturas y notas de crédito"
+
+msgid "Generate invoices for existing orders"
+msgstr "Generar facturas para pedidos existentes"
+
+msgid "Generate invoices for free orders"
+msgstr "Generar facturas para pedidos gratis"
+
+msgid "Generate invoices for old orders"
+msgstr "Generar facturas para pedidos antiguos"
+
+msgid "Generate packing slips and credit notes"
+msgstr "Generar albaranes y notas de crédito"
+
+msgid "Generate picklists"
+msgstr "Generar listas de selección"
+
+msgid "Generate shipping labels and delivery notes"
+msgstr "Generar etiquetas de envío y albaranes de entrega"
+
+msgid "Generate shipping labels and dispatch labels"
+msgstr "Generar etiquetas de envío y etiquetas de envío"
+
+msgid ""
+"Generate ‘Shipping Address’, ‘Billing Address’, ‘From Address’, and ‘Return "
+"Address’ labels"
+msgstr ""
+"Genere etiquetas de 'Dirección de envío', 'Dirección de facturación', "
+"'Dirección de remitente' y 'Dirección de remitente'"
+
+msgid "Generating"
+msgstr "Generando"
+
+msgid "Get Add-on"
+msgstr "Obtener Add-on"
+
+msgid ""
+"Get Help with Ensuring Compliance to Major Privacy Laws for Your WordPress "
+"Website - GDPR, CCPA, LGPD, CNIL, and More."
+msgstr ""
+"Obtenga ayuda para garantizar el cumplimiento de las principales leyes de "
+"privacidad para su sitio web de WordPress: GDPR, CCPA, LGPD, CNIL y más."
+
+msgid "Get Plugin"
+msgstr "Conseguir plugin"
+
+msgid "Get advanced features for your"
+msgstr "Obtenga funciones avanzadas para su"
+
+msgid "Give away product coupons"
+msgstr "Regala cupones de productos"
+
+msgid "Go to plugins page"
+msgstr "Ir a la página de plugins"
+
+msgid "Go to support"
+msgstr "Ir a soporte"
+
+msgid "Google local product inventory feed"
+msgstr "Feed de inventario de productos locales de Google"
+
+msgid "Granular consent based on cookie categories"
+msgstr "Consentimiento granular basado en categorías de cookies"
+
+msgid "Group products by 'Category'"
+msgstr "Agrupar productos por 'Categoría'"
+
+msgid "Group products by category"
+msgstr "Agrupar productos por 'Categoría'"
+
+msgid "Group products by ‘Category’"
+msgstr "Agrupar productos por 'Categoría'"
+
+msgid "Group products by ‘Order’"
+msgstr "Agrupar productos por 'Pedido'"
+
+msgid "Group products in picklist by order/category"
+msgstr "Agrupar productos en lista de selección por orden/categoría"
+
+msgid "HTML"
+msgstr "HTML"
+
+msgid "Header Color"
+msgstr "Color del encabezado"
+
+msgid "Height"
+msgstr "Altura"
+
+msgid "Hello there! Let’s begin with the basics"
+msgstr "¡Hola! Comencemos con lo básico"
+
+msgid "Help Guide"
+msgstr "Guía de ayuda"
+
+msgid "Help Links"
+msgstr "Enlaces de ayuda"
+
+msgid "Help and Support"
+msgstr "Ayuda y apoyo"
+
+msgid ""
+"Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s "
+"%5$s. %6$s Less than a minute of your time will motivate us to keep doing "
+"what we do. We would really appreciate if you could take a moment to drop a "
+"quick review that motivate us to keep going."
+msgstr ""
+"Hola, en %1$s WebToffee %2$s nos gustaría agradecerte por usar %3$s %4$s "
+"%5$s. %6$s Menos de un minuto de tu tiempo nos motivará a seguir haciendo lo "
+"que hacemos. Realmente agradeceríamos que se tomara un momento para dejar "
+"una reseña rápida que nos motive a seguir adelante."
+
+msgid "Hide prices and ‘add to cart’ button"
+msgstr "Ocultar precios y botón \"añadir al carrito\""
+
+msgid "Hide/Show received seal in invoice"
+msgstr "Ocultar/Mostrar sello recibido en factura"
+
+msgid "Hide/Show received seal in invoice."
+msgstr "Ocultar/Mostrar sello recibido en la factura."
+
+msgid ""
+"I am unable to add customer VAT(or GSTIN or ABN or any other tax id etc)"
+msgstr ""
+"No puedo agregar el IVA del cliente (o GSTIN o ABN o cualquier otra "
+"identificación fiscal, etc.)"
+
+msgid "I couldn't understand how to make it work"
+msgstr "No podía entender cómo hacer que funcionara"
+
+msgid "I found a better plugin"
+msgstr "Encontré un mejor plugin"
+
+msgid "I rather wouldn't say"
+msgstr "Prefiero no decir"
+
+msgid "INVOICE"
+msgstr "FACTURA"
+
+msgid ""
+"If left blank, default to the logo from General settings. Ensure to select "
+"company logo from ‘Invoice > Customize > Company Logo’ to reflect on the "
+"invoice. Recommended size is 150×50px."
+msgstr ""
+"Si se deja en blanco, se usa de forma predeterminada el logotipo de la "
+"configuración general. Asegúrese de seleccionar el logotipo de la empresa en "
+"'Factura > Personalizar > Logotipo de la empresa' para reflejarlo en la "
+"factura. El tamaño recomendado es 150×50px."
+
+msgid "If the order number is"
+msgstr "Si el número de pedido es"
+
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr ""
+"Si tiene un momento, por favor, háganos saber por qué está desactivando:"
+
+msgid "Image"
+msgstr "Imagen"
+
+msgid "Image Signature"
+msgstr "Firma de la imagen"
+
+msgid "Image label"
+msgstr "Etiqueta de la imagen"
+
+msgid "Image text align"
+msgstr "Alineación del texto de la imagen"
+
+msgid "Import"
+msgstr "Importar"
+
+msgid "Import & export custom fields and values"
+msgstr "Importar y exportar campos y valores personalizados"
+
+msgid "Import Export Suite for WooCommerce"
+msgstr "Suite de importación y exportación para WooCommerce"
+
+msgid "Import and export coupons"
+msgstr "Cupones de importación y exportación"
+
+msgid "Import from URL, Google Sheets, FTP/SFTP"
+msgstr "Importar desde URL, Google Sheets, FTP/SFTP"
+
+msgid "Import settings (JSON)"
+msgstr "Importar ajustes"
+
+msgid ""
+"Import/export Products, Orders, Subscriptions, Coupons, Customers, WordPress "
+"Users, Categories & Tags, Reviews"
+msgstr ""
+"Importar/exportar productos, pedidos, suscripciones, cupones, clientes, "
+"usuarios de WordPress, categorías y etiquetas, reseñas"
+
+msgid "Imported successfully"
+msgstr "Importado correctamente"
+
+msgid ""
+"Importing the file will delete all the settings and replace with data from "
+"chosen file"
+msgstr ""
+"Al importar el archivo se eliminarán todas las configuraciones y se "
+"reemplazarán con datos del archivo elegido"
+
+msgid "In minutes. Eg: 1440 for 1 day. Minimum value is 1440"
+msgstr "En minutos. Por ejemplo: 1440 por 1 día. El valor mínimo es 1440"
+
+msgid "Include free(priced as 0) line items in the invoice"
+msgstr ""
+"Incluir elementos de línea gratuitos (con un precio de 0) en la factura"
+
+msgid "Include or exclude specific categories"
+msgstr "Incluir o excluir categorías específicas"
+
+msgid "Include product image"
+msgstr "Incluir la imagen del producto"
+
+msgid "Include product image in delivery note"
+msgstr "Incluir imagen del producto en el albarán de entrega"
+
+msgid "Include the package number & box names on the label"
+msgstr ""
+"Incluya el número del paquete y los nombres de las cajas en la etiqueta"
+
+msgid "Incorrect file"
+msgstr "Archivo incorrecto"
+
+msgid "Increment sequence in custom series"
+msgstr "Secuencia incremental en series personalizadas"
+
+msgid ""
+"Input a custom prefix for ‘PDF name format’ that will appear at the "
+"beginning of the name. Defaulted to ‘Invoice_’."
+msgstr ""
+"Ingrese un prefijo personalizado para \"formato de nombre PDF\" que "
+"aparecerá al principio del nombre. Predeterminado a \"Factura_\"."
+
+msgid "Instruction"
+msgstr "Instrucción"
+
+msgid "Interval"
+msgstr "Intervalo"
+
+msgid "Invalid access key and mail id"
+msgstr "Clave de acceso e identificación de correo no válidas"
+
+msgid "Invalid order id"
+msgstr "ID de pedido no válido"
+
+msgid "Invoice"
+msgstr "Factura"
+
+msgid "Invoice > Customize > Company Logo / Name"
+msgstr "Factura > Personalizar > Logotipo/Nombre de la empresa"
+
+msgid "Invoice Date"
+msgstr "Fecha de la factura"
+
+msgid "Invoice Date:"
+msgstr "Fecha de factura:"
+
+msgid "Invoice Generation In Progress"
+msgstr "Generación de facturas en curso"
+
+msgid "Invoice No.:"
+msgstr "Factura:"
+
+msgid "Invoice No:"
+msgstr "No. de factura:"
+
+msgid "Invoice Number"
+msgstr "Número de factura"
+
+msgid "Invoice date"
+msgstr "Fecha de la factura"
+
+msgid "Invoice date:"
+msgstr "Fecha de factura:"
+
+msgid "Invoice details"
+msgstr "Detalles de la factura"
+
+msgid ""
+"Invoice in PDF format will be attached with the order email for chosen order "
+"statuses."
+msgstr ""
+"La factura en formato PDF se adjuntará con el correo electrónico del pedido "
+"para los estados de pedido elegidos."
+
+msgid "Invoice no:"
+msgstr "No. de factura:"
+
+msgid "Invoice number"
+msgstr "Número de factura"
+
+msgid "Invoice number format"
+msgstr "Formato del número de factura"
+
+msgid "Invoice number length"
+msgstr "Longitud del número de factura"
+
+msgid ""
+"Invoice numbers are getting generated in the background. This process may "
+"take a little while, so please be patient."
+msgstr ""
+"Los números de factura se generan en segundo plano. Este proceso puede "
+"demorar un poco, así que tenga paciencia."
+
+msgid "Invoice setup successfully"
+msgstr "Configuración de factura exitosa"
+
+msgid "Invoice total"
+msgstr "Total de la factura"
+
+msgid "Invoice total tax"
+msgstr "Impuesto total de la factura"
+
+msgid "Invoice/Packing"
+msgstr "Factura/Empaquetado"
+
+msgid "Invoiced date"
+msgstr "Fecha de facturación"
+
+msgid "Invoices, Packing Slips and Credit Notes Module"
+msgstr "Módulo Facturas, Albaranes y Notas de Crédito"
+
+msgid "Invoices, Packing slips and Credit notes"
+msgstr "Facturas, albaranes y notas de crédito"
+
+msgid ""
+"It seems the products in this order were removed, we cannot proceed this "
+"actoin now."
+msgstr ""
+"Parece que los productos de este pedido se eliminaron, no podemos continuar "
+"con este acto ahora."
+
+msgid "It seems this order is not yours"
+msgstr "Parece que este pedido no es tuyo"
+
+msgid "It seems this order is not yours."
+msgstr "Parece que este pedido no es tuyo."
+
+msgid "Item with same meta key already exists"
+msgstr "El artículo con la misma meta clave ya existe"
+
+msgid "Jumbing LED Light Wall Ball"
+msgstr "Bola de pared de luz LED Jumbing"
+
+msgid "Keep dry"
+msgstr "Mantener seco"
+
+msgid "Key in your company name."
+msgstr "Introduzca el nombre de su empresa."
+
+msgid "Knock, Knock!"
+msgstr "¡TOC Toc!"
+
+msgid "Label"
+msgstr "Etiqueta"
+
+msgid "Language support issues"
+msgstr "Problemas de soporte del idioma"
+
+msgid "Last imported on:"
+msgstr "Importado por última vez el:"
+
+msgid "Last updated on:"
+msgstr "Última actualización el:"
+
+msgid "Left"
+msgstr "Izquierda"
+
+msgid "Lighter"
+msgstr "Encendedor"
+
+msgid "Lightning-fast printing"
+msgstr "Impresión ultrarrápida"
+
+msgid "Limit spams with reCAPTCHA"
+msgstr "Limite el spam con reCAPTCHA"
+
+msgid "Line height"
+msgstr "Altura de la línea"
+
+msgid "Load from WooCommerce"
+msgstr "Carga de WooCommerce"
+
+msgid "Location based exclusion for banner"
+msgstr "Exclusión basada en ubicación para banner"
+
+msgid "Log all Stripe transactions"
+msgstr "Registra todas las transacciones de Stripe"
+
+msgid "Logged in users"
+msgstr "Usuarios conectados"
+
+msgid "Logo"
+msgstr "Logotipo"
+
+msgid "Logo Height"
+msgstr "Altura del logo"
+
+msgid "Logo Width"
+msgstr "Ancho del logo"
+
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec vehicula "
+"purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
+"et interdum tellus fermentum at. Fusce pellentesque justo rhoncus"
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec vehicula "
+"purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
+"et interdum tellus fermentum en. Fusce pellentesque justo rhoncus"
+
+msgid "Lots of customization options like button style, position, etc"
+msgstr "Muchas opciones de personalización como estilo de botón, posición, etc"
+
+msgid "Maintains action history and debug logs"
+msgstr "Mantiene el historial de acciones y los registros de depuración"
+
+msgid "Manage user credit balance"
+msgstr "Administrar el saldo de crédito del usuario"
+
+msgid "Manual Signature"
+msgstr "Firma del manual"
+
+msgid "Manually create a bought-together list"
+msgstr "Crear manualmente una lista comprada en conjunto"
+
+msgid "Map categories on product level"
+msgstr "Mapa de categorías a nivel de producto"
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas."
+msgstr ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas."
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+msgstr ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+
+msgid "Mention the name of the plugin or meta key if any"
+msgstr "Mencione el nombre del complemento o meta clave, si corresponde"
+
+msgid "Meta Key"
+msgstr "Meta Key"
+
+msgid ""
+"Missing RTL/Unicode language(e.g Chinese, Arabic etc) support for PDF "
+"document."
+msgstr ""
+"Falta el compatibilidad del idioma RTL/Unicode (por ejemplo, chino, árabe, "
+"etc.) para el documento PDF."
+
+msgid "Monitor payments using Stripe dashboard"
+msgstr "Supervise los pagos mediante el panel de Stripe"
+
+msgid "More order number templates"
+msgstr "Más plantillas de números de pedido"
+
+msgid "Multilingual support"
+msgstr "Soporte multilingüe"
+
+msgid "Multiple address label layouts"
+msgstr "Múltiples diseños de etiquetas de dirección"
+
+msgid "Multiple display formats for bundled products"
+msgstr "Múltiples formatos de visualización para productos empaquetados"
+
+msgid "Multiple display options for bundle products"
+msgstr "Múltiples opciones de visualización para productos en paquete"
+
+msgid "Multiple pre-built layouts"
+msgstr "Múltiples diseños prediseñados"
+
+msgid "Multiple premium invoice templates to choose from"
+msgstr "Múltiples plantillas de facturas premium para elegir"
+
+msgid "Multiple product recommendation layouts"
+msgstr "Múltiples diseños de recomendación de productos"
+
+msgid "Multiple templates to personalize the document"
+msgstr "Múltiples plantillas para personalizar el documento"
+
+msgid "Multiple templates to personalize the label"
+msgstr "Múltiples plantillas para personalizar la etiqueta"
+
+msgid "My account - Order details page"
+msgstr "Mi cuenta: página de detalles del pedido"
+
+msgid "My account - Order lists page"
+msgstr "Mi cuenta - Página de listas de pedidos"
+
+msgid "My templates"
+msgstr "Mis plantillas"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Need a field to add the tax id on checkout page"
+msgstr ""
+"Necesita un campo para agregar la identificación fiscal en la página de pago"
+
+msgid "Next"
+msgstr "Siguiente"
+
+msgid "No"
+msgstr "No"
+
+msgid "No files found."
+msgstr "No se encontraron archivos."
+
+msgid "No modules"
+msgstr "Módulos"
+
+msgid "No of Items"
+msgstr "Num de elementos"
+
+msgid "No template found."
+msgstr "No se encontró ninguna plantilla."
+
+msgid "No temporary file found"
+msgstr "No se encontró ningún archivo temporal"
+
+msgid "None"
+msgstr "Ninguno"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "Not interested"
+msgstr "No interesado"
+
+msgid "Note"
+msgstr "Nota"
+
+msgid "Note:"
+msgstr "Nota:"
+
+msgid "Offer store credits"
+msgstr "Ofrecer créditos de tienda"
+
+msgid "Offers built-in label templates"
+msgstr "Ofrece plantillas de etiquetas integradas"
+
+msgid "Offers cloud printing of invoice PDFs using PrintNode"
+msgstr ""
+"Ofrece impresión en la nube de archivos PDF de facturas utilizando PrintNode"
+
+msgid "One or more order do not have invoice generated. Generate manually?"
+msgstr "Uno o más pedidos no tienen factura generada. ¿Generar manualmente?"
+
+msgid "Opacity"
+msgstr "Opacidad"
+
+msgid "Option to enable in-context checkout"
+msgstr "Opción para habilitar el pago en contexto"
+
+msgid "Option to include/exclude tax to Invoice"
+msgstr "Opción para incluir / excluir impuestos a la factura"
+
+msgid "Option to set up a specific PayPal locale"
+msgstr "Opción para configurar una configuración regional específica de PayPal"
+
+msgid "Order"
+msgstr "Pedido"
+
+msgid "Order Date"
+msgstr "Fecha del pedido"
+
+msgid "Order Date:"
+msgstr "Fecha de Pedido:"
+
+msgid "Order Details"
+msgstr "Detalles del pedido"
+
+msgid "Order Discount"
+msgstr "Descuento en el pedido"
+
+msgid "Order Meta"
+msgstr "Añadir el campo meta de orden existente"
+
+msgid "Order No.:"
+msgstr "Pedido No.:"
+
+msgid "Order No:"
+msgstr "Pedido Nº:"
+
+msgid "Order Number"
+msgstr "Número de orden"
+
+msgid "Order date"
+msgstr "Fecha de pedido"
+
+msgid "Order date:"
+msgstr "Fecha del pedido:"
+
+msgid "Order discount"
+msgstr "Descuento de pedido"
+
+msgid "Order email"
+msgstr "Orden de correo electrónico"
+
+msgid "Order meta fields"
+msgstr "Ordenar los campos meta"
+
+msgid "Order no:"
+msgstr "Pedido Nº:"
+
+msgid "Order number"
+msgstr "Número de pedido"
+
+msgid "Order number (default)"
+msgstr "Número de pedido (predeterminado)"
+
+msgid "Order, Coupon, Subscription Export Import for WooCommerce"
+msgstr "Order, Coupon, Subscription Export Import for WooCommerce"
+
+msgid "Other"
+msgstr "Otros"
+
+msgid "Others"
+msgstr "Otros"
+
+msgid "Output"
+msgstr "Salida"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF Invoices"
+msgstr "Recibos PDF"
+
+msgid "PDF library"
+msgstr "Biblioteca en PDF"
+
+msgid "PDF name format"
+msgstr "Formatos de fecha"
+
+msgid "PREVIEW"
+msgstr "VISTA PREVIA"
+
+msgid "Package Number"
+msgstr "Utilizar el número de pedido como número de factura"
+
+msgid "Packing slip"
+msgstr "Hoja de embalaje"
+
+msgid "Partial and Full Refund of the order amount"
+msgstr "Reembolso Parcial y Total del importe del pedido"
+
+msgid "PayPal Express Checkout Payment Gateway for WooCommerce"
+msgstr "Pasarela de pago PayPal Express Checkout para WooCommerce"
+
+msgid "Payment & subscription"
+msgstr "Pago y suscripción"
+
+msgid "Payment Method"
+msgstr "Método de pago"
+
+msgid "Payment Method:"
+msgstr "Método de pago:"
+
+msgid "Payment method"
+msgstr "Método de pago"
+
+msgid "Payment method:"
+msgstr "Método de pago:"
+
+msgid "Payment method: "
+msgstr "Forma de pago: "
+
+msgid "Payment received stamp"
+msgstr "Sello de pago recibido"
+
+msgid "Ph No:"
+msgstr "Ph No:"
+
+msgid "Phone No:"
+msgstr "Número de teléfono:"
+
+msgid "Phone no:"
+msgstr "Teléfono:"
+
+msgid "Phone number"
+msgstr "Número de teléfono"
+
+msgid "Pick list"
+msgstr "Lista de selección"
+
+msgid "Pick lists"
+msgstr "Listas de selección"
+
+msgid "Picklist"
+msgstr "Lista de selección"
+
+msgid "Picklists Add-on"
+msgstr "Complemento de listas de selección"
+
+msgid "Please enter mandatory fields"
+msgstr "Por favor ingrese campos obligatorios"
+
+msgid "Please enter name"
+msgstr "Por favor, introduzca el nombre"
+
+msgid "Please enter order number"
+msgstr "Por favor, introduzca el número de pedido"
+
+msgid "Please fill the `from address` in the plugin's general settings."
+msgstr ""
+"Complete la `dirección de origen` en la configuración general del "
+"complemento."
+
+msgid ""
+"Please save all data before leaving this page. All unsaved data will be lost."
+" Are you sure?"
+msgstr ""
+"Por favor, guarde todos los datos antes de salir de esta página. Todos los "
+"datos no guardados se perderán. ¿Está seguro?"
+
+msgid "Please select json file"
+msgstr "Por favor seleccione el archivo json"
+
+msgid "Please wait"
+msgstr "Por favor, espere"
+
+msgid "Plugin settings not available in my language"
+msgstr "La configuración del plugin no está disponible en mi idioma"
+
+msgid "Postal code"
+msgstr "Código postal"
+
+msgid "Pre-built layout for documents"
+msgstr "Diseño prediseñado para documentos"
+
+msgid "Pre-built layouts"
+msgstr "Diseños predefinidos"
+
+msgid "Pre-built layouts & customizable templates"
+msgstr "Diseños prediseñados y plantillas personalizables"
+
+msgid "Pre-built layouts for documents"
+msgstr "Diseños prediseñados para documentos"
+
+msgid "Pre-built proforma invoice layouts"
+msgstr "Diseños de factura proforma prediseñados"
+
+msgid "Prefix"
+msgstr "Prefijo"
+
+msgid "Premium"
+msgstr "Premium"
+
+msgid "Premium Extensions"
+msgstr "Extensiones Premium"
+
+msgid "Premium extensions"
+msgstr "Extensiones premium"
+
+msgid "Premium version"
+msgstr "Versión Premium"
+
+msgid "Present"
+msgstr "Presente"
+
+msgid "Preview before printing"
+msgstr "Vista previa antes de la impresión"
+
+msgid "Preview documents before printing"
+msgstr "Vista previa de documentos antes de imprimir"
+
+msgid "Preview sample PDF"
+msgstr "Muestra de muestra PDF"
+
+msgid "Price"
+msgstr "Precio"
+
+msgid "Price label"
+msgstr "Etiqueta de precio"
+
+msgid "Price text align"
+msgstr "El texto del precio se alinea"
+
+msgid "Print"
+msgstr "Imprimir"
+
+msgid "Print Delivery note"
+msgstr "Imprimir Albarán de entrega"
+
+msgid "Print Dispatch Label"
+msgstr "Imprimir etiqueta de envío"
+
+msgid "Print Invoice"
+msgstr "Imprimir factura"
+
+msgid "Print Invoices"
+msgstr "Imprimir facturas"
+
+msgid "Print PDF invoices for WooCommerce"
+msgstr "Imprima facturas en PDF para WooCommerce"
+
+msgid "Print Packing slip"
+msgstr "Imprimir la hoja de embalaje"
+
+msgid "Print Shipping Label"
+msgstr "Imprimir etiqueta de envío"
+
+msgid "Print button access for"
+msgstr "Acceso al botón Imprimir para"
+
+msgid "Print invoice"
+msgstr "Imprimir recibo"
+
+msgid "Print/Download"
+msgstr "Imprimir/Descargar"
+
+msgid "Print/Download Delivery note"
+msgstr "Imprimir / Descargar nota de entrega"
+
+msgid "Print/Download Dispatch Label"
+msgstr "Imprimir / descargar etiqueta de envío"
+
+msgid "Print/Download Invoice"
+msgstr "Imprimir / Descargar factura"
+
+msgid "Print/Download Packing slip"
+msgstr "Imprimir / descargar albarán"
+
+msgid "Prints Packing List,Invoice,Delivery Note and Shipping Label."
+msgstr ""
+"Imprime lista de empaque, factura, nota de entrega y etiqueta de envío."
+
+msgid "Privacy Policy"
+msgstr "Política de privacidad"
+
+msgid "Privacy compliance"
+msgstr "Cumplimiento de privacidad"
+
+msgid "Pro Add-on"
+msgstr "Version Pro"
+
+msgid "Pro version"
+msgstr "Versión Pro"
+
+msgid "Pro-rate charges till first renewal"
+msgstr "Cargos prorrateados hasta la primera renovación"
+
+msgid "Product"
+msgstr "Producto"
+
+msgid "Product Import Export Plugin For WooCommerce"
+msgstr "Product Import Export Plugin For WooCommerce"
+
+msgid "Product Table"
+msgstr "Tabla de productos"
+
+msgid "Product attributes"
+msgstr "Atributos de los productos"
+
+msgid "Product label"
+msgstr "Etiqueta del producto"
+
+msgid "Product meta fields"
+msgstr "Metacampos de productos"
+
+msgid "Product text align"
+msgstr "Alinear el texto del producto"
+
+msgid "Proforma Invoices Add-on"
+msgstr "Complemento de facturas proforma"
+
+msgid "Proforma invoice"
+msgstr "Factura proforma"
+
+msgid "Proforma invoice number format"
+msgstr "Formato del número de factura proforma"
+
+msgid "Proforma invoices"
+msgstr "Facturas proforma"
+
+msgid "Provide refunds to store credit"
+msgstr "Proporcionar reembolsos al crédito de la tienda"
+
+msgid "QR Code"
+msgstr "Código QR"
+
+msgid "QR Code Addon for WooCommerce PDF Invoices"
+msgstr "Complemento de código QR para facturas en PDF de WooCommerce"
+
+msgid "QR code"
+msgstr "Código QR"
+
+msgid "Qty label"
+msgstr "Etiqueta de cantidad"
+
+msgid "Qty text align"
+msgstr "Alinear el texto de la cantidad"
+
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgid "Quick setup page to add & edit recommendations"
+msgstr "Página de configuración rápida para agregar y editar recomendaciones"
+
+msgid "RTL support for documents"
+msgstr "Soporte RTL para documentos"
+
+msgid "Rate us now"
+msgstr "Califícanos ahora"
+
+msgid "Recommended 128MB or more"
+msgstr "Recomendado 128 MB o más"
+
+msgid "Recommended for better performances"
+msgstr "Recomendado para mejores actuaciones"
+
+msgid "Recommended size is 150x50px."
+msgstr "El tamaño recomendado es 150x50px."
+
+msgid "Recommended size is 150×50px"
+msgstr "El tamaño recomendado es 150×50px"
+
+msgid "Recommended to compress PDF documents"
+msgstr "Recomendado para comprimir documentos PDF"
+
+msgid "Recommended, will use fallback functions"
+msgstr "Recomendado, usará funciones alternativas"
+
+msgid "Refer to our documentation to setup and get started"
+msgstr "Consulte nuestra documentación para establecer y comenzar"
+
+msgid "Refund"
+msgstr "Reembolso"
+
+msgid ""
+"Refund in this order seems not having credit number yet. Do you want to "
+"manually generate one ?"
+msgstr ""
+"Parece que el reembolso en este pedido aún no tiene un número de crédito. "
+"¿Quieres generar uno manualmente?"
+
+msgid "Remind me later"
+msgstr "Recordame más tarde"
+
+msgid "Remote Print add-on for WooCommerce PDF Invoices - PrintNode"
+msgstr ""
+"Complemento de impresión remota para facturas PDF de WooCommerce - PrintNode"
+
+msgid ""
+"Removing year [Y] from the prefix will disable the annual reset functionality"
+msgstr ""
+"Quitar el año [Y] del prefijo deshabilitará la funcionalidad de reinicio "
+"anual"
+
+msgid ""
+"Removing year [Y] from the suffix will disable the annual reset functionality"
+msgstr ""
+"Quitar el año [Y] del sufijo deshabilitará la funcionalidad de reinicio anual"
+
+msgid "Renewal interval & expiry customizations"
+msgstr "Personalizaciones de intervalo de renovación y vencimiento"
+
+msgid "Replace the existing templates"
+msgstr "Reemplazar las plantillas existentes"
+
+msgid "Required"
+msgstr "Necesario"
+
+msgid "Required if you have images in your documents"
+msgstr "Necesario si tienes imágenes en tus documentos"
+
+msgid "Reset"
+msgstr "Reiniciar"
+
+msgid "Reset all settings to default"
+msgstr "Restablecer todas las configuraciones a los valores predeterminados"
+
+msgid "Reset successfully"
+msgstr "Restablecer exitosamente"
+
+msgid ""
+"Reset will delete all the settings, saved templates and reset to the default "
+"settings"
+msgstr ""
+"Restablecer eliminará todas las configuraciones, plantillas guardadas y "
+"restablecerá la configuración predeterminada"
+
+msgid "Restrict coupons by country"
+msgstr "Restringir cupones por país"
+
+msgid "Retain user passwords on import/export"
+msgstr "Conservar las contraseñas de los usuarios al importar/exportar"
+
+msgid "Return Policy"
+msgstr "Política de devolución"
+
+msgid "Return address"
+msgstr "Dirección del remitente"
+
+msgid "Return policy"
+msgstr "Política de devolución"
+
+msgid "Review"
+msgstr "Revisar"
+
+msgid "Review now"
+msgstr "Revisar ahora"
+
+msgid "Right"
+msgstr "Derecho"
+
+msgid "S.No"
+msgstr "S.No"
+
+msgid "S.no"
+msgstr "S.no"
+
+msgid "SKU"
+msgstr "SKU"
+
+msgid "SKU label"
+msgstr "Etiqueta SKU"
+
+msgid "SKU text align"
+msgstr "Alinear el texto de la SKU"
+
+msgid "SSN"
+msgstr "SSN"
+
+msgid "SSN number"
+msgstr "Número del DNI"
+
+msgid "SSN:"
+msgstr "SSN:"
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid "Save and activate"
+msgstr "Guardar y activar"
+
+msgid "Save before you proceed."
+msgstr "Salve antes de proceder."
+
+msgid "Save document layout as template"
+msgstr "Guardar el diseño del documento como plantilla"
+
+msgid "Saving"
+msgstr "Guardando"
+
+msgid "Saving..."
+msgstr "Salvar..."
+
+msgid "Scan and list cookies"
+msgstr "Escanear y enumerar cookies"
+
+msgid "Schedule automated import & export"
+msgstr "Programe importaciones y exportaciones automatizadas"
+
+msgid "Schedule automated import and export"
+msgstr "Programe importaciones y exportaciones automatizadas"
+
+msgid "Secure"
+msgstr "Seguro"
+
+msgid "Secured payments with SCA and 3D secure"
+msgstr "Pagos seguros con SCA y 3D Secure"
+
+msgid "Select One"
+msgstr "Seleccione uno"
+
+msgid ""
+"Select a name format for PDF invoice that includes invoice/order number."
+msgstr ""
+"Seleccione un formato de nombre para la factura en PDF que incluya el número "
+"de factura / pedido."
+
+msgid "Select country"
+msgstr "Seleccione el país"
+
+msgid ""
+"Select email classes that match the order statuses selected under the "
+"'Automate invoice creation option. If no order status is selected, you must "
+"manually generate invoice to attach it with these order emails."
+msgstr ""
+"Seleccione clases de correo electrónico que coincidan con los estados de los "
+"pedidos seleccionados en la opción 'Automatizar la creación de facturas'. Si "
+"no se selecciona ningún estado del pedido, debe generar la factura "
+"manualmente para adjuntarla a estos correos electrónicos del pedido."
+
+msgid ""
+"Select/add order meta to display additional information related to the order "
+"on the invoice."
+msgstr ""
+"Seleccione/agregue meta del pedido para mostrar información adicional "
+"relacionada con el pedido en la factura."
+
+msgid "Seller name"
+msgstr "Nombre del vendedor"
+
+msgid "Seller tax ID"
+msgstr "Número de identificación fiscal del vendedor"
+
+msgid "Send automated emails notifications"
+msgstr "Enviar notificaciones automáticas por correo electrónico"
+
+msgid ""
+"Separate tax column in product table for multiple tax options in dispatch "
+"labels"
+msgstr ""
+"Columna de impuestos separada en la tabla de productos para múltiples "
+"opciones de impuestos en las etiquetas de envío"
+
+msgid ""
+"Separate tax column in product table for multiple tax options in proforma "
+"invoices"
+msgstr ""
+"Columna de impuestos separada en la tabla de productos para múltiples "
+"opciones de impuestos en facturas proforma"
+
+msgid ""
+"Separate tax column in the product table for multiple tax options in invoices"
+msgstr ""
+"Columna de impuestos separada en la tabla de productos para múltiples "
+"opciones de impuestos en las facturas"
+
+msgid "Sequential Order Number for WooCommerce"
+msgstr "Número de orden secuencial para WooCommerce"
+
+msgid "Serial No label"
+msgstr "Serie sin etiqueta"
+
+msgid "Serial no text align"
+msgstr "Serie sin alineación de texto"
+
+msgid "Set custom proforma invoice number"
+msgstr "Establecer número de factura proforma personalizado"
+
+msgid "Set free trial and sign-up fee"
+msgstr "Establecer prueba gratuita y tarifa de registro"
+
+msgid "Set quote expiry period"
+msgstr "Establecer el período de vencimiento de la cotización"
+
+msgid ""
+"Set the  Size of the Shipping label to be either full page or custom size."
+msgstr ""
+"Configure el tamaño de la etiqueta de envío para que sea de página completa "
+"o de tamaño personalizado."
+
+msgid "Set up a redirect page"
+msgstr "Configurar una página de redireccionamiento"
+
+msgid "Set up discounts on the recommended product bundle"
+msgstr "Configurar descuentos en el paquete de productos recomendado"
+
+msgid "Settings"
+msgstr "Ajustes"
+
+msgid "Settings Updated"
+msgstr "Ajustes actualizados"
+
+msgid "Settings are empty"
+msgstr "La configuración está vacía"
+
+msgid "Settings updated."
+msgstr "Ajustes actualizados."
+
+msgid "Ship Date:"
+msgstr "Fecha de embarque:"
+
+msgid "Ship to"
+msgstr "Envíar a"
+
+msgid "Shipping"
+msgstr "Envío"
+
+msgid "Shipping Address"
+msgstr "Dirección de envío"
+
+msgid "Shipping Address:"
+msgstr "Dirección de envío:"
+
+msgid "Shipping Label"
+msgstr "Etiqueta de envío"
+
+msgid "Shipping Label 1"
+msgstr "Etiqueta de envio"
+
+msgid "Shipping Method"
+msgstr "Método de envío"
+
+msgid "Shipping address"
+msgstr "Dirección de envío"
+
+msgid "Shipping label"
+msgstr "Etiqueta de envío"
+
+msgid "Shipping label size"
+msgstr "Tamaño de la etiqueta de envío"
+
+msgid "Shipping labels"
+msgstr "Etiquetas de envío"
+
+msgid "Shipping labels, Dispatch labels and Delivery Notes Module"
+msgstr "Módulo de Etiquetas de Envío, Etiquetas de Despacho y Notas de Entrega"
+
+msgid "Shipping labels, Dispatch labels and Delivery notes"
+msgstr "Etiquetas de envío, Etiquetas de envío y Albaranes de entrega"
+
+msgid "Shop name"
+msgstr "Nombre de la tienda"
+
+msgid "Shortcode support for the Paypal Express button"
+msgstr "Soporte de shortcode para el botón Paypal Express"
+
+msgid "Show Less"
+msgstr "Mostrar menos"
+
+msgid "Show More"
+msgstr "Mostrar más"
+
+msgid "Show Pay Later option at checkout"
+msgstr "Mostrar la opción Pagar después al finalizar la compra"
+
+msgid "Show different taxes in separate columns"
+msgstr "Mostrar diferentes impuestos en columnas separadas"
+
+msgid "Show payment link on invoice"
+msgstr "Mostrar enlace de pago en la factura"
+
+msgid "Show print invoice button for customers"
+msgstr "Mostrar el botón 'Imprimir factura' para los clientes"
+
+msgid "Show print invoice button to customers"
+msgstr "Mostrar el botón 'Imprimir factura' para los clientes"
+
+msgid "Show print packing slip button to customers"
+msgstr "Mostrar el botón de impresión del albarán a los clientes"
+
+msgid "Show product variation data"
+msgstr "Mostrar datos de variación del producto"
+
+msgid "Show variation data for variable products"
+msgstr "Mostrar datos de variación para productos variables"
+
+msgid "Show variation data of products"
+msgstr "Mostrar datos de variación de productos"
+
+msgid ""
+"Shows a preview of the template on an actual order. Key in an order number "
+"to view the same."
+msgstr ""
+"Muestra una vista previa de la plantilla en un orden real. Teclea un número "
+"de orden para ver la misma."
+
+msgid "Signature type"
+msgstr "Tipo de firma"
+
+msgid "Skip invoice setup"
+msgstr "Saltar configuración de factura"
+
+msgid "Smart Coupons for WooCommerce"
+msgstr "Carga de WooCommerce"
+
+msgid "Solid"
+msgstr "Sólido"
+
+msgid "Some useful `filters` to extend plugin's functionality"
+msgstr "Algunos útiles \"filtros\" para extender la funcionalidad del plugin"
+
+msgid "Sort order items in product table"
+msgstr "Añadir la imagen del producto en la tabla de productos"
+
+msgid "Sort order items in the product table"
+msgstr "Ordenar artículos de pedido en la tabla de productos"
+
+msgid "Sort order items in the product table "
+msgstr "Ordenar artículos de pedido en la tabla de productos "
+
+msgid "Sort products based on Name or SKU"
+msgstr "Ordenar productos según nombre o SKU"
+
+msgid ""
+"Specify your company tax ID. For e.g., you may enter as VAT: GB123456789, "
+"GSTIN:0948745 or ABN:51 824 753 556"
+msgstr ""
+"Especifique el número de identificación fiscal de su empresa. Por ejemplo "
+"puede ingresar como IVA: GB123456789, GSTIN: 0948745 o ABN: 51824753 556"
+
+msgid "Start"
+msgstr "Comienza"
+
+msgid "Step 1"
+msgstr "Paso 1"
+
+msgid "Step 2"
+msgstr "Paso 2"
+
+msgid "Step 3"
+msgstr "Paso 3"
+
+msgid "Style"
+msgstr "Estilo"
+
+msgid "Submit & Deactivate"
+msgstr "Enviar y desactivar"
+
+msgid "Subscriptions for WooCommerce"
+msgstr "Suscripciones para WooCommerce"
+
+msgid "Subtotal"
+msgstr "Subtotal"
+
+msgid "Success"
+msgstr "Éxito"
+
+msgid "Successfully cleared all temp files."
+msgstr "Borró con éxito todos los archivos temporales."
+
+msgid "Suffix"
+msgstr "Sufijo"
+
+msgid "Summary Table"
+msgstr "Tabla de resumen"
+
+msgid "Support"
+msgstr "Apoyo"
+
+msgid "Support for additional fields that can be added to the feed"
+msgstr "Soporte para campos adicionales que se pueden agregar al feed"
+
+msgid "Support for multiple product types"
+msgstr "Soporte para múltiples tipos de productos"
+
+msgid "Support for serial and USB scales"
+msgstr "Soporte para básculas seriales y USB"
+
+msgid "Supported address types"
+msgstr "Tipos de direcciones admitidos"
+
+msgid "Supported by a team with 99% Customer Satisfaction Score"
+msgstr ""
+"Respaldado por un equipo con un puntaje de satisfacción del cliente del 99%"
+
+msgid "Supported documents"
+msgstr "Otros documentos"
+
+msgid "Supports Excel, XML, CSV, and TSV file formats"
+msgstr "Admite formatos de archivos Excel, XML, CSV y TSV"
+
+msgid "Supports WooCommerce Subscriptions for Express buttons"
+msgstr "Admite suscripciones de WooCommerce para botones Express"
+
+msgid "Supports automatic & manual printing"
+msgstr "Admite impresión automática y manual"
+
+msgid "Supports recurring discounts"
+msgstr "Admite descuentos recurrentes"
+
+msgid "Supports recurring payments"
+msgstr "Admite pagos recurrentes"
+
+msgid "Switching to order number will disable the annual reset functionality"
+msgstr "Cambiar al número de pedido deshabilitará la función de reinicio anual"
+
+msgid "Sync WooCommerce products to Facebook catalog"
+msgstr "Sincronizar productos WooCommerce con el catálogo de Facebook"
+
+msgid "Synchronize subscription renewal"
+msgstr "Sincronizar la renovación de la suscripción"
+
+msgid "System Configuration"
+msgstr "Configuración del sistema"
+
+msgid "System Info"
+msgstr "Información del sistema"
+
+msgid "Table body text color"
+msgstr "El color del texto del cuerpo de la tabla"
+
+msgid "Table head background"
+msgstr "Fondo de la cabeza de la mesa"
+
+msgid "Table head text color"
+msgstr "El color del texto del encabezado de la tabla"
+
+msgid "Tax ID"
+msgstr "Impuesto"
+
+msgid "Tax label"
+msgstr "Etiqueta fiscal"
+
+msgid "Tax text align"
+msgstr "Alineación del texto del impuesto"
+
+msgid "Tel Field"
+msgstr "Campo Tel"
+
+msgid "Tel:"
+msgstr "Tel:"
+
+msgid "Template created and activated."
+msgstr "Plantilla creada."
+
+msgid "Template created."
+msgstr "Plantilla creada."
+
+msgid "Template updated and activated."
+msgstr "Plantilla actualizada."
+
+msgid "Template updated."
+msgstr "Plantilla actualizada."
+
+msgid "Template with same name already exists."
+msgstr "Ya existe una plantilla con el mismo nombre."
+
+msgid "Templates"
+msgstr "Plantillas"
+
+msgid "Text"
+msgstr "Texto"
+
+msgid "Text Color"
+msgstr "Color del texto"
+
+msgid "Text align"
+msgstr "Alinear el texto"
+
+msgid "Text color"
+msgstr "Color del texto"
+
+msgid ""
+"That’s awesome! We’d love it if you take a moment to share what you think "
+"and help spread the word."
+msgstr ""
+"¡Eso es genial! Nos encantaría que se tomara un momento para compartir lo "
+"que piensa y ayudar a correr la voz."
+
+msgid ""
+"The best-in-the-class import, export, and migration solutions for your "
+"WooCommerce data"
+msgstr ""
+"Las mejores soluciones de importación, exportación y migración de su clase "
+"para sus datos de WooCommerce"
+
+msgid ""
+"The company name and the address details from this section will be used as "
+"the sender address in the invoice and other related documents."
+msgstr ""
+"El nombre de la empresa y los detalles de la dirección de esta sección se "
+"utilizarán como la dirección del remitente en la factura y otros documentos "
+"relacionados."
+
+msgid ""
+"The date is displayed on the invoice. It can be either the order creation "
+"date or the invoiced date."
+msgstr ""
+"La fecha se muestra en la factura. Puede ser la fecha de creación del pedido "
+"o la fecha de facturación."
+
+msgid "The default library to be used PDF generation"
+msgstr ""
+"La biblioteca predeterminada que se utilizará para la generación de PDF"
+
+msgid "The latest specified starting number will be used after reset"
+msgstr ""
+"El último número inicial especificado se utilizará después del reinicio"
+
+msgid ""
+"The most popular payment gateways and subscription solutions to scale your "
+"business"
+msgstr ""
+"Las pasarelas de pago y soluciones de suscripción más populares para escalar "
+"su negocio"
+
+msgid "The plugin didn't work as expected"
+msgstr "El plugin no funcionó como se esperaba"
+
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr ""
+"El plugin es genial, pero necesito una característica específica que no "
+"soportas"
+
+msgid ""
+"The plugins %s and %s cannot be active in your store at the same time. "
+"Kindly deactivate one of these prior to activating the other."
+msgstr ""
+"Los plugins %s y %s no pueden estar activos en tu tienda al mismo tiempo. "
+"Por favor, desactive uno de estos antes de activar el otro."
+
+msgid "There is no items in this order."
+msgstr "No hay artículos en este pedido."
+
+msgid "There is no order with this given id"
+msgstr "No hay orden con esta identificación dada"
+
+msgid "There is no order with this id"
+msgstr "No hay ningún pedido con este id"
+
+msgid ""
+"This filter is used to alter the barcode information for all the document "
+"templates"
+msgstr ""
+"Este filtro se utiliza para modificar la información del código de barras "
+"para todas las plantillas de documentos"
+
+msgid ""
+"This filter is used to alter the invoice date in all the document templates"
+msgstr ""
+"Este filtro se utiliza para modificar la fecha de la factura en todas las "
+"plantillas de documentos"
+
+msgid ""
+"This filter is used to alter the order date in all the document templates"
+msgstr ""
+"Este filtro se utiliza para modificar la fecha del pedido en todas las "
+"plantillas de documentos"
+
+msgid ""
+"This is basic template. In order to use premium feature, you need to switch "
+"and activate the premium template"
+msgstr ""
+"Esta es la plantilla básica. Para usar la función premium, debe cambiar y "
+"activar la plantilla premium"
+
+msgid "This is premium template which is not compatible with the basic plugin"
+msgstr ""
+"Esta es una plantilla premium que no es compatible con el complemento básico"
+
+msgid "This template is not comaptible with QR Code addon plugin"
+msgstr "Esta plantilla no es compatible con el complemento de código QR"
+
+msgid "This way up"
+msgstr "Por este camino"
+
+msgid ""
+"This will remove all invoice numbers created by WooCommerce PDF Invoices, "
+"Packing Slips, Delivery Notes & Shipping Labels by WebToffee."
+msgstr ""
+"Esto eliminará todos los números de factura creados por WooCommerce PDF "
+"Invoices, Packing Slips, Delivery Notes & Shipping Labels by WebToffee."
+
+msgid "Timely compatibility updates and bug fixes"
+msgstr "Actualizaciones de compatibilidad oportunas y corrección de errores"
+
+msgid "Title"
+msgstr "Título"
+
+msgid "Title font size"
+msgstr "Tamaño de la fuente del título"
+
+msgid "To Address"
+msgstr "A la dirección"
+
+msgid "To add a different meta key"
+msgstr "Para agregar una meta clave diferente"
+
+msgid "To add more than one custom order meta,"
+msgstr "Para agregar más de un meta pedido personalizado,"
+
+msgid "To compress PDF documents"
+msgstr "Para comprimir documentos PDF"
+
+msgid "To help you comply with invoice mandates that require QR Codes"
+msgstr ""
+"Para ayudarlo a cumplir con los mandatos de facturación que requieren "
+"códigos QR"
+
+msgid "To include the keyed in name to the Invoice, ensure to select"
+msgstr ""
+"Para incluir el nombre tecleado en la factura, asegúrese de seleccionar"
+
+msgid ""
+"To include the uploaded image as logo to the invoice, ensure to select "
+"Company logo from"
+msgstr ""
+"Para incluir la imagen cargada como logotipo en la factura, asegúrese de "
+"seleccionar el logotipo de la empresa de"
+
+msgid "To proceed with the import, please type %1$s in the field below"
+msgstr "Para continuar con la importación, escriba %1$s en el campo siguiente"
+
+msgid "To proceed with the reset, please type %1$s in the field below"
+msgstr ""
+"Para continuar con el restablecimiento, escriba %1$s en el campo siguiente"
+
+msgid "To:"
+msgstr "Para:"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Total Price"
+msgstr "Precio total"
+
+msgid "Total Tax"
+msgstr "Impuesto total"
+
+msgid "Total Weight"
+msgstr "Peso total"
+
+msgid "Total files"
+msgstr "Archivos totales"
+
+msgid "Total label"
+msgstr "Etiqueta total"
+
+msgid "Total price"
+msgstr "Precio total"
+
+msgid "Total tax"
+msgstr "Impuesto total"
+
+msgid "Total text align"
+msgstr "Alineación del texto total"
+
+msgid "Total weight label"
+msgstr "Etiqueta de peso total"
+
+msgid "Total weight text align"
+msgstr "El texto del peso total se alinea"
+
+msgid "Tracking Number"
+msgstr "Número de seguimiento"
+
+msgid "Tracking Number:"
+msgstr "Número de seguimiento:"
+
+msgid "Tracking number"
+msgstr "Número de seguimiento"
+
+msgid "Tracking number:"
+msgstr "Número de rastreo:"
+
+msgid "Truncation did not complete as expected."
+msgstr "El truncamiento no se completó como se esperaba."
+
+msgid "Type template name to search"
+msgstr "Escriba el nombre de la plantilla para buscar"
+
+msgid "URL Coupons for WooCommerce"
+msgstr "Cupones URL para WooCommerce"
+
+msgid ""
+"Unable to add from third party plugin that collects customer VAT(or GSTIN or "
+"ABN etc)"
+msgstr ""
+"No se puede agregar desde un complemento de terceros que recauda el IVA del "
+"cliente (o GSTIN o ABN, etc.)"
+
+msgid "Unable to generate PDF."
+msgstr "No se puede generar el PDF."
+
+msgid "Unable to load template."
+msgstr "No se puede cargar la plantilla."
+
+msgid "Unable to print Delivery note. Please check the items in the order."
+msgstr ""
+"No se puede imprimir el albarán de entrega. Por favor, compruebe los "
+"artículos del pedido."
+
+msgid "Unable to print Packing slip. Please check the items in the order."
+msgstr ""
+"No se puede imprimir la hoja de embalaje. Por favor, compruebe los artículos "
+"del pedido."
+
+msgid "Unable to save theme."
+msgstr "No se puede guardar el tema."
+
+msgid "Unable to switch view."
+msgstr "No se puede cambiar de vista."
+
+msgid ""
+"Unable to update settings due to an internal error. %s To troubleshoot "
+"please click %s here. %s"
+msgstr ""
+"No se puede actualizar la configuración debido a un error interno. %s Para "
+"solucionar problemas, haga clic %s aquí. %s"
+
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+msgid "Unit price"
+msgstr "Precio unitario"
+
+msgid ""
+"Unlock limitless possibilities of invoice customization with the addon -"
+msgstr ""
+"Desbloquee posibilidades ilimitadas de personalización de facturas con el "
+"complemento -"
+
+msgid "Untitled template"
+msgstr "Plantilla sin título"
+
+msgid "Update Settings"
+msgstr "Actualizar la configuración"
+
+msgid "Updated"
+msgstr "Actualizado"
+
+msgid "Upgrade To Premium"
+msgstr "Actualizar a Premium"
+
+msgid "Upgrade to premium"
+msgstr "Subir a la prima"
+
+msgid "Upload logo"
+msgstr "Subir Logo"
+
+msgid "Upload your image"
+msgstr "Sube tu imagen aquí"
+
+msgid "Use custom number format & length"
+msgstr "Utilice formato y longitud de número personalizados"
+
+msgid "Use custom number series to number documents"
+msgstr "Utilice series de números personalizados para numerar documentos"
+
+msgid "Use invoice created date"
+msgstr "Usar la fecha de creación de la factura"
+
+msgid "Use latest settings for invoice"
+msgstr "Utilice la fecha del pedido como fecha de la factura proforma"
+
+msgid "Use order date"
+msgstr "Usar fecha de pedido"
+
+msgid "Use order date as input instead."
+msgstr "Utilice la fecha del pedido como entrada en su lugar."
+
+msgid "Use order number as document number"
+msgstr "Utilice el número de pedido como número de documento"
+
+msgid ""
+"Use upsells, cross-sells, & related products as frequently bought products"
+msgstr ""
+"Utilice ventas adicionales, ventas cruzadas y productos relacionados como "
+"productos comprados con frecuencia"
+
+msgid "User consent logging"
+msgstr "Registro de consentimiento del usuario"
+
+msgid "Users who haven`t logged will also be allowed to print"
+msgstr "Los usuarios que no hayan iniciado sesión también podrán imprimir"
+
+msgid "Users will be redirected to login page if not logged in"
+msgstr ""
+"Los usuarios serán redirigidos a la página de inicio de sesión si no han "
+"iniciado sesión"
+
+msgid "VAT"
+msgstr "IVA"
+
+msgid "VAT number"
+msgstr "Número de IVA"
+
+msgid "VAT:"
+msgstr "NIF:"
+
+msgid "Verified compatibility with major plugins"
+msgstr "Compatibilidad verificada con los principales complementos"
+
+msgid "View add-on"
+msgstr "Ver complemento"
+
+msgid "View live preview of customization"
+msgstr "Ver vista previa en vivo de la personalización"
+
+msgid "View progress"
+msgstr "Mostrar progreso"
+
+msgid "View sample customization demo"
+msgstr "Ver demostración de personalización de muestra"
+
+msgid "Visual"
+msgstr "Visual"
+
+msgid "WPML compatibility"
+msgstr "Compatibilidad con WPML"
+
+msgid "WPML compatibilityCustomize label sizes"
+msgstr "Compatibilidad con WPMLPersonalizar tamaños de etiquetas"
+
+msgid "WPML multilingual and multicurrency support "
+msgstr "Soporte WPML multilingüe y multidivisa "
+
+msgid "WT PDF Invoice Debug"
+msgstr "Depuración de facturas en PDF WT"
+
+msgid ""
+"We do not collect any personal data when you submit this form. It's your "
+"feedback that we value."
+msgstr ""
+"No recogemos ningún dato personal cuando usted envía este formulario. Es su "
+"opinión la que valoramos."
+
+msgid "We would love to help you on any queries or issues."
+msgstr "Nos encantaría ayudarles en cualquier duda o asunto."
+
+msgid "WebToffee"
+msgstr "WebToffee"
+
+msgid "WebToffee WooCommerce Gift Cards"
+msgstr "Tarjetas de regalo de WebToffee WooCommerce"
+
+msgid "WebToffee WooCommerce Product Feed & Sync Manager"
+msgstr ""
+"Administrador de sincronización y alimentación de productos WebToffee "
+"WooCommerce"
+
+msgid "WebToffee WooCommerce Request A Quote"
+msgstr "WebToffee WooCommerce Solicite una cotización"
+
+msgid "Weight"
+msgstr "Peso"
+
+msgid "Weight:"
+msgstr "Peso:"
+
+msgid "What did you expect?"
+msgstr "¿Qué esperabas?"
+
+msgid "What length would you prefer for your credit note"
+msgstr "¿Qué longitud preferirías para tu nota de crédito"
+
+msgid "What length would you prefer for your invoice"
+msgstr "¿Qué longitud preferirías para tu factura"
+
+msgid "What length would you prefer for your invoice number"
+msgstr "¿Qué longitud preferirías para tu número de factura"
+
+msgid "What should be the starting number for your credit notes?"
+msgstr "¿Cuál debería ser el número inicial de sus notas de crédito?"
+
+msgid "What should be the starting number for your invoices?"
+msgstr "¿Cuál debería ser el número inicial de sus facturas?"
+
+msgid "What should be the starting number for your proforma invoices?"
+msgstr "¿Cuál debería ser el número inicial de sus facturas proforma?"
+
+msgid ""
+"When enabled, replaces state code with state name in the from, return, "
+"billing and shipping addresses"
+msgstr ""
+"Cuando está habilitado, reemplaza el código de estado con el nombre del "
+"estado en las direcciones de origen, devolución, facturación y envío"
+
+msgid "Which language?"
+msgstr "¿Qué idioma?"
+
+msgid "Which plugin?"
+msgstr "¿Qué plugin?"
+
+msgid "Width"
+msgstr "Ancho"
+
+msgid "WooCommerce Address Labels plugin"
+msgstr "Complemento de etiquetas de direcciones de WooCommerce"
+
+msgid "WooCommerce PDF Invoices, Packing Slips and Credit Notes plugin"
+msgstr ""
+"Complemento de facturas en PDF, albaranes y notas de crédito de WooCommerce"
+
+msgid ""
+"WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels"
+msgstr ""
+"WooCommerce PDF Facturas, albaranes, notas de entrega y etiquetas de envío"
+
+msgid "WooCommerce Pick lists plugin"
+msgstr "Complemento de listas de selección de WooCommerce"
+
+msgid "WooCommerce Picklists plugin"
+msgstr "Complemento de listas de selección de WooCommerce"
+
+msgid "WooCommerce Proforma Invoices"
+msgstr "Facturas proforma de WooCommerce"
+
+msgid "WooCommerce Proforma Invoices plugin"
+msgstr "Complemento de facturas proforma de WooCommerce"
+
+msgid "WooCommerce Shipping labels, Dispatch labels and Delivery Notes plugin"
+msgstr ""
+"Complemento de etiquetas de envío, etiquetas de envío y notas de entrega de "
+"WooCommerce"
+
+msgid "WooCommerce Stripe Payment Gateway"
+msgstr "Pasarela de pago WooCommerce Stripe"
+
+msgid ""
+"Woocommerce PDF invoices, packing slips, delivery notes, and shipping labels"
+msgstr ""
+"WooCommerce PDF Facturas, albaranes, notas de entrega y etiquetas de envío"
+
+msgid "WordPress Users & WooCommerce Customers Import Export"
+msgstr "WordPress Users & WooCommerce Customers Import Export"
+
+msgid "Would you like us to assist you?"
+msgstr "¿Quiere que le ayudemos?"
+
+msgid "Writtable"
+msgstr "Escribible"
+
+msgid "Yes"
+msgstr "Sí"
+
+msgid "You are covered by our 30-Day Money Back Guarantee"
+msgstr "Estás cubierto por nuestra Garantía de devolución de dinero de 30 días"
+
+msgid "You are not allowed to access this page"
+msgstr "No tienes permiso para acceder a esta página"
+
+msgid "You are not allowed to do this action"
+msgstr "No tienes permiso para realizar esta acción"
+
+msgid "You are not allowed to view this page."
+msgstr "No se le permite ver esta página."
+
+msgid "You are using free version of %1$s. %2$s Checkout premium here %3$s."
+msgstr ""
+"Está utilizando la versión gratuita de %1$s. %2$s Pago premium aquí %3$s."
+
+msgid ""
+"You can add additional column head via `wf_pklist_alter_product_table_head` "
+"filter. You need to add column data via this filter. (Works with Invoice and "
+"Dispatch label only)"
+msgstr ""
+"Puede agregar una cabeza de columna adicional a través del filtro "
+"`wf_pklist_alter_product_table_head`. Necesita añadir datos de columna "
+"mediante este filtro. (Funciona sólo con la etiqueta Factura y Despacho)"
+
+msgid ""
+"You can add additional column head via `wf_pklist_alter_product_table_head` "
+"filter. You need to add column data via this filter. (Works with Packing "
+"List, Shipping Label and Delivery note only)"
+msgstr ""
+"Puede agregar una cabeza de columna adicional a través del filtro "
+"`wf_pklist_alter_product_table_head`. Necesita añadir datos de columna "
+"mediante este filtro. (Funciona sólo con la lista de empaque, la etiqueta de "
+"envío y el albarán de entrega)"
+
+msgid "You can add custom/predefined order meta using its key"
+msgstr "Puede agregar meta orden personalizado/predefinido usando su clave"
+
+msgid "You can add more than 1 order meta in"
+msgstr "Puede agregar más de 1 orden meta en"
+
+msgid ""
+"You can control the visibility of the seal according to order status via "
+"filters. See filter documentation %s here. %s"
+msgstr ""
+"Puede controlar la visibilidad del sello según el estado del pedido a través "
+"de filtros. Consulte la documentación del filtro %s aquí. %s"
+
+msgid "You can edit an existing item by using its key."
+msgstr "Puede editar un elemento existente utilizando su clave."
+
+msgid "You can't undo this action. Are you sure?"
+msgstr "No puedes deshacer esta acción. ¿Está seguro?"
+
+msgid "You have to select order(s) first!"
+msgstr "¡Tienes que seleccionar el orden o los órdenes primero!"
+
+msgid "You`ve just created"
+msgstr "Acabas de crear"
+
+msgid "Your next %s number would be"
+msgstr "Su próximo número %s sería"
+
+msgid "[prefix][invoice_no]"
+msgstr "[prefijo][número de factura]"
+
+msgid "[prefix][order_no]"
+msgstr "[prefijo][número de pedido]"
+
+msgid "allow_url_fopen disabled"
+msgstr "allow_url_fopen desactivada"
+
+msgid "commercial documents using"
+msgstr "documentos comerciales utilizando"
+
+msgid "from"
+msgstr "desde"
+
+msgid "https://www.webtoffee.com/"
+msgstr "https://www.webtoffee.com/"
+
+msgid ""
+"https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/"
+msgstr ""
+"https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/"
+
+msgid "incl. tax"
+msgstr "incluido el impuesto"
+
+msgid "is required"
+msgstr "se requiere"
+
+msgid "mPDF add-on"
+msgstr "complemento mPDF"
+
+msgid "n/a"
+msgstr "n/a"
+
+msgid ""
+"number has not been generated yet. Do you want to manually generate one ?"
+msgstr "el número aún no ha sido generado. ¿Quieres generar uno manualmente?"
+
+msgid "orders listing page"
+msgstr "página de listado de pedidos"
+
+msgctxt "placeholder"
+msgid "Enter "
+msgstr "Entrar "
+
+msgid "search filter"
+msgstr "filtro de búsqueda"
+
+msgid "the %s number would be"
+msgstr "el número %s sería"
+
+msgid "upgrade to premium version"
+msgstr "actualizar a la versión premium"
+
+msgid "via %s"
+msgstr "a %s"
+
+msgid ""
+"‘Generate invoice for free orders’ is disabled in Invoice settings > "
+"Advanced. You are attempting to generate invoice for this free order. "
+"Proceed?"
+msgstr ""
+"\"Generar factura para pedidos gratuitos\" está inhabilitado en "
+"Configuración de factura> Avanzado. Está intentando generar una factura para "
+"este pedido gratuito. ¿Continuar?"
+
+msgid "Shipping Method:"
+msgstr "Método de envío:"
+
+msgid "Attach invoice PDF to selected WooCommerce emails."
+msgstr ""
+"Adjunte el PDF de la factura a los correos electrónicos seleccionados de "
+"WooCommerce."
+
+msgid ""
+"Select email types corresponding to the order statuses under Automate "
+"invoice creation option. If none are selected, invoices must be generated "
+"manually to be attached to emails."
+msgstr ""
+"Seleccione los tipos de correo electrónico correspondientes a los estados de "
+"los pedidos en la opción Automatizar la creación de facturas. Si no se "
+"selecciona ninguno, las facturas deben generarse manualmente para adjuntarse "
+"a los correos electrónicos."

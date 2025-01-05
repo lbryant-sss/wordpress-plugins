@@ -1,0 +1,2240 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce PDF Invoices, Packing Slips, Delivery Notes "
+"and Shipping Labels\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-28 11:21+0000\n"
+"PO-Revision-Date: 2024-11-29 06:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: Bengali (Bangladesh)\n"
+"Language: bn-BD\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: en_GB\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: print-invoices-packing-slip-labels-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Loco-Parser: loco_parse_mo"
+
+msgid ""
+"%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels "
+"(Basic) %s is enabled but not effective. It requires %s WooCommerce %s in "
+"order to work."
+msgstr ""
+"%s WooCommerce PDF চালান, প্যাকিং স্লিপ, ডেলিভারি নোট এবং শিপিং লেবেল (বেসিক)"
+" %s সক্ষম কিন্তু কার্যকর নয়৷ এটি কাজ করার জন্য %s WooCommerce %s প্রয়োজন৷"
+
+msgid "5.6 or higher recommended"
+msgstr "5.6 বা উচ্চতর প্রস্তাবিত"
+
+msgid "Access denied !!!."
+msgstr "অ্যাক্সেস অস্বীকার করা হয়েছে !!!"
+
+msgid "Action"
+msgstr "অ্যাকশন"
+
+msgid "Activate"
+msgstr "সক্রিয় করা"
+
+msgid "Active"
+msgstr "সক্রিয়"
+
+msgid "Add"
+msgstr "যোগ করুন"
+
+msgid "Add a payment link to invoice"
+msgstr "চালানে একটি পেমেন্ট লিঙ্ক যোগ করুন"
+
+msgid "Add additional fields to invoices"
+msgstr "ইনভয়েসে অতিরিক্ত ক্ষেত্র যোগ করুন"
+
+msgid "Add date to credit note number"
+msgstr "ক্রেডিট নোট নম্বরে তারিখ যোগ করুন"
+
+msgid "Add date to invoice number"
+msgstr "চালান নম্বরে তারিখ যোগ করুন"
+
+msgid "Add date to proforma invoice number"
+msgstr "প্রফর্মা চালান নম্বরে তারিখ যোগ করুন"
+
+msgid "Add new"
+msgstr "নতুন আরেকটি"
+
+msgid "Add shop details"
+msgstr "দোকান বিবরণ যোগ করুন"
+
+msgid "Add/Edit Order Meta Field"
+msgstr "অর্ডার মেটা ফিল্ড যোগ/সম্পাদনা করুন"
+
+msgid "Address details"
+msgstr "বিস্তারিত ঠিকানা"
+
+msgid "Address font size"
+msgstr "ঠিকানার ফন্ট সাইজ"
+
+msgid "Address labels"
+msgstr "ঠিকানা লেবেল"
+
+msgid "Address line 1"
+msgstr "ঠিকানা লাইন 1"
+
+msgid "Address line 2"
+msgstr "ঠিকানা লাইন ২"
+
+msgid "Adds Footer to the packing slip"
+msgstr "প্যাকিং স্লিপে ফুটার যোগ করে"
+
+msgid "Adds customer note in the dispatch label"
+msgstr "ডিসপ্যাচ লেবেলে গ্রাহক নোট যোগ করে"
+
+msgid "Adds customer note to the packing slip"
+msgstr "প্যাকিং স্লিপে গ্রাহক নোট যোগ করে"
+
+msgid "Adds footer in dispatch label"
+msgstr "ডিসপ্যাচ লেবেলে ফুটার যোগ করে"
+
+msgid "Adds footer to the  Shipping label"
+msgstr "শিপিং লেবেলে ফুটার যোগ করে"
+
+msgid ""
+"Admins and customers both can leverage this feature wherever applicable. "
+"Disabling will remove all the provisions. Yet, the invoices are customizable."
+msgstr ""
+"প্রশাসক এবং গ্রাহক উভয়ই যেখানে প্রযোজ্য সেখানে এই বৈশিষ্ট্যটি ব্যবহার করতে "
+"পারেন। নিষ্ক্রিয় করা সমস্ত বিধান মুছে ফেলবে৷ তবুও, চালানগুলি কাস্টমাইজযোগ্য।"
+
+msgid "Advanced customization option for packing slip templates"
+msgstr "স্লিপ টেমপ্লেট প্যাক করার জন্য উন্নত কাস্টমাইজেশন বিকল্প"
+
+msgid "Advanced options"
+msgstr "উন্নত বিকল্প"
+
+msgid "Align"
+msgstr "সারিবদ্ধ"
+
+msgid "All document types"
+msgstr "সব ধরনের নথি"
+
+msgid "All fields are mandatory"
+msgstr "সব মাঠ আবশ্যক"
+
+msgid "All unsaved changes will be lost upon switching to a new layout."
+msgstr ""
+"একটি নতুন লেআউটে স্যুইচ করার পরে সমস্ত অসংরক্ষিত পরিবর্তনগুলি হারিয়ে যাবে৷"
+
+msgid "All users"
+msgstr "সকল ব্যবহারকারী"
+
+msgid "Allow remote stylesheets and images"
+msgstr "দূরবর্তী স্টাইলশীট এবং ছবি অনুমতি দিন"
+
+msgid "Allows customers to print the invoice from the specified pages."
+msgstr "গ্রাহকদের নির্দিষ্ট পৃষ্ঠাগুলি থেকে চালান প্রিন্ট করার অনুমতি দেয়।"
+
+msgid "Already tried the free %s WebToffee mPDF addon %s."
+msgstr "ইতিমধ্যেই বিনামূল্যের %s WebToffee mPDF অ্যাডঅন %s চেষ্টা করেছে৷"
+
+msgid "Alter order date"
+msgstr "অর্ডারের তারিখ পরিবর্তন করুন"
+
+msgid "Angle"
+msgstr "কোণ"
+
+msgid "Attach document to order email"
+msgstr "ইমেল অর্ডার করতে নথি সংযুক্ত করুন"
+
+msgid "Attach invoice PDF to admin email"
+msgstr "অ্যাডমিন ইমেলে চালান পিডিএফ সংযুক্ত করুন"
+
+msgid "Attach invoice pdf in WooCommerce Email"
+msgstr "WooCommerce ইমেলে চালান পিডিএফ সংযুক্ত করুন"
+
+msgid "Attach invoice pdf in customer email"
+msgstr "গ্রাহকের ইমেলে চালান পিডিএফ সংযুক্ত করুন"
+
+msgid "Automate invoice creation"
+msgstr "চালান তৈরি স্বয়ংক্রিয়"
+
+msgid "Automatic cleanup"
+msgstr "স্বয়ংক্রিয় পরিস্কার"
+
+msgid "Automatically create invoice based on order status"
+msgstr "অর্ডার স্থিতির উপর ভিত্তি করে স্বয়ংক্রিয়ভাবে চালান তৈরি করুন"
+
+msgid "Automatically creates invoices for selected order statuses."
+msgstr "নির্বাচিত অর্ডার স্থিতির জন্য স্বয়ংক্রিয়ভাবে চালান তৈরি করে।"
+
+msgid ""
+"Automatically generate professional WooCommerce order-related documents for "
+"all your orders"
+msgstr ""
+"আপনার সমস্ত অর্ডারের জন্য পেশাদার WooCommerce অর্ডার-সম্পর্কিত নথি "
+"স্বয়ংক্রিয়ভাবে তৈরি করুন"
+
+msgid "Back"
+msgstr "পেছনে"
+
+msgid "Barcode"
+msgstr "বারকোড"
+
+msgid "Basic - 0"
+msgstr "মৌলিক - 0"
+
+msgid "Basic - 1"
+msgstr "বেসিক- ১"
+
+msgid ""
+"Before using this tool, please make sure you followed the steps described in "
+"this article %1$s how to reset/delete existing invoice numbers%2$s."
+msgstr ""
+"এই টুলটি ব্যবহার করার আগে, অনুগ্রহ করে নিশ্চিত করুন যে আপনি এই নিবন্ধে "
+"বর্ণিত ধাপগুলি অনুসরণ করেছেন %1$s কীভাবে বিদ্যমান চালান নম্বরগুলি পুনরায় "
+"সেট/মুছবেন%2$s৷"
+
+msgid "Better with transparent PNG images"
+msgstr "স্বচ্ছ পিএনজি চিত্রগুলির সাথে আরও ভাল"
+
+msgid "Bill to"
+msgstr "বিল করতে"
+
+msgid "Billing Address"
+msgstr "বিলিং এর ঠিকানা"
+
+msgid "Billing Address:"
+msgstr "বিলিং ঠিকানা:"
+
+msgid "Billing address"
+msgstr "বিলিং ঠিকানা"
+
+msgid "Bold"
+msgstr "সাহসী"
+
+msgid "Bolder"
+msgstr "সাহসী"
+
+msgid "Border radius"
+msgstr "সীমানা ব্যাসার্ধ"
+
+msgid "Border width"
+msgstr "সীমানার প্রশস্থতা"
+
+msgid "Box name"
+msgstr "বাক্সের নাম"
+
+msgid "Buyer name"
+msgstr "ক্রেতার নাম"
+
+msgid "Cancel"
+msgstr "বাতিল"
+
+msgid "Cannot close this banner"
+msgstr "এই ব্যানার বন্ধ করা যাবে না"
+
+msgid "Cart Discount"
+msgstr "কার্ট ডিসকাউন্ট"
+
+msgid "Caution: Settings here are only for advanced users."
+msgstr "সতর্কতা: এখানে সেটিংস শুধুমাত্র উন্নত ব্যবহারকারীদের জন্য।"
+
+msgid "Center"
+msgstr "মাঝখান"
+
+msgid "Change document number format & length"
+msgstr "নথি নম্বর বিন্যাস এবং দৈর্ঘ্য পরিবর্তন করুন"
+
+msgid "Change layout"
+msgstr "লেআউট পরিবর্তন করুন"
+
+msgid "Checkout Premium"
+msgstr "চেকআউট প্রিমিয়াম"
+
+msgid "Choose a country&hellip;"
+msgstr "একটা দেশ নির্বাচন করুন…"
+
+msgid "Choose a layout."
+msgstr "একটি লেআউট চয়ন করুন."
+
+msgid "Choose date"
+msgstr "তারিখ চয়ন করুন"
+
+msgid "Choose email classes"
+msgstr "ইমেল ক্লাস চয়ন করুন"
+
+msgid "Choose emails for invoice attachment"
+msgstr "চালান সংযুক্তির জন্য ইমেল নির্বাচন করুন"
+
+msgid "Choose order status"
+msgstr "অর্ডার স্থিতি নির্বাচন করুন"
+
+msgid ""
+"Choose the order emails to which you'd like to attach invoices for your "
+"customers"
+msgstr ""
+"আপনি আপনার গ্রাহকদের জন্য চালান সংযুক্ত করতে চান যে অর্ডার ইমেল চয়ন করুন"
+
+msgid "City"
+msgstr "শহর"
+
+msgid "Classic"
+msgstr "ক্লাসিক"
+
+msgid "Click here to add Company logo"
+msgstr "কোম্পানির লোগো যোগ করতে এখানে ক্লিক করুন"
+
+msgid "Click here to add Company name"
+msgstr "কোম্পানির নাম যোগ করতে এখানে ক্লিক করুন"
+
+msgid "Click here to add From address"
+msgstr "ঠিকানা থেকে যোগ করতে এখানে ক্লিক করুন"
+
+msgid "Click here to add Signature"
+msgstr "স্বাক্ষর যোগ করতে এখানে ক্লিক করুন"
+
+msgid "Click to append with existing data"
+msgstr "বিদ্যমান ডেটার সাথে যুক্ত করতে ক্লিক করুন"
+
+msgid "Click to view predefined templates."
+msgstr "পূর্বনির্ধারিত টেমপ্লেট দেখতে ক্লিক করুন."
+
+msgid "Close"
+msgstr "বন্ধ"
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Code Copied"
+msgstr "কোড কপি করা হয়েছে"
+
+msgid "Color"
+msgstr "রঙ"
+
+msgid "Combine with the existing templates"
+msgstr "বিদ্যমান টেমপ্লেটগুলির সাথে একত্রিত করুন"
+
+msgid "Company Logo"
+msgstr "কোম্পানী লোগো"
+
+msgid "Company Logo / Name"
+msgstr "কোম্পানির লোগো/নাম"
+
+msgid "Company Name"
+msgstr "কোমপানির নাম"
+
+msgid "Company Tax ID"
+msgstr "কোম্পানির ট্যাক্স আইডি"
+
+msgid "Company details"
+msgstr "কোম্পানি বিবরণ"
+
+msgid "Company name"
+msgstr "কোমপানির নাম"
+
+msgid "Company name font size"
+msgstr "কোম্পানির নামের ফন্ট সাইজ"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slips, Delivery Notes, and "
+"Shipping Label (Free and Pro versions)"
+msgstr ""
+"WooCommerce PDF চালান, প্যাকিং স্লিপ, ডেলিভারি নোট এবং শিপিং লেবেলের সাথে "
+"সামঞ্জস্যপূর্ণ (ফ্রি এবং প্রো সংস্করণ)"
+
+msgid "Complete the invoice number format to suit your requirements"
+msgstr "আপনার প্রয়োজনীয়তা অনুসারে চালান নম্বর বিন্যাসটি সম্পূর্ণ করুন"
+
+msgid "Configure the general settings required for the delivery note."
+msgstr "ডেলিভারি নোটের জন্য প্রয়োজনীয় সাধারণ সেটিংস কনফিগার করুন।"
+
+msgid "Configure the general settings required for the dispatch label."
+msgstr "প্রেরণ লেবেলের জন্য প্রয়োজনীয় সাধারণ সেটিংস কনফিগার করুন।"
+
+msgid "Configure the general settings required for the invoice."
+msgstr "চালানের জন্য প্রয়োজনীয় সাধারণ সেটিংস কনফিগার করুন।"
+
+msgid "Configure the general settings required for the packing slip."
+msgstr "প্যাকিং স্লিপের জন্য প্রয়োজনীয় সাধারণ সেটিংস কনফিগার করুন।"
+
+msgid "Configure the general settings required for the shipping label."
+msgstr "শিপিং লেবেলের জন্য প্রয়োজনীয় সাধারণ সেটিংস কনফিগার করুন।"
+
+msgid "Contact Number"
+msgstr "যোগাযোগ নাম্বার"
+
+msgid "Contact Us"
+msgstr "আমাদের সাথে যোগাযোগ করুন"
+
+msgid "Contact number"
+msgstr "যোগাযোগের নম্বর"
+
+msgid "Copied"
+msgstr "কপি করা হয়েছে"
+
+msgid "Copy"
+msgstr "কপি"
+
+msgid "Copy Code"
+msgstr "কোড কপি করুন"
+
+msgid "Could you tell us a bit more?"
+msgstr "আপনি আমাদের একটু বেশি বলতে পারেন?"
+
+msgid "Could you tell us more about that feature?"
+msgstr "আপনি আমাদের যে বৈশিষ্ট্য সম্পর্কে আরও বলতে পারেন?"
+
+msgid "Country/State"
+msgstr "দেশের প্রদেশ"
+
+msgid "Coupon Used"
+msgstr "কুপন ব্যবহার করা হয়েছে"
+
+msgid "Create a new template or edit an existing template."
+msgstr "একটি নতুন টেমপ্লেট তৈরি করুন বা একটি বিদ্যমান টেমপ্লেট সম্পাদনা করুন৷"
+
+msgid "Create new"
+msgstr "নতুন তৈরী করা"
+
+msgid "Create new template"
+msgstr "নতুন টেমপ্লেট তৈরি করুন"
+
+msgid "Create your unique invoice numbering system"
+msgstr "আপনার অনন্য চালান নম্বর সিস্টেম তৈরি করুন"
+
+msgid "Credit note"
+msgstr "ক্রেডিট নোট"
+
+msgid "Creditnote number format"
+msgstr "ক্রেডিটনোট নম্বর বিন্যাস"
+
+msgid "Custom"
+msgstr "কাস্টম নির্বাচন করুন"
+
+msgid "Custom (Pro version)"
+msgstr "কাস্টম (প্রো সংস্করণ)"
+
+msgid "Custom PDF name prefix"
+msgstr "কাস্টম পিডিএফ নামের উপসর্গ"
+
+msgid "Custom details, as below:"
+msgstr "কাস্টম বিবরণ, নীচের হিসাবে:"
+
+msgid "Custom invoice date"
+msgstr "কাস্টম চালান তারিখ"
+
+msgid "Custom number"
+msgstr "কাস্টম নম্বর"
+
+msgid "Customer Note"
+msgstr "গ্রাহক নোট"
+
+msgid "Customer Note:"
+msgstr "গ্রাহক নোট:"
+
+msgid "Customer note"
+msgstr "ক্রেতা নোট"
+
+msgid "Customer note:"
+msgstr "গ্রাহক নোট:"
+
+msgid "Customizable tax items, tax fields (SSN, VAT, etc.)"
+msgstr "কাস্টমাইজযোগ্য ট্যাক্স আইটেম, ট্যাক্স ক্ষেত্র (SSN, VAT, ইত্যাদি)"
+
+msgid "Customize"
+msgstr "কাস্টমাইজ করুন"
+
+msgid "Customize invoice PDF name format"
+msgstr "চালান পিডিএফ নামের বিন্যাস কাস্টমাইজ করুন"
+
+msgid "Customize using Code Editor"
+msgstr "কোড এডিটর ব্যবহার করে কাস্টমাইজ করুন"
+
+msgid "Customizer for WooCommerce PDF Invoices Plugin"
+msgstr "WooCommerce পিডিএফ ইনভয়েস প্লাগইনের জন্য কাস্টমাইজার"
+
+msgid "Customizer module is not active."
+msgstr "কাস্টমাইজার মডিউল সক্রিয় নয়।"
+
+msgid "Dashed"
+msgstr "ড্যাশড"
+
+msgid "Date format strings"
+msgstr "তারিখ বিন্যাস স্ট্রিং"
+
+msgid "Date formats"
+msgstr "তারিখ বিন্যাস"
+
+msgid "Date:"
+msgstr "তারিখ:"
+
+msgid "Debug"
+msgstr "ডিবাগ"
+
+msgid "Delete"
+msgstr "মুছে ফেলুন"
+
+msgid "Delete all generated invoice numbers"
+msgstr "সমস্ত তৈরি করা চালান নম্বর মুছুন"
+
+msgid "Delete all the settings made by this plugin"
+msgstr "এই প্লাগইন দ্বারা তৈরি সমস্ত সেটিংস মুছুন"
+
+msgid "Delivery note"
+msgstr "চালান পত্র"
+
+msgid "Department/Business unit/Sender name"
+msgstr "বিভাগ/ব্যবসায়িক ইউনিট/প্রেরকের নাম"
+
+msgid "Description"
+msgstr "বর্ণনা"
+
+msgid "Developed by"
+msgstr "নির্মাণে"
+
+msgid "Dispatch Date:"
+msgstr "প্রাণবোধ তারিখ:"
+
+msgid "Dispatch Label"
+msgstr "প্রেরণ লেবেল"
+
+msgid "Dispatch Label 1"
+msgstr "প্রেরণ লেবেল 1"
+
+msgid "Dispatch label"
+msgstr "প্রেরণ লেবেল"
+
+msgid "Display"
+msgstr "প্রদর্শন"
+
+msgid "Display currency code"
+msgstr "মুদ্রা কোড প্রদর্শন করুন"
+
+msgid "Display free line items in the invoice"
+msgstr "চালানে বিনামূল্যে লাইন আইটেম প্রদর্শন করুন"
+
+msgid "Display free line items on invoice"
+msgstr "চালানে বিনামূল্যে লাইন আইটেম প্রদর্শন করুন"
+
+msgid "Display options for bundled products"
+msgstr "বান্ডিল পণ্যের জন্য প্রদর্শন বিকল্প"
+
+msgid "Display state name"
+msgstr "রাজ্যের নাম প্রদর্শন করুন"
+
+msgid ""
+"Displays customer`s VAT number saved in the order details by third-party "
+"plugins in this document. Supported meta keys are"
+msgstr ""
+"এই নথিতে তৃতীয় পক্ষের প্লাগইন দ্বারা অর্ডারের বিবরণে সংরক্ষিত গ্রাহকের "
+"ভ্যাট নম্বর প্রদর্শন করে। সমর্থিত মেটা কী হয়"
+
+msgid ""
+"Displays the currently chosen document template with provisions to modify."
+msgstr "পরিবর্তন করার বিধান সহ বর্তমানে নির্বাচিত নথি টেমপ্লেট প্রদর্শন করে।"
+
+msgid "Do not reset the templates"
+msgstr "টেমপ্লেট রিসেট করবেন না"
+
+msgid "Do not show again"
+msgstr "আবার প্রদর্শন করো না"
+
+msgid "Document"
+msgstr "দলিল"
+
+msgid "Document details"
+msgstr "নথির বিবরণ"
+
+msgid "Document title"
+msgstr "নথির শিরোনাম"
+
+msgid "Documentation"
+msgstr "ব্যবহার বিধি"
+
+msgid "Documents"
+msgstr "নথিপত্র"
+
+msgid "Dotted"
+msgstr "বিন্দুযুক্ত"
+
+msgid "Download"
+msgstr "ডাউনলোড"
+
+msgid "Download Invoice"
+msgstr "চালান ডাউনলোড করুন"
+
+msgid "Download Invoices"
+msgstr "চালান ডাউনলোড করুন"
+
+msgid "Download Packing slip"
+msgstr "প্যাকিং স্লিপ ডাউনলোড করুন"
+
+msgid "Download invoice"
+msgstr "চালান ডাউনলোড করুন"
+
+msgid "Edit"
+msgstr "সম্পাদনা"
+
+msgid "Email"
+msgstr "ইমেইল"
+
+msgid "Email Field"
+msgstr "ইমেল ক্ষেত্র"
+
+msgid "Email:"
+msgstr "ইমেইল:"
+
+msgid "Empty order"
+msgstr "খালি অর্ডার"
+
+msgid "Enable Invoice"
+msgstr "চালান সক্ষম করুন"
+
+msgid "Enable RTL support"
+msgstr "RTL সমর্থন সক্ষম করুন৷"
+
+msgid "Enable a common print button for"
+msgstr "এর জন্য একটি সাধারণ মুদ্রণ বোতাম সক্ষম করুন৷"
+
+msgid "Enable additional currency font support"
+msgstr "অতিরিক্ত মুদ্রা ফন্ট সমর্থন সক্ষম করুন"
+
+msgid "Enable dedicated print buttons for"
+msgstr "এর জন্য ডেডিকেটেড প্রিন্ট বোতাম সক্রিয় করুন"
+
+msgid ""
+"Enable to apply the most recent settings to previous order invoices. This "
+"will match the previous invoices with the upcoming invoices.Changing the "
+"company address, name or any other settings in the future may overwrite "
+"previously created invoices with the most up-to-date information."
+msgstr ""
+"আগের অর্ডার ইনভয়েসে সবচেয়ে সাম্প্রতিক সেটিংস প্রয়োগ করতে সক্ষম করুন। এটি "
+"আসন্ন চালানগুলির সাথে পূর্ববর্তী চালানগুলির সাথে মিলিত হবে৷ ভবিষ্যতে "
+"কোম্পানির ঠিকানা, নাম বা অন্য কোনো সেটিংস পরিবর্তন করা হলে তা সবচেয়ে আপ-টু-"
+"ডেট তথ্য সহ পূর্বে তৈরি করা চালানগুলি ওভাররাইট করতে পারে৷"
+
+msgid "Enable to attach invoice PDF to the new order email notification"
+msgstr "নতুন অর্ডার ইমেল বিজ্ঞপ্তিতে চালান PDF সংযুক্ত করতে সক্ষম করুন৷"
+
+msgid ""
+"Enable to create invoice for orders generated before plugin installation"
+msgstr ""
+"প্লাগইন ইনস্টলেশনের আগে তৈরি করা অর্ডারগুলির জন্য চালান তৈরি করতে সক্ষম করুন৷"
+
+msgid "Enable to create invoices for free orders"
+msgstr "বিনামূল্যে অর্ডারের জন্য চালান তৈরি করতে সক্ষম করুন"
+
+msgid "Enable to create invoices for free orders."
+msgstr "বিনামূল্যে অর্ডারের জন্য চালান তৈরি করতে সক্ষম করুন।"
+
+msgid "Enable to have a preview of the document before the print is initiated"
+msgstr "মুদ্রণ শুরু করার আগে নথির একটি পূর্বরূপ সক্ষম করুন৷"
+
+msgid "Enable to print, download, and mail invoices."
+msgstr "চালান প্রিন্ট, ডাউনলোড এবং মেল করতে সক্ষম করুন।"
+
+msgid "Enable to show currency code instead of currency symbol"
+msgstr "মুদ্রা প্রতীকের পরিবর্তে মুদ্রা কোড দেখাতে সক্ষম করুন"
+
+msgid "Enable to show state name in addresses"
+msgstr "ঠিকানাগুলিতে রাজ্যের নাম দেখাতে সক্ষম করুন৷"
+
+msgid ""
+"Enable to use additional font library to support the currency symbol in pdf"
+msgstr ""
+"পিডিএফ-এ মুদ্রা প্রতীক সমর্থন করতে অতিরিক্ত ফন্ট লাইব্রেরি ব্যবহার করতে "
+"সক্ষম করুন"
+
+msgid "End"
+msgstr "শেষ"
+
+msgid "Enter a name for your template"
+msgstr "আপনার টেমপ্লেটের জন্য একটি নাম লিখুন"
+
+msgid "Error"
+msgstr "ত্রুটি"
+
+msgid "Error uploading the file"
+msgstr "ফাইল আপলোড করার সময় ত্রুটি৷"
+
+msgid "Error."
+msgstr "ত্রুটি।"
+
+msgid "Error:"
+msgstr "ত্রুটিঃ"
+
+msgid "Error: Empty JSON file"
+msgstr "ত্রুটি: খালি JSON ফাইল"
+
+msgid "Error: Invalid JSON data"
+msgstr "ত্রুটি: অবৈধ JSON ডেটা"
+
+msgid "Example Code"
+msgstr "উদাহরণ কোড"
+
+msgid "Export"
+msgstr "রপ্তানি"
+
+msgid "Export settings (JSON)"
+msgstr "রপ্তানি সেটিংস (JSON)"
+
+msgid "Extensions"
+msgstr "এক্সটেনশানগুলি"
+
+msgid "Extra Details"
+msgstr "অতিরিক্ত বিবরণ"
+
+msgid "Extra detail font size"
+msgstr "অতিরিক্ত বিস্তারিত ফন্ট আকার"
+
+msgid "Features"
+msgstr "বৈশিষ্ট্য"
+
+msgid "Fee"
+msgstr "ফি"
+
+msgid "Field Name"
+msgstr "ক্ষেত্র নাম"
+
+msgid "File path"
+msgstr "ফাইল পাথ"
+
+msgid "Filters"
+msgstr "ফিল্টার"
+
+msgid "Finish setup"
+msgstr "সেটআপ শেষ করুন"
+
+msgid "Font size"
+msgstr "অক্ষরের আকার"
+
+msgid "Footer"
+msgstr "ফুটার"
+
+msgid "For better RTL integration in PDF documents, please use our"
+msgstr ""
+"পিডিএফ ডকুমেন্টে আরও ভালো RTL ইন্টিগ্রেশনের জন্য, অনুগ্রহ করে আমাদের ব্যবহার "
+"করুন"
+
+msgid "For better performances"
+msgstr "আরও ভালো পারফরম্যান্সের জন্য"
+
+msgid "Format"
+msgstr "বিন্যাস"
+
+msgid "Fragile"
+msgstr "ভঙ্গুর"
+
+msgid "Free"
+msgstr "বিনামূল্যে"
+
+msgid "Free vs Premium"
+msgstr "ফ্রি বনাম প্রিমিয়াম"
+
+msgid "Free!"
+msgstr "ফ্রি!"
+
+msgid "From"
+msgstr "থেকে"
+
+msgid "From Address"
+msgstr "ঠিকানা থেকে"
+
+msgid "From Address:"
+msgstr "ঠিকানা থেকে:"
+
+msgid "From left"
+msgstr "বাম থেকে"
+
+msgid "From top"
+msgstr "উপর থেকে"
+
+msgid "From:"
+msgstr "হতে:"
+
+msgid "Full Page"
+msgstr "পুরো পাতা"
+
+msgid "Full page"
+msgstr "পুরো পাতা"
+
+msgid "General"
+msgstr "সাধারণ"
+
+msgid "General Settings"
+msgstr "সাধারণ সেটিংস"
+
+msgid "Generate"
+msgstr "তৈরি করুন"
+
+msgid "Generate invoices for existing orders"
+msgstr "বিদ্যমান আদেশের জন্য চালান তৈরি করুন"
+
+msgid "Generate invoices for free orders"
+msgstr "বিনামূল্যে অর্ডারের জন্য চালান তৈরি করুন"
+
+msgid "Generate invoices for old orders"
+msgstr "পুরানো অর্ডারের জন্য চালান তৈরি করুন"
+
+msgid "Generating"
+msgstr "উৎপন্ন হচ্ছে"
+
+msgid "Get Plugin"
+msgstr "প্লাগইন পান"
+
+msgid "Get advanced customization options for"
+msgstr "জন্য উন্নত কাস্টমাইজেশন বিকল্প পান"
+
+msgid "Go to plugins page"
+msgstr "প্লাগইন পৃষ্ঠায় যান"
+
+msgid "Go to support"
+msgstr "সমর্থন যান"
+
+msgid "HTML"
+msgstr "এইচটিএমএল"
+
+msgid "Header Color"
+msgstr "হেডারের রঙ"
+
+msgid "Height"
+msgstr "উচ্চতা"
+
+msgid "Hello there! Let’s begin with the basics"
+msgstr "হ্যালো সেখানে! বেসিক দিয়ে শুরু করা যাক"
+
+msgid "Help Guide"
+msgstr "হেল্প গাইড"
+
+msgid "Help Links"
+msgstr "সাহায্য লিঙ্ক"
+
+msgid "Help and Support"
+msgstr "সাহায্য এবং সহযোগিতা"
+
+msgid ""
+"Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s "
+"%5$s. %6$s Less than a minute of your time will motivate us to keep doing "
+"what we do. We would really appreciate if you could take a moment to drop a "
+"quick review that motivate us to keep going."
+msgstr ""
+"আরে, আমরা %1$s WebToffee %2$s-এ %3$s %4$s %5$s ব্যবহার করার জন্য আপনাকে "
+"ধন্যবাদ জানাতে চাই৷ %6$s আপনার এক মিনিটেরও কম সময় আমাদেরকে আমরা যা করি তা "
+"করতে অনুপ্রাণিত করবে৷ আপনি যদি একটি দ্রুত পর্যালোচনা ড্রপ করার জন্য কিছু "
+"সময় নিতে পারেন যা আমাদের চালিয়ে যেতে অনুপ্রাণিত করে তবে আমরা সত্যিই কৃতজ্ঞ।"
+
+msgid ""
+"I am unable to add customer VAT(or GSTIN or ABN or any other tax id etc)"
+msgstr ""
+"আমি গ্রাহক ভ্যাট যোগ করতে অক্ষম (বা GSTIN বা ABN বা অন্য কোন ট্যাক্স আইডি "
+"ইত্যাদি)"
+
+msgid "I couldn't understand how to make it work"
+msgstr "আমি বুঝতে পারছিলাম না কিভাবে এটা কাজ করতে হবে"
+
+msgid "I found a better plugin"
+msgstr "আমি একটি ভাল প্লাগইন খুঁজে পেয়েছি"
+
+msgid "I rather wouldn't say"
+msgstr "আমি বরং বলবো না"
+
+msgid "INVOICE"
+msgstr "চালান"
+
+msgid ""
+"If left blank, default to the logo from General settings. Ensure to select "
+"company logo from ‘Invoice > Customize > Company Logo’ to reflect on the "
+"invoice. Recommended size is 150×50px."
+msgstr ""
+"যদি ফাঁকা রাখা হয়, সাধারণ সেটিংস থেকে লোগোতে ডিফল্ট। চালানটি প্রতিফলিত করতে "
+"'চালনা> কাস্টমাইজ> কোম্পানির লোগো' থেকে কোম্পানির লোগো নির্বাচন করা নিশ্চিত "
+"করুন। প্রস্তাবিত আকার হল 150×50px।"
+
+msgid "If the order number is"
+msgstr "যদি অর্ডার নম্বর হয়"
+
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr ""
+"যদি আপনার কাছে একটি মুহূর্ত থাকে তবে দয়া করে আমাদের জানান কেন আপনি "
+"নিষ্ক্রিয় করছেন:"
+
+msgid "Image"
+msgstr "ছবি"
+
+msgid "Image Signature"
+msgstr "ছবি স্বাক্ষর"
+
+msgid "Image label"
+msgstr "ছবির লেবেল"
+
+msgid "Image text align"
+msgstr "ইমেজ টেক্সট সারিবদ্ধ"
+
+msgid "Import"
+msgstr "আমদানি"
+
+msgid "Import settings (JSON)"
+msgstr "আমদানি সেটিংস (JSON)"
+
+msgid "Imported successfully"
+msgstr "সফলভাবে আমদানি করা হয়েছে৷"
+
+msgid ""
+"Importing the file will delete all the settings and replace with data from "
+"chosen file"
+msgstr ""
+"ফাইলটি আমদানি করলে সমস্ত সেটিংস মুছে যাবে এবং নির্বাচিত ফাইল থেকে ডেটা দিয়ে "
+"প্রতিস্থাপন করা হবে"
+
+msgid "In minutes. Eg: 1440 for 1 day. Minimum value is 1440"
+msgstr "মিনিটে। যেমন: 1440 1 দিনের জন্য। সর্বনিম্ন মান 1440"
+
+msgid "Include free(priced as 0) line items in the invoice"
+msgstr "চালানে বিনামূল্যে (0 হিসাবে মূল্য) লাইন আইটেম অন্তর্ভুক্ত করুন"
+
+msgid "Include product image"
+msgstr "পণ্য ইমেজ অন্তর্ভুক্ত"
+
+msgid "Incorrect file"
+msgstr "ভুল ফাইল"
+
+msgid ""
+"Input a custom prefix for ‘PDF name format’ that will appear at the "
+"beginning of the name. Defaulted to ‘Invoice_’."
+msgstr ""
+"'PDF নাম বিন্যাস'-এর জন্য একটি কাস্টম উপসর্গ ইনপুট করুন যা নামের শুরুতে "
+"প্রদর্শিত হবে। 'ইনভয়েস_'-এ ডিফল্ট।"
+
+msgid "Interval"
+msgstr "অন্তর"
+
+msgid "Invalid access key and mail id"
+msgstr "অবৈধ অ্যাক্সেস কী এবং মেইল আইডি"
+
+msgid "Invalid order id"
+msgstr "অবৈধ অর্ডার আইডি"
+
+msgid "Invoice"
+msgstr "চালান"
+
+msgid "Invoice > Customize > Company Logo / Name"
+msgstr "চালান > কাস্টমাইজ > কোম্পানির লোগো / নাম"
+
+msgid "Invoice Date"
+msgstr "চালান তারিখ"
+
+msgid "Invoice Date:"
+msgstr "চালান তারিখ:"
+
+msgid "Invoice Generation In Progress"
+msgstr "চালান তৈরির কাজ চলছে"
+
+msgid "Invoice No.:"
+msgstr "চালান নং.:"
+
+msgid "Invoice No:"
+msgstr "চালান নং:"
+
+msgid "Invoice Number"
+msgstr "চালান নম্বর"
+
+msgid "Invoice date"
+msgstr "চালান তারিখ"
+
+msgid "Invoice details"
+msgstr "চালান বিস্তারিত"
+
+msgid ""
+"Invoice in PDF format will be attached with the order email for chosen order "
+"statuses."
+msgstr ""
+"পিডিএফ ফরম্যাটে ইনভয়েসটি নির্বাচিত অর্ডার স্ট্যাটাসের জন্য অর্ডার ইমেলের "
+"সাথে সংযুক্ত করা হবে।"
+
+msgid "Invoice no:"
+msgstr "চালান নং:"
+
+msgid "Invoice number"
+msgstr "চালান নম্বর"
+
+msgid "Invoice number format"
+msgstr "চালান নম্বর বিন্যাস"
+
+msgid "Invoice number length"
+msgstr "চালান নম্বর দৈর্ঘ্য"
+
+msgid ""
+"Invoice numbers are getting generated in the background. This process may "
+"take a little while, so please be patient."
+msgstr ""
+"ব্যাকগ্রাউন্ডে ইনভয়েস নম্বর তৈরি হচ্ছে। এই প্রক্রিয়াটি একটু সময় নিতে পারে,"
+" তাই ধৈর্য ধরুন।"
+
+msgid "Invoice setup successfully"
+msgstr "চালান সেটআপ সফলভাবে"
+
+msgid "Invoice total"
+msgstr "মোট চালান"
+
+msgid "Invoice total tax"
+msgstr "চালান মোট কর"
+
+msgid "Invoice/Packing"
+msgstr "চালান/প্যাকিং"
+
+msgid "Invoiced date"
+msgstr "চালান তারিখ"
+
+msgid ""
+"It seems the products in this order were removed, we cannot proceed this "
+"actoin now."
+msgstr ""
+"মনে হচ্ছে এই অর্ডারের পণ্যগুলি সরানো হয়েছে, আমরা এখন এই অ্যাক্টোইনকে এগিয়ে "
+"নিতে পারি না।"
+
+msgid "It seems this order is not yours"
+msgstr "মনে হচ্ছে এই আদেশ আপনার নয়"
+
+msgid "It seems this order is not yours."
+msgstr "মনে হচ্ছে এই আদেশ আপনার নয়।"
+
+msgid "Item with same meta key already exists"
+msgstr "একই মেটা কী সহ আইটেম ইতিমধ্যেই বিদ্যমান"
+
+msgid "Keep dry"
+msgstr "শুকনা রাখ"
+
+msgid "Knock, Knock!"
+msgstr "খট খট!"
+
+msgid "Label"
+msgstr "লেবেল"
+
+msgid "Language support issues"
+msgstr "ভাষা সমর্থন সমস্যা"
+
+msgid "Last imported on:"
+msgstr "শেষবার আমদানি করা হয়েছে:"
+
+msgid "Last updated on:"
+msgstr "সর্বশেষ আপডেট:"
+
+msgid "Left"
+msgstr "বাম"
+
+msgid "Lighter"
+msgstr "লাইটার"
+
+msgid "Line height"
+msgstr "লাইনের উচ্চতা"
+
+msgid "Load from WooCommerce"
+msgstr "WooCommerce থেকে লোড করুন"
+
+msgid "Logged in users"
+msgstr "ব্যবহারকারী লগ ইন"
+
+msgid "Logo"
+msgstr "লোগো"
+
+msgid "Logo Height"
+msgstr "লোগোর উচ্চতা"
+
+msgid "Logo Width"
+msgstr "লোগোর প্রস্থ"
+
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec vehicula "
+"purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
+"et interdum tellus fermentum at. Fusce pellentesque justo rhoncus"
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc NEC যানবাহন "
+"purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
+"et interdum telus fermentum at. ফুসে পেলেনটেস্ক জাস্টো রোনকাস"
+
+msgid "Manual Signature"
+msgstr "ম্যানুয়াল স্বাক্ষর"
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas."
+msgstr ""
+"Mauris dignissim neque ut sapien vulputate, eu sempre tellus porttitor. Cras "
+"porta lectus id augue interdum egestas."
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+msgstr ""
+"Mauris dignissim neque ut sapien vulputate, eu sempre tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. সাসপেন্ডিস ক্ষমতা. Phasellus mollis "
+"porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum lectus "
+"vel"
+
+msgid "Mention the name of the plugin or meta key if any"
+msgstr "প্লাগইন বা মেটা কী এর নাম উল্লেখ করুন যদি থাকে"
+
+msgid "Meta Key"
+msgstr "মেটা কী"
+
+msgid ""
+"Missing RTL/Unicode language(e.g Chinese, Arabic etc) support for PDF "
+"document."
+msgstr ""
+"পিডিএফ ডকুমেন্টের জন্য আরটিএল/ইউনিকোড ভাষা (যেমন চাইনিজ, আরবি ইত্যাদি) "
+"অনুপস্থিত।"
+
+msgid "More customization options"
+msgstr "আরও কাস্টমাইজেশন বিকল্প"
+
+msgid "Multiple pre-built templates"
+msgstr "একাধিক পূর্ব-নির্মিত টেমপ্লেট"
+
+msgid "Multiple templates to personalize the document"
+msgstr "নথি ব্যক্তিগতকৃত করতে একাধিক টেমপ্লেট"
+
+msgid "My account - Order details page"
+msgstr "আমার অ্যাকাউন্ট - অর্ডার বিবরণ পৃষ্ঠা"
+
+msgid "My account - Order lists page"
+msgstr "আমার অ্যাকাউন্ট - অর্ডার তালিকা পৃষ্ঠা"
+
+msgid "My templates"
+msgstr "আমার টেমপ্লেট"
+
+msgid "Name"
+msgstr "নাম"
+
+msgid "Need a field to add the tax id on checkout page"
+msgstr "চেকআউট পৃষ্ঠায় ট্যাক্স আইডি যোগ করার জন্য একটি ক্ষেত্র প্রয়োজন"
+
+msgid "Next"
+msgstr "পরবর্তী"
+
+msgid "No"
+msgstr "না"
+
+msgid "No files found."
+msgstr "কোন ফাইল পাওয়া যায়নি."
+
+msgid "No modules"
+msgstr "কোনো মডিউল নেই"
+
+msgid "No of Items"
+msgstr "আইটেম সংখ্যা"
+
+msgid "No template found."
+msgstr "কোন টেমপ্লেট পাওয়া যায়নি."
+
+msgid "No temporary file found"
+msgstr "কোন অস্থায়ী ফাইল পাওয়া যায়নি"
+
+msgid "None"
+msgstr "কোনোটিই নয়"
+
+msgid "Normal"
+msgstr "স্বাভাবিক"
+
+msgid "Not interested"
+msgstr "আগ্রহী নই"
+
+msgid "Note"
+msgstr "বিঃদ্রঃ"
+
+msgid "Note:"
+msgstr "বিঃদ্রঃ:"
+
+msgid "One or more order do not have invoice generated. Generate manually?"
+msgstr "এক বা একাধিক অর্ডারের চালান তৈরি হয় না। ম্যানুয়ালি তৈরি করবেন?"
+
+msgid "Opacity"
+msgstr "অস্বচ্ছতা"
+
+msgid "Option to include/exclude tax to Invoice"
+msgstr "ইনভয়েসে ট্যাক্স অন্তর্ভুক্ত/বাদ দেওয়ার বিকল্প"
+
+msgid "Order"
+msgstr "অর্ডার"
+
+msgid "Order Date"
+msgstr "অর্ডারের তারিখ"
+
+msgid "Order Date:"
+msgstr "অর্ডারের তারিখ:"
+
+msgid "Order Details"
+msgstr "আদেশ বিবরণী"
+
+msgid "Order Discount"
+msgstr "ছাড়"
+
+msgid "Order Meta"
+msgstr "অর্ডার মেটা"
+
+msgid "Order No.:"
+msgstr "আদেশ নং.:"
+
+msgid "Order No:"
+msgstr "আদেশ নং:"
+
+msgid "Order Number"
+msgstr "অর্ডার নম্বর"
+
+msgid "Order date"
+msgstr "অর্ডারের তারিখ"
+
+msgid "Order date:"
+msgstr "অর্ডারের তারিখ:"
+
+msgid "Order email"
+msgstr "অর্ডার ইমেল"
+
+msgid "Order meta fields"
+msgstr "মেটা ক্ষেত্রগুলি অর্ডার করুন"
+
+msgid "Order no:"
+msgstr "আদেশ নং:"
+
+msgid "Order number"
+msgstr "অর্ডার নম্বর"
+
+msgid "Order number (default)"
+msgstr "অর্ডার নম্বর (ডিফল্ট)"
+
+msgid "Other"
+msgstr "অন্যান্য"
+
+msgid "Others"
+msgstr "অন্যান্য"
+
+msgid "Output"
+msgstr "আউটপুট"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF Invoices"
+msgstr "পিডিএফ চালান"
+
+msgid "PDF library"
+msgstr "পিডিএফ লাইব্রেরি"
+
+msgid "PDF name format"
+msgstr "পিডিএফ নামের বিন্যাস"
+
+msgid "PREVIEW"
+msgstr "পূর্বরূপ"
+
+msgid "Package Number"
+msgstr "প্যাকেজ নম্বর"
+
+msgid "Packing slip"
+msgstr "প্যাকিং স্লিপ"
+
+msgid "Payment Method"
+msgstr "মূল্যপরিশোধ পদ্ধতি"
+
+msgid "Payment Method:"
+msgstr "মূল্যপরিশোধ পদ্ধতি:"
+
+msgid "Payment method"
+msgstr "মূল্যপরিশোধ পদ্ধতি"
+
+msgid "Payment method:"
+msgstr "মূল্য পরিশোধ পদ্ধতি:"
+
+msgid "Payment method: "
+msgstr "মূল্যপরিশোধ পদ্ধতি: "
+
+msgid "Payment received stamp"
+msgstr "পেমেন্ট স্ট্যাম্প প্রাপ্ত"
+
+msgid "Ph No:"
+msgstr "ফোন নম্বর:"
+
+msgid "Phone No:"
+msgstr "ফোন নম্বর:"
+
+msgid "Phone no:"
+msgstr "ফোন নম্বর:"
+
+msgid "Phone number"
+msgstr "ফোন নম্বর"
+
+msgid "Pick lists"
+msgstr "তালিকা বাছাই করুন"
+
+msgid "Picklist"
+msgstr "তালিকা বাছাই"
+
+msgid "Please enter mandatory fields"
+msgstr "বাধ্যতামূলক ক্ষেত্র লিখুন"
+
+msgid "Please enter name"
+msgstr "নাম লিখুন দয়া করে"
+
+msgid "Please enter order number"
+msgstr "অর্ডার নম্বর লিখুন"
+
+msgid "Please fill the `from address` in the plugin's general settings."
+msgstr "প্লাগইনের সাধারণ সেটিংসে অনুগ্রহ করে `ঠিকানা থেকে` পূরণ করুন।"
+
+msgid ""
+"Please save all data before leaving this page. All unsaved data will be lost."
+" Are you sure?"
+msgstr ""
+"এই পৃষ্ঠাটি ছেড়ে যাওয়ার আগে অনুগ্রহ করে সমস্ত ডেটা সংরক্ষণ করুন। সমস্ত "
+"অসংরক্ষিত ডেটা হারিয়ে যাবে। তুমি কি নিশ্চিত?"
+
+msgid "Please select json file"
+msgstr "json ফাইল নির্বাচন করুন"
+
+msgid "Please wait"
+msgstr "অনুগ্রহপূর্বক অপেক্ষা করুন"
+
+msgid "Plugin settings not available in my language"
+msgstr "প্লাগইন সেটিংস আমার ভাষায় উপলব্ধ নয়"
+
+msgid "Postal code"
+msgstr "পোস্টাল কোড"
+
+msgid "Prefix"
+msgstr "উপসর্গ"
+
+msgid "Premium Extensions"
+msgstr "প্রিমিয়াম এক্সটেনশন"
+
+msgid "Premium extensions"
+msgstr "প্রিমিয়াম এক্সটেনশন"
+
+msgid "Present"
+msgstr "বর্তমান"
+
+msgid "Preview before printing"
+msgstr "প্রিন্ট করার আগে পূর্বরূপ দেখুন"
+
+msgid "Preview documents before printing"
+msgstr "প্রিন্ট করার আগে নথিগুলির পূর্বরূপ দেখুন"
+
+msgid "Preview sample PDF"
+msgstr "প্রিভিউ নমুনা PDF"
+
+msgid "Price"
+msgstr "মূল্য"
+
+msgid "Price label"
+msgstr "মূল্য লেবেল"
+
+msgid "Price text align"
+msgstr "মূল্য টেক্সট সারিবদ্ধ"
+
+msgid "Print"
+msgstr "প্রিন্ট"
+
+msgid "Print Dispatch Label"
+msgstr "প্রিন্ট ডিসপ্যাচ লেবেল"
+
+msgid "Print Invoice"
+msgstr "চালান প্রিন্ট করুন"
+
+msgid "Print Invoices"
+msgstr "চালান প্রিন্ট করুন"
+
+msgid "Print Packing slip"
+msgstr "প্রিন্ট প্যাকিং স্লিপ"
+
+msgid "Print Shipping Label"
+msgstr "প্রিন্ট শিপিং লেবেল"
+
+msgid "Print button access for"
+msgstr "জন্য প্রিন্ট বোতাম অ্যাক্সেস"
+
+msgid "Print invoice"
+msgstr "চালান প্রিন্ট করুন"
+
+msgid "Print/Download"
+msgstr "প্রিন্ট/ডাউনলোড করুন"
+
+msgid "Print/Download Dispatch Label"
+msgstr "প্রিন্ট/ডাউনলোড ডিসপ্যাচ লেবেল"
+
+msgid "Print/Download Invoice"
+msgstr "চালান প্রিন্ট/ডাউনলোড করুন"
+
+msgid "Print/Download Packing slip"
+msgstr "প্যাকিং স্লিপ প্রিন্ট/ডাউনলোড করুন"
+
+msgid "Prints Packing List,Invoice,Delivery Note and Shipping Label."
+msgstr "প্যাকিং তালিকা, চালান, ডেলিভারি নোট এবং শিপিং লেবেল প্রিন্ট করে।"
+
+msgid "Privacy Policy"
+msgstr "গোপনীয়তা নীতি"
+
+msgid "Pro Add-on"
+msgstr "প্রো অ্যাড-অন"
+
+msgid "Pro version"
+msgstr "প্রো সংস্করণ"
+
+msgid "Product"
+msgstr "পণ্য"
+
+msgid "Product Table"
+msgstr "পণ্য টেবিল"
+
+msgid "Product label"
+msgstr "পণ্য লেবেল"
+
+msgid "Product text align"
+msgstr "পণ্য টেক্সট সারিবদ্ধ"
+
+msgid "Proforma invoice"
+msgstr "প্রফর্মা চালান"
+
+msgid "Proforma invoice number format"
+msgstr "প্রফর্মা চালান নম্বর বিন্যাস"
+
+msgid "Proforma invoices"
+msgstr "প্রফর্মা চালান"
+
+msgid "QR Code"
+msgstr "QR কোড"
+
+msgid "QR code"
+msgstr "QR কোড"
+
+msgid "Qty label"
+msgstr "পরিমাণ লেবেল"
+
+msgid "Qty text align"
+msgstr "পরিমাণ পাঠ্য সারিবদ্ধ"
+
+msgid "Quantity"
+msgstr "পরিমান"
+
+msgid "RTL support for documents"
+msgstr "নথির জন্য RTL সমর্থন"
+
+msgid "Rate us now"
+msgstr "এখন আমাদের রেট"
+
+msgid "Recommended 128MB or more"
+msgstr "প্রস্তাবিত 128MB বা তার বেশি"
+
+msgid "Recommended for better performances"
+msgstr "ভাল পারফরম্যান্সের জন্য সুপারিশ করা হয়"
+
+msgid "Recommended size is 150x50px."
+msgstr "প্রস্তাবিত আকার হল 150x50px।"
+
+msgid "Recommended size is 150×50px"
+msgstr "প্রস্তাবিত আকার হল 150×50px"
+
+msgid "Recommended to compress PDF documents"
+msgstr "পিডিএফ ডকুমেন্ট কম্প্রেস করার জন্য প্রস্তাবিত"
+
+msgid "Recommended, will use fallback functions"
+msgstr "প্রস্তাবিত, ফলব্যাক ফাংশন ব্যবহার করবে"
+
+msgid "Refer to our documentation to setup and get started"
+msgstr "সেটআপ এবং শুরু করতে আমাদের ডকুমেন্টেশন পড়ুন"
+
+msgid "Refund"
+msgstr "ফেরত"
+
+msgid ""
+"Refund in this order seems not having credit number yet. Do you want to "
+"manually generate one ?"
+msgstr ""
+"এই অর্ডারে রিফান্ডে এখনও ক্রেডিট নম্বর নেই বলে মনে হচ্ছে। আপনি কি "
+"ম্যানুয়ালি একটি তৈরি করতে চান?"
+
+msgid "Remind me later"
+msgstr "আমাকে পরে মনে করিয়ে দিবেন"
+
+msgid ""
+"Removing year [Y] from the prefix will disable the annual reset functionality"
+msgstr "উপসর্গ থেকে বছর [Y] সরিয়ে দিলে বার্ষিক রিসেট কার্যকারিতা অক্ষম হবে"
+
+msgid ""
+"Removing year [Y] from the suffix will disable the annual reset functionality"
+msgstr "প্রত্যয় থেকে বছর [Y] সরানো বার্ষিক রিসেট কার্যকারিতা অক্ষম করবে"
+
+msgid "Replace the existing templates"
+msgstr "বিদ্যমান টেমপ্লেটগুলি প্রতিস্থাপন করুন"
+
+msgid "Required"
+msgstr "প্রয়োজনীয়"
+
+msgid "Required if you have images in your documents"
+msgstr "আপনার নথিতে ছবি থাকলে প্রয়োজন"
+
+msgid "Reset"
+msgstr "রিসেট"
+
+msgid "Reset all settings to default"
+msgstr "সমস্ত সেটিংস ডিফল্টে রিসেট করুন"
+
+msgid "Reset successfully"
+msgstr "সফলভাবে রিসেট"
+
+msgid ""
+"Reset will delete all the settings, saved templates and reset to the default "
+"settings"
+msgstr ""
+"রিসেট সব সেটিংস, সংরক্ষিত টেমপ্লেট মুছে ফেলবে এবং ডিফল্ট সেটিংসে রিসেট করবে"
+
+msgid "Return Policy"
+msgstr "প্রত্যাবর্তন নীতিমালা"
+
+msgid "Review"
+msgstr "পর্যালোচনা করুন"
+
+msgid "Review now"
+msgstr "এখন পর্যালোচনা করুন"
+
+msgid "Right"
+msgstr "ডান "
+
+msgid "S.No"
+msgstr "S.No"
+
+msgid "S.no"
+msgstr "S.no"
+
+msgid "SKU"
+msgstr "এসকেইউ"
+
+msgid "SKU label"
+msgstr "SKU লেবেল"
+
+msgid "SKU text align"
+msgstr "SKU পাঠ্য সারিবদ্ধ"
+
+msgid "SSN"
+msgstr "এসএসএন"
+
+msgid "SSN number"
+msgstr "SSN নম্বর"
+
+msgid "SSN:"
+msgstr "SSN:"
+
+msgid "Save"
+msgstr "সংরক্ষণ করুন"
+
+msgid "Save and activate"
+msgstr "সংরক্ষণ করুন এবং সক্রিয় করুন"
+
+msgid "Save before you proceed."
+msgstr "আপনি এগিয়ে যাওয়ার আগে সংরক্ষণ করুন."
+
+msgid "Saving"
+msgstr "সংরক্ষণ করা হচ্ছে"
+
+msgid "Saving..."
+msgstr "সংরক্ষণ করা হচ্ছে..."
+
+msgid "Secure"
+msgstr "নিরাপদ"
+
+msgid "Select One"
+msgstr "একটা নির্বাচন করুন"
+
+msgid ""
+"Select a name format for PDF invoice that includes invoice/order number."
+msgstr ""
+"PDF চালানের জন্য একটি নামের বিন্যাস নির্বাচন করুন যাতে চালান/অর্ডার নম্বর "
+"অন্তর্ভুক্ত থাকে।"
+
+msgid "Select country"
+msgstr "দেশ নির্বাচন করুন"
+
+msgid ""
+"Select email classes that match the order statuses selected under the "
+"'Automate invoice creation option. If no order status is selected, you must "
+"manually generate invoice to attach it with these order emails."
+msgstr ""
+"'স্বয়ংক্রিয় চালান তৈরি বিকল্পের অধীনে নির্বাচিত অর্ডার স্ট্যাটাসের সাথে "
+"মেলে এমন ইমেল ক্লাস নির্বাচন করুন। যদি কোনো অর্ডার স্থিতি নির্বাচন না করা "
+"হয়, তাহলে এই অর্ডার ইমেলের সাথে এটি সংযুক্ত করার জন্য আপনাকে ম্যানুয়ালি "
+"চালান তৈরি করতে হবে।"
+
+msgid ""
+"Select/add order meta to display additional information related to the order "
+"on the invoice."
+msgstr ""
+"ইনভয়েসে অর্ডার সম্পর্কিত অতিরিক্ত তথ্য প্রদর্শন করতে অর্ডার মেটা "
+"নির্বাচন/যোগ করুন।"
+
+msgid "Seller name"
+msgstr "বিক্রেতার নাম"
+
+msgid "Seller tax ID"
+msgstr "বিক্রেতার ট্যাক্স আইডি"
+
+msgid ""
+"Separate tax column in the product table for multiple tax options in invoices"
+msgstr ""
+"ইনভয়েসে একাধিক ট্যাক্স বিকল্পের জন্য প্রোডাক্ট টেবিলে আলাদা ট্যাক্স কলাম"
+
+msgid "Serial No label"
+msgstr "সিরিয়াল কোন লেবেল"
+
+msgid "Serial no text align"
+msgstr "সিরিয়াল কোন টেক্সট সারিবদ্ধ"
+
+msgid ""
+"Set the  Size of the Shipping label to be either full page or custom size."
+msgstr "শিপিং লেবেলের আকার সম্পূর্ণ পৃষ্ঠা বা কাস্টম আকারে সেট করুন।"
+
+msgid "Settings"
+msgstr "বিন্যাস সমূহ"
+
+msgid "Settings Updated"
+msgstr "সেটিংস আপডেট"
+
+msgid "Settings are empty"
+msgstr "সেটিংস খালি"
+
+msgid "Settings updated."
+msgstr "সেটিংস আপডেট."
+
+msgid "Ship Date:"
+msgstr "জাহাজের তারিখ:"
+
+msgid "Ship to"
+msgstr "প্রেরণ"
+
+msgid "Shipping"
+msgstr "পাঠানো"
+
+msgid "Shipping Address"
+msgstr "পাঠানোর ঠিকানা"
+
+msgid "Shipping Address:"
+msgstr "প্রেরণের ঠিকানা:"
+
+msgid "Shipping Label"
+msgstr "শিপিং ঠিকানা"
+
+msgid "Shipping Label 1"
+msgstr "শিপিং লেবেল 1"
+
+msgid "Shipping Method"
+msgstr "পরিবহণ মাধ্যম"
+
+msgid "Shipping address"
+msgstr "পাঠানোর ঠিকানা"
+
+msgid "Shipping label"
+msgstr "প্রেরণ বার্তা"
+
+msgid "Shipping label size"
+msgstr "শিপিং লেবেল আকার"
+
+msgid "Shipping labels"
+msgstr "শিপিং লেবেল"
+
+msgid "Shop name"
+msgstr "দোকানের নাম"
+
+msgid "Show Less"
+msgstr "প্রদর্শন কম"
+
+msgid "Show More"
+msgstr "আরো দেখুন"
+
+msgid "Show print invoice button to customers"
+msgstr "গ্রাহকদের প্রিন্ট চালান বোতাম দেখান"
+
+msgid "Show print packing slip button to customers"
+msgstr "গ্রাহকদের প্রিন্ট প্যাকিং স্লিপ বোতাম দেখান"
+
+msgid "Show/hide fields like billing address, weight, product image etc"
+msgstr "বিলিং ঠিকানা, ওজন, পণ্যের ছবি ইত্যাদির মতো ক্ষেত্রগুলি দেখান/লুকান"
+
+msgid ""
+"Shows a preview of the template on an actual order. Key in an order number "
+"to view the same."
+msgstr ""
+"একটি প্রকৃত অর্ডারে টেমপ্লেটের একটি পূর্বরূপ দেখায়। একই দেখতে একটি অর্ডার "
+"নম্বরে কী।"
+
+msgid "Signature type"
+msgstr "স্বাক্ষরের ধরন"
+
+msgid "Skip invoice setup"
+msgstr "চালান সেটআপ এড়িয়ে যান"
+
+msgid "Solid"
+msgstr "কঠিন"
+
+msgid "Some useful `filters` to extend plugin's functionality"
+msgstr "প্লাগইনের কার্যকারিতা বাড়ানোর জন্য কিছু দরকারী `ফিল্টার`"
+
+msgid "Sort order items in product table"
+msgstr "পণ্য টেবিলে অর্ডার আইটেম সাজান"
+
+msgid ""
+"Specify your company tax ID. For e.g., you may enter as VAT: GB123456789, "
+"GSTIN:0948745 or ABN:51 824 753 556"
+msgstr ""
+"আপনার কোম্পানির ট্যাক্স আইডি উল্লেখ করুন। যেমন, আপনি VAT হিসেবে লিখতে পারেন: "
+"GB123456789, GSTIN:0948745 বা ABN:51 824 753 556"
+
+msgid "Start"
+msgstr "শুরু"
+
+msgid "Step 1"
+msgstr "ধাপ 1"
+
+msgid "Step 2"
+msgstr "ধাপ ২"
+
+msgid "Step 3"
+msgstr "ধাপ 3"
+
+msgid "Style"
+msgstr "স্টাইল"
+
+msgid "Submit & Deactivate"
+msgstr "জমা দিন এবং নিষ্ক্রিয় করুন"
+
+msgid "Subtotal"
+msgstr "মোট"
+
+msgid "Success"
+msgstr "সফল"
+
+msgid "Successfully cleared all temp files."
+msgstr "সফলভাবে সমস্ত টেম্প ফাইল সাফ করা হয়েছে৷"
+
+msgid "Suffix"
+msgstr "প্রত্যয়"
+
+msgid "Summary Table"
+msgstr "সারমর্ম সারনি"
+
+msgid "Support"
+msgstr "সমর্থন"
+
+msgid "Switching to order number will disable the annual reset functionality"
+msgstr "অর্ডার নম্বরে স্যুইচ করলে বার্ষিক রিসেট কার্যকারিতা অক্ষম হবে"
+
+msgid "System Configuration"
+msgstr "সিস্টেম কনফিগারেশন"
+
+msgid "System Info"
+msgstr "সিস্টেমের তথ্য"
+
+msgid "Table body text color"
+msgstr "টেবিলের বডি টেক্সটের রঙ"
+
+msgid "Table head background"
+msgstr "টেবিল হেড ব্যাকগ্রাউন্ড"
+
+msgid "Table head text color"
+msgstr "টেবিল হেড টেক্সট রঙ"
+
+msgid "Tax ID"
+msgstr "ট্যাক্স আইডি"
+
+msgid "Tax label"
+msgstr "ট্যাক্স লেবেল"
+
+msgid "Tax text align"
+msgstr "ট্যাক্স টেক্সট সারিবদ্ধ"
+
+msgid "Tel Field"
+msgstr "টেল ফিল্ড"
+
+msgid "Tel:"
+msgstr "টেলিফোন:"
+
+msgid "Template created and activated."
+msgstr "টেমপ্লেট তৈরি এবং সক্রিয়."
+
+msgid "Template created."
+msgstr "টেমপ্লেট তৈরি করা হয়েছে।"
+
+msgid "Template updated and activated."
+msgstr "টেমপ্লেট আপডেট এবং সক্রিয়."
+
+msgid "Template updated."
+msgstr "টেমপ্লেট আপডেট করা হয়েছে।"
+
+msgid "Template with same name already exists."
+msgstr "একই নামের টেমপ্লেট ইতিমধ্যেই বিদ্যমান।"
+
+msgid "Templates"
+msgstr "টেমপ্লেট"
+
+msgid "Text"
+msgstr "লেখা"
+
+msgid "Text Color"
+msgstr "লেখার রঙ"
+
+msgid "Text align"
+msgstr "পাঠ্য সারিবদ্ধ করুন"
+
+msgid "Text color"
+msgstr "লেখার রঙ"
+
+msgid ""
+"That’s awesome! We’d love it if you take a moment to share what you think "
+"and help spread the word."
+msgstr ""
+"সেটা খুবই ভালো! আপনি যা ভাবছেন তা ভাগ করে নিতে এবং শব্দটি ছড়িয়ে দিতে "
+"সাহায্য করলে আমরা এটি পছন্দ করব।"
+
+msgid ""
+"The company name and the address details from this section will be used as "
+"the sender address in the invoice and other related documents."
+msgstr ""
+"এই বিভাগ থেকে কোম্পানির নাম এবং ঠিকানার বিবরণ চালান এবং অন্যান্য সম্পর্কিত "
+"নথিতে প্রেরকের ঠিকানা হিসাবে ব্যবহার করা হবে।"
+
+msgid ""
+"The date is displayed on the invoice. It can be either the order creation "
+"date or the invoiced date."
+msgstr ""
+"তারিখটি চালানে প্রদর্শিত হয়। এটি অর্ডার তৈরির তারিখ বা চালানের তারিখ হতে "
+"পারে।"
+
+msgid "The default library to be used PDF generation"
+msgstr "PDF জেনারেশন ব্যবহার করার জন্য ডিফল্ট লাইব্রেরি"
+
+msgid "The latest specified starting number will be used after reset"
+msgstr "রিসেট করার পরে সর্বশেষ নির্দিষ্ট সূচনা নম্বর ব্যবহার করা হবে"
+
+msgid "The plugin didn't work as expected"
+msgstr "প্লাগইনটি আশানুরূপ কাজ করেনি"
+
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr ""
+"প্লাগইনটি দুর্দান্ত, তবে আমার নির্দিষ্ট বৈশিষ্ট্য দরকার যা আপনি সমর্থন করেন "
+"না"
+
+msgid ""
+"The plugins %s and %s cannot be active in your store at the same time. "
+"Kindly deactivate one of these prior to activating the other."
+msgstr ""
+"প্লাগইনগুলি %s এবং %s একই সময়ে আপনার দোকানে সক্রিয় হতে পারে না৷ অন্যটিকে "
+"সক্রিয় করার আগে দয়া করে এর মধ্যে একটি নিষ্ক্রিয় করুন৷"
+
+msgid "There is no items in this order."
+msgstr "এই ক্রম কোন আইটেম নেই."
+
+msgid "There is no order with this given id"
+msgstr "এই প্রদত্ত আইডি দিয়ে কোন অর্ডার নেই"
+
+msgid "There is no order with this id"
+msgstr "এই আইডি দিয়ে কোন অর্ডার নেই"
+
+msgid ""
+"This is basic template. In order to use premium feature, you need to switch "
+"and activate the premium template"
+msgstr ""
+"এটি মৌলিক টেমপ্লেট। প্রিমিয়াম বৈশিষ্ট্য ব্যবহার করার জন্য, আপনাকে "
+"প্রিমিয়াম টেমপ্লেটটি স্যুইচ এবং সক্রিয় করতে হবে"
+
+msgid "This is premium template which is not compatible with the basic plugin"
+msgstr "এটি প্রিমিয়াম টেমপ্লেট যা মৌলিক প্লাগইনের সাথে সামঞ্জস্যপূর্ণ নয়"
+
+msgid "This template is not comaptible with QR Code addon plugin"
+msgstr "এই টেমপ্লেটটি QR কোড অ্যাডঅন প্লাগইনের সাথে সামঞ্জস্যপূর্ণ নয়"
+
+msgid "This way up"
+msgstr "এই পথের উপর"
+
+msgid ""
+"This will remove all invoice numbers created by WooCommerce PDF Invoices, "
+"Packing Slips, Delivery Notes & Shipping Labels by WebToffee."
+msgstr ""
+"এটি ওয়েবটফির দ্বারা WooCommerce PDF ইনভয়েস, প্যাকিং স্লিপ, ডেলিভারি নোট "
+"এবং শিপিং লেবেল দ্বারা তৈরি সমস্ত চালান নম্বর মুছে ফেলবে৷"
+
+msgid "Title"
+msgstr "খেতাব"
+
+msgid "Title font size"
+msgstr "শিরোনামের হরফের আকার"
+
+msgid "To Address"
+msgstr "সম্বোধন করা"
+
+msgid "To add a different meta key"
+msgstr "একটি ভিন্ন মেটা কী যোগ করতে"
+
+msgid "To add more than one custom order meta,"
+msgstr "একাধিক কাস্টম অর্ডার মেটা যোগ করতে,"
+
+msgid "To compress PDF documents"
+msgstr "পিডিএফ ডকুমেন্ট কম্প্রেস করতে"
+
+msgid "To include the keyed in name to the Invoice, ensure to select"
+msgstr "ইনভয়েসে নামের কীড অন্তর্ভুক্ত করতে, নির্বাচন নিশ্চিত করুন"
+
+msgid ""
+"To include the uploaded image as logo to the invoice, ensure to select "
+"Company logo from"
+msgstr ""
+"আপলোড করা ছবিকে চালানে লোগো হিসেবে অন্তর্ভুক্ত করতে, থেকে কোম্পানির লোগো "
+"নির্বাচন করতে ভুলবেন না"
+
+msgid "To proceed with the import, please type %1$s in the field below"
+msgstr "আমদানির সাথে এগিয়ে যেতে, দয়া করে নীচের ক্ষেত্রে %1$s টাইপ করুন৷"
+
+msgid "To proceed with the reset, please type %1$s in the field below"
+msgstr "রিসেটের সাথে এগিয়ে যেতে, অনুগ্রহ করে নিচের ক্ষেত্রে %1$s টাইপ করুন"
+
+msgid "To:"
+msgstr "প্রতি:"
+
+msgid "Total"
+msgstr "মোট"
+
+msgid "Total Price"
+msgstr "মোট দাম"
+
+msgid "Total Tax"
+msgstr "মোট ট্যাক্স"
+
+msgid "Total Weight"
+msgstr "সম্পূর্ণ ওজন"
+
+msgid "Total files"
+msgstr "মোট ফাইল"
+
+msgid "Total label"
+msgstr "মোট লেবেল"
+
+msgid "Total price"
+msgstr "মোট দাম"
+
+msgid "Total tax"
+msgstr "মোট ট্যাক্স"
+
+msgid "Total text align"
+msgstr "মোট পাঠ্য সারিবদ্ধ"
+
+msgid "Total weight label"
+msgstr "মোট ওজন লেবেল"
+
+msgid "Total weight text align"
+msgstr "মোট ওজন টেক্সট সারিবদ্ধ"
+
+msgid "Tracking Number"
+msgstr "ট্র্যাকিং নম্বর"
+
+msgid "Tracking Number:"
+msgstr "ট্র্যাকিং নম্বর:"
+
+msgid "Tracking number:"
+msgstr "ট্র্যাকিং নম্বর:"
+
+msgid "Truncation did not complete as expected."
+msgstr "প্রত্যাশিত হিসাবে ছেদন সম্পূর্ণ হয়নি."
+
+msgid "Type in prefix/ suffix / date format if required"
+msgstr "প্রয়োজনে উপসর্গ/প্রত্যয়/তারিখ বিন্যাসে টাইপ করুন"
+
+msgid "Type template name to search"
+msgstr "অনুসন্ধান করতে টেমপ্লেটের নাম টাইপ করুন"
+
+msgid ""
+"Unable to add from third party plugin that collects customer VAT(or GSTIN or "
+"ABN etc)"
+msgstr ""
+"গ্রাহক ভ্যাট (বা GSTIN বা ABN ইত্যাদি) সংগ্রহ করে এমন তৃতীয় পক্ষের প্লাগইন "
+"থেকে যোগ করতে অক্ষম"
+
+msgid "Unable to generate PDF."
+msgstr "PDF তৈরি করতে অক্ষম৷"
+
+msgid "Unable to load template."
+msgstr "টেমপ্লেট লোড করতে অক্ষম৷"
+
+msgid "Unable to print Delivery note. Please check the items in the order."
+msgstr "ডেলিভারি নোট প্রিন্ট করতে অক্ষম। অর্ডার আইটেম চেক করুন."
+
+msgid "Unable to print Packing slip. Please check the items in the order."
+msgstr "প্যাকিং স্লিপ মুদ্রণ করতে অক্ষম. অর্ডার আইটেম চেক করুন."
+
+msgid "Unable to save theme."
+msgstr "থিম সংরক্ষণ করতে অক্ষম."
+
+msgid "Unable to switch view."
+msgstr "ভিউ স্যুইচ করতে অক্ষম।"
+
+msgid ""
+"Unable to update settings due to an internal error. %s To troubleshoot "
+"please click %s here. %s"
+msgstr ""
+"একটি অভ্যন্তরীণ ত্রুটির কারণে সেটিংস আপডেট করতে অক্ষম৷ %s সমস্যা সমাধানের "
+"জন্য দয়া করে এখানে %s ক্লিক করুন৷ %s"
+
+msgid "Unit Price"
+msgstr "একক দাম"
+
+msgid "Unit price"
+msgstr "একক দাম"
+
+msgid ""
+"Unlock limitless possibilities of invoice customization with the addon -"
+msgstr "অ্যাডন দিয়ে চালান কাস্টমাইজেশনের সীমাহীন সম্ভাবনা আনলক করুন -"
+
+msgid "Untitled template"
+msgstr "শিরোনামহীন টেমপ্লেট"
+
+msgid "Update Settings"
+msgstr "সেটিংস আপডেট করুন"
+
+msgid "Updated"
+msgstr "আপডেট করা হয়েছে"
+
+msgid "Upgrade for more customization on packing slip"
+msgstr "প্যাকিং স্লিপে আরও কাস্টমাইজেশনের জন্য আপগ্রেড করুন"
+
+msgid "Upgrade to premium"
+msgstr "প্রিমিয়ামে আপগ্রেড করুন"
+
+msgid "Upload logo"
+msgstr "লোগো আপলোড"
+
+msgid "Upload your image"
+msgstr "আপনার ছবি আপলোড করুন"
+
+msgid "Use custom number series to number documents"
+msgstr "নথি নম্বরের জন্য কাস্টম নম্বর সিরিজ ব্যবহার করুন"
+
+msgid "Use invoice created date"
+msgstr "চালান তৈরির তারিখ ব্যবহার করুন"
+
+msgid "Use latest settings for invoice"
+msgstr "চালানের জন্য সর্বশেষ সেটিংস ব্যবহার করুন"
+
+msgid "Use order date"
+msgstr "অর্ডার তারিখ ব্যবহার করুন"
+
+msgid "Use order date as input instead."
+msgstr "পরিবর্তে ইনপুট হিসাবে অর্ডার তারিখ ব্যবহার করুন."
+
+msgid "Use order number as document number"
+msgstr "ডকুমেন্ট নম্বর হিসাবে অর্ডার নম্বর ব্যবহার করুন"
+
+msgid "Users who haven`t logged will also be allowed to print"
+msgstr "যে ব্যবহারকারীরা লগইন করেননি তাদেরও প্রিন্ট করার অনুমতি দেওয়া হবে"
+
+msgid "Users will be redirected to login page if not logged in"
+msgstr "লগ ইন না করলে ব্যবহারকারীদের লগইন পৃষ্ঠায় পুনঃনির্দেশিত করা হবে"
+
+msgid "VAT"
+msgstr "ভ্যাট"
+
+msgid "VAT number"
+msgstr "ভ্যাট নম্বর"
+
+msgid "VAT:"
+msgstr "ভ্যাট:"
+
+msgid "View progress"
+msgstr "অগ্রগতি দেখুন"
+
+msgid "View sample customization demo"
+msgstr "নমুনা কাস্টমাইজেশন ডেমো দেখুন"
+
+msgid "Visual"
+msgstr "ভিজ্যুয়াল"
+
+msgid "WT PDF Invoice Debug"
+msgstr "WT PDF চালান ডিবাগ"
+
+msgid ""
+"We do not collect any personal data when you submit this form. It's your "
+"feedback that we value."
+msgstr ""
+"আপনি এই ফর্ম জমা দেওয়ার সময় আমরা কোনো ব্যক্তিগত তথ্য সংগ্রহ করি না। এটা "
+"আপনার মতামত যে আমরা মূল্য."
+
+msgid "We would love to help you on any queries or issues."
+msgstr "আমরা যেকোন প্রশ্ন বা সমস্যায় আপনাকে সাহায্য করতে চাই।"
+
+msgid "WebToffee"
+msgstr "WebToffee"
+
+msgid "Weight"
+msgstr "ওজন"
+
+msgid "Weight:"
+msgstr "Kilo:"
+
+msgid "What did you expect?"
+msgstr "তুমি কি আশা কর?"
+
+msgid "What length would you prefer for your credit note"
+msgstr "আপনার ক্রেডিট নোটের জন্য আপনি কত দৈর্ঘ্য পছন্দ করবেন"
+
+msgid "What length would you prefer for your invoice"
+msgstr "আপনার চালানের জন্য আপনি কত দৈর্ঘ্য পছন্দ করবেন"
+
+msgid "What length would you prefer for your invoice number"
+msgstr "আপনার চালান নম্বরের জন্য আপনি কত দৈর্ঘ্য পছন্দ করবেন"
+
+msgid "What length would you prefer for your proforma invoice"
+msgstr "আপনার প্রোফরমা চালানের জন্য আপনি কত দৈর্ঘ্য পছন্দ করবেন"
+
+msgid "What should be the starting number for your credit notes?"
+msgstr "আপনার ক্রেডিট নোটের জন্য প্রারম্ভিক সংখ্যা কি হওয়া উচিত?"
+
+msgid "What should be the starting number for your invoices?"
+msgstr "আপনার চালানের জন্য শুরু নম্বর কি হওয়া উচিত?"
+
+msgid "What should be the starting number for your proforma invoices?"
+msgstr "আপনার প্রোফর্মা চালানগুলির জন্য শুরুর নম্বরটি কী হওয়া উচিত?"
+
+msgid ""
+"When enabled, replaces state code with state name in the from, return, "
+"billing and shipping addresses"
+msgstr ""
+"সক্রিয় করা হলে, থেকে, ফেরত, বিলিং এবং শিপিং ঠিকানাগুলিতে রাজ্যের নামের সাথে "
+"রাজ্য কোড প্রতিস্থাপন করে৷"
+
+msgid "Which language?"
+msgstr "কোন ভাষা?"
+
+msgid "Which plugin?"
+msgstr "কোন প্লাগইন?"
+
+msgid "Width"
+msgstr " প্রস্থ"
+
+msgid ""
+"WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels"
+msgstr "WooCommerce PDF চালান, প্যাকিং স্লিপ, ডেলিভারি নোট এবং শিপিং লেবেল"
+
+msgid ""
+"Woocommerce PDF invoices, packing slips, delivery notes, and shipping labels"
+msgstr "Woocommerce PDF চালান, প্যাকিং স্লিপ, ডেলিভারি নোট, এবং শিপিং লেবেল"
+
+msgid "Would you like us to assist you?"
+msgstr "আপনি কি আমাদের সাহায্য করতে চান?"
+
+msgid "Writtable"
+msgstr "লিখনযোগ্য"
+
+msgid "Yes"
+msgstr "হ্যাঁ"
+
+msgid "You are not allowed to access this page"
+msgstr "আপনি এই পৃষ্ঠা অ্যাক্সেস করার অনুমতি দেওয়া হয় না"
+
+msgid "You are not allowed to do this action"
+msgstr "আপনাকে এই কাজটি করার অনুমতি নেই"
+
+msgid "You are not allowed to view this page."
+msgstr "আপনাকে এই পৃষ্ঠাটি দেখার অনুমতি নেই।"
+
+msgid "You can add custom/predefined order meta using its key"
+msgstr ""
+"আপনি এর কী ব্যবহার করে কাস্টম/পূর্বনির্ধারিত অর্ডার মেটা যোগ করতে পারেন"
+
+msgid "You can add more than 1 order meta in"
+msgstr "আপনি 1টির বেশি অর্ডার মেটা যোগ করতে পারেন"
+
+msgid ""
+"You can control the visibility of the seal according to order status via "
+"filters. See filter documentation %s here. %s"
+msgstr ""
+"আপনি ফিল্টারগুলির মাধ্যমে অর্ডার স্থিতি অনুসারে সিলের দৃশ্যমানতা নিয়ন্ত্রণ "
+"করতে পারেন। ফিল্টার ডকুমেন্টেশন দেখুন %s এখানে। %s"
+
+msgid "You can edit an existing item by using its key."
+msgstr "আপনি একটি বিদ্যমান আইটেম এর কী ব্যবহার করে সম্পাদনা করতে পারেন।"
+
+msgid "You can't undo this action. Are you sure?"
+msgstr "আপনি এই ক্রিয়াটিকে পূর্বাবস্থায় ফেরাতে পারবেন না৷ তুমি কি নিশ্চিত?"
+
+msgid "You have to select order(s) first!"
+msgstr "আপনাকে প্রথমে অর্ডার (গুলি) নির্বাচন করতে হবে!"
+
+msgid "You`ve just created"
+msgstr "আপনি এইমাত্র তৈরি করেছেন"
+
+msgid "Your next %s number would be"
+msgstr "আপনার পরবর্তী %s নম্বর হবে"
+
+msgid "[prefix][invoice_no]"
+msgstr "[প্রিফিক্স][চালান_না]"
+
+msgid "[prefix][order_no]"
+msgstr "[উপসর্গ][অর্ডার_না]"
+
+msgid "allow_url_fopen disabled"
+msgstr "allow_url_fopen নিষ্ক্রিয়"
+
+msgid "commercial documents using"
+msgstr "বাণিজ্যিক নথি ব্যবহার করে"
+
+msgid "from"
+msgstr "থেকে"
+
+msgid "https://www.webtoffee.com/"
+msgstr "https://www.webtoffee.com/"
+
+msgid "incl. tax"
+msgstr "সহ ট্যাক্স"
+
+msgid "invoices, packing slips, and credit notes."
+msgstr "চালান, প্যাকিং স্লিপ এবং ক্রেডিট নোট।"
+
+msgid "is required"
+msgstr "দরকার"
+
+msgid "mPDF add-on"
+msgstr "mPDF অ্যাড-অন"
+
+msgid "n/a"
+msgstr "n/a"
+
+msgid ""
+"number has not been generated yet. Do you want to manually generate one ?"
+msgstr "সংখ্যা এখনো তৈরি করা হয়নি. আপনি কি ম্যানুয়ালি একটি তৈরি করতে চান?"
+
+msgid "orders listing page"
+msgstr "অর্ডার তালিকা পাতা"
+
+msgctxt "placeholder"
+msgid "Enter "
+msgstr "প্রবেশ করুন "
+
+msgid "search filter"
+msgstr "অনুসন্ধান ফিল্টার"
+
+msgid "the %s number would be"
+msgstr "%s নম্বর হবে"
+
+msgid "upgrade to premium version"
+msgstr "প্রিমিয়াম সংস্করণে আপগ্রেড করুন"
+
+msgid "via %s"
+msgstr "%s এর মাধ্যমে"
+
+msgid ""
+"‘Generate invoice for free orders’ is disabled in Invoice settings > "
+"Advanced. You are attempting to generate invoice for this free order. "
+"Proceed?"
+msgstr ""
+"'ফ্রি অর্ডারের জন্য ইনভয়েস তৈরি করুন' ইনভয়েস সেটিংস > অ্যাডভান্সড-এ অক্ষম "
+"করা আছে। আপনি এই বিনামূল্যের অর্ডারের জন্য চালান তৈরি করার চেষ্টা করছেন৷ "
+"এগিয়ে যান?"

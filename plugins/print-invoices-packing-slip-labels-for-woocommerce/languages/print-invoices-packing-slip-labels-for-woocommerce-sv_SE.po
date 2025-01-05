@@ -1,0 +1,3565 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce PDF Invoices, Packing Slips, Delivery Notes "
+"and Shipping Labels\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-29 06:26+0000\n"
+"PO-Revision-Date: 2024-12-18 12:02+0000\n"
+"Last-Translator: \n"
+"Language-Team: Swedish (Sweden)\n"
+"Language: sv-SE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: en_GB\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: print-invoices-packing-slip-labels-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Loco-Parser: loco_parse_mo"
+
+msgid " Free shipping"
+msgstr "Fri frakt"
+
+msgid ""
+"%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels "
+"(Basic) %s is enabled but not effective. It requires %s WooCommerce %s in "
+"order to work."
+msgstr ""
+"%s WooCommerce PDF -fakturor, förpackningssedlar, leveransnoteringar och "
+"fraktetiketter (grundläggande) %s är aktiverat men inte effektivt. Det krävs "
+"%s WooCommerce %s för att det ska fungera."
+
+msgid "(But customer notes can be added)"
+msgstr "(Men kundanteckningar kan läggas till)"
+
+msgid "(Visual and code editor)"
+msgstr "(Visuell och kodredigerare)"
+
+msgid "(Visual editor)"
+msgstr "(Visuell redaktör)"
+
+msgid "20+ predefined gift card templates"
+msgstr "Skapa ny mall"
+
+msgid "30 Day Money Back Guarantee"
+msgstr "30 dagars återbetalningsgaranti"
+
+msgid "5.6 or higher recommended"
+msgstr "5.6 eller högre rekommenderas"
+
+msgid "Accepts payment using multiple Alternative Payment Methods (APM)"
+msgstr "Accepterar betalning med flera alternativa betalningsmetoder (APM)"
+
+msgid "Access denied !!!."
+msgstr "Tillträde beviljas ej !!!."
+
+msgid "Action"
+msgstr "Åtgärd"
+
+msgid "Activate"
+msgstr "Aktivera"
+
+msgid "Activates Stripe checkout"
+msgstr "Aktiverar Stripe-utcheckning"
+
+msgid "Active"
+msgstr "Aktiv"
+
+msgid "Add"
+msgstr "Lägg till"
+
+msgid "Add & update data while importing"
+msgstr "Lägg till och uppdatera data under import"
+
+msgid "Add 20+ payment methods"
+msgstr "Lägg till 20+ betalningsmetoder"
+
+msgid "Add a custom suffix for order numbers"
+msgstr "Lägg till ett anpassat suffix för beställningsnummer"
+
+msgid "Add a payment link to invoice"
+msgstr "Lägg till en betalningslänk till fakturan"
+
+msgid "Add a print delivery note button to the order email"
+msgstr "Lägg till en knapp för utskrift av leveranssedel i beställningsmailet"
+
+msgid "Add a print label button to the order email"
+msgstr "Lägg till en knapp för utskriftsetikett i beställningsmailet"
+
+msgid "Add a print packing slip button to My account page"
+msgstr "Visa knappen \"Skriv ut faktura\" för kunder"
+
+msgid "Add additional column in product table"
+msgstr "Lägg till ytterligare kolumn i produkttabellen"
+
+msgid "Add additional column in product table of package documents"
+msgstr "Lägg till ytterligare kolumn i produkttabellen med paketdokument"
+
+msgid "Add additional data to invoice layout"
+msgstr "Lägg till ytterligare information"
+
+msgid "Add additional info"
+msgstr "Lägg till ytterligare information"
+
+msgid "Add additional information"
+msgstr "Lägg till ytterligare information"
+
+msgid "Add additional order & product meta fields"
+msgstr "Lägg till ytterligare kolumn i produkttabellen"
+
+msgid "Add additional product & order data fields"
+msgstr "Lägg till ytterligare kolumn i produkttabellen"
+
+msgid "Add additional product attributes"
+msgstr "Lägg till produktvariant"
+
+msgid "Add and update data while importing"
+msgstr "Lägg till och uppdatera data under import"
+
+msgid "Add company logo & return policy to label"
+msgstr "Lägg till företagslogotyp och returpolicy på etiketten"
+
+msgid "Add custom data to documents"
+msgstr "Lägg till produktvariation i paketdokument"
+
+msgid "Add custom data to invoices"
+msgstr "Anpassad logotyp för faktura"
+
+msgid "Add custom fields to shipping label layout"
+msgstr "Lägg till sidfot i fraktetikett"
+
+msgid "Add custom footer"
+msgstr "Lägg till kund"
+
+msgid "Add custom footers to packing slips"
+msgstr "Lägga till kundanteckning i packlista"
+
+msgid "Add custom templates for gift cards"
+msgstr "Anpassad logotyp för faktura"
+
+msgid "Add customer note"
+msgstr "Lägg till kund"
+
+msgid "Add date to credit note number"
+msgstr "Lägg till datum till kreditnotisnummer"
+
+msgid "Add date to invoice number"
+msgstr "Ställ in fakturanummer med"
+
+msgid "Add date to proforma invoice number"
+msgstr "Använd ordernummer som fakturanummer"
+
+msgid "Add extra product & order data fields"
+msgstr "Lägg till extra produkt- och beställningsdatafält"
+
+msgid "Add extra text in received seal"
+msgstr "Lägg till extra text i mottagen sigill"
+
+msgid "Add extra text in received seal."
+msgstr "Lägg till extra text i mottagen sigill."
+
+msgid "Add footer"
+msgstr "Lägg till Footer"
+
+msgid "Add multiple shipping labels in one page"
+msgstr "Lägg till sidfot i fraktetikett"
+
+msgid "Add multiple shipping labels on one page"
+msgstr "Lägg till sidfot i fraktetikett"
+
+msgid "Add new"
+msgstr "Lägg till ny"
+
+msgid "Add notes like fragile, keep dry, etc."
+msgstr "Lägg till anteckningar som ömtåliga, håll torrt, etc."
+
+msgid "Add order & product meta fields"
+msgstr "Beställ metafält"
+
+msgid "Add order meta fields"
+msgstr "Beställ metafält"
+
+msgid "Add order meta fields "
+msgstr "Lägg till beställningsmetafält"
+
+msgid "Add order meta fields to shipping labels"
+msgstr "Lägg till sidfot i fraktetikett"
+
+msgid "Add print document button to selected order emails"
+msgstr "Lägg till knapp för utskrift av dokument till valda beställningsmail"
+
+msgid "Add product & order meta fields"
+msgstr "Beställ metafält"
+
+msgid "Add product attributes"
+msgstr "Lägg till produktvariant"
+
+msgid "Add product images to packing slips"
+msgstr "Lägg till sidfot i packlista"
+
+msgid "Add product meta fields"
+msgstr "Beställ metafält"
+
+msgid "Add product meta fields & attributes"
+msgstr "Lägg till produktmetafält och attribut"
+
+msgid "Add product variation"
+msgstr "Lägg till produktvariant"
+
+msgid "Add product variation in package documents"
+msgstr "Lägg till produktvariation i paketdokument"
+
+msgid ""
+"Add product variation in product (Works with Packing List, Shipping Label "
+"and Delivery note only)"
+msgstr ""
+"Lägg till produktvariation i produkt (fungerar endast med packlista, "
+"fraktetikett och följesedel)"
+
+msgid "Add product variation. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Lägg till produktvariant. (Fungerar endast med faktura- och leveransetikett)"
+
+msgid "Add quote button to the product & shop pages"
+msgstr "Lägg till offertknapp på produkt- och butikssidorna"
+
+msgid "Add shop details"
+msgstr "Adressuppgifter"
+
+msgid "Add usage restrictions for gift cards"
+msgstr "Lägg till användningsbegränsningar för presentkort"
+
+msgid "Add ‘Pay Later’ option at checkout"
+msgstr "Lägg till alternativet \"Betala senare\" i kassan"
+
+msgid "Add/Edit Order Meta Field"
+msgstr "Lägg till / redigera beställningsmetafält"
+
+msgid "Additional feed intervals (30 minutes, 6 hours, 12 hours)"
+msgstr "Ytterligare matningsintervall (30 minuter, 6 timmar, 12 timmar)"
+
+msgid "Address Label Add-on"
+msgstr "Adressetikett"
+
+msgid "Address details"
+msgstr "Adressuppgifter"
+
+msgid "Address font size"
+msgstr "Adressstorlek"
+
+msgid "Address label"
+msgstr "Adressetikett"
+
+msgid "Address labels"
+msgstr "Adressetikett"
+
+msgid "Address line 1"
+msgstr "Adressrad 1"
+
+msgid "Address line 2"
+msgstr "Adressrad 2"
+
+msgid ""
+"Adds Express PayPal Checkout Option on the product page and Mini-cart for "
+"faster checkout"
+msgstr ""
+"Lägger till Express PayPal Checkout Option på produktsidan och Mini-cart för "
+"snabbare utcheckning"
+
+msgid "Adds Footer to the delivery note"
+msgstr "Lägg till sidfot i leveransnot"
+
+msgid "Adds Footer to the packing slip"
+msgstr "Lägg till sidfot i packlista"
+
+msgid "Adds PayPal Smart Button Checkout option"
+msgstr "Lägger till PayPal Smart Button Checkout-alternativ"
+
+msgid "Adds customer note in the dispatch label"
+msgstr "Lägga till kundanteckning i dispatch-etikett"
+
+msgid "Adds customer note to the delivery note"
+msgstr "Lägga till kundanteckning i leveransnota"
+
+msgid "Adds customer note to the packing slip"
+msgstr "Lägga till kundanteckning i packlista"
+
+msgid "Adds footer in dispatch label"
+msgstr "Lägg till sidfot i sändningsetikett"
+
+msgid "Adds footer to the  Shipping label"
+msgstr "Lägg till sidfot i fraktetikett"
+
+msgid "Adds product image to the line items in the product table"
+msgstr "Lägga till produktbild i produkttabellen"
+
+msgid ""
+"Admins and customers both can leverage this feature wherever applicable. "
+"Disabling will remove all the provisions. Yet, the invoices are customizable."
+msgstr ""
+"Både administratörer och kunder kan utnyttja den här funktionen där det är "
+"tillämpligt. Inaktivering tar bort alla bestämmelser. Ändå är fakturorna "
+"anpassningsbara."
+
+msgid "Advanced BOGO Coupons"
+msgstr "Avancerade inställningar"
+
+msgid "Advanced filters and customizations for import & export"
+msgstr "Avancerad anpassning av mallar med kodredigerare"
+
+msgid "Advanced filters and customizations for import and export"
+msgstr "Avancerad anpassning av mallar med kodredigerare"
+
+msgid "Advanced options"
+msgstr "Avancerade inställningar"
+
+msgid "Advanced visual and code editor"
+msgstr "Avancerad visuell och kodredigerare"
+
+msgid "Align"
+msgstr "Justera"
+
+msgid "All document types"
+msgstr "Andra handlingar"
+
+msgid "All fields are mandatory"
+msgstr "Alla fält är obligatoriska"
+
+msgid "All unsaved changes will be lost upon switching to a new layout."
+msgstr ""
+"Alla ändringar som inte sparats kommer att gå förlorade när du byter till en "
+"ny layout."
+
+msgid "All users"
+msgstr "Alla användare"
+
+msgid "Allow coupon combinations"
+msgstr "Tillåt kupongkombinationer"
+
+msgid "Allow customers to print invoices"
+msgstr "Lägga till kundanteckning i faktura"
+
+msgid "Allow remote stylesheets and images"
+msgstr "Tillåt fjärrformatmallar och bilder"
+
+msgid "Allows customers to print the invoice from the specified pages."
+msgstr "Tillåter kunder att skriva ut fakturan från de angivna sidorna."
+
+msgid "Allows guest checkout"
+msgstr "Tillåter gästutcheckning"
+
+msgid "Already tried the free %s WebToffee mPDF addon %s."
+msgstr "Har redan testat gratis %s WebToffee mPDF -tillägget %s."
+
+msgid "Alter additional item meta"
+msgstr "Ändra meta för ytterligare objekt"
+
+msgid "Alter barcode information"
+msgstr "Ändra streckkodsinformation"
+
+msgid "Alter billing address"
+msgstr "Fakturaadress"
+
+msgid "Alter dispatch date"
+msgstr "Ändra leveransdatum"
+
+msgid "Alter fee"
+msgstr "Ändra avgift"
+
+msgid "Alter formated item price. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Ändra formaterat artikelpris. (Fungerar endast med faktura- och "
+"leveransetikett)"
+
+msgid "Alter formated item total. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Ändra formaterad artikelsumma. (Fungerar endast med faktura- och "
+"leveransetikett)"
+
+msgid "Alter formated subtotal"
+msgstr "Ändra formaterad delsumma"
+
+msgid "Alter invoice date"
+msgstr "Ändra fakturadatum"
+
+msgid "Alter item price"
+msgstr "Ändra artikelpris"
+
+msgid "Alter item price format"
+msgstr "Ändra artikelprisformat"
+
+msgid "Alter item price. (Works with Invoice and Dispatch label only)"
+msgstr "Ändra artikelpris. (Fungerar endast med faktura- och leveransetikett)"
+
+msgid "Alter item quantity"
+msgstr "Ändra artikelkvantitet"
+
+msgid "Alter item quantity in package documents"
+msgstr "Ändra artikelkvantitet i paketdokument"
+
+msgid ""
+"Alter item quantity in product table (Works with Packing List, Shipping "
+"Label and Delivery note only)"
+msgstr ""
+"Ändra artikelkvantitet i produkttabellen (fungerar endast med packlista, "
+"fraktetikett och följesedel)"
+
+msgid "Alter item quantity. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Ändra artikelkvantitet. (Fungerar endast med faktura- och leveransetikett)"
+
+msgid "Alter item total"
+msgstr "Ändra artikelsumman"
+
+msgid "Alter item total format"
+msgstr "Ändra artikelns totala format"
+
+msgid "Alter item total in package documents"
+msgstr "Ändra artikelsumman i paketdokument"
+
+msgid ""
+"Alter item total in product table (Works with Packing List, Shipping Label "
+"and Delivery note only)"
+msgstr ""
+"Ändra artikelsumman i produkttabellen (fungerar endast med packlista, "
+"fraktetikett och följesedel)"
+
+msgid "Alter item total. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Ändra artikelsumman. (Fungerar endast med faktura- och leveransetikett)"
+
+msgid "Alter order date"
+msgstr "Ändra beställningsdatum"
+
+msgid "Alter product name"
+msgstr "Ändra produktnamn"
+
+msgid ""
+"Alter product name in product (Works with Packing List, Shipping Label and "
+"Delivery note only)"
+msgstr ""
+"Ändra produktnamn i produkten (fungerar endast med packlista, fraktetikett "
+"och följesedel)"
+
+msgid "Alter product name. (Works with Invoice and Dispatch label only)"
+msgstr "Ändra produktnamn. (Fungerar endast med faktura- och leveransetikett)"
+
+msgid "Alter product table column"
+msgstr "Ändra produkttabellkolumn"
+
+msgid "Alter product table column in package documents"
+msgstr "Ändra produkttabellkolumnen i paketdokument"
+
+msgid ""
+"Alter product table column. (Works with Invoice and Dispatch label only)"
+msgstr ""
+"Ändra produkttabellkolumn. (Fungerar endast med faktura- och leveransetikett)"
+
+msgid ""
+"Alter product table column. (Works with Packing List, Shipping Label and "
+"Delivery note only)"
+msgstr ""
+"Ändra produkttabellkolumn. (Fungerar endast med packlista, fraktetikett och "
+"följesedel)"
+
+msgid "Alter product table head.(Add, remove, change order)"
+msgstr "Ändra produkttabellhuvud.(Lägg till, ta bort, ändra ordning)"
+
+msgid "Alter product table head.(Add,remove, change the order)"
+msgstr "Ändra produktbordshuvud.(Lägg till, ta bort, ändra ordning)"
+
+msgid "Alter shipping address"
+msgstr "Ändra leveransadress"
+
+msgid "Alter shipping from address"
+msgstr "Ändra frakt från adress"
+
+msgid "Alter shipping method"
+msgstr "Ändra fraktsätt"
+
+msgid "Alter subtotal"
+msgstr "Ändra delsumma"
+
+msgid "Alter subtotal format"
+msgstr "Ändra delsummaformat"
+
+msgid "Alter template HTML before printing"
+msgstr "Ändra mall HTML innan du skriver ut"
+
+msgid "Alter template HTML before printing."
+msgstr "Ändra mall HTML innan du skriver ut."
+
+msgid "Alter the footer data"
+msgstr "Ändra sidfotsdata"
+
+msgid "Alter the footer data."
+msgstr "Ändra sidfotsdata."
+
+msgid "Alter the product name in package documents"
+msgstr "Ändra produktnamnet i förpackningsdokumenten"
+
+msgid "Alter the settings array"
+msgstr "Ändra inställningarna"
+
+msgid "Alter the variation data."
+msgstr "Ändra variationsdata."
+
+msgid "Alter total fee"
+msgstr "Ändra total avgift"
+
+msgid "Alter total price"
+msgstr "Ändra totalpris"
+
+msgid "Alter total price in words"
+msgstr "Ändra totalpris i ord"
+
+msgid "Angle"
+msgstr "Vinkel"
+
+msgid ""
+"Assign QR code to all of invoices generated for the orders in your store"
+msgstr ""
+"Tilldela QR-kod till alla fakturor som genereras för beställningarna i din "
+"butik"
+
+msgid "Assign QR codes to all generated invoices"
+msgstr "Ta bort alla genererade fakturanummer"
+
+msgid "Assign different types of info in your QR code, including:"
+msgstr "Tilldela olika typer av information i din QR-kod, inklusive:"
+
+msgid "Assits in GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA, and CCPA"
+msgstr "Assits i GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA och CCPA"
+
+msgid "Attach document to order email"
+msgstr "Bifoga fakturapdf i beställnings-e-post"
+
+msgid "Attach documents to selected order status emails"
+msgstr "Bifoga dokument till valda e-postmeddelanden om beställningsstatus"
+
+msgid "Attach invoice PDF to admin email"
+msgstr "Bifoga fakturapdf i beställnings-e-post"
+
+msgid "Attach invoice PDF to order emails"
+msgstr "Bifoga fakturapdf i beställnings-e-post"
+
+msgid "Attach invoice pdf in WooCommerce Email"
+msgstr "Bifoga faktura pdf i WooCommerce e-post"
+
+msgid "Attach invoice pdf in customer email"
+msgstr "Bifoga fakturapdf i beställnings-e-post"
+
+msgid "Attach proforma invoice PDF to order emails"
+msgstr "Bifoga fakturapdf i beställnings-e-post"
+
+msgid "Attach sales terms"
+msgstr "Bifoga försäljningsvillkor"
+
+msgid "Attach special notes with proforma invoices"
+msgstr "Bifoga speciallappar med proformafakturor"
+
+msgid "Attach transport & sales terms"
+msgstr "Bifoga transport- & försäljningsvillkor"
+
+msgid "Attach transport terms"
+msgstr "Bifoga transportvillkor"
+
+msgid "Auto reset sequence per month/year etc"
+msgstr "Automatisk återställningssekvens per månad/år etc"
+
+msgid "Auto-generate invoices, packing slips, and credit notes"
+msgstr "Generera automatiskt fakturor, följesedlar och kreditnotor"
+
+msgid "Automate invoice creation"
+msgstr "Ändra fakturadatum"
+
+msgid "Automatic cleanup"
+msgstr "Automatisk sanering"
+
+msgid "Automatic email alerts for admin & users"
+msgstr "Automatiska e-postvarningar för administratörer och användare"
+
+msgid "Automatically add products"
+msgstr "Lägg till produkter automatiskt"
+
+msgid "Automatically attach packing slip with order email"
+msgstr "Bifoga fakturapdf i beställnings-e-post"
+
+msgid "Automatically block cookies/script"
+msgstr "Blockera automatiskt cookies/skript"
+
+msgid "Automatically create invoice based on order status"
+msgstr "Skapa automatiskt faktura baserat på orderstatus"
+
+msgid "Automatically creates invoices for selected order statuses."
+msgstr "Skapar fakturor för valda orderstatus."
+
+msgid "Automatically email picklists based on order status"
+msgstr "E-posta plocklistor automatiskt baserat på orderstatus"
+
+msgid ""
+"Automatically generate professional WooCommerce order-related documents for "
+"all your orders"
+msgstr ""
+"Generera automatiskt professionella WooCommerce-orderrelaterade dokument för "
+"alla dina beställningar"
+
+msgid "Automatically generate suggestions based on order history"
+msgstr "Generera automatiskt förslag baserat på orderhistorik"
+
+msgid "Automatically send quotes to users"
+msgstr "Skicka offerter till användare automatiskt"
+
+msgid "Back"
+msgstr "Tillbaka"
+
+msgid "Barcode"
+msgstr "Streckkod"
+
+msgid "Based on order number"
+msgstr "Ange beställningsnummer"
+
+msgid "Basic - 0"
+msgstr "Grundläggande - 0"
+
+msgid "Basic - 1"
+msgstr "Grundläggande - 1"
+
+msgid ""
+"Before using this tool, please make sure you followed the steps described in "
+"this article %1$s how to reset/delete existing invoice numbers%2$s."
+msgstr ""
+"Innan du använder det här verktyget, se till att du följt stegen som "
+"beskrivs i den här artikeln %1$shur du återställer/tar bort befintliga "
+"fakturanummer%2$s."
+
+msgid "Better with transparent PNG images"
+msgstr "Bättre med transparenta PNG-bilder"
+
+msgid "Bill to"
+msgstr "Skicka till"
+
+msgid "Billing Address"
+msgstr "Fakturaadress"
+
+msgid "Billing Address:"
+msgstr "Fakturaadress:"
+
+msgid "Billing address"
+msgstr "Faktureringsadress"
+
+msgid "Bold"
+msgstr "Fett"
+
+msgid "Bolder"
+msgstr "Djärvare"
+
+msgid "Border radius"
+msgstr "Kantradie"
+
+msgid "Border width"
+msgstr "Gränsbredd"
+
+msgid "Box name"
+msgstr "Lådans namn"
+
+msgid "Built-in label templates"
+msgstr "Namnlös mall"
+
+msgid "Built-in templates to personalize packing slip"
+msgstr "Inbyggda mallar för att anpassa följesedeln"
+
+msgid "Bulk generate coupons"
+msgstr "Massgenerera kuponger"
+
+msgid "Bulk print address labels"
+msgstr "Adressetikett"
+
+msgid "Bulk print picklists from the admin order page"
+msgstr "Massutskrift av alla dokument från beställningssidan"
+
+msgid "Bulk print shipping labels"
+msgstr "Skriv ut fraktetikett"
+
+msgid "Buyer name"
+msgstr "Köparens namn"
+
+msgid "Cancel"
+msgstr "Annullera"
+
+msgid "Cannot close this banner"
+msgstr "Det går inte att stänga denna banner"
+
+msgid "Capture the authorized payment later"
+msgstr "Fånga den auktoriserade betalningen senare"
+
+msgid "Cart Discount"
+msgstr "Varukorgsrabatt"
+
+msgid "Cart abandonment coupons"
+msgstr "Kuponger för att lämna vagnen"
+
+msgid "Cart discount"
+msgstr "Varukorgsrabatt"
+
+msgid "Category wise template listing"
+msgstr "Skapa ny mall"
+
+msgid "Caution: Settings here are only for advanced users."
+msgstr "Varning: Inställningarna här är endast för avancerade användare."
+
+msgid "Center"
+msgstr "Centrera"
+
+msgid "Change address label layout"
+msgstr "Ändra layout"
+
+msgid "Change color, text, background, border & more"
+msgstr "Ändra färg, text, bakgrund, kant och mer"
+
+msgid "Change document number format & length"
+msgstr "Fakturanummer format"
+
+msgid "Change layout"
+msgstr "Ändra layout"
+
+msgid "Checkout Premium"
+msgstr "UPPGRADERA TILL PREMIUM"
+
+msgid "Choose a country&hellip;"
+msgstr "Välj ett land&hellip;"
+
+msgid "Choose a layout."
+msgstr "Välj en layout."
+
+msgid "Choose date"
+msgstr "Välj datum"
+
+msgid "Choose email classes"
+msgstr "Välj e-postklasser"
+
+msgid "Choose emails for invoice attachment"
+msgstr "Välj e-postmeddelanden för fakturabilaga"
+
+msgid "Choose order status"
+msgstr "Välj orderstatus"
+
+msgid ""
+"Choose the order emails to which you'd like to attach invoices for your "
+"customers"
+msgstr ""
+"Välj de beställningsmail som du vill bifoga fakturor till dina kunder till"
+
+msgid "City"
+msgstr "Stad"
+
+msgid "Classic"
+msgstr "Klassisk"
+
+msgid "Click here to add Company logo"
+msgstr "Klicka här för att lägga till företagslogotyp"
+
+msgid "Click here to add Company name"
+msgstr "Klicka här för att lägga till företagsnamn"
+
+msgid "Click here to add From address"
+msgstr "Klicka här för att lägga till Från adress"
+
+msgid "Click here to add Signature"
+msgstr "Klicka här för att lägga till signatur"
+
+msgid "Click to append with existing data"
+msgstr "Klicka för att lägga till med befintlig data"
+
+msgid "Click to view predefined templates."
+msgstr "Klicka för att visa fördefinierade mallar."
+
+msgid "Close"
+msgstr "Stäng"
+
+msgid "Code"
+msgstr "Kod"
+
+msgid "Code Copied"
+msgstr "Koden kopierades"
+
+msgid "Collect payments with a payment link on the invoice"
+msgstr "Samla in betalningar med en betalningslänk på fakturan"
+
+msgid "Color"
+msgstr "Färg"
+
+msgid "Combine with the existing templates"
+msgstr "Skapa ny mall"
+
+msgid "Company Logo"
+msgstr "Företagslogotyp"
+
+msgid "Company Logo / Name"
+msgstr "Företagets logotyp/namn"
+
+msgid "Company Name"
+msgstr "Företagsnamn"
+
+msgid "Company Tax ID"
+msgstr "Företagsnamn"
+
+msgid "Company details"
+msgstr "Företagsinformation"
+
+msgid "Company logo"
+msgstr "Bolagets logo"
+
+msgid "Company name"
+msgstr "Företagsnamn"
+
+msgid "Company name font size"
+msgstr "Företagets teckenstorlek"
+
+msgid "Compatible with WPML"
+msgstr "Kompatibel med WPML"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slip & Credit Note (Premium)"
+msgstr ""
+"Kompatibel med WooCommerce PDF-faktura, packsedel, följesedlar och "
+"fraktetikett (gratis- och proversioner)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slip & Credit Note (Pro)"
+msgstr ""
+"Kompatibel med WooCommerce PDF-faktura, packsedel, följesedlar och "
+"fraktetikett (gratis- och proversioner)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoice, Packing Slips, Delivery Notes, and "
+"Shipping Label (Free and Pro versions)"
+msgstr ""
+"Kompatibel med WooCommerce PDF-faktura, packsedel, följesedlar och "
+"fraktetikett (gratis- och proversioner)"
+
+msgid ""
+"Compatible with WooCommerce PDF Invoices, Packing Slips, Delivery Notes, and "
+"Shipping Labels (Free)"
+msgstr ""
+"Kompatibel med WooCommerce PDF-faktura, packsedel, följesedlar och "
+"fraktetikett (gratis- och proversioner)"
+
+msgid "Compatible with major 3rd-party plugins"
+msgstr "Verifierad kompatibilitet med större plugins"
+
+msgid "Complete the invoice number format to suit your requirements"
+msgstr "Fyll i fakturanummerformatet för att passa dina krav"
+
+msgid "Configure the general settings required for the delivery note."
+msgstr "Konfigurera de allmänna inställningar som krävs för fakturan."
+
+msgid "Configure the general settings required for the dispatch label."
+msgstr "Konfigurera de allmänna inställningar som krävs för fraktetiketten."
+
+msgid "Configure the general settings required for the invoice."
+msgstr "Konfigurera de allmänna inställningar som krävs för fakturan."
+
+msgid "Configure the general settings required for the packing slip."
+msgstr "Konfigurera de allmänna inställningar som krävs för fakturan."
+
+msgid "Configure the general settings required for the shipping label."
+msgstr "Konfigurera de allmänna inställningar som krävs för fraktetiketten."
+
+msgid "Contact Number"
+msgstr "Kontakttelefon"
+
+msgid "Contact Us"
+msgstr "Kontakta oss"
+
+msgid "Contact number"
+msgstr "Telefonnummer"
+
+msgid "Copied"
+msgstr "Kopierad"
+
+msgid "Copy"
+msgstr "Kopiera"
+
+msgid "Copy Code"
+msgstr "Kopiera kod"
+
+msgid "Could you tell us a bit more?"
+msgstr "Kan du berätta lite mer för oss?"
+
+msgid "Could you tell us more about that feature?"
+msgstr "Kan du berätta mer om den funktionen?"
+
+msgid "Country/State"
+msgstr "Land / stat"
+
+msgid "Coupon Used"
+msgstr "Kupong"
+
+msgid "Coupon embeds"
+msgstr "Kupong"
+
+msgid "Coupon info"
+msgstr "Kuponginfo"
+
+msgid "Coupons based on past purchases"
+msgstr "Kuponger baserade på tidigare köp"
+
+msgid "Create QR code coupons"
+msgstr "Skapa QR-kodkuponger"
+
+msgid "Create QR code that reads order or invoice number"
+msgstr "Använd ordernummer som fakturanummer"
+
+msgid "Create a cookie consent banner"
+msgstr "Skapa en samtyckesbanner för cookies"
+
+msgid "Create a new template or edit an existing template."
+msgstr "Skapa en ny mall eller redigera en befintlig mall."
+
+msgid "Create and offer sign-up discount coupons"
+msgstr "Skapa och erbjuda rabattkuponger för registrering"
+
+msgid ""
+"Create and run successful promotional campaigns with the best tools for "
+"WooCommerce"
+msgstr ""
+"Skapa och kör framgångsrika reklamkampanjer med de bästa verktygen för "
+"WooCommerce"
+
+msgid "Create attractive gift cards "
+msgstr "Skapa attraktiva presentkort"
+
+msgid "Create cookie policy"
+msgstr "Skapa cookiepolicy"
+
+msgid "Create delivery notes, shipping & dispatch labels"
+msgstr "Lägga till kundanteckning i dispatch-etikett"
+
+msgid "Create new"
+msgstr "Skapa ny"
+
+msgid "Create new template"
+msgstr "Skapa ny mall"
+
+msgid "Create or customize picklist templates"
+msgstr "Fraktetikettstorlek"
+
+msgid "Create proforma invoice automatically for selected order statuses"
+msgstr "Skapa proformafaktura automatiskt för valda orderstatus"
+
+msgid "Create proforma invoices automatically"
+msgstr "Skapa faktura automatiskt"
+
+msgid "Create simple & variable subscriptions"
+msgstr "Skapa enkla och varierande abonnemang"
+
+msgid "Create unlimited gift cards"
+msgstr "Skapa obegränsade presentkort"
+
+msgid "Create users on order import"
+msgstr "Ange beställningsnummer"
+
+msgid "Create your unique invoice numbering system"
+msgstr "Skapa ditt unika fakturanummersystem"
+
+msgid "Credit note"
+msgstr "Kreditfaktura"
+
+msgid "Creditnote number format"
+msgstr "Fakturanummer format"
+
+msgid "Cross-platform compatibility"
+msgstr "WPML-kompatibilitet"
+
+msgid "Custom"
+msgstr "Anpassad"
+
+msgid "Custom (Pro version)"
+msgstr "Pro-versionen"
+
+msgid "Custom PDF name prefix"
+msgstr "Anpassat PDF -namnprefix"
+
+msgid "Custom details, as below:"
+msgstr "Anpassade detaljer, enligt nedan:"
+
+msgid "Custom footer"
+msgstr "Anpassad sidfot"
+
+msgid "Custom invoice date"
+msgstr "Ändra fakturadatum"
+
+msgid "Custom logo for invoice"
+msgstr "Anpassad logotyp för faktura"
+
+msgid "Custom number"
+msgstr "Anpassad nummerserie"
+
+msgid "Custom number series"
+msgstr "Anpassad nummerserie"
+
+msgid "Custom sequence for free orders"
+msgstr "Anpassad sekvens för gratisbeställningar"
+
+msgid "Customer Note"
+msgstr "Kundanteckning"
+
+msgid "Customer Note:"
+msgstr "Kundanteckning:"
+
+msgid "Customer note"
+msgstr "Kundanteckning"
+
+msgid "Customer note:"
+msgstr "Kundanteckning:"
+
+msgid "Customizable countdown sales banner"
+msgstr "Anpassningsbar nedräkningsförsäljningsbanner"
+
+msgid "Customizable tax items, tax fields (SSN, VAT, etc.)"
+msgstr "Stödjer kassa, beställning & produktmetafält (SSN, moms, etc.)."
+
+msgid "Customize"
+msgstr "Anpassa"
+
+msgid "Customize Pay Later option display"
+msgstr "Anpassa visningen av alternativet Betala senare"
+
+msgid "Customize and send emails to new users on import"
+msgstr "Anpassa och skicka e-postmeddelanden till nya användare vid import"
+
+msgid "Customize cookie banner"
+msgstr "Ändra fakturadatum"
+
+msgid "Customize document layout & properties"
+msgstr "Anpassa dokumentlayout och egenskaper"
+
+msgid "Customize individual elements using block editors"
+msgstr "Anpassa enskilda element med blockredigerare"
+
+msgid "Customize invoice PDF name format"
+msgstr "Fakturanummer format"
+
+msgid "Customize label sizes"
+msgstr "Fraktetikettstorlek"
+
+msgid "Customize layout elements & properties"
+msgstr "Anpassa layoutelement och egenskaper"
+
+msgid "Customize layout properties"
+msgstr "Anpassa layoutegenskaper"
+
+msgid "Customize shipping label size"
+msgstr "Fraktetikettstorlek"
+
+msgid "Customize the display of the recommended products"
+msgstr "Anpassa visningen av de rekommenderade produkterna"
+
+msgid "Customize the title, button, and label texts"
+msgstr "Anpassa titel, knapp och etiketttexter"
+
+msgid "Customizer for WooCommerce PDF Invoices"
+msgstr "Proformafaktura"
+
+msgid "Customizer for WooCommerce PDF Invoices Plugin"
+msgstr "Customizer för WooCommerce PDF Invoices Plugin"
+
+msgid "Customizer module is not active."
+msgstr "Anpassningsmodulen är inte aktiv."
+
+msgid "Dashed"
+msgstr "Streckad"
+
+msgid "Data Import & Export"
+msgstr "Dataimport och export"
+
+msgid "Date format strings"
+msgstr "Datumformat"
+
+msgid "Date formats"
+msgstr "Datumformat"
+
+msgid "Date suffix in order numbers"
+msgstr "Ange beställningsnummer"
+
+msgid "Date:"
+msgstr "Datum:"
+
+msgid "Debug"
+msgstr "Debugg"
+
+msgid "Delete"
+msgstr "Radera"
+
+msgid "Delete all generated invoice numbers"
+msgstr "Ta bort alla genererade fakturanummer"
+
+msgid "Delete all the settings made by this plugin"
+msgstr "Ta bort alla inställningar som gjorts av detta plugin"
+
+msgid "Delivery note"
+msgstr "Ordermeddelande"
+
+msgid "Department/Business unit/Sender name"
+msgstr "Avdelning / affärsenhet / avsändare"
+
+msgid "Description"
+msgstr "Beskrivning"
+
+msgid "Developed by"
+msgstr "Utvecklad av"
+
+msgid "Disable guest users from asking for quote"
+msgstr "Inaktivera gästanvändare från att begära offert"
+
+msgid "Dispatch Date:"
+msgstr "Försändelsedatum:"
+
+msgid "Dispatch Label"
+msgstr "Avsändningsetikett"
+
+msgid "Dispatch Label 1"
+msgstr "Avsändningsetikett 1"
+
+msgid "Dispatch label"
+msgstr "Avsändningsetikett"
+
+msgid "Display"
+msgstr "Visa"
+
+msgid "Display currency code"
+msgstr "Visa valutakod"
+
+msgid "Display free line items in the invoice"
+msgstr "Visa gratis rader i fakturan"
+
+msgid "Display free line items on invoice"
+msgstr "Visa gratis rader i fakturan"
+
+msgid "Display options for bundled products"
+msgstr "Visa pris i produkttabellen"
+
+msgid "Display recommended products on the product pages"
+msgstr "Visa pris i produkttabellen"
+
+msgid "Display state name"
+msgstr "Visa tillståndsnamn"
+
+msgid "Display the total number of items on label"
+msgstr "Visa gratis rader i fakturan"
+
+msgid ""
+"Displays customer`s VAT number saved in the order details by third-party "
+"plugins in this document. Supported meta keys are"
+msgstr ""
+"Visar kundens momsnummer som sparats i beställningsinformationen av "
+"tredjeparts plugins i detta dokument. Meta-nycklar som stöds är"
+
+msgid ""
+"Displays the currently chosen document template with provisions to modify."
+msgstr "Visar den valda dokumentmallen med bestämmelser som ska ändras."
+
+msgid "Do not reset the templates"
+msgstr "Skapa ny mall"
+
+msgid "Do not show again"
+msgstr "Visa inte igen"
+
+msgid "Document"
+msgstr "Dokument"
+
+msgid "Document customizer"
+msgstr "Dokument titel"
+
+msgid "Document details"
+msgstr "Dokumentinformation"
+
+msgid "Document title"
+msgstr "Dokument titel"
+
+msgid "Documentation"
+msgstr "Dokumentation"
+
+msgid "Documents"
+msgstr "Dokument"
+
+msgid "Dotted"
+msgstr "Prickad"
+
+msgid "Download"
+msgstr "Ladda ner"
+
+msgid "Download Invoice"
+msgstr "Ladda ned faktura"
+
+msgid "Download Invoices"
+msgstr "Ladda ner fakturor"
+
+msgid "Download Packing slip"
+msgstr "Ladda ner paketet"
+
+msgid "Download invoice"
+msgstr "Ladda ned faktura"
+
+msgid "Drag-and-drop easy customization"
+msgstr "Dra och släpp enkel anpassning"
+
+msgid "E-commerce Promotions"
+msgstr "E-handelskampanjer"
+
+msgid "Easy button and form customization"
+msgstr "Enkel anpassning av knappar och formulär"
+
+msgid "Easy invoice layout customization"
+msgstr "Enkel anpassning av fakturalayout"
+
+msgid "Edit"
+msgstr "Redigera"
+
+msgid "Email"
+msgstr "E-post"
+
+msgid "Email Field"
+msgstr "E-postfält"
+
+msgid "Email customers on order status change"
+msgstr "Maila kunder om orderstatusändring"
+
+msgid "Email gift cards to customers"
+msgstr "E-posta presentkort till kunder"
+
+msgid "Email:"
+msgstr "E-post:"
+
+msgid "Empty order"
+msgstr "Tom order"
+
+msgid "Enable Invoice"
+msgstr "Aktivera faktura"
+
+msgid "Enable RTL support"
+msgstr "Aktivera RTL-support"
+
+msgid "Enable a common print button for"
+msgstr "Aktivera en vanlig utskriftsknapp för"
+
+msgid "Enable additional currency font support"
+msgstr "Aktivera ytterligare stöd för valutateckensnitt"
+
+msgid "Enable customers to Pay Later at checkout"
+msgstr "Gör det möjligt för kunder att betala senare i kassan"
+
+msgid "Enable customers to print invoices & packing slips"
+msgstr "Lägga till kundanteckning i packlista"
+
+msgid "Enable customers to print the documents from order emails"
+msgstr ""
+"Gör det möjligt för kunder att skriva ut dokumenten från beställningsmail"
+
+msgid "Enable dedicated print buttons for"
+msgstr "Aktivera dedikerade utskriftsknappar för"
+
+msgid "Enable quotation request for selected products"
+msgstr "Visa pris i produkttabellen"
+
+msgid ""
+"Enable to apply the most recent settings to previous order invoices. This "
+"will match the previous invoices with the upcoming invoices.Changing the "
+"company address, name or any other settings in the future may overwrite "
+"previously created invoices with the most up-to-date information."
+msgstr ""
+"Aktivera för att tillämpa de senaste inställningarna på tidigare "
+"orderfakturor. Detta kommer att matcha de tidigare fakturorna med de "
+"kommande fakturorna. Ändring av företagets adress, namn eller andra "
+"inställningar i framtiden kan skriva över tidigare skapade fakturor med den "
+"mest uppdaterade informationen."
+
+msgid "Enable to attach invoice PDF to the new order email notification"
+msgstr "Bifoga fakturapdf i beställnings-e-post"
+
+msgid ""
+"Enable to create invoice for orders generated before plugin installation"
+msgstr ""
+"Aktivera för att skapa faktura för beställningar som genererats före "
+"installation av plugin"
+
+msgid "Enable to create invoices for free orders"
+msgstr "Aktivera för att skapa fakturor för gratisordrar."
+
+msgid "Enable to create invoices for free orders."
+msgstr "Aktivera för att skapa fakturor för gratisordrar."
+
+msgid "Enable to have a preview of the document before the print is initiated"
+msgstr ""
+"Aktivera för att få en förhandsgranskning av dokumentet innan utskriften "
+"påbörjas"
+
+msgid "Enable to print, download, and mail invoices."
+msgstr "Aktivera för att skriva ut, ladda ner och posta fakturor."
+
+msgid "Enable to show currency code instead of currency symbol"
+msgstr "Aktivera för att visa valutakod istället för valutasymbol"
+
+msgid "Enable to show state name in addresses"
+msgstr "Aktivera för att visa statens namn i adresser"
+
+msgid ""
+"Enable to use additional font library to support the currency symbol in pdf"
+msgstr ""
+"Aktivera för att använda ytterligare teckensnittsbibliotek för att stödja "
+"valutasymbolen i pdf"
+
+msgid "End"
+msgstr "Slut"
+
+msgid "Ensure security with base64 & URI printing"
+msgstr "Säkerställ säkerhet med base64 & URI-utskrift"
+
+msgid "Enter a name for your template"
+msgstr "Ange ett namn på din mall"
+
+msgid "Error"
+msgstr "Fel"
+
+msgid "Error uploading the file"
+msgstr "Det gick inte att ladda upp filen"
+
+msgid "Error."
+msgstr "Fel."
+
+msgid "Error:"
+msgstr "Fel:"
+
+msgid "Error: Empty JSON file"
+msgstr "Fel: Tom JSON-fil"
+
+msgid "Error: Invalid JSON data"
+msgstr "Fel: Ogiltig JSON-data"
+
+msgid "Example Code"
+msgstr "Exempel på kod"
+
+msgid "Exclude out-of-stock products"
+msgstr "Uteslut produkter som inte finns i lager"
+
+msgid "Exclude specific products"
+msgstr "Uteslut specifika produkter"
+
+msgid "Exclude virtual items from picklists"
+msgstr "Uteslut virtuella objekt från vallistor"
+
+msgid "Exclude virtual products from picklists"
+msgstr "Uteslut virtuella produkter från vallistor"
+
+msgid "Explicit/Implicit consent"
+msgstr "Uttryckligt/implicit samtycke"
+
+msgid "Export"
+msgstr "Exportera"
+
+msgid "Export and import custom fields and third-party plugin fields"
+msgstr ""
+"Exportera och importera anpassade fält och plugin-fält från tredje part"
+
+msgid "Export product images in a separate zip file"
+msgstr "Exportera produktbilder i en separat zip-fil"
+
+msgid "Export settings (JSON)"
+msgstr "Exportinställningar (JSON)"
+
+msgid "Export to FTP/SFTP"
+msgstr "Exportera till FTP/SFTP"
+
+msgid "Extensions"
+msgstr "Tillägg"
+
+msgid "Extra Details"
+msgstr "Extra detaljer"
+
+msgid "Extra detail font size"
+msgstr "Extra detalj teckenstorlek"
+
+msgid "Fast and Superior Support"
+msgstr "Snabb och överlägsen support"
+
+msgid "Features"
+msgstr "Funktioner"
+
+msgid "Fee"
+msgstr "Avgift"
+
+msgid "Field Name"
+msgstr "Fältnamn"
+
+msgid "File path"
+msgstr "Sökväg"
+
+msgid "Filter by user role, email, date, etc"
+msgstr "Filtrera efter användarroll, e-post, datum, etc"
+
+msgid "Filter export by products, order status, email, date, etc"
+msgstr "Filtrera export efter produkter, orderstatus, e-post, datum, etc"
+
+msgid "Filter products based on product type"
+msgstr "Filtrera produkter baserat på produkttyp"
+
+msgid "Filters"
+msgstr "Filter"
+
+msgid "Finish setup"
+msgstr "Slutför installationen"
+
+msgid "Fit multiple shipping labels on a single page"
+msgstr "Lägg till sidfot i fraktetikett"
+
+msgid "Fixed and custom gift card amounts"
+msgstr "Fasta och anpassade presentkortsbelopp"
+
+msgid "Font size"
+msgstr "Teckenstorlek"
+
+msgid "Footer"
+msgstr "Sidfot"
+
+msgid "For better RTL integration in PDF documents, please use our"
+msgstr "För bättre RTL-integrering i PDF-dokument, använd vår"
+
+msgid "For better performances"
+msgstr "För bättre prestationer"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Fragile"
+msgstr "Ömtålig"
+
+msgid "Free"
+msgstr "Gratis"
+
+msgid "Free shipping"
+msgstr "Fri frakt"
+
+msgid "Free version"
+msgstr "Pro-versionen"
+
+msgid "Free vs Premium"
+msgstr "Gratis vs Premium"
+
+msgid "Free!"
+msgstr "Gratis!"
+
+msgid "Frequently Bought Together for WooCommerce"
+msgstr "Sekventiellt ordernummer för WooCommerce"
+
+msgid "From"
+msgstr "Från"
+
+msgid "From Address"
+msgstr "Från adress"
+
+msgid "From Address:"
+msgstr "Från adress:"
+
+msgid "From address"
+msgstr "Från adressen"
+
+msgid "From left"
+msgstr "Från vänster"
+
+msgid "From top"
+msgstr "Från toppen"
+
+msgid "From:"
+msgstr "Från:"
+
+msgid "Full Page"
+msgstr "Helskärm"
+
+msgid "Full page"
+msgstr "Helskärm"
+
+msgid "GDPR Cookie Consent Plugin (CCPA Ready)"
+msgstr "GDPR Cookie Consent (CCPA Ready)"
+
+msgid "General"
+msgstr "Allmän"
+
+msgid "General Settings"
+msgstr "Allmänna inställningar"
+
+msgid "Generate"
+msgstr "Generera"
+
+msgid "Generate Billing Address labels"
+msgstr "Fakturaadress"
+
+msgid "Generate From Address labels"
+msgstr "Adressetikett"
+
+msgid "Generate Return Address labels"
+msgstr "Adressetikett"
+
+msgid "Generate Shipping Address labels"
+msgstr "Leveransadress"
+
+msgid ""
+"Generate WooCommerce product feeds for Google Shopping, Facebook Shop, and "
+"Instagram Shop"
+msgstr ""
+"Generera WooCommerce-produktflöden för Google Shopping, Facebook Shop och "
+"Instagram Shop"
+
+msgid "Generate address labels"
+msgstr "Adressetikett"
+
+msgid "Generate custom coupon URLs"
+msgstr "Generera anpassade kupongadresser"
+
+msgid "Generate custom-sized shipping labels"
+msgstr "Fraktetikettstorlek"
+
+msgid "Generate dispatch labels and delivery notes"
+msgstr "Skapa leveransetiketter och följesedlar"
+
+msgid "Generate gift cards based on order status"
+msgstr "Generera presentkort baserat på orderstatus"
+
+msgid "Generate invoices and credits notes"
+msgstr "Skapa fakturor för gratisordrar"
+
+msgid "Generate invoices for existing orders"
+msgstr "Skapa fakturor för gratisordrar"
+
+msgid "Generate invoices for free orders"
+msgstr "Skapa fakturor för gratisordrar"
+
+msgid "Generate invoices for old orders"
+msgstr "Skapa fakturor för gamla beställningar"
+
+msgid "Generate packing slips and credit notes"
+msgstr "Skapa följesedlar och kreditnotor"
+
+msgid "Generate picklists"
+msgstr "Skapa vallistor"
+
+msgid "Generate shipping labels and delivery notes"
+msgstr "Leveransadress"
+
+msgid "Generate shipping labels and dispatch labels"
+msgstr "Leveransadress"
+
+msgid ""
+"Generate ‘Shipping Address’, ‘Billing Address’, ‘From Address’, and ‘Return "
+"Address’ labels"
+msgstr ""
+"Skapa etiketter \"Leveransadress\", \"Faktureringsadress\", \"Från adress\" "
+"och \"Returadress\""
+
+msgid "Generating"
+msgstr "Alstrande"
+
+msgid "Get Add-on"
+msgstr "Hämta tillägg"
+
+msgid ""
+"Get Help with Ensuring Compliance to Major Privacy Laws for Your WordPress "
+"Website - GDPR, CCPA, LGPD, CNIL, and More."
+msgstr ""
+"Få hjälp med att säkerställa efterlevnad av viktiga integritetslagar för din "
+"WordPress-webbplats - GDPR, CCPA, LGPD, CNIL och mer."
+
+msgid "Get Plugin"
+msgstr "Hämta tillägg"
+
+msgid "Get advanced features for your"
+msgstr "Få avancerade funktioner för din"
+
+msgid "Give away product coupons"
+msgstr "Ge bort produktkuponger"
+
+msgid "Go to plugins page"
+msgstr "Gå till plugins-sidan"
+
+msgid "Go to support"
+msgstr "Gå till support"
+
+msgid "Google local product inventory feed"
+msgstr "Googles lagerflöde för lokala produkter"
+
+msgid "Granular consent based on cookie categories"
+msgstr "Granulärt samtycke baserat på cookiekategorier"
+
+msgid "Group products by 'Category'"
+msgstr "Gruppera produkter efter \"Kategori\""
+
+msgid "Group products by category"
+msgstr "Gruppera produkter efter \"Kategori\""
+
+msgid "Group products by ‘Category’"
+msgstr "Gruppera produkter efter \"Kategori\""
+
+msgid "Group products by ‘Order’"
+msgstr "Gruppera produkter efter \"Beställning\""
+
+msgid "Group products in picklist by order/category"
+msgstr "Gruppera produkter i plocklista efter beställning/kategori"
+
+msgid "HTML"
+msgstr "HTML"
+
+msgid "Header Color"
+msgstr "Sidhuvud färg"
+
+msgid "Height"
+msgstr "Höjd"
+
+msgid "Hello there! Let’s begin with the basics"
+msgstr "Hej där! Låt oss börja med grunderna"
+
+msgid "Help Guide"
+msgstr "Hjälpguide"
+
+msgid "Help Links"
+msgstr "Hjälp Länkar"
+
+msgid "Help and Support"
+msgstr "Hjälp och support"
+
+msgid ""
+"Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s "
+"%5$s. %6$s Less than a minute of your time will motivate us to keep doing "
+"what we do. We would really appreciate if you could take a moment to drop a "
+"quick review that motivate us to keep going."
+msgstr ""
+"Hej, vi på %1$s WebToffee %2$s vill tacka dig för att du använder %3$s %4$s "
+"%5$s. %6$s Mindre än en minut av din tid kommer att motivera oss att "
+"fortsätta göra det vi gör. Vi skulle verkligen uppskatta om du kunde ägna en "
+"stund åt att lämna en snabb recension som motiverar oss att fortsätta."
+
+msgid "Hide prices and ‘add to cart’ button"
+msgstr "Dölj priser och \"lägg till i kundvagn\"-knappen"
+
+msgid "Hide/Show received seal in invoice"
+msgstr "Dölj/visa mottaget sigill på faktura"
+
+msgid "Hide/Show received seal in invoice."
+msgstr "Dölj/visa mottaget sigill på faktura."
+
+msgid ""
+"I am unable to add customer VAT(or GSTIN or ABN or any other tax id etc)"
+msgstr ""
+"Jag kan inte lägga till kundmoms (eller GSTIN eller ABN eller något annat "
+"skattenummer etc)"
+
+msgid "I couldn't understand how to make it work"
+msgstr "Jag kunde inte förstå hur man får det att fungera"
+
+msgid "I found a better plugin"
+msgstr "Jag hittade ett bättre tillägg"
+
+msgid "I rather wouldn't say"
+msgstr "Jag vill inte delge den informationen"
+
+msgid "INVOICE"
+msgstr "FAKTURA"
+
+msgid ""
+"If left blank, default to the logo from General settings. Ensure to select "
+"company logo from ‘Invoice > Customize > Company Logo’ to reflect on the "
+"invoice. Recommended size is 150×50px."
+msgstr ""
+"Om det lämnas tomt, standardiseras logotypen från Allmänna inställningar. Se "
+"till att välja företagslogotyp från \"Faktura> Anpassa> Företagslogotyp\" "
+"för att reflektera över fakturan. Rekommenderad storlek är 150x50px."
+
+msgid "If the order number is"
+msgstr "Om ordernumret är"
+
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr "Om du har en stund, vänligen meddela oss varför du inaktiverar:"
+
+msgid "Image"
+msgstr "Bild"
+
+msgid "Image Signature"
+msgstr "Bildsignatur"
+
+msgid "Image label"
+msgstr "Bildetikett"
+
+msgid "Image text align"
+msgstr "Bildtextjustering"
+
+msgid "Import"
+msgstr "Importera"
+
+msgid "Import & export custom fields and values"
+msgstr "Importera och exportera anpassade fält och värden"
+
+msgid "Import Export Suite for WooCommerce"
+msgstr "Ladda från WooCommerce"
+
+msgid "Import and export coupons"
+msgstr "Importera och exportera kuponger"
+
+msgid "Import from URL, Google Sheets, FTP/SFTP"
+msgstr "Importera från URL, Google Sheets, FTP/SFTP"
+
+msgid "Import settings (JSON)"
+msgstr "Importinställningar (JSON)"
+
+msgid ""
+"Import/export Products, Orders, Subscriptions, Coupons, Customers, WordPress "
+"Users, Categories & Tags, Reviews"
+msgstr ""
+"Importera/exportera produkter, beställningar, prenumerationer, kuponger, "
+"kunder, WordPress-användare, kategorier och taggar, recensioner"
+
+msgid "Imported successfully"
+msgstr "Importerades utan problem"
+
+msgid ""
+"Importing the file will delete all the settings and replace with data from "
+"chosen file"
+msgstr ""
+"Genom att importera filen raderas alla inställningar och ersätts med data "
+"från den valda filen"
+
+msgid "In minutes. Eg: 1440 for 1 day. Minimum value is 1440"
+msgstr "På några minuter. T.ex.: 1440 för 1 dag. Minsta värde är 1440"
+
+msgid "Include free(priced as 0) line items in the invoice"
+msgstr "Visa gratis rader i fakturan"
+
+msgid "Include or exclude specific categories"
+msgstr "Inkludera eller exkludera specifika kategorier"
+
+msgid "Include product image"
+msgstr "Inkludera produktbild"
+
+msgid "Include product image in delivery note"
+msgstr "Inkludera produktbild"
+
+msgid "Include the package number & box names on the label"
+msgstr "Inkludera paketnummer och kartongnamn på etiketten"
+
+msgid "Incorrect file"
+msgstr "Felaktig fil"
+
+msgid "Increment sequence in custom series"
+msgstr "Öka sekvensen i anpassade serier"
+
+msgid ""
+"Input a custom prefix for ‘PDF name format’ that will appear at the "
+"beginning of the name. Defaulted to ‘Invoice_’."
+msgstr ""
+"Ange ett anpassat prefix för \"PDF -namnformat\" som visas i början av "
+"namnet. Standard till \"Faktura_\"."
+
+msgid "Instruction"
+msgstr "Instruktioner"
+
+msgid "Interval"
+msgstr "Intervall"
+
+msgid "Invalid access key and mail id"
+msgstr "Ogiltig åtkomstnyckel och e-post-id"
+
+msgid "Invalid order id"
+msgstr "Ogiltigt order-id."
+
+msgid "Invoice"
+msgstr "Faktura"
+
+msgid "Invoice > Customize > Company Logo / Name"
+msgstr "Företagets logotyp/namn"
+
+msgid "Invoice Date"
+msgstr "Fakturadatum"
+
+msgid "Invoice Date:"
+msgstr "Fakturadatum:"
+
+msgid "Invoice Generation In Progress"
+msgstr "Fakturagenerering pågår"
+
+msgid "Invoice No.:"
+msgstr "Faktura nr.:"
+
+msgid "Invoice No:"
+msgstr "Faktura nr:"
+
+msgid "Invoice Number"
+msgstr "Fakturanummer"
+
+msgid "Invoice date"
+msgstr "Fakturadatum"
+
+msgid "Invoice date:"
+msgstr "Fakturadatum:"
+
+msgid "Invoice details"
+msgstr "Fakturainformation"
+
+msgid ""
+"Invoice in PDF format will be attached with the order email for chosen order "
+"statuses."
+msgstr "Faktura i PDF-format bifogas beställningsmailet för valda orderstatus."
+
+msgid "Invoice no:"
+msgstr "Faktura nr:"
+
+msgid "Invoice number"
+msgstr "Fakturanummer"
+
+msgid "Invoice number format"
+msgstr "Fakturanummer format"
+
+msgid "Invoice number length"
+msgstr "Fakturanummerlängd"
+
+msgid ""
+"Invoice numbers are getting generated in the background. This process may "
+"take a little while, so please be patient."
+msgstr ""
+"Fakturanummer genereras i bakgrunden. Denna process kan ta lite tid, så ha "
+"tålamod."
+
+msgid "Invoice setup successfully"
+msgstr "Fakturakonfigurationen lyckades"
+
+msgid "Invoice total"
+msgstr "Faktura totalt"
+
+msgid "Invoice total tax"
+msgstr "Fakturera total skatt"
+
+msgid "Invoice/Packing"
+msgstr "Faktura / förpackning"
+
+msgid "Invoiced date"
+msgstr "Fakturadatum"
+
+msgid "Invoices, Packing Slips and Credit Notes Module"
+msgstr "WooCommerce PDF-fakturor, paket, fraktbrev och fraktetiketter"
+
+msgid "Invoices, Packing slips and Credit notes"
+msgstr "WooCommerce PDF-fakturor, paket, fraktbrev och fraktetiketter"
+
+msgid ""
+"It seems the products in this order were removed, we cannot proceed this "
+"actoin now."
+msgstr ""
+"Det verkar som om produkterna i den här beställningen har tagits bort, vi "
+"kan inte fortsätta med detta nu."
+
+msgid "It seems this order is not yours"
+msgstr "Det verkar som om den här beställningen inte är din"
+
+msgid "It seems this order is not yours."
+msgstr "Det verkar som om den här beställningen inte är din."
+
+msgid "Item with same meta key already exists"
+msgstr "Artikel med samma metanyckel finns redan"
+
+msgid "Jumbing LED Light Wall Ball"
+msgstr "Jumbing LED Light Wall Ball"
+
+msgid "Keep dry"
+msgstr "Håll torrt"
+
+msgid "Key in your company name."
+msgstr "Skriv in ditt företagsnamn."
+
+msgid "Knock, Knock!"
+msgstr "Knack, Knack!"
+
+msgid "Label"
+msgstr "Etikett"
+
+msgid "Language support issues"
+msgstr "Språksupportfrågor"
+
+msgid "Last imported on:"
+msgstr "Senast importerad den:"
+
+msgid "Last updated on:"
+msgstr "Senast uppdaterad den:"
+
+msgid "Left"
+msgstr "Vänster"
+
+msgid "Lighter"
+msgstr "Lättare"
+
+msgid "Lightning-fast printing"
+msgstr "Blixtsnabb utskrift"
+
+msgid "Limit spams with reCAPTCHA"
+msgstr "Begränsa spam med reCAPTCHA"
+
+msgid "Line height"
+msgstr "行高"
+
+msgid "Load from WooCommerce"
+msgstr "Ladda från WooCommerce"
+
+msgid "Location based exclusion for banner"
+msgstr "Platsbaserad uteslutning för banner"
+
+msgid "Log all Stripe transactions"
+msgstr "Logga alla Stripe-transaktioner"
+
+msgid "Logged in users"
+msgstr "Inloggade användare"
+
+msgid "Logo"
+msgstr "Logotyp"
+
+msgid "Logo Height"
+msgstr "Höjd på logotyp"
+
+msgid "Logo Width"
+msgstr "Logotypens bredd"
+
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec vehicula "
+"purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
+"et interdum tellus fermentum at. Fusce pellentesque justo rhoncus"
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec vehicula "
+"purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
+"et interdum tellus fermentum at. Fusce pellentesque justo rhoncus"
+
+msgid "Lots of customization options like button style, position, etc"
+msgstr "Massor av anpassningsalternativ som knappstil, position, etc"
+
+msgid "Maintains action history and debug logs"
+msgstr "Underhåller åtgärdshistorik och felsökningsloggar"
+
+msgid "Manage user credit balance"
+msgstr "Hantera användarkreditsaldo"
+
+msgid "Manual Signature"
+msgstr "Manuell signatur"
+
+msgid "Manually create a bought-together list"
+msgstr "Skapa en sammanköpt lista manuellt"
+
+msgid "Map categories on product level"
+msgstr "Kartlägg kategorier på produktnivå"
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas."
+msgstr ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas."
+
+msgid ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+msgstr ""
+"Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
+"porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
+"mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
+"lectus vel"
+
+msgid "Mention the name of the plugin or meta key if any"
+msgstr "Nämn namnet på plugin-programmet eller meta-nyckeln om någon"
+
+msgid "Meta Key"
+msgstr "Meta Nyckel"
+
+msgid ""
+"Missing RTL/Unicode language(e.g Chinese, Arabic etc) support for PDF "
+"document."
+msgstr ""
+"Saknar RTL/Unicode -språk (t.ex. kinesiska, arabiska etc) för PDF -dokument."
+
+msgid "Monitor payments using Stripe dashboard"
+msgstr "Övervaka betalningar med hjälp av Stripes instrumentpanel"
+
+msgid "More order number templates"
+msgstr "Skapa ny mall"
+
+msgid "Multilingual support"
+msgstr "Flerspråkigt stöd"
+
+msgid "Multiple address label layouts"
+msgstr "Namnlös mall"
+
+msgid "Multiple display formats for bundled products"
+msgstr "Visa pris i produkttabellen"
+
+msgid "Multiple display options for bundle products"
+msgstr "Flera visningsalternativ för paketprodukter"
+
+msgid "Multiple pre-built layouts"
+msgstr "Namnlös mall"
+
+msgid "Multiple premium invoice templates to choose from"
+msgstr "Flera premiumfakturamallar att välja mellan"
+
+msgid "Multiple product recommendation layouts"
+msgstr "Namnlös mall"
+
+msgid "Multiple templates to personalize the document"
+msgstr "Flera mallar för att anpassa dokumentet"
+
+msgid "Multiple templates to personalize the label"
+msgstr "Flera mallar för att anpassa etiketten"
+
+msgid "My account - Order details page"
+msgstr "Mitt konto - sida med beställningsdetaljer"
+
+msgid "My account - Order lists page"
+msgstr "Mitt konto - Sidan med beställningslistor"
+
+msgid "My templates"
+msgstr "Mina mallar"
+
+msgid "Name"
+msgstr "Namn"
+
+msgid "Need a field to add the tax id on checkout page"
+msgstr "Behöver ett fält för att lägga till skatte-ID på kassasidan"
+
+msgid "Next"
+msgstr "Nästa"
+
+msgid "No"
+msgstr "Nej"
+
+msgid "No files found."
+msgstr "Inga filer funna."
+
+msgid "No modules"
+msgstr "Inga moduler"
+
+msgid "No of Items"
+msgstr "Antal objekt"
+
+msgid "No template found."
+msgstr "Ingen mall hittades."
+
+msgid "No temporary file found"
+msgstr "Ingen mall hittades."
+
+msgid "None"
+msgstr "Ingen"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "Not interested"
+msgstr "Är inte intresserad"
+
+msgid "Note"
+msgstr "Anteckning"
+
+msgid "Note:"
+msgstr "Anteckning:"
+
+msgid "Offer store credits"
+msgstr "Erbjud butikskrediter"
+
+msgid "Offers built-in label templates"
+msgstr "Namnlös mall"
+
+msgid "Offers cloud printing of invoice PDFs using PrintNode"
+msgstr "Erbjuder molnutskrift av faktura-PDF-filer med PrintNode"
+
+msgid "One or more order do not have invoice generated. Generate manually?"
+msgstr ""
+"En eller flera beställningar har ingen faktura genererad. Skapa manuellt?"
+
+msgid "Opacity"
+msgstr "Opacitet"
+
+msgid "Option to enable in-context checkout"
+msgstr "Möjlighet att aktivera utcheckning i sammanhanget"
+
+msgid "Option to include/exclude tax to Invoice"
+msgstr "Möjlighet att inkludera/exkludera skatt till faktura"
+
+msgid "Option to set up a specific PayPal locale"
+msgstr "Möjlighet att ställa in en specifik PayPal-lokal"
+
+msgid "Order"
+msgstr "Order"
+
+msgid "Order Date"
+msgstr "Orderdatum"
+
+msgid "Order Date:"
+msgstr "Orderdatum:"
+
+msgid "Order Details"
+msgstr "Orderdetaljer"
+
+msgid "Order Discount"
+msgstr "Order Rabatt"
+
+msgid "Order Meta"
+msgstr "Beställ meta"
+
+msgid "Order No.:"
+msgstr "Ordningsnummer.:"
+
+msgid "Order No:"
+msgstr "Ordningsnummer:"
+
+msgid "Order Number"
+msgstr "Ordernummer"
+
+msgid "Order date"
+msgstr "Orderdatum"
+
+msgid "Order date:"
+msgstr "Orderdatum:"
+
+msgid "Order discount"
+msgstr "Rabatt på order"
+
+msgid "Order email"
+msgstr "Beställningsmail"
+
+msgid "Order meta fields"
+msgstr "Beställ metafält"
+
+msgid "Order no:"
+msgstr "Ordningsnummer:"
+
+msgid "Order number"
+msgstr "Ordernummer"
+
+msgid "Order number (default)"
+msgstr "Ordernummer (standard)"
+
+msgid "Order, Coupon, Subscription Export Import for WooCommerce"
+msgstr "Beställ XML -filexportimport för WooCommerce"
+
+msgid "Other"
+msgstr "Annat"
+
+msgid "Others"
+msgstr "Andra"
+
+msgid "Output"
+msgstr "Utmatning"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF Invoices"
+msgstr "Skriv ut fakturor"
+
+msgid "PDF library"
+msgstr "PDF-bibliotek"
+
+msgid "PDF name format"
+msgstr "Datumformat"
+
+msgid "PREVIEW"
+msgstr "FÖRHANDSGRANSKA"
+
+msgid "Package Number"
+msgstr "Paketnummer"
+
+msgid "Packing slip"
+msgstr "Följesedel"
+
+msgid "Partial and Full Refund of the order amount"
+msgstr "Delvis och fullständig återbetalning av beställningsbeloppet"
+
+msgid "PayPal Express Checkout Payment Gateway for WooCommerce"
+msgstr "PayPal Express Checkout Payment Gateway för WooCommerce"
+
+msgid "Payment & subscription"
+msgstr "Betalning & prenumeration"
+
+msgid "Payment Method"
+msgstr "Betalningsmetod"
+
+msgid "Payment Method:"
+msgstr "Betalsätt:"
+
+msgid "Payment method"
+msgstr "Betalningsmetod"
+
+msgid "Payment method:"
+msgstr "Betalningsmetod:"
+
+msgid "Payment method: "
+msgstr "Betalningsmetod:"
+
+msgid "Payment received stamp"
+msgstr "Betalning mottagen stämpel"
+
+msgid "Ph No:"
+msgstr "Ph No:"
+
+msgid "Phone No:"
+msgstr "Telefon:"
+
+msgid "Phone no:"
+msgstr "Telefon:"
+
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+msgid "Pick list"
+msgstr "Plocklista"
+
+msgid "Pick lists"
+msgstr "Plocklista"
+
+msgid "Picklist"
+msgstr "Plocklista"
+
+msgid "Picklists Add-on"
+msgstr "Plocklista"
+
+msgid "Please enter mandatory fields"
+msgstr "Ange obligatoriska fält"
+
+msgid "Please enter name"
+msgstr "Ange namn"
+
+msgid "Please enter order number"
+msgstr "Ange beställningsnummer"
+
+msgid "Please fill the `from address` in the plugin's general settings."
+msgstr ""
+"Vänligen fyll i \"från-adressen\" i plugin-programmets allmänna "
+"inställningar."
+
+msgid ""
+"Please save all data before leaving this page. All unsaved data will be lost."
+" Are you sure?"
+msgstr ""
+"Spara all information innan du lämnar den här sidan. Alla osparade data "
+"kommer att gå förlorade. Är du säker?"
+
+msgid "Please select json file"
+msgstr "Ange namn"
+
+msgid "Please wait"
+msgstr "Vänligen vänta"
+
+msgid "Plugin settings not available in my language"
+msgstr "Insticksprograminställningar är inte tillgängliga på mitt språk"
+
+msgid "Postal code"
+msgstr "Postnummer"
+
+msgid "Postförskott"
+msgstr "Postförskott"
+
+msgid "Pre-built layout for documents"
+msgstr "En mängd förbyggda mallar för varje dokument"
+
+msgid "Pre-built layouts"
+msgstr "Förbyggda layouter"
+
+msgid "Pre-built layouts & customizable templates"
+msgstr "Förbyggda layouter och anpassningsbara mallar"
+
+msgid "Pre-built layouts for documents"
+msgstr "En mängd förbyggda mallar för varje dokument"
+
+msgid "Pre-built proforma invoice layouts"
+msgstr "Proformafaktura"
+
+msgid "Prefix"
+msgstr "Prefix"
+
+msgid "Premium"
+msgstr "Premium"
+
+msgid "Premium Extensions"
+msgstr "Premium-utökningar"
+
+msgid "Premium extensions"
+msgstr "Premium-tillägg"
+
+msgid "Premium version"
+msgstr "Premiumversion"
+
+msgid "Present"
+msgstr "Närrvarande"
+
+msgid "Preview before printing"
+msgstr "Förhandsgranska före utskrift"
+
+msgid "Preview documents before printing"
+msgstr "Förhandsgranska före utskrift"
+
+msgid "Preview sample PDF"
+msgstr "Förhandsgranska exempel på PDF"
+
+msgid "Price"
+msgstr "Pris"
+
+msgid "Price label"
+msgstr "Prisetikett"
+
+msgid "Price text align"
+msgstr "Prisjustering av pris"
+
+msgid "Print"
+msgstr "Skriv ut"
+
+msgid "Print Delivery note"
+msgstr "Skriv ut leveransnot"
+
+msgid "Print Dispatch Label"
+msgstr "Skriv ut avsändningsetikett"
+
+msgid "Print Invoice"
+msgstr "Skriv ut faktura"
+
+msgid "Print Invoices"
+msgstr "Skriv ut fakturor"
+
+msgid "Print PDF invoices for WooCommerce"
+msgstr "Ladda från WooCommerce"
+
+msgid "Print Packing slip"
+msgstr "Utskriftsförpackning"
+
+msgid "Print Shipping Label"
+msgstr "Skriv ut fraktetikett"
+
+msgid "Print button access for"
+msgstr "Skriv ut knappåtkomst för"
+
+msgid "Print invoice"
+msgstr "Skriv ut faktura"
+
+msgid "Print/Download"
+msgstr "Skriv ut / ladda ner"
+
+msgid "Print/Download Delivery note"
+msgstr "Skriv ut / ladda ner leveransnot"
+
+msgid "Print/Download Dispatch Label"
+msgstr "Skriv ut / ladda ner leveransetikett"
+
+msgid "Print/Download Invoice"
+msgstr "Skriv ut / ladda ner faktura"
+
+msgid "Print/Download Packing slip"
+msgstr "Skriv ut / ladda ner förpackningskort"
+
+msgid "Prints Packing List,Invoice,Delivery Note and Shipping Label."
+msgstr "Skriver ut packlista, faktura, följesedel och fraktetikett."
+
+msgid "Privacy Policy"
+msgstr "Integritetspolicy"
+
+msgid "Privacy compliance"
+msgstr "Integritetspolicy"
+
+msgid "Pro Add-on"
+msgstr "Pro-tillägg"
+
+msgid "Pro version"
+msgstr "Pro-versionen"
+
+msgid "Pro-rate charges till first renewal"
+msgstr "Proportionella avgifter fram till första förnyelse"
+
+msgid "Product"
+msgstr "Produkt"
+
+msgid "Product Import Export Plugin For WooCommerce"
+msgstr "Beställ XML -filexportimport för WooCommerce"
+
+msgid "Product Table"
+msgstr "Produkttabell"
+
+msgid "Product attributes"
+msgstr "Produktegenskaper"
+
+msgid "Product label"
+msgstr "Produktmärkning"
+
+msgid "Product meta fields"
+msgstr "Produktmetafält"
+
+msgid "Product text align"
+msgstr "Produktens textjustering"
+
+msgid "Proforma Invoices Add-on"
+msgstr "Proformafaktura"
+
+msgid "Proforma invoice"
+msgstr "Proformafaktura"
+
+msgid "Proforma invoice number format"
+msgstr "Fakturanummer format"
+
+msgid "Proforma invoices"
+msgstr "Proformafakturor"
+
+msgid "Provide refunds to store credit"
+msgstr "Ge återbetalningar till butikskredit"
+
+msgid "QR Code"
+msgstr "QR kod"
+
+msgid "QR Code Addon for WooCommerce PDF Invoices"
+msgstr "QR Code Addon för WooCommerce PDF-fakturor"
+
+msgid "QR code"
+msgstr "QR kod"
+
+msgid "Qty label"
+msgstr "Antal etiketter"
+
+msgid "Qty text align"
+msgstr "Antal textjusteringar"
+
+msgid "Quantity"
+msgstr "Kvantitet"
+
+msgid "Quick setup page to add & edit recommendations"
+msgstr "Snabbinställningssida för att lägga till och redigera rekommendationer"
+
+msgid "RTL support for documents"
+msgstr "Andra handlingar"
+
+msgid "Rate us now"
+msgstr "Betygsätt oss nu"
+
+msgid "Recommended 128MB or more"
+msgstr "Rekommenderad 128MB eller mer"
+
+msgid "Recommended for better performances"
+msgstr "Rekommenderas för bättre prestanda"
+
+msgid "Recommended size is 150x50px."
+msgstr ""
+"Om det lämnas tomt, standardiseras logotypen från Allmänna inställningar. Se "
+"till att välja företagslogotyp från \"Faktura> Anpassa> Företagslogotyp\" "
+"för att reflektera över fakturan. Rekommenderad storlek är 150x50px."
+
+msgid "Recommended size is 150×50px"
+msgstr "Rekommenderad storlek är 150×50px"
+
+msgid "Recommended to compress PDF documents"
+msgstr "Rekommenderas för att komprimera PDF-dokument"
+
+msgid "Recommended, will use fallback functions"
+msgstr "Rekommenderas, kommer att använda reservfunktioner"
+
+msgid "Refer to our documentation to setup and get started"
+msgstr "Se vår dokumentation för att ställa in och komma igång"
+
+msgid "Refund"
+msgstr "Återbetalning"
+
+msgid ""
+"Refund in this order seems not having credit number yet. Do you want to "
+"manually generate one ?"
+msgstr ""
+"Återbetalning i den här ordningen verkar inte ha kreditnummer ännu. Vill du "
+"skapa en manuellt?"
+
+msgid "Remind me later"
+msgstr "Påminn mig senare"
+
+msgid "Remote Print add-on for WooCommerce PDF Invoices - PrintNode"
+msgstr "Remote Print-tillägg för WooCommerce PDF-fakturor - PrintNode"
+
+msgid ""
+"Removing year [Y] from the prefix will disable the annual reset functionality"
+msgstr ""
+"Om du tar bort år [Y] från prefixet inaktiveras den årliga "
+"återställningsfunktionen"
+
+msgid ""
+"Removing year [Y] from the suffix will disable the annual reset functionality"
+msgstr ""
+"Om du tar bort år [Y] från suffixet inaktiveras den årliga "
+"återställningsfunktionen"
+
+msgid "Renewal interval & expiry customizations"
+msgstr "Förnyelseintervall och anpassningar för utgångsdatum"
+
+msgid "Replace the existing templates"
+msgstr "Byt ut de befintliga mallarna"
+
+msgid "Required"
+msgstr "Obligatorisk"
+
+msgid "Required if you have images in your documents"
+msgstr "Krävs om du har bilder i dina dokument"
+
+msgid "Reset"
+msgstr "Återställ"
+
+msgid "Reset all settings to default"
+msgstr "Återställ alla inställningar till standard"
+
+msgid "Reset successfully"
+msgstr "Återställ framgångsrikt"
+
+msgid ""
+"Reset will delete all the settings, saved templates and reset to the default "
+"settings"
+msgstr ""
+"Återställ tar bort alla inställningar, sparade mallar och återställer till "
+"standardinställningarna"
+
+msgid "Restrict coupons by country"
+msgstr "Begränsa kuponger efter land"
+
+msgid "Retain user passwords on import/export"
+msgstr "Behåll användarlösenord vid import/export"
+
+msgid "Return Policy"
+msgstr "Returvillkor"
+
+msgid "Return address"
+msgstr "Returadress"
+
+msgid "Return policy"
+msgstr "Returvillkor"
+
+msgid "Review"
+msgstr "Recension"
+
+msgid "Review now"
+msgstr "Granska nu"
+
+msgid "Right"
+msgstr "Höger"
+
+msgid "S.No"
+msgstr "S.nr"
+
+msgid "S.no"
+msgstr "S.nr"
+
+msgid "SKU"
+msgstr "SKU"
+
+msgid "SKU label"
+msgstr "SKU-etikett"
+
+msgid "SKU text align"
+msgstr "SKU-textjustering"
+
+msgid "SSN"
+msgstr "SSN"
+
+msgid "SSN number"
+msgstr "SSN nummer"
+
+msgid "SSN:"
+msgstr "SSN:"
+
+msgid "Save"
+msgstr "Spara"
+
+msgid "Save and activate"
+msgstr "Spara och aktivera"
+
+msgid "Save before you proceed."
+msgstr "Spara innan du fortsätter."
+
+msgid "Save document layout as template"
+msgstr "Spara dokumentlayouten som mall"
+
+msgid "Saving"
+msgstr "Sparar"
+
+msgid "Saving..."
+msgstr "Sparar..."
+
+msgid "Scan and list cookies"
+msgstr "Skanna och lista cookies"
+
+msgid "Schedule automated import & export"
+msgstr "Schemalägg automatisk import och export"
+
+msgid "Schedule automated import and export"
+msgstr "Schemalägg automatisk import och export"
+
+msgid "Secure"
+msgstr "Säker"
+
+msgid "Secured payments with SCA and 3D secure"
+msgstr "Säkra betalningar med SCA och 3D säker"
+
+msgid "Select One"
+msgstr "Välj en"
+
+msgid ""
+"Select a name format for PDF invoice that includes invoice/order number."
+msgstr ""
+"Välj ett namnformat för PDF -faktura som innehåller faktura/ordernummer."
+
+msgid "Select country"
+msgstr "Välj land"
+
+msgid ""
+"Select email classes that match the order statuses selected under the "
+"'Automate invoice creation option. If no order status is selected, you must "
+"manually generate invoice to attach it with these order emails."
+msgstr ""
+"Välj e-postklasser som matchar orderstatusen som valts under alternativet "
+"\"Automatisera fakturaskapande\". Om ingen orderstatus är vald måste du "
+"manuellt skapa en faktura för att bifoga den med dessa ordermail."
+
+msgid ""
+"Select/add order meta to display additional information related to the order "
+"on the invoice."
+msgstr ""
+"Tillåter visning av ytterligare information om din beställning på fakturan."
+
+msgid "Seller name"
+msgstr "Säljarens namn"
+
+msgid "Seller tax ID"
+msgstr "Säljarens skatte-ID"
+
+msgid "Send automated emails notifications"
+msgstr "Ändra fakturadatum"
+
+msgid ""
+"Separate tax column in product table for multiple tax options in dispatch "
+"labels"
+msgstr "Separat skattekolumn i produkttabellen för flera skattealternativ"
+
+msgid ""
+"Separate tax column in product table for multiple tax options in proforma "
+"invoices"
+msgstr "Separat skattekolumn i produkttabellen för flera skattealternativ"
+
+msgid ""
+"Separate tax column in the product table for multiple tax options in invoices"
+msgstr "Separat skattekolumn i produkttabellen för flera skattealternativ"
+
+msgid "Sequential Order Number for WooCommerce"
+msgstr "Sekventiellt ordernummer för WooCommerce"
+
+msgid "Serial No label"
+msgstr "Prisetikett"
+
+msgid "Serial no text align"
+msgstr "Prisjustering av pris"
+
+msgid "Set custom proforma invoice number"
+msgstr "Använd ordernummer som fakturanummer"
+
+msgid "Set free trial and sign-up fee"
+msgstr "Ange gratis provperiod och registreringsavgift"
+
+msgid "Set quote expiry period"
+msgstr "Ange utgångsperiod för offerten"
+
+msgid ""
+"Set the  Size of the Shipping label to be either full page or custom size."
+msgstr ""
+"Ställ in storleken på fraktetiketten att vara antingen helsida eller "
+"anpassad storlek."
+
+msgid "Set up a redirect page"
+msgstr "Skapa en omdirigeringssida"
+
+msgid "Set up discounts on the recommended product bundle"
+msgstr "Ställ in rabatter på det rekommenderade produktpaketet"
+
+msgid "Settings"
+msgstr "Inställningar"
+
+msgid "Settings Updated"
+msgstr "Inställningarna sparades"
+
+msgid "Settings are empty"
+msgstr "Inställningarna sparades"
+
+msgid "Settings updated."
+msgstr "Inställningar uppdaterade."
+
+msgid "Ship Date:"
+msgstr "Fraktetikett:"
+
+msgid "Ship to"
+msgstr "Skicka till"
+
+msgid "Shipping"
+msgstr "Frakt"
+
+msgid "Shipping Address"
+msgstr "Leveransadress"
+
+msgid "Shipping Address:"
+msgstr "Leveransadress:"
+
+msgid "Shipping Label"
+msgstr "Fraktetikett"
+
+msgid "Shipping Label 1"
+msgstr "Fraktnamn"
+
+msgid "Shipping Method:"
+msgstr "Leveranssätt:"
+
+msgid "Shipping address"
+msgstr "Leveransadress"
+
+msgid "Shipping label"
+msgstr "Fraktnamn"
+
+msgid "Shipping label size"
+msgstr "Fraktetikettstorlek"
+
+msgid "Shipping labels"
+msgstr "Fraktnamn"
+
+msgid "Shipping labels, Dispatch labels and Delivery Notes Module"
+msgstr "Fraktetiketter, leveransetiketter och modul för fraktsedlar"
+
+msgid "Shipping labels, Dispatch labels and Delivery notes"
+msgstr "Leveransadress"
+
+msgid "Shop name"
+msgstr "Butiksnamn"
+
+msgid "Shortcode support for the Paypal Express button"
+msgstr "Kortkodsstöd för Paypal Express-knappen"
+
+msgid "Show Less"
+msgstr "Visa mindre"
+
+msgid "Show More"
+msgstr "Visa mer"
+
+msgid "Show Pay Later option at checkout"
+msgstr "Visa alternativet Betala senare i kassan"
+
+msgid "Show different taxes in separate columns"
+msgstr "Visa olika skatter i separata kolumner"
+
+msgid "Show payment link on invoice"
+msgstr "Visa betalningslänk på faktura"
+
+msgid "Show print invoice button for customers"
+msgstr "Visa knappen \"Skriv ut faktura\" för kunder"
+
+msgid "Show print invoice button to customers"
+msgstr "Visa knappen \"Skriv ut faktura\" för kunder"
+
+msgid "Show print packing slip button to customers"
+msgstr "Visa knappen \"Skriv ut faktura\" för kunder"
+
+msgid "Show product variation data"
+msgstr "Lägg till produktvariant"
+
+msgid "Show variation data for variable products"
+msgstr "Visa variationsdata för variabla produkter"
+
+msgid "Show variation data of products"
+msgstr "Visa variationsdata för produkter"
+
+msgid ""
+"Shows a preview of the template on an actual order. Key in an order number "
+"to view the same."
+msgstr ""
+"Visar en förhandsvisning av mallen i en faktisk beställning. Ange ett "
+"ordernummer för att visa detsamma."
+
+msgid "Signature type"
+msgstr "Signatur typ"
+
+msgid "Skip invoice setup"
+msgstr "Hoppa över fakturainställningar"
+
+msgid "Smart Coupons for WooCommerce"
+msgstr "Ladda från WooCommerce"
+
+msgid "Solid"
+msgstr "Solid"
+
+msgid "Some useful `filters` to extend plugin's functionality"
+msgstr "Några användbara `filter` för att utöka plugins funktionalitet"
+
+msgid "Sort order items in product table"
+msgstr "Lägga till produktbild i produkttabellen"
+
+msgid "Sort order items in the product table"
+msgstr "Lägga till produktbild i produkttabellen"
+
+msgid "Sort order items in the product table "
+msgstr "Sortera beställningsartiklar i produkttabellen"
+
+msgid "Sort products based on Name or SKU"
+msgstr "Sortera produkter baserat på namn eller SKU"
+
+msgid ""
+"Specify your company tax ID. For e.g., you may enter as VAT: GB123456789, "
+"GSTIN:0948745 or ABN:51 824 753 556"
+msgstr ""
+"Ange ditt företags skatte -ID. För t.ex. du kan ange som moms: GB123456789, "
+"GSTIN: 0948745 eller ABN: 51 824 753555"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "Step 1"
+msgstr "Steg 1"
+
+msgid "Step 2"
+msgstr "Steg 2"
+
+msgid "Step 3"
+msgstr "Steg 3"
+
+msgid "Style"
+msgstr "Stil"
+
+msgid "Submit & Deactivate"
+msgstr "Skicka och inaktivera"
+
+msgid "Subscriptions for WooCommerce"
+msgstr "Ladda från WooCommerce"
+
+msgid "Subtotal"
+msgstr "Delsumma"
+
+msgid "Success"
+msgstr "Framgång"
+
+msgid "Successfully cleared all temp files."
+msgstr "Rensade alla temporära filer."
+
+msgid "Suffix"
+msgstr "Suffix"
+
+msgid "Summary Table"
+msgstr "Översiktstabell"
+
+msgid "Support"
+msgstr "Stöd"
+
+msgid "Support for additional fields that can be added to the feed"
+msgstr "Stöd för ytterligare fält som kan läggas till i flödet"
+
+msgid "Support for multiple product types"
+msgstr "Stöder flera förpackningstyper"
+
+msgid "Support for serial and USB scales"
+msgstr "Stöd för seriella och USB-vågar"
+
+msgid "Supported address types"
+msgstr "Andra handlingar"
+
+msgid "Supported by a team with 99% Customer Satisfaction Score"
+msgstr "Stöds av ett team med 99 % kundnöjdhet"
+
+msgid "Supported documents"
+msgstr "Dokumenttyper som stödjs"
+
+msgid "Supports Excel, XML, CSV, and TSV file formats"
+msgstr "Stöder Excel, XML, CSV och TSV filformat"
+
+msgid "Supports WooCommerce Subscriptions for Express buttons"
+msgstr "Stöder WooCommerce-prenumerationer för Express-knappar"
+
+msgid "Supports automatic & manual printing"
+msgstr "Stöder automatisk och manuell utskrift"
+
+msgid "Supports recurring discounts"
+msgstr "Andra handlingar"
+
+msgid "Supports recurring payments"
+msgstr "Andra handlingar"
+
+msgid "Switching to order number will disable the annual reset functionality"
+msgstr ""
+"Om du byter till ordernummer inaktiveras den årliga återställningsfunktionen"
+
+msgid "Sync WooCommerce products to Facebook catalog"
+msgstr "Synkronisera WooCommerce-produkter till Facebook-katalogen"
+
+msgid "Synchronize subscription renewal"
+msgstr "Synkronisera prenumerationsförnyelse"
+
+msgid "System Configuration"
+msgstr "Systemkonfiguration"
+
+msgid "System Info"
+msgstr "Systeminfo"
+
+msgid "Table body text color"
+msgstr "Tabellens textfärg"
+
+msgid "Table head background"
+msgstr "Tabell huvud bakgrund"
+
+msgid "Table head text color"
+msgstr "Tabellhuvudets textfärg"
+
+msgid "Tax ID"
+msgstr "Momsregistrerings ID"
+
+msgid "Tax label"
+msgstr "Skattetikett"
+
+msgid "Tax text align"
+msgstr "Skatttextjustering"
+
+msgid "Tel Field"
+msgstr "Tel-fältet"
+
+msgid "Tel:"
+msgstr "Tel:"
+
+msgid "Template created and activated."
+msgstr "Mall skapad."
+
+msgid "Template created."
+msgstr "Mall skapad."
+
+msgid "Template updated and activated."
+msgstr "Mall uppdaterad."
+
+msgid "Template updated."
+msgstr "Mall uppdaterad."
+
+msgid "Template with same name already exists."
+msgstr "Mall med samma namn finns redan."
+
+msgid "Templates"
+msgstr "Mallar"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Text Color"
+msgstr "Textfärg"
+
+msgid "Text align"
+msgstr "Text justering"
+
+msgid "Text color"
+msgstr "Text färg"
+
+msgid ""
+"That’s awesome! We’d love it if you take a moment to share what you think "
+"and help spread the word."
+msgstr ""
+"Det är jättebra! Vi skulle älska det om du tar en stund att dela vad du "
+"tycker och hjälper till att sprida ordet."
+
+msgid ""
+"The best-in-the-class import, export, and migration solutions for your "
+"WooCommerce data"
+msgstr ""
+"Klassens bästa import-, export- och migreringslösningar för din WooCommerce-"
+"data"
+
+msgid ""
+"The company name and the address details from this section will be used as "
+"the sender address in the invoice and other related documents."
+msgstr ""
+"Företaget och frakt från adressuppgifter från avsnitten nedan kommer att "
+"användas för att fylla i fakturan och relaterade dokument därefter."
+
+msgid ""
+"The date is displayed on the invoice. It can be either the order creation "
+"date or the invoiced date."
+msgstr ""
+"Datumet visas på fakturan. Det kan vara antingen datumet för att skapa order "
+"eller faktureringsdatumet."
+
+msgid "The default library to be used PDF generation"
+msgstr "Standardbiblioteket för att generera PDF"
+
+msgid "The latest specified starting number will be used after reset"
+msgstr "Det senast angivna startnumret kommer att användas efter återställning"
+
+msgid ""
+"The most popular payment gateways and subscription solutions to scale your "
+"business"
+msgstr ""
+"De mest populära betalningsportalerna och prenumerationslösningarna för att "
+"skala din verksamhet"
+
+msgid "The plugin didn't work as expected"
+msgstr "Tillägget fungerade inte som förväntat"
+
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr ""
+"Tillägget är bra, men jag behöver en specifik funktion som du inte stöder"
+
+msgid ""
+"The plugins %s and %s cannot be active in your store at the same time. "
+"Kindly deactivate one of these prior to activating the other."
+msgstr ""
+"Plugins %s och %s kan inte vara aktiva i din butik samtidigt. Inaktivera en "
+"av dessa innan du aktiverar den andra."
+
+msgid "There is no items in this order."
+msgstr ""
+"Det går inte att skriva ut leveransnot. Kontrollera artiklarna i "
+"beställningen."
+
+msgid "There is no order with this given id"
+msgstr "Det finns ingen beställning med detta givna id"
+
+msgid "There is no order with this id"
+msgstr "Det finns ingen beställning med detta id"
+
+msgid ""
+"This filter is used to alter the barcode information for all the document "
+"templates"
+msgstr ""
+"Detta filter används för att ändra streckkodsinformationen för alla "
+"dokumentmallar"
+
+msgid ""
+"This filter is used to alter the invoice date in all the document templates"
+msgstr "Detta filter används för att ändra fakturadatum i alla dokumentmallar"
+
+msgid ""
+"This filter is used to alter the order date in all the document templates"
+msgstr ""
+"Detta filter används för att ändra beställningsdatum i alla dokumentmallar"
+
+msgid ""
+"This is basic template. In order to use premium feature, you need to switch "
+"and activate the premium template"
+msgstr ""
+"Detta är en grundläggande mall. För att använda premiumfunktionen måste du "
+"byta och aktivera premiummallen"
+
+msgid "This is premium template which is not compatible with the basic plugin"
+msgstr "Denna mall är inte kompatibel med plugin för QR-kod"
+
+msgid "This template is not comaptible with QR Code addon plugin"
+msgstr "Denna mall är inte kompatibel med plugin för QR-kod"
+
+msgid "This way up"
+msgstr "Den här vägen upp"
+
+msgid ""
+"This will remove all invoice numbers created by WooCommerce PDF Invoices, "
+"Packing Slips, Delivery Notes & Shipping Labels by WebToffee."
+msgstr ""
+"Detta tar bort alla fakturanummer som skapats av WooCommerce PDF-fakturor, "
+"följesedel, följesedlar och fraktetiketter av WebToffee."
+
+msgid "Timely compatibility updates and bug fixes"
+msgstr "Verifierad kompatibilitet med större plugins"
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Title font size"
+msgstr "Titel Textstorlek"
+
+msgid "To Address"
+msgstr "Till adress"
+
+msgid "To add a different meta key"
+msgstr "För att lägga till en annan meta-nyckel"
+
+msgid "To add more than one custom order meta,"
+msgstr "För att lägga till mer än en anpassad ordningsmeta,"
+
+msgid "To compress PDF documents"
+msgstr "För att komprimera PDF-dokument"
+
+msgid "To help you comply with invoice mandates that require QR Codes"
+msgstr "För att hjälpa dig att följa fakturamandat som kräver QR-koder"
+
+msgid "To include the keyed in name to the Invoice, ensure to select"
+msgstr "För att inkludera det inskrivna namnet på fakturan, se till att välja"
+
+msgid ""
+"To include the uploaded image as logo to the invoice, ensure to select "
+"Company logo from"
+msgstr ""
+"För att inkludera den uppladdade bilden som logotyp på fakturan, se till att "
+"välja Företagslogotyp från"
+
+msgid "To proceed with the import, please type %1$s in the field below"
+msgstr "För att fortsätta med importen, skriv %1$s i fältet nedan"
+
+msgid "To proceed with the reset, please type %1$s in the field below"
+msgstr "För att fortsätta med återställningen, skriv %1$s i fältet nedan"
+
+msgid "To:"
+msgstr "Till:"
+
+msgid "Total"
+msgstr "Totalt"
+
+msgid "Total Price"
+msgstr "Totalbelopp"
+
+msgid "Total Tax"
+msgstr "Total moms"
+
+msgid "Total Weight"
+msgstr "Totalviktsetikett"
+
+msgid "Total files"
+msgstr "Totalt antal filer"
+
+msgid "Total label"
+msgstr "Titel"
+
+msgid "Total price"
+msgstr "Totalbelopp"
+
+msgid "Total tax"
+msgstr "Total moms"
+
+msgid "Total text align"
+msgstr "Total textjustering"
+
+msgid "Total weight label"
+msgstr "Totalviktsetikett"
+
+msgid "Total weight text align"
+msgstr "Textjustering för total vikt"
+
+msgid "Tracking Number"
+msgstr "Sändningsnummer"
+
+msgid "Tracking Number:"
+msgstr "Spårnings nummer:"
+
+msgid "Tracking number"
+msgstr "﻿Spårningsnummer"
+
+msgid "Tracking number:"
+msgstr "﻿Spårningsnummer:"
+
+msgid "Truncation did not complete as expected."
+msgstr "Trunkeringen slutfördes inte som förväntat."
+
+msgid "Type in prefix/ suffix / date format if required"
+msgstr "Skriv in prefix/suffix/datumformat om det behövs"
+
+msgid "Type template name to search"
+msgstr "Skriv mallnamn för att söka"
+
+msgid "URL Coupons for WooCommerce"
+msgstr "Ladda från WooCommerce"
+
+msgid ""
+"Unable to add from third party plugin that collects customer VAT(or GSTIN or "
+"ABN etc)"
+msgstr ""
+"Det går inte att lägga till från tredje parts plugin som samlar in kundmoms "
+"(eller GSTIN eller ABN etc)"
+
+msgid "Unable to generate PDF."
+msgstr "Det gick inte att generera PDF."
+
+msgid "Unable to load template."
+msgstr "Det gick inte att ladda mallen."
+
+msgid "Unable to print Delivery note. Please check the items in the order."
+msgstr ""
+"Det går inte att skriva ut leveransnot. Kontrollera artiklarna i "
+"beställningen."
+
+msgid "Unable to print Packing slip. Please check the items in the order."
+msgstr ""
+"Det går inte att skriva ut förpackningsblanketten. Kontrollera artiklarna i "
+"beställningen."
+
+msgid "Unable to save theme."
+msgstr "Det gick inte att spara temat."
+
+msgid "Unable to switch view."
+msgstr "Det går inte att byta vy."
+
+msgid ""
+"Unable to update settings due to an internal error. %s To troubleshoot "
+"please click %s here. %s"
+msgstr ""
+"Det går inte att uppdatera inställningarna på grund av ett internt fel. %s "
+"Klicka på %s här för att felsöka. %s"
+
+msgid "Unit Price"
+msgstr "Enhetspris"
+
+msgid "Unit price"
+msgstr "Enhetspris"
+
+msgid ""
+"Unlock limitless possibilities of invoice customization with the addon -"
+msgstr "Lås upp obegränsade möjligheter till fakturaanpassning med tillägget -"
+
+msgid "Untitled template"
+msgstr "Namnlös mall"
+
+msgid "Update Settings"
+msgstr "Uppdatera inställningar"
+
+msgid "Updated"
+msgstr "Uppdaterad"
+
+msgid "Upgrade To Premium"
+msgstr "UPPGRADERA TILL PREMIUM"
+
+msgid "Upgrade to premium"
+msgstr "UPPGRADERA TILL PREMIUM"
+
+msgid "Upload logo"
+msgstr "Ladda upp logotyp"
+
+msgid "Upload your image"
+msgstr "Ladda upp din bild"
+
+msgid "Use custom number format & length"
+msgstr "Använd anpassat talformat och längd"
+
+msgid "Use custom number series to number documents"
+msgstr "Använd anpassade nummerserier för att numrera dokument"
+
+msgid "Use invoice created date"
+msgstr "Fakturans skapade datum"
+
+msgid "Use latest settings for invoice"
+msgstr "Använd orderdatum som proformafakturadatum"
+
+msgid "Use order date"
+msgstr "Ändra beställningsdatum"
+
+msgid "Use order date as input instead."
+msgstr "Användarbeställningsdatum som inmatning istället."
+
+msgid "Use order number as document number"
+msgstr "Använd ordernummer som fakturanummer"
+
+msgid ""
+"Use upsells, cross-sells, & related products as frequently bought products"
+msgstr ""
+"Använd merförsäljning, korsförsäljning och relaterade produkter som ofta "
+"köpta produkter"
+
+msgid "User consent logging"
+msgstr "Loggning av användarens samtycke"
+
+msgid "Users who haven`t logged will also be allowed to print"
+msgstr "Användare som inte har loggat kommer också att få skriva ut"
+
+msgid "Users will be redirected to login page if not logged in"
+msgstr ""
+"Användare kommer att omdirigeras till inloggningssidan om de inte är "
+"inloggade"
+
+msgid "VAT"
+msgstr "Moms"
+
+msgid "VAT number"
+msgstr "VAT-nummer"
+
+msgid "VAT:"
+msgstr "Momsnummer:"
+
+msgid "Verified compatibility with major plugins"
+msgstr "Verifierad kompatibilitet med större plugins"
+
+msgid "View add-on"
+msgstr "Hämta tillägg"
+
+msgid "View live preview of customization"
+msgstr "Visa exempel på anpassningsdemo"
+
+msgid "View progress"
+msgstr "Visa förlopp"
+
+msgid "View sample customization demo"
+msgstr "Visa exempel på anpassningsdemo"
+
+msgid "Visual"
+msgstr "Visuell"
+
+msgid "WPML compatibility"
+msgstr "WPML-kompatibilitet"
+
+msgid "WPML compatibilityCustomize label sizes"
+msgstr "WPML-kompatibilitet"
+
+msgid "WPML multilingual and multicurrency support "
+msgstr "WPML flerspråkig och multivaluta stöd"
+
+msgid "WT PDF Invoice Debug"
+msgstr "Skriv ut fakturor"
+
+msgid ""
+"We do not collect any personal data when you submit this form. It's your "
+"feedback that we value."
+msgstr ""
+"Vi samlar inte in några personuppgifter när du skickar detta formulär. Det "
+"är din feedback som vi värdesätter."
+
+msgid "We would love to help you on any queries or issues."
+msgstr "Vi skulle gärna hjälpa dig med eventuella frågor eller frågor."
+
+msgid "WebToffee"
+msgstr "WebToffee"
+
+msgid "WebToffee WooCommerce Gift Cards"
+msgstr "WebToffee WooCommerce presentkort"
+
+msgid "WebToffee WooCommerce Product Feed & Sync Manager"
+msgstr "WebToffee -produktflöde för Facebook"
+
+msgid "WebToffee WooCommerce Request A Quote"
+msgstr "WebToffee WooCommerce Begär en offert"
+
+msgid "Weight"
+msgstr "Vikt"
+
+msgid "Weight:"
+msgstr "Vikt:"
+
+msgid "What did you expect?"
+msgstr "Vad förväntade du dig?"
+
+msgid "What length would you prefer for your credit note"
+msgstr "Vilken längd skulle du föredra för din kreditnota"
+
+msgid "What length would you prefer for your invoice"
+msgstr "Vilken längd föredrar du på din faktura"
+
+msgid "What length would you prefer for your invoice number"
+msgstr "Använd ordernummer som fakturanummer"
+
+msgid "What length would you prefer for your proforma invoice"
+msgstr "Vilken längd föredrar du på din proformafaktura"
+
+msgid "What should be the starting number for your credit notes?"
+msgstr "Vad ska vara startnumret för dina kreditnotor?"
+
+msgid "What should be the starting number for your invoices?"
+msgstr "Vad ska vara startnumret på dina fakturor?"
+
+msgid "What should be the starting number for your proforma invoices?"
+msgstr "Vad ska vara startnumret för dina proformafakturor?"
+
+msgid ""
+"When enabled, replaces state code with state name in the from, return, "
+"billing and shipping addresses"
+msgstr ""
+"Aktivera den för att visa statens namn istället för statens kod i från-, "
+"retur-, fakturerings- och leveransadresser"
+
+msgid "Which language?"
+msgstr "Vilket plugin?"
+
+msgid "Which plugin?"
+msgstr "Vilket plugin?"
+
+msgid "Width"
+msgstr "Bredd"
+
+msgid "WooCommerce Address Labels plugin"
+msgstr "WooCommerce Address Labels plugin"
+
+msgid "WooCommerce PDF Invoices, Packing Slips and Credit Notes plugin"
+msgstr "WooCommerce PDF-fakturor, paket, fraktbrev och fraktetiketter"
+
+msgid ""
+"WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels"
+msgstr "WooCommerce PDF-fakturor, packsedel, följesedlar och fraktetiketter"
+
+msgid "WooCommerce Pick lists plugin"
+msgstr "WooCommerce skatteinställningar"
+
+msgid "WooCommerce Picklists plugin"
+msgstr "WooCommerce skatteinställningar"
+
+msgid "WooCommerce Proforma Invoices"
+msgstr "Proformafaktura"
+
+msgid "WooCommerce Proforma Invoices plugin"
+msgstr "WooCommerce Proforma Invoices plugin"
+
+msgid "WooCommerce Shipping labels, Dispatch labels and Delivery Notes plugin"
+msgstr ""
+"WooCommerce Fraktetiketter, Leveransetiketter och Delivery Notes plugin"
+
+msgid "WooCommerce Stripe Payment Gateway"
+msgstr "WooCommerce Stripe Payment Gateway"
+
+msgid ""
+"Woocommerce PDF invoices, packing slips, delivery notes, and shipping labels"
+msgstr "WooCommerce PDF-fakturor, packsedel, följesedlar och fraktetiketter"
+
+msgid "WordPress Users & WooCommerce Customers Import Export"
+msgstr "Importera Exportera WordPress -användare och WooCommerce -kunder"
+
+msgid "Would you like us to assist you?"
+msgstr "Vill du att vi ska hjälpa dig?"
+
+msgid "Writtable"
+msgstr "Skrivbar"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "You are covered by our 30-Day Money Back Guarantee"
+msgstr "30 dagars återbetalningsgaranti"
+
+msgid "You are not allowed to access this page"
+msgstr "Du får inte komma åt den här sidan"
+
+msgid "You are not allowed to do this action"
+msgstr "Du får inte göra den här åtgärden"
+
+msgid "You are not allowed to view this page."
+msgstr "Du får inte se den här sidan."
+
+msgid "You are using free version of %1$s. %2$s Checkout premium here %3$s."
+msgstr "Du använder gratisversionen av %1$s. %2$s Checkout premium här %3$s."
+
+msgid ""
+"You can add additional column head via `wf_pklist_alter_product_table_head` "
+"filter. You need to add column data via this filter. (Works with Invoice and "
+"Dispatch label only)"
+msgstr ""
+"Du kan lägga till ytterligare kolumnhuvud via filtret "
+"`wf_pklist_alter_product_table_head`. Du måste lägga till kolumndata via "
+"detta filter. (Fungerar endast med faktura- och leveransetikett)"
+
+msgid ""
+"You can add additional column head via `wf_pklist_alter_product_table_head` "
+"filter. You need to add column data via this filter. (Works with Packing "
+"List, Shipping Label and Delivery note only)"
+msgstr ""
+"Du kan lägga till ytterligare kolumnhuvud via filtret "
+"`wf_pklist_alter_product_table_head`. Du måste lägga till kolumndata via "
+"detta filter. (Fungerar endast med packlista, fraktetikett och följesedel)"
+
+msgid "You can add custom/predefined order meta using its key"
+msgstr "Du kan lägga till anpassad/fördefinierad ordningsmeta med dess nyckel"
+
+msgid "You can add more than 1 order meta in"
+msgstr "Du kan lägga till mer än 1 beställningsmeta i"
+
+msgid ""
+"You can control the visibility of the seal according to order status via "
+"filters. See filter documentation %s here. %s"
+msgstr ""
+"Du kan kontrollera tätningens synlighet enligt beställningsstatus via filter."
+" Se filterdokumentationen %s här. %s"
+
+msgid "You can edit an existing item by using its key."
+msgstr "Du kan redigera ett befintligt objekt med hjälp av dess nyckel."
+
+msgid "You can't undo this action. Are you sure?"
+msgstr "Du kan inte ångra den här åtgärden. Är du säker?"
+
+msgid "You have to select order(s) first!"
+msgstr "Du måste välja beställning (ar) först!"
+
+msgid "You`ve just created"
+msgstr "Du har precis skapat"
+
+msgid "Your next %s number would be"
+msgstr "Ditt nästa %s nummer skulle vara"
+
+msgid "[prefix][invoice_no]"
+msgstr "[Prefix][fakturanummer]"
+
+msgid "[prefix][order_no]"
+msgstr "[Prefix][ordernummer]"
+
+msgid "allow_url_fopen disabled"
+msgstr "allow_url_fopen inaktiverad"
+
+msgid "commercial documents using"
+msgstr "kommersiella dokument med hjälp av"
+
+msgid "from"
+msgstr "från"
+
+msgid "https://www.webtoffee.com/"
+msgstr "https://www.webtoffee.com/"
+
+msgid ""
+"https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/"
+msgstr ""
+"https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/"
+
+msgid "incl. tax"
+msgstr "inkl. moms"
+
+msgid "is required"
+msgstr "är obligatorisk"
+
+msgid "mPDF add-on"
+msgstr ""
+"mPDF-tillägg för PDF-fakturor, följesedel, följesedlar och fraktetiketter"
+
+msgid "n/a"
+msgstr "n/a"
+
+msgid ""
+"number has not been generated yet. Do you want to manually generate one ?"
+msgstr "nummer har inte genererats än. Vill du skapa en manuellt?"
+
+msgid "orders listing page"
+msgstr "sida för beställningar"
+
+msgctxt "placeholder"
+msgid "Enter "
+msgstr "Zadajte "
+
+msgid "search filter"
+msgstr "sökfilter"
+
+msgid "the %s number would be"
+msgstr "numret %s skulle vara"
+
+msgid "upgrade to premium version"
+msgstr "uppgradera till premiumversion"
+
+msgid "via %s"
+msgstr "via %s"
+
+msgid ""
+"‘Generate invoice for free orders’ is disabled in Invoice settings > "
+"Advanced. You are attempting to generate invoice for this free order. "
+"Proceed?"
+msgstr ""
+"\"Generera faktura för kostnadsfria beställningar\" är inaktiverat i "
+"Fakturainställningar> Avancerat. Du försöker generera faktura för denna "
+"kostnadsfria beställning. Fortsätt?"
+
+msgid "Attach invoice PDF to selected WooCommerce emails."
+msgstr "Bifoga faktura-PDF till utvalda WooCommerce-e-postmeddelanden."
+
+msgid ""
+"Select email types corresponding to the order statuses under Automate "
+"invoice creation option. If none are selected, invoices must be generated "
+"manually to be attached to emails."
+msgstr ""
+"Välj e-posttyper som motsvarar orderstatusen under alternativet Automatisera "
+"fakturaskapande. Om ingen väljs måste fakturor skapas manuellt för att "
+"bifogas e-postmeddelanden."

@@ -1,0 +1,13 @@
+<wpml-config>
+  <elementor-widgets>
+    <widget name="htmega-tab-addons">
+      <fields>
+        <field>htmega_tabs_list</field>
+      </fields>
+      <fields-in-item items_of="htmega_tabs_list">
+        <field>tab_title</field>
+       <field>custom_content</field>       
+      </fields-in-item>
+    </widget>
+  </elementor-widgets>
+</wpml-config>
