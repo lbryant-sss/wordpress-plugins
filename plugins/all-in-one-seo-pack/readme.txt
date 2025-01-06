@@ -4,7 +4,7 @@ Tags: SEO, Google Search Console, XML Sitemap, meta description, schema
 Tested up to: 6.7
 Requires at least: 5.3
 Requires PHP: 7.0
-Stable tag: 4.7.7
+Stable tag: 4.7.7.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -225,6 +225,12 @@ AIOSEO&reg; is a registered trademark of Semper Plugins LLC. When writing about 
 * AISEO (incorrect)
 
 == Changelog ==
+
+**New in Version 4.7.7.1**
+
+* Updated: Added localization for default options for Writing Assistant.
+* Fixed: Writing Assistant no longer sends consecutive requests to get default user options.
+* Fixed: Cache class tries to recreate the cache table if it doesn't exist.
 
 **New in Version 4.7.7**
 
@@ -457,6 +463,6 @@ Additionally, AIOSEO can also provide you with data on the most frequently used 
 
 == Upgrade Notice ==
 
-= 4.7.7 =
+= 4.7.7.1 =
 
 This update adds major improvements and bug fixes.
