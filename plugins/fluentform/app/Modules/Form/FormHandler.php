@@ -107,7 +107,7 @@ class FormHandler
         // Prepare the data to be inserted to the DB.
         $insertData = $this->prepareInsertData();
 
-        if ($this->isSpam($this->formData, $this->form)) {
+        if ($this->isAkismetSpam($this->formData, $this->form)) {
             $insertData['status'] = 'spam';
             $this->handleSpamError();
         }
@@ -641,7 +641,7 @@ class FormHandler
         wp_send_json(['errors' => $errors], 422);
     }
 
-    protected function isSpam($formData, $form)
+    protected function isAkismetSpam($formData, $form)
     {
         if (!AkismetHandler::isEnabled()) {
             return false;

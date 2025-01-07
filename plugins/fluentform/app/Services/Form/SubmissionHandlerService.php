@@ -427,10 +427,16 @@ class SubmissionHandlerService
     
         $insertData = $this->prepareInsertData();
         
-        if ($this->validationService->isSpam($this->formData, $this->form)) {
+        if ($this->validationService->isAkismetSpam($this->formData, $this->form)) {
             $insertData['status'] = 'spam';
-            $this->validationService->handleSpamError();
+            $this->validationService->handleAkismetSpamError();
         }
+
+        if ($this->validationService->isCleanTalkSpam($this->formData, $this->form)) {
+            $insertData['status'] = 'spam';
+            $this->validationService->handleCleanTalkSpamError();
+        }
+
         return $insertData;
     }
     

@@ -4,14 +4,14 @@ Donate link: https://www.paypal.me/xootix
 Tags: woocommerce cart, floating cart, cart popup, woocommerce, slider
 Requires at least: 3.0.1
 Tested up to: 6.7
-Stable tag: 2.5.8
+Stable tag: 2.5.9
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Manage your cart from just a click away with an interactive design
 
 == Description ==
-##[Live Demo](http://demo.xootix.com/side-cart-for-woocommerce/)
+[Live Demo](http://demo.xootix.com/side-cart-for-woocommerce/)
 
 Say goodbye to your old cart page. Our sliding cart lets you add, see, and handle items without leaving your current page.
 
@@ -126,6 +126,10 @@ You can use any third party plugin such as Loco Translate for hassle free transl
 6. Change Shipping Pro
 
 == Changelog ==
+
+
+= 2.5.9 =
+* Fix - block themes fail to refresh cart
 
 = 2.5.8 =
 * Fix - Astra theme opening side cart on page load

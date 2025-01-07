@@ -9,11 +9,11 @@ Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The world's leading WordPress SMTP plugin! Connect any SMTP, including Gmail SMTP, Microsoft 365, Brevo, SendGrid, Mailgun, Zoho, Amazon SES, and more.
+Improve WordPress email deliverability. Connect Gmail SMTP, Microsoft 365, Brevo, SendGrid, Mailgun, Zoho, Amazon SES, etc. #1 WordPress SMTP Plugin.
 
 == Description ==
 
-[💻Live Demo](https://www.tastewp.com/plugins/post-smtp) | [🔌Extensions](https://postmansmtp.com/extension/?utm_source=wp_org&utm_medium=readme_top) | [📱Mobile Application](https://postmansmtp.com/documentation/advance-functionality/postsmtp-mobile-app/?utm_source=wp_org&utm_medium=readme_top)
+[👑 Go Pro](https://postmansmtp.com/pricing/?utm_source=wp_org&utm_medium=read_me) | [💻Live Demo](https://www.tastewp.com/plugins/post-smtp) | [🔌Extensions](https://postmansmtp.com/extension/?utm_source=wp_org&utm_medium=readme_top) | [📱Mobile Application](https://postmansmtp.com/documentation/advance-functionality/postsmtp-mobile-app/?utm_source=wp_org&utm_medium=readme_top)
 
 ###  WordPress Mail SMTP Plugin 
 
@@ -203,10 +203,12 @@ In short, our Expert Assistance is your one-stop destination for all your WordPr
 
 == Requirements == 
 * WordPress v6.2 and above is recommended
-* PHP v7.0 and above is recommended.
+* PHP v7.6 and above is recommended.
 * Memory should be at least 800KiB per processing at idle.
 * Ensure your email service provider allows SMTP connection through 3rd party applications, if not you can have it enabled.(Other SMTP)
 * Reliable delivery requires valid credentials for a particular email service provider. (Other SMTP)
+
+
 
 == Frequently Asked Questions ==
 
@@ -279,7 +281,7 @@ Important: If you are using version 2.8.7 or lower of our plugin, please update 
 
 == Changelog ==
 
-= 3.0.0 =
+= 3.0.0 - Oct 14, 2024 =
 * New: Introduced all [New Post SMTP Dashboard](Link) for users' ease.
 * New: Introduced new SMTP socket [SMTP2GO](Link)
 * New: Introduced new Send Mail user interface.
@@ -392,7 +394,7 @@ Important: If you are using version 2.8.7 or lower of our plugin, please update 
 = 2.8.3 - 2023-11-17 =
 
 * Fix - Getting error when saving settings in some scenarios.
-* Improvement - Optimized QR code scanning module for [Post SMTP mobile app](https://postmansmtp.com/documentation/advance-functionality/postsmtp-mobile-app/?utm_source=wp_org&utm_medium=changelog) to avoid any scanning delays
+* Improvement - Optimized QR code scanning module for [Post SMTP mobile app](https://postmansmtp.com/documentation/post-smtp-mobile-app/download-the-app-and-connect-with-plugin/?utm_source=wp_org&utm_medium=changelog) to avoid any scanning delays
 
 = 2.8.2 - 2023-11-14 =
 
@@ -422,7 +424,7 @@ Important: If you are using version 2.8.7 or lower of our plugin, please update 
 
 = 2.7.0 - 2023-10-26 =
 
-* NEW - Added support for POST SMTP app. [Visit documentation for more information](https://postmansmtp.com/documentation/advance-functionality/postsmtp-mobile-app/?utm_source=wp_org&utm_medium=changelog)
+* NEW - Added support for POST SMTP app. [Visit documentation for more information](https://postmansmtp.com/documentation/post-smtp-mobile-app/download-the-app-and-connect-with-plugin/?utm_source=wp_org&utm_medium=changelog)
 * Fix - Raw HTML was sent when using ElasticEmail service.
 * Fix - Raw HTML was sent when resending emails from the log section.
 

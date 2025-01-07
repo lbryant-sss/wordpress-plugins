@@ -405,6 +405,8 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 				</tr>
 			<?php endif; ?>
 
+			<?php do_action('admin_menu_editor-settings_page_extra'); ?>
+
 			<tr>
 				<th scope="row">
 					WPML support

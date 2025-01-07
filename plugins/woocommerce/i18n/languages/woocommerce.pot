@@ -1,15 +1,15 @@
-# Copyright (C) 2024 Automattic
+# Copyright (C) 2025 Automattic
 # This file is distributed under the same license as the WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce 9.6.0-beta.1\n"
+"Project-Id-Version: WooCommerce 9.6.0-beta.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-18T15:29:31+00:00\n"
+"POT-Creation-Date: 2025-01-06T14:46:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: woocommerce\n"
@@ -10549,17 +10549,16 @@ msgstr ""
 #: templates/checkout/review-order.php:103
 #: templates/myaccount/my-orders.php:17
 #: templates/order/order-details.php:63
-#: assets/client/blocks/cart-blocks/cart-order-summary-frontend.js:1
 #: assets/client/blocks/cart.js:12
 #: assets/client/blocks/cart.js:20
-#: assets/client/blocks/cart.js:40
-#: assets/client/blocks/checkout-blocks/order-summary-frontend.js:1
-#: assets/client/blocks/checkout.js:25
+#: assets/client/blocks/cart.js:23
+#: assets/client/blocks/checkout.js:15
 #: assets/client/blocks/checkout.js:28
 #: assets/client/blocks/legacy-template.js:7
 #: assets/client/blocks/mini-cart-contents.js:13
 #: assets/client/blocks/order-confirmation-totals.js:1
 #: assets/client/blocks/wc-cart-checkout-base-frontend.js:9
+#: assets/client/blocks/wc-cart-checkout-base-frontend.js:27
 #: assets/client/blocks/wc-cart-checkout-base-frontend.js:40
 msgid "Total"
 msgstr ""
@@ -35119,7 +35118,7 @@ msgid "You're only one step away from getting paid. Verify your business details
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:55
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2039
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2580
 #: assets/client/admin/chunks/wcpay-payment-welcome-page.js:1
 msgid "Affirm"
 msgstr ""
@@ -35129,33 +35128,33 @@ msgid "Affirm’s tailored Buy Now Pay Later programs remove price as a barrier,
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:84
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2065
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2614
 msgid "Afterpay"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:85
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2066
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2615
 msgid "Afterpay allows customers to receive products immediately and pay for purchases over four installments, always interest-free."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:114
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1510
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1993
 msgid "Airwallex Payments"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:115
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1511
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1994
 msgid "Boost international sales and save on FX fees. Accept 60+ local payment methods including Apple Pay and Google Pay."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:127
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2013
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2546
 #: assets/client/admin/chunks/wcpay-payment-welcome-page.js:1
 msgid "Amazon Pay"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:128
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2014
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2547
 msgid "Enable a familiar, fast checkout for hundreds of millions of active Amazon customers globally."
 msgstr ""
 
@@ -35181,27 +35180,27 @@ msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:214
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:238
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2115
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2680
 msgid "Choose the payment that you want, pay now, pay later or slice it. No credit card numbers, no passwords, no worries."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:237
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2114
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2679
 msgid "Klarna Payments"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:306
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1598
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2080
 msgid "Mollie"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:307
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1599
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2081
 msgid "Effortless payments by Mollie: Offer global and local payment methods, get onboarded in minutes, and supported in your language."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:345
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1623
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2113
 msgid "Payfast"
 msgstr ""
 
@@ -35210,7 +35209,7 @@ msgid "The Payfast extension for WooCommerce enables you to accept payments by C
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:359
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1745
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2247
 msgid "Payoneer Checkout"
 msgstr ""
 
@@ -35219,12 +35218,12 @@ msgid "Payoneer Checkout is the next generation of payment processing platforms,
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:380
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1778
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2280
 msgid "Paystack"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:381
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1779
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2281
 msgid "Paystack helps African merchants accept one-time and recurring payments online with a modern, safe, and secure payment gateway."
 msgstr ""
 
@@ -35237,37 +35236,35 @@ msgid "Enable PayU’s exclusive plugin for WooCommerce to start accepting payme
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:412
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1689
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1715
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2179
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2213
 #: assets/client/admin/chunks/wcpay-payment-welcome-page.js:1
 msgid "PayPal Payments"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:413
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1690
 msgid "Safe and secure payments using credit cards or your customer's PayPal account."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:580
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1836
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2346
 #: assets/client/admin/chunks/9001.js:1
 #: assets/client/admin/data/index.js:2
 msgid "Razorpay"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:581
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1837
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2347
 msgid "The official Razorpay extension for WooCommerce allows you to accept credit cards, debit cards, netbanking, wallet, and UPI payments."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:598
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1861
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2379
 #: assets/client/admin/chunks/core-profiler.js:1
 msgid "Square"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:599
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1862
 msgid "Securely accept credit and debit cards with one low rate, no surprise fees (custom rates available). Sell online and in store and track sales and inventory in one place."
 msgstr ""
 
@@ -35276,17 +35273,17 @@ msgid " Stripe"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:650
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1888
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2414
 msgid "Accept debit and credit cards in 135+ currencies, methods such as Alipay, and one-touch checkout with Apple Pay."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:748
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1572
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2054
 msgid "Mercado Pago"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:749
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1573
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2055
 msgid "Set up your payment methods and accept credit and debit cards, cash, bank transfers and money from your Mercado Pago account. Offer safe and secure payments with Latin America’s leading processor."
 msgstr ""
 
@@ -35310,7 +35307,6 @@ msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:791
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:833
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1980
 msgid "With WooPayments, you can securely accept major cards, Apple Pay, and payments in over 100 currencies. Track cash flow and manage recurring revenue directly from your store’s dashboard - with no setup costs or monthly fees."
 msgstr ""
 
@@ -39586,275 +39582,267 @@ msgstr ""
 msgid "The description of the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:619
-msgid "The short description of the provider."
-msgstr ""
-
-#: src/Internal/Admin/Settings/PaymentsRestController.php:623
+#: src/Internal/Admin/Settings/PaymentsRestController.php:618
 msgid "Supported features for this provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:633
+#: src/Internal/Admin/Settings/PaymentsRestController.php:628
 msgid "The corresponding plugin details of the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:640
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1074
+#: src/Internal/Admin/Settings/PaymentsRestController.php:635
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1064
 msgid "The type of the plugin."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:646
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1080
+#: src/Internal/Admin/Settings/PaymentsRestController.php:641
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1070
 msgid "The slug of the plugin."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:652
+#: src/Internal/Admin/Settings/PaymentsRestController.php:647
 msgid "The plugin main file. This is a relative path to the plugins directory."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:663
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1091
+#: src/Internal/Admin/Settings/PaymentsRestController.php:658
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1081
 msgid "The status of the plugin."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:671
+#: src/Internal/Admin/Settings/PaymentsRestController.php:666
 msgid "The URL of the provider image."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:676
+#: src/Internal/Admin/Settings/PaymentsRestController.php:671
 msgid "The URL of the provider icon (square aspect ratio - 72px by 72px)."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:681
+#: src/Internal/Admin/Settings/PaymentsRestController.php:676
 msgid "Links for the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:689
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1116
+#: src/Internal/Admin/Settings/PaymentsRestController.php:684
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1106
 msgid "The type of the link."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:695
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1122
+#: src/Internal/Admin/Settings/PaymentsRestController.php:690
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1112
 msgid "The URL of the link."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:704
+#: src/Internal/Admin/Settings/PaymentsRestController.php:699
 msgid "The general state of the provider with regards to it's payments processing."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:708
+#: src/Internal/Admin/Settings/PaymentsRestController.php:703
 msgid "Whether the provider is enabled for use on checkout."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:714
+#: src/Internal/Admin/Settings/PaymentsRestController.php:709
 msgid "Whether the provider has a payments processing account connected."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:720
+#: src/Internal/Admin/Settings/PaymentsRestController.php:715
 msgid "Whether the provider needs setup."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:726
+#: src/Internal/Admin/Settings/PaymentsRestController.php:721
 msgid "Whether the provider is in test mode for payments processing."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:732
+#: src/Internal/Admin/Settings/PaymentsRestController.php:727
 msgid "Whether the provider is in dev mode. Having this true usually leads to forcing test payments. "
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:740
+#: src/Internal/Admin/Settings/PaymentsRestController.php:735
 msgid "The management details of the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:749
+#: src/Internal/Admin/Settings/PaymentsRestController.php:744
 msgid "The link to the settings page for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:755
+#: src/Internal/Admin/Settings/PaymentsRestController.php:750
 msgid "The URL to the settings page for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:767
+#: src/Internal/Admin/Settings/PaymentsRestController.php:762
 msgid "Onboarding-related details for the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:771
+#: src/Internal/Admin/Settings/PaymentsRestController.php:766
 msgid "The state of the onboarding process."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:776
+#: src/Internal/Admin/Settings/PaymentsRestController.php:771
 msgid "Whether the onboarding process has been started."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:782
+#: src/Internal/Admin/Settings/PaymentsRestController.php:777
 msgid "Whether the onboarding process has been completed."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:788
+#: src/Internal/Admin/Settings/PaymentsRestController.php:783
 msgid "Whether the onboarding process happens in test mode (aka sandbox or test-drive)."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:801
-#: src/Internal/Admin/Settings/PaymentsRestController.php:978
+#: src/Internal/Admin/Settings/PaymentsRestController.php:796
+#: src/Internal/Admin/Settings/PaymentsRestController.php:973
 msgid "The start/continue onboarding link for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:807
-#: src/Internal/Admin/Settings/PaymentsRestController.php:984
+#: src/Internal/Admin/Settings/PaymentsRestController.php:802
+#: src/Internal/Admin/Settings/PaymentsRestController.php:979
 msgid "The URL to start/continue onboarding for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:817
+#: src/Internal/Admin/Settings/PaymentsRestController.php:812
 msgid "The list of recommended payment methods details for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:822
+#: src/Internal/Admin/Settings/PaymentsRestController.php:817
 msgid "The details for a recommended payment method."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:828
+#: src/Internal/Admin/Settings/PaymentsRestController.php:823
 msgid "The unique identifier for the payment method."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:834
+#: src/Internal/Admin/Settings/PaymentsRestController.php:829
 msgid "The sort order of the payment method."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:840
+#: src/Internal/Admin/Settings/PaymentsRestController.php:835
 msgid "Whether the payment method should be recommended as enabled or not."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:846
+#: src/Internal/Admin/Settings/PaymentsRestController.php:841
 msgid "Whether the payment method should be required (and force-enabled) or not."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:852
+#: src/Internal/Admin/Settings/PaymentsRestController.php:847
 msgid "The title of the payment method. Does not include HTML tags."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:858
+#: src/Internal/Admin/Settings/PaymentsRestController.php:853
 msgid "The description of the payment method. It can contain basic HTML."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:864
+#: src/Internal/Admin/Settings/PaymentsRestController.php:859
 msgid "The URL of the payment method icon or a base64-encoded SVG image."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:875
+#: src/Internal/Admin/Settings/PaymentsRestController.php:870
 msgid "The tags associated with the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:881
+#: src/Internal/Admin/Settings/PaymentsRestController.php:876
 msgid "Tag associated with the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:887
+#: src/Internal/Admin/Settings/PaymentsRestController.php:882
 msgid "The suggestion ID matching this provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:893
+#: src/Internal/Admin/Settings/PaymentsRestController.php:888
 msgid "The active incentive for the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:899
+#: src/Internal/Admin/Settings/PaymentsRestController.php:894
 msgid "The incentive unique ID. This ID needs to be used for incentive dismissals."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:905
+#: src/Internal/Admin/Settings/PaymentsRestController.php:900
 msgid "The incentive promo ID. This ID need to be fed into the onboarding flow."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:911
+#: src/Internal/Admin/Settings/PaymentsRestController.php:906
 msgid "The incentive title. It can contain stylistic HTML."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:917
+#: src/Internal/Admin/Settings/PaymentsRestController.php:912
 msgid "The incentive description. It can contain stylistic HTML."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:923
+#: src/Internal/Admin/Settings/PaymentsRestController.php:918
 msgid "The short description of the incentive. It can contain stylistic HTML."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:929
+#: src/Internal/Admin/Settings/PaymentsRestController.php:924
 msgid "The call to action label for the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:935
+#: src/Internal/Admin/Settings/PaymentsRestController.php:930
 msgid "The URL to the terms and conditions for the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:941
+#: src/Internal/Admin/Settings/PaymentsRestController.php:936
 msgid "The badge label for the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:947
+#: src/Internal/Admin/Settings/PaymentsRestController.php:942
 msgid "The dismissals list for the incentive. The `all` entry means the incentive was dismissed for all contexts."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:953
+#: src/Internal/Admin/Settings/PaymentsRestController.php:948
 msgid "Context ID in which the incentive was dismissed."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:964
+#: src/Internal/Admin/Settings/PaymentsRestController.php:959
 msgid "The link to dismiss the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:970
+#: src/Internal/Admin/Settings/PaymentsRestController.php:965
 msgid "The URL to dismiss the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1001
+#: src/Internal/Admin/Settings/PaymentsRestController.php:996
 msgid "The link to hide the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1007
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1002
 msgid "The URL to hide the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1027
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1022
 msgid "A suggestion with full details."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1033
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1028
 msgid "The unique identifier for the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1039
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1034
 msgid "The priority of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1045
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1040
 msgid "The type of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1051
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1046
 msgid "The title of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1057
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1052
 msgid "The description of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1063
-msgid "The short description of the suggestion."
-msgstr ""
-
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1099
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1089
 msgid "The URL of the image."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1104
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1094
 msgid "The URL of the icon (square aspect ratio)."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1130
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1137
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1120
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1127
 msgid "The tags associated with the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1143
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1133
 msgid "The category of the suggestion."
 msgstr ""
 
@@ -39863,83 +39851,87 @@ msgstr ""
 msgid "Shipping Label"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1543
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2026
 msgid "Antom"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1544
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2027
 msgid "Your trusted payments partner in Asia and around the world."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1545
-msgid "Start accepting debit/credit card, bank transfers, wallet payments, mobile payments and local payment methods your customers use in Asia Pacific and beyond."
-msgstr ""
-
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1624
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2114
 msgid "The Payfast extension for WooCommerce enables you to accept payments by Credit Card and EFT via one of South Africa's most popular payment gateways. No setup fees or monthly subscription costs. Selecting this extension will configure your store to use South African rands as the selected currency."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1657
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2147
 msgid "Paymob"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1658
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2148
 msgid "Paymob is a leading payment gateway in the Middle East and Africa. Accept payments online and in-store with Paymob."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1716
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2180
+msgid "PayPal Payments lets you offer PayPal, Venmo (US only), Pay Later options and more."
+msgstr ""
+
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2214
 msgid "Safe and secure payments using your customer's PayPal account."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1746
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2248
 msgid "Payoneer Checkout is the next generation of payment processing platforms, giving merchants around the world the solutions and direction they need to succeed in today's hyper-competitive global market."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1811
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2313
 msgid "PayU India"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1812
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2314
 msgid "Enable PayU's exclusive plugin for WooCommerce to start accepting payments in 100+ payment methods available in India including credit cards, debit cards, UPI, & more!"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1887
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2380
+msgid "Securely accept credit and debit cards with one low rate, no surprise fees (custom rates available). Sell in store and track sales and inventory in one place."
+msgstr ""
+
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2413
 msgid "Stripe"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1921
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2447
 msgid "Tilopay"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1922
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2448
 msgid "Accept credit and debit cards on your WooCommerce store with advanced features like partial refunds, full/partial captures, and 3D Secure security."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1954
-msgid "Viva Wallet"
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2480
+msgid "Viva.com Standard Checkout"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1955
-msgid "Viva Wallet is a European payments solution that allows you to accept payments in 24 countries and multiple currencies."
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2481
+msgid "Viva.com is a European payments solution that allows you to accept payments in 24 countries and multiple currencies."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1978
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2512
 msgid "Accept payments with Woo"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:1979
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2513
 msgid "Credit/debit cards, Apple Pay, Google Pay and more."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2040
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2581
 msgid "Affirm's tailored Buy Now Pay Later programs remove price as a barrier, turning browsers into buyers, increasing average order value, and expanding your customer base."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2090
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2647
 msgid "Clearpay"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2091
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2648
 msgid "Clearpay allows customers to receive products immediately and pay for purchases over four installments, always interest-free."
 msgstr ""
 
@@ -41355,14 +41347,11 @@ msgstr ""
 #: templates/cart/cart.php:144
 #: templates/checkout/review-order.php:24
 #: templates/checkout/review-order.php:56
-#: assets/client/blocks/cart-blocks/order-summary-subtotal-frontend.js:1
-#: assets/client/blocks/cart.js:40
-#: assets/client/blocks/checkout-blocks/order-summary-subtotal-frontend.js:1
-#: assets/client/blocks/checkout.js:36
 #: assets/client/blocks/legacy-template.js:7
 #: assets/client/blocks/mini-cart-contents-block/footer-frontend.js:1
 #: assets/client/blocks/mini-cart-contents-block/footer-style.js:1
 #: assets/client/blocks/mini-cart-contents.js:13
+#: assets/client/blocks/wc-cart-checkout-base-frontend.js:50
 msgid "Subtotal"
 msgstr ""
 

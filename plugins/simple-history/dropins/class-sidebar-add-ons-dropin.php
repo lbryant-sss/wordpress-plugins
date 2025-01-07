@@ -12,9 +12,48 @@ class Sidebar_Add_Ons_Dropin extends Dropin {
 	 * Add actions when dropin is loaded.
 	 */
 	public function loaded() {
-		add_action( 'simple_history/dropin/sidebar/sidebar_html', [ $this, 'on_sidebar_html_woocommerce_promo' ], 5 );
+		add_action( 'simple_history/dropin/sidebar/sidebar_html', [ $this, 'on_sidebar_html_sale_promo' ], 4 );
 		add_action( 'simple_history/dropin/sidebar/sidebar_html', [ $this, 'on_sidebar_html_premium_promo' ], 5 );
 		add_action( 'simple_history/dropin/sidebar/sidebar_html', [ $this, 'on_sidebar_html_debug_and_monitor_promo' ], 5 );
+		add_action( 'simple_history/dropin/sidebar/sidebar_html', [ $this, 'on_sidebar_html_woocommerce_promo' ], 7 );
+	}
+
+	/**
+	 * Output HTML with promo about sale.
+	 */
+	public function on_sidebar_html_sale_promo() {
+		// Hide if Premium is installed.
+		if ( Helpers::is_premium_add_on_active() ) {
+			return;
+		}
+
+		?>
+		<!-- 
+		Insert promo:
+		"Our New Year’s Sale is Here – 50% Off All Add-Ons 🙀".
+		Link to: https://simple-history.com/add-ons/?utm_source=wpadmin&utm_content=new-year-sale-sidebar
+		-->
+		<div class="postbox">
+			<div class="inside" style="background-color: var(--sh-color-pink-light); padding: 1rem; margin-top: 0;">
+				<p style="margin: 0; font-size: 1rem; font-weight: bold;">
+					<?php esc_html_e( 'Our New Year’s Sale is Here – 50% Off All Add-Ons 🙀', 'simple-history' ); ?>
+				</p>
+
+				<p>Hurry - this sale ends January 31.</p>
+				
+				<p>
+					<a 
+						class="sh-PremiumFeaturesPostbox-button"
+						href="https://simple-history.com/add-ons/?utm_source=wpadmin&utm_content=new-year-sale-sidebar" 
+						target="_blank"
+						>
+						<?php esc_html_e( 'Get Add-Ons Now', 'simple-history' ); ?>
+					</a>
+				</p>
+			</div>
+
+		</div>
+		<?php
 	}
 
 	/**
@@ -22,14 +61,14 @@ class Sidebar_Add_Ons_Dropin extends Dropin {
 	 */
 	public function on_sidebar_html_premium_promo() {
 		// Don't show if addon is already installed.
-		if ( Helpers::is_plugin_active( 'simple-history-premium/simple-history-premium.php' ) ) {
+		if ( Helpers::is_premium_add_on_active() ) {
 			return;
 		}
 
 		$premium_url = 'https://simple-history.com/add-ons/premium/?utm_source=wpadmin&utm_content=premium-sidebar';
 
 		?>
-		<div class="postbox sh-PremiumFeaturesPostbox">
+		<div class="postbox sh-PremiumFeaturesPostbox" style="--box-bg-color: var(--sh-color-cream);">
 
 			<div class="inside">
 				<p class="sh-PremiumFeaturesPostbox-preTitleFeaturesBadge"><em class="sh-PremiumFeatureBadge"><?php esc_html_e( 'Premium', 'simple-history' ); ?></em></p>
@@ -75,32 +114,28 @@ class Sidebar_Add_Ons_Dropin extends Dropin {
 		$woocommerce_logger_url = 'https://simple-history.com/add-ons/woocommerce/?utm_source=wpadmin&utm_content=wc-logger-sidebar';
 
 		?>
-		<div class="postbox">
-
-			<h3 class="hndle">
-				<?php esc_html_e( 'Log important WooCommerce changes', 'simple-history' ); ?>
-				<em class="sh-PageHeader-settingsLinkIcon-new"><?php esc_html_e( 'New', 'simple-history' ); ?></em>
-			</h3>
-
+		<div class="postbox sh-PremiumFeaturesPostbox">
 			<div class="inside">
-				<a href="<?php echo esc_url( $woocommerce_logger_url ); ?>" target="_blank">
-					<img 
-						width="774" 
-						height="303" 
-						class="" 
-						src="<?php echo esc_attr( SIMPLE_HISTORY_DIR_URL ); ?>assets/images/woocommerce-logger-product-edit.png" 
-						alt=""
-						style="max-width: 100%; height: auto;"
-					/>
-				</a>
 
-				<p>
-					<?php esc_html_e( 'Log detailed information about many things that happens in your WooCommerce shop: Order edits, Product modifications, Coupon changes, WooCommerce settings adjustments, Email templates updates.', 'simple-history' ); ?>
-				</p>
-			
-				<p>
-					<a href="<?php echo esc_url( $woocommerce_logger_url ); ?>" class="sh-ExternalLink" target="_blank">
-						<?php esc_html_e( 'View WooCommerce add-on.', 'simple-history' ); ?>
+				<p class="sh-PremiumFeaturesPostbox-preTitleFeaturesBadge"><em class="sh-PremiumFeatureBadge"><?php esc_html_e( 'Add-on', 'simple-history' ); ?></em></p>
+
+				<h3 class="sh-PremiumFeaturesPostbox-title">
+					<?php esc_html_e( 'WooCommerce Logger', 'simple-history' ); ?>
+				</h3>
+
+				<p><?php esc_html_e( 'Log detailed information about many things that happen in your WooCommerce shop:', 'simple-history' ); ?></p>
+		
+				<ul class="sh-PremiumFeaturesPostbox-featuresList">
+					<li class="sh-PremiumFeaturesPostbox-featuresList-item"><?php esc_html_e( 'Order edits', 'simple-history' ); ?></li>
+					<li class="sh-PremiumFeaturesPostbox-featuresList-item"><?php esc_html_e( 'Product modifications', 'simple-history' ); ?></li>
+					<li class="sh-PremiumFeaturesPostbox-featuresList-item"><?php esc_html_e( 'Coupon changes', 'simple-history' ); ?></li>
+					<li class="sh-PremiumFeaturesPostbox-featuresList-item"><?php esc_html_e( 'WooCommerce settings adjustments', 'simple-history' ); ?></li>
+					<li class="sh-PremiumFeaturesPostbox-featuresList-item"><?php esc_html_e( 'Email templates updates', 'simple-history' ); ?></li>
+				</ul>
+
+				<p style="margin-bottom: .25rem;">
+					<a href="<?php echo esc_url( $woocommerce_logger_url ); ?>" target="_blank" class="sh-PremiumFeaturesPostbox-button">
+						<?php esc_html_e( 'Buy WooCommerce Logger', 'simple-history' ); ?>
 					</a>
 				</p>
 			</div>
@@ -120,14 +155,15 @@ class Sidebar_Add_Ons_Dropin extends Dropin {
 		$debug_and_monitor_url = 'https://simple-history.com/add-ons/debug-and-monitor/?utm_source=wpadmin&utm_content=debug-monitor-sidebar';
 
 		?>
-		<div class="postbox">
-
-			<h3 class="hndle">
-				<?php esc_html_e( 'Debug & Monitor', 'simple-history' ); ?>
-				<em class="sh-PremiumFeatureBadge"><?php esc_html_e( 'Add-on', 'simple-history' ); ?></em>
-			</h3>
-
+		<div class="postbox sh-PremiumFeaturesPostbox">
 			<div class="inside">
+
+				<p class="sh-PremiumFeaturesPostbox-preTitleFeaturesBadge"><em class="sh-PremiumFeatureBadge"><?php esc_html_e( 'Add-on', 'simple-history' ); ?></em></p>
+
+				<h3 class="sh-PremiumFeaturesPostbox-title">
+					<?php esc_html_e( 'Debug & Monitor', 'simple-history' ); ?>
+				</h3>
+
 				<p><?php esc_html_e( 'Keep track of WordPress activities with the Debug & Monitor add-on:', 'simple-history' ); ?></p>
 		
 				<ul class="sh-PremiumFeaturesPostbox-featuresList">
@@ -139,10 +175,14 @@ class Sidebar_Add_Ons_Dropin extends Dropin {
 
 				<p><?php esc_html_e( "Great for developers who need to debug issues and for site owners who want to understand what's happening behind the scenes.", 'simple-history' ); ?></p>
 
-				<p>
-					<a href="<?php echo esc_url( $debug_and_monitor_url ); ?>" class="sh-ExternalLink" target="_blank">
-						<?php esc_html_e( 'Learn more about Debug & Monitor', 'simple-history' ); ?>
+				<p style="margin-bottom: .25rem;">
+					<a href="<?php echo esc_url( $debug_and_monitor_url ); ?>" target="_blank" class="sh-PremiumFeaturesPostbox-button">
+						<?php esc_html_e( 'Buy Debug & Monitor', 'simple-history' ); ?>
 					</a>
+				</p>
+
+				<p style="margin: 0; text-align: center; font-size: var(--sh-font-size-small); color: var(--sh-color-black-2);">
+					<?php esc_html_e( 'Only $29 for 5 sites!', 'simple-history' ); ?>
 				</p>
 			</div>
 		</div>

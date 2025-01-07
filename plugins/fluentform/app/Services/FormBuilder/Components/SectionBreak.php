@@ -18,7 +18,7 @@ class SectionBreak extends BaseComponent
     {
         $elementName = $data['element'];
         $data = apply_filters_deprecated(
-            'fluentform/rendering_field_data_' . $elementName,
+            'fluentform_rendering_field_data_' . $elementName,
             [
                 $data,
                 $form

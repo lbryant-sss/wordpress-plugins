@@ -86,7 +86,9 @@ class PostmanNotify {
         $webhook_urls = array();
         foreach ( $_POST['postman_options']['webhook_alerts_urls'] as $key => $url ) {
 
-            $webhook_urls[] = esc_url( $url );
+            if( ! empty( $url ) ) {
+                $webhook_urls[] = esc_url( $url );
+            }
 
         }
 
@@ -241,7 +243,7 @@ class PostmanNotify {
      * @param string $errorMessage
      */
     public function notify ($log, $postmanMessage, $transcript, $transport, $errorMessage ) {
-        $message = __( 'You getting this message because an error detected while delivered your email.', 'post-smtp' );
+        $message = __( 'You are getting this message because an error detected while delivered your email.', 'post-smtp' );
         $message .= "\r\n" . sprintf( __( 'For the domain: %1$s','post-smtp' ), get_bloginfo('url') );
         $message .= "\r\n" . __( 'The log to paste when you open a support issue:', 'post-smtp' ) . "\r\n";
 

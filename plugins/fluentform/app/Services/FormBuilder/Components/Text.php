@@ -136,7 +136,7 @@ class Text extends BaseComponent
         }
 
         // For hidden input
-        if ('hidden' == $data['attributes']['type']) {
+        if ('hidden' == ArrayHelper::get($data, 'attributes.type')) {
             $attributes = $this->buildAttributes($data['attributes'], $form);
             echo '<input ' . $attributes . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $attributes is escaped before being passed in.
             return;

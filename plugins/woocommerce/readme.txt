@@ -301,13 +301,11 @@ WooCommerce comes with some sample data you can use to see how products look; im
 * Update - Enable remote logging UI and mark feature as stable in FeaturesController [#53649](https://github.com/woocommerce/woocommerce/pull/53649)
 * Update - Ensure Modern settings pages re-render on updated url [#53016](https://github.com/woocommerce/woocommerce/pull/53016)
 * Update - feat: add product review fields autocomplete attribute [#51970](https://github.com/woocommerce/woocommerce/pull/51970)
-* Update - Hide "Add new _" buttons from Product & Coupon editor pages. [#53121](https://github.com/woocommerce/woocommerce/pull/53121)
 * Update - Implement accepting and applying WooPayments incentives from the new Payments settings page. [#53672](https://github.com/woocommerce/woocommerce/pull/53672)
 * Update - Implement drag and drop ordering on the React payment settings page. [#53301](https://github.com/woocommerce/woocommerce/pull/53301)
 * Update - Include purge cache when coming soon template is updated in documentation [#52695](https://github.com/woocommerce/woocommerce/pull/52695)
 * Update - Introduce opt-in WooCommerce rebranding [#53308](https://github.com/woocommerce/woocommerce/pull/53308)
 * Update - Limit core profiler extensions to 8 maximum [#53742](https://github.com/woocommerce/woocommerce/pull/53742)
-* Update - Modernize product & coupon editor UI. [#52632](https://github.com/woocommerce/woocommerce/pull/52632)
 * Update - Product Collection: move "Display Settings" from Toolbar to Inspector Controls [#52666](https://github.com/woocommerce/woocommerce/pull/52666)
 * Update - Removed final use of the FeatureGating class and deprecated it. [#52768](https://github.com/woocommerce/woocommerce/pull/52768)
 * Update - Remove usage of the AccessiblePrivateMethods trait [#52937](https://github.com/woocommerce/woocommerce/pull/52937)
@@ -422,6 +420,13 @@ WooCommerce comes with some sample data you can use to see how products look; im
 * Enhancement - Prevent the variation list from being displayed as an HTML list if there is only one attribute on the Mini Cart Modal [#52924](https://github.com/woocommerce/woocommerce/pull/52924)
 * Enhancement - Redirect to the connection approval screen when the connection is initiated from WooCommerce.com. [#53445](https://github.com/woocommerce/woocommerce/pull/53445)
 * Enhancement - Update coming soon minimal left image template image handling for better responsiveness [#53236](https://github.com/woocommerce/woocommerce/pull/53236)
+* Fix - Fixes a JS error introduced in #53158 when navigating tabs using keyboard on a product page without a gallery. [#53877](https://github.com/woocommerce/woocommerce/pull/53877)
+* Fix - Fix role retrieval for users with non-sequential roles [#53974](https://github.com/woocommerce/woocommerce/pull/53974)
+* Fix - Fix test previously expecting a md5 hash but now produces a SHA-256 hash for the gravatar URL. [#53916](https://github.com/woocommerce/woocommerce/pull/53916)
+* Update - Update plugins with terms of service notice in core profiler. [#53806](https://github.com/woocommerce/woocommerce/pull/53806)
+* Dev - Change the Woo logo in the marketing banner [#54096](https://github.com/woocommerce/woocommerce/pull/54096)
+* Dev - Update WooCommerce logo in blocks [#54147](https://github.com/woocommerce/woocommerce/pull/54147)
+* Tweak - Fix deprecation warnings in PHP 8.3 in email preview classes [#53870](https://github.com/woocommerce/woocommerce/pull/53870)
 
 
 [See changelog for all versions](https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/changelog.txt).

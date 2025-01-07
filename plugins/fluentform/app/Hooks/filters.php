@@ -177,6 +177,10 @@ foreach ($elements as $element) {
             }
         }
 
+        if ('address' == $element) {
+            unset($response->latitude, $response->longitude);
+        }
+
         if ('select_country' == $element) {
             $countryList = getFluentFormCountryList();
             if (isset($countryList[$response])) {

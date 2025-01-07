@@ -137,13 +137,13 @@ class Validations
 	        $attribute = Arr::get($field, 'attributes.name');
 	        $length = isset($attribute[0]) ? count($attribute[0]) : 0;
             $this->repeater = [
-                'status'    => $isRepeater,
+                'status'    => true,
                 'attribute' => $attribute,
                 'length'    => $length,
                 'rule'      => rtrim($fieldName, '.*')
             ];
         } else {
-            $this->repeater['status'] = $isRepeater;
+            $this->repeater['status'] = false;
         }
 
         return $this;

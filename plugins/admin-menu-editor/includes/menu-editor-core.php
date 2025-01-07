@@ -2946,7 +2946,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 					}
 				}
 
-				wp_redirect( add_query_arg($query, $url) );
+				wp_safe_redirect( add_query_arg($query, $url) );
 				die();
 			} else {
 				$message = "Failed to save the menu. ";
@@ -3078,8 +3078,10 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 				$activeModules
 			);
 
+			do_action('admin_menu_editor-settings_changed', $this->post);
+
 			$this->save_options();
-			wp_redirect(add_query_arg('message', 1, $this->get_settings_page_url()));
+			wp_safe_redirect(add_query_arg('message', 1, $this->get_settings_page_url()));
 			exit;
 		}
 	}

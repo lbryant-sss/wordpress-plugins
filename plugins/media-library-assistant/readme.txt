@@ -175,20 +175,32 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Screenshots ==
 
-1. The Media/Assistant submenu table showing the available columns, including "Featured in", "Inserted in", "Att. Categories" and "Att. Tags"; also shows the Quick Edit area.
-2. The Media/Assistant submenu table showing the Bulk Edit area with taxonomy Add, Remove and Replace options; also shows the tags suggestion popup.
-3. A typical edit taxonomy page, showing the "Attachments" column.
-4. The enhanced Edit page showing additional fields, categories and tags.
-5. The Settings page General tab, where you can customize support of Att. Categories, Att. Tags and other taxonomies, where-used reporting and the default sort order.
-6. The Settings page MLA Gallery tab, where you can add custom style and markup templates for `[mla_gallery]` shortcode output.
-7. The Settings page IPTC &amp; EXIF Processing Options screen, where you can map image metadata to standard fields (e.g. caption), taxonomy terms and custom fields.
-8. The Settings page Custom Field Processing Options screen, where you can map attachment metadata to custom fields for display in [mla_gallery] shortcodes and as sortable, searchable columns in the Media/Assistant submenu.
-9. The Media Manager popup modal window showing additional filters for date and taxonomy terms. Also shows the enhanced Search Media box and the full-function taxonomy support in the ATTACHMENT DETAILS area.
+1. The Media/Assistant submenu table showing the enhanced search box, taxonomy filter and custom views; also shows the Quick Edit area.
+2. The Media/Assistant submenu table showing the Bulk Edit area with taxonomy Add, Remove and Replace options; also shows metadata mapping buttons.
+3. The Media/Assistant submenu table showing the pulldown Help menu and tabs..
+4. The Media Manager popup modal window showing additional filters for date and taxonomy terms. Also shows the enhanced Search Media box and the full-function taxonomy support in the ATTACHMENT DETAILS area.
+5. The Search Terms popup modal window, which lets you filter the items displayed by searching for keywords and phrases in taxonomy term names.
+6. The Media/Upload New Media submenu page showing the Bulk Edit area to spply templates and mapping rules to items as they are uploaded.
+7. The enhanced Edit page showing additional fields, mapping rule buttons and taxonomy boxes.
+8. The enhanced Edit page showing parent selection, metadata display boxes and where-used reporting boxes.
+9. The enhanced Edit page showing the Select Parent popup window for easy parent post/page editing.
+10. The Settings page General tab, where you can customize where-used reporting and many other options.
+11. The Settings page General tab, showing the Taxonomy Support options and some of the the Media/Assistant display options.
+12. The Settings page General tab, showing the Media Manager and Media/Library Grid Mode enhancement options.
+13. The Settings page Views tab, where you can manage and add MIME Types and define Media/Assistant table views.
+14. The Settings page Uploads tab, where you can manage and add allowed file types and corredponding icons.
+15. The Settings page Shortcodes tab, where you can manage and add custom style and markup templates for the MLA shortcodes.
+16. The Settings page Custom Fields tab, where you can map attachment metadata to custom fields for display in [mla_gallery] shortcodes and as sortable, searchable columns in the Media/Assistant submenu.
+17. The Settings page IPTC/EXIF/WP Processing Options screen, where you can map image metadata to standard fields (e.g. caption), taxonomy terms and custom fields.
+18. The Settings page Documentation tab, a complete reference to MLA shortcodes and features.
+19. The Settings page Documentation/Example Plugins tab, showing the many optional plugins you can use or adapt to extend MLA features.
+20. The Settings page Debug tab, where you can activate debug logging categories as well as manage and display the error log.
 
 == Changelog ==
 
 = 3.25 =
 * Fix: For the Media/Library Grid mode, an incompatibility with the Enhanced Media Library plugin has been eliminated.
+* Fix: An "Undefined variable" problem when accessing the `file_fize` field-level data source has been corrected.
 
 = 3.24 =
 * New: Field-level data sources for accessing information about the original, unscaled files for very large images.

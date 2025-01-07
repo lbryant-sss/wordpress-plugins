@@ -76,6 +76,7 @@ class WpFormsMigrator extends BaseMigrator
 
         if ($this->hasStep && defined('FLUENTFORMPRO')) {
             $returnData['stepsWrapper'] = $this->getStepWrapper();
+            $this->hasStep = false;
         }
         return $returnData;
     }

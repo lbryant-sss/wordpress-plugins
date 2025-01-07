@@ -450,7 +450,7 @@ class amePluginVisibility extends amePersistentModule {
 				$params['selected_actor'] = strval($post['selected_actor']);
 			}
 
-			wp_redirect($this->getTabUrl($params));
+			wp_safe_redirect($this->getTabUrl($params));
 			exit;
 		}
 	}

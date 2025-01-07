@@ -863,11 +863,14 @@ class Helpers {
 		ob_start();
 
 		?>
-		<a href="https://simple-history.com/add-ons/?utm_source=wpadmin&utm_content=nav-header" class="sh-PageHeader-rightLink" target="_blank">
-			<span class="sh-PageHeader-settingsLinkIcon sh-Icon sh-Icon--extension"></span>
-			<span class="sh-PageHeader-settingsLinkText"><?php esc_html_e( 'Add-ons', 'simple-history' ); ?></span>
-			<em class="sh-PageHeader-settingsLinkIcon-new"><?php esc_html_e( 'New', 'simple-history' ); ?></em>
-		</a>
+		<div class="sh-PageHeader-rightLink">
+			<a href="https://simple-history.com/add-ons/?utm_source=wpadmin&utm_content=nav-header" target="_blank">
+				<span class="sh-PageHeader-settingsLinkIcon sh-Icon sh-Icon--extension"></span>
+				<span class="sh-PageHeader-settingsLinkText"><?php esc_html_e( 'Add-ons', 'simple-history' ); ?></span>
+			</a>
+
+			<em class="sh-PremiumFeatureBadge"><?php esc_html_e( 'New', 'simple-history' ); ?></em>
+		</div>
 		<?php
 
 		return ob_get_clean();
@@ -1580,5 +1583,40 @@ class Helpers {
 		}
 
 		return $field;
+	}
+
+	/**
+	 * Determine if promo boxes should be shown.
+	 *
+	 * @return bool True if promo boxes should be shown, false otherwise.
+	 */
+	public static function show_promo_boxes() {
+		// Hide if Premium add-on is active.
+		if ( self::is_premium_add_on_active() ) {
+			return false;
+		}
+
+		// Hide if Extended Settings is active.
+		if ( self::is_extended_settings_add_on_active() ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Check if premium add-on is active.
+	 *
+	 * @return bool True if premium add-on is active, false otherwise.
+	 */
+	public static function is_premium_add_on_active() {
+		return self::is_plugin_active( 'simple-history-premium/simple-history-premium.php' );
+	}
+
+	/**
+	 * Check if Extended Settings add-on is active.
+	 */
+	public static function is_extended_settings_add_on_active() {
+		return self::is_plugin_active( 'simple-history-extended-settings/index.php' );
 	}
 }

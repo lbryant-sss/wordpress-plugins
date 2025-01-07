@@ -5,6 +5,7 @@ namespace FluentForm\App\Services\Form;
 use FluentForm\App\Helpers\Helper;
 use FluentForm\App\Models\FormMeta;
 use FluentForm\App\Modules\Form\AkismetHandler;
+use FluentForm\App\Modules\Form\CleanTalkHandler;
 use FluentForm\App\Modules\Form\FormDataParser;
 use FluentForm\App\Modules\Form\FormFieldsParser;
 use FluentForm\App\Modules\HCaptcha\HCaptcha;
@@ -399,10 +400,10 @@ class FormValidationService
         }
     }
     
-    /** Validate Spam
+    /** Validate Akismet Spam
      * @throws ValidationException
      */
-    public function handleSpamError()
+    public function handleAkismetSpamError()
     {
         $settings = get_option('_fluentform_global_form_settings');
         if (!$settings || 'validation_failed' != Arr::get($settings, 'misc.akismet_validation')) {
@@ -414,8 +415,24 @@ class FormValidationService
         ];
         throw new ValidationException('', 422, null, ['errors' => $errors]);
     }
+
+    /** Validate CleanTalk Spam
+     * @throws ValidationException
+     */
+    public function handleCleanTalkSpamError()
+    {
+        $settings = get_option('_fluentform_global_form_settings');
+        if (!$settings || 'validation_failed' != Arr::get($settings, 'misc.cleantalk_validation')) {
+            return;
+        }
+
+        $errors = [
+            '_fluentformcleantalk' => __('Submission marked as spammed. Please try again', 'fluentform'),
+        ];
+        throw new ValidationException('', 422, null, ['errors' => $errors]);
+    }
     
-    public function isSpam($formData, $form)
+    public function isAkismetSpam($formData, $form)
     {
          if (!AkismetHandler::isEnabled()) {
             return false;
@@ -452,6 +469,21 @@ class FormValidationService
             'Use fluentform/akismet_spam_result instead of fluentform_akismet_spam_result.'
         );
         return apply_filters('fluentform/akismet_spam_result', $isSpam, $form->id, $formData);
+    }
+
+    public function isCleanTalkSpam($formData, $form)
+    {
+        if (!CleanTalkHandler::isEnabled()) {
+            return false;
+        }
+        $isSpamCheck = apply_filters('fluentform/cleantalk_check_spam', true, $form->id, $formData);
+
+        if (!$isSpamCheck) {
+            return false;
+        }
+        $isSpam = CleanTalkHandler::isSpamSubmission($formData, $form);
+
+        return apply_filters('fluentform/cleantalk_spam_result', $isSpam, $form->id, $formData);
     }
     
     /**

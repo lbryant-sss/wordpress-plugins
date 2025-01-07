@@ -3794,11 +3794,11 @@ msgstr ""
 
 #: app/Modules/Registerer/TranslationString.php:53
 #: app/Modules/Registerer/TranslationString.php:1388
-msgid "Entity ID"
+msgid "Submission ID"
 msgstr ""
 
 #: app/Modules/Registerer/TranslationString.php:1530
-msgid "Entity ID: "
+msgid "Submission ID: "
 msgstr ""
 
 #: app/Views/admin/global_menu.php:25 app/Views/frameless/show_preview.php:33

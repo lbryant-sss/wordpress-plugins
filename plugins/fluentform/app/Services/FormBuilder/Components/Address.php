@@ -42,29 +42,41 @@ class Address extends BaseComponent
         $data['attributes']['class'] .= ' ff-name-address-wrapper ' . $this->wrapperClass . ' ' . $hasConditions;
         $data['attributes']['class'] = trim($data['attributes']['class']);
 
+       
+        if ('yes' == ArrayHelper::get($data, 'settings.save_coordinates')) {
+            $coordinateFields = [
+                'latitude' => $rootName . '[latitude]',
+                'longitude' => $rootName . '[longitude]'
+            ];
+    
+            $textComponent = new \FluentForm\App\Services\FormBuilder\Components\Text();
+    
+            foreach ($coordinateFields as $type => $fieldName) {
+                $fieldConfig = [
+                    'attributes' => [
+                        'name' => $fieldName,
+                        'type' => 'hidden',
+                        'data-key_name' => $type,
+                    ],
+                    'element' => 'input_hidden'
+                ];
+        
+                $textComponent->compile($fieldConfig, $form);
+            }
+        }
         if ('yes' == ArrayHelper::get($data, 'settings.enable_g_autocomplete')) {
             $data['attributes']['class'] .= ' ff_map_autocomplete';
             if ('yes' == ArrayHelper::get($data, 'settings.enable_g_map')) {
                 $data['attributes']['data-ff_with_g_map'] = '1';
             }
             $data['attributes']['data-ff_with_auto_locate'] = ArrayHelper::get($data, 'settings.enable_auto_locate', false);
-            do_action_deprecated(
-                'fluentform_address_map_autocomplete',
-                [
-                    $data,
-                    $form
-                ],
-                FLUENTFORM_FRAMEWORK_UPGRADE,
-                'fluentform/address_map_autocomplete',
-                'Use fluentform/address_map_autocomplete instead of fluentform_address_map_autocomplete.'
-            );
             do_action('fluentform/address_map_autocomplete', $data, $form);
         }
 
         $atts = $this->buildAttributes(
             ArrayHelper::except($data['attributes'], 'name')
         );
-
+        
         //re order fields from version 4.3.2
         if ($order = ArrayHelper::get($data, 'settings.field_order')) {
             $order = array_values(array_column($order, 'value'));
@@ -90,10 +102,11 @@ class Address extends BaseComponent
             echo '</div>';
         endif;
         echo "<div class='ff-el-input--content'>";
-
+       
         $visibleFields = array_chunk(array_filter($data['fields'], function ($field) {
             return $field['settings']['visible'];
         }), 2);
+        
 
         $googleAutoComplete = 'yes' === ArrayHelper::get($data, 'settings.enable_g_autocomplete');
         foreach ($visibleFields as $chunked) {

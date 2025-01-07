@@ -426,7 +426,7 @@ class Module extends amePersistentModule {
 			$params['selectedTrigger'] = strval($post['selectedTrigger']);
 		}
 
-		wp_redirect($this->getTabUrl($params));
+		wp_safe_redirect($this->getTabUrl($params));
 		exit;
 	}
 

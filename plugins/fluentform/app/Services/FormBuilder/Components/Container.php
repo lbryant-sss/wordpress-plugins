@@ -38,16 +38,7 @@ class Container extends BaseComponent
     public function compile($data, $form)
     {
         $elementName = $data['element'];
-        $data = apply_filters_deprecated(
-            'fluentform_rendering_field_data_' . $elementName,
-            [
-                $data,
-                $form
-            ],
-            FLUENTFORM_FRAMEWORK_UPGRADE,
-            'fluentform/rendering_field_data_' . $elementName,
-            'Use fluentform/rendering_field_data_' . $elementName . ' instead of fluentform_rendering_field_data_' . $elementName
-        );
+   
 
         $data = apply_filters('fluentform/rendering_field_data_' . $elementName, $data, $form);
 
@@ -79,28 +70,9 @@ class Container extends BaseComponent
             echo "<div class='" . esc_attr($newColumnClass) . "' style='flex-basis: " . esc_attr($column['width']) . "%;'>";
 
             foreach ($column['fields'] as $item) {
-                $item = apply_filters_deprecated(
-                    'fluentform_before_render_item',
-                    [
-                        $item,
-                        $form
-                    ],
-                    FLUENTFORM_FRAMEWORK_UPGRADE,
-                    'fluentform/before_render_item',
-                    'Use fluentform/before_render_item instead of fluentform_before_render_item.'
-                );
+          
                 $item = apply_filters('fluentform/before_render_item', $item, $form);
-
-                do_action_deprecated(
-                    'fluentform_render_item_' . $item['element'],
-                    [
-                        $item,
-                        $form
-                    ],
-                    FLUENTFORM_FRAMEWORK_UPGRADE,
-                    'fluentform/render_item_' . $item['element'],
-                    'Use fluentform/render_item_' . $item['element'] . ' instead of fluentform_render_item_' . $item['element']
-                );
+                
                 do_action('fluentform/render_item_' . $item['element'], $item, $form);
             }
             echo '</div>';

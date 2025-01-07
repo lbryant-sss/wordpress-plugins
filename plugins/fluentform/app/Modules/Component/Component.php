@@ -739,7 +739,10 @@ class Component
         }
 
         $otherScripts = '';
-        ob_start();
+        $otherScriptsRenderImmediately = apply_filters('fluentform/load_form_instance_js_var_immediately', false);
+        if (!$otherScriptsRenderImmediately) {
+            ob_start();
+        }
         ?>
         <script type="text/javascript">
             window.fluent_form_<?php echo esc_attr($instanceCssClass); ?> = <?php echo wp_json_encode($form_vars); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $form_vars is escaped before being passed in.?>;
@@ -760,7 +763,10 @@ class Component
         </script>
         <?php
         $this->addInlineVars();
-        $otherScripts .= ob_get_clean();
+        if (!$otherScriptsRenderImmediately) {
+            $otherScripts .= ob_get_clean();
+        }
+
 
         $disableAnalytics = apply_filters_deprecated(
             'fluentform-disabled_analytics',
@@ -1218,7 +1224,6 @@ class Component
             'net_promoter_score',
             'featured_image',
         ];
-
         if ($formBuilder->conditions || array_intersect($formBuilder->fieldLists, $advancedFields)) {
             wp_enqueue_script('fluentform-advanced');
         }

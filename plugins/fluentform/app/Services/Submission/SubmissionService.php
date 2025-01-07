@@ -319,6 +319,10 @@ class SubmissionService
                 'status'     => $actionType,
                 'updated_at' => current_time('mysql'),
             ]);
+
+            foreach ($submissionIds as $submissionId) {
+                do_action('fluentform/after_submission_status_update', $submissionId, $actionType);
+            }
             
             $message = 'Selected entries successfully marked as ' . $statuses[$actionType];
         } elseif ('other.delete_permanently' == $actionType) {

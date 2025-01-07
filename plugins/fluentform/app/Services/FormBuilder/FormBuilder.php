@@ -383,7 +383,7 @@ class FormBuilder
      */
     protected function extractValidationRules($item)
     {
-        if (isset($item['columns'])) {
+        if (isset($item['columns']) && 'repeater_container' !== $item['element']) {
             foreach ($item['columns'] as $column) {
                 foreach ($column['fields'] as $field) {
                     $this->extractValidationRules($field);
@@ -426,6 +426,18 @@ class FormBuilder
                 $item['attributes']['name'] = $chainedSelectName . '[' . $select . ']';
                 $this->extractValidationRule($item);
             }
+        } elseif ('repeater_container' == $item['element']) {
+            $rootName = $item['attributes']['name'];
+            $ruleIndex = 0;
+            foreach ($item['columns'] as $key => $innerItem) {
+                foreach ($innerItem['fields'] as &$innerField) {
+                    $innerField['attributes']['name'] = $rootName . '[' . $key . ']';
+                    $rules = $innerField['settings']['validation_rules'];
+                    $innerField['settings']['validation_rules'] = $rules;
+                    $this->extractValidationRule($innerField, $rootName . '[' . $ruleIndex . ']');
+                    $ruleIndex++;
+                }
+            }
         } else {
             $this->extractValidationRule($item);
         }
@@ -438,7 +450,7 @@ class FormBuilder
      *
      * @return void
      */
-    protected function extractValidationRule($item)
+    protected function extractValidationRule($item, $name = '')
     {
         if (isset($item['settings']['validation_rules'])) {
             $rules = $item['settings']['validation_rules'];
@@ -475,7 +487,7 @@ class FormBuilder
                 }
             }
     
-            $rules= apply_filters_deprecated(
+            $rules = apply_filters_deprecated(
                 'fluentform_item_rules_' . $item['element'],
                 [
                     $rules,
@@ -487,7 +499,10 @@ class FormBuilder
             );
 
             $rules = apply_filters('fluentform/item_rules_' . $item['element'], $rules, $item);
-            $this->validationRules[$item['attributes']['name']] = $rules;
+            if (!$name) {
+                $name = $item['attributes']['name'];
+            }
+            $this->validationRules[$name] = $rules;
         }
     }
 

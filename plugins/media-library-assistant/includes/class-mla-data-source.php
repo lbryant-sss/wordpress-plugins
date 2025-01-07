@@ -739,7 +739,7 @@ class MLAData_Source {
 					break;
 				}
 
-				$filesize = self::_get_filesize( $results['absolute_file_name_raw'] );
+				$filesize = self::_get_filesize( $result['absolute_file_name_raw'] );
 				if ( false !== $filesize ) {
 					$result = $filesize;
 				}

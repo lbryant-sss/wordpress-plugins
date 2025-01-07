@@ -4,7 +4,7 @@ Contributors: eskapism
 Donate link: https://www.paypal.me/eskapism
 Tags: history, audit log, event log, user tracking, activity
 Tested up to: 6.7
-Stable tag: 5.4.3
+Stable tag: 5.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -277,6 +277,17 @@ Read more at the [FAQ on the plugin website](https://simple-history.com/docs/faq
 -   [Sponsor the plugin to keep it free.](https://simple-history.com/sponsor/)
 -   [Add a 5-star review so other users know it's good.](https://wordpress.org/support/plugin/simple-history/reviews/?filter=5)
 -   [Get the premium add-on for more features.](https://simple-history.com/add-ons/premium/?utm_source=wpadmin&utm_content=readme).
+
+### 5.4.4 (January 2025)
+
+First release of 2025! 🎉
+
+-   Don't output CSS and JS for _Admin Bar Quick View_ if admin bar is not visible. [#510](https://github.com/bonny/WordPress-Simple-History/issues/510)
+-   Only load events from the last 7 days in the _Admin Bar Quick View_.
+-   Remove some unused CSS. [#505](https://github.com/bonny/WordPress-Simple-History/issues/505)
+-   🎨 Fresh new logo for the plugin.
+-   Style some admin boxes to match new design.
+-   Misc other internal improvements.
 
 ### 5.4.3 (December 2024)
 

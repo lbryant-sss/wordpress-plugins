@@ -588,9 +588,12 @@ class ContentPermissionsEnforcer {
 		}
 
 		$postTypes = $this->getPostTypesFromQuery($query);
-		//Include only enabled post types.
-		if ( $postTypes ) {
+		if ( is_array($postTypes) ) {
+			//Filter out post types that are not enabled.
 			$postTypes = array_filter($postTypes, [$this->module, 'isPostTypeEnabled']);
+		} else {
+			//Include all enabled post types.
+			$postTypes = $this->module->getEnabledPostTypes();
 		}
 
 		$hiddenPostIds = $this->policyStore->getPostsHiddenFromLists(

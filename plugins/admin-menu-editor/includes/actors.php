@@ -158,6 +158,10 @@ class ActorManager {
 	 */
 	private $anonymousUserInstance = null;
 	/**
+	 * @var LoggedInUser|null
+	 */
+	private $loggedInUserInstance = null;
+	/**
 	 * @var User|null
 	 */
 	private $cachedCurrentUser = null;
@@ -204,11 +208,11 @@ class ActorManager {
 			return null;
 		}
 
-		$this->cachedCurrentUser = $this->getActorFromWpUser($user);
+		$this->cachedCurrentUser = $this->getActorFromWpUser($user, true);
 		return $this->cachedCurrentUser;
 	}
 
-	protected function getActorFromWpUser(\WP_User $user) {
+	protected function getActorFromWpUser(\WP_User $user, $isLoggedIn = false) {
 		$expectedActorId = Actor::USER_PREFIX . $user->user_login;
 		if ( isset($this->actorInstances[$expectedActorId]) ) {
 			return $this->actorInstances[$expectedActorId];
@@ -226,7 +230,12 @@ class ActorManager {
 			$superAdmin = null;
 		}
 
-		$actor = new User($user->user_login, $roleActors, $superAdmin);
+		$actor = new User(
+			$user->user_login,
+			$roleActors,
+			$superAdmin,
+			$isLoggedIn ? $this->getGenericLoggedInUser() : null
+		);
 		$this->actorInstances[$actor->getId()] = $actor;
 		return $actor;
 	}
@@ -236,6 +245,13 @@ class ActorManager {
 			$this->anonymousUserInstance = new AnonymousUser();
 		}
 		return $this->anonymousUserInstance;
+	}
+
+	private function getGenericLoggedInUser() {
+		if ( $this->loggedInUserInstance === null ) {
+			$this->loggedInUserInstance = new LoggedInUser();
+		}
+		return $this->loggedInUserInstance;
 	}
 
 	public function getCurrentActor() {

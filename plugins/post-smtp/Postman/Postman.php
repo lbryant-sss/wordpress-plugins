@@ -51,6 +51,7 @@ class Postman {
 		$this->rootPluginFilenameAndPath = $rootPluginFilenameAndPath;
 		self::$rootPlugin = $rootPluginFilenameAndPath;
 		
+		require_once POST_SMTP_PATH . '/Postman/Postman-Suggest-Pro/PostmanPromotionManager.php';
 		//Load helper functions file :D
 		require_once POST_SMTP_PATH . '/includes/postman-functions.php';
 
@@ -102,7 +103,7 @@ class Postman {
 
 		// get plugin metadata - alternative to get_plugin_data
 		$this->pluginData = array(
-				'name' => __( 'Postman SMTP', 'post-smtp' ),
+				'name' => 'Post SMTP',
 				'version' => $version,
 		);
 

@@ -32,6 +32,11 @@ Upload the Akismet plugin to your blog, activate it, and then enter your Akismet
 
 == Changelog ==
 
+= 5.3.6 =
+*Release Date - TBD*
+
+* Improves the utility of submit-spam and submit-ham requests.
+
 = 5.3.5 =
 *Release Date - 18 November 2024*
 
