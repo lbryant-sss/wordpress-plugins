@@ -1,4 +1,4 @@
-﻿=== WP Ghost - Security & Firewall ===
+﻿=== WP Ghost (short for Hide My WP Ghost) - Security & Firewall ===
 Contributors: johndarrel
 Tags: hide,security,firewall,login,wp admin
 Requires at least: 5.3
@@ -14,7 +14,7 @@ Hide WP paths, wp-login, wp-admin and more. Hack Prevention, Brute Force protect
 
 Level up your WordPress security with WP Ghost plugin!
 
-**WP Ghost** (short for Hide My WP Ghost) is a comprehensive hack-prevention security solution for WordPress websites. It adds multiple layers of security to block hacker bots and prevent unauthorized access.
+**WP Ghost** is a comprehensive hack-prevention security solution for WordPress websites. It adds multiple layers of security to block hacker bots and prevent unauthorized access.
 
 It works by changing and hiding common vulnerabilities, making it difficult for bots and hackers to exploit weak points in plugins, themes, and the WordPress core itself.
 

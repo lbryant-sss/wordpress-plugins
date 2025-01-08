@@ -3,7 +3,7 @@ Contributors: uglyrobot, jdailey, andtrev
 Tags: increase file size limit, increase upload limit, max upload file size, post max size, upload limit, file upload, files uploader, ftp, video uploader, AJAX
 Requires at least: 5.3
 Tested up to: 6.6.1
-Stable tag: 2.1.3
+Stable tag: 2.1.6
 Requires PHP: 5.6
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -96,6 +96,10 @@ If you can upload it to the WordPress media library, Big File Uploads can proces
 
 No. [Infinite Uploads](https://wordpress.org/plugins/infinite-uploads/) is an optional service to offload your media files to the cloud and make your WordPress website storage infinitely scalable. Perfect for sites that need to store many large file uploads.
 
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/wordpress/plugin/tuxedo-big-file-uploads/vdp)
+
 
 == Screenshots ==
 
@@ -105,6 +109,18 @@ No. [Infinite Uploads](https://wordpress.org/plugins/infinite-uploads/) is an op
 4. Increase upload size for built-in file uploader.
 
 == Changelog ==
+
+2.1.6 - 2025-1-7
+----------------------------------------------------------------------
+- 2025 update
+
+2.1.5 - 2025-1-7
+----------------------------------------------------------------------
+- Copyright update
+
+2.1.4 - 2025-1-6
+----------------------------------------------------------------------
+- FAQ update for security bug reporting
 
 2.1.3 - 2024-9-6
 ----------------------------------------------------------------------

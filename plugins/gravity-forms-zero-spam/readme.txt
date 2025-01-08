@@ -3,7 +3,7 @@ Contributors: gravityview
 Tags: gravity forms, spam, captcha, honeypot, anti-spam
 Requires at least: 4.7
 Tested up to: 6.7.1
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 Requires PHP: 5.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -113,6 +113,10 @@ First, **de-activate and re-activate the plugin**. Then let us know on the suppo
 You can enable a spam summary report email. This email will be sent to the email address configured in the "Spam Summary Email" setting on the Gravity Forms "Forms" menu, click Settings, then click the Zero Spam tab.
 
 == Changelog ==
+
+= 1.4.6 on January 7, 2025 =
+
+* Fixed: Fatal error on PHP 7.2 and older
 
 = 1.4.5 on November 28, 2024 =
 

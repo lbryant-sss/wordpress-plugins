@@ -1,15 +1,15 @@
-# Copyright (C) 2024 GiveWP
+# Copyright (C) 2025 GiveWP
 # This file is distributed under the same license as the Give - Donation Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Give - Donation Plugin 3.19.3\n"
+"Project-Id-Version: Give - Donation Plugin 3.19.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/givewp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-24T16:24:25+00:00\n"
+"POT-Creation-Date: 2025-01-07T21:00:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: give\n"
@@ -1229,7 +1229,7 @@ msgstr ""
 #: includes/admin/donors/donors.php:368
 #: includes/admin/import-functions.php:542
 #: includes/forms/template.php:790
-#: src/DonationForms/Actions/ConvertDonationFormBlocksToFieldsApi.php:305
+#: src/DonationForms/Actions/ConvertDonationFormBlocksToFieldsApi.php:306
 #: build/adminBlocks.js:1
 #: build/donationFormBlock.js:1
 #: build/formBuilderApp.js:13

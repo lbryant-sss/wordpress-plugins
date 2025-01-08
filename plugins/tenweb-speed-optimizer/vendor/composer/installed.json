@@ -147,9 +147,9 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.10web.io:6202/10web-utils/tenweb-authorization.git",
-                "reference": "16a820e0be9f95255404101d2d057394a5ae9d0d"
+                "reference": "892d226eb8af928ed91b56a78659740b60e1c7da"
             },
-            "time": "2024-10-25T11:48:14+00:00",
+            "time": "2024-12-23T08:27:41+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "source",
@@ -536,15 +536,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monperrus/crawler-user-agents.git",
-                "reference": "e464fa7cb22920f3927cd85d7de32aeedfbf6c85"
+                "reference": "ed7e74974c28980351d4bdbbe109998688d71234"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monperrus/crawler-user-agents/zipball/e464fa7cb22920f3927cd85d7de32aeedfbf6c85",
-                "reference": "e464fa7cb22920f3927cd85d7de32aeedfbf6c85",
+                "url": "https://api.github.com/repos/monperrus/crawler-user-agents/zipball/ed7e74974c28980351d4bdbbe109998688d71234",
+                "reference": "ed7e74974c28980351d4bdbbe109998688d71234",
                 "shasum": ""
             },
-            "time": "2024-10-23T05:56:48+00:00",
+            "time": "2024-12-21T08:17:12+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",
@@ -843,8 +843,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "installation-source": "dist",
@@ -925,8 +925,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "installation-source": "dist",
@@ -1002,8 +1002,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "installation-source": "dist",

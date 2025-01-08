@@ -180,14 +180,17 @@ class TransferService
                 if (isset($formInputs[$field]['element']) && "tabular_grid" === $formInputs[$field]['element']) {
                     $gridRawData = Arr::get($submission->response, $field);
                     $content = Helper::getTabularGridFormatValue($gridRawData, Arr::get($formInputs, $field), ' | ');
+                } elseif (isset($formInputs[$field]['element']) && "subscription_payment_component" === $formInputs[$field]['element']) {
+                    //resolve plane name for subscription field
+                    $planIndex = Arr::get($submission->user_inputs, $field);
+                    $planLabel = Arr::get($formInputs,  "{$field}.raw.settings.subscription_options.{$planIndex}.name");
+                    if ($planLabel) {
+                        $content = $planLabel;
+                    } else {
+                        $content = self::getFieldExportContent($submission, $field);
+                    }
                 } else {
-                    $content = trim(
-                        wp_strip_all_tags(
-                            FormDataParser::formatValue(
-                                Arr::get($submission->user_inputs, $field)
-                            )
-                        )
-                    );
+                    $content = self::getFieldExportContent($submission, $field);
                     if (Arr::get($formInputs, $field . '.element') === "input_number" && is_numeric($content)) {
                         $content = $content + 0;
                     }
@@ -238,6 +241,17 @@ class TransferService
         $data = apply_filters('fluentform/export_data', $data, $form, $exportData, $inputLabels);
         $fileName = sanitize_title($form->title, 'export', 'view') . '-' . date('Y-m-d');
         self::downloadOfficeDoc($data, $type, $fileName);
+    }
+
+    private static function getFieldExportContent($submission, $fieldName)
+    {
+        return trim(
+            wp_strip_all_tags(
+                FormDataParser::formatValue(
+                    Arr::get($submission->user_inputs, $fieldName)
+                )
+            )
+        );
     }
 
     private static function exportAsJSON($form, $args)

@@ -262,6 +262,10 @@ class DFlip_ShortCode {
       $source_type = $post_data['source_type'];
       $pdf_source = $post_data['pdf_source'];
 
+      //sanitize saved outline
+      if(is_array($post_data['outline'])){
+        $post_data['outline'] = $this->base->array_outline_sanitize($post_data['outline']);
+      }
       $post_data['source'] = '';
 
       if ( $source_type == 'pdf' ) {

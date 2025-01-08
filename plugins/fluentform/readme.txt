@@ -4,7 +4,7 @@ Tags: contact form, wp forms, forms, form builder, custom form
 Requires at least: 4.5
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 5.2.9
+Stable tag: 5.2.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,6 +109,7 @@ Our drag-and-drop form builder allows you to easily create any form you can imag
 * Password Field
 * Custom Submit Button
 * One/Two/Three/Four/Five/Six Column Container
+* Container Repeater
 
 **Available in the Pro Version**
 
@@ -425,6 +426,11 @@ You can get support from our official support thread at <a href="https://wpmanag
 12. Asset Loading Comparison with Other Plugins
 
 == Changelog ==
+
+= 5.2.10 (Date: January 07, 2025) =
+- Fixes unsupported field disappears inside container
+- Fixes names/address fields '0' required validation
+- Fixes custom button style reset border radius 0px
 
 = 5.2.9 (Date: January 06, 2025) =
 - Adds CleanTalk Spam Protection

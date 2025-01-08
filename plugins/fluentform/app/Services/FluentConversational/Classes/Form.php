@@ -241,7 +241,7 @@ class Form
             $buttonHoverStyles = ArrayHelper::get($data, 'settings.hover_styles', []);
             $activeStates = '';
             foreach ($buttonActiveStyles as $styleAtr => $styleValue) {
-                if (!$styleValue) {
+                if ('0' != $styleValue && !$styleValue) {
                     continue;
                 }
                 if ('borderRadius' == $styleAtr) {
@@ -254,7 +254,7 @@ class Form
             }
             $hoverStates = '';
             foreach ($buttonHoverStyles as $styleAtr => $styleValue) {
-                if (!$styleValue) {
+                if ('0' != $styleValue && !$styleValue) {
                     continue;
                 }
                 if ('borderRadius' == $styleAtr) {

@@ -784,7 +784,7 @@ class Helper
                 $state->set_active($file_name);
                 $state->set_tenweb_product(false);
                 $state->set_other_wp_info($file_name, $installed_plugin, self::get_installed_plugins_wp_info());
-                //$state->set_is_autoupdate_enabled(in_array($file_name, self::$auto_update_plugins, true));
+                $state->set_is_autoupdate_enabled(in_array($file_name, self::$auto_update_plugins, true));
 
 
                 self::$plugins_state[] = $state;
@@ -927,7 +927,7 @@ class Helper
                 $state->set_active($plugin_slug);
                 $state->set_is_paid($plugin_data['current_version']);
                 $state->set_other_wp_info($plugin_slug, $installed_plugin, $installed_plugins_info);
-                //$state->set_is_autoupdate_enabled(in_array($plugin_slug, self::$auto_update_plugins, true));
+                $state->set_is_autoupdate_enabled(in_array($plugin_slug, self::$auto_update_plugins, true));
 
 
                 if ($addons == true) {

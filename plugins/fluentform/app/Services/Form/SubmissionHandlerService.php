@@ -70,7 +70,9 @@ class SubmissionHandlerService
          */
         foreach ($formDataRaw as $name => $input) {
             if (is_array($input)) {
-                $formDataRaw[$name] = array_filter($input);
+                $formDataRaw[$name] = array_filter($input, function($value) {
+                    return $value !== null && $value !== false && $value !== '';
+                });
             }
         }
 

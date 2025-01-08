@@ -251,12 +251,12 @@ If you decide to stop using Weglot, your website will no longer be translated. A
 == Screenshots ==
 
 1. Become visible on search engines with multilingual SEO
-2. Edit translations easily with the visual editor
+2. Get full editing control with machine, human and pro translation options
 3. Integrate Weglot with your WordPress website and get started instantly
 4. Create your translation team and collaborate with members
 5. Customize your language switcher for your website and brand
-6. Get full editing control with machine, human and pro translation options
-7. Join +60k brand going multilingual with Weglot
+6. Edit your translations directly on a live preview of your website
+7. See the impact of your translated pages and leverage new opportunities
 8. Create translation rules and avoid repetitive editing tasks
 
 

@@ -1,6 +1,6 @@
 <?php
 
-define('TENWEB_SO_VERSION', '2.30.7');
+define('TENWEB_SO_VERSION', '2.30.9');
 define('TENWEB_SO_CONNECTED_FROM', 'speed_optimizer');
 define('TENWEB_SO_DIR', plugin_dir_path(TWO_PLUGIN_FILE));
 define('TENWEB_SO_PLUGIN_DIR', plugin_dir_path(TWO_PLUGIN_FILE));

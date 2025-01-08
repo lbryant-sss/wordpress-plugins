@@ -91,7 +91,7 @@ class SubmitButton extends BaseComponent
 
             $activeStates = '';
             foreach ($buttonActiveStyles as $styleAtr => $styleValue) {
-                if (! $styleValue) {
+                if ('0' !== $styleValue && !$styleValue) {
                     continue;
                 }
                 if ('borderRadius' == $styleAtr) {
@@ -104,7 +104,7 @@ class SubmitButton extends BaseComponent
             }
             $hoverStates = '';
             foreach ($buttonHoverStyles as $styleAtr => $styleValue) {
-                if (! $styleValue) {
+                if ('0' !== $styleValue && !$styleValue) {
                     continue;
                 }
                 if ('borderRadius' == $styleAtr) {

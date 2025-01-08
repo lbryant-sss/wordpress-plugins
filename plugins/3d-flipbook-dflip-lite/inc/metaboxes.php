@@ -665,7 +665,7 @@ class DFlip_Meta_boxes {
     $sanitized_data['auto_thumbnail'] = sanitize_text_field( $_POST['_dflip']['auto_thumbnail'] );
     $sanitized_data['overwrite_outline'] = sanitize_text_field( $_POST['_dflip']['overwrite_outline'] );
 
-    $sanitized_data['outline'] = isset( $_POST['_dflip']['outline'] ) ? $this->array_text_sanitize( $_POST['_dflip']['outline'] ) : array();
+    $sanitized_data['outline'] = isset( $_POST['_dflip']['outline'] ) ? $this->base->array_outline_sanitize( $_POST['_dflip']['outline'] ) : array();
     $sanitized_data['outline'] = $this->array_val($sanitized_data['outline'],'items');
 
     $settings = get_post_meta( $post_id, '_dflip_data', true );
