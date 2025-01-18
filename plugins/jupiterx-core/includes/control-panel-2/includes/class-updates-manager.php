@@ -5,6 +5,13 @@
  * @package JupiterX_Core\Control_Panel_2
  */
 
+/**
+ * Updates Manager class.
+ *
+ * @since 1.18.0
+ *
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ */
 class JupiterX_Core_Control_Panel_Updates_Manager {
 	/**
 	 * Transient to remember when update was checked last time.
@@ -19,6 +26,20 @@ class JupiterX_Core_Control_Panel_Updates_Manager {
 	 * @since 1.18.0
 	 */
 	const UPDATES_TRANSIENT_KEY = 'jupiterx_core_cp_updates';
+
+	/**
+	 * Transient to get products.
+	 *
+	 * @since 4.8.7
+	 */
+	const PRODUCTS_TRANSIENT_KEY = 'jupiterx_cp_settings_products';
+
+	/**
+	 * Artbees themes products API.
+	 *
+	 * @since 4.8.7
+	 */
+	const THEMES_PRODUCTS_API = 'https://my.artbees.net/wp-json/artbees-portal-products/v1/products';
 
 	/**
 	 * Updates Manager Constructor
@@ -36,6 +57,9 @@ class JupiterX_Core_Control_Panel_Updates_Manager {
 	 * @since 1.18.0
 	 *
 	 * @return string
+	 *
+	 * @SuppressWarnings(PHPMD.NPathComplexity)
+	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
 	 */
 	public function get_updates() {
 		check_ajax_referer( 'jupiterx_control_panel' );
@@ -54,6 +78,12 @@ class JupiterX_Core_Control_Panel_Updates_Manager {
 			$timestamp = get_transient( self::LAST_CHECKED_TRANSIENT_KEY );
 			$updates   = get_transient( self::UPDATES_TRANSIENT_KEY );
 
+			$products = get_transient( self::PRODUCTS_TRANSIENT_KEY );
+
+			if ( empty( $products ) ) {
+				$force = true;
+			}
+
 			if ( $force || false === $timestamp || false === $updates ) {
 				$force     = true;
 				$timestamp = time();
@@ -69,6 +99,78 @@ class JupiterX_Core_Control_Panel_Updates_Manager {
 				$updates = array_merge( $updates, $this->get_plugins_updates() );
 
 				set_transient( self::UPDATES_TRANSIENT_KEY, $updates, DAY_IN_SECONDS );
+			}
+
+			if ( empty( $products ) || $force ) {
+				$products = $this->set_products_transient();
+			}
+
+			$updates_ids = array_column( $updates, 'post_id' );
+
+			if ( count( $updates_ids ) !== count( $updates ) ) {
+				$updates_theme = array_filter( $updates, function( $item ) {
+					return ! array_key_exists( 'post_id', $item );
+				} );
+
+				$updates = array_filter( $updates, function( $item ) {
+					return array_key_exists( 'post_id', $item );
+				} );
+
+				// Re-index the array to maintain sequential indexes
+				$updates = array_values( $updates );
+
+				$merged_updates_theme = [];
+
+				foreach ( $updates_theme as $update_theme ) {
+					if ( 'theme' === $update_theme['type'] ) {
+						$product_theme = array_filter( $products, function( $item ) use ( $update_theme ) {
+							return 'theme' === $item->type && $item->slug === $update_theme['slug'];
+						} );
+
+						$merged_updates_theme[] = (object) array_merge( $update_theme, (array) $product_theme[0] );
+					}
+				}
+			}
+
+			$updates_lookup = array_combine( $updates_ids, $updates );
+
+			$merged_update = array_filter( $products, function( $item ) use ( $updates_lookup ) {
+				return isset( $updates_lookup[ $item->ID ] );
+			} );
+
+			$merged_update = array_map( function( $item ) use ( $updates_lookup ) {
+				return (object) array_merge( $updates_lookup[ $item->ID ], (array) $item );
+			}, $merged_update );
+
+			if ( ! empty( $updates_theme ) ) {
+				$merged_update = array_merge( $merged_updates_theme, $merged_update );
+			}
+
+			$updates = [];
+			foreach ( $merged_update as $product ) {
+				$product->active_version = $product->current_version;
+
+				$selected_version = [];
+
+				foreach ( $product->versions as $version ) {
+					if ( $version->name === $product->new_version ) {
+						$selected_version = $version;
+						break;
+					}
+				}
+
+				if ( empty( $selected_version ) && isset( $updates_lookup[ $product->ID ]['source'] ) ) {
+					$selected_version = [
+						'url' => $updates_lookup[ $product->ID ]['source'],
+						'name' => $product->new_version,
+					];
+				}
+
+				unset( $product->versions );
+
+				$product->selected_version = $selected_version;
+
+				$updates[] = $product;
 			}
 
 			$auto_updater_state = 'disabled';
@@ -254,6 +356,101 @@ class JupiterX_Core_Control_Panel_Updates_Manager {
 		delete_site_transient( 'jupiterx_managed_plugins' );
 		delete_transient( 'jupiterx_tgmpa_plugins' );
 		delete_transient( 'jupiterx_tgmpa_plugins_check' );
+	}
+
+	/**
+	 * Set products transient.
+	 *
+	 * @since 4.8.7
+	 *
+	 * @return array
+	 *
+	 * @SuppressWarnings(PHPMD.NPathComplexity)
+	 */
+	private function set_products_transient() {
+		$products = [];
+
+		$products = wp_remote_retrieve_body(
+			wp_remote_post( self::THEMES_PRODUCTS_API, [
+				'body' => [
+					'product' => 'jupiterx',
+				],
+			] )
+		);
+
+		$products = json_decode( $products );
+
+		if ( ! is_array( $products ) || empty( $products ) ) {
+			wp_send_json_error( __( 'There\'s a problem in fetching the products.', 'jupiterx-core' ) );
+		}
+
+		if ( ! jupiterx_is_pro() ) {
+			$wp_theme = wp_remote_retrieve_body(
+				wp_remote_get( 'https://api.wordpress.org/themes/info/1.1/?action=theme_information&request[slug]=jupiterx-lite&request[fields][versions]=true' )
+			);
+
+			$wp_theme = json_decode( $wp_theme );
+
+			if ( ! is_object( $wp_theme ) || empty( $wp_theme ) ) {
+				wp_send_json_error( __( 'There\'s a problem in fetching the products.', 'jupiterx-core' ) );
+			}
+
+			// Get jupitrx-lite versions from WP api.
+			foreach ( $products as $product_key => $product ) {
+				if ( 'theme' !== $product->type ) {
+					continue;
+				}
+
+				if ( empty( $product->source ) ) {
+					$product->source = 'wp-repo';
+				}
+
+				$product->versions = null;
+
+				foreach ( $wp_theme->versions as $name => $url ) {
+					if ( preg_match( '/trunk|-.*/m', $name ) ) {
+						continue;
+					}
+
+					$products[ $product_key ]->versions[] = (object) [
+						'name' => $name,
+						'url'  => $url,
+					];
+				}
+			}
+		}
+
+		// Get wp-repo plugins versions from WP api.
+		foreach ( $products as $product_key => $product ) {
+			if ( 'wp-repo' !== $product->source ) {
+				continue;
+			}
+
+			$wp_plugin = wp_remote_retrieve_body(
+				wp_remote_get( 'https://api.wordpress.org/plugins/info/1.0/' . $product->slug . '.json' )
+			);
+
+			$wp_plugin = json_decode( $wp_plugin );
+
+			if ( ! is_object( $wp_plugin ) || empty( $wp_plugin ) ) {
+				wp_send_json_error( __( 'There\'s a problem in fetching the wp-repo plugins\' versions.', 'jupiterx-core' ) );
+			}
+
+			foreach ( $wp_plugin->versions as $name => $url ) {
+				if ( preg_match( '/trunk|-.*/m', $name ) ) {
+					continue;
+				}
+
+				$products[ $product_key ]->versions[] = (object) [
+					'name' => $name,
+					'url'  => $url,
+				];
+			}
+		}
+
+		set_transient( self::PRODUCTS_TRANSIENT_KEY, $products, WEEK_IN_SECONDS );
+
+		return $products;
 	}
 }
 

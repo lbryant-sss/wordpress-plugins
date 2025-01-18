@@ -385,14 +385,6 @@ class Settings {
                     'desc'    => __( 'maximum number of suggestions', 'ajax-search-for-woocommerce' ),
                     'default' => 7,
                 ),
-                70   => array(
-                    'name'    => 'show_grouped_results',
-                    'label'   => __( 'Group results', 'ajax-search-for-woocommerce' ),
-                    'type'    => 'checkbox',
-                    'size'    => 'small',
-                    'default' => 'on',
-                    'class'   => 'js-dgwt-wcas-adv-settings',
-                ),
                 80   => array(
                     'name'              => 'search_no_results_text',
                     'label'             => _x( 'No results label', 'admin', 'ajax-search-for-woocommerce' ) . ' ' . Helpers::createQuestionMark( 'no-results-label', sprintf( __( 'The following HTML tags are allowed:<br /> %s.', 'ajax-search-for-woocommerce' ), '<code>h1-h6,p,ul,ol,li,b,em,br,div,span,a</code>' ) . ' <br /> ' . sprintf( __( 'See an example of a more complex "No results" message in <a href="%s" target="_blank">our documentation</a>.', 'ajax-search-for-woocommerce' ), $noResultsExtLink ) ),
@@ -501,7 +493,7 @@ class Settings {
                 ),
                 2200 => array(
                     'name'    => 'show_user_history',
-                    'label'   => __( 'User search history (beta)', 'ajax-search-for-woocommerce' ) . ' ' . Helpers::createQuestionMark( 'user-search-history', __( "The current search history is presented when the user clicked/taped on the search bar, but hasn't yet typed the query. The history includes the last searched products and phrases.", 'ajax-search-for-woocommerce' ) . ' ' . sprintf( $readMore, $searchHistory ) ),
+                    'label'   => __( 'User search history', 'ajax-search-for-woocommerce' ) . ' ' . Helpers::createQuestionMark( 'user-search-history', __( "The current search history is presented when the user clicked/taped on the search bar, but hasn't yet typed the query. The history includes the last searched products and phrases.", 'ajax-search-for-woocommerce' ) . ' ' . sprintf( $readMore, $searchHistory ) ),
                     'type'    => 'checkbox',
                     'size'    => 'small',
                     'class'   => 'js-dgwt-wcas-adv-settings',
@@ -574,6 +566,14 @@ class Settings {
                     'type'    => 'checkbox',
                     'desc'    => ( dgoraAsfwFs()->is_premium() ? __( 'searching also in variable products SKU', 'ajax-search-for-woocommerce' ) : sprintf( __( 'Searching in variable products SKU is available only in <a target="_blank" href="%s">the pro version</a>.', 'ajax-search-for-woocommerce' ), Upgrade::getUpgradeUrl() ) ),
                     'default' => 'off',
+                ),
+                160 => array(
+                    'name'    => 'search_in_product_global_unique_id',
+                    'label'   => __( 'Search in GUID', 'ajax-search-for-woocommerce' ) . ' ' . Helpers::createQuestionMark( 'search_in_product_global_unique_id', __( 'Make your products searchable by their Global Unique Identifier (GTIN, UPC, EAN or ISBN).', 'ajax-search-for-woocommerce' ) ),
+                    'type'    => 'checkbox',
+                    'desc'    => ( dgoraAsfwFs()->is_premium() ? __( 'searching also in variable products GUID', 'ajax-search-for-woocommerce' ) : sprintf( __( 'Searching in variable products GUID is available only in <a target="_blank" href="%s">the pro version</a>.', 'ajax-search-for-woocommerce' ), Upgrade::getUpgradeUrl() ) ),
+                    'default' => 'off',
+                    'class'   => 'js-dgwt-wcas-adv-settings dgwt-wcas-hidden',
                 ),
                 200 => array(
                     'name'    => 'search_in_product_attributes',
@@ -738,6 +738,10 @@ class Settings {
                 'desc'  => Helpers::indexerDemoHtml(),
                 'class' => 'dgwt-wcas-premium-only wcas-opt-tntsearch',
             );
+        }
+        // Show "Search in GUID" option if there are products with these values.
+        if ( Helpers::isSettingsPage() && Helpers::productsUseGlobalUniqueId() ) {
+            $settingsFields['dgwt_wcas_search'][160]['class'] = str_replace( 'dgwt-wcas-hidden', '', $settingsFields['dgwt_wcas_search'][160]['class'] );
         }
         if ( !dgoraAsfwFs()->is_premium() ) {
             foreach ( $settingsFields as $key => $sections ) {

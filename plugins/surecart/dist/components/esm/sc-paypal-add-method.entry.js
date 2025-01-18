@@ -1,6 +1,6 @@
 import { r as registerInstance, h, H as Host } from './index-745b6bec.js';
 import { l as loadScript, g as getScriptLoadParams } from './functions-2a4a4ba3.js';
-import { a as apiFetch } from './fetch-2032d11d.js';
+import { a as apiFetch } from './fetch-2d92a73e.js';
 import './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 

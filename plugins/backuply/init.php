@@ -10,7 +10,7 @@ if(!function_exists('add_action')){
 	exit;
 }
 
-define('BACKUPLY_VERSION', '1.4.1');
+define('BACKUPLY_VERSION', '1.4.2');
 define('BACKUPLY_DIR', dirname(BACKUPLY_FILE));
 define('BACKUPLY_URL', plugins_url('', BACKUPLY_FILE));
 define('BACKUPLY_BACKUP_DIR', str_replace('\\' , '/', WP_CONTENT_DIR).'/backuply/');
@@ -325,12 +325,11 @@ function backuply_update_check(){
 		if(!empty($cron_settings) && !empty($cron_settings['backuply_cron_schedule']) && $cron_settings['backuply_cron_schedule'] !== 'custom'){
 			backuply_set_config();
 		}
-
-		backuply_set_status_key();
 	}
 	
 	// Save the new Version
 	update_option('backuply_version', BACKUPLY_VERSION);
+	backuply_set_status_key(); // We will update the status key on every update to decrease chances of it being stolen.
 	
 }
 

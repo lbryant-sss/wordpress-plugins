@@ -129,12 +129,14 @@ if ( ! class_exists( 'YITH_WCWL_Install' ) ) {
 		 * @since 1.0.0
 		 */
 		private function add_pages() {
-			wc_create_page(
-				sanitize_title_with_dashes( _x( 'wishlist', 'page_slug', 'yith-woocommerce-wishlist' ) ),
-				'yith_wcwl_wishlist_page_id',
-				__( 'Wishlist', 'yith-woocommerce-wishlist' ),
-				'<!-- wp:shortcode -->[yith_wcwl_wishlist]<!-- /wp:shortcode -->'
-			);
+			if ( function_exists( 'wc_create_page' ) ) {
+				wc_create_page(
+					sanitize_title_with_dashes( _x( 'wishlist', 'page_slug', 'yith-woocommerce-wishlist' ) ),
+					'yith_wcwl_wishlist_page_id',
+					__( 'Wishlist', 'yith-woocommerce-wishlist' ),
+					'<!-- wp:shortcode -->[yith_wcwl_wishlist]<!-- /wp:shortcode -->'
+				);
+			}
 		}
 	}
 }

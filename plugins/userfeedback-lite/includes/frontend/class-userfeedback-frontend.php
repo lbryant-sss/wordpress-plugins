@@ -361,6 +361,22 @@ class UserFeedback_Frontend
 			$surveys
 		);
 
+		// For icon-choice question type, we need to extract the svg markup and send to frontend to render
+		foreach($surveys as &$survey) {
+			foreach($survey->questions as $question) {
+				if ($question->type === 'icon-choice') {
+					foreach($question->config->options as $option) {
+						$svg_file_path = plugin_dir_path(USERFEEDBACK_PLUGIN_FILE) . 'assets/vue/icon-choices/svgs/' . $option->icon->style . '/' . $option->icon->icon . '.svg';
+
+						if (file_exists($svg_file_path)) {
+							$svg_content = file_get_contents($svg_file_path);
+							$option->icon = $svg_content;
+						}
+					}
+				}
+			}
+		}
+
 		/*
 		 * If there are no Surveys available, we don't enqueue the scripts
 		 */
@@ -597,16 +613,18 @@ class UserFeedback_Frontend
 			foreach ($rules as $index => $rule) {
 				$nextRule = isset($rules[$index + 1]) ? $rules[$index + 1] : false;
 
-				if (empty($rule->operator)) {
-					if ($nextRule && $nextRule->operator === '||') {
-						$orRules[] = $rule;
-					} else {
-						$andRules[] = $rule;
-					}
-				} elseif ($rule->operator === '&&') {
-					$andRules[] = $rule;
-				} elseif ($rule->operator === '||') {
+				if (
+					(
+						empty($rule->operator) && $nextRule && isset($nextRule->operator) && $nextRule->operator === '||'
+					) 
+					||
+					(
+						isset($rule->operator) && $rule->operator === '||'
+					)
+				) {
 					$orRules[] = $rule;
+				} else {
+					$andRules[] = $rule;
 				}
 			}
 
@@ -663,6 +681,16 @@ class UserFeedback_Frontend
 
 					if ('publish' == get_post_status($page_id)) {
 						$thank_you_config->redirect_url = get_permalink($page_id);
+					}
+				} else if ($thank_you_config->type === 'conditional_redirect' && is_array($thank_you_config->conditions)) {
+					foreach ($thank_you_config->conditions as &$condition) {
+						if (isset($condition->page->id)) {
+							$page_id = $condition->page->id;
+	
+							if ('publish' == get_post_status($page_id)) {
+								$condition->redirect_url = get_permalink($page_id);
+							}
+						}
 					}
 				}
 

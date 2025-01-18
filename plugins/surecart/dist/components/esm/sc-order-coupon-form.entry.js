@@ -1,8 +1,8 @@
 import { r as registerInstance, h } from './index-745b6bec.js';
-import { u as updateFormState, s as state } from './mutations-4ce86b78.js';
+import { u as updateFormState, s as state } from './mutations-83ea96b2.js';
 import { i as isRtl } from './page-align-0cdacf32.js';
 import { f as formBusy } from './getters-487612aa.js';
-import { c as createOrUpdateCheckout } from './index-af03d92e.js';
+import { c as createOrUpdateCheckout } from './index-01c97eb1.js';
 import './index-06061d4e.js';
 import './utils-cd1431df.js';
 import './remove-query-args-938c53ea.js';
@@ -12,7 +12,7 @@ import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
 import './store-627acec4.js';
 import './price-d5770168.js';
-import './fetch-2032d11d.js';
+import './fetch-2d92a73e.js';
 
 const scOrderCouponFormCss = ":host{display:block}.coupon-form{position:relative}.form{opacity:0;visibility:hidden;height:0;transition:opacity var(--sc-transition-fast) ease-in-out}.coupon-form--is-open .form{opacity:1;visibility:visible;height:auto;margin-top:var(--sc-spacing-small);display:grid;gap:var(--sc-spacing-small)}.coupon-form--is-open .trigger{color:var(--sc-input-label-color)}.coupon-form--is-open .trigger:hover{text-decoration:none}.trigger{cursor:pointer;font-size:var(--sc-font-size-small);color:var(--sc-color-gray-500);user-select:none}.trigger:hover{text-decoration:underline}.order-coupon-form--is-rtl .trigger,.order-coupon-form--is-rtl .trigger:hover{text-align:right}";
 const ScOrderCouponFormStyle0 = scOrderCouponFormCss;

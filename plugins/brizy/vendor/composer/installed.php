@@ -3,7 +3,7 @@
         'name' => 'brizy/brizy',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'bddcc25fed84e0a6d3e545a6668bb5fe544726c7',
+        'reference' => 'ff0ea3292a6682314f2900eb7a5de48ad1c1beda',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -33,7 +33,7 @@
         'bagrinsergiu/content-placeholder' => array(
             'pretty_version' => 'v3.x-dev',
             'version' => '3.9999999.9999999.9999999-dev',
-            'reference' => 'ea4b9b0c8e90828ea9bc67c3b0783fd1e256872a',
+            'reference' => '6ff633bc24f32e1a1623782d95fca3348ce03995',
             'type' => 'library',
             'install_path' => __DIR__ . '/../bagrinsergiu/content-placeholder',
             'aliases' => array(),
@@ -42,7 +42,7 @@
         'brizy/brizy' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'bddcc25fed84e0a6d3e545a6668bb5fe544726c7',
+            'reference' => 'ff0ea3292a6682314f2900eb7a5de48ad1c1beda',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -69,7 +69,7 @@
         'nikic/php-parser' => array(
             'pretty_version' => '4.x-dev',
             'version' => '4.9999999.9999999.9999999-dev',
-            'reference' => '8a21ec3182533ee6448a4efb8d238a4163b89297',
+            'reference' => '715f4d25e225bc47b293a8b997fe6ce99bf987d2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),

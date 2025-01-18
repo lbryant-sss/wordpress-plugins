@@ -110,7 +110,7 @@ Get all the features of the free plan, plus:
 5. Change the position of the chat button
 6. Custom design
 7. Show or hide the chat widget using targeting rules
-8. Create more than one chat widget and show it on specific pages and categories of your website based on page targeting rules. For example, display Skype, Whatsapp chat, and a click to call icon for one category, and Facebook Messenger, Telegram, and Line button for another category. 
+8. Create more than one chat widget and show it on specific pages and categories of your website based on page targeting rules. For example, display Skype, WhatsApp chat, and a click to call icon for one category, and Facebook Messenger, Telegram, and Line button for another category. 
 <strong>The main use cases for the multi chat widget are:</strong>
 Separate widget design for mobile and desktop
 Change widget language for WPML and multi-language websites

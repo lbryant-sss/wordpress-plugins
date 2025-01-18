@@ -819,6 +819,11 @@ function loginizer_softwp_upgrader_notice(){
 
 function loginizer_check_expires(){
 	global $loginizer;
+	
+	// We do not want to show the expiry notice if the license is by SoftWP.
+	if(!empty($loginizer['license']) && !empty($loginizer['license']['has_plid'])){
+	    return;
+	}
 
 	$current_timestamp = time();
 	$expiration_timestamp = strtotime($loginizer['license']['expires']);

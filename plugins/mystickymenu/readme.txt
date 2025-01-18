@@ -29,7 +29,7 @@ By default, My Sticky Bar should make your menu sticky without any adjustments o
 
 The sticky header function is localized (multi-language support) and responsive (as far as your theme is). Also, there is the possibility to add custom CSS code which makes this plugin very flexible, customizable, and user-friendly. You can also use the notification bar in any language.
 
-My Sticky Bar plugin is originally designed for Twenty Thirteen template but should work on any theme, like OceanWP, Nirvana Template, Travelify, Twenty Sixteen, Twenty Ten, Twenty Eleven, Max Magazine, Graduate, Lawyer theme, Spacious, Suits, and more.
+My Sticky Bar plugin is originally designed for Twenty Thirteen template but should work on any theme, like OceanWP, Nirvana Template, Twenty Sixteen, Twenty Ten, Twenty Eleven, Twenty Twenty-Five, Twenty Twenty-Four, Twenty Twenty-Three, Max Magazine, Graduate, Lawyer theme, Spacious, Suits, and more.
 
 My Sticky Bar is tested and compatible with Elementor website builder, Divi, WPBakery, Gutenberg, Visual composer, Beaver, and other WordPress website builders.
 

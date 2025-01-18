@@ -535,10 +535,10 @@ abstract class Marquee extends Base_Widget {
 	protected function render_testimonial_content( $item ) {
 		$settings = $this->get_settings_for_display();
 
-		// WPML compatibility.
-		$item['image']['id'] = apply_filters( 'wpml_object_id', $item['image']['id'], 'attachment', true );
-
 		if ( ! empty( $item['image']['id'] ) ) {
+			// WPML compatibility.
+			$item['image']['id'] = apply_filters( 'wpml_object_id', $item['image']['id'], 'attachment', true );
+
 			$attachment_url = wp_get_attachment_image_src( $item['image']['id'], 'full' );
 
 			if ( $attachment_url ) {

@@ -3,16 +3,16 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const mutations = require('./mutations-ddd639e5.js');
-const index$1 = require('./index-3ad2d5f0.js');
+const mutations = require('./mutations-757d8d21.js');
+const index$1 = require('./index-2f2cb68c.js');
 const getters = require('./getters-87b7ef91.js');
-require('./watchers-3ad21bc5.js');
-const getters$1 = require('./getters-532c91bd.js');
+require('./watchers-c0ab7ba9.js');
+const getters$1 = require('./getters-4ca6c14e.js');
 const watchers = require('./watchers-2ad3abd1.js');
-const mutations$1 = require('./mutations-b1f799f9.js');
-const getters$2 = require('./getters-fbad8b87.js');
+const mutations$1 = require('./mutations-1516ddea.js');
+const getters$2 = require('./getters-7f1a1d9c.js');
 const store = require('./store-4a539aea.js');
-const fetch = require('./fetch-f25a0cb0.js');
+const fetch = require('./fetch-aaab7645.js');
 const index$2 = require('./index-fb76df07.js');
 const mutations$2 = require('./mutations-11c8f9a8.js');
 const addQueryArgs = require('./add-query-args-49dcb630.js');
@@ -934,7 +934,6 @@ const ScSessionProvider = class {
         console.info('Handling initial line items.');
         // TODO: move this to central store.
         const address = this.el.querySelector('sc-order-shipping-address');
-        mutations$1.clearCheckout();
         return this.loadUpdate({
             line_items,
             refresh_line_items: true,
@@ -1188,7 +1187,7 @@ const ScSessionProvider = class {
         }
     }
     render() {
-        return (index.h("sc-line-items-provider", { key: '19e26b11d01251c4917a7e66f00bd4a4b8851986', order: mutations.state === null || mutations.state === void 0 ? void 0 : mutations.state.checkout, onScUpdateLineItems: e => this.loadUpdate({ line_items: e.detail }) }, index.h("slot", { key: 'b99ea770aad67e4b52689389722e41fd3c9cdf5f' })));
+        return (index.h("sc-line-items-provider", { key: '0a7984960c0c8dead92a33df1f710dea3f6d05bd', order: mutations.state === null || mutations.state === void 0 ? void 0 : mutations.state.checkout, onScUpdateLineItems: e => this.loadUpdate({ line_items: e.detail }) }, index.h("slot", { key: '4d99d1933eab656fea62abd856bf70bfd3f59049' })));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

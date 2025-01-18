@@ -1,7 +1,7 @@
 import { r as registerInstance, c as createEvent, h, a as getElement } from './index-745b6bec.js';
 import { p as pure } from './pure-963214cb.js';
-import { s as state, o as onChange } from './mutations-4ce86b78.js';
-import { c as createOrUpdateCheckout, f as finalizeCheckout } from './index-af03d92e.js';
+import { s as state, o as onChange } from './mutations-83ea96b2.js';
+import { c as createOrUpdateCheckout, f as finalizeCheckout } from './index-01c97eb1.js';
 import { c as createErrorNotice } from './mutations-ed6d0770.js';
 import { o as openWormhole } from './consumer-e06b16d3.js';
 import './index-06061d4e.js';
@@ -13,7 +13,7 @@ import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
 import './store-627acec4.js';
 import './price-d5770168.js';
-import './fetch-2032d11d.js';
+import './fetch-2d92a73e.js';
 
 const scStripePaymentRequestCss = ":host{display:block}.or{display:none;margin:var(--sc-form-section-spacing) 0}.request--loaded .or{display:block}";
 const ScStripePaymentRequestStyle0 = scStripePaymentRequestCss;

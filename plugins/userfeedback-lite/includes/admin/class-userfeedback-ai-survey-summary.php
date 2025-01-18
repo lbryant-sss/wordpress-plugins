@@ -111,7 +111,7 @@ class Userfeedback_AI_Survey_Summary {
 		$survey->responses_count = $total_responses;
 
 		// Survey question stats
-		$quantitative_question_types = array( 'radio-button', 'checkbox', 'nps', 'star-rating' );
+		$quantitative_question_types = array( 'radio-button', 'image-radio', 'icon-choice', 'checkbox', 'nps', 'star-rating' );
 		$question_stats              = array();
 
 		$questions = $survey->questions;
@@ -135,6 +135,8 @@ class Userfeedback_AI_Survey_Summary {
 			if ( $is_quantitative ) {
 				switch ( $type ) {
 					case 'radio-button':
+					case 'image-radio':
+					case 'icon-choice':
 					case 'checkbox':
 						$question_data['options'] = array_map(
 							function ( $option ) {

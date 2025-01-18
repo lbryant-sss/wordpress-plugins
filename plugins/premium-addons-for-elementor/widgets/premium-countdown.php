@@ -141,9 +141,9 @@ class Premium_Countdown extends Widget_Base {
 		return 'https://premiumaddons.com/support/';
 	}
 
-    public function has_widget_inner_wrapper(): bool {
-        return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-    }
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+	}
 
 	/**
 	 * Register Countdown controls.
@@ -423,7 +423,7 @@ class Premium_Countdown extends Widget_Base {
 
 		if ( ! $papro_activated ) {
 
-			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'editor-page', 'wp-editor', 'get-pro' );
+			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'countdown-widget', 'wp-editor', 'get-pro' );
 
 			$this->add_control(
 				'notification_notice',
@@ -909,7 +909,7 @@ class Premium_Countdown extends Widget_Base {
 			)
 		);
 
-		$doc1_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/countdown-widget-tutorial/', 'editor-page', 'wp-editor', 'get-support' );
+		$doc1_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/countdown-widget-tutorial/', 'countdown-widget', 'wp-editor', 'get-support' );
 
 		$this->add_control(
 			'doc_1',
@@ -1072,7 +1072,7 @@ class Premium_Countdown extends Widget_Base {
 			array(
 				'label'       => __( 'Advanced Border Radius', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::SWITCHER,
-				'description' => __( 'Apply custom radius values. Get the radius value from ', 'premium-addons-for-elementor' ) . '<a href="https://9elements.github.io/fancy-border-radius/" target="_blank">here</a>' . __('. See ', 'premium-addons-for-elementor') . '<a href="https://www.youtube.com/watch?v=S0BJazLHV-M" target="_blank">tutorial</a>',
+				'description' => __( 'Apply custom radius values. Get the radius value from ', 'premium-addons-for-elementor' ) . '<a href="https://9elements.github.io/fancy-border-radius/" target="_blank">here</a>' . __( '. See ', 'premium-addons-for-elementor' ) . '<a href="https://www.youtube.com/watch?v=S0BJazLHV-M" target="_blank">tutorial</a>',
 				'condition'   => array(
 					'style!' => 'circle',
 				),
@@ -1414,7 +1414,7 @@ class Premium_Countdown extends Widget_Base {
 			array(
 				'label'       => __( 'Advanced Border Radius', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::SWITCHER,
-				'description' => __( 'Apply custom radius values. Get the radius value from ', 'premium-addons-for-elementor' ) . '<a href="https://9elements.github.io/fancy-border-radius/" target="_blank">here</a>' . __('. See ', 'premium-addons-for-elementor') . '<a href="https://www.youtube.com/watch?v=S0BJazLHV-M" target="_blank">tutorial</a>',
+				'description' => __( 'Apply custom radius values. Get the radius value from ', 'premium-addons-for-elementor' ) . '<a href="https://9elements.github.io/fancy-border-radius/" target="_blank">here</a>' . __( '. See ', 'premium-addons-for-elementor' ) . '<a href="https://www.youtube.com/watch?v=S0BJazLHV-M" target="_blank">tutorial</a>',
 			)
 		);
 

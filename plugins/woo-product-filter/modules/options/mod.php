@@ -72,13 +72,16 @@ class OptionsWpf extends ModuleWpf {
 		);
 		if (!(FrameWpf::_()->moduleExists('license') && FrameWpf::_()->getModule('license')) && !FrameWpf::_()->isWCLicense()) {
 			$tabs['gopro'] = array(
-				'label' => esc_html__('Go PRO', 'woo-product-filter'), 'callback' => 'https://' . WPF_WP_PLUGIN_URL . '/plugins/woocommerce-filter/#license', 'blank' => true, 'fa_icon' => 'fa-star', 'sort_order' => 998,
+				'label' => esc_html__('Go PRO', 'woo-product-filter'), 'callback' => array($this, 'getProTabContent'), 'fa_icon' => 'fa-star', 'sort_order' => 998,
 			);
 		}
 		return $tabs;
 	}
 	public function getSettingsTabContent() {
 		return $this->getView()->getSettingsTabContent();
+	}
+	public function getProTabContent() {
+		return $this->getView()->getProTabContent();
 	}
 	public function getTabs() {
 		if (empty($this->_tabs)) {

@@ -286,6 +286,19 @@ class Product {
     }
 
     /**
+     * Get Global Unique ID
+     * @return string
+     */
+    public function getGlobalUniqueId() {
+        return (string) apply_filters(
+            'dgwt/wcas/product/global_unique_id',
+            ( method_exists( $this->wcProduct, 'get_global_unique_id' ) ? $this->wcProduct->get_global_unique_id() : '' ),
+            $this->productID,
+            $this
+        );
+    }
+
+    /**
      * Get available variations
      * @return array
      */
@@ -293,11 +306,11 @@ class Product {
         global $wpdb;
         if ( empty( $this->variations ) && is_a( $this->wcProduct, 'WC_Product_Variable' ) ) {
             $sql = $wpdb->prepare( "\n\t\t\t\tSELECT {$wpdb->posts}.ID AS variation_id, postmeta.meta_value AS variation_description, wc_product_meta_lookup.sku\n\t\t\t\tFROM {$wpdb->posts}\n                LEFT JOIN {$wpdb->wc_product_meta_lookup} wc_product_meta_lookup ON {$wpdb->posts}.ID = wc_product_meta_lookup.product_id\n\t\t\t\tLEFT JOIN {$wpdb->postmeta} postmeta ON {$wpdb->posts}.ID = postmeta.post_id AND postmeta.meta_key = '_variation_description'\n\t\t\t\tWHERE {$wpdb->posts}.post_parent = %d\n\t\t\t\tAND {$wpdb->posts}.post_status = 'publish'\n\t\t\t", $this->getID() );
-            if ( apply_filters( 'dgwt/wcas/indexer/include_variations_with_zero_price', false ) === false ) {
+            if ( apply_filters( 'dgwt/wcas/indexer/include_variations_with_zero_price', true ) === false ) {
                 $sql .= " AND wc_product_meta_lookup.min_price > 0";
             }
             if ( DGWT_WCAS()->settings->getOption( 'exclude_out_of_stock' ) === 'on' ) {
-                $sql .= " AND wc_product_meta_lookup.stock_status = 'instock'";
+                $sql .= " AND wc_product_meta_lookup.stock_status <> 'outofstock'";
             }
             $result = $wpdb->get_results( $sql, ARRAY_A );
             if ( is_array( $result ) ) {

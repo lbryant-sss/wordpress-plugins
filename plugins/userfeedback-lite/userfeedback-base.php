@@ -20,7 +20,7 @@ if (!class_exists('UserFeedback_Base')) {
 		 * @access public
 		 * @var string $version Plugin version
 		 */
-		public $version = '1.3.0';
+		public $version = '1.4.0';
 
 		/**
 		 * Plugin file.

@@ -3426,6 +3426,10 @@ class Form extends Base_Widget {
 
 		$popup_id = intval( $settings['popup_action_popup_id'] );
 
+		if ( get_post_status( $popup_id ) !== 'publish' ) {
+			return;
+		}
+
 		if ( ! wp_style_is( 'jupiterx-popups-frontend', 'enqueued' ) ) {
 			wp_enqueue_style( 'jupiterx-popups-frontend' );
 		}

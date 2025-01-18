@@ -160,7 +160,7 @@ class Search {
         }
         $this->groups = $this->searchResultsGroups();
         $this->flexibleLimits = apply_filters( 'dgwt/wcas/flexible_limits', true );
-        $this->showHeadings = DGWT_WCAS()->settings->getOption( 'show_grouped_results' ) === 'on';
+        $this->showHeadings = Helpers::canGroupSuggestions();
         if ( $this->flexibleLimits ) {
             $totalLimit = DGWT_WCAS()->settings->getOption( 'suggestions_limit', 'int', 7 );
             $this->totalLimit = ( $totalLimit === -1 ? $this->calcFreeSlots() : $totalLimit );

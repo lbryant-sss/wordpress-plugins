@@ -4,8 +4,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
 const pure = require('./pure-bd6f0a6e.js');
-const mutations = require('./mutations-ddd639e5.js');
-const index$1 = require('./index-3ad2d5f0.js');
+const mutations = require('./mutations-757d8d21.js');
+const index$1 = require('./index-2f2cb68c.js');
 const mutations$1 = require('./mutations-11c8f9a8.js');
 const consumer = require('./consumer-9f4ee0e3.js');
 require('./index-bcdafe6e.js');
@@ -17,7 +17,7 @@ require('./google-59d23803.js');
 require('./currency-71fce0f0.js');
 require('./store-4a539aea.js');
 require('./price-653ec1cb.js');
-require('./fetch-f25a0cb0.js');
+require('./fetch-aaab7645.js');
 
 const scStripePaymentRequestCss = ":host{display:block}.or{display:none;margin:var(--sc-form-section-spacing) 0}.request--loaded .or{display:block}";
 const ScStripePaymentRequestStyle0 = scStripePaymentRequestCss;

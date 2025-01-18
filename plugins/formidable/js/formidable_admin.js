@@ -6150,8 +6150,10 @@ function frmAdminBuildJS() {
 			}
 
 			if ( showSelect || showText ) {
+				const comparison = document.querySelector( `#frm_logic_${fieldID}_${metaKey} [name="field_options[hide_field_cond_${fieldID}][]"]` ).value;
 				fill.innerHTML = '';
-				if ( showSelect ) {
+				const creatingValuesDropdown = showSelect && ! [ 'LIKE', 'not LIKE', 'LIKE%', '%LIKE' ].includes( comparison );
+				if ( creatingValuesDropdown ) {
 					input = document.createElement( 'select' );
 				} else {
 					input = document.createElement( 'input' );
@@ -6161,7 +6163,7 @@ function frmAdminBuildJS() {
 				input.id = optionID + '_' + metaKey;
 				fill.appendChild( input );
 
-				if ( showSelect ) {
+				if ( creatingValuesDropdown ) {
 					const fillField = document.getElementById( input.id );
 					fillDropdownOpts( fillField, {
 						sourceID: val,
@@ -7073,10 +7075,12 @@ function frmAdminBuildJS() {
 		}
 
 		const targetSettings = event.target.closest( '.frm_form_action_settings' );
-		const wysiwyg        = targetSettings.querySelector( '.wp-editor-area' );
-		if ( wysiwyg ) {
+		const wysiwygs	     = targetSettings.querySelectorAll( '.wp-editor-area' );
+		if ( wysiwygs.length ) {
 			// Temporary remove TinyMCE before cloning to avoid TinyMCE conflicts.
-			tinymce.EditorManager.execCommand( 'mceRemoveEditor', true, wysiwyg.id );
+			wysiwygs.forEach( wysiwyg => {
+				tinymce.EditorManager.execCommand( 'mceRemoveEditor', true, wysiwyg.id );
+			});
 		}
 
 		const $action   = jQuery( targetSettings ).clone();
@@ -7121,10 +7125,15 @@ function frmAdminBuildJS() {
 		newAction.classList.remove( 'open' );
 		document.getElementById( 'frm_notification_settings' ).appendChild( newAction );
 
-		if ( wysiwyg ) {
+		if ( wysiwygs.length ) {
 			// Re-initialize the original wysiwyg which was removed before cloning.
-			frmDom.wysiwyg.init( wysiwyg );
-			frmDom.wysiwyg.init( newAction.querySelector( '.wp-editor-area' ) );
+			wysiwygs.forEach( wysiwyg => {
+				frmDom.wysiwyg.init( wysiwyg );
+			});
+
+			newAction.querySelectorAll( '.wp-editor-area' ).forEach( wysiwyg => {
+				frmDom.wysiwyg.init( wysiwyg );
+			});
 		}
 
 		if ( newAction.classList.contains( 'frm_single_on_submit_settings' ) ) {
@@ -8379,7 +8388,7 @@ function frmAdminBuildJS() {
 	 * Handles 'change' event on the document.
 	 *
 	 * @since 6.16.3
-	 * 
+	 *
 	 * @param {Event} event
 	 * @returns {Void}
 	 */
@@ -8445,7 +8454,7 @@ function frmAdminBuildJS() {
 			onClickPreventDefault( continueButton, () => {
 				saveAndReloadFormBuilder();
 			} );
-	
+
 			const cancelButton = frmDom.modal.footerButton({
 				text: __( 'Cancel', 'formidable' ),
 				buttonType: 'cancel'
@@ -8883,13 +8892,12 @@ function frmAdminBuildJS() {
 	}
 
 	function initWysiwygOnActionLoaded( settings ) {
-		const wysiwyg = settings.querySelector( '.wp-editor-area' );
-		if ( wysiwyg ) {
+		settings.querySelectorAll( '.wp-editor-area' ).forEach( wysiwyg => {
 			frmDom.wysiwyg.init(
 				wysiwyg,
 				{ height: 160, addFocusEvents: true }
 			);
-		}
+		});
 	}
 
 	/* Global settings page */
@@ -11242,6 +11250,7 @@ function frmAdminBuildJS() {
 		purifyHtml,
 		loadApiEmailForm,
 		addMyEmailAddress,
+		fillDropdownOpts,
 		showSaveAndReloadModal
 	};
 }

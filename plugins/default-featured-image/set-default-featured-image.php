@@ -3,7 +3,7 @@
  * Plugin Name: Default featured image
  * Plugin URI: http://wordpress.org/extend/plugins/default-featured-image/
  * Description: Allows users to select a default featured image in the media settings
- * Version: 1.7.3
+ * Version: 1.8.0
  * Requires at least: 6.2
  * Requires PHP: 7.4
  * Author: Jan Willem Oostendorp
@@ -14,7 +14,7 @@
  * @package DFI
  */
 
-define( 'DFI_VERSION', '1.7.3' );
+define( 'DFI_VERSION', '1.8.0' );
 define( 'DFI_DIR', plugin_dir_path( __FILE__ ) );
 define( 'DFI_URL', plugin_dir_url( __FILE__ ) );
 define( 'DFI_NAME', basename( __DIR__ ) . DIRECTORY_SEPARATOR . basename( __FILE__ ) );
@@ -26,12 +26,13 @@ $dfi = DFI::instance();
 
 // add the settings field to the media page.
 add_action( 'admin_init', array( $dfi, 'media_setting' ) );
+add_action( 'rest_api_init', array( $dfi, 'register_media_setting' ) );
 // enqueue the js.
 add_action( 'admin_print_scripts-options-media.php', array( $dfi, 'admin_scripts' ) );
 // get the preview image ajax call.
 add_action( 'wp_ajax_dfi_change_preview', array( $dfi, 'ajax_wrapper' ) );
 // set dfi meta key on every occasion.
-add_filter( 'get_post_metadata', array( $dfi, 'set_dfi_meta_key' ), 10, 4 );
+add_filter( 'get_post_metadata', array( $dfi, 'set_dfi_meta_key' ), 10, 3 );
 // display a default featured image.
 add_filter( 'post_thumbnail_html', array( $dfi, 'show_dfi' ), 20, 5 );
 // add a link on the plugin page to the setting.
@@ -55,10 +56,3 @@ add_filter( 'do_shortcode_tag', array( 'DFI_Exceptions', 'wp_user_frontend_after
  * @see https://wordpress.org/support/topic/importing-images-into-woocommerce-using-cron/
  */
 add_filter( 'dfi_thumbnail_id', array( 'DFI_Exceptions', 'wp_all_import_dfi_workaround' ), 9 );
-
-/**
- * Exception: https://wpml.org/
- *
- * @see https://wordpress.org/support/topic/wpml-compatibility-281/
- */
-add_filter( 'dfi_thumbnail_id', array( 'DFI_Exceptions', 'wpml_dont_save_dfi_on_translate' ), 9 );

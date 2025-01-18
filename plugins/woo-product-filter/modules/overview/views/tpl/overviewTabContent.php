@@ -9,11 +9,6 @@
 </section>
 <section>
 	<div class="woobewoo-item woobewoo-panel wpf-overview-panel">
-		<?php 
-		if ($this->isWeek) {
-			include_once 'overviewFeedback.php';
-		}
-		?>
 		<div class="wpf-overview-block">
 			<div class="wpf-overview-block-header">
 				<div class="wpf-overview-header-title">
@@ -25,7 +20,7 @@
 			</div>
 			<div class="wpf-overview-block-body">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<div class="wpf-overview-img wpf-overview-img-dc">
 							<div class="wpf-overview-body-title">
 								<a href="https://woobewoo.com/docs/woocommerce-filter-documentation/" target="_blank">
@@ -75,7 +70,7 @@
 						<div class="wpf-overview-img wpf-overview-img-wp">
 							<div class="wpf-overview-body-title">
 								<a href="https://wordpress.org/plugins/woo-product-filter/" target="_blank">
-									<?php esc_html_e('Wordpress Forum', 'woo-product-filter'); ?>
+									<?php esc_html_e('WordPress Forum', 'woo-product-filter'); ?>
 								</a>
 							</div>
 							<div class="wpf-overview-body-text">
@@ -84,8 +79,6 @@
 								</a>
 							</div>
 						</div>
-					</div>
-					<div class="col-sm-4">
 						<div class="wpf-overview-img wpf-overview-img-ct">
 							<div class="wpf-overview-body-title">
 								<a href="https://woobewoo.com/custom-web-development-services/" target="_blank">
@@ -99,30 +92,27 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-sm-5">
+						<div class="wpf-overview-block">
+							<div class="wpf-overview-body-title">
+								<?php esc_html_e('Contact Us', 'woo-product-filter'); ?>
+							</div>
+							<div class="wpf-overview-body-text">
+								<input type="text" class="wpf-overview-input wpf-field-fullwidth" name="wpf-name" value="" placeholder="<?php esc_html_e('Name', 'woo-product-filter'); ?>">
+								<input type="text" class="wpf-overview-input wpf-field-fullwidth" name="wpf-email" data-error="<?php esc_html_e('Enter your Email', 'woo-product-filter'); ?>" value="" placeholder="<?php esc_html_e('Email', 'woo-product-filter'); ?>">
+								<input type="text" class="wpf-overview-input wpf-field-fullwidth" name="wpf-subject" value="" placeholder="<?php esc_html_e('Subject', 'woo-product-filter'); ?>">
+								<textarea class="wpf-overview-textarea wpf-field-fullwidth" name="wpf-desc" value="" data-error="<?php esc_html_e('Enter description', 'woo-product-filter'); ?>" placeholder="<?php esc_html_e('Description', 'woo-product-filter'); ?>"></textarea>
+								<button id="wpfContactSubmit" class="wpf-overview-button wpf-overview-submit button wpf-overview-center">
+									<?php esc_html_e('SEND', 'woo-product-filter'); ?>
+								</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="wpf-overview-block">
-			<div class="wpf-overview-block-body">
-				<div class="wpf-overview-body-title">
-					<a href="https://woobewoo.com/pricing/" target="_blank">
-						<?php esc_html_e('Save over 60% with Plugins Bundle', 'woo-product-filter'); ?>
-					</a>
-				</div>
-				<div class="wpf-overview-body-text">
-					<a href="https://woobewoo.com/pricing/" target="_blank">
-						<?php esc_html_e('All WBW plugins are in PRO version with premium support and future updates/add-ons.', 'woo-product-filter'); ?>
-						<br />
-						<?php esc_html_e('As well as any new plugins or add-ons released by the WBW team in the future.', 'woo-product-filter'); ?>
-					</a>
-				</div>
-			</div>
-		</div>
-		<?php 
-		if (!$this->isWeek) {
-			include_once 'overviewFeedback.php';
-		}
-		?>
+		<?php include_once 'overviewFeedback.php'; ?>
+		
 		<div class="wpf-overview-block">
 			<div class="wpf-overview-block-header">
 				<div class="wpf-overview-header-title">
@@ -134,7 +124,7 @@
 			</div>
 			<div class="wpf-overview-block-body">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-6">
 						<div class="wpf-overview-img wpf-overview-img-pt">
 							<div class="wpf-overview-body-title">
 								<a href="https://woobewoo.com/plugins/table-woocommerce-plugin/" target="_blank">
@@ -148,7 +138,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-6">
 						<div class="wpf-overview-img wpf-overview-img-cr">
 							<div class="wpf-overview-body-title">
 								<a href="https://woobewoo.com/plugins/woo-currency/" target="_blank">
@@ -158,20 +148,6 @@
 							<div class="wpf-overview-body-text">
 								<a href="https://woobewoo.com/plugins/woo-currency/" target="_blank">
 									<?php esc_html_e('Free Currency Switcher WordPress plugin by WBW allows the customers of your WooCommerce store to switch products prices easily to any currencies and get their rates converted in real-time! You can convert any currency you require and add as many currencies as you need.', 'woo-product-filter'); ?>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="wpf-overview-img wpf-overview-img-rp">
-							<div class="wpf-overview-body-title">
-								<a href="https://woobewoo.com/plugins/reward-points-for-woocommerce/" target="_blank">
-									<?php esc_html_e('Reward Points', 'woo-product-filter'); ?>
-								</a>
-							</div>
-							<div class="wpf-overview-body-text">
-								<a href="https://woobewoo.com/plugins/reward-points-for-woocommerce/" target="_blank">
-									<?php esc_html_e('The plugin provides a thoughtful and fully customizable loyalty program for your online store. Reward customers for purchases and actions, arrange promotions, set membership levels, and more. This is the real magic in the fight to attract and retain customers and the desire to shop in your online store again and again.', 'woo-product-filter'); ?>
 								</a>
 							</div>
 						</div>

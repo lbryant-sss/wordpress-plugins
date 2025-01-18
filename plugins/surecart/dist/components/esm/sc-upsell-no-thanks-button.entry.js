@@ -1,6 +1,6 @@
 import { r as registerInstance, h, H as Host } from './index-745b6bec.js';
-import { d as decline } from './mutations-384b5aaa.js';
-import './fetch-2032d11d.js';
+import { d as decline } from './mutations-6d1a62d0.js';
+import './fetch-2d92a73e.js';
 import './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 import './store-4bc13420.js';

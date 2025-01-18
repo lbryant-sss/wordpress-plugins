@@ -81,17 +81,9 @@ function wp_ajax_kk_star_ratings()
 
         unset($payload['count'], $payload['score']);
 
-        if(isset($payload['greet'])) {
-            $payload['greet'] = strip_shortcodes($payload['greet']);
-        }
-
-        if(isset($payload['legend'])) {
-            $payload['legend'] = strip_shortcodes($payload['legend']);
-        }
-
-        if(isset($payload['_legend'])) {
-            $payload['_legend'] = strip_shortcodes($payload['_legend']);
-        }
+        $payload = array_map(function ($item) {
+            return strip_shortcodes($item);
+        }, $payload);
 
         $html = trim(do_shortcode(to_shortcode(kksr('slug'), $payload)));
 

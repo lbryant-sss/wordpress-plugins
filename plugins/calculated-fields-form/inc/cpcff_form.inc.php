@@ -62,6 +62,7 @@ if ( ! class_exists( 'CPCFF_FORM' ) ) {
 			$this->_settings      = array();
 			$this->_fields        = array();
 			$this->_revisions_obj = new CPCFF_REVISIONS( $this );
+			add_action( 'cpcff_wp_head', array( $this, 'get_page_header' ) );
 		} // End __construct.
 
 		/**
@@ -333,7 +334,7 @@ if ( ! class_exists( 'CPCFF_FORM' ) ) {
 			} elseif ( $option == 'fp_return_page' ) {
 				$value = empty( $value ) ? $default : $value;
 			} elseif (
-				in_array( $option, [ 'fp_attach_static', 'fp_reply_to_emails', 'cu_attach_static', 'cu_reply_to_emails', 'form_height', 'fp_ajax', 'fp_thanks_mssg' ] )
+				in_array( $option, [ 'fp_attach_static', 'fp_reply_to_emails', 'cu_attach_static', 'cu_reply_to_emails', 'form_height', 'fp_ajax', 'fp_ajax_reset_form', 'fp_thanks_mssg' ] )
 			) {
 				if ( isset( $this->_settings['extra'][ $option ] ) ) {
 					$value = $this->_settings['extra'][ $option ];
@@ -396,6 +397,29 @@ if ( ! class_exists( 'CPCFF_FORM' ) ) {
 			return $output;
 		} // End get_height.
 
+		public function get_page_header( $p = 0 ) {
+			$output = '';
+			$form_structure = $this->get_option('form_structure', array());
+			if (
+				! empty( $form_structure ) &&
+				is_array( $form_structure ) &&
+				! empty( $form_structure[1] ) &&
+				is_array( $form_structure[1] ) &&
+				! empty( $form_structure[1][0] ) &&
+				is_object( $form_structure[1][0] )
+			) {
+				if ( ! empty ( $form_structure[1][0]->title ) ) {
+					$output .= '<title>' . wp_strip_all_tags( $form_structure[1][0]->title ) . '</title>';
+				}
+
+				if ( ! empty ( $form_structure[1][0]->description ) ) {
+					$output .= '<meta name="description" content="' . esc_attr( $form_structure[1][0]->description ) . '">';
+				}
+			}
+
+			print $output;
+		} // End get_page_header.
+
 		public function save_settings( $params ) {
 			global $wpdb, $cpcff_default_texts_array;
 
@@ -420,6 +444,7 @@ if ( ! class_exists( 'CPCFF_FORM' ) ) {
 				$extra['cu_reply_to_emails'] = trim( $params['cu_reply_to_emails'] );
 			}
 			$extra['fp_ajax'] = isset( $params['fp_ajax'] ) ? 1 : 0;
+			$extra['fp_ajax_reset_form'] = isset( $params['fp_ajax_reset_form'] ) ? 1 : 0;
 			if( isset( $params['fp_thanks_mssg'] ) ) {
 				$extra['fp_thanks_mssg'] = sanitize_textarea_field( $params['fp_thanks_mssg'] );
 			}

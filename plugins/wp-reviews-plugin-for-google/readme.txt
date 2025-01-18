@@ -5,7 +5,7 @@ Tags: google, google places reviews, reviews, widget, google business
 Requires at least: 3.0.1
 Tested up to: 6.7
 Requires PHP: 5.2
-Stable tag: 12.4.7
+Stable tag: 12.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Plugin Name: Widgets for Google Reviews
@@ -14,7 +14,7 @@ Plugin URI: https://wordpress.org/plugins/wp-reviews-plugin-for-google/
 Author: Trustindex.io <support@trustindex.io>
 Author URI: https://www.trustindex.io/
 Text Domain: wp-reviews-plugin-for-google
-Version: 12.4.7
+Version: 12.5
 
 Embed Google reviews fast and easily into your WordPress site. Increase SEO, trust and sales using Google reviews.
 

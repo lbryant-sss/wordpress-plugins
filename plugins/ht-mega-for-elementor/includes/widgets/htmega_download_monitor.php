@@ -30,18 +30,116 @@ class HTMega_Elementor_Widget_Download_Monitor extends Widget_Base {
 	}
 
     protected function htmega_download_file_list(){
+        if ( ! is_plugin_active('download-monitor/download-monitor.php') ) {
+            return;
+        }
+        
         $downloadfile = array();
         array_push( $downloadfile, __('Select Download File','htmega-addons') );
         $args      = array( 'post_status' => 'publish' );
         $downloads  = download_monitor()->service( 'download_repository' )->retrieve( $args, -1, false );
+        if($downloads ){
         foreach ( $downloads as $download ) {
             $downloadfile[absint( $download->get_id() )] = $download->get_title() .' ('. $download->get_version()->get_filename() . ')';
         }
+    }
         return $downloadfile;
     }
 
     protected function register_controls() {
 
+        if ( ! is_plugin_active('download-monitor/download-monitor.php') ) {
+            $this->messing_parent_plg_notice();
+
+        } else {
+            $this->download_monitor_regster_fields();
+        }
+    
+    }
+
+    protected function render( $instance = [] ) {
+        $settings   = $this->get_settings_for_display();
+        $this->add_render_attribute( 'htmega_button', 'class', 'htmega-button' );
+
+        if ( ! is_plugin_active('download-monitor/download-monitor.php') ) {
+            htmega_plugin_missing_alert( __('Download Monitor', 'htmega-addons') );
+            return;
+        }
+        
+        $download = download_monitor()->service( 'download_repository' )->retrieve_single( $settings['file_id'] );
+
+        if ( isset( $download ) ):
+            ?>
+                <a class="htmega-downloadbtn elementor-button" href="<?php echo esc_url( $download->the_download_link() ); ?>">
+                    <?php
+                        if( !empty( $settings['button_icon']['value'] ) ){
+                            echo '<span class="download_icon">'.HTMega_Icon_manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ).'</span>';
+                        }
+                        if( !empty( $settings['button_text'] ) ){
+                            echo esc_html($settings['button_text'] );
+                        }else{
+                            echo esc_html( $download->get_title() );
+                        }
+                    ?>
+                    <?php if ( 'yes' === $settings['file_type_show'] || 'yes' === $settings['file_size_show'] || 'yes' === $settings['download_count_show'] ) : ?>
+                        <div class="file_meta">
+                            <?php if ( 'yes' === $settings['file_type_show'] ) : ?>
+                                <span class="file_meta_type">
+                                    <?php echo esc_html($download->get_version()->get_filetype()); ?>
+                                </span>
+                            <?php endif; ?>
+                            
+                            <?php if ( 'yes' === $settings['file_size_show'] ) : ?>
+                                <span class="file_meta_size">
+                                    <?php echo esc_html($download->get_version()->get_filesize_formatted()); ?>
+                                </span>
+                            <?php endif; ?>
+
+                            <?php if ( 'yes' === $settings['download_count_show'] ) : ?>
+                                <span class="file_meta_count">
+                                    <?php esc_html_e('Downloaded', 'htmega-addons'); ?> <?php echo esc_html($download->get_download_count()); ?>
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif;?>
+                </a>
+            <?php
+        endif;
+
+    }
+
+    protected function messing_parent_plg_notice() {
+
+        $this->start_controls_section(
+            'messing_parent_plg_notice_section',
+            [
+                'label' => __( 'Download Monitor', 'htmega-addons' ),
+            ]
+        );
+            $this->add_control(
+                'htemga_plugin_parent_missing_notice',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => sprintf(
+                        __( 'It appears that %1$s is not currently installed on your site. Kindly use the link below to install or activate %1$s. After completing the installation or activation, please refresh this page.', 'htmega-addons' ),
+                        '<a href="' . esc_url( admin_url( 'plugin-install.php?s=Download%2520Monitor&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">Download Monitor</a>'
+                    ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
+                ]
+            );
+        
+
+            $this->add_control(
+                'parent_plugin_install',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => '<a href="'.esc_url( admin_url( 'plugin-install.php?s=Download%2520Monitor&tab=search&type=term' ) ).'" target="_blank" rel="noopener">Click to install or activate Download Monitor</a>',
+                ]
+            );
+        $this->end_controls_section();
+
+    }
+    protected function download_monitor_regster_fields() {
         $this->start_controls_section(
             'download_file_content',
             [
@@ -371,56 +469,8 @@ class HTMega_Elementor_Widget_Download_Monitor extends Widget_Base {
                 $this->end_controls_tab();
 
             $this->end_controls_tabs();
-
             
         $this->end_controls_section();
-
-    }
-
-    protected function render( $instance = [] ) {
-        $settings   = $this->get_settings_for_display();
-        $this->add_render_attribute( 'htmega_button', 'class', 'htmega-button' );
-
-        $download = download_monitor()->service( 'download_repository' )->retrieve_single( $settings['file_id'] );
-
-        if ( isset( $download ) ):
-            ?>
-                <a class="htmega-downloadbtn elementor-button" href="<?php echo esc_url( $download->the_download_link() ); ?>">
-                    <?php
-                        if( !empty( $settings['button_icon']['value'] ) ){
-                            echo '<span class="download_icon">'.HTMega_Icon_manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ).'</span>';
-                        }
-                        if( !empty( $settings['button_text'] ) ){
-                            echo esc_html($settings['button_text'] );
-                        }else{
-                            echo esc_html( $download->get_title() );
-                        }
-                    ?>
-                    <?php if ( 'yes' === $settings['file_type_show'] || 'yes' === $settings['file_size_show'] || 'yes' === $settings['download_count_show'] ) : ?>
-                        <div class="file_meta">
-                            <?php if ( 'yes' === $settings['file_type_show'] ) : ?>
-                                <span class="file_meta_type">
-                                    <?php echo esc_html($download->get_version()->get_filetype()); ?>
-                                </span>
-                            <?php endif; ?>
-                            
-                            <?php if ( 'yes' === $settings['file_size_show'] ) : ?>
-                                <span class="file_meta_size">
-                                    <?php echo esc_html($download->get_version()->get_filesize_formatted()); ?>
-                                </span>
-                            <?php endif; ?>
-
-                            <?php if ( 'yes' === $settings['download_count_show'] ) : ?>
-                                <span class="file_meta_count">
-                                    <?php esc_html_e('Downloaded', 'htmega-addons'); ?> <?php echo esc_html($download->get_download_count()); ?>
-                                </span>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif;?>
-                </a>
-            <?php
-        endif;
-
     }
 
 }

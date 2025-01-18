@@ -186,6 +186,11 @@ function backuply_clean_restoration_file(){
 	if(is_dir(BACKUPLY_BACKUP_DIR.'/restoration')) {
 		@rmdir(BACKUPLY_BACKUP_DIR.'/restoration');
 	}
+	
+	// Deleting restore index file
+	if(file_exists(ABSPATH . '/backuply-restore.php')){
+		unlink(ABSPATH . '/backuply-restore.php');
+	}
 }
 
 // If there is a restore or backup task running
@@ -1638,11 +1643,20 @@ function backuply_restore_curl($info = array()) {
 	}
 
 	$info['restore_key'] = urlencode($config['RESTORE_KEY']);
-	$info['restore_curl_url'] = BACKUPLY_URL . '/restore_ins.php';
+	$tmp_restore_file = ABSPATH . '/backuply-restore.php';
+	$tmp_restore_include = "<?php\ndefine('BACKUPLY_DIR_FOR_RESTORE', '".BACKUPLY_DIR."');\ninclude_once '".BACKUPLY_DIR."/restore_ins.php';";
+
+	if(file_put_contents($tmp_restore_file, $tmp_restore_include)){
+		$restore_url = site_url() . '/backuply-restore.php';
+	} else {
+		$restore_url = BACKUPLY_URL . '/restore_ins.php';
+	}
+
+	$info['restore_curl_url'] = $restore_url;
 	
 	$args = array(
 		'body' => $info,
-		'timeout' => 5,
+		'timeout' => 0.01,
 		'blocking' => false,
 		'sslverify' => false,
 		'headers' => [
@@ -1835,7 +1849,9 @@ function backuply_direct_download_file(){
 		wp_die('File does not exists');
 	}
 
-	wp_ob_end_flush_all();
+	if(ob_get_level()){
+		ob_end_clean();
+	}
 
 	// Get the file size
 	$file_size = filesize($file_path);
@@ -1848,4 +1864,52 @@ function backuply_direct_download_file(){
 
 	readfile($file_path);
 	die();
+}
+
+// Returns the Security key
+function backuply_status_config(){
+
+	$config_file = BACKUPLY_BACKUP_DIR . '/status_key.php';
+	
+	if(!file_exists($config_file) || 0 == filesize($config_file)) {
+		return false;
+	}
+
+	$fp = file($config_file);
+
+	if(empty($fp[1])){
+		return '';
+	}
+
+	$status_key = $fp[1];
+
+	return $status_key;
+}
+
+// Verifies the backuply key
+function backuply_verify_status_log(){
+	
+	if(empty($_REQUEST['status_key'])) {
+		return false;
+	}
+	
+	$status_lock = BACKUPLY_BACKUP_DIR. '/status.lock';
+	
+	if(!file_exists($status_lock) || (time() - filemtime($status_lock) > 1800)){
+		return false;
+	}
+
+	$status_key = backuply_status_config();
+	
+	if(!$status_key) {
+		return false;
+	}
+	
+	$request_key = sanitize_text_field(wp_unslash($_REQUEST['status_key']));
+
+	if(urldecode($request_key) == $status_key) {
+		return true;
+	}
+
+	return false;
 }

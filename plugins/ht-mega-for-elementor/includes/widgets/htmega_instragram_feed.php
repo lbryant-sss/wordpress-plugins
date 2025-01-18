@@ -29,6 +29,34 @@ class HTMega_Elementor_Widget_Instragram_Feed extends Widget_Base {
         return 'https://wphtmega.com/docs/social-widgets/instagram-feed-widget/';
     }
     protected function register_controls() {
+        if ( ! is_plugin_active('instagram-feed/instagram-feed.php') ) {
+            $this->messing_parent_plg_notice();
+        } else {
+            $this->instagram_feed_regster_fields();
+        }
+    }
+    protected function messing_parent_plg_notice() {
+
+        $this->start_controls_section(
+            'messing_parent_plg_notice_section',
+            [
+                'label' => __( 'Instragram Feed', 'htmega-addons' ),
+            ]
+        );
+        $this->add_control(
+            'htemga_plugin_parent_missing_notice',
+            [
+                'type' => Controls_Manager::RAW_HTML,
+                'raw' => esc_html__( 'It appears that Instragram Feed is not currently installed on your site. Please install or activate Instragram Feed, and remember to refresh the page after installation or activation.', 'htmega-addons' ),
+                'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
+            ]
+        );
+        
+        $this->end_controls_section();
+
+    }
+
+    protected function instagram_feed_regster_fields() {
 
         $this->start_controls_section(
             'instragram_feed_content',
@@ -181,6 +209,10 @@ class HTMega_Elementor_Widget_Instragram_Feed extends Widget_Base {
     }
 
     protected function render( $instance = [] ) {
+        if ( ! is_plugin_active('instagram-feed/instagram-feed.php') ) {
+            htmega_plugin_missing_alert( __('Instragram Feed', 'htmega-addons') );
+            return;
+        }
 
         $sbi_statuses = get_option( 'sbi_statuses', array() );
         $sbi_statuses['support_legacy_shortcode'] = true;

@@ -11,10 +11,7 @@ namespace KokoAnalytics;
 class Stats
 {
     /**
-     * @return object {
-     *  @type int visitors
-     *  @type int pageviews
-     * }
+     * @return object{ visitors: int, pageviews: int }
      */
     public function get_totals(string $start_date, string $end_date, int $page = 0, $include_previous = true): object
     {
@@ -22,7 +19,7 @@ class Stats
 
         $table = $wpdb->prefix . 'koko_analytics_site_stats s';
         $where = 's.date >= %s AND s.date <= %s';
-        $args = array($start_date, $end_date);
+        $args = [$start_date, $end_date];
 
         if ($page > 0) {
             $table = $wpdb->prefix . 'koko_analytics_post_stats s';
@@ -78,10 +75,10 @@ class Stats
         if ($page > 0) {
             $table = $wpdb->prefix . 'koko_analytics_post_stats';
             $join_on = 's.date = d.date AND s.id = %d';
-            $args = array($date_format, $page, $start_date, $end_date);
+            $args = [$date_format, $page, $start_date, $end_date];
         } else {
             $table = $wpdb->prefix . 'koko_analytics_site_stats';
-            $args = array($date_format, $start_date, $end_date);
+            $args = [$date_format, $start_date, $end_date];
             $join_on = 's.date = d.date';
         }
 
@@ -116,10 +113,16 @@ class Stats
                 GROUP BY s.id
                 ORDER BY pageviews DESC, s.id ASC
                 LIMIT %d, %d",
-            array($start_date, $end_date, $offset, $limit)
+            [$start_date, $end_date, $offset, $limit]
         );
 
         $results = $wpdb->get_results($sql);
+
+        // this prevents n+1 queries in the array_map callback below
+        // because get_posts primes wp_cache entries for each post object
+        $ids = wp_list_pluck($results, 'id');
+        get_posts(['include' => $ids ]);
+
         return array_map(function ($row) {
             // special handling of records with ID 0 (indicates a view of the front page when front page is not singular)
             if ($row->id == 0) {
@@ -145,7 +148,7 @@ class Stats
                 SELECT COUNT(DISTINCT(s.id))
                 FROM {$wpdb->prefix}koko_analytics_post_stats s
                 WHERE s.date >= %s AND s.date <= %s",
-            array($start_date, $end_date)
+            [$start_date, $end_date]
         );
         return (int) $wpdb->get_var($sql);
     }
@@ -163,7 +166,7 @@ class Stats
                 GROUP BY s.id
                 ORDER BY pageviews DESC, r.id ASC
                 LIMIT %d, %d",
-            array($start_date, $end_date, $offset, $limit)
+            [$start_date, $end_date, $offset, $limit]
         );
         return $wpdb->get_results($sql);
     }
@@ -177,7 +180,7 @@ class Stats
                 FROM {$wpdb->prefix}koko_analytics_referrer_stats s
                 WHERE s.date >= %s
                   AND s.date <= %s",
-            array($start_date, $end_date)
+            [$start_date, $end_date]
         );
         return (int) $wpdb->get_var($sql);
     }

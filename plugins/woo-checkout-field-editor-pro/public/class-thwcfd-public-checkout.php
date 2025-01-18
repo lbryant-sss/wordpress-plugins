@@ -27,7 +27,7 @@ class THWCFD_Public_Checkout {
 			$suffix = $debug_mode ? '' : '.min';
 			wp_register_script('thwcfd-checkout-script', THWCFD_ASSETS_URL_PUBLIC.'js/thwcfd-public' . $suffix . '.js', $deps, THWCFD_VERSION, $in_footer);
 			wp_enqueue_script('thwcfd-checkout-script');
-			wp_enqueue_style('thwcfd-checkout-style', THWCFD_ASSETS_URL_PUBLIC . 'css/thwcfd-public' . $suffix . '.css', THWCFD_VERSION);
+			wp_enqueue_style('thwcfd-checkout-style', THWCFD_ASSETS_URL_PUBLIC . 'css/thwcfd-public' . $suffix . '.css', [],THWCFD_VERSION);
 
 			$wcfd_var = array(
 				'is_override_required' => $this->is_override_required_prop(),
@@ -612,15 +612,15 @@ class THWCFD_Public_Checkout {
 						}
 						if(is_account_page()){
 							if(apply_filters( 'thwcfd_view_order_customer_details_table_view', true )){
-								$fields_html .= '<tr><th>'. esc_html($label) .':</th><td>'. esc_html($value) .'</td></tr>';
+								$fields_html .= '<tr><th>'. $label .':</th><td>'. esc_html($value) .'</td></tr>';
 							}else{
 								$fields_html .= '<br/><dt>'. $label .':</dt><dd>'. $value .'</dd>';
 							}
 						}else{
 							if(apply_filters( 'thwcfd_thankyou_customer_details_table_view', true )){
-								$fields_html .= '<tr><th>'. esc_html($label) .':</th><td>'. esc_html($value) .'</td></tr>';
+								$fields_html .= '<tr><th>'. $label .':</th><td>'. esc_html($value) .'</td></tr>';
 							}else{
-								$fields_html .= '<br/><dt>'. esc_html($label) .':</dt><dd>'. esc_html($value) .'</dd>';
+								$fields_html .= '<br/><dt>'. $label .':</dt><dd>'. esc_html($value) .'</dd>';
 							}
 						}
 					}

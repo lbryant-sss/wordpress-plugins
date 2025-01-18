@@ -181,4 +181,11 @@ jQuery(document).ready(function(){
 		});
 		return false;
 	});
+	jQuery('.wpf-gopro-switch input').on('change', function() {
+		var $this = jQuery(this),
+			$parent = $this.closest('.wpf-gopro-wrapper'),
+			num = $this.is(':checked') ? 1 : 0;
+		$parent.find('.wpf-gopro-text').removeClass('active').eq(num).addClass('active');
+		$parent.find('.wpf-gopro-block-row').addClass('wpf-gopro-hidden').eq(num).removeClass('wpf-gopro-hidden');
+	});
 });

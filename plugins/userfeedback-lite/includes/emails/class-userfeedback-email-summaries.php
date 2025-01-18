@@ -44,7 +44,7 @@ class UserFeedback_Email_Summaries {
 		$options['email_summaries']           = ! $disable_email_summaries;
 		$options['summaries_html_template']   = userfeedback_get_option( 'summaries_html_template' );
 		$options['summaries_carbon_copy']     = userfeedback_get_option( 'summaries_carbon_copy' );
-		$options['summaries_email_addresses'] = userfeedback_get_option( 'summaries_email_addresses' );
+		$options['summaries_email_addresses'] = userfeedback_get_option( 'notifications_recipients' );
 		$options['summaries_header_image']    = userfeedback_get_option( 'notifications_header_image' );
 
 		$this->email_options = $options;
@@ -70,7 +70,6 @@ class UserFeedback_Email_Summaries {
 			add_filter( 'cron_schedules', array( $this, 'add_weekly_cron_schedule' ) );
 			add_action( 'userfeedback_email_summaries_cron', array( $this, 'cron' ) );
 			add_action( 'wp_ajax_userfeedback_send_test_summary_email', array( $this, 'send_test_email' ) );
-			add_action( 'userfeedback_after_update_settings', array( $this, 'reset_email_summaries_options' ), 10, 2 );
 		}
 
 	}
@@ -237,7 +236,7 @@ class UserFeedback_Email_Summaries {
 	 */
 	public function get_email_addresses() {
 		$emails          = array();
-		$email_addresses = $this->email_options['summaries_email_addresses'];
+		$email_addresses = explode( ',', $this->email_options[ 'summaries_email_addresses' ] );
 
 		if ( ! empty( $email_addresses ) && is_array( $email_addresses ) ) {
 			foreach ( $email_addresses as $email_address ) {
@@ -245,8 +244,6 @@ class UserFeedback_Email_Summaries {
 					$emails[] = $email_address;
 				}
 			}
-		} else {
-			$emails[] = get_option( 'admin_email' );
 		}
 
 		return apply_filters( 'userfeedback_email_addresses_to_send', $emails );
@@ -458,22 +455,6 @@ class UserFeedback_Email_Summaries {
         });
 
         return $surveys_with_count;
-	}
-
-
-	/**
-	 * reset email summaries options
-	 *
-	 * @since 1.0.0
-	 */
-	public function reset_email_summaries_options( $key, $value ) {
-		if ( isset( $key ) && $key === 'email_summaries' && isset( $value ) && $value === 'off' ) {
-			$default_email = array(
-				'email' => get_option( 'admin_email' ),
-			);
-			userfeedback_update_option( 'summaries_email_addresses', array( $default_email ) );
-			userfeedback_update_option( 'summaries_header_image', '' );
-		}
 	}
 }
 

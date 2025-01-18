@@ -1,6 +1,7 @@
 @use "scss/variables" as *;
 @use "scss/helpers" as *;
 @use "scss/modals";
+@use "scss/fancy-radio";
 @use "scss/select2";
 @font-face {
     font-family: "Inter";
@@ -52,7 +53,15 @@ html {
     }
 }
 //any cols are grid
-
+//inputs
+input[type="radio"] {
+    color: $primary-color;
+    border-color: $primary-color;
+    accent-color: $primary-color;
+    &:checked {
+        accent-color: $primary-color;
+    }
+}
 /* Typography */
 h3,
 .plan-name {
@@ -129,6 +138,12 @@ p {
     }
     &.btn-ghost {
         background-color: transparent;
+    }
+    &.disabled,
+    &:disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.5;
     }
 }
 .btn-link {
@@ -965,6 +980,71 @@ p {
         &:hover {
             background-color: $primary-hover;
         }
+    }
+}
+.logging > div + div,
+.logging {
+    margin-top: $gutter;
+}
+.log-table-container {
+    min-height: 140px;
+    max-height: calc(50vh - 170px);
+    overflow: auto;
+    margin-top: 1rem;
+    border: 1px solid $divider-color;
+    border-radius: $border-radius * 2;
+    #log-table {
+        width: 100%;
+        border-top: 0;
+        border-radius: $border-radius * 2;
+        max-width: calc(100vw - 125px);
+        display: block;
+        td {
+            border-top: 1px solid $divider-color;
+            padding: 1rem 1.75rem;
+        }
+        thead tr th {
+            font-weight: 500;
+            text-align: left;
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            padding: 1rem 1.75rem;
+        }
+        .file {
+            width: 100%;
+            a {
+                color: $primary-color;
+            }
+        }
+        .file-size {
+            min-width: 130px;
+        }
+        .file-date {
+            min-width: 200px;
+        }
+        .time {
+            color: $gray-500;
+        }
+    }
+    .no-logs {
+        text-align: center;
+        td {
+            padding-top: 1rem;
+        }
+    }
+}
+.download-all-logs {
+    border: 1px solid $divider-color;
+    padding: $gutter;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: $border-radius * 2;
+    gap: $gutter;
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 @media only screen and (min-width: 993px) and (max-width: 1366px) {

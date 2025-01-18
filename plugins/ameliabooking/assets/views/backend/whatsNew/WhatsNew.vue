@@ -223,7 +223,8 @@ export default {
              'Fixed error regarding translations caused by 6.7 WordPress update',
              'Fixed issue with categories sorting not working when "Load entities on page load" is enabled',
              'Fixed issue with group appointments that cover 2 days',
-             'Fixed issue with notifications when the appointment status is changed to Approved'
+             'Fixed issue with notifications when the appointment status is changed to Approved',
+             'Fixed compatibility issue with older PHP versions'
            ],
            other: [
              'Other small bug fixes and stability improvements'

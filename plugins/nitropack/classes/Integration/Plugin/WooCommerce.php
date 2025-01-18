@@ -11,6 +11,8 @@ class WooCommerce {
     }
 
     public function init($stage) {
+        if (!self::isActive()) return;
+
         add_action('init', [$this, 'cache_sale_products']);
         add_action('updated_post_meta', [$this, 'update_cached_sale_products'], 10, 4);
         add_action('added_post_meta', [$this, 'update_cached_sale_products'], 10, 4);
@@ -18,6 +20,7 @@ class WooCommerce {
         if (nitropack_is_optimizer_request()) {
             add_action('template_redirect', [$this, 'purge_site_cache_on_sale_start_and_end']);
         }
+        
     }
     /**
      * Retrieves the sale dates for a given WooCommerce product.

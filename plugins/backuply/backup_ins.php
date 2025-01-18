@@ -13,6 +13,16 @@ if(!defined('ABSPATH')){
 if(!set_time_limit(300)){
 	set_time_limit(60);
 }
+
+$keepalive = 25;
+if(function_exists('ini_get')){
+	$max_execution_time = (int) ini_get('max_execution_time');
+
+	if(!empty($max_execution_time) && $max_execution_time > 180){
+		$keepalive = 60;
+	}
+}
+
 error_reporting(E_ALL);
 ignore_user_abort(true);
 
@@ -28,20 +38,20 @@ function backuply_can_create_file(){
 	if($fp === FALSE){
 		return false;
 	}
-	
+
 	if(@fwrite($fp, 'backuply') === FALSE){
 		return false;
 	}
-	
+
 	@fclose($fp);
-	
+
 	// Check if the file exists
-	
+
 	if(file_exists($file)){
 		@unlink($file);
 		return true;
 	}
-	
+
 	return false;	
 }
 
@@ -1770,7 +1780,7 @@ backuply_backup_stop_checkpoint();
 
 // We need to stop execution in 25 secs.. We will be called again if the process is incomplete
 // Set default value
-$keepalive = 25;
+//$keepalive = 25;
 $GLOBALS['end'] = (int) time() + $keepalive;
 
 $name = $data['name'];

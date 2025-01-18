@@ -1,8 +1,9 @@
 <?php
+// phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 if (!defined('ABSPATH') && !defined('MCDATAPATH')) exit;
 
-if (!trait_exists('BVProtectFWRuleStringFunc_V588')) :
-trait BVProtectFWRuleStringFunc_V588 {
+if (!trait_exists('BVProtectFWRuleStringFunc_V591')) :
+trait BVProtectFWRuleStringFunc_V591 {
 	private function _rf_isNumeric() {
 		$args = $this->processRuleFunctionParams(
 			'isNumeric',
@@ -237,7 +238,7 @@ trait BVProtectFWRuleStringFunc_V588 {
 				}
 			}
 		} else {
-			throw new BVProtectRuleError_V588(
+			throw new BVProtectRuleError_V591(
 				$this->addExState("containsAnySubstring: Expects an array of substrings.")
 			);
 		}
@@ -272,7 +273,7 @@ trait BVProtectFWRuleStringFunc_V588 {
 		$offset = isset($args[2]) ? $args[2] : 0;
 
 		if (!is_int($offset)) {
-			throw new BVProtectRuleError_V588(
+			throw new BVProtectRuleError_V591(
 				$this->addExState("strPos: Offset should be an integer")
 			);
 		}
@@ -317,13 +318,13 @@ trait BVProtectFWRuleStringFunc_V588 {
 		$limit = isset($args[2]) ? $args[2] : PHP_INT_MAX;
 
 		if (empty($separator)) {
-			throw new BVProtectRuleError_V588(
+			throw new BVProtectRuleError_V591(
 				$this->addExState("splitString: Separator cannot be empty")
 			);
 		}
 
 		if (!is_int($limit)) {
-			throw new BVProtectRuleError_V588(
+			throw new BVProtectRuleError_V591(
 				$this->addExState("splitString: Limit should be an integer")
 			);
 		}

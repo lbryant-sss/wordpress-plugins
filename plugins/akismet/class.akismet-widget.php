@@ -25,38 +25,59 @@ class Akismet_Widget extends WP_Widget {
 	function css() {
 		?>
 
-<style type="text/css">
+<style>
 .a-stats {
+	--akismet-color-mid-green: #357b49;
+	--akismet-color-white: #fff;
+	--akismet-color-light-grey: #f6f7f7;
+
+	max-width: 350px;
 	width: auto;
 }
-.a-stats a {
-	background: #7CA821;
-	background-image:-moz-linear-gradient(0% 100% 90deg,#5F8E14,#7CA821);
-	background-image:-webkit-gradient(linear,0% 0,0% 100%,from(#7CA821),to(#5F8E14));
-	border: 1px solid #5F8E14;
-	border-radius:3px;
-	color: #CFEA93;
+
+.a-stats * {
+	all: unset;
+	box-sizing: border-box;
+}
+
+.a-stats strong {
+	font-weight: 600;
+}
+
+.a-stats a.a-stats__link,
+.a-stats a.a-stats__link:visited,
+.a-stats a.a-stats__link:active {
+	background: var(--akismet-color-mid-green);
+	border: none;
+	border-radius: 8px;
+	color: var(--akismet-color-white);
 	cursor: pointer;
 	display: block;
-	font-weight: normal;
-	height: 100%;
-	-moz-border-radius:3px;
-	padding: 7px 0 8px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+	font-weight: 500;
+	padding: 12px;
 	text-align: center;
 	text-decoration: none;
-	-webkit-border-radius:3px;
-	width: 100%;
+	transition: all 0.2s ease;
 }
-.a-stats a:hover {
+
+/* Extra specificity to deal with TwentyTwentyOne focus style */
+.widget .a-stats a.a-stats__link:focus {
+	background: var(--akismet-color-mid-green);
+	color: var(--akismet-color-white);
 	text-decoration: none;
-	background-image:-moz-linear-gradient(0% 100% 90deg,#6F9C1B,#659417);
-	background-image:-webkit-gradient(linear,0% 0,0% 100%,from(#659417),to(#6F9C1B));
 }
+
+.a-stats a.a-stats__link:hover {
+	filter: brightness(110%);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 0 2px rgba(0, 0, 0, 0.16);
+}
+
 .a-stats .count {
-	color: #FFF;
+	color: var(--akismet-color-white);
 	display: block;
-	font-size: 15px;
-	line-height: 16px;
+	font-size: 1.5em;
+	line-height: 1.4;
 	padding: 0 13px;
 	white-space: nowrap;
 }
@@ -103,7 +124,8 @@ class Akismet_Widget extends WP_Widget {
 		?>
 
 	<div class="a-stats">
-		<a href="https://akismet.com" target="_blank" rel="noopener" title="">
+		<?php // Specifying colors inline for maximum specificity without using !important ?>
+		<a href="https://akismet.com" class="a-stats__link" target="_blank" rel="noopener" style="background-color: var(--akismet-color-mid-green); color: var(--akismet-color-white);">
 			<?php
 
 			echo wp_kses(

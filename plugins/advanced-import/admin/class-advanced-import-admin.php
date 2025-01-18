@@ -1084,11 +1084,26 @@ class Advanced_Import_Admin {
 			$content['page'] = $page;
 
 		}
-		/*Put nav last*/
+		/*Put nav 1last*/
 		$nav = isset( $content['nav_menu_item'] ) ? $content['nav_menu_item'] : array();
 		if ( $nav ) {
 			unset( $content['nav_menu_item'] );
 			$content['nav_menu_item'] = $nav;
+		}
+
+		/*
+		Put last*/
+		/*For Gutenberg navigation*/
+		$nav = isset( $content['wp_navigation'] ) ? $content['wp_navigation'] : array();
+		if ( $nav ) {
+			unset( $content['wp_navigation'] );
+			$content['wp_navigation'] = $nav;
+		}
+
+		$template_part = isset( $content['wp_template_part'] ) ? $content['wp_template_part'] : array();
+		if ( $template_part ) {
+			unset( $content['wp_template_part'] );
+			$content['wp_template_part'] = $template_part;
 		}
 		/*check if there is files*/
 		$widget_data = $this->get_widgets_json();
@@ -2014,6 +2029,31 @@ class Advanced_Import_Admin {
 				$content = str_replace( $matches[0][ $match_id ], '"p4PostId":' . $new_id . ',', $content );
 			}
 		}
+
+		/*Gutenberg ref id changed*/
+		if ( preg_match_all( '/\{"ref":(\d+)\}/', $content, $matches ) ) {
+			foreach ( $matches[0] as $match_id => $string ) {
+				$new_id = $this->imported_post_id( $matches[1][ $match_id ] );
+				if ( $new_id ) {
+					$content = str_replace( $string, '{"ref":' . $new_id . '}', $content );
+				}
+			}
+		}
+		/* Replace for menu item like "page","id":147 */
+		if ( preg_match_all( '/"page","id":(\d+)/', $content, $matches ) ) {
+			foreach ( $matches[0] as $match_id => $string ) {
+				$old_id = $matches[1][ $match_id ];
+				$new_id = $this->imported_post_id( $old_id );
+				if ( $new_id ) {
+					$content = str_replace( $string, '"page","id":' . $new_id, $content );
+				}
+			}
+		}
+
+		$replaced_data = apply_filters(
+			'advanced_import_replace_content_string',
+			$content
+		);
 		return $content;
 	}
 	/*Shortcode/Meta/Post Ids fixed end*/
@@ -2338,7 +2378,7 @@ class Advanced_Import_Admin {
 		$custom_options = $theme_options['options'];
 
 		/*menu data*/
-		$menu_ids = $theme_options['menu'];
+		$menu_ids = isset( $theme_options['menu'] ) ? $theme_options['menu'] : array();
 
 		/*we also want to update the widget area manager options.*/
 		if ( is_array( $custom_options ) ) {
@@ -2378,10 +2418,12 @@ class Advanced_Import_Admin {
 		Options completed
 		Menu Start*/
 		$save = array();
-		foreach ( $menu_ids as $menu_id => $term_id ) {
-			$new_term_id = $this->imported_term_id( $term_id );
-			if ( $new_term_id ) {
-				$save[ $menu_id ] = $new_term_id;
+		if ( $menu_ids ) {
+			foreach ( $menu_ids as $menu_id => $term_id ) {
+				$new_term_id = $this->imported_term_id( $term_id );
+				if ( $new_term_id ) {
+					$save[ $menu_id ] = $new_term_id;
+				}
 			}
 		}
 

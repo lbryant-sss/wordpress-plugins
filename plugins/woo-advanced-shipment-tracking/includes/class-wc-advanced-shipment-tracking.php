@@ -187,8 +187,13 @@ class WC_Advanced_Shipment_Tracking_Actions {
 
 				if ( '' != $tracking_item[ 'formatted_tracking_provider' ] ) {
 					$provider_name = $tracking_item[ 'formatted_tracking_provider' ]; 
-				} else {
-					$provider_name = $tracking_item[ 'tracking_provider' ];
+				} else {					
+					$provider_name = '';
+					if ( $tracking_item[ 'tracking_provider' ] != '' ) {
+						$provider_name = $tracking_item[ 'tracking_provider' ];
+					} else if ( $tracking_item[ 'custom_tracking_provider' ] != '' ) {
+						$provider_name = $tracking_item[ 'custom_tracking_provider' ];
+					}
 				}
 
 				$tracking_id = isset( $tracking_item['tracking_id'] ) ? $tracking_item['tracking_id'] : '';
@@ -246,11 +251,16 @@ class WC_Advanced_Shipment_Tracking_Actions {
 		global $wpdb;
 		
 		$formatted = $this->get_formatted_tracking_item( $order_id, $item );
-		
+
 		if ( '' != $formatted[ 'formatted_tracking_provider' ] ) {
 			$shipping_provider = $formatted[ 'formatted_tracking_provider' ]; 
 		} else {
-			$shipping_provider = $item[ 'tracking_provider' ];
+			$shipping_provider = '';
+			if ( $item[ 'tracking_provider' ] != '' ) {
+				$shipping_provider = $item[ 'tracking_provider' ];
+			} else if ( $item[ 'custom_tracking_provider' ] != '' ) {
+				$shipping_provider = $item[ 'custom_tracking_provider' ];
+			}			
 		}
 		?>
 		<div class="tracking-item" id="tracking-item-<?php echo esc_attr( $item['tracking_id'] ); ?>">

@@ -42,6 +42,46 @@ class HTMega_Elementor_Widget_WC_Add_to_Cart extends Widget_Button {
         return 'https://wphtmega.com/docs/woocommerce-widgets/woocommerce-add-to-cart-widget/';
     }
     protected function register_controls() {
+        if ( ! is_plugin_active('woocommerce/woocommerce.php') ) {
+            $this->messing_parent_plg_notice();
+        } else {
+            $this->wcaddtocart_regster_fields();
+        }
+    }
+    protected function messing_parent_plg_notice() {
+
+        $this->start_controls_section(
+            'messing_parent_plg_notice_section',
+            [
+                'label' => __( 'WC Add to Cart', 'htmega-addons' ),
+            ]
+        );
+            $this->add_control(
+                'htemga_plugin_parent_missing_notice',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => sprintf(
+                        __( 'It appears that %1$s is not currently installed on your site. Kindly use the link below to install or activate %1$s. After completing the installation or activation, please refresh this page.', 'htmega-addons' ),
+                        '<a href="' . esc_url( admin_url( 'plugin-install.php?s=Woocommerce&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">Woocommerce</a>'
+                    ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
+                ]
+            );
+        
+
+            $this->add_control(
+                'parent_plugin_install',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => '<a href="' . esc_url( admin_url( 'plugin-install.php?s=Woocommerce&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">' . esc_html__( 'Click to install or activate Woocommerce', 'htmega-addons' ) . '</a>',
+                ]
+            );
+            
+        $this->end_controls_section();
+
+    }
+
+    protected function wcaddtocart_regster_fields() {
 
         $this->start_controls_section(
             'wcaddtocart_content',
@@ -141,6 +181,11 @@ class HTMega_Elementor_Widget_WC_Add_to_Cart extends Widget_Button {
     protected function render() {
 
         $settings = $this->get_settings();
+
+        if ( ! is_plugin_active('woocommerce/woocommerce.php') ) {
+            htmega_plugin_missing_alert( __('Woocommerce', 'htmega-addons') );
+            return;
+        }
 
         if ( ! empty( $settings['product_id'] ) ) {
             $product_id = absint( $settings['product_id'] );

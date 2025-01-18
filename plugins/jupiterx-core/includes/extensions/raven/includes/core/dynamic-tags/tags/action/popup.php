@@ -134,6 +134,10 @@ class Popup extends Tag {
 	private function add_popup_to_location( $popup_id ) {
 		$popup_id = intval( $popup_id );
 
+		if ( get_post_status( $popup_id ) !== 'publish' ) {
+			return;
+		}
+
 		if ( ! wp_style_is( 'jupiterx-popups-frontend', 'enqueued' ) ) {
 			wp_enqueue_style( 'jupiterx-popups-frontend' );
 		}

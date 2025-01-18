@@ -1,9 +1,5 @@
 <?php
 
-if (! defined('ABSPATH')) {
-	exit;
-}
-
 /**
  * Class MC4WP_Ninja_Forms_Action
  */
@@ -22,8 +18,6 @@ class MC4WP_Ninja_Forms_Action extends NF_Abstracts_Action
 
 	public function __construct()
 	{
-		parent::__construct();
-
 		$this->_settings['double_optin']    = array(
 			'name'    => 'double_optin',
 			'type'    => 'select',
@@ -63,6 +57,7 @@ class MC4WP_Ninja_Forms_Action extends NF_Abstracts_Action
 
 		add_action('wp_ajax_nf_' . $this->_name . '_get_lists', array($this, '_get_lists'));
 		add_action('init', array($this, 'translate_props'));
+
 
         $this->get_list_settings();
 	}

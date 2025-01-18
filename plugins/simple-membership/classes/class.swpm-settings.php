@@ -42,7 +42,6 @@ class SwpmSettings {
 				1 => SwpmUtils::_( 'General Settings' ),
 				2 => SwpmUtils::_( 'Payment Settings' ),
 				3 => SwpmUtils::_( 'Email Settings' ),
-				4 => SwpmUtils::_( 'Tools' ),
 				5 => SwpmUtils::_( 'Advanced Settings' ),
                                 6 => SwpmUtils::_( 'Blacklisting & Whitelisting' ),
 				7 => SwpmUtils::_( 'Addons Settings' ),
@@ -715,6 +714,18 @@ class SwpmSettings {
 		);
 
 		add_settings_field(
+			'hide-reg-form-membership-level-field',
+			__( 'Hide Membership Level Field on Registration Form', 'simple-membership' ),
+			array( &$this, 'checkbox_callback' ),
+			'simple_wp_membership_settings',
+			'advanced-settings',
+			array(
+				'item'    => 'hide-reg-form-membership-level-field',
+				'message' => __( "Enable this option to hide the membership level field on the registration form. While the field will remain part of the form, it will be hidden from view. This is useful for sites where you prefer not to display the membership level to users.", "simple-membership" ),
+			)
+		);
+
+		add_settings_field(
 			'hide-join-us-link',
 			__( 'Hide the Join Us Link' , 'simple-membership'),
 			array( &$this, 'checkbox_callback' ),
@@ -859,15 +870,18 @@ class SwpmSettings {
 			)
 		);
 
+		// WP Toolbar and Admin Dashboard Related settings section
+		add_settings_section( 'wp-toolbar-and-admin-dashboard-related', __( 'WP Toolbar and Admin Dashboard Related' , 'simple-membership'), array( &$this, 'advanced_settings_wp_toolbar_related_section_callback' ), 'simple_wp_membership_settings' );
+
 		add_settings_field(
 			'hide-adminbar',
 			__( 'Hide Adminbar' , 'simple-membership'),
 			array( &$this, 'checkbox_callback' ),
 			'simple_wp_membership_settings',
-			'advanced-settings',
+			'wp-toolbar-and-admin-dashboard-related',
 			array(
 				'item'    => 'hide-adminbar',
-				'message' => __( 'WordPress shows an admin toolbar to the logged in users of the site. Check this if you want to hide that admin toolbar in the frontend of your site.' , 'simple-membership'),
+				'message' => __( 'WordPress displays an admin toolbar to logged-in users. Enable this option if you want to hide the admin toolbar on the frontend of your site.' , 'simple-membership'),
 			)
 		);
 
@@ -876,7 +890,7 @@ class SwpmSettings {
 			__( 'Show Adminbar to Admin' , 'simple-membership'),
 			array( &$this, 'checkbox_callback' ),
 			'simple_wp_membership_settings',
-			'advanced-settings',
+			'wp-toolbar-and-admin-dashboard-related',
 			array(
 				'item'    => 'show-adminbar-admin-only',
 				'message' => __( 'Use this option if you want to show the admin toolbar to admin users only. The admin toolbar will be hidden for all other users.' , 'simple-membership'),
@@ -888,10 +902,10 @@ class SwpmSettings {
 			__( 'Disable Access to WP Dashboard' , 'simple-membership'),
 			array( &$this, 'checkbox_callback' ),
 			'simple_wp_membership_settings',
-			'advanced-settings',
+			'wp-toolbar-and-admin-dashboard-related',
 			array(
 				'item'    => 'disable-access-to-wp-dashboard',
-				'message' => __( 'WordPress allows a standard wp user to be able to go to the wp-admin URL and access his profile from the wp dashboard. Using this option will prevent any non-admin users from going to the wp dashboard.' , 'simple-membership'),
+				'message' => __( 'WordPress allows a standard wp user to be able to go to the wp-admin URL and access his profile from the wp dashboard. Enabling this option will restrict non-admin users from accessing the WordPress dashboard.' , 'simple-membership'),
 			)
 		);
 
@@ -1376,6 +1390,10 @@ class SwpmSettings {
 		_e( 'This section allows you to configure blacklisting settings.', 'simple-membership' );
 	}
 
+	public function advanced_settings_wp_toolbar_related_section_callback() {
+		_e( "The options in this section allow you to customize the default behavior of the WordPress toolbar. If you choose to use them, ensure you test and verify that the behavior meets your needs.", "simple-membership" );
+	}
+
 	public function advanced_settings_auto_create_swpm_uses_settings_callback() {
 		_e( 'This section allows you to configure automatic creation of member accounts when new WP User records are created by another plugin. It can be useful if you are using another plugin that creates WP user records and you want them to be recognized in the membership plugin.', 'simple-membership' );
 	}
@@ -1501,7 +1519,8 @@ class SwpmSettings {
 		$output['after-logout-redirection-url']      = esc_url( $input['after-logout-redirection-url'] );
 		$output['force-strong-passwords']            = isset( $input['force-strong-passwords'] ) ? esc_attr( $input['force-strong-passwords'] ) : '';
 		$output['auto-login-after-rego']             = isset( $input['auto-login-after-rego'] ) ? esc_attr( $input['auto-login-after-rego'] ) : '';
-                $output['hide-rego-form-to-logged-users']    = isset( $input['hide-rego-form-to-logged-users'] ) ? esc_attr( $input['hide-rego-form-to-logged-users'] ) : '';
+		$output['hide-reg-form-membership-level-field'] = isset( $input['hide-reg-form-membership-level-field'] ) ? esc_attr( $input['hide-reg-form-membership-level-field'] ) : '';
+        $output['hide-rego-form-to-logged-users']    = isset( $input['hide-rego-form-to-logged-users'] ) ? esc_attr( $input['hide-rego-form-to-logged-users'] ) : '';
 		$output['hide-join-us-link']                = isset( $input['hide-join-us-link'] ) ? esc_attr( $input['hide-join-us-link'] ) : '';
 		$output['force-wp-user-sync']                = isset( $input['force-wp-user-sync'] ) ? esc_attr( $input['force-wp-user-sync'] ) : '';
 		$output['payment-notification-forward-url']  = esc_url( $input['payment-notification-forward-url'] );
@@ -1603,10 +1622,7 @@ class SwpmSettings {
 					//Email settings
 					include SIMPLE_WP_MEMBERSHIP_PATH . 'views/admin_settings.php';
 					break;
-				case 4:
-					//Tools
-					include SIMPLE_WP_MEMBERSHIP_PATH . 'views/admin_tools_settings.php';
-					break;
+				/* Note: The Tools tab has been moved to an independant menu. */
 				case 5:
 					//Advanced settings
 					include SIMPLE_WP_MEMBERSHIP_PATH . 'views/admin_settings.php';

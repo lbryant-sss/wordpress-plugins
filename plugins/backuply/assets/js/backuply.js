@@ -11,7 +11,7 @@ jQuery(document).ready(function(){
 	
 	// To Copy text on click
 	jQuery('.backuply-code-copy').click( function() {
-		navigator.clipboard.writeText(jQuery(this).parent().find('.backuply-code-text').text());
+		navigator.clipboard.writeText(jQuery(this).parent().find('.backuply-code-text').text().trim());
 		jQuery(this).parent().find('.backuply-code-copied').show();
 		
 		setTimeout(function() {
@@ -963,15 +963,23 @@ function backuply_backup_progress() {
 	modal = progress.closest('.backuply-modal'),
 	status_box = jQuery('.backuply-backup-status'),
 	stop_modal = jQuery('.backuply-stop-backup');
-	
-	let ajax_url = backuply_obj.ajax_url + '?action=backuply_check_backup_status';
+
+  backuply_obj.status_req_url = backuply_obj.ajax_url + '?action=backuply_check_backup_status';
 	
 	if(backuply_status.hasOwnProperty('is_restore') && backuply_status.is_restore){
 		if(!backuply_status.progress){
 			backuply_status.progress = 0;
 		}
 
-		ajax_url = backuply_obj.backuply_url + '/status_logs.php?status_key=' + backuply_obj.status_key;
+    if(backuply_obj.status_url_code && backuply_obj.status_url_code == 1){
+      backuply_obj.status_req_url = backuply_obj.site_url + '/backuply-restore.php?status_key=' + backuply_obj.status_key;
+
+    } else if(backuply_obj.status_url_code && backuply_obj.status_url_code == 2){
+      backuply_obj.status_req_url = backuply_obj.ajax_url + '?action=backuply_restore_status_log&status_key=' + backuply_obj.status_key;
+    }else {
+      // We will first try the status_log option only as, limit users face issue with this version and when using this we dont need to use the ajax method.
+      backuply_obj.status_req_url = backuply_obj.backuply_url + '/status_logs.php?status_key=' + backuply_obj.status_key;
+    }
 	}
 
 	if(!backuply_status.hasOwnProperty('is_restore')) {
@@ -993,7 +1001,7 @@ function backuply_backup_progress() {
 
 	jQuery.ajax({
 		method : 'POST',
-		url : ajax_url,
+		url : backuply_obj.status_req_url,
 		data : ajax_data,
 		success : function(res) {
 			if(!res.success) {
@@ -1131,6 +1139,20 @@ function backuply_backup_progress() {
 			if(!backuply_status.has_ended){
 				setTimeout(backuply_backup_progress, 2000);
 			}
+		}, error : function(res){
+      if(!res){
+        return;
+      }
+			
+      if(res.status == 403 || res.status == 404){
+        if(!backuply_obj.status_url_code){
+          backuply_obj.status_url_code = 1;
+          backuply_backup_progress();
+        } else if(backuply_obj.status_url_code && backuply_obj.status_url_code == 1) {
+          backuply_obj.status_url_code = 2;
+          backuply_backup_progress();
+        }
+      }
 		}
 	});
 }

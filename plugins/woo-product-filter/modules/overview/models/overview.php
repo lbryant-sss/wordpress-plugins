@@ -26,6 +26,32 @@ class OverviewModelWpf extends ModelWpf {
 		
 		return false;
 	}
+	public function contactus( $params ) {
+		$email = empty($params['email']) ? '' : $params['email'];
+		$uname = empty($params['name']) ? '' : $params['name'];
+		$subject = empty($params['subject']) ? '' : $params['subject'];
+		$desc = empty($params['desc']) ? '' : $params['desc'];
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$this->pushError(esc_html__('Invalid email format', 'woo-product-filter'));
+			return false;
+		}
+		if (empty($desc)) {
+			$this->pushError(esc_html__('Empty description', 'woo-product-filter'));
+			return false;
+		}
+		$resData = $this->_req('contactus', array(
+			'url' => WPF_SITE_URL,
+			'plugin_code' => 'woofilters',
+			'email' => $email,
+			'data' => array_merge(array(
+				'user_name' => $uname,
+				'subject' => $subject,
+				'desc' => $desc,
+			), $this->getPluginData())
+		));
+		
+		return false;
+	}
 	public function rating( $params ) {
 		$rate = empty($params['rate']) ? 0 : $params['rate'];
 		if (5 == $rate) {

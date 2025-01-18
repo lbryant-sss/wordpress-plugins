@@ -58,7 +58,7 @@ class BVWPSiteInfo {
 		$info['siteurl'] = $this->siteurl();
 		$info['homeurl'] = $this->homeurl();
 		if (array_key_exists('SERVER_ADDR', $_SERVER)) {
-			$info['serverip'] = sanitize_text_field(wp_unslash($_SERVER['SERVER_ADDR']));
+			$info['serverip'] = BVHelper::getRawParam('SERVER', 'SERVER_ADDR');
 		}
 
 		$info['abspath'] = ABSPATH;
@@ -66,8 +66,8 @@ class BVWPSiteInfo {
 
 	public function serversig($full = false) {
 		$sig_param = ABSPATH;
-		if (array_key_exists('SERVER_ADDR', $_SERVER)) {
-			$server_addr = sanitize_text_field(wp_unslash($_SERVER['SERVER_ADDR']));
+		$server_addr = BVHelper::getRawParam('SERVER', 'SERVER_ADDR');
+		if (isset($server_addr)) {
 			$sig_param = $server_addr . ABSPATH;
 		}
 		$sig = sha1($sig_param);
@@ -95,8 +95,8 @@ class BVWPSiteInfo {
 	}
 
 	public static function isWSKHosted() {
-		if (isset($_SERVER['SERVER_ADDR']) && function_exists('gethostbyaddr')) {
-			$server_addr = sanitize_text_field(wp_unslash($_SERVER['SERVER_ADDR']));
+		$server_addr = BVHelper::getRawParam('SERVER', 'SERVER_ADDR');
+		if (isset($server_addr) && function_exists('gethostbyaddr')) {
 			$hostFromIp = gethostbyaddr($server_addr);
 			return preg_match('/webspacekit\.com/', $hostFromIp) === 1;
 		}

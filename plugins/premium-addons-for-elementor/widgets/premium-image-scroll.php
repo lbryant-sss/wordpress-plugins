@@ -102,13 +102,13 @@ class Premium_Image_Scroll extends Widget_Base {
 		return array( 'pa', 'premium', 'premium image scroll', 'link', 'cta', 'animation' );
 	}
 
-    protected function is_dynamic_content():bool {
-        return false;
-    }
+	protected function is_dynamic_content(): bool {
+		return false;
+	}
 
-    public function has_widget_inner_wrapper(): bool {
-        return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-    }
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+	}
 
 	/**
 	 * Retrieve Widget Categories.
@@ -592,7 +592,7 @@ class Premium_Image_Scroll extends Widget_Base {
 			)
 		);
 
-		$doc1_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/image-scroll-widget-tutorial/', 'editor-page', 'wp-editor', 'get-support' );
+		$doc1_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/image-scroll-widget-tutorial/', 'img-scroll-widget', 'wp-editor', 'get-support' );
 
 		$this->add_control(
 			'doc_1',
@@ -718,10 +718,10 @@ class Premium_Image_Scroll extends Widget_Base {
 		$this->add_control(
 			'blend_mode',
 			array(
-				'label'     => __( 'Blend Mode', 'elementor' ),
+				'label'     => __( 'Blend Mode', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => array(
-					''            => __( 'Normal', 'elementor' ),
+					''            => __( 'Normal', 'premium-addons-for-elementor' ),
 					'multiply'    => 'Multiply',
 					'screen'      => 'Screen',
 					'overlay'     => 'Overlay',
@@ -786,7 +786,7 @@ class Premium_Image_Scroll extends Widget_Base {
 			array(
 				'label'       => __( 'Advanced Border Radius', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::SWITCHER,
-				'description' => __( 'Apply custom radius values. Get the radius value from ', 'premium-addons-for-elementor' ) . '<a href="https://9elements.github.io/fancy-border-radius/" target="_blank">here</a>' . __('. See ', 'premium-addons-for-elementor') . '<a href="https://www.youtube.com/watch?v=S0BJazLHV-M" target="_blank">tutorial</a>',
+				'description' => __( 'Apply custom radius values. Get the radius value from ', 'premium-addons-for-elementor' ) . '<a href="https://9elements.github.io/fancy-border-radius/" target="_blank">here</a>' . __( '. See ', 'premium-addons-for-elementor' ) . '<a href="https://www.youtube.com/watch?v=S0BJazLHV-M" target="_blank">tutorial</a>',
 			)
 		);
 
@@ -850,7 +850,7 @@ class Premium_Image_Scroll extends Widget_Base {
 			array(
 				'label'       => __( 'Advanced Border Radius', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::SWITCHER,
-				'description' => __( 'Apply custom radius values. Get the radius value from ', 'premium-addons-for-elementor' ) . '<a href="https://9elements.github.io/fancy-border-radius/" target="_blank">here</a>' . __('. See ', 'premium-addons-for-elementor') . '<a href="https://www.youtube.com/watch?v=S0BJazLHV-M" target="_blank">tutorial</a>',
+				'description' => __( 'Apply custom radius values. Get the radius value from ', 'premium-addons-for-elementor' ) . '<a href="https://9elements.github.io/fancy-border-radius/" target="_blank">here</a>' . __( '. See ', 'premium-addons-for-elementor' ) . '<a href="https://www.youtube.com/watch?v=S0BJazLHV-M" target="_blank">tutorial</a>',
 			)
 		);
 
@@ -938,9 +938,9 @@ class Premium_Image_Scroll extends Widget_Base {
 		$image_html = '';
 		if ( ! empty( $settings['image']['url'] ) ) {
 
-            $image_id = apply_filters( 'wpml_object_id', $settings['image']['id'], 'attachment', true );
+			$image_id = apply_filters( 'wpml_object_id', $settings['image']['id'], 'attachment', true );
 
-            $settings['image']['id'] = $image_id;
+			$settings['image']['id'] = $image_id;
 
 			$image_html = Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' );
 

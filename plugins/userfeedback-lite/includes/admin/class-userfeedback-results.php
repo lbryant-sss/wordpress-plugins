@@ -221,7 +221,7 @@ class UserFeedback_Results {
 		$survey->responses_count = $total_responses;
 
 		// Survey question stats
-		$quantitative_question_types = array( 'radio-button', 'checkbox', 'nps', 'star-rating' );
+		$quantitative_question_types = array( 'radio-button', 'image-radio', 'icon-choice', 'checkbox', 'nps', 'star-rating' );
 		$question_stats              = array();
 
 		$questions = $survey->questions;
@@ -245,6 +245,8 @@ class UserFeedback_Results {
 			if ( $is_quantitative ) {
 				switch ( $type ) {
 					case 'radio-button':
+					case 'image-radio':
+					case 'icon-choice':
 					case 'checkbox':
 						$question_data['options'] = array_map(
 							function ( $option ) {
@@ -302,7 +304,15 @@ class UserFeedback_Results {
 							$question_data['options'][ $option_index ]['count']++;
 						}
 					} else {
-						$option_index = array_search( $value, array_column( $question_data['options'], 'value' ) );
+						if ( in_array( $type, array( 'icon-choice', 'image-radio' ), true ) ) {
+							$question_options = array_map(function($option) {
+								return $option['value']->label;
+							}, $question_data['options']);
+						} else {
+							$question_options = array_column( $question_data['options'], 'value' );
+						}
+
+						$option_index = array_search( $value, $question_options );
 						$question_data['options'][ $option_index ]['count']++;
 					}
 				}
@@ -319,7 +329,6 @@ class UserFeedback_Results {
 		}
 
 		$survey->question_stats = $question_stats;
-
 		return $survey;
 	}
 
@@ -551,8 +560,7 @@ class UserFeedback_Results {
 					$query->add_where(
 						array(
 							'status'     => 'publish'
-						),
-						true
+						)
 					);
 					break;
 				}
@@ -561,15 +569,13 @@ class UserFeedback_Results {
 					$query->add_where(
 						array(
 							'status'     => 'publish'
-						),
-						true
+						)
 					);
 				} else {
 					$query->add_where(
 						array(
 							$attr => $value,
-						),
-						true
+						)
 					);
 				}
 
@@ -581,6 +587,7 @@ class UserFeedback_Results {
 		// Data for quick filters
 		$count_by_status_result = UserFeedback_Response::query()
 			->select( array( 'status', 'count' ) )
+			->where( array( 'survey_id' => $survey_id ) )
 			->group_by( 'status' )
 			->get();
 

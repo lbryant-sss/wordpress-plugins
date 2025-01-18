@@ -89,7 +89,7 @@ A "wp" prefix has been added to avoid name conflicts with other code in this plu
   display: flex;
   flex-direction: row;
   margin: 0;
-  padding-left: 10px;
+  padding-left: 0;
   border-bottom: 1px solid #dcdcde;
 }
 .ame-cpe-tab-nav li {
@@ -120,6 +120,9 @@ A "wp" prefix has been added to avoid name conflicts with other code in this plu
   background: white;
   border-bottom-color: var(--wp-components-color-accent, var(--wp-admin-theme-color, #007cba));
 }
+.block-editor .ame-cpe-tab-nav {
+  padding-left: 10px;
+}
 
 .ame-cpe-main-tab-container {
   display: flex;
@@ -131,10 +134,17 @@ A "wp" prefix has been added to avoid name conflicts with other code in this plu
   min-height: 100px;
   padding: 10px 12px;
 }
+.block-editor .ame-cpe-tab {
+  padding-left: 24px;
+  padding-right: 24px;
+}
 
 .ame-cpe-advanced-tab {
   display: flex;
   flex-direction: row;
+  padding: 0;
+}
+.block-editor .ame-cpe-advanced-tab {
   padding: 0;
 }
 
@@ -445,6 +455,19 @@ ame-cpe-permission-options-dropdown {
 }
 fieldset[disabled] #ame-cpe-basic-actor-shortcuts a {
   color: #787c82;
+}
+
+#ame-cpe-enforcement-disabled-notice {
+  padding: 8px 12px;
+  border: solid #bd8600;
+  border-width: 1px 0;
+  background: #fcf9e8;
+}
+#ame-cpe-enforcement-disabled-notice p {
+  margin: 0;
+}
+#ame-cpe-enforcement-disabled-notice .dashicons {
+  color: #755100;
 }
 
 /*# sourceMappingURL=content-permissions.css.map */

@@ -34,10 +34,9 @@ final class HTMega_Addons_Elementor {
      */
     private function __construct() {
         if ( ! function_exists('is_plugin_active') ){ include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); }
-
         add_action( 'init', [ $this, 'i18n' ] );
-        add_action( 'plugins_loaded', [ $this, 'init' ], 15 );
-
+        add_action( 'plugins_loaded', [ $this, 'init' ],15 );
+        
         // Register Plugin Active Hook
         register_activation_hook( HTMEGA_ADDONS_PL_ROOT, [ $this, 'plugin_activate_hook'] );
 
@@ -313,7 +312,6 @@ final class HTMega_Addons_Elementor {
         }
 
         add_option('htmega_do_activation_redirect', true);
-
     }
 
     /**
@@ -332,14 +330,14 @@ final class HTMega_Addons_Elementor {
         } 
         if ( get_option( 'htmega_do_activation_redirect', false ) ) {
             delete_option('htmega_do_activation_redirect');
-            if( !isset( $_GET['activate-multi'] ) ){
+            if( !isset( $_GET['activate-multi'] ) ) {
                 wp_redirect( admin_url("admin.php?page=htmega-addons") );
             }
         }
     }
 
     /**
-     * [include_files] Required Necessary file
+     * [includes] Load Required files
      * @return [void]
      */
     public function includes() {
@@ -352,6 +350,10 @@ final class HTMega_Addons_Elementor {
         require_once ( HTMEGA_ADDONS_PL_PATH . 'includes/class.updater.php' );
         require_once ( HTMEGA_ADDONS_PL_PATH . 'admin/include/custom-control/preset-manage.php' );
         require_once ( HTMEGA_ADDONS_PL_PATH . 'admin/include/custom-control/preset-select.php' );
+        // Initialize onboarding early
+        if ( ! get_option( 'htmega_onboarding_completed' ) && ! get_option('htmega_element_tabs') && ! get_option('htmega_advance_element_tabs ') ) {
+            require_once ( HTMEGA_ADDONS_PL_PATH . 'admin/include/settings-panel/includes/classes/Onboarding.php' );
+        }
 
         if('yes' === get_option('woocommerce_enable_ajax_add_to_cart')){
             require_once ( HTMEGA_ADDONS_PL_PATH.'includes/class.single-product-ajax-addto-cart.php' );
@@ -462,6 +464,7 @@ final class HTMega_Addons_Elementor {
         
         return $plugin_meta;
     }
+
 }
 
 /**

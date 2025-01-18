@@ -60,7 +60,7 @@
 						) );
 					else :
 						?>
-						<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink . '?utm_source=&utm_medium=&utm_campaign=' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+						<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 					<?php
 					endif;
 					?>
@@ -81,7 +81,7 @@
 						) );
 					else :
 						?>
-						<span class="wpfProLabel "><a href="<?php echo esc_url( $this->proLink . '?utm_source=&utm_medium=&utm_campaign=' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+						<span class="wpfProLabel "><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 					<?php
 					endif;
 					?>
@@ -100,7 +100,7 @@
 						) );
 					else :
 						?>
-						<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink . '?utm_source=&utm_medium=&utm_campaign=' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+						<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 					<?php
 					endif;
 					?>
@@ -121,7 +121,7 @@
 						) );
 					else :
 						?>
-						<span class="wpfProLabel "><a href="<?php echo esc_url( $this->proLink . '?utm_source=&utm_medium=&utm_campaign=' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+						<span class="wpfProLabel "><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 					<?php
 					endif;
 					?>
@@ -140,7 +140,7 @@
 						) );
 					else :
 						?>
-						<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink . '?utm_source=&utm_medium=&utm_campaign=' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+						<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 					<?php
 					endif;
 					?>
@@ -176,7 +176,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('You can select one of the available pages to redirect to it after selecting a filter', 'woo-product-filter')); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-8 col-lg-9">
-				<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=redirectafterfilterselection&utm_medium=optionsmain&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+				<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 			</div>
 		</div>
 
@@ -186,7 +186,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('Only when a selection is made in the current filter show the next one', 'woo-product-filter')); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-8 col-lg-9">
-				<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=openfiltersonebyone&utm_medium=optionsmain&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+				<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 			</div>
 		</div>
 
@@ -197,7 +197,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('The filter will be located in a popup', 'woo-product-filter')); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-8 col-lg-9">
-				<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=floatingmode&utm_medium=optionsmain&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+				<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 			</div>
 		</div>
 
@@ -280,6 +280,36 @@
 					<?php 
 						HtmlWpf::checkboxToggle('settings[hide_without_products]', array(
 							'checked' => ( isset($this->settings['settings']['hide_without_products']) ? (int) $this->settings['settings']['hide_without_products'] : '' )
+						));
+						?>
+				</div>
+			</div>
+		</div>
+		<div class="row row-settings-block">
+			<div class="settings-block-label col-xs-4 col-lg-3">
+				<?php esc_html_e('Show filter before initialisation', 'woo-product-filter'); ?>
+				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('By default, the filter will be hidden behind the loader when the page loads until it is fully initialised. Enable this option if you want the filter to be displayed immediately. Please note that before initialisation some parts of the filter may not look the same and some functionality may not work.', 'woo-product-filter') ); ?>"></i>
+			</div>
+			<div class="settings-block-values col-xs-8 col-lg-9">
+				<div class="settings-value settings-w100">
+					<?php 
+						HtmlWpf::checkboxToggle('settings[show_filter_immediately]', array(
+							'checked' => ( isset($this->settings['settings']['show_filter_immediately']) ? (int) $this->settings['settings']['show_filter_immediately'] : '' )
+						));
+						?>
+				</div>
+			</div>
+		</div>
+		<div class="row row-settings-block">
+			<div class="settings-block-label col-xs-4 col-lg-3">
+				<?php esc_html_e('Initialise filter immediately', 'woo-product-filter'); ?>
+				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('By default, when loading a page, the filter waits for all page content to load before initialising. Enable this option if you want the filter to initialise immediately. Note that this option is experimental and may cause js-script errors, especially if you use script optimisation or minimisation plugins.', 'woo-product-filter') ); ?>"></i>
+			</div>
+			<div class="settings-block-values col-xs-8 col-lg-9">
+				<div class="settings-value settings-w100">
+					<?php 
+						HtmlWpf::checkboxToggle('settings[initialise_immediately]', array(
+							'checked' => ( isset($this->settings['settings']['initialise_immediately']) ? (int) $this->settings['settings']['initialise_immediately'] : '' )
 						));
 						?>
 				</div>
@@ -591,7 +621,7 @@
 					<?php esc_html_e('Display Hide Filters Button', 'woo-product-filter'); ?>
 				</div>
 				<div class="settings-block-values col-xs-8 col-lg-9">
-					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=displayhidefiltersbutton&utm_medium=optionsbuttons&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 				</div>
 			</div>
 		<?php } ?>
@@ -832,7 +862,7 @@
 								) );
 							else :
 								?>
-								<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink . '?utm_source=displayvariationsinsteadofvariableproduct&utm_medium=optionscontent&utm_campaign=pluginfilter' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+								<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 							<?php
 							endif;
 							?>
@@ -851,7 +881,7 @@
 					<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('For long vertical lists, "Show more" will be displayed.', 'woo-product-filter') . ' <a href="' . esc_url('https://' . WPF_WP_PLUGIN_URL . '/documentation/content-options/') . '" class="wupsales-wc-hidden" target="_blank">' . __('Learn More', 'woo-product-filter') . '</a>'); ?>"></i>
 				</div>
 				<div class="settings-block-values col-xs-8 col-lg-9">
-					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=displayshowmore&utm_medium=optionscontent&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 				</div>
 			</div>
 			<div class="row row-settings-block">
@@ -860,7 +890,7 @@
 					<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr('<div class="woobewoo-tooltips-wrapper"><div class="woobewoo-tooltips-text">' . __('Selected parameters will be displayed in the top/bottom of the filter .', 'woo-product-filter') . '</div><img src="' . esc_url($this->getModule()->getModPath() . 'img/display_selected_parameters_of_filters.png') . '" height="193"></div>'); ?>"></i>
 				</div>
 				<div class="settings-block-values col-xs-8 col-lg-9">
-					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=displayselectedparametersoffilters&utm_medium=optionscontent&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 				</div>
 			</div>
 			<div class="row row-settings-block">
@@ -869,7 +899,7 @@
 					<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('After filtration will be scroll to products block') ); ?>"></i>
 				</div>
 				<div class="settings-block-values col-xs-8 col-lg-9">
-					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=autoscrolltoproductsafterfiltering&utm_medium=optionscontent&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 				</div>
 			</div>
 			<div class="row row-settings-block">
@@ -878,7 +908,7 @@
 					<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr( __( 'When you click on the block open icon, all other open blocks will be automatically closed', 'woo-product-filter' ) . ' <a href="' . esc_url('https://' . WPF_WP_PLUGIN_URL . '/documentation/content-options/') . '" class="wupsales-wc-hidden" target="_blank">' . __( 'Learn More', 'woo-product-filter' ) . '</a>' ); ?>"></i>
 				</div>
 				<div class="settings-block-values col-xs-8 col-lg-9">
-					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=ifonefilterblockisopenotherblocksareclosed&utm_medium=optionscontent&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 				</div>
 			</div>
 			<div class="row row-settings-block">
@@ -887,7 +917,7 @@
 					<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('Turn on only when necessary. Please note that "slug" should only contain lowercase Latin letters, numbers and hyphens.', 'woo-product-filter') . ' <a href="' . esc_url('https://' . WPF_WP_PLUGIN_URL . '/documentation/content-options/') . '" class="wupsales-wc-hidden" target="_blank">' . __('Learn More', 'woo-product-filter') . '</a>'); ?>"></i>
 				</div>
 				<div class="settings-block-values col-xs-8 col-lg-9">
-					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=showcategoryslugsinurlinsteadofids&utm_medium=optionscontent&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 				</div>
 			</div>
 		<?php } ?>
@@ -1025,7 +1055,7 @@
 						<div class="settings-value-label">
 							<?php esc_html_e( 'Apply loader settings to all filters', 'woo-product-filter' ); ?>
 						</div>
-						<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink . '?utm_source=applyloadersettingstoallfilters&utm_medium=optionsloadder&utm_campaign=pluginfilter' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+						<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 					<?php
 					endif;
 					?>
@@ -1053,7 +1083,7 @@
 		<div class="row row-settings-block wpfLoader">
 			<div class="settings-block-label col-xs-4 col-lg-3">
 				<?php esc_html_e('Filter Loader Icon', 'woo-product-filter'); ?>
-				<sup class="wpfProOption"><a href="<?php echo esc_url($this->proLink . '?utm_source=filterloadericon&utm_medium=optionsloader&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></sup>
+				<sup class="wpfProOption"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></sup>
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('Select the animated loader, which appears when filtering results are loading.', 'woo-product-filter') . ' <a href="' . esc_url('https://' . WPF_WP_PLUGIN_URL . '/documentation/loader-options/') . '" class="wupsales-wc-hidden" target="_blank">' . __('Learn More', 'woo-product-filter') . '</a>'); ?>"></i>
 			</div>
 			<div class="settings-block-values settings-w100 col-xs-8 col-lg-9">
@@ -1163,7 +1193,7 @@
 					<i class="fa fa-question woobewoo-tooltip" title="<?php esc_attr_e('To prevent products container from collapsing during ajax.', 'woo-product-filter'); ?>"></i>
 				</div>
 				<div class="settings-block-values col-xs-8 col-lg-9">
-					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=displayshowmore&utm_medium=optionscontent&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 				</div>
 			</div>
 		<?php } ?>

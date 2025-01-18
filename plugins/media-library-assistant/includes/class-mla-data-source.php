@@ -739,9 +739,11 @@ class MLAData_Source {
 					break;
 				}
 
-				$filesize = self::_get_filesize( $result['absolute_file_name_raw'] );
-				if ( false !== $filesize ) {
-					$result = $filesize;
+				if ( !empty( $file_info['absolute_file_name_raw'] ) ) {
+					$filesize = self::_get_filesize( $file_info['absolute_file_name_raw'] );
+					if ( false !== $filesize ) {
+						$result = $filesize;
+					}
 				}
 				break;
 			case 'upload_date':

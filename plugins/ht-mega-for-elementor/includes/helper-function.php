@@ -4,13 +4,18 @@
  * [htmega_get_elementor] Get elementor instance
  * @return [\Elementor\Plugin]
  */
-function htmega_get_elementor() {
-    return \Elementor\Plugin::instance();
+if ( ! function_exists( 'htmega_get_elementor' ) ) {
+    function htmega_get_elementor() {
+        return \Elementor\Plugin::instance();
+    }
 }
+    // elementor editor mode check
+if ( ! function_exists( 'htmega_is_editor_mode' ) ) {
 
-// elementor editor mode check
-function htmega_is_editor_mode() {
-    return \Elementor\Plugin::$instance->editor->is_edit_mode();
+    function htmega_is_editor_mode() {
+        return \Elementor\Plugin::$instance->editor->is_edit_mode();
+    }
+
 }
 // elementor editing mode
 if( !function_exists('htmega_is_editing_mode') ){
@@ -26,16 +31,18 @@ if( !function_exists('htmega_is_editing_mode') ){
  * @param  [int] $post_id page id
  * @return [string] custom value
  */
-function htmega_get_elementor_option( $key, $post_id ){
-    // Get the page settings manager
-    $page_settings_manager = \Elementor\Core\Settings\Manager::get_settings_managers( 'page' );
+if ( ! function_exists( 'htmega_get_elementor_option' ) ) {
+    function htmega_get_elementor_option( $key, $post_id ){
+        // Get the page settings manager
+        $page_settings_manager = \Elementor\Core\Settings\Manager::get_settings_managers( 'page' );
 
-    // Get the settings model for current post
-    $page_settings_model = $page_settings_manager->get_model( $post_id );
+        // Get the settings model for current post
+        $page_settings_model = $page_settings_manager->get_model( $post_id );
 
-    // Retrieve value
-    $elget_value = $page_settings_model->get_settings( $key );
-    return $elget_value;
+        // Retrieve value
+        $elget_value = $page_settings_model->get_settings( $key );
+        return $elget_value;
+    }
 }
 
 
@@ -43,18 +50,21 @@ function htmega_get_elementor_option( $key, $post_id ){
 * Elementor Version check
 * Return boolean value
 */
-function htmega_is_elementor_version( $operator = '<', $version = '2.6.0' ) {
-    return defined( 'ELEMENTOR_VERSION' ) && version_compare( ELEMENTOR_VERSION, $version, $operator );
+if ( ! function_exists( 'htmega_is_elementor_version' ) ) {
+    function htmega_is_elementor_version( $operator = '<', $version = '2.6.0' ) {
+        return defined( 'ELEMENTOR_VERSION' ) && version_compare( ELEMENTOR_VERSION, $version, $operator );
+    }
 }
-
 // Compatibility with elementor version 3.6.1
-function htmega_widget_register_manager($widget_class){
-    $widgets_manager = \Elementor\Plugin::instance()->widgets_manager;
-    
-    if ( htmega_is_elementor_version( '>=', '3.5.0' ) ){
-        $widgets_manager->register( $widget_class );
-    }else{
-        $widgets_manager->register_widget_type( $widget_class );
+if ( ! function_exists( 'htmega_widget_register_manager' ) ) {
+    function htmega_widget_register_manager($widget_class){
+        $widgets_manager = \Elementor\Plugin::instance()->widgets_manager;
+        
+        if ( htmega_is_elementor_version( '>=', '3.5.0' ) ){
+            $widgets_manager->register( $widget_class );
+        }else{
+            $widgets_manager->register_widget_type( $widget_class );
+        }
     }
 }
 
@@ -228,27 +238,29 @@ if( !function_exists('htmega_html_tag_lists') ){
  * HTML Tag Validation
  * return strig
  */
-function htmega_validate_html_tag( $tag ) {
-    $allowed_html_tags = [
-        'article',
-        'aside',
-        'footer',
-        'header',
-        'section',
-        'nav',
-        'main',
-        'div',
-        'h1',
-        'h2',
-        'h3',
-        'h4',
-        'h5',
-        'h6',
-        'p',
-        'span',
-    ];
-    $valid_tag = is_string( $tag ) ? strtolower( $tag ) : 'div';
-    return in_array( $valid_tag, $allowed_html_tags ) ? $tag : 'div';
+if ( ! function_exists( 'htmega_validate_html_tag' ) ) {
+    function htmega_validate_html_tag( $tag ) {
+        $allowed_html_tags = [
+            'article',
+            'aside',
+            'footer',
+            'header',
+            'section',
+            'nav',
+            'main',
+            'div',
+            'h1',
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+            'h6',
+            'p',
+            'span',
+        ];
+        $valid_tag = is_string( $tag ) ? strtolower( $tag ) : 'div';
+        return in_array( $valid_tag, $allowed_html_tags ) ? $tag : 'div';
+    }
 }
 
 /*
@@ -557,217 +569,220 @@ if( !function_exists('htmega_redirect_404') ){
  * @param string $tag_type Allowed levels are title and desc
  * @return array
  */
-function htmega_get_html_allowed_tags($tag_type = 'title') {
-	$accept_html_tags = [
-        'span'   => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		'strong' => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		'br'     => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],        
-		'b'      => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-        'sub'    => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		'sup'    => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		'i'      => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		'u'      => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		's'      => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		'em'     => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		'del'    => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		'ins'    => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-
-		'code'   => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		'mark'   => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		'small'  => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		'strike' => [
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-		'abbr'   => [
-			'title' => [],
-			'class' => [],
-			'id'    => [],
-			'style' => [],
-		],
-	];
-
-	if ('desc' === $tag_type) {
-		$desc_tags = [
-            'h1' => [
+if ( ! function_exists( 'htmega_get_html_allowed_tags' ) ) {
+    function htmega_get_html_allowed_tags($tag_type = 'title') {
+        $accept_html_tags = [
+            'span'   => [
                 'class' => [],
                 'id'    => [],
                 'style' => [],
             ],
-            'h2' => [
+            'strong' => [
                 'class' => [],
                 'id'    => [],
                 'style' => [],
             ],
-            'h3' => [
+            'br'     => [
+                'class' => [],
+                'id'    => [],
+                'style' => [],
+            ],        
+            'b'      => [
                 'class' => [],
                 'id'    => [],
                 'style' => [],
             ],
-            'h4' => [
+            'sub'    => [
                 'class' => [],
                 'id'    => [],
                 'style' => [],
             ],
-            'h5' => [
+            'sup'    => [
                 'class' => [],
                 'id'    => [],
                 'style' => [],
             ],
-            'h6' => [
+            'i'      => [
                 'class' => [],
                 'id'    => [],
                 'style' => [],
             ],
-            'p' => [
+            'u'      => [
                 'class' => [],
                 'id'    => [],
                 'style' => [],
             ],
-			'a'       => [
-				'href'  => [],
-				'title' => [],
-				'class' => [],
-				'id'    => [],
-				'style' => [],
-			],
-			'q'       => [
-				'cite'  => [],
-				'class' => [],
-				'id'    => [],
-				'style' => [],
-			],
-			'img'     => [
-				'src'    => [],
-				'alt'    => [],
-				'height' => [],
-				'width'  => [],
-				'class'  => [],
-				'id'     => [],
-				'title'  => [],
-				'style'  => [],
-			],
-			'dfn'     => [
-				'title' => [],
-				'class' => [],
-				'id'    => [],
-				'style' => [],
-			],
-			'time'    => [
-				'datetime' => [],
-				'class'    => [],
-				'id'       => [],
-				'style'    => [],
-			],
-			'cite'    => [
-				'title' => [],
-				'class' => [],
-				'id'    => [],
-				'style' => [],
-			],
-			'acronym' => [
-				'title' => [],
-				'class' => [],
-				'id'    => [],
-				'style' => [],
-			],
-			'hr'      => [
-				'class' => [],
-				'id'    => [],
-				'style' => [],
-			],
-            'div' => [
+            's'      => [
                 'class' => [],
                 'id'    => [],
-                'style' => []
+                'style' => [],
             ],
-           
-            'button' => [
+            'em'     => [
+                'class' => [],
+                'id'    => [],
+                'style' => [],
+            ],
+            'del'    => [
+                'class' => [],
+                'id'    => [],
+                'style' => [],
+            ],
+            'ins'    => [
                 'class' => [],
                 'id'    => [],
                 'style' => [],
             ],
 
-		];
+            'code'   => [
+                'class' => [],
+                'id'    => [],
+                'style' => [],
+            ],
+            'mark'   => [
+                'class' => [],
+                'id'    => [],
+                'style' => [],
+            ],
+            'small'  => [
+                'class' => [],
+                'id'    => [],
+                'style' => [],
+            ],
+            'strike' => [
+                'class' => [],
+                'id'    => [],
+                'style' => [],
+            ],
+            'abbr'   => [
+                'title' => [],
+                'class' => [],
+                'id'    => [],
+                'style' => [],
+            ],
+        ];
 
-		$accept_html_tags = array_merge($accept_html_tags, $desc_tags);
-	}
+        if ('desc' === $tag_type) {
+            $desc_tags = [
+                'h1' => [
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'h2' => [
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'h3' => [
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'h4' => [
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'h5' => [
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'h6' => [
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'p' => [
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'a'       => [
+                    'href'  => [],
+                    'title' => [],
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'q'       => [
+                    'cite'  => [],
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'img'     => [
+                    'src'    => [],
+                    'alt'    => [],
+                    'height' => [],
+                    'width'  => [],
+                    'class'  => [],
+                    'id'     => [],
+                    'title'  => [],
+                    'style'  => [],
+                ],
+                'dfn'     => [
+                    'title' => [],
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'time'    => [
+                    'datetime' => [],
+                    'class'    => [],
+                    'id'       => [],
+                    'style'    => [],
+                ],
+                'cite'    => [
+                    'title' => [],
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'acronym' => [
+                    'title' => [],
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'hr'      => [
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
+                'div' => [
+                    'class' => [],
+                    'id'    => [],
+                    'style' => []
+                ],
+            
+                'button' => [
+                    'class' => [],
+                    'id'    => [],
+                    'style' => [],
+                ],
 
-	return $accept_html_tags;
+            ];
+
+            $accept_html_tags = array_merge($accept_html_tags, $desc_tags);
+        }
+
+        return $accept_html_tags;
+    }
 }
 /*
  * Escaping function for allow html tags
  * Title escaping function
  */
+if ( ! function_exists( 'htmega_kses_title' ) ) {
+    function htmega_kses_title( $string = '' ) {
 
-function htmega_kses_title( $string = '' ) {
+        if ( ! is_string( $string ) ) {
+            $string = ''; 
+        }
 
-    if ( ! is_string( $string ) ) {
-        $string = ''; 
+        return wp_kses( $string, htmega_get_html_allowed_tags( 'title' ) );
     }
-
-	return wp_kses( $string, htmega_get_html_allowed_tags( 'title' ) );
 }
 
 
@@ -775,23 +790,27 @@ function htmega_kses_title( $string = '' ) {
  * Escaping function for allow html tags
  * Description escaping function
  */
-function htmega_kses_desc( $string = '' ) {
-    if ( ! is_string( $string ) ) {
-        $string = ''; 
+if ( ! function_exists( 'htmega_kses_desc' ) ) {
+    function htmega_kses_desc( $string = '' ) {
+        if ( ! is_string( $string ) ) {
+            $string = ''; 
+        }
+        return wp_kses( $string, htmega_get_html_allowed_tags( 'desc' ) );
     }
-	return wp_kses( $string, htmega_get_html_allowed_tags( 'desc' ) );
 }
 
 /**
  * To show allowed html tags in description
  */
-function htmega_get_allowed_tag_desc( $tag_type = 'title' ) {
-	if (!in_array( $tag_type, ['title', 'desc'] )) {
-		$tag_type = 'title';
-	}
+if ( ! function_exists( 'htmega_get_allowed_tag_desc' ) ) {
+    function htmega_get_allowed_tag_desc( $tag_type = 'title' ) {
+        if (!in_array( $tag_type, ['title', 'desc'] )) {
+            $tag_type = 'title';
+        }
 
-	$tags_string = '<' . implode('>,<', array_keys(htmega_get_html_allowed_tags( $tag_type ))) . '>';
-	return sprintf( /* translators: %s: List of supported HTML tags */ __('This input field supports the following HTML tags: %1$s', 'htmega-addons'), '<code>' . esc_html($tags_string) . '</code>');
+        $tags_string = '<' . implode('>,<', array_keys(htmega_get_html_allowed_tags( $tag_type ))) . '>';
+        return sprintf( /* translators: %s: List of supported HTML tags */ __('This input field supports the following HTML tags: %1$s', 'htmega-addons'), '<code>' . esc_html($tags_string) . '</code>');
+    }
 }
 
 
@@ -1116,5 +1135,30 @@ if ( ! function_exists('htmega_is_elementor_page') ) {
     function htmega_is_elementor_page( $post_id ) {
         $elementor = get_post_meta( $post_id, '_elementor_edit_mode', true );
         return $elementor;
+    }
+}
+
+if ( ! function_exists( 'htmega_get_module_option2' ) ) {
+    function htmega_get_module_option2( $option_name ) {
+        $options = get_option('htmega_advance_element_tabs');
+        return isset($options[$option_name]) ? $options[$option_name] : null;
+    }
+}
+
+/**
+ * Get plugin missing notice
+ *
+ * @param string $plugin
+ * @return void
+ */
+if ( ! function_exists( 'htmega_plugin_missing_alert' ) ) {
+function htmega_plugin_missing_alert($plugin) {
+        if (current_user_can('activate_plugins') && $plugin) {
+            printf(
+                '<div %s>%s</div>',
+                'style="margin: 1rem;padding: 1rem 1.25rem;border-left: 5px solid #ffe58f;color: rgb(0 0 0 / 88%);background-color: #fffbe6;"',
+                $plugin . __(' is missing! Please install and activate ', 'htmega-addons') . $plugin . '.'
+            );
+        }
     }
 }

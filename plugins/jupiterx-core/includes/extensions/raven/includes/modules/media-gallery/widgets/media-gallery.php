@@ -601,7 +601,7 @@ class Media_Gallery extends Base_Widget {
 				'label' => esc_html__( 'Title', 'jupiterx-core' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
-				'render_type' => 'ui',
+				'render_type' => 'template',
 				'selectors_dictionary' => [
 					'yes' => 'display: block;',
 					'' => 'display: none;',

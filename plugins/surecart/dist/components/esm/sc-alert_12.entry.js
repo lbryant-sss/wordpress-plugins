@@ -3,7 +3,7 @@ import { i as isRtl } from './page-align-0cdacf32.js';
 import { s as setDefaultAnimation, g as getAnimation, a as animateTo, b as stopAnimations } from './animation-registry-12eed2e3.js';
 import { m as maybeConvertAmount } from './currency-a0c9bff4.js';
 import { g as getIconLibrary } from './library-e110eea6.js';
-import { a as apiFetch } from './fetch-2032d11d.js';
+import { a as apiFetch } from './fetch-2d92a73e.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 

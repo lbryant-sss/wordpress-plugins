@@ -697,6 +697,10 @@ table.widefat.dgwt-wcas-analytics-table {
 	padding: 15px;
 }
 
+.dgwt-wcas-troubleshooting-wrapper .dgwt-wcas-settings-info p {
+	max-width: 800px;
+}
+
 .dgwt-wcas-indexing-header__troubleshooting pre, .dgwt-wcas-troubleshooting-wrapper .dgwt-wcas-settings-info pre {
 	display: inline-block;
 	background: #eee;
@@ -1465,17 +1469,20 @@ td.dgwt-wcas-indexing-details-row a {
 }
 
 .dgwt-wcas-preview-source .dgwt-wcas-suggestion-brand .dgwt-wcas-si,
-.dgwt-wcas-preview-source .dgwt-wcas-suggestion-cat .dgwt-wcas-si {
+.dgwt-wcas-preview-source .dgwt-wcas-suggestion-cat .dgwt-wcas-si,
+.dgwt-wcas-preview-source .dgwt-wcas-suggestion-cpt .dgwt-wcas-si {
 	display: none;
 }
 
 .dgwt-wcas-preview-source .dgwt-wcas-suggestion-brand.dgwt-wcas-has-img .dgwt-wcas-si,
-.dgwt-wcas-preview-source .dgwt-wcas-suggestion-cat.dgwt-wcas-has-img .dgwt-wcas-si {
+.dgwt-wcas-preview-source .dgwt-wcas-suggestion-cat.dgwt-wcas-has-img .dgwt-wcas-si,
+.dgwt-wcas-preview-source .dgwt-wcas-suggestion-cpt.dgwt-wcas-has-img .dgwt-wcas-si {
 	display: block;
 }
 
 .dgwt-wcas-preview-source .dgwt-wcas-suggestion-brand.dgwt-wcas-has-img .dgwt-wcas-st,
-.dgwt-wcas-preview-source .dgwt-wcas-suggestion-cat.dgwt-wcas-has-img .dgwt-wcas-st {
+.dgwt-wcas-preview-source .dgwt-wcas-suggestion-cat.dgwt-wcas-has-img .dgwt-wcas-st,
+.dgwt-wcas-preview-source .dgwt-wcas-suggestion-cpt.dgwt-wcas-has-img .dgwt-wcas-st{
 	padding-left: 10px;
 }
 

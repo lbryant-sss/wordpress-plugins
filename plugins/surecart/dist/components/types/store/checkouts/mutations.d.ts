@@ -4,4 +4,4 @@ export declare const getCheckout: (formId: number | string, mode: 'live' | 'test
 /** Set the checkout. */
 export declare const setCheckout: (data: Checkout, formId: number | string) => void;
 /** Clear the order from the store. */
-export declare const clearCheckout: (formId: number | string, mode: 'live' | 'test') => void;
+export declare const clearCheckout: (formId: number | string, mode: 'live' | 'test', checkoutId?: string) => void;

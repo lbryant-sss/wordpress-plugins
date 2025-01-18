@@ -15455,20 +15455,36 @@ var TableOfContents = _module["default"].extend({
 
     var check = true,
         toCheck = '';
-    var selectors = excludes.split(',');
+    var cssSelectors = excludes.split(',');
+    var selectors = cssSelectors.map(function (e) {
+      return e.trim();
+    });
     selectors.forEach(function (item) {
+      if (item === '') {
+        return;
+      }
+
       var firstLetter = item.charAt(0);
+      var allElementsBasedSelector = $(item);
 
       if ('.' === firstLetter) {
         toCheck = item.substring(1);
 
-        if ($(element).hasClass(toCheck)) {
+        if ($(element).hasClass(toCheck) || _.some(allElementsBasedSelector, function (obj) {
+          var _obj$offsetParent, _element$offsetParent;
+
+          return (obj === null || obj === void 0 ? void 0 : (_obj$offsetParent = obj.offsetParent) === null || _obj$offsetParent === void 0 ? void 0 : _obj$offsetParent.classList) === (element === null || element === void 0 ? void 0 : (_element$offsetParent = element.offsetParent) === null || _element$offsetParent === void 0 ? void 0 : _element$offsetParent.classList);
+        })) {
           check = false;
         }
       } else if ('#' === firstLetter) {
         toCheck = item.substring(1);
 
-        if (toCheck === $(element).attr('id')) {
+        if (toCheck === $(element).attr('id') || _.some(allElementsBasedSelector, function (obj) {
+          var _obj$offsetParent2, _element$offsetParent2;
+
+          return (obj === null || obj === void 0 ? void 0 : (_obj$offsetParent2 = obj.offsetParent) === null || _obj$offsetParent2 === void 0 ? void 0 : _obj$offsetParent2.id) === (element === null || element === void 0 ? void 0 : (_element$offsetParent2 = element.offsetParent) === null || _element$offsetParent2 === void 0 ? void 0 : _element$offsetParent2.id);
+        })) {
           check = false;
         }
       } else {

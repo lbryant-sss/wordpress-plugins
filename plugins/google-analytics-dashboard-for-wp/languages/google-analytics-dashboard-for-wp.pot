@@ -1,17 +1,17 @@
-# Copyright (C) 2024 ExactMetrics
+# Copyright (C) 2025 ExactMetrics
 # This file is distributed under the same license as the Google Analytics Dashboard for WP (GADWP) plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google Analytics Dashboard for WP (GADWP) 8.2.4\n"
+"Project-Id-Version: Google Analytics Dashboard for WP (GADWP) 8.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-analytics-dashboard-for-wp-working-dir\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-13T14:25:49+00:00\n"
+"POT-Creation-Date: 2025-01-16T15:08:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0-alpha\n"
 "X-Domain: google-analytics-dashboard-for-wp\n"
 
 #: src/modules/settings/components/input/tab-general/exactmetrics-SettingsInputLicenseSite.vue:105
@@ -335,7 +335,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "%s Category"
 msgstr ""
 
-#: src/modules/reports/components/exactmetrics-ReportsPagination.vue:35
+#: src/modules/reports/components/exactmetrics-ReportsPagination.vue:34
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "%s results"
 msgstr ""
@@ -560,14 +560,14 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "A number of factors can affect how quickly the browser can load and render a web page(including Time to first byte), and delays across any of them can have a significant impact on Largest Contentful Paint."
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:373
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:627
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview-Lite.vue:116
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview.vue:127
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "A pageview is defined as a view of a page on your site that is being tracked by the Analytics tracking code. Each refresh of a page is also a new pageview."
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:372
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:626
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview-Lite.vue:115
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview.vue:126
 msgctxt "google-analytics-dashboard-for-wp"
@@ -658,7 +658,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Activate Pretty Links"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:346
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:358
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Activate the Performance addon to customize your settings"
 msgstr ""
@@ -778,7 +778,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Add screenshots and media to your notes"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:341
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:353
 #: src/modules/site-notes/components/create-form.vue:73
 #: src/modules/site-notes/components/list.vue:87
 #: src/modules/site-notes/components/overview-report/create.vue:78
@@ -917,6 +917,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Ajaxify Widget"
 msgstr ""
 
+#: src/modules/reports/components/exactmetrics-ReportsPagination.vue:36
 #: src/modules/site-notes/components/list.vue:389
 #: src/modules/site-notes/components/overview-report/list.vue:129
 msgctxt "google-analytics-dashboard-for-wp"
@@ -1032,6 +1033,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "AMP Support"
 msgstr ""
 
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:74
 #: src/modules/reports/components/ecommerce/exactmetrics-ReportEcommerceCoupons.vue:63
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:132
 #: src/modules/reports/components/reports/exactmetrics-ReportDimensions.vue:49
@@ -1256,6 +1258,16 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Available in PRO version"
 msgstr ""
 
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:599
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Average %s Revenue"
+msgstr ""
+
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:597
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Average %s Sales"
+msgstr ""
+
 #: src/modules/reports/components/reports/exactmetrics-YearInReview-Lite.vue:264
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Average Age"
@@ -1271,7 +1283,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Average Scroll Depth"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:374
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:628
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview-Lite.vue:117
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview.vue:128
 msgctxt "google-analytics-dashboard-for-wp"
@@ -1306,7 +1318,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Avg. Position"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:360
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:607
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview-Lite.vue:121
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview.vue:132
 msgctxt "google-analytics-dashboard-for-wp"
@@ -1321,11 +1333,6 @@ msgstr ""
 #: src/components/TheAppRatingModal.vue:52
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Awesome! Could you please do me a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?"
-msgstr ""
-
-#: src/modules/wizard-onboarding/components/steps/exactmetrics-OnboardingStepSuccess.vue:147
-msgctxt "google-analytics-dashboard-for-wp"
-msgid "Awesome! Tracking and Analytics are All Setup!"
 msgstr ""
 
 #: src/modules/notifications/components/exactmetrics-Notifications.vue:116
@@ -1421,6 +1428,11 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Bounce"
 msgstr ""
 
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:595
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Bounce %s Percentage"
+msgstr ""
+
 #: src/modules/ai-insights/components/addon/chat/ChatStart.vue:59
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:236
 msgctxt "google-analytics-dashboard-for-wp"
@@ -1432,7 +1444,7 @@ msgstr ""
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:127
 #: src/modules/reports/components/reports/exactmetrics-ReportEngagementOverview.vue:134
 #: src/modules/reports/components/reports/exactmetrics-ReportEngagementPages.vue:59
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:361
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:608
 #: src/modules/reports/components/traffic/ReportTrafficSocial.vue:110
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview-Lite.vue:122
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview.vue:133
@@ -1441,7 +1453,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Bounce Rate"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:375
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:629
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview-Lite.vue:118
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview.vue:129
 msgctxt "google-analytics-dashboard-for-wp"
@@ -1583,6 +1595,25 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Cancel"
 msgstr ""
 
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:138
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:169
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:63
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:69
+#: src/modules/reports/components/ReportNavigationData.vue:116
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Cart Abandonment"
+msgstr ""
+
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:64
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Cart Abandonment by Day"
+msgstr ""
+
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:62
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Cart Abandonment Report"
+msgstr ""
+
 #: src/modules/woocommerce-insights/woocommerce-insights-Lite.vue:136
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Cart Funnel"
@@ -1628,7 +1659,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Change Media"
 msgstr ""
 
-#: src/modules/reports/components/ReportTable.vue:353
+#: src/modules/reports/components/ReportTable.vue:356
 #: src/modules/reports/components/ReportTableBox.vue:211
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Change%"
@@ -1672,7 +1703,14 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Checking..."
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:362
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:144
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:175
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:70
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Checkout Abandonment"
+msgstr ""
+
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:374
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Checkout our YouTube Channel"
 msgstr ""
@@ -1826,15 +1864,15 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Clicks"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:410
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:427
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:422
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:439
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Close"
 msgstr ""
 
 #: src/modules/reports/components/ecommerce/ReportEcommerceFunnel.vue:144
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:107
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:384
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:638
 #: src/modules/reports/components/traffic/CommonSessionChart.vue:99
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficCampaign.vue:129
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficLandindPages.vue:129
@@ -1924,7 +1962,7 @@ msgid "Compliant"
 msgstr ""
 
 #: src/modules/reports/components/reports/exactmetrics-YearInReview-Lite.vue:248
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:408
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:420
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Congrats!"
 msgstr ""
@@ -1939,6 +1977,11 @@ msgstr ""
 #: src/modules/reports/components/reports/exactmetrics-YearInReview-Lite.vue:249
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Congrats! This year your website had "
+msgstr ""
+
+#: src/modules/wizard-onboarding/components/steps/exactmetrics-OnboardingStepSuccess.vue:147
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Congratulations, your site is now using Google Analytics!"
 msgstr ""
 
 #: src/modules/settings/components/SettingsFirstTImeNotice.vue:45
@@ -1979,12 +2022,12 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Connect ExactMetrics to Your Website"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:370
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:382
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Connect Now"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:332
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:343
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Connect your website with Google Search Console"
 msgstr ""
@@ -2139,6 +2182,7 @@ msgid "Count"
 msgstr ""
 
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:108
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:641
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Countries"
 msgstr ""
@@ -2185,7 +2229,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Create a New Pretty Link"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:339
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:351
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Create a new Site Note that you have installed ExactMetrics"
 msgstr ""
@@ -2337,7 +2381,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Customize Design"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:318
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:329
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Customize ExactMetrics"
 msgstr ""
@@ -2375,6 +2419,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Data Being Collected"
 msgstr ""
 
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:154
 #: src/modules/site-notes/components/create-form.vue:69
 #: src/modules/site-notes/components/overview-report/create.vue:74
 #: src/modules/site-notes/components/overview-report/list.vue:125
@@ -2382,12 +2427,12 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Date"
 msgstr ""
 
-#: src/modules/reports/components/ReportListBox.vue:75
+#: src/modules/reports/components/ReportListBox.vue:77
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Date 1"
 msgstr ""
 
-#: src/modules/reports/components/ReportListBox.vue:76
+#: src/modules/reports/components/ReportListBox.vue:78
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Date 2"
 msgstr ""
@@ -2491,7 +2536,7 @@ msgid "Designed specifically for enterprise and marketing agencies, our Site Not
 msgstr ""
 
 #: src/modules/reports/components/reports-year-in-review/ReportYearInReviewDeviceUsage.vue:39
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:260
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:468
 #: src/modules/reports/components/reports/exactmetrics-YearInReview-Lite.vue:564
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportDevices.vue:63
 msgctxt "google-analytics-dashboard-for-wp"
@@ -2513,7 +2558,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Details about social traffic to your website."
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:364
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:618
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficTechnology.vue:61
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportDevices.vue:25
 msgctxt "google-analytics-dashboard-for-wp"
@@ -2545,7 +2590,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Did you know you might have direct traffic that's getting counted wrong by Google Analytics? Learn how to track it correctly in our direct traffic guide."
 msgstr ""
 
-#: src/modules/reports/components/ReportNavigationData.vue:127
+#: src/modules/reports/components/ReportNavigationData.vue:134
 #: src/modules/reports/components/reports/exactmetrics-ReportDimensions.vue:52
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Dimensions"
@@ -2585,7 +2630,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Dismiss All"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:372
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:384
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Dismiss Setup Checklist"
 msgstr ""
@@ -2835,6 +2880,11 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Edit"
 msgstr ""
 
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:644
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Edit Metrics"
+msgstr ""
+
 #: src/modules/site-notes/components/create-form.vue:78
 #: src/modules/site-notes/components/overview-report/create.vue:81
 msgctxt "google-analytics-dashboard-for-wp"
@@ -2937,12 +2987,12 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Enable Enhanced Link Attribution"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:366
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:378
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Enable Now"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:331
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:342
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Enable one click eCommerce Tracking for %1$s"
 msgstr ""
@@ -3022,6 +3072,11 @@ msgstr ""
 #: src/modules/settings/components/tabs/exactmetrics-SettingsTabsNavigation.vue:80
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Engagement"
+msgstr ""
+
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:614
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Engagement Rate"
 msgstr ""
 
 #: src/modules/growth-tools/exactmetrics-growth-tools.vue:141
@@ -3192,7 +3247,7 @@ msgid "Exception Alerts"
 msgstr ""
 
 #: src/modules/reports/components/exceptions-report/exactmetrics-ExceptionsReport-Lite.vue:42
-#: src/modules/reports/components/ReportNavigationData.vue:162
+#: src/modules/reports/components/ReportNavigationData.vue:169
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Exceptions"
 msgstr ""
@@ -3337,7 +3392,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "File imported"
 msgstr ""
 
-#: src/modules/reports/components/ReportTable.vue:187
+#: src/modules/reports/components/ReportTable.vue:190
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Filter"
 msgstr ""
@@ -3420,7 +3475,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Form Tracking"
 msgstr ""
 
-#: src/modules/reports/components/ReportNavigationData.vue:134
+#: src/modules/reports/components/ReportNavigationData.vue:141
 #: src/modules/reports/components/reports/exactmetrics-ReportForms.vue:119
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Forms"
@@ -3456,7 +3511,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "FTP Username"
 msgstr ""
 
-#: src/modules/reports/components/ReportNavigationData.vue:116
+#: src/modules/reports/components/ReportNavigationData.vue:123
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Funnel"
 msgstr ""
@@ -3561,7 +3616,7 @@ msgid "Get Scroll-Depth tracking to see how far users scroll on your pages befor
 msgstr ""
 
 #: src/modules/growth-tools/components/GrowthPluginButton.vue:34
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:371
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:383
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Get Started"
 msgstr ""
@@ -3661,12 +3716,12 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Google AMP"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:328
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:339
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Google Analytics 3 is sunsetting on July 1, 2023. %1$sLearn More%2$s"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:326
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:337
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Google Analytics 4 tracking is set up"
 msgstr ""
@@ -3702,7 +3757,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Grab your campaign link and paste it into the Target URL field."
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:351
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:363
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Grow your business with our growth tools"
 msgstr ""
@@ -4045,7 +4100,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Install & Activate UserFeedback"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:353
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:365
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Install AIOSEO for more organic traffic"
 msgstr ""
@@ -4060,7 +4115,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Install All-in-One-SEO"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:317
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:328
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Install ExactMetrics"
 msgstr ""
@@ -4080,13 +4135,13 @@ msgstr ""
 #: src/modules/growth-tools/exactmetrics-growth-tools.vue:75
 #: src/modules/growth-tools/exactmetrics-growth-tools.vue:87
 #: src/modules/reports/components/upsells/InstallAndActivateAiseo.vue:49
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:361
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:367
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:373
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:379
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Install Now"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:355
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:367
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Install OptinMonster to collect email subscribers"
 msgstr ""
@@ -4126,7 +4181,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Install UserFeedback by clicking the button below."
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:345
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:357
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Install UserFeedback for more insights"
 msgstr ""
@@ -4343,7 +4398,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Keep track of important website events with Site Notes. Site Notes can help you track and monitor changes to your website traffic, clicks, or conversion rates over a period of time."
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:364
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:376
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Know More"
 msgstr ""
@@ -4369,6 +4424,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Label can't contain any spaces"
 msgstr ""
 
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:643
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficLandindPages.vue:132
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficLandindPages.vue:227
 msgctxt "google-analytics-dashboard-for-wp"
@@ -4454,7 +4510,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Launch Setup Wizard"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:320
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:331
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Launch the setup wizard to connect to Google Analytics"
 msgstr ""
@@ -4465,7 +4521,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Launch the wizard!"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:319
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:330
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Launch Wizard"
 msgstr ""
@@ -4475,7 +4531,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Launch, grow, and manage an affiliate program, all right from your WordPress dashboard. Works automatically with ExactMetrics."
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:360
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:372
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Learn about Conversion Tracking"
 msgstr ""
@@ -4529,13 +4585,13 @@ msgstr ""
 #: src/modules/growth-tools/exactmetrics-growth-tools.vue:268
 #: src/modules/growth-tools/exactmetrics-growth-tools.vue:97
 #: src/modules/settings/components/input/tab-setup-checklist/exactmetrics-StepSixMilestones.vue:71
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:365
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:377
 #: src/modules/widget/components/WidgetFooter.vue:17
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Learn More"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:497
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:509
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Learn more about one-click eCommerce tracking"
 msgstr ""
@@ -4721,7 +4777,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Measurement Protocol API Secret"
 msgstr ""
 
-#: src/modules/reports/components/ReportNavigationData.vue:155
+#: src/modules/reports/components/ReportNavigationData.vue:162
 #: src/modules/reports/components/reports/exactmetrics-ReportMedia.vue:76
 #: src/modules/site-notes/components/list.vue:290
 msgctxt "google-analytics-dashboard-for-wp"
@@ -4783,7 +4839,7 @@ msgid "Miscellaneous"
 msgstr ""
 
 #: src/modules/reports/components/reports-year-in-review/ReportYearInReviewDeviceUsage.vue:38
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:262
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:470
 #: src/modules/reports/components/reports/exactmetrics-YearInReview-Lite.vue:574
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportDevices.vue:65
 msgctxt "google-analytics-dashboard-for-wp"
@@ -4944,7 +5000,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Network Active"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:226
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:434
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportNewVsReturning.vue:58
 #: src/modules/widget/components/reports/WidgetReportNewCustomers.vue:51
 msgctxt "google-analytics-dashboard-for-wp"
@@ -4972,6 +5028,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "New Sessions"
 msgstr ""
 
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:612
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview-Lite.vue:124
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview.vue:135
 msgctxt "google-analytics-dashboard-for-wp"
@@ -4988,7 +5045,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "New vs. Returning Customers"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:363
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:617
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportNewVsReturning.vue:24
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "New vs. Returning Visitors"
@@ -5033,6 +5090,11 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "No data currently for the %s report"
 msgstr ""
 
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:224
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "No data currently for the Cart Abandonment report"
+msgstr ""
+
 #: src/modules/reports/components/ecommerce/exactmetrics-ReportEcommerceCoupons.vue:150
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "No data currently for the eCommerce Coupons report"
@@ -5048,7 +5110,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "No data currently for the Pages report"
 msgstr ""
 
-#: src/modules/reports/components/ReportTable.vue:134
+#: src/modules/reports/components/ReportTable.vue:137
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "No data currently for the report"
 msgstr ""
@@ -5472,7 +5534,7 @@ msgid "Overview"
 msgstr ""
 
 #: src/modules/reports/components/exactmetrics-YearInReviewReportsPdfExport.vue:19
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:356
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:588
 #: src/modules/reports/components/upsells/UpsellOverlay.vue:36
 #: src/modules/widget/widget.vue:26
 msgctxt "google-analytics-dashboard-for-wp"
@@ -5518,6 +5580,12 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Page Views"
 msgstr ""
 
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:639
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Page Views / User"
+msgstr ""
+
+#: src/modules/reports/components/reports-overview/ReportToggle.vue:23
 #: src/modules/reports/components/reports/exactmetrics-ReportEngagementPages.vue:53
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Pages"
@@ -5551,7 +5619,7 @@ msgstr ""
 #: src/modules/reports/components/reports-overview/ReportSiteSummary.vue:248
 #: src/modules/reports/components/reports-overview/ReportSiteSummary.vue:266
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:103
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:359
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:606
 #: src/modules/reports/components/reports/exactmetrics-YearInReview-Lite.vue:267
 #: src/modules/reports/components/reports/exactmetrics-YearInReview-Lite.vue:279
 #: src/modules/reports/components/traffic/CommonSessionChart.vue:93
@@ -5857,6 +5925,12 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Proceed"
 msgstr ""
 
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:123
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:66
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Product"
+msgstr ""
+
 #: src/modules/popular-posts/components/input/PopularPostsProductsThemeCustomize.vue:187
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Product Count"
@@ -5929,6 +6003,7 @@ msgstr ""
 #: src/modules/reports/components/ecommerce/exactmetrics-ReportEcommerceCoupons.vue:57
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:128
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:244
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:613
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficCampaign.vue:135
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficCampaign.vue:247
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficLandindPages.vue:136
@@ -5948,6 +6023,9 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "PushEngage"
 msgstr ""
 
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:128
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:159
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:67
 #: src/modules/reports/components/ecommerce/exactmetrics-ReportEcommerce.vue:199
 #: src/modules/widget/components/reports/WidgetReportTopProducts.vue:31
 msgctxt "google-analytics-dashboard-for-wp"
@@ -6006,7 +6084,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Read This Guide"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:359
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:371
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Read XYZ"
 msgstr ""
@@ -6040,7 +6118,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Real-Time Report Paused"
 msgstr ""
 
-#: src/modules/reports/components/ReportNavigationData.vue:141
+#: src/modules/reports/components/ReportNavigationData.vue:148
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Realtime "
 msgstr ""
@@ -6102,6 +6180,11 @@ msgstr ""
 #: src/modules/settings/components/SettingsUndoRedo.vue:17
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Redo"
+msgstr ""
+
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:642
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Referrals"
 msgstr ""
 
 #: src/modules/addons/AddonsPage.vue:82
@@ -6220,7 +6303,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Retry"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:227
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:435
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportNewVsReturning.vue:59
 #: src/modules/widget/components/reports/WidgetReportNewCustomers.vue:52
 msgctxt "google-analytics-dashboard-for-wp"
@@ -6233,6 +6316,9 @@ msgid "Returning Visitors"
 msgstr ""
 
 #: src/modules/growth-tools/components/GrowthNavigation.vue:20
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:133
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:164
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:68
 #: src/modules/reports/components/ecommerce/exactmetrics-ReportEcommerce.vue:193
 #: src/modules/reports/components/ecommerce/exactmetrics-ReportEcommerce.vue:271
 #: src/modules/reports/components/ecommerce/exactmetrics-ReportEcommerceCoupons.vue:111
@@ -6250,6 +6336,21 @@ msgstr ""
 #: src/modules/widget/components/reports/WidgetReportTopConversions.vue:34
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Revenue"
+msgstr ""
+
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:609
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Revenue / Sales"
+msgstr ""
+
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:611
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Revenue / Session"
+msgstr ""
+
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:610
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Revenue / User"
 msgstr ""
 
 #: src/modules/growth-tools/exactmetrics-growth-tools.vue:217
@@ -6464,7 +6565,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "See Average Order Value to Find Offer Opportunities"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:340
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:352
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "See How"
 msgstr ""
@@ -6529,6 +6630,11 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "See which countries your visitors come from."
 msgstr ""
 
+#: src/modules/reports/components/ReportNavigationData.vue:120
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "See which products are abandoned the most."
+msgstr ""
+
 #: src/modules/reports/components/traffic/ReportTrafficSocial.vue:68
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "See Which Social Media Networks are Making You Money."
@@ -6564,6 +6670,11 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "See Your Top Exit Pages to Reduce Abandonment"
 msgstr ""
 
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:346
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "See your Top Landing Pages"
+msgstr ""
+
 #: src/modules/reports/components/reports/exactmetrics-ReportEcommerceProductSales-Lite.vue:44
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "See Your Top Landing Pages to Improve Engagement"
@@ -6589,7 +6700,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Select %1$sChoose file%2$s to upload a settings export file from another ExactMetrics website."
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:321
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:332
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Select a property to send data to Google Analytics"
 msgstr ""
@@ -6635,6 +6746,11 @@ msgstr ""
 #: src/modules/tools/components/ToolsTabVerifiedBadge.vue:56
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Select the position of the badge in your website’s footer."
+msgstr ""
+
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:645
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Select up to 7 metrics"
 msgstr ""
 
 #: src/modules/growth-tools/exactmetrics-growth-tools.vue:127
@@ -6711,6 +6827,11 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Server Response Time is the time it takes to connect to the website server to the time it takes the server to process your request and start returning data to load the website."
 msgstr ""
 
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:640
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Session Duration"
+msgstr ""
+
 #: src/modules/frontend/components/exactmetrics-FrontendStatsGeneral.vue:54
 #: src/modules/reports/components/ecommerce/exactmetrics-ReportEcommerce.vue:216
 #: src/modules/reports/components/ecommerce/exactmetrics-ReportEcommerceCoupons.vue:54
@@ -6720,7 +6841,7 @@ msgstr ""
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:125
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:226
 #: src/modules/reports/components/reports/exactmetrics-ReportDimensions.vue:92
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:357
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:589
 #: src/modules/reports/components/traffic/CommonSessionChart.vue:90
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficCampaign.vue:109
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficCampaign.vue:132
@@ -6740,6 +6861,16 @@ msgstr ""
 #: src/modules/widget/components/reports/WidgetReportSessions.vue:30
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Sessions"
+msgstr ""
+
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:615
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Sessions / User"
+msgstr ""
+
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:605
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Sessions %s Percentage"
 msgstr ""
 
 #: src/modules/reports/components/reports-year-in-review/ReportYearInReviewBrowserUsage.vue:111
@@ -6770,12 +6901,12 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Set the parameters in the fragment portion of the URL %1$s(not recommended)%2$s"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:368
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:380
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Set Up"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:347
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:359
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Set up Custom Dimensions"
 msgstr ""
@@ -6806,7 +6937,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Settings successfully updated!"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:314
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:325
 #: src/modules/settings/components/tabs/exactmetrics-SettingsTabsNavigation.vue:85
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Setup Checklist"
@@ -6835,10 +6966,10 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Shortcode"
 msgstr ""
 
-#: src/modules/reports/components/exactmetrics-ReportsPagination.vue:33
+#: src/modules/reports/components/exactmetrics-ReportsPagination.vue:32
 #: src/modules/reports/components/reports-year-in-review/ReportYearInReviewBrowserUsage.vue:58
 #: src/modules/reports/components/reports-year-in-review/ReportYearInReviewListBox.vue:45
-#: src/modules/reports/components/ReportTable.vue:186
+#: src/modules/reports/components/ReportTable.vue:189
 #: src/modules/reports/components/ReportTableBox.vue:103
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Show"
@@ -6901,7 +7032,7 @@ msgstr ""
 
 #: src/modules/reports/components/ecommerce/ReportEcommerceFunnel.vue:143
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:106
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:355
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:587
 #: src/modules/reports/components/traffic/CommonSessionChart.vue:98
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficCampaign.vue:128
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficLandindPages.vue:128
@@ -6922,7 +7053,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Site Notes Important Events"
 msgstr ""
 
-#: src/modules/reports/components/ReportNavigationData.vue:148
+#: src/modules/reports/components/ReportNavigationData.vue:155
 #: src/modules/reports/components/reports/exactmetrics-SiteSpeed.vue:93
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Site Speed"
@@ -7029,7 +7160,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Social Media Report"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:425
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:437
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Something went wrong"
 msgstr ""
@@ -7147,32 +7278,32 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Step %1$s of %2$s"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:315
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:326
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Step 1 - Set Up ExactMetrics"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:324
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:335
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Step 2 - Customize ExactMetrics"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:337
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:349
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Step 3 - Add a Site Note"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:343
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:355
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Step 4 - Improve Your Analytics"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:349
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:361
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Step 5 - Get More Traffic and Engagement"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:357
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:369
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Step 6 - Learn More About Google Analytics"
 msgstr ""
@@ -7244,7 +7375,7 @@ msgid "Syed Balkhi"
 msgstr ""
 
 #: src/modules/reports/components/reports-year-in-review/ReportYearInReviewDeviceUsage.vue:40
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:261
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:469
 #: src/modules/reports/components/reports/exactmetrics-YearInReview-Lite.vue:569
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportDevices.vue:64
 msgctxt "google-analytics-dashboard-for-wp"
@@ -7315,12 +7446,12 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Thanks! We appreciate your feedback."
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:409
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:421
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "The addon activated successfully."
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:426
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:438
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "The addon could not be installed."
 msgstr ""
@@ -7419,7 +7550,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "The New & Improved ExactMetrics includes:"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:376
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:630
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview-Lite.vue:119
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview.vue:130
 msgctxt "google-analytics-dashboard-for-wp"
@@ -7452,6 +7583,18 @@ msgstr ""
 #: src/modules/reports/components/ecommerce/exactmetrics-ReportEcommerce.vue:228
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "The percentage of first time purchasers."
+msgstr ""
+
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:141
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:172
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "The percentage of shoppers who add items to their online shopping cart but do not complete the purchase or start the checkout process."
+msgstr ""
+
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:147
+#: src/modules/reports/components/ecommerce/exactmetrics-ReportCartAbandonment.vue:178
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "The percentage of shoppers who start the checkout process but fails to complete the transaction. It's a more focused metric that signals issues with the final stages of a purchase."
 msgstr ""
 
 #: src/modules/reports/components/ecommerce/exactmetrics-ReportEcommerce.vue:220
@@ -7631,7 +7774,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "This graph shows the number of pageviews for each of the last 30 minutes."
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:378
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:632
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportDevices.vue:26
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "This graph shows the percentage of sessions on your site from different types of devices: traditional desktops/laptops, tablets, and mobile phones."
@@ -7647,7 +7790,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "This graph shows what percent of your customers are first time purchasers vs return purchasers."
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:377
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:631
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportNewVsReturning.vue:25
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "This graph shows what percent of your user sessions come from new versus repeat visitors."
@@ -7725,7 +7868,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "This list shows the top cities visitors are browsing from for the last 30 minutes. "
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:379
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:633
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "This list shows the top countries based on the number of sessions, showing where your website's visitors are from."
 msgstr ""
@@ -7775,12 +7918,12 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "This list shows the top selling products on your website."
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:380
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:634
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "This list shows the top websites that send users to your website, known as referral traffic."
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:381
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:635
 #: src/modules/widget/components/reports/WidgetReportTopPosts.vue:20
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "This list shows your website's most viewed posts and pages based on pageviews."
@@ -7885,12 +8028,12 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "To unlock the selected features, please upgrade to Pro and enter your license key below."
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:365
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:619
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Top 10 Countries"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:367
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:621
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Top 10 Referrals"
 msgstr ""
@@ -7963,7 +8106,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Top Pages"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:369
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:623
 #: src/modules/widget/components/reports/WidgetReportTopPosts.vue:19
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Top Posts/Pages"
@@ -8042,7 +8185,7 @@ msgstr ""
 
 #: src/modules/frontend/components/exactmetrics-FrontendStatsGeneral.vue:57
 #: src/modules/reports/components/ecommerce/exactmetrics-ReportEcommerce.vue:269
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:362
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:616
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview-Lite.vue:123
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview.vue:134
 msgctxt "google-analytics-dashboard-for-wp"
@@ -8054,7 +8197,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Total Visitors"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:333
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:344
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Track all of your form conversion rates"
 msgstr ""
@@ -8161,7 +8304,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Tue"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:354
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:366
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Turn on Popular Posts to increase your site's engagement"
 msgstr ""
@@ -8193,6 +8336,7 @@ msgid "Undo"
 msgstr ""
 
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:105
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:591
 #: src/modules/reports/components/reports/exactmetrics-ReportRealTime.vue:218
 #: src/modules/reports/components/traffic/CommonSessionChart.vue:95
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficCampaign.vue:114
@@ -8205,8 +8349,13 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Unique %s Pageviews"
 msgstr ""
 
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:603
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Unique %s Purchases"
+msgstr ""
+
 #: src/modules/reports/components/reports/exactmetrics-ReportCountries.vue:102
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:358
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:590
 #: src/modules/reports/components/traffic/CommonSessionChart.vue:92
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficCampaign.vue:111
 #: src/modules/reports/components/traffic/exactmetrics-ReportTrafficLandindPages.vue:111
@@ -8216,6 +8365,12 @@ msgstr ""
 #: src/modules/widget/components/reports/exactmetrics-WidgetReportOverview.vue:122
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Unique %s Sessions"
+msgstr ""
+
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:593
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:601
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "Unique %s Users"
 msgstr ""
 
 #: src/modules/reports/components/reports/exactmetrics-YearInReview-Lite.vue:263
@@ -8270,11 +8425,12 @@ msgstr ""
 
 #: src/modules/popular-posts/components/PopularPostsUpgradeOverlay.vue:30
 #: src/modules/reports/components/reports-overview/ReportSiteSummary.vue:239
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:649
 #: src/modules/settings/components/input/tab-advanced/exactmetrics-SettingsInputPdfReports-Lite.vue:16
 #: src/modules/settings/components/input/tab-advanced/SettingsInputPdfReports-Lite.vue:16
 #: src/modules/settings/components/input/tab-engagement/SettingsInputEUCompliance-Lite.vue:22
 #: src/modules/settings/components/input/tab-engagement/SettingsInputPrivacyGuard-Lite.vue:22
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:369
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:381
 #: src/modules/settings/components/SettingsAddonUpgrade.vue:39
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Upgrade"
@@ -8299,7 +8455,7 @@ msgstr ""
 #: src/modules/growth-tools/exactmetrics-growth-tools.vue:31
 #: src/modules/growth-tools/exactmetrics-growth-tools.vue:43
 #: src/modules/reports/components/reports-overview/ReportOverviewUpsellMobile-Lite.vue:24
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:329
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:340
 #: src/modules/wizard-onboarding/components/exactmetrics-OnboardingBottomUpsell-Lite.vue:13
 #: src/modules/wizard-onboarding/exactmetrics-welcome-Lite.vue:157
 msgctxt "google-analytics-dashboard-for-wp"
@@ -8591,7 +8747,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Verify Credentials"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:322
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:333
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Verify Google Analytics is receiving data (this may take up to 24 hours)"
 msgstr ""
@@ -8694,7 +8850,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "View All Real-Time Traffic Sources"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:368
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:622
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "View All Referral Sources"
 msgstr ""
@@ -8710,7 +8866,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "View All Reports %s"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:366
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:620
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "View Countries Report"
 msgstr ""
@@ -8730,7 +8886,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "View Full Interests Report"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:370
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:624
 #: src/modules/widget/components/reports/WidgetReportTopPosts.vue:18
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "View Full Posts/Pages Report"
@@ -8769,7 +8925,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "View notifications"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:335
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:347
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "View Report"
 msgstr ""
@@ -8801,7 +8957,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "View Time to Purchase Report"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:352
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:364
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "View Tools"
 msgstr ""
@@ -8833,7 +8989,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Visit WPBeginner"
 msgstr ""
 
-#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:334
+#: src/modules/settings/components/input/tab-setup-checklist/SettingsTabSetupChecklist.vue:345
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Visit your Overview Report"
 msgstr ""
@@ -8850,7 +9006,7 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "Visits"
 msgstr ""
 
-#: src/modules/reports/components/ReportNavigationData.vue:120
+#: src/modules/reports/components/ReportNavigationData.vue:127
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "Visually measure how customers convert in your store."
 msgstr ""
@@ -8920,12 +9076,12 @@ msgctxt "google-analytics-dashboard-for-wp"
 msgid "We’re grateful for your continued support. If there’s anything we can do to help you grow your business, please don’t hesitate to contact our team."
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:382
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:636
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "We're Waiting for Your Stats!"
 msgstr ""
 
-#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:383
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:637
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "We're waiting to process your data which might take up to 24 hours."
 msgstr ""
@@ -9240,6 +9396,11 @@ msgstr ""
 #: src/modules/widget/components/settings/WidgetSettingsHide.vue:43
 msgctxt "google-analytics-dashboard-for-wp"
 msgid "You can re-enable the ExactMetrics widget at any time using the \"Screen Options\" menu on the top right of this page"
+msgstr ""
+
+#: src/modules/reports/components/reports/exactmetrics-ReportOverview.vue:646
+msgctxt "google-analytics-dashboard-for-wp"
+msgid "You can view this only in the PRO version."
 msgstr ""
 
 #: src/modules/reports/components/reports/exactmetrics-YearInReview-Lite.vue:250
@@ -9705,7 +9866,7 @@ msgstr ""
 #: includes/admin/notifications/notification-upgrade-for-email-summaries.php:36
 #: includes/admin/notifications/notification-upgrade-for-events-reporting.php:31
 #: includes/admin/notifications/notification-upgrade-for-post-templates.php:31
-#: includes/admin/reports/abstract-report.php:519
+#: includes/admin/reports/abstract-report.php:536
 msgid "Get ExactMetrics Pro"
 msgstr ""
 
@@ -10257,7 +10418,7 @@ msgstr ""
 
 #: includes/admin/notifications/notification-upgrade-for-form-conversion.php:31
 #: includes/admin/notifications/notification-upgrade-for-search-console.php:32
-#: includes/admin/reports/abstract-report.php:516
+#: includes/admin/reports/abstract-report.php:533
 #: lite/includes/admin/woocommerce-marketing.php:79
 msgid "Upgrade Now"
 msgstr ""
@@ -10365,64 +10526,64 @@ msgstr ""
 msgid "No data found"
 msgstr ""
 
-#: includes/admin/reports/abstract-report.php:191
+#: includes/admin/reports/abstract-report.php:194
 msgid "Whoops! No data found for this date range"
 msgstr ""
 
 #. translators: Placeholders add a link to the Setup Wizard page.
-#: includes/admin/reports/abstract-report.php:347
+#: includes/admin/reports/abstract-report.php:364
 msgid "You must be properly authenticated with ExactMetrics to use our reports. Please use our %1$ssetup wizard%2$s to get started."
 msgstr ""
 
 #. Translators: Placeholders add the license level and the report title.
-#: includes/admin/reports/abstract-report.php:447
+#: includes/admin/reports/abstract-report.php:464
 msgid "You currently have a %1$s level license, but this report requires at least a %2$s level license to view the %3$s. Please upgrade to view this report."
 msgstr ""
 
-#: includes/admin/reports/abstract-report.php:461
+#: includes/admin/reports/abstract-report.php:478
 msgid "Ready to Get Analytics Super-Powers?"
 msgstr ""
 
-#: includes/admin/reports/abstract-report.php:463
+#: includes/admin/reports/abstract-report.php:480
 msgid "(And Crush Your Competition?)"
 msgstr ""
 
 #. Translators: License level and smiley.
-#: includes/admin/reports/abstract-report.php:469
+#: includes/admin/reports/abstract-report.php:486
 msgid "Hey there! It looks like you've got the %1$s license installed on your site. That's awesome! %s"
 msgstr ""
 
 #. Translators: Placeholders add the report title and license level.
-#: includes/admin/reports/abstract-report.php:476
+#: includes/admin/reports/abstract-report.php:493
 msgid "Do you want to access to %1$s reporting right now%2$s in your WordPress Dashboard? That comes with the %3$s level%4$s of our paid packages. You'll need to upgrade your license to get instant access."
 msgstr ""
 
 #. Translators: Placeholdes add links to the account area and a guide.
-#: includes/admin/reports/abstract-report.php:483
+#: includes/admin/reports/abstract-report.php:500
 msgid "It's easy! To upgrade, navigate to %1$sMy Account%2$s on ExactMetrics.com, go to the licenses tab, and click upgrade. We also have a %3$sstep by step guide%4$s with pictures of this process."
 msgstr ""
 
-#: includes/admin/reports/abstract-report.php:487
-#: includes/admin/reports/abstract-report.php:510
+#: includes/admin/reports/abstract-report.php:504
+#: includes/admin/reports/abstract-report.php:527
 msgid "If you have any questions, don't hesitate to reach out. We're here to help."
 msgstr ""
 
 #. Translators: Placeholder adds a smiley face.
-#: includes/admin/reports/abstract-report.php:492
+#: includes/admin/reports/abstract-report.php:509
 msgid "Hey there! %s It looks like you've got the free version of ExactMetrics installed on your site. That's awesome!"
 msgstr ""
 
 #. Translators: Placeholders make the text bold, add the license level and add a link to upgrade.
-#: includes/admin/reports/abstract-report.php:499
+#: includes/admin/reports/abstract-report.php:516
 msgid "Do you you want to access to %1$s reporting right now%2$s in your WordPress Dashboard? That comes with %3$s level%4$s of our paid packages. To get instant access, you'll want to buy a ExactMetrics license, which also gives you access to powerful addons, expanded reporting (including the ability to use custom date ranges), comprehensive tracking features (like UserID tracking) and access to our world-class support team."
 msgstr ""
 
 #. Translators: Placeholders make the text bold, add the license level and add a link to upgrade.
-#: includes/admin/reports/abstract-report.php:506
+#: includes/admin/reports/abstract-report.php:523
 msgid "Upgrading is easy! To upgrade, navigate to %1$ssour pricing page%2$s, purchase the required license, and then follow the %3$sinstructions in the email receipt%4$s to upgrade. It only takes a few minutes to unlock the most powerful, yet easy to use analytics tracking system for WordPress."
 msgstr ""
 
-#: includes/admin/reports/abstract-report.php:553
+#: includes/admin/reports/abstract-report.php:570
 msgid "Please ask your webmaster to enable this addon."
 msgstr ""
 
@@ -10450,187 +10611,187 @@ msgstr ""
 msgid "I already did"
 msgstr ""
 
-#: includes/admin/routes.php:335
+#: includes/admin/routes.php:338
 msgid "The best WordPress eCommerce plugin for selling digital downloads. Start selling eBooks, software, music, digital art, and more within minutes. Accept payments, manage subscriptions, advanced access control, and more."
 msgstr ""
 
-#: includes/admin/routes.php:369
-#: includes/admin/routes.php:714
+#: includes/admin/routes.php:372
+#: includes/admin/routes.php:717
 msgid "Top-rated WordPress donation and fundraising plugin. Over 10,000+ non-profit organizations and website owners use Charitable to create fundraising campaigns and raise more money online."
 msgstr ""
 
-#: includes/admin/routes.php:381
-#: includes/admin/routes.php:725
+#: includes/admin/routes.php:384
+#: includes/admin/routes.php:728
 msgid "Future proof your WordPress customizations with the most popular code snippet management plugin for WordPress. Trusted by over 1,500,000+ websites for easily adding code to WordPress right from the admin area."
 msgstr ""
 
-#: includes/admin/routes.php:393
-#: includes/admin/routes.php:736
+#: includes/admin/routes.php:396
+#: includes/admin/routes.php:739
 msgid "Leading WordPress backup & site migration plugin. Over 1,500,000+ smart website owners use Duplicator to make reliable and secure WordPress backups to protect their websites. It also makes website migration really easy."
 msgstr ""
 
-#: includes/admin/routes.php:442
+#: includes/admin/routes.php:445
 msgid "The #1 affiliate management plugin for WordPress. Easily create an affiliate program for your eCommerce store or membership site within minutes and start growing your sales with the power of referral marketing."
 msgstr ""
 
-#: includes/admin/routes.php:455
+#: includes/admin/routes.php:458
 msgid "The #1 Stripe payments plugin for WordPress. Start accepting one-time and recurring payments on your WordPress site without setting up a shopping cart. No code required."
 msgstr ""
 
-#: includes/admin/routes.php:467
-#: includes/admin/routes.php:703
+#: includes/admin/routes.php:470
+#: includes/admin/routes.php:706
 msgid "A simple & powerful event calendar plugin for WordPress that comes with all the event management features including payments, scheduling, timezones, ticketing, recurring events, and more."
 msgstr ""
 
-#: includes/admin/routes.php:479
+#: includes/admin/routes.php:482
 msgid "The best drag & drop WordPress form builder. Easily create beautiful contact forms, surveys, payment forms, and more with our 1000+ form templates. Trusted by over 6 million websites as the best forms plugin."
 msgstr ""
 
-#: includes/admin/routes.php:491
+#: includes/admin/routes.php:494
 msgid "Ask visitors questions about how they use your website or what features can make you more money."
 msgstr ""
 
-#: includes/admin/routes.php:503
+#: includes/admin/routes.php:506
 msgid "The original WordPress SEO plugin and toolkit that improves your website’s search rankings. Comes with all the SEO features like Local SEO, WooCommerce SEO, sitemaps, SEO optimizer, schema, and more."
 msgstr ""
 
-#: includes/admin/routes.php:515
+#: includes/admin/routes.php:518
 msgid "Stripe Payment Gateway for WooCommerce is an integrated solution that lets you accept payments on your online store for web and mobile."
 msgstr ""
 
-#: includes/admin/routes.php:530
+#: includes/admin/routes.php:533
 msgid "Instantly get more subscribers, leads, and sales with the #1 conversion optimization toolkit. Create high converting popups, announcement bars, spin a wheel, and more with smart targeting and personalization."
 msgstr ""
 
-#: includes/admin/routes.php:541
+#: includes/admin/routes.php:544
 msgid "Improve your WordPress email deliverability and make sure that your website emails reach user’s inbox with the #1 SMTP plugin for WordPress. Over 3 million websites use it to fix WordPress email issues."
 msgstr ""
 
-#: includes/admin/routes.php:551
+#: includes/admin/routes.php:554
 msgid "The fastest drag & drop landing page builder for WordPress. Create custom landing pages without writing code, connect them with your CRM, collect subscribers, and grow your audience. Trusted by 1 million sites."
 msgstr ""
 
-#: includes/admin/routes.php:562
+#: includes/admin/routes.php:565
 msgid "Turn your website visitors into brand ambassadors! Easily grow your email list, website traffic, and social media followers with the most powerful giveaways & contests plugin for WordPress."
 msgstr ""
 
-#: includes/admin/routes.php:573
+#: includes/admin/routes.php:576
 msgid "Boost your sales and conversions by up to 15% with real-time social proof notifications. TrustPulse helps you show live user activity and purchases to help convince other users to purchase."
 msgstr ""
 
-#: includes/admin/routes.php:586
-#: includes/admin/routes.php:692
+#: includes/admin/routes.php:589
+#: includes/admin/routes.php:695
 msgid "The most advanced WordPress search plugin. Customize your WordPress search algorithm, reorder search results, track search metrics, and everything you need to leverage search to grow your business."
 msgstr ""
 
-#: includes/admin/routes.php:598
+#: includes/admin/routes.php:601
 msgid "Easily display Instagram content on your WordPress site without writing any code. Comes with multiple templates, ability to show content from multiple accounts, hashtags, and more. Trusted by 1 million websites."
 msgstr ""
 
-#: includes/admin/routes.php:612
+#: includes/admin/routes.php:615
 msgid "Easily display Facebook content on your WordPress site without writing any code. Comes with multiple templates, ability to embed albums, group content, reviews, live videos, comments, and reactions."
 msgstr ""
 
-#: includes/admin/routes.php:626
+#: includes/admin/routes.php:629
 msgid "Easily display YouTube videos on your WordPress site without writing any code. Comes with multiple layouts, ability to embed live streams, video filtering, ability to combine multiple channel videos, and more."
 msgstr ""
 
-#: includes/admin/routes.php:641
+#: includes/admin/routes.php:644
 msgid "Easily display Twitter content in WordPress without writing any code. Comes with multiple layouts, ability to combine multiple Twitter feeds, Twitter card support, tweet moderation, and more."
 msgstr ""
 
-#: includes/admin/routes.php:656
+#: includes/admin/routes.php:659
 msgid "Connect with your visitors after they leave your website with the leading web push notification software. Over 10,000+ businesses worldwide use PushEngage to send 15 billion notifications each month."
 msgstr ""
 
-#: includes/admin/routes.php:667
+#: includes/admin/routes.php:670
 msgid "Automate everything with the #1 no-code Automation tool for WordPress."
 msgstr ""
 
-#: includes/admin/routes.php:681
+#: includes/admin/routes.php:684
 msgid "Pretty Links helps you shrink, beautify, track, manage and share any URL on or off of your WordPress website. Create links that look how you want using your own domain name!"
 msgstr ""
 
-#: includes/admin/routes.php:747
+#: includes/admin/routes.php:750
 msgid "Start accepting one-time and recurring payments on your WordPress site without setting up a shopping cart. No code required."
 msgstr ""
 
-#: includes/admin/routes.php:759
+#: includes/admin/routes.php:762
 msgid "Advanced Coupons for WooCommerce (Free Version) gives WooCommerce store owners extra coupon features so they can market their stores better."
 msgstr ""
 
-#: includes/admin/routes.php:772
+#: includes/admin/routes.php:775
 msgid "See what your analytics software isn’t telling you with powerful UserFeedback surveys."
 msgstr ""
 
-#: includes/admin/routes.php:889
+#: includes/admin/routes.php:892
 msgid "Oops! Please enter a valid Google Analytics 4 Measurement ID. %1$sLearn how to find your Measurement ID%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:965
+#: includes/admin/routes.php:968
 msgid "Please upload a valid .json file"
 msgstr ""
 
-#: includes/admin/routes.php:973
+#: includes/admin/routes.php:976
 msgid "Please select a valid file to upload."
 msgstr ""
 
-#: includes/admin/routes.php:1023
+#: includes/admin/routes.php:1026
 msgid "Oops! You don not have permissions to view ExactMetrics reporting. Please check with your site administrator that your role is included in the ExactMetrics permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:1042
+#: includes/admin/routes.php:1045
 msgid "Oops! You cannot view ExactMetrics reports because you are not licensed. Please try again in a few minutes. If the issue continues, please %1$scontact our support%2$s team."
 msgstr ""
 
-#: includes/admin/routes.php:1048
-#: includes/admin/routes.php:1457
+#: includes/admin/routes.php:1051
+#: includes/admin/routes.php:1460
 msgid "Add your license"
 msgstr ""
 
-#: includes/admin/routes.php:1057
+#: includes/admin/routes.php:1060
 msgid "Oops! We had a problem due to a license key error. Please try again in a few minutes. If the problem persists, please %1$scontact our support%2$s team."
 msgstr ""
 
-#: includes/admin/routes.php:1077
+#: includes/admin/routes.php:1080
 msgid "You need to authenticate into ExactMetrics before viewing reports. Please run our %1$ssetup wizard%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:1089
+#: includes/admin/routes.php:1092
 msgid "Oops! We ran into a problem displaying this report. Please %1$scontact our support%2$s team if this issue persists."
 msgstr ""
 
-#: includes/admin/routes.php:1154
-#: includes/admin/routes.php:1498
-#: includes/admin/routes.php:1552
+#: includes/admin/routes.php:1157
+#: includes/admin/routes.php:1501
+#: includes/admin/routes.php:1555
 msgid "Oops! We encountered an error while generating your reports. Please wait a few minutes and try again. If the issue persists, please %1$scontact our support%2$s team."
 msgstr ""
 
-#: includes/admin/routes.php:1169
+#: includes/admin/routes.php:1172
 msgid "Oops! You are not allowed to install plugins. Please contact your website administrator for further assistance."
 msgstr ""
 
-#: includes/admin/routes.php:1177
+#: includes/admin/routes.php:1180
 msgid "Missing plugin name."
 msgstr ""
 
-#: includes/admin/routes.php:1338
+#: includes/admin/routes.php:1341
 msgid "Homepage"
 msgstr ""
 
-#: includes/admin/routes.php:1428
+#: includes/admin/routes.php:1431
 msgid "Oops! You don not have permissions to view or access Popular Posts. Please check with your site administrator that your role is included in the ExactMetrics permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:1451
+#: includes/admin/routes.php:1454
 msgid "Oops! We could not find a valid license key for ExactMetrics. Please %1$senter a valid license key%2$s to view this report."
 msgstr ""
 
-#: includes/admin/routes.php:1466
+#: includes/admin/routes.php:1469
 msgid "Oops! We could not find a valid license key. Please enter a valid license key to view this report. You can find your license by logging into your %1$sExactMetrics account%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:1486
+#: includes/admin/routes.php:1489
 msgid "You need to authenticate into ExactMetrics before viewing reports. Please complete the setup by going through our %1$ssetup wizard%2$s."
 msgstr ""
 

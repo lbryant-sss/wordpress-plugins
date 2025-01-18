@@ -4,7 +4,7 @@ Tags: online store, ecommerce, shop, shopping cart, sell online
 Requires at least: 6.6
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 9.5.1
+Stable tag: 9.5.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -173,6 +173,7 @@ WooCommerce comes with some sample data you can use to see how products look; im
 
 **WooCommerce**
 
+* Fix - Fix EmailPreviewTest::test_dummy_product_filter to validate dummy product properties directly [#54104](https://github.com/woocommerce/woocommerce/pull/54104)
 * Fix - Add aria modal attribute to photoswipe [#53245](https://github.com/woocommerce/woocommerce/pull/53245)
 * Fix - Add check for comingSoonNewsletter object before adding in newsletter panel [#53781](https://github.com/woocommerce/woocommerce/pull/53781)
 * Fix - Add checks to various template functions, guard against fatal errors when the global $product object is unavailable. [#53167](https://github.com/woocommerce/woocommerce/pull/53167)
@@ -415,7 +416,6 @@ WooCommerce comes with some sample data you can use to see how products look; im
 * Enhancement - Hide Knowledge Base when the marketplace suggestions option is disabled. [#52715](https://github.com/woocommerce/woocommerce/pull/52715)
 * Enhancement - Improve embedded CES layout rendering with element checks and code refactor [#52729](https://github.com/woocommerce/woocommerce/pull/52729)
 * Enhancement - Introduce dedicated payment extension suggestions incentives providers and expose them through the Payments settings API. [#53317](https://github.com/woocommerce/woocommerce/pull/53317)
-* Enhancement - Make the scripts that initialize the meta boxes on the Edit Order screen accessible to third parties [#51185](https://github.com/woocommerce/woocommerce/pull/51185)
 * Enhancement - Pass product instance into `woocommerce_product_read` action as second argument [#51851](https://github.com/woocommerce/woocommerce/pull/51851)
 * Enhancement - Prevent the variation list from being displayed as an HTML list if there is only one attribute on the Mini Cart Modal [#52924](https://github.com/woocommerce/woocommerce/pull/52924)
 * Enhancement - Redirect to the connection approval screen when the connection is initiated from WooCommerce.com. [#53445](https://github.com/woocommerce/woocommerce/pull/53445)
@@ -427,6 +427,12 @@ WooCommerce comes with some sample data you can use to see how products look; im
 * Dev - Change the Woo logo in the marketing banner [#54096](https://github.com/woocommerce/woocommerce/pull/54096)
 * Dev - Update WooCommerce logo in blocks [#54147](https://github.com/woocommerce/woocommerce/pull/54147)
 * Tweak - Fix deprecation warnings in PHP 8.3 in email preview classes [#53870](https://github.com/woocommerce/woocommerce/pull/53870)
+* Fix - CYS: Fix redirection in "Go to the store" link [#54260](https://github.com/woocommerce/woocommerce/pull/54260)
+* Fix - Fix: Revert "Clear" Button from <button> to <a> Tag for Improved Theme Compatibility while maintaining accessibility improvements [#54320](https://github.com/woocommerce/woocommerce/pull/54320)
+* Fix - Fix product-image border for images without "alt" #54247 [#54247](https://github.com/woocommerce/woocommerce/pull/54247)
+* Fix - Summary: Extend allowed attributes with class in Summary component [#54410](https://github.com/woocommerce/woocommerce/pull/54410)
+* Update - Product Summary: sanitize HTML in Product Summary [#54324](https://github.com/woocommerce/woocommerce/pull/54324)
+* Dev - Change logo in old WooCommerce.com connect page and API auth page. [#54378](https://github.com/woocommerce/woocommerce/pull/54378)
 
 
 [See changelog for all versions](https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/changelog.txt).

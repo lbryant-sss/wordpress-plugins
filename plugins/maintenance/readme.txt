@@ -2,8 +2,8 @@
 Contributors: WebFactory
 Tags: maintenance, maintenance mode, maintenance page, coming soon, coming soon page
 Requires at least: 4.0
-Tested up to: 6.6
-Stable tag: 4.15
+Tested up to: 6.7
+Stable tag: 4.16
 Requires PHP: 5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -95,6 +95,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 == Changelog ==
+= v4.16 =
+- 2025/01/10
+- updated Google Analytics code
+- added skip-lazy class to background image to fix Autoptimize compatibility
+
 = v4.15 =
 - 2024/10/22
 - fixed bug with some options not being saved

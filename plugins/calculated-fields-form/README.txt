@@ -4,7 +4,7 @@ Donate link: http://cff.dwbooster.com
 Tags: form,quote form,contact form,form builder,calculator form
 Requires at least: 3.0.5
 Tested up to: 6.7
-Stable tag: 5.3.12
+Stable tag: 5.3.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -455,6 +455,24 @@ A: There are multiple alternatives, by using the [PDF generator add-on](https://
 
 == Changelog ==
 
+= 5.3.15 =
+
+* Improve the SEO score when forms are accessed directly or embedded within an iframe.
+
+= 5.3.14 =
+
+* Introduces a new attribute in the form settings that enables the form to be reset after submission via AJAX.
+* Improves the visual presentation of radio buttons and checkboxes on smaller screens, such as mobile devices.
+* Resolves an issue with the font family used in captcha images for the Professional, Developer, and Platinum versions.
+* Updates the WooCommerce add-on for the Developer and Platinum versions.
+* Enhances the DISTANCE operations module for the Developer and Platinum versions.
+* Revamps the SagePay add-on for the Platinum version.
+
+= 5.3.13 =
+
+* Resolves a compatibility issue with WordPress versions prior to 5.5.
+* Addresses an issue with the confirmation dialog that appears when saving changes to the form.
+
 = 5.3.12 =
 
 * Prevents developers from closing the form builder without saving any modifications made to the form.
@@ -476,49 +494,3 @@ A: There are multiple alternatives, by using the [PDF generator add-on](https://
 * Updated the HTML Content control to ensure consistency between its appearance in the form builder and the public-facing form.
 * Implemented minor enhancements to the DropDown, Radio Buttons, Checkbox, and container controls for improved functionality and user experience.
 * Modified the Autocomplete Places add-on to trigger a place_changed event when a user selects a location from the list, passing the place properties as the second parameter (specific to the Platinum plugin version).
-
-= 5.3.7 =
-
-* Enhances the user experience by placing the "Add New Form" button directly above the form builder for easier access.
-* Updates the phone control to prevent duplicate prefixes from being entered.
-* Improves the process for evaluating default equations to prevent multiple evaluations.
-* Activates the auto-update feature in the plugin commercial distributions.
-
-= 5.3.6 =
-
-* Updates the form validation process to provide users with immediate feedback on incorrect values or required fields.
-* Makes minor adjustments to the processing of calculated field equations.
-* Enhances the HTML Content control to offer more detailed information to form developers regarding its content.
-
-= 5.3.5 =
-= 5.3.4 =
-= 5.3.3 =
-
-* Fixes a conflict with Elementor cache.
-
-= 5.3.2 =
-
-* Normalize HTML tags.
-* Modifies the HTML Content field.
-* Fixes an issue with symbols in dropdown fields.
-
-= 5.3.1 =
-
-* Fixes an issue with the form advanced settings CSS rules.
-
-= 5.3.0 =
-
-* Reimplemented the module that evaluates the equations to improve the loading forms performance.
-* Adds the new domRef module to the getField returned object to access the field dom object.
-* Adds the LANGUAGE operation to the Location Operations module to get the user language based on the browser's language.
-* Corrected a minor issue in the Instructions Text controls.
-* Improves the Signature add-on (Platinum plugin version).
-
-= 5.2.64 =
-
-* Reimplemented the sanitization module on both the server and client sides to prevent developers from entering unauthorized tags and events. Special thanks to Dmitrii, penetration tester at CleanTalk Inc., for his invaluable contributions.
-* Redesigned the Captcha module to ensure that only captcha images associated with existing forms are generated, while also restricting attribute values for enhanced security. A heartfelt thank you to Max Boll (_b0lli) and Tiffany T. at WordFence for their support and expertise.
-* Introduced a new cff-collapsible event that triggers each time a collapsible fieldset control is either collapsed or expanded. The accompanying callback function will receive a parameter indicating the fieldset's state: true for expanded and false for collapsed.
-* Added a new option in the "Troubleshoot Area & General Settings" section that allows users to render only the visible forms on the page, or all forms, to enhance page loading performance.
-* Resolved minor issues related to the styles in the Form Builder.
-* Corrected a minor positioning issue with the error message tooltip in the acceptance control, improving user experience.

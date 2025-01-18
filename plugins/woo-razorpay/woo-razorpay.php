@@ -3,8 +3,8 @@
  * Plugin Name: 1 Razorpay: Signup for FREE PG
  * Plugin URI: https://razorpay.com
  * Description: Razorpay Payment Gateway Integration for WooCommerce.Razorpay Welcome Back Offer: New to Razorpay? Sign up to enjoy FREE payments* of INR 2 lakh till March 31st! Transact before January 10th to grab the offer.
- * Version: 4.6.9
- * Stable tag: 4.6.9
+ * Version: 4.7.0
+ * Stable tag: 4.7.0
  * Author: Team Razorpay
  * WC tested up to: 9.1.2
  * Author URI: https://razorpay.com
@@ -442,7 +442,11 @@ function woocommerce_razorpay_init()
             }
 
             //Affordability Widget Code
-            if (is_admin())
+            $currentSection = isset($_GET["section"]) ? sanitize_text_field($_GET["section"]) : "";
+
+            if (is_admin() and
+                (($currentSection === "razorpay") or
+                ($currentSection === "affordability-widget")))
             {
                 try
                 {
@@ -458,6 +462,11 @@ function woocommerce_razorpay_init()
                     {
                         $key_id = $this->getSetting('key_id');
                         $api = $this->getRazorpayApiInstance();
+                    }
+
+                    if (empty($key_id) === true)
+                    {
+                        return;
                     }
 
                     $merchantPreferences = $api->request->request('GET', 'accounts/me/features');

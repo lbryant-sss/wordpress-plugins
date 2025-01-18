@@ -94,6 +94,8 @@ abstract class THWCFD_Admin_Form {
 
 			}else if($ftype == 'number'){
 				$field_html = $this->render_form_field_element_number($field, $args);
+			}else if($ftype == 'hidden'){
+				$field_html = $this->render_form_field_element_hidden($field, $args);
 			}
 
 			if($render_cell){
@@ -207,6 +209,15 @@ abstract class THWCFD_Admin_Form {
 			$field_html .= '</select>';
 		}
 		return $field_html;
+	}
+
+	private function render_form_field_element_hidden($field, $atts = array()){
+
+		$field_props = $this->prepare_form_field_props($field, $atts);
+		$field_html = '<input type="hidden" '. $field_props .' value="set"  />';
+		$field_html .= isset($field['note'])  ? '<p>'.$field['note'] .'</p>' : '';
+		return $field_html;
+
 	}
 
 	private function render_form_field_element_multiselect($field, $atts = array()){
@@ -401,8 +412,12 @@ abstract class THWCFD_Admin_Form {
 		<?php
 	}
 
-	public function render_form_elm_row_cb($field, $args=array()){
+	public function render_form_elm_row_cb($field, $args=array(), $section = ''){
 		$row_class = $this->prepare_settings_row_class( $field );
+		if($section === 'address'){
+			$row_class .= ' cb_disable';
+			$field['checked'] = 1;
+		}
 		?>
 		<tr class="<?php echo esc_attr( $row_class ); ?>">
 			<td colspan="2"></td>

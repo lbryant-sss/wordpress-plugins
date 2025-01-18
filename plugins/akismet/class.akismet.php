@@ -1905,20 +1905,36 @@ p {
 	}
 
 	/**
-	 * Controls the display of a privacy related notice underneath the comment form using the `akismet_comment_form_privacy_notice` option and filter respectively.
-	 * Default is top not display the notice, leaving the choice to site admins, or integrators.
+	 * Controls the display of a privacy related notice underneath the comment
+	 * form using the `akismet_comment_form_privacy_notice` option and filter
+	 * respectively.
+	 *
+	 * Default is to not display the notice, leaving the choice to site admins,
+	 * or integrators.
 	 */
 	public static function display_comment_form_privacy_notice() {
 		if ( 'display' !== apply_filters( 'akismet_comment_form_privacy_notice', get_option( 'akismet_comment_form_privacy_notice', 'hide' ) ) ) {
 			return;
 		}
+
 		echo apply_filters(
 			'akismet_comment_form_privacy_notice_markup',
-			'<p class="akismet_comment_form_privacy_notice">' . sprintf(
-				/* translators: %s: Akismet privacy URL */
-				__( 'This site uses Akismet to reduce spam. <a href="%s" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.', 'akismet' ),
-				'https://akismet.com/privacy/'
-			) . '</p>'
+			'<p class="akismet_comment_form_privacy_notice">' .
+				wp_kses(
+					sprintf(
+						/* translators: %s: Akismet privacy URL */
+						__( 'This site uses Akismet to reduce spam. <a href="%s" target="_blank" rel="nofollow noopener">Learn how your comment data is processed.</a>', 'akismet' ),
+						'https://akismet.com/privacy/'
+					),
+					array(
+						'a' => array(
+							'href' => array(),
+							'target' => array(),
+							'rel' => array(),
+						),
+					)
+				) .
+			'</p>'
 		);
 	}
 

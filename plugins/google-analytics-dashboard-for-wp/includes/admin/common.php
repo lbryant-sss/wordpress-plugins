@@ -282,12 +282,12 @@ function exactmetrics_remove_conflicting_asset_files() {
 	// Loop through all registered styles.
 	foreach ( $wp_styles->queue as $handle ) {
 		// If the source file is is not from wp-content directory.
-		if ( strpos( $wp_styles->registered[ $handle ]->src, 'wp-content' ) === false ) {
+		if ( isset( $wp_styles->registered[ $handle ] ) && strpos( $wp_styles->registered[ $handle ]->src, 'wp-content' ) === false ) {
 			continue;
 		}
 
 		// If the handle contains exactmetrics in his name.
-		if ( strpos( $wp_styles->registered[ $handle ]->handle, 'exactmetrics' ) !== false ) {
+		if ( isset( $wp_styles->registered[ $handle ] ) && strpos( $wp_styles->registered[ $handle ]->handle, 'exactmetrics' ) !== false ) {
 			continue;
 		}
 

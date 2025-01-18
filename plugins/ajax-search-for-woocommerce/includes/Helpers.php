@@ -945,10 +945,10 @@ class Helpers {
      *
      * @return array
      */
-    public static function getSearchableCustomFields() {
+    public static function getSearchableCustomFields( $skipTransient = false ) {
         global $wpdb;
-        $customFields = array();
-        $excludedMetaKeys = array(
+        $customFields = [];
+        $excludedMetaKeys = [
             '_sku',
             '_wp_old_date',
             '_tax_status',
@@ -967,19 +967,30 @@ class Helpers {
             '3d_pdf_download',
             '3d_pdf_render',
             '_original_id'
-        );
+        ];
         $excludedMetaKeys = apply_filters( 'dgwt/wcas/indexer/excluded_meta_keys', $excludedMetaKeys );
-        $sql = "SELECT DISTINCT meta_key\n                FROM {$wpdb->postmeta} as pm\n                INNER JOIN {$wpdb->posts} as p ON p.ID = pm.post_id\n                WHERE p.post_type = 'product'\n                AND pm.meta_value NOT LIKE 'field_%'\n                AND pm.meta_value NOT LIKE 'a:%'\n                AND pm.meta_value NOT LIKE '%\\%\\%%'\n                AND pm.meta_value NOT LIKE '_oembed_%'\n                AND pm.meta_value NOT REGEXP '^1[0-9]{9}'\n                AND pm.meta_value NOT IN ('1','0','-1','no','yes','[]', '')\n               ";
-        $metaKeys = $wpdb->get_col( $sql );
+        $metaKeys = [];
+        if ( apply_filters( 'dgwt/wcas/indexer/skip_querying_searchable_custom_fields', false ) === false ) {
+            $customFieldsTransient = ( $skipTransient ? false : get_transient( 'dgwt_wcas_searchable_custom_fields' ) );
+            if ( !is_array( $customFieldsTransient ) ) {
+                $sql = "SELECT DISTINCT meta_key\n                FROM {$wpdb->postmeta} as pm\n                INNER JOIN {$wpdb->posts} as p ON p.ID = pm.post_id\n                WHERE p.post_type = 'product'\n                AND pm.meta_value NOT LIKE 'field_%'\n                AND pm.meta_value NOT LIKE 'a:%'\n                AND pm.meta_value NOT LIKE '%\\%\\%%'\n                AND pm.meta_value NOT LIKE '_oembed_%'\n                AND pm.meta_value NOT REGEXP '^1[0-9]{9}'\n                AND pm.meta_value NOT IN ('1','0','-1','no','yes','[]', '')\n               ";
+                $metaKeys = $wpdb->get_col( $sql );
+                if ( is_array( $metaKeys ) && $skipTransient === false ) {
+                    set_transient( 'dgwt_wcas_searchable_custom_fields', $metaKeys, HOUR_IN_SECONDS );
+                }
+            } else {
+                $metaKeys = $customFieldsTransient;
+            }
+        }
         if ( !empty( $metaKeys ) ) {
             foreach ( $metaKeys as $metaKey ) {
                 if ( !in_array( $metaKey, $excludedMetaKeys ) && self::keyIsValid( $metaKey ) ) {
                     $label = $metaKey;
                     //@TODO Recognize labels based on meta key or public known as Yoast SEO etc.
-                    $customFields[] = array(
+                    $customFields[] = [
                         'label' => $label,
                         'key'   => $label,
-                    );
+                    ];
                 }
             }
         }
@@ -1225,12 +1236,8 @@ class Helpers {
         $noResults = json_encode( Helpers::ksesNoResults( $noResults ), JSON_UNESCAPED_SLASHES );
         $showMore = esc_html( DGWT_WCAS()->settings->getOption( 'search_see_all_results_text', __( 'See all products...', 'ajax-search-for-woocommerce' ) ) );
         return apply_filters( 'dgwt/wcas/labels', array(
-            'post'               => __( 'Post' ),
-            'page'               => __( 'Page' ),
-            'vendor'             => __( 'Vendor', 'ajax-search-for-woocommerce' ),
             'product_plu'        => __( 'Products', 'woocommerce' ),
-            'post_plu'           => __( 'Posts' ),
-            'page_plu'           => __( 'Pages' ),
+            'vendor'             => __( 'Vendor', 'ajax-search-for-woocommerce' ),
             'vendor_plu'         => __( 'Vendors', 'ajax-search-for-woocommerce' ),
             'sku_label'          => __( 'SKU', 'woocommerce' ) . ':',
             'sale_badge'         => __( 'Sale', 'woocommerce' ),
@@ -1246,6 +1253,7 @@ class Helpers {
             'submit'             => DGWT_WCAS()->settings->getOption( 'search_submit_text', '' ),
             'search_hist'        => __( 'Your search history', 'ajax-search-for-woocommerce' ),
             'search_hist_clear'  => __( 'Clear', 'ajax-search-for-woocommerce' ),
+            'mob_overlay_label'  => __( 'Open search in the mobile overlay', 'ajax-search-for-woocommerce' ),
         ) );
     }
 
@@ -1427,7 +1435,7 @@ class Helpers {
             'dynamic_prices'                  => false,
             'is_rtl'                          => ( is_rtl() == true ? true : false ),
             'show_preloader'                  => false,
-            'show_headings'                   => false,
+            'show_headings'                   => Helpers::canGroupSuggestions(),
             'preloader_url'                   => '',
             'taxonomy_brands'                 => '',
             'img_url'                         => DGWT_WCAS_URL . 'assets/img/',
@@ -1467,6 +1475,7 @@ class Helpers {
             'voice_search_lang'               => apply_filters( 'dgwt/wcas/scripts/voice_search_lang', get_bloginfo( 'language' ) ),
             'show_recently_searched_products' => false,
             'show_recently_searched_phrases'  => false,
+            'go_to_first_variation_on_submit' => false,
         );
         // User search history
         if ( DGWT_WCAS()->settings->getOption( 'show_user_history' ) === 'on' ) {
@@ -1517,10 +1526,6 @@ class Helpers {
         if ( DGWT_WCAS()->settings->getOption( 'show_preloader' ) === 'on' ) {
             $localize['show_preloader'] = true;
             $localize['preloader_url'] = esc_url( trim( DGWT_WCAS()->settings->getOption( 'preloader_url' ) ) );
-        }
-        // Show/hide autocomplete headings
-        if ( DGWT_WCAS()->settings->getOption( 'show_grouped_results' ) === 'on' ) {
-            $localize['show_headings'] = true;
         }
         return apply_filters( 'dgwt/wcas/scripts/localize', $localize );
     }
@@ -1644,12 +1649,7 @@ class Helpers {
             $types[] = 'product-variation';
         }
         if ( $filter !== 'only-products' ) {
-            if ( DGWT_WCAS()->settings->getOption( 'show_matching_posts' ) === 'on' ) {
-                $types[] = 'post';
-            }
-            if ( DGWT_WCAS()->settings->getOption( 'show_matching_pages' ) === 'on' ) {
-                $types[] = 'page';
-            }
+            // Non-product post types will be added in via below filter.
         }
         return apply_filters( 'dgwt/wcas/allowed_post_types', $types, $filter );
     }
@@ -1686,12 +1686,19 @@ class Helpers {
      *
      * @return void
      */
-    public static function loadTemplate( $template = '', $vars = array() ) {
+    public static function loadTemplate( $template = '', $vars = [], $generalTemplate = '' ) {
         $path = '';
         // Load default partials from the plugin
         $file = DGWT_WCAS_DIR . 'partials/' . $template;
         if ( file_exists( $file ) ) {
             $path = $file;
+        }
+        // Load general template if the specific one is not found.
+        if ( empty( $path ) ) {
+            $file = DGWT_WCAS_DIR . 'partials/' . $generalTemplate;
+            if ( file_exists( $file ) ) {
+                $path = $file;
+            }
         }
         // Load a partial if it is localized in the child-theme
         $file = get_stylesheet_directory() . '/fibosearch/' . $template;
@@ -1702,7 +1709,8 @@ class Helpers {
             'dgwt/wcas/template',
             $path,
             $template,
-            $vars
+            $vars,
+            $generalTemplate
         );
         if ( file_exists( $path ) ) {
             include $path;
@@ -2046,6 +2054,31 @@ class Helpers {
             }
             $i++;
         }
+    }
+
+    /**
+     * Check if autocomplete suggestions have to be grouped.
+     * Previously, the option show_grouped_results was available, but it has been removed.
+     * Starting from version v1.30.0, result grouping in autocomplete is enforced for all users.
+     * Grouping can now only be disabled via the dgwt/wcas/grouped_autocomplete_suggestions filter.
+     *
+     * @return bool
+     * @since 1.30.0
+     *
+     */
+    public static function canGroupSuggestions() : bool {
+        return apply_filters( 'dgwt/wcas/grouped_autocomplete_suggestions', true );
+    }
+
+    /**
+     * Does products use Global Unique ID
+     *
+     * @return bool
+     */
+    public static function productsUseGlobalUniqueId() {
+        global $wpdb;
+        $result = $wpdb->get_var( "\n\t\t\t\tSELECT COUNT(*)\n\t\t\t\tFROM {$wpdb->posts} as posts\n\t\t\t\tINNER JOIN {$wpdb->wc_product_meta_lookup} AS lookup ON posts.ID = lookup.product_id\n\t\t\t\tWHERE\n\t\t\t\tposts.post_type IN ( 'product', 'product_variation' )\n\t\t\t\tAND posts.post_status != 'trash'\n\t\t\t\tAND lookup.global_unique_id <> ''\n\t\t\t\t" );
+        return intval( $result ) > 0;
     }
 
 }

@@ -6,8 +6,8 @@
  * @version 3.0.0
  */
 
-@import "includes/frontend/add-to-wishlist";
-@import "includes/frontend/wishlist";
+@use "includes/frontend/_add-to-wishlist";
+@use "includes/frontend/_wishlist";
 
 /**
  * Index:

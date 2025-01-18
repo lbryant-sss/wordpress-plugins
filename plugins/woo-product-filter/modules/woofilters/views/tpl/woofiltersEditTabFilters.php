@@ -25,7 +25,7 @@
 			<button id="wpfAddFilterButton" data-option='add' class="button button-small">
 				<span><?php esc_html_e('Add', 'woo-product-filter'); ?></span>
 			</button>
-			<span data-option='pro' class="wpfProLabel wpfHidden"><a href="<?php echo esc_url($this->proLink . '?utm_source=&utm_medium=&utm_campaign='); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+			<span data-option='pro' class="wpfProLabel wpfHidden"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 			<span data-option='uniq' class="wpfProLabel wpfHidden"><?php esc_html_e('Already in the list', 'woo-product-filter'); ?></span>
 			<span data-option='group' class="wpfProLabel wpfHidden">
 			<?php 

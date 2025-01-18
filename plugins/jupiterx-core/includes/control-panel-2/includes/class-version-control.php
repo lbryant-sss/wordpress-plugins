@@ -207,7 +207,11 @@ class JupiterX_Core_Control_Panel_Version_Control {
 			wp_send_json_error( esc_html__( 'The product param is missing.', 'jupiterx-core' ) );
 		}
 
-		if ( 'wp-repo' !== $product['source'] ) {
+		if ( empty( $product['selected_version']['name'] ) ) {
+			wp_send_json_error( esc_html__( 'The selected version is missing.', 'jupiterx-core' ) );
+		}
+
+		if ( 'wp-repo' !== $product['source'] && empty( $product['selected_version']['url'] ) ) {
 			$product = $this->get_hosted_package( $product );
 		}
 

@@ -4,7 +4,7 @@ Donate link: https://woobewoo.com/product/woocommerce-filter/
 Tags: product filter, WooCommerce product filter, shop filter, e-commerce filter, WooCommerce filter
 Requires at least: 3.4.0
 Tested up to: 6.7
-Stable tag: 2.7.7
+Stable tag: 2.7.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
  
@@ -150,6 +150,17 @@ If none of this advice helps you, contact us via [support form on our website](h
 You may help us translate the plugin into your language and get the PRO version of the plugin for free as soon as it is released. If this method seems to be too complicated, please send us a request and we will let you know as soon as the WBW Filter plugin will be available in your localization.
 
 == Changelog ==
+
+= 2.7.8 =
+ * Added options Show/initialise filter immediately
+ * Fixed option Hide filter with single item for sliders
+ * Fixed order by woocommerce select-block
+ * Fixed option Display Only Children Of Current Category by simple ajax
+ * Minor issues fix 
+
+= 2.7.7 =
+ * Fixed compatibility with Advanced Woo Search
+ * Minor issues fix
 
 = 2.7.6 =
  * Added compatibility with Theme Elford + Advanced Layout Builder Product Slider and Product Grid

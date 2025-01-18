@@ -70,7 +70,7 @@ Upload text, images, videos, and audio. Then organize everything you upload into
 
 = 🚀 FOLDERS PLUGIN PRO FEATURES =
 * <a href="https://premio.io/downloads/folders?utm_source=wporg" target="_blank" title="Folders pro plans"><strong>Upgrade to pro</strong></a> to get unlimited sub-folders :)
-* Create folders for each post type - use folders with other plugins that have custom post types (e.g. Elementor templates, WooCommerce & more)
+* Create folders for each post type - use folders with other plugins that have custom post types (e.g. Elementor templates, WooCommerce products & more)
 * Dynamic Folders - automatically filter posts, pages, custom posts, and media library files based on author, date, file size, file types, WooCommerce products & more
 * Delete unused media library files - using the Folders plugin, search for unused media files that take up unnecessary space on your server, and clean them with just a few clicks. Unused media library will be sorted from the biggest files to the smallest media library files
 * Organize your Plugins using Folders - create Folders for your plugins and organize them

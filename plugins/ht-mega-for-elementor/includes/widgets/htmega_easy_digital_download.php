@@ -28,8 +28,45 @@ class HTMega_Elementor_Widget_Easy_Digital_Download extends Widget_Base {
     public function get_help_url() {
 		return 'https://wphtmega.com/docs/3rd-party-plugin-widgets/easy-digital-downloads-widget/';
 	}
-
     protected function register_controls() {
+        if ( ! is_plugin_active('easy-digital-downloads/easy-digital-downloads.php') ) {
+            $this->messing_parent_plg_notice();
+        } else {
+            $this->easy_digital_download_regster_fields();
+        }
+    }
+    protected function messing_parent_plg_notice() {
+
+        $this->start_controls_section(
+            'messing_parent_plg_notice_section',
+            [
+                'label' => __( 'Easy Digital Download', 'htmega-addons' ),
+            ]
+        );
+            $this->add_control(
+                'htemga_plugin_parent_missing_notice',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => sprintf(
+                        __( 'It appears that %1$s is not currently installed on your site. Kindly use the link below to install or activate %1$s. After completing the installation or activation, please refresh this page.', 'htmega-addons' ),
+                        '<a href="' . esc_url( admin_url( 'plugin-install.php?s=Easy%2520Digital%2520Download&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">Easy Digital Download</a>'
+                    ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
+                ]
+            );
+        
+
+            $this->add_control(
+                'parent_plugin_install',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => '<a href="'.esc_url( admin_url( 'plugin-install.php?s=Easy%2520Digital%2520Download&tab=search&type=term' ) ).'" target="_blank" rel="noopener">Click to install or activate Easy Digital Download</a>',
+                ]
+            );
+        $this->end_controls_section();
+
+    }
+    protected function easy_digital_download_regster_fields() {
 
         $this->start_controls_section(
             'easydigitaldownload_content',
@@ -751,6 +788,11 @@ class HTMega_Elementor_Widget_Easy_Digital_Download extends Widget_Base {
     protected function render( $instance = [] ) {
 
         $settings   = $this->get_settings_for_display();
+
+        if ( ! is_plugin_active('easy-digital-downloads/easy-digital-downloads.php') ) {
+            htmega_plugin_missing_alert( __('Easy Digital Download', 'htmega-addons') );
+            return;
+        }
         $edd_attributes = [
             'number'     => absint( $settings['number'] ),
             'columns'    => absint( $settings['columns'] ),

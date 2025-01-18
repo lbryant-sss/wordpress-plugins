@@ -9,15 +9,16 @@ if (!$isSubscribe || !$isRating) {
 				<div class="wpf-overview-block">
 					<div class="wpf-overview-block-header">
 						<div class="wpf-overview-header-title">
-							<?php esc_html_e('Help improve WBW', 'woo-product-filter'); ?>
+							<?php esc_html_e('Subscribe Now', 'woo-product-filter'); ?>
 						</div>
 						<div class="wpf-overview-header-desc">
-							<?php esc_html_e('Stay up to date with news, life hacks, and new features from WBW. And also participate in surveys to improve plugins.', 'woo-product-filter'); ?>
+							<?php esc_html_e('Stay up to date with the latest news, life hacks, and new features from WBW. Participate in surveys to help us enhance our plugins and make them even better for you.', 'woo-product-filter'); ?>
 						</div>
 					</div>
 					<div class="wpf-overview-block-body">
 						<div class="wpf-overview-center">
-							<input type="text" class="wpf-overview-input" name="wpf-email" value="" placeholder="<?php esc_html_e('Enter your email', 'woo-product-filter'); ?>">
+							<input type="text" class="wpf-overview-input" name="wpf-name" value="" placeholder="<?php esc_html_e('Name', 'woo-product-filter'); ?>">
+							<input type="text" class="wpf-overview-input" name="wpf-email" value="" data-error="<?php esc_html_e('Enter your Email', 'woo-product-filter'); ?>" placeholder="<?php esc_html_e('Email', 'woo-product-filter'); ?>">
 							<button id="wpfSubscribeSubmit" class="wpf-overview-button wpf-overview-submit button" href="https://woobewoo.com/" target="_blank">
 								<?php esc_html_e('SUBSCRIBE', 'woo-product-filter'); ?>
 							</button>
@@ -34,7 +35,7 @@ if (!$isSubscribe || !$isRating) {
 							<?php esc_html_e('Rate the plugin', 'woo-product-filter'); ?>
 						</div>
 						<div class="wpf-overview-header-desc">
-							<?php esc_html_e('Liked the plugin? Help us become even better by rating the plugin.', 'woo-product-filter'); ?>
+							<?php esc_html_e('We’d be incredibly grateful if you could take a moment to rate the plugin and share your review.', 'woo-product-filter'); ?>
 						</div>
 					</div>
 					<div class="wpf-overview-block-body">

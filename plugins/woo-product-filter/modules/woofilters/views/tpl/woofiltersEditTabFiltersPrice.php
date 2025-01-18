@@ -35,7 +35,7 @@ $skins = array(
 			?>
 		</div>
 
-		<span class="wpfProLabel wpfHidden"><a href="<?php echo esc_url( $this->proLink . '?utm_source=&utm_medium=&utm_campaign=' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+		<span class="wpfProLabel wpfHidden"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 
 	</div>
 </div>
@@ -141,7 +141,7 @@ else :
 			<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__( 'Set the price min/max value. Doesn\'t working with recount prices option!', 'woo-product-filter' ); ?>"></i>
 		</div>
 		<div class="settings-block-values col-xs-8 col-sm-9">
-			<span class="settings-value wpfProLabel"><a href="<?php echo esc_url( $this->proLink . '?utm_source=setmin/maxprices&utm_medium=filtersprice&utm_campaign=pluginfilter' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+			<span class="settings-value wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 		</div>
 	</div>
 	<div class="row-settings-block">
@@ -150,7 +150,7 @@ else :
 			<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__( 'The values will be changed by the specified percentage', 'woo-product-filter' ); ?>"></i>
 		</div>
 		<div class="settings-block-values col-xs-8 col-sm-9">
-			<span class="settings-value wpfProLabel"><a href="<?php echo esc_url( $this->proLink . '?utm_source=settaxrates&utm_medium=filtersprice&utm_campaign=pluginfilter' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+			<span class="settings-value wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 		</div>
 	</div>
 <?php

@@ -29,6 +29,7 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 
 		$this->tabs = array(
 			'fields' => __('Checkout Fields', 'woo-checkout-field-editor-pro'),
+			'block_fields' => __('Block Checkout Fields', 'woo-checkout-field-editor-pro'),
 			'advanced_settings' => __('Advanced Settings', 'woo-checkout-field-editor-pro'),
 			'pro' => __('Premium Features', 'woo-checkout-field-editor-pro'),
 			'themehigh_plugins' => __('Other Free Plugins', 'woo-checkout-field-editor-pro'),
@@ -99,7 +100,7 @@ class THWCFD_Admin_Settings_General extends THWCFD_Admin_Settings{
 	public function render_actions_row($section){
 		?>
         <th colspan="6">
-            <button type="button" class="button button-primary" onclick="thwcfdOpenNewFieldForm('<?php echo esc_js($section); ?>')">+ <?php esc_html_e( 'Add field', 'woo-checkout-field-editor-pro' ); ?></button>
+            <button type="button" class="button button-primary" onclick="thwcfdOpenNewFieldForm('<?php echo esc_js($section); ?>', 'block')">+ <?php esc_html_e( 'Add field', 'woo-checkout-field-editor-pro' ); ?></button>
             <button type="button" class="button" onclick="thwcfdRemoveSelectedFields()"><?php esc_html_e('Remove', 'woo-checkout-field-editor-pro'); ?></button>
             <button type="button" class="button" onclick="thwcfdEnableSelectedFields()"><?php esc_html_e('Enable', 'woo-checkout-field-editor-pro'); ?></button>
             <button type="button" class="button" onclick="thwcfdDisableSelectedFields()"><?php esc_html_e('Disable', 'woo-checkout-field-editor-pro'); ?></button>

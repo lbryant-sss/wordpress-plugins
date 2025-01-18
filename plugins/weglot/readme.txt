@@ -2,7 +2,7 @@
 Contributors: remyb92, gmulti, wysija, wpr0ck, glx77
 Tags: translate, multilingual, language, translation, localization, multilingual SEO, languages, translator, website translation, multilanguage, international, traduction
 Requires at least: 4.5
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.0
 Stable tag: 4.2.9
 License: GPLv2 or later
@@ -272,19 +272,19 @@ See changelog for upgrade changes.
 * Update - named mousedown eventlistener to allow to remove it.
 * Added - Filter to prevent access to specific role.
 
-= 4.2.9 (22/10/2024) =
-* Feature: Add filter to enable dynamic features from Weglot.
-* Fix: Resolve dynamic declaration deprecation warning.
-* Quality: Improve PHPStan to level 6.
-* Improvement: Named mousedown event listener for proper removal.
-* Improvement: Add filter to restrict access for specific roles.
-* Improvement: Add translate="no" attribute to disable browser translation.
-* Improvement: Enable translation of video src attribute by default.
-* Improvement: Remove "URL Translate" banner in WP Admin.
-* Improvement: Support adding tel: links as external links.
-* Improvement: Add option to return 404 for excluded pages.
-* Improvement: Add check for weglot-private header in requests.
-* Improvement: Wrap pageviews scripts in a function to avoid conflicts with other scripts.
+= 4.3.0 (20/01/2025) =
+
+* Improvement: Removed usage of Weglot.switchTo method during JS library initialization.
+* Improvement: Stopped adding weglot-data attributes when content is in the original language.
+* Improvement: Added a filter to allow translation of child nodes within excluded parent nodes.
+* Improvement: Added a filter to handle missing trailing slashes in URLs.
+* Improvement: Automatically added missing trailing slashes when translating content.
+* Improvement: Introduced a filter to manage the usage of custom path definitions for base URLs.
+* Improvement: Added the wg-excluded-link attribute to prevent translation of links while still translating labels or text.
+* Improvement: Displayed a warning banner for PHP 8.1 compatibility issues.
+* Fix: Resolved a deprecation issue by replacing FILTER_SANITIZE_STRING with FILTER_SANITIZE_FULL_SPECIAL_CHARS.
+* Fix: Fixed an issue where the WooCommerce reset password page displayed a blank page in the original language.
+* Quality: Addressed PHPStan issues to maintain level 6 compliance.
 
 = Older versions =
 

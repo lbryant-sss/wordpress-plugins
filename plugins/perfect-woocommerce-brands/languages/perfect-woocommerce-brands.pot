@@ -1,15 +1,15 @@
-# Copyright (C) 2024 QuadLayers
+# Copyright (C) 2025 QuadLayers
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Perfect Brands WooCommerce 3.4.7\n"
+"Project-Id-Version: Perfect Brands WooCommerce 3.4.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/perfect-woocommerce-brands\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-28T18:01:18+00:00\n"
+"POT-Creation-Date: 2025-01-08T10:54:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: perfect-woocommerce-brands\n"
@@ -539,8 +539,8 @@ msgstr ""
 #: lib/admin/class-exporter-support.php:22
 #: lib/admin/class-importer-support.php:22
 #: lib/admin/class-importer-support.php:33
-#: lib/class-product.php:22
-#: lib/class-product.php:40
+#: lib/class-product.php:23
+#: lib/class-product.php:46
 #: lib/class-woocommerce.php:379
 #: lib/class-woocommerce.php:622
 #: lib/class-woocommerce.php:762

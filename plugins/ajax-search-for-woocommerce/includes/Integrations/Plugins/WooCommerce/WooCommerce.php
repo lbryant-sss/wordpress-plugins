@@ -33,6 +33,8 @@ class WooCommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'declare_compatibility' ) );
 
 		$this->brandsSupport();
+
+		add_filter( 'woocommerce_short_description', array( $this, 'removeShortDescriptionAutop' ), 5 );
 	}
 
 	/**
@@ -149,6 +151,33 @@ class WooCommerce {
 		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
 			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', DGWT_WCAS_FILE, true );
 		}
+	}
+
+	/**
+	 * Remove the 'wpautop' filter from the short description on the shop page if the FiboSearch form is present
+	 *
+	 * This is a bit tricky, because in calback of a filter we remove another filter that has a different priority.
+	 *
+	 * @param string $description
+	 *
+	 * @return string
+	 */
+	public function removeShortDescriptionAutop( $description ) {
+		if ( is_search() ) {
+			return $description;
+		}
+
+		if ( is_post_type_archive( 'product' ) && in_array( absint( get_query_var( 'paged' ) ), array( 0, 1 ), true ) ) {
+			$shop_page = get_post( wc_get_page_id( 'shop' ) );
+
+			if ( $shop_page ) {
+				if ( strpos( $shop_page->post_content, '[fibosearch' ) !== false || strpos( $shop_page->post_content, 'wp:fibosearch/search' ) !== false ) {
+					remove_filter( 'woocommerce_short_description', 'wpautop' );
+				}
+			}
+		}
+
+		return $description;
 	}
 
 	/**

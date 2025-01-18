@@ -124,9 +124,9 @@ class Premium_World_Clock extends Widget_Base {
 		return array( 'pa', 'premium', 'premium world clock', 'world', 'clock', 'timezone', 'time' );
 	}
 
-    protected function is_dynamic_content():bool {
-        return false;
-    }
+	protected function is_dynamic_content(): bool {
+		return false;
+	}
 
 	/**
 	 * Retrieve Widget Support URL.
@@ -139,9 +139,9 @@ class Premium_World_Clock extends Widget_Base {
 		return 'https://premiumaddons.com/support/';
 	}
 
-    public function has_widget_inner_wrapper(): bool {
-        return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-    }
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+	}
 
 	/**
 	 * Register World Clock controls.
@@ -249,7 +249,7 @@ class Premium_World_Clock extends Widget_Base {
 
 		if ( ! $papro_activated ) {
 
-			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'editor-page', 'wp-editor', 'get-pro' );
+			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'clock-widget', 'wp-editor', 'get-pro' );
 
 			$this->add_control(
 				'clock_notice',
@@ -1400,12 +1400,12 @@ class Premium_World_Clock extends Widget_Base {
 			)
 		);
 
-        $this->add_control(
+		$this->add_control(
 			'language_prefix',
 			array(
-				'label'       => __( 'Language', 'premium-addons-pro' ),
+				'label'       => __( 'Language', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::TEXT,
-				'description' => __( 'Enter language prefix, eg. en for English, ja for Japanese, if you don\'t know your language prefix, please check <a href="https://developers.google.com/maps/faq#languagesupport" target="_blank">here</a>' ),
+				'description' => __( 'Enter language prefix, eg. en for English, ja for Japanese, if you don\'t know your language prefix, please check <a href="https://developers.google.com/maps/faq#languagesupport" target="_blank">here</a>', 'premium-addons-for-elementor' ),
 			)
 		);
 
@@ -1428,7 +1428,7 @@ class Premium_World_Clock extends Widget_Base {
 		$doc_index = 1;
 		foreach ( $docs as $url => $title ) {
 
-			$doc_url = Helper_Functions::get_campaign_link( $url, 'editor-page', 'wp-editor', 'get-support' );
+			$doc_url = Helper_Functions::get_campaign_link( $url, 'clock-widget', 'wp-editor', 'get-support' );
 
 			$this->add_control(
 				'doc_' . $doc_index,
@@ -3021,7 +3021,7 @@ class Premium_World_Clock extends Widget_Base {
 			'gmtOffset'    => $show_timezone,
 			'showClockNum' => $show_clock_numbers,
 			'equalWidth'   => 'yes' === $settings['equal_width'] && in_array( $skin, array( 'skin-2', 'skin-3', 'skin-4' ), true ) ? true : false,
-            'language'     => $settings['language_prefix']
+			'language'     => $settings['language_prefix'],
 		);
 
 		if ( $show_date ) {

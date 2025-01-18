@@ -24,13 +24,13 @@ class THWCFD {
 			$this->version = '1.0.0';
 		}
 		$this->plugin_name = 'woo-checkout-field-editor-pro';
-
+        $this->load_dependencies();
 		add_action('init', array($this, 'init'));
+        $this->define_blocks();
 	}
 
     public function init(){
 		$this->define_constants();
-        $this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
@@ -93,6 +93,12 @@ class THWCFD {
 			add_action('init', array($plugin_checkout, 'define_public_hooks'),20);
 		//}
 	}
+
+    private function define_blocks(){
+
+        $plugin_block_checkout = new THWCFD_Block();
+        $plugin_block_checkout->init();
+    }
 
 	private function define_constants(){
 		!defined('THWCFD_ASSETS_URL_ADMIN') && define('THWCFD_ASSETS_URL_ADMIN', THWCFD_URL . 'admin/assets/');
@@ -386,11 +392,11 @@ class THWCFD {
                         reason_input += '<input type="checkbox" id="th-snooze" name="th-snooze" class="th-snooze-checkbox">';
                         reason_input += '<label for="th-snooze">Snooze this panel while troubleshooting</label>';
                         reason_input += '<select name="th-snooze-time" class="th-snooze-select" disabled>';
-                        reason_input += '<option value="' . esc_attr(HOUR_IN_SECONDS) . '">1 Hour</option>';
-                        reason_input += '<option value="' . esc_attr(12 * HOUR_IN_SECONDS) . '">12 Hour</option>';
-                        reason_input += '<option value="' . esc_attr(DAY_IN_SECONDS) . '">24 Hour</option>';
-                        reason_input += '<option value="' . esc_attr(WEEK_IN_SECONDS) . '">1 Week</option>';
-                        reason_input += '<option value="' . esc_attr(MONTH_IN_SECONDS) . '">1 Month</option>';
+                        reason_input += '<option value="<?php echo esc_attr(HOUR_IN_SECONDS) ?>">1 Hour</option>';
+                        reason_input += '<option value="<?php echo esc_attr(12*HOUR_IN_SECONDS) ?>">12 Hour</option>';
+                        reason_input += '<option value="<?php echo esc_attr(DAY_IN_SECONDS) ?>">24 Hour</option>';
+                        reason_input += '<option value="<?php echo esc_attr(WEEK_IN_SECONDS) ?>">1 Week</option>';
+                        reason_input += '<option value="<?php echo esc_attr(MONTH_IN_SECONDS) ?>">1 Month</option>';
                         reason_input += '</select>';
                         reason_input += '</div>';
                     }else if('reviewlink' == type){
@@ -472,7 +478,7 @@ class THWCFD {
         return array(
         	'upgraded_to_pro' => array(
 				'radio_val'          => 'upgraded_to_pro',
-				'radio_label'        => __('Upgraded to premium.', 'woo-extra-product-options'),
+				'radio_label'        => __('Upgraded to premium.', 'woo-checkout-field-editor-pro'),
 				'reason_type'        => 'reviewlink',
 				'reason_placeholder' => '',
 			),

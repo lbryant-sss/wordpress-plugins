@@ -14,7 +14,6 @@
 	font-size: 12px;
 	background: #eceff1;
     border-radius: 10px;
-    box-shadow: rgb(0 0 0 / 25%) 0px 3px 3px 0px;
 	margin-bottom: 20px;
 	max-width: 1200px;
 }
@@ -45,6 +44,7 @@
 .wpf-overview-img {
     background-repeat: no-repeat;
     padding-left: 50px;
+	margin-bottom: 20px;
 }
 .wpf-overview-img-wp {
 	background-image: url(../img/wordpress.svg);
@@ -83,6 +83,11 @@
 .wpf-overview-center {
 	text-align: center;
 }
+.woobewoo-plugin button.wpf-overview-center {
+	display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
 .woobewoo-plugin a.wpf-overview-button.button, .woobewoo-plugin button.wpf-overview-button.button {
 	background-color: #939292 !important;
     min-width: 200px;
@@ -91,6 +96,9 @@
     height: 40px;
     line-height: 43px;
 	text-align: center;
+}
+.woobewoo-plugin button.wpf-overview-button.button i {
+	padding: 10px;
 }
 .woobewoo-plugin button.wpf-overview-submit.button:not([disabled]) {
 	background-color: #03a9f4 !important;
@@ -104,8 +112,22 @@
     border: 1px solid #939292 !important;
     margin-bottom: 10px;
 }
+.woobewoo-plugin .wpf-overview-textarea {
+	border-radius: 15px !important;
+    width: 90%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #939292 !important;
+    margin-bottom: 10px;
+}
+.woobewoo-plugin .wpf-field-fullwidth {
+	width: 100% !important;
+}
+.woobewoo-plugin .wpf-overview-textarea::placeholder {
+    color: #bfcbd0;
+}
 .wpfLineStarsRating {
-    min-height: 110px;
+    min-height: 160px;
 	padding: 30px 0;
 }
 .wpfStarsRatingLine{

@@ -218,9 +218,6 @@ class Postman {
 		// register the email transports
 		$this->registerTransports( $this->rootPluginFilenameAndPath );
 
-		// load the text domain
-		$this->loadTextDomain();
-
 		// register the setup_admin function on plugins_loaded because we need to call
 		// current_user_can to verify the capability of the current user
 		if ( PostmanUtils::isAdmin() && is_admin() ) {
@@ -491,26 +488,6 @@ class Postman {
 	 */
 	function print_signature() {
 		printf( '<a href="https://wordpress.org/plugins/post-smtp/">%s</a> %s<br/>', $this->pluginData ['name'], $this->pluginData ['version'] );
-	}
-
-	/**
-	 * Loads the appropriate language file
-	 */
-	private function loadTextDomain() {
-		// had to hardcode the third parameter, Relative path to WP_PLUGIN_DIR,
-		// because __FILE__ returns the wrong path if the plugin is installed as a symlink
-		$shortLocale = substr( get_locale(), 0, 2 );
-		if ( $shortLocale != 'en' ) {
-			$langDir = 'post-smtp/Postman/languages';
-			$success = load_plugin_textdomain( 'post-smtp', false, $langDir );
-			if ( $this->logger->isDebug() ) {
-				if ( $success ) {
-					$this->logger->debug( sprintf( 'local translation file loaded for locale=%s', get_locale() ) );
-				} else {
-					$this->logger->debug( sprintf( 'failed to load local translation file: locale=%s file=%s/%s-%s.mo', get_locale(), $langDir, 'post-smtp', get_locale() ) );
-				}
-			}
-		}
 	}
 
 	/**

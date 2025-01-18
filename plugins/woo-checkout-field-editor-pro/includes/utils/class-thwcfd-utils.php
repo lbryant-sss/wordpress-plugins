@@ -462,8 +462,35 @@ class THWCFD_Utils {
 			'option' => array(
 				'value' => array(),
 			),
+			'th' => array(
+				'colspan' => array(),
+				'rowspan' => array(),
+				'style' => array(),
+				'class' => array(),
+			),
+			'tr' => array(
+				'style' => array(),
+				'class' => array(),
+			),
+			'td' => array(
+				'colspan' => array(),
+				'rowspan' => array(),
+				'style' => array(),
+				'class' => array(),
+			),
+			'h3' => array(),
+			'p' => array(),
+			'strong' => array(),
+			'br' => array(),
 		);
 		return $allowed_html;
+	}
+
+	public static function convert_string_to_array($str, $separator = ','){
+		if(!is_array($str)){
+			$str = array_map('trim', explode($separator, $str));
+		}
+		return $str;
 	}
 }
 

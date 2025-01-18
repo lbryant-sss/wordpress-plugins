@@ -51,7 +51,7 @@ class Cache {
 	/**
 	 * Class constructor.
 	 *
-	 * @since {next}
+	 * @since 4.7.7.1
 	 */
 	public function __construct() {
 		add_action( 'init', [ $this, 'checkIfTableExists' ] ); // This needs to run on init because the DB
@@ -61,7 +61,7 @@ class Cache {
 	/**
 	 * Checks if the cache table exists and creates it if it doesn't.
 	 *
-	 * @since {next}
+	 * @since 4.7.7.1
 	 *
 	 * @return void
 	 */

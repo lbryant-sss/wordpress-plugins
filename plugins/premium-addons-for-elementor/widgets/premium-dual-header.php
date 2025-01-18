@@ -76,7 +76,7 @@ class Premium_Dual_Header extends Widget_Base {
 	 */
 	public function get_style_depends() {
 		return array(
-            'pa-btn',
+			'pa-btn',
 			'premium-addons',
 		);
 	}
@@ -119,9 +119,9 @@ class Premium_Dual_Header extends Widget_Base {
 		return array( 'pa', 'premium', 'premium dual heading', 'advanced', 'title', 'heading', 'multi', 'text' );
 	}
 
-    protected function is_dynamic_content():bool {
-        return false;
-    }
+	protected function is_dynamic_content(): bool {
+		return false;
+	}
 
 	/**
 	 * Retrieve Widget Categories.
@@ -146,9 +146,9 @@ class Premium_Dual_Header extends Widget_Base {
 		return 'https://premiumaddons.com/support/';
 	}
 
-    public function has_widget_inner_wrapper(): bool {
-        return true;
-    }
+	public function has_widget_inner_wrapper(): bool {
+		return true;
+	}
 
 	/**
 	 * Register Dual Heading controls.
@@ -654,7 +654,7 @@ class Premium_Dual_Header extends Widget_Base {
 			)
 		);
 
-		$doc1_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/dual-heading-widget-tutorial', 'editor-page', 'wp-editor', 'get-support' );
+		$doc1_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/dual-heading-widget-tutorial', 'dual-h-widget', 'wp-editor', 'get-support' );
 
 		$this->add_control(
 			'doc_1',
@@ -665,7 +665,7 @@ class Premium_Dual_Header extends Widget_Base {
 			)
 		);
 
-		$doc2_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/how-to-add-an-outlined-heading-to-my-website', 'editor-page', 'wp-editor', 'get-support' );
+		$doc2_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/how-to-add-an-outlined-heading-to-my-website', 'dual-h-widget', 'wp-editor', 'get-support' );
 
 		$this->add_control(
 			'doc_2',
@@ -818,7 +818,7 @@ class Premium_Dual_Header extends Widget_Base {
 			)
 		);
 
-        $this->add_control(
+		$this->add_control(
 			'first_wave_switcher',
 			array(
 				'label'        => __( 'Wave Effect', 'premium-addons-for-elementor' ),
@@ -831,7 +831,7 @@ class Premium_Dual_Header extends Widget_Base {
 			)
 		);
 
-        $this->add_control(
+		$this->add_control(
 			'first_animation_speed',
 			array(
 				'label'     => __( 'Animation Speed (sec)', 'premium-addons-for-elementor' ),
@@ -1088,7 +1088,7 @@ class Premium_Dual_Header extends Widget_Base {
 			)
 		);
 
-        $this->add_control(
+		$this->add_control(
 			'second_wave_switcher',
 			array(
 				'label'        => __( 'Wave Effect', 'premium-addons-for-elementor' ),
@@ -1101,7 +1101,7 @@ class Premium_Dual_Header extends Widget_Base {
 			)
 		);
 
-        $this->add_control(
+		$this->add_control(
 			'second_animation_speed',
 			array(
 				'label'     => __( 'Animation Speed (sec)', 'premium-addons-for-elementor' ),
@@ -1265,10 +1265,10 @@ class Premium_Dual_Header extends Widget_Base {
 		$this->add_control(
 			'background_text_mix_blend',
 			array(
-				'label'     => __( 'Blend Mode', 'elementor' ),
+				'label'     => __( 'Blend Mode', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => array(
-					''            => __( 'Normal', 'elementor' ),
+					''            => __( 'Normal', 'premium-addons-for-elementor' ),
 					'multiply'    => 'Multiply',
 					'screen'      => 'Screen',
 					'overlay'     => 'Overlay            ',
@@ -1349,10 +1349,10 @@ class Premium_Dual_Header extends Widget_Base {
 			$second_stroke = ' stroke';
 		}
 
-        $first_animation = $settings['premium_dual_header_first_animated'];
-        $first_wave = $settings['first_wave_switcher'];
-        $second_animation = $settings['premium_dual_header_second_animated'];
-        $second_wave = $settings['second_wave_switcher'];
+		$first_animation  = $settings['premium_dual_header_first_animated'];
+		$first_wave       = $settings['first_wave_switcher'];
+		$second_animation = $settings['premium_dual_header_second_animated'];
+		$second_wave      = $settings['second_wave_switcher'];
 
 		$first_grad = ( 'yes' === $first_animation && 'yes' !== $first_wave ) ? ' gradient' : '';
 
@@ -1448,10 +1448,10 @@ class Premium_Dual_Header extends Widget_Base {
 			if( 'yes' === settings.premium_dual_header_second_stroke )
 				secondStroke = "stroke";
 
-            var firstAnimation = settings.premium_dual_header_first_animated,
-                firstWave = settings.first_wave_switcher,
-                secondAnimation = settings.premium_dual_header_second_animated,
-                secondWave = settings.second_wave_switcher;
+			var firstAnimation = settings.premium_dual_header_first_animated,
+				firstWave = settings.first_wave_switcher,
+				secondAnimation = settings.premium_dual_header_second_animated,
+				secondWave = settings.second_wave_switcher;
 
 			var firstGrad = ('yes' === firstAnimation && 'yes' !== firstWave)  ? ' gradient' : '',
 				secondGrad = ('yes' === secondAnimation && 'yes' !== secondWave) ? ' gradient' : '';
@@ -1484,7 +1484,7 @@ class Premium_Dual_Header extends Widget_Base {
 				});
 			}
 
-            view.addRenderAttribute( 'button', 'href', link );
+			view.addRenderAttribute( 'button', 'href', link );
 
 
 		#>

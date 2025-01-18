@@ -123,9 +123,9 @@ class Premium_Contactform extends Widget_Base {
 		return 'https://premiumaddons.com/support/';
 	}
 
-    public function has_widget_inner_wrapper(): bool {
-        return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-    }
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+	}
 
 	/**
 	 * Register Contact Form 7 controls.
@@ -222,7 +222,7 @@ class Premium_Contactform extends Widget_Base {
 
 		} else {
 
-			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'editor-page', 'wp-editor', 'get-pro' );
+			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'form-widget', 'wp-editor', 'get-pro' );
 
 			$this->add_control(
 				'presets_notice',

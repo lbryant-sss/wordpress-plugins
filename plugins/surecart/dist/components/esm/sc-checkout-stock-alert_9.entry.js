@@ -1,14 +1,14 @@
 import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-745b6bec.js';
-import { s as state, o as onChange, u as updateFormState } from './mutations-4ce86b78.js';
-import { d as updateCheckout, e as expand, f as finalizeCheckout, g as fetchCheckout, h as createCheckout, c as createOrUpdateCheckout } from './index-af03d92e.js';
+import { s as state, o as onChange, u as updateFormState } from './mutations-83ea96b2.js';
+import { d as updateCheckout, e as expand, f as finalizeCheckout, g as fetchCheckout, h as createCheckout, c as createOrUpdateCheckout } from './index-01c97eb1.js';
 import { c as currentFormState } from './getters-487612aa.js';
-import './watchers-563073b9.js';
-import { s as state$1 } from './getters-ffa6a132.js';
+import './watchers-8dce998c.js';
+import { s as state$1 } from './getters-09d843cb.js';
 import { s as state$2 } from './watchers-38693c1f.js';
-import { c as clearCheckout } from './mutations-72bc05f8.js';
-import { s as shippingAddressRequired } from './getters-6b37a0b7.js';
+import { c as clearCheckout } from './mutations-c3035316.js';
+import { s as shippingAddressRequired } from './getters-76e355c6.js';
 import { v, c as checkoutMachine, s as state$3 } from './store-627acec4.js';
-import { a as apiFetch } from './fetch-2032d11d.js';
+import { a as apiFetch } from './fetch-2d92a73e.js';
 import { s as speak } from './index-c5a96d53.js';
 import { c as createErrorNotice, r as removeNotice, a as createInfoNotice } from './mutations-ed6d0770.js';
 import { a as addQueryArgs, g as getQueryArgs } from './add-query-args-0e2a8393.js';
@@ -930,7 +930,6 @@ const ScSessionProvider = class {
         console.info('Handling initial line items.');
         // TODO: move this to central store.
         const address = this.el.querySelector('sc-order-shipping-address');
-        clearCheckout();
         return this.loadUpdate({
             line_items,
             refresh_line_items: true,
@@ -1184,7 +1183,7 @@ const ScSessionProvider = class {
         }
     }
     render() {
-        return (h("sc-line-items-provider", { key: '19e26b11d01251c4917a7e66f00bd4a4b8851986', order: state === null || state === void 0 ? void 0 : state.checkout, onScUpdateLineItems: e => this.loadUpdate({ line_items: e.detail }) }, h("slot", { key: 'b99ea770aad67e4b52689389722e41fd3c9cdf5f' })));
+        return (h("sc-line-items-provider", { key: '0a7984960c0c8dead92a33df1f710dea3f6d05bd', order: state === null || state === void 0 ? void 0 : state.checkout, onScUpdateLineItems: e => this.loadUpdate({ line_items: e.detail }) }, h("slot", { key: '4d99d1933eab656fea62abd856bf70bfd3f59049' })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

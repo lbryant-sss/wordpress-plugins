@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'quadlayers/perfect-woocommerce-brands',
-        'pretty_version' => 'v3.4.7',
-        'version' => '3.4.7.0',
-        'reference' => '6f770d18d9011a62557f32f9ef011de94fc737fa',
+        'pretty_version' => 'v3.4.8',
+        'version' => '3.4.8.0',
+        'reference' => '7c0686ca520fde36d967b0f9c826fc1c09cb519d',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'automattic/jetpack-assets' => array(
-            'pretty_version' => 'v4.0.0',
-            'version' => '4.0.0.0',
-            'reference' => '9177fd4ece60a32be3f6bb2afc965802adeb81ef',
+            'pretty_version' => 'v4.0.2',
+            'version' => '4.0.2.0',
+            'reference' => 'b718bf1d687adbf60d3eab8b5c80038c48ef112c',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../jetpack_vendor/automattic/jetpack-assets',
             'aliases' => array(),
@@ -38,9 +38,9 @@
             'dev_requirement' => false,
         ),
         'quadlayers/perfect-woocommerce-brands' => array(
-            'pretty_version' => 'v3.4.7',
-            'version' => '3.4.7.0',
-            'reference' => '6f770d18d9011a62557f32f9ef011de94fc737fa',
+            'pretty_version' => 'v3.4.8',
+            'version' => '3.4.8.0',
+            'reference' => '7c0686ca520fde36d967b0f9c826fc1c09cb519d',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

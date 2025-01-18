@@ -29,6 +29,14 @@ class HTMega_Elementor_Widget_Buddy_Press extends Widget_Base {
 		return 'https://wphtmega.com/docs/3rd-party-plugin-widgets/buddypress-widget/';
 	}
     protected function register_controls() {
+        if ( ! is_plugin_active('buddypress/bp-loader.php') ) {
+            $this->messing_parent_plg_notice();
+        } else {
+            $this->buddypress_regster_fields();
+        }
+    }
+
+    protected function buddypress_regster_fields() {
 
         $this->start_controls_section(
             'buddypress_content',
@@ -418,11 +426,44 @@ class HTMega_Elementor_Widget_Buddy_Press extends Widget_Base {
         $this->end_controls_section();
 
     }
+    protected function messing_parent_plg_notice() {
 
+        $this->start_controls_section(
+            'messing_parent_plg_notice_section',
+            [
+                'label' => __( 'BuddyPress', 'htmega-addons' ),
+            ]
+        );
+            $this->add_control(
+                'htemga_plugin_parent_missing_notice',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => sprintf(
+                        __( 'It appears that %1$s is not currently installed on your site. Kindly use the link below to install or activate %1$s. After completing the installation or activation, please refresh this page.', 'htmega-addons' ),
+                        '<a href="' . esc_url( admin_url( 'plugin-install.php?s=BuddyPress&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">BuddyPress</a>'
+                    ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
+                ]
+            );
+        
+
+            $this->add_control(
+                'parent_plugin_install',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => '<a href="'.esc_url( admin_url( 'plugin-install.php?s=BuddyPress&tab=search&type=term' ) ).'" target="_blank" rel="noopener">Click to install or activate BuddyPress</a>',
+                ]
+            );
+        $this->end_controls_section();
+
+    }
     protected function render( $instance = [] ) {
 
         $settings   = $this->get_settings_for_display();
-
+        if ( ! is_plugin_active('buddypress/bp-loader.php') ) {
+            htmega_plugin_missing_alert( __('BuddyPress', 'htmega-addons') );
+            return;
+        }
         // Member Query Args.
         if( $settings['buddypress_type'] == 'group' ){
             $groups_args = array(

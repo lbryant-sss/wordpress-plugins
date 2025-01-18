@@ -67,14 +67,14 @@ class PostType {
 				'thumbnail',
 			),
 			'capabilities'      => array(
-				'edit_post'          => 'manage_options',
-				'read_post'          => 'manage_options',
-				'delete_post'        => 'manage_options',
-				'edit_posts'         => 'manage_options',
-				'edit_others_posts'  => 'manage_options',
-				'delete_posts'       => 'manage_options',
-				'publish_posts'      => 'manage_options',
-				'read_private_posts' => 'manage_options',
+				'edit_post'          => 'nta_wa_manage',
+				'read_post'          => 'nta_wa_manage',
+				'delete_post'        => 'nta_wa_manage',
+				'edit_posts'         => 'nta_wa_manage',
+				'edit_others_posts'  => 'nta_wa_manage',
+				'delete_posts'       => 'nta_wa_manage',
+				'publish_posts'      => 'nta_wa_manage',
+				'read_private_posts' => 'nta_wa_manage',
 			),
 		);
 		register_post_type( 'whatsapp-accounts', $args );

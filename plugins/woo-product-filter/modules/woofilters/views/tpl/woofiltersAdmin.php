@@ -14,15 +14,19 @@
 				} else {
 					?>
 				<li title="<?php echo esc_attr(__('Import tables', 'woo-product-filter')); ?>">
-					<button class="button button-small wpf-admin-btn-get-pro" disabled>
-						<i class="fa fa-fw fa-download"></i>
-						<?php esc_html_e('Import tables', 'woo-product-filter'); ?>
+					<button class="button button-small wpf-admin-btn-get-pro" disabled >
+						<a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank">
+							<i class="fa fa-fw fa-download"></i>
+							<?php esc_html_e('Import tables', 'woo-product-filter'); ?>
+						</a>
 					</button>
 				</li>
 				<li title="<?php echo esc_attr(__('Export selected', 'woo-product-filter')); ?>">
 					<button class="button button-small wpf-admin-btn-get-pro" disabled>
-						<i class="fa fa-fw fa-upload"></i>
-						<?php esc_html_e('Export selected', 'woo-product-filter'); ?>
+						<a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank">
+							<i class="fa fa-fw fa-upload"></i>
+							<?php esc_html_e('Export selected', 'woo-product-filter'); ?>
+						</a>
 					</button>
 				</li>
 				<?php }	?>

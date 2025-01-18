@@ -25,15 +25,18 @@ class OptionsViewWpf extends ViewWpf {
 		$tabs = $this->getModule()->getTabs();
 		$activeTab = $this->getModule()->getActiveTab();
 		$content = 'No tab content found - ERROR';
+
 		if (isset($tabs[ $activeTab ]) && isset($tabs[ $activeTab ]['callback'])) {
 			$content = call_user_func($tabs[ $activeTab ]['callback']);
 		}
+
 		$activeParentTabs = array();
 		foreach ($tabs as $tabKey => $tab) {
 			if ($tabKey == $activeTab && isset($tab['child_of'])) {
 				$activeTab = $tab['child_of'];
 			}
 		}
+
 		FrameWpf::_()->addJSVar('adminOptionsWpf', 'wpfActiveTab', $activeTab);
 		$this->assign('tabs', $tabs);
 		$this->assign('activeTab', $activeTab);
@@ -96,5 +99,14 @@ class OptionsViewWpf extends ViewWpf {
 		$this->assign('options', $options);
 		$this->assign('exportAllSubscribersUrl', UriWpf::mod('subscribe', 'getWpCsvList'));
 		return parent::getContent('optionsSettingsTabContent');
+	}
+	public function getProTabContent() {
+		FrameWpf::_()->addScript('admin.settings', $this->getModule()->getModPath() . 'js/admin.settings.js');
+		FrameWpf::_()->addStyle('admin.settings.css', $this->getModule()->getModPath() . 'css/admin.settings.css');
+		FrameWpf::_()->getModule('templates')->loadBootstrap();
+		FrameWpf::_()->getModule('templates')->loadJqueryUi();
+		FrameWpf::_()->addScript('notify-js', WPF_JS_PATH . 'notify.js', array(), false, true);
+
+		return parent::getContent('optionsProTabContent');
 	}
 }

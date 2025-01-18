@@ -3,7 +3,7 @@ Contributors: mdempfle
 Donate link: http://www.tinywebgallery.com
 Tags: iframe, embed, resize, shortcode, modify css
 Requires at least: 3.3
-Tested up to: 6.6.1
+Tested up to: 6.7.1
 Stable tag: 2024.5
 Requires PHP: 5.4
 License: Envato market standard or extended license

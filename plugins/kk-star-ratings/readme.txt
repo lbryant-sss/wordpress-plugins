@@ -6,7 +6,7 @@ Tags: star ratings, voting, rate post, ajax ratings, feedback
 Requires at least: 5.0
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 5.4.10.1
+Stable tag: 5.4.10.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,38 +95,8 @@ The source of this plugin is located at [Github](https://github.com/kamalkhan/kk
 
 == Changelog ==
 
-= 5.4.10.1 =
+= 5.4.10.2 =
 * Fixed security issue where any shortcode could be parsed.
-
-= 5.4.10 =
-* Fixed security issue where any shortcode could be parsed.
-
-= 5.4.9 =
-* Upgraded Freemius SDK.
-
-= 5.4.8 =
-* Fixed bug where rating didn't work with posts with quotation mark in title.
-
-= 5.4.7 =
-* Upgraded Freemius to 2.6.2
-* Improved PHP 8 compatibility.
-
-= 5.x =
-- [View Changelog](https://github.com/kamalkhan/kk-star-ratings/blob/master/CHANGELOG.md)
-
-= 4.x =
-[Archived](https://github.com/kamalkhan/kk-star-ratings/blob/master/.github/CHANGELOG-v4.md)
-
-= 3.x =
-[Archived](https://github.com/kamalkhan/kk-star-ratings/blob/master/.github/CHANGELOG-v3.md)
-
-= 2.x =
-[Archived](https://github.com/kamalkhan/kk-star-ratings/blob/master/.github/CHANGELOG-v2.md)
-
-= 1.x =
-[Archived](https://github.com/kamalkhan/kk-star-ratings/blob/master/.github/CHANGELOG-v1.md)
-
-
 
 == Upgrade Notice ==
 

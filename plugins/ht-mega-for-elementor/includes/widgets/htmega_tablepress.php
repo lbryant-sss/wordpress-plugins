@@ -40,8 +40,46 @@ class HTMega_Elementor_Widget_Tablepress extends Widget_Base {
         }
         return $table_data;
     }
-
     protected function register_controls() {
+        if ( ! is_plugin_active('tablepress/tablepress.php') ) {
+            $this->messing_parent_plg_notice();
+        } else {
+            $this->tablepress_regster_fields();
+        }
+    }
+    protected function messing_parent_plg_notice() {
+
+        $this->start_controls_section(
+            'messing_parent_plg_notice_section',
+            [
+                'label' => __( 'Tablepress', 'htmega-addons' ),
+            ]
+        );
+            $this->add_control(
+                'htemga_plugin_parent_missing_notice',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => sprintf(
+                        __( 'It appears that %1$s is not currently installed on your site. Kindly use the link below to install or activate %1$s. After completing the installation or activation, please refresh this page.', 'htmega-addons' ),
+                        '<a href="' . esc_url( admin_url( 'plugin-install.php?s=Tablepress&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">Tablepress</a>'
+                    ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
+                ]
+            );
+        
+
+            $this->add_control(
+                'parent_plugin_install',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => '<a href="' . esc_url( admin_url( 'plugin-install.php?s=Tablepress&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">' . esc_html__( 'Click to install or activate Tablepress', 'htmega-addons' ) . '</a>',
+                ]
+            );
+            
+        $this->end_controls_section();
+
+    }
+    protected function tablepress_regster_fields() {
 
         $this->start_controls_section(
             'tablepress_content',
@@ -436,6 +474,11 @@ class HTMega_Elementor_Widget_Tablepress extends Widget_Base {
     protected function render( $instance = [] ) {
 
         $settings   = $this->get_settings_for_display();
+
+        if ( ! is_plugin_active('tablepress/tablepress.php') ) {
+            htmega_plugin_missing_alert( __('Tablepress', 'htmega-addons') );
+            return;
+        }
 
         if ( !$settings['table_id'] ) {
             echo '<p>'.esc_html_e( "Please Select table","htmega-addons").'</p>';

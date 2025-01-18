@@ -32,7 +32,16 @@ class Menu {
         );
 
         if ( current_user_can( $capability ) ) {
-            $submenu[ $slug ][] = array( esc_html__( 'Settings', 'htmega-addons' ), $capability, 'admin.php?page=' . $slug . '#/general' );
+            $onboarding_completed = get_option('htmega_onboarding_completed');
+            $default_hash = '#/general';
+
+            if ( ! get_option( 'htmega_onboarding_completed' ) && ! get_option('htmega_element_tabs') && ! get_option('htmega_advance_element_tabs ') ) {
+                $default_hash = '#/setup-wizard';
+            } else {
+                $default_hash = '#/general';
+                update_option('htmega_onboarding_completed', true);
+            }
+            $submenu[ $slug ][] = array( esc_html__( 'Settings', 'htmega-addons' ), $capability, 'admin.php?page=' . $slug . $default_hash );
         }
 
         add_action( 'load-' . $hook, [ $this, 'init_hooks'] );
@@ -54,7 +63,6 @@ class Menu {
      * @return void
      */
     public function enqueue_scripts() {
-        wp_enqueue_style('htmegaopt-sweetalert2');
         wp_enqueue_style( 'htmegaopt-admin' );
         wp_enqueue_style( 'htmegaopt-style' );
         wp_enqueue_script( 'htmegaopt-admin' );
@@ -68,6 +76,9 @@ class Menu {
             'tabs'          => Options_Field::instance()->get_settings_tabs(),
             'sections'      => Options_Field::instance()->get_settings_subtabs(),
             'settings'      => Options_Field::instance()->get_registered_settings(),
+            'onboarding_completed' => get_option('htmega_onboarding_completed'),
+            'onboarding'    => $this->get_localize_data()['onboarding'],
+            'onboarding_asset_url' => HTMEGA_ADDONS_PL_URL.'admin/include/settings-panel/assets/images/',
             'options'       => htmegaopt_get_options( Options_Field::instance()->get_registered_settings() ),
             'labels'        => [
                 'pro' => __( 'Pro', 'htmega-addons' ),
@@ -80,6 +91,10 @@ class Menu {
                     'text'   => __( 'Save Settings', 'htmega-addons' ),
                     'saving' => __( 'Saving...', 'htmega-addons' ),
                     'saved'  => __( 'Data Saved', 'htmega-addons' ),
+                    'alert' => [
+                        'title'=> __( 'Success', 'htmega-addons' ),
+                        'text' => __( 'All data has been saved successfully!', 'htmega-addons' )
+                    ]
                 ],
                 'enableAllButton' => [
                     'enable'   => __( 'Enable All', 'htmega-addons' ),
@@ -102,7 +117,7 @@ class Menu {
                             'confirm' => __( 'OK', 'htmega-addons' ),
                         ]
                     ],
-                ]
+                ],
             ]
         ];
 
@@ -157,8 +172,118 @@ class Menu {
      */
     public function plugin_page() {
         ob_start();
-		include_once HTMEGAOPT_INCLUDES .'/templates/settings-page.php';
-		echo ob_get_clean(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        include_once HTMEGAOPT_INCLUDES .'/templates/settings-page.php';
+        echo ob_get_clean(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    }
+
+    public function get_localize_data() {
+        return [
+            'onboarding' => [
+                'steps'=> [
+                    'welcome'   => esc_html__('Welcome', 'htmega-addons'),
+                    'elements'  => esc_html__('Elements', 'htmega-addons'),
+                    'modules'   => esc_html__('Modules', 'htmega-addons'),
+                    'gopro'      => esc_html__('Go Pro', 'htmega-addons'),
+                    'templates' => esc_html__('Templates', 'htmega-addons'),
+                    'finalize' => esc_html__('Finalize', 'htmega-addons'),
+                ],
+                'buttons' => [
+                    'next' => __( 'Next', 'htmega-addons' ),
+                    'skip' => __( 'Skip', 'htmega-addons' ),
+                    'back' => __( 'Back', 'htmega-addons' ),
+                    'go_to_dashboard' => __( 'Go To Dashboard', 'htmega-addons' ),
+                    'enable_all' => __( 'Enable All', 'htmega-addons' ),
+                    'disable_all' => __( 'Disable All', 'htmega-addons' ),
+                ],
+                'welcome' => [
+                    'title' => __( 'Welcome To HT Mega', 'htmega-addons' ),
+                    'description' => __( 'Thank You for choosing HT Mega for Elementor. Follow these simple steps of easy setup wizard & enjoy your Elementor web-building experience now!', 'htmega-addons' ),
+                    'options' => [
+                        'basic' => [
+                            'title' => __( 'Basic', 'htmega-addons' ),
+                            'recommended' => [
+                                'status' => true,
+                                'text' => __( 'Recommended', 'htmega-addons' )
+                            ],
+                            'description' => __( 'General widgets will be activated to build your website. Best suited for lightweight-fast starter websites.', 'htmega-addons' ),
+                        ],
+                        'advanced' => [
+                            'title' => __( 'Advanced', 'htmega-addons' ),
+                            'recommended' => [
+                                'status' => false,
+                                'text' => __( 'Recommended', 'htmega-addons' )
+                            ],
+                            'description' => __( 'Build complex websites with the advance functionalities of HT Mega. All dynamic elements will be activated in this option.', 'htmega-addons' ),
+                        ],
+                        'custom' => [
+                            'title' => __( 'Custom', 'htmega-addons' ),
+                            'recommended' => [
+                                'status' => false,
+                                'text' => __( 'Recommended', 'htmega-addons' )
+                            ],
+                            'description' => __( 'Configure the elements of HT mega according to your preferences to make your website engaging & stand out.', 'htmega-addons' ),
+                        ],
+                    ],
+                    'data_collection_text' => __( 'By continuing, you agree to allow this plugin to collect some of your data for the purpose of improving your experience.', 'htmega-addons' ),
+                    'what_we_collect' => __( 'What We Collect', 'htmega-addons' ),
+                    'data_collection_info' => __( 'We gather basic, non-sensitive information to ensure the plugin works smoothly on your site. This includes your site\'s URL, the versions of WordPress and PHP you\'re using, and a list of your installed plugins and themes. Additionally, we collect your email address to send you exclusive discounts and important updates. This data helps us ensure that HT Mega stays up-to-date and compatible with the most popular plugins and themes. Your privacy is important to us. We will never send you spam, and we handle your data with the utmost care.', 'htmega-addons' ),
+                    'privacy_policy_link' => 'https://wphtmega.com/privacy-policy/',
+                    'privacy_policy_text' => __( 'Privacy Policy', 'htmega-addons' ),
+                    'proceed_button' => __( 'Proceed to Next', 'htmega-addons' ),
+                    'skip_button' => __( 'Skip & Go to Dashboard', 'htmega-addons' ),
+                ],
+                'elements' => [
+                    'title' => __( 'Activate the Elements You Require', 'htmega-addons' ),
+                    'description' => __( 'Select the elements you want to use in your website. You can enable or disable them anytime later.', 'htmega-addons' ),
+                    'view_all' => __( 'View All Elements', 'htmega-addons' ),
+                    'less_all' => __( 'Show Less Elements', 'htmega-addons' ),
+                ],
+                'modules' => [
+                    'title' => __( 'Select the Modules You Require Now', 'htmega-addons' ),
+                    'description' => __( 'Enable/Disable the Modules anytime you want from the HT Mega Dashboard.', 'htmega-addons' ),
+                ],
+                'gopro' => [
+                    'title' => sprintf( __( 'Upgrade to %s Today!', 'htmega-addons' ), '<span class="gradient-text">' . __( 'PRO', 'htmega-addons' ) . '</span>' ),
+                    'subtitle' => __( 'Unlock 6+ Premium Modules & 30+ Elements', 'htmega-addons' ),
+                    'section_title' => __( 'Explore Premium Features', 'htmega-addons' ),
+                    'description' => __( 'You can get a lot more out of it upgrading to premium. Get all features', 'htmega-addons' ),
+                    'features' => [
+                        'advanced_slider' => __( 'Advanced Slider', 'htmega-addons' ),
+                        'conditional_display' => __( 'Conditional Display', 'htmega-addons' ),
+                        'theme_builder' => __( 'Theme Builder', 'htmega-addons' ),
+                        'megamenu_builder' => __( 'Megamenu Builder', 'htmega-addons' ),
+                        'floating_effects' => __( 'Floating Effects', 'htmega-addons' ),
+                        'custom_css' => __( 'Custom CSS', 'htmega-addons' ),
+                        'dynamic_gallery' => __( 'Dynamic Gallery', 'htmega-addons' ),
+                        'cross_domain_copy' => __( 'Live Copy Paste', 'htmega-addons' ),
+                    ],
+                    'more_features_text' => __( '& Many More Features...', 'htmega-addons' ),
+                    'upgrade_button' => __( 'Upgrade To PRO', 'htmega-addons' ),
+                ],
+                'templates' => [
+                    'title' => sprintf( __( 'Explore %s Templates', 'htmega-addons' ), '<span class="gradient-text">900+</span>' ),
+                    'description' => __( 'Design stunning websites effortlessly with HT Mega\'s exclusive collection of templates.', 'htmega-addons' ),
+                    'features' => [
+                        'professionally_designed' => [
+                            'title' => __( 'Professionally Designed Templates', 'htmega-addons' ),
+                            'description' => __( 'Access a variety of ready-to-use templates for every niche, from business to e-commerce, blogs, and more.', 'htmega-addons' ),
+                        ],
+                        'one_click_import' => [
+                            'title' => __( 'One-Click Import', 'htmega-addons' ),
+                            'description' => __( 'Import complete pages or sections in seconds to kickstart your website design with minimal effort.', 'htmega-addons' ),
+                        ],
+                        'fully_customizable' => [
+                            'title' => __( 'Fully Customizable', 'htmega-addons' ),
+                            'description' => __( 'Modify every template to match your branding, ensuring a unique and personalized website.', 'htmega-addons' ),
+                        ],
+                    ],
+                ],
+                'congrats' => [
+                    'title' => __( 'You Have Completed Your Setup for HT Mega', 'htmega-addons' ),
+                    'go_to_dashboard' => __( 'Go To Dashboard', 'htmega-addons' ),
+                ],
+            ],
+        ];
     }
 
 }

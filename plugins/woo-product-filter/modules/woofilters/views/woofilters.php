@@ -105,12 +105,16 @@ class WoofiltersViewWpf extends ViewWpf {
 		FrameWpf::_()->addJSVar('admin.woofilters.list', 'url', admin_url('admin-ajax.php'));
 		FrameWpf::_()->getModule('templates')->loadBootstrap();
 		FrameWpf::_()->addStyle('admin.filters', $this->getModule()->getModPath() . 'css/admin.woofilters' . $addWC . '.css');
+		$proLink     = FrameWpf::_()->getModule('adminmenu')->getMainLink() . '&tab=gopro';
+
+		$this->assign('proLink', $proLink);
 		$this->assign('addNewLink', FrameWpf::_()->getModule('options')->getTabUrl('woofilters#wpfadd'));
 
 		return parent::getContent('woofiltersAdmin');
 	}
 
 	public function getEditTabContent( $idIn ) {
+		
 		$isWooCommercePluginActivated = $this->getModule()->isWooCommercePluginActivated();
 		if (!$isWooCommercePluginActivated) {
 			return;
@@ -148,7 +152,8 @@ class WoofiltersViewWpf extends ViewWpf {
 
 		$link        = FrameWpf::_()->getModule('options')->getTabUrl( $this->getCode() );
 		$linkSetting = FrameWpf::_()->getModule('options')->getTabUrl( 'settings' );
-		$proLink     = FrameWpf::_()->getModule('promo')->getWooBeWooPluginLink();
+		$proLink     = FrameWpf::_()->getModule('adminmenu')->getMainLink() . '&tab=gopro';
+
 		$this->assign('proLink', $proLink);
 		$this->assign('link', $link);
 		$this->assign('linkSetting', $linkSetting);
@@ -337,6 +342,9 @@ class WoofiltersViewWpf extends ViewWpf {
 
 		$slider = ( is_admin() || !$forFilter || ( strpos($order, '"wpfPrice"') || strpos($order, '"slider"') ) );
 		FrameWpf::_()->getModule('templates')->loadJqueryUi($slider);
+		if ($forFilter && $this->getFilterSetting($settings, 'initialise_immediately', false, 1) == 1) {
+			FrameWpf::_()->addJSVar('frontend.filters', 'wpIinitialiseImmediately', '1');
+		}
 	}
 
 	/**
@@ -648,9 +656,10 @@ class WoofiltersViewWpf extends ViewWpf {
 		}
 
 		$blockHeight = $this->getFilterSetting($settingsOriginal['settings'], 'filter_block_height', false, true);
-		$blockStyle  = 'visibility:hidden; width:' . $blockWidth . '; float:left; ' . ( $blockHeight ? 'height:' . $blockHeight . 'px;overflow: hidden;' : '' );
+		//$blockStyle  = 'visibility:hidden; width:' . $blockWidth . '; float:left; ' . ( $blockHeight ? 'height:' . $blockHeight . 'px;overflow: hidden;' : '' );
+		$showImmediately = $this->getFilterSetting($settingsOriginal['settings'], 'show_filter_immediately') == '1';
 		$blockStyle  =
-			'visibility:hidden; width:' . $blockWidth . ';' .
+			( $showImmediately ? '' : 'visibility:hidden;' ) . 'width:' . $blockWidth . ';' .
 			( '100%' == $blockWidth ? '' : 'float:left;' ) .
 			( $blockHeight ? 'height:' . $blockHeight . 'px;overflow: hidden;' : '' );
 
@@ -707,12 +716,14 @@ class WoofiltersViewWpf extends ViewWpf {
 			$html .= '<div class="wpfClear"></div>';
 		}
 
-		if ( $isPro && method_exists($proView, 'generateLoaderLayoutHtml') ) {
-			$html .= $proView->generateLoaderLayoutHtml($options);
-		} else {
-			$this->setFilterCss('#' . $filterId . ' .wpfLoaderLayout {position:absolute;top:0;bottom:0;left:0;right:0;background-color: rgba(255, 255, 255, 0.9);z-index: 999;}');
-			$this->setFilterCss('#' . $filterId . ' .wpfLoaderLayout i {position:absolute;z-index:9;top:50%;left:50%;margin-top:-30px;margin-left:-30px;color:rgba(0,0,0,.9);}');
-			$html .= '<div class="wpfLoaderLayout"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>';
+		if (!$showImmediately) {
+			if ( $isPro && method_exists($proView, 'generateLoaderLayoutHtml') ) {
+				$html .= $proView->generateLoaderLayoutHtml($options);
+			} else {
+				$this->setFilterCss('#' . $filterId . ' .wpfLoaderLayout {position:absolute;top:0;bottom:0;left:0;right:0;background-color: rgba(255, 255, 255, 0.9);z-index: 999;}');
+				$this->setFilterCss('#' . $filterId . ' .wpfLoaderLayout i {position:absolute;z-index:9;top:50%;left:50%;margin-top:-30px;margin-left:-30px;color:rgba(0,0,0,.9);}');
+				$html .= '<div class="wpfLoaderLayout"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>';
+			}
 		}
 
 		//if loader enable on load
@@ -728,6 +739,7 @@ class WoofiltersViewWpf extends ViewWpf {
 		$html .= '</div>';
 		$html .= self::$filterExistsTermsJS;
 		$html  = '<style type="text/css" id="wpfCustomCss-' . $viewId . '">' . DispatcherWpf::applyFilters('addCustomCss', $customCss . self::$filtersCss, $settings, $filterId) . '</style>' . $html;
+
 		$this->resetFilterExistsTerms();
 
 		return $html;

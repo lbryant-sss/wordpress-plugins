@@ -1499,6 +1499,12 @@ function remove_time_from_date( $datetime ) {
                                 type="checkbox" name="settings[export_matched_items]"
                                 value="1" <?php checked( $settings['export_matched_items'] ) ?> /> <?php _e( 'Export only matched product items',
                             'woo-order-export-lite' ) ?></label></div>
+                <div><input type="hidden" name="settings[exclude_free_items]" value="0"/><label><input
+                                type="checkbox" name="settings[exclude_free_items]"
+                                value="1" <?php
+                        checked( $settings['exclude_free_items'] ) ?> /> <?php
+                        _e( 'Exclude free items',
+                            'woo-order-export-lite' ) ?></label></div>
                 <div class="custom-fields__wrapper">
                     <div>
                         <span class="wc-oe-header"><?php _e( 'Item names', 'woo-order-export-lite' ) ?></span>
@@ -1595,9 +1601,20 @@ function remove_time_from_date( $datetime ) {
                 <div id='fields' style='display:none;'>
 
                     <div class="fields-control-block"></div>
-                    <div class="summary-row-title hide">
-                        <?php _e( 'Title for summary row', 'woo-order-export-lite' ) ?> <input name="settings[summary_row_title]" value="<?php echo esc_attr(isset($settings['summary_row_title']) ? $settings['summary_row_title'] : __( 'Total', 'woo-order-export-lite' )); ?>">
-                    <hr>
+                    <div class="summary-row-title">
+                        <div style="margin-bottom: 10px">
+                            <input type="hidden" name="settings[display_summary_row]" value="0">
+                            <input type="checkbox" name="settings[display_summary_row]"
+                                   id="display_summary_row_checkbox" value="1"
+				                <?php checked( $settings['display_summary_row'] ?? '', '1' ); ?>>
+			                <?php _e( 'Display summary row (you must mark fields below)', 'woo-order-export-lite' ); ?>
+                        </div>
+                        <div id="title_for_summary_row_block">
+			                <?php _e( 'Title for summary row', 'woo-order-export-lite' ); ?>
+                            <input name="settings[summary_row_title]"
+                                   value="<?php echo esc_attr( $settings['summary_row_title'] ?? __( 'Total', 'woo-order-export-lite' ) ); ?>">
+                        </div>
+                        <hr>
                     </div>
                     <div class="fields-control">
                         <div style="display: inline-block; float: left">

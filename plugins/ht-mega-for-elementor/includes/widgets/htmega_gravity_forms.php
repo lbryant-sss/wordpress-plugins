@@ -29,7 +29,33 @@ class HTMega_Elementor_Widget_Gravity_Forms extends Widget_Base {
 		return 'https://wphtmega.com/docs/forms-widgets/gravity-forms-widget/';
 	}
 
+    protected function register_controls() {
+        if ( ! is_plugin_active('gravityforms/gravityforms.php') ) {
+            $this->messing_parent_plg_notice();
+        } else {
+            $this->gravity_regster_fields();
+        }
+    }
+    protected function messing_parent_plg_notice() {
 
+        $this->start_controls_section(
+            'messing_parent_plg_notice_section',
+            [
+                'label' => __( 'Gravity Forms', 'htmega-addons' ),
+            ]
+        );
+            $this->add_control(
+                'htemga_plugin_parent_missing_notice',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => esc_html__( 'It appears that Gravity Forms is not currently installed on your site. Please install or activate Gravity Forms, and remember to refresh the page after installation or activation.', 'htmega-addons' ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
+                ]
+            );
+        
+        $this->end_controls_section();
+
+    }
     public function htmega_gravity_forms_options() {
         if ( class_exists( 'GFCommon' ) ) {
             $contact_forms = \RGFormsModel::get_forms( null, 'title' );
@@ -46,7 +72,7 @@ class HTMega_Elementor_Widget_Gravity_Forms extends Widget_Base {
         return $form_options;
     }
 
-    protected function register_controls() {
+    protected function gravity_regster_fields() {
 
         $this->start_controls_section(
             'gravityforms_content',
@@ -898,7 +924,10 @@ class HTMega_Elementor_Widget_Gravity_Forms extends Widget_Base {
     protected function render( $instance = [] ) {
 
         $settings   = $this->get_settings_for_display();
-
+        if ( ! is_plugin_active('gravityforms/gravityforms.php') ) {
+            htmega_plugin_missing_alert( __('Gravity Forms', 'htmega-addons') );
+            return;
+        }
        $form_attributes = [
             'id' => sanitize_text_field( $settings['gravity_form'] ),
             'ajax' => ( $settings['form_ajax'] == 'yes' ) ? 'true' : 'false',

@@ -102,9 +102,9 @@ class Premium_Vscroll extends Widget_Base {
 		return array( 'pa', 'premium', 'premium vertical scroll', 'full', 'section', 'navigation', 'one', 'page' );
 	}
 
-    protected function is_dynamic_content():bool {
-        return false;
-    }
+	protected function is_dynamic_content(): bool {
+		return false;
+	}
 
 	/**
 	 * Retrieve Widget Dependent CSS.
@@ -157,9 +157,9 @@ class Premium_Vscroll extends Widget_Base {
 		return 'https://premiumaddons.com/support/';
 	}
 
-    public function has_widget_inner_wrapper(): bool {
-        return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-    }
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+	}
 
 	/**
 	 * Register Video Box controls.
@@ -543,7 +543,7 @@ class Premium_Vscroll extends Widget_Base {
 		$this->add_control(
 			'new_effect_note',
 			array(
-				'raw'             => __('Please note that the animation will automatically be changed to default on touch devices for better performance.','premium-addons-for-elementor' ),
+				'raw'             => __( 'Please note that the animation will automatically be changed to default on touch devices for better performance.', 'premium-addons-for-elementor' ),
 				'type'            => Controls_Manager::RAW_HTML,
 				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
 				'condition'       => array(
@@ -631,7 +631,7 @@ class Premium_Vscroll extends Widget_Base {
 			)
 		);
 
-		$doc_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/how-to-create-elementor-template-to-be-used-with-premium-addons', 'editor-page', 'wp-editor', 'get-support' );
+		$doc_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/how-to-create-elementor-template-to-be-used-with-premium-addons', 'vscroll-widget', 'wp-editor', 'get-support' );
 		$title   = __( 'How to create an Elementor template to be used in Premium Vertical Scroll »', 'premium-addons-for-elementor' );
 
 		$this->add_control(

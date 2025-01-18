@@ -39,12 +39,15 @@
       "_vendor-b9834729.min.js"
     ]
   },
-  "_date-intervals-991e3d8a.min.js": {
-    "file": "js/chunks/date-intervals-991e3d8a.min.js",
+  "_date-intervals-5a2b6478.min.js": {
+    "file": "js/chunks/date-intervals-5a2b6478.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_index-a27b8464.min.js"
+      "_index-11e10b96.min.js"
     ]
+  },
+  "_exactmetrics-icons-634e3a70.min.js": {
+    "file": "js/chunks/exactmetrics-icons-634e3a70.min.js"
   },
   "_html2canvas-c6e0047e.min.js": {
     "file": "js/chunks/html2canvas-c6e0047e.min.js",
@@ -53,8 +56,8 @@
     ],
     "isDynamicEntry": true
   },
-  "_index-a27b8464.min.js": {
-    "file": "js/chunks/index-a27b8464.min.js",
+  "_index-11e10b96.min.js": {
+    "file": "js/chunks/index-11e10b96.min.js",
     "imports": [
       "_vendor-b9834729.min.js"
     ]
@@ -90,12 +93,13 @@
       "_ContentIconList-bbe6e6ed.min.js"
     ]
   },
-  "_report-table-helper-79adf3a3.min.js": {
-    "file": "js/chunks/report-table-helper-79adf3a3.min.js",
+  "_report-table-helper-2f40625f.min.js": {
+    "file": "js/chunks/report-table-helper-2f40625f.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
-      "_date-intervals-991e3d8a.min.js"
+      "_date-intervals-5a2b6478.min.js",
+      "_exactmetrics-icons-634e3a70.min.js"
     ]
   },
   "_vendor-b9834729.min.js": {
@@ -340,6 +344,10 @@
   "src/assets/img/exactmetrics/badge-light.svg": {
     "file": "img/badge-light.svg",
     "src": "src/assets/img/exactmetrics/badge-light.svg"
+  },
+  "src/assets/img/exactmetrics/cart-abandonment-screen.png": {
+    "file": "img/cart-abandonment-screen.png",
+    "src": "src/assets/img/exactmetrics/cart-abandonment-screen.png"
   },
   "src/assets/img/exactmetrics/country-report-screen.png": {
     "file": "img/country-report-screen.png",
@@ -1046,9 +1054,9 @@
     "file": "js/frontend.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_date-intervals-991e3d8a.min.js",
+      "_date-intervals-5a2b6478.min.js",
       "_WidgetReportError-1a54c6a5.min.js",
-      "_index-a27b8464.min.js"
+      "_index-11e10b96.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/frontend/frontend.js"
@@ -1082,6 +1090,7 @@
       "img/engagement-pages-screen.png",
       "img/ecommerce-overview-screen.png",
       "img/ecommerce-coupons-screen.png",
+      "img/cart-abandonment-screen.png",
       "img/ecommerce-funnel-upsell.png",
       "img/real-time-screen.png",
       "img/site-speed-screen.png",
@@ -1151,12 +1160,13 @@
     "file": "js/reports.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_date-intervals-991e3d8a.min.js",
-      "_report-table-helper-79adf3a3.min.js",
+      "_date-intervals-5a2b6478.min.js",
+      "_report-table-helper-2f40625f.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
       "_index-c23ea956.min.js",
-      "_index-a27b8464.min.js",
-      "_ContentIconList-bbe6e6ed.min.js"
+      "_index-11e10b96.min.js",
+      "_ContentIconList-bbe6e6ed.min.js",
+      "_exactmetrics-icons-634e3a70.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/reports/reports.js"
@@ -1289,6 +1299,7 @@
       "img/engagement-pages-screen.png",
       "img/ecommerce-overview-screen.png",
       "img/ecommerce-coupons-screen.png",
+      "img/cart-abandonment-screen.png",
       "img/ecommerce-funnel-upsell.png",
       "img/real-time-screen.png",
       "img/site-speed-screen.png",
@@ -1334,11 +1345,12 @@
     "file": "js/settings.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_index-a27b8464.min.js",
+      "_index-11e10b96.min.js",
       "_ContentIconList-bbe6e6ed.min.js",
       "_AboutTestimonialsSlider-a497a870.min.js",
       "_index-c23ea956.min.js",
-      "_SettingsInfoTooltip-facc1a56.min.js"
+      "_SettingsInfoTooltip-facc1a56.min.js",
+      "_exactmetrics-icons-634e3a70.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/settings/settings.js"
@@ -1370,6 +1382,7 @@
       "img/engagement-pages-screen.png",
       "img/ecommerce-overview-screen.png",
       "img/ecommerce-coupons-screen.png",
+      "img/cart-abandonment-screen.png",
       "img/ecommerce-funnel-upsell.png",
       "img/real-time-screen.png",
       "img/site-speed-screen.png",
@@ -1440,11 +1453,12 @@
     "file": "js/widget.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_date-intervals-991e3d8a.min.js",
-      "_report-table-helper-79adf3a3.min.js",
+      "_date-intervals-5a2b6478.min.js",
+      "_report-table-helper-2f40625f.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
       "_WidgetReportError-1a54c6a5.min.js",
-      "_index-a27b8464.min.js"
+      "_index-11e10b96.min.js",
+      "_exactmetrics-icons-634e3a70.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/widget/widget.js"
@@ -1501,6 +1515,7 @@
       "img/engagement-pages-screen.png",
       "img/ecommerce-overview-screen.png",
       "img/ecommerce-coupons-screen.png",
+      "img/cart-abandonment-screen.png",
       "img/ecommerce-funnel-upsell.png",
       "img/real-time-screen.png",
       "img/site-speed-screen.png",
@@ -1522,7 +1537,7 @@
       "_vendor-b9834729.min.js",
       "_AboutTestimonialsSlider-a497a870.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
-      "_index-a27b8464.min.js",
+      "_index-11e10b96.min.js",
       "_ContentIconList-bbe6e6ed.min.js"
     ],
     "isEntry": true,

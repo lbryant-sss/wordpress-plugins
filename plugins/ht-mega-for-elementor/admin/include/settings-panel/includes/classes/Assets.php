@@ -9,6 +9,7 @@ class Assets {
     function __construct() {
         if ( is_admin() ) {
             add_action( 'admin_enqueue_scripts', [ $this, 'register' ], 5 );
+            add_action( 'admin_enqueue_scripts', [ $this, 'htmega_enqueue_scripts' ], 5 );
         }
     }
 
@@ -74,16 +75,39 @@ class Assets {
             //     'version'   => HTMEGA_VERSION,
             //     'in_footer' => true
             // ],
-            'htmegaopt-admin' => [
-                //'src'       => HTMEGAOPT_ASSETS . '/js/admin'.$prefix.'.js',
-                'src'       => HTMEGAOPT_ASSETS . '/js/admin.js',
-                'deps'      => [ 'jquery'],
-                'version'   => HTMEGA_VERSION,
-                'in_footer' => true
-            ]
+            // 'htmegaopt-admin' => [
+            //     //'src'       => HTMEGAOPT_ASSETS . '/js/admin'.$prefix.'.js',
+            //     'src'       => HTMEGAOPT_ASSETS . '/js/admin.js',
+            //     'deps'      => [ 'jquery'],
+            //     'version'   => HTMEGA_VERSION,
+            //     'in_footer' => true
+            // ]
         ];
 
         return $scripts;
+    }
+
+    /**
+     * Enqueue admin scripts
+     */
+    function htmega_enqueue_scripts($hook) {
+        // Get the current page from $_GET
+        $page = isset($_GET['page']) ? $_GET['page'] : '';
+        
+        // Only load on HTMega settings pages
+        if ('htmega-addons' != $page) {
+            return;
+        }
+        // Enqueue other scripts and styles
+        wp_enqueue_script('htmegaopt-admin', HTMEGAOPT_ASSETS . '/js/admin.js', array(), HTMEGA_VERSION, true);
+        
+        // Add the type="module" attribute
+        add_filter('script_loader_tag', function($tag, $handle) {
+            if ('htmegaopt-admin' === $handle) {
+                return str_replace('src', 'type="module" src', $tag);
+            }
+            return $tag;
+        }, 10, 2);
     }
 
     /**
@@ -97,12 +121,6 @@ class Assets {
             'htmegaopt-style' => [
                 'src' =>  HTMEGAOPT_ASSETS . '/css/main.css'
             ],
-            'htmegaopt-sweetalert2' => [
-                'src' =>  HTMEGAOPT_ASSETS . '/css/sweetalert2.min.css'
-            ],
-            'htmegaopt-admin' => [
-                'src' =>  HTMEGAOPT_ASSETS . '/css/admin.css'
-            ]
         ];
 
         return $styles;

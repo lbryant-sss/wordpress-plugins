@@ -45,6 +45,8 @@ add_action('wp_ajax_backuply_handle_backup', 'backuply_handle_backup_request');
 add_action('wp_ajax_backuply_download_bcloud', 'backuply_download_bcloud');
 add_action('wp_ajax_backuply_update_quota', 'backuply_update_quota');
 add_action('wp_ajax_backuply_backup_upload', 'backuply_backup_upload');
+add_action('wp_ajax_nopriv_backuply_restore_status_log', 'backuply_restore_status_log');
+add_action('wp_ajax_backuply_restore_status_log', 'backuply_restore_status_log');
 
 // Backuply CLoud
 add_action('wp_ajax_bcloud_trial', 'backuply_bcloud_trial');
@@ -1124,4 +1126,35 @@ function backuply_backup_upload(){
 	
 	wp_send_json_success($chunk_number * $chunk_size);
 
+}
+
+function backuply_restore_status_log(){
+	
+	// Checking the Status key.
+	if(!backuply_verify_status_log()){
+		wp_send_json(array('success' => false, 'progress_log' => 'Ajax Security Check Failed!|error'));
+		die();
+	}
+	
+	$log_file = BACKUPLY_BACKUP_DIR. '/backuply_log.php';
+	$logs = [];
+	$last_log = (int) sanitize_text_field(wp_unslash($_REQUEST['last_status']));
+
+	if(!file_exists($log_file)){
+		$logs[] = 'Something went wrong!|error';
+		wp_send_json(array('success' => false, 'progress_log' => $logs));
+		die();
+	}
+	
+	$fh = fopen($log_file, 'r');
+	
+	$seek_to = $last_log + 16; // 16 for php exit
+	
+	@fseek($fh, $seek_to);
+	
+	$lines = fread($fh, fstat($fh)['size']);
+	fclose($fh);
+	$fh = null;
+	
+	wp_send_json(array('success' => true, 'progress_log' => $lines));
 }

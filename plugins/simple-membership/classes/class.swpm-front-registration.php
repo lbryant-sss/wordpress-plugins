@@ -108,6 +108,8 @@ class SwpmFrontRegistration extends SwpmRegistration {
 		ob_start();
 		extract( (array) $member, EXTR_SKIP );
 
+		$hide_membership_level_field = $settings_configs->get_value( 'hide-reg-form-membership-level-field' );
+
 		$render_new_form_ui = $settings_configs->get_value('use-new-form-ui');
 		if (!empty($render_new_form_ui)) {
 			include SIMPLE_WP_MEMBERSHIP_PATH . 'views/add-v2.php';
@@ -456,7 +458,7 @@ class SwpmFrontRegistration extends SwpmRegistration {
 			//Update the data in the swpm database.
 			$swpm_id = $auth->get( 'member_id' );
 			//SwpmLog::log_simple_debug("Updating member profile data with SWPM ID: " . $swpm_id, true);
-			$member_info = array_filter( $member_info );//Remove any null values.
+			$member_info = array_filter( $member_info, array($this, 'filter_empty_member_info_fields'), ARRAY_FILTER_USE_BOTH  );//Remove any null values (except first_name and last_name).
 			$wpdb->update( $wpdb->prefix . 'swpm_members_tbl', $member_info, array( 'member_id' => $swpm_id ) );
 
 			//Reload user data after update so the profile page reflects the new data.
@@ -504,6 +506,20 @@ class SwpmFrontRegistration extends SwpmRegistration {
 			SwpmTransfer::get_instance()->set( 'status', $message );
 			return false; //Error in the form submission.
 		}
+	}
+
+	/**
+	 * array_filter callback to remove any null values except for the first_name and last_name array indexes.
+	 */
+	public function filter_empty_member_info_fields ($item_value, $item_key){
+		//Returning 'true' will keep the item in the array (so it will not be filtered out). We want to keep the first_name and last_name fields even if they are empty.
+		//Returning 'false' will perform the filtering and remove the item from the array if it is empty (so the null/empty value will not be saved in the database).
+		if (in_array($item_key, array('first_name', 'last_name'))){
+			//Keep the first_name and last_name fields even if they are empty.
+			return true;
+		}
+
+		return !empty($item_value);
 	}
 
 	public function reset_password( $email ) {

@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, F as Fragment, a as getElement } from './index-745b6bec.js';
-import { a as apiFetch } from './fetch-2032d11d.js';
+import { a as apiFetch } from './fetch-2d92a73e.js';
 import { a as getHumanDiscount } from './price-d5770168.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
 import { F as FormSubmitController } from './form-data-76641f16.js';

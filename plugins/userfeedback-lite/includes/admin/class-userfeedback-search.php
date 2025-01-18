@@ -56,7 +56,12 @@ class UserFeedback_Search {
 			$post_title  = $request->get_param( 'search' );
 		}
 		$post_types  = array( 'post', 'page' );
-		$search_text = '%' . urldecode( $post_title ) . '%';
+		
+		if ( ! empty( $post_title ) ) {
+			$post_title = urldecode( $post_title );
+		}
+		
+		$search_text = '%' . $post_title . '%';
 
 		// get all the post ids with a title that matches our parameter
 		$id_results = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s", $search_text ) );

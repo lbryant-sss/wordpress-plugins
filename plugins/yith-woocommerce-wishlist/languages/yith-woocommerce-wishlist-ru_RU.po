@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: YITH WCWL\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yith-woocommerce-"
 "wishlist\n"
-"POT-Creation-Date: 2024-10-30T08:33:15+00:00\n"
+"POT-Creation-Date: 2025-01-08T13:43:07+00:00\n"
 "PO-Revision-Date: 2020-10-16 14:06+0200\n"
 "Last-Translator: Valentyn Zubenko <valentyn.zubenko@gmail.com>\n"
 "Language-Team: Your Inspiration Themes <support@yithemes.com>\n"
@@ -22,17 +22,14 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: plugin-fw\n"
 
 #. Plugin Name of the plugin
-#: init.php
 msgid "YITH WooCommerce Wishlist"
 msgstr "Мои закладки на  %s"
 
 #. Plugin URI of the plugin
-#: init.php
 msgid "https://yithemes.com/themes/plugins/yith-woocommerce-wishlist/"
 msgstr ""
 
 #. Description of the plugin
-#: init.php
 msgid ""
 "<code><strong>YITH WooCommerce Wishlist</strong></code> gives your users the "
 "possibility to create, fill, manage and share their wishlists allowing you "
@@ -42,12 +39,10 @@ msgid ""
 msgstr ""
 
 #. Author of the plugin
-#: init.php
 msgid "YITH"
 msgstr ""
 
 #. Author URI of the plugin
-#: init.php
 msgid "https://yithemes.com/"
 msgstr ""
 
@@ -301,12 +296,12 @@ msgstr ""
 msgid "Add to cart"
 msgstr ""
 
-#: includes/class-yith-wcwl-install.php:133
+#: includes/class-yith-wcwl-install.php:134
 msgctxt "page_slug"
 msgid "wishlist"
 msgstr ""
 
-#: includes/class-yith-wcwl-install.php:135
+#: includes/class-yith-wcwl-install.php:136
 msgid "Wishlist"
 msgstr ""
 
@@ -802,13 +797,13 @@ msgctxt "Elementor control label"
 msgid "Paginate items"
 msgstr ""
 
-#: init.php:140
+#: init.php:142
 msgid ""
 "YITH WooCommerce Wishlist was deactivated as you're running an higher tier "
 "version of the same plugin."
 msgstr ""
 
-#: init.php:156
+#: init.php:158
 msgid "is enabled but not effective. It requires WooCommerce to work."
 msgstr ""
 

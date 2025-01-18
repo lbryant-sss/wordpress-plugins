@@ -9,6 +9,15 @@ class OverviewControllerWpf extends ControllerWpf {
 		}
 		$res->ajaxExec();
 	}
+	public function contactus() {
+		$res = new ResponseWpf();
+		if ($this->getModel()->contactus(ReqWpf::get('post'))) {
+			$res->addMessage(esc_html__('Done', 'woo-product-filter'));
+		} else {
+			$res->pushError($this->getModel()->getErrors());
+		}
+		$res->ajaxExec();
+	}
 	public function rating() {
 		$res = new ResponseWpf();
 		if ($this->getModel()->rating(ReqWpf::get('post'))) {

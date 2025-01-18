@@ -3,10 +3,10 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const mutations = require('./mutations-ddd639e5.js');
+const mutations = require('./mutations-757d8d21.js');
 const pageAlign = require('./page-align-5a2ab493.js');
 const getters = require('./getters-87b7ef91.js');
-const index$1 = require('./index-3ad2d5f0.js');
+const index$1 = require('./index-2f2cb68c.js');
 require('./index-bcdafe6e.js');
 require('./utils-2e91d46c.js');
 require('./remove-query-args-b57e8cd3.js');
@@ -16,7 +16,7 @@ require('./google-59d23803.js');
 require('./currency-71fce0f0.js');
 require('./store-4a539aea.js');
 require('./price-653ec1cb.js');
-require('./fetch-f25a0cb0.js');
+require('./fetch-aaab7645.js');
 
 const scOrderCouponFormCss = ":host{display:block}.coupon-form{position:relative}.form{opacity:0;visibility:hidden;height:0;transition:opacity var(--sc-transition-fast) ease-in-out}.coupon-form--is-open .form{opacity:1;visibility:visible;height:auto;margin-top:var(--sc-spacing-small);display:grid;gap:var(--sc-spacing-small)}.coupon-form--is-open .trigger{color:var(--sc-input-label-color)}.coupon-form--is-open .trigger:hover{text-decoration:none}.trigger{cursor:pointer;font-size:var(--sc-font-size-small);color:var(--sc-color-gray-500);user-select:none}.trigger:hover{text-decoration:underline}.order-coupon-form--is-rtl .trigger,.order-coupon-form--is-rtl .trigger:hover{text-align:right}";
 const ScOrderCouponFormStyle0 = scOrderCouponFormCss;

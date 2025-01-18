@@ -33,8 +33,10 @@ abstract class Actor {
 
 class Role extends Actor {
 	private $actorId;
+	private $roleId;
 
 	public function __construct($roleId) {
+		$this->roleId = $roleId;
 		$this->actorId = self::ROLE_PREFIX . $roleId;
 	}
 
@@ -44,6 +46,10 @@ class Role extends Actor {
 
 	public function getPriority() {
 		return 2;
+	}
+
+	public function getRoleId() {
+		return $this->roleId;
 	}
 }
 
@@ -144,6 +150,22 @@ class User extends Actor {
 
 		$this->flattenedActors = $actors;
 		return $actors;
+	}
+
+	/**
+	 * Get the roles that this user has.
+	 *
+	 * Note that this returns *role IDs*, not *actor IDs*. In this context, a role ID is the internal
+	 * role name or slug used by WordPress. For example, "administrator" instead of "role:administrator".
+	 *
+	 * @return string[]
+	 */
+	public function getRoleIds() {
+		$roleNames = [];
+		foreach ($this->roles as $role) {
+			$roleNames[] = $role->getRoleId();
+		}
+		return $roleNames;
 	}
 }
 

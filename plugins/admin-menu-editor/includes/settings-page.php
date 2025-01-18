@@ -455,7 +455,7 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 					<fieldset id="ame-submenu-icons-settings">
 						<p>
 							<label>
-								<input type="radio" name="error_verbosity" value="<?php echo esc_attr(WPMenuEditor::VERBOSITY_LOW); ?>>"
+								<input type="radio" name="error_verbosity" value="<?php echo esc_attr(WPMenuEditor::VERBOSITY_LOW); ?>"
 									<?php checked(WPMenuEditor::VERBOSITY_LOW, $settings['error_verbosity']); ?>>
 								Low
 
@@ -467,7 +467,7 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 
 						<p>
 							<label>
-								<input type="radio" name="error_verbosity" value="<?php echo esc_attr(WPMenuEditor::VERBOSITY_NORMAL); ?>>"
+								<input type="radio" name="error_verbosity" value="<?php echo esc_attr(WPMenuEditor::VERBOSITY_NORMAL); ?>"
 									<?php checked(WPMenuEditor::VERBOSITY_NORMAL, $settings['error_verbosity']); ?>>
 								Normal
 
@@ -480,7 +480,7 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 
 						<p>
 							<label>
-								<input type="radio" name="error_verbosity" value="<?php echo esc_attr(WPMenuEditor::VERBOSITY_VERBOSE); ?>>"
+								<input type="radio" name="error_verbosity" value="<?php echo esc_attr(WPMenuEditor::VERBOSITY_VERBOSE); ?>"
 									<?php checked(WPMenuEditor::VERBOSITY_VERBOSE, $settings['error_verbosity']); ?>>
 								Verbose
 

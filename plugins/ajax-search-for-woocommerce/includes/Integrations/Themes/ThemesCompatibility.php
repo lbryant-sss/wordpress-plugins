@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class ThemesCompatibility {
 	private $themeSlug = '';
 	private $themeName = '';
+	private $themeVersion = '';
 	private $parentThemeName = '';
 	private $theme = null;
 	private $supportActive = false;
@@ -35,6 +36,7 @@ class ThemesCompatibility {
 
 			$this->theme           = $theme;
 			$this->themeName       = $theme->name;
+			$this->themeVersion    = $theme->offsetGet('Version');
 			$this->parentThemeName = ! empty( $theme->parent_theme ) ? $theme->parent_theme : '';
 		}
 
@@ -357,7 +359,8 @@ class ThemesCompatibility {
 				'slug' => 'bricks',
 				'name' => 'Bricks',
 				'args' => array(
-					'alwaysEnabled' => true,
+					'alwaysEnabled'  => true,
+					'minimumVersion' => '1.11.1',
 				),
 			),
 			'betheme'          => array(
@@ -405,6 +408,11 @@ class ThemesCompatibility {
 	private function loadCompatibilities() {
 		foreach ( $this->supportedThemes() as $theme ) {
 			if ( $theme['slug'] === $this->themeSlug ) {
+				if ( isset( $theme['args']['minimumVersion'] ) && version_compare( $this->themeVersion, $theme['args']['minimumVersion'], '<' ) ) {
+					// Break if theme version is lower than required.
+					break;
+				}
+
 				$this->supportActive = true;
 
 				$class = '\\DgoraWcas\\Integrations\\Themes\\';

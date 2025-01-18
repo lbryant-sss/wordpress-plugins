@@ -28,7 +28,45 @@ class HTMega_Elementor_Widget_Ninja_Form extends Widget_Base {
     public function get_help_url() {
 		return 'https://wphtmega.com/docs/forms-widgets/ninja-form-widget/';
 	}
+    protected function register_controls() {
+        if ( ! is_plugin_active('ninja-forms/ninja-forms.php') ) {
+            $this->messing_parent_plg_notice();
+        } else {
+            $this->ninjaform_regster_fields();
+        }
+    }
+    protected function messing_parent_plg_notice() {
 
+        $this->start_controls_section(
+            'messing_parent_plg_notice_section',
+            [
+                'label' => __( 'Ninja Form', 'htmega-addons' ),
+            ]
+        );
+            $this->add_control(
+                'htemga_plugin_parent_missing_notice',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => sprintf(
+                        __( 'It appears that %1$s is not currently installed on your site. Kindly use the link below to install or activate %1$s. After completing the installation or activation, please refresh this page.', 'htmega-addons' ),
+                        '<a href="' . esc_url( admin_url( 'plugin-install.php?s=Ninja%2520Form&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">Ninja Form</a>'
+                    ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
+                ]
+            );
+        
+
+            $this->add_control(
+                'parent_plugin_install',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => '<a href="' . esc_url( admin_url( 'plugin-install.php?s=Ninja%2520Form&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">' . esc_html__( 'Click to install or activate Ninja Form', 'htmega-addons' ) . '</a>',
+                ]
+            );
+            
+        $this->end_controls_section();
+
+    }
     public function htmega_ninja_forms_list() {
         $form_options = array();
         if ( class_exists( 'Ninja_Forms' ) ) {
@@ -45,7 +83,7 @@ class HTMega_Elementor_Widget_Ninja_Form extends Widget_Base {
         return $form_options;
     }
 
-    protected function register_controls() {
+    protected function ninjaform_regster_fields() {
 
         $this->start_controls_section(
             'ninjaform_content',
@@ -1174,7 +1212,10 @@ class HTMega_Elementor_Widget_Ninja_Form extends Widget_Base {
     }
 
     protected function render( $instance = [] ) {
-
+        if ( ! is_plugin_active('ninja-forms/ninja-forms.php') ) {
+            htmega_plugin_missing_alert( __('Ninja Form', 'htmega-addons') );
+            return;
+        }
         $settings   = $this->get_settings_for_display();
         $form_attributes = [
             'id' => sanitize_text_field( $settings['ninja_form'] ),

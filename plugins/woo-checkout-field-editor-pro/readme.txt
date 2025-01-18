@@ -5,7 +5,7 @@ Tags: Checkout  Manager, Checkout Field Editor, WooCommerce Checkout, WooCommerc
 Requires at least: 4.9
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 2.0.6
+Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,8 @@ Checkout Field Editor (Checkout Manager) for WooCommerce – The best WooCommerc
 WooCommerce Checkout Field Editor (Checkout Manager) Plugin lets you add 20 different types of custom checkout fields to your Checkout page, blended with a simple and user-friendly interface.
 
 It  enables you to edit the default checkout fields of your WooCommerce platform, add new custom fields in the three sections (namely Billing, Shipping and Additional), edit, hide, or delete the default fields, change labels, rearrange checkout fields, validate the checkout fields, add custom css classes etc.
+ 
+✳️ **Block Compatible →** The plugin is now compatible with the WooCommerce checkout block, allowing text, select, radio, and checkbox fields, along with an additional section. It also supports email, phone, and URL validation for the text field.
 
 [Try the Demo](https://flydemos.com/wcfe/?utm_source=wcfe_free&utm_medium=readme&utm_campaign=try_demo) | [Documents](https://www.themehigh.com/docs/docs-category/checkout-field-editor-for-woocommerce/?utm_source=wcfe_free&utm_medium=readme&utm_campaign=help_docs) | [Pro Version](https://www.themehigh.com/product/woocommerce-checkout-field-editor-pro/?utm_source=wcfe_free&utm_medium=readme&utm_campaign=wcfe_upgrade_link) | [Join Community](http://www.facebook.com/groups/themehigh/) | [Reddit](https://www.reddit.com/r/themehigh/)
 --------------------------------------------
@@ -78,6 +80,7 @@ Using this plugin, you can reset to the original state with the default fields o
 = ☞ Translate Ready to Other Language =
 The Checkout Field Editor plugin lets you translate to other languages as it is compatible with WPML, Polylang & Loco Translate translation plugins. To translate dynamic strings, use Polylang or WPML plugin.
 
+✳️ Upgrade to the [Pro version](https://www.themehigh.com/product/woocommerce-checkout-field-editor-pro/?utm_source=wcfe_free&utm_medium=readme&utm_campaign=wcfe_upgrade_link) to access more sections and advanced conditional logic features along with our **block integration!**
 
 == Other Popular plugins from Themehigh ==
 
@@ -285,6 +288,14 @@ Yes. There is a button 'reset to default fields' to go back to the WooCommerce d
 9. Locale override settings
 
 == Changelog ==
+= 2.1.1 =
+* Added WooCommerce backward compatibility for versions below 8.7.
+
+= 2.1.0 =
+* Added options to add additional sections and custom checkout fields in the checkout block.
+* Added email,phone and url custom validations.
+* Added WooCommerce 9.5 compatibility.
+
 = 2.0.6 =
 * Fixed an issue where certain fields were not displaying on the order details page.
 

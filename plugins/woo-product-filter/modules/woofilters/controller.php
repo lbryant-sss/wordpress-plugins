@@ -364,6 +364,7 @@ class WoofiltersControllerWpf extends ControllerWpf {
 				'total'    => $loopFoundPost,
 				'per_page' => $queryvars['posts_per_page'],
 				'current'  => $paged,
+				'orderedby' => '',
 			);
 			wc_get_template( 'loop/result-count.php', $args );
 			$resultCountHtml = ob_get_clean();

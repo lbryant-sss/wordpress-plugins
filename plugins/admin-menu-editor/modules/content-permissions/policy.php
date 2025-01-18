@@ -18,10 +18,20 @@ class ContentItemPolicy implements \JsonSerializable {
 	 * @var AccessProtectionSettings
 	 */
 	private $accessProtectionSettings;
+	/**
+	 * @var bool
+	 */
+	private $preferAdvancedMode;
 
-	public function __construct($actorAccess, $replacementContent = '', AccessProtectionSettings $accessProtectionSettings = null) {
+	public function __construct(
+		$actorAccess,
+		$replacementContent = '',
+		AccessProtectionSettings $accessProtectionSettings = null,
+		$preferAdvancedMode = false
+	) {
 		$this->actorAccess = $actorAccess;
 		$this->replacementContent = $replacementContent;
+		$this->preferAdvancedMode = $preferAdvancedMode;
 		if ( $accessProtectionSettings ) {
 			$this->accessProtectionSettings = $accessProtectionSettings;
 		} else {
@@ -129,6 +139,41 @@ class ContentItemPolicy implements \JsonSerializable {
 		}
 	}
 
+	/**
+	 * @param Actor $actor
+	 * @param Action $action
+	 * @param bool|null $isAllowed
+	 * @return void
+	 */
+	public function setActorPermission(Actor $actor, Action $action, $isAllowed) {
+		$actorId = $actor->getId();
+		$actionName = $action->getName();
+
+		if ( $isAllowed === null ) {
+			unset($this->actorAccess[$actorId][$actionName]);
+			if ( empty($this->actorAccess[$actorId]) ) {
+				unset($this->actorAccess[$actorId]);
+			}
+			return;
+		}
+
+		if ( !isset($this->actorAccess[$actorId]) ) {
+			$this->actorAccess[$actorId] = [];
+		}
+		$this->actorAccess[$actorId][$actionName] = $isAllowed;
+	}
+
+	/**
+	 * Check if the policy has a custom permission setting for the given actor and action.
+	 *
+	 * @param Actor $actor
+	 * @param Action $action
+	 * @return bool
+	 */
+	public function hasPermissionSettingFor(Actor $actor, Action $action) {
+		return isset($this->actorAccess[$actor->getId()][$action->getName()]);
+	}
+
 	/** @noinspection PhpLanguageLevelInspection */
 	#[\ReturnTypeWillChange]
 	public function jsonSerialize() {
@@ -153,6 +198,10 @@ class ContentItemPolicy implements \JsonSerializable {
 			}
 		}
 
+		if ( $this->preferAdvancedMode ) {
+			$data['preferAdvancedMode'] = true;
+		}
+
 		return $data;
 	}
 
@@ -169,7 +218,9 @@ class ContentItemPolicy implements \JsonSerializable {
 			$accessProtectionSettings = AccessProtectionSettings::fromArray($properties['accessProtection']);
 		}
 
-		return new static($actorAccess, $replacementContent, $accessProtectionSettings);
+		$preferAdvancedMode = isset($properties['preferAdvancedMode']) && $properties['preferAdvancedMode'];
+
+		return new static($actorAccess, $replacementContent, $accessProtectionSettings, $preferAdvancedMode);
 	}
 }
 
@@ -186,32 +237,17 @@ class PolicyStore {
 	 * @var ActionRegistry
 	 */
 	private $actionRegistry;
-	/**
-	 * @var ActorManager
-	 */
-	private $actorManager;
 
 	/**
 	 * @var array Composite key => array of post IDs.
 	 */
 	private $hiddenListItemCache = [];
 
-	public function __construct(ActionRegistry $actionRegistry, ActorManager $actorManager) {
+	public function __construct(ActionRegistry $actionRegistry) {
 		$this->actionRegistry = $actionRegistry;
-		$this->actorManager = $actorManager;
 
 		//Remove deleted posts from the lookup.
 		add_action('deleted_post', [$this, 'forgetDeletedPost']);
-
-		$ameDisplayCachedHiddenPosts = function () {
-			//Display cached hidden posts for debugging purposes.
-			echo '<pre style="margin-left: 200px;">';
-			print_r($this->hiddenListItemCache);
-			echo '</pre>';
-		};
-
-		add_action('wp_footer', $ameDisplayCachedHiddenPosts);
-		add_action('admin_footer', $ameDisplayCachedHiddenPosts);
 	}
 
 	/**
@@ -225,72 +261,6 @@ class PolicyStore {
 			if ( is_array($properties) ) {
 				return ContentItemPolicy::fromArray($properties);
 			}
-		}
-
-		//Sample policy for some posts.
-		//todo: Remove sample data.
-		if ( $postId === 7245 ) {
-			return new ContentItemPolicy([
-				'role:administrator' => [
-					ActionRegistry::ACTION_READ    => false,
-					ActionRegistry::ACTION_EDIT    => true,
-					ActionRegistry::ACTION_DELETE  => true,
-					ActionRegistry::ACTION_PUBLISH => false,
-				],
-				'role:editor'        => [
-					ActionRegistry::ACTION_READ   => true,
-					ActionRegistry::ACTION_EDIT   => true,
-					ActionRegistry::ACTION_DELETE => true,
-				],
-			]);
-		} else if ( $postId === 10680 ) {
-			return new ContentItemPolicy([
-				'role:administrator' => [
-					ActionRegistry::ACTION_READ    => false,
-					ActionRegistry::ACTION_EDIT    => true,
-					ActionRegistry::ACTION_DELETE  => false,
-					ActionRegistry::ACTION_PUBLISH => false,
-				],
-				'role:editor'        => [
-					ActionRegistry::ACTION_DELETE => false,
-				],
-			]);
-		} else if ( $postId === 18960 ) { //Sample Parent Page
-			return new ContentItemPolicy([
-				'role:administrator'     => [
-					ActionRegistry::ACTION_READ    => false,
-					ActionRegistry::ACTION_EDIT    => true,
-					ActionRegistry::ACTION_DELETE  => true,
-					ActionRegistry::ACTION_PUBLISH => true,
-				],
-				'role:author'            => [
-					ActionRegistry::ACTION_READ   => false,
-					ActionRegistry::ACTION_EDIT   => true,
-					ActionRegistry::ACTION_DELETE => true,
-				],
-				'special:anonymous_user' => [
-					ActionRegistry::ACTION_READ => false,
-				],
-			]);
-		} else if ( $postId === 18964 ) { //Child Page B
-			return new ContentItemPolicy([
-				'role:administrator'     => [
-					ActionRegistry::ACTION_READ => true,
-				],
-				'role:author'            => [
-					ActionRegistry::ACTION_READ => true,
-				],
-				'special:anonymous_user' => [
-					ActionRegistry::ACTION_READ => true,
-				],
-			]);
-		} else if ( $postId === 18974 ) { // Hidden Post (hidden only from Editor)
-			return new ContentItemPolicy([
-				'role:editor' => [
-					ActionRegistry::ACTION_READ          => false,
-					ActionRegistry::ACTION_VIEW_IN_LISTS => false,
-				],
-			]);
 		}
 		return null;
 	}
@@ -332,6 +302,10 @@ class PolicyStore {
 	 * @return int[]
 	 */
 	public function getPostsHiddenFromLists($actor, $postTypes = null) {
+		if ( is_array($postTypes) && empty($postTypes) ) {
+			return [];
+		}
+
 		$cacheKey = $this->getHiddenListItemCacheKey(Action::OBJECT_TYPE_POST, $actor, $postTypes);
 		if ( isset($this->hiddenListItemCache[$cacheKey]) ) {
 			return $this->hiddenListItemCache[$cacheKey];
@@ -364,31 +338,13 @@ class PolicyStore {
 
 	private function getRestrictedPostLookup() {
 		if ( $this->restrictedPostLookup === null ) {
-			$this->restrictedPostLookup = new RestrictedPostLookup();
+			$storedData = get_option(self::HIDDEN_ITEM_LOOKUP_OPTION, '{}');
+			$parsed = json_decode((string)$storedData, true);
 
-			//todo: Remove dummy data.
-			//Add sample restricted posts.
-			$sampleHiddenPosts = [
-				'post' => [7245, 10680, 18974],
-				'page' => [18960, 18964],
-			];
-			$sampleRoles = [
-				'administrator',
-				'editor',
-			];
-
-			foreach ($sampleRoles as $roleId) {
-				foreach ($sampleHiddenPosts as $postType => $postIds) {
-					foreach ($postIds as $postId) {
-						$this->restrictedPostLookup->addEntry(
-							$this->actorManager->getRole($roleId)->getId(),
-							$this->actionRegistry->getAction(ActionRegistry::ACTION_VIEW_IN_LISTS),
-							$postType,
-							$postId,
-							false
-						);
-					}
-				}
+			if ( !empty($parsed) && is_array($parsed) ) {
+				$this->restrictedPostLookup = new RestrictedPostLookup($parsed);
+			} else {
+				$this->restrictedPostLookup = new RestrictedPostLookup();
 			}
 		}
 		return $this->restrictedPostLookup;
@@ -815,9 +771,9 @@ class RedirectProtection extends AccessProtection {
 
 	protected static function deserializeFromArray($properties) {
 		return new static(
-			$properties['targetUrl'],
-			isset($properties['redirectCode']) ? $properties['redirectCode'] : self::DEFAULT_REDIRECT_CODE,
-			isset($properties['shortcodesEnabled']) ? $properties['shortcodesEnabled'] : false
+			isset($properties['targetUrl']) ? strval($properties['targetUrl']) : '',
+			isset($properties['redirectCode']) ? intval($properties['redirectCode']) : self::DEFAULT_REDIRECT_CODE,
+			!empty($properties['shortcodesEnabled'])
 		);
 	}
 }
@@ -866,7 +822,7 @@ class ErrorMessageProtection extends AccessProtection {
 
 	protected static function deserializeFromArray($properties, $messageCallback = null) {
 		return new static(
-			$properties['errorMessage'],
+			isset($properties['errorMessage']) ? strval($properties['errorMessage']) : '',
 			$messageCallback
 		);
 	}
@@ -993,8 +949,12 @@ class RestrictedPostLookup implements \JsonSerializable {
 
 	private $wasModified = false;
 
-	public function __construct($postAccess = []) {
-		$this->postAccess = $postAccess;
+	public function __construct($properties = []) {
+		if ( isset($properties['posts']) ) {
+			$this->postAccess = $properties['posts'];
+		} else {
+			$this->postAccess = [];
+		}
 	}
 
 	/**

@@ -6,13 +6,14 @@ use YahnisElsts\AdminMenuEditor\ContentPermissions\UserInterface\ContentPermissi
 
 /**
  * @var array $editorData Provided by the method that includes this template.
+ * @var string $cpeSettingsUrl URL to the content permissions section on the settings page.
  */
 
 $basicOptions = [
-	'everyone'  => _x('Everyone', 'content permissions: basic', 'admin-menu-editor'),
-	'loggedIn'  => _x('Logged In Users', 'content permissions: basic', 'admin-menu-editor'),
-	'loggedOut' => _x('Logged Out Users', 'content permissions: basic', 'admin-menu-editor'),
-	'advanced'  => _x('Advanced', 'content permissions: basic', 'admin-menu-editor'),
+	'everyone'  => _x('Everyone', 'content permissions: basic preset', 'admin-menu-editor'),
+	'loggedIn'  => _x('Logged In Users', 'content permissions: basic preset', 'admin-menu-editor'),
+	'loggedOut' => _x('Logged Out Users', 'content permissions: basic preset', 'admin-menu-editor'),
+	'advanced'  => _x('Advanced', 'content permissions: basic preset', 'admin-menu-editor'),
 ];
 ?>
 <div id="ame-cpe-permissions-editor-root" data-cpe-editor-data="<?php echo esc_attr(wp_json_encode($editorData)); ?>">
@@ -36,6 +37,22 @@ $basicOptions = [
 				'Loading message in the content permissions meta box',
 				'admin-menu-editor'
 			);
+			?></p>
+	</div>
+	<div id="ame-cpe-enforcement-disabled-notice" data-bind="visible: enforcementDisabled" style="display: none">
+		<p>
+			<span class="dashicons dashicons-warning"></span>
+			<?php
+			//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+			// -- Output contains a link, so the whole string can't be HTML-escaped. The link URL is escaped.
+			printf(
+			/* translators: %s = URL pointing to the "Settings" tab on the "Menu Editor" page, specifically the "Content permissions" section */
+				__('Enforcement disabled. You can still edit the permissions, but they won\'t take effect until you <a href="%s">update plugin settings</a>.',
+					'admin-menu-editor'
+				),
+				esc_url($cpeSettingsUrl)
+			);
+			//phpcs:enable
 			?></p>
 	</div>
 	<div id="ame-cpe-permissions-editor-container" style="display: none" data-bind="visible: true">
@@ -74,10 +91,10 @@ $basicOptions = [
 						</label>
 					</div>
 					<span id="ame-cpe-basic-actor-shortcuts">
-					Check
-					<a href="#" data-bind="click: checkAllBasicActors">All</a> |
-					<a href="#" data-bind="click: checkNoneBasicActors">None</a>
-				</span>
+				Check
+				<a href="#" data-bind="click: checkAllBasicActors">All</a> |
+				<a href="#" data-bind="click: checkNoneBasicActors">None</a>
+			</span>
 				</fieldset>
 			</div>
 
@@ -92,28 +109,28 @@ $basicOptions = [
 									<!-- ko if: $root.gridsByActorId[$data.getId()] -->
 									<span class="ame-cpe-mini-grid"
 									      data-bind="foreach: $root.gridsByActorId[$data.getId()]">
-									<span class="ame-cpe-mini-grid-item"
-									      data-bind="class: cssClass"></span>
-								</span>
+								<span class="ame-cpe-mini-grid-item"
+								      data-bind="class: cssClass"></span>
+							</span>
 									<!-- /ko -->
 								</a>
 							</li>
 						</ol>
 					</div>
 					<div class="row-actions ame-cpe-actor-nav-actions">
-					<span class="trash">
-						<a href="#"
-						   data-bind="
-						    click: uiResetPermissionsToDefaults,
-						    css: {'ame-cpe-action-not-applicable' : everyoneHasDefaultPermissions}"><?php
-							echo esc_html_x('Reset to defaults', 'Content permissions', 'admin-menu-editor');
-							?></a>
-					</span>
+				<span class="trash">
+					<a href="#"
+					   data-bind="
+						click: uiResetPermissionsToDefaults,
+						css: {'ame-cpe-action-not-applicable' : everyoneHasDefaultPermissions}"><?php
+						echo esc_html_x('Reset to defaults', 'Content permissions', 'admin-menu-editor');
+						?></a>
+				</span>
 						<span data-bind="if: undoResetActionVisible">|
-						<a href="#" data-bind="click: undoLastPermissionsReset"><?php
-							echo esc_html_x('Undo reset', 'Content permissions', 'admin-menu-editor');
-							?></a>
-					</span>
+					<a href="#" data-bind="click: undoLastPermissionsReset"><?php
+						echo esc_html_x('Undo reset', 'Content permissions', 'admin-menu-editor');
+						?></a>
+				</span>
 					</div>
 				</div>
 
@@ -124,7 +141,7 @@ $basicOptions = [
 							<th scope="row">
 								<label
 									data-bind="text: action.label,
-								attr: { 'for': 'ame-cpe-permission-input-' + $index() }">
+							attr: { 'for': 'ame-cpe-permission-input-' + $index() }">
 								</label>
 							</th>
 							<td>
@@ -263,7 +280,8 @@ $basicOptions = [
 			'admin-menu-editor'
 		); ?>
 	</label>
-	<input type="text" data-bind="value: targetUrl" id="ame-cpe-protection-redirect-url">
+	<input type="text" data-bind="value: targetUrl" id="ame-cpe-protection-redirect-url"
+	       placeholder="<?php echo esc_url(home_url()); ?>">
 
 	<label for="ame-cpe-protection-redirect-status">
 		<?php echo esc_html_x(

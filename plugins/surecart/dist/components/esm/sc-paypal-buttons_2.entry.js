@@ -1,11 +1,11 @@
 import { r as registerInstance, c as createEvent, h, a as getElement } from './index-745b6bec.js';
 import { l as loadScript, g as getScriptLoadParams } from './functions-2a4a4ba3.js';
-import { a as apiFetch } from './fetch-2032d11d.js';
-import { g as fetchCheckout } from './index-af03d92e.js';
+import { a as apiFetch } from './fetch-2d92a73e.js';
+import { g as fetchCheckout } from './index-01c97eb1.js';
 import { c as createErrorNotice } from './mutations-ed6d0770.js';
 import './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
-import './mutations-4ce86b78.js';
+import './mutations-83ea96b2.js';
 import './index-06061d4e.js';
 import './utils-cd1431df.js';
 import './index-c5a96d53.js';

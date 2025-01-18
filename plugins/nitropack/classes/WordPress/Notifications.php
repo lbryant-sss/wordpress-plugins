@@ -28,7 +28,7 @@ class Notifications {
 	    } else {
 		    $notifications = [];
 	    }
-
+     
 	    return apply_filters('get_nitropack_notifications', $notifications, $type);
     }
 

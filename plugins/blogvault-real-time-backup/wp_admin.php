@@ -24,8 +24,8 @@ class BVWPAdmin {
 		}
 	}
 
-	function removeAdminNotices() {
-		if (array_key_exists('page', $_REQUEST) && $_REQUEST['page'] == $this->bvinfo->plugname) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	public function removeAdminNotices() {
+		if (BVHelper::getRawParam('REQUEST', 'page') === $this->bvinfo->plugname) {
 			remove_all_actions('admin_notices');
 			remove_all_actions('all_admin_notices');
 		}
@@ -34,23 +34,23 @@ class BVWPAdmin {
 	public function initHandler() {
 		if (!current_user_can('activate_plugins'))
 			return;
-		$bvnonce = isset($_REQUEST['bvnonce']) ? sanitize_text_field(wp_unslash($_REQUEST['bvnonce'])) : '';
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- using custom sanitization
-		$blogvaultkey = isset($_REQUEST['blogvaultkey']) ? BVAccount::sanitizeKey(wp_unslash($_REQUEST['blogvaultkey'])) : '';
-		$page = isset($_REQUEST['page']) ? sanitize_text_field(wp_unslash($_REQUEST['page'])) : '';
+		$bvnonce = BVHelper::getRawParam('REQUEST', 'bvnonce');
+		$blogvaultkey = BVHelper::getRawParam('REQUEST', 'blogvaultkey');
+		$blogvaultkey = $blogvaultkey ? BVAccount::sanitizeKey($blogvaultkey) : "";
 
 		if ($bvnonce && wp_verify_nonce($bvnonce, "bvnonce") &&
 			$blogvaultkey && strlen($blogvaultkey) == 64 &&
-			($page && $page === $this->bvinfo->plugname)) {
+			(BVHelper::getRawParam('REQUEST', 'page') === $this->bvinfo->plugname)) {
 			$keys = str_split($blogvaultkey, 32);
 			BVAccount::addAccount($this->settings, $keys[0], $keys[1]);
 
-			if (array_key_exists('redirect', $_REQUEST)) {
-				$location = esc_url_raw(wp_unslash($_REQUEST['redirect']));
+			$location = BVHelper::getStringParamSanitized('REQUEST', 'redirect', 'url');
+			if ($location) {
 				wp_redirect($this->bvinfo->appUrl()."/dash/redir?q=".urlencode($location));
 				exit();
 			}
 		}
+
 		if ($this->bvinfo->isActivateRedirectSet()) {
 			$this->settings->updateOption($this->bvinfo->plug_redirect, 'no');
 			##ACTIVATEREDIRECTCODE##
@@ -63,8 +63,8 @@ class BVWPAdmin {
 	public function bvsecAdminMenu($hook) {
 		if ($hook === 'toplevel_page_bvbackup' || BVHelper::safePregMatch("/bv_add_account$/", $hook) ||
 				BVHelper::safePregMatch("/bv_account_details$/", $hook)) {
-			wp_enqueue_style( 'bootstrap', plugins_url('css/bootstrap.min.css', __FILE__));
-			wp_enqueue_style( 'bvplugin', plugins_url('css/bvplugin.min.css', __FILE__));
+			wp_enqueue_style( 'bootstrap', plugins_url('css/bootstrap.min.css', __FILE__), array(), $this->bvinfo->version);
+			wp_enqueue_style( 'bvplugin', plugins_url('css/bvplugin.min.css', __FILE__), array(), $this->bvinfo->version);
 		}
 	}
 
@@ -100,7 +100,8 @@ class BVWPAdmin {
 		$whitelabel_info = $this->bvinfo->getPluginWhitelabelInfo($slug);
 		if (array_key_exists('hide_plugin_details', $whitelabel_info)) {
 			foreach ($plugin_metas as $pluginKey => $pluginValue) {
-				if (strpos($pluginValue, sprintf('>%s<', translate('View details')))) {
+				// phpcs:ignore WordPress.WP.I18n.MissingArgDomain
+				if (strpos($pluginValue, sprintf('>%s<', __('View details')))) {
 					unset($plugin_metas[$pluginKey]);
 					break;
 				}
@@ -145,7 +146,8 @@ class BVWPAdmin {
 		if ( $file == plugin_basename( dirname(__FILE__).'/blogvault.php' ) ) {
 			$brand = $this->bvinfo->getPluginWhitelabelInfo();
 			if (!array_key_exists('hide_plugin_details', $brand)) {
-				$links[] = '<a href="' . $this->mainUrl() . '">' . __( 'Settings' ) . '</a>';
+				// phpcs:ignore WordPress.WP.I18n.MissingArgDomain
+				$links[] = '<a href="' . $this->mainUrl() . '">' . __('Settings') . '</a>';
 			}
 		}
 		return $links;
@@ -172,7 +174,7 @@ class BVWPAdmin {
 		$bvnonce = wp_create_nonce("bvnonce");
 		$public = BVAccount::getApiPublicKey($this->settings);
 		$secret = BVRecover::defaultSecret($this->settings);
-		$server_ip = isset($_SERVER["SERVER_ADDR"]) ? sanitize_text_field(wp_unslash($_SERVER["SERVER_ADDR"])) : null;
+		$server_ip = BVHelper::getStringParamEscaped('SERVER', 'SERVER_ADDR', 'attr');
 		$tags = "<input type='hidden' name='url' value='".esc_attr($this->siteinfo->wpurl())."'/>\n".
 				"<input type='hidden' name='homeurl' value='".esc_attr($this->siteinfo->homeurl())."'/>\n".
 				"<input type='hidden' name='siteurl' value='".esc_attr($this->siteinfo->siteurl())."'/>\n".
@@ -180,7 +182,7 @@ class BVWPAdmin {
 				"<input type='hidden' name='plug' value='".esc_attr($this->bvinfo->plugname)."'/>\n".
 				"<input type='hidden' name='adminurl' value='".esc_attr($this->mainUrl())."'/>\n".
 				"<input type='hidden' name='bvversion' value='".esc_attr($this->bvinfo->version)."'/>\n".
-				"<input type='hidden' name='serverip' value='".esc_attr($server_ip)."'/>\n".
+				"<input type='hidden' name='serverip' value='".$server_ip."'/>\n".
 				"<input type='hidden' name='abspath' value='".esc_attr(ABSPATH)."'/>\n".
 				"<input type='hidden' name='secret' value='".esc_attr($secret)."'/>\n".
 				"<input type='hidden' name='public' value='".esc_attr($public)."'/>\n".
@@ -209,18 +211,22 @@ class BVWPAdmin {
 	}
 
 	public function adminPage() {
-		$bvnonce = isset($_REQUEST['bvnonce']) ? sanitize_text_field(wp_unslash($_REQUEST['bvnonce'])) : '';
-		if ($bvnonce && wp_verify_nonce($bvnonce, 'bvnonce')) {
+		$bvnonce = BVHelper::getRawParam('REQUEST', 'bvnonce');
+		if (isset($bvnonce) && wp_verify_nonce($bvnonce, 'bvnonce')) {
 			$info = array();
 			$this->siteinfo->basic($info);
-			if (!empty($_REQUEST['pubkey'])) {
-				$pubkey = BVAccount::sanitizeKey(wp_unslash($_REQUEST['pubkey'])); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+			$pubkey = BVHelper::getRawParam('REQUEST', 'pubkey');
+			if (!empty($pubkey)) {
+				$pubkey = BVAccount::sanitizeKey($pubkey);
 				$this->bvapi->pingbv('/bvapi/disconnect', $info, $pubkey);
 				BVAccount::remove($this->settings, $pubkey);
 			}
 		}
 		if (BVAccount::isConfigured($this->settings)) {
-			if (isset($_REQUEST['add_account'])) {
+			if (isset($_REQUEST['account_details'])) {
+				$this->showAccountDetailsPage();
+			} else if (isset($_REQUEST['add_account'])) {
 				$this->showAddAccountPage();
 			} else {
 				$this->showAccountDetailsPage();
@@ -229,6 +235,7 @@ class BVWPAdmin {
 			$this->showAddAccountPage();
 		}
 	}
+
 
 	public function initWhitelabel($plugins) {
 		if (!is_array($plugins) || !$this->bvinfo->canWhiteLabel()) {

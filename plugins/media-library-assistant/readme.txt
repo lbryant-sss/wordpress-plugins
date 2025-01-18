@@ -199,8 +199,13 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 == Changelog ==
 
 = 3.25 =
+* New: For items attached to a parent post/page, the `parent:` field-level prefix gives access to values assigned to the item's parent.
+* New: The `author:` field-level prefix gives access to values assigned to the item's author in the "users" and "usermeta" database tables.
 * Fix: For the Media/Library Grid mode, an incompatibility with the Enhanced Media Library plugin has been eliminated.
 * Fix: An "Undefined variable" problem when accessing the `file_fize` field-level data source has been corrected.
+* Fix: Search box formatting in some Settings/Media Library Assistant tabs has been cleaned up.
+* Fix: For the "MLA Substitution Parameter Hooks Example" plugin (v1.16), the `parent:` and `author:` prefixes have been removed because they are now provided by the MLA core plugin.
+* Fix: For the "MLA Substitution Parameter Hooks Example" plugin (v1.16), the `parent_terms:` and `page_terms:` prefixes have been removed because they are provided by the MLA core plugin (since v3.14).
 
 = 3.24 =
 * New: Field-level data sources for accessing information about the original, unscaled files for very large images.

@@ -156,6 +156,22 @@ add_action( 'wp_footer', function () {
 						}, 500)
 					}
 				});
+
+				<?php
+				// Fix for FiboSearch and Divi Mobile.
+				if (defined( 'DE_DM_VERSION' )) {
+				?>
+				$(document).ready(function () {
+					setTimeout(function () {
+						const diviMobileSearch = $('#dm-menu .dgwt-wcas-search-input');
+						if (diviMobileSearch.length > 0) {
+							diviMobileSearch.each(function (index, input) {
+								dgwt_wcas.fixer.core.reinitSearchBar($(input));
+							});
+						}
+					}, 1000);
+				});
+				<?php } ?>
 			});
 		}(jQuery));
 	</script>

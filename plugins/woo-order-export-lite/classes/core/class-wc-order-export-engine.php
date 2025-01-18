@@ -303,6 +303,8 @@ class WC_Order_Export_Engine {
 			$options['export_matched_items']['item_names'] = WC_Order_Export_Data_Extractor::parse_complex_pairs($settings['item_names']);
 		}
 
+		$options['exclude_free_items'] = ! empty( $settings['exclude_free_items'] );
+
 		if ( isset( $settings['date_format'] ) ) {
 			$options['date_format'] = $settings['date_format'];
 		} else {
@@ -369,7 +371,7 @@ class WC_Order_Export_Engine {
 			ob_end_clean();
 		}
 		if( !empty($settings['product_sku']) ) {
-			$sku_array = preg_split( "#,|\r?\n#", $settings['product_sku'], null, PREG_SPLIT_NO_EMPTY ) ;
+			$sku_array = preg_split( "#,|\r?\n#", $settings['product_sku'], -1, PREG_SPLIT_NO_EMPTY ) ;
 			foreach($sku_array as $sku) {
 				$sku = "_sku = " . $sku;
 				$settings['product_custom_fields'][] = $sku;
@@ -380,7 +382,21 @@ class WC_Order_Export_Engine {
 			$settings['order_fields']['products']['checked'] = 1;
 		}
 
+		if( ! self::has_product_filters($settings) )
+			$settings['all_products_from_order'] = 1;
+
 		return apply_filters( 'woe_settings_validate_defaults', $settings );
+	}
+
+	protected static function has_product_filters($settings){
+		$has_product_filter = false;
+		$keys = ['product_categories','product_vendors','products','product_sku','exclude_products',
+				'product_taxonomies','product_custom_fields','product_attributes','product_itemmeta'];
+		foreach($keys as $key) {
+			if( !empty($settings[$key]) )
+				$has_product_filter = true;
+		}
+		return $has_product_filter;
 	}
 
 	protected static function code_error_callback( $out ) {

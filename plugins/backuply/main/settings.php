@@ -30,7 +30,8 @@ function backuply_page_header($title = 'Settings') {
 		'images' => BACKUPLY_URL . '/assets/images/',
 		'backuply_url' => BACKUPLY_URL,
 		'creating_session' => wp_generate_password(32, false),
-		'status_key' => urlencode(backuply_get_status_key())
+		'status_key' => urlencode(backuply_get_status_key()),
+		'site_url' => site_url(),
 	));
 	
 	if(defined('BACKUPLY_PRO')){

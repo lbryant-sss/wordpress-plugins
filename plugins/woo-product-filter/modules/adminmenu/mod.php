@@ -54,7 +54,7 @@ class AdminmenuWpf extends ModuleWpf {
 
 			if ('gopro' == $tKey) {
 				$subMenus[] = array(
-					'title' => esc_html__('Upgrade To Pro', 'woo-product-filter'), 'capability' => $mainCap, 'menu_slug' => $tab['callback'], 'function' => '',
+					'title' => esc_html__('Upgrade To Pro', 'woo-product-filter'), 'capability' => $mainCap, 'menu_slug' => 'admin.php?page=' . $mainSlug . '&tab=' . $tKey, 'function' => '',
 				);
 			} else {
 				$subMenus[] = array(

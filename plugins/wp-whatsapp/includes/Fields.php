@@ -60,6 +60,15 @@ class Fields {
 		);
 	}
 
+	public static function getUserRoleSettings() {
+		return wp_parse_args(
+			get_option( 'nta_wa_user_role', array() ),
+			array(
+				'administrator' => true,
+			)
+		);
+	}
+
 	public static function getWidgetStyles() {
 		return wp_parse_args(
 			get_option( 'nta_wa_widget_styles', array() ),

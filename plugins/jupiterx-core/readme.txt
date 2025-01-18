@@ -3,7 +3,7 @@ Contributors: artbees
 Tags: jupiter, jupiterx
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 4.8.6
+Stable tag: 4.8.7
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,6 +29,13 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+= 4.8.7 =
+* Added excluding the specific heading in to the Table of Content widget.
+* Fixed displaying Popups in draft & trash status.
+* Fixed conflict between Ribbon & button on call to action widget.
+* Fixed displaying title on Media Gallery on overlay layout.
+* Fixed updating Jet Plugins from JupiterX update page.
+
 = 4.8.6 =
 * Fixed issues of incompatibility with Elementor 3.26.0.
 * Fixed Security issue on Popup Template Export.

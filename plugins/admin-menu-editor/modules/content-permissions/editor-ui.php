@@ -2,6 +2,8 @@
 
 namespace YahnisElsts\AdminMenuEditor\ContentPermissions\UserInterface;
 
+use YahnisElsts\AdminMenuEditor\Actors\ActorManager;
+use YahnisElsts\AdminMenuEditor\Actors\User;
 use YahnisElsts\AdminMenuEditor\ContentPermissions\ContentPermissionsEnforcer;
 use YahnisElsts\AdminMenuEditor\ContentPermissions\ContentPermissionsModule;
 use YahnisElsts\AdminMenuEditor\ContentPermissions\Policy\Action;
@@ -32,17 +34,29 @@ class ContentPermissionsMetaBox {
 	 * @var ContentPermissionsEnforcer
 	 */
 	private $enforcer;
+	/**
+	 * @var string Full URL to the main plugin settings page.
+	 */
+	private $settingsPageUrl;
+	/**
+	 * @var ActorManager
+	 */
+	private $actorManager;
 
 	public function __construct(
 		ActionRegistry             $actionRegistry,
+		ActorManager               $actorManager,
 		PolicyStore                $policyStore,
 		ContentPermissionsModule   $module,
-		ContentPermissionsEnforcer $enforcer
+		ContentPermissionsEnforcer $enforcer,
+		                           $settingsPageUrl
 	) {
 		$this->policyStore = $policyStore;
 		$this->module = $module;
 		$this->actionRegistry = $actionRegistry;
+		$this->actorManager = $actorManager;
 		$this->enforcer = $enforcer;
+		$this->settingsPageUrl = $settingsPageUrl;
 
 		foreach (['load-post.php', 'load-post-new.php'] as $hook) {
 			add_action($hook, [$this, 'addBoxHooks']);
@@ -148,7 +162,10 @@ class ContentPermissionsMetaBox {
 			'applicableActions'    => $applicableActions,
 			'requiredCapabilities' => $requiredCapabilities,
 			'policy'               => $policy,
+			'enforcementDisabled'  => boolval($this->module->loadSettings()['enforcementDisabled']),
+			'adminLikeRoles'       => $this->getAdminLikeRoles(),
 		];
+		$cpeSettingsUrl = $this->settingsPageUrl . '#ame-content-permissions-section';
 		require __DIR__ . '/metabox-template.php';
 	}
 
@@ -187,7 +204,7 @@ class ContentPermissionsMetaBox {
 			$this->module->enqueuePolicyEditorStyles();
 
 			$uiScript = $this->module->getMetaBoxScript();
-			$uiScript->addJsVariable('wsAmeCpeEditorData', [
+			$uiScript->addJsVariable('wsAmeCpeScriptData', [
 				'translations' => [
 					'tabTitles'         => [
 						'basic'      => _x('Basic', 'content permissions tab', 'admin-menu-editor'),
@@ -269,6 +286,112 @@ class ContentPermissionsMetaBox {
 		}
 
 		$policy = ContentItemPolicy::fromArray($policyData);
+
+		//Try to prevent the user from accidentally creating a policy that blocks themselves from viewing
+		//or editing the post. If necessary, enable the relevant actions for at least one of the user's roles.
+		//This is not perfect as we don't consider potential cascading permissions from parent posts.
+		$requiredActions = [
+			//"view in lists" controls whether the post is visible in the post list in the dashboard,
+			//among other things.
+			$this->actionRegistry->getAction(ActionRegistry::ACTION_VIEW_IN_LISTS),
+			//"edit" is required to edit the post and the associated policy.
+			$this->actionRegistry->getAction(ActionRegistry::ACTION_EDIT),
+		];
+		$requiredActions = array_filter($requiredActions);
+		$currentUser = $this->actorManager->getCurrentUserActor();
+
+		if ( ($currentUser instanceof User) && !empty($requiredActions) ) {
+			$userRoles = $currentUser->getRoleIds();
+
+			//Prioritize admin-like roles.
+			$adminLikeRoles = $this->getAdminLikeRoles($userRoles);
+			$sortedRoleIds = array_merge($adminLikeRoles, array_diff($userRoles, $adminLikeRoles));
+			$sortedRoles = [];
+			foreach ($sortedRoleIds as $roleId) {
+				$sortedRoles[$roleId] = $this->actorManager->getRole($roleId);
+			}
+
+			foreach ($requiredActions as $action) {
+				$result = $policy->evaluate($currentUser, $action);
+				if ( ($result === null) || !$result->isDenied() ) {
+					continue; //The policy doesn't block this action, so we're good.
+				}
+
+				//Try to find a role that doesn't already have a custom setting for this action.
+				//If the user has multiple roles, they might legitimately want to deny the permission
+				//for one of the roles, so we'll try not to override that.
+				$chosenRole = null;
+				foreach ($sortedRoles as $role) {
+					if ( !$policy->hasPermissionSettingFor($role, $action) ) {
+						$chosenRole = $role;
+						break;
+					}
+				}
+
+				//Otherwise, just pick the first role.
+				if ( !$chosenRole ) {
+					$chosenRole = reset($sortedRoles);
+				}
+
+				if ( $chosenRole ) {
+					$policy->setActorPermission($chosenRole, $action, true);
+				}
+			}
+		}
+
 		$this->policyStore->setPostPolicy($postId, $policy);
+	}
+
+	/**
+	 * Find the roles that are similar to the "administrator" role in terms of capabilities.
+	 *
+	 * Note: "names" refers to internal role names/slugs, not display names.
+	 *
+	 * @param string[]|null $roleNames Optional. If specified, only these roles will be considered.
+	 * @return string[] List of role names.
+	 */
+	private function getAdminLikeRoles($roleNames = null) {
+		$wpRoles = wp_roles();
+		if ( $roleNames === null ) {
+			$roleNames = array_keys($wpRoles->role_names);
+		}
+
+		//A subset of "sufficiently powerful" administrator capabilities. We'll consider a role
+		//to be "admin-like" if it has at least one of these capabilities.
+		$adminCapsToCheck = [
+			'install_plugins',
+			'install_themes',
+			'delete_plugins',
+			'delete_themes',
+			'delete_users',
+			'edit_plugins',
+			'edit_themes',
+			'update_core',
+			'update_plugins',
+			'update_themes',
+			'activate_plugins',
+			'switch_themes',
+			'manage_options',
+		];
+
+		$adminLikeRoles = [];
+		foreach ($roleNames as $roleName) {
+			$role = $wpRoles->get_role($roleName);
+			if ( $role ) {
+				foreach ($adminCapsToCheck as $cap) {
+					if ( !empty($role->capabilities[$cap]) ) {
+						$adminLikeRoles[] = $roleName;
+						break;
+					}
+				}
+			}
+		}
+
+		//Always include the "administrator" role, if it exists.
+		if ( in_array('administrator', $roleNames, true) && !in_array('administrator', $adminLikeRoles, true) ) {
+			$adminLikeRoles[] = 'administrator';
+		}
+
+		return $adminLikeRoles;
 	}
 }

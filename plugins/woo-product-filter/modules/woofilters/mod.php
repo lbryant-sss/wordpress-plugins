@@ -165,6 +165,7 @@ class WoofiltersWpf extends ModuleWpf {
 		}
 		// Theme Elford + Advanced Layout Build (Product Slider + Product Grid)
 		add_filter( 'avia_product_slide_query', array($this, 'loadShortcodeProductsFilter'), 20, 1 );
+		
 	}
 	
 	public function addFilterToWoocommerceBlocksAgrs( $args, $block, $page ) {
@@ -3177,10 +3178,14 @@ class WoofiltersWpf extends ModuleWpf {
 				}
 
 				if ( ! empty( $listTable ) ) {
-
-					if ( isset( $args['product_cat'] ) && $this->getFilterSetting( $currentSettings, 'display_only_children_category', false ) ) {
-						$term = get_term_by( 'slug', $args['product_cat'], 'product_cat' );
-
+					
+					if ( (isset( $args['product_cat'] ) || ( $ajax && $prodCatId )) && $this->getFilterSetting( $currentSettings, 'display_only_children_category', false ) ) {
+						if ($ajax && $prodCatId) {
+							$term = get_term_by( 'id', $prodCatId, 'product_cat' );
+						} else {
+							$term = get_term_by( 'slug', $args['product_cat'], 'product_cat' );
+						}
+						
 						if ( $term ) {
 							$param['only_children_category'] = get_term_children( $term->term_id, 'product_cat' );
 						}

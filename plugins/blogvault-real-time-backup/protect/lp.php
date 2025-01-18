@@ -1,15 +1,15 @@
 <?php
 if (!defined('ABSPATH') && !defined('MCDATAPATH')) exit;
 
-if (!class_exists('BVProtectLP_V588')) :
-class BVProtectLP_V588 {
+if (!class_exists('BVProtectLP_V591')) :
+class BVProtectLP_V591 {
 	private $ip;
 	private $time;
 	private $ipstore;
 	private $logger;
 	private $brand_name;
 
-	private $mode              = BVProtectLP_V588::MODE_DISABLED;
+	private $mode              = BVProtectLP_V591::MODE_DISABLED;
 	private $captcha_limit     = 3;
 	private $temp_block_limit  = 10;
 	private $block_all_limit   = 100;
@@ -17,7 +17,7 @@ class BVProtectLP_V588 {
 	private $success_login_gap = 1800;
 	private $all_blocked_gap   = 1800;
 
-	private $category          = BVProtectLP_V588::CATEGORY_ALLOWED;
+	private $category          = BVProtectLP_V591::CATEGORY_ALLOWED;
 	private $username          = '';
 	private $message           = '';
 
@@ -46,8 +46,8 @@ class BVProtectLP_V588 {
 	private function __construct($request, $config, $brand_name) {
 		$this->ip = $request->getIP();
 		$this->brand_name = $brand_name;
-		$this->ipstore = new BVProtectIpstore_V588();
-		$this->logger = new BVProtectLogger_V588(BVProtectLP_V588::TABLE_NAME);
+		$this->ipstore = new BVProtectIpstore_V591();
+		$this->logger = new BVProtectLogger_V591(BVProtectLP_V591::TABLE_NAME);
 		$this->time = strtotime(gmdate("Y-m-d H:i:s"));
 
 		if (is_array($config)) {
@@ -90,7 +90,7 @@ class BVProtectLP_V588 {
 	}
 
 	public static function uninstall() {
-		BVProtect_V588::$db->dropBVTable(BVProtectLP_V588::TABLE_NAME);
+		BVProtect_V591::$db->dropBVTable(BVProtectLP_V591::TABLE_NAME);
 	}
 
 	public function init() {
@@ -102,7 +102,7 @@ class BVProtectLP_V588 {
 	}
 
 	private function getCaptchaLink() {
-		$account = BVAccount::apiPublicAccount(BVProtect_V588::$settings);
+		$account = BVAccount::apiPublicAccount(BVProtect_V591::$settings);
 
 		$url = $account->authenticatedUrl('/captcha/solve');
 		$url .= "&adminurl=".base64_encode(get_admin_url());
@@ -111,20 +111,20 @@ class BVProtectLP_V588 {
 	}
 
 	private function getAllowLoginsTransient() {
-		return BVProtect_V588::$settings->getTransient('bvlp_allow_logins');
+		return BVProtect_V591::$settings->getTransient('bvlp_allow_logins');
 	}
 
 	private function getBlockLoginsTransient() {
-		return BVProtect_V588::$settings->getTransient('bvlp_block_logins');
+		return BVProtect_V591::$settings->getTransient('bvlp_block_logins');
 	}
 
 	private function terminateTemplate() {
 		$templates = array (
 			1 => "<p>Too many failed attempts, You are barred from logging into this site.</p>" .
-						"<a href=" . $this->getCaptchaLink() ." class='btn btn-default'>Click here</a>" .
+						"<a href=" . esc_url($this->getCaptchaLink()) . " class='btn btn-default'>Click here</a>" .
 						" to unblock yourself.",
 			2 => "You cannot login to this site for 30 minutes because of too many failed login attempts.",
-			3 => "<p>Logins to this site are currently blocked.</p><a href=" . $this->getCaptchaLink() .
+			3 => "<p>Logins to this site are currently blocked.</p><a href=" . esc_url($this->getCaptchaLink()) .
 						" class='btn btn-default'>Click here</a> to unblock yourself.",
 			5 => "Your IP is blacklisted."
 		);
@@ -133,19 +133,19 @@ class BVProtectLP_V588 {
 			<div style='height: 98vh;'>
 				<div style='text-align: center; padding: 10% 0; font-family: Arial, Helvetica, sans-serif;'>
 					<div><p><img src=". plugins_url('/../img/icon.png', __FILE__) . "><h2>Login Protection</h2><h3>powered by</h3><h2>"
-							. $this->brand_name . " Firewall</h2></p><div>
+							. esc_html($this->brand_name) . " Firewall</h2></p><div>
 					<p>" . $templates[$this->category] . "</p>
-					<p>Reference ID: " . BVInfo::getRequestID() . "</p>
+					<p>Reference ID: " . esc_html(BVInfo::getRequestID()) . "</p>
 				</div>
 			</div>";
 	}
 
 	private function isProtecting() {
-		return $this->mode === BVProtectLP_V588::MODE_PROTECT;
+		return $this->mode === BVProtectLP_V591::MODE_PROTECT;
 	}
 
 	private function isActive() {
-		return $this->mode !== BVProtectLP_V588::MODE_DISABLED;
+		return $this->mode !== BVProtectLP_V591::MODE_DISABLED;
 	}
 
 	private function isBlacklistedIP() {
@@ -157,11 +157,11 @@ class BVProtectLP_V588 {
 	}
 
 	private function isUnBlockedIP() {
-		$transient_name = BVProtectLP_V588::UNBLOCK_IP_TRANSIENT_PREFIX . $this->ip;
-		$attempts = BVProtect_V588::$settings->getTransient($transient_name);
+		$transient_name = BVProtectLP_V591::UNBLOCK_IP_TRANSIENT_PREFIX . $this->ip;
+		$attempts = BVProtect_V591::$settings->getTransient($transient_name);
 
 		if ($attempts && $attempts > 0) {
-			BVProtect_V588::$settings->setTransient($transient_name, $attempts - 1, 600 * $attempts);
+			BVProtect_V591::$settings->setTransient($transient_name, $attempts - 1, 600 * $attempts);
 			return true;
 		}
 
@@ -170,7 +170,7 @@ class BVProtectLP_V588 {
 
 	private function isLoginBlocked() {
 		if ($this->getAllowLoginsTransient() ||
-				($this->getLoginCount(BVProtectLP_V588::LOGIN_STATUS_FAILURE, null, $this->all_blocked_gap) < $this->block_all_limit)) {
+				($this->getLoginCount(BVProtectLP_V591::LOGIN_STATUS_FAILURE, null, $this->all_blocked_gap) < $this->block_all_limit)) {
 			return false;
 		}
 
@@ -193,12 +193,13 @@ class BVProtectLP_V588 {
 
 	private function terminateLogin() {
 		$this->message = 'Login Blocked';
-		$this->log(BVProtectLP_V588::LOGIN_STATUS_BLOCKED);
+		$this->log(BVProtectLP_V591::LOGIN_STATUS_BLOCKED);
 		if ($this->isProtecting()) {
 			header("Cache-Control: no-cache, no-store, must-revalidate");
 			header("Pragma: no-cache");
 			header("Expires: 0");
 			header('HTTP/1.0 403 Forbidden');
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already Escaped
 			die($this->terminateTemplate());
 			exit;
 		}
@@ -206,28 +207,28 @@ class BVProtectLP_V588 {
 
 	public function loginInit($user, $username = '', $password = '') {
 		if ($this->isUnBlockedIP()) {
-			$this->category = BVProtectLP_V588::CATEGORY_UNBLOCKED;
+			$this->category = BVProtectLP_V591::CATEGORY_UNBLOCKED;
 		} else {
-			$failed_attempts = $this->getLoginCount(BVProtectLP_V588::LOGIN_STATUS_FAILURE,
+			$failed_attempts = $this->getLoginCount(BVProtectLP_V591::LOGIN_STATUS_FAILURE,
 																							$this->ip, $this->failed_login_gap);
 
 			if ($this->isWhitelistedIP()) {
-				$this->category = BVProtectLP_V588::CATEGORY_BYPASSED;
-			} elseif (BVProtectUtils_V588::isPrivateIP($this->ip)) {
-				$this->category = BVProtectLP_V588::CATEGORY_PRIVATEIP;
+				$this->category = BVProtectLP_V591::CATEGORY_BYPASSED;
+			} elseif (BVProtectUtils_V591::isPrivateIP($this->ip)) {
+				$this->category = BVProtectLP_V591::CATEGORY_PRIVATEIP;
 			} elseif ($this->isBlacklistedIP()) {
-				$this->category = BVProtectLP_V588::CATEGORY_BLACKLISTED;
+				$this->category = BVProtectLP_V591::CATEGORY_BLACKLISTED;
 				$this->terminateLogin();
 			} elseif ($this->isKnownLogin()) {
-				$this->category = BVProtectLP_V588::CATEGORY_BYPASSED;
+				$this->category = BVProtectLP_V591::CATEGORY_BYPASSED;
 			} elseif ($this->isLoginBlocked()) {
-				$this->category = BVProtectLP_V588::CATEGORY_ALL_BLOCKED;
+				$this->category = BVProtectLP_V591::CATEGORY_ALL_BLOCKED;
 				$this->terminateLogin();
 			} elseif ($failed_attempts >= $this->temp_block_limit) {
-				$this->category = BVProtectLP_V588::CATEGORY_TEMP_BLOCK;
+				$this->category = BVProtectLP_V591::CATEGORY_TEMP_BLOCK;
 				$this->terminateLogin();
 			} elseif ($failed_attempts >= $this->captcha_limit) {
-				$this->category = BVProtectLP_V588::CATEGORY_CAPTCHA_BLOCK;
+				$this->category = BVProtectLP_V591::CATEGORY_CAPTCHA_BLOCK;
 				$this->terminateLogin();
 			}
 		}
@@ -241,31 +242,31 @@ class BVProtectLP_V588 {
 
 	public function loginFailed($username) {
 		$this->username = $username;
-		$this->log(BVProtectLP_V588::LOGIN_STATUS_FAILURE);
+		$this->log(BVProtectLP_V591::LOGIN_STATUS_FAILURE);
 	}
 
 	public function loginSuccess($username) {
 		$this->username = $username;
 		$this->message = 'Login Success';
-		$this->log(BVProtectLP_V588::LOGIN_STATUS_SUCCESS);
+		$this->log(BVProtectLP_V591::LOGIN_STATUS_SUCCESS);
 	}
 
 	private function isKnownLogin() {
-		return $this->getLoginCount(BVProtectLP_V588::LOGIN_STATUS_SUCCESS,
+		return $this->getLoginCount(BVProtectLP_V591::LOGIN_STATUS_SUCCESS,
 																$this->ip, $this->success_login_gap) > 0;
 	}
 
 	private function getLoginCount($status, $ip, $gap) {
-		$table = BVProtect_V588::$db->getBVTable(BVProtectLP_V588::TABLE_NAME);
+		$table = BVProtect_V591::$db->getBVTable(BVProtectLP_V591::TABLE_NAME);
 		$query_str = "SELECT COUNT(*) as count from `$table` WHERE status=%d && time > %d";
 		$query_args = array($status, ($this->time - $gap));
 
-		$query = BVProtect_V588::$db->prepare($query_str, $query_args);
+		$query = BVProtect_V591::$db->prepare($query_str, $query_args);
 		if ($ip) {
-			$query .= BVProtect_V588::$db->prepare(" && ip=%s", $ip);
+			$query .= BVProtect_V591::$db->prepare(" && ip=%s", $ip);
 		}
 
-		$rows = BVProtect_V588::$db->getResult($query);
+		$rows = BVProtect_V591::$db->getResult($query);
 		if (!$rows) {
 			return 0;
 		}

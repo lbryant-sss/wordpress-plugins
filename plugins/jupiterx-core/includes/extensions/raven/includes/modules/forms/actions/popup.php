@@ -99,6 +99,7 @@ class Popup extends Action_Base {
 				'query'       => [
 					'source'    => Query::QUERY_SOURCE_POST,
 					'post_type' => 'jupiterx-popups',
+					'post_status' => 'publish',
 				],
 				'default'     => false,
 				'condition' => [

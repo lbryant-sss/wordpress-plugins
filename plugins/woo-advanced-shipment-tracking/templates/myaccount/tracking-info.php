@@ -45,12 +45,17 @@ $order_data = wc_get_order( $order_id );
 
 <div class="fluid_section">
 	<?php 
-	foreach ( $tracking_items as $key => $tracking_item ) { 
-	
+	foreach ( $tracking_items as $key => $tracking_item ) {
 		if ( '' != $tracking_item[ 'formatted_tracking_provider' ] ) {
 			$ast_provider_title = apply_filters( 'ast_provider_title', esc_html( $tracking_item[ 'formatted_tracking_provider' ] )); 
 		} else {
-			$ast_provider_title = apply_filters( 'ast_provider_title', esc_html( $tracking_item[ 'tracking_provider' ] ));
+			$ast_provider_title = '';
+			if ( $tracking_item[ 'tracking_provider' ] != '' ) {
+				$ast_provider_title = $tracking_item[ 'tracking_provider' ];
+			} else if ( $tracking_item[ 'custom_tracking_provider' ] != '' ) {
+				$ast_provider_title = $tracking_item[ 'custom_tracking_provider' ];
+			}
+			$ast_provider_title = apply_filters( 'ast_provider_title', esc_html( $ast_provider_title ));
 		}
 		?>
 		<div class="fluid_container">

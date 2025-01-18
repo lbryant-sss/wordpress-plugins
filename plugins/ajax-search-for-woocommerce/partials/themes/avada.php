@@ -121,6 +121,17 @@ add_action( 'wp_head', function () {
 			top: calc(100% + -4px);
 		}
 
+		.fusion-main-menu .fusion-main-menu-search a:after {
+			display: none !important;
+		}
+
+		.menu-item > .dgwt-wcas-layout-icon {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+		}
+
 		@media (max-width: 1100px) {
 			.fusion-flyout-search .dgwt-wcas-search-wrapp {
 				margin-top: 73px;

@@ -10,6 +10,37 @@ jQuery(function ($) {
 		menuEditorTabs.insertAfter(menuEditorHeading);
 	}
 
+	//Add size classes to each tab to enable fixed-increment resizing.
+	const tabColumnWidth = parseInt((tabList.css('--ame-tab-col-width') || '32px').replace('px', ''), 10);
+	const tabCondensedHorizontalPadding = parseInt((tabList.css('--ame-tab-cnd-horizontal-padding') || '8px').replace('px', ''), 10);
+	const tabCondensedGap = parseInt((tabList.css('--ame-tab-cnd-gap') || '5px').replace('px', ''), 10);
+
+	function calculateColumns(contentWidth, condensedPadding) {
+		if (typeof condensedPadding === 'undefined') {
+			condensedPadding = tabCondensedHorizontalPadding;
+		}
+		//Calculate the lowest number of columns that would fit a tab with the given content width.
+		//Minimum width = content width + padding for condensed tabs + border.
+		const condensedWidth = contentWidth + condensedPadding * 2 + 2;
+		return Math.min(Math.ceil(
+			(condensedWidth + tabCondensedGap) / (tabColumnWidth + tabCondensedGap)
+		), 12);
+	}
+
+	tabList.children('.nav-tab').each(function () {
+		const $this = $(this);
+		const columnCount = calculateColumns($this.width());
+		$this.addClass('ame-nav-tab-col-' + columnCount);
+	});
+
+	//Also add a size class to the heading that's inside the tab list. That heading starts hidden,
+	//so we use the size of the main heading to determine the column count.
+	const $inlineHeading = tabList.find('#ws_ame_tab_leader_heading');
+	if (($inlineHeading.length > 0) && (menuEditorHeading.length > 0)) {
+		const headingColumnCount = calculateColumns(menuEditorHeading.width(), 0);
+		$inlineHeading.addClass('ame-nav-tab-col-' + headingColumnCount);
+	}
+
 	//Switch tab styles when there are too many tabs and they don't fit on one row.
 	var $firstTab = null,
 		$lastTab = null,
@@ -36,10 +67,11 @@ jQuery(function ($) {
 			return;
 		}
 		var firstTabBottom = firstPosition.top + $firstTab.outerHeight();
-		var areTabsWrapped = (lastPosition.top >= firstTabBottom);
+		//Note: The -1 below is due to the active tab having a negative bottom margin.
+		var areTabsWrapped = (lastPosition.top >= (firstTabBottom - 1));
 
 		//Tab positions may change when we apply different styles, which could lead to the tab bar
-		//rapidly cycling between one and two two rows when the browser width is just right.
+		//rapidly cycling between one and two rows when the browser width is just right.
 		//To prevent that, remember what the width was when we detected wrapping, and always apply
 		//the alternative styles if the width is lower than that.
 		var wouldWrapByDefault = (windowWidth <= knownTabWrapThreshold);
@@ -53,6 +85,9 @@ jQuery(function ($) {
 	}
 
 	updateTabStyles();
+
+	menuEditorHeading.css('visibility', 'visible');
+	tabList.css('visibility', 'visible');
 
 	$(window).on('resize', wsAmeLodash.debounce(
 		function () {

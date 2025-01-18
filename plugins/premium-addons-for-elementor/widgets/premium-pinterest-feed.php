@@ -106,9 +106,9 @@ class Premium_Pinterest_Feed extends Widget_Base {
 	public function get_style_depends() {
 		return array(
 			'font-awesome-5-all',
-            'pa-load-animations',
-            'pa-share-btn',
-            'pa-image-effects',
+			'pa-load-animations',
+			'pa-share-btn',
+			'pa-image-effects',
 			'pa-slick',
 			'premium-addons',
 		);
@@ -167,9 +167,9 @@ class Premium_Pinterest_Feed extends Widget_Base {
 		return 'https://premiumaddons.com/support/';
 	}
 
-    public function has_widget_inner_wrapper(): bool {
-        return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-    }
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+	}
 
 	/**
 	 * Register World Clock controls.
@@ -311,7 +311,7 @@ class Premium_Pinterest_Feed extends Widget_Base {
 		);
 
 		if ( ! $papro_activated ) {
-			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'editor-page', 'wp-editor', 'get-pro' );
+			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'pinterest-widget', 'wp-editor', 'get-pro' );
 
 			$this->add_control(
 				'endpoint_notice',
@@ -377,14 +377,14 @@ class Premium_Pinterest_Feed extends Widget_Base {
 			)
 		);
 
-        $this->add_control(
+		$this->add_control(
 			'select_boards',
 			array(
 				'label'       => __( 'Select Specific Board(s) By', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::SELECT,
 				'options'     => array(
 					'name' => __( 'Board Name', 'premium-addons-for-elementor' ),
-					'id' => __( 'Board ID', 'premium-addons-for-elementor' ),
+					'id'   => __( 'Board ID', 'premium-addons-for-elementor' ),
 				),
 				'default'     => 'name',
 				'render_type' => 'template',
@@ -405,14 +405,14 @@ class Premium_Pinterest_Feed extends Widget_Base {
 				'default'            => array(),
 				'frontend_available' => true,
 				'condition'          => array(
-					'show_feed' => 'yes',
-					'match_id'  => '',
-                    'select_boards'=> 'name'
+					'show_feed'     => 'yes',
+					'match_id'      => '',
+					'select_boards' => 'name',
 				),
 			)
 		);
 
-        $this->add_control(
+		$this->add_control(
 			'board_ids_text',
 			array(
 				'type'        => Controls_Manager::TEXT,
@@ -421,9 +421,9 @@ class Premium_Pinterest_Feed extends Widget_Base {
 				'dynamic'     => array( 'active' => true ),
 				'render_type' => 'template',
 				'condition'   => array(
-					'show_feed' => 'yes',
-					'match_id'  => '',
-                    'select_boards'=> 'id'
+					'show_feed'     => 'yes',
+					'match_id'      => '',
+					'select_boards' => 'id',
 				),
 			)
 		);
@@ -532,7 +532,7 @@ class Premium_Pinterest_Feed extends Widget_Base {
 		);
 
 		if ( ! $papro_activated ) {
-			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'editor-page', 'wp-editor', 'get-pro' );
+			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'pinterest-widget', 'wp-editor', 'get-pro' );
 
 			$this->add_control(
 				'profile_header_notice',
@@ -1166,7 +1166,7 @@ class Premium_Pinterest_Feed extends Widget_Base {
 		$doc_index = 1;
 		foreach ( $docs as $url => $title ) {
 
-			$doc_url = Helper_Functions::get_campaign_link( $url, 'editor-page', 'wp-editor', 'get-support' );
+			$doc_url = Helper_Functions::get_campaign_link( $url, 'pinterest-widget', 'wp-editor', 'get-support' );
 
 			$this->add_control(
 				'doc_' . $doc_index,
@@ -1735,7 +1735,7 @@ class Premium_Pinterest_Feed extends Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'      => 'feed_box_overlay',
-				'label'     => __( 'Image Overlay' ),
+				'label'     => __( 'Image Overlay', 'premium-addons-for-elementor' ),
 				'types'     => array( 'classic', 'gradient' ),
 				'selector'  => '{{WRAPPER}} .premium-pinterest-feed__pin-meta-wrapper',
 				'condition' => array(
@@ -2579,9 +2579,9 @@ class Premium_Pinterest_Feed extends Widget_Base {
 			return;
 		}
 
-        if( ! empty( $settings['board_ids_text'] ) ) {
-            $settings['board_id'] = explode( ',', $settings['board_ids_text'] );
-        }
+		if ( ! empty( $settings['board_ids_text'] ) ) {
+			$settings['board_id'] = explode( ',', $settings['board_ids_text'] );
+		}
 
 		$show_feed    = 'yes' === $settings['show_feed'];
 		$show_profile = 'yes' === $settings['profile_header'];
@@ -2877,7 +2877,7 @@ class Premium_Pinterest_Feed extends Widget_Base {
 					}
 
 					// if( ! $settings['board_id'] ) {
-					// 	return;
+					// return;
 					// }
 
 					if ( $default && 1 < count( $settings['board_id'] ) && ! in_array( $feed['board_id'], $settings['board_id'], true ) ) {

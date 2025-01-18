@@ -2,7 +2,7 @@ import { r as registerInstance, c as createEvent, h, F as Fragment, H as Host } 
 import { o as openWormhole } from './consumer-e06b16d3.js';
 import { i as isPriceInOrder } from './index-0202319f.js';
 import { i as intervalString } from './price-d5770168.js';
-import { a as apiFetch } from './fetch-2032d11d.js';
+import { a as apiFetch } from './fetch-2d92a73e.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
 import './currency-a0c9bff4.js';
 import './remove-query-args-938c53ea.js';

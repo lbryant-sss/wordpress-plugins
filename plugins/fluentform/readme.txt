@@ -22,7 +22,7 @@ Get a fast contact form plugin. Create advanced forms using drag and drop form b
 
 Anything from a simple contact form to a more advanced payment, quiz, or calculator form, Fluent Forms can meet virtually all your needs.
 
-[youtube https://www.youtube.com/watch?v=imugwQOFSmI]
+[youtube https://youtu.be/78jS8G4j5q8?si=r4GV6gULBY-4EXsM]
 
 ==Powerful Features available in the Free Version==
 
@@ -177,7 +177,8 @@ Why do the same thing over and over again? Fluent Forms enables you to choose a 
 == Conversational Forms ==
 One of the best features of any form builder plugin is its ability to create different types of forms. One of the key features of Fluent Forms is conversational forms. With conversational forms, users get one question at a time, unlike traditional forms. This reduces distraction and results in a higher form completion rate. There are multiple layout options to serve your purpose. There are multiple sharing options for conversational forms, including direct URLs, shortcodes, HTML embedding and more.
 
-[youtube https://www.youtube.com/watch?v=lLQWsjqrGtg]
+[youtube https://youtu.be/LSuZ7jOHLwE?si=rt4hKrtgvYKyvL8X]
+
 
 [View Conversational Form Demo](https://fluentforms.com/?fluent-form=138)
 With Fluent Forms Pro, you can enjoy more advanced functionalities in conversational forms. Users can browse through questions with scroll and key press. They can also customize the fonts, colors, backgrounds, and more to match brand identity.
@@ -567,6 +568,7 @@ You can get support from our official support thread at <a href="https://wpmanag
 
 = 5.1.12 (Date: April 18, 2024) =
 - Adds Name Field on conversational form
+- Adds CSS Variable support for forms
 - Adds label shortcode
 - Improved container action UI
 - Fixes mask input on Elementor popup
@@ -576,6 +578,7 @@ You can get support from our official support thread at <a href="https://wpmanag
 - Fixes checkbox and radio smart UI keyboard tab navigation
 - Fixes name fields individual label placement
 - Fixes checkbox & radio field issue with condition
+
 
 = 5.1.11 (Date: February 26, 2024) =
 - Fixes URL escaping bug

@@ -7,7 +7,7 @@ const pageAlign = require('./page-align-5a2ab493.js');
 const animationRegistry = require('./animation-registry-f7f1a08b.js');
 const currency = require('./currency-71fce0f0.js');
 const library = require('./library-b4e9d7e3.js');
-const fetch$1 = require('./fetch-f25a0cb0.js');
+const fetch$1 = require('./fetch-aaab7645.js');
 const addQueryArgs = require('./add-query-args-49dcb630.js');
 require('./remove-query-args-b57e8cd3.js');
 

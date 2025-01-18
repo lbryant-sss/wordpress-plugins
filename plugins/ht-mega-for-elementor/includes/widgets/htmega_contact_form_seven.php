@@ -28,9 +28,46 @@ class HTMega_Elementor_Widget_Contact_Form_Seven extends Widget_Base {
     public function get_help_url() {
 		return 'https://wphtmega.com/docs/forms-widgets/contact-form-widget/';
 	}
-
-
     protected function register_controls() {
+        if ( ! is_plugin_active('contact-form-7/wp-contact-form-7.php') ) {
+            $this->messing_parent_plg_notice();
+        } else {
+            $this->contact_form_seven_regster_fields();
+        }
+    }
+    protected function messing_parent_plg_notice() {
+
+        $this->start_controls_section(
+            'messing_parent_plg_notice_section',
+            [
+                'label' => __( 'Contact Form 7', 'htmega-addons' ),
+            ]
+        );
+            $this->add_control(
+                'htemga_plugin_parent_missing_notice',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => sprintf(
+                        __( 'It appears that %1$s is not currently installed on your site. Kindly use the link below to install or activate %1$s. After completing the installation or activation, please refresh this page.', 'htmega-addons' ),
+                        '<a href="' . esc_url( admin_url( 'plugin-install.php?s=Contact%2520Form%25207&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">Contact Form 7</a>'
+                    ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
+                ]
+            );
+        
+
+            $this->add_control(
+                'parent_plugin_install',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => '<a href="'.esc_url( admin_url( 'plugin-install.php?s=Contact%2520Form%25207&tab=search&type=term' ) ).'" target="_blank" rel="noopener">Click to install or activate Contact Form 7</a>',
+                ]
+            );
+        $this->end_controls_section();
+
+    }
+
+    protected function contact_form_seven_regster_fields() {
 
         $this->start_controls_section(
             'htmega_contact_form_seven',
@@ -1119,7 +1156,10 @@ class HTMega_Elementor_Widget_Contact_Form_Seven extends Widget_Base {
     protected function render( $instance = [] ) {
 
         $settings   = $this->get_settings_for_display();
-
+        if ( ! is_plugin_active('contact-form-7/wp-contact-form-7.php') ) {
+            htmega_plugin_missing_alert( __('Contact Form 7', 'htmega-addons') );
+            return;
+        }
         $this->add_render_attribute( 'htmega_form_area_attr', 'class', 'htmega-form-wrapper' );
         $this->add_render_attribute( 'htmega_form_area_attr', 'class', 'htmega-form-style-'. esc_attr( $settings['htmega_form_layout_style'] ) );
         ?>

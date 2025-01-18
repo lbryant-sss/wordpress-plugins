@@ -398,6 +398,7 @@
         voiceSearchLang: '',
         showRecentlySearchedProducts: false,
         showRecentlySearchedPhrases: false,
+        goToFirstVariationOnSubmit: true,
     }
 
     function _lookupFilter(suggestion, originalQuery, queryLowerCase) {
@@ -574,20 +575,19 @@
                 }
 
                 // If variation suggestion exist, click it instead submit search results page
-                if (that.suggestions.length > 0) {
-
-                    $.each(that.suggestions, function (i, suggestion) {
-
-                        if (
-                            typeof suggestion.type != 'undefined'
-                            && suggestion.type == 'product_variation'
-                        ) {
-                            that.select(i);
-                            e.preventDefault();
-                            return false;
-                        }
-                    });
-
+                if (that.options.goToFirstVariationOnSubmit) {
+                    if (that.suggestions.length > 0) {
+                        $.each(that.suggestions, function (i, suggestion) {
+                            if (
+                                typeof suggestion.type != 'undefined'
+                                && suggestion.type == 'product_variation'
+                            ) {
+                                that.select(i);
+                                e.preventDefault();
+                                return false;
+                            }
+                        });
+                    }
                 }
 
                 if (that.options.showRecentlySearchedPhrases) {
@@ -828,7 +828,9 @@
                 && !$formWrapper.find('.js-dgwt-wcas-enable-mobile-form').length
             ) {
 
-                $formWrapper.prepend('<a href="#" class="js-dgwt-wcas-enable-mobile-form dgwt-wcas-enable-mobile-form"></a>');
+                var aria = typeof dgwt_wcas.labels.mob_overlay_label === 'string' ? dgwt_wcas.labels.mob_overlay_label : '';
+
+                $formWrapper.prepend('<a href="#" aria-label="' + aria + '" class="js-dgwt-wcas-enable-mobile-form dgwt-wcas-enable-mobile-form"></a>');
                 $formWrapper.addClass('dgwt-wcas-mobile-overlay-trigger-active');
 
                 // Don't focus an icon handler when mobile overlay handler is displayed.
@@ -2355,15 +2357,10 @@
                         if (!options.showHeadings) {
                             prepend += '<span class="dgwt-wcas-st--direct-headline">' + dgwt_wcas.labels.vendor + '</span>';
                         }
-                    } else if (options.isPremium && suggestion.type === 'post' && typeof suggestion.post_type !== 'undefined' && suggestion.post_type === 'post') {
-                        classes += ' dgwt-wcas-suggestion-pt dgwt-wcas-suggestion-pt-post';
+                    } else if (options.isPremium && suggestion.type === 'post' && typeof suggestion.post_type !== 'undefined') {
+                        classes += ' dgwt-wcas-suggestion-pt dgwt-wcas-suggestion-pt-' + suggestion.post_type;
                         if (!options.showHeadings) {
-                            prepend += '<span class="dgwt-wcas-st--direct-headline">' + dgwt_wcas.labels.post + '</span>';
-                        }
-                    } else if (options.isPremium && suggestion.type === 'post' && typeof suggestion.post_type !== 'undefined' && suggestion.post_type === 'page') {
-                        classes += ' dgwt-wcas-suggestion-pt dgwt-wcas-suggestion-pt-page';
-                        if (!options.showHeadings) {
-                            prepend += '<span class="dgwt-wcas-st--direct-headline">' + dgwt_wcas.labels.page + '</span>';
+                            prepend += '<span class="dgwt-wcas-st--direct-headline">' + dgwt_wcas.labels['post_type_' + suggestion.post_type] + '</span>';
                         }
                     } else if (suggestion.type === 'more_products') {
                         classes += ' js-dgwt-wcas-suggestion-more dgwt-wcas-suggestion-more';
@@ -2392,9 +2389,11 @@
                         html += that.createNoResultsContent();
 
                     } else {
-
                         // Image
-                        if (typeof suggestion.image_src != 'undefined' && suggestion.image_src) {
+                        if (
+                            (typeof suggestion.image_src != 'undefined' && suggestion.image_src) ||
+                            (typeof suggestion.image != 'undefined' && suggestion.image)
+                        ) {
                             isImg = true;
                         }
 
@@ -2407,7 +2406,8 @@
                         html += '<a href="' + url + '" class="' + classes + '" data-index="' + i + '">';
 
                         if (isImg) {
-                            html += '<span class="dgwt-wcas-si"><img src="' + suggestion.image_src + '" /></span>';
+                            const imgSrc = suggestion.image_src ? suggestion.image_src : suggestion.image;
+                            html += '<span class="dgwt-wcas-si"><img src="' + imgSrc + '" /></span>';
                             html += '<div class="dgwt-wcas-content-wrapp">';
                         }
 
@@ -2936,6 +2936,7 @@
                 if (
                     suggestion.type === 'more_products'
                     || (that.actionTriggerSource === 'enter' && that.latestActivateSource != 'key' && suggestion.type != 'product_variation')
+                    || (that.actionTriggerSource === 'enter' && that.latestActivateSource != 'key' && suggestion.type == 'product_variation' && !that.options.goToFirstVariationOnSubmit)
                 ) {
                     that.el.closest('form').trigger('submit');
                     forceSubmit = true;
@@ -3846,6 +3847,7 @@
                 voiceSearchLang: typeof dgwt_wcas.voice_search_lang != 'undefined' ? dgwt_wcas.voice_search_lang : '',
                 showRecentlySearchedProducts: typeof dgwt_wcas.show_recently_searched_products != 'undefined' ? dgwt_wcas.show_recently_searched_products : false,
                 showRecentlySearchedPhrases: typeof dgwt_wcas.show_recently_searched_phrases != 'undefined' ? dgwt_wcas.show_recently_searched_phrases : false,
+                goToFirstVariationOnSubmit: typeof dgwt_wcas.go_to_first_variation_on_submit != 'undefined' ? dgwt_wcas.go_to_first_variation_on_submit : false,
             };
 
             $('.dgwt-wcas-search-input').dgwtWcasAutocomplete(window.dgwt_wcas.config);

@@ -412,6 +412,11 @@ function backuply_regular_offer(){
 
 function backuply_check_expires(){
 	global $backuply;
+	
+	// We do not want to show the expiry notice if the license is by SoftWP.
+	if(!empty($backuply['license']) && !empty($backuply['license']['has_plid'])){
+	    return;
+	}
 
 	$current_timestamp = time();
 	$expiration_timestamp = strtotime($backuply['license']['expires']);

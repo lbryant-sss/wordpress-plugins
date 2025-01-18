@@ -48,7 +48,7 @@ else :
 		</div>
 		<div class="settings-block-values col-xs-8 col-sm-9">
 			<div class="settings-value">
-				<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink . '?utm_source=selectdefaultid&utm_medium=filterstags&utm_campaign=pluginfilter' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+				<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 			</div>
 		</div>
 	</div>
@@ -60,7 +60,7 @@ else :
 		</div>
 		<div class="settings-block-values col-xs-8 col-sm-9">
 			<div class="settings-value">
-				<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink . '?utm_source=&utm_medium=&utm_campaign=' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+				<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 			</div>
 		</div>
 	</div>
@@ -70,7 +70,7 @@ else :
 		</div>
 		<div class="settings-block-values col-xs-8 col-sm-9">
 			<div class="settings-value">
-				<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink . '?utm_source=&utm_medium=&utm_campaign=' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+				<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 			</div>
 		</div>
 	</div>
@@ -81,7 +81,7 @@ else :
 		</div>
 		<div class="settings-block-values col-xs-8 col-sm-9">
 			<div class="settings-value">
-				<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink . '?utm_source=&utm_medium=&utm_campaign=' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+				<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 			</div>
 		</div>
 	</div>
@@ -142,7 +142,7 @@ endif;
 					<?php esc_html_e( 'Sort as numbers', 'woo-product-filter' ); ?>
 					<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__( 'Turn this on if you want to sort the values as numbers.', 'woo-product-filter' ); ?>"></i>
 				</div>
-				<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink . '?utm_source=sortasnumbers&utm_medium=filterstags&utm_campaign=pluginfilter' ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
+				<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 
 			</div>
 		<?php } ?>

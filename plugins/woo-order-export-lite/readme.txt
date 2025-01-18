@@ -2,7 +2,7 @@
 Contributors: algolplus
 Donate link: 
 Tags: order export,export orders,woocommerce,order,export
-Requires PHP: 5.4.0
+Requires PHP: 7.1.0
 Requires at least: 4.7
 Tested up to: 6.7
 Stable tag: 3.5.6
@@ -119,6 +119,17 @@ Yes, you can email a request to aprokaev@gmail.com. We intensively develop this 
 6. Select orders to export and use "bulk action".
 
 == Changelog ==
+
+= 3.5.7 - 2025-01-20 =
+* Added checkbox "Display summary row" to section "Setup Fields"
+* Added option "Exclude free items" to section "Filter by item and metadata"
+* New field "Quantity (Refunded)" (>Setup Fields>Products)
+* New field "Tax Rates" (>Setup Fields>Product Order Items)
+* Added tip (with expected action) for new field created via >Setup Fields>Add Field
+* Fixed bug - wrong values in field "Currency symbol"
+* Fixed bug - critical error for XLS format if sorting by numeric field
+* Fixed bug - option "Export all products from the order" now ignored if all product filters are empty
+* Fixed PHP8.4 notices and warnings
 
 = 3.5.6 - 2024-11-11 =
 * Fixed "PHP Object Injection" (CVE-2024-10828). Thank [@webbernaut](https://profiles.wordpress.org/webbernaut/) for reporting this vulnerability!

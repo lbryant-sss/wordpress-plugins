@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.22.28 (2025-01-14)
+
+
+### Bug Fixes
+
+* set default api documentation version to 1.0.0 to improve UX on api docs (CU-869727naj)
+
+
+### Build System
+
+* locally host iconfonts instead of using alicdn (CU-86979mp3p)
+
+
+<details><summary>Dependency updates @devowl-wp/react-folder-tree 0.1.6</summary>
+
+
+**_Purpose of dependency:_** _Feature-rich folder tree renderer with toolbar (formerly react-aiot)._
+##### Build System
+
+* locally host iconfonts instead of using alicdn (CU-86979mp3p)</details>
+
+<details><summary>Dependency updates @devowl-wp/real-product-manager-wp-client 1.19.31</summary>
+
+
+**_Purpose of dependency:_** _A WordPress client for Real Product Manager_
+##### Bug Fixes
+
+* remove potential whitespaces on license keys to improve UX (CU-86974pd8z)</details>
+
+<details><summary>Development dependency update @devowl-wp/continuous-localization 0.8.10</summary>
+
+
+**_Purpose of dependency:_** _Provide a CLI to push and pull localization files from different translation management systems._
+##### Bug Fixes
+
+* ensure to retry on locked component after 2,5 minutes (CU-8695kguk7)</details>
+
+
+
+
+
 ## 4.22.27 (2024-12-06)
 
 

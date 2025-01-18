@@ -487,6 +487,10 @@ class Image extends Base_Widget {
 			$settings['hover_animation'] = '';
 		}
 
+		if ( isset( $settings['image_custom_dimension'] ) ) {
+			$settings['switch_image_custom_dimension'] = $settings['image_custom_dimension'];
+		}
+
 		// WPML compatibility.
 		$settings['image']['id'] = apply_filters( 'wpml_object_id', $settings['image']['id'], 'attachment', true );
 
@@ -548,7 +552,7 @@ class Image extends Base_Widget {
 			);
 		}
 
-		if ( ! empty( $settings['switch_on_hover'] ) ) {
+		if ( ! empty( $settings['switch_on_hover'] ) && isset( $switch_image ) ) {
 			ElementorUtils::print_unescaped_internal_string( $switch_image );
 		}
 

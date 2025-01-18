@@ -5,7 +5,7 @@
  * Description: Divi Supreme enhances the experience and features found on Divi and extend with custom creative modules to help you build amazing websites.
  * Version:     2.5.61
  * Author:      Supreme Modules
- * Author URI:  https://divisupreme.com/about-us/
+ * Author URI:  https://divisupreme.com/about/
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: dsm-supreme-modules-for-divi

@@ -79,7 +79,7 @@
 				jQuery('.wpfMainWrapper').each(function () {
 					var filter = $(this).data('filter-settings');
 					if (typeof filter.settings.filters.defaults !== 'undefined') {
-						curUrl += '&' + filter.settings.filters.defaults.replace(';', '&');
+						curUrl += '&' + filter.settings.filters.defaults.replace(';', '&').replace('|', '%7C');
 					}
 				});
 			} else {
@@ -580,7 +580,10 @@
 			var filter = jQuery(this),
 				selector = filter.find('.wpfColorsFilter').length ? 'li[data-term-slug]' : '[data-term-id]',
 				visible = 0;
-			if (filter.attr('data-display-type') != 'slider') {
+			if (filter.attr('data-display-type') == 'slider') {
+				var idsDef = filter.attr('data-ids-without-filtering').replaceAll(', ',',').split(',');
+				if (idsDef.length <= 1) filter.hide();
+			} else {
 				filter.find(selector).each(function(){
 					if (jQuery(this).css('display') != 'none') visible++;
 				});
@@ -1293,6 +1296,7 @@
 				'display_status_private' : $generalSettings['settings']['display_status_private'] && ($generalSettings['settings']['display_status_private'] == '1') ? true : false,
 				'open_one_by_one': $generalSettings['settings']['open_one_by_one'] ? $generalSettings['settings']['open_one_by_one'] : '',
 				'obo_only_children': $generalSettings['settings']['obo_only_children'] ? $generalSettings['settings']['obo_only_children'] : '',
+				'display_only_children_category': $generalSettings['settings']['display_only_children_category'] ? $generalSettings['settings']['display_only_children_category'] : '',
 			};
 			var $withPerPage = $filterWrapper.find('select.wpfPerPageDD'),
 				perPageCount = $withPerPage.length ? $withPerPage.find('option:selected') : '';
@@ -3276,9 +3280,10 @@
 			}
 		}
 	});
-
+	
+	window.wpIinitialiseImmediately = typeof wpIinitialiseImmediately !== 'undefined' ? wpIinitialiseImmediately : 0;
 	jQuery(document).ready(function () {
-		window.wpfFrontendPage = new WpfFrontendPage();
+		if (!window.wpfFrontendPage) window.wpfFrontendPage = new WpfFrontendPage();
 		if (typeof isElementorEditMode == 'undefined') {
 			window.wpfFrontendPage.init();
 		}
@@ -3379,7 +3384,9 @@
 	jQuery(document).on('ixProductFilterRequestProcessed', function (event) {
 		window.wpfFrontendPage.filtering();
 	});
-
+	if (window.wpIinitialiseImmediately) {
+		window.wpfFrontendPage = new WpfFrontendPage();
+	}
 }(window.jQuery, window));
 
 var objQueryString={};
@@ -3934,3 +3941,7 @@ function wpfDoActionsAfterLoad (fid, isFound, requestData) {
 		window.wpfFrontendPage.saveStatistics(fid, isFound, requestData);
 	}
 }
+if (window.wpIinitialiseImmediately && window.wpfFrontendPage) {
+	if (typeof isElementorEditMode == 'undefined') window.wpfFrontendPage.init();
+}
+	

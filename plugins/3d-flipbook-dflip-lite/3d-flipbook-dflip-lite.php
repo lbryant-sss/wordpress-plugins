@@ -4,7 +4,7 @@
  * Plugin Name: 3D FlipBook : Dflip Lite
  * Description: Realistic 3D Flip-books for WordPress <a href="https://dearflip.com/go/wp-lite-full-version" >Get Full Version Here</a><strong> NOTE : Deactivate this lite version before activating Full Version</strong>
  *
- * Version: 2.3.53
+ * Version: 2.3.57
  *
  * Text Domain: 3d-flipbook-dflip-lite
  * Author: DearHive
@@ -45,7 +45,7 @@ if ( !class_exists( 'DFlip' ) ) {
      *
      * @var string
      */
-    public $version = '2.3.53';
+    public $version = '2.3.57';
 
     /**
      * The name of the plugin.
@@ -826,40 +826,6 @@ if ( !class_exists( 'DFlip' ) ) {
 
     }
     
-    
-    /**
-     * Sanitizes and returns values of an outline array. The values should be text, number and urls only
-     *
-     * @param array $arr Array to be sanitized
-     *
-     * @return array sanitized array
-     * @since 2.3.53
-     *
-     */
-    public function array_outline_sanitize( $arr = array() ) {
-      
-      if ( is_null( $arr ) ) {
-        return array();
-      }
-      foreach ( (array) $arr as $k => $val ) {
-        if ( is_array( $val ) ) {
-          $arr[ $k ] = $this->array_outline_sanitize( $val );
-        } else if ( $k == "title" ) {
-          $arr[ $k ] = sanitize_text_field( $val );
-        } else if ( $k == "dest" ) {
-          if ( is_numeric( $arr[ $k ] ) ) {
-            $arr[ $k ] = sanitize_text_field( $val );
-          } else {
-            $arr[ $k ] = sanitize_url( $val );
-          }
-        }else{
-            return "";
-        }
-      }
-      
-      return $arr;
-      
-    }
     
     public function dflip_lite_check() {
       if ( is_admin() ) {

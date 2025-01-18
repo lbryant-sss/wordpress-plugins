@@ -5,6 +5,11 @@
 * (c) Backuply Team
 */
 
+if(isset($_REQUEST['status_key']) && defined('BACKUPLY_DIR_FOR_RESTORE')){
+	include_once BACKUPLY_DIR_FOR_RESTORE . '/status_logs.php';
+	die();
+}
+
 if(empty($_SERVER['REQUEST_METHOD']) || $_SERVER['REQUEST_METHOD'] !== 'POST' || !backuply_verify_self()){
 	die('HACKING ATTEMPT!');
 }
@@ -117,7 +122,7 @@ function backuply_get_config() {
 }
 
 function backuply_kill_process() {
-	global $error;
+	global $error, $data;
 	
 	if(file_exists(dirname(__FILE__, 3).'/backuply/restoration/restoration.php')) {
 		@unlink(dirname(__FILE__, 3).'/backuply/restoration/restoration.php');
@@ -125,6 +130,12 @@ function backuply_kill_process() {
 	
 	restore_clean();
 	$error[] = 'The Restore has been killed Successfully';
+
+	// Deleting restore index file
+	if(!empty($data['softpath']) && file_exists($data['softpath'] . '/backuply-restore.php')){
+		unlink($data['softpath'] . '/backuply-restore.php');
+	}
+	
 	backuply_die('restore_killed');
 }
 
@@ -1610,12 +1621,17 @@ class softtar{
 							$v_dest_file = fopen($v_header['filename'], "wb", 0, $stream_context);
 
 						}else{
+							// We will not restore the root htaccess file if the user is migrating to prevent issues related to difference in environment on the new server.
+							if(!empty($data['is_migrating']) && $v_header['filename'] == $data['softpath'] .'/'. '.htaccess'){
+								$v_header['filename'] .=  '.backuply';
+							}
+
 							touch($v_header['filename']);
 							clearstatcache();
 							$v_dest_file = fopen($v_header['filename'], "wb");
 
 							if($v_dest_file == 0){
-								usleep(500);
+								usleep(500); // Added a delay as some server were not able to handle it
 								$v_dest_file = fopen($v_header['filename'], "wb");
 							}
 						}
@@ -3469,7 +3485,7 @@ if(!empty($data['restore_db']) && $GLOBALS['current_status'] < 2){
 			$backup_version = trim($backup_version);
 		}
 		
-		if(version_compare($backup_version, '1.1.7', '<=')){
+		if(!empty($backup_version) && version_compare($backup_version, '1.1.7', '<=')){
 			foreach($tables as $k => $v){
 				backuply_status_log('Dropping old table : '.$v, 'writing');
 				$res = backuply_mysql_query("DROP TABLE `$v`", $__conn);

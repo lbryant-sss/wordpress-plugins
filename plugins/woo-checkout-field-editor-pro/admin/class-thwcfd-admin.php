@@ -41,7 +41,7 @@ class THWCFD_Admin {
 	
 	private function enqueue_styles($suffix) {
 		wp_enqueue_style('woocommerce_admin_styles');
-		wp_enqueue_style('thwcfd-admin-style', THWCFD_ASSETS_URL_ADMIN . 'css/thwcfd-admin'. $suffix .'.css', $this->version);
+		wp_enqueue_style('thwcfd-admin-style', THWCFD_ASSETS_URL_ADMIN . 'css/thwcfd-admin'. $suffix .'.css',[] ,$this->version);
 	}
 
 	private function enqueue_scripts($suffix) {
@@ -97,6 +97,9 @@ class THWCFD_Admin {
 		if($tab === 'advanced_settings'){			
 			$advanced_settings = THWCFD_Admin_Settings_Advanced::instance();	
 			$advanced_settings->render_page();
+		}elseif($tab === 'block_fields'){
+			$block_fields = THWCFD_Admin_Settings_Block_Fields::instance();	
+			$block_fields->init();
 		}elseif($tab === 'pro'){
 			$pro_details = THWCFD_Admin_Settings_Pro::instance();	
 			$pro_details->render_page();

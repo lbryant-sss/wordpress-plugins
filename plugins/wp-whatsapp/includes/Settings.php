@@ -48,6 +48,7 @@ class Settings {
 		add_action( 'wp_ajax_njt_wa_save_woocommerce_setting', array( $this, 'save_woocommerce_setting' ) );
 		add_action( 'wp_ajax_njt_wa_save_analytics_setting', array( $this, 'save_analytics_setting' ) );
 		add_action( 'wp_ajax_njt_wa_save_url_setting', array( $this, 'save_url_setting' ) );
+		add_action( 'wp_ajax_njt_wa_save_user_role_setting', array( $this, 'save_user_role_setting' ) );
 
 		add_filter( 'plugin_action_links_' . NTA_WHATSAPP_BASE_NAME, array( $this, 'addActionLinks' ) );
 		add_filter( 'plugin_row_meta', array( $this, 'pluginRowMeta' ), 10, 2 );
@@ -84,9 +85,9 @@ class Settings {
 	public function admin_menu() {
 		$edit_account_link = 'post-new.php?post_type=whatsapp-accounts';
 
-		add_menu_page( 'NTA Whatsapp', 'WhatsApp', 'manage_options', 'nta_whatsapp', array( $this, 'create_page_setting_widget' ), NTA_WHATSAPP_PLUGIN_URL . 'assets/img/whatsapp-menu.svg', 60 );
-		add_submenu_page( 'nta_whatsapp', __( 'Add New account', 'wp-whatsapp' ), __( 'Add New account', 'wp-whatsapp' ), 'manage_options', $edit_account_link );
-		$this->floatingWidgetSlug = add_submenu_page( 'nta_whatsapp', __( 'Floating Widget', 'wp-whatsapp' ), __( 'Floating Widget', 'wp-whatsapp' ), 'manage_options', 'nta_whatsapp_floating_widget', array( $this, 'floating_widget_view' ) );
+		add_menu_page( 'NTA Whatsapp', 'WhatsApp', 'nta_wa_manage', 'nta_whatsapp', array( $this, 'create_page_setting_widget' ), NTA_WHATSAPP_PLUGIN_URL . 'assets/img/whatsapp-menu.svg', 60 );
+		add_submenu_page( 'nta_whatsapp', __( 'Add New account', 'wp-whatsapp' ), __( 'Add New account', 'wp-whatsapp' ), 'nta_wa_manage', $edit_account_link );
+		$this->floatingWidgetSlug = add_submenu_page( 'nta_whatsapp', __( 'Floating Widget', 'wp-whatsapp' ), __( 'Floating Widget', 'wp-whatsapp' ), 'nta_wa_manage', 'nta_whatsapp_floating_widget', array( $this, 'floating_widget_view' ) );
 		$this->settingSlug        = add_submenu_page( 'nta_whatsapp', __( 'Settings', 'wp-whatsapp' ), __( 'Settings', 'wp-whatsapp' ), 'manage_options', 'nta_whatsapp_setting', array( $this, 'create_page_setting_widget' ) );
 		add_submenu_page(
 			'nta_whatsapp',
@@ -252,6 +253,11 @@ class Settings {
 		require NTA_WHATSAPP_PLUGIN_DIR . 'views/url-settings.php';
 	}
 
+	public function user_role_callback() {
+		$option = Fields::getUserRoleSettings();
+		require NTA_WHATSAPP_PLUGIN_DIR . 'views/user-role-settings.php';
+	}
+
 	public function create_page_setting_widget() {
 		require NTA_WHATSAPP_PLUGIN_DIR . 'views/settings.php';
 	}
@@ -272,6 +278,7 @@ class Settings {
 		add_settings_section( 'nta_woocommerce_button', '', array( $this, 'woocommerce_button_callback' ), 'settings-whatsapp-1' );
 		add_settings_section( 'nta_analytics', '', array( $this, 'analytics_callback' ), 'settings-whatsapp-2' );
 		add_settings_section( 'nta_url', '', array( $this, 'url_callback' ), 'settings-whatsapp-3' );
+		add_settings_section( 'nta_user_role', '', array( $this, 'user_role_callback' ), 'settings-whatsapp-4' );
 	}
 
 	public function save_woobutton_setting() {
@@ -385,6 +392,31 @@ class Settings {
 		$new_input['onMobile']     = sanitize_text_field( $_POST['onMobile'] );
 
 		update_option( 'nta_wa_url', $new_input );
+		wp_send_json_success();
+	}
+
+	public function save_user_role_setting() {
+		check_ajax_referer( 'njt-wa-nonce', 'nonce', true );
+
+		$new_input = array( 'administrator' => true );
+
+		if ( isset( $_POST['userRole'] ) ) {
+			$userRole = Helper::sanitize_array( $_POST['userRole'] );
+			foreach ( $userRole as $role ) {
+				$new_input[ $role ] = true;
+				// Add capability to user role
+				$role = get_role( $role );
+				$role->add_cap( 'nta_wa_manage' );
+			}
+		}
+		$old_settings     = Fields::getUserRoleSettings();
+		$roles_remove_cap = array_diff_key( $old_settings, $new_input );
+		foreach ( $roles_remove_cap as $role => $value ) {
+			$role = get_role( $role );
+			$role->remove_cap( 'nta_wa_manage' );
+		}
+		update_option( 'nta_wa_user_role', $new_input );
+
 		wp_send_json_success();
 	}
 

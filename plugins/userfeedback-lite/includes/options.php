@@ -24,9 +24,6 @@ function userfeedback_get_option_name() {
  * @return array
  */
 function userfeedback_get_default_options() {
-	$admin_email       = get_option( 'admin_email' );
-	$admin_email_array = array( $admin_email );
-
 	return array(
 		// Widget
 		'widget_theme'                => 'light',
@@ -51,7 +48,6 @@ function userfeedback_get_default_options() {
 		// Email summaries
 		'summaries_disabled'          => false,
 		'summaries_html_template'     => true,
-		'summaries_email_addresses'   => $admin_email_array,
 		'automatic_updates'   => 'none',
 	);
 }

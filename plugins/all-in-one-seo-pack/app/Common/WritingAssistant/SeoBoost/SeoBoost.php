@@ -55,16 +55,8 @@ class SeoBoost {
 			add_action( 'init', [ $this, 'marketingSiteCallback' ], 50 );
 		}
 
-		// Migrate user access token and options.
 		add_action( 'init', [ $this, 'migrateUserData' ], 10 );
-
-		$userOptionsFetchError = aioseo()->cache->get( 'seoboost_get_user_options_error' );
-		if ( $userOptionsFetchError && time() > $userOptionsFetchError ) {
-			aioseo()->cache->delete( 'seoboost_get_user_options_error' );
-
-			$this->refreshUserOptions();
-
-		}
+		add_action( 'init', [ $this, 'refreshUserOptionsAfterError' ] );
 	}
 
 	/**
@@ -323,9 +315,26 @@ class SeoBoost {
 	}
 
 	/**
+	 * Refreshes user options after an error.
+	 * This needs to run on init since service class is not available in the constructor.
+	 *
+	 * @since 4.7.7.2
+	 *
+	 * @return void
+	 */
+	public function refreshUserOptionsAfterError() {
+		$userOptionsFetchError = aioseo()->cache->get( 'seoboost_get_user_options_error' );
+		if ( $userOptionsFetchError && time() > $userOptionsFetchError ) {
+			aioseo()->cache->delete( 'seoboost_get_user_options_error' );
+
+			$this->refreshUserOptions();
+		}
+	}
+
+	/**
 	 * Returns the default user options.
 	 *
-	 * @since {next}
+	 * @since 4.7.7.1
 	 *
 	 * @return array The default user options.
 	 */
@@ -342,7 +351,7 @@ class SeoBoost {
 	/**
 	 * Returns the list of countries.
 	 *
-	 * @since {next}
+	 * @since 4.7.7.1
 	 *
 	 * @return array The list of countries.
 	 */
@@ -544,7 +553,7 @@ class SeoBoost {
 	/**
 	 * Returns the list of languages.
 	 *
-	 * @since {next}
+	 * @since 4.7.7.1
 	 *
 	 * @return array The list of languages.
 	 */
@@ -572,7 +581,7 @@ class SeoBoost {
 	/**
 	 * Returns the list of search engines.
 	 *
-	 * @since {next}
+	 * @since 4.7.7.1
 	 *
 	 * @return array The list of search engines.
 	 */

@@ -362,10 +362,11 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			'admin.php?page=mint-mail-automation-editor' => true,
 			//Enable Media Replace 4.1.5
 			'upload.php?page=enable-media-replace/enable-media-replace.php' => true,
+			//Elementor 3.26.4
+			'admin.php?page=elementor-connect' => true,
+			//Elementor Pro (based on user reports, not verified)
+			'elementor-pro-notes-proxy'        => true,
 		);
-
-		//AJAXify screen options
-		add_action('wp_ajax_ws_ame_save_screen_options', array($this,'ajax_save_screen_options'));
 
 		//AJAXify hints and warnings
 		add_action('wp_ajax_ws_ame_hide_hint', array($this, 'ajax_hide_hint'));
@@ -625,15 +626,6 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 
 			//Experimental compatibility fix for Ultimate TinyMCE
 			add_action("admin_print_scripts-$page", array($this, 'remove_ultimate_tinymce_qtags'));
-
-			//Make a placeholder for our screen options (hacky)
-			$screen_hook_name = $page;
-			if ( is_network_admin() ) {
-				$screen_hook_name .= '-network';
-			}
-			if ( $this->current_tab === 'editor' ) {
-				add_meta_box("ws-ame-screen-options", "[AME placeholder]", '__return_false', $screen_hook_name);
-			}
 		}
 
 		//Compatibility fix for the WooCommerce order count bubble. Must be run before storing or processing $submenu.
@@ -1321,7 +1313,6 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			'showExtraIcons' => true, //No longer used.
 			'submenuIconsEnabled' => $this->options['submenu_icons_enabled'],
 
-			'hideAdvancedSettingsNonce' => wp_create_nonce('ws_ame_save_screen_options'),
 			'dashiconsAvailable' => wp_style_is('dashicons', 'registered'),
 			'captionShowAdvanced' => 'Show advanced options',
 			'captionHideAdvanced' => 'Hide advanced options',
@@ -3244,13 +3235,14 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		if ( isset($GLOBALS['wp_version']) && version_compare($GLOBALS['wp_version'], '5.3-RC1', '>=') ) {
 			$wrap_classes[] = 'ame-is-wp53-plus';
 		}
+		$wrap_classes[] = 'ame-condensed-tabs-enabled';
 
 		echo '<div class="', esc_attr(implode(' ', $wrap_classes)), '">';
 		printf(
-			'<%1$s id="ws_ame_editor_heading">%2$s</%1$s>',
+			'<%1$s id="ws_ame_editor_heading" style="visibility: hidden">%2$s</%1$s>',
 			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Should only ever be "h1" or "h2".
 			self::$admin_heading_tag,
-			esc_html(apply_filters('admin_menu_editor-self_page_title', 'Menu Editor'))
+			esc_html($this->get_settings_page_heading_text())
 		);
 
 		do_action('admin_menu_editor-display_tabs');
@@ -3262,6 +3254,13 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		settings_errors('ame-settings-page');
 	}
 
+	private function get_settings_page_heading_text() {
+		return apply_filters(
+			'admin_menu_editor-self_page_title',
+			'Menu Editor'
+		);
+	}
+
 	public function display_settings_page_footer() {
 		echo '</div>'; //div.wrap
 	}
@@ -3270,7 +3269,13 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	 * Display the tabs for the settings page.
 	 */
 	public function display_editor_tabs() {
-		echo '<h2 class="nav-tab-wrapper ws-ame-nav-tab-list">';
+		echo '<h2 class="nav-tab-wrapper ws-ame-nav-tab-list" style="visibility: hidden">';
+
+		printf(
+			'<span id="ws_ame_tab_leader_heading">%s</span>',
+			esc_html($this->get_settings_page_heading_text())
+		);
+
 		foreach($this->tabs as $slug => $title) {
 			printf(
 				'<a href="%s" id="%s" class="nav-tab%s">%s</a>',
@@ -3521,28 +3526,6 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			$this->cached_custom_menu = null;
 			$this->loaded_menu_config_id = null;
 		}
-	}
-
-	/**
-	 * AJAX callback for saving screen options (whether to show or to hide advanced menu options).
-	 *
-	 * Handles the 'ws_ame_save_screen_options' action. The new option value
-	 * is read from $_POST['hide_advanced_settings'].
-	 *
-	 * @return void
-	 */
-	function ajax_save_screen_options(){
-		if (!$this->current_user_can_edit_menu() || !check_ajax_referer('ws_ame_save_screen_options', false, false)){
-			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Outputs JSON, not HTML.
-			die( $this->json_encode( array(
-				'error' => "You're not allowed to do that!"
-			 )));
-		}
-
-		$this->options['hide_advanced_settings'] = !empty($this->post['hide_advanced_settings']);
-		$this->options['show_extra_icons'] = !empty($this->post['show_extra_icons']);
-		$this->save_options();
-		die('1');
 	}
 
 	public function ajax_hide_hint() {
@@ -5161,7 +5144,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 				'relativePath'       => 'modules/content-permissions/content-permissions.php',
 				'className'          => '\\YahnisElsts\\AdminMenuEditor\\ContentPermissions\\ContentPermissionsModule',
 				'title'              => 'Content Permissions',
-				'requiredPhpVersion' => '5.6.20',
+				'requiredPhpVersion' => '7.1.0', //This module indirectly uses is_iterable() via customizables.
 			];
 		}
 

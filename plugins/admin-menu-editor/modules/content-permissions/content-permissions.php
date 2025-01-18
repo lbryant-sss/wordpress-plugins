@@ -8,20 +8,24 @@ use YahnisElsts\AdminMenuEditor\ContentPermissions\Policy\Action;
 use YahnisElsts\AdminMenuEditor\ContentPermissions\Policy\ActionRegistry;
 use YahnisElsts\AdminMenuEditor\ContentPermissions\Policy\ContentItemPolicy;
 use YahnisElsts\AdminMenuEditor\ContentPermissions\Policy\EvaluationResult;
+use YahnisElsts\AdminMenuEditor\Customizable\Storage\ModuleSettings;
 
 require_once __DIR__ . '/policy.php';
 require_once __DIR__ . '/editor-ui.php';
 
-class ContentPermissionsModule extends \ameModule {
+class ContentPermissionsModule extends \amePersistentModule {
+	protected $optionName = 'ame_cpe_settings';
+
 	private $metaBoxUiScript = null;
 
 	public function __construct($menuEditor) {
+		$this->settingsWrapperEnabled = true;
 		parent::__construct($menuEditor);
 
 		$actorManager = new ActorManager($menuEditor);
 		$actionRegistry = new Policy\ActionRegistry();
 
-		$policyStore = new Policy\PolicyStore($actionRegistry, $actorManager);
+		$policyStore = new Policy\PolicyStore($actionRegistry);
 		$enforcer = new ContentPermissionsEnforcer(
 			$actionRegistry,
 			$actorManager,
@@ -29,12 +33,19 @@ class ContentPermissionsModule extends \ameModule {
 			$this
 		);
 
+		$settings = $this->loadSettings();
+		if ( !empty($settings['enforcementDisabled']) ) {
+			$enforcer->disableEnforcement();
+		}
+
 		if ( is_admin() ) {
 			new UserInterface\ContentPermissionsMetaBox(
 				$actionRegistry,
+				$actorManager,
 				$policyStore,
 				$this,
-				$enforcer
+				$enforcer,
+				$this->menuEditor->get_settings_page_url()
 			);
 		}
 
@@ -42,6 +53,10 @@ class ContentPermissionsModule extends \ameModule {
 		add_action('registered_post_type', function () {
 			$this->cachedEnabledPostTypes = null;
 		}, 10, 0);
+
+		//Add a "Content permissions" section to the "Settings" tab.
+		add_action('admin_menu_editor-settings_page_extra', [$this, 'outputModuleSettings']);
+		add_action('admin_menu_editor-settings_changed', [$this, 'handleSettingsFormSubmission']);
 	}
 
 	public function enqueuePolicyEditorStyles() {
@@ -122,6 +137,65 @@ class ContentPermissionsModule extends \ameModule {
 
 		$enabledPostTypes = $this->getEnabledPostTypes();
 		return !empty($enabledPostTypes[$postType]);
+	}
+
+	public function createSettingInstances(ModuleSettings $settings) {
+		$f = $settings->settingFactory();
+		return [
+			$f->boolean(
+				'enforcementDisabled',
+				__('Disable content permissions enforcement', 'admin-menu-editor'),
+				[
+					'description' => __(
+						'You can still edit post and page permissions, but they won\'t have any effect. Useful for troubleshooting.',
+						'admin-menu-editor'
+					),
+				]
+			),
+		];
+	}
+
+	public function outputModuleSettings() {
+		$settings = $this->loadSettings();
+		if ( !($settings instanceof ModuleSettings) ) {
+			return;
+		}
+		$enforcementDisabled = $settings->getSetting('enforcementDisabled');
+
+		?>
+		<tr id="ame-content-permissions-section">
+			<th scope="row">
+				<?php _ex('Content permissions', '"Settings" tab section', 'admin-menu-editor'); ?>
+			</th>
+			<td>
+				<p>
+					<label>
+						<input type="checkbox" name="ame_cpe_enforcementDisabled"
+							<?php checked($settings['enforcementDisabled']); ?>>
+						<?php echo esc_html($enforcementDisabled->getLabel()); ?>
+
+						<?php
+						$description = $enforcementDisabled->getDescription();
+						if ( $description ) :
+							?>
+							<br><span class="description"><?php echo esc_html($description); ?></span>
+						<?php endif; ?>
+					</label>
+				</p>
+			</td>
+		</tr>
+		<?php
+	}
+
+	public function handleSettingsFormSubmission($post) {
+		$settings = $this->loadSettings();
+		if ( !($settings instanceof ModuleSettings) ) {
+			return;
+		}
+		$enforcementDisabled = $settings->getSetting('enforcementDisabled');
+		$enforcementDisabled->update(!empty($post['ame_cpe_enforcementDisabled']));
+
+		$settings->save();
 	}
 }
 
@@ -233,7 +307,7 @@ class ContentPermissionsEnforcer {
 			$this->enablePostContentProtection();
 			$this->enableDirectAccessProtection();
 			$this->enablePostListFiltering();
-			//todo: Check how this works with "next post"/"previous post" links.
+			$this->enableAdjacentPostLinkFiltering();
 		}
 	}
 
@@ -702,6 +776,60 @@ class ContentPermissionsEnforcer {
 		return $query;
 	}
 
+	private function enableAdjacentPostLinkFiltering() {
+		//Handle next post/previous post links. Posts hidden from post lists should also be hidden
+		//from these links.
+		add_filter("get_next_post_where", [$this, 'filterAdjacentPostWhere'], 10, 5);
+		add_filter("get_previous_post_where", [$this, 'filterAdjacentPostWhere'], 10, 5);
+	}
+
+	/**
+	 * @param string $where
+	 * @param bool $inSameTerm
+	 * @param int[]|string $excludedTerms
+	 * @param string $taxonomy
+	 * @param \WP_Post|null $post
+	 * @return string
+	 * @noinspection PhpUnusedParameterInspection -- Required by filter signature.
+	 */
+	public function filterAdjacentPostWhere(
+		$where,
+		//In theory, we don't need all these default values, but we'll include them in case another
+		//plugin calls this filter with the wrong number of arguments.
+		$inSameTerm = false,
+		$excludedTerms = '',
+		$taxonomy = 'category',
+		$post = null
+	) {
+		//Sanity check: $post should always be provided and should be a WP_Post object.
+		if ( !($post instanceof \WP_Post) ) {
+			return $where;
+		}
+
+		$postType = $post->post_type;
+		if ( !$this->module->isPostTypeEnabled($postType) ) {
+			return $where;
+		}
+
+		//Briefly verify that the query still uses the expected table alias and still filters by
+		//post type. This is true for WP 6.7, but could change in the future.
+		if ( strpos($where, 'p.post_type') === false ) {
+			return $where;
+		}
+
+		$hiddenPostIds = $this->policyStore->getPostsHiddenFromLists(
+			$this->actorManager->getCurrentActor(),
+			[$postType]
+		);
+		if ( empty($hiddenPostIds) ) {
+			return $where;
+		}
+
+		$where .= ' AND (p.ID NOT IN (' . implode(',', $hiddenPostIds) . ')) ';
+
+		return $where;
+	}
+
 	public function runWithoutPolicyEnforcement($callback, ...$callbackArgs) {
 		$previousState = $this->enforcementActive;
 
@@ -713,5 +841,15 @@ class ContentPermissionsEnforcer {
 		return $result;
 	}
 
+	public function disableEnforcement() {
+		$this->enforcementActive = false;
+	}
 
+	public function enableEnforcement() {
+		$this->enforcementActive = true;
+	}
+
+	public function isEnforcementActive() {
+		return $this->enforcementActive;
+	}
 }

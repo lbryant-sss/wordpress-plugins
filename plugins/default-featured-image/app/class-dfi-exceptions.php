@@ -10,17 +10,17 @@ class DFI_Exceptions {
 	/**
 	 * Exclude dfi from shortcode: wpuf_edit
 	 *
-	 * @param mixed  $false unused, just pass along.
+	 * @param mixed  $_false unused, just pass along.
 	 * @param string $tag The shortcode.
 	 *
 	 * @return mixed
 	 */
-	public static function wp_user_frontend_pre( $false, $tag ) {
+	public static function wp_user_frontend_pre( $_false, $tag ) {
 		if ( 'wpuf_edit' === $tag ) {
 			add_filter( 'dfi_thumbnail_id', '__return_null' );
 		}
 
-		return $false;
+		return $_false;
 	}
 
 	/**
@@ -52,16 +52,5 @@ class DFI_Exceptions {
 		} else {
 			return $dfi_id;
 		}
-	}
-
-	/**
-	 * When WPML translates a post it will try to get the featured image, but there is none, so it gets the DFI.
-	 * This will prevent that from happening.
-	 *
-	 * @return void
-	 */
-	public static function wpml_dont_save_dfi_on_translate() {
-		$dfi = DFI::instance();
-		remove_filter( 'get_post_metadata', array( $dfi, 'set_dfi_meta_key' ), 10 );
 	}
 }

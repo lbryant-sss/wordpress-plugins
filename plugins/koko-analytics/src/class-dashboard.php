@@ -12,7 +12,7 @@ class Dashboard
 {
     public function __construct()
     {
-        add_action('wp', array($this, 'maybe_show_dashboard'), 10, 0);
+        add_action('wp', [$this, 'maybe_show_dashboard'], 10, 0);
     }
 
     public function maybe_show_dashboard(): void
@@ -38,7 +38,6 @@ class Dashboard
     public function show(): void
     {
         $settings   = get_settings();
-        $dates = new Dates();
         $stats = new Stats();
         $items_per_page = (int) apply_filters('koko_analytics_items_per_page', 20);
         $dateFormat = get_option('date_format');
@@ -46,7 +45,9 @@ class Dashboard
 
         // parse query params
         $range = isset($_GET['view']) ? $_GET['view'] : $settings['default_view'];
-        $dateRange = $dates->get_range($range);
+        $now = create_local_datetime('now');
+        $week_starts_on = (int) get_option('start_of_week', 0);
+        $dateRange = $this->get_dates_for_range($now, $range, $week_starts_on);
 
         $page = isset($_GET['p']) ? absint($_GET['p']) : 0;
         try {
@@ -91,12 +92,12 @@ class Dashboard
 
         if ($dateStart->format('d') === "01" && $dateEnd->format('d') === $dateEnd->format('t')) {
             // cycling full months
-            $diffInMonths = 1 + ($dateEnd->format('Y') - $dateStart->format('Y')) * 12 + $dateEnd->format('m') - $dateStart->format('m');
-            $periodStart = $dateStart->setDate($dateStart->format('Y'), $dateStart->format('m') + ($dir * $diffInMonths), 1);
-            $periodEnd = $dateEnd->setDate($dateStart->format('Y'), $dateEnd->format('m') + ($dir * $diffInMonths), 5);
+            $diffInMonths = 1 + ((int) $dateEnd->format('Y') - (int) $dateStart->format('Y')) * 12 + (int) $dateEnd->format('m') - (int) $dateStart->format('m');
+            $periodStart = $dateStart->setDate((int) $dateStart->format('Y'), (int) $dateStart->format('m') + ($dir * $diffInMonths), 1);
+            $periodEnd = $dateEnd->setDate((int) $dateStart->format('Y'), (int) $dateEnd->format('m') + ($dir * $diffInMonths), 5);
             $periodEnd = $periodEnd->setDate((int) $periodEnd->format('Y'), (int) $periodEnd->format('m'), (int) $periodEnd->format('t'));
         } else {
-            $diffInDays = 1 + ($dateEnd->format('Y') - $dateStart->format('Y')) * 365 + ($dateEnd->format('z') - $dateStart->format('z')) ;
+            $diffInDays = 1 + ((int) $dateEnd->format('Y') - (int) $dateStart->format('Y')) * 365 + ((int) $dateEnd->format('z') - (int) $dateStart->format('z')) ;
             $periodStart = $dateStart->modify("{$modifier}{$diffInDays} days");
             $periodEnd = $dateEnd->modify("{$modifier}{$diffInDays} days");
         }
@@ -130,5 +131,82 @@ class Dashboard
         </div>
         <script src="<?php echo plugins_url('/assets/dist/js/koko-analytics-script-test.js', KOKO_ANALYTICS_PLUGIN_FILE); ?>?v=<?php echo KOKO_ANALYTICS_VERSION; ?>" defer onerror="document.getElementById('koko-analytics-adblock-notice').style.display = '';"></script>
         <?php
+    }
+
+    private function maybe_show_pro_notice(): void
+    {
+        if (! current_user_can('manage_koko_analytics')) {
+            return;
+        }
+
+        new Notice_Pro();
+    }
+
+    public function get_dates_for_range(\DateTimeImmutable $now, string $key, int $week_starts_on = 0): array
+    {
+        switch ($key) {
+            case 'today':
+                return [
+                    $now->modify('today midnight'),
+                    $now->modify('tomorrow midnight, -1 second')
+                ];
+            case 'yesterday':
+                return [
+                    $now->modify('yesterday midnight'),
+                    $now->modify('today midnight, -1 second')
+                ];
+            case 'this_week':
+                $start = $this->get_first_day_of_current_week($now, $week_starts_on);
+                return [
+                    $start,
+                    $start->modify('+7 days, midnight, -1 second')
+                ];
+            case 'last_week':
+                $start = $this->get_first_day_of_current_week($now, $week_starts_on)->modify('-7 days');
+                return [
+                    $start,
+                    $start->modify('+7 days, midnight, -1 second')
+                ];
+            case 'last_14_days':
+                return [
+                    $now->modify('-14 days'),
+                    $now->modify('tomorrow midnight, -1 second')
+                ];
+            default:
+            case 'last_28_days':
+                return [
+                    $now->modify('-28 days'),
+                    $now->modify('tomorrow midnight, -1 second')
+                ];
+            case 'this_month':
+                return [
+                    $now->modify('first day of this month'),
+                    $now->modify('last day of this month')
+                ];
+            case 'last_month':
+                return [
+                    $now->modify('first day of last month, midnight'),
+                    $now->modify('last day of last month')
+                ];
+            case 'this_year':
+                return [
+                    $now->setDate((int) $now->format('Y'), 1, 1),
+                    $now->setDate((int) $now->format('Y'), 12, 31),
+                ];
+            case 'last_year':
+                return [
+                    $now->setDate((int) $now->format('Y') - 1, 1, 1),
+                    $now->setDate((int) $now->format('Y') - 1, 12, 31),
+                ];
+        }
+    }
+
+    public function get_first_day_of_current_week(\DateTimeImmutable $now, int $week_starts_on = 0): \DateTimeImmutable
+    {
+        if ((int) $now->format('w') === $week_starts_on) {
+            return $now;
+        }
+
+        return $now->modify("last sunday, +{$week_starts_on} days");
     }
 }

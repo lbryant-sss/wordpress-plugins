@@ -129,7 +129,7 @@ class Premium_Mobile_Menu extends Widget_Base {
 	 */
 	public function get_style_depends() {
 		return array(
-            'font-awesome-5-all',
+			'font-awesome-5-all',
 			'pa-slick',
 			'premium-addons',
 		);
@@ -171,9 +171,9 @@ class Premium_Mobile_Menu extends Widget_Base {
 		return 'https://premiumaddons.com/support/';
 	}
 
-    public function has_widget_inner_wrapper(): bool {
-        return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-    }
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+	}
 
 	/**
 	 * Register Banner controls.
@@ -343,11 +343,11 @@ class Premium_Mobile_Menu extends Widget_Base {
 		$repeater->add_control(
 			'draw_svg',
 			array(
-				'label'     => __( 'Draw Icon', 'premium-addons-for-elementor' ),
-				'type'      => Controls_Manager::SWITCHER,
-                'description' => __( 'Enable this option to make the icon drawable. See ', 'premium-addons-for-elementor' ) . '<a href="https://www.youtube.com/watch?v=ZLr0bRe0RAY" target="_blank">tutorial</a>',
-				'classes'   => $draw_icon ? '' : 'editor-pa-control-disabled',
-				'condition' => array(
+				'label'       => __( 'Draw Icon', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::SWITCHER,
+				'description' => __( 'Enable this option to make the icon drawable. See ', 'premium-addons-for-elementor' ) . '<a href="https://www.youtube.com/watch?v=ZLr0bRe0RAY" target="_blank">tutorial</a>',
+				'classes'     => $draw_icon ? '' : 'editor-pa-control-disabled',
+				'condition'   => array(
 					'icon_type'      => array( 'icon', 'svg' ),
 					'icon[library]!' => 'svg',
 				),
@@ -633,7 +633,7 @@ class Premium_Mobile_Menu extends Widget_Base {
 
 		if ( ! $papro_activated ) {
 
-			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'editor-page', 'wp-editor', 'get-pro' );
+			$get_pro = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'mobile-menu-widget', 'wp-editor', 'get-pro' );
 
 			$repeater->add_control(
 				'papro_notice',
@@ -887,11 +887,11 @@ class Premium_Mobile_Menu extends Widget_Base {
 				'type'         => Controls_Manager::CHOOSE,
 				'options'      => array(
 					'row'    => array(
-						'title' => esc_html__( 'Row - horizontal', 'elementor' ),
+						'title' => esc_html__( 'Row - horizontal', 'premium-addons-for-elementor' ),
 						'icon'  => 'eicon-arrow-right',
 					),
 					'column' => array(
-						'title' => esc_html__( 'Column - vertical', 'elementor' ),
+						'title' => esc_html__( 'Column - vertical', 'premium-addons-for-elementor' ),
 						'icon'  => 'eicon-arrow-down',
 					),
 				),
@@ -1152,7 +1152,7 @@ class Premium_Mobile_Menu extends Widget_Base {
 
 		$this->end_controls_section();
 
-        $this->start_controls_section(
+		$this->start_controls_section(
 			'section_pa_docs',
 			array(
 				'label' => __( 'Help & Docs', 'premium-addons-for-elementor' ),
@@ -1167,7 +1167,7 @@ class Premium_Mobile_Menu extends Widget_Base {
 		$doc_index = 1;
 		foreach ( $docs as $url => $title ) {
 
-			$doc_url = Helper_Functions::get_campaign_link( $url, 'editor-page', 'wp-editor', 'get-support' );
+			$doc_url = Helper_Functions::get_campaign_link( $url, 'mobile-menu-widget', 'wp-editor', 'get-support' );
 
 			$this->add_control(
 				'doc_' . $doc_index,
@@ -1644,7 +1644,7 @@ class Premium_Mobile_Menu extends Widget_Base {
 
 		$is_edit_mode = \Elementor\Plugin::$instance->editor->is_edit_mode();
 
-        $current_page_url   = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+		$current_page_url = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 
 		$is_home = is_front_page();
 
@@ -1758,10 +1758,10 @@ class Premium_Mobile_Menu extends Widget_Base {
 
 									$link = $link_url['url'];
 
-                                    $segments    = explode( '/', $link );
-                                    $target_link = end( $segments );
+									$segments    = explode( '/', $link );
+									$target_link = end( $segments );
 
-                                    $this->add_render_attribute( 'menu-item-' . $index, 'data-target', esc_url( $target_link ) );
+									$this->add_render_attribute( 'menu-item-' . $index, 'data-target', esc_url( $target_link ) );
 
 								} else {
 									$this->add_render_attribute( $item_link, 'href', $link_url );
@@ -1810,9 +1810,9 @@ class Premium_Mobile_Menu extends Widget_Base {
 													} else {
 														?>
 															<div <?php echo wp_kses_post( $this->get_render_attribute_string( $animation_key ) ); ?>>
-                                                                <?php echo Helper_Functions::get_svg_by_icon( $item['icon'] ); ?>
+																<?php echo Helper_Functions::get_svg_by_icon( $item['icon'] ); ?>
 															</div>
-                                                        <?php
+														<?php
 													}
 												} elseif ( 'svg' === $item['icon_type'] ) {
 													?>

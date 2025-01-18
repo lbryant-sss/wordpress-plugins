@@ -76,7 +76,7 @@ function _get_status($last_log = 0){
 	
 	$fh = fopen($log_file, 'r');
 	
-	$seek_to = $last_log + 16; // 16 for php exi
+	$seek_to = $last_log + 16; // 16 for php exit
 	
 	@fseek($fh, $seek_to);
 	

@@ -1,6 +1,6 @@
 import { r as registerInstance, h, a as getElement } from './index-745b6bec.js';
 import { o as onFirstVisible } from './lazy-deb42890.js';
-import { a as apiFetch } from './fetch-2032d11d.js';
+import { a as apiFetch } from './fetch-2d92a73e.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 

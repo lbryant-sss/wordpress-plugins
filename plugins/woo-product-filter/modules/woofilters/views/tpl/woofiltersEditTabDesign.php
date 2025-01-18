@@ -201,7 +201,7 @@
 					<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('Choose custom styles for filter blocks. Any settings you leave blank will default.', 'woo-product-filter') . ' <a href="' . esc_url('https://' . WPF_WP_PLUGIN_URL . '/documentation/filter-block-design/') . '" class="wupsales-wc-hidden" target="_blank">' . __('Learn More', 'woo-product-filter') . '</a>'); ?>"></i>
 				</div>
 				<div class="settings-block-values col-xs-8 col-sm-9">
-					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=usecustomstyles&utm_medium=designblocks&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 				</div>
 			</div>
 		<?php } ?>
@@ -221,7 +221,7 @@
 					<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('Choose custom styles for filter titles. Any settings you leave blank will default.', 'woo-product-filter') . ' <a href="' . esc_url('https://' . WPF_WP_PLUGIN_URL . '/documentation/filter-title-design/') . '" class="wupsales-wc-hidden" target="_blank">' . __('Learn More', 'woo-product-filter') . '</a>'); ?>"></i>
 				</div>
 				<div class="settings-block-values col-xs-8 col-sm-9">
-					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=usecustomstyles&utm_medium=designtitles&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 				</div>
 			</div>
 		<?php } ?>
@@ -241,7 +241,7 @@
 					<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('Choose custom styles for filter buttons. Any settings you leave blank will default.', 'woo-product-filter') . ' <a href="' . esc_url('https://' . WPF_WP_PLUGIN_URL . '/documentation/buttons-design/') . '" class="wupsales-wc-hidden" target="_blank">' . __('Learn More', 'woo-product-filter') . '</a>'); ?>"></i>
 				</div>
 				<div class="settings-block-values col-xs-8 col-sm-9">
-					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=usecustomstyles&utm_medium=designbuttons&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 				</div>
 			</div>
 		<?php } ?>
@@ -261,7 +261,7 @@
 					<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('The filter will be located in a popup.', 'woo-product-filter') . ' <a href="' . esc_url('https://' . WPF_WP_PLUGIN_URL . '/documentation/buttons-design/') . '" class="wupsales-wc-hidden" target="_blank">' . __('Learn More', 'woo-product-filter') . '</a>'); ?>"></i>
 				</div>
 				<div class="settings-block-values col-xs-8 col-sm-9">
-					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink . '?utm_source=usecustomstyles&utm_medium=designfloating&utm_campaign=pluginfilter'); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
+					<span class="settings-value wpfProLabel"><a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a></span>
 				</div>
 			</div>
 		<?php } ?>

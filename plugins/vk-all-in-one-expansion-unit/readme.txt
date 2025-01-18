@@ -2,10 +2,10 @@
 Contributors: vektor-inc,kurudrive,jim912,hideokamoto,nc30,SaoriMiyazaki,catherine8007,naoki0h,rickaddison7634,una9,kaorock72,kurishimak,chiakikouno,daikiweb23,doshimaf,shimotomoki,mtdkei
 Donate link:
 Tags: Google Analytics, Related Posts, sitemap, Facebook Page Plugin, OG tags
-Requires at least: 6.3
+Requires at least: 6.4
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 9.100.8.1
+Stable tag: 9.101.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,9 @@ e.g.
 2. This is an example of SNS cooperation setting screen.
 
 == Changelog ==
+
+= 9.101.0 =
+[ Add function ][ Navigation Menu Custom ] Navigation Block Support
 
 = 9.100.8 =
 [ Bud Fix ][ Taxonomy Widget / Post Type Manager ] Fix Translate Text Domain.

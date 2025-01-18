@@ -14,9 +14,11 @@ class Aggregator
 {
     public function __construct()
     {
-        add_action('koko_analytics_aggregate_stats', array($this, 'aggregate'), 10, 0);
-        add_filter('cron_schedules', array($this, 'add_interval'), 10, 1);
-        add_action('init', array($this, 'maybe_setup_scheduled_event'), 10, 0);
+        add_action('koko_analytics_aggregate_stats', [$this, 'aggregate'], 10, 0);
+        add_filter('cron_schedules', [$this, 'add_interval'], 10, 1);
+        add_action('koko_analytics_save_settings', [$this, 'setup_scheduled_event'], 10, 0);
+        register_activation_hook(KOKO_ANALYTICS_PLUGIN_FILE, [$this, 'setup_scheduled_event'], 10, 0);
+        register_deactivation_hook(KOKO_ANALYTICS_PLUGIN_FILE, [$this, 'clear_scheduled_event'], 10, 0);
     }
 
     /**
@@ -24,10 +26,10 @@ class Aggregator
      */
     public function add_interval($intervals): array
     {
-        $intervals['koko_analytics_stats_aggregate_interval'] = array(
+        $intervals['koko_analytics_stats_aggregate_interval'] = [
             'interval' => 60, // 60 seconds
             'display'  => esc_html__('Every minute', 'koko-analytics'),
-        );
+        ];
         return $intervals;
     }
 
@@ -38,13 +40,9 @@ class Aggregator
         }
     }
 
-    public function maybe_setup_scheduled_event(): void
+    public function clear_scheduled_event(): void
     {
-        if (! isset($_SERVER['REQUEST_METHOD']) || $_SERVER['REQUEST_METHOD'] !== 'POST' || ! is_admin()) {
-            return;
-        }
-
-        $this->setup_scheduled_event();
+        wp_clear_scheduled_hook('koko_analytics_aggregate_stats');
     }
 
     /**
@@ -54,7 +52,7 @@ class Aggregator
      */
     public function aggregate(): void
     {
-        update_option('koko_analytics_last_aggregation_at', time(), true);
+        update_option('koko_analytics_last_aggregation_at', \time(), true);
 
         // init pageview aggregator
         $pageview_aggregator = new Pageview_Aggregator();
@@ -67,7 +65,7 @@ class Aggregator
         }
 
         // rename file to temporary location so nothing new is written to it while we process it
-        $tmp_filename = \dirname($filename) . '/pageviews-' . time() . '.php';
+        $tmp_filename = \dirname($filename) . '/pageviews-' . \time() . '.php';
         $renamed = \rename($filename, $tmp_filename);
         if ($renamed !== true) {
             if (WP_DEBUG) {

@@ -93,6 +93,8 @@ if ( ! class_exists( 'HTMega_Diagnostic_Data' ) ) {
             add_action( 'wp_ajax_htmega_diagnostic_data', function () {
                 $this->process_data();
             } );
+            // Add this new action hook
+            add_action('htmega_collect_diagnostic_data', array($this, 'collect_and_send_data'));
         }
 
         /**
@@ -443,7 +445,6 @@ if ( ! class_exists( 'HTMega_Diagnostic_Data' ) ) {
             }
 
             $site_url = wp_parse_url( home_url(), PHP_URL_HOST );
-
             $headers = array(
                 'user-agent' => $this->project_name . '/' . md5( $site_url ) . ';',
                 'Accept'     => 'application/json',
@@ -514,6 +515,51 @@ if ( ! class_exists( 'HTMega_Diagnostic_Data' ) ) {
 
             return $notice;
         }
+
+    /**
+     * Collect and send diagnostic data directly from onboarding
+     */
+    public function collect_and_send_data( $nonce = '' ) {
+        // Verify nonce if provided
+        if (!empty($nonce) && !wp_verify_nonce($nonce, 'htmega-diagonstic-data-ajax-request')) {
+            return;
+        }
+
+        // Verify user capabilities
+        if (!current_user_can('manage_options')) {
+            return;
+        }
+
+        $data = $this->get_data();
+        if (empty($data)) {
+            return;
+        }
+
+        $data = $this->get_data();
+        if (empty($data)) {
+            return;
+        }
+        $site_url = wp_parse_url(home_url(), PHP_URL_HOST);
+        
+        $headers = array(
+            'user-agent' => $this->project_name . '/' . md5($site_url) . ';',
+            'Accept' => 'application/json',
+        );
+
+        wp_remote_post($this->data_center, array(
+            'method' => 'POST',
+            'timeout' => 45,
+            'redirection' => 5,
+            'httpversion' => '1.0',
+            'blocking' => false,
+            'headers' => $headers,
+            'body' => $data,
+            'cookies' => array()
+        ));
+
+        update_option('htmega_diagnostic_data_agreed', 'yes');
+        update_option('htmega_diagnostic_data_notice', 'no');
+    }
 
     }
 

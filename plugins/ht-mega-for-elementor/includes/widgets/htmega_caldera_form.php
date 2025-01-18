@@ -27,8 +27,34 @@ class HTMega_Elementor_Widget_Caldera_Form extends Widget_Base {
     public function get_help_url() {
 		return 'https://wphtmega.com/docs/forms-widgets/caldera-forms-widget/';
 	}
-
     protected function register_controls() {
+        if ( ! is_plugin_active('caldera-forms/caldera-core.php') ) {
+            $this->messing_parent_plg_notice();
+        } else {
+            $this->caldera_regster_fields();
+        }
+    }
+    protected function messing_parent_plg_notice() {
+
+        $this->start_controls_section(
+            'messing_parent_plg_notice_section',
+            [
+                'label' => __( 'Caldera Form', 'htmega-addons' ),
+            ]
+        );
+            $this->add_control(
+                'htemga_plugin_parent_missing_notice',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => esc_html__( 'It appears that Caldera Form is not currently installed on your site. Please install or activate Caldera Form, and remember to refresh the page after installation or activation.', 'htmega-addons' ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
+                ]
+            );
+            
+        $this->end_controls_section();
+
+    }
+    protected function caldera_regster_fields() {
 
         $this->start_controls_section(
             'calderaform_content',
@@ -736,6 +762,10 @@ class HTMega_Elementor_Widget_Caldera_Form extends Widget_Base {
     protected function render( $instance = [] ) {
 
         $settings   = $this->get_settings_for_display();
+        if ( ! is_plugin_active('caldera-forms/caldera-core.php') ) {
+            htmega_plugin_missing_alert( __('Caldera Form', 'htmega-addons') );
+            return;
+        }
         $calderaform_attributes = [
             'id' => sanitize_text_field( $settings['caldera_form_list'] ),
         ];

@@ -1,4 +1,12 @@
 == Changelog ==
+= 2.1.1 =
+* Added WooCommerce backward compatibility for versions below 8.7.
+
+= 2.1.0 =
+* Added options to add additional sections and custom checkout fields in the checkout block.
+* Added email,phone and url custom validations.
+* Added WooCommerce 9.5 compatibility.
+
 = 2.0.6 =
 * Fixed an issue where certain fields were not displaying on the order details page.
 

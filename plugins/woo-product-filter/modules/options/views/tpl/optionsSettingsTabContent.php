@@ -59,7 +59,7 @@
 									<?php if (isset($opt['pro']) && !empty($opt['pro'])) { ?>
 										<span class="wpfProOptMiniLabel">
 											<a href="<?php echo esc_url($opt['pro']); ?>" target="_blank">
-												<a href="<?php echo esc_url($this->proLink . '?utm_source=&utm_medium=&utm_campaign='); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a>
+												<a href="<?php echo esc_url($this->proLink); ?>" target="_blank"><?php esc_html_e('PRO Option', 'woo-product-filter'); ?></a>
 											</a>
 										</span>
 									<?php } ?>

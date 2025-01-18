@@ -427,11 +427,10 @@ class HTMega_Widgets_Control{
             'bbpress' => [   
                 'title' => 'Bbpress',
                 'option-tab'=> 'htmega_thirdparty_element_tabs', 
-                'third-party-resource' => 'bbpress/bbpress.php',
                 'is_pro'=>false 
             ],
 
-            'bookedcalender' => [   
+            'bookedcalender' => [
                 'title' => 'Booked Calendar',
                 'option-tab'=> 'htmega_thirdparty_element_tabs', 
                 'third-party-resource' => 'booked/booked.php',
@@ -441,56 +440,48 @@ class HTMega_Widgets_Control{
             'buddypress' => [   
                 'title' => 'Buddy Press',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'buddypress/bp-loader.php', 
                 'is_pro'=>false 
             ],
 
             'calderaform' => [   
                 'title' => 'Caldera Form',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'caldera-forms/caldera-core.php', 
                 'is_pro'=>false 
             ],
 
             'contactform' => [   
                 'title' => 'Contact Form Seven',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'contact-form-7/wp-contact-form-7.php', 
                 'is_pro'=>false 
             ],
 
             'downloadmonitor' => [   
                 'title' => 'Download Monitor',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'download-monitor/download-monitor.php', 
                 'is_pro'=>false 
             ],
 
             'easydigitaldownload' => [   
                 'title' => 'Easy Digital Download',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'easy-digital-downloads/easy-digital-downloads.php', 
                 'is_pro'=>false 
             ],
 
             'gravityforms' => [   
                 'title' => 'Gravity Forms',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'gravityforms/gravityforms.php', 
                 'is_pro'=>false 
             ],
 
             'instragramfeed' => [   
                 'title' => 'Instragram Feed',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'instagram-feed/instagram-feed.php', 
                 'is_pro'=>false 
             ],
 
             'jobmanager' => [   
                 'title' => 'Job Manager',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'wp-job-manager/wp-job-manager.php', 
                 'is_pro'=>false 
             ],
             'layerslider' => [   
@@ -503,42 +494,36 @@ class HTMega_Widgets_Control{
             'mailchimpwp' => [   
                 'title' => 'Mailchimp Wp',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'mailchimp-for-wp/mailchimp-for-wp.php', 
                 'is_pro'=>false 
             ],
 
             'ninjaform' => [   
                 'title' => 'Ninja Form',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'ninja-forms/ninja-forms.php', 
                 'is_pro'=>false 
             ],
 
            'quforms' => [   
                 'title' => 'QUforms',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'quform/quform.php', 
                 'is_pro'=>false 
             ],
 
             'wpforms' => [   
                 'title' => 'WPforms',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'wpforms-lite/wpforms.php', 
                 'is_pro'=>false 
             ],
 
             'revolution' => [   
                 'title' => 'Revolution Slider',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'revslider/revslider.php', 
                 'is_pro'=>false 
             ],
 
             'tablepress' => [   
                 'title' => 'Tablepress',
                 'option-tab'=> 'htmega_thirdparty_element_tabs',
-                'third-party-resource' => 'tablepress/tablepress.php', 
                 'is_pro'=>false 
             ],
 

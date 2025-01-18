@@ -35,7 +35,8 @@ Upload the Akismet plugin to your blog, activate it, and then enter your Akismet
 = 5.3.6 =
 *Release Date - TBD*
 
-* Improves the utility of submit-spam and submit-ham requests.
+* Improve the utility of submit-spam and submit-ham requests.
+* Modernize styles for the Akismet classic widget.
 
 = 5.3.5 =
 *Release Date - 18 November 2024*

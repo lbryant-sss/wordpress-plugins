@@ -3,23 +3,24 @@
  * Plugin Name: YITH WooCommerce Wishlist
  * Plugin URI: https://yithemes.com/themes/plugins/yith-woocommerce-wishlist/
  * Description: <code><strong>YITH WooCommerce Wishlist</strong></code> gives your users the possibility to create, fill, manage and share their wishlists allowing you to analyze their interests and needs to improve your marketing strategies. <a href="https://yithemes.com/" target="_blank">Get more plugins for your e-commerce on <strong>YITH</strong></a>
- * Version: 4.0.1
+ * Version: 4.1.0
  * Author: YITH
  * Author URI: https://yithemes.com/
  * Text Domain: yith-woocommerce-wishlist
  * Domain Path: /languages/
- * WC requires at least: 9.1
- * WC tested up to: 9.3
+ * WC requires at least: 9.3
+ * WC tested up to: 9.5
+ * Requires Plugins: woocommerce
  *
  * @package YITH\Wishlist
  * @author  YITH <plugins@yithemes.com>
- * @version 4.0.1
+ * @version 4.1.0
  */
 
-defined( 'ABSPATH' ) || exit; // Exit if accessed directly
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
 defined( 'YITH_WCWL' ) || define( 'YITH_WCWL', true );
-defined( 'YITH_WCWL_VERSION' ) || define( 'YITH_WCWL_VERSION', '4.0.1' );
+defined( 'YITH_WCWL_VERSION' ) || define( 'YITH_WCWL_VERSION', '4.1.0' );
 defined( 'YITH_WCWL_URL' ) || define( 'YITH_WCWL_URL', plugin_dir_url( __FILE__ ) );
 defined( 'YITH_WCWL_DIR' ) || define( 'YITH_WCWL_DIR', plugin_dir_path( __FILE__ ) );
 defined( 'YITH_WCWL_INC' ) || define( 'YITH_WCWL_INC', YITH_WCWL_DIR . 'includes/' );
@@ -46,10 +47,10 @@ if ( ! function_exists( 'yith_wcwl_install_plugin_fw' ) ) {
 	 * @since 3.9.0
 	 */
 	function yith_wcwl_install_plugin_fw() {
-		if ( ! function_exists( 'yit_maybe_plugin_fw_loader' ) && file_exists( YITH_WCWL_DIR . 'plugin-fw/init.php' ) ) {
-			require_once YITH_WCWL_DIR . 'plugin-fw/init.php';
+		// Plugin Framework Loader.
+		if ( file_exists( plugin_dir_path( __FILE__ ) . 'plugin-fw/init.php' ) ) {
+			require_once plugin_dir_path( __FILE__ ) . 'plugin-fw/init.php';
 		}
-		yit_maybe_plugin_fw_loader( YITH_WCWL_DIR );
 	}
 }
 
@@ -75,22 +76,23 @@ if ( ! function_exists( 'yith_wishlist_constructor' ) ) {
 	 * @since 2.0.0
 	 */
 	function yith_wishlist_constructor() {
-
-		load_plugin_textdomain( 'yith-woocommerce-wishlist', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		if ( function_exists( 'yith_plugin_fw_load_plugin_textdomain' ) ) {
+			yith_plugin_fw_load_plugin_textdomain( 'yith-woocommerce-wishlist', dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		}
 
 		// Let's start the game!
 
-		// Functions
+		// Functions.
 		require_once YITH_WCWL_INC . 'functions-yith-wcwl.php';
 		require_once YITH_WCWL_INC . 'legacy/functions-yith-wcwl-legacy.php';
 
-		// AJAX Handle classes
+		// AJAX Handle classes.
 		require_once YITH_WCWL_INC . 'class-yith-wcwl-ajax-handler.php';
 
-		// Shortcodes classes
+		// Shortcodes classes.
 		require_once YITH_WCWL_INC . 'class-yith-wcwl-shortcode.php';
 
-		// Form handler classes
+		// Form handler classes.
 		require_once YITH_WCWL_INC . 'class-yith-wcwl-form-handler.php';
 
 		/**

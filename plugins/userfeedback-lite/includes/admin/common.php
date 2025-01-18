@@ -134,6 +134,34 @@ function userfeedback_admin_styles() {
 			array(),
 			userfeedback_get_asset_version()
 		);
+
+		wp_enqueue_style(
+			'userfeedback-icons-fontawesome',
+			plugins_url( '/assets/vue/icon-choices/css/fontawesome.min.css' , USERFEEDBACK_PLUGIN_FILE ),
+			array(),
+			userfeedback_get_asset_version()
+		);
+
+		wp_enqueue_style(
+			'userfeedback-icons-brands',
+			plugins_url( '/assets/vue/icon-choices/css/brands.min.css' , USERFEEDBACK_PLUGIN_FILE ),
+			array(),
+			userfeedback_get_asset_version()
+		);
+
+		wp_enqueue_style(
+			'userfeedback-icons-regular',
+			plugins_url( '/assets/vue/icon-choices/css/regular.min.css' , USERFEEDBACK_PLUGIN_FILE ),
+			array(),
+			userfeedback_get_asset_version()
+		);
+
+		wp_enqueue_style(
+			'userfeedback-icons-solid',
+			plugins_url( '/assets/vue/icon-choices/css/solid.min.css' , USERFEEDBACK_PLUGIN_FILE ),
+			array(),
+			userfeedback_get_asset_version()
+		);
 	}
 
 	if ( userfeedback_screen_is_results() ) {
@@ -263,6 +291,8 @@ function userfeedback_admin_scripts() {
 			'userfeedback',
 			userfeedback_get_common_script_localization_object()
 		);
+		
+		wp_enqueue_media();
 	}
 	// --------------------------------------------------
 
@@ -398,7 +428,18 @@ function userfeedback_get_common_script_localization_object() {
 			'addons'                    => ! userfeedback_is_pro_version() && ! userfeedback_screen_is_addons() ? array() : userfeedback_get_parsed_addons(),
 			'notices'                   => apply_filters( 'userfeedback_vue_notices', array() ),
 			'wp_notices'                => apply_filters( 'userfeedback_vue_wp_notices', array() ),
-			'widget_settings'           => userfeedback_get_frontend_widget_settings()
+			'widget_settings'           => userfeedback_get_frontend_widget_settings(),
+			'recommended_plugin_is_installed' => array_key_exists( 'duplicator/duplicator.php', get_plugins() ),
+			'recommended_plugin_is_activated' => is_plugin_active( 'duplicator/duplicator.php' ),
+			'recommended_plugin_install_url' => wp_nonce_url(
+				self_admin_url( 'update.php?action=install-plugin&plugin=duplicator' ),
+				'install-plugin_duplicator'
+			),
+			'recommended_plugin_activate_url' => wp_nonce_url(
+				self_admin_url( 'plugins.php?action=activate&plugin=duplicator/duplicator.php' ),
+				'activate-plugin_duplicator/duplicator.php'
+			),
+			'recommended_plugin_learn_more_url' => 'https://duplicator.com/',
 		)
 	);
 }

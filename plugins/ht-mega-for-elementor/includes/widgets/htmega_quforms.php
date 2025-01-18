@@ -44,8 +44,46 @@ class HTMega_Elementor_Widget_QUforms extends Widget_Base {
         }
         return $form_options;
     }
-
     protected function register_controls() {
+        if ( ! is_plugin_active('quform/quform.php') ) {
+            $this->messing_parent_plg_notice();
+        } else {
+            $this->quform_regster_fields();
+        }
+    }
+    protected function messing_parent_plg_notice() {
+
+        $this->start_controls_section(
+            'messing_parent_plg_notice_section',
+            [
+                'label' => __( 'QUforms', 'htmega-addons' ),
+            ]
+        );
+            $this->add_control(
+                'htemga_plugin_parent_missing_notice',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => sprintf(
+                        __( 'It appears that %1$s is not currently installed on your site. Kindly use the link below to install or activate %1$s. After completing the installation or activation, please refresh this page.', 'htmega-addons' ),
+                        '<a href="' . esc_url( admin_url( 'plugin-install.php?s=QUforms&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">QUforms</a>'
+                    ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
+                ]
+            );
+        
+
+            $this->add_control(
+                'parent_plugin_install',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => '<a href="' . esc_url( admin_url( 'plugin-install.php?s=QUforms&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">' . esc_html__( 'Click to install or activate QUforms', 'htmega-addons' ) . '</a>',
+                ]
+            );
+            
+        $this->end_controls_section();
+
+    }
+    protected function quform_regster_fields() {
 
         $this->start_controls_section(
             'quform_content',
@@ -1052,7 +1090,10 @@ class HTMega_Elementor_Widget_QUforms extends Widget_Base {
     }
 
     protected function render( $instance = [] ) {
-
+        if ( ! is_plugin_active('quform/quform.php') ) {
+            htmega_plugin_missing_alert( __('QUforms', 'htmega-addons') );
+            return;
+        }
         $settings   = $this->get_settings_for_display();
         if (!$settings['contact_form_list']) {
             echo '<p>'.esc_html__('Please select Contact Form', 'htmega-addons').'</p>';

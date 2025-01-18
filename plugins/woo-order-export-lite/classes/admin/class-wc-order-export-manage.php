@@ -352,6 +352,7 @@ class WC_Order_Export_Manage {
 			'skip_suborders'               => 0,
 			'export_refunds'               => 0,
 			'export_matched_items'		   => 0,
+			'exclude_free_items'           => 0,
 			'date_format'                  => 'Y-m-d',
 			'time_format'                  => 'H:i',
 			'sort_direction'               => 'DESC',
@@ -390,6 +391,9 @@ class WC_Order_Export_Manage {
 					),
 			),
 			'summary_report_by_customers' => 0,
+			'destination' => array (
+				'zapier_export_type'=>'order_items'
+			),
 		);
 	}
 

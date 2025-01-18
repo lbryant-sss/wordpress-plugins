@@ -9,13 +9,16 @@
  */
 
 // if uninstall.php is not called by WordPress, die
-if (!defined('WP_UNINSTALL_PLUGIN')) die;
+if (!defined('WP_UNINSTALL_PLUGIN')) {
+    die;
+}
 
 // delete wp-options
 delete_option("koko_analytics_settings");
 delete_option("koko_analytics_version");
 delete_option("koko_analytics_use_custom_endpoint");
 delete_option("koko_analytics_realtime_pageview_count");
+delete_option('koko_analytics_jetpack_import_params');
 
 // drop koko tables
 global $wpdb;

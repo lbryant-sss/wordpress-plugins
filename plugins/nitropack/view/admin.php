@@ -9,17 +9,21 @@
   </nav>
 
   <main id="main">
-
     <div class="container">
-      <?php if (count(get_nitropack()->Notifications->get('system')) > 0) { ?>
+      <?php
+      if (count(get_nitropack()->Notifications->get('system')) > 0) {  ?>
         <ul class="notifications-list" id="app-notifications">
-          <?php foreach (get_nitropack()->Notifications->get('system') as $notification) : ?>
-            <li class="nitro-notification notification-info app-type-<?php echo $notification['type']; ?>">
+          <?php foreach (get_nitropack()->Notifications->get('system') as $notification) :
+            $icons = array('danger' => 'alert-triangle', 'success' => 'check', 'warning' => 'info', 'info' => 'bell', 'promo' => 'bell');
+            $icon = $icons[$notification['type']];
+            if (!$icon) $icon = 'check';
+          ?>
+            <li class="nitro-notification notification-<?php echo $notification['type']; ?>">
               <div class="notification-inner">
                 <div class="title-msg">
                   <div class="title-wrapper">
-                    <img src="<?php echo plugin_dir_url(__FILE__) . 'images/bell.svg'; ?>" alt="alert" class="icon">
-                    <h5 class="title">Info</h5>
+                    <img src="<?php echo plugin_dir_url(__FILE__) . 'images/' . $icon . '.svg'; ?>" alt="alert" class="icon">
+                    <h5 class="title"><?php echo $notification['type']; ?></h5>
                   </div>
                   <div class="msg">
                     <?php echo $notification['message']; ?>
@@ -37,8 +41,6 @@
         <?php require_once NITROPACK_PLUGIN_DIR . "view/dashboard.php";
         ?>
       <?php endif; ?>
-
-
       <?php if (isset($_GET['subpage']) && $_GET['subpage'] == 'system-report') : ?>
         <?php require_once NITROPACK_PLUGIN_DIR . "view/system-report.php";
         ?>

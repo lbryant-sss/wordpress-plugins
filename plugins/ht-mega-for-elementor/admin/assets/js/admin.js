@@ -125,9 +125,10 @@ $( document ).on( 'click', '.htmega-admin-subscribe-form button[type="submit"]',
             windowHeight    = $(window).height(),
             documentHeight  = $(document).height();
 
-        if (totalOffset < windowScroll && windowScroll + windowHeight != documentHeight) {
+
+        if (windowHeight <= documentHeight) {
             $stickyFooterArea.addClass('htmega-admin-sticky');
-        } else if (windowScroll + windowHeight == documentHeight || totalOffset > windowScroll) {
+        } else if (totalOffset > windowScroll && windowHeight > documentHeight) {
             $stickyFooterArea.removeClass('htmega-admin-sticky');
         }
     };

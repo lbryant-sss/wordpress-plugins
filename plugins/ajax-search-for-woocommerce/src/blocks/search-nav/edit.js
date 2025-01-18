@@ -33,11 +33,19 @@ import './editor.scss';
  */
 export default function Edit(props) {
 	const { deviceType } = useSelect((select) => {
-		const { __experimentalGetPreviewDeviceType } = select('core/edit-post');
+        let deviceType = '';
+        const coreEditor = select('core/editor');
+        const coreEditPost = select('core/edit-post');
 
-		return {
-			deviceType: __experimentalGetPreviewDeviceType(),
-		};
+        if (typeof coreEditor === 'object' && typeof coreEditor.getDeviceType === 'function') {
+            deviceType = coreEditor.getDeviceType();
+        } else if (typeof editPost === 'object' && editPost.__experimentalGetPreviewDeviceType === 'function') {
+            deviceType = editPost.__experimentalGetPreviewDeviceType();
+        }
+
+        return {
+            deviceType,
+        };
 	}, []);
 	const blockProps = useBlockProps({
 		className: `wp-block-fibosearch-search__device-preview-${deviceType.toLowerCase()}`,
@@ -103,6 +111,7 @@ export default function Edit(props) {
 								inheritPluginSettings: !inheritPluginSettings,
 							})
 						}
+                        __nextHasNoMarginBottom
 					/>
 					{inheritPluginSettings ? null : (
 						<SelectControl
@@ -152,6 +161,7 @@ export default function Edit(props) {
 									});
 								}
 							}}
+                            __nextHasNoMarginBottom
 						/>
 					)}
 					{inheritPluginSettings ? null : (
@@ -166,6 +176,7 @@ export default function Edit(props) {
 									darkenedBackground: !darkenedBackground,
 								})
 							}
+                            __nextHasNoMarginBottom
 						/>
 					)}
 					{inheritPluginSettings ? null : (
@@ -188,6 +199,7 @@ export default function Edit(props) {
 									  )
 									: ''
 							}
+                            __nextHasNoMarginBottom
 						/>
 					)}
 					{getColorSettings()}

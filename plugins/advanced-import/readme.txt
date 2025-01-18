@@ -1,46 +1,41 @@
-=== Advanced Import : One Click Import for WordPress or Theme Demo Data ===
+=== Advanced Import: One-Click Demo Import for WordPress ===
 
-Contributors: addonspress, codersantosh, acmeit
-Donate link: https://addonspress.com/
-Tags: advanced import, demo import, theme import, widget import, customizer import
-Requires at least: 5.0
-Tested up to: 6.7
-Requires PHP: 5.6.20
-Stable tag: 1.4.4
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Contributors: addonspress, codersantosh, acmeit  
+Donate link: https://addonspress.com/  
+Tags: demo import, theme import, widget import, customizer import, gutenberg import  
+Requires at least: 5.0  
+Tested up to: 6.7  
+Requires PHP: 5.6.20  
+Stable tag: 1.4.5  
+License: GPLv2 or later  
+License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
-Advanced Import is a very flexible plugin which convenient user to import site data( posts, page, media and even widget and customizer option ).
+Advanced Import simplifies importing demo data for WordPress sites, enabling users to import posts, pages, media, widgets, customizer settings, and Gutenberg Blocks with ease.
 
 == Description ==
 
 Import Data or Demo Content which is exported by [Advanced Export](https://wordpress.org/plugins/advanced-export/)
 
-Advanced Import is one of the best and powerful data importer plugin. It has several features which make more manageable and convenient to WordPress user to import their WordPress site data from another website.
+Advanced Import is the ultimate solution for WordPress theme and plugin developers who want to provide a seamless demo import experience for their users. With a simple one-click interface, it allows users to import demo content, widgets, customizer settings, and even Gutenberg block data effortlessly.
 
-It is designed specially for theme developer who wants to provide demo data to their customer but it can be used for migration purpose too.
+### Key Features
+- **One-Click Demo Import:** Easily import all demo content with a single click.
+- **Customizer Settings Import:** Retain your theme's look and feel by importing customizer settings.
+- **Widget Data Import:** Quickly set up widgets to match your demo layout.
+- **Gutenberg Blocks Import:** Import block-based content for modern themes.
+- **Media Files Import:** Seamlessly upload and integrate demo media.
+- **Developer-Friendly Hooks:** Extend or customize the import process with available actions and filters.
 
-While you use Demo Import features of themes, Advanced Import may fetches screenshots, images and templates(demo) JSON files from a respective theme site. This helps you to import your site with a single click. You must accept the terms and privacy of the themes you are using to use Demo Import ( Starter Sites Template Library ) Features.
+### Why Use Advanced Import?
+Whether you're a theme developer offering demo content or a user setting up a site, Advanced Import makes the process hassle-free. It saves time, reduces manual setup effort, and ensures consistency between demo and live sites.
 
-View [Advanced Import](https://www.addonspress.com/wordpress-plugins/advanced-import/) Details and Documentation
-
-Some listed features of Advanced Import are given below :
-
-* Import demo starter sites very easily
-* Import widget
-* Import option
-* Import media,
-* Import pages,
-* Import post
-* Import custom post type
-* Import actual media files
 
 == Features for Theme Author ==
 
 * Code/Plugin example available
 * Support for the premium version or premium plugin of the free theme
-* Install separate dependent plugin/s for each demo starter packages of the theme
-* Categorized available demo import starter packages to type and categories
+* Install separate dependent plugin/s for each demo starter package of the theme
+* Categorized available demo import starter package to type and categories
 * Search filter keywords for demo starter packages
 * Sufficient hooks to customize the plugin design and functionality
 * Add demo URL
@@ -60,13 +55,13 @@ Dashboard -> Tool -> Advanced Import
 == Installation ==
 There are two ways to install any Advanced Import Plugin:-
 1. Upload zip file from Dashboard->Plugin->Add New "upload plugin".
-2. Extract Advanced Import and placed it to the "/wp-content/plugins/" directory.
+2. Extract Advanced Import and place it in the "/wp-content/plugins/" directory.
     - Activate the plugin through the "Plugins" menu in WordPress.
 
 
 == Frequently Asked Questions ==
 
-= Is Advanced Import is a free plugin? =
+= Is Advanced Import a free plugin? =
 
 Yes, it is a free plugin.
 
@@ -77,7 +72,7 @@ Please make sure it is exported using the [Advanced Export](https://wordpress.or
 = I have activated the plugin. Where is the "Demo Import"? =
 
 Login to your WordPress dashboard, go to Appearance -> Demo Import.
-You can also find Import zip options on WordPress dashboard -> Tools -> Advanced Import.
+You can also find Import zip options on the WordPress dashboard -> Tools -> Advanced Import.
 
 = Do I need to check to include media while Export? =
 
@@ -88,8 +83,9 @@ Technically, if you check to include media, the zip files content media files. H
 
 First of all, you need to Export your theme demo data from your live demo site using [Advanced Export](https://wordpress.org/plugins/advanced-export/) plugin.
 Export the zip file, it should contain 3 files content.json, options.json and widgets.json.
-If you are submitting theme on WordPress dot org, you are not allowed to include Demo files ( XML, JSON, ZIP), You have to create a separate plugin for your theme/company. We would like to highly recommend to create a single plugin for your all themes. For other platforms, you may add code on your theme.
+If you are submitting a theme on WordPress dot org, you are not allowed to include Demo files ( XML, JSON, ZIP), You have to create a separate plugin for your theme/company. We would like to highly recommend creating a single plugin for your all themes. For other platforms, you may add code to your theme.
 Code Example :
+
 `
 function prefix_demo_import_lists(){
    $demo_lists = array(
@@ -178,11 +174,11 @@ add_filter('advanced_import_demo_lists','prefix_demo_import_lists');
 `
 = Do I need to assign "Front page", "Posts page" and "Menu Locations" after the importer is done or do they automatically assign? =
 
-You don't need to assign them manually, they will be automatically assigned. Theme author also doesn't have to write additional code for it.
+You don't need to assign them manually, they will be automatically assigned. The theme author also doesn't have to write additional code for it.
 
-= I am a theme author and I would like to customize it for my theme, Can you list hooks available on Advanced Import plugin? =
+= I am a theme author and I would like to customize it for my theme, Can you list hooks available on theme Advanced Import plugin? =
 
-Here are some important list of filter hooks:
+Here is an important list of filter hooks:
 
 - advanced_import_is_template_available
 - advanced_import_template_import_button
@@ -198,8 +194,9 @@ Here are some important list of filter hooks:
 - advanced_import_update_option_['option-name']
 - advanced_import_update_value_['option-name']
 - advanced_import_menu_hook_suffix
+- advanced_import_replace_content_string
 
-Here are some important list of action hooks:
+Here is an important list of action hooks:
 
 - advanced_import_before_demo_import_screen
 - advanced_import_after_demo_import_screen
@@ -210,13 +207,13 @@ Here are some important list of action hooks:
 - advanced_import_before_complete_screen
 - advanced_import_after_complete_screen
 
-= I would like to develop a companion/starter sites/toolset plugin for my theme/company, Do you have any starter plugin? =
+= I would like to develop a companion/starter sites/toolset plugin for my theme/company, Do you have any starter plugins? =
 
-We don't have any starter plugin but we have developed a plugin for [Acme Themes](https://www.acmethemes.com/). The plugin name is [Acme Demo Setup](https://wordpress.org/plugins/acme-demo-setup/), you can download and view the code of the plugin and develop one for yourself.
+We don't have any starter plugin but we have developed a plugins for [Acme Themes](https://www.acmethemes.com/). The plugin name is [Acme Demo Setup](https://wordpress.org/plugins/acme-demo-setup/), you can download and view the code of the plugin and develop one for yourself.
 
-= Are there any themes using these plugin? =
+= Are there any themes using these plugins? =
 
-Yes, many themes are using this plugin, for an example, you can look on [CosmosWP Theme](https://cosmoswp.com/)
+Yes, many themes are using this plugin, for example, you can look on [CosmosWP Theme](https://cosmoswp.com/)
 
 == Screenshots ==
 
@@ -229,6 +226,11 @@ Yes, many themes are using this plugin, for an example, you can look on [CosmosW
 
 == Changelog ==
 
+= 1.4.5 - 2025-01-14 =
+* Added: Introduced support for Blocks Navigation feature.
+* Added: Implemented a new filter hook `advanced_import_replace_content_string`.
+* Updated: Enhanced plugin tagline title for clearer comprehension.
+
 = 1.4.4 - 2024-11-12 =
 * Added: Tested with the latest WordPress
 * Added: Inbuilt support for [PatternsWP](https://patternswp.com/) themes
@@ -237,7 +239,7 @@ Yes, many themes are using this plugin, for an example, you can look on [CosmosW
 * Added:    Plugin link to Import.
 
 = 1.4.2 - 2024-08-16 =
-* Added: Developers can now enable plugin installation from a URL by including source in the demo list array. This is ideal for plugins hosted outside of WordPress.org. Important: If a recommended plugin is already available on WordPress.org, there's no need to use the "source" option.
+* Added: Developers can now enable plugin installation from a URL by including theme source in the demo list array. This is ideal for plugins hosted outside of WordPress.org. Important: If a recommended plugin is already available on WordPress.org, there's no need to use the "source" option.
 
 `
         'plugins' => array(

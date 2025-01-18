@@ -30,6 +30,13 @@ class HTMega_Elementor_Widget_Booked_Calender extends Widget_Base {
 	}
     
     protected function register_controls() {
+        if ( ! is_plugin_active('booked/booked.php') ) {
+            $this->messing_parent_plg_notice();
+        } else {
+            $this->booked_calender_regster_fields();
+        }
+    }
+    protected function booked_calender_regster_fields() {
 
         $this->start_controls_section(
             'booked_calender_content',
@@ -970,10 +977,44 @@ class HTMega_Elementor_Widget_Booked_Calender extends Widget_Base {
 
     }
 
+    protected function messing_parent_plg_notice() {
+
+        $this->start_controls_section(
+            'messing_parent_plg_notice_section',
+            [
+                'label' => __( 'Booked Calender', 'htmega-addons' ),
+            ]
+        );
+            $this->add_control(
+                'htemga_plugin_parent_missing_notice',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => sprintf(
+                        __( 'It appears that %1$s is not currently installed on your site. Kindly use the link below to install or activate %1$s. After completing the installation or activation, please refresh this page.', 'htmega-addons' ),
+                        '<a href="' . esc_url( admin_url( 'plugin-install.php?s=bbpress&tab=search&type=term' ) ) . '" target="_blank" rel="noopener">Booked Calender</a>'
+                    ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-danger',
+                ]
+            );
+        
+
+            $this->add_control(
+                'parent_plugin_install',
+                [
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => '<a href="'.esc_url( admin_url( 'plugin-install.php?s=bbpress&tab=search&type=term' ) ).'" target="_blank" rel="noopener">Click to install or activate Booked Calender</a>',
+                ]
+            );
+        $this->end_controls_section();
+
+    }
     protected function render( $instance = [] ) {
 
         $settings   = $this->get_settings_for_display();
-
+        if ( ! is_plugin_active('booked/booked.php') ) {
+            htmega_plugin_missing_alert( __('Booked Calender', 'htmega-addons') );
+            return;
+        }
         $calender_attributes = [
             'style'        => esc_attr( $settings['calendar_style'] ),
             'year'         => esc_attr( $settings['calendar_year'] ),

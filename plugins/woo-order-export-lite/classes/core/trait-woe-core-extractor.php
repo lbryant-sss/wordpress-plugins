@@ -868,6 +868,10 @@ trait WOE_Core_Extractor {
 				$post       = false;
 			}
 
+			if ($options['exclude_free_items'] && ($item['total'] === '0' || $item['total'] === 0)) {
+				continue;
+			}
+
 			// skip based on products/items/meta
 			if ( apply_filters( 'woe_skip_order_item', false, $product, $item, $item_meta, $post ) ) {
 				continue;

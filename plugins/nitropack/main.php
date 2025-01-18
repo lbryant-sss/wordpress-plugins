@@ -3,7 +3,7 @@
 Plugin Name:  NitroPack
 Plugin URI:   https://nitropack.io/platform/wordpress
 Description:  Automatic optimization for site speed and Core Web Vitals. Use 35+ features, including Caching, image optimization, critical CSS, and Cloudflare CDN.
-Version:      1.17.0
+Version:      1.17.6
 Author:       NitroPack Inc.
 Author URI:   https://nitropack.io/
 License:      GPL2
@@ -14,13 +14,18 @@ Domain Path:  /languages
 
 defined('ABSPATH') or die('No script kiddies please!');
 
+if ( ! defined( 'NITROPACK_BASENAME' ) ) {
+	define( 'NITROPACK_BASENAME', plugin_basename( __FILE__ ) );
+}
+
 $np_basePath = dirname(__FILE__) . '/';
 require_once $np_basePath . 'functions.php';
 require_once $np_basePath . 'helpers.php';
 require_once $np_basePath . 'diagnostics.php';
 
 if (nitropack_is_wp_cli()) {
-    require_once $np_basePath . 'wp-cli.php';
+    $nitropack_cli = new \NitroPack\CLI();
+    $nitropack_cli->init();
 }
 
 if (\NitroPack\Integration\Plugin\Ezoic::isActive()) {
@@ -118,14 +123,15 @@ if (is_admin()) {
     add_action('wp_ajax_nitropack_clear_residual_cache', 'nitropack_clear_residual_cache');
     add_action('wp_ajax_nitropack_verify_connect', 'nitropack_verify_connect_ajax');
     add_action('wp_ajax_nitropack_disconnect', 'nitropack_disconnect');
+    add_action('wp_ajax_nitropack_set_optimization_mode', 'nitropack_set_optimization_mode');
     add_action('wp_ajax_nitropack_test_compression_ajax', 'nitropack_test_compression_ajax');
     add_action('wp_ajax_nitropack_set_compression_ajax', 'nitropack_set_compression_ajax');
+    add_action('wp_ajax_nitropack_set_can_editor_clear_cache', 'nitropack_set_can_editor_clear_cache');
     add_action('wp_ajax_nitropack_set_stock_reduce_status', 'nitropack_set_stock_reduce_status');
     add_action('wp_ajax_nitropack_set_auto_cache_purge_ajax', 'nitropack_set_auto_cache_purge_ajax');
-    add_action('wp_ajax_nitropack_set_ajax_shortcodes_ajax', 'nitropack_set_ajax_shortcodes_ajax');
+
     add_action('wp_ajax_nitropack_set_cart_cache_ajax', 'nitropack_set_cart_cache_ajax');
     add_action('wp_ajax_nitropack_set_bb_cache_purge_sync_ajax', 'nitropack_set_bb_cache_purge_sync_ajax');
-    add_action('wp_ajax_nitropack_set_legacy_purge_ajax', 'nitropack_set_legacy_purge_ajax');
     add_action('wp_ajax_nitropack_set_cacheable_post_types', 'nitropack_set_cacheable_post_types');
     add_action('wp_ajax_nitropack_enable_warmup', 'nitropack_enable_warmup');
     add_action('wp_ajax_nitropack_disable_warmup', 'nitropack_disable_warmup');
@@ -151,11 +157,8 @@ if (is_admin()) {
     add_action('update_option_nitropack-enableCompression', 'nitropack_handle_compression_toggle', 10, 2);
     add_action('add_meta_boxes', 'nitropack_add_meta_box');
     add_action('plugins_loaded', 'nitropack_offer_safemode');
+    add_filter('get_nitropack_notifications', 'nitropack_ignore_dismissed_notifications', 10, 2);  
 
-    add_filter('get_nitropack_notifications', 'nitropack_ignore_dismissed_notifications', 10, 2);
-
-    register_activation_hook(__FILE__, 'nitropack_activate');
-    register_deactivation_hook(__FILE__, 'nitropack_deactivate');
 } else {
     if (null !== $nitro = get_nitropack_sdk()) {
         $GLOBALS["NitroPack.instance"] = $nitro;
@@ -165,6 +168,11 @@ if (is_admin()) {
         add_action('wp', 'nitropack_init');
     }
 }
+/**
+ * This function is called when the plugin is activated/deactivated. Works for wp-cli as well.
+ */
+register_activation_hook(__FILE__, 'nitropack_activate');
+register_deactivation_hook(__FILE__, 'nitropack_deactivate');
 
 function nitropack_menu() {
     global $submenu;
@@ -252,6 +260,8 @@ add_action('init', function () {
             }
         }, 10);
     }
+    
+	(new \NitroPack\WordPress\Cron())->schedule_events();
 });
 
 /**

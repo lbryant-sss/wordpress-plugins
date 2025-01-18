@@ -1,10 +1,10 @@
 <?php
-// Cachebusters generated on 2024-12-06 07:17:45
+// Cachebusters generated on 2025-01-14 07:24:04
 return [
 	'src/public/dist/i18n-dependency-map-default-lite.json'=> '99914b932bd37a50b983c5e7c90ae93b',
 	'src/public/dist/i18n-dependency-map-default-pro.json'=> '99914b932bd37a50b983c5e7c90ae93b',
-	'src/public/dist/rml.css'=> '33f2914ac8f6c7702f63612a6c8cab84',
-	'src/public/dist/rml.css.map'=> '76e02100dfd4091c68a991f73a1e57a3',
+	'src/public/dist/rml.css'=> '2b82185dea7b14a609842435e502163b',
+	'src/public/dist/rml.css.map'=> '2b0cb919f62fc9992c1a3afebd758754',
 	'src/public/dist/rml.lite.js'=> '7a7e915c8cd306df000772b9b727b928',
 	'src/public/dist/rml.lite.js.LICENSE.txt'=> '69955db1491bc6123566f02cf8bcb493',
 	'src/public/dist/rml.lite.js.map'=> 'ae06ab43f3110d22e6ecb193bd43b231',

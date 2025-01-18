@@ -4,7 +4,7 @@ var AmeContentPermissionsUi;
 (function (AmeContentPermissionsUi) {
     const $ = jQuery;
     const _ = wsAmeLodash;
-    const translations = wsAmeCpeEditorData.translations || {};
+    const translations = wsAmeCpeScriptData.translations || {};
     class ContentPermissionsEditor {
         constructor(editorData) {
             this.tabs = [];
@@ -14,6 +14,7 @@ var AmeContentPermissionsUi;
             this.otherActions = [];
             this.gridsByActorId = {};
             this.basicActorSettings = [];
+            this.enforcementDisabled = false;
             this.permissionsBeforeReset = null;
             this.undoResetActionVisible = ko.observable(false);
             this.tabs.push({
@@ -26,9 +27,6 @@ var AmeContentPermissionsUi;
                 id: 'protection',
                 title: translations.tabTitles.protection || 'Protection'
             });
-            this.activeTab = ko.observable(this.tabs[1]);
-            //todo: Once done with testing, set the default tab to "advanced" if the policy
-            // has the "preferAdvancedMode" flag set.
             this.actorSelector = new AmeActorSelector(AmeActors, false, false, 1);
             this.selectedActor = this.actorSelector.createActorObservable(ko);
             const genericLoggedInUser = AmeActors.getGenericLoggedInUser();
@@ -57,7 +55,7 @@ var AmeContentPermissionsUi;
                     this.otherActions.push(action);
                 }
             }
-            this.policy = new Policy(editorData.policy || {}, this.advancedTabActors(), this.actions, editorData.requiredCapabilities);
+            this.policy = new Policy(editorData.policy || {}, this.advancedTabActors(), this.actions, genericLoggedInUser, editorData.requiredCapabilities);
             this.serializedPolicy = ko.observable(this.getSerializedPolicy());
             //Update the serialized policy string when the policy changes. It would be nicer
             //to only do this when the post is saved, but I'm not sure we can catch that event
@@ -75,6 +73,10 @@ var AmeContentPermissionsUi;
                     method: 'notifyWhenChangesStop'
                 }
             }).subscribe(this.serializedPolicy);
+            //Select the "Advanced" tab if the policy has the "preferAdvancedMode" flag set,
+            //or the "Basic" tab otherwise.
+            const advancedTab = this.tabs.find(tab => tab.id === 'advanced');
+            this.activeTab = ko.observable((this.policy.preferAdvancedMode() && advancedTab) ? advancedTab : this.tabs[0]);
             //Initialize action settings and preview grids.
             //This needs to happen *after* the policy and actions have been loaded because the selected
             //option for each setting and the color of each grid cell depend on the policy.
@@ -89,7 +91,7 @@ var AmeContentPermissionsUi;
             }
             for (const actor of this.advancedTabActors()) {
                 this.gridsByActorId[actor.getId()] = this.actions
-                    .map(action => new MiniGridItem(actor, action, this));
+                    .map(action => new MiniGridItem(actor, action, this.policy));
             }
             //Initialize "Basic" tab settings.
             for (const actor of this.visibleActors()) {
@@ -111,15 +113,25 @@ var AmeContentPermissionsUi;
                 });
             });
             const presets = {
-                loggedIn: {
-                    on: this.generateBasicPermissions(genericLoggedInUser, true),
-                    off: this.generateBasicPermissions(genericLoggedInUser, false)
-                },
-                loggedOut: {
-                    on: this.generateBasicPermissions(anonymousUser, true),
-                    off: this.generateBasicPermissions(anonymousUser, false)
-                }
+                //"Logged In Users" = read permissions on for logged-in users, off for logged-out users.
+                loggedIn: this.generateBasicPermissions(genericLoggedInUser, true).concat(this.generateBasicPermissions(anonymousUser, false)),
+                //"Logged Out Users" = the opposite of the above, except read permissions are explicitly
+                //enabled for admins (below) so that they can still see hidden posts.
+                loggedOut: this.generateBasicPermissions(anonymousUser, true).concat(this.generateBasicPermissions(genericLoggedInUser, false))
             };
+            //Enable read permissions for admin-like roles when selecting "Logged Out Users".
+            //We also need to remember which actors are in the "Logged Out Users" preset so that
+            //we can determine if it's selected later.
+            const loggedOutPresetActors = new Set([genericLoggedInUser, anonymousUser]);
+            for (const roleId of editorData.adminLikeRoles) {
+                const role = AmeActors.getActor('role:' + roleId);
+                if (role) {
+                    loggedOutPresetActors.add(role);
+                    for (const action of this.readActions) {
+                        presets.loggedOut.push([role, action, true]);
+                    }
+                }
+            }
             this.basicViewState = ko.computed({
                 read: () => {
                     if (this.policy.preferAdvancedMode()) {
@@ -129,22 +141,21 @@ var AmeContentPermissionsUi;
                     if (this.everyoneHasDefaultPermissions()) {
                         return 'everyone';
                     }
-                    //If any of the basic settings are not in a predefined state, we're in "Advanced" mode.
-                    for (const actorSetting of this.basicActorSettings) {
-                        if (!actorSetting.isPredefinedState()) {
-                            return 'advanced';
+                    //"Logged Out Users" = the preset matches, and everyone else has default permissions.
+                    if (this.policy.matchesMultiplePermissions(presets.loggedOut)) {
+                        const othersHaveDefaults = this.visibleActors().every(actor => {
+                            return loggedOutPresetActors.has(actor) || !this.policy.actorHasAnyCustomPermissions(actor);
+                        });
+                        if (othersHaveDefaults) {
+                            return 'loggedOut';
                         }
                     }
-                    //"Logged In Users" = read permissions on for logged-in users, off for logged-out users.
-                    if (this.policy.matchesMultiplePermissions(genericLoggedInUser, presets.loggedIn.on)
-                        && this.policy.matchesMultiplePermissions(anonymousUser, presets.loggedOut.off)) {
-                        return 'loggedIn';
-                    }
-                    //"Logged Out Users" = the opposite of the above. Note that his is not just
-                    //an "else" case because we care about exact settings for individual actions.
-                    if (this.policy.matchesMultiplePermissions(genericLoggedInUser, presets.loggedIn.off)
-                        && this.policy.matchesMultiplePermissions(anonymousUser, presets.loggedOut.on)) {
-                        return 'loggedOut';
+                    //"Logged In Users" = the preset matches, and all the roles are in one of their
+                    //predefined states.
+                    if (this.policy.matchesMultiplePermissions(presets.loggedIn)) {
+                        if (this.basicActorSettings.every(s => s.isPredefinedState())) {
+                            return 'loggedIn';
+                        }
                     }
                     //Any other mix of settings is considered "Advanced".
                     return 'advanced';
@@ -163,18 +174,17 @@ var AmeContentPermissionsUi;
                             //"Everyone" resets all settings to default, which we already did above.
                             break;
                         case 'loggedIn':
-                            //Allow logged-in users, disallow logged-out users. Reset all other settings.
-                            this.policy.setMultiplePermissions(genericLoggedInUser, presets.loggedIn.on);
-                            this.policy.setMultiplePermissions(anonymousUser, presets.loggedOut.off);
+                            this.policy.setMultiplePermissions(presets.loggedIn);
                             break;
                         case 'loggedOut':
-                            //The opposite "LoggedIn" settings.
-                            this.policy.setMultiplePermissions(genericLoggedInUser, presets.loggedIn.off);
-                            this.policy.setMultiplePermissions(anonymousUser, presets.loggedOut.on);
+                            this.policy.setMultiplePermissions(presets.loggedOut);
                             break;
                     }
                 }
             });
+            if (editorData.enforcementDisabled) {
+                this.enforcementDisabled = true;
+            }
             console.log('Editor data', editorData);
         }
         /**
@@ -188,26 +198,12 @@ var AmeContentPermissionsUi;
                 ko.applyBindingsToNode(optionElement, { class: option.cssClass });
             }
         }
-        getActorPermission(action, actor = null) {
-            const targetActor = actor || this.selectedActor();
-            if (!targetActor) {
-                return null;
-            }
-            return this.policy.getActorPermission(targetActor, action);
-        }
         setSelectedActorPermission(action, effect) {
             const targetActor = this.selectedActor();
             if (!targetActor) {
                 return;
             }
             this.policy.setActorPermission(targetActor, action, effect);
-        }
-        getPredictedDefaultPermission(action, actor = null) {
-            const targetActor = actor || this.selectedActor();
-            if (!targetActor) {
-                return null;
-            }
-            return this.policy.getPredictedDefaultPermission(targetActor, action);
         }
         getSerializedPolicy() {
             return JSON.stringify(this.policy.toJSON());
@@ -247,12 +243,12 @@ var AmeContentPermissionsUi;
                     //is usually enough.
                     const predictedDefault = this.policy.getPredictedDefaultPermission(actor, action);
                     const newSetting = (predictedDefault === isAllowed) ? null : isAllowed;
-                    permissions.push([action, newSetting]);
+                    permissions.push([actor, action, newSetting]);
                 }
                 //Reset other permissions.
                 for (const action of this.otherActions) {
                     if (action.isVisibleFor(actor)) {
-                        permissions.push([action, null]);
+                        permissions.push([actor, action, null]);
                     }
                 }
             }
@@ -260,7 +256,7 @@ var AmeContentPermissionsUi;
                 //Deny all permissions.
                 for (const action of this.actions) {
                     if (action.isVisibleFor(actor)) {
-                        permissions.push([action, false]);
+                        permissions.push([actor, action, false]);
                     }
                 }
             }
@@ -275,18 +271,17 @@ var AmeContentPermissionsUi;
             }
         }
         uiResetPermissionsToDefaults() {
-            const currentPermissions = new Map();
+            const currentPermissions = [];
             let foundCustomPermissions = false;
             for (const actor of this.visibleActors()) {
                 const permissions = [];
                 for (const action of this.actions) {
                     const effect = this.policy.getActorPermission(actor, action);
                     if (effect !== null) {
-                        permissions.push([action, effect]);
+                        permissions.push([actor, action, effect]);
                         foundCustomPermissions = true;
                     }
                 }
-                currentPermissions.set(actor, permissions);
             }
             if (!foundCustomPermissions) {
                 alert(translations.general.noCustomPermissionsReset || 'No custom permissions to reset.');
@@ -301,11 +296,7 @@ var AmeContentPermissionsUi;
                 return;
             }
             this.resetAllPermissions();
-            for (const [actor, permissions] of this.permissionsBeforeReset) {
-                for (const [action, effect] of permissions) {
-                    this.policy.setActorPermission(actor, action, effect);
-                }
-            }
+            this.policy.setMultiplePermissions(this.permissionsBeforeReset);
             this.permissionsBeforeReset = null;
             this.undoResetActionVisible(false);
         }
@@ -465,7 +456,8 @@ var AmeContentPermissionsUi;
         }
     }
     class Policy {
-        constructor(properties, validActors, validActions, requiredCapsByAction = {}) {
+        constructor(properties, validActors, validActions, genericLoggedInUser, requiredCapsByAction = {}) {
+            this.genericLoggedInUser = genericLoggedInUser;
             this.requiredCapsByAction = requiredCapsByAction;
             this.replacementContent = ko.observable(properties.replacementContent || '');
             this.accessProtection = new AccessProtectionSettings(properties.accessProtection || {});
@@ -502,6 +494,13 @@ var AmeContentPermissionsUi;
             }
         }
         getPredictedDefaultPermission(actor, action) {
+            //Roles inherit the permissions of the "Logged In Users" actor if it has a custom setting.
+            if (actor.getId().startsWith('role:') && action.isVisibleFor(this.genericLoggedInUser)) {
+                const inheritedEffect = this.getActorPermission(this.genericLoggedInUser, action);
+                if (inheritedEffect !== null) {
+                    return inheritedEffect;
+                }
+            }
             const caps = this.requiredCapsByAction[action.name];
             if (caps && (caps.length > 0)) {
                 //Check if the actor has all the required capabilities.
@@ -518,18 +517,28 @@ var AmeContentPermissionsUi;
             }
             return new PermissionCheckResult(this.getActorPermission(actor, action), this.getPredictedDefaultPermission(actor, action));
         }
-        setMultiplePermissions(actor, permissions) {
-            for (const [action, effect] of permissions) {
+        setMultiplePermissions(permissions) {
+            for (const [actor, action, effect] of permissions) {
                 this.setActorPermission(actor, action, effect);
             }
         }
-        matchesMultiplePermissions(actor, permissions) {
-            for (const [action, effect] of permissions) {
+        matchesMultiplePermissions(permissions) {
+            for (const [actor, action, effect] of permissions) {
                 if (this.getActorPermission(actor, action) !== effect) {
                     return false;
                 }
             }
             return true;
+        }
+        actorHasAnyCustomPermissions(actor) {
+            if (this.statements.size() === 0) {
+                return false;
+            }
+            const statement = this.statements.findFirst({ actor });
+            if (statement) {
+                return (statement.effect() !== null);
+            }
+            return false;
         }
         getOrCreateStatement(actor, action) {
             const foundStatement = this.statements.findFirst({ actor, action });
@@ -690,31 +699,31 @@ var AmeContentPermissionsUi;
                 },
                 write: (value) => {
                     if (value) {
-                        policy.setMultiplePermissions(actor, checkedState);
+                        policy.setMultiplePermissions(checkedState);
                     }
                     else {
-                        policy.setMultiplePermissions(actor, uncheckedState);
+                        policy.setMultiplePermissions(uncheckedState);
                     }
                 }
             });
             this.isPredefinedState = ko.pureComputed(() => {
                 const expectedState = this.isChecked() ? checkedState : uncheckedState;
-                return policy.matchesMultiplePermissions(actor, expectedState);
+                return policy.matchesMultiplePermissions(expectedState);
             });
         }
     }
     class MiniGridItem {
-        constructor(actor, action, editor) {
+        constructor(actor, action, policy) {
             this.cssClass = ko.computed(() => {
                 const classes = [];
                 if (!action.isVisibleFor(actor)) {
                     classes.push('ame-cpe-cell-not-applicable');
                     return classes.join(' ');
                 }
-                let effect = editor.getActorPermission(action, actor);
+                let effect = policy.getActorPermission(actor, action);
                 if (effect === null) {
                     classes.push('ame-cpe-cell-default');
-                    effect = editor.getPredictedDefaultPermission(action, actor);
+                    effect = policy.getPredictedDefaultPermission(actor, action);
                 }
                 if (effect === true) {
                     classes.push('ame-cpe-cell-allow');

@@ -73,13 +73,20 @@ $text_align = is_rtl() ? 'right' : 'left';
 <p style="margin: 0;" class="addition_header"><?php echo wp_kses_post( $shipment_tracking_header_text ); ?></p>
 
 <?php 
-	foreach ( $tracking_items as $key => $tracking_item ) { 	
+	foreach ( $tracking_items as $key => $tracking_item ) {
 
 		if ( '' != $tracking_item[ 'formatted_tracking_provider' ] ) {
 			$ast_provider_title = apply_filters( 'ast_provider_title', esc_html( $tracking_item[ 'formatted_tracking_provider' ] )); 
 		} else {
-			$ast_provider_title = apply_filters( 'ast_provider_title', esc_html( $tracking_item[ 'tracking_provider' ] ));
-		} 
+			$ast_provider_title = '';
+			if ( $tracking_item[ 'tracking_provider' ] != '' ) {
+				$ast_provider_title = $tracking_item[ 'tracking_provider' ];
+			} else if ( $tracking_item[ 'custom_tracking_provider' ] != '' ) {
+				$ast_provider_title = $tracking_item[ 'custom_tracking_provider' ];
+			}
+
+			$ast_provider_title = apply_filters( 'ast_provider_title', esc_html( $ast_provider_title ));
+		}
 		?>
 	<table class="fluid_table fluid_table_2cl">
 		<tbody class="fluid_tbody_2cl">
