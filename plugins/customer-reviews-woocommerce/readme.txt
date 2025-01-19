@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 5.67.0
+Stable tag: 5.68.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -233,6 +233,11 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.68.0 =
+* Improvement: [cusrev_reviews_rating] shortcode supports products with no reviews
+* Improvement: a status card on the Reviews page in the admin console with information about the plugin configuration
+* Bug fix: typo in description of [cusrev_reviews_rating] shortcode in the plugin's settings
+* Bug fix: empty shop reviews could be created while the setting for shop reviews was disabled
 = 5.67.0 =
 * Improvement: load of 'form.css' file for local aggregated review forms from a child theme folder when available
 * Bug fix: an authorization error during submission of new questions and answers for unregistered users
