@@ -60,6 +60,12 @@ class Simple_History {
 	/** @var string $plugin_basename */
 	public $plugin_basename = SIMPLE_HISTORY_BASENAME;
 
+	/** Slug for the admin menu main page. */
+	public const MENU_PAGE_SLUG = 'simple_history_admin_menu_page';
+
+	/** Slug for the settings menu */
+	public const SETTINGS_MENU_PAGE_SLUG = 'simple_history_settings_menu_page';
+
 	/** Slug for the settings menu */
 	public const SETTINGS_MENU_SLUG = 'simple_history_settings_menu_slug';
 
@@ -434,7 +440,6 @@ class Simple_History {
 			Dropins\Settings_Debug_Tab_Dropin::class,
 			Dropins\Sidebar_Stats_Dropin::class,
 			Dropins\Sidebar_Dropin::class,
-			Dropins\Event_Details_Dev_Dropin::class,
 			Dropins\Quick_Stats::class,
 			Dropins\Sidebar_Add_Ons_Dropin::class,
 			Dropins\Action_Links_Dropin::class,
@@ -843,11 +848,12 @@ class Simple_History {
 
 			if ( $logger === 'SimpleUserLogger' && in_array( $message_key, [ 'user_login_failed', 'user_unknown_login_failed' ], true ) ) {
 
+				// TODO: the admin-url links below should get the URL using functions.
 				if ( $is_simple_history_extended_settings_active ) {
 					// Show link to extended settings settings page if extended settings plugin is active.
 					$occasions_html .= '<div class="SimpleHistoryLogitem__occasionsAddOns">';
 					$occasions_html .= '<p class="SimpleHistoryLogitem__occasionsAddOnsText">';
-					$occasions_html .= '<a href="' . admin_url( 'options-general.php?page=simple_history_settings_menu_slug&selected-sub-tab=failed-login-attempts' ) . '">';
+					$occasions_html .= '<a href="' . admin_url( 'admin.php?page=simple_history_admin_menu_page&selected-sub-tab=failed-login-attempts' ) . '">';
 					$occasions_html .= __( 'Configure failed login attempts', 'simple-history' );
 					$occasions_html .= '</a>';
 					$occasions_html .= '</p>';
@@ -856,7 +862,7 @@ class Simple_History {
 					// Show link to premium settings page if extended settings plugin is active.
 					$occasions_html .= '<div class="SimpleHistoryLogitem__occasionsAddOns">';
 					$occasions_html .= '<p class="SimpleHistoryLogitem__occasionsAddOnsText">';
-					$occasions_html .= '<a href="' . admin_url( 'options-general.php?page=simple_history_settings_menu_slug&selected-sub-tab=failed-login-attempts' ) . '">';
+					$occasions_html .= '<a href="' . admin_url( 'admin.php?page=simple_history_admin_menu_page&selected-sub-tab=failed-login-attempts' ) . '">';
 					$occasions_html .= __( 'Configure failed login attempts', 'simple-history' );
 					$occasions_html .= '</a>';
 					$occasions_html .= '</p>';
@@ -1435,7 +1441,9 @@ class Simple_History {
 	 *
 	 * @return string URL to admin page, for example http://wordpress-stable.test/wordpress/wp-admin/index.php?page=simple_history_page.
 	 */
-	public function get_view_history_page_admin_url() {
-		return admin_url( apply_filters( 'simple_history/admin_location', 'index' ) . '.php?page=simple_history_page' );
+	public static function get_view_history_page_admin_url() {
+		// Can not use `menu_page_url()` because it only works within the admin area.
+		// But we want to be able to link to history page also from front end.
+		return admin_url( 'admin.php?page=' . self::MENU_PAGE_SLUG );
 	}
 }
