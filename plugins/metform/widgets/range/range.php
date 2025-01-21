@@ -111,7 +111,7 @@ Class MetForm_Input_Range extends Widget_Base{
 			'mf_input_range_important_note',
 			[
 				'type' => Controls_Manager::RAW_HTML,
-				'raw' => __( '<strong>Important Note : </strong> For taking dual range input, You have to enter dual default value in the field Value (Exactly bottom of this notice field. ). Example: Min:10, Max:20', 'metform' ),
+				'raw' => __( '<strong>Important Note : </strong> For taking dual range input, You have to enter dual default value in the field Value (Exactly bottom of this notice field. ). Example: 10, 20', 'metform' ),
 				'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
 				'condition' => [
 					'mf_input_range_control' => 'true'
@@ -122,11 +122,27 @@ Class MetForm_Input_Range extends Widget_Base{
 		$this->add_control(
 			'mf_input_range_default_value',
 			[
-				'label' => esc_html__( 'Value', 'metform' ),
+				'label' => esc_html__( 'Default Value', 'metform' ),
 				'type' => Controls_Manager::NUMBER,
 				'default' => 0,
+				'condition' => [
+					'mf_input_range_control' => ['false', '']
+				]
 			]
 		);
+
+		$this->add_control(
+			'mf_input_dual_range_default_value',
+			[
+				'label' => esc_html__( 'Default Value', 'metform' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => 0,
+				'condition' => [
+					'mf_input_range_control' => 'true'
+				]
+			]
+		);
+
 
 		$this->input_get_params_controls();
 
@@ -454,6 +470,11 @@ Class MetForm_Input_Range extends Widget_Base{
 			<div className="range-slider">
 			<?php
 				$default_value = '';
+
+				if($mf_input_range_control){
+					$mf_input_range_default_value = $mf_input_dual_range_default_value;
+				} 
+
 				if(!empty($mf_input_range_default_value)){
 					if(is_numeric($mf_input_range_default_value)){
 						$default_value = $mf_input_range_default_value;
@@ -489,7 +510,10 @@ Class MetForm_Input_Range extends Widget_Base{
 					}
 					ref=${input => {
 						register({ name: "<?php echo esc_attr($mf_input_name); ?>" }, parent.activateValidation(<?php echo json_encode($configData); ?>));
-						!parent.state.formData['<?php echo esc_attr($mf_input_name); ?>'] ? parent.state.formData['<?php echo esc_attr($mf_input_name); ?>'] = <?php echo json_encode($multipile_value); ?> : ''
+
+						if (<?php echo esc_attr($default_value ? 'true' : 'false'); ?>) {
+							!parent.state.formData['<?php echo esc_attr($mf_input_name); ?>'] ? parent.state.formData['<?php echo esc_attr($mf_input_name); ?>'] = <?php echo json_encode($multipile_value); ?> : ''
+						}
 					}}
 					name="<?php echo esc_attr($mf_input_name); ?>"
 					/>

@@ -9,6 +9,9 @@
     "surecart/product-list"
   ],
   "textdomain": "surecart",
+  "usesContext": [
+    "query"
+  ],
   "example": {
     "innerBlocks": [
       {

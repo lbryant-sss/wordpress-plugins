@@ -2,7 +2,7 @@
 Contributors: timelynetwork
 Tags: calendar, event, events, event manager, event management
 Requires at least: 5.0
-Tested up to: 6.5
+Tested up to: 6.7.1
 Stable tag: 3.0.1
 Requires PHP: 7.2
 License: GNU General Public License, version 3 (GPL-3.0)
@@ -11,7 +11,7 @@ Timely All-in-One Events Calendar is a free WordPress plugin trusted by 150,000+
 
 == Description ==
 
-The [Timely All-in-One Events Calendar](https://time.ly/solutions/all-in-one-event-calendar-wordpress-plugin/) is a FREE events calendar plugin, trusted by 150,000+ event creators around the globe, including UPS, AT&T, Adobe, Harvard University, Stanford University, and the University of Bristol.
+The [Timely All-in-One Events Calendar](https://time.ly/solutions/all-in-one-event-calendar-wordpress-plugin/) is a FREE events calendar plugin, trusted by 150,000+ event creators around the globe, including Mastercard, AT&T, Adobe, Stanford University, the University of Bristol, and the California State government.
 
 It allows you to easily create, manage and share your events with the rest of the world, whether they are in-person, virtual or hybrid.
 
@@ -19,13 +19,13 @@ https://www.youtube.com/watch?v=Nb7y_GsaQjQ
 
 = 🗓️ The Best Events Calendar WP Plugin =
 
-Our events calendar plugin is the most advanced website calendar system available for WordPress. It was created with the latest technology, and combines a **beautiful and modern design** with a **powerful set of features**. Check our [**demo events calendar**](https://time.ly/demo/) to see it in action.
+Our events calendar plugin is the most advanced website calendar system available for WordPress. It was created with the latest technology, and combines a **beautiful and modern design** with a **powerful set of features**. 
 
 Our plugin is known in the WP community for its **great UI/UX** and **attractive visuals**. In addition, it has built-in **RSVP and ticketing** features so you can collect registrations and sell tickets directly from your calendar. Timely is considered by experts as **one of the most advanced WP calendar plugins** available in the market.
 
 Besides being fully customizable and extremely easy to use, Timely’s plugin is 100% mobile responsive, and accessible for the community with disabilities.
 
-**…all WITHOUT needing a coder or designer…saving you time AND money.**
+**…all WITHOUT needing a coder or designer…saving you time and money.**
 
 = ❤️ The Events Calendar Most Loved by Event Creators Around the World =
 Timely’s [All-in-One Event Calendar](https://time.ly/solutions/all-in-one-event-calendar-wordpress-plugin/) is made for freelancers and solo entrepreneurs, who are looking for a free but powerful event calendar to start or power up their event-related business.
@@ -38,7 +38,7 @@ Our free events calendar plugin is feature-rich. Download the plugin and get all
 
 * **Beautiful and attractive** event calendar for your website.
 * Several out of the box calendar themes for you to choose from.
-**Customize** your theme, colours and fonts to personalize your calendar appearance to match your brand and style, as well as header, footer and CSS.
+* **Customize** your theme, colours and fonts to personalize your calendar appearance to match your brand and style, as well as header, footer and CSS.
 * Display your public calendar on **week, month or agenda views**. Additional calendar views available on paid plans.
 * Setup different views for calendar on mobile and on desktop.
 * **Easy event creation** and publishing.
@@ -59,7 +59,7 @@ Our free events calendar plugin is feature-rich. Download the plugin and get all
 * Calendar and events are **SEO-optimized**, **Event Schema ready** and with **Good Web Core Vitals**.
 * Your calendar can be embedded into a WordPress page without needing to create template files or modify the theme.
 * Collect **event registrations (RSVP)** or **sell event tickets** directly from your event calendar, with a pay per use charge.
-* Free support via written documentation available on our [Help Center](https://help.time.ly/).
+* Free support via written documentation and video tutorials available on our [Help Center](https://help.time.ly/).
 
 Timely is a [cloud-based solution](https://time.ly/blog/cloud-vs-on-premise-pros-and-cons-for-event-platforms/), so you can **do all this and more without sacrificing your website storage space or performance.**
 
@@ -67,9 +67,9 @@ What are you waiting for? Download [Timely All-in-One Event Calendar Plugin](htt
 
 = 🌐 Languages =
 
-Timely's application dashboard has been translated into the following languages (in alphabetical order): Dutch | English | French | German | Italian | Portuguese (BR) | Portuguese (PT) | Spanish
+Timely's application dashboard has been translated into the following languages (in alphabetical order): Dutch | English | French | German | Italian | Norwegian | Portuguese (BR) | Portuguese (PT) | Spanish
 
-Timely's events calendar public interface has been translated into the following languages(in alphabetical order): Arabic | Chinese | Danish | Dutch | English (UK) | English (US) | French | German | Italian | Japanese | Korean | Polish | Portuguese(BR) | Portuguese (PT) | Spanish | Turkish | Swedish | Vietnamese. Other languages are available upon request.
+Timely's events calendar public interface has been translated into the following languages(in alphabetical order): Arabic | Chinese | Danish | Dutch | English (UK) | English (US) | French | German | Italian | Japanese | Korean | Norwegian | Polish | Portuguese(BR) | Portuguese (PT) | Spanish | Turkish | Swedish | Vietnamese. Other languages are available upon request.
 
 = 💁🏼‍♀️ Service =
 
@@ -144,7 +144,7 @@ Our Event Submission Form feature allows your website visitors to submit events 
 = What other event management software solutions does Timely offer? =
 [Timely All-in-One Event Calendar WordPress plugin](https://time.ly/solutions/all-in-one-event-calendar-wordpress-plugin/) is a simple events calendar widget made for freelancers and individual entrepreneurs, who are just starting their event business and need a free calendar of events for their website.
 
-For small, medium and larger organizations that need more advanced tools, Timely offers a myriad of event management software solutions. Our premium solutions include [Event Management Software](https://time.ly/solutions/event-management-software/), [Training Management Software] (https://time.ly/solutions/course-training-management-software-system-tms/), and [Venue Management Software](https://time.ly/solutions/venue-management-software-system-vms/). We also offer [Professional Services] (https://time.ly/professional-managed-event-services-solutions/) for clients who need an extra help to implement and use Timely event software solutions.
+For small, medium and larger organizations that need more advanced tools, Timely offers a myriad of event management software solutions. Our premium solutions include [Event Management Software](https://time.ly/solutions/event-management-software/), [Training Management Software](https://time.ly/solutions/course-training-management-software-system-tms/), and [Venue Management Software](https://time.ly/solutions/venue-management-software-system-vms/). We also offer [Professional Services](https://time.ly/professional-managed-event-services-solutions/) for clients who need an extra help to implement and use Timely event software solutions.
 
 = How do I get more advanced event management features for my Timely Events Calendar? =
 Timely offers the most comprehensive and flexible event management platform available in the market. Check out all our [amazing features](https://time.ly/event-management-software-features/), and [contact us](https://time.ly/contact/) to add them to your Timely event calendar.

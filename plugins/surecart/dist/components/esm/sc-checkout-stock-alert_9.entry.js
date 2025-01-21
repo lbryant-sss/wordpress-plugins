@@ -756,7 +756,7 @@ const ScSessionProvider = class {
                 id: (_e = state === null || state === void 0 ? void 0 : state.checkout) === null || _e === void 0 ? void 0 : _e.id,
                 query: {
                     ...((state$2 === null || state$2 === void 0 ? void 0 : state$2.method) ? { payment_method_type: state$2 === null || state$2 === void 0 ? void 0 : state$2.method } : {}),
-                    return_url: addQueryArgs(window.location.href, {
+                    external_url: addQueryArgs(window.location.href, {
                         ...(((_f = state === null || state === void 0 ? void 0 : state.checkout) === null || _f === void 0 ? void 0 : _f.id) ? { checkout_id: (_g = state === null || state === void 0 ? void 0 : state.checkout) === null || _g === void 0 ? void 0 : _g.id } : {}),
                         is_surecart_payment_redirect: true,
                     }),
@@ -1183,7 +1183,7 @@ const ScSessionProvider = class {
         }
     }
     render() {
-        return (h("sc-line-items-provider", { key: '0a7984960c0c8dead92a33df1f710dea3f6d05bd', order: state === null || state === void 0 ? void 0 : state.checkout, onScUpdateLineItems: e => this.loadUpdate({ line_items: e.detail }) }, h("slot", { key: '4d99d1933eab656fea62abd856bf70bfd3f59049' })));
+        return (h("sc-line-items-provider", { key: '12c45a4c5e4c0b74f141c26ba1da7ef9d87eb1b7', order: state === null || state === void 0 ? void 0 : state.checkout, onScUpdateLineItems: e => this.loadUpdate({ line_items: e.detail }) }, h("slot", { key: 'cc2c0d636c6a70c537913c7f2095ffa93642204d' })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

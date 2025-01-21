@@ -130,13 +130,30 @@ class Api extends \MetForm\Base\Api
 
     public function get_store_mailchimp_list()
     {
+        $nonce = $this->request->get_header('X-WP-Nonce');
+
         if(!current_user_can('manage_options')) {
 			return;
 		}
 
+
+        if(!wp_verify_nonce($nonce, 'wp_rest')) {
+            return [
+				'status'    => 'fail',
+				'message'   => [  __( 'Nonce mismatch.', 'metform' ) ],
+			];
+        }
+
         $post_id = $this->request['id'];
         $data = \MetForm\Core\Forms\Action::instance()->get_all_data($post_id);
         $api_key = $data['mf_mailchimp_api_key'];
+        
+        if (!preg_match('/^[a-z0-9]{32}-[a-z0-9]{3,4}$/', $api_key)) {
+            return [
+				'status'    => 'fail',
+				'message'   => [  __( 'Invalid_api_key.', 'metform' ) ],
+			];
+        }
 
         $mailChimp_list = json_decode(Mail_Chimp::get_list($api_key)['body']);
 

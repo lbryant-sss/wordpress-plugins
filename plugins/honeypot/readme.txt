@@ -4,7 +4,7 @@ Donate link: https://www.patreon.com/wp_armour
 Tags: anti spam, spam protection, comment spam , contact form spam, akismet
 Requires at least: 3.0
 Tested up to: 6.7.1
-Stable tag: 2.2.05
+Stable tag: 2.2.06
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,7 +36,7 @@ This plugins block spam submissions using honeypot anti spam technic. No Captcha
 * Record Spam Submission, view what spam bot are trying to submit 
 * Logs spam bot IPs.
 * Block spam bot IPs if multiple spam is submitted. Add extra level of anti spam filter based on IPs. Stops spam bot from using unwanted bandwidth and save valuable server resource.
-* WooCommerce Checkout & Registration (<a href="https://woocommerce.com">woocommerce.com</a>)
+* WooCommerce Checkout & Registration including Card Testing Orders (<a href="https://woocommerce.com">woocommerce.com</a>)
 * Easy Digital Downloads Checkout and Registration (<a href="https://easydigitaldownloads.com">easydigitaldownloads.com</a>)
 * QuForm Contact Form (<a href="https://www.quform.com">quform.com</a>)
 * Ninja Forms (<a href="https://ninjaforms.com">https://ninjaforms.com</a>)
@@ -73,7 +73,7 @@ You can get the WP Armour - Anti Spam Extended from <a title="WP Armour Extended
 * Spam bots can't use javascript so we use javascript to insert honeypot anti spam field in the form and spam bots can't fill it to pass anti spam test. 
 * Unique honeypot field name generated for each wordpress installation, so it is hard for spam bots to make one fit for all solution to bypass honeypot anti spam test.
 * No setup required. Just activate the plugin and it enables anti spam for all supported forms, comment and registration.
-* No API or monthly subscription needed like other plugins. Though we have <a title="WP Armour Extended - Anti Spam" href="https://dineshkarki.com.np/buy-wp-armour-extended">Premium extended version</a> of the plugin for more support with one time lifetime license.
+* No API or monthly subscription needed like other plugins. Though we have <a title="WP Armour Extended - Anti Spam" href="https://dineshkarki.com.np/buy-wp-armour-extended">Premium extended version</a> of the plugin for more support with yearly license.
 
 <strong>Support</strong>
 
@@ -141,6 +141,10 @@ With WP Armour - Honeypot Anti Spam plugin it is No. But if you want you can use
 1. Screenshot #11. Anti Spam for Fluent Forms
 
 == Changelog ==
+
+= = 2.2.06 =
+
+* Fixed Divi Notice Issue. 
 
 = = 2.2.05 =
 
@@ -292,6 +296,7 @@ With WP Armour - Honeypot Anti Spam plugin it is No. But if you want you can use
 = = 1.8.5 =
 * Added support for WooCommerce Reviews Pro.
 * Added support for Fluent Form Conversional Forms.
+* Better Protection against WooCommerce Fake Credit Card Test Orders
 
 = = 1.8.4 =
 * removed complicated spam checker as it was creating issue for some users.

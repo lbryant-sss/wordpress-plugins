@@ -1,14 +1,14 @@
-# Copyright (C) 2024 Wpmet
+# Copyright (C) 2025 Wpmet
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: MetForm 3.9.2\n"
+"Project-Id-Version: MetForm 3.9.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/metform\n"
-"POT-Creation-Date: 2024-12-26 05:35:43+00:00\n"
+"POT-Creation-Date: 2025-01-20 05:40:03+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
@@ -921,6 +921,14 @@ msgstr ""
 msgid "There was an error uploading your file."
 msgstr ""
 
+#: core/entries/api.php:143
+msgid "Nonce mismatch."
+msgstr ""
+
+#: core/entries/api.php:154
+msgid "Invalid_api_key."
+msgstr ""
+
 #: core/entries/cpt.php:16 core/entries/cpt.php:17
 msgid "Entry"
 msgstr ""
@@ -1042,15 +1050,15 @@ msgstr ""
 msgid "%1$s only allow %2$s file types."
 msgstr ""
 
-#: core/entries/form-data.php:264 core/entries/form-data.php:387
+#: core/entries/form-data.php:265 core/entries/form-data.php:498
 msgid "Number:"
 msgstr ""
 
-#: core/entries/form-data.php:268 core/entries/form-data.php:391
+#: core/entries/form-data.php:269 core/entries/form-data.php:502
 msgid "Type:"
 msgstr ""
 
-#: core/entries/form-data.php:407 core/entries/meta-data.php:283
+#: core/entries/form-data.php:518 core/entries/meta-data.php:283
 msgid "Download"
 msgstr ""
 
@@ -2508,150 +2516,150 @@ msgstr ""
 msgid "Your data inserted on slack."
 msgstr ""
 
-#: plugin.php:234
+#: plugin.php:242
 msgid "ElementsKit"
 msgstr ""
 
-#: plugin.php:237
+#: plugin.php:245
 msgid ""
 "All-in-one Elementor addon trusted by 1 Million+ users, makes your website "
 "builder process easier with ultimate freedom."
 msgstr ""
 
-#: plugin.php:241
+#: plugin.php:249
 msgid "GetGenie"
 msgstr ""
 
-#: plugin.php:244
+#: plugin.php:252
 msgid ""
 "Your personal AI assistant for content and SEO. Write content that ranks on "
 "Google with NLP keywords and SERP analysis data."
 msgstr ""
 
-#: plugin.php:248
+#: plugin.php:256
 msgid "GutenKit"
 msgstr ""
 
-#: plugin.php:251
+#: plugin.php:259
 msgid ""
 "Gutenberg blocks, patterns, and templates that extend the page-building "
 "experience using the WordPress block editor."
 msgstr ""
 
-#: plugin.php:255
+#: plugin.php:263
 msgid "ShopEngine"
 msgstr ""
 
-#: plugin.php:258
+#: plugin.php:266
 msgid ""
 "Complete WooCommerce solution for Elementor to fully customize any pages "
 "including cart, checkout, shop page, and so on.\n"
 "                "
 msgstr ""
 
-#: plugin.php:263
+#: plugin.php:271
 msgid "EmailKit"
 msgstr ""
 
-#: plugin.php:266
+#: plugin.php:274
 msgid ""
 "Advanced email customizer for WooCommerce and WordPress. Build, customize, "
 "and send emails from WordPress to boost your sales!"
 msgstr ""
 
-#: plugin.php:270
+#: plugin.php:278
 msgid "Wp Social"
 msgstr ""
 
-#: plugin.php:273
+#: plugin.php:281
 msgid ""
 "Add social share, login, and engagement counter — unified solution for all "
 "social media with tons of different styles for your website."
 msgstr ""
 
-#: plugin.php:277
+#: plugin.php:285
 msgid "WP Ultimate Review"
 msgstr ""
 
-#: plugin.php:280
+#: plugin.php:288
 msgid ""
 "Collect and showcase reviews on your website to build brand credibility and "
 "social proof with the easiest solution."
 msgstr ""
 
-#: plugin.php:284
+#: plugin.php:292
 msgid "FundEngine"
 msgstr ""
 
-#: plugin.php:287
+#: plugin.php:295
 msgid ""
 "Create fundraising, crowdfunding, and donation websites with PayPal and "
 "Stripe payment gateway integration."
 msgstr ""
 
-#: plugin.php:291
+#: plugin.php:299
 msgid "Blocks for ShopEngine"
 msgstr ""
 
-#: plugin.php:294
+#: plugin.php:302
 msgid ""
 "All in one WooCommerce solution for Gutenberg! Build your WooCommerce pages "
 "in a block editor with full customization."
 msgstr ""
 
-#: plugin.php:298
+#: plugin.php:306
 msgid "Genie Image"
 msgstr ""
 
-#: plugin.php:301
+#: plugin.php:309
 msgid ""
 "AI-powered text-to-image generator for WordPress with OpenAI’s DALL-E 2 "
 "technology to generate high-quality images in one click."
 msgstr ""
 
-#: plugin.php:387
+#: plugin.php:395
 msgid "Minimum length should be "
 msgstr ""
 
-#: plugin.php:388
+#: plugin.php:396
 msgid " character long."
 msgstr ""
 
-#: plugin.php:389
+#: plugin.php:397
 msgid "Maximum length should be "
 msgstr ""
 
-#: plugin.php:390
+#: plugin.php:398
 msgid "Maximum number should be "
 msgstr ""
 
-#: plugin.php:391
+#: plugin.php:399
 msgid "Minimum number should be "
 msgstr ""
 
-#: plugin.php:567
+#: plugin.php:575
 msgid "Activate Elementor"
 msgstr ""
 
-#: plugin.php:574
+#: plugin.php:582
 msgid "Install Elementor"
 msgstr ""
 
-#: plugin.php:578 plugin.php:612
+#: plugin.php:586 plugin.php:620
 #. translators: MetForm plugin version requirement. %s is the required
 #. Elementor version.
 msgid "MetForm requires Elementor version %1$s+, which is currently NOT RUNNING."
 msgstr ""
 
-#: plugin.php:594
+#: plugin.php:602
 msgid "MetForm Pro"
 msgstr ""
 
-#: plugin.php:598 plugin.php:615
+#: plugin.php:606 plugin.php:623
 msgid "We have MetForm Pro version. Check out our pro feature."
 msgstr ""
 
-#: plugin.php:610
+#: plugin.php:618
 msgid "Update Elementor"
 msgstr ""
 
@@ -2664,7 +2672,7 @@ msgstr ""
 #: widgets/multi-select/multi-select.php:170
 #: widgets/multi-select/multi-select.php:178 widgets/number/number.php:70
 #: widgets/password/password.php:70 widgets/radio/radio.php:217
-#: widgets/radio/radio.php:227 widgets/range/range.php:142
+#: widgets/radio/radio.php:227 widgets/range/range.php:158
 #: widgets/rating/rating.php:92 widgets/recaptcha/recaptcha.php:67
 #: widgets/select/select.php:233 widgets/select/select.php:242
 #: widgets/simple-captcha/simple-captcha.php:127 widgets/summary/summary.php:53
@@ -2768,7 +2776,7 @@ msgstr ""
 #: traits/common-controls.php:565 traits/common-controls.php:834
 #: traits/common-controls.php:890 traits/common-controls.php:933
 #: widgets/email/email.php:185 widgets/gdpr-consent/gdpr-consent.php:199
-#: widgets/range/range.php:323 widgets/rating/rating.php:267
+#: widgets/range/range.php:339 widgets/rating/rating.php:267
 #: widgets/simple-captcha/simple-captcha.php:181 widgets/switch/switch.php:197
 #: widgets/switch/switch.php:379
 msgid "Typography"
@@ -2810,7 +2818,7 @@ msgstr ""
 
 #: traits/button-controls.php:372 traits/common-controls.php:291
 #: traits/common-controls.php:847 widgets/file-upload/file-upload.php:431
-#: widgets/range/range.php:300 widgets/range/range.php:379
+#: widgets/range/range.php:316 widgets/range/range.php:395
 #: widgets/rating/rating.php:229 widgets/select/select.php:290
 #: widgets/select/select.php:369
 msgid "Border Radius"
@@ -2851,7 +2859,7 @@ msgid "Position"
 msgstr ""
 
 #: traits/common-controls.php:41 widgets/file-upload/file-upload.php:83
-#: widgets/range/range.php:266 widgets/simple-captcha/simple-captcha.php:70
+#: widgets/range/range.php:282 widgets/simple-captcha/simple-captcha.php:70
 msgid "Top"
 msgstr ""
 
@@ -2973,7 +2981,7 @@ msgstr ""
 #: widgets/listing-optin/listing-optin.php:325
 #: widgets/multi-select/multi-select.php:264 widgets/number/number.php:146
 #: widgets/password/password.php:162 widgets/radio/radio.php:462
-#: widgets/range/range.php:427 widgets/rating/rating.php:315
+#: widgets/range/range.php:443 widgets/rating/rating.php:315
 #: widgets/select/select.php:575 widgets/switch/switch.php:582
 #: widgets/telephone/telephone.php:146 widgets/text/text.php:165
 #: widgets/textarea/textarea.php:170 widgets/time/time.php:179
@@ -2982,7 +2990,7 @@ msgid "This field is required."
 msgstr ""
 
 #: traits/common-controls.php:276 traits/common-controls.php:878
-#: widgets/range/range.php:392 widgets/rating/rating.php:280
+#: widgets/range/range.php:408 widgets/rating/rating.php:280
 #: widgets/select/select.php:327 widgets/switch/switch.php:170
 msgid "Box Shadow"
 msgstr ""
@@ -2996,8 +3004,8 @@ msgid "Border"
 msgstr ""
 
 #: traits/common-controls.php:323 traits/common-controls.php:515
-#: widgets/gdpr-consent/gdpr-consent.php:149 widgets/range/range.php:177
-#: widgets/range/range.php:232 widgets/range/range.php:331
+#: widgets/gdpr-consent/gdpr-consent.php:149 widgets/range/range.php:193
+#: widgets/range/range.php:248 widgets/range/range.php:347
 #: widgets/simple-captcha/simple-captcha.php:135 widgets/switch/switch.php:136
 msgid "Width"
 msgstr ""
@@ -3556,7 +3564,7 @@ msgstr ""
 #: widgets/listing-optin/listing-optin.php:300
 #: widgets/multi-select/multi-select.php:230 widgets/number/number.php:121
 #: widgets/password/password.php:121 widgets/radio/radio.php:437
-#: widgets/range/range.php:403 widgets/rating/rating.php:290
+#: widgets/range/range.php:419 widgets/rating/rating.php:290
 #: widgets/select/select.php:525 widgets/simple-captcha/simple-captcha.php:350
 #: widgets/summary/summary.php:68 widgets/switch/switch.php:557
 #: widgets/telephone/telephone.php:121 widgets/text/text.php:140
@@ -4291,7 +4299,7 @@ msgstr ""
 msgid "Add space after radio"
 msgstr ""
 
-#: widgets/range/range.php:16 widgets/range/range.php:223
+#: widgets/range/range.php:16 widgets/range/range.php:239
 msgid "Range Slider"
 msgstr ""
 
@@ -4307,36 +4315,36 @@ msgstr ""
 msgid ""
 "<strong>Important Note : </strong> For taking dual range input, You have to "
 "enter dual default value in the field Value (Exactly bottom of this notice "
-"field. ). Example: Min:10, Max:20"
+"field. ). Example: 10, 20"
 msgstr ""
 
-#: widgets/range/range.php:125
-msgid "Value"
+#: widgets/range/range.php:125 widgets/range/range.php:137
+msgid "Default Value"
 msgstr ""
 
-#: widgets/range/range.php:169
+#: widgets/range/range.php:185
 msgid "Range Track"
 msgstr ""
 
-#: widgets/range/range.php:192 widgets/range/range.php:250
-#: widgets/range/range.php:346 widgets/switch/switch.php:153
+#: widgets/range/range.php:208 widgets/range/range.php:266
+#: widgets/range/range.php:362 widgets/switch/switch.php:153
 #: widgets/textarea/textarea.php:106
 msgid "Height"
 msgstr ""
 
-#: widgets/range/range.php:211
+#: widgets/range/range.php:227
 msgid "Input Track Background"
 msgstr ""
 
-#: widgets/range/range.php:284 widgets/range/range.php:361
+#: widgets/range/range.php:300 widgets/range/range.php:377
 msgid "Range Slider Background"
 msgstr ""
 
-#: widgets/range/range.php:293 widgets/range/range.php:371
+#: widgets/range/range.php:309 widgets/range/range.php:387
 msgid "Range Slider Border"
 msgstr ""
 
-#: widgets/range/range.php:314
+#: widgets/range/range.php:330
 msgid "Counter"
 msgstr ""
 

@@ -499,6 +499,7 @@ class ComposerStaticInitde6168bc7e17873548173e515fd8b9ef
         'SureCart\\BlockLibrary\\CartMigrationService' => __DIR__ . '/../..' . '/app/src/BlockLibrary/CartMigrationService.php',
         'SureCart\\BlockLibrary\\FormModeSwitcherService' => __DIR__ . '/../..' . '/app/src/BlockLibrary/FormModeSwitcherService.php',
         'SureCart\\BlockLibrary\\ProductCollectionBadgesMigrationService' => __DIR__ . '/../..' . '/app/src/BlockLibrary/ProductCollectionBadgesMigrationService.php',
+        'SureCart\\BlockLibrary\\ProductListFilterTagsMigrationService' => __DIR__ . '/../..' . '/app/src/BlockLibrary/ProductListFilterTagsMigrationService.php',
         'SureCart\\BlockLibrary\\ProductListMigrationService' => __DIR__ . '/../..' . '/app/src/BlockLibrary/ProductListMigrationService.php',
         'SureCart\\BlockLibrary\\ProductListService' => __DIR__ . '/../..' . '/app/src/BlockLibrary/ProductListService.php',
         'SureCart\\BlockLibrary\\ProductPageBlocksMigrationService' => __DIR__ . '/../..' . '/app/src/BlockLibrary/ProductPageBlocksMigrationService.php',

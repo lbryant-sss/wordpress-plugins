@@ -5,7 +5,7 @@ Tags: Google Analytics, Related Posts, sitemap, Facebook Page Plugin, OG tags
 Requires at least: 6.4
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 9.101.0.3
+Stable tag: 9.102.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,12 +81,15 @@ e.g.
 
 == Changelog ==
 
+= 9.102.0 =
+[ Add function ][ Share button ] Added Bluesky share button.
+
 = 9.101.0 =
 [ Add function ][ Navigation Menu Custom ] Navigation Block Support
 
 = 9.100.8 =
 [ Bud Fix ][ Taxonomy Widget / Post Type Manager ] Fix Translate Text Domain.
-[ Bug Fix ][ CSS Customize ] Fix PHP warning on the settings screen of Contact Form 7. 
+[ Bug Fix ][ CSS Customize ] Fix PHP warning on the settings screen of Contact Form 7.
 
 = 9.100.7 =
 [ Bug fix ][ Categories/Custom taxonomies list widget ] Display order translation
@@ -107,7 +110,7 @@ e.g.
 [ Other ] Addressing PHP notices related to translations in WordPress 6.7
 
 = 9.100.1 =
-[ Bug Fix ][ Promotion Alert ] Fixed filtering in Promotion Alert by adding data-nosnippet attribute to the div tag. 
+[ Bug Fix ][ Promotion Alert ] Fixed filtering in Promotion Alert by adding data-nosnippet attribute to the div tag.
 
 = 9.100.0 =
 [ Add setting ][ Category list ] Enable to specify ascending/descending order

@@ -18,11 +18,11 @@ Get a fast contact form plugin. Create advanced forms using drag and drop form b
 
 [youtube https://www.youtube.com/watch?v=s4RJS3GrmTI]
 
-[Demo](https://fluentforms.com/forms/) | [User Guide](https://wpmanageninja.com/docs/fluent-form/) | [Youtube Video Tutorials](https://www.youtube.com/playlist?list=PLXpD0vT4thWEY6CbwMISKDiXOd5KPC6wo) | [Get Support](https://wpmanageninja.com/support-tickets/) | [Youtube Video Tutorials](https://www.youtube.com/playlist?list=PLXpD0vT4thWEY6CbwMISKDiXOd5KPC6wo) | [Official Facebook Community](https://www.facebook.com/groups/fluentforms/)
+[Demo](https://fluentforms.com/form-templates/) | [User Guide](https://wpmanageninja.com/docs/fluent-form/) | [Youtube Video Tutorials](https://www.youtube.com/playlist?list=PLXpD0vT4thWEY6CbwMISKDiXOd5KPC6wo) | [Get Support](https://wpmanageninja.com/support-tickets/) | [Youtube Video Tutorials](https://www.youtube.com/playlist?list=PLXpD0vT4thWEY6CbwMISKDiXOd5KPC6wo) | [Official Facebook Community](https://www.facebook.com/groups/fluentforms/)
 
 Anything from a simple contact form to a more advanced payment, quiz, or calculator form, Fluent Forms can meet virtually all your needs.
 
-[youtube https://youtu.be/78jS8G4j5q8?si=r4GV6gULBY-4EXsM]
+[youtube https://www.youtube.com/watch?v=imugwQOFSmI]
 
 ==Powerful Features available in the Free Version==
 
@@ -32,7 +32,7 @@ Anything from a simple contact form to a more advanced payment, quiz, or calcula
 * 25+ ready-to-use input fields
 * Reusable form templates
 * Adjustable multi-column form layout
-* Spam protection using reCAPTCHA, hCaptcha & more
+[* Spam protection using reCAPTCHA, hCaptcha & more](https://fluentforms.com/form-security/)
 * Email notification
 * Form scheduling & restriction
 * Export/import forms
@@ -52,11 +52,11 @@ Anything from a simple contact form to a more advanced payment, quiz, or calcula
 ==Features available in the Pro version==
 
 * 55+ input fields
-* Payment
-* Numeric calculation
-* Multi-step form
-* Advanced form styler
-* Quiz & survey module
+[* Payment](https://fluentforms.com/payment/)
+[* Numeric calculation](https://fluentforms.com/numeric-calculation/)
+[* Multi-step form](https://fluentforms.com/multi-step-form/)
+[* Advanced form styler](https://fluentforms.com/advanced-form-styler/)
+[* Quiz & survey module](https://fluentforms.com/quiz-and-survey/)
 * Inventory management
 * Dynamic field
 * Advanced search filter
@@ -71,8 +71,9 @@ Anything from a simple contact form to a more advanced payment, quiz, or calcula
 * SMS notifications
 * Conditional email routing
 * User registration
-* Advanced post/CPT creation
-* 50+ third-party integrations (and a lot more via Zapier)
+[* Advanced post/CPT creation](https://fluentforms.com/user-generated-content/)
+[*Address autocomplete](https://fluentforms.com/address-autocomplete/)
+[* 60+ third-party integrations](https://fluentforms.com/integration/) (and a lot more via Zapier)
 
 == Super Fast Contact Forms ==
 Fluent Forms is built for speed. It does not slow down your site nor load lots of CSS & JS. A standard form built with Fluent Forms only loads less than 30KB CSS and JS combined, whereas most of the form builders load at least 300KB assets to load a simple form. Build the fastest online forms in minutes.
@@ -109,7 +110,6 @@ Our drag-and-drop form builder allows you to easily create any form you can imag
 * Password Field
 * Custom Submit Button
 * One/Two/Three/Four/Five/Six Column Container
-* Container Repeater
 
 **Available in the Pro Version**
 
@@ -144,6 +144,8 @@ Our drag-and-drop form builder allows you to easily create any form you can imag
 * Featured Image
 * Post Update
 * Post Taxonomy Fields (Categories, Tags, Formats)
+* Container Repeater
+
 
 == Fully Mobile Responsive Forms ==
 Fluent Forms has been developed to make sure that it satisfies devices of all display sizes. Display your forms on all devices without any extra hassle.
@@ -175,7 +177,7 @@ Why do the same thing over and over again? Fluent Forms enables you to choose a 
 * **Subscription Payments Form (Pro)**
 
 == Conversational Forms ==
-One of the best features of any form builder plugin is its ability to create different types of forms. One of the key features of Fluent Forms is conversational forms. With conversational forms, users get one question at a time, unlike traditional forms. This reduces distraction and results in a higher form completion rate. There are multiple layout options to serve your purpose. There are multiple sharing options for conversational forms, including direct URLs, shortcodes, HTML embedding and more.
+One of the best features of any form builder plugin is its ability to create different types of forms. One of the key features of Fluent Forms is conversational forms. With [conversational forms](https://fluentforms.com/conversational-forms/), users get one question at a time, unlike traditional forms. This reduces distraction and results in a higher form completion rate. There are multiple layout options to serve your purpose. There are multiple sharing options for conversational forms, including direct URLs, shortcodes, HTML embedding and more.
 
 [youtube https://youtu.be/LSuZ7jOHLwE?si=rt4hKrtgvYKyvL8X]
 
@@ -193,13 +195,13 @@ Get notified every time someone submits a form and also send a confirmation emai
 Stack input fields in multiple columns and make the long, boring form appear compact and smart. This will lead to a lower form abandonment rate. There are six types of column containers to choose from.
 
 == Conditional Logic ==
-Show or hide specific input fields according to users’ behavior so they do not have to be bothered with unnecessary fields. Users can set multiple conditions by selecting input fields and defining rules such as equal, not equal, greater than, less than, includes, not includes and more. Using conditional logic, you can receive email notifications automatically upon form submissions and display different confirmation messages to different users when specific conditions are met.
+Show or hide specific input fields according to users’ behavior so they do not have to be bothered with unnecessary fields. Users can set multiple conditions by selecting input fields and defining rules such as equal, not equal, greater than, less than, includes, not includes and more. Using [conditional logic](https://fluentforms.com/conditional-logic/), you can receive email notifications automatically upon form submissions and display different confirmation messages to different users when specific conditions are met.
 
 == Calculator for Advanced Form Calculation ==
 The numeric field of Fluent Forms gives you the power to create smart calculators. Whether it's a car loan calculator, BMI calculator, simple mortgage calculator, or tax calculator, creating these calculator forms is a no-brainer. You can set minimum and maximum values to define the acceptable range for numerical input fields.
 
 == Create PDF Files from Form Submission ==
-Generate PDF from your submitted entries and let users download the PDF file or send it via email. You can use this feature to generate invoices, create reports, or provide order summaries.
+[Generate PDF from your submitted entries](https://fluentforms.com/pdf-generator/) and let users download the PDF file or send it via email. You can use this feature to generate invoices, create reports, or provide order summaries.
 
 == Conditional Confirmation ==
 Fluent Forms Pro allows you to send customized confirmation messages to your users if they meet specific conditions.
@@ -212,7 +214,7 @@ Fluent Forms Pro is not just a contact form builder, but it can also be used as 
 
 == Payment Forms ==
 Fluent Forms Pro offers functionalities beyond contact forms, it is a powerful solution that you can use to create payment forms, product order forms, and donation forms. It integrates with popular payment gateways like PayPal, Stripe, Razorpay, Paddle, Square etc. so you can easily accept credit card payments on your website.
-[youtube https://www.youtube.com/watch?v=iYOmHLtkRfQ]
+[youtube https://www.youtube.com/watch?v=78jS8G4j5q8]
 
 == One-Click Migrator ==
 If you are already using Contact Form 7, WPForms, Caldera Forms, Ninja Forms or Gravity Forms and looking to move to Fluent Forms, you can do this with a single click.
@@ -233,64 +235,64 @@ Improve your website’s efficiency by bridging the gap from visitor input to em
 * <a href="https://wordpress.org/plugins/fluent-booking" target="_blank">FluentBooking</a>
 * <a href="https://wordpress.org/plugins/wp-social-reviews" target="_blank">WP Social Ninja</a>
 * <a href="https://wordpress.org/plugins/fluentforms-pdf" target="_blank">Fluent Forms PDF Generator</a>
-* MailChimp
-* Slack
-* Mautic
-* Mailpoet
+[* MailChimp](https://fluentforms.com/integration/mailchimp/)
+[* Slack](https://fluentforms.com/integration/slack/)
+[* Mautic](https://fluentforms.com/integration/mautic/)
+[* Mailpoet](https://fluentforms.com/integration/mailpoet/)
 
 == Integrations Available in the Pro Version ==
 
-* ActiveCampaign
-* AffiliateWP
-* Airtable
-* amoCRM
-* Automizy
-* Brevo (formerly SendInBlue)
-* BuddyBoss
-* Campaign Monitor
-* ChatGPT
-* CleverReach
-* ClickSend
-* Constant Contact
-* ConvertKit
-* Discord
-* Drip
-* GetGist
-* GetResponse
-* Google Maps
-* Google Sheets
-* HubSpot
-* iContact
-* Insightly
-* MailerLite
-* Mailjet
-* Mailster
-* Mollie
-* MooSend
-* Notion
-* OnePageCRM
-* Paddle
-* PayPal
-* Paystack
-* Pipedrive
-* Platformly
-* RazorPay
-* Salesflare
-* Salesforce
-* SendFox
-* Square
-* Stripe
-* Telegram
-* Trello
-* Twilo
+[* ActiveCampaign](https://fluentforms.com/integration/activecampaign/)
+[* AffiliateWP](https://fluentforms.com/integration/affiliatewp/)
+[* Airtable](https://fluentforms.com/integration/airtable/)
+[* amoCRM](https://fluentforms.com/integration/amocrm/)
+[* Automizy](https://fluentforms.com/integration/automizy/)
+[* Brevo (formerly SendInBlue)](https://fluentforms.com/integration/brevo/)
+[* BuddyBoss](https://fluentforms.com/integration/buddyboss/)
+[* Campaign Monitor](https://fluentforms.com/integration/campaignmonitor/)
+[* ChatGPT](https://fluentforms.com/integration/chatgpt/)
+[* CleverReach](https://fluentforms.com/integration/cleverreach/)
+[* ClickSend](https://fluentforms.com/integration/clicksend/)
+[* Constant Contact](https://fluentforms.com/integration/constant-contact/)
+[* Kit, formerly ConvertKit](https://fluentforms.com/integration/kit/)
+[* Discord](https://fluentforms.com/integration/discord/)
+[* Drip](https://fluentforms.com/integration/drip/)
+[* Gist](https://fluentforms.com/integration/gist/)
+[* GetResponse](https://fluentforms.com/integration/getresponse/)
+[* Google Maps](https://fluentforms.com/integration/google-maps/)
+[* Google Sheets](https://fluentforms.com/integration/google-sheets/)
+[* HubSpot](https://fluentforms.com/integration/hubspot/)
+[* iContact](https://fluentforms.com/integration/icontact/)
+[* Insightly](https://fluentforms.com/integration/insightly/)
+[* MailerLite](https://fluentforms.com/integration/mailerlite/)
+[* Mailjet](https://fluentforms.com/integration/mailjet/)
+[* Mailster](https://fluentforms.com/integration/mailster/)
+[* Mollie](https://fluentforms.com/integration/mollie/)
+[* MooSend](https://fluentforms.com/integration/moosend/)
+[* Notion](https://fluentforms.com/integration/notion/)
+[* OnePageCRM](https://fluentforms.com/integration/onepagecrm/)
+[* Paddle](https://fluentforms.com/integration/paddle/)
+[* PayPal](https://fluentforms.com/integration/paypal/)
+[* Paystack](https://fluentforms.com/integration/paystack/)
+[* Pipedrive](https://fluentforms.com/integration/pipedrive/)
+[* Platformly](https://fluentforms.com/integration/platformly/)
+[* RazorPay](https://fluentforms.com/integration/razorpay/)
+[* Salesflare](https://fluentforms.com/integration/salesflare/)
+[* Salesforce](https://fluentforms.com/integration/salesforce/)
+[* SendFox](https://fluentforms.com/integration/sendfox/)
+[* Square](https://fluentforms.com/integration/square/)
+[* Stripe](https://fluentforms.com/integration/stripe/)
+[* Telegram](https://fluentforms.com/integration/telegram/)
+[* Trello](https://fluentforms.com/integration/trello/)
+[* Twilo](https://fluentforms.com/integration/twilio/)
 * User Registration
-* WebHook
-* Zapier
-* Zoho CRM
+[* WebHook](https://fluentforms.com/integration/webhooks/)
+[* Zapier](https://fluentforms.com/integration/zapier/)
+[* Zoho CRM](https://fluentforms.com/integration/zoho-crm/)
 
 == Create Extensions ==
 
-Fluent Forms is open to all WordPress users worldwide. You can utilize the Developer API, hooks, and filters to create your own integrations or extensions.
+Fluent Forms is open to all WordPress users worldwide. You can utilize the [Developer API, hooks, and filters](https://developers.fluentforms.com/) to create your own integrations or extensions.
 
 
 == Check Out the Documentation and the Video Tutorials ==

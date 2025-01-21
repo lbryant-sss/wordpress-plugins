@@ -453,7 +453,7 @@
   $(document).on('click touch', '.woosw-popup', function(e) {
     var woosw_content = $('.woosw-popup-content');
 
-    if ($(e.target).closest(woosw_content).length == 0) {
+    if (!$(e.target).closest(woosw_content).length) {
       woosw_wishlist_hide();
       woosw_manage_hide();
     }

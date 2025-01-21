@@ -48,6 +48,10 @@
       "type": "boolean",
       "default": false
     },
+    "lightbox": {
+      "type": "boolean",
+      "default": true
+    },
     "id": {
       "type": "string"
     }

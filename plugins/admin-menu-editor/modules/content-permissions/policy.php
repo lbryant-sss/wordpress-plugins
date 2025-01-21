@@ -3,7 +3,6 @@
 namespace YahnisElsts\AdminMenuEditor\ContentPermissions\Policy;
 
 use YahnisElsts\AdminMenuEditor\Actors\Actor;
-use YahnisElsts\AdminMenuEditor\Actors\ActorManager;
 
 class ContentItemPolicy implements \JsonSerializable {
 	const EFFECT_ALLOW = 'allow';
@@ -43,9 +42,10 @@ class ContentItemPolicy implements \JsonSerializable {
 	 * @param Actor $actor
 	 * @param Action $action
 	 * @param ContentItemPolicy|null $childObjectPolicy
+	 * @param mixed $objectId ID of the object that this policy is evaluated for. Usually a post ID.
 	 * @return EvaluationResult|null
 	 */
-	public function evaluate(Actor $actor, Action $action, ContentItemPolicy $childObjectPolicy = null) {
+	public function evaluate(Actor $actor, Action $action, ContentItemPolicy $childObjectPolicy = null, $objectId = null) {
 		$bestMatchEffect = null;
 		$bestMatchPriority = -1;
 
@@ -85,7 +85,8 @@ class ContentItemPolicy implements \JsonSerializable {
 			$actor,
 			$action,
 			$this,
-			$childObjectPolicy
+			$childObjectPolicy,
+			$objectId
 		);
 	}
 
@@ -634,6 +635,10 @@ class EvaluationResult {
 
 	public function isDenied() {
 		return $this->effect === ContentItemPolicy::EFFECT_DENY;
+	}
+
+	public function isAllowed() {
+		return $this->effect === ContentItemPolicy::EFFECT_ALLOW;
 	}
 }
 

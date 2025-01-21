@@ -261,6 +261,17 @@ class ContentPermissionsEnforcer {
 
 	private $contentFilterDepth = 0;
 
+	/**
+	 * Temporary capabilities granted to specific users.
+	 *
+	 * @var array<int, array<string, true>>
+	 */
+	private $tempCapsByUser = [];
+	/**
+	 * @var bool
+	 */
+	private $userCapFilterAdded = false;
+
 	public function __construct(
 		Policy\ActionRegistry    $actionRegistry,
 		ActorManager             $actorManager,
@@ -331,8 +342,42 @@ class ContentPermissionsEnforcer {
 
 		//Check if the user is allowed to perform that action.
 		$result = $this->evaluatePostPolicy($args[0], $this->postCapToAction($metaCap), $userId);
-		if ( $result && $result->isDenied() ) {
-			$caps[] = 'do_not_allow';
+		if ( $result ) {
+			if ( $result->isDenied() ) {
+				//Deny the action.
+				$caps[] = 'do_not_allow';
+			} else if (
+				$result->isAllowed()
+				//Compatibility: Don't override other plugins that explicitly block access.
+				&& !in_array('do_not_allow', $caps)
+			) {
+				//Allow the action.
+
+				//Usually, we don't need to do anything here. However, there's a special case where
+				//an admin might give edit/delete permissions for a specific post to a role that normally
+				//can't edit posts at all. In that case, we'll replace the original capability with
+				//a special post-specific capability and grant that capability to the user.
+
+				//Check if the user has the required capabilities.
+				$user = \ameRoleUtils::get_user_by_id($userId);
+				if ( ($user instanceof \WP_User) && $user->exists() ) {
+					$hasAllCaps = $this->runWithoutPolicyEnforcement(function () use ($caps, $user) {
+						foreach ($caps as $cap) {
+							if ( !$user->has_cap($cap) ) {
+								return false;
+							}
+						}
+						return true;
+					});
+
+					if ( !$hasAllCaps ) {
+						//Make up a unique capability for this situation and temporarily grant it to the user.
+						$postSpecificCap = 'ame_vcap-' . $metaCap . '-u' . $userId . '-p' . intval($result->getObjectId());
+						$this->grantTemporaryCapability($userId, $postSpecificCap);
+						$caps = [$postSpecificCap];
+					}
+				}
+			}
 		}
 
 		return $caps;
@@ -581,7 +626,7 @@ class ContentPermissionsEnforcer {
 			}
 
 			//Check if the policy lets the user perform the action.
-			$result = $postPolicy->evaluate($userActor, $action, $objectPolicy);
+			$result = $postPolicy->evaluate($userActor, $action, $objectPolicy, $originalPostId);
 			if ( $result ) {
 				return $result;
 			}
@@ -828,6 +873,51 @@ class ContentPermissionsEnforcer {
 		$where .= ' AND (p.ID NOT IN (' . implode(',', $hiddenPostIds) . ')) ';
 
 		return $where;
+	}
+
+	/**
+	 * @param int $userId
+	 * @param string $capability
+	 */
+	private function grantTemporaryCapability($userId, $capability) {
+		if ( !isset($this->tempCapsByUser[$userId]) ) {
+			$this->tempCapsByUser[$userId] = [];
+		}
+		$this->tempCapsByUser[$userId][$capability] = true;
+
+		if ( !$this->userCapFilterAdded ) {
+			//Note: The priority is chosen to Override PublishPress Permissions, which uses 99. This
+			//shouldn't be a problem since our hook only adds caps for specific users and posts.
+			add_filter('user_has_cap', [$this, 'filterUserCapabilities'], 199, 4);
+			$this->userCapFilterAdded = true;
+		}
+	}
+
+	/**
+	 * Callback for the "user_has_cap" filter that enables temporary capabilities for specific users.
+	 *
+	 * Technically, all of the arguments should be passed by WordPress core, but we have defaults
+	 * in case another plugin calls this filter with the wrong number of arguments.
+	 *
+	 * @param array $userCaps
+	 * @param string[] $requiredCaps
+	 * @param array $args
+	 * @param \WP_User $user
+	 * @noinspection PhpUnusedParameterInspection -- Required by filter signature.
+	 */
+	public function filterUserCapabilities($userCaps, $requiredCaps = [], $args = [], $user = null) {
+		if ( !$this->enforcementActive || !($user instanceof \WP_User) ) {
+			return $userCaps;
+		}
+
+		$userId = $user->ID;
+		if ( isset($this->tempCapsByUser[$userId]) ) {
+			foreach ($this->tempCapsByUser[$userId] as $cap => $unused) {
+				$userCaps[$cap] = true;
+			}
+		}
+
+		return $userCaps;
 	}
 
 	public function runWithoutPolicyEnforcement($callback, ...$callbackArgs) {

@@ -266,8 +266,6 @@ namespace AmeContentPermissionsUi {
 			if (editorData.enforcementDisabled) {
 				this.enforcementDisabled = true;
 			}
-
-			console.log('Editor data', editorData);
 		}
 
 		/**
@@ -964,7 +962,6 @@ namespace AmeContentPermissionsUi {
 		public readonly selectId: string = '';
 
 		constructor(params: Record<string, unknown>) {
-			console.log('PermissionOptionsDropdownComponent', params);
 			super(params);
 
 			const selectId = ko.unwrap(params.suggestedId);
@@ -976,7 +973,6 @@ namespace AmeContentPermissionsUi {
 
 	class PermissionOptionsBarComponent extends PermissionOptionsComponent {
 		constructor(params: Record<string, unknown>) {
-			console.log('PermissionOptionsBarComponent', params);
 			super(params);
 		}
 	}

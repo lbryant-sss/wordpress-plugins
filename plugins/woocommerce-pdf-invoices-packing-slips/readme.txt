@@ -5,7 +5,7 @@ Tags: woocommerce, pdf, ubl, invoices, packing slips
 Requires at least: 4.4
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 3.9.4
+Stable tag: 3.9.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,32 @@ There's a setting on the Advanced tab of the settings page that allows you to to
 
 == Changelog ==
 
+= 3.9.5 (2025-01-20) =
+- New: Email input callback function for settings
+- New: Adds support for additional UBL root elements
+- New: Add support for multiple handlers under a single root in `UblDocument::get_data()`
+- New: Validation for order tax exemption to apply UBL tax reason
+- New: The "Regenerate Invoice" feature now updates UBL Tax item data
+- New: Enhance UBL Taxes default selector, 'None' Option
+- New: Add `cbc:BaseQuantity` support to UBL structure
+- New: UBL Tax settings now align with the latest settings option
+- New: Add utility function for dynamic string translation
+- New: Add `cbc:BuyerReference` element to UBL for buyer reference
+- New: Enable Support for `cac:PaymentMeans` in UBL
+- New: Filter hooks for UBL tax schemes, categories, and reasons
+- New: Add `cac:Price` support to UBL
+- New: Support for UBL Tax Category Reason
+- Tweak: Replace UBL code to get the customer VAT number with new function
+- Tweak: Update UBL format selector description
+- Tweak: Allow `0` days for the due date 
+- Tweak: Apply `wpo_wcpdf_settings_fields_documents_{$this->type}_pdf` before checking the emptiness of the `$settings_fields`
+- Fix: Logo height setting can break document layout on Simple template
+- Fix: Setting categories not applied to disabled documents
+- Fix: Postcode and city defaults in UBL tax output
+- Fix: Incorrect treatment of UBL format setting as historical
+- Translations: Updated translation template (POT).
+- Tested: Tested up to WooCommerce 9.6.
+
 = 3.9.4 (2024-12-23) =
 * New: add a note to inform users about the availability of additional documents
 * New: display a notice when the yearly reset action is not scheduled
@@ -116,27 +142,27 @@ There's a setting on the Advanced tab of the settings page that allows you to to
 
 = 3.9.2 (2024-12-17) =
 - New: adds description to UBL format selector
-- Fix: issue with PHP extension load checks 
+- Fix: issue with PHP extension load checks
 - Translations: Updated translation template (POT).
 
 = 3.9.1 (2024-12-16) =
-- New: Adds support for multiple UBL formats.  
-- New: Adds a shop phone number field for e-Invoice support.  
-- New: Adds user info to order notes when generating documents.  
-- New: Added an admin notice to inform when server requirements are not met.  
-- New: Raised the minimum PHP version requirement to 7.4.  
-- New: Removes space between items table and totals.  
-- New: Added sections to settings for better organization.  
-- Tweak: Improve the description of the "Remove released semaphore locks" tool.  
-- Fix: Upgrade links not displaying correctly.  
-- Fix: Temp folder warning style issue.  
-- Fix: Remove unused legacy notice code: `check_auto_increment_increment()`.  
-- Fix: AJAX preview loading when disabled on settings pages.  
-- Fix: UBL issue with empty tax on line items.  
-- Fix: jQuery `tipTip` function not available.  
-- Fix: Template item meta styling.  
-- Fix: Semaphore class name on two classes that were still using the previous name.  
-- Translations: Updated translation template (POT).  
+- New: Adds support for multiple UBL formats.
+- New: Adds a shop phone number field for e-Invoice support.
+- New: Adds user info to order notes when generating documents.
+- New: Added an admin notice to inform when server requirements are not met.
+- New: Raised the minimum PHP version requirement to 7.4.
+- New: Removes space between items table and totals.
+- New: Added sections to settings for better organization.
+- Tweak: Improve the description of the "Remove released semaphore locks" tool.
+- Fix: Upgrade links not displaying correctly.
+- Fix: Temp folder warning style issue.
+- Fix: Remove unused legacy notice code: `check_auto_increment_increment()`.
+- Fix: AJAX preview loading when disabled on settings pages.
+- Fix: UBL issue with empty tax on line items.
+- Fix: jQuery `tipTip` function not available.
+- Fix: Template item meta styling.
+- Fix: Semaphore class name on two classes that were still using the previous name.
+- Translations: Updated translation template (POT).
 - Tested: Tested up to WooCommerce 9.5.
 
 = 3.9.0 (2024-10-21) =

@@ -18,10 +18,12 @@ if (!function_exists('wpae_get_blocked_integrations') || !in_array('diviform', w
 		} else { // REMOVE OUR TEST FIELD BEFORE SENDING TO DIVI
 			$fields_data_json  = str_replace( '\\', '',$_POST['et_pb_contact_email_fields'.$divi_form_additional]);
 			$fields_data_array = json_decode( $fields_data_json, true );
-			$filteredArray = array_filter($fields_data_array, function ($item) {
-			    return $item['field_id'] !== 'alt_s';
-			});
-			$_POST['et_pb_contact_email_fields'.$divi_form_additional] = json_encode( $filteredArray, JSON_UNESCAPED_UNICODE );
+			if (is_array($fields_data_array)) {
+				$filteredArray = array_filter($fields_data_array, function ($item) {
+				    return $item['field_id'] !== 'alt_s';
+				});
+				$_POST['et_pb_contact_email_fields'.$divi_form_additional] = json_encode( $filteredArray, JSON_UNESCAPED_UNICODE );
+			}
 		}
 	}
 

@@ -87,9 +87,9 @@ function wpa_admin_notices(){
                 echo '<div class="updated success" style="padding:10px; font-size:16px; line-height:1.6;color:#205225;">
                         Hey, WP Armour has blocked <strong>'.$all_spam_blocked.'</strong> spam submissions till date - that’s awesome!<br/><br/>
 
-                        Can you help us by purchasing our Extended Version ? This will helps up maintain and support the plugin in upcoming days and make it even better. Our Extended version starts from 19.99 USD and comes with lifetime license (No monhtly or yearly recurring) and No API calls. <br/><br/>
+                        Can you help us by purchasing our Extended Version ? This will helps up maintain and support the plugin in upcoming days and make it even better. Our Extended version starts from 19.99 USD and comes with yearly license, No API calls & Fully GDPR Complaint. <br/><br/>
 
-                        Also, it has 2 level spam check and additionally works with WooCommerce, Ajax and Multi page Gravity Forms, Easy Digital Downloads, QuForm, MC4WP: Mailchimp for WordPress and have Spammer blocking based on IP, Record Spam Submission and so on.
+                        It has additional support including WooCommerce ( Blocks card testing orders), Ajax and Multi page Gravity Forms, Easy Digital Downloads, QuForm, MC4WP: Mailchimp for WordPress and have Spammer blocking based on IP, Record Spam Submission and many more.
 
                         <ul style="padding-left:50px;list-style-type: square;">
                             <li><a href="https://dineshkarki.com.np/buy-wp-armour-extended" target="_blank">I will help</a></li>

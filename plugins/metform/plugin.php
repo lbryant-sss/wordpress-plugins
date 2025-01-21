@@ -25,7 +25,7 @@ final class Plugin {
 
     public function version()
     {
-        return '3.9.2';
+        return '3.9.3';
     }
 
     public function package_type()
@@ -116,6 +116,14 @@ final class Plugin {
         if(isset($_GET['met-onboard-steps']) && isset($_GET['met-onboard-steps-nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['met-onboard-steps-nonce'])),'met-onboard-steps-action')) {
             Attr::instance();
 		}
+
+        //  Load Text Domain Just In Time error Notice issue fix
+        add_filter('doing_it_wrong_trigger_error', function($doing_it_wrong, $function_name) {
+            if ('_load_textdomain_just_in_time' === $function_name) {
+                return false;
+            }
+            return $doing_it_wrong;
+        }, 10, 2);
 
         $filter_string = ''; // elementskit,metform-pro
         $filter_string .= ((!in_array('elementskit/elementskit.php', apply_filters('active_plugins', get_option('active_plugins')))) ? '' : ',elementskit');

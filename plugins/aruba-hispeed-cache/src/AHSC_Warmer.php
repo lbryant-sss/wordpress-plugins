@@ -109,7 +109,7 @@ function ahsc_cache_warmer_ajax_action() {
 		}
 
 		//pagine linkate nella homepage
-
+/*
 		$url  = get_home_url();
 		//$html = file_get_contents( $url );
 		$ch = curl_init();
@@ -129,11 +129,9 @@ function ahsc_cache_warmer_ajax_action() {
 					$do_warmer[] = $node->getAttribute( 'href' );
 				}
 			}
-
 		}
-
 		$do_warmer = array_unique( $do_warmer );
-
+*/
 		foreach ( $do_warmer as $warmer_item ) {
 			$ch = curl_init();
 			curl_setopt( $ch, CURLOPT_URL, $warmer_item );
@@ -144,7 +142,8 @@ function ahsc_cache_warmer_ajax_action() {
 			curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, false );
 			curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
 
-			curl_setopt( $ch, CURLOPT_HTTPHEADER, array( "User-Agent: arubacache" ) );
+			//curl_setopt( $ch, CURLOPT_HTTPHEADER, array( "User-Agent: arubacache" ) );
+			curl_setopt( $ch, CURLOPT_USERAGENT, "arubacache" );
 			curl_setopt( $ch, CURLOPT_HTTPHEADER, array( "accept-encoding: gzip, deflate, br, zstd" ) );
 			try {
 				curl_exec( $ch );

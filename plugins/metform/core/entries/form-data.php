@@ -111,7 +111,8 @@ class Form_Data
                                 &&  $form_settings['mf_field_name_show']  == 1) {
                                 
                                 $selected_values = isset($form_data[$key]) ? explode(',', $form_data[$key]) : array();                                
-                                $values = array();                                
+                                $values = array();    
+                                $option_text = '';                            
                                
                                 foreach ($map_data[$key]['mf_input_list'] as $item) {
                                     
@@ -293,6 +294,7 @@ class Form_Data
     public static function format_data_for_mail($form_id, $form_data, $file_info)
     {
         $map_data = static::get_form_data($form_id);
+        $form_settings = \MetForm\Core\Forms\Action::instance()->get_all_data($form_id);
 
         //$file_meta_data = get_post_meta( $post_id, 'metform_entries__file_upload', true );
 
@@ -332,47 +334,156 @@ class Form_Data
                         echo "<tr bgcolor='#FFFFFF'>";
                         echo "<td width='20'>&nbsp;</td>";
 
-                        if (!in_array($value['widgetType'], ['mf-file-upload', 'mf-textarea', 'mf-simple-repeater', 'mf-signature', 'mf-credit-card'])) {
-                            echo "<td>" . esc_html((array_key_exists($key, $form_data) ? ((is_array($form_data[$key])) ? implode(', ', $form_data[$key]) : $form_data[$key]) : ' ')) . "</td>";
+                        if (!in_array($value['widgetType'], ['mf-file-upload', 'mf-textarea', 'mf-simple-repeater', 'mf-signature', 'mf-like-dislike', 'mf-credit-card','mf-image-select','mf-checkbox','mf-mobile'])) {                            
+                          
+                            $label = isset($map_data[$key]['mf_input_label']) ? $map_data[$key]['mf_input_label'] : '';                             
+                            
+                            if ($label && 
+                                isset($map_data[$key]['mf_input_list']) 
+                                && is_array($map_data[$key]['mf_input_list']) 
+                                && isset($form_settings['mf_field_name_show'] ) 
+                                &&  $form_settings['mf_field_name_show']  == 1) {
+                                
+                                $selected_values = isset($form_data[$key]) ? explode(',', $form_data[$key]) : array();                                
+                                $values = array();     
+                                $option_text = '';                           
+                               
+                                foreach ($map_data[$key]['mf_input_list'] as $item) {
+                                    
+                                    
+                                    // Check if 'label' key exists in the item
+                                    if ( isset($item['label']) && in_array($item['value'], $selected_values) ) { 
+                                        $values[$item['label']] = $item['label'] . ' - ' . $item['value'];
+                                    }
+
+                                    if ( isset($item['mf_input_option_text']) 
+                                        &&  isset($item['mf_input_option_value']) 
+                                        && $item['mf_input_option_value'] == $form_data[$key]  ) {
+
+                                        $option_text = $item['mf_input_option_text'] .' - '. $item['mf_input_option_value'] ;   
+                                    }
+                                    
+                                } 
+                                $result =  implode(', ', $values);
+
+                                if(!empty($result)){
+                                    echo "<td>" . esc_html($result) . "</td>";
+                                }else{
+                                    echo "<td>" . esc_html( $option_text ) . "</td>";
+                                }
+                            } else if(isset($value['widgetType']) && $value['widgetType'] == 'mf-text-editor') {
+                                echo "<td>" . wp_kses_post($form_data[$key]) . "</td>";
+                            }else{
+                                $output = isset($form_data[$key]) ? (is_array($form_data[$key]) ? implode(', ', $form_data[$key]) : $form_data[$key]) : '';
+                                echo "<td>" . esc_html($output) . "</td>";
+                            }
+                        }
+
+                        if (isset($value['widgetType']) && $value['widgetType'] == 'mf-mobile') {
+                            $output = isset($form_data[$key]) && !empty($form_data[$key]) ? '+' . esc_html($form_data[$key]) : '';
+                            echo "<td>" . $output . "</td>";
+                        }
+                        
+                        if (isset($value['widgetType']) && $value['widgetType'] == 'mf-checkbox') {
+                            $label = isset($map_data[$key]['mf_input_label']) ? $map_data[$key]['mf_input_label'] : '';
+                        
+                            if ($label && isset($map_data[$key]['mf_input_list']) && is_array($map_data[$key]['mf_input_list']) && isset($form_settings['mf_field_name_show']) && $form_settings['mf_field_name_show'] == 1) {
+                                $selected_values = isset($form_data[$key]) ? explode(',', $form_data[$key]) : array();                                
+                                $values = array();
+                        
+                                foreach ($map_data[$key]['mf_input_list'] as $item) {
+                                    if (isset($item['mf_input_option_text']) && in_array($item['mf_input_option_value'], $selected_values)) {
+                                        $values[$item['mf_input_option_text']] = $item['mf_input_option_text'] . ' - ' . $item['mf_input_option_value'];
+                                    }
+                                }
+                        
+                                $result = implode(', ', $values);
+                        
+                                if (!empty($result)) {
+                                    echo "<td>" . esc_html($result) . "</td>";
+                                }
+                            } else {
+                                $output = isset($form_data[$key]) ? (is_array($form_data[$key]) ? implode(', ', $form_data[$key]) : $form_data[$key]) : '';
+                                echo "<td>" . esc_html($output) . "</td>";
+                            }
+                        }
+
+                        if (isset($value['widgetType']) && $value['widgetType'] == 'mf-image-select') {
+                            $selected_value = isset($form_data[$key]) ? $form_data[$key] : '';
+                            $option_text = '';
+                            $option_value = '';
+                        
+                            foreach ($map_data[$key]['mf_input_list'] as $item) {
+                                if (isset($item['mf_input_option_value']) && $item['mf_input_option_value'] == $selected_value ) {
+                                    if (isset($item['mf_image_select_title']) && $item['mf_image_select_title'] !== '') {
+                                        // If mf_image_select_title is not empty, use it in the option text.
+                                        $option_text = $item['mf_image_select_title'] . ' - ' . $item['mf_input_option_value'];
+                                    } else {
+                                        // If mf_image_select_title is empty, use mf_input_option_value.
+                                        $option_text = $item['mf_input_option_value'];
+                                    }
+                                    
+                                    $option_value = $item['mf_input_option_value'];
+                        
+                                }
+                            }
+                        
+                            if (isset($form_settings['mf_field_name_show']) && $form_settings['mf_field_name_show'] == 1) {
+                                echo "<td>" . esc_html($option_text) . "</td>";
+                            } else {
+                                echo "<td>" . esc_html($option_value) . "</td>";
+                            }
+                        }                      
+                        
+                        if (isset($value['widgetType']) && $value['widgetType'] == 'mf-signature') {
+                            echo "<td><img class='signature-img' src='" . esc_attr(isset($form_data[$key]) ? $form_data[$key] : '') . "'></td>";
                         }
 
                         if (isset($value['widgetType']) && $value['widgetType'] == 'mf-textarea') {
-                            echo "<td><pre style='font:inherit;margin:0;'>" . esc_html(isset($form_data[$key]) ? $form_data[$key] : '') . "</pre></td>";
-                        }
-
-                        if (isset($value['widgetType']) && $value['widgetType'] == 'mf-signature') {
-                            echo "<td><img width='200' height='100' src='" . esc_attr(isset($form_data[$key]) ? $form_data[$key] : '') . "'></td>";
+                            echo "<td>" . wp_kses( isset($form_data[$key]) ? nl2br( $form_data[$key] ) : '', [ 'br' => [] ]) . "</td>";
                         }
 
                         if (isset($value['widgetType']) && $value['widgetType'] == 'mf-simple-repeater') {
                             echo "<td>";
-                            $repeater_data = ((array_key_exists($key, $form_data)) ? $form_data[$key] : []);
-                             // counter and variables 
-                            $count_index = 0 ; // number of repeter  input field counter
+                            $repeater_data = ((array_key_exists($key, $form_data)) ? $form_data[$key] : []);                            
+                            $count_index = 0; // number of repeater input field counter
                             $previous_level = null;
+                        
                             foreach ($repeater_data as $k => $v) {
-                                $repeter_level = null; 
-
-                                if((isset($map_data[$key]["mf_input_repeater"][$count_index]["mf_input_repeater_label"]))){
-                                        $repeter_level = $map_data[$key]["mf_input_repeater"][$count_index]["mf_input_repeater_label"]; 
+                                $repeater_level = null;
+                        
+                                if ((isset($map_data[$key]["mf_input_repeater"][$count_index]["mf_input_repeater_label"]))) {
+                                    $repeater_level = $map_data[$key]["mf_input_repeater"][$count_index]["mf_input_repeater_label"];
                                 }
-                                if((isset($map_data[$key]["mf_input_repeater"][$count_index-1]["mf_input_repeater_label"]))){
-                                    // store previous level 
-                                    $previous_level = $map_data[$key]["mf_input_repeater"][$count_index-1]["mf_input_repeater_label"];
+                                if ((isset($map_data[$key]["mf_input_repeater"][$count_index - 1]["mf_input_repeater_label"]))) {
+                                    $previous_level = $map_data[$key]["mf_input_repeater"][$count_index - 1]["mf_input_repeater_label"];
                                 }
-
-                                if($repeter_level == null && $previous_level != null){
-                                    // repeter level empty then set previous level to repeter level
-                                    $repeter_level = $previous_level;
+                        
+                                if ($repeater_level == null && $previous_level != null) {
+                                    $repeater_level = $previous_level;
                                 }
-
-                                echo "<strong>" . esc_html( ($repeter_level != null)? $repeter_level : $k) . ": </strong>";
-                                echo "<span>" . esc_html($v) . "</span>";
+                        
+                                echo "<strong>" . esc_html(($repeater_level != null) ? $repeater_level : $k) . ": </strong>";
+                                
+                                if ($repeater_level  && isset($map_data[$key]["mf_input_repeater"][$count_index]["mf_input_repeater_option"]) && isset($form_settings['mf_field_name_show']) && $form_settings['mf_field_name_show'] == 1) {
+                                    $options = explode("\n", $map_data[$key]["mf_input_repeater"][$count_index]["mf_input_repeater_option"]);
+                                    $optionOutput = [];
+                                    $selected_options = explode(',', $v);
+                                    foreach ($options as $option) {
+                                        list($optionName, $optionValue) = explode('|', $option);
+                                        if (in_array($optionValue, $selected_options)) {
+                                            $optionOutput[] = "$optionName - $optionValue";
+                                        }
+                                    }
+                                    echo wp_kses_post("<span>" . implode(", ", $optionOutput) . "</span>");
+                                } else {
+                                    echo wp_kses_post("<span>" . esc_html($v) . "</span>");
+                                }
+                        
                                 echo "<br>";
-                                $count_index ++;
-
-                                if($count_index == count($map_data[$key]["mf_input_repeater"])){ 
-                                    // repeter input field count exceed count_index  repeter has repetition set count_index 0 
+                                $count_index++;
+                        
+                                if ($count_index == count($map_data[$key]["mf_input_repeater"])) {
                                     $count_index = 0;
                                     echo "<div class='simple-repeater-entry-data-divider'></div>";
                                 }

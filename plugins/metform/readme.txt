@@ -3,7 +3,7 @@ Contributors: xpeedstudio, ataurr, emranio
 Tags: form builder, Elementor contact form, contact form builder, Elementor forms builder, custom form
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 3.9.2
+Stable tag: 3.9.3
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -236,6 +236,12 @@ If you like using the MetForm form builder, then consider checking out our other
 **Check out** [Tutorials, Tips & Tricks](https://wpmet.com/blog)! 👌
 
 == Changelog ==
+Version: 3.9.3 // 2025-01-20
+Improved: MailChimp integration security.
+Fixed: Email notification issue with selection type widgets.
+Fixed: Dual range slider not working and default value issue of range widget.
+Fixed: Translation warning issue for Wordpress version 6.7.1.
+
 Version: 3.9.2 // 2024-12-25
 Added: Submit button, Next Step, and Previous Step widgets on focus style control.
 Fixed: Calculation fields minimum and maximum fraction issue.

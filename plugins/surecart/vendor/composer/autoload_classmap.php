@@ -409,6 +409,7 @@ return array(
     'SureCart\\BlockLibrary\\CartMigrationService' => $baseDir . '/app/src/BlockLibrary/CartMigrationService.php',
     'SureCart\\BlockLibrary\\FormModeSwitcherService' => $baseDir . '/app/src/BlockLibrary/FormModeSwitcherService.php',
     'SureCart\\BlockLibrary\\ProductCollectionBadgesMigrationService' => $baseDir . '/app/src/BlockLibrary/ProductCollectionBadgesMigrationService.php',
+    'SureCart\\BlockLibrary\\ProductListFilterTagsMigrationService' => $baseDir . '/app/src/BlockLibrary/ProductListFilterTagsMigrationService.php',
     'SureCart\\BlockLibrary\\ProductListMigrationService' => $baseDir . '/app/src/BlockLibrary/ProductListMigrationService.php',
     'SureCart\\BlockLibrary\\ProductListService' => $baseDir . '/app/src/BlockLibrary/ProductListService.php',
     'SureCart\\BlockLibrary\\ProductPageBlocksMigrationService' => $baseDir . '/app/src/BlockLibrary/ProductPageBlocksMigrationService.php',

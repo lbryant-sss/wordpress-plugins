@@ -4,7 +4,7 @@ Tags: homepage setup, companion, one click demo, sections, customizer
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 26.2.58
+Stable tag: 26.2.60
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -76,8 +76,8 @@ Clever Fox plugin to enhance the functionality of free themes made by <a href="h
 - [Acronix](https://wordpress.org/themes/acronix/)			- [Free Demo](https://www.nayrathemes.com/demo/lite/acronix/)
 - [Corpex](https://wordpress.org/themes/corpex/)			- [Free Demo](https://www.nayrathemes.com/demo/lite/corpex/)
 - [Cormex](https://wordpress.org/themes/cormex/)			- [Free Demo](https://www.nayrathemes.com/demo/lite/cormex/)
-- [DoctorHub](https://wordpress.org/themes/doctorhub/)
-- [CardioPress](https://wordpress.org/themes/cardiopress/)
+- [DoctorHub](https://wordpress.org/themes/doctorhub/)		- [Free Demo](https://www.nayrathemes.com/demo/lite/doctorhub/)
+- [CardioPress](https://wordpress.org/themes/cardiopress/)	- [Free Demo](https://www.nayrathemes.com/demo/lite/cardiopress/)
 - [Profolio](https://wordpress.org/themes/profolio/)
 - [VillaPress](https://wordpress.org/themes/villapress/)
 - [Evion](https://wordpress.org/themes/evion/)				- [Free Demo](https://www.nayrathemes.com/demo/lite/evion/)
@@ -193,6 +193,12 @@ Clever Fox WordPress Plugin is licensed under the GPL3 (https://www.gnu.org/lice
 
 
 == Changelog ==
+
+= 26.2.60 =
+* Readme Updated
+
+= 26.2.59 =
+* Readme Updated
 
 = 26.2.58 =
 * Readme Updated

@@ -11,7 +11,7 @@
     "surecart/filterTag/name"
   ],
   "ancestor": [
-    "surecart/product-list-filter-tags"
+    "surecart/product-list-filter-tags-template"
   ],
   "supports": {
     "interactivity": true,
@@ -31,12 +31,24 @@
       "text": true,
       "background": true,
       "enableContrastChecker": true
+    },
+    "__experimentalBorder": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true,
+      "__experimentalDefaultControls": {
+        "color": true,
+        "radius": true,
+        "style": true,
+        "width": true
+      }
     }
   },
   "textdomain": "surecart",
   "editorScript": "file:./index.js",
   "style": [
-    "surecart-tag"
+    "surecart-checkbox"
   ],
   "render": "file:./view.php"
 }

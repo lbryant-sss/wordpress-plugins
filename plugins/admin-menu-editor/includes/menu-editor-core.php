@@ -4815,44 +4815,13 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	/**
 	 * Get the user object based on a user ID.
 	 *
-	 * In most cases, when this plugin needs to retrieve a user, it is the current user. This method
-	 * attempts to make that common case faster.
+	 * Alias for ameRoleUtils::get_user_by_id().
 	 *
 	 * @param int $user_id
 	 * @return WP_User|null
 	 */
 	private function get_user_by_id($user_id) {
-		static $isGettingCurrentUser = false;
-
-		//Usually, pluggable functions will already be loaded by this point,
-		//but there is at least one plugin that indirectly triggers this method
-		//before wp_get_current_user() is available by checking user caps early.
-		//
-		//At least one plugin can enter infinite recursion if we call wp_get_current_user()
-		//here. To prevent that, avoid nested calls and fall back to get_user_by().
-		if ( function_exists('wp_get_current_user') && !$isGettingCurrentUser ) {
-			$isGettingCurrentUser = true;
-			try {
-				$current_user = wp_get_current_user();
-			} finally {
-				$isGettingCurrentUser = false;
-			}
-
-			if ( $current_user && ($current_user->ID == $user_id) ) {
-				return $current_user;
-			}
-		}
-
-		if ( function_exists('get_user_by') ) {
-			$user = get_user_by('id', $user_id);
-			if ( $user === false ) {
-				return null;
-			} else {
-				return $user;
-			}
-		}
-
-		return null;
+		return ameRoleUtils::get_user_by_id($user_id);
 	}
 
 	/**
@@ -5137,16 +5106,13 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 				'title' => 'Highlight new menu items',
 				'requiredPhpVersion' => '5.3',
 			),
-		);
-
-		if ( defined('AME_CONTENT_PERMISSIONS_ENABLED') && constant('AME_CONTENT_PERMISSIONS_ENABLED') ) {
-			$modules['content-permissions'] = [
+			'content-permission' => [
 				'relativePath'       => 'modules/content-permissions/content-permissions.php',
 				'className'          => '\\YahnisElsts\\AdminMenuEditor\\ContentPermissions\\ContentPermissionsModule',
 				'title'              => 'Content Permissions',
 				'requiredPhpVersion' => '7.1.0', //This module indirectly uses is_iterable() via customizables.
-			];
-		}
+			],
+		);
 
 		foreach($modules as &$module) {
 			if (!empty($module['relativePath'])) {

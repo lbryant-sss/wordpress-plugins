@@ -185,7 +185,6 @@ var AmeContentPermissionsUi;
             if (editorData.enforcementDisabled) {
                 this.enforcementDisabled = true;
             }
-            console.log('Editor data', editorData);
         }
         /**
          * Apply dynamic CSS classes to options in the action permission dropdowns.
@@ -675,7 +674,6 @@ var AmeContentPermissionsUi;
     }
     class PermissionOptionsDropdownComponent extends PermissionOptionsComponent {
         constructor(params) {
-            console.log('PermissionOptionsDropdownComponent', params);
             super(params);
             this.selectId = '';
             const selectId = ko.unwrap(params.suggestedId);
@@ -686,7 +684,6 @@ var AmeContentPermissionsUi;
     }
     class PermissionOptionsBarComponent extends PermissionOptionsComponent {
         constructor(params) {
-            console.log('PermissionOptionsBarComponent', params);
             super(params);
         }
     }

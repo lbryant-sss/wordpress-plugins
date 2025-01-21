@@ -989,3 +989,118 @@ function wpo_wcpdf_get_simple_template_default_table_headers( $document ): array
 	
 	return apply_filters( 'wpo_wcpdf_simple_template_default_table_headers', $headers, $document );
 }
+
+/**
+ * Dynamic string translation
+ *
+ * @param string $string
+ * @param string $textdomain
+ * @return string
+ */
+function wpo_wcpdf_dynamic_translate( string $string, string $textdomain ): string {
+	$log_enabled		= isset( WPO_WCPDF()->settings->debug_settings['log_missing_translations'] );
+	$log_message        = "Missing translation for: {$string} in textdomain: {$textdomain}";
+	$multilingual_class = '\WPO\WC\PDF_Invoices_Pro\Multilingual_Full';
+	$translation        = '';
+	
+	if ( empty( $string ) ) {
+		if ( $log_enabled ) {
+			wcpdf_log_error( $log_message, 'warning' );
+		}
+		return $string;
+	}
+	
+	// Check for multilingual support class
+	if ( class_exists( $multilingual_class ) && method_exists( $multilingual_class, 'maybe_get_string_translation' ) ) {
+		$translation = $multilingual_class::maybe_get_string_translation( $string, $textdomain );
+	}
+	
+	// If multilingual didn't change the string, fall back to native translate()
+	if ( ( empty( $translation ) || $translation === $string ) && function_exists( 'translate' ) ) {
+		$translation = translate( $string, $textdomain );
+	}
+	
+	// Log missing translations for debugging if it's still untranslated
+	if ( $translation === $string && $log_enabled ) {
+		wcpdf_log_error( $log_message, 'warning' );
+	}
+	
+	return $translation ?: $string;
+}
+
+/**
+ * Check if the order is VAT exempt.
+ *
+ * @param \WC_Abstract_Order $order
+ * @return bool
+ */
+function wpo_wcpdf_order_is_vat_exempt( \WC_Abstract_Order $order ): bool {
+	// Check if order is VAT exempt based on order meta
+	$vat_exempt_meta_key = apply_filters( 'wpo_wcpdf_order_vat_exempt_meta_key', 'is_vat_exempt', $order );
+	$is_vat_exempt       = apply_filters(  'woocommerce_order_is_vat_exempt', 'yes' === $order->get_meta( $vat_exempt_meta_key ), $order );
+
+	// Fallback to customer VAT exemption if order is not exempt
+	if ( ! $is_vat_exempt && apply_filters( 'wpo_wcpdf_order_vat_exempt_fallback_to_customer', true, $order ) ) {
+		$customer_id = $order->get_customer_id();
+		
+		if ( $customer_id ) {
+			$customer      = new \WC_Customer( $customer_id );
+			$is_vat_exempt = $customer->is_vat_exempt();
+		}
+	}
+
+	// Check VAT exemption for EU orders based on VAT number and tax details
+	if ( ! $is_vat_exempt && apply_filters( 'wpo_wcpdf_order_vat_exempt_fallback_to_customer_vat_number', true, $order ) ) {
+		$is_eu_order = in_array(
+			$order->get_billing_country(),
+			WC()->countries->get_european_union_countries( 'eu_vat' ),
+			true
+		);
+
+		if ( $is_eu_order && $order->get_total() > 0 && $order->get_total_tax() == 0 ) {
+			$vat_number    = wpo_wcpdf_get_order_customer_vat_number( $order );
+			$is_vat_exempt = ! empty( $vat_number );
+		}
+	}
+
+	return apply_filters( 'wpo_wcpdf_is_vat_exempt_order', $is_vat_exempt, $order );
+}
+
+/**
+ * Retrieve the customer VAT number from order meta.
+ *
+ * @param \WC_Abstract_Order $order
+ * @return string|null
+ */
+function wpo_wcpdf_get_order_customer_vat_number( \WC_Abstract_Order $order ): ?string {
+	$vat_meta_keys = apply_filters( 'wpo_wcpdf_order_customer_vat_number_meta_keys', array(
+		'_vat_number',            // WooCommerce EU VAT Number
+		'_billing_vat_number',    // WooCommerce EU VAT Number 2.3.21+
+		'VAT Number',             // WooCommerce EU VAT Compliance
+		'_eu_vat_evidence',       // Aelia EU VAT Assistant
+		'_billing_eu_vat_number', // EU VAT Number for WooCommerce (WP Whale/former Algoritmika)
+		'yweu_billing_vat',       // YITH WooCommerce EU VAT
+		'billing_vat',            // German Market
+		'_billing_vat_id',        // Germanized Pro
+		'_shipping_vat_id',       // Germanized Pro (alternative)
+		'_billing_dic',           // EU/UK VAT Manager for WooCommerce
+	), $order );
+
+	$vat_number = null;
+
+	foreach ( $vat_meta_keys as $meta_key ) {
+		$meta_value = $order->get_meta( $meta_key );
+
+		// Handle multidimensional VAT data (e.g., Aelia EU VAT Assistant)
+		if ( '_eu_vat_evidence' === $meta_key && is_array( $meta_value ) ) {
+			$meta_value = $meta_value['exemption']['vat_number'] ?? '';
+		}
+
+		if ( $meta_value ) {
+			$vat_number = $meta_value;
+			break;
+		}
+	}
+
+	return apply_filters( 'wpo_wcpdf_order_customer_vat_number', $vat_number, $order, $meta_key ?? null );
+}
