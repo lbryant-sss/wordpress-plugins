@@ -2,7 +2,7 @@
 	<table class="form-table order-status-table">
 		<tbody>					
 			<tr valign="top">
-				<td class="forminp">
+				<td>
 					<input type="hidden" name="wc_ast_status_shipped" value="0"/>
 					<input class="ast-tgl ast-tgl-flat" id="wc_ast_status_shipped" name="wc_ast_status_shipped" type="checkbox" <?php ( get_ast_settings( 'ast_general_settings', 'wc_ast_status_shipped', 1 ) ) ? esc_html_e( 'checked' ) : ''; ?> value="1"/>
 					<label class="ast-tgl-btn" for="wc_ast_status_shipped"></label>						
@@ -27,12 +27,12 @@
 				}	
 				?>
 				<tr valign="top" class="<?php echo esc_html( $o_status ); ?>_row <?php echo esc_html( $disable_row ); ?>">	
-					<td class="forminp">
+					<td>
 						<input type="hidden" name="<?php echo esc_html( $data['id'] ); ?>" value="0"/>
 						<input class="ast-tgl ast-tgl-flat order_status_toggle" id="<?php echo esc_html( $data['id'] ); ?>" name="<?php echo esc_html( $data['id'] ); ?>" type="checkbox"  value="1" <?php echo esc_html( $checked ); ?> />
 						<label class="ast-tgl-btn" for="<?php echo esc_html( $data['id'] ); ?>"></label>	
 					</td>
-					<td class="forminp status-label-column">
+					<td class="status-label-column">
 						<span class="order-label <?php echo esc_html( $data['label_class'] ); ?>">
 							<?php 
 							if ( get_ast_settings( 'ast_general_settings', $data['id'], '' ) ) {
@@ -43,7 +43,7 @@
 							?>
 						</span>
 					</td>												
-					<td class="forminp">								
+					<td>								
 						<?php
 						$ast_enable_email = get_ast_settings( 'ast_general_settings', $data['option_id'], '');
 						
@@ -71,7 +71,7 @@
 							</select>							
 						</fieldset>
 					</td>
-					<td class="forminp" style="text-align:right;">
+					<td style="text-align:right;">
 						<?php if ( 'delivered' != $o_status ) { ?>
 						<fieldset>
 							<label class="send_email_label">

@@ -112,6 +112,22 @@ class ConnectorSMTP {
 	protected bool $is_active = false;
 
 	/**
+	 * The method used for message delivery (e.g., 'smtp', 'api')
+	 *
+	 * @var string
+	 */
+	protected string $delivery_method = 'smtp';
+
+	/**
+	 * Gets the current delivery method for this connector
+	 *
+	 * @return string The delivery method being used ('smtp', 'api', etc.)
+	 */
+	public function isAPI(): string {
+		return $this->delivery_method === 'api';
+	}
+
+	/**
 	 * Holds validation errors.
 	 *
 	 * @var array

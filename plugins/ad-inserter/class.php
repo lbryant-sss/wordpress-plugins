@@ -10929,6 +10929,7 @@ class ai_code_generator {
           $option_scheduling  = '';
           $option_append_prepend = '';
         } else {
+            $option_share = '';
             $option_name = isset ($rotate_parameters [$index - 1]['name']) ? $rotate_parameters [$index - 1]['name'] : '';
             $option_append_prepend = isset ($rotate_parameters [$index - 1]['code']) ? $rotate_parameters [$index - 1]['code'] : '';
             if (isset ($rotate_parameters [$index - 1]['share'])) {

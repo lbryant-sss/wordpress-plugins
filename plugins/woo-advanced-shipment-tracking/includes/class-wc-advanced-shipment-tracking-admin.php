@@ -1036,20 +1036,23 @@ class WC_Advanced_Shipment_Tracking_Admin {
 			
 			$data = $this->get_partial_shipped_data();						
 			
-			foreach ( $data as $key => $val ) {				
-				
-				if ( 'wcast_enable_partial_shipped_email' == $key ) {						
-					if ( isset( $_POST['wcast_enable_partial_shipped_email'] ) ) {						
-						if ( isset($_POST['wcast_enable_partial_shipped_email']) && 1 == $_POST['wcast_enable_partial_shipped_email'] ) {
-							update_ast_settings( $val['option_name'], $key, wc_clean( $_POST[ $key ] ) );
-							$enabled = 'yes';
-						} else {
-							update_ast_settings( $val['option_name'], $key, '' );
-							$enabled = 'no';
-						}
-						update_option( 'woocommerce_customer_partial_shipped_order_settings', 'enabled', $enabled );
+			foreach ( $data as $key => $val ) {
+				if ( 'wcast_enable_partial_shipped_email' == $key ) {					
+					if ( isset($_POST['wcast_enable_partial_shipped_email']) && 1 == $_POST['wcast_enable_partial_shipped_email'] ) {
+						update_ast_settings( $val['option_name'], $key, wc_clean( $_POST[ $key ] ) );
+						update_option( 'customizer_partial_shipped_order_settings_enabled', wc_clean( $_POST['wcast_enable_partial_shipped_email'] ) );
+						$enabled = 'yes';
+					} else {
+						update_ast_settings( $val['option_name'], $key, '' );
+						update_option( 'customizer_partial_shipped_order_settings_enabled', '' );
+						$enabled = 'no';
 					}
-					update_option( 'woocommerce_customer_partial_shipped_order_settings', 'enabled', $enabled );	
+
+					// Get the option and ensure it's an array
+					$wcast_enable_partial_shipped_email = (array) get_option( 'woocommerce_customer_partial_shipped_order_settings', array() );
+					$wcast_enable_partial_shipped_email['enabled'] = $enabled;
+					update_option( 'woocommerce_customer_partial_shipped_order_settings', $wcast_enable_partial_shipped_email );
+
 				}										
 				
 				if ( isset( $_POST[ $key ] ) ) {						

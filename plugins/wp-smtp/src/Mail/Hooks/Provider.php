@@ -3,7 +3,6 @@
 namespace SolidWP\Mail\Hooks;
 
 use SolidWP\Mail\Contracts\Service_Provider;
-use SolidWP\Mail\Migration\MigrationVer130;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

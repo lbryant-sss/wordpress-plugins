@@ -3,7 +3,7 @@ defined( 'ABSPATH' ) || exit( 'No direct script access allowed' );
 
 /**
  * Plugin Name: WP-Parsidate
- * Version: 5.1.2
+ * Version: 5.1.3
  * Plugin URI: https://wp-parsi.com/support/
  * Description: Persian package for WordPress, Adds full RTL and Shamsi (Jalali) support for: posts, comments, pages, archives, search, categories, permalinks and all admin sections and TinyMce editor, lists, quick editor. This package has Jalali archive widget.
  * Author: WP-Parsi Team
@@ -41,14 +41,14 @@ defined( 'ABSPATH' ) || exit( 'No direct script access allowed' );
  * @author              Mobin Ghasempoor
  * @author              Morteza Geransayeh
  * @link                https://wp-parsi.com/
- * @version             5.1.2
+ * @version             5.1.3
  * @license             http://www.gnu.org/licenses/gpl-3.0.html GNU Public License v3.0
  * @package             WP-Parsidate
  * @subpackage          Core
  */
 
 /**
- *
+ * WP Parsidate main class
  */
 final class WP_Parsidate {
 	/**
@@ -57,6 +57,8 @@ final class WP_Parsidate {
 	public static $instance = null;
 
 	private function __construct() {
+		add_action( 'after_setup_theme', array( $this, 'load_plugin_textdomain' ) );
+
 		$this->define_const();
 		$this->include_files();
 
@@ -97,8 +99,8 @@ final class WP_Parsidate {
 		}
 
 		if ( ! defined( 'WP_PARSI_VER' ) ) {
-			define( 'WP_PARSI_VER', '5.1.0' );
-		}
+			define( 'WP_PARSI_VER', '5.1.3' );
+    }
 	}
 
 	/**
@@ -152,7 +154,9 @@ final class WP_Parsidate {
 		foreach ( $files as $file ) {
 			require_once( WP_PARSI_DIR . 'includes/' . $file . '.php' );
 		}
+	}
 
+	public function load_plugin_textdomain() {
 		if ( get_locale() === 'fa_IR' ) {
 			load_textdomain( 'wp-parsidate', WP_PARSI_DIR . 'languages/fa_IR.mo' );
 		}
@@ -168,7 +172,7 @@ final class WP_Parsidate {
 
 		$months_name = $wpp_months_name;
 
-		// Remove first item (nulled string) from name of months array
+		// Remove first item (null string) from name of months array
 		array_shift( $months_name );
 
 		wp_localize_script( 'wpp_jalali_datepicker', 'WPP_I18N',

@@ -1,4 +1,4 @@
-var javascript_version = "2.7.39"
+var javascript_version = "2.8.0"
 var ignore_key = true;
 var start = 1;
 var end = 16;
@@ -2081,7 +2081,13 @@ jQuery(document).ready (function($) {
         return;
       }
 
-      container.load (ajaxurl+"?action=ai_ajax_backend&statistics=" + block + "&start-date=" + start_date + "&end-date=" + end_date + delete_range + adb + version + "&ai_check=" + ai_nonce, function (response, status, xhr) {
+      var custom_report = '';
+      var custom_report_data = $("#statistics-container-" + block).attr ('data-custom-report');
+      if (typeof custom_report_data!== 'undefined' && custom_report_data !== false) {
+        custom_report = '&custom-report=' + custom_report_data;
+      }
+
+      container.load (ajaxurl+"?action=ai_ajax_backend&statistics=" + block + "&start-date=" + start_date + "&end-date=" + end_date + delete_range + adb + version + custom_report + "&ai_check=" + ai_nonce, function (response, status, xhr) {
         label.removeClass ('on');
         if ( status == "error" ) {
           var message = "Error downloading data: " + xhr.status + " " + xhr.statusText ;
@@ -2393,6 +2399,25 @@ jQuery(document).ready (function($) {
     $("#export-csv-button-0").click (function () {
       export_statistics_csv (0);
     });
+
+
+    $("#custom-reports-button").checkboxButton ().click (function () {
+      $("div#tracking-settings-container").toggle ();
+      $("div#custom-reports-container").toggle ();
+
+      var container = $("div#custom-reports-container");
+      if (container.is(':visible')) {
+
+        var reports_container = $("#statistics-container-100");
+        if ($(reports_container).is(':visible')) {
+          $("input#custom-statistics-button").checkboxButton ().click ();
+        }
+
+        $("#custom-reports-button").addClass ('blue');
+        reload_reports ();
+      } else $("#custom-reports-button").removeClass ('blue');
+    });
+
 
     $('#enable-adb-detection').checkboxButton ();
 
@@ -5241,7 +5266,7 @@ jQuery(document).ready (function($) {
 
         ignore_key = false;
       }
-      else if (keyCode == 13) {
+      else if (keyCode == 13 && e.type == 'keypress') {
         $("#ai-save-websites").click ();
 
         ignore_key = false;
@@ -5266,7 +5291,7 @@ jQuery(document).ready (function($) {
       var website = row.data ("website");
       var url = row.find (".ai-website-labels.ai-website-url").text ();
       var desc = row.find (".ai-website-labels.ai-website-desc").text ();
-      var message = website;
+//      var message = website;
       var message = ai_admin.delete_website + '<br />' + desc + '<br />' + url;
 
       $('<div />').html (message).attr ('title', ai_admin.warning).dialog ({
@@ -5346,7 +5371,92 @@ jQuery(document).ready (function($) {
         showURL: false,
         showBody: " | ",
         fade: 250
-      });
+    });
+  }
+
+  function configure_report_list () {
+    $("#ai-reports-table tr").click (function () {
+      $("#ai-reports-table tr").removeClass ('selected');
+      $(this).addClass ('selected');
+
+//      $("input#custom-statistics-button").removeClass ('loaded');
+    });
+
+    $("#ai-reports-table .toggle-report-button").click (function () {
+      if ($(this).hasClass ('on')) {
+        $(this).removeClass ('on');
+        $(this).addClass ('off');
+      } else {
+          $(this).addClass ('on');
+          $(this).removeClass ('off');
+        }
+      event.stopPropagation ();
+
+//      $("input#custom-statistics-button").removeClass ('loaded');
+
+      row = $(this).closest ('tr');
+      reload_reports ('&toggle=' + row.attr ("data-index"));
+    });
+
+
+    $("#ai-reports-table tr.report-name").dblclick (function () {
+      var row = $(this)
+
+      $("#ai-reports-table td.ai-report-labels").show ();
+      $("#ai-reports-table td.ai-report-editors").hide ();
+
+      row.find (".ai-report-editors .ai-custom-report-name").val (row.find (".ai-report-labels.ai-custom-report-name").text ());
+
+      row.find (".ai-report-labels").hide ();
+      row.find (".ai-report-editors").show ();
+
+      row.find (".ai-report-editors .ai-custom-report-name").focus ();
+    });
+
+    $("#ai-reports-table input.ai-custom-report-name").on('keyup keypress', function (e) {
+      var keyCode = e.keyCode || e.which;
+      ignore_key = true;
+
+      var row = $(this).closest('tr.report-name');
+
+      if (keyCode == 27) {
+        row.find (".ai-report-labels").show ();
+        row.find (".ai-report-editors").hide ();
+
+        ignore_key = false;
+      }
+      else if (keyCode == 13 && e.type == 'keypress') {
+        var row = $(this).closest ('tr.report-name');
+
+        row.find (".ai-report-labels.ai-custom-report-name").text (row.find (".ai-report-editors .ai-custom-report-name").val ());
+
+        row.click ();
+
+        ai_save_reports ();
+
+        ignore_key = false;
+        e.preventDefault();
+        return false;
+      }
+    }).focusout (function() {
+      if (ignore_key) {
+        var row = $(this).closest ('tr.report-name');
+
+        row.find (".ai-report-labels.ai-custom-report-name").text (row.find (".ai-report-editors .ai-custom-report-name").val ());
+
+        row.click ();
+
+        row.find (".ai-report-labels").show ();
+        row.find (".ai-report-editors").hide ();
+      }
+      ignore_key = true;
+    });
+
+    configure_statistics_toolbar (100);
+
+    $("#custom-range-controls-100 .ai-public-controls").dblclick (function () {
+      $(this).toggleClass ('on');
+    });
   }
 
   function configure_list () {
@@ -5437,13 +5547,25 @@ jQuery(document).ready (function($) {
 
     data_container.disableSelection();
 
-    $("#ai-list-data td[title]").tooltip ({
+    $("#ai-list-data span label[title], #ai-list-data td[title], #ai-list-data th[title], #ai-list-data span[title]").tooltip ({
         track: true,
         delay: 700,
         showURL: false,
         showBody: " | ",
         fade: 250
       });
+
+
+    $("span.add-to-custom-report-button").click (function () {
+      if ($('#ai-reports-table').is(':visible')) {
+        var row = $("#ai-report-data tr.selected");
+
+        var data_report = $(this).attr ("data-report");
+        if (typeof data_report !== 'undefined' && data_report !== false) {
+          reload_reports ('&add=' + row.attr ("data-index") + '&report=' + data_report);
+        }
+      }
+    });
   }
 
   function reload_websites (parameters) {
@@ -5468,6 +5590,30 @@ jQuery(document).ready (function($) {
           if (typeof ai_reload_websites_function == 'function') {
             ai_reload_websites_function ();
             ai_reload_websites_function = null;
+          }
+        }
+    });
+  }
+
+  function reload_reports (parameters, keep_selected = true) {
+    var data_container = $("#ai-report-data");
+
+    $('#ai-loading').show ();
+
+    if (typeof parameters == 'undefined') parameters = '';
+
+    data_container.load (ajaxurl+"?action=ai_ajax_backend&reports=" + parameters + "&ai_check=" + ai_nonce, function (response, status, xhr) {
+      $('#ai-loading').hide ();
+      if (status == "error") {
+        var message = "Error downloading report data: " + xhr.status + " " + xhr.statusText;
+        data_container.html (message);
+        if (debug) console.log (message);
+      } else {
+          configure_report_list ();
+
+          if (typeof ai_reload_reports_function == 'function') {
+            ai_reload_reports_function ();
+            ai_reload_reports_function = null;
           }
         }
     });
@@ -6737,7 +6883,6 @@ jQuery(document).ready (function($) {
     var report_adb = report_data_elements [2];
     var report_version = report_data_elements [3];
     if (report_version == '') report_version = '---';
-//    var report_range = report_data_elements [2];
     var report = report_dates_block + report_controls + report_adb + report_range_name + report_version;
     var report_id = b64e (report).replaceAll ('+', '.').replaceAll ('/', '_').replaceAll ('=', '-');
     var url = report_url_prefix + md5 (report).substring (0, 2) + report_id;
@@ -6857,6 +7002,113 @@ jQuery(document).ready (function($) {
       reload_websites ('&connect=');
     });
   }
+
+  function ai_save_reports () {
+    var selected = $("#ai-report-data tr.selected").attr ("data-index");
+
+    reload_reports ('&rename=' + b64e ($("#ai-report-data tr.selected").find ('td.ai-report-labels').text ()) + '&selected=' + selected);
+  };
+
+  $("#ai-add-report").click (function () {
+    ai_reload_reports_function = function () {
+      $('#ai-reports-table tr.report-name.selected').dblclick ();
+      $('#ai-reports-table tr.selected input.ai-custom-report-name').select ();
+    }
+
+    var row = $("#ai-report-data tr.selected");
+    var data_index = 0;
+    if (row.length != 0) {
+      data_index = row.attr ("data-index").split ('-').shift ()
+    }
+    reload_reports ('&add=' + data_index, true);
+  });
+
+
+  $("#ai-delete-report").click (function () {
+    var row = $("#ai-report-data tr.selected");
+
+    if (row.hasClass ('report-name')) {
+      var message = ai_admin.delete_report + ' <strong>' + row.text () + '</strong>?';
+
+      $('<div />').html (message).attr ('title', ai_admin.warning).dialog ({
+        bgiframe: true,
+        draggable: false,
+        resizable: false,
+        modal: true,
+        height: "auto",
+        width: 400,
+        position: {my: 'center', at: 'center', of: '#custom-reports-container'},
+        buttons: [{
+          text: ai_admin.cancel,
+          click: function() {
+            $(this).dialog ("close");
+          }
+          },
+          {
+          text: ai_admin.delete,
+          click: function() {
+            $(this).dialog ("close");
+
+            reload_reports ('&delete=' + row.attr ("data-index"));
+          }
+          }
+        ],
+      });
+    } else {
+        reload_reports ('&delete=' + row.attr ("data-index"));
+      }
+  });
+
+  $("input#custom-statistics-button").checkboxButton ().click (function () {
+    if ($('#custom-reports-container').is(":visible")) {
+      var row = $("#ai-report-data tr.selected");
+      if (row.length == 1) {
+
+        $(".ai-custom-reports-edit").toggle ();
+        $(".ai-custom-reports-show").toggle ();
+
+        $("#ai-reports-table").toggle ();
+        var reports_container = $("#statistics-container-100");
+        reports_container.toggle ();
+
+        if ($(reports_container).is(':visible')) {
+          var data_index = row.attr ("data-index");
+          reports_container.attr ('data-custom-report', data_index);
+
+          reports_container.find ('.ai-chart-container, .ai-custom-report-title').css("visibility", "hidden");
+          $("input#load-custom-range-100").click ();
+        }
+      } else $(this).next ('label').find ('.checkbox-icon').toggleClass ('on');
+    }
+  });
+
+  $("#custom-export-pdf-button").click (function () {
+    export_statistics_pdf (100);
+  });
+
+  $(".custom-public-report-button").click (function () {
+    var report_data_elements = JSON.parse ($(this).attr ('report-data'));
+    var report_url_prefix = report_data_elements [0]
+    var report_dates_block = report_data_elements [1];
+    var report_controls = $(this).parent ().parent ().parent ().parent ().find ('.ai-public-controls').hasClass ('on') ? '1' : '0';
+    var report_range_name = $(this).parent ().parent ().parent ().parent ().find ('.custom-range-controls').attr ('range-name');
+    var report_adb = report_data_elements [2];
+    var report_version = '---';
+
+    var row = $("#ai-report-data tr.selected");
+    if (row.length == 1) {
+      var custom_report = row.attr ("data-index") + '-----';
+      custom_report = custom_report.substring (0, 5);
+
+      var report = report_dates_block + report_controls + report_adb + report_range_name + report_version + custom_report;
+      var report_id = b64e (report).replaceAll ('+', '.').replaceAll ('/', '_').replaceAll ('=', '-');
+      var url = report_url_prefix + md5 (report).substring (0, 2) + report_id;
+
+      window.open (url, 'ai-report');
+    }
+
+  });
+
 });
 
 

@@ -318,7 +318,9 @@ For details please check this page: [How to optimize plugin settings](https://ad
 
 = How can I report security bugs? =
 
-You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/ad-inserter)
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities.
+[Report a security vulnerability for Ad Inserter.](https://patchstack.com/database/vdp/ad-inserter)
+[Report a security vulnerability for Ad Inserter Pro.](https://patchstack.com/database/vdp/ad-inserter-pro)
 
 = What is plugin usage tracking? =
 
@@ -365,6 +367,12 @@ If you are not happy to reveal this information and you have opted in, simply di
 
 
 == Changelog ==
+
+= 2.8.0 =
+- Fixed placeholder image generator service - changed to dummyimage.com
+- Security fix for potential cross site scripting (Pro only)
+- Added support for custom reports for clients (Pro only)
+- Few minor bug fixes, cosmetic changes and code improvements
 
 = 2.7.39 =
 - Improved frontend code
@@ -423,6 +431,12 @@ If you are not happy to reveal this information and you have opted in, simply di
 For the changelog of earlier versions, please refer to the separate changelog.txt file.
 
 == Upgrade Notice ==
+
+= 2.8.0 =
+Fixed placeholder image generator service - changed to dummyimage.com;
+Security fix for potential cross site scripting (Pro only);
+Added support for custom reports for clients (Pro only);
+Few minor bug fixes, cosmetic changes and code improvements;
 
 = 2.7.39 =
 Improved frontend code;

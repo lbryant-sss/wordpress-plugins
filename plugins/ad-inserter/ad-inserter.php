@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: Ad Inserter
-Version: 2.7.39
+Version: 2.8.0
 Description: Ad management with many advanced advertising features to insert ads at optimal positions
 Author: Igor Funa
 Author URI: http://igorfuna.com/
@@ -17,6 +17,12 @@ License: GPLv3
 /*
 
 Change Log
+
+Ad Inserter 2.8.0 - 2025-01-21
+- Fixed placeholder image generator service - changed to dummyimage.com
+- Security fix for potential cross site scripting (Pro only)
+- Added support for custom reports for clients (Pro only)
+- Few minor bug fixes, cosmetic changes and code improvements
 
 Ad Inserter 2.7.39 - 2024-12-17
 - Improved frontend code
@@ -5198,16 +5204,16 @@ function ai_write_debug_info ($write_processing_log = false) {
     echo "\n\n";
 
 
-    echo "SERVER_ADDR:             ", isset ($_SERVER ['SERVER_ADDR']) ? $_SERVER ['SERVER_ADDR'] : '', "\n";
-    echo "HTTP_CF_CONNECTING_IP:   ", isset ($_SERVER ['HTTP_CF_CONNECTING_IP']) ? $_SERVER ['HTTP_CF_CONNECTING_IP'] : '', "\n";
-    echo "HTTP_CLIENT_IP:          ", isset ($_SERVER ['HTTP_CLIENT_IP']) ? $_SERVER ['HTTP_CLIENT_IP'] : '', "\n";
-    echo "HTTP_INCAP_CLIENT_IP:    ", isset ($_SERVER ['HTTP_INCAP_CLIENT_IP']) ? $_SERVER ['HTTP_INCAP_CLIENT_IP'] : '', "\n";
-    echo "HTTP_X_FORWARDED_FOR:    ", isset ($_SERVER ['HTTP_X_FORWARDED_FOR']) ? $_SERVER ['HTTP_X_FORWARDED_FOR'] : '', "\n";
-    echo "HTTP_X_FORWARDED:        ", isset ($_SERVER ['HTTP_X_FORWARDED']) ? $_SERVER ['HTTP_X_FORWARDED'] : '', "\n";
-    echo "HTTP_X_CLUSTER_CLIENT_IP:", isset ($_SERVER ['HTTP_X_CLUSTER_CLIENT_IP']) ? $_SERVER ['HTTP_X_CLUSTER_CLIENT_IP'] : '', "\n";
-    echo "HTTP_FORWARDED_FOR:      ", isset ($_SERVER ['HTTP_FORWARDED_FOR']) ? $_SERVER ['HTTP_FORWARDED_FOR'] : '', "\n";
-    echo "HTTP_FORWARDED:          ", isset ($_SERVER ['HTTP_FORWARDED']) ? $_SERVER ['HTTP_FORWARDED'] : '', "\n";
-    echo "REMOTE_ADDR:             ", isset ($_SERVER ['REMOTE_ADDR']) ? $_SERVER ['REMOTE_ADDR'] : '', "\n";
+    echo "SERVER_ADDR:             ", isset ($_SERVER ['SERVER_ADDR']) ? strip_tags ($_SERVER ['SERVER_ADDR']) : '', "\n";
+    echo "HTTP_CF_CONNECTING_IP:   ", isset ($_SERVER ['HTTP_CF_CONNECTING_IP']) ? strip_tags ($_SERVER ['HTTP_CF_CONNECTING_IP']) : '', "\n";
+    echo "HTTP_CLIENT_IP:          ", isset ($_SERVER ['HTTP_CLIENT_IP']) ? strip_tags ($_SERVER ['HTTP_CLIENT_IP']) : '', "\n";
+    echo "HTTP_INCAP_CLIENT_IP:    ", isset ($_SERVER ['HTTP_INCAP_CLIENT_IP']) ? strip_tags ($_SERVER ['HTTP_INCAP_CLIENT_IP']) : '', "\n";
+    echo "HTTP_X_FORWARDED_FOR:    ", isset ($_SERVER ['HTTP_X_FORWARDED_FOR']) ? strip_tags ($_SERVER ['HTTP_X_FORWARDED_FOR']) : '', "\n";
+    echo "HTTP_X_FORWARDED:        ", isset ($_SERVER ['HTTP_X_FORWARDED']) ? strip_tags ($_SERVER ['HTTP_X_FORWARDED']) : '', "\n";
+    echo "HTTP_X_CLUSTER_CLIENT_IP:", isset ($_SERVER ['HTTP_X_CLUSTER_CLIENT_IP']) ? strip_tags ($_SERVER ['HTTP_X_CLUSTER_CLIENT_IP']) : '', "\n";
+    echo "HTTP_FORWARDED_FOR:      ", isset ($_SERVER ['HTTP_FORWARDED_FOR']) ? strip_tags ($_SERVER ['HTTP_FORWARDED_FOR']) : '', "\n";
+    echo "HTTP_FORWARDED:          ", isset ($_SERVER ['HTTP_FORWARDED']) ? strip_tags ($_SERVER ['HTTP_FORWARDED']) : '', "\n";
+    echo "REMOTE_ADDR:             ", isset ($_SERVER ['REMOTE_ADDR']) ? strip_tags ($_SERVER ['REMOTE_ADDR']) : '', "\n";
 
     echo "\n";
 
@@ -7630,7 +7636,7 @@ a.ai-debug-center {text-align: center; cursor: default; font-size: 10px; text-de
 .ai-debug-ad-overlay {position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #8f8; opacity: 0.6; z-index: 999999990}
 
 .ai-debug-block ins.adsbygoogle[data-ad-status="unfilled"] .ai-debug-ad-overlay {display: none;}
-.ai-debug-block ins.adsbygoogle[data-ad-status="unfilled"] {background: url(https://via.placeholder.com/800x800/aaffaa/000000.png?text=NO%20AD%20SERVED); background-size: cover; background-repeat: no-repeat; background-position: center;}
+.ai-debug-block ins.adsbygoogle[data-ad-status="unfilled"] {background: url(https://dummyimage.com/800x800/aaffaa/000000.png?text=NO%20AD%20SERVED); background-size: cover; background-repeat: no-repeat; background-position: center;}
 
 .ai-auto-ads {background-color: #84f;}
 .ai-no-slot {background-color: #48f;}
@@ -8145,6 +8151,11 @@ function ai_settings () {
       $multisite_options = array ();
       if (function_exists ('ai_filter_multisite_settings')) ai_filter_multisite_settings ($multisite_options);
       ai_check_multisite_options ($multisite_options);
+
+      // Restore settings not submitted
+      if (isset ($ai_db_options [AI_OPTION_GLOBAL]['CUSTOM_REPORTS'])) {
+        $ai_options [AI_OPTION_GLOBAL]['CUSTOM_REPORTS'] = $ai_db_options [AI_OPTION_GLOBAL]['CUSTOM_REPORTS'];
+      }
 
       ai_save_options ($ai_options, $multisite_options);
 

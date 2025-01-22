@@ -2,9 +2,12 @@
 
 namespace SolidWP\Mail\Hooks;
 
+use PHPMailer\PHPMailer\SMTP;
 use SolidWP\Mail\AbstractController;
 use SolidWP\Mail\App;
+use SolidWP\Mail\Contracts;
 use SolidWP\Mail\Repository\ProvidersRepository;
+use SolidWP\Mail\SolidMailer;
 
 /**
  * Class MailerController
@@ -39,8 +42,38 @@ class PHPMailer extends AbstractController {
 	 * @return void
 	 */
 	public function register_hooks() {
+		add_filter( 'pre_wp_mail', [ $this, 'init_solidmail_mailer' ] );
 		add_action( 'phpmailer_init', [ $this, 'wp_smtp' ], 9999 );
 		add_action( 'wp_mail_failed', [ $this, 'maybe_capture_sending_error' ] );
+	}
+
+	/**
+	 * Initializes the SolidMail mailer integration. Return null so the default behavior continue to run.
+	 *
+	 * @since 2.1.3
+	 *
+	 * @return null
+	 */
+	public function init_solidmail_mailer() {
+		$active_provider = $this->providers_repository->get_active_provider();
+
+		if ( ! is_object( $active_provider ) ) {
+			// if there is no active provider, or the active provider use SMTP, then dont inject anything.
+			return null;
+		}
+
+		// Declare the phpmailer instance before the wp_mail does it.
+		global $phpmailer;
+		if ( ! $phpmailer instanceof SolidMailer ) {
+			require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
+			require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
+			require_once ABSPATH . WPINC . '/PHPMailer/Exception.php';
+
+			$phpmailer = new SolidMailer( true );
+			$phpmailer->set_connector( $active_provider );
+		}
+
+		return null;
 	}
 
 	/**
@@ -59,7 +92,7 @@ class PHPMailer extends AbstractController {
 	 *
 	 * This method is invoked when PHPMailer is initialized to configure it for SMTP usage.
 	 *
-	 * @param \PHPMailer $phpmailer The PHPMailer instance.
+	 * @param SolidMailer $phpmailer The PHPMailer instance.
 	 *
 	 * @return void
 	 */
@@ -81,6 +114,11 @@ class PHPMailer extends AbstractController {
 			if ( $phpmailer->SMTPAuth ) {
 				$phpmailer->Username = $default_provider->get_username();
 				$phpmailer->Password = $default_provider->get_password();
+			}
+
+			if ( $default_provider->isAPI() ) {
+				// set this as API sender.
+				$phpmailer->isAPI();
 			}
 		}
 	}

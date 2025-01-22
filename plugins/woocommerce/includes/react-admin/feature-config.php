@@ -45,7 +45,7 @@ if ( ! function_exists( 'wc_admin_get_feature_config' ) ) {
 			'blueprint' => false,
 			'reactify-classic-payments-settings' => false,
 			'use-wp-horizon' => false,
-			'add-to-cart-with-options-stepper-layout' => false,
+			'add-to-cart-with-options-stepper-layout' => true,
 			'blockified-add-to-cart' => false,
 		);
 	}

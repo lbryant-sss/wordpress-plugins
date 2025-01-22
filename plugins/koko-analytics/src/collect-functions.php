@@ -43,7 +43,8 @@ function extract_pageview_data(array $raw): array
     $referrer_url = \substr($referrer_url, 0, 255);
 
     return [
-        'p',                // type indicator
+        'p',                 // type indicator
+        \time(),             // unix timestamp
         $post_id,
         $new_visitor,
         $unique_pageview,
@@ -76,10 +77,11 @@ function extract_event_data(array $raw): array
 
     return [
         'e',                   // type indicator
-        $event_name,           // 0: event name
-        $event_param,          // 1: event parameter
-        $unique_event,         // 2: is unique?
-        $value,                // 3: event value
+        $event_name,           // event name
+        $event_param,          // event parameter
+        $unique_event,         // is unique?
+        $value,                // event value,
+        \time(),               // unix timestamp
     ];
 }
 
@@ -136,40 +138,62 @@ function collect_request()
     exit;
 }
 
-function get_buffer_filename(): string
+function get_upload_dir(): string
 {
+    if (\defined('KOKO_ANALYTICS_UPLOAD_DIR')) {
+        return KOKO_ANALYTICS_UPLOAD_DIR;
+    }
+
     if (\defined('KOKO_ANALYTICS_BUFFER_FILE')) {
-        return KOKO_ANALYTICS_BUFFER_FILE;
+        return \dirname(KOKO_ANALYTICS_BUFFER_FILE) . '/koko-analytics';
     }
 
     $uploads = wp_upload_dir(null, false);
-    return \rtrim($uploads['basedir'], '/') . '/pageviews.php';
+    return \rtrim($uploads['basedir']) . '/koko-analytics';
+}
+
+
+function get_buffer_filename(): string
+{
+    $upload_dir = get_upload_dir();
+    $buffer_filename = "events-buffer.php";
+    return "{$upload_dir}/$buffer_filename";
 }
 
 function collect_in_file(array $data): bool
 {
     $filename = get_buffer_filename();
+    $directory = \dirname($filename);
+    if (! \is_dir($directory)) {
+        \mkdir($directory, 0755, true);
+    }
 
     // if file does not yet exist, add PHP header to prevent direct file access
     if (!\is_file($filename)) {
-        $content = '<?php exit; ?>' . PHP_EOL;
+        $content = '<?php exit; ?>';
+        $content .= PHP_EOL;
     } else {
         $content = '';
     }
 
-    // append data to file
-    $line     = \join(',', $data) . PHP_EOL;
-    $content .= $line;
+    // append serialized data to file
+    $content .= \serialize($data);
+    $content .= PHP_EOL;
+
     return (bool) \file_put_contents($filename, $content, FILE_APPEND);
 }
 
 function test_collect_in_file(): bool
 {
     $filename = get_buffer_filename();
-    if (file_exists($filename)) {
-        return is_writable($filename);
+    if (\is_file($filename)) {
+        return \is_writable($filename);
     }
 
-    $dir = dirname($filename);
-    return is_writable($dir);
+    $directory = \dirname($filename);
+    if (! \is_dir($directory)) {
+        \mkdir($directory, 0755, true);
+    }
+
+    return \is_writable($directory);
 }

@@ -1,10 +1,10 @@
 === Custom Fonts - Host Your Fonts Locally ===
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
-Tags: typography, fonts, custom fonts, Google Fonts, performance, privacy, full site editing, adobe fonts, GDPR
+Tags: fonts, custom fonts, Google Fonts, performance, full site editing
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.1.7
+Stable tag: 2.1.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,6 +151,12 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 
 == Changelog ==
+= 2.1.10
+- Resolved issue where plugin was not properly deploying on wp.org
+
+= 2.1.9
+- Updated short description and tags inside readme file. 
+
 = 2.1.8
 - Custom fonts plugin tested with WordPress 6.7 version.
 

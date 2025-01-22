@@ -4631,6 +4631,31 @@ function code_block_list ($start, $end, $search_text, $show_all_blocks, $active_
           }
         }
 
+        // Update block numbers in custom reports
+        if (isset ($new_options [AI_OPTION_GLOBAL]['CUSTOM_REPORTS'])) {
+          $custom_reports = $new_options [AI_OPTION_GLOBAL]['CUSTOM_REPORTS'];
+          foreach ($custom_reports as $custom_report_index => $custom_report) {
+            if (isset ($custom_report ['reports'])) {
+              foreach ($custom_report ['reports'] as $custom_chart_index => $custom_chart) {
+                $custom_chart_data = explode (':', $custom_chart ['block_version']);
+                if (isset ($custom_chart_data [0])) {
+                  $chart_block = $custom_chart_data [0];
+                  foreach ($blocks_new as $index => $org_block) {
+                    if ($chart_block == $org_block) {
+                      $new_custom_chart = $blocks_org [$index];
+                      if (isset ($custom_chart_data [1])) {
+                        $new_custom_chart .= ':' . $custom_chart_data [1];
+                      }
+                      $new_options [AI_OPTION_GLOBAL]['CUSTOM_REPORTS'][$custom_report_index]['reports'][$custom_chart_index]['block_version'] = $new_custom_chart;
+                    }
+                  }
+
+                }
+              }
+            }
+          }
+        }
+
         ai_save_options ($new_options, null, $blocks_org, $blocks_new);
       }
     }
@@ -4646,6 +4671,45 @@ function code_block_list ($start, $end, $search_text, $show_all_blocks, $active_
   $row_counter = 0;
   for ($block = 1; $block <= 96; $block ++) {
     $obj = $block_object [$block];
+
+    $option_names = array ();
+
+    if ($show_all_blocks) {
+      $code_generator = new ai_code_generator ();
+      $rotation_data = $code_generator->import_rotation ($obj->get_ad_data (), true);
+      $rotation_data = $rotation_data ['options'];
+
+      foreach ($rotation_data as $rotation_data_index => $rotation_data_version) {
+         if (isset ($rotation_data_version ['prepend-append']) && $rotation_data_version ['prepend-append'] != '') {
+          unset ($rotation_data [$rotation_data_index]);
+        }
+      }
+      $rotation_data = array_values ($rotation_data);
+
+      if (count ($rotation_data) > 1) {
+        foreach ($rotation_data as $rotation_data_index => $rotation_data_element) {
+          $version = $rotation_data_index + 1;
+          $data_index_for_name = $version;
+          $option_index_for_name = $version;
+
+            foreach ($rotation_data as $rotation_data_index => $rotation_data_version) {
+              if (isset ($rotation_data_version ['index'])) {
+                $option_index = (int) $rotation_data_version ['index'];
+                if ($option_index == $version) {
+                  $data_index_for_name = $rotation_data_index + 1;
+                  $option_index_for_name = $option_index;
+                  break;
+                }
+              }
+            }
+
+          $option_name = isset ($rotation_data [$data_index_for_name - 1]['name']) && trim ($rotation_data [$data_index_for_name - 1]['name']) != '' ? str_replace ("'", "&#39;", $rotation_data [$data_index_for_name - 1]['name']) : chr (ord ('A') + $data_index_for_name - 1);
+          $option_names [$option_index_for_name] = $option_name;
+        }
+      }
+    }
+
+    $custom_reports = defined ('AD_INSERTER_CUSTOM_REPORTS') && $show_all_blocks;
 
     $automatic_insertion  = $obj->get_automatic_insertion () != AI_AUTOMATIC_INSERTION_DISABLED;
 
@@ -4751,7 +4815,7 @@ function code_block_list ($start, $end, $search_text, $show_all_blocks, $active_
     }
 
 ?>
-        <tr class="ai-block-list ai-block-<?php echo $block, ' ', $row_class; ?>" data-block="<?php echo $block; ?>">
+        <tr class="ai-block-list ai-block-<?php echo $block, ' ', $row_class; ?>" style="display: table-row-group;" data-block="<?php echo $block; ?>">
           <td style="min-width: 55px; color: <?php echo $block_used ? '#444' : '#ccc'; ?>;">
             <span class="ai-list-button">
               <label class="checkbox-button ai-preview-block" style="margin-top: -1px;" title="<?php _e ('Preview block', 'ad-inserter'); ?>"><span class="checkbox-icon size-8 icon-preview"></span></label>
@@ -4766,10 +4830,20 @@ function code_block_list ($start, $end, $search_text, $show_all_blocks, $active_
 
             <span  class="ai-list-button" style="text-align: right; width: 16px;"><?php echo $block; ?></span>
           </td>
+
+
+<?php if ($custom_reports): ?>
+          <td>
+            <span class="add-to-custom-report-button checkbox-button report-button dashicons dashicons-insert add" title="<?php _e ('Add to custom report', 'ad-inserter'); ?>" data-report="<?php echo $block; ?>"></span>
+          </td>
+<?php endif ?>
+
 <?php if ($visible_tab): ?>
-          <td class="ai-tab-link" data-tab="<?php echo $block; ?>" style=" min-width: 120px; color: #0073aa; cursor: pointer; text-align: left; padding-left: 5px; max-width: 220px; white-space: nowrap; overflow: hidden;"><?php echo $obj->get_ad_name(); ?></td>
+          <td class="ai-tab-link" data-tab="<?php echo $block; ?>" style=" min-width: 120px; color: #0073aa; cursor: pointer; text-align: left; padding-left: 5px; max-width: 220px; white-space: nowrap; overflow: hidden;">
+            <?php echo $obj->get_ad_name(); ?></td>
 <?php else: ?>
-          <td class="ai-range-link" style="min-width: 120px; text-align: left;  padding-left: 5px; max-width: 250px; white-space: nowrap; overflow: hidden;" data-address="<?php echo $edit_url; ?>"><a style="text-decoration: none; box-shadow: 0 0 0; color: #0073aa; cursor: pointer"><?php echo $obj->get_ad_name(); ?></a></td>
+          <td class="ai-range-link" style="min-width: 120px; text-align: left;  padding-left: 5px; max-width: 250px; white-space: nowrap; overflow: hidden;" data-address="<?php echo $edit_url; ?>"><a style="text-decoration: none; box-shadow: 0 0 0; color: #0073aa; cursor: pointer">
+            <?php echo $obj->get_ad_name(); ?></a></td>
 
 <?php endif ?>
           <td style="min-width: 80px; text-align: left; padding-left: 5px; max-width: 130px; white-space: nowrap; overflow: hidden; color: <?php echo $automatic_insertion ? '#666' : '#ccc'; ?>" title="<?php echo $insertion_title; ?>"><?php echo $obj->get_automatic_insertion_text(), $insertion_parameter; ?></td>
@@ -4790,16 +4864,73 @@ function code_block_list ($start, $end, $search_text, $show_all_blocks, $active_
           <td style="min-width: 15px; text-align: center; padding-left: 5px; vertical-align: top; font-weight: bold; color: <?php echo $manual_shortcode ? '#f66' : 'transparent'; ?>;">[s]</td>
           <td style="min-width: 15px; text-align: center; padding-left: 5px; vertical-align: top; font-weight: bold; color: <?php echo $manual_widget ? (count ($sidebars_with_widget [$block]) ? '#7cda7c' : '#aaa') : 'transparent'; ?>;">w</td>
           <td style="text-align: left; padding-left: 5px; max-width: 100px; white-space: nowrap; overflow: hidden; color: <?php echo $manual_widget ? '#666' : '#ccc'; ?>;"><?php echo implode (', ', $sidebars_with_widget [$block]); ?></td>
+
+<?php
+    if ($show_all_blocks && count ($option_names) > 1) {
+      foreach ($option_names as $option_index => $option_name) {
+
+        $row_counter ++;
+        $row_class = $row_counter % 2 == 0 ? 'even' : 'odd';
+?>
+          <td class="ai-block-option <?php echo $row_class; ?>" style="display: table-row;">
+            <div style="display: table-cell;"></div>
+
+<?php if ($custom_reports): ?>
+            <div style="display: table-cell;"></div>
+<?php endif ?>
+
+            <div style="display: table-cell; min-width: 120px; color: #aaa; text-align: left; padding-left: 5px; max-width: 220px; white-space: nowrap; overflow: hidden;">
+<?php if ($custom_reports): ?>
+              <span class="add-to-custom-report-button checkbox-button report-button dashicons dashicons-insert add-option" title="<?php _e ('Add to custom report', 'ad-inserter'); ?>" data-report="<?php echo $block, ':', $option_index; ?>"></span>
+<?php endif ?>
+              <div style="display: inline-block; min-width: 15px; text-align: right;"><?php echo $option_index; ?></div>
+              <div style="display: inline-block; padding-left: 5px;"><?php echo $option_name; ?></div>
+            </div>
+
+            <div style="display: table-cell;"></div>
+            <div style="display: table-cell;"></div>
+            <div style="display: table-cell;"></div>
+            <div style="display: table-cell;"></div>
+            <div style="display: table-cell;"></div>
+<?php
+  if (ai_pro ()) {
+?>
+            <div style="display: table-cell;"></div>
+            <div style="display: table-cell;"></div>
+<?php
+  }
+?>
+            <div style="display: table-cell;"></div>
+            <div style="display: table-cell;"></div>
+            <div style="display: table-cell;"></div>
+            <div style="display: table-cell;"></div>
+          </td>
+<?php
+      }
+    } else {
+?>
+          <td></td>
+<?php
+      }
+?>
         </tr>
+
 <?php
   }
   $table_rows = ob_get_clean ();
 ?>
 
     <table id="ai-list-table" class="exceptions ai-sortable<?php if (ai_pro () && !get_global_tracking ()) echo ' tracking-disabled'; ?>" cellspacing=0 cellpadding=0 style="width: 100%;" data-blocks="<?php echo json_encode ($blocks); ?>">
-      <thead>
-        <tr>
+      <thead style=" display: contents;">
+        <tr style="display: table-row-group; cursor: default;">
           <th style="text-align: left;"><?php _e ('Block', 'ad-inserter'); ?></th>
+
+<?php if ($custom_reports): ?>
+          <th><span class="add-to-custom-report-button checkbox-button dashicons dashicons-insert"
+                    style="background: transparent; color: #88888880; width: 12px; height: 14px; line-height: 16px; font-size: 16px; padding: 1px 0 0 0; margin-left: -1x; border: 0; cursor: default;"
+                    title="<?php _e ('Add to custom report', 'ad-inserter'); ?>"></span></th>
+<?php endif ?>
+
           <th style="text-align: left; padding-left: 5px;"><?php _e ('Name', 'ad-inserter'); ?></th>
 <!--          <th style="text-align: left; padding-left: 10px;"></th>-->
           <th style="text-align: left; padding-left: 5px;"><?php _e ('Automatic insertion', 'ad-inserter'); ?></th>
@@ -4819,9 +4950,11 @@ function code_block_list ($start, $end, $search_text, $show_all_blocks, $active_
           <th style="text-align: center; padding-left: 5px; color: #999;" title="<?php _e ('Shortcode', 'ad-inserter'); ?>">[s]</th>
           <th style="text-align: center; padding-left: 5px; color: #999;" title="<?php _e ('Widget', 'ad-inserter'); ?>">W</th>
           <th style="text-align: left; padding-left: 5px; color: #999;"><?php //_e ('Widget positions', 'ad-inserter'); ?></th>
+
+          <th class="row" style="display: table-row; background: rgb(200 197 255 / 63%);"></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style=" display: contents;">
 <?php echo $table_rows; ?>
       </tbody>
     </table>
@@ -5777,7 +5910,7 @@ function sidebar_addense_alternative () { ?>
         <div style="clear: both;"></div>
       </div>
       <div class="ai-form ai-rounded" style="height: 90px; padding: 8px 4px 8px 12px;">
-        <a href="https://bit.ly/4cMZ4HM" class="clear-link" title="<?php _e ('Join to AdManager', 'ad-inserter'); ?>" target="_blank"><img id="ai-ha-2" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ha-2.png" /></a>
+        <a href="https://api.whatsapp.com/send?phone=34621312564" class="clear-link" title="<?php _e ('Join to AdManager', 'ad-inserter'); ?>" target="_blank"><img id="ai-ha-2" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ha-2.png" /></a>
       </div>
 <?php
       break;
@@ -6051,7 +6184,7 @@ function sidebar_pro () {
 <!--            <a href="https://adinserter.pro/documentation/ad-impression-and-click-tracking" class="clear-link" title="<?php _e ('A/B testing - Track ad impressions and clicks', 'ad-inserter'); ?>" target="_blank"><img id="ai-pro-2" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-charts-250.png" /></a>-->
 <!--            <a href='https://adinserter.pro/documentation/code-preview' class="clear-link" title="<?php _e ('Code preview with visual CSS editor', 'ad-inserter'); ?>" target="_blank"><img id="ai-preview" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-preview-250.png" /></a>-->
 <!--            <a href='https://www.infolinks.com/publishers/?kid=3114832&loc=2' class="clear-link" title="<?php _e ('Use Infolinks ads with Adsense to earn more', 'ad-inserter'); ?>" target="_blank"><img id="ai-info-3" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>info-3.jpg"  /></a>-->
-            <a href="https://bit.ly/4cMZ4HM" class="clear-link" title="<?php _e ('Join to AdManager', 'ad-inserter'); ?>" target="_blank"><img id="ai-ha-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ha-1.png" /></a>
+            <a href="https://api.whatsapp.com/send?phone=34621312564" class="clear-link" title="<?php _e ('Join to AdManager', 'ad-inserter'); ?>" target="_blank"><img id="ai-ha-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ha-1.png" /></a>
 <?php   break; case 1: ?>
             <a href="https://www.ezoic.com/?utm_source=ad-inserter&utm_medium=ads&utm_campaign=ad-inserter-ads&utm_term=adinserter&utm_content=ezoic&loc=2" class="clear-link" title="<?php _e ('Looking for AdSense alternative?', 'ad-inserter'); ?>" target="_blank"><img id="ai-ez-5" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ez-5.png" /></a>
 <?php   break; case 2: ?>
@@ -6085,7 +6218,7 @@ function sidebar_pro () {
 <!--            <a href="https://adinserter.pro/documentation/black-and-white-lists#geo-targeting" class="clear-link" title="Geotargeting - black/white-list countries" target="_blank"><img id="ai-pro-3" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-countries-250.png" /></a>-->
 <!--            <a href='https://setupad.com/maximise-your-ad-revenue-with-header-bidding/?utm_source=ad-inserter-plugin&utm_medium=banner&utm_campaign=250x250-Maximise-Your-Ad-Revenue' class="clear-link" title="<?php _e ('Maximize Your Ad Revenue', 'ad-inserter'); ?>" target="_blank"><img id="ai-sa-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>sa-1.png" /></a>-->
 <!--            <a href='https://sales.bcm.ltd/2/?utm_source=adinserterpro&utm_medium=wp&utm_campaign=1GAdXFP200x250' class="clear-link" title="<?php _e ('Maximize Your Ad Revenue', 'ad-inserter'); ?>" target="_blank"><img id="ai-1gadxfp" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>1GAdXFP200x250.jpg" /></a>-->
-            <a href="https://bit.ly/4cMZ4HM" class="clear-link" title="<?php _e ('Join to AdManager', 'ad-inserter'); ?>" target="_blank"><img id="ai-ha-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ha-1.png" /></a>
+            <a href="https://api.whatsapp.com/send?phone=34621312564" class="clear-link" title="<?php _e ('Join to AdManager', 'ad-inserter'); ?>" target="_blank"><img id="ai-ha-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ha-1.png" /></a>
 <?php   break;
       } ?>
           </div>
@@ -6102,7 +6235,7 @@ function sidebar_pro () {
 <?php   break; case 2: ?>
 <!--            <a href='https://adinserter.pro/documentation/plugin-settings#recaptcha' class="clear-link" title="<?php _e ('Stop invalid traffic with reCAPTCHA v3 score check', 'ad-inserter'); ?>" target="_blank"><img id="ai-recaptcha" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-recaptcha-250.png" /></a>-->
 <!--            <a href='https://www.infolinks.com/publishers/?kid=3114832&loc=2' class="clear-link" title="<?php _e ('Use Infolinks ads with Adsense to earn more', 'ad-inserter'); ?>" target="_blank"><img id="ai-info-2" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>info-2.jpg" /></a>-->
-            <a href="https://bit.ly/4cMZ4HM" class="clear-link" title="<?php _e ('Join to AdManager', 'ad-inserter'); ?>" target="_blank"><img id="ai-ha-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ha-1.png" /></a>
+            <a href="https://api.whatsapp.com/send?phone=34621312564" class="clear-link" title="<?php _e ('Join to AdManager', 'ad-inserter'); ?>" target="_blank"><img id="ai-ha-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ha-1.png" /></a>
 <?php   break; case 3: ?>
 <!--            <a href='https://www.media.net/program?ha=e9Pw4uwo2Uw/5xjjsB3lnYZZWUI+hzRSONzDaYA9EwX+3jg/PJYwFshOFEjop5NH2wRNDfr357ZTY1zlhCk7zw%3D%3D&loc=2' class="clear-link" title="<?php _e ('Looking for AdSense alternative?', 'ad-inserter'); ?>" target="_blank"><img id="ai-media-9" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>contextual-9.gif" /></a>-->
             <a href="https://www.ezoic.com/?utm_source=ad-inserter&utm_medium=ads&utm_campaign=ad-inserter-ads&utm_term=adinserter&utm_content=ezoic&loc=2" class="clear-link" title="<?php _e ('Looking for AdSense alternative?', 'ad-inserter'); ?>" target="_blank"><img id="ai-ez-7" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ez-7.jpg" /></a>
@@ -6120,7 +6253,7 @@ function sidebar_pro () {
 <!--            <a href='https://adinserter.pro/documentation/plugin-settings#recaptcha' class="clear-link" title="<?php _e ('Stop invalid traffic with reCAPTCHA v3 score check', 'ad-inserter'); ?>" target="_blank"><img id="ai-recaptcha" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-recaptcha-250.png" /></a>-->
 <!--            <a href='https://setupad.com/maximise-your-ad-revenue-with-header-bidding/?utm_source=ad-inserter-plugin&utm_medium=banner&utm_campaign=250x250-Maximise-Your-Ad-Revenue' class="clear-link" title="<?php _e ('Maximize Your Ad Revenue', 'ad-inserter'); ?>" target="_blank"><img id="ai-sa-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>sa-1.png" /></a>-->
 <!--            <a href='https://sales.bcm.ltd/1/?utm_source=adinserterpro&utm_medium=wp&utm_campaign=1AInIn200x250' class="clear-link" title="<?php _e ('Maximize Your Ad Revenue', 'ad-inserter'); ?>" target="_blank"><img id="ai-1ainin" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>1AInIn200x250.jpg" /></a>-->
-            <a href="https://bit.ly/4cMZ4HM" class="clear-link" title="<?php _e ('Join to AdManager', 'ad-inserter'); ?>" target="_blank"><img id="ai-ha-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ha-1.png" /></a>
+            <a href="https://api.whatsapp.com/send?phone=34621312564" class="clear-link" title="<?php _e ('Join to AdManager', 'ad-inserter'); ?>" target="_blank"><img id="ai-ha-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ha-1.png" /></a>
 <?php   break;
         case 2:
 ?>

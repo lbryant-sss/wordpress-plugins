@@ -205,6 +205,7 @@ function nextAll (element, selector) {
         __tcfapi ('getTCData', 2, function (tcData, success) {
           if (success) {
             if (iab_tcf_bar != null) {
+              iab_tcf_bar.classList.remove ('status-error');
               iab_tcf_bar.classList.add ('status-ok');
             }
 
@@ -736,6 +737,7 @@ function nextAll (element, selector) {
                     if (ai_debug) console.log ("AI LISTS COOKIE tcf-v2: ai_tcData set");
 
                     if (iab_tcf_bar != null) {
+                      iab_tcf_bar.classList.remove ('status-error');
                       iab_tcf_bar.classList.add ('status-ok');
                     }
 

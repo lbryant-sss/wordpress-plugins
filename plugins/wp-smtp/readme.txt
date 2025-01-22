@@ -3,8 +3,8 @@ Contributors: solidwp, jack-kitterhing
 Donate link: https://solidwp.com/email
 Tags: wordpress smtp, email, email log, smtp
 Requires at least: 6.4
-Tested up to: 6.6.2
-Stable tag: 2.1.2
+Tested up to: 6.7.1
+Stable tag: 2.1.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -126,6 +126,10 @@ Now your website email deliverability is SOLID with Solid Mail!
 3. See a comprehensive log of all emails sent from your WordPress website at a glance
 
 == Changelog ==
+
+= [2.1.3] 2025-01-13
+
+* Feature - Postmark API support for sending emails
 
 = [2.1.2] 2024-10-21 =
 

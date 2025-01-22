@@ -10,18 +10,8 @@ namespace KokoAnalytics;
 
 class Plugin
 {
-    /**
-     * @var Aggregator
-     */
-    private $aggregator;
-
-    /**
-     * @param Aggregator $aggregator
-     */
-    public function __construct(Aggregator $aggregator)
+    public function __construct()
     {
-        $this->aggregator = $aggregator;
-
         register_activation_hook(KOKO_ANALYTICS_PLUGIN_FILE, [$this, 'on_activation']);
         add_action('init', [$this, 'maybe_run_actions'], 20, 0);
     }
@@ -35,9 +25,6 @@ class Plugin
             $role->add_cap('manage_koko_analytics');
         }
 
-        // schedule action for aggregating stats
-        $this->aggregator->setup_scheduled_event();
-
         // (maybe) create optimized endpoint file
         $endpoint_installer = new Endpoint_Installer();
         if ($endpoint_installer->is_eligibile()) {
@@ -47,11 +34,17 @@ class Plugin
 
     public function maybe_run_actions(): void
     {
+        $actions = [];
+
         if (isset($_GET['koko_analytics_action'])) {
-            $action = $_GET['koko_analytics_action'];
-        } elseif (isset($_POST['koko_analytics_action'])) {
-            $action = $_POST['koko_analytics_action'];
-        } else {
+            $actions[] = trim($_GET['koko_analytics_action']);
+        }
+
+        if (isset($_POST['koko_analytics_action'])) {
+            $actions[] = trim($_POST['koko_analytics_action']);
+        }
+
+        if (empty($actions)) {
             return;
         }
 
@@ -59,7 +52,11 @@ class Plugin
             return;
         }
 
-        do_action('koko_analytics_' . $action);
+        // fire all supplied action hooks
+        foreach ($actions as $action) {
+            do_action("koko_analytics_{$action}");
+        }
+
         wp_safe_redirect(remove_query_arg('koko_analytics_action'));
         exit;
     }

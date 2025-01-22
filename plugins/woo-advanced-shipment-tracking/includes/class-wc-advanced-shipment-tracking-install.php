@@ -488,6 +488,10 @@ class WC_Advanced_Shipment_Tracking_Install {
 		
 		// The URL of the zip file
 		$url = 'https://api.trackship.com/images/shipping-carriers/60x60.zip';
+
+		$version = date('YmdHis'); // Current date and time as version
+		$url_with_version = $url . '?v=' . $version;
+
 		$upload_dir   = wp_upload_dir();	
 		$ast_directory = $upload_dir['basedir'] . '/ast-shipping-providers';
 		$zipFilePath = $upload_dir['basedir'] . '/shipping-carriers.zip';	
@@ -496,7 +500,7 @@ class WC_Advanced_Shipment_Tracking_Install {
 			wp_mkdir_p( $ast_directory );	
 		}
 		// Download the zip file
-		$zipContent = file_get_contents($url);
+		$zipContent = file_get_contents($url_with_version);
 		// Save the zip file to the server
 		file_put_contents($zipFilePath, $zipContent);
 		if (class_exists('ZipArchive')) {

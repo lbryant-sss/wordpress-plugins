@@ -4,7 +4,7 @@ Tags: WooCommerce, delivery, shipping, shipment tracking, tracking
 Requires at least: 5.3
 Tested up to: 6.7.1
 Requires PHP: 7.2
-Stable tag: 3.7.4
+Stable tag: 3.7.5
 License: GPLv2 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,7 +57,7 @@ English - default, German (Deutsch), Hebrew, Hindi, Italian, Norwegian (Bokmål)
 If your language is not in this list and you  want us to include it in the plugin, you can send us [on our docs](https://docs.zorem.com/docs/ast-free/translations/#submit-translation-files)
  the translation files (po/mo) and we will add them to the plugin files.
 
-== Shipping Carriers == 
+== shipping carriers == 
 
 AST comes with a list of 850+ shipping carriers with predefined tracking link:
 
@@ -103,6 +103,12 @@ Yes, if you use external shipping services that work with the WooCommerce REST A
 3. Select default shipping carriers from setting page and add tracking number in order page.
 
 == Changelog ==
+
+= 3.7.5 =
+* Dev - Tested with WooCommerce 9.6.0
+* Dev - Added Version Parameter to Shipping Carrier Image URL to Prevent Caching
+* Fix - Partially Shipped and Shipped order status email not disabling from Order status & Notification panel
+* Fix - Resolved a design compatibility issue with WooCommerce version 9.6.0
 
 = 3.7.4 =
 * Enhancement - Use custom tracking provider name if exist

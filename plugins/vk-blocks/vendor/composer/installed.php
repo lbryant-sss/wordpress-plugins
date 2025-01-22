@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'vektor/vk-blocks-pro',
-        'pretty_version' => '1.94.0.1',
-        'version' => '1.94.0.1',
-        'reference' => 'e9de97c80dcfa2a2a7986b8625099fcf64763f67',
+        'pretty_version' => '1.94.1.0',
+        'version' => '1.94.1.0',
+        'reference' => '06d487ff6443c0f65fef18c4724fd98c1066f182',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -103,9 +103,9 @@
             'dev_requirement' => false,
         ),
         'vektor/vk-blocks-pro' => array(
-            'pretty_version' => '1.94.0.1',
-            'version' => '1.94.0.1',
-            'reference' => 'e9de97c80dcfa2a2a7986b8625099fcf64763f67',
+            'pretty_version' => '1.94.1.0',
+            'version' => '1.94.1.0',
+            'reference' => '06d487ff6443c0f65fef18c4724fd98c1066f182',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

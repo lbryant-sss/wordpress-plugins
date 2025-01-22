@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-20 10:15+0000\n"
+"POT-Creation-Date: 2025-01-21 10:21+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "SSL certificate"
 msgstr ""
 
-#: classes/Addons.php:183, classes/Ajax.php:86, classes/Ajax.php:166, classes/Ajax.php:503, classes/Ajax.php:582, classes/Course.php:1812, classes/Course.php:2046, classes/Instructor.php:325, classes/Quiz.php:358, classes/Quiz.php:940, classes/Quiz.php:1294, classes/Quiz.php:1444, classes/Quiz.php:1532, classes/Quiz.php:1960, classes/Quiz.php:1997, classes/Q_And_A.php:205
+#: classes/Addons.php:183, classes/Ajax.php:86, classes/Ajax.php:166, classes/Ajax.php:503, classes/Ajax.php:582, classes/Course.php:1810, classes/Course.php:2044, classes/Instructor.php:325, classes/Quiz.php:358, classes/Quiz.php:940, classes/Quiz.php:1294, classes/Quiz.php:1444, classes/Quiz.php:1532, classes/Quiz.php:1960, classes/Quiz.php:1997, classes/Q_And_A.php:205
 msgid "Access Denied"
 msgstr ""
 
@@ -500,177 +500,177 @@ msgstr ""
 msgid "Mark as unpaid"
 msgstr ""
 
-#: classes/Course.php:384
+#: classes/Course.php:378
 msgid "Invalid video source"
 msgstr ""
 
-#: classes/Course.php:382
+#: classes/Course.php:376
 msgid "Video source is required"
 msgstr ""
 
-#: classes/Course.php:402
+#: classes/Course.php:396
 msgid "Invalid course categories"
 msgstr ""
 
-#: classes/Course.php:410
+#: classes/Course.php:404
 msgid "Invalid course tags"
 msgstr ""
 
-#: classes/Course.php:478, classes/Course.php:516
+#: classes/Course.php:472, classes/Course.php:510
 msgid "Invalid price type"
 msgstr ""
 
-#: classes/Course.php:491, classes/Course.php:531
+#: classes/Course.php:485, classes/Course.php:525
 msgid "Product already linked with course"
 msgstr ""
 
-#: classes/Course.php:543
+#: classes/Course.php:537
 msgid "Price is required"
 msgstr ""
 
-#: classes/Course.php:535
+#: classes/Course.php:529
 msgid "Invalid product"
 msgstr ""
 
-#: classes/Course.php:770, classes/Post_types.php:98
+#: classes/Course.php:764, classes/Post_types.php:98
 msgid "New Course"
 msgstr ""
 
-#: classes/Course.php:791
+#: classes/Course.php:785
 msgid "Draft course created"
 msgstr ""
 
-#: classes/Course.php:904, classes/Course.php:996, classes/Course.php:1138, classes/Course.php:1169
+#: classes/Course.php:898, classes/Course.php:990, classes/Course.php:1132, classes/Course.php:1163
 msgid "Invalid input"
 msgstr ""
 
-#: classes/Course.php:929
+#: classes/Course.php:923
 msgid "Course created successfully"
 msgstr ""
 
-#: classes/Course.php:1044
+#: classes/Course.php:1038
 msgid "Course updated successfully."
 msgstr ""
 
-#: classes/Course.php:1071
+#: classes/Course.php:1065
 msgid "Builder unlinked successfully."
 msgstr ""
 
-#: classes/Course.php:1134, classes/Course.php:1165
+#: classes/Course.php:1128, classes/Course.php:1159
 msgid "Invalid course id"
 msgstr ""
 
-#: classes/Course.php:1144
+#: classes/Course.php:1138
 msgid "Course contents fetched successfully"
 msgstr ""
 
-#: classes/Course.php:1283
+#: classes/Course.php:1281
 msgid "You cannot edit this course because it is in the Trash. Please restore it and try again"
 msgstr ""
 
-#: classes/Course.php:1480
+#: classes/Course.php:1478
 msgid "Products retrieved successfully!"
 msgstr ""
 
-#: classes/Course.php:1510
+#: classes/Course.php:1508
 msgid "One product can not be added to multiple course!"
 msgstr ""
 
-#: classes/Course.php:1522
+#: classes/Course.php:1520
 msgid "Product not found"
 msgstr ""
 
-#: classes/Course.php:1541, classes/Frontend.php:107
+#: classes/Course.php:1539, classes/Frontend.php:107
 msgid "Access Denied!"
 msgstr ""
 
-#: classes/Course.php:1571, templates/loop/course-price-edd.php:80, templates/loop/course-price-tutor.php:85, templates/loop/course-price-woocommerce.php:77, templates/loop/course-price.php:78
+#: classes/Course.php:1569, templates/loop/course-price-edd.php:80, templates/loop/course-price-tutor.php:85, templates/loop/course-price-woocommerce.php:77, templates/loop/course-price.php:78
 msgid "Fully Booked"
 msgstr ""
 
-#: classes/Course.php:1795
+#: classes/Course.php:1793
 msgid "Topic title is required!"
 msgstr ""
 
-#: classes/Course.php:1840
+#: classes/Course.php:1838
 msgid "Topic created successfully!"
 msgstr ""
 
-#: classes/Course.php:1835
+#: classes/Course.php:1833
 msgid "Topic updated successfully!"
 msgstr ""
 
-#: classes/Course.php:1886
+#: classes/Course.php:1884
 msgid "Topic deleted successfully!"
 msgstr ""
 
-#: classes/Course.php:1908
+#: classes/Course.php:1906
 msgid "Please Sign In first"
 msgstr ""
 
-#: classes/Course.php:1958, classes/Lesson.php:430
+#: classes/Course.php:1956, classes/Lesson.php:430
 msgid "Please Sign-In"
 msgstr ""
 
-#: classes/Course.php:2055
+#: classes/Course.php:2053
 msgid "Only main instructor can delete this course"
 msgstr ""
 
-#: classes/Course.php:2076
+#: classes/Course.php:2074
 msgid "Course has been trashed successfully "
 msgstr ""
 
-#: classes/Course.php:2264, classes/Options_V2.php:1186
+#: classes/Course.php:2262, classes/Options_V2.php:1186
 msgid "Difficulty Level"
 msgstr ""
 
-#: classes/Course.php:2265, classes/Options_V2.php:1320, classes/Options_V2.php:1328, classes/Options_V2.php:1336, classes/Options_V2.php:1352, classes/Options_V2.php:1360, classes/Options_V2.php:1368, classes/Options_V2.php:1376, classes/Options_V2.php:1384, classes/Options_V2.php:1392, classes/Options_V2.php:1400, classes/Options_V2.php:1408, classes/Options_V2.php:1424, classes/Options_V2.php:1432, classes/User.php:452
+#: classes/Course.php:2263, classes/Options_V2.php:1320, classes/Options_V2.php:1328, classes/Options_V2.php:1336, classes/Options_V2.php:1352, classes/Options_V2.php:1360, classes/Options_V2.php:1368, classes/Options_V2.php:1376, classes/Options_V2.php:1384, classes/Options_V2.php:1392, classes/Options_V2.php:1400, classes/Options_V2.php:1408, classes/Options_V2.php:1424, classes/Options_V2.php:1432, classes/User.php:452
 msgid "Enable"
 msgstr ""
 
-#: classes/Course.php:2268
+#: classes/Course.php:2266
 msgid "Course difficulty level"
 msgstr ""
 
-#: classes/Course.php:2598
+#: classes/Course.php:2596
 msgid "Complete all lessons to mark this course as complete"
 msgstr ""
 
-#: classes/Course.php:2663
+#: classes/Course.php:2661
 msgid "quiz"
 msgid_plural "quizzes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: classes/Course.php:2664
+#: classes/Course.php:2662
 msgid "assignment"
 msgid_plural "assignments"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %1$s: number of quiz/assignment pass required; %2$s: quiz/assignment string
-#: classes/Course.php:2668, classes/Course.php:2673
+#: classes/Course.php:2666, classes/Course.php:2671
 msgid "You have to pass %1$s %2$s to complete this course."
 msgstr ""
 
 #. translators: %1$s: number of quiz pass required; %2$s: quiz string; %3$s: number of assignment pass required; %4$s: assignment string
-#: classes/Course.php:2678
+#: classes/Course.php:2676
 msgid "You have to pass %1$s %2$s and %3$s %4$s to complete this course."
 msgstr ""
 
-#: classes/Course.php:2775
+#: classes/Course.php:2773
 msgid "Invalid Course ID or Access Denied."
 msgstr ""
 
-#: classes/Course.php:2824
+#: classes/Course.php:2822
 msgid "Invalid course ID"
 msgstr ""
 
-#: classes/Course.php:2821
+#: classes/Course.php:2819
 msgid "Enrollment failed, please try again!"
 msgstr ""
 
-#: classes/Course.php:2819
+#: classes/Course.php:2817
 msgid "Enrollment successfully done!"
 msgstr ""
 
@@ -6305,7 +6305,7 @@ msgid "Last Updated"
 msgstr ""
 
 #: templates/single/course/course-entry-box.php:265
-msgid "Enroll now"
+msgid "Enroll Now"
 msgstr ""
 
 #: templates/single/course/course-entry-box.php:271
@@ -7266,10 +7266,6 @@ msgid "No matching results found."
 msgstr ""
 
 #: assets/js/tutor.min.js:1, assets/js/tutor-front.min.js:1, assets/js/tutor-admin.min.js:1, assets/js/tutor-setup.min.js:1, assets/js/tutor-course-builder.min.js:1, assets/js/tutor-order-details.min.js:1, assets/js/tutor-tax-settings.min.js:1, assets/js/tutor-coupon.min.js:1
-msgid "Get all addons banner"
-msgstr ""
-
-#: assets/js/tutor.min.js:1, assets/js/tutor-front.min.js:1, assets/js/tutor-admin.min.js:1, assets/js/tutor-setup.min.js:1, assets/js/tutor-course-builder.min.js:1, assets/js/tutor-order-details.min.js:1, assets/js/tutor-tax-settings.min.js:1, assets/js/tutor-coupon.min.js:1
 msgid "Get All of Add-Ons for a Single Price"
 msgstr ""
 
@@ -7278,7 +7274,7 @@ msgid "Unlock all add-ons with one payment! Easily enable them and customize for
 msgstr ""
 
 #: assets/js/tutor.min.js:1, assets/js/tutor-front.min.js:1, assets/js/tutor-admin.min.js:1, assets/js/tutor-setup.min.js:1, assets/js/tutor-course-builder.min.js:1, assets/js/tutor-order-details.min.js:1, assets/js/tutor-tax-settings.min.js:1, assets/js/tutor-coupon.min.js:1
-msgid "Get Tutor LMS Pro"
+msgid "Upgrade to Pro"
 msgstr ""
 
 #: assets/js/tutor.min.js:1, assets/js/tutor-front.min.js:1, assets/js/tutor-admin.min.js:1, assets/js/tutor-setup.min.js:1, assets/js/tutor-course-builder.min.js:1, assets/js/tutor-order-details.min.js:1, assets/js/tutor-tax-settings.min.js:1, assets/js/tutor-coupon.min.js:1
@@ -7847,6 +7843,10 @@ msgstr ""
 
 #: assets/js/tutor.min.js:1, assets/js/tutor-front.min.js:1, assets/js/tutor-admin.min.js:1, assets/js/tutor-setup.min.js:1, assets/js/tutor-course-builder.min.js:1, assets/js/tutor-order-details.min.js:1, assets/js/tutor-tax-settings.min.js:1, assets/js/tutor-coupon.min.js:1
 msgid "Inspire them with a touch of credibility and recognition tailored just for them."
+msgstr ""
+
+#: assets/js/tutor.min.js:1, assets/js/tutor-front.min.js:1, assets/js/tutor-admin.min.js:1, assets/js/tutor-setup.min.js:1, assets/js/tutor-course-builder.min.js:1, assets/js/tutor-order-details.min.js:1, assets/js/tutor-tax-settings.min.js:1, assets/js/tutor-coupon.min.js:1
+msgid "Get Tutor LMS Pro"
 msgstr ""
 
 #: assets/js/tutor.min.js:1, assets/js/tutor-front.min.js:1, assets/js/tutor-admin.min.js:1, assets/js/tutor-setup.min.js:1, assets/js/tutor-course-builder.min.js:1, assets/js/tutor-order-details.min.js:1, assets/js/tutor-tax-settings.min.js:1, assets/js/tutor-coupon.min.js:1
@@ -10478,7 +10478,7 @@ msgid "%s %s trial"
 msgstr ""
 
 #: assets/js/tutor.min.js:1, assets/js/tutor-front.min.js:1, assets/js/tutor-admin.min.js:1, assets/js/tutor-setup.min.js:1, assets/js/tutor-course-builder.min.js:1, assets/js/tutor-order-details.min.js:1, assets/js/tutor-tax-settings.min.js:1, assets/js/tutor-coupon.min.js:1
-msgid "Times"
+msgid "Billing Cycles"
 msgstr ""
 
 #: assets/js/tutor.min.js:1, assets/js/tutor-front.min.js:1, assets/js/tutor-admin.min.js:1, assets/js/tutor-setup.min.js:1, assets/js/tutor-course-builder.min.js:1, assets/js/tutor-order-details.min.js:1, assets/js/tutor-tax-settings.min.js:1, assets/js/tutor-coupon.min.js:1
@@ -10570,11 +10570,11 @@ msgid "Renew plan must be greater than 0"
 msgstr ""
 
 #: assets/js/tutor.min.js:1, assets/js/tutor-front.min.js:1, assets/js/tutor-admin.min.js:1, assets/js/tutor-setup.min.js:1, assets/js/tutor-course-builder.min.js:1, assets/js/tutor-order-details.min.js:1, assets/js/tutor-tax-settings.min.js:1, assets/js/tutor-coupon.min.js:1
-msgid "Billing Cycles"
+msgid "Select or type times to renewing the plan"
 msgstr ""
 
 #: assets/js/tutor.min.js:1, assets/js/tutor-front.min.js:1, assets/js/tutor-admin.min.js:1, assets/js/tutor-setup.min.js:1, assets/js/tutor-course-builder.min.js:1, assets/js/tutor-order-details.min.js:1, assets/js/tutor-tax-settings.min.js:1, assets/js/tutor-coupon.min.js:1
-msgid "Select or type times to renewing the plan"
+msgid "Times"
 msgstr ""
 
 #: assets/js/tutor.min.js:1, assets/js/tutor-front.min.js:1, assets/js/tutor-admin.min.js:1, assets/js/tutor-setup.min.js:1, assets/js/tutor-course-builder.min.js:1, assets/js/tutor-order-details.min.js:1, assets/js/tutor-tax-settings.min.js:1, assets/js/tutor-coupon.min.js:1

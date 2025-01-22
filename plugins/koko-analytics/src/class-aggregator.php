@@ -14,11 +14,12 @@ class Aggregator
 {
     public function __construct()
     {
-        add_action('koko_analytics_aggregate_stats', [$this, 'aggregate'], 10, 0);
         add_filter('cron_schedules', [$this, 'add_interval'], 10, 1);
+        add_action('koko_analytics_aggregate_stats', [$this, 'aggregate'], 10, 0);
         add_action('koko_analytics_save_settings', [$this, 'setup_scheduled_event'], 10, 0);
-        register_activation_hook(KOKO_ANALYTICS_PLUGIN_FILE, [$this, 'setup_scheduled_event'], 10, 0);
-        register_deactivation_hook(KOKO_ANALYTICS_PLUGIN_FILE, [$this, 'clear_scheduled_event'], 10, 0);
+
+        register_activation_hook(KOKO_ANALYTICS_PLUGIN_FILE, [$this, 'setup_scheduled_event']);
+        register_deactivation_hook(KOKO_ANALYTICS_PLUGIN_FILE, [$this, 'clear_scheduled_event']);
     }
 
     /**
@@ -54,19 +55,19 @@ class Aggregator
     {
         update_option('koko_analytics_last_aggregation_at', \time(), true);
 
-        // init pageview aggregator
-        $pageview_aggregator = new Pageview_Aggregator();
+        $buffer_file = get_buffer_filename();
 
-        // read pageviews buffer file into array
-        $filename = get_buffer_filename();
-        if (! \is_file($filename)) {
-            // no pageviews were collected since last run, so we have nothing to do
+        // if buffer file does not exist, nothing happened since last aggregation
+        if (! \is_file($buffer_file)) {
             return;
         }
 
+        // init pageview aggregator
+        $pageview_aggregator = new Pageview_Aggregator();
+
         // rename file to temporary location so nothing new is written to it while we process it
-        $tmp_filename = \dirname($filename) . '/pageviews-' . \time() . '.php';
-        $renamed = \rename($filename, $tmp_filename);
+        $tmp_filename = \dirname($buffer_file) . '/events-buffer.' . \time() . '.php';
+        $renamed = \rename($buffer_file, $tmp_filename);
         if ($renamed !== true) {
             if (WP_DEBUG) {
                 throw new Exception('Error renaming buffer file.');
@@ -92,7 +93,7 @@ class Aggregator
                 continue;
             }
 
-            $params = \explode(',', $line);
+            $params = \unserialize($line);
             $type   = \array_shift($params);
 
             // core aggregator
@@ -109,5 +110,9 @@ class Aggregator
         // tell aggregators to write their results to the database
         $pageview_aggregator->finish();
         do_action('koko_analytics_aggregate_finish');
+
+
+        // ensure scheduled event is ready to go again
+        $this->setup_scheduled_event();
     }
 }

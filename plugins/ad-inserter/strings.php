@@ -245,6 +245,7 @@ $ai_admin_translations = array (
                                     // translators: %s: dates
   'delete_statistics_between'   => sprintf (__('Delete statistics data between %s and %s?', 'ad-inserter'), '{start_date}', '{end_date}'),
   'delete_website'              => __('Delete website?', 'ad-inserter'),
+  'delete_report'               => __('Delete report', 'ad-inserter'),
   'cancel_rearrangement'        => __('Cancel block order rearrangement', 'ad-inserter'),
   'rearrange_block_order'       => __('Rearrange block order', 'ad-inserter'),
   'downloading'                 => __('downloading...', 'ad-inserter'),

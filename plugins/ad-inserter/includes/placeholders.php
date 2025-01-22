@@ -3,8 +3,9 @@
 function generate_placeholder_editor ($placeholder_url, $block) {
   global $wp_version;
 
-  $placeholder_protocol = 'http://';
-  $placeholder_domain   = 'via.placeholder.com';
+  $placeholder_protocol = 'https://';
+//  $placeholder_domain   = 'via.placeholder.com';
+  $placeholder_domain   = 'dummyimage.com';
 
   $base_placeholder_url = $placeholder_protocol . $placeholder_domain . '/';
 
