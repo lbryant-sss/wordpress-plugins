@@ -35,6 +35,10 @@ class ElementsKit_Widget_Category_List extends Widget_Base {
         return 'https://wpmet.com/doc/category-list/';
     }
 
+	public function get_style_depends(): array {
+		return [ 'widget-icon-list' ];
+	}
+
     protected function is_dynamic_content(): bool {
         return false;
     }

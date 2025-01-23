@@ -22,6 +22,7 @@ require_once IUBENDA_PLUGIN_PATH . 'views/partials/header.php';
 	require_once IUBENDA_PLUGIN_PATH . 'views/partials/breadcrumb.php';
 	?>
 	<form class="ajax-form-to-options">
+		<input hidden name="iubenda_section_name" value="iubenda_consent_solution">
 		<input hidden name="action" value="save_cons_options">
 		<?php wp_nonce_field( 'iub_save_cons_options_nonce', 'iub_cons_nonce' ); ?>
 		<input hidden name="_redirect" value="<?php echo esc_url( add_query_arg( array( 'view' => 'products-page' ), iubenda()->base_url ) ); ?>">

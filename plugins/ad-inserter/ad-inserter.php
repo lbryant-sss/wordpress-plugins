@@ -19,8 +19,9 @@ License: GPLv3
 Change Log
 
 Ad Inserter 2.8.0 - 2025-01-21
-- Fixed placeholder image generator service - changed to dummyimage.com
+- Replaced placeholder image generator service - changed to dummyimage.com
 - Security fix for potential cross site scripting (Pro only)
+- Added support to show rotation options in the list of blocks
 - Added support for custom reports for clients (Pro only)
 - Few minor bug fixes, cosmetic changes and code improvements
 
@@ -3091,20 +3092,14 @@ function ai_adb_code () {
 function ai_adb_external_scripts () {
   $code = '';
 
-//  if (!defined ('AI_ADB_NO_DOUBLECLICK_NET')) {
-//    $code .= '<object id="ai-adb-dblclk" data="https://securepubads.g.doubleclick.net/tag/js/gpt.js" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";
-//  }
   if (!defined ('AI_ADB_NO_GOOGLE_ANALYTICS')) {
     $code .= '<object id="ai-adb-ga" data="https://www.google-analytics.com/analytics.js" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";
   }
   if (!defined ('AI_ADB_NO_MEDIA_NET')) {
     $code .= '<object id="ai-adb-mn" data="//contextual.media.net/dmedianet.js" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";
   }
-//  if (!defined ('AI_ADB_NO_AMAZON-ADSYSTEM')) {
-//    $code .= '<object id="ai-adb-am" data="https://z-na.amazon-adsystem.com/widgets/onejs" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";
-//  }
-  if (!defined ('AI_ADB_NO_EZOIC_CMP')) {
-    $code .= '<object id="ai-adb-ez" data="https://g.ezodn.com/cmp/v2/v.js" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";
+  if (!defined ('AI_ADB_NO_GTM')) {
+    $code .= '<object id="ai-adb-gtm" data="https://www.googletagmanager.com/gtag/js" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";
   }
   if (!defined ('AI_ADB_NO_QUANT')) {
     $code .= '<object id="ai-adb-qu" data="https://secure.quantserve.com/quant.js" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";

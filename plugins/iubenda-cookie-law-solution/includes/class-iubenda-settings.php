@@ -534,7 +534,7 @@ class Iubenda_Settings {
 				require_once IUBENDA_PLUGIN_PATH . 'views/tc-configuration.php';
 				break;
 			case 'pp-configuration':
-				$page_labels = array( array( 'title' => __( 'Privacy and Cookie Policy', 'iubenda' ) ) );
+				$page_labels = array( array( 'title' => __( 'Privacy Policy', 'iubenda' ) ) );
 				$key         = 'pp';
 				$service     = iub_array_get( iubenda()->settings->services, $key );
 				require_once IUBENDA_PLUGIN_PATH . 'views/pp-configuration.php';
@@ -672,30 +672,36 @@ class Iubenda_Settings {
 	/**
 	 * Update products options by ajax request.
 	 *
-	 * @param   array $data POST data request.
+	 * @param   array $post_data POST data request.
 	 */
-	public function synchronize_products( $data = array() ) {
+	public function synchronize_products( $post_data = array() ) {
 		iub_verify_ajax_request( 'iub_synchronize_products', 'iub_synchronize_products_nonce' );
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$data = ! empty( $data ) ? $data : $_POST;
+		$post_data = ! empty( $post_data ) ? $post_data : $_POST;
 
-		if ( (string) iub_array_get( $data, 'iubenda_privacy_policy_solution_status' ) === 'true' ) {
+		if ( (string) iub_array_get( $post_data, 'iubenda_privacy_policy_solution_status' ) === 'true' ) {
+			$request_pp_option = (array) iub_array_get( $post_data, 'iubenda_privacy_policy_solution', array() );
+
 			// Saving PP data with PP function.
-			( new Iubenda_PP_Product_Service() )->saving_pp_options( false );
+			( new Iubenda_PP_Product_Service() )->saving_pp_options( $request_pp_option, false );
 		} else {
 			$result['iubenda_activated_products']['iubenda_privacy_policy_solution'] = 'false';
 		}
 
-		if ( (string) iub_array_get( $data, 'iubenda_terms_conditions_solution_status' ) === 'true' ) {
+		if ( (string) iub_array_get( $post_data, 'iubenda_terms_conditions_solution_status' ) === 'true' ) {
+			$request_tc_option = (array) iub_array_get( $post_data, 'iubenda_terms_conditions_solution', array() );
+
 			// Saving TC data with TC function.
-			( new Iubenda_TC_Product_Service() )->saving_tc_options();
+			( new Iubenda_TC_Product_Service() )->saving_tc_options( $request_tc_option );
 		} else {
 			$result['iubenda_activated_products']['iubenda_terms_conditions_solution'] = 'false';
 		}
 
-		if ( (string) iub_array_get( $data, 'iubenda_cookie_law_solution_status' ) === 'true' ) {
+		if ( (string) iub_array_get( $post_data, 'iubenda_cookie_law_solution_status' ) === 'true' ) {
+			$request_cs_option = (array) iub_array_get( $post_data, 'iubenda_cookie_law_solution', array() );
+
 			// Saving CS data with CS function.
-			( new Iubenda_CS_Product_Service() )->saving_cs_options();
+			( new Iubenda_CS_Product_Service() )->saving_cs_options( $request_cs_option );
 		} else {
 			wp_send_json(
 				array(
@@ -705,9 +711,9 @@ class Iubenda_Settings {
 			);
 		}
 
-		if ( (string) iub_array_get( $data, 'iubenda_consent_solution_status' ) === 'true' ) {
+		if ( (string) iub_array_get( $post_data, 'iubenda_consent_solution_status' ) === 'true' ) {
 			// iubenda_consent_solution saving data.
-			$public_api_key = sanitize_text_field( wp_unslash( (string) iub_array_get( $data, 'public_api_key' ) ) );
+			$public_api_key = sanitize_text_field( wp_unslash( (string) iub_array_get( $post_data, 'public_api_key' ) ) );
 
 			if ( ! empty( $public_api_key ) ) {
 				$product_option['configured']     = 'true';
@@ -1048,7 +1054,7 @@ class Iubenda_Settings {
 			'pp'   => array(
 				'status'     => false,
 				'configured' => iub_array_get( iubenda()->options['pp'], 'configured' ),
-				'label'      => __( 'Privacy and Cookie Policy', 'iubenda' ),
+				'label'      => __( 'Privacy Policy', 'iubenda' ),
 				'name'       => 'privacy_policy',
 				'key'        => 'iubenda_privacy_policy_solution',
 				'settings'   => array(

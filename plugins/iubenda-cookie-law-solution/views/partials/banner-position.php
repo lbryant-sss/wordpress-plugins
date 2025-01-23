@@ -37,7 +37,7 @@ $positions = array(
 						checked( $v, iub_array_get( iubenda()->options['cs'], 'simplified.position' ) );
 						?>
 					>
-					<label for="<?php echo esc_html( $v ); ?>">
+					<label id="label-<?php echo esc_html( $v ); ?>" for="<?php echo esc_html( $v ); ?>">
 						<div>
 							<div class="<?php echo esc_html( str_replace( '-', ' ', $v ) ); ?>"><span></span></div>
 						</div>

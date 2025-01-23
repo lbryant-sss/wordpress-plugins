@@ -36,7 +36,7 @@ class Quick_Generator_Service {
 	 *
 	 * @return array
 	 */
-	protected function get_mapped_language_on_local( $iub_lang_code ) {
+	public function get_mapped_language_on_local( $iub_lang_code ) {
 		$result        = array();
 		$iub_lang_code = strtolower( str_replace( '-', '_', $iub_lang_code ) );
 
@@ -163,24 +163,27 @@ class Quick_Generator_Service {
 	 */
 	public function integrate_setup() {
 		iub_verify_ajax_request( 'iub_integrate_setup', 'iub_nonce' );
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$post_data = $_POST;
 
 		// Saving iubenda plugin settings.
 		( new Iubenda_Plugin_Setting_Service() )->plugin_settings_save_options();
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		if ( (string) iub_array_get( $_POST, 'cookie_law' ) === 'on' ) {
+		if ( (string) iub_array_get( $post_data, 'cookie_law' ) === 'on' ) {
+			$request_cs_option = (array) iub_array_get( $post_data, 'iubenda_cookie_law_solution', array() );
+
 			// Saving CS data with CS function.
-			( new Iubenda_CS_Product_Service() )->saving_cs_options();
+			( new Iubenda_CS_Product_Service() )->saving_cs_options( $request_cs_option );
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		if ( (string) iub_array_get( $_POST, 'privacy_policy' ) === 'on' ) {
+		if ( (string) iub_array_get( $post_data, 'privacy_policy' ) === 'on' ) {
+			$request_pp_option = (array) iub_array_get( $post_data, 'iubenda_privacy_policy_solution', array() );
+
 			// Saving PP data with PP function.
-			( new Iubenda_PP_Product_Service() )->saving_pp_options();
+			( new Iubenda_PP_Product_Service() )->saving_pp_options( $request_pp_option );
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		if ( (string) iub_array_get( $_POST, 'cookie_law' ) === 'on' || (string) iub_array_get( $_POST, 'privacy_policy' ) === 'on' ) {
+		if ( (string) iub_array_get( $post_data, 'cookie_law' ) === 'on' || (string) iub_array_get( $post_data, 'privacy_policy' ) === 'on' ) {
 			// add notice that`s notice user the integration has been done successfully.
 			iubenda()->notice->add_notice( 'iub_products_integrated_success' );
 		}
@@ -310,9 +313,11 @@ class Quick_Generator_Service {
 	 * Saving CS options from ajax request
 	 */
 	public function cs_ajax_save() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
 		iub_verify_ajax_request( 'iub_save_cs_options_nonce', 'iub_cs_nonce' );
-		( new Iubenda_CS_Product_Service() )->saving_cs_options( false );
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$request_cs_option = (array) iub_array_get( $_POST, 'iubenda_cookie_law_solution', array() );
+
+		( new Iubenda_CS_Product_Service() )->saving_cs_options( $request_cs_option, false );
 
 		wp_send_json( array( 'status' => 'done' ) );
 	}
@@ -321,9 +326,11 @@ class Quick_Generator_Service {
 	 * Saving PP options from ajax request
 	 */
 	public function pp_ajax_save() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
 		iub_verify_ajax_request( 'iub_save_pp_options_nonce', 'iub_pp_nonce' );
-		( new Iubenda_PP_Product_Service() )->saving_pp_options();
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$request_pp_option = (array) iub_array_get( $_POST, 'iubenda_privacy_policy_solution', array() );
+
+		( new Iubenda_PP_Product_Service() )->saving_pp_options( $request_pp_option );
 
 		wp_send_json( array( 'status' => 'done' ) );
 	}
@@ -379,7 +386,9 @@ class Quick_Generator_Service {
 	public function tc_ajax_save() {
 		iub_verify_ajax_request( 'iub_save_tc_options_nonce', 'iub_tc_nonce' );
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		( new Iubenda_TC_Product_Service() )->saving_tc_options();
+		$request_tc_option = (array) iub_array_get( $_POST, 'iubenda_terms_conditions_solution', array() );
+
+		( new Iubenda_TC_Product_Service() )->saving_tc_options( $request_tc_option );
 
 		wp_send_json( array( 'status' => 'done' ) );
 	}

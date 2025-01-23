@@ -1,6 +1,6 @@
 <?php
 /**
- * Privacy and Cookie Policy configuration - pp - page.
+ * Privacy Policy configuration - pp - page.
  *
  * @package  Iubenda
  */
@@ -29,16 +29,16 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 		<input hidden name="_redirect" value="<?php echo esc_url( add_query_arg( array( 'view' => 'products-page' ), iubenda()->base_url ) ); ?>">
 		<div class="mx-4 mx-lg-5">
 			<div class="py-4 py-lg-5 text-gray">
-				<p class=""><?php esc_html_e( 'Configure your privacy and cookie policy on our website and paste here the embed code to integrate the button on your website.', 'iubenda' ); ?></p>
+				<p class=""><?php esc_html_e( 'Configure your Privacy Policy on our website and paste here the embed code to integrate the button on your website.', 'iubenda' ); ?></p>
 				<div class="d-flex align-items-center ">
 					<div class="steps flex-shrink mr-2">1</div>
-					<p class="text-bold"> <?php esc_html_e( 'Configure privacy and cookie policy by', 'iubenda' ); ?>
+					<p class="text-bold"> <?php esc_html_e( 'Configure Privacy Policy by', 'iubenda' ); ?>
 						<a target="_blank" href="<?php echo esc_url( iubenda()->settings->links['about_pp'] ); ?>" class="link-underline text-gray-lighter"> <?php esc_html_e( 'clicking here', 'iubenda' ); ?></a>
 					</p>
 				</div>
 				<div class="d-flex align-items-center ">
 					<div class="steps flex-shrink mr-2">2</div>
-					<p class="text-bold"> <?php esc_html_e( 'Paste your privacy and cookie policy embed code here', 'iubenda' ); ?>
+					<p class="text-bold"> <?php esc_html_e( 'Paste your Privacy Policy embed code here', 'iubenda' ); ?>
 					</p>
 				</div>
 				<div class="ml-5 mt-3">

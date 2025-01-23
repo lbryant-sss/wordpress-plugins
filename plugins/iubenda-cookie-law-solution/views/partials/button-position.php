@@ -108,7 +108,7 @@ if ( iub_array_get( iubenda()->options['pp'], 'button_position' ) !== 'manual' )
 
 							$code = $privacy_policy_generator->handle( $lang_id, $public_id, 'white' );
 						}
-						$code = html_entity_decode( iubenda()->parse_code( $code ) );
+						$code = html_entity_decode( iubenda()->parse_code( $code ) ); // phpcs:ignore PHPCompatibility.ParameterValues.NewHTMLEntitiesFlagsDefault.NotSet
 
 						$_status = '';
 						if ( (string) iubenda()->lang_default === (string) $lang_id || 'default' === (string) $lang_id ) {

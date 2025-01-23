@@ -44,14 +44,13 @@ class Iubenda_CS_Product_Service extends Iubenda_Abstract_Product_Service {
 	/**
 	 * Saving Iubenda cookie law solution options
 	 *
-	 * @param   bool $default_options  If true insert the default options.
+	 * @param   array $request_cs_option  Request CS option.
+	 * @param   bool  $default_options  If true insert the default options.
 	 */
-	public function saving_cs_options( $default_options = true ) {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$request_cs_option = (array) iub_array_get( $_POST, 'iubenda_cookie_law_solution', array() );
-		$cs_default_keys   = array_keys( iubenda()->defaults['cs'] );
-		$cs_default_keys   = array_merge( $this->get_languages_code_keys(), $cs_default_keys );
-		$new_cs_option     = iub_array_only( $request_cs_option, $cs_default_keys );
+	public function saving_cs_options( $request_cs_option, $default_options = true ) {
+		$cs_default_keys = array_keys( iubenda()->defaults['cs'] );
+		$cs_default_keys = array_merge( $this->get_languages_code_keys(), $cs_default_keys );
+		$new_cs_option   = iub_array_only( $request_cs_option, $cs_default_keys );
 
 		$iubenda_cookie_solution_generator = new Cookie_Solution_Generator();
 		$global_options                    = iubenda()->options['global_options'];

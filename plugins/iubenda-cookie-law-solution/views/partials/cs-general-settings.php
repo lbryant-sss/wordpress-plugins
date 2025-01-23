@@ -329,7 +329,7 @@ if ( ! can_use_dom_document_class() ) {
 </div>
 <div class="d-flex align-items-center pt-3">
 	<label class="checkbox-regular">
-		<input type="checkbox" class="mr-2" name="iubenda_cookie_law_solution[stop_showing_cs_for_admins]" value="1" <?php checked( true, (bool) iubenda()->options['cs']['stop_showing_cs_for_admins'] ); ?>>
+		<input type="checkbox" id="stop_showing_cs_for_admins" class="mr-2" name="iubenda_cookie_law_solution[stop_showing_cs_for_admins]" value="1" <?php checked( true, (bool) iubenda()->options['cs']['stop_showing_cs_for_admins'] ); ?>>
 		<span><?php esc_html_e( 'Do not show Cookie Banner for admin users (recommended)', 'iubenda' ); ?></span>
 	</label>
 </div>

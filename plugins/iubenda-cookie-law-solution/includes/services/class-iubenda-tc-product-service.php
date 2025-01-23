@@ -27,13 +27,13 @@ class Iubenda_TC_Product_Service extends Iubenda_Abstract_Product_Service {
 
 	/**
 	 * Saving TC options
+	 *
+	 * @param   array $request_tc_option  Request TC option.
 	 */
-	public function saving_tc_options() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$request_tc_option = (array) iub_array_get( $_POST, 'iubenda_terms_conditions_solution', array() );
-		$tc_default_keys   = array_keys( iubenda()->defaults['tc'] );
-		$tc_default_keys   = array_merge( $this->get_languages_code_keys( false ), $tc_default_keys );
-		$new_tc_option     = iub_array_only( $request_tc_option, $tc_default_keys );
+	public function saving_tc_options( $request_tc_option ) {
+		$tc_default_keys = array_keys( iubenda()->defaults['tc'] );
+		$tc_default_keys = array_merge( $this->get_languages_code_keys( false ), $tc_default_keys );
+		$new_tc_option   = iub_array_only( $request_tc_option, $tc_default_keys );
 
 		$codes_statues                    = array();
 		$global_options                   = iubenda()->options['global_options'];

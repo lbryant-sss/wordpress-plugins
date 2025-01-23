@@ -32,7 +32,7 @@ Anything from a simple contact form to a more advanced payment, quiz, or calcula
 * 25+ ready-to-use input fields
 * Reusable form templates
 * Adjustable multi-column form layout
-[* Spam protection using reCAPTCHA, hCaptcha & more](https://fluentforms.com/form-security/)
+* [Spam protection using reCAPTCHA, hCaptcha & more](https://fluentforms.com/form-security/)
 * Email notification
 * Form scheduling & restriction
 * Export/import forms
@@ -52,11 +52,11 @@ Anything from a simple contact form to a more advanced payment, quiz, or calcula
 ==Features available in the Pro version==
 
 * 55+ input fields
-[* Payment](https://fluentforms.com/payment/)
-[* Numeric calculation](https://fluentforms.com/numeric-calculation/)
-[* Multi-step form](https://fluentforms.com/multi-step-form/)
-[* Advanced form styler](https://fluentforms.com/advanced-form-styler/)
-[* Quiz & survey module](https://fluentforms.com/quiz-and-survey/)
+* [Payment](https://fluentforms.com/payment/)
+* [Numeric calculation](https://fluentforms.com/numeric-calculation/)
+* [Multi-step form](https://fluentforms.com/multi-step-form/)
+* [Advanced form styler](https://fluentforms.com/advanced-form-styler/)
+* [Quiz & survey module](https://fluentforms.com/quiz-and-survey/)
 * Inventory management
 * Dynamic field
 * Advanced search filter
@@ -71,9 +71,9 @@ Anything from a simple contact form to a more advanced payment, quiz, or calcula
 * SMS notifications
 * Conditional email routing
 * User registration
-[* Advanced post/CPT creation](https://fluentforms.com/user-generated-content/)
-[*Address autocomplete](https://fluentforms.com/address-autocomplete/)
-[* 60+ third-party integrations](https://fluentforms.com/integration/) (and a lot more via Zapier)
+* [Advanced post/CPT creation](https://fluentforms.com/user-generated-content/)
+* [Address autocomplete](https://fluentforms.com/address-autocomplete/)
+* [60+ third-party integrations](https://fluentforms.com/integration/) (and a lot more via Zapier)
 
 == Super Fast Contact Forms ==
 Fluent Forms is built for speed. It does not slow down your site nor load lots of CSS & JS. A standard form built with Fluent Forms only loads less than 30KB CSS and JS combined, whereas most of the form builders load at least 300KB assets to load a simple form. Build the fastest online forms in minutes.
@@ -235,60 +235,60 @@ Improve your website’s efficiency by bridging the gap from visitor input to em
 * <a href="https://wordpress.org/plugins/fluent-booking" target="_blank">FluentBooking</a>
 * <a href="https://wordpress.org/plugins/wp-social-reviews" target="_blank">WP Social Ninja</a>
 * <a href="https://wordpress.org/plugins/fluentforms-pdf" target="_blank">Fluent Forms PDF Generator</a>
-[* MailChimp](https://fluentforms.com/integration/mailchimp/)
-[* Slack](https://fluentforms.com/integration/slack/)
-[* Mautic](https://fluentforms.com/integration/mautic/)
-[* Mailpoet](https://fluentforms.com/integration/mailpoet/)
+* [MailChimp](https://fluentforms.com/integration/mailchimp/)
+* [Slack](https://fluentforms.com/integration/slack/)
+* [Mautic](https://fluentforms.com/integration/mautic/)
+* [Mailpoet](https://fluentforms.com/integration/mailpoet/)
 
 == Integrations Available in the Pro Version ==
 
-[* ActiveCampaign](https://fluentforms.com/integration/activecampaign/)
-[* AffiliateWP](https://fluentforms.com/integration/affiliatewp/)
-[* Airtable](https://fluentforms.com/integration/airtable/)
-[* amoCRM](https://fluentforms.com/integration/amocrm/)
-[* Automizy](https://fluentforms.com/integration/automizy/)
-[* Brevo (formerly SendInBlue)](https://fluentforms.com/integration/brevo/)
-[* BuddyBoss](https://fluentforms.com/integration/buddyboss/)
-[* Campaign Monitor](https://fluentforms.com/integration/campaignmonitor/)
-[* ChatGPT](https://fluentforms.com/integration/chatgpt/)
-[* CleverReach](https://fluentforms.com/integration/cleverreach/)
-[* ClickSend](https://fluentforms.com/integration/clicksend/)
-[* Constant Contact](https://fluentforms.com/integration/constant-contact/)
-[* Kit, formerly ConvertKit](https://fluentforms.com/integration/kit/)
-[* Discord](https://fluentforms.com/integration/discord/)
-[* Drip](https://fluentforms.com/integration/drip/)
-[* Gist](https://fluentforms.com/integration/gist/)
-[* GetResponse](https://fluentforms.com/integration/getresponse/)
-[* Google Maps](https://fluentforms.com/integration/google-maps/)
-[* Google Sheets](https://fluentforms.com/integration/google-sheets/)
-[* HubSpot](https://fluentforms.com/integration/hubspot/)
-[* iContact](https://fluentforms.com/integration/icontact/)
-[* Insightly](https://fluentforms.com/integration/insightly/)
-[* MailerLite](https://fluentforms.com/integration/mailerlite/)
-[* Mailjet](https://fluentforms.com/integration/mailjet/)
-[* Mailster](https://fluentforms.com/integration/mailster/)
-[* Mollie](https://fluentforms.com/integration/mollie/)
-[* MooSend](https://fluentforms.com/integration/moosend/)
-[* Notion](https://fluentforms.com/integration/notion/)
-[* OnePageCRM](https://fluentforms.com/integration/onepagecrm/)
-[* Paddle](https://fluentforms.com/integration/paddle/)
-[* PayPal](https://fluentforms.com/integration/paypal/)
-[* Paystack](https://fluentforms.com/integration/paystack/)
-[* Pipedrive](https://fluentforms.com/integration/pipedrive/)
-[* Platformly](https://fluentforms.com/integration/platformly/)
-[* RazorPay](https://fluentforms.com/integration/razorpay/)
-[* Salesflare](https://fluentforms.com/integration/salesflare/)
-[* Salesforce](https://fluentforms.com/integration/salesforce/)
-[* SendFox](https://fluentforms.com/integration/sendfox/)
-[* Square](https://fluentforms.com/integration/square/)
-[* Stripe](https://fluentforms.com/integration/stripe/)
-[* Telegram](https://fluentforms.com/integration/telegram/)
-[* Trello](https://fluentforms.com/integration/trello/)
-[* Twilo](https://fluentforms.com/integration/twilio/)
+* [ActiveCampaign](https://fluentforms.com/integration/activecampaign/)
+* [AffiliateWP](https://fluentforms.com/integration/affiliatewp/)
+* [Airtable](https://fluentforms.com/integration/airtable/)
+* [amoCRM](https://fluentforms.com/integration/amocrm/)
+* [Automizy](https://fluentforms.com/integration/automizy/)
+* [Brevo (formerly SendInBlue)](https://fluentforms.com/integration/brevo/)
+* [BuddyBoss](https://fluentforms.com/integration/buddyboss/)
+* [Campaign Monitor](https://fluentforms.com/integration/campaignmonitor/)
+* [ChatGPT](https://fluentforms.com/integration/chatgpt/)
+* [CleverReach](https://fluentforms.com/integration/cleverreach/)
+* [ClickSend](https://fluentforms.com/integration/clicksend/)
+* [Constant Contact](https://fluentforms.com/integration/constant-contact/)
+* [Kit, formerly ConvertKit](https://fluentforms.com/integration/kit/)
+* [Discord](https://fluentforms.com/integration/discord/)
+* [Drip](https://fluentforms.com/integration/drip/)
+* [Gist](https://fluentforms.com/integration/gist/)
+* [GetResponse](https://fluentforms.com/integration/getresponse/)
+* [Google Maps](https://fluentforms.com/integration/google-maps/)
+* [Google Sheets](https://fluentforms.com/integration/google-sheets/)
+* [HubSpot](https://fluentforms.com/integration/hubspot/)
+* [iContact](https://fluentforms.com/integration/icontact/)
+* [Insightly](https://fluentforms.com/integration/insightly/)
+* [MailerLite](https://fluentforms.com/integration/mailerlite/)
+* [Mailjet](https://fluentforms.com/integration/mailjet/)
+* [Mailster](https://fluentforms.com/integration/mailster/)
+* [Mollie](https://fluentforms.com/integration/mollie/)
+* [MooSend](https://fluentforms.com/integration/moosend/)
+* [Notion](https://fluentforms.com/integration/notion/)
+* [OnePageCRM](https://fluentforms.com/integration/onepagecrm/)
+* [Paddle](https://fluentforms.com/integration/paddle/)
+* [PayPal](https://fluentforms.com/integration/paypal/)
+* [Paystack](https://fluentforms.com/integration/paystack/)
+* [Pipedrive](https://fluentforms.com/integration/pipedrive/)
+* [Platformly](https://fluentforms.com/integration/platformly/)
+* [RazorPay](https://fluentforms.com/integration/razorpay/)
+* [Salesflare](https://fluentforms.com/integration/salesflare/)
+* [Salesforce](https://fluentforms.com/integration/salesforce/)
+* [SendFox](https://fluentforms.com/integration/sendfox/)
+* [Square](https://fluentforms.com/integration/square/)
+* [Stripe](https://fluentforms.com/integration/stripe/)
+* [Telegram](https://fluentforms.com/integration/telegram/)
+* [Trello](https://fluentforms.com/integration/trello/)
+* [Twilo](https://fluentforms.com/integration/twilio/)
 * User Registration
-[* WebHook](https://fluentforms.com/integration/webhooks/)
-[* Zapier](https://fluentforms.com/integration/zapier/)
-[* Zoho CRM](https://fluentforms.com/integration/zoho-crm/)
+* [WebHook](https://fluentforms.com/integration/webhooks/)
+* [Zapier](https://fluentforms.com/integration/zapier/)
+* [Zoho CRM](https://fluentforms.com/integration/zoho-crm/)
 
 == Create Extensions ==
 

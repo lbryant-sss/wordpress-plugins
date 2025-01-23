@@ -3,7 +3,7 @@
  * Plugin Name: iubenda | All-in-one Compliance for GDPR / CCPA Cookie Consent + more
  * Plugin URI: https://www.iubenda.com
  * Description: The iubenda plugin is an <strong>all-in-one</strong>, extremely easy to use 360° compliance solution, with text crafted by actual lawyers, that quickly <strong>scans your site and auto-configures to match your specific setup</strong>.  It supports the GDPR (DSGVO, RGPD), UK-GDPR, ePrivacy, LGPD, USPR, CalOPPA, PECR and more.
- * Version: 3.11.3
+ * Version: 3.12.0
  * Author: iubenda
  * Author URI: https://www.iubenda.com
  * License: MIT License
@@ -45,7 +45,7 @@ define( 'IUB_DEBUG', false );
  * @property Iubenda_Legal_Widget       $widget
  *
  * @class   iubenda
- * @version 3.11.3
+ * @version 3.12.0
  */
 class iubenda {
 // phpcs:enable
@@ -139,7 +139,7 @@ class iubenda {
 	 *
 	 * @var string
 	 */
-	public $version = '3.11.3';
+	public $version = '3.12.0';
 
 	/**
 	 * Plugin activation info.
@@ -312,6 +312,16 @@ class iubenda {
 	public $configuration_parser;
 
 	/**
+	 * Integration with the Pib middleware.
+	 *
+	 * This property holds an instance of the Pib_Integration class, which manages
+	 * the Pib middleware integration, including REST API routes and option injection.
+	 *
+	 * @var Pib_Integration
+	 */
+	private $pib_integration;
+
+	/**
 	 * Disable object clone.
 	 *
 	 * @throws Exception Cloning is not allowed.
@@ -357,6 +367,7 @@ class iubenda {
 			self::$instance->iub_auto_blocking         = new Auto_Blocking();
 			self::$instance->radar_dashboard_widget    = new Radar_Dashboard_Widget();
 			self::$instance->configuration_parser      = new Configuration_Parser();
+			self::$instance->pib_integration           = new Pib_Integration();
 		}
 
 		return self::$instance;
@@ -566,6 +577,7 @@ class iubenda {
 		include_once IUBENDA_PLUGIN_PATH . 'includes/class-radar-dashboard-widget.php';
 		include_once IUBENDA_PLUGIN_PATH . 'includes/integrations/cons/class-woocommerce-form-consent.php';
 		include_once IUBENDA_PLUGIN_PATH . 'includes/integrations/class-wp-consent-api-integration.php';
+		include_once IUBENDA_PLUGIN_PATH . 'includes/integrations/class-pib-integration.php';
 	}
 
 	/**
@@ -1297,7 +1309,7 @@ class iubenda {
 				// get code for the language.
 				$code = '';
 				if ( ! empty( iubenda()->options['cs'][ 'code_' . $lang_id ] ) ) {
-					$code = html_entity_decode( iubenda()->parse_code( iubenda()->options['cs'][ 'code_' . $lang_id ] ) );
+					$code = html_entity_decode( iubenda()->parse_code( iubenda()->options['cs'][ 'code_' . $lang_id ] ) ); // phpcs:ignore PHPCompatibility.ParameterValues.NewHTMLEntitiesFlagsDefault.NotSet
 				}
 
 				if ( empty( $code ) && (string) iubenda()->lang_default === (string) $lang_id ) {

@@ -99,10 +99,6 @@ It's all about the [settings](https://adinserter.pro/documentation).
 *   Function to visualize HTML tags
 *   You name it :)
 
-
-👉  TEST the plugin on a [demo website](https://tastewp.com/template/AdInserterDemo?redirect=options-general.php%3Fpage%3Dad-inserter.php%26ai-demo%3D1&ni=true)
-
-
 [Review on WP Mayor](https://wpmayor.com/ad-inserter-review-the-best-wordpress-ad-management-plugin/)
 
 > The Best WordPress Ad Management Plugin?
@@ -119,7 +115,7 @@ It's all about the [settings](https://adinserter.pro/documentation).
 
 > Native Shopping Ads provide highly relevant and dynamic product recommendations in a stylishly designed and responsive ad unit that can be placed at the end or within your content to create a more compelling visitor experience and shopping opportunity.
 
-**Pro version** supports additional [advanced features](https://adinserter.pro/documentation/features):
+👉  **Pro version** supports additional [advanced features](https://adinserter.pro/documentation/features):
 
 *   Geolocation using internal or [MaxMind](http://www.maxmind.com/) databases (works also with caching)
 *   Country, state, region and city level geotargeting
@@ -369,8 +365,9 @@ If you are not happy to reveal this information and you have opted in, simply di
 == Changelog ==
 
 = 2.8.0 =
-- Fixed placeholder image generator service - changed to dummyimage.com
+- Replaced placeholder image generator service - changed to dummyimage.com
 - Security fix for potential cross site scripting (Pro only)
+- Added support to show rotation options in the list of blocks
 - Added support for custom reports for clients (Pro only)
 - Few minor bug fixes, cosmetic changes and code improvements
 
@@ -433,10 +430,11 @@ For the changelog of earlier versions, please refer to the separate changelog.tx
 == Upgrade Notice ==
 
 = 2.8.0 =
-Fixed placeholder image generator service - changed to dummyimage.com;
+Replaced placeholder image generator service - changed to dummyimage.com;
 Security fix for potential cross site scripting (Pro only);
+Added support to show rotation options in the list of blocks;
 Added support for custom reports for clients (Pro only);
-Few minor bug fixes, cosmetic changes and code improvements;
+Few minor bug fixes, cosmetic changes and code improvements
 
 = 2.7.39 =
 Improved frontend code;

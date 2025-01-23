@@ -30,7 +30,7 @@ class Product_Helper {
 			$code = iub_array_get( iubenda()->options['cs'], "code_{$lang_id}" );
 		}
 
-		return html_entity_decode( iubenda()->parse_code( $code ) );
+		return html_entity_decode( iubenda()->parse_code( $code ) ); // phpcs:ignore PHPCompatibility.ParameterValues.NewHTMLEntitiesFlagsDefault.NotSet
 	}
 
 	/**
@@ -80,7 +80,7 @@ class Product_Helper {
 	private function get_embed_code( $service_key, $lang_id ) {
 		$code = iub_array_get( iubenda()->options[ $service_key ], "code_{$lang_id}" );
 
-		return html_entity_decode( iubenda()->parse_code( $code ) );
+		return html_entity_decode( iubenda()->parse_code( $code ) ); // phpcs:ignore PHPCompatibility.ParameterValues.NewHTMLEntitiesFlagsDefault.NotSet
 	}
 
 	/**

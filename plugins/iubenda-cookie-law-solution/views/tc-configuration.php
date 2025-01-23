@@ -21,6 +21,7 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 	require_once IUBENDA_PLUGIN_PATH . 'views/partials/breadcrumb.php';
 	?>
 	<form class="ajax-form-to-options">
+		<input hidden name="iubenda_section_name" value="iubenda_terms_conditions_solution">
 		<input hidden name="action" value="save_tc_options">
 		<?php wp_nonce_field( 'iub_save_tc_options_nonce', 'iub_tc_nonce' ); ?>
 		<input hidden name="_redirect" value="<?php echo esc_url( add_query_arg( array( 'view' => 'products-page' ), iubenda()->base_url ) ); ?>">
@@ -153,7 +154,7 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 									$languages = ( new Product_Helper() )->get_languages();
 									foreach ( $languages as $lang_id => $v ) :
 										$code = iub_array_get( iubenda()->options['tc'], "code_{$lang_id}" );
-										$code = html_entity_decode( iubenda()->parse_code( $code ) );
+										$code = html_entity_decode( iubenda()->parse_code( $code ) ); // phpcs:ignore PHPCompatibility.ParameterValues.NewHTMLEntitiesFlagsDefault.NotSet
 										?>
 										<div data-target="tab-<?php echo esc_attr( $lang_id ); ?>" class="tabs__target <?php echo esc_attr( (string) iubenda()->lang_default === (string) $lang_id || 'default' === (string) $lang_id ? 'active' : '' ); ?>" data-group="language-tabs">
 											<textarea readonly class='form-control text-sm m-0 iub-tc-code' id="iub-tc-code-<?php echo esc_attr( $lang_id ); ?>" rows='4'><?php echo esc_html( $code ); ?></textarea>

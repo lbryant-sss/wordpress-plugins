@@ -1,6 +1,6 @@
-=== Popup Builder by OptinMonster - WordPress Popups for Optins, Email Newsletters and Lead Generation ===
+=== WordPress Popup Builder & Popup Maker – OptinMonster Email Marketing and Lead Generation ===
 Contributors: optinmonster, griffinjt, smub
-Tags: popup, popups, optin, conversion, marketing, newsletter, popup builder, popup maker, email marketing, exit popup, ecommerce, woocommerce, lightbox
+Tags: marketing, popup, popups, optin, ecommerce
 Requires at least: 4.7.0
 Tested up to: 6.6
 Requires PHP: 5.3
@@ -41,7 +41,7 @@ If we don’t have a native integration with your marketing platform, we’ve go
 
 **Do all this and more without sacrificing website performance because we’ve optimized the OptinMonster popup builder for both <a href="https://optinmonster.com/docs/optinmonster-campaign-performance-technical-overview-and-defaults/?utm_source=orgplugin&utm_medium=link&utm_campaign=wpreadme" rel="friend" >web and server performance</a>.**
 
-And we have the best Customer Support team! With over 600 five-star reviews on WordPress.org, a time to first response under an hour, plus optional live chat support, our team is here to help you win and win more often!
+And we have the best Customer Support team! With almost 800 five-star reviews on WordPress.org, award winning support (including optional live chat or video calls), our team is here to help you win and win more often!
 
 **OptinMonster is a SaaS service and requires an OptinMonster account.**
 When you install this plugin, you’ll get to register for a free account that includes 3 campaigns and up to 500 campaign impression credits. Those credits are yours forever. If you use all of them, your account will be upgraded so your campaigns continue to display. Of course, you can always control your <a href="https://optinmonster.com/docs/pageview-and-upgrade-preferences/?utm_source=orgplugin&utm_medium=link&utm_campaign=wpreadme" rel="friend" >upgrade preferences</a> within your account.

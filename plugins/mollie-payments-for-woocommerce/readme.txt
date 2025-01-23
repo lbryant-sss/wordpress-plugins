@@ -2,8 +2,8 @@
 Contributors: daanvm, danielhuesken, davdebcom, dinamiko, syde, l.vangunst, ndijkstra, robin-mollie, wido, carmen222, inpsyde-maticluznar
 Tags: mollie, payments, payment gateway, woocommerce, credit card, apple pay, ideal, bancontact, klarna, sofort, woocommerce subscriptions 
 Requires at least: 3.8
-Tested up to: 6.6
-Stable tag: 7.9.0
+Tested up to: 6.7
+Stable tag: 7.9.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -225,6 +225,15 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 
 == Changelog ==
+
+= 7.9.1 - 22-01-2025 =
+
+* Feature: Style Apple Pay express button via Checkout block
+* Fixed: Notice `_load_textdomain_just_in_time` due to early translation loading
+* Fixed: Company Name input field not saved in Order when Billie was enabled
+* Fixed: Mollie Payment methods may not load on Checkout block
+* Fixed: Mollie Payment methods may disappear from Checkout block when changing billing country
+* Fixed: Mollie Components are not enabled by default on new installations
 
 = 7.9.0 - 18-11-2024 =
 

@@ -28,14 +28,13 @@ class Iubenda_PP_Product_Service extends Iubenda_Abstract_Product_Service {
 	/**
 	 * Saving Iubenda privacy policy solution options and generate codes for languages that have Public ID
 	 *
-	 * @param   bool $with_generator With privacy policy generator or not.
+	 * @param   array $request_pp_option  Request PP option.
+	 * @param   bool  $with_generator With privacy policy generator or not.
 	 */
-	public function saving_pp_options( $with_generator = true ) {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$request_pp_option = (array) iub_array_get( $_POST, 'iubenda_privacy_policy_solution', array() );
-		$pp_default_keys   = array_keys( iubenda()->defaults['pp'] );
-		$pp_default_keys   = array_merge( $this->get_languages_code_keys( false ), $pp_default_keys );
-		$new_pp_option     = iub_array_only( $request_pp_option, $pp_default_keys );
+	public function saving_pp_options( $request_pp_option, $with_generator = true ) {
+		$pp_default_keys = array_keys( iubenda()->defaults['pp'] );
+		$pp_default_keys = array_merge( $this->get_languages_code_keys( false ), $pp_default_keys );
+		$new_pp_option   = iub_array_only( $request_pp_option, $pp_default_keys );
 
 		$codes_statues                    = array();
 		$new_pp_option['button_style']    = $this->get_only_valid_values( iub_array_get( $new_pp_option, 'button_style' ), $this->accepted_options['button_style'], iubenda()->defaults['pp']['button_style'] );

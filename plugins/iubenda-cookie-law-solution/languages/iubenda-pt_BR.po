@@ -5,14 +5,14 @@ msgstr ""
 "Language: pt_BR\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"PO-Revision-Date: 2024-05-08 15:40+0000\n"
+"PO-Revision-Date: 2025-01-17 15:39+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Loco-Version: 2.6.7; wp-6.4.2"
+"X-Loco-Version: 2.6.14; wp-6.7.1"
 
 #. 1:view, 2:count.
 #: includes/class-iubenda-list-table-forms.php:398
@@ -22,7 +22,7 @@ msgid_plural "%1$s <span class=\"count\">(%2$s)</span>"
 msgstr[0] "%1$s <span class=\"count\">(%2$s)</span>"
 msgstr[1] "%1$s <span class=\"count\">(%2$s)</span>"
 
-#: includes/services/class-iubenda-cs-product-service.php:178
+#: includes/services/class-iubenda-cs-product-service.php:179
 msgid "( Iubenda cookie law solution ) At least one code must be valid."
 msgstr ""
 "(Solução da lei dos cookies da iubenda) Pelo menos um código deve ser válido."
@@ -38,8 +38,10 @@ msgid ""
 "<a class=\"link-underline\" target=\"_blank\" href=\"%s\">Learn more</a> "
 "about our automatic blocking."
 msgstr ""
+"<a class=\"link-underline\" target=\"_blank\" href=\"%s\">Saiba mais</a> "
+"sobre nosso bloqueio automático."
 
-#: views/tc-configuration.php:140 views/partials/button-position.php:77
+#: views/tc-configuration.php:141 views/partials/button-position.php:77
 msgid ""
 "A shortcode is a tiny bit of code that allows embedding interactive elements "
 "or creating complex page layouts with a minimal effort."
@@ -47,12 +49,12 @@ msgstr ""
 "Um shortcode é um pequeno código que permite incorporar elementos "
 "interativos ou criar layouts complexos de página com o mínimo esforço."
 
-#: views/cons-configuration.php:33
+#: views/cons-configuration.php:34
 #| msgid "Activate & Configure Consent Database by"
 msgid "Activate & Configure Consent Database by"
 msgstr "Ative e configure a Database Solution"
 
-#: views/cons-configuration.php:30
+#: views/cons-configuration.php:31
 #| msgid ""
 #| "Activate <strong>Consent Database</strong> on our website in your iubenda "
 #| "dashboard and paste the <strong>API key</strong> here to integrate it in "
@@ -70,7 +72,7 @@ msgstr ""
 msgid "Add a cookie banner"
 msgstr "Adicionar um banner de cookies"
 
-#: views/cons-configuration.php:66
+#: views/cons-configuration.php:67
 msgid "Add forms"
 msgstr "Adicionar formulários"
 
@@ -98,7 +100,7 @@ msgstr "Adicionar Novo Script"
 msgid "Add the privacy policy button"
 msgstr "Adicione o botão da política de privacidade"
 
-#: views/tc-configuration.php:81 views/partials/button-position.php:17
+#: views/tc-configuration.php:82 views/partials/button-position.php:17
 msgid "Add to the footer automatically"
 msgstr "Adicionar automaticamente ao rodapé"
 
@@ -131,13 +133,13 @@ msgstr "Analytics"
 
 #: includes/class-radar-dashboard-widget.php:139
 msgid "Analyzing compliance status…"
-msgstr ""
+msgstr "Analisando o status de conformidade …"
 
 #: views/partials/frontpage-main-box.php:37
 msgid "Analyzing your website"
 msgstr "Analisando o seu site"
 
-#: views/cons-configuration.php:90
+#: views/cons-configuration.php:91
 msgid "Auto-detect forms"
 msgstr "Auto-detectar formulários"
 
@@ -176,21 +178,21 @@ msgstr "Bloqueie o Gerenciador de tags do Google"
 msgid "Blocked domains"
 msgstr "Domínios bloqueados"
 
-#: views/tc-configuration.php:77 views/partials/button-position.php:13
+#: views/tc-configuration.php:78 views/partials/button-position.php:13
 msgid "Button position"
 msgstr "Posição do botão"
 
-#: views/tc-configuration.php:52 views/partials/button-style.php:14
+#: views/tc-configuration.php:53 views/partials/button-style.php:14
 msgid "Button style"
 msgstr "Estilo do botão"
 
 #: views/cs-configuration.php:37 views/cons-single-form.php:345
-#: views/tc-configuration.php:172 views/plugin-settings.php:60
-#: views/cons-configuration.php:97 views/pp-configuration.php:65
+#: views/tc-configuration.php:173 views/plugin-settings.php:61
+#: views/cons-configuration.php:98 views/pp-configuration.php:65
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: views/tc-configuration.php:33 views/cons-configuration.php:34
+#: views/tc-configuration.php:34 views/cons-configuration.php:35
 #: views/pp-configuration.php:36 views/partials/cs-manual-configuration.php:18
 msgid "clicking here"
 msgstr "clicando aqui"
@@ -209,13 +211,13 @@ msgstr "Configurar banner de cookies"
 
 #: includes/class-radar-dashboard-widget.php:169
 msgid "Configure now"
-msgstr ""
+msgstr "Configurar agora"
 
 #: views/pp-configuration.php:35
-msgid "Configure privacy and cookie policy by"
-msgstr "Configure a política de privacidade e cookies clicando aqui"
+msgid "Configure Privacy Policy by"
+msgstr ""
 
-#: views/tc-configuration.php:32
+#: views/tc-configuration.php:33
 msgid "Configure terms and conditions by"
 msgstr "Configure os termos e condições"
 
@@ -228,14 +230,15 @@ msgstr ""
 "incorporação para integrá-lo ao seu site."
 
 #: views/pp-configuration.php:32
+#| msgid ""
+#| "Configure your privacy and cookie policy on our website and paste here "
+#| "the embed code to integrate the button on your website."
 msgid ""
-"Configure your privacy and cookie policy on our website and paste here the "
-"embed code to integrate the button on your website."
+"Configure your Privacy Policy on our website and paste here the embed code "
+"to integrate the button on your website."
 msgstr ""
-"Configure sua política de privacidade e cookies em nosso site e cole aqui o "
-"código de incorporação para integrar o botão em seu site."
 
-#: views/tc-configuration.php:29
+#: views/tc-configuration.php:30
 msgid ""
 "Configure your terms and conditions on our website and paste here the embed "
 "code to integrate the button on your website."
@@ -243,13 +246,13 @@ msgstr ""
 "Configure os seus termos e condições no nosso site e cole aqui o código de "
 "incorporação para integrar o botão em seu site."
 
-#: views/cons-configuration.php:47
+#: views/cons-configuration.php:48
 msgid "Confirm API"
 msgstr "Confirmar API"
 
 #: includes/class-radar-dashboard-widget.php:193
 msgid "Congratulations on achieving full score."
-msgstr ""
+msgstr "Parabéns por atingir a pontuação máxima."
 
 #: includes/class-iubenda-settings.php:148
 #: includes/class-iubenda-settings.php:549
@@ -294,7 +297,7 @@ msgstr "Iframes personalizados"
 msgid "Custom scripts"
 msgstr "Scripts personalizados"
 
-#: views/tc-configuration.php:70 views/partials/button-style.php:32
+#: views/tc-configuration.php:71 views/partials/button-style.php:32
 #: views/partials/banner-style.php:21
 msgid "Dark"
 msgstr "Versão em preto"
@@ -311,7 +314,7 @@ msgstr "Idioma padrão"
 msgid "Delete"
 msgstr "Deletar"
 
-#: views/plugin-settings.php:41
+#: views/plugin-settings.php:42
 msgid "Delete all plugin data upon deactivation"
 msgstr "Excluir todos os dados do plugin após a desativação"
 
@@ -319,11 +322,11 @@ msgstr "Excluir todos os dados do plugin após a desativação"
 msgid "Delete this form"
 msgstr "Deletar este formulário"
 
-#: views/plugin-settings.php:33
+#: views/plugin-settings.php:34
 msgid "Do not run the plugin inside the RSS feed (recommended)"
 msgstr "Não execute o plugin dentro do feed RSS (recomendado)"
 
-#: views/plugin-settings.php:37
+#: views/plugin-settings.php:38
 msgid "Do not run the plugin on POST requests (recommended)"
 msgstr "Não execute o plugin em solicitações POST (recomendado)"
 
@@ -454,7 +457,7 @@ msgstr "Filtrar"
 msgid "Filter by source"
 msgstr "Filtrar por tipo de formulário"
 
-#: includes/class-iubenda-forms.php:622 includes/class-iubenda-forms.php:636
+#: includes/class-iubenda-forms.php:637 includes/class-iubenda-forms.php:651
 msgid "First name"
 msgstr "Primeiro nome"
 
@@ -468,9 +471,9 @@ msgstr ""
 
 #: includes/class-radar-dashboard-widget.php:183
 msgid "Fix my rating"
-msgstr ""
+msgstr "Corrigir minha classificação"
 
-#: includes/class-iubenda-forms.php:177
+#: includes/class-iubenda-forms.php:192
 msgid "Form"
 msgstr "Formulário"
 
@@ -494,7 +497,7 @@ msgstr "Fonte do Formulário"
 msgid "Form Title"
 msgstr "Título do Formulário"
 
-#: includes/class-iubenda-forms.php:176
+#: includes/class-iubenda-forms.php:191
 msgid "Forms"
 msgstr "Formulários"
 
@@ -519,7 +522,7 @@ msgstr "Entendi"
 #: includes/class-radar-dashboard-widget.php:142
 #: includes/class-radar-dashboard-widget.php:155
 msgid "Help me get compliant"
-msgstr ""
+msgstr "Ajude-me a ficar em conformidade"
 
 #: views/frontpage.php:25
 msgid "Help me get compliant!"
@@ -533,7 +536,7 @@ msgstr "Veja como calculamos a sua avaliação."
 msgid "How is it calculated?"
 msgstr "Como é calculado?"
 
-#: views/tc-configuration.php:143 views/partials/button-position.php:81
+#: views/tc-configuration.php:144 views/partials/button-position.php:81
 msgid "HTML"
 msgstr "HTML"
 
@@ -577,11 +580,15 @@ msgstr ""
 msgid "Integrate"
 msgstr "Integrar"
 
-#: views/tc-configuration.php:85 views/partials/button-position.php:22
+#: views/tc-configuration.php:86 views/partials/button-position.php:22
 msgid "Integrate manually"
 msgstr "Integrar manualmente"
 
-#: views/tc-configuration.php:50 views/pp-configuration.php:53
+#: views/partials/cs-general-settings.php:343
+msgid "Integrate with WP Consent API (recommended)"
+msgstr ""
+
+#: views/tc-configuration.php:51 views/pp-configuration.php:53
 msgid "Integration"
 msgstr "Integração"
 
@@ -616,12 +623,15 @@ msgstr ""
 "os ative para aumentar o seu nível de conformidade com as leis e evitar o "
 "risco de receber multas."
 
-#: views/tc-configuration.php:103 views/partials/button-position.php:40
+#: views/tc-configuration.php:104 views/partials/button-position.php:40
 #: views/partials/modals/modal-almost-there.php:104
 msgid ""
 "It seems you are using elementor plugin, please use elementor theme builder "
 "to add the iubenda legal widget manually to the footer."
 msgstr ""
+"Aparentemente, você está usando o plugin Elementor. Use o construtor de "
+"temas Elementor para adicionar manualmente o widget legal da iubenda ao "
+"rodapé."
 
 #. Author of the plugin
 msgid "iubenda"
@@ -629,7 +639,7 @@ msgstr "iubenda"
 
 #: views/partials/auto-block-section.php:15
 msgid "iubenda Automatic Script Blocking"
-msgstr ""
+msgstr "Bloqueio Automático de Scripts da iubenda"
 
 #. Widget name will appear in UI.
 #: includes/widget/class-iubenda-legal-widget.php:43
@@ -650,7 +660,7 @@ msgstr "iubenda | All-in-one Compliance for GDPR / CCPA Cookie Consent + more"
 msgid "I’ve already made the set up on iubenda.com"
 msgstr "Eu já fiz a configuração em iubenda.com"
 
-#: views/tc-configuration.php:132 views/partials/button-position.php:69
+#: views/tc-configuration.php:133 views/partials/button-position.php:69
 msgid ""
 "Just copy and paste the embed code (WP shortcode or HTML) where you want the "
 "button to appear."
@@ -658,7 +668,7 @@ msgstr ""
 "Basta copiar e colar o código de incorporação (shortcode do WP ou HTML) onde "
 "deseja que o botão apareça."
 
-#: includes/class-iubenda-forms.php:628 includes/class-iubenda-forms.php:648
+#: includes/class-iubenda-forms.php:643 includes/class-iubenda-forms.php:663
 msgid "Last name"
 msgstr "Sobrenome"
 
@@ -678,10 +688,10 @@ msgstr ""
 "Deixe os scripts intocados na página se o usuário já tiver dado consentimento"
 
 #: includes/widget/class-iubenda-legal-widget.php:38
-#: includes/widget/class-iubenda-legal-widget.php:210
+#: includes/widget/class-iubenda-legal-widget.php:200
 #: includes/block/class-iubenda-legal-block.php:97
-#: includes/block/class-iubenda-legal-block.php:455
-#: includes/block/class-iubenda-legal-block.php:498
+#: includes/block/class-iubenda-legal-block.php:457
+#: includes/block/class-iubenda-legal-block.php:500
 msgid "Legal"
 msgstr "Jurídico"
 
@@ -706,7 +716,7 @@ msgstr "Vamos configurar o seu site para conformidade."
 msgid "LGPD"
 msgstr "LGPD"
 
-#: views/tc-configuration.php:61 views/partials/button-style.php:23
+#: views/tc-configuration.php:62 views/partials/button-style.php:23
 #: views/partials/banner-style.php:27
 msgid "Light"
 msgstr "Versão em branco"
@@ -720,11 +730,11 @@ msgstr "Incorporação manual"
 msgid "Map fields"
 msgstr "Campos do Mapa"
 
-#: views/plugin-settings.php:44
+#: views/plugin-settings.php:45
 msgid "Menu position"
 msgstr "Posição do menu"
 
-#: includes/class-iubenda-forms.php:642
+#: includes/class-iubenda-forms.php:657
 msgid "Middle name"
 msgstr "Segundo nome"
 
@@ -734,10 +744,13 @@ msgid ""
 "data. By disabling these blocking options you may be in breach of such "
 "requirements"
 msgstr ""
+"A maioria das legislação exige explicitamente o consentimento prévio para "
+"tratar dados do usuário. Ao desativar essas opções de bloqueio, você pode "
+"estar violando tais requisitos."
 
 #: views/integrate-setup.php:113 views/partials/cs-general-settings.php:181
 msgid "Native Blocking"
-msgstr ""
+msgstr "Bloqueio nativo"
 
 #: views/partials/modals/modal-almost-there.php:17
 msgid "Nice! We are almost there."
@@ -758,9 +771,9 @@ msgstr ""
 msgid "No forms found."
 msgstr "Nenhum formulário encontrado."
 
-#: includes/class-iubenda-forms.php:1090
+#: includes/class-iubenda-forms.php:1105
 msgid "No label"
-msgstr ""
+msgstr "Sem rótulo"
 
 #: includes/class-iubenda-notice.php:468 includes/class-iubenda-notice.php:475
 msgid "No thanks"
@@ -808,6 +821,8 @@ msgid ""
 "Our plugin can quickly help you achieve full rating and avoid compliance "
 "breach."
 msgstr ""
+"Nosso plugin pode ajudar você a atingir rapidamente a classificação máxima e "
+"evitar violações de conformidade."
 
 #. %s: cs-configuration url.
 #: includes/class-iubenda-notice.php:116
@@ -848,20 +863,20 @@ msgstr "Cole a sua chave API aqui"
 msgid "Paste your embed code here"
 msgstr "Cole o seu código de incorporação aqui"
 
-#: views/pp-configuration.php:41
-msgid "Paste your privacy and cookie policy embed code here"
-msgstr ""
-"Cole aqui seu código de incorporação da política de privacidade e cookies"
-
 #: views/partials/cs-manual-configuration.php:23
 msgid "Paste your privacy controls and cookie solution embed code here"
 msgstr "Cole aqui seu código de incorporação da Cookie Solution"
 
-#: views/cons-configuration.php:39
+#: views/pp-configuration.php:41
+#| msgid "Paste your privacy and cookie policy embed code here"
+msgid "Paste your Privacy Policy embed code here"
+msgstr ""
+
+#: views/cons-configuration.php:40
 msgid "Paste your public API key here"
 msgstr "Cole aqui a sua chave API pública"
 
-#: views/tc-configuration.php:38
+#: views/tc-configuration.php:39
 msgid "Paste your terms and conditions embed code here"
 msgstr "Cole o código de incorporação dos termos e condições aqui"
 
@@ -891,17 +906,17 @@ msgstr "Configurações do plugin"
 msgid "Position"
 msgstr "Posição"
 
-#: includes/class-iubenda-forms.php:134
+#: includes/class-iubenda-forms.php:149
 msgctxt "post status"
 msgid "Mapped"
 msgstr "Mapeado"
 
-#: includes/class-iubenda-forms.php:135
+#: includes/class-iubenda-forms.php:150
 msgctxt "post status"
 msgid "Needs Update"
 msgstr "Precisa de atualização"
 
-#: includes/class-iubenda-forms.php:133
+#: includes/class-iubenda-forms.php:148
 msgctxt "post status"
 msgid "To Map"
 msgstr "Para mapear"
@@ -929,16 +944,16 @@ msgstr ""
 msgid "Primary"
 msgstr "Primário"
 
-#: includes/class-iubenda-settings.php:537
-#: includes/class-iubenda-settings.php:1051
-msgid "Privacy and Cookie Policy"
-msgstr "Política de Privacidade e Cookies"
-
 #: includes/class-iubenda-settings.php:142
 #: includes/class-iubenda-settings.php:543
 #: includes/class-iubenda-settings.php:1072
 msgid "Privacy Controls and Cookie Solution"
 msgstr "Privacy Controls and Cookie Solution"
+
+#: includes/class-iubenda-settings.php:537
+#: includes/class-iubenda-settings.php:1051
+msgid "Privacy Policy"
+msgstr ""
 
 #: views/partials/breadcrumb.php:16
 msgid "Products"
@@ -972,7 +987,7 @@ msgstr ""
 "‘example.com’, sem nenhum protocolo, por exemplo, ‘http://' ou ‘https://‘. "
 "Você também pode usar wildcards (*) para incluir domínios ou subdomínios."
 
-#: iubenda_cookie_solution.php:1537
+#: iubenda_cookie_solution.php:1561
 msgid "Rate"
 msgstr "Avaliação"
 
@@ -990,7 +1005,7 @@ msgstr "Exigir consentimento"
 msgid "Reset settings"
 msgstr "Redefinir as configurações"
 
-#: views/plugin-settings.php:29
+#: views/plugin-settings.php:30
 msgid ""
 "Restrict the plugin to run only for requests that have \"Content-type: text "
 "/ html\" (recommended)"
@@ -999,8 +1014,8 @@ msgstr ""
 "“Content-type: text / html” (recomendado)"
 
 #: views/cs-configuration.php:39 views/cons-single-form.php:348
-#: views/tc-configuration.php:174 views/plugin-settings.php:62
-#: views/cons-configuration.php:99 views/pp-configuration.php:67
+#: views/tc-configuration.php:175 views/plugin-settings.php:63
+#: views/cons-configuration.php:100 views/pp-configuration.php:67
 msgid "Save settings"
 msgstr "Salvar configurações"
 
@@ -1032,7 +1047,7 @@ msgstr "Selecione os produtos que você já ativou"
 msgid "Select the iubenda AMP configuration file location."
 msgstr "Selecione o local do arquivo de configuração AMP iubenda."
 
-#: views/plugin-settings.php:55
+#: views/plugin-settings.php:56
 msgid ""
 "Select whether to display iubenda in a top admin menu or the Settings "
 "submenu."
@@ -1062,7 +1077,7 @@ msgstr "Configure uma política de privacidade"
 msgid "Set up terms and conditions"
 msgstr "Configure termos e condições"
 
-#: iubenda_cookie_solution.php:509
+#: iubenda_cookie_solution.php:515
 msgid "Settings"
 msgstr "Configurações"
 
@@ -1130,7 +1145,7 @@ msgstr ""
 "identificação sobre os seus titulares/usuários individuais. Mapeie o campo "
 "titular   com os campos de formulário correspondentes, quando aplicável."
 
-#: views/plugin-settings.php:52
+#: views/plugin-settings.php:53
 msgid "Submenu"
 msgstr "Sub-menu"
 
@@ -1268,7 +1283,7 @@ msgstr ""
 #: includes/widget/elementor/class-iubenda-elementor-legal-widget.php:103
 #: includes/widget/elementor/class-iubenda-elementor-legal-widget.php:113
 msgid "Title:"
-msgstr ""
+msgstr "Título:"
 
 #. 1:frontend_auto_blocking URL.
 #: views/partials/auto-block-section.php:22
@@ -1278,6 +1293,9 @@ msgid ""
 "target=\"_blank\" href=\"%s\">visit the guide</a> to make configuration "
 "changes."
 msgstr ""
+"Para ativar o Bloqueio Automático, <a class=\"link-underline\" "
+"target=\"_blank\" href=\"%s\">acesse o guia</a> para fazer alterações de "
+"configuração."
 
 #. 1: AMP file path, 2: Iubenda AMP permission support link.
 #: includes/class-iubenda-notice.php:88
@@ -1307,7 +1325,7 @@ msgstr ""
 "notification-alert link-underline\" data-dismiss-"
 "key=\"iub_user_needs_to_verify_his_account\">ignorar este lembrete</a>."
 
-#: views/plugin-settings.php:48
+#: views/plugin-settings.php:49
 msgid "Top menu"
 msgstr "Menu principal"
 
@@ -1327,22 +1345,22 @@ msgstr "Versão"
 
 #: includes/class-radar-dashboard-widget.php:198
 msgid "View configuration"
-msgstr ""
+msgstr "Exibir configuração"
 
 #: includes/class-radar-dashboard-widget.php:138
 msgid "We are scanning your website and shortly will show you the results."
-msgstr ""
+msgstr "Estamos analisando seu site e em breve mostraremos os resultados."
 
 #: includes/class-radar-dashboard-widget.php:151
 msgid "We have analyzed your website and this is the result."
-msgstr ""
+msgstr "Analisamos seu site e este é o resultado."
 
 #: views/partials/header-scanned.php:16
 msgid "We have analyzed your website in background and this is the result."
 msgstr "Analisamos o seu site em segundo plano e esse é o resultado."
 
 #. 1: Admin url or javascript:void(0), 2: Target type
-#: views/tc-configuration.php:94 views/partials/button-position.php:31
+#: views/tc-configuration.php:95 views/partials/button-position.php:31
 #: views/partials/modals/modal-almost-there.php:95
 #, php-format
 #| msgid ""
@@ -1366,7 +1384,7 @@ msgstr "Sentimos muito. Você se importa de nos deixar um feedback?"
 msgid "Welcome to iubenda!"
 msgstr "Bem-vindo a iubenda!"
 
-#: views/cons-configuration.php:53 views/partials/languages-tabs.php:63
+#: views/cons-configuration.php:54 views/partials/languages-tabs.php:63
 #: views/partials/modals/modal-almost-there.php:77
 msgid "Where can I find this code?"
 msgstr "Onde posso encontrar este código?"
@@ -1387,7 +1405,7 @@ msgstr ""
 msgid "Worldwide"
 msgstr "No mundo todo"
 
-#: views/tc-configuration.php:136 views/partials/button-position.php:73
+#: views/tc-configuration.php:137 views/partials/button-position.php:73
 msgid "WP shortcode (recommended)"
 msgstr "Shortcode do WP (recomendado)"
 
@@ -1403,8 +1421,10 @@ msgstr "Você não tem permissão para acessar esta página."
 msgid ""
 "You have missing configurations to complete in order to setup our products."
 msgstr ""
+"Faltam configurações a serem concluídas para que você possa instalar nossos "
+"produtos."
 
-#: includes/services/class-iubenda-cs-product-service.php:87
+#: includes/services/class-iubenda-cs-product-service.php:88
 msgid "You must select at least one legislation."
 msgstr "Você precisa selecionar pelo menos uma legislação."
 
@@ -1422,9 +1442,9 @@ msgstr ""
 
 #: includes/class-radar-dashboard-widget.php:97
 msgid "Your compliance status requires attention!"
-msgstr ""
+msgstr "Seu status de conformidade requer atenção!"
 
-#: views/cons-configuration.php:45
+#: views/cons-configuration.php:46
 msgid "Your iubenda Javascript library public API key"
 msgstr "A sua chave de API pública da biblioteca de Javascript da iubenda"
 
