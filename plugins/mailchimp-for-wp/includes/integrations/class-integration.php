@@ -31,7 +31,7 @@ abstract class MC4WP_Integration
     /**
      * @var array Array of settings
      */
-    public $options = array();
+    public $options = [];
 
     /**
      * @var string Name attribute for the checkbox element. Will be created from slug if empty.
@@ -41,12 +41,12 @@ abstract class MC4WP_Integration
     /**
      * @var string[]
      */
-    public $checkbox_classes = array();
+    public $checkbox_classes = [];
 
     /**
      * @var string[]
      */
-    public $wrapper_classes = array();
+    public $wrapper_classes = [];
 
     /**
      * Constructor
@@ -72,18 +72,18 @@ abstract class MC4WP_Integration
      */
     protected function get_default_options()
     {
-        return array(
+        return [
             'css'               => 0,
             'double_optin'      => 1,
             'enabled'           => 0,
             'implicit'          => 0,
             'label'             => __('Sign me up for the newsletter!', 'mailchimp-for-wp'),
-            'lists'             => array(),
+            'lists'             => [],
             'precheck'          => 0,
             'replace_interests' => 0,
             'update_existing'   => 0,
             'wrap_p'            => 1,
-        );
+        ];
     }
 
     /**
@@ -123,7 +123,7 @@ abstract class MC4WP_Integration
     protected function add_required_hooks()
     {
         if ($this->options['css'] && ! $this->options['implicit']) {
-            add_action('wp_head', array( $this, 'print_css_reset' ));
+            add_action('wp_head', [ $this, 'print_css_reset' ]);
         }
     }
 
@@ -175,6 +175,11 @@ abstract class MC4WP_Integration
             $label           = $default_options['label'];
         }
 
+        // run saved value through gettext filter
+        // this allows people to use a plugin like Loco Translate to translate this message
+        // without updating the setting itself
+        $label = __($label, 'mailchimp-for-wp');
+
         /**
          * Filters the checkbox label
          *
@@ -206,9 +211,9 @@ abstract class MC4WP_Integration
      */
     protected function get_wrapper_attributes()
     {
-        $html_attrs = array(
+        $html_attrs = [
             'class' => sprintf('mc4wp-checkbox mc4wp-checkbox-%s %s', $this->slug, join(' ', $this->wrapper_classes)),
-        );
+        ];
         return $this->array_to_attr_string($html_attrs);
     }
 
@@ -222,7 +227,7 @@ abstract class MC4WP_Integration
         $integration = $this;
         $slug        = $this->slug;
 
-        $attributes = array();
+        $attributes = [];
 
         if ($this->options['precheck']) {
             $attributes['checked'] = 'checked';

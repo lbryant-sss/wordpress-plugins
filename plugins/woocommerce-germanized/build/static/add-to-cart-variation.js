@@ -115,6 +115,7 @@ var __webpack_exports__ = {};
     form.getElementOrBlock(form, 'product-safety-attachments-heading', '.wc-gzd-product-safety-attachments-heading').wc_gzd_set_content(variation.product_safety_attachments_heading);
     form.getElementOrBlock(form, 'safety_instructions', '.safety-instructions').wc_gzd_set_content(variation.safety_instructions);
     form.getElementOrBlock(form, 'safety-instructions-heading', '.wc-gzd-product-safety-instructions-heading').wc_gzd_set_content(variation.safety_instructions_heading);
+    form.getElementOrBlock(form, 'power_supply', '.wc-gzd-power-supply').wc_gzd_set_content(variation.power_supply);
     form.getElementOrBlock(form, 'deposit', '.deposit-amount').wc_gzd_set_content(hasDisplayPrice ? variation.deposit_amount : '');
     form.getElementOrBlock(form, 'deposit-packaging-type', '.deposit-packaging-type').wc_gzd_set_content(hasDisplayPrice ? variation.deposit_packaging_type : '');
     form.getElementOrBlock(form, 'food-description', '.wc-gzd-food-description').wc_gzd_set_content(variation.food_description);

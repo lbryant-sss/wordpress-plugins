@@ -2163,3 +2163,77 @@ td.wt_pklist_dash_btn_row {
   pointer-events: none;
   opacity: .5;
 }
+
+
+.wbtf_review_background_img_wrap {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 75%;
+  height: 50%;
+  overflow: hidden;
+  margin: 0;
+  z-index: 1;
+}
+
+.wbtf_review_background_img_wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+.wbtf-review-content-wrap {
+  padding-left: 22px;
+  z-index: 9;
+  position: relative;
+  padding-top: 9px;
+}
+
+@media (max-width: 800px) {
+  .wbtf_review_background_img_wrap {
+    display: none;
+  }
+}
+
+
+.notice-info .wbtf-button-primary {
+  background: #2860F4 !important;
+  color: #FFF !important;
+  padding: 2px 10px !important;
+}
+
+.notice-info .wbtf-button-secondary {
+  background: #fff !important;
+  color: #000 !important;
+  padding: 2px 10px !important;
+  border: 1px solid #C3C4C7;
+}
+
+.notice-info .wbtf-btns-wrap {
+  margin-top: 20px;
+}
+
+.notice-info .wbtf-btns-wrap a {
+  margin-right: 6px;
+}
+
+.wt_pklist_review_request.notice-info.notice.is-dismissible {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+.wt_pklist_review_request.notice-info.notice.is-dismissible .notice-dismiss:after {
+  background: 0 0;
+  color: #787c82;
+  content: "Dismiss";
+  display: block;
+  font-size: 12px;
+
+}
+
+.wt_pklist_review_request.notice-info.notice.is-dismissible .notice-dismiss {
+  display: flex;
+  align-items: center;
+}

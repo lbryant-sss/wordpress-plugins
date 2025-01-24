@@ -4,7 +4,7 @@ Donate link:
 Tags: Gutenberg,FAQ,alert
 Requires at least: 6.4
 Tested up to: 6.7
-Stable tag: 1.94.1.0
+Stable tag: 1.94.2.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -107,6 +107,9 @@ e.g.
 1. VK Blocks examples.
 
 == Changelog ==
+
+= 1.94.2 =
+[ Bug fix / Specification Change ][ Visual Embed ] Strengthened validation for XSS protection and restricted the range of allowed URLs.
 
 = 1.94.1 =
 [ Specification change ][ Visual Embed ] Add margin:0; to iframe tag

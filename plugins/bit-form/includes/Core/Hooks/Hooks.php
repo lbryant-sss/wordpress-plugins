@@ -136,10 +136,10 @@ class Hooks
 
   public static function plugin_action_links($links)
   {
-    $links[] = '<a href="https://bitapps.pro/docs/bit-form/" target="_blank">' . __('Docs') . '</a>';
+    $links[] = '<a href="https://bit-form.com/wp-docs/" target="_blank">' . __('Docs') . '</a>';
     if (!Utilities::isPro()) {
-      // $links[] = '<a href="https://www.bitapps.pro/bit-form" target="_blank"><strong>' . __('Upgrade to Pro') . '</strong></a>';
-      $links[] = '<a href="https://bitapps.pro/christmas-wordpress-plugin-deal/#bit-form-pricing?link_type=promo&utm_source=bit-form&utm_medium=update_button&utm_campaign=christmas&utm_content=plugins_list_directory" target="_blank"><strong>' . __('Get 50% Off! Christmas Deal.') . '</strong></a>';
+      $links[] = '<a href="https://bit-form.com/#pricing" target="_blank"><strong>' . __('Upgrade to Pro') . '</strong></a>';
+      // $links[] = '<a href="https://bitapps.pro/christmas-wordpress-plugin-deal/#bit-form-pricing?link_type=promo&utm_source=bit-form&utm_medium=update_button&utm_campaign=christmas&utm_content=plugins_list_directory" target="_blank"><strong>' . __('Get 50% Off! Christmas Deal.') . '</strong></a>';
     }
     return $links;
   }

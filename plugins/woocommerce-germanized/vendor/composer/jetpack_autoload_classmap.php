@@ -1011,7 +1011,7 @@ return array(
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-shutdown-handler.php'
 	),
 	'Vendidero\\EUTaxHelper\\Helper' => array(
-		'version' => '2.0.5.0',
+		'version' => '2.0.6.0',
 		'path'    => $baseDir . '/packages/woocommerce-eu-tax-helper/src/Helper.php'
 	),
 	'Vendidero\\Germanized\\Autoloader' => array(
@@ -1069,6 +1069,10 @@ return array(
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductNutriScore' => array(
 		'version' => 'dev-master',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductNutriScore.php'
+	),
+	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductPowerSupply' => array(
+		'version' => 'dev-master',
+		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductPowerSupply.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductSafetyAttachments' => array(
 		'version' => 'dev-master',
@@ -1399,503 +1403,503 @@ return array(
 		'path'    => $baseDir . '/src/Registry/SharedType.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\API\\Auth\\Auth' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/API/Auth/Auth.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\API\\Auth\\Basic' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/API/Auth/Basic.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\API\\Auth\\OAuth' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/API/Auth/OAuth.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\API\\REST' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/API/REST.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\API\\Response' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/API/Response.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\AddressSplitter' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/AddressSplitter.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\Admin' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/Admin.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\BulkActionHandler' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/BulkActionHandler.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\BulkLabel' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/BulkLabel.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\MetaBox' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/MetaBox.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\PackagingSettings' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/PackagingSettings.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\ReturnTable' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/ReturnTable.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\Settings' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/Settings.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\Table' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/Table.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\Tabs\\General' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/Tabs/General.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\Tabs\\Packaging' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/Tabs/Packaging.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\Tabs\\ShippingProvider' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/Tabs/ShippingProvider.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\Tabs\\Tab' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/Tabs/Tab.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\Tabs\\Tabs' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/Tabs/Tabs.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\Tutorial' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Admin/Tutorial.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Ajax' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Ajax.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Api' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Api.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Automation' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Automation.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Blocks\\Assets' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Blocks/Assets.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Blocks\\Checkout' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Blocks/Checkout.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Blocks\\Integrations\\CheckoutPickupLocationSelect' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Blocks/Integrations/CheckoutPickupLocationSelect.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Blocks\\StoreApi\\RoutesController' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Blocks/StoreApi/RoutesController.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Blocks\\StoreApi\\Routes\\V1\\CartSearchPickupLocations' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Blocks/StoreApi/Routes/V1/CartSearchPickupLocations.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Blocks\\StoreApi\\SchemaController' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Blocks/StoreApi/SchemaController.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Blocks\\StoreApi\\Schemas\\V1\\SearchPickupLocationsSchema' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Blocks/StoreApi/Schemas/V1/SearchPickupLocationsSchema.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Blocks\\StoreApi\\StoreApi' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Blocks/StoreApi/StoreApi.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Bootstrap' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Bootstrap.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Caches\\Helper' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Caches/Helper.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Caches\\PackagingCache' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Caches/PackagingCache.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Caches\\ShipmentCache' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Caches/ShipmentCache.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Caches\\ShipmentLabelCache' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Caches/ShipmentLabelCache.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Caches\\ShipmentOrderCache' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Caches/ShipmentOrderCache.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Caches\\ShippingProviderCache' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Caches/ShippingProviderCache.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Compatibility\\Bundles' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Compatibility/Bundles.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Compatibility\\ShipmentTracking' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Compatibility/ShipmentTracking.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Compatibility\\WPML' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Compatibility/WPML.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\DataStores\\Label' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/DataStores/Label.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\DataStores\\Packaging' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/DataStores/Packaging.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\DataStores\\Shipment' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/DataStores/Shipment.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\DataStores\\ShipmentItem' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/DataStores/ShipmentItem.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\DataStores\\ShippingProvider' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/DataStores/ShippingProvider.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Emails' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Emails.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Extensions' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Extensions.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\FormHandler' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/FormHandler.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ImageToPDF' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ImageToPDF.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Install' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Install.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\Compatibility' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Interfaces/Compatibility.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\LabelConfigurationSet' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Interfaces/LabelConfigurationSet.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\PackingBox' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Interfaces/PackingBox.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\PackingItem' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Interfaces/PackingItem.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\RESTAuth' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Interfaces/RESTAuth.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\ShipmentLabel' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Interfaces/ShipmentLabel.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\ShipmentReturnLabel' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Interfaces/ShipmentReturnLabel.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\ShippingProvider' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Interfaces/ShippingProvider.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\ShippingProviderAuto' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Interfaces/ShippingProviderAuto.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Labels\\Automation' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Labels/Automation.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Labels\\ConfigurationSet' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Labels/ConfigurationSet.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Labels\\ConfigurationSetTrait' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Labels/ConfigurationSetTrait.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Labels\\DownloadHandler' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Labels/DownloadHandler.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Labels\\Factory' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Labels/Factory.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Labels\\Label' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Labels/Label.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Labels\\Query' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Labels/Query.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Labels\\ReturnLabel' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Labels/ReturnLabel.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Order' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Order.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Orders\\Factory' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Orders/Factory.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\PDFMerger' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/PDFMerger.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\PDFSplitter' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/PDFSplitter.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Package' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Package.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packaging' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packaging.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\PackagingFactory' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/PackagingFactory.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packaging\\AsyncReportGenerator' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packaging/AsyncReportGenerator.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packaging\\Helper' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packaging/Helper.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packaging\\Report' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packaging/Report.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packaging\\ReportHelper' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packaging/ReportHelper.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packaging\\ReportQueue' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packaging/ReportQueue.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packing\\CartItem' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packing/CartItem.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packing\\Helper' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packing/Helper.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packing\\Item' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packing/Item.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packing\\ItemList' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packing/ItemList.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packing\\OrderItem' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packing/OrderItem.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packing\\PackagingBox' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packing/PackagingBox.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packing\\PackagingList' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packing/PackagingList.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packing\\PackagingSorter' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packing/PackagingSorter.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packing\\Packer' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packing/Packer.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packing\\ShipmentItem' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Packing/ShipmentItem.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\PickupDelivery' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/PickupDelivery.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Product' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Product.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Registry\\AbstractDependencyType' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Registry/AbstractDependencyType.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Registry\\Container' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Registry/Container.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Registry\\FactoryType' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Registry/FactoryType.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Registry\\SharedType' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Registry/SharedType.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Rest\\ShipmentsController' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Rest/ShipmentsController.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ReturnReason' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ReturnReason.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ReturnShipment' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ReturnShipment.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\SecretBox' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/SecretBox.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Shipment' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Shipment.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShipmentError' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShipmentError.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShipmentFactory' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShipmentFactory.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShipmentItem' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShipmentItem.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShipmentQuery' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShipmentQuery.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShipmentReturnItem' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShipmentReturnItem.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingMethod\\MethodHelper' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingMethod/MethodHelper.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingMethod\\ProviderMethod' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingMethod/ProviderMethod.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingMethod\\ProviderMethodPlaceholder' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingMethod/ProviderMethodPlaceholder.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingMethod\\ShippingMethod' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingMethod/ShippingMethod.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\Auto' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingProvider/Auto.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\Helper' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingProvider/Helper.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\PickupLocation' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingProvider/PickupLocation.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\Placeholder' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingProvider/Placeholder.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\PrintFormat' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingProvider/PrintFormat.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\PrintFormatList' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingProvider/PrintFormatList.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\Product' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingProvider/Product.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\ProductList' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingProvider/ProductList.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\Service' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingProvider/Service.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\ServiceList' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingProvider/ServiceList.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\Simple' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/ShippingProvider/Simple.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\SimpleShipment' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/SimpleShipment.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Utilities\\NumberUtil' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Utilities/NumberUtil.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Utilities\\VariableStreamHandler' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Utilities/VariableStreamHandler.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Validation' => array(
-		'version' => '4.2.0.0',
+		'version' => '4.2.1.0',
 		'path'    => $baseDir . '/packages/woocommerce-germanized-shipments/src/Validation.php'
 	),
 	'Vendidero\\Germanized\\Shopmark' => array(

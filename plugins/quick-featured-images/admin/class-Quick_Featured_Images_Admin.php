@@ -14,16 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  class Quick_Featured_Images_Admin {
 
 	/**
-	 * Plugin version, used for cache-busting of style and script file references.
-	 *
-	 * @since   1.0.0
-	 * @updated with every version
-	 *
-	 * @var     string
-	 */
-	protected $plugin_version = '13.5.4';
-
-	/**
 	 * Instance of this class.
 	 *
 	 * @since    1.0.0
@@ -227,17 +217,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	}
 
 	/**
-	 * Return the plugin version.
-	 *
-	 * @since    7.0
-	 *
-	 *@return    Plugin version variable.
-	 */
-	public function get_plugin_version() {
-		return $this->plugin_version;
-	}
-
-	/**
 	 * Return the options slug in the WP options table.
 	 *
 	 * @since    7.0
@@ -436,7 +415,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		// request css only if this plugin was called
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_style( $this->plugin_slug . '-plugin-styles', plugins_url( 'assets/css/admin.min.css', __FILE__ ), array(), $this->plugin_version );
+			wp_enqueue_style( $this->plugin_slug . '-plugin-styles', plugins_url( 'assets/css/admin.min.css', __FILE__ ), array(), QFI_VERSION );
 		}
 	}
 

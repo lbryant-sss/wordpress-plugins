@@ -86,11 +86,9 @@ class Quick_Featured_Images_Defaults {
 	/**
 	 * Plugin version, used for cache-busting of style and script file references.
 	 *
-	 * @since    8.0
-	 *
 	 * @var     string
 	 */
-	protected $plugin_version = null;
+	protected $site_domain;
 
 	/**
 	 * Unique identifier in the WP options table
@@ -158,7 +156,7 @@ class Quick_Featured_Images_Defaults {
 	 * @var      string
 	 */
 	protected $main_function_name = 'qfi_main';
-	
+
 	/**
 	 * Initialize the plugin by loading admin scripts & styles and adding a
 	 * settings page and menu.
@@ -173,7 +171,6 @@ class Quick_Featured_Images_Defaults {
 		$this->plugin_slug = $plugin->get_plugin_slug();
 		$this->page_slug = $this->plugin_slug . '-defaults';
 		$this->parent_page_slug = $plugin->get_page_slug();
-		$this->plugin_version = $plugin->get_plugin_version();
 		$this->settings_db_slug = $plugin->get_settings_db_slug();
 
 		// get settings
@@ -195,10 +192,10 @@ class Quick_Featured_Images_Defaults {
 		$this->site_domain = $parsed_url[ 'host' ];
 
 		// existence of the exif_imagetype()
-		$this->is_exif_imagetype = function_exists( 'exif_imagetype' );
+//		$this->is_exif_imagetype = function_exists( 'exif_imagetype' );
 
 		// time in seconds to wait for a response
-		$this->timeout_seconds = 60;
+//		$this->timeout_seconds = 60;
 		
 		// Load admin style sheet and JavaScript.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
@@ -226,7 +223,7 @@ class Quick_Featured_Images_Defaults {
 		if ( ! empty( $_POST ) ) {
 			// verify allowed submission
 			check_admin_referer( $this->main_function_name, $this->nonce );
-			// sanitze user input
+			// sanitize user input
 			$settings = $this->sanitize_options( $_POST );
 			// store in db
 			if ( update_option( $this->defaults_db_slug, $settings ) ) {
@@ -304,7 +301,7 @@ class Quick_Featured_Images_Defaults {
 	 *
 	 * @since    7.0
 	 *
-	 *@return    required user capability variable.
+	 *@return    string user capability variable.
 	 */
 	public function get_required_user_cap() {
 		return $this->required_user_cap;
@@ -326,7 +323,7 @@ class Quick_Featured_Images_Defaults {
 		// request css only if this plugin was called
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.min.css', __FILE__ ), array( ), $this->plugin_version );
+			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.min.css', __FILE__ ), array( ), QFI_VERSION );
 		}
 
  	}
@@ -348,7 +345,7 @@ class Quick_Featured_Images_Defaults {
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
 			// load script
-			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin-defaults.js', __FILE__ ), array( 'jquery' ), $this->plugin_version );
+			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin-defaults.js', __FILE__ ), array( 'jquery' ), QFI_VERSION );
 			// Enqueue all stuff to use media API, requires at least WP 3.5
 			wp_enqueue_media();
 		}

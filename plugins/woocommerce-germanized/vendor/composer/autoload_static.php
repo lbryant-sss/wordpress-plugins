@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc540c0f018327187de6a0bce0054bfd3
+class ComposerStaticInitd8732c3985ba2767e8356fee2181cd7a
 {
     public static $files = array (
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
@@ -361,6 +361,7 @@ class ComposerStaticInitc540c0f018327187de6a0bce0054bfd3
         'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductDepositPackagingType' => __DIR__ . '/../..' . '/src/Blocks/BlockTypes/ProductDepositPackagingType.php',
         'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductManufacturer' => __DIR__ . '/../..' . '/src/Blocks/BlockTypes/ProductManufacturer.php',
         'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductNutriScore' => __DIR__ . '/../..' . '/src/Blocks/BlockTypes/ProductNutriScore.php',
+        'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductPowerSupply' => __DIR__ . '/../..' . '/src/Blocks/BlockTypes/ProductPowerSupply.php',
         'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductSafetyAttachments' => __DIR__ . '/../..' . '/src/Blocks/BlockTypes/ProductSafetyAttachments.php',
         'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductSafetyInstructions' => __DIR__ . '/../..' . '/src/Blocks/BlockTypes/ProductSafetyInstructions.php',
         'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductShippingCostsInfo' => __DIR__ . '/../..' . '/src/Blocks/BlockTypes/ProductShippingCostsInfo.php',
@@ -649,9 +650,9 @@ class ComposerStaticInitc540c0f018327187de6a0bce0054bfd3
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc540c0f018327187de6a0bce0054bfd3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc540c0f018327187de6a0bce0054bfd3::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitc540c0f018327187de6a0bce0054bfd3::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd8732c3985ba2767e8356fee2181cd7a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd8732c3985ba2767e8356fee2181cd7a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd8732c3985ba2767e8356fee2181cd7a::$classMap;
 
         }, null, ClassLoader::class);
     }

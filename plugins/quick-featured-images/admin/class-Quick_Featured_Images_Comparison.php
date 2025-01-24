@@ -84,15 +84,6 @@ class Quick_Featured_Images_Comparison {
 	protected $parent_page_slug = null;
 
 	/**
-	 * Plugin version, used for cache-busting of style and script file references.
-	 *
-	 * @since    13.6.0
-	 *
-	 * @var     string
-	 */
-	protected $plugin_version = null;
-
-	/**
 	 * Slug of the menu page on which to display the form sections
 	 *
 	 *
@@ -116,7 +107,6 @@ class Quick_Featured_Images_Comparison {
 		$this->plugin_slug = $plugin->get_plugin_slug();
 		$this->page_slug = $this->plugin_slug . '-comparison';
 		$this->parent_page_slug = $plugin->get_page_slug();
-		$this->plugin_version = $plugin->get_plugin_version();
 
         // set capabilities
         if ( isset( $settings[ 'minimum_role_all_pages' ] ) ) {
@@ -231,7 +221,7 @@ class Quick_Featured_Images_Comparison {
         // request css only if this plugin was called
         $screen = get_current_screen();
         if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-            wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.min.css', __FILE__ ), array( ), $this->plugin_version );
+            wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.min.css', __FILE__ ), array( ), QFI_VERSION );
         }
 
     }

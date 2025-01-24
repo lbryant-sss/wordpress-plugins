@@ -15,7 +15,7 @@ jQuery(function ($) {
         // If select2 failed (conflict?) log the error but don't stop other scripts breaking.
         window.console.log(err);
       }
-      $('input#_is_food, input#_defective_copy').on('change', function () {
+      $('input#_is_food, input#_defective_copy, input#_wireless_electronic_device').on('change', function () {
         self.showHidePanels();
       });
       $('input#_defective_copy').trigger('change');
@@ -60,9 +60,10 @@ jQuery(function ($) {
     },
     showHidePanels: function () {
       var is_food = $('input#_is_food:checked').length,
-        is_defective_copy = $('input#_defective_copy:checked').length;
-      var hide_classes = '.hide_if_is_food, .hide_if_defective_copy';
-      var show_classes = '.show_if_is_food, .show_if_defective_copy';
+        is_defective_copy = $('input#_defective_copy:checked').length,
+        is_wireless_electronic_device = $('input#_wireless_electronic_device:checked').length;
+      var hide_classes = '.hide_if_is_food, .hide_if_defective_copy, .hide_if_wireless_electronic_device';
+      var show_classes = '.show_if_is_food, .show_if_defective_copy, .show_if_wireless_electronic_device';
       $(hide_classes).show();
       $(show_classes).hide();
       if (is_food) {
@@ -77,6 +78,9 @@ jQuery(function ($) {
         $('#wc-gzd-product-defect-description').show();
       } else {
         $('#wc-gzd-product-defect-description').hide();
+      }
+      if (is_wireless_electronic_device) {
+        $('.show_if_wireless_electronic_device').show();
       }
     },
     onQuickEdit: function () {

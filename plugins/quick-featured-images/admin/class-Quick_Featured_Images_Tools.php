@@ -355,8 +355,8 @@ class Quick_Featured_Images_Tools { // only for debugging: extends Quick_Feature
 	 * @var      string
 	 */
 	protected $transient_name = null;
-		
-	 /**
+
+	/**
 	 * Initialize the plugin by loading admin scripts & styles and adding a
 	 * settings page and menu.
 	 *
@@ -371,7 +371,6 @@ class Quick_Featured_Images_Tools { // only for debugging: extends Quick_Feature
 		$this->plugin_slug = $plugin->get_plugin_slug();
 		$this->page_slug = $this->plugin_slug . '-tools';
 		$this->parent_page_slug = $plugin->get_page_slug();
-		$this->plugin_version = $plugin->get_plugin_version();
 		$this->settings_db_slug = $plugin->get_settings_db_slug();
 
 		// get settings
@@ -1986,7 +1985,7 @@ class Quick_Featured_Images_Tools { // only for debugging: extends Quick_Feature
 		// request css only if this plugin was called
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.min.css', __FILE__ ), array(), $this->plugin_version );
+			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.min.css', __FILE__ ), array(), QFI_VERSION );
 		}
 
 	}
@@ -2007,7 +2006,7 @@ class Quick_Featured_Images_Tools { // only for debugging: extends Quick_Feature
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
 			// load script
-			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), $this->plugin_version );
+			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), QFI_VERSION );
 			// Enqueue all stuff to use media API, requires at least WP 3.5
 			wp_enqueue_media();
 		}

@@ -66,7 +66,7 @@ class WC_Germanized_Meta_Box_Product_Data {
 				<?php if ( WC_germanized()->is_pro() ) : ?>
 					<p class="wc-gzd-product-settings-subtitle">
 						<?php esc_html_e( 'Deposit', 'woocommerce-germanized' ); ?>
-						<a class="page-title-action" href="https://vendidero.de/dokument/lebensmittel-auszeichnen#pfand-berechnen"><?php esc_html_e( 'Help', 'woocommerce-germanized' ); ?></a>
+						<a class="page-title-action" href="https://vendidero.de/doc/woocommerce-germanized/lebensmittel-auszeichnen#pfand-berechnen"><?php esc_html_e( 'Help', 'woocommerce-germanized' ); ?></a>
 						<a class="wc-gzd-product-settings-action" target="_blank" href="<?php echo esc_url( admin_url( 'edit-tags.php?taxonomy=product_deposit_type&post_type=product' ) ); ?>"><?php esc_html_e( 'Manage deposit types', 'woocommerce-germanized' ); ?></a>
 					</p>
 
@@ -473,6 +473,14 @@ class WC_Germanized_Meta_Box_Product_Data {
 			'default'       => 'no',
 		);
 
+		$types['wireless_electronic_device'] = array(
+			'id'            => '_wireless_electronic_device',
+			'wrapper_class' => '',
+			'label'         => __( 'Electronic device (wireless)', 'woocommerce-germanized' ),
+			'description'   => __( 'Wireless electronic device (e.g. tablet) requiring power supply unit labeling.', 'woocommerce-germanized' ),
+			'default'       => 'no',
+		);
+
 		$types['differential_taxation'] = array(
 			'id'            => '_differential_taxation',
 			'wrapper_class' => '',
@@ -670,10 +678,65 @@ class WC_Germanized_Meta_Box_Product_Data {
 			</p>
 		</div>
 
+		<div class="options_group show_if_simple show_if_wireless_electronic_device">
+			<p class="wc-gzd-product-settings-subtitle">
+				<?php esc_html_e( 'Electronic device (wireless)', 'woocommerce-germanized' ); ?>
+				<a class="page-title-action" href="https://vendidero.de/doc/woocommerce-germanized/kennzeichnungspflichten-zu-netzteilen-fur-elektrogerate"><?php esc_html_e( 'Help', 'woocommerce-germanized' ); ?></a>
+			</p>
+
+			<?php
+				woocommerce_wp_checkbox(
+					array(
+						'id'          => '_device_contains_power_supply',
+						'label'       => __( 'Power supply', 'woocommerce-germanized' ),
+						'description' => __( 'Charger included in the scope of delivery.', 'woocommerce-germanized' ),
+					)
+				);
+			?>
+
+			<?php
+				woocommerce_wp_text_input(
+					array(
+						'id'          => '_device_charging_watt_min',
+						'value'       => $_gzd_product->get_device_charging_watt_min( 'edit' ),
+						'label'       => __( 'Minimum power (Watt)', 'woocommerce-germanized' ),
+						'type'        => 'number',
+						'style'       => 'width: 100px',
+						'desc_tip'    => true,
+						'description' => __( 'Minimum power for charging the device.', 'woocommerce-germanized' ),
+					)
+				);
+			?>
+
+			<?php
+			woocommerce_wp_text_input(
+				array(
+					'id'          => '_device_charging_watt_max',
+					'value'       => $_gzd_product->get_device_charging_watt_max( 'edit' ),
+					'label'       => __( 'Maximum power (Watt)', 'woocommerce-germanized' ),
+					'type'        => 'number',
+					'style'       => 'width: 100px',
+					'desc_tip'    => true,
+					'description' => __( 'Power necessary to reach the maximum charging speed of the device.', 'woocommerce-germanized' ),
+				)
+			);
+			?>
+
+			<?php
+			woocommerce_wp_checkbox(
+				array(
+					'id'          => '_device_charging_supports_usb_pd',
+					'label'       => __( 'USB PD', 'woocommerce-germanized' ),
+					'description' => __( 'This device supports the fast charging protocol USB Power Delivery.', 'woocommerce-germanized' ),
+				)
+			);
+			?>
+		</div>
+
 		<div class="options_group show_if_simple show_if_variable show_if_external">
 			<p class="wc-gzd-product-settings-subtitle">
 				<?php esc_html_e( 'Product safety', 'woocommerce-germanized' ); ?>
-				<a class="page-title-action" href="https://vendidero.de/dokument/allgemeine-produktsicherheit-gpsr"><?php esc_html_e( 'Help', 'woocommerce-germanized' ); ?></a>
+				<a class="page-title-action" href="https://vendidero.de/doc/woocommerce-germanized/allgemeine-produktsicherheit-gpsr"><?php esc_html_e( 'Help', 'woocommerce-germanized' ); ?></a>
 			</p>
 
 			<p class="form-field">
@@ -845,7 +908,7 @@ class WC_Germanized_Meta_Box_Product_Data {
 		?>
 		<p class="wc-gzd-product-settings-subtitle">
 			<?php esc_html_e( 'Delivery Time', 'woocommerce-germanized' ); ?>
-			<a class="page-title-action" href="https://vendidero.de/dokument/lieferzeiten-verwalten"><?php esc_html_e( 'Help', 'woocommerce-germanized' ); ?></a>
+			<a class="page-title-action" href="https://vendidero.de/doc/woocommerce-germanized/lieferzeiten-verwalten"><?php esc_html_e( 'Help', 'woocommerce-germanized' ); ?></a>
 		</p>
 
 		<p class="form-field">
@@ -931,7 +994,7 @@ class WC_Germanized_Meta_Box_Product_Data {
 							array(
 								'name'        => "country_specific_delivery_times[$country]",
 								'placeholder' => __( 'Same as default', 'woocommerce-germanized' ),
-								'term'        => $delivery_times[ $term_slug ],
+								'term'        => isset( $delivery_times[ $term_slug ] ) ? $delivery_times[ $term_slug ] : false,
 								'id'          => 'country_specific_delivery_times-' . esc_attr( $country ),
 							)
 						);
@@ -1015,6 +1078,11 @@ class WC_Germanized_Meta_Box_Product_Data {
 			'_photovoltaic_system'                      => '',
 			'_used_good'                                => '',
 			'_defective_copy'                           => '',
+			'_wireless_electronic_device'               => '',
+			'_device_contains_power_supply'             => '',
+			'_device_charging_supports_usb_pd'          => '',
+			'_device_charging_watt_min'                 => '',
+			'_device_charging_watt_max'                 => '',
 			'_differential_taxation'                    => '',
 			'_is_food'                                  => '',
 			'_min_age'                                  => '',
@@ -1484,12 +1552,10 @@ class WC_Germanized_Meta_Box_Product_Data {
 
 		if ( isset( $data['_gtin'] ) ) {
 			$gzd_product->set_gtin( wc_clean( $data['_gtin'] ) );
-
 		}
 
 		if ( isset( $data['_mpn'] ) ) {
 			$gzd_product->set_mpn( wc_clean( $data['_mpn'] ) );
-
 		}
 
 		self::save_delivery_times( $gzd_product, $data );
@@ -1512,6 +1578,19 @@ class WC_Germanized_Meta_Box_Product_Data {
 
 		// Is a defective copy?
 		$gzd_product->set_defective_copy( isset( $data['_defective_copy'] ) ? 'yes' : 'no' );
+
+		// Wireless electronic device
+		$gzd_product->set_wireless_electronic_device( isset( $data['_wireless_electronic_device'] ) ? 'yes' : 'no' );
+		$gzd_product->set_device_contains_power_supply( isset( $data['_device_contains_power_supply'] ) ? 'yes' : 'no' );
+		$gzd_product->set_device_charging_supports_usb_pd( isset( $data['_device_charging_supports_usb_pd'] ) ? 'yes' : 'no' );
+
+		if ( isset( $data['_device_charging_watt_min'] ) ) {
+			$gzd_product->set_device_charging_watt_min( wc_clean( $data['_device_charging_watt_min'] ) );
+		}
+
+		if ( isset( $data['_device_charging_watt_max'] ) ) {
+			$gzd_product->set_device_charging_watt_max( wc_clean( $data['_device_charging_watt_max'] ) );
+		}
 
 		// Is food?
 		$gzd_product->set_is_food( isset( $data['_is_food'] ) ? 'yes' : 'no' );

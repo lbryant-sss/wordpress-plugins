@@ -1,13 +1,13 @@
 === Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder ===
 Plugin Name: Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder
-Version: 2.17.4
-Stable tag: 2.17.4
+Version: 2.17.5
+Stable tag: 2.17.5
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin 
 Tags: contact form, form, contact forms, forms, form builder
 Requires at least: 5.0
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -543,6 +543,19 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
+= 2.17.5 =
+*Release Date: 23 January, 2025*
+*Improvements:
+    1. Improved backend validation for the URL field.
+    2. Enhanced validation for webhook integration links.
+
+*Fix:
+    1. Fixed an issue where the field background color changed on hover when the global border color was modified.
+    2. Resolved an issue with sending emails via MailerLite integration.
+    3. Addressed a validation issue with field mapping in Elastic Email integration.
+    4. Fixed email notification problems in the WP User Registration Form.
+    5. Resolved Missing "Advanced File Upload" Field in Meta Box integration.
+
 = 2.17.4 =
 *Release Date: 18 December, 2024*
 *Improvement:

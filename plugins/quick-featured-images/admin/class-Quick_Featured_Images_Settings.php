@@ -84,15 +84,6 @@ class Quick_Featured_Images_Settings {
 	protected $parent_page_slug = null;
 
 	/**
-	 * Plugin version, used for cache-busting of style and script file references.
-	 *
-	 * @since    7.0
-	 *
-	 * @var     string
-	 */
-	protected $plugin_version = null;
-
-	/**
 	 * Unique identifier in the WP options table for the plugin's settings
 	 *
 	 *
@@ -146,7 +137,6 @@ class Quick_Featured_Images_Settings {
 		$this->plugin_slug = $plugin->get_plugin_slug();
 		$this->page_slug = $this->plugin_slug . '-settings';
 		$this->parent_page_slug = $plugin->get_page_slug();
-		$this->plugin_version = $plugin->get_plugin_version();
 		$this->settings_db_slug = $plugin->get_settings_db_slug();
 
 		// get settings
@@ -270,7 +260,7 @@ class Quick_Featured_Images_Settings {
 		// request css only if this plugin was called
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.min.css', __FILE__ ), array( ), $this->plugin_version );
+			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.min.css', __FILE__ ), array( ), QFI_VERSION );
 		}
 
  	}

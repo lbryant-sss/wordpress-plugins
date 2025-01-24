@@ -44,7 +44,7 @@ class Admin_Bar
     $capability = apply_filters('bitforms_form_access_capability', 'manage_options');
     $menuTitle = Utilities::isPro() ? 'Bit Form Pro' : 'Bit Form';
     add_menu_page(
-      __('Bit Form - Most advanced form builder and database management system', 'bit-form'),
+      __('Bit Form - Most advanced form builder and entries management plugin', 'bit-form'),
       $menuTitle,
       $capability,
       'bitform',

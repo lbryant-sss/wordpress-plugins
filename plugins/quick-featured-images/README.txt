@@ -5,7 +5,7 @@ Tags: featured image,featured images,bulk set,automatic,thumbnails
 Requires at least: 3.8
 Requires PHP: 5.2
 Tested up to: 6.7
-Stable tag: 13.7.1
+Stable tag: 13.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -295,6 +295,11 @@ The translations are handled on WordPress.org. Please be part of the community a
 7. The seventh and last screen: take an overview of your rules for future default featured images.
 
 == Changelog ==
+
+= 13.7.2 =
+* improved class autoloader to prevent issues with a Transliteration Plugin
+* improved code
+* fixed deprecated notices
 
 = 13.7.1 =
 * fixed vulnerability to unauthorized modification of data (reported by Wordfence)

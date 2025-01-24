@@ -22,6 +22,10 @@ define('BITFORMS_UPLOAD_BASE_URL', $wpUploadBaseURL . '/bitforms');
 define('BITFORMS_BF_SEPARATOR', '__bf__');
 define('BITFORMS_PREFIX', 'bitforms_');
 
+if (!defined('AUTH_SALT')) {
+  define('AUTH_SALT', random_bytes(32));
+}
+
 // Autoload vendor files.
 require_once BITFORMS_PLUGIN_DIR_PATH . 'vendor/autoload.php';
 // Initialize the plugin.

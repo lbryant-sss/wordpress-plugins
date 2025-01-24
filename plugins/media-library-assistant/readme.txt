@@ -199,6 +199,7 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 == Changelog ==
 
 = 3.25 =
+* New: A new example plugin, "MLA Gallery Download Checklist", supports downloading a ZIP archive of items selected by checking boxes in an `[mla_gallery]` display.
 * New: For items attached to a parent post/page, the `parent:` field-level prefix gives access to values assigned to the item's parent.
 * New: The `author:` field-level prefix gives access to values assigned to the item's author in the "users" and "usermeta" database tables.
 * Fix: For the Media/Library Grid mode, an incompatibility with the Enhanced Media Library plugin has been eliminated.

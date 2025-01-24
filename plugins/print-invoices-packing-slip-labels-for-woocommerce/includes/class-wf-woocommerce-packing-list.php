@@ -116,8 +116,8 @@ class Wf_Woocommerce_Packing_List {
 			self::$base_version = WF_PKLIST_VERSION;
 		}else 
 		{
-			$this->version = '4.7.2';
-			self::$base_version = '4.7.2';
+			$this->version = '4.7.3';
+			self::$base_version = '4.7.3';
 		}
 		if(defined('WF_PKLIST_PLUGIN_NAME'))
 		{
@@ -357,7 +357,7 @@ class Wf_Woocommerce_Packing_List {
 		$this->loader->add_action('woocommerce_email_after_order_table',$this->plugin_admin,'add_email_print_actions',10); /* Add print action buttons in order */		
 				
 		//email attachment
-		$this->loader->add_filter('woocommerce_email_attachments',$this->plugin_admin,'add_email_attachments',10,3); /* Add pdf attachments to order email */		
+		$this->loader->add_filter('woocommerce_email_attachments',$this->plugin_admin,'add_email_attachments',10,4); /* Add pdf attachments to order email */		
 		
 		$this->loader->add_filter('woocommerce_checkout_fields',$this->plugin_admin,'add_checkout_fields'); /* Add additional checkout fields */		
 
@@ -375,6 +375,12 @@ class Wf_Woocommerce_Packing_List {
 		$this->loader->add_filter('wt_pklist_convert_currency',$this->plugin_admin,'wf_convert_to_user_currency',10,3);
 
 		$this->loader->add_filter('woocommerce_shop_order_search_fields',$this->plugin_admin,'wf_search_order_by_invoice_number',10,1); /* Search the order by invoice number */
+
+		/**
+		 * @since 4.7.3
+		 * Search the order by invoice number when HPOS is enabled
+		*/
+		$this->loader->add_filter('woocommerce_order_table_search_query_meta_keys',$this->plugin_admin,'wf_search_order_by_invoice_number',10,1); 
 
 		$this->loader->add_action( 'woocommerce_after_account_orders', $this->plugin_admin,'action_after_account_orders_js',10);
 		$this->loader->add_filter('woocommerce_debug_tools', $this->plugin_admin,'wt_pklist_delete_all_invoice_numbers_tool',10,1);

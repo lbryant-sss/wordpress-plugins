@@ -115,13 +115,14 @@ class RecordApiHelper
 
     foreach ($finalData as $key => $value) {
       if ('email' !== $key) {
-        if ('name' === $key) {
-          $requestParams[$key] = $value;
-        } else {
-          $requestParams['fields'][$key] = $value;
-        }
+        // if ('name' === $key) {
+        //   $requestParams[$key] = $value;
+        // } else {
+        $requestParams['fields'][$key] = $value;
+        // }
       }
     }
+
     $requestParams['fields'] = !empty($requestParams['fields']) ? (object) $requestParams['fields'] : [];
     $email = $finalData['email'];
     $isExist = $this->existSubscriber($auth_token, $email);

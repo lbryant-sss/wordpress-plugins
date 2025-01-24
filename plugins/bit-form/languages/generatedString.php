@@ -1657,7 +1657,7 @@ $i18n_strings = array(
 
     'reCaptcha' => __('reCaptcha', 'bit-form'),
 
-    'hCaptch' => __('hCaptch', 'bit-form'),
+    'hCaptcha' => __('hCaptcha', 'bit-form'),
 
     'Turnstile' => __('Turnstile', 'bit-form'),
 
@@ -2949,7 +2949,7 @@ $i18n_strings = array(
 
     'Decision Box' => __('Decision Box', 'bit-form'),
 
-    'reCaptcha v2' => __('reCaptcha v2', 'bit-form'),
+    'reCAPTCHA v2' => __('reCAPTCHA v2', 'bit-form'),
 
     'Repeater' => __('Repeater', 'bit-form'),
 

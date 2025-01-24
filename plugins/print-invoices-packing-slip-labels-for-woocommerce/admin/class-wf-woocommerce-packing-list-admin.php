@@ -265,20 +265,36 @@ class Wf_Woocommerce_Packing_List_Admin {
 		return $fields;
 	}
 
-    /**
+   	/**
 	 * Function to add email attachments to order email
 	 *
 	 * @since    2.5.0
+	 * @updated 4.7.3 Added `wt_get_order_id_from_email_obj` filter to retrieve the order ID from the email object.
 	 */
-	public function add_email_attachments($attachments, $status=null, $order=null)
+	public function add_email_attachments($attachments, $status = null, $order = null, $email = null) 
 	{
-		if(is_object($order) && is_a($order,'WC_Order') && isset($status))
-		{
-            $order=( WC()->version < '2.7.0' ) ? new WC_Order($order) : new wf_order($order);
+		if ( is_object( $order) && is_a( $order, 'WC_Order' ) ) {
+			$order = ( WC()->version < '2.7.0' ) ? new WC_Order($order) : new wf_order($order);
 			$order_id = (WC()->version < '2.7.0') ? $order->id : $order->get_id();
-			$attachments=apply_filters('wt_email_attachments',$attachments,$order,$order_id,$status);
-        }
-		return $attachments;	
+		} else {
+		   /**
+			* 4.7.3
+			* - `wt_get_order_id_from_email_obj`:
+			*   Filter to retrieve the order ID from the email object when the order is not directly available.
+			*
+			*   @param int|null $order_id The current order ID, defaults to null.
+			*   @param object|null $email The email object passed to the filter, may contain order-related data.
+			*   @param string|null $status The email status or id.
+			*/
+			$order_id = apply_filters('wt_get_order_id_from_email_obj', null, $email, $status, $order);
+			$order = wc_get_order($order_id);
+		}
+	
+		if ( is_object( $order ) && is_a( $order, 'WC_Order' ) && isset( $status ) ) {
+			$attachments = apply_filters('wt_email_attachments', $attachments, $order, $order_id, $status);
+		}
+	
+		return $attachments;
 	}
    
     /**
@@ -1760,7 +1776,16 @@ class Wf_Woocommerce_Packing_List_Admin {
 			return self::$is_enable_rtl;
 		}
 		$rtl_languages=self::get_rtl_languages();
-		$current_lang=get_locale();
+
+		/**
+		 * @since 4.7.3
+		 * get_locale() is not accurate in some cases(when wpml is used) so we need to use determine_locale() function.
+		 */
+		if ( function_exists( 'determine_locale' ) ) { 
+			$current_lang = determine_locale();
+		} else {
+			$current_lang = get_locale();
+		}
 		
 		self::$is_enable_rtl=isset($rtl_languages[$current_lang]); 
 		return self::$is_enable_rtl;
@@ -2517,8 +2542,16 @@ class Wf_Woocommerce_Packing_List_Admin {
 			if ( false !== get_option( 'wt_created_document_count' )) {
 				$count = (int)get_option( 'wt_created_document_count' );
 				update_option('wt_created_document_count',$count+1);
+				if('invoice' === $template_type){
+					$invoice_count = (int)get_option( 'wt_created_invoice_document_count' );
+
+					update_option('wt_created_invoice_document_count',$invoice_count+1);
+				}
 			}else{
 				update_option('wt_created_document_count',1);
+				if('invoice' === $template_type){
+					update_option('wt_created_invoice_document_count',1);
+				}
 			}
 		}
 	}
@@ -4111,6 +4144,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 			'wf_pklist_templates_migrated',
 			'invoice_empty_count',
 			'wt_created_document_count',
+			'wt_created_invoice_document_count',
+			'wt_review_request_banner_state',
 			
 			// Document type option
 			'Wf_Woocommerce_Packing_List',

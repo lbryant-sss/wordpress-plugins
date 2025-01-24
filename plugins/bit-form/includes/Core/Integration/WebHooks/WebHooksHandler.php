@@ -187,6 +187,10 @@ class WebHooksHandler
       }
     }
 
+    if (!wp_http_validate_url($cleanURL)) {
+      return false;
+    }
+
     return ['url' => $cleanURL, 'params' => $params];
   }
 

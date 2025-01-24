@@ -261,6 +261,7 @@ return array(
     'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductDepositPackagingType' => $baseDir . '/src/Blocks/BlockTypes/ProductDepositPackagingType.php',
     'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductManufacturer' => $baseDir . '/src/Blocks/BlockTypes/ProductManufacturer.php',
     'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductNutriScore' => $baseDir . '/src/Blocks/BlockTypes/ProductNutriScore.php',
+    'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductPowerSupply' => $baseDir . '/src/Blocks/BlockTypes/ProductPowerSupply.php',
     'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductSafetyAttachments' => $baseDir . '/src/Blocks/BlockTypes/ProductSafetyAttachments.php',
     'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductSafetyInstructions' => $baseDir . '/src/Blocks/BlockTypes/ProductSafetyInstructions.php',
     'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductShippingCostsInfo' => $baseDir . '/src/Blocks/BlockTypes/ProductShippingCostsInfo.php',

@@ -3,7 +3,7 @@
 /**
  * WP Captcha
  * https://getwpcaptcha.com/
- * (c) WebFactory Ltd, 2022 - 2023, www.webfactoryltd.com
+ * (c) WebFactory Ltd, 2022 - 2025, www.webfactoryltd.com
  */
 
 class WPCaptcha_Functions extends WPCaptcha
@@ -348,6 +348,10 @@ class WPCaptcha_Functions extends WPCaptcha
 
     static function process_lost_password_form($errors)
     {
+        if( !isset( $_POST['pass1'] ) &&  !isset( $_POST['user_login'] ) ){
+            return $errors;
+        }
+        
         $captcha_check = self::handle_captcha();
         if ($captcha_check !== true) {
             $errors->add('captcha', $captcha_check->get_error_message());

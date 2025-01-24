@@ -789,17 +789,17 @@
         },
         {
             "name": "vendidero/woocommerce-eu-tax-helper",
-            "version": "2.0.5",
-            "version_normalized": "2.0.5.0",
+            "version": "2.0.6",
+            "version_normalized": "2.0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vendidero/woocommerce-eu-tax-helper.git",
-                "reference": "75d53618e742125bcaa91bf429590f6091a31183"
+                "reference": "cae237ba7128b5b28029111ca7096e156d684553"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vendidero/woocommerce-eu-tax-helper/zipball/75d53618e742125bcaa91bf429590f6091a31183",
-                "reference": "75d53618e742125bcaa91bf429590f6091a31183",
+                "url": "https://api.github.com/repos/vendidero/woocommerce-eu-tax-helper/zipball/cae237ba7128b5b28029111ca7096e156d684553",
+                "reference": "cae237ba7128b5b28029111ca7096e156d684553",
                 "shasum": ""
             },
             "require": {
@@ -810,7 +810,7 @@
                 "myclabs/deep-copy": "^1.7.0",
                 "woocommerce/woocommerce-sniffs": "^1.0.0"
             },
-            "time": "2024-09-25T09:13:19+00:00",
+            "time": "2025-01-23T10:33:57+00:00",
             "type": "wordpress-plugin",
             "installation-source": "dist",
             "autoload": {
@@ -838,7 +838,7 @@
             "description": "EU tax helper for WooCommerce",
             "homepage": "https://vendidero.de/",
             "support": {
-                "source": "https://github.com/vendidero/woocommerce-eu-tax-helper/tree/v2.0.5",
+                "source": "https://github.com/vendidero/woocommerce-eu-tax-helper/tree/v2.0.6",
                 "issues": "https://github.com/vendidero/woocommerce-eu-tax-helper/issues"
             },
             "install-path": "../../packages/woocommerce-eu-tax-helper"
@@ -907,17 +907,17 @@
         },
         {
             "name": "vendidero/woocommerce-germanized-shipments",
-            "version": "4.2.0",
-            "version_normalized": "4.2.0.0",
+            "version": "4.2.1",
+            "version_normalized": "4.2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vendidero/woocommerce-germanized-shipments.git",
-                "reference": "db191421aea4e0c13d219931424a388f514104d3"
+                "reference": "24793126deb90097909251d8f700a265cc2321f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vendidero/woocommerce-germanized-shipments/zipball/db191421aea4e0c13d219931424a388f514104d3",
-                "reference": "db191421aea4e0c13d219931424a388f514104d3",
+                "url": "https://api.github.com/repos/vendidero/woocommerce-germanized-shipments/zipball/24793126deb90097909251d8f700a265cc2321f0",
+                "reference": "24793126deb90097909251d8f700a265cc2321f0",
                 "shasum": ""
             },
             "require": {
@@ -931,7 +931,7 @@
                 "woocommerce/woocommerce-sniffs": "^1.0.0",
                 "yoast/phpunit-polyfills": "^3.0"
             },
-            "time": "2024-12-30T10:54:36+00:00",
+            "time": "2025-01-23T12:28:27+00:00",
             "type": "wordpress-plugin",
             "installation-source": "dist",
             "autoload": {
@@ -962,7 +962,7 @@
             "description": "The Germanized Shipments implementation.",
             "homepage": "https://github.com/vendidero/woocommerce-germanized-shipments",
             "support": {
-                "source": "https://github.com/vendidero/woocommerce-germanized-shipments/tree/v4.2.0",
+                "source": "https://github.com/vendidero/woocommerce-germanized-shipments/tree/v4.2.1",
                 "issues": "https://github.com/vendidero/woocommerce-germanized-shipments/issues"
             },
             "install-path": "../../packages/woocommerce-germanized-shipments"

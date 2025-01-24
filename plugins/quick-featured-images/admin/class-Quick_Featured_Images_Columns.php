@@ -48,15 +48,6 @@ class Quick_Featured_Images_Columns {
 	protected $plugin_slug = null;
 
 	/**
-	 * Plugin version, used for cache-busting of style and script file references.
-	 *
-	 * @since    7.0
-	 *
-	 * @var     string
-	 */
-	protected $plugin_version = null;
-
-	/**
 	 * Unique identifier in the WP options table
 	 *
 	 *
@@ -152,7 +143,6 @@ class Quick_Featured_Images_Columns {
 		$plugin = Quick_Featured_Images_Admin::get_instance();
 		$this->plugin_name = $plugin->get_plugin_name();
 		$this->plugin_slug = $plugin->get_plugin_slug();
-		$this->plugin_version = $plugin->get_plugin_version();
 		$this->settings_db_slug = $plugin->get_settings_db_slug();
 
 		// add featured image columns if desired
@@ -305,7 +295,7 @@ class Quick_Featured_Images_Columns {
 			$handle = $this->plugin_slug . '-admin-script';
 
 			// load script
-			wp_enqueue_script( $handle, plugins_url( 'assets/js/admin-column.js', __FILE__ ), array( 'jquery' ), $this->plugin_version );
+			wp_enqueue_script( $handle, plugins_url( 'assets/js/admin-column.js', __FILE__ ), array( 'jquery' ), QFI_VERSION );
 
 			// trick: use nonce as translated string to implement random values in JS
 			$translations = array(
@@ -331,7 +321,7 @@ class Quick_Featured_Images_Columns {
 		// load CSS file in posts list pages only
 		$screen = get_current_screen();
 		if ( 'edit' == $screen->base ) {
-			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin-column.css', __FILE__ ), array( ), $this->plugin_version );
+			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin-column.css', __FILE__ ), array( ), QFI_VERSION );
 		}
  	}
 
