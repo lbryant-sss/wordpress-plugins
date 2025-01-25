@@ -134,14 +134,6 @@ function get_settings_fields(): array {
 	// Code Editor settings section.
 
 	$fields['editor'] = [
-		'theme' => [
-			'name'       => __( 'Theme', 'code-snippets' ),
-			'type'       => 'select',
-			'default'    => 'default',
-			'options'    => get_editor_theme_list(),
-			'codemirror' => 'theme',
-		],
-
 		'indent_with_tabs' => [
 			'name'       => __( 'Indent With Tabs', 'code-snippets' ),
 			'type'       => 'checkbox',
@@ -217,7 +209,8 @@ function get_settings_fields(): array {
 			'default'    => true,
 			'codemirror' => 'styleActiveLine',
 		],
-		'keymap'                => [
+
+		'keymap' => [
 			'name'       => __( 'Keymap', 'code-snippets' ),
 			'type'       => 'select',
 			'desc'       => __( 'The set of keyboard shortcuts to use in the code editor.', 'code-snippets' ),
@@ -229,6 +222,14 @@ function get_settings_fields(): array {
 				'sublime' => __( 'Sublime Text', 'code-snippets' ),
 			],
 			'codemirror' => 'keyMap',
+		],
+
+		'theme' => [
+			'name'       => __( 'Theme', 'code-snippets' ),
+			'type'       => 'select',
+			'default'    => 'default',
+			'options'    => get_editor_theme_list(),
+			'codemirror' => 'theme',
 		],
 	];
 

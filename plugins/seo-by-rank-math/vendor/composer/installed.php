@@ -1,13 +1,13 @@
 <?php return array(
     'root' => array(
         'name' => 'rankmath/seo-by-rank-math',
-        'pretty_version' => 'dev-develop',
-        'version' => 'dev-develop',
-        'reference' => '953cc32470af04c8ac6547ec9ba6575bcf67cf95',
+        'pretty_version' => 'v1.0.237-beta',
+        'version' => '1.0.237.0-beta',
+        'reference' => '5b4da5a9382b06660039b6782004c1fabbd72290',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'dev' => true,
+        'dev' => false,
     ),
     'versions' => array(
         'a5hleyrich/wp-background-processing' => array(
@@ -47,18 +47,18 @@
             'dev_requirement' => false,
         ),
         'rankmath/seo-by-rank-math' => array(
-            'pretty_version' => 'dev-develop',
-            'version' => 'dev-develop',
-            'reference' => '953cc32470af04c8ac6547ec9ba6575bcf67cf95',
+            'pretty_version' => 'v1.0.237-beta',
+            'version' => '1.0.237.0-beta',
+            'reference' => '5b4da5a9382b06660039b6782004c1fabbd72290',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'woocommerce/action-scheduler' => array(
-            'pretty_version' => '3.9.0',
-            'version' => '3.9.0.0',
-            'reference' => '90b98e6fe97d455679b1d288f050cad8f6f79771',
+            'pretty_version' => '3.9.1',
+            'version' => '3.9.1.0',
+            'reference' => 'd73b5f83cd42832fa137e03687bad3e312298d29',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../woocommerce/action-scheduler',
             'aliases' => array(),

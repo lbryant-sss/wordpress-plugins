@@ -3,7 +3,7 @@ defined( 'ABSPATH' ) || exit( 'No direct script access allowed' );
 
 /**
  * Plugin Name: WP-Parsidate
- * Version: 5.1.3
+ * Version: 5.1.4
  * Plugin URI: https://wp-parsi.com/support/
  * Description: Persian package for WordPress, Adds full RTL and Shamsi (Jalali) support for: posts, comments, pages, archives, search, categories, permalinks and all admin sections and TinyMce editor, lists, quick editor. This package has Jalali archive widget.
  * Author: WP-Parsi Team
@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit( 'No direct script access allowed' );
  * Domain Path: /languages
  * Requires at least: 5.2
  * Requires PHP: 7.4
- * WC tested up to: 9.3.3
+ * WC tested up to: 9.6.0
  * License: GPLv3
  *
  * WP-Parsidate is free software: you can redistribute it and/or modify

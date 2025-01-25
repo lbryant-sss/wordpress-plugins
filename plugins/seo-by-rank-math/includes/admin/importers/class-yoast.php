@@ -122,7 +122,7 @@ class Yoast extends Plugin_Importer {
 		$this->set_separator( $yoast_titles );
 		$this->set_post_types( $yoast_titles );
 		$this->set_taxonomies( $yoast_titles );
-		$this->sitemap_settings( $yoast_main, $yoast_sitemap );
+		$this->sitemap_settings( $yoast_main, $yoast_sitemap, $yoast_titles );
 		$this->social_webmaster_settings( $yoast_main, $yoast_social );
 		$this->breadcrumb_settings( $yoast_titles, $yoast_internallinks );
 		$this->misc_settings( $yoast_titles, $yoast_social );
@@ -930,8 +930,9 @@ class Yoast extends Plugin_Importer {
 	 *
 	 * @param array $yoast_main    Settings.
 	 * @param array $yoast_sitemap Settings.
+	 * @param array $yoast_titles  Settings.
 	 */
-	private function sitemap_settings( $yoast_main, $yoast_sitemap ) {
+	private function sitemap_settings( $yoast_main, $yoast_sitemap, $yoast_titles ) {
 		if ( ! isset( $yoast_main['enable_xml_sitemap'] ) && isset( $yoast_sitemap['enablexmlsitemap'] ) ) {
 			Helper::update_modules( [ 'sitemap' => 'on' ] );
 		}
@@ -945,6 +946,8 @@ class Yoast extends Plugin_Importer {
 		if ( empty( $yoast_sitemap['excluded-posts'] ) ) {
 			$this->sitemap['exclude_posts'] = '';
 		}
+
+		$this->sitemap[ 'include_authors_without_posts' ] = isset( $yoast_titles[ 'noindex-author-noposts-wpseo' ] ) && ! $yoast_titles[ 'noindex-author-noposts-wpseo' ] ? 'on' : 'off';
 
 		$this->sitemap_exclude_roles( $yoast_sitemap );
 	}

@@ -1,0 +1,20 @@
+<?php
+/**
+ * The Updates routine for version 1.0.237.
+ *
+ * @since      1.0.237
+ * @package    RankMath
+ * @subpackage RankMath\Updates
+ * @author     Rank Math <support@rankmath.com>
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+/**
+ * Alter the redirections table structure.
+ */
+function rank_math_1_0_237_update_redirection_structure() {
+	global $wpdb;
+	$wpdb->query( "ALTER TABLE {$wpdb->prefix}rank_math_redirections MODIFY COLUMN sources LONGTEXT NOT NULL" );
+}
+rank_math_1_0_237_update_redirection_structure();

@@ -37,7 +37,8 @@ Support can take place in the [public support forums](https://wordpress.org/supp
 Please note, we do not provide individual email support for our free version. This is reserved for customers of our [Pro version](https://www.quickfeaturedimages.com/?utm_source=wordpress_org&utm_medium=plugin&utm_campaign=readme).
 
 = What users said =
-* **&#8220;Excellent plugin to do just that: quickly manage all your featured images without the need to edit the posts directly.&#8221;** in [Reviews on wordpress.org](https://wordpress.org/support/topic/it-does-exactly-what-it-says-57/) by danielepais on December 7, 2045
+* **&#8220;Great plugin with great support&#8221;** in [Reviews on wordpress.org](https://wordpress.org/support/topic/great-plugin-with-great-support-358/) by danilocubrovic on January 24, 2025
+* **&#8220;Excellent plugin to do just that: quickly manage all your featured images without the need to edit the posts directly.&#8221;** in [Reviews on wordpress.org](https://wordpress.org/support/topic/it-does-exactly-what-it-says-57/) by danielepais on December 7, 2024
 * **&#8220;Great for my needs&#8221;** in [Reviews on wordpress.org](https://wordpress.org/support/topic/great-for-my-needs-7/#post-17337619/) by gaiusjaugustus on January 12, 2024
 * **&#8220;simple to use&#8221;** in [Reviews on wordpress.org](https://wordpress.org/support/topic/simple-to-use-337/) by rabbitace on September 8, 2023
 * **&#8220;SO helpful!&#8221;** in [Reviews on wordpress.org](https://wordpress.org/support/topic/so-helpful-130/) by brandcandyamy on June 6, 2023
