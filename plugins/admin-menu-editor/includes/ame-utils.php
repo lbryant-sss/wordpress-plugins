@@ -277,11 +277,14 @@ class ameUtils {
 		//Enable browser caching.
 		//Note that admin-ajax.php always adds HTTP headers that prevent caching, so we will
 		//override all of them even though we don't actually need some of them, like "Expires".
+		$expirationBaseTime = time();
 		if ( !empty($lastModified) ) {
 			header('Last-Modified: ' . gmdate('D, d M Y H:i:s ', $lastModified) . 'GMT');
+			if ($lastModified > $expirationBaseTime) {
+				$expirationBaseTime = $lastModified;
+			}
 		}
-		$expires = !empty($lastModified) ? ($lastModified + $cacheLifetime) : (time() + $cacheLifetime);
-		header('Expires: ' . gmdate('D, d M Y H:i:s ', $expires) . 'GMT');
+		header('Expires: ' . gmdate('D, d M Y H:i:s ', $expirationBaseTime + $cacheLifetime) . 'GMT');
 		header('Cache-Control: public, max-age=' . $cacheLifetime);
 
 		return $omitResponseBody;
