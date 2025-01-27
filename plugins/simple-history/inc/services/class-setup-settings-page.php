@@ -50,6 +50,11 @@ class Setup_Settings_Page extends Service {
 		$show_settings_page = apply_filters( 'simple_history_show_settings_page', $show_settings_page );
 		$show_settings_page = apply_filters( 'simple_history/show_settings_page', $show_settings_page );
 
+		// Can't show settings page if user can't view main menu item.
+		if ( ! Helpers::setting_show_as_menu_page() ) {
+			return;
+		}
+
 		if ( $show_settings_page ) {
 			// Old location: placed at WP Admin › Settings › Simple History.
 			add_options_page(
@@ -130,6 +135,7 @@ class Setup_Settings_Page extends Service {
 			)
 		);
 
+		// Setting for showing as page under dashboard.
 		register_setting(
 			$settings_general_option_group,
 			'simple_history_show_as_page',
@@ -141,6 +147,7 @@ class Setup_Settings_Page extends Service {
 			)
 		);
 
+		// Setting for showing in admin bar.
 		register_setting(
 			$settings_general_option_group,
 			'simple_history_show_in_admin_bar',
@@ -152,6 +159,16 @@ class Setup_Settings_Page extends Service {
 			)
 		);
 
+		// Setting for menu page location.
+		register_setting(
+			$settings_general_option_group,
+			'simple_history_menu_page_location',
+			array(
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+
+		// Output for where to show history, in dashboard, admin bar.
 		add_settings_field(
 			'simple_history_show_where',
 			Helpers::get_settings_field_title_output( __( 'Show history', 'simple-history' ), 'visibility' ),
@@ -160,7 +177,15 @@ class Setup_Settings_Page extends Service {
 			$settings_section_general_id
 		);
 
-		// Number if items to show on the history page.
+		add_settings_field(
+			'simple_history_menu_page_location',
+			Helpers::get_settings_field_title_output( __( 'Menu page location', 'simple-history' ), 'overview' ),
+			array( $this, 'settings_field_menu_page_location' ),
+			$settings_menu_slug,
+			$settings_section_general_id
+		);
+
+		// Output for number if items to show on the history page.
 		add_settings_field(
 			'simple_history_number_of_items',
 			Helpers::get_settings_field_title_output( __( 'Items per page', 'simple-history' ), 'filter_list' ),
@@ -199,12 +224,46 @@ class Setup_Settings_Page extends Service {
 	}
 
 	/**
+	 * Settings field output for menu page location
+	 */
+	public function settings_field_menu_page_location() {
+		$location = Helpers::setting_menu_page_location();
+		$option_slug = 'simple_history_menu_page_location';
+		?>
+
+		<fieldset>
+			<label>
+				<input 
+					type="radio"
+					name="<?php echo esc_attr( $option_slug ); ?>"
+					value="top"
+					<?php checked( $location === 'top' ); ?>
+				/>
+				<?php esc_html_e( 'Top of menu', 'simple-history' ); ?>
+			</label>
+
+			<br />
+
+			<label>
+				<input 
+					type="radio"
+					name="<?php echo esc_attr( $option_slug ); ?>"
+					value="bottom"
+					<?php checked( $location === 'bottom' ); ?>
+				/>
+				<?php esc_html_e( 'Bottom of menu', 'simple-history' ); ?>
+			</label>
+		</fieldset>
+		<?php
+	}
+
+	/**
 	 * Settings field for where to show the log, page or dashboard
 	 */
 	public function settings_field_where_to_show() {
 		$show_on_dashboard = Helpers::setting_show_on_dashboard();
-		$show_as_page = Helpers::setting_show_as_page();
 		$show_in_admin_bar = Helpers::setting_show_in_admin_bar();
+		$show_as_page_below_dashboard = Helpers::setting_show_as_page();
 		?>
 
 		<input <?php checked( $show_on_dashboard ); ?> type="checkbox" value="1" name="simple_history_show_on_dashboard" id="simple_history_show_on_dashboard" class="simple_history_show_on_dashboard" />
@@ -214,7 +273,7 @@ class Setup_Settings_Page extends Service {
 
 		<br />
 
-		<input <?php checked( $show_as_page ); ?> type="checkbox" value="1" name="simple_history_show_as_page" id="simple_history_show_as_page" class="simple_history_show_as_page" />
+		<input <?php checked( $show_as_page_below_dashboard ); ?> type="checkbox" value="1" name="simple_history_show_as_page" id="simple_history_show_as_page" class="simple_history_show_as_page" />
 		<label for="simple_history_show_as_page">
 			<?php esc_html_e( 'as a page under the dashboard menu', 'simple-history' ); ?>
 		</label>

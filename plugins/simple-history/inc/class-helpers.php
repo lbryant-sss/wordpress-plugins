@@ -1180,13 +1180,23 @@ class Helpers {
 	 */
 	public static function setting_show_on_dashboard() {
 		$show_on_dashboard = get_option( 'simple_history_show_on_dashboard', 1 );
+
 		$show_on_dashboard = apply_filters( 'simple_history_show_on_dashboard', $show_on_dashboard );
+
+		/**
+		 * Filter if Simple History should be shown on the dashboard.
+		 *
+		 * @param int $show_on_dashboard If 1 then show on dashboard, if 0 then do not show on dashboard.
+		 */
+		$show_on_dashboard = apply_filters( 'simple_history/show_on_dashboard', $show_on_dashboard );
+
 		return (bool) $show_on_dashboard;
 	}
 
 	/**
-	 * Should simple history be shown as a page
-	 * Defaults to true
+	 * Should Simple History be shown as a page inside the dashboard menu.
+	 *
+	 * Defaults to true.
 	 *
 	 * @return bool
 	 */
@@ -1198,6 +1208,57 @@ class Helpers {
 	}
 
 	/**
+	 * Should Simple History be shown as a page in the main menu, at top level,
+	 * next to pages, tools, settings, etc.
+	 *
+	 * Defaults to true.
+	 *
+	 * @return bool
+	 */
+	public static function setting_show_as_menu_page() {
+		/**
+		 * Filter if Simple History should be shown as a page in the main admin menu.
+		 *
+		 * @since 5.5.2
+		 */
+		$setting = apply_filters( 'simple_history/show_admin_menu_page', true );
+
+		return (bool) $setting;
+	}
+
+	/**
+	 * Returns the location of the main simple history menu page.
+	 * Valid locations are:
+	 * - 'top' = Below dashboard and Jetpack and similar top level menu items.
+	 * - 'bottom' = Below settings and similar bottom level menu items.
+	 *
+	 * Defaults to 'top'.
+	 *
+	 * @return string Location of the main menu page.
+	 */
+	public static function setting_menu_page_location() {
+		$option_slug = 'simple_history_menu_page_location';
+		$setting = get_option( $option_slug );
+
+		// If it does not exist, then default so the option can auto-load.
+		if ( false === $setting ) {
+			$setting = 'top';
+			update_option( $option_slug, $setting, true );
+		}
+
+		/**
+		 * Filter to control the placement of Simple History in the Admin Menu.
+		 *
+		 * @since 5.5.2
+		 *
+		 * @param string $setting Either 'top' for placement below dashboard or 'bottom' for placement below settings.
+		 */
+		$setting = apply_filters( 'simple_history/admin_menu_location', $setting );
+
+		return $setting;
+	}
+
+	/**
 	 * Returns true if Simple History can be shown in the admin bar
 	 *
 	 * @return bool
@@ -1206,8 +1267,16 @@ class Helpers {
 		$setting = get_option( 'simple_history_show_in_admin_bar', 1 );
 		$setting = apply_filters( 'simple_history_show_in_admin_bar', $setting );
 
+		/**
+		 * Filter if Simple History should be shown in the admin bar.
+		 *
+		 * @since 5.5.1
+		 */
+		$setting = apply_filters( 'simple_history/show_in_admin_bar', $setting );
+
 		return (bool) $setting;
 	}
+
 
 	/**
 	 * Returns true if Detective Mode is active.

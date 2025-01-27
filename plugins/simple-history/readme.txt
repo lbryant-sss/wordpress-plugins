@@ -4,7 +4,7 @@ Contributors: eskapism
 Donate link: https://www.paypal.me/eskapism
 Tags: history, audit log, event log, user tracking, activity
 Tested up to: 6.7
-Stable tag: 5.5.1
+Stable tag: 5.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -278,9 +278,32 @@ Read more at the [FAQ on the plugin website](https://simple-history.com/docs/faq
 -   [Add a 5-star review so other users know it's good.](https://wordpress.org/support/plugin/simple-history/reviews/?filter=5)
 -   [Get the premium add-on for more features.](https://simple-history.com/add-ons/premium/?utm_source=wpadmin&utm_content=readme).
 
+### 5.6.0 (January 2025)
+
+🔝 This version adds an option to the settings page to control the location of the menu page (at top or bottom).
+🫣 It also adds support for **Stealth Mode**: When enabled Simple History will be hidden from places like the dashboard, the admin menu, the admin bar, and the plugin list.
+👉 Read the [release post](https://simple-history.com/2025/simple-history-5-6-released-with-stealth-mode/) for more details and examples how to use this feature.
+
+**Added**
+
+-   Add support for **Stealth Mode**. When enabled (programmatically using a constant or filters) Simple History will be hidden from places like the dashboard, the admin menu, the admin bar, and the plugin list. [#401](https://github.com/bonny/WordPress-Simple-History/issues/401)
+-   Add option to set menu page location to settings page. [#525](https://github.com/bonny/WordPress-Simple-History/issues/525)
+-   Add WP-CLI command `simple-history stealth-mode status` to get status of Stealh Mode using WP-CLI.
+-   Add filter `simple_history/show_admin_menu_page` to
+-   Add filter `simple_history/admin_menu_location`.
+-   Add filters `simple_history/show_in_admin_bar` and `simple_history/show_on_dashboard`, that work the same way as `simple_history_show_in_admin_bar` and `simple_history_show_dashboard_widget`, but with correct naming convention.
+
+**Improved**
+
+-   Decrease the icon size in the admin bar and main menu, to match the size of other icons. Props @hjalle.
+
+**Fixed**
+
+-   Fix for `simple_history/show_action_link` when being used and returning false then the other action links was not shown.
+
 ### 5.5.1 (January 2025)
 
--   Fix the redirect from old settings page to new settings page and from old event log page to new event log page now always working when there was for example a WordPress update notice.
+-   Fix the redirect from old settings page to new settings page and from old event log page to new event log page not always working when there was for example a WordPress update notice.
 
 ### 5.5.0 (January 2025)
 
@@ -317,4 +340,4 @@ First release of 2025! 🎉
 -   Style some admin boxes to match new design.
 -   Misc other internal improvements.
 
-[Changelog for previous versions.](CHANGELOG.md)
+[Changelog for previous versions.](https://github.com/bonny/WordPress-Simple-History/blob/main/CHANGELOG.md)

@@ -3225,7 +3225,7 @@ function generate_settings_form (){
               <?php _e ('Custom Selectors', 'ad-inserter'); ?>
             </td>
             <td>
-              <input id="custom-selectors" style="width: 95%;" type="text" name="<?php echo AI_OPTION_ADB_SELECTORS; ?>" title="<?php _e ('Comma seprarated list of selectors (.class, #id) used for additional ad blocking detection. Invisible element or element with zero height means ad blocking is present.', 'ad-inserter'); ?>" value="<?php echo get_adb_selectors (); ?>"  default="" size="50" maxlength="200" />
+              <input id="custom-selectors" style="width: 95%;" type="text" name="<?php echo AI_OPTION_ADB_SELECTORS; ?>" title="<?php echo __ ('Comma seprarated list of selectors used for additional ad blocking detection', 'ad-inserter'), ' (#id, .class). '. __ ('Invisible element or element with zero height means ad blocking is present.', 'ad-inserter'); ?>" value="<?php echo get_adb_selectors (); ?>"  default="" size="50" maxlength="200" />
               <button id="custom-selectors-button" type="button" class='ai-button ai-button-small' style="display: none; outline: transparent; float: right; margin-top: 4px; width: 15px; height: 15px;" title="<?php _e ('Open HTML element selector', 'ad-inserter'); ?>"></button>
             </td>
           </tr>

@@ -18,8 +18,12 @@ License: GPLv3
 
 Change Log
 
+Ad Inserter 2.8.1 - 2025-01-26
+- Few minor bug fixes, cosmetic changes and code improvements
+
 Ad Inserter 2.8.0 - 2025-01-21
 - Replaced placeholder image generator service - changed to dummyimage.com
+- Fix for false ad blocking detection when using external scripts
 - Security fix for potential cross site scripting (Pro only)
 - Added support to show rotation options in the list of blocks
 - Added support for custom reports for clients (Pro only)

@@ -7097,7 +7097,7 @@ jQuery(document).ready (function($) {
 
     var row = $("#ai-report-data tr.selected");
     if (row.length == 1) {
-      var custom_report = row.attr ("data-index") + '-----';
+      var custom_report = row.attr ("data-id") + '-----';
       custom_report = custom_report.substring (0, 5);
 
       var report = report_dates_block + report_controls + report_adb + report_range_name + report_version + custom_report;
