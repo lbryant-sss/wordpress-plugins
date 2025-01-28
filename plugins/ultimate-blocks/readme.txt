@@ -3,7 +3,7 @@ Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, 
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
 Tested up to: 6.7
-Stable tag: 3.2.6
+Stable tag: 3.2.7
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -149,6 +149,12 @@ That's it. You're done!
 3. Tabbed Content Block.
 
 == Changelog ==
+
+= 3.2.7 =
+
+* FIX: Content toggle wide width issue.
+* FIX: Styled List item duplication issue.
+* NEW: Add full and wide width option on content toggle block.
 
 = 3.2.6 =
 

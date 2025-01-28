@@ -371,7 +371,7 @@ class QiAddonsForElementor_Framework_Elementor_Translator {
 		switch ( $option['field_type'] ) {
 			case 'image':
 				if ( ! isset( $option['multiple'] ) || 'yes' !== $option['multiple'] ) {
-					$default_value = get_option( 'qi_addons_for_elementor_placeholder_image' );
+					$default_value = qi_addons_for_elementor_get_placeholder_image();
 				}
 				break;
 			case 'icons':

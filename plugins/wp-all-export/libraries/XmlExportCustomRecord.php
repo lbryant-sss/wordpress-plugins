@@ -98,30 +98,7 @@ if (!class_exists('XmlExportCustomRecord')) {
 
                 if (isset($exportOptions['cc_combine_multiple_fields'][$ID]) && $exportOptions['cc_combine_multiple_fields'][$ID]) {
 
-                    $combineMultipleFieldsValue = $exportOptions['cc_combine_multiple_fields_value'][$ID];
-
-                    $combineMultipleFieldsValue = stripslashes($combineMultipleFieldsValue);
-                    $snippetParser = new \Wpae\App\Service\SnippetParser();
-                    $snippets = $snippetParser->parseSnippets($combineMultipleFieldsValue);
-                    $engine = new XmlExportEngine(XmlExportEngine::$exportOptions);
-                    $engine->init_available_data();
-                    $engine->init_additional_data();
-                    $snippets = $engine->get_fields_options($snippets);
-
-                    $articleData = self::prepare_data($record, $snippets, $xmlWriter, $implode_delimiter, $preview);
-
-                    $functions = $snippetParser->parseFunctions($combineMultipleFieldsValue);
-                    $combineMultipleFieldsValue = \Wpae\App\Service\CombineFields::prepareMultipleFieldsValue($functions, $combineMultipleFieldsValue, $articleData);
-
-                    if ($preview) {
-                        $combineMultipleFieldsValue = trim(preg_replace('~[\r\n]+~', ' ', htmlspecialchars($combineMultipleFieldsValue)));
-                    }
-
-
-                    wp_all_export_write_article($article, $element_name, pmxe_filter($combineMultipleFieldsValue, $fieldSnipped));
-
                 } else {
-
 
                     $addon = GF_Export_Add_On::get_instance();
                     $addon->add_on->handle_element($article, $element_name, $fieldValue, $record, $fieldSnipped, $preview);

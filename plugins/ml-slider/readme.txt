@@ -2,7 +2,7 @@
 Contributors: andergmartins, htmgarcia, publishpress, stevejburge, rochdesigns
 Tags: slider, video slider, image slider, carousel slider, gallery
 Requires at least: 5.0
-Stable tag: 3.94.0
+Stable tag: 3.95.0
 Requires PHP: 7.0
 Tested up to: 6.7
 License: GPLv2 or later
@@ -319,6 +319,13 @@ Yes, you can build Elementor slides and Beaver Builder slideshows. You can creat
 
 The format is based on [Keep a Changelog recommendations](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
+
+= [3.95.0] - 27 Jan, 2025 =
+
+* FIXED: Interrupt slideshow import if data is invalid, #1421;
+* FIXED: Sanitize CSS output from theme customize, #1433;
+* FIXED: Sanitize theme customize settings on slideshow save, #1439;
+* FIXED: Can't have more than one slideshow based on the same theme on the same page, #1427;
 
 = [3.94.0] - 18 Dec, 2024 =
 

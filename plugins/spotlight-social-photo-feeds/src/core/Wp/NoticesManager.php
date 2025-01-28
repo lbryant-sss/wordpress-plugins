@@ -60,8 +60,8 @@ class NoticesManager
     /** Handles a notice dismissal request */
     public function handleAjax()
     {
-        $id = filter_input(INPUT_POST, 'notice', FILTER_SANITIZE_STRING);
-        $nonce = filter_input(INPUT_POST, 'nonce', FILTER_SANITIZE_STRING);
+        $id = isset($_POST['notice']) ? sanitize_text_field($_POST['notice']) : '';
+        $nonce = isset($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
 
         if (!wp_verify_nonce($nonce, $this->nonce)) {
             status_header(400);

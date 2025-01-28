@@ -1,10 +1,10 @@
 <?php
 if(!defined('ABSPATH')) {
-    die();
+	die();
 }
 ?>
 <h2>
-	<?php _e('Cron Scheduling', 'wp_all_export_plugin') ?>
+	<?php esc_html_e('Cron Scheduling', 'wp_all_export_plugin') ?>
 </h2>
 
 <p>
@@ -13,15 +13,15 @@ if(!defined('ABSPATH')) {
 
 <p>
 	<?php esc_html_e('Trigger Script URL', 'wp_all_export_plugin');?><br />
-	<small><?php esc_html_e('Run the trigger script when you want to update your export. Once per 24 hours is recommended.', 'wp_all_export_plugin'); ?></small><br />
+    <small><?php esc_html_e('Run the trigger script when you want to update your export. Once per 24 hours is recommended.', 'wp_all_export_plugin'); ?></small><br />
 	<input style='width: 700px;' type='text' value='<?php echo esc_attr(site_url() . '/wp-load.php?export_key=' . $cron_job_key . '&export_id=' . $id . '&action=trigger'); ?>' />
-	<br /><br />
+    <br /><br />
 	<?php esc_html_e('Execution Script URL', 'wp_all_export_plugin');?><br />
-	<small><?php esc_html_e('Run the execution script frequently. Once per two minutes is recommended.','wp_all_export_plugin');?></small><br />
+    <small><?php esc_html_e('Run the execution script frequently. Once per two minutes is recommended.','wp_all_export_plugin');?></small><br />
 	<input style='width: 700px;' type='text' value='<?php echo esc_attr(site_url() . '/wp-load.php?export_key=' . $cron_job_key . '&export_id=' . $id . '&action=processing'); ?>' /><br /><br />
 	<?php esc_html_e('Export File URL', 'wp_all_export_plugin'); ?><br />
 	<input style='width: 700px;' type='text' value='<?php echo esc_attr($file_path); ?>' /><br /><br />
-	<?php if (! empty($bundle_url)): ?>			
+	<?php if (! empty($bundle_url)): ?>
 		<?php esc_html_e('Export Bundle URL', 'wp_all_export_plugin'); ?><br />
 		<input style='width: 700px;' type='text' value='<?php echo esc_attr($bundle_url); ?>' /><br /><br />
 	<?php endif; ?>
@@ -36,7 +36,7 @@ if(!defined('ABSPATH')) {
 <p><i><?php esc_html_e('Example:', 'wp_all_export_plugin'); ?></i></p>
 
 <p>wget -q -O /dev/null "<?php echo esc_url(site_url() . '/wp-load.php?export_key=' . $cron_job_key . '&export_id=' . $id . '&action=trigger'); ?>"</p>
- 
+
 <p><strong><?php esc_html_e('Execution Script', 'wp_all_export_plugin'); ?></strong></p>
 
 <p><?php esc_html_e('The Execution script actually executes the export, once it has been triggered with the Trigger script.', 'wp_all_export_plugin'); ?></p>
@@ -50,7 +50,7 @@ if(!defined('ABSPATH')) {
 <p>wget -q -O /dev/null "<?php echo esc_url(site_url() . '/wp-load.php?export_key=' . $cron_job_key . '&export_id=' . $id . '&action=processing'); ?>"</p>
 
 <p><strong><?php esc_html_e('Notes', 'wp_all_export_plugin'); ?></strong></p>
- 
+
 <p>
 	<?php esc_html_e('Your web host may require you to use a command other than wget, although wget is most common. In this case, you must asking your web hosting provider for help.', 'wp_all_export_plugin'); ?>
 </p>

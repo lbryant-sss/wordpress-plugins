@@ -228,7 +228,7 @@ class FMViewThemes_fm extends FMAdminView {
 					  <?php
 					  foreach($tabs as $tkey => $tab) {
 						$active_class = $active_tab == $tkey ? "fm-theme-active-tab" : "";
-							echo '<li><a id="'.$tkey.'" href="#" class="button '.$active_class . ($row->version == 1 && $tkey != 'custom_css' ? ' fm-disabled' : '') . '">'.$tab.'</a></li>';
+							echo '<li><a id="' . esc_attr($tkey) . '" href="#" class="button ' . esc_attr($active_class . ($row->version == 1 && $tkey != 'custom_css' ? ' fm-disabled' : '')) . '">' . esc_html($tab) . '</a></li>';
 					  }
 					  ?>
 					</ul>
@@ -238,83 +238,83 @@ class FMViewThemes_fm extends FMAdminView {
 					  $k = 0;
 					  foreach($all_params as $pkey => $params) {
 						$show_hide_class = $active_tab == $pkey ? '' : 'fm-hide';
-						echo '<div id="'.$pkey.'-content" class="fm-themes-container '.$show_hide_class.'">';
+						echo '<div id="' . esc_attr($pkey) . '-content" class="fm-themes-container ' . esc_attr($show_hide_class) . '">';
 						if ($row->version == 1 && $pkey == 'custom_css') {
-						  echo '<div class="error inline"><p>' . __('This theme is outdated. Theme Options are only available in new themes provided by Form Maker. You can use Custom CSS panel to edit form styling, or alternatively select a new theme for your form.', WDFMInstance(self::PLUGIN)->prefix) . '</p></div>';
+						  echo '<div class="error inline"><p>' . esc_html__('This theme is outdated. Theme Options are only available in new themes provided by Form Maker. You can use Custom CSS panel to edit form styling, or alternatively select a new theme for your form.', WDFMInstance(self::PLUGIN)->prefix) . '</p></div>';
 						}
 						  foreach($params as $param){
 							if($param["type"] == 'panel') {
-							  echo '<div class="'.$param["class"].'">';
+							  echo '<div class="' . esc_attr($param["class"]) . '">';
 							}
 							if($param["type"] != 'panel' || ($param["type"] == 'panel' && $param["label"]) )
 							  echo '<div class="fm-row">';
 							if($param["type"] == 'panel' && $param["label"]) {
-							  echo '<label class="'.$param["label_class"].'" >'.$param["label"].'</label>'.$param["after"];
+							  echo '<label class="' . esc_attr($param["label_class"]) . '" >' . esc_html($param["label"]) . '</label>' . wp_kses_post($param["after"]);
 							} else {
 							  if($param["type"] == 'text') {
-									echo '<label class="fm-label-text">'.$param["label"].'</label>
-											<div class="fm-input-text-wrap fm-input-text-wrap-'.$param["name"].'">
-												<input type="'.$param["type"].'" name="'.$param["name"].'" class="'.$param["class"].'" ng-model="'.$param["name"].'" ng-init="'.$param["name"].'=\''.$param["value"].'\'" value="' . $param["value"] . '" placeholder="'. (isset($param["placeholder"]) ? $param["placeholder"] : "") .'"  title="'.(isset($param["placeholder"]) ? $param["placeholder"] : "").'" />'. $param["after"] .
+									echo '<label class="fm-label-text">' . esc_html($param["label"]) . '</label>
+											<div class="fm-input-text-wrap fm-input-text-wrap-' . esc_attr($param["name"]) . '">
+												<input type="' . esc_attr($param["type"]) . '" name="' . esc_attr($param["name"]) . '" class="' . esc_attr($param["class"]) . '" ng-model="' . esc_attr($param["name"]) . '" ng-init="' . esc_attr($param["name"]) . '=\'' . esc_attr($param["value"]) . '\'" value="' . esc_attr($param["value"]) . '" placeholder="' . esc_attr(isset($param["placeholder"]) ? $param["placeholder"] : "") . '"  title="' . esc_attr(isset($param["placeholder"]) ? $param["placeholder"] : "") . '" />' . wp_kses_post($param["after"]) .
 											'</div>';
 							  }
 							  else {
 								if($param["type"] == '2text') {
-								  echo '<label class="fm-label-2text">'.$param["label"].'</label>
-								  <div class="'.$param["class"].'" style="display:inline-block; vertical-align: middle;">
+								  echo '<label class="fm-label-2text">' . esc_html($param["label"]) . '</label>
+								  <div class="' . esc_attr($param["class"]) . '" style="display:inline-block; vertical-align: middle;">
 									<div style="float:left;display:table-row;">
-									  <span style="display:table-cell;">'.$param["before1"].'</span><input type="text" name="'.$param["name1"].'" ng-model="'.$param["name1"].'" ng-init="'.$param["name1"].'=\''.$param["value1"].'\'" value="'.$param["value1"].'" placeholder="'.(isset($param["placeholder"]) ? $param["placeholder"] : "").'"  title="'.(isset($param["placeholder"]) ? $param["placeholder"] : "").'" style="display:table-cell; "/>'.$param["after"].'
+									  <span style="display:table-cell;">' . esc_html($param["before1"]) . '</span><input type="text" name="' . esc_attr($param["name1"]) . '" ng-model="' . esc_attr($param["name1"]) . '" ng-init="' . esc_attr($param["name1"]) . '=\'' . esc_attr($param["value1"]) . '\'" value="' . esc_attr($param["value1"]) . '" placeholder="' . esc_attr(isset($param["placeholder"]) ? $param["placeholder"] : "") . '"  title="' . esc_attr(isset($param["placeholder"]) ? $param["placeholder"] : "") . '" style="display:table-cell; "/>' . wp_kses_post($param["after"]) .'
 									</div>
 									<div style="float:left;display:table-row;">
-									  <span style="display:table-cell;">'.$param["before2"].'</span><input type="text" name="'.$param["name2"].'" class="'.$param["class"].'" ng-model="'.$param["name2"].'" ng-init="'.$param["name2"].'=\''.$param["value2"].'\'" value="'.$param["value2"].'" placeholder="'.(isset($param["placeholder"]) ? $param["placeholder"] : "").'" title="'.(isset($param["placeholder"]) ? $param["placeholder"] : "").'" style="display:table-cell; "/>'.$param["after"].'
+									  <span style="display:table-cell;">' . esc_html($param["before2"]) . '</span><input type="text" name="' . esc_attr($param["name2"]) . '" class="' . esc_attr($param["class"]) . '" ng-model="' . esc_attr($param["name2"]) . '" ng-init="' . esc_attr($param["name2"]) . '=\'' . esc_attr($param["value2"]) . '\'" value="' . esc_attr($param["value2"]) . '" placeholder="' . esc_attr(isset($param["placeholder"]) ? $param["placeholder"] : "") . '" title="' . esc_attr(isset($param["placeholder"]) ? $param["placeholder"] : "") . '" style="display:table-cell; "/>' . wp_kses_post($param["after"]) .'
 									</div>
 								  </div>';
 								}
 								else {
 								  if($param["type"] == 'select') {
-										echo '<label class="fm-label-select">'.$param["label"].'</label>
+										echo '<label class="fm-label-select">' . esc_html($param["label"]) . '</label>
 												<div class="fm-select-wrap">
-												<select name="'.$param["name"].'" ng-model="'.$param["name"].'" ng-init="'.$param["name"].'=\''.$param["value"].'\'">';
+												<select name="' . esc_attr($param["name"]) . '" ng-model="' . esc_attr($param["name"]) . '" ng-init="' . esc_attr($param["name"]) . '=\'' . esc_attr($param["value"]) . '\'">';
 													foreach($param["options"] as $option_key => $option) {
-														echo '<option value="'.$option_key.'">'.$option.'</option>';
+														echo '<option value="' . esc_attr($option_key) . '">' . esc_html($option) . '</option>';
 													}
-												echo '</select>'.$param["after"].
-											'</div>';
+												echo '</select>' . wp_kses_post($param["after"]).
+						           '</div>';
 								  } else {
 									if($param["type"] == 'label') {
-									  echo '<label class="'.$param["class"].'" >'.$param["label"].'</label>'.$param["after"];
+									  echo '<label class="' . esc_attr($param["class"]) . '" >' . esc_html($param["label"]) . '</label>' . wp_kses_post($param["after"]);
 									} else {
 									  if($param["type"] == 'checkbox') {
-										echo '<label>'.$param["label"].'</label>
+										echo '<label>' . esc_html($param["label"]) . '</label>
 										  <div class="fm-btn-group">';
 										foreach($param["options"] as $op_key => $option){
 										  if ( $op_key == '' ) { continue; }
 										  $init = isset($param_values->{$param["name"].ucfirst($op_key)}) ? 'true' : 'false';
 										  echo '<div class="fm-ch-button">
-											  <input type="checkbox" id="'.$param["name"].ucfirst($op_key).'" name="'.$param["name"].ucfirst($op_key).'" value="'.$op_key.'" ng-model="'.$param["name"].ucfirst($op_key).'" ng-checked="'.$param["name"].ucfirst($op_key).'" ng-init="'.$param["name"].ucfirst($op_key).'='.$init.'"><label for="'.$param["name"].ucfirst($op_key).'">'.$option.'</label>
+											  <input type="checkbox" id="' . esc_attr($param["name"]) . ucfirst($op_key) . '" name="' . esc_attr($param["name"]) . ucfirst($op_key) . '" value="' . esc_attr($op_key) . '" ng-model="' . esc_attr($param["name"]) . ucfirst($op_key) . '" ng-checked="' . esc_attr($param["name"]) . ucfirst($op_key) . '" ng-init="' . esc_attr($param["name"]) . ucfirst($op_key) . '=' . esc_attr($init) . '"><label for="' . esc_attr($param["name"]) . ucfirst($op_key) . '">' . esc_html($option) . '</label>
 											</div>';
 										}
 										echo '</div>';
 									  } else {
 									    if($param["type"] == 'radio'){
-                        echo '<div class="fm_shake_row"><label>'.$param["label"].'</label>
+                        echo '<div class="fm_shake_row"><label>' . esc_html($param["label"]) . '</label>
                         <div class="fm-btn-group">';
                             $checked = (!isset($param_values->{$param["name"]}) || (isset($param_values->{$param["name"]}) && $param_values->{$param["name"]} == 'yes')) ? true : false;
                             $html = '<div class="fm-ch-select">';
-                            $html .= '<input type="radio" '.(($checked)?"checked":"") .' id="'.$param["name"].'Yes" name="'.$param["name"].'" value="yes">';
-                            $html .= '<label for="'.$param["name"].'Yes">'.__('Yes', WDFMInstance(self::PLUGIN)->prefix).'</label>';
-                            $html .= '<input type="radio" '.((!$checked)?"checked":"") .' id="'.$param["name"].'No" name="'.$param["name"].'" value="no">';
-                            $html .= '<label for="'.$param["name"].'No">'.__('No', WDFMInstance(self::PLUGIN)->prefix).'</label>';
+                            $html .= '<input type="radio" ' . (($checked)?"checked":"") . ' id="' . esc_attr($param["name"]) . 'Yes" name="' . esc_attr($param["name"]) . '" value="yes">';
+                            $html .= '<label for="' . esc_attr($param["name"]) . 'Yes">' . esc_html(__('Yes', WDFMInstance(self::PLUGIN)->prefix)) . '</label>';
+                            $html .= '<input type="radio" ' . ((!$checked)?"checked":"") . ' id="' . esc_attr($param["name"]) . 'No" name="' . esc_attr($param["name"]) . '" value="no">';
+                            $html .= '<label for="' . esc_attr($param["name"]) . 'No">' . esc_html(__('No', WDFMInstance(self::PLUGIN)->prefix)) . '</label>';
                             $html .= '</div>';
                             echo $html;
                         echo '</div></div>';
 
                       } else {
                         if ( $param["type"] == 'hidden' ) {
-                          echo '<input type="' . $param["type"] . '" />' . $param["after"];
+                          echo '<input type="' . esc_attr($param["type"]) . '" />' . wp_kses_post($param["after"]);
                         } else {
                           if ( $param["type"] == 'textarea' ) {
-                            echo '<label>' . $param["label"] . '</label>
-                                <textarea name="' . $param["name"] . '" rows="5"  columns="10" style="vertical-align:middle;">' . $param["value"] . '</textarea>';
+                            echo '<label>' . esc_html($param["label"]) . '</label>
+                                <textarea name="' . esc_attr($param["name"]) . '" rows="5"  columns="10" style="vertical-align:middle;">' . esc_html($param["value"]) . '</textarea>';
                           }
                         }
                       }

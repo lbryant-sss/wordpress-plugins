@@ -5,10 +5,10 @@
  * Author: Qode Interactive
  * Author URI: https://qodeinteractive.com/
  * Plugin URI: https://qodeinteractive.com/qi-addons-for-elementor/
- * Version: 1.8.3
+ * Version: 1.8.4
  * Text Domain: qi-addons-for-elementor
- * Elementor tested up to: 3.26.3
- * Elementor Pro tested up to: 3.26.2
+ * Elementor tested up to: 3.27.1
+ * Elementor Pro tested up to: 3.27.0
  */
 
 if ( ! class_exists( 'QiAddonsForElementor' ) ) {
@@ -202,6 +202,17 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_placeholder_image' ) ) {
 
 		if ( qi_addons_for_elementor_framework_is_installed( 'elementor' ) ) {
 			$placeholder = get_option( 'qi_addons_for_elementor_placeholder_image' );
+
+			// if placeholder option does not exists, enter empty value.
+			if ( ! $placeholder ) {
+				update_option(
+					'qi_addons_for_elementor_placeholder_image',
+					array(
+						'id'  => '',
+						'url' => '',
+					)
+				);
+			}
 
 			// Check if there is already an option and is attachment.
 			if ( ! empty( $placeholder ) ) {

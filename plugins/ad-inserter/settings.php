@@ -1007,7 +1007,7 @@ function generate_settings_form (){
     <ul>
       <li id="ai-banner-<?php echo $block; ?>"><a href="#tab-banner-<?php echo $block; ?>"><?php _e ('Banner', 'ad-inserter'); ?></a></li>
       <li id="ai-adsense-pub-id-<?php echo $block; ?>"><a href="#tab-adsense-<?php echo $block; ?>">AdSense</a></li>
-      <li id="ai-amazon-<?php echo $block; ?>"><a href="#tab-amazon-<?php echo $block; ?>">Amazon</a></li>
+<!--      <li id="ai-amazon-<?php echo $block; ?>"><a href="#tab-amazon-<?php echo $block; ?>">Amazon</a></li>-->
     </ul>
 
     <div id="tab-banner-<?php echo $block; ?>" class="ai-banner ai-banner-top ai-responsive-table ai-rounded">
@@ -1258,7 +1258,7 @@ function generate_settings_form (){
       <div style="clear: both;"></div>
 
     </div>
-
+<!--
     <div id="tab-amazon-<?php echo $block; ?>" class="ai-responsive-table ai-rounded">
       <textarea id="amazon-data-<?php echo $block; ?>" style="background-color:#F9F9F9; font-family: monospace, Courier, 'Courier New'; font-weight: bold; width: 100%; height: 240px;"></textarea>
 
@@ -1295,7 +1295,7 @@ function generate_settings_form (){
         </tr>
       </table>
     </div>
-
+-->
   </div>
 <?php endif; ?>
 

@@ -702,3 +702,25 @@ if ( ! function_exists( 'qi_addons_for_elementor_get_attachment_thumb_url' ) ) {
 		return wp_get_attachment_thumb_url( $attachment_id );
 	}
 }
+
+if ( ! function_exists( 'qi_addons_for_elementor_get_placeholder_image' ) ) {
+	/**
+	 * Function that returns placeholder image if placeholder exists, empty array if it does not
+	 *
+	 * @return array
+	 */
+	function qi_addons_for_elementor_get_placeholder_image() {
+		$default_value = array(
+			'id'  => '',
+			'url' => '',
+		);
+
+		$placeholder = get_option( 'qi_addons_for_elementor_placeholder_image', $default_value );
+
+		if ( is_int( $placeholder['id'] ) && wp_attachment_is_image( $placeholder['id'] ) ) {
+			return $placeholder;
+		} else {
+			return $default_value;
+		}
+	}
+}

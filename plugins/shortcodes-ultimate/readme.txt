@@ -3,7 +3,7 @@ Contributors: gn_themes
 License: GPLv3
 Donate link: https://getshortcodes.com/pricing/
 Tags: posts, carousel, shortcode, toggle, columns
-Stable tag: 7.3.3
+Stable tag: 7.3.4
 Requires PHP: 5.4
 Requires at least: 5.0
 Tested up to: 6.7
@@ -139,6 +139,15 @@ Upgrade normally
 
 == Changelog ==
 
+
+
+= 7.3.4
+
+This update features security improvements and is recommended for all users
+
+- Fixed warning "Function _load_textdomain_just_in_time was called incorrectly"
+- Tested with PHP 8.3
+- Updated Freemius SDK
 
 
 = 7.3.3

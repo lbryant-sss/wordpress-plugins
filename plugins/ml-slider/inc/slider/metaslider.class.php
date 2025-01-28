@@ -278,7 +278,7 @@ class MetaSlider
         $slideshow = new MetaSlider_Slideshows;
         $slideshowDetails = $slideshow->get_single($this->id);
         if ($slideshowDetails[0]['title']) {
-            $slideshow_title = $slideshowDetails[0]['title'];
+            $slideshow_title = htmlspecialchars( $slideshowDetails[0]['title'], ENT_QUOTES, 'UTF-8' );
         } else {
             $slideshow_title = 'Slideshow';
         }

@@ -168,7 +168,7 @@
 
 <script>
 import PageHeader from '../parts/PageHeader.vue'
-import DismissibleBanner from "../parts/DismissibleBanner.vue";
+import DismissibleBanner from '../parts/DismissibleBanner.vue'
 
 export default {
 

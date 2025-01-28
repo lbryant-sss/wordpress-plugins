@@ -197,6 +197,9 @@ Yes we do. We try our best to help free users with customisation requests and we
 
 == Changelog ==
 
+= 5.5.9 =
+* Updated - Freemius SDK 2.11.0
+
 = 5.5.8 =
 * Updated - Freemius SDK 2.9.0
 

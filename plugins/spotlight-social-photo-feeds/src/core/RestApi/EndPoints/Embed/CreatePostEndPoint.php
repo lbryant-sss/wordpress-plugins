@@ -2,10 +2,10 @@
 
 namespace RebelCode\Spotlight\Instagram\RestApi\EndPoints\Embed;
 
-use RebelCode\Spotlight\Instagram\RestApi\EndPoints\AbstractEndpointHandler;
-use WP_Error;
-use WP_REST_Request;
 use WP_REST_Response;
+use WP_REST_Request;
+use WP_Error;
+use RebelCode\Spotlight\Instagram\RestApi\EndPoints\AbstractEndpointHandler;
 
 class CreatePostEndPoint extends AbstractEndpointHandler
 {
@@ -20,10 +20,10 @@ class CreatePostEndPoint extends AbstractEndpointHandler
         }
 
         $useCase = $request->get_param('useCase');
-        $useCase = filter_var($useCase, FILTER_SANITIZE_STRING);
+        $useCase = sanitize_text_field($useCase);
 
         $postType = $request->get_param('postType');
-        $postType = filter_var($postType, FILTER_SANITIZE_STRING);
+        $postType = sanitize_text_field($postType);
 
         $args = [
             'post_type' => $postType,

@@ -5,7 +5,7 @@
  *
  * Plugin Name: Spotlight - Social Media Feeds
  * Description: Easily embed beautiful Instagram feeds on your WordPress site.
- * Version: 1.7.0
+ * Version: 1.7.1
  * Author: RebelCode
  * Plugin URI: https://spotlightwp.com
  * Author URI: https://rebelcode.com
@@ -80,7 +80,7 @@ $bootstrapper = function (SlInstaRuntime $sli) use ($thisIsPro) {
         // The plugin name
         define('SL_INSTA_NAME', 'Spotlight - Social Media Feeds');
         // The plugin version
-        define('SL_INSTA_VERSION', '1.7.0');
+        define('SL_INSTA_VERSION', '1.7.1');
         // The path to the plugin's main file
         define('SL_INSTA_FILE', __FILE__);
         // The dir to the plugin's directory

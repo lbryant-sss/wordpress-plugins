@@ -1,8 +1,8 @@
 === Export any WordPress data to XML/CSV ===
 Contributors: soflyy, wpallimport
 Requires at least: 5.0
-Tested up to: 6.6
-Stable tag: 1.4.8
+Tested up to: 6.7
+Stable tag: 1.4.9
 Requires PHP: 7.4
 Tags: export, wordpress csv export, wordpress xml export, export woocommerce, migrate, export csv from wordpress, export xml from wordpress, advanced xml export, advanced csv export, export data, bulk csv export, export custom post type, export woocommerce products, export woocommerce orders, migrate woocommerce, csv export, export csv, xml export, export xml, csv exporter, datafeed
 
@@ -12,7 +12,7 @@ Easily export any data from WordPress. Drag & drop to create a completely custom
 
 = WP All Export - Simple & Powerful XML / CSV Export Plugin =
 
-WP All Export features a three step export process and an intuitive drag & drop interface that makes complicated export tasks simple and fast.
+WP All Export features a three-step export process and an intuitive drag-and-drop interface that makes complicated export tasks simple and fast.
 
 With WP All Export you can: export data for easy editing, migrate content from WordPress to another site, create a WooCommerce affiliate feed, generate filtered lists of WooCommerce orders, export the email addresses of new customers, create and publish customized WordPress RSS feeds - and much more.
 
@@ -20,27 +20,29 @@ With WP All Export you can: export data for easy editing, migrate content from W
 
 [youtube https://www.youtube.com/watch?v=a-z0R-Ldkqo/]
 
-* **Turn your WordPress data into a customized CSV or XML**
+* **Turn your WordPress data into a customized CSV or XML** Perfect for using your WordPress data in Google Sheets or Excel.
 
-* **Choose which data to export:** WP All Export's drag and drop interface makes it easy to select exactly which data you'd like to export
+* **Choose which data to export:** WP All Export's drag-and-drop interface makes it easy to select exactly which data you'd like to export.
 
-* **Structure your export file however you like:** Rename CSV columns and XML elements, rearrange them, whatever you want to do.
+* **Structure your export file however you like:** Rename CSV columns and XML elements, rearrange them, or do whatever you want to do.
 
 * **Export any custom post type, any custom field:** Lots of plugins and themes store custom data in WordPress. You can export all of it with WP All Export.
 
 * **Easy integration with WP All Import:** WP All Export will generate your WP All Import settings for you so importing your data back into WordPress is easy, simple, and fast.
 
-**Wish you could edit your WordPress data in Excel? Now you can - export it with WP All Export, edit it, and then import it again with WP All Import.**
+**Wish you could edit your WordPress data in Excel or Google Sheets? Now you can - export it with WP All Export, edit it, and then import it again with WP All Import.**
 
 For technical support from the developers, please consider purchasing WP All Export Pro.
 
-= WP All Export Professional Edition =
+= WP All Export Pro Version =
 
 **WP All Export Pro** is a paid upgrade that includes premium support and adds the following features:
 
 * **Send your data to 500+ apps:** Full integration with Zapier allows you to send your exported WordPress data to services like Dropbox and Google Drive, to create and update reports in Google Sheets, send email updates, or anything else you can think of. This is especially useful when you export WooCommerce orders to CSV.
 
 	[Read more about WP All Export Pro and Zapier.](https://zapier.com/zapbook/wp-all-export-pro/)
+
+* **WordPress Excel Export:** Have a third-party service that only accepts Excel format? WP All Export has you covered. In addition to CSV and XML, you can easily export your WordPress data in true Excel formats (both .XLS and .XLSX)
 
 * **Schedule exports to run automatically:** Exports can be configured to run on any schedule you like. You can export new sales every week, recent user sign ups, new affiliate products added to your site, daily product stock reports, etc. Scheduled exports are very powerful when combined with Zapier.
 
@@ -62,15 +64,21 @@ For technical support from the developers, please consider purchasing WP All Exp
 
 A new service from Soflyy, Automatic Scheduling provides a simple interface for setting exports to run on a schedule. The service will make sure that your exports start on time and that they successfully complete without the need to set up individual cron jobs.
 
-It costs $19/mo and can be used with WP All Export and WP All Import. You can set up as many exports and imports on as many sites as you like.
+It can be used with WP All Export and WP All Import Pro. You can set up as many exports and imports as you like.
 
 **What information is shared with Soflyy?** If you set an export to run on a schedule, WP All Export will open an encrypted connection to Soflyy servers. It will send the license key, site URL, ID of the export you want to run, export security key, and times that you want the export to run.
 
 = WordPress CSV Exports =
 
-A CSV is a very simple type of spreadsheet file where each column is separated by a comma. With WP All Export you can very easily set up a WordPress CSV export and control the order and title of the columns.
+A CSV is a very simple type of spreadsheet file where each column is separated by a comma. With WP All Export, you can very easily set up a WordPress CSV export and control the order and title of the columns.
 
-Very often you'll want to edit your data with Microsoft Excel, Google Sheets, Numbers, or maybe something else. This is why a CSV export is so powerful - all spreadsheet software can read, edit, and save CSV files. WP All Export allows you edit your WordPress data using whatever spreadsheet software you are most comfortable with.
+Very often you'll want to edit your data with Microsoft Excel, Google Sheets, Numbers, or maybe something else. This is why a CSV export is so powerful – all spreadsheet software can read, edit, and save CSV files. WP All Export allows you to edit your WordPress data using whatever spreadsheet software you are most comfortable with.
+
+= WordPress CSV Exports =
+
+A CSV is a very simple type of spreadsheet file where each column is separated by a comma. With WP All Export, you can very easily set up a WordPress CSV export and control the order and title of the columns.
+
+Very often you'll want to edit your data with Microsoft Excel, Google Sheets, Numbers, or maybe something else. This is why a CSV export is so powerful – all spreadsheet software can read, edit, and save CSV files. WP All Export allows you to edit your WordPress data using whatever spreadsheet software you are most comfortable with.
 
 = WordPress XML Exports =
 
@@ -99,9 +107,8 @@ If you want to set up a WordPress XML export all you need to do is select 'XML' 
 [How to Migrate WooCommerce and WordPress From One Host to Another](https://www.wpallimport.com/documentation/how-to-migrate-woocommerce-and-wordpress-data/)
 
 == Premium Support ==
-Upgrade to the Pro edition of WP All Export for premium support.
 
-E-mail: support@wpallimport.com
+You can submit the [support form on our website](https://www.wpallimport.com/support/) or email us at [support@wpallimport.com](mailto:support@wpallimport.com). While we try to assist users of our free version, please note that support is not guaranteed and will depend on our capacity. For premium support, purchase [WP All Export Pro](https://www.wpallimport.com/upgrade-to-wp-all-export-pro/?utm_source=dotorg&utm_medium=readme&utm_campaign=premium-support).
 
 == Installation ==
 
@@ -135,6 +142,14 @@ Either: -
 3. Set up your export columns.
 4. Change the Export Type to Feed › Simple XML Feed.
 5. Finish the export and download the export file.
+
+= How do I export WordPress data to Google Sheets? =
+
+1. Go to All Export › New Export.
+2. Select the post type that you want to export.
+3. Configure the export columns.
+4. Run the export.
+5. Use Zapier to connect WP All Export to Google Sheets.
 
 = How do I export an entire WordPress site? =
 
@@ -183,6 +198,10 @@ Yes. Our plugin automatically detects all custom fields, categories, and tags cr
 If you are using the free version of the plugin, you can obtain support through the WordPress.org community forums. If you have purchased the premium version, you can email us directly and we will respond as quickly as we can, typically in less than one business day.
 
 == Changelog ==
+
+= 1.4.9 =
+* improvement: UI updates
+* bug fix: PHP 8+ notice
 
 = 1.4.8 =
 * bug fix: incorrect order count when using HPOS with the WooCommerce Order Export Add-On

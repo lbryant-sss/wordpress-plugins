@@ -151,7 +151,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_list_boxed_opt
 			'field_type' => 'background',
 			'name'       => 'boxed_item_background',
 			'title'      => esc_html__( 'Item Background', 'qi-addons-for-elementor' ),
-			'types'      => array( 'classic', 'gradient', 'video' ),
+			'types'      => array( 'classic', 'gradient' ),
 			'selector'   => '{{WRAPPER}} .qodef-item-layout--boxed .qodef-e-inner',
 			'dependency' => array(
 				'show' => array(

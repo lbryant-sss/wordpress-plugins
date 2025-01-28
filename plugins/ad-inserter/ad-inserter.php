@@ -5570,6 +5570,7 @@ function ai_load_options () {
   if (($ai_wp_data [AI_WP_DEBUGGING] & AI_DEBUG_PROCESSING) != 0) ai_log ("LOAD OPTIONS START");
 
   if (function_exists ('ai_load_remote_settings')) {
+    ai_check_settings ();
     if (ai_load_remote_settings ()) {
       if (($ai_wp_data [AI_WP_DEBUGGING] & AI_DEBUG_PROCESSING) != 0) ai_log ("LOAD OPTIONS END");
 

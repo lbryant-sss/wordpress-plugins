@@ -2,15 +2,15 @@
 
 namespace RebelCode\Spotlight\Instagram\RestApi\EndPoints\Accounts;
 
-use Exception;
-use RebelCode\Spotlight\Instagram\IgApi\AccessToken;
-use RebelCode\Spotlight\Instagram\IgApi\IgAccount;
-use RebelCode\Spotlight\Instagram\IgApi\IgApiClient;
-use RebelCode\Spotlight\Instagram\PostTypes\AccountPostType;
-use RebelCode\Spotlight\Instagram\RestApi\EndPoints\AbstractEndpointHandler;
-use RebelCode\Spotlight\Instagram\Wp\PostType;
-use WP_REST_Request;
 use WP_REST_Response;
+use WP_REST_Request;
+use RebelCode\Spotlight\Instagram\Wp\PostType;
+use RebelCode\Spotlight\Instagram\RestApi\EndPoints\AbstractEndpointHandler;
+use RebelCode\Spotlight\Instagram\PostTypes\AccountPostType;
+use RebelCode\Spotlight\Instagram\IgApi\IgApiClient;
+use RebelCode\Spotlight\Instagram\IgApi\IgAccount;
+use RebelCode\Spotlight\Instagram\IgApi\AccessToken;
+use Exception;
 
 class ConnectAccountEndPoint extends AbstractEndpointHandler
 {
@@ -52,14 +52,14 @@ class ConnectAccountEndPoint extends AbstractEndpointHandler
     protected function handle(WP_REST_Request $request)
     {
         // Get the access token code from the request
-        $tokenCode = filter_var($request['accessToken'], FILTER_SANITIZE_STRING);
+        $tokenCode = isset($request['accessToken']) ? sanitize_text_field($request['accessToken']) : '';
         if (empty($tokenCode)) {
             return new WP_REST_Response(['error' => "The access token is required."], 400);
         }
 
         $isBusinessToken = stripos($tokenCode, 'EA') === 0 && strlen($tokenCode) > 145;
 
-        $userId = filter_var($request['userId'], FILTER_SANITIZE_STRING);
+        $userId = isset($request['userId']) ? sanitize_text_field($request['userId']): '';
 
         try {
             // Construct the access token object

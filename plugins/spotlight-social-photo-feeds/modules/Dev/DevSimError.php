@@ -2,14 +2,14 @@
 
 namespace RebelCode\Spotlight\Instagram\Modules\Dev;
 
-use Exception;
 use RebelCode\Spotlight\Instagram\ErrorLog;
+use Exception;
 
 class DevSimError
 {
     public function __invoke()
     {
-        $nonce = filter_input(INPUT_POST, 'sli_dev_sim_error');
+        $nonce = sanitize_text_field($_POST['sli_dev_sim_error'] ?? '');
         if (!$nonce) {
             return;
         }
@@ -20,7 +20,7 @@ class DevSimError
             ]);
         }
 
-        $message = filter_input(INPUT_POST, 'sli_dev_error_msg', FILTER_SANITIZE_STRING);
+        $message = sanitize_text_field($_POST['sli_dev_error_msg'] ?? '');
         $message = empty(trim($message)) ? 'Simulated error' : $message;
 
         ErrorLog::exception(new Exception($message));

@@ -24,13 +24,13 @@ class FMAdminView {
     echo $this->topbar();
     ob_start();
     // Form.
-    $action = isset($attr['action']) ? esc_attr($attr['action']) : '';
-    $method = isset($attr['method']) ? esc_attr($attr['method']) : 'post';
-    $name = isset($attr['name']) ? esc_attr($attr['name']) : WDFMInstance(self::PLUGIN)->prefix . '_form';
-    $id = isset($attr['id']) ? esc_attr($attr['id']) : '';
-    $class = isset($attr['class']) ? esc_attr($attr['class']) : WDFMInstance(self::PLUGIN)->prefix . '_form';
-    $style = isset($attr['style']) ? esc_attr($attr['style']) : '';
-    $current_id = isset($attr['current_id']) ? esc_attr($attr['current_id']) : '';
+    $action = isset($attr['action']) ? $attr['action'] : '';
+    $method = isset($attr['method']) ? $attr['method'] : 'post';
+    $name = isset($attr['name']) ? $attr['name'] : WDFMInstance(self::PLUGIN)->prefix . '_form';
+    $id = isset($attr['id']) ? $attr['id'] : '';
+    $class = isset($attr['class']) ? $attr['class'] : WDFMInstance(self::PLUGIN)->prefix . '_form';
+    $style = isset($attr['style']) ? $attr['style'] : '';
+    $current_id = isset($attr['current_id']) ? $attr['current_id'] : '';
     ?>
 	<div id="fm-form-admin" class="wrap">
     <?php
@@ -40,19 +40,19 @@ class FMAdminView {
     echo WDW_FM_Library(self::PLUGIN)->message_id($message_id, $message);
     ?>
       <form
-          <?php echo $action ? 'action="' . $action . '"' : ''; ?>
-          <?php echo $method ? 'method="' . $method . '"' : ''; ?>
-          <?php echo $name ? ' name="' . $name . '"' : ''; ?>
-          <?php echo $id ? ' id="' . $id . '"' : ''; ?>
-          <?php echo $class ? ' class="' . $class . '"' : ''; ?>
-          <?php echo $style ? ' style="' . $style . '"' : ''; ?>
+          <?php echo $action ? 'action="' . esc_url($action) . '"' : ''; ?>
+          <?php echo $method ? 'method="' . esc_attr($method) . '"' : ''; ?>
+          <?php echo $name ? ' name="' . esc_attr($name) . '"' : ''; ?>
+          <?php echo $id ? ' id="' . esc_attr($id) . '"' : ''; ?>
+          <?php echo $class ? ' class="' . esc_attr($class) . '"' : ''; ?>
+          <?php echo $style ? ' style="' . esc_attr($style) . '"' : ''; ?>
       ><?php
       echo $content;
       // Add nonce to form.
       wp_nonce_field(WDFMInstance(self::PLUGIN)->nonce, WDFMInstance(self::PLUGIN)->nonce);
         ?>
         <input id="task" name="task" type="hidden" value=""/>
-        <input id="current_id" name="current_id" type="hidden" value="<?php echo $current_id; ?>"/>
+        <input id="current_id" name="current_id" type="hidden" value="<?php echo esc_attr($current_id); ?>"/>
       </form>
     </div><?php
     return ob_get_clean();
@@ -73,20 +73,21 @@ class FMAdminView {
     $title_value = !empty($params['title_value']) ? $params['title_value'] : '';
 		$add_new_button = !empty($params['add_new_button']) ? $params['add_new_button'] : '';
 
-	  $attributes = '';
-    if ( !empty($add_new_button) && is_array($add_new_button) ) {
-      foreach ( $add_new_button as $key => $val ) {
-        $attributes .= $key . '="' . $val . '"';
-      }
+    $attributes = '';
+    if (!empty($add_new_button) && is_array($add_new_button)) {
+        foreach ($add_new_button as $key => $val) {
+            $attributes .= esc_attr($key) . '="' . esc_attr($val) . '" ';
+        }
     }
     ob_start();
-    ?><div class="wd-page-title <?php echo $title_class; ?>">
-      <h1 class="wp-heading-inline"><?php echo $title; ?>
+    ?>
+    <div class="wd-page-title <?php echo esc_attr($title_class); ?>">
+      <h1 class="wp-heading-inline"><?php echo wp_kses_post($title); ?>
       <?php
       if ( $title_name || $title_id || $title_value ) {
         ?>
         <span id="fm-title-edit">
-          <input type="text" id="<?php echo $title_id; ?>" name="<?php echo $title_name; ?>" value="<?php echo $title_value; ?>" />
+          <input type="text" id="<?php echo esc_attr($title_id); ?>" name="<?php echo esc_attr($title_name); ?>" value="<?php echo esc_attr($title_value); ?>" />
         </span>
         <?php
       }
@@ -114,34 +115,36 @@ class FMAdminView {
    */
   protected function buttons( $buttons = array(), $single = FALSE, $parent = array() ) {
     ob_start();
-    if ( !$single ) {
-      $parent_id = isset($parent['id']) ? esc_attr($parent['id']) : '';
-      $parent_class = isset($parent['class']) ? esc_attr($parent['class']) : 'wd-buttons';
-      $parent_style = isset($parent['style']) ? esc_attr($parent['style']) : '';
+    if (!$single) {
+      $parent_id = isset($parent['id']) ? $parent['id'] : '';
+      $parent_class = isset($parent['class']) ? $parent['class'] : 'wd-buttons';
+      $parent_style = isset($parent['style']) ? $parent['style'] : '';
       ?>
-    <div
-      <?php echo $parent_id ? 'id="' . $parent_id . '"' : ''; ?>
-      <?php echo $parent_class ? ' class="' . $parent_class . '"' : ''; ?>
-      <?php echo $parent_style ? ' style="' . $parent_style . '"' : ''; ?>
+      <div
+        <?php echo $parent_id ? 'id="' . esc_attr($parent_id) . '"' : ''; ?>
+        <?php echo $parent_class ? ' class="' . esc_attr($parent_class) . '"' : ''; ?>
+        <?php echo $parent_style ? ' style="' . esc_attr($parent_style) . '"' : ''; ?>
       >
       <?php
     }
     foreach ($buttons as $button) {
-      $title = isset($button['title']) ? esc_attr($button['title']) : '';
-      $value = isset($button['value']) ? esc_attr($button['value']) : '';
-      $name = isset($button['name']) ? esc_attr($button['name']) : '';
-      $id = isset($button['id']) ? esc_attr($button['id']) : '';
-      $class = isset($button['class']) ? esc_attr($button['class']) : '';
-      $style = isset($button['style']) ? esc_attr($button['style']) : '';
-      $onclick = isset($button['onclick']) ? esc_attr($button['onclick']) : '';
-      ?><button type="submit"
-               <?php echo $value ? ' value="' . $value . '"' : ''; ?>
-               <?php echo $name ? ' name="' . $name . '"' : ''; ?>
-               <?php echo $id ? ' id="' . $id . '"' : ''; ?>
-               class="wd-button <?php echo $class; ?>"
-               <?php echo $style ? ' style="' . $style . '"' : ''; ?>
-               <?php echo $onclick ? ' onclick="' . $onclick . '"' : ''; ?>
-         ><?php echo $title; ?></button><?php
+      $title = isset($button['title']) ? $button['title'] : '';
+      $value = isset($button['value']) ? $button['value'] : '';
+      $name = isset($button['name']) ? $button['name'] : '';
+      $id = isset($button['id']) ? $button['id'] : '';
+      $class = isset($button['class']) ? $button['class'] : '';
+      $style = isset($button['style']) ? $button['style'] : '';
+      $onclick = isset($button['onclick']) ? $button['onclick'] : '';
+      ?>
+      <button type="submit"
+        <?php echo $value ? ' value="' . esc_attr($value) . '"' : ''; ?>
+        <?php echo $name ? ' name="' . esc_attr($name) . '"' : ''; ?>
+        <?php echo $id ? ' id="' . esc_attr($id) . '"' : ''; ?>
+        class="wd-button <?php echo esc_attr($class); ?>"
+        <?php echo $style ? ' style="' . esc_attr($style) . '"' : ''; ?>
+        <?php echo $onclick ? ' onclick="' . esc_attr($onclick) . '"' : ''; ?>
+      ><?php echo esc_html($title); ?></button>
+      <?php
     }
     if ( !$single ) {
       ?>

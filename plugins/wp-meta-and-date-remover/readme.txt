@@ -4,7 +4,7 @@ Donate link: - https://paypal.me/prasadkirpekar
 Tags: date, author, remover, posts, metadata
 Requires at least: 3.0.1
 Tested up to: 6.7
-Stable tag: 2.3.4
+Stable tag: 2.3.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

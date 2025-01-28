@@ -79,17 +79,26 @@ class FeedbackNotice {
 					'<strong><a target="_blank" href="' . self::REVIEW_URL . '">', '</a></strong>'
 				); ?>
 				<div class="button-container">
-					<a href="<?php echo self::REVIEW_URL; ?>" target="_blank" data-link="follow" class="button-secondary dgwt-review-notice-dismiss">
+					<a href="<?php echo self::REVIEW_URL; ?>" target="_blank" data-link="follow"
+					   class="button-secondary js-dgwt-review-notice-dismiss">
 						<span class="dashicons dashicons-star-filled"></span>
 						<?php printf( __( "Review %s", 'ajax-search-for-woocommerce' ), DGWT_WCAS_NAME ); ?>
 					</a>
-					<a href="#" class="button-secondary dgwt-review-notice-dismiss">
+					<a href="#" class="button-secondary js-dgwt-review-notice-dismiss dgwt-review-notice-dismiss">
 						<span class="dashicons dashicons-no-alt"></span>
 						<?php _e( "No thanks", 'ajax-search-for-woocommerce' ); ?>
 					</a>
 				</div>
+				<button class="dgwt-review-notice-dismiss-x js-dgwt-review-notice-dismiss"
+						aria-label="<?php _e( "Close", 'ajax-search-for-woocommerce' ); ?>">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+						<path
+							d="M12 13.06l3.712 3.713 1.061-1.06L13.061 12l3.712-3.712-1.06-1.06L12 10.938 8.288 7.227l-1.061 1.06L10.939 12l-3.712 3.712 1.06 1.061L12 13.061z"></path>
+					</svg>
+				</button>
 			</div>
 			<?php
+
 		}
 	}
 
@@ -148,7 +157,7 @@ class FeedbackNotice {
 		<script>
 			(function ($) {
 
-				$(document).on('click', '.dgwt-review-notice-dismiss', function () {
+				$(document).on('click', '.js-dgwt-review-notice-dismiss', function () {
 					var $box = $(this).closest('.dgwt-wcas-review-notice'),
 						isLink = $(this).attr('data-link') === 'follow' ? true : false;
 

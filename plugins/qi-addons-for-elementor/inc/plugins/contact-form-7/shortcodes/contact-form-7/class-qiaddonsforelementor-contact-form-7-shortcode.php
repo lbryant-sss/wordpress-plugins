@@ -716,7 +716,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'background',
 					'name'       => 'response_background',
 					'title'      => esc_html__( 'Response Background', 'qi-addons-for-elementor' ),
-					'types'      => array( 'classic', 'gradient', 'video' ),
+					'types'      => array( 'classic', 'gradient' ),
 					'selector'   => '{{WRAPPER}} .qodef-qi-contact-form-7 .wpcf7-response-output',
 					'group'      => esc_html__( 'Response Style', 'qi-addons-for-elementor' ),
 				)

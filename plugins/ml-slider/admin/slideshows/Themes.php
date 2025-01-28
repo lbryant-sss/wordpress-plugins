@@ -831,9 +831,26 @@ return $theme;
 
         $replace = array(
             $id,
-            (string) $value
+            strip_tags( $value )
         );
 
         return str_replace($search, $replace, $css);
+    }
+
+    /**
+     * Sanitize and validate color formats (hex, rgb, rgba)
+     * 
+     * @since 3.95
+     * 
+     * @param string $color 
+     * 
+     * @return string|bool Return color or false if invalid
+     */
+    public function sanitize_color( $color ) {
+        $hexRegex = '/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/';
+        $rgbRegex = '/^rgb\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*\)$/';
+        $rgbaRegex = '/^rgba\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*(0|1|0?\.\d+)\s*\)$/';
+
+        return preg_match( $hexRegex, $color ) || preg_match( $rgbRegex, $color ) || preg_match( $rgbaRegex, $color ) ? $color : false;
     }
 }

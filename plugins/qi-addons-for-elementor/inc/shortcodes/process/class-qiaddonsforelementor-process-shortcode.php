@@ -140,7 +140,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 							'field_type' => 'background',
 							'name'       => 'item_icon_holder_background',
 							'title'      => esc_html__( 'Item Holder Background', 'qi-addons-for-elementor' ),
-							'types'      => array( 'classic', 'gradient', 'video' ),
+							'types'      => array( 'classic', 'gradient' ),
 							'selector'   => '{{WRAPPER}} {{CURRENT_ITEM}} .qodef-e-icon',
 						),
 						array(
@@ -333,7 +333,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 					'field_type' => 'background',
 					'name'       => 'global_item_icon_holder_background',
 					'title'      => esc_html__( 'Item Holder Background', 'qi-addons-for-elementor' ),
-					'types'      => array( 'classic', 'gradient', 'video' ),
+					'types'      => array( 'classic', 'gradient' ),
 					'selector'   => '{{WRAPPER}} .qodef-e-icon',
 					'group'      => esc_html__( 'Style', 'qi-addons-for-elementor' ),
 				)

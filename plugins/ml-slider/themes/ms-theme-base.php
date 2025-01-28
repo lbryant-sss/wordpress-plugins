@@ -340,7 +340,7 @@ return $options;
 
         
         if ($is_theme_editor_screen || $doesnt_use_customize) {
-            return "";
+            return $css;
         }
 
         $css .= $this->theme_customize_css(
@@ -349,7 +349,9 @@ return $options;
             $slideshow_id
         );
 
-        remove_filter('metaslider_css', array($this, 'theme_customize'), 10, 3);
+        // Commented to solve an issue:
+        // can't have more than one slideshow based on the same theme on the same page
+        //remove_filter('metaslider_css', array($this, 'theme_customize'), 10, 3);
 
         return $css;
     }

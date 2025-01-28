@@ -214,7 +214,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'background',
 					'name'       => 'holder_background',
 					'title'      => esc_html__( 'Holder Background', 'qi-addons-for-elementor' ),
-					'types'      => array( 'classic', 'gradient', 'video' ),
+					'types'      => array( 'classic', 'gradient' ),
 					'selector'   => '{{WRAPPER}} .qodef-qi-info-cards',
 					'group'      => esc_html__( 'Style', 'qi-addons-for-elementor' ),
 				)

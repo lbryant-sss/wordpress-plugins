@@ -44,6 +44,7 @@ abstract class PMXE_Controller_Admin extends PMXE_Controller {
 		wp_enqueue_style('jquery-ui', PMXE_ROOT_URL . '/static/js/jquery/css/redmond/jquery-ui.css', array('media-views'));
 		wp_enqueue_style('jquery-tipsy', PMXE_ROOT_URL . '/static/js/jquery/css/smoothness/jquery.tipsy.css', array('media-views'));
 		wp_enqueue_style('pmxe-admin-style', PMXE_ROOT_URL . '/static/css/admin.css',array('media-views'), PMXE_VERSION.PMXE_ASSETS_VERSION);
+		wp_enqueue_style('pmxe-scheduling-style', PMXE_ROOT_URL . '/static/css/scheduling.css', array(), PMXE_VERSION);
 		wp_enqueue_style('pmxe-admin-style-upgrade-notice', PMXE_ROOT_URL . '/static/css/upgrade-notice.css',array('media-views'), PMXE_VERSION.PMXE_ASSETS_VERSION);
 		wp_enqueue_style('pmxe-admin-style-ie', PMXE_ROOT_URL . '/static/css/admin-ie.css', array('media-views'));
 		wp_enqueue_style('jquery-select2', PMXE_ROOT_URL . '/static/js/jquery/css/select2/select2.css', array('media-views'));
@@ -85,6 +86,7 @@ abstract class PMXE_Controller_Admin extends PMXE_Controller {
 
 		/* load plupload scripts */
         wp_enqueue_script('pmxe-admin-script', PMXE_ROOT_URL . '/static/js/admin.js', array('jquery', 'jquery-ui-dialog', 'jquery-ui-datepicker', 'jquery-ui-draggable', 'jquery-ui-droppable', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-position', 'jquery-ui-autocomplete' ), PMXE_VERSION);
+		wp_enqueue_script('pmxe-scheduling-script', PMXE_ROOT_URL . '/static/js/scheduling.js', array('pmxe-admin-script'), PMXE_VERSION);
 		wp_enqueue_script('pmxe-admin-validate-braces', PMXE_ROOT_URL . '/static/js/validate-braces.js', array('pmxe-admin-script' ), PMXE_VERSION.PMXE_ASSETS_VERSION);
 		wp_enqueue_script('pmxe-admin-update-notice', PMXE_ROOT_URL . '/static/js/upgrade-notice.js', array('pmxe-admin-script' ), PMXE_VERSION.PMXE_ASSETS_VERSION);
 

@@ -42,6 +42,7 @@
 .dgwt-wcas-settings > .updated:not(.fs-slug-ajax-search-for-woocommerce),
 .woocommerce_page_dgwt_wcas_settings .sp-eafree-review-notice,
 .woocommerce_page_dgwt_wcas_settings #beacon-container,
+.woocommerce_page_dgwt_wcas_settings #nri-slug-wrapper,
 .woocommerce_page_dgwt_wcas_debug #beacon-container {
 	display: none !important;
 }
@@ -767,7 +768,6 @@ table.widefat.dgwt-wcas-analytics-table {
 	margin-bottom: 7px
 }
 
-/* Button Container in Review Us Container */
 .dgwt-wcas-review-notice .button-container {
 	display: block;
 	width: 100%;
@@ -801,9 +801,10 @@ table.widefat.dgwt-wcas-analytics-table {
 }
 
 .notice.dgwt-wcas-review-notice {
+	position:relative;
 	border-left: 4px solid #00a0d2;
 	background: #fefefe;
-	padding: 10px 12px 1px 12px;
+	padding: 10px 50px 1px 12px;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
 	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
 	margin: 15px 0 20px 0;
@@ -820,6 +821,16 @@ table.widefat.dgwt-wcas-analytics-table {
 	height: 80px;
 	text-align: center;
 	width: 82px;
+}
+
+.dgwt-wcas-review-notice .dgwt-review-notice-dismiss-x {
+	background: none;
+	border: none;
+	cursor: pointer;
+	height: 24px;
+	position: absolute;
+	right: 5px;
+	top: 10px;
 }
 
 .dgwt-wcas-pro-label {

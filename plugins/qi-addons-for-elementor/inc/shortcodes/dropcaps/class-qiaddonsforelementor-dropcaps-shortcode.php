@@ -92,7 +92,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'background',
 					'name'       => 'letter_background',
 					'title'      => esc_html__( 'Letter Background', 'qi-addons-for-elementor' ),
-					'types'      => array( 'classic', 'gradient', 'video' ),
+					'types'      => array( 'classic', 'gradient' ),
 					'selector'   => '{{WRAPPER}} .qodef-qi-dropcaps .qodef-m-letter',
 					'group'      => esc_html__( 'Style', 'qi-addons-for-elementor' ),
 				)
@@ -196,7 +196,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'background',
 					'name'       => 'letter_clip_background',
 					'title'      => esc_html__( 'Letter Clip Background', 'qi-addons-for-elementor' ),
-					'types'      => array( 'classic', 'gradient', 'video' ),
+					'types'      => array( 'classic', 'gradient' ),
 					'selector'   => '{{WRAPPER}} .qodef-qi-dropcaps.qodef-letter-clip-effect .qodef-m-letter',
 					'group'      => esc_html__( 'Style', 'qi-addons-for-elementor' ),
 					'dependency' => array(

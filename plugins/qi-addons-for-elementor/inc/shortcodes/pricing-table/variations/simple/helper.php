@@ -53,7 +53,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_pricing_table_simple_add_extra_
 			'field_type' => 'background',
 			'name'       => 'title_background_image',
 			'title'      => esc_html__( 'Title Wrapper Background Image', 'qi-addons-for-elementor' ),
-			'types'      => array( 'classic', 'gradient', 'video' ),
+			'types'      => array( 'classic', 'gradient' ),
 			'selector'   => '{{WRAPPER}} .qodef-m-title-wrapper',
 			'dependency' => array(
 				'show' => array(

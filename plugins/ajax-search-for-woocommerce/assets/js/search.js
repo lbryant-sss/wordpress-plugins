@@ -2684,9 +2684,9 @@
 
                     if (isVoiceSearchSupported && isSolarisStyle) {
                         if (dgwt_wcas.is_rtl == 1) {
-                            $voiceSearch.css('left', $(this).outerWidth() + 'px');
+                            $voiceSearch.css('transform', 'translateX(' + $(this).outerWidth() + 'px)');
                         } else {
-                            $voiceSearch.css('right', $(this).outerWidth() + 'px');
+                            $voiceSearch.css('transform', 'translateX(-' + $(this).outerWidth() + 'px)');
                         }
                     }
 

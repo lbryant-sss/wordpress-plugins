@@ -83,6 +83,10 @@ function pmxe_wp_ajax_wpae_filtering_count()
 	$is_orders_export = ($post['cpt'] == 'shop_order' and class_exists('WooCommerce'));
 
     if ($post['export_type'] == 'advanced') {
+
+	    // Remove trailing comma from the query.
+	    PMXE_Plugin::$session->set('wp_query', rtrim(PMXE_Plugin::$session->get('wp_query'), ','));
+
         if (XmlExportEngine::$is_user_export) {
             // get total users
             $totalQuery = eval('return new WP_User_Query(array(' . PMXE_Plugin::$session->get('wp_query') . ', \'offset\' => 0, \'number\' => 10 ));');

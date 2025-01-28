@@ -2,12 +2,12 @@
 
 namespace RebelCode\Spotlight\Instagram\RestApi\EndPoints\Feeds;
 
-use Dhii\Transformer\TransformerInterface;
-use RebelCode\Spotlight\Instagram\RestApi\EndPoints\AbstractEndpointHandler;
-use RebelCode\Spotlight\Instagram\Wp\PostType;
-use WP_Error;
-use WP_REST_Request;
 use WP_REST_Response;
+use WP_REST_Request;
+use WP_Error;
+use RebelCode\Spotlight\Instagram\Wp\PostType;
+use RebelCode\Spotlight\Instagram\RestApi\EndPoints\AbstractEndpointHandler;
+use Dhii\Transformer\TransformerInterface;
 
 /**
  * The handler for the REST API endpoint that exposes feeds.
@@ -51,7 +51,7 @@ class GetFeedsEndpoint extends AbstractEndpointHandler
      */
     protected function handle(WP_REST_Request $request)
     {
-        $id = filter_var($request['id'], FILTER_SANITIZE_STRING);
+        $id = isset($request['id']) ? sanitize_text_field($request['id']) : '';
 
         if (empty($id)) {
             return new WP_REST_Response(array_map([$this->transformer, 'transform'], $this->cpt->query([

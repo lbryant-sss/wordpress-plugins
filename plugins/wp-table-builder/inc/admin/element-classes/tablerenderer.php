@@ -129,8 +129,12 @@ class TableRenderer
             "data-wptb-horizontal-scroll-status" => $props['scrollX'] ?? false,
             "data-wptb-extra-styles" => $props['extraStyles'] ?? false,
             "data-wptb-first-column-sticky" => $props['stickyFirstColumn'] ?? false,
+
+            "data-wptb-pagination-enable" => $props['paginationEnable'] ?? false,
             "data-wptb-pro-pagination-top-row-header" => $props['paginationTopRowAsHeader'] ?? false,
             "data-wptb-rows-per-page" => $props['rowsPerPage'] ?? false,
+            "data-wptb-rows-changeable" => $props['rowsChangeable'] ?? false,
+
             "data-wptb-pro-search-top-row-header" => $props['searchKeepHeader'] ?? false,
             "data-wptb-searchbar-position" => $props['searchPosition'] ?? false,
             "role" => $props['role'] ?? false,
@@ -140,6 +144,8 @@ class TableRenderer
             "data-wptb-table-tds-sum-max-width" => $props['tdSumMaxWidth'] ?? false,
             "data-disable-theme-styles" => $props['disableThemeStyles'] ?? false,
             "data-wptb-search-enable" => $props['searchEnable'] ?? false,
+
+
 
             "data-wptb-header-background-color" => $props['headerBg'] ?? false,
             "data-wptb-even-row-background-color" => $props['evenRowBg'] ?? false,
@@ -162,7 +168,7 @@ class TableRenderer
             foreach ($row['cells'] as $cell) {
                 $cells .= self::render_cell($cell);
             }
-            $classNames = $row['props']['hightLighted'] ?? '';
+            $classNames = $row['props']['highlighted'] ? 'wptb-row-highlighted-' . $row['props']['highlighted'] : '';
             $attrs = "";
             if ($props['stickyTopRow'] && $i == 0) {
                 $attrs = 'data-wptb-sticky-row="true"';
@@ -197,6 +203,7 @@ class TableRenderer
 
         $props = $cell['props'];
         $borderCss = [];
+        $radiusCss = [];
 
         if (isset($props['border']) && $props['border'] !== '') {
             $borderCss = [
@@ -210,13 +217,25 @@ class TableRenderer
             ];
         }
 
+        if (isset($props['borderRadius']) && $props['borderRadius'] !== '') {
+            $radiusCss = [
+                'border-radius' => $props['borderRadius'],
+            ];
+        } else {
+            $radiusCss = [
+                'border-top-left-radius' => $props['borderTopLeftRadius'] ?? '',
+                'border-top-right-radius' => $props['borderTopRightRadius'] ?? '',
+                'border-bottom-right-radius' => $props['borderBottomRightRadius'] ?? '',
+                'border-bottom-left-radius' => $props['borderBottomLeftRadius'] ?? '',
+            ];
+        }
+
         $styles = self::generate_css_string([
-            "border-radius" => $props['borderRadius'] ?? '',
             "padding" => $props['padding'] ?? "",
             "height" => $props['height'] ?? "",
             "width" => $props['width'] ?? "",
             "background-color" => $props['background'] ?? '',
-        ] + $borderCss);
+        ] + $borderCss + $radiusCss);
 
         $attrs = self::generate_attrs_string([
 
@@ -235,13 +254,13 @@ class TableRenderer
             "data-wptb-own-bg-color" => $props['ownBgColor'] ?? false,
         ]);
 
-        $classNames = $props['hightLighted'] ?? '';
+        $classNames = $props['highlighted'] ? 'wptb-col-highlighted-' . $props['highlighted'] . ' wptb-highlighted ' : '';
         $blocks = "";
 
         $isFirst = true;
 
         if ($props['hideOnMobile'] ?? false) {
-            $classNames .= ' wptb-hide-on-mobile';
+            $classNames .= 'wptb-hide-on-mobile';
         }
 
         if ($props['isEmpty']) {

@@ -4,7 +4,7 @@ Tags: woocommerce search, ajax search, search by sku, product search, woocommerc
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.29.0
+Stable tag: 1.30.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -147,6 +147,32 @@ You can read more and compare Pro and Free features here: [Full comparison - Pro
 9. Sample settings page (Search Analytics tab)
 
 == Changelog ==
+
+= 1.30.0, January 27, 2025 =
+* ADDED: “**Bricks theme**” integration – support for “Products” element on the search results page
+* ADDED: “**Bricks theme**” integration – incorrect order of results on the search results page
+* ADDED: Integration with the “**Discontinued Product Stock Status for WooCommerce**” plugin
+* ADDED: The link to edit the FiboSearch bar in Customizer
+* ADDED: The `x` button was added to the review request notice
+* FIXED: Missing data in the “**Details Panel**” for product variations
+* FIXED: Resolved an error when attempting to insert FiboSearch blocks in the block editor
+* FIXED: Eliminated duplicate search results in autocomplete
+* FIXED: Enabled searching for products whose variations are all out of stock but have the “**allow backorders**” status 
+* FIXED: **WCAG** “Links do not have a discernible name”
+* FIXED: **WPML** integration – no results when option "use translation if available or fallback to default language" is used
+* FIXED: **Flatsome** theme integration – can't search in mobile overlay view when search is activated from the mobile menu
+* FIXED: Incorrect display of the FiboSearch form when it is embedded in the shop page description
+* FIXED: Mobile search in the menu does not work when the Divi Mobile plugin is active
+* FIXED: Unnecessary header “Search results for...” when there are no results for post types other than products
+* FIXED: Google PageSpeed Insights – avoid non-composited animations
+* FIXED: Search icon padding when the search icon is a part of the main menu
+* TWEAK: Theme integration is not loaded when the minimal version condition is not met
+* TWEAK: Improved clearing of plugin data on uninstall
+* TWEAK: Hiding unwanted banner on the settings page
+* TWEAK: Remove the “**(beta)**” suffix from the “User search history” option
+* REFACTOR: Remove the “**Grouped results**” option
+* UPDATED: The `.pot` file
+* UPDATED: Freemius SDK
 
 = 1.29.0, October 29, 2024 =
 * ADDED: Integration with the **Listeo theme**
@@ -325,22 +351,5 @@ You can read more and compare Pro and Free features here: [Full comparison - Pro
 * FIXED: UI_FIXER: rebuild all search bars without correct JS events
 * FIXED: Redundant DB queries related to the existence of plugin tables
 * CHANGE: Updated Freemius SDK to v2.5.2
-
-
-
-= 1.20.0, September 13, 2022 =
-* ADDED: Integration with Woostify theme
-* ADDED: Integration with Neve theme
-* ADDED: Integration with WP Rocket
-* ADDED: Include block sources in the plugin package
-* ADDED: Possibility to reset search statistics from the settings page
-* ADDED: Support for &lt;sub&gt; element in autocomplete suggestions
-* FIXED: Incorrect display of styles with personalization of the search
-* FIXED: Wrong settings index in Impreza and Enfold theme
-* FIXED: Removed of unnecessary language files
-* FIXED: Always set cursor at the end of the input
-* FIXED: Incorrect verification if the browser supports speech recognition
-* FIXED: FiboSearch Analytics - not working “check” buttons of the latest loading list
-* FIXED: Unnecessary options and transients after uninstalling plugin
 
 [See changelog for all versions](https://fibosearch.com/changelog/).

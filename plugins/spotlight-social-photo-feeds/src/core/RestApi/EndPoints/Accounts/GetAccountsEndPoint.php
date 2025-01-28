@@ -2,16 +2,16 @@
 
 namespace RebelCode\Spotlight\Instagram\RestApi\EndPoints\Accounts;
 
-use Dhii\Transformer\TransformerInterface;
-use RebelCode\Spotlight\Instagram\PostTypes\AccountPostType;
-use RebelCode\Spotlight\Instagram\PostTypes\CustomMedia;
-use RebelCode\Spotlight\Instagram\RestApi\EndPoints\AbstractEndpointHandler;
-use RebelCode\Spotlight\Instagram\Utils\Arrays;
-use RebelCode\Spotlight\Instagram\Wp\PostType;
-use WP_Error;
-use WP_Post;
-use WP_REST_Request;
 use WP_REST_Response;
+use WP_REST_Request;
+use WP_Post;
+use WP_Error;
+use RebelCode\Spotlight\Instagram\Wp\PostType;
+use RebelCode\Spotlight\Instagram\Utils\Arrays;
+use RebelCode\Spotlight\Instagram\RestApi\EndPoints\AbstractEndpointHandler;
+use RebelCode\Spotlight\Instagram\PostTypes\CustomMedia;
+use RebelCode\Spotlight\Instagram\PostTypes\AccountPostType;
+use Dhii\Transformer\TransformerInterface;
 
 /**
  * The handler for the endpoint that provides account information.
@@ -55,8 +55,7 @@ class GetAccountsEndPoint extends AbstractEndpointHandler
      */
     protected function handle(WP_REST_Request $request)
     {
-        $id = filter_var($request['id'], FILTER_SANITIZE_STRING);
-
+        $id = isset($request['id']) ? sanitize_text_field($request['id']) : '';
         if (empty($id)) {
             $data = Arrays::map($this->cpt->query(), function ($account) use ($request) {
                 return $this->transformAccount($account);

@@ -509,14 +509,3 @@ $columns = apply_filters('pmxe_manage_imports_columns', $columns);
 
 
 <div class="wpallexport-super-overlay"></div>
-
-<fieldset class="optionsset column rad4 wp-all-export-scheduling-help">
-
-    <div class="title">
-        <span style="font-size:1.5em;" class="wpallexport-add-row-title"><?php esc_html_e('Automatic Scheduling', 'wp_all_export_plugin'); ?></span>
-    </div>
-
-    <?php
-    include_once __DIR__.'/../../../src/Scheduling/views/SchedulingHelp.php';
-    ?>
-</fieldset>

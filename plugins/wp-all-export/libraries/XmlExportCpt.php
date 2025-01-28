@@ -57,7 +57,7 @@ final class XmlExportCpt
 	            if(is_array($exportOptions['cpt'] ?? '') && in_array('shop_order', $exportOptions['cpt'])) {
 		            $pType = 'shop_order';
 	            } else {
-		            $pType = $entry->post_type;
+		            $pType = $entry->post_type ?? $entry->type;
 	            }
 
                 if ($is_item_data and $subID != $ID) continue;

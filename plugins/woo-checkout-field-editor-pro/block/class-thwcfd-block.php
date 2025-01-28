@@ -53,6 +53,10 @@ class THWCFD_Block {
 
     public function register_additional_address_fields(){
 
+        if (!function_exists('woocommerce_register_additional_checkout_field')) {
+            return;
+        }
+
         $fieldset = $this->get_section_field_set('address');
         $default_address_fields = THWCFD_Utils_Block::get_default_block_section_fields('address');
         if (!is_array($fieldset) || !is_array($default_address_fields)) {
@@ -64,6 +68,10 @@ class THWCFD_Block {
 				//checkbox field required not supported
 				$field_data['required'] = false;
 			}
+            
+            if (isset($field_data['label'])) {
+                $field_data['label'] = __($field_data['label'], 'woo-checkout-field-editor-pro');
+            }
 			woocommerce_register_additional_checkout_field(
 				array(
 					'id'          => 'thwcfe-block/'.$field_data['name'],
@@ -96,11 +104,14 @@ class THWCFD_Block {
 
     public function update_default_fields_data_with_block() {
 
-		if (!class_exists('Automattic\WooCommerce\Blocks\Package') || !class_exists('Automattic\WooCommerce\Blocks\Assets\AssetDataRegistry')) {
-            error_log('WooCommerce Blocks classes not found. Please ensure WooCommerce Blocks is installed and activated.');
+		if (!class_exists('Automattic\WooCommerce\Blocks\Package') || !class_exists('Automattic\WooCommerce\Blocks\Assets\AssetDataRegistry') || !class_exists('Automattic\WooCommerce\Blocks\Domain\Services\CheckoutFields')) {
+            //error_log('WooCommerce Blocks classes not found. Please ensure WooCommerce Blocks is installed and activated.');
             return;
         }
-
+        $change_default_address_fields = apply_filters('thwcfe_change_default_block_address_fields', true);
+        if (!$change_default_address_fields) {
+            return;
+        }
         $checkout_fields     = Package::container()->get( CheckoutFields::class );
 		$asset_data_registry = Package::container()->get(AssetDataRegistry::class);
         $default_address_fields = THWCFD_Utils_Block::get_core_fields();
@@ -117,13 +128,23 @@ class THWCFD_Block {
             } else {
                 $field['hidden'] = true;
             }
-        }
+
+            if(isset($field['label'])){
+                $field['label'] = __($field['label'], 'woo-checkout-field-editor-pro');
+            }
+        } 
+        
         unset($field);
         $asset_data_registry->add( 'defaultFields', array_merge($default_address_fields, $checkout_fields->get_additional_fields() ) );
 
     }
 
     public function update_default_fields_data($fields){
+
+        $change_default_address_fields = apply_filters('thwcfe_change_default_block_address_fields', true);
+        if (!$change_default_address_fields) {
+            return;
+        }
 
         $field_set = $this->get_section_field_set('address');
         foreach( $fields as $key => &$field){
@@ -137,6 +158,10 @@ class THWCFD_Block {
             } else {
                 $field['hidden'] = true;
                 $field['required'] = false;
+            }
+
+            if(isset($field['label'])){
+                $field['label'] = __($field['label'], 'woo-checkout-field-editor-pro');
             }
         }
         unset($field);

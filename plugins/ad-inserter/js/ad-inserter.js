@@ -1974,7 +1974,8 @@ jQuery(document).ready (function($) {
 //      syntax_highlighter.editor.setPrintMarginColumn (1000);
       setTimeout (function() {syntax_highlighter.editor.setPrintMarginColumn (1000);}, 50);
 
-      $('input#simple-editor-' + block).change (function () {
+//      $('input#simple-editor-' + block).change (function () {
+      $('input#simple-editor-' + block).on ("change", function () {
         var block = $(this).attr ("id").replace ("simple-editor-","");
         var editor_disabled = $(this).is(":checked");
         switch_editor (block, editor_disabled);
@@ -2193,7 +2194,8 @@ jQuery(document).ready (function($) {
     $("input#chart-start-date-"+tab).datepicker ({dateFormat: dateFormat, autoSize: true});
     $("input#chart-end-date-"+tab).datepicker ({dateFormat: dateFormat, autoSize: true});
 
-    $("input#chart-start-date-"+tab).change (function() {
+//    $("input#chart-start-date-"+tab).change (function() {
+    $("input#chart-start-date-"+tab).on ("change", function() {
       $(this).closest (".custom-range-controls").find ('.data-range').removeClass ('selected');
       var custom_range_controls = $(this).closest (".custom-range-controls");
       custom_range_controls.attr ('range-name', '----');
@@ -2204,7 +2206,8 @@ jQuery(document).ready (function($) {
       process_chart_dates (block);
     });
 
-    $("input#chart-end-date-"+tab).change (function() {
+//    $("input#chart-end-date-"+tab).change (function() {
+    $("input#chart-end-date-"+tab).on ("change", function() {
       $(this).closest (".custom-range-controls").find ('.data-range').removeClass ('selected');
       var custom_range_controls = $(this).closest (".custom-range-controls");
       custom_range_controls.attr ('range-name', '----');
@@ -2277,7 +2280,8 @@ jQuery(document).ready (function($) {
 
     });
 
-    $("#load-settings-0").change (function (e) {
+//    $("#load-settings-0").change (function (e) {
+    $("#load-settings-0").on ("change", function (e) {
       // getting a hold of the file reference
       var file = e.target.files [0];
 
@@ -2311,19 +2315,23 @@ jQuery(document).ready (function($) {
         }
       }
       document.body.appendChild (form);
-      form.submit ();
+//      form.submit ();
+      form.trigger ("submit" );
       document.body.removeChild (form);
     });
 
-    $("input#process-php-h").change (function() {
+//    $("input#process-php-h").change (function() {
+    $("input#process-php-h").on ("change", function() {
       if (syntax_highlighting) configure_editor_language ('h');
     });
 
-    $("input#process-php-f").change (function() {
+//    $("input#process-php-f").change (function() {
+    $("input#process-php-f").on ("change", function() {
       if (syntax_highlighting) configure_editor_language ('f')
     });
 
-    $("input#process-php-a").change (function() {
+//    $("input#process-php-a").change (function() {
+    $("input#process-php-a").on ("change", function() {
       if (syntax_highlighting) configure_editor_language ('a')
     });
 
@@ -2439,7 +2447,8 @@ jQuery(document).ready (function($) {
 
 
     configure_adb ();
-    $("select#adb-action").change (function() {
+//    $("select#adb-action").change (function() {
+    $("select#adb-action").on ("change", function() {
       configure_adb ();
     });
 
@@ -2500,31 +2509,38 @@ jQuery(document).ready (function($) {
     $('#disable-php-processing').checkboxButton ();
     $('#disable-blocks').checkboxButton ();
 
-    $("input#disable-header-code").change (function() {
+//    $("input#disable-header-code").change (function() {
+    $("input#disable-header-code").on ("change", function() {
       $('#ai-page-header').toggleClass ('ai-page-code-disabled');
     });
 
-    $("input#disable-footer-code").change (function() {
+//    $("input#disable-footer-code").change (function() {
+    $("input#disable-footer-code").on ("change", function() {
       $('#ai-page-footer').toggleClass ('ai-page-code-disabled');
     });
 
-    $("input#disable-js-code").change (function() {
+//    $("input#disable-js-code").change (function() {
+    $("input#disable-js-code").on ("change", function() {
       $('#ai-page-js').toggleClass ('ai-page-code-disabled');
     });
 
-    $("input#disable-css-code").change (function() {
+//    $("input#disable-css-code").change (function() {
+    $("input#disable-css-code").on ("change", function() {
       $('#ai-page-css').toggleClass ('ai-page-code-disabled');
     });
 
-    $("input#disable-html-code").change (function() {
+//    $("input#disable-html-code").change (function() {
+    $("input#disable-html-code").on ("change", function() {
       $('#ai-page-html').toggleClass ('ai-page-code-disabled');
     });
 
-    $("input#disable-php-processing").change (function() {
+//    $("input#disable-php-processing").change (function() {
+    $("input#disable-php-processing").on ("change", function() {
       $('#ai-page-php').toggleClass ('ai-page-code-disabled');
     });
 
-    $("input#disable-blocks").change (function() {
+//    $("input#disable-blocks").change (function() {
+    $("input#disable-blocks").on ("change", function() {
       $('#ai-page-block').toggleClass ('ai-page-code-disabled');
     });
 
@@ -2602,13 +2618,15 @@ jQuery(document).ready (function($) {
 
     configure_editor (tab);
 
-    $("select#insertion-type-"+tab).change (function() {
+//    $("select#insertion-type-"+tab).change (function() {
+    $("select#insertion-type-"+tab).on ("change", function() {
       var block = $(this).attr('id').tabIndex ();
       process_display_elements (block);
       set_page_statuses (block);
     });
 
-    $("select#block-alignment-"+tab).change (function() {
+//    $("select#block-alignment-"+tab).change (function() {
+    $("select#block-alignment-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("block-alignment-", "");
       var alignment = $("select#block-alignment-"+block+" option:selected").attr('value');
       var automatic_insertion = $("select#insertion-type-"+block+" option:selected").attr('value');
@@ -2624,50 +2642,59 @@ jQuery(document).ready (function($) {
       process_display_elements (block);
     });
 
-    $("select#vertical-position-"+tab).change (function() {
+//    $("select#vertical-position-"+tab).change (function() {
+    $("select#vertical-position-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("vertical-position-", "");
       configure_sticky_css (block);
     });
 
-    $("select#horizontal-position-"+tab).change (function() {
+//    $("select#horizontal-position-"+tab).change (function() {
+    $("select#horizontal-position-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("horizontal-position-", "");
       configure_sticky_css (block);
       process_display_elements (block);
     });
 
-    $("input#horizontal-margin-"+tab).change (function() {
+//    $("input#horizontal-margin-"+tab).change (function() {
+    $("input#horizontal-margin-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("horizontal-margin-", "");
       configure_sticky_css (block);
     });
 
-    $("input#vertical-margin-"+tab).change (function() {
+//    $("input#vertical-margin-"+tab).change (function() {
+    $("input#vertical-margin-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("vertical-margin-", "");
       configure_sticky_css (block);
     });
 
-    $("select#animation-"+tab).change (function() {
+//    $("select#animation-"+tab).change (function() {
+    $("select#animation-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("animation-", "");
       configure_sticky_css (block);
     });
 
-    $("input#background-"+tab).change (function() {
+//    $("input#background-"+tab).change (function() {
+    $("input#background-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("background-", "");
       check_insertion (block);
       configure_sticky_css (block);
       process_display_elements (block);
     });
 
-    $("select#animation-"+tab).change (function() {
+//    $("select#animation-"+tab).change (function() {
+    $("select#animation-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("animation-", "");
       configure_sticky_css (block);
     });
 
-    $("input#bkg-image-url-"+tab).change (function() {
+//    $("input#bkg-image-url-"+tab).change (function() {
+    $("input#bkg-image-url-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("bkg-image-url-", "");
       configure_sticky_css (block);
     });
 
-    $("input#bkg-color-"+tab).change (function() {
+//    $("input#bkg-color-"+tab).change (function() {
+    $("input#bkg-color-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("bkg-color-", "");
       configure_sticky_css (block);
     });
@@ -2685,13 +2712,15 @@ jQuery(document).ready (function($) {
       $("input#bkg-color-"+tab).colorpicker ('setValue', $("input#bkg-color-" + tab).attr ('value'));
     }
 
-    $("select#bkg-repeat-"+tab).change (function() {
+//    $("select#bkg-repeat-"+tab).change (function() {
+    $("select#bkg-repeat-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("bkg-repeat-", "");
       configure_sticky_css (block);
       process_display_elements (block);
     });
 
-    $("select#bkg-size-"+tab).change (function() {
+//    $("select#bkg-size-"+tab).change (function() {
+    $("select#bkg-size-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("bkg-size-", "");
       configure_sticky_css (block);
       process_display_elements (block);
@@ -2712,79 +2741,96 @@ jQuery(document).ready (function($) {
       $("input#block-bkg-color-"+tab).focus ();
     });
 
-    $("input#exceptions-enabled-"+tab).change (function() {
+//    $("input#exceptions-enabled-"+tab).change (function() {
+    $("input#exceptions-enabled-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("exceptions-enabled-", "");
       process_display_elements (block);
     });
 
-    $("input#process-php-"+tab).change (function() {
+//    $("input#process-php-"+tab).change (function() {
+    $("input#process-php-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("process-php-", "");
       process_display_elements (block);
     });
-    $("input#show-label-"+tab).change (function() {
+//    $("input#show-label-"+tab).change (function() {
+    $("input#show-label-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("show-label-", "");
 //      process_display_elements (block);
     });
-    $("#enable-shortcode-"+tab).change (function() {
+//    $("#enable-shortcode-"+tab).change (function() {
+    $("#enable-shortcode-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("enable-shortcode-", "");
       process_display_elements (block);
     });
-    $("#enable-php-call-"+tab).change (function() {
+//    $("#enable-php-call-"+tab).change (function() {
+    $("#enable-php-call-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("enable-php-call-", "");
       process_display_elements (block);
     });
-    $("select#display-for-devices-"+tab).change (function() {
+//    $("select#display-for-devices-"+tab).change (function() {
+    $("select#display-for-devices-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("display-for-devices-", "");
       process_display_elements (block);
     });
-    $("select#scheduling-"+tab).change (function() {
+//    $("select#scheduling-"+tab).change (function() {
+    $("select#scheduling-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("scheduling-", "");
       process_display_elements (block);
     });
-    $("select#adb-block-action-"+tab).change (function() {
+//    $("select#adb-block-action-"+tab).change (function() {
+    $("select#adb-block-action-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("adb-block-action-", "");
       process_display_elements (block);
     });
 
 
-    $("#display-homepage-"+tab).change (function() {
+//    $("#display-homepage-"+tab).change (function() {
+    $("#display-homepage-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("display-homepage-", "");
       process_display_elements (block);
     });
-    $("#display-category-"+tab).change (function() {
+//    $("#display-category-"+tab).change (function() {
+    $("#display-category-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("display-category-", "");
       process_display_elements (block);
     });
-    $("#display-search-"+tab).change (function() {
+//    $("#display-search-"+tab).change (function() {
+    $("#display-search-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("display-search-", "");
       process_display_elements (block);
     });
-    $("#display-archive-"+tab).change (function() {
+//    $("#display-archive-"+tab).change (function() {
+    $("#display-archive-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("display-archive-", "");
       process_display_elements (block);
     });
 
-    $("#client-side-detection-"+tab).change (function() {
+//    $("#client-side-detection-"+tab).change (function() {
+    $("#client-side-detection-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("client-side-detection-", "");
       process_display_elements (block);
     });
 
-    $("#scheduling-date-on-"+tab).change (function() {
+//    $("#scheduling-date-on-"+tab).change (function() {
+    $("#scheduling-date-on-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("scheduling-date-on-", "");
       process_scheduling_dates (block);
     });
 
-    $("#scheduling-date-off-"+tab).change (function() {
+//    $("#scheduling-date-off-"+tab).change (function() {
+    $("#scheduling-date-off-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("scheduling-date-off-", "");
       process_scheduling_dates (block);
     });
 
-    $("#scheduling-time-on-"+tab).change (function() {
+//    $("#scheduling-time-on-"+tab).change (function() {
+    $("#scheduling-time-on-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("scheduling-time-on-", "");
       process_scheduling_dates (block);
     });
 
-    $("#scheduling-time-off-"+tab).change (function() {
+//    $("#scheduling-time-off-"+tab).change (function() {
+    $("#scheduling-time-off-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("scheduling-time-off-", "");
       process_scheduling_dates (block);
     });
@@ -2801,7 +2847,8 @@ jQuery(document).ready (function($) {
       $("#scheduling-weekdays-value-"+tab).attr ('value', days.join (','));
     });
 
-    $("select#avoid-action-"+tab).change (function() {
+//    $("select#avoid-action-"+tab).change (function() {
+    $("select#avoid-action-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("avoid-action-", "");
       process_display_elements (block);
     });
@@ -3240,7 +3287,8 @@ jQuery(document).ready (function($) {
       open_popup_window_post (ajaxurl, 'width='+window_width+',height='+window_height+',top='+window_top+',left='+window_left+',resizable=yes,scrollbars=yes,toolbar=no,location=no,directories=no,status=no,menubar=no', 'preview', param);
     });
 
-    $("select#animation-"+tab).change (function() {
+//    $("select#animation-"+tab).change (function() {
+    $("select#animation-"+tab).on ("change", function() {
       var block = $(this).attr('id').tabIndex ();
       var animation = $(this).find ("option:selected").attr('value');
       var animation_parameters = $(this).closest ('.sticky-animation').find ('.animation-parameters')
@@ -3362,17 +3410,20 @@ jQuery(document).ready (function($) {
 
     $('#ai-code-generator-container-' + tab).tabs();
 
-    $("select#adsense-type-"+tab).change (function() {
+//    $("select#adsense-type-"+tab).change (function() {
+    $("select#adsense-type-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("adsense-type-", "");
       process_adsense_elements (block);
     });
 
-    $("select#adsense-size-"+tab).change (function() {
+//    $("select#adsense-size-"+tab).change (function() {
+    $("select#adsense-size-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("adsense-size-", "");
       process_adsense_elements (block);
     });
 
-    $("select#amazon-amp-"+tab).change (function() {
+//    $("select#amazon-amp-"+tab).change (function() {
+    $("select#amazon-amp-"+tab).on ("change", function() {
       var block = $(this).attr('id').replace ("amazon-amp-", "");
       console.log ('block', block);
       process_amazon_elements (block);
@@ -3782,7 +3833,8 @@ jQuery(document).ready (function($) {
       toggle_adsense_list ();
     });
 
-    $("select#html-element-insertion-"+tab).change (function() {
+//    $("select#html-element-insertion-"+tab).change (function() {
+    $("select#html-element-insertion-"+tab).on ("change", function() {
       var html_element_insertion = $("select#html-element-insertion-"+tab+" option:selected").attr('value');
 
       if (html_element_insertion == AI_HTML_INSERTION_SEREVR_SIDE)
@@ -3798,12 +3850,14 @@ jQuery(document).ready (function($) {
       }
     });
 
-    $("select#close-button-" + tab).change (function () {
+//    $("select#close-button-" + tab).change (function () {
+    $("select#close-button-" + tab).on ("change", function () {
       var block = $(this).attr('id').replace ("close-button-", "");
       $("select#close-button-sticky-"+block+"").val ($("select#close-button-"+block+" option:selected").attr('value'));
     });
 
-    $("select#close-button-sticky-" + tab).change (function () {
+//    $("select#close-button-sticky-" + tab).change (function () {
+    $("select#close-button-sticky-" + tab).on ("change", function () {
       var block = $(this).attr('id').replace ("close-button-sticky-", "");
       $("select#close-button-"+block+"").val ($("select#close-button-sticky-"+block+" option:selected").attr('value'));
     });
@@ -6429,7 +6483,8 @@ jQuery(document).ready (function($) {
 
   $('.header button').button().show ();
 
-  $("#ai-form").submit (function (event) {
+//  $("#ai-form").submit (function (event) {
+  $("#ai-form").on ("submit", function (event) {
     for (var tab = start; tab <= end; tab ++) {
       var rotation_button = $('#rotation-' + tab);
       if (rotation_button.parent ().find ('.icon-rotation').hasClass ('on')) {
@@ -6710,7 +6765,8 @@ jQuery(document).ready (function($) {
     update_adsense_authorization ('');
   });
 
-  $('.ai-block-code-demo').change (function () {
+//  $('.ai-block-code-demo').change (function () {
+  $('.ai-block-code-demo').on ("change", function () {
     update_block_code_demo ();
   }).on('input',function(e){
     update_block_code_demo ();

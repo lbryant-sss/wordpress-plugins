@@ -11,7 +11,6 @@ class EmbeddingViaMenu {
 	const SEARCH_PLACEHOLDER = 'dgwt_wcas_search_box';
 
 	public function init() {
-
 		if ( is_admin() ) {
 			add_action( 'admin_head-nav-menus.php', array( $this, 'addNavMenuMetaBoxes' ) );
 			add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'addNavMenuItemCustomFields' ), 10, 2 );
@@ -19,13 +18,15 @@ class EmbeddingViaMenu {
 
 			add_action( 'admin_head', array( $this, 'navMenuStyle' ) );
 			add_action( 'admin_footer', array( $this, 'navMenuScripts' ) );
-
 		} else {
-
 			add_filter( 'walker_nav_menu_start_el', array( $this, 'processMenuItem' ), 50, 2 );
 			add_filter( 'megamenu_walker_nav_menu_start_el', array( $this, 'processMenuItem' ), 50, 2 );
-
 		}
+
+		add_action( 'wp_nav_menu_item_custom_fields_customize_template', array(
+			$this,
+			'addNavMenuItemCustomFieldsTemplate'
+		) );
 	}
 
 	/**
@@ -324,4 +325,14 @@ class EmbeddingViaMenu {
 
 	}
 
+	public function addNavMenuItemCustomFieldsTemplate() {
+		?>
+		<# if ( data.title === 'dgwt_wcas_search_box' ) { #>
+		<fieldset class="nav_menu_role_display_mode">
+			<legend class="customize-control-title"><?php _e( 'FiboSearch bar', 'ajax-search-for-woocommerce' ) ?></legend>
+			<?php printf( __( 'Go to <a href="%s">Appearance -> Menus</a> to configure the FiboSearch bar.', 'ajax-search-for-woocommerce' ), esc_url( admin_url( 'nav-menus.php' ) ) ); ?>
+		</fieldset>
+		<# } #>
+		<?php
+	}
 }

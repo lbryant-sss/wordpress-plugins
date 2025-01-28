@@ -192,7 +192,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'background',
 					'name'       => 'title_hover_background',
 					'title'      => esc_html__( 'Title Active/Hover Background', 'qi-addons-for-elementor' ),
-					'types'      => array( 'classic', 'gradient', 'video' ),
+					'types'      => array( 'classic', 'gradient' ),
 					'selector'   => '{{WRAPPER}} .qodef-qi-tabs-vertical .qodef-tabs-vertical-navigation li a:before',
 					'group'      => esc_html__( 'Title Style', 'qi-addons-for-elementor' ),
 				)

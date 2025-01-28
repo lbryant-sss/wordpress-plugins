@@ -46,6 +46,7 @@ add_action( 'wp_head', function () { ?>
 			width: 100vw;
 		}
 
+		.dgwt-wcas-overlay-mobile-on .mfp-wrap,
 		.dgwt-wcas-overlay-mobile-on .mfp-close,
 		.dgwt-wcas-overlay-mobile-on .nav-sidebar {
 			display: none;

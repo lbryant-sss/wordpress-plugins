@@ -101,7 +101,28 @@ $l10n = array(
 
 					<?php //\Wpae\Pro\Filtering\FilteringFactory::render_filtering_block( $engine, $this->isWizard, $post ); ?>
 
-                    <?php include(__DIR__ . "/../../../src/Scheduling/views/SchedulingOptions.php"); ?>
+                    <div class="wpallexport-collapsed wpallexport-section wpallexport-file-options closed wpallexport-scheduling" style="margin-top: -10px; margin-bottom: 10px; <?php if(($post['enable_real_time_exports'] ?? 0)) { ?> display: none; <?php } ?>">
+                        <div id="scheduling-form-container">
+
+                            <div class="wpallexport-content-section" style="padding-bottom: 15px; margin-bottom: 10px;">
+                                <div class="wpallexport-collapsed-header" id="scheduling-options-header" style="padding-left: 25px;">
+                                    <h3 id="scheduling-title" style="position: relative;">
+										<?php esc_html_e('Scheduling Options', 'wp_all_export_plugin'); ?>
+                                    </h3>
+                                </div>
+
+                                <div class="wpallexport-collapsed-content" style="padding: 0; height: auto; display: none;">
+                                    <div class="wpallexport-collapsed-content-inner" style="padding-bottom: 0; overflow: auto;">
+										<?php
+										include(__DIR__ . "/../../../src/Scheduling/views/SchedulingUI.php");
+										?>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+</div>
 
                     <?php include_once 'options/settings.php'; ?>
 
