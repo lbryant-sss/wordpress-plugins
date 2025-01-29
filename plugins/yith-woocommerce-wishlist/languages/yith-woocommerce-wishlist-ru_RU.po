@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: YITH WCWL\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yith-woocommerce-"
 "wishlist\n"
-"POT-Creation-Date: 2025-01-08T13:43:07+00:00\n"
+"POT-Creation-Date: 2025-01-28T13:12:12+00:00\n"
 "PO-Revision-Date: 2020-10-16 14:06+0200\n"
 "Last-Translator: Valentyn Zubenko <valentyn.zubenko@gmail.com>\n"
 "Language-Team: Your Inspiration Themes <support@yithemes.com>\n"
@@ -251,6 +251,10 @@ msgstr "Мои закладки на  %s"
 
 #: includes/class-yith-wcwl-add-to-wishlist-button.php:965
 msgid "{{product_name}} has been added to your {{wishlist_name}} list!"
+msgstr ""
+
+#: includes/class-yith-wcwl-add-to-wishlist-button.php:966
+msgid "{{product_name}} has been removed from your {{wishlist_name}} list!"
 msgstr ""
 
 #: includes/class-yith-wcwl-ajax-handler.php:92

@@ -19,7 +19,6 @@ class Assets {
      * @return void
      */
     public function register() {
-        $this->register_scripts( $this->get_scripts() );
         $this->register_styles( $this->get_styles() );
     }
 
@@ -56,38 +55,6 @@ class Assets {
     }
 
     /**
-     * Get all registered scripts
-     *
-     * @return array
-     */
-    public function get_scripts() {
-        $prefix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '.min' : '';
-
-        $scripts = [
-            // 'htmegaopt-runtime' => [
-            //     'src'       => HTMEGAOPT_ASSETS . '/js/runtime'.$prefix.'.js',
-            //     'version'   => HTMEGA_VERSION,
-            //     'in_footer' => true
-            // ],
-            // 'htmegaopt-vendor' => [
-            //     //'src'       => HTMEGAOPT_ASSETS . '/js/vendors'.$prefix.'.js',
-            //     'src'       => HTMEGAOPT_ASSETS . '/js/vendors.js',
-            //     'version'   => HTMEGA_VERSION,
-            //     'in_footer' => true
-            // ],
-            // 'htmegaopt-admin' => [
-            //     //'src'       => HTMEGAOPT_ASSETS . '/js/admin'.$prefix.'.js',
-            //     'src'       => HTMEGAOPT_ASSETS . '/js/admin.js',
-            //     'deps'      => [ 'jquery'],
-            //     'version'   => HTMEGA_VERSION,
-            //     'in_footer' => true
-            // ]
-        ];
-
-        return $scripts;
-    }
-
-    /**
      * Enqueue admin scripts
      */
     function htmega_enqueue_scripts($hook) {
@@ -99,7 +66,7 @@ class Assets {
             return;
         }
         // Enqueue other scripts and styles
-        wp_enqueue_script('htmegaopt-admin', HTMEGAOPT_ASSETS . '/js/admin.js', array(), HTMEGA_VERSION, true);
+        wp_enqueue_script('htmegaopt-admin', HTMEGAOPT_ASSETS . '/admin.js', array(), HTMEGA_VERSION, true);
         
         // Add the type="module" attribute
         add_filter('script_loader_tag', function($tag, $handle) {
@@ -119,7 +86,7 @@ class Assets {
 
         $styles = [
             'htmegaopt-style' => [
-                'src' =>  HTMEGAOPT_ASSETS . '/css/main.css'
+                'src' =>  HTMEGAOPT_ASSETS . '/main.css'
             ],
         ];
 

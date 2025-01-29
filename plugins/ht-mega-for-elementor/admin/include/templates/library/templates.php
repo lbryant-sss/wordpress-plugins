@@ -87,7 +87,14 @@
 	<div id="elementor-template-library-toolbar">
 
 		<div id="htmega-template-library-filter-area-wrapper">
-			
+			<div id="elementor-template-library-filter-category-wrapper">
+				<select id="elementor-template-library-filter-category">
+					<option value=""><?php esc_html_e( 'All Categories', 'htmega-addons' ); ?></option>
+					<# _.each( htmega.library.getCategories(), function( category ) { #>
+						<option value="{{{ category }}}">{{{ category }}}</option>
+					<# } ); #>
+				</select>
+			</div>
 		</div>
 
 		<div id="elementor-template-library-filter-text-wrapper">

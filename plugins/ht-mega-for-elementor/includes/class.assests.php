@@ -130,14 +130,6 @@ if ( !class_exists( 'HTMega_Elementor_Addons_Assests' ) ) {
                     'src'     => HTMEGA_ADDONS_PL_URL . 'admin/assets/css/htmega_admin.css',
                     'version' => HTMEGA_VERSION
                 ],
-                'htmega-selectric' => [
-                    'src'     => HTMEGA_ADDONS_PL_URL . 'admin/assets/lib/css/selectric.css',
-                    'version' => HTMEGA_VERSION
-                ],
-                'htmega-temlibray-style' => [
-                    'src'     => HTMEGA_ADDONS_PL_URL . 'admin/assets/css/tmp-style.css',
-                    'version' => HTMEGA_VERSION
-                ],
                 'htmega-rpbar-css' => [
                     'src'     => HTMEGA_ADDONS_PL_URL . 'extensions/reading-progress-bar/assets/css/htmega-reading-progress-bar.css',
                     'version' => HTMEGA_VERSION
@@ -308,26 +300,6 @@ if ( !class_exists( 'HTMega_Elementor_Addons_Assests' ) ) {
                     'version' => HTMEGA_VERSION,
                     'deps'    => [ 'jquery' ]
                 ],
-                'htmega-modernizr' => [
-                    'src'     => HTMEGA_ADDONS_PL_URL . 'admin/assets/lib/js/modernizr.custom.63321.js',
-                    'version' => HTMEGA_VERSION,
-                    'deps'    => [ 'jquery' ]
-                ],
-                'jquery-selectric' => [
-                    'src'     => HTMEGA_ADDONS_PL_URL . 'admin/assets/lib/js/jquery.selectric.min.js',
-                    'version' => HTMEGA_VERSION,
-                    'deps'    => [ 'jquery' ]
-                ],
-                'jquery-ScrollMagic' => [
-                    'src'     => HTMEGA_ADDONS_PL_URL . 'admin/assets/lib/js/ScrollMagic.min.js',
-                    'version' => HTMEGA_VERSION,
-                    'deps'    => [ 'jquery' ]
-                ],
-                'babel-min' => [
-                    'src'     => HTMEGA_ADDONS_PL_URL . 'admin/assets/lib/js/babel.min.js',
-                    'version' => HTMEGA_VERSION,
-                    'deps'    => [ 'jquery' ]
-                ],
                 'htmega-templates' => [
                     'src'     => HTMEGA_ADDONS_PL_URL . 'admin/assets/js/template_library_manager.js',
                     'version' => HTMEGA_VERSION,
@@ -431,13 +403,21 @@ if ( !class_exists( 'HTMega_Elementor_Addons_Assests' ) ) {
                 'pluginURL'        => plugin_dir_url( __FILE__ ),
                 'alldata'          => !empty( HTMega_Addons_Elementor::$template_info['templates'] ) ? HTMega_Addons_Elementor::$template_info['templates'] : array(),
                 'prolink'          => isset( HTMega_Addons_Elementor::$template_info['pro_link'] ) ? HTMega_Addons_Elementor::$template_info['pro_link'] : '#',
+                'htmegaProActive' => is_plugin_active('htmega-pro/htmega_pro.php') ? 'true':'false',
 
                 'prolabel'         => esc_html__( 'Pro', 'htmega-addons' ),
                 'loadingimg'       => HTMEGA_ADDONS_PL_URL . 'admin/assets/images/loading.gif',
                 'message'          =>[
                     'packagedesc'=> esc_html__( 'in this package', 'htmega-addons' ),
                     'allload'    => esc_html__( 'All Items have been Loaded', 'htmega-addons' ),
-                    'notfound'   => esc_html__( 'Nothing Found', 'htmega-addons' ),
+                    'notfound'   => esc_html__( 'No templates found', 'htmega-addons' ),
+                    'noMatchingTemplates' => esc_html__( 'No templates were found matching your criteria', 'htmega-addons' ),
+                    'faildToLoad'   => esc_html__( 'Failed to load templates', 'htmega-addons' ),
+                    'importedSuccess'   => esc_html__( 'Template Imported Successfully!', 'htmega-addons' ),
+                    'readyToUse'   => esc_html__( 'Your template has been imported and is ready to use', 'htmega-addons' ),
+                    'importingTemplate' => esc_html__( 'Importing template...', 'htmega-addons' ),
+                    'requiredPlugins' => esc_html__( 'Required Plugins:', 'htmega-addons' ),
+                    'pageNameAlert' => esc_html__( 'Please enter a page name', 'htmega-addons' ),
                 ],
                 'buttontxt'      =>[
                     'tmplibrary' => esc_html__( 'Import to Library', 'htmega-addons' ),
@@ -448,13 +428,32 @@ if ( !class_exists( 'HTMega_Elementor_Addons_Assests' ) ) {
                     'installing' => esc_html__( 'Installing..', 'htmega-addons' ),
                     'activating' => esc_html__( 'Activating..', 'htmega-addons' ),
                     'active'     => esc_html__( 'Active', 'htmega-addons' ),
+                    'activated'  => esc_html__( 'Activated', 'htmega-addons' ),
+                    'activate'   => esc_html__( 'Activate', 'htmega-addons' ),
+                    'install'    => esc_html__( 'Install', 'htmega-addons' ),
+                    'proLabel'     => esc_html__( 'Pro', 'htmega-addons' ),
+                    'editTemplate'     => esc_html__( 'Edit Template', 'htmega-addons' ),
+                    'close'     => esc_html__( 'Close', 'htmega-addons' ),
+                    'allTypes'  => esc_html__( 'All Types', 'htmega-addons' ),
+                    'upgradeToPro'  => esc_html__( 'Upgrade To PRO', 'htmega-addons' ),
                 ],
                 'user'           => [
                     'email' => $current_user->user_email,
                 ],
                 'plgactivenonce'   => wp_create_nonce( 'htmega_actication_verifynonce' ),
+                'labels' =>[
+                    'createNewPage' => esc_html__( 'Create a new page from this template', 'htmega-addons' ),
+                    'importToLibrary' => esc_html__( 'Import template to your Library', 'htmega-addons' ),
+                    'enterPageName' => esc_html__( 'Enter a Page Name', 'htmega-addons' ),
+                    'or' => esc_html__( 'OR', 'htmega-addons' ),
+                    'searchTemplate' => esc_html__( 'Search templates...', 'htmega-addons' ),
+                    'templates' => esc_html__( 'Templates', 'htmega-addons' ),
+                    'all' => esc_html__( 'All', 'htmega-addons' ),
+                ]
             ];
+
             wp_localize_script( 'htmega-templates', 'HTTM', $localize_data );
+            wp_localize_script( 'htmegaopt-admin', 'HTTM', $localize_data );
 
             // Reading progress bar global functionality
             if( is_plugin_active('htmega-pro/htmega_pro.php') ) {

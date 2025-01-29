@@ -19,6 +19,7 @@ License: GPLv3
 Change Log
 
 Ad Inserter 2.8.1 - 2025-01-26
+- Updated depercated backend jQuery code
 - Few minor bug fixes, cosmetic changes and code improvements
 
 Ad Inserter 2.8.0 - 2025-01-21

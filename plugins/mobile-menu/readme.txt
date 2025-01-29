@@ -4,7 +4,7 @@ link: http://profiles.wordpress.org/takanakui
 Tags:   mobile, responsive, menu,  responsive menu, mobile menu
 Requires at least: 4.4
 Tested up to: 6.7
-Stable tag: 2.8.6
+Stable tag: 2.8.7
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -136,8 +136,11 @@ Not available at the moment
 
 
 
+= 2.8.7 =
+* Improvment! - Update Freemius SDK
+
 = 2.8.6 =
-* Fix!   - Homo logo URL Text
+* Fix!   - Home logo URL Text
 * Fix! - Compatibility with WP 6.7
 * Improvment! - Update Freemius SDK
 

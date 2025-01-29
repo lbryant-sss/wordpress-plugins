@@ -42,7 +42,7 @@
           direction: (this.getSettingsValue('direction')) ? this.getSettingsValue('direction') : 'alternate',
           easing: $easing,
           loop: (this.getSettingsValue('loop') === 'default') ? true : this.getSettingsValue('loop_number'),
-          targets: this.findElement('.elementor-widget-container').get(0)
+          targets: this.$element.get(0)
         };
       },
       onElementChange: customDebounceFunction(function (prop) {
@@ -211,7 +211,7 @@
         }
 
         if (this.getSettingsValue('translate_toggle') || this.getSettingsValue('rotate_toggle') || this.getSettingsValue('scale_toggle') || this.getSettingsValue('skew_toggle') || this.getSettingsValue('style_toggle') || this.getSettingsValue('filters_toggle')) {
-          this.findElement('.elementor-widget-container').css('will-change', 'transform, opacity, background-color');
+          this.$element.css('will-change', 'transform, opacity, background-color');
           this.anime = window.anime && window.anime(settings);
         }
       }

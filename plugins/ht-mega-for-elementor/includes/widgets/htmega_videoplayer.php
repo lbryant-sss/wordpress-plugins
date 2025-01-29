@@ -124,6 +124,31 @@ class HTMega_Elementor_Widget_VideoPlayer extends Widget_Base {
                 ]
             );
             $this->add_control(
+                'icon_position',
+                [
+                    'label' => __('Icon Position', 'htmega-addons'),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'row' => [
+                            'title' => __('Before', 'htmega-addons'),
+                            'icon' => 'eicon-h-align-left',
+                        ],
+                        'row-reverse' => [
+                            'title' => __('After', 'htmega-addons'),
+                            'icon' => 'eicon-h-align-right',
+                        ],
+                    ],
+                    'default' => 'row',
+                    'toggle' => false,
+                    'selectors' => [
+                        '{{WRAPPER}} .htmega-player-container a' => 'flex-direction: {{VALUE}};',
+                    ],
+                    'condition' =>[
+                        'videocontainer' =>'popup',
+                    ],
+                ]
+            );
+            $this->add_control(
                 'controleranimation',
                 [
                     'label' => esc_html__( 'Button Infinity Animation', 'htmega-addons' ),
@@ -132,6 +157,23 @@ class HTMega_Elementor_Widget_VideoPlayer extends Widget_Base {
                     'no' => esc_html__( 'No', 'htmega-addons' ),
                     'return_value' => 'yes',
                     'default' => 'no',
+                    'condition' =>[
+                        'videocontainer' =>'popup',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'disable_animation',
+                [
+                    'label' => esc_html__( 'Disable Hover Animation', 'htmega-addons' ),
+                    'type' => Controls_Manager::SWITCHER,
+                    'yes' => esc_html__( 'Yes', 'htmega-addons' ),
+                    'no' => esc_html__( 'No', 'htmega-addons' ),
+                    'return_value' => '1',
+                    'default' => '1.2',
+                    'selectors' => [
+                        '{{WRAPPER}} .htmega-player-container a:hover' => 'transform: scale({{{VALUE}});',
+                    ],
                     'condition' =>[
                         'videocontainer' =>'popup',
                     ],

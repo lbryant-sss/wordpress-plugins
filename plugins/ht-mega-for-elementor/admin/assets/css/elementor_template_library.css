@@ -11,7 +11,7 @@
 }
 
 .tmpl-htmega-template-library-logo-area {
-    background: #1D39D7;
+    background: #3489FE;
     display: inline-block;
     -webkit-border-radius: 50%;
     border-radius: 50%;
@@ -109,13 +109,13 @@
 }
 
 .htmega-template-library-footer .elementor-button {
-    color: #1D39D7;
+    color: #3489FE;
     background: transparent;
     padding: 0;
 }
 
 .htmega-template-library-footer .elementor-button:hover{
-    color: #93003c;
+    color: #D43A6B;
 }
 .htmega-template-library-footer .elementor-button i {
 	margin-right: 5px;
@@ -154,7 +154,7 @@
 	top: 0%;
 }
 .tmpl-htmega-template-library-logo-area {
-  background: #D73361;
+  background: #FF6067;
   display: inline-block;
   -webkit-border-radius: 50%;
   border-radius: 50%;
@@ -168,12 +168,12 @@
 
 span.htmega-template-library-pro-badge {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    background: #CB0097;
-    padding: 2px 12px;
+    right: 5px;
+    background: #FF6067;
+    padding: 1px 12px;
     color: #fff;
     border-radius: 3px;
+    top: 5px;
 }
 
 .htmega_templateLibrary_preview{
@@ -192,6 +192,11 @@ span.htmega-template-library-pro-badge {
 }
 
 .htmega-template-library-responsive-menu-item.elementor-active{
-    border-bottom: 3px solid #D73361;
+    border-bottom: 3px solid #FF6067;
     background-image: linear-gradient(to bottom,#f1f3f5,#fff);
+}
+
+#elementor-template-library-filter-category-wrapper .select2-container{
+    width: 200px!important;
+    text-align: left;
 }

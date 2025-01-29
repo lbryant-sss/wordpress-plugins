@@ -400,30 +400,30 @@ class HTmega_Plugin_Deactivation_Feedback {
     public function deactivation_form_html() { ?>
         <div id="htmega-deactivation-dialog" style="display: none;">
             <div class="htmega-deactivation-dialog-content">
-                <button type="button" class="ht-close-dialog" aria-label="Close">&times;</button>
+                <button type="button" class="htmega-close-dialog" aria-label="Close">&times;</button>
                 <h2 class="htmega-deactivation-dialog-title"><?php esc_html_e('Quick Feedback', 'htemga-addons') ?></h2>
                 <p class="htmega-deactivation-dialog-desc"><?php esc_html_e('If you have a moment, please let us know why you are deactivating: ', 'htemga-addons'); echo esc_html($this->PROJECT_NAME); ?></p>
                 <form id="htmega-deactivation-feedback-form">
-                    <div class="ht-feedback-options">
+                    <div class="htmega-feedback-options">
                         <label>
                             <input type="radio" name="reason" data-id="found_better" value="<?php esc_attr_e('I found a better plugin', 'htemga-addons') ?>">
                             <?php esc_html_e('I found a better plugin', 'htemga-addons') ?>
                         </label>
-                        <div id="ht-found_better-reason-text" class="htmega-deactivation-reason-input" style="display: none;">
+                        <div id="htmega-found_better-reason-text" class="htmega-deactivation-reason-input" style="display: none;">
                             <textarea name="found_better_reason" placeholder="<?php esc_attr_e('Please share which plugin.', 'htemga-addons') ?>"></textarea>
                         </div>
                         <label>
                             <input type="radio" name="reason" data-id="stopped_working" value="<?php esc_attr_e('The plugin suddenly stopped working', 'htemga-addons') ?>">
                             <?php esc_html_e('The plugin suddenly stopped working', 'htemga-addons') ?>
                         </label>
-                        <div id="ht-stopped_working-reason-text" class="htmega-deactivation-reason-input" style="display: none;">
+                        <div id="htmega-stopped_working-reason-text" class="htmega-deactivation-reason-input" style="display: none;">
                             <textarea name="stopped_working_reason" placeholder="<?php esc_attr_e('Please share more details.', 'htemga-addons') ?>"></textarea>
                         </div>
                         <label>
                             <input type="radio" name="reason" data-id="found_bug" value="<?php esc_attr_e('I encountered an error or bug', 'htemga-addons') ?>">
                             <?php esc_html_e('I encountered an error or bug', 'htemga-addons') ?>
                         </label>
-                        <div id="ht-found_bug-reason-text" class="htmega-deactivation-reason-input" style="display: none;">
+                        <div id="htmega-found_bug-reason-text" class="htmega-deactivation-reason-input" style="display: none;">
                             <textarea name="found_bug_reason" placeholder="<?php esc_attr_e('Please describe the error/bug you encountered. This will help us fix it for future users.', 'htemga-addons') ?>"></textarea>
                         </div>
                         <label>
@@ -442,13 +442,13 @@ class HTmega_Plugin_Deactivation_Feedback {
                             <input type="radio" name="reason" data-id="other" value="<?php esc_attr_e("Other", 'htemga-addons') ?>">
                             <?php esc_html_e("Other", 'htemga-addons') ?>
                         </label>
-                        <div id="ht-other-reason-text" class="htmega-deactivation-reason-input" style="display: none;">
+                        <div id="htmega-other-reason-text" class="htmega-deactivation-reason-input" style="display: none;">
                             <textarea name="other_reason" placeholder="<?php esc_attr_e("Please share the reason.", 'htemga-addons') ?>"></textarea>
                         </div>
                     </div>
                     <div class="htmega-deactivation-dialog-buttons">
                         <button type="submit" class="button button-primary"><?php esc_html_e("Submit & Deactivate", 'htemga-addons') ?></button>
-                        <a href="#" class="ht-skip-feedback"><?php esc_html_e("Skip & Deactivate", 'htemga-addons') ?></a>
+                        <a href="#" class="htmega-skip-feedback"><?php esc_html_e("Skip & Deactivate", 'htemga-addons') ?></a>
                     </div>
                 </form>
             </div>
@@ -473,7 +473,7 @@ class HTmega_Plugin_Deactivation_Feedback {
                     $('#htmega-deactivation-dialog').show();
                 });
 
-                $('.ht-close-dialog').on('click', closeDialog);
+                $('.htmega-close-dialog').on('click', closeDialog);
 
                 $('#htmega-deactivation-dialog').on('click', function(e) {
                     if (e.target === this) {
@@ -490,7 +490,7 @@ class HTmega_Plugin_Deactivation_Feedback {
                     
                     const id = $(this).data('id');
                     if (['other', 'found_better', 'stopped_working', 'found_bug'].includes(id)) {
-                        $(`#ht-${id}-reason-text`).addClass('active').show();
+                        $(`#htmega-${id}-reason-text`).addClass('active').show();
                     }
                 });
 
@@ -502,7 +502,7 @@ class HTmega_Plugin_Deactivation_Feedback {
                     
                     $submitButton.text('Submitting...').prop('disabled', true);
 
-                    const reason = $('input[name="reason"]:checked').val();
+                    const reason = $('input[name="reason"]:checked').val() || 'No reason selected';
                     const message = $('.htmega-deactivation-reason-input.active textarea').val() || '';
                     
                     const data = {
@@ -526,7 +526,7 @@ class HTmega_Plugin_Deactivation_Feedback {
                         });
                 });
 
-                $('.ht-skip-feedback').on('click', function(e) {
+                $('.htmega-skip-feedback').on('click', function(e) {
                     e.preventDefault();
                     window.location.href = pluginToDeactivate;
                 });
@@ -562,7 +562,7 @@ class HTmega_Plugin_Deactivation_Feedback {
                 margin-top: 0;
             }
 
-            .ht-close-dialog {
+            .htmega-close-dialog {
                 position: absolute;
                 top: 10px;
                 right: 10px;
@@ -581,16 +581,16 @@ class HTmega_Plugin_Deactivation_Feedback {
                 font-weight: 700;
             }
 
-            .ht-close-dialog:hover {
+            .htmega-close-dialog:hover {
                 background: #e0e0e0;
                 color: #333;
             }
 
-            .ht-feedback-options {
+            .htmega-feedback-options {
                 margin: 20px 0;
             }
 
-            .ht-feedback-options label {
+            .htmega-feedback-options label {
                 display: block;
                 margin: 10px 0;
             }
@@ -613,7 +613,7 @@ class HTmega_Plugin_Deactivation_Feedback {
                 justify-content: flex-end;
             }
 
-            .ht-skip-feedback {
+            .htmega-skip-feedback {
                 margin-left: 10px;
                 color: #666;
                 text-decoration: none;

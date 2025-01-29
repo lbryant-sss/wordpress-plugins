@@ -169,7 +169,7 @@
                 html += `<div class="${singleItem} col-xl-4 col-md-6 col-12">
                             <div class="htwpt-project-item ${singleItem}" data-group="${shareId}">
                                 <div class="htwpt-project-thumb">
-                                    <div class="htwpt-image">
+                                    <div class="htwpt-image">prolink
                                         <img src="${thumbnail}" alt="${title}" />
                                         <span class="img-loader"></span>
                                     </div>

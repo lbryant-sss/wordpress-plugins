@@ -6135,6 +6135,10 @@ ul.htmega-testimonial-rating * {
   }
   .htmega-player-container a {
         position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease-in-out;
     }
   .htmega-player-container .magnify-video-active *{
       line-height: initial;

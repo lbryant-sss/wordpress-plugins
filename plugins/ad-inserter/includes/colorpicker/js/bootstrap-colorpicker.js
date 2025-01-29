@@ -503,7 +503,8 @@ _jquery2.default.fn[plugin] = function (option) {
     if (typeof option === 'string') {
       if (option === 'colorpicker') {
         returnValue = inst;
-      } else if (_jquery2.default.isFunction(inst[option])) {
+//      } else if (_jquery2.default.isFunction(inst[option])) {
+      } else if (typeof inst[option] === "function") {
         returnValue = inst[option].apply(inst, apiArgs);
       } else {
         // its a property ?

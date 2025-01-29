@@ -101,6 +101,7 @@
                     htmega.library.setFilter("type", value),
                 currenttab.addClass("elementor-active").siblings().removeClass("elementor-active");
                 htFilterText = value;
+                htmega.library.updateCategoryFilter(htFilterText);
             },
             templateHelpers: function () {
                 htmega.library.setFilter("type", htFilterText);
@@ -191,15 +192,28 @@
             },
             ui:{ 
                 textFilter: "#htmega-template-library-filter-text", 
+                categoryFilter: "#elementor-template-library-filter-category"
             },
             events:{ 
-                "input @ui.textFilter": "onTextFilterInput"
+                "input @ui.textFilter": "onTextFilterInput",
+                "change @ui.categoryFilter": "onCategoryFilterChange",
             },
             getChildView: function (e) {
                 return moduleExp.Views.Template;
             },
             initialize: function () {
                 this.listenTo(htmega.library.channels.templates, "filter:change", this._renderChildren);
+                this.listenTo(this.collection, "reset", this.onCollectionReset);
+                setTimeout(() => {
+                    this.ui.categoryFilter.select2({
+                        width: '100%',
+                        placeholder: 'Filter by Category',
+                        dropdownCssClass: 'elementor-template-library-filter-category',
+                        allowClear: true,
+                        minimumInputLength: 0,
+                        minimumResultsForSearch: 0
+                    });
+                }, 100);
             },
             filter: function (e) {
                 var t = htmega.library.getFilterTerms(),
@@ -221,6 +235,11 @@
                 _.defer(function () {
                     htmega.library.setFilter("text", e.ui.textFilter.val());
                 });
+            },
+
+            onCategoryFilterChange: function() {
+                var category = this.ui.categoryFilter.val();
+                htmega.library.setFilter('category', category);
             },
             
         }
@@ -435,6 +454,13 @@
                         );
                     },
                 },
+                category: {
+                    callback: function (category) {
+                        if (!category) return true;
+                        var shareId =this.get("shareId");
+                        return shareId === category;
+                    }
+                }
 
             };
         };
@@ -542,6 +568,39 @@
             c;
         };
 
+        this.updateCategoryFilter = function(type) {
+            var categories = m.getCategories(type);
+            var categorySelect = $('#elementor-template-library-filter-category');
+            categorySelect.empty();
+
+            // Add a default option
+            categorySelect.append('<option value="">Select Category</option>');
+
+            _.each(categories, function(category) {
+                categorySelect.append('<option value="' + category + '">' + category + '</option>');
+            });
+
+            categorySelect.trigger('change');
+        };
+
+        this.getCategories = function(templateType = 'page') {
+            if (!d) return [];
+            try {
+                    // Filter models by the template type first
+                    var filteredModels = _.filter(d.models, function(model) {
+                        return model.get('type') === templateType;
+                    });
+
+                    var categories = _.uniq(_.compact(_.map(filteredModels, function(model) {
+                        return model.get('shareId'); 
+                    })));
+                    
+                return categories;
+            } catch (err) {
+                console.log('Error getting categories:', err);
+                return [];
+            }
+        };
 
     };
 

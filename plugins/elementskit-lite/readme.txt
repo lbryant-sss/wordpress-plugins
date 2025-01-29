@@ -4,16 +4,22 @@ Tags: Elementor addons, mega menu builder,  header footer builder, elementor add
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 3.3.9
+Stable tag: 3.4.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-The Elementor Addons provides various premium and free Elementor addons. Get exclusive modules and 90+ custom Elementor widgets under one hood.
+ElementsKit is the must-have add-on right after Elementor—powering your site with 100+ dynamic features like header-footer, mega menu, custom widgets.
 
 == Description ==
 
-**[ElementsKit Elementor addons](https://wpmet.com/plugin/elementskit/)** is an ultimate and all-in-one addons for Elementor Page Builder. It includes the most comprehensive modules, **90+ custom Elementor widgets** to create any site with ease. 
-Besides Exclusive features **ElementsKit Elementor addon** has unique and powerful custom controls, such as Image Picker, Ajax Select2, Advanced Widgets, and many more.
+**[ElementsKit Elementor addons](https://wpmet.com/plugin/elementskit/)** is an ultimate and all-in-one addons for Elementor Page Builder. ElementsKit Elementor addons is an ultimate and all-in-one addons for Elementor Page Builder. It brings the most comprehensive solution with **90+** Elementor widgets, **18+** modules, and **900+** pre-made design templates.
+
+Everything is accessible through an easy drag-and-drop interface, including features like **header-footer builder, mega menu, widget builder,** and more to expand your Elementor capabilities.
+
+Besides exclusive features, ElementsKit offers exclusive functions and unique controls like Image Picker, Ajax Select2, and Advanced Widgets. It’s a versatile toolkit for building any website with Elementor.
+
+🏆 Great **Elementor Addon**! Check the [**ElementsKit demo**](https://wpmet.com/plugin/elementskit/elements/) for new website-building possibilities. 
+
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VhBl3dHT5SY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -56,11 +62,11 @@ Besides Exclusive features **ElementsKit Elementor addon** has unique and powerf
 
 
 ### Completely Customizable
-ElementsKit makes every part of your website fully customizable. You get access to a vast library of design elements for creating modern web layouts. Plus, it has extensive styling controls for widgets and modules to tailor everything to your needs.
+ElementsKit makes every part of your website fully customizable with a vast library of design elements. Plus, it has extensive styling controls for widgets and modules to tailor everything to your needs.
 
 ### Extensive ElementsKit Templates for Elementor
 
-ElementsKit is a popular Elementor addon among millions of users that eliminates the need to design from scratch. It ships with over **791+** pre-made section blocks and **30+** ready-made templates for designing a full website. Whatever niche or industry, you’re working with, the ElementsKit page builder addon layout library includes a unique template design with royalty-free images.
+ElementsKit is a popular Elementor addon among millions of users that eliminates the need to design from scratch. It ships with over **791+** pre-made section blocks and **30+** ready-made templates for designing a full website. Whatever niche or industry, you’re working with, the ElementsKit page builder addon layout library includes unique templates designed with royalty-free images.
 
 ### Modular based and Lightweight
 
@@ -76,17 +82,17 @@ If you’re looking for a free Elementor addon, ElementsKit offers the best pack
 
 ✅[ **Team** ](https://wpmet.com/plugin/elementskit/team/) - Customize the team section with members' names, positions, bios, etc.
 
-✅[ **Accordion** ](https://wpmet.com/plugin/elementskit/accordion/) - Display your texts in a foldable and concise way.
+✅[ **Accordion** ](https://wpmet.com/plugin/elementskit/accordion/) - Display texts in a foldable and concise way.
 
-✅[ **Tab** ](https://wpmet.com/plugin/elementskit/tab/) - Show your texts divided into horizontal or vertical tabs with titles.
+✅[ **Tab** ](https://wpmet.com/plugin/elementskit/tab/) - Show texts divided into horizontal or vertical tabs with titles.
 
-✅[ **Social Icons** ](https://wpmet.com/plugin/elementskit/social-media/) - Displaying your social media icons is super easy now.
+✅[ **Social Icons** ](https://wpmet.com/plugin/elementskit/social-media/) - Displaying social media icons is super easy now.
 
 ✅[**Blog Posts**](https://wpmet.com/plugin/elementskit/blog/) -  Display your blog posts more intelligently.
 
 ✅[ **Client Logo** ](https://wpmet.com/plugin/elementskit/client-logo/) - Showcase your client and sponsor logos with different styles.
 
-✅ [ **Countdown Timer** ](https://wpmet.com/plugin/elementskit/countdown-timer/) -  It comes with lots of effects, styles, and formats.
+✅ [ **Countdown Timer** ](https://wpmet.com/plugin/elementskit/countdown-timer/) -  It comes with various effects, styles, and formats.
 
 ✅ [ **FAQ** ](https://wpmet.com/plugin/elementskit/faq/) - Present all Q&As with different designs and unique styles.
  
@@ -116,7 +122,7 @@ If you’re looking for a free Elementor addon, ElementsKit offers the best pack
 
 ✅[ **Video** ](https://wpmet.com/plugin/elementskit/video/) -  Add playable videos to your page and style them nicely.
 
-✅[ **Post Tab** ](https://wpmet.com/plugin/elementskit/post-tab/) - Show your blogs, popular and recent posts in tabs as per the category.
+✅[ **Post Tab** ](https://wpmet.com/plugin/elementskit/post-tab/) - Show popular blogs and recent posts in tabs as per the category.
 
 ✅[ **Category List** ](https://wpmet.com/plugin/elementskit/category-list/) - Organize and customize every section of each category in a list.
 
@@ -126,7 +132,7 @@ If you’re looking for a free Elementor addon, ElementsKit offers the best pack
 
 ✅[ **Header Offcanvas** ](https://wpmet.com/plugin/elementskit/header-offcanvas/) - Display sidebar content when a specific button is triggered
 
-✅[ **Drop Caps** ](https://wpmet.com/plugin/elementskit/drop-caps/) - Design the content's first letter in a stylish, large, and capitalized format.
+✅[ **Drop Caps** ](https://wpmet.com/plugin/elementskit/drop-caps/) - Design content's first letter in a stylish, large, and capitalized format.
 
 ✅[ **ElementsKit Nav Menu**](https://wpmet.com/plugin/elementskit/nav-menu/) - Navigate different pages, create a drop-down nav menu, adjust menu settings.
 
@@ -138,7 +144,7 @@ If you’re looking for a free Elementor addon, ElementsKit offers the best pack
 
 ✅[ **Caldera Forms** ](https://wpmet.com/plugin/elementskit/caldera-form/) - It comes up with different types of form styles.
 
-✅[ **Contact Form 7** ](https://wpmet.com/plugin/elementskit/contact/) - Make  form container, and fields with your preferred form layout.
+✅[ **Contact Form 7** ](https://wpmet.com/plugin/elementskit/contact/) - Make  form containers and fields with your preferred form layout.
 
 ✅[ **Ninja Forms** ](https://wpmet.com/plugin/elementskit/ninja-forms/) - Create contact forms with different types and styles.
 
@@ -154,34 +160,38 @@ If you’re looking for a free Elementor addon, ElementsKit offers the best pack
 
 ✅[ **TablePress** ](https://wpmet.com/plugin/elementskit/tablepress/) - It allows you to create and style nice responsive data tables.
 
-✅[ **Fluent Forms**](https://wpmet.com/plugin/elementskit/fluent-forms/) - A perfect choice, if you use Fluent Forms.
+✅[ **Fluent Forms**](https://wpmet.com/plugin/elementskit/fluent-forms/) - A perfect choice for Fluent Forms users.
 
-✅[ **Back to Top** ](https://wpmet.com/plugin/elementskit/back-to-top/)- Add and customize the back-to-top button on your website easily.
+✅[ **Back to Top** ](https://wpmet.com/plugin/elementskit/back-to-top/)- Add and customize the back-to-top button easily.
 
 ### Most Functional & Free Modules
 This advanced Elementor addon offers some powerful modules in the free version.
 
 **🟢** [**ElementsKit Header and Footer Builder**](https://wpmet.com/plugin/elementskit/header-footer-builder/)
+Build and customize your Elementor website header and footer with a drag-and-drop interface. Enjoy features like **conditional display, sticky menus, off-canvas menus, WooCommerce carts,** and more. ElementsKit stands out with its extensive collection of pre-designed templates for Elementor header footer.
 
-**🟢** [ **Megamenu builder (PRO Layout)** ](https://products.wpmet.com/megamenu/) 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lprqRBvKMQM?si=qrJHka3Qh-LLUurH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-**🟢**  [**Widget Builder**](https://wpmet.com/plugin/elementskit/widget-builder/) 
+**🟢** [ **Megamenu builder (PRO Layout)** ](https://products.wpmet.com/megamenu/)
+Design multi-level mega menus with Elementor widgets, content, and visuals using ElementsKit's no-code Elementor mega menu builder. Create **horizontal or vertical menus** effortlessly, perfect for any niche, including e-commerce websites.
 
-**🟢** [**Onepage Scroll**](https://wpmet.com/plugin/elementskit/onepage-scroll/)  
+**🟢**  [**Widget Builder**](https://wpmet.com/plugin/elementskit/widget-builder/)
+ElementsKit gives web designers ultimate creative freedom to build custom widgets without coding. Just drag and drop controls to **create fully responsive Elementor widgets**.
+
+**🟢** [**Onepage Scroll**](https://wpmet.com/plugin/elementskit/onepage-scroll/)
+ElementsKit’s Onepage Scroll lets you create sleek, scrollable one-page websites with interactive navigation for a dynamic user experience.
 
 **🟢** **[ElementsKit Icon Pack Module](https://wpmet.com/doc/elemenskit-icon-pack/)**
-
+ ElementsKit ships with a collection of meticulously designed, high-quality icons. 
 
 ### Exclusive PRO Elementor Addons Widgets
 Let's look at some of the best Elementor widgets in the ElementsKit Premium version:
 
 ✅ [ **Gallery (PRO)** ](https://wpmet.com/plugin/elementskit/gallery/) - Showcase your recent photos, company environment, events, etc.
 
-✅ [ **Advanced Accordion (PRO)** ](https://wpmet.com/plugin/elementskit/advaced-accordion/) -   Helps to arrange image, social feed, progress bar, or MailChimp subscription form, etc. within the accordion in a nested format.
-
+✅ [ **Advanced Accordion (PRO)** ](https://wpmet.com/plugin/elementskit/advaced-accordion/) -   Helps to arrange images, social feed, progress bar, MailChimp subscription form, etc. within the accordion in a nested format.
 
 ✅ [ **Advanced Tab (PRO)** ](https://wpmet.com/plugin/elementskit/advanced-tab-one/) - Style the tabs and display various nested elements.
-
 
 ✅ [ **Timeline (PRO)** ](https://wpmet.com/plugin/elementskit/time-line/) - Create your timeline chart, design and showcase it.
 
@@ -189,50 +199,47 @@ Let's look at some of the best Elementor widgets in the ElementsKit Premium vers
 
 ✅ [ **Data Table (PRO)** ](https://wpmet.com/plugin/elementskit/table/) - The table widget will let you create data tables with advanced styling options and features.
 
-
 ✅ [ **Creative Button  Widget(PRO)** ](https://wpmet.com/plugin/elementskit/creative-buttons/) - Customize buttons with hover effects, content, borders, shadows, and more.
 
-✅ [ **Motion Text (PRO)** ](https://wpmet.com/plugin/elementskit/motion-text/) - It helps you to display your text with various motion animations, with styles.
+✅ [ **Motion Text (PRO)** ](https://wpmet.com/plugin/elementskit/motion-text/) - Helps to display your text with various motion animations, with styles.
 
-✅ [ **Instagram Feed Widget(PRO)** ](https://wpmet.com/plugin/elementskit/instagram/) - You can display Instagram feed directly from your account in different ways.
+✅ [ **Instagram Feed Widget(PRO)** ](https://wpmet.com/plugin/elementskit/instagram/) - Display Instagram feed directly from your account in different ways.
 
 ✅ [ **Facebook Feed Widget(PRO)** ](https://wpmet.com/plugin/elementskit/facebook-feed/) - Showcase updates from your Facebook account and change every section as you wish.
 
-✅ [ **Twitter Feed Widget(PRO)** ](https://wpmet.com/plugin/elementskit/twitter/) - Display tweets automatically on your websites and customize the styles.
+✅ [ **Twitter Feed Widget(PRO)** ](https://wpmet.com/plugin/elementskit/twitter/) - Display tweets automatically on your websites and apply customization.
 
-✅ [ **WooCommerce Product List (PRO)** ](https://wpmet.com/plugin/elementskit/woo-product-list/) - Display and design your eCommerce product list easily.
+✅ [ **WooCommerce Product List (PRO)** ](https://wpmet.com/plugin/elementskit/woo-product-list/) - Display and design eCommerce product list easily.
 
-✅ [ **WooCommerce Product Carousel (PRO)** ](https://wpmet.com/plugin/elementskit/woo-product-carousel/) -  Our WooCommerce product carousel widget comes up with lots of advanced features and customization options.
+✅ [ **WooCommerce Product Carousel (PRO)** ](https://wpmet.com/plugin/elementskit/woo-product-carousel/) - Show Woo products in functional and intuitive sliders.
 
-✅ [ **WooCommerce Category List (PRO)** ](https://wpmet.com/plugin/elementskit/woo-category-list/) - Our WooCommerce category list widget offers an advanced and easy way to display Woo-Categories anywhere on the website.
+✅ [ **WooCommerce Category List (PRO)** ](https://wpmet.com/plugin/elementskit/woo-category-list/) - Display Woo-Categories anywhere on the website.
 
-✅ [ **WooCommerce Mini Cart (PRO)** ](https://wpmet.com/plugin/elementskit/woo-mini-cart/) We have designed our mini cart with many customizable options in the cart button, body, header, item, etc.
+✅ [ **WooCommerce Mini Cart (PRO)** ](https://wpmet.com/plugin/elementskit/woo-mini-cart/) Get customization options like the cart button, body, header, item, etc.
 
-✅ [ **Advanced Toggle** ](https://wpmet.com/plugin/elementskit/advanced-toggle/) - Create amazing pricing tables, icon boxes, and packages and decorate them nicely .
+✅ [ **Advanced Toggle** ](https://wpmet.com/plugin/elementskit/advanced-toggle/) - Create amazing pricing tables, icon boxes, and packages and decorate them nicely.
 
-✅ [ **Vertical Mega Menu** ](https://products.wpmet.com/megamenu/) - Display your Mega Menu vertically and customize the content easily.
+✅ [ **Vertical Mega Menu** ](https://products.wpmet.com/megamenu/) - Display Mega Menu vertically and customize the content easily.
 
-✅ [ **Hotspot (PRO)** ](https://wpmet.com/plugin/elementskit/hotspot/) - Utilize the widget and identify a specific part of your image with a tooltip and reveal an associated text after clicking.
+✅ [ **Hotspot (PRO)** ](https://wpmet.com/plugin/elementskit/hotspot/) - Identify a specific part of your image with a tooltip and reveal an associated text after clicking.
 
-✅[ **Zoom (PRO)** ](https://wpmet.com/plugin/elementskit/zoom/) -  With this Zoom widget, you can set the meeting hosts, start time and date, time zone, duration, etc.
+✅[ **Zoom (PRO)** ](https://wpmet.com/plugin/elementskit/zoom/) -  Set the meeting hosts, start time and date, time zone, duration, etc.
 
 ✅ [ **Behance Feed (PRO)** ](https://wpmet.com/plugin/elementskit/behance-feed/) - Display your Behance Feed on your website using this widget. You can choose to fetch from 6 to 30 stories per request.
 
-
 ✅ [ **Breadcrumb (PRO)** ](https://wpmet.com/plugin/elementskit/breadcrumb/) - Customize the breadcrumb of your website by setting the max title word length and showing/hiding the category trail.
 
-✅[ **Dribbble Feed (PRO)** ](https://wpmet.com/plugin/elementskit/dribbble-feed/) - 
-With this versatile widget, you can choose your favorite style of displaying the Dribbble feed.
+✅[ **Dribbble Feed (PRO)** ](https://wpmet.com/plugin/elementskit/dribbble-feed/) - Choose your favorite style of displaying the Dribbble feed.
 
-✅[ **Video Gallery (PRO)** ](https://wpmet.com/plugin/elementskit/video-gallery/) - Add as many videos as you want to your website and design an attractive video gallery with this widget.
+✅[ **Video Gallery (PRO)** ](https://wpmet.com/plugin/elementskit/video-gallery/) - Add as many videos as you want to your website and design an attractive video gallery.
 
 ✅ [ **Facebook Review (PRO)** ](https://wpmet.com/plugin/elementskit/facebook-review/) - It gives you the ultimate freedom to set the review layout and content styles.
 
 ✅[ **Yelp (PRO)** ](https://wpmet.com/plugin/elementskit/yelp-review/) - Yelp widget will help you show the user reviews straight from the Yelp website to yours.
 
-✅[ **Popup Modal (PRO)** ](https://wpmet.com/plugin/elementskit/popup-modal/) - It lets you design amazing popups and help you place them wherever you want them on your website.
+✅[ **Popup Modal (PRO)** ](https://wpmet.com/plugin/elementskit/popup-modal/) - Design amazing popups and place them wherever you want them on your website.
 
-✅[ **Google Map (PRO)** ](https://wpmet.com/plugin/elementskit/google-map/) - You can show your business address to visitors with a Google Map effortlessly.
+✅[ **Google Map (PRO)** ](https://wpmet.com/plugin/elementskit/google-map/) - Show your business address to visitors with a Google Map effortlessly.
 
 ✅[ **Unfold (PRO)** ](https://wpmet.com/plugin/elementskit/unfold/) - Folding up certain sections (texts/images) is easy now.
 
@@ -251,11 +258,11 @@ With this versatile widget, you can choose your favorite style of displaying the
 ✅[**Stylish List (PRO)**](https://wpmet.com/plugin/elementskit/stylish-list/) - 
 Add a customized list and improve visitors' engagement with your Elementor site.
 
-✅ [**Team Carousel Slider (PRO)**](https://wpmet.com/plugin/elementskit/team-slider/) - Time to introduce your team members pleasingly on a slider.
+✅ [**Team Carousel Slider (PRO)**](https://wpmet.com/plugin/elementskit/team-slider/) - Introduce your team members pleasingly on a slider.
 
-✅ [**Image Morphing (PRO)**](https://wpmet.com/plugin/elementskit/image-morphing/) - Now, you can control the display of your WordPress images without any hassles.
+✅ [**Image Morphing (PRO)**](https://wpmet.com/plugin/elementskit/image-morphing/) - Control the display of your WordPress images without any hassles.
 
-✅ [**Flip Box (PRO)**](https://wpmet.com/plugin/elementskit/flip-box/) -  This widget helps to add excellent before and after effects to your messages.
+✅ [**Flip Box (PRO)**](https://wpmet.com/plugin/elementskit/flip-box/) -  Add excellent before and after effects to your messages.
 
 ✅ [**Audio Player (PRO)**](https://wpmet.com/plugin/elementskit/audio-player/) - Make your music or audio files and present them on your website interestingly.
 
@@ -263,23 +270,20 @@ Add a customized list and improve visitors' engagement with your Elementor site.
 
 ✅ [**Coupon Code (PRO)**](https://wpmet.com/plugin/elementskit/coupon-code/) - The widget guides you to make a small and customizable pop-up to display special offers.
 
-✅ [**Pinterest Feed (PRO)**](https://wpmet.com/plugin/elementskit/pinterest-feed/) - You can personalize a Pinterest feed based on people's interests, search history, and engagement with pins with the widget.
+✅ [**Pinterest Feed (PRO)**](https://wpmet.com/plugin/elementskit/pinterest-feed/) - Show personalized Pinterest feed based on people’s interests, activities, and engagement. 
 
 ✅ [**Protected content (PRO)**](https://wpmet.com/plugin/elementskit/protected-content/) - Protect your valuable content with passwords or user roles.
 
-✅ [**Interactive Links (PRO)**](https://wpmet.com/plugin/elementskit/interactive-links/) - Clickable and animated links boosts user interactions with your website.
+✅ [**Interactive Links (PRO)**](https://wpmet.com/plugin/elementskit/interactive-links/) - Clickable and animated links boosts user interactions.
 
 ### PRO Modules in Premium Addon version
-To empower the [Elementor page builder](https://wordpress.org/plugins/elementor/), ElementsKit has some exlusive premium modules:
+To empower the [Elementor page builder](https://wordpress.org/plugins/elementor/), ElementsKit has some exclusive premium modules:
 
-**🟢** [**Conditional Content Module (PRO)**](https://wpmet.com/plugin/elementskit/conditional-content/)
-The module guides you to show or hide a certain part of your webpage or content based on certain conditions.
+**🟢** [**Conditional Content Module (PRO)**](https://wpmet.com/plugin/elementskit/conditional-content/) Show or hide a specific part of your webpage or content based on certain conditions.
 
-**🟢** [**Advanced Sticky Module (PRO)**](https://wpmet.com/plugin/elementskit/sticky-landing/)
-With attractive sticky features, you can make your content versatile and engaging.
+**🟢** [**Advanced Sticky Module (PRO)**](https://wpmet.com/plugin/elementskit/sticky-landing/) Always Keep menu header at the top screen.
 
-**🟢** [**Advanced Parallax Module (PRO)**](https://wpmet.com/plugin/elementskit/parallax-landing/)
-Using this excellent module, you can design the page and tell stories while users scroll a page.
+**🟢** [**Advanced Parallax Module (PRO)**](https://wpmet.com/plugin/elementskit/parallax-landing/) Design your page and tell stories while users scroll a page.
 
 **🟢** [**Advanced Tooltip Module (PRO)**](https://wpmet.com/plugin/elementskit/advanced-tooltip/)
 It guides you to arrange information, add any element or media and experiment different tooltips.
@@ -288,22 +292,23 @@ It guides you to arrange information, add any element or media and experiment di
 This pro widget is the easy and professional way for you to integrate the Facebook Messenger chat-head into any of your web pages.
 
 **🟢** [**Cross-Domain Copy Paste (PRO)**](https://wpmet.com/plugin/elementskit/copy-paste/)
-You can easily reuse any section, column, and widget of a website to another website, with this module.
+Easily reuse any section, column, and widget of a website to another website, with this module.
 
 **🟢** [**Image Masking (PRO)**](https://wpmet.com/plugin/elementskit/masking/)
-This premium module helps you to customize the image shapes and make them more appealing.
+Helps you to customize the image shapes and make them more appealing.
 
 **🟢** [**Particles (PRO)**](https://wpmet.com/plugin/elementskit/particles/)
-To attract visitors' attention, you can decorate the site's background with particle effects.
+To attract visitors' attention, decorate the site's background with particle effects.
  
 **🟢** [**Wrapper Link (PRO)**](https://wpmet.com/plugin/elementskit/wrapper-link/)
-This feature allows you to add a link to any section, column, or widget in Elementor.
+Advanced way to add a link to any section, column, or widget in Elementor.
 
 **🟢** [**Glass Morphism (PRO)**](https://wpmet.com/plugin/elementskit/glass-morphism/)
 To apply frosted glass effects on your website backgrounds, this module is a perfect choice.
 
 **🟢** [**Mouse Cursor (PRO)**](https://wpmet.com/plugin/elementskit/mouse-cursor/)
 You can convert the boring cursor to interesting ones with our latest module.
+
 
 **👉** Learn [How to Install and Use ElementsKit](https://wpmet.com/doc/how-to-purchase-and-activate-elementskit-pro-license/#1-toc-title)
 
@@ -341,6 +346,12 @@ If you like using ElementsKit Elementor addon, then consider checking out our ot
 Visit  [wpmet](https://wpmet.com/)  to learn more about how to get the best of WordPress with  [Tutorials, Tips & Tricks](https://wpmet.com/blog)!
 
 == Changelog ==
+ElementsKit Elementor Addons Version: 3.4.0 (2025-01-27)
+Fixed: Submenu broken when mega menu module is deactivate in nav menu widget
+Fixed: Equal height feature is not working in icon and image box widget
+Fixed: PHP warning on client image size in testimonial widget style five
+Fixed: List style icon color not working in category list widget
+
 ElementsKit Elementor Addons Version: 3.3.9 (2025-01-22)
 Added: Info icon color control in pricing table widget
 Fixed: List style issue in category list widget
@@ -1262,5 +1273,3 @@ It's due to your servers' PHP settings. Increase your server PHP memory limit fr
 
 = How can I report security bugs? =
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/elementskit-lite)
-
- git

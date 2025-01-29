@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Official StatCounter Plugin
- * Version: 2.0.9
+ * Version: 2.1.0
  * Plugin URI: http://statcounter.com/
  * Description: Adds the StatCounter tracking code to your blog. <br>To get setup: 1) Activate this plugin  2) Enter your StatCounter Project ID and Security Code in the <a href="options-general.php?page=StatCounter-Wordpress-Plugin.php"><strong>options page</strong></a>.
  * Author: Aodhan Cullen
@@ -255,27 +255,8 @@ function add_statcounter() {
 			$protocol = defined('HTTPS') ? "https:" : "http:";
 
 			?>
-			var scJsHost = (("https:" == document.location.protocol) ?
-				"https://secure." : "http://www.");
-			//-->
-			<?php
-			if($sc_invisible!=1) {
-				echo "\ndocument.write(\"<sc\"+\"ript src='\" +scJsHost +\"statcounter.com/counter/counter.js'></\"+\"script>\");";
-			}
-			?>
 		</script>
-		<?php
-		if($sc_invisible==1) {
-			if($protocol == "http:") {
-				echo "\n<script type=\"text/javascript\"
-				src=\"http://www.statcounter.com/counter/counter.js\"
-				async></script>";
-			} else if (esc_html($protocol) == "https:"){
-				echo "\n<script type=\"text/javascript\"
-				src=\"https://secure.statcounter.com/counter/counter.js\"
-				async></script>";
-			}
-		}?>
+        <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
 		<noscript><div class="statcounter"><a title="web analytics" href="<?php echo esc_html($protocol) ?>//statcounter.com/"><img class="statcounter" src="<?php echo esc_html($protocol) ?>//c.statcounter.com/<?php echo esc_html($sc_project) ?>/0/<?php echo esc_html($sc_security) ?>/<?php echo esc_html($sc_invisible) ?>/" alt="web analytics" /></a></div></noscript>
 		<!-- End of StatCounter Code -->
 		<?php

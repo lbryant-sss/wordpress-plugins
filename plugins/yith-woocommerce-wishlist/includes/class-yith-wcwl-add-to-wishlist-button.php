@@ -963,7 +963,7 @@ if ( ! class_exists( 'YITH_WCWL_Add_To_Wishlist_Button' ) ) {
 				'i18n'               => array(
 					'feedbacks' => array(
 						'added'   => __( '{{product_name}} has been added to your {{wishlist_name}} list!', 'yith-woocommerce-wishlist' ),
-						'removed' => '{{product_name}} has been removed from your {{wishlist_name}} list!',
+						'removed' => __( '{{product_name}} has been removed from your {{wishlist_name}} list!', 'yith-woocommerce-wishlist' ),
 					),
 				),
 			);

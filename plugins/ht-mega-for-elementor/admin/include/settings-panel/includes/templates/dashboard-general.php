@@ -10,8 +10,14 @@ ob_start();
 <div class="htmega-general-tabs">
 <div class="htmega-admin-main-tab-pane-inner">
         <!-- Banner Start -->
-        <div class="htmega-admin-banner">
-            <img src="<?php echo esc_url( HTMEGAOPT_URL . '/assets/images/dashboard-welcome-new.jpg' ); ?>" alt="<?php echo esc_attr__('Welcome To HT Mega','htmega-addons');?>">
+        <div class="htmega-admin-banner" style="background-image: url('<?php echo esc_url( HTMEGAOPT_URL . '/assets/images/dashboard-welcome-bg.jpg' ); ?>'); background-size: cover;">
+            <div class="htmega-banner-logo">
+            <img src="<?php echo esc_url( HTMEGAOPT_URL . '/assets/images/htmega-logo-white.png' ); ?>" alt="<?php echo esc_attr__('HT Mega Logo', 'htmega-addons'); ?>">
+            </div>
+            <div class="htmega-banner-content">
+                <h1><?php esc_html_e( 'Welcome To The HT Mega Family!', 'htmega-addons' ); ?></h1>
+                <p><?php esc_html_e( 'You have made a great choice. Let’s build something extraordinary!', 'htmega-addons' ) ?></p>
+            </div>
         </div>
         <!-- Banner End -->
     <!-- Quick Links Section -->

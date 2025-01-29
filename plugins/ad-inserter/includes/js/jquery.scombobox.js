@@ -436,7 +436,8 @@
 
     function addAdditionalListener(type, callback, namespace) {
         var action = type + (typeof namespace == 'string' ? '.' + namespace : '');
-        this.bind(action, callback);
+//        this.bind(action, callback);
+        this.on (action, callback);
     }
 
     function getValues() { // for checkbox mode
@@ -516,7 +517,8 @@
         $t.find(cp + clist + ' p').eq($selected[0].index).addClass(pname + chovered).siblings().removeClass(pname + chovered);
 
         $valueInput.val(value).data('changed', true);
-        $select.val(value).change();
+//        $select.val(value).change();
+        $select.val(value).trigger ("change");
     }
 
     /**
@@ -754,10 +756,12 @@
             }
             if (checkboxesMode) { // no slideup for checkboxes mode
                 updateValueInput.call($combo);
-                $valueInput.change();
+//                $valueInput.change();
+                $valueInput.trigger ("change");
                 return;
             }
-            $valueInput.change();
+//            $valueInput.change();
+            $valueInput.trigger ("change");
             slide.call($combo.children(cp + clist), 'up'); // can be triggered at the page load
         });
         this.on(pname + '-chupdate', cp + clist + ' p :checkbox', function(e, forRefresh) {
@@ -785,7 +789,8 @@
             var $select = $div.closest(cp).children('select');
             $select.children('option').eq(index).prop('selected', true);
             $select.siblings(cp + cvalue).val($select.val());
-            $select.change();
+//            $select.change();
+            $select.trigger ("change");
             slide.call($t.parent(), 'up');
             $t.addClass(pname + chovered).siblings().removeClass(pname + chovered);
         });
@@ -861,7 +866,8 @@
                 }
             }
             if (previousV !== $valueInput.val()) {
-                $valueInput.change().data('changed', true);
+//                $valueInput.change().data('changed', true);
+                $valueInput.trigger ("change").data('changed', true);
             }
         });
         this.on('focus', cp + cdisplay, function() {
@@ -953,7 +959,8 @@
         }
 
 
-        $(document).bind('click.' + pname, { thisIs: this }, function(e) {
+//        $(document).bind('click.' + pname, { thisIs: this }, function(e) {
+        $(document).on ('click.' + pname, { thisIs: this }, function(e) {
             slide.call($(e.data.thisIs).children(cp + clist), 'up');
         });
 
@@ -1109,7 +1116,7 @@
 
             // Every edit keystroke will call a slide down; use this opportunity to reset the list's display characteristics fully.
             $combobox.find(cp + chovered).removeClass(pname + chovered); // remove previous selection
-            $(cp + '-marker', $combobox).contents().unwrap(); // remove previous highlight            
+            $(cp + '-marker', $combobox).contents().unwrap(); // remove previous highlight
 
             // Reveal everything whenever we slide down, so that user gets to see all the options.
             // If the slide down was triggered by entry of a character, filtering will immediately reduce the list

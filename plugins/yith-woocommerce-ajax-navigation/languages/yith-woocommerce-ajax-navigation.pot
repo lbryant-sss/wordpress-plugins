@@ -1,15 +1,15 @@
-# Copyright (C) 2024 YITH
+# Copyright (C) 2025 YITH
 # This file is distributed under the same license as the YITH WooCommerce Ajax Product Filter package.
 msgid ""
 msgstr ""
 "Project-Id-Version: YITH WooCommerce Ajax Navigation\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/yith-woocommerce-ajax-product-filter\n"
-"POT-Creation-Date: 2024-12-24 13:49:14+00:00\n"
+"POT-Creation-Date: 2025-01-28 12:39:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: YITH <plugins@yithemes.com>\n"
 "Language: en\n"

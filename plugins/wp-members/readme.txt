@@ -3,7 +3,7 @@ Contributors: cbutlerjr
 Tags: membership, registration, login, authentication, restriction
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 3.4.9.7
+Stable tag: 3.5.0
 
 License: GPLv3
 

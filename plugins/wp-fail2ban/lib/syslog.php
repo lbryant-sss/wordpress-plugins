@@ -25,7 +25,7 @@ abstract class Syslog {
 	protected static function getTag(): string {
 		return ( Config::get( 'WP_FAIL2BAN_SYSLOG_SHORT_TAG' ) )
 			? 'wp'
-			: 'WordPress';
+			: 'wordpress'; // phpcs:ignore WordPress.WP.CapitalPDangit
 	}
 
 	/**
