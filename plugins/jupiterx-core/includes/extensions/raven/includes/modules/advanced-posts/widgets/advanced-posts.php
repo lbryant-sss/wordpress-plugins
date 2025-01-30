@@ -1603,6 +1603,21 @@ class Advanced_Posts extends Base_Widget {
 						],
 					],
 				],
+				'condition' => [
+					'content_layout' => 'side',
+				],
+				'default' => [
+					'size' => '50',
+					'unit' => '%',
+				],
+				'tablet_default' => [
+					'size' => '50',
+					'unit' => '%',
+				],
+				'mobile_default' => [
+					'size' => '100',
+					'unit' => '%',
+				],
 			]
 		);
 
@@ -5255,7 +5270,7 @@ class Advanced_Posts extends Base_Widget {
 		$content_layout        = $settings['content_layout'];
 		$featured_image_hover  = ! empty( $settings['featured_image_hover'] ) ? $settings['featured_image_hover'] : '';
 		$show_overlay_on_hover = ! empty( $settings['show_overlay_on_hover'] ) ? 'content-layout-overlay-on-hover' : '';
-		$archive_query         = is_archive() ? htmlspecialchars( wp_json_encode( $wp_query->query_vars ) ) : '';
+		$archive_query         = ( is_archive() || is_search() ) ? htmlspecialchars( wp_json_encode( $wp_query->query_vars ) ) : '';
 
 		if ( ! empty( $settings['metro_matrix_content_layout'] ) || empty( $settings['content_layout'] ) ) {
 			$content_layout = $settings['metro_matrix_content_layout'];

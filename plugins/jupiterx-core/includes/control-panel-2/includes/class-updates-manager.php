@@ -153,7 +153,7 @@ class JupiterX_Core_Control_Panel_Updates_Manager {
 				$selected_version = [];
 
 				foreach ( $product->versions as $version ) {
-					if ( $version->name === $product->new_version ) {
+					if ( ! empty( $version ) && ! empty( $product ) && isset( $version->name ) && isset( $product->new_version ) && $version->name === $product->new_version ) {
 						$selected_version = $version;
 						break;
 					}

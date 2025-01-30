@@ -23009,6 +23009,12 @@ body.rtl .elementor-widget-raven-product-rating .star-rating {
   display: flex;
 }
 
+.elementor-widget-raven-reviews .raven-testimonial .raven-star-rating {
+  display: inline-block;
+  color: #c1c1c1;
+  font-family: eicons;
+}
+
 .elementor-widget-raven-reviews .raven-testimonial__text {
   font-size: 14px;
   line-height: 20px;

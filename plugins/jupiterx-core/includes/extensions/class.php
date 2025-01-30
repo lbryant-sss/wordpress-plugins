@@ -22,6 +22,7 @@ class JupiterX_Core_Extensions {
 	 * @since 1.18.0
 	 */
 	public function __construct() {
+		add_action( 'admin_init', [ $this, 'check_and_remove_raven_plugin' ] );
 		$this->load_extensions();
 	}
 
@@ -40,7 +41,7 @@ class JupiterX_Core_Extensions {
 			'raven' => [
 				'basename' => 'raven/raven.php',
 				'slug' => 'raven',
-				'load' => ! is_plugin_active( 'raven/raven.php' ) && ! class_exists( '\Raven\Plugin' ),
+				'load' => true,
 			],
 		];
 
@@ -57,6 +58,21 @@ class JupiterX_Core_Extensions {
 			if ( file_exists( $path ) ) {
 				require_once $path;
 			}
+		}
+	}
+
+	/**
+	 * Check and remove the deprecated raven plugin.
+	 *
+	 * @since NEXT
+	 * @access public
+	 *
+	 * @return void
+	 */
+	public function check_and_remove_raven_plugin() {
+		if ( is_plugin_active( 'raven/raven.php' ) ) {
+			deactivate_plugins( [ 'raven/raven.php' ] );
+			delete_plugins( [ 'raven/raven.php' ] );
 		}
 	}
 

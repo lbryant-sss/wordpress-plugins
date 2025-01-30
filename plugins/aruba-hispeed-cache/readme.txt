@@ -68,6 +68,10 @@ wordpress_no_cache, comment_author, wordpress_logged_in_, yith_wcwl_products, wp
 
 == Changelog ==
 
+= 2.0.24 =
+* Manage WP_CRON Timeout.
+* Various minor bug fixes.
+
 = 2.0.23 =
 * Fix UserAgent for cache warming.
 
@@ -209,5 +213,6 @@ wordpress_no_cache, comment_author, wordpress_logged_in_, yith_wcwl_products, wp
 
 == Upgrade Notice ==
 
-= 2.0.23 =
-* Fix UserAgent for cache warming.
+= 2.0.24 =
+* Manage WP_CRON Timeout.
+* Various minor bug fixes.

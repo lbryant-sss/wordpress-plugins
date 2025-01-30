@@ -252,7 +252,6 @@ class Stripe_Button extends Payment_Button {
 		?>
 
 		<form class="elementor-stripe-form">
-			<input type="hidden" name="url" value="<?php echo esc_attr( admin_url( 'admin-ajax.php' ) ); ?>">
 			<input type="hidden" name="action" value="submit_stripe_form"/>
 			<input type="hidden" name="post_id" value="<?php echo esc_attr( get_the_ID() ); ?>"/>
 			<input type="hidden" name="widget_id" value="<?php echo esc_attr( $this->get_id() ); ?>"/>
@@ -262,21 +261,19 @@ class Stripe_Button extends Payment_Button {
 			<input type="hidden" name="custom_error_msg_payment" value="<?php echo esc_attr( $settings['error_message_payment'] ); ?>" />
 			<?php wp_nonce_field( 'stripe_form_submit', 'stripe_form_submit_nonce' ); ?>
 			<input type="hidden" name="open_in_new_window" value="<?php echo esc_attr( $settings['open_in_new_window'] ); ?>"/>
-			<?php
-				$this->add_render_attribute( 'input', 'type', 'submit' );
-				$this->add_render_attribute( 'input', 'class', 'elementor-stripe' );
-				parent::render_button( null, 'button' );
-
-			foreach ( $this->get_errors() as $type => $message ) {
-				?>
-				<div class="elementor-message elementor-message-danger elementor-hidden elementor-error-message-<?php Utils::print_unescaped_internal_string( $type ); ?>">
-					<?php echo esc_html( $message ); ?>
-				</div>
-				<?php
-			}
-			?>
 		</form>
 		<?php
+
+		$this->add_render_attribute( 'input', 'type', 'submit' );
+		$this->add_render_attribute( 'input', 'class', 'elementor-stripe' );
+		parent::render_button( null, 'button' );
+
+		foreach ( $this->get_errors() as $type => $message ) { ?>
+			<div class="elementor-message elementor-message-danger elementor-hidden elementor-error-message-<?php Utils::print_unescaped_internal_string( $type ); ?>">
+				<?php echo esc_html( $message ); ?>
+			</div>
+			<?php
+		}
 	}
 
 	/**
@@ -299,7 +296,7 @@ class Stripe_Button extends Payment_Button {
 				'raw' => sprintf(
 					/* translators: 1: Elementor's integrations settings link opening tab, 2: Link closing tag. */
 					esc_html__( 'For this widget to work, you need to set your Stripe API keys in the %1$sIntegrations Settings%2$s.', 'jupiterx-core' ),
-					sprintf( '<a href="%s" target="_blank">', admin_url( 'admin.php?page=elementor#tab-raven' ) ),
+					sprintf( '<a href="%s" target="_blank">', admin_url( 'admin.php?page=elementor-settings#tab-raven' ) ),
 					'</a>'
 				),
 				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
@@ -522,7 +519,7 @@ class Stripe_Button extends Payment_Button {
 				'raw' => sprintf(
 					/* translators: 1: Elementor's integrations settings link opening tab, 2: Link closing tag. */
 					esc_html__( 'Complete the entire checkout experience on your site with a mock payment method, using the Stripe Test key in the %1$sIntegrations Settings%2$s.', 'jupiterx-core' ),
-					sprintf( '<a href="%s" target="_blank">', admin_url( 'admin.php?page=elementor#tab-raven' ) ),
+					sprintf( '<a href="%s" target="_blank">', admin_url( 'admin.php?page=elementor-settings#tab-raven' ) ),
 					'</a>'
 				),
 				'content_classes' => 'elementor-descriptor',

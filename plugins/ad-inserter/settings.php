@@ -906,15 +906,15 @@ function generate_settings_form (){
 <?php if (defined ('AI_CODE_GENERATOR')) : ?>
         <span class="ai-toolbar-button ai-button-left">
           <input type="checkbox" id="code-generator-<?php echo $block; ?>" style="display: none;" />
-          <label class="checkbox-button code-generator-button" for="code-generator-<?php echo $block; ?>" title="<?php _e ('Toggle code generator', 'ad-inserter'); ?>"><span class="checkbox-icon icon-code"></span></label>
+          <label class="checkbox-button code-generator-button" for="code-generator-<?php echo $block; ?>" title="<?php _e ('Toggle code generator', 'ad-inserter'); ?>" data-title="<?php _e ('Toggle code generator', 'ad-inserter'); ?>"><span class="checkbox-icon icon-code"></span></label>
         </span>
         <span class="ai-toolbar-button ai-button-left">
           <input type="checkbox" id="rotation-<?php echo $block; ?>" style="display: none;" />
-          <label class="checkbox-button rotation-button" for="rotation-<?php echo $block; ?>" title="<?php _e ('Toggle rotation editor', 'ad-inserter'); ?>"><span class="checkbox-icon icon-rotation"></span></label>
+          <label class="checkbox-button rotation-button" for="rotation-<?php echo $block; ?>" title="<?php _e ('Toggle rotation editor', 'ad-inserter'); ?>" data-title="<?php _e ('Toggle rotation editor', 'ad-inserter'); ?>"><span class="checkbox-icon icon-rotation"></span></label>
         </span>
         <span class="ai-toolbar-button ai-button-left">
           <input type="checkbox" id="visual-editor-<?php echo $block; ?>" style="display: none;" />
-          <label class="checkbox-button" for="visual-editor-<?php echo $block; ?>" title="<?php _e ('Open visual HTML editor', 'ad-inserter'); ?>"><span class="checkbox-icon icon-edit"></span></label>
+          <label class="checkbox-button" for="visual-editor-<?php echo $block; ?>" title="<?php _e ('Open visual HTML editor', 'ad-inserter'); ?>" data-title="<?php _e ('Open visual HTML editor', 'ad-inserter'); ?>"><span class="checkbox-icon icon-edit"></span></label>
         </span>
 
 
@@ -924,7 +924,7 @@ function generate_settings_form (){
 
         <span class="ai-toolbar-button ai-button-left">
           <input type="checkbox" id="ga-<?php echo $block; ?>" style="display: none;" />
-          <label class="checkbox-button adsense-list" for="ga-<?php echo $block; ?>" title="<?php _e ('Show AdSense ad units', 'ad-inserter'); ?>" ><span class="checkbox-icon icon-adsense"></span></label>
+          <label class="checkbox-button adsense-list" for="ga-<?php echo $block; ?>" title="<?php _e ('Show AdSense ad units', 'ad-inserter'); ?>" data-title="<?php _e ('Show AdSense ad units', 'ad-inserter'); ?>"><span class="checkbox-icon icon-adsense"></span></label>
         </span>
 <?php endif; ?>
 <?php endif; ?>
@@ -933,28 +933,28 @@ function generate_settings_form (){
 
         <span class="ai-toolbar-button" style="padding-right: 15px;">
           <input type="checkbox" id="clear-block-<?php echo $block; ?>" style="display: none;" />
-          <label class="checkbox-button" for="clear-block-<?php echo $block; ?>" title="<?php _e ('Clear block', 'ad-inserter'); ?>"><span class="checkbox-icon icon-clear"></span></label>
+          <label class="checkbox-button" for="clear-block-<?php echo $block; ?>" title="<?php _e ('Clear block', 'ad-inserter'); ?>" data-title="<?php _e ('Clear block', 'ad-inserter'); ?>"><span class="checkbox-icon icon-clear"></span></label>
         </span>
 
         <span class="ai-toolbar-button">
           <input type="checkbox" id="copy-block-<?php echo $block; ?>" class="ai-copy" style="display: none;" />
-          <label class="checkbox-button" for="copy-block-<?php echo $block; ?>" title="<?php _e ('Copy block', 'ad-inserter'); ?>"><span class="checkbox-icon icon-copy"></span></label>
+          <label class="checkbox-button" for="copy-block-<?php echo $block; ?>" title="<?php _e ('Copy block', 'ad-inserter'); ?>" data-title="<?php _e ('Copy block', 'ad-inserter'); ?>"><span class="checkbox-icon icon-copy"></span></label>
         </span>
         <span class="ai-toolbar-button">
           <input type="checkbox" id="paste-name-<?php echo $block; ?>" style="display: none;" />
-          <label class="checkbox-button" for="paste-name-<?php echo $block; ?>" title="<?php _e ('Paste name', 'ad-inserter'); ?>"><span class="checkbox-icon icon-paste-name"></span></label>
+          <label class="checkbox-button" for="paste-name-<?php echo $block; ?>" title="<?php _e ('Paste name', 'ad-inserter'); ?>" data-title="<?php _e ('Paste name', 'ad-inserter'); ?>"><span class="checkbox-icon icon-paste-name"></span></label>
         </span>
         <span class="ai-toolbar-button">
           <input type="checkbox" id="paste-code-<?php echo $block; ?>" style="display: none;" />
-          <label class="checkbox-button" for="paste-code-<?php echo $block; ?>" title="<?php _e ('Paste code', 'ad-inserter'); ?>"><span class="checkbox-icon icon-paste-code"></span></label>
+          <label class="checkbox-button" for="paste-code-<?php echo $block; ?>" title="<?php _e ('Paste code', 'ad-inserter'); ?>" data-title="<?php _e ('Paste code', 'ad-inserter'); ?>"><span class="checkbox-icon icon-paste-code"></span></label>
         </span>
         <span class="ai-toolbar-button">
           <input type="checkbox" id="paste-settings-<?php echo $block; ?>" style="display: none;" />
-          <label class="checkbox-button" for="paste-settings-<?php echo $block; ?>" title="<?php _e ('Paste settings', 'ad-inserter'); ?>"><span class="checkbox-icon icon-paste-settings"></span></label>
+          <label class="checkbox-button" for="paste-settings-<?php echo $block; ?>" title="<?php _e ('Paste settings', 'ad-inserter'); ?>" data-title="<?php _e ('Paste settings', 'ad-inserter'); ?>"><span class="checkbox-icon icon-paste-settings"></span></label>
         </span>
         <span class="ai-toolbar-button">
           <input type="checkbox" id="paste-block-<?php echo $block; ?>" style="display: none;" />
-          <label class="checkbox-button" for="paste-block-<?php echo $block; ?>" title="<?php _e ('Paste block (name, code and settings)', 'ad-inserter'); ?>"><span class="checkbox-icon icon-paste"></span></label>
+          <label class="checkbox-button" for="paste-block-<?php echo $block; ?>" title="<?php _e ('Paste block (name, code and settings)', 'ad-inserter'); ?>" data-title="<?php _e ('Paste block (name, code and settings)', 'ad-inserter'); ?>"><span class="checkbox-icon icon-paste"></span></label>
         </span>
 <?php endif; ?>
       </div>

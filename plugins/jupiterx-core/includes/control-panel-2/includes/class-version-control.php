@@ -11,6 +11,7 @@
  * Version control class.
  *
  * @since 1.18.0
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class JupiterX_Core_Control_Panel_Version_Control {
 
@@ -172,8 +173,19 @@ class JupiterX_Core_Control_Panel_Version_Control {
 
 			// Sort versions.
 			usort( $product->versions, function( $a, $b ) {
-				return version_compare( $b->name, $a->name );
+				$result = 0;
+
+				if ( ! empty( $a ) && ! empty( $b ) && isset( $a->name ) && isset( $b->name ) ) {
+					$result = version_compare( $b->name, $a->name );
+				}
+
+				return $result;
 			} );
+
+			// Remove null elements from versions array
+			$product->versions = array_filter( $product->versions, function( $version ) {
+				return ! is_null( $version );
+			});
 
 			// Get last 10 versions.
 			$product->versions = array_slice( $product->versions, 0, 10 );

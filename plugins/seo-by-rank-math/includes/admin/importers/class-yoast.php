@@ -61,19 +61,19 @@ class Yoast extends Plugin_Importer {
 	/**
 	 * Convert Yoast / AIO SEO variables if needed.
 	 *
-	 * @param string $string Value to convert.
+	 * @param string $value Value to convert.
 	 *
 	 * @return string
 	 */
-	public function convert_variables( $string ) {
-		$string = str_replace( '%%term_title%%', '%term%', $string );
-		$string = str_replace( '%%category_description%%', '%term_description%', $string );
-		$string = str_replace( '%%searchphrase%%', '%search_query%', $string );
-		$string = preg_replace( '/%%cf_([^%]+)%%/i', '%customfield($1)%', $string );
-		$string = preg_replace( '/%%ct_([^%]+)%%/i', '%customterm($1)%', $string );
-		$string = preg_replace( '/%%ct_desc_([^%]+)%%/i', '%customterm($1)%', $string );
+	public function convert_variables( $value ) {
+		$value = str_replace( '%%term_title%%', '%term%', $value );
+		$value = str_replace( '%%category_description%%', '%term_description%', $value );
+		$value = str_replace( '%%searchphrase%%', '%search_query%', $value );
+		$value = preg_replace( '/%%cf_([^%]+)%%/i', '%customfield($1)%', $value );
+		$value = preg_replace( '/%%ct_([^%]+)%%/i', '%customterm($1)%', $value );
+		$value = preg_replace( '/%%ct_desc_([^%]+)%%/i', '%customterm($1)%', $value );
 
-		return str_replace( '%%', '%', $string );
+		return str_replace( '%%', '%', $value );
 	}
 
 	/**
@@ -518,7 +518,7 @@ class Yoast extends Plugin_Importer {
 				'post_type'   => 'any',
 				'post_status' => 'any',
 				'fields'      => 'ids',
-				'meta_query'  => [
+				'meta_query'  => [ // phpcs:ignore -- Using meta_query here is acceptable as it is specifically for importing data from Yoast and runs exclusively in the background.
 					'relation' => 'AND',
 					[
 						'key'     => '_yoast_wpseo_video_meta',
@@ -646,7 +646,7 @@ class Yoast extends Plugin_Importer {
 		];
 		foreach ( $taxonomy_meta as $terms ) {
 			foreach ( $terms as $term_id => $data ) {
-				$count++;
+				++$count;
 				delete_term_meta( $term_id, 'rank_math_permalink' );
 				$this->replace_meta( $hash, $data, $term_id, 'term', 'convert_variables' );
 
@@ -746,7 +746,7 @@ class Yoast extends Plugin_Importer {
 		Helper::update_modules( [ 'redirections' => 'on' ] );
 		foreach ( $redirections as $redirection ) {
 			if ( false !== $this->save_redirection( $redirection ) ) {
-				$count++;
+				++$count;
 			}
 		}
 
@@ -947,7 +947,7 @@ class Yoast extends Plugin_Importer {
 			$this->sitemap['exclude_posts'] = '';
 		}
 
-		$this->sitemap[ 'include_authors_without_posts' ] = isset( $yoast_titles[ 'noindex-author-noposts-wpseo' ] ) && ! $yoast_titles[ 'noindex-author-noposts-wpseo' ] ? 'on' : 'off';
+		$this->sitemap['include_authors_without_posts'] = isset( $yoast_titles['noindex-author-noposts-wpseo'] ) && ! $yoast_titles['noindex-author-noposts-wpseo'] ? 'on' : 'off';
 
 		$this->sitemap_exclude_roles( $yoast_sitemap );
 	}

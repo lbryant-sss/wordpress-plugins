@@ -1315,6 +1315,12 @@ class Video extends Base_Widget {
 			return;
 		}
 
+		// Validate device_frame option
+		$valid_device_frames = [ 'desktop', 'laptop' ];
+		if ( ! in_array( $settings['device_frame'], $valid_device_frames, true ) ) {
+			$settings['device_frame'] = 'desktop';
+		}
+
 		$this->add_render_attribute( 'video', 'class', 'raven-video raven-video-' . ( $settings['use_lightbox'] ? 'lightbox' : 'inline' ) );
 
 		$this->add_render_attribute( 'video-wrapper', 'class', 'raven-widget-wrapper' . ( 'yes' !== $settings['sticky_on_scroll'] ? ' sticky-close' : '' ) . ' raven-video-mejs-player' );

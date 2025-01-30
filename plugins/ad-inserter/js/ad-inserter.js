@@ -1747,7 +1747,8 @@ jQuery(document).ready (function($) {
 
       $("input#filter-numbers-"+block).val ('');
       $("select#filter-type-"+block).val (0);
-      $("input#invert-filter-"+block).removeAttr ('checked');
+//      $("input#invert-filter-"+block).removeAttr ('checked');
+      $("input#invert-filter-"+block).prop ("checked", false );
     }
 
     if (automatic_insertion == AI_BEFORE_HTML_ELEMENT || automatic_insertion == AI_AFTER_HTML_ELEMENT || automatic_insertion == AI_INSIDE_HTML_ELEMENT) {
@@ -2425,6 +2426,9 @@ jQuery(document).ready (function($) {
       $("span#export-pdf-button-0").toggle ();
       $("span#export-csv-button-0").toggle ();
       $("div#tab-tracking-settings").toggle ();
+
+      $("label#ai-tracking").toggle ();
+
       var container = $("div#statistics-container-0");
       if (container.is(':visible')) {
         if (!$(this).hasClass ('loaded')) {
@@ -3240,7 +3244,8 @@ jQuery(document).ready (function($) {
       var on = $(this).hasClass ('dashicons-yes');
       if (on) {
         $(this).removeClass ('dashicons-yes').addClass ('dashicons-no');
-        $(this).prev ().removeAttr ('checked');
+//        $(this).prev ().removeAttr ('checked');
+        $(this).prev ().prop ("checked", false);
       } else {
           $(this).removeClass ('dashicons-no').addClass ('dashicons-yes');
           $(this).prev ().attr ('checked', '1');
@@ -4006,7 +4011,8 @@ jQuery(document).ready (function($) {
 //      $("input#filter-numbers-"+block).val ($(this).attr ('value'));
       $("input#filter-numbers-"+block).val ($(this).val ());
       $("select#filter-type-"+block).val (0);
-      $("input#invert-filter-"+block).removeAttr ('checked');
+//      $("input#invert-filter-"+block).removeAttr ('checked');
+      $("input#invert-filter-"+block).prop ("checked", false);
     });
 
     $("input#filter-numbers-" + tab).on ('keyup', function () {
@@ -4647,12 +4653,15 @@ jQuery(document).ready (function($) {
               if (data != '') {
                 var message = '';
                 var options = $('option', '<div>'+data+'</div>');
+
                 if (options.length != 0) {
                   if ($(options [0]).attr ('value').length == 0) {
                     message = $(options [0]).text ();
-                    options = options.splice (1);
+//                    options = options.splice (1);
+                    options = Array.from (options).splice (1);
                   }
                 }
+
                 select.attr ('data-message', message);
 
                 select.html (options);
@@ -5167,7 +5176,8 @@ jQuery(document).ready (function($) {
 
       if (checked)
         clipboard.find ('input[name]:checkbox').eq (index).attr ('checked', 'checked').next ("label").find ('.checkbox-icon').addClass("on"); else
-          clipboard.find ('input[name]:checkbox').eq (index).removeAttr ('checked').next ("label").find ('.checkbox-icon').removeClass("on");
+//          clipboard.find ('input[name]:checkbox').eq (index).removeAttr ('checked').next ("label").find ('.checkbox-icon').removeClass("on");
+          clipboard.find ('input[name]:checkbox').eq (index).prop ("checked", false).next ("label").find ('.checkbox-icon').removeClass("on");
     });
 
     $('div#tab-' + active_tab + ' input[name]:radio').each (function (index){
@@ -5176,12 +5186,14 @@ jQuery(document).ready (function($) {
 
       if (checked)
         clipboard.find ('input[name]:radio').eq (index).attr ('checked', 'checked'); else
-          clipboard.find ('input[name]:radio').eq (index).removeAttr ('checked');
+//          clipboard.find ('input[name]:radio').eq (index).removeAttr ('checked');
+          clipboard.find ('input[name]:radio').eq (index).prop ("checked", false);
     });
 
     $('div#tab-' + active_tab + ' select[name]').each (function (index){
       var value = $(this).find ("option:selected").val ();
-      clipboard.find ('select[name]').eq (index).find ("option").removeAttr ('selected');
+//      clipboard.find ('select[name]').eq (index).find ("option").removeAttr ('selected');
+      clipboard.find ('select[name]').eq (index).find ("option").prop ("selected", false);
       clipboard.find ('select[name]').eq (index).find ("option[value = '" + value + "']").attr ("selected", true);
     });
 
@@ -5329,6 +5341,7 @@ jQuery(document).ready (function($) {
         var exceptions_button = destination_tab.find ('#exceptions-button-container-' + active_tab).html ();
         var exceptions_container = destination_tab.find ('#block-exceptions-' + active_tab).html ();
 
+
         destination_tab.html (clipboard).find ('input[name=ai_save]').attr('value', save_button_text);
 
         if (!paste_name) {
@@ -5371,10 +5384,26 @@ jQuery(document).ready (function($) {
           $(this).text (text);
         });
 
+
         destination_tab.find ('#exceptions-button-container-' + active_tab).html (exceptions_button);
         destination_tab.find ('#block-exceptions-' + active_tab).html (exceptions_container);
 
+        // Restore titles for the tooltips
+        $('#ai-tools-toolbar-'  + active_tab + ' span.ai-toolbar-button label.checkbox-button').each (function() {
+          $(this).attr ('title', $(this).attr ('data-title'));
+        });
+
         configure_tab (active_tab);
+
+
+        $('#ai-tools-toolbar-'  + active_tab + ' label.checkbox-button[title]').tooltip({
+          track: true,
+          delay: 700,
+          showURL: false,
+          showBody: " | ",
+          fade: 250
+        });
+
 
         if (simple_editor) {
 //          $('#simple-editor-' + active_tab).click ();

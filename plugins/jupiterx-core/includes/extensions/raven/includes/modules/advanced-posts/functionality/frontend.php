@@ -286,7 +286,7 @@ class Frontend {
 			$classes[] = 'raven-image-fit';
 		}
 
-		$tags = $this->get_render_tags();
+		$tags = $this->get_render_tags() ?? '';
 		$zoom = '';
 
 		if ( 'zoom-move' === $this->settings['featured_image_hover'] ) {
@@ -448,7 +448,7 @@ class Frontend {
 			$taxonomy = $valid_post_types[ $post_type ];
 		}
 
-		$categories_list = get_the_term_list( get_the_ID(), $taxonomy, '', ', ', '' );
+		$categories_list = get_the_term_list( get_the_ID(), $taxonomy, '', ', ', '' ) ?? '';
 
 		if ( empty( $categories_list ) ) {
 			return;
@@ -715,7 +715,7 @@ class Frontend {
 		$load_more = sprintf(
 			'<span class="raven-posts-preloader"></span><div class="raven-load-more" data-settings="%1$s"><a class="raven-load-more-button" href="#"><span class="raven-post-button-text">%2$s</span></a></div>',
 			esc_attr( wp_json_encode( $settings ) ),
-			wp_kses_post( $this->settings['load_more_text'] )
+			wp_kses_post( $this->settings['load_more_text'] ?? '' )
 		);
 
 		return $load_more;
@@ -758,12 +758,12 @@ class Frontend {
 
 		$prev_button = sprintf(
 			'<a class="raven-pagination-prev raven-pagination-item raven-pagination-disabled" href="#">%s</a>',
-			wp_kses_post( $this->settings['page_based_prev_text'] )
+			wp_kses_post( $this->settings['page_based_prev_text'] ?? '' )
 		);
 
 		$next_button = sprintf(
 			'<a class="raven-pagination-next raven-pagination-item" href="#">%s</a>',
-			wp_kses_post( $this->settings['page_based_next_text'] )
+			wp_kses_post( $this->settings['page_based_next_text'] ?? '' )
 		);
 
 		$pages = sprintf(

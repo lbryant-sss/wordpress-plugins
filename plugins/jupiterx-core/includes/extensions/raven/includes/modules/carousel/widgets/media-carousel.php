@@ -29,6 +29,10 @@ class Media_Carousel extends Base {
 		return 'raven-element-icon raven-element-icon-media-carousel';
 	}
 
+	public function get_style_depends() {
+		return [ 'e-swiper', 'swiper' ];
+	}
+
 	protected function render() {
 		$settings = $this->get_active_settings();
 

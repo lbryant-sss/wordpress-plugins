@@ -84,6 +84,8 @@ class Utils {
 			return $file_name;
 		}
 
+		$file_name = basename( $file_name );
+
 		return Plugin::$plugin_path . 'assets/img/' . $file_name . '.svg';
 	}
 

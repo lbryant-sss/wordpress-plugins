@@ -1,10 +1,10 @@
 === Flexible Checkout Fields for WooCommerce - WooCommerce Checkout Manager ===
 Contributors: wpdesk,dyszczo,grola,piotrpo,marcinkolanko,mateuszgbiorczyk,sebastianpisula,bartj,amisiewicz
 Donate link: https://www.wpdesk.net/flexible-checkout-fields-woocommerce/
-Tags: woocommerce checkout fields, woocommerce checkout manager, woocommerce checkout editor, woocommerce custom checkout fields, checkout field customizer
+Tags: woocommerce checkout fields, woocommerce checkout manager, woocommerce checkout, custom fields, checkout field customizer
 Requires at least: 5.2
 Tested up to: 6.7
-Stable tag: 4.1.15
+Stable tag: 4.1.16
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -15,11 +15,84 @@ The best WooCommerce checkout manager. Edit, remove or add checkout fields. Cust
 
 We think WooCommerce is the best ecommerce plugin for WordPress. But it lacks some very basic features like customizing checkout fields with a checkout manager in an easy to use interface. You can do it by hooks and filters but why bother if you can do it by Flexible Checkout Fields for WooCommerce - WooCommerce Checkout Manager. With this single page checkout plugin you can edit the default fields (change labels, hide, delete) or add your own checkout fields. You can set your own fields order. There are a lot of field types such as a checkbox field, a date field or a color picker field (some of them exclusively in the PRO version). Read on to see how easy it is to edit WooCommerce checkout fields with this plugin and how powerful it is.
 
+### Faster checkout for more conversions 🛒
+
+The Flexible Checkout Fields plugin is a free extension for editing the WooCommerce checkout page.
+
+Adjust the checkout with the right tool. **It's easier than the WooCommerce checkout shortcode customization**.
+
+You can download the plugin or try it in a [**free demo**](https://demo.wpdesk.org/?utm_source=wordpress-repository&utm_medium=demo-link&utm_campaign=demo-flexible-checkout-fields).
+
+### WooCommerce checkout fields customizer ⭐
+
+Use the free plugin to customize the WooCommerce checkout page without coding or additional snippets.
+
+**Custom checkout design for better user experience**.
+
+### Key features ℹ️
+
+The free plugin comes with the following options:
+
+- Edit the checkout form (billing and shipping fields)
+- Remove (hide) fields
+- Move or rearrange them
+- Make a field required or optional
+- Enable field validation
+- Set labels and placeholders
+- Set CSS classes
+- Show fields on specific pages and in emails
+
+[**Download the plugin →**](https://downloads.wordpress.org/plugin/flexible-checkout-fields.latest-stable.zip)
+
+### ✅ Edit and add checkout fields
+
+The plugin allows the field **customization for existing and add new checkout fields**.
+
+### ✅ Remove (hide) fields
+
+You may **disable some fields** to make the checkout form lighter and faster.
+
+### ✅ Arrange fields
+
+It's also possible to **show fields in a custom order** without custom coding.
+
+### ✅ Make fields required or optional
+
+The plugin gives an easy way to set what **fields should be mandatory**.
+
+[**Screenshots →**](#screenshots)
+
+### ✅ Field validation
+
+What's more, you can **enable validation per field**.
+
+### ✅ Show fields on pages and in emails
+
+Each field has **display options** as well.
+
+### ✅ Set labels, placeholders, and CSS classes
+
+Moreover, by using **labels and placeholders**, you can **personalize the checkout form** and make it more SEO-friendly.
+
+And you can customize the checkout layout and design using styles.
+
+[**Screenshots →**](#screenshots)
+
+[**Download the plugin →**](https://downloads.wordpress.org/plugin/flexible-checkout-fields.latest-stable.zip)
+
+### Flexible Checkout Fields overview
+
+You may also see the short video presenting the plugin features.
+
 [youtube https://www.youtube.com/watch?v=VTRnSU0OLV4]
+
+### The free checkout page editor for WooCommerce 🚀
 
 ★★★★★
 
 Flexible Checkout Fields beautifully integrates with the WordPress dashboard. It is probably the best looking checkout field editor for WooCommerce on the market. And you can do some powerful stuff with it too. [See some screenshots →](https://wordpress.org/plugins/flexible-checkout-fields/screenshots/)
+
+[**Download the plugin →**](https://downloads.wordpress.org/plugin/flexible-checkout-fields.latest-stable.zip)
 
 [>>> Go to the FCF admin demo <<<](https://demo.wpdesk.org/?utm_source=wordpress-repository&utm_medium=demo-link&utm_campaign=demo-flexible-checkout-fields) - here you can test the admin panel of all WP Desk plugins including **Flexible Checkout Fields**
 
@@ -45,6 +118,8 @@ Add WooCommerce additional fields to your checkout page with your new WooCommerc
 * [Paragraph](https://www.wpdesk.net/docs/flexible-checkout-fields-pro-woocommerce-docs/#Paragraph)
 * [Image](https://www.wpdesk.net/docs/flexible-checkout-fields-pro-woocommerce-docs/#Image)
 * [HTML](https://www.wpdesk.net/docs/flexible-checkout-fields-pro-woocommerce-docs/#HTML)
+
+[**Download the plugin →**](https://downloads.wordpress.org/plugin/flexible-checkout-fields.latest-stable.zip)
 
 #### **PRO**
 
@@ -510,102 +585,110 @@ Yes 😊.
 
 == Screenshots ==
 
-1. Add new field section
-2. Form with fields available in the free version
-3. General options for the Text field
-4. General options for the Textarea field
-5. General options for the Number field
-6. General options for the E-mail field
-7. General options for the Phone field
-8. General options for the URL field
-9. General options for the Checkbox field
-10. General options for the Color field
-11. Settings in the Advanced tab
-12. Settings in the Appearance tab
-13. Settings in the Display On tab
-14. Add a custom text field to the WooCommerce checkout page
-15. Text field settings
-16. Appearance of the custom WooCommerce checkout field
-17. Show a custom checkout field on other WooCommerce pages and in emails
-18. Enable conditional logic per checkout field based on products in the cart, fields, and shipping methods (PRO)
-19. Add a custom fee with the field pricing option on your WooCommerce checkout page (PRO)
-20. How to add a custom field to the WooCommerce checkout
-21. Make the WooCommerce checkout field optional
-22. Set your WooCommerce checkout fields to be required
-23. Use the plugin to make your WooCommerce checkout field as required
-24. Give your WooCommerce checkout page field a CSS class
-25. WooCommerce checkout email validation
-26. Add radio buttons to the checkout with custom CSS styling
-27. Let customers ask for WooCommerce invoices for their orders with conditional logic for custom fields (PRO)
-28. Show the checkout field dynamically based on conditions (PRO)
-29. Add a field for certain WooCommerce products or categories (PRO)
-30. Hide checkout fields based on shipping methods (PRO)
-31. Hide checkout billing fields like a phone number in WooCommerce
-32. Remove required fields from the WooCommerce checkout form
-33. Customize the WooCommerce My account page with new fields
-34. Add new shipping fields to the WooCommerce checkout page and My account
-35. Optional text field in the checkout
-36. A custom field in the WooCommerce checkout (Shipping Address section)
-37. Show custom checkout fields on the My account page
-38. Manage the WooCommerce checkout (Order notes field)
-39. Receive a customer purchase note in WooCommerce
-40. Customize the fields around Order Notes with Custom sections (PRO)
-41. Disable jQuery UI on the frontend
-42. Customize the WooCommerce checkout page without hooks but using Custom sections (PRO)
-43. WooCommerce checkout page hooks
-44. Single Line Text field
-45. Paragraph field
-46. Checkbox field
-47. Radio field (PRO)
-48. Select (PRO)
-49. Date picker field (PRO)
-50. Time field (PRO)
-51. Color picker
-52. Headline
-53. HTML field
-54. Image field
-55. Reorder WooCommerce checkout fields
-56. Remove fields from the WooCommerce checkout page easily
-57. WooCommerce checkout without address
-58. Add the VAT number field to the WooCommerce checkout form
-59. Customize the WooCommerce checkout page with custom fields
-60. Show a custom field for specific WooCommerce products or product categories (PRO)
-61. Phone number validation for a checkout field
-62. Customize the WooCommerce checkout page with conditional logic for custom fields (PRO)
-63. Custom WooCommerce checkout
-64. Add radio buttons (PRO)
-65. Custom date picker with advanced options (PRO)
-66. Default field validation available in the plugin
-67. Custom email validation for the WooCommerce checkout fields
-68. Add an EU VAT number field to the WooCommerce checkout page
-69. Use additional custom field validation for EU VAT numbers
-70. EU VAT validation on the WooCommerce checkout page
-71. Upload files on the WooCommerce checkout (PRO)
-72. Multiple file uploads for the WooCommerce checkout (PRO)
-73. Allow checkout upload for specific file types (PRO)
-74. Add a custom message to the WooCommerce checkout page
-75. Adding terms and conditions checkbox to the WooCommerce checkout
-76. GDPR consent checkbox on the checkout page in Custom sections (PRO)
-77. Install the checkout field editor for better WooCommerce UX
-78. Customize your WooCommerce checkout page with custom fields and the checkout manager plugin
-79. Additional pricing for WooCommerce fields (PRO)
-80. WooCommerce checkout privacy policy or newsletter checkbox
-81. Hide billing address fields in WooCommerce (PRO)
-82. Advanced fields for Custom sections of the WooCommerce checkout page (PRO)
-83. Custom terms and conditions checkbox for more checkout page sections (PRO)
-84. I accept the privacy policy checkbox example in the custom section (PRO)
-85. Build a quick order form with a custom WooCommerce checkout page
-86. Radio with images (PRO)
-87. Radio with colors (PRO)
-88. Upload field (PRO)
-89. WooCommerce checkout without most of the billing and no shipping address fields
-90. Disable the default fields to speed up the WooCommerce checkout
+1. Flexible Checkout Fields for WooCommerce - edit existing fields and add custom ones
+2. Reorder WooCommerce checkout fields - customize the checkout page field order
+3. Enable, or hide a field on the WooCommerce checkout page or make it optional or required
+4. Show custom fields on pages and in emails
+5. Add new custom fields to the WooCommerce checkout page
+6. Form with fields available in the free version
+7. General options for the Text field
+8. General options for the Textarea field
+9. General options for the Number field
+10. General options for the E-mail field
+11. General options for the Phone field
+12. General options for the URL field
+13. General options for the Checkbox field
+14. General options for the Color field
+15. Settings in the Advanced tab
+16. Settings in the Appearance tab
+17. Settings in the Display On tab
+18. Add a custom text field to the WooCommerce checkout page
+19. Text field settings
+20. Appearance of the custom WooCommerce checkout field
+21. Show a custom checkout field on other WooCommerce pages and in emails
+22. Enable conditional logic per checkout field based on products in the cart, fields, and shipping methods (PRO)
+23. Add a custom fee with the field pricing option on your WooCommerce checkout page (PRO)
+24. How to add a custom field to the WooCommerce checkout
+25. Make the WooCommerce checkout field optional
+26. Set your WooCommerce checkout fields to be required
+27. Use the plugin to make your WooCommerce checkout field as required
+28. Give your WooCommerce checkout page field a CSS class
+29. WooCommerce checkout email validation
+30. Add radio buttons to the checkout with custom CSS styling
+31. Let customers ask for WooCommerce invoices for their orders with conditional logic for custom fields (PRO)
+32. Show the checkout field dynamically based on conditions (PRO)
+33. Add a field for certain WooCommerce products or categories (PRO)
+34. Hide checkout fields based on shipping methods (PRO)
+35. Hide checkout billing fields like a phone number in WooCommerce
+36. Remove required fields from the WooCommerce checkout form
+37. Customize the WooCommerce My account page with new fields
+38. Add new shipping fields to the WooCommerce checkout page and My account
+39. Optional text field in the checkout
+40. A custom field in the WooCommerce checkout (Shipping Address section)
+41. Show custom checkout fields on the My account page
+42. Manage the WooCommerce checkout (Order notes field)
+43. Receive a customer purchase note in WooCommerce
+44. Customize the fields around Order Notes with Custom sections (PRO)
+45. Disable jQuery UI on the frontend
+46. Customize the WooCommerce checkout page without hooks but using Custom sections (PRO)
+47. WooCommerce checkout page hooks
+48. Single Line Text field
+49. Paragraph field
+50. Checkbox field
+51. Radio field (PRO)
+52. Select (PRO)
+53. Date picker field (PRO)
+54. Time field (PRO)
+55. Color picker
+56. Headline
+57. HTML field
+58. Image field
+59. Reorder WooCommerce checkout fields
+60. Remove fields from the WooCommerce checkout page easily
+61. WooCommerce checkout without address
+62. Add the VAT number field to the WooCommerce checkout form
+63. Customize the WooCommerce checkout page with custom fields
+64. Show a custom field for specific WooCommerce products or product categories (PRO)
+65. Phone number validation for a checkout field
+66. Customize the WooCommerce checkout page with conditional logic for custom fields (PRO)
+67. Custom WooCommerce checkout
+68. Add radio buttons (PRO)
+69. Custom date picker with advanced options (PRO)
+70. Default field validation available in the plugin
+71. Custom email validation for the WooCommerce checkout fields
+72. Add an EU VAT number field to the WooCommerce checkout page
+73. Use additional custom field validation for EU VAT numbers
+74. EU VAT validation on the WooCommerce checkout page
+75. Upload files on the WooCommerce checkout (PRO)
+76. Multiple file uploads for the WooCommerce checkout (PRO)
+77. Allow checkout upload for specific file types (PRO)
+78. Add a custom message to the WooCommerce checkout page
+79. Adding terms and conditions checkbox to the WooCommerce checkout
+80. GDPR consent checkbox on the checkout page in Custom sections (PRO)
+81. Install the checkout field editor for better WooCommerce UX
+82. Customize your WooCommerce checkout page with custom fields and the checkout manager plugin
+83. Additional pricing for WooCommerce fields (PRO)
+84. WooCommerce checkout privacy policy or newsletter checkbox
+85. Hide billing address fields in WooCommerce (PRO)
+86. Advanced fields for Custom sections of the WooCommerce checkout page (PRO)
+87. Custom terms and conditions checkbox for more checkout page sections (PRO)
+88. I accept the privacy policy checkbox example in the custom section (PRO)
+89. Build a quick order form with a custom WooCommerce checkout page
+90. Radio with images (PRO)
+91. Radio with colors (PRO)
+92. Upload field (PRO)
+93. WooCommerce checkout without most of the billing and no shipping address fields
+94. Disable the default fields to speed up the WooCommerce checkout
 
 == Upgrade Notice ==
 
 If you are upgrading from the old WooCommerce Checkout Fields version (1.1, woocommerce-checkout-fields) make sure to completely delete the old version first. Your settings will be kept. If you install the new version without deleting the old one you may break your WordPress installation.
 
 == Changelog ==
+
+= 4.1.16 - 2025-01-29 =
+* Added support for WooCommerce 9.6
+* Update readme and screenshots
 
 = 4.1.15 - 2024-11-21 =
 * Added support for WordPress 6.7

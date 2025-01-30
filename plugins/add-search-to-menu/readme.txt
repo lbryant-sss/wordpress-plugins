@@ -5,7 +5,7 @@ Tags: search, woocommerce search, image search, ajax search, file search
 Requires at least: 3.9
 Tested up to: 6.7
 Requires PHP: 5.2.4
-Stable tag: 5.5.8
+Stable tag: 5.5.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 

@@ -29,35 +29,6 @@ jQuery(document).ready(function() {
 		return confirm(permalink_manager.confirm);
 	});
 
-	/**
-	 * Filter by dates + Search in URI Editor
-	 */
-	jQuery('#permalink-manager #months-filter-button, #permalink-manager #search-submit').on('click', function(e) {
-		var search_value = jQuery('#permalink-manager input[name="s"]').val();
-		var filter_value = jQuery("#months-filter-select").val();
-
-		var filter_url = window.location.href;
-
-		// Date filter
-		if(filter_url.indexOf('month=') > 1) {
-			filter_url = filter_url.replace(/month=([^&]+)/gm, 'month=' + filter_value);
-		} else if(filter_value != '') {
-			filter_url = filter_url + '&month=' + filter_value;
-		}
-
-		// Search query
-		if(filter_url.indexOf('s=') > 1) {
-			filter_url = filter_url.replace(/s=([^&]+)/gm, 's=' + search_value);
-		} else if(search_value != '') {
-			filter_url = filter_url + '&s=' + search_value;
-		}
-
-		window.location.href = filter_url;
-
-		e.preventDefault();
-		return false;
-	});
-
 	jQuery('#permalink-manager #uri_editor form input[name="s"]').on('keydown keypress keyup', function(e){
 		if(e.keyCode == 13) {
 			jQuery('#permalink-manager #search-submit').trigger('click');
@@ -233,11 +204,18 @@ jQuery(document).ready(function() {
 	/**
 	 * Restore "Default URI"
 	 */
-	jQuery('#permalink-manager').on('click', '.restore-default', function() {
-		var input = jQuery(this).parents('.field-container, .permalink-manager-edit-uri-box, #permalink-manager .inside').find('input.custom_uri, input.permastruct-field');
-		var default_uri = jQuery(input).attr('data-default');
+	jQuery('#permalink-manager').on('click', '.restore-default', function () {
+		// Find all input fields within the relevant container
+		var inputs = jQuery(this).parents('.field-container, .permalink-manager-edit-uri-box, #permalink-manager .inside').find('input.custom_uri, .permastruct-field');
 
-		jQuery(input).val(default_uri).trigger('keyup');
+		// Iterate over each input element
+		inputs.each(function () {
+			var input = jQuery(this);
+			var default_uri = input.attr('data-default'); // Get the default value for this specific input
+
+			// Set the default value and trigger the 'keyup' event
+			input.val(default_uri).trigger('keyup');
+		});
 
 		return false;
 	});
@@ -245,8 +223,8 @@ jQuery(document).ready(function() {
 	/**
 	 * Display additional permastructure settings
 	 */
-	jQuery('#permalink-manager').on('click', '.permastruct-buttons a', function() {
-		jQuery(this).parents('.field-container').find('.permastruct-toggle').slideToggle();
+	jQuery('#permalink-manager').on('click', '.permastruct-buttons a.extra-settings', function() {
+		jQuery(this).parents('.permastruct-row').find('.permastruct-settings').slideToggle();
 
 		return false;
 	});

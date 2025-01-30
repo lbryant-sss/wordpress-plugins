@@ -43,7 +43,7 @@ Upload text, images, videos, and audio. Then organize everything you upload into
 
 * <strong>Create unlimited folders</strong>
 * Drag and drop pages, posts, and media library
-* Media replace - replace media files
+* Media replace - replace media files with out media replace feature
 * Folders icon colors - change the color of your folder icons. Change it for specific folders, or all folders
 * Import folders from other plugins and export Folders structure - import folders from FileBird, Enhanced Media Library, Wicked Folders, Real Media Library, and WP Media Folder. You can also export Folders strucutre
 * Keyboard shortcuts - do quick actions with your folders using keyboard shortcuts. For example, create new folders, rename folders, duplicate a folder, reorder folders, and much more

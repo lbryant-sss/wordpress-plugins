@@ -27,7 +27,7 @@ class Reviews extends Base {
 	}
 
 	public function get_style_depends() {
-		return [ 'e-swiper', 'swiper' ];
+		return [ 'e-swiper', 'swiper', 'elementor-icons' ];
 	}
 
 	public function get_inline_css_depends() {
@@ -473,7 +473,7 @@ class Reviews extends Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-star-rating' => 'font-size: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .raven-star-rating' => 'font-size: {{SIZE}}{{UNIT}}',
 				],
 				'separator' => 'before',
 			]
@@ -491,8 +491,8 @@ class Reviews extends Base {
 					],
 				],
 				'selectors' => [
-					'body:not(.rtl) {{WRAPPER}} .elementor-star-rating i:not(:last-of-type)' => 'margin-right: {{SIZE}}{{UNIT}}',
-					'body.rtl {{WRAPPER}} .elementor-star-rating i:not(:last-of-type)' => 'margin-left: {{SIZE}}{{UNIT}}',
+					'body:not(.rtl) {{WRAPPER}} .raven-star-rating i:not(:last-of-type)' => 'margin-right: {{SIZE}}{{UNIT}}',
+					'body.rtl {{WRAPPER}} .raven-star-rating i:not(:last-of-type)' => 'margin-left: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -503,7 +503,7 @@ class Reviews extends Base {
 				'label' => esc_html__( 'Color', 'jupiterx-core' ),
 				'type' => 'color',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-star-rating i:before' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .raven-star-rating i.elementor-star-full' => 'color: {{VALUE}}',
 				],
 				'separator' => 'before',
 			]
@@ -515,7 +515,7 @@ class Reviews extends Base {
 				'label' => esc_html__( 'Unmarked Color', 'jupiterx-core' ),
 				'type' => 'color',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-star-rating i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .raven-star-rating i.elementor-star-empty' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -789,7 +789,7 @@ class Reviews extends Base {
 			}
 		}
 
-		return '<div class="elementor-star-rating">' . $stars_html . '</div>';
+		return '<div class="raven-star-rating">' . $stars_html . '</div>';
 	}
 
 	private function get_social_icon( $slide, $is_new, $migrated ) {

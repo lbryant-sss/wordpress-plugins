@@ -262,6 +262,10 @@ class Inline_Svg extends Base_Widget {
 			}
 		}
 
+		if ( ! filter_var( $svg['url'], FILTER_VALIDATE_URL ) || pathinfo( $svg['url'], PATHINFO_EXTENSION ) !== 'svg' ) {
+			return;
+		}
+
 		$svg     = file_get_contents( $svg['url'] ); //phpcs:ignore
 		$classes = [ 'svg-wrapper' ];
 

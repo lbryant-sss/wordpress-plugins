@@ -420,8 +420,8 @@ class Ajax_Handler {
 
 				$uploads_dir    = $this->get_ensure_upload_dir();
 				$file_extension = pathinfo( $file['name'], PATHINFO_EXTENSION );
-				$filename       = uniqid() . '.' . $file_extension;
-				$filename       = wp_unique_filename( $uploads_dir, $filename );
+				$filename       = wp_unique_filename( $uploads_dir, wp_hash( $file['name'] . time() ) . '.' . $file_extension );
+				$filename       = sanitize_file_name( $filename );
 				$new_file       = trailingslashit( $uploads_dir ) . $filename;
 
 				if ( ! is_dir( $uploads_dir ) || ! is_writable( $uploads_dir ) ) {

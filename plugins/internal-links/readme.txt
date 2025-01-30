@@ -7,7 +7,7 @@ Tags: seo, internal links, automatic linking, linkbuilding, onpage, auto linker,
 Requires at least: 5.9.0
 Tested up to: 6.7
 Requires PHP: 7.1.0
-Stable tag: 2.24.6
+Stable tag: 2.25.1
 
 Improve your SEO and your user experience through internal linkbuilding. Automated links between your posts based on a smart keyword configuration.
 

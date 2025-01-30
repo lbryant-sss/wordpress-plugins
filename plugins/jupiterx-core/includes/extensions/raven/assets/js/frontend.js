@@ -81,8 +81,8 @@ var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
       'raven-slider.default': checkWidgetIsActive('slider') && require('./widgets/slider')["default"],
       'raven-social-share.default': checkWidgetIsActive('social-share') && require('./widgets/social-share')["default"],
       'raven-reviews.default': checkWidgetIsActive('carousel') && require('./widgets/carousel/testimonial-carousel')["default"],
-      'raven-stripe-button.default': checkWidgetIsActive('payments') && require('./widgets/stripe-button')["default"],
-      'raven-paypal-button.default': checkWidgetIsActive('payments') && require('./widgets/paypal-button')["default"],
+      'raven-stripe-button.default': checkWidgetIsActive('stripe') && require('./widgets/stripe-button')["default"],
+      'raven-paypal-button.default': checkWidgetIsActive('paypal') && require('./widgets/paypal-button')["default"],
       'raven-lottie.default': checkWidgetIsActive('lottie') && require('./widgets/lottie')["default"],
       'raven-cart.default': checkWidgetIsActive('cart') && require('./widgets/cart')["default"],
       'raven-advanced-posts.default': checkWidgetIsActive('advanced-posts') && require('./widgets/advanced-posts')["default"],
@@ -4611,6 +4611,8 @@ var JupiterTooltip = {
     };
   },
   jupiterTooltipInstance: function jupiterTooltipInstance($scope) {
+    var _$scope$find$;
+
     var widgetId = $scope.data('id'),
         widgetSelector = $scope[0],
         editMode = Boolean(elementorFrontend.isEditMode());
@@ -4659,7 +4661,7 @@ var JupiterTooltip = {
     }
 
     (0, _tippy["default"])([tooltipSelector], {
-      content: $scope.find('.jupiter-tooltip-widget__content')[0].innerHTML,
+      content: (_$scope$find$ = $scope.find('.jupiter-tooltip-widget__content')[0]) === null || _$scope$find$ === void 0 ? void 0 : _$scope$find$.innerHTML,
       allowHTML: true,
       appendTo: widgetSelector,
       arrow: !!settings.tooltipArrow,
@@ -15033,163 +15035,138 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = _default;
 
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+var _module = _interopRequireDefault(require("../utils/module"));
 
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
-var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-var StripeButton = /*#__PURE__*/function (_elementorModules$fro) {
-  (0, _inherits2["default"])(StripeButton, _elementorModules$fro);
-
-  var _super = _createSuper(StripeButton);
-
-  function StripeButton() {
-    (0, _classCallCheck2["default"])(this, StripeButton);
-    return _super.apply(this, arguments);
-  }
-
-  (0, _createClass2["default"])(StripeButton, [{
-    key: "getDefaultSettings",
-    value: function getDefaultSettings() {
-      return {
-        selectors: {
-          form: '.elementor-stripe-form',
-          errors: '.elementor-message-danger'
-        }
-      };
-    }
-  }, {
-    key: "getDefaultElements",
-    value: function getDefaultElements() {
-      var settings = this.getSettings();
-      return {
-        form: this.$element[0].querySelector(settings.selectors.form),
-        errors: this.$element[0].querySelectorAll(settings.selectors.errors)
-      };
-    }
-  }, {
-    key: "bindEvents",
-    value: function bindEvents() {
-      var _this = this;
-
-      if (_.isNull(this.elements.form)) {
-        return;
+var RavenStripeButton = _module["default"].extend({
+  getDefaultSettings: function getDefaultSettings() {
+    return {
+      selectors: {
+        form: '.elementor-stripe-form',
+        errors: '.elementor-message-danger',
+        button: '.elementor-payment-button'
       }
+    };
+  },
+  getDefaultElements: function getDefaultElements() {
+    var settings = this.getSettings();
+    return {
+      form: this.$element[0].querySelector(settings.selectors.form),
+      errors: this.$element[0].querySelectorAll(settings.selectors.errors)
+    };
+  },
+  bindEvents: function bindEvents() {
+    var _this = this;
 
-      this.elements.form.addEventListener('submit', function (e) {
-        return _this.handleSubmit(e);
+    var submitButton = document.querySelector('.elementor-payment-button');
+
+    if (_.isNull(this.elements.form) && _.isNull(submitButton)) {
+      return;
+    }
+
+    submitButton.addEventListener('click', function (e) {
+      return _this.handleSubmit(e);
+    });
+  },
+  handleSubmit: function handleSubmit(event) {
+    event.preventDefault();
+
+    if (elementorFrontend.isEditMode()) {
+      return;
+    }
+
+    if (this.elements.errors.innerHTML !== '') {
+      document.querySelectorAll('.elementor-stripe-error-message').forEach(function (e) {
+        return e.remove();
       });
     }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      event.preventDefault();
 
-      if (elementorFrontend.isEditMode()) {
+    var stripeForm = this.elements.form,
+        formData = new FormData(stripeForm),
+        action = formData.get('action'),
+        postId = formData.get('post_id'),
+        widgetId = formData.get('widget_id'),
+        customErrorMsg = formData.get('custom_error_msg'),
+        customErrorMsgGlobal = formData.get('custom_error_msg_global'),
+        customErrorMsgPayment = formData.get('custom_error_msg_payment'),
+        nonce = formData.get('stripe_form_submit_nonce'),
+        pageUrl = document.URL,
+        // Should the page open in a new tab or not
+    openInNewWindow = formData.get('open_in_new_window'),
+        target = 'yes' === openInNewWindow ? '_blank' : '_self'; // Create error container
+
+    var createErrorContainer = function createErrorContainer(errorMsg) {
+      var errorDiv = document.createElement('div'),
+          errorCont = stripeForm.appendChild(errorDiv);
+      errorCont.className = 'elementor-message elementor-stripe-error-message elementor-message-danger';
+      errorCont.innerHTML = errorMsg;
+    };
+
+    var data = {
+      action: action,
+      postId: postId,
+      widgetId: widgetId,
+      pageUrl: pageUrl,
+      nonce: nonce
+    };
+
+    if ('undefined' !== typeof this.elements.errors && 0 < this.elements.errors.length) {
+      this.elements.errors.forEach(function (error) {
+        error.classList.remove('elementor-hidden');
+      });
+    }
+
+    wp.ajax.post({
+      action: action,
+      data: data,
+      nonce: nonce
+    }).done(function (response) {
+      var code = response.response.code;
+      var result = response.body && JSON.parse(response.body);
+
+      switch (code) {
+        case 200:
+          window.open(result.url, target);
+          break;
+
+        case 401:
+        case 403:
+          if (customErrorMsg) {
+            createErrorContainer(customErrorMsgPayment);
+          } else {
+            createErrorContainer(result.error.message);
+          }
+
+          break;
+
+        default:
+          if (customErrorMsg) {
+            createErrorContainer(customErrorMsgGlobal);
+          } else {
+            createErrorContainer(result.error.message);
+          }
+
+      }
+    }).fail(function (result) {
+      result = result.body && JSON.parse(result.body);
+
+      if (customErrorMsg) {
+        createErrorContainer(customErrorMsgGlobal);
         return;
       }
 
-      if (this.elements.errors.innerHTML !== '') {
-        document.querySelectorAll('.elementor-stripe-error-message').forEach(function (e) {
-          return e.remove();
-        });
-      }
-
-      var stripeForm = this.elements.form,
-          formData = new FormData(stripeForm),
-          ajaxurl = formData.get('url'),
-          action = formData.get('action'),
-          postId = formData.get('post_id'),
-          widgetId = formData.get('widget_id'),
-          customErrorMsg = formData.get('custom_error_msg'),
-          customErrorMsgGlobal = formData.get('custom_error_msg_global'),
-          customErrorMsgPayment = formData.get('custom_error_msg_payment'),
-          nonce = formData.get('stripe_form_submit_nonce'),
-          pageUrl = document.URL,
-          // Should the page open in a new tab or not
-      openInNewWindow = formData.get('open_in_new_window'),
-          target = 'yes' === openInNewWindow ? '_blank' : '_self'; // Create error container
-
-      var createErrorContainer = function createErrorContainer(errorMsg) {
-        var errorDiv = document.createElement('div'),
-            errorCont = stripeForm.appendChild(errorDiv);
-        errorCont.className = 'elementor-message elementor-stripe-error-message elementor-message-danger';
-        errorCont.innerHTML = errorMsg;
-      };
-
-      var data = {
-        action: action,
-        postId: postId,
-        widgetId: widgetId,
-        pageUrl: pageUrl,
-        nonce: nonce
-      };
-
-      if (0 < this.elements.errors.length) {
-        this.elements.errors.forEach(function (error) {
-          error.classList.remove('elementor-hidden');
-        });
-      } else {
-        jQuery.post(ajaxurl, {
-          action: action,
-          data: data
-        }).done(function (response) {
-          var code = response.response.code;
-          var result = response.body && JSON.parse(response.body);
-
-          switch (code) {
-            case 200:
-              window.open(result.url, target);
-              break;
-
-            case 401:
-            case 403:
-              if (customErrorMsg) {
-                createErrorContainer(customErrorMsgPayment);
-              } else {
-                createErrorContainer(result.error.message);
-              }
-
-              break;
-
-            default:
-              if (customErrorMsg) {
-                createErrorContainer(customErrorMsgGlobal);
-              } else {
-                createErrorContainer(result.error.message);
-              }
-
-          }
-        }).fail(function (result) {
-          if (customErrorMsg) {
-            createErrorContainer(customErrorMsgGlobal);
-            return;
-          }
-
-          console.log(result); // eslint-disable-line
-        });
-      }
-    }
-  }]);
-  return StripeButton;
-}(elementorModules.frontend.handlers.Base);
+      createErrorContainer(result.error.message);
+      console.log(result); // eslint-disable-line
+    });
+  }
+});
 
 function _default($scope) {
-  new StripeButton({
+  new RavenStripeButton({
     $element: $scope
   });
 }
 
-},{"@babel/runtime/helpers/classCallCheck":90,"@babel/runtime/helpers/createClass":91,"@babel/runtime/helpers/getPrototypeOf":94,"@babel/runtime/helpers/inherits":95,"@babel/runtime/helpers/interopRequireDefault":96,"@babel/runtime/helpers/possibleConstructorReturn":101}],70:[function(require,module,exports){
+},{"../utils/module":9,"@babel/runtime/helpers/interopRequireDefault":96}],70:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");

@@ -260,8 +260,8 @@ class Module extends Module_Base {
 		}
 
 		$args             = [];
-		$widget_id        = $_POST['data']['widgetId'] ? sanitize_text_field( $_POST['data']['widgetId'] ) : null; // phpcs:disable
-		$args['page_url'] = $_POST['data']['pageUrl'] ? sanitize_url( $_POST['data']['pageUrl'] ) : null; // phpcs:disable
+		$widget_id        = ! empty( $_POST['data']['widgetId'] ) ? sanitize_text_field( $_POST['data']['widgetId'] ) : null; // phpcs:disable
+		$args['page_url'] = ! empty( $_POST['data']['pageUrl'] ) ? sanitize_url( $_POST['data']['pageUrl'] ) : null; // phpcs:disable
 
 		Plugin::$instance->db->switch_to_post( $_POST['data']['postId'] ); // phpcs:disable
 		$document = Plugin::$instance->documents->get( $_POST['data']['postId'] ); // phpcs:disable
@@ -272,15 +272,17 @@ class Module extends Module_Base {
 			$widget_instance = Plugin::$instance->elements_manager->create_element_instance( $widget );
 			$widget_settings = $widget_instance->get_settings_for_display();
 
-			$args['product_name']    = $widget_settings['product_name'] ? $widget_settings['product_name'] : 'Product';
-			$product_price           = $widget_settings['stripe_product_price'] ? $widget_settings['stripe_product_price'] : null;
-			$args['currency']        = $widget['settings']['stripe_currency'] ? $widget['settings']['stripe_currency'] : 'USD';
-			$args['quantity']        = $widget['settings']['stripe_quantity'] ? $widget['settings']['stripe_quantity'] : 1;
+			$args['product_name']    = ! empty( $widget_settings['product_name'] ) ? $widget_settings['product_name'] : 'Product';
+			$product_price           = ! empty( $widget_settings['stripe_product_price'] ) ? $widget_settings['stripe_product_price'] : null;
+			$args['currency']        = ! empty( $widget['settings']['stripe_currency'] ) ? $widget['settings']['stripe_currency'] : 'USD';
+			$args['quantity']        = ! empty( $widget['settings']['stripe_quantity'] ) ? $widget['settings']['stripe_quantity'] : 1;
 			$args['success_url']     = ( empty( $widget_settings['redirect_after_success']['url'] ) ? $args['page_url'] : $widget_settings['redirect_after_success']['url'] );
-			$args['shipping_amount'] = $widget_settings['shipping_amount'] ? $widget_settings['shipping_amount'] * 100 : '';
-			$this->stripe_test_mode  = $widget['settings']['sandbox_mode'] ? $widget['settings']['sandbox_mode'] : 'no';
-			$args['test_mode']       = $this->stripe_test_mode;
-			$args['tax_rates']       = 'yes' === $args['test_mode'] ? $widget['settings']['stripe_test_env_tax_rates_list'] : $widget['settings']['stripe_live_env_tax_rates_list'];
+			$args['shipping_amount'] = ! empty( $widget_settings['shipping_amount'] ) ? $widget_settings['shipping_amount'] * 100 : '';
+			$args['test_mode']  = ! empty( $widget['settings']['sandbox_mode'] ) ? $widget['settings']['sandbox_mode'] : 'no';
+
+			if ( ! empty( $widget['settings']['stripe_test_env_tax_rates_list'] ) || ! empty( $widget['settings']['stripe_live_env_tax_rates_list'] ) ) {
+				$args['tax_rates'] = 'yes' === $args['test_mode'] ? $widget['settings']['stripe_test_env_tax_rates_list'] : $widget['settings']['stripe_live_env_tax_rates_list'];
+			}
 		}
 
 		$args['unit_amount'] = $this->currency_adaptation( $args['currency'], $product_price );
@@ -372,7 +374,13 @@ class Module extends Module_Base {
 	 */
 	public function execute_post_request_to_stripe_api( $headers, $body ) {
 		$response = $this->stripe_handler->post( $headers, $body, self::STRIPE_CHECKOUT_URL_EXT );
-		wp_send_json( $response );
+
+		if ( 200 !== $response['response']['code'] ) {
+			wp_send_json_error( $response );
+		}
+
+		wp_send_json_success( $response );
+
 	}
 
 	/**
@@ -382,7 +390,7 @@ class Module extends Module_Base {
 	 * @param Settings $settings Settings.
 	 */
 	public function register_admin_fields( Settings $settings ) {
-		$settings->add_section( 'raven', 'stripe_api_keys', [
+		$settings->add_section( 'raven', 'raven_stripe_api_keys', [
 			'callback' => function () {
 				echo '<hr><h2 id="stripe-btn-integration">' . esc_html__( 'Stripe', 'jupiterx-core' ) . '</h2>';
 				echo '<p>' . esc_html__( 'Insert the API keys provided in the stripe admin dashboard to start collecting payments on your website using Stripe.', 'jupiterx-core' ) . '<br />';

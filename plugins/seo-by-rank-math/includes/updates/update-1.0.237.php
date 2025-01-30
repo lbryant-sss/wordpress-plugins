@@ -14,6 +14,11 @@ defined( 'ABSPATH' ) || exit;
  * Alter the redirections table structure.
  */
 function rank_math_1_0_237_update_redirection_structure() {
+	// Early Bail if redirections table doesn't exist.
+	if ( ! \RankMath\Helpers\DB::check_table_exists( 'rank_math_redirections' ) ) {
+		return;
+	}
+
 	global $wpdb;
 	$wpdb->query( "ALTER TABLE {$wpdb->prefix}rank_math_redirections MODIFY COLUMN sources LONGTEXT NOT NULL" );
 }

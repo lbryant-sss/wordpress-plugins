@@ -180,7 +180,7 @@ In the Pro version, Chaty has many WooCommerce integrations, including dynamic c
 
 * Skype - add your Skype username and let your visitors call and message you easily via Skype.
 
-* Vkontakte (ВКонтакте) - add your Vkontakte username and let your visitors contact you directly through the app.
+* Vkontakte (ВКонтакте) - add your Vkontakte (ВКонтакте) username and let your visitors contact you directly through the app.
 
 * LinkedIn icon - link to your LinkedIn profile so your visitors can connect with you and send you direct messages.
 

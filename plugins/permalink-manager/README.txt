@@ -99,6 +99,12 @@ It is because Permalink Manager overwrites one of the core WordPress functionali
 
 == Changelog ==
 
+= 2.5.0 (February 5, 2025) =
+* Dev - Permastructure settings UI improvements
+* Dev - Improved support for WP All Import
+* Dev - Language filter added for URI Editor (WPML/Polylang)
+* Fix - Improvements for MyListing theme integration
+
 = 2.4.4.3 (December 16, 2024) =
 * Dev - Code refactoring for "Bulk URI Editor"
 * Dev - Code adjustments for MyListing support
