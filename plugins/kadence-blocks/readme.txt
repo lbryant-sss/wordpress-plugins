@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, page builder, editor, gutenberg blocks
 Donate link: https://www.kadencewp.com/about-us/
 Requires at least: 6.4
 Tested up to: 6.7.1
-Stable tag: 3.4.6
+Stable tag: 3.4.7
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -173,6 +173,17 @@ Please report security bugs found in the source code of the Kadence Blocks plugi
 Please report security bugs found in the Kadence Blocks plugin's source code through the Patchstack Vulnerability Disclosure Program https://patchstack.com/database/vdp/kadence-blocks. The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
 == Changelog ==
+
+= 3.4.7 =
+Release Date: 30th January 2025
+* Add: Vertical text options to Advanced Text block.
+* Update: Available google fonts.
+* Fix: Improve table block performance in editor.
+* Fix: Using advanced button inside a query loop when the card is sourced from a WooTemplate.
+* Fix: Aria labels on progress bar.
+* Fix: Using multiple Vimeo row layout background on the same page.
+* Fix: Navigation link dropdown arrow spacing on larger font sizes.
+* Fix: Table of contents bullet styles in the editor.
 
 = 3.4.6 =
 Release Date: 16th January 2025

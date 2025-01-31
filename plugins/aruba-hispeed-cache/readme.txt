@@ -3,7 +3,7 @@
 Contributors: arubait, arubadev, arubasupport
 Tags: Aruba, cache, performance, pagespeed, optimize
 Tested up to: 6.7
-Stable tag: 2.0.23
+Stable tag: 2.0.24
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 

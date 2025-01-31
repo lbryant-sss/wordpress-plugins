@@ -54,7 +54,8 @@
 
 	function dismissAlert($alert, alertAction) {
 		var dismissible = $alert.data('dismissible'),
-			expires = typeof $alert.data('expires') !== 'undefined' ? $alert.data('expires') :
+			expires =
+				$alert.data('expires') ? $alert.data('expires') :
 				(dismissible === '1' ||
 				dismissible === 1 ||
 				dismissible === true

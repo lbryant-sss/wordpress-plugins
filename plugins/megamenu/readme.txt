@@ -132,6 +132,16 @@ See https://www.megamenu.com for more screenshots
 
 == Changelog ==
 
+= 3.4.dev =
+
+* Accessibility Improvement: Add presentation role to grid layout containers to prevent NVDA from announcing them
+* Accessibility Improvement: Add aria-hidden attribute to arrow indicators
+* Fix: Fix styling of mobile menu as it transitions from open to closed
+* Improvement: Use style attributes on grid layout to define number of rows and columns, in preparation for using CSS Grid styling
+* Improvement: Refactor mobile CSS, remove usage of :has
+* Improvement: Refactor second and third level item styling so that it can be used within tab sub menus without being repeated
+* Improvement: Rename menu locations page to menu settings
+
 = 3.4.1 =
 
 * Fix: PHP 5.6 compatibility

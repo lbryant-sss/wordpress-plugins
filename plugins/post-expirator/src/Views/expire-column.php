@@ -7,6 +7,7 @@
 use PublishPress\Future\Core\DI\Container;
 use PublishPress\Future\Core\DI\ServicesAbstract;
 use PublishPress\Future\Modules\Expirator\ExpirationActionsAbstract;
+use PublishPress\Future\Modules\Expirator\Interfaces\ExpirationActionInterface;
 
 defined('ABSPATH') or die('Direct access not allowed.');
 
@@ -14,13 +15,19 @@ $container = Container::getInstance();
 $factory = $container->get(ServicesAbstract::EXPIRABLE_POST_MODEL_FACTORY);
 $postModel = $factory($id);
 
+$cachePostsWithFutureActions = $container->get(ServicesAbstract::CACHE_POSTS_WITH_FUTURE_ACTION);
+
 $actionEnabled = $postModel->isExpirationEnabled();
 $actionDate = $postModel->getExpirationDateString(false);
 $actionDateUnix = $postModel->getExpirationDateAsUnixTime();
 $actionTaxonomy = $postModel->getExpirationTaxonomy();
 $actionType = $postModel->getExpirationType();
+/**
+ * @var ExpirationActionInterface $action
+ */
 $action = $postModel->getExpirationAction();
 $actionTerms = implode(',', $postModel->getExpirationCategoryIDs());
+$isOverdueAction = $actionDateUnix < time() || 1;
 
 ?>
 <div
@@ -52,7 +59,10 @@ $actionTerms = implode(',', $postModel->getExpirationCategoryIDs());
         );
 
         if (is_object($action)) {
-            ?><span class="dashicons dashicons-clock icon-scheduled" aria-hidden="true"></span> <?php
+            $cachePostsWithFutureActions->addValue((string) $id);
+
+            $iconClass = $isOverdueAction ? 'dashicons dashicons-warning icon-missed' : 'dashicons dashicons-clock icon-scheduled';
+            ?><span class="<?php echo esc_attr($iconClass); ?>" aria-hidden="true"></span> <?php
 
             if ($columnStyle === 'simple') {
                 echo esc_html($formatedDate);
@@ -68,6 +78,10 @@ $actionTerms = implode(',', $postModel->getExpirationCategoryIDs());
                     '<span class="future-action-action-date">',
                     '</span>'
                 );
+
+                if ($isOverdueAction) {
+                    echo '<div class="future-action-gray">' . esc_html__('Overdue action', 'post-expirator') . '</div>';
+                }
 
                 $categoryActions = [
                     ExpirationActionsAbstract::POST_CATEGORY_ADD,
@@ -103,11 +117,6 @@ $actionTerms = implode(',', $postModel->getExpirationCategoryIDs());
                 'post-expirator'
             );
         }
-    } else {
-        ?>
-        <span aria-hidden="true">—</span>
-        <span class="screen-reader-text"><?php echo esc_html__('No future action', 'post-expirator'); ?></span>
-        <?php
     }
     ?>
 </div>

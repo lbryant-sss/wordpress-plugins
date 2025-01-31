@@ -1,9 +1,9 @@
 === 404 to 301 - Redirect, Log and Notify 404 Errors ===
 Contributors: joelcj91,duckdev
-Tags: 404, 301, 302, 307, not found, 404 redirect, 404 to 301, 301 redirect, seo redirect, error redirect, 404 seo, custom 404 page
+Tags: 404, not found, 404 redirect, seo redirect, custom 404 page
 Donate link: https://www.paypal.me/JoelCJ
 Requires at least: 3.5
-Tested up to: 6.6
+Tested up to: 6.7
 Stable tag: 3.1.4
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -127,6 +127,11 @@ Bug reports for 404 to 301 are always welcome. [Report here](https://duckdev.com
 
 
 == Changelog ==
+
+= 3.1.4 (22/06/2022) =
+**👌 Improvements**
+
+* Sanitize variables.
 
 = 3.1.3 (17/06/2022) =
 **👌 Improvements**
@@ -460,7 +465,7 @@ Bug reports for 404 to 301 are always welcome. [Report here](https://duckdev.com
 
 == Upgrade Notice ==
 
-= 3.1.3 (17/06/2022) =
+= 3.1.4 (22/06/2022) =
 **👌 Improvements**
 
-* Security checks and improvements.
+* Sanitize variables.

@@ -2,7 +2,7 @@
 
 namespace PublishPress\Future\Modules\Workflows\Models;
 
-use PublishPress\Future\Modules\Workflows\Domain\NodeTypes\Triggers\CoreOnManuallyEnabledForPost;
+use PublishPress\Future\Modules\Workflows\Domain\Steps\Triggers\Definitions\OnPostWorkflowEnable;
 use PublishPress\Future\Modules\Workflows\Module;
 use PublishPress\Future\Modules\Workflows\Interfaces\WorkflowsModelInterface;
 use WP_Query;
@@ -63,7 +63,7 @@ class WorkflowsModel implements WorkflowsModelInterface
             $selectedPostTypes = [];
 
             foreach ($triggers as $trigger) {
-                if ($trigger['data']['name'] !== CoreOnManuallyEnabledForPost::getNodeTypeName()) {
+                if ($trigger['data']['name'] !== OnPostWorkflowEnable::getNodeTypeName()) {
                     continue;
                 }
 
@@ -137,9 +137,6 @@ class WorkflowsModel implements WorkflowsModelInterface
             $workflow->setTitle($sample['title']);
             $workflow->setDescription($sample['description']);
             $workflow->setFlow(json_decode($sample['flow'], true));
-            $workflow->setScreenshotFromFile(
-                PUBLISHPRESS_FUTURE_BASE_PATH . '/assets/images/sample-workflows/' . $sample['screenshot']
-            );
             $workflow->save();
         }
 

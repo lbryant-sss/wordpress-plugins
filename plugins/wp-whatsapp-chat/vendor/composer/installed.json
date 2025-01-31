@@ -7,12 +7,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-assets.git",
-                "reference": "efd597f5aee8d016ff806dad9b4de16862de1f95"
+                "reference": "0f7dbc05a4135ccc429ab55c611f1c626bcff8da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-assets/zipball/efd597f5aee8d016ff806dad9b4de16862de1f95",
-                "reference": "efd597f5aee8d016ff806dad9b4de16862de1f95",
+                "url": "https://api.github.com/repos/Automattic/jetpack-assets/zipball/0f7dbc05a4135ccc429ab55c611f1c626bcff8da",
+                "reference": "0f7dbc05a4135ccc429ab55c611f1c626bcff8da",
                 "shasum": ""
             },
             "require": {
@@ -28,7 +28,7 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2024-11-25T17:47:42+00:00",
+            "time": "2025-01-27T17:27:37+00:00",
             "default-branch": true,
             "type": "jetpack-library",
             "extra": {
@@ -129,12 +129,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-constants.git",
-                "reference": "be0ae55de48b23725643639d7ae00ac4e72ddc06"
+                "reference": "6617a5a7ea0768d4ef90743eb049c164341cf528"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-constants/zipball/be0ae55de48b23725643639d7ae00ac4e72ddc06",
-                "reference": "be0ae55de48b23725643639d7ae00ac4e72ddc06",
+                "url": "https://api.github.com/repos/Automattic/jetpack-constants/zipball/6617a5a7ea0768d4ef90743eb049c164341cf528",
+                "reference": "6617a5a7ea0768d4ef90743eb049c164341cf528",
                 "shasum": ""
             },
             "require": {
@@ -148,7 +148,7 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2024-11-25T17:46:37+00:00",
+            "time": "2024-12-17T08:05:25+00:00",
             "default-branch": true,
             "type": "jetpack-library",
             "extra": {

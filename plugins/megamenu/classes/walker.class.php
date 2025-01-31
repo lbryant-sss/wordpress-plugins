@@ -31,6 +31,7 @@ if ( ! class_exists( 'Mega_Menu_Walker' ) ) :
 			$id = $this->currentItem->ID;
 			$classes = $this->currentItem->classes;
 			$style = "";
+			$role = "";
 
 			if ( is_array( $classes ) && in_array( 'menu-row', $classes ) ) {
 				if ( isset( $this->currentItem->styles ) && count( $this->currentItem->styles ) ) {
@@ -38,11 +39,15 @@ if ( ! class_exists( 'Mega_Menu_Walker' ) ) :
 				}
 			}
 
+			if ( is_array( $classes ) && ( in_array( 'menu-row', $classes ) || in_array( 'menu-grid', $classes ) ) ) {
+				$role = " role='presentation'";
+			}
+
 			$id_attribute = ' id="mega-sub-menu-' . esc_attr( $id ) . '"';
 			
 			$indent = str_repeat( "\t", $depth );
 
-			$output .= "\n$indent<ul class=\"mega-sub-menu\"{$style}>\n";
+			$output .= "\n$indent<ul class=\"mega-sub-menu\"{$style}{$role}>\n";
 		}
 
 		/**
@@ -120,7 +125,8 @@ if ( ! class_exists( 'Mega_Menu_Walker' ) ) :
 			$list_item_attributes = array(
 				'class' => $class,
 				'style' => $style,
-				'id' => $id
+				'id' => $id,
+				'role' => $aria_role
 			);
 
 			$attributes = '';

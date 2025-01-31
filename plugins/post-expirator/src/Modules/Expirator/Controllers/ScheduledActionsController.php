@@ -8,6 +8,7 @@ namespace PublishPress\Future\Modules\Expirator\Controllers;
 
 use PublishPress\Future\Core\HookableInterface;
 use PublishPress\Future\Core\HooksAbstract as CoreHooksAbstract;
+use PublishPress\Future\Core\Plugin;
 use PublishPress\Future\Framework\InitializableInterface;
 use PublishPress\Future\Framework\Logger\LoggerInterface;
 use PublishPress\Future\Modules\Expirator\HooksAbstract;
@@ -268,18 +269,18 @@ class ScheduledActionsController implements InitializableInterface
     {
         try {
             if ('admin_page_publishpress-future-scheduled-actions' === $screenId) {
-            wp_enqueue_style(
-                'postexpirator-css',
-                POSTEXPIRATOR_BASEURL . 'assets/css/style.css',
-                false,
-                PUBLISHPRESS_FUTURE_VERSION
-            );
+                wp_enqueue_style(
+                    'postexpirator-css',
+                    Plugin::getAssetUrl('css/style.css'),
+                    false,
+                    PUBLISHPRESS_FUTURE_VERSION
+                );
 
-            wp_enqueue_style(
-                'pe-footer',
-                POSTEXPIRATOR_BASEURL . 'assets/css/footer.css',
-                false,
-                PUBLISHPRESS_FUTURE_VERSION
+                wp_enqueue_style(
+                    'pe-footer',
+                    Plugin::getAssetUrl('css/footer.css'),
+                    false,
+                    PUBLISHPRESS_FUTURE_VERSION
                 );
             }
         } catch (Throwable $th) {
@@ -311,7 +312,7 @@ class ScheduledActionsController implements InitializableInterface
             }
         }
 
-        if ($hook === WorkflowsHooksAbstract::ACTION_ASYNC_EXECUTE_NODE) {
+        if ($hook === WorkflowsHooksAbstract::ACTION_ASYNC_EXECUTE_STEP) {
             $html = __('Executed workflow scheduled step', 'post-expirator');
         }
 

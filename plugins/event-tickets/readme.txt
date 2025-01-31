@@ -2,7 +2,7 @@
 
 Contributors: theeventscalendar, brianjessee, camwynsp, redscar, tribalmike, rafsuntaskin, aguseo, bordoni, borkweb, jentheo, leahkoerper, lucatume, neillmcshea, vicskf, zbtirrell
 Tags: tickets, event registration, RSVP, ticket sales, attendee management
-Stable tag: 5.18.1.1
+Stable tag: 5.19.0
 Requires at least: 6.5
 Tested up to: 6.7.1
 Requires PHP: 7.4
@@ -199,6 +199,11 @@ Check out our extensive [knowledgebase](https://evnt.is/18wm) for articles on us
 
 == Changelog ==
 
+= [5.19.0] 2025-01-30 =
+
+* Fix - Update asset, dependencies, customizations to align with WordPress 6.7 and React 18. [TEC-5322]
+* Language - 0 new strings added, 12 updated, 0 fuzzied, and 0 obsoleted.
+
 = [5.18.1.1] 2025-01-27 =
 
 * Security - Prevent bug where order ID spoofing for Tickets Commerce would potentially display order data publicly [SVUL-11]
@@ -224,10 +229,6 @@ Check out our extensive [knowledgebase](https://evnt.is/18wm) for articles on us
 * Performance - Enhance the performance of order modifier database queries [ET-2268]
 * Deprecated - Method `should_payment_intent_be_updated` since its no longer needed. [ET-2281]
 * Language - 3 new strings added, 111 updated, 2 fuzzied, and 2 obsoleted.
-
-= [TBD] 2025-01-27 =
-
-* Fix - Generate dynamic order id for Tickets Commerce Free gateway and validate order owner.
 
 = [5.18.0.1] 2025-01-07 =
 

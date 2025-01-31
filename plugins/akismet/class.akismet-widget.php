@@ -11,79 +11,82 @@ class Akismet_Widget extends WP_Widget {
 	function __construct() {
 		load_plugin_textdomain( 'akismet' );
 
+		add_action( 'wp_enqueue_scripts', array( $this, 'akismet_widget_enqueue_styles' ) );
+
 		parent::__construct(
 			'akismet_widget',
 			__( 'Akismet Widget', 'akismet' ),
 			array( 'description' => __( 'Display the number of spam comments Akismet has caught', 'akismet' ) )
 		);
-
-		if ( is_active_widget( false, false, $this->id_base ) ) {
-			add_action( 'wp_head', array( $this, 'css' ) );
-		}
 	}
 
-	function css() {
-		?>
+	public function akismet_widget_enqueue_styles() {
+		// Register the stylesheet handle
+		wp_register_style( 'akismet-widget-style', false ); // No external file, just a handle
 
-<style>
-.a-stats {
-	--akismet-color-mid-green: #357b49;
-	--akismet-color-white: #fff;
-	--akismet-color-light-grey: #f6f7f7;
+		// Enqueue the registered stylesheet
+		wp_enqueue_style( 'akismet-widget-style' );
 
-	max-width: 350px;
-	width: auto;
-}
+		// Add inline styles
+		$inline_css = "
+			.a-stats {
+				--akismet-color-mid-green: #357b49;
+				--akismet-color-white: #fff;
+				--akismet-color-light-grey: #f6f7f7;
 
-.a-stats * {
-	all: unset;
-	box-sizing: border-box;
-}
+				max-width: 350px;
+				width: auto;
+			}
 
-.a-stats strong {
-	font-weight: 600;
-}
+			.a-stats * {
+				all: unset;
+				box-sizing: border-box;
+			}
 
-.a-stats a.a-stats__link,
-.a-stats a.a-stats__link:visited,
-.a-stats a.a-stats__link:active {
-	background: var(--akismet-color-mid-green);
-	border: none;
-	border-radius: 8px;
-	color: var(--akismet-color-white);
-	cursor: pointer;
-	display: block;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
-	font-weight: 500;
-	padding: 12px;
-	text-align: center;
-	text-decoration: none;
-	transition: all 0.2s ease;
-}
+			.a-stats strong {
+				font-weight: 600;
+			}
 
-/* Extra specificity to deal with TwentyTwentyOne focus style */
-.widget .a-stats a.a-stats__link:focus {
-	background: var(--akismet-color-mid-green);
-	color: var(--akismet-color-white);
-	text-decoration: none;
-}
+			.a-stats a.a-stats__link,
+			.a-stats a.a-stats__link:visited,
+			.a-stats a.a-stats__link:active {
+				background: var(--akismet-color-mid-green);
+				border: none;
+				box-shadow: none;
+				border-radius: 8px;
+				color: var(--akismet-color-white);
+				cursor: pointer;
+				display: block;
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+				font-weight: 500;
+				padding: 12px;
+				text-align: center;
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
 
-.a-stats a.a-stats__link:hover {
-	filter: brightness(110%);
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 0 2px rgba(0, 0, 0, 0.16);
-}
+			/* Extra specificity to deal with TwentyTwentyOne focus style */
+			.widget .a-stats a.a-stats__link:focus {
+				background: var(--akismet-color-mid-green);
+				color: var(--akismet-color-white);
+				text-decoration: none;
+			}
 
-.a-stats .count {
-	color: var(--akismet-color-white);
-	display: block;
-	font-size: 1.5em;
-	line-height: 1.4;
-	padding: 0 13px;
-	white-space: nowrap;
-}
-</style>
+			.a-stats a.a-stats__link:hover {
+				filter: brightness(110%);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 0 2px rgba(0, 0, 0, 0.16);
+			}
 
-		<?php
+			.a-stats .count {
+				color: var(--akismet-color-white);
+				display: block;
+				font-size: 1.5em;
+				line-height: 1.4;
+				padding: 0 13px;
+				white-space: nowrap;
+			}
+		";
+		wp_add_inline_style( 'akismet-widget-style', $inline_css );
 	}
 
 	function form( $instance ) {
@@ -123,32 +126,32 @@ class Akismet_Widget extends WP_Widget {
 		}
 		?>
 
-	<div class="a-stats">
-		<?php // Specifying colors inline for maximum specificity without using !important ?>
-		<a href="https://akismet.com" class="a-stats__link" target="_blank" rel="noopener" style="background-color: var(--akismet-color-mid-green); color: var(--akismet-color-white);">
-			<?php
+		<div class="a-stats">
+			<?php // Specifying colors inline for maximum specificity without using !important ?>
+			<a href="https://akismet.com" class="a-stats__link" target="_blank" rel="noopener" style="background-color: var(--akismet-color-mid-green); color: var(--akismet-color-white);">
+				<?php
 
-			echo wp_kses(
-				sprintf(
+				echo wp_kses(
+					sprintf(
 					/* translators: The placeholder is the number of pieces of spam blocked by Akismet. */
-					_n(
-						'<strong class="count">%1$s spam</strong> blocked by <strong>Akismet</strong>',
-						'<strong class="count">%1$s spam</strong> blocked by <strong>Akismet</strong>',
-						$count,
-						'akismet'
+						_n(
+							'<strong class="count">%1$s spam</strong> blocked by <strong>Akismet</strong>',
+							'<strong class="count">%1$s spam</strong> blocked by <strong>Akismet</strong>',
+							$count,
+							'akismet'
+						),
+						number_format_i18n( $count )
 					),
-					number_format_i18n( $count )
-				),
-				array(
-					'strong' => array(
-						'class' => true,
-					),
-				)
-			);
+					array(
+						'strong' => array(
+							'class' => true,
+						),
+					)
+				);
 
-			?>
-		</a>
-	</div>
+				?>
+			</a>
+		</div>
 
 		<?php
 		echo $args['after_widget'];
