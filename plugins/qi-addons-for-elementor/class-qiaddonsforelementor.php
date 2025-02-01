@@ -5,7 +5,7 @@
  * Author: Qode Interactive
  * Author URI: https://qodeinteractive.com/
  * Plugin URI: https://qodeinteractive.com/qi-addons-for-elementor/
- * Version: 1.8.6
+ * Version: 1.8.7
  * Text Domain: qi-addons-for-elementor
  * Elementor tested up to: 3.27.2
  * Elementor Pro tested up to: 3.27.1
@@ -105,7 +105,7 @@ if ( ! class_exists( 'QiAddonsForElementor' ) ) {
 			wp_register_script( 'fslightbox', QI_ADDONS_FOR_ELEMENTOR_URL_PATH . 'assets/plugins/fslightbox/fslightbox.min.js', array(), false, true );
 			// because Elementor is forcing it's script to be loaded.
 			wp_deregister_script( 'swiper' );
-			wp_register_script( 'swiper', QI_ADDONS_FOR_ELEMENTOR_URL_PATH . 'assets/plugins/swiper/' . $this->swiper_version . '/swiper.min.js', array( 'jquery' ), '', true );
+			wp_register_script( 'swiper', QI_ADDONS_FOR_ELEMENTOR_URL_PATH . 'assets/plugins/swiper/' . $this->swiper_version . '/swiper.min.js', array( 'jquery' ), $this->swiper_version, true );
 
 			// Hook to include additional scripts before plugin's main script.
 			do_action( 'qi_addons_for_elementor_action_before_main_js' );
@@ -139,7 +139,7 @@ if ( ! class_exists( 'QiAddonsForElementor' ) ) {
 		public function register_additional_assets() {
 			// because Elementor is forcing it's style to be loaded.
 			wp_deregister_style( 'swiper' );
-			wp_register_style( 'swiper', QI_ADDONS_FOR_ELEMENTOR_URL_PATH . 'assets/plugins/swiper/' . $this->swiper_version . '/swiper.min.css' );
+			wp_register_style( 'swiper', QI_ADDONS_FOR_ELEMENTOR_URL_PATH . 'assets/plugins/swiper/' . $this->swiper_version . '/swiper.min.css', array(), $this->swiper_version );
 		}
 
 		public function enqueue_additional_assets() {

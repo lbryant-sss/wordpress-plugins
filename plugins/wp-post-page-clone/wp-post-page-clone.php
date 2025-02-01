@@ -8,7 +8,7 @@ Author URI: http://gaurangsondagar99.wordpress.com/
 Version: 1.2
 Text Domain: wp-post-page-clone
 Requires at least: 4.0
-Tested up to: 5.8.2
+Tested up to: 6.7
 Domin Path: Languages
 License: GPLV2
 

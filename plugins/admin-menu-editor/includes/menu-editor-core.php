@@ -2263,6 +2263,11 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			//Skip missing and hidden items
 			if ( !empty($item['missing']) || !empty($item['hidden']) ) {
 				continue;
+				//Note: Cosmetically hiding the top-level "Profile" menu that non-admin users see
+				//doesn't work. The special case we have for that in ameMenuItem::template_id()
+				//handles the usually-invisible submenu item "Profile -> Profile", not the top-level
+				//"Profile" menu. That works for access /control because they have the same URL, but
+				//not for other settings like cosmetic hiding or custom icons.
 			}
 
 			//Keep track of which menus have items with icons. Ignore hidden items.

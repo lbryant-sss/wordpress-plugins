@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Qi Addons for Elementor plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Qi Addons for Elementor 1.8.6\n"
+"Project-Id-Version: Qi Addons for Elementor 1.8.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/qi-addons-for-elementor\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-30T11:27:54+00:00\n"
+"POT-Creation-Date: 2025-01-31T10:48:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: qi-addons-for-elementor\n"
@@ -110,7 +110,7 @@ msgid "Elementor plugin is required for Qi Addons for Elementor plugin to work p
 msgstr ""
 
 #: helpers/helper.php:298
-#: inc/admin/helpers/helper.php:1064
+#: inc/admin/helpers/helper.php:1084
 #: inc/plugins/woocommerce/shortcodes/product-list/class-qiaddonsforelementor-product-list-shortcode.php:76
 #: inc/plugins/woocommerce/shortcodes/product-slider/class-qiaddonsforelementor-product-slider-shortcode.php:78
 #: inc/shortcodes/banner/variations/in-box/helper.php:118
@@ -714,18 +714,18 @@ msgstr ""
 msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus nisl vitae magna pulvinar laoreet. Nullam erat ipsum, mattis nec mollis ac, accumsan a enim. Nunc at euismod arcu. Aliquam ullamcorper eros justo, vel mollis neque facilisis vel."
 msgstr ""
 
-#: inc/admin/helpers/helper.php:1135
+#: inc/admin/helpers/helper.php:1155
 #: inc/admin/inc/admin-pages/templates/parts/sidebar/help-center.php:10
 msgid "Help Center"
 msgstr ""
 
-#: inc/admin/helpers/helper.php:1136
+#: inc/admin/helpers/helper.php:1156
 #: inc/admin/inc/admin-pages/templates/parts/video-tutorials.php:11
 #: inc/admin/inc/dashboard-widgets/templates/widget.php:78
 msgid "Video Tutorials"
 msgstr ""
 
-#: inc/admin/helpers/helper.php:1151
+#: inc/admin/helpers/helper.php:1171
 msgid "Upgrade"
 msgstr ""
 

@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'QI_ADDONS_FOR_ELEMENTOR_VERSION', '1.8.6' );
+define( 'QI_ADDONS_FOR_ELEMENTOR_VERSION', '1.8.7' );
 define( 'QI_ADDONS_FOR_ELEMENTOR_ABS_PATH', __DIR__ );
 define( 'QI_ADDONS_FOR_ELEMENTOR_REL_PATH', dirname( plugin_basename( __FILE__ ) ) );
 define( 'QI_ADDONS_FOR_ELEMENTOR_URL_PATH', plugin_dir_url( __FILE__ ) );

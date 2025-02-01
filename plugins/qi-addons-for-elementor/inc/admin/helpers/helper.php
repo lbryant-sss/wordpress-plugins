@@ -93,6 +93,26 @@ if ( ! function_exists( 'qi_addons_for_elementor_framework_get_list_sc_template_
 	function qi_addons_for_elementor_framework_get_list_sc_template_part( $root, $module, $template, $slug = '', $params = array() ) {
 		$temp_in_variation = false;
 
+		$available_characters = '/[^A-Za-z0-9\_\-\/]/';
+
+		if ( is_scalar( $module ) ) {
+			$module = preg_replace( $available_characters, '', $module );
+		} else {
+			$module = '';
+		}
+
+		if ( is_scalar( $template ) ) {
+			$template = preg_replace( $available_characters, '', $template );
+		} else {
+			$template = '';
+		}
+
+		if ( is_scalar( $slug ) ) {
+			$slug = preg_replace( $available_characters, '', $slug );
+		} else {
+			$slug = '';
+		}
+
 		/* In order to use this way of templating, option for list item layout must be called layoyt */
 		if ( isset( $params['layout'] ) ) {
 			/* Check if folder for variation exists */
@@ -345,7 +365,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_framework_get_inline_attr' ) ) 
 		}
 
 		// Leave only allowed characters in value, everything that is not a number, char, space or dash will be removed.
-		$properties = preg_replace( '/[^\p{L}\p{N}\s\-_",:{}\[\]]+/u', '', $properties );
+		$properties = preg_replace( '/[^\p{L}\p{N}\s\-_",:{}#.\/\[\]\\\\]+/u', '', $properties );
 
 		if ( empty( $properties ) || empty( $attr_matches[0] ) ) {
 			return '';

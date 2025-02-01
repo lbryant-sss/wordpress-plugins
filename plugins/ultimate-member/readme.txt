@@ -39,7 +39,7 @@ Read about all of the plugin's features at [Ultimate Member](https://ultimatemem
 
 = Paid Extensions =
 
-Ultimate Member has a range of extensions that allow you to extend the power of the plugin. You can purchase all of these extensions at a significant discount with our [All Access Pass](https://ultimatemember.com/pricing/) or you can purchase extensions individually.
+Ultimate Member has a range of extensions that allow you to extend the power of the plugin. You can purchase all of these extensions at a significant discount with one of our [paid plans](https://ultimatemember.com/pricing/) or you can purchase extensions individually.
 
 * [Zapier](https://ultimatemember.com/extensions/zapier/) - Allow to integrate the Zapier popular apps with Ultimate Member
 * [Stripe](https://ultimatemember.com/extensions/stripe/) - Sell paid memberships to access your website via Stripe subscriptions

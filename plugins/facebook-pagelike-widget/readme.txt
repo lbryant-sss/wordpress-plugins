@@ -4,7 +4,7 @@ Tags: facebook feeds, facebook like box, facebook like button, facebook feed wid
 Donate link: https://www.paypal.me/MilapPatel
 Requires at least: 3.0.1
 Tested up to: 6.7.1
-Stable tag: 6.4
+Stable tag: 6.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,6 +114,9 @@ You can use more parameters like below.
 
 
 == Changelog ==
+
+= Version 6.4.1 =
+* Fixed XSS Vulnerability for URL field.
 
 = Version 6.4 =
 * Removed the Custom CSS option from widget settings, as WordPress now includes its own Custom CSS option.

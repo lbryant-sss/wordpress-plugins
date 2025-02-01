@@ -3,7 +3,7 @@ Contributors: gaurangsondagar
 Donate link: http://gaurangsondagar99.wordpress.com/
 Tags: clone post, clone page, duplicate post, duplicate page, clone post and page, duplicate post and page
 Requires at least: 4.0
-Tested up to: 6.5.2
+Tested up to: 6.7
 Stable tag: 1.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

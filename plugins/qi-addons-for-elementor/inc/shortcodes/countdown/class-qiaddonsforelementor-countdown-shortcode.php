@@ -68,7 +68,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type'    => 'date',
 					'name'          => 'date',
 					'title'         => esc_html__( 'Date', 'qi-addons-for-elementor' ),
-					'default_value' => '06/06/2023',
+					'default_value' => '06/06/2030',
 				)
 			);
 			$this->set_option(
