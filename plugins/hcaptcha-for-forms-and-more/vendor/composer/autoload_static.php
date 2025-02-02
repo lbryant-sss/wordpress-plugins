@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0c3f450f81223af0ef151675e6b814b7
+class ComposerStaticInit5b9e71c5ecc4233f8a6f35918bdc1f18
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -41,6 +41,7 @@ class ComposerStaticInit0c3f450f81223af0ef151675e6b814b7
         'HCaptcha\\Admin\\Events\\Events' => __DIR__ . '/../..' . '/src/php/Admin/Events/Events.php',
         'HCaptcha\\Admin\\Events\\EventsTable' => __DIR__ . '/../..' . '/src/php/Admin/Events/EventsTable.php',
         'HCaptcha\\Admin\\Events\\FormsTable' => __DIR__ . '/../..' . '/src/php/Admin/Events/FormsTable.php',
+        'HCaptcha\\Admin\\Events\\TableBase' => __DIR__ . '/../..' . '/src/php/Admin/Events/TableBase.php',
         'HCaptcha\\Admin\\Notifications' => __DIR__ . '/../..' . '/src/php/Admin/Notifications.php',
         'HCaptcha\\Admin\\PluginStats' => __DIR__ . '/../..' . '/src/php/Admin/PluginStats.php',
         'HCaptcha\\Affiliates\\Login' => __DIR__ . '/../..' . '/src/php/Affiliates/Login.php',
@@ -63,6 +64,7 @@ class ComposerStaticInit0c3f450f81223af0ef151675e6b814b7
         'HCaptcha\\Brizy\\Form' => __DIR__ . '/../..' . '/src/php/Brizy/Form.php',
         'HCaptcha\\BuddyPress\\CreateGroup' => __DIR__ . '/../..' . '/src/php/BuddyPress/CreateGroup.php',
         'HCaptcha\\BuddyPress\\Register' => __DIR__ . '/../..' . '/src/php/BuddyPress/Register.php',
+        'HCaptcha\\CACSP\\Compatibility' => __DIR__ . '/../..' . '/src/php/CACSP/Compatibility.php',
         'HCaptcha\\CF7\\Admin' => __DIR__ . '/../..' . '/src/php/CF7/Admin.php',
         'HCaptcha\\CF7\\Base' => __DIR__ . '/../..' . '/src/php/CF7/Base.php',
         'HCaptcha\\CF7\\CF7' => __DIR__ . '/../..' . '/src/php/CF7/CF7.php',
@@ -102,6 +104,7 @@ class ComposerStaticInit0c3f450f81223af0ef151675e6b814b7
         'HCaptcha\\GravityForms\\Field' => __DIR__ . '/../..' . '/src/php/GravityForms/Field.php',
         'HCaptcha\\GravityForms\\Form' => __DIR__ . '/../..' . '/src/php/GravityForms/Form.php',
         'HCaptcha\\HTMLForms\\Form' => __DIR__ . '/../..' . '/src/php/HTMLForms/Form.php',
+        'HCaptcha\\Helpers\\DB' => __DIR__ . '/../..' . '/src/php/Helpers/DB.php',
         'HCaptcha\\Helpers\\HCaptcha' => __DIR__ . '/../..' . '/src/php/Helpers/HCaptcha.php',
         'HCaptcha\\Helpers\\Minify\\CSS' => __DIR__ . '/../..' . '/src/php/Helpers/Minify/CSS.php',
         'HCaptcha\\Helpers\\Minify\\JS' => __DIR__ . '/../..' . '/src/php/Helpers/Minify/JS.php',
@@ -200,6 +203,7 @@ class ComposerStaticInit0c3f450f81223af0ef151675e6b814b7
         'HCaptcha\\WP\\Base' => __DIR__ . '/../..' . '/src/php/WP/Base.php',
         'HCaptcha\\WP\\Comment' => __DIR__ . '/../..' . '/src/php/WP/Comment.php',
         'HCaptcha\\WP\\Login' => __DIR__ . '/../..' . '/src/php/WP/Login.php',
+        'HCaptcha\\WP\\LoginOut' => __DIR__ . '/../..' . '/src/php/WP/LoginOut.php',
         'HCaptcha\\WP\\LostPassword' => __DIR__ . '/../..' . '/src/php/WP/LostPassword.php',
         'HCaptcha\\WP\\PasswordProtected' => __DIR__ . '/../..' . '/src/php/WP/PasswordProtected.php',
         'HCaptcha\\WP\\Register' => __DIR__ . '/../..' . '/src/php/WP/Register.php',
@@ -211,9 +215,9 @@ class ComposerStaticInit0c3f450f81223af0ef151675e6b814b7
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0c3f450f81223af0ef151675e6b814b7::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0c3f450f81223af0ef151675e6b814b7::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit0c3f450f81223af0ef151675e6b814b7::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5b9e71c5ecc4233f8a6f35918bdc1f18::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5b9e71c5ecc4233f8a6f35918bdc1f18::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit5b9e71c5ecc4233f8a6f35918bdc1f18::$classMap;
 
         }, null, ClassLoader::class);
     }

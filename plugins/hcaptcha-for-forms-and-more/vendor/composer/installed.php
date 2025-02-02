@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'hcaptcha/hcaptcha-wordpress-plugin',
-        'pretty_version' => '4.9.0',
-        'version' => '4.9.0.0',
-        'reference' => 'bcf1d7e3058f194fdf32b0c257caf651ab195121',
+        'pretty_version' => '4.10.0',
+        'version' => '4.10.0.0',
+        'reference' => '3f3d675e6a0c12404a0a7aa20b4472b5d37ea88d',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'hcaptcha/hcaptcha-wordpress-plugin' => array(
-            'pretty_version' => '4.9.0',
-            'version' => '4.9.0.0',
-            'reference' => 'bcf1d7e3058f194fdf32b0c257caf651ab195121',
+            'pretty_version' => '4.10.0',
+            'version' => '4.10.0.0',
+            'reference' => '3f3d675e6a0c12404a0a7aa20b4472b5d37ea88d',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
