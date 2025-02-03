@@ -6,12 +6,12 @@
  * 
  * This file is part of the WP-Members plugin by Chad Butler
  * You can find out more about this plugin at https://rocketgeek.com
- * Copyright (c) 2006-2024  Chad Butler
+ * Copyright (c) 2006-2025  Chad Butler
  * WP-Members(tm) is a trademark of butlerblog.com
  *
  * @package WP-Members
  * @author Chad Butler
- * @copyright 2006-2024
+ * @copyright 2006-2025
  */
 
 // Exit if accessed directly.
@@ -637,7 +637,7 @@ class WP_Members_Installer {
 		global $wpmem;
 
 		$show_release_notes = true;
-		$release_notes_link = "https://rocketgeek.com/release-announcements/wp-members-3-5-0/";
+		$release_notes_link = "https://rocketgeek.com/release-announcements/wp-members-3-5-1/";
 
 		if ( 'new_install' == $wpmem->install_state ) {
 			$notice_heading = __( 'Thank you for installing WP-Members, the original WordPress membership plugin.', 'wp-members' );

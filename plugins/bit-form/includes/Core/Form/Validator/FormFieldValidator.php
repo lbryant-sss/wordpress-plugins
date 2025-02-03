@@ -298,9 +298,17 @@ final class FormFieldValidator
 
   private function validateURL($value)
   {
-    $pattern = '/^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/u';
-
-    return 1 === preg_match($pattern, $value);
+    if (false === strpos($value, '://')) {
+      $value = 'http://' . $value; // Add scheme if missing
+    }
+    $urlParts = parse_url($value);
+    if (isset($urlParts['host'])) {
+      $urlParts['host'] = idn_to_ascii($urlParts['host'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+      $value = (isset($urlParts['scheme']) ? $urlParts['scheme'] . '://' : '') .
+               $urlParts['host'] .
+               (isset($urlParts['path']) ? $urlParts['path'] : '');
+    }
+    return false !== filter_var($value, FILTER_VALIDATE_URL);
   }
 
   private function validateDate($value)

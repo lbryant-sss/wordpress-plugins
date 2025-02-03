@@ -132,6 +132,18 @@ WP-Members 3.5.0 is a major update. See changelog for a list of updates. Minimum
 
 == Changelog ==
 
+= 3.5.1 =
+
+* Fixes a bug in the CLI interface that doesn't load the db tools correctly.
+* Fixes a bug in the Fields tab edit view that displays two textarea inputs for select, multiselect, multicheckbox, and radio field types.
+* Fixes a bug in the admin email notification that does not display the [fields] shortcode.
+* Fixes a bug in the Shortcodes tab that throws a PHP error on settings save.
+* Improves the select, multiselect, multicheckbox, and radio field types so that inadvertent white space after the delimiter "|" is removed.
+* Improves the password reset to use esc_url_raw() instead of esc_url() on the reset link.  Also trims whitespace before assembling query args and rawurlencodes the query args before link assembly.
+* Improves admin email notification, especially for HTML formatted email (removes hard `<br>` tag at the end of shortcode fields so they can be used in email subject line).
+* Makes $field_arr array key in admin notification email filter `wpmem_notify_filter` obsolete (unlikely that anyone is using this).
+* Adds new API functions: wpmem_get_file_field_url(), wpmem_get_field_type(), wpmem_is_file_field(), wpmem_get_field_label().
+
 = 3.5.0 =
 
 * IMPORTANT: WP-Members pluggable functions deprecated for use in theme functions.php.  WP-Members is now initialized when plugins are loaded, which is an earlier load action than previous versions.  If you have any WP-Members pluggable functions that load in the theme functions.php, you'll need to move these to another location, such as a custom plugin file.  Keep in mind, pluggable functions are no longer the preferred way of customizing (and have not been for many years) as most customizations, if not all, can be handled by using the plugin's filter and action hooks.

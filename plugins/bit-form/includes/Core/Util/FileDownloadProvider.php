@@ -22,7 +22,8 @@ final class FileDownloadProvider
     $formID = intval(sanitize_text_field($_GET['formID']));
     $entryID = intval(sanitize_text_field($_GET['entryID']));
     $fileID = sanitize_file_name($_GET['fileID']);
-    $filePath = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $formID . DIRECTORY_SEPARATOR . $entryID . DIRECTORY_SEPARATOR . $fileID;
+    $filePath = FileHandler::getEntriesFileUploadDir($formID, $entryID) . DIRECTORY_SEPARATOR . $fileID;
+
     if (is_readable($filePath)) {
       $this->fileDownloadORView($filePath, true);
     }
@@ -109,7 +110,7 @@ final class FileDownloadProvider
     $formID = intval(sanitize_text_field($_GET['formID']));
     $entryID = intval(sanitize_text_field($_GET['entryID']));
     $fileID = sanitize_file_name($_GET['fileID']);
-    $filePath = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $formID . DIRECTORY_SEPARATOR . $entryID . DIRECTORY_SEPARATOR . $fileID;
+    $filePath = FileHandler::getEntriesFileUploadDir($formID, $entryID) . DIRECTORY_SEPARATOR . $fileID;
     if (is_readable($filePath)) {
       return $filePath;
     }

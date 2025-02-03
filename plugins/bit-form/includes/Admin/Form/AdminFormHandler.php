@@ -320,7 +320,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
     } elseif (!$save_status) {
       return false;
     } else {
-      wp_mkdir_p(BITFORMS_UPLOAD_DIR . "/$save_status");
+      FileHandler::createIndexFile(BITFORMS_UPLOAD_DIR . "/$save_status");
       $formID = $save_status;
       $integartionIDForWorkflow = [];
       // Confiramtion Message [start]
@@ -2103,7 +2103,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
     if (file_exists(BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $formID)) {
       $fileHandler = new FileHandler();
       foreach ($entries as $enrtyKey => $entryID) {
-        $fileEntries = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $formID . DIRECTORY_SEPARATOR . $entryID;
+        $fileEntries = $fileHandler->getEntriesFileUploadDir($formID, $entryID);
         if (file_exists($fileEntries)) {
           $fileHandler->rmrf($fileEntries);
         }
@@ -2177,10 +2177,10 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
         if ($duplicate_status) {
           $result['details'][$entryID] = $duplicatedEntryId;
           $duplicate_count = $duplicate_count + 1;
-          if (file_exists(BITFORMS_UPLOAD_DIR . "/$formID/$entryID")) {
+          if (file_exists(FileHandler::getEntriesFileUploadDir($formID, $entryID))) {
             $fileHandler->cpyr(
-              BITFORMS_UPLOAD_DIR . "/$formID/$entryID",
-              BITFORMS_UPLOAD_DIR . "/$formID/$duplicatedEntryId"
+              FileHandler::getEntriesFileUploadDir($formID, $entryID),
+              FileHandler::getEntriesFileUploadDir($formID, $duplicatedEntryId)
             );
           }
         }

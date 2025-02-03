@@ -2,36 +2,41 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bit Form 2.17.5\n"
+"Project-Id-Version: Bit Form 2.17.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bit-form\n"
 "Last-Translator: developer@bitcode.pro\n"
 "Language-Team: support@bitcode.pro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-23T06:01:25+00:00\n"
+"POT-Creation-Date: 2025-02-02T11:31:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: bit-form\n"
 
 #. Plugin Name of the plugin
+#: bitforms.php
 #: languages/generatedString.php:6
 msgid "Bit Form"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: bitforms.php
 msgid "https://www.bitapps.pro/bit-form"
 msgstr ""
 
 #. Description of the plugin
+#: bitforms.php
 msgid "Contact Form Builder Plugin: Multi Step Contact Form, Payment Form, Custom Contact Form Plugin by Bit Form"
 msgstr ""
 
 #. Author of the plugin
+#: bitforms.php
 msgid "Contact Form Builder - Bit Form"
 msgstr ""
 
 #. Author URI of the plugin
+#: bitforms.php
 msgid "https://www.bitapps.pro"
 msgstr ""
 
@@ -52,51 +57,51 @@ msgstr ""
 #: includes/Admin/AdminAjax.php:259
 #: includes/Admin/AdminAjax.php:278
 #: includes/Admin/AdminAjax.php:302
-#: includes/Admin/AdminAjax.php:368
-#: includes/Admin/AdminAjax.php:399
-#: includes/Admin/AdminAjax.php:439
-#: includes/Admin/AdminAjax.php:457
-#: includes/Admin/AdminAjax.php:475
-#: includes/Admin/AdminAjax.php:498
-#: includes/Admin/AdminAjax.php:520
-#: includes/Admin/AdminAjax.php:537
-#: includes/Admin/AdminAjax.php:554
-#: includes/Admin/AdminAjax.php:582
-#: includes/Admin/AdminAjax.php:624
-#: includes/Admin/AdminAjax.php:652
-#: includes/Admin/AdminAjax.php:687
-#: includes/Admin/AdminAjax.php:710
-#: includes/Admin/AdminAjax.php:733
-#: includes/Admin/AdminAjax.php:756
-#: includes/Admin/AdminAjax.php:780
-#: includes/Admin/AdminAjax.php:804
-#: includes/Admin/AdminAjax.php:844
-#: includes/Admin/AdminAjax.php:867
-#: includes/Admin/AdminAjax.php:890
-#: includes/Admin/AdminAjax.php:913
-#: includes/Admin/AdminAjax.php:936
-#: includes/Admin/AdminAjax.php:959
-#: includes/Admin/AdminAjax.php:982
-#: includes/Admin/AdminAjax.php:1006
-#: includes/Admin/AdminAjax.php:1029
-#: includes/Admin/AdminAjax.php:1052
-#: includes/Admin/AdminAjax.php:1075
-#: includes/Admin/AdminAjax.php:1098
-#: includes/Admin/AdminAjax.php:1121
-#: includes/Admin/AdminAjax.php:1144
-#: includes/Admin/AdminAjax.php:1167
-#: includes/Admin/AdminAjax.php:1190
-#: includes/Admin/AdminAjax.php:1217
-#: includes/Admin/AdminAjax.php:1281
-#: includes/Admin/AdminAjax.php:1318
-#: includes/Admin/AdminAjax.php:1345
-#: includes/Admin/AdminAjax.php:1379
-#: includes/Admin/AdminAjax.php:1413
-#: includes/Admin/AdminAjax.php:1484
-#: includes/Admin/AdminAjax.php:1520
-#: includes/Admin/AdminAjax.php:1546
-#: includes/Admin/AdminAjax.php:1638
-#: includes/Admin/AdminAjax.php:1720
+#: includes/Admin/AdminAjax.php:371
+#: includes/Admin/AdminAjax.php:402
+#: includes/Admin/AdminAjax.php:442
+#: includes/Admin/AdminAjax.php:460
+#: includes/Admin/AdminAjax.php:478
+#: includes/Admin/AdminAjax.php:501
+#: includes/Admin/AdminAjax.php:523
+#: includes/Admin/AdminAjax.php:540
+#: includes/Admin/AdminAjax.php:557
+#: includes/Admin/AdminAjax.php:585
+#: includes/Admin/AdminAjax.php:627
+#: includes/Admin/AdminAjax.php:655
+#: includes/Admin/AdminAjax.php:690
+#: includes/Admin/AdminAjax.php:713
+#: includes/Admin/AdminAjax.php:736
+#: includes/Admin/AdminAjax.php:759
+#: includes/Admin/AdminAjax.php:783
+#: includes/Admin/AdminAjax.php:807
+#: includes/Admin/AdminAjax.php:847
+#: includes/Admin/AdminAjax.php:870
+#: includes/Admin/AdminAjax.php:893
+#: includes/Admin/AdminAjax.php:916
+#: includes/Admin/AdminAjax.php:939
+#: includes/Admin/AdminAjax.php:962
+#: includes/Admin/AdminAjax.php:985
+#: includes/Admin/AdminAjax.php:1009
+#: includes/Admin/AdminAjax.php:1032
+#: includes/Admin/AdminAjax.php:1055
+#: includes/Admin/AdminAjax.php:1078
+#: includes/Admin/AdminAjax.php:1101
+#: includes/Admin/AdminAjax.php:1124
+#: includes/Admin/AdminAjax.php:1147
+#: includes/Admin/AdminAjax.php:1170
+#: includes/Admin/AdminAjax.php:1193
+#: includes/Admin/AdminAjax.php:1220
+#: includes/Admin/AdminAjax.php:1284
+#: includes/Admin/AdminAjax.php:1321
+#: includes/Admin/AdminAjax.php:1348
+#: includes/Admin/AdminAjax.php:1382
+#: includes/Admin/AdminAjax.php:1416
+#: includes/Admin/AdminAjax.php:1487
+#: includes/Admin/AdminAjax.php:1523
+#: includes/Admin/AdminAjax.php:1549
+#: includes/Admin/AdminAjax.php:1641
+#: includes/Admin/AdminAjax.php:1723
 #: includes/Core/Integration/ActiveCampaign/ActiveCampaignHandler.php:84
 #: includes/Core/Integration/ActiveCampaign/ActiveCampaignHandler.php:138
 #: includes/Core/Integration/ActiveCampaign/ActiveCampaignHandler.php:192
@@ -201,7 +206,7 @@ msgstr ""
 #: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:256
 #: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:334
 #: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:402
-#: includes/Frontend/Form/FrontendFormManager.php:508
+#: includes/Frontend/Form/FrontendFormManager.php:509
 msgid "Token expired"
 msgstr ""
 
@@ -209,21 +214,21 @@ msgstr ""
 msgid "No Integration Found"
 msgstr ""
 
-#: includes/Admin/AdminAjax.php:430
+#: includes/Admin/AdminAjax.php:433
 msgid "Some of the test fields are empty or an invalid email supplied"
 msgstr ""
 
-#: includes/Admin/AdminAjax.php:454
+#: includes/Admin/AdminAjax.php:457
 msgid "Migration Complete"
 msgstr ""
 
-#: includes/Admin/AdminAjax.php:1244
-#: includes/Admin/AdminAjax.php:1272
+#: includes/Admin/AdminAjax.php:1247
+#: includes/Admin/AdminAjax.php:1275
 msgid "Invalid file type"
 msgstr ""
 
-#: includes/Admin/AdminAjax.php:1370
-#: includes/Admin/AdminAjax.php:1404
+#: includes/Admin/AdminAjax.php:1373
+#: includes/Admin/AdminAjax.php:1407
 msgid "Invalid form id"
 msgstr ""
 
@@ -399,7 +404,7 @@ msgstr ""
 
 #: includes/Admin/Form/AdminFormHandler.php:2068
 #: includes/Admin/Form/AdminFormHandler.php:2143
-#: includes/Frontend/Form/FrontendFormManager.php:310
+#: includes/Frontend/Form/FrontendFormManager.php:311
 msgid "Entries id is invalid"
 msgstr ""
 
@@ -433,7 +438,7 @@ msgstr ""
 
 #: includes/Admin/Form/AdminFormHandler.php:2148
 #: includes/Admin/Form/AdminFormHandler.php:2215
-#: includes/Frontend/Form/FrontendFormManager.php:506
+#: includes/Frontend/Form/FrontendFormManager.php:507
 msgid "Form does not exist"
 msgstr ""
 
@@ -549,24 +554,24 @@ msgstr ""
 msgid "prepared query is empty"
 msgstr ""
 
-#: includes/Core/Form/FormManager.php:584
+#: includes/Core/Form/FormManager.php:583
 msgid "Sorry, Error occurred in saving form entry"
 msgstr ""
 
-#: includes/Core/Form/FormManager.php:590
+#: includes/Core/Form/FormManager.php:589
 msgid "Sorry, error occurred in logging form entry"
 msgstr ""
 
-#: includes/Core/Form/FormManager.php:655
+#: includes/Core/Form/FormManager.php:653
 msgid "Sorry, Error occured in saving form entry data"
 msgstr ""
 
-#: includes/Core/Form/FormManager.php:732
+#: includes/Core/Form/FormManager.php:730
 #: includes/Frontend/Ajax/FrontendAjax.php:176
 msgid "provided form entries does not exists"
 msgstr ""
 
-#: includes/Core/Form/FormManager.php:842
+#: includes/Core/Form/FormManager.php:839
 #: includes/Core/WorkFlow/WorkFlow.php:208
 #: includes/Core/WorkFlow/WorkFlow.php:294
 msgid "Entry Updated Successfully"
@@ -825,7 +830,7 @@ msgstr ""
 msgid "webhook url is empty"
 msgstr ""
 
-#: includes/Core/Integration/WooCommerce/RecordApiHelper.php:45
+#: includes/Core/Integration/WooCommerce/RecordApiHelper.php:46
 msgid "%s is required for woocommerce %s"
 msgstr ""
 
@@ -935,53 +940,53 @@ msgstr ""
 msgid "Bitforms Pages"
 msgstr ""
 
-#: includes/Core/Util/FileHandler.php:110
+#: includes/Core/Util/FileHandler.php:111
 msgid "Unknown upload error"
 msgstr ""
 
-#: includes/Core/Util/FileHandler.php:111
+#: includes/Core/Util/FileHandler.php:112
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
 msgstr ""
 
-#: includes/Core/Util/FileHandler.php:112
+#: includes/Core/Util/FileHandler.php:113
 msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form."
 msgstr ""
 
-#: includes/Core/Util/FileHandler.php:113
+#: includes/Core/Util/FileHandler.php:114
 msgid "The uploaded file was only partially uploaded."
 msgstr ""
 
-#: includes/Core/Util/FileHandler.php:114
+#: includes/Core/Util/FileHandler.php:115
 msgid "No file was uploaded."
 msgstr ""
 
-#: includes/Core/Util/FileHandler.php:115
+#: includes/Core/Util/FileHandler.php:116
 msgid "Missing a temporary folder."
 msgstr ""
 
-#: includes/Core/Util/FileHandler.php:116
+#: includes/Core/Util/FileHandler.php:117
 msgid "Failed to write file to disk."
 msgstr ""
 
-#: includes/Core/Util/FileHandler.php:117
+#: includes/Core/Util/FileHandler.php:118
 msgid "A PHP extension stopped the file upload."
 msgstr ""
 
-#: includes/Core/Util/FileHandler.php:274
+#: includes/Core/Util/FileHandler.php:273
 msgid "Total File size is too large"
 msgstr ""
 
-#: includes/Core/Util/FileHandler.php:295
+#: includes/Core/Util/FileHandler.php:294
 msgid "File size is too large"
 msgstr ""
 
-#: includes/Core/Util/FileHandler.php:323
+#: includes/Core/Util/FileHandler.php:322
 msgid "SVG file is not valid"
 msgstr ""
 
 #: includes/Core/WorkFlow/WorkFlow.php:207
 #: includes/Core/WorkFlow/WorkFlow.php:293
-#: includes/Frontend/Form/FrontendFormManager.php:289
+#: includes/Frontend/Form/FrontendFormManager.php:290
 msgid "Form Submitted Successfully"
 msgstr ""
 
@@ -1001,68 +1006,68 @@ msgstr ""
 msgid "#%s no. Form is not active"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:389
+#: includes/Frontend/Form/FrontendFormManager.php:390
 msgid "Entry Update Successfully"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:427
+#: includes/Frontend/Form/FrontendFormManager.php:428
 msgid "Token verification failed"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:446
+#: includes/Frontend/Form/FrontendFormManager.php:447
 msgid "You are already logged in"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:495
+#: includes/Frontend/Form/FrontendFormManager.php:496
 msgid "Please submit form with valid fields"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:519
-#: includes/Frontend/Form/FrontendFormManager.php:555
+#: includes/Frontend/Form/FrontendFormManager.php:520
+#: includes/Frontend/Form/FrontendFormManager.php:556
 msgid "Please verify reCAPTCHA"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:566
-#: includes/Frontend/Form/FrontendFormManager.php:596
+#: includes/Frontend/Form/FrontendFormManager.php:567
+#: includes/Frontend/Form/FrontendFormManager.php:597
 msgid "Please verify Cloudflare Turnstile Captcha"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:586
+#: includes/Frontend/Form/FrontendFormManager.php:587
 msgid "Cloudflare Turnstile Validation Error: "
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:649
+#: includes/Frontend/Form/FrontendFormManager.php:650
 msgid "Sorry!! Entry limit exceeded"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:663
+#: includes/Frontend/Form/FrontendFormManager.php:664
 msgid "Sorry!! You have already submitted"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:722
+#: includes/Frontend/Form/FrontendFormManager.php:723
 msgid "within %s to %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:735
+#: includes/Frontend/Form/FrontendFormManager.php:736
 msgid "%s to %s"
-msgstr ""
-
-#: includes/Frontend/Form/FrontendFormManager.php:741
-#: includes/Frontend/Form/FrontendFormManager.php:744
-msgid "Form is available %s From %s"
 msgstr ""
 
 #: includes/Frontend/Form/FrontendFormManager.php:742
 #: includes/Frontend/Form/FrontendFormManager.php:745
+msgid "Form is available %s From %s"
+msgstr ""
+
+#: includes/Frontend/Form/FrontendFormManager.php:743
+#: includes/Frontend/Form/FrontendFormManager.php:746
 msgid "Form is available %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:747
+#: includes/Frontend/Form/FrontendFormManager.php:748
 msgid "Form is available on %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:760
-#: includes/Frontend/Form/FrontendFormManager.php:772
+#: includes/Frontend/Form/FrontendFormManager.php:761
+#: includes/Frontend/Form/FrontendFormManager.php:773
 msgid "Sorry!! Your IP address is %s, Blocked from submitting the form"
 msgstr ""
 
@@ -6770,103 +6775,103 @@ msgid "Available Integrations"
 msgstr ""
 
 #: languages/generatedString.php:2862
-msgid "Text"
-msgstr ""
-
-#: languages/generatedString.php:2864
-msgid "Placeholder..."
-msgstr ""
-
-#: languages/generatedString.php:2866
-msgid "Multiline Text"
-msgstr ""
-
-#: languages/generatedString.php:2868
-msgid "Multi-Line Text"
-msgstr ""
-
-#: languages/generatedString.php:2870
-msgid "example@mail.com"
-msgstr ""
-
-#: languages/generatedString.php:2872
-msgid "Number"
-msgstr ""
-
-#: languages/generatedString.php:2874
-msgid "e.g. 123"
-msgstr ""
-
-#: languages/generatedString.php:2876
-msgid "Select"
-msgstr ""
-
-#: languages/generatedString.php:2878
-msgid "Radio Button"
-msgstr ""
-
-#: languages/generatedString.php:2880
-msgid "Radio"
-msgstr ""
-
-#: languages/generatedString.php:2882
-msgid "Option 1"
-msgstr ""
-
-#: languages/generatedString.php:2884
-msgid "Option 2"
-msgstr ""
-
-#: languages/generatedString.php:2886
-msgid "Option 3"
-msgstr ""
-
-#: languages/generatedString.php:2888
-msgid "Checkbox"
-msgstr ""
-
-#: languages/generatedString.php:2890
-msgid "Check Boxs"
-msgstr ""
-
-#: languages/generatedString.php:2892
-msgid "Dropdown"
-msgstr ""
-
-#: languages/generatedString.php:2894
-msgid "File Upload"
-msgstr ""
-
-#: languages/generatedString.php:2896
-msgid "Advance File Upload"
-msgstr ""
-
-#: languages/generatedString.php:2898
-msgid "Advanced File Upload"
-msgstr ""
-
-#: languages/generatedString.php:2900
-msgid "Country"
-msgstr ""
-
-#: languages/generatedString.php:2902
-msgid "Enter Amount.."
-msgstr ""
-
-#: languages/generatedString.php:2904
-msgid "Phone Number"
-msgstr ""
-
-#: languages/generatedString.php:2906
-msgid "Enter Phone Number"
-msgstr ""
-
-#: languages/generatedString.php:2908
 msgid "First Name"
 msgstr ""
 
-#: languages/generatedString.php:2910
+#: languages/generatedString.php:2864
 msgid "Last Name"
+msgstr ""
+
+#: languages/generatedString.php:2866
+msgid "Text"
+msgstr ""
+
+#: languages/generatedString.php:2868
+msgid "Placeholder..."
+msgstr ""
+
+#: languages/generatedString.php:2870
+msgid "Multiline Text"
+msgstr ""
+
+#: languages/generatedString.php:2872
+msgid "Multi-Line Text"
+msgstr ""
+
+#: languages/generatedString.php:2874
+msgid "example@mail.com"
+msgstr ""
+
+#: languages/generatedString.php:2876
+msgid "Number"
+msgstr ""
+
+#: languages/generatedString.php:2878
+msgid "e.g. 123"
+msgstr ""
+
+#: languages/generatedString.php:2880
+msgid "Select"
+msgstr ""
+
+#: languages/generatedString.php:2882
+msgid "Radio Button"
+msgstr ""
+
+#: languages/generatedString.php:2884
+msgid "Radio"
+msgstr ""
+
+#: languages/generatedString.php:2886
+msgid "Option 1"
+msgstr ""
+
+#: languages/generatedString.php:2888
+msgid "Option 2"
+msgstr ""
+
+#: languages/generatedString.php:2890
+msgid "Option 3"
+msgstr ""
+
+#: languages/generatedString.php:2892
+msgid "Checkbox"
+msgstr ""
+
+#: languages/generatedString.php:2894
+msgid "Check Boxs"
+msgstr ""
+
+#: languages/generatedString.php:2896
+msgid "Dropdown"
+msgstr ""
+
+#: languages/generatedString.php:2898
+msgid "File Upload"
+msgstr ""
+
+#: languages/generatedString.php:2900
+msgid "Advance File Upload"
+msgstr ""
+
+#: languages/generatedString.php:2902
+msgid "Advanced File Upload"
+msgstr ""
+
+#: languages/generatedString.php:2904
+msgid "Country"
+msgstr ""
+
+#: languages/generatedString.php:2906
+msgid "Enter Amount.."
+msgstr ""
+
+#: languages/generatedString.php:2908
+msgid "Phone Number"
+msgstr ""
+
+#: languages/generatedString.php:2910
+msgid "Enter Phone Number"
 msgstr ""
 
 #: languages/generatedString.php:2912
@@ -8358,705 +8363,697 @@ msgid "Allow Roles to edit Other's entries"
 msgstr ""
 
 #: languages/generatedString.php:3662
-msgid "Prevent Roles to edit entries"
-msgstr ""
-
-#: languages/generatedString.php:3664
-msgid "Prevent Roles to edit Other's entries"
-msgstr ""
-
-#: languages/generatedString.php:3666
 msgid "By Roles"
 msgstr ""
 
-#: languages/generatedString.php:3668
+#: languages/generatedString.php:3664
 msgid "Selected User"
 msgstr ""
 
-#: languages/generatedString.php:3670
+#: languages/generatedString.php:3666
 msgid "Users"
 msgstr ""
 
-#: languages/generatedString.php:3672
+#: languages/generatedString.php:3668
 msgid "Access Setting"
 msgstr ""
 
-#: languages/generatedString.php:3674
+#: languages/generatedString.php:3670
 msgid "Entry View"
 msgstr ""
 
-#: languages/generatedString.php:3676
+#: languages/generatedString.php:3672
 msgid "Entry Edit"
 msgstr ""
 
-#: languages/generatedString.php:3678
+#: languages/generatedString.php:3674
 msgid "Single Entry View"
 msgstr ""
 
-#: languages/generatedString.php:3680
+#: languages/generatedString.php:3676
 msgid "Single Entry Details View"
 msgstr ""
 
-#: languages/generatedString.php:3682
+#: languages/generatedString.php:3678
 msgid "All Submitted Response"
 msgstr ""
 
-#: languages/generatedString.php:3684
+#: languages/generatedString.php:3680
 msgid "Own Submitted Response"
 msgstr ""
 
-#: languages/generatedString.php:3686
+#: languages/generatedString.php:3682
 msgid "View List"
 msgstr ""
 
-#: languages/generatedString.php:3688
+#: languages/generatedString.php:3684
 msgid "Details Page"
 msgstr ""
 
-#: languages/generatedString.php:3690
+#: languages/generatedString.php:3686
 msgid "Details Page Styling"
 msgstr ""
 
-#: languages/generatedString.php:3692
+#: languages/generatedString.php:3688
 msgid "Setting"
 msgstr ""
 
-#: languages/generatedString.php:3694
+#: languages/generatedString.php:3690
 msgid "Table Caption"
 msgstr ""
 
-#: languages/generatedString.php:3696
+#: languages/generatedString.php:3692
 msgid "Column Mapping"
 msgstr ""
 
-#: languages/generatedString.php:3698
+#: languages/generatedString.php:3694
 msgid "Column Header"
 msgstr ""
 
-#: languages/generatedString.php:3700
+#: languages/generatedString.php:3696
 msgid "Column Width"
 msgstr ""
 
-#: languages/generatedString.php:3702
+#: languages/generatedString.php:3698
 msgid "Form Field"
 msgstr ""
 
-#: languages/generatedString.php:3704
+#: languages/generatedString.php:3700
 msgid "Action Column"
 msgstr ""
 
-#: languages/generatedString.php:3706
+#: languages/generatedString.php:3702
 msgid "Column Title"
 msgstr ""
 
-#: languages/generatedString.php:3708
+#: languages/generatedString.php:3704
 msgid "Edit Button"
 msgstr ""
 
-#: languages/generatedString.php:3710
+#: languages/generatedString.php:3706
 msgid "Custom Page"
 msgstr ""
 
-#: languages/generatedString.php:3712
+#: languages/generatedString.php:3708
 msgid "View Button"
 msgstr ""
 
-#: languages/generatedString.php:3714
+#: languages/generatedString.php:3710
 msgid "Redirect Link"
 msgstr ""
 
-#: languages/generatedString.php:3716
+#: languages/generatedString.php:3712
 msgid "Caption"
 msgstr ""
 
-#: languages/generatedString.php:3718
+#: languages/generatedString.php:3714
 msgid "Table Even Row"
 msgstr ""
 
-#: languages/generatedString.php:3720
+#: languages/generatedString.php:3716
 msgid "Table Odd Row"
 msgstr ""
 
-#: languages/generatedString.php:3722
+#: languages/generatedString.php:3718
 msgid "Page Select Box"
 msgstr ""
 
-#: languages/generatedString.php:3724
+#: languages/generatedString.php:3720
 msgid "Pagination Button"
 msgstr ""
 
-#: languages/generatedString.php:3726
+#: languages/generatedString.php:3722
 msgid "Search Box"
 msgstr ""
 
-#: languages/generatedString.php:3728
+#: languages/generatedString.php:3724
 msgid "Table"
 msgstr ""
 
-#: languages/generatedString.php:3730
+#: languages/generatedString.php:3726
 msgid "Table Rows"
 msgstr ""
 
-#: languages/generatedString.php:3732
+#: languages/generatedString.php:3728
 msgid "Background color"
 msgstr ""
 
-#: languages/generatedString.php:3734
+#: languages/generatedString.php:3730
 msgid "Font Weight"
 msgstr ""
 
-#: languages/generatedString.php:3736
+#: languages/generatedString.php:3732
 msgid "Font Style"
 msgstr ""
 
-#: languages/generatedString.php:3738
+#: languages/generatedString.php:3734
 msgid "Table Wrapper"
 msgstr ""
 
-#: languages/generatedString.php:3740
+#: languages/generatedString.php:3736
 msgid "Welcome to Bit Form Views (Beta)"
 msgstr ""
 
-#: languages/generatedString.php:3742
+#: languages/generatedString.php:3738
 msgid "Create First View"
 msgstr ""
 
-#: languages/generatedString.php:3744
+#: languages/generatedString.php:3740
 msgid "Lost In Space"
 msgstr ""
 
-#: languages/generatedString.php:3746
+#: languages/generatedString.php:3742
 msgid "Redirecting Home in"
 msgstr ""
 
-#: languages/generatedString.php:3748
+#: languages/generatedString.php:3744
 msgid "Go Home"
 msgstr ""
 
-#: languages/generatedString.php:3750
+#: languages/generatedString.php:3746
 msgid "Are you sure to duplicate this entry?"
 msgstr ""
 
-#: languages/generatedString.php:3752
+#: languages/generatedString.php:3748
 msgid "View Repeater Data"
 msgstr ""
 
-#: languages/generatedString.php:3754
+#: languages/generatedString.php:3750
 msgid "Entry Details #"
 msgstr ""
 
-#: languages/generatedString.php:3756
+#: languages/generatedString.php:3752
 msgid "Data Views & Edit"
 msgstr ""
 
-#: languages/generatedString.php:3758
+#: languages/generatedString.php:3754
 msgid "View Analytics Report"
 msgstr ""
 
-#: languages/generatedString.php:3760
+#: languages/generatedString.php:3756
 msgid "No Entry Found."
 msgstr ""
 
-#: languages/generatedString.php:3762
+#: languages/generatedString.php:3758
 msgid "Form Settings"
 msgstr ""
 
-#: languages/generatedString.php:3764
+#: languages/generatedString.php:3760
 msgid "Conversational Form"
 msgstr ""
 
-#: languages/generatedString.php:3766
+#: languages/generatedString.php:3762
 msgid "Landing Form"
 msgstr ""
 
-#: languages/generatedString.php:3768
+#: languages/generatedString.php:3764
 msgid "WP Auth"
 msgstr ""
 
-#: languages/generatedString.php:3770
+#: languages/generatedString.php:3766
 msgid "Select Fields for Report:"
 msgstr ""
 
-#: languages/generatedString.php:3772
+#: languages/generatedString.php:3768
 msgid "Loading..."
 msgstr ""
 
-#: languages/generatedString.php:3774
+#: languages/generatedString.php:3770
 msgid "Printing..."
 msgstr ""
 
-#: languages/generatedString.php:3776
+#: languages/generatedString.php:3772
 msgid "Print Report"
 msgstr ""
 
-#: languages/generatedString.php:3778
+#: languages/generatedString.php:3774
 msgid "Welcome to Bit Form"
 msgstr ""
 
-#: languages/generatedString.php:3780
+#: languages/generatedString.php:3776
 msgid "Thank you for installing Bit Form."
 msgstr ""
 
-#: languages/generatedString.php:3782
+#: languages/generatedString.php:3778
 msgid "Modern Form builder and database management  system"
 msgstr ""
 
-#: languages/generatedString.php:3784
+#: languages/generatedString.php:3780
 msgid "for Wordpress"
 msgstr ""
 
-#: languages/generatedString.php:3786
+#: languages/generatedString.php:3782
 msgid "Create First Form"
 msgstr ""
 
-#: languages/generatedString.php:3788
+#: languages/generatedString.php:3784
 msgid "Add More +"
 msgstr ""
 
-#: languages/generatedString.php:3790
+#: languages/generatedString.php:3786
 msgid "Country Field available in Pro version of Bit Form."
 msgstr ""
 
-#: languages/generatedString.php:3792
+#: languages/generatedString.php:3788
 msgid "You can use either ReCaptcha-V2 or ReCaptcha-V3 in a form. to use ReCaptcha-V2 disable the ReCaptcha-V3 from the Form Settings."
 msgstr ""
 
-#: languages/generatedString.php:3794
+#: languages/generatedString.php:3790
 msgid "<p style=\"font-size: 16px\">To use reCaptchav2, you must set Site Key and Secret Key from <a href=\""
 msgstr ""
 
-#: languages/generatedString.php:3796
+#: languages/generatedString.php:3792
 msgid "<p style=\"font-size: 16px\">To use Turnstile, you must set Site Key and Secret Key from <a href=\""
 msgstr ""
 
-#: languages/generatedString.php:3798
+#: languages/generatedString.php:3794
 msgid "You cannot add more than one"
 msgstr ""
 
-#: languages/generatedString.php:3800
+#: languages/generatedString.php:3796
 msgid "Save Draft Button available in Pro version of Bit Form."
 msgstr ""
 
-#: languages/generatedString.php:3802
+#: languages/generatedString.php:3798
 msgid "You cannot add"
 msgstr ""
 
-#: languages/generatedString.php:3804
+#: languages/generatedString.php:3800
 msgid "<p style=\"font-size: 16px\">To use"
 msgstr ""
 
-#: languages/generatedString.php:3806
+#: languages/generatedString.php:3802
 msgid "Change"
 msgstr ""
 
-#: languages/generatedString.php:3808
+#: languages/generatedString.php:3804
 msgid "Not Equal"
 msgstr ""
 
-#: languages/generatedString.php:3810
+#: languages/generatedString.php:3806
 msgid "Is Null"
 msgstr ""
 
-#: languages/generatedString.php:3812
+#: languages/generatedString.php:3808
 msgid "Is Not Null"
 msgstr ""
 
-#: languages/generatedString.php:3814
+#: languages/generatedString.php:3810
 msgid "Contain"
 msgstr ""
 
-#: languages/generatedString.php:3816
+#: languages/generatedString.php:3812
 msgid "Not Contain"
 msgstr ""
 
-#: languages/generatedString.php:3818
+#: languages/generatedString.php:3814
 msgid "Between"
 msgstr ""
 
-#: languages/generatedString.php:3820
+#: languages/generatedString.php:3816
 msgid "On Click"
 msgstr ""
 
-#: languages/generatedString.php:3822
+#: languages/generatedString.php:3818
 msgid "Advanced File Upload Field"
 msgstr ""
 
-#: languages/generatedString.php:3824
+#: languages/generatedString.php:3820
 msgid "PayPal Payment Field"
 msgstr ""
 
-#: languages/generatedString.php:3826
+#: languages/generatedString.php:3822
 msgid "Razorpay Payment Field"
 msgstr ""
 
-#: languages/generatedString.php:3828
+#: languages/generatedString.php:3824
 msgid "Stripe Payment Field"
 msgstr ""
 
-#: languages/generatedString.php:3830
+#: languages/generatedString.php:3826
 msgid "Mollie Payment Field"
 msgstr ""
 
-#: languages/generatedString.php:3832
+#: languages/generatedString.php:3828
 msgid "Leading Icon"
 msgstr ""
 
-#: languages/generatedString.php:3834
+#: languages/generatedString.php:3830
 msgid "Trailing Icon"
 msgstr ""
 
-#: languages/generatedString.php:3836
+#: languages/generatedString.php:3832
 msgid "Default Value"
 msgstr ""
 
-#: languages/generatedString.php:3838
+#: languages/generatedString.php:3834
 msgid "Suggestions"
 msgstr ""
 
-#: languages/generatedString.php:3840
+#: languages/generatedString.php:3836
 msgid "Input Mode"
 msgstr ""
 
-#: languages/generatedString.php:3842
+#: languages/generatedString.php:3838
 msgid "Regex Pattern"
 msgstr ""
 
-#: languages/generatedString.php:3844
+#: languages/generatedString.php:3840
 msgid "Read Only"
 msgstr ""
 
-#: languages/generatedString.php:3846
+#: languages/generatedString.php:3842
 msgid "Unique Entry"
 msgstr ""
 
-#: languages/generatedString.php:3848
+#: languages/generatedString.php:3844
 msgid "User Unique"
 msgstr ""
 
-#: languages/generatedString.php:3850
+#: languages/generatedString.php:3846
 msgid "Input Validation"
 msgstr ""
 
-#: languages/generatedString.php:3852
+#: languages/generatedString.php:3848
 msgid "Maximum Option Validation"
 msgstr ""
 
-#: languages/generatedString.php:3854
+#: languages/generatedString.php:3850
 msgid "Minimum Option Validation"
 msgstr ""
 
-#: languages/generatedString.php:3856
+#: languages/generatedString.php:3852
 msgid "Option Column"
 msgstr ""
 
-#: languages/generatedString.php:3858
+#: languages/generatedString.php:3854
 msgid "Other Option"
 msgstr ""
 
-#: languages/generatedString.php:3860
+#: languages/generatedString.php:3856
 msgid "Search Placeholder Modify"
 msgstr ""
 
-#: languages/generatedString.php:3862
+#: languages/generatedString.php:3858
 msgid "Selected Option Image"
 msgstr ""
 
-#: languages/generatedString.php:3864
+#: languages/generatedString.php:3860
 msgid "Showing Selected Option Image"
 msgstr ""
 
-#: languages/generatedString.php:3866
+#: languages/generatedString.php:3862
 msgid "Option Icon/Image"
 msgstr ""
 
-#: languages/generatedString.php:3868
+#: languages/generatedString.php:3864
 msgid "Showing Icon/Image in option"
 msgstr ""
 
-#: languages/generatedString.php:3870
+#: languages/generatedString.php:3866
 msgid "Minimum and Maximum Option"
 msgstr ""
 
-#: languages/generatedString.php:3872
+#: languages/generatedString.php:3868
 msgid "Minimum and Maximum Option validation"
 msgstr ""
 
-#: languages/generatedString.php:3874
+#: languages/generatedString.php:3870
 msgid "List Height"
 msgstr ""
 
-#: languages/generatedString.php:3876
+#: languages/generatedString.php:3872
 msgid "Option List Height"
 msgstr ""
 
-#: languages/generatedString.php:3878
+#: languages/generatedString.php:3874
 msgid "Detect Country by IP"
 msgstr ""
 
-#: languages/generatedString.php:3880
+#: languages/generatedString.php:3876
 msgid "Detect Country by Geo Location"
 msgstr ""
 
-#: languages/generatedString.php:3882
+#: languages/generatedString.php:3878
 msgid "Multiple Option List"
 msgstr ""
 
-#: languages/generatedString.php:3884
+#: languages/generatedString.php:3880
 msgid "Minimum and Maximum Value"
 msgstr ""
 
-#: languages/generatedString.php:3886
+#: languages/generatedString.php:3882
 msgid "Minimum and Maximum Value Validation"
 msgstr ""
 
-#: languages/generatedString.php:3888
+#: languages/generatedString.php:3884
 msgid "Country Not Found Text Modify"
 msgstr ""
 
-#: languages/generatedString.php:3890
+#: languages/generatedString.php:3886
 msgid "Currency Not Found Text Modify"
 msgstr ""
 
-#: languages/generatedString.php:3892
+#: languages/generatedString.php:3888
 msgid "Modification of File Select Status"
 msgstr ""
 
-#: languages/generatedString.php:3894
+#: languages/generatedString.php:3890
 msgid "Show Max Size"
 msgstr ""
 
-#: languages/generatedString.php:3896
+#: languages/generatedString.php:3892
 msgid "Individual Style"
 msgstr ""
 
-#: languages/generatedString.php:3898
+#: languages/generatedString.php:3894
 msgid "Individual Field Styling"
 msgstr ""
 
-#: languages/generatedString.php:3900
+#: languages/generatedString.php:3896
 msgid "Custom Class & Attribute"
 msgstr ""
 
-#: languages/generatedString.php:3902
+#: languages/generatedString.php:3898
 msgid "Custom Classes and Attributes"
 msgstr ""
 
-#: languages/generatedString.php:3904
+#: languages/generatedString.php:3900
 msgid "Custom JS and CSS Editor"
 msgstr ""
 
-#: languages/generatedString.php:3906
+#: languages/generatedString.php:3902
 msgid "Custom JS and CSS Code Editor"
 msgstr ""
 
-#: languages/generatedString.php:3908
+#: languages/generatedString.php:3904
 msgid "Breakpoint Modification"
 msgstr ""
 
-#: languages/generatedString.php:3910
+#: languages/generatedString.php:3906
 msgid "Breakpoint width size modification"
 msgstr ""
 
-#: languages/generatedString.php:3912
+#: languages/generatedString.php:3908
 msgid "Form Width Modification"
 msgstr ""
 
-#: languages/generatedString.php:3914
+#: languages/generatedString.php:3910
 msgid "Field Clone"
 msgstr ""
 
-#: languages/generatedString.php:3916
+#: languages/generatedString.php:3912
 msgid "Field Cloning"
 msgstr ""
 
-#: languages/generatedString.php:3918
+#: languages/generatedString.php:3914
 msgid "Disable Entry Storing"
 msgstr ""
 
-#: languages/generatedString.php:3920
+#: languages/generatedString.php:3916
 msgid "Capture Google Ads Click"
 msgstr ""
 
-#: languages/generatedString.php:3922
+#: languages/generatedString.php:3918
 msgid "Login User"
 msgstr ""
 
-#: languages/generatedString.php:3924
+#: languages/generatedString.php:3920
 msgid "Empty Submission"
 msgstr ""
 
-#: languages/generatedString.php:3926
+#: languages/generatedString.php:3922
 msgid "Allowed IP List"
 msgstr ""
 
-#: languages/generatedString.php:3928
+#: languages/generatedString.php:3924
 msgid "Blocked IP"
 msgstr ""
 
-#: languages/generatedString.php:3930
+#: languages/generatedString.php:3926
 msgid "Blocked IP List"
 msgstr ""
 
-#: languages/generatedString.php:3932
+#: languages/generatedString.php:3928
 msgid "Entry Limit"
 msgstr ""
 
-#: languages/generatedString.php:3934
+#: languages/generatedString.php:3930
 msgid "Single Entry for each IP"
 msgstr ""
 
-#: languages/generatedString.php:3936
+#: languages/generatedString.php:3932
 msgid "Form Entry Edit"
 msgstr ""
 
-#: languages/generatedString.php:3938
+#: languages/generatedString.php:3934
 msgid "Honeypot trap"
 msgstr ""
 
-#: languages/generatedString.php:3940
+#: languages/generatedString.php:3936
 msgid "Snackbar Message"
 msgstr ""
 
-#: languages/generatedString.php:3942
+#: languages/generatedString.php:3938
 msgid "Modal Message"
 msgstr ""
 
-#: languages/generatedString.php:3944
+#: languages/generatedString.php:3940
 msgid "Rating Icon"
 msgstr ""
 
-#: languages/generatedString.php:3946
+#: languages/generatedString.php:3942
 msgid "Rating Message on Hover"
 msgstr ""
 
-#: languages/generatedString.php:3948
+#: languages/generatedString.php:3944
 msgid "Rating Message on Select"
 msgstr ""
 
-#: languages/generatedString.php:3950
+#: languages/generatedString.php:3946
 msgid "Name is the unique identifier for the field. It is used to reference the field in the form submission data."
 msgstr ""
 
-#: languages/generatedString.php:3952
+#: languages/generatedString.php:3948
 msgid "Label is the title of the field that appears above or beside the field. You can show or hide the field label by toggling this option."
 msgstr ""
 
-#: languages/generatedString.php:3954
+#: languages/generatedString.php:3950
 msgid "Autocomplete allows you to specify what type of automated assistance the browser should provide for filling out the field, <a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete'>Learn more</a>"
 msgstr ""
 
-#: languages/generatedString.php:3956
+#: languages/generatedString.php:3952
 msgid "Admin Label is the title of the field that will be used as an alternative reference throughout the dashboard. You can toggle this option to use or disable the admin label."
 msgstr ""
 
-#: languages/generatedString.php:3958
+#: languages/generatedString.php:3954
 msgid "Subtitle is an optional description that appears under the Field Label. You can show or hide the field subtitle by toggling this option."
 msgstr ""
 
-#: languages/generatedString.php:3960
+#: languages/generatedString.php:3956
 msgid "Helper Text is an optional text that appears beneath the field to provide additional information to the user. You can show or hide the helper text by toggling this option."
 msgstr ""
 
-#: languages/generatedString.php:3962
+#: languages/generatedString.php:3958
 msgid "Default Value is the initial value that will appear in the field. You can show or hide the default value by toggling this option."
 msgstr ""
 
-#: languages/generatedString.php:3964
+#: languages/generatedString.php:3960
 msgid "Suggestions allows you to add a custom suggestion list that will display suggestions as the user types in the input field."
 msgstr ""
 
-#: languages/generatedString.php:3966
+#: languages/generatedString.php:3962
 msgid "Placeholder is the text that appears inside the field before your user enters their own content. You can show or hide the field placeholder by toggling this option."
 msgstr ""
 
-#: languages/generatedString.php:3968
+#: languages/generatedString.php:3964
 msgid "This allows browser to display an appropriate virtual keyboard if needed. <a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode'>Learn more</a>"
 msgstr ""
 
-#: languages/generatedString.php:3970
+#: languages/generatedString.php:3966
 msgid "Set a regular expression pattern that the input value should match for the field."
 msgstr ""
 
-#: languages/generatedString.php:3972
+#: languages/generatedString.php:3968
 msgid "This allows to make the field mandatory for users to fill out before submitting the form. You can toggle this option to use or disable the required."
 msgstr ""
 
-#: languages/generatedString.php:3974
+#: languages/generatedString.php:3970
 msgid "The hide field feature allows you to hide the field from the user on the form. You can toggle this option to show or hide the field."
 msgstr ""
 
-#: languages/generatedString.php:3976
+#: languages/generatedString.php:3972
 msgid "The reverse button feature allows to reverse the clear and undo button. You can toggle this option to reverse clear and undo button."
 msgstr ""
 
-#: languages/generatedString.php:3978
+#: languages/generatedString.php:3974
 msgid "Readonly feature allows you to set a field as read-only, meaning that users will not be able to edit the content of that field. You can toggle this option to enable or disable the setting."
 msgstr ""
 
-#: languages/generatedString.php:3980
+#: languages/generatedString.php:3976
 msgid "Disabling a field prevents users from interacting with it or entering data. You can toggle this option to enable or disable the field as needed."
 msgstr ""
 
-#: languages/generatedString.php:3982
+#: languages/generatedString.php:3978
 msgid "Enabling this option will check from the submitted entries whether its value is duplicate."
 msgstr ""
 
-#: languages/generatedString.php:3984
+#: languages/generatedString.php:3980
 msgid "Enabling this option will check from your WordPress user database whether its value is duplicate."
 msgstr ""
 
-#: languages/generatedString.php:3986
+#: languages/generatedString.php:3982
 msgid "Stripe provide a variety of themes for the payment form. You can choose the theme that best suits theme your payment form. <a target=\"_blank\" href=\"https://stripe.com/docs/elements/appearance-api\">Learn more</a>"
 msgstr ""
 
-#: languages/generatedString.php:3988
+#: languages/generatedString.php:3984
 msgid "Stripe provide minimum or maximum amount for different payment method type and currency. <a target='_blank' href='https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts'>learn more</a>"
 msgstr ""
 
-#: languages/generatedString.php:3990
+#: languages/generatedString.php:3986
 msgid "Allows you to preset the language to be used in the hosted payment pages shown to the consumer. This option is Optional. <a target='_blank' href='https://docs.mollie.com/reference/v2/payments-api/create-payment#:~:text=locale,OPTIONAL,-Allows%20you%20to'>learn more</a>"
 msgstr ""
 
-#: languages/generatedString.php:3992
+#: languages/generatedString.php:3988
 msgid "Mollie provide a description for the payment. This option is required. <a target='_blank' href='https://docs.mollie.com/reference/create-payment#:~:text=Body%20Params-,description,required,-The%20description%20of'>learn more</a>. and also you add field value in this description. e.g: This Payment from Name: ${field_key}"
 msgstr ""
 
-#: languages/generatedString.php:3994
+#: languages/generatedString.php:3990
 msgid "You can add or remove Undo button form Signature Field. You can toggle this option to add or remove the Undo button."
 msgstr ""
 
-#: languages/generatedString.php:3996
+#: languages/generatedString.php:3992
 msgid "You can add or remove Clear button form Signature Field. You can toggle this option to add or remove the Clear button."
 msgstr ""
 
-#: languages/generatedString.php:3998
+#: languages/generatedString.php:3994
 msgid "This allows to show the rating message on hover. You can toggle this option to show or hide the rating message on hover."
 msgstr ""
 
-#: languages/generatedString.php:4000
+#: languages/generatedString.php:3996
 msgid "This allows to show the rating message on rating selected. You can toggle this option to show or hide the rating message on rating selected."
 msgstr ""
 
-#: languages/generatedString.php:4002
+#: languages/generatedString.php:3998
 msgid "By enabling this feature, you will enable to select multiple image."
 msgstr ""
 
-#: languages/generatedString.php:4004
+#: languages/generatedString.php:4000
 msgid "By enabling this feature, you will be hide image label."
 msgstr ""
 
-#: languages/generatedString.php:4006
+#: languages/generatedString.php:4002
 msgid "This allows to show the header icon. You can toggle this option to show or hide the header icon."
 msgstr ""
 
-#: languages/generatedString.php:4008
+#: languages/generatedString.php:4004
 msgid "This allows to show the stem button settings. You can toggle this option to show or hide the stem button settings."
 msgstr ""
 
-#: languages/generatedString.php:4010
+#: languages/generatedString.php:4006
 msgid "This allows to show the step label. You can toggle this option to show or hide the step label."
 msgstr ""
 
-#: languages/generatedString.php:4012
+#: languages/generatedString.php:4008
 msgid "This allows to show the step subtitle. You can toggle this option to show or hide the step subtitle."
 msgstr ""

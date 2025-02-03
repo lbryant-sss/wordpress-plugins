@@ -242,7 +242,7 @@ final class FieldValueHandler
       '/<img\s+src="([^"]+)"/i',
       function ($matches) use ($path) {
         $src = $matches[1];
-        if (parse_url($src, PHP_URL_SCHEME) === null) {
+        if (null === parse_url($src, PHP_URL_SCHEME)) {
           $src = $path . ltrim($src, '/');
         }
         return '<img src="' . htmlspecialchars($src, ENT_QUOTES) . '"';

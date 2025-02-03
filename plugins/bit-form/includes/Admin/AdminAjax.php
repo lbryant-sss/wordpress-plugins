@@ -362,6 +362,9 @@ class AdminAjax
       $integrationHandler = new IntegrationHandler(0, $user_details);
       $user_details = $ipTool->getUserDetail();
       $formIntegrations = $integrationHandler->getAllIntegration('mail', 'smtp');
+      if (isset($formIntegrations[0]->integration_details) && is_string($formIntegrations[0]->integration_details)) {
+        $formIntegrations[0]->integration_details = wp_unslash($formIntegrations[0]->integration_details);
+      }
       wp_send_json_success($formIntegrations, 200);
     } else {
       wp_send_json_error(
@@ -383,7 +386,7 @@ class AdminAjax
       $user_details = $ipTool->getUserDetail();
       $integrationHandler = new IntegrationHandler(0, $user_details);
       unset($_REQUEST['_ajax_nonce'], $_REQUEST['action'], $_REQUEST['status']);
-      $integrationDetails = wp_json_encode($_REQUEST);
+      $integrationDetails = json_encode(wp_unslash($_REQUEST), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
       $user_details = $ipTool->getUserDetail();
       $integrationName = 'smtp';
       $integrationType = 'smtp';

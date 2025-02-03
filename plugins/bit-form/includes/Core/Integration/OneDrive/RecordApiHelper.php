@@ -2,6 +2,7 @@
 
 namespace BitCode\BitForm\Core\Integration\OneDrive;
 
+use BitCode\BitForm\Admin\Form\Helpers;
 use BitCode\BitForm\Core\Util\ApiResponse;
 use BitCode\BitForm\Core\Util\FileHandler;
 use WP_Error;
@@ -34,13 +35,17 @@ class RecordApiHelper
     $filesize = filesize($filePath);
     $fp = fopen($filePath, 'rb');
     $body = fread($fp, $filesize);
+    fclose($fp);
     if (!$body) {
-      return new WP_Error(423, 'Can\'t open file!');
+      return new WP_Error(423, 'Can\'t open or read file!');
     }
     if (is_null($parentId)) {
       $parentId = $folderId;
     }
     $ids = explode('!', $folderId);
+    if (count($ids) < 1) {
+      return new WP_Error(400, 'Invalid folderId format.');
+    }
     if ('' === $filePath) {
       return false;
     }
@@ -111,7 +116,8 @@ class RecordApiHelper
   public function makeFilePath($filePath)
   {
     $upDir = wp_upload_dir();
-    return $upDir['basedir'] . '/bitforms/uploads/' . $this->formId . '/' . $this->entryId . '/' . $filePath;
+    $encriptedPath = Helpers::getEncryptedEntryId($this->entryId);
+    return $upDir['basedir'] . '/bitforms/uploads/' . $this->formId . '/' . $encriptedPath . '/' . $filePath;
   }
 
   public function executeRecordApi($integrationId, $logID,  $fieldValues, $fieldMap, $actions, $folderId, $parentId)

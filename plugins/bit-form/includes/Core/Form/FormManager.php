@@ -392,7 +392,7 @@ class FormManager
     return $upload_fields;
   }
 
-  public function getSignatureFilePath($blobLink, $form_id, $entry_id, $imgType)
+  public function getSignatureFilePath($blobLink, $form_id, $fieldKey, $entry_id, $imgType)
   {
     $imgTypes = [
       'image/png'     => 'png',
@@ -402,11 +402,10 @@ class FormManager
     $data_uri = $blobLink;
     $encoded_image = explode(',', $data_uri)[1];
     $decoded_image = base64_decode($encoded_image);
-    $_upload_dir = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $form_id . DIRECTORY_SEPARATOR . $entry_id;
+    $_upload_dir = FileHandler::getEntriesFileUploadDir($form_id, $entry_id);
+    FileHandler::createIndexFile($_upload_dir);
 
-    wp_mkdir_p($_upload_dir);
-
-    $filename = "{$entry_id}-" . time() . ".{$imgTypes[$imgType]}";
+    $filename = "{$entry_id}-{$fieldKey}.{$imgTypes[$imgType]}";
     $fullPath = $_upload_dir . DIRECTORY_SEPARATOR . $filename;
     file_put_contents($fullPath, $decoded_image);
 
@@ -642,8 +641,7 @@ class FormManager
         if ('signature' === $field->typ) {
           $fld_data = $submitted_data[$key];
           $img_type = $field->config->imgTyp;
-          $submitted_data[$key] = $this->getSignatureFilePath($fld_data, $this->form_id, $entry_id, $img_type);
-          break;
+          $submitted_data[$key] = $this->getSignatureFilePath($fld_data, $this->form_id, $key, $entry_id, $img_type);
         }
       }
 
@@ -821,8 +819,7 @@ class FormManager
       if ('signature' === $field->typ) {
         $fld_data = $updatedValue[$key];
         $img_type = $field->config->imgTyp;
-        $toUpdateValues[$key] = $this->getSignatureFilePath($fld_data, $this->form_id, $entryID, $img_type);
-        break;
+        $toUpdateValues[$key] = $this->getSignatureFilePath($fld_data, $this->form_id, $key, $entryID, $img_type);
       }
     }
 

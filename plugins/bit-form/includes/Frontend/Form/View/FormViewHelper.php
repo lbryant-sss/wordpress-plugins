@@ -42,7 +42,7 @@ class FormViewHelper
     }
     return <<<ICON
 <img
-  class="{$this->_form->getAtomicCls($classElement)}"
+  class="{$this->_form->getAtomicCls($classElement)} _frm-b-stp-icn"
   src="{$source}"
   alt=""
 />
@@ -53,7 +53,7 @@ ICON;
   {
     $formID = $this->getFormId();
     return <<<HEADERLABEL
-            <span class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr-{$uniqClass}")}'>
+            <span class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr-{$uniqClass}")} _frm-b-stp-hdr-{$uniqClass}'>
               {$this->getIconMarkup($preIcn, "_frm-b{$formID}-stp-{$uniqClass}-pre-i")}
               {$this->filterHtml($lbl)}
               {$this->getIconMarkup($sufIcn, "_frm-b{$formID}-stp-{$uniqClass}-suf-i")}
@@ -96,8 +96,8 @@ BUTTON;
     $formID = $this->_form->getFormID();
     $layout = $this->_layout;
     $stepHeaderHtml = <<<HEADERHTML
-    <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr-cntnr")}'>
-      <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr-wrpr")}'>
+    <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr-cntnr")} _frm-b-stp-hdr-cntnr'>
+      <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr-wrpr")} _frm-b-stp-hdr-wrpr'>
 HEADERHTML;
 
     $showHeadarIcon = isset($multiStepSettings->headerIcon->show) ? $multiStepSettings->headerIcon->show : false;
@@ -124,8 +124,8 @@ HEADERHTML;
       }
       if ($showHeadarIcon) {
         $iconWrapper = <<<ICONWRPR
-        <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr-icn-wrp")}'>
-          <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-icn-cntn")}'>
+        <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr-icn-wrp")} _frm-b-stp-hdr-icn-wrp'>
+          <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-icn-cntn")} _frm-b-stp-icn-cntn'>
             {$stepIcon}
           </div>
         </div>
@@ -143,10 +143,10 @@ ICONWRPR;
       $activeClass = 0 === $key ? 'active' : '';
       $disableClass = (0 !== $key && $stepValidation) ? 'disabled' : '';
       $stepHeaderHtml .= <<<HEADERHTML
-      <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr")} {$activeClass} {$disableClass}' data-step='{$step}'>
-        <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr-cntnt")}'>
+      <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr")} _frm-b-stp-hdr {$activeClass} {$disableClass}' data-step='{$step}'>
+        <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr-cntnt")} _frm-b-stp-hdr-cntnt'>
           {$iconWrapper}
-          <span class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr-titl-wrpr")}'>
+          <span class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-hdr-titl-wrpr")} _frm-b-stp-hdr-titl-wrpr'>
             {$stepLabelMarkup}
             {$stepSubtitleMarkup}
           </span>

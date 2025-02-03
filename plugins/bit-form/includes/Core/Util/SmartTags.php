@@ -128,8 +128,8 @@ final class SmartTags
         return $smartTags;
         break;
       case '_bf_number':
-          return $smartTags;
-          break;
+        return $smartTags;
+        break;
       default:
         return $smartTags;
     }

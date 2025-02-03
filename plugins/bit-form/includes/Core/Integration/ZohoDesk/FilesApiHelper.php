@@ -6,6 +6,7 @@
 
 namespace BitCode\BitForm\Core\Integration\ZohoDesk;
 
+use BitCode\BitForm\Core\Util\FileHandler;
 use BitCode\BitForm\Core\Util\HttpHelper;
 
 /**
@@ -31,7 +32,7 @@ final class FilesApiHelper
     $this->_defaultHeader['orgId'] = $orgId;
     $this->_defaultHeader['content-type'] = 'multipart/form-data; boundary=' . $this->_payloadBoundary;
     $this->_apiDomain = \urldecode($tokenDetails->api_domain);
-    $this->_basepath = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $formID . DIRECTORY_SEPARATOR . $entryID . DIRECTORY_SEPARATOR;
+    $this->_basepath = FileHandler::getEntriesFileUploadDir($formID, $entryID) . DIRECTORY_SEPARATOR;
   }
 
   /**

@@ -6,12 +6,12 @@
  * 
  * This file is part of the WP-Members plugin by Chad Butler
  * You can find out more about this plugin at https://rocketgeek.com
- * Copyright (c) 2006-2024  Chad Butler
+ * Copyright (c) 2006-2025  Chad Butler
  * WP-Members(tm) is a trademark of butlerblog.com
  *
  * @package WP-Members
  * @author Chad Butler
- * @copyright 2006-2024
+ * @copyright 2006-2025
  */
 
 // Exit if accessed directly.
@@ -201,7 +201,7 @@ class WP_Members_Admin_Tab_Emails {
 				'media_buttons' => false,
 				'textarea_rows' => 10,
 			);
-			wp_editor( $args['body_value'], esc_attr( $args['body_input'] ), $editor_args );
+			wp_editor( wp_unslash( $args['body_value'] ), esc_attr( $args['body_input'] ), $editor_args );
 		} else { ?>
 			<textarea name="<?php echo esc_attr( $args['body_input'] ); ?>" rows="12" cols="50" id="" class="large-text code"><?php echo esc_textarea( wp_unslash( $args['body_value'] ) ); ?></textarea>
         <?php }

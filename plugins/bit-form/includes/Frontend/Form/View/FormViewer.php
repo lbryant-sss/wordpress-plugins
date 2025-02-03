@@ -244,11 +244,11 @@ HTMLa;
       $formViewHelper = new FormViewHelper($this->_form, $this->_formContents);
 
       $fieldHtml .= <<<STEPWRPR
-      <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-cntnr")}'>
+      <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-cntnr")} _frm-b-stp-cntnr'>
         {$formViewHelper->getStepHeaderHtml()}
-        <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-wrpr")}'>
+        <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-wrpr")} _frm-b-stp-wrpr'>
         {$formViewHelper->getProgressBarMarkup()}
-          <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-cntnt-wrpr")}'>
+          <div class='{$this->_form->getAtomicCls("_frm-b{$formID}-stp-cntnt-wrpr")} _frm-b-stp-cntnt-wrpr'>
 STEPWRPR;
       foreach ($layouts as $key => $lay) {
         $hideOtherSteps = $key > 0 ? 'deactive' : '';

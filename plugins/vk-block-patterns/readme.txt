@@ -4,7 +4,7 @@ Donate link:
 Tags: Guternberg, Block Pattern
 Requires at least: 6.2
 Tested up to: 6.6
-Stable tag: 1.32.4.0
+Stable tag: 1.33.0.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -16,7 +16,9 @@ When you activate this plugin that create new custom post type for custom block 
 
 == Changelog ==
 
-[ bug fix ] Fix console error of pattern library button.
+= 1.33.0 =
+[ Other ] Pattern update
+[ Bug fix ] Fix console error of pattern library button.
 [ Bug fix ] Fix an issue with the CSS not loading correctly in the admin toolbar.
 
 = 1.32.4 =

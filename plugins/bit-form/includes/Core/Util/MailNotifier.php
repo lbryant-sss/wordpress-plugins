@@ -54,15 +54,24 @@ final class MailNotifier
           if (isset($notifyDetails->from_name) && !empty($notifyDetails->from_name)) {
             $from_name = $notifyDetails->from_name;
           }
-          (new MailConfig())->sendMail(['from_name' => $from_name]);
-          $mailSubject = FieldValueHandler::replaceFieldWithValue($mailTemplate[0]->sub, $fieldValue);
-          $mailBody = FieldValueHandler::replaceFieldWithValue($mailTemplate[0]->body, $fieldValue);
-          $webUrl = BITFORMS_UPLOAD_BASE_URL . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
-          $mailBody = FieldValueHandler::changeImagePathInHTMLString($mailBody, $webUrl);
+
           $mailHeaders = [
             // 'Content-Type: text/html; charset=UTF-8',
             // $embeddedMailHeader
           ];
+          $from_mail = '';
+          if (!empty($notifyDetails->from)) {
+            $fromMail = FieldValueHandler::validateMailArry($notifyDetails->from, $fieldValue);
+            $headerFromName = !empty($notifyDetails->fromName) ? $notifyDetails->fromName : explode('@', $fromMail[0])[0];
+            $mailHeaders[] = "FROM: $headerFromName " . '<' . sanitize_email($fromMail[0]) . '>';
+            $from_mail = $fromMail[0];
+          }
+          (new MailConfig())->sendMail(['from_name' => $from_name, 'from_email' => $from_mail]);
+          $mailSubject = FieldValueHandler::replaceFieldWithValue($mailTemplate[0]->sub, $fieldValue);
+          $mailBody = FieldValueHandler::replaceFieldWithValue($mailTemplate[0]->body, $fieldValue);
+          $webUrl = BITFORMS_UPLOAD_BASE_URL . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
+          $mailBody = FieldValueHandler::changeImagePathInHTMLString($mailBody, $webUrl);
+
           if (!empty($notifyDetails->replyto)) {
             $mailReplyTo = FieldValueHandler::validateMailArry($notifyDetails->replyto, $fieldValue);
             if (is_array($mailReplyTo)) {
@@ -101,15 +110,9 @@ final class MailNotifier
               $mailHeaders[] = 'Cc: ' . sanitize_email($mailCC);
             }
           }
-          if (!empty($notifyDetails->from)) {
-            $mailFrom = FieldValueHandler::validateMailArry($notifyDetails->from, $fieldValue);
-            $fromName = !empty($notifyDetails->fromName) ? $notifyDetails->fromName : explode('@', $mailFrom[0])[0];
-            $mailHeaders[] = "FROM: $fromName " . '<' . sanitize_email($mailFrom[0]) . '>';
-          }
-
           if (!empty($notifyDetails->attachment)) {
             $files = $notifyDetails->attachment;
-            $fileBasePath = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $formID . DIRECTORY_SEPARATOR . $entryID . DIRECTORY_SEPARATOR;
+            $fileBasePath = FileHandler::getEntriesFileUploadDir($formID, $entryID) . DIRECTORY_SEPARATOR;
             if (is_array($files)) {
               foreach ($files as $file) {
                 if (isset($fieldValue[$file])) {

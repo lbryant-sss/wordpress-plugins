@@ -55,6 +55,7 @@ return array(
     'BitCode\\BitForm\\Core\\Database\\ReportsModel' => $baseDir . '/includes/Core/Database/ReportsModel.php',
     'BitCode\\BitForm\\Core\\Database\\SuccessMessageModel' => $baseDir . '/includes/Core/Database/SuccessMessageModel.php',
     'BitCode\\BitForm\\Core\\Database\\WorkFlowModel' => $baseDir . '/includes/Core/Database/WorkFlowModel.php',
+    'BitCode\\BitForm\\Core\\Fallback\\AppStructureFallback' => $baseDir . '/includes/Core/Fallback/AppStructureFallback.php',
     'BitCode\\BitForm\\Core\\Fallback\\EntryMetaFallback' => $baseDir . '/includes/Core/Fallback/EntryMetaFallback.php',
     'BitCode\\BitForm\\Core\\Fallback\\FallBack' => $baseDir . '/includes/Core/Fallback/FallBack.php',
     'BitCode\\BitForm\\Core\\Fallback\\Field' => $baseDir . '/includes/Core/Fallback/Field.php',

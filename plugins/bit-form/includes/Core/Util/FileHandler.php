@@ -2,6 +2,7 @@
 
 namespace BitCode\BitForm\Core\Util;
 
+use BitCode\BitForm\Admin\Form\Helpers;
 use BitCode\BitForm\Core\Form\FormManager;
 use BitCode\BitForm\enshrined\svgSanitize\Sanitizer;
 
@@ -52,8 +53,8 @@ final class FileHandler
   public function moveUploadedFiles($file_details, $form_id, $entry_id)
   {
     $file_upoalded = [];
-    $_upload_dir = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $form_id . DIRECTORY_SEPARATOR . $entry_id;
-    wp_mkdir_p($_upload_dir);
+    $_upload_dir = self::getEntriesFileUploadDir($form_id, $entry_id);
+    $this::createIndexFile($_upload_dir);
     if (is_array($file_details['name'])) {
       foreach ($file_details['name'] as $key => $value) {
         //check accepted filetype in_array($file_details['name'][$key], $supported_files) else \
@@ -98,7 +99,7 @@ final class FileHandler
 
   public function deleteFiles($form_id, $entry_id, $files)
   {
-    $_upload_dir = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $form_id . DIRECTORY_SEPARATOR . $entry_id;
+    $_upload_dir = self::getEntriesFileUploadDir($form_id, $entry_id);
     foreach ($files as $name) {
       wp_delete_file($_upload_dir . DIRECTORY_SEPARATOR . $name);
     }
@@ -132,10 +133,8 @@ final class FileHandler
   {
     $upload_dir = wp_upload_dir();
     $tempDir = $upload_dir['basedir'] . '/bitforms/temp';
-    $destinationDir = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $formId . DIRECTORY_SEPARATOR . $entryID . DIRECTORY_SEPARATOR;
-    if (!is_dir($destinationDir)) {
-      mkdir($destinationDir);
-    }
+    $destinationDir = self::getEntriesFileUploadDir($formId, $entryID) . DIRECTORY_SEPARATOR;
+    self::createIndexFile($destinationDir);
 
     foreach ($submitted_data as $key => $data) {
       if (isset($fields[$key]) && 'advanced-file-up' === $fields[$key]['type']) {
@@ -334,5 +333,33 @@ final class FileHandler
     if (file_exists($path)) {
       wp_delete_file($path);
     }
+  }
+
+  public static function getEntriesFileUploadDir($form_id, $entry_id)
+  {
+    $uploadDir = rtrim(BITFORMS_UPLOAD_DIR, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $form_id . DIRECTORY_SEPARATOR;
+    $previousEntryDirectory = $uploadDir . $entry_id;
+    if (is_dir($previousEntryDirectory)) {
+      return $previousEntryDirectory;
+    }
+    $encrypted_directory = Helpers::getEncryptedEntryId($entry_id);
+    return $uploadDir . $encrypted_directory;
+  }
+
+  public static function createIndexFile($directory)
+  {
+    if (wp_mkdir_p($directory)) {
+      $indexFilePath = rtrim($directory, '/') . '/index.php';
+      if (!file_exists($indexFilePath)) {
+        try {
+          if (false === file_put_contents($indexFilePath, "<?php\n// No direct access allowed.")) {
+            throw new \Exception("Failed to create index.php in $directory");
+          }
+        } catch (\Exception $e) {
+          error_log($e->getMessage()); // Log the error for debugging
+        }
+      }
+    }
+    return false;
   }
 }

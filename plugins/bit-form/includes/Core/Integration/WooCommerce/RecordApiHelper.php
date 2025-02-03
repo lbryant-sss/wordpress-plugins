@@ -9,6 +9,7 @@ namespace BitCode\BitForm\Core\Integration\WooCommerce;
 
 use BitCode\BitForm\Core\Database\FormEntryLogModel;
 use BitCode\BitForm\Core\Util\ApiResponse as UtilApiResponse;
+use BitCode\BitForm\Core\Util\FileHandler;
 use WC_Product_Download;
 use WP_Error;
 
@@ -169,7 +170,7 @@ class RecordApiHelper
 
     $flag = null;
     if (isset($product_id)) {
-      $basepath = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $formID . DIRECTORY_SEPARATOR . $entryID . DIRECTORY_SEPARATOR;
+      $basepath = FileHandler::getEntriesFileUploadDir($formID, $entryID) . DIRECTORY_SEPARATOR;
 
       foreach ($uploadFieldMap as $uploadField) {
         if (!empty($uploadField->formField) && !empty($uploadField->wcField)) {

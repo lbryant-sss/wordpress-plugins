@@ -326,12 +326,6 @@ Current list of supported CDN servers:
 * `[Fixed]` Adding support for custom directories using webpc_source_directories filter
 * `[Fixed]` Verification of rewrites_not_working server configuration error when HTTP referer is required
 
-= 6.0.0 (2024-08-28) =
-* `[Fixed]` Generating statistics on plugin settings page when WebP format is unchecked
-* `[Fixed]` Restoring original images in Media Library
-* `[Changed]` Optimization statistics in Media Library
-* `[Added]` Warnings with explanations in plugin settings field: Image loading mode
-
 See [changelog.txt](https://url.mattplugins.com/converter-readme-changelog) for previous versions.
 
 == Upgrade Notice ==

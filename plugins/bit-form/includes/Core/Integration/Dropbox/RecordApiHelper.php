@@ -45,7 +45,7 @@ class RecordApiHelper
       'Authorization'   => 'Bearer ' . $this->token,
       'Content-Type'    => 'application/octet-stream',
       'Dropbox-API-Arg' => wp_json_encode([
-        'path'            => $folder . '/' . $this->fileName($filePath),
+        'path'            => $this->normalizePath($folder) . '/' . $this->fileName($filePath),
         'mode'            => 'add',
         'autorename'      => true,
         'mute'            => true,
@@ -57,13 +57,12 @@ class RecordApiHelper
 
   public function fileName($filePath)
   {
-    $filePathArray = explode('/', $filePath);
-    $key = count($filePathArray) - 1;
-    $fileName = null;
-    if (key_exists($key, $filePathArray)) {
-      $fileName = $filePathArray[$key];
-    }
-    return $fileName;
+    return basename($filePath);
+  }
+
+  public function normalizePath($path)
+  {
+    return str_replace('\\', '/', $path);
   }
 
   public function handleAllFiles($folderWithFile, $actions)
@@ -108,8 +107,7 @@ class RecordApiHelper
 
   public function makeFilePath($filePath)
   {
-    $upDir = wp_upload_dir();
-    return $upDir['basedir'] . '/bitforms/uploads/' . $this->formId . '/' . $this->entryId . '/' . $filePath;
+    return realpath(FileHandler::getEntriesFileUploadDir($this->formId, $this->entryId) . DIRECTORY_SEPARATOR . $filePath);
   }
 
   public function executeRecordApi($integrationId, $logID, $fieldValues, $fieldMap, $actions)

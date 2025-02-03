@@ -2859,6 +2859,10 @@ $i18n_strings = array(
 
     'Available Integrations' => __('Available Integrations', 'bit-form'),
 
+    'First Name' => __('First Name', 'bit-form'),
+
+    'Last Name' => __('Last Name', 'bit-form'),
+
     'Text' => __('Text', 'bit-form'),
 
     'Placeholder...' => __('Placeholder...', 'bit-form'),
@@ -2904,10 +2908,6 @@ $i18n_strings = array(
     'Phone Number' => __('Phone Number', 'bit-form'),
 
     'Enter Phone Number' => __('Enter Phone Number', 'bit-form'),
-
-    'First Name' => __('First Name', 'bit-form'),
-
-    'Last Name' => __('Last Name', 'bit-form'),
 
     'Username' => __('Username', 'bit-form'),
 
@@ -3658,10 +3658,6 @@ $i18n_strings = array(
     'Allow Roles to edit won entries' => __('Allow Roles to edit won entries', 'bit-form'),
 
     'Allow Roles to edit Other\'s entries' => __('Allow Roles to edit Other\'s entries', 'bit-form'),
-
-    'Prevent Roles to edit entries' => __('Prevent Roles to edit entries', 'bit-form'),
-
-    'Prevent Roles to edit Other\'s entries' => __('Prevent Roles to edit Other\'s entries', 'bit-form'),
 
     'By Roles' => __('By Roles', 'bit-form'),
 

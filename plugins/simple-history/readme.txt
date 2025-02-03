@@ -1,10 +1,10 @@
 # Simple History – Track, Log, and Audit WordPress Changes
 
-Contributors: eskapism
-Donate link: https://www.paypal.me/eskapism
+Contributors: eskapism, wpsimplehistory
+Donate link: https://simple-history.com/sponsor/
 Tags: history, audit log, event log, user tracking, activity
 Tested up to: 6.7
-Stable tag: 5.6.0
+Stable tag: 5.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,11 +16,22 @@ Track changes and user activities on your WordPress site. See who created a page
 
 Simple History shows recent changes made within WordPress, directly on your dashboard or on a separate page.
 
-The plugin works as a audit log of the most important events that occur in WordPress.
+The plugin acts as an audit log of the most important events that occur in WordPress.
 
 It's a plugin that is good to have on websites where several people are involved in editing the content.
 
 No coding is required to use the plugin. Just install it and it will start logging events.
+
+### 🔍 How Simple History Helps in Real Situations
+
+**Track what’s happening on your site**  
+_"Has someone done anything today? Ah, Sarah uploaded the new press release and created an article for it. Great! Now I don't have to do that."_
+
+**Identify issues and debug faster**  
+_"The site feels slow since yesterday. Has anyone done anything special? ... Ah, Steven activated 'naughty-plugin-x', that must be it."_
+
+**Keep Freelancers & Agencies Accountable**
+_"I hired a developer to optimize my site. But did they actually do anything? A quick glance at Simple History shows me exactly what they worked on, so I know I’m getting my money’s worth!"_
 
 ### ✨ Simple History Features
 
@@ -56,11 +67,11 @@ Out of the box Simple History has support for:
 
 -   **User Data Erasure Requests** – see when a user privacy data export request is added and when this request is approved by the user and when the user data is removed.
 
-#### Build in logging for third party plugins
+#### Built-in logging for third-party plugins
 
 Simple History comes with built in support for many plugins:
 
--   **Jetpack** – See what Jetpack modules that are activated and deactivated.
+-   **Jetpack** – See which Jetpack modules are activated and deactivated.
 
 -   **Advanced Custom Fields (ACF)** – See when field groups and fields are created and modified.
 
@@ -94,11 +105,9 @@ Is your plugin missing? No problem – plugin authors can add support for Simple
 -   [FV Player Pro](https://foliovision.com/player/features/sharing/video-downloading-with-simple-history#integration-with-simple-history)
 -   [Login Me Now](https://wordpress.org/plugins/login-me-now/)
 
-### What users say 💬
+### 💬 What users say
 
 🌟 [300+ five-star reviews](https://wordpress.org/support/plugin/simple-history/reviews/?filter=5) speak to the reliability of this plugin. 🌟
-
--   _"So far the best and most comprehensive logging plugin"_ - [@herrschuessler](https://wordpress.org/support/topic/so-far-the-best-and-most-comprehensive-logging-plugin/)
 
 -   _"The best history plugin I’ve found"_ – [Rich Mehta](https://wordpress.org/support/topic/the-best-history-plugin-ive-found/)
 
@@ -118,138 +127,156 @@ Is your plugin missing? No problem – plugin authors can add support for Simple
 
 ## Getting Started
 
-After installation, Simple History automatically starts logging activities. Access the history log through the dashboard widget or via the 'Simple History' page in the dashboard menu.
+After installation, Simple History automatically starts logging activities. Access the history log through the dashboard widget or via the 'Simple History' page.
 
 ### RSS feed with changes
 
 Using the optional password protected **RSS feed** you can keep track of the changes made on your website using your favorite RSS reader.
 
-### Comes with WP-CLI commands
+### WP-CLI commands for automation
 
-For those of you who like to work with the command line there are also some WP-CLI commands available.
+[Multiple WP-CLI commands exist](https://simple-history.com/features/wp-cli-commands/), to view and search the log, and to view more information about a specific event.
 
--   `wp simple-history list` – List the latest logged events.
+WP-CLI support is perfect for system administrators and agencies managing multiple WordPress sites. Using WP-CLI commands they can automate log monitoring, create reports, or integrate with existing DevOps tools.
 
-### Example scenarios
+Example commands:
 
-Keep track of what other people are doing:
-_"Has someone done anything today? Ah, Sarah uploaded
-the new press release and created an article for it. Great! Now I don't have to do that."_
+-   `wp simple-history event list` – List the latest logged events.
+-   `wp simple-history event search` – Search for events.
 
-Or for debug purposes:
-_"The site feels slow since yesterday. Has anyone done anything special? ... Ah, Steven activated 'naughty-plugin-x',
-that must be it."_
+### Stealth Mode – Hide Simple History from the WordPress Admin
 
-### API so you can add your own events to the audit log
+[Stealth Mode](https://simple-history.com/features/stealth-mode/) allows Simple History to run completely in the background, hidden from the WordPress admin interface. This is ideal for agencies, developers, and administrators who want to track user activity discreetly without exposing the logs to other users.
 
-If you are a theme or plugin developer and would like to add your own things/events to Simple History you can do that by using the function `SimpleLogger()` like this:
+There are two modes:
 
-`
-if ( function_exists("SimpleLogger") ) {
-// Most basic example: just add some information to the log
-SimpleLogger()->info("This is a message sent to the log");
+-   **Full Stealth Mode** – Completely hides Simple History from everyone.
+-   **Partial Stealth Mode** – Hides the plugin but allows selected users to access the logs.
 
-    	// A bit more advanced: log events with different severities
-    	SimpleLogger()->info("User admin edited page 'About our company'");
-    	SimpleLogger()->warning("User 'Jessie' deleted user 'Kim'");
-    	SimpleLogger()->debug("Ok, cron job is running!");
+The activity log remains accessible via the REST API, WP-CLI, and RSS feed, ensuring administrators can still retrieve logs when needed.
 
-}
-?>
-`
+Stealth Mode is enabled using a constant or filter, allowing you to customize who can access the logs while keeping the plugin hidden in the admin interface.
 
-See the [documentation](https://simple-history.com/docs/) for examples on how to [log your own events](https://simple-history.com/docs/logging-api/) and how to [query the log](https://simple-history.com/docs/query-api/), and more.
+### 📝 Add your own events to the log using the API
 
-### 🔆 Extend the plugin functionality with Add-ons
+Theme and plugin developers can log custom events in Simple History using the `simple_history_log` filter:
 
-Powerful add-ons are available to extend the functionality of Simple History even further:
+`apply_filters(
+  'simple_history_log',
+  'This is a logged message'
+);`
 
-**[WooCommerce Logger](https://simple-history.com/add-ons/woocommerce/?utm_source=wpadmin)**  
-Enhance your site's tracking with comprehensive logs for WooCommerce orders, products, settings, and coupons.
+See the [documentation](https://simple-history.com/docs/) for examples on how to [log your own events](https://simple-history.com/docs/logging-api/), [query the log](https://simple-history.com/docs/query-api/), and more.
 
-**[Extended Settings](https://simple-history.com/add-ons/extended-settings/)**  
-Extend the settings of Simple History with more options and settings.
+### 🔆 Extend with Add-ons
 
-**[Developer tools](https://simple-history.com/add-ons/developer-tools/) (coming soon)**  
-Log sent emails, HTTP API requests, cron jobs, and more.
+Take your activity logging to the next level with add-ons that enhance tracking, security, and customization.
+
+#### [Simple History Premium](https://simple-history.com/add-ons/premium/)
+
+Unlock advanced features and customization options:
+
+-   **Log Retention** – Control how long logs are stored, from a few days to forever.
+-   **Export Search Results** – Download logs in CSV or JSON format for deeper analysis.
+-   **Failed User Logins** – Disable or limit logging of failed login attempts to reduce noise.
+-   **IP Address Anonymization** – Choose whether to store full IPs or anonymize them for privacy compliance (e.g., GDPR).
+-   **Login Location Lookup** – View the location of a specific login attempt on Google Maps to identify suspicious activity.
+-   **Logger Control** – Enable or disable specific loggers to manage what type of events are recorded.
+-   **Ad-Free Experience** – Remove promotional banners for a distraction-free workflow.
+
+#### [WooCommerce Logger](https://simple-history.com/add-ons/woocommerce/?utm_source=wpadmin)
+
+Track WooCommerce activity with detailed logs for:
+
+✔️ Orders, refunds, and stock changes  
+✔️ Product updates and pricing adjustments  
+✔️ Settings modifications and coupon usage
+
+#### [Debug and Monitor](https://simple-history.com/add-ons/debug-and-monitor/)
+
+Gain deeper insights into your site’s background activity:
+
+🛠️ Monitor outgoing requests and emails  
+🔍 Debug HTTP API calls and server communication  
+👨‍💻 Essential for developers, support teams, and anyone curious about what’s happening under the hood
 
 ### 💚 Sponsor this project
 
-If you like this plugin please consider donating to support the development. The plugin has been free for the last 10 years and will continue to be free.
-
--   [Donate using PayPal](https://www.paypal.me/eskapism).
--   [Become a GitHub sponsor](https://github.com/sponsors/bonny).
--   [Send Bitcoin or Ethereum](https://simple-history.com/donate/).
--   [Add-ons that you can buy to support the development](https://simple-history.com/add-ons/) (and get some extra features!).
+If you like this plugin please consider [donating to support the development of the free plugin](https://simple-history.com/donate). The plugin has been free for the last 10 years and will continue to be free.
 
 ## Frequently Asked Questions
 
-= Is the plugin free? =
+### Is the plugin free?
 
-Yes! It has been free for the last 10 years and will continue to be free. There are some add-ons that you can buy to support the development of this plugin and get some extra features. [View add-ons](https://simple-history.com/add-ons/).
+Yes! Simple History has been free for over 10 years and will remain free. To support development and unlock extra features, you can purchase add-ons. [View add-ons](https://simple-history.com/add-ons/).
 
-= How do I view the log? =
+### How do I view the log?
 
-You can view the log on the dashboard or on a separate page in the admin area.
+You can access the log in multiple ways:
 
-= Can I see the log in the front end? =
+-   The **dashboard** widget
+-   The **admin bar menu**
+-   A **dedicated log page** in the WordPress admin area
 
-No, the log is only available in the admin area.
+### Do I need coding skills to use the plugin?
 
-= Do I need to have coding skills to use the plugin? =
+No! Just install and activate the plugin, and it will start collecting activity logs automatically.
 
-No, you don't need to write any code to use the plugin.
-Just install the plugin and it will start collecting data.
+### Where is the log stored?
 
-= Where is the log stored? =
+The log is stored in your WordPress database.
 
-The log is stored in the database used by WordPress.
+### Can I export the log?
 
-= Can I export the log? =
+Yes, you can export logs in **CSV** or **JSON** format for further analysis.
 
-Yes, you can export the log to a CSV or JSON file.
+### Is it compatible with other plugins?
 
-= Is my theme supported? =
+Yes! Simple History supports many popular plugins out of the box. Additionally, developers can integrate it with any plugin using the [Logging API](https://simple-history.com/docs/logging-api/).
 
-Yes, the plugin works with all themes.
+### Will this plugin slow down my website?
 
-= Is my plugin supported? =
+No, Simple History is lightweight and optimized for performance. Most logging occurs in the WordPress admin area when a WordPress user performs an action.
 
-The plugin comes with built in support for many plugins and support for Simple History can be added to any plugin using the Logging API.
+By default, nothing is logged on the front end, ensuring visitors experience no impact on performance.
 
-= Will my website slow down because of this plugin? =
+### Who can view the log?
 
-No, the plugin is very lightweight and will not slow down your website.
+Access to the log depends on the user’s role:
 
-= Who can view the log? =
+-   **Administrators** can view all logged events.
+-   **Editors** can see events related to posts and pages.
 
-How much information that is shown in the log depends on the user role of the user viewing the log. Admins can see everything, while editors can only see events related to posts and pages.
+### Can I exclude certain users from being logged?
 
-= Is it possible to exclude users from the log? =
+Yes, you can exclude users based on **role** or **email** using the [`simple_history/log/do_log`](https://simple-history.com/docs/hooks/) filter.
 
-Yes, you exclude users by role or email using the filter [`simple_history/log/do_log`](https://simple-history.com/docs/hooks/).
+For more details, check the [hooks documentation](https://simple-history.com/docs/hooks/).
 
-See the [hooks documentation](https://simple-history.com/docs/hooks/) for more info.
+### How long is the history kept?
 
-= For how long are the history kept? =
+By default, logs are stored for **60 days**. You can change this in the settings.
 
-By default, logs are stored for 60 days. This duration can be adjusted in the settings.
+You can also adjust the retention period using the [`simple_history/db_purge_days_interval`](https://simple-history.com/docs/hooks/#simplehistorydbpurgedaysinterval) filter or the [Extended Settings add-on](https://simple-history.com/add-ons/extended-settings?utm_source=wpadmin).
 
-This can be modified using the filter [`simple_history/db_purge_days_interval`](https://simple-history.com/docs/hooks/#simplehistorydbpurgedaysinterval) or using the [Simple History Extended Settings add-on](https://simple-history.com/add-ons/extended-settings?utm_source=wpadmin).
+### Can I track changes made by specific users?
 
-= Can I track changes made by specific users? =
+Yes! You can **filter logs by username**, making it easy to track individual activity.
 
-Yes, Simple History allows you to filter the history by user names, making it easy to monitor individual activities.
+### Is this plugin GDPR compliant?
 
-= Is this plugin GDRP compliant? =
+GDPR compliance depends on **how you use the plugin** and how you handle collected data. WordPress guidelines prohibit plugins from making legal compliance claims, so you should review your site's data policies to ensure compliance.
 
-Since GDRP is such a complex topic and since [WordPress plugins are not allowed to imply that they provide legal compliance](https://make.wordpress.org/plugins/2018/04/12/legal-compliance-added-to-guidelines/) we can not simply just say that the plugin is GDPR compliant.
+That said, Simple History follows **privacy-friendly practices**:
 
-GDPR is very much about how you use the data and how you inform your users about what data you collect and how you use it. No site is the same and the usage together with the plugin can be very different from site to site. So you should always make sure that you are compliant with GDPR when using the plugin.
+-   ❌ No Google Fonts
+-   ❌ No cookies
+-   ❌ No local storage
+-   ✅ IP addresses are anonymized by default
 
-That said, the plugin does not use Google Fonts, does not set cookies, uses no local storage, and by default the ip addresses are anonymized. The plugin is however a plugin that logs events and that can contain personal data, so you should always make sure that you are compliant with GDPR when using the plugin.
+Since the plugin logs events (which may contain personal data), it’s **your responsibility** to ensure GDPR compliance based on your site's usage.
 
-Read more at the [FAQ on the plugin website](https://simple-history.com/docs/faq-frequently-asked-questions/#is-the-plugin-GDPR-complient).
+For more information, see the full [GDPR FAQ](https://simple-history.com/docs/faq-frequently-asked-questions/#is-the-plugin-GDPR-complient).
 
 ## Screenshots
 
@@ -278,10 +305,31 @@ Read more at the [FAQ on the plugin website](https://simple-history.com/docs/faq
 -   [Add a 5-star review so other users know it's good.](https://wordpress.org/support/plugin/simple-history/reviews/?filter=5)
 -   [Get the premium add-on for more features.](https://simple-history.com/add-ons/premium/?utm_source=wpadmin&utm_content=readme).
 
+### Unreleased
+
+-   Fix export regression, causing not all events to be exported.
+-   Fix WordPress error notice when exporting event with no user email.
+-   Improve usability for Quick View/post revision info by modifying hover styles to not make scrollbar "jump". [#530](https://github.com/bonny/WordPress-Simple-History/issues/530)
+
+### 5.6.1 (January 2025)
+
+🚀 This release fixes incomplete exports due to an error in pagination logic.
+It also improves the post Quick Diff view by preventing scrollbar jumping on hover states.
+A small but very nice improvement! [See the difference in the release post.](https://simple-history.com/2025/simple-history-5-6-1-released/)
+
+**Fixed**
+
+-   Incomplete exports due to error in pagination logic.
+-   PHP notice when exporting events with missing user email data.
+
+**Improved**
+
+-   Enhance post Quick Diff view by preventing scrollbar jumping on hover states. [#530](https://github.com/bonny/WordPress-Simple-History/issues/530)
+
 ### 5.6.0 (January 2025)
 
 🔝 This version adds an option to the settings page to control the location of the menu page (at top or bottom).
-🫣 It also adds support for **Stealth Mode**: When enabled Simple History will be hidden from places like the dashboard, the admin menu, the admin bar, and the plugin list.
+🫣 It also adds support for **Stealth Mode**: When enabled, Simple History will be hidden from places like the dashboard, the admin menu, the admin bar, and the plugin list.
 👉 Read the [release post](https://simple-history.com/2025/simple-history-5-6-released-with-stealth-mode/) for more details and examples how to use this feature.
 
 **Added**

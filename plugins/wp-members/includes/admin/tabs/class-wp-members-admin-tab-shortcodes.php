@@ -6,12 +6,12 @@
  * 
  * This file is part of the WP-Members plugin by Chad Butler
  * You can find out more about this plugin at https://rocketgeek.com
- * Copyright (c) 2006-2024  Chad Butler
+ * Copyright (c) 2006-2025  Chad Butler
  * WP-Members(tm) is a trademark of butlerblog.com
  *
  * @package WP-Members
  * @author Chad Butler
- * @copyright 2006-2024
+ * @copyright 2006-2025
  */
 
 // Exit if accessed directly.
@@ -135,7 +135,7 @@ class WP_Members_Admin_Tab_Shortcodes {
 
 		update_option( 'wpmembers_settings', $wpmem_settings );
 
-		$wpmem->shortcodes['enable_field'] = $wpmem_settings['shortcodes']['enable_field'];
+		$wpmem->shortcodes->enable_field = $wpmem_settings['shortcodes']['enable_field'];
 
 		return esc_html__( 'WP-Members shorcode settings were updated', 'wp-members' );
 	}

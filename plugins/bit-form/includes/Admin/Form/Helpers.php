@@ -9,6 +9,8 @@ use Exception;
 
 class Helpers
 {
+  private static $encryptEntryIds = [];
+
   public static $file_upload_types = ['file-up', 'advanced-file-up'];
 
   public static $repeated_array_type_data_fields = ['check', 'image-select'];
@@ -297,5 +299,19 @@ LOAD_SECRIPT;
     $result = count($arr) === count($intArray);
 
     return $result;
+  }
+
+  public static function getTruncatedEncryptToken($str, $length = 20)
+  {
+    $token = hash_hmac('sha256', $str, AUTH_SALT);
+    return substr($token, 0, $length);
+  }
+
+  public static function getEncryptedEntryId($entryId)
+  {
+    if (!isset(self::$encryptEntryIds[$entryId])) {
+      self::$encryptEntryIds[$entryId] = self::getTruncatedEncryptToken($entryId);
+    }
+    return self::$encryptEntryIds[$entryId];
   }
 }

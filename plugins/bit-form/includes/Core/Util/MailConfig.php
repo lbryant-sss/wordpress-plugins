@@ -38,6 +38,9 @@ final class MailConfig
         $phpmailer->SMTPSecure = $integration_details->encryption;
         // $phpmailer->SMTP_DEBUG = 1;
         $phpmailer->From = $integration_details->form_email_address;
+        if (isset($this->config['from_email']) && !empty($this->config['from_email'])) {
+          $phpmailer->From = $this->config['from_email'];
+        }
         $from_name = $integration_details->form_name;
         if (isset($this->config['from_name']) && !empty($this->config['from_name'])) {
           $from_name = $this->config['from_name'];

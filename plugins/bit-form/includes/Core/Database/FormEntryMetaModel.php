@@ -6,6 +6,8 @@
 
 namespace BitCode\BitForm\Core\Database;
 
+use BitCode\BitForm\Core\Util\FileHandler;
+
 /**
  * Undocumented class
  */
@@ -536,12 +538,12 @@ class FormEntryMetaModel extends Model
             if (empty($entry[$key])) {
               continue;
             }
-            $_upload_dir = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $formId . DIRECTORY_SEPARATOR . $entry['entry_id'];
+            $_upload_dir = FileHandler::getEntriesFileUploadDir($formId, $entry['entry_id']);
             $imageArray = explode(',', $entry[$key]);
             if (is_array($imageArray)) {
               $fileData = [];
               foreach ($imageArray as $file) {
-                $path = "bitforms/bitforms-file-$formId/?formID=$formId&entryID=" . $entry['entry_id'] . "&fileID=$file";
+                $path = "bitforms/bitforms-file/?formID=$formId&entryID=" . $entry['entry_id'] . "&fileID=$file";
                 if (file_exists($_upload_dir . DIRECTORY_SEPARATOR . $file)) {
                   $fileData[] = site_url($path, null);
                 }
@@ -549,7 +551,7 @@ class FormEntryMetaModel extends Model
               $allData[$index][$key] = implode(',', $fileData);
             } else {
               $uploadedFile = explode('_', $entry[$key]);
-              $path = "bitforms/bitforms-file-$formId/?formID=$formId&entryID=" . $entry['entry_id'] . '&fileID=' . $uploadedFile[0];
+              $path = "bitforms/bitforms-file/?formID=$formId&entryID=" . $entry['entry_id'] . '&fileID=' . $uploadedFile[0];
               if (file_exists($_upload_dir . DIRECTORY_SEPARATOR . $uploadedFile[0])) {
                 $allData[$index][$key] = site_url($path, null);
               }

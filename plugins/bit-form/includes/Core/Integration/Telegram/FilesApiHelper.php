@@ -7,6 +7,8 @@
 
 namespace BitCode\BitForm\Core\Integration\Telegram;
 
+use BitCode\BitForm\Core\Util\FileHandler;
+
 /**
  * Provide functionality for Upload files
  */
@@ -25,7 +27,7 @@ final class FilesApiHelper
   {
     $this->_payloadBoundary = wp_generate_password(24);
     $this->_defaultHeader['Content-Type'] = 'multipart/form-data; boundary=' . $this->_payloadBoundary;
-    $this->_basepath = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $formID . DIRECTORY_SEPARATOR . $entryID . DIRECTORY_SEPARATOR;
+    $this->_basepath = FileHandler::getEntriesFileUploadDir($formID, $entryID) . DIRECTORY_SEPARATOR;
   }
 
   /**
