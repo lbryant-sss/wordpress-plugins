@@ -45,7 +45,7 @@ class Bulk_Optimization_Controller {
 	}
 
 	public static function reschedule_bulk_reoptimization() {
-		self::delete_bulk_optimization();
+		self::delete_bulk_reoptimization();
 		self::find_optimized_images_and_schedule_reoptimization();
 	}
 
@@ -79,7 +79,7 @@ class Bulk_Optimization_Controller {
 	 * @return void
 	 * @throws Async_Operation_Exception
 	 */
-	public static function cancel_bulk_reoptimization(): void {
+	public static function delete_bulk_reoptimization(): void {
 		$query = ( new Image_Optimization_Operation_Query() )
 			->set_hook( Async_Operation_Hook::REOPTIMIZE_BULK )
 			// It's risky to cancel in-progress operations at that point, so we cancel only the pending ones.
@@ -91,7 +91,7 @@ class Bulk_Optimization_Controller {
 		foreach ( $operations as $operation ) {
 			$image_id = $operation->get_args()['attachment_id'];
 
-			Async_Operation::cancel( $operation->get_id() );
+			Async_Operation::remove( [ $operation->get_id() ] );
 
 			( new Image_Meta( $image_id ) )->delete();
 		}

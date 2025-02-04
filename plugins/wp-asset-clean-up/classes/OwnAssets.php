@@ -52,7 +52,7 @@ class OwnAssets
 
             'sweetalert2' => array(
                 'handle'   => WPACU_PLUGIN_ID . '-sweetalert2-style',
-                'rel_path' => '/assets/sweetalert2/dist/sweetalert2.min.css'
+                'rel_path' => '/assets/sweetalert2/dist/sweetalert2.css'
             ),
 
             'autocomplete_search_jquery_ui_custom' => array(
@@ -79,7 +79,7 @@ class OwnAssets
 
             'sweetalert2' => array(
 	            'handle'   => WPACU_PLUGIN_ID . '-sweetalert2-js',
-	            'rel_path' => '/assets/sweetalert2/dist/sweetalert2.min.js'
+	            'rel_path' => '/assets/sweetalert2/dist/sweetalert2.js'
             ),
 
             'autocomplete_search' => array(
@@ -118,7 +118,7 @@ class OwnAssets
         }
 
         // Only in "Settings" and "Plugins Manager" plugin pages
-        if ( ! in_array($_GET['page'], array('wpassetcleanup_settings', 'wpassetcleanup_plugins_manager'))) {
+        if ( ! in_array($_GET['page'], array('wpassetcleanup_settings', 'wpassetcleanup_plugins_manager')) ) {
             return;
         }
 
@@ -507,7 +507,7 @@ JS;
 				self::$ownAssets['styles']['sweetalert2']['handle'],
 				plugins_url(self::$ownAssets['styles']['sweetalert2']['rel_path'], WPACU_PLUGIN_FILE),
 				array(),
-				1
+				2
 			);
 
 			add_action('admin_head', static function() {
@@ -1076,7 +1076,7 @@ CSS;
 	 */
 	public function ownAssetLoaderTag($tag, $handle)
     {
-        // "data-wpacu-skip": Prevent anyh asset alteration by any option set in "Settings"
+        // "data-wpacu-skip": Prevent any asset alteration by any option set in "Settings"
         if (in_array($handle, self::getOwnAssetsHandles('styles'))) {
             $tag = str_replace(' href=', ' data-wpacu-skip href=', $tag);
         }

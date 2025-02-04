@@ -7,12 +7,11 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * Modified by impress-org on 07-January-2025 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
 
 namespace Give\Vendors\Symfony\Component\HttpFoundation\Session\Storage;
+
+use Give\Vendors\Symfony\Component\HttpFoundation\Session\Storage\Proxy\AbstractProxy;
 
 /**
  * Allows session to be started by PHP and managed by Symfony.
@@ -22,10 +21,9 @@ namespace Give\Vendors\Symfony\Component\HttpFoundation\Session\Storage;
 class PhpBridgeSessionStorage extends NativeSessionStorage
 {
     /**
-     * @param \SessionHandlerInterface|null $handler
-     * @param MetadataBag                   $metaBag MetadataBag
+     * @param AbstractProxy|\SessionHandlerInterface|null $handler
      */
-    public function __construct($handler = null, MetadataBag $metaBag = null)
+    public function __construct($handler = null, ?MetadataBag $metaBag = null)
     {
         if (!\extension_loaded('session')) {
             throw new \LogicException('PHP extension "session" is required.');

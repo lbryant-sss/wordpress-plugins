@@ -7,9 +7,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * Modified by impress-org on 07-January-2025 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
 
 namespace Give\Vendors\Symfony\Component\HttpFoundation\Session;
@@ -25,10 +22,10 @@ namespace Give\Vendors\Symfony\Component\HttpFoundation\Session;
 final class SessionUtils
 {
     /**
-     * Find the session header amongst the headers that are to be sent, remove it, and return
+     * Finds the session header amongst the headers that are to be sent, removes it, and returns
      * it so the caller can process it further.
      */
-    public static function popSessionCookie($sessionName, $sessionId)
+    public static function popSessionCookie(string $sessionName, string $sessionId): ?string
     {
         $sessionCookie = null;
         $sessionCookiePrefix = sprintf(' %s=', urlencode($sessionName));

@@ -936,7 +936,8 @@ class HTMega_Elementor_Widget_Newsticker extends Widget_Base {
 
 
         if( is_array($post_categorys) && count($post_categorys) > 0 ){
-            if( $category_name['0'] == "product_type" ){
+
+            if ( in_array( "product_type", $category_name ) ) {
                 $category_name['0'] = 'product_cat';
             }
             $field_name = is_numeric( $post_categorys[0] ) ? 'term_id' : 'slug';

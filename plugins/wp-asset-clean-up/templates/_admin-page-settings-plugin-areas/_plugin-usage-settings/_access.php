@@ -6,12 +6,12 @@ if (! isset($data)) {
 use WpAssetCleanUp\Admin\SettingsAdminOnlyForAdmin;
 
 ?>
-<p style="line-height: 24px;"><?php
+<div style="margin: 0 0 22px;"><?php
 echo sprintf(
         __('By default, for security reasons, %s can be accesed within the Dashboard by <strong>Super Admins</strong> (somebody with access to the site network administration features and all other features) and <strong>Administrators</strong> (somebody who has access to all the administration features within a single site).', 'wp-asset-clean-up'),
     WPACU_PLUGIN_TITLE
 );
-?></p>
+?></div>
 
 <div class="wpacu-warning" style="font-size: inherit;">There are situations when non-admins (e.g. a developer that works on your website), might need access to <?php echo WPACU_PLUGIN_TITLE; ?> in order to optimize your website.
     <div style="margin: 10px 0 0;"><em>️<span class="dashicons dashicons-info"></span> The option below will allow you to give plugin access to other non-admin users.</em></div>

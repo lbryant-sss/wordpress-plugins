@@ -7,9 +7,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * Modified by impress-org on 07-January-2025 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
 
 namespace Give\Vendors\Symfony\Component\HttpFoundation\Session\Storage\Proxy;
@@ -84,11 +81,9 @@ abstract class AbstractProxy
     /**
      * Sets the session ID.
      *
-     * @param string $id
-     *
      * @throws \LogicException
      */
-    public function setId($id)
+    public function setId(string $id)
     {
         if ($this->isActive()) {
             throw new \LogicException('Cannot change the ID of an active session.');
@@ -110,11 +105,9 @@ abstract class AbstractProxy
     /**
      * Sets the session name.
      *
-     * @param string $name
-     *
      * @throws \LogicException
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         if ($this->isActive()) {
             throw new \LogicException('Cannot change the name of an active session.');

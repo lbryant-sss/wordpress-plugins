@@ -2060,7 +2060,6 @@ class HTMega_Elementor_Widget_Post_Carousel extends Widget_Base {
                 $post_categorys =  $settings[ $post_type.'_post_category'];
             }
         }
-
         $post_author = $settings['post_author'];
         $exclude_posts = $settings['exclude_posts'];
         $orderby            = $this->get_settings_for_display('orderby');
@@ -2122,11 +2121,11 @@ class HTMega_Elementor_Widget_Post_Carousel extends Widget_Base {
         if ( !empty( $post_categorys ) ) {
 
             $category_name =  get_object_taxonomies($post_type);
-            if( $category_name && $category_name['0'] == "product_type" ){
-                    $category_name['0'] = 'product_cat';
-            }
-
             if( $category_name &&  is_array($post_categorys) && count($post_categorys) > 0 ){
+
+                if ( in_array( "product_type", $category_name ) ) {
+                    $category_name['0'] = 'product_cat';
+                }
 
                 $field_name = is_numeric( $post_categorys[0] ) ? 'term_id' : 'slug';
                 $args['tax_query'] = array(

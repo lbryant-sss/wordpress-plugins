@@ -33,6 +33,7 @@ class Module extends Module_Base {
 			'Conflicts',
 			'User_Feedback',
 			'Not_Connected',
+			'Not_Connected_Modal',
 			'Renewal_Notice',
 		];
 	}

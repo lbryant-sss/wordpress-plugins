@@ -7,6 +7,8 @@ if (! isset($data)) {
 
 $optionsAlreadySet = ! empty($data['do_not_load_plugin_features']);
 ?>
+<div style="margin: 0 0 22px;"><span style="color: #ffc107;" class="dashicons dashicons-lightbulb"></span> <strong>Note:</strong> This option is valid for the frontend pages (the ones your visitors access), outside the Dashboard. * e.g. <em>yoursite.com/checkout/</em></div>
+
 <fieldset class="wpacu-options-grouped-in-settings" style="margin-bottom: 30px;">
     <legend>Prevent <?php echo WPACU_PLUGIN_TITLE; ?> from triggering on certain pages</legend>
     <p style="margin-top: 5px;">This option is useful if you have issues with the plugin on specific pages (e.g. incompatibility with another plugin). You can specify some URI patterns in the following textarea (one per line), just like the examples shown below:</p>

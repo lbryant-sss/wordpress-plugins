@@ -1035,11 +1035,11 @@ class HTMega_Elementor_Widget_PostGrid extends Widget_Base {
 
         if (  !empty( $post_categorys ) ) {
 
-            if( $category_name['0'] == "product_type" ){
-                    $category_name['0'] = 'product_cat';
-            }
-
             if( is_array($post_categorys) && count($post_categorys) > 0 ){
+
+                if ( in_array( "product_type", $category_name ) ) {
+                    $category_name['0'] = 'product_cat';
+                }
 
                 $field_name = is_numeric( $post_categorys[0] ) ? 'term_id' : 'slug';
                 $args['tax_query'] = array(

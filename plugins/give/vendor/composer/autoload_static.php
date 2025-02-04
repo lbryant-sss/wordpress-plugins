@@ -4,11 +4,11 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit035a59cb7f15cc6ca6964b692035eb4d
+class ComposerStaticInit10c4fd2ef90d119df27b9ba2eb291515
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '5f6326688f4debc6e43d6860fdea3df8' => __DIR__ . '/../..' . '/src/Framework/Http/Response/functions.php',
         'd07363a44b39ed7758400be44c013440' => __DIR__ . '/../..' . '/src/FormMigration/functions.php',
     );
@@ -18,11 +18,7 @@ class ComposerStaticInit035a59cb7f15cc6ca6964b692035eb4d
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
-            'Symfony\\Component\\HttpFoundation\\' => 33,
             'Stripe\\' => 7,
-            'StellarWP\\Validation\\' => 21,
-            'StellarWP\\FieldConditions\\' => 26,
-            'StellarWP\\ContainerContract\\' => 28,
             'Sample\\' => 7,
         ),
         'P' => 
@@ -57,25 +53,9 @@ class ComposerStaticInit035a59cb7f15cc6ca6964b692035eb4d
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'Symfony\\Component\\HttpFoundation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/http-foundation',
-        ),
         'Stripe\\' => 
         array (
             0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
-        ),
-        'StellarWP\\Validation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/stellarwp/validation/src',
-        ),
-        'StellarWP\\FieldConditions\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/stellarwp/field-conditions/src',
-        ),
-        'StellarWP\\ContainerContract\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/stellarwp/container-contract/src',
         ),
         'Sample\\' => 
         array (
@@ -128,9 +108,9 @@ class ComposerStaticInit035a59cb7f15cc6ca6964b692035eb4d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit035a59cb7f15cc6ca6964b692035eb4d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit035a59cb7f15cc6ca6964b692035eb4d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit035a59cb7f15cc6ca6964b692035eb4d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit10c4fd2ef90d119df27b9ba2eb291515::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit10c4fd2ef90d119df27b9ba2eb291515::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit10c4fd2ef90d119df27b9ba2eb291515::$classMap;
 
         }, null, ClassLoader::class);
     }

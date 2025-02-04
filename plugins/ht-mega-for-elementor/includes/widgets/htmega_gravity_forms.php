@@ -45,7 +45,7 @@ class HTMega_Elementor_Widget_Gravity_Forms extends Widget_Base {
             ]
         );
             $this->add_control(
-                'htemga_plugin_parent_missing_notice',
+                'htmega_plugin_parent_missing_notice',
                 [
                     'type' => Controls_Manager::RAW_HTML,
                     'raw' => esc_html__( 'It appears that Gravity Forms is not currently installed on your site. Please install or activate Gravity Forms, and remember to refresh the page after installation or activation.', 'htmega-addons' ),

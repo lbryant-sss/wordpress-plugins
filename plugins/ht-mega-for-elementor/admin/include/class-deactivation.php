@@ -401,54 +401,54 @@ class HTmega_Plugin_Deactivation_Feedback {
         <div id="htmega-deactivation-dialog" style="display: none;">
             <div class="htmega-deactivation-dialog-content">
                 <button type="button" class="htmega-close-dialog" aria-label="Close">&times;</button>
-                <h2 class="htmega-deactivation-dialog-title"><?php esc_html_e('Quick Feedback', 'htemga-addons') ?></h2>
-                <p class="htmega-deactivation-dialog-desc"><?php esc_html_e('If you have a moment, please let us know why you are deactivating: ', 'htemga-addons'); echo esc_html($this->PROJECT_NAME); ?></p>
+                <h2 class="htmega-deactivation-dialog-title"><?php esc_html_e('Quick Feedback', 'htmega-addons') ?></h2>
+                <p class="htmega-deactivation-dialog-desc"><?php esc_html_e('If you have a moment, please let us know why you are deactivating: ', 'htmega-addons'); echo esc_html($this->PROJECT_NAME); ?></p>
                 <form id="htmega-deactivation-feedback-form">
                     <div class="htmega-feedback-options">
                         <label>
-                            <input type="radio" name="reason" data-id="found_better" value="<?php esc_attr_e('I found a better plugin', 'htemga-addons') ?>">
-                            <?php esc_html_e('I found a better plugin', 'htemga-addons') ?>
+                            <input type="radio" name="reason" data-id="found_better" value="<?php esc_attr_e('I found a better plugin', 'htmega-addons') ?>">
+                            <?php esc_html_e('I found a better plugin', 'htmega-addons') ?>
                         </label>
                         <div id="htmega-found_better-reason-text" class="htmega-deactivation-reason-input" style="display: none;">
-                            <textarea name="found_better_reason" placeholder="<?php esc_attr_e('Please share which plugin.', 'htemga-addons') ?>"></textarea>
+                            <textarea name="found_better_reason" placeholder="<?php esc_attr_e('Please share which plugin.', 'htmega-addons') ?>"></textarea>
                         </div>
                         <label>
-                            <input type="radio" name="reason" data-id="stopped_working" value="<?php esc_attr_e('The plugin suddenly stopped working', 'htemga-addons') ?>">
-                            <?php esc_html_e('The plugin suddenly stopped working', 'htemga-addons') ?>
+                            <input type="radio" name="reason" data-id="stopped_working" value="<?php esc_attr_e('The plugin suddenly stopped working', 'htmega-addons') ?>">
+                            <?php esc_html_e('The plugin suddenly stopped working', 'htmega-addons') ?>
                         </label>
                         <div id="htmega-stopped_working-reason-text" class="htmega-deactivation-reason-input" style="display: none;">
-                            <textarea name="stopped_working_reason" placeholder="<?php esc_attr_e('Please share more details.', 'htemga-addons') ?>"></textarea>
+                            <textarea name="stopped_working_reason" placeholder="<?php esc_attr_e('Please share more details.', 'htmega-addons') ?>"></textarea>
                         </div>
                         <label>
-                            <input type="radio" name="reason" data-id="found_bug" value="<?php esc_attr_e('I encountered an error or bug', 'htemga-addons') ?>">
-                            <?php esc_html_e('I encountered an error or bug', 'htemga-addons') ?>
+                            <input type="radio" name="reason" data-id="found_bug" value="<?php esc_attr_e('I encountered an error or bug', 'htmega-addons') ?>">
+                            <?php esc_html_e('I encountered an error or bug', 'htmega-addons') ?>
                         </label>
                         <div id="htmega-found_bug-reason-text" class="htmega-deactivation-reason-input" style="display: none;">
-                            <textarea name="found_bug_reason" placeholder="<?php esc_attr_e('Please describe the error/bug you encountered. This will help us fix it for future users.', 'htemga-addons') ?>"></textarea>
+                            <textarea name="found_bug_reason" placeholder="<?php esc_attr_e('Please describe the error/bug you encountered. This will help us fix it for future users.', 'htmega-addons') ?>"></textarea>
                         </div>
                         <label>
-                            <input type="radio" name="reason" data-id="not_working" value="<?php esc_attr_e("I could not get the plugin to work", 'htemga-addons') ?>">
-                            <?php esc_html_e("I could not get the plugin to work", 'htemga-addons') ?>
+                            <input type="radio" name="reason" data-id="not_working" value="<?php esc_attr_e("I could not get the plugin to work", 'htmega-addons') ?>">
+                            <?php esc_html_e("I could not get the plugin to work", 'htmega-addons') ?>
                         </label>
                         <label>
-                            <input type="radio" name="reason" data-id="" value="<?php esc_attr_e('I no longer need the plugin', 'htemga-addons') ?>">
-                            <?php esc_html_e('I no longer need the plugin', 'htemga-addons') ?>
+                            <input type="radio" name="reason" data-id="" value="<?php esc_attr_e('I no longer need the plugin', 'htmega-addons') ?>">
+                            <?php esc_html_e('I no longer need the plugin', 'htmega-addons') ?>
                         </label>
                         <label>
-                            <input type="radio" name="reason" data-id="" value="<?php esc_attr_e("It's a temporary deactivation", 'htemga-addons') ?>">
-                            <?php esc_html_e("It's a temporary deactivation", 'htemga-addons') ?>
+                            <input type="radio" name="reason" data-id="" value="<?php esc_attr_e("It's a temporary deactivation", 'htmega-addons') ?>">
+                            <?php esc_html_e("It's a temporary deactivation", 'htmega-addons') ?>
                         </label>
                         <label>
-                            <input type="radio" name="reason" data-id="other" value="<?php esc_attr_e("Other", 'htemga-addons') ?>">
-                            <?php esc_html_e("Other", 'htemga-addons') ?>
+                            <input type="radio" name="reason" data-id="other" value="<?php esc_attr_e("Other", 'htmega-addons') ?>">
+                            <?php esc_html_e("Other", 'htmega-addons') ?>
                         </label>
                         <div id="htmega-other-reason-text" class="htmega-deactivation-reason-input" style="display: none;">
-                            <textarea name="other_reason" placeholder="<?php esc_attr_e("Please share the reason.", 'htemga-addons') ?>"></textarea>
+                            <textarea name="other_reason" placeholder="<?php esc_attr_e("Please share the reason.", 'htmega-addons') ?>"></textarea>
                         </div>
                     </div>
                     <div class="htmega-deactivation-dialog-buttons">
-                        <button type="submit" class="button button-primary"><?php esc_html_e("Submit & Deactivate", 'htemga-addons') ?></button>
-                        <a href="#" class="htmega-skip-feedback"><?php esc_html_e("Skip & Deactivate", 'htemga-addons') ?></a>
+                        <button type="submit" class="button button-primary"><?php esc_html_e("Submit & Deactivate", 'htmega-addons') ?></button>
+                        <a href="#" class="htmega-skip-feedback"><?php esc_html_e("Skip & Deactivate", 'htmega-addons') ?></a>
                     </div>
                 </form>
             </div>

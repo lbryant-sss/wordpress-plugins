@@ -7,9 +7,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * Modified by impress-org on 07-January-2025 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
 
 namespace Give\Vendors\Symfony\Component\HttpFoundation\Session\Flash;
@@ -26,18 +23,16 @@ interface FlashBagInterface extends SessionBagInterface
     /**
      * Adds a flash message for the given type.
      *
-     * @param string $type
-     * @param mixed  $message
+     * @param mixed $message
      */
-    public function add($type, $message);
+    public function add(string $type, $message);
 
     /**
      * Registers one or more messages for a given type.
      *
-     * @param string       $type
      * @param string|array $messages
      */
-    public function set($type, $messages);
+    public function set(string $type, $messages);
 
     /**
      * Gets flash messages for a given type.
@@ -47,7 +42,7 @@ interface FlashBagInterface extends SessionBagInterface
      *
      * @return array
      */
-    public function peek($type, array $default = []);
+    public function peek(string $type, array $default = []);
 
     /**
      * Gets all flash messages.
@@ -59,12 +54,11 @@ interface FlashBagInterface extends SessionBagInterface
     /**
      * Gets and clears flash from the stack.
      *
-     * @param string $type
-     * @param array  $default Default value if $type does not exist
+     * @param array $default Default value if $type does not exist
      *
      * @return array
      */
-    public function get($type, array $default = []);
+    public function get(string $type, array $default = []);
 
     /**
      * Gets and clears flashes from the stack.
@@ -81,11 +75,9 @@ interface FlashBagInterface extends SessionBagInterface
     /**
      * Has flash messages for a given type?
      *
-     * @param string $type
-     *
      * @return bool
      */
-    public function has($type);
+    public function has(string $type);
 
     /**
      * Returns a list of all defined types.

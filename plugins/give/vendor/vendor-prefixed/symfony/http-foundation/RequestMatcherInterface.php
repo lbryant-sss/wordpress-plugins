@@ -7,9 +7,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * Modified by impress-org on 07-January-2025 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
 
 namespace Give\Vendors\Symfony\Component\HttpFoundation;
@@ -24,7 +21,7 @@ interface RequestMatcherInterface
     /**
      * Decides whether the rule(s) implemented by the strategy matches the supplied request.
      *
-     * @return bool true if the request matches, false otherwise
+     * @return bool
      */
     public function matches(Request $request);
 }

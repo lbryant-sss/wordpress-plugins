@@ -968,6 +968,7 @@ abstract class QiAddonsForElementor_List_Shortcode extends QiAddonsForElementor_
 					'title'       => esc_html__( 'Posts IDs', 'qi-addons-for-elementor' ),
 					'description' => esc_html__( 'Separate post IDs with commas', 'qi-addons-for-elementor' ),
 					'group'       => $group,
+					'dynamic'     => false,
 					'dependency'  => array(
 						'show' => array(
 							'additional_params' => array(
@@ -1002,6 +1003,7 @@ abstract class QiAddonsForElementor_List_Shortcode extends QiAddonsForElementor_
 						'name'       => 'tax_slug',
 						'title'      => esc_html__( 'Taxonomy Slug', 'qi-addons-for-elementor' ),
 						'group'      => $group,
+						'dynamic'    => false,
 						'dependency' => array(
 							'show' => array(
 								'additional_params' => array(
@@ -1019,6 +1021,7 @@ abstract class QiAddonsForElementor_List_Shortcode extends QiAddonsForElementor_
 						'title'       => esc_html__( 'Taxonomy IDs', 'qi-addons-for-elementor' ),
 						'description' => esc_html__( 'Separate taxonomy IDs with commas', 'qi-addons-for-elementor' ),
 						'group'       => $group,
+						'dynamic'     => false,
 						'dependency'  => array(
 							'show' => array(
 								'additional_params' => array(
@@ -1036,6 +1039,7 @@ abstract class QiAddonsForElementor_List_Shortcode extends QiAddonsForElementor_
 					'name'       => 'author_slug',
 					'title'      => esc_html__( 'Author Slug', 'qi-addons-for-elementor' ),
 					'group'      => $group,
+					'dynamic'    => false,
 					'dependency' => array(
 						'show' => array(
 							'additional_params' => array(

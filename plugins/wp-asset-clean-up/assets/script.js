@@ -1166,7 +1166,7 @@ jQuery(document).ready(function($) {
                 });
 
                 // "Settings" - When an option is enabled/disabled
-                $('[data-target-opacity]').on('click change tick', function() {
+                $(document).on('click change tick', '[data-target-opacity]', function() {
                     if ($(this).prop('checked')) {
                         $('#'+ $(this).attr('data-target-opacity')).css({'opacity':1});
                     } else {

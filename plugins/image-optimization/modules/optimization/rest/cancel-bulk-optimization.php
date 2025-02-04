@@ -51,7 +51,7 @@ class Cancel_Bulk_Optimization extends Route_Base {
 				]);
 			}
 
-			Bulk_Optimization_Controller::cancel_bulk_optimization();
+			Bulk_Optimization_Controller::delete_bulk_optimization();
 
 			return $this->respond_success_json();
 		} catch ( Throwable $t ) {

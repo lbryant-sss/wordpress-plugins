@@ -60,7 +60,7 @@ class HTMega_Elementor_Widget_QUforms extends Widget_Base {
             ]
         );
             $this->add_control(
-                'htemga_plugin_parent_missing_notice',
+                'htmega_plugin_parent_missing_notice',
                 [
                     'type' => Controls_Manager::RAW_HTML,
                     'raw' => sprintf(
