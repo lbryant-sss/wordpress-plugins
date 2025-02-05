@@ -117,6 +117,14 @@ $totalNonAdminUsers = SettingsAdminOnlyForAdmin::getTotalNonAdminUsers();
             // There are plenty of users on this WordPress site
             // Use the auto-complete option to retrieve the results to avoid using too many resources
         ?>
+            <?php
+            if ($data['input_style'] === 'standard') {
+                ?>
+                <div class="wpacu-warning" style="margin: 0 0 20px; background: inherit; font-size: inherit;">
+                    <span style="font-size: 20px;">⚠️</span> At the moment, there's no compatibility available in terms of accesibility when it comes to searching for the users in the database. This is in development, and it will available as soon as possible. Meanwhile, please use "<em>Give access based on any other non-administrator user role</em>", or set "<em>Input Fields Style</em>" to "<em>Enhanced iPhone Style (Default) Standard</em>" in "<em>Settings</em>" -- "<em>Plugin Usage Preferences</em>" -- "<em>Accessibility</em>" and ask for assistance from someone that has access to the website (e.g. your developer).
+                </div>
+            <?php } ?>
+
             <div data-wpacu-non-admin-chosen-users-list="1">
                 <?php
                 if ( ! empty($nonAdminUsersWithCapIds) ) {

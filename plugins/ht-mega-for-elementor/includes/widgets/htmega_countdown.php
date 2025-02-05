@@ -1202,19 +1202,19 @@ class HTMega_Elementor_Widget_Countdown extends Widget_Base {
         $data_options['htmegasecond']   = sanitize_text_field( $settings['count_down_second'] );
         // Custom Label
         $data_options['htmegadaytxt'] = ! empty( $settings['customlabel_days'] ) ? 
-        esc_html( wp_strip_all_tags($settings['customlabel_days']) ) : 
+        htmlspecialchars( wp_strip_all_tags($settings['customlabel_days']) ) : 
         esc_html__( 'Days', 'htmega-addons' );
     
         $data_options['htmegahourtxt'] = ! empty( $settings['customlabel_hours'] ) ? 
-            esc_html( wp_strip_all_tags($settings['customlabel_hours']) ) : 
+            htmlspecialchars( wp_strip_all_tags($settings['customlabel_hours']) ) : 
             esc_html__( 'Hours', 'htmega-addons' );
         
         $data_options['htmegaminutestxt'] = ! empty( $settings['customlabel_minutes'] ) ? 
-            esc_html( wp_strip_all_tags($settings['customlabel_minutes']) ) : 
+            htmlspecialchars( wp_strip_all_tags($settings['customlabel_minutes']) ) : 
             esc_html__( 'Minutes', 'htmega-addons' );
         
         $data_options['htmegasecondstxt'] = ! empty( $settings['customlabel_seconds'] ) ? 
-            esc_html( wp_strip_all_tags($settings['customlabel_seconds']) ) : 
+            htmlspecialchars( wp_strip_all_tags($settings['customlabel_seconds']) ) : 
             esc_html__( 'Seconds', 'htmega-addons' );
 
 

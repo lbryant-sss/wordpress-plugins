@@ -23,7 +23,6 @@ class Wf_Woocommerce_Packing_List_Review_Request
 	private $webtoffee_logo_url = WF_PKLIST_PLUGIN_URL . 'assets/images/webtoffee-logo_small.png';
 	private $review_request_bg = WF_PKLIST_PLUGIN_URL . 'assets/images/wbtf_review_banner_bg.png';
 
-
 	private $start_date = 0; /* banner to show count start date. plugin installed date, remind me later added date */
 	private $current_banner_state = 2; /* 1: active, 2: waiting to show(first after installation), 3: closed by user/not interested to review, 4: user done the review, 5:remind me later */
 	private $banner_state_option_name = ''; /* WP option name to save banner state */
@@ -56,8 +55,6 @@ class Wf_Woocommerce_Packing_List_Review_Request
 
 		if ($this->check_condition()) /* checks the banner is active now */ {
 			$this->banner_message = sprintf(__('Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s %5$s. %6$s Less than a minute of your time will motivate us to keep doing what we do. We would really appreciate if you could take a moment to drop a quick review that motivate us to keep going.', 'print-invoices-packing-slip-labels-for-woocommerce'), '<b>', '</b>', '<b>', $this->plugin_title, '</b>', '<br />');
-			// $this->new_review_banner_message = sprintf(__('Hi  %1$s, %2$s We’re thrilled to see you making great use of our WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels plugin! It’s our mission to make %3$s invoicing as seamless %4$s and %5$s efficient %6$s as possible for you. %7$s If you found the plugin helpful, please leave us a quick %8$s 5-star review. %9$s It would mean the world to us. %10$s Warm regards, %11$s Team WebToffee %12$s', 'print-invoices-packing-slip-labels-for-woocommerce'), '<b>' . 'Akhil' . '</b>', '<br>', '<b>', '</b>', '<b>', '</b>', '<br><br>', '<b>', '</b>', '<br><br>', '<br><b>', '</b>');
-
 			$this->new_review_banner_title = sprintf(__('%1$s  %2$s  Loving %3$s  WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels plugin? %4$s  Share Your Feedback! %5$s', 'print-invoices-packing-slip-labels-for-woocommerce'), '🌟', '<span style="font-weight:300;">', '</span>', '<span style="font-weight:300;">', '</span>');
 
 			/* button texts */
@@ -109,7 +106,6 @@ class Wf_Woocommerce_Packing_List_Review_Request
 		$this->banner_state_option_name = $this->plugin_prefix . "_review_request";
 		$this->start_date_option_name = $this->plugin_prefix . "_start_date";
 		$this->banner_css_class = $this->plugin_prefix . "_review_request";
-
 		$this->start_date = absint(get_option($this->start_date_option_name));
 		$banner_state = absint(get_option($this->banner_state_option_name));
 		$this->current_banner_state = ($banner_state == 0 ? $this->current_banner_state : $banner_state);
@@ -122,7 +118,7 @@ class Wf_Woocommerce_Packing_List_Review_Request
 	 */
 	public function on_activate()
 	{
-		if ($this->start_date == 0) {
+		if (0===$this->start_date) {
 			$this->reset_start_date();
 		}
 	}
@@ -157,6 +153,7 @@ class Wf_Woocommerce_Packing_List_Review_Request
 	 */
 	public function show_banner()
 	{
+
 		$this->update_banner_state(1); /* update banner active state */
 
 		if (1000 <= $this->doc_created_count) { ?>
@@ -181,9 +178,7 @@ class Wf_Woocommerce_Packing_List_Review_Request
 				</div>
 			</div>
 		<?php
-		} else { ?>
-
-			<?php
+		} else {
 			$current_user = wp_get_current_user();
 			$user_first_name = !empty($current_user->first_name) ? $current_user->first_name : __('there', 'print-invoices-packing-slip-labels-for-woocommerce');
 			$this->new_review_banner_message = sprintf(__('Hi  %1$s, %2$s We’re thrilled to see you making great use of our WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels plugin! It’s our mission to make %3$s invoicing as seamless %4$s and %5$s efficient %6$s as possible for you. %7$s If you found the plugin helpful, please leave us a quick %8$s 5-star review. %9$s It would mean the world to us. %10$s Warm regards, %11$s Team WebToffee %12$s', 'print-invoices-packing-slip-labels-for-woocommerce'), '<b>' . $user_first_name . '</b>', '<br>', '<b>', '</b>', '<b>', '</b>', '<br><br>', '<b>', '</b>', '<br><br>', '<br><b>', '</b>'); ?>
@@ -294,7 +289,18 @@ class Wf_Woocommerce_Packing_List_Review_Request
 	 */
 	private function check_condition()
 	{
+		$banner_state = absint(get_option($this->banner_state_option_name));
+		if (3 === $banner_state  || 4 === $banner_state || 33 === $banner_state) {
+			return false;
+		}
+
 		$review_request_banner_state = (int)get_option('wt_review_request_banner_state');
+		// checking banner alerady checked or disabled
+		$showed_states = array(100, 200, 300);
+		if (in_array($review_request_banner_state, $showed_states, true)) {
+			return false;
+		}
+
 		$valid_states = array(0, 10, 11, 12, 20, 21, 22, 30, 31, 32);
 
 		// Check if the state is valid
@@ -302,14 +308,15 @@ class Wf_Woocommerce_Packing_List_Review_Request
 			return false;
 		}
 
-		if ($review_request_banner_state === 0) {
-			$this->handle_initial_banner_state();
+		if (0 === $review_request_banner_state) {
+			$state = $this->handle_initial_banner_state();
+			if ($state != 0) {
+				update_option('wt_review_request_banner_state', $state);
+				return true;
+			}
+		} else {
+			return $this->check_document_count_condition($review_request_banner_state);
 		}
-
-		// Return true for specific states or check document count for others
-		return in_array($review_request_banner_state, array(10, 20, 30), true)
-			? true
-			: $this->check_document_count_condition($review_request_banner_state);
 	}
 
 	/**
@@ -317,29 +324,50 @@ class Wf_Woocommerce_Packing_List_Review_Request
 	 */
 	private function handle_initial_banner_state()
 	{
-		$date_to_check = $this->start_date + (86400 * 10);
-		$total_created_invoice_document_count = (int)get_option('wt_created_invoice_document_count');
 
-		$total_temp_files = Wf_Woocommerce_Packing_List_Admin::get_total_temp_files(true);
-		$total_created_document_count = isset($total_temp_files['total_files']['total_file_count'])
-			? (int)$total_temp_files['total_files']['total_file_count']
-			: 0;
 
-		$wt_created_document_count = (int)get_option('wt_created_document_count');
-		$total_created_document_count = max($total_created_document_count, $wt_created_document_count);
-
-		if ($total_created_document_count >= 50) {
-			update_option('wt_review_request_banner_state', 10);
-		} elseif ($total_created_invoice_document_count >= 50) {
-			update_option('wt_review_request_banner_state', 20);
-		} elseif (time() >= $date_to_check && $date_to_check !== 864000) {
-			update_option('wt_review_request_banner_state', 30);
+		if (0 === $this->start_date  || null === $this->start_date) {
+			$this->reset_start_date();
+			return 0;
 		}
 
-		// Reset start date if invalid
+		$total_created_invoice_document_count = (int)get_option('wt_created_invoice_document_count');
+		$total_created_document_count = (int)get_option('wt_created_document_count');
+		$current_time = time();
+
+		if (200 <= $total_created_document_count) {
+			return 12; // Condition 12: total_created_document_count >= 200
+		} elseif (100 <= $total_created_document_count) {
+			return 11; // Condition 11: total_created_document_count >= 100
+		} elseif (50 <= $total_created_document_count) {
+			return 10; // Condition 10: total_created_document_count >= 50
+		}
+
+		// Check conditions for invoices
+		if (200 <= $total_created_invoice_document_count) {
+			return 22; // Condition 22: total_created_invoice_document_count >= 200
+		} elseif (100 <= $total_created_invoice_document_count) {
+			return 21; // Condition 21: total_created_invoice_document_count >= 100
+		} elseif (50 <= $total_created_invoice_document_count) {
+			return 20; // Condition 20: total_created_invoice_document_count >= 50
+		}
 		if (empty($this->start_date)) {
 			$this->reset_start_date();
 		}
+		if (0 !== $this->start_date || null !== $this->start_date) {
+			// Check time-based conditions
+			if ($current_time >=  $this->start_date + (86400 * 90)) {
+				return 32; // Condition 32: 90 days have passed
+			} elseif ($current_time >=  $this->start_date + (86400 * 30)) {
+				return 31; // Condition 31: 30 days have passed
+
+			} elseif ($current_time >=  $this->start_date + (86400 * 10)) {
+				return 30; // Condition 30: 10 days have passed
+
+			}
+		}
+
+		return 0;
 	}
 
 	/**
@@ -347,20 +375,18 @@ class Wf_Woocommerce_Packing_List_Review_Request
 	 */
 	public function check_document_count_condition($review_request_banner_state)
 	{
-		$total_temp_files = Wf_Woocommerce_Packing_List_Admin::get_total_temp_files(true);
-		$total_created_document_count = isset($total_temp_files['total_files']['total_file_count'])
-			? (int)$total_temp_files['total_files']['total_file_count']
-			: 0;
-		$wt_created_document_count = (int)get_option('wt_created_document_count');
-		$total_created_document_count = max($total_created_document_count, $wt_created_document_count);
+		$total_created_document_count = (int)get_option('wt_created_document_count');
 		$total_created_invoice_document_count = (int)get_option('wt_created_invoice_document_count');
 
 		// Define conditions
 		$conditions = array(
+			10 => $total_created_document_count >= 50,
 			11 => $total_created_document_count >= 100,
 			12 => $total_created_document_count >= 200,
+			20 => $total_created_invoice_document_count >= 50,
 			21 => $total_created_invoice_document_count >= 100,
 			22 => $total_created_invoice_document_count >= 200,
+			30 => time() >= $this->start_date + (86400 * 10),
 			31 => time() >= $this->start_date + (86400 * 30),
 			32 => time() >= $this->start_date + (86400 * 90),
 		);

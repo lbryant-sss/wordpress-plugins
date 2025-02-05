@@ -1,5 +1,5 @@
 === Advanced Shipment Tracking for WooCommerce  ===
-Contributors: zorem,gaurav1092,eranzorem,gehorsam,satishzorem
+Contributors: zorem,gaurav1092,eranzorem,satishzorem
 Tags: WooCommerce, delivery, shipping, shipment tracking, tracking
 Requires at least: 5.3
 Tested up to: 6.7.1

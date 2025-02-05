@@ -2237,3 +2237,9 @@ td.wt_pklist_dash_btn_row {
   display: flex;
   align-items: center;
 }
+
+body.rtl  .wbtf_review_background_img_wrap {
+  left: 0 !important;
+  transform: scale(-1, 1) !important;
+  right: unset;
+}

@@ -1199,7 +1199,7 @@ jQuery(document).ready(function($) {
                     let $spinnerAfterLink = $(this).next('.wpacu-add-new-no-features-rule-row-loader');
                     $spinnerAfterLink.show();
 
-                    $.get(wpacu_object.ajax_url, {
+                    $.post(wpacu_object.ajax_url, {
                         'action'      : wpacu_object.plugin_prefix + '_add_new_no_features_load_row',
                         'time_r'      : new Date().getTime()
                     }, function (newRowOutput) {

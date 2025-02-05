@@ -52,7 +52,7 @@ class OwnAssets
 
             'sweetalert2' => array(
                 'handle'   => WPACU_PLUGIN_ID . '-sweetalert2-style',
-                'rel_path' => '/assets/sweetalert2/dist/sweetalert2.css'
+                'rel_path' => '/assets/sweetalert2/dist/sweetalert2.min.css'
             ),
 
             'autocomplete_search_jquery_ui_custom' => array(
@@ -79,7 +79,7 @@ class OwnAssets
 
             'sweetalert2' => array(
 	            'handle'   => WPACU_PLUGIN_ID . '-sweetalert2-js',
-	            'rel_path' => '/assets/sweetalert2/dist/sweetalert2.js'
+	            'rel_path' => '/assets/sweetalert2/dist/sweetalert2.min.js'
             ),
 
             'autocomplete_search' => array(

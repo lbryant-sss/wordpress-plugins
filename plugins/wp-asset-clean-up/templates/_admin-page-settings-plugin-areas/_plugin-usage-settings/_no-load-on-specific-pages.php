@@ -39,9 +39,7 @@ $optionsAlreadySet = ! empty($data['do_not_load_plugin_features']);
         </ul>
     </div>
 
-    <hr />
-
-    <div id="wpacu-prevent-feature-rule-areas-wrap">
+    <div style="margin: 20px 0 0;" id="wpacu-prevent-feature-rule-areas-wrap">
         <?php
         if ($optionsAlreadySet) {
             foreach ($data['do_not_load_plugin_features'] as $rowKey => $setValues) {
