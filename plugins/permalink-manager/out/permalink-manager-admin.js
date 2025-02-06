@@ -230,6 +230,25 @@ jQuery(document).ready(function() {
 	});
 
 	/**
+	 * Copy Permastructure tag to clipboard
+	 */
+	jQuery('.structure-tags-list .permastruct-tag-container .permastruct-tag-buttons button').on('click', async function () {
+		const button = jQuery(this);
+		const textToCopy = button.text().trim(); // Get button text
+
+		try {
+			await navigator.clipboard.writeText(textToCopy); // Copy text to clipboard
+			button.text('Copied!').prop('disabled', true); // Provide feedback
+
+			setTimeout(() => {
+				button.text(button.data('original-text')).prop('disabled', false);
+			}, 1000);
+		} catch (err) {
+			console.error('Clipboard copy failed:', err);
+		}
+	});
+
+	/**
 	 * Control the settings tabs
 	 */
 	jQuery('#permalink-manager').on('click', '.settings-tabs .subsubsub a', function() {

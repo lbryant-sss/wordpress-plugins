@@ -19,6 +19,11 @@ Add an extra layer of security to your WordPress website login and protect your 
 
 Use the WP 2FA plugin to enable two-factor authentication for your WordPress administrator, enforce 2FA for all your website users, or for users with specific roles. This plugin is very easy to use; everything can be configured via wizards with clear instructions, so even non-technical users can set up 2FA without requiring technical assistance.
 
+[youtube https://www.youtube.com/watch?v=vRlX_NNGeFo]
+
+[Features](https://melapress.com/wordpress-2fa/features/?utm_source=wp+repo&utm_medium=repo+link&utm_campaign=wordpress_org&utm_content=wp2fa) | [Getting Started](https://melapress.com/support/kb/wp-2fa-plugin-getting-started/?utm_source=wp+repo&utm_medium=repo+link&utm_campaign=wordpress_org&utm_content=wp2fa) | [Get the Premium!](https://melapress.com/wordpress-2fa/pricing/?utm_source=wp+repo&utm_medium=repo+link&utm_campaign=wordpress_org&utm_content=wp2fa)
+
+
 ### WP 2FA key plugin features and capabilities
 - Free two-factor authentication (2FA) for all users
 - Supports multiple 2FA methods including authenticator app TOTP, and code over email

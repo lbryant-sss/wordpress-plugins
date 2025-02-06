@@ -81,8 +81,13 @@
 #permalink-manager #tools select{min-width:60%}
 #permalink-manager fieldset label{margin-bottom:0 !important}
 
-#permalink-manager .structure-tags-list{display:block;line-height:175%}
-#permalink-manager .structure-tags-list code{}
+.structure-tags-list{display:block;line-height:175%}
+.structure-tags-list pre{white-space:normal;line-height:2em;word-break:keep-all;margin:0}
+.structure-tags-list .notice{padding:6px 12px;margin:1em 0;display:block}
+.structure-tags-list .permastruct-tag-container{display:flex;flex-direction:row;gap:20px}
+.structure-tags-list .permastruct-tag-container > *{flex-basis:400px}
+.structure-tags-list .permastruct-tag-container .permastruct-tag-buttons{display:inline-flex;flex-wrap:wrap;gap:10px}
+.structure-tags-list .permastruct-tag-container p:first-of-type{margin-top:0;padding-top:0!important}
 
 #permalink-manager .updated-slugs-table .row-title{max-width:400px}
 
@@ -181,6 +186,7 @@
 /**
  * Permastructures
  */
+#permalink-manager #permastructs{margin-top:1em}
 #permalink-manager .permastruct-row .permastruct-settings{display:none}
 #permalink-manager .permastruct-row .permastruct-settings .default-permastruct-row{margin-top:15px}
 #permalink-manager .permastruct-row .permastruct-settings .single_checkbox label{font-weight:400}
@@ -195,7 +201,7 @@
 #permalink-manager .permastruct-row .permastruct-field:disabled{cursor:not-allowed}
 #permalink-manager .permastruct-row .permastruct-buttons{margin:0;font-size:13px;min-width:fit-content;display:flex;gap:10px}
 #permalink-manager .permastruct-row .permastruct-buttons > span{height:100%;display:flex}
-#permalink-manager .permastruct-row .permastruct-buttons a{color:#959595;border-color:#ddd;padding:0 8px;font-size:inherit;align-content:center}
+#permalink-manager .permastruct-row .permastruct-buttons a{border-color:#ddd;padding:0 8px;font-size:inherit;align-content:center}
 #permalink-manager .permastruct-row .permastruct-buttons a .dashicons{font-size:initial;line-height:1em;height:1em;vertical-align:middle}
 
 /**

@@ -152,7 +152,7 @@ class Permalink_Manager_Permastructs {
 
 		$buttons = sprintf( "<p class=\"permastruct-buttons\">
             <span><a href=\"#\" class=\"button button-small button-secondary extra-settings\"><span class=\"dashicons dashicons-admin-settings\"></span> %s</a></span>
-            <span><a href=\"/?TB_inline&width=600&height=550&inlineId=%s\" class=\"button button-small button-secondary show-tags thickbox\"><span class=\"dashicons dashicons-tag\"></span> %s</a></span>
+            <span><a href=\"/?TB_inline&width=800&height=600&inlineId=%s\" class=\"button button-small button-secondary show-tags thickbox\"><span class=\"dashicons dashicons-tag\"></span> %s</a></span>
         </p>", __( "Extra settings", "permalink-manager" ), $tags_container_id, __( "Available tags", "permalink-manager" ) );
 
 		$language_fields = '';
@@ -219,20 +219,22 @@ class Permalink_Manager_Permastructs {
 
 		$tags_groups = array(
 			'slug'          => array(
-				'heading' => __( 'Native slug', 'permalink-manager' )
+				'heading'     => __( 'Native slug & title', 'permalink-manager' ),
+				'description' => __( 'The native slug is generated from the initial title and will not update automatically if the title is changed later. You can use the %native_title% tag to replace native slugs with actual titles, even if another content item has the same title.', 'permalink-manager' )
 			),
-			'title'         => array(
-				'heading' => __( 'Native title', 'permalink-manager' )
-			),
-			'meta'       => array(
-				'heading' => __( 'Meta data', 'permalink-manager' )
+			'meta'          => array(
+				'heading'     => __( 'Meta data', 'permalink-manager' ),
+				'description' => __( 'Using meta tags, you may add post-specific information like item IDs or author names to permalinks. This might be beneficial to news, events, and time-sensitive content where you can use date-based tags.', 'permalink-manager' )
 			),
 			'taxonomies'    => array(
-				'heading' => __( 'Taxonomies', 'permalink-manager' )
+				'heading'     => __( 'Taxonomies', 'permalink-manager' ),
+				'description' => __( 'Custom permalinks can include taxonomy-based slugs such as categories, tags, and custom taxonomy terms. If a post belongs to multiple terms, the lowest-level one is used unless a specific term is selected as primary.', 'permalink-manager' )
 			),
 			'custom_fields' => array(
-				'heading' => __( 'Custom fields', 'permalink-manager' )
-			),
+				'heading'     => __( 'Custom fields', 'permalink-manager' ),
+				'description' => __( 'Permalinks can be modified with custom fields to dynamically include extra data. For example, you can append product SKUs to WooCommerce URLs or include geolocation details in your custom post types\' permalinks.', 'permalink-manager' ),
+				'pro'         => true
+			)
 		);
 
 		if ( ! $is_taxonomy ) {
@@ -241,10 +243,7 @@ class Permalink_Manager_Permastructs {
 
 			$tags_groups['slug']['tags'] = array(
 				$post_type_tag,
-				( $content_type !== 'post' ) ? '%postname%' : ''
-			);
-
-			$tags_groups['title']['tags'] = array(
+				( $content_type !== 'post' ) ? '%postname%' : '',
 				'%native_title%'
 			);
 
@@ -273,10 +272,7 @@ class Permalink_Manager_Permastructs {
 
 			$tags_groups['slug']['tags'] = array(
 				$taxonomy_tag,
-				'%term_name%'
-			);
-
-			$tags_groups['title']['tags'] = array(
+				'%term_name%',
 				'%native_title%'
 			);
 
@@ -295,13 +291,25 @@ class Permalink_Manager_Permastructs {
 				continue;
 			}
 
-			$html .= sprintf( '<h4>%s</h4>', $tags_group['heading'] );
-			foreach ( $tags_group['tags'] as $tag ) {
-				$html .= ( ! empty( $tag ) ) ? sprintf( "<code>%s</code>", $tag ) : '';
+			$html .= sprintf( '<h3>%s</h3>', $tags_group['heading'] );
+
+			if ( ! empty( $tags_group['pro'] ) ) {
+				$pro_text = Permalink_Manager_UI_Elements::pro_text( true );
+				$html     .= ( ! empty( $pro_text ) ) ? sprintf( '<span class="notice notice-error inline">%s</span>', $pro_text ) : '';
 			}
+
+			$html .= '<div class="permastruct-tag-container">';
+			$html .= sprintf( '<div><p class="description">%s</p></div>', $tags_group['description'] );
+
+			$html .= '<div><div class="permastruct-tag-buttons">';
+			foreach ( $tags_group['tags'] as $tag ) {
+				$html .= ( ! empty( $tag ) ) ? sprintf( '<button type="button" class="button button-small button-secondary" data-original-text="%1$s">%1$s</button>', $tag ) : '';
+			}
+			$html .= '</div></div>';
+			$html .= '</div>';
 		}
 
-		return sprintf( "<span class=\"structure-tags-list\">%s</span>", $html );
+		return sprintf( "<div class=\"structure-tags-list\">%s</div>", $html );
 	}
 
 }

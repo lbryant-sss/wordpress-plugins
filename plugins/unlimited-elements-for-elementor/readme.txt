@@ -1,7 +1,7 @@
 === Unlimited Elements For Elementor ===
 Contributors: unitecms, valiano, iritmega, amitkeren, axmusic, freemius
 Donate link: http://unlimited-elements.com/
-Tags: elementor, elementor addons, elementor templates, elementor widgets, widgets for elementor
+Tags: elementor, elementor addons, elementor templates, elementor widgets, widgetsÂ forÂ elementor
 Requires at least: 3.5
 Tested up to: 6.7
 License: GPLv2 or later
@@ -9,9 +9,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Stable tag: 1.0
 
 Elementor all-in-one addons pack with the best widgets for Elementor, offering 100+ free widgets, templates, and tools to create stunning websites!
-
-== Description ==
  
+== Description ==
+
 <strong>Elementor</strong> users, elevate your web design experience with <strong>Unlimited Elements for Elementor</strong>. An all in one plugin that instantly gives you the most advanced widgets and tools to make better Elementor websites faster.  Take your WordPress website to the next level. 
 
 <a href="https://unlimited-elements.com/elementor-widgets/">View Elementor Widgets Demos</a>
@@ -235,7 +235,7 @@ Find everything you need in one convenient package and supercharge your <strong>
 
 14. [Price Range Filter (Pro)](https://unlimited-elements.com/price-range-filter-widget-for-elementor/) 
 
-15. [Colors Swatches Filter (Pro)](https://unlimited-elements.com/color-swatches-filter-widget-for-elementor/) 
+15. [Colors SwatchesÂ Filter (Pro)](https://unlimited-elements.com/color-swatches-filter-widget-for-elementor/) 
 
 16. [Off Canvas Filters (Pro)](https://unlimited-elements.com/off-canvas-filters-widget-for-elementor/) 
 
@@ -938,7 +938,7 @@ The choice depends on your design preferences. If you want complete control, go 
 
 == Changelog ==
 
-version 1.5.141 - 2025-01-30 =
+= 1.5.141 - 2025-01-30 =
 
 * Fix: fixed pagination of manual type
 * Fix: clear placeholders from the form after send.
@@ -1030,3 +1030,4 @@ Widgets Changes:
 
 
 [See changelog for all versions.](https://unlimited-elements.com/change-log/)
+

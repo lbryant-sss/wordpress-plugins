@@ -4,7 +4,7 @@ Tags: google calendar, calendar, calendars, google, event calendar, custom calen
 Requires at least: 4.2
 Requires PHP: 7.3
 Tested up to: 6.5.5
-Stable tag: 3.4.8
+Stable tag: 3.4.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,9 +97,14 @@ We'd love your help! Here's a few things you can do:
 
 == Changelog ==
 
+= 3.4.9 =
+
+* Fix: Resolved the issue where multi-day events were not rendered correctly on the last day.  
+**Thanks to [MartinixH](https://github.com/MartinixH) for the contribution!**
+
 = 3.4.8 =
 * Dev: Added print calendar option on list view.
-* Fox: Translation month name on first load.
+* Fix: Translation month name on first load.
 
 = 3.4.7 =
 * Fix: Compatibility warnings with PHP 8.
