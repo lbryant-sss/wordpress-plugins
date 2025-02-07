@@ -1,265 +1,110 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Worksheet;
 
-/**
- * PHPExcel_Worksheet_RowDimension
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Worksheet_RowDimension
+use PhpOffice\PhpSpreadsheet\Helper\Dimension as CssDimension;
+
+class RowDimension extends Dimension
 {
-	/**
-	 * Row index
-	 *
-	 * @var int
-	 */
-	private $_rowIndex;
-
-	/**
-	 * Row height (in pt)
-	 *
-	 * When this is set to a negative value, the row height should be ignored by IWriter
-	 *
-	 * @var double
-	 */
-	private $_rowHeight		= -1;
-
- 	/**
-	 * ZeroHeight for Row?
-	 *
-	 * @var bool
-	 */
-	private $_zeroHeight	= false;
-
-	/**
-	 * Visible?
-	 *
-	 * @var bool
-	 */
-	private $_visible		= true;
-
-	/**
-	 * Outline level
-	 *
-	 * @var int
-	 */
-	private $_outlineLevel	= 0;
-
-	/**
-	 * Collapsed
-	 *
-	 * @var bool
-	 */
-	private $_collapsed		= false;
-
-	/**
-	 * Index to cellXf. Null value means row has no explicit cellXf format.
-	 *
-	 * @var int|null
-	 */
-	private $_xfIndex;
+    /**
+     * Row index.
+     */
+    private ?int $rowIndex;
 
     /**
-     * Create a new PHPExcel_Worksheet_RowDimension
+     * Row height (in pt).
      *
-     * @param int $pIndex Numeric row index
+     * When this is set to a negative value, the row height should be ignored by IWriter
      */
-    public function __construct($pIndex = 0)
+    private float $height = -1;
+
+    /**
+     * ZeroHeight for Row?
+     */
+    private bool $zeroHeight = false;
+
+    /**
+     * Create a new RowDimension.
+     *
+     * @param ?int $index Numeric row index
+     */
+    public function __construct(?int $index = 0)
     {
-    	// Initialise values
-    	$this->_rowIndex		= $pIndex;
+        // Initialise values
+        $this->rowIndex = $index;
 
-		// set row dimension as unformatted by default
-		$this->_xfIndex = null;
+        // set dimension as unformatted by default
+        parent::__construct(null);
     }
 
     /**
-     * Get Row Index
-     *
-     * @return int
+     * Get Row Index.
      */
-    public function getRowIndex() {
-    	return $this->_rowIndex;
+    public function getRowIndex(): ?int
+    {
+        return $this->rowIndex;
     }
 
     /**
-     * Set Row Index
+     * Set Row Index.
      *
-     * @param int $pValue
-     * @return PHPExcel_Worksheet_RowDimension
+     * @return $this
      */
-    public function setRowIndex($pValue) {
-    	$this->_rowIndex = $pValue;
-    	return $this;
+    public function setRowIndex(int $index): static
+    {
+        $this->rowIndex = $index;
+
+        return $this;
     }
 
     /**
-     * Get Row Height
-     *
-     * @return double
+     * Get Row Height.
+     * By default, this will be in points; but this method also accepts an optional unit of measure
+     *    argument, and will convert the value from points to the specified UoM.
+     *    A value of -1 tells Excel to display this column in its default height.
      */
-    public function getRowHeight() {
-    	return $this->_rowHeight;
+    public function getRowHeight(?string $unitOfMeasure = null): float
+    {
+        return ($unitOfMeasure === null || $this->height < 0)
+            ? $this->height
+            : (new CssDimension($this->height . CssDimension::UOM_POINTS))->toUnit($unitOfMeasure);
     }
 
     /**
-     * Set Row Height
+     * Set Row Height.
      *
-     * @param double $pValue
-     * @return PHPExcel_Worksheet_RowDimension
-     */
-    public function setRowHeight($pValue = -1) {
-    	$this->_rowHeight = $pValue;
-    	return $this;
-    }
-
-	/**
-	 * Get ZeroHeight
-	 *
-	 * @return bool
-	 */
-	public function getZeroHeight() {
-		return $this->_zeroHeight;
-	}
-
-	/**
-	 * Set ZeroHeight
-	 *
-	 * @param bool $pValue
-	 * @return PHPExcel_Worksheet_RowDimension
-	 */
-	public function setZeroHeight($pValue = false) {
-		$this->_zeroHeight = $pValue;
-		return $this;
-	}
-
-    /**
-     * Get Visible
+     * @param float $height in points. A value of -1 tells Excel to display this column in its default height.
+     * By default, this will be the passed argument value; but this method also accepts an optional unit of measure
+     *    argument, and will convert the passed argument value to points from the specified UoM
      *
-     * @return bool
+     * @return $this
      */
-    public function getVisible() {
-    	return $this->_visible;
+    public function setRowHeight(float $height, ?string $unitOfMeasure = null): static
+    {
+        $this->height = ($unitOfMeasure === null || $height < 0)
+            ? $height
+            : (new CssDimension("{$height}{$unitOfMeasure}"))->height();
+
+        return $this;
     }
 
     /**
-     * Set Visible
-     *
-     * @param bool $pValue
-     * @return PHPExcel_Worksheet_RowDimension
+     * Get ZeroHeight.
      */
-    public function setVisible($pValue = true) {
-    	$this->_visible = $pValue;
-    	return $this;
+    public function getZeroHeight(): bool
+    {
+        return $this->zeroHeight;
     }
 
     /**
-     * Get Outline Level
+     * Set ZeroHeight.
      *
-     * @return int
+     * @return $this
      */
-    public function getOutlineLevel() {
-    	return $this->_outlineLevel;
+    public function setZeroHeight(bool $zeroHeight): static
+    {
+        $this->zeroHeight = $zeroHeight;
+
+        return $this;
     }
-
-    /**
-     * Set Outline Level
-     *
-     * Value must be between 0 and 7
-     *
-     * @param int $pValue
-     * @throws PHPExcel_Exception
-     * @return PHPExcel_Worksheet_RowDimension
-     */
-    public function setOutlineLevel($pValue) {
-    	if ($pValue < 0 || $pValue > 7) {
-    		throw new PHPExcel_Exception("Outline level must range between 0 and 7.");
-    	}
-
-    	$this->_outlineLevel = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get Collapsed
-     *
-     * @return bool
-     */
-    public function getCollapsed() {
-    	return $this->_collapsed;
-    }
-
-    /**
-     * Set Collapsed
-     *
-     * @param bool $pValue
-     * @return PHPExcel_Worksheet_RowDimension
-     */
-    public function setCollapsed($pValue = true) {
-    	$this->_collapsed = $pValue;
-    	return $this;
-    }
-
-	/**
-	 * Get index to cellXf
-	 *
-	 * @return int
-	 */
-	public function getXfIndex()
-	{
-		return $this->_xfIndex;
-	}
-
-	/**
-	 * Set index to cellXf
-	 *
-	 * @param int $pValue
-	 * @return PHPExcel_Worksheet_RowDimension
-	 */
-	public function setXfIndex($pValue = 0)
-	{
-		$this->_xfIndex = $pValue;
-		return $this;
-	}
-
-	/**
-	 * Implement PHP __clone to create a deep clone, not just a shallow copy.
-	 */
-	public function __clone() {
-		$vars = get_object_vars($this);
-		foreach ($vars as $key => $value) {
-			if (is_object($value)) {
-				$this->$key = clone $value;
-			} else {
-				$this->$key = $value;
-			}
-		}
-	}
 }

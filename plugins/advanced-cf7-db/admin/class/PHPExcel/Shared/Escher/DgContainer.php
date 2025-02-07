@@ -1,83 +1,60 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Shared_Escher
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
-/**
- * PHPExcel_Shared_Escher_DgContainer
- *
- * @category   PHPExcel
- * @package    PHPExcel_Shared_Escher
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Shared_Escher_DgContainer
+namespace PhpOffice\PhpSpreadsheet\Shared\Escher;
+
+use PhpOffice\PhpSpreadsheet\Exception as SpreadsheetException;
+use PhpOffice\PhpSpreadsheet\Shared\Escher\DgContainer\SpgrContainer;
+
+class DgContainer
 {
-	/**
-	 * Drawing index, 1-based.
-	 *
-	 * @var int
-	 */
-	private $_dgId;
+    /**
+     * Drawing index, 1-based.
+     */
+    private ?int $dgId = null;
 
-	/**
-	 * Last shape index in this drawing
-	 *
-	 * @var int
-	 */
-	private $_lastSpId;
+    /**
+     * Last shape index in this drawing.
+     */
+    private ?int $lastSpId = null;
 
-	private $_spgrContainer = null;
+    private ?SpgrContainer $spgrContainer = null;
 
-	public function getDgId()
-	{
-		return $this->_dgId;
-	}
+    public function getDgId(): ?int
+    {
+        return $this->dgId;
+    }
 
-	public function setDgId($value)
-	{
-		$this->_dgId = $value;
-	}
+    public function setDgId(int $value): void
+    {
+        $this->dgId = $value;
+    }
 
-	public function getLastSpId()
-	{
-		return $this->_lastSpId;
-	}
+    public function getLastSpId(): ?int
+    {
+        return $this->lastSpId;
+    }
 
-	public function setLastSpId($value)
-	{
-		$this->_lastSpId = $value;
-	}
+    public function setLastSpId(int $value): void
+    {
+        $this->lastSpId = $value;
+    }
 
-	public function getSpgrContainer()
-	{
-		return $this->_spgrContainer;
-	}
+    public function getSpgrContainer(): ?SpgrContainer
+    {
+        return $this->spgrContainer;
+    }
 
-	public function setSpgrContainer($spgrContainer)
-	{
-		return $this->_spgrContainer = $spgrContainer;
-	}
+    public function getSpgrContainerOrThrow(): SpgrContainer
+    {
+        if ($this->spgrContainer !== null) {
+            return $this->spgrContainer;
+        }
 
+        throw new SpreadsheetException('spgrContainer is unexpectedly null');
+    }
+
+    public function setSpgrContainer(SpgrContainer $spgrContainer): SpgrContainer
+    {
+        return $this->spgrContainer = $spgrContainer;
+    }
 }

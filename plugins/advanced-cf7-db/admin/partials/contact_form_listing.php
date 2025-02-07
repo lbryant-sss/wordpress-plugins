@@ -51,6 +51,7 @@ else{
 		$entry_actions = array();
 		$fid = intval(sanitize_text_field($_GET['cf7_id']));
 		if (!cf7_check_capability('cf7_db_form_view'.$fid) && !cf7_check_capability('cf7_db_form_edit_'.$fid)){
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			wp_die( __('You do not have sufficient permissions to access this page.') );
 		}
 		if(cf7_check_capability('cf7_db_form_edit_'.$fid)){
@@ -106,8 +107,10 @@ else{
 										$exist_entry_flag = true;
 										if (cf7_check_capability('cf7_db_form_view'.$objForm->id()) || cf7_check_capability('cf7_db_form_edit_'.$objForm->id()) ){
 											if(!empty($fid) && $fid === $objForm->id())
+// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 												print '<option value="'.$objForm->id().'" selected>'.esc_html($objForm->title()).'</option>';
 											else
+// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 												print '<option value="'.$objForm->id().'" >'.esc_html($objForm->title()).'</option>';
 										}
 									}//Close if
@@ -319,19 +322,21 @@ else{
 							<select name="action" id="bulk-action-selector-top">
 								<option value="-1"><?php esc_html_e('Bulk Actions',VSZ_CF7_TEXT_DOMAIN); ?></option><?php
 								//Get all bulk action values
+								// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 								echo vsz_cf7_arr_to_option($entry_actions);
 							?></select>
-							<input id="doaction" name="btn_apply" class="button action" value="<?php _e('Apply',VSZ_CF7_TEXT_DOMAIN); ?>" title="<?php _e('Apply',VSZ_CF7_TEXT_DOMAIN); ?>" type="submit" />
+							<input id="doaction" name="btn_apply" class="button action" value="<?php esc_html_e('Apply',VSZ_CF7_TEXT_DOMAIN); ?>" title="<?php esc_html_e('Apply',VSZ_CF7_TEXT_DOMAIN); ?>" type="submit" />
 							
 							<?php
 							//Display Export button option values
 							do_action('vsz_cf7_after_bulkaction_btn', $fid);
 							?><div class="tablenav-pages">
 								<span class="displaying-num"><?php echo (($total == 1) ?
-								'1 ' . __('item') :
-								$total . ' ' . __('items')) ?></span>
+								'1 ' . esc_html('item') :
+								$total . ' ' . esc_html('items')) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?></span>
 								<span class="pagination-links"><?php
 									//Setup pagination structure
+// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 									print ( paginate_links(array(
 										'base' => add_query_arg('cpage', '%#%'),
 										'format' => '',
@@ -360,6 +365,7 @@ else{
 									}
 									//Define table header section here
 									foreach ($fields as $k => $v){
+										// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 										echo '<th class="manage-column" data-key="'.esc_html($v).'">'.vsz_cf7_admin_get_field_name($v).'</th>';
 									}
 								?></tr>
@@ -391,13 +397,13 @@ else{
 												//If value is url then setup anchor tag with value
 												if(!empty($arr_field_type_info) && array_key_exists($k2,$arr_field_type_info) && $arr_field_type_info[$k2] == 'file'){
 													//Add download attributes in tag if field type is attachement
-													?><td data-head="<?php echo vsz_cf7_admin_get_field_name($v2); ?>">
+													?><td data-head="<?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped echo vsz_cf7_admin_get_field_name($v2); ?>">
 														<a href="<?php echo esc_url($_value); ?>" target="_blank" title="<?php echo esc_url($_value); ?>" download ><?php echo esc_html(basename($_value)); ?>
 														</a>
 													</td><?php
 												}
 												else{
-													?><td data-head="<?php echo vsz_cf7_admin_get_field_name($v2); ?>">
+													?><td data-head="<?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped echo vsz_cf7_admin_get_field_name($v2); ?>">
 														<a href="<?php echo esc_url($_value); ?>" target="_blank" title="<?php echo esc_url($_value); ?>" ><?php echo esc_html(basename($_value)); ?>
 														</a>
 													</td><?php
@@ -407,9 +413,10 @@ else{
 												$_value = esc_html(html_entity_decode($_value));
 												//var_dump(($_value)); var_dump(strlen($_value)); exit;
 												if(strlen($_value) > $display_character){
-
+// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 													echo '<td data-head="'.vsz_cf7_admin_get_field_name($v2).'">'.esc_html(substr($_value, 0, $display_character)).'...</td>';
 												}else{
+// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 													echo '<td data-head="'.vsz_cf7_admin_get_field_name($v2).'">'.esc_html($_value).'</td>';
 												}
 											}
@@ -434,6 +441,7 @@ else{
 										do_action('vsz_cf7_admin_after_heading_field');
 									}
 									foreach ($fields as $k => $v){
+                                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 										echo '<th class="manage-column" data-key="'.esc_html($v).'">'.vsz_cf7_admin_get_field_name($v).'</th>';
 									}
 								?></tr>
@@ -443,7 +451,7 @@ else{
 				</div>
 
 				<input type="hidden" name="cpage" value="<?php echo intval($page);?>" id="cpage">
-				<input type="hidden" name="totalPage" value="<?php print ceil($total / $items_per_page);?>" id="totalPage">
+				<input type="hidden" name="totalPage" value="<?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped  print ceil($total / $items_per_page);?>" id="totalPage">
 				<?php $list_nonce = wp_create_nonce( 'vsz-cf7-form-list-nonce' ); ?>
 				<input type="hidden" name="vsz_cf7_form_list_nonce"  value="<?php esc_html_e($list_nonce); ?>" />
 				

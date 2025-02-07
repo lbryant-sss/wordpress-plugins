@@ -370,10 +370,6 @@ function kubio_extend_block_editor_styles_html() {
 		wp_json_encode( array( 'html' => $style . $script ) )
 	);
 
-	if ( function_exists( 'wp_add_iframed_editor_assets_html' ) ) {
-		wp_add_iframed_editor_assets_html();
-	}
-
 }
 
 function kubio_edit_site_get_settings() {
@@ -842,11 +838,14 @@ function kubio_edit_site_init( $hook ) {
 		 $black_wizard_onboarding_param &&
 		 $black_wizard_onboarding_hash === $black_wizard_onboarding_param );
 
-	if($settings['startWithBlackWizardOnboarding']) {
-		add_filter('admin_body_class', function ($classes) {
-			$classes .= ' kubio-will-have-black-wizard-onboarding';
-			return $classes;
-		});
+	if ( $settings['startWithBlackWizardOnboarding'] ) {
+		add_filter(
+			'admin_body_class',
+			function ( $classes ) {
+				$classes .= ' kubio-will-have-black-wizard-onboarding';
+				return $classes;
+			}
+		);
 	}
 	if ( isset( $_REQUEST['generate-ai-frontpage'] ) && ! Flags::get( 'generated_from_getting_started', false ) ) {
 		$settings['startGeneratingAIFrontPage'] = true;

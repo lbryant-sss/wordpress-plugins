@@ -1,130 +1,101 @@
 <?php
-/**
- *  PHPExcel
- *
- *  Copyright (c) 2006 - 2014 PHPExcel
- *
- *  This library is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU Lesser General Public
- *  License as published by the Free Software Foundation; either
- *  version 2.1 of the License, or (at your option) any later version.
- *
- *  This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  Lesser General Public License for more details.
- *
- *  You should have received a copy of the GNU Lesser General Public
- *  License along with this library; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- *  @category    PHPExcel
- *  @package     PHPExcel_Writer_PDF
- *  @copyright   Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- *  @license     http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
- *  @version     ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Writer\Pdf;
 
-/**  Require mPDF library */
-$pdfRendererClassFile = PHPExcel_Settings::getPdfRendererPath() . '/mpdf.php';
-if (file_exists($pdfRendererClassFile)) {
-    require_once $pdfRendererClassFile;
-} else {
-    throw new PHPExcel_Writer_Exception('Unable to load PDF Rendering library');
-}
+use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
+use PhpOffice\PhpSpreadsheet\Writer\Pdf;
 
-/**
- *  PHPExcel_Writer_PDF_mPDF
- *
- *  @category    PHPExcel
- *  @package     PHPExcel_Writer_PDF
- *  @copyright   Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Writer_PDF_mPDF extends PHPExcel_Writer_PDF_Core implements PHPExcel_Writer_IWriter
+class Mpdf extends Pdf
 {
+    public const SIMULATED_BODY_START = '<!-- simulated body start -->';
+    private const BODY_TAG = '<body>';
+
     /**
-     *  Create a new PHPExcel_Writer_PDF
+     * Is the current writer creating mPDF?
      *
-     *  @param  PHPExcel  $phpExcel  PHPExcel object
+     * @deprecated 2.0.1 use instanceof Mpdf instead
      */
-    public function __construct(PHPExcel $phpExcel)
+    protected bool $isMPdf = true;
+
+    /**
+     * Gets the implementation of external PDF library that should be used.
+     *
+     * @param array $config Configuration array
+     *
+     * @return \Mpdf\Mpdf implementation
+     */
+    protected function createExternalWriterInstance(array $config): \Mpdf\Mpdf
     {
-        parent::__construct($phpExcel);
+        return new \Mpdf\Mpdf($config);
     }
 
     /**
-     *  Save PHPExcel to file
+     * Save Spreadsheet to file.
      *
-     *  @param     string     $pFilename   Name of the file to save as
-     *  @throws    PHPExcel_Writer_Exception
+     * @param string $filename Name of the file to save as
      */
-    public function save($pFilename = NULL)
+    public function save($filename, int $flags = 0): void
     {
-        $fileHandle = parent::prepareForSave($pFilename);
-
-        //  Default PDF paper size
-        $paperSize = 'LETTER';    //    Letter    (8.5 in. by 11 in.)
+        $fileHandle = parent::prepareForSave($filename);
 
         //  Check for paper size and page orientation
-        if (is_null($this->getSheetIndex())) {
-            $orientation = ($this->_phpExcel->getSheet(0)->getPageSetup()->getOrientation()
-                == PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE)
-                    ? 'L'
-                    : 'P';
-            $printPaperSize = $this->_phpExcel->getSheet(0)->getPageSetup()->getPaperSize();
-            $printMargins = $this->_phpExcel->getSheet(0)->getPageMargins();
-        } else {
-            $orientation = ($this->_phpExcel->getSheet($this->getSheetIndex())->getPageSetup()->getOrientation()
-                == PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE)
-                    ? 'L'
-                    : 'P';
-            $printPaperSize = $this->_phpExcel->getSheet($this->getSheetIndex())->getPageSetup()->getPaperSize();
-            $printMargins = $this->_phpExcel->getSheet($this->getSheetIndex())->getPageMargins();
-        }
-        $this->setOrientation($orientation);
-
-        //  Override Page Orientation
-        if (!is_null($this->getOrientation())) {
-            $orientation = ($this->getOrientation() == PHPExcel_Worksheet_PageSetup::ORIENTATION_DEFAULT)
-                ? PHPExcel_Worksheet_PageSetup::ORIENTATION_PORTRAIT
-                : $this->getOrientation();
-        }
-        $orientation = strtoupper($orientation);
-
-        //  Override Paper Size
-        if (!is_null($this->getPaperSize())) {
-            $printPaperSize = $this->getPaperSize();
-        }
-
-        if (isset(self::$_paperSizes[$printPaperSize])) {
-            $paperSize = self::$_paperSizes[$printPaperSize];
-        }
+        $setup = $this->spreadsheet->getSheet($this->getSheetIndex() ?? 0)->getPageSetup();
+        $orientation = $this->getOrientation() ?? $setup->getOrientation();
+        $orientation = ($orientation === PageSetup::ORIENTATION_LANDSCAPE) ? 'L' : 'P';
+        $printPaperSize = $this->getPaperSize() ?? $setup->getPaperSize();
+        $paperSize = self::$paperSizes[$printPaperSize] ?? PageSetup::getPaperSizeDefault();
 
         //  Create PDF
-        $pdf = new mpdf();
+        $config = ['tempDir' => $this->tempDir . '/mpdf'];
+        $pdf = $this->createExternalWriterInstance($config);
         $ortmp = $orientation;
-        $pdf->_setPageSize(strtoupper($paperSize), $ortmp);
+        $pdf->_setPageSize($paperSize, $ortmp);
         $pdf->DefOrientation = $orientation;
-        $pdf->AddPage($orientation);
+        $pdf->AddPageByArray([
+            'orientation' => $orientation,
+            'margin-left' => $this->inchesToMm($this->spreadsheet->getActiveSheet()->getPageMargins()->getLeft()),
+            'margin-right' => $this->inchesToMm($this->spreadsheet->getActiveSheet()->getPageMargins()->getRight()),
+            'margin-top' => $this->inchesToMm($this->spreadsheet->getActiveSheet()->getPageMargins()->getTop()),
+            'margin-bottom' => $this->inchesToMm($this->spreadsheet->getActiveSheet()->getPageMargins()->getBottom()),
+        ]);
 
         //  Document info
-        $pdf->SetTitle($this->_phpExcel->getProperties()->getTitle());
-        $pdf->SetAuthor($this->_phpExcel->getProperties()->getCreator());
-        $pdf->SetSubject($this->_phpExcel->getProperties()->getSubject());
-        $pdf->SetKeywords($this->_phpExcel->getProperties()->getKeywords());
-        $pdf->SetCreator($this->_phpExcel->getProperties()->getCreator());
+        $pdf->SetTitle($this->spreadsheet->getProperties()->getTitle());
+        $pdf->SetAuthor($this->spreadsheet->getProperties()->getCreator());
+        $pdf->SetSubject($this->spreadsheet->getProperties()->getSubject());
+        $pdf->SetKeywords($this->spreadsheet->getProperties()->getKeywords());
+        $pdf->SetCreator($this->spreadsheet->getProperties()->getCreator());
 
-        $pdf->WriteHTML(
-            $this->generateHTMLHeader(FALSE) .
-            $this->generateSheetData() .
-            $this->generateHTMLFooter()
-        );
+        $html = $this->generateHTMLAll();
+        $bodyLocation = strpos($html, self::SIMULATED_BODY_START);
+        if ($bodyLocation === false) {
+            $bodyLocation = strpos($html, self::BODY_TAG);
+            if ($bodyLocation !== false) {
+                $bodyLocation += strlen(self::BODY_TAG);
+            }
+        }
+        // Make sure first data presented to Mpdf includes body tag
+        //   (and any htmlpageheader/htmlpagefooter tags)
+        //   so that Mpdf doesn't parse it as content. Issue 2432.
+        if ($bodyLocation !== false) {
+            $pdf->WriteHTML(substr($html, 0, $bodyLocation));
+            $html = substr($html, $bodyLocation);
+        }
+        foreach (explode("\n", $html) as $line) {
+            $pdf->WriteHTML("$line\n");
+        }
 
         //  Write to file
         fwrite($fileHandle, $pdf->Output('', 'S'));
 
-		parent::restoreStateAfterSave($fileHandle);
+        parent::restoreStateAfterSave();
     }
 
+    /**
+     * Convert inches to mm.
+     */
+    private function inchesToMm(float $inches): float
+    {
+        return $inches * 25.4;
+    }
 }

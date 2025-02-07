@@ -1,171 +1,174 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category	PHPExcel
- * @package		PHPExcel_Chart
- * @copyright	Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license		http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version		##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Chart;
 
-/**
- * PHPExcel_Chart_Legend
- *
- * @category	PHPExcel
- * @package		PHPExcel_Chart
- * @copyright	Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Chart_Legend
+class Legend
 {
-	/** Legend positions */
-	const xlLegendPositionBottom	= -4107;	//	Below the chart.
-	const xlLegendPositionCorner	= 2;		//	In the upper right-hand corner of the chart border.
-	const xlLegendPositionCustom	= -4161;	//	A custom position.
-	const xlLegendPositionLeft		= -4131;	//	Left of the chart.
-	const xlLegendPositionRight		= -4152;	//	Right of the chart.
-	const xlLegendPositionTop		= -4160;	//	Above the chart.
+    /** Legend positions */
+    const XL_LEGEND_POSITION_BOTTOM = -4107; //    Below the chart.
+    const XL_LEGEND_POSITION_CORNER = 2; //    In the upper right-hand corner of the chart border.
+    const XL_LEGEND_POSITION_CUSTOM = -4161; //    A custom position.
+    const XL_LEGEND_POSITION_LEFT = -4131; //    Left of the chart.
+    const XL_LEGEND_POSITION_RIGHT = -4152; //    Right of the chart.
+    const XL_LEGEND_POSITION_TOP = -4160; //    Above the chart.
 
-	const POSITION_RIGHT	= 'r';
-	const POSITION_LEFT		= 'l';
-	const POSITION_BOTTOM	= 'b';
-	const POSITION_TOP		= 't';
-	const POSITION_TOPRIGHT	= 'tr';
+    const POSITION_RIGHT = 'r';
+    const POSITION_LEFT = 'l';
+    const POSITION_BOTTOM = 'b';
+    const POSITION_TOP = 't';
+    const POSITION_TOPRIGHT = 'tr';
 
-	private static $_positionXLref = array( self::xlLegendPositionBottom	=> self::POSITION_BOTTOM,
-											self::xlLegendPositionCorner	=> self::POSITION_TOPRIGHT,
-											self::xlLegendPositionCustom	=> '??',
-											self::xlLegendPositionLeft		=> self::POSITION_LEFT,
-											self::xlLegendPositionRight		=> self::POSITION_RIGHT,
-											self::xlLegendPositionTop		=> self::POSITION_TOP
-										  );
+    const POSITION_XLREF = [
+        self::XL_LEGEND_POSITION_BOTTOM => self::POSITION_BOTTOM,
+        self::XL_LEGEND_POSITION_CORNER => self::POSITION_TOPRIGHT,
+        self::XL_LEGEND_POSITION_CUSTOM => '??',
+        self::XL_LEGEND_POSITION_LEFT => self::POSITION_LEFT,
+        self::XL_LEGEND_POSITION_RIGHT => self::POSITION_RIGHT,
+        self::XL_LEGEND_POSITION_TOP => self::POSITION_TOP,
+    ];
 
-	/**
-	 * Legend position
-	 *
-	 * @var	string
-	 */
-	private $_position = self::POSITION_RIGHT;
+    /**
+     * Legend position.
+     */
+    private string $position = self::POSITION_RIGHT;
 
-	/**
-	 * Allow overlay of other elements?
-	 *
-	 * @var	boolean
-	 */
-	private $_overlay = TRUE;
+    /**
+     * Allow overlay of other elements?
+     */
+    private bool $overlay = true;
 
-	/**
-	 * Legend Layout
-	 *
-	 * @var	PHPExcel_Chart_Layout
-	 */
-	private $_layout = NULL;
+    /**
+     * Legend Layout.
+     */
+    private ?Layout $layout;
 
+    private GridLines $borderLines;
 
-	/**
-	 *	Create a new PHPExcel_Chart_Legend
-	 */
-	public function __construct($position = self::POSITION_RIGHT, PHPExcel_Chart_Layout $layout = NULL, $overlay = FALSE)
-	{
-		$this->setPosition($position);
-		$this->_layout = $layout;
-		$this->setOverlay($overlay);
-	}
+    private ChartColor $fillColor;
 
-	/**
-	 * Get legend position as an excel string value
-	 *
-	 * @return	string
-	 */
-	public function getPosition() {
-		return $this->_position;
-	}
+    private ?AxisText $legendText = null;
 
-	/**
-	 * Get legend position using an excel string value
-	 *
-	 * @param	string	$position
-	 */
-	public function setPosition($position = self::POSITION_RIGHT) {
-		if (!in_array($position,self::$_positionXLref)) {
-			return false;
-		}
+    /**
+     * Create a new Legend.
+     */
+    public function __construct(string $position = self::POSITION_RIGHT, ?Layout $layout = null, bool $overlay = false)
+    {
+        $this->setPosition($position);
+        $this->layout = $layout;
+        $this->setOverlay($overlay);
+        $this->borderLines = new GridLines();
+        $this->fillColor = new ChartColor();
+    }
 
-		$this->_position = $position;
-		return true;
-	}
+    public function getFillColor(): ChartColor
+    {
+        return $this->fillColor;
+    }
 
-	/**
-	 * Get legend position as an Excel internal numeric value
-	 *
-	 * @return	number
-	 */
-	public function getPositionXL() {
-		return array_search($this->_position,self::$_positionXLref);
-	}
+    /**
+     * Get legend position as an excel string value.
+     */
+    public function getPosition(): string
+    {
+        return $this->position;
+    }
 
-	/**
-	 * Set legend position using an Excel internal numeric value
-	 *
-	 * @param	number	$positionXL
-	 */
-	public function setPositionXL($positionXL = self::xlLegendPositionRight) {
-		if (!array_key_exists($positionXL,self::$_positionXLref)) {
-			return false;
-		}
+    /**
+     * Get legend position using an excel string value.
+     *
+     * @param string $position see self::POSITION_*
+     */
+    public function setPosition(string $position): bool
+    {
+        if (!in_array($position, self::POSITION_XLREF)) {
+            return false;
+        }
 
-		$this->_position = self::$_positionXLref[$positionXL];
-		return true;
-	}
+        $this->position = $position;
 
-	/**
-	 * Get allow overlay of other elements?
-	 *
-	 * @return	boolean
-	 */
-	public function getOverlay() {
-		return $this->_overlay;
-	}
+        return true;
+    }
 
-	/**
-	 * Set allow overlay of other elements?
-	 *
-	 * @param	boolean	$overlay
-	 * @return	boolean
-	 */
-	public function setOverlay($overlay = FALSE) {
-		if (!is_bool($overlay)) {
-			return false;
-		}
+    /**
+     * Get legend position as an Excel internal numeric value.
+     */
+    public function getPositionXL(): false|int
+    {
+        return array_search($this->position, self::POSITION_XLREF);
+    }
 
-		$this->_overlay = $overlay;
-		return true;
-	}
+    /**
+     * Set legend position using an Excel internal numeric value.
+     *
+     * @param int $positionXL see self::XL_LEGEND_POSITION_*
+     */
+    public function setPositionXL(int $positionXL): bool
+    {
+        if (!isset(self::POSITION_XLREF[$positionXL])) {
+            return false;
+        }
 
-	/**
-	 * Get Layout
-	 *
-	 * @return PHPExcel_Chart_Layout
-	 */
-	public function getLayout() {
-		return $this->_layout;
-	}
+        $this->position = self::POSITION_XLREF[$positionXL];
 
+        return true;
+    }
+
+    /**
+     * Get allow overlay of other elements?
+     */
+    public function getOverlay(): bool
+    {
+        return $this->overlay;
+    }
+
+    /**
+     * Set allow overlay of other elements?
+     */
+    public function setOverlay(bool $overlay): void
+    {
+        $this->overlay = $overlay;
+    }
+
+    /**
+     * Get Layout.
+     */
+    public function getLayout(): ?Layout
+    {
+        return $this->layout;
+    }
+
+    public function getLegendText(): ?AxisText
+    {
+        return $this->legendText;
+    }
+
+    public function setLegendText(?AxisText $legendText): self
+    {
+        $this->legendText = $legendText;
+
+        return $this;
+    }
+
+    public function getBorderLines(): GridLines
+    {
+        return $this->borderLines;
+    }
+
+    public function setBorderLines(GridLines $borderLines): self
+    {
+        $this->borderLines = $borderLines;
+
+        return $this;
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $this->layout = ($this->layout === null) ? null : clone $this->layout;
+        $this->legendText = ($this->legendText === null) ? null : clone $this->legendText;
+        $this->borderLines = clone $this->borderLines;
+        $this->fillColor = clone $this->fillColor;
+    }
 }

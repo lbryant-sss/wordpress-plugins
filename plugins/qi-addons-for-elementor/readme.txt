@@ -4,7 +4,7 @@ Tags: elementor, elementor addons, elementor widgets, elementor elements, addons
 Requires at least: 5.0
 Tested up to: 6.6
 Requires PHP: 5.6
-Stable tag: 1.8.8
+Stable tag: 1.8.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -342,6 +342,9 @@ From wordpress.org
 
 
 == Changelog ==
+
+= 1.8.9 - 06-02-2025 =
+- Improved plugin security
 
 = 1.8.8 - 03-02-2025 =
 - Fixed Cross Site Scripting (XSS) regex protection causing problems with widgets rendering

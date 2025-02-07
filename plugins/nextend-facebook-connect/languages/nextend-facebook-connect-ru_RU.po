@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nextend-facebook-connect\n"
-"POT-Creation-Date: 2024-11-20 13:06+0100\n"
-"PO-Revision-Date: 2024-11-20 13:06+0100\n"
+"POT-Creation-Date: 2025-02-05 19:37+0100\n"
+"PO-Revision-Date: 2025-02-05 19:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: nextend-facebook-connect\n"
 "Language: ru\n"
@@ -688,25 +688,19 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-msgid "BuddyPress registration integration"
+msgid "Email template for registration"
+msgstr ""
+
+msgid "WordPress default notification"
+msgstr ""
+
+msgid "BuddyPress welcome notification"
 msgstr ""
 
 #, php-format
 msgid ""
-"When this setting is enabled the actual registration will be done by %1$s, "
-"so it could send the activation emails uppon registration."
-msgstr ""
-
-#, php-format
-msgid ""
-"%1$s To prevent the login with social login until the account is activated, "
-"you also need to enable the %2$s feature on the %3$s tab!"
-msgstr ""
-
-msgid "Usage:"
-msgstr ""
-
-msgid "Support login restrictions"
+"Defines whether the registration with %1$s will send the same welcome "
+"notification that %2$s does, instead of the %3$s default one."
 msgstr ""
 
 msgid "Login button"
@@ -727,6 +721,9 @@ msgstr ""
 
 #, php-format
 msgid "%1$s Add your custom actions here. One action per line."
+msgstr ""
+
+msgid "Usage:"
 msgstr ""
 
 #, php-format
@@ -900,6 +897,9 @@ msgstr ""
 msgid "If you want to blacklist redirect url params. One pattern per line."
 msgstr ""
 
+msgid "Support login restrictions"
+msgstr ""
+
 #, php-format
 msgid "Please visit to our %1$s to check what plugins are supported!"
 msgstr ""
@@ -1059,12 +1059,6 @@ msgid "No Connect buttons in account details form"
 msgstr ""
 
 msgid "Link buttons on"
-msgstr ""
-
-msgid "Email template for registration"
-msgstr ""
-
-msgid "WordPress default notification"
 msgstr ""
 
 msgid "WooCommerce registration notification"
@@ -2617,44 +2611,12 @@ msgstr ""
 #, php-format
 msgid ""
 "Select an image for your App, fill in the \"%1$s\" and \"%2$s\" fields, "
-"comply with the \"%3$s\", then click on the \"%4$s\" button!"
+"select a \"%3$s\" then comply with the \"%4$s\", finally click on the "
+"\"%5$s\" button!"
 msgstr ""
 
 #, php-format
 msgid "Once you have a project, click on it, and you will enter the %1$s."
-msgstr ""
-
-#, php-format
-msgid ""
-"Copy and save the \"%1$s\" value. This is what you will use later on the "
-"Settings tab for the \"%1$s\" field."
-msgstr ""
-
-#, php-format
-msgid ""
-"Then in the side bar on the left side, find the \"%1$s\" menu and click on "
-"the \"%2$s\" menu point. Click on the \"%3$s\" button, then on \"%4$s\"."
-msgstr ""
-
-#, php-format
-msgid ""
-"Copy and save this code, this is what you will use for the \"%1$s\" on the "
-"Settings tab."
-msgstr ""
-
-#, php-format
-msgid ""
-"Also, make sure to set the \"%1$s\" to \"%2$s\" with the \"%3$s\" button."
-msgstr ""
-
-#, php-format
-msgid "Next, go to the \"%1$s\" in the \"%2$s\" menu on the left."
-msgstr ""
-
-#, php-format
-msgid ""
-"Click on the blue \"%1$s\" button, then enter your domain name into the "
-"\"%2$s\" field, probably: %3$s"
 msgstr ""
 
 #, php-format
@@ -2687,13 +2649,13 @@ msgid ""
 msgstr ""
 
 #, php-format
-msgid ""
-"%s - Purpose: Accounts will be registered or linked based on this email "
-"address."
+msgid "%s - Purpose: This image will be used as the avatar of the account."
 msgstr ""
 
 #, php-format
-msgid "%s - Purpose: This image will be used as the avatar of the account."
+msgid ""
+"%s - Purpose: Accounts will be registered or linked based on this email "
+"address."
 msgstr ""
 
 #, php-format
@@ -2710,14 +2672,47 @@ msgstr ""
 
 #, php-format
 msgid ""
-"%1$s The \"%2$s\" type itself and certain scopes (e.g. \"%3$s\", \"%4$s\" - "
-"used when you turn on the corresponding setting on our %5$s tab), will "
-"require you to register business information, or if you are a single "
-"developer verify your identity (both can be done under the \"%6$s\" menu "
-"point), in order to be able to request consent to these items."
+"%1$s Certain scopes, like the \"%2$s\" or e.g. \"%3$s\", \"%4$s\" (used when "
+"you turn on the corresponding setting on our %5$s tab), will require you to "
+"register business information, or if you are a single developer verify your "
+"identity (both can be done under the \"%6$s\" menu point), in order to be "
+"able to request consent to these items."
 msgstr ""
 
 msgid "WARNING:"
+msgstr ""
+
+#, php-format
+msgid "Next, go to the \"%1$s\" in the \"%2$s\" menu on the left."
+msgstr ""
+
+#, php-format
+msgid ""
+"Click on the blue \"%1$s\" button, then enter your domain name into the "
+"\"%2$s\" field, probably: %3$s"
+msgstr ""
+
+#, php-format
+msgid ""
+"Then in the side bar on the left side, find the \"%1$s\" menu and click on "
+"the \"%2$s\" menu point. Click on the \"%3$s\" button, then on \"%4$s\"."
+msgstr ""
+
+#, php-format
+msgid ""
+"Copy and save this code, this is what you will use for the \"%1$s\" on the "
+"Settings tab."
+msgstr ""
+
+#, php-format
+msgid ""
+"Also, make sure to set the \"%1$s\" to \"%2$s\" with the \"%3$s\" button."
+msgstr ""
+
+#, php-format
+msgid ""
+"Then, go to the \"%1$s\" menu, and copy the \"%2$s\" value. This is what you "
+"will use later on the Settings tab for the \"%2$s\" field."
 msgstr ""
 
 #, php-format
@@ -2742,6 +2737,12 @@ msgid "Force user to enter login credentials on each login"
 msgstr ""
 
 msgid "Start the authentication with the Kakao Account sign-up page."
+msgstr ""
+
+msgid "Email scope"
+msgstr ""
+
+msgid "Disable, when you have no rights for email address."
 msgstr ""
 
 msgid "Mini"
@@ -3305,9 +3306,6 @@ msgid ""
 "to tick the other necessary fields either! )"
 msgstr ""
 
-msgid "Email scope"
-msgstr ""
-
 #, php-format
 msgid "Fill the %1$s and %2$s fields."
 msgstr ""
@@ -3338,9 +3336,6 @@ msgid ""
 msgstr ""
 
 msgid "Secret"
-msgstr ""
-
-msgid "Disable, when you have no rights for email address."
 msgstr ""
 
 msgid "Continue with <b>PayPal</b>"
@@ -3574,6 +3569,12 @@ msgstr ""
 
 #, php-format
 msgid "Click on the the %1$s button."
+msgstr ""
+
+#, php-format
+msgid ""
+"Copy and save the \"%1$s\" value. This is what you will use later on the "
+"Settings tab for the \"%1$s\" field."
 msgstr ""
 
 #, php-format

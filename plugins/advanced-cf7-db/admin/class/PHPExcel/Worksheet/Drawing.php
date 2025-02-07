@@ -1,148 +1,260 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet_Drawing
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Worksheet;
 
-/**
- * PHPExcel_Worksheet_Drawing
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet_Drawing
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Worksheet_Drawing extends PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
+use PhpOffice\PhpSpreadsheet\Exception as PhpSpreadsheetException;
+use ZipArchive;
+
+class Drawing extends BaseDrawing
 {
-	/**
-	 * Path
-	 *
-	 * @var string
-	 */
-	private $_path;
+    const IMAGE_TYPES_CONVERTION_MAP = [
+        IMAGETYPE_GIF => IMAGETYPE_PNG,
+        IMAGETYPE_JPEG => IMAGETYPE_JPEG,
+        IMAGETYPE_PNG => IMAGETYPE_PNG,
+        IMAGETYPE_BMP => IMAGETYPE_PNG,
+    ];
 
     /**
-     * Create a new PHPExcel_Worksheet_Drawing
+     * Path.
+     */
+    private string $path;
+
+    /**
+     * Whether or not we are dealing with a URL.
+     */
+    private bool $isUrl;
+
+    /**
+     * Create a new Drawing.
      */
     public function __construct()
     {
-    	// Initialise values
-    	$this->_path				= '';
+        // Initialise values
+        $this->path = '';
+        $this->isUrl = false;
 
-    	// Initialize parent
-    	parent::__construct();
+        // Initialize parent
+        parent::__construct();
     }
 
     /**
-     * Get Filename
-     *
-     * @return string
+     * Get Filename.
      */
-    public function getFilename() {
-    	return basename($this->_path);
+    public function getFilename(): string
+    {
+        return basename($this->path);
     }
 
     /**
-     * Get indexed filename (using image index)
-     *
-     * @return string
+     * Get indexed filename (using image index).
      */
-    public function getIndexedFilename() {
-    	$fileName = $this->getFilename();
-    	$fileName = str_replace(' ', '_', $fileName);
-    	return str_replace('.' . $this->getExtension(), '', $fileName) . $this->getImageIndex() . '.' . $this->getExtension();
+    public function getIndexedFilename(): string
+    {
+        return md5($this->path) . '.' . $this->getExtension();
     }
 
     /**
-     * Get Extension
-     *
-     * @return string
+     * Get Extension.
      */
-    public function getExtension() {
-    	$exploded = explode(".", basename($this->_path));
-    	return $exploded[count($exploded) - 1];
+    public function getExtension(): string
+    {
+        $exploded = explode('.', basename($this->path));
+
+        return $exploded[count($exploded) - 1];
     }
 
     /**
-     * Get Path
-     *
-     * @return string
+     * Get full filepath to store drawing in zip archive.
      */
-    public function getPath() {
-    	return $this->_path;
+    public function getMediaFilename(): string
+    {
+        if (!array_key_exists($this->type, self::IMAGE_TYPES_CONVERTION_MAP)) {
+            throw new PhpSpreadsheetException('Unsupported image type in comment background. Supported types: PNG, JPEG, BMP, GIF.');
+        }
+
+        return sprintf('image%d%s', $this->getImageIndex(), $this->getImageFileExtensionForSave());
     }
 
     /**
-     * Set Path
-     *
-     * @param 	string 		$pValue			File path
-     * @param 	boolean		$pVerifyFile	Verify file
-     * @throws 	PHPExcel_Exception
-     * @return PHPExcel_Worksheet_Drawing
+     * Get Path.
      */
-    public function setPath($pValue = '', $pVerifyFile = true) {
-    	if ($pVerifyFile) {
-	    	if (file_exists($pValue)) {
-	    		$this->_path = $pValue;
-
-	    		if ($this->_width == 0 && $this->_height == 0) {
-	    			// Get width/height
-	    			list($this->_width, $this->_height) = getimagesize($pValue);
-	    		}
-	    	} else {
-	    		throw new PHPExcel_Exception("File $pValue not found!");
-	    	}
-    	} else {
-    		$this->_path = $pValue;
-    	}
-    	return $this;
+    public function getPath(): string
+    {
+        return $this->path;
     }
 
-	/**
-	 * Get hash code
-	 *
-	 * @return string	Hash code
-	 */
-	public function getHashCode() {
-    	return md5(
-    		  $this->_path
-    		. parent::getHashCode()
-    		. __CLASS__
-    	);
+    /**
+     * Set Path.
+     *
+     * @param string $path File path
+     * @param bool $verifyFile Verify file
+     * @param ?ZipArchive $zip Zip archive instance
+     *
+     * @return $this
+     */
+    public function setPath(string $path, bool $verifyFile = true, ?ZipArchive $zip = null): static
+    {
+        $this->isUrl = false;
+        if (preg_match('~^data:image/[a-z]+;base64,~', $path) === 1) {
+            $this->path = $path;
+
+            return $this;
+        }
+
+        $this->path = '';
+        // Check if a URL has been passed. https://stackoverflow.com/a/2058596/1252979
+        if (filter_var($path, FILTER_VALIDATE_URL) || (preg_match('/^([\\w\\s\\x00-\\x1f]+):/u', $path) && !preg_match('/^([\\w]+):/u', $path))) {
+            if (!preg_match('/^(http|https|file|ftp|s3):/', $path)) {
+                throw new PhpSpreadsheetException('Invalid protocol for linked drawing');
+            }
+            // Implicit that it is a URL, rather store info than running check above on value in other places.
+            $this->isUrl = true;
+            $ctx = null;
+            // https://github.com/php/php-src/issues/16023
+            // https://github.com/php/php-src/issues/17121
+            if (str_starts_with($path, 'https:') || str_starts_with($path, 'http:')) {
+                $ctxArray = [
+                    'http' => [
+                        'user_agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+                        'header' => [
+                            //'Connection: keep-alive', // unacceptable performance
+                            'Accept: image/*;q=0.9,*/*;q=0.8',
+                        ],
+                    ],
+                ];
+                if (str_starts_with($path, 'https:')) {
+                    $ctxArray['ssl'] = ['crypto_method' => STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT];
+                }
+                $ctx = stream_context_create($ctxArray);
+            }
+            $imageContents = @file_get_contents($path, false, $ctx);
+            if ($imageContents !== false) {
+                $filePath = tempnam(sys_get_temp_dir(), 'Drawing');
+                if ($filePath) {
+                    $put = @file_put_contents($filePath, $imageContents);
+                    if ($put !== false) {
+                        if ($this->isImage($filePath)) {
+                            $this->path = $path;
+                            $this->setSizesAndType($filePath);
+                        }
+                        unlink($filePath);
+                    }
+                }
+            }
+        } elseif ($zip instanceof ZipArchive) {
+            $zipPath = explode('#', $path)[1];
+            $locate = @$zip->locateName($zipPath);
+            if ($locate !== false) {
+                if ($this->isImage($path)) {
+                    $this->path = $path;
+                    $this->setSizesAndType($path);
+                }
+            }
+        } else {
+            $exists = @file_exists($path);
+            if ($exists !== false && $this->isImage($path)) {
+                $this->path = $path;
+                $this->setSizesAndType($path);
+            }
+        }
+        if ($this->path === '' && $verifyFile) {
+            throw new PhpSpreadsheetException("File $path not found!");
+        }
+
+        if ($this->worksheet !== null) {
+            if ($this->path !== '') {
+                $this->worksheet->getCell($this->coordinates);
+            }
+        }
+
+        return $this;
     }
 
-	/**
-	 * Implement PHP __clone to create a deep clone, not just a shallow copy.
-	 */
-	public function __clone() {
-		$vars = get_object_vars($this);
-		foreach ($vars as $key => $value) {
-			if (is_object($value)) {
-				$this->$key = clone $value;
-			} else {
-				$this->$key = $value;
-			}
-		}
-	}
+    private function isImage(string $path): bool
+    {
+        $mime = (string) @mime_content_type($path);
+        $retVal = false;
+        if (str_starts_with($mime, 'image/')) {
+            $retVal = true;
+        } elseif ($mime === 'application/octet-stream') {
+            $extension = pathinfo($path, PATHINFO_EXTENSION);
+            $retVal = in_array($extension, ['bin', 'emf'], true);
+        }
+
+        return $retVal;
+    }
+
+    /**
+     * Get isURL.
+     */
+    public function getIsURL(): bool
+    {
+        return $this->isUrl;
+    }
+
+    /**
+     * Set isURL.
+     *
+     * @return $this
+     *
+     * @deprecated 3.7.0 not needed, property is set by setPath
+     */
+    public function setIsURL(bool $isUrl): self
+    {
+        $this->isUrl = $isUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get hash code.
+     *
+     * @return string Hash code
+     */
+    public function getHashCode(): string
+    {
+        return md5(
+            $this->path
+            . parent::getHashCode()
+            . __CLASS__
+        );
+    }
+
+    /**
+     * Get Image Type for Save.
+     */
+    public function getImageTypeForSave(): int
+    {
+        if (!array_key_exists($this->type, self::IMAGE_TYPES_CONVERTION_MAP)) {
+            throw new PhpSpreadsheetException('Unsupported image type in comment background. Supported types: PNG, JPEG, BMP, GIF.');
+        }
+
+        return self::IMAGE_TYPES_CONVERTION_MAP[$this->type];
+    }
+
+    /**
+     * Get Image file extention for Save.
+     */
+    public function getImageFileExtensionForSave(bool $includeDot = true): string
+    {
+        if (!array_key_exists($this->type, self::IMAGE_TYPES_CONVERTION_MAP)) {
+            throw new PhpSpreadsheetException('Unsupported image type in comment background. Supported types: PNG, JPEG, BMP, GIF.');
+        }
+
+        $result = image_type_to_extension(self::IMAGE_TYPES_CONVERTION_MAP[$this->type], $includeDot);
+
+        return "$result";
+    }
+
+    /**
+     * Get Image mime type.
+     */
+    public function getImageMimeType(): string
+    {
+        if (!array_key_exists($this->type, self::IMAGE_TYPES_CONVERTION_MAP)) {
+            throw new PhpSpreadsheetException('Unsupported image type in comment background. Supported types: PNG, JPEG, BMP, GIF.');
+        }
+
+        return image_type_to_mime_type(self::IMAGE_TYPES_CONVERTION_MAP[$this->type]);
+    }
 }

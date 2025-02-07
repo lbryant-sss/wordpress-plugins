@@ -1,266 +1,131 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Worksheet;
 
-/**
- * PHPExcel_Worksheet_ColumnDimension
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Worksheet_ColumnDimension
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+use PhpOffice\PhpSpreadsheet\Helper\Dimension as CssDimension;
+
+class ColumnDimension extends Dimension
 {
-	/**
-	 * Column index
-	 *
-	 * @var int
-	 */
-	private $_columnIndex;
-
-	/**
-	 * Column width
-	 *
-	 * When this is set to a negative value, the column width should be ignored by IWriter
-	 *
-	 * @var double
-	 */
-	private $_width			= -1;
-
-	/**
-	 * Auto size?
-	 *
-	 * @var bool
-	 */
-	private $_autoSize		= false;
-
-	/**
-	 * Visible?
-	 *
-	 * @var bool
-	 */
-	private $_visible		= true;
-
-	/**
-	 * Outline level
-	 *
-	 * @var int
-	 */
-	private $_outlineLevel	= 0;
-
-	/**
-	 * Collapsed
-	 *
-	 * @var bool
-	 */
-	private $_collapsed		= false;
-
-	/**
-	 * Index to cellXf
-	 *
-	 * @var int
-	 */
-	private $_xfIndex;
+    /**
+     * Column index.
+     */
+    private ?string $columnIndex;
 
     /**
-     * Create a new PHPExcel_Worksheet_ColumnDimension
+     * Column width.
      *
-     * @param string $pIndex Character column index
+     * When this is set to a negative value, the column width should be ignored by IWriter
      */
-    public function __construct($pIndex = 'A')
+    private float $width = -1;
+
+    /**
+     * Auto size?
+     */
+    private bool $autoSize = false;
+
+    /**
+     * Create a new ColumnDimension.
+     *
+     * @param ?string $index Character column index
+     */
+    public function __construct(?string $index = 'A')
     {
-    	// Initialise values
-    	$this->_columnIndex		= $pIndex;
+        // Initialise values
+        $this->columnIndex = $index;
 
-		// set default index to cellXf
-		$this->_xfIndex = 0;
+        // set dimension as unformatted by default
+        parent::__construct(0);
     }
 
     /**
-     * Get ColumnIndex
-     *
-     * @return string
+     * Get column index as string eg: 'A'.
      */
-    public function getColumnIndex() {
-    	return $this->_columnIndex;
+    public function getColumnIndex(): ?string
+    {
+        return $this->columnIndex;
     }
 
     /**
-     * Set ColumnIndex
-     *
-     * @param string $pValue
-     * @return PHPExcel_Worksheet_ColumnDimension
+     * Set column index as string eg: 'A'.
      */
-    public function setColumnIndex($pValue) {
-    	$this->_columnIndex = $pValue;
-    	return $this;
+    public function setColumnIndex(string $index): self
+    {
+        $this->columnIndex = $index;
+
+        return $this;
     }
 
     /**
-     * Get Width
-     *
-     * @return double
+     * Get column index as numeric.
      */
-    public function getWidth() {
-    	return $this->_width;
+    public function getColumnNumeric(): int
+    {
+        return Coordinate::columnIndexFromString($this->columnIndex ?? '');
     }
 
     /**
-     * Set Width
-     *
-     * @param double $pValue
-     * @return PHPExcel_Worksheet_ColumnDimension
+     * Set column index as numeric.
      */
-    public function setWidth($pValue = -1) {
-    	$this->_width = $pValue;
-    	return $this;
+    public function setColumnNumeric(int $index): self
+    {
+        $this->columnIndex = Coordinate::stringFromColumnIndex($index);
+
+        return $this;
     }
 
     /**
-     * Get Auto Size
+     * Get Width.
      *
-     * @return bool
+     * Each unit of column width is equal to the width of one character in the default font size. A value of -1
+     *      tells Excel to display this column in its default width.
+     * By default, this will be the return value; but this method also accepts an optional unit of measure argument
+     *    and will convert the returned value to the specified UoM..
      */
-    public function getAutoSize() {
-    	return $this->_autoSize;
+    public function getWidth(?string $unitOfMeasure = null): float
+    {
+        return ($unitOfMeasure === null || $this->width < 0)
+            ? $this->width
+            : (new CssDimension((string) $this->width))->toUnit($unitOfMeasure);
     }
 
     /**
-     * Set Auto Size
+     * Set Width.
      *
-     * @param bool $pValue
-     * @return PHPExcel_Worksheet_ColumnDimension
+     * Each unit of column width is equal to the width of one character in the default font size. A value of -1
+     *      tells Excel to display this column in its default width.
+     * By default, this will be the unit of measure for the passed value; but this method also accepts an
+     *    optional unit of measure argument, and will convert the value from the specified UoM using an
+     *    approximation method.
+     *
+     * @return $this
      */
-    public function setAutoSize($pValue = false) {
-    	$this->_autoSize = $pValue;
-    	return $this;
+    public function setWidth(float $width, ?string $unitOfMeasure = null): static
+    {
+        $this->width = ($unitOfMeasure === null || $width < 0)
+            ? $width
+            : (new CssDimension("{$width}{$unitOfMeasure}"))->width();
+
+        return $this;
     }
 
     /**
-     * Get Visible
-     *
-     * @return bool
+     * Get Auto Size.
      */
-    public function getVisible() {
-    	return $this->_visible;
+    public function getAutoSize(): bool
+    {
+        return $this->autoSize;
     }
 
     /**
-     * Set Visible
+     * Set Auto Size.
      *
-     * @param bool $pValue
-     * @return PHPExcel_Worksheet_ColumnDimension
+     * @return $this
      */
-    public function setVisible($pValue = true) {
-    	$this->_visible = $pValue;
-    	return $this;
+    public function setAutoSize(bool $autosizeEnabled): static
+    {
+        $this->autoSize = $autosizeEnabled;
+
+        return $this;
     }
-
-    /**
-     * Get Outline Level
-     *
-     * @return int
-     */
-    public function getOutlineLevel() {
-    	return $this->_outlineLevel;
-    }
-
-    /**
-     * Set Outline Level
-     *
-     * Value must be between 0 and 7
-     *
-     * @param int $pValue
-     * @throws PHPExcel_Exception
-     * @return PHPExcel_Worksheet_ColumnDimension
-     */
-    public function setOutlineLevel($pValue) {
-    	if ($pValue < 0 || $pValue > 7) {
-    		throw new PHPExcel_Exception("Outline level must range between 0 and 7.");
-    	}
-
-    	$this->_outlineLevel = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get Collapsed
-     *
-     * @return bool
-     */
-    public function getCollapsed() {
-    	return $this->_collapsed;
-    }
-
-    /**
-     * Set Collapsed
-     *
-     * @param bool $pValue
-     * @return PHPExcel_Worksheet_ColumnDimension
-     */
-    public function setCollapsed($pValue = true) {
-    	$this->_collapsed = $pValue;
-    	return $this;
-    }
-
-	/**
-	 * Get index to cellXf
-	 *
-	 * @return int
-	 */
-	public function getXfIndex()
-	{
-		return $this->_xfIndex;
-	}
-
-	/**
-	 * Set index to cellXf
-	 *
-	 * @param int $pValue
-	 * @return PHPExcel_Worksheet_ColumnDimension
-	 */
-	public function setXfIndex($pValue = 0)
-	{
-		$this->_xfIndex = $pValue;
-		return $this;
-	}
-
-	/**
-	 * Implement PHP __clone to create a deep clone, not just a shallow copy.
-	 */
-	public function __clone() {
-		$vars = get_object_vars($this);
-		foreach ($vars as $key => $value) {
-			if (is_object($value)) {
-				$this->$key = clone $value;
-			} else {
-				$this->$key = $value;
-			}
-		}
-	}
-
 }

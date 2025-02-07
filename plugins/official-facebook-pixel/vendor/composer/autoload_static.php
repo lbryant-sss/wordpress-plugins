@@ -1666,7 +1666,7 @@ class ComposerStaticInit9ff1e0e490496206016be4e5953f5ad7
         'FacebookPixelPlugin\\Core\\PixelRenderer' => __DIR__ . '/../..' . '/core/class-pixelrenderer.php',
         'FacebookPixelPlugin\\Core\\ServerEventAsyncTask' => __DIR__ . '/../..' . '/core/class-servereventasynctask.php',
         'FacebookPixelPlugin\\Core\\ServerEventFactory' => __DIR__ . '/../..' . '/core/class-servereventfactory.php',
-        'FacebookPixelPlugin\\FacebookForWordpress' => __DIR__ . '/../..' . '/class-facebookforwordpress.php',
+        'FacebookPixelPlugin\\FacebookForWordpress' => __DIR__ . '/../..' . '/facebook-for-wordpress.php',
         'FacebookPixelPlugin\\Integration\\EDDUtils' => __DIR__ . '/../..' . '/integration/class-eddutils.php',
         'FacebookPixelPlugin\\Integration\\FacebookWordpressCalderaForm' => __DIR__ . '/../..' . '/integration/class-facebookwordpresscalderaform.php',
         'FacebookPixelPlugin\\Integration\\FacebookWordpressContactForm7' => __DIR__ . '/../..' . '/integration/class-facebookwordpresscontactform7.php',

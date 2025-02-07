@@ -1,161 +1,124 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Worksheet;
 
-/**
- * PHPExcel_Worksheet_Protection
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Worksheet_Protection
+use PhpOffice\PhpSpreadsheet\Shared\PasswordHasher;
+
+class Protection
 {
-	/**
-	 * Sheet
-	 *
-	 * @var boolean
-	 */
-	private $_sheet					= false;
-
-	/**
-	 * Objects
-	 *
-	 * @var boolean
-	 */
-	private $_objects				= false;
-
-	/**
-	 * Scenarios
-	 *
-	 * @var boolean
-	 */
-	private $_scenarios				= false;
-
-	/**
-	 * Format cells
-	 *
-	 * @var boolean
-	 */
-	private $_formatCells			= false;
-
-	/**
-	 * Format columns
-	 *
-	 * @var boolean
-	 */
-	private $_formatColumns			= false;
-
-	/**
-	 * Format rows
-	 *
-	 * @var boolean
-	 */
-	private $_formatRows			= false;
-
-	/**
-	 * Insert columns
-	 *
-	 * @var boolean
-	 */
-	private $_insertColumns			= false;
-
-	/**
-	 * Insert rows
-	 *
-	 * @var boolean
-	 */
-	private $_insertRows			= false;
-
-	/**
-	 * Insert hyperlinks
-	 *
-	 * @var boolean
-	 */
-	private $_insertHyperlinks		= false;
-
-	/**
-	 * Delete columns
-	 *
-	 * @var boolean
-	 */
-	private $_deleteColumns			= false;
-
-	/**
-	 * Delete rows
-	 *
-	 * @var boolean
-	 */
-	private $_deleteRows			= false;
-
-	/**
-	 * Select locked cells
-	 *
-	 * @var boolean
-	 */
-	private $_selectLockedCells		= false;
-
-	/**
-	 * Sort
-	 *
-	 * @var boolean
-	 */
-	private $_sort					= false;
-
-	/**
-	 * AutoFilter
-	 *
-	 * @var boolean
-	 */
-	private $_autoFilter			= false;
-
-	/**
-	 * Pivot tables
-	 *
-	 * @var boolean
-	 */
-	private $_pivotTables			= false;
-
-	/**
-	 * Select unlocked cells
-	 *
-	 * @var boolean
-	 */
-	private $_selectUnlockedCells	= false;
-
-	/**
-	 * Password
-	 *
-	 * @var string
-	 */
-	private $_password				= '';
+    const ALGORITHM_MD2 = 'MD2';
+    const ALGORITHM_MD4 = 'MD4';
+    const ALGORITHM_MD5 = 'MD5';
+    const ALGORITHM_SHA_1 = 'SHA-1';
+    const ALGORITHM_SHA_256 = 'SHA-256';
+    const ALGORITHM_SHA_384 = 'SHA-384';
+    const ALGORITHM_SHA_512 = 'SHA-512';
+    const ALGORITHM_RIPEMD_128 = 'RIPEMD-128';
+    const ALGORITHM_RIPEMD_160 = 'RIPEMD-160';
+    const ALGORITHM_WHIRLPOOL = 'WHIRLPOOL';
 
     /**
-     * Create a new PHPExcel_Worksheet_Protection
+     * Autofilters are locked when sheet is protected, default true.
+     */
+    private ?bool $autoFilter = null;
+
+    /**
+     * Deleting columns is locked when sheet is protected, default true.
+     */
+    private ?bool $deleteColumns = null;
+
+    /**
+     * Deleting rows is locked when sheet is protected, default true.
+     */
+    private ?bool $deleteRows = null;
+
+    /**
+     * Formatting cells is locked when sheet is protected, default true.
+     */
+    private ?bool $formatCells = null;
+
+    /**
+     * Formatting columns is locked when sheet is protected, default true.
+     */
+    private ?bool $formatColumns = null;
+
+    /**
+     * Formatting rows is locked when sheet is protected, default true.
+     */
+    private ?bool $formatRows = null;
+
+    /**
+     * Inserting columns is locked when sheet is protected, default true.
+     */
+    private ?bool $insertColumns = null;
+
+    /**
+     * Inserting hyperlinks is locked when sheet is protected, default true.
+     */
+    private ?bool $insertHyperlinks = null;
+
+    /**
+     * Inserting rows is locked when sheet is protected, default true.
+     */
+    private ?bool $insertRows = null;
+
+    /**
+     * Objects are locked when sheet is protected, default false.
+     */
+    private ?bool $objects = null;
+
+    /**
+     * Pivot tables are locked when the sheet is protected, default true.
+     */
+    private ?bool $pivotTables = null;
+
+    /**
+     * Scenarios are locked when sheet is protected, default false.
+     */
+    private ?bool $scenarios = null;
+
+    /**
+     * Selection of locked cells is locked when sheet is protected, default false.
+     */
+    private ?bool $selectLockedCells = null;
+
+    /**
+     * Selection of unlocked cells is locked when sheet is protected, default false.
+     */
+    private ?bool $selectUnlockedCells = null;
+
+    /**
+     * Sheet is locked when sheet is protected, default false.
+     */
+    private ?bool $sheet = null;
+
+    /**
+     * Sorting is locked when sheet is protected, default true.
+     */
+    private ?bool $sort = null;
+
+    /**
+     * Hashed password.
+     */
+    private string $password = '';
+
+    /**
+     * Algorithm name.
+     */
+    private string $algorithm = '';
+
+    /**
+     * Salt value.
+     */
+    private string $salt = '';
+
+    /**
+     * Spin count.
+     */
+    private int $spinCount = 10000;
+
+    /**
+     * Create a new Protection.
      */
     public function __construct()
     {
@@ -163,383 +126,349 @@ class PHPExcel_Worksheet_Protection
 
     /**
      * Is some sort of protection enabled?
-     *
-     * @return boolean
      */
-    function isProtectionEnabled() {
-    	return 	$this->_sheet ||
-				$this->_objects ||
-				$this->_scenarios ||
-				$this->_formatCells ||
-				$this->_formatColumns ||
-				$this->_formatRows ||
-				$this->_insertColumns ||
-				$this->_insertRows ||
-				$this->_insertHyperlinks ||
-				$this->_deleteColumns ||
-				$this->_deleteRows ||
-				$this->_selectLockedCells ||
-				$this->_sort ||
-				$this->_autoFilter ||
-				$this->_pivotTables ||
-				$this->_selectUnlockedCells;
+    public function isProtectionEnabled(): bool
+    {
+        return
+            $this->password !== ''
+            || isset($this->sheet)
+            || isset($this->objects)
+            || isset($this->scenarios)
+            || isset($this->formatCells)
+            || isset($this->formatColumns)
+            || isset($this->formatRows)
+            || isset($this->insertColumns)
+            || isset($this->insertRows)
+            || isset($this->insertHyperlinks)
+            || isset($this->deleteColumns)
+            || isset($this->deleteRows)
+            || isset($this->selectLockedCells)
+            || isset($this->sort)
+            || isset($this->autoFilter)
+            || isset($this->pivotTables)
+            || isset($this->selectUnlockedCells);
+    }
+
+    public function getSheet(): ?bool
+    {
+        return $this->sheet;
+    }
+
+    public function setSheet(?bool $sheet): self
+    {
+        $this->sheet = $sheet;
+
+        return $this;
+    }
+
+    public function getObjects(): ?bool
+    {
+        return $this->objects;
+    }
+
+    public function setObjects(?bool $objects): self
+    {
+        $this->objects = $objects;
+
+        return $this;
+    }
+
+    public function getScenarios(): ?bool
+    {
+        return $this->scenarios;
+    }
+
+    public function setScenarios(?bool $scenarios): self
+    {
+        $this->scenarios = $scenarios;
+
+        return $this;
+    }
+
+    public function getFormatCells(): ?bool
+    {
+        return $this->formatCells;
+    }
+
+    public function setFormatCells(?bool $formatCells): self
+    {
+        $this->formatCells = $formatCells;
+
+        return $this;
+    }
+
+    public function getFormatColumns(): ?bool
+    {
+        return $this->formatColumns;
+    }
+
+    public function setFormatColumns(?bool $formatColumns): self
+    {
+        $this->formatColumns = $formatColumns;
+
+        return $this;
+    }
+
+    public function getFormatRows(): ?bool
+    {
+        return $this->formatRows;
+    }
+
+    public function setFormatRows(?bool $formatRows): self
+    {
+        $this->formatRows = $formatRows;
+
+        return $this;
+    }
+
+    public function getInsertColumns(): ?bool
+    {
+        return $this->insertColumns;
+    }
+
+    public function setInsertColumns(?bool $insertColumns): self
+    {
+        $this->insertColumns = $insertColumns;
+
+        return $this;
+    }
+
+    public function getInsertRows(): ?bool
+    {
+        return $this->insertRows;
+    }
+
+    public function setInsertRows(?bool $insertRows): self
+    {
+        $this->insertRows = $insertRows;
+
+        return $this;
+    }
+
+    public function getInsertHyperlinks(): ?bool
+    {
+        return $this->insertHyperlinks;
+    }
+
+    public function setInsertHyperlinks(?bool $insertHyperLinks): self
+    {
+        $this->insertHyperlinks = $insertHyperLinks;
+
+        return $this;
+    }
+
+    public function getDeleteColumns(): ?bool
+    {
+        return $this->deleteColumns;
+    }
+
+    public function setDeleteColumns(?bool $deleteColumns): self
+    {
+        $this->deleteColumns = $deleteColumns;
+
+        return $this;
+    }
+
+    public function getDeleteRows(): ?bool
+    {
+        return $this->deleteRows;
+    }
+
+    public function setDeleteRows(?bool $deleteRows): self
+    {
+        $this->deleteRows = $deleteRows;
+
+        return $this;
+    }
+
+    public function getSelectLockedCells(): ?bool
+    {
+        return $this->selectLockedCells;
+    }
+
+    public function setSelectLockedCells(?bool $selectLockedCells): self
+    {
+        $this->selectLockedCells = $selectLockedCells;
+
+        return $this;
+    }
+
+    public function getSort(): ?bool
+    {
+        return $this->sort;
+    }
+
+    public function setSort(?bool $sort): self
+    {
+        $this->sort = $sort;
+
+        return $this;
+    }
+
+    public function getAutoFilter(): ?bool
+    {
+        return $this->autoFilter;
+    }
+
+    public function setAutoFilter(?bool $autoFilter): self
+    {
+        $this->autoFilter = $autoFilter;
+
+        return $this;
+    }
+
+    public function getPivotTables(): ?bool
+    {
+        return $this->pivotTables;
+    }
+
+    public function setPivotTables(?bool $pivotTables): self
+    {
+        $this->pivotTables = $pivotTables;
+
+        return $this;
+    }
+
+    public function getSelectUnlockedCells(): ?bool
+    {
+        return $this->selectUnlockedCells;
+    }
+
+    public function setSelectUnlockedCells(?bool $selectUnlockedCells): self
+    {
+        $this->selectUnlockedCells = $selectUnlockedCells;
+
+        return $this;
     }
 
     /**
-     * Get Sheet
-     *
-     * @return boolean
+     * Get hashed password.
      */
-    function getSheet() {
-    	return $this->_sheet;
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 
     /**
-     * Set Sheet
+     * Set Password.
      *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
+     * @param bool $alreadyHashed If the password has already been hashed, set this to true
+     *
+     * @return $this
      */
-    function setSheet($pValue = false) {
-    	$this->_sheet = $pValue;
-    	return $this;
+    public function setPassword(string $password, bool $alreadyHashed = false): static
+    {
+        if (!$alreadyHashed) {
+            $salt = $this->generateSalt();
+            $this->setSalt($salt);
+            $password = PasswordHasher::hashPassword($password, $this->getAlgorithm(), $this->getSalt(), $this->getSpinCount());
+        }
+
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function setHashValue(string $password): self
+    {
+        return $this->setPassword($password, true);
     }
 
     /**
-     * Get Objects
-     *
-     * @return boolean
+     * Create a pseudorandom string.
      */
-    function getObjects() {
-    	return $this->_objects;
+    private function generateSalt(): string
+    {
+        return base64_encode(random_bytes(16));
     }
 
     /**
-     * Set Objects
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
+     * Get algorithm name.
      */
-    function setObjects($pValue = false) {
-    	$this->_objects = $pValue;
-    	return $this;
+    public function getAlgorithm(): string
+    {
+        return $this->algorithm;
     }
 
     /**
-     * Get Scenarios
-     *
-     * @return boolean
+     * Set algorithm name.
      */
-    function getScenarios() {
-    	return $this->_scenarios;
+    public function setAlgorithm(string $algorithm): self
+    {
+        return $this->setAlgorithmName($algorithm);
     }
 
     /**
-     * Set Scenarios
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
+     * Set algorithm name.
      */
-    function setScenarios($pValue = false) {
-    	$this->_scenarios = $pValue;
-    	return $this;
+    public function setAlgorithmName(string $algorithm): self
+    {
+        $this->algorithm = $algorithm;
+
+        return $this;
+    }
+
+    public function getSalt(): string
+    {
+        return $this->salt;
+    }
+
+    public function setSalt(string $salt): self
+    {
+        return $this->setSaltValue($salt);
+    }
+
+    public function setSaltValue(string $salt): self
+    {
+        $this->salt = $salt;
+
+        return $this;
     }
 
     /**
-     * Get FormatCells
-     *
-     * @return boolean
+     * Get spin count.
      */
-    function getFormatCells() {
-    	return $this->_formatCells;
+    public function getSpinCount(): int
+    {
+        return $this->spinCount;
     }
 
     /**
-     * Set FormatCells
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
+     * Set spin count.
      */
-    function setFormatCells($pValue = false) {
-    	$this->_formatCells = $pValue;
-    	return $this;
+    public function setSpinCount(int $spinCount): self
+    {
+        $this->spinCount = $spinCount;
+
+        return $this;
     }
 
     /**
-     * Get FormatColumns
-     *
-     * @return boolean
+     * Verify that the given non-hashed password can "unlock" the protection.
      */
-    function getFormatColumns() {
-    	return $this->_formatColumns;
+    public function verify(string $password): bool
+    {
+        if ($this->password === '') {
+            return true;
+        }
+
+        $hash = PasswordHasher::hashPassword($password, $this->getAlgorithm(), $this->getSalt(), $this->getSpinCount());
+
+        return $this->getPassword() === $hash;
     }
 
     /**
-     * Set FormatColumns
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
      */
-    function setFormatColumns($pValue = false) {
-    	$this->_formatColumns = $pValue;
-    	return $this;
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
     }
-
-    /**
-     * Get FormatRows
-     *
-     * @return boolean
-     */
-    function getFormatRows() {
-    	return $this->_formatRows;
-    }
-
-    /**
-     * Set FormatRows
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
-     */
-    function setFormatRows($pValue = false) {
-    	$this->_formatRows = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get InsertColumns
-     *
-     * @return boolean
-     */
-    function getInsertColumns() {
-    	return $this->_insertColumns;
-    }
-
-    /**
-     * Set InsertColumns
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
-     */
-    function setInsertColumns($pValue = false) {
-    	$this->_insertColumns = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get InsertRows
-     *
-     * @return boolean
-     */
-    function getInsertRows() {
-    	return $this->_insertRows;
-    }
-
-    /**
-     * Set InsertRows
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
-     */
-    function setInsertRows($pValue = false) {
-    	$this->_insertRows = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get InsertHyperlinks
-     *
-     * @return boolean
-     */
-    function getInsertHyperlinks() {
-    	return $this->_insertHyperlinks;
-    }
-
-    /**
-     * Set InsertHyperlinks
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
-     */
-    function setInsertHyperlinks($pValue = false) {
-    	$this->_insertHyperlinks = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get DeleteColumns
-     *
-     * @return boolean
-     */
-    function getDeleteColumns() {
-    	return $this->_deleteColumns;
-    }
-
-    /**
-     * Set DeleteColumns
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
-     */
-    function setDeleteColumns($pValue = false) {
-    	$this->_deleteColumns = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get DeleteRows
-     *
-     * @return boolean
-     */
-    function getDeleteRows() {
-    	return $this->_deleteRows;
-    }
-
-    /**
-     * Set DeleteRows
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
-     */
-    function setDeleteRows($pValue = false) {
-    	$this->_deleteRows = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get SelectLockedCells
-     *
-     * @return boolean
-     */
-    function getSelectLockedCells() {
-    	return $this->_selectLockedCells;
-    }
-
-    /**
-     * Set SelectLockedCells
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
-     */
-    function setSelectLockedCells($pValue = false) {
-    	$this->_selectLockedCells = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get Sort
-     *
-     * @return boolean
-     */
-    function getSort() {
-    	return $this->_sort;
-    }
-
-    /**
-     * Set Sort
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
-     */
-    function setSort($pValue = false) {
-    	$this->_sort = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get AutoFilter
-     *
-     * @return boolean
-     */
-    function getAutoFilter() {
-    	return $this->_autoFilter;
-    }
-
-    /**
-     * Set AutoFilter
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
-     */
-    function setAutoFilter($pValue = false) {
-    	$this->_autoFilter = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get PivotTables
-     *
-     * @return boolean
-     */
-    function getPivotTables() {
-    	return $this->_pivotTables;
-    }
-
-    /**
-     * Set PivotTables
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
-     */
-    function setPivotTables($pValue = false) {
-    	$this->_pivotTables = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get SelectUnlockedCells
-     *
-     * @return boolean
-     */
-    function getSelectUnlockedCells() {
-    	return $this->_selectUnlockedCells;
-    }
-
-    /**
-     * Set SelectUnlockedCells
-     *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Protection
-     */
-    function setSelectUnlockedCells($pValue = false) {
-    	$this->_selectUnlockedCells = $pValue;
-    	return $this;
-    }
-
-    /**
-     * Get Password (hashed)
-     *
-     * @return string
-     */
-    function getPassword() {
-    	return $this->_password;
-    }
-
-    /**
-     * Set Password
-     *
-     * @param string 	$pValue
-     * @param boolean 	$pAlreadyHashed If the password has already been hashed, set this to true
-     * @return PHPExcel_Worksheet_Protection
-     */
-    function setPassword($pValue = '', $pAlreadyHashed = false) {
-    	if (!$pAlreadyHashed) {
-    		$pValue = PHPExcel_Shared_PasswordHasher::hashPassword($pValue);
-    	}
-		$this->_password = $pValue;
-		return $this;
-    }
-
-	/**
-	 * Implement PHP __clone to create a deep clone, not just a shallow copy.
-	 */
-	public function __clone() {
-		$vars = get_object_vars($this);
-		foreach ($vars as $key => $value) {
-			if (is_object($value)) {
-				$this->$key = clone $value;
-			} else {
-				$this->$key = $value;
-			}
-		}
-	}
 }

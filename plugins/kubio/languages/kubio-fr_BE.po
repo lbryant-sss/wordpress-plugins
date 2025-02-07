@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-11T15:16:08+02:00\n"
+"POT-Creation-Date: 2025-02-05T18:07:57+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: \n"
 "X-Generator: WP-CLI 2.11.0\n"
@@ -140,7 +140,7 @@ msgstr "Zone de widgets non trouvée"
 #: lib/add-edit-in-kubio.php:199
 #: lib/add-edit-in-kubio.php:367
 #: lib/filters/default-editor-overlay.php:151
-#: lib/kubio-editor.php:988
+#: lib/kubio-editor.php:987
 #: build/block-library/index.js:13
 msgid "Edit with Kubio"
 msgstr "Modifier avec Kubio"
@@ -189,7 +189,7 @@ msgid "Starter Sites"
 msgstr "Sites de démarrage"
 
 #: lib/admin-pages/main-page/demo-sites.php:13
-#: lib/kubio-editor.php:1231
+#: lib/kubio-editor.php:1230
 msgid "You need a higher level of permission."
 msgstr "Vous devez avoir des droits supérieurs."
 
@@ -1169,15 +1169,15 @@ msgstr "Couleur Kubio %s"
 
 #: lib/integrations/third-party-themes/templates-importer.php:285
 #: lib/kubio-editor.php:164
-#: lib/src/Core/Activation.php:389
-#: lib/src/Core/Activation.php:571
+#: lib/src/Core/Activation.php:392
+#: lib/src/Core/Activation.php:574
 #: build/editor/index.js:23
 msgid "Blog"
 msgstr "Blog"
 
 #: lib/integrations/third-party-themes/templates-importer.php:323
-#: lib/src/Core/Activation.php:454
-#: lib/src/Core/Activation.php:557
+#: lib/src/Core/Activation.php:457
+#: lib/src/Core/Activation.php:560
 msgid "Home"
 msgstr "Accueil"
 
@@ -1345,83 +1345,83 @@ msgstr "En-têtes"
 msgid "Footers"
 msgstr "Pieds de page"
 
-#: lib/kubio-editor.php:390
+#: lib/kubio-editor.php:386
 #: build/block-editor/index.js:1
 #: build/block-library/index.js:19
 msgid "Thumbnail"
 msgstr "Miniature"
 
-#: lib/kubio-editor.php:391
+#: lib/kubio-editor.php:387
 #: build/block-editor/index.js:1
 #: build/block-library/index.js:19
 #: build/editor/index.js:55
 msgid "Medium"
 msgstr "Moyenne"
 
-#: lib/kubio-editor.php:392
+#: lib/kubio-editor.php:388
 #: build/block-editor/index.js:1
 #: build/block-library/index.js:19
 #: build/editor/index.js:55
 msgid "Large"
 msgstr "Grande"
 
-#: lib/kubio-editor.php:393
+#: lib/kubio-editor.php:389
 #: build/block-editor/index.js:1
 #: build/block-library/index.js:19
 msgid "Original Size"
 msgstr "Taille d'origine"
 
-#: lib/kubio-editor.php:972
-#: lib/kubio-editor.php:976
-#: lib/kubio-editor.php:987
+#: lib/kubio-editor.php:971
+#: lib/kubio-editor.php:975
+#: lib/kubio-editor.php:986
 msgid "Kubio"
 msgstr "Kubio"
 
-#: lib/kubio-editor.php:1015
+#: lib/kubio-editor.php:1014
 #: lib/src/Core/EditInKubioCustomizerPanel.php:86
 msgid "Open Kubio Editor"
 msgstr "Ouvrir l'éditeur Kubio"
 
-#: lib/kubio-editor.php:1091
+#: lib/kubio-editor.php:1090
 msgid "What to show on the front page"
 msgstr "Afficher quoi sur la page d’accueil"
 
-#: lib/kubio-editor.php:1103
+#: lib/kubio-editor.php:1102
 msgid "The ID of the page that should be displayed on the front page"
 msgstr "L’ID de la page qui doit être affiché sur la page d’accueil"
 
-#: lib/kubio-editor.php:1117
+#: lib/kubio-editor.php:1116
 msgid "The ID of the page that displays the posts"
 msgstr "L'ID de la page qui affiche les articles"
 
-#: lib/kubio-editor.php:1134
+#: lib/kubio-editor.php:1133
 msgid "Site icon."
 msgstr "Icône du site"
 
-#: lib/kubio-editor.php:1151
+#: lib/kubio-editor.php:1150
 msgctxt "Template name"
 msgid "Full Width"
 msgstr "Pleine largeur"
 
-#: lib/kubio-editor.php:1152
-#: lib/kubio-editor.php:1159
+#: lib/kubio-editor.php:1151
+#: lib/kubio-editor.php:1158
 msgid "Recommended Kubio template to display individual pages. This template works best with the Kubio provided blocks and predesigned sections."
 msgstr "Modèle Kubio recommandé pour afficher des pages individuelles. Ce modèle fonctionne mieux avec les blocs fournis par Kubio et les sections prédéfinies."
 
-#: lib/kubio-editor.php:1158
+#: lib/kubio-editor.php:1157
 msgctxt "Template name"
 msgid "Kubio Full Width"
 msgstr "Kubio Pleine Largeur"
 
-#: lib/kubio-editor.php:1232
+#: lib/kubio-editor.php:1231
 msgid "Sorry, you are not allowed to customize this site."
 msgstr "Désolé, vous n’avez pas l’autorisation de personnaliser ce site."
 
-#: lib/kubio-editor.php:1250
+#: lib/kubio-editor.php:1249
 msgid "Kubio Section"
 msgstr "Section Kubio"
 
-#: lib/kubio-editor.php:1292
+#: lib/kubio-editor.php:1291
 msgid "Kubio Favorites"
 msgstr "Favoris de Kubio"
 
@@ -1559,7 +1559,7 @@ msgstr "Le contenu actuel sera remplacé par le contenu de la langue principale.
 msgid "Copy from primary language"
 msgstr "Copier depuis la langue principale"
 
-#: lib/src/Core/Activation.php:507
+#: lib/src/Core/Activation.php:510
 msgid "Primary menu"
 msgstr "Menu principal"
 

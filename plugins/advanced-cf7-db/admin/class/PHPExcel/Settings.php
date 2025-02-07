@@ -1,391 +1,189 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Settings
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
-/** PHPExcel root directory */
-if (!defined('PHPEXCEL_ROOT')) {
-    /**
-     * @ignore
-     */
-    define('PHPEXCEL_ROOT', dirname(__FILE__) . '/../');
-    require(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-}
+namespace PhpOffice\PhpSpreadsheet;
 
+use PhpOffice\PhpSpreadsheet\Calculation\Calculation;
+use PhpOffice\PhpSpreadsheet\Chart\Renderer\IRenderer;
+use PhpOffice\PhpSpreadsheet\Collection\Memory;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\SimpleCache\CacheInterface;
+use ReflectionClass;
 
-class PHPExcel_Settings
+class Settings
 {
-    /**    constants */
-    /**    Available Zip library classes */
-    const PCLZIP        = 'PHPExcel_Shared_ZipArchive';
-    const ZIPARCHIVE    = 'ZipArchive';
-
-    /**    Optional Chart Rendering libraries */
-    const CHART_RENDERER_JPGRAPH    = 'jpgraph';
-
-    /**    Optional PDF Rendering libraries */
-    const PDF_RENDERER_TCPDF		= 'tcPDF';
-    const PDF_RENDERER_DOMPDF		= 'DomPDF';
-    const PDF_RENDERER_MPDF 		= 'mPDF';
-
-
-    private static $_chartRenderers = array(
-        self::CHART_RENDERER_JPGRAPH,
-    );
-
-    private static $_pdfRenderers = array(
-        self::PDF_RENDERER_TCPDF,
-        self::PDF_RENDERER_DOMPDF,
-        self::PDF_RENDERER_MPDF,
-    );
-
-
     /**
-     * Name of the class used for Zip file management
-     *	e.g.
-     *		ZipArchive
+     * Class name of the chart renderer used for rendering charts
+     * eg: PhpOffice\PhpSpreadsheet\Chart\Renderer\JpGraph.
      *
-     * @var string
+     * @var null|class-string<IRenderer>
      */
-    private static $_zipClass    = self::ZIPARCHIVE;
-
+    private static ?string $chartRenderer = null;
 
     /**
-     * Name of the external Library used for rendering charts
-     *	e.g.
-     *		jpgraph
-     *
-     * @var string
+     * Default options for libxml loader.
      */
-    private static $_chartRendererName = NULL;
+    private static ?int $libXmlLoaderOptions = null;
 
     /**
-     * Directory Path to the external Library used for rendering charts
-     *
-     * @var string
+     * The cache implementation to be used for cell collection.
      */
-    private static $_chartRendererPath = NULL;
-
+    private static ?CacheInterface $cache = null;
 
     /**
-     * Name of the external Library used for rendering PDF files
-     *	e.g.
-     * 		mPDF
-     *
-     * @var string
+     * The HTTP client implementation to be used for network request.
      */
-    private static $_pdfRendererName = NULL;
+    private static ?ClientInterface $httpClient = null;
+
+    private static ?RequestFactoryInterface $requestFactory = null;
 
     /**
-     * Directory Path to the external Library used for rendering PDF files
-     *
-     * @var string
-     */
-    private static $_pdfRendererPath = NULL;
-
-    /**
-     * Default options for libxml loader
-     *
-     * @var int
-     */
-    private static $_libXmlLoaderOptions = null;
-
-    /**
-     * Set the Zip handler Class that PHPExcel should use for Zip file management (PCLZip or ZipArchive)
-     *
-     * @param string $zipClass	The Zip handler class that PHPExcel should use for Zip file management
-     * 	 e.g. PHPExcel_Settings::PCLZip or PHPExcel_Settings::ZipArchive
-     * @return	boolean	Success or failure
-     */
-    public static function setZipClass($zipClass)
-    {
-        if (($zipClass === self::PCLZIP) ||
-            ($zipClass === self::ZIPARCHIVE)) {
-            self::$_zipClass = $zipClass;
-            return TRUE;
-        }
-        return FALSE;
-    } // function setZipClass()
-
-
-    /**
-     * Return the name of the Zip handler Class that PHPExcel is configured to use (PCLZip or ZipArchive)
-     *	or Zip file management
-     *
-     * @return string Name of the Zip handler Class that PHPExcel is configured to use
-     *	for Zip file management
-     *	e.g. PHPExcel_Settings::PCLZip or PHPExcel_Settings::ZipArchive
-     */
-    public static function getZipClass()
-    {
-        return self::$_zipClass;
-    } // function getZipClass()
-
-
-    /**
-     * Return the name of the method that is currently configured for cell cacheing
-     *
-     * @return string Name of the cacheing method
-     */
-    public static function getCacheStorageMethod()
-    {
-        return PHPExcel_CachedObjectStorageFactory::getCacheStorageMethod();
-    } // function getCacheStorageMethod()
-
-
-    /**
-     * Return the name of the class that is currently being used for cell cacheing
-     *
-     * @return string Name of the class currently being used for cacheing
-     */
-    public static function getCacheStorageClass()
-    {
-        return PHPExcel_CachedObjectStorageFactory::getCacheStorageClass();
-    } // function getCacheStorageClass()
-
-
-    /**
-     * Set the method that should be used for cell cacheing
-     *
-     * @param string $method Name of the cacheing method
-     * @param array $arguments Optional configuration arguments for the cacheing method
-     * @return boolean Success or failure
-     */
-    public static function setCacheStorageMethod(
-    	$method = PHPExcel_CachedObjectStorageFactory::cache_in_memory,
-      $arguments = array()
-    )
-    {
-        return PHPExcel_CachedObjectStorageFactory::initialize($method, $arguments);
-    } // function setCacheStorageMethod()
-
-
-    /**
-     * Set the locale code to use for formula translations and any special formatting
+     * Set the locale code to use for formula translations and any special formatting.
      *
      * @param string $locale The locale code to use (e.g. "fr" or "pt_br" or "en_uk")
-     * @return boolean Success or failure
+     *
+     * @return bool Success or failure
      */
-    public static function setLocale($locale='en_us')
+    public static function setLocale(string $locale): bool
     {
-        return PHPExcel_Calculation::getInstance()->setLocale($locale);
-    } // function setLocale()
+        return Calculation::getInstance()->setLocale($locale);
+    }
 
+    public static function getLocale(): string
+    {
+        return Calculation::getInstance()->getLocale();
+    }
 
     /**
-     * Set details of the external library that PHPExcel should use for rendering charts
+     * Identify to PhpSpreadsheet the external library to use for rendering charts.
      *
-     * @param string $libraryName	Internal reference name of the library
-     *	e.g. PHPExcel_Settings::CHART_RENDERER_JPGRAPH
-     * @param string $libraryBaseDir Directory path to the library's base folder
-     *
-     * @return	boolean	Success or failure
+     * @param class-string<IRenderer> $rendererClassName Class name of the chart renderer
+     *    eg: PhpOffice\PhpSpreadsheet\Chart\Renderer\JpGraph
      */
-    public static function setChartRenderer($libraryName, $libraryBaseDir)
+    public static function setChartRenderer(string $rendererClassName): void
     {
-        if (!self::setChartRendererName($libraryName))
-            return FALSE;
-        return self::setChartRendererPath($libraryBaseDir);
-    } // function setChartRenderer()
-
-
-    /**
-     * Identify to PHPExcel the external library to use for rendering charts
-     *
-     * @param string $libraryName	Internal reference name of the library
-     *	e.g. PHPExcel_Settings::CHART_RENDERER_JPGRAPH
-     *
-     * @return	boolean	Success or failure
-     */
-    public static function setChartRendererName($libraryName)
-    {
-        if (!in_array($libraryName,self::$_chartRenderers)) {
-            return FALSE;
+        if (!is_a($rendererClassName, IRenderer::class, true)) {
+            throw new Exception('Chart renderer must implement ' . IRenderer::class);
         }
 
-        self::$_chartRendererName = $libraryName;
+        self::$chartRenderer = $rendererClassName;
+    }
 
-        return TRUE;
-    } // function setChartRendererName()
-
+    public static function unsetChartRenderer(): void
+    {
+        self::$chartRenderer = null;
+    }
 
     /**
-     * Tell PHPExcel where to find the external library to use for rendering charts
+     * Return the Chart Rendering Library that PhpSpreadsheet is currently configured to use.
      *
-     * @param string $libraryBaseDir	Directory path to the library's base folder
-     * @return	boolean	Success or failure
+     * @return null|class-string<IRenderer> Class name of the chart renderer
+     *    eg: PhpOffice\PhpSpreadsheet\Chart\Renderer\JpGraph
      */
-    public static function setChartRendererPath($libraryBaseDir)
+    public static function getChartRenderer(): ?string
     {
-        if ((file_exists($libraryBaseDir) === false) || (is_readable($libraryBaseDir) === false)) {
-            return FALSE;
+        return self::$chartRenderer;
+    }
+
+    public static function htmlEntityFlags(): int
+    {
+        return ENT_COMPAT;
+    }
+
+    /**
+     * Set default options for libxml loader.
+     *
+     * @param ?int $options Default options for libxml loader
+     *
+     * @deprecated 3.5.0 no longer needed
+     */
+    public static function setLibXmlLoaderOptions(?int $options): int
+    {
+        if ($options === null) {
+            $options = defined('LIBXML_DTDLOAD') ? (LIBXML_DTDLOAD | LIBXML_DTDATTR) : 0;
         }
-        self::$_chartRendererPath = $libraryBaseDir;
+        self::$libXmlLoaderOptions = $options;
 
-        return TRUE;
-    } // function setChartRendererPath()
-
-
-    /**
-     * Return the Chart Rendering Library that PHPExcel is currently configured to use (e.g. jpgraph)
-     *
-     * @return string|NULL Internal reference name of the Chart Rendering Library that PHPExcel is
-     *	currently configured to use
-     *	e.g. PHPExcel_Settings::CHART_RENDERER_JPGRAPH
-     */
-    public static function getChartRendererName()
-    {
-        return self::$_chartRendererName;
-    } // function getChartRendererName()
-
-
-    /**
-     * Return the directory path to the Chart Rendering Library that PHPExcel is currently configured to use
-     *
-     * @return string|NULL Directory Path to the Chart Rendering Library that PHPExcel is
-     * 	currently configured to use
-     */
-    public static function getChartRendererPath()
-    {
-        return self::$_chartRendererPath;
-    } // function getChartRendererPath()
-
-
-    /**
-     * Set details of the external library that PHPExcel should use for rendering PDF files
-     *
-     * @param string $libraryName Internal reference name of the library
-     * 	e.g. PHPExcel_Settings::PDF_RENDERER_TCPDF,
-     * 	PHPExcel_Settings::PDF_RENDERER_DOMPDF
-     *  or PHPExcel_Settings::PDF_RENDERER_MPDF
-     * @param string $libraryBaseDir Directory path to the library's base folder
-     *
-     * @return boolean Success or failure
-     */
-    public static function setPdfRenderer($libraryName, $libraryBaseDir)
-    {
-        if (!self::setPdfRendererName($libraryName))
-            return FALSE;
-        return self::setPdfRendererPath($libraryBaseDir);
-    } // function setPdfRenderer()
-
-
-    /**
-     * Identify to PHPExcel the external library to use for rendering PDF files
-     *
-     * @param string $libraryName Internal reference name of the library
-     * 	e.g. PHPExcel_Settings::PDF_RENDERER_TCPDF,
-     *	PHPExcel_Settings::PDF_RENDERER_DOMPDF
-     * 	or PHPExcel_Settings::PDF_RENDERER_MPDF
-     *
-     * @return boolean Success or failure
-     */
-    public static function setPdfRendererName($libraryName)
-    {
-        if (!in_array($libraryName,self::$_pdfRenderers)) {
-            return FALSE;
-        }
-
-        self::$_pdfRendererName = $libraryName;
-
-        return TRUE;
-    } // function setPdfRendererName()
-
-
-    /**
-     * Tell PHPExcel where to find the external library to use for rendering PDF files
-     *
-     * @param string $libraryBaseDir Directory path to the library's base folder
-     * @return boolean Success or failure
-     */
-    public static function setPdfRendererPath($libraryBaseDir)
-    {
-        if ((file_exists($libraryBaseDir) === false) || (is_readable($libraryBaseDir) === false)) {
-            return FALSE;
-        }
-        self::$_pdfRendererPath = $libraryBaseDir;
-
-        return TRUE;
-    } // function setPdfRendererPath()
-
-
-    /**
-     * Return the PDF Rendering Library that PHPExcel is currently configured to use (e.g. dompdf)
-     *
-     * @return string|NULL Internal reference name of the PDF Rendering Library that PHPExcel is
-     * 	currently configured to use
-     *  e.g. PHPExcel_Settings::PDF_RENDERER_TCPDF,
-     *  PHPExcel_Settings::PDF_RENDERER_DOMPDF
-     *  or PHPExcel_Settings::PDF_RENDERER_MPDF
-     */
-    public static function getPdfRendererName()
-    {
-        return self::$_pdfRendererName;
-    } // function getPdfRendererName()
-
-    /**
-     * Return the directory path to the PDF Rendering Library that PHPExcel is currently configured to use
-     *
-     * @return string|NULL Directory Path to the PDF Rendering Library that PHPExcel is
-     *		currently configured to use
-     */
-    public static function getPdfRendererPath()
-    {
-        return self::$_pdfRendererPath;
-    } // function getPdfRendererPath()
-
-    /**
-     * Set default options for libxml loader
-     *
-     * @param int $options Default options for libxml loader
-     */
-    public static function setLibXmlLoaderOptions($options = null)
-    {
-        if (is_null($options) && defined(LIBXML_DTDLOAD)) {
-            $options = LIBXML_DTDLOAD | LIBXML_DTDATTR;
-        }
-        if (version_compare(PHP_VERSION, '5.2.11') >= 0) {
-            @libxml_disable_entity_loader($options == (LIBXML_DTDLOAD | LIBXML_DTDATTR)); 
-        }
-        self::$_libXmlLoaderOptions = $options;
-    } // function setLibXmlLoaderOptions
+        return $options;
+    }
 
     /**
      * Get default options for libxml loader.
      * Defaults to LIBXML_DTDLOAD | LIBXML_DTDATTR when not set explicitly.
      *
      * @return int Default options for libxml loader
+     *
+     * @deprecated 3.5.0 no longer needed
      */
-    public static function getLibXmlLoaderOptions()
+    public static function getLibXmlLoaderOptions(): int
     {
-        if (is_null(self::$_libXmlLoaderOptions) && defined(LIBXML_DTDLOAD)) {
-            self::setLibXmlLoaderOptions(LIBXML_DTDLOAD | LIBXML_DTDATTR);
+        return self::$libXmlLoaderOptions ?? (defined('LIBXML_DTDLOAD') ? (LIBXML_DTDLOAD | LIBXML_DTDATTR) : 0);
+    }
+
+    /**
+     * Sets the implementation of cache that should be used for cell collection.
+     */
+    public static function setCache(?CacheInterface $cache): void
+    {
+        self::$cache = $cache;
+    }
+
+    /**
+     * Gets the implementation of cache that is being used for cell collection.
+     */
+    public static function getCache(): CacheInterface
+    {
+        if (!self::$cache) {
+            self::$cache = self::useSimpleCacheVersion3() ? new Memory\SimpleCache3() : new Memory\SimpleCache1();
         }
-        if (version_compare(PHP_VERSION, '5.2.11') >= 0) {
-            @libxml_disable_entity_loader(self::$_libXmlLoaderOptions == (LIBXML_DTDLOAD | LIBXML_DTDATTR));
+
+        return self::$cache;
+    }
+
+    public static function useSimpleCacheVersion3(): bool
+    {
+        return (new ReflectionClass(CacheInterface::class))->getMethod('get')->getReturnType() !== null;
+    }
+
+    /**
+     * Set the HTTP client implementation to be used for network request.
+     */
+    public static function setHttpClient(ClientInterface $httpClient, RequestFactoryInterface $requestFactory): void
+    {
+        self::$httpClient = $httpClient;
+        self::$requestFactory = $requestFactory;
+    }
+
+    /**
+     * Unset the HTTP client configuration.
+     */
+    public static function unsetHttpClient(): void
+    {
+        self::$httpClient = null;
+        self::$requestFactory = null;
+    }
+
+    /**
+     * Get the HTTP client implementation to be used for network request.
+     */
+    public static function getHttpClient(): ClientInterface
+    {
+        if (!self::$httpClient || !self::$requestFactory) {
+            throw new Exception('HTTP client must be configured via Settings::setHttpClient() to be able to use WEBSERVICE function.');
         }
-        return self::$_libXmlLoaderOptions;
-    } // function getLibXmlLoaderOptions
+
+        return self::$httpClient;
+    }
+
+    /**
+     * Get the HTTP request factory.
+     */
+    public static function getRequestFactory(): RequestFactoryInterface
+    {
+        if (!self::$httpClient || !self::$requestFactory) {
+            throw new Exception('HTTP client must be configured via Settings::setHttpClient() to be able to use WEBSERVICE function.');
+        }
+
+        return self::$requestFactory;
+    }
 }

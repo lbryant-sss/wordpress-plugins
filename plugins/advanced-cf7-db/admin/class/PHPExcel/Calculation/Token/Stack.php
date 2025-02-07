@@ -1,115 +1,119 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Calculation
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license	http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version	##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Calculation\Token;
 
-/**
- * PHPExcel_Calculation_Token_Stack
- *
- * @category	PHPExcel_Calculation_Token_Stack
- * @package		PHPExcel_Calculation
- * @copyright	Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Calculation_Token_Stack {
+use PhpOffice\PhpSpreadsheet\Calculation\Calculation;
+use PhpOffice\PhpSpreadsheet\Calculation\Engine\BranchPruner;
 
-	/**
-	 *  The parser stack for formulae
-	 *
-	 *  @var mixed[]
-	 */
-	private $_stack = array();
+class Stack
+{
+    private BranchPruner $branchPruner;
 
-	/**
-	 *  Count of entries in the parser stack
-	 *
-	 *  @var integer
-	 */
-	private $_count = 0;
+    /**
+     * The parser stack for formulae.
+     *
+     * @var mixed[]
+     */
+    private array $stack = [];
 
+    /**
+     * Count of entries in the parser stack.
+     */
+    private int $count = 0;
 
-	/**
-	 * Return the number of entries on the stack
-	 *
-	 * @return  integer
-	 */
-	public function count() {
-		return $this->_count;
-	}	//	function count()
+    public function __construct(BranchPruner $branchPruner)
+    {
+        $this->branchPruner = $branchPruner;
+    }
 
-	/**
-	 * Push a new entry onto the stack
-	 *
-	 * @param  mixed  $type
-	 * @param  mixed  $value
-	 * @param  mixed  $reference
-	 */
-	public function push($type, $value, $reference = NULL) {
-		$this->_stack[$this->_count++] = array('type'		=> $type,
-											   'value'		=> $value,
-											   'reference'	=> $reference
-											  );
-		if ($type == 'Function') {
-			$localeFunction = PHPExcel_Calculation::_localeFunc($value);
-			if ($localeFunction != $value) {
-				$this->_stack[($this->_count - 1)]['localeValue'] = $localeFunction;
-			}
-		}
-	}	//	function push()
+    /**
+     * Return the number of entries on the stack.
+     */
+    public function count(): int
+    {
+        return $this->count;
+    }
 
-	/**
-	 * Pop the last entry from the stack
-	 *
-	 * @return  mixed
-	 */
-	public function pop() {
-		if ($this->_count > 0) {
-			return $this->_stack[--$this->_count];
-		}
-		return NULL;
-	}	//	function pop()
+    /**
+     * Push a new entry onto the stack.
+     */
+    public function push(string $type, mixed $value, ?string $reference = null): void
+    {
+        $stackItem = $this->getStackItem($type, $value, $reference);
+        $this->stack[$this->count++] = $stackItem;
 
-	/**
-	 * Return an entry from the stack without removing it
-	 *
-	 * @param   integer  $n  number indicating how far back in the stack we want to look
-	 * @return  mixed
-	 */
-	public function last($n = 1) {
-		if ($this->_count - $n < 0) {
-			return NULL;
-		}
-		return $this->_stack[$this->_count - $n];
-	}	//	function last()
+        if ($type === 'Function') {
+            $localeFunction = Calculation::localeFunc($value);
+            if ($localeFunction != $value) {
+                $this->stack[($this->count - 1)]['localeValue'] = $localeFunction;
+            }
+        }
+    }
 
-	/**
-	 * Clear the stack
-	 */
-	function clear() {
-		$this->_stack = array();
-		$this->_count = 0;
-	}
+    public function pushStackItem(array $stackItem): void
+    {
+        $this->stack[$this->count++] = $stackItem;
+    }
 
-}	//	class PHPExcel_Calculation_Token_Stack
+    public function getStackItem(string $type, mixed $value, ?string $reference = null): array
+    {
+        $stackItem = [
+            'type' => $type,
+            'value' => $value,
+            'reference' => $reference,
+        ];
+
+        // will store the result under this alias
+        $storeKey = $this->branchPruner->currentCondition();
+        if (isset($storeKey) || $reference === 'NULL') {
+            $stackItem['storeKey'] = $storeKey;
+        }
+
+        // will only run computation if the matching store key is true
+        $onlyIf = $this->branchPruner->currentOnlyIf();
+        if (isset($onlyIf) || $reference === 'NULL') {
+            $stackItem['onlyIf'] = $onlyIf;
+        }
+
+        // will only run computation if the matching store key is false
+        $onlyIfNot = $this->branchPruner->currentOnlyIfNot();
+        if (isset($onlyIfNot) || $reference === 'NULL') {
+            $stackItem['onlyIfNot'] = $onlyIfNot;
+        }
+
+        return $stackItem;
+    }
+
+    /**
+     * Pop the last entry from the stack.
+     */
+    public function pop(): ?array
+    {
+        if ($this->count > 0) {
+            return $this->stack[--$this->count];
+        }
+
+        return null;
+    }
+
+    /**
+     * Return an entry from the stack without removing it.
+     */
+    public function last(int $n = 1): ?array
+    {
+        if ($this->count - $n < 0) {
+            return null;
+        }
+
+        return $this->stack[$this->count - $n];
+    }
+
+    /**
+     * Clear the stack.
+     */
+    public function clear(): void
+    {
+        $this->stack = [];
+        $this->count = 0;
+    }
+}

@@ -1,128 +1,207 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category	PHPExcel
- * @package		PHPExcel_Chart
- * @copyright	Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license		http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version		##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Chart;
 
-/**
- * PHPExcel_Chart_PlotArea
- *
- * @category	PHPExcel
- * @package		PHPExcel_Chart
- * @copyright	Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Chart_PlotArea
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+
+class PlotArea
 {
-	/**
-	 * PlotArea Layout
-	 *
-	 * @var PHPExcel_Chart_Layout
-	 */
-	private $_layout = null;
+    /**
+     * No fill in plot area (show Excel gridlines through chart).
+     */
+    private bool $noFill = false;
 
-	/**
-	 * Plot Series
-	 *
-	 * @var array of PHPExcel_Chart_DataSeries
-	 */
-	private $_plotSeries = array();
+    /**
+     * PlotArea Gradient Stop list.
+     * Each entry is a 2-element array.
+     *     First is position in %.
+     *     Second is ChartColor.
+     *
+     * @var array[]
+     */
+    private array $gradientFillStops = [];
 
-	/**
-	 * Create a new PHPExcel_Chart_PlotArea
-	 */
-	public function __construct(PHPExcel_Chart_Layout $layout = null, $plotSeries = array())
-	{
-		$this->_layout = $layout;
-		$this->_plotSeries = $plotSeries;
-	}
+    /**
+     * PlotArea Gradient Angle.
+     */
+    private ?float $gradientFillAngle = null;
 
-	/**
-	 * Get Layout
-	 *
-	 * @return PHPExcel_Chart_Layout
-	 */
-	public function getLayout() {
-		return $this->_layout;
-	}
+    /**
+     * PlotArea Layout.
+     */
+    private ?Layout $layout;
 
-	/**
-	 * Get Number of Plot Groups
-	 *
-	 * @return array of PHPExcel_Chart_DataSeries
-	 */
-	public function getPlotGroupCount() {
-		return count($this->_plotSeries);
-	}
+    /**
+     * Plot Series.
+     *
+     * @var DataSeries[]
+     */
+    private array $plotSeries;
 
-	/**
-	 * Get Number of Plot Series
-	 *
-	 * @return integer
-	 */
-	public function getPlotSeriesCount() {
-		$seriesCount = 0;
-		foreach($this->_plotSeries as $plot) {
-			$seriesCount += $plot->getPlotSeriesCount();
-		}
-		return $seriesCount;
-	}
+    /**
+     * Create a new PlotArea.
+     *
+     * @param DataSeries[] $plotSeries
+     */
+    public function __construct(?Layout $layout = null, array $plotSeries = [])
+    {
+        $this->layout = $layout;
+        $this->plotSeries = $plotSeries;
+    }
 
-	/**
-	 * Get Plot Series
-	 *
-	 * @return array of PHPExcel_Chart_DataSeries
-	 */
-	public function getPlotGroup() {
-		return $this->_plotSeries;
-	}
+    public function getLayout(): ?Layout
+    {
+        return $this->layout;
+    }
 
-	/**
-	 * Get Plot Series by Index
-	 *
-	 * @return PHPExcel_Chart_DataSeries
-	 */
-	public function getPlotGroupByIndex($index) {
-		return $this->_plotSeries[$index];
-	}
+    /**
+     * Get Number of Plot Groups.
+     */
+    public function getPlotGroupCount(): int
+    {
+        return count($this->plotSeries);
+    }
 
-	/**
-	 * Set Plot Series
-	 *
-	 * @param [PHPExcel_Chart_DataSeries]
-     * @return PHPExcel_Chart_PlotArea
-	 */
-	public function setPlotSeries($plotSeries = array()) {
-		$this->_plotSeries = $plotSeries;
-        
+    /**
+     * Get Number of Plot Series.
+     */
+    public function getPlotSeriesCount(): int|float
+    {
+        $seriesCount = 0;
+        foreach ($this->plotSeries as $plot) {
+            $seriesCount += $plot->getPlotSeriesCount();
+        }
+
+        return $seriesCount;
+    }
+
+    /**
+     * Get Plot Series.
+     *
+     * @return DataSeries[]
+     */
+    public function getPlotGroup(): array
+    {
+        return $this->plotSeries;
+    }
+
+    /**
+     * Get Plot Series by Index.
+     */
+    public function getPlotGroupByIndex(int $index): DataSeries
+    {
+        return $this->plotSeries[$index];
+    }
+
+    /**
+     * Set Plot Series.
+     *
+     * @param DataSeries[] $plotSeries
+     *
+     * @return $this
+     */
+    public function setPlotSeries(array $plotSeries): static
+    {
+        $this->plotSeries = $plotSeries;
+
         return $this;
-	}
+    }
 
-	public function refresh(PHPExcel_Worksheet $worksheet) {
-	    foreach($this->_plotSeries as $plotSeries) {
-			$plotSeries->refresh($worksheet);
-		}
-	}
+    public function refresh(Worksheet $worksheet): void
+    {
+        foreach ($this->plotSeries as $plotSeries) {
+            $plotSeries->refresh($worksheet);
+        }
+    }
 
+    public function setNoFill(bool $noFill): self
+    {
+        $this->noFill = $noFill;
+
+        return $this;
+    }
+
+    public function getNoFill(): bool
+    {
+        return $this->noFill;
+    }
+
+    public function setGradientFillProperties(array $gradientFillStops, ?float $gradientFillAngle): self
+    {
+        $this->gradientFillStops = $gradientFillStops;
+        $this->gradientFillAngle = $gradientFillAngle;
+
+        return $this;
+    }
+
+    /**
+     * Get gradientFillAngle.
+     */
+    public function getGradientFillAngle(): ?float
+    {
+        return $this->gradientFillAngle;
+    }
+
+    /**
+     * Get gradientFillStops.
+     */
+    public function getGradientFillStops(): array
+    {
+        return $this->gradientFillStops;
+    }
+
+    private ?int $gapWidth = null;
+
+    private bool $useUpBars = false;
+
+    private bool $useDownBars = false;
+
+    public function getGapWidth(): ?int
+    {
+        return $this->gapWidth;
+    }
+
+    public function setGapWidth(?int $gapWidth): self
+    {
+        $this->gapWidth = $gapWidth;
+
+        return $this;
+    }
+
+    public function getUseUpBars(): bool
+    {
+        return $this->useUpBars;
+    }
+
+    public function setUseUpBars(bool $useUpBars): self
+    {
+        $this->useUpBars = $useUpBars;
+
+        return $this;
+    }
+
+    public function getUseDownBars(): bool
+    {
+        return $this->useDownBars;
+    }
+
+    public function setUseDownBars(bool $useDownBars): self
+    {
+        $this->useDownBars = $useDownBars;
+
+        return $this;
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $this->layout = ($this->layout === null) ? null : clone $this->layout;
+        $plotSeries = $this->plotSeries;
+        $this->plotSeries = [];
+        foreach ($plotSeries as $series) {
+            $this->plotSeries[] = clone $series;
+        }
+    }
 }

@@ -1,288 +1,247 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet_Drawing
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 
-/**
- * PHPExcel_Worksheet_Drawing_Shadow
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet_Drawing
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
+use PhpOffice\PhpSpreadsheet\IComparable;
+use PhpOffice\PhpSpreadsheet\Style\Color;
+
+class Shadow implements IComparable
 {
-	/* Shadow alignment */
-	const SHADOW_BOTTOM							= 'b';
-	const SHADOW_BOTTOM_LEFT					= 'bl';
-	const SHADOW_BOTTOM_RIGHT					= 'br';
-	const SHADOW_CENTER							= 'ctr';
-	const SHADOW_LEFT							= 'l';
-	const SHADOW_TOP							= 't';
-	const SHADOW_TOP_LEFT						= 'tl';
-	const SHADOW_TOP_RIGHT						= 'tr';
-
-	/**
-	 * Visible
-	 *
-	 * @var boolean
-	 */
-	private $_visible;
-
-	/**
-	 * Blur radius
-	 *
-	 * Defaults to 6
-	 *
-	 * @var int
-	 */
-	private $_blurRadius;
-
-	/**
-	 * Shadow distance
-	 *
-	 * Defaults to 2
-	 *
-	 * @var int
-	 */
-	private $_distance;
-
-	/**
-	 * Shadow direction (in degrees)
-	 *
-	 * @var int
-	 */
-	private $_direction;
-
-	/**
-	 * Shadow alignment
-	 *
-	 * @var int
-	 */
-	private $_alignment;
-
-	/**
-	 * Color
-	 *
-	 * @var PHPExcel_Style_Color
-	 */
-	private $_color;
-
-	/**
-	 * Alpha
-	 *
-	 * @var int
-	 */
-	private $_alpha;
+    // Shadow alignment
+    const SHADOW_BOTTOM = 'b';
+    const SHADOW_BOTTOM_LEFT = 'bl';
+    const SHADOW_BOTTOM_RIGHT = 'br';
+    const SHADOW_CENTER = 'ctr';
+    const SHADOW_LEFT = 'l';
+    const SHADOW_TOP = 't';
+    const SHADOW_TOP_LEFT = 'tl';
+    const SHADOW_TOP_RIGHT = 'tr';
 
     /**
-     * Create a new PHPExcel_Worksheet_Drawing_Shadow
+     * Visible.
+     */
+    private bool $visible;
+
+    /**
+     * Blur radius.
+     *
+     * Defaults to 6
+     */
+    private int $blurRadius;
+
+    /**
+     * Shadow distance.
+     *
+     * Defaults to 2
+     */
+    private int $distance;
+
+    /**
+     * Shadow direction (in degrees).
+     */
+    private int $direction;
+
+    /**
+     * Shadow alignment.
+     */
+    private string $alignment;
+
+    /**
+     * Color.
+     */
+    private Color $color;
+
+    /**
+     * Alpha.
+     */
+    private int $alpha;
+
+    /**
+     * Create a new Shadow.
      */
     public function __construct()
     {
-    	// Initialise values
-    	$this->_visible				= false;
-    	$this->_blurRadius			= 6;
-    	$this->_distance			= 2;
-    	$this->_direction			= 0;
-    	$this->_alignment			= PHPExcel_Worksheet_Drawing_Shadow::SHADOW_BOTTOM_RIGHT;
-    	$this->_color				= new PHPExcel_Style_Color(PHPExcel_Style_Color::COLOR_BLACK);
-    	$this->_alpha				= 50;
+        // Initialise values
+        $this->visible = false;
+        $this->blurRadius = 6;
+        $this->distance = 2;
+        $this->direction = 0;
+        $this->alignment = self::SHADOW_BOTTOM_RIGHT;
+        $this->color = new Color(Color::COLOR_BLACK);
+        $this->alpha = 50;
     }
 
     /**
-     * Get Visible
-     *
-     * @return boolean
+     * Get Visible.
      */
-    public function getVisible() {
-    	return $this->_visible;
+    public function getVisible(): bool
+    {
+        return $this->visible;
     }
 
     /**
-     * Set Visible
+     * Set Visible.
      *
-     * @param boolean $pValue
-     * @return PHPExcel_Worksheet_Drawing_Shadow
+     * @return $this
      */
-    public function setVisible($pValue = false) {
-    	$this->_visible = $pValue;
-    	return $this;
+    public function setVisible(bool $visible): static
+    {
+        $this->visible = $visible;
+
+        return $this;
     }
 
     /**
-     * Get Blur radius
-     *
-     * @return int
+     * Get Blur radius.
      */
-    public function getBlurRadius() {
-    	return $this->_blurRadius;
+    public function getBlurRadius(): int
+    {
+        return $this->blurRadius;
     }
 
     /**
-     * Set Blur radius
+     * Set Blur radius.
      *
-     * @param int $pValue
-     * @return PHPExcel_Worksheet_Drawing_Shadow
+     * @return $this
      */
-    public function setBlurRadius($pValue = 6) {
-    	$this->_blurRadius = $pValue;
-    	return $this;
+    public function setBlurRadius(int $blurRadius): static
+    {
+        $this->blurRadius = $blurRadius;
+
+        return $this;
     }
 
     /**
-     * Get Shadow distance
-     *
-     * @return int
+     * Get Shadow distance.
      */
-    public function getDistance() {
-    	return $this->_distance;
+    public function getDistance(): int
+    {
+        return $this->distance;
     }
 
     /**
-     * Set Shadow distance
+     * Set Shadow distance.
      *
-     * @param int $pValue
-     * @return PHPExcel_Worksheet_Drawing_Shadow
+     * @return $this
      */
-    public function setDistance($pValue = 2) {
-    	$this->_distance = $pValue;
-    	return $this;
+    public function setDistance(int $distance): static
+    {
+        $this->distance = $distance;
+
+        return $this;
     }
 
     /**
-     * Get Shadow direction (in degrees)
-     *
-     * @return int
+     * Get Shadow direction (in degrees).
      */
-    public function getDirection() {
-    	return $this->_direction;
+    public function getDirection(): int
+    {
+        return $this->direction;
     }
 
     /**
-     * Set Shadow direction (in degrees)
+     * Set Shadow direction (in degrees).
      *
-     * @param int $pValue
-     * @return PHPExcel_Worksheet_Drawing_Shadow
+     * @return $this
      */
-    public function setDirection($pValue = 0) {
-    	$this->_direction = $pValue;
-    	return $this;
-    }
+    public function setDirection(int $direction): static
+    {
+        $this->direction = $direction;
 
-   /**
-     * Get Shadow alignment
-     *
-     * @return int
-     */
-    public function getAlignment() {
-    	return $this->_alignment;
+        return $this;
     }
 
     /**
-     * Set Shadow alignment
-     *
-     * @param int $pValue
-     * @return PHPExcel_Worksheet_Drawing_Shadow
+     * Get Shadow alignment.
      */
-    public function setAlignment($pValue = 0) {
-    	$this->_alignment = $pValue;
-    	return $this;
-    }
-
-   /**
-     * Get Color
-     *
-     * @return PHPExcel_Style_Color
-     */
-    public function getColor() {
-    	return $this->_color;
+    public function getAlignment(): string
+    {
+        return $this->alignment;
     }
 
     /**
-     * Set Color
+     * Set Shadow alignment.
      *
-     * @param 	PHPExcel_Style_Color $pValue
-     * @throws 	PHPExcel_Exception
-     * @return PHPExcel_Worksheet_Drawing_Shadow
+     * @return $this
      */
-    public function setColor(PHPExcel_Style_Color $pValue = null) {
-   		$this->_color = $pValue;
-   		return $this;
-    }
+    public function setAlignment(string $alignment): static
+    {
+        $this->alignment = $alignment;
 
-   /**
-     * Get Alpha
-     *
-     * @return int
-     */
-    public function getAlpha() {
-    	return $this->_alpha;
+        return $this;
     }
 
     /**
-     * Set Alpha
-     *
-     * @param int $pValue
-     * @return PHPExcel_Worksheet_Drawing_Shadow
+     * Get Color.
      */
-    public function setAlpha($pValue = 0) {
-    	$this->_alpha = $pValue;
-    	return $this;
+    public function getColor(): Color
+    {
+        return $this->color;
     }
 
-	/**
-	 * Get hash code
-	 *
-	 * @return string	Hash code
-	 */
-	public function getHashCode() {
-    	return md5(
-    		  ($this->_visible ? 't' : 'f')
-    		. $this->_blurRadius
-    		. $this->_distance
-    		. $this->_direction
-    		. $this->_alignment
-    		. $this->_color->getHashCode()
-    		. $this->_alpha
-    		. __CLASS__
-    	);
+    /**
+     * Set Color.
+     *
+     * @return $this
+     */
+    public function setColor(Color $color): static
+    {
+        $this->color = $color;
+
+        return $this;
     }
 
-	/**
-	 * Implement PHP __clone to create a deep clone, not just a shallow copy.
-	 */
-	public function __clone() {
-		$vars = get_object_vars($this);
-		foreach ($vars as $key => $value) {
-			if (is_object($value)) {
-				$this->$key = clone $value;
-			} else {
-				$this->$key = $value;
-			}
-		}
-	}
+    /**
+     * Get Alpha.
+     */
+    public function getAlpha(): int
+    {
+        return $this->alpha;
+    }
+
+    /**
+     * Set Alpha.
+     *
+     * @return $this
+     */
+    public function setAlpha(int $alpha): static
+    {
+        $this->alpha = $alpha;
+
+        return $this;
+    }
+
+    /**
+     * Get hash code.
+     *
+     * @return string Hash code
+     */
+    public function getHashCode(): string
+    {
+        return md5(
+            ($this->visible ? 't' : 'f')
+            . $this->blurRadius
+            . $this->distance
+            . $this->direction
+            . $this->alignment
+            . $this->color->getHashCode()
+            . $this->alpha
+            . __CLASS__
+        );
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
+    }
 }

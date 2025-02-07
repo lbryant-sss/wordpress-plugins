@@ -365,7 +365,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_framework_get_inline_attr' ) ) 
 		}
 
 		// Leave only allowed characters in value, everything that is not a number, char, space or dash will be removed.
-		$properties = preg_replace( '/[^\p{L}\p{N}\s\-_",:{}#.()%\/\[\]\\\\]+/u', '', $properties );
+		//$properties = preg_replace( '/[^\p{L}\p{N}\s\-_",:{}#.()%;\/\[\]\\\\]+/u', '', $properties );
 
 		if ( empty( $properties ) || empty( $attr_matches[0] ) ) {
 			return '';
@@ -377,7 +377,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_framework_get_inline_attr' ) ) 
 		}
 
 		if ( '' !== $properties ) {
-			return $attr . '="' . esc_attr( $properties ) . '"';
+			return $attr . '="' . esc_attr( sanitize_text_field( html_entity_decode( $properties ) ) ) . '"';
 		}
 
 		return '';

@@ -1,66 +1,106 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Shared
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Shared;
 
-/**
- * PHPExcel_Shared_PasswordHasher
- *
- * @category   PHPExcel
- * @package    PHPExcel_Shared
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Shared_PasswordHasher
+use PhpOffice\PhpSpreadsheet\Exception as SpException;
+use PhpOffice\PhpSpreadsheet\Worksheet\Protection;
+
+class PasswordHasher
 {
-	/**
-	 * Create a password hash from a given string.
-	 *
-	 * This method is based on the algorithm provided by
-	 * Daniel Rentz of OpenOffice and the PEAR package
-	 * Spreadsheet_Excel_Writer by Xavier Noguer <xnoguer@rezebra.com>.
-	 *
-	 * @param 	string	$pPassword	Password to hash
-	 * @return 	string				Hashed password
-	 */
-	public static function hashPassword($pPassword = '') {
-        $password	= 0x0000;
-        $charPos	= 1;       // char position
+    const MAX_PASSWORD_LENGTH = 255;
 
-        // split the plain text password in its component characters
-        $chars = preg_split('//', $pPassword, -1, PREG_SPLIT_NO_EMPTY);
-        foreach ($chars as $char) {
-            $value			= ord($char) << $charPos++;	// shifted ASCII value
-            $rotated_bits	= $value >> 15;				// rotated bits beyond bit 15
-            $value			&= 0x7fff;					// first 15 bits
-            $password		^= ($value | $rotated_bits);
+    /**
+     * Get algorithm name for PHP.
+     */
+    private static function getAlgorithm(string $algorithmName): string
+    {
+        if (!$algorithmName) {
+            return '';
         }
 
-        $password ^= strlen($pPassword);
-        $password ^= 0xCE4B;
+        // Mapping between algorithm name in Excel and algorithm name in PHP
+        $mapping = [
+            Protection::ALGORITHM_MD2 => 'md2',
+            Protection::ALGORITHM_MD4 => 'md4',
+            Protection::ALGORITHM_MD5 => 'md5',
+            Protection::ALGORITHM_SHA_1 => 'sha1',
+            Protection::ALGORITHM_SHA_256 => 'sha256',
+            Protection::ALGORITHM_SHA_384 => 'sha384',
+            Protection::ALGORITHM_SHA_512 => 'sha512',
+            Protection::ALGORITHM_RIPEMD_128 => 'ripemd128',
+            Protection::ALGORITHM_RIPEMD_160 => 'ripemd160',
+            Protection::ALGORITHM_WHIRLPOOL => 'whirlpool',
+        ];
 
-        return(strtoupper(dechex($password)));
-	}
+        if (array_key_exists($algorithmName, $mapping)) {
+            return $mapping[$algorithmName];
+        }
+
+        throw new SpException('Unsupported password algorithm: ' . $algorithmName);
+    }
+
+    /**
+     * Create a password hash from a given string.
+     *
+     * This method is based on the spec at:
+     * https://interoperability.blob.core.windows.net/files/MS-OFFCRYPTO/[MS-OFFCRYPTO].pdf
+     * 2.3.7.1 Binary Document Password Verifier Derivation Method 1
+     *
+     * It replaces a method based on the algorithm provided by
+     * Daniel Rentz of OpenOffice and the PEAR package
+     * Spreadsheet_Excel_Writer by Xavier Noguer <xnoguer@rezebra.com>.
+     *
+     * @param string $password Password to hash
+     */
+    private static function defaultHashPassword(string $password): string
+    {
+        $verifier = 0;
+        $pwlen = strlen($password);
+        $passwordArray = pack('c', $pwlen) . $password;
+        for ($i = $pwlen; $i >= 0; --$i) {
+            $intermediate1 = (($verifier & 0x4000) === 0) ? 0 : 1;
+            $intermediate2 = 2 * $verifier;
+            $intermediate2 = $intermediate2 & 0x7FFF;
+            $intermediate3 = $intermediate1 | $intermediate2;
+            $verifier = $intermediate3 ^ ord($passwordArray[$i]);
+        }
+        $verifier ^= 0xCE4B;
+
+        return strtoupper(dechex($verifier));
+    }
+
+    /**
+     * Create a password hash from a given string by a specific algorithm.
+     *
+     * 2.4.2.4 ISO Write Protection Method
+     *
+     * @see https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-offcrypto/1357ea58-646e-4483-92ef-95d718079d6f
+     *
+     * @param string $password Password to hash
+     * @param string $algorithm Hash algorithm used to compute the password hash value
+     * @param string $salt Pseudorandom string
+     * @param int $spinCount Number of times to iterate on a hash of a password
+     *
+     * @return string Hashed password
+     */
+    public static function hashPassword(string $password, string $algorithm = '', string $salt = '', int $spinCount = 10000): string
+    {
+        if (strlen($password) > self::MAX_PASSWORD_LENGTH) {
+            throw new SpException('Password exceeds ' . self::MAX_PASSWORD_LENGTH . ' characters');
+        }
+        $phpAlgorithm = self::getAlgorithm($algorithm);
+        if (!$phpAlgorithm) {
+            return self::defaultHashPassword($password);
+        }
+
+        $saltValue = base64_decode($salt);
+        $encodedPassword = mb_convert_encoding($password, 'UCS-2LE', 'UTF-8');
+
+        $hashValue = hash($phpAlgorithm, $saltValue . $encodedPassword, true);
+        for ($i = 0; $i < $spinCount; ++$i) {
+            $hashValue = hash($phpAlgorithm, $hashValue . pack('L', $i), true);
+        }
+
+        return base64_encode($hashValue);
+    }
 }

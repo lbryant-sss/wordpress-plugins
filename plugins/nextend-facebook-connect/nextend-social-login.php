@@ -20,9 +20,9 @@ require_once(NSL_PATH . '/compat.php');
 
 class NextendSocialLogin {
 
-    public static $version = '3.1.16';
+    public static $version = '3.1.17';
 
-    public static $nslPROMinVersion = '3.1.16';
+    public static $nslPROMinVersion = '3.1.17';
 
     public static $proxyPage = false;
 
@@ -209,45 +209,45 @@ class NextendSocialLogin {
             'comment_button_align' => 'left',
             'comment_button_style' => 'default',
 
-            'buddypress_register_button'          => 'bp_before_account_details_fields',
-            'buddypress_register_button_align'    => 'left',
-            'buddypress_register_button_style'    => 'default',
-            'buddypress_register_form_layout'     => 'default',
-            'buddypress_login'                    => 'show',
-            'buddypress_login_form_layout'        => 'default',
-            'buddypress_login_button_style'       => 'default',
-            'buddypress_sidebar_login'            => 'show',
-            'buddypress_social_accounts_tab'      => 'show',
-            'buddypress_registration_integration' => '0',
+            'buddypress_register_button'             => 'bp_before_account_details_fields',
+            'buddypress_register_button_align'       => 'left',
+            'buddypress_register_button_style'       => 'default',
+            'buddypress_register_form_layout'        => 'default',
+            'buddypress_login'                       => 'show',
+            'buddypress_login_form_layout'           => 'default',
+            'buddypress_login_button_style'          => 'default',
+            'buddypress_sidebar_login'               => 'show',
+            'buddypress_social_accounts_tab'         => 'show',
+            'buddypress_registration_email_template' => 'buddypress',
 
-            'woocommerce_login'                => 'after',
-            'woocommerce_login_form_layout'    => 'default',
-            'woocommerce_register'             => 'after',
-            'woocommerce_register_form_layout' => 'default',
-            'woocommerce_billing'              => 'before',
-            'woocommerce_billing_form_layout'  => 'default',
-            'woocoommerce_form_button_style'   => 'default',
-            'woocoommerce_form_button_align'   => 'left',
-            'woocommerce_account_details'      => 'before',
-
-            'memberpress_login'                        => 'before',
-            'memberpress_form_button_align'            => 'left',
-            'memberpress_login_form_button_style'      => 'default',
-            'memberpress_login_form_layout'            => 'below-separator',
-            'memberpress_signup'                       => 'before',
-            'memberpress_signup_form_button_style'     => 'default',
-            'memberpress_signup_form_layout'           => 'below-separator',
-            'memberpress_account_details'              => 'after',
-            'registration_notification_notify'         => '0',
-            'debug'                                    => '0',
-            'bypass_cache'                             => '1',
-            'show_linked_providers'                    => '0',
-            'login_restriction'                        => '0',
-            'avatars_in_all_media'                     => '0',
-            'custom_register_label'                    => '0',
-            'review_state'                             => -1,
+            'woocommerce_login'                        => 'after',
+            'woocommerce_login_form_layout'            => 'default',
+            'woocommerce_register'                     => 'after',
+            'woocommerce_register_form_layout'         => 'default',
+            'woocommerce_billing'                      => 'before',
+            'woocommerce_billing_form_layout'          => 'default',
+            'woocoommerce_form_button_style'           => 'default',
+            'woocoommerce_form_button_align'           => 'left',
+            'woocommerce_account_details'              => 'before',
             'woocommerce_dismissed'                    => 0,
             'woocoommerce_registration_email_template' => 'woocommerce',
+
+            'memberpress_login'                    => 'before',
+            'memberpress_form_button_align'        => 'left',
+            'memberpress_login_form_button_style'  => 'default',
+            'memberpress_login_form_layout'        => 'below-separator',
+            'memberpress_signup'                   => 'before',
+            'memberpress_signup_form_button_style' => 'default',
+            'memberpress_signup_form_layout'       => 'below-separator',
+            'memberpress_account_details'          => 'after',
+            'registration_notification_notify'     => '0',
+            'debug'                                => '0',
+            'bypass_cache'                         => '1',
+            'show_linked_providers'                => '0',
+            'login_restriction'                    => '0',
+            'avatars_in_all_media'                 => '0',
+            'custom_register_label'                => '0',
+            'review_state'                         => -1,
 
             'userpro_show_login_form'            => 'show',
             'userpro_show_register_form'         => 'show',

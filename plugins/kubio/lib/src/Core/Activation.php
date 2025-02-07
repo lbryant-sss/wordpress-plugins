@@ -180,6 +180,9 @@ class Activation {
 		$this->addCommonFilters();
 		$this->prepareRemoteData();
 
+		//set site uuid on activation
+		Flags::getSiteUUID();
+		
 		add_filter( 'kubio/importer/page_path', array( $this, 'getDesignPagePath' ), 10, 2 );
 
 		if ( $this->importCustomizedTemplates() ) {

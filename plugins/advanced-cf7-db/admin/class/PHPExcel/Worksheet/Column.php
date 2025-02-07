@@ -1,92 +1,110 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Worksheet;
 
-/**
- * PHPExcel_Worksheet_Column
- *
- * Represents a column in PHPExcel_Worksheet, used by PHPExcel_Worksheet_ColumnIterator
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Worksheet_Column
+class Column
 {
-	/**
-	 * PHPExcel_Worksheet
-	 *
-	 * @var PHPExcel_Worksheet
-	 */
-	private $_parent;
+    private Worksheet $worksheet;
 
-	/**
-	 * Column index
-	 *
-	 * @var string
-	 */
-	private $_columnIndex;
+    /**
+     * Column index.
+     */
+    private string $columnIndex;
 
-	/**
-	 * Create a new column
-	 *
-	 * @param PHPExcel_Worksheet 	$parent
-	 * @param string				$columnIndex
-	 */
-	public function __construct(PHPExcel_Worksheet $parent = null, $columnIndex = 'A') {
-		// Set parent and column index
-		$this->_parent 		= $parent;
-		$this->_columnIndex = $columnIndex;
-	}
+    /**
+     * Create a new column.
+     */
+    public function __construct(Worksheet $worksheet, string $columnIndex = 'A')
+    {
+        // Set parent and column index
+        $this->worksheet = $worksheet;
+        $this->columnIndex = $columnIndex;
+    }
 
-	/**
-	 * Destructor
-	 */
-	public function __destruct() {
-		unset($this->_parent);
-	}
+    /**
+     * Destructor.
+     */
+    public function __destruct()
+    {
+        unset($this->worksheet);
+    }
 
-	/**
-	 * Get column index
-	 *
-	 * @return int
-	 */
-	public function getColumnIndex() {
-		return $this->_columnIndex;
-	}
+    /**
+     * Get column index as string eg: 'A'.
+     */
+    public function getColumnIndex(): string
+    {
+        return $this->columnIndex;
+    }
 
-	/**
-	 * Get cell iterator
-	 *
-	 * @param	integer				$startRow	    The row number at which to start iterating
-	 * @param	integer				$endRow	        Optionally, the row number at which to stop iterating
-	 * @return PHPExcel_Worksheet_CellIterator
-	 */
-	public function getCellIterator($startRow = 1, $endRow = null) {
-		return new PHPExcel_Worksheet_ColumnCellIterator($this->_parent, $this->_columnIndex, $startRow, $endRow);
-	}
+    /**
+     * Get cell iterator.
+     *
+     * @param int $startRow The row number at which to start iterating
+     * @param ?int $endRow Optionally, the row number at which to stop iterating
+     */
+    public function getCellIterator(int $startRow = 1, ?int $endRow = null, bool $iterateOnlyExistingCells = false): ColumnCellIterator
+    {
+        return new ColumnCellIterator($this->worksheet, $this->columnIndex, $startRow, $endRow, $iterateOnlyExistingCells);
+    }
+
+    /**
+     * Get row iterator. Synonym for getCellIterator().
+     *
+     * @param int $startRow The row number at which to start iterating
+     * @param ?int $endRow Optionally, the row number at which to stop iterating
+     */
+    public function getRowIterator(int $startRow = 1, ?int $endRow = null, bool $iterateOnlyExistingCells = false): ColumnCellIterator
+    {
+        return $this->getCellIterator($startRow, $endRow, $iterateOnlyExistingCells);
+    }
+
+    /**
+     * Returns a boolean true if the column contains no cells. By default, this means that no cell records exist in the
+     *         collection for this column. false will be returned otherwise.
+     *     This rule can be modified by passing a $definitionOfEmptyFlags value:
+     *          1 - CellIterator::TREAT_NULL_VALUE_AS_EMPTY_CELL If the only cells in the collection are null value
+     *                  cells, then the column will be considered empty.
+     *          2 - CellIterator::TREAT_EMPTY_STRING_AS_EMPTY_CELL If the only cells in the collection are empty
+     *                  string value cells, then the column will be considered empty.
+     *          3 - CellIterator::TREAT_NULL_VALUE_AS_EMPTY_CELL | CellIterator::TREAT_EMPTY_STRING_AS_EMPTY_CELL
+     *                  If the only cells in the collection are null value or empty string value cells, then the column
+     *                  will be considered empty.
+     *
+     * @param int $definitionOfEmptyFlags
+     *              Possible Flag Values are:
+     *                  CellIterator::TREAT_NULL_VALUE_AS_EMPTY_CELL
+     *                  CellIterator::TREAT_EMPTY_STRING_AS_EMPTY_CELL
+     * @param int $startRow The row number at which to start checking if cells are empty
+     * @param ?int $endRow Optionally, the row number at which to stop checking if cells are empty
+     */
+    public function isEmpty(int $definitionOfEmptyFlags = 0, int $startRow = 1, ?int $endRow = null): bool
+    {
+        $nullValueCellIsEmpty = (bool) ($definitionOfEmptyFlags & CellIterator::TREAT_NULL_VALUE_AS_EMPTY_CELL);
+        $emptyStringCellIsEmpty = (bool) ($definitionOfEmptyFlags & CellIterator::TREAT_EMPTY_STRING_AS_EMPTY_CELL);
+
+        $cellIterator = $this->getCellIterator($startRow, $endRow);
+        $cellIterator->setIterateOnlyExistingCells(true);
+        foreach ($cellIterator as $cell) {
+            $value = $cell->getValue();
+            if ($value === null && $nullValueCellIsEmpty === true) {
+                continue;
+            }
+            if ($value === '' && $emptyStringCellIsEmpty === true) {
+                continue;
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Returns bound worksheet.
+     */
+    public function getWorksheet(): Worksheet
+    {
+        return $this->worksheet;
+    }
 }

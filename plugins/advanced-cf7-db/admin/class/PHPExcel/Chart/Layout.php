@@ -1,445 +1,531 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category	PHPExcel
- * @package		PHPExcel_Chart
- * @copyright	Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license		http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version		##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Chart;
 
-/**
- * PHPExcel_Chart_Layout
- *
- * @category	PHPExcel
- * @package		PHPExcel_Chart
- * @copyright	Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Chart_Layout
+use PhpOffice\PhpSpreadsheet\Style\Font;
+
+class Layout
 {
-	/**
-	 * layoutTarget
-	 *
-	 * @var string
-	 */
-	private $_layoutTarget = NULL;
+    /**
+     * layoutTarget.
+     */
+    private ?string $layoutTarget = null;
 
-	/**
-	 * X Mode
-	 *
-	 * @var string
-	 */
-	private $_xMode		= NULL;
+    /**
+     * X Mode.
+     */
+    private ?string $xMode = null;
 
-	/**
-	 * Y Mode
-	 *
-	 * @var string
-	 */
-	private $_yMode		= NULL;
+    /**
+     * Y Mode.
+     */
+    private ?string $yMode = null;
 
-	/**
-	 * X-Position
-	 *
-	 * @var float
-	 */
-	private $_xPos		= NULL;
+    /**
+     * X-Position.
+     */
+    private ?float $xPos = null;
 
-	/**
-	 * Y-Position
-	 *
-	 * @var float
-	 */
-	private $_yPos		= NULL;
+    /**
+     * Y-Position.
+     */
+    private ?float $yPos = null;
 
-	/**
-	 * width
-	 *
-	 * @var float
-	 */
-	private $_width		= NULL;
+    /**
+     * width.
+     */
+    private ?float $width = null;
 
-	/**
-	 * height
-	 *
-	 * @var float
-	 */
-	private $_height	= NULL;
+    /**
+     * height.
+     */
+    private ?float $height = null;
 
-	/**
-	 * show legend key
-	 * Specifies that legend keys should be shown in data labels
-	 *
-	 * @var boolean
-	 */
-	private $_showLegendKey	= NULL;
+    /**
+     * Position - t=top.
+     */
+    private string $dLblPos = '';
 
-	/**
-	 * show value
-	 * Specifies that the value should be shown in a data label.
-	 *
-	 * @var boolean
-	 */
-	private $_showVal	= NULL;
+    private string $numFmtCode = '';
 
-	/**
-	 * show category name
-	 * Specifies that the category name should be shown in the data label.
-	 *
-	 * @var boolean
-	 */
-	private $_showCatName	= NULL;
+    private bool $numFmtLinked = false;
 
-	/**
-	 * show data series name
-	 * Specifies that the series name should be shown in the data label.
-	 *
-	 * @var boolean
-	 */
-	private $_showSerName	= NULL;
+    /**
+     * show legend key
+     * Specifies that legend keys should be shown in data labels.
+     */
+    private ?bool $showLegendKey = null;
 
-	/**
-	 * show percentage
-	 * Specifies that the percentage should be shown in the data label.
-	 *
-	 * @var boolean
-	 */
-	private $_showPercent	= NULL;
+    /**
+     * show value
+     * Specifies that the value should be shown in a data label.
+     */
+    private ?bool $showVal = null;
 
-	/**
-	 * show bubble size
-	 *
-	 * @var boolean
-	 */
-	private $_showBubbleSize	= NULL;
+    /**
+     * show category name
+     * Specifies that the category name should be shown in the data label.
+     */
+    private ?bool $showCatName = null;
 
-	/**
-	 * show leader lines
-	 * Specifies that leader lines should be shown for the data label.
-	 *
-	 * @var boolean
-	 */
-	private $_showLeaderLines	= NULL;
+    /**
+     * show data series name
+     * Specifies that the series name should be shown in the data label.
+     */
+    private ?bool $showSerName = null;
 
+    /**
+     * show percentage
+     * Specifies that the percentage should be shown in the data label.
+     */
+    private ?bool $showPercent = null;
 
-	/**
-	 * Create a new PHPExcel_Chart_Layout
-	 */
-	public function __construct($layout=array())
-	{
-		if (isset($layout['layoutTarget']))	{ $this->_layoutTarget	= $layout['layoutTarget'];	}
-		if (isset($layout['xMode']))		{ $this->_xMode			= $layout['xMode'];			}
-		if (isset($layout['yMode']))		{ $this->_yMode			= $layout['yMode'];			}
-		if (isset($layout['x']))			{ $this->_xPos			= (float) $layout['x'];		}
-		if (isset($layout['y']))			{ $this->_yPos			= (float) $layout['y'];		}
-		if (isset($layout['w']))			{ $this->_width			= (float) $layout['w'];		}
-		if (isset($layout['h']))			{ $this->_height		= (float) $layout['h'];		}
-	}
+    /**
+     * show bubble size.
+     */
+    private ?bool $showBubbleSize = null;
 
-	/**
-	 * Get Layout Target
-	 *
-	 * @return string
-	 */
-	public function getLayoutTarget() {
-		return $this->_layoutTarget;
-	}
+    /**
+     * show leader lines
+     * Specifies that leader lines should be shown for the data label.
+     */
+    private ?bool $showLeaderLines = null;
 
-	/**
-	 * Set Layout Target
-	 *
-	 * @param Layout Target $value
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setLayoutTarget($value) {
-		$this->_layoutTarget = $value;
+    private ?ChartColor $labelFillColor = null;
+
+    private ?ChartColor $labelBorderColor = null;
+
+    private ?Font $labelFont = null;
+
+    private ?Properties $labelEffects = null;
+
+    /**
+     * Create a new Layout.
+     */
+    public function __construct(array $layout = [])
+    {
+        if (isset($layout['layoutTarget'])) {
+            $this->layoutTarget = $layout['layoutTarget'];
+        }
+        if (isset($layout['xMode'])) {
+            $this->xMode = $layout['xMode'];
+        }
+        if (isset($layout['yMode'])) {
+            $this->yMode = $layout['yMode'];
+        }
+        if (isset($layout['x'])) {
+            $this->xPos = (float) $layout['x'];
+        }
+        if (isset($layout['y'])) {
+            $this->yPos = (float) $layout['y'];
+        }
+        if (isset($layout['w'])) {
+            $this->width = (float) $layout['w'];
+        }
+        if (isset($layout['h'])) {
+            $this->height = (float) $layout['h'];
+        }
+        if (isset($layout['dLblPos'])) {
+            $this->dLblPos = (string) $layout['dLblPos'];
+        }
+        if (isset($layout['numFmtCode'])) {
+            $this->numFmtCode = (string) $layout['numFmtCode'];
+        }
+        $this->initBoolean($layout, 'showLegendKey');
+        $this->initBoolean($layout, 'showVal');
+        $this->initBoolean($layout, 'showCatName');
+        $this->initBoolean($layout, 'showSerName');
+        $this->initBoolean($layout, 'showPercent');
+        $this->initBoolean($layout, 'showBubbleSize');
+        $this->initBoolean($layout, 'showLeaderLines');
+        $this->initBoolean($layout, 'numFmtLinked');
+        $this->initColor($layout, 'labelFillColor');
+        $this->initColor($layout, 'labelBorderColor');
+        $labelFont = $layout['labelFont'] ?? null;
+        if ($labelFont instanceof Font) {
+            $this->labelFont = $labelFont;
+        }
+        $labelFontColor = $layout['labelFontColor'] ?? null;
+        if ($labelFontColor instanceof ChartColor) {
+            $this->setLabelFontColor($labelFontColor);
+        }
+        $labelEffects = $layout['labelEffects'] ?? null;
+        if ($labelEffects instanceof Properties) {
+            $this->labelEffects = $labelEffects;
+        }
+    }
+
+    private function initBoolean(array $layout, string $name): void
+    {
+        if (isset($layout[$name])) {
+            $this->$name = (bool) $layout[$name];
+        }
+    }
+
+    private function initColor(array $layout, string $name): void
+    {
+        if (isset($layout[$name]) && $layout[$name] instanceof ChartColor) {
+            $this->$name = $layout[$name];
+        }
+    }
+
+    /**
+     * Get Layout Target.
+     */
+    public function getLayoutTarget(): ?string
+    {
+        return $this->layoutTarget;
+    }
+
+    /**
+     * Set Layout Target.
+     *
+     * @return $this
+     */
+    public function setLayoutTarget(?string $target): static
+    {
+        $this->layoutTarget = $target;
+
         return $this;
-	}
+    }
 
-	/**
-	 * Get X-Mode
-	 *
-	 * @return string
-	 */
-	public function getXMode() {
-		return $this->_xMode;
-	}
+    /**
+     * Get X-Mode.
+     */
+    public function getXMode(): ?string
+    {
+        return $this->xMode;
+    }
 
-	/**
-	 * Set X-Mode
-	 *
-	 * @param X-Mode $value
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setXMode($value) {
-		$this->_xMode = $value;
+    /**
+     * Set X-Mode.
+     *
+     * @return $this
+     */
+    public function setXMode(?string $mode): static
+    {
+        $this->xMode = (string) $mode;
+
         return $this;
-	}
+    }
 
-	/**
-	 * Get Y-Mode
-	 *
-	 * @return string
-	 */
-	public function getYMode() {
-		return $this->_yMode;
-	}
+    /**
+     * Get Y-Mode.
+     */
+    public function getYMode(): ?string
+    {
+        return $this->yMode;
+    }
 
-	/**
-	 * Set Y-Mode
-	 *
-	 * @param Y-Mode $value
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setYMode($value) {
-		$this->_yMode = $value;
+    /**
+     * Set Y-Mode.
+     *
+     * @return $this
+     */
+    public function setYMode(?string $mode): static
+    {
+        $this->yMode = (string) $mode;
+
         return $this;
-	}
+    }
 
-	/**
-	 * Get X-Position
-	 *
-	 * @return number
-	 */
-	public function getXPosition() {
-		return $this->_xPos;
-	}
+    /**
+     * Get X-Position.
+     */
+    public function getXPosition(): null|float|int
+    {
+        return $this->xPos;
+    }
 
-	/**
-	 * Set X-Position
-	 *
-	 * @param X-Position $value
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setXPosition($value) {
-		$this->_xPos = $value;
+    /**
+     * Set X-Position.
+     *
+     * @return $this
+     */
+    public function setXPosition(float $position): static
+    {
+        $this->xPos = $position;
+
         return $this;
-	}
+    }
 
-	/**
-	 * Get Y-Position
-	 *
-	 * @return number
-	 */
-	public function getYPosition() {
-		return $this->_yPos;
-	}
+    /**
+     * Get Y-Position.
+     */
+    public function getYPosition(): ?float
+    {
+        return $this->yPos;
+    }
 
-	/**
-	 * Set Y-Position
-	 *
-	 * @param Y-Position $value
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setYPosition($value) {
-		$this->_yPos = $value;
+    /**
+     * Set Y-Position.
+     *
+     * @return $this
+     */
+    public function setYPosition(float $position): static
+    {
+        $this->yPos = $position;
+
         return $this;
-	}
+    }
 
-	/**
-	 * Get Width
-	 *
-	 * @return number
-	 */
-	public function getWidth() {
-		return $this->_width;
-	}
+    /**
+     * Get Width.
+     */
+    public function getWidth(): ?float
+    {
+        return $this->width;
+    }
 
-	/**
-	 * Set Width
-	 *
-	 * @param Width $value
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setWidth($value) {
-		$this->_width = $value;
+    /**
+     * Set Width.
+     *
+     * @return $this
+     */
+    public function setWidth(?float $width): static
+    {
+        $this->width = $width;
+
         return $this;
-	}
+    }
 
-	/**
-	 * Get Height
-	 *
-	 * @return number
-	 */
-	public function getHeight() {
-		return $this->_height;
-	}
+    /**
+     * Get Height.
+     */
+    public function getHeight(): ?float
+    {
+        return $this->height;
+    }
 
-	/**
-	 * Set Height
-	 *
-	 * @param Height $value
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setHeight($value) {
-		$this->_height = $value;
+    /**
+     * Set Height.
+     *
+     * @return $this
+     */
+    public function setHeight(?float $height): static
+    {
+        $this->height = $height;
+
         return $this;
-	}
+    }
 
+    public function getShowLegendKey(): ?bool
+    {
+        return $this->showLegendKey;
+    }
 
-	/**
-	 * Get show legend key
-	 *
-	 * @return boolean
-	 */
-	public function getShowLegendKey() {
-		return $this->_showLegendKey;
-	}
+    /**
+     * Set show legend key
+     * Specifies that legend keys should be shown in data labels.
+     */
+    public function setShowLegendKey(?bool $showLegendKey): self
+    {
+        $this->showLegendKey = $showLegendKey;
 
-	/**
-	 * Set show legend key
-	 * Specifies that legend keys should be shown in data labels.
-	 *
-	 * @param boolean $value		Show legend key
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setShowLegendKey($value) {
-		$this->_showLegendKey = $value;
         return $this;
-	}
+    }
 
-	/**
-	 * Get show value
-	 *
-	 * @return boolean
-	 */
-	public function getShowVal() {
-		return $this->_showVal;
-	}
+    public function getShowVal(): ?bool
+    {
+        return $this->showVal;
+    }
 
-	/**
-	 * Set show val
-	 * Specifies that the value should be shown in data labels.
-	 *
-	 * @param boolean $value		Show val
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setShowVal($value) {
-		$this->_showVal = $value;
+    /**
+     * Set show val
+     * Specifies that the value should be shown in data labels.
+     */
+    public function setShowVal(?bool $showDataLabelValues): self
+    {
+        $this->showVal = $showDataLabelValues;
+
         return $this;
-	}
+    }
 
-	/**
-	 * Get show category name
-	 *
-	 * @return boolean
-	 */
-	public function getShowCatName() {
-		return $this->_showCatName;
-	}
+    public function getShowCatName(): ?bool
+    {
+        return $this->showCatName;
+    }
 
-	/**
-	 * Set show cat name
-	 * Specifies that the category name should be shown in data labels.
-	 *
-	 * @param boolean $value		Show cat name
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setShowCatName($value) {
-		$this->_showCatName = $value;
+    /**
+     * Set show cat name
+     * Specifies that the category name should be shown in data labels.
+     */
+    public function setShowCatName(?bool $showCategoryName): self
+    {
+        $this->showCatName = $showCategoryName;
+
         return $this;
-	}
+    }
 
-	/**
-	 * Get show data series name
-	 *
-	 * @return boolean
-	 */
-	public function getShowSerName() {
-		return $this->_showSerName;
-	}
+    public function getShowSerName(): ?bool
+    {
+        return $this->showSerName;
+    }
 
-	/**
-	 * Set show ser name
-	 * Specifies that the series name should be shown in data labels.
-	 *
-	 * @param boolean $value		Show series name
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setShowSerName($value) {
-		$this->_showSerName = $value;
+    /**
+     * Set show data series name.
+     * Specifies that the series name should be shown in data labels.
+     */
+    public function setShowSerName(?bool $showSeriesName): self
+    {
+        $this->showSerName = $showSeriesName;
+
         return $this;
-	}
+    }
 
-	/**
-	 * Get show percentage
-	 *
-	 * @return boolean
-	 */
-	public function getShowPercent() {
-		return $this->_showPercent;
-	}
+    public function getShowPercent(): ?bool
+    {
+        return $this->showPercent;
+    }
 
-	/**
-	 * Set show percentage
-	 * Specifies that the percentage should be shown in data labels.
-	 *
-	 * @param boolean $value		Show percentage
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setShowPercent($value) {
-		$this->_showPercent = $value;
+    /**
+     * Set show percentage.
+     * Specifies that the percentage should be shown in data labels.
+     */
+    public function setShowPercent(?bool $showPercentage): self
+    {
+        $this->showPercent = $showPercentage;
+
         return $this;
-	}
+    }
 
-	/**
-	 * Get show bubble size
-	 *
-	 * @return boolean
-	 */
-	public function getShowBubbleSize() {
-		return $this->_showBubbleSize;
-	}
+    public function getShowBubbleSize(): ?bool
+    {
+        return $this->showBubbleSize;
+    }
 
-	/**
-	 * Set show bubble size
-	 * Specifies that the bubble size should be shown in data labels.
-	 *
-	 * @param boolean $value		Show bubble size
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setShowBubbleSize($value) {
-		$this->_showBubbleSize = $value;
+    /**
+     * Set show bubble size.
+     * Specifies that the bubble size should be shown in data labels.
+     */
+    public function setShowBubbleSize(?bool $showBubbleSize): self
+    {
+        $this->showBubbleSize = $showBubbleSize;
+
         return $this;
-	}
+    }
 
-	/**
-	 * Get show leader lines
-	 *
-	 * @return boolean
-	 */
-	public function getShowLeaderLines() {
-		return $this->_showLeaderLines;
-	}
+    public function getShowLeaderLines(): ?bool
+    {
+        return $this->showLeaderLines;
+    }
 
-	/**
-	 * Set show leader lines
-	 * Specifies that leader lines should be shown in data labels.
-	 *
-	 * @param boolean $value		Show leader lines
-     * @return PHPExcel_Chart_Layout
-	 */
-	public function setShowLeaderLines($value) {
-		$this->_showLeaderLines = $value;
+    /**
+     * Set show leader lines.
+     * Specifies that leader lines should be shown in data labels.
+     */
+    public function setShowLeaderLines(?bool $showLeaderLines): self
+    {
+        $this->showLeaderLines = $showLeaderLines;
+
         return $this;
-	}
+    }
 
+    public function getLabelFillColor(): ?ChartColor
+    {
+        return $this->labelFillColor;
+    }
+
+    public function setLabelFillColor(?ChartColor $chartColor): self
+    {
+        $this->labelFillColor = $chartColor;
+
+        return $this;
+    }
+
+    public function getLabelBorderColor(): ?ChartColor
+    {
+        return $this->labelBorderColor;
+    }
+
+    public function setLabelBorderColor(?ChartColor $chartColor): self
+    {
+        $this->labelBorderColor = $chartColor;
+
+        return $this;
+    }
+
+    public function getLabelFont(): ?Font
+    {
+        return $this->labelFont;
+    }
+
+    public function setLabelFont(?Font $labelFont): self
+    {
+        $this->labelFont = $labelFont;
+
+        return $this;
+    }
+
+    public function getLabelEffects(): ?Properties
+    {
+        return $this->labelEffects;
+    }
+
+    public function getLabelFontColor(): ?ChartColor
+    {
+        if ($this->labelFont === null) {
+            return null;
+        }
+
+        return $this->labelFont->getChartColor();
+    }
+
+    public function setLabelFontColor(?ChartColor $chartColor): self
+    {
+        if ($this->labelFont === null) {
+            $this->labelFont = new Font();
+            $this->labelFont->setSize(null, true);
+        }
+        $this->labelFont->setChartColorFromObject($chartColor);
+
+        return $this;
+    }
+
+    public function getDLblPos(): string
+    {
+        return $this->dLblPos;
+    }
+
+    public function setDLblPos(string $dLblPos): self
+    {
+        $this->dLblPos = $dLblPos;
+
+        return $this;
+    }
+
+    public function getNumFmtCode(): string
+    {
+        return $this->numFmtCode;
+    }
+
+    public function setNumFmtCode(string $numFmtCode): self
+    {
+        $this->numFmtCode = $numFmtCode;
+
+        return $this;
+    }
+
+    public function getNumFmtLinked(): bool
+    {
+        return $this->numFmtLinked;
+    }
+
+    public function setNumFmtLinked(bool $numFmtLinked): self
+    {
+        $this->numFmtLinked = $numFmtLinked;
+
+        return $this;
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $this->labelFillColor = ($this->labelFillColor === null) ? null : clone $this->labelFillColor;
+        $this->labelBorderColor = ($this->labelBorderColor === null) ? null : clone $this->labelBorderColor;
+        $this->labelFont = ($this->labelFont === null) ? null : clone $this->labelFont;
+        $this->labelEffects = ($this->labelEffects === null) ? null : clone $this->labelEffects;
+    }
 }

@@ -1,302 +1,286 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet;
 
-/**
- * PHPExcel_Comment
- *
- * @category   PHPExcel
- * @package    PHPExcel
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Comment implements PHPExcel_IComparable
+use PhpOffice\PhpSpreadsheet\Exception as PhpSpreadsheetException;
+use PhpOffice\PhpSpreadsheet\Helper\Size;
+use PhpOffice\PhpSpreadsheet\RichText\RichText;
+use PhpOffice\PhpSpreadsheet\Shared\Drawing as SharedDrawing;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Color;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
+use Stringable;
+
+class Comment implements IComparable, Stringable
 {
     /**
-     * Author
-     *
-     * @var string
+     * Author.
      */
-    private $_author;
+    private string $author;
 
     /**
-     * Rich text comment
-     *
-     * @var PHPExcel_RichText
+     * Rich text comment.
      */
-    private $_text;
+    private RichText $text;
 
     /**
-     * Comment width (CSS style, i.e. XXpx or YYpt)
-     *
-     * @var string
+     * Comment width (CSS style, i.e. XXpx or YYpt).
      */
-    private $_width = '96pt';
+    private string $width = '96pt';
 
     /**
-     * Left margin (CSS style, i.e. XXpx or YYpt)
-     *
-     * @var string
+     * Left margin (CSS style, i.e. XXpx or YYpt).
      */
-    private $_marginLeft = '59.25pt';
+    private string $marginLeft = '59.25pt';
 
     /**
-     * Top margin (CSS style, i.e. XXpx or YYpt)
-     *
-     * @var string
+     * Top margin (CSS style, i.e. XXpx or YYpt).
      */
-    private $_marginTop = '1.5pt';
+    private string $marginTop = '1.5pt';
 
     /**
-     * Visible
-     *
-     * @var boolean
+     * Visible.
      */
-    private $_visible = false;
+    private bool $visible = false;
 
     /**
-     * Comment height (CSS style, i.e. XXpx or YYpt)
-     *
-     * @var string
+     * Comment height (CSS style, i.e. XXpx or YYpt).
      */
-    private $_height = '55.5pt';
+    private string $height = '55.5pt';
 
     /**
-     * Comment fill color
-     *
-     * @var PHPExcel_Style_Color
+     * Comment fill color.
      */
-    private $_fillColor;
+    private Color $fillColor;
 
     /**
-     * Alignment
-     *
-     * @var string
+     * Alignment.
      */
-    private $_alignment;
+    private string $alignment;
 
     /**
-     * Create a new PHPExcel_Comment
-     *
-     * @throws PHPExcel_Exception
+     * Background image in comment.
+     */
+    private Drawing $backgroundImage;
+
+    public const TEXTBOX_DIRECTION_RTL = 'rtl';
+    public const TEXTBOX_DIRECTION_LTR = 'ltr';
+    // MS uses 'auto' in xml but 'context' in UI
+    public const TEXTBOX_DIRECTION_AUTO = 'auto';
+    public const TEXTBOX_DIRECTION_CONTEXT = 'auto';
+
+    private string $textboxDirection = '';
+
+    /**
+     * Create a new Comment.
      */
     public function __construct()
     {
         // Initialise variables
-        $this->_author		= 'Author';
-        $this->_text		= new PHPExcel_RichText();
-        $this->_fillColor	= new PHPExcel_Style_Color('FFFFFFE1');
-        $this->_alignment	= PHPExcel_Style_Alignment::HORIZONTAL_GENERAL;
+        $this->author = 'Author';
+        $this->text = new RichText();
+        $this->fillColor = new Color('FFFFFFE1');
+        $this->alignment = Alignment::HORIZONTAL_GENERAL;
+        $this->backgroundImage = new Drawing();
     }
 
     /**
-     * Get Author
-     *
-     * @return string
+     * Get Author.
      */
-    public function getAuthor() {
-        return $this->_author;
+    public function getAuthor(): string
+    {
+        return $this->author;
     }
 
     /**
-     * Set Author
-     *
-     * @param string $pValue
-     * @return PHPExcel_Comment
+     * Set Author.
      */
-    public function setAuthor($pValue = '') {
-        $this->_author = $pValue;
+    public function setAuthor(string $author): self
+    {
+        $this->author = $author;
+
         return $this;
     }
 
     /**
-     * Get Rich text comment
-     *
-     * @return PHPExcel_RichText
+     * Get Rich text comment.
      */
-    public function getText() {
-        return $this->_text;
+    public function getText(): RichText
+    {
+        return $this->text;
     }
 
     /**
-     * Set Rich text comment
-     *
-     * @param PHPExcel_RichText $pValue
-     * @return PHPExcel_Comment
+     * Set Rich text comment.
      */
-    public function setText(PHPExcel_RichText $pValue) {
-        $this->_text = $pValue;
+    public function setText(RichText $text): self
+    {
+        $this->text = $text;
+
         return $this;
     }
 
     /**
-     * Get comment width (CSS style, i.e. XXpx or YYpt)
-     *
-     * @return string
+     * Get comment width (CSS style, i.e. XXpx or YYpt).
      */
-    public function getWidth() {
-        return $this->_width;
+    public function getWidth(): string
+    {
+        return $this->width;
     }
 
     /**
-     * Set comment width (CSS style, i.e. XXpx or YYpt)
-     *
-     * @param string $value
-     * @return PHPExcel_Comment
+     * Set comment width (CSS style, i.e. XXpx or YYpt). Default unit is pt.
      */
-    public function setWidth($value = '96pt') {
-        $this->_width = $value;
+    public function setWidth(string $width): self
+    {
+        $width = new Size($width);
+        if ($width->valid()) {
+            $this->width = (string) $width;
+        }
+
         return $this;
     }
 
     /**
-     * Get comment height (CSS style, i.e. XXpx or YYpt)
-     *
-     * @return string
+     * Get comment height (CSS style, i.e. XXpx or YYpt).
      */
-    public function getHeight() {
-        return $this->_height;
+    public function getHeight(): string
+    {
+        return $this->height;
     }
 
     /**
-     * Set comment height (CSS style, i.e. XXpx or YYpt)
-     *
-     * @param string $value
-     * @return PHPExcel_Comment
+     * Set comment height (CSS style, i.e. XXpx or YYpt). Default unit is pt.
      */
-    public function setHeight($value = '55.5pt') {
-        $this->_height = $value;
+    public function setHeight(string $height): self
+    {
+        $height = new Size($height);
+        if ($height->valid()) {
+            $this->height = (string) $height;
+        }
+
         return $this;
     }
 
     /**
-     * Get left margin (CSS style, i.e. XXpx or YYpt)
-     *
-     * @return string
+     * Get left margin (CSS style, i.e. XXpx or YYpt).
      */
-    public function getMarginLeft() {
-        return $this->_marginLeft;
+    public function getMarginLeft(): string
+    {
+        return $this->marginLeft;
     }
 
     /**
-     * Set left margin (CSS style, i.e. XXpx or YYpt)
-     *
-     * @param string $value
-     * @return PHPExcel_Comment
+     * Set left margin (CSS style, i.e. XXpx or YYpt). Default unit is pt.
      */
-    public function setMarginLeft($value = '59.25pt') {
-        $this->_marginLeft = $value;
+    public function setMarginLeft(string $margin): self
+    {
+        $margin = new Size($margin);
+        if ($margin->valid()) {
+            $this->marginLeft = (string) $margin;
+        }
+
         return $this;
     }
 
     /**
-     * Get top margin (CSS style, i.e. XXpx or YYpt)
-     *
-     * @return string
+     * Get top margin (CSS style, i.e. XXpx or YYpt).
      */
-    public function getMarginTop() {
-        return $this->_marginTop;
+    public function getMarginTop(): string
+    {
+        return $this->marginTop;
     }
 
     /**
-     * Set top margin (CSS style, i.e. XXpx or YYpt)
-     *
-     * @param string $value
-     * @return PHPExcel_Comment
+     * Set top margin (CSS style, i.e. XXpx or YYpt). Default unit is pt.
      */
-    public function setMarginTop($value = '1.5pt') {
-        $this->_marginTop = $value;
+    public function setMarginTop(string $margin): self
+    {
+        $margin = new Size($margin);
+        if ($margin->valid()) {
+            $this->marginTop = (string) $margin;
+        }
+
         return $this;
     }
 
     /**
      * Is the comment visible by default?
-     *
-     * @return boolean
      */
-    public function getVisible() {
-        return $this->_visible;
+    public function getVisible(): bool
+    {
+        return $this->visible;
     }
 
     /**
-     * Set comment default visibility
-     *
-     * @param boolean $value
-     * @return PHPExcel_Comment
+     * Set comment default visibility.
      */
-    public function setVisible($value = false) {
-        $this->_visible = $value;
+    public function setVisible(bool $visibility): self
+    {
+        $this->visible = $visibility;
+
         return $this;
     }
 
     /**
-     * Get fill color
-     *
-     * @return PHPExcel_Style_Color
+     * Set fill color.
      */
-    public function getFillColor() {
-        return $this->_fillColor;
-    }
+    public function setFillColor(Color $color): self
+    {
+        $this->fillColor = $color;
 
-    /**
-     * Set Alignment
-     *
-     * @param string $pValue
-     * @return PHPExcel_Comment
-     */
-    public function setAlignment($pValue = PHPExcel_Style_Alignment::HORIZONTAL_GENERAL) {
-        $this->_alignment = $pValue;
         return $this;
     }
 
     /**
-     * Get Alignment
-     *
-     * @return string
+     * Get fill color.
      */
-    public function getAlignment() {
-        return $this->_alignment;
+    public function getFillColor(): Color
+    {
+        return $this->fillColor;
+    }
+
+    public function setAlignment(string $alignment): self
+    {
+        $this->alignment = $alignment;
+
+        return $this;
+    }
+
+    public function getAlignment(): string
+    {
+        return $this->alignment;
+    }
+
+    public function setTextboxDirection(string $textboxDirection): self
+    {
+        $this->textboxDirection = $textboxDirection;
+
+        return $this;
+    }
+
+    public function getTextboxDirection(): string
+    {
+        return $this->textboxDirection;
     }
 
     /**
-     * Get hash code
-     *
-     * @return string    Hash code
+     * Get hash code.
      */
-    public function getHashCode() {
+    public function getHashCode(): string
+    {
         return md5(
-              $this->_author
-            . $this->_text->getHashCode()
-            . $this->_width
-            . $this->_height
-            . $this->_marginLeft
-            . $this->_marginTop
-            . ($this->_visible ? 1 : 0)
-            . $this->_fillColor->getHashCode()
-            . $this->_alignment
+            $this->author
+            . $this->text->getHashCode()
+            . $this->width
+            . $this->height
+            . $this->marginLeft
+            . $this->marginTop
+            . ($this->visible ? 1 : 0)
+            . $this->fillColor->getHashCode()
+            . $this->alignment
+            . $this->textboxDirection
+            . ($this->hasBackgroundImage() ? $this->backgroundImage->getHashCode() : '')
             . __CLASS__
         );
     }
@@ -304,7 +288,8 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     /**
      * Implement PHP __clone to create a deep clone, not just a shallow copy.
      */
-    public function __clone() {
+    public function __clone()
+    {
         $vars = get_object_vars($this);
         foreach ($vars as $key => $value) {
             if (is_object($value)) {
@@ -316,12 +301,58 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     }
 
     /**
-     * Convert to string
-     *
-     * @return string
+     * Convert to string.
      */
-    public function __toString() {
-        return $this->_text->getPlainText();
+    public function __toString(): string
+    {
+        return $this->text->getPlainText();
     }
 
+    /**
+     * Check is background image exists.
+     */
+    public function hasBackgroundImage(): bool
+    {
+        $path = $this->backgroundImage->getPath();
+
+        if (empty($path)) {
+            return false;
+        }
+
+        return getimagesize($path) !== false;
+    }
+
+    /**
+     * Returns background image.
+     */
+    public function getBackgroundImage(): Drawing
+    {
+        return $this->backgroundImage;
+    }
+
+    /**
+     * Sets background image.
+     */
+    public function setBackgroundImage(Drawing $objDrawing): self
+    {
+        if (!array_key_exists($objDrawing->getType(), Drawing::IMAGE_TYPES_CONVERTION_MAP)) {
+            throw new PhpSpreadsheetException('Unsupported image type in comment background. Supported types: PNG, JPEG, BMP, GIF.');
+        }
+        $this->backgroundImage = $objDrawing;
+
+        return $this;
+    }
+
+    /**
+     * Sets size of comment as size of background image.
+     */
+    public function setSizeAsBackgroundImage(): self
+    {
+        if ($this->hasBackgroundImage()) {
+            $this->setWidth(SharedDrawing::pixelsToPoints($this->backgroundImage->getWidth()) . 'pt');
+            $this->setHeight(SharedDrawing::pixelsToPoints($this->backgroundImage->getHeight()) . 'pt');
+        }
+
+        return $this;
+    }
 }

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nextend-facebook-connect\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-20 13:05+0100\n"
-"PO-Revision-Date: 2024-11-20 13:05+0100\n"
+"POT-Creation-Date: 2025-02-05 19:37+0100\n"
+"PO-Revision-Date: 2025-02-05 19:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: 日本語\n"
 "Language: ja\n"
@@ -764,30 +764,27 @@ msgstr "中央"
 msgid "Right"
 msgstr "右"
 
-msgid "BuddyPress registration integration"
-msgstr "BuddyPress の登録と統合"
+msgid "Email template for registration"
+msgstr "登録用メールテンプレート"
 
-#, php-format
+msgid "WordPress default notification"
+msgstr "WordPressのデフォルト通知"
+
+#, fuzzy
+#| msgid "WordPress default notification"
+msgid "BuddyPress welcome notification"
+msgstr "WordPressのデフォルト通知"
+
+#, fuzzy, php-format
+#| msgid ""
+#| "Defines whether the registration with %1$s will send the same "
+#| "registration notification that %2$s does, instead of the %3$s default one."
 msgid ""
-"When this setting is enabled the actual registration will be done by %1$s, "
-"so it could send the activation emails uppon registration."
+"Defines whether the registration with %1$s will send the same welcome "
+"notification that %2$s does, instead of the %3$s default one."
 msgstr ""
-"この設定を有効にすると、実際の登録は %1$s によって行われるため、登録時にアク"
-"ティベーションメールを送信することができます。"
-
-#, php-format
-msgid ""
-"%1$s To prevent the login with social login until the account is activated, "
-"you also need to enable the %2$s feature on the %3$s tab!"
-msgstr ""
-"%1$s アカウントが有効化されるまでソーシャルログインでログインできないようにす"
-"るには、%3$s タブ で %2$s 機能を有効にすることも必要です!"
-
-msgid "Usage:"
-msgstr "使用方法："
-
-msgid "Support login restrictions"
-msgstr "ログイン制限に対応"
+"%1$s の登録が、%3$s のデフォルトの登録通知ではなく、%2$sと同じ登録通知を送る"
+"かどうかを定義しています。"
 
 msgid "Login button"
 msgstr "ログインボタン"
@@ -809,6 +806,9 @@ msgstr "ボタンのスタイル"
 #, php-format
 msgid "%1$s Add your custom actions here. One action per line."
 msgstr "%1$s ここにカスタムアクションを追加します。1行に1アクションです。"
+
+msgid "Usage:"
+msgstr "使用方法："
 
 #, php-format
 msgid ""
@@ -992,6 +992,9 @@ msgstr "ブラックリストに登録されたリダイレクト"
 msgid "If you want to blacklist redirect url params. One pattern per line."
 msgstr "リダイレクトのurl paramsをブラックリスト化したい場合。1行に1パターン。"
 
+msgid "Support login restrictions"
+msgstr "ログイン制限に対応"
+
 #, php-format
 msgid "Please visit to our %1$s to check what plugins are supported!"
 msgstr "どのようなプラグインがサポートされているかは、%1$sでご確認ください。"
@@ -1167,12 +1170,6 @@ msgstr "アカウント詳細フォームにボタンを接続しない"
 
 msgid "Link buttons on"
 msgstr "のリンクボタン"
-
-msgid "Email template for registration"
-msgstr "登録用メールテンプレート"
-
-msgid "WordPress default notification"
-msgstr "WordPressのデフォルト通知"
 
 msgid "WooCommerce registration notification"
 msgstr "WooCommerceの登録通知"
@@ -3067,51 +3064,13 @@ msgstr "%s ボタンをクリックします。"
 #, php-format
 msgid ""
 "Select an image for your App, fill in the \"%1$s\" and \"%2$s\" fields, "
-"comply with the \"%3$s\", then click on the \"%4$s\" button!"
+"select a \"%3$s\" then comply with the \"%4$s\", finally click on the "
+"\"%5$s\" button!"
 msgstr ""
 
 #, php-format
 msgid "Once you have a project, click on it, and you will enter the %1$s."
 msgstr ""
-
-#, php-format
-msgid ""
-"Copy and save the \"%1$s\" value. This is what you will use later on the "
-"Settings tab for the \"%1$s\" field."
-msgstr ""
-
-#, fuzzy, php-format
-#| msgid ""
-#| "Click on %1$s on the left hand menu then add the %2$s product, and press "
-#| "the %3$s button."
-msgid ""
-"Then in the side bar on the left side, find the \"%1$s\" menu and click on "
-"the \"%2$s\" menu point. Click on the \"%3$s\" button, then on \"%4$s\"."
-msgstr ""
-"左メニューの %1$s をクリックし、%2$s の商品を追加して、%3$s ボタンを押しま"
-"す。"
-
-#, php-format
-msgid ""
-"Copy and save this code, this is what you will use for the \"%1$s\" on the "
-"Settings tab."
-msgstr ""
-
-#, php-format
-msgid ""
-"Also, make sure to set the \"%1$s\" to \"%2$s\" with the \"%3$s\" button."
-msgstr ""
-
-#, php-format
-msgid "Next, go to the \"%1$s\" in the \"%2$s\" menu on the left."
-msgstr ""
-
-#, fuzzy, php-format
-#| msgid "Enter your domain name into the %1$s field, probably: %2$s"
-msgid ""
-"Click on the blue \"%1$s\" button, then enter your domain name into the "
-"\"%2$s\" field, probably: %3$s"
-msgstr "ドメイン名を%1$sフィールドに入力します（おそらく: %2$s）。"
 
 #, php-format
 msgid ""
@@ -3151,13 +3110,13 @@ msgid ""
 msgstr ""
 
 #, php-format
-msgid ""
-"%s - Purpose: Accounts will be registered or linked based on this email "
-"address."
+msgid "%s - Purpose: This image will be used as the avatar of the account."
 msgstr ""
 
 #, php-format
-msgid "%s - Purpose: This image will be used as the avatar of the account."
+msgid ""
+"%s - Purpose: Accounts will be registered or linked based on this email "
+"address."
 msgstr ""
 
 #, php-format
@@ -3174,14 +3133,53 @@ msgstr ""
 
 #, php-format
 msgid ""
-"%1$s The \"%2$s\" type itself and certain scopes (e.g. \"%3$s\", \"%4$s\" - "
-"used when you turn on the corresponding setting on our %5$s tab), will "
-"require you to register business information, or if you are a single "
-"developer verify your identity (both can be done under the \"%6$s\" menu "
-"point), in order to be able to request consent to these items."
+"%1$s Certain scopes, like the \"%2$s\" or e.g. \"%3$s\", \"%4$s\" (used when "
+"you turn on the corresponding setting on our %5$s tab), will require you to "
+"register business information, or if you are a single developer verify your "
+"identity (both can be done under the \"%6$s\" menu point), in order to be "
+"able to request consent to these items."
 msgstr ""
 
 msgid "WARNING:"
+msgstr ""
+
+#, php-format
+msgid "Next, go to the \"%1$s\" in the \"%2$s\" menu on the left."
+msgstr ""
+
+#, fuzzy, php-format
+#| msgid "Enter your domain name into the %1$s field, probably: %2$s"
+msgid ""
+"Click on the blue \"%1$s\" button, then enter your domain name into the "
+"\"%2$s\" field, probably: %3$s"
+msgstr "ドメイン名を%1$sフィールドに入力します（おそらく: %2$s）。"
+
+#, fuzzy, php-format
+#| msgid ""
+#| "Click on %1$s on the left hand menu then add the %2$s product, and press "
+#| "the %3$s button."
+msgid ""
+"Then in the side bar on the left side, find the \"%1$s\" menu and click on "
+"the \"%2$s\" menu point. Click on the \"%3$s\" button, then on \"%4$s\"."
+msgstr ""
+"左メニューの %1$s をクリックし、%2$s の商品を追加して、%3$s ボタンを押しま"
+"す。"
+
+#, php-format
+msgid ""
+"Copy and save this code, this is what you will use for the \"%1$s\" on the "
+"Settings tab."
+msgstr ""
+
+#, php-format
+msgid ""
+"Also, make sure to set the \"%1$s\" to \"%2$s\" with the \"%3$s\" button."
+msgstr ""
+
+#, php-format
+msgid ""
+"Then, go to the \"%1$s\" menu, and copy the \"%2$s\" value. This is what you "
+"will use later on the Settings tab for the \"%2$s\" field."
 msgstr ""
 
 #, php-format
@@ -3211,6 +3209,12 @@ msgstr "ログインのたびにログイン情報を入力するよう強制す
 
 msgid "Start the authentication with the Kakao Account sign-up page."
 msgstr ""
+
+msgid "Email scope"
+msgstr "電子メールの範囲"
+
+msgid "Disable, when you have no rights for email address."
+msgstr "メールアドレスに権限がない場合は無効となります。"
 
 msgid "Mini"
 msgstr ""
@@ -3880,9 +3884,6 @@ msgstr ""
 "忘れないでください。この場合、%3$s %4$sタブの%2$s設定も有効にする必要がありま"
 "す。"
 
-msgid "Email scope"
-msgstr "電子メールの範囲"
-
 #, fuzzy, php-format
 #| msgid "Enter your %1$s and %2$s URLs."
 msgid "Fill the %1$s and %2$s fields."
@@ -3916,9 +3917,6 @@ msgstr ""
 
 msgid "Secret"
 msgstr "シークレット"
-
-msgid "Disable, when you have no rights for email address."
-msgstr "メールアドレスに権限がない場合は無効となります。"
 
 msgid "Continue with <b>PayPal</b>"
 msgstr "<b>PayPal（ペイパル）</b>で続行"
@@ -4178,6 +4176,12 @@ msgstr ""
 #| msgid "Click on the %s button."
 msgid "Click on the the %1$s button."
 msgstr "%s ボタンをクリックします。"
+
+#, php-format
+msgid ""
+"Copy and save the \"%1$s\" value. This is what you will use later on the "
+"Settings tab for the \"%1$s\" field."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -4754,6 +4758,25 @@ msgstr "パスワードの確認"
 
 msgid "Username"
 msgstr "ユーザー名（ユーザーID）"
+
+#~ msgid "BuddyPress registration integration"
+#~ msgstr "BuddyPress の登録と統合"
+
+#, php-format
+#~ msgid ""
+#~ "When this setting is enabled the actual registration will be done by "
+#~ "%1$s, so it could send the activation emails uppon registration."
+#~ msgstr ""
+#~ "この設定を有効にすると、実際の登録は %1$s によって行われるため、登録時にア"
+#~ "クティベーションメールを送信することができます。"
+
+#, php-format
+#~ msgid ""
+#~ "%1$s To prevent the login with social login until the account is "
+#~ "activated, you also need to enable the %2$s feature on the %3$s tab!"
+#~ msgstr ""
+#~ "%1$s アカウントが有効化されるまでソーシャルログインでログインできないよう"
+#~ "にするには、%3$s タブ で %2$s 機能を有効にすることも必要です!"
 
 #, fuzzy, php-format
 #~| msgid "Select the %1$s option for %2$s."

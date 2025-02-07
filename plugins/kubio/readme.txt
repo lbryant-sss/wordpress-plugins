@@ -5,7 +5,7 @@ Tags: page builder, landing page, website builder, blocks, gutenberg
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 2.4.3
+Stable tag: 2.4.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -153,6 +153,12 @@ You’ll find a growing online documentation for Kubio builder [here](https://ku
 == Screenshots ==
 
 == Changelog ==
+= 2.4.5 and 2.4.5-pro =
+- Fix css editor rendering on Chrome 133 and above
+
+= 2.4.4 and 2.4.4-pro =
+- General bug fixes
+
 = 2.4.3 and 2.4.3-pro =
 - General bug fixes
 

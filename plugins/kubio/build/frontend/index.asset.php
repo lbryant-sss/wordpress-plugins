@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array('kubio-scripts', 'wp-polyfill'), 'version' => 'ee7fcc1187f8ab9d03c4');
+<?php return array('dependencies' => array('kubio-scripts', 'wp-polyfill'), 'version' => 'a8e81fe1b05690675cc9');

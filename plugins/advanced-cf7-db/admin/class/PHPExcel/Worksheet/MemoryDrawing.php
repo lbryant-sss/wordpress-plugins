@@ -1,200 +1,333 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Worksheet;
 
-/**
- * PHPExcel_Worksheet_MemoryDrawing
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Worksheet_MemoryDrawing extends PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
+use GdImage;
+use PhpOffice\PhpSpreadsheet\Exception;
+use PhpOffice\PhpSpreadsheet\Shared\File;
+
+class MemoryDrawing extends BaseDrawing
 {
-	/* Rendering functions */
-	const RENDERING_DEFAULT					= 'imagepng';
-	const RENDERING_PNG						= 'imagepng';
-	const RENDERING_GIF						= 'imagegif';
-	const RENDERING_JPEG					= 'imagejpeg';
+    // Rendering functions
+    const RENDERING_DEFAULT = 'imagepng';
+    const RENDERING_PNG = 'imagepng';
+    const RENDERING_GIF = 'imagegif';
+    const RENDERING_JPEG = 'imagejpeg';
 
-	/* MIME types */
-	const MIMETYPE_DEFAULT					= 'image/png';
-	const MIMETYPE_PNG						= 'image/png';
-	const MIMETYPE_GIF						= 'image/gif';
-	const MIMETYPE_JPEG						= 'image/jpeg';
+    // MIME types
+    const MIMETYPE_DEFAULT = 'image/png';
+    const MIMETYPE_PNG = 'image/png';
+    const MIMETYPE_GIF = 'image/gif';
+    const MIMETYPE_JPEG = 'image/jpeg';
 
-	/**
-	 * Image resource
-	 *
-	 * @var resource
-	 */
-	private $_imageResource;
-
-	/**
-	 * Rendering function
-	 *
-	 * @var string
-	 */
-	private $_renderingFunction;
-
-	/**
-	 * Mime type
-	 *
-	 * @var string
-	 */
-	private $_mimeType;
-
-	/**
-	 * Unique name
-	 *
-	 * @var string
-	 */
-	private $_uniqueName;
+    const SUPPORTED_MIME_TYPES = [
+        self::MIMETYPE_GIF,
+        self::MIMETYPE_JPEG,
+        self::MIMETYPE_PNG,
+    ];
 
     /**
-     * Create a new PHPExcel_Worksheet_MemoryDrawing
+     * Image resource.
+     */
+    private null|GdImage $imageResource = null;
+
+    /**
+     * Rendering function.
+     */
+    private string $renderingFunction;
+
+    /**
+     * Mime type.
+     */
+    private string $mimeType;
+
+    /**
+     * Unique name.
+     */
+    private string $uniqueName;
+
+    /**
+     * Create a new MemoryDrawing.
      */
     public function __construct()
     {
-    	// Initialise values
-    	$this->_imageResource		= null;
-    	$this->_renderingFunction 	= self::RENDERING_DEFAULT;
-    	$this->_mimeType			= self::MIMETYPE_DEFAULT;
-    	$this->_uniqueName			= md5(rand(0, 9999). time() . rand(0, 9999));
+        // Initialise values
+        $this->renderingFunction = self::RENDERING_DEFAULT;
+        $this->mimeType = self::MIMETYPE_DEFAULT;
+        $this->uniqueName = md5(mt_rand(0, 9999) . time() . mt_rand(0, 9999));
 
-    	// Initialize parent
-    	parent::__construct();
+        // Initialize parent
+        parent::__construct();
+    }
+
+    public function __destruct()
+    {
+        if ($this->imageResource) {
+            @imagedestroy($this->imageResource);
+            $this->imageResource = null;
+        }
+        $this->worksheet = null;
+    }
+
+    public function __clone()
+    {
+        parent::__clone();
+        $this->cloneResource();
+    }
+
+    private function cloneResource(): void
+    {
+        if (!$this->imageResource) {
+            return;
+        }
+
+        $width = (int) imagesx($this->imageResource);
+        $height = (int) imagesy($this->imageResource);
+
+        if (imageistruecolor($this->imageResource)) {
+            $clone = imagecreatetruecolor($width, $height);
+            if (!$clone) {
+                throw new Exception('Could not clone image resource');
+            }
+
+            imagealphablending($clone, false);
+            imagesavealpha($clone, true);
+        } else {
+            $clone = imagecreate($width, $height);
+            if (!$clone) {
+                throw new Exception('Could not clone image resource');
+            }
+
+            // If the image has transparency...
+            $transparent = imagecolortransparent($this->imageResource);
+            if ($transparent >= 0) {
+                // Starting with Php8.0, next function throws rather than return false
+                $rgb = imagecolorsforindex($this->imageResource, $transparent);
+
+                imagesavealpha($clone, true);
+                $color = imagecolorallocatealpha($clone, $rgb['red'], $rgb['green'], $rgb['blue'], $rgb['alpha']);
+                if ($color === false) {
+                    throw new Exception('Could not get image alpha color');
+                }
+
+                imagefill($clone, 0, 0, $color);
+            }
+        }
+
+        //Create the Clone!!
+        imagecopy($clone, $this->imageResource, 0, 0, 0, 0, $width, $height);
+
+        $this->imageResource = $clone;
     }
 
     /**
-     * Get image resource
+     * @param resource $imageStream Stream data to be converted to a Memory Drawing
      *
-     * @return resource
+     * @throws Exception
      */
-    public function getImageResource() {
-    	return $this->_imageResource;
+    public static function fromStream($imageStream): self
+    {
+        $streamValue = stream_get_contents($imageStream);
+        if ($streamValue === false) {
+            throw new Exception('Unable to read data from stream');
+        }
+
+        return self::fromString($streamValue);
     }
 
     /**
-     * Set image resource
+     * @param string $imageString String data to be converted to a Memory Drawing
      *
-     * @param	$value resource
-     * @return PHPExcel_Worksheet_MemoryDrawing
+     * @throws Exception
      */
-    public function setImageResource($value = null) {
-    	$this->_imageResource = $value;
+    public static function fromString(string $imageString): self
+    {
+        $gdImage = @imagecreatefromstring($imageString);
+        if ($gdImage === false) {
+            throw new Exception('Value cannot be converted to an image');
+        }
 
-    	if (!is_null($this->_imageResource)) {
-	    	// Get width/height
-	    	$this->_width	= imagesx($this->_imageResource);
-	    	$this->_height	= imagesy($this->_imageResource);
-    	}
-    	return $this;
+        $mimeType = self::identifyMimeType($imageString);
+        if (imageistruecolor($gdImage) || imagecolortransparent($gdImage) >= 0) {
+            imagesavealpha($gdImage, true);
+        }
+        $renderingFunction = self::identifyRenderingFunction($mimeType);
+
+        $drawing = new self();
+        $drawing->setImageResource($gdImage);
+        $drawing->setRenderingFunction($renderingFunction);
+        $drawing->setMimeType($mimeType);
+
+        return $drawing;
+    }
+
+    private static function identifyRenderingFunction(string $mimeType): string
+    {
+        return match ($mimeType) {
+            self::MIMETYPE_PNG => self::RENDERING_PNG,
+            self::MIMETYPE_JPEG => self::RENDERING_JPEG,
+            self::MIMETYPE_GIF => self::RENDERING_GIF,
+            default => self::RENDERING_DEFAULT,
+        };
     }
 
     /**
-     * Get rendering function
-     *
-     * @return string
+     * @throws Exception
      */
-    public function getRenderingFunction() {
-    	return $this->_renderingFunction;
+    private static function identifyMimeType(string $imageString): string
+    {
+        $temporaryFileName = File::temporaryFilename();
+        file_put_contents($temporaryFileName, $imageString);
+
+        $mimeType = self::identifyMimeTypeUsingExif($temporaryFileName);
+        if ($mimeType !== null) {
+            unlink($temporaryFileName);
+
+            return $mimeType;
+        }
+
+        $mimeType = self::identifyMimeTypeUsingGd($temporaryFileName);
+        if ($mimeType !== null) {
+            unlink($temporaryFileName);
+
+            return $mimeType;
+        }
+
+        unlink($temporaryFileName);
+
+        return self::MIMETYPE_DEFAULT;
+    }
+
+    private static function identifyMimeTypeUsingExif(string $temporaryFileName): ?string
+    {
+        if (function_exists('exif_imagetype')) {
+            $imageType = @exif_imagetype($temporaryFileName);
+            $mimeType = ($imageType) ? image_type_to_mime_type($imageType) : null;
+
+            return self::supportedMimeTypes($mimeType);
+        }
+
+        return null;
+    }
+
+    private static function identifyMimeTypeUsingGd(string $temporaryFileName): ?string
+    {
+        if (function_exists('getimagesize')) {
+            $imageSize = @getimagesize($temporaryFileName);
+            if (is_array($imageSize)) {
+                $mimeType = $imageSize['mime'];
+
+                return self::supportedMimeTypes($mimeType);
+            }
+        }
+
+        return null;
+    }
+
+    private static function supportedMimeTypes(?string $mimeType = null): ?string
+    {
+        if (in_array($mimeType, self::SUPPORTED_MIME_TYPES, true)) {
+            return $mimeType;
+        }
+
+        return null;
     }
 
     /**
-     * Set rendering function
-     *
-     * @param string $value
-     * @return PHPExcel_Worksheet_MemoryDrawing
+     * Get image resource.
      */
-    public function setRenderingFunction($value = PHPExcel_Worksheet_MemoryDrawing::RENDERING_DEFAULT) {
-    	$this->_renderingFunction = $value;
-    	return $this;
+    public function getImageResource(): ?GdImage
+    {
+        return $this->imageResource;
     }
 
     /**
-     * Get mime type
+     * Set image resource.
      *
-     * @return string
+     * @return $this
      */
-    public function getMimeType() {
-    	return $this->_mimeType;
+    public function setImageResource(?GdImage $value): static
+    {
+        $this->imageResource = $value;
+
+        if ($this->imageResource !== null) {
+            // Get width/height
+            $this->width = (int) imagesx($this->imageResource);
+            $this->height = (int) imagesy($this->imageResource);
+        }
+
+        return $this;
     }
 
     /**
-     * Set mime type
-     *
-     * @param string $value
-     * @return PHPExcel_Worksheet_MemoryDrawing
+     * Get rendering function.
      */
-    public function setMimeType($value = PHPExcel_Worksheet_MemoryDrawing::MIMETYPE_DEFAULT) {
-    	$this->_mimeType = $value;
-    	return $this;
+    public function getRenderingFunction(): string
+    {
+        return $this->renderingFunction;
     }
 
     /**
-     * Get indexed filename (using image index)
+     * Set rendering function.
      *
-     * @return string
+     * @param string $value see self::RENDERING_*
+     *
+     * @return $this
      */
-    public function getIndexedFilename() {
-		$extension 	= strtolower($this->getMimeType());
-		$extension 	= explode('/', $extension);
-		$extension 	= $extension[1];
+    public function setRenderingFunction(string $value): static
+    {
+        $this->renderingFunction = $value;
 
-    	return $this->_uniqueName . $this->getImageIndex() . '.' . $extension;
+        return $this;
     }
 
-	/**
-	 * Get hash code
-	 *
-	 * @return string	Hash code
-	 */
-	public function getHashCode() {
-    	return md5(
-    		  $this->_renderingFunction
-    		. $this->_mimeType
-    		. $this->_uniqueName
-    		. parent::getHashCode()
-    		. __CLASS__
-    	);
+    /**
+     * Get mime type.
+     */
+    public function getMimeType(): string
+    {
+        return $this->mimeType;
     }
 
-	/**
-	 * Implement PHP __clone to create a deep clone, not just a shallow copy.
-	 */
-	public function __clone() {
-		$vars = get_object_vars($this);
-		foreach ($vars as $key => $value) {
-			if (is_object($value)) {
-				$this->$key = clone $value;
-			} else {
-				$this->$key = $value;
-			}
-		}
-	}
+    /**
+     * Set mime type.
+     *
+     * @param string $value see self::MIMETYPE_*
+     *
+     * @return $this
+     */
+    public function setMimeType(string $value): static
+    {
+        $this->mimeType = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get indexed filename (using image index).
+     */
+    public function getIndexedFilename(): string
+    {
+        $extension = strtolower($this->getMimeType());
+        $extension = explode('/', $extension);
+        $extension = $extension[1];
+
+        return $this->uniqueName . $this->getImageIndex() . '.' . $extension;
+    }
+
+    /**
+     * Get hash code.
+     *
+     * @return string Hash code
+     */
+    public function getHashCode(): string
+    {
+        return md5(
+            $this->renderingFunction
+            . $this->mimeType
+            . $this->uniqueName
+            . parent::getHashCode()
+            . __CLASS__
+        );
+    }
 }

@@ -1,183 +1,155 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package	PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license	http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version	##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Worksheet;
+
+use Iterator as NativeIterator;
+use PhpOffice\PhpSpreadsheet\Exception as PhpSpreadsheetException;
 
 /**
- * PHPExcel_Worksheet_RowIterator
- *
- * Used to iterate rows in a PHPExcel_Worksheet
- *
- * @category   PHPExcel
- * @package	PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @implements NativeIterator<int, Row>
  */
-class PHPExcel_Worksheet_RowIterator implements Iterator
+class RowIterator implements NativeIterator
 {
-	/**
-	 * PHPExcel_Worksheet to iterate
-	 *
-	 * @var PHPExcel_Worksheet
-	 */
-	private $_subject;
+    /**
+     * Worksheet to iterate.
+     */
+    private Worksheet $subject;
 
-	/**
-	 * Current iterator position
-	 *
-	 * @var int
-	 */
-	private $_position = 1;
+    /**
+     * Current iterator position.
+     */
+    private int $position = 1;
 
-	/**
-	 * Start position
-	 *
-	 * @var int
-	 */
-	private $_startRow = 1;
+    /**
+     * Start position.
+     */
+    private int $startRow = 1;
 
+    /**
+     * End position.
+     */
+    private int $endRow = 1;
 
-	/**
-	 * End position
-	 *
-	 * @var int
-	 */
-	private $_endRow = 1;
+    /**
+     * Create a new row iterator.
+     *
+     * @param Worksheet $subject The worksheet to iterate over
+     * @param int $startRow The row number at which to start iterating
+     * @param ?int $endRow Optionally, the row number at which to stop iterating
+     */
+    public function __construct(Worksheet $subject, int $startRow = 1, ?int $endRow = null)
+    {
+        // Set subject
+        $this->subject = $subject;
+        $this->resetEnd($endRow);
+        $this->resetStart($startRow);
+    }
 
+    public function __destruct()
+    {
+        unset($this->subject);
+    }
 
-	/**
-	 * Create a new row iterator
-	 *
-	 * @param	PHPExcel_Worksheet	$subject	The worksheet to iterate over
-	 * @param	integer				$startRow	The row number at which to start iterating
-	 * @param	integer				$endRow	    Optionally, the row number at which to stop iterating
-	 */
-	public function __construct(PHPExcel_Worksheet $subject = null, $startRow = 1, $endRow = null) {
-		// Set subject
-		$this->_subject = $subject;
-		$this->resetEnd($endRow);
-		$this->resetStart($startRow);
-	}
-
-	/**
-	 * Destructor
-	 */
-	public function __destruct() {
-		unset($this->_subject);
-	}
-
-	/**
-	 * (Re)Set the start row and the current row pointer
-	 *
-	 * @param integer	$startRow	The row number at which to start iterating
-     * @return PHPExcel_Worksheet_RowIterator
-	 */
-	public function resetStart($startRow = 1) {
-		$this->_startRow = $startRow;
-		$this->seek($startRow);
-
-        return $this;
-	}
-
-	/**
-	 * (Re)Set the end row
-	 *
-	 * @param integer	$endRow	The row number at which to stop iterating
-     * @return PHPExcel_Worksheet_RowIterator
-	 */
-	public function resetEnd($endRow = null) {
-		$this->_endRow = ($endRow) ? $endRow : $this->_subject->getHighestRow();
-
-        return $this;
-	}
-
-	/**
-	 * Set the row pointer to the selected row
-	 *
-	 * @param integer	$row	The row number to set the current pointer at
-     * @return PHPExcel_Worksheet_RowIterator
-     * @throws PHPExcel_Exception
-	 */
-	public function seek($row = 1) {
-        if (($row < $this->_startRow) || ($row > $this->_endRow)) {
-            throw new PHPExcel_Exception("Row $row is out of range ({$this->_startRow} - {$this->_endRow})");
-        }
-		$this->_position = $row;
-
-        return $this;
-	}
-
-	/**
-	 * Rewind the iterator to the starting row
-	 */
-	public function rewind() {
-		$this->_position = $this->_startRow;
-	}
-
-	/**
-	 * Return the current row in this worksheet
-	 *
-	 * @return PHPExcel_Worksheet_Row
-	 */
-	public function current() {
-		return new PHPExcel_Worksheet_Row($this->_subject, $this->_position);
-	}
-
-	/**
-	 * Return the current iterator key
-	 *
-	 * @return int
-	 */
-	public function key() {
-		return $this->_position;
-	}
-
-	/**
-	 * Set the iterator to its next value
-	 */
-	public function next() {
-		++$this->_position;
-	}
-
-	/**
-	 * Set the iterator to its previous value
-	 */
-	public function prev() {
-        if ($this->_position <= $this->_startRow) {
-            throw new PHPExcel_Exception("Row is already at the beginning of range ({$this->_startRow} - {$this->_endRow})");
+    /**
+     * (Re)Set the start row and the current row pointer.
+     *
+     * @param int $startRow The row number at which to start iterating
+     *
+     * @return $this
+     */
+    public function resetStart(int $startRow = 1): static
+    {
+        if ($startRow > $this->subject->getHighestRow()) {
+            throw new PhpSpreadsheetException(
+                "Start row ({$startRow}) is beyond highest row ({$this->subject->getHighestRow()})"
+            );
         }
 
-        --$this->_position;
-	}
+        $this->startRow = $startRow;
+        if ($this->endRow < $this->startRow) {
+            $this->endRow = $this->startRow;
+        }
+        $this->seek($startRow);
 
-	/**
-	 * Indicate if more rows exist in the worksheet range of rows that we're iterating
-	 *
-	 * @return boolean
-	 */
-	public function valid() {
-		return $this->_position <= $this->_endRow;
-	}
+        return $this;
+    }
+
+    /**
+     * (Re)Set the end row.
+     *
+     * @param ?int $endRow The row number at which to stop iterating
+     *
+     * @return $this
+     */
+    public function resetEnd(?int $endRow = null): static
+    {
+        $this->endRow = $endRow ?: $this->subject->getHighestRow();
+
+        return $this;
+    }
+
+    /**
+     * Set the row pointer to the selected row.
+     *
+     * @param int $row The row number to set the current pointer at
+     *
+     * @return $this
+     */
+    public function seek(int $row = 1): static
+    {
+        if (($row < $this->startRow) || ($row > $this->endRow)) {
+            throw new PhpSpreadsheetException("Row $row is out of range ({$this->startRow} - {$this->endRow})");
+        }
+        $this->position = $row;
+
+        return $this;
+    }
+
+    /**
+     * Rewind the iterator to the starting row.
+     */
+    public function rewind(): void
+    {
+        $this->position = $this->startRow;
+    }
+
+    /**
+     * Return the current row in this worksheet.
+     */
+    public function current(): Row
+    {
+        return new Row($this->subject, $this->position);
+    }
+
+    /**
+     * Return the current iterator key.
+     */
+    public function key(): int
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set the iterator to its next value.
+     */
+    public function next(): void
+    {
+        ++$this->position;
+    }
+
+    /**
+     * Set the iterator to its previous value.
+     */
+    public function prev(): void
+    {
+        --$this->position;
+    }
+
+    /**
+     * Indicate if more rows exist in the worksheet range of rows that we're iterating.
+     */
+    public function valid(): bool
+    {
+        return $this->position <= $this->endRow && $this->position >= $this->startRow;
+    }
 }

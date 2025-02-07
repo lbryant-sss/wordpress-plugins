@@ -3,8 +3,8 @@ Contributors: nextendweb
 Tags: social login, facebook, google, twitter, x, linkedin, register, login, social, nextend facebook connect, social sign in
 Donate link: https://www.facebook.com/nextendweb
 Requires at least: 4.9
-Tested up to: 6.7
-Stable tag: 3.1.16
+Tested up to: 6.7.1
+Stable tag: 3.1.17
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -124,6 +124,15 @@ Using the Pro Addon you can set where the login buttons should appear on the Reg
 4. The Settings page of the Facebook provider.
 
 == Changelog ==
+
+= 3.1.17 =
+* Fix: PHP warnings in the Getting Started section of some providers
+
+* PRO: Improvement: [Apple](https://nextendweb.com/nextend-social-login-docs/provider-apple/) provider security improvements.
+* PRO: Improvement: [Kakao](https://nextendweb.com/nextend-social-login-docs/provider-kakao/) Getting Started and core integration update.
+* PRO: Removed: [BuddyPress](https://nextendweb.com/nextend-social-login-docs/global-settings-buddypress/) - BuddyPress registration integration - as BuddyPress deprecated the option to create traditional WordPress accounts for unverified users.
+* PRO: Feature: [BuddyPress](https://nextendweb.com/nextend-social-login-docs/global-settings-buddypress/) - Email template for registration - setting defines the email template that the registration notification will use when the registration happens with social login. Earlier this was part of the BuddyPress registration integration.
+
 
 = 3.1.16 =
 * Fix: Some third parties could end up breaking our "Page for register flow" and "OAuth redirect uri proxy page" select inputs

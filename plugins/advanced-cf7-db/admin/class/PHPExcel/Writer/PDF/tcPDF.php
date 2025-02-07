@@ -1,136 +1,84 @@
 <?php
-/**
- *  PHPExcel
- *
- *  Copyright (c) 2006 - 2014 PHPExcel
- *
- *  This library is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU Lesser General Public
- *  License as published by the Free Software Foundation; either
- *  version 2.1 of the License, or (at your option) any later version.
- *
- *  This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  Lesser General Public License for more details.
- *
- *  You should have received a copy of the GNU Lesser General Public
- *  License along with this library; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- *  @category    PHPExcel
- *  @package     PHPExcel_Writer_PDF
- *  @copyright   Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- *  @license     http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
- *  @version     ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Writer\Pdf;
 
-/**  Require tcPDF library */
-$pdfRendererClassFile = PHPExcel_Settings::getPdfRendererPath() . '/tcpdf.php';
-if (file_exists($pdfRendererClassFile)) {
-    $k_path_url = PHPExcel_Settings::getPdfRendererPath();
-    require_once $pdfRendererClassFile;
-} else {
-    throw new PHPExcel_Writer_Exception('Unable to load PDF Rendering library');
-}
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
+use PhpOffice\PhpSpreadsheet\Writer\Pdf;
 
-/**
- *  PHPExcel_Writer_PDF_tcPDF
- *
- *  @category    PHPExcel
- *  @package     PHPExcel_Writer_PDF
- *  @copyright   Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Writer_PDF_tcPDF extends PHPExcel_Writer_PDF_Core implements PHPExcel_Writer_IWriter
+class Tcpdf extends Pdf
 {
     /**
-     *  Create a new PHPExcel_Writer_PDF
+     * Create a new PDF Writer instance.
      *
-     *  @param  PHPExcel  $phpExcel  PHPExcel object
+     * @param Spreadsheet $spreadsheet Spreadsheet object
      */
-    public function __construct(PHPExcel $phpExcel)
+    public function __construct(Spreadsheet $spreadsheet)
     {
-        parent::__construct($phpExcel);
+        parent::__construct($spreadsheet);
+        $this->setUseInlineCss(true);
     }
 
     /**
-     *  Save PHPExcel to file
+     * Gets the implementation of external PDF library that should be used.
      *
-     *  @param     string     $pFilename   Name of the file to save as
-     *  @throws    PHPExcel_Writer_Exception
+     * @param string $orientation Page orientation
+     * @param string $unit Unit measure
+     * @param array|string $paperSize Paper size
+     *
+     * @return \TCPDF implementation
      */
-    public function save($pFilename = NULL)
+    protected function createExternalWriterInstance(string $orientation, string $unit, $paperSize): \TCPDF
     {
-        $fileHandle = parent::prepareForSave($pFilename);
+        return new \TCPDF($orientation, $unit, $paperSize);
+    }
+
+    /**
+     * Save Spreadsheet to file.
+     *
+     * @param string $filename Name of the file to save as
+     */
+    public function save($filename, int $flags = 0): void
+    {
+        $fileHandle = parent::prepareForSave($filename);
 
         //  Default PDF paper size
-        $paperSize = 'LETTER';    //    Letter    (8.5 in. by 11 in.)
+        $paperSize = 'LETTER'; //    Letter    (8.5 in. by 11 in.)
 
         //  Check for paper size and page orientation
-        if (is_null($this->getSheetIndex())) {
-            $orientation = ($this->_phpExcel->getSheet(0)->getPageSetup()->getOrientation()
-                == PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE)
-                    ? 'L'
-                    : 'P';
-            $printPaperSize = $this->_phpExcel->getSheet(0)->getPageSetup()->getPaperSize();
-            $printMargins = $this->_phpExcel->getSheet(0)->getPageMargins();
-        } else {
-            $orientation = ($this->_phpExcel->getSheet($this->getSheetIndex())->getPageSetup()->getOrientation()
-                == PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE)
-                    ? 'L'
-                    : 'P';
-            $printPaperSize = $this->_phpExcel->getSheet($this->getSheetIndex())->getPageSetup()->getPaperSize();
-            $printMargins = $this->_phpExcel->getSheet($this->getSheetIndex())->getPageMargins();
-        }
-
-        //  Override Page Orientation
-        if (!is_null($this->getOrientation())) {
-            $orientation = ($this->getOrientation() == PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE)
-                ? 'L'
-                : 'P';
-        }
-        //  Override Paper Size
-        if (!is_null($this->getPaperSize())) {
-            $printPaperSize = $this->getPaperSize();
-        }
-
-        if (isset(self::$_paperSizes[$printPaperSize])) {
-            $paperSize = self::$_paperSizes[$printPaperSize];
-        }
-
+        $setup = $this->spreadsheet->getSheet($this->getSheetIndex() ?? 0)->getPageSetup();
+        $orientation = $this->getOrientation() ?? $setup->getOrientation();
+        $orientation = ($orientation === PageSetup::ORIENTATION_LANDSCAPE) ? 'L' : 'P';
+        $printPaperSize = $this->getPaperSize() ?? $setup->getPaperSize();
+        $paperSize = self::$paperSizes[$printPaperSize] ?? PageSetup::getPaperSizeDefault();
+        $printMargins = $this->spreadsheet->getSheet($this->getSheetIndex() ?? 0)->getPageMargins();
 
         //  Create PDF
-        $pdf = new TCPDF($orientation, 'pt', $paperSize);
-        $pdf->setFontSubsetting(FALSE);
+        $pdf = $this->createExternalWriterInstance($orientation, 'pt', $paperSize);
+        $pdf->setFontSubsetting(false);
         //    Set margins, converting inches to points (using 72 dpi)
         $pdf->SetMargins($printMargins->getLeft() * 72, $printMargins->getTop() * 72, $printMargins->getRight() * 72);
-        $pdf->SetAutoPageBreak(TRUE, $printMargins->getBottom() * 72);
+        $pdf->SetAutoPageBreak(true, $printMargins->getBottom() * 72);
 
-        $pdf->setPrintHeader(FALSE);
-        $pdf->setPrintFooter(FALSE);
+        $pdf->setPrintHeader(false);
+        $pdf->setPrintFooter(false);
 
         $pdf->AddPage();
 
         //  Set the appropriate font
         $pdf->SetFont($this->getFont());
-        $pdf->writeHTML(
-            $this->generateHTMLHeader(FALSE) .
-            $this->generateSheetData() .
-            $this->generateHTMLFooter()
-        );
+        $pdf->writeHTML($this->generateHTMLAll());
 
         //  Document info
-        $pdf->SetTitle($this->_phpExcel->getProperties()->getTitle());
-        $pdf->SetAuthor($this->_phpExcel->getProperties()->getCreator());
-        $pdf->SetSubject($this->_phpExcel->getProperties()->getSubject());
-        $pdf->SetKeywords($this->_phpExcel->getProperties()->getKeywords());
-        $pdf->SetCreator($this->_phpExcel->getProperties()->getCreator());
+        $pdf->SetTitle($this->spreadsheet->getProperties()->getTitle());
+        $pdf->SetAuthor($this->spreadsheet->getProperties()->getCreator());
+        $pdf->SetSubject($this->spreadsheet->getProperties()->getSubject());
+        $pdf->SetKeywords($this->spreadsheet->getProperties()->getKeywords());
+        $pdf->SetCreator($this->spreadsheet->getProperties()->getCreator());
 
         //  Write to file
-        fwrite($fileHandle, $pdf->output($pFilename, 'S'));
+        fwrite($fileHandle, $pdf->output('', 'S'));
 
-		parent::restoreStateAfterSave($fileHandle);
+        parent::restoreStateAfterSave();
     }
-
 }

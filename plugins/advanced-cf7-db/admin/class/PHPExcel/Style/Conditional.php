@@ -1,277 +1,351 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Style
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Style;
 
-/**
- * PHPExcel_Style_Conditional
- *
- * @category   PHPExcel
- * @package    PHPExcel_Style
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Style_Conditional implements PHPExcel_IComparable
+use PhpOffice\PhpSpreadsheet\IComparable;
+use PhpOffice\PhpSpreadsheet\Style\ConditionalFormatting\ConditionalColorScale;
+use PhpOffice\PhpSpreadsheet\Style\ConditionalFormatting\ConditionalDataBar;
+
+class Conditional implements IComparable
 {
-	/* Condition types */
-	const CONDITION_NONE					= 'none';
-	const CONDITION_CELLIS					= 'cellIs';
-	const CONDITION_CONTAINSTEXT			= 'containsText';
-	const CONDITION_EXPRESSION 				= 'expression';
+    // Condition types
+    const CONDITION_NONE = 'none';
+    const CONDITION_BEGINSWITH = 'beginsWith';
+    const CONDITION_CELLIS = 'cellIs';
+    const CONDITION_COLORSCALE = 'colorScale';
+    const CONDITION_CONTAINSBLANKS = 'containsBlanks';
+    const CONDITION_CONTAINSERRORS = 'containsErrors';
+    const CONDITION_CONTAINSTEXT = 'containsText';
+    const CONDITION_DATABAR = 'dataBar';
+    const CONDITION_ENDSWITH = 'endsWith';
+    const CONDITION_EXPRESSION = 'expression';
+    const CONDITION_NOTCONTAINSBLANKS = 'notContainsBlanks';
+    const CONDITION_NOTCONTAINSERRORS = 'notContainsErrors';
+    const CONDITION_NOTCONTAINSTEXT = 'notContainsText';
+    const CONDITION_TIMEPERIOD = 'timePeriod';
+    const CONDITION_DUPLICATES = 'duplicateValues';
+    const CONDITION_UNIQUE = 'uniqueValues';
 
-	/* Operator types */
-	const OPERATOR_NONE						= '';
-	const OPERATOR_BEGINSWITH				= 'beginsWith';
-	const OPERATOR_ENDSWITH					= 'endsWith';
-	const OPERATOR_EQUAL					= 'equal';
-	const OPERATOR_GREATERTHAN				= 'greaterThan';
-	const OPERATOR_GREATERTHANOREQUAL		= 'greaterThanOrEqual';
-	const OPERATOR_LESSTHAN					= 'lessThan';
-	const OPERATOR_LESSTHANOREQUAL			= 'lessThanOrEqual';
-	const OPERATOR_NOTEQUAL					= 'notEqual';
-	const OPERATOR_CONTAINSTEXT				= 'containsText';
-	const OPERATOR_NOTCONTAINS				= 'notContains';
-	const OPERATOR_BETWEEN					= 'between';
+    private const CONDITION_TYPES = [
+        self::CONDITION_BEGINSWITH,
+        self::CONDITION_CELLIS,
+        self::CONDITION_COLORSCALE,
+        self::CONDITION_CONTAINSBLANKS,
+        self::CONDITION_CONTAINSERRORS,
+        self::CONDITION_CONTAINSTEXT,
+        self::CONDITION_DATABAR,
+        self::CONDITION_DUPLICATES,
+        self::CONDITION_ENDSWITH,
+        self::CONDITION_EXPRESSION,
+        self::CONDITION_NONE,
+        self::CONDITION_NOTCONTAINSBLANKS,
+        self::CONDITION_NOTCONTAINSERRORS,
+        self::CONDITION_NOTCONTAINSTEXT,
+        self::CONDITION_TIMEPERIOD,
+        self::CONDITION_UNIQUE,
+    ];
 
-	/**
-	 * Condition type
-	 *
-	 * @var int
-	 */
-	private $_conditionType;
+    // Operator types
+    const OPERATOR_NONE = '';
+    const OPERATOR_BEGINSWITH = 'beginsWith';
+    const OPERATOR_ENDSWITH = 'endsWith';
+    const OPERATOR_EQUAL = 'equal';
+    const OPERATOR_GREATERTHAN = 'greaterThan';
+    const OPERATOR_GREATERTHANOREQUAL = 'greaterThanOrEqual';
+    const OPERATOR_LESSTHAN = 'lessThan';
+    const OPERATOR_LESSTHANOREQUAL = 'lessThanOrEqual';
+    const OPERATOR_NOTEQUAL = 'notEqual';
+    const OPERATOR_CONTAINSTEXT = 'containsText';
+    const OPERATOR_NOTCONTAINS = 'notContains';
+    const OPERATOR_BETWEEN = 'between';
+    const OPERATOR_NOTBETWEEN = 'notBetween';
 
-	/**
-	 * Operator type
-	 *
-	 * @var int
-	 */
-	private $_operatorType;
-
-	/**
-	 * Text
-	 *
-	 * @var string
-	 */
-	private $_text;
-
-	/**
-	 * Condition
-	 *
-	 * @var string[]
-	 */
-	private $_condition = array();
-
-	/**
-	 * Style
-	 *
-	 * @var PHPExcel_Style
-	 */
-	private $_style;
+    const TIMEPERIOD_TODAY = 'today';
+    const TIMEPERIOD_YESTERDAY = 'yesterday';
+    const TIMEPERIOD_TOMORROW = 'tomorrow';
+    const TIMEPERIOD_LAST_7_DAYS = 'last7Days';
+    const TIMEPERIOD_LAST_WEEK = 'lastWeek';
+    const TIMEPERIOD_THIS_WEEK = 'thisWeek';
+    const TIMEPERIOD_NEXT_WEEK = 'nextWeek';
+    const TIMEPERIOD_LAST_MONTH = 'lastMonth';
+    const TIMEPERIOD_THIS_MONTH = 'thisMonth';
+    const TIMEPERIOD_NEXT_MONTH = 'nextMonth';
 
     /**
-     * Create a new PHPExcel_Style_Conditional
+     * Condition type.
+     */
+    private string $conditionType = self::CONDITION_NONE;
+
+    /**
+     * Operator type.
+     */
+    private string $operatorType = self::OPERATOR_NONE;
+
+    /**
+     * Text.
+     */
+    private string $text = '';
+
+    /**
+     * Stop on this condition, if it matches.
+     */
+    private bool $stopIfTrue = false;
+
+    /**
+     * Condition.
+     *
+     * @var (bool|float|int|string)[]
+     */
+    private array $condition = [];
+
+    private ?ConditionalDataBar $dataBar = null;
+
+    private ?ConditionalColorScale $colorScale = null;
+
+    private Style $style;
+
+    private bool $noFormatSet = false;
+
+    private int $priority = 0;
+
+    /**
+     * Create a new Conditional.
      */
     public function __construct()
     {
-    	// Initialise values
-    	$this->_conditionType		= PHPExcel_Style_Conditional::CONDITION_NONE;
-    	$this->_operatorType		= PHPExcel_Style_Conditional::OPERATOR_NONE;
-    	$this->_text    			= null;
-    	$this->_condition			= array();
-    	$this->_style				= new PHPExcel_Style(FALSE, TRUE);
+        // Initialise values
+        $this->style = new Style(false, true);
+    }
+
+    public function getPriority(): int
+    {
+        return $this->priority;
+    }
+
+    public function setPriority(int $priority): self
+    {
+        $this->priority = $priority;
+
+        return $this;
+    }
+
+    public function getNoFormatSet(): bool
+    {
+        return $this->noFormatSet;
+    }
+
+    public function setNoFormatSet(bool $noFormatSet): self
+    {
+        $this->noFormatSet = $noFormatSet;
+
+        return $this;
     }
 
     /**
-     * Get Condition type
-     *
-     * @return string
+     * Get Condition type.
      */
-    public function getConditionType() {
-    	return $this->_conditionType;
+    public function getConditionType(): string
+    {
+        return $this->conditionType;
     }
 
     /**
-     * Set Condition type
+     * Set Condition type.
      *
-     * @param string $pValue	PHPExcel_Style_Conditional condition type
-     * @return PHPExcel_Style_Conditional
+     * @param string $type Condition type, see self::CONDITION_*
+     *
+     * @return $this
      */
-    public function setConditionType($pValue = PHPExcel_Style_Conditional::CONDITION_NONE) {
-    	$this->_conditionType = $pValue;
-    	return $this;
+    public function setConditionType(string $type): static
+    {
+        $this->conditionType = $type;
+
+        return $this;
     }
 
     /**
-     * Get Operator type
-     *
-     * @return string
+     * Get Operator type.
      */
-    public function getOperatorType() {
-    	return $this->_operatorType;
+    public function getOperatorType(): string
+    {
+        return $this->operatorType;
     }
 
     /**
-     * Set Operator type
+     * Set Operator type.
      *
-     * @param string $pValue	PHPExcel_Style_Conditional operator type
-     * @return PHPExcel_Style_Conditional
+     * @param string $type Conditional operator type, see self::OPERATOR_*
+     *
+     * @return $this
      */
-    public function setOperatorType($pValue = PHPExcel_Style_Conditional::OPERATOR_NONE) {
-    	$this->_operatorType = $pValue;
-    	return $this;
+    public function setOperatorType(string $type): static
+    {
+        $this->operatorType = $type;
+
+        return $this;
     }
 
     /**
-     * Get text
-     *
-     * @return string
+     * Get text.
      */
-    public function getText() {
-        return $this->_text;
+    public function getText(): string
+    {
+        return $this->text;
     }
 
     /**
-     * Set text
+     * Set text.
      *
-     * @param string $value
-     * @return PHPExcel_Style_Conditional
+     * @return $this
      */
-    public function setText($value = null) {
-           $this->_text = $value;
-           return $this;
+    public function setText(string $text): static
+    {
+        $this->text = $text;
+
+        return $this;
     }
 
     /**
-     * Get Condition
-     *
-     * @deprecated Deprecated, use getConditions instead
-     * @return string
+     * Get StopIfTrue.
      */
-    public function getCondition() {
-    	if (isset($this->_condition[0])) {
-    		return $this->_condition[0];
-    	}
-
-    	return '';
+    public function getStopIfTrue(): bool
+    {
+        return $this->stopIfTrue;
     }
 
     /**
-     * Set Condition
+     * Set StopIfTrue.
      *
-     * @deprecated Deprecated, use setConditions instead
-     * @param string $pValue	Condition
-     * @return PHPExcel_Style_Conditional
+     * @return $this
      */
-    public function setCondition($pValue = '') {
-    	if (!is_array($pValue))
-    		$pValue = array($pValue);
+    public function setStopIfTrue(bool $stopIfTrue): static
+    {
+        $this->stopIfTrue = $stopIfTrue;
 
-    	return $this->setConditions($pValue);
+        return $this;
     }
 
     /**
-     * Get Conditions
+     * Get Conditions.
      *
-     * @return string[]
+     * @return (bool|float|int|string)[]
      */
-    public function getConditions() {
-    	return $this->_condition;
+    public function getConditions(): array
+    {
+        return $this->condition;
     }
 
     /**
-     * Set Conditions
+     * Set Conditions.
      *
-     * @param string[] $pValue	Condition
-     * @return PHPExcel_Style_Conditional
+     * @param bool|(bool|float|int|string)[]|float|int|string $conditions Condition
+     *
+     * @return $this
      */
-    public function setConditions($pValue) {
-    	if (!is_array($pValue))
-    		$pValue = array($pValue);
+    public function setConditions($conditions): static
+    {
+        if (!is_array($conditions)) {
+            $conditions = [$conditions];
+        }
+        $this->condition = $conditions;
 
-    	$this->_condition = $pValue;
-    	return $this;
+        return $this;
     }
 
     /**
-     * Add Condition
+     * Add Condition.
      *
-     * @param string $pValue	Condition
-     * @return PHPExcel_Style_Conditional
+     * @param bool|float|int|string $condition Condition
+     *
+     * @return $this
      */
-    public function addCondition($pValue = '') {
-    	$this->_condition[] = $pValue;
-    	return $this;
+    public function addCondition($condition): static
+    {
+        $this->condition[] = $condition;
+
+        return $this;
     }
 
     /**
-     * Get Style
-     *
-     * @return PHPExcel_Style
+     * Get Style.
      */
-    public function getStyle() {
-    	return $this->_style;
+    public function getStyle(): Style
+    {
+        return $this->style;
     }
 
     /**
-     * Set Style
+     * Set Style.
      *
-     * @param 	PHPExcel_Style $pValue
-     * @throws 	PHPExcel_Exception
-     * @return PHPExcel_Style_Conditional
+     * @return $this
      */
-    public function setStyle(PHPExcel_Style $pValue = null) {
-   		$this->_style = $pValue;
-   		return $this;
+    public function setStyle(Style $style): static
+    {
+        $this->style = $style;
+
+        return $this;
     }
 
-	/**
-	 * Get hash code
-	 *
-	 * @return string	Hash code
-	 */
-	public function getHashCode() {
-    	return md5(
-    		  $this->_conditionType
-    		. $this->_operatorType
-    		. implode(';', $this->_condition)
-    		. $this->_style->getHashCode()
-    		. __CLASS__
-    	);
+    public function getDataBar(): ?ConditionalDataBar
+    {
+        return $this->dataBar;
     }
 
-	/**
-	 * Implement PHP __clone to create a deep clone, not just a shallow copy.
-	 */
-	public function __clone() {
-		$vars = get_object_vars($this);
-		foreach ($vars as $key => $value) {
-			if (is_object($value)) {
-				$this->$key = clone $value;
-			} else {
-				$this->$key = $value;
-			}
-		}
-	}
+    public function setDataBar(ConditionalDataBar $dataBar): static
+    {
+        $this->dataBar = $dataBar;
+
+        return $this;
+    }
+
+    public function getColorScale(): ?ConditionalColorScale
+    {
+        return $this->colorScale;
+    }
+
+    public function setColorScale(ConditionalColorScale $colorScale): static
+    {
+        $this->colorScale = $colorScale;
+
+        return $this;
+    }
+
+    /**
+     * Get hash code.
+     *
+     * @return string Hash code
+     */
+    public function getHashCode(): string
+    {
+        return md5(
+            $this->conditionType
+            . $this->operatorType
+            . implode(';', $this->condition)
+            . $this->style->getHashCode()
+            . __CLASS__
+        );
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
+    }
+
+    /**
+     * Verify if param is valid condition type.
+     */
+    public static function isValidConditionType(string $type): bool
+    {
+        return in_array($type, self::CONDITION_TYPES);
+    }
 }

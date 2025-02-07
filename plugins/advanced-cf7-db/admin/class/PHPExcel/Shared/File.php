@@ -1,178 +1,195 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Shared
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Shared;
 
-/**
- * PHPExcel_Shared_File
- *
- * @category   PHPExcel
- * @package    PHPExcel_Shared
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Shared_File
+use PhpOffice\PhpSpreadsheet\Exception;
+use PhpOffice\PhpSpreadsheet\Reader\Exception as ReaderException;
+use ZipArchive;
+
+class File
 {
-	/*
-	 * Use Temp or File Upload Temp for temporary files
-	 *
-	 * @protected
-	 * @var	boolean
-	 */
-	protected static $_useUploadTempDirectory	= FALSE;
+    /**
+     * Use Temp or File Upload Temp for temporary files.
+     */
+    protected static bool $useUploadTempDirectory = false;
 
+    /**
+     * Set the flag indicating whether the File Upload Temp directory should be used for temporary files.
+     */
+    public static function setUseUploadTempDirectory(bool $useUploadTempDir): void
+    {
+        self::$useUploadTempDirectory = (bool) $useUploadTempDir;
+    }
 
-	/**
-	 * Set the flag indicating whether the File Upload Temp directory should be used for temporary files
-	 *
-	 * @param	 boolean	$useUploadTempDir		Use File Upload Temporary directory (true or false)
-	 */
-	public static function setUseUploadTempDirectory($useUploadTempDir = FALSE) {
-		self::$_useUploadTempDirectory = (boolean) $useUploadTempDir;
-	}	//	function setUseUploadTempDirectory()
+    /**
+     * Get the flag indicating whether the File Upload Temp directory should be used for temporary files.
+     */
+    public static function getUseUploadTempDirectory(): bool
+    {
+        return self::$useUploadTempDirectory;
+    }
 
+    // https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT
+    // Section 4.3.7
+    // Looks like there might be endian-ness considerations
+    private const ZIP_FIRST_4 = [
+        "\x50\x4b\x03\x04", // what it looks like on my system
+        "\x04\x03\x4b\x50", // what it says in documentation
+    ];
 
-	/**
-	 * Get the flag indicating whether the File Upload Temp directory should be used for temporary files
-	 *
-	 * @return	 boolean	Use File Upload Temporary directory (true or false)
-	 */
-	public static function getUseUploadTempDirectory() {
-		return self::$_useUploadTempDirectory;
-	}	//	function getUseUploadTempDirectory()
+    private static function validateZipFirst4(string $zipFile): bool
+    {
+        $contents = @file_get_contents($zipFile, false, null, 0, 4);
 
+        return in_array($contents, self::ZIP_FIRST_4, true);
+    }
 
-	/**
-	  * Verify if a file exists
-	  *
-	  * @param 	string	$pFilename	Filename
-	  * @return bool
-	  */
-	public static function file_exists($pFilename) {
-		// Sick construction, but it seems that
-		// file_exists returns strange values when
-		// doing the original file_exists on ZIP archives...
-		if ( strtolower(substr($pFilename, 0, 3)) == 'zip' ) {
-			// Open ZIP file and verify if the file exists
-			$zipFile 		= substr($pFilename, 6, strpos($pFilename, '#') - 6);
-			$archiveFile 	= substr($pFilename, strpos($pFilename, '#') + 1);
+    /**
+     * Verify if a file exists.
+     */
+    public static function fileExists(string $filename): bool
+    {
+        // Sick construction, but it seems that
+        // file_exists returns strange values when
+        // doing the original file_exists on ZIP archives...
+        if (strtolower(substr($filename, 0, 6)) == 'zip://') {
+            // Open ZIP file and verify if the file exists
+            $zipFile = substr($filename, 6, strrpos($filename, '#') - 6);
+            $archiveFile = substr($filename, strrpos($filename, '#') + 1);
 
-			$zip = new ZipArchive();
-			if ($zip->open($zipFile) === true) {
-				$returnValue = ($zip->getFromName($archiveFile) !== false);
-				$zip->close();
-				return $returnValue;
-			} else {
-				return false;
-			}
-		} else {
-			// Regular file_exists
-			return file_exists($pFilename);
-		}
-	}
+            if (self::validateZipFirst4($zipFile)) {
+                $zip = new ZipArchive();
+                $res = $zip->open($zipFile);
+                if ($res === true) {
+                    $returnValue = ($zip->getFromName($archiveFile) !== false);
+                    $zip->close();
 
-	/**
-	 * Returns canonicalized absolute pathname, also for ZIP archives
-	 *
-	 * @param string $pFilename
-	 * @return string
-	 */
-	public static function realpath($pFilename) {
-		// Returnvalue
-		$returnValue = '';
+                    return $returnValue;
+                }
+            }
 
-		// Try using realpath()
-		if (file_exists($pFilename)) {
-			$returnValue = realpath($pFilename);
-		}
+            return false;
+        }
 
-		// Found something?
-		if ($returnValue == '' || ($returnValue === NULL)) {
-			$pathArray = explode('/' , $pFilename);
-			while(in_array('..', $pathArray) && $pathArray[0] != '..') {
-				for ($i = 0; $i < count($pathArray); ++$i) {
-					if ($pathArray[$i] == '..' && $i > 0) {
-						unset($pathArray[$i]);
-						unset($pathArray[$i - 1]);
-						break;
-					}
-				}
-			}
-			$returnValue = implode('/', $pathArray);
-		}
+        return file_exists($filename);
+    }
 
-		// Return
-		return $returnValue;
-	}
+    /**
+     * Returns canonicalized absolute pathname, also for ZIP archives.
+     */
+    public static function realpath(string $filename): string
+    {
+        // Returnvalue
+        $returnValue = '';
 
-	/**
-	 * Get the systems temporary directory.
-	 *
-	 * @return string
-	 */
-	public static function sys_get_temp_dir()
-	{
-		if (self::$_useUploadTempDirectory) {
-			//  use upload-directory when defined to allow running on environments having very restricted
-			//      open_basedir configs
-			if (ini_get('upload_tmp_dir') !== FALSE) {
-				if ($temp = ini_get('upload_tmp_dir')) {
-					if (file_exists($temp))
-						return realpath($temp);
-				}
-			}
-		}
+        // Try using realpath()
+        if (file_exists($filename)) {
+            $returnValue = realpath($filename) ?: '';
+        }
 
-		// sys_get_temp_dir is only available since PHP 5.2.1
-		// http://php.net/manual/en/function.sys-get-temp-dir.php#94119
-		if ( !function_exists('sys_get_temp_dir')) {
-			if ($temp = getenv('TMP') ) {
-				if ((!empty($temp)) && (file_exists($temp))) { return realpath($temp); }
-			}
-			if ($temp = getenv('TEMP') ) {
-				if ((!empty($temp)) && (file_exists($temp))) { return realpath($temp); }
-			}
-			if ($temp = getenv('TMPDIR') ) {
-				if ((!empty($temp)) && (file_exists($temp))) { return realpath($temp); }
-			}
+        // Found something?
+        if ($returnValue === '') {
+            $pathArray = explode('/', $filename);
+            while (in_array('..', $pathArray) && $pathArray[0] != '..') {
+                $iMax = count($pathArray);
+                for ($i = 1; $i < $iMax; ++$i) {
+                    if ($pathArray[$i] == '..') {
+                        array_splice($pathArray, $i - 1, 2);
 
-			// trick for creating a file in system's temporary dir
-			// without knowing the path of the system's temporary dir
-			$temp = tempnam(__FILE__, '');
-			if (file_exists($temp)) {
-				unlink($temp);
-				return realpath(dirname($temp));
-			}
+                        break;
+                    }
+                }
+            }
+            $returnValue = implode('/', $pathArray);
+        }
 
-			return null;
-		}
+        // Return
+        return $returnValue;
+    }
 
-		// use ordinary built-in PHP function
-		//	There should be no problem with the 5.2.4 Suhosin realpath() bug, because this line should only
-		//		be called if we're running 5.2.1 or earlier
-		return realpath(sys_get_temp_dir());
-	}
+    /**
+     * Get the systems temporary directory.
+     */
+    public static function sysGetTempDir(): string
+    {
+        $path = sys_get_temp_dir();
+        if (self::$useUploadTempDirectory) {
+            //  use upload-directory when defined to allow running on environments having very restricted
+            //      open_basedir configs
+            if (ini_get('upload_tmp_dir') !== false) {
+                if ($temp = ini_get('upload_tmp_dir')) {
+                    if (file_exists($temp)) {
+                        $path = $temp;
+                    }
+                }
+            }
+        }
 
+        return realpath($path) ?: '';
+    }
+
+    public static function temporaryFilename(): string
+    {
+        $filename = tempnam(self::sysGetTempDir(), 'phpspreadsheet');
+        if ($filename === false) {
+            throw new Exception('Could not create temporary file');
+        }
+
+        return $filename;
+    }
+
+    /**
+     * Assert that given path is an existing file and is readable, otherwise throw exception.
+     */
+    public static function assertFile(string $filename, string $zipMember = ''): void
+    {
+        if (!is_file($filename)) {
+            throw new ReaderException('File "' . $filename . '" does not exist.');
+        }
+
+        if (!is_readable($filename)) {
+            throw new ReaderException('Could not open "' . $filename . '" for reading.');
+        }
+
+        if ($zipMember !== '') {
+            $zipfile = "zip://$filename#$zipMember";
+            if (!self::fileExists($zipfile)) {
+                // Has the file been saved with Windoze directory separators rather than unix?
+                $zipfile = "zip://$filename#" . str_replace('/', '\\', $zipMember);
+                if (!self::fileExists($zipfile)) {
+                    throw new ReaderException("Could not find zip member $zipfile");
+                }
+            }
+        }
+    }
+
+    /**
+     * Same as assertFile, except return true/false and don't throw Exception.
+     */
+    public static function testFileNoThrow(string $filename, ?string $zipMember = null): bool
+    {
+        if (!is_file($filename)) {
+            return false;
+        }
+        if (!is_readable($filename)) {
+            return false;
+        }
+        if ($zipMember === null) {
+            return true;
+        }
+        // validate zip, but don't check specific member
+        if ($zipMember === '') {
+            return self::validateZipFirst4($filename);
+        }
+
+        $zipfile = "zip://$filename#$zipMember";
+        if (self::fileExists($zipfile)) {
+            return true;
+        }
+
+        // Has the file been saved with Windoze directory separators rather than unix?
+        $zipfile = "zip://$filename#" . str_replace('/', '\\', $zipMember);
+
+        return self::fileExists($zipfile);
+    }
 }

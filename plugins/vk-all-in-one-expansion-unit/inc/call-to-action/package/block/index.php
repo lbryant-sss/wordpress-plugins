@@ -155,10 +155,11 @@ function veu_cta_block_callback( $attributes, $content ) {
 	global $post;
 	$post_config = '';
 	if ( $post ) {
+		// 表示（CTA配置）側ページの CTA 表示設定を取得.
 		$post_config = get_post_meta( $post->ID, 'vkexunit_cta_each_option', true );
 	}
 
-	// 各記事で非表示指定されていなかったら表示する
+	// 表示（CTA配置）側のページでCTAを非表示に指定されていなかったら表示する
 	if ( 'disable' !== $post_config ) {
 		if ( ! empty( $attributes['postId'] ) ) {
 			$cta_id = 'random' !== $attributes['postId'] ? $attributes['postId'] : Vk_Call_To_Action::cta_id_random();
@@ -273,5 +274,5 @@ function veu_cta_block_callback( $attributes, $content ) {
 		}
 	}
 
-	return wp_kses_post( $content );
+	return Vk_Call_To_Action::safe_kses_post( $content );
 }

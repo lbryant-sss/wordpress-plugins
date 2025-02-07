@@ -1,5 +1,8 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
+
+namespace PhpOffice\PhpSpreadsheet\Shared\OLE\PPS;
+
+// vim: set expandtab tabstop=4 shiftwidth=4:
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,68 +20,43 @@
 // | Based on OLE::Storage_Lite by Kawai, Takanori                        |
 // +----------------------------------------------------------------------+
 //
-// $Id: File.php,v 1.11 2007/02/13 21:00:42 schmidt Exp $
-
+use PhpOffice\PhpSpreadsheet\Shared\OLE;
+use PhpOffice\PhpSpreadsheet\Shared\OLE\PPS;
 
 /**
-* Class for creating File PPS's for OLE containers
-*
-* @author   Xavier Noguer <xnoguer@php.net>
-* @category PHPExcel
-* @package  PHPExcel_Shared_OLE
-*/
-class PHPExcel_Shared_OLE_PPS_File extends PHPExcel_Shared_OLE_PPS
-	{
-	/**
-	* The constructor
-	*
-	* @access public
-	* @param string $name The name of the file (in Unicode)
-	* @see OLE::Asc2Ucs()
-	*/
-	public function __construct($name)
-	{
-		parent::__construct(
-			null,
-			$name,
-			PHPExcel_Shared_OLE::OLE_PPS_TYPE_FILE,
-			null,
-			null,
-			null,
-			null,
-			null,
-			'',
-			array());
-	}
+ * Class for creating File PPS's for OLE containers.
+ *
+ * @author   Xavier Noguer <xnoguer@php.net>
+ */
+class File extends PPS
+{
+    /**
+     * The constructor.
+     *
+     * @param string $name The name of the file (in Unicode)
+     *
+     * @see OLE::ascToUcs()
+     */
+    public function __construct(string $name)
+    {
+        parent::__construct(null, $name, OLE::OLE_PPS_TYPE_FILE, null, null, null, null, null, '', []);
+    }
 
-	/**
-	* Initialization method. Has to be called right after OLE_PPS_File().
-	*
-	* @access public
-	* @return mixed true on success
-	*/
-	public function init()
-	{
-		return true;
-	}
+    /**
+     * Initialization method. Has to be called right after OLE_PPS_File().
+     */
+    public function init(): bool
+    {
+        return true;
+    }
 
-	/**
-	* Append data to PPS
-	*
-	* @access public
-	* @param string $data The data to append
-	*/
-	public function append($data)
-	{
-		$this->_data .= $data;
-	}
-
-	/**
-	 * Returns a stream for reading this file using fread() etc.
-	 * @return  resource  a read-only stream
-	 */
-	public function getStream()
-	{
-		$this->ole->getStream($this);
-	}
+    /**
+     * Append data to PPS.
+     *
+     * @param string $data The data to append
+     */
+    public function append(string $data): void
+    {
+        $this->_data .= $data;
+    }
 }

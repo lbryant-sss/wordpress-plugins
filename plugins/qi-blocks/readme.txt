@@ -4,7 +4,7 @@ Tags: gutenberg block, blocks, patterns, wireframes, gutenberg templates
 Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -291,6 +291,10 @@ Feel free to try out some of our other products:
 12.	Device Frame Slider Block.
 
 == Changelog ==
+
+= 1.3.5 - 06-02-2025 =
+- Fixed potential Cross Site Scripting (XSS) vulnerability for Counter and Countdown blocks
+- Fixed minor bugs
 
 = 1.3.4 - 27-11-2024 =
 - Added WordPress 6.7 support

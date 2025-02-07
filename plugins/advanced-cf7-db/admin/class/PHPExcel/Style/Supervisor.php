@@ -1,132 +1,156 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package	PHPExcel_Style
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license	http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version	##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Style;
 
-/**
- * PHPExcel_Style_Supervisor
- *
- * @category   PHPExcel
- * @package	PHPExcel_Style
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-abstract class PHPExcel_Style_Supervisor
+use PhpOffice\PhpSpreadsheet\IComparable;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+
+abstract class Supervisor implements IComparable
 {
-	/**
-	 * Supervisor?
-	 *
-	 * @var boolean
-	 */
-	protected $_isSupervisor;
+    /**
+     * Supervisor?
+     */
+    protected bool $isSupervisor;
 
-	/**
-	 * Parent. Only used for supervisor
-	 *
-	 * @var PHPExcel_Style
-	 */
-	protected $_parent;
+    /**
+     * Parent. Only used for supervisor.
+     *
+     * @var Spreadsheet|Supervisor
+     */
+    protected $parent;
 
-	/**
-	 * Create a new PHPExcel_Style_Alignment
-	 *
-	 * @param	boolean	$isSupervisor	Flag indicating if this is a supervisor or not
-	 *									Leave this value at default unless you understand exactly what
-	 *										its ramifications are
-	 */
-	public function __construct($isSupervisor = FALSE)
-	{
-		// Supervisor?
-		$this->_isSupervisor = $isSupervisor;
-	}
+    /**
+     * Parent property name.
+     */
+    protected ?string $parentPropertyName = null;
 
-	/**
-	 * Bind parent. Only used for supervisor
-	 *
-	 * @param PHPExcel $parent
-	 * @return PHPExcel_Style_Supervisor
-	 */
-	public function bindParent($parent, $parentPropertyName=NULL)
-	{
-		$this->_parent = $parent;
-		return $this;
-	}
+    /**
+     * Create a new Supervisor.
+     *
+     * @param bool $isSupervisor Flag indicating if this is a supervisor or not
+     *                                    Leave this value at default unless you understand exactly what
+     *                                        its ramifications are
+     */
+    public function __construct(bool $isSupervisor = false)
+    {
+        // Supervisor?
+        $this->isSupervisor = $isSupervisor;
+    }
 
-	/**
-	 * Is this a supervisor or a cell style component?
-	 *
-	 * @return boolean
-	 */
-	public function getIsSupervisor()
-	{
-		return $this->_isSupervisor;
-	}
+    /**
+     * Bind parent. Only used for supervisor.
+     *
+     * @return $this
+     */
+    public function bindParent(Spreadsheet|self $parent, ?string $parentPropertyName = null)
+    {
+        $this->parent = $parent;
+        $this->parentPropertyName = $parentPropertyName;
 
-	/**
-	 * Get the currently active sheet. Only used for supervisor
-	 *
-	 * @return PHPExcel_Worksheet
-	 */
-	public function getActiveSheet()
-	{
-		return $this->_parent->getActiveSheet();
-	}
+        return $this;
+    }
 
-	/**
-	 * Get the currently active cell coordinate in currently active sheet.
-	 * Only used for supervisor
-	 *
-	 * @return string E.g. 'A1'
-	 */
-	public function getSelectedCells()
-	{
-		return $this->getActiveSheet()->getSelectedCells();
-	}
+    /**
+     * Is this a supervisor or a cell style component?
+     */
+    public function getIsSupervisor(): bool
+    {
+        return $this->isSupervisor;
+    }
 
-	/**
-	 * Get the currently active cell coordinate in currently active sheet.
-	 * Only used for supervisor
-	 *
-	 * @return string E.g. 'A1'
-	 */
-	public function getActiveCell()
-	{
-		return $this->getActiveSheet()->getActiveCell();
-	}
+    /**
+     * Get the currently active sheet. Only used for supervisor.
+     */
+    public function getActiveSheet(): Worksheet
+    {
+        return $this->parent->getActiveSheet();
+    }
 
-	/**
-	 * Implement PHP __clone to create a deep clone, not just a shallow copy.
-	 */
-	public function __clone() {
-		$vars = get_object_vars($this);
-		foreach ($vars as $key => $value) {
-			if ((is_object($value)) && ($key != '_parent')) {
-				$this->$key = clone $value;
-			} else {
-				$this->$key = $value;
-			}
-		}
-	}
+    /**
+     * Get the currently active cell coordinate in currently active sheet.
+     * Only used for supervisor.
+     *
+     * @return string E.g. 'A1'
+     */
+    public function getSelectedCells(): string
+    {
+        return $this->getActiveSheet()->getSelectedCells();
+    }
+
+    /**
+     * Get the currently active cell coordinate in currently active sheet.
+     * Only used for supervisor.
+     *
+     * @return string E.g. 'A1'
+     */
+    public function getActiveCell(): string
+    {
+        return $this->getActiveSheet()->getActiveCell();
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if ((is_object($value)) && ($key != 'parent')) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
+    }
+
+    /**
+     * Export style as array.
+     *
+     * Available to anything which extends this class:
+     * Alignment, Border, Borders, Color, Fill, Font,
+     * NumberFormat, Protection, and Style.
+     */
+    final public function exportArray(): array
+    {
+        return $this->exportArray1();
+    }
+
+    /**
+     * Abstract method to be implemented in anything which
+     * extends this class.
+     *
+     * This method invokes exportArray2 with the names and values
+     * of all properties to be included in output array,
+     * returning that array to exportArray, then to caller.
+     */
+    abstract protected function exportArray1(): array;
+
+    /**
+     * Populate array from exportArray1.
+     * This method is available to anything which extends this class.
+     * The parameter index is the key to be added to the array.
+     * The parameter objOrValue is either a primitive type,
+     * which is the value added to the array,
+     * or a Style object to be recursively added via exportArray.
+     */
+    final protected function exportArray2(array &$exportedArray, string $index, mixed $objOrValue): void
+    {
+        if ($objOrValue instanceof self) {
+            $exportedArray[$index] = $objOrValue->exportArray();
+        } else {
+            $exportedArray[$index] = $objOrValue;
+        }
+    }
+
+    /**
+     * Get the shared style component for the currently active cell in currently active sheet.
+     * Only used for style supervisor.
+     */
+    abstract public function getSharedComponent(): mixed;
+
+    /**
+     * Build style array from subcomponents.
+     */
+    abstract public function getStyleArray(array $array): array;
 }

@@ -334,6 +334,7 @@ class Advanced_Cf7_Db_Admin {
 	 */
 	function vsz_cf7_after_datesection_btn_callback($fid){
 		//Get menu page URL
+        $nonce = isset($POST['vsz_cf7_search_nonce']) && !empty($POST['vsz_cf7_search_nonce']) ?  $POST['vsz_cf7_search_nonce'] : '';
 		$url = menu_page_url('contact-form-listing',false);
 		//Check form id is define in current page or not if defirn then current form ID add with existing URL
 		if(isset($_REQUEST['cf7_id']) && !empty($_REQUEST['cf7_id'])){
@@ -896,6 +897,7 @@ class Advanced_Cf7_Db_Admin {
 					$edit_cap = 'cf7_db_form_edit_'.$fid;
 					if(!cf7_check_capability( $edit_cap ) ){
 						//Current user does not have edit access
+						// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 						wp_die(__('You do not have permission to delete files.'));
 					}
 
@@ -1202,14 +1204,18 @@ class Advanced_Cf7_Db_Admin {
 		//added in 1.8.3
 		// check nonce
 		if(!isset($_POST['vsz_cf7_edit_nonce']) || empty($_POST['vsz_cf7_edit_nonce'])){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Something may be wrong, please try again later.'));
+			/* phpcs:enable */
 			exit;
 		}
 
 		if(!isset($_POST["fid"]) || empty($_POST["fid"])){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Something may be wrong, please try again later.'));
+			/* phpcs:enable */
 			exit;
 		}
 
@@ -1218,8 +1224,10 @@ class Advanced_Cf7_Db_Admin {
 		//Verify nonce value
 		$nonce = sanitize_text_field($_POST['vsz_cf7_edit_nonce']);
 		if(!wp_verify_nonce( $nonce, 'vsz-cf7-edit-nonce-'.$fid)){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Something may be wrong, please try again later.'));
+			/* phpcs:enable */
 			exit;
 		}
 
@@ -1229,31 +1237,41 @@ class Advanced_Cf7_Db_Admin {
 		$edit_cap = 'cf7_db_form_edit_'.$fid;
 		if(!cf7_check_capability( $edit_cap ) ){
 			//Current user does not have edit access
+            /* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('You do not have permission to upload files.'));
+			/* phpcs:enable */
 			exit;
 		}
 
 		if(isset($_FILES) && is_array($_FILES) && empty($_FILES)){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Something may be wrong, please try again later.'));
+			/* phpcs:enable */
 			exit;
 		}
 
 		if(!isset($_POST["rid"]) || empty($_POST["rid"])){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Something may be wrong, please try again later.'));
+            /* phpcs:enable */
 			exit;
 		}
 		if(!isset($_POST["field"]) || empty($_POST["field"])){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Something may be wrong, please try again later.'));
+            /* phpcs:enable */
 			exit;
 		}
 		$fileInfo = wp_check_filetype(basename($_FILES['image']['name']));
 		if(empty($fileInfo['ext'])){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Kindly upload valid file type.'));
+            /* phpcs:enable */
 			exit;
 		}
 
@@ -1271,8 +1289,10 @@ class Advanced_Cf7_Db_Admin {
 			//verify file size here
 			$maxsize = 8000000;
 			if(($_FILES['image']['size'] >= $maxsize) || empty($_FILES['image']['size'])) {
+				/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 				print esc_html('error@~@');
 				wp_die(__('You can upload maximum 7.60 MB file.'));
+				/* phpcs:enable */
 				exit;
 			}
 			$filename = sanitize_text_field($_FILES["image"]["name"]);
@@ -1282,8 +1302,10 @@ class Advanced_Cf7_Db_Admin {
 			$validExtArray = array( 'jpg','jpeg','png','gif','pdf','doc','docx','ppt','pptx','odt','avi','ogg','m4a','mov','mp3','mp4','mpg','wav','wmv');
 			$ext = end((explode(".", $filename)));
 			if(!in_array($ext,$validExtArray)){
+				/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 				print esc_html('error@~@');
 				wp_die(__('Kindly upload valid file type.'));
+				/* phpcs:enable */
 				exit;
 			}
 
@@ -1311,8 +1333,10 @@ class Advanced_Cf7_Db_Admin {
 					exit;
 				}
 				else{
+					/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 					print esc_html('error@~@');
 					wp_die(__('File is not uploaded, kindly try again later.'));
+					/* phpcs:enable */
 					exit;
 				}
 			}
@@ -1327,14 +1351,18 @@ class Advanced_Cf7_Db_Admin {
 	function vsz_acf7_db_edit_scr_file_delete(){
 
 		if(!isset($_POST["vsz_cf7_edit_nonce"]) || empty($_POST["vsz_cf7_edit_nonce"])){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Something may be wrong, please try again later.'));
+			/* phpcs:enable */
 			exit;
 		}
 
 		if(!isset($_POST["fid"]) || empty($_POST["fid"])){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Something may be wrong, please try again later.'));
+			/* phpcs:enable */
 			exit;
 		}
 
@@ -1345,8 +1373,10 @@ class Advanced_Cf7_Db_Admin {
 		////add in 1.8.3
 		$nonce = sanitize_text_field($_POST['vsz_cf7_edit_nonce']);
 		if(!wp_verify_nonce( $nonce, 'vsz-cf7-edit-nonce-'.$fid)){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Something may be wrong, please try again later.'));
+			/* phpcs:enable */
 			exit;
 		}
 		// Verify the current user can upload or delete files
@@ -1355,24 +1385,32 @@ class Advanced_Cf7_Db_Admin {
 		$edit_cap = 'cf7_db_form_edit_'.$fid;
 		if(!cf7_check_capability( $edit_cap ) ){
 			//Current user does not have edit access
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('You do not have permission to delete files.'));
+			/* phpcs:enable */
 			exit;
 		}
 
 		if(!isset($_POST["rid"]) || empty($_POST["rid"])){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Something may be wrong, please try again later.'));
+			/* phpcs:enable */
 			exit;
 		}
 		if(!isset($_POST["field"]) || empty($_POST["field"])){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Something may be wrong, please try again later.'));
+			/* phpcs:enable */
 			exit;
 		}
 		if(!isset($_POST["val"]) || empty($_POST["val"])){
+			/* phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped */
 			print esc_html('error@~@');
 			wp_die(__('Something may be wrong, please try again later.'));
+			/* phpcs:enable */
 			exit;
 		}
 

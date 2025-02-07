@@ -93,7 +93,7 @@ class NavigationSectionBlock extends BlockContainerBase {
 			'animation.duration.value',
 			0,
 			array(
-				'styledComponent' => NavigationBlock::NAVIGATION_CONTAINER,
+				'styledComponent' => NavigationBlock::NAVIGATION_SECTION,
 				'media'           => 'desktop',
 				'ancestor'        => '',
 			)

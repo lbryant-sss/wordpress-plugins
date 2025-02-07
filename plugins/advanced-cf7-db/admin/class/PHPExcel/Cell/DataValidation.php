@@ -1,472 +1,399 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category   PHPExcel
- * @package    PHPExcel_Cell
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
- * @version    ##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Cell;
 
-/**
- * PHPExcel_Cell_DataValidation
- *
- * @category   PHPExcel
- * @package    PHPExcel_Cell
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Cell_DataValidation
+class DataValidation
 {
-    /* Data validation types */
-    const TYPE_NONE        = 'none';
-    const TYPE_CUSTOM      = 'custom';
-    const TYPE_DATE        = 'date';
-    const TYPE_DECIMAL     = 'decimal';
-    const TYPE_LIST        = 'list';
-    const TYPE_TEXTLENGTH  = 'textLength';
-    const TYPE_TIME        = 'time';
-    const TYPE_WHOLE       = 'whole';
+    // Data validation types
+    const TYPE_NONE = 'none';
+    const TYPE_CUSTOM = 'custom';
+    const TYPE_DATE = 'date';
+    const TYPE_DECIMAL = 'decimal';
+    const TYPE_LIST = 'list';
+    const TYPE_TEXTLENGTH = 'textLength';
+    const TYPE_TIME = 'time';
+    const TYPE_WHOLE = 'whole';
 
-    /* Data validation error styles */
-    const STYLE_STOP         = 'stop';
-    const STYLE_WARNING      = 'warning';
-    const STYLE_INFORMATION  = 'information';
+    // Data validation error styles
+    const STYLE_STOP = 'stop';
+    const STYLE_WARNING = 'warning';
+    const STYLE_INFORMATION = 'information';
 
-    /* Data validation operators */
-    const OPERATOR_BETWEEN             = 'between';
-    const OPERATOR_EQUAL               = 'equal';
-    const OPERATOR_GREATERTHAN         = 'greaterThan';
-    const OPERATOR_GREATERTHANOREQUAL  = 'greaterThanOrEqual';
-    const OPERATOR_LESSTHAN            = 'lessThan';
-    const OPERATOR_LESSTHANOREQUAL     = 'lessThanOrEqual';
-    const OPERATOR_NOTBETWEEN          = 'notBetween';
-    const OPERATOR_NOTEQUAL            = 'notEqual';
-
-    /**
-     * Formula 1
-     *
-     * @var string
-     */
-    private $_formula1;
+    // Data validation operators
+    const OPERATOR_BETWEEN = 'between';
+    const OPERATOR_EQUAL = 'equal';
+    const OPERATOR_GREATERTHAN = 'greaterThan';
+    const OPERATOR_GREATERTHANOREQUAL = 'greaterThanOrEqual';
+    const OPERATOR_LESSTHAN = 'lessThan';
+    const OPERATOR_LESSTHANOREQUAL = 'lessThanOrEqual';
+    const OPERATOR_NOTBETWEEN = 'notBetween';
+    const OPERATOR_NOTEQUAL = 'notEqual';
+    private const DEFAULT_OPERATOR = self::OPERATOR_BETWEEN;
 
     /**
-     * Formula 2
-     *
-     * @var string
+     * Formula 1.
      */
-    private $_formula2;
+    private string $formula1 = '';
 
     /**
-     * Type
-     *
-     * @var string
+     * Formula 2.
      */
-    private $_type = PHPExcel_Cell_DataValidation::TYPE_NONE;
+    private string $formula2 = '';
 
     /**
-     * Error style
-     *
-     * @var string
+     * Type.
      */
-    private $_errorStyle = PHPExcel_Cell_DataValidation::STYLE_STOP;
+    private string $type = self::TYPE_NONE;
 
     /**
-     * Operator
-     *
-     * @var string
+     * Error style.
      */
-    private $_operator;
+    private string $errorStyle = self::STYLE_STOP;
 
     /**
-     * Allow Blank
-     *
-     * @var boolean
+     * Operator.
      */
-    private $_allowBlank;
+    private string $operator = self::DEFAULT_OPERATOR;
 
     /**
-     * Show DropDown
-     *
-     * @var boolean
+     * Allow Blank.
      */
-    private $_showDropDown;
+    private bool $allowBlank = false;
 
     /**
-     * Show InputMessage
-     *
-     * @var boolean
+     * Show DropDown.
      */
-    private $_showInputMessage;
+    private bool $showDropDown = false;
 
     /**
-     * Show ErrorMessage
-     *
-     * @var boolean
+     * Show InputMessage.
      */
-    private $_showErrorMessage;
+    private bool $showInputMessage = false;
 
     /**
-     * Error title
-     *
-     * @var string
+     * Show ErrorMessage.
      */
-    private $_errorTitle;
+    private bool $showErrorMessage = false;
 
     /**
-     * Error
-     *
-     * @var string
+     * Error title.
      */
-    private $_error;
+    private string $errorTitle = '';
 
     /**
-     * Prompt title
-     *
-     * @var string
+     * Error.
      */
-    private $_promptTitle;
+    private string $error = '';
 
     /**
-     * Prompt
-     *
-     * @var string
+     * Prompt title.
      */
-    private $_prompt;
+    private string $promptTitle = '';
 
     /**
-     * Create a new PHPExcel_Cell_DataValidation
+     * Prompt.
      */
-    public function __construct()
+    private string $prompt = '';
+
+    /**
+     * Get Formula 1.
+     */
+    public function getFormula1(): string
     {
-        // Initialise member variables
-        $this->_formula1          = '';
-        $this->_formula2          = '';
-        $this->_type              = PHPExcel_Cell_DataValidation::TYPE_NONE;
-        $this->_errorStyle        = PHPExcel_Cell_DataValidation::STYLE_STOP;
-        $this->_operator          = '';
-        $this->_allowBlank        = FALSE;
-        $this->_showDropDown      = FALSE;
-        $this->_showInputMessage  = FALSE;
-        $this->_showErrorMessage  = FALSE;
-        $this->_errorTitle        = '';
-        $this->_error             = '';
-        $this->_promptTitle       = '';
-        $this->_prompt            = '';
+        return $this->formula1;
     }
 
     /**
-     * Get Formula 1
+     * Set Formula 1.
      *
-     * @return string
+     * @return $this
      */
-    public function getFormula1() {
-        return $this->_formula1;
-    }
+    public function setFormula1(string $formula): static
+    {
+        $this->formula1 = $formula;
 
-    /**
-     * Set Formula 1
-     *
-     * @param  string    $value
-     * @return PHPExcel_Cell_DataValidation
-     */
-    public function setFormula1($value = '') {
-        $this->_formula1 = $value;
         return $this;
     }
 
     /**
-     * Get Formula 2
-     *
-     * @return string
+     * Get Formula 2.
      */
-    public function getFormula2() {
-        return $this->_formula2;
+    public function getFormula2(): string
+    {
+        return $this->formula2;
     }
 
     /**
-     * Set Formula 2
+     * Set Formula 2.
      *
-     * @param  string    $value
-     * @return PHPExcel_Cell_DataValidation
+     * @return $this
      */
-    public function setFormula2($value = '') {
-        $this->_formula2 = $value;
+    public function setFormula2(string $formula): static
+    {
+        $this->formula2 = $formula;
+
         return $this;
     }
 
     /**
-     * Get Type
-     *
-     * @return string
+     * Get Type.
      */
-    public function getType() {
-        return $this->_type;
+    public function getType(): string
+    {
+        return $this->type;
     }
 
     /**
-     * Set Type
+     * Set Type.
      *
-     * @param  string    $value
-     * @return PHPExcel_Cell_DataValidation
+     * @return $this
      */
-    public function setType($value = PHPExcel_Cell_DataValidation::TYPE_NONE) {
-        $this->_type = $value;
+    public function setType(string $type): static
+    {
+        $this->type = $type;
+
         return $this;
     }
 
     /**
-     * Get Error style
-     *
-     * @return string
+     * Get Error style.
      */
-    public function getErrorStyle() {
-        return $this->_errorStyle;
+    public function getErrorStyle(): string
+    {
+        return $this->errorStyle;
     }
 
     /**
-     * Set Error style
+     * Set Error style.
      *
-     * @param  string    $value
-     * @return PHPExcel_Cell_DataValidation
+     * @param string $errorStyle see self::STYLE_*
+     *
+     * @return $this
      */
-    public function setErrorStyle($value = PHPExcel_Cell_DataValidation::STYLE_STOP) {
-        $this->_errorStyle = $value;
+    public function setErrorStyle(string $errorStyle): static
+    {
+        $this->errorStyle = $errorStyle;
+
         return $this;
     }
 
     /**
-     * Get Operator
-     *
-     * @return string
+     * Get Operator.
      */
-    public function getOperator() {
-        return $this->_operator;
+    public function getOperator(): string
+    {
+        return $this->operator;
     }
 
     /**
-     * Set Operator
+     * Set Operator.
      *
-     * @param  string    $value
-     * @return PHPExcel_Cell_DataValidation
+     * @return $this
      */
-    public function setOperator($value = '') {
-        $this->_operator = $value;
+    public function setOperator(string $operator): static
+    {
+        $this->operator = ($operator === '') ? self::DEFAULT_OPERATOR : $operator;
+
         return $this;
     }
 
     /**
-     * Get Allow Blank
-     *
-     * @return boolean
+     * Get Allow Blank.
      */
-    public function getAllowBlank() {
-        return $this->_allowBlank;
+    public function getAllowBlank(): bool
+    {
+        return $this->allowBlank;
     }
 
     /**
-     * Set Allow Blank
+     * Set Allow Blank.
      *
-     * @param  boolean    $value
-     * @return PHPExcel_Cell_DataValidation
+     * @return $this
      */
-    public function setAllowBlank($value = false) {
-        $this->_allowBlank = $value;
+    public function setAllowBlank(bool $allowBlank): static
+    {
+        $this->allowBlank = $allowBlank;
+
         return $this;
     }
 
     /**
-     * Get Show DropDown
-     *
-     * @return boolean
+     * Get Show DropDown.
      */
-    public function getShowDropDown() {
-        return $this->_showDropDown;
+    public function getShowDropDown(): bool
+    {
+        return $this->showDropDown;
     }
 
     /**
-     * Set Show DropDown
+     * Set Show DropDown.
      *
-     * @param  boolean    $value
-     * @return PHPExcel_Cell_DataValidation
+     * @return $this
      */
-    public function setShowDropDown($value = false) {
-        $this->_showDropDown = $value;
+    public function setShowDropDown(bool $showDropDown): static
+    {
+        $this->showDropDown = $showDropDown;
+
         return $this;
     }
 
     /**
-     * Get Show InputMessage
-     *
-     * @return boolean
+     * Get Show InputMessage.
      */
-    public function getShowInputMessage() {
-        return $this->_showInputMessage;
+    public function getShowInputMessage(): bool
+    {
+        return $this->showInputMessage;
     }
 
     /**
-     * Set Show InputMessage
+     * Set Show InputMessage.
      *
-     * @param  boolean    $value
-     * @return PHPExcel_Cell_DataValidation
+     * @return $this
      */
-    public function setShowInputMessage($value = false) {
-        $this->_showInputMessage = $value;
+    public function setShowInputMessage(bool $showInputMessage): static
+    {
+        $this->showInputMessage = $showInputMessage;
+
         return $this;
     }
 
     /**
-     * Get Show ErrorMessage
-     *
-     * @return boolean
+     * Get Show ErrorMessage.
      */
-    public function getShowErrorMessage() {
-        return $this->_showErrorMessage;
+    public function getShowErrorMessage(): bool
+    {
+        return $this->showErrorMessage;
     }
 
     /**
-     * Set Show ErrorMessage
+     * Set Show ErrorMessage.
      *
-     * @param  boolean    $value
-     * @return PHPExcel_Cell_DataValidation
+     * @return $this
      */
-    public function setShowErrorMessage($value = false) {
-        $this->_showErrorMessage = $value;
+    public function setShowErrorMessage(bool $showErrorMessage): static
+    {
+        $this->showErrorMessage = $showErrorMessage;
+
         return $this;
     }
 
     /**
-     * Get Error title
-     *
-     * @return string
+     * Get Error title.
      */
-    public function getErrorTitle() {
-        return $this->_errorTitle;
+    public function getErrorTitle(): string
+    {
+        return $this->errorTitle;
     }
 
     /**
-     * Set Error title
+     * Set Error title.
      *
-     * @param  string    $value
-     * @return PHPExcel_Cell_DataValidation
+     * @return $this
      */
-    public function setErrorTitle($value = '') {
-        $this->_errorTitle = $value;
+    public function setErrorTitle(string $errorTitle): static
+    {
+        $this->errorTitle = $errorTitle;
+
         return $this;
     }
 
     /**
-     * Get Error
-     *
-     * @return string
+     * Get Error.
      */
-    public function getError() {
-        return $this->_error;
+    public function getError(): string
+    {
+        return $this->error;
     }
 
     /**
-     * Set Error
+     * Set Error.
      *
-     * @param  string    $value
-     * @return PHPExcel_Cell_DataValidation
+     * @return $this
      */
-    public function setError($value = '') {
-        $this->_error = $value;
+    public function setError(string $error): static
+    {
+        $this->error = $error;
+
         return $this;
     }
 
     /**
-     * Get Prompt title
-     *
-     * @return string
+     * Get Prompt title.
      */
-    public function getPromptTitle() {
-        return $this->_promptTitle;
+    public function getPromptTitle(): string
+    {
+        return $this->promptTitle;
     }
 
     /**
-     * Set Prompt title
+     * Set Prompt title.
      *
-     * @param  string    $value
-     * @return PHPExcel_Cell_DataValidation
+     * @return $this
      */
-    public function setPromptTitle($value = '') {
-        $this->_promptTitle = $value;
+    public function setPromptTitle(string $promptTitle): static
+    {
+        $this->promptTitle = $promptTitle;
+
         return $this;
     }
 
     /**
-     * Get Prompt
-     *
-     * @return string
+     * Get Prompt.
      */
-    public function getPrompt() {
-        return $this->_prompt;
+    public function getPrompt(): string
+    {
+        return $this->prompt;
     }
 
     /**
-     * Set Prompt
+     * Set Prompt.
      *
-     * @param  string    $value
-     * @return PHPExcel_Cell_DataValidation
+     * @return $this
      */
-    public function setPrompt($value = '') {
-        $this->_prompt = $value;
+    public function setPrompt(string $prompt): static
+    {
+        $this->prompt = $prompt;
+
         return $this;
     }
 
     /**
-     * Get hash code
+     * Get hash code.
      *
-     * @return string    Hash code
+     * @return string Hash code
      */
-    public function getHashCode() {
+    public function getHashCode(): string
+    {
         return md5(
-              $this->_formula1
-            . $this->_formula2
-            . $this->_type = PHPExcel_Cell_DataValidation::TYPE_NONE
-            . $this->_errorStyle = PHPExcel_Cell_DataValidation::STYLE_STOP
-            . $this->_operator
-            . ($this->_allowBlank ? 't' : 'f')
-            . ($this->_showDropDown ? 't' : 'f')
-            . ($this->_showInputMessage ? 't' : 'f')
-            . ($this->_showErrorMessage ? 't' : 'f')
-            . $this->_errorTitle
-            . $this->_error
-            . $this->_promptTitle
-            . $this->_prompt
+            $this->formula1
+            . $this->formula2
+            . $this->type
+            . $this->errorStyle
+            . $this->operator
+            . ($this->allowBlank ? 't' : 'f')
+            . ($this->showDropDown ? 't' : 'f')
+            . ($this->showInputMessage ? 't' : 'f')
+            . ($this->showErrorMessage ? 't' : 'f')
+            . $this->errorTitle
+            . $this->error
+            . $this->promptTitle
+            . $this->prompt
+            . $this->sqref
             . __CLASS__
         );
     }
 
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone() {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
-        }
+    private ?string $sqref = null;
+
+    public function getSqref(): ?string
+    {
+        return $this->sqref;
+    }
+
+    public function setSqref(?string $str): self
+    {
+        $this->sqref = $str;
+
+        return $this;
     }
 }

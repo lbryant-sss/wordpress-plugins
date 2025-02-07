@@ -368,7 +368,7 @@ if ( ! function_exists( 'qi_blocks_get_inline_attr' ) ) {
 					$properties = $value;
 				}
 
-				return $attr . '="' . esc_attr( $properties ) . '"';
+				return $attr . '="' . esc_attr( sanitize_text_field( html_entity_decode( $properties ) ) ) . '"';
 			}
 		} else {
 			if ( ! empty( $value ) ) {
@@ -381,7 +381,7 @@ if ( ! function_exists( 'qi_blocks_get_inline_attr' ) ) {
 					return '';
 				}
 
-				return $attr . '="' . esc_attr( $properties ) . '"';
+				return $attr . '="' . esc_attr( sanitize_text_field( html_entity_decode( $properties ) ) ) . '"';
 			}
 		}
 
@@ -1456,7 +1456,7 @@ if ( ! function_exists( 'qi_blocks_get_block_container_html_attributes_string' )
 		$container_classes = ! empty( $attributes['blockContainerClasses'] ) ? $attributes['blockContainerClasses'] : '';
 		$container_data    = isset( $attributes['blockContainerData'] ) && ! empty( $attributes['blockContainerData'] ) ? json_decode( $attributes['blockContainerData'], true ) : '';
 
-		$animation = ! empty( $container_data ) && isset( $container_data['data-animation'] ) ? $container_data['data-animation'] : '';
+		$animation = ! empty( $container_data ) && isset( $container_data['data-animation'] ) ? sanitize_text_field( $container_data['data-animation'] ) : '';
 
 		$html_attributes  = qi_blocks_get_id_attribute( $container_ids );
 		$html_attributes .= ' ' . qi_blocks_get_class_attribute( $container_classes );
@@ -1880,6 +1880,7 @@ if ( ! function_exists( 'qi_blocks_escape_title_tag' ) ) {
 			'span',
 			'ul',
 			'ol',
+			'div',
 		);
 
 		$escaped_title_tag = '';

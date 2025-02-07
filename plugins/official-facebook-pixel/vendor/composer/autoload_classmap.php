@@ -1636,7 +1636,7 @@ return array(
     'FacebookPixelPlugin\\Core\\PixelRenderer' => $baseDir . '/core/class-pixelrenderer.php',
     'FacebookPixelPlugin\\Core\\ServerEventAsyncTask' => $baseDir . '/core/class-servereventasynctask.php',
     'FacebookPixelPlugin\\Core\\ServerEventFactory' => $baseDir . '/core/class-servereventfactory.php',
-    'FacebookPixelPlugin\\FacebookForWordpress' => $baseDir . '/class-facebookforwordpress.php',
+    'FacebookPixelPlugin\\FacebookForWordpress' => $baseDir . '/facebook-for-wordpress.php',
     'FacebookPixelPlugin\\Integration\\EDDUtils' => $baseDir . '/integration/class-eddutils.php',
     'FacebookPixelPlugin\\Integration\\FacebookWordpressCalderaForm' => $baseDir . '/integration/class-facebookwordpresscalderaform.php',
     'FacebookPixelPlugin\\Integration\\FacebookWordpressContactForm7' => $baseDir . '/integration/class-facebookwordpresscontactform7.php',

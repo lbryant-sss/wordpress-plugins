@@ -1,92 +1,171 @@
 <?php
-/**
- * PHPExcel
- *
- * Copyright (c) 2006 - 2014 PHPExcel
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * @category	PHPExcel
- * @package		PHPExcel_Chart
- * @copyright	Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license		http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version		##VERSION##, ##DATE##
- */
 
+namespace PhpOffice\PhpSpreadsheet\Chart;
 
-/**
- * PHPExcel_Chart_Title
- *
- * @category	PHPExcel
- * @package		PHPExcel_Chart
- * @copyright	Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- */
-class PHPExcel_Chart_Title
+use PhpOffice\PhpSpreadsheet\RichText\RichText;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Font;
+
+class Title
 {
+    public const TITLE_CELL_REFERENCE
+        = '/^(.*)!' // beginning of string, everything up to ! is match[1]
+        . '[$]([A-Z]{1,3})' // absolute column string match[2]
+        . '[$](\d{1,7})$/i'; // absolute row string match[3]
 
-	/**
-	 * Title Caption
-	 *
-	 * @var string
-	 */
-	private $_caption = null;
+    /**
+     * Title Caption.
+     *
+     * @var array<RichText|string>|RichText|string
+     */
+    private array|RichText|string $caption;
 
-	/**
-	 * Title Layout
-	 *
-	 * @var PHPExcel_Chart_Layout
-	 */
-	private $_layout = null;
+    /**
+     * Allow overlay of other elements?
+     */
+    private bool $overlay = true;
 
-	/**
-	 * Create a new PHPExcel_Chart_Title
-	 */
-	public function __construct($caption = null, PHPExcel_Chart_Layout $layout = null)
-	{
-		$this->_caption = $caption;
-		$this->_layout = $layout;
-	}
+    /**
+     * Title Layout.
+     */
+    private ?Layout $layout;
 
-	/**
-	 * Get caption
-	 *
-	 * @return string
-	 */
-	public function getCaption() {
-		return $this->_caption;
-	}
+    private string $cellReference = '';
 
-	/**
-	 * Set caption
-	 *
-	 * @param string $caption
-     * @return PHPExcel_Chart_Title
-	 */
-	public function setCaption($caption = null) {
-		$this->_caption = $caption;
-        
+    private ?Font $font = null;
+
+    /**
+     * Create a new Title.
+     */
+    public function __construct(array|RichText|string $caption = '', ?Layout $layout = null, bool $overlay = false)
+    {
+        $this->caption = $caption;
+        $this->layout = $layout;
+        $this->setOverlay($overlay);
+    }
+
+    /**
+     * Get caption.
+     */
+    public function getCaption(): array|RichText|string
+    {
+        return $this->caption;
+    }
+
+    public function getCaptionText(?Spreadsheet $spreadsheet = null): string
+    {
+        if ($spreadsheet !== null) {
+            $caption = $this->getCalculatedTitle($spreadsheet);
+            if ($caption !== null) {
+                return $caption;
+            }
+        }
+        $caption = $this->caption;
+        if (is_string($caption)) {
+            return $caption;
+        }
+        if ($caption instanceof RichText) {
+            return $caption->getPlainText();
+        }
+        $retVal = '';
+        foreach ($caption as $textx) {
+            /** @var RichText|string $text */
+            $text = $textx;
+            if ($text instanceof RichText) {
+                $retVal .= $text->getPlainText();
+            } else {
+                $retVal .= $text;
+            }
+        }
+
+        return $retVal;
+    }
+
+    /**
+     * Set caption.
+     *
+     * @return $this
+     */
+    public function setCaption(array|RichText|string $caption): static
+    {
+        $this->caption = $caption;
+
         return $this;
-	}
+    }
 
-	/**
-	 * Get Layout
-	 *
-	 * @return PHPExcel_Chart_Layout
-	 */
-	public function getLayout() {
-		return $this->_layout;
-	}
+    /**
+     * Get allow overlay of other elements?
+     */
+    public function getOverlay(): bool
+    {
+        return $this->overlay;
+    }
 
+    /**
+     * Set allow overlay of other elements?
+     */
+    public function setOverlay(bool $overlay): self
+    {
+        $this->overlay = $overlay;
+
+        return $this;
+    }
+
+    public function getLayout(): ?Layout
+    {
+        return $this->layout;
+    }
+
+    public function setCellReference(string $cellReference): self
+    {
+        $this->cellReference = $cellReference;
+
+        return $this;
+    }
+
+    public function getCellReference(): string
+    {
+        return $this->cellReference;
+    }
+
+    public function getCalculatedTitle(?Spreadsheet $spreadsheet): ?string
+    {
+        preg_match(self::TITLE_CELL_REFERENCE, $this->cellReference, $matches);
+        if (count($matches) === 0 || $spreadsheet === null) {
+            return null;
+        }
+        $sheetName = preg_replace("/^'(.*)'$/", '$1', $matches[1]) ?? '';
+
+        return $spreadsheet->getSheetByName($sheetName)?->getCell($matches[2] . $matches[3])?->getFormattedValue();
+    }
+
+    public function getFont(): ?Font
+    {
+        return $this->font;
+    }
+
+    public function setFont(?Font $font): self
+    {
+        $this->font = $font;
+
+        return $this;
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $this->layout = ($this->layout === null) ? null : clone $this->layout;
+        $this->font = ($this->font === null) ? null : clone $this->font;
+        if (is_array($this->caption)) {
+            $captions = $this->caption;
+            $this->caption = [];
+            foreach ($captions as $caption) {
+                $this->caption[] = is_object($caption) ? (clone $caption) : $caption;
+            }
+        } else {
+            $this->caption = is_object($this->caption) ? (clone $this->caption) : $this->caption;
+        }
+    }
 }

@@ -36,7 +36,8 @@ class Advanced_Cf7_Db_Activator {
         // check if it is a network activation - if so, run the activation function for each blog id
              $old_blog = $wpdb->blogid;
             // Get all blog ids
-            $blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+			
+            $blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");// phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching
             foreach ($blogids as $blog_id) {
                 switch_to_blog($blog_id);
                 create_table_cf7_vdata();
@@ -80,6 +81,8 @@ function create_table_cf7_vdata(){
 	$table_name = $wpdb->prefix .'cf7_vdata';
 
 	$charset_collate = $wpdb->get_charset_collate();
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching
 	if( $wpdb->get_var( $wpdb->prepare( "show tables like %s" , $wpdb->esc_like(  $table_name ) ) ) != $table_name ) {
         $sql = "CREATE TABLE " . $table_name . " (
              `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -98,6 +101,10 @@ function create_table_cf7_vdata(){
 function create_table_cf7_vdata_entry(){
 	global $wpdb;
 	$table_name = $wpdb->prefix .'cf7_vdata_entry';
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.SchemaChange
+ 
 	$charset_collate = $wpdb->get_charset_collate();
 	if( $wpdb->get_var( $wpdb->prepare("show tables like %s", $wpdb->esc_like(  $table_name ) ) ) != $table_name ) {
         $sql = "CREATE TABLE " . $table_name . " (
