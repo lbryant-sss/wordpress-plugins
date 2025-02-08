@@ -715,7 +715,13 @@ class Admin {
 			];
 		}
 
-		if ( current_user_can( $this->getPageRequiredCapability( 'aioseo-search-statistics' ) ) ) {
+		if (
+			current_user_can( $this->getPageRequiredCapability( 'aioseo-search-statistics' ) ) &&
+			(
+				aioseo()->pro ||
+				aioseo()->options->advanced->menuItems->seoStatistics
+			)
+		) {
 			$submenu['index.php'][] = [
 				esc_html__( 'SEO Statistics', 'all-in-one-seo-pack' ),
 				$this->getPageRequiredCapability( 'aioseo-search-statistics' ),
@@ -1178,6 +1184,7 @@ class Admin {
 	 */
 	public function appendTrashedMessage( $messages ) {
 		// Let advanced users override this.
+		// https://github.com/awesomemotive/aioseo/issues/2331
 		if ( apply_filters( 'aioseo_redirects_disable_trashed_posts_suggestions', false ) ) {
 			return $messages;
 		}

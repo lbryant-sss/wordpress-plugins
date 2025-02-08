@@ -5,7 +5,7 @@ Tags: backup, restore, cloud backup, database backup, wordpress backup
 Requires at least: 4.9
 Tested up to: 6.7.1
 Requires PHP: 7.4
-Stable tag: 5.0.2
+Stable tag: 5.0.3
 License: GPLv2+
 
 Create a complete WordPress backup easily. Schedule automatic backups, store securely, and restore effortlessly with the best WordPress backup plugin! 
@@ -19,10 +19,6 @@ Create a complete WordPress backup easily. Schedule automatic backups, store sec
  
 
 = 🆕 Introducing BackWPup 5.0 = 
-
-Rest assured; your backups are still fully operational with the new system. While custom jobs have been replaced by two default jobs—Files Backup and Database Backup—you can still access your old jobs in a read-only mode and manage backups directly from the Settings page ([see documentation](https://backwpup.com/docs/what-to-expect-when-updating-backwpup-to-version-5-0/)). 
-
-If you encounter too many problems with the new version, please revert to version 4.1.7 and contact us directly [here](https://backwpup.com/contact) so we can investigate your case. We are actively working to resolve all issues. Thank you for your patience. 
 
 Experience our most powerful update yet with a completely redesigned interface focused on simplicity and efficiency.  
 
@@ -78,7 +74,7 @@ With BackWPup, you have full control over your backup process. You can back up y
 * Schedule automatic backups to run daily, weekly, or monthly, ensuring that your data is always up-to-date and secure. 
 
 * Store your backup in different locations: 
-> **Free version**: Dropbox, Amazon S3, SFTP, Rackspace Cloud, Microsoft Azure, SugarSync.  
+> **Free version**: Dropbox, Amazon S3, FTP, Rackspace Cloud, Microsoft Azure, SugarSync.  
 > **Pro version**: Additional storage options including Amazon Glacier, Google Drive, OneDrive and HiDrive **[Get BackWPup Pro](https://backwpup.com/#buy)** 
 
 This flexibility makes BackWPup the best choice for WordPress backup. 
@@ -132,7 +128,7 @@ Here’s what our users have to say about us after using BackWPup:
 
 = ❓ Is BackWPup Free? =  
 
- You can use BackWPup for free with all its basic features. The free version includes complete backup, scheduling, support for external storage services (like Dropbox, S3, SFTP, and more) and restore.  
+ You can use BackWPup for free with all its basic features. The free version includes complete backup, scheduling, support for external storage services (like Dropbox, S3, FTP, and more) and restore.  
 
  The pro version offers many additional features including more settings, destinations, and of course access to our premium support. Check out our premium plans: [https://backwpup.com/#buy](https://backwpup.com/#buy)  
 
@@ -207,6 +203,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
 
 == Changelog ==  
+= 5.0.3 =
+Release date: feb 07, 2025
+
+* Fixed: Backup is running constantly & can’t be stopped.
+* Fixed: Authentication issue for Dropbox, FTP & Azure.
+* Added: Custom scheduling option.
+* Added: Display history of all backups.
+* Added: Custom filter to allow zip and tar.gz compression
+* Changed: Changed plugin noticed Message.
+
 = 5.0.2 =
 Release date: feb 04,2025
 
