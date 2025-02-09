@@ -571,7 +571,7 @@ JS;
 				self::$ownAssets['scripts']['sweetalert2']['handle'],
 				plugins_url(self::$ownAssets['scripts']['sweetalert2']['rel_path'], WPACU_PLUGIN_FILE),
 				array('jquery'),
-				1.1
+				1.2
 			);
 
 			// [wpacu_lite]

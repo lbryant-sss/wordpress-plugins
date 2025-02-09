@@ -792,8 +792,8 @@ class MainFront
 
 			// Only trigger the unloading on regular page load, not when the assets list is collected
 			if ( ! Main::instance()->isGetAssetsCall ) {
+                wp_dequeue_style( $handle );
 				wp_deregister_style( $handle );
-				wp_dequeue_style( $handle );
 			}
 		}
 
@@ -1013,8 +1013,8 @@ class MainFront
 			if ( ! Main::instance()->isGetAssetsCall ) {
                 $handle = Main::maybeGetOriginalNonUniqueHandleName($handle, 'scripts');
 
+                wp_dequeue_script( $handle );
 				wp_deregister_script( $handle );
-				wp_dequeue_script( $handle );
 			}
 		}
 

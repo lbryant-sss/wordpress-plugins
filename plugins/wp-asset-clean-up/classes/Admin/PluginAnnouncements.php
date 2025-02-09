@@ -255,6 +255,11 @@ class PluginAnnouncements
                 margin: 12px 0 16px;
             }
 
+            #wpacu-announcements-container .notice-info .wpacu-ann-message a.button-primary,
+            #wpacu-announcements-container .notice-info .wpacu-ann-message a.button-secondary {
+                vertical-align: baseline;
+            }
+
             ul#wpacu-announcement-action-links {
                 margin: 0 0 10px;
             }
@@ -589,7 +594,7 @@ class PluginAnnouncements
                                         <li><a href="<?php echo esc_url( $fallbackUrlRemindLater ); ?>"  class="wpacu-snooze-it"><span class="wpacu-icon wpacu-snooze" aria-hidden="true"></span> Remind Me Later</a></li>
                                     <?php } ?>
 
-                                    <li><a href="<?php echo esc_url( $fallbackUrlMarkAsSeen ); ?>"   class="wpacu-mark-it-as-seen"><span class="wpacu-icon wpacu-seen" aria-hidden="true"></span> Mark as Seen</a></li>
+                                    <li><a href="<?php echo esc_url( $fallbackUrlMarkAsSeen ); ?>"   class="wpacu-mark-it-as-seen wpacu-main-action-link"><span class="wpacu-icon wpacu-seen" aria-hidden="true"></span> Mark as Seen</a></li>
                                     <li><a href="<?php echo esc_url( $fallbackUrlNeverShowAny ); ?>" class="wpacu-never-show-any"><span class="wpacu-icon wpacu-block" aria-hidden="true"></span> Never show plugin announcements</a></li>
                                 </ul>
                                 <!-- [/Action links] -->
@@ -1109,7 +1114,14 @@ class PluginAnnouncements
                      * "Mark as seen" click
                      */
                     $(document).on('click', '.wpacu-mark-it-as-seen', function(e) {
-                        e.preventDefault();
+                        // Case 1: If the actual "Mark as Seen" is clicked that also has the class "wpacu-main-action-link",
+                        // prevent its default behaviour (empty link anyway, it acts as a button)
+
+                        // Case 2: If one of the links from the message is clicked with the same "wpacu-mark-it-as-seen" class,
+                        // then keep its default behaviour (e.g. opening the link in a new tab), and also trigger the action to mark it as seen
+                        if ($(this).hasClass('wpacu-main-action-link')) {
+                            e.preventDefault();
+                        }
 
                         var $announcement  = $(this).closest('[data-wpacu-announcement-id]');
                         var announcementId = $announcement.data('wpacu-announcement-id');
