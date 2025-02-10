@@ -1,10 +1,10 @@
 # Copyright (C) 2025 Wpmet
-# This file is distributed under the same license as the ElementsKit Lite package.
+# This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: ElementsKit Lite 3.4.0\n"
+"Project-Id-Version: ElementsKit Lite 3.4.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elementskit-lite\n"
-"POT-Creation-Date: 2025-01-27 05:32:35+00:00\n"
+"POT-Creation-Date: 2025-02-04 07:06:43+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,35 +41,35 @@ msgstr ""
 msgid "6"
 msgstr ""
 
-#: elementskit-lite.php:375
+#: elementskit-lite.php:377
 msgid "Activate Elementor"
 msgstr ""
 
-#: elementskit-lite.php:378
+#: elementskit-lite.php:380
 msgid "Install Elementor"
 msgstr ""
 
-#: elementskit-lite.php:385
+#: elementskit-lite.php:387
 msgid "ElementsKit requires Elementor version"
 msgstr ""
 
-#: elementskit-lite.php:387
+#: elementskit-lite.php:389
 msgid "which is currently NOT RUNNING."
 msgstr ""
 
-#: elementskit-lite.php:405
+#: elementskit-lite.php:407
 msgid "ElementsKit requires PHP version"
 msgstr ""
 
-#: elementskit-lite.php:407
+#: elementskit-lite.php:409
 msgid "which is currently NOT RUNNING on this server."
 msgstr ""
 
-#: elementskit-lite.php:434 libs/framework/views/onboard-steps/step-05.php:8
+#: elementskit-lite.php:436 libs/framework/views/onboard-steps/step-05.php:8
 msgid "ElementsKit"
 msgstr ""
 
-#: elementskit-lite.php:442
+#: elementskit-lite.php:444
 msgid "ElementsKit Header Footer"
 msgstr ""
 
@@ -1362,6 +1362,10 @@ msgstr ""
 
 #: modules/megamenu/views/options-menu-item.php:28
 msgid "Megamenu disabled"
+msgstr ""
+
+#: modules/megamenu/views/options-menu-item.php:34
+msgid "elementskit megamenu"
 msgstr ""
 
 #: modules/megamenu/views/options-menu-item.php:35
