@@ -209,6 +209,9 @@ class B2S_Tools {
             return ($lang == 'en') ? 'https://en.blog2social.com/video-posting/' : 'https://de.blog2social.com/video-posting/';
         }
         
+        if($type == 'network_guide_re_sharer'){
+            return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/index.php?solution_id=1165' : 'https://www.blog2social.com/de/faq/index.php?solution_id=1162';
+        }
         
         if ($type == 'userTimeSettings') {
             return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/index.php?action=artikel&cat=5&id=32&artlang=en' : 'https://www.blog2social.com/de/faq/index.php?action=artikel&cat=5&id=43&artlang=de';
@@ -421,7 +424,7 @@ class B2S_Tools {
         if ($type == 'network_guide_link_1') {
             return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/index.php?solution_id=1175' : 'https://www.blog2social.com/de/faq/index.php?solution_id=1174';
         }
-        if ($type == 'network_guide_link_2') {
+        if ($type == 'network_guide_link_45') {
             return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/index.php?solution_id=1177' : 'https://www.blog2social.com/de/faq/index.php?solution_id=1177';
         }
         if ($type == 'network_guide_link_3') {
@@ -481,8 +484,14 @@ class B2S_Tools {
         if ($type == 'network_guide_link_39') {
             return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/index.php?solution_id=1208' : 'https://www.blog2social.com/de/faq/index.php?solution_id=1205';
         }
+        if ($type == 'network_guide_link_43') {
+            return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/index.php?solution_id=1254' : 'https://www.blog2social.com/de/faq/index.php?solution_id=1249';
+        }
         if ($type == 'network_guide_link_44') {
             return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/index.php?solution_id=1251' : 'https://www.blog2social.com/de/faq/index.php?solution_id=1246';
+        }
+        if ($type == 'network_guide_link_46') {
+            return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/index.php?solution_id=1255' : 'https://www.blog2social.com/de/faq/index.php?solution_id=1250';
         }
         if ($type == 'TOKEN') {
             return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/index.php?solution_id=1181' : 'https://www.blog2social.com/de/faq/index.php?solution_id=1175';
@@ -560,6 +569,9 @@ class B2S_Tools {
             return 'https://service.blog2social.com/login?redirectUrl=/checkout?mode=addon&type=video&token=' . B2S_PLUGIN_TOKEN;
         }
         if ($type == "addon_social_account") {
+            return 'https://service.blog2social.com/login?redirectUrl=/checkout?mode=addon&type=network&token=' . B2S_PLUGIN_TOKEN;
+        }
+        if ($type == "addon_telegram") {
             return 'https://service.blog2social.com/login?redirectUrl=/checkout?mode=addon&type=network&token=' . B2S_PLUGIN_TOKEN;
         }
         if ($type == "addon_user_licence") {

@@ -4,10 +4,11 @@
   Plugin URI: https://underconstructionpage.com/
   Description: Put your site behind a great looking under construction, coming soon, maintenance mode or landing page.
   Author: WebFactory Ltd
-  Version: 4.01
+  Version: 4.02
   Requires at least: 4.0
   Requires PHP: 5.2
-  Tested up to: 6.6
+  Tested up to: 6.7
+  License: GPLv2 or later
   Author URI: https://www.webfactoryltd.com/
   Text Domain: under-construction-page
 
@@ -147,7 +148,8 @@ class UCP
     // display error message if WP version is too low
     static function notice_min_wp_version()
     {
-        self::wp_kses_wf('<div class="error"><p>' . sprintf(__('UnderConstruction plugin <b>requires WordPress version 4.0</b> or higher to function properly. You are using WordPress version %s. Please <a href="%s">update it</a>.', 'under-construction-page'), get_bloginfo('version'), admin_url('update-core.php')) . '</p></div>');
+        /* translators: %s: WordPress version, %s link to WordPress Dashboard update page */
+        self::wp_kses_wf('<div class="error"><p>' . sprintf(__('UnderConstruction plugin <b>requires WordPress version 4.0</b> or higher to function properly. You are using WordPress version %1$s. Please <a href="%2$s">update it</a>.', 'under-construction-page'), get_bloginfo('version'), admin_url('update-core.php')) . '</p></div>');
     } // notice_min_wp_version_error
 
 
@@ -237,7 +239,11 @@ class UCP
     static function display_construction_page()
     {
         $options = self::get_options();
-        $request_uri = trailingslashit(strtolower(@parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
+
+        $request_uri = '';
+        if(isset($_SERVER['REQUEST_URI'])){
+            $request_uri = trailingslashit(strtolower(parse_url(sanitize_url(wp_unslash($_SERVER['REQUEST_URI'])), PHP_URL_PATH)));
+        }
 
         // just to be on the safe side
         if (defined('DOING_CRON') && DOING_CRON) {
@@ -259,22 +265,24 @@ class UCP
             $request_uri == '/feed/rdf/' ||
             $request_uri == '/feed/atom/' ||
             $request_uri == '/admin/' ||
-            $request_uri == '/wp-login.php'
+            $request_uri == '/wp-login.php' ||
+            $request_uri == '/robots.txt/'
         ) {
             return;
         }
 
-        if (true == self::is_construction_mode_enabled(false) || (is_user_logged_in() && isset($_GET['ucp_preview']))) {
+        //phpcs:ignore missing nonce beause preview URL can be shared and accessed directly
+        if (true == self::is_construction_mode_enabled(false) || (is_user_logged_in() && isset($_GET['ucp_preview']))) { //phpcs:ignore
             header(self::wp_get_server_protocol() . ' 200 OK');
             if ($options['end_date'] && $options['end_date'] != '0000-00-00 00:00') {
-                header('Retry-After: ' . date('D, d M Y H:i:s T', strtotime($options['end_date'])));
+                header('Retry-After: ' . gmdate('D, d M Y H:i:s T', strtotime($options['end_date'])));
             } else {
                 header('Retry-After: ' . DAY_IN_SECONDS);
             }
 
             $themes = self::get_themes();
-            if (!empty($_GET['theme']) && substr(sanitize_text_field($_GET['theme']), 5) != '_pro_' && !empty($themes[sanitize_text_field($_GET['theme'])])) {
-                $theme = sanitize_text_field($_GET['theme']);
+            if (!empty($_GET['theme']) && substr(sanitize_text_field($_GET['theme']), 5) != '_pro_' && !empty($themes[sanitize_text_field($_GET['theme'])])) { //phpcs:ignore
+                $theme = sanitize_text_field($_GET['theme']); //phpcs:ignore
             } else {
                 $theme = $options['theme'];
             }
@@ -288,9 +296,13 @@ class UCP
     // keeping compatibility with WP < v4.4
     static function wp_get_server_protocol()
     {
-        $protocol = $_SERVER['SERVER_PROTOCOL'];
-        if (!in_array($protocol, array('HTTP/1.1', 'HTTP/2', 'HTTP/2.0'))) {
-            $protocol = 'HTTP/1.0';
+        $protocol = 'HTTP/1.0';
+
+        if(isset($_SERVER['SERVER_PROTOCOL'])){
+            $protocol = sanitize_text_field(wp_unslash($_SERVER['SERVER_PROTOCOL']));
+            if (!in_array($protocol, array('HTTP/1.1', 'HTTP/2', 'HTTP/2.0'))) {
+                $protocol = 'HTTP/1.0';
+            }
         }
 
         return $protocol;
@@ -342,7 +354,7 @@ class UCP
             'whitelisted_users_placeholder' => esc_attr__('Select whitelisted user(s)', 'under-construction-page'),
             'open_survey' => $open_survey,
             'promo_countdown' => $countdown,
-            'wpfssl_install_url' => add_query_arg(array('action' => 'install_wpfssl', '_wpnonce' => wp_create_nonce('install_wpfssl'), 'rnd' => rand()), admin_url('admin.php')),
+            'wpfssl_install_url' => add_query_arg(array('action' => 'install_wpfssl', '_wpnonce' => wp_create_nonce('install_wpfssl'), 'rnd' => wp_rand()), admin_url('admin.php')),
             'is_activated' => UCP_license::is_activated(),
             'dialog_upsell_title' => '<img alt="' . esc_attr__('UnderConstructionPage PRO', 'under-construction-page') . '" title="' . esc_attr__('UnderConstructionPage PRO', 'under-construction-page') . '" src="' . UCP_PLUGIN_URL . 'images/ucp_pro_logo_white.png' . '">',
             'weglot_dialog_upsell_title' => '<img alt="' . esc_attr__('Weglot', 'under-construction-page') . '" title="' . esc_attr__('Weglot', 'under-construction-page') . '" src="' . UCP_PLUGIN_URL . 'images/weglot-logo-white.png' . '">',
@@ -350,7 +362,7 @@ class UCP
             'nonce_dismiss_survey' => wp_create_nonce('ucp_dismiss_survey'),
             'nonce_submit_survey' => wp_create_nonce('ucp_submit_survey'),
             'nonce_submit_support_message' => wp_create_nonce('ucp_submit_support_message'),
-            'deactivate_confirmation' => esc_attr__('Are you sure you want to deactivate UnderConstruction plugin?' . "\n" . 'If you are removing it because of a problem please contact our support. They will be more than happy to help.', 'under-construction-page')
+            'deactivate_confirmation' => esc_attr__('Are you sure you want to deactivate UnderConstruction plugin? If you are removing it because of a problem please contact our support. They will be more than happy to help.', 'under-construction-page')
         );
 
         if (self::is_plugin_page()) {
@@ -400,8 +412,12 @@ class UCP
     {
         check_ajax_referer('ucp_dismiss_pointer');
 
+        if(!isset($_POST['pointer'])){
+            wp_send_json_error();
+        }
+
         $pointers = get_option(UCP_POINTERS_KEY);
-        $pointer = trim(sanitize_text_field($_POST['pointer']));
+        $pointer = trim(sanitize_text_field(wp_unslash($_POST['pointer'])));
 
         if (empty($pointers) || empty($pointers[$pointer])) {
             wp_send_json_error();
@@ -419,8 +435,12 @@ class UCP
     {
         check_ajax_referer('ucp_dismiss_survey');
 
+        if(!isset($_POST['survey'])){
+            wp_send_json_error();
+        }
+
         $surveys = get_option(UCP_SURVEYS_KEY, array());
-        $survey = trim(sanitize_text_field($_POST['survey']));
+        $survey = trim(sanitize_text_field(wp_unslash($_POST['survey'])));
 
         $surveys[$survey] = -1;
         update_option(UCP_SURVEYS_KEY, $surveys);
@@ -436,12 +456,22 @@ class UCP
 
         $options = self::get_options();
 
-        $email = sanitize_text_field($_POST['support_email']);
+        if(isset($_POST['support_email'])){
+            $email = sanitize_text_field(wp_unslash($_POST['support_email']));
+        } else {
+            $email = '';
+        }
+        
         if (!is_email($email)) {
             wp_send_json_error(esc_attr__('Please double-check your email address.', 'under-construction-page'));
         }
 
-        $message = stripslashes(sanitize_text_field($_POST['support_message']));
+        if(isset($_POST['support_message'])){
+            $message = stripslashes(sanitize_text_field(wp_unslash($_POST['support_message'])));
+        } else {
+            $message = '';
+        }
+
         $subject = 'UCP Support';
         $body = $message;
         if (!empty($_POST['support_info'])) {
@@ -476,9 +506,9 @@ class UCP
 
         $vars = wp_parse_args($_POST, array('survey' => '', 'answers' => '', 'custom_answer' => $options['theme'], 'emailme' => ''));
         $vars['answers'] = trim($vars['answers'], ',');
-        $vars['custom_answer'] = trim(strip_tags($vars['custom_answer']));
+        $vars['custom_answer'] = trim(wp_strip_all_tags($vars['custom_answer']));
 
-        $vars['custom_answer'] .= '; ' . date('Y-m-d H:i:s', $meta['first_install']);
+        $vars['custom_answer'] .= '; ' . gmdate('Y-m-d H:i:s', $meta['first_install']);
         $vars['custom_answer'] = trim($vars['custom_answer'], ' ;');
 
         if (empty($vars['survey']) || empty($vars['answers'])) {
@@ -615,23 +645,22 @@ class UCP
     {
         $out = '';
 
-        $out .= '<link rel="stylesheet" href="' . trailingslashit(UCP_PLUGIN_URL . 'themes/css') . 'bootstrap.min.css?v=' . self::$version . '" type="text/css">' . "\n";
-        $out .= '<link rel="stylesheet" href="' . trailingslashit(UCP_PLUGIN_URL . 'themes/css') . 'common.css?v=' . self::$version . '" type="text/css">' . "\n";
-        $out .= '<link rel="stylesheet" href="' . trailingslashit(UCP_PLUGIN_URL . 'themes/' . $template_id) . 'style.css?v=' . self::$version . '" type="text/css">' . "\n";
-        $out .= '<link rel="stylesheet" href="' . trailingslashit(UCP_PLUGIN_URL . 'themes/css') . 'font-awesome.min.css?v=' . self::$version . '" type="text/css">' . "\n";
+        $out .= '<link rel="stylesheet" href="' . trailingslashit(UCP_PLUGIN_URL . 'themes/css') . 'bootstrap.min.css?v=' . self::$version . '" type="text/css">' . "\n";//phpcs:ignore
+        $out .= '<link rel="stylesheet" href="' . trailingslashit(UCP_PLUGIN_URL . 'themes/css') . 'common.css?v=' . self::$version . '" type="text/css">' . "\n";//phpcs:ignore
+        $out .= '<link rel="stylesheet" href="' . trailingslashit(UCP_PLUGIN_URL . 'themes/' . $template_id) . 'style.css?v=' . self::$version . '" type="text/css">' . "\n";//phpcs:ignore
+        $out .= '<link rel="stylesheet" href="' . trailingslashit(UCP_PLUGIN_URL . 'themes/css') . 'font-awesome.min.css?v=' . self::$version . '" type="text/css">' . "\n";//phpcs:ignore
 
-        $out .= '<link rel="icon" sizes="128x128" href="' . trailingslashit(UCP_PLUGIN_URL . 'themes/images') . 'favicon.png" />';
+        $out .= '<link rel="icon" sizes="128x128" href="' . trailingslashit(UCP_PLUGIN_URL . 'themes/images') . 'favicon.png" />' . "\n";
 
         if (self::is_weglot_setup()) {
-            $out .= '<link rel="stylesheet" href="' . WEGLOT_URL_DIST . '/css/front-css.css?v=' . WEGLOT_VERSION . '" type="text/css">';
-            $out .= '<script src="' . WEGLOT_URL_DIST . '/front-js.js?v=' . WEGLOT_VERSION . '"></script>';
+            $out .= '<link rel="stylesheet" href="' . WEGLOT_URL_DIST . '/css/front-css.css?v=' . WEGLOT_VERSION . '" type="text/css">';//phpcs:ignore
+            $out .= '<script src="' . WEGLOT_URL_DIST . '/front-js.js?v=' . WEGLOT_VERSION . '"></script>';//phpcs:ignore
         }
 
         if (!empty($options['ga_tracking_id'])) {
-            $out .= "
-            <!-- Google tag (gtag.js) -->
-            <script async src='https://www.googletagmanager.com/gtag/js?id={$options['ga_tracking_id']}'></script>
-            <script>
+            $out .= "<!-- Google tag (gtag.js) -->";
+            $out .= "<script async src='https://www.googletagmanager.com/gtag/js?id={$options['ga_tracking_id']}'></script>"; //phpcs:ignore
+            $out .= "<script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -776,7 +805,12 @@ class UCP
     static function whitelisted_notice()
     {
         $notices = get_option(UCP_NOTICES_KEY);
-        $dismiss_url = add_query_arg(array('action' => 'ucp_dismiss_notice', 'notice' => 'whitelisted', 'redirect' => urlencode($_SERVER['REQUEST_URI'])), admin_url('admin.php'));
+
+        $redirect_url = '';
+        if(isset($_SERVER['REQUEST_URI'])){
+            $redirect_url = sanitize_url(wp_unslash($_SERVER['REQUEST_URI']));
+        }
+        $dismiss_url = add_query_arg(array('action' => 'ucp_dismiss_notice', 'notice' => 'whitelisted', 'redirect' => $redirect_url), admin_url('admin.php'));
         $dismiss_url = wp_nonce_url($dismiss_url, 'ucp_dismiss_notice');
         if (
             empty($notices['dismiss_whitelisted']) &&
@@ -785,7 +819,7 @@ class UCP
             !self::is_construction_mode_enabled(false)
         )
             // keeping everything inline due to minimal CSS
-            echo '<div style="background-color: #333; line-height: 140%; font-size: 14px; position: fixed; display: block; top: 50px; z-index: 99999; color: #fefefe; padding: 20px 35px 20px 20px; width: 100%; max-width:400px; border: thin solid #fefefe; left: -1px;"><a style="color: #ea1919;font-weight: 900;text-decoration: none;position: absolute;top: 12px;right: 10px;font-size: 40px;background: #000;padding: 5px 4px 4px 4px;border: 3px solid #ea1919;border-radius: 20px; height: 35px;" href="' . esc_url($dismiss_url) . '" alt="Dismiss notice" onclick="window.location.href = \'' . esc_url($dismiss_url) . '\'; return false;" title="Dismiss notice">×</a>' . esc_html__('<b>Under Construction Mode is enabled</b> but you are whitelisted so you see the normal site.', 'under-construction-page') . '<br><a href="' . esc_url(get_home_url()) . '/?ucp_preview" style="text-decoration: underline; color: #fefefe;">' . esc_attr__('Preview UnderConstructionPage', 'under-construction-page') . '</a><br><a href="' . esc_url(admin_url('options-general.php?page=ucp')) . '" style="text-decoration: underline; color: #fefefe;">' . esc_attr__('Configure UnderConstructionPage', 'under-construction-page') . '</a></div>';
+            self::wp_kses_wf('<div style="background-color: #333; line-height: 140%; font-size: 14px; position: fixed; display: block; top: 50px; z-index: 99999; color: #fefefe; padding: 20px 45px 20px 20px; width: 100%; max-width:400px; border: thin solid #fefefe; left: -1px;"><a style="color: #ea1919;font-weight: 900;text-decoration: none;position: absolute;top: 12px;right: 10px;font-size: 46px;background: #000;padding: 8px 6px 4px 6px;border: 3px solid #ea1919;border-radius: 24px;height: 24px;width: 24px;" href="' . esc_url($dismiss_url) . '" alt="Dismiss notice" onclick="window.location.href = \'' . esc_url($dismiss_url) . '\'; return false;" title="Dismiss notice">×</a>' . __('<b>Under Construction Mode is enabled</b> but you are whitelisted so you see the normal site.', 'under-construction-page') . '<br><a href="' . esc_url(get_home_url()) . '/?ucp_preview" style="text-decoration: underline; color: #fefefe;">' . esc_attr__('Preview UnderConstructionPage', 'under-construction-page') . '</a><br><a href="' . esc_url(admin_url('options-general.php?page=ucp')) . '" style="text-decoration: underline; color: #fefefe;">' . esc_attr__('Configure UnderConstructionPage', 'under-construction-page') . '</a></div>');
     } // whitelisted_notification
 
 
@@ -827,7 +861,13 @@ class UCP
             (time() - $meta['first_install']) > (DAY_IN_SECONDS * 1.0)
         ) {
             $rate_url = 'https://wordpress.org/support/plugin/under-construction-page/reviews/#new-post';
-            $dismiss_url = add_query_arg(array('action' => 'ucp_dismiss_notice', 'notice' => 'rate', 'redirect' => urlencode($_SERVER['REQUEST_URI'])), admin_url('admin.php'));
+
+            $redirect_url = '';
+            if(isset($_SERVER['REQUEST_URI'])){
+                $redirect_url = sanitize_url(wp_unslash($_SERVER['REQUEST_URI']));
+            }
+            
+            $dismiss_url = add_query_arg(array('action' => 'ucp_dismiss_notice', 'notice' => 'rate', 'redirect' => urlencode($redirect_url)), admin_url('admin.php'));
             $dismiss_url = wp_nonce_url($dismiss_url, 'ucp_dismiss_notice');
 
             echo '<div id="ucp_rate_notice" class="notice-info notice"><p>Hi' . esc_html($name) . '!<br>We saw you\'ve been using the <b class="ucp-logo" style="font-weight: bold;">UnderConstructionPage</b> plugin for a few days (that\'s awesome!) and wanted to ask for your help to <b>make the plugin better</b>.<br>We just need a minute of your time to rate the plugin. It helps us out a lot!';
@@ -853,7 +893,13 @@ class UCP
             (time() - $meta['first_install']) > 1
         ) {
             $translate_url = self::generate_web_link('translate-notification', 'translate-the-plugin/');
-            $dismiss_url = add_query_arg(array('action' => 'ucp_dismiss_notice', 'notice' => 'translate', 'redirect' => urlencode($_SERVER['REQUEST_URI'])), admin_url('admin.php'));
+
+            $redirect_url = '';
+            if(isset($_SERVER['REQUEST_URI'])){
+                $redirect_url = sanitize_url(wp_unslash($_SERVER['REQUEST_URI']));
+            }
+
+            $dismiss_url = add_query_arg(array('action' => 'ucp_dismiss_notice', 'notice' => 'translate', 'redirect' => urlencode($redirect_url)), admin_url('admin.php'));
             $dismiss_url = wp_nonce_url($dismiss_url, 'ucp_dismiss_notice');
 
             echo '<div id="ucp_rate_notice" class="notice-info notice"><p>Hi' . esc_html($name) . ',<br>Help us translate UCP into your language and <b>get a PRO license for free</b>!<br>We want to make <b class="ucp-logo" style="font-weight: bold;">UnderConstructionPage</b> accessible to as many users as possible by translating it into their language. And we need your help!';
@@ -870,7 +916,12 @@ class UCP
             empty($notices['dismiss_welcome']) &&
             !$shown && $promo == 'welcome'
         ) {
-            $dismiss_url = add_query_arg(array('action' => 'ucp_dismiss_notice', 'notice' => 'welcome', 'redirect' => urlencode($_SERVER['REQUEST_URI'])), admin_url('admin.php'));
+            $redirect_url = '';
+            if(isset($_SERVER['REQUEST_URI'])){
+                $redirect_url = sanitize_url(wp_unslash($_SERVER['REQUEST_URI']));
+            }
+
+            $dismiss_url = add_query_arg(array('action' => 'ucp_dismiss_notice', 'notice' => 'welcome', 'redirect' => urlencode($redirect_url)), admin_url('admin.php'));
             $dismiss_url = wp_nonce_url($dismiss_url, 'ucp_dismiss_notice');
 
             echo '<div id="ucp_rate_notice" class="notice-info notice"><p>Hi' . esc_html($name) . ',<br>';
@@ -888,7 +939,12 @@ class UCP
             empty($notices['dismiss_olduser']) &&
             !$shown && $promo == 'olduser'
         ) {
-            $dismiss_url = add_query_arg(array('action' => 'ucp_dismiss_notice', 'notice' => 'olduser', 'redirect' => urlencode($_SERVER['REQUEST_URI'])), admin_url('admin.php'));
+            $redirect_url = '';
+            if(isset($_SERVER['REQUEST_URI'])){
+                $redirect_url = sanitize_url(wp_unslash($_SERVER['REQUEST_URI']));
+            }
+
+            $dismiss_url = add_query_arg(array('action' => 'ucp_dismiss_notice', 'notice' => 'olduser', 'redirect' => urlencode($redirect_url)), admin_url('admin.php'));
             $dismiss_url = wp_nonce_url($dismiss_url, 'ucp_dismiss_notice');
 
             echo '<div id="ucp_rate_notice" class="notice-info notice"><p>Hi' . esc_html($name) . ',<br>';
@@ -913,7 +969,7 @@ class UCP
         }
 
         $notices = get_option(UCP_NOTICES_KEY, array());
-        $notice = sanitize_text_field($_GET['notice']);
+        $notice = sanitize_text_field(wp_unslash($_GET['notice']));
 
         if ($notice == 'rate') {
             $notices['dismiss_rate'] = true;
@@ -933,7 +989,7 @@ class UCP
         update_option(UCP_NOTICES_KEY, $notices);
 
         if (!empty($_GET['redirect'])) {
-            wp_safe_redirect($_GET['redirect']);
+            wp_safe_redirect(wp_unslash($_GET['redirect']));
         } else {
             wp_safe_redirect(admin_url());
         }
@@ -956,7 +1012,7 @@ class UCP
         update_option(UCP_OPTIONS_KEY, $options);
 
         if (!empty($_GET['redirect'])) {
-            wp_safe_redirect($_GET['redirect']);
+            wp_safe_redirect(wp_unslash($_GET['redirect']));
         } else {
             wp_safe_redirect(admin_url());
         }
@@ -977,7 +1033,7 @@ class UCP
 
         $options = self::get_options();
 
-        if (sanitize_text_field($_GET['new_status']) == 'enabled') {
+        if (sanitize_text_field(wp_unslash($_GET['new_status'])) == 'enabled') {
             $options['status'] = '1';
         } else {
             $options['status'] = '0';
@@ -986,7 +1042,7 @@ class UCP
         update_option(UCP_OPTIONS_KEY, $options);
 
         if (!empty($_GET['redirect'])) {
-            wp_safe_redirect($_GET['redirect']);
+            wp_safe_redirect(wp_unslash($_GET['redirect']));
         } else {
             wp_safe_redirect(admin_url());
         }
@@ -1020,17 +1076,22 @@ class UCP
             return;
         }
 
+        $redirect_url = '';
+        if(isset($_SERVER['REQUEST_URI'])){
+            $redirect_url = sanitize_url(wp_unslash($_SERVER['REQUEST_URI']));
+        }
+
         if (self::is_construction_mode_enabled(true)) {
             $main_label = '<img style="height: 17px; margin-bottom: -4px; padding-right: 3px;" src="' . UCP_PLUGIN_URL . 'images/ucp_icon.png" alt="' . esc_attr__('Under construction mode is enabled', 'under-construction-page') . '" title="' . esc_attr__('Under construction mode is enabled', 'under-construction-page') . '"> <span class="ab-label">' . esc_attr__('UnderConstruction', 'under-construction-page') . ' <i class="ucp-status-dot ucp-status-dot-enabled">&#9679;</i></span>';
             $class = 'ucp-enabled';
-            $action_url = add_query_arg(array('action' => 'ucp_change_status', 'new_status' => 'disabled', 'redirect' => urlencode($_SERVER['REQUEST_URI'])), admin_url('admin.php'));
+            $action_url = add_query_arg(array('action' => 'ucp_change_status', 'new_status' => 'disabled', 'redirect' => urlencode($redirect_url)), admin_url('admin.php'));
             $action_url = wp_nonce_url($action_url, 'ucp_change_status');
             $action = esc_attr__('Under Construction Mode', 'under-construction-page');
             $action .= '<a href="' . $action_url . '" id="ucp-status-wrapper" class="on"><span id="ucp-status-off" class="ucp-status-btn">OFF</span><span id="ucp-status-on" class="ucp-status-btn">ON</span></a>';
         } else {
             $main_label = '<img style="height: 17px; margin-bottom: -4px; padding-right: 3px;" src="' . UCP_PLUGIN_URL . 'images/ucp_icon.png" alt="' . esc_attr__('Under construction mode is disabled', 'under-construction-page') . '" title="' . esc_attr__('Under construction mode is disabled', 'under-construction-page') . '"> <span class="ab-label">' . esc_attr__('UnderConstruction', 'under-construction-page') . ' <i class="ucp-status-dot ucp-status-dot-disabled">&#9679;</i></span>';
             $class = 'ucp-disabled';
-            $action_url = add_query_arg(array('action' => 'ucp_change_status', 'new_status' => 'enabled', 'redirect' => urlencode($_SERVER['REQUEST_URI'])), admin_url('admin.php'));
+            $action_url = add_query_arg(array('action' => 'ucp_change_status', 'new_status' => 'enabled', 'redirect' => urlencode($redirect_url)), admin_url('admin.php'));
             $action_url = wp_nonce_url($action_url, 'ucp_change_status');
             $action = esc_attr__('Under Construction Mode', 'under-construction-page');
             $action .= '<a href="' . $action_url . '" id="ucp-status-wrapper" class="off"><span id="ucp-status-off" class="ucp-status-btn">OFF</span><span id="ucp-status-on" class="ucp-status-btn">ON</span></a>';
@@ -1121,7 +1182,8 @@ class UCP
     // fix for opening the plugin install modal
     static function admin_footer()
     {
-        if (empty($_GET['fix-install-button']) || empty($_GET['tab']) || sanitize_text_field($_GET['tab']) != 'plugin-information') {
+        //phpcs:ignore as no nonce needed
+        if (empty($_GET['fix-install-button']) || empty($_GET['tab']) || sanitize_text_field(wp_unslash($_GET['tab'])) != 'plugin-information') { //phpcs:ignore
             return;
         }
 
@@ -1154,7 +1216,8 @@ class UCP
     // all settings are saved in one option
     static function register_settings()
     {
-        register_setting(UCP_OPTIONS_KEY, UCP_OPTIONS_KEY, array(__CLASS__, 'sanitize_settings'));
+        //phpcs:ignore as 3rd param is sanitize_settings callback
+        register_setting(UCP_OPTIONS_KEY, UCP_OPTIONS_KEY, array(__CLASS__, 'sanitize_settings'));//phpcs:ignore
     } // register_settings
 
 
@@ -1210,7 +1273,7 @@ class UCP
             switch ($key) {
                 case 'title':
                 case 'description':
-                    $options[$key] = trim(strip_tags($value));
+                    $options[$key] = trim(wp_strip_all_tags($value));
                     break;
                 case 'heading1':
                 case 'content':
@@ -1233,7 +1296,7 @@ class UCP
                 case 'social_telegram':
                 case 'social_whatsapp':
                 case 'license_key':
-                    $options[$key] = trim(strip_tags($value));
+                    $options[$key] = trim(wp_strip_all_tags($value));
                     break;
                 case 'ga_tracking_id':
                     $options[$key] = substr(strtoupper(trim($value)), 0, 15);
@@ -1244,10 +1307,10 @@ class UCP
             } // switch
         } // foreach
 
-        $options['title'] = strip_tags($options['title']);
-        $options['description'] = strip_tags($options['description']);
-        $options['heading1'] = strip_tags($options['heading1'], '<br><a><b><strong><i><em><p><del><img>');
-        $options['content'] = strip_tags($options['content'], '<br><a><b><strong><i><em><p><del><img><ul><ol><li><blockquote><ins><code><hr><h2><h3><h4><span><div><iframe>');
+        $options['title'] = wp_kses_post(wp_unslash($options['title']));
+        $options['description'] = wp_kses_post(wp_unslash($options['description']));
+        $options['heading1'] = wp_kses_post(wp_unslash($options['heading1']));
+        $options['content'] = wp_kses_post(wp_unslash($options['content']));
 
         $options['whitelisted_roles'] = empty($options['whitelisted_roles']) ? array() : $options['whitelisted_roles'];
         $options['whitelisted_users'] = empty($options['whitelisted_users']) ? array() : $options['whitelisted_users'];
@@ -1268,8 +1331,9 @@ class UCP
             add_settings_error('ucp', 'ga_tracking_id', esc_attr__('Please enter a valid Google Analytics Tracking ID or disable tracking.', 'under-construction-page'));
         }
         unset($options['ga_tracking_toggle']);
-
-        if (!empty($_POST['license-submit'])) {
+        
+         //phpcs:ignore as options save nonce is already vefified by the time we get here
+        if (!empty($_POST['license-submit'])) { //phpcs:ignore
             if (empty($options['license_key'])) {
                 $options['license_type'] = '';
                 $options['license_expires'] = '1900-01-01';
@@ -1296,8 +1360,10 @@ class UCP
         // empty cache in 3rd party plugins
         if ($options != $old_options) {
             $notices = get_option(UCP_NOTICES_KEY);
-            unset($notices['dismiss_whitelisted']);
-            update_option(UCP_NOTICES_KEY, $notices);
+            if(is_array($notices) && array_key_exists('dismiss_whitelisted', $notices)){
+                unset($notices['dismiss_whitelisted']);
+                update_option(UCP_NOTICES_KEY, $notices);
+            }
             self::empty_cache();
         }
 
@@ -1490,7 +1556,12 @@ class UCP
         echo '<p class="description">' . esc_attr__('Enter the unique tracking ID found in your GA tracking profile settings to track visits to pages.', 'under-construction-page') . '</p></div>';
         echo '</td></tr>';
 
-        $reset_url = add_query_arg(array('action' => 'ucp_reset_settings', 'redirect' => urlencode($_SERVER['REQUEST_URI'])), admin_url('admin.php'));
+        $redirect_url = '';
+        if(isset($_SERVER['REQUEST_URI'])){
+            $redirect_url = sanitize_url(wp_unslash($_SERVER['REQUEST_URI']));
+        }
+
+        $reset_url = add_query_arg(array('action' => 'ucp_reset_settings', 'redirect' => urlencode($redirect_url)), admin_url('admin.php'));
         $reset_url = wp_nonce_url($reset_url, 'ucp_reset_settings');
         echo '<tr valign="top">
     <th scope="row"><label for="">' . esc_attr__('Reset Settings', 'under-construction-page') . '</label></th>
@@ -2079,11 +2150,11 @@ class UCP
                 if ($options['license_expires'] == '2035-01-01') {
                     $valid = 'indefinitely';
                 } else {
-                    $valid = 'until ' . date('F jS, Y', strtotime($options['license_expires']));
-                    if (date('Y-m-d') == $options['license_expires']) {
+                    $valid = 'until ' . gmdate('F jS, Y', strtotime($options['license_expires']));
+                    if (gmdate('Y-m-d') == $options['license_expires']) {
                         $valid .= '; expires today';
-                    } elseif (date('Y-m-d', time() + 30 * DAY_IN_SECONDS) > $options['license_expires']) {
-                        $tmp = (strtotime($options['license_expires'] . date(' G:i:s')) - time()) / DAY_IN_SECONDS;
+                    } elseif (gmdate('Y-m-d', time() + 30 * DAY_IN_SECONDS) > $options['license_expires']) {
+                        $tmp = (strtotime($options['license_expires'] . gmdate(' G:i:s')) - time()) / DAY_IN_SECONDS;
                         $valid .= '; expires in ' . round($tmp) . ' days';
                     }
                 }
@@ -2101,7 +2172,7 @@ class UCP
                     echo '<br>Type: ' . esc_attr($options['license_type']);
                 }
                 if (!empty($options['license_expires']) && $options['license_expires'] != '1900-01-01' && $options['license_expires'] != '1970-01-01') {
-                    echo '<br>Expired on ' . esc_attr(date('F jS, Y', strtotime($options['license_expires'])));
+                    echo '<br>Expired on ' . esc_attr(gmdate('F jS, Y', strtotime($options['license_expires'])));
                 }
                 echo '</td></tr>';
             }
@@ -2585,7 +2656,10 @@ class UCP
 
         $allowed_tags['head'] = array(
         );
-
+        
+        $allowed_tags['!doctype'] = array(
+            'html' => true,
+        );
         $allowed_tags['body'] = array(
             'style' => true,
             'class' => true,

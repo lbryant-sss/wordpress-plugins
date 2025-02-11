@@ -37,17 +37,18 @@ require '$functions_filename';
 
 // function call to collect the request data
 KokoAnalytics\collect_request();
+
 EOT;
     }
 
-    public function verify(): bool
+    public static function verify(): bool
     {
-        $works = $this->verify_internal();
+        $works = self::verify_internal();
         update_option('koko_analytics_use_custom_endpoint', $works, true);
         return $works;
     }
 
-    private function verify_internal(): bool
+    private static function verify_internal(): bool
     {
         $tracker_url = site_url('/koko-analytics-collect.php?nv=1&p=0&up=1&test=1');
         $response    = wp_remote_get($tracker_url);
@@ -72,14 +73,9 @@ EOT;
             wp_schedule_event(time() + HOUR_IN_SECONDS, 'hourly', 'koko_analytics_test_custom_endpoint');
         }
 
-        /* Check if path to buffer file changed */
         $file_name = $this->get_file_name();
-        if (file_exists($file_name)) {
-            $content = file_get_contents($file_name);
-            if (strpos($content, get_buffer_filename()) === false) {
-                unlink(ABSPATH . '/koko-analytics-collect.php');
-            }
-        }
+
+        // TODO: Verify contents? Or trust 200 OK response?
 
         /* Attempt to put the file into place if it does not exist already */
         if (! file_exists($file_name)) {
@@ -90,7 +86,7 @@ EOT;
         }
 
         /* Send an HTTP request to the custom endpoint to see if it's working properly */
-        $works = $this->verify();
+        $works = self::verify();
         if (! $works) {
             unlink($file_name);
             return false;

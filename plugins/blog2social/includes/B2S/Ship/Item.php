@@ -24,21 +24,21 @@ class B2S_Ship_Item {
     private $allowPrivacyStatus = array(32);
     private $allowNoEmoji = array(9, 13, 14, 15, 16, 21, 35, 37, 42);
     private $allowNoImagePage = array(8);
-    private $allowEditUrl = array(1, 2, 3, 4, 6, 7, 9, 11, 12, 14, 15, 16, 17, 18, 19, 21, 24, 25, 26, 27, 37, 38, 39, 42, 43, 44,45);
+    private $allowEditUrl = array(1, 2, 3, 4, 6, 7, 9, 11, 12, 14, 15, 16, 17, 18, 19, 21, 24, 25, 26, 27, 37, 38, 39, 42, 43, 44, 45, 46);
     private $showBoards = array(6, 20);
     private $showRelay = array(2,45);
     private $showBoardsGroup = array(10);
     private $showGroups = array(15, 19);
     private $changeDisplayName = array(8);
     private $allowImageEditor = array(1, 2, 3, 6, 7, 12, 15, 18, 17, 19, 24, 26, 42, 43, 44,45); // Cropper
-    private $setShortTextProfile = array(1 => 239, 2 => 255, 3 => 239, 6 => 300, 9 => 200, 12 => 240, 16 => 250, 17 => 442, 18 => 800, 19 => 239, 21 => 500, 42 => 1000, 43 => 280, 44 => 450, 45=> 255);
-    private $setShortTextProfileLimit = array(1 => 400, 2 => 254, 3 => 400, 6 => 400, 9 => 200, 12 => 400, 18 => 1000, 21 => 600, 42 => 2000, 43 => 279, 44 => 500, 45=>254);
+    private $setShortTextProfile = array(1 => 239, 2 => 255, 3 => 239, 6 => 300, 9 => 200, 12 => 240, 16 => 250, 17 => 442, 18 => 800, 19 => 239, 21 => 500, 42 => 1000, 43 => 280, 44 => 450, 45=> 255, 46 => 450);
+    private $setShortTextProfileLimit = array(1 => 400, 2 => 254, 3 => 400, 6 => 400, 9 => 200, 12 => 400, 18 => 1000, 21 => 600, 42 => 2000, 43 => 279, 44 => 500, 45=>254, 46 => 500);
     private $setShortTextPage = array(1 => 500, 3 => 239, 6 => 300, 17 => 442, 42 => 1000, 19 => 5000);
     private $setShortTextPageLimit = array(1 => 1000, 3 => 400, 6 => 400, 42 => 2000, 19 => array(0 => 400, 1 => 2000,4=> 5000));
     private $limitCharacterTitle = array(15 => array(0 => 300), 19 => array(1 => 150), 32 => array(0 => 100), 39 => array(0 => 256));
     private $setShortTextGroup = array(17 => 442, 19 => 239);
     private $setShortTextGroupLimit = array();
-    private $allowHashTags = array(1, 2, 3, 6, 12, 17, 21, 37, 43,45);
+    private $allowHashTags = array(1, 2, 3, 6, 12, 17, 21, 37, 43, 45);
     private $limitHashTagCharacter = array(21 => 36);
     private $limitCharacterProfile = array(1 => 500, 2 => 280, 3 => 3000, 6 => 495, 12 => 2000, 18 => 1500, 20 => 495, 21 => 65535, 38 => 500, 39 => 2000, 43 => 300, 44 => 500, 45 => 280);
     private $showImageAreaProfile = array(6, 7, 12, 16, 18, 21, 26, 37, 38, 39, 42);
@@ -48,8 +48,8 @@ class B2S_Ship_Item {
     private $limitCharacterPage = array(3 => 3000, 6 => 495, 12 => 2200, 19 => array(0 => 400, 1 => 2000, 4 => 60000));
     private $limitCharacterGroup = array(19 => 10000);
     private $requiredUrl = array(1, 3, 9, 19, 27);
-    private $getText = array(1, 7, 12, 16, 17, 18, 21, 42);
-    private $allowSchedCustomizeContent = array(1, 2, 3, 6, 7, 9, 12, 15, 17, 18, 19, 21, 24, 43, 44, 45);
+    private $getText = array(1, 7, 12, 16, 17, 18, 21, 42, 46);
+    private $allowSchedCustomizeContent = array(1, 2, 3, 6, 7, 9, 12, 15, 17, 18, 19, 21, 24, 43, 44, 45, 46);
     private $maxWeekTimeSelect = 52;
     private $networkTosProfile = array(2,45);
     private $networkTosGroup = array(19);
@@ -1130,7 +1130,7 @@ class B2S_Ship_Item {
                 }
                 $edit .= '<div class="b2s-post-item-details-item-message-area b2s-margin-bottom-10" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '">';
                 $edit .= '<input type="checkbox" class="b2s-post-item-option-share-as-story b2s-post-item-option-share-type" name="b2s[' . esc_attr($networkAuthId) . '][share_as_story]" value="1" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-type="' . esc_attr($networkType) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '"> ';
-                $edit .= '<label>' . esc_html__("Share as Story") . '</label>';
+                $edit .= '<label>' . esc_html__("Share as Story", "blog2social") . '</label> <a href="#" class="btn btn-link btn-sm b2s-info-share-as-story-modal-btn">'.esc_html__("Info", "blog2social").'</a>';
                 $edit .= '<br>';
                 $edit .= '</div>';
             }
@@ -1233,7 +1233,7 @@ class B2S_Ship_Item {
 
                 if ($networkId == 12) {
                     $edit .= '<input type="checkbox" class="b2s-post-item-option-share-as-story b2s-post-item-option-share-type" name="b2s[' . esc_attr($networkAuthId) . '][share_as_story]" value="1" data-network-count="' . esc_attr($schedCount) . '" data-network-id="' . esc_attr($networkId) . '" data-network-type="' . esc_attr($networkType) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '"> ';
-                    $edit .= '<label>' . esc_html__("Share as Story") . '</label>';
+                    $edit .= '<label>' . esc_html__("Share as Story", "blog2social") . '</label> <a href="#" class="btn btn-link btn-sm b2s-info-share-as-story-modal-btn">'.esc_html__("Info", "blog2social").'</a>';
                     $edit .= '<br>';
                 }
 
@@ -1689,7 +1689,7 @@ class B2S_Ship_Item {
                 if ($networkId == 12) {
                     $edit .= '<div class="b2s-post-item-details-option">';
                     $edit .= '<input type="checkbox" class="b2s-post-item-option-share-as-story b2s-post-item-option-share-type" name="b2s[' . esc_attr($networkAuthId) . '][share_as_story]" value="1" data-network-count="' . esc_attr($schedCount) . '" data-network-id="' . esc_attr($networkId) . '" data-network-type="' . esc_attr($networkType) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '"> ';
-                    $edit .= '<label>' . esc_html__("Share as Story") . '</label>';
+                    $edit .= '<label>' . esc_html__("Share as Story","blog2social") . '</label> <a href="#" class="btn btn-link btn-sm b2s-info-share-as-story-modal-btn">'.esc_html__("Info", "blog2social").'</a>';
                     $edit .= '</div>';
                 }
 

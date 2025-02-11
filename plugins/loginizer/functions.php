@@ -650,8 +650,10 @@ function loginizer_add_social_js($page_type){
 		
 		if(lz_form.length > 0){
 			lz_form.forEach((form, index) => {
-				lz_social_btns[index].style.display="flex";
-				form.'.esc_html($func).'(lz_social_btns[index]);
+				if (lz_social_btns[index]) {
+					lz_social_btns[index].style.display="flex";
+					form.'.esc_html($func).'(lz_social_btns[index]);
+				}
 			});
 		}
 

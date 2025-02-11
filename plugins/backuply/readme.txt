@@ -4,7 +4,7 @@ Tags: backup, restore, database backup, cloud backup, wordpress backup, migratio
 Requires at least: 4.7
 Tested up to: 6.7
 Requires PHP: 5.5
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: LGPL v2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -85,9 +85,12 @@ Go To your WordPress install -> Plugins -> Add New Button -> In Search Box searc
 
 == Changelog ==
 
+= 1.4.3 (February 10th 2025) =
+* [Bug-Fix] There was an issue which was causing downloaded file to be of size 0, this has been fixed.
+
 = 1.4.2 (January 17th 2025) =
 * [Bug-Fix] For some users the download file was returning different file name, this has been fixed.
-* [Task] Rewrite rules will be flushed after restore completes.
+* [Improvement] Restore was getting blocked in case where htaccess rules had some blocking rule, this has been handled.
 
 = 1.4.1 (November 29th 2024) =
 * [Improvement] The backup logs were overwhelming the browsers of some users, we have improved that by just logging the required info which reduces the backup logs.

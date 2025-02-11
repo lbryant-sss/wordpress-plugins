@@ -2,7 +2,7 @@
 /*
  * UnderConstructionPage
  * PRO license related functions
- * (c) WebFactory Ltd, 2015 - 2023
+ * (c) WebFactory Ltd, 2015 - 2025
  */
 
 class UCP_license extends UCP {
@@ -15,7 +15,7 @@ class UCP_license extends UCP {
     $options = parent::get_options();
 
     if (!empty($options['license_active']) && $options['license_active'] === true &&
-        !empty($options['license_expires']) && $options['license_expires'] >= date('Y-m-d')) {
+        !empty($options['license_expires']) && $options['license_expires'] >= gmdate('Y-m-d')) {
       return true;
     } else {
       return false;
@@ -47,7 +47,7 @@ class UCP_license extends UCP {
     $request_params = array('sslverify' => false, 'timeout' => 25, 'redirection' => 2);
     $default_data = array('license_key' => $options['license_key'],
                           'code_base' => 'free',
-                          '_rand' => rand(1000, 9999),
+                          '_rand' => wp_rand(1000, 9999),
                           'version' => self::$version,
                           'site' => get_home_url());
 

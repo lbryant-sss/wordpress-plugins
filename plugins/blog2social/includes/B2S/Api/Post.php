@@ -16,5 +16,4 @@ class B2S_Api_Post {
 
         return wp_remote_retrieve_body(wp_remote_post($url . 'post.php', $args));
     }
-
 }

@@ -98,11 +98,14 @@ function backuply_license_page() {
 							$expires = $backuply['license']['expires'];
 							$expires = substr($expires, 0, 4).'/'.substr($expires, 4, 2).'/'.substr($expires, 6);
 							
-							echo '<div style="margin-top:10px;">License Status : '.(empty($backuply['license']['status_txt']) ? 'N.A.' : wp_kses_post($backuply['license']['status_txt'])).' &nbsp; &nbsp; &nbsp; 
-							License Expires : '.($backuply['license']['expires'] <= date('Ymd') ? '<span style="color:red">'.esc_html($expires).'</span>' : esc_html($expires)).'
-							</div>';
+							echo '<div style="margin-top:10px;">License Status : '.(empty($backuply['license']['status_txt']) ? 'N.A.' : wp_kses_post($backuply['license']['status_txt'])).' &nbsp; &nbsp; &nbsp;';
+
+							if(empty($backuply['license']['has_plid']) || $backuply['license']['expires'] <= date('Ymd')){
+								echo 'License Expires : '.($backuply['license']['expires'] <= date('Ymd') ? '<span style="color:red">'.esc_html($expires).'</span>' : esc_html($expires));
+							}
+							echo '</div>';
 						}
-						
+
 						if(!empty($backuply['license']['quota']) && !empty($backuply['license']['quota'])){
 							echo '<div style="margin-top:3px;">Cloud Storage: '.size_format(esc_html($backuply['license']['quota'])).'</div>';
 						}

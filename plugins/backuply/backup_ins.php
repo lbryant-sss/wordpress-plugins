@@ -1590,6 +1590,14 @@ function backuply_remote_upload($finished = false){
 	$GLOBALS['start_pos'] = $backuply['status']['init_pos'];
 	$backuply['status']['proto_file_size'] = filesize($backuply['status']['successfile']);
 	
+	// This code uses PHP's Stream API, which allows handling various storage mechanisms transparently.
+	// Documentation: https://www.php.net/manual/en/class.streamwrapper.php
+	//
+	// The fopen() function internally calls stream_open(), which is implemented by the specific stream wrapper
+	// associated with the given file path. For eg: if you are using OneDrive, check /lib/onedrive.php for its implementation.
+	//
+	// Similarly, other file functions like fwrite(), fread(), etc., have corresponding stream functions.
+	// You can refer to the provided link for details on how they work.
 	$remote_fp = fopen($backuply['status']['remote_file_path'], 'ab');
 
 	if($remote_fp == false){

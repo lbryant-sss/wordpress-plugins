@@ -118,6 +118,7 @@ function loginizer_page_recaptcha(){
 			$option['captcha_size'] = lz_optpost('captcha_size');
 			$option['captcha_lang'] = lz_optpost('captcha_lang');
 			$option['captcha_domain'] = lz_optpost('captcha_domain');
+			$option['captcha_disable_btn'] = lz_optpost('captcha_disable_btn'); // Only for v2 reCaptcha Checkbox
 			
 			// Cloudflare Turnstil Captcha
 			$option['turn_captcha_key'] = lz_optpost('turn_captcha_key');
@@ -126,7 +127,7 @@ function loginizer_page_recaptcha(){
 			$option['turn_captcha_size'] = lz_optpost('turn_captcha_size');
 			$option['turn_captcha_lang'] = lz_optpost('turn_captcha_lang');
 			
-			// No Google Captcha
+			// Math Captcha
 			$option['captcha_text'] = lz_optpost('captcha_text');
 			$option['captcha_time'] = (int) lz_optpost('captcha_time');
 			$option['captcha_words'] = (int) lz_optpost('captcha_words');
@@ -596,6 +597,12 @@ input[type="text"], textarea, select {
 						
 						?>
 					</table>
+				</td>
+			</tr>
+			<tr class="lz_google_cap lz_google_cap_size">
+				<td scope="row" valign="top"><label for="captcha_disable_btn"><b><?php echo __('Disable Login Button', 'loginizer'); ?></b></label></td>
+				<td>
+					<input type="checkbox" value="1" name="captcha_disable_btn" id="captcha_disable_btn" <?php echo lz_POSTchecked('captcha_disable_btn', (empty($loginizer['captcha_disable_btn']) ? false : true)); ?> />
 				</td>
 			</tr>
 			<tr class="lz_cap">

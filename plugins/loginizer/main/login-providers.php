@@ -40,7 +40,7 @@ $loginizer_login_providers = [
 		]
 	],
 	'Twitter' => [
-		'name' => 'X (formly Twitter)',
+		'name' => 'X',
 		'color' => '#14171a',
 		'icons' => [],
 		'premium' => true,

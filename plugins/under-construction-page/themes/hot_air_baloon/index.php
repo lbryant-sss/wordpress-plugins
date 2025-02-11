@@ -2,7 +2,7 @@
 /*
  * UnderConstructionPage
  * Hot Air Baloon theme
- * (c) WebFactory Ltd, 2015 - 2023
+ * (c) WebFactory Ltd, 2015 - 2025
  */
 
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
   die;
 }
 ?>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
     <title>[title]</title>
     <meta name="description" content="[description]" />
     <meta name="generator" content="[generator]">
-    <link href="https://fonts.bunny.net/css?family=Fredoka+One" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=Fredoka+One" rel="stylesheet"><?php //phpcs:ignore ?>
     [head]
   </head>
 

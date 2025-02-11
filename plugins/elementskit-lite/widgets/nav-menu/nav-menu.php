@@ -1692,7 +1692,9 @@ class ElementsKit_Widget_Nav_Menu extends Widget_Base {
 			if(class_exists('\ElementsKit_Lite\ElementsKit_Menu_Walker')) {
 				$args['walker'] = new \ElementsKit_Lite\ElementsKit_Menu_Walker();
 			} else {
-				include dirname(__FILE__) . '/nav-menu-walker.php';
+				if (!class_exists('\ElementsKit_Lite\ElementsKit_Seconday_Menu_Walker')) {
+					include dirname(__FILE__) . '/nav-menu-walker.php';
+				}
 				$args['walker'] = new \ElementsKit_Lite\ElementsKit_Seconday_Menu_Walker();
 			}
 

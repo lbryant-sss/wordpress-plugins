@@ -5,7 +5,7 @@ Tags: social media tool, social media automation, auto-post, social media plugin
 Donate link: https://paypal.me/adenion
 Requires at least: 4.7.0
 Tested up to: 6.7
-Stable tag: 8.2.0
+Stable tag: 8.3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Blog2Social automatically creates social media posts for your content and auto-p
 
 _Compatible with WooCommerce, Gutenberg Editor, Hummingbird, Bitly, Rebrand.ly, Sniply, WP Automatic Plugin, Page Builder & RSS Importer._
 
-* New: New: Reconnect X (Twitter) with the X 
+* New: Band.us – The App For Groups & AI-driven support assistant
 
 Download Blog2Social today to make your social media marketing easier than ever for your WordPress site or blog. Blog2Social is a freemium plugin, with a free comprehensive basic version and premium plans offering more advanced features. To ensure compliance with the high quality standards of the new networks’ API rules and community guidelines, some functions of the auto-poster are premium features and not part of the free version. 
 The Blog2Social free version offers you a wide range of features. ([See what’s included in the free version](https://wordpress.org/plugins/blog2social/#faq "Blog2Social Free Features")). 
@@ -52,6 +52,7 @@ To benefit from all the advanced features for automatic sharing and scheduling y
 * **Mastodon** - Post to your Mastodon account (from Pro)
 * **Discord** - Post to your Discord servers (from Smart)
 * **HumHub** - Post to your profile and space (add-on)
+* **Band** - Post to your Band groups (from Smart)
 
 
 = Benefits from using Blog2Social =
@@ -77,7 +78,7 @@ Try Blog2Social Premium with [free 30-day-trial](https://www.blog2social.com/en/
 
 BLOG2SOCIAL PREMIUM
 
-* Share your content on over 20 networks: Facebook (profiles and pages), X (Twitter), LinkedIn (profiles and pages), XING (profiles). VK, Pinterest, Instagram, TikTok, YouTube, Vimeo, VK, Reddit, Torial, Medium, Tumblr, Flickr, Bloglovin’, Diigo, Google Business Profile, Telegram, Ravelry, Discord, Instapaper and Mastodon, Bluesky and HumHub.
+* Share your content on over 21 networks: Facebook (profiles and pages), X (Twitter), LinkedIn (profiles and pages), XING (profiles). VK, Pinterest, Instagram, TikTok, YouTube, Vimeo, VK, Reddit, Torial, Medium, Tumblr, Flickr, Bloglovin’, Diigo, Google Business Profile, Telegram, Ravelry, Discord, Instapaper and Mastodon, Bluesky, HumHub and Band.
 * Schedule your posts and publish them at any time you’d like.
 * Automatically create, schedule and publish posts from content from your website.
 * Create stunning posts using image galleries or videos.
@@ -271,6 +272,8 @@ To get started with the basics of Blog2Social and maybe find some useful tips an
 
 
 == Changelog ==
+= 8.3.0 =
+Network Band Intergation
 = 8.2.0 =
 Network X conversion
 = 8.1.2 =
@@ -339,6 +342,8 @@ Bugfix: Autoposting
 Publish and share videos
 
 == Upgrade Notice ==
+= 8.3.0 =
+Network Band Intergation
 = 8.2.0 =
 Network X conversion
 = 8.1.2 =

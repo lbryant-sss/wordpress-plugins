@@ -1848,9 +1848,16 @@ function backuply_direct_download_file(){
 	if(!file_exists($file_path)){
 		wp_die('File does not exists');
 	}
+	
+	if(ob_get_level()){
+		$ob_levels = min(5, (int) ob_get_level());
+		for($i = 1; $i<= $ob_levels; $i++){
+			@ob_end_clean();
+		}
+	}
 
 	if(ob_get_level()){
-		ob_end_clean();
+		@ob_end_clean();
 	}
 
 	// Get the file size
@@ -1861,6 +1868,10 @@ function backuply_direct_download_file(){
 	header('Content-Disposition: attachment; filename="' . basename($filename) . '"');
 	header('Content-Transfer-Encoding: binary');
 	header('Content-Length: ' . $file_size);
+	header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', filemtime($file_path)));
+	header('Expires: 0');
+	header('Cache-Control: public, must-revalidate, max-age=0');
+	header('Pragma: no-cache');
 
 	readfile($file_path);
 	die();

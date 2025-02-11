@@ -80,6 +80,36 @@ class Ajax_Post {
         add_action('wp_ajax_b2s_delete_post_notice_all', array($this, 'deletePostNoticeAll'));
         add_action('wp_ajax_b2s_check_image_size_network', array($this, 'checkImageSizeNetwork'));
         add_action('wp_ajax_b2s_check_image_size_network_all', array($this, 'checkImageSizeNetworkAll'));
+        add_action('wp_ajax_b2s_send_trail_feedback', array($this, 'sendTrailFeedback'));
+        add_action('wp_ajax_b2s_debug_connection', array($this, 'debugConnection'));
+    }
+
+    public function debugConnection() {
+
+        if (current_user_can('read') && isset($_POST['b2s_security_nonce']) && (int) wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['b2s_security_nonce'])), 'b2s_security_nonce') > 0) {  //0-24hours lifetime
+            try {
+                //get public client ip
+                $clientIp = file_get_contents('https://ipinfo.io/ip');
+                if (filter_var($clientIp, FILTER_VALIDATE_IP)) {
+                    $res = json_decode(B2S_Api_Get::get(B2S_PLUGIN_API_ENDPOINT . 'get.php?action=debugConnection&client_blog_url=' . urlencode(get_option('home')) . '&client_ip=' . sanitize_text_field($clientIp)),30);
+                    if (isset($res->result) && $res->result == true) {
+                        $command = "ping -c 4 " . escapeshellarg($res->server_ip);
+                        $resPing = shell_exec($command);
+                        $output = $res->response . "<br><hr><br>" . $resPing;
+                        echo json_encode(array('result' => true, 'output' => $output));
+                        wp_die();
+                    }
+                }
+                echo json_encode(array('result' => false, 'error' => 'default'));
+                wp_die();
+            } catch (Exception $ex) {
+                echo json_encode(array('result' => false, 'error' => 'default'));
+                wp_die();
+            }
+        } else {
+            echo json_encode(array('result' => false, 'error' => 'nonce'));
+            wp_die();
+        }
     }
 
     public function uploadVideo() {
@@ -664,7 +694,7 @@ class Ajax_Post {
             $schedResult = array();
             $countDirectPost = 0;
             $countNetworkXIntegration = 0;
-            
+
             $defaultPostData = array('token' => B2S_PLUGIN_TOKEN,
                 'blog_user_id' => B2S_PLUGIN_BLOG_USER_ID,
                 'post_id' => (int) $post['post_id'],
@@ -1162,7 +1192,6 @@ class Ajax_Post {
 
             //Auto-Poster M
             $active = ((isset($_POST['b2s-manuell-auto-post']) && (int) $_POST['b2s-manuell-auto-post'] == 1) ? 1 : 0);
-            $best_times = ((isset($_POST['b2s-auto-post-best-times']) && (int) $_POST['b2s-auto-post-best-times'] == 1) ? 1 : 0);
             $profile = ((isset($_POST['b2s-auto-post-profil-dropdown']) && (int) $_POST['b2s-auto-post-profil-dropdown'] > 0) ? (int) $_POST['b2s-auto-post-profil-dropdown'] : 0);
             $twitter = ((isset($_POST['b2s-auto-post-profil-dropdown-twitter']) && (int) $_POST['b2s-auto-post-profil-dropdown-twitter'] > 0) ? (int) $_POST['b2s-auto-post-profil-dropdown-twitter'] : 0);
             $publish = isset($_POST['b2s-settings-auto-post-publish']) && is_array($_POST['b2s-settings-auto-post-publish']) ? B2S_Tools::sanitize_array($_POST['b2s-settings-auto-post-publish']) : array();
@@ -1269,7 +1298,7 @@ class Ajax_Post {
                 }
             }
 
-            $auto_post = array('active' => $active, 'profile' => $profile, 'twitter' => $twitter, 'publish' => $publish, 'update' => $update, 'best_times' => $best_times, 'assignUser' => $assignUser, 'echo' => (($echo > 0) ? $echoSetting : 0), 'import_template' => $importTemplateSetting, 'delay' => $delay, 'delay_state' => $delaySetting);
+            $auto_post = array('active' => $active, 'profile' => $profile, 'twitter' => $twitter, 'publish' => $publish, 'update' => $update, 'assignUser' => $assignUser, 'echo' => (($echo > 0) ? $echoSetting : 0), 'import_template' => $importTemplateSetting, 'delay' => $delay, 'delay_state' => $delaySetting);
             $options->_setOption('auto_post', $auto_post);
             echo json_encode(array('result' => true));
             wp_die();
@@ -2621,7 +2650,7 @@ class Ajax_Post {
                 if ($networkData !== false && is_array($networkData) && !empty($networkData)) {
 
                     $countSchedPosts = 0;
-                    $countSchedNetworkXIntegration=0;
+                    $countSchedNetworkXIntegration = 0;
 
                     //Select Posts for Queue
                     $limit = 5;
@@ -2817,11 +2846,10 @@ class Ajax_Post {
                                     $date->setDate(substr($nextPosibleDate, 0, 4), substr($nextPosibleDate, 5, 2), substr($nextPosibleDate, 8, 2));
                                     $count = $rePost->generatePosts($startDate, $settings, $networkData, $selectedTwitterProfile);
                                     $countSchedPosts = $countSchedPosts + $count;
-                                    
-                                    if(!empty($selectedTwitterProfile)){
+
+                                    if (!empty($selectedTwitterProfile)) {
                                         $countSchedNetworkXIntegration++;
                                     }
-                                    
                                 }
                                 if ($countSchedPosts == 0) {
                                     echo json_encode(array('result' => false, 'error' => 'no_content'));
@@ -2846,11 +2874,10 @@ class Ajax_Post {
                                 }
                             }
                             if (isset($versionDetails['B2S_PLUGIN_NETWORK_CONDITION']) && isset($versionDetails['B2S_PLUGIN_NETWORK_CONDITION'][45]) && !empty($versionDetails['B2S_PLUGIN_NETWORK_CONDITION'][45])) {
-                            $versionDetails['B2S_PLUGIN_NETWORK_CONDITION'][45]->open_sched_post_quota = ($versionDetails['B2S_PLUGIN_NETWORK_CONDITION'][45]->open_sched_post_quota) - (int) $countSchedNetworkXIntegration;
-                            $currentNetwork45OpenSchedLimit = (int) $versionDetails['B2S_PLUGIN_NETWORK_CONDITION'][45]->open_sched_post_quota;
-                            update_option('B2S_PLUGIN_USER_VERSION_' . B2S_PLUGIN_BLOG_USER_ID, $versionDetails, false);
-                        }
-                            
+                                $versionDetails['B2S_PLUGIN_NETWORK_CONDITION'][45]->open_sched_post_quota = ($versionDetails['B2S_PLUGIN_NETWORK_CONDITION'][45]->open_sched_post_quota) - (int) $countSchedNetworkXIntegration;
+                                $currentNetwork45OpenSchedLimit = (int) $versionDetails['B2S_PLUGIN_NETWORK_CONDITION'][45]->open_sched_post_quota;
+                                update_option('B2S_PLUGIN_USER_VERSION_' . B2S_PLUGIN_BLOG_USER_ID, $versionDetails, false);
+                            }
                         }
                     }
 

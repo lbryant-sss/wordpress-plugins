@@ -1072,7 +1072,7 @@ class Ajax_Get {
                 'user_version' => (int) B2S_PLUGIN_USER_VERSION,
                 'allow_trial' => (get_option('B2S_PLUGIN_DISABLE_TRAIL') == '0' ? true : false),
             );
-
+            
             if (!empty($b2sType) && in_array($b2sType, array('sched', 'publish'))) {
                 $postItem = new B2S_Post_Item($b2sType, '', '', '', '', $b2sSortPostPublishDate, $b2sSortPostSchedDate, '', 0, 0, 0, $b2sPagination, 0, '', $b2sUserLang, $b2sResultsPerPage, 0, 0, 0, 0, $b2sRawResponse);
                 $postData = $postItem->getItemRaw();

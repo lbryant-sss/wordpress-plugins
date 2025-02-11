@@ -8,7 +8,6 @@
 
 namespace KokoAnalytics;
 
-use ParagonIE\Sodium\Core\Curve25519\Ge\P2;
 use WP_Admin_Bar;
 use WP_Query;
 use WP_Post;
@@ -83,9 +82,8 @@ function get_most_viewed_post_ids(array $args)
  * @args['post_type'] string|array List of post types to include
  * @args['paged'] int Number of current page *
  */
-function get_most_viewed_posts(array $args = []): array
+function get_most_viewed_posts($args = []): array
 {
-    global $wpdb;
     $post_ids = get_most_viewed_post_ids($args);
     $query_args = [
         'posts_per_page' => -1,
@@ -103,34 +101,6 @@ function get_most_viewed_posts(array $args = []): array
     ];
     $r = new WP_Query($query_args);
     return $r->posts;
-}
-
-function admin_bar_menu(WP_Admin_Bar $wp_admin_bar)
-{
-    // only show on frontend
-    if (is_admin()) {
-        return;
-    }
-
-    // only show for users who can access statistics page
-    if (!current_user_can('view_koko_analytics')) {
-        return;
-    }
-
-    $wp_admin_bar->add_node(
-        [
-            'parent' => 'site-name',
-            'id' => 'koko-analytics',
-            'title' => esc_html__('Analytics', 'koko-analytics'),
-            'href' => admin_url('/index.php?page=koko-analytics'),
-        ]
-    );
-}
-
-function widgets_init()
-{
-    require KOKO_ANALYTICS_PLUGIN_DIR . '/src/class-widget-most-viewed-posts.php';
-    register_widget('KokoAnalytics\Widget_Most_Viewed_Posts');
 }
 
 /**
@@ -167,12 +137,6 @@ function using_custom_endpoint(): bool
     return (bool) get_option('koko_analytics_use_custom_endpoint', false);
 }
 
-function test_custom_endpoint(): void
-{
-    $endpoint_installer = new Endpoint_Installer();
-    $endpoint_installer->verify();
-}
-
 function create_local_datetime(string $timestr): \DateTimeImmutable
 {
     return new \DateTimeImmutable($timestr, wp_timezone());
@@ -205,32 +169,7 @@ function get_page_title($post): string
     return $title;
 }
 
-function get_referrer_url_href(string $url): string
-{
-    if (strpos($url, '://t.co/') !== false) {
-        return 'https://twitter.com/search?q=' . urlencode($url);
-    } elseif (strpos($url, 'android-app://') === 0) {
-        return str_replace('android-app://', 'https://play.google.com/store/apps/details?id=', $url);
-    }
 
-    return apply_filters('koko_analytics_referrer_url_href', $url);
-}
-
-function get_referrer_url_label(string $url): string
-{
-    // if link starts with android-app://, turn that prefix into something more human readable
-    if (strpos($url, 'android-app://') === 0) {
-        return str_replace('android-app://', 'Android app: ', $url);
-    }
-
-    // strip protocol and www. prefix
-    $url = (string) preg_replace('/^https?:\/\/(?:www\.)?/', '', $url);
-
-    // trim trailing slash
-    $url = rtrim($url, '/');
-
-    return apply_filters('koko_analytics_referrer_url_label', $url);
-}
 
 /**
  * Return's client IP for current request, even if behind a reverse proxy
@@ -254,17 +193,6 @@ function get_client_ip(): string
     }
 
     return '';
-}
-
-function percent_format_i18n($pct): string
-{
-    if ($pct == 0) {
-        return '';
-    }
-
-    $prefix = $pct > 0 ? '+' : '';
-    $formatted = \number_format_i18n($pct * 100, 0);
-    return $prefix . $formatted . '%';
 }
 
 function is_request_excluded(): bool

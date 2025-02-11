@@ -8,7 +8,7 @@ class SwpmUtilsTemplate {
      * wp-content/themes/your-main-theme/simple-membership/template-name.php
      * The standard plugin's template file
      */
-    public static function swpm_load_template($template_name, $require_once = true) {
+    public static function swpm_load_template($template_name, $require_once = true, $tpl_data = array()) {
         
         //List of file paths (in order of priority) where the plugin should check for the template.
         $template_files = array(
@@ -29,7 +29,13 @@ class SwpmUtilsTemplate {
 
         //Lets load this template
         if ($template_to_load) {
-            if ($require_once) {
+			// Extract any template data passed to this function (if any) to the global scope.
+            if( is_array($tpl_data) && !empty($tpl_data) ){
+                extract( (array) $tpl_data, EXTR_SKIP);
+            }
+
+            //Include the template file.
+			if ($require_once) {
                 require_once( $template_to_load );
             } else {
                 require( $template_to_load );

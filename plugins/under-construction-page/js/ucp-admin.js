@@ -1,7 +1,7 @@
 /*
  * UnderConstructionPage
  * Main backend JS
- * (c) WebFactory Ltd, 2015 - 2023
+ * (c) WebFactory Ltd, 2015 - 2025
  */
 
 

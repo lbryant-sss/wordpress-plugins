@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name: A2 Optimized WP
  * Plugin URI: https://wordpress.org/plugins/a2-optimized/
- * Version: 3.0.12
+ * Version: 3.0.13
  * Author: A2 Hosting
  * Author URI: https://www.a2hosting.com/
  * Description: Automatically optimizes performance and security. Works together with LiteSpeed Cache.
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 define( 'A2OPT_VERSION', '3.0' );
-define( 'A2OPT_FULL_VERSION', '3.0.10' );
+define( 'A2OPT_FULL_VERSION', '3.0.13' );
 define( 'A2OPT_MIN_PHP', '5.6' );
 define( 'A2OPT_MIN_WP', '5.1' );
 define( 'A2OPT_FILE', __FILE__ );
@@ -135,6 +135,21 @@ function run_a2_optimized() {
 		$optimizations->block_xmlrpc_request();
 		add_filter('xmlrpc_methods', ['A2_Optimized_Optimizations', 'remove_xmlrpc_methods']);
 	}
+}
+
+add_filter( 'plugin_action_links_a2-optimized-wp/a2-optimized.php', 'a2opt_settings_link' );
+function a2opt_settings_link( $links ) {
+        $url = esc_url( add_query_arg(
+                'page',
+                'a2-optimized&a2_page=optimizations',
+                get_admin_url() . 'admin.php'
+        ) );
+        $settings_link = "<a href='$url'>" . __( 'Settings' ) . '</a>';
+        array_push(
+                $links,
+                $settings_link
+        );
+        return $links;
 }
 
 run_a2_optimized();

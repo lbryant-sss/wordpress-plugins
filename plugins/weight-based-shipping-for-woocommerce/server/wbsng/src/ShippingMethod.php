@@ -38,7 +38,7 @@ class ShippingMethod extends WC_Shipping_Method
         ];
 
         if (!$this->instance_id) {
-            $globalMethodEnabled = !class_exists('Wbs\Plugin') || (get_option('wbs_global_methods') ?: 'only-wbs') !== 'only-wbs';
+            $globalMethodEnabled = !class_exists('Wbs\Plugin') || (get_option('wbs_global_methods') ?: 'only-wbsng') !== 'only-wbs';
             if ($globalMethodEnabled) {
                 $this->supports[] = 'settings';
             }

@@ -56,7 +56,6 @@ class SwpmFrontRegistration extends SwpmRegistration {
 
 		$joinuspage_url = $settings_configs->get_value( 'join-us-page-url' );
 		$membership_level = '';
-		global $wpdb;
 
 		if ( SwpmUtils::is_paid_registration() ) {
 			//Lets check if this is a registration for paid membership
@@ -106,15 +105,20 @@ class SwpmFrontRegistration extends SwpmRegistration {
 			$member = array_map( 'sanitize_text_field', $_POST );
 		}
 		ob_start();
-		extract( (array) $member, EXTR_SKIP );
 
 		$hide_membership_level_field = $settings_configs->get_value( 'hide-reg-form-membership-level-field' );
 
+		$tpl_data = (array) $member;
+		$tpl_data['hide_membership_level_field'] = $hide_membership_level_field;
+		$tpl_data['membership_level'] = $membership_level;
+		$tpl_data['membership_level_alias'] = $membership_level_alias;
+		$tpl_data['level_identifier'] = $level_identifier;
+
 		$render_new_form_ui = $settings_configs->get_value('use-new-form-ui');
 		if (!empty($render_new_form_ui)) {
-			include SIMPLE_WP_MEMBERSHIP_PATH . 'views/add-v2.php';
+			SwpmUtilsTemplate::swpm_load_template('add-v2.php', false, $tpl_data);
 		}else{
-			include SIMPLE_WP_MEMBERSHIP_PATH . 'views/add.php';
+			SwpmUtilsTemplate::swpm_load_template('add.php', false, $tpl_data);
 		}
 		return ob_get_clean();
 	}
@@ -564,6 +568,22 @@ class SwpmFrontRegistration extends SwpmRegistration {
 			return;
 		}
 
+		// Check if incomplete member account
+		if ( !isset($user->user_name) || empty($user->user_name)){
+			$message  = '<div class="swpm-reset-pw-error">';
+			$message  .= __('Your account registration is not yet complete. Please finish the registration process before using the password reset option. If you need assistance, contact the site administrator.', 'simple-membership');
+			$message  .= '</div>';
+			$message_ary = array(
+				'succeeded'       => false,
+				'message'         => $message,
+				'pass_reset_sent' => false,
+			);
+
+			SwpmTransfer::get_instance()->set( 'status', $message_ary );
+			// Redirecting to current page to avoid password reset request form resubmission on page reload.
+			SwpmMiscUtils::redirect_to_url( SwpmMiscUtils::get_current_page_url() );
+		}
+
 		$settings = SwpmSettings::get_instance();
 		$password_reset_link='';		
 		$additional_args =array();
@@ -635,7 +655,9 @@ class SwpmFrontRegistration extends SwpmRegistration {
 		);
 
 		SwpmTransfer::get_instance()->set( 'status', $message_ary );
-		
+
+		// Redirecting to current page to avoid password reset request form resubmission on page reload.
+		SwpmMiscUtils::redirect_to_url( SwpmMiscUtils::get_current_page_url() );
 	}
 
 	public function reset_password_using_link( $user_data, $password ) {

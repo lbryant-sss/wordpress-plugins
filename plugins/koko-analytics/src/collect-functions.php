@@ -11,11 +11,9 @@
 
 namespace KokoAnalytics;
 
-function maybe_collect_request()
+function maybe_collect_request(): void
 {
-    // since we call this function (early) on every AJAX request, detect our specific request here
-    // this allows us to short-circuit a bunch of unrelated AJAX stuff and gain a lot of performance
-    if (!isset($_GET['action']) || $_GET['action'] !== 'koko_analytics_collect' || !\defined('DOING_AJAX') || !DOING_AJAX) {
+    if (($_GET['action'] ?? '') !== 'koko_analytics_collect') {
         return;
     }
 
@@ -126,7 +124,7 @@ function collect_request()
     \header('Tk: N');
 
     // set cookie server-side if requested (eg for AMP requests)
-    if (isset($_GET['p']) && isset($_GET['nv']) && isset($_GET['sc']) && (int) $_GET['sc'] === 1) {
+    if (isset($_GET['p'], $_GET['nv'], $_GET['sc']) && (int) $_GET['sc'] === 1) {
         $posts_viewed = isset($_COOKIE['_koko_analytics_pages_viewed']) ? \explode(',', $_COOKIE['_koko_analytics_pages_viewed']) : [''];
         if ((int) $_GET['nv']) {
             $posts_viewed[] = (int) $_GET['p'];
@@ -149,15 +147,14 @@ function get_upload_dir(): string
     }
 
     $uploads = wp_upload_dir(null, false);
-    return \rtrim($uploads['basedir']) . '/koko-analytics';
+    return \rtrim($uploads['basedir'], '/') . '/koko-analytics';
 }
 
 
 function get_buffer_filename(): string
 {
     $upload_dir = get_upload_dir();
-    $buffer_filename = "events-buffer.php";
-    return "{$upload_dir}/$buffer_filename";
+    return "{$upload_dir}/events-buffer.php";
 }
 
 function collect_in_file(array $data): bool

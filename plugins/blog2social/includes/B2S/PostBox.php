@@ -19,7 +19,6 @@ class B2S_PostBox {
         $selectedTwitterId = -1;
         $defaultProfile = 0;
         $defaultTwitter = 0;
-        $bestTimesDefault = false;
         $lastPostDate = '---';
         $shareCount = 0;
         $schedLimit = null;
@@ -121,7 +120,7 @@ class B2S_PostBox {
                 if (!empty($result->data->auth)) {
                     $postOptions = get_option('B2S_PLUGIN_POST_OPTIONS_' . $postId);
                     if ($postOptions != false && isset($postOptions['auto_post_manuell']) && !empty($postOptions['auto_post_manuell']) && isset($postOptions['auto_post_manuell'][B2S_PLUGIN_BLOG_USER_ID]) && !empty($postOptions['auto_post_manuell'][B2S_PLUGIN_BLOG_USER_ID])) {
-//selected at last post
+                        //selected at last post
                         if (isset($postOptions['auto_post_manuell'][B2S_PLUGIN_BLOG_USER_ID]['profile']) && (int) $postOptions['auto_post_manuell'][B2S_PLUGIN_BLOG_USER_ID]['profile'] > 0) {
                             $selectedProfileId = $postOptions['auto_post_manuell'][B2S_PLUGIN_BLOG_USER_ID]['profile'];
                             if (isset($postOptions['auto_post_manuell'][B2S_PLUGIN_BLOG_USER_ID]['twitter']) && (int) $postOptions['auto_post_manuell'][B2S_PLUGIN_BLOG_USER_ID]['twitter'] > 0) {
@@ -130,29 +129,25 @@ class B2S_PostBox {
                         }
                     }
                     if ($selectedProfileId < 0 && $defaultProfile >= 0) {
-//default from settings
+                        //default from settings
                         $selectedProfileId = $defaultProfile;
                         if ((int) $defaultTwitter > 0) {
                             $selectedTwitterId = $defaultTwitter;
                         }
                     }
                     if ($selectedProfileId < 0) {
-//old
+                        //old
                         $profilOption = get_option('B2S_PLUGIN_SAVE_META_BOX_AUTO_SHARE_PROFILE_USER_' . B2S_PLUGIN_BLOG_USER_ID);
                         if ((int) $profilOption > 0) {
                             $selectedProfileId = (int) $profilOption;
                         }
                     }
-                    $bestTimes = (isset($optionAutoPost['best_times']) && (int) $optionAutoPost['best_times'] > 0) ? true : false;
-                    $bestTimesDefault = $bestTimes;
-                    if ($postOptions != false && isset($postOptions[B2S_PLUGIN_BLOG_USER_ID]) && !empty($postOptions[B2S_PLUGIN_BLOG_USER_ID] && isset($postOptions[B2S_PLUGIN_BLOG_USER_ID]['best_times']))) {
-                        $bestTimes = ((int) $postOptions[B2S_PLUGIN_BLOG_USER_ID]['best_times'] > 0) ? true : false;
-                    }
-                    $advancedOptions = $this->getAdvancedOptions($result->data->mandant, $result->data->auth, $selectedProfileId, $selectedTwitterId, $bestTimes, !$assigned);
+
+                    $advancedOptions = $this->getAdvancedOptions($result->data->mandant, $result->data->auth, $selectedProfileId, $selectedTwitterId, !$assigned);
                 }
             }
 
-//Auto-Post-Import - Check Conditions - show notice
+            //Auto-Post-Import - Check Conditions - show notice
             $autoPostData = $this->userOption->_getOption('auto_post_import');
             if ($autoPostData !== false && is_array($autoPostData)) {
                 if (isset($autoPostData['active']) && (int) $autoPostData['active'] == 1) {
@@ -226,7 +221,6 @@ class B2S_PostBox {
                     <input type="hidden" name="b2s-profile-selected" value="' . ((isset($selectedProfileId)) ? esc_attr($selectedProfileId) : '-1') . '">
                     <input type="hidden" name="b2s-profile-default" value="' . ((isset($defaultProfile)) ? esc_attr($defaultProfile) : '-1') . '">
                     <input type="hidden" name="b2s-twitter-default" value="' . ((isset($defaultTwitter)) ? esc_attr($defaultTwitter) : '0') . '">
-                    <input type="hidden" name="b2s-best-times-default" value="' . ((isset($bestTimesDefault)) ? esc_attr($bestTimesDefault) : '0') . '">
                     </div>';
         }
         $content .= '</div>
@@ -284,7 +278,7 @@ class B2S_PostBox {
         return $content;
     }
 
-    public function getAdvancedOptions($mandant = array(), $auth = array(), $selectedProfileId = -1, $selectedTwitterId = -1, $bestTimes = false, $show = true) {
+    public function getAdvancedOptions($mandant = array(), $auth = array(), $selectedProfileId = -1, $selectedTwitterId = -1, $show = true) {
         $authContent = '';
         $content = '';
         if (!$show) {
@@ -362,33 +356,17 @@ class B2S_PostBox {
         }
         $content .= '</select></div>';
 
-//new V5.1.0 Seeding
-        $bestTimeType = 0;  //0=default(best time), 1= special per account (seeding), 2= per network (old)
         $myBestTimeSettings = $this->userOption->_getOption('auth_sched_time');
-        if (isset($myBestTimeSettings['time'])) {
-            $bestTimeType = 1;
-//old  
-        } else {
-            global $wpdb;
-            if ($wpdb->get_var("SHOW TABLES LIKE '{$wpdb->prefix}b2s_post_sched_settings'") == $wpdb->prefix . 'b2s_post_sched_settings') {
-                $myBestTimeSettings = $wpdb->get_results($wpdb->prepare("SELECT network_id, network_type, sched_time FROM {$wpdb->prefix}b2s_post_sched_settings WHERE blog_user_id= %d", B2S_PLUGIN_BLOG_USER_ID));
-                if (is_array($myBestTimeSettings) && !empty($myBestTimeSettings)) {
-                    $bestTimeType = 2;
-                } else {
-//default
-                    $myBestTimeSettings = B2S_Tools::getRandomBestTimeSettings();
-                }
-            }
-        }
+        $optionAutoPost = $this->userOption->_getOption('auto_post');
 
-//Opt: Best Time Settings
-        if (!empty($myBestTimeSettings) && is_array($myBestTimeSettings)) {
-            $bestTimeSettings = array('type' => $bestTimeType, 'times' => $myBestTimeSettings);
+        if (!empty($myBestTimeSettings) && is_array($myBestTimeSettings) && !empty($optionAutoPost) && $optionAutoPost !== false) {
+            $bestTimeSettings = array('times' => $myBestTimeSettings);
             $content .= '<br>
                 <div class="b2s-meta-box-auto-post-sched"><label for="b2s-post-meta-box-sched-select">' . esc_html__('When do you want to share your post on social media?', 'blog2social') . '</label>
                 <select id="b2s-post-meta-box-sched-select" class="b2s-w-100" name="b2s-post-meta-box-sched-select">
-                <option value="0" ' . ((!$bestTimes) ? 'selected' : '') . '>' . esc_html__('immediately after publishing', 'blog2social') . '</option>
-                <option value="1" ' . (($bestTimes) ? 'selected' : '') . '>' . esc_html__('at best times', 'blog2social') . '</option>
+                <option value="0" ' . ((!isset($optionAutoPost['delay_state']) || (isset($optionAutoPost['delay_state']) && (int) $optionAutoPost['delay_state'] == 0)) ? 'selected' : '') . '>' . esc_html__('immediately after publishing', 'blog2social') . '</option>
+                <option value="1" ' . ((isset($optionAutoPost['delay_state']) && (int) $optionAutoPost['delay_state'] == 1) ? 'selected' : '') . '>' . esc_html__('publish with a delay', 'blog2social') . '</option>
+                <option value="2" ' . ((isset($optionAutoPost['delay_state']) && (int) $optionAutoPost['delay_state'] == 2) ? 'selected' : '') . '>' . esc_html__('at my best times', 'blog2social') . '</option>
                 </select></div>';
             $content .= "<input id='b2s-post-meta-box-best-time-settings' class='post-format' name='b2s-post-meta-box-best-time-settings' value='" . json_encode($bestTimeSettings) . "' type='hidden'> ";
         }

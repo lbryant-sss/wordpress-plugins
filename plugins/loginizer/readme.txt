@@ -4,7 +4,7 @@ Tags: security, access, admin, Loginizer, login, logs, ban ip, failed login, ip,
 Requires at least: 3.0
 Tested up to: 6.7
 Requires PHP: 5.5
-Stable tag: 1.9.7
+Stable tag: 1.9.8
 License: LGPLv2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -85,6 +85,12 @@ That's it. You're done!
 
 == Changelog ==
 
+= 1.9.8 =
+* [Feature Pro] Now you can hide the wp-admin totally from non logged in users.
+* [Improvement Pro] Option to Disable Passwordless login for specific login page.
+* [Task] There was a Typo in X Social Login button which has been fixed and X buttons won't have Formerly Twitter text.
+* [Bug Fix Pro] There was an issue with Passwordless login for WooCommerce login page, that has been fixed.
+
 = 1.9.7 =
 * [Task] A notice has been tweaked to prevent confusion among users.
 
@@ -122,7 +128,7 @@ That's it. You're done!
 = 1.8.7 =
 * [Feature] Social Login: Now you can let the users login through LinkedIn Login.
 * [Feature] Send Login Notification as HTML email.
-* [Pro Feature] Supports social login with Google, GitHub, Facebook, X(Formly Twitter) and more Login Providers.
+* [Pro Feature] Supports social login with Google, GitHub, Facebook, X(Formerly Twitter) and more Login Providers.
 
 = 1.8.6 =
 * [Bug-Fix] There was an issue with Login Notification body and subject, it was adding \(slashes) if "(double-quotes) where being used. This has been fixed.

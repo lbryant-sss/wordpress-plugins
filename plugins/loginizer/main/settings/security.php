@@ -27,6 +27,8 @@ function loginizer_page_security(){
 		
 		$option['login_slug'] = lz_optpost('login_slug');
 		$option['rename_login_secret'] = (int) lz_optpost('rename_login_secret');
+		$option['hide_wp_admin'] = !empty($_POST['hide_wp_admin']);
+		$option['login_redirect_url'] = lz_optpost('login_redirect_url');
 		$option['xmlrpc_slug'] = lz_optpost('xmlrpc_slug');
 		$option['xmlrpc_disable'] = (int) lz_optpost('xmlrpc_disable');
 		$option['pingbacks_disable'] = (int) lz_optpost('pingbacks_disable');
@@ -351,6 +353,25 @@ if(!defined('SITEPAD')){
 				</td>
 				<td>
 					<input type="checkbox" value="1" name="rename_login_secret" <?php echo lz_POSTchecked('rename_login_secret', (empty($loginizer['rename_login_secret']) ? false : true)); ?> />
+				</td>
+			</tr>
+			<tr>
+				<td scope="row" valign="top" style="width:200px !important">
+					<label><?php echo __('Hide WP Admin', 'loginizer'); ?></label><br>
+					<span class="exp"><?php echo __('If the user is not logged in they wont be able to access wp-admin url.', 'loginizer'); ?></span>
+				</td>
+				<td>
+					<input type="checkbox" value="1" name="hide_wp_admin" <?php echo lz_POSTchecked('hide_wp_admin', (empty($loginizer['hide_wp_admin']) ? false : true)); ?> />
+				</td>
+			</tr>
+			<tr>
+				<td scope="row" valign="top" style="width:200px !important">
+					<label><?php echo __('Redirect URL', 'loginizer'); ?></label><br>
+					<span class="exp"><?php echo __('Which page should be shown when someone tries to access wp-admin when it is hidden.', 'loginizer'); ?></span>
+					<span class="exp"><?php echo __('Default: HomePage.', 'loginizer'); ?></span>
+				</td>
+				<td>
+					<?php echo esc_url(home_url('/')); ?>&nbsp;<input type="text" style="width:20%;" name="login_redirect_url" value="<?php echo (!empty($loginizer['login_redirect_url']) ? lz_POSTval('login_redirect_url', $loginizer['login_redirect_url']) : ''); ?>"/>
 				</td>
 			</tr>
 	

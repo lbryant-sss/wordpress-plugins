@@ -2,7 +2,7 @@
 /*
  * UnderConstructionPage
  * Forklift theme
- * (c) WebFactory Ltd, 2015 - 2023
+ * (c) WebFactory Ltd, 2015 - 2025
  */
 
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
   die;
 }
 ?>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -20,9 +20,9 @@ if (!defined('ABSPATH')) {
     <title>[title]</title>
     <meta name="description" content="[description]" />
     <meta name="generator" content="[generator]">
-    <link rel="stylesheet" href="[theme-url-common]css/bootstrap.min.css?v=[version]" type="text/css">
-    <link rel="stylesheet" href="[theme-url]style.css?v=[version]" type="text/css">
-    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Roboto:400,900">
+    <link rel="stylesheet" href="[theme-url-common]css/bootstrap.min.css?v=[version]" type="text/css"><?php //phpcs:ignore ?>
+    <link rel="stylesheet" href="[theme-url]style.css?v=[version]" type="text/css"><?php //phpcs:ignore ?>
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Roboto:400,900"><?php //phpcs:ignore ?>
     [head]
   </head>
 

@@ -50,7 +50,7 @@ class B2S_RePost_Item {
         $limit = unserialize(B2S_PLUGIN_RE_POST_LIMIT);
 
         $content = '';
-        $content .= '<h3 class="b2s-re-post-h3">' . esc_html__('Re-share your blog content automatically on your social media channels.', 'blog2social') . ((!$isPremium) ? ' <span class="label label-success">' . esc_html__('SMART', 'blog2social') . '</span>' : '') . '</h3>';
+        $content .= '<h3 class="b2s-re-post-h3">' . esc_html__('Re-share your blog content automatically on your social media channels.', 'blog2social') . ((!$isPremium) ? ' <span class="label label-success">' . esc_html__('SMART', 'blog2social') . '</span>' : '') . ' (<a href="' . esc_url(B2S_Tools::getSupportLink('network_guide_re_sharer')) . '" target="_blank">' . esc_html__('Guide', 'blog2social') . '</a>)</h3>';
         $content .= '<div id="b2s-licence-condition" class="alert alert-danger ' . $showSchedLimitInfo . '"><span class="b2s-text-bold">' . esc_html__("You've reached your posting limit!", "blog2social") . '</span><br>' . esc_html__('To increase your limit and enjoy more features, consider upgrading.', 'blog2social') . '<br><a target="_blank" class="b2s-text-bold" href="' . esc_url(B2S_Tools::getSupportLink('pricing')) . '">' . esc_html__('Upgrade', 'blog2social') . '</a></div>';
         $content .= '<div class="col-md-12 b2s-re-post-settings-header">';
         $content .= '<i class="glyphicon glyphicon-cog b2s-icon-size"></i><span class="b2s-re-post-headline"> ' . esc_html__('Settings', 'blog2social') . '</span><span class="b2s-re-post-headline"><i class="glyphicon glyphicon-chevron-up b2s-re-post-settings-toggle b2s-icon-size"></i></span>';
@@ -259,7 +259,7 @@ class B2S_RePost_Item {
 
         $html = '';
         $html .= '<input type="checkbox" name="b2s-re-post-date-active" class="b2s-re-post-date-active" id="b2s-re-post-date-active" value="1">';
-        $html .= '<label for="b2s-re-post-date-active"> ' . esc_html__('Date', 'blog2social') . ' </label>';
+        $html .= '<label for="b2s-re-post-date-active"> ' . esc_html__('Publication Date', 'blog2social') . ' </label>';
         $html .= '<input id="b2s-re-post-date-state-include" name="b2s-re-post-date-state" value="0" checked type="radio" class="b2s-re-post-state"><label class="padding-bottom-3" for="b2s-re-post-date-state-include">' . esc_html__('Include (Post only...)', 'blog2social') . '</label> ';
         $html .= '<input id="b2s-re-post-date-state-exclude" name="b2s-re-post-date-state" value="1" type="radio" class="b2s-re-post-state"><label class="padding-bottom-3" for="b2s-re-post-date-state-exclude">' . esc_html__('Exclude (Do no post ...)', 'blog2social') . '</label>';
         $html .= '<div class="row">';

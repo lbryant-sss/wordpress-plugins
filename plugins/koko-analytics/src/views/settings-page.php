@@ -207,11 +207,10 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
                     <h2><?php esc_html_e('Upgrade to Koko Analytics Pro', 'koko-analytics'); ?></h2>
                     <p><?php printf(esc_html__('You are currently using the free version of Koko Analytics. There is a paid add-on called %1$sKoko Analytics Pro%2$s which adds several powerful features:', 'koko-analytics'), '<a href="https://www.kokoanalytics.com/pricing/" target="_blank">', '</a>'); ?></p>
                     <ul class="ul-square">
-                        <li><?php esc_html_e('Track outbound link clicks', 'koko-analytics'); ?></li>
-                        <li><?php esc_html_e('Track form submissions', 'koko-analytics'); ?></li>
-                        <li><a href="https://www.kokoanalytics.com/kb/tracking-events/" target="_blank"><?php esc_html_e('Custom event tracking', 'koko-analytics'); ?></a></li>
-                        <li><a href="https://www.kokoanalytics.com/2024/08/21/setting-up-email-reports-with-koko-analytics-pro/" target="_blank"><?php esc_html_e('Periodic email report of your most important statistics', 'koko-analytics'); ?></a></li>
-                        <li><?php esc_html_e('Export dashboard view to CSV', 'koko-analytics'); ?></li>
+                        <li><a href="https://www.kokoanalytics.com/features/custom-event-tracking/"><?php esc_html_e('Event Tracking', 'koko-analytics'); ?></a></li>
+                        <li><a href="https://www.kokoanalytics.com/features/email-reports/"><?php esc_html_e('Email Reports', 'koko-analytics'); ?></a></li>
+                        <li><a href="https://www.kokoanalytics.com/features/pageviews-column/"><?php esc_html_e('Pageviews Column', 'koko-analytics'); ?></a></li>
+                        <li><a href="https://www.kokoanalytics.com/features/csv-export/"><?php esc_html_e('CSV Export', 'koko-analytics'); ?></a></li>
                     </ul>
                     <p><a class="button" href="https://www.kokoanalytics.com/pricing/" target="_blank"><?php esc_html_e('View pricing', 'koko-analytics'); ?></a></p>
                     <p><?php esc_html_e('By purchasing Koko Analytics Pro you get immediate access to these features while simultaneously supporting further development and maintenance of this free plugin.', 'koko-analytics'); ?></p>
@@ -220,8 +219,13 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
             <?php } // end if defined KOKO_ANALYTICS_PRO ?>
 
             <div>
-                <h2><?php esc_html_e('Coming from Jetpack Stats?', 'koko-analytics'); ?></h2>
-                <p><?php printf(__('You can now <a href="%1$s">import your historical stats data into Koko Analytics</a>.', 'koko-analytics'), esc_attr(add_query_arg(['tab' => 'jetpack_importer']))); ?></p>
+                <h2><?php esc_html_e('Coming from another statistics plugin?', 'koko-analytics'); ?></h2>
+                <p><?php esc_html_e('Use the import tool to import your historical data from other plugins into Koko Analytics', 'koko-analytics'); ?>
+
+                <ul class="ul-square">
+                    <li><a href="<?php echo esc_attr(add_query_arg(['tab' => 'jetpack_importer'])); ?>"><?php esc_html_e('Import from Jetpack Stats', 'koko-analytics'); ?></a></li>
+                    <li><a href="<?php echo esc_attr(add_query_arg(['tab' => 'burst_importer'])); ?>"><?php esc_html_e('Import from Burst Statistics', 'koko-analytics'); ?></a></li>
+                </ul>
             </div>
 
             <div>

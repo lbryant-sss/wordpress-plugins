@@ -32,6 +32,7 @@ function loginizer_page_passwordless(){
 		$option['passwordless_html'] = (int) lz_optpost('lz_passwordless_html');
 		$option['passwordless_redirect'] = esc_url_raw($_POST['lz_passwordless_redirect']);
 		$option['passwordless_redirect_for'] = !empty($_POST['lz_passwordless_redirect_for']) ? map_deep($_POST['lz_passwordless_redirect_for'], 'sanitize_text_field') : [];
+		$option['passwordless_disabled_for'] = !empty($_POST['lz_passwordless_disabled_for']) ? map_deep(wp_unslash($_POST['lz_passwordless_disabled_for']), 'sanitize_text_field') : [];
 
 		// Is there an error ?
 		if(!empty($lz_error)){
@@ -176,6 +177,31 @@ input[type="text"], textarea, select {
 							$r .= "\n\t<input type=\"checkbox\" checked name=\"lz_passwordless_redirect_for[]\" value='" . esc_attr($role) . "' style=\"margin-top:5px\">$name</option>";
 						} else {
 							$r .= "\n\t<input type=\"checkbox\" value='" . esc_attr($role) . "' name=\"lz_passwordless_redirect_for[]\">$name</option>";
+						}
+
+						$r .= '<br/>';
+					}
+					echo $r . '</div>';
+				?>
+				</td>
+			</tr>
+			
+			<tr>
+				<td scope="row" valign="top" style="width:350px !important">
+					<label for="lz_passwordless_disabled_for"><?php echo __('Disable for', 'loginizer'); ?></label><br/>
+					<span class="exp"><?php echo __('Which login form you want to disable passwordless login for', 'loginizer'); ?></span>
+				</td>
+				<td align="top">
+				<?php
+					$forms = ['admin', 'woocommerce'];
+					echo '<div>';
+					$r = '';
+					foreach($forms as $form) {
+						// Preselect specified form.
+						if(!empty($lz_options['passwordless_disabled_for']) && in_array($form, $lz_options['passwordless_disabled_for'])){
+							$r .= "\n\t<input type=\"checkbox\" checked name=\"lz_passwordless_disabled_for[]\" value='" . esc_attr($form) . "' style=\"margin-top:5px\">".esc_html(ucfirst($form))."</option>";
+						} else {
+							$r .= "\n\t<input type=\"checkbox\" value='" . esc_attr($form) . "' name=\"lz_passwordless_disabled_for[]\">".esc_html(ucfirst($form))."</option>";
 						}
 
 						$r .= '<br/>';

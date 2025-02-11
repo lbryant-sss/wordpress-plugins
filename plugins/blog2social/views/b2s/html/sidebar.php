@@ -300,22 +300,6 @@ $getPage = (isset($_GET['page']) && !empty($_GET['page'])) ? sanitize_text_field
             ?>
 
             <div class="clearfix"></div>
-            <?php if (!B2S_System::isblockedArea('B2S_MENU_MODUL_RATING', B2S_PLUGIN_ADMIN)) { ?> 
-                <div class="col-md-12">
-                    <div class="row">
-                        <hr>
-                        <div class="b2s-sidebar-head">
-                            <div class="b2s-sidebar-head-text">
-                                <span class="glyphicon glyphicon-star glyphicon-success"></span><span class="glyphicon glyphicon-star glyphicon-success"></span><span class="glyphicon glyphicon-star glyphicon-success"></span><span class="glyphicon glyphicon-star glyphicon-success"></span><span class="glyphicon glyphicon-star glyphicon-success"></span> 
-                                <?php esc_html_e("VALUE BLOG2SOCIAL", "blog2social"); ?> 
-                            </div>
-                            <p><?php esc_html_e("If you love the plugin and our service, please leave us a 5-star rating to help Blog2Social grow and improve.", "blog2social"); ?></p>
-                            <a target="_blank" href="https://wordpress.org/support/plugin/blog2social/reviews/" class="btn btn-success btn-block"><?php esc_html_e("RATE BLOG2SOCIAL", "blog2social") ?></a>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
-            <div class="clearfix"></div>
             <?php if (!B2S_System::isblockedArea('B2S_MENU_MODUL_NEWS_BLOG', B2S_PLUGIN_ADMIN)) { ?> 
                 <div class="col-md-12">
                     <div class="row">

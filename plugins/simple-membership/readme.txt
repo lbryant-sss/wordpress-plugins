@@ -5,7 +5,7 @@ Tags: member, members, members only, membership, memberships, register, WordPres
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 4.5.9
+Stable tag: 4.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -175,6 +175,20 @@ Please visit the membership plugin page to view screenshots:
 https://simple-membership-plugin.com/
 
 == Changelog ==
+
+= 4.6.0 =
+- Added a new option to bulk delete all member accounts with a specific account status.
+- Updated the reference to the tools menu in the admin dashboard to point to the new location.
+- Front-end registration form now renders via the 'swpm_load_template()' method.
+- A getter method added to the SwpmAccessControl class.
+- Improved the handling of the password reset request form to prevent resubmission on page reload.
+- Added an extra check in the user delete function to check if the user has administrator role.
+- Updated the system to display an error message when a password request is made for an incomplete account.
+- New 'System Info' tab added in the Tools menu.
+- Fixed a minor PHP notice issue.
+- Braintree SDK updated to v6.23.0.
+- Minor improvement to the category protection UI.
+- Added the [Cloudflare Turnstile captcha integration](https://simple-membership-plugin.com/simple-membership-and-cloudflare-turnstile-integration-addon/).
 
 = 4.5.9 =
 - The "Tools" tab has been relocated to its own standalone menu item.

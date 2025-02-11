@@ -4303,6 +4303,9 @@ jQuery(document).on('click', '.b2sInfoPostRelayModalBtn', function () {
 jQuery(document).on('click', '.b2sInfoSchedTimesModalBtn', function () {
     jQuery('#b2sInfoSchedTimesModal').modal('show');
 });
+jQuery(document).on('click', '.b2s-info-share-as-story-modal-btn', function () {
+    jQuery('.b2s-info-share-as-story-modal').modal('show');
+});
 jQuery(document).on('click', '.b2s-network-setting-save-btn', function () {
     jQuery('#b2s-network-setting-save').modal('show');
 });

@@ -4,7 +4,7 @@ Donate link: https://wordpress.org/support/plugin/koko-analytics/reviews/#new-po
 Tags: analytics, statistics, stats, privacy, counter
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 1.6.4
+Stable tag: 1.6.5
 License: GPL-3.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -33,6 +33,7 @@ You can view a [live demo of Koko Analytics here](https://www.kokoanalytics.com/
 - **GDPR Compliant** by design.
 - **Metrics**: All the essentials: total pageviews, unique pageviews and referral URL's.
 - **Referrer spam:** Built-in blocklist to filter out referrer spam.
+- **REST API**: You can access your data from anywhere via REST API endpoints.
 - **Cached**: Fully compatible with pages served from any kind of cache.
 - **Open-Source**: The plugin code is [open-sourced](https://github.com/ibericode/koko-analytics) under the GPL-3.0-or-later license.
 - **Tested**: Ready for PHP 8.4, but compatible down to PHP 7.3.
@@ -141,9 +142,18 @@ You can [purchase Koko Analytics Pro](https://www.kokoanalytics.com/pricing/) to
 3. A widget to show your most viewed posts (or any other post type) for a given period.
 4. The settings page where you can exclude certain user roles from being counted.
 5. Screenshot of settings page showing some features from Koko Analytics Pro.
+6. Koko Analytics Pro can show your pageviews over a configurable time period right in your posts overview.
 
 
 == Changelog ==
+
+### 1.6.5 - Feb 10, 2025
+
+- Add importer for data from Burst Statistics.
+- Allow passing "false" and "no" to `monthly` query parameter in REST endpoint.
+- Optimize PHP execution time for plugin bootstrapping code by aggresively lazy loading code that only runs on very specific requests. From 0.05 ms to 0.03 ms (!) with opcache or 1.44 ms to 0.54 ms without opcache for general requests.
+- Minor code improvements to classes responsible for aggregating data from buffer file into permanent storage.
+
 
 ### 1.6.4 - Jan 25, 2025
 
@@ -780,14 +790,5 @@ If your WordPress root directory is not writable, go to the Koko Analytics setti
 #### 1.0.2 - Nov 22, 2019
 
 - Add icons to datepickers to quickly cycle through selected date periods.
-- Add capabilities `view_koko_analytics` and `manage_koko_analytics` to control whether a user role can view or manage statistics.
-- Add setting to automatically delete data older than X months.
-- Add menu item to WP Admin Bar.
-- Update URL when date range changes so page can be refreshed or shared.
-- Update browser history with chosen date ranges.
-- Show total size of Koko Analytics' database tables on settings page.
-- Improved animations when dashboard data updates.
-- Improved column type constraints for storing data.
-- Improved labels for chart x-axes.
-- Consistent ordering of posts and ...
+- Add capabilities `view_koko_analytics` and `manage_koko_analytics` to control whether ...
 

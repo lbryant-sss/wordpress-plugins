@@ -386,6 +386,14 @@ class EventReservationService extends AbstractReservationService
         if ($booking->getCustomer()) {
             $reservation->setCustomer($booking->getCustomer());
         }
+
+        /** @var Collection $bookings */
+        $bookings = new Collection();
+
+        $bookings->addItem($booking);
+
+        $event->setBookings($bookings);
+
         $reservation->setBookable($event);
         $reservation->setBooking($booking);
         $reservation->setReservation($event);

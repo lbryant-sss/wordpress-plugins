@@ -10,115 +10,102 @@ namespace KokoAnalytics;
 
 class Rest
 {
-    public function __construct()
+    public static function register_routes(): void
     {
-        add_action('rest_api_init', [$this, 'register_routes'], 10, 0);
+        $instance = new Rest();
+        $route_namespace = 'koko-analytics/v1';
+
+        register_rest_route(
+            $route_namespace,
+            '/stats',
+            [
+                'callback'            => [$instance, 'get_stats'],
+                'args'                => [
+                    'start_date' => [
+                        'validate_callback' => [$instance, 'validate_date_param'],
+                    ],
+                    'end_date'   => [
+                        'validate_callback' => [$instance, 'validate_date_param'],
+                    ],
+                    'monthly' => [
+                        'sanitize_callback' => [$instance, 'sanitize_bool_param'],
+                    ],
+                ],
+                'permission_callback' => [$instance, 'permission_callback'],
+            ]
+        );
+
+        register_rest_route(
+            $route_namespace,
+            '/totals',
+            [
+                'callback'            => [$instance, 'get_totals'],
+                'args'                => [
+                    'start_date' => [
+                        'validate_callback' => [$instance, 'validate_date_param'],
+                    ],
+                    'end_date'   => [
+                        'validate_callback' => [$instance, 'validate_date_param'],
+                    ],
+                ],
+                'permission_callback' => [$instance, 'permission_callback'],
+            ]
+        );
+
+        register_rest_route(
+            $route_namespace,
+            '/posts',
+            [
+                'callback'            => [$instance, 'get_posts'],
+                'args'                => [
+                    'start_date' => [
+                        'validate_callback' => [$instance, 'validate_date_param'],
+                    ],
+                    'end_date'   => [
+                        'validate_callback' => [$instance, 'validate_date_param'],
+                    ],
+                ],
+                'permission_callback' => [$instance, 'permission_callback'],
+            ]
+        );
+
+        register_rest_route(
+            $route_namespace,
+            '/referrers',
+            [
+                'callback'            => [$instance, 'get_referrers'],
+                'args'                => [
+                    'start_date' => [
+                        'validate_callback' => [$instance, 'validate_date_param'],
+                    ],
+                    'end_date'   => [
+                        'validate_callback' => [$instance, 'validate_date_param'],
+                    ],
+                ],
+                'permission_callback' => [$instance, 'permission_callback'],
+            ]
+        );
+
+        register_rest_route(
+            $route_namespace,
+            '/realtime',
+            [
+                'callback'            => [$instance, 'get_realtime_pageview_count'],
+                'args'                => [
+                    'since' => [
+                        'validate_callback' => [$instance, 'validate_date_param'],
+                    ],
+                ],
+                'permission_callback' => [$instance, 'permission_callback'],
+            ]
+        );
     }
 
-    public function register_routes()
+    public function permission_callback(): bool
     {
         $settings = get_settings();
         $is_dashboard_public = $settings['is_dashboard_public'];
-
-        register_rest_route(
-            'koko-analytics/v1',
-            '/stats',
-            [
-                'methods'             => 'GET',
-                'callback'            => [$this, 'get_stats'],
-                'args'                => [
-                    'start_date' => [
-                        'validate_callback' => [$this, 'validate_date_param'],
-                    ],
-                    'end_date'   => [
-                        'validate_callback' => [$this, 'validate_date_param'],
-                    ],
-                    'monthly' => [
-                        'validate_callback' => 'absint',
-                    ],
-                ],
-                'permission_callback' => function () use ($is_dashboard_public) {
-                    return $is_dashboard_public ? true : current_user_can('view_koko_analytics');
-                },
-            ]
-        );
-
-        register_rest_route(
-            'koko-analytics/v1',
-            '/totals',
-            [
-                'methods'             => 'GET',
-                'callback'            => [$this, 'get_totals'],
-                'args'                => [
-                    'start_date' => [
-                        'validate_callback' => [$this, 'validate_date_param'],
-                    ],
-                    'end_date'   => [
-                        'validate_callback' => [$this, 'validate_date_param'],
-                    ],
-                ],
-                'permission_callback' => function () use ($is_dashboard_public) {
-                    return $is_dashboard_public ? true : current_user_can('view_koko_analytics');
-                },
-            ]
-        );
-
-        register_rest_route(
-            'koko-analytics/v1',
-            '/posts',
-            [
-                'methods'             => 'GET',
-                'callback'            => [$this, 'get_posts'],
-                'args'                => [
-                    'start_date' => [
-                        'validate_callback' => [$this, 'validate_date_param'],
-                    ],
-                    'end_date'   => [
-                        'validate_callback' => [$this, 'validate_date_param'],
-                    ],
-                ],
-                'permission_callback' => function () use ($is_dashboard_public) {
-                    return $is_dashboard_public ? true : current_user_can('view_koko_analytics');
-                },
-            ]
-        );
-
-        register_rest_route(
-            'koko-analytics/v1',
-            '/referrers',
-            [
-                'methods'             => 'GET',
-                'callback'            => [$this, 'get_referrers'],
-                'args'                => [
-                    'start_date' => [
-                        'validate_callback' => [$this, 'validate_date_param'],
-                    ],
-                    'end_date'   => [
-                        'validate_callback' => [$this, 'validate_date_param'],
-                    ],
-                ],
-                'permission_callback' => function () use ($is_dashboard_public) {
-                    return $is_dashboard_public ? true : current_user_can('view_koko_analytics');
-                },
-            ]
-        );
-
-        register_rest_route(
-            'koko-analytics/v1',
-            '/realtime',
-            [
-                'methods'             => 'GET',
-                'callback'            => [$this, 'get_realtime_pageview_count'],
-                'args'                => [
-                    'since' => [
-                        'validate_callback' => [$this, 'validate_date_param'],
-                    ],
-                ],
-                'permission_callback' => function () use ($is_dashboard_public) {
-                    return $is_dashboard_public ? true : current_user_can('view_koko_analytics');
-                },
-            ]
-        );
+        return $is_dashboard_public || current_user_can('view_koko_analytics');
     }
 
     private function is_request_for_completed_date_range(\WP_REST_Request $request): bool
@@ -146,7 +133,12 @@ class Rest
 
     public function validate_date_param($param, $one, $two): bool
     {
-        return strtotime($param) !== false;
+        return \strtotime($param) !== false;
+    }
+
+    public function sanitize_bool_param($value, $request, $param): bool
+    {
+        return ! \in_array($value, ['no', 'false', '0'], true);
     }
 
     /**
