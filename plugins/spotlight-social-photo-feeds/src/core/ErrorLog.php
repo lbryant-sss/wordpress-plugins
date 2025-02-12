@@ -2,50 +2,64 @@
 
 namespace RebelCode\Spotlight\Instagram;
 
-use Generator;
 use Throwable;
+use Generator;
+use Exception;
 
-/** The class that manages the error log file. */
+/** The class that manages error logging via WordPress debug log. */
 class ErrorLog
 {
-    /** The path to use if the WordPress uploads directory cannot be determined */
-    public const FALLBACK_FILE = SL_INSTA_DIR . '/error.log';
-    /** The maximum size, in bytes, of the error log file. */
-    public const MAX_SIZE = 1024 * 1024;
+    /**
+     * @deprecated 1.7.2 This constant is no longer needed but remains for backward compatibility.
+     * Avoid using it; logs are now written to WordPress debug.log.
+     */
+    private const FALLBACK_FILE = 'spotlight-error-log.txt';
 
     /**
-     * Gets the path to the error log file, prioritizing the path in the WordPress uploads directory and falls back
-     * to the plugin's directory if the uploads directory cannot be determined (though that is very unlikely).
+     * @deprecated 1.7.2 This constant is no longer needed; WordPress manages log file sizes.
+     * This will be removed in a future version.
      */
-    public static function getPath(string $name = 'spotlight-error-log.txt'): string
-    {
-        $uploadDir = wp_upload_dir();
+    private const MAX_SIZE = 1048576;
 
-        if ($uploadDir['error'] || empty($uploadDir['basedir'])) {
-            return static::FALLBACK_FILE;
-        } else {
-            return $uploadDir['basedir'] . '/' . $name;
-        }
+    /**
+     * Gets the path to the WordPress debug log file.
+     *
+     * @since 1.7.2
+     * @return string The path to the WordPress debug log file.
+     */
+    public static function getDebugLogPath(): string
+    {
+        return WP_CONTENT_DIR . '/debug.log';
     }
 
     /**
-     * Logs a message to the error log file.
+     * Logs a message to the WordPress debug log.
      *
      * @param string $message The message to log.
      */
     public static function message(string $message): void
     {
-        static::prepend(static::entryToString($message));
+        if (defined('WP_DEBUG') && WP_DEBUG && defined('WP_DEBUG_LOG') && WP_DEBUG_LOG) {
+            error_log(self::entryToString($message));
+        }
     }
 
     /**
-     * Logs an exception to the error log file.
+     * Logs an exception to the WordPress debug log.
      *
      * @param Throwable $exception The exception to log.
      */
     public static function exception(Throwable $exception): void
     {
-        static::message($exception->getMessage() . PHP_EOL . $exception->getTraceAsString());
+        $message = sprintf(
+            "Exception: %s in %s:%d\nStack trace:\n%s",
+            $exception->getMessage(),
+            $exception->getFile(),
+            $exception->getLine(),
+            $exception->getTraceAsString()
+        );
+
+        self::message($message);
     }
 
     /**
@@ -58,81 +72,69 @@ class ErrorLog
         try {
             $fn();
         } catch (Throwable $exception) {
-            static::exception($exception);
+            self::exception($exception);
         }
     }
 
-    /** Gets the size of the error log file. */
+    /** Gets the size of the WordPress debug log file. */
     public static function getSize(): int
     {
-        if (file_exists(static::getPath())) {
-            return (int) filesize(static::getPath());
-        } else {
-            return 0;
-        }
+        $path = self::getDebugLogPath();
+        return file_exists($path) ? (int) filesize($path) : 0;
     }
 
     /**
-     * Gets the last modified time of the error log file.
+     * Gets the last modified time of the WordPress debug log file.
      *
-     * @return string|null An ISO 8601 date string, or null on failure (such as if the file does not exist).
+     * @return string|null ISO 8601 date string, or null if the file does not exist.
      */
     public static function getLastModified(): ?string
     {
-        $path = static::getPath();
-        $mTime = file_exists($path) ? filemtime($path) : false;
-
-        return ($mTime === false) ? null : date(DATE_ATOM, $mTime);
+        $path = self::getDebugLogPath();
+        return file_exists($path) ? date(DATE_ATOM, filemtime($path)) : null;
     }
 
-    /** Reads the entire contents of the error log file. */
+    /** Reads the entire contents of the WordPress debug log file. */
     public static function read(): string
     {
-        $path = static::getPath();
-
-        if (file_exists($path)) {
-            return file_get_contents(static::getPath());
-        } else {
-            return '';
-        }
+        $path = self::getDebugLogPath();
+        return file_exists($path) ? file_get_contents($path) : '';
     }
 
     /**
-     * Reads the error log file in chunks using a generator.
+     * Reads the WordPress debug log file in chunks using a generator.
      *
      * @param int $chunkSize The size of each chunk to read, in bytes.
      */
     public static function readChunks(int $chunkSize): Generator
     {
-        $path = static::getPath();
+        $path = self::getDebugLogPath();
 
         if (file_exists($path)) {
-            $f = fopen($path, 'r');
+            $file = fopen($path, 'r');
 
-            if ($f !== false) {
+            if ($file !== false) {
                 try {
-                    while (!feof($f)) {
-                        yield fread($f, $chunkSize);
+                    while (!feof($file)) {
+                        yield fread($file, $chunkSize);
                     }
                 } finally {
-                    fclose($f);
+                    fclose($file);
                 }
             }
         }
     }
 
     /**
-     * Reads the error log file as lines, using chunk-based reading.
+     * Reads the WordPress debug log file as lines, using chunk-based reading.
      *
      * @param int $chunkSize The size of each chunk.
-     * @return Generator
      */
     public static function readLines(int $chunkSize): Generator
     {
-        // A buffer to store the previous chunk's last line (since it may be an incomplete line)
         $buffer = '';
 
-        foreach (static::readChunks($chunkSize) as $chunk) {
+        foreach (self::readChunks($chunkSize) as $chunk) {
             $lines = explode(PHP_EOL, $buffer . $chunk);
             $buffer = array_pop($lines);
 
@@ -143,30 +145,25 @@ class ErrorLog
     }
 
     /**
-     * Reads the error log file as separate log entries.
+     * Reads the WordPress debug log file as separate log entries.
      *
-     * This reads the entire error log file and splits it into an array, where each entry should be a single log entry.
-     *
-     * @return Generator<array{time: string,message: string}> A list of assoc arrays.
+     * @return Generator<array{time: string,message: string}>
      */
     public static function readEntries(): Generator
     {
         $curr = null;
 
-        // Read the lines in 128 Kib chunks
-        foreach (static::readLines(128 * 1024) as $line) {
+        foreach (self::readLines(128 * 1024) as $line) {
             $line = trim($line);
             if (empty($line)) {
                 continue;
             }
 
             if (stripos($line, '[') === 0) {
-                // If the start of a new log entry, yield the previous entry first (if any)
                 if ($curr !== null) {
                     yield $curr;
                 }
 
-                // Parse the new entry, which should start with a date+time string in brackets
                 preg_match('/^\[(.*?)]\s?(.*?)$/', $line, $matches);
 
                 if (is_array($matches) && count($matches) === 3) {
@@ -176,7 +173,6 @@ class ErrorLog
                     ];
                 }
             } elseif ($curr !== null) {
-                // Add the line to the current entry's message
                 $curr['message'] .= PHP_EOL . $line;
             }
         }
@@ -186,82 +182,84 @@ class ErrorLog
         }
     }
 
-    /** Deletes the error log file. */
+    /** Deletes the WordPress debug log file. */
     public static function delete(): bool
     {
-        $path = static::getPath();
-        if (file_exists($path)) {
-            return unlink($path);
-        } else {
+        try {
+            $path = self::getPath();
+
+            if (!file_exists($path)) {
+                return true;
+            }
+
+            if (!is_writable($path)) {
+                throw new Exception("File is not writable: $path");
+            }
+
+            if (!unlink($path)) {
+                throw new Exception("Failed to delete log file: $path");
+            }
+
             return true;
+        } catch (Throwable $exception) {
+            self::exception($exception);
+            return false;
         }
     }
 
-    /** Transforms an entry into a string. */
+    /** Transforms an entry into a formatted log string. */
     protected static function entryToString(string $message, ?string $time = null): string
     {
         $time = $time ?? date(DATE_ATOM);
-        $tPrefix = "[" . $time . "]";
-        $tLen = strlen($tPrefix) + 1;
-
-        $lines = explode("\n", $message);
-        $head = array_shift($lines);
-        $message = "$tPrefix $head\n";
-
-        if (count($lines) > 1) {
-            $indented = array_map(function ($line) use ($tLen) {
-                return str_repeat(' ', $tLen) . $line;
-            }, $lines);
-
-            $message .= implode(PHP_EOL, $indented) . PHP_EOL;
-        }
-
-        return $message;
+        return "[{$time}] [Spotlight WP] " . $message;
     }
 
     /**
      * Prepends the given text to the error log file.
      *
+     * @deprecated 1.7.2 This method is no longer needed since logging is handled via WordPress debug.log.
+     *
      * @param string $text The text to prepend.
      */
     protected static function prepend(string $text): void
     {
-        $logFilePath = static::getPath();
-        $tmpFilePath = static::getPath(uniqid('spotlight-temp-'));
+        _deprecated_function(
+            __METHOD__,
+            '1.7.2',
+            'WordPress debug.log is now used for logging. This method is no longer necessary.'
+        );
 
-        // Write the text to a temporary file
-        $success = file_put_contents($tmpFilePath, $text);
-        if ($success === false) {
-            return;
-        }
+        error_log($text);
+    }
 
-        // Open the temporary file and copy over the contents of the actual log file
-        $tmpFile = fopen($tmpFilePath, 'a');
-        if ($tmpFile) {
-            try {
-                $numBytes = strlen($text);
-                foreach (static::readEntries() as $entry) {
-                    $entryStr = static::entryToString($entry['message'], $entry['time']);
-                    fwrite($tmpFile, $entryStr);
 
-                    $numBytes += strlen($entryStr);
-                    if ($numBytes > static::MAX_SIZE) {
-                        break;
-                    }
-                }
-            } finally {
-                fclose($tmpFile);
+    /**
+     * Gets the path to the error log file.
+     *
+     * Since version 1.7.2, this method now returns the WordPress debug log path instead of a custom file.
+     * This method is deprecated and no longer used.
+     *
+     * @since 1.0.0
+     * @deprecated 1.7.2 Use getDebugLogPath instead.
+     *
+     * @param string $name (Deprecated) The name of the log file. This parameter is ignored.
+     * @return string The path to the WordPress debug log file.
+     */
+    public static function getPath(string $name = 'spotlight-error-log.txt'): string
+    {
+        _deprecated_function(
+            __METHOD__,
+            '1.7.2',
+            'WordPress debug.log is now used for logging. This method is no longer necessary use getDebugLogPath instead.'
+        );
 
-                if (file_exists($logFilePath) && !is_dir($logFilePath)) {
-                    @unlink($logFilePath);
-                }
+        $uploadDir = wp_upload_dir();
 
-                copy($tmpFilePath, $logFilePath);
-
-                if (file_exists($tmpFilePath) && !is_dir($tmpFilePath)) {
-                    @unlink($tmpFilePath);
-                }
-            }
+        if ($uploadDir['error'] || empty($uploadDir['basedir'])) {
+            return static::FALLBACK_FILE;
+        } else {
+            return $uploadDir['basedir'] . '/' . $name;
         }
     }
+
 }

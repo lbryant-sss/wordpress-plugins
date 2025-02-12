@@ -771,13 +771,12 @@ if ( ! class_exists( 'Mega_Menu_Style_Manager' ) ) :
 		 */
 		public function generate_css_for_location_new( $location, $theme, $menu_id ) {
 
-			if ( is_readable( MEGAMENU_PATH . 'classes/scss/1.11.1/scss.inc.php' ) && ! class_exists( 'scssc' ) ) {
+			if ( is_readable( MEGAMENU_PATH . 'classes/scss/1.11.1/scss.inc.php' ) && ! class_exists( 'ScssPhp\ScssPhp\Compiler' ) ) { 
 				require_once MEGAMENU_PATH . 'classes/scss/1.11.1/scss.inc.php';
 			}
 
-			$scssc = new Compiler();
-			//$scssc->setOutputStyle(\ScssPhp\ScssPhp\OutputStyle::EXPANDED);
-
+			$scssc = new \ScssPhp\ScssPhp\Compiler();
+			
 			$import_paths = apply_filters(
 				'megamenu_scss_import_paths',
 				array(

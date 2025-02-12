@@ -2,6 +2,8 @@
 
 namespace FluentForm\App\Services\FormBuilder\Components;
 
+use FluentForm\Framework\Helpers\ArrayHelper;
+
 class Recaptcha extends BaseComponent
 {
     /**
@@ -65,6 +67,19 @@ class Recaptcha extends BaseComponent
                 $atts['data-recptcha_key'] = $siteKey;
                 return $atts;
             });
+
+            $shouldRenderBadge = ArrayHelper::get($data, 'settings.render_recaptcha_v3_badge', false);
+            
+            if (!$shouldRenderBadge) {
+                // Add CSS to hide reCAPTCHA badge
+                add_action('wp_footer', function() {
+                    echo "<style>
+                    .grecaptcha-badge {
+                        visibility: hidden;
+                    }
+                </style>";
+                });
+            }
 
             return;
         }

@@ -35,9 +35,7 @@ class ShippingMethod extends WC_Shipping_Method
         $this->init_settings();
 
         if (!$this->instance_id) {
-            /** @noinspection PhpUndefinedNamespaceInspection */
-            /** @noinspection PhpUndefinedClassInspection */
-            $disabled = (get_option('wbs_global_methods') ?: 'only-wbsng') === 'only-wbsng' && class_exists(\Gzp\WbsNg\Plugin::class);
+            $disabled = Plugin::globalMethods() === 'only-wbsng';
             if ($disabled) {
                 $this->enabled = 'no';
             }
@@ -210,7 +208,7 @@ class ShippingMethod extends WC_Shipping_Method
             'wcpre441' => !Plugin::wc441plus(),
 
             'globalMethods' => ($this->instance_id || !class_exists(\Gzp\WbsNg\Plugin::class)) ? null : [
-                'state' => get_option('wbs_global_methods') ?: 'only-wbs',
+                'state' => Plugin::globalMethods(),
                 'endpoint' => Api::$globalSwitch->url(),
                 'wbsngRedirectUrl' => Plugin::shippingUrl(\Gzp\WbsNg\Plugin::ID),
             ],

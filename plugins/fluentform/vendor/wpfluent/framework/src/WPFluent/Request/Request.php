@@ -139,15 +139,41 @@ class Request
      */
     public function getIp()
     {
-        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            $ip = $this->server('HTTP_CLIENT_IP');
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $ip = $this->server('HTTP_X_FORWARDED_FOR');
-        } else {
-            $ip = $this->server('REMOTE_ADDR');
+        $ip = $this->server('REMOTE_ADDR');
+
+        $headers = [
+            'HTTP_CLIENT_IP',
+            'HTTP_X_FORWARDED_FOR'
+        ];
+
+        foreach ($headers as $header) {
+            if ($this->server($header)) {
+                $headerIps = array_map('trim', explode(',', $this->server($header)));
+                foreach ($headerIps as $headerIp) {
+                    if ($this->isValidIp($headerIp)) {
+                        $ip = $headerIp;
+                        break 2;
+                    }
+                }
+            }
         }
 
-        return $ip;
+        return $this->isValidIp($ip) ? $ip : '0.0.0.0';
+    }
+
+    private function isValidIp($ip)
+    {
+        if (defined('WP_DEBUG')) {
+            // In debug mode, allow private IPs (including localhost)
+            return filter_var($ip, FILTER_VALIDATE_IP) !== false;
+        } else {
+            // In production, only allow public IPs
+            return filter_var(
+                $ip, 
+                FILTER_VALIDATE_IP, 
+                FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+            ) !== false;
+        }
     }
 
     public function server($key = null, $default = null)

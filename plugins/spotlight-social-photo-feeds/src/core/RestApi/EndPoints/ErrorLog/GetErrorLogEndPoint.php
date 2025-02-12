@@ -2,10 +2,10 @@
 
 namespace RebelCode\Spotlight\Instagram\RestApi\EndPoints\ErrorLog;
 
-use RebelCode\Spotlight\Instagram\ErrorLog;
-use RebelCode\Spotlight\Instagram\RestApi\EndPoints\AbstractEndpointHandler;
-use WP_REST_Request;
 use WP_REST_Response;
+use WP_REST_Request;
+use RebelCode\Spotlight\Instagram\RestApi\EndPoints\AbstractEndpointHandler;
+use RebelCode\Spotlight\Instagram\ErrorLog;
 
 class GetErrorLogEndPoint extends AbstractEndpointHandler
 {
@@ -38,7 +38,7 @@ class GetErrorLogEndPoint extends AbstractEndpointHandler
             'entries' => $entries,
             'fileSize' => ErrorLog::getSize(),
             'lastModified' => ErrorLog::getLastModified(),
-            'path' => ErrorLog::getPath(),
+            'path' => ErrorLog::getDebugLogPath(),
             'isEnd' => !$reachedLimit,
         ]);
     }

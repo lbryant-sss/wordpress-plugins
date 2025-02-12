@@ -2,6 +2,7 @@
 
 namespace RebelCode\Spotlight\Instagram\Modules;
 
+use Throwable;
 use RebelCode\Spotlight\Instagram\Wp\Shortcode;
 use RebelCode\Spotlight\Instagram\Wp\PostType;
 use RebelCode\Spotlight\Instagram\Wp\NoticesManager;
@@ -11,6 +12,7 @@ use RebelCode\Spotlight\Instagram\Wp\CronJob;
 use RebelCode\Spotlight\Instagram\Utils\Arrays;
 use RebelCode\Spotlight\Instagram\PostTypes\AccountPostType;
 use RebelCode\Spotlight\Instagram\Module;
+use RebelCode\Spotlight\Instagram\ErrorLog;
 use RebelCode\Spotlight\Instagram\Di\ArrayExtension;
 use RebelCode\Spotlight\Instagram\Config\WpOption;
 use RebelCode\Spotlight\Instagram\Config\ConfigSet;
@@ -19,7 +21,6 @@ use Psr\Container\ContainerInterface;
 use Dhii\Services\Factory;
 use Dhii\Services\Factories\Value;
 use Dhii\Services\Factories\GlobalVar;
-
 use Dhii\Services\Factories\FuncService;
 
 /**
@@ -90,6 +91,20 @@ class WordPressModule extends Module
                 ['@accounts/cpt','@config/set'], function ($v1, $v2, PostType $accounts, ConfigSet $cfg) {
                     $account = AccountPostType::findPersonalAccount($accounts);
                     $cfg->get('personalAccountNotice')->setValue(!empty($account));
+                }
+            ),
+            'migrations/1.7.2/delete_error_log' => new FuncService(
+                ['@wp/db'],
+                function ($oldVer, $newVer, $wpdb) {
+                    if (version_compare($oldVer, '1.7.2', '<')) {
+                        try {
+                            if (!ErrorLog::delete()) {
+                                ErrorLog::message('ErrorLog::delete() failed');
+                            }
+                        } catch (Throwable $exception) {
+                            ErrorLog::exception($exception);
+                        }
+                    }
                 }
             ),
         ];
@@ -163,6 +178,7 @@ class WordPressModule extends Module
             'migrator/migrations' => new ArrayExtension(
                 [
                 'migrations/*/check_personal_account',
+                'migrations/1.7.2/delete_error_log',
                 ]
             ),
         ];

@@ -1324,7 +1324,7 @@ class TranslationString
             'Yes, Confirm!' => __('Yes, Confirm!', 'fluentform'),
             'Search name, address, mask input etc.' => __('Search name, address, mask input etc.', 'fluentform'),
             "Conversational Forms currently doesn't support the following fields: You may also lose data of these fields." => __("Conversational Forms currently doesn't support the following fields: You may also lose data of these fields.", 'fluentform'),
-            'History (Beta)' => __('History (Beta)', 'fluentform'),
+            'History' => __('History', 'fluentform'),
             'Restore' => __('Restore', 'fluentform'),
             'Save your current form changes.' => __('Save your current form changes.', 'fluentform'),
             'The saved version will then appear in the form history.' => __('The saved version will then appear in the form history.', 'fluentform'),

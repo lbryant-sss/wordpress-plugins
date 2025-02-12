@@ -163,7 +163,21 @@ class Component
 
         if ($hasFluentformMeta || apply_filters('fluentform/load_styles', $loadStyle, $post)) {
             wp_enqueue_style('fluent-form-styles');
-            wp_enqueue_style('fluentform-public-default');
+            $loadPublicStyle = apply_filters_deprecated(
+                'fluentform_load_default_public',
+                [
+                    true,
+                    (object)[],
+                    $postId
+                ],
+                FLUENTFORM_FRAMEWORK_UPGRADE,
+                'fluentform/load_default_public',
+                'Use fluentform/load_default_public instead of fluentform_load_default_public.'
+            );
+
+            if (apply_filters('fluentform/load_default_public', $loadPublicStyle, (object)[], $postId)) {
+                wp_enqueue_style('fluentform-public-default');
+            }
 
             do_action_deprecated(
                 'fluentform_pre_load_scripts',
@@ -621,19 +635,20 @@ class Component
         }
 
         wp_enqueue_style('fluent-form-styles');
-
+        $postId = get_the_ID() ?: 0;
         $loadStyle = apply_filters_deprecated(
             'fluentform_load_default_public',
             [
                 true,
-                $form
+                $form,
+                $postId
             ],
             FLUENTFORM_FRAMEWORK_UPGRADE,
             'fluentform/load_default_public',
             'Use fluentform/load_default_public instead of fluentform_load_default_public.'
         );
 
-        if (apply_filters('fluentform/load_default_public', $loadStyle, $form)) {
+        if (apply_filters('fluentform/load_default_public', $loadStyle, $form, $postId)) {
             wp_enqueue_style('fluentform-public-default');
         }
         /*

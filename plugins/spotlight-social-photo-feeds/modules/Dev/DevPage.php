@@ -2,15 +2,15 @@
 
 namespace RebelCode\Spotlight\Instagram\Modules\Dev;
 
-use Psr\Container\ContainerInterface;
-use RebelCode\Iris\Store;
-use RebelCode\Spotlight\Instagram\CoreModule;
-use RebelCode\Spotlight\Instagram\Engine\Data\Item\MediaItem;
-use RebelCode\Spotlight\Instagram\Engine\Data\Item\MediaType;
-use RebelCode\Spotlight\Instagram\Engine\Store\MediaFileStore;
-use RebelCode\Spotlight\Instagram\ErrorLog;
-use RebelCode\Spotlight\Instagram\PostTypes\MediaPostType;
 use RebelCode\Spotlight\Instagram\Wp\PostType;
+use RebelCode\Spotlight\Instagram\PostTypes\MediaPostType;
+use RebelCode\Spotlight\Instagram\ErrorLog;
+use RebelCode\Spotlight\Instagram\Engine\Store\MediaFileStore;
+use RebelCode\Spotlight\Instagram\Engine\Data\Item\MediaType;
+use RebelCode\Spotlight\Instagram\Engine\Data\Item\MediaItem;
+use RebelCode\Spotlight\Instagram\CoreModule;
+use RebelCode\Iris\Store;
+use Psr\Container\ContainerInterface;
 
 /**
  * The developers page.
@@ -181,7 +181,7 @@ class DevPage
                 </tr>
                 <tr>
                     <td>Error Log path</td>
-                    <td><?= ErrorLog::getPath() ?></td>
+                    <td><?= ErrorLog::getDebugLogPath() ?></td>
                 </tr>
             </tbody>
         </table>

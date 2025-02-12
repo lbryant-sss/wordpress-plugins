@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Facebook for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Facebook for WooCommerce 3.3.2\n"
+"Project-Id-Version: Facebook for WooCommerce 3.3.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/facebook-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-06T10:38:51+00:00\n"
+"POT-Creation-Date: 2025-02-11T11:03:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: facebook-for-woocommerce\n"
@@ -18,7 +18,7 @@ msgstr ""
 #: facebook-for-woocommerce.php
 #: class-wc-facebookcommerce.php:759
 #: facebook-commerce.php:196
-#: includes/Admin.php:1546
+#: includes/Admin.php:1547
 #: includes/Admin/Settings.php:89
 #: includes/Admin/Settings.php:160
 msgid "Facebook for WooCommerce"
@@ -219,7 +219,7 @@ msgstr ""
 #: includes/Admin.php:479
 #: includes/Admin.php:507
 #: includes/Admin.php:1210
-#: includes/Admin.php:1371
+#: includes/Admin.php:1372
 msgid "Do not sync"
 msgstr ""
 
@@ -259,42 +259,42 @@ msgid "%1$sHeads up!%2$s Facebook's %3$sCommerce Policies%4$s do not support sel
 msgstr ""
 
 #: includes/Admin.php:1206
-#: includes/Admin.php:1367
+#: includes/Admin.php:1368
 msgid "Facebook Sync"
 msgstr ""
 
 #: includes/Admin.php:1208
-#: includes/Admin.php:1369
+#: includes/Admin.php:1370
 msgid "Sync and show in catalog"
 msgstr ""
 
 #: includes/Admin.php:1209
-#: includes/Admin.php:1370
+#: includes/Admin.php:1371
 msgid "Sync and hide in catalog"
 msgstr ""
 
 #: includes/Admin.php:1214
-#: includes/Admin.php:1375
+#: includes/Admin.php:1376
 msgid "Choose whether to sync this product to Facebook and, if synced, whether it should be visible in the catalog."
 msgstr ""
 
 #: includes/Admin.php:1221
-#: includes/Admin.php:1385
+#: includes/Admin.php:1386
 msgid "Facebook Description"
 msgstr ""
 
 #: includes/Admin.php:1223
-#: includes/Admin.php:1387
+#: includes/Admin.php:1388
 msgid "Custom (plain-text only) description for product on Facebook. If blank, product description will be used. If product description is blank, shortname will be used."
 msgstr ""
 
 #: includes/Admin.php:1234
-#: includes/Admin.php:1400
+#: includes/Admin.php:1401
 msgid "Facebook Product Image"
 msgstr ""
 
 #: includes/Admin.php:1236
-#: includes/Admin.php:1402
+#: includes/Admin.php:1403
 msgid "Choose the product image that should be synced to the Facebook catalog and displayed for this product."
 msgstr ""
 
@@ -303,50 +303,50 @@ msgid "Use WooCommerce image"
 msgstr ""
 
 #: includes/Admin.php:1239
-#: includes/Admin.php:1406
+#: includes/Admin.php:1407
 msgid "Use custom image"
 msgstr ""
 
 #: includes/Admin.php:1250
-#: includes/Admin.php:1418
+#: includes/Admin.php:1419
 msgid "Custom Image URL"
 msgstr ""
 
 #: includes/Admin.php:1254
-#: includes/Admin.php:1423
+#: includes/Admin.php:1424
 msgid "Please enter an absolute URL (e.g. https://domain.com/image.jpg)."
 msgstr ""
 
 #. translators: Placeholders %1$s - WC currency symbol
 #: includes/Admin.php:1263
-#: includes/Admin.php:1433
+#: includes/Admin.php:1434
 msgid "Facebook Price (%1$s)"
 msgstr ""
 
 #: includes/Admin.php:1267
-#: includes/Admin.php:1437
+#: includes/Admin.php:1438
 msgid "Custom price for product on Facebook. Please enter in monetary decimal (.) format without thousand separators and currency symbols. If blank, product price will be used."
 msgstr ""
 
 #: includes/Admin.php:1278
-#: includes/Admin.php:1306
+#: includes/Admin.php:1307
 msgid "Brand"
 msgstr ""
 
 #: includes/Admin.php:1287
-#: includes/Admin.php:1448
+#: includes/Admin.php:1449
 msgid "Manufacturer Parts Number (MPN)"
 msgstr ""
 
-#: includes/Admin.php:1404
+#: includes/Admin.php:1405
 msgid "Use variation image"
 msgstr ""
 
-#: includes/Admin.php:1405
+#: includes/Admin.php:1406
 msgid "Use parent image"
 msgstr ""
 
-#: includes/Admin.php:1548
+#: includes/Admin.php:1549
 msgid "Close modal panel"
 msgstr ""
 

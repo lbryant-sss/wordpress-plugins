@@ -298,9 +298,9 @@ class Logger
             );
         }
 
-        $logType = Arr::get($attributes, 'type', 'log');
+        $logType = Arr::get($attributes, 'type', 'logs');
 
-        $model = 'log' === $logType ? Log::query() : Scheduler::query();
+        $model = 'logs' === $logType ? Log::query() : Scheduler::query();
 
         $model->whereIn('id', $ids)->delete();
 

@@ -4,6 +4,7 @@ namespace FluentForm\App\Services\FluentConversational\Classes;
 
 use FluentForm\App\Helpers\Helper;
 use FluentForm\App\Modules\Acl\Acl;
+use FluentForm\App\Modules\Form\FormFieldsParser;
 use FluentForm\Framework\Helpers\ArrayHelper;
 use FluentForm\App\Modules\Form\Settings\FormCssJs;
 use FluentForm\App\Services\FluentConversational\Classes\Converter\Converter;
@@ -561,6 +562,19 @@ class Form
             'paymentConfig'            => $this->getPaymentConfig($form),
             'date_i18n'                => \FluentForm\App\Modules\Component\Component::getDatei18n()
         ]);
+
+        $hasSaveProgressButton = false;
+        $saveProgressButton = [];
+        foreach ($form->fields['fields'] as $item) {
+            if (isset($item['element']) && $item['element'] === 'save_progress_button') {
+                $hasSaveProgressButton = true;
+                $saveProgressButton = $item;
+            }
+        }
+
+        if ($hasSaveProgressButton && $saveProgressButton) {
+            $this->localizeSaveProgressButton($saveProgressButton, $formId);
+        }
     
         /* This filter is deprecated and will be removed soon */
         $disableAnalytics = apply_filters('fluentform-disabled_analytics', true);
@@ -721,6 +735,19 @@ class Form
             'date_i18n'                => \FluentForm\App\Modules\Component\Component::getDatei18n(),
             'rest'                     => Helper::getRestInfo()
         ]);
+        
+        $hasSaveProgressButton = false;
+        $saveProgressButton = [];
+        foreach ($form->fields['fields'] as $item) {
+            if (isset($item['element']) && $item['element'] === 'save_progress_button') {
+                $hasSaveProgressButton = true;
+                $saveProgressButton = $item;
+            }
+        }
+
+        if ($hasSaveProgressButton && $saveProgressButton) {
+            $this->localizeSaveProgressButton($saveProgressButton, $formId);
+        }
 
         $this->printLoadedScripts();
 
@@ -887,5 +914,27 @@ class Form
             'has_save_link'             => $form->save_state?? false,
             'step_completed'            => $form->stepCompleted ?? 0
         ];
+    }
+    
+    public function localizeSaveProgressButton($field, $formId)
+    {
+        $vars = apply_filters('fluentform/save_progress_vars', [
+            'ajaxurl'                   => admin_url('admin-ajax.php'),
+            'source_url'                => home_url($_SERVER['REQUEST_URI']),
+            'form_id'                   => $formId,
+            'nonce'                     => wp_create_nonce(),
+            'copy_button'               => fluentFormMix('img/copy.svg'),
+            'copy_success_button'       => fluentFormMix('img/check.svg'),
+            'email_button'              => fluentFormMix('img/email.svg'),
+            'email_placeholder_str'     => __('Your Email Here', 'fluentformpro'),
+            'email_resume_link_enabled' => false,
+            'save_progress_btn_name'    => ArrayHelper::get($field, 'attributes.name'),
+        ]);
+
+        if (ArrayHelper::get($field, 'settings.email_resume_link_enabled')) {
+            $vars['email_resume_link_enabled'] = true;
+        }
+
+        wp_localize_script('fluent_forms_conversational_form', 'form_state_save_vars', $vars);
     }
 }

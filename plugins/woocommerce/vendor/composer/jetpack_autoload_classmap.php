@@ -3362,10 +3362,6 @@ return array(
 		'version' => '9.7.0.0',
 		'path'    => $baseDir . '/src/Internal/BatchProcessing/BatchProcessorInterface.php'
 	),
-	'Automattic\\WooCommerce\\Internal\\BrandingController' => array(
-		'version' => '9.7.0.0',
-		'path'    => $baseDir . '/src/Internal/BrandingController.php'
-	),
 	'Automattic\\WooCommerce\\Internal\\Brands' => array(
 		'version' => '9.7.0.0',
 		'path'    => $baseDir . '/src/Internal/Brands.php'

@@ -140,6 +140,7 @@ use FluentForm\Framework\Helpers\ArrayHelper;
                                     <?php if (ArrayHelper::get($component, 'hash') == 're_captcha'
                                         || ArrayHelper::get($component, 'hash') == 'h_captcha'
                                         || ArrayHelper::get($component, 'hash') == 'turnstile'
+                                        || ArrayHelper::get($component, 'hash') == 'cleantalk'
                                     ) : ?>
 
                                         <li class="<?php echo esc_attr(Helper::getHtmlElementClass($component['hash'],
@@ -221,6 +222,7 @@ use FluentForm\Framework\Helpers\ArrayHelper;
                                         if (ArrayHelper::get($component, 'hash') != 're_captcha'
                                             && ArrayHelper::get($component, 'hash') != 'h_captcha'
                                             && ArrayHelper::get($component, 'hash') != 'turnstile'
+                                            && ArrayHelper::get($component, 'hash') != 'cleantalk'
                                             && ArrayHelper::get($component, 'query.component') != 'payment_settings'
                                             && ArrayHelper::get($component, 'query.component') != 'license_page'
                                             && ArrayHelper::get($component, 'hash') != 'admin_approval'

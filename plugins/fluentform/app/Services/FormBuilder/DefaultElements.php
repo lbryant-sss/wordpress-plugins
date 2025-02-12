@@ -1499,10 +1499,11 @@ $defaultElements = [
             'index'      => 2,
             'element'    => 'recaptcha',
             'attributes' => ['name' => 'g-recaptcha-response'],
-            'settings'   => [
-                'label'            => '',
-                'label_placement'  => '',
-                'validation_rules' => [],
+            'settings' => [
+                'label'                     => '',
+                'label_placement'           => '',
+                'validation_rules'          => [],
+                'render_recaptcha_v3_badge' => false
             ],
             'editor_options' => [
                 'title'              => __('reCaptcha', 'fluentform'),

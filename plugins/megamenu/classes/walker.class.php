@@ -125,8 +125,7 @@ if ( ! class_exists( 'Mega_Menu_Walker' ) ) :
 			$list_item_attributes = array(
 				'class' => $class,
 				'style' => $style,
-				'id' => $id,
-				'role' => $aria_role
+				'id' => $id
 			);
 
 			$attributes = '';

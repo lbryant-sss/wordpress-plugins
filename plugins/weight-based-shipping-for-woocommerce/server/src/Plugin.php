@@ -54,6 +54,19 @@ class Plugin
         return !defined('WC_VERSION') || version_compare(WC_VERSION, '4.4.1', '>=');
     }
 
+    public static function globalMethods(): string
+    {
+        $v = get_option('wbs_global_methods') ?: 'only-wbsng';
+
+        /** @noinspection PhpUndefinedClassInspection */
+        /** @noinspection PhpUndefinedNamespaceInspection */
+        if (($v === 'only-wbsng' || $v === 'both') && !class_exists(\Gzp\WbsNg\Plugin::class)) {
+            $v = 'only-wbs';
+        }
+
+        return $v;
+    }
+
     public function __construct(string $entrypoint)
     {
         $entrypoint = wp_normalize_path($entrypoint);
@@ -120,7 +133,7 @@ class Plugin
     {
         $newLinks = [];
         $newLinks[self::shippingUrl()] = 'Shipping zones';
-        $newLinks[self::shippingUrl(self::ID)] = 'Global shipping rules';
+        $newLinks[self::shippingUrl(self::globalMethods() === 'only-wbs' ? self::ID : 'wbsng')] = 'Global shipping rules';
 
         foreach ($newLinks as $url => &$text) {
             $text = '<a href="'.esc_html($url).'">'.esc_html($text).'</a>';

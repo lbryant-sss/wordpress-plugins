@@ -1076,6 +1076,11 @@ class Menu
             'title' => 'Turnstile',
         ];
 
+        $components['CleanTalk'] = [
+            'hash'  => 'cleantalk',
+            'title' => 'CleanTalk',
+        ];
+
         $customLinks = apply_filters('fluentform/global_settings_menu', []);
         $this->app->view->render('admin.globalSettings.menu', [
             'components'       => $components,

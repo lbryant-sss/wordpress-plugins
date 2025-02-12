@@ -1297,7 +1297,8 @@ class Admin {
 					)
 				);
 				?>
-			</div>		
+			</div>
+			
 			<div class='options_group show_if_variable'>
 				<?php
 					woocommerce_wp_text_input(

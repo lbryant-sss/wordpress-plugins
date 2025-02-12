@@ -432,7 +432,7 @@ class FormBuilder
             foreach ($item['columns'] as $key => $innerItem) {
                 foreach ($innerItem['fields'] as &$innerField) {
                     $innerField['attributes']['name'] = $rootName . '[' . $key . ']';
-                    $rules = $innerField['settings']['validation_rules'];
+                    $rules = ArrayHelper::get($innerField, 'settings.validation_rules', []);
                     $innerField['settings']['validation_rules'] = $rules;
                     $this->extractValidationRule($innerField, $rootName . '[' . $ruleIndex . ']');
                     $ruleIndex++;

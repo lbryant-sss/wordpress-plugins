@@ -726,8 +726,6 @@ class WC_Facebook_Product {
 
 		$custom_fields = $this->get_facebook_specific_fields();
 
-		$custom_fields = $this->get_facebook_specific_fields();
-
 		if ( self::PRODUCT_PREP_TYPE_ITEMS_BATCH === $type_to_prepare_for ) {
 			$product_data = array(
 				'title'                 => WC_Facebookcommerce_Utils::clean_string( $this->get_title() ),

@@ -43,11 +43,15 @@ You can view a [live demo of Koko Analytics here](https://www.kokoanalytics.com/
 
 ### Koko Analytics Pro
 
-The following features are available through [Koko Analytics Pro](https://www.kokoanalytics.com/pricing):
+All of the features listed above are available for free. Some additional features are available through [Koko Analytics Pro](https://www.kokoanalytics.com/pricing):
 
-- **Event Tracking**: Built-in events like outbound link clicks, form submissions plus the ability to [track any type of custom event](https://www.kokoanalytics.com/kb/tracking-events/).
-- **Email reports**: Daily, weekly or monthly [email reports](https://www.kokoanalytics.com/2024/08/21/setting-up-email-reports-with-koko-analytics-pro/).
-- **Export to CSV**: Exports the current dashboard view to CSV.
+- [Event Tracking](https://www.kokoanalytics.com/features/custom-event-tracking/): track outbound link clicks, form submissions or any other type of custom event.
+- [Email Reports](https://www.kokoanalytics.com/features/email-reports/): Receive a daily, weekly or monthly email summary of your website's most important statistics.
+- [CSV Export](https://www.kokoanalytics.com/features/csv-export/): The ability to export your dashboard data to CSV for advanced analysis.
+- [Pageviews Column](https://www.kokoanalytics.com/features/pageviews-column/): Shows the number of pageviews over a configurable time period right in your WP Admin posts and pages overview.
+- [Admin Bar](https://www.kokoanalytics.com/features/admin-bar/): Shows daily pageviews for a specific page in your WordPress Admin Bar.
+
+You can [purchase Koko Analytics Pro here](https://www.kokoanalytics.com/pricing/).
 
 
 ### Contributing
@@ -150,8 +154,8 @@ You can [purchase Koko Analytics Pro](https://www.kokoanalytics.com/pricing/) to
 ### 1.6.5 - Feb 10, 2025
 
 - Add importer for data from Burst Statistics.
-- Allow passing "false" and "no" to `monthly` query parameter in REST endpoint.
-- Optimize PHP execution time for plugin bootstrapping code by aggresively lazy loading code that only runs on very specific requests. From 0.05 ms to 0.03 ms (!) with opcache or 1.44 ms to 0.54 ms without opcache for general requests.
+- Allow passing "false" and "no" to `monthly` query parameter in REST endpoints.
+- Optimize PHP execution time for plugin bootstrapping code by aggressively lazy loading code that only runs on very specific requests. From 0.05 ms to 0.03 ms (!) with opcache or 1.44 ms to 0.54 ms without opcache for general requests.
 - Minor code improvements to classes responsible for aggregating data from buffer file into permanent storage.
 
 

@@ -4,7 +4,7 @@ Tags: contact form, wp forms, forms, form builder, custom form
 Requires at least: 4.5
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 5.2.10
+Stable tag: 5.2.11
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -430,6 +430,14 @@ You can get support from our official support thread at <a href="https://wpmanag
 
 == Changelog ==
 
+= 5.2.11 (Date: February 10, 2025) =
+- Adds CleanTalk Spam Protection with API
+- Adds Hungarian Language Translation
+- Adds options for reCaptcha V3 badge rendering
+- Improve Honeypot spam protection
+- Fixes WordFence vulnerability IP-Spoofing CVE-2024-13666
+- Fixes fluentform/load_default_public filter not affects Block Editor
+
 = 5.2.10 (Date: January 07, 2025) =
 - Fixes unsupported field disappears inside container
 - Fixes names/address fields '0' required validation
@@ -507,6 +515,7 @@ You can get support from our official support thread at <a href="https://wpmanag
 - Fixes label asterisk style with elementor widget
 - Fixes conditional logic with numeric formatting
 - Fixes Checkable Grid submission issue
+- Fixes reCaptcha V3 badge hide
 
 = 5.2.2 (Date: September 11, 2024) =
 - Update tested WordPress Version
