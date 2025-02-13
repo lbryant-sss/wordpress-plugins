@@ -51,6 +51,12 @@ class RecordApiHelper
 
   public function executeRecordApi($formID, $entryID, $defaultConf, $module, $fieldValues, $fieldMap, $actions, $required)
   {
+    $entryDetails = [
+      'formId'      => $formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     $fieldData = [];
     foreach ($fieldMap as $fieldKey => $fieldPair) {
       if (!empty($fieldPair->zohoFormField)) {
@@ -62,7 +68,7 @@ class RecordApiHelper
 
         if (empty($fieldData[$fieldPair->zohoFormField]) && \in_array($fieldPair->zohoFormField, $required)) {
           $error = new WP_Error('REQ_FIELD_EMPTY', wp_sprintf(__('%s is required for zoho bigin, %s module', 'bit-form'), $fieldPair->zohoFormField, $module));
-          $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error, $entryDetails);
           return $error;
         }
       }
@@ -80,9 +86,9 @@ class RecordApiHelper
 
     $recordApiResponse = $this->insertRecord($module, wp_json_encode($requestParams));
     if ((isset($recordApiResponse->status) && 'error' === $recordApiResponse->status) || 'error' === $recordApiResponse->data[0]->status) {
-      return $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'record', 'type_name' => $module], 'error', $recordApiResponse);
+      return $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'record', 'type_name' => $module], 'error', $recordApiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'record', 'type_name' => $module], 'success', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'record', 'type_name' => $module], 'success', $recordApiResponse, $entryDetails);
     }
     $recordID = 0;
     if (!empty($recordApiResponse->data[0]->details->id)) {
@@ -100,9 +106,9 @@ class RecordApiHelper
 
         $noteApiResponse = $this->insertNote($module, $recordID, wp_json_encode($requestParams));
         if (isset($noteApiResponse->status) && 'error' === $noteApiResponse->status) {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'note', 'type_name' => $module], 'error', $noteApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'note', 'type_name' => $module], 'error', $noteApiResponse, $entryDetails);
         } else {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'note', 'type_name' => $module], 'success', $noteApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'note', 'type_name' => $module], 'success', $noteApiResponse, $entryDetails);
         }
       }
     }
@@ -135,7 +141,7 @@ class RecordApiHelper
         }
       }
       if ($fileFound) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'file', 'type_name' => $module], $responseType, $attachmentApiResponses);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'file', 'type_name' => $module], $responseType, $attachmentApiResponses, $entryDetails);
       }
     }
 
@@ -144,9 +150,9 @@ class RecordApiHelper
       if (isset($fieldValues[$actions->photo])) {
         $attachmentApiResponse = $filesApiHelper->uploadFiles($fieldValues[$actions->photo], $module, $recordID, true);
         if (isset($attachmentApiResponse->status) && 'error' === $attachmentApiResponse->status) {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'photo', 'type_name' => $module], 'error', $attachmentApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'photo', 'type_name' => $module], 'error', $attachmentApiResponse, $entryDetails);
         } else {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'photo', 'type_name' => $module], 'success', $attachmentApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integID, ['type' => 'photo', 'type_name' => $module], 'success', $attachmentApiResponse, $entryDetails);
         }
       }
     }

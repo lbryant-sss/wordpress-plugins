@@ -5,7 +5,7 @@ Tags: privacy policy, terms and conditions, cookie banner, GDPR, CCPA, cookie co
 Requires at least: 5.0
 Requires PHP: 7.0.0
 Tested up to: 6.7
-Stable tag: 3.12.0
+Stable tag: 3.12.1
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 The solution for GDPR compliance + more. Get your cookie banner, privacy policy, terms and conditions and handle cookie consent in just one plugin.
@@ -265,6 +265,9 @@ The Brazilian General Data Protection Law, the ***Lei Geral de Proteção de Dad
 * * *
 
 == Changelog ==
+
+= 3.12.1 =
+* Fix: Prefixed iubenda classes to prevent theme conflicts
 
 = 3.12.0 =
 * Added Integration for Automated Plugin Installation and Configuration
@@ -892,5 +895,5 @@ The Brazilian General Data Protection Law, the ***Lei Geral de Proteção de Dad
 
 == Upgrade Notice ==
 
-= 3.12.0 =
-* Added Integration for Automated Plugin Installation and Configuration
+= 3.12.1 =
+* Fix: Prefixed iubenda classes to prevent theme conflicts

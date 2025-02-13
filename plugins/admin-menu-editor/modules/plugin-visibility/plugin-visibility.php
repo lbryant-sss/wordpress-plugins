@@ -16,6 +16,8 @@ class amePluginVisibility extends amePersistentModule {
 		'manage_network_plugins',
 	);
 
+	const CUSTOMIZATION_COMPONENT = 'plugin_visibility';
+
 	protected $optionName = 'ws_ame_plugin_visibility';
 
 	protected $tabSlug = 'plugin-visibility';
@@ -68,6 +70,15 @@ class amePluginVisibility extends amePersistentModule {
 			->permissionCallback(array($this->menuEditor, 'current_user_can_edit_menu'))
 			->method('post')
 			->register();
+
+		//On save, display a notice if customization is disabled for the current user.
+		$params = $this->menuEditor->get_query_params();
+		if ( !empty($params['message']) ) {
+			add_action(
+				'admin_menu_editor-tab_admin_notices-' . $this->tabSlug,
+				array($this, 'maybeDisplayCustomizationDisabledNotice')
+			);
+		}
 	}
 
 	/**
@@ -81,7 +92,7 @@ class amePluginVisibility extends amePersistentModule {
 	 *  - Precedence order: user > super admin > all roles.
 	 *
 	 * @param string $pluginFileName Plugin file name as returned by plugin_basename().
-	 * @param WP_User $user          Current user.
+	 * @param WP_User $user Current user.
 	 * @return bool
 	 */
 	private function isPluginVisible($pluginFileName, $user = null) {
@@ -226,6 +237,10 @@ class amePluginVisibility extends amePersistentModule {
 			return $plugins;
 		}
 
+		if ( $this->isCustomizationDisabled() ) {
+			return $plugins;
+		}
+
 		$editableProperties = array(
 			'Name'        => 'name',
 			'Description' => 'description',
@@ -274,6 +289,10 @@ class amePluginVisibility extends amePersistentModule {
 			return $updates;
 		}
 
+		if ( $this->isCustomizationDisabled() ) {
+			return $updates;
+		}
+
 		$pluginFileNames = array_keys($updates->response);
 		foreach ($pluginFileNames as $fileName) {
 			//Remove all hidden plugins.
@@ -295,6 +314,10 @@ class amePluginVisibility extends amePersistentModule {
 	 * @param string $action
 	 */
 	public function authorizePluginAction($action) {
+		if ( $this->isCustomizationDisabled() ) {
+			return;
+		}
+
 		//PHPCS special case: This hook callback runs inside a function that validates
 		//nonces and selectively overrides the behaviour of that function.
 		//phpcs:disable WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- See above
@@ -373,6 +396,10 @@ class amePluginVisibility extends amePersistentModule {
 		 * are used to prevent the user from editing plugins via form submissions.
 		 */
 		if ( !wp_doing_ajax() ) {
+			return $extensions;
+		}
+
+		if ( $this->isCustomizationDisabled() ) {
 			return $extensions;
 		}
 
@@ -580,5 +607,22 @@ class amePluginVisibility extends amePersistentModule {
 		unset($settings['plugins'][$pluginFile]);
 		$this->settings = $settings;
 		$this->saveSettings();
+	}
+
+	/**
+	 * @return bool
+	 */
+	private function isCustomizationDisabled() {
+		return $this->menuEditor->is_customization_disabled(self::CUSTOMIZATION_COMPONENT);
+	}
+
+	public function maybeDisplayCustomizationDisabledNotice() {
+		if ( $this->isCustomizationDisabled() ) {
+			printf(
+				'<div class="notice notice-info"><p><strong>%s</strong> %s</p></div>',
+				esc_html(__('You will see the unmodified plugin list on the "Plugins" page.', 'admin-menu-editor')),
+				esc_html(__('Customized plugin list is disabled for your account.', 'admin-menu-editor'))
+			);
+		}
 	}
 }

@@ -52,6 +52,11 @@ class RecordApiHelper
 
   public function executeRecordApi($formID, $entryID, $integId, $logID, $defaultConf, $module, $layout, $fieldValues, $fieldMap, $actions, $required, $fileMap = [], $isRelated = false)
   {
+    $entryDetails = [
+      'formId'      => $formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
     $fieldData = [];
     $filesApiHelper = new FilesApiHelper($this->_tokenDetails, $formID, $entryID, $integId, $logID);
     foreach ($fieldMap as $fieldKey => $fieldPair) {
@@ -66,7 +71,7 @@ class RecordApiHelper
         }
         if (empty($fieldData[$fieldPair->zohoFormField]) && \in_array($fieldPair->zohoFormField, $required)) {
           $error = new WP_Error('REQ_FIELD_EMPTY', wp_sprintf(__('%s is required for zoho crm, %s module', 'bit-form'), $fieldPair->zohoFormField, $module));
-          $this->_logResponse->apiResponse($logID, $integId, ['type' => 'record', 'type_name' => 'field'], 'validation', $error);
+          $this->_logResponse->apiResponse($logID, $integId, ['type' => 'record', 'type_name' => 'field'], 'validation', $error, $entryDetails);
           return $error;
         }
 
@@ -77,7 +82,7 @@ class RecordApiHelper
               : strlen($fieldData[$fieldPair->zohoFormField]);
           if ($currentLength > $requiredLength) {
             $error = new WP_Error('REQ_FIELD_LENGTH_EXCEEDED', wp_sprintf(__('zoho crm field %s\'s maximum length is %s, Given %s', 'bit-form'), $fieldPair->zohoFormField, $module));
-            $this->_logResponse->apiResponse($logID, $integId, ['type' => 'record', 'type_name' => 'field'], 'validation', $error);
+            $this->_logResponse->apiResponse($logID, $integId, ['type' => 'record', 'type_name' => 'field'], 'validation', $error, $entryDetails);
             return $error;
           }
         }
@@ -161,9 +166,9 @@ class RecordApiHelper
       $recordApiResponse = $this->upsertRecord($module, (object) $requestParams);
     }
     if (isset($recordApiResponse->status) && 'error' === $recordApiResponse->status) {
-      $this->_logResponse->apiResponse($logID, $integId, ['type' => 'record', 'type_name' => $module], 'error', $recordApiResponse);
+      $this->_logResponse->apiResponse($logID, $integId, ['type' => 'record', 'type_name' => $module], 'error', $recordApiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($logID, $integId, ['type' => 'record', 'type_name' => $module], 'success', $recordApiResponse);
+      $this->_logResponse->apiResponse($logID, $integId, ['type' => 'record', 'type_name' => $module], 'success', $recordApiResponse, $entryDetails);
     }
     if (
       !empty($recordApiResponse->data)
@@ -184,9 +189,9 @@ class RecordApiHelper
         $tagApiHelper = new TagApiHelper($this->_tokenDetails, $module);
         $addTagResponse = $tagApiHelper->addTagsSingleRecord($recordApiResponse->data[0]->details->id, $tags);
         if (isset($addTagResponse->status) && 'error' === $addTagResponse->status) {
-          $this->_logResponse->apiResponse($logID, $integId, ['type' => 'tag', 'type_name' => $module], 'error', $addTagResponse);
+          $this->_logResponse->apiResponse($logID, $integId, ['type' => 'tag', 'type_name' => $module], 'error', $addTagResponse, $entryDetails);
         } else {
-          $this->_logResponse->apiResponse($logID, $integId, ['type' => 'tag', 'type_name' => $module], 'success', $addTagResponse);
+          $this->_logResponse->apiResponse($logID, $integId, ['type' => 'tag', 'type_name' => $module], 'success', $addTagResponse, $entryDetails);
         }
       }
       if (!empty($actions->attachment)) {
@@ -214,7 +219,7 @@ class RecordApiHelper
           }
         }
         if ($fileFound) {
-          $this->_logResponse->apiResponse($logID, $integId, ['type' => 'attachment', 'type_name' => $module], $responseType, $attachmentApiResponses);
+          $this->_logResponse->apiResponse($logID, $integId, ['type' => 'attachment', 'type_name' => $module], $responseType, $attachmentApiResponses, $entryDetails);
         }
       }
     }

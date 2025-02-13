@@ -24,7 +24,10 @@ class RecordApiHelper
   private $_integrationID;
   private $_logResponse;
 
-  public function __construct($tokenDetails, $integId, $logID)
+  private $_formId;
+  private $_entryId;
+
+  public function __construct($tokenDetails, $integId, $logID, $formId, $entryId)
   {
     $this->_defaultHeader['Authorization'] = "Zoho-oauthtoken {$tokenDetails->access_token}";
     $this->_defaultHeader['Content-Type'] = 'application/json';
@@ -33,6 +36,9 @@ class RecordApiHelper
     $this->_integrationID = $integId;
     $this->_logID = $logID;
     $this->_logResponse = new UtilApiResponse();
+
+    $this->_formId = $formId;
+    $this->_entryId = $entryId;
   }
 
   public function insertRecord($workbook, $worksheet, $headerRow, $dataCenter, $data)
@@ -58,6 +64,11 @@ class RecordApiHelper
 
   public function executeRecordApi($workbook, $worksheet, $headerRow, $dataCenter, $actions, $defaultConf, $fieldValues, $fieldMap)
   {
+    $entryDetails = [
+      'formId'      => $this->_formId,
+      'entryId'     => $this->_entryId,
+      'fieldValues' => $fieldValues
+    ];
     $fieldData = [];
     foreach ($fieldMap as $fieldKey => $fieldPair) {
       if (!empty($fieldPair->zohoFormField)) {
@@ -75,25 +86,25 @@ class RecordApiHelper
     if (isset($actions->update->criteria)) {
       $recordApiResponse = $this->updateRecord($workbook, $worksheet, $headerRow, $dataCenter, $actions->update->criteria, $actions->update->firstMatch, $fieldData);
       if (isset($recordApiResponse->error_message) || 'failure' === $recordApiResponse->status || 'error' === $recordApiResponse->status) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'update'], 'error', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'update'], 'error', $recordApiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'update'], 'success', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'update'], 'success', $recordApiResponse, $entryDetails);
       }
 
       if ($actions->update->insert && 0 === $recordApiResponse->no_of_affected_rows) {
         $recordApiResponse = $this->insertRecord($workbook, $worksheet, $headerRow, $dataCenter, $newFieldData);
         if (isset($recordApiResponse->error_message) || 'failure' === $recordApiResponse->status || 'error' === $recordApiResponse->status) {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'error', $recordApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'error', $recordApiResponse, $entryDetails);
         } else {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'success', $recordApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'success', $recordApiResponse, $entryDetails);
         }
       }
     } else {
       $recordApiResponse = $this->insertRecord($workbook, $worksheet, $headerRow, $dataCenter, $newFieldData);
       if (isset($recordApiResponse->error_message) || 'failure' === $recordApiResponse->status || 'error' === $recordApiResponse->status) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'error', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'error', $recordApiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'success', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'success', $recordApiResponse, $entryDetails);
       }
     }
 
@@ -115,9 +126,9 @@ class RecordApiHelper
       }
       $shareApiResponse = $this->shareWorkbook($workbook, $dataCenter, wp_json_encode($share_json));
       if (isset($shareApiResponse->error_message) || 'failure' === $shareApiResponse->status || 'error' === $shareApiResponse->status) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'share', 'type_name' => 'workbook'], 'error', $shareApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'share', 'type_name' => 'workbook'], 'error', $shareApiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'share', 'type_name' => 'workbook'], 'success', $shareApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'share', 'type_name' => 'workbook'], 'success', $shareApiResponse, $entryDetails);
       }
     }
 

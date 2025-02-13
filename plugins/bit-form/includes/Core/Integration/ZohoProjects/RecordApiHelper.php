@@ -162,6 +162,12 @@ class RecordApiHelper
 
     $eventApiResponse = [];
 
+    $entryDetails = [
+      'formId'      => $formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     // Map Field & Actions Start
     foreach ($subEvent as $sEvent) {
       $required = $projectsConf->default->fields->{$portalId}->{$sEvent}->required;
@@ -186,7 +192,7 @@ class RecordApiHelper
         }
         if (empty($fieldData[$sEvent][$fieldPair->zohoFormField]) && \in_array($fieldPair->zohoFormField, $required)) {
           $error = new WP_Error('REQ_FIELD_EMPTY', wp_sprintf(__('%s is required for %s', 'bit-form'), $fieldPair->zohoFormField, $sEvent));
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error, $entryDetails);
           return $error;
         }
       }
@@ -265,10 +271,10 @@ class RecordApiHelper
       $apiResponse = $this->createProject($dataCenter, $portalId, $fieldData['project']);
 
       if (isset($apiResponse->error)) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'project'], 'error', $apiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'project'], 'error', $apiResponse, $entryDetails);
         return new WP_Error('project not created');
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'project'], 'success', $apiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'project'], 'success', $apiResponse, $entryDetails);
       }
 
       $eventApiResponse['project'] = $apiResponse->projects[0]->id_string;
@@ -283,9 +289,9 @@ class RecordApiHelper
           $apiResponse = $this->associateUsers($dataCenter, $portalId, $eventApiResponse['project'], $data);
 
           if (isset($apiResponse->error)) {
-            $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'user', 'type_name' => 'project'], 'error', $apiResponse);
+            $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'user', 'type_name' => 'project'], 'error', $apiResponse, $entryDetails);
           } else {
-            $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'user', 'type_name' => 'project'], 'success', $apiResponse);
+            $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'user', 'type_name' => 'project'], 'success', $apiResponse, $entryDetails);
           }
         }
       }
@@ -301,10 +307,10 @@ class RecordApiHelper
       $apiResponse = $this->createMilestone($dataCenter, $portalId, $projectId, $fieldData['milestone']);
       $eventApiResponse['milestone'] = $apiResponse->milestones[0]->id_string;
       if (isset($apiResponse->error)) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'milestone'], 'error', $apiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'milestone'], 'error', $apiResponse, $entryDetails);
         return new WP_Error('milestone not created');
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'milestone'], 'success', $apiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'milestone'], 'success', $apiResponse, $entryDetails);
       }
     }
 
@@ -317,10 +323,10 @@ class RecordApiHelper
       $apiResponse = $this->createTasklist($dataCenter, $portalId, $projectId, $fieldData['tasklist']);
       $eventApiResponse['tasklist'] = $apiResponse->tasklists[0]->id_string;
       if (isset($apiResponse->error)) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'tasklist'], 'error', $apiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'tasklist'], 'error', $apiResponse, $entryDetails);
         return new WP_Error('tasklist not created');
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'tasklist'], 'success', $apiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'tasklist'], 'success', $apiResponse, $entryDetails);
       }
     }
 
@@ -333,10 +339,10 @@ class RecordApiHelper
       $apiResponse = $this->createTask($dataCenter, $portalId, $projectId, $fieldData['task']);
       $eventApiResponse['task'] = $apiResponse->tasks[0]->id_string;
       if (isset($apiResponse->error)) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'task'], 'error', $apiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'task'], 'error', $apiResponse, $entryDetails);
         return new WP_Error('task not created');
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'task'], 'success', $apiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'task'], 'success', $apiResponse, $entryDetails);
       }
     }
 
@@ -350,10 +356,10 @@ class RecordApiHelper
       $apiResponse = $this->createSubTask($dataCenter, $portalId, $projectId, $taskId, $fieldData['subtask']);
       $eventApiResponse['subtask'] = $apiResponse->tasks[0]->id_string;
       if (isset($apiResponse->error)) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'subtask'], 'error', $apiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'subtask'], 'error', $apiResponse, $entryDetails);
         return new WP_Error('subtask not created');
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'subtask'], 'success', $apiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'subtask'], 'success', $apiResponse, $entryDetails);
       }
     }
 
@@ -366,10 +372,10 @@ class RecordApiHelper
       $apiResponse = $this->createIssue($dataCenter, $portalId, $projectId, $fieldData['issue']);
       $eventApiResponse['issue'] = $apiResponse->bugs[0]->id_string;
       if (isset($apiResponse->error)) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'issue'], 'error', $apiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'issue'], 'error', $apiResponse, $entryDetails);
         return new WP_Error('issue not created');
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'issue'], 'success', $apiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'issue'], 'success', $apiResponse, $entryDetails);
       }
 
       if (isset($actions->issue->bug_followers)) {
@@ -381,9 +387,9 @@ class RecordApiHelper
 
           $apiResponse = $this->addBugFollower($dataCenter, $portalId, $projectId, $eventApiResponse['issue'], $data);
           if (isset($apiResponse->error)) {
-            $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'follower', 'type_name' => 'issue'], 'error', $apiResponse);
+            $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'follower', 'type_name' => 'issue'], 'error', $apiResponse, $entryDetails);
           } else {
-            $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'follower', 'type_name' => 'issue'], 'success', $apiResponse);
+            $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'follower', 'type_name' => 'issue'], 'success', $apiResponse, $entryDetails);
           }
         }
       }
@@ -420,7 +426,7 @@ class RecordApiHelper
           }
         }
         if ($fileFound) {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'file', 'type_name' => $eventKey], $responseType, $attachmentApiResponses);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'file', 'type_name' => $eventKey], $responseType, $attachmentApiResponses, $entryDetails);
         }
       }
 
@@ -454,9 +460,9 @@ class RecordApiHelper
             $data['tags'] = wp_json_encode($tags);
             $apiResponse = $this->createTags($dataCenter, $portalId, $data);
             if (isset($apiResponse->error)) {
-              $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'tag', 'type_name' => $eventKey], 'error', $apiResponse);
+              $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'tag', 'type_name' => $eventKey], 'error', $apiResponse, $entryDetails);
             } else {
-              $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'tag', 'type_name' => $eventKey], 'success', $apiResponse);
+              $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'tag', 'type_name' => $eventKey], 'success', $apiResponse, $entryDetails);
             }
 
             foreach ($apiResponse->tags as $tag) {
@@ -482,9 +488,9 @@ class RecordApiHelper
 
         $apiResponse = $this->associateTags($dataCenter, $portalId, $projectId, $data);
         if (isset($apiResponse->error)) {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'tag', 'type_name' => $eventKey], 'error', $apiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'tag', 'type_name' => $eventKey], 'error', $apiResponse, $entryDetails);
         } else {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'tag', 'type_name' => $eventKey], 'success', (object) ['code' => 200, 'message' => 'tags associated successfully']);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'tag', 'type_name' => $eventKey], 'success', (object) ['code' => 200, 'message' => 'tags associated successfully'], $entryDetails);
         }
       }
 
@@ -524,9 +530,9 @@ class RecordApiHelper
         }
         $apiResponse = $this->addTimeLog($dataCenter, $portalId, $projectId, $eventKey, $eventId, $timelog);
         if (isset($apiResponse->error)) {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'timelog', 'type_name' => $eventKey], 'error', $apiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'timelog', 'type_name' => $eventKey], 'error', $apiResponse, $entryDetails);
         } else {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'timelog', 'type_name' => $eventKey], 'success', $apiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'timelog', 'type_name' => $eventKey], 'success', $apiResponse, $entryDetails);
         }
       }
     }

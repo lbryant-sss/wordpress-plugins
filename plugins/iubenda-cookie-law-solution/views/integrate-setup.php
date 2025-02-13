@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Including partial header.
 require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 ?>
-<form class="ajax-form">
+<form class="iub-ajax-form">
 	<input hidden name="action" value="integrate_setup">
 	<?php wp_nonce_field( 'iub_integrate_setup', 'iub_nonce' ); ?>
 	<input hidden name="_redirect" value="<?php echo esc_url( add_query_arg( array( 'view' => 'products-page' ), iubenda()->base_url ) ); ?>">
@@ -32,7 +32,7 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 
 			<div class="radio-toggle">
 				<div class="switch">
-					<input type="checkbox" name="cookie_law" id="toggleAddCookieBanner" class="section-checkbox-control" data-section-name="#section-add-cookie-banner" checked/>
+					<input type="checkbox" name="cookie_law" id="toggleAddCookieBanner" class="iub-section-checkbox-control" data-section-name="#section-add-cookie-banner" checked/>
 					<label for="toggleAddCookieBanner"></label>
 				</div>
 				<span><?php esc_html_e( 'Add a cookie banner', 'iubenda' ); ?></span>
@@ -56,18 +56,18 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 				</div>
 				<div class="my-5">
 					<label class="checkbox-regular">
-						<input type="checkbox" class="mr-2 section-checkbox-control" name="iubenda_cookie_law_solution[amp_support]" value="1" checked data-section-name="#amp_support"/>
+						<input type="checkbox" class="mr-2 iub-section-checkbox-control" name="iubenda_cookie_law_solution[amp_support]" value="1" checked data-section-name="#amp_support"/>
 						<span><?php esc_html_e( 'Enable Google AMP support', 'iubenda' ); ?> <a target="_blank" href="<?php echo esc_url( iubenda()->settings->links['enable_amp_support'] ); ?>" class="ml-1 tooltip-icon">?</a></span>
 					</label>
 					<section id="amp_support" class="subOptions my-2">
 						<h4><?php esc_html_e( 'Select the iubenda AMP configuration file location.', 'iubenda' ); ?></h4>
 						<div class="mb-2 d-flex flex-wrap align-items-center">
 							<label class="radio-regular mr-4 mb-3">
-								<input type="radio" name="iubenda_cookie_law_solution[amp_source]" value="local" class="mr-2 section-radio-control" data-section-name="#auto_generated_conf_file" data-section-group=".amp_configuration_file" checked>
+								<input type="radio" name="iubenda_cookie_law_solution[amp_source]" value="local" class="mr-2 iub-section-radio-control" data-section-name="#auto_generated_conf_file" data-section-group=".amp_configuration_file" checked>
 								<span><?php esc_html_e( 'Auto-generated configuration file', 'iubenda' ); ?></span>
 							</label>
 							<label class="mr-4 mb-3 radio-regular text-xs">
-								<input type="radio" name="iubenda_cookie_law_solution[amp_source]" value="remote" class="mr-2 section-radio-control" data-section-name="#custom_conf_file" data-section-group=".amp_configuration_file">
+								<input type="radio" name="iubenda_cookie_law_solution[amp_source]" value="remote" class="mr-2 iub-section-radio-control" data-section-name="#custom_conf_file" data-section-group=".amp_configuration_file">
 								<span><?php esc_html_e( 'Custom configuration file', 'iubenda' ); ?></span>
 							</label>
 						</div>
@@ -109,10 +109,10 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 				?>
 				<div class="my-5">
 					<label class="checkbox-regular">
-						<input type="checkbox" name="iubenda_cookie_law_solution[parse]" value="1" class="mr-2 section-checkbox-control blocking-method native-blocking-method" data-section-name="#iub_parser_engine_container" checked>
+						<input type="checkbox" name="iubenda_cookie_law_solution[parse]" value="1" class="mr-2 iub-section-checkbox-control iub-blocking-method native-blocking-method" data-section-name="#iub_parser_engine_container" checked>
 						<span><?php esc_html_e( 'Native Blocking', 'iubenda' ); ?> <a target="_blank" href="<?php echo esc_url( iubenda()->settings->links['automatic_block_scripts'] ); ?>" class="ml-1 tooltip-icon">?</a></span>
 					</label>
-					<div id="both-blocking-methods-disabled-warning-message" class="mxx-4 mb-4 notice notice--warning mt-2 p-3 align-items-center text-warning text-xs <?php echo iubenda()->options['cs']['parse'] ? 'd-flex' : ''; ?>">
+					<div id="iub-both-blocking-methods-disabled-warning-message" class="mxx-4 mb-4 notice notice--warning mt-2 p-3 align-items-center text-warning text-xs <?php echo iubenda()->options['cs']['parse'] ? 'd-flex' : ''; ?>">
 						<img class="mr-2" src="<?php echo esc_url( IUBENDA_PLUGIN_URL ); ?>/assets/images/warning-icon.svg">
 						<p>
 							<?php esc_html_e( 'Most legislation explicitly require prior consent in order to process user’s data. By disabling these blocking options you may be in breach of such requirements', 'iubenda' ); ?>
@@ -122,11 +122,11 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 						<h4><?php esc_html_e( 'Select Parsing Engine', 'iubenda' ); ?></h4>
 						<div class="mb-3 d-flex flex-wrap align-items-center">
 							<label class="radio-regular mr-4 mb-3">
-								<input type="radio" name="iubenda_cookie_law_solution[parser_engine]" value="new" class="mr-2 section-radio-control" <?php checked( 'new', $default_parser ); ?>>
+								<input type="radio" name="iubenda_cookie_law_solution[parser_engine]" value="new" class="mr-2 iub-section-radio-control" <?php checked( 'new', $default_parser ); ?>>
 								<span><?php esc_html_e( 'Primary', 'iubenda' ); ?></span>
 							</label>
 							<label class="mr-4 mb-3 radio-regular text-xs">
-								<input type="radio" name="iubenda_cookie_law_solution[parser_engine]" value="default" class="mr-2 section-radio-control" <?php checked( 'default', $default_parser ); ?>>
+								<input type="radio" name="iubenda_cookie_law_solution[parser_engine]" value="default" class="mr-2 iub-section-radio-control" <?php checked( 'default', $default_parser ); ?>>
 								<span><?php esc_html_e( 'Secondary', 'iubenda' ); ?></span>
 							</label>
 							<?php if ( ! can_use_dom_document_class() ) : ?>
@@ -138,7 +138,7 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 						</div>
 						<div class="mb-2 d-flex flex-wrap align-items-center">
 							<label class="checkbox-regular">
-								<input type="checkbox" name="iubenda_cookie_law_solution[skip_parsing]" value="1" class="mr-2 section-checkbox-control" data-section-name="#section-block-script">
+								<input type="checkbox" name="iubenda_cookie_law_solution[skip_parsing]" value="1" class="mr-2 iub-section-checkbox-control" data-section-name="#section-block-script">
 								<div class="px-0 py-1">
 									<span class="p-0"><?php esc_html_e( 'Leave scripts untouched on the page if the user has already given consent', 'iubenda' ); ?></span>
 									<div class="notice notice--info mt-2 mb-3 p-3 d-flex align-items-center text-xs">
@@ -151,7 +151,7 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 						</div>
 						<div class="mb-2 d-flex flex-wrap align-items-center">
 							<label class="checkbox-regular">
-								<input type="checkbox" name="iubenda_cookie_law_solution[block_gtm]" value="1" class="mr-2 section-checkbox-control" <?php checked( true, (bool) iubenda()->options['cs']['block_gtm'] ); ?>>
+								<input type="checkbox" name="iubenda_cookie_law_solution[block_gtm]" value="1" class="mr-2 iub-section-checkbox-control" <?php checked( true, (bool) iubenda()->options['cs']['block_gtm'] ); ?>>
 								<div class="px-0 py-1">
 									<span class="p-0"><?php esc_html_e( 'Block Google Tag Manager', 'iubenda' ); ?></span>
 									<div class="notice notice--info mt-2 mb-3 p-3 d-flex align-items-center text-xs">
@@ -171,7 +171,7 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 
 			<div class="radio-toggle">
 				<div class="switch">
-					<input type="checkbox" name="privacy_policy" id="toggleAddPrivacyButton" class="section-checkbox-control" data-section-name="#section-privacy-policy-button" checked/>
+					<input type="checkbox" name="privacy_policy" id="toggleAddPrivacyButton" class="iub-section-checkbox-control" data-section-name="#section-privacy-policy-button" checked/>
 
 					<label for="toggleAddPrivacyButton"></label>
 				</div>

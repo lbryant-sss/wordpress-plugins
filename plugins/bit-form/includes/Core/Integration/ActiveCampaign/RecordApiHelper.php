@@ -53,12 +53,12 @@ class RecordApiHelper
     return HttpHelper::get($searchEndPoint, null, $this->_defaultHeader);
   }
 
-  public function executeRecordApi($fieldValues, $fieldMap, $actions, $listId, $tags)
+  public function executeRecordApi($fieldValues, $fieldMap, $actions, $listId, $tags, $formId)
   {
     $fieldData = [];
     $customFields = [];
 
-    foreach ($fieldMap as $fieldKey => $fieldPair) {
+    foreach ($fieldMap as $fieldPair) {
       if (!empty($fieldPair->activeCampaignField)) {
         if ('custom' === $fieldPair->formField && isset($fieldPair->customValue) && !is_numeric($fieldPair->activeCampaignField)) {
           $fieldData[$fieldPair->activeCampaignField] = $fieldPair->customValue;
@@ -167,10 +167,16 @@ class RecordApiHelper
       }
     }
 
+    $entryDetails = [
+      'formId'      => $formId,
+      'entryId'     => $this->_entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     if ($recordApiResponse && isset($recordApiResponse->errors)) {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'error', $recordApiResponse->errors);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'error', $recordApiResponse->errors, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'success', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'success', $recordApiResponse, $entryDetails);
     }
     return $recordApiResponse;
   }

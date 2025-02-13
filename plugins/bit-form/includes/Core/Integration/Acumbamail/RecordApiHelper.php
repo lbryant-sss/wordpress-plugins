@@ -15,11 +15,14 @@ class RecordApiHelper
 
   private $_logResponse;
 
+  private $_entryID;
+
   public function __construct($auth_token, $integId, $logID, $entryID)
   {
     $this->_integrationID = $integId;
     $this->_logResponse = new ApiResponse();
     $this->_logID = $logID;
+    $this->_entryID = $entryID;
   }
 
   public function addSubscriber($auth_token, $listId, $finalData)
@@ -84,7 +87,8 @@ class RecordApiHelper
     $defaultDataConf,
     $fieldValues,
     $fieldMap,
-    $auth_token
+    $auth_token,
+    $formId
   ) {
     $finalData = $this->generateReqDataFromFieldMap($fieldValues, $fieldMap);
     $apiResponse = null;
@@ -97,10 +101,16 @@ class RecordApiHelper
       $type = 'delete subscriber';
     }
 
+    $entryDetails = [
+      'formId'      => $formId,
+      'entryId'     => $this->_entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     if (property_exists($apiResponse, 'errors')) {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type], 'errors', $apiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type], 'errors', $apiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type], 'success', $apiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type], 'success', $apiResponse, $entryDetails);
     }
     return $apiResponse;
   }

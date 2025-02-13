@@ -20,9 +20,12 @@ class MailerLiteHandler
   private static $_baseUrlV2 = 'https://connect.mailerlite.com/api/';
   protected $_defaultHeader;
 
+  private $_formID;
+
   public function __construct($integrationID, $fromID)
   {
     $this->_integrationID = $integrationID;
+    $this->_formID = $fromID;
   }
 
   public static function registerAjax()
@@ -233,7 +236,8 @@ class MailerLiteHandler
       $type,
       $fieldValues,
       $fieldMap,
-      $auth_token
+      $auth_token,
+      $this->_formID
     );
 
     if (is_wp_error($mailerliteApiResponse)) {

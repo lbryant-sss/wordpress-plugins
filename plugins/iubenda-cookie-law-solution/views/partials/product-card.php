@@ -68,7 +68,7 @@ if ( empty( $service_options ) ) {
 
 		<div class="d-flex align-items-center justify-content-between p-3">
 			<div class="switch align-items-center">
-				<input type="checkbox" class="service-checkbox" data-redirect="<?php echo esc_url( add_query_arg( array( 'view' => "$service_key-configuration" ), iubenda()->base_url ) ); ?>" data-service-key="iubenda-<?php echo esc_html( $service_key ); ?>" data-service-name="iubenda_<?php echo esc_html( $service_options['name'] ); ?>_solution" id="toggle-<?php echo esc_html( $service_key ); ?>" <?php echo esc_html( 'true' === (string) $service_options['status'] ? 'checked' : '' ); ?> />
+				<input type="checkbox" class="iub-service-checkbox" data-redirect="<?php echo esc_url( add_query_arg( array( 'view' => "$service_key-configuration" ), iubenda()->base_url ) ); ?>" data-service-key="iubenda-<?php echo esc_html( $service_key ); ?>" data-service-name="iubenda_<?php echo esc_html( $service_options['name'] ); ?>_solution" id="toggle-<?php echo esc_html( $service_key ); ?>" <?php echo esc_html( 'true' === (string) $service_options['status'] ? 'checked' : '' ); ?> />
 				<label for="toggle-<?php echo esc_html( $service_key ); ?>"></label>
 				<p class="notification text-xs text-bold text-gray-lighter ml-2" id="<?php echo esc_html( "iubenda-{$service_key}-status-label" ); ?>" data-status-label-off="<?php esc_html_e( 'Service off', 'iubenda' ); ?>"><?php 'true' === (string) $service_options['status'] ? esc_html_e( 'Service on', 'iubenda' ) : esc_html_e( 'Service off', 'iubenda' ); ?></p>
 			</div>

@@ -15,6 +15,16 @@ use WP_Error;
  */
 class ElasticEmailHandler
 {
+  private $formID;
+
+  private $integrationID;
+
+  public function __construct($integrationID, $fromID)
+  {
+    $this->formID = $fromID;
+    $this->integrationID = $integrationID;
+  }
+
   public static function registerAjax()
   {
     add_action('wp_ajax_bitforms_elasticemail_authorize', [__CLASS__, 'elasticEmailAuthorize']);
@@ -110,13 +120,13 @@ class ElasticEmailHandler
     ) {
       return new WP_Error('REQ_FIELD_EMPTY', __('module, fields are required for Elastic Email api', 'bit-form'));
     }
-    $recordApiHelper = new RecordApiHelper($api_key, $integId, $logID, $integrationDetails);
+    $recordApiHelper = new RecordApiHelper($api_key, $integId, $logID, $integrationDetails, $entryID);
     $elasticEmailApiResponse = $recordApiHelper->execute(
       $integId,
       $fieldValues,
       $fieldMap,
-      $integrationDetails
-      // $actions
+      $integrationDetails,
+      $this->formID,
     );
 
     if (is_wp_error($elasticEmailApiResponse)) {

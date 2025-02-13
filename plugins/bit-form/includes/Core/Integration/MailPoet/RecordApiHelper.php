@@ -21,11 +21,14 @@ class RecordApiHelper
 
   private $_logResponse;
 
+  private $_entryID;
+
   public function __construct($integId, $logID, $entryID)
   {
     $this->_integrationID = $integId;
     $this->_logID = $logID;
     $this->_logResponse = new UtilApiResponse();
+    $this->_entryID = $entryID;
   }
 
   public function insertRecord($subscriber, $lists)
@@ -49,7 +52,7 @@ class RecordApiHelper
     }
   }
 
-  public function executeRecordApi($fieldValues, $fieldMap, $lists)
+  public function executeRecordApi($fieldValues, $fieldMap, $lists, $formId)
   {
     $fieldData = [];
 
@@ -64,10 +67,17 @@ class RecordApiHelper
     }
 
     $recordApiResponse = $this->insertRecord($fieldData, $lists);
+
+    $entryDetails = [
+      'formId'      => $formId,
+      'entryId'     => $this->_entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     if ($recordApiResponse['success']) {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'success', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'success', $recordApiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'error', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'error', $recordApiResponse, $entryDetails);
     }
 
     return $recordApiResponse;

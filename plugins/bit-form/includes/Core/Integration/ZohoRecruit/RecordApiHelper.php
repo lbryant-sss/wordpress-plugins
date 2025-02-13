@@ -46,7 +46,12 @@ class RecordApiHelper
   public function executeRecordApi($formID, $entryID, $defaultConf, $module, $fieldValues, $fieldMap, $actions, $required, $fileMap)
   {
     $fieldData = [];
-    foreach ($fieldMap as $fieldKey => $fieldPair) {
+    $entryDetails = [
+      'formId'      => $formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
+    foreach ($fieldMap as $fieldPair) {
       if (!empty($fieldPair->zohoFormField)) {
         if ('custom' === $fieldPair->formField && isset($fieldPair->customValue)) {
           $fieldData[$fieldPair->zohoFormField] = $this->formatFieldValue($fieldPair->customValue, $defaultConf->moduleData->{$module}->fields->{$fieldPair->zohoFormField});
@@ -60,7 +65,7 @@ class RecordApiHelper
 
         if (empty($fieldData[$fieldPair->zohoFormField]) && \in_array($fieldPair->zohoFormField, $required)) {
           $error = new WP_Error('REQ_FIELD_EMPTY', wp_sprintf(__('%s is required for zoho recruit, %s module', 'bit-form'), $fieldPair->zohoFormField, $module));
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error, $entryDetails);
           return $error;
         }
       }
@@ -92,9 +97,9 @@ class RecordApiHelper
 
     $recordApiResponse = $this->insertRecord($module, $requestParams);
     if (isset($recordApiResponse->response->error)) {
-      return $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => $module], 'error', $recordApiResponse);
+      return $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => $module], 'error', $recordApiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => $module], 'success', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => $module], 'success', $recordApiResponse, $entryDetails);
     }
 
     if (isset($recordApiResponse->response->error)) {
@@ -118,9 +123,9 @@ class RecordApiHelper
 
         $noteApiResponse = $this->insertRecord('Notes', $requestParams);
         if (isset($noteApiResponse->response->error)) {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'note', 'type_name' => $module], 'error', $noteApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'note', 'type_name' => $module], 'error', $noteApiResponse, $entryDetails);
         } else {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'note', 'type_name' => $module], 'success', $noteApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'note', 'type_name' => $module], 'success', $noteApiResponse, $entryDetails);
         }
       }
 
@@ -142,7 +147,7 @@ class RecordApiHelper
           }
         }
         if ($fileFound) {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'file', 'type_name' => $module], $responseType, $fileUpResponses);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'file', 'type_name' => $module], $responseType, $fileUpResponses, $entryDetails);
         }
       }
     }

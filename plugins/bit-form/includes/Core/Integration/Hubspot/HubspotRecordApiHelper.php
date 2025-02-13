@@ -21,7 +21,9 @@ class HubspotRecordApiHelper
   private $_logResponse;
   private $logID;
 
-  public function __construct($logID, $apiKey)
+  private $entryId;
+
+  public function __construct($logID, $apiKey, $entryId)
   {
     $this->_logResponse = new ApiResponse();
     $this->logID = $logID;
@@ -30,6 +32,8 @@ class HubspotRecordApiHelper
       'Content-Type'  => 'application/json',
       'authorization' => "Bearer {$apiKey}",
     ];
+
+    $this->entryId = $entryId;
   }
 
   public function insertContact($data)
@@ -117,7 +121,7 @@ class HubspotRecordApiHelper
     return $dataFinal;
   }
 
-  public function executeRecordApi($integId, $integrationDetails, $fieldValues, $fieldMap)
+  public function executeRecordApi($integId, $integrationDetails, $fieldValues, $fieldMap, $formId)
   {
     $actionName = $integrationDetails->actionName;
     $type = '';
@@ -139,10 +143,16 @@ class HubspotRecordApiHelper
       $typeName = 'ticket-add';
     }
 
+    $entryDetails = [
+      'form_id'     => $formId,
+      'entry_id'    => $this->entryId,
+      'fieldValues' => $fieldValues,
+    ];
+
     if (!isset($apiResponse->properties)) {
-      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => $type, 'type_name' => $typeName], 'errors', $apiResponse);
+      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => $type, 'type_name' => $typeName], 'errors', $apiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => $type, 'type_name' => $typeName], 'success', wp_json_encode($apiResponse));
+      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => $type, 'type_name' => $typeName], 'success', wp_json_encode($apiResponse), $entryDetails);
     }
     return $apiResponse;
   }

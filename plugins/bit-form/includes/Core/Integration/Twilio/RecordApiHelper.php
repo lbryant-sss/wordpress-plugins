@@ -21,7 +21,11 @@ class RecordApiHelper
 
   private $_logResponse;
 
-  public function __construct($integrationDetails, $sid, $token, $from_num, $logID)
+  private $_entryID;
+
+  private $_formID;
+
+  public function __construct($integrationDetails, $sid, $token, $from_num, $logID, $formID, $entryID)
   {
     $this->_sid = $sid;
     $this->_from_num = $from_num;
@@ -33,6 +37,9 @@ class RecordApiHelper
     ];
     $this->_logResponse = new UtilApiResponse();
     $this->logID = $logID;
+
+    $this->_entryID = $entryID;
+    $this->_formID = $formID;
   }
 
   public function sendMessage($data)
@@ -64,10 +71,16 @@ class RecordApiHelper
     $finalData = $this->generateReqDataFromFieldMap($fieldValues, $fieldMap);
     $apiResponse = $this->sendMessage($finalData);
 
+    $entryDetails = [
+      'formId'      => $this->_formID,
+      'entryId'     => $this->_entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     if ((property_exists($apiResponse, 'status') && 400 === $apiResponse->code) || property_exists($apiResponse, 'code')) {
-      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => 'twilio sms sending', 'type_name' => 'sms sent'], 'errors', $apiResponse);
+      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => 'twilio sms sending', 'type_name' => 'sms sent'], 'errors', $apiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => 'twilio sms sending', 'type_name' => 'sms sent'], 'success', $apiResponse);
+      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => 'twilio sms sending', 'type_name' => 'sms sent'], 'success', $apiResponse, $entryDetails);
     }
     return $apiResponse;
   }

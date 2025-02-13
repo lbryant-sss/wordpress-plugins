@@ -20,7 +20,7 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 	// Including partial breadcrumb.
 	require_once IUBENDA_PLUGIN_PATH . 'views/partials/breadcrumb.php';
 	?>
-	<form class="ajax-form-to-options">
+	<form class="iub-ajax-form-to-options">
 		<input hidden name="iubenda_section_name" value="iubenda_terms_conditions_solution">
 		<input hidden name="action" value="save_tc_options">
 		<?php wp_nonce_field( 'iub_save_tc_options_nonce', 'iub_tc_nonce' ); ?>
@@ -55,7 +55,7 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 					<div class="button-style mb-3 d-flex">
 						<div class="m-1 mr-2">
 							<label class="radio-btn-style radio-btn-style-light">
-								<input type="radio" class="update-button-style" name="iubenda_terms_conditions_solution[button_style]" value="white" <?php checked( 'white', iub_array_get( iubenda()->options['tc'], 'button_style' ) ); ?>>
+								<input type="radio" class="iub-update-button-style" name="iubenda_terms_conditions_solution[button_style]" value="white" <?php checked( 'white', iub_array_get( iubenda()->options['tc'], 'button_style' ) ); ?>>
 								<div>
 									<div class="btn-fake"></div>
 								</div>
@@ -64,7 +64,7 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 						</div>
 						<div class="m-1 mr-2">
 							<label class="radio-btn-style radio-btn-style-dark">
-								<input type="radio" class="update-button-style" name="iubenda_terms_conditions_solution[button_style]" value="black" <?php checked( 'black', iub_array_get( iubenda()->options['tc'], 'button_style' ) ); ?>>
+								<input type="radio" class="iub-update-button-style" name="iubenda_terms_conditions_solution[button_style]" value="black" <?php checked( 'black', iub_array_get( iubenda()->options['tc'], 'button_style' ) ); ?>>
 								<div>
 									<div class="btn-fake"></div>
 								</div>
@@ -78,11 +78,11 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 				<h4><?php esc_html_e( 'Button position', 'iubenda' ); ?></h4>
 				<div class="mb-2 align-items-center flex-wrap">
 					<label class="radio-regular mb-3">
-						<input type="radio" name="iubenda_terms_conditions_solution[button_position]" value="automatic" class="mr-2 section-radio-control" data-section-group=".tc_button_position" data-section-name="#tc_button_position_automatic" <?php checked( 'automatic', iub_array_get( iubenda()->options['tc'], 'button_position' ) ); ?>>
+						<input type="radio" name="iubenda_terms_conditions_solution[button_position]" value="automatic" class="mr-2 iub-section-radio-control" data-section-group=".tc_button_position" data-section-name="#tc_button_position_automatic" <?php checked( 'automatic', iub_array_get( iubenda()->options['tc'], 'button_position' ) ); ?>>
 						<span><?php esc_html_e( 'Add to the footer automatically', 'iubenda' ); ?></span>
 					</label>
 					<label class="mr-4 radio-regular text-xs">
-						<input type="radio" name="iubenda_terms_conditions_solution[button_position]" value="manual" class="mr-2 section-radio-control" data-section-group=".tc_button_position" data-section-name="#tc_button_position_manually" <?php checked( 'manual', iub_array_get( iubenda()->options['tc'], 'button_position' ) ); ?>>
+						<input type="radio" name="iubenda_terms_conditions_solution[button_position]" value="manual" class="mr-2 iub-section-radio-control" data-section-group=".tc_button_position" data-section-name="#tc_button_position_manually" <?php checked( 'manual', iub_array_get( iubenda()->options['tc'], 'button_position' ) ); ?>>
 						<span><?php esc_html_e( 'Integrate manually', 'iubenda' ); ?></span>
 					</label>
 				</div>

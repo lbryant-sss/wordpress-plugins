@@ -15,7 +15,7 @@ Manage Google AdSense, Media.net, Amazon banners, ads.txt, ad rotation, sticky w
 
 Ad management plugin with many advanced advertising features to insert ad codes at optimal positions.
 
-Supports all kinds of ads including **Google AdSense**, **Google Ad Manager** (DFP - DoubleClick for publishers), contextual **Amazon Native Shopping Ads**, **Media.net** , **Infolinks** and **rotating banners.**
+Supports all kinds of ads including **Google AdSense**, **Google Ad Manager** (DFP - DoubleClick for publishers), Media.net , Infolinks and **rotating banners.**
 
 This plugin is more than AdSense plugin or plugin for ads. It provides many advanced options to insert opt-in forms, header scripts, Javascript, CSS, HTML, PHP, analytics, tracking or advert code anywhere on the page.
 
@@ -366,6 +366,7 @@ If you are not happy to reveal this information and you have opted in, simply di
 
 = 2.8.1 =
 - Updated depercated backend jQuery code
+- Fix for reflected cross-site scripting (XSS)
 - Few minor bug fixes, cosmetic changes and code improvements
 
 = 2.8.0 =
@@ -436,6 +437,7 @@ For the changelog of earlier versions, please refer to the separate changelog.tx
 
 = 2.8.1 =
 Updated depercated backend jQuery code;
+Fix for reflected cross-site scripting (XSS);
 Few minor bug fixes, cosmetic changes and code improvements
 
 = 2.8.0 =

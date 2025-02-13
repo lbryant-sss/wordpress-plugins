@@ -10,7 +10,7 @@ Plugin URI: https://adinserter.pro/documentation
 Text Domain: ad-inserter
 Domain Path: /languages
 Requires at least: 5
-Requires PHP: 7.2
+Requires PHP: 7.4
 License: GPLv3
 */
 
@@ -18,8 +18,9 @@ License: GPLv3
 
 Change Log
 
-Ad Inserter 2.8.1 - 2025-01-26
+Ad Inserter 2.8.1 - 2025-02-12
 - Updated depercated backend jQuery code
+- Fix for reflected cross-site scripting (XSS)
 - Few minor bug fixes, cosmetic changes and code improvements
 
 Ad Inserter 2.8.0 - 2025-01-21

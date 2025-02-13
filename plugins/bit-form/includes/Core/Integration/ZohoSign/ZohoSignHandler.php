@@ -308,7 +308,7 @@ class ZohoSignHandler
     }
 
     // $actions = $integrationDetails->actions;
-    $recordApiHelper = new RecordApiHelper($tokenDetails, $this->_integrationID, $logID);
+    $recordApiHelper = new RecordApiHelper($tokenDetails, $this->_integrationID, $logID, $this->_formID, $entryID);
 
     $zsignApiResponse = $recordApiHelper->executeRecordApi(
       $dataCenter,

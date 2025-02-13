@@ -57,6 +57,12 @@ class RecordApiHelper
       $mailInfo['mode'] = 'draft';
     }
 
+    $entryDetails = [
+      'formId'      => $formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     if (!empty($integrationDetails->actions->attachments)) {
       $mailAttachments = [];
       $fileFound = 0;
@@ -94,15 +100,15 @@ class RecordApiHelper
 
       $mailInfo['attachments'] = $mailAttachments;
       if ($fileFound) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'file', 'type_name' => 'mail'], $responseType, $attachmentApiResponses);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'file', 'type_name' => 'mail'], $responseType, $attachmentApiResponses, $entryDetails);
       }
     }
 
     $recordApiResponse = $this->insertRecord($integrationDetails->dataCenter, wp_json_encode($mailInfo));
     if (200 === $recordApiResponse->status->code) {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  $integrationDetails->mailType, 'type_name' => 'mail'], 'success', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  $integrationDetails->mailType, 'type_name' => 'mail'], 'success', $recordApiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => $integrationDetails->mailType, 'type_name' => 'mail'], 'error', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => $integrationDetails->mailType, 'type_name' => 'mail'], 'error', $recordApiResponse, $entryDetails);
     }
 
     return $recordApiResponse;

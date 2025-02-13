@@ -31,19 +31,19 @@ $legislation_all_status  = (bool) iub_array_get( $legislation, 'all' );
 	<div class="scrollable gap-fixer">
 		<fieldset class="d-flex checkbox-large checkbox-group required">
 			<div class="checkbox-controller">
-				<input type="checkbox" id="legislation-gdpr" name="iubenda_cookie_law_solution[simplified][legislation][gdpr]" value="1" <?php checked( true, $legislation_gdpr_status, true ); ?> class="legislation-checkbox">
+				<input type="checkbox" id="legislation-gdpr" name="iubenda_cookie_law_solution[simplified][legislation][gdpr]" value="1" <?php checked( true, $legislation_gdpr_status, true ); ?> class="iub-legislation-checkbox">
 				<label for="legislation-gdpr"><?php esc_html_e( 'GDPR', 'iubenda' ); ?></label>
 			</div>
 			<div class="checkbox-controller">
-				<input type="checkbox" id="legislation-uspr" name="iubenda_cookie_law_solution[simplified][legislation][uspr]" value="1" <?php checked( true, $legislation_uspr_status, true ); ?> class="legislation-checkbox">
+				<input type="checkbox" id="legislation-uspr" name="iubenda_cookie_law_solution[simplified][legislation][uspr]" value="1" <?php checked( true, $legislation_uspr_status, true ); ?> class="iub-legislation-checkbox">
 				<label for="legislation-uspr"><?php esc_html_e( 'US State Laws', 'iubenda' ); ?></label>
 			</div>
 			<div class="checkbox-controller">
-				<input type="checkbox" id="legislation-lgpd" name="iubenda_cookie_law_solution[simplified][legislation][lgpd]" value="1" <?php checked( true, $legislation_lgpd_status, true ); ?> class="legislation-checkbox">
+				<input type="checkbox" id="legislation-lgpd" name="iubenda_cookie_law_solution[simplified][legislation][lgpd]" value="1" <?php checked( true, $legislation_lgpd_status, true ); ?> class="iub-legislation-checkbox">
 				<label for="legislation-lgpd"><?php esc_html_e( 'LGPD', 'iubenda' ); ?></label>
 			</div>
 			<div class="checkbox-controller">
-				<input type="checkbox" id="legislation-all" name="iubenda_cookie_law_solution[simplified][legislation][all]" value="1" <?php checked( true, $legislation_all_status, true ); ?> class="legislation-checkbox">
+				<input type="checkbox" id="legislation-all" name="iubenda_cookie_law_solution[simplified][legislation][all]" value="1" <?php checked( true, $legislation_all_status, true ); ?> class="iub-legislation-checkbox">
 				<label for="legislation-all"><?php esc_html_e( 'All', 'iubenda' ); ?></label>
 			</div>
 		</fieldset>

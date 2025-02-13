@@ -21,7 +21,7 @@ require_once IUBENDA_PLUGIN_PATH . 'views/partials/header.php';
 	// Including partial breadcrumb.
 	require_once IUBENDA_PLUGIN_PATH . 'views/partials/breadcrumb.php';
 	?>
-	<form class="ajax-form-to-options">
+	<form class="iub-ajax-form-to-options">
 		<input hidden name="iubenda_section_name" value="iubenda_consent_solution">
 		<input hidden name="action" value="save_cons_options">
 		<?php wp_nonce_field( 'iub_save_cons_options_nonce', 'iub_cons_nonce' ); ?>
@@ -44,7 +44,7 @@ require_once IUBENDA_PLUGIN_PATH . 'views/partials/header.php';
 		<div class="subOptions">
 			<div class="paste-api-form" tabindex="0">
 				<input class="paste-api-input" id="public_api_key" name="iubenda_consent_solution[public_api_key]" type="text" placeholder="<?php esc_html_e( 'Your iubenda Javascript library public API key', 'iubenda' ); ?>" value="<?php echo esc_html( iub_array_get( iubenda()->options['cons'], 'public_api_key' ) ? iub_array_get( iubenda()->options['cons'], 'public_api_key' ) : '' ); ?>" required>
-				<button type="submit" id="public_api_button" class="btn btn-xs btn-green-secondary">
+				<button type="submit" id="iub-public-api-button" class="btn btn-xs btn-green-secondary">
 					<span class="button__text"><?php esc_html_e( 'Confirm API', 'iubenda' ); ?></span>
 				</button>
 			</div>
@@ -69,7 +69,7 @@ require_once IUBENDA_PLUGIN_PATH . 'views/partials/header.php';
 			</div>
 			<div class="ml-3 pl-4 mb-5">
 				<div id="auto-detect-parent-div">
-					<section id="auto-detect-forms">
+					<section id="iub-auto-detect-forms">
 						<?php
 						// Including partial auto-detect-forms.
 						require_once IUBENDA_PLUGIN_PATH . 'views/partials/auto-detect-forms.php';
@@ -88,7 +88,7 @@ require_once IUBENDA_PLUGIN_PATH . 'views/partials/header.php';
 					)
 				);
 				?>
-				" id="auto-detect-forms-btn" class="btn btn-xs btn-gray-outline mt-2 auto-detect-forms"><?php esc_html_e( 'Auto-detect forms', 'iubenda' ); ?></a>
+				" id="iub-auto-detect-forms-btn" class="btn btn-xs btn-gray-outline mt-2 iub-auto-detect-forms"><?php esc_html_e( 'Auto-detect forms', 'iubenda' ); ?></a>
 			</div>
 		</div>
 

@@ -75,6 +75,7 @@ final class Actions
     }
     foreach ($actions as $actionDetail) {
       if (!empty($actionDetail->action) && !empty($actionDetail->field) && isset($fields->{$fieldData[$actionDetail->field]['key']}) && !empty($fields->{$fieldData[$actionDetail->field]['key']})) {
+        $fk = $fieldData[$actionDetail->field]['key'];
         switch ($actionDetail->action) {
           case 'value':
             $data = $this->setValue($actionDetail, $fieldData, $fields);
@@ -82,53 +83,54 @@ final class Actions
             $fieldData = $data[1];
             break;
           case 'hide':
-            $fields->{$fieldData[$actionDetail->field]['key']}->valid->hide = true;
+            // $fields->{$fk}->valid->hide = true;
+            Helper::setNestedProperty($fields, "{$fk}->valid->hide", true);
             break;
           case 'disable':
-            $fields->{$fieldData[$actionDetail->field]['key']}->valid->disabled = true;
+            $fields->{$fk}->valid->disabled = true;
             break;
           case 'show':
             $this->show($fields, $fieldData, $actionDetail);
             break;
           case 'enable':
-            $fields->{$fieldData[$actionDetail->field]['key']}->valid->disabled = false;
+            $fields->{$fk}->valid->disabled = false;
             break;
           case 'readonly':
-            $fields->{$fieldData[$actionDetail->field]['key']}->valid->readonly = true;
+            $fields->{$fk}->valid->readonly = true;
             break;
           case 'writeable':
-            $fields->{$fieldData[$actionDetail->field]['key']}->valid->readonly = false;
+            $fields->{$fk}->valid->readonly = false;
             break;
           case 'required':
-            $fields->{$fieldData[$actionDetail->field]['key']}->valid->required = true;
+            $fields->{$fk}->valid->required = true;
             break;
           case 'limit':
-            $fields->{$fieldData[$actionDetail->field]['key']}->valid->limit = true;
+            $fields->{$fk}->valid->limit = true;
             break;
           case 'min':
-            $fields->{$fieldData[$actionDetail->field]['key']}->valid->min = true;
+            $fields->{$fk}->valid->min = true;
             break;
           case 'max':
-            $fields->{$fieldData[$actionDetail->field]['key']}->valid->max = true;
+            $fields->{$fk}->valid->max = true;
             break;
           case 'activelist':
-            $fields->{$fieldData[$actionDetail->field]['key']}->config->activeList = $this->getActiveListIndex($actionDetail, $fieldData, $fields);
+            $fields->{$fk}->config->activeList = $this->getActiveListIndex($actionDetail, $fieldData, $fields);
             break;
           case 'lbl':
           case 'ct':
-            $fields->{$fieldData[$actionDetail->field]['key']}->lbl = $this->getActionValue($actionDetail, $fieldData, $fields);
+            $fields->{$fk}->lbl = $this->getActionValue($actionDetail, $fieldData, $fields);
             break;
           case 'sub-titl':
-            $fields->{$fieldData[$actionDetail->field]['key']}->subtitle = $this->getActionValue($actionDetail, $fieldData, $fields);
+            $fields->{$fk}->subtitle = $this->getActionValue($actionDetail, $fieldData, $fields);
             break;
           case 'hlp-txt':
-            $fields->{$fieldData[$actionDetail->field]['key']}->helperTxt = $this->getActionValue($actionDetail, $fieldData, $fields);
+            $fields->{$fk}->helperTxt = $this->getActionValue($actionDetail, $fieldData, $fields);
             break;
           case 'placeholder':
-            $fields->{$fieldData[$actionDetail->field]['key']}->ph = $this->getActionValue($actionDetail, $fieldData, $fields);
+            $fields->{$fk}->ph = $this->getActionValue($actionDetail, $fieldData, $fields);
             break;
           case 'title':
-            $fields->{$fieldData[$actionDetail->field]['key']}->title = $this->getActionValue($actionDetail, $fieldData, $fields);
+            $fields->{$fk}->title = $this->getActionValue($actionDetail, $fieldData, $fields);
             break;
         }
       }

@@ -19,11 +19,14 @@ class RecordApiHelper
 
   private $_logResponse;
 
+  private $entryID;
+
   public function __construct($integId, $logID, $entryID)
   {
     $this->integrationID = $integId;
     $this->_logResponse = new ApiResponse();
     $this->logID = $logID;
+    $this->entryID = $entryID;
   }
 
   public function generateReqDataFromFieldMap($data, $fieldMap)
@@ -153,7 +156,8 @@ class RecordApiHelper
     $public_key,
     $token,
     $actions,
-    $integrationDetails
+    $integrationDetails,
+    $formId
   ) {
     $mainAction = $integrationDetails->mainAction;
     $fieldData = [];
@@ -219,19 +223,24 @@ class RecordApiHelper
       }
     }
 
+    $entryDetails = [
+      'formId'      => $formId,
+      'entryId'     => $this->entryID,
+      'fieldValues' => $fieldValues
+    ];
     if ('1' === $mainAction) {
       if (property_exists($apiResponse, 'errors')) {
-        $this->_logResponse->apiResponse($this->logID, $this->integrationID, ['type' => 'record', 'type_name' => 'Add Contact'], 'errors', $apiResponse);
+        $this->_logResponse->apiResponse($this->logID, $this->integrationID, ['type' => 'record', 'type_name' => 'Add Contact'], 'errors', $apiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->logID, $this->integrationID, ['type' => 'record', 'type_name' => 'Add Contact'], 'success', $apiResponse);
+        $this->_logResponse->apiResponse($this->logID, $this->integrationID, ['type' => 'record', 'type_name' => 'Add Contact'], 'success', $apiResponse, $entryDetails);
       }
     }
     if ('2' === $mainAction) {
       if (!empty($apiResponseError)) {
-        $this->_logResponse->apiResponse($this->logID, $this->integrationID, ['type' => 'record', 'type_name' => 'Add Tags'], 'error', $apiResponse);
+        $this->_logResponse->apiResponse($this->logID, $this->integrationID, ['type' => 'record', 'type_name' => 'Add Tags'], 'error', $apiResponse, $entryDetails);
       }
       if (!empty($apiResponseSuccess)) {
-        $this->_logResponse->apiResponse($this->logID, $this->integrationID, ['type' => 'record', 'type_name' => 'Add Tags'], 'success', $apiResponse);
+        $this->_logResponse->apiResponse($this->logID, $this->integrationID, ['type' => 'record', 'type_name' => 'Add Tags'], 'success', $apiResponse, $entryDetails);
       }
     }
     return $apiResponse;

@@ -207,7 +207,8 @@ class FluentCrmHandler
       $fieldMap,
       $actions,
       $list_id,
-      $tags
+      $tags,
+      $this->_formID
     );
 
     if (is_wp_error($fluentCrmApiResponse)) {

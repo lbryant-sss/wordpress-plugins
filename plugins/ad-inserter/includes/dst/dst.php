@@ -13,6 +13,9 @@
 
 Change Log
 
+DST 1.0.9 - 2025-02-12
+- Fix for reflected cross-site scripting (XSS)
+
 DST 1.0.8 - 2023-03-15
 - Compatibility with PHP 8.2
 
@@ -1541,7 +1544,7 @@ jQuery (document).ready (function ($) {
     }
 
     elseif (isset ($_POST ["slug"]) && isset ($_POST ["notice-check"])) {
-      echo $_POST ["notice-check"];
+      echo sanitize_text_field ($_POST ["notice-check"]);
     }
 
     elseif (isset ($_POST ["slug"]) && isset ($_POST ["values"]) && isset ($_POST ['details'])) {
@@ -1568,6 +1571,7 @@ jQuery (document).ready (function ($) {
     foreach (array (
         'HTTP_CF_CONNECTING_IP',
         'HTTP_CLIENT_IP',
+        'HTTP_INCAP_CLIENT_IP',
         'HTTP_X_FORWARDED_FOR',
         'HTTP_X_FORWARDED',
         'HTTP_X_CLUSTER_CLIENT_IP',
@@ -1577,9 +1581,19 @@ jQuery (document).ready (function ($) {
       ) as $key) {
       if (array_key_exists ($key, $_SERVER) === true) {
         foreach (explode (',', $_SERVER[$key]) as $ip) {
+          $ip = strip_tags ($ip);
           $ip = str_replace ("for=", "", $ip);
           $ip = trim ($ip); // just to be safe
-          if ($server_addr != '' && $ip == $server_addr) continue 2; // HTTP_X_FORWARDED_FOR may report server IP address
+          if (!filter_var ($ip, FILTER_VALIDATE_IP)) {
+            continue 2;
+          }
+          switch ($key) {
+            case 'HTTP_X_FORWARDED_FOR':
+              if ($server_addr != '' && $ip == $server_addr) continue 3; // HTTP_X_FORWARDED_FOR may report server IP address
+              break;
+          }
+          if (substr_count ($ip, ':', 0) == 1) continue; // IP address in HTTP_X_FORWARDED_FOR may report port - only for IPv4
+
           return $ip;
         }
       }

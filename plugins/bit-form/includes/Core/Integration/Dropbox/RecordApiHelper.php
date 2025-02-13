@@ -120,11 +120,17 @@ class RecordApiHelper
     }
     $this->handleAllFiles($folderWithFile, $actions);
 
+    $entryDetails = [
+      'formId'      => $this->formId,
+      'entryId'     => $this->entryId,
+      'fieldValues' => $fieldValues
+    ];
+
     if (count($this->errorApiResponse) > 0) {
-      $this->logResponse->apiResponse($logID, $integrationId, ['type' =>  'record', 'type_name' => 'insert'], 'error', 'Some Files Can\'t Upload For Some Reason. ' . wp_json_encode($this->errorApiResponse));
+      $this->logResponse->apiResponse($logID, $integrationId, ['type' =>  'record', 'type_name' => 'insert'], 'error', 'Some Files Can\'t Upload For Some Reason. ' . wp_json_encode($this->errorApiResponse), $entryDetails);
     }
     if (count($this->successApiResponse) > 0) {
-      $this->logResponse->apiResponse($logID, $integrationId, ['type' =>  'record', 'type_name' => 'insert'], 'success', 'All Files Uploaded. ' . wp_json_encode($this->successApiResponse));
+      $this->logResponse->apiResponse($logID, $integrationId, ['type' =>  'record', 'type_name' => 'insert'], 'success', 'All Files Uploaded. ' . wp_json_encode($this->successApiResponse), $entryDetails);
     }
   }
 }

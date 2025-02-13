@@ -17,9 +17,13 @@ class RapidmailHandler
   public static $apiBaseUri = 'https://apiv3.emailsys.net/v1';
   protected $_defaultHeader;
 
-  public function __construct($integrationID)
+  private $formID;
+
+  public function __construct($integrationID, $formID)
   {
     $this->_integrationID = $integrationID;
+
+    $this->formID = $formID;
   }
 
   /**
@@ -180,14 +184,15 @@ class RapidmailHandler
     }
     $actions = $integrationDetails->actions;
 
-    $recordApiHelper = new RecordApiHelper($integrationDetails, $username, $password, $logID);
+    $recordApiHelper = new RecordApiHelper($integrationDetails, $username, $password, $logID, $entryID);
     $rapidmailResponse = $recordApiHelper->executeRecordApi(
       $this->_integrationID,
       $defaultDataConf,
       $recipientLists,
       $fieldValues,
       $fieldMap,
-      $actions
+      $actions,
+      $this->formID,
     );
     if (is_wp_error($rapidmailResponse)) {
       return $rapidmailResponse;

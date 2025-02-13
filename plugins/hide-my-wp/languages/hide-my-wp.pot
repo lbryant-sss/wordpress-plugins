@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Hide My WP Ghost\n"
-"POT-Creation-Date: 2025-01-07 14:12+0200\n"
+"POT-Creation-Date: 2025-02-12 06:12+0200\n"
 "PO-Revision-Date: 2020-12-24 09:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -54,29 +54,29 @@ msgstr ""
 msgid "New Login Data"
 msgstr ""
 
-#: classes/Tools.php:2065 controllers/Settings.php:859
+#: classes/Tools.php:2065 controllers/Settings.php:860
 #, php-format
 msgid "Thank you for using %s!"
 msgstr ""
 
-#: classes/Tools.php:2067 controllers/Settings.php:861
+#: classes/Tools.php:2067 controllers/Settings.php:862
 msgid "Your new site URLs are"
 msgstr ""
 
-#: classes/Tools.php:2068 controllers/Settings.php:862
+#: classes/Tools.php:2068 controllers/Settings.php:863
 msgid "Admin URL"
 msgstr ""
 
-#: classes/Tools.php:2069 controllers/Settings.php:863 view/Permalinks.php:147
+#: classes/Tools.php:2069 controllers/Settings.php:864 view/Permalinks.php:147
 #: view/Permalinks.php:152
 msgid "Login URL"
 msgstr ""
 
-#: classes/Tools.php:2071 controllers/Settings.php:865
+#: classes/Tools.php:2071 controllers/Settings.php:866
 msgid "Note: If you can`t login to your site, just access this URL"
 msgstr ""
 
-#: classes/Tools.php:2074 controllers/Settings.php:868
+#: classes/Tools.php:2074 controllers/Settings.php:869
 msgid "Best regards"
 msgstr ""
 
@@ -102,10 +102,10 @@ msgid "You need to set a positive waiting time."
 msgstr ""
 
 #: controllers/Brute.php:281 controllers/Log.php:44
-#: controllers/Overview.php:659 controllers/Settings.php:411
-#: controllers/Settings.php:433 controllers/Settings.php:477
-#: controllers/Settings.php:531 controllers/Settings.php:565
-#: controllers/Settings.php:608
+#: controllers/Overview.php:659 controllers/Settings.php:412
+#: controllers/Settings.php:434 controllers/Settings.php:478
+#: controllers/Settings.php:532 controllers/Settings.php:566
+#: controllers/Settings.php:609
 msgid "Saved"
 msgstr ""
 
@@ -1527,39 +1527,39 @@ msgid ""
 "hidemywpghost.com%s"
 msgstr ""
 
-#: controllers/Settings.php:601
+#: controllers/Settings.php:602
 msgid "Path not allowed. Avoid paths like plugins and themes."
 msgstr ""
 
-#: controllers/Settings.php:700
+#: controllers/Settings.php:701
 msgid "The list of plugins and themes was updated with success!"
 msgstr ""
 
-#: controllers/Settings.php:750
+#: controllers/Settings.php:751
 msgid "Paths changed in the existing cache files"
 msgstr ""
 
-#: controllers/Settings.php:784
+#: controllers/Settings.php:785
 msgid "Great! The initial values are restored."
 msgstr ""
 
-#: controllers/Settings.php:801
+#: controllers/Settings.php:802
 msgid "Rollback to Previous Version"
 msgstr ""
 
-#: controllers/Settings.php:832
+#: controllers/Settings.php:833
 msgid "Great! The backup is restored."
 msgstr ""
 
-#: controllers/Settings.php:836 controllers/Settings.php:839
+#: controllers/Settings.php:837 controllers/Settings.php:840
 msgid "Error! The backup is not valid."
 msgstr ""
 
-#: controllers/Settings.php:842
+#: controllers/Settings.php:843
 msgid "Error! No backup to restore."
 msgstr ""
 
-#: controllers/Settings.php:886
+#: controllers/Settings.php:887
 msgid "Can't download the plugin."
 msgstr ""
 
@@ -1804,7 +1804,7 @@ msgstr ""
 msgid "Two-factor authentication"
 msgstr ""
 
-#: models/Menu.php:84 models/Menu.php:85 view/Log.php:47
+#: models/Menu.php:84 models/Menu.php:85 view/Log.php:44
 msgid "Events Log"
 msgstr ""
 
@@ -1920,84 +1920,84 @@ msgstr ""
 msgid "Email Notification"
 msgstr ""
 
-#: models/Rewrite.php:758
+#: models/Rewrite.php:752
 msgid "Okay, I set it up"
 msgstr ""
 
-#: models/Rewrite.php:768
+#: models/Rewrite.php:762
 #, php-format
 msgid ""
 "IIS detected. You need to update your %s file by adding the following lines "
 "after &lt;rules&gt; tag: %s"
 msgstr ""
 
-#: models/Rewrite.php:812 models/Rewrite.php:959
+#: models/Rewrite.php:806 models/Rewrite.php:953
 #, php-format
 msgid ""
 "Config file is not writable. Create the file if not exists or copy to %s "
 "file the following lines: %s"
 msgstr ""
 
-#: models/Rewrite.php:850
+#: models/Rewrite.php:844
 #, php-format
 msgid ""
 "WpEngine detected. Add the redirects in the WpEngine Redirect rules panel %s."
 msgstr ""
 
-#: models/Rewrite.php:850 models/Rewrite.php:886
+#: models/Rewrite.php:844 models/Rewrite.php:880
 msgid "Learn How To Add the Code"
 msgstr ""
 
-#: models/Rewrite.php:886
+#: models/Rewrite.php:880
 #, php-format
 msgid ""
 "Flywheel detected. Add the redirects in the Flywheel Redirect rules panel %s."
 msgstr ""
 
-#: models/Rewrite.php:1021
+#: models/Rewrite.php:1015
 #, php-format
 msgid ""
 "Config file is not writable. You have to added it manually at the beginning "
 "of the %s file: %s"
 msgstr ""
 
-#: models/Rewrite.php:1521
+#: models/Rewrite.php:1522
 msgctxt "password strength"
 msgid "Password strength unknown"
 msgstr ""
 
-#: models/Rewrite.php:1522
+#: models/Rewrite.php:1523
 msgctxt "password strength"
 msgid "Very weak"
 msgstr ""
 
-#: models/Rewrite.php:1523
+#: models/Rewrite.php:1524
 msgctxt "password strength"
 msgid "Weak"
 msgstr ""
 
-#: models/Rewrite.php:1524
+#: models/Rewrite.php:1525
 msgctxt "password strength"
 msgid "Medium"
 msgstr ""
 
-#: models/Rewrite.php:1525
+#: models/Rewrite.php:1526
 msgctxt "password strength"
 msgid "Strong"
 msgstr ""
 
-#: models/Rewrite.php:1526
+#: models/Rewrite.php:1527
 msgctxt "password mismatch"
 msgid "Mismatch"
 msgstr ""
 
-#: models/Rewrite.php:3250
+#: models/Rewrite.php:3275
 msgid ""
 "There has been a critical error on your website. Please check your site "
 "admin email inbox for instructions."
 msgstr ""
 
-#: models/Rewrite.php:3252
+#: models/Rewrite.php:3277
 msgid "There has been a critical error on your website."
 msgstr ""
 
@@ -2279,7 +2279,7 @@ msgid "Email Address"
 msgstr ""
 
 #: view/Advanced.php:200 view/Brute.php:372 view/Firewall.php:445
-#: view/Log.php:38 view/Mapping.php:272 view/Mapping.php:276
+#: view/Log.php:35 view/Mapping.php:272 view/Mapping.php:276
 #: view/Permalinks.php:1023 view/Permalinks.php:1027 view/Tweaks.php:745
 msgid "Save"
 msgstr ""
@@ -2718,7 +2718,7 @@ msgid ""
 "symbols until you discover the one correct combination that works."
 msgstr ""
 
-#: view/Brute.php:387 view/Log.php:54 view/Overview.php:59
+#: view/Brute.php:387 view/Log.php:51 view/Overview.php:59
 msgid "Features"
 msgstr ""
 
@@ -3109,37 +3109,33 @@ msgstr ""
 msgid "Events Log Settings"
 msgstr ""
 
-#: view/Log.php:29
-msgid "Log Users Events"
-msgstr ""
-
-#: view/Log.php:31
-msgid "Track and log events that happen on your WordPress site"
-msgstr ""
-
-#: view/Log.php:48
-msgid "Monitor everything that happens on your WordPress site!"
-msgstr ""
-
-#: view/Log.php:49
+#: view/Log.php:45
 msgid ""
-"All the logs are saved on Cloud for 30 days and the report is available if "
-"your website is attacked."
+"The Events Log Report will document every action users take when trying to "
+"log in or are already logged in to your site (for the last 30 days), so "
+"you’ll know who does what on your site."
 msgstr ""
 
-#: view/Log.php:56
+#: view/Log.php:46
+msgid ""
+"(*this refers to actions that could impact your site’s security. WP Ghost "
+"will NOT log users’ actions such as clicking on a Menu or other similar, "
+"everyday actions that a user regularly takes in the frontend of a site)"
+msgstr ""
+
+#: view/Log.php:53
 msgid "Monitor, track and log events on your website."
 msgstr ""
 
-#: view/Log.php:57
+#: view/Log.php:54
 msgid "Know what the other users are doing on your website."
 msgstr ""
 
-#: view/Log.php:58
+#: view/Log.php:55
 msgid "You can set to receive security alert emails and prevent data loss."
 msgstr ""
 
-#: view/Log.php:59
+#: view/Log.php:56
 msgid "Compatible with all themes and plugins."
 msgstr ""
 
@@ -4371,8 +4367,8 @@ msgstr ""
 
 #: view/blocks/Connect.php:8
 msgid ""
-"Get connected to the Cloud to initiate website security monitoring and "
-"implement a backup for your customized login to ensure prevention."
+"Connect to the Cloud to enable website security monitoring and back up your "
+"custom login to prevent lockout in case you forget it."
 msgstr ""
 
 #: view/blocks/Debug.php:5
@@ -4550,9 +4546,9 @@ msgid ""
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "WP Ghost"
+msgid "Hide My WP Ghost"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://hidemywp.com"
+msgid "https://hidemywpghost.com"
 msgstr ""

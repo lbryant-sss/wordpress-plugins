@@ -15,13 +15,16 @@ class RecordApiHelper
 
   private $integrationDetails;
 
-  public function __construct($api_key, $integId, $logID, $integrationDetails)
+  private $entryId;
+
+  public function __construct($api_key, $integId, $logID, $integrationDetails, $entryId)
   {
     $this->integrationDetails = $integrationDetails;
     $this->_defaultHeader['Content-Type'] = 'application/json';
     $this->_defaultHeader['Authorization'] = "Bearer $api_key";
     $this->_logResponse = new UtilApiResponse();
     $this->_logID = $logID;
+    $this->entryId = $entryId;
   }
 
   public function createContact($data, $listName, $apiKey)
@@ -40,7 +43,7 @@ class RecordApiHelper
   {
     $dataFinal = [];
 
-    foreach ($fieldMap as  $value) {
+    foreach ($fieldMap as $value) {
       $triggerValue = $value->formField;
       $actionValue = $value->elasticEmailField;
       if ('custom' === $triggerValue) {
@@ -57,7 +60,7 @@ class RecordApiHelper
     return $dataFinal;
   }
 
-  public function execute($integId, $fieldValues, $fieldMap, $integrationDetails)
+  public function execute($integId, $fieldValues, $fieldMap, $integrationDetails, $formID)
   {
     $finalData = $this->generateReqDataFromFieldMap($fieldValues, $fieldMap);
     $listName = $integrationDetails->list_id;
@@ -72,10 +75,16 @@ class RecordApiHelper
     $api_key = $integrationDetails->api_key;
     $apiResponse = $this->createContact($finalData, $query, $api_key);
 
+    $entryDetails = [
+      'formId'      => $formID,
+      'entryId'     => $this->entryId,
+      'fieldValues' => $fieldValues
+    ];
+
     if (isset($apiResponse->Error)) {
-      $this->_logResponse->apiResponse($this->_logID, $integId, ['type' => 'contact', 'type_name' => 'contact_add'], 'errors', $apiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $integId, ['type' => 'contact', 'type_name' => 'contact_add'], 'errors', $apiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $integId, ['type' => 'contact', 'type_name' => 'contact_add'], 'success', $apiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $integId, ['type' => 'contact', 'type_name' => 'contact_add'], 'success', $apiResponse, $entryDetails);
     }
     return $apiResponse;
   }

@@ -15,9 +15,12 @@ class SendFoxHandler
   private $integrationID;
   public static $baseUrl = 'https://api.sendfox.com/';
 
+  private $formId;
+
   public function __construct($integrationID, $fromID)
   {
     $this->integrationID = $integrationID;
+    $this->formId = $fromID;
   }
 
   public static function registerAjax()
@@ -118,7 +121,8 @@ class SendFoxHandler
       $fieldValues,
       $fieldMap,
       $access_token,
-      $integrationDetails
+      $integrationDetails,
+      $this->formId
     );
 
     if (is_wp_error($sendFoxApiResponse)) {

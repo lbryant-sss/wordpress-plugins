@@ -21,7 +21,7 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 	// Including partial breadcrumb.
 	require_once IUBENDA_PLUGIN_PATH . 'views/partials/breadcrumb.php';
 	?>
-	<form class="ajax-form-to-options">
+	<form class="iub-ajax-form-to-options">
 		<input hidden name="iubenda_section_name" value="iubenda_privacy_policy_solution">
 		<input hidden name="iubenda_section_key" value="pp">
 		<input hidden name="action" value="save_pp_options">

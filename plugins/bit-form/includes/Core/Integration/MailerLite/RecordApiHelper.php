@@ -191,7 +191,8 @@ class RecordApiHelper
     $type,
     $fieldValues,
     $fieldMap,
-    $auth_token
+    $auth_token,
+    $formId
   ) {
     $fieldData = [];
     $attributes = [];
@@ -211,11 +212,17 @@ class RecordApiHelper
       }
     }
 
+    $entryDetails = [
+      'formId'      => $formId,
+      'entryId'     => $this->_entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     if (isset($recordApiResponse->data->id) || isset($recordApiResponse->id)) {
       $res = ['success'=>true, 'message'=>isset($recordApiResponse->update) ? 'Subscriber has been updated successfully' : 'Subscriber has been created successfully', 'code'=>200];
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' =>isset($recordApiResponse->update) ? 'update' : 'insert'], 'success', $res);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' =>isset($recordApiResponse->update) ? 'update' : 'insert'], 'success', $res, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => isset($recordApiResponse->update) ? 'update' : 'insert'], 'error', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => isset($recordApiResponse->update) ? 'update' : 'insert'], 'error', $recordApiResponse, $entryDetails);
     }
     return $recordApiResponse;
   }

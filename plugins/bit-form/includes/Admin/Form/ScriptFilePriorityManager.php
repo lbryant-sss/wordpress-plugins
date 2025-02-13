@@ -371,6 +371,7 @@ class ScriptFilePriorityManager
       'fileupFldValidation'            => ['priority' => 702, 'filename' => 'fileupFldValidation.min.js'],
       'advanceFileupFldValidation'     => ['priority' => 702, 'filename' => 'advanceFileUpFldValidation.min.js'],
       'phoneNumberFldValidation'       => ['priority' => 702, 'filename' => 'phoneNumberFldValidation.min.js'],
+      'currencyFldValidation'          => ['priority' => 702, 'filename' => 'currencyFldValidation.min.js'],
       'generateBackslashPattern'       => ['priority' => 700, 'filename' => 'generateBackslashPattern.min.js'],
       'nmbrFldValidation'              => ['priority' => 702, 'filename' => 'nmbrFldValidation.min.js'],
       'regexPatternValidation'         => ['priority' => 701, 'filename' => 'regexPatternValidation.min.js'], // load before generateBackslashPattern file, then load  regexPatternValidation
@@ -486,6 +487,11 @@ class ScriptFilePriorityManager
         'phone-number' => [
           'phoneNumberFldValidation' => [
             'paths'        => ['err->invalid->show'],
+          ]
+        ],
+        'currency' => [
+          'currencyFldValidation' => [
+            'paths'        => ['err->minValue->show', 'err->maxValue->show'],
           ]
         ],
       ];

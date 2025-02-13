@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<p class="text-regular pb-3"><?php esc_html_e( 'Since you already activated some products for this website, we just ask you to copy and paste the embedding code of the product you already have to syncronize your iubenda acount with WP plugin.', 'iubenda' ); ?></p>
 	</div>
 
-	<form class="ajax-form">
+	<form class="iub-ajax-form">
 		<input hidden name="action" value="synchronize_products">
 		<?php wp_nonce_field( 'iub_synchronize_products', 'iub_synchronize_products_nonce' ); ?>
 		<input hidden name="_redirect" value="<?php echo esc_url( add_query_arg( array( 'view' => 'products-page' ), iubenda()->base_url ) ); ?>">
@@ -31,16 +31,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<input
 							type="checkbox"
 							name="iubenda_<?php echo esc_attr( $service['name'] ); ?>_solution_status"
-							class="select-product-checkbox section-checkbox-control 
+							class="select-product-checkbox iub-section-checkbox-control 
 							<?php
 							if ( 'cs' === (string) $key ) :
-								echo esc_attr( 'required-control' ); endif
+								echo esc_attr( 'iub-required-control' ); endif
 							?>
 							"
 							data-section-name="#section-<?php echo esc_attr( $key ); ?>"
 							value="true" id="radio-card-<?php echo esc_attr( $key ); ?>"
 				<?php if ( 'cs' === (string) $key ) : ?>
-							data-required-control="#submit-btn"
+							data-iub-required-control="#submit-btn"
 <?php endif ?>
 					<?php echo esc_attr( 'true' === (string) $service['status'] ? 'checked' : '' ); ?>/>
 					<span class="check-icon"></span>
@@ -121,7 +121,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					// Add CS default options.
 					if ( 'cs' === (string) $key ) :
 						?>
-						<input type="hidden" class="blocking-method native-blocking-method" name="iubenda_cookie_law_solution[parse]" value="1">
+						<input type="hidden" class="iub-blocking-method native-blocking-method" name="iubenda_cookie_law_solution[parse]" value="1">
 						<input type="hidden" name="iubenda_cookie_law_solution[parser_engine]" value="<?php echo can_use_dom_document_class() ? esc_attr( 'new' ) : 'default'; ?>">
 					<?php endif; ?>
 				</section>

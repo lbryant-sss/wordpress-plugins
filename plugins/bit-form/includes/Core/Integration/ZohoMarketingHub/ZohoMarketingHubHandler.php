@@ -10,6 +10,7 @@ namespace BitCode\BitForm\Core\Integration\ZohoMarketingHub;
 use BitCode\BitForm\Core\Integration\IntegrationHandler;
 use BitCode\BitForm\Core\Util\HttpHelper;
 use BitCode\BitForm\Core\Util\IpTool;
+use WP_Error;
 
 /**
  * Provide functionality for ZohoCrm integration
@@ -341,7 +342,7 @@ class ZohoMarketingHubHandler
     }
 
     // $actions = $integrationDetails->actions;
-    $recordApiHelper = new RecordApiHelper($tokenDetails, $this->_integrationID, $logID);
+    $recordApiHelper = new RecordApiHelper($tokenDetails, $this->_integrationID, $logID, $this->_formID, $entryID);
 
     $zmarketingHubApiResponse = $recordApiHelper->executeRecordApi(
       $list,

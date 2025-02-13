@@ -17,9 +17,13 @@ class MailPoetHandler
 {
   private $_integrationID;
 
+  private $formId;
+
   public function __construct($integrationID, $fromID)
   {
     $this->_integrationID = $integrationID;
+
+    $this->formId = $fromID;
   }
 
   /**
@@ -162,7 +166,8 @@ class MailPoetHandler
     $maiPoetApiResponse = $recordApiHelper->executeRecordApi(
       $fieldValues,
       $fieldMap,
-      $lists
+      $lists,
+      $this->formId,
     );
 
     if (is_wp_error($maiPoetApiResponse)) {

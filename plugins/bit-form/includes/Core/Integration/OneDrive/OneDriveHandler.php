@@ -203,8 +203,14 @@ class OneDriveHandler
   {
     $integrationDetails = json_decode($integrationData->integration_details);
 
+    $entryDetails = [
+      'formID'      => $this->formID,
+      'entryID'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     if (empty($integrationDetails->tokenDetails->access_token)) {
-      (new ApiResponse())->apiResponse($logID, $this->integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'error', 'Not Authorization By OneDrive.');
+      (new ApiResponse())->apiResponse($logID, $this->integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'error', 'Not Authorization By OneDrive.', $entryDetails);
       return;
     }
 
@@ -217,7 +223,9 @@ class OneDriveHandler
       self::saveRefreshedToken($this->formID, $this->integrationID, $tokenDetails);
     }
 
-    (new OneDriveRecordApiHelper($tokenDetails->access_token, $this->formID, $entryID))->executeRecordApi($this->integrationID, $logID, $fieldValues, $fieldMap, $actions, $folderId, $parentId);
+    $oneDriveRecordApiHelper = new OneDriveRecordApiHelper($tokenDetails->access_token, $this->formID, $entryID);
+
+    $oneDriveRecordApiHelper->executeRecordApi($this->integrationID, $logID, $fieldValues, $fieldMap, $actions, $folderId, $parentId, $this->formID);
     return true;
   }
 }

@@ -27,6 +27,10 @@ final class FilesApiHelper
 
   private $_logResponse;
 
+  private $_formId;
+
+  private $_entryId;
+
   /**
    *
    * @param object  $tokenDetails Api token details
@@ -43,6 +47,9 @@ final class FilesApiHelper
     $this->_defaultHeader['content-type'] = 'multipart/form; boundary=' . $this->_payloadBoundary;
     $this->_apiDomain = \urldecode($tokenDetails->api_domain);
     $this->_basepath = FileHandler::getEntriesFileUploadDir($formID, $entryID) . DIRECTORY_SEPARATOR;
+
+    $this->_formId = $formID;
+    $this->_entryId = $entryID;
   }
 
   /**
@@ -57,6 +64,10 @@ final class FilesApiHelper
    */
   public function uploadFiles($files, $isAttachment = false, $module = '', $recordID = 0)
   {
+    $entryDetails = [
+      'formId'      => $this->_formId,
+      'entryId'     => $this->_entryId,
+    ];
     $uploadFileEndpoint = $isAttachment ?
         "{$this->_apiDomain}/crm/v2/{$module}/{$recordID}/Attachments"
         : "{$this->_apiDomain}/crm/v2/files";
@@ -97,9 +108,9 @@ final class FilesApiHelper
         }
       }
       if (isset($uploadResponse->status) && 'error' === $uploadResponse->status) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integId, ['type' => 'upload', 'type_name' => 'file'], 'error', $uploadResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integId, ['type' => 'upload', 'type_name' => 'file'], 'error', $uploadResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integId, ['type' => 'upload', 'type_name' => 'file'], 'success', $uploadResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integId, ['type' => 'upload', 'type_name' => 'file'], 'success', $uploadResponse, $entryDetails);
       }
       return $uploadedFiles;
     }

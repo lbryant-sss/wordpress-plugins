@@ -27,7 +27,7 @@ $site_id          = iub_array_get( iubenda()->options['global_options'], 'site_i
 					}
 					?>
 					<div class="m-1 mr-2 tabs__nav__item <?php echo esc_html( $_status ); ?>" data-target="configuration-type-simplified-tab" data-group="configuration-type">
-						<input class="section-radio-control cs-configuration-type" type="radio" id="radioSimplified" name="iubenda_cookie_law_solution[configuration_type]" value="simplified" <?php checked( 'simplified', iub_array_get( iubenda()->options['cs'], 'configuration_type' ) ); ?>>
+						<input class="iub-section-radio-control iub-cs-configuration-type" type="radio" id="radioSimplified" name="iubenda_cookie_law_solution[configuration_type]" value="simplified" <?php checked( 'simplified', iub_array_get( iubenda()->options['cs'], 'configuration_type' ) ); ?>>
 						<label for="radioSimplified">
 							<div class=" d-flex align-items-center">
 								<svg xmlns="http://www.w3.org/2000/svg" width="29" height="27" viewBox="0 0 29 27">
@@ -53,7 +53,7 @@ $site_id          = iub_array_get( iubenda()->options['global_options'], 'site_i
 				}
 				?>
 				<div class="m-1 mr-2 tabs__nav__item <?php echo esc_attr( $_status ); ?>" data-target="configuration-type-manual-tab" data-group="configuration-type">
-					<input type="radio" id="radioManual" class="section-radio-control cs-configuration-type" name="iubenda_cookie_law_solution[configuration_type]" value="manual" <?php checked( 'manual', iub_array_get( iubenda()->options['cs'], 'configuration_type' ) ); ?>>
+					<input type="radio" id="radioManual" class="iub-section-radio-control iub-cs-configuration-type" name="iubenda_cookie_law_solution[configuration_type]" value="manual" <?php checked( 'manual', iub_array_get( iubenda()->options['cs'], 'configuration_type' ) ); ?>>
 					<label for="radioManual">
 						<div class="d-flex align-items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
@@ -110,7 +110,7 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/auto-block-section.php';
 
 <div class="d-flex align-items-center pt-3">
 	<label class="checkbox-regular">
-		<input type="checkbox" class="mr-2 section-checkbox-control" name="iubenda_cookie_law_solution[amp_support]" value="1" <?php checked( true, (bool) iubenda()->options['cs']['amp_support'] ); ?> data-section-name="#amp_support"/>
+		<input type="checkbox" class="mr-2 iub-section-checkbox-control" name="iubenda_cookie_law_solution[amp_support]" value="1" <?php checked( true, (bool) iubenda()->options['cs']['amp_support'] ); ?> data-section-name="#amp_support"/>
 		<span><?php esc_html_e( 'Enable Google AMP support', 'iubenda' ); ?> <a target="_blank" href="<?php echo esc_url( iubenda()->settings->links['enable_amp_support'] ); ?>" class="ml-1 tooltip-icon">?</a></span>
 	</label>
 </div>
@@ -124,11 +124,11 @@ if ( ! (bool) iubenda()->options['cs']['amp_support'] ) {
 	<h4><?php esc_html_e( 'Select the iubenda AMP configuration file location.', 'iubenda' ); ?></h4>
 	<div class="mb-2 d-flex flex-wrap align-items-center">
 		<label class="radio-regular mb-3 mr-4">
-			<input type="radio" name="iubenda_cookie_law_solution[amp_source]" value="local" class="mr-2 section-radio-control" data-section-name="#auto_generated_conf_file" data-section-group=".amp_configuration_file" <?php checked( 'local', iub_array_get( iubenda()->options['cs'], 'amp_source' ) ); ?>>
+			<input type="radio" name="iubenda_cookie_law_solution[amp_source]" value="local" class="mr-2 iub-section-radio-control" data-section-name="#auto_generated_conf_file" data-section-group=".amp_configuration_file" <?php checked( 'local', iub_array_get( iubenda()->options['cs'], 'amp_source' ) ); ?>>
 			<span><?php esc_html_e( 'Auto-generated configuration file', 'iubenda' ); ?></span>
 		</label>
 		<label class="mr-4 mb-3 radio-regular text-xs">
-			<input type="radio" name="iubenda_cookie_law_solution[amp_source]" value="remote" class="mr-2 section-radio-control" data-section-name="#custom_conf_file" data-section-group=".amp_configuration_file" <?php checked( 'remote', iub_array_get( iubenda()->options['cs'], 'amp_source' ) ); ?>>
+			<input type="radio" name="iubenda_cookie_law_solution[amp_source]" value="remote" class="mr-2 iub-section-radio-control" data-section-name="#custom_conf_file" data-section-group=".amp_configuration_file" <?php checked( 'remote', iub_array_get( iubenda()->options['cs'], 'amp_source' ) ); ?>>
 			<span><?php esc_html_e( 'Custom configuration file', 'iubenda' ); ?></span>
 		</label>
 	</div>
@@ -177,7 +177,7 @@ if ( ! (bool) iubenda()->options['cs']['amp_support'] ) {
 
 <div class="d-flex align-items-center pt-3">
 	<label class="checkbox-regular">
-		<input type="checkbox" name="iubenda_cookie_law_solution[parse]" value="1" class="mr-2 section-checkbox-control blocking-method native-blocking-method" data-section-name="#iub_parser_engine_container" <?php checked( true, (bool) iubenda()->options['cs']['parse'] ); ?>>
+		<input type="checkbox" name="iubenda_cookie_law_solution[parse]" value="1" class="mr-2 iub-section-checkbox-control iub-blocking-method native-blocking-method" data-section-name="#iub_parser_engine_container" <?php checked( true, (bool) iubenda()->options['cs']['parse'] ); ?>>
 		<span><?php esc_html_e( 'Native Blocking', 'iubenda' ); ?> <a target="_blank" href="<?php echo esc_url( iubenda()->settings->links['automatic_block_scripts'] ); ?>" class="ml-1 tooltip-icon">?</a></span>
 	</label>
 </div>
@@ -197,11 +197,11 @@ if ( ! can_use_dom_document_class() ) {
 	<h4><?php esc_html_e( 'Select Parsing Engine', 'iubenda' ); ?></h4>
 	<div class="mb-3 d-flex flex-wrap align-items-center">
 		<label class="radio-regular mr-4 mb-3">
-			<input <?php echo esc_attr( ! can_use_dom_document_class() ? 'disabled' : '' ); ?> type="radio" name="iubenda_cookie_law_solution[parser_engine]" value="new" class="mr-2 section-radio-control" <?php checked( 'new', $current_parser ); ?>>
+			<input <?php echo esc_attr( ! can_use_dom_document_class() ? 'disabled' : '' ); ?> type="radio" name="iubenda_cookie_law_solution[parser_engine]" value="new" class="mr-2 iub-section-radio-control" <?php checked( 'new', $current_parser ); ?>>
 			<span><?php esc_html_e( 'Primary', 'iubenda' ); ?></span>
 		</label>
 		<label class="mr-4 mb-3 radio-regular text-xs">
-			<input type="radio" name="iubenda_cookie_law_solution[parser_engine]" value="default" class="mr-2 section-radio-control" <?php checked( 'default', $current_parser ); ?>>
+			<input type="radio" name="iubenda_cookie_law_solution[parser_engine]" value="default" class="mr-2 iub-section-radio-control" <?php checked( 'default', $current_parser ); ?>>
 			<span><?php esc_html_e( 'Secondary', 'iubenda' ); ?></span>
 		</label>
 		<?php if ( ! can_use_dom_document_class() ) : ?>
@@ -214,7 +214,7 @@ if ( ! can_use_dom_document_class() ) {
 
 	<div class="mb-2 d-flex flex-wrap align-items-center">
 		<label class="checkbox-regular">
-			<input type="checkbox" name="iubenda_cookie_law_solution[skip_parsing]" value="1" class="mr-2 section-checkbox-control" data-section-name="#section-block-script" <?php checked( true, (bool) iubenda()->options['cs']['skip_parsing'] ); ?>>
+			<input type="checkbox" name="iubenda_cookie_law_solution[skip_parsing]" value="1" class="mr-2 iub-section-checkbox-control" data-section-name="#section-block-script" <?php checked( true, (bool) iubenda()->options['cs']['skip_parsing'] ); ?>>
 			<div class="px-0 py-1">
 				<span class="p-0"><?php esc_html_e( 'Leave scripts untouched on the page if the user has already given consent', 'iubenda' ); ?></span>
 				<div class="notice notice--info mt-2 mb-3 p-3 d-flex align-items-center text-xs">
@@ -228,7 +228,7 @@ if ( ! can_use_dom_document_class() ) {
 	</div>
 	<div class="mb-2 d-flex flex-wrap align-items-center">
 		<label class="checkbox-regular">
-			<input type="checkbox" name="iubenda_cookie_law_solution[block_gtm]" value="1" class="mr-2 section-checkbox-control" <?php checked( true, (bool) iubenda()->options['cs']['block_gtm'] ); ?>>
+			<input type="checkbox" name="iubenda_cookie_law_solution[block_gtm]" value="1" class="mr-2 iub-section-checkbox-control" <?php checked( true, (bool) iubenda()->options['cs']['block_gtm'] ); ?>>
 			<div class="px-0 py-1">
 				<span class="p-0"><?php esc_html_e( 'Block Google Tag Manager', 'iubenda' ); ?></span>
 				<div class="notice notice--info mt-2 mb-3 p-3 d-flex align-items-center text-xs">
@@ -260,7 +260,7 @@ if ( ! can_use_dom_document_class() ) {
 					<option value="4"><?php esc_html_e( 'Analytics', 'iubenda' ); ?></option>
 					<option value="5"><?php esc_html_e( 'Targeting &amp; Advertising', 'iubenda' ); ?></option>
 				</select>
-				<a target="_blank" href="javascript:void(0)" class="remove-custom-script-field button-secondary remove-custom-section" data-remove-section=".custom-script-field" title="Remove">-</a>
+				<a target="_blank" href="javascript:void(0)" class="remove-custom-script-field button-secondary iub-remove-custom-section" data-remove-section=".custom-script-field" title="Remove">-</a>
 			</section>
 			<div id="custom-script-fields">
 				<?php
@@ -276,13 +276,13 @@ if ( ! can_use_dom_document_class() ) {
 							<option value="4" <?php selected( $custom_script_type, 4 ); ?>><?php esc_html_e( 'Analytics', 'iubenda' ); ?></option>
 							<option value="5" <?php selected( $custom_script_type, 5 ); ?>><?php esc_html_e( 'Targeting &amp; Advertising', 'iubenda' ); ?></option>
 						</select>
-						<a target="_blank" href="javascript:void(0)" class="remove-custom-script-field button-secondary remove-custom-section" data-remove-section=".custom-script-field" title="Remove">-</a>
+						<a target="_blank" href="javascript:void(0)" class="remove-custom-script-field button-secondary iub-remove-custom-section" data-remove-section=".custom-script-field" title="Remove">-</a>
 					</section>
 				<?php } ?>
 			</div>
 
 			<p class=" text-gray-lighter m-0 mb-3"><?php esc_html_e( "Provide a list of domains for any custom scripts you'd like to block, and assign their purposes. To make sure they are blocked correctly, please add domains in the same format as 'example.com', without any protocols e.g. 'http://' or 'https://'. You may also use wildcards (*) to include parent domains or subdomains.", 'iubenda' ); ?></p>
-			<button class="btn btn-gray-outline btn-xs add-custom-section" data-append-section="#custom-script-fields" data-clone-section="#custom-script-field"><?php esc_html_e( 'Add New Script', 'iubenda' ); ?></button>
+			<button class="btn btn-gray-outline btn-xs iub-add-custom-section" data-append-section="#custom-script-fields" data-clone-section="#custom-script-field"><?php esc_html_e( 'Add New Script', 'iubenda' ); ?></button>
 		</div>
 		<div data-target="tab-custom-iframes" data-group="custom-scripts" class="tabs__target p-3">
 			<section id="custom-iframe-field" class="custom-iframe-field hidden">
@@ -295,7 +295,7 @@ if ( ! can_use_dom_document_class() ) {
 					<option value="4"><?php esc_html_e( 'Analytics', 'iubenda' ); ?></option>
 					<option value="5"><?php esc_html_e( 'Targeting &amp; Advertising', 'iubenda' ); ?></option>
 				</select>
-				<a target="_blank" href="javascript:void(0)" class="remove-custom-iframe-field button-secondary remove-custom-section" data-remove-section=".custom-iframe-field" title="Remove">-</a>
+				<a target="_blank" href="javascript:void(0)" class="remove-custom-iframe-field button-secondary iub-remove-custom-section" data-remove-section=".custom-iframe-field" title="Remove">-</a>
 			</section>
 			<div id="custom-iframe-fields">
 				<?php
@@ -311,17 +311,17 @@ if ( ! can_use_dom_document_class() ) {
 							<option value="4" <?php selected( $custom_iframe_type, 4 ); ?>><?php esc_html_e( 'Analytics', 'iubenda' ); ?></option>
 							<option value="5" <?php selected( $custom_iframe_type, 5 ); ?>><?php esc_html_e( 'Targeting &amp; Advertising', 'iubenda' ); ?></option>
 						</select>
-						<a target="_blank" href="javascript:void(0)" class="remove-custom-iframe-field button-secondary remove-custom-section" data-remove-section=".custom-iframe-field" title="Remove">-</a>
+						<a target="_blank" href="javascript:void(0)" class="remove-custom-iframe-field button-secondary iub-remove-custom-section" data-remove-section=".custom-iframe-field" title="Remove">-</a>
 					</section>
 				<?php } ?>
 
 			</div>
 			<p class="text-gray-lighter m-0 mb-3"><?php esc_html_e( "Provide a list of domains for any custom iframes you'd like to block, and assign their purposes. To make sure they are blocked correctly, please add domains in the same format as 'example.com', without any protocols e.g. 'http://' or 'https://'. You may also use wildcards (*) to include parent domains or subdomains.", 'iubenda' ); ?></p>
-			<button class="btn btn-gray-outline btn-xs add-custom-section" data-append-section="#custom-iframe-fields" data-clone-section="#custom-iframe-field"><?php esc_html_e( 'Add New iframe', 'iubenda' ); ?></button>
+			<button class="btn btn-gray-outline btn-xs iub-add-custom-section" data-append-section="#custom-iframe-fields" data-clone-section="#custom-iframe-field"><?php esc_html_e( 'Add New iframe', 'iubenda' ); ?></button>
 		</div>
 	</fieldset>
 </section>
-<div id="both-blocking-methods-disabled-warning-message" class="mxx-4 mb-4 notice notice--warning mt-2 p-3 align-items-center text-warning text-xs d-flex <?php echo iubenda()->options['cs']['parse'] ? 'd-flex' : ''; ?>">
+<div id="iub-both-blocking-methods-disabled-warning-message" class="mxx-4 mb-4 notice notice--warning mt-2 p-3 align-items-center text-warning text-xs d-flex <?php echo iubenda()->options['cs']['parse'] ? 'd-flex' : ''; ?>">
 	<img class="mr-2" src="<?php echo esc_url( IUBENDA_PLUGIN_URL ); ?>/assets/images/warning-icon.svg">
 	<p>
 		<?php esc_html_e( 'Most legislation explicitly require prior consent in order to process user’s data. By disabling these blocking options you may be in breach of such requirements', 'iubenda' ); ?>

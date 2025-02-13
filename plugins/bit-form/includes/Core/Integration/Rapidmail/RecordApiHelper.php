@@ -19,7 +19,9 @@ class RecordApiHelper
 
   private $_logResponse;
 
-  public function __construct($integrationDetails, $username, $password, $logID)
+  private $_entryID;
+
+  public function __construct($integrationDetails, $username, $password, $logID, $entryID)
   {
     $this->integrationDetails = $integrationDetails;
     $this->_defaultHeader = [
@@ -30,6 +32,7 @@ class RecordApiHelper
     ];
     $this->_logResponse = new UtilApiResponse();
     $this->logID = $logID;
+    $this->_entryID = $entryID;
   }
 
   public function insertRecipientRecord($data)
@@ -68,15 +71,21 @@ class RecordApiHelper
     return $dataFinal;
   }
 
-  public function executeRecordApi($integId, $defaultConf, $recipientLists, $fieldValues, $fieldMap, $actions)
+  public function executeRecordApi($integId, $defaultConf, $recipientLists, $fieldValues, $fieldMap, $actions, $formId)
   {
     $finalData = $this->generateReqDataFromFieldMap($fieldValues, $fieldMap);
     $apiResponse = $this->insertRecipientRecord($finalData);
 
+    $entryDetails = [
+      'formId'      => $formId,
+      'entryId'     => $this->_entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     if (!property_exists($apiResponse, 'recipientlist_id')) {
-      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => 'recipient', 'type_name' => 'add'], 'errors', $apiResponse);
+      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => 'recipient', 'type_name' => 'add'], 'errors', $apiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => 'recipient', 'type_name' => 'add'], 'success', $apiResponse);
+      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => 'recipient', 'type_name' => 'add'], 'success', $apiResponse, $entryDetails);
     }
     return $apiResponse;
   }

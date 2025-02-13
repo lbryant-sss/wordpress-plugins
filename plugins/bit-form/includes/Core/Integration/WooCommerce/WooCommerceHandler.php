@@ -502,12 +502,18 @@ class WooCommerceHandler
     $fieldMap = $integrationDetails->field_map;
     $uploadFieldMap = $integrationDetails->upload_field_map;
     $required = $integrationDetails->default->fields->{$module}->required;
+
+    $entryDetails = [
+      'formId'      => $this->_formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
     if (
       empty($module)
       || empty($fieldMap)
     ) {
       $error = new WP_Error('REQ_FIELD_EMPTY', __('module and field map are required for woocommerce', 'bit-form'));
-      $this->_logResponse->apiResponse($logID, $this->_integrationID, 'record', 'validation', $error);
+      $this->_logResponse->apiResponse($logID, $this->_integrationID, 'record', 'validation', $error, $entryDetails);
       return $error;
     }
 

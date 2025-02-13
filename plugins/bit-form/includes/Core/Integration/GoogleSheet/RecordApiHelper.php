@@ -49,7 +49,7 @@ class RecordApiHelper
     return HttpHelper::request($updateRecordEndpoint, 'put', $data, $this->_defaultHeader);
   }
 
-  public function executeRecordApi($spreadsheetId, $worksheetName, $headerRow, $header, $actions, $defaultConf, $fieldValues, $fieldMap)
+  public function executeRecordApi($spreadsheetId, $worksheetName, $headerRow, $header, $actions, $defaultConf, $fieldValues, $fieldMap, $formId)
   {
     $fieldData = [];
     $allHeaders = $defaultConf->headers->{$spreadsheetId}->{$worksheetName}->{$headerRow};
@@ -104,10 +104,17 @@ class RecordApiHelper
         $recordApiResponse = $this->updateRecord($spreadsheetId, $worksheetInfo, wp_json_encode($data));
         $type = 'update';
       }
+
+      $entryDetails = [
+        'formId'      => $formId,
+        'entryId'     => $this->_entryID,
+        'fieldValues' => $fieldValues
+      ];
+
       if (isset($recordApiResponse->error)) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'error', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'error', $recordApiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'success', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'success', $recordApiResponse, $entryDetails);
       }
     }
 

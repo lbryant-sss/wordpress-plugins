@@ -19,7 +19,7 @@ require_once IUBENDA_PLUGIN_PATH . '/views/partials/header.php';
 	// Including partial breadcrumb.
 	require_once IUBENDA_PLUGIN_PATH . 'views/partials/breadcrumb.php';
 	?>
-	<form class="ajax-form-to-options">
+	<form class="iub-ajax-form-to-options">
 		<input hidden name="iubenda_section_name" value="iubenda_plugin_settings">
 		<input hidden name="action" value="save_plugin_settings_options">
 		<?php wp_nonce_field( 'iub_save_plugin_settings_options_nonce', 'iub_plugin_settings_nonce' ); ?>

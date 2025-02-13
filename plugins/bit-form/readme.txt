@@ -1,7 +1,7 @@
 === Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder ===
 Plugin Name: Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder
-Version: 2.17.7
-Stable tag: 2.17.7
+Version: 2.17.8
+Stable tag: 2.17.8
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin 
@@ -543,6 +543,17 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
+= 2.17.8 =
+*Release Date: 12 February, 2025*
+*New:
+    1. Introduced new action hooks (bitform_integration_api_response_error, bitform_integration_api_response_success) for improved integration response handling.
+
+*Improvements:
+    1. Added "Logged In User" option in the Meta Box integration edit section.
+
+*Fix:
+    1. Fixed a form update error when a section field was duplicated in a multi-step form.
+
 = 2.17.7 =
 *Release Date: 02 February, 2025*
 *Fix:
@@ -715,94 +726,11 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 *Improvement:
     1. Telegram Integration: Implemented support for sending images or signatures directly to a Telegram channel.
 
-= 2.13.13 =
-*Release Date: 08 September, 2024*
-*Improvements:
-    1. Introduced a new "change" logic and "Number" function in the conditional logic section.
-    2. Added filter and action hooks for handling integration run failures.
-    3. Implemented debounce time for the "save form draft" action in conditional logic.
-
-*Fix: 
-    1. Fixed an issue with the Google Ads API.
-    2. Prevented empty form submissions during Form Draft.
-    3. Resolved the undefined entry ID issue in JavaScript Custom Events ("bf-form-submit-success").
-
-= 2.13.12 =
-*Release Date: 31 August, 2024*
-*Improvements:
-    1. Enhanced security for AJAX requests used in exporting form entries.
-
-= 2.13.11 =
-*Release Date: 21 August, 2024*
-*Improvements:
-    1. Addressed a vulnerability in the file upload field related to SVG file uploads.
-
-= 2.13.10 =
-*Release Date: 15 August, 2024*
-*Improvements:
-    1. Improved sanitization processes to better handle various types of AJAX Request.
-    2. Reducing vulnerabilities such as SQL injection and other security threats.
-    3. Improved the formatting of repeater checkbox values for better integration in PDF attachments and email templates.
-
-= 2.13.9 =
-*Release Date: 11 August, 2024*
-*Fix:
-    1. Resolved an authentication issue with the Elastic Email integration.
-    2. Fixed the undefined RazorPay Order ID issue.
-
-= 2.13.8 =
-*Release Date: 30 July, 2024*
-*Fix:
-    1. Resolved the issue with loading styles for the Conversational form.
-    2. Resolved the issue with opening the modal for Leading and Trailing Icons.
-
-= 2.13.7 =
-*Release Date: 27 July, 2024*
-*Fix:
-    1. Resolved Repeater field value issue with Webhook parameter mapping.
-    2. Resolved Gutenberg block of Bit Form Id in label.
-
-= 2.13.6 =
-*Release Date: 17 July, 2024*
-*Improvement:
-    1. Improve user input sanitization of Bit Form.
-*Fix:
-    1. Resolved Google Ads authentication issue.
-
-= 2.13.5 =
-*Release Date: 09 July, 2024*
-Improvement:
-    1. Improve the wordpress security of Bit Form.
-*Fix:
-    1. Resolved security issue with icon upload.
-    2. Resolved modal navigation issue with Firefox browser.
-
-= 2.13.3 =
-*Release Date: 04 July, 2024*
-*Improvement:
-    1. Improvement notes and hints in various settings for better understanding.
-*Fix:
-    1. Resolved an issue with the field add in builder.
-
-= 2.13.2 =
-*Release Date: 03 July, 2024*
-*Improvement:
-    1. Added notes and hints in various settings for better understanding.
-*Fix:
-    1. Resolved an issue with the conditional filter in the response management section.
-
-= 2.13.0 =
-*Release Date: 29 June, 2024*
-*Feature:
-    1. Added New Payment Gateway: Mollie
-*Fix:
-    1. Resolved style shrink issue of Checkbox field.
-    2. Resolved submission issue with repeater field data.
 
 
 == Upgrade Notice ==
 
-= 2.15.3 =
+= 2.17.6 =
 Update this version to get security improvements.
 
 

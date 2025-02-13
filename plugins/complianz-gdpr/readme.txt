@@ -5,8 +5,8 @@ Tags: GDPR, Cookie, Cookie Notice, Consent, Privacy
 Requires at least: 5.9
 License: GPL2
 Requires PHP: 7.4
-Tested up to: 6.6
-Stable tag: 7.2.0
+Tested up to: 6.7.2
+Stable tag: 7.3.0
 
 Configure your Cookie Banner, Cookie Consent and Cookie Policy with our Wizard and Cookie Scan.
 
@@ -29,7 +29,7 @@ https://www.youtube.com/watch?v=JJzOzNAd5Bw&ab_channel=ReallySimplePlugins
 
 = Consent Management =
 
-* Automatically configures you website based on wizard questions, WordPress scans and dedicated service and plugin integrations.
+* Automatically configures your website based on wizard questions, WordPress scans and dedicated service and plugin integrations.
 * Blocks 3rd party cookies like Google Maps, Facebook, Instagram, AdSense, Hubspot, Recaptcha, Twitter, ActiveCampaign, and many more.
 * Custom integrations for plugins, themes and services are automatically detected. 
 * Blocks iFrames, like YouTube, Vimeo, Dailymotion embedded videos and Social iFrames e.g. Instagram, Facebook et al.
@@ -98,7 +98,7 @@ Complianz offers a Full Privacy Suite for WordPress on [Complianz.io](https://co
 
 = Privacy Laws & Guidelines =
 
-Simultaneously select USA, Canada, United Kingdom, Australie, South Africa, Brazil and the EU as targeted regions with conditional Consent and dedicated Cookie Banners.
+Simultaneously select USA, Canada, United Kingdom, Australia, South Africa, Brazil and the EU as targeted regions with conditional Consent and dedicated Cookie Banners.
 
 * Support for GDPR / ePrivacy - European Union with Extension for Switzerland.
 * Support for USA / CCPA/CPRA/CPA/CTDPA/NRS 603A/UCPA/CDPA
@@ -165,7 +165,7 @@ For more information:
 * Go to “Plugins” in your WordPress Dashboard, and click “Add new”.
 * Click “Upload”, and select the downloaded zip file.
 * Activate your new plugin.
-* Use our tour to get familar with Complianz.
+* Use our tour to get familiar with Complianz.
 
 == Frequently Asked Questions ==
 = Knowledgebase =
@@ -198,6 +198,17 @@ The Brazilian General Data Protection Law is similar to the GDPR, the UK-GDPR it
 With some custom CSS this is possible, but we do not consider a cookie wall to be GDPR compliant, so it's not actively supported. We do, however, have the option to create a Soft Cookie Wall. Which blocks interaction with the website, but dismissing remains a possibility.
 
 == Changelog ==
+
+= 7.3.0 =
+* February 12th, 2025
+Enhancement: Website Scan, added services detection.
+Enhancement: Improved Omnisnippet compatibility.
+Enhancement: Removed "BETA" references on Google Consent Mode V2 to reflect its finalized status.
+Enhancement: Removed the soft cookie wall preview functionality and updated its description.
+Enhancement: Added new Tips & Tricks.
+Enhancement: Updated email field validation to allow the use of certain special characters.
+Fix: Resolved issues with vendor links by improving the parsing logic to handle commas in vendor names or URLs correctly.
+Fix: Triggered GeoIP database installation to ensure proper functionality during upgrades.
 
 = 7.2.0 =
 * December 16th, 2024

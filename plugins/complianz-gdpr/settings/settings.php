@@ -235,7 +235,7 @@ function cmplz_plugin_admin_scripts() {
 						'user_id'           => get_current_user_id(),
                         'is_multisite'      => is_multisite(),
                         'is_multisite_plugin'=> defined('cmplz_premium_multisite'),
-						'onboarding_complete' => get_option('cmplz_onboarding_dismissed'),
+						'onboarding_complete' => COMPLIANZ::$wsc_onboarding->wsc_is_dismissed(),
 				] )
 		);
 	}
@@ -615,15 +615,6 @@ function cmplz_other_plugins_data($slug=false){
 		return [];
 	}
 	$plugins = array(
-		[
-			'slug' => 'burst-statistics',
-			'constant_free' => 'burst_free',
-			'constant_premium' => 'burst_pro',
-			'website' => 'https://burst-statistics.com/pricing?src=complianz-plugin',
-			'wordpress_url' => 'https://wordpress.org/plugins/burst-statistics/',
-			'upgrade_url' => 'https://burst-statistics.com/pricing?src=cmplz-plugin',
-			'title' => 'Burst Statistics - '. __("Self-hosted and privacy-friendly analytics tool.", "complianz-gdpr"),
-		],
 		[
 			'slug' => 'really-simple-ssl',
 			'constant_free' => 'rsssl_version',

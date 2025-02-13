@@ -17,11 +17,15 @@ use WP_Error;
 class EnchargeHandler
 {
   private $_integrationID;
+
+  private $formId;
   public static $api_endpoint = 'https://api.encharge.io/v1/';
 
   public function __construct($integrationID, $fromID)
   {
     $this->_integrationID = $integrationID;
+
+    $this->formId = $fromID;
   }
 
   /**
@@ -153,7 +157,8 @@ class EnchargeHandler
     $enchagreApiResponse = $recordApiHelper->executeRecordApi(
       $fieldValues,
       $fieldMap,
-      $tags
+      $tags,
+      $this->formId
     );
 
     if (is_wp_error($enchagreApiResponse)) {

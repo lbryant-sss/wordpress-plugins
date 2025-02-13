@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="button-style mb-3 d-flex">
 		<div class="m-1 mr-2">
 			<label class="radio-btn-style radio-btn-style-light">
-				<input type="radio" class="update-button-style" name="iubenda_privacy_policy_solution[button_style]" value="white" <?php checked( 'white', iub_array_get( iubenda()->options['pp'], 'button_style' ) ); ?>>
+				<input type="radio" class="iub-update-button-style" name="iubenda_privacy_policy_solution[button_style]" value="white" <?php checked( 'white', iub_array_get( iubenda()->options['pp'], 'button_style' ) ); ?>>
 				<div>
 					<div class="btn-fake"></div>
 				</div>
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 		<div class="m-1 mr-2">
 			<label class="radio-btn-style radio-btn-style-dark">
-				<input type="radio" class="update-button-style" name="iubenda_privacy_policy_solution[button_style]" value="black" <?php checked( 'black', iub_array_get( iubenda()->options['pp'], 'button_style' ) ); ?>>
+				<input type="radio" class="iub-update-button-style" name="iubenda_privacy_policy_solution[button_style]" value="black" <?php checked( 'black', iub_array_get( iubenda()->options['pp'], 'button_style' ) ); ?>>
 				<div>
 					<div class="btn-fake"></div>
 				</div>

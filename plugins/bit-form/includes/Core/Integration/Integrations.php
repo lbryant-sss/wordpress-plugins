@@ -169,6 +169,11 @@ final class Integrations
   {
     $integrationHandler = new IntegrationHandler($formID);
     $logResponse = new ApiResponse();
+    $entryDetails = [
+      'formId'      => $formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
     if (is_array($integrations)) {
       foreach ($integrations as $integrationIDStr) {
         if (!is_string($integrationIDStr)) {
@@ -204,7 +209,8 @@ final class Integrations
               $integrationID,
               ['type' => 'record', 'type_name' => $integrationName || 'Integration'],
               'errors',
-              $errorMsg
+              $errorMsg,
+              $entryDetails
             );
           }
         }

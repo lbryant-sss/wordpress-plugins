@@ -87,7 +87,11 @@ class RecordApiHelper
     $fieldData = [];
     $dateTimeHelper = new DateTimeHelper();
     $convertedDateFormat = $dateTimeHelper->getUnicodeToPhpFormat('date', $dateFormat);
-
+    $entryDetails = [
+      'formId'      => $formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
     $fieldPair = null;
     foreach ($defaultFields as $defaultField) {
       foreach ($fieldMap as $fieldPair) {
@@ -121,7 +125,7 @@ class RecordApiHelper
       }
       if (empty($fieldData['data'][$fieldPair->zohoFormField]) && \in_array($fieldPair->zohoFormField, $required)) {
         $error = new WP_Error('REQ_FIELD_EMPTY', wp_sprintf(__('%s is required for zoho creator', 'bit-form'), $fieldPair->zohoFormField));
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error, $entryDetails);
         return $error;
       }
     }
@@ -136,9 +140,9 @@ class RecordApiHelper
       $fieldData['criteria'] = $actions->update->criteria;
       $recordApiResponse = $this->updateRecord($dataCenter, $accountOwner, $applicationId, $reportId, wp_json_encode($fieldData));
       if (isset($recordApiResponse->code) && 3000 === $recordApiResponse->code) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'update'], 'success', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'update'], 'success', $recordApiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'update'], 'error', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'update'], 'error', $recordApiResponse, $entryDetails);
       }
 
       unset($fieldData['criteria']);
@@ -146,17 +150,17 @@ class RecordApiHelper
       if ($actions->update->insert && isset($recordApiResponse->message) && 'No Data Available' === $recordApiResponse->message) {
         $recordApiResponse = $this->insertRecord($dataCenter, $accountOwner, $applicationId, $formId, wp_json_encode($fieldData));
         if (isset($recordApiResponse->code) && 3000 === $recordApiResponse->code) {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'success', $recordApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'success', $recordApiResponse, $entryDetails);
         } else {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'error', $recordApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'error', $recordApiResponse, $entryDetails);
         }
       }
     } else {
       $recordApiResponse = $this->insertRecord($dataCenter, $accountOwner, $applicationId, $formId, wp_json_encode($fieldData));
       if (isset($recordApiResponse->code) && 3000 === $recordApiResponse->code) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'success', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'success', $recordApiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'error', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'error', $recordApiResponse, $entryDetails);
       }
     }
 
@@ -176,6 +180,11 @@ class RecordApiHelper
 
   private function uploadFileToRecord($uploadFieldMap, $fieldValues, $dataCenter, $formID, $entryID,  $accountOwner, $applicationId, $reportId, $recordId)
   {
+    $entryDetails = [
+      'formId'      => $formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
     $fileFound = 0;
     $fileApiResponses = [];
     $responseType = 'success';
@@ -204,7 +213,7 @@ class RecordApiHelper
     }
 
     if ($fileFound) {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'file', 'type_name' => 'form'], $responseType, $fileApiResponses);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'file', 'type_name' => 'form'], $responseType, $fileApiResponses, $entryDetails);
     }
 
     return $fileApiResponses;

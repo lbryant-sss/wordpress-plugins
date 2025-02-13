@@ -17,9 +17,13 @@ class GroundhoggHandler
 {
   private $integrationID;
 
+  private $formId;
+
   public function __construct($integrationID, $fromID)
   {
     $this->integrationID = $integrationID;
+
+    $this->formId = $fromID;
   }
 
   public static function registerAjax()
@@ -138,7 +142,8 @@ class GroundhoggHandler
       $public_key,
       $token,
       $actions,
-      $integrationDetails
+      $integrationDetails,
+      $this->formId
     );
 
     if (is_wp_error($acumbamailApiResponse)) {

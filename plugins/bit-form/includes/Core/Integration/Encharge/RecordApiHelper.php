@@ -19,6 +19,8 @@ class RecordApiHelper
   private $_logID;
   private $_logResponse;
 
+  private $entryId;
+
   public function __construct($api_key, $integId, $logID, $entryID)
   {
     // wp_send_json_success($tokenDetails);
@@ -27,6 +29,7 @@ class RecordApiHelper
     $this->_integrationID = $integId;
     $this->_logID = $logID;
     $this->_logResponse = new UtilApiResponse();
+    $this->entryId = $entryID;
   }
 
   /**
@@ -39,7 +42,7 @@ class RecordApiHelper
     return HttpHelper::post($insertRecordEndpoint, $data, $this->_defaultHeader);
   }
 
-  public function executeRecordApi($fieldValues, $fieldMap, $tags)
+  public function executeRecordApi($fieldValues, $fieldMap, $tags, $formId)
   {
     $fieldData = [];
 
@@ -59,14 +62,20 @@ class RecordApiHelper
     $recordApiResponse = $this->insertRecord(wp_json_encode($fieldData));
     $type = 'insert';
 
+    $entryDetails = [
+      'form_id'     => $formId,
+      'entry_id'    => $this->entryId,
+      'fieldValues' => $fieldValues,
+    ];
+
     if ($recordApiResponse && isset($recordApiResponse->user)) {
       $recordApiResponse = [
         'status' => 'success',
         'email'  => $recordApiResponse->user->email
       ];
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'success', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'success', $recordApiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'error', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'error', $recordApiResponse, $entryDetails);
     }
     return $recordApiResponse;
   }

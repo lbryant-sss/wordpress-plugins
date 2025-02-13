@@ -25,7 +25,10 @@ class RecordApiHelper
 
   private $_integrationID;
 
-  public function __construct($tokenDetails, $integId, $logID)
+  private $_formID;
+  private $_entryID;
+
+  public function __construct($tokenDetails, $integId, $logID, $formID, $entryID)
   {
     $this->_defaultHeader['Authorization'] = "Zoho-oauthtoken {$tokenDetails->access_token}";
     $this->_apiDomain = \urldecode($tokenDetails->api_domain);
@@ -33,6 +36,9 @@ class RecordApiHelper
     $this->_integrationID = $integId;
     $this->_logID = $logID;
     $this->_logResponse = new UtilApiResponse();
+
+    $this->_formID = $formID;
+    $this->_entryID = $entryID;
   }
 
   public function insertRecord($list, $dataCenter, $data)
@@ -43,6 +49,11 @@ class RecordApiHelper
 
   public function executeRecordApi($list, $dataCenter, $fieldValues, $fieldMap, $required)
   {
+    $entryDetails = [
+      'formId'      => $this->_formID,
+      'entryId'     => $this->_entryID,
+      'fieldValues' => $fieldValues
+    ];
     $fieldData = [];
     foreach ($fieldMap as $fieldPair) {
       if (!empty($fieldPair->zohoFormField)) {
@@ -55,16 +66,16 @@ class RecordApiHelper
 
       if (empty($fieldData[$fieldPair->zohoFormField]) && \in_array($fieldPair->zohoFormField, $required)) {
         $error = new WP_Error('REQ_FIELD_EMPTY', wp_sprintf('%s ', __('is required for zoho marketing hub', 'bit-form'), $fieldPair->zohoFormField));
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error, $entryDetails);
         return $error;
       }
     }
 
     $recordApiResponse = $this->insertRecord($list, $dataCenter, wp_json_encode($fieldData));
     if (isset($recordApiResponse->status) && 'success' === $recordApiResponse->status) {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'list'], 'success', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'list'], 'success', $recordApiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'list'], 'error', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'list'], 'error', $recordApiResponse, $entryDetails);
     }
     return $recordApiResponse;
   }

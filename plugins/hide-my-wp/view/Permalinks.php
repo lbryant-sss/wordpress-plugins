@@ -1033,14 +1033,14 @@
         </div>
 
         <div class="hmwp_col hmwp_col_side p-0 pr-2 mr-2">
+	        <?php
+	        if ( ! HMWP_Classes_Tools::getOption( 'api_token' ) ) {
+		        $view->show( 'blocks/Connect' );
+	        }
+	        ?>
 			<?php $view->show( 'blocks/ChangeCacheFiles' ); ?>
 			<?php $view->show( 'blocks/SecurityCheck' ); ?>
 			<?php $view->show( 'blocks/FrontendCheck' ); ?>
-			<?php
-			if ( ! HMWP_Classes_Tools::getOption( 'api_token' ) ) {
-				$view->show( 'blocks/Connect' );
-			}
-			?>
         </div>
     </div>
 </div>

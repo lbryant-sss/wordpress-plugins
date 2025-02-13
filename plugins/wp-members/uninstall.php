@@ -52,6 +52,8 @@ if ( WP_UNINSTALL_PLUGIN ) {
  */
 function wpmem_uninstall_options() {
 
+	global $wpdb;
+
 	$optin = get_option( 'wpmembers_optin' );
 	if ( 1 == $optin ) {
 		include_once( plugin_dir_path( __FILE__ ) . 'includes/vendor/rocketgeek-tools/class-rocketgeek-satellite.php' );
@@ -67,10 +69,12 @@ function wpmem_uninstall_options() {
 	delete_option( 'wpmembers_export'   );
 	delete_option( 'wpmembers_dropins'  );
 	delete_option( 'wpmem_hidden_posts' );
+	delete_option( 'wpmem_memberships'  );
 
 	delete_option( 'wpmembers_utfields' );
 	delete_option( 'wpmembers_usfields' );
 	delete_option( 'wpmembers_wcchkout_fields' );
+	delete_option( 'wpmembers_wcupdate_fields' );
 	delete_option( 'wpmembers_wcacct_fields'   );
 
 	delete_option( 'wpmembers_email_newreg'  );
@@ -85,12 +89,21 @@ function wpmem_uninstall_options() {
 	delete_option( 'wpmembers_email_getuser' );
 	delete_option( 'wpmembers_email_validated' );
 
+	// Delete both possible option names.
+	delete_option( 'widget_widget_wpmemwidget' );
 	delete_option( 'widget_wpmemwidget' );
 
+	// Delete view count transients.
+
+	$transients = $wpdb->get_results( 'SELECT option_name FROM ' . $wpdb->prefix . 'options WHERE option_name LIKE "%_transient_wpmem_user_counts%";' );
+	if ( $transients ) {
+		foreach ( $transients as $transient ) {
+			delete_transient( esc_attr( str_replace( '_transient_', '', $transient->option_name ) ) );
+		}
+	}
 	delete_transient( 'wpmem_user_counts' );
 	
 	// Drop user meta key search table.
-	global $wpdb;
 	$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}wpmembers_user_search_keys" );
 	
 	// These should not exist following 3.5.0 upgrade, but check them anyway.

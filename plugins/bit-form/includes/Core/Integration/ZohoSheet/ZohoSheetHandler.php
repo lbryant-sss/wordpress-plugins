@@ -407,7 +407,7 @@ class ZohoSheetHandler
     }
 
     // $actions = $integrationDetails->actions;
-    $recordApiHelper = new RecordApiHelper($tokenDetails, $this->_integrationID, $logID);
+    $recordApiHelper = new RecordApiHelper($tokenDetails, $this->_integrationID, $logID, $this->_formID, $entryID);
 
     $zsheetApiResponse = $recordApiHelper->executeRecordApi(
       $workbook,

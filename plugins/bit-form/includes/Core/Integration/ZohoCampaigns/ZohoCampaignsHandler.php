@@ -11,6 +11,7 @@ use BitCode\BitForm\Core\Integration\IntegrationHandler;
 use BitCode\BitForm\Core\Util\ApiResponse as UtilApiResponse;
 use BitCode\BitForm\Core\Util\HttpHelper;
 use BitCode\BitForm\Core\Util\IpTool;
+use WP_Error;
 
 /**
  * Provide functionality for ZohoCrm integration
@@ -321,13 +322,19 @@ class ZohoCampaignsHandler
     $dataCenter = $integrationDetails->dataCenter;
     $fieldMap = $integrationDetails->field_map;
     $required = $integrationDetails->default->fields->{$list}->required;
+
+    $entryDetails = [
+      'formId'      => $this->_formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
     if (
       empty($tokenDetails)
       || empty($list)
       || empty($fieldMap)
     ) {
       $error = new WP_Error('REQ_FIELD_EMPTY', __('list are required for zoho campaigns api', 'bit-form'));
-      $this->_logResponse->apiResponse($logID, $this->_integrationID, 'record', 'validation', $error);
+      $this->_logResponse->apiResponse($logID, $this->_integrationID, 'record', 'validation', $error, $entryDetails);
       return $error;
     }
 
@@ -345,7 +352,7 @@ class ZohoCampaignsHandler
     }
 
     // $actions = $integrationDetails->actions;
-    $recordApiHelper = new RecordApiHelper($tokenDetails, $this->_integrationID, $logID);
+    $recordApiHelper = new RecordApiHelper($tokenDetails, $this->_integrationID, $logID, $this->_formID, $entryID);
 
     $zcampaignsApiResponse = $recordApiHelper->executeRecordApi(
       $list,

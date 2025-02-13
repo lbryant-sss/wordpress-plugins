@@ -33,6 +33,11 @@ class RecordApiHelper
 
   public function executeRecordApi($formID, $entryID, $module, $fieldValues, $fieldMap, $uploadFieldMap, $required)
   {
+    $entryDetails = [
+      'formId'      => $formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
     $fieldData = [];
     foreach ($fieldMap as $fieldPair) {
       if (!empty($fieldPair->wcField) && !empty($fieldPair->formField)) {
@@ -44,7 +49,7 @@ class RecordApiHelper
 
         if (in_array($fieldPair->wcField, $required) && empty($fieldValues[$fieldPair->formField])) {
           $error = new WP_Error('REQ_FIELD_EMPTY', wp_sprintf(__('%s is required for woocommerce %s', 'bit-form'), $fieldPair->wcField, $module));
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => $module, 'type_name' => 'create'], 'validation', $error);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => $module, 'type_name' => 'create'], 'validation', $error, $entryDetails);
           return $error;
         }
       }
@@ -133,9 +138,9 @@ class RecordApiHelper
 
       if (is_wp_error($product_id) || !$product_id) {
         $response = is_wp_error($product_id) ? $product_id->get_error_message() : 'error';
-        return $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'product', 'type_name' => $entry_type], 'error', $response);
+        return $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'product', 'type_name' => $entry_type], 'error', $response, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'product', 'type_name' => $entry_type], 'success', $product_id);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'product', 'type_name' => $entry_type], 'success', $product_id, $entryDetails);
       }
     }
 
@@ -156,9 +161,9 @@ class RecordApiHelper
 
       if (is_wp_error($user_id) || !$user_id) {
         $response = is_wp_error($user_id) ? $user_id->get_error_message() : 'error';
-        return $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'customer', 'type_name' => $entry_type], 'error', $response);
+        return $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'customer', 'type_name' => $entry_type], 'error', $response, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'customer', 'type_name' => $entry_type], 'success', $user_id);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'customer', 'type_name' => $entry_type], 'success', $user_id, $entryDetails);
       }
 
       foreach ($meta_inputs as $metaKey => $metaValue) {

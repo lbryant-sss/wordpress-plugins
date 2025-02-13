@@ -55,6 +55,10 @@ function wpmem_do_install() {
 		// Upgrade.
 		$wpmem_settings = wpmem_upgrade_settings();
 
+		if ( version_compare( $existing_settings['version'], '3.5.2', '<' ) ) {
+			wpmem_update_autoload_options();
+		}
+
 		if ( version_compare( $existing_settings['version'], '3.5.0', '<' ) ) {
 			wpmem_add_profile_to_fields( $existing_settings );
 			wpmem_update_user_dirs();
@@ -84,6 +88,7 @@ function wpmem_do_install() {
 
 		// Remove options no longer used or needed.
 		delete_option( 'wpmembers_install_state' );
+		delete_option( 'wpmem_enable_field_sc' );
 	}
 	
 	return $wpmem_settings;
@@ -142,14 +147,14 @@ function wpmem_upgrade_settings() {
 	if ( isset( $wpmem_settings['email'] ) ) {
 		$from = ( is_array( $wpmem_settings['email'] ) ) ? $wpmem_settings['email']['from']      : '';
 		$name = ( is_array( $wpmem_settings['email'] ) ) ? $wpmem_settings['email']['from_name'] : '';
-		update_option( 'wpmembers_email_wpfrom', $from );
-		update_option( 'wpmembers_email_wpname', $name );
+		update_option( 'wpmembers_email_wpfrom', $from, false );
+		update_option( 'wpmembers_email_wpname', $name, false );
 		unset( $wpmem_settings['email'] );
 	}
 	
 	// @since 3.3.0 Upgrade stylesheet setting.
-	// @since 3.5.0 Simplified.
-	$wpmem_settings['select_style'] = wpmem_upgrade_style_setting( $wpmem_settings );
+	// @since 3.5.0 Simplified. Only two options: default|use_custom.
+	$wpmem_settings = wpmem_upgrade_style_setting( $wpmem_settings );
 
 	// Change 3.4.9 field shortcode option.
 	if ( ! isset( $wpmem_settings['shortcode'] ) ) {
@@ -164,7 +169,7 @@ function wpmem_upgrade_settings() {
 
 	$wpmem_settings['install_state'] = 'update_pending';
 	
-	update_option( 'wpmembers_settings', $wpmem_settings );
+	update_option( 'wpmembers_settings', $wpmem_settings, true );
 	return $wpmem_settings;
 }
 
@@ -187,7 +192,7 @@ function wpmem_upgrade_dialogs() {
 		foreach ( $wpmem_dialogs as $key => $val ) {
 			$new_arr[ $new_keys[ $key ] ] = $val;
 		}
-		update_option( 'wpmembers_dialogs', $new_arr, '', 'yes' );
+		update_option( 'wpmembers_dialogs', $new_arr, false );
 	}
 
 	return;
@@ -210,7 +215,7 @@ function wpmem_downgrade_dialogs() {
 			$new_arr[ $i ] = $val;
 			$i++;
 		}
-		update_option( 'wpmembers_dialogs', $new_arr, '', 'yes' );
+		update_option( 'wpmembers_dialogs', $new_arr, false );
 	}
 
 	return;
@@ -244,7 +249,7 @@ function wpmem_upgrade_captcha() {
 			$new_captcha['recaptcha']['public']  = $captcha_settings[0];
 			$new_captcha['recaptcha']['private'] = $captcha_settings[1];
 			$new_captcha['recaptcha']['theme']   = $captcha_settings[2];
-			update_option( 'wpmembers_captcha', $new_captcha );
+			update_option( 'wpmembers_captcha', $new_captcha, false );
 		}
 	}
 	return;
@@ -306,7 +311,7 @@ function wpmem_install_settings() {
 	);
 	
 	// Using update_option to allow for forced update.
-	update_option( 'wpmembers_settings', $wpmem_settings, '', 'yes' );
+	update_option( 'wpmembers_settings', $wpmem_settings, true );
 	
 	return $wpmem_settings;
 }
@@ -350,7 +355,7 @@ function wpmem_install_fields() {
 		array( 15, 'Confirm Password',  'confirm_password',  'password', 'n', 'n', 'n', 'profile'=>0 ),
 		array( 16, 'Terms of Service',  'tos',               'checkbox', 'n', 'n', 'n', 'agree', 'n', 'profile'=>0 ),
 	);
-	update_option( 'wpmembers_fields', $fields, '', 'yes' ); // using update_option to allow for forced update
+	update_option( 'wpmembers_fields', $fields, false ); // using update_option to allow for forced update
 	return $fields;
 }
 
@@ -373,8 +378,8 @@ function wpmem_install_dialogs() {
 	);
 	// Insert TOS dialog placeholder.
 	$dummy_tos = "Put your TOS (Terms of Service) text here.  You can use HTML markup.";
-	update_option( 'wpmembers_tos', $dummy_tos );
-	update_option( 'wpmembers_dialogs', $wpmem_dialogs_arr, '', 'yes' ); // using update_option to allow for forced update
+	update_option( 'wpmembers_tos', $dummy_tos, false );
+	update_option( 'wpmembers_dialogs', $wpmem_dialogs_arr, false ); // using update_option to allow for forced update
 }
 
 /**
@@ -394,7 +399,7 @@ function wpmem_upgrade_fields() {
 	if ( $old_style && ! in_array( 'username', $check_array ) ) {
 		$username_array = array( 0, 'Choose a Username', 'username', 'text', 'y', 'y', 'y' );
 		array_unshift( $fields, $username_array );
-		update_option( 'wpmembers_fields', $fields, '', 'yes' );
+		update_option( 'wpmembers_fields', $fields, false );
 	}
 }
 
@@ -411,7 +416,24 @@ function wpmem_upgrade_fields() {
  * @param array $settings
  */
 function wpmem_upgrade_style_setting( $settings ) {
-	return ( 'generic-no-float' == $settings['select_style'] ) ? 'default' : 'use_custom';
+	if ( 'generic-no-float' == $settings['select_style'] ) {
+		// This is the default style.
+		$settings['cssurl'] = '';
+		$settings['select_style'] = 'default';
+	} else {
+		// If there is a custom URL, keep it.
+		if ( 'use_custom' == $settings['select_style'] ) {
+			$settings['cssurl'] = $settings['cssurl'];
+			$settings['select_style'] = 'use_custom';
+		} else {
+			// If it is from the selector but not default, set to "use_custom" and set the url.
+			// NOTE: Set select_style last because we're using the saved value to build the cssurl setting first.
+			$url = plugin_dir_url ( __DIR__ );
+			$settings['cssurl'] = trailingslashit( $url ) . 'assets/css/forms/' . $settings['select_style'] . '.min.css';
+			$settings['select_style'] = 'use_custom';
+		}
+	}
+	return $settings;
 }
 
 /**
@@ -463,7 +485,7 @@ function wpmem_upgrade_woo_reg() {
 			'add_update_fields' => 0,
 			'product_restrict' => 0,
 		);
-		update_option( 'wpmembers_settings', $wpmem_settings );
+		update_option( 'wpmembers_settings', $wpmem_settings, true );
 	}
 }
 
@@ -501,26 +523,26 @@ function wpmem_add_profile_to_fields( $existing_settings ) {
 		$reg_val = ( "y" == $field[4] ) ? true : false;
 		$fields[ $key ]['profile'] = ( ! in_array( $meta_key, $skips ) ) ? $reg_val : false;
 
-		if ( 1 == $existing_settings['woo']['add_checkout_fields'] ) {
+		if ( isset( $existing_settings['woo']['add_checkout_fields'] ) && 1 == $existing_settings['woo']['add_checkout_fields'] ) {
 			if ( 'file' !=  $field[3] && 'image' != $field[3] && ! in_array( $meta_key, $woo_skips ) && $reg_val ) {
 				$wpmem_fields_wcchkout[] = $meta_key;
 			}
 		}
-		if ( 1 == $existing_settings['woo']['add_my_account_fields'] ) {
+		if ( isset( $existing_settings['woo']['add_my_account_fields'] ) && 1 == $existing_settings['woo']['add_my_account_fields'] ) {
 			if ( 'file' !=  $field[3] && 'image' != $field[3] && ! in_array( $meta_key, $woo_skips ) && $reg_val ) {
 				$wpmem_fields_wcaccount[] = $meta_key;
 			}
 		}
 	}
 	
-	update_option( 'wpmembers_fields', $fields );
+	update_option( 'wpmembers_fields', $fields, false );
 	
 	if ( ! empty( $wpmem_fields_wcchkout ) ) {
-		update_option( 'wpmembers_wcchkout_fields', $wpmem_fields_wcchkout );
+		update_option( 'wpmembers_wcchkout_fields', $wpmem_fields_wcchkout, false );
 	}
 	
 	if ( ! empty( $wpmem_fields_wcaccount ) ) {
-		update_option( 'wpmembers_wcacct_fields', $wpmem_fields_wcaccount );
+		update_option( 'wpmembers_wcacct_fields', $wpmem_fields_wcaccount, false );
 	}
 }
 
@@ -542,23 +564,23 @@ function wpmem_onboarding_pending_update() {
 }
 
 function wpmem_onboarding_finalize() {
-    global $wpmem, $wpmem_onboarding;
+	global $wpmem, $wpmem_onboarding;
 	if ( isset( $_POST['optin'] ) ) {
 		if ( 'update_pending' == $wpmem->install_state ) {
 			$wpmem_onboarding->deploy( 'wp-members', $wpmem->path . 'wp-members.php', 'update' );
 		} else {
 			$wpmem_onboarding->deploy( 'wp-members', $wpmem->path . 'wp-members.php', 'activate' );
 		}
-		update_option( 'wpmembers_optin', 1 );
+		update_option( 'wpmembers_optin', 1, false );
 	} else {
-		update_option( 'wpmembers_optin', 0 );
+		update_option( 'wpmembers_optin', 0, false );
 	}
 
 	$update_settings = get_option( 'wpmembers_settings' );
-	if ( 'update_pending' == $wpmem->install_state ) {
+	if ( 'update_pending' == $wpmem->install_state || 'finalize' == wpmem_get( 'wpmem_onboarding_action' ) ) {
 		$wpmem->install_state = $update_settings['install_state'] = 'install_complete_' . $wpmem->version . '_' . time();
 	}
-	update_option( 'wpmembers_settings', $update_settings );
+	update_option( 'wpmembers_settings', $update_settings, true );
 }
 
 function wpmem_plugin_deactivate() {
@@ -610,6 +632,48 @@ function wpmem_update_user_dirs() {
 	}
 }
 
+function wpmem_update_autoload_options() {
+	$wpmem_options = array(
+		"wpmembers_settings" => true,
+		"wpmem_hidden_posts" => true,
+		"wpmem_memberships" => true,
+		"wpmembers_optin" => false,
+		"wpmembers_fields" => false,
+		"wpmembers_dialogs" => false,
+		"wpmembers_captcha" => false,
+		"wpmembers_tos" => false,
+		"wpmembers_export" => false,
+		"wpmembers_dropins" => false,
+		"wpmembers_wcchkout_fields" => false,
+		"wpmembers_wcacct_fields" => false,
+		"wpmembers_utfields" => false,
+		"wpmembers_usfields" => false,
+		"wpmembers_email_newreg" => false,
+		"wpmembers_email_newmod" => false,
+		"wpmembers_email_appmod" => false,
+		"wpmembers_email_repass" => false,
+		"wpmembers_email_footer" => false,
+		"wpmembers_email_notify" => false,
+		"wpmembers_email_wpfrom" => false,
+		"wpmembers_email_wpname" => false,
+		"wpmembers_email_html" => false,
+		"wpmembers_email_getuser" => false,
+		"wpmembers_email_validated" => false,
+	);
+	
+	// Update wpmem options autoload values.
+	wp_set_option_autoload_values( $wpmem_options );
+	
+	// Delete pre-3.x options if they exist.
+	delete_option( "wpmembers_msurl"  );
+	delete_option( "wpmembers_regurl" );
+	delete_option( "wpmembers_logurl" );
+	delete_option( "wpmembers_cssurl" );
+	delete_option( "wpmembers_style"  );
+	delete_option( "wpmembers_autoex" );
+	delete_option( "wpmembers_attrib" );
+}
+
 class WP_Members_Installer {
 
 	public $settings;
@@ -637,7 +701,7 @@ class WP_Members_Installer {
 		global $wpmem;
 
 		$show_release_notes = true;
-		$release_notes_link = "https://rocketgeek.com/release-announcements/wp-members-3-5-1/";
+		$release_notes_link = "https://rocketgeek.com/release-announcements/wp-members-3-5-2/";
 
 		if ( 'new_install' == $wpmem->install_state ) {
 			$notice_heading = __( 'Thank you for installing WP-Members, the original WordPress membership plugin.', 'wp-members' );

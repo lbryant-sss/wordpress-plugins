@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bit Form 2.17.7\n"
+"Project-Id-Version: Bit Form 2.17.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bit-form\n"
 "Last-Translator: developer@bitcode.pro\n"
 "Language-Team: support@bitcode.pro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-02T11:31:36+00:00\n"
+"POT-Creation-Date: 2025-02-12T11:01:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: bit-form\n"
@@ -106,16 +106,16 @@ msgstr ""
 #: includes/Core/Integration/ActiveCampaign/ActiveCampaignHandler.php:138
 #: includes/Core/Integration/ActiveCampaign/ActiveCampaignHandler.php:192
 #: includes/Core/Integration/ActiveCampaign/ActiveCampaignHandler.php:252
-#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:32
-#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:68
-#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:103
+#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:36
+#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:72
+#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:107
 #: includes/Core/Integration/Autonami/AutonamiHandler.php:58
 #: includes/Core/Integration/Autonami/AutonamiHandler.php:89
 #: includes/Core/Integration/Autonami/AutonamiHandler.php:125
 #: includes/Core/Integration/Dropbox/DropboxHandler.php:44
 #: includes/Core/Integration/Dropbox/DropboxHandler.php:79
-#: includes/Core/Integration/Encharge/EnchargeHandler.php:76
-#: includes/Core/Integration/Encharge/EnchargeHandler.php:129
+#: includes/Core/Integration/Encharge/EnchargeHandler.php:80
+#: includes/Core/Integration/Encharge/EnchargeHandler.php:133
 #: includes/Core/Integration/FluentCrm/FluentCrmHandler.php:89
 #: includes/Core/Integration/FluentCrm/FluentCrmHandler.php:150
 #: includes/Core/Integration/FluentCrm/FluentCrmHandler.php:178
@@ -123,24 +123,24 @@ msgstr ""
 #: includes/Core/Integration/GoogleSheet/GoogleSheetHandler.php:156
 #: includes/Core/Integration/GoogleSheet/GoogleSheetHandler.php:216
 #: includes/Core/Integration/GoogleSheet/GoogleSheetHandler.php:292
-#: includes/Core/Integration/Groundhogg/GroundhoggHandler.php:34
-#: includes/Core/Integration/Groundhogg/GroundhoggHandler.php:75
-#: includes/Core/Integration/MailChimp/MailChimpHandler.php:101
-#: includes/Core/Integration/MailChimp/MailChimpHandler.php:165
-#: includes/Core/Integration/MailChimp/MailChimpHandler.php:221
-#: includes/Core/Integration/MailChimp/MailChimpHandler.php:271
-#: includes/Core/Integration/MailPoet/MailPoetHandler.php:58
-#: includes/Core/Integration/MailPoet/MailPoetHandler.php:101
-#: includes/Core/Integration/MailPoet/MailPoetHandler.php:140
+#: includes/Core/Integration/Groundhogg/GroundhoggHandler.php:38
+#: includes/Core/Integration/Groundhogg/GroundhoggHandler.php:79
+#: includes/Core/Integration/MailChimp/MailChimpHandler.php:105
+#: includes/Core/Integration/MailChimp/MailChimpHandler.php:169
+#: includes/Core/Integration/MailChimp/MailChimpHandler.php:225
+#: includes/Core/Integration/MailChimp/MailChimpHandler.php:275
+#: includes/Core/Integration/MailPoet/MailPoetHandler.php:62
+#: includes/Core/Integration/MailPoet/MailPoetHandler.php:105
+#: includes/Core/Integration/MailPoet/MailPoetHandler.php:144
 #: includes/Core/Integration/OneDrive/OneDriveHandler.php:32
 #: includes/Core/Integration/OneDrive/OneDriveHandler.php:63
 #: includes/Core/Integration/OneDrive/OneDriveHandler.php:111
-#: includes/Core/Integration/SendFox/SendFoxHandler.php:32
-#: includes/Core/Integration/SendFox/SendFoxHandler.php:66
-#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:78
-#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:137
-#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:192
-#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:241
+#: includes/Core/Integration/SendFox/SendFoxHandler.php:35
+#: includes/Core/Integration/SendFox/SendFoxHandler.php:69
+#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:82
+#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:141
+#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:196
+#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:245
 #: includes/Core/Integration/Telegram/TelegramHandler.php:87
 #: includes/Core/Integration/Telegram/TelegramHandler.php:147
 #: includes/Core/Integration/WebHooks/WebHooksHandler.php:80
@@ -158,9 +158,9 @@ msgstr ""
 #: includes/Core/Integration/ZohoBigin/ZohoBiginHandler.php:333
 #: includes/Core/Integration/ZohoBigin/ZohoBiginHandler.php:399
 #: includes/Core/Integration/ZohoBigin/ZohoBiginHandler.php:466
-#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:91
-#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:161
-#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:233
+#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:92
+#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:162
+#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:234
 #: includes/Core/Integration/ZohoCreator/ZohoCreatorHandler.php:91
 #: includes/Core/Integration/ZohoCreator/ZohoCreatorHandler.php:160
 #: includes/Core/Integration/ZohoCreator/ZohoCreatorHandler.php:235
@@ -168,27 +168,27 @@ msgstr ""
 #: includes/Core/Integration/ZohoCRM/ZohoCRMHandler.php:95
 #: includes/Core/Integration/ZohoCRM/ZohoCRMHandler.php:172
 #: includes/Core/Integration/ZohoCRM/ZohoCRMHandler.php:289
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:90
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:155
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:227
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:321
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:390
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:461
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:91
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:156
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:228
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:322
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:391
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:462
 #: includes/Core/Integration/ZohoMail/ZohoMailHandler.php:97
-#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:87
-#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:157
-#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:231
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:95
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:160
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:228
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:295
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:367
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:441
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:495
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:853
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:918
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:983
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:1052
+#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:88
+#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:158
+#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:232
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:96
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:161
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:229
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:296
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:368
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:442
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:496
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:854
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:919
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:984
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:1053
 #: includes/Core/Integration/ZohoRecruit/ZohoRecruitHandler.php:90
 #: includes/Core/Integration/ZohoRecruit/ZohoRecruitHandler.php:176
 #: includes/Core/Integration/ZohoRecruit/ZohoRecruitHandler.php:240
@@ -201,11 +201,11 @@ msgstr ""
 #: includes/Core/Integration/ZohoSign/ZohoSignHandler.php:88
 #: includes/Core/Integration/ZohoSign/ZohoSignHandler.php:214
 #: includes/Core/Integration/ZohoSign/ZohoSignHandler.php:276
-#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:102
-#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:167
-#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:256
-#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:334
-#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:402
+#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:103
+#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:168
+#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:257
+#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:335
+#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:403
 #: includes/Frontend/Form/FrontendFormManager.php:509
 msgid "Token expired"
 msgstr ""
@@ -622,44 +622,44 @@ msgstr ""
 #: includes/Core/Integration/ActiveCampaign/ActiveCampaignHandler.php:109
 #: includes/Core/Integration/ActiveCampaign/ActiveCampaignHandler.php:163
 #: includes/Core/Integration/ActiveCampaign/ActiveCampaignHandler.php:218
-#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:40
-#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:75
-#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:111
+#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:44
+#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:79
+#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:115
 #: includes/Core/Integration/Dropbox/DropboxHandler.php:51
 #: includes/Core/Integration/Dropbox/DropboxHandler.php:86
-#: includes/Core/Integration/ElasticEmail/ElasticEmailHandler.php:32
-#: includes/Core/Integration/ElasticEmail/ElasticEmailHandler.php:67
-#: includes/Core/Integration/Encharge/EnchargeHandler.php:53
-#: includes/Core/Integration/Encharge/EnchargeHandler.php:101
-#: includes/Core/Integration/Getgist/GetgistHandler.php:28
-#: includes/Core/Integration/Getgist/GetgistHandler.php:60
+#: includes/Core/Integration/ElasticEmail/ElasticEmailHandler.php:42
+#: includes/Core/Integration/ElasticEmail/ElasticEmailHandler.php:77
+#: includes/Core/Integration/Encharge/EnchargeHandler.php:57
+#: includes/Core/Integration/Encharge/EnchargeHandler.php:105
+#: includes/Core/Integration/Getgist/GetgistHandler.php:38
+#: includes/Core/Integration/Getgist/GetgistHandler.php:70
 #: includes/Core/Integration/GoogleSheet/GoogleSheetHandler.php:60
 #: includes/Core/Integration/GoogleSheet/GoogleSheetHandler.php:115
 #: includes/Core/Integration/GoogleSheet/GoogleSheetHandler.php:183
 #: includes/Core/Integration/GoogleSheet/GoogleSheetHandler.php:246
-#: includes/Core/Integration/Groundhogg/GroundhoggHandler.php:45
-#: includes/Core/Integration/Groundhogg/GroundhoggHandler.php:86
-#: includes/Core/Integration/Hubspot/HubspotHandler.php:39
-#: includes/Core/Integration/Hubspot/HubspotHandler.php:72
-#: includes/Core/Integration/Hubspot/HubspotHandler.php:123
-#: includes/Core/Integration/Hubspot/HubspotHandler.php:168
-#: includes/Core/Integration/Hubspot/HubspotHandler.php:210
-#: includes/Core/Integration/MailChimp/MailChimpHandler.php:65
-#: includes/Core/Integration/MailChimp/MailChimpHandler.php:129
-#: includes/Core/Integration/MailChimp/MailChimpHandler.php:192
-#: includes/Core/Integration/MailChimp/MailChimpHandler.php:248
+#: includes/Core/Integration/Groundhogg/GroundhoggHandler.php:49
+#: includes/Core/Integration/Groundhogg/GroundhoggHandler.php:90
+#: includes/Core/Integration/Hubspot/HubspotHandler.php:42
+#: includes/Core/Integration/Hubspot/HubspotHandler.php:75
+#: includes/Core/Integration/Hubspot/HubspotHandler.php:126
+#: includes/Core/Integration/Hubspot/HubspotHandler.php:171
+#: includes/Core/Integration/Hubspot/HubspotHandler.php:213
+#: includes/Core/Integration/MailChimp/MailChimpHandler.php:69
+#: includes/Core/Integration/MailChimp/MailChimpHandler.php:133
+#: includes/Core/Integration/MailChimp/MailChimpHandler.php:196
+#: includes/Core/Integration/MailChimp/MailChimpHandler.php:252
 #: includes/Core/Integration/OneDrive/OneDriveHandler.php:39
 #: includes/Core/Integration/OneDrive/OneDriveHandler.php:69
 #: includes/Core/Integration/OneDrive/OneDriveHandler.php:118
-#: includes/Core/Integration/Rapidmail/RapidmailHandler.php:48
-#: includes/Core/Integration/Rapidmail/RapidmailHandler.php:95
-#: includes/Core/Integration/Rapidmail/RapidmailHandler.php:130
-#: includes/Core/Integration/SendFox/SendFoxHandler.php:39
-#: includes/Core/Integration/SendFox/SendFoxHandler.php:74
-#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:55
-#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:103
-#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:157
-#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:212
+#: includes/Core/Integration/Rapidmail/RapidmailHandler.php:52
+#: includes/Core/Integration/Rapidmail/RapidmailHandler.php:99
+#: includes/Core/Integration/Rapidmail/RapidmailHandler.php:134
+#: includes/Core/Integration/SendFox/SendFoxHandler.php:42
+#: includes/Core/Integration/SendFox/SendFoxHandler.php:77
+#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:59
+#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:107
+#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:161
+#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:216
 #: includes/Core/Integration/Telegram/TelegramHandler.php:55
 #: includes/Core/Integration/Telegram/TelegramHandler.php:112
 #: includes/Core/Integration/WooCommerce/WooCommerceHandler.php:130
@@ -674,9 +674,9 @@ msgstr ""
 #: includes/Core/Integration/ZohoBigin/ZohoBiginHandler.php:264
 #: includes/Core/Integration/ZohoBigin/ZohoBiginHandler.php:356
 #: includes/Core/Integration/ZohoBigin/ZohoBiginHandler.php:421
-#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:63
-#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:118
-#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:189
+#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:64
+#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:119
+#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:190
 #: includes/Core/Integration/ZohoCreator/ZohoCreatorHandler.php:63
 #: includes/Core/Integration/ZohoCreator/ZohoCreatorHandler.php:113
 #: includes/Core/Integration/ZohoCreator/ZohoCreatorHandler.php:189
@@ -684,27 +684,27 @@ msgstr ""
 #: includes/Core/Integration/ZohoCRM/ZohoCRMHandler.php:69
 #: includes/Core/Integration/ZohoCRM/ZohoCRMHandler.php:121
 #: includes/Core/Integration/ZohoCRM/ZohoCRMHandler.php:199
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:62
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:112
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:183
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:255
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:349
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:419
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:63
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:113
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:184
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:256
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:350
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:420
 #: includes/Core/Integration/ZohoMail/ZohoMailHandler.php:62
-#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:59
-#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:114
-#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:185
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:67
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:117
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:183
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:252
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:320
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:391
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:464
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:804
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:876
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:941
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:1006
+#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:60
+#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:115
+#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:186
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:68
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:118
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:184
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:253
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:321
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:392
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:465
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:805
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:877
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:942
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:1007
 #: includes/Core/Integration/ZohoRecruit/ZohoRecruitHandler.php:62
 #: includes/Core/Integration/ZohoRecruit/ZohoRecruitHandler.php:117
 #: includes/Core/Integration/ZohoRecruit/ZohoRecruitHandler.php:198
@@ -717,20 +717,20 @@ msgstr ""
 #: includes/Core/Integration/ZohoSign/ZohoSignHandler.php:60
 #: includes/Core/Integration/ZohoSign/ZohoSignHandler.php:174
 #: includes/Core/Integration/ZohoSign/ZohoSignHandler.php:237
-#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:62
-#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:124
-#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:195
-#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:284
-#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:357
+#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:63
+#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:125
+#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:196
+#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:285
+#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:358
 msgid "Requested parameter is empty"
 msgstr ""
 
 #: includes/Core/Integration/ActiveCampaign/ActiveCampaignHandler.php:276
-#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:266
+#: includes/Core/Integration/SendinBlue/SendinBlueHandler.php:270
 msgid "module, fields are required for Sendinblue api"
 msgstr ""
 
-#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:166
+#: includes/Core/Integration/Acumbamail/AcumbamailHandler.php:170
 msgid "module, fields are required for Acumbamail api"
 msgstr ""
 
@@ -739,19 +739,19 @@ msgstr ""
 msgid "Autonami Pro Plugins not found"
 msgstr ""
 
-#: includes/Core/Integration/Autonami/AutonamiHandler.php:150
+#: includes/Core/Integration/Autonami/AutonamiHandler.php:155
 msgid "module, fields are required for Autonami api"
 msgstr ""
 
-#: includes/Core/Integration/Dropbox/DropboxHandler.php:208
+#: includes/Core/Integration/Dropbox/DropboxHandler.php:213
 msgid "Required data not found."
 msgstr ""
 
-#: includes/Core/Integration/ElasticEmail/ElasticEmailHandler.php:111
+#: includes/Core/Integration/ElasticEmail/ElasticEmailHandler.php:121
 msgid "module, fields are required for Elastic Email api"
 msgstr ""
 
-#: includes/Core/Integration/Encharge/EnchargeHandler.php:150
+#: includes/Core/Integration/Encharge/EnchargeHandler.php:154
 msgid "module, fields are required for Encharge api"
 msgstr ""
 
@@ -768,7 +768,7 @@ msgstr ""
 msgid "module, fields are required for Fluent CRM api"
 msgstr ""
 
-#: includes/Core/Integration/Getgist/GetgistHandler.php:108
+#: includes/Core/Integration/Getgist/GetgistHandler.php:118
 msgid "module, fields are required for Gist api"
 msgstr ""
 
@@ -776,49 +776,49 @@ msgstr ""
 msgid "module, fields are required for Google sheet api"
 msgstr ""
 
-#: includes/Core/Integration/Groundhogg/GroundhoggHandler.php:130
+#: includes/Core/Integration/Groundhogg/GroundhoggHandler.php:134
 msgid "module, fields are required for Trello api"
 msgstr ""
 
-#: includes/Core/Integration/Groundhogg/RecordApiHelper.php:72
-#: includes/Core/Integration/Groundhogg/RecordApiHelper.php:93
+#: includes/Core/Integration/Groundhogg/RecordApiHelper.php:75
+#: includes/Core/Integration/Groundhogg/RecordApiHelper.php:96
 msgid "Request parameter is empty"
 msgstr ""
 
-#: includes/Core/Integration/Hubspot/HubspotHandler.php:261
+#: includes/Core/Integration/Hubspot/HubspotHandler.php:264
 msgid "api key field is required for hubspot api"
 msgstr ""
 
-#: includes/Core/Integration/Integrations.php:198
+#: includes/Core/Integration/Integrations.php:203
 msgid "Integration execution failed"
 msgstr ""
 
-#: includes/Core/Integration/MailChimp/MailChimpHandler.php:307
+#: includes/Core/Integration/MailChimp/MailChimpHandler.php:311
 msgid "module, fields are required for Mail Chimp api"
 msgstr ""
 
-#: includes/Core/Integration/MailPoet/MailPoetHandler.php:49
-#: includes/Core/Integration/MailPoet/MailPoetHandler.php:131
+#: includes/Core/Integration/MailPoet/MailPoetHandler.php:53
+#: includes/Core/Integration/MailPoet/MailPoetHandler.php:135
 msgid "Please! Insatall MailPoet"
 msgstr ""
 
-#: includes/Core/Integration/MailPoet/MailPoetHandler.php:92
+#: includes/Core/Integration/MailPoet/MailPoetHandler.php:96
 msgid "Please! Install MailPoet"
 msgstr ""
 
-#: includes/Core/Integration/MailPoet/MailPoetHandler.php:157
+#: includes/Core/Integration/MailPoet/MailPoetHandler.php:161
 msgid "module, fields are required for Mail Poet api"
 msgstr ""
 
-#: includes/Core/Integration/Rapidmail/RapidmailHandler.php:174
+#: includes/Core/Integration/Rapidmail/RapidmailHandler.php:178
 msgid "username, password, fields are required for rapidmail api"
 msgstr ""
 
-#: includes/Core/Integration/Rapidmail/RapidmailHandler.php:178
+#: includes/Core/Integration/Rapidmail/RapidmailHandler.php:182
 msgid "Recipient List are required for rapidmail api"
 msgstr ""
 
-#: includes/Core/Integration/SendFox/SendFoxHandler.php:112
+#: includes/Core/Integration/SendFox/SendFoxHandler.php:115
 msgid "module, fields are required for SendFox api"
 msgstr ""
 
@@ -830,7 +830,7 @@ msgstr ""
 msgid "webhook url is empty"
 msgstr ""
 
-#: includes/Core/Integration/WooCommerce/RecordApiHelper.php:46
+#: includes/Core/Integration/WooCommerce/RecordApiHelper.php:51
 msgid "%s is required for woocommerce %s"
 msgstr ""
 
@@ -838,31 +838,31 @@ msgstr ""
 msgid "WooCommerce must be activated!"
 msgstr ""
 
-#: includes/Core/Integration/WooCommerce/WooCommerceHandler.php:509
+#: includes/Core/Integration/WooCommerce/WooCommerceHandler.php:515
 msgid "module and field map are required for woocommerce"
 msgstr ""
 
-#: includes/Core/Integration/ZohoAnalytics/ZohoAnalyticsHandler.php:454
+#: includes/Core/Integration/ZohoAnalytics/ZohoAnalyticsHandler.php:461
 msgid "workspace, table, fields are required for zoho analytics api"
 msgstr ""
 
-#: includes/Core/Integration/ZohoBigin/RecordApiHelper.php:64
+#: includes/Core/Integration/ZohoBigin/RecordApiHelper.php:70
 msgid "%s is required for zoho bigin, %s module"
 msgstr ""
 
-#: includes/Core/Integration/ZohoBigin/ZohoBiginHandler.php:559
+#: includes/Core/Integration/ZohoBigin/ZohoBiginHandler.php:565
 msgid "module, fields are required for zoho bigin api"
 msgstr ""
 
-#: includes/Core/Integration/ZohoCampaigns/RecordApiHelper.php:58
+#: includes/Core/Integration/ZohoCampaigns/RecordApiHelper.php:70
 msgid "%s is required for zoho campaigns"
 msgstr ""
 
-#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:329
+#: includes/Core/Integration/ZohoCampaigns/ZohoCampaignsHandler.php:336
 msgid "list are required for zoho campaigns api"
 msgstr ""
 
-#: includes/Core/Integration/ZohoCreator/RecordApiHelper.php:123
+#: includes/Core/Integration/ZohoCreator/RecordApiHelper.php:127
 msgid "%s is required for zoho creator"
 msgstr ""
 
@@ -870,24 +870,24 @@ msgstr ""
 msgid "tokenDetails error"
 msgstr ""
 
-#: includes/Core/Integration/ZohoCRM/RecordApiHelper.php:68
+#: includes/Core/Integration/ZohoCRM/RecordApiHelper.php:73
 msgid "%s is required for zoho crm, %s module"
 msgstr ""
 
-#: includes/Core/Integration/ZohoCRM/RecordApiHelper.php:79
+#: includes/Core/Integration/ZohoCRM/RecordApiHelper.php:84
 msgid "zoho crm field %s's maximum length is %s, Given %s"
 msgstr ""
 
-#: includes/Core/Integration/ZohoCRM/ZohoCRMHandler.php:726
-#: includes/Core/Integration/ZohoCRM/ZohoCRMHandler.php:731
+#: includes/Core/Integration/ZohoCRM/ZohoCRMHandler.php:732
+#: includes/Core/Integration/ZohoCRM/ZohoCRMHandler.php:737
 msgid "module, layout, fields are required for zoho crm api"
 msgstr ""
 
-#: includes/Core/Integration/ZohoDesk/RecordApiHelper.php:79
+#: includes/Core/Integration/ZohoDesk/RecordApiHelper.php:84
 msgid "%s is required for zoho bigin"
 msgstr ""
 
-#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:554
+#: includes/Core/Integration/ZohoDesk/ZohoDeskHandler.php:555
 msgid "list are required for zoho desk api"
 msgstr ""
 
@@ -895,23 +895,23 @@ msgstr ""
 msgid "module, fields are required for zoho mail api"
 msgstr ""
 
-#: includes/Core/Integration/ZohoMarketingHub/RecordApiHelper.php:57
+#: includes/Core/Integration/ZohoMarketingHub/RecordApiHelper.php:68
 msgid "is required for zoho marketing hub"
 msgstr ""
 
-#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:327
+#: includes/Core/Integration/ZohoMarketingHub/ZohoMarketingHubHandler.php:328
 msgid "list are required for zoho marketingHub api"
 msgstr ""
 
-#: includes/Core/Integration/ZohoProjects/RecordApiHelper.php:188
+#: includes/Core/Integration/ZohoProjects/RecordApiHelper.php:194
 msgid "%s is required for %s"
 msgstr ""
 
-#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:1135
+#: includes/Core/Integration/ZohoProjects/ZohoProjectsHandler.php:1136
 msgid "list are required for zoho projects api"
 msgstr ""
 
-#: includes/Core/Integration/ZohoRecruit/RecordApiHelper.php:62
+#: includes/Core/Integration/ZohoRecruit/RecordApiHelper.php:67
 msgid "%s is required for zoho recruit, %s module"
 msgstr ""
 
@@ -928,7 +928,7 @@ msgstr ""
 msgid "module, fields are required for zoho sign api"
 msgstr ""
 
-#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:495
+#: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:496
 msgid "parent folder are required for zoho workdrive api"
 msgstr ""
 
@@ -7843,7 +7843,7 @@ msgid "Please upgrade to the PRO plan to unlock all these awesome features."
 msgstr ""
 
 #: languages/generatedString.php:3396
-msgid "Get 50% Off! Black Friday Deal."
+msgid "Upgrade to Pro"
 msgstr ""
 
 #: languages/generatedString.php:3398

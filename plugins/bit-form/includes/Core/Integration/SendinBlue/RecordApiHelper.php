@@ -47,7 +47,7 @@ class RecordApiHelper
     return HttpHelper::request($updateRecordEndpoint, 'PUT', $data, $this->_defaultHeader);
   }
 
-  public function executeRecordApi($lists, $defaultDataConf, $fieldValues, $fieldMap, $actions)
+  public function executeRecordApi($lists, $defaultDataConf, $fieldValues, $fieldMap, $actions, $formId)
   {
     $fieldData = [];
     $attributes = [];
@@ -96,13 +96,20 @@ class RecordApiHelper
       }
     }
 
+    $entryDetails = [
+      'formId'      => $formId,
+      'entryId'     => $this->_entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     if ($recordApiResponse && isset($recordApiResponse->code)) {
       $this->_logResponse->apiResponse(
         $this->_logID,
         $this->_integrationID,
         ['type' => 'record', 'type_name' => $type],
         'error',
-        $recordApiResponse
+        $recordApiResponse,
+        $entryDetails
       );
     } else {
       $this->_logResponse->apiResponse(
@@ -110,7 +117,8 @@ class RecordApiHelper
         $this->_integrationID,
         ['type' => 'record', 'type_name' => $type],
         'success',
-        $recordApiResponse
+        $recordApiResponse,
+        $entryDetails
       );
     }
     return $recordApiResponse;

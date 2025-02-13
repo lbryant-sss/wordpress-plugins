@@ -249,4 +249,33 @@ final class Helper
 
     return isset($calculated[$operator]) ? $calculated[$operator] : '';
   }
+
+  /**
+   * Recursively sets a nested property in a given object.
+   *
+   * This function takes an object, a string path representing nested properties
+   * (e.g., "fk->valid->hide"), and a value to assign. It ensures that all
+   * intermediate properties exist as objects before setting the final value.
+   *
+   * @param object $object The main object where properties should be set.
+   * @param string $path The nested property path, with keys separated by "->".
+   * @param mixed $value The value to assign to the final property.
+   *
+   * @return void
+   */
+  public static function setNestedProperty(&$object, $path, $value)
+  {
+    $keys = explode('->', $path);
+    $key = array_shift($keys);
+
+    if (!isset($object->$key) || !is_object($object->$key)) {
+      $object->$key = new \stdClass();
+    }
+
+    if (!empty($keys)) {
+      self::setNestedProperty($object->$key, implode('->', $keys), $value);
+    } else {
+      $object->$key = $value;
+    }
+  }
 }

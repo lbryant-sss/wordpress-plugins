@@ -551,13 +551,19 @@ class ZohoBiginHandler
     $fieldMap = $integrationDetails->field_map;
     $actions = $integrationDetails->actions;
     $defaultDataConf = $integrationDetails->default;
+
+    $entryDetails = [
+      'formId'      => $this->_formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
     if (
       empty($tokenDetails)
       || empty($module)
       || empty($fieldMap)
     ) {
       $error = new WP_Error('REQ_FIELD_EMPTY', __('module, fields are required for zoho bigin api', 'bit-form'));
-      $this->_logResponse->apiResponse($logID, $this->_integrationID, 'record', 'validation', $error);
+      $this->_logResponse->apiResponse($logID, $this->_integrationID, 'record', 'validation', $error, $entryDetails);
       return $error;
     }
     $requiredParams = null;

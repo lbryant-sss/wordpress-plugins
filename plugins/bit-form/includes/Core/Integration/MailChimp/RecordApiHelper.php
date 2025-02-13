@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MailChimp Record Api
  *
@@ -56,7 +57,7 @@ class RecordApiHelper
     return HttpHelper::get($existSearchEnpoint, $queryParam, $this->_defaultHeader);
   }
 
-  public function executeRecordApi($listId, $tags, $defaultConf, $fieldValues, $fieldMap, $actions, $addressFields)
+  public function executeRecordApi($listId, $tags, $defaultConf, $fieldValues, $fieldMap, $actions, $addressFields, $formId)
   {
     $fieldData = [];
     $mergeFields = [];
@@ -126,8 +127,14 @@ class RecordApiHelper
         $type = 'update';
       }
 
+      $entryDetails = [
+        'formId'      => $formId,
+        'entryId'     => $this->_entryID,
+        'fieldValues' => $fieldValues
+      ];
+
       if (400 === $recordApiResponse->status) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'error', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'error', $recordApiResponse, $entryDetails);
       } else {
         $responseInfo = (object) [
           'success'       => true,
@@ -135,7 +142,7 @@ class RecordApiHelper
           'status'        => $recordApiResponse->status,
           'email_address' => $recordApiResponse->email_address,
         ];
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'success', $responseInfo);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' =>  'record', 'type_name' => $type], 'success', $responseInfo, $entryDetails);
       }
     }
 

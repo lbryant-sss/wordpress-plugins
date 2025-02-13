@@ -12,9 +12,12 @@ final class HubspotHandler
   public static $apiBaseUri = 'https://apiv3.emailsys.net/v1';
   protected $_defaultHeader;
 
-  public function __construct($integrationID)
+  private $formId;
+
+  public function __construct($integrationID, $fromID)
   {
     $this->_integrationID = $integrationID;
+    $this->formId = $fromID;
   }
 
   public static function registerAjax()
@@ -263,12 +266,13 @@ final class HubspotHandler
     }
 
     // $actions = $integrationDetails->actions;
-    $recordApiHelper = new HubspotRecordApiHelper($logID, $apiKey);
+    $recordApiHelper = new HubspotRecordApiHelper($logID, $apiKey, $entryID);
     $hubspotResponse = $recordApiHelper->executeRecordApi(
       $integId,
       $integrationDetails,
       $fieldValues,
-      $fieldMap
+      $fieldMap,
+      $this->formId
     );
     if (is_wp_error($hubspotResponse)) {
       return $hubspotResponse;

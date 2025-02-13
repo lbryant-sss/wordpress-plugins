@@ -1,4 +1,4 @@
-﻿=== WP Ghost (short for Hide My WP Ghost) - Security & Firewall ===
+﻿=== WP Ghost (Hide My WP Ghost) - Security & Firewall ===
 Contributors: johndarrel
 Tags: hide,security,firewall,login,wp admin
 Requires at least: 5.3
@@ -8,17 +8,17 @@ Stable tag: 5.4.01
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Hide WP paths, wp-login, wp-admin and more. Hack Prevention, Brute Force protection, 8G firewall, 2FA Login, and more.
+Hide and Secure WP paths, wp-login, wp-admin and more. Hack Prevention, Security, Brute Force protection, 8G Firewall, 2FA Login, and more.
 
 == Description ==
 
 Level up your WordPress security with WP Ghost plugin!
 
-**WP Ghost** is a comprehensive hack-prevention security solution for WordPress websites. It adds multiple layers of security to block hacker bots and prevent unauthorized access.
+**WP Ghost** (short for Hide My WP Ghost) is a **comprehensive hack-prevention security solution for WordPress** websites. It adds **multiple layers of security to block hacker bots and prevent unauthorized access**.
 
 It works by changing and hiding common vulnerabilities, making it difficult for bots and hackers to exploit weak points in plugins, themes, and the WordPress core itself.
 
-Join **over 100,000 secured websites** with WP Ghost. The plugin has **blocked over 9 million brute force attempts** and **stopped over 140,000 monthly hacks**.
+Join **over 200,000 secured websites** with WP Ghost. The plugin has **blocked over 9 million brute force attempts** and **stopped over 140,000 monthly hacks**.
 
 Key features include powerful protection against:
 >  - Brute Force Attacks
@@ -34,13 +34,13 @@ Key features include powerful protection against:
 >  - Throttling of Access Attempts to Entry Points
 >  - and more
 
-Protect your site today! WP Ghost hides all common paths from hackers, shielding all your plugins and themes effectively.
+Protect your site today! WP Ghost hides and secures all common paths, plugins and themes from hacker bots and spammers.
 
-[youtube https://www.youtube.com/watch?v=gwRKHQTNkh0]
+[youtube https://youtu.be/QMdoSN8dk1c]
 YouTube - Why You Must Have <a href="https://hidemywpghost.com/">Hide My WP</a>
 
 
-WP Ghost is packed with over 50 security features:
+WP Ghost is packed with over 50 security free features:
 
 > <strong>Change and Hide Paths:</strong>
 >
@@ -197,9 +197,6 @@ WP Ghost is packed with over 50 security features:
 > *   Recommended by Wp Rocket
 > *   Recommended by WPML
 >
-> <strong>See All FREE Security Features:</strong>
-> <a href="https://hidemywp.co/security-features/">Hide My WP Free Features</a>
-
 
 > <strong>Premium Security Features (over 70):</strong>
 >
@@ -218,8 +215,6 @@ WP Ghost is packed with over 50 security features:
 > *   and more
 > <a href="https://hidemywpghost.com/hide-my-wp-ghost-security-features/">Hide My WP Premium Feature</a>
 
-WP Ghost is compatible with all server types, hosting services, and also supports WP Multisite.
-
 Compatible server types: <strong>WP Multisite, Apache, Litespeed, Nginx and Windows IIS</strong>.
 Hosting Compatibility checked: **WP Engine, Inmotion Hosting, Hostgator Hosting, Godaddy Hosting, Host1plus, Payperhost, Fastcomet, Dreamhost, Bitnami Apache, Bitnami Nginx, Google Cloud Hosting, Amazon AWS Lightsail, Litespeed Hosting, Flywheels Hosting, Kinsta Hosting, Ploi.io, CloudPanel, RunCloud**
 
@@ -233,24 +228,24 @@ Compatibility Theme List: <a href="https://wpghost.com/kb/wp-ghost-compatibility
 
 WP Ghost changes and hides WP common paths, admin & login paths, plugin paths, and theme paths, protecting your site from hacker bots.
 
-Note: No files or directories are physically altered. All changes are implemented through server rewrite rules, ensuring no impact on SEO or loading speed.
+Note! No files or directories are physically altered. All changes are implemented through server rewrite rules, ensuring no impact on SEO or loading speed.
 
-The plugin works with other security plugins like Wordfence, Solid Security, Sucuri and adds a layer of security to your WordPress website against hacker bots.
+The plugin works with other security plugins and adds a layer of security to your WordPress website against hacker bots.
 
 > Check the Demo Website source code:
-> <a href="https://demo.wpplugins.tips/">https://demo.wpplugins.tips/</a>
-> (the elementor is changed in files and classes using the PRO version)
+> <a href="https://demo.wpghost.com/">https://demo.wpghost.com/</a>
+> (the elementor is changed in files and classes)
 
 
 > Check the Redirected URLs in Demo Website (all are redirected to Front Page):
-> <a href="https://demo.wpplugins.tips/wp-admin/">https://demo.wpplugins.tips/wp-admin</a>
-> <a href="https://demo.wpplugins.tips/wp-login/">https://demo.wpplugins.tips/wp-login</a>
+> <a href="https://demo.wpghost.com/wp-admin/">https://demo.wpghost.com/wp-admin</a>
+> <a href="https://demo.wpghost.com/wp-login/">https://demo.wpghost.com/wp-login</a>
 
 
 > Check the Hidden Common Paths in Demo Website (all show 404 Page Not Found):
-> <a href="https://demo.wpplugins.tips/wp-content/">https://demo.wpplugins.tips/wp-content</a>
-> <a href="https://demo.wpplugins.tips/wp-content/plugins/">https://demo.wpplugins.tips/wp-content/plugins</a>
-> <a href="https://demo.wpplugins.tips/wp-content/themes/">https://demo.wpplugins.tips/wp-content/themes</a>
+> <a href="https://demo.wpghost.com/wp-content/">https://demo.wpghost.com/wp-content</a>
+> <a href="https://demo.wpghost.com/wp-content/plugins/">https://demo.wpghost.com/wp-content/plugins</a>
+> <a href="https://demo.wpghost.com/wp-content/themes/">https://demo.wpghost.com/wp-content/themes</a>
 
 Over 90,000 hacking attacks per minute strike WordPress sites and WordPress hosting around the world, hitting not only large corporate websites packed with sensitive data, but also sites belonging to small businesses, independent entrepreneurs, and individuals running personal blogs.
 

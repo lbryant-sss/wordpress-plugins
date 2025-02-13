@@ -22,7 +22,7 @@ require_once IUBENDA_PLUGIN_PATH . 'views/partials/header.php';
 	<hr>
 	<div class="welcome-screen-footer p-5">
 		<h3 class="text-md text-normal m-0 mb-3"><?php esc_html_e( "Let's configure your website for compliance.", 'iubenda' ); ?></h3>
-		<a id="help-me-get-compliant-btn" class="btn btn-green-primary btn-lg show-modal"  data-modal-name="#modal-setup-screen" href="javascript:void(0)"><?php esc_html_e( 'Help me get compliant!', 'iubenda' ); ?></a>
+		<a id="help-me-get-compliant-btn" class="btn btn-green-primary btn-lg iub-show-modal"  data-modal-name="#modal-setup-screen" href="javascript:void(0)"><?php esc_html_e( 'Help me get compliant!', 'iubenda' ); ?></a>
 	</div>
 </div>
 
@@ -31,7 +31,7 @@ require_once IUBENDA_PLUGIN_PATH . 'views/partials/header.php';
 require_once IUBENDA_PLUGIN_PATH . 'views/partials/footer.php';
 ?>
 	<div id="modal-setup-screen" class="modal">
-		<div class="modal__window modal__window--md p-4 p-lg-5">
+		<div class="iub-modal__window iub-modal__window--md p-4 p-lg-5">
 			<?php
 			// Including partial modal-sync.
 			require_once IUBENDA_PLUGIN_PATH . '/views/partials/modals/modal-sync.php';
@@ -41,7 +41,7 @@ require_once IUBENDA_PLUGIN_PATH . 'views/partials/footer.php';
 
 	<!-- Modal pp created-->
 	<div id="modal_pp_created" class="modal">
-		<div class="modal__window modal__window--md p-4 p-lg-5">
+		<div class="iub-modal__window iub-modal__window--md p-4 p-lg-5">
 			<?php
 			// Including partial modal-pp-created.
 			require_once IUBENDA_PLUGIN_PATH . '/views/partials/modals/modal-pp-created.php';
@@ -51,7 +51,7 @@ require_once IUBENDA_PLUGIN_PATH . 'views/partials/footer.php';
 
 	<!-- Modal Almost There -->
 	<div id="modal-have-existing-products" class="modal modal--xs">
-		<div class="modal__window modal__window--md p-4 p-lg-5">
+		<div class="iub-modal__window iub-modal__window--md p-4 p-lg-5">
 			<?php
 			// Including partial modal-almost-there.
 			require_once IUBENDA_PLUGIN_PATH . '/views/partials/modals/modal-almost-there.php';
@@ -61,7 +61,7 @@ require_once IUBENDA_PLUGIN_PATH . 'views/partials/footer.php';
 
 	<!-- Modal Select language -->
 	<div id="modal-select-language" class="modal modal--xs">
-		<div class="modal__window modal__window--md p-4 p-lg-5">
+		<div class="iub-modal__window iub-modal__window--md p-4 p-lg-5">
 			<?php
 			// Including partial modal-select-language.
 			require_once IUBENDA_PLUGIN_PATH . '/views/partials/modals/modal-select-language.php';

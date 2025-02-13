@@ -17,9 +17,13 @@ final class TwilioHandler
   public static $apiBaseUri = 'https://api.twilio.com/2010-04-01';
   protected $_defaultHeader;
 
-  public function __construct($integrationID)
+  private $_formID;
+
+  public function __construct($integrationID, $formID)
   {
     $this->_integrationID = $integrationID;
+
+    $this->_formID = $formID;
   }
 
   public static function registerAjax()
@@ -89,7 +93,7 @@ final class TwilioHandler
       $error = new WP_Error('REQ_FIELD_EMPTY', __('SID, Auth Token,From Number and mapping fields are required for rapidmail api', 'bitform'));
       return $error;
     }
-    $recordApiHelper = new RecordApiHelper($integrationDetails, $sid, $token, $from_num, $logID);
+    $recordApiHelper = new RecordApiHelper($integrationDetails, $sid, $token, $from_num, $logID, $this->_formID, $entryID);
     $twilioResponse = $recordApiHelper->executeRecordApi(
       $this->_integrationID,
       $fieldValues,

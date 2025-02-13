@@ -865,7 +865,7 @@ class HMWP_Classes_Tools {
 	}
 
 	public static function getCloudUrl( $page = 'login' ) {
-		return _HMWP_ACCOUNT_SITE_ . '/user/auth/' . $page;
+		return _HMWP_ACCOUNT_SITE_ . '/user/' . $page;
 	}
 
 	/**

@@ -4164,7 +4164,6 @@ function ads_txt ($action) {
     }
     $block_code = $obj->get_ad_data ();
 
-//  data-ad-client="ca-pub-3118622027477755"
     if (preg_match_all ('#data-ad-client\s*=\s*"(.+?)"#', $block_code, $adsense_matches)) {
       foreach ($adsense_matches [1] as $adsense_match) {
         if (preg_match ('#(pub-[0-9]+)#', $adsense_match, $adsense_pub_id)) {
@@ -4182,7 +4181,6 @@ function ads_txt ($action) {
       }
     }
 
-//  google_ad_client = "ca-pub-3118622027477755";
     if (preg_match_all ('#google_ad_client\s*=\s*"(.+?)"#', $block_code, $adsense_matches)) {
       foreach ($adsense_matches [1] as $adsense_match) {
         if (preg_match ('#(pub-[0-9]+)#', $adsense_match, $adsense_pub_id)) {

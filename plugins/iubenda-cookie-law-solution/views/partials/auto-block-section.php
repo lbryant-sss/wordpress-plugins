@@ -10,7 +10,7 @@ $frontend_auto_blocking_checkbox_status = iub_array_get( $auto_block_section_dat
 ?>
 
 <label class="checkbox-regular">
-	<input type="checkbox" class="mr-2 blocking-method frontend-blocking-method" id="frontend_auto_blocking" disabled <?php checked( true, $frontend_auto_blocking_checkbox_status ); ?>>
+	<input type="checkbox" class="mr-2 iub-blocking-method frontend-blocking-method" id="frontend_auto_blocking" disabled <?php checked( true, $frontend_auto_blocking_checkbox_status ); ?>>
 	<span>
 		<div><?php esc_html_e( 'iubenda Automatic Script Blocking', 'iubenda' ); ?> <a target="_blank" href="<?php echo esc_url( iubenda()->settings->links['frontend_auto_blocking'] ); ?>" class="ml-1 tooltip-icon">?</a></div>
 

@@ -92,6 +92,12 @@ class WebHooksHandler
     $method = isset($details->method) ? $details->method : 'get';
     $data = isset($details->url) ? $this->urlParserWrapper($details->url) : false;
 
+    $entryDetails = [
+      'formId'      => $this->formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     if ($data) {
       $url = $data['url'];
       $params = $data['params'];
@@ -123,7 +129,8 @@ class WebHooksHandler
           $this->webhookID,
           ['type' => 'record', 'type_name' => 'web hooks'],
           'errors',
-          $response
+          $response,
+          $entryDetails
         );
       } else {
         $this->_logResponse->apiResponse(
@@ -131,7 +138,8 @@ class WebHooksHandler
           $this->webhookID,
           ['type' => 'record', 'type_name' => 'web hooks'],
           'success',
-          $response
+          $response,
+          $entryDetails
         );
       }
       return $response;
@@ -145,7 +153,8 @@ class WebHooksHandler
         $this->webhookID,
         ['type' => 'record', 'type_name' => 'web hooks'],
         'errors',
-        'There is something wrong in the webhook url'
+        'There is something wrong in the webhook url',
+        $entryDetails
       );
     }
   }

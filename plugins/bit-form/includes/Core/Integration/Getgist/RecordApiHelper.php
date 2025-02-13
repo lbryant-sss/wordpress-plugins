@@ -13,12 +13,15 @@ class RecordApiHelper
 
   private $logID;
 
-  public function __construct($api_key, $integId, $logID)
+  private $entryId;
+
+  public function __construct($api_key, $integId, $logID, $entryID)
   {
     $this->_defaultHeader['Content-Type'] = 'application/json';
     $this->_defaultHeader['Authorization'] = "Bearer $api_key";
     $this->_logResponse = new UtilApiResponse();
     $this->logID = $logID;
+    $this->entryId = $entryID;
   }
 
   public function createContact($data)
@@ -54,15 +57,21 @@ class RecordApiHelper
     return $dataFinal;
   }
 
-  public function execute($integId, $fieldValues, $fieldMap, $integrationDetails)
+  public function execute($integId, $fieldValues, $fieldMap, $integrationDetails, $formId)
   {
     $finalData = $this->generateReqDataFromFieldMap($fieldValues, $fieldMap, $integrationDetails);
     $apiResponse = $this->createContact($finalData);
 
+    $entryDetails = [
+      'form_id'     => $formId,
+      'entry_id'    => $this->entryId,
+      'fieldValues' => $fieldValues,
+    ];
+
     if (!property_exists($apiResponse, 'contact') || property_exists($apiResponse, 'errors')) {
-      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => 'contact', 'type_name' => 'contact_add'], 'errors', $apiResponse);
+      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => 'contact', 'type_name' => 'contact_add'], 'errors', $apiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => 'contact', 'type_name' => 'contact_add'], 'success', $apiResponse);
+      $this->_logResponse->apiResponse($this->logID, $integId, ['type' => 'contact', 'type_name' => 'contact_add'], 'success', $apiResponse, $entryDetails);
     }
     return $apiResponse;
   }

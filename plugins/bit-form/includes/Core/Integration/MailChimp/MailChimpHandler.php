@@ -18,9 +18,13 @@ class MailChimpHandler
 {
   private $_integrationID;
 
+  private $formId;
+
   public function __construct($integrationID, $fromID)
   {
     $this->_integrationID = $integrationID;
+
+    $this->formId = $fromID;
   }
 
   /**
@@ -314,7 +318,8 @@ class MailChimpHandler
       $fieldValues,
       $fieldMap,
       $actions,
-      $addressFields
+      $addressFields,
+      $this->formId
     );
 
     if (is_wp_error($mChimpApiResponse)) {

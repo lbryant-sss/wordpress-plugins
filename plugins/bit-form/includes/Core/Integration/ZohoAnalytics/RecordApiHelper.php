@@ -24,7 +24,11 @@ class RecordApiHelper
   private $_logID;
   private $_logResponse;
 
-  public function __construct($tokenDetails, $integId, $logID)
+  private $_formId;
+
+  private $_entryId;
+
+  public function __construct($tokenDetails, $integId, $logID, $formId, $entryId)
   {
     $this->_defaultHeader['Authorization'] = "Zoho-oauthtoken {$tokenDetails->access_token}";
     $this->_apiDomain = \urldecode($tokenDetails->api_domain);
@@ -32,6 +36,9 @@ class RecordApiHelper
     $this->_integrationID = $integId;
     $this->_logID = $logID;
     $this->_logResponse = new UtilApiResponse();
+
+    $this->_formId = $formId;
+    $this->_entryId = $entryId;
   }
 
   public function insertRecord($workspace, $table, $ownerEmail, $dataCenter, $data)
@@ -69,32 +76,38 @@ class RecordApiHelper
       }
     }
 
+    $entryDetails = [
+      'formId'      => $this->_formId,
+      'entryId'     => $this->_entryId,
+      'fieldValues' => $fieldValues
+    ];
+
     if (isset($actions->update->criteria)) {
       $recordApiResponse = $this->updateRecord($workspace, $table, $ownerEmail, $dataCenter, $actions->update->criteria, $fieldData);
 
       $recordApiResponse = json_decode(preg_replace("/\\\'/", "'", $recordApiResponse));
 
       if (isset($recordApiResponse->response->error)) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'update'], 'error', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'update'], 'error', $recordApiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'update'], 'success', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'update'], 'success', $recordApiResponse, $entryDetails);
       }
 
       if ($actions->update->insert && '0' === $recordApiResponse->response->result->updatedRows) {
         $recordApiResponse = $this->insertRecord($workspace, $table, $ownerEmail, $dataCenter, $fieldData);
 
         if (isset($recordApiResponse->response->error)) {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'error', $recordApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'error', $recordApiResponse, $entryDetails);
         } else {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'success', $recordApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'success', $recordApiResponse, $entryDetails);
         }
       }
     } else {
       $recordApiResponse = $this->insertRecord($workspace, $table, $ownerEmail, $dataCenter, $fieldData);
       if (isset($recordApiResponse->response->error)) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'error', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'error', $recordApiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'success', $recordApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'insert'], 'success', $recordApiResponse, $entryDetails);
       }
     }
 
@@ -118,9 +131,9 @@ class RecordApiHelper
       if (!empty($share_arr['ZOHO_EMAILS'])) {
         $recordApiResponse = $this->shareTable($dataCenter, $ownerEmail, $workspace, $table, $share_arr);
         if (isset($recordApiResponse->response->error)) {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'share', 'type_name' => $table], 'error', $recordApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'share', 'type_name' => $table], 'error', $recordApiResponse, $entryDetails);
         } else {
-          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => $table], 'success', $recordApiResponse);
+          $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => $table], 'success', $recordApiResponse, $entryDetails);
         }
       }
     }

@@ -13,6 +13,8 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	const DIRECTLY_GRANTED_VIRTUAL_CAPS = 2;
 	const ALL_VIRTUAL_CAPS = 3;
 
+	const ADMIN_MENU_STRUCTURE_COMPONENT = 'admin_menu_structure';
+
 	/**
 	 * @var string The heading tag to use for admin pages.
 	 */
@@ -665,7 +667,8 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 
 		//Is there a custom menu to use?
 		$custom_menu = $this->load_custom_menu();
-		if ( ($custom_menu !== null) && !empty($custom_menu['tree']) ){
+		$has_custom_menu = ($custom_menu !== null) && !empty($custom_menu['tree']);
+		if ( $has_custom_menu ) {
 			//Merge in data from the default menu
 			$custom_menu['tree'] = $this->menu_merge($custom_menu['tree']);
 
@@ -673,7 +676,12 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			$this->merged_custom_menu = $custom_menu;
 
 			do_action('admin_menu_editor-menu_merged', $this->merged_custom_menu);
+		}
 
+		if (
+			$has_custom_menu
+			&& !$this->is_customization_disabled(self::ADMIN_MENU_STRUCTURE_COMPONENT)
+		) {
 			//Convert our custom menu to the $menu + $submenu structure used by WP.
 			//Note: This method sets up multiple internal fields and may cause side-effects.
 			$this->user_cap_cache_enabled = true;
@@ -3252,11 +3260,35 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 
 		do_action('admin_menu_editor-display_tabs');
 
+		$saved = false;
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Just showing a "settings saved" notice.
 		if ( isset($_GET['message']) && (intval($_GET['message']) === 1) ) {
 			add_settings_error('ame-settings-page', 'settings_updated', __('Settings saved.'), 'updated');
+			$saved = true;
 		}
 		settings_errors('ame-settings-page');
+
+		if (
+			$saved
+			&& ($this->current_tab === 'editor')
+			&& $this->is_customization_disabled(self::ADMIN_MENU_STRUCTURE_COMPONENT)
+		) {
+			printf(
+				'<div class="notice notice-info"><p><strong>%s</strong> %s</p></div>',
+				esc_html(__(
+					'You will still see the default admin menu content.',
+					'admin-menu-editor'
+				)),
+				esc_html(__(
+					'Custom admin menu is disabled for your account.',
+					'admin-menu-editor'
+				))
+			);
+		}
+
+		if ( !empty($this->current_tab) ) {
+			do_action('admin_menu_editor-tab_admin_notices-' . $this->current_tab);
+		}
 	}
 
 	private function get_settings_page_heading_text() {
@@ -3398,6 +3430,10 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			return array();
 		}
 		if ( $custom_menu === null ){
+			return array();
+		}
+
+		if ( $this->is_customization_disabled(self::ADMIN_MENU_STRUCTURE_COMPONENT) ) {
 			return array();
 		}
 
@@ -5371,6 +5407,46 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		}
 
 		return $this->webpack_registry;
+	}
+
+	/**
+	 * @var array<string,bool>
+	 */
+	private $customizations_disabled_state = [];
+
+	/**
+	 * Check if a specific customization is disabled for the current user.
+	 *
+	 * For example, disabling admin menu customizations means that the user will see the default,
+	 * unmodified admin menu. Customizations like hiding menu items, changing item order, and so on
+	 * will not be applied.
+	 *
+	 * Note that this does not, by itself, prevent the user from *editing* customization settings.
+	 * It only prevents the customizations from being applied. The user can still change AME settings
+	 * if they have the necessary permissions.
+	 *
+	 * @param string $component
+	 * @return bool
+	 */
+	public function is_customization_disabled($component) {
+		if ( empty($component) ) {
+			throw new InvalidArgumentException('Component name must not be empty.');
+		}
+
+		if ( isset($this->customizations_disabled_state[$component]) ) {
+			return $this->customizations_disabled_state[$component];
+		}
+
+		$disabled = (bool)apply_filters('admin_menu_editor-disable_customizations-' . $component, false);
+
+		//Usually, the state depends on the user and/or their role, so let's cache the result
+		//only if a user is logged in. This probably won't come up much in practice since
+		//current modules should only call this method after the logged-in user is known.
+		if ( function_exists('is_user_logged_in') && is_user_logged_in() ) {
+			$this->customizations_disabled_state[$component] = $disabled;
+		}
+
+		return $disabled;
 	}
 
 } //class

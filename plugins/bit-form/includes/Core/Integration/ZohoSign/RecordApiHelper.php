@@ -22,7 +22,10 @@ class RecordApiHelper
   private $_integrationID;
   private $_logResponse;
 
-  public function __construct($tokenDetails, $integId, $logID)
+  private $_formId;
+  private $_entryId;
+
+  public function __construct($tokenDetails, $integId, $logID, $formId, $entryId)
   {
     $this->_tokenDetails = $tokenDetails;
     $this->_defaultHeader['Authorization'] = "Zoho-oauthtoken {$tokenDetails->access_token}";
@@ -30,6 +33,9 @@ class RecordApiHelper
     $this->_integrationID = $integId;
     $this->_logID = $logID;
     $this->_logResponse = new UtilApiResponse();
+
+    $this->_formId = $formId;
+    $this->_entryId = $entryId;
   }
 
   public function insertRecord($dataCenter, $data)
@@ -47,6 +53,12 @@ class RecordApiHelper
   public function executeRecordApi($dataCenter, $template, $templateActions, $notes, $fieldValues)
   {
     $notes = FieldValueHandler::replaceFieldWithValue($notes, $fieldValues);
+
+    $entryDetails = [
+      'formId'      => $this->_formId,
+      'entryId'     => $this->_entryId,
+      'fieldValues' => $fieldValues
+    ];
 
     foreach ($templateActions as $action) {
       if (!empty($action->in_person_email)) {
@@ -69,9 +81,9 @@ class RecordApiHelper
 
     $recordApiResponse = $this->sendDocument($dataCenter, $template, $data);
     if (isset($recordApiResponse->error_param) || 'failure' === $recordApiResponse->status || 'error' === $recordApiResponse->status) {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'send', 'type_name' => 'template'], 'error', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'send', 'type_name' => 'template'], 'error', $recordApiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'send', 'type_name' => 'template'], 'success', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'send', 'type_name' => 'template'], 'success', $recordApiResponse, $entryDetails);
     }
 
     return $recordApiResponse;

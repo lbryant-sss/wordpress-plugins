@@ -12,16 +12,20 @@ use BitCode\BitForm\Core\Util\HttpHelper;
 use WP_Error;
 
 /**
- * Provide functionality for ZohoCrm integration
+ * Provide functionality for SendinBlue (Brevo) integration
  */
 class SendinBlueHandler
 {
   private $_integrationID;
   private const BREVO_API_ENDPOINT = 'https://api.brevo.com/v3';
 
+  private $formId;
+
   public function __construct($integrationID, $fromID)
   {
     $this->_integrationID = $integrationID;
+
+    $this->formId = $fromID;
   }
 
   /**
@@ -271,7 +275,8 @@ class SendinBlueHandler
       $defaultDataConf,
       $fieldValues,
       $fieldMap,
-      $actions
+      $actions,
+      $this->formId
     );
 
     if (is_wp_error($sendinBlueApiResponse)) {

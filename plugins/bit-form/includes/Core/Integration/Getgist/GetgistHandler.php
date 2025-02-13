@@ -10,6 +10,16 @@ class GetgistHandler
 {
   public static $api_endpoint = 'https://api.getgist.com';
 
+  private $integrationID;
+
+  private $formId;
+
+  public function __construct($integrationID, $fromID)
+  {
+    $this->integrationID = $integrationID;
+    $this->formId = $fromID;
+  }
+
   public static function registerAjax()
   {
     add_action('wp_ajax_bitforms_getgist_authorize', [__CLASS__, 'getgistAuthorize']);
@@ -107,12 +117,13 @@ class GetgistHandler
     ) {
       return new WP_Error('REQ_FIELD_EMPTY', __('module, fields are required for Gist api', 'bit-form'));
     }
-    $recordApiHelper = new RecordApiHelper($api_key, $integId, $logID);
+    $recordApiHelper = new RecordApiHelper($api_key, $integId, $logID, $entryID);
     $getgistApiResponse = $recordApiHelper->execute(
       $integId,
       $fieldValues,
       $fieldMap,
-      $integrationDetails
+      $integrationDetails,
+      $this->formId,
     );
 
     if (is_wp_error($getgistApiResponse)) {

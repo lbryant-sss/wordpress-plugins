@@ -30,15 +30,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="d-block d-lg-flex mt-lg-0 mt-4 align-items-center text-center text-lg-right">
 		<div class="mr-lg-3 mb-lg-0 mb-4">
 			<p class="m-0 text-bold text-md"><?php esc_html_e( 'Your rating', 'iubenda' ); ?></p>
-			<span class="btn-reset link-underline-dashed text-gray show-modal show-rating-modal"><?php esc_html_e( 'How is it calculated?', 'iubenda' ); ?></span>
+			<span class="btn-reset link-underline-dashed text-gray iub-show-modal iub-show-rating-modal"><?php esc_html_e( 'How is it calculated?', 'iubenda' ); ?></span>
 		</div>
-		<div class="circularBar sm show-modal show-rating-modal" id="iubendaRadarCircularBar" data-perc="<?php echo esc_attr( iubenda()->service_rating->services_percentage() ); ?>"></div>
+		<div class="circularBar sm iub-show-modal iub-show-rating-modal" id="iubendaRadarCircularBar" data-perc="<?php echo esc_attr( iubenda()->service_rating->services_percentage() ); ?>"></div>
 	</div>
 </div>
 <hr>
 <!-- Modal rating -->
 <div id="modal-rating" class="modal">
-	<div class="modal__window modal__window--md p-4 p-lg-5">
+	<div class="iub-modal__window iub-modal__window--md p-4 p-lg-5">
 		<?php
 		// Including partial modal-rating.
 		require_once IUBENDA_PLUGIN_PATH . '/views/partials/modals/modal-rating.php';

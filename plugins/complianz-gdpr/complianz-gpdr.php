@@ -3,7 +3,7 @@
  * Plugin Name: Complianz | GDPR/CCPA Cookie Consent
  * Plugin URI: https://www.wordpress.org/plugins/complianz-gdpr
  * Description: Complianz Privacy Suite for GDPR, CaCPA, DSVGO, AVG with a conditional cookie warning and customized cookie policy
- * Version: 7.2.0
+ * Version: 7.3.0
  * Requires at least: 5.9
  * Requires PHP: 7.4
  * Text Domain: complianz-gdpr
@@ -141,7 +141,7 @@ if ( ! class_exists( 'COMPLIANZ' ) ) {
 			//for auto upgrade functionality
 			define( 'cmplz_plugin_free', plugin_basename( __FILE__ ) );
 			$debug = (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) ? '#'.time() : '';
-			define( 'cmplz_version', '7.2.0' . $debug );
+			define( 'cmplz_version', '7.3.0' . $debug );
 			define( 'cmplz_plugin_file', __FILE__ );
 		}
 
@@ -185,7 +185,6 @@ if ( ! class_exists( 'COMPLIANZ' ) ) {
 				require_once( cmplz_path . 'class-export.php' );
 				require_once( cmplz_path . 'documents/admin-class-documents.php' );
 				require_once( cmplz_path . 'settings/wizard.php' );
-				require_once( cmplz_path . 'mailer/class-mail.php');
 				require_once( cmplz_path . 'placeholders/class-placeholders.php' );
 
 				if ( isset($_GET['install_pro'])) {
@@ -213,6 +212,7 @@ if ( ! class_exists( 'COMPLIANZ' ) ) {
 			require_once(cmplz_path . 'class-cookie-blocker.php');
 			require_once(cmplz_path . 'websitescan/class-wsc-api.php');
 			require_once(cmplz_path . 'websitescan/class-wsc-scanner.php');
+			require_once(cmplz_path . 'mailer/class-mail.php');
 		}
 
 		private function hooks() {

@@ -134,8 +134,13 @@ class AutonamiHandler
 
   public function execute(IntegrationHandler $integrationHandler, $integrationData, $fieldValues, $entryID, $logID)
   {
+    $entryDetails = [
+      'formId'      => $this->_formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
     if (!class_exists('BWFCRM_Contact')) {
-      (new UtilApiResponse())->apiResponse($logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'error', 'Autonami Pro Plugins not found');
+      (new UtilApiResponse())->apiResponse($logID, $this->_integrationID, ['type' =>  'record', 'type_name' => 'insert'], 'error', 'Autonami Pro Plugins not found', $entryDetails);
       return;
     }
 
@@ -151,7 +156,7 @@ class AutonamiHandler
     }
 
     $recordApiHelper = new RecordApiHelper($this->_integrationID, $logID, $entryID);
-    $autonamiApiResponse = $recordApiHelper->executeRecordApi($fieldValues, $fieldMap, $actions, $lists, $tags);
+    $autonamiApiResponse = $recordApiHelper->executeRecordApi($fieldValues, $fieldMap, $actions, $lists, $tags, $this->_formID);
 
     if (is_wp_error($autonamiApiResponse)) {
       return $autonamiApiResponse;

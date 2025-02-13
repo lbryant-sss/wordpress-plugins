@@ -60,6 +60,11 @@ class RecordApiHelper
 
   public function executeRecordApi($team, $folder, $dataCenter, $fieldValues, $default, $actions, $entryID, $formID)
   {
+    $entryDetails = [
+      'formId'      => $formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
     $uploadFolder = $folder;
     $createFolderData = null;
     if (!empty($actions->create_folder)) {
@@ -83,9 +88,9 @@ class RecordApiHelper
 
       $createFolderResponse = $this->createFolder($dataCenter, wp_json_encode($createFolderData));
       if (isset($createFolderResponse->errors)) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'folder', 'type_name' => 'create'], 'error', $createFolderResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'folder', 'type_name' => 'create'], 'error', $createFolderResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'folder', 'type_name' => 'create'], 'success', $createFolderResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'folder', 'type_name' => 'create'], 'success', $createFolderResponse, $entryDetails);
       }
 
       $uploadFolder = $createFolderResponse->data->id;
@@ -124,7 +129,7 @@ class RecordApiHelper
         }
       }
       if ($fileFound) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'file', 'type_name' => 'upload'], $responseType, $attachmentApiResponses);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'file', 'type_name' => 'upload'], $responseType, $attachmentApiResponses, $entryDetails);
       }
     }
 

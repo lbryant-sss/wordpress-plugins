@@ -60,6 +60,11 @@ class RecordApiHelper
 
   public function executeRecordApi($department, $dataCenter, $fieldValues, $fieldMap, $required, $actions, $entryID, $formID)
   {
+    $entryDetails = [
+      'formId'      => $formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
     $fieldData = [];
     $customFieldData = [];
     foreach ($fieldMap as $fieldKey => $fieldPair) {
@@ -77,7 +82,7 @@ class RecordApiHelper
 
       if (empty($fieldData[$fieldPair->zohoFormField]) && \in_array($fieldPair->zohoFormField, $required)) {
         $error = new WP_Error('REQ_FIELD_EMPTY', wp_sprintf(__('%s is required for zoho bigin', 'bit-form'), $fieldPair->zohoFormField));
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error, $entryDetails);
         return $error;
       }
     }
@@ -106,9 +111,9 @@ class RecordApiHelper
       $contactApiResponse = $this->createContact($dataCenter, wp_json_encode($contactData));
 
       if (isset($contactApiResponse->errorCode)) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'contact'], 'error', $contactApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'contact'], 'error', $contactApiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'contact'], 'success', $contactApiResponse);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'contact'], 'success', $contactApiResponse, $entryDetails);
       }
 
       $contactId = $contactApiResponse->id;
@@ -133,9 +138,9 @@ class RecordApiHelper
     $ticketApiResponse = $this->insertRecord($dataCenter, wp_json_encode($ticketData));
 
     if (isset($ticketApiResponse->errorCode)) {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'ticket'], 'error', $ticketApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'ticket'], 'error', $ticketApiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'ticket'], 'success', $ticketApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'ticket'], 'success', $ticketApiResponse, $entryDetails);
     }
 
     if (!empty($actions->attachments)) {
@@ -166,7 +171,7 @@ class RecordApiHelper
       }
 
       if ($fileFound) {
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'file', 'type_name' => 'ticket'], $responseType, $attachmentApiResponses);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'file', 'type_name' => 'ticket'], $responseType, $attachmentApiResponses, $entryDetails);
       }
     }
 

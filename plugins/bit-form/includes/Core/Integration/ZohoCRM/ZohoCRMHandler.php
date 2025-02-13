@@ -707,6 +707,12 @@ class ZohoCRMHandler
 
   public function execute(IntegrationHandler $integrationHandler, $integrationData, $fieldValues, $entryID, $logID)
   {
+    $entryDetails = [
+      'formId'      => $this->_formID,
+      'entryId'     => $entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     $integrationDetails = is_string($integrationData->integration_details) ? json_decode($integrationData->integration_details) : $integrationData->integration_details;
 
     $tokenDetails = $integrationDetails->tokenDetails;
@@ -724,12 +730,12 @@ class ZohoCRMHandler
       || empty($fieldMap)
     ) {
       $error = new WP_Error('REQ_FIELD_EMPTY', __('module, layout, fields are required for zoho crm api', 'bit-form'));
-      $this->_logResponse->apiResponse($logID, $this->_integrationID, 'record', 'validation', $error);
+      $this->_logResponse->apiResponse($logID, $this->_integrationID, 'record', 'validation', $error, $entryDetails);
       return $error;
     }
     if (empty($defaultDataConf->layouts->{$module}->{$layout}->fields) || empty($defaultDataConf->modules->{$module})) {
       $error = new WP_Error('REQ_FIELD_EMPTY', __('module, layout, fields are required for zoho crm api', 'bit-form'));
-      $this->_logResponse->apiResponse($logID, $this->_integrationID, 'record', 'validation', $error);
+      $this->_logResponse->apiResponse($logID, $this->_integrationID, 'record', 'validation', $error, $entryDetails);
       return $error;
     }
     if ((intval($tokenDetails->generates_on) + (55 * 60)) < time()) {

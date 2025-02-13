@@ -274,12 +274,6 @@ function cmplz_load_warning_types() {
 			'dismissible' => false,
 			'url' => 'https://complianz.io/what-regions-do-i-target/',
 		),
-		'install-burst' => array(
-			'warning_condition' => 'cmplz_show_install_burst_warning',
-			'open' => __( 'Statistics without Consent. Meet Burst Statistics from Complianz.', 'complianz-gdpr' ),
-			'include_in_progress' => false,
-			'url' => '#wizard/consent-statistics',
-		),
 		'textdomain-just-in-time-notice' => array(
 			'dismissible' => true,
 			'open' => __( 'You might see a notice about Complianz when debugging your WordPress website. Although not a breaking issue, pleasee know we\'re attending to this issue.', 'complianz-gdpr' ),

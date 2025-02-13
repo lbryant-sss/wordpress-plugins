@@ -19,11 +19,15 @@ class RecordApiHelper
 
   private $_logResponse;
 
+  private $_entryID;
+
   public function __construct($auth_token, $integId, $logID, $entryID)
   {
     $this->_integrationID = $integId;
     $this->_logResponse = new UtilApiResponse();
     $this->logID = $logID;
+
+    $this->_entryID = $entryID;
   }
 
   public function addContact($access_token, $listId, $finalData)
@@ -130,19 +134,27 @@ class RecordApiHelper
     $fieldValues,
     $fieldMap,
     $access_token,
-    $integrationDetails
+    $integrationDetails,
+    $formId
   ) {
     $fieldData = [];
     $apiResponse = null;
+
+    $entryDetails = [
+      'formId'      => $formId,
+      'entryId'     => $this->_entryID,
+      'fieldValues' => $fieldValues
+    ];
+
     if ('1' === $integrationDetails->mainAction) {
       $type_name = 'Create List';
       $finalData = $this->generateListReqDataFromFieldMap($fieldValues, $integrationDetails->field_map_list);
       $apiResponse = $this->createContactList($access_token, $finalData);
 
       if (property_exists($apiResponse, 'id')) {
-        $this->_logResponse->apiResponse($this->logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type_name], 'success', $apiResponse);
+        $this->_logResponse->apiResponse($this->logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type_name], 'success', $apiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type_name], 'error', $apiResponse);
+        $this->_logResponse->apiResponse($this->logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type_name], 'error', $apiResponse, $entryDetails);
       }
     }
     if ('2' === $integrationDetails->mainAction) {
@@ -150,9 +162,9 @@ class RecordApiHelper
       $finalData = $this->generateReqDataFromFieldMap($fieldValues, $fieldMap);
       $apiResponse = $this->addContact($access_token, $listId, $finalData);
       if (property_exists($apiResponse, 'errors')) {
-        $this->_logResponse->apiResponse($this->logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type_name], 'error', $apiResponse);
+        $this->_logResponse->apiResponse($this->logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type_name], 'error', $apiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type_name], 'success', $apiResponse);
+        $this->_logResponse->apiResponse($this->logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type_name], 'success', $apiResponse, $entryDetails);
       }
     }
 
@@ -161,9 +173,9 @@ class RecordApiHelper
       $finalData = $this->generateReqUnsubscribeDataFromFieldMap($fieldValues, $integrationDetails->field_map_unsubscribe);
       $apiResponse = $this->unsubscribeContact($access_token, $finalData);
       if (property_exists($apiResponse, 'id')) {
-        $this->_logResponse->apiResponse($this->logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type_name], 'success', $apiResponse);
+        $this->_logResponse->apiResponse($this->logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type_name], 'success', $apiResponse, $entryDetails);
       } else {
-        $this->_logResponse->apiResponse($this->logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type_name], 'error', $apiResponse);
+        $this->_logResponse->apiResponse($this->logID, $this->_integrationID, ['type' => 'record', 'type_name' => $type_name], 'error', $apiResponse, $entryDetails);
       }
     }
 

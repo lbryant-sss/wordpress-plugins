@@ -14,9 +14,13 @@ class AcumbamailHandler
   private $integrationID;
   public static $baseUrl = 'https://acumbamail.com/api/1/';
 
+  private $formId;
+
   public function __construct($integrationID, $fromID)
   {
     $this->integrationID = $integrationID;
+
+    $this->formId = $fromID;
   }
 
   public static function registerAjax()
@@ -172,7 +176,8 @@ class AcumbamailHandler
       $defaultDataConf,
       $fieldValues,
       $fieldMap,
-      $auth_token
+      $auth_token,
+      $this->formId
     );
 
     if (is_wp_error($acumbamailApiResponse)) {

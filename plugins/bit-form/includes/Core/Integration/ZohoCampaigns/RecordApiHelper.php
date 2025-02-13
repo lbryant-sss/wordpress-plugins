@@ -26,7 +26,11 @@ class RecordApiHelper
 
   private $_logResponse;
 
-  public function __construct($tokenDetails, $integId, $logID)
+  private $_formId;
+
+  private $_entryId;
+
+  public function __construct($tokenDetails, $integId, $logID, $formId, $entryId)
   {
     $this->_defaultHeader['Authorization'] = "Zoho-oauthtoken {$tokenDetails->access_token}";
     $this->_apiDomain = \urldecode($tokenDetails->api_domain);
@@ -34,6 +38,9 @@ class RecordApiHelper
     $this->_integrationID = $integId;
     $this->_logID = $logID;
     $this->_logResponse = new UtilApiResponse();
+
+    $this->_formId = $formId;
+    $this->_entryId = $entryId;
   }
 
   public function insertRecord($list, $dataCenter, $data)
@@ -46,6 +53,11 @@ class RecordApiHelper
   public function executeRecordApi($list, $dataCenter, $fieldValues, $fieldMap, $required)
   {
     $fieldData = [];
+    $entryDetails = [
+      'formId'      => $this->_formId,
+      'entryId'     => $this->_entryId,
+      'fieldValues' => $fieldValues
+    ];
     foreach ($fieldMap as $fieldPair) {
       if (!empty($fieldPair->zohoFormField) && !empty($fieldPair->formField)) {
         if ('custom' === $fieldPair->formField && isset($fieldPair->customValue)) {
@@ -56,16 +68,16 @@ class RecordApiHelper
       }
       if (empty($fieldData[$fieldPair->zohoFormField]) && \in_array($fieldPair->zohoFormField, $required)) {
         $error = new WP_Error('REQ_FIELD_EMPTY', wp_sprintf(__('%s is required for zoho campaigns', 'bit-form'), $fieldPair->zohoFormField));
-        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error);
+        $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'field'], 'validation', $error, $entryDetails);
         return $error;
       }
     }
 
     $recordApiResponse = $this->insertRecord($list, $dataCenter, wp_json_encode($fieldData));
     if (isset($recordApiResponse->status) && 'error' === $recordApiResponse->status) {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'list'], 'error', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'list'], 'error', $recordApiResponse, $entryDetails);
     } else {
-      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'list'], 'success', $recordApiResponse);
+      $this->_logResponse->apiResponse($this->_logID, $this->_integrationID, ['type' => 'record', 'type_name' => 'list'], 'success', $recordApiResponse, $entryDetails);
     }
     return $recordApiResponse;
   }

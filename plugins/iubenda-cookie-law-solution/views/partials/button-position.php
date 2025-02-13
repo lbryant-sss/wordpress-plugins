@@ -13,11 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <h4><?php esc_html_e( 'Button position', 'iubenda' ); ?></h4>
 <div class="mb-2 flex-wrap">
 	<label class="radio-regular mb-3">
-		<input type="radio" name="iubenda_privacy_policy_solution[button_position]" value="automatic" class="mr-2 section-radio-control" data-section-group=".pp_button_position" data-section-name="#pp_button_position_automatically" <?php checked( 'automatic', iub_array_get( iubenda()->options['pp'], 'button_position' ) ); ?>>
+		<input type="radio" name="iubenda_privacy_policy_solution[button_position]" value="automatic" class="mr-2 iub-section-radio-control" data-section-group=".pp_button_position" data-section-name="#pp_button_position_automatically" <?php checked( 'automatic', iub_array_get( iubenda()->options['pp'], 'button_position' ) ); ?>>
 		<span><?php esc_html_e( 'Add to the footer automatically', 'iubenda' ); ?></span>
 	</label>
 	<label class="mr-4 radio-regular text-xs">
-		<input type="radio" name="iubenda_privacy_policy_solution[button_position]" value="manual" class="mr-2 section-radio-control" data-section-group=".pp_button_position" data-section-name="#pp_button_position_manually" <?php checked( 'manual', iub_array_get( iubenda()->options['pp'], 'button_position' ) ); ?>>
+		<input type="radio" name="iubenda_privacy_policy_solution[button_position]" value="manual" class="mr-2 iub-section-radio-control" data-section-group=".pp_button_position" data-section-name="#pp_button_position_manually" <?php checked( 'manual', iub_array_get( iubenda()->options['pp'], 'button_position' ) ); ?>>
 
 		<span><?php esc_html_e( 'Integrate manually', 'iubenda' ); ?></span>
 	</label>

@@ -281,7 +281,8 @@ class ActiveCampaignHandler
       $fieldMap,
       $actions,
       $listId,
-      $tags
+      $tags,
+      $this->_formID
     );
 
     if (is_wp_error($activeCampaignApiResponse)) {

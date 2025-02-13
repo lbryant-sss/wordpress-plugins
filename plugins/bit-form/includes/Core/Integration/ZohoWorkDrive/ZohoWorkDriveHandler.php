@@ -10,6 +10,7 @@ namespace BitCode\BitForm\Core\Integration\ZohoWorkDrive;
 use BitCode\BitForm\Core\Integration\IntegrationHandler;
 use BitCode\BitForm\Core\Util\HttpHelper;
 use BitCode\BitForm\Core\Util\IpTool;
+use WP_Error;
 
 /**
  * Provide functionality for ZohoCrm integration
