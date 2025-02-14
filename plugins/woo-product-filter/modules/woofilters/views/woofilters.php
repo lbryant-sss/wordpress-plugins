@@ -688,12 +688,14 @@ class WoofiltersViewWpf extends ViewWpf {
 
 			$method = 'generate' . str_replace('wpf', '', $filter['id']) . 'FilterHtml';
 			if ('wpfCategory' !== $filter['id']) {
+				$settingsOriginal['page_taxonomies'] = $taxonomies;
 				if ( $isPro && method_exists($proView, $method) ) {
 					$html .= $proView->{$method}($filter, $settingsOriginal, $blockStyle, $key, $viewId);
 				} elseif (method_exists($this, $method)) {
 					$html .= $this->{$method}($filter, $settingsOriginal, $blockStyle, $key);
 				}
 			} else {
+				
 				if ( ! $prodCatId && isset( $querySettings['product_category_id'] ) ) {
 					$prodCatId = $querySettings['product_category_id'];
 				}
@@ -1148,10 +1150,11 @@ class WoofiltersViewWpf extends ViewWpf {
 		$productSortBy  = array();
 		$sortBySelected = array($optionsSelected);
 		$obj            = new stdClass();
+
 		foreach ($options as $key => $option) {
 			if (!empty($option)) {
 				$obj->term_id    = $option;
-				$obj->slug       = $option;
+				$obj->slug       = 'default' == $option ? '' : $option;
 				$obj->name       = $optionsAll[$option];
 				$productSortBy[] = clone $obj;
 			}
@@ -1759,6 +1762,30 @@ class WoofiltersViewWpf extends ViewWpf {
 			$tagSelected      = $includeTagsId;
 			$filter['is_ids'] = true;
 		}
+		
+		$setCurTag = false;
+		if ($this->getFilterSetting($settings, 'f_set_page_tag', false)) {
+			$pageTaxonomies = $this->getFilterSetting($filterSettings, 'page_taxonomies', array());
+			if (!empty($pageTaxonomies) && is_array($pageTaxonomies)) {
+				$pageTagId = $this->getFilterSetting($pageTaxonomies, 'product_tag', 0, 1);
+				if ($pageTagId) {
+					if (empty($tagSelected)) {
+						$tagSelected = array($pageTagId);
+						$filter['is_ids'] = true;
+					} else {
+						if ($this->getFilterSetting($filter, 'is_ids', false)) {
+							$tagSelected[] = $pageTagId;
+						} else {
+							$tagElem = get_term_by('id', $pageTagId, 'product_tag', ARRAY_A);
+							if ($tagElem) {
+								$tagSelected[] = $tagElem['slug'];
+							}
+						}
+					}
+					$setCurTag = true;
+				}
+			}
+		}
 		$layout      = $this->getFilterLayout($settings, $filterSettings);
 		$inLineClass = $layout['class'];
 
@@ -1819,7 +1846,8 @@ class WoofiltersViewWpf extends ViewWpf {
 			));
 		}
 
-		$noActive    = $defSelected ? '' : 'wpfNotActive';
+		//$noActive    = $defSelected ? '' : 'wpfNotActive';
+		$noActive    = $defSelected || $setCurTag ? '' : 'wpfNotActive';
 		$noActive    = $hidden_tags ? 'wpfHidden' : $noActive;
 		$preselected = $hidden_tags ? ' wpfPreselected' : '';
 
@@ -2117,11 +2145,17 @@ class WoofiltersViewWpf extends ViewWpf {
 		$options  = explode(',', $options);
 
 		$defSelected   = $this->getFilterUrlData('pr_stock');
+		if (empty($defSelected)) {
+			if ($this->getFilterSetting($settings, 'f_default_stock', false) && $this->getFilterSetting($settings, 'f_no_preselect', false)) {
+				$defSelected = $this->getFilterSetting($settings, 'f_hidden_stock_status');
+			}
+		}
+		
 		$stockSelected = $defSelected;
 		if ($stockSelected) {
 			$stockSelected = explode('|', $stockSelected);
 		}
-
+		
 		$inStock = array();
 
 		$changeNames = ( $this->getFilterSetting($settings, 'f_status_names', '') == 'on' );

@@ -1136,7 +1136,10 @@
 		}
 
 		public function creationTime(){
-			return microtime(true) - $this->startTime;
+			$time = microtime(true) - $this->startTime;
+			$time = number_format($time, 3);
+
+			return $time;
 		}
 
 		public function isCommenter(){

@@ -26,7 +26,7 @@
 </div>
 <?php
 if ( $isPro ) :
-	DispatcherWpf::doAction( 'addEditTabFilters', 'partEditTabFiltersSelectDefaultId' );
+	DispatcherWpf::doAction( 'addEditTabFilters', 'partEditTabFiltersSelectDefaultId', array('customFilter' => 'Tag') );
 	DispatcherWpf::doAction( 'addEditTabFilters', 'partEditTabFiltersMultiSelect' );
 	DispatcherWpf::doAction( 'addEditTabFilters', 'partEditTabFiltersButtonsType' );
 	DispatcherWpf::doAction( 'addEditTabFilters', 'partEditTabFiltersTagColors' );
@@ -50,6 +50,19 @@ else :
 			<div class="settings-value">
 				<span class="wpfProLabel"><a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank"><?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?></a></span>
 			</div>
+		</div>
+	</div>
+	<div class="row-settings-block wpfTypeSwitchable" data-type="dropdown list mul_dropdown">
+		<div class="settings-block-label settings-w100 col-xs-4 col-sm-3">
+			<?php esc_html_e( 'Check page tag', 'woo-product-filter' ); ?>
+			<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr( __( 'Оn the tag page automatically put a check mark for current tag', 'woo-product-filter' ) ); ?>"></i>
+		</div>
+		<div class="settings-block-values settings-w100 col-xs-8 col-sm-9">
+			<span class="settings-value wpfProLabel">
+				<a href="<?php echo esc_url( $this->proLink ); ?>" target="_blank">
+					<?php esc_html_e( 'PRO Option', 'woo-product-filter' ); ?>
+				</a>
+			</span>
 		</div>
 	</div>
 	<div class="row-settings-block wpfTypeSwitchable" data-type="mul_dropdown">

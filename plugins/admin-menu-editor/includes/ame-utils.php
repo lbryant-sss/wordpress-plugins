@@ -280,7 +280,7 @@ class ameUtils {
 		$expirationBaseTime = time();
 		if ( !empty($lastModified) ) {
 			header('Last-Modified: ' . gmdate('D, d M Y H:i:s ', $lastModified) . 'GMT');
-			if ($lastModified > $expirationBaseTime) {
+			if ( $lastModified > $expirationBaseTime ) {
 				$expirationBaseTime = $lastModified;
 			}
 		}
@@ -882,5 +882,73 @@ class ameMultiDictionary {
 		}
 
 		return $current;
+	}
+}
+
+class ameCustomizationFeatureToggle {
+	/**
+	 * @var string
+	 */
+	private $component;
+	/**
+	 * @var WPMenuEditor
+	 */
+	private $menuEditor;
+	/**
+	 * @var string
+	 */
+	private $tabSlug;
+
+	/**
+	 * @var callable|null
+	 */
+	private $noticeTextCallback;
+
+	public function __construct(
+		$component,
+		$menuEditor,
+		$tabSlug = '',
+		$noticeTextCallback = null
+	) {
+		$this->component = $component;
+		$this->menuEditor = $menuEditor;
+		$this->tabSlug = $tabSlug;
+		$this->noticeTextCallback = $noticeTextCallback;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isCustomizationDisabled() {
+		return $this->menuEditor->is_customization_disabled($this->component);
+	}
+
+	public function onSettingsSaved() {
+		if ( !empty($this->tabSlug) && !empty($this->noticeTextCallback) ) {
+			add_action(
+				'admin_menu_editor-tab_admin_notices-' . $this->tabSlug,
+				[$this, 'maybeShowNotice']
+			);
+		}
+	}
+
+	public function maybeShowNotice() {
+		if ( !empty($this->noticeTextCallback) && $this->isCustomizationDisabled() ) {
+			$texts = call_user_func($this->noticeTextCallback);
+			if ( empty($texts) ) {
+				return;
+			}
+
+			list($mainText, $additionalText) = $texts;
+			if ( empty($mainText) ) {
+				return;
+			}
+
+			printf(
+				'<div class="notice notice-info"><p><strong>%s</strong> %s</p></div>',
+				esc_html($mainText),
+				!empty($additionalText) ? esc_html(' ' . $additionalText) : ''
+			);
+		}
 	}
 }

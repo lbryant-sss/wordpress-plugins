@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Give - Donation Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Give - Donation Plugin 3.20.0\n"
+"Project-Id-Version: Give - Donation Plugin 3.21.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/givewp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-03T15:02:41+00:00\n"
+"POT-Creation-Date: 2025-02-13T19:29:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: give\n"
@@ -112,11 +112,11 @@ msgstr ""
 msgid "Give"
 msgstr ""
 
-#: give.php:457
+#: give.php:462
 msgid "The Visual Form Builder Beta plugin is no longer needed, since the form builder is included in your current version of GiveWP. To prevent conflicts, the Beta plugin has been deactivated and can be safely deleted."
 msgstr ""
 
-#: give.php:484
+#: give.php:489
 msgid "<strong>Attention:</strong> GiveWP 2.5.0+ requires the latest version of the Recurring Donations add-on to process payments properly with Stripe. Please update to the latest version add-on to resolve compatibility issues. If your license is active, you should see the update available in WordPress. Otherwise, you can access the latest version by <a href=\"%1$s\" target=\"_blank\">logging into your account</a> and visiting <a href=\"%1$s\" target=\"_blank\">your downloads</a> page on the GiveWP website."
 msgstr ""
 
@@ -1229,7 +1229,7 @@ msgstr ""
 #: includes/admin/donors/donors.php:368
 #: includes/admin/import-functions.php:542
 #: includes/forms/template.php:790
-#: src/DonationForms/Actions/ConvertDonationFormBlocksToFieldsApi.php:306
+#: src/DonationForms/Actions/ConvertDonationFormBlocksToFieldsApi.php:308
 #: build/adminBlocks.js:1
 #: build/donationFormBlock.js:1
 #: build/formBuilderApp.js:13
@@ -3043,6 +3043,8 @@ msgstr ""
 #: src/DonationForms/Properties/FormSettings.php:290
 #: src/Donations/ListTable/Columns/FormColumn.php:37
 #: build/adminBlocks.js:1
+#: build/donationFormBlock.js:1
+#: build/donationFormBlockApp.js:1
 #: build/formBuilderApp.js:13
 msgid "Donation Form"
 msgstr ""
@@ -7004,7 +7006,7 @@ msgid "The name of the current active theme."
 msgstr ""
 
 #: includes/admin/tools/views/html-admin-page-system-info.php:1006
-#: includes/class-give-license-handler.php:917
+#: includes/class-give-license-handler.php:1069
 msgid "Version"
 msgstr ""
 
@@ -7529,113 +7531,113 @@ msgstr ""
 msgid "Your access token has expired. Please request a new one."
 msgstr ""
 
-#: includes/class-give-license-handler.php:368
+#: includes/class-give-license-handler.php:520
 msgid "Valid edd_action not defined"
 msgstr ""
 
-#: includes/class-give-license-handler.php:750
+#: includes/class-give-license-handler.php:902
 msgid "License Key"
 msgstr ""
 
-#: includes/class-give-license-handler.php:754
+#: includes/class-give-license-handler.php:906
 #: includes/class-give-scripts.php:301
 #: src/Views/Admin/Form/Metabox-Settings.php:35
 msgid "Activate"
 msgstr ""
 
-#: includes/class-give-license-handler.php:758
+#: includes/class-give-license-handler.php:910
 msgid "Reactivate"
 msgstr ""
 
-#: includes/class-give-license-handler.php:765
+#: includes/class-give-license-handler.php:917
 #: includes/class-give-scripts.php:302
 #: src/Views/Admin/Form/Metabox-Settings.php:35
 msgid "Deactivate"
 msgstr ""
 
-#: includes/class-give-license-handler.php:781
+#: includes/class-give-license-handler.php:933
 msgid "License is expired. Please activate your license key."
 msgstr ""
 
-#: includes/class-give-license-handler.php:782
+#: includes/class-give-license-handler.php:934
 msgid "License is active and you are receiving updates and support."
 msgstr ""
 
-#: includes/class-give-license-handler.php:789
+#: includes/class-give-license-handler.php:941
 msgid "License is inactive."
 msgstr ""
 
-#: includes/class-give-license-handler.php:792
+#: includes/class-give-license-handler.php:944
 msgid "Please <a href=\"%1$s\" target=\"_blank\">Visit your dashboard</a> to check this license details and activate this license to receive updates and support."
 msgstr ""
 
-#: includes/class-give-license-handler.php:795
+#: includes/class-give-license-handler.php:947
 msgid "Please activate your license key."
 msgstr ""
 
-#: includes/class-give-license-handler.php:803
+#: includes/class-give-license-handler.php:955
 msgid "License Information"
 msgstr ""
 
-#: includes/class-give-license-handler.php:813
+#: includes/class-give-license-handler.php:965
 msgid "Expired:"
 msgstr ""
 
-#: includes/class-give-license-handler.php:813
+#: includes/class-give-license-handler.php:965
 msgid "Renews:"
 msgstr ""
 
-#: includes/class-give-license-handler.php:825
+#: includes/class-give-license-handler.php:977
 msgid "Renew to manage sites"
 msgstr ""
 
-#: includes/class-give-license-handler.php:831
+#: includes/class-give-license-handler.php:983
 msgid "No activations remaining"
 msgstr ""
 
-#: includes/class-give-license-handler.php:837
+#: includes/class-give-license-handler.php:989
 msgid "Activation Remaining"
 msgid_plural "Activations Remaining"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-give-license-handler.php:844
+#: includes/class-give-license-handler.php:996
 msgid "This is an unlicensed add-on and is not receiving updates or support. Please activate your license key to fix the issue."
 msgstr ""
 
-#: includes/class-give-license-handler.php:850
+#: includes/class-give-license-handler.php:1002
 msgid "License Actions"
 msgstr ""
 
-#: includes/class-give-license-handler.php:860
+#: includes/class-give-license-handler.php:1012
 msgid "Purchase License"
 msgstr ""
 
-#: includes/class-give-license-handler.php:873
+#: includes/class-give-license-handler.php:1025
 msgid "Manage License"
 msgstr ""
 
-#: includes/class-give-license-handler.php:878
+#: includes/class-give-license-handler.php:1030
 msgid "Access Support"
 msgstr ""
 
-#: includes/class-give-license-handler.php:933
+#: includes/class-give-license-handler.php:1085
 msgid "View Changelog"
 msgstr ""
 
-#: includes/class-give-license-handler.php:934
+#: includes/class-give-license-handler.php:1086
 msgid "Changelog of"
 msgstr ""
 
-#: includes/class-give-license-handler.php:943
+#: includes/class-give-license-handler.php:1095
 msgid "activated"
 msgstr ""
 
-#: includes/class-give-license-handler.php:943
+#: includes/class-give-license-handler.php:1095
 msgid "installed"
 msgstr ""
 
-#: includes/class-give-license-handler.php:950
+#: includes/class-give-license-handler.php:1102
 msgid "Download"
 msgstr ""
 

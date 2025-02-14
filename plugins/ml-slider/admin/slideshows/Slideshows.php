@@ -148,7 +148,7 @@ class MetaSlider_Slideshows
         // TODO: This is old code copied over and should eventually be refactored to not require hard-coded values
         $old_settings = get_post_meta($slideshow_id, 'ml-slider_settings', true);
 
-        // Convert submitted checkbox and dropdowns values from 'on' or 'off' to boolean values
+        // Sanitize data
         $new_settings = MetaSlider_Slideshow_Settings::adjust_settings($new_settings);
 
         $new_settings = array_merge((array) $old_settings, $new_settings);

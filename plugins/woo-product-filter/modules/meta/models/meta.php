@@ -419,6 +419,12 @@ class MetaModelWpf extends ModelWpf {
 							return false;
 						}
 					}
+					$func = 'afterCalcMeta' . $keyName;
+					if (method_exists($this, $func )) {
+						if (!$this->$func($productId, $keyData, $tempTable)) {
+							return false;
+						}
+					}
 				}
 				if ($isAllProducts && !$keysModel->updateKeyData($keyId, array('status' => $status))) {
 					$this->pushError($keysModel->getErrors());
@@ -677,6 +683,89 @@ class MetaModelWpf extends ModelWpf {
 		if (!DbWpf::query($query)) {
 			$this->pushError(DbWpf::getError());
 			return false;
+		}
+		return true;
+	}
+	
+	public function afterCalcMeta_stock_status( $productId, $keyData, $tempTable ) {
+		$groupedTerm = get_term_by('name', 'grouped', 'product_type', ARRAY_A);
+		if ($groupedTerm && !empty( $groupedTerm['term_id'])) {
+			$grId = $groupedTerm['term_id'];
+			$keyId = $keyData['id'];
+			$instockId = $this->valsModel->getMetaValueId($keyId, 'instock');
+			$outofstockId = $this->valsModel->getMetaValueId($keyId, 'outofstock');
+			$query = 'SELECT 1 FROM @__meta_data WHERE key_id=' . $keyId . ' AND val_id!=' . $outofstockId . ' AND product_id IN '; 
+			$updateO = 'UPDATE @__meta_data SET val_id=' . $outofstockId . ' WHERE key_id=' . $keyId . ' AND val_id!=' . $outofstockId . ' AND product_id IN ';
+			$updateI = 'UPDATE @__meta_data SET val_id=' . $instockId . ' WHERE key_id=' . $keyId . ' AND val_id!=' . $instockId . ' AND product_id IN ';
+			$controlBundle = FrameWpf::_()->getModule('options')->getModel()->get('index_group_bundle') == 1;
+			
+			$limit = 500;
+			$offset = 0;
+			$limitQuery = ' SELECT p.id, m.meta_id, m.meta_value' . 
+				' FROM ' . ( $tempTable ? $tempTable : ' `#__posts` ' ) . ' as p' .
+				' INNER JOIN `#__term_relationships` AS tr ON (tr.`object_id`=p.ID AND tr.`term_taxonomy_id`=' . $grId . ') '. 
+				" INNER JOIN `#__postmeta` as m ON (m.post_id=p.ID AND m.meta_key='_children' AND m.meta_value!='')" .
+				' ORDER BY meta_id LIMIT ';
+			do {
+				$q = $limitQuery . $offset . ',' . $limit;
+				$data = DbWpf::get($q,0);
+				if (false === $data) { 
+					$this->pushError(DbWpf::getError());
+					$this->pushError($q);
+					return false;
+				}
+				$listIdsO = '';
+				$listIdsI = '';
+				foreach ($data as $k => $values) {
+					$valuesArr = @unserialize($values['meta_value']);
+					if (is_array($valuesArr)) {
+						if ($controlBundle) {
+							$vars = array();
+							foreach ($valuesArr as $vId) {
+								$child = wc_get_product($vId);
+								if ($child->get_type() != 'bundle') {
+									$vars[] = $vId;
+								}
+							}
+							if (empty($vars)) {
+								continue;
+							}
+						} else {
+							$vars = $valuesArr;
+						}
+
+						$q = $query . '(' . implode(',', UtilsWpf::controlNumericValues($vars, 'id')) . ') LIMIT 1';
+						$exist = DbWpf::get($q, 'one');
+						if (false === $exist) { 
+							$this->pushError(DbWpf::getError());
+							$this->pushError($q);
+							return false;
+						}
+						if (is_null($exist)) { 
+							$listIdsO .= $values['id'] . ',';
+						} else {
+							$listIdsI .= $values['id'] . ',';
+						}
+					}
+				}
+				if (!empty($listIdsO)) {
+					$q = $updateO . '(' . substr($listIdsO, 0, -1) . ')';
+					if (!DbWpf::query($q)) {
+						$this->pushError(DbWpf::getError());
+						$this->pushError($q);
+						return false;
+					}
+				}
+				if (!empty($listIdsI)) {
+					$q = $updateI . '(' . substr($listIdsI, 0, -1) . ')';
+					if (!DbWpf::query($q)) {
+						$this->pushError(DbWpf::getError());
+						$this->pushError($q);
+						return false;
+					}
+				}
+				$offset += $limit;
+			} while ( !empty($data) && ( count($data) >= $limit ) );
 		}
 		return true;
 	}

@@ -1174,7 +1174,8 @@
 									break;
 								case 'wpfTags':
 								case 'wpfAttribute':
-									preValue = filterName + '=' + (items['f_query_logic'] == 'or' ? mlist.replace(/,/g, '|') : mlist);
+									var fn = (items['f_query_logic'] == 'not_in' ? 'pr_'+filterName : filterName);
+									preValue = fn + '=' + (items['f_query_logic'] == 'or' ? mlist.replace(/,/g, '|') : mlist);
 									break;
 							}
 						} else {

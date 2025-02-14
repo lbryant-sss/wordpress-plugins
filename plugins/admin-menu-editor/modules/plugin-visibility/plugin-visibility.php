@@ -36,9 +36,26 @@ class amePluginVisibility extends amePersistentModule {
 	 */
 	private $dismissNoticeAction;
 
+	/**
+	 * @var ameCustomizationFeatureToggle
+	 */
+	private $customizationFeature;
+
 	public function __construct($menuEditor) {
 		parent::__construct($menuEditor);
 		self::$lastInstance = $this;
+
+		$this->customizationFeature = new ameCustomizationFeatureToggle(
+			self::CUSTOMIZATION_COMPONENT,
+			$this->menuEditor,
+			$this->tabSlug,
+			function () {
+				return [
+					__('You will see the unmodified plugin list on the "Plugins" page.', 'admin-menu-editor'),
+					__('Customized plugin list is disabled for your account.', 'admin-menu-editor'),
+				];
+			}
+		);
 
 		if ( !$this->isEnabledForRequest() ) {
 			return;
@@ -71,13 +88,11 @@ class amePluginVisibility extends amePersistentModule {
 			->method('post')
 			->register();
 
-		//On save, display a notice if customization is disabled for the current user.
+		//On save, let the feature toggle know that so it can display a notice if customization
+		//is disabled for the current user.
 		$params = $this->menuEditor->get_query_params();
 		if ( !empty($params['message']) ) {
-			add_action(
-				'admin_menu_editor-tab_admin_notices-' . $this->tabSlug,
-				array($this, 'maybeDisplayCustomizationDisabledNotice')
-			);
+			$this->customizationFeature->onSettingsSaved();
 		}
 	}
 
@@ -237,7 +252,7 @@ class amePluginVisibility extends amePersistentModule {
 			return $plugins;
 		}
 
-		if ( $this->isCustomizationDisabled() ) {
+		if ( $this->customizationFeature->isCustomizationDisabled() ) {
 			return $plugins;
 		}
 
@@ -289,7 +304,7 @@ class amePluginVisibility extends amePersistentModule {
 			return $updates;
 		}
 
-		if ( $this->isCustomizationDisabled() ) {
+		if ( $this->customizationFeature->isCustomizationDisabled() ) {
 			return $updates;
 		}
 
@@ -314,7 +329,7 @@ class amePluginVisibility extends amePersistentModule {
 	 * @param string $action
 	 */
 	public function authorizePluginAction($action) {
-		if ( $this->isCustomizationDisabled() ) {
+		if ( $this->customizationFeature->isCustomizationDisabled() ) {
 			return;
 		}
 
@@ -399,7 +414,7 @@ class amePluginVisibility extends amePersistentModule {
 			return $extensions;
 		}
 
-		if ( $this->isCustomizationDisabled() ) {
+		if ( $this->customizationFeature->isCustomizationDisabled() ) {
 			return $extensions;
 		}
 
@@ -607,22 +622,5 @@ class amePluginVisibility extends amePersistentModule {
 		unset($settings['plugins'][$pluginFile]);
 		$this->settings = $settings;
 		$this->saveSettings();
-	}
-
-	/**
-	 * @return bool
-	 */
-	private function isCustomizationDisabled() {
-		return $this->menuEditor->is_customization_disabled(self::CUSTOMIZATION_COMPONENT);
-	}
-
-	public function maybeDisplayCustomizationDisabledNotice() {
-		if ( $this->isCustomizationDisabled() ) {
-			printf(
-				'<div class="notice notice-info"><p><strong>%s</strong> %s</p></div>',
-				esc_html(__('You will see the unmodified plugin list on the "Plugins" page.', 'admin-menu-editor')),
-				esc_html(__('Customized plugin list is disabled for your account.', 'admin-menu-editor'))
-			);
-		}
 	}
 }

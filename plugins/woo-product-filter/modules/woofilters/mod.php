@@ -66,11 +66,21 @@ class WoofiltersWpf extends ModuleWpf {
 			}
 			return $args;
 		});
+		add_filter( 'fl_builder_loop_query', function( $q, $settings ) {
+			if ( isset( $settings->data_source ) && 'main_query' == $settings->data_source ) {
+				$this->loadProductsFilter( $q );
+				if ( '' !== $this->mainWCQueryFiltered ) {
+					$q = new WP_Query($this->mainWCQueryFiltered);
+				} 
+			}
+			return $q;
+		}, 999, 2);
 
-		add_filter( 'uael_woo_product_query_args', array(
-			$this,
-			'loadShortcodeProductsFilter'
-		), 999, 2 ); // Ultimate Addons for Elementor -> Woo – Products Widget
+		// Ultimate Addons for Elementor -> Woo – Products Widget
+		add_filter( 'uael_woo_product_query_args', function( $args, $settings ) {
+			$args = $this->loadShortcodeProductsFilter( $args, array('wpf-compatibility' => 1) );
+    		return $args;
+		}, 999, 2 );
 		//add_filter('woocommerce_product_query_tax_query', array($this, 'customProductQueryTaxQuery'), 10, 1);
 
 		add_action( 'woocommerce_shortcode_before_products_loop', array( $this, 'addWoocommerceShortcodeQuerySettings' ) );
@@ -154,7 +164,7 @@ class WoofiltersWpf extends ModuleWpf {
 		
 		add_filter( 'pre_do_shortcode_tag', array( $this, 'getOtherShortcodeAttr' ), 10, 3 );
 		
-		$actions = array('woo_product_pagination', 'woo_product_pagination_product');
+		$actions = array('woo_product_pagination', 'woo_product_pagination_product', 'get_woo_products', 'uael_get_products');
 		if (in_array(ReqWpf::getVar('action', 'post'), $actions) && ReqWpf::getVar('with_wpf_filter', 'post')) {
 			parse_str(ReqWpf::getVar('with_wpf_filter', 'post'), $addParams); 
 			if (is_array($addParams)) {
@@ -165,6 +175,9 @@ class WoofiltersWpf extends ModuleWpf {
 		}
 		// Theme Elford + Advanced Layout Build (Product Slider + Product Grid)
 		add_filter( 'avia_product_slide_query', array($this, 'loadShortcodeProductsFilter'), 20, 1 );
+		
+		// Theme Bricks + Bricks Builder
+		add_filter( 'bricks/posts/query_vars', array($this, 'loadShortcodeProductsFilter'), 20,1 );
 		
 	}
 	
@@ -308,7 +321,8 @@ class WoofiltersWpf extends ModuleWpf {
 					);
 					$classNF = array(
 						'Essential_Addons_Elementor\Elements\Product_Grid',
-						'ElementorPro\Modules\QueryControl\Classes\Elementor_Post_Query'
+						'ElementorPro\Modules\QueryControl\Classes\Elementor_Post_Query',
+						'Automattic\WooCommerce\Blocks\BlockTypes\AbstractBlock'
 					);
 					$found   = ( ( isset( $backtrace[5]['class'] ) && 'Automattic\WooCommerce\Blocks\BlockTypes\AbstractProductGrid' === $backtrace[5]['class'] ) || ( isset( $backtrace[7]['class'] ) && in_array( $backtrace[7]['class'], $classes, true ) ) )
 						? true
@@ -677,8 +691,8 @@ class WoofiltersWpf extends ModuleWpf {
 		return isset( $this->preselects[ $val ] ) ? $this->preselects[ $val ] : null;
 	}
 
-	public function addPreselectedParams() {
-		if ( ! is_admin() ) {
+	public function addPreselectedParams( $need = false ) {
+		if ( ! is_admin() || $need ) {
 			if ( is_null( $this->currentFilterId ) ) {
 				global $wp_registered_widgets;
 				$filterWidget = 'wpfwoofilterswidget';
@@ -1348,6 +1362,7 @@ class WoofiltersWpf extends ModuleWpf {
 		if ( empty( $params ) ) {
 			$params = ReqWpf::get( 'get' );
 		}
+		
 
 		if ( ! empty( $exludeParam ) && isset( $params[ $exludeParam ] ) ) {
 			unset( $params[ $exludeParam ] );
@@ -1374,7 +1389,6 @@ class WoofiltersWpf extends ModuleWpf {
 			$params       = array_merge( $this->preselects, $params );
 			$this->fields = $this->addCustomFieldsQuery( $params, $mode );
 			$metaQuery    = $this->addCustomMetaQuery( $args['meta_query'], $params, $mode );
-
 			$args['meta_query'] = $metaQuery;
 			$args['tax_query']  = $this->groupTaxQueryArgs( $taxQuery );
 			foreach ( $this->fields as $key => $value ) {
@@ -3188,6 +3202,9 @@ class WoofiltersWpf extends ModuleWpf {
 						
 						if ( $term ) {
 							$param['only_children_category'] = get_term_children( $term->term_id, 'product_cat' );
+							if (is_array($param['only_children_category']) && !empty($param['only_children_category'])) {
+								$param['only_children_category'] = UtilsWpf::controlNumericValues($param['only_children_category'], '');
+							}
 						}
 
 					}

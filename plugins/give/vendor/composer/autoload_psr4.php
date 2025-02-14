@@ -10,6 +10,7 @@ return array(
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Stripe\\' => array($vendorDir . '/stripe/stripe-php/lib'),
     'Sample\\' => array($vendorDir . '/paypal/paypal-checkout-sdk/samples'),
+    'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'PayPalHttp\\' => array($vendorDir . '/paypal/paypalhttp/lib/PayPalHttp'),
     'PayPalCheckoutSdk\\' => array($vendorDir . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk'),
     'Money\\' => array($vendorDir . '/moneyphp/money/src'),

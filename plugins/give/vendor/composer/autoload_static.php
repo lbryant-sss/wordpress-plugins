@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit10c4fd2ef90d119df27b9ba2eb291515
+class ComposerStaticInit2925ae35b3fa0513bedfb3876189d982
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -23,6 +23,7 @@ class ComposerStaticInit10c4fd2ef90d119df27b9ba2eb291515
         ),
         'P' => 
         array (
+            'Psr\\Container\\' => 14,
             'PayPalHttp\\' => 11,
             'PayPalCheckoutSdk\\' => 18,
         ),
@@ -60,6 +61,10 @@ class ComposerStaticInit10c4fd2ef90d119df27b9ba2eb291515
         'Sample\\' => 
         array (
             0 => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples',
+        ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
         ),
         'PayPalHttp\\' => 
         array (
@@ -108,9 +113,9 @@ class ComposerStaticInit10c4fd2ef90d119df27b9ba2eb291515
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit10c4fd2ef90d119df27b9ba2eb291515::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit10c4fd2ef90d119df27b9ba2eb291515::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit10c4fd2ef90d119df27b9ba2eb291515::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2925ae35b3fa0513bedfb3876189d982::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2925ae35b3fa0513bedfb3876189d982::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit2925ae35b3fa0513bedfb3876189d982::$classMap;
 
         }, null, ClassLoader::class);
     }

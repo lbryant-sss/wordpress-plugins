@@ -2,8 +2,8 @@
 Contributors: socialdude, socialtech
 Tags: share, social, share icons, social media, widget
 Requires at least: 3.5
-Tested up to: 6.6.2
-Stable tag: 2.9.4
+Tested up to: 6.7.2
+Stable tag: 2.9.5
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -302,6 +302,12 @@ It depends on which language you speak :) however probably the answer is â€œyesâ
 
 == Changelog ==
 
+= 2.9.5 =
+* Tested with wordpress 6.7.2
+* Improved icon placement
+* Fixed user bugs
+* Improved stability
+
 = 2.9.4 =
 * Refactored Youtube subscribe button to use channel id
 
@@ -415,5 +421,8 @@ It depends on which language you speak :) however probably the answer is â€œyesâ
 
 == Upgrade Notice ==
 
-= 2.9.4 =
-* Refactored Youtube subscribe button to use channel id
+= 2.9.5 =
+* Tested with wordpress 6.7.2
+* Improved icon placement
+* Fixed user bugs
+* Improved stability

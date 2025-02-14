@@ -62,6 +62,7 @@
 				var overlay = $('.wpfFloatingOverlay').detach();
 				$('.wpfFloatingBlock').append(overlay);
 			}
+			if ($('.wpfFloatingWrapper').closest('.wpfFilterForWtbp').length) $('.wpfFloatingBlock').addClass('wpfFilterForWtbpFloating');
 			var block = $('.wpfFloatingWrapper').detach();
 			$('.wpfFloatingBlock').append(block);
 			
@@ -459,9 +460,9 @@
 				}
 			});
 		}
-		//for Divi Filter LoadMore / eael-pagination
-		if (jQuery('.divi-filter-archive-loop, .eael-woo-pagination').length) {
-			var actions = ['divi_filter_loadmore_ajax_handler', 'woo_product_pagination_product'];
+		//for Divi Filter LoadMore / eael-pagination / premium-woo-products
+		if (jQuery('.divi-filter-archive-loop, .eael-woo-pagination, .premium-woo-products-pagination, .uael-woocommerce-pagination').length) {
+			var actions = ['divi_filter_loadmore_ajax_handler', 'woo_product_pagination_product', 'get_woo_products', 'uael_get_products'];
 			jQuery( document ).ajaxSend(function( event, jqxhr, settings ) {
 				if (settings.data) {
 					var response = _thisObj.unserializeStr(settings.data);
@@ -1399,9 +1400,10 @@
 				_thisObj.ajaxOnlyRecount(requestData, $filterWrapper.attr('id'));
 				return;
 			}
-			var redirect = (typeof $filterWrapper.data('redirect-page-url') !== 'undefined');
+			var redirect = (typeof $filterWrapper.data('redirect-page-url') !== 'undefined'),
+				$needUrl = $filterSettings['open_one_by_one'] == '1' && $filterSettings['obo_only_children'] == '1';
 
-			if (history.pushState && app.wpfNewUrl != window.wpfOldUrl && !redirect && !redirectTerm) {
+			if (history.pushState && app.wpfNewUrl != window.wpfOldUrl && ((!redirect && !redirectTerm) || $needUrl))  {
 				var newUrl = app.wpfNewUrl.indexOf('pr_search_') > 0 ? app.wpfNewUrl.replace('+', '%2b') : app.wpfNewUrl;
 				history.pushState({state: 1, rand: Math.random(), wpf: true}, '', newUrl);
 				app.wpfOldUrl = app.wpfNewUrl;
@@ -1436,8 +1438,15 @@
 				document.dispatchEvent(customEvent);
 				//ajax call to server
 				_thisObj.currentLoadId = $filterWrapper.attr('id');
-				if ($filterWrapper.closest('.wpfFilterForWtbp').length) {
-					var wtbpTableId = $filterWrapper.closest('.wtbpTableWrapper').attr('data-table-id'),
+				
+				var $wtbpFilterWrapper = $filterWrapper.closest('.wpfFilterForWtbp');
+				if ($wtbpFilterWrapper.length == 0) {
+					if ($filterWrapper.closest('.wpfFilterForWtbpFloating').length) {
+						$wtbpFilterWrapper = $('.wpfFilterForWtbp[data-wpf-id="'+$filterWrapper.attr('data-filter')+'"]');
+					}
+				}
+				if ($wtbpFilterWrapper.length == 1) {
+					var wtbpTableId = $wtbpFilterWrapper.closest('.wtbpTableWrapper').attr('data-table-id'),
 						wtbpTable = wtbpTableId ? window.woobewoo.WooTablepress.getTableInstanceById(wtbpTableId) : false;
 					if (wtbpTable && wtbpTable.isSSP) {
 						wtbpTable.ajax.reload();
@@ -2285,6 +2294,10 @@
 			$form.attr('action', jQuery('#'+_thisObj.currentLoadId).attr('data-hide-url'));
 			$form.find('input[type="hidden"]').remove();
 		});
+		// Improve compatibility with Theme Bricks + Bricks Builder
+		if (typeof(bricksLazyLoad) == 'function') {
+			bricksLazyLoad();
+		}
 
 		// event for custom javascript hook, example: document.addEventListener('wpfAjaxSuccess', function(event) {console.log('Custom js');});
 		//document.dispatchEvent(new Event('wpfAjaxSuccess')); - not work in IE11

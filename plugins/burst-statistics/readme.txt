@@ -6,13 +6,13 @@ Requires at least: 5.8
 License: GPL2
 Requires PHP: 7.2
 Tested up to: 6.7
-Stable tag: 1.7.4
+Stable tag: 1.7.5
 
 Self-hosted, privacy-friendly stats for WordPress. Simple interface, no setup. Get detailed analytics with Burst Statistics.
 
 == Description ==
 = Unlock the Power of Privacy-Friendly Analytics with Burst Statistics! =
-Self-hosted, privacy-friendly WordPress stats with Burst Statistics! Our dashboards offer clear and concise insights, allowing you to make informed decisions without feeling overwhelmed by abundant data. Choose Burst Statistics for seamless and reliable analytics trusted by over 200,000 users.
+Self-hosted, privacy-friendly WordPress stats with Burst Statistics! Our dashboards offer clear and concise insights, allowing you to make informed decisions without feeling overwhelmed by abundant data. Choose Burst Statistics for seamless and reliable analytics trusted by over 300,000 users.
 
 **This plugin is free and does not require an account.**
 
@@ -32,7 +32,7 @@ Self-hosted, privacy-friendly WordPress stats with Burst Statistics! Our dashboa
 = From the creators of Really Simple SSL & Complianz =
 Burst Statistics was created by experienced developers who created [Really Simple SSL](https://wordpress.org/plugins/really-simple-ssl/) & [Complianz](https://wordpress.org/plugins/complianz-gdpr/), with over 6,000,000 active installs combined. With a proven track record of providing top-notch, user-friendly solutions, you can trust that Burst Statistics meets the same high standards.
 
-Our community speaks for itself: with over 2,000,000 downloads and 200,000 active users, Burst Statistics is a trusted choice for your analytics needs.
+Our community speaks for itself: with over 3,000,000 downloads and 300,000 active users, Burst Statistics is a trusted choice for your analytics needs.
 
 = Make Burst Statistics better! =
 Our team is always working on improving our plugin, and your input as a user can significantly help us in this process. You don’t require any coding or software development knowledge to contribute; simply sharing your ideas or any issues you encounter would help to improve the plugin significantly. Please feel free to contact us via [a support request on the WordPress forums; we welcome any feedback you may have.](https://wordpress.org/support/plugin/burst-statistics/)
@@ -90,11 +90,17 @@ Performance is almost not affected. We have built Burst to be very performant fo
 We value your feedback. You can [submit a support request on the WordPress forums](https://wordpress.org/support/plugin/burst-statistics/), and we will respond promptly.
 
 == Change log ==
+= 1.7.5 =
+* Fix: Resolved an issue where plain permalinks were not working correctly.
+* Fix: Goals were not saving the start date properly, this has been corrected.
+* Fix: Fixed the goals ID/class toggle issue for better consistency.
+* Improvement: Added a new filter for customizing datatable output.
+* Improvement: Enhanced `get_website_url()` for improved reliability.
+* Security: Applied `unslash()` to `verify_nonce` to enhance security measures.
+
 = 1.7.4 =
-* Feature: Only download translation languages that your website actually needs to save precious storage and bandwidth.
 * Improvement: Limit live update requests to enhance system performance.
 * Improvement: Added an option to exclude bounces, allowing users to adjust settings more easily.
-* Improvement: Optimized the downloading of the GEO IP database for up-to-date location information.
 * Fix: This addresses the issue with sorting by 0 in WordPress.
 * Fix: Prevent duplication of burst post meta when Yoast Duplicate Post is used. props @dariuserdt
 * Fix: Corrects the behavior of the burst_admin_url() function when it receives a path, ensuring it is properly handled.

@@ -154,6 +154,11 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	 */
 	private $webpack_registry = null;
 
+	/**
+	 * @var ameCustomizationFeatureToggle
+	 */
+	private $menu_structure_feature;
+
 	function init(){
 		$this->sitewide_options = true;
 
@@ -420,6 +425,18 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		//Multisite: Clear role and capability caches when switching to another site.
 		add_action('switch_blog', array($this, 'clear_site_specific_caches'), 10, 0);
 
+		$this->menu_structure_feature = new ameCustomizationFeatureToggle(
+			self::ADMIN_MENU_STRUCTURE_COMPONENT,
+			$this,
+			'editor',
+			function () {
+				return [
+					__('You will still see the default admin menu content.', 'admin-menu-editor'),
+					__('Custom admin menu is disabled for your account.', 'admin-menu-editor'),
+				];
+			}
+		);
+
 		//"Test Access" feature.
 		if ( (defined('DOING_AJAX') && DOING_AJAX) || isset($this->get['ame-test-menu-access-as']) ) {
 			require_once 'access-test-runner.php';
@@ -680,7 +697,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 
 		if (
 			$has_custom_menu
-			&& !$this->is_customization_disabled(self::ADMIN_MENU_STRUCTURE_COMPONENT)
+			&& !$this->menu_structure_feature->isCustomizationDisabled()
 		) {
 			//Convert our custom menu to the $menu + $submenu structure used by WP.
 			//Note: This method sets up multiple internal fields and may cause side-effects.
@@ -3268,22 +3285,8 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		}
 		settings_errors('ame-settings-page');
 
-		if (
-			$saved
-			&& ($this->current_tab === 'editor')
-			&& $this->is_customization_disabled(self::ADMIN_MENU_STRUCTURE_COMPONENT)
-		) {
-			printf(
-				'<div class="notice notice-info"><p><strong>%s</strong> %s</p></div>',
-				esc_html(__(
-					'You will still see the default admin menu content.',
-					'admin-menu-editor'
-				)),
-				esc_html(__(
-					'Custom admin menu is disabled for your account.',
-					'admin-menu-editor'
-				))
-			);
+		if ( $saved && ($this->current_tab === 'editor') ) {
+			$this->menu_structure_feature->onSettingsSaved();
 		}
 
 		if ( !empty($this->current_tab) ) {
@@ -3433,7 +3436,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			return array();
 		}
 
-		if ( $this->is_customization_disabled(self::ADMIN_MENU_STRUCTURE_COMPONENT) ) {
+		if ( $this->menu_structure_feature->isCustomizationDisabled() ) {
 			return array();
 		}
 

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'impress-org/give',
-        'pretty_version' => '3.20.0',
-        'version' => '3.20.0.0',
-        'reference' => 'ccb2fbe01511d50cf5098ca8ff3c47dd0d8b1ef7',
+        'pretty_version' => '3.21.0',
+        'version' => '3.21.0.0',
+        'reference' => '9fc7857db65095c51f465627a40e7e39d26ae3a8',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'impress-org/give' => array(
-            'pretty_version' => '3.20.0',
-            'version' => '3.20.0.0',
-            'reference' => 'ccb2fbe01511d50cf5098ca8ff3c47dd0d8b1ef7',
+            'pretty_version' => '3.21.0',
+            'version' => '3.21.0.0',
+            'reference' => '9fc7857db65095c51f465627a40e7e39d26ae3a8',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -64,6 +64,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'psr/container' => array(
+            'pretty_version' => '1.1.1',
+            'version' => '1.1.1.0',
+            'reference' => '8622567409010282b7aeebe4bb841fe98b58dcaf',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/container',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'roundcube/plugin-installer' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -75,6 +84,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'stellarwp/admin-notices' => array(
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'reference' => '5c1302fb1de5b212ec6e05385e48e3859fd6b690',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../stellarwp/admin-notices',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'stellarwp/container-contract' => array(
             'pretty_version' => '1.0.4',
