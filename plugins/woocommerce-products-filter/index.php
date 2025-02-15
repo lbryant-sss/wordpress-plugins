@@ -14,7 +14,7 @@
   Domain Path: /languages
   Forum URI: https://pluginus.net/support/forum/woof-woocommerce-products-filter/
   WC requires at least: 6.0
-  WC tested up to: 9.5
+  WC tested up to: 9.6
  */
 
 //update_option('woof_settings', []);//dev: nearly absolute reset of the plugin settings

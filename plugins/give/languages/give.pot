@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Give - Donation Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Give - Donation Plugin 3.21.0\n"
+"Project-Id-Version: Give - Donation Plugin 3.21.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/givewp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-13T19:29:22+00:00\n"
+"POT-Creation-Date: 2025-02-14T17:19:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: give\n"
@@ -7006,7 +7006,7 @@ msgid "The name of the current active theme."
 msgstr ""
 
 #: includes/admin/tools/views/html-admin-page-system-info.php:1006
-#: includes/class-give-license-handler.php:1069
+#: includes/class-give-license-handler.php:1072
 msgid "Version"
 msgstr ""
 
@@ -7531,113 +7531,113 @@ msgstr ""
 msgid "Your access token has expired. Please request a new one."
 msgstr ""
 
-#: includes/class-give-license-handler.php:520
+#: includes/class-give-license-handler.php:523
 msgid "Valid edd_action not defined"
 msgstr ""
 
-#: includes/class-give-license-handler.php:902
+#: includes/class-give-license-handler.php:905
 msgid "License Key"
 msgstr ""
 
-#: includes/class-give-license-handler.php:906
+#: includes/class-give-license-handler.php:909
 #: includes/class-give-scripts.php:301
 #: src/Views/Admin/Form/Metabox-Settings.php:35
 msgid "Activate"
 msgstr ""
 
-#: includes/class-give-license-handler.php:910
+#: includes/class-give-license-handler.php:913
 msgid "Reactivate"
 msgstr ""
 
-#: includes/class-give-license-handler.php:917
+#: includes/class-give-license-handler.php:920
 #: includes/class-give-scripts.php:302
 #: src/Views/Admin/Form/Metabox-Settings.php:35
 msgid "Deactivate"
 msgstr ""
 
-#: includes/class-give-license-handler.php:933
+#: includes/class-give-license-handler.php:936
 msgid "License is expired. Please activate your license key."
 msgstr ""
 
-#: includes/class-give-license-handler.php:934
+#: includes/class-give-license-handler.php:937
 msgid "License is active and you are receiving updates and support."
 msgstr ""
 
-#: includes/class-give-license-handler.php:941
+#: includes/class-give-license-handler.php:944
 msgid "License is inactive."
 msgstr ""
 
-#: includes/class-give-license-handler.php:944
+#: includes/class-give-license-handler.php:947
 msgid "Please <a href=\"%1$s\" target=\"_blank\">Visit your dashboard</a> to check this license details and activate this license to receive updates and support."
 msgstr ""
 
-#: includes/class-give-license-handler.php:947
+#: includes/class-give-license-handler.php:950
 msgid "Please activate your license key."
 msgstr ""
 
-#: includes/class-give-license-handler.php:955
+#: includes/class-give-license-handler.php:958
 msgid "License Information"
 msgstr ""
 
-#: includes/class-give-license-handler.php:965
+#: includes/class-give-license-handler.php:968
 msgid "Expired:"
 msgstr ""
 
-#: includes/class-give-license-handler.php:965
+#: includes/class-give-license-handler.php:968
 msgid "Renews:"
 msgstr ""
 
-#: includes/class-give-license-handler.php:977
+#: includes/class-give-license-handler.php:980
 msgid "Renew to manage sites"
 msgstr ""
 
-#: includes/class-give-license-handler.php:983
+#: includes/class-give-license-handler.php:986
 msgid "No activations remaining"
 msgstr ""
 
-#: includes/class-give-license-handler.php:989
+#: includes/class-give-license-handler.php:992
 msgid "Activation Remaining"
 msgid_plural "Activations Remaining"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-give-license-handler.php:996
+#: includes/class-give-license-handler.php:999
 msgid "This is an unlicensed add-on and is not receiving updates or support. Please activate your license key to fix the issue."
 msgstr ""
 
-#: includes/class-give-license-handler.php:1002
+#: includes/class-give-license-handler.php:1005
 msgid "License Actions"
 msgstr ""
 
-#: includes/class-give-license-handler.php:1012
+#: includes/class-give-license-handler.php:1015
 msgid "Purchase License"
 msgstr ""
 
-#: includes/class-give-license-handler.php:1025
+#: includes/class-give-license-handler.php:1028
 msgid "Manage License"
 msgstr ""
 
-#: includes/class-give-license-handler.php:1030
+#: includes/class-give-license-handler.php:1033
 msgid "Access Support"
 msgstr ""
 
-#: includes/class-give-license-handler.php:1085
+#: includes/class-give-license-handler.php:1088
 msgid "View Changelog"
 msgstr ""
 
-#: includes/class-give-license-handler.php:1086
+#: includes/class-give-license-handler.php:1089
 msgid "Changelog of"
 msgstr ""
 
-#: includes/class-give-license-handler.php:1095
+#: includes/class-give-license-handler.php:1098
 msgid "activated"
 msgstr ""
 
-#: includes/class-give-license-handler.php:1095
+#: includes/class-give-license-handler.php:1098
 msgid "installed"
 msgstr ""
 
-#: includes/class-give-license-handler.php:1102
+#: includes/class-give-license-handler.php:1105
 msgid "Download"
 msgstr ""
 

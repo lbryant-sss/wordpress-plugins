@@ -14,7 +14,7 @@
   Forum URI: https://pluginus.net/support/forum/woocs-woocommerce-currency-switcher-multi-currency-and-multi-pay-for-woocommerce/
   Author URI: https://pluginus.net/
   WC requires at least: 6.0
-  WC tested up to: 9.3
+  WC tested up to: 9.6
  */
 
 if (!defined('ABSPATH')) {
