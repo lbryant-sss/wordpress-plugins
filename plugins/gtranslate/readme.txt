@@ -1,7 +1,7 @@
 === Translate Wordpress with GTranslate ===
 Contributors: edo888
 Author: Translate AI Multilingual Solutions
-Tags: translate, translator, multilingual, translation, multilanguage
+Tags: translate, translator, multilingual, translation, language
 Requires at least: 2.8.1
 Tested up to: 6.7
 Stable tag: 3.0.7

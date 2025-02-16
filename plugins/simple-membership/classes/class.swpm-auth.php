@@ -210,12 +210,12 @@ class SwpmAuth {
 			return false;
 		}
 		$cookie_elements = explode( '|', $_COOKIE[ $auth_cookie_name ] );
-		if ( count( $cookie_elements ) != 3 ) {
+		if ( count( $cookie_elements ) != 4 ) {
 			return false;
 		}
 
 		//SwpmLog::log_auth_debug("validate() - " . $_COOKIE[$auth_cookie_name], true);
-		list($username, $expiration, $hmac) = $cookie_elements;
+		list($username, $expiration, $hmac, $remember) = $cookie_elements;
 		$expired = $expiration;
 		// Allow a grace period for POST and AJAX requests
 		if ( defined( 'DOING_AJAX' ) || 'POST' == $_SERVER['REQUEST_METHOD'] ) {
@@ -404,7 +404,10 @@ class SwpmAuth {
 		}
 		$this->userData   = $member;
 		$this->isLoggedIn = true;
-		$this->set_cookie();
+
+		$remember_me = isset($_REQUEST['rememberme']) && !empty($_REQUEST['rememberme']) ? $_REQUEST['rememberme'] : '';
+
+		$this->set_cookie($remember_me);
 		SwpmLog::log_auth_debug( 'Member has been logged in using WP User object.', true );
 		$this->check_constraints();
 		return true;
@@ -503,21 +506,21 @@ class SwpmAuth {
 	}
 	
 	private function set_cookie( $remember = '', $secure = '' ) {
+		$remember = boolval($remember);
+
+		SwpmLog::log_auth_debug( "SwpmAuth::set_cookie() - Value of 'remember me' parameter: " . $remember, true );
 		if ( $remember ) {
 			//This is the same value as the WP's "remember me" cookie expiration.
 			$expiration = time() + 1209600; //14 days
 			$expire = $expiration + 43200; //12 hours grace period
 		} else {
-			//We use a different expiration for the "non-remember me" cookie to offer a better experience.
-			$expiration = time() + 259200; //3 days.
-			$expire = $expiration; //The minimum cookie expiration should be at least a few days.
-			//Check if the force_wp_user_sync option is enabled. If it is, set the cookie expiration to 0 to match with WP's cookie expiration (when "remember me" is not checked).
-			$force_wp_user_sync = SwpmSettings::get_instance()->get_value( 'force-wp-user-sync' );
-			if ( !empty( $force_wp_user_sync ) ) {
-				//Set the expire to 0 to match with WP's cookie expiration (when "remember me" is not checked).
-				SwpmLog::log_auth_debug( 'The force_wp_user_sync option is enabled. Setting the cookie expiration to 0 to match with WP\'s cookie expiration (when "remember me" is not checked).', true );
-				$expire = 0;
-			}
+			//When "remember me" is not checked, we use a session cookie to match with WP.
+			//Session cookie will expire when the browser is closed. 
+			//The $expiration is used in the event the browser session is not closed for a long time. This value is used by our validate function on page load.
+	        $expiration = time() + 172800; //2 days.
+			//Set the expire to 0 to match with WP's cookie expiration (when "remember me" is not checked).
+			$expire = 0;
+			SwpmLog::log_auth_debug( "The 'Remember me' option is unchecked for this request, setting expiry to be a session cookie. The session cookie will expire when the browser is closed.", true );
 		}
 
 		$expire = apply_filters( 'swpm_auth_cookie_expiry_value', $expire );
@@ -547,7 +550,7 @@ class SwpmAuth {
 		}
 		$key              = self::b_hash( $this->userData->user_name . $pass_frag . '|' . $expiration, $scheme );
 		$hash             = hash_hmac( 'md5', $this->userData->user_name . '|' . $expiration, $key );
-		$auth_cookie      = $this->userData->user_name . '|' . $expiration . '|' . $hash;
+		$auth_cookie      = $this->userData->user_name . '|' . $expiration . '|' . $hash . '|' . intval($remember);
 		$auth_cookie_name = $secure ? SIMPLE_WP_MEMBERSHIP_SEC_AUTH : SIMPLE_WP_MEMBERSHIP_AUTH;
 		setcookie( $auth_cookie_name, $auth_cookie, $expire, COOKIEPATH, COOKIE_DOMAIN, $secure, true );
 
@@ -563,11 +566,13 @@ class SwpmAuth {
 	 * Important: This function should only be used after the users have changed their password. Otherwise it can have unintended consequences.
 	 * This function is used to reset the auth cookies after the user changes their password (from our plugin's profile page).
 	 */
-	public function reset_auth_cookies_after_pass_change($user_info, $remember='', $secure=''){
+	public function reset_auth_cookies_after_pass_change($user_info){
 		// Clear the old auth cookies for WP user and SWPM. Then set new auth cookies.
 
+		$remember = SwpmAuth::is_auth_cookie_with_remember_me();
+
 		//Reset the auth cookies for SWPM user only.
-		$this->reset_swpm_auth_cookies_only($user_info, $remember, $secure);
+		$this->reset_swpm_auth_cookies_only($user_info, $remember);
 
 		//Clear the WP user auth cookies and destroy session. New auth cookies will be generate below.
 		$this->clear_wp_user_auth_cookies(); 
@@ -576,7 +581,7 @@ class SwpmAuth {
 		$swpm_id = $user_info['member_id'];
 		$wp_user = SwpmMemberUtils::get_wp_user_from_swpm_user_id( $swpm_id );
 		$wp_user_id = $wp_user->ID;
-		wp_set_auth_cookie( $wp_user_id, true ); // Set new auth cookies (second parameter true means "remember me")
+		wp_set_auth_cookie( $wp_user_id, $remember ); // Set new auth cookies (second parameter true means "remember me")
 		wp_set_current_user( $wp_user_id ); // Set the current user object
 		SwpmLog::log_auth_debug( 'Authentication cookies have been reset after the password update.', true );
 	}
@@ -586,23 +591,25 @@ class SwpmAuth {
 	 * This is typically used after the user's password is updated in the members DB table (for example, after WP profile update hook is triggered).
 	 */
 	public function reset_swpm_auth_cookies_only($user_info, $remember='', $secure=''){
+		$remember = boolval($remember);
+
 		// First clear the old auth cookies for the SWPM user.
 		$this->swpm_clear_auth_cookies_and_session_tokens(); //Clear the swpm auth cookies. New auth cookies will generate below.
 
 		// Next, assign new cookies, so the user doesn't have to login again.
 		// Set new auth cookies for SWPM user
         if ( $remember ) {
+			//This is the same value as the WP's "remember me" cookie expiration.
             $expiration = time() + 1209600; //14 days
             $expire = $expiration + 43200; //12 hours grace period
         } else {
-            $expiration = time() + 259200; //3 days.
-            $expire = $expiration; //The minimum cookie expiration should be at least a few days.
-            $force_wp_user_sync = SwpmSettings::get_instance()->get_value( 'force-wp-user-sync' );
-            if ( !empty( $force_wp_user_sync ) ) {
-                //Set the expire to 0 to match with WP's cookie expiration (when "remember me" is not checked).
-                SwpmLog::log_auth_debug( 'The force_wp_user_sync option is enabled. Setting the cookie expiration to 0 to match with WP\'s cookie expiration (when "remember me" is not checked).', true );
-                $expire = 0;
-            }
+			//When "remember me" is not checked, we use a session cookie to match with WP.
+			//Session cookie will expire when the browser is closed. 
+			//The $expiration is used in the event the browser session is not closed for a long time. This value is used by our validate function on page load.
+	        $expiration = time() + 172800; //2 days.
+            //Set the expire to 0 to match with WP's cookie expiration (when "remember me" is not checked).
+            $expire = 0;
+			SwpmLog::log_auth_debug( "The 'Remember me' option is not set for this reset request, setting expiry to be a session cookie.", true );
         }
         $expire = apply_filters( 'swpm_auth_cookie_expiry_value', $expire );
 
@@ -625,7 +632,7 @@ class SwpmAuth {
 		$swpm_username = $user_info['user_name'];
         $key = self::b_hash( $swpm_username . $pass_frag . '|' . $expiration, $scheme );
         $hash = hash_hmac( 'md5', $swpm_username . '|' . $expiration, $key );
-        $auth_cookie = $swpm_username . '|' . $expiration . '|' . $hash;
+        $auth_cookie = $swpm_username . '|' . $expiration . '|' . $hash . '|' . intval($remember);
         $auth_cookie_name = $secure ? SIMPLE_WP_MEMBERSHIP_SEC_AUTH : SIMPLE_WP_MEMBERSHIP_AUTH;
         setcookie( $auth_cookie_name, $auth_cookie, $expire, COOKIEPATH, COOKIE_DOMAIN, $secure, true );
 
@@ -727,4 +734,24 @@ class SwpmAuth {
 		$wp_error_obj = new WP_Error( 'swpm-authenticate-failed', $error_msg );
 		do_action( 'swpm_authenticate_failed', $username, $wp_error_obj );
 	}
+
+	/*
+	 * Checks whether the auth cookie contains a "Remember Me" flag and returns the value.
+	 */
+	public static function is_auth_cookie_with_remember_me() {
+		$auth_cookie_name = is_ssl() ? SIMPLE_WP_MEMBERSHIP_SEC_AUTH : SIMPLE_WP_MEMBERSHIP_AUTH;
+
+		if ( isset( $_COOKIE[ $auth_cookie_name ] ) && ! empty( $_COOKIE[ $auth_cookie_name ] ) ) {
+			$cookie_elements = explode( '|', $_COOKIE[ $auth_cookie_name ] );
+
+			if ( count( $cookie_elements ) == 4 && isset( $cookie_elements[3] ) ) { // if cookie elements are not of count 4, then its malformed.
+				$remember_me = $cookie_elements[3]; // Index 3 fragment is the remember me value
+
+				return boolval( $remember_me );
+			}
+		}
+
+		return false;
+	}
+
 }
