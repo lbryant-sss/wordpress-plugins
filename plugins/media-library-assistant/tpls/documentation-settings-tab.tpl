@@ -39,6 +39,7 @@ For more information about the example plugins, jump to <a href="#mla_example_pl
 <li><a href="#custom_field_queries">Custom Field Queries, the "meta_query"</a></li>
 <li><a href="#search_keywords">Keyword(s) Search</a></li>
 <li><a href="#cache_parameters">Caching Parameters</a></li>
+<li><a href="#fields_parameter">Fields Parameter</a></li>
 <li><a href="#debugging_output">Debugging Output</a></li>
 <li><a href="#mla_gallery_hooks">MLA Gallery Filters (Hooks)</a></li>
 </ul></div>
@@ -1357,6 +1358,24 @@ For applications that have very large numbers of attachments and taxonomy terms,
 </table>
 <p>
 In general you won't need these, since adding to the cache is the right thing to do, but they may be useful in specific circumstances. An example of such circumstances might be when using an <code>[mla_gallery]</code> to retrieve a simple list of thumbnails and links, but in which no other information about the items will be used and the taxonomy and meta data won't be needed. By not loading this information, you can save some time from the extra unnecessary SQL queries. 
+<a name="fields_parameter"></a>
+</p>
+<h4>Fields Parameter</h4>
+<p>
+If your application uses PHP code to access Media Library items you can use the <code>MLAShortcodes::mla_get_shortcode_attachments()</code> function to perform the data selection portion of the <code>[mla_gallery]</code> processing and return an array of Media Library items. In this case, you can add a <code>fields</code> parameter to simplify the query and return just the ID values for the selected items instead of complete objects. There are two possible values for this parameter:
+</p>
+<table>
+<tr>
+<td class="mla-doc-table-label">fields=ids</td>
+<td>Return an array of ID values.</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">fields='id=>parent'</td>
+<td>Return an array of stdClass objects with ID and post_parent properties.</td>
+</tr>
+</table>
+<p>
+&nbsp;
 <a name="debugging_output"></a>
 </p>
 <h4>Debugging Output</h4>
@@ -9129,6 +9148,10 @@ The MLA_DEBUG_LEVEL is also used to turn categories of debug messages on and off
 <tr>
 <td class="mla-doc-table-label">256, or 0x0100</td>
 <td>writes MLA-specific messages to the log for Media Manager Modal Window actions, e.g., "query_attachments".</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">512, or 0x0200</td>
+<td>writes MLA-specific messages to the log for Intermediate Size processing.</td>
 </tr>
 </table>
 <p>

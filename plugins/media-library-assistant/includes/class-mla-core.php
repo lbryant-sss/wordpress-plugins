@@ -30,7 +30,7 @@ class MLACore {
 	 *
 	 * @var	string
 	 */
-	const MLA_DEVELOPMENT_VERSION = '20250123';
+	const MLA_DEVELOPMENT_VERSION = '20250216';
 
 	/**
 	 * Slug for registering and enqueueing plugin style sheets (moved from class-mla-main.php)
@@ -139,6 +139,15 @@ class MLACore {
 	 * @var	integer
 	 */
 	const MLA_DEBUG_CATEGORY_MMMW = 0x00000100;
+
+	/**
+	 * Constant to log Intermediate Image Size activity
+	 *
+	 * @since 3.25
+	 *
+	 * @var	integer
+	 */
+	const MLA_DEBUG_CATEGORY_IMAGE_SIZE = 0x00000200;
 
 	/**
 	 * Slug for adding plugin submenu
@@ -1678,13 +1687,13 @@ class MLACore {
 	 * 
 	 * @param	string	$filter The name of the action/filter to be decoded
 	 *
-	 * @return	string	List of functions hooking the action/filter
+	 * @return	array	List of functions hooking the action/filter
 	 */
 	public static function mla_decode_wp_filter( $filter ) {
 		global $wp_filter;
 //error_log( __LINE__ . " mla_decode_wp_filter( $filter ) wp_filter = " . var_export( $wp_filter[ $filter ], true ), 0 );
 
-		$hook_list = '';
+		$hook_array = array();
 		if ( isset( $wp_filter[ $filter ] ) ) {
 			// WordPress 4.7+ uses WP_Hook, earlier versions use an array
 			if ( is_object( $wp_filter[ $filter ] ) ) {
@@ -1693,23 +1702,47 @@ class MLACore {
 				$callback_array = $wp_filter[ $filter ];
 			}
 
+//error_log( __LINE__ . " mla_decode_wp_filter( $filter ) callback_array = " . var_export( $callback_array, true ), 0 );
 			foreach ( $callback_array as $priority => $callbacks ) {
-				$hook_list .= "Priority: {$priority}\n";
 				foreach ( $callbacks as $tag => $reference ) {
-					$hook_list .= "{$tag} => ";
 					if ( is_string( $reference['function'] ) ) {
-						$hook_list .= $reference['function'] . "()\n";
+						$hook_array[ $priority ][ $tag ] = array( 'class' => '', 'function' => $reference['function'] );
 					} elseif ( is_array( $reference['function'] ) ) {
 						if ( is_object( $reference['function'][0] ) ) {
-							$hook_list .= get_class( $reference['function'][0] ) . '->';
+							$class = get_class( $reference['function'][0] ) . '->';
 						} else {
-							$hook_list .= $reference['function'][0] . '::';
+							$class = $reference['function'][0] . '::';
 						}
 
-						$hook_list .= $reference['function'][1] . "()\n";
+						$hook_array[ $priority ][ $tag ] = array( 'class' => $class, 'function' => $reference['function'][1] );
 					} else {
-						$hook_list .= 'unknown reference type: ' . gettype( $reference['function'] ) . "\n";
+						$hook_array[ $priority ][ $tag ] = array( 'class' => '', 'function' => 'unknown reference type: ' . gettype( $reference['function'] ) );
 					}
+				} // foreach tag
+			} // foreach proprity
+		} // filters exist
+
+//error_log( __LINE__ . " mla_decode_wp_filter( $filter ) hook_array = " . var_export( $hook_array, true ), 0 );
+		return $hook_array;
+	}
+
+	/**
+	 * Display the list of functions hooking an action/filter
+	 * 
+	 * @since 2.74
+	 * 
+	 * @param	string	$filter The name of the action/filter to be decoded
+	 *
+	 * @return	string	List of functions hooking the action/filter
+	 */
+	public static function mla_display_wp_filter( $filter ) {
+		$hook_array = self::mla_decode_wp_filter( $filter );
+		$hook_list = '';
+		if ( isset( $wp_filter[ $filter ] ) ) {
+			foreach ( $hook_array as $priority => $callbacks ) {
+				$hook_list .= "Priority: {$priority}\n";
+				foreach ( $callbacks as $tag => $reference ) {
+					$hook_list .= "{$tag} => " . $reference['class'] . $reference['function'];
 				} // foreach tag
 			} // foreach proprity
 		} // filters exist

@@ -616,7 +616,10 @@ class MLATemplate_Support {
 				),
 			),
 		);
+
+		MLATemplate_Support::mla_load_custom_templates();
 //error_log( __LINE__ . ' mla_localize_template_definitions MLATemplate_Support::$mla_template_definitions = ' . var_export( MLATemplate_Support::$mla_template_definitions, true ), 0 );
+//error_log( __LINE__ . ' mla_localize_template_definitions MLATemplate_Support::$mla_custom_templates = ' . var_export( MLATemplate_Support::$mla_custom_templates, true ), 0 );
 	}
 	
 	/**
@@ -1048,6 +1051,9 @@ class MLATemplate_Support {
 	}
 } // Class MLATemplate_Support
 
-add_action( 'init', 'MLATemplate_Support::mla_localize_template_definitions', 10 );
-MLATemplate_Support::mla_load_custom_templates();
+//error_log( __LINE__ . ' DEBUG: MLATemplate_Support $_REQUEST = ' . var_export( $_REQUEST, true ), 0 );
+if ( ! did_action('init') ) {
+	add_action( 'init', 'MLATemplate_Support::mla_localize_template_definitions', 10 );
+}
+// MLATemplate_Support::mla_load_custom_templates();
 ?>

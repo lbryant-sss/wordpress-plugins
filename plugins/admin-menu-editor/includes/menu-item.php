@@ -132,9 +132,9 @@ abstract class ameMenuItem {
 			'page_heading' => '',
 	        'position' => 0,
 	        'parent' => null,
+            'css_class' => '',
 
-	        //Fields that apply only to top level menus.
-	        'css_class' => 'menu-top',
+			//Fields that apply only to top level menus.
 	        'hookname' => '',
 	        'icon_url' => 'dashicons-admin-generic',
 	        'separator' => false,
@@ -193,7 +193,7 @@ abstract class ameMenuItem {
 			'access_level' => 'read',
 			'extra_capability' => '',
 			'page_title' => '',
-			'css_class' => 'menu-top',
+			'css_class' => '',
 			'hookname' => '',
 			'icon_url' => 'dashicons-admin-generic',
 			'open_in' => 'same_window',

@@ -439,6 +439,9 @@ class MLAGalleryDownloadChecklist {
 		if ( ! $allow_empty_gallery ) {
 			// Create a clean array of shortcode parameters
 			$attachments_attr = array_diff_key( $attr, $default_arguments );
+			unset( $attachments_attr['numberposts'] );
+			$attachments_attr['posts_per_page'] = 1;
+			$attachments_attr['fields'] = 'ids';
 			MLACore::mla_debug_add( __LINE__ . " MLAGalleryDownloadChecklist::mla_download_checklist_shortcode mla_get_shortcode_attachments( {$post->ID} ) \$attachments_attr = " . var_export( $attachments_attr, true ), self::MLA_DEBUG_CATEGORY );
 
 			$attachments = 	MLAShortcode_Support::mla_get_shortcode_attachments( $post->ID, $attachments_attr, false );

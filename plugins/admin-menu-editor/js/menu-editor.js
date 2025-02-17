@@ -4477,6 +4477,11 @@ function ameOnDomReady() {
 			});
 			item.defaults = $.extend(true, {}, itemTemplates.getDefaults(''));
 
+			//Top-level menus automatically get the "menu-top" class.
+			if (column.level <= 1) {
+				item['css_class'] = 'menu-top';
+			}
+
 			//Make it accessible only to the current actor if one is selected.
 			if (actorSelectorWidget.selectedActor !== null) {
 				denyAccessForAllExcept(item, actorSelectorWidget.selectedActor);

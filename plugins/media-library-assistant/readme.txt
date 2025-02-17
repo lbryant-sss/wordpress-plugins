@@ -2,8 +2,8 @@
 Contributors: dglingren
 Donate link: http://davidlingren.com/#donate
 Tags: categories, images, media, media library, tags
-Requires at least: 4.1
-Tested up to: 6.7.1
+Requires at least: 4.2
+Tested up to: 6.7.2
 Stable tag: 3.24
 Requires PHP: 5.3
 License: GPLv2 or later
@@ -202,6 +202,10 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 * New: A new example plugin, "MLA Gallery Download Checklist", supports downloading a ZIP archive of items selected by checking boxes in an `[mla_gallery]` display.
 * New: For items attached to a parent post/page, the `parent:` field-level prefix gives access to values assigned to the item's parent.
 * New: The `author:` field-level prefix gives access to values assigned to the item's author in the "users" and "usermeta" database tables.
+* Fix: When the Settings/Media Library Assistant Uploads feature is active, a defect that prevented the installation of Google Fonts has been corrected.
+* Fix: A defect in option deletion during plugin deletion has been corrected.
+* Fix: A defect in processing shortcode parameters with field-level datasources containing brackets, e.g., `{+size_bytes{medium}+}`, has been corrected.
+* Fix: Changed the timing of custom style and markup template loading to resolve WP 6.7 PHP Notice "Function _load_textdomain_just_in_time was called incorrectly". 
 * Fix: For the Media/Library Grid mode, an incompatibility with the Enhanced Media Library plugin has been eliminated.
 * Fix: An "Undefined variable" problem when accessing the `file_fize` field-level data source has been corrected.
 * Fix: Search box formatting in some Settings/Media Library Assistant tabs has been cleaned up.
