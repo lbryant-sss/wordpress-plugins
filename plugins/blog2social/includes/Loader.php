@@ -1650,6 +1650,49 @@ class B2S_Loader {
         }
     }
 
+    //PageFunktion
+    public function b2sRePost() {
+        if (B2S_Tools::showNotice() == false) {
+            wp_enqueue_script('B2SVALIDATEJS');
+            wp_enqueue_style('B2SFULLCALLENDARCSS');
+            wp_enqueue_style('B2SCALENDARCSS');
+            wp_enqueue_script('B2SFULLCALENDARMOMENTJS');
+            wp_enqueue_script('B2SFULLCALENDARJS');
+            wp_enqueue_script('B2SFULLCALENDARLOCALEJS');
+            wp_enqueue_script('B2SLIB');
+            wp_enqueue_style('B2SREPOSTCSS');
+            wp_enqueue_style('B2SCHOSENCSS');
+            wp_enqueue_script('B2SCHOSENJS');
+            wp_enqueue_style('B2SDATEPICKERCSS');
+            wp_enqueue_style('B2STIMEPICKERCSS');
+            wp_enqueue_style('B2SWYSIWYGCSS');
+            wp_enqueue_script('B2SWYSIWYGJS');
+            
+            if (substr(B2S_LANGUAGE, 0, 2) == 'de') {
+                wp_enqueue_script('B2SWYSIWYGLANGDEJS');
+            } else {
+                wp_enqueue_script('B2SWYSIWYGLANGENJS');
+            }
+            if (current_user_can('upload_files')) {
+                //Capability by Super Admin ,Administrator ,Editor ,Author
+                wp_enqueue_media();
+            }
+            wp_enqueue_script('B2SDATEPICKERJS');
+            wp_enqueue_script('B2SDATEPICKERDEJS');
+            wp_enqueue_script('B2SDATEPICKERENJS');
+            wp_enqueue_script('B2STIMEPICKERJS');
+            wp_enqueue_script('B2SEMOJIBUTTONJS');
+            wp_enqueue_script('B2SSHIPJS');
+            wp_enqueue_script('B2SREPOSTJS');
+            
+            
+            require_once( B2S_PLUGIN_DIR . 'views/b2s/repost.php');
+        } else {
+            require_once( B2S_PLUGIN_DIR . 'views/notice.php');
+        }
+    }
+
+    
 //PageFunktion
     public function b2sCurationDraft() {
         if (B2S_Tools::showNotice() == false) {
@@ -1673,45 +1716,6 @@ class B2S_Loader {
             wp_enqueue_style('B2SCHOSENCSS');
             wp_enqueue_script('B2SCHOSENJS');
             require_once( B2S_PLUGIN_DIR . 'views/b2s/autopost.php');
-        } else {
-            require_once( B2S_PLUGIN_DIR . 'views/notice.php');
-        }
-    }
-
-//PageFunktion
-    public function b2sRePost() {
-        if (B2S_Tools::showNotice() == false) {
-            wp_enqueue_script('B2SVALIDATEJS');
-            wp_enqueue_style('B2SREPOSTCSS');
-            wp_enqueue_script('B2SREPOSTJS');
-            wp_enqueue_style('B2SCHOSENCSS');
-            wp_enqueue_script('B2SCHOSENJS');
-            wp_enqueue_style('B2SFULLCALLENDARCSS');
-            wp_enqueue_style('B2SCALENDARCSS');
-            wp_enqueue_script('B2SFULLCALENDARMOMENTJS');
-            wp_enqueue_script('B2SFULLCALENDARJS');
-            wp_enqueue_script('B2SFULLCALENDARLOCALEJS');
-            wp_enqueue_script('B2SLIB');
-            wp_enqueue_style('B2SDATEPICKERCSS');
-            wp_enqueue_style('B2STIMEPICKERCSS');
-            wp_enqueue_script('B2SDATEPICKERJS');
-            wp_enqueue_script('B2SDATEPICKERDEJS');
-            wp_enqueue_script('B2SDATEPICKERENJS');
-            wp_enqueue_script('B2STIMEPICKERJS');
-            wp_enqueue_style('B2SWYSIWYGCSS');
-            wp_enqueue_script('B2SWYSIWYGJS');
-            wp_enqueue_script('B2SEMOJIBUTTONJS');
-            wp_enqueue_script('B2SSHIPJS');
-            if (substr(B2S_LANGUAGE, 0, 2) == 'de') {
-                wp_enqueue_script('B2SWYSIWYGLANGDEJS');
-            } else {
-                wp_enqueue_script('B2SWYSIWYGLANGENJS');
-            }
-            if (current_user_can('upload_files')) {
-                //Capability by Super Admin ,Administrator ,Editor ,Author
-                wp_enqueue_media();
-            }
-            require_once( B2S_PLUGIN_DIR . 'views/b2s/repost.php');
         } else {
             require_once( B2S_PLUGIN_DIR . 'views/notice.php');
         }

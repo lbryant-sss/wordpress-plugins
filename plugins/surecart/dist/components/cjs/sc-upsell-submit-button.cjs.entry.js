@@ -3,12 +3,12 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-require('./watchers-b16512f0.js');
+require('./watchers-72dff18a.js');
 const store = require('./store-ce062aec.js');
 const mutations$1 = require('./mutations-11c8f9a8.js');
 const watchers = require('./watchers-db03ec4e.js');
 const mutations = require('./mutations-ecc3d722.js');
-const getters = require('./getters-743c02a3.js');
+const getters = require('./getters-9cb62ad2.js');
 require('./add-query-args-49dcb630.js');
 require('./utils-2e91d46c.js');
 require('./index-bcdafe6e.js');

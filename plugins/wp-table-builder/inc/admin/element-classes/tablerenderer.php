@@ -58,29 +58,68 @@ class TableRenderer
             return '';
         }
 
-        $dom = new \DOMDocument('1.0', 'UTF-8');
-        $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
+        $wrapper = '<div>' . $html . '</div>';
 
-        @$dom->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        libxml_use_internal_errors(true);
+
+        $dom = new \DOMDocument();
+        $dom->encoding = 'UTF-8';
+        $dom->loadHTML(mb_convert_encoding($wrapper, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
         $xpath = new \DOMXPath($dom);
-        $elements = $xpath->query('//*');
 
-        foreach ($elements as $element) {
-            foreach ($element->attributes as $attr) {
-                if (strpos($attr->name, 'on') === 0) {
-                    $element->removeAttribute($attr->name);
+
+        $dangerousTags = ['script', 'object', 'embed', 'link', 'style', 'iframe'];
+        $tagsQuery = '//' . implode(' | //', $dangerousTags);
+
+        foreach ($xpath->query($tagsQuery) as $node) {
+            if ($node->nodeName === 'iframe') {
+                $src = $node->getAttribute('src');
+                if (!preg_match('#^https://(www\.)?youtube\.com/embed/[\w-]+$#', $src)) {
+                    $node->parentNode->removeChild($node);
+                }
+            } else {
+                $node->parentNode->removeChild($node);
+            }
+        }
+
+
+        foreach ($xpath->query('//*[@*]') as $node) {
+            foreach (iterator_to_array($node->attributes) as $attr) {
+                if (self::isDangerousAttribute($attr)) {
+                    $node->removeAttribute($attr->nodeName);
                 }
             }
         }
 
-        $script_tags = $dom->getElementsByTagName('script');
-        while ($script_tags->length > 0) {
-            $script_tags->item(0)->parentNode->removeChild($script_tags->item(0));
+        $body = $dom->getElementsByTagName('div')->item(0);
+        $innerHTML = '';
+        foreach ($body->childNodes as $child) {
+            $innerHTML .= $dom->saveHTML($child);
         }
 
-        return $dom->saveHTML();
+        libxml_clear_errors();
+
+        return $innerHTML;
     }
+
+
+    private static function isDangerousAttribute($attr)
+    {
+        $name = strtolower($attr->nodeName);
+        $value = strtolower($attr->nodeValue);
+        return (
+            strpos($name, 'on') === 0 ||
+            strpos($value, 'javascript:') !== false
+            // || ($name === 'style' && (
+            //     strpos($value, 'expression(') !== false ||
+            //     strpos($value, 'javascript:') !== false
+            // ))
+        );
+    }
+
+
+
 
     public static function render($body, $tblId)
     {
@@ -168,7 +207,7 @@ class TableRenderer
             foreach ($row['cells'] as $cell) {
                 $cells .= self::render_cell($cell);
             }
-            $classNames = $row['props']['highlighted'] ? 'wptb-row-highlighted-' . $row['props']['highlighted'] : '';
+            $classNames = isset($row['props']['highlighted']) ? 'wptb-row-highlighted-' . $row['props']['highlighted'] : '';
             $attrs = "";
             if ($props['stickyTopRow'] && $i == 0) {
                 $attrs = 'data-wptb-sticky-row="true"';
@@ -254,7 +293,7 @@ class TableRenderer
             "data-wptb-own-bg-color" => $props['ownBgColor'] ?? false,
         ]);
 
-        $classNames = $props['highlighted'] ? 'wptb-col-highlighted-' . $props['highlighted'] . ' wptb-highlighted ' : '';
+        $classNames = isset($props['highlighted']) ? 'wptb-col-highlighted-' . $props['highlighted'] . ' wptb-highlighted ' : '';
         $blocks = "";
 
         $isFirst = true;

@@ -10,30 +10,27 @@ use TidioLiveChat\Admin\Notice\DismissibleNoticeService;
 use TidioLiveChat\Admin\Notice\Exception\NoticeNameIsNotAllowedException;
 use TidioLiveChat\IntegrationState;
 use TidioLiveChat\Translation\ErrorTranslator;
-use TidioLiveChat\Translation\I18n;
 use TidioLiveChat\Utils\QueryParameters;
-use TidioLiveChat\WooCommerceSdk\WooCommerceIntegrationService;
 
 class AdminNotice
 {
-    /**
-     * @var ErrorTranslator
-     */
+    /** @var ErrorTranslator */
     private $errorTranslator;
-
-    /**
-     * @var DismissibleNoticeService
-     */
+    /** @var DismissibleNoticeService */
     private $dismissibleNoticeService;
+    /** @var IntegrationState */
+    private $integrationState;
 
     /**
      * @param ErrorTranslator $errorTranslator
      * @param DismissibleNoticeService $dismissibleNoticeService
+     * @param IntegrationState $integrationState
      */
-    public function __construct($errorTranslator, $dismissibleNoticeService)
+    public function __construct($errorTranslator, $dismissibleNoticeService, $integrationState)
     {
         $this->errorTranslator = $errorTranslator;
         $this->dismissibleNoticeService = $dismissibleNoticeService;
+        $this->integrationState = $integrationState;
     }
 
     public function load()
@@ -55,6 +52,10 @@ class AdminNotice
 
     public function addLyroAIChatbotNotice()
     {
+        if (!$this->integrationState->isPluginIntegrated()) {
+            return;
+        }
+
         $this->displayDismissibleNotice(
             __DIR__ . '/Notice/Views/LyroAIChatbotNotice.php',
             DismissibleNoticeService::LYRO_AI_CHATBOT_NOTICE

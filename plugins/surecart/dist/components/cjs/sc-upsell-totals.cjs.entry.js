@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-require('./watchers-b16512f0.js');
+require('./watchers-72dff18a.js');
 const store = require('./store-ce062aec.js');
 require('./watchers-db03ec4e.js');
 require('./index-bcdafe6e.js');
@@ -13,7 +13,7 @@ require('./google-59d23803.js');
 require('./utils-2e91d46c.js');
 require('./util-b877b2bd.js');
 require('./index-fb76df07.js');
-require('./getters-743c02a3.js');
+require('./getters-9cb62ad2.js');
 require('./mutations-ecc3d722.js');
 require('./fetch-aaab7645.js');
 require('./add-query-args-49dcb630.js');

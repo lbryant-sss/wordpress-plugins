@@ -487,14 +487,22 @@ class IWP_MMB_Backup_Multicall extends IWP_MMB_Core
         if(!empty($responseParams['max_allowed_packet'])){
         	$msqld_max_allowed_packet = $responseParams['max_allowed_packet'];
         }
+		$host_string = '--host="' . DB_HOST . '"';
+		$parsed_db = $wpdb->parse_db_host(DB_HOST);
+		if (!empty($parsed_db[0])) {
+			$host_string = '--host="' . $parsed_db[0] . '"';
+			if(!empty($parsed_db[1])){
+				$host_string .= ' --port=' . $parsed_db[1];
+			}
+		}
 
-        $command = $brace . $paths['mysqldump'] . $brace . ' --force --host="' . DB_HOST . '" --user="' . DB_USER . '" --password="' . DB_PASSWORD . '" --max_allowed_packet='.$msqld_max_allowed_packet.' --net_buffer_length=1M --skip-comments --skip-set-charset --allow-keywords --dump-date --add-drop-table --skip-lock-tables --extended-insert "' . DB_NAME . '" "'.$wp_tables.'" > ' . $brace . $file . $brace;
+        $command = $brace . $paths['mysqldump'] . $brace . ' --force '.$host_string.' --user="' . DB_USER . '" --password="' . DB_PASSWORD . '" --max_allowed_packet='.$msqld_max_allowed_packet.' --net_buffer_length=1M --skip-comments --skip-set-charset --allow-keywords --dump-date --add-drop-table --skip-lock-tables --extended-insert "' . DB_NAME . '" "'.$wp_tables.'" > ' . $brace . $file . $brace;
 
 		iwp_mmb_print_flush('DB DUMP CMD: Start');
         ob_start();
         update_option('iwp_multical_db_dump_flag', 1);
         if (!empty($structure_only_table)) {
-        	$structure_command = $brace . $paths['mysqldump'] . $brace . ' --force --host="' . DB_HOST . '" --user="' . DB_USER . '" --password="' . DB_PASSWORD . '" --add-drop-table --skip-lock-tables --no-data "' . DB_NAME . '" "'.$structure_only_table.'" >> ' . $brace . $file . $brace;
+        	$structure_command = $brace . $paths['mysqldump'] . $brace . ' --force '.$host_string.' --user="' . DB_USER . '" --password="' . DB_PASSWORD . '" --add-drop-table --skip-lock-tables --no-data "' . DB_NAME . '" "'.$structure_only_table.'" >> ' . $brace . $file . $brace;
         	// $result = $this->iwp_mmb_exec($structure_command);
         	$command.=' && '.$structure_command;
 
@@ -643,8 +651,16 @@ class IWP_MMB_Backup_Multicall extends IWP_MMB_Core
 			$db_folder = IWP_DB_DIR . '/';
 			$temp_sql_file_name = "iwp_temp.sql";
 			$file   = $db_folder . $temp_sql_file_name;
+			$host_string = '--host="' . DB_HOST . '"';
+			$parsed_db = $wpdb->parse_db_host(DB_HOST);
+			if (!empty($parsed_db[0])) {
+				$host_string = '--host="' . $parsed_db[0] . '"';
+				if(!empty($parsed_db[1])){
+					$host_string .= ' --port=' . $parsed_db[1];
+				}
+			}
 			foreach ($bin as $key => $value) {
-				$command = $brace . $value . $brace . ' --force --host="' . DB_HOST . '" --user="' . DB_USER . '" --password="' . DB_PASSWORD . '" --add-drop-table --skip-lock-tables --extended-insert=FALSE "' . DB_NAME . '" ""'.$wpdb->base_prefix.'options"" > ' . $brace . $file . $brace;
+				$command = $brace . $value . $brace . ' --force '.$host_string.' --user="' . DB_USER . '" --password="' . DB_PASSWORD . '" --add-drop-table --skip-lock-tables --extended-insert=FALSE "' . DB_NAME . '" ""'.$wpdb->base_prefix.'options"" > ' . $brace . $file . $brace;
 				$result = $this->iwp_mmb_exec($command);
 				if (!$result) { 
 				   	continue;
@@ -1042,7 +1058,7 @@ class IWP_MMB_Backup_Multicall extends IWP_MMB_Core
 			$this_prefix = $wpdb->esc_like($wpdb->base_prefix);
 			$tables = $wpdb->get_results('SHOW TABLES LIKE "'.$this_prefix.'%"', ARRAY_N);
 			
-		$max_row_limit = 100;
+		$max_row_limit = 10;
 		if(defined('IWP_PHP_DB_ROWS') && (is_int(IWP_PHP_DB_ROWS) || is_string(IWP_PHP_DB_ROWS))){
 			if(IWP_PHP_DB_ROWS > $max_row_limit ){
 				$max_row_limit = IWP_PHP_DB_ROWS;

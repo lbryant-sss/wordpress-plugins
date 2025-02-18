@@ -16,7 +16,7 @@ use TidioLiveChat\Widget\WidgetLoader;
 class TidioLiveChat
 {
     const TIDIO_PLUGIN_TECHNICAL_NAME = 'tidio-live-chat';
-    const TIDIO_PLUGIN_NAME = 'Tidio Live Chat & Chatbots';
+    const TIDIO_PLUGIN_NAME = 'Tidio Live Chat & AI Agent';
 
     /**
      * @var Container

@@ -63,7 +63,7 @@ const ScOrderSummary = class {
         return this.orderSummaryText || wp.i18n.__('Summary', 'surecart');
     }
     renderHeader() {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
         // busy state
         if ((formBusy() || formLoading()) && !((_c = (_b = (_a = state.checkout) === null || _a === void 0 ? void 0 : _a.line_items) === null || _b === void 0 ? void 0 : _b.data) === null || _c === void 0 ? void 0 : _c.length)) {
             return (h("sc-line-item", null, h("sc-skeleton", { slot: "title", style: { width: '120px', display: 'inline-block' } }), h("sc-skeleton", { slot: "price", style: { 'width': '70px', 'display': 'inline-block', '--border-radius': '6px' } }), h("sc-skeleton", { slot: "currency", style: { width: '30px', display: 'inline-block' } })));
@@ -73,7 +73,7 @@ const ScOrderSummary = class {
                     this.handleClick(e);
                     speak(wp.i18n.sprintf(wp.i18n.__('Order Summary %s', 'surecart'), this.collapsed ? wp.i18n.__('collapsed', 'surecart') : wp.i18n.__('expanded', 'surecart')), 'assertive');
                 }
-            } }, this.getSummaryText(), h("svg", { xmlns: "http://www.w3.org/2000/svg", class: "collapse-link__icon", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, h("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M19 9l-7 7-7-7" }))), h("span", { slot: "description" }, h("slot", { name: "description" })), ((_d = state.checkout) === null || _d === void 0 ? void 0 : _d.total_amount) !== ((_e = state.checkout) === null || _e === void 0 ? void 0 : _e.amount_due) ? (h("span", { slot: "price", class: { 'price': true, 'price--collapsed': this.collapsed } }, h("sc-format-number", { class: "total-price", type: "currency", currency: (_f = state.checkout) === null || _f === void 0 ? void 0 : _f.currency, value: (_g = state.checkout) === null || _g === void 0 ? void 0 : _g.amount_due }))) : (h("span", { slot: "price", class: { 'price': true, 'price--collapsed': this.collapsed } }, !!((_h = state.checkout) === null || _h === void 0 ? void 0 : _h.total_savings_amount) && (h("sc-format-number", { class: "total-price scratch-price", type: "currency", value: -((_j = state.checkout) === null || _j === void 0 ? void 0 : _j.total_savings_amount) + ((_k = state.checkout) === null || _k === void 0 ? void 0 : _k.total_amount), currency: ((_l = state.checkout) === null || _l === void 0 ? void 0 : _l.currency) || 'usd' })), h("sc-total", { class: "total-price", total: 'total', order: state.checkout })))));
+            } }, this.getSummaryText(), h("svg", { xmlns: "http://www.w3.org/2000/svg", class: "collapse-link__icon", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, h("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M19 9l-7 7-7-7" }))), h("span", { slot: "description" }, h("slot", { name: "description" })), ((_d = state.checkout) === null || _d === void 0 ? void 0 : _d.total_amount) !== ((_e = state.checkout) === null || _e === void 0 ? void 0 : _e.amount_due) ? (h("span", { slot: "price", class: { 'price': true, 'price--collapsed': this.collapsed } }, h("sc-format-number", { class: "total-price", type: "currency", currency: (_f = state.checkout) === null || _f === void 0 ? void 0 : _f.currency, value: (_g = state.checkout) === null || _g === void 0 ? void 0 : _g.amount_due }))) : (h("span", { slot: "price", class: { 'price': true, 'price--collapsed': this.collapsed } }, !!((_h = state.checkout) === null || _h === void 0 ? void 0 : _h.total_savings_amount) && (h("sc-format-number", { class: "total-price scratch-price", type: "currency", value: -((_j = state.checkout) === null || _j === void 0 ? void 0 : _j.total_savings_amount), currency: ((_k = state.checkout) === null || _k === void 0 ? void 0 : _k.currency) || 'usd' })), h("sc-total", { class: "total-price", total: 'total', order: state.checkout })))));
     }
     async handleOpenChange() {
         if (!this.collapsed) {
@@ -98,10 +98,10 @@ const ScOrderSummary = class {
         }
     }
     render() {
-        return (h("div", { key: '2ae437329482f57d435583148a674b458dd3ef49', class: { 'summary': true, 'summary--open': !this.collapsed } }, this.collapsible && this.renderHeader(), h("div", { key: 'd564d8c19d31812788c1f109f256f3a53e217b7a', ref: el => (this.body = el), class: {
+        return (h("div", { key: '2c0c5e338c855a01006fa44561082adac91478de', class: { 'summary': true, 'summary--open': !this.collapsed } }, this.collapsible && this.renderHeader(), h("div", { key: 'c3de64df07fe290a048ced8308e069b162170c46', ref: el => (this.body = el), class: {
                 'summary__content': true,
                 'summary__content--empty': this.empty() && !formBusy(),
-            } }, h("slot", { key: '28814560b628989d65877253c603d16a064e1c26' })), this.empty() && !formBusy() && h("p", { key: 'fcc3be315d9b0a5f3e297de3926c912460fa4d26', class: "empty" }, wp.i18n.__('Your cart is empty.', 'surecart'))));
+            } }, h("slot", { key: 'f07c171e8a2a1fd1e630761c7e82df810ec2ec56' })), this.empty() && !formBusy() && h("p", { key: 'd311048ccdfc85ff1215e1567f93d094355c63f5', class: "empty" }, wp.i18n.__('Your cart is empty.', 'surecart'))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

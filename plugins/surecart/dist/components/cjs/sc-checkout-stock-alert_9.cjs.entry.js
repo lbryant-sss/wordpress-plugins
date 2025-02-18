@@ -760,7 +760,7 @@ const ScSessionProvider = class {
                 id: (_e = mutations.state === null || mutations.state === void 0 ? void 0 : mutations.state.checkout) === null || _e === void 0 ? void 0 : _e.id,
                 query: {
                     ...((watchers.state === null || watchers.state === void 0 ? void 0 : watchers.state.method) ? { payment_method_type: watchers.state === null || watchers.state === void 0 ? void 0 : watchers.state.method } : {}),
-                    external_url: addQueryArgs.addQueryArgs(window.location.href, {
+                    return_url: addQueryArgs.addQueryArgs(window.location.href, {
                         ...(((_f = mutations.state === null || mutations.state === void 0 ? void 0 : mutations.state.checkout) === null || _f === void 0 ? void 0 : _f.id) ? { checkout_id: (_g = mutations.state === null || mutations.state === void 0 ? void 0 : mutations.state.checkout) === null || _g === void 0 ? void 0 : _g.id } : {}),
                         is_surecart_payment_redirect: true,
                     }),
@@ -1187,7 +1187,7 @@ const ScSessionProvider = class {
         }
     }
     render() {
-        return (index.h("sc-line-items-provider", { key: '12c45a4c5e4c0b74f141c26ba1da7ef9d87eb1b7', order: mutations.state === null || mutations.state === void 0 ? void 0 : mutations.state.checkout, onScUpdateLineItems: e => this.loadUpdate({ line_items: e.detail }) }, index.h("slot", { key: 'cc2c0d636c6a70c537913c7f2095ffa93642204d' })));
+        return (index.h("sc-line-items-provider", { key: '0a7984960c0c8dead92a33df1f710dea3f6d05bd', order: mutations.state === null || mutations.state === void 0 ? void 0 : mutations.state.checkout, onScUpdateLineItems: e => this.loadUpdate({ line_items: e.detail }) }, index.h("slot", { key: '4d99d1933eab656fea62abd856bf70bfd3f59049' })));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

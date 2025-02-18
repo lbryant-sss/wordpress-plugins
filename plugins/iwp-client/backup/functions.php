@@ -93,7 +93,7 @@ if (!function_exists('iwp_mmb_build_mysqldump_list')) {
 			$drive_string = implode(',', $directories);
 			return $drive_string;
 			
-		} else return "/usr/bin/mysqldump,/bin/mysqldump,/usr/local/bin/mysqldump,/usr/sfw/bin/mysqldump,/usr/xdg4/bin/mysqldump,/opt/bin/mysqldump,/usr/local/opt/mysql@5.7/bin/mysqldump";
+		} else return "mysqldump,/usr/bin/mysqldump,/bin/mysqldump,/usr/local/bin/mysqldump,/usr/sfw/bin/mysqldump,/usr/xdg4/bin/mysqldump,/opt/bin/mysqldump,/usr/local/opt/mysql@5.7/bin/mysqldump";
 	}
 }
 

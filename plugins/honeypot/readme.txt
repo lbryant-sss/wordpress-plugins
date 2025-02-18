@@ -2,9 +2,9 @@
 Contributors: dnesscarkey
 Donate link: https://www.patreon.com/wp_armour
 Tags: anti spam, spam protection, comment spam , contact form spam, akismet
-Requires at least: 3.0
-Tested up to: 6.7.1
-Stable tag: 2.2.06
+Requires at least: 5.0
+Tested up to: 6.7.2
+Stable tag: 2.2.07
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,8 @@ This plugins block spam submissions using honeypot anti spam technic. No Captcha
 * Avia Enfold Theme (<a href="https://kriesi.at/themes/enfold">kriesi.at/themes/enfold</a>)
 * BuddyPress (<a href="https://buddypress.org">buddypress.org</a>)
 * BuddyBoss (<a href="https://www.buddyboss.com">buddyboss.com</a>)
+* Sure Forms (<a href="https://wordpress.org/plugins/sureforms/">wordpress.org/plugins/sureforms</a>)
+* Everest Forms (<a href="https://wordpress.org/plugins/everest-forms/">wordpress.org/plugins/everest-forms</a>)
 
 You can get the WP Armour - Anti Spam Extended from <a title="WP Armour Extended - Anti Spam" href="https://dineshkarki.com.np/buy-wp-armour-extended">here</a>
 
@@ -141,6 +143,11 @@ With WP Armour - Honeypot Anti Spam plugin it is No. But if you want you can use
 1. Screenshot #11. Anti Spam for Fluent Forms
 
 == Changelog ==
+
+= = 2.2.07 =
+
+* Added support for Elementor Login Form
+* Anti spam support for Lost Password ( Reset Password )
 
 = = 2.2.06 =
 

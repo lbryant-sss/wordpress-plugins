@@ -927,7 +927,9 @@ class IWP_MMB_Installer extends IWP_MMB_Core
                         if (strlen($theme_data->Name) === 0 || strlen($theme_data->Version) === 0) {
                             continue;
                         }
-
+                        if(!isset($current->response[$current_themes])){
+                            $current->response[$current_themes] = array();
+                        }
                         $current->response[$current_themes]['name']        = $theme_data->Name;
                         $current->response[$current_themes]['old_version'] = $theme_data->Version;
                         $current->response[$current_themes]['theme_tmp']   = $theme_data->Stylesheet;

@@ -71,9 +71,19 @@ curSource[0] = ajaxurl + '?action=b2s_get_calendar_events&filter_network_auth=al
 var newSource = new Array();
 
 jQuery(document).ready(function () {
-    renderCalender();
+    if (jQuery("#b2sUserVersion").val() == 0) {
+        jQuery('.b2s-re-post-show-calender-btn').hide();
+        jQuery('.b2s-re-post-show-list-btn').hide();
+    }
     jQuery(".b2s-loading-area").hide();
 });
+
+
+
+jQuery(document).on('click', '.b2s-re-post-show-calender-btn', function () {
+    renderCalender();
+});
+
 
 jQuery(document).on('click', '.b2s-re-post-settings-header', function () {
     if (jQuery('.b2s-re-post-settings-area').is(':visible')) {
@@ -158,7 +168,7 @@ jQuery(document).on('click', '.b2s-re-post-submit-btn', function () {
                     }
                     //Network Condition
                     jQuery('#current_network_open_sched_post_quota').html(data.currentNetwork45OpenSchedLimit);
-                    
+
 
                 }
                 renderCalender();
@@ -357,7 +367,7 @@ jQuery(document).on('click', '.b2s-sched-delete-confirm-multi-btn', function () 
                         jQuery('.b2s-re-post-submit-btn').removeAttr('disabled');
                     }
                 }
-                renderCalender();
+                refreshCalender();
             } else {
                 if (data.error == 'nonce') {
                     jQuery('.b2s-nonce-check-fail').show();
@@ -413,7 +423,7 @@ jQuery(document).on('click', '.b2s-sched-delete-confirm-btn', function () {
                     }
                 }
                 jQuery('.b2s-post-remove-success').show();
-                
+
                 //Licence Condition
                 if (jQuery("#b2sUserVersion").val() > 0) {
                     jQuery('#current_licence_open_sched_post_quota').html(data.currentOpenSchedLimit);
@@ -1089,5 +1099,4 @@ function renderCalender() {
         }
 
     });
-    refreshCalender();
 }

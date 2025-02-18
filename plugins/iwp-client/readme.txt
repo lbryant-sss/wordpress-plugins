@@ -2,8 +2,8 @@
 Contributors: infinitewp, amritanandh, rajkuppus
 Tags: admin, administration, amazon, api, authentication, automatic, dashboard, dropbox, events, integration, manage, multisite, multiple, notification, performance, s3, security, seo, stats, tracking, infinitewp, updates, backup, restore, iwp, infinite
 Requires at least: 3.1
-Tested up to: 6.7.1
-Stable tag: 1.13.1
+Tested up to: 6.7.2
+Stable tag: 1.13.2
 
 Install this plugin on unlimited sites and manage them all from a central dashboard.
 This plugin communicates with your InfiniteWP Admin Panel.
@@ -47,6 +47,14 @@ Credits: [Vladimir Prelovac](http://prelovac.com/vladimir) for his worker plugin
 5. One-click updates
 
 == Changelog ==
+
+= 1.13.2 - Feb 17th 2025 =
+* Fix: MySQL DB Dump was not functioning when the database host was specified as localhost:3306
+* Fix: Added MySQL DB Dump path configuration support for Flex servers.
+* Fix: Old Dropbox backups were not being deleted as per the retained limit settings.
+* Fix: Fixed an intermittent issue where Dropbox backups failed to upload.
+* Fix: Addressed a PHP fatal error: Uncaught ValueError: base and exponent overflow in iwp-client/lib/phpseclib/phpseclib/phpseclib/Math/BigInteger.php.
+* Fix: Addressed a PHP fatal error:Uncaught TypeError: Cannot access offset of type string on string in /iwp-client/installer.class.php:931
 
 = 1.13.1 - Dec 5th 2024 =
 * Fix: Open Admin failed when the Duo Universal plugin was active.

@@ -4,7 +4,7 @@ Tags: SEO, Google Search Console, XML Sitemap, meta description, schema
 Tested up to: 6.7.1
 Requires at least: 5.3
 Requires PHP: 7.0
-Stable tag: 4.7.9
+Stable tag: 4.7.9.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -226,6 +226,10 @@ AIOSEO&reg; is a registered trademark of Semper Plugins LLC. When writing about 
 
 == Changelog ==
 
+**New in Version 4.7.9.1**
+
+* Updated: Removed the Search Statistics menu item under Dashboard menu.
+
 **New in Version 4.7.9**
 
 * Updated: Schema product suggestedMinAge/suggestedMaxAge properties to conform with Google's structured data merchant listing requirements.
@@ -419,6 +423,6 @@ Additionally, AIOSEO can also provide you with data on the most frequently used 
 
 == Upgrade Notice ==
 
-= 4.7.9 =
+= 4.7.9.1 =
 
 This update adds major improvements and bug fixes.

@@ -194,7 +194,8 @@ class Container
     {
         return new AdminNotice(
             $this->get(ErrorTranslator::class),
-            $this->get(DismissibleNoticeService::class)
+            $this->get(DismissibleNoticeService::class),
+            $this->get(IntegrationState::class)
         );
     }
 

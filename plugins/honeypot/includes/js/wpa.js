@@ -51,11 +51,16 @@ function wpa_add_honeypot_field(){
 	    'form.cart',                           // WooCommerce Cart
 	    'form#learn-press-checkout-form',      // LearnPress Checkout Form
 
+	    'form.wpa_form',						   // Generic Class
+	    '.wpa_form form',					   // Generic Class	
+
 	    // Login forms
 	    'form.spectra-pro-login-form',         // SPECTRA LOGIN FORM
 	    'form#loginform',                      // Default Login Form
 	    'form#edd_login_form',                 // EDD LOGIN FORM
 	    'form.uwp-login-form',                 // USER WP LOGIN FORM
+	    '.et_pb_login_form form',			   // For Elementor login form
+	    'form.eael-login-form',				   // essential-addons login form	
 
 	    // Comment forms
 	    'form#commentform',                    // WP Comment with ID

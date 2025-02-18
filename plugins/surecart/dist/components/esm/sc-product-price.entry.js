@@ -1,6 +1,6 @@
 import { r as registerInstance, h, H as Host } from './index-745b6bec.js';
 import { s as state } from './watchers-fbf07f32.js';
-import { a as getDiscountedAmount, b as getScratchAmount } from './getters-5ca0dc55.js';
+import { a as getDiscountedAmount, b as getScratchAmount } from './getters-a5a83bea.js';
 import './index-06061d4e.js';
 import './google-dd89f242.js';
 import './currency-a0c9bff4.js';

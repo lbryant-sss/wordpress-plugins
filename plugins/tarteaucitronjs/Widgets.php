@@ -9,8 +9,8 @@ if(!class_exists('tarteaucitron_Widget'))
         public function __construct() {
             parent::__construct(
                 'tarteaucitron_widget',
-                'tarteaucitron.js',
-                array( 'description' => __( 'Add services', 'tarteaucitronjs' ), )
+                'tarteaucitron.io',
+                array( 'description' => 'tarteaucitron.io', )
             );
         }
   
@@ -47,14 +47,12 @@ if(!class_exists('tarteaucitron_Widget'))
 
                 echo tarteaucitron_post('id_title='.$this->get_field_id( 'title' ).'&id_submit='.$this->get_field_id( 'savewidget' ).'&id='.$id_uniq.'&getForm=2');
 
-              echo '</div>
-              <img id="img_'.$id_uniq.'" src="//tarteaucitron.io/img/services/000.png" style="max-width:100%" alt="" />';
+              echo '</div>';
 
                 
             // Affichage du service
             } else {
-                echo '<div id="wid_'.$id_uniq.'"></div>
-                <img id="img_'.$id_uniq.'" src="//tarteaucitron.io/img/services/'.$img.'.png" width="100%" alt="" />';
+                echo '<div id="wid_'.$id_uniq.'"></div>';
             }
 
             echo '<input class="widefat" id="'.$this->get_field_id( 'title' ).'" name="'.$this->get_field_name( 'title' ).'" type="hidden" value="'.esc_attr( $title ).'" />
@@ -108,7 +106,7 @@ add_action( 'sidebar_admin_setup', 'tarteaucitron_register' );
 
 // Initialisation du widget
 add_action('widgets_init', function() {
-  if(get_option('tarteaucitronUUID', '') != '') {
+  if(get_option('tarteaucitronToken', '') != '' && get_option('tarteaucitronShowWidget', 'visible') == 'visible') {
     register_widget('tarteaucitron_Widget');
   }
 });

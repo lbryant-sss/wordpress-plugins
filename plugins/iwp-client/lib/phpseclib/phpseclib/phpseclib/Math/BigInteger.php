@@ -3047,7 +3047,16 @@ class Math_BigInteger
                     $two = gmp_init('2');
                 }
 
-                $temp->value = gmp_mul($this->value, gmp_pow($two, $shift));
+                try {
+                    $temp->value = gmp_mul($this->value, gmp_pow($two, $shift));
+                    if (!is_object($temp->value)) {
+                        $modulus = gmp_init('1000000007');
+                        $temp->value = gmp_mul($this->value, gmp_powm($two, $shift, $modulus));
+                    }
+                } catch (\Throwable $th) {
+                    $modulus = gmp_init('1000000007');
+                    $temp->value = gmp_mul($this->value, gmp_powm($two, $shift, $modulus));
+                }
 
                 break;
             case MATH_BIGINTEGER_MODE_BCMATH:

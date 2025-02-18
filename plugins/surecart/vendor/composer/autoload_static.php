@@ -1114,6 +1114,7 @@ class ComposerStaticInitde6168bc7e17873548173e515fd8b9ef
         'SureCart\\WordPress\\Pages\\PageSeeder' => __DIR__ . '/../..' . '/app/src/WordPress/Pages/PageSeeder.php',
         'SureCart\\WordPress\\Pages\\PageService' => __DIR__ . '/../..' . '/app/src/WordPress/Pages/PageService.php',
         'SureCart\\WordPress\\Pages\\PageServiceProvider' => __DIR__ . '/../..' . '/app/src/WordPress/Pages/PageServiceProvider.php',
+        'SureCart\\WordPress\\PluginActionLinksService' => __DIR__ . '/../..' . '/app/src/WordPress/PluginActionLinksService.php',
         'SureCart\\WordPress\\PluginService' => __DIR__ . '/../..' . '/app/src/WordPress/PluginService.php',
         'SureCart\\WordPress\\PluginServiceProvider' => __DIR__ . '/../..' . '/app/src/WordPress/PluginServiceProvider.php',
         'SureCart\\WordPress\\PostTypes\\CartPostTypeService' => __DIR__ . '/../..' . '/app/src/WordPress/PostTypes/CartPostTypeService.php',

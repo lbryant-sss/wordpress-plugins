@@ -62,7 +62,7 @@ const ScMollieAddMethod = class {
             this.loading = true;
             const response = (await fetch.apiFetch({
                 path: addQueryArgs.addQueryArgs(`surecart/v1/processors/${this.processorId}/payment_method_types`, {
-                    amount: 2500,
+                    amount: 0,
                     country: this.country,
                     currency: this.currency,
                     reusable: true,

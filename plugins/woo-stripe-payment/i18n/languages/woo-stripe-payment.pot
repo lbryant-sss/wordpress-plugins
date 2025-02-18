@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Payment Plugins for Stripe WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Payment Plugins for Stripe WooCommerce 3.3.81\n"
+"Project-Id-Version: Payment Plugins for Stripe WooCommerce 3.3.82\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-stripe-payment\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-11T21:25:46+00:00\n"
+"POT-Creation-Date: 2025-02-17T18:24:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: woo-stripe-payment\n"
@@ -2077,6 +2077,54 @@ msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:326
 msgid "Shop/Category Message Location"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:417
+msgid "The rules for Klarna are as follows:"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:418
+msgid "Learn more"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:421
+msgid "For EEA, UK, and Switzerland accounts:"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:423
+msgid "You can offer Klarna if:"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:425
+msgid "Your Stripe account is based in EEA, UK, or Switzerland"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:426
+msgid "Your customer is located in EEA, UK, or Switzerland"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:427
+msgid "Your store currency matches the customer's local currency"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:431
+msgid "For all other countries:"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:433
+msgid "Transactions are only allowed when:"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:435
+msgid "Your customer is in the same country as your Stripe account"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:436
+msgid "Your store currency matches your country's currency"
+msgstr ""
+
+#: includes/gateways/class-wc-payment-gateway-stripe-klarna.php:441
+msgid "Example: If your Stripe account is US-based, your customer must be in the US and your store must use USD."
 msgstr ""
 
 #: includes/gateways/class-wc-payment-gateway-stripe-konbini.php:32

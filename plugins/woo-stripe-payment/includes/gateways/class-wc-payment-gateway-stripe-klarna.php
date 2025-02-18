@@ -179,7 +179,7 @@ class WC_Payment_Gateway_Stripe_Klarna extends WC_Payment_Gateway_Stripe_Local_P
 		if ( $billing_country ) {
 			$account_country = stripe_wc()->account_settings->get_account_country( wc_stripe_mode() );
 			$params          = $this->get_required_parameters();
-			if ( $this->is_eea( $account_country ) || in_array( $billing_country, [ 'GB', 'CH' ] ) ) {
+			if ( $this->is_eea( $account_country ) || in_array( $account_country, [ 'GB', 'CH' ] ) ) {
 				if ( $this->is_eea( $billing_country ) || in_array( $billing_country, [ 'GB', 'CH' ] ) ) {
 					if ( isset( $params[ $currency ] ) && in_array( $billing_country, $params[ $currency ] ) !== false ) {
 						$result = true;
@@ -409,6 +409,40 @@ class WC_Payment_Gateway_Stripe_Klarna extends WC_Payment_Gateway_Stripe_Local_P
 	 */
 	public function get_eea_countries() {
 		return $this->eea_countries;
+	}
+
+	public function get_payment_description() {
+		ob_start();
+		?>
+        <span><?php esc_html_e( 'The rules for Klarna are as follows:', 'woo-stripe-payment' ) ?></span>
+        <a href="https://docs.stripe.com/payments/klarna" target="_blank"><?php esc_html_e( 'Learn more', 'woo-stripe-payment' ) ?></a>
+
+        <div class="klarna-rules">
+            <h4><?php esc_html_e( 'For EEA, UK, and Switzerland accounts:', 'woo-stripe-payment' ) ?></h4>
+            <div class="klarna-section">
+				<?php esc_html_e( 'You can offer Klarna if:', 'woo-stripe-payment' ) ?>
+                <ol>
+                    <li><?php esc_html_e( 'Your Stripe account is based in EEA, UK, or Switzerland', 'woo-stripe-payment' ) ?></li>
+                    <li><?php esc_html_e( 'Your customer is located in EEA, UK, or Switzerland', 'woo-stripe-payment' ) ?></li>
+                    <li><?php esc_html_e( 'Your store currency matches the customer\'s local currency', 'woo-stripe-payment' ) ?></li>
+                </ol>
+            </div>
+
+            <h4><?php esc_html_e( 'For all other countries:', 'woo-stripe-payment' ) ?></h4>
+            <div class="klarna-section">
+				<?php esc_html_e( 'Transactions are only allowed when:', 'woo-stripe-payment' ) ?>
+                <ol>
+                    <li><?php esc_html_e( 'Your customer is in the same country as your Stripe account', 'woo-stripe-payment' ) ?></li>
+                    <li><?php esc_html_e( 'Your store currency matches your country\'s currency', 'woo-stripe-payment' ) ?></li>
+                </ol>
+            </div>
+
+            <p class="klarna-example">
+				<?php esc_html_e( 'Example: If your Stripe account is US-based, your customer must be in the US and your store must use USD.', 'woo-stripe-payment' ) ?>
+            </p>
+        </div>
+		<?php
+		return ob_get_clean();
 	}
 
 }

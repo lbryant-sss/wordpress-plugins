@@ -1164,12 +1164,20 @@ function delete_task_now($task_name){
         }
         $wp_tables = join("\" \"",$full_table);
         $msqld_max_allowed_packet = (defined('IWP_MYSQLDUMP_MAX_ALLOWED_PACKET') && (is_int(IWP_MYSQLDUMP_MAX_ALLOWED_PACKET) || is_string(IWP_MYSQLDUMP_MAX_ALLOWED_PACKET))) ? IWP_MYSQLDUMP_MAX_ALLOWED_PACKET : '8M';
-        $command = $brace . $paths['mysqldump'] . $brace . ' --force --host="' . DB_HOST . '" --user="' . DB_USER . '" --password="' . DB_PASSWORD . '" --max_allowed_packet='.$msqld_max_allowed_packet.' --net_buffer_length=1M --skip-comments --skip-set-charset --allow-keywords --dump-date --add-drop-table --skip-lock-tables --extended-insert "' . DB_NAME . '" "'.$wp_tables.'" > ' . $brace . $file . $brace;
+        $host_string = '--host="' . DB_HOST . '"';
+        $parsed_db = $wpdb->parse_db_host(DB_HOST);
+        if (!empty($parsed_db[0])) {
+            $host_string = '--host="' . $parsed_db[0] . '"';
+            if(!empty($parsed_db[1])){
+                $host_string .= ' --port=' . $parsed_db[1];
+            }
+        }
+        $command = $brace . $paths['mysqldump'] . $brace . ' --force '.$host_string.' --user="' . DB_USER . '" --password="' . DB_PASSWORD . '" --max_allowed_packet='.$msqld_max_allowed_packet.' --net_buffer_length=1M --skip-comments --skip-set-charset --allow-keywords --dump-date --add-drop-table --skip-lock-tables --extended-insert "' . DB_NAME . '" "'.$wp_tables.'" > ' . $brace . $file . $brace;
 		iwp_mmb_print_flush('DB DUMP CMD: Start');
         ob_start();
         if (!empty($structure_only_table)) {
             $structure_only_wp_table = join("\" \"",$structure_only_table);
-            $structure_command = $brace . $paths['mysqldump'] . $brace . ' --force --host="' . DB_HOST . '" --user="' . DB_USER . '" --password="' . DB_PASSWORD . '" --add-drop-table --skip-lock-tables --no-data "' . DB_NAME . '" "'.$structure_only_wp_table.'" >> ' . $brace . $file . $brace;
+            $structure_command = $brace . $paths['mysqldump'] . $brace . ' --force '.$host_string.' --user="' . DB_USER . '" --password="' . DB_PASSWORD . '" --add-drop-table --skip-lock-tables --no-data "' . DB_NAME . '" "'.$structure_only_wp_table.'" >> ' . $brace . $file . $brace;
             // $result = $this->iwp_mmb_exec($structure_command);
             $command.=' && '.$structure_command;
 
@@ -1495,8 +1503,16 @@ function delete_task_now($task_name){
             $db_folder = IWP_DB_DIR . '/';
             $temp_sql_file_name = "iwp_temp.sql";
             $file   = $db_folder . $temp_sql_file_name;
+            $host_string = '--host="' . DB_HOST . '"';
+			$parsed_db = $wpdb->parse_db_host(DB_HOST);
+			if (!empty($parsed_db[0])) {
+				$host_string = '--host="' . $parsed_db[0] . '"';
+				if(!empty($parsed_db[1])){
+					$host_string .= ' --port=' . $parsed_db[1];
+				}
+			}
             foreach ($bin as $key => $value) {
-                $command = $brace . $value . $brace . ' --force --host="' . DB_HOST . '" --user="' . DB_USER . '" --password="' . DB_PASSWORD . '" --add-drop-table --skip-lock-tables --extended-insert=FALSE "' . DB_NAME . '" ""'.$wpdb->base_prefix.'options"" > ' . $brace . $file . $brace;
+                $command = $brace . $value . $brace . ' --force '.$host_string.' --user="' . DB_USER . '" --password="' . DB_PASSWORD . '" --add-drop-table --skip-lock-tables --extended-insert=FALSE "' . DB_NAME . '" ""'.$wpdb->base_prefix.'options"" > ' . $brace . $file . $brace;
                 $result = $this->iwp_mmb_exec($command);
                 if (!$result) { 
                     continue;

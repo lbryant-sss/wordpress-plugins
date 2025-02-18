@@ -25,52 +25,54 @@ function get_tarteaucitron_dynamic_sidebar($index = 1)
 function tarteaucitron_display_sidebars($content) {
 	$before = '';
 	$after = '';
-	
-	if (is_singular(array('post'))) {
-        if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-post') != "") {
-            $before .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-post');
-            $before .= '<div class="tarteaucitronclear"></div>';
+
+    if (get_option('tarteaucitronShowWidget', 'visible') == 'visible') {
+
+        if (is_singular(array('post'))) {
+            if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-post') != "") {
+                $before .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-post');
+                $before .= '<div class="tarteaucitronclear"></div>';
+            }
+
+            if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-post-xl') != "") {
+                $before .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-post-xl');
+                $before .= '<div class="tarteaucitronclear"></div>';
+            }
+
+            if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-post') != "") {
+                $after .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-post');
+                $after .= '<div class="tarteaucitronclear"></div>';
+            }
+
+            if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-post-xl') != "") {
+                $after .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-post-xl');
+                $after .= '<div class="tarteaucitronclear"></div>';
+            }
         }
-        
-        if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-post-xl') != "") {
-            $before .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-post-xl');
-            $before .= '<div class="tarteaucitronclear"></div>';
-        }
-        
-        if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-post') != "") {
-            $after .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-post');
-            $after .= '<div class="tarteaucitronclear"></div>';
-        }
-        
-        if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-post-xl') != "") {
-            $after .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-post-xl');
-            $after .= '<div class="tarteaucitronclear"></div>';
+
+        if (is_singular() && !is_singular(array('post'))) {
+
+            if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-page') != "") {
+                $before .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-page');
+                $before .= '<div class="tarteaucitronclear"></div>';
+            }
+
+            if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-page-xl') != "") {
+                $before .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-page-xl');
+                $before .= '<div class="tarteaucitronclear"></div>';
+            }
+
+            if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-page') != "") {
+                $after .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-page');
+                $after .= '<div class="tarteaucitronclear"></div>';
+            }
+
+            if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-page-xl') != "") {
+                $after .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-page-xl');
+                $after .= '<div class="tarteaucitronclear"></div>';
+            }
         }
     }
-	
-	if (is_singular() && !is_singular(array('post'))) {
-        
-        if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-page') != "") {
-            $before .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-page');
-            $before .= '<div class="tarteaucitronclear"></div>';
-        }
-        
-        if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-page-xl') != "") {
-            $before .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-before-page-xl');
-            $before .= '<div class="tarteaucitronclear"></div>';
-        }
-        
-        if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-page') != "") {
-            $after .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-page');
-            $after .= '<div class="tarteaucitronclear"></div>';
-        }
-        
-        if (get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-page-xl') != "") {
-            $after .= get_tarteaucitron_dynamic_sidebar('tarteaucitron-after-page-xl');
-            $after .= '<div class="tarteaucitronclear"></div>';
-        }
-    }
-	
 	
 	return $before . $content . $after;
 }
@@ -81,7 +83,7 @@ add_filter('the_content', 'tarteaucitron_display_sidebars', 50);
  */
 if (function_exists('register_sidebar') ) {
 	
-	if(get_option('tarteaucitronUUID', '') != '') {
+	if(get_option('tarteaucitronToken', '') != '' && get_option('tarteaucitronShowWidget', 'visible') == 'visible') {
 
     $allWidgetizedAreas = array("tarteaucitron-empty-1", "tarteaucitron-empty-2", "tarteaucitron-empty-3", "tarteaucitron-before-page", "tarteaucitron-before-page-xl", "tarteaucitron-after-page", "tarteaucitron-after-page-xl","tarteaucitron-before-post", "tarteaucitron-before-post-xl", "tarteaucitron-after-post", "tarteaucitron-after-post-xl");
     

@@ -7,7 +7,7 @@ var wp_tarteaucitron = {
             document.getElementById('check' + id).checked = false;
             
             if (id_uniq !== undefined) {
-                document.getElementById('img_' + id_uniq).src = 'https://tarteaucitron.io/img/services/000.png';
+                //document.getElementById('img_' + id_uniq).src = 'https://tarteaucitron.io/img/services/000.png';
                 document.getElementById('input_img_' + id_uniq).value = '000';
             }
         } else {

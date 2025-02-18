@@ -3,9 +3,9 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-require('./watchers-b16512f0.js');
+require('./watchers-72dff18a.js');
 const store = require('./store-ce062aec.js');
-const getters = require('./getters-743c02a3.js');
+const getters = require('./getters-9cb62ad2.js');
 const mutations = require('./mutations-ecc3d722.js');
 require('./watchers-db03ec4e.js');
 require('./index-bcdafe6e.js');

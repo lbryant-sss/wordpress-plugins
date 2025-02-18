@@ -1024,6 +1024,7 @@ return array(
     'SureCart\\WordPress\\Pages\\PageSeeder' => $baseDir . '/app/src/WordPress/Pages/PageSeeder.php',
     'SureCart\\WordPress\\Pages\\PageService' => $baseDir . '/app/src/WordPress/Pages/PageService.php',
     'SureCart\\WordPress\\Pages\\PageServiceProvider' => $baseDir . '/app/src/WordPress/Pages/PageServiceProvider.php',
+    'SureCart\\WordPress\\PluginActionLinksService' => $baseDir . '/app/src/WordPress/PluginActionLinksService.php',
     'SureCart\\WordPress\\PluginService' => $baseDir . '/app/src/WordPress/PluginService.php',
     'SureCart\\WordPress\\PluginServiceProvider' => $baseDir . '/app/src/WordPress/PluginServiceProvider.php',
     'SureCart\\WordPress\\PostTypes\\CartPostTypeService' => $baseDir . '/app/src/WordPress/PostTypes/CartPostTypeService.php',

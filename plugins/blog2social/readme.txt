@@ -5,7 +5,7 @@ Tags: social media tool, social media automation, auto-post, social media plugin
 Donate link: https://paypal.me/adenion
 Requires at least: 4.7.0
 Tested up to: 6.7
-Stable tag: 8.3.0
+Stable tag: 8.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -272,6 +272,8 @@ To get started with the basics of Blog2Social and maybe find some useful tips an
 
 
 == Changelog ==
+= 8.3.1 =
+Usability Optimization
 = 8.3.0 =
 Network Band Intergation
 = 8.2.0 =
@@ -342,6 +344,8 @@ Bugfix: Autoposting
 Publish and share videos
 
 == Upgrade Notice ==
+= 8.3.1 =
+Usability Optimization
 = 8.3.0 =
 Network Band Intergation
 = 8.2.0 =

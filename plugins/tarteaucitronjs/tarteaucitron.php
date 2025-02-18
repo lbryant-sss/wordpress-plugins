@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: tarteaucitron.js - Cookies legislation & GDPR
+Plugin Name: tarteaucitron.io
 Plugin URI: https://tarteaucitron.io/
-Description: Comply with the Cookies and GDPR legislation.
-Version: 1.8.1
+Description: Compliant and accessible cookie banner
+Version: 1.9.1
 Text Domain: tarteaucitronjs
 Domain Path: /languages/
-Author: tarteaucitron.io
+Author: Amauri
 Author URI: https://tarteaucitron.io/
 Licence: GPLv2
 */
@@ -62,9 +62,17 @@ function tac_sanitize($data, $rule) {
 }
 /******************/
 
-require(TARTEAUCITRON_PATH . '/Admin.php');
-require(TARTEAUCITRON_PATH . '/Sidebars.php');
-require(TARTEAUCITRON_PATH . '/Widgets.php');
+add_action( 'init', '_tarteaucitron_init' );
+function _tarteaucitron_init()
+{
+    require(TARTEAUCITRON_PATH . '/Admin.php');
+    require(TARTEAUCITRON_PATH . '/Sidebars.php');
+}
+
+add_action('plugins_loaded', 'tarteaucitron_load_widget');
+function tarteaucitron_load_widget() {
+    require(TARTEAUCITRON_PATH . '/Widgets.php');
+}
 
 function tarteaucitron_post($query, $needLogin = 1) {
     $query .= '&langWP='.substr(get_locale(), 0, 2);
@@ -76,11 +84,11 @@ function tarteaucitron_post($query, $needLogin = 1) {
 
 	$response = wp_remote_post( 'https://tarteaucitron.io/pro/wordpress/token.php', array(
 		'method' => 'POST',
-		'timeout' => 45,
-		'redirection' => 5,
+		'timeout' => 5,
+		'redirection' => 1,
 		'body' => $query_array,
 		'blocking' => true,
-		'sslverify' => false,
+		'sslverify' => true,
     	)
 	);
 
@@ -101,34 +109,18 @@ function tarteaucitron_user_css_js() {
 
 add_action('wp_head', 'tarteaucitronForceLocale', 1);
 function tarteaucitronForceLocale() {
-    
     if (is_admin() || isset($_GET['fl_builder'])) {return;}
 
     $domain = $_SERVER['SERVER_NAME'];
     
-	$allowed 	= array('ar','bg','ca','cn','cs','da','de','et', 'el','en','es','fi','fr','hu','hr','lb','it','ja','ko','nl','oc','lt','lv','no', 'pl','pt','ro','ru','se','sk','sv','tr','uk', 'vi','zh');
-	$locale 	= substr(get_locale(), 0, 2);
-
-	if (in_array($locale, $allowed)) {
-
-		echo '<script>
-		var tarteaucitronForceLanguage = "'.$locale.'";
-		</script>';
-	}
-                      
-    $loc = "";
-    if (in_array($locale, $allowed)) {
-        $loc = 'locale='.$locale.'&';
-    }
-    
-    echo '<script type="text/javascript" src="https://tarteaucitron.io/load.js?'.$loc.'iswordpress=true&domain='.$domain.'&uuid='.tac_sanitize(get_option('tarteaucitronUUID'), 'uuid').'"></script>';
+    echo '<script type="text/javascript" src="https://tarteaucitron.io/load.js?domain='.$domain.'&uuid='.tac_sanitize(get_option('tarteaucitronUUID'), 'uuid').'"></script>';
 }
 
 add_action( 'admin_bar_menu', 'tarteaucitron_toolbar', PHP_INT_MAX );
 function tarteaucitron_toolbar( $wp_admin_bar ) {
 	$wp_admin_bar->add_menu( array(
 		'id'    => 'tarteaucitronjs',
-		'title' => '<span class="ab-icon"></span> tarteaucitron.js',
+		'title' => '<span class="ab-icon"></span> tarteaucitron.io',
 		'href'  => admin_url('options-general.php?page=tarteaucitronjs'),
 	) );
 }
@@ -152,7 +144,7 @@ function _tarteaucitron_admin_bar_css() {
     add_filter( 'embed_oembed_html', 'tarteaucitronjs_oembed_dataparse', PHP_INT_MAX, 4 );
     function tarteaucitronjs_oembed_dataparse($cache, $url, $attr, $post_ID) {
         
-        if (is_admin() || isset($_GET['fl_builder'])) {return;}
+        if (is_admin() || isset($_GET['fl_builder']) || get_option('tarteaucitronShowWidget', 'visible') == 'invisible') {return;}
         
         $url = esc_url($url);
         
@@ -175,7 +167,8 @@ function _tarteaucitron_admin_bar_css() {
         }
 
         if (str_replace('www.', '', $url_parse['host']) == "dailymotion.com") {
-            $id = end(explode("/", $url));
+            $array = explode("/", $url);
+            $id = end($array);
 
             if ($id != "") {
                 return "<script>document.addEventListener('DOMContentLoaded', function() {(tarteaucitron.job = tarteaucitron.job || []).push('dailymotion');});</script><div class=\"dailymotion_player\" videoID=\"".$id."\" width=\"100%\" height=\"100%\" style=\"height:50vw\" showinfo=\"1\" autoplay=\"0\"></div>";
@@ -190,39 +183,3 @@ function tarteaucitronNeedSubscription() {
     $currentDate = time();
     return $currentDate >= $deadline;
 }
-
-function tarteaucitron_admin_notice() {
-    if (!tarteaucitronNeedSubscription() && !get_user_meta(get_current_user_id(), 'tarteaucitron_dismiss_notice_subscription010')) {
-        $icon_url = plugin_dir_url(__FILE__) . 'assets/icon-128x128.png';
-
-        echo '<div class="notice notice-warning tarteaucitronSub" style="display: flex; align-items: center; position: relative;">
-            <img src="' . esc_url($icon_url) . '" alt="" style="width: 32px; height: 32px; margin-right: 10px;">
-            <p style="flex: 1;">' . esc_html__('Starting January 1, 2025, a valid subscription will be required to continue using the pro version of tarteaucitron.io', 'tarteaucitron') . '</p>
-            <button type="button" class="notice-dismiss tarteaucitron-dismiss-btn" style="position: absolute; right: 10px;"></button>
-        </div>';
-    }
-}
-add_action('admin_notices', 'tarteaucitron_admin_notice');
-
-function tarteaucitron_dismiss_notice() {
-    if (isset($_POST['tarteaucitron_dismiss_notice_subscription010']) && current_user_can('manage_options')) {
-        update_user_meta(get_current_user_id(), 'tarteaucitron_dismiss_notice_subscription010', true);
-    }
-}
-add_action('wp_ajax_tarteaucitron_dismiss_notice', 'tarteaucitron_dismiss_notice');
-
-function tarteaucitron_notice_script() {
-    ?>
-    <script type="text/javascript">
-        jQuery(document).on('click', '.tarteaucitron-dismiss-btn', function() {
-            var ajaxurl = '<?php echo esc_url(admin_url('admin-ajax.php')); ?>';
-            jQuery.post(ajaxurl, {
-                action: 'tarteaucitron_dismiss_notice',
-                tarteaucitron_dismiss_notice_subscription010: true
-            });
-            jQuery(this).closest('.tarteaucitronSub').fadeOut();
-        });
-    </script>
-    <?php
-}
-add_action('admin_footer', 'tarteaucitron_notice_script');
