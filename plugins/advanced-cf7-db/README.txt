@@ -3,7 +3,7 @@ Contributors: vsourz1td
 Tags: contact form 7 db, contact form db, advanced cf7 db, contact form 7, database
 Requires at least: 4.0
 Tested up to: 6.7.1
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -173,6 +173,9 @@ return $contact_form_ids;
 
 
 == Changelog ==
+
+= 2.0.7 =
+* Updated Freemius SDK to latest version.
 
 = 2.0.6 =
 * We have upgraded with Security patches

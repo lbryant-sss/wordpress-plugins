@@ -177,7 +177,7 @@ class CostsCalculator {
 			$calculated_cost = 0.0;
 		}
 
-		return $calculated_cost + $rule_cost;
+		return (float) $calculated_cost + (float) $rule_cost;
 	}
 
 	/**

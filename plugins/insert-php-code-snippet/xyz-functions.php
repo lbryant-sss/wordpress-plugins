@@ -12,7 +12,48 @@ if(!function_exists('xyz_ips_plugin_get_version'))
 		return $plugin_folder['insert-php-code-snippet.php']['Version'];
 	}
 }
+if(!function_exists('xyz_ips_prepare_content_to_eval'))
+{
 
+    function xyz_ips_prepare_content_to_eval($content_to_eval){
+$xyz_ips_content_start='<?php';
+$new_line="\r\n";
+$xyz_ips_content_end='?>';
+
+if (stripos($content_to_eval, '<?php') !== false)
+    $tag_start_position=stripos($content_to_eval,'<?php');
+else
+    $tag_start_position="-1";
+
+if (stripos($content_to_eval, '?>') !== false)
+    $tag_end_position=stripos($content_to_eval,'?>');
+else
+    $tag_end_position="-1";
+
+if(stripos($content_to_eval, '<?php') === false && stripos($content_to_eval, '?>') === false)
+{
+    $content_to_eval=$xyz_ips_content_start.$new_line.$content_to_eval;
+}
+else if(stripos($content_to_eval, '<?php') !== false)
+{
+    if($tag_start_position>=0 && $tag_end_position>=0 && $tag_start_position>$tag_end_position)
+    {
+        $content_to_eval=$xyz_ips_content_start.$new_line.$content_to_eval;
+    }
+}
+else if(stripos($content_to_eval, '<?php') === false)
+{
+    if (stripos($content_to_eval, '?>') !== false)
+    {
+        $content_to_eval=$xyz_ips_content_start.$new_line.$content_to_eval;
+    }
+}
+
+
+return $content_to_eval='?>'.$content_to_eval;
+}
+
+}
 if(!function_exists('xyz_trim_deep'))
 {
 
@@ -42,7 +83,7 @@ function xyz_ips_links($links, $file) {
 		$links[] = '<a href="https://xyzscripts.com/support/" class="xyz_support" title="Support"></a>';
 		$links[] = '<a href="https://twitter.com/xyzscripts" class="xyz_twitt" title="Follow us on Twitter"></a>';
 		$links[] = '<a href="https://www.facebook.com/xyzscripts" class="xyz_fbook" title="Like us on Facebook"></a>';
-		$links[] = '<a href="https://plus.google.com/+Xyzscripts/" class="xyz_gplus" title="+1 us on Google+"></a>';
+		$links[] = '<a href="https://www.instagram.com/xyz_scripts/" class="xyz_insta" title="+1 us on Google+"></a>';
 		$links[] = '<a href="https://www.linkedin.com/company/xyzscripts" class="xyz_linkedin" title="Follow us on LinkedIn"></a>';
 	}
 	return $links;

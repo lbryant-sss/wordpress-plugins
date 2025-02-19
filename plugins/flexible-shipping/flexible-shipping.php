@@ -3,15 +3,15 @@
  * Plugin Name: Flexible Shipping
  * Plugin URI: https://wordpress.org/plugins/flexible-shipping/
  * Description: Create additional shipment methods in WooCommerce and enable pricing based on cart weight or total.
- * Version: 5.1.3
+ * Version: 5.2.0
  * Author: Octolize
  * Author URI: https://octol.io/fs-author
  * Text Domain: flexible-shipping
  * Domain Path: /lang/
  * Requires at least: 6.4
  * Tested up to: 6.7
- * WC requires at least: 9.2
- * WC tested up to: 9.6
+ * WC requires at least: 9.3
+ * WC tested up to: 9.7
  * Requires PHP: 7.4
  * ​
  * Copyright 2017 WP Desk Ltd.
@@ -34,7 +34,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /* THIS VARIABLE CAN BE CHANGED AUTOMATICALLY */
-$plugin_version = '5.1.3';
+$plugin_version = '5.2.0';
 
 $plugin_name        = 'Flexible Shipping';
 $plugin_class_name  = Flexible_Shipping_Plugin::class;

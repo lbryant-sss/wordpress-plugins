@@ -146,7 +146,7 @@ Class MetForm_Input_Button extends Widget_Base{
 			[
 				'type'	=> 'submit',
 				'class'	=> 'metform-btn metform-submit-btn ' . $settings['mf_btn_class'],
-				'id'	=> $settings['mf_btn_id'],
+				'id'	=> htmlspecialchars( wp_kses_post( $settings['mf_btn_id'] ) ),
 			]
 		);
 		?>

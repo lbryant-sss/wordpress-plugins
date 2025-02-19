@@ -2,9 +2,9 @@
 Contributors: f1logic
 Donate link: http://xyzscripts.com/donate/
 Tags: insert PHP, add PHP, insert PHP code, insert PHP tag, insert PHP snippet, insert PHP code snippet , insert PHP snippet, add PHP code, insert PHP tag, add PHP snippet, add PHP code snippet, integrate PHP codes, raw PHP, embed PHP, PHP inserter, PHP code inserter, PHP snippet inserter
-Requires at least: 2.8
-Tested up to: 6.7.1
-Stable tag: 1.3.8
+Requires at least: 5
+Tested up to: 6.7.2
+Stable tag: 1.4
 License: GPLv2 or later
 
 Add PHP code to your pages and posts easily using shortcodes.
@@ -65,6 +65,12 @@ More questions ? [Drop a mail](http://xyzscripts.com/members/support/ "XYZScript
 
 
 == Changelog ==
+
+= 1.4 =
+* Added new Snippet Placement Methods: Automatic, Execute on Demand, and Shortcode (Manual) for more flexible snippet placement options.
+* Added Snippet Placement filter on the Manage Snippets page
+* Improved compatibility with the latest WordPress versions
+* Fixed minor bugs and optimized performance.
 
 = 1.3.8 =
 * Added "Execute shortcodes in editors" setting for Elementor and other editor compatibility
@@ -152,8 +158,8 @@ Please read the FAQ first if you are having problems.
 
 = Requirements =
 
-    WordPress 3.0+
-    PHP 5+
+    WordPress 5.0+
+    PHP 7+
 
 = Feedback =
 

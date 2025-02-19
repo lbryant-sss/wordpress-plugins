@@ -53,20 +53,27 @@ class RulesSettingsField {
 	private $value;
 
 	/**
+	 * @var array
+	 */
+	private $shipping_method_settings;
+
+	/**
 	 * RulesSettings constructor.
 	 *
-	 * @param string $settings_field_id    .
-	 * @param string $settings_field_name  .
-	 * @param string $settings_field_title .
-	 * @param array  $settings             .
-	 * @param array  $value                .
+	 * @param string $settings_field_id        .
+	 * @param string $settings_field_name      .
+	 * @param string $settings_field_title     .
+	 * @param array  $settings                 .
+	 * @param array  $value                    .
+	 * @param array  $shipping_method_settings .
 	 */
-	public function __construct( $settings_field_id, $settings_field_name, $settings_field_title, $settings, $value = null ) {
-		$this->settings_field_id    = $settings_field_id;
-		$this->settings_field_name  = $settings_field_name;
-		$this->settings_field_title = $settings_field_title;
-		$this->settings             = $settings;
-		$this->value                = $value;
+	public function __construct( $settings_field_id, $settings_field_name, $settings_field_title, $settings, $value = null, $shipping_method_settings = [] ) {
+		$this->settings_field_id        = $settings_field_id;
+		$this->settings_field_name      = $settings_field_name;
+		$this->settings_field_title     = $settings_field_title;
+		$this->settings                 = $settings;
+		$this->value                    = $value;
+		$this->shipping_method_settings = $shipping_method_settings;
 	}
 
 	/**
@@ -91,7 +98,7 @@ class RulesSettingsField {
 		$available_conditions = array_values( $available_conditions );
 		$translations         = $this->get_translations();
 		$pro_features_data    = $this->get_pro_features_data();
-		$rules_table_settings = $this->get_table_settings();
+		$table_settings       = $this->get_table_settings();
 
 		$cost_settings_fields    = $this->get_available_cost_settings();
 		$additional_cost_fields  = $this->get_additional_cost_fields();
@@ -99,6 +106,21 @@ class RulesSettingsField {
 		$preconfigured_scenarios = $this->get_preconfigured_scenarios();
 
 		$is_pro_activated = defined( 'FLEXIBLE_SHIPPING_PRO_VERSION' );
+
+		$rules_table_settings = [
+			'rules_settings'          => $rules_settings,
+			'table_settings'          => $table_settings,
+			'translations'            => $translations,
+			'available_conditions'    => $available_conditions,
+			'cost_settings_fields'    => $cost_settings_fields,
+			'special_action_fields'   => $special_action_fields,
+			'additional_cost_fields'  => $additional_cost_fields,
+			'preconfigured_scenarios' => $preconfigured_scenarios,
+			'is_pro_activated'        => $is_pro_activated,
+			'pro_features_data'       => $pro_features_data,
+		];
+
+		$rules_table_settings = apply_filters( 'flexible-shipping/rules-table/settings', $rules_table_settings, $this->shipping_method_settings );
 
 		include __DIR__ . '/views/shipping-method-settings-rules.php';
 

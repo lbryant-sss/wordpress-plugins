@@ -80,7 +80,7 @@ class Xyz_Insert_Php_Widget extends WP_Widget {
         //	if($post_slug!="xyz-ics-preview-page" && !is_customize_preview())
           {
             $status=1;
-            $wpdb->update($wpdb->prefix.'xyz_ics_short_code', array('exception_status'=>$status), array('title'=>$snippet_name));
+            $wpdb->update($wpdb->prefix.'xyz_ips_short_code', array('exception_status'=>$status), array('title'=>$snippet_name));
             if(get_option('xyz_ips_exception_email')!="0" && get_option('xyz_ips_exception_email')!="" && get_option('xyz_ips_auto_exception')==1)
             {
               $email=get_option('xyz_ips_exception_email');

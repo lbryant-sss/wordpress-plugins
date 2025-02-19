@@ -7,7 +7,7 @@
  * Author:              MonsterInsights
  * Author URI:          https://www.monsterinsights.com/lite/?utm_source=liteplugin&utm_medium=pluginheader&utm_campaign=authoruri&utm_content=7%2E0%2E0
  *
- * Version:             9.2.4
+ * Version:             9.3.0
  * Requires at least:   5.6.0
  * Requires PHP:        7.2
  *
@@ -71,7 +71,7 @@ final class MonsterInsights_Lite {
 	 * @access public
 	 * @var string $version Plugin version.
 	 */
-	public $version = '9.2.4';
+	public $version = '9.3.0';
 
 	/**
 	 * Plugin file.
@@ -251,7 +251,7 @@ final class MonsterInsights_Lite {
 			}
 
 			// Load the plugin textdomain.
-			add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ), 15 );
+			add_action( 'init', array( self::$instance, 'load_textdomain' ), 15 );
 
 			// Load admin only components.
 			if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {

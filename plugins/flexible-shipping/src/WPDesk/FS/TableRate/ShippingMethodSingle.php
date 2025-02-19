@@ -185,7 +185,14 @@ class ShippingMethodSingle extends WC_Shipping_Method {
 	public function generate_shipping_rules_html( $key, $data ) {
 		$field_key             = $this->get_field_key( $key );
 		$method_rules_settings = $this->get_option( $key, '[]' );
-		$rules_settings        = new RulesSettingsField( $field_key, $field_key, $data['title'], $data, ! is_array( $method_rules_settings ) ? json_decode( $method_rules_settings, true ) : $method_rules_settings );
+		$rules_settings        = new RulesSettingsField(
+			$field_key,
+			$field_key,
+			$data['title'],
+			$data,
+			! is_array( $method_rules_settings ) ? json_decode( $method_rules_settings, true ) : $method_rules_settings,
+			$this->instance_settings
+		);
 
 		return $rules_settings->render();
 	}

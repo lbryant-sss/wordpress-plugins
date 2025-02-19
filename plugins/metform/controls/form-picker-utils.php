@@ -34,7 +34,7 @@ class Form_Picker_Utils{
 					</div>
 				<?php endif; ?>
 
-			<div class="elementor-widget-container">
+			<div class="mf-widget-container">
 				<?php 
 					if ($extract_key == ''){
 						echo esc_html__('No content is added yet.', 'metform');

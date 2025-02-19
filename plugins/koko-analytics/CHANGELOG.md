@@ -1,10 +1,17 @@
 # Changelog
 
+### 1.6.6 - Feb 18, 2025
+
+- Fix same-page referrer detection when not using cookie.
+- Preserve page filter when using datepicker to change date period.
+- Limit realtime pageviews in dashboard widget to today's pageviews when viewed shortly after midnight.
+
+
 ### 1.6.5 - Feb 10, 2025
 
 - Add importer for data from Burst Statistics.
-- Allow passing "false" and "no" to `monthly` query parameter in REST endpoint.
-- Optimize PHP execution time for plugin bootstrapping code by aggresively lazy loading code that only runs on very specific requests. From 0.05 ms to 0.03 ms (!) with opcache or 1.44 ms to 0.54 ms without opcache for general requests.
+- Allow passing "false" and "no" to `monthly` query parameter in REST endpoints.
+- Optimize PHP execution time for plugin bootstrapping code by aggressively lazy loading code that only runs on very specific requests. From 0.05 ms to 0.03 ms (!) with OPcache or 1.44 ms to 0.54 ms without OPcache for general requests.
 - Minor code improvements to classes responsible for aggregating data from buffer file into permanent storage.
 
 

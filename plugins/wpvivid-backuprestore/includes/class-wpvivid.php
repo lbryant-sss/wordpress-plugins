@@ -5539,20 +5539,61 @@ class WPvivid
 
     public function wpvivid_set_general_setting($setting_data, $setting, $options)
     {
-        $setting['exclude_file_size'] = intval($setting['exclude_file_size']);
-        $setting['max_execution_time'] = intval($setting['max_execution_time']);
+        $setting_data['wpvivid_common_setting']['backup_params'] = $setting['backup_params'];
+        if($setting_data['wpvivid_common_setting']['backup_params'] === 'low')
+        {
+            $setting_data['wpvivid_common_setting']['compress_file_count'] = 500;
+            $setting_data['wpvivid_common_setting']['max_file_size'] = '200';
+            $setting_data['wpvivid_common_setting']['max_sql_file_size'] = 400;
+            $setting_data['wpvivid_common_setting']['exclude_file_size'] = 0;
+            $setting_data['wpvivid_common_setting']['max_execution_time'] = 300;
+            $setting_data['wpvivid_common_setting']['memory_limit'] = '512M';
+            $setting_data['wpvivid_common_setting']['migrate_size'] = '2048';
+            $setting_data['wpvivid_common_setting']['max_resume_count'] = 6;
+        }
+        else if($setting_data['wpvivid_common_setting']['backup_params'] === 'mid')
+        {
+            $setting_data['wpvivid_common_setting']['compress_file_count'] = 2000;
+            $setting_data['wpvivid_common_setting']['max_file_size'] = '1024';
+            $setting_data['wpvivid_common_setting']['max_sql_file_size'] = 1024;
+            $setting_data['wpvivid_common_setting']['exclude_file_size'] = 0;
+            $setting_data['wpvivid_common_setting']['max_execution_time'] = 500;
+            $setting_data['wpvivid_common_setting']['memory_limit'] = '512M';
+            $setting_data['wpvivid_common_setting']['migrate_size'] = '2048';
+            $setting_data['wpvivid_common_setting']['max_resume_count'] = 6;
+        }
+        else if($setting_data['wpvivid_common_setting']['backup_params'] === 'high')
+        {
+            $setting_data['wpvivid_common_setting']['compress_file_count'] = 10000;
+            $setting_data['wpvivid_common_setting']['max_file_size'] = '4080';
+            $setting_data['wpvivid_common_setting']['max_sql_file_size'] = 4080;
+            $setting_data['wpvivid_common_setting']['exclude_file_size'] = 0;
+            $setting_data['wpvivid_common_setting']['max_execution_time'] = 900;
+            $setting_data['wpvivid_common_setting']['memory_limit'] = '512M';
+            $setting_data['wpvivid_common_setting']['migrate_size'] = '2048';
+            $setting_data['wpvivid_common_setting']['max_resume_count'] = 6;
+        }
+        else if($setting_data['wpvivid_common_setting']['backup_params'] === 'custom')
+        {
+            $setting_data['wpvivid_common_setting']['compress_file_count'] = intval($setting['compress_file_count']);
+            $setting_data['wpvivid_common_setting']['max_file_size'] = $setting['max_file_size'];
+            $setting_data['wpvivid_common_setting']['max_sql_file_size'] = intval($setting['max_sql_file_size']);
+            $setting_data['wpvivid_common_setting']['exclude_file_size'] = intval($setting['exclude_file_size']);
+            $setting_data['wpvivid_common_setting']['max_execution_time'] = intval($setting['max_execution_time']);
+            $setting_data['wpvivid_common_setting']['memory_limit'] = $setting['memory_limit'].'M';
+            $setting_data['wpvivid_common_setting']['migrate_size'] = $setting['migrate_size'];
+            $setting_data['wpvivid_common_setting']['max_resume_count'] = $setting['max_resume_count'];
+        }
+
+
         $setting['restore_max_execution_time'] = intval($setting['restore_max_execution_time']);
         $setting['max_backup_count'] = intval($setting['max_backup_count']);
-        $setting['max_resume_count'] = intval($setting['max_resume_count']);
 
         $setting_data['wpvivid_email_setting']['send_to'][] = $setting['send_to'];
         $setting_data['wpvivid_email_setting']['always'] = $setting['always'];
         if(isset($setting['email_enable'])) {
             $setting_data['wpvivid_email_setting']['email_enable'] = $setting['email_enable'];
         }
-
-        $setting_data['wpvivid_common_setting']['max_file_size'] = $setting['max_file_size'];
-        $setting_data['wpvivid_common_setting']['exclude_file_size'] = $setting['exclude_file_size'];
 
         $setting['path']=esc_attr($setting['path']);
         $setting_data['wpvivid_local_setting']['path'] = $setting['path'];
@@ -5567,18 +5608,13 @@ class WPvivid
 
         $setting_data['wpvivid_local_setting']['save_local'] = $options['options']['wpvivid_local_setting']['save_local'];
 
-        $setting_data['wpvivid_common_setting']['max_execution_time'] = $setting['max_execution_time'];
         $setting_data['wpvivid_common_setting']['restore_max_execution_time'] = $setting['restore_max_execution_time'];
         $setting_data['wpvivid_common_setting']['log_save_location'] = $setting['path'].'/wpvivid_log';
         $setting_data['wpvivid_common_setting']['max_backup_count'] = $setting['max_backup_count'];
         $setting_data['wpvivid_common_setting']['show_admin_bar'] = $setting['show_admin_bar'];
-        //$setting_data['wpvivid_common_setting']['show_tab_menu'] = $setting['show_tab_menu'];
         $setting_data['wpvivid_common_setting']['domain_include'] = $setting['domain_include'];
         $setting_data['wpvivid_common_setting']['estimate_backup'] = $setting['estimate_backup'];
-        $setting_data['wpvivid_common_setting']['max_resume_count'] = $setting['max_resume_count'];
-        $setting_data['wpvivid_common_setting']['memory_limit'] = $setting['memory_limit'].'M';
         $setting_data['wpvivid_common_setting']['restore_memory_limit'] = $setting['restore_memory_limit'].'M';
-        $setting_data['wpvivid_common_setting']['migrate_size'] = $setting['migrate_size'];
         $setting_data['wpvivid_common_setting']['ismerge'] = $setting['ismerge'];
         $setting_data['wpvivid_common_setting']['db_connect_method'] = $setting['db_connect_method'];
         $setting_data['wpvivid_common_setting']['retain_local'] = $setting['retain_local'];
@@ -5586,8 +5622,6 @@ class WPvivid
         $setting_data['wpvivid_common_setting']['backup_symlink_folder'] = $setting['backup_symlink_folder'];
 
         //new
-        $setting_data['wpvivid_common_setting']['compress_file_count'] = intval($setting['compress_file_count']);
-        $setting_data['wpvivid_common_setting']['max_sql_file_size'] = intval($setting['max_sql_file_size']);
 
         $setting_data['wpvivid_common_setting']['replace_rows_pre_request'] = intval($setting['replace_rows_pre_request']);
         $setting_data['wpvivid_common_setting']['sql_file_buffer_pre_request'] = intval($setting['sql_file_buffer_pre_request']);

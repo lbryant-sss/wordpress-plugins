@@ -232,7 +232,7 @@ class WPvivid_Backup_2
     {
         $common_setting=get_option('wpvivid_common_setting',array());
         $settings['db_connect_method']=isset($common_setting['db_connect_method'])?$common_setting['db_connect_method']:'wpdb';
-        $settings['memory_limit']=isset($common_setting['memory_limit'])?$common_setting['memory_limit']:'256M';
+        $settings['memory_limit']=isset($common_setting['memory_limit'])?$common_setting['memory_limit']:'512M';
         $settings['max_execution_time']=isset($common_setting['max_execution_time'])?$common_setting['max_execution_time']:900;
         $settings['compress_file_use_cache']=isset($common_setting['compress_file_use_cache'])?$common_setting['compress_file_use_cache']:false;
         $settings['compress_file_count']=isset($common_setting['compress_file_count'])?$common_setting['compress_file_count']:500;

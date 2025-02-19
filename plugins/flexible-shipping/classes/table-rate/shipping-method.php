@@ -276,7 +276,14 @@ class WPDesk_Flexible_Shipping extends WC_Shipping_Method {
 	 * @return false|string
 	 */
 	public function generate_shipping_rules_html( $key, $data ) {
-		$rules_settings = new RulesSettingsField( $key, self::SETTING_METHOD_RULES, $data['title'], $data );
+		$rules_settings = new RulesSettingsField(
+			$key,
+			self::SETTING_METHOD_RULES,
+			$data['title'],
+			$data,
+			null,
+			$this->instance_settings
+		);
 
 		return $rules_settings->render();
 	}

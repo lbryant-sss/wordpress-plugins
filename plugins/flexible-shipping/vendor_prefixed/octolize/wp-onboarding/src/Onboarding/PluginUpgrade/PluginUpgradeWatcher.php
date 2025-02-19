@@ -37,6 +37,9 @@ class PluginUpgradeWatcher implements Hookable
      */
     public function save_plugin_version_from_upgrader($upgrader, $options)
     {
+        if (!isset($options['plugins'])) {
+            return;
+        }
         if ($options['action'] === 'update' && $options['type'] === 'plugin') {
             foreach ($options['plugins'] as $plugin) {
                 if ($plugin === $this->plugin_file_name && isset($upgrader->skin->plugin_info['Version'])) {

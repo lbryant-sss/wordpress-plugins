@@ -3,7 +3,7 @@
  * Plugin Name: MetForm
  * Plugin URI: http://products.wpmet.com/metform/
  * Description: Most flexible and design friendly form builder for Elementor
- * Version: 3.9.3
+ * Version: 3.9.4
  * Author: Wpmet
  * Author URI:  https://wpmet.com
  * Text Domain: metform

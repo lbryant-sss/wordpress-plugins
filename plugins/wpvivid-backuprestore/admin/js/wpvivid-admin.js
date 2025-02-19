@@ -469,6 +469,22 @@ function wpvivid_interface_flow_control(){
             }
         });
     });
+
+    jQuery('input:radio[option=setting][name=backup_params]').click(function()
+    {
+        if(jQuery(this).prop('checked'))
+        {
+            var value = jQuery(this).prop('value');
+            if(value=='custom')
+            {
+                jQuery('#wpvivid_custom_backup_params').show();
+            }
+            else
+            {
+                jQuery('#wpvivid_custom_backup_params').hide();
+            }
+        }
+    });
 }
 
 /**

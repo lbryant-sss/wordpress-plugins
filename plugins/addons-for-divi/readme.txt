@@ -17,7 +17,7 @@ Enhance your Divi page-building experience with 20+ free modules. Supercharge yo
 
 ## DIVI TORQUE: 70+ TOP DIVI MODULES, 7+ EXTENSIONS, AND TRUSTED BY 50,000+ ACTIVE USERS ##
 
-<a href="https://divitorque.com/demos/?utm_campaign=lite-readme&utm_source=wp.org&utm_medium=textlink-demos" target="_blank" rel="">Check the Demos</a> | <a href="https://divitorque.com/features/?utm_campaign=lite-readme&utm_source=wp.org&utm_medium=textlink-features" target="_blank" rel="">Features</a> | <a href="https://divitorque.com/pricing-lifetime/?utm_campaign=lite-readme&utm_source=wp.org&utm_medium=textlink-pro" target="_blank" rel="">Pro Version</a>
+<a href="https://divitorque.com/demos/?utm_campaign=lite-readme&utm_source=wp.org&utm_medium=textlink-demos" target="_blank" rel="">Check the Demos</a> | <a href="https://divitorque.com/?utm_campaign=lite-readme&utm_source=wp.org&utm_medium=textlink-features" target="_blank" rel="">Features</a> | <a href="https://divitorque.com/pricing-lifetime/?utm_campaign=lite-readme&utm_source=wp.org&utm_medium=textlink-pro" target="_blank" rel="">Pro Version</a>
 
 ### Fully Customizable
 Every Divi module and extension offers extensive options to customize your website exactly how you envision it. Create nearly any design you can imagine.

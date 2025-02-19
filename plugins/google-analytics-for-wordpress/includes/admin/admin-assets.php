@@ -226,6 +226,7 @@ class MonsterInsights_Admin_Assets {
 					'admin_email'                     => get_option( 'admin_email' ),
 					'site_url'                        => get_site_url(),
 					'reports_url'                     => add_query_arg( 'page', 'monsterinsights_reports', admin_url( 'admin.php' ) ),
+					'landing_pages_top_reports_url'   => add_query_arg( 'page', 'monsterinsights_reports#/top-landing-pages', admin_url( 'admin.php' ) ),
 					'ecommerce_report_url'            => add_query_arg( 'page', 'monsterinsights_reports#/ecommerce', admin_url( 'admin.php' ) ),
 					'ecommerce_settings_tab_url'      => add_query_arg( 'page', 'monsterinsights_settings#/ecommerce', admin_url( 'admin.php' ) ),
 					'first_run_notice'                => apply_filters( 'monsterinsights_settings_first_time_notice_hide', monsterinsights_get_option( 'monsterinsights_first_run_notice' ) ),

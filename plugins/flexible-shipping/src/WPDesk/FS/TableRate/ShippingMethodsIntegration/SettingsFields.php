@@ -99,7 +99,8 @@ class SettingsFields implements Hookable {
 			$field_key,
 			$title,
 			[],
-			json_decode( $shipping_method->get_option( self::SETTING_METHOD_RULES, json_encode( ( new DefaultRulesSettings() )->get_normalized_settings() ) ), true )
+			json_decode( $shipping_method->get_option( self::SETTING_METHOD_RULES, json_encode( ( new DefaultRulesSettings() )->get_normalized_settings() ) ), true ),
+			$shipping_method->instance_settings
 		);
 
 		return $rules_settings->render();

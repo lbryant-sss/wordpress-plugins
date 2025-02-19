@@ -306,6 +306,12 @@ class Wpvivid_BackupUploader
             $chunks = isset($_REQUEST["chunks"]) ? intval(sanitize_key($_REQUEST["chunks"])) : 0;
 
             $fileName = isset($_REQUEST["name"]) ? sanitize_text_field($_REQUEST["name"]) : $_FILES["file"]["name"];
+            $validate = wp_check_filetype( $fileName );
+            if ( $validate['type'] == false )
+            {
+                echo wp_json_encode(array('result'=>'failed','error'=>"File type is not allowed."));
+                die();
+            }
 
             $backupdir=WPvivid_Setting::get_backupdir();
             $filePath = WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$backupdir.DIRECTORY_SEPARATOR.$fileName;

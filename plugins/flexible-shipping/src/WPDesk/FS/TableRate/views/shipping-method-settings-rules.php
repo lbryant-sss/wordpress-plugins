@@ -3,31 +3,9 @@
  * @var string $settings_field_id
  * @var string $settings_field_name
  * @var string $settings_field_title
- * @var array  $rules_settings
- * @var array  $translations
- * @var array  $available_conditions
- * @var array  $cost_settings_fields
- * @var array  $additional_cost_fields
- * @var array  $special_action_fields
  * @var array  $rules_table_settings
- * @var array  $preconfigured_scenarios
- * @var bool   $is_pro_activated
- * @var array  $pro_features_data
  * @package Flexible Shipping
  */
-
-$rule_table_settings = [
-	'rules_settings'          => $rules_settings,
-	'table_settings'          => $rules_table_settings,
-	'translations'            => $translations,
-	'available_conditions'    => $available_conditions,
-	'cost_settings_fields'    => $cost_settings_fields,
-	'special_action_fields'   => $special_action_fields,
-	'additional_cost_fields'  => $additional_cost_fields,
-	'preconfigured_scenarios' => $preconfigured_scenarios,
-	'is_pro_activated'        => $is_pro_activated,
-	'pro_features_data'       => $pro_features_data,
-];
 
 ?>
 <tr valign="top" class="flexible_shipping_method_rules">
@@ -91,7 +69,7 @@ $rule_table_settings = [
 		</div>
 
 		<script type="text/javascript">
-			var <?php echo esc_attr( $settings_field_id ); ?> = <?php echo json_encode( $rule_table_settings, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ); ?>;
+			var <?php echo esc_attr( $settings_field_id ); ?> = <?php echo json_encode( $rules_table_settings, JSON_UNESCAPED_UNICODE ); ?>;
 
 			document.addEventListener("DOMContentLoaded", function (event) {
 				document.querySelector('#mainform button[name="save"]').addEventListener("click", function (event) {

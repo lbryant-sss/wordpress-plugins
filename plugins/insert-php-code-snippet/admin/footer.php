@@ -4,43 +4,44 @@ if ( ! defined( 'ABSPATH' ) )
 if(get_option('xyz_ips_premium_version_ads')==1){ ?>
 <div id="xyz-ips-premium">
 
-    <div style="float: left; padding: 0 5px">
-        <h2 style="vertical-align: middle;">
+    <div class="ContentCenter">
             <a target="_blank"
-            href="https://xyzscripts.com/wordpress-plugins/xyz-wp-insert-code-snippet/details">Fully Featured XYZ WP Insert Code Snippet Premium Plugin</a>
-            - Just 19 USD
-        </h2>
+            href="https://xyzscripts.com/wordpress-plugins/xyz-wp-insert-code-snippet/details">🚀 Upgrade to the Fully Featured XYZ WP Insert Code Snippet Premium Plugin for </a>
+             <span style="font-size: 28px; color:#fbff00;"> Just 19 USD</span>
+      <br/><span style="font-size: 14px;color:#fff;">Access exclusive features like advanced targeting, automatic snippet placements across your site, syntax highlighting for better code management, and easy snippet export/import!</span>
     </div>
-    <div style="float: left; margin-top: 3px">
+	<div class="clear"></div>
+	<div class="ButtonWrap">
+    <div class="BuyNowButton">
         <a target="_blank"
-            href="https://xyzscripts.com/members/product/purchase/XYZWPICSPRE"><img
-            src="<?php  echo plugins_url("images/orange_buynow.png",XYZ_INSERT_PHP_PLUGIN_FILE); ?>">
+            href="https://xyzscripts.com/members/product/purchase/XYZWPICSPRE">🛒 Buy Now
         </a>
     </div>
-    <div style="float: left; padding: 0 5px">
-    <h2 style="vertical-align: middle;text-shadow: 1px 1px 1px #686868">
-            ( <a    href="<?php echo admin_url('admin.php?page=insert-php-code-snippet-about');?>">Compare Features</a> )
+    <div class="CompareButton">
+    <h2>
+             <a  href="<?php echo admin_url('admin.php?page=insert-php-code-snippet-about');?>">🔗 Compare Specs</a> 
     </h2>
     </div>
+		</div>
 </div>
 <?php
     }
 ?>
 <div style="clear: both;">
 </div>
-<div style="width: 100%">
+<div class="xyz-ips-wrap">
     <div class="xyz_ips_social_media">
         <h3 class="xyz_ips_inner_head">
             Follow Us 
         </h3>
         <a target="_blank" href="http://facebook.com/xyzscripts" class="xyz_home_fbook"></a>
         <a target="_blank" href="http://twitter.com/xyzscripts" class="xyz_home_twitt"></a>
-        <a target="_blank" href="https://plus.google.com/+Xyzscripts/" class="xyz_home_gplus"></a>
+        <a target="_blank" href="https://www.instagram.com/xyz_scripts/" class="xyz_home_insta"></a>
         <a style="margin-right:0px;" target="_blank" href="https://www.linkedin.com/company/xyzscripts" class="xyz_home_linkedin"></a>
     </div>
     <div class="xyz_ips_sugession">
         <h3 class="xyz_ips_inner_head"> Support</h3>
-	  <p  style="width:100%;"><a target="_blank" href="https://xyzscripts.com/donate/5" >Donate</a></p>
+	  
       <p  style="width:100%;"><a target="_blank" href="https://xyzscripts.com/support/" >Contact Us</a></p>
       <p  ><a target="_blank" href="https://wordpress.org/support/plugin/insert-php-code-snippet/reviews/" >Please Rate Us
        </a></p>
@@ -129,10 +130,10 @@ type="text" placeholder="Email" value="<?php   echo esc_html($current_user->user
 <input type="hidden" name="listName" value="6,1,"/>
 </form>
     </div>
-<div class="xyz_ips_inmotion" >
+<?php /*?><div class="xyz_ips_inmotion" >
    <a target="_blank" href="http://inmotion-hosting.evyy.net/c/1150074/260033/4222">
    <img src="<?php echo plugins_url()?>/insert-php-code-snippet/images/xyz.png" class="xyz_inmotion_label"></a>
-   </div>
+   </div><?php */?>
 </div>
 <div style="clear: both;">
 </div>

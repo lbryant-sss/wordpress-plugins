@@ -78,6 +78,13 @@ PRIMARY KEY (`id`)
     $wpdb->query($queryInsertPhp);
 
 
+	$tblcolums = $wpdb->get_col("SHOW COLUMNS FROM  ".$wpdb->prefix."xyz_ips_short_code");
+    if(!(in_array("insertionMethod", $tblcolums)))
+	$wpdb->query("ALTER TABLE ".$wpdb->prefix."xyz_ips_short_code ADD insertionMethod int NOT NULL default 2");
+    if(!(in_array("insertionLocation", $tblcolums)))
+	$wpdb->query("ALTER TABLE ".$wpdb->prefix."xyz_ips_short_code ADD insertionLocation int NOT NULL default 0");
+	if(!(in_array("insertionLocationType", $tblcolums)))
+	$wpdb->query("ALTER TABLE ".$wpdb->prefix."xyz_ips_short_code ADD insertionLocationType int NOT NULL default 0");
     //preview page
     $user_ID = get_current_user_id();
   	$slug = 'xyz-ics-preview-page';

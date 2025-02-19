@@ -80,7 +80,7 @@ class ShippingRate implements Hookable {
 		if ( ! is_array( $args ) || $shipping_method->get_option( SettingsFields::FS_CALCULATION_ENABLED, 'no' ) === 'no' ) {
 			return $args;
 		}
-		$base_shipping_cost = is_array( $args['cost'] ) ? array_sum( $args['cost'] ) : $args['cost'];
+		$base_shipping_cost = is_array( $args['cost'] ) ? array_sum( $args['cost'] ) : (float) $args['cost'];
 		$cost_calculator    = $this->prepare_cost_calculator( $shipping_method, $this->package );
 		$cost_calculator->process_rules( $base_shipping_cost );
 		$additional_cost = $cost_calculator->get_calculated_cost() - $base_shipping_cost;

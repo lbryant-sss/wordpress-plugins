@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Flexible Shipping plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flexible Shipping 5.1.3\n"
+"Project-Id-Version: Flexible Shipping 5.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-shipping\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-20T15:42:46+00:00\n"
+"POT-Creation-Date: 2025-02-18T13:26:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: flexible-shipping\n"
@@ -207,37 +207,37 @@ msgstr ""
 msgid "Add New"
 msgstr ""
 
-#: classes/table-rate/shipping-method.php:354
+#: classes/table-rate/shipping-method.php:361
 msgid "Flexible Shipping: security check error. Shipping method order not saved!"
 msgstr ""
 
-#: classes/table-rate/shipping-method.php:422
+#: classes/table-rate/shipping-method.php:429
 msgid "New Shipping Method"
 msgstr ""
 
-#: classes/table-rate/shipping-method.php:425
+#: classes/table-rate/shipping-method.php:432
 msgid "Edit Shipping Method"
 msgstr ""
 
-#: classes/table-rate/shipping-method.php:435
-#: classes/table-rate/shipping-method.php:478
+#: classes/table-rate/shipping-method.php:442
+#: classes/table-rate/shipping-method.php:485
 msgid "Shipping method %s added."
 msgstr ""
 
-#: classes/table-rate/shipping-method.php:461
+#: classes/table-rate/shipping-method.php:468
 msgid "Shipping method %s deleted."
 msgstr ""
 
-#: classes/table-rate/shipping-method.php:464
+#: classes/table-rate/shipping-method.php:471
 msgid "Shipping method not found."
 msgstr ""
 
-#: classes/table-rate/shipping-method.php:490
+#: classes/table-rate/shipping-method.php:497
 msgid "Shipping method %s updated."
 msgstr ""
 
-#: classes/table-rate/shipping-method.php:560
-#: src/WPDesk/FS/TableRate/ShippingMethodSingle.php:264
+#: classes/table-rate/shipping-method.php:567
+#: src/WPDesk/FS/TableRate/ShippingMethodSingle.php:271
 msgid "Shipping cost added."
 msgstr ""
 
@@ -330,6 +330,8 @@ msgstr ""
 
 #: classes/table-rate/views/html-shipping-method-settings.php:110
 #: classes/table-rate/views/html-shipping-method-settings.php:113
+#: assets-src/rules-settings/js/components/rules-settings.js:397
+#: assets/js/rules-settings.js:101
 msgid "Import"
 msgstr ""
 
@@ -1546,7 +1548,7 @@ msgid "Enable FS debug mode to verify the shipping methods' configuration, check
 msgstr ""
 
 #: src/WPDesk/FS/TableRate/ShippingMethod/CommonMethodSettings.php:165
-#: src/WPDesk/FS/TableRate/ShippingMethodsIntegration/SettingsFields.php:131
+#: src/WPDesk/FS/TableRate/ShippingMethodsIntegration/SettingsFields.php:132
 msgid "Shipping Cost Calculation Rules"
 msgstr ""
 
@@ -1741,55 +1743,55 @@ msgstr ""
 msgid "Base: %1$s, Additional: %2$s"
 msgstr ""
 
-#: src/WPDesk/FS/TableRate/ShippingMethodsIntegration/SettingsFields.php:120
+#: src/WPDesk/FS/TableRate/ShippingMethodsIntegration/SettingsFields.php:121
 msgid "Additional costs by Flexible Shipping Table Rate"
 msgstr ""
 
-#: src/WPDesk/FS/TableRate/ShippingMethodsIntegration/SettingsFields.php:124
+#: src/WPDesk/FS/TableRate/ShippingMethodsIntegration/SettingsFields.php:125
 msgid "Additional Costs"
 msgstr ""
 
-#: src/WPDesk/FS/TableRate/ShippingMethodsIntegration/SettingsFields.php:126
+#: src/WPDesk/FS/TableRate/ShippingMethodsIntegration/SettingsFields.php:127
 msgid "Enable Flexible Shipping Rules Table"
 msgstr ""
 
-#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:43
+#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:21
 msgid "Close the FS hints"
 msgstr ""
 
-#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:43
+#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:21
 msgid "Check the FS hints"
 msgstr ""
 
 #. Translators: open tag, close tag.
-#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:55
+#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:33
 msgid "Need more? Check %1$sFlexible Shipping PRO%2$s to unleash its full potential and add advanced rules based on shipping classes, products, quantity, include additional handling fees, insurance and much more."
 msgstr ""
 
 #. Translators: open tag, close tag.
-#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:69
+#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:47
 msgid "Want to find out how the table rate works? Hop on board and %1$slet us guide you through the whole setup &rarr;%2$s"
 msgstr ""
 
-#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:78
+#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:56
 msgid "Please mind that the ranges you define must not overlap each other and make sure there are no gaps between them."
 msgstr ""
 
 #. Translators: open tag, close tag.
-#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:84
+#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:62
 msgid "%1$sExample%2$s: If your rules are based on %1$sprice%2$s and the first range covers $0-$100, the next one should start from %1$s$100.01%2$s, not from %1$s$101%2$s, etc."
 msgstr ""
 
-#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:100
+#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:78
 msgid "Missing rules table - settings cannot be saved!"
 msgstr ""
 
-#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:109
+#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:87
 msgid "This is where the rules table should be displayed. If it's not, it is usually caused by the conflict with the other plugins you are currently using, JavaScript error or the caching issue. Clear your browser's cache or deactivate the plugins which may be interfering."
 msgstr ""
 
 #. Translators: open tag, close tag.
-#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:119
+#: src/WPDesk/FS/TableRate/views/shipping-method-settings-rules.php:97
 msgid "To use Flexible Shipping Rules Table you need to switch to non-modal mode. %1$sClick here%2$s to edit this shipping method with Rules Table."
 msgstr ""
 
@@ -1896,10 +1898,14 @@ msgid "Only .jpg, .png, .jpeg, .gif files are supported."
 msgstr ""
 
 #: vendor_prefixed/octolize/wp-betterdocs-beacon/src/BeaconOptions.php:30
+#: assets-src/rules-settings/js/components/rules-settings.js:427
+#: assets/js/rules-settings.js:101
 msgid "Sending"
 msgstr ""
 
 #: vendor_prefixed/octolize/wp-betterdocs-beacon/src/BeaconOptions.php:30
+#: assets-src/rules-settings/js/components/rules-settings.js:427
+#: assets/js/rules-settings.js:101
 msgid "Send"
 msgstr ""
 
@@ -2807,152 +2813,167 @@ msgstr ""
 msgid "Flexible Shipping Free Shipping Notice"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/html-woo-select.js:37
-#: assets-src/rules-settings/js/components/html-woo-select.js:233
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/html-woo-select.js:40
+#: assets-src/rules-settings/js/components/html-woo-select.js:241
+#: assets/js/rules-settings.js:101
 msgid "Enter 3 or more characters"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/html-woo-select.js:237
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/html-woo-select.js:245
+#: assets/js/rules-settings.js:101
 msgid "searching..."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/html-woo-select.js:246
-#: assets-src/rules-settings/js/components/html-woo-select.js:253
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/html-woo-select.js:254
+#: assets-src/rules-settings/js/components/html-woo-select.js:260
+#: assets/js/rules-settings.js:101
 msgid "Value not found"
 msgstr ""
 
+#: assets-src/rules-settings/js/components/html-woo-select.js:274
+#: assets/js/rules-settings.js:101
+msgid "Missing Id: %s"
+msgstr ""
+
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:11
-#: assets/js/rules-settings.js:1
+#: assets/js/rules-settings.js:101
 msgid "All scenarios"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:181
-#: assets/js/rules-settings.js:1
+#: assets/js/rules-settings.js:101
 msgid "Rules count in scenario: %1$s"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:182
-#: assets/js/rules-settings.js:1
+#: assets/js/rules-settings.js:101
 msgid "Read full description →"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:183
-#: assets/js/rules-settings.js:1
+#: assets/js/rules-settings.js:101
 msgid "Use scenario"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:219
-#: assets/js/rules-settings.js:1
+#: assets/js/rules-settings.js:101
 msgid "Select a ready-made scenario"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:220
-#: assets/js/rules-settings.js:1
+#: assets/js/rules-settings.js:101
 msgid "Select one of the pre-made and ready to use Flexible Shipping scenarios from our library. Pick the one which fits your needs, adjust it freely and have it all configured in no time!"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:221
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:244
-#: assets/js/rules-settings.js:1
+#: assets/js/rules-settings.js:101
 msgid "Please mind that saving the changes after using a ready-made scenario will overwrite the previously configured rules for this shipping method. However, not until the changes are saved, the prior setup is still in use."
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:243
-#: assets/js/rules-settings.js:1
+#: assets/js/rules-settings.js:101
 msgid "Use rules from scenario?"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:279
-#: assets/js/rules-settings.js:1
+#: assets/js/rules-settings.js:101
 msgid "Looking for different scenario? %1$sCheck our documentation →%2$s"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:284
-#: assets/js/rules-settings.js:1
+#: assets/js/rules-settings.js:101
 msgid "Select other scenario"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:285
-#: assets/js/rules-settings.js:1
+#: assets/js/rules-settings.js:101
 msgid "Use selected scenario"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-unavailable-modal.js:65
-#: assets/js/rules-settings.js:1
+#: assets/js/rules-settings.js:101
 msgid "Close"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:294
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/rules-settings.js:344
+#: assets/js/rules-settings.js:101
 msgid "Conditions"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:295
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/rules-settings.js:345
+#: assets/js/rules-settings.js:101
 msgid "Costs"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:297
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/rules-settings.js:347
+#: assets/js/rules-settings.js:101
 msgid "Special action"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:321
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/rules-settings.js:371
+#: assets/js/rules-settings.js:101
 msgid "Add the first rule or use one of the ready-made scenarios"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:329
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/rules-settings.js:380
+#: assets/js/rules-settings.js:101
 msgid "Add rule"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:331
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/rules-settings.js:382
+#: assets/js/rules-settings.js:101
 msgid "Duplicate selected rules"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:333
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/rules-settings.js:384
+#: assets/js/rules-settings.js:101
 msgid "Delete selected rules"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:335
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/rules-settings.js:386
+#: assets/js/rules-settings.js:101
 msgid "Use ready-made scenarios"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:360
-#: assets-src/rules-settings/js/components/rules-settings.js:367
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/rules-settings.js:404
+#: assets/js/rules-settings.js:101
+msgid "Export"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:416
+#: assets/js/rules-settings.js:101
+msgid "AI Prompt"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:452
+#: assets-src/rules-settings/js/components/rules-settings.js:459
+#: assets/js/rules-settings.js:101
 msgid "PRO Features"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:362
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/rules-settings.js:454
+#: assets/js/rules-settings.js:101
 msgid "Tick this checkbox to display the features and shipping cost calculation conditions coming with the plugin's PRO version."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:372
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/rules-settings.js:464
+#: assets/js/rules-settings.js:101
 msgid "Show the options available in the PRO version."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:376
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/rules-settings.js:468
+#: assets/js/rules-settings.js:101
 msgid "Learn more about PRO version →"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/single-condition.js:244
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/single-condition.js:245
+#: assets/js/rules-settings.js:101
 msgid "and"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/single-condition.js:246
-#: assets/js/rules-settings.js:1
+#: assets-src/rules-settings/js/components/single-condition.js:247
+#: assets/js/rules-settings.js:101
 msgid "When"
 msgstr ""
 
