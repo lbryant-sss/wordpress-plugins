@@ -534,6 +534,17 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 
 					<p>
 						<label>
+							<input type="checkbox" name="optimize_custom_menu_size"
+								<?php checked($settings['optimize_custom_menu_size']); ?>>
+							Optimize menu configuration size (default)
+						</label>
+						<br><span class="description">
+							Eliminates some redundancy in the menu configuration, making it smaller.
+						</span>
+					</p>
+
+					<p>
+						<label>
 							<input type="checkbox" name="compress_custom_menu"
 								<?php checked($settings['compress_custom_menu']); ?>>
 							Compress menu configuration data that's stored in the database

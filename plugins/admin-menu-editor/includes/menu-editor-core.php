@@ -215,6 +215,11 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			//Verbosity level of menu permission errors.
 			'error_verbosity' => self::VERBOSITY_NORMAL,
 
+			//Enable/disable a series of size optimizations for the menu configuration.
+			//For historical reasons, this is called "compression" in some parts of the code,
+			//but it's closer to using a more space-efficient format.
+			'optimize_custom_menu_size' => true,
+
 			//Enable/disable menu configuration compression. Enabling it makes the DB row much smaller,
 			//but adds decompression overhead to very admin page.
 			'compress_custom_menu' => false,
@@ -1548,7 +1553,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		if ( !empty($custom_menu) ) {
 			$custom_menu['prebuilt_virtual_caps'] = $this->build_virtual_capability_list($custom_menu);
 
-			if ( $this->options['compress_custom_menu'] ) {
+			if ( $this->options['optimize_custom_menu_size'] ) {
 				$custom_menu = ameMenu::compress($custom_menu);
 			}
 
@@ -3078,6 +3083,9 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 
 			//Whether to delete settings associated with roles/users that no longer exist.
 			$this->options['delete_orphan_actor_settings'] = !empty($this->post['delete_orphan_actor_settings']);
+
+			//Menu size optimization.
+			$this->options['optimize_custom_menu_size'] = !empty($this->post['optimize_custom_menu_size']);
 
 			//Menu data compression.
 			$this->options['compress_custom_menu'] = !empty($this->post['compress_custom_menu']);

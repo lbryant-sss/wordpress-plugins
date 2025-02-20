@@ -328,7 +328,7 @@ class B2S_Util {
                     continue;
                 }
 //AllowedExtensions?
-                if (!$network && !in_array(substr($imgUrl, strrpos($imgUrl, '.')), array('.jpg', '.png'))) {
+                if (!$network && !in_array(substr($imgUrl, strrpos($imgUrl, '.')), array('.jpg', '.png', '.webp'))) {
                     continue;
                 }
 //isRelativ?

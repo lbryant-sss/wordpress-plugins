@@ -60,7 +60,7 @@ if (!defined('ABSPATH')) {
             <div class="row form-group enable_variable_product_cache_con">
                 <div class="awdr-hr-line">
                     <div class="wdr_read_documentation_con"><a class="wdr_read_documentation"
-                                                               href="https://docs.flycart.org/en/articles/3914904-bulk-discounts-tiered-pricing-discounts-discount-rules-2-0?utm_source=woo-discount-rules&utm_campaign=doc&utm_medium=text-click&utm_content=bulk_pricing_discount?utm_source=woo-discount-rules-v2&utm_campaign=doc&utm_medium=text-click&utm_content=bulk_pricing_discount"
+                                                               href="https://docs.flycart.org/en/articles/3807208-bulk-discounts-or-tiered-pricing"
                                                                target="_blank"><?php _e('Bulk/Tiered pricing discounts', 'woo-discount-rules');?></a>
                         <p class=""><?php _e('Learn how to create bulk/tiered quantity discounts in WooCommerce', 'woo-discount-rules');?></p></div>
                     <hr/>
@@ -81,7 +81,7 @@ if (!defined('ABSPATH')) {
 
                 <div class="awdr-hr-line">
                     <div class="wdr_read_documentation_con"><a class="wdr_read_documentation"
-                                                               href="https://docs.flycart.org/en/articles/1818998-activate-discount-rule-using-a-coupon-code-in-woocommerce?utm_source=woo-discount-rules&utm_campaign=doc&utm_medium=text-click&utm_content=coupon_based?utm_source=woo-discount-rules&utm_campaign=doc&utm_medium=text-click&utm_content=coupon_based"
+                                                               href="https://docs.flycart.org/en/collections/807112-coupon-based-discounts"
                                                                target="_blank"><?php _e('Coupon code based discounts', 'woo-discount-rules');?></a>
                         <p class=""><?php _e('Apply the dynamic discount rules after the customer enters a valid coupon code', 'woo-discount-rules');?></p></div>
                     <hr/>

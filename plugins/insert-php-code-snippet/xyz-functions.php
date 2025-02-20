@@ -83,7 +83,7 @@ function xyz_ips_links($links, $file) {
 		$links[] = '<a href="https://xyzscripts.com/support/" class="xyz_support" title="Support"></a>';
 		$links[] = '<a href="https://twitter.com/xyzscripts" class="xyz_twitt" title="Follow us on Twitter"></a>';
 		$links[] = '<a href="https://www.facebook.com/xyzscripts" class="xyz_fbook" title="Like us on Facebook"></a>';
-		$links[] = '<a href="https://www.instagram.com/xyz_scripts/" class="xyz_insta" title="+1 us on Google+"></a>';
+		$links[] = '<a href="https://www.instagram.com/xyz_scripts/" class="xyz_insta" title="Follow us on Instagram+"></a>';
 		$links[] = '<a href="https://www.linkedin.com/company/xyzscripts" class="xyz_linkedin" title="Follow us on LinkedIn"></a>';
 	}
 	return $links;

@@ -1035,6 +1035,9 @@ class DiscountCalculator extends Base
                 if (!$rule->isEnabled()) {
                     continue;
                 }
+	            if (apply_filters('wdr_is_stop_sale_price_strickout',false, $rule, $product, $sale_badge)) {
+		            continue;
+	            }
                 $chosen_languages = $rule->getLanguages();
                 if (!empty($chosen_languages)) {
                     $current_language = $language_helper_object::getCurrentLanguage();

@@ -159,7 +159,8 @@ class OnSaleShortCode extends ManageDiscount
                     if($rule->isSpecificConditionsPassed(['order_date', 'order_time', 'order_date_and_time', 'order_days'])) {
                         $discount_type = $rule->getRuleDiscountType();
                         if($discount_type != 'wdr_free_shipping'){
-                            $filters = $rule->getFilter();
+	                        $filters = $rule->getFilter();
+							$filters = apply_filters('advanced_woo_discount_rules_on_sale_list_filters', $filters, $rule);
                             $additional_filter = $this->getAdditionalFilters($rule->rule, $discount_type);
                             if(!empty($additional_filter)){
                                 if(isset($additional_filter['product']) && !empty($additional_filter['product'])){

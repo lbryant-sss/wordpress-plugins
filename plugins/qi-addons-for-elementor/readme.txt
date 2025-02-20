@@ -2,7 +2,7 @@
 Contributors: qodeinteractive
 Tags: elementor, elementor addons, elementor widgets, elementor elements, addons
 Requires at least: 5.0
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 5.6
 Stable tag: 1.8.9
 License: GPLv2 or later

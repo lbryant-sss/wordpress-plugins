@@ -4,7 +4,7 @@ Donate link: https://polylang.pro
 Tags: multilingual, translate, translation, language, localization
 Requires at least: 6.2
 Tested up to: 6.7
-Requires PHP: 7.0
+Requires PHP: 7.2
 Stable tag: 3.6.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -76,7 +76,7 @@ Wherever third party code has been used, credit has been given in the code’s c
 
 == Installation ==
 
-1. Make sure you are using WordPress 6.2 or later and that your server is running PHP 7.0 or later (same requirement as WordPress itself).
+1. Make sure you are using WordPress 6.2 or later and that your server is running PHP 7.2 or later (same requirement as WordPress itself).
 1. If you tried other multilingual plugins, deactivate them before activating Polylang, otherwise, you may get unexpected results!
 1. Install and activate the plugin as usual from the 'Plugins' menu in WordPress.
 1. The [setup wizard](https://polylang.pro/doc/setup-wizard/) is automatically launched to help you get started more easily with Polylang by configuring the main features.
@@ -104,6 +104,37 @@ Wherever third party code has been used, credit has been given in the code’s c
 4. The Edit Post screen with the Languages metabox
 
 == Changelog ==
+
+= 3.7 =
+
+* Requires PHP 7.2 as minimum version
+* Pro: Add DeepL machine translation for strings
+* Pro: Consider Polylang Pro as equivalent to Polylang for plugin dependencies
+* Pro: Allow to translate metas stored as objects
+* Pro: Enhanced multilingual support of archive template hierarchy
+* Pro: Wrap the language switcher block in a nav tag
+* Pro: Support automatic IDs translation in blocks with new filters `pll_sync_block_rules_for_attributes` and `pll_sync_blocks_xpath_rules`
+* Pro: Complete rewrite of ACF integration
+* Pro: Add support for ACF blocks, post types and taxonomies.
+* Pro: Remove the possibility to translate ACF field groups
+* Pro: Add languages in ACF locations
+* Pro: Add translation of ACF labels in the strings translations page
+* Pro: Fix incorrect translation when an XLIFF import updates a term sharing its slug
+* Pro: Fix navigation block inserted in the wrong language
+* Update plugin updater to 1.9.4
+* Add translation of widgets custom html in strings translations #1423
+* Refactor core to manage the plugin options in an object #1451
+* Refactor core to give access to languages management in all contexts #1503
+* Remove the language set from the content option for new installs #1517
+* Allow numbers in language codes #1546
+* Display empty fields in the translations table for untranslated strings (instead of duplicating the original) #1574
+* Add REST API endpoints to manage options and languages #1505 #1569
+* Improve performance by registering the language taxonomy only once #1359
+* Add new API functions to insert and update posts and terms in a given language #1500 #1520
+* Add compatibility with jQuery 4 (planned in core for WP 6.8) #1612
+* Fix translations not loaded when the language is set from the content #1395
+* Fix possible term duplication #1490
+* Fix sanitization of translated options that may impact other strings #1571
 
 = 3.6.6 (2025-01-13) =
 

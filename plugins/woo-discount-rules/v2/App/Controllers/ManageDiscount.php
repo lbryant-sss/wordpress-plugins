@@ -1962,6 +1962,7 @@ class ManageDiscount extends Base
             }
             $total_discount = self::$woocommerce_helper->formatPrice($total_discount);
             $cart_total_price .= '<br>' . $this->getYouSavedText($total_discount);
+	        $cart_total_price = apply_filters('advanced_woo_discount_rules_cart_total_saved_text', $cart_total_price, $total_discount);
         }
         return $cart_total_price;
     }
@@ -3058,7 +3059,7 @@ class ManageDiscount extends Base
      * Include tax in fee
      * */
     public function applyTaxInFee($fee, $cart){
-        if(Woocommerce::isTaxEnabled()){
+        if(Woocommerce::isTaxEnabled() && apply_filters('advanced_woo_discount_rules_is_allow_tax_calculation_for_fee',true,$fee,$cart)){
             if(Woocommerce::isEnteredPriceIncludeTax()){
                 if(class_exists('\WC_Tax')){
                     $fee_taxs = \WC_Tax::calc_tax( $fee, \WC_Tax::get_rates( '', \WC()->cart->get_customer() ), true );

@@ -1931,6 +1931,9 @@ class Woocommerce
      * @return bool
      */
     static function checkProductIsPurchasable($product) {
+	    if(!apply_filters('wlr_is_purchasable_need_to_check',true)){
+		    return true;
+	    }
         if(is_object($product) && method_exists($product, 'is_purchasable')) {
             return $product->is_purchasable();
         }

@@ -6,7 +6,7 @@ msgstr ""
 "(latest release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/customer-reviews-"
 "woocommerce\n"
-"POT-Creation-Date: 2025-01-25T23:36:30+00:00\n"
+"POT-Creation-Date: 2025-02-19T01:13:12+00:00\n"
 "PO-Revision-Date: 2018-02-18 00:46+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -96,8 +96,8 @@ msgstr ""
 #: includes/qna/class-cr-admin-menu-qna.php:185
 #: includes/reminders/class-cr-manual.php:380
 #: includes/reminders/class-cr-manual.php:403
-#: includes/reviews/class-cr-admin-menu-reviews.php:243
-#: includes/reviews/class-cr-admin-menu-reviews.php:252
+#: includes/reviews/class-cr-admin-menu-reviews.php:244
+#: includes/reviews/class-cr-admin-menu-reviews.php:253
 #: includes/reviews/class-cr-reviews-media-meta-box.php:95
 #: includes/reviews/class-cr-reviews-media-meta-box.php:122
 #: includes/settings/class-cr-admin-menu-settings.php:140
@@ -114,8 +114,8 @@ msgstr "Да"
 #: includes/qna/class-cr-admin-menu-qna.php:186
 #: includes/reminders/class-cr-manual.php:381
 #: includes/reminders/class-cr-manual.php:404
-#: includes/reviews/class-cr-admin-menu-reviews.php:244
-#: includes/reviews/class-cr-admin-menu-reviews.php:253
+#: includes/reviews/class-cr-admin-menu-reviews.php:245
+#: includes/reviews/class-cr-admin-menu-reviews.php:254
 #: includes/reviews/class-cr-reviews-media-meta-box.php:94
 #: includes/reviews/class-cr-reviews-media-meta-box.php:121
 #: includes/settings/class-cr-admin-menu-settings.php:141
@@ -139,25 +139,25 @@ msgid "WhatsApp"
 msgstr ""
 
 #: includes/analytics/class-cr-reminders-log.php:412
-#: includes/analytics/class-cr-reviews-top-charts.php:260
+#: includes/analytics/class-cr-reviews-top-charts.php:261
 msgid "Manual"
 msgstr ""
 
 #: includes/analytics/class-cr-reminders-log.php:415
-#: includes/analytics/class-cr-reviews-top-charts.php:253
+#: includes/analytics/class-cr-reviews-top-charts.php:254
 #: includes/reminders/class-cr-reminders-list-table.php:71
 msgid "Automatic"
 msgstr ""
 
-#: includes/analytics/class-cr-reviews-top-charts.php:178
+#: includes/analytics/class-cr-reviews-top-charts.php:179
 msgid "In response to reminders"
 msgstr ""
 
-#: includes/analytics/class-cr-reviews-top-charts.php:184
+#: includes/analytics/class-cr-reviews-top-charts.php:185
 msgid "On-site reviews and other"
 msgstr ""
 
-#: includes/analytics/class-cr-reviews-top-charts.php:207
+#: includes/analytics/class-cr-reviews-top-charts.php:208
 msgid ""
 "Review reminders are configured to invite customers to review their orders "
 "using aggregated review forms hosted locally on your website. This setup is "
@@ -166,12 +166,12 @@ msgid ""
 "settings."
 msgstr ""
 
-#: includes/analytics/class-cr-reviews-top-charts.php:215
-#: includes/analytics/class-cr-reviews-top-charts.php:249
+#: includes/analytics/class-cr-reviews-top-charts.php:216
+#: includes/analytics/class-cr-reviews-top-charts.php:250
 msgid "Review reminders"
 msgstr ""
 
-#: includes/analytics/class-cr-reviews-top-charts.php:221
+#: includes/analytics/class-cr-reviews-top-charts.php:222
 msgid ""
 "Review reminders are configured to invite customers to review their orders "
 "using aggregated review forms hosted on CusRev.com. These reviews are "
@@ -180,7 +180,7 @@ msgid ""
 "settings."
 msgstr ""
 
-#: includes/analytics/class-cr-reviews-top-charts.php:227
+#: includes/analytics/class-cr-reviews-top-charts.php:228
 msgid ""
 "Review reminders are configured to invite customers to review their orders "
 "using aggregated review forms hosted on CusRev.com. These reviews are "
@@ -190,31 +190,56 @@ msgid ""
 "can adjust this configuration in the plugin settings."
 msgstr ""
 
-#: includes/analytics/class-cr-reviews-top-charts.php:240
+#: includes/analytics/class-cr-reviews-top-charts.php:241
 msgid "Off"
 msgstr ""
 
-#: includes/analytics/class-cr-reviews-top-charts.php:241
+#: includes/analytics/class-cr-reviews-top-charts.php:242
 msgid ""
 "Review reminders are switched off. Enabling them can help you gather more "
 "authentic feedback from your customers about the products, services, and "
 "your store."
 msgstr ""
 
-#: includes/analytics/class-cr-reviews-top-charts.php:254
+#: includes/analytics/class-cr-reviews-top-charts.php:255
 msgid ""
 "Review reminders are sent automatically with a delay and parameters defined "
 "in the settings."
 msgstr ""
 
-#: includes/analytics/class-cr-reviews-top-charts.php:261
+#: includes/analytics/class-cr-reviews-top-charts.php:262
 msgid ""
 "Review reminders can be manually triggered from the WooCommerce Orders page "
 "by clicking the envelope button next to each order."
 msgstr ""
 
-#: includes/analytics/class-cr-reviews-top-charts.php:268
+#: includes/analytics/class-cr-reviews-top-charts.php:269
 msgid "Orders"
+msgstr ""
+
+#: includes/analytics/class-cr-reviews-top-charts.php:409
+msgid "Views"
+msgstr ""
+
+#: includes/analytics/class-cr-reviews-top-charts.php:410
+msgid ""
+"The number of times your store's products were displayed as recommendations "
+"on aggregated review forms."
+msgstr ""
+
+#: includes/analytics/class-cr-reviews-top-charts.php:413
+#: includes/analytics/class-cr-reviews-top-charts.php:422
+msgid "Product Recommendations on Review Forms"
+msgstr ""
+
+#: includes/analytics/class-cr-reviews-top-charts.php:418
+msgid "Clicks"
+msgstr ""
+
+#: includes/analytics/class-cr-reviews-top-charts.php:419
+msgid ""
+"The number of times customers clicked on your store's product "
+"recommendations shown on aggregated review forms."
 msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:485
@@ -354,7 +379,7 @@ msgstr ""
 #: includes/blocks/class-cr-all-reviews.php:1191
 #: includes/qna/class-cr-admin-menu-qna.php:190
 #: includes/qna/class-cr-qna.php:179 includes/reminders/class-cr-manual.php:397
-#: includes/reviews/class-cr-admin-menu-reviews.php:248
+#: includes/reviews/class-cr-admin-menu-reviews.php:249
 msgid "OK"
 msgstr ""
 
@@ -381,7 +406,7 @@ msgstr ""
 #: includes/blocks/class-cr-all-reviews.php:1277
 #: includes/qna/class-cr-admin-menu-qna.php:189
 #: includes/qna/class-cr-qna.php:181
-#: includes/reviews/class-cr-admin-menu-reviews.php:247
+#: includes/reviews/class-cr-admin-menu-reviews.php:248
 msgid "Try again"
 msgstr ""
 
@@ -423,7 +448,7 @@ msgstr ""
 
 #: includes/blocks/class-cr-reviews-grid.php:360
 #: includes/blocks/class-cr-reviews-slider.php:257
-#: includes/reviews/class-cr-admin-menu-reviews.php:619
+#: includes/reviews/class-cr-admin-menu-reviews.php:620
 #: includes/reviews/class-cr-reviews-list-table.php:1220
 #: templates/cr-review.php:116
 msgid "Verified owner"
@@ -820,13 +845,13 @@ msgstr ""
 
 #: includes/google/class-cr-admin-menu-product-feed.php:141
 #: includes/google/class-cr-product-feed-reviews.php:31
-#: includes/reviews/class-cr-admin-menu-reviews.php:50
 #: includes/reviews/class-cr-admin-menu-reviews.php:51
-#: includes/reviews/class-cr-admin-menu-reviews.php:61
+#: includes/reviews/class-cr-admin-menu-reviews.php:52
 #: includes/reviews/class-cr-admin-menu-reviews.php:62
+#: includes/reviews/class-cr-admin-menu-reviews.php:63
 #: includes/settings/class-cr-admin-menu-settings.php:174
 #: includes/settings/class-cr-settings-trust-badges.php:344
-#: admin/build/index.js:1 admin/src/reviews/Reviews.jsx:52
+#: admin/build/index.js:1 admin/src/reviews/Reviews.jsx:58
 msgid "Reviews"
 msgstr ""
 
@@ -1360,7 +1385,7 @@ msgstr ""
 #: includes/google/class-cr-product-feed-status.php:146
 #: includes/reminders/class-cr-reminders-log-table.php:95
 #: templates/reminder-details-admin-page.php:103 admin/build/index.js:1
-#: admin/src/reviews/Reviews.jsx:69
+#: admin/src/reviews/Reviews.jsx:75
 msgid "Status"
 msgstr ""
 
@@ -1677,7 +1702,7 @@ msgstr ""
 #: includes/reminders/class-cr-manual.php:391
 #: includes/reminders/class-cr-reminders-list-table.php:196
 #: includes/reminders/class-cr-reminders-list-table.php:387
-#: includes/reviews/class-cr-admin-menu-reviews.php:245
+#: includes/reviews/class-cr-admin-menu-reviews.php:246
 #: includes/settings/class-cr-settings-forms-rating.php:186
 #: includes/settings/class-cr-settings-forms-rating.php:213
 #: includes/settings/class-cr-settings-forms.php:648
@@ -2220,29 +2245,29 @@ msgid "Q & A"
 msgstr ""
 
 #: includes/qna/class-cr-admin-menu-qna.php:183
-#: includes/reviews/class-cr-admin-menu-reviews.php:241
+#: includes/reviews/class-cr-admin-menu-reviews.php:242
 msgid "Uploading..."
 msgstr ""
 
 #: includes/qna/class-cr-admin-menu-qna.php:184
-#: includes/reviews/class-cr-admin-menu-reviews.php:242
+#: includes/reviews/class-cr-admin-menu-reviews.php:243
 #: includes/reviews/class-cr-reviews-media-meta-box.php:93
 #: includes/reviews/class-cr-reviews-media-meta-box.php:120
 msgid "Detach?"
 msgstr ""
 
 #: includes/qna/class-cr-admin-menu-qna.php:188
-#: includes/reviews/class-cr-admin-menu-reviews.php:246
+#: includes/reviews/class-cr-admin-menu-reviews.php:247
 msgid "Downloading..."
 msgstr ""
 
 #: includes/qna/class-cr-admin-menu-qna.php:191
-#: includes/reviews/class-cr-admin-menu-reviews.php:249
+#: includes/reviews/class-cr-admin-menu-reviews.php:250
 msgid "Cancelling..."
 msgstr ""
 
 #: includes/qna/class-cr-admin-menu-qna.php:192
-#: includes/reviews/class-cr-admin-menu-reviews.php:250
+#: includes/reviews/class-cr-admin-menu-reviews.php:251
 msgid "Downloading of media file(s) was cancelled."
 msgstr ""
 
@@ -2923,55 +2948,55 @@ msgid_plural "Form Opened <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:251
+#: includes/reviews/class-cr-admin-menu-reviews.php:252
 msgid "Would you like to remove verification from this review?"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:296
+#: includes/reviews/class-cr-admin-menu-reviews.php:297
 msgid "Reply to Review"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:370
+#: includes/reviews/class-cr-admin-menu-reviews.php:371
 msgid ""
 "Publish a copy of your reply to <a href=\"%s\" target=\"_blank\" "
 "rel=\"noopener noreferrer\">CusRev</a> portal"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:372
+#: includes/reviews/class-cr-admin-menu-reviews.php:373
 msgid "CusRev (Customer Reviews) portal"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:373
+#: includes/reviews/class-cr-admin-menu-reviews.php:374
 msgid "plugin's settings"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:374
+#: includes/reviews/class-cr-admin-menu-reviews.php:375
 msgid ""
 "A copy of this reply will not be published on %1$s because no license key "
 "was entered in the %2$s. A license key (free or professional) is used as a "
 "secret token for additional security when communicating with CusRev service."
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:500
+#: includes/reviews/class-cr-admin-menu-reviews.php:501
 msgid "Author Type"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:515
+#: includes/reviews/class-cr-admin-menu-reviews.php:516
 msgid "Customer Reviews (CR)"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:528
+#: includes/reviews/class-cr-admin-menu-reviews.php:529
 msgid "Answers to Custom Questions"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:552
-#: includes/reviews/class-cr-admin-menu-reviews.php:554
-#: includes/reviews/class-cr-admin-menu-reviews.php:561
-#: includes/reviews/class-cr-admin-menu-reviews.php:563
-#: includes/reviews/class-cr-admin-menu-reviews.php:570
-#: includes/reviews/class-cr-admin-menu-reviews.php:572
-#: includes/reviews/class-cr-admin-menu-reviews.php:579
-#: includes/reviews/class-cr-admin-menu-reviews.php:581
+#: includes/reviews/class-cr-admin-menu-reviews.php:553
+#: includes/reviews/class-cr-admin-menu-reviews.php:555
+#: includes/reviews/class-cr-admin-menu-reviews.php:562
+#: includes/reviews/class-cr-admin-menu-reviews.php:564
+#: includes/reviews/class-cr-admin-menu-reviews.php:571
+#: includes/reviews/class-cr-admin-menu-reviews.php:573
+#: includes/reviews/class-cr-admin-menu-reviews.php:580
+#: includes/reviews/class-cr-admin-menu-reviews.php:582
 #: includes/reviews/class-cr-reviews-list-table.php:885
 #: includes/reviews/class-cr-reviews-list-table.php:887
 #: includes/reviews/class-cr-reviews-list-table.php:902
@@ -2983,12 +3008,12 @@ msgstr ""
 msgid "CusRev portal"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:556
+#: includes/reviews/class-cr-admin-menu-reviews.php:557
 #: includes/reviews/class-cr-reviews-list-table.php:892
 msgid "A verified copy of this reply was published on %s"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:565
+#: includes/reviews/class-cr-admin-menu-reviews.php:566
 #: includes/reviews/class-cr-reviews-list-table.php:909
 msgid ""
 "This reply was originally posted on %s. If this copy of the reply is edited, "
@@ -2996,14 +3021,14 @@ msgid ""
 "original reply on CusRev portal."
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:574
+#: includes/reviews/class-cr-admin-menu-reviews.php:575
 #: includes/reviews/class-cr-reviews-list-table.php:926
 msgid ""
 "This reply was originally posted on %s. This copy of the reply was modified "
 "and might be different from the original published on CusRev portal."
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:583
+#: includes/reviews/class-cr-admin-menu-reviews.php:584
 #: includes/reviews/class-cr-reviews-list-table.php:943
 msgid ""
 "A verified copy published on %s could not be updated because it is not the "
@@ -3011,43 +3036,43 @@ msgid ""
 "reply."
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:586
+#: includes/reviews/class-cr-admin-menu-reviews.php:587
 #: includes/reviews/class-cr-reviews-list-table.php:949
 msgid "Reply could not be published to CusRev portal. Error "
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:607
+#: includes/reviews/class-cr-admin-menu-reviews.php:608
 #: includes/reviews/class-cr-reviews-list-table.php:1223
 #: templates/cr-review.php:119 templates/reviews-grid.php:130
 #: templates/reviews-slider.php:48
 msgid "Reviewer"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:626
-#: includes/reviews/class-cr-admin-menu-reviews.php:635
+#: includes/reviews/class-cr-admin-menu-reviews.php:627
+#: includes/reviews/class-cr-admin-menu-reviews.php:636
 #: includes/reviews/class-cr-reviews-list-table.php:1206
 #: templates/cr-review.php:104
 msgid "Store manager"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:659
+#: includes/reviews/class-cr-admin-menu-reviews.php:660
 msgid ""
 "This reply was originally posted on CusRev portal. This copy of the reply "
 "was modified and might be different from the original reply published on "
 "CusRev portal."
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:671
+#: includes/reviews/class-cr-admin-menu-reviews.php:672
 #: includes/reviews/class-cr-reviews-list-table.php:793
 msgid "Feature"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:677
+#: includes/reviews/class-cr-admin-menu-reviews.php:678
 #: includes/reviews/class-cr-reviews-list-table.php:795
 msgid "Unfeature"
 msgstr ""
 
-#: includes/reviews/class-cr-admin-menu-reviews.php:771
+#: includes/reviews/class-cr-admin-menu-reviews.php:772
 msgid "Reviews per page"
 msgstr ""
 
@@ -6309,7 +6334,7 @@ msgstr ""
 msgid "Edit Review"
 msgstr ""
 
-#: templates/all-reviews-admin-page.php:126
+#: templates/all-reviews-admin-page.php:136
 msgid "Search reviews"
 msgstr ""
 
@@ -6673,20 +6698,24 @@ msgstr ""
 msgid "Show Less"
 msgstr ""
 
-#: admin/build/index.js:1 admin/src/reviews/Reviews.jsx:36
+#: admin/build/index.js:1 admin/src/reviews/Reviews.jsx:42
 msgid "Ratings"
 msgstr ""
 
-#: admin/build/index.js:1 admin/src/reviews/Reviews.jsx:38
+#: admin/build/index.js:1 admin/src/reviews/Reviews.jsx:44
 msgid "Average review rating"
 msgstr ""
 
-#: admin/build/index.js:1 admin/src/reviews/Reviews.jsx:39
+#: admin/build/index.js:1 admin/src/reviews/Reviews.jsx:45
 msgid "Ratings distribution"
 msgstr ""
 
-#: admin/build/index.js:1 admin/src/reviews/Reviews.jsx:54
+#: admin/build/index.js:1 admin/src/reviews/Reviews.jsx:60
 msgid "Reviews received"
+msgstr ""
+
+#: admin/build/index.js:1 admin/src/reviews/Reviews.jsx:96
+msgid "Recommendations"
 msgstr ""
 
 #: admin/build/index.js:1 admin/src/Reminders.jsx:34

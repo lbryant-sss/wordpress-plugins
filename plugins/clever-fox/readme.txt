@@ -4,7 +4,7 @@ Tags: homepage setup, companion, one click demo, sections, customizer
 Requires at least: 6.0
 Tested up to: 6.7.1
 Requires PHP: 5.6
-Stable tag: 26.2.65
+Stable tag: 26.2.66
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -167,6 +167,7 @@ Yes, This plugin is specially make for Nayra Themes. You can install theme for e
 - [VillaPress](https://wordpress.org/themes/villapress/)
 - [Evion](https://wordpress.org/themes/evion/)
 - [Nexcraft](https://wordpress.org/themes/nexcraft/)
+- [Nexcraft BPO](https://wordpress.org/themes/nexcraft-bpo/)
 
 == Screenshots ==
 
@@ -195,6 +196,9 @@ Clever Fox WordPress Plugin is licensed under the GPL3 (https://www.gnu.org/lice
 
 
 == Changelog ==
+
+= 26.2.66 =
+* Readme Updated
 
 = 26.2.65 =
 * Readme Updated

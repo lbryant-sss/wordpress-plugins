@@ -4,7 +4,7 @@ Donate link: http://xyzscripts.com/donate/
 Tags: insert PHP, add PHP, insert PHP code, insert PHP tag, insert PHP snippet, insert PHP code snippet , insert PHP snippet, add PHP code, insert PHP tag, add PHP snippet, add PHP code snippet, integrate PHP codes, raw PHP, embed PHP, PHP inserter, PHP code inserter, PHP snippet inserter
 Requires at least: 5
 Tested up to: 6.7.2
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPLv2 or later
 
 Add PHP code to your pages and posts easily using shortcodes.
@@ -65,6 +65,11 @@ More questions ? [Drop a mail](http://xyzscripts.com/members/support/ "XYZScript
 
 
 == Changelog ==
+
+= 1.4.1 =
+* Fixed image size issue reported 
+* Updated snippet dropdown in editor to allow only shortcodes in Manual Placement mode
+* Fixed minor bugs and optimized performance
 
 = 1.4 =
 * Added new Snippet Placement Methods: Automatic, Execute on Demand, and Shortcode (Manual) for more flexible snippet placement options.

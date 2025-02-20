@@ -3,8 +3,8 @@ Contributors: flycart
 Donate link: https://flycart.org/
 Tags: woocommerce, coupons, discounts, dynamic pricing, bulk discount
 Requires at least: 4.6.1
-Tested up to: 6.6
-Stable tag: 2.6.6
+Tested up to: 6.7
+Stable tag: 2.6.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -351,6 +351,15 @@ Choose the discount type as Buy X get X. Then choose the filter and quantity ran
 * Dutch Translation - [@mvdburg1971](https://profiles.wordpress.org/mvdburg1971) - Michael van der Burg
 
 == Changelog ==
+= 2.6.7 - 19/02/24 =
+* Added: Event: advanced_woo_discount_rules_free_product_price [PRO].
+* Added: jQuery event trigger wdr_dynamic_price_update [Core].
+* Added: Event: wlr_is_purchasable_need_to_check [Core].
+* Added: Event: advanced_woo_discount_rules_cart_total_saved_text [Core].
+* Added: Event: advanced_woo_discount_rules_is_allow_tax_calculation_for_fee [Core].
+* Added: Event: advanced_woo_discount_rules_on_sale_list_filters [Core].
+* Improved: Coupon code compares in CartCoupon Condition [PRO].
+
 = 2.6.6 -10/09/24 =
 * Fix - Minor XSS issue in the review request notice [Core].
 
