@@ -46,12 +46,13 @@ class GoogleFontsLocalLoader {
 		$this->local_fonts_url = "{$upload_dir['baseurl']}/{$this->uploads_dir}";
 
 		if ( ! file_exists( $this->local_fonts_dir ) ) {
-			mkdir( $this->local_fonts_dir, 0777, true );
+			wp_mkdir_p( $this->local_fonts_dir );
 		}
 	}
 
 
 	public function resolveFontsCSS() {
+		// phpcs:ignore WordPress.Security.NonceVerification
 		$action = Arr::get( $_REQUEST, 'action' );
 
 		if ( $action !== $this->fonts_css_action ) {
@@ -61,6 +62,7 @@ class GoogleFontsLocalLoader {
 		header( 'Content-type: text/css' );
 		header( 'Cache-control: public' );
 
+		// phpcs:ignore WordPress.Security.NonceVerification
 		$key    = sanitize_key( Arr::get( $_REQUEST, 'key', '' ) );
 		$cached = $this->getCachedDataByKey( $key );
 
@@ -82,8 +84,8 @@ class GoogleFontsLocalLoader {
 			$css = "/* {$this->google_css_url}?family={$query} */\n\n{$css}";
 		}
 
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		die( $css );
-
 	}
 
 	private function getCSS( $query, $replace_urls = true ) {
@@ -124,7 +126,7 @@ class GoogleFontsLocalLoader {
 		$google_font_url = $this->google_font_url;
 		$css             = preg_replace_callback(
 			'#url\((.*?)\)#',
-			function( $matches ) use ( $google_font_url ) {
+			function ( $matches ) use ( $google_font_url ) {
 				$url = str_replace( $google_font_url, '', Arr::get( $matches, 1, '' ) );
 
 				return "url({{{{$url}}}})";
@@ -160,7 +162,7 @@ class GoogleFontsLocalLoader {
 
 		$css = preg_replace_callback(
 			'#url\(\{\{\{(.*?)\}\}\}\)#',
-			function( $matches ) use ( $self, $action ) {
+			function ( $matches ) use ( $self, $action ) {
 				$font_file = Arr::get( $matches, 1, '' );
 
 				if ( $self->localFontFileExists( $font_file ) ) {
@@ -183,7 +185,6 @@ class GoogleFontsLocalLoader {
 		);
 
 		return $css;
-
 	}
 
 	public function getCachedDataByKey( $key ) {
@@ -195,7 +196,7 @@ class GoogleFontsLocalLoader {
 	}
 
 	public function getCachedQueryData( $query ) {
-		return  $this->getCachedDataByKey( md5( $query ) );
+		return $this->getCachedDataByKey( md5( $query ) );
 	}
 
 	public function cacheQueryCSS( $query, $css ) {
@@ -259,7 +260,9 @@ class GoogleFontsLocalLoader {
 					'key'    => md5( $query ),
 				),
 				site_url()
-			)
+			),
+			array(),
+			md5( $query )
 		);
 	}
 
@@ -331,7 +334,7 @@ class GoogleFontsLocalLoader {
 			//sorts fonts faces
 			usort(
 				$all_fonts,
-				function( $a, $b ) {
+				function ( $a, $b ) {
 					return array( $a['font-family'], $a['font-style'], $a['font-weight'], $a['subset'] )
 					<=>
 					array( $b['font-family'], $b['font-style'], $b['font-weight'], $b['subset'] );
@@ -393,28 +396,32 @@ class GoogleFontsLocalLoader {
 
 	public function resolveFont() {
 
-		$font_file    = sanitize_text_field( Arr::get( $_REQUEST, 'font', '' ) );
+		// phpcs:ignore WordPress.Security.NonceVerification
+		$font_file = sanitize_text_field( Arr::get( $_REQUEST, 'font', '' ) );
+		// phpcs:ignore WordPress.Security.NonceVerification
 		$security_key = sanitize_text_field( Arr::get( $_REQUEST, 'security', '' ) );
 
 		$valid_nonce = $this->verifySecurityKey( $security_key, "{$this->font_file_action}_{$font_file}" );
 
 		if ( ! $valid_nonce ) {
-			wp_die( __( 'Frobidden', 'kubio' ), 403 );
+			wp_die( esc_html( 'Forbidden', 'kubio' ), 403 );
 		}
 
 		$content = $this->resolveFontFileContent( $font_file );
 
 		if ( is_wp_error( $content ) ) {
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			wp_die( $content, 404 );
 		}
 
-		$this_year = strtotime( date( 'Y' ) . '-01-01' );
+		$this_year = strtotime( gmdate( 'Y' ) . '-01-01' );
 		header( 'Content-type: font/woff2' );
 		header( 'Cache-control: public' );
 		header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s', $this_year ) . ' GMT' );
 		header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', $this_year + YEAR_IN_SECONDS ) . ' GMT' );
 		header( 'Etag: ' . md5( base64_encode( $content ) ) );
 
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		die( $content );
 	}
 
@@ -423,6 +430,7 @@ class GoogleFontsLocalLoader {
 			return file_get_contents( $this->getLocalFontFilePath( $font_file ) );
 		}
 
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable
 		if ( ! is_writable( $this->local_fonts_dir ) ) {
 			return new \WP_Error( 'folder_not_writable' );
 		}
@@ -438,8 +446,7 @@ class GoogleFontsLocalLoader {
 
 		$this->saveFontContentToLocalFile( $font_file, $content );
 
-		return  $content;
-
+		return $content;
 	}
 
 	private function getSecuritySalt() {
@@ -492,16 +499,14 @@ class GoogleFontsLocalLoader {
 		add_action( "wp_ajax_nopriv_{$this->font_file_action}", array( $this, 'resolveFont' ) );
 
 		add_action( 'plugins_loaded', array( $this, 'resolveFontsCSS' ) );
-
 	}
 
 	public static function enqueuLocalGoogleFonts( $fonts_query ) {
-		return  GoogleFontsLocalLoader::getInstance()->enqueueFonts( $fonts_query );
+		return GoogleFontsLocalLoader::getInstance()->enqueueFonts( $fonts_query );
 	}
 
 
 	public static function registerFontResolver() {
 		return GoogleFontsLocalLoader::getInstance()->addAdminAjaxActions();
 	}
-
 }

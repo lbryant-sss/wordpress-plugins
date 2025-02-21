@@ -4,7 +4,6 @@ namespace Kubio\Blocks;
 
 use Kubio\Core\Blocks\BlockBase;
 use Kubio\Core\Registry;
-use Kubio\Flags;
 
 class CopyrightBlock extends BlockBase {
 
@@ -15,30 +14,27 @@ class CopyrightBlock extends BlockBase {
 
 		$template = $this->getTemplateValue();
 		return array(
-			self::OUTER => array( 'innerHTML' => $this->kubio_copyright_shortcode( array(), $template ) ),
+			self::OUTER => array( 'innerHTML' => $this->render_template( $template ) ),
 		);
 	}
 
 	function getTemplateValue() {
 		$template = $this->getBlockInnerHtml();
-
-		$is_free = !kubio_is_pro();
-
-		if($is_free && Flags::getSetting( 'activatedOnStage2', false )) {
-			$template = __('&copy; {year} {site-name}. Created for free using WordPress and <a target="_blank" href="https://kubiobuilder.com" rel="noreferrer">Kubio</a>','kubio');
-		}
-
 		return $template;
 	}
 
-	function kubio_copyright_shortcode( $atts, $content ) {
-		//TODO the href will need changing to the kubio website when will have one
-		$default = '&copy; {year} {site-name}. Built using WordPress and <a target="_blank" href="https://kubiobuilder.com" rel="noreferrer">Kubio</a>';
+	function render_template( $content = '' ) {
+		$default = '&copy; {year} {site-name}.';
 		$msg     = $content ? $content : $default;
-		$msg 	 = wp_kses_post($msg);
-		$msg     = str_replace( '{year}', date( 'Y' ), $msg );
-		$msg     = str_replace( '{site-name}', get_bloginfo( 'name' ), $msg );
-		$msg     = sprintf( '<p>%s</p>', $msg );
+
+		// replace placeholders with actual values
+		$msg = str_replace( '{year}', gmdate( 'Y' ), $msg );
+		$msg = str_replace( '{site-name}', get_bloginfo( 'name' ), $msg );
+
+		// sanitize the message to allow only post like content
+		$msg = wp_kses_post( $msg );
+
+		$msg = sprintf( '<p>%s</p>', $msg );
 		return html_entity_decode( $msg );
 	}
 }

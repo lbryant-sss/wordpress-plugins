@@ -7,6 +7,7 @@ add_action(
 	'template_redirect',
 	function () {
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( Arr::has( $_REQUEST, '__kubio-page-query' ) && Utils::canEdit() ) {
 
 			$cats = array_unique(
@@ -50,6 +51,7 @@ add_action(
 				'orderBy'     => strtolower( get_query_var( 'orderBy', 'date' ) ),
 				'author'      => get_query_var( 'author', 0 ),
 				'search'      => get_query_var( 's', '' ),
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 				'exclude'     => get_query_var( 'post__not_in', array() ),
 				'sticky'      => '',
 				'perPage'     => intval( get_option( 'posts_per_page', 10 ) ),

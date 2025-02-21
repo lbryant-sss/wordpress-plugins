@@ -123,7 +123,6 @@ class LogoBlock extends BlockBase {
 			'innerHTML' => wp_kses_post( $text ),
 		);
 		return $map;
-
 	}
 
 	private function getImageLogoUrl() {

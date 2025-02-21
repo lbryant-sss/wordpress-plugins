@@ -21,4 +21,3 @@ class MaxWidth extends PropertyBase {
 		return $style;
 	}
 }
-

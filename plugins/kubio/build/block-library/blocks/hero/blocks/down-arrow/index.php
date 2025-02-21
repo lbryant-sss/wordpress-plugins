@@ -3,7 +3,6 @@
 namespace Kubio\Blocks;
 
 use Kubio\Core\Blocks\BlockBase;
-use Kubio\Core\Blocks\BlockContainerBase;
 use Kubio\Core\Registry;
 use Kubio\Core\Utils;
 

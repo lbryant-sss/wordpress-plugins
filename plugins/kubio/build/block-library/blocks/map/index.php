@@ -64,7 +64,7 @@ class MapBlock extends BlockBase {
 				'className' => 'frontend-wrapper',
 			),
 			self::IFRAME  => array(
-				'src' => esc_url($src),
+				'src' => esc_url( $src ),
 			),
 		);
 	}

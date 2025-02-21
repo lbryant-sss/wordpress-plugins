@@ -1,6 +1,5 @@
 <?php
 
-use IlluminateAgnostic\Arr\Support\Arr;
 
 /**
  * @param string $block_type
@@ -23,4 +22,3 @@ function kubio_add_block_importer_asset_filter( $block_type, $callback ) {
 
 require_once __DIR__ . '/importer-filters/kubio-blocks.php';
 require_once __DIR__ . '/importer-filters/kubio-block-support-import-mapper.php';
-

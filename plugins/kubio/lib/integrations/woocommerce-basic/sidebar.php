@@ -27,8 +27,8 @@ function kubio_get_woocommerce_sidebar_defaults() {
 			'id'   => 'block',
 			'data' => array(
 				'content' => '<!-- wp:separator {"color":"kubio-color-1","className":"is-style-wide"} -->' .
-							 '<hr class="wp-block-separator has-text-color has-background has-kubio-color-1-background-color has-kubio-color-1-color is-style-wide"/>' .
-							 '<!-- /wp:separator -->',
+							'<hr class="wp-block-separator has-text-color has-background has-kubio-color-1-background-color has-kubio-color-1-color is-style-wide"/>' .
+							'<!-- /wp:separator -->',
 			),
 		),
 

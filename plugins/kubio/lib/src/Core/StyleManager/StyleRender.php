@@ -317,7 +317,7 @@ class ElementConfig extends BasicPropsConfig {
 				$state,
 				$defaultSelector
 			);
-			if($elementSelector === null) {
+			if ( $elementSelector === null ) {
 				$elementSelector = '';
 			}
 			$elementSelector = str_replace(
@@ -512,7 +512,10 @@ class StyleRender {
 			$ancestor,
 			$element,
 			$state
-		) use ( $rootPrefix, $styleType ) {
+		) use (
+			$rootPrefix,
+			$styleType
+) {
 			return $this->composeSelector(
 				$rootPrefix,
 				$styleType,

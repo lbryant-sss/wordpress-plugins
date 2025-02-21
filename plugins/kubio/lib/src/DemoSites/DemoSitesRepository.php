@@ -43,7 +43,7 @@ class DemoSitesRepository {
 	}
 
 	public function actionRetrieveDemoSites() {
-		check_ajax_referer('kubio-demo-sites-retrieve-nonce');
+		check_ajax_referer( 'kubio-demo-sites-retrieve-nonce' );
 		return $this->retrieveDemoSites();
 	}
 
@@ -55,7 +55,8 @@ class DemoSitesRepository {
 
 		static::$action_added = true;
 
-		$empty  = empty( $this->getDemoSitesList() );
+		$empty = empty( $this->getDemoSitesList() );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$reload = $empty && Arr::get( $_REQUEST, 'tab' ) === 'demo-sites' && Arr::get( $_REQUEST, 'page' ) === 'kubio-get-started';
 
 		add_action(
@@ -63,8 +64,8 @@ class DemoSitesRepository {
 			function () use ( $reload ) {
 				$fetch_url = add_query_arg(
 					array(
-							'action' => 'kubio-demo-sites-retrieve',
-							'_wpnonce' =>  wp_create_nonce( 'kubio-demo-sites-retrieve-nonce' )
+						'action'   => 'kubio-demo-sites-retrieve',
+						'_wpnonce' => wp_create_nonce( 'kubio-demo-sites-retrieve-nonce' ),
 					),
 					admin_url( 'admin-ajax.php' )
 				);
@@ -94,7 +95,7 @@ class DemoSitesRepository {
 			}
 		}
 
-		return  $demos;
+		return $demos;
 	}
 
 	public static function getPluginsStates() {
@@ -196,7 +197,7 @@ class DemoSitesRepository {
 			array(
 				'kubio_version' => KUBIO_VERSION,
 				'kubio_build'   => KUBIO_BUILD_NUMBER,
-				'activated_on'   => Flags::get( 'kubio_activation_time', '' )
+				'activated_on'  => Flags::get( 'kubio_activation_time', '' ),
 			),
 			$url
 		);
@@ -243,5 +244,4 @@ class DemoSitesRepository {
 
 		return $demos;
 	}
-
 }

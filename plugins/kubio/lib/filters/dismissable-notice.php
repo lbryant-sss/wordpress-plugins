@@ -35,7 +35,7 @@ function kubio_add_dismissable_notice( $name, $callback, $repeat_after = 0, $par
 							$(document).on('click','[data-kubio-notice-id=' + data.id + '] .notice-dismiss',function(){
 								wp.ajax.post('kubio-dismissable-notice--dismiss',{
 									kubio_notice_name:data.name,
-									_wpnonce: '<?php echo wp_create_nonce( 'kubio-dismissable-notice--dismiss-nonce' );?>'
+									_wpnonce: '<?php echo esc_html( wp_create_nonce( 'kubio-dismissable-notice--dismiss-nonce' ) ); ?>'
 								});
 							});
 						});
@@ -57,7 +57,7 @@ function kubio_add_dismissable_notice( $name, $callback, $repeat_after = 0, $par
  * @return void
  */
 function _kubio_dismiss_dismissable_notice() {
-	check_ajax_referer('kubio-dismissable-notice--dismiss-nonce');
+	check_ajax_referer( 'kubio-dismissable-notice--dismiss-nonce' );
 	$notice  = Arr::get( $_REQUEST, 'kubio_notice_name', false );
 	$notices = get_option( '_kubio_dismissable_notices', array() );
 
@@ -65,7 +65,6 @@ function _kubio_dismiss_dismissable_notice() {
 		$notices[ $notice ] = array( 'dismiss_time' => time() );
 		update_option( '_kubio_dismissable_notices', $notices );
 	}
-
 }
 
 /**

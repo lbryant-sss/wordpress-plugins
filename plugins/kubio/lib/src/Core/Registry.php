@@ -44,6 +44,7 @@ class Registry {
 		$metadata   = kubio_get_block_metadata_mixin( $block_json );
 
 		if ( ! $metadata ) {
+			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 			throw new Exception( "Kubio register block missing metadata. Path: {$block_json}" );
 		}
 
@@ -54,6 +55,7 @@ class Registry {
 			$mixin_data = kubio_get_block_metadata_mixin( $mixin_path );
 
 			if ( ! $mixin_data ) {
+				// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 				throw new Exception( "Kubio register block missing metadata mixin. Path: {$mixin_path}" );
 			}
 
@@ -81,6 +83,7 @@ class Registry {
 		$block_name = Arr::get( $metadata, 'name', null );
 
 		if ( ! $block_name ) {
+			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 			throw new Exception( "Kubio register block missing block name. Path: {$block_json}" );
 		}
 
@@ -174,7 +177,7 @@ class Registry {
 				$weight = strval( $weight );
 
 				if ( $style === 'italic' ) {
-					 $weight . 'italic';
+					$weight . 'italic';
 				}
 
 				if ( ! in_array( $weight, $this->window_font_weights ) ) {

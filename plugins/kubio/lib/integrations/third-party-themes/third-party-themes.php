@@ -11,6 +11,7 @@ if ( ! defined( 'KUBIO_3RD_PARTY_DEFAULT_TEMPLATES_PATH' ) ) {
 }
 
 function kubio_is_hybdrid_theme_iframe_preview() {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	return Arr::has( $_REQUEST, '__kubio-site-edit-iframe-preview' );
 }
 
@@ -22,4 +23,3 @@ require_once __DIR__ . '/editor-hooks.php';
 require_once __DIR__ . '/frontend-hooks.php';
 require_once __DIR__ . '/templates-importer.php';
 require_once __DIR__ . '/preview.php';
-

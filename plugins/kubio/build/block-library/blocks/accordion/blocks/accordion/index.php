@@ -2,9 +2,7 @@
 
 namespace Kubio\Blocks;
 
-use Kubio\Config;
 use Kubio\Core\Blocks\BlockBase;
-use Kubio\Core\LodashBasic;
 use Kubio\Core\Registry;
 use Kubio\Core\StyleManager\DynamicStyles;
 use Kubio\Core\Utils;
@@ -12,18 +10,17 @@ use Kubio\Core\Utils;
 
 class AccordionBlock extends BlockBase {
 
-	const OUTER  = 'outer';
+	const OUTER   = 'outer';
 	const CONTENT = 'content';
-	const VSPACE = 'v-space';
+	const VSPACE  = 'v-space';
 
 
 	public function mapDynamicStyleToElements() {
-		$dynamicStyles                 = array();
-		$spaceByMedia                  = $this->getPropByMedia(
+		$dynamicStyles = array();
+		$spaceByMedia  = $this->getPropByMedia(
 			'vSpace',
 			array()
 		);
-
 
 		$dynamicStyles[ self::VSPACE ] = DynamicStyles::vSpace( $spaceByMedia );
 		return $dynamicStyles;

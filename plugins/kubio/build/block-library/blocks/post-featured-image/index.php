@@ -87,7 +87,7 @@ class PostFeaturedImageBlock extends Blockbase {
 			//when it shows image
 			$imageId      = $this->getFeaturedImageId();
 			$imageClasses = array( 'wp-image-' . $imageId );
-			$alt          = trim( strip_tags( get_post_meta( $imageId, '_wp_attachment_image_alt', true ) ) );
+			$alt          = trim( wp_strip_all_tags( get_post_meta( $imageId, '_wp_attachment_image_alt', true ) ) );
 			if ( ! ! $alt ) {
 				$imageAttributes['alt'] = $alt;
 			}
@@ -136,5 +136,3 @@ class PostFeaturedImageBlock extends Blockbase {
 }
 
 Registry::registerBlock( __DIR__, PostFeaturedImageBlock::class );
-
-

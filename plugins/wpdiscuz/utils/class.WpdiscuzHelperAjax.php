@@ -305,7 +305,7 @@ class WpdiscuzHelperAjax implements WpDiscuzConstants
         ];
         if ($post && $guestEmail) {
             $hashValue = $this->helperEmail->generateUserActionHash($guestEmail);
-            $mainUrl = site_url("/wpdiscuzsubscription/");
+            $mainUrl = home_url("/wpdiscuzsubscription/");
             $link = "";
             $message = "";
             $siteUrl = get_site_url();
@@ -643,7 +643,7 @@ class WpdiscuzHelperAjax implements WpDiscuzConstants
     public function voteOnComment()
     {
         $this->helper->validateNonce();
-        if($this->helper->isBanned()){
+        if ($this->helper->isBanned()) {
             wp_send_json_error("wc_banned_user");
         }
         $isUserLoggedIn = is_user_logged_in();

@@ -82,8 +82,10 @@ class NotificationsManager {
 		$url = add_query_arg(
 			array(
 				'_fields'             => 'acf,id',
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 				'meta_key'            => 'license_type',
-				'meta_value'          => kubio_is_pro() ? 'pro' : 'free',
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+				'meta_value'          => apply_filters( 'kubio/notifications/license_type', 'free' ),
 				'kubio_version'       => KUBIO_VERSION,
 				'kubio_build'         => KUBIO_BUILD_NUMBER,
 				'kubio_theme_version' => wp_get_theme()->get( 'Version' ),
@@ -198,10 +200,18 @@ class NotificationsManager {
 		?>
 		<div class="kubio-remote-notification-wrapper" id="kubio-remote-notification-<?php echo esc_attr( $params['id'] ); ?>">
 			<div class="kubio-remote-notification-icon">
-				<?php echo wp_kses_post( KUBIO_LOGO_SVG ); ?>
+				<?php
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo wp_kses_post( KUBIO_LOGO_SVG );
+				?>
 			</div>
 			<?php if ( ! empty( $params['message'] ) ) { ?>
-				<div class="kubio-remote-notification-message"><?php echo wpautop( $params['message'] ); ?></div>
+				<div class="kubio-remote-notification-message">
+				<?php
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo wpautop( $params['message'] );
+				?>
+					</div>
 			<?php } ?>
 			<div class="kubio-remote-notification-buttons">
 				<?php if ( ! empty( $link ) ) { ?>
@@ -232,14 +242,12 @@ class NotificationsManager {
 
 		$install_time = Flags::get( 'kubio_activation_time', time() );
 
-		if ( kubio_is_pro() ) {
-			$install_time = Flags::get( 'kubio_pro_activation_time', $install_time );
-		}
+		$install_time = apply_filters( 'kubio/notifications/install_time', $install_time );
 
-		$showAfter = strtotime( '+' . $params['after'] . ' days', $install_time );
-		$time      = new DateTime( 'NOW' );
+		$show_after = strtotime( '+' . $params['after'] . ' days', $install_time );
+		$time       = new DateTime( 'NOW' );
 
-		if ( $showAfter <= $time->getTimeStamp() ) {
+		if ( $show_after <= $time->getTimeStamp() ) {
 			return true;
 		}
 
@@ -255,13 +263,13 @@ class NotificationsManager {
 	 * @return bool
 	 */
 	private static function inTimeBoundaries( $start, $end ) {
-		$time      = new DateTime( 'today' );
-		$startDate = \DateTime::createFromFormat( 'Ymd', $start );
+		$time       = new DateTime( 'today' );
+		$start_date = \DateTime::createFromFormat( 'Ymd', $start );
 
-		if ( $start === null || $startDate && $startDate <= $time ) {
-			$endDate = \DateTime::createFromFormat( 'Ymd', $end );
+		if ( $start === null || $start_date && $start_date <= $time ) {
+			$end_date = \DateTime::createFromFormat( 'Ymd', $end );
 
-			if ( $end === null || $endDate && $time <= $endDate ) {
+			if ( $end === null || $end_date && $time <= $end_date ) {
 				return true;
 			}
 		}
@@ -270,11 +278,7 @@ class NotificationsManager {
 	}
 
 	private static function getTransientKey() {
-		$transient = 'kubio_remote_notifications';
-		if ( kubio_is_pro() ) {
-			$transient = 'kubio_pro_remote_notifications';
-		}
-
+		$transient = apply_filters( 'kubio/notifications/transient_key', 'kubio_remote_notifications' );
 		return $transient;
 	}
 }

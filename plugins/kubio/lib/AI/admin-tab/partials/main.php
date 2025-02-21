@@ -11,11 +11,13 @@ $kubio_ai_key = kubio_ai_get_key();
 			<div class="kubio-admin-page-section-content" id="kubio-ai-info-content">
 				<p class="spinner-holder">
 					<?php
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					printf(
 						// translators: %s: spinner icon
-						__( '%s Retrieving data...', 'kubio' ),
+						esc_html__( '%s Retrieving data...', 'kubio' ),
 						sprintf(
 							'<span class="loader">%s</span>',
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 							kubio_get_iframe_loader(
 								array(
 									'size'  => '19px',

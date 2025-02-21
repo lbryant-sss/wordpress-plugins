@@ -11,7 +11,7 @@ class BlockContainerBase extends BlockBase {
 	public $separatorElement;
 
 	public function __construct( $block, $autoload, $context ) {
-		 parent::__construct( $block, $autoload, $context );
+		parent::__construct( $block, $autoload, $context );
 		$this->backgroundElement = $this->findElementBy( 'supports.background', true );
 		$this->separatorElement  = $this->findElementBy( 'supports.separator', true );
 		parent::create();

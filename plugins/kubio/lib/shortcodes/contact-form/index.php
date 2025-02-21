@@ -22,7 +22,6 @@ function kubio_forminator_create_sample_form() {
 		} catch ( \Exception $e ) {
 		}
 	}
-
 }
 
 function kubio_get_kubio_contact_form_shortcode( $shortcode ) {
@@ -34,7 +33,6 @@ function kubio_get_kubio_contact_form_shortcode( $shortcode ) {
 	$inner_shortcode = $matches[1];
 
 	return Utils::shortcodeDecode( $inner_shortcode );
-
 }
 
 function kubio_contact_form_shortcode( $atts ) {
@@ -53,7 +51,7 @@ function kubio_contact_form_shortcode( $atts ) {
 
 	//stripslashes is fix for https://mantis.iconvert.pro//view.php?id=38520
 	$shortcode     = stripslashes( $atts['shortcode'] );
-	$shortcode = wp_kses_post($shortcode);
+	$shortcode     = wp_kses_post( $shortcode );
 	$shortcodeHtml = '';
 	if ( shortcode_render_can_apply_forminator_filters( $shortcode ) ) {
 		if ( kubio_forminator_is_auth_form( $shortcode ) ) {
@@ -72,7 +70,6 @@ function kubio_contact_form_shortcode( $atts ) {
 	}
 
 	return $shortcodeHtml;
-
 }
 
 

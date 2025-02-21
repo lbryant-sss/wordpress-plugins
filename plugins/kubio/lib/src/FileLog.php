@@ -52,6 +52,7 @@ class FileLog {
 
 		$file_path = "{$base_dir}/{$type}-{$date}.{$extension}";
 
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable
 		if ( file_exists( $file_path ) && ! is_writable( $file_path ) ) {
 			return false;
 		}
@@ -73,6 +74,7 @@ class FileLog {
 				"LOG: %s ---------- %s ----------\n\n\n%s\n\n",
 				str_pad( $type, 6 ),
 				gmdate( 'Y-m-d H:i:s' ),
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export
 				is_string( $message ) ? trim( $message ) : var_export( $message, true )
 			),
 			FILE_APPEND
@@ -109,7 +111,6 @@ class FileLog {
 		}
 
 		return true;
-
 	}
 
 	private function store_log( $location, $message, $type = 'info' ) {

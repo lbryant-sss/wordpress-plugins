@@ -6,7 +6,7 @@ namespace Kubio\Core;
 use IlluminateAgnostic\Arr\Support\Arr;
 use Kubio\Config;
 use Kubio\Flags;
-use \WP_Error;
+use WP_Error;
 
 class Utils {
 
@@ -75,7 +75,7 @@ class Utils {
 					$lightboxType = null;
 				}
 				$linkAttributes['data-default-type'] = esc_attr( $lightboxType );
-				$linkAttributes['data-fancybox']     = rand() . '';
+				$linkAttributes['data-fancybox']     = wp_rand() . '';
 			}
 			if ( $mergedLinkObject['noFollow'] ) {
 				$linkAttributes['rel'] = 'nofollow';
@@ -111,7 +111,6 @@ class Utils {
 		} else {
 			return '';
 		}
-
 	}
 
 	public static function getEmptyPlaceholder( $block_name, $items_type ) {
@@ -119,8 +118,10 @@ class Utils {
 			return static::getFrontendPlaceHolder(
 				sprintf(
 					'%s<br/><div class="kubio-frontent-placeholder--small">%s</div>',
-					__( sprintf( '%s has no %s.', $block_name, $items_type ), 'kubio' ),
-					__( sprintf( 'Edit this page to insert %s or delete this block.', $items_type ), 'kubio' )
+					// translators: %1$s: block name, %2$s: items type
+					sprintf( __( '%1$s has no %2$s.', 'kubio' ), $block_name, $items_type ),
+					// translators: %s: items type
+					sprintf( __( 'Edit this page to insert %s or delete this block.', 'kubio' ), $items_type )
 				)
 			);
 		}
@@ -181,7 +182,6 @@ class Utils {
 		}
 
 		return $value;
-
 	}
 
 	public static function kubioCacheHas( $name ) {
@@ -195,7 +195,6 @@ class Utils {
 		$kubio_cache[ $name ] = $value;
 
 		$GLOBALS['__kubio_plugin_cache__'] = $kubio_cache;
-
 	}
 
 	/**
@@ -315,7 +314,7 @@ class Utils {
 	 * @return boolean|\WP_Error
 	 */
 	public static function validateRequirements() {
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 		$plugin_headers = get_plugin_data( KUBIO_ENTRY_FILE );
 		$required_wp    = ! empty( $plugin_headers['RequiresWP'] ) ? $plugin_headers['RequiresWP'] : false;
 		$required_php   = ! empty( $plugin_headers['RequiresPHP'] ) ? $plugin_headers['RequiresPHP'] : false;
@@ -329,7 +328,7 @@ class Utils {
 
 		$php_update_message = '</p><p>' . sprintf(
 			/* translators: %s: URL to Update PHP page. */
-			__( '<a href="%s">Learn more about updating PHP</a>' ),
+			__( '<a href="%s">Learn more about updating PHP</a>', 'kubio' ),
 			esc_url( wp_get_update_php_url() )
 		);
 
@@ -344,7 +343,7 @@ class Utils {
 				'plugin_wp_php_incompatible',
 				'<p>' . sprintf(
 					/* translators: 1: Current WordPress version, 2: Current PHP version, 3: Plugin name, 4: Required WordPress version, 5: Required PHP version. */
-					_x( '<strong>Error:</strong> Current versions of WordPress (%1$s) and PHP (%2$s) do not meet minimum requirements for %3$s. The plugin requires WordPress %4$s and PHP %5$s.', 'kubio' ),
+					__( '<strong>Error:</strong> Current versions of WordPress (%1$s) and PHP (%2$s) do not meet minimum requirements for %3$s. The plugin requires WordPress %4$s and PHP %5$s.', 'kubio' ),
 					get_bloginfo( 'version' ),
 					phpversion(),
 					$plugin_headers['Name'],
@@ -357,7 +356,7 @@ class Utils {
 				'plugin_php_incompatible',
 				'<p>' . sprintf(
 					/* translators: 1: Current PHP version, 2: Plugin name, 3: Required PHP version. */
-					_x( '<strong>Error:</strong> Current PHP version (%1$s) does not meet minimum requirements for %2$s. The plugin requires PHP %3$s.', 'kubio' ),
+					__( '<strong>Error:</strong> Current PHP version (%1$s) does not meet minimum requirements for %2$s. The plugin requires PHP %3$s.', 'kubio' ),
 					phpversion(),
 					$plugin_headers['Name'],
 					$required_php
@@ -368,18 +367,17 @@ class Utils {
 				'plugin_wp_incompatible',
 				'<p>' . sprintf(
 					/* translators: 1: Current WordPress version, 2: Plugin name, 3: Required WordPress version. */
-					_x( '<strong>Error:</strong> Current WordPress version (%1$s) does not meet minimum requirements for %2$s. The plugin requires WordPress %3$s.', 'kubio' ),
+					__( '<strong>Error:</strong> Current WordPress version (%1$s) does not meet minimum requirements for %2$s. The plugin requires WordPress %3$s.', 'kubio' ),
 					get_bloginfo( 'version' ),
 					$plugin_headers['Name'],
 					$required_wp
 				) . '&nbsp;' . $update_wp_core . '</p>'
 			);
 		}
-
 	}
 
 	public static function getPluginVersions( $skip_current = false ) {
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 		$plugin_headers = get_plugin_data( KUBIO_ENTRY_FILE );
 		$version        = ! empty( $plugin_headers['Version'] ) ? $plugin_headers['Version'] : false;
 		$name           = ! empty( $plugin_headers['Name'] ) ? $plugin_headers['Name'] : false;
@@ -484,8 +482,7 @@ class Utils {
 			$base_url = KUBIO_SNIPPETS_BASE_URL;
 		}
 
-		return  self::getCloudURL( $relative_path, $base_url );
-
+		return self::getCloudURL( $relative_path, $base_url );
 	}
 
 	public static function getGlobalSnippetsURL() {
@@ -502,7 +499,6 @@ class Utils {
 		}
 
 		return self::getSnippetsURL( '/categories' );
-
 	}
 	public static function getGlobalSnippetsTagsURL() {
 
@@ -555,7 +551,7 @@ class Utils {
 		$activePlugins       = get_option( 'active_plugins', array() );
 		static::$wooIsActive = in_array( $wooPluginName, $activePlugins );
 
-		return  static::$wooIsActive;
+		return static::$wooIsActive;
 	}
 
 	//For the demo we only show shop content and features if the shop plugin was already activated.
@@ -580,7 +576,7 @@ class Utils {
 
 		static::$kubioShopIsActive = apply_filters( 'kubio_shop/is_kubio_shop_active', $is_kubio_shop_active );
 
-		return  static::$kubioShopIsActive;
+		return static::$kubioShopIsActive;
 	}
 
 	public static function getThemeIsSupportedForShop() {
@@ -598,14 +594,17 @@ class Utils {
 
 			$theme_is_supported = false;
 		} else {
-			$is_customize_page = ( is_admin() && 'customize.php' == basename( $_SERVER['PHP_SELF'] ) );
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$is_customize_page = ( is_admin() && isset( $_SERVER['PHP_SELF'] ) && 'customize.php' === basename( $_SERVER['PHP_SELF'] ) );
 			$theme             = get_template();
-			if ( isset( $_GET['theme'] ) && $_GET['theme'] != get_stylesheet() ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( isset( $_GET['theme'] ) && $_GET['theme'] !== get_stylesheet() ) {
+				// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.NonceVerification.Recommended
 				$theme = sanitize_text_field( $_GET['theme'] );
 			}
 
 			//if is theme preview
-			if ( $is_customize_page && ! in_array( $theme, static::$kubioShopSupportedThemes ) ) {
+			if ( $is_customize_page && ! in_array( $theme, static::$kubioShopSupportedThemes, true ) ) {
 				$theme_is_supported = false;
 			}
 		}
@@ -677,7 +676,7 @@ class Utils {
 			return false;
 		}
 
-		parse_str( parse_url( $referer, PHP_URL_QUERY ), $args );
+		parse_str( wp_parse_url( $referer, PHP_URL_QUERY ), $args );
 
 		return Arr::get( $args, 'page', null ) === 'kubio';
 	}
@@ -725,11 +724,10 @@ class Utils {
 		}
 
 		return $data;
-
 	}
 
 	public static function isTryOnlineEnabled() {
-		return kubio_is_pro() ? false : apply_filters( 'kubio/enable_try_online', false );
+		return apply_filters( 'kubio/enable_try_online', false );
 	}
 
 	public static function humanizeArray( $array, $spacer = "\t", $prefix = '', $level = 0 ) {
@@ -781,7 +779,7 @@ class Utils {
 		return implode( "\n", $structure_text_lines ) . "\n";
 	}
 
-	public static function pageHasCustomTemplate($post_id = null): bool {
+	public static function pageHasCustomTemplate( $post_id = null ): bool {
 		if ( ! $post_id ) {
 			$post_id = get_the_ID();
 		}
@@ -796,26 +794,32 @@ class Utils {
 
 	public static function getThemeTemplateParts() {
 		$default_language = apply_filters( 'wpml_default_language', null );
-		$query            = new \WP_Query( array(
-			'post_type'      => 'wp_template_part',
-			'post_status'    => [ 'publish' ],
-			'posts_per_page' => - 1,
-			'tax_query'      => array(
-				array(
-					'taxonomy' => 'wp_theme',
-					'field'    => 'name',
-					'terms'    => get_stylesheet(),
-				)
-			),
-			'kubio_filter'   => array(
-				'language_code' => $default_language
+		$query            = new \WP_Query(
+			array(
+				'post_type'      => 'wp_template_part',
+				'post_status'    => array( 'publish' ),
+				'posts_per_page' => - 1,
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+				'tax_query'      => array(
+					array(
+						'taxonomy' => 'wp_theme',
+						'field'    => 'name',
+						'terms'    => get_stylesheet(),
+					),
+				),
+				'kubio_filter'   => array(
+					'language_code' => $default_language,
+				),
 			)
-		) );
+		);
 
 		if ( $query->have_posts() ) {
-			return array_map( function ( $post ) {
-				return $post->post_name;
-			}, $query->posts );
+			return array_map(
+				function ( $post ) {
+					return $post->post_name;
+				},
+				$query->posts
+			);
 		}
 
 		return null;
@@ -827,7 +831,7 @@ class Utils {
 		}
 
 		$permalink = get_permalink( $post_id );
-		$url       = add_query_arg( '_wp-find-template', "true", $permalink );
+		$url       = add_query_arg( '_wp-find-template', 'true', $permalink );
 		$res       = wp_remote_get( $url );
 		$data      = wp_remote_retrieve_body( $res );
 		$body      = json_decode( $data );

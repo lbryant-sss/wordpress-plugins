@@ -21,7 +21,7 @@ function kubio_safari_gap_fallback() {
 	if ( $is_safari_without_gap_support ) {
 		add_action(
 			'wp_head',
-			function() {
+			function () {
 				?>
 			<script>
 				(function(){
@@ -54,7 +54,7 @@ function kubio_safari_gap_fallback() {
 	if ( $browser->getPlatform() === BrowserDetection::PLATFORM_IOS || $browser->getPlatform() === BrowserDetection::PLATFORM_MACINTOSH ) {
 		add_action(
 			'wp_head',
-			function() {
+			function () {
 				?>
 					<script>
 						(function(){

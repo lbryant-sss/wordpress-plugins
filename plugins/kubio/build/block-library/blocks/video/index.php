@@ -6,7 +6,6 @@ use Kubio\AssetsDependencyInjector;
 use Kubio\Core\Blocks\BlockBase;
 use Kubio\Core\LodashBasic;
 use Kubio\Core\Registry;
-use Kubio\Core\Utils;
 
 class VideoBlock extends BlockBase {
 
@@ -99,7 +98,6 @@ class VideoBlock extends BlockBase {
 		$params['url'] = $url;
 
 		return $params;
-
 	}
 
 	public function generateUrl( $params ) {
@@ -172,7 +170,6 @@ class VideoBlock extends BlockBase {
 		$url .= implode( '&', $queryString );
 
 		return $url;
-
 	}
 
 	protected function convertExternalParamsToQueryString( $queryParams ) {
@@ -352,8 +349,8 @@ class VideoBlock extends BlockBase {
 			' <source src="%s" type="video/mp4" />' .
 			'</video>',
 			$poster_url,
-			esc_attr($attributes),
-			esc_url($url)
+			esc_attr( $attributes ),
+			esc_url( $url )
 		);
 	}
 }

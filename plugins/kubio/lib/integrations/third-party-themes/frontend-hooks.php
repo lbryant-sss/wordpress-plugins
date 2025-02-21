@@ -12,6 +12,7 @@ function kubio_hybdrid_theme_classic_content_frontend_style( $content ) {
 		return $content;
 	}
 
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	if ( kubio_is_hybdrid_theme_iframe_preview() || isset( $_REQUEST['__kubio-rendered-content'] ) ) {
 		return $content;
 	}
@@ -56,6 +57,7 @@ function kubio_dequeue_theme_styles() {
 		return;
 	}
 
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	if ( kubio_is_hybdrid_theme_iframe_preview() && Arr::get( $_REQUEST, '__kubio-site-edit-iframe-classic-template' ) ) {
 		return;
 	}
@@ -112,13 +114,12 @@ function kubio_maybe_dequeue_theme_styles() {
 			}
 		}
 	}
-
 }
 
 // safari mobile do not transform phone noumbers to link automatically
 add_action(
 	'wp_head',
-	function() {
+	function () {
 		echo '<meta name="format-detection" content="telephone=no">';
 	}
 );

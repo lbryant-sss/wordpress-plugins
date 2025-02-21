@@ -64,6 +64,15 @@
 					</label>
 				</div>					
 			</div>
+			<div class="accordion_set">
+				<div class="accordion heading ast_premium">
+					<label>
+						<?php esc_html_e( 'Automated CSV Import through FTP/SFTP', 'woo-advanced-shipment-tracking' ); ?>
+						<span class="ast_premium_badge">PRO</span>
+						<span class="dashicons dashicons-arrow-right-alt2"></span>
+					</label>
+				</div>					
+			</div>
 		</div>		
 		<?php wp_nonce_field( 'wc_ast_settings_form', 'wc_ast_settings_form_nonce' ); ?>
 		<input type="hidden" name="action" value="wc_ast_settings_form_update">							

@@ -70,7 +70,5 @@ class KubioImageSearch {
 		}
 
 		return $dimensions;
-
 	}
-
 }

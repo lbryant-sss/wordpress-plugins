@@ -2,10 +2,7 @@
 
 namespace Kubio\Blocks;
 
-use Kubio\Core\Blocks\BlockContainerBase;
-use Kubio\Core\LodashBasic;
 use Kubio\Core\Registry;
-use Kubio\Core\Styles\FlexAlign;
 
 class HeroBlock extends SectionBlock {
 	const INLINE_SCRIPT = 'inlineScript';

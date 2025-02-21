@@ -8,7 +8,7 @@
 		"template": {
 			"type": "string",
 			"source": "html",
-			"default": "© {year} {site-name}. Created with ❤️ using WordPress and <a target=\"_blank\" href=\"https://kubiobuilder.com\" rel=\"noreferrer\">Kubio</a>"
+			"default": "© {year} {site-name}"
 		}
 	},
 	"supports": {

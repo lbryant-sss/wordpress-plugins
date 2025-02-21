@@ -78,7 +78,6 @@ class Kubio_Menu_Rest_Controller extends WP_REST_Controller {
 
 	public function create_item( $request ) {
 		return array();
-
 	}
 
 	/**
@@ -144,7 +143,7 @@ class Kubio_Menu_Rest_Controller extends WP_REST_Controller {
 	private function remove_deleted_items( $items, $menu_id ) {
 		$menu_items     = wp_get_nav_menu_items( $menu_id );
 		$menu_items_ids = array_map(
-			function( $item ) {
+			function ( $item ) {
 				return $item->ID;
 			},
 			$menu_items
@@ -237,7 +236,7 @@ class Kubio_Menu_Rest_Controller extends WP_REST_Controller {
 				continue;
 			}
 
-			$order++;
+			++$order;
 			$orders[ $item_id ] = $order;
 			$processed_ids[]    = $item_id;
 
@@ -249,7 +248,7 @@ class Kubio_Menu_Rest_Controller extends WP_REST_Controller {
 
 				$parent_id = intval( $item2->menu_item_parent );
 				if ( $parent_id && $parent_id === $item_id ) {
-					$order++;
+					++$order;
 					$orders[ $item2_id ] = $order;
 					$processed_ids[]     = $item2_id;
 				}

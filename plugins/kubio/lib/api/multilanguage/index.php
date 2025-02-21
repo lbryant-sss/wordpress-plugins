@@ -13,7 +13,7 @@ add_action(
 			$namespace,
 			'/get-language-selector-html',
 			array(
-				'methods'             => "GET",
+				'methods'             => 'GET',
 				'callback'            => 'kubio_api_get_language_selector_html',
 				'permission_callback' => function () {
 					return current_user_can( 'edit_theme_options' );
@@ -25,16 +25,14 @@ add_action(
 
 function kubio_api_get_language_selector_html() {
 
-
 	$content = '';
-    if(kubio_polylang_is_active()) {
-		$content = kubio_get_polylang_selector_html(true);
-	} else if(kubio_wpml_is_active()) {
-		$content = kubio_get_wpml_selector_html(true);
+	if ( kubio_polylang_is_active() ) {
+		$content = kubio_get_polylang_selector_html( true );
+	} elseif ( kubio_wpml_is_active() ) {
+		$content = kubio_get_wpml_selector_html( true );
 	}
 
 	return array(
-		'content' => $content
+		'content' => $content,
 	);
 }
-

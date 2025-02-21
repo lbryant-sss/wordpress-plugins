@@ -369,7 +369,7 @@ class Utils
             "display_name" => $socialUser["nickname"],
             "user_url" => "",
             "user_email" => md5($socialUser["openid"]) . "@qq.com",
-            "provider" => "weixin",
+            "provider" => "qq",
             "social_user_id" => $socialUser["openid"],
             "avatar" => $avatar
         ];

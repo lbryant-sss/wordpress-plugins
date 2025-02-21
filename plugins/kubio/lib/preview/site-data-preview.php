@@ -25,7 +25,7 @@ add_action(
 		if ( $kind === 'root' && $name === 'site' ) {
 			add_filter(
 				'bloginfo',
-				function( $output, $key ) use ( $data, $bloginfo_map ) {
+				function ( $output, $key ) use ( $data, $bloginfo_map ) {
 					$key = Arr::get( $bloginfo_map, $key, $key );
 					return Arr::get( $data, $key, $output );
 				},
@@ -38,7 +38,7 @@ add_action(
 					$option_value = Arr::get( $data, $option_key, $dummy_value );
 					add_filter(
 						$filter_key,
-						function() use ( $option_value, $option_key ) {
+						function () use ( $option_value, $option_key ) {
 								return $option_value;
 						}
 					);

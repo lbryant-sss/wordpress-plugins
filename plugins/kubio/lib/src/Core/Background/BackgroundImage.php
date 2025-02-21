@@ -78,6 +78,5 @@ class BackgroundImage extends ElementBase {
 				)
 			)
 		) . '';
-
 	}
 }

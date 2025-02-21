@@ -305,7 +305,6 @@ add_action(
 				},
 			)
 		);
-
 	}
 );
 
@@ -323,8 +322,8 @@ function kubio_ai_get_general_settings() {
 
 
 function kubio_ai_store_general_settings( WP_REST_Request $request ) {
-	 Flags::set( 'aiSettings', $request['settings'] );
-	 return true;
+	Flags::set( 'aiSettings', $request['settings'] );
+	return true;
 }
 
 function kubio_get_commercial_flow_settings() {
@@ -380,11 +379,11 @@ function kubio_ai_get_site_structure( WP_REST_Request $request ) {
 	return kubio_ai_call_api(
 		'v1/generate-site-structure',
 		array(
-			'siteContext' => Arr::get( $request, 'siteContext', array() ),
-			'pageContext' => Arr::get( $request, 'pageContext', array() ),
-			'pageTitle'   => Arr::get( $request, 'pageTitle', array() ),
-			'theme'       => Arr::get( $request, 'theme', null ),
-			'importDesignIndex'   => Arr::get( $request, 'importDesignIndex', null ),
+			'siteContext'       => Arr::get( $request, 'siteContext', array() ),
+			'pageContext'       => Arr::get( $request, 'pageContext', array() ),
+			'pageTitle'         => Arr::get( $request, 'pageTitle', array() ),
+			'theme'             => Arr::get( $request, 'theme', null ),
+			'importDesignIndex' => Arr::get( $request, 'importDesignIndex', null ),
 		)
 	);
 }
@@ -432,12 +431,12 @@ function kubio_ai_get_default_homepage_sections_summaries_by_anchor( WP_REST_Req
 	return kubio_ai_call_api(
 		'v1/get-default-homepage-sections-summaries-by-anchor',
 		array(
-			'siteContext'       => Arr::get( $request, 'siteContext', array() ),
-			'pageContext'       => Arr::get( $request, 'pageContext', array() ),
-			'pageTitle'         => Arr::get( $request, 'pageTitle', array() ),
-			'rules'             => Arr::get( $request, 'rules', array() ),
-			'theme'             => Arr::get( $request, 'theme', null ),
-			'importDesignIndex' => Arr::get( $request, 'importDesignIndex', null ),
+			'siteContext'              => Arr::get( $request, 'siteContext', array() ),
+			'pageContext'              => Arr::get( $request, 'pageContext', array() ),
+			'pageTitle'                => Arr::get( $request, 'pageTitle', array() ),
+			'rules'                    => Arr::get( $request, 'rules', array() ),
+			'theme'                    => Arr::get( $request, 'theme', null ),
+			'importDesignIndex'        => Arr::get( $request, 'importDesignIndex', null ),
 			'colorSchemeAndTypography' => Arr::get( $request, 'colorSchemeAndTypography', null ),
 		)
 	);
@@ -479,7 +478,7 @@ function kubio_ai_update_default_homepage_sections_used_images( WP_REST_Request 
 			'siteContext'       => Arr::get( $request, 'siteContext', array() ),
 			'theme'             => Arr::get( $request, 'theme', null ),
 			'importDesignIndex' => Arr::get( $request, 'importDesignIndex', null ),
-			'content'			=> Arr::get( $request, 'content', null ),
+			'content'           => Arr::get( $request, 'content', null ),
 		)
 	);
 }
@@ -621,7 +620,6 @@ function kubio_ai_get_processed_text( WP_REST_Request $request ) {
 
 		)
 	);
-
 }
 
 
@@ -668,13 +666,12 @@ function kubio_ai_change_text( WP_REST_Request $request ) {
 			'content'     => Arr::get( $request, 'text', '' ),
 		)
 	);
-
 }
 
 function kubio_ai_sd_image_from_text( WP_REST_Request $request ) {
 
-	$image_size          = Arr::get( $request, 'imageSize', array( 1024, 1024 ) );
-	list($width,$height) = kubio_ai_sd_xl_determine_appropriate_size( ...$image_size );
+	$image_size           = Arr::get( $request, 'imageSize', array( 1024, 1024 ) );
+	list($width, $height) = kubio_ai_sd_xl_determine_appropriate_size( ...$image_size );
 
 	$response = kubio_ai_call_api(
 		'v1/image-generation/text-to-image',

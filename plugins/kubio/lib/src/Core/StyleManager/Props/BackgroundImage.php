@@ -155,9 +155,9 @@ class BackgroundImage extends Property {
 	}
 
 	public function toStyle() {
-		 $computedStyle = array();
-		$source         = $this->get( 'source' );
-		$map            = $this->map;
+		$computedStyle = array();
+		$source        = $this->get( 'source' );
+		$map           = $this->map;
 		if ( $source['type'] === 'gradient' ) {
 			$map = array(
 				'backgroundImage'      => 'source',

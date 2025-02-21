@@ -42,7 +42,6 @@ class AssetsDependencyInjector {
 		} else {
 			$target->deps = array_unique( array_merge( $target->deps, $dependencies ) );
 		}
-
 	}
 
 	public static function injectScriptDependencies( $handle, $dependencies ) {
@@ -57,8 +56,8 @@ class AssetsDependencyInjector {
 		$dependencies = Arr::wrap( $dependencies );
 		if ( $prefix ) {
 			$dependencies = array_map(
-				function( $handle ) {
-					return  AssetsDependencyInjector::KUBIO_DEPENENCY_PREFIX . $handle;
+				function ( $handle ) {
+					return AssetsDependencyInjector::KUBIO_DEPENENCY_PREFIX . $handle;
 				},
 				$dependencies
 			);
@@ -71,8 +70,8 @@ class AssetsDependencyInjector {
 		$dependencies = Arr::wrap( $dependencies );
 		if ( $prefix ) {
 			$dependencies = array_map(
-				function( $handle ) {
-					return  AssetsDependencyInjector::KUBIO_DEPENENCY_PREFIX . $handle;
+				function ( $handle ) {
+					return AssetsDependencyInjector::KUBIO_DEPENENCY_PREFIX . $handle;
 				},
 				$dependencies
 			);

@@ -14,4 +14,3 @@ class Stroke extends PropertyBase {
 		return $style;
 	}
 }
-

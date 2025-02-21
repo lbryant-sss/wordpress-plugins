@@ -83,6 +83,7 @@ function kubio_global_data_post_id( $create_new = true, $skip_cache = false, $th
 			'post_status'   => array( 'draft', 'publish' ),
 			'no_found_rows' => true,
 			'post_per_page' => 1,
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 			'tax_query'     => array(
 				array(
 					'taxonomy' => 'wp_theme',
@@ -355,11 +356,11 @@ function kubio_enqueue_google_fonts() {
 	// also load remote fonts if the user chosed not to use local google fonts
 	if ( kubio_is_page_preview() || ! Flags::getSetting( 'googleFonts.serveLocally', false ) ) {
 		$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		wp_enqueue_style( 'kubio-google-fonts', $fonts_url, array(), null );
 	} else {
 		GoogleFontsLocalLoader::enqueuLocalGoogleFonts( $fonts_query );
 	}
-
 }
 
 add_action( 'wp_enqueue_scripts', 'kubio_enqueue_google_fonts' );
@@ -433,7 +434,7 @@ add_action( 'wp_head', 'kubio_register_global_style', 0 );
 
 add_filter(
 	'wp_theme_json_data_default',
-	function( $wp_theme_json_data ) {
+	function ( $wp_theme_json_data ) {
 		$config = $wp_theme_json_data->get_data();
 
 		$colors         = kubio_get_editor_colors();
@@ -446,7 +447,7 @@ add_filter(
 
 add_action(
 	'after_setup_theme',
-	function() {
+	function () {
 
 		$current_supported_colors = get_theme_support( 'editor-color-palette' );
 		$colors                   = kubio_get_editor_colors( true );
@@ -461,11 +462,14 @@ add_action(
 	100
 );
 
-add_action( 'enqueue_block_editor_assets', function() {
-	$style = kubio_render_global_colors();
+add_action(
+	'enqueue_block_editor_assets',
+	function () {
+		$style = kubio_render_global_colors();
 
-	wp_add_inline_style( 'wp-block-library', $style );
-} );
+		wp_add_inline_style( 'wp-block-library', $style );
+	}
+);
 
 add_filter(
 	'rest_prepare_' . kubio_global_data_post_type(),

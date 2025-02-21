@@ -18,6 +18,7 @@ function kubio_get_block_template( $id, $template_type = 'wp_template' ) {
 		'post_name__in'  => array( $slug ),
 		'posts_per_page' => 1,
 		'no_found_rows'  => true,
+		// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 		'tax_query'      => array(
 			array(
 				'taxonomy' => 'wp_theme',
@@ -79,7 +80,7 @@ function _kubio_build_template_result_from_post( $post ) {
 
 	$theme          = $terms[0]->name;
 	$has_theme_file = wp_get_theme()->get_stylesheet() === $theme &&
-					  null !== _kubio_get_template_file( $post->post_type, $post->post_name );
+						null !== _kubio_get_template_file( $post->post_type, $post->post_name );
 
 	$template                 = new WP_Block_Template();
 	$template->wp_id          = $post->ID;

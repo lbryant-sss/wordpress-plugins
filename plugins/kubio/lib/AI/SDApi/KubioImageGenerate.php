@@ -46,7 +46,7 @@ class KubioImageGenerate {
 		return $response;
 	}
 
-	private function prepare_data( $data, $image_prompt ) : array {
+	private function prepare_data( $data, $image_prompt ) {
 		if ( is_array( $image_prompt ) ) {
 			foreach ( $image_prompt as $prompt ) {
 				if ( $prompt !== '' ) {
@@ -71,7 +71,7 @@ class KubioImageGenerate {
 		return $data;
 	}
 
-	public function build_text_prompts( $image_prompt ) : array {
+	public function build_text_prompts( $image_prompt ) {
 		return array(
 			array(
 				'text'   => $image_prompt,
@@ -82,15 +82,10 @@ class KubioImageGenerate {
 				'weight' => -1,
 			),
 		);
-
 	}
 
-	public function set_negative_prompt( $negative_prompt ) : void {
+	public function set_negative_prompt( $negative_prompt ) {
 		$this->negative_prompt = $negative_prompt;
-	}
-
-	private function get_settings( $settings, $extra = array() ) : array {
-		return array_merge( $settings, $extra );
 	}
 
 	private function post( $data, $files = array(), $settings = array() ) {
@@ -102,5 +97,4 @@ class KubioImageGenerate {
 
 		return $response;
 	}
-
 }

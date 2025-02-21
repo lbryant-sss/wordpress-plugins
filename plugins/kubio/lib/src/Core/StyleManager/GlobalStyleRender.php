@@ -19,7 +19,7 @@ class GlobalStyleRender extends StyleRender {
 
 	private $dataHelper = null;
 	public function __construct( $main_attr ) {
-		 $this->dataHelper = new DataHelper( array(), array( Config::$mainAttributeKey => $main_attr ) );
+		$this->dataHelper = new DataHelper( array(), array( Config::$mainAttributeKey => $main_attr ) );
 
 		$styledElementsByName = Config::value( 'definitions.globalStyle.elementsByName' );
 		$styledElementsEnum   = Config::value( 'definitions.globalStyle.elementsEnum' );
@@ -85,10 +85,10 @@ class GlobalStyleRender extends StyleRender {
 	}
 
 	public function getDynamicStyle() {
-		 $vSpaceByMedia = $this->dataHelper->getPropByMedia( 'vSpace' );
-		$hSpaceByMedia  = $this->dataHelper->getPropByMedia( 'hSpace' );
+		$vSpaceByMedia = $this->dataHelper->getPropByMedia( 'vSpace' );
+		$hSpaceByMedia = $this->dataHelper->getPropByMedia( 'hSpace' );
 
-		return  self::normalizeDynamicStyle(
+		return self::normalizeDynamicStyle(
 			array(
 				self::V_SPACE_NEGATIVE => DynamicStyles::vSpace(
 					$vSpaceByMedia,

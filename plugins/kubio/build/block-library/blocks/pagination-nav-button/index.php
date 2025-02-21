@@ -98,8 +98,9 @@ class PaginationNavButtonBlock extends ButtonBlock {
 	private function shouldRenderCustomQueryButton() {
 		$query_id = Arr::get( $this->block_context, 'queryId', false );
 		$page_key = $query_id ? 'query-' . $query_id . '-page' : 'query-page';
-		$page     = empty( $_GET[ $page_key ] ) ? 1 : filter_var( $_GET[ $page_key ], FILTER_VALIDATE_INT );
-		$pages    = Arr::get( $this->block_context, 'query.pages', 1 );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+		$page  = empty( $_GET[ $page_key ] ) ? 1 : filter_var( $_GET[ $page_key ], FILTER_VALIDATE_INT );
+		$pages = Arr::get( $this->block_context, 'query.pages', 1 );
 
 		if ( $this->getAttribute( 'action' ) === 'prev' ) {
 			return ( intval( $page ) !== 1 );
@@ -107,7 +108,6 @@ class PaginationNavButtonBlock extends ButtonBlock {
 			return ( intval( $page ) < intval( $pages ) );
 		}
 	}
-
 }
 
 Registry::registerBlock(

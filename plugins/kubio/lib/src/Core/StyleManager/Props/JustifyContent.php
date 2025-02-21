@@ -19,4 +19,3 @@ class JustifyContent extends PropertyBase {
 		return $style;
 	}
 }
-

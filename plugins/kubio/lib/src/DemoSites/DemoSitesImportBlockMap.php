@@ -57,7 +57,6 @@ class DemoSitesImportBlockMap {
 
 	public static function addMap( $block_name, $resolver_callback ) {
 		static::$mapped_data[ $block_name ] = $resolver_callback;
-
 	}
 
 	public static function isBlockMappedFilter( $should_map, $block_name ) {

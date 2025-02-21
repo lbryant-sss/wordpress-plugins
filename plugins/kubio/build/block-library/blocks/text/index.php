@@ -30,4 +30,3 @@ class TextBlock extends BlockBase {
 
 
 Registry::registerBlock( __DIR__, TextBlock::class );
-

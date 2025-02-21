@@ -2,12 +2,8 @@
 
 namespace Kubio\Blocks;
 
-use Kubio\Config;
 use Kubio\Core\Blocks\BlockBase;
-use Kubio\Core\LodashBasic;
 use Kubio\Core\Registry;
-use Kubio\Core\StyleManager\DynamicStyles;
-use Kubio\Core\Utils;
 
 
 
@@ -34,7 +30,7 @@ class AccordionItemBlock extends BlockBase {
 		return array(
 
 			self::TITLE       => array(
-				'href'                 => esc_url(sprintf( '#%s', $slug )),
+				'href'                 => esc_url( sprintf( '#%s', $slug ) ),
 				'data-open-by-default' => $openByDefault ? 'true' : 'false',
 			),
 			self::ICON_NORMAL => array(

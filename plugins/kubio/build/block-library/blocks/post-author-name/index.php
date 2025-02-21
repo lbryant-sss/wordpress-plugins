@@ -5,8 +5,6 @@ namespace Kubio\Blocks;
 use Kubio\Core\Blocks\BlockBase;
 use Kubio\Core\LodashBasic;
 use Kubio\Core\Registry;
-use Kubio\Core\Utils;
-use Kubio\Core\Utils as GeneralUtils;
 
 class PostAuthorNameBlock extends BlockBase {
 
@@ -31,7 +29,7 @@ class PostAuthorNameBlock extends BlockBase {
 		return array(
 			self::TEXT => array_merge(
 				array(
-					'innerHTML' => wp_kses_post($authorData->display_name),
+					'innerHTML' => wp_kses_post( $authorData->display_name ),
 				)
 			),
 		);
@@ -47,7 +45,7 @@ class PostAuthorNameBlock extends BlockBase {
 			return '';
 		}
 
-		return  $this->getLinkAttributes( $authorId );
+		return $this->getLinkAttributes( $authorId );
 	}
 
 	public function getLinkAttributes( $aAuthorId ) {

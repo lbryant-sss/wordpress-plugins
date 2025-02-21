@@ -46,10 +46,10 @@ function kubio_api_update_excluded_section_categories( WP_REST_Request $request 
 }
 
 function kubio_api_update_flag_settings( WP_REST_Request $request ) {
-	$path = $request['path'];
+	$path  = $request['path'];
 	$value = $request['value'];
 
-	if ( gettype($path) === 'string' ) {
+	if ( gettype( $path ) === 'string' ) {
 		Flags::setSetting( $path, $value );
 	} else {
 		return new WP_Error( 'kubio_invalid_value' );
@@ -57,7 +57,7 @@ function kubio_api_update_flag_settings( WP_REST_Request $request ) {
 
 	return array(
 		'path'  => $path,
-		'value' => $value
+		'value' => $value,
 	);
 }
 
@@ -130,6 +130,5 @@ add_action(
 
 			)
 		);
-
 	}
 );

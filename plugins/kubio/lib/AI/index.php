@@ -3,9 +3,9 @@
 // if enableAICapabilities is not set, set it to true if the user is pro, get a filtered default value
 add_filter(
 	'kubio/flags/settings',
-	function( $settings ) {
+	function ( $settings ) {
 		if ( ! isset( $settings['enableAICapabilities'] ) ) {
-			$settings['enableAICapabilities'] = kubio_is_pro() || apply_filters( 'kubio/ai/default-enabled', true );
+			$settings['enableAICapabilities'] = apply_filters( 'kubio/ai/default-enabled', true );
 		}
 		return $settings;
 	}

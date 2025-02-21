@@ -20,7 +20,6 @@ class WPImportFilters {
 		add_action( 'import_end', array( $this, 'handleKubioImports' ) );
 		add_action( 'wp_get_object_terms', array( $this, 'addExtraTermsToExport' ) );
 		add_filter( 'wp_import_posts', array( $this, 'filterImportedPosts' ), 5 );
-
 	}
 
 	public function addExtraTermsToExport( $terms ) {
@@ -103,7 +102,6 @@ class WPImportFilters {
 		$posts = array_filter( $posts );
 
 		return $posts;
-
 	}
 
 	private function processFSETemplate( $post, $template, $is_supported_theme ) {
@@ -209,8 +207,6 @@ class WPImportFilters {
 			_kubio_remove_fresh_install_flag();
 			return;
 		}
-
-		print_r( $this->handled_by_kubio );
 
 		foreach ( $this->handled_by_kubio as $import ) {
 			$type = $import['type'];

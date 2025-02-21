@@ -117,7 +117,7 @@ class Backup {
 
 		$file_path = $this->getBackupFilePath( $identifier );
 		if ( ! file_exists( dirname( $file_path ) ) ) {
-			if ( ! mkdir( dirname( $file_path ), 0777, true ) ) {
+			if ( ! wp_mkdir_p( dirname( $file_path ) ) ) {
 				return false;
 			}
 		}
@@ -143,7 +143,6 @@ class Backup {
 		}
 
 		return unserialize( file_get_contents( $file_path ) );
-
 	}
 
 	private function getBackupData( $identifier ) {
@@ -159,12 +158,12 @@ class Backup {
 
 		$this->loaded_backup = $data;
 
-		return  $this->loaded_backup;
+		return $this->loaded_backup;
 	}
 
 	public function deleteBackup( $identifier ) {
 		delete_option( $this->getBackupKey( $identifier ) );
-		unlink( $this->getBackupFilePath( $identifier ) );
+		wp_delete_file( $this->getBackupFilePath( $identifier ) );
 	}
 
 
@@ -188,6 +187,4 @@ class Backup {
 
 		return true;
 	}
-
-
 }

@@ -1636,6 +1636,19 @@ li.select2-results__option {
 		}
 	}
 }
+.cr-reminder-scheduled-col {
+	color: #FF4136;
+}
+.cr-reminder-scheduled-col .dashicons {
+	font-size: 15px;
+	width: 15px;
+	height: 15px;
+	vertical-align: text-top;
+	margin-right: 3px;
+}
+.cr-reminder-scheduled-col .cr-help-tip {
+	color: #FF4136;
+}
 .cr-help-tip {
 	color: #666;
 	display: inline-block;

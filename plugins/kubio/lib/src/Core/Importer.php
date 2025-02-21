@@ -32,7 +32,7 @@ class Importer {
 		}
 
 		if ( ! static::entityExists( $slug ) ) {
-			return  wp_insert_post(
+			return wp_insert_post(
 			// post content should be slashed - same thing happens on rest api call
 				wp_slash(
 					array(
@@ -59,7 +59,6 @@ class Importer {
 		}
 
 		return true;
-
 	}
 
 	public static function allowImportCaps( $all_cap, $caps ) {
@@ -109,6 +108,7 @@ class Importer {
 				'post_name__in'  => array( $slug ),
 				'posts_per_page' => 1,
 				'no_found_rows'  => true,
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 				'tax_query'      => array(
 					array(
 						'taxonomy' => 'wp_theme',
@@ -130,6 +130,7 @@ class Importer {
 				'name'           => $slug,
 				'no_found_rows'  => true,
 				'posts_per_page' => 1,
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 				'tax_query'      => array(
 					array(
 						'taxonomy' => 'wp_theme',
@@ -160,7 +161,7 @@ class Importer {
 			return true;
 		}
 
-		return  new \WP_Error( 'post_not_found' );
+		return new \WP_Error( 'post_not_found' );
 	}
 
 	public static function createTemplatePart( $slug, $content, $override = false, $source = 'theme' ) {
@@ -186,7 +187,7 @@ class Importer {
 			$title = static::maybeTransformSlugToTitle( $slug );
 			$theme = get_stylesheet();
 
-			return  wp_insert_post(
+			return wp_insert_post(
 			// post content should be slashed - same thing happens on rest api call
 				wp_slash(
 					array(
@@ -211,7 +212,7 @@ class Importer {
 
 		} else {
 			if ( $override ) {
-				return  static::updateEntityContent( 'wp_template_part', $slug, $content, $source );
+				return static::updateEntityContent( 'wp_template_part', $slug, $content, $source );
 			}
 		}
 
@@ -432,7 +433,7 @@ class Importer {
 			return $result;
 		}
 
-		$parsed_url = parse_url( $source_url );
+		$parsed_url = wp_parse_url( $source_url );
 		$file_path  = $parsed_url ? $parsed_url['path'] : $source_url;
 		$file_name  = urldecode( basename( $file_path ) );
 		$path_info  = pathinfo( $file_name );
@@ -446,7 +447,7 @@ class Importer {
 			$imported_files[ $source_url ] = $result;
 
 			return $result;
-		};
+		}
 
 		if ( isset( $imported_files[ $source_url ] ) ) {
 			return $imported_files[ $source_url ];
@@ -571,11 +572,12 @@ class Importer {
 
 		// allow 10sec for other tasks
 		return ( intval( $max_exec_time ) - $diff > 10 );
-
 	}
 
 	public static function getImportByGuid( $guid ) {
 		global $wpdb;
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, 	WordPress.DB.DirectDatabaseQuery.NoCaching
 		$id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid=%s", $guid ) );
 
 		if ( $id ) {
@@ -613,7 +615,6 @@ class Importer {
 		}
 
 		return $blocks;
-
 	}
 
 	public static function setBlocksLocks( $blocks, $value = null ) {
@@ -639,6 +640,5 @@ class Importer {
 		}
 
 		return $blocks;
-
 	}
 }

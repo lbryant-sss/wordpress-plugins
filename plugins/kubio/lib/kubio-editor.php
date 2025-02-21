@@ -7,11 +7,13 @@ use Kubio\Core\Utils;
 use Kubio\Flags;
 
 function kubio_is_kubio_editor_page() {
-	 global $pagenow;
+	global $pagenow;
 
 	$is = false;
 	if ( substr( $pagenow, 0, -4 ) === 'admin' ) {
-		$page = Arr::get( $_REQUEST, 'page', false );
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$page = sanitize_text_field( Arr::get( $_REQUEST, 'page', false ) );
 
 		if ( $page === 'kubio' ) {
 			$is = true;
@@ -21,16 +23,6 @@ function kubio_is_kubio_editor_page() {
 	return apply_filters( 'kubio/is_kubio_editor_page', $is );
 }
 
-function kubio_is_kubio_editor_page_frontend_request() {
-	$kubio_flags         = kubio_get_editor_requests_flags();
-	$is_frontend_request = false;
-	foreach ( $kubio_flags as $flag ) {
-		if ( isset( $_REQUEST[ $flag ] ) ) {
-			$is_frontend_request = true;
-		}
-	}
-	return $is_frontend_request;
-}
 function kubio_edit_site_get_first_post_id( $loaded_id ) {
 	if ( ! $loaded_id ) {
 		$ids = get_posts(
@@ -88,8 +80,12 @@ function kubio_edit_site_get_template_id( $loaded_id, $postType ) {
 }
 function kubio_edit_site_get_edited_entity() {
 	$pag_on_front = intval( get_option( 'page_on_front' ) );
-	$loaded_id    = isset( $_GET['postId'] ) ? intval( $_GET['postId'] ) : $pag_on_front;
-	$post_type    = isset( $_GET['postType'] ) ? sanitize_text_field( $_GET['postType'] ) : null;
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$loaded_id = isset( $_GET['postId'] ) ? intval( $_GET['postId'] ) : $pag_on_front;
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+	$post_type = isset( $_GET['postType'] ) ? sanitize_text_field( $_GET['postType'] ) : null;
 
 	if ( ! post_type_exists( $post_type ) || ! is_numeric( $loaded_id ) ) {
 		return array();
@@ -293,7 +289,12 @@ function kubio_get_editor_style( $get_css = false, $skiped_handlers = array() ) 
 	ob_start();
 
 	?>
-		<style><?php echo wp_get_global_stylesheet(); ?></style>
+		<style>
+			<?php
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo wp_get_global_stylesheet();
+			?>
+		</style>
 	<?php
 	wp_styles()->done = $skiped_handlers;
 	wp_styles()->do_items( $style_handles );
@@ -357,7 +358,6 @@ function kubio_enqueue_editor_page_assets() {
 		wp_enqueue_style( 'kubio-utils' );
 		wp_enqueue_style( 'kubio-scripts' );
 		wp_enqueue_style( 'kubio-wp-global-styles' );
-
 }
 
 function kubio_extend_block_editor_styles_html() {
@@ -369,7 +369,6 @@ function kubio_extend_block_editor_styles_html() {
 		'<script>window.__kubioEditorStyles = %s</script>',
 		wp_json_encode( array( 'html' => $style . $script ) )
 	);
-
 }
 
 function kubio_edit_site_get_settings() {
@@ -475,8 +474,8 @@ function kubio_edit_site_get_settings() {
 		$settings['kubioHasFpsScrollPreview'] = false; //'screenshot.jpg';
 	}
 
-	 $settings['supportsLayout'] = isset( $settings['supportsLayout'] ) ? $settings['supportsLayout'] : false;
-	$layout                      = array_merge( array( 'contentSize' => '1172px' ), LodashBasic::get( $settings, '__experimentalFeatures.layout', array() ) );
+	$settings['supportsLayout'] = isset( $settings['supportsLayout'] ) ? $settings['supportsLayout'] : false;
+	$layout                     = array_merge( array( 'contentSize' => '1172px' ), LodashBasic::get( $settings, '__experimentalFeatures.layout', array() ) );
 
 	LodashBasic::set( $settings, '__experimentalFeatures.layout', $layout );
 	LodashBasic::set( $settings, '__experimentalFeatures.blocks.core/post-content.layout', $layout );
@@ -561,21 +560,18 @@ function kubio_block_editor_general_settings( $settings ) {
 
 add_filter( 'block_editor_settings_all', 'kubio_block_editor_general_settings', 50 );
 
+
 function kubio_load_gutenberg_assets() {
 
 	kubio_fix_template_and_parts_default_editor();
 
-	AssetsDependencyInjector::injectKubioScriptDependencies( 'swiper' );
-	AssetsDependencyInjector::injectKubioFrontendStyleDependencies( 'swiper' );
-
 	AssetsDependencyInjector::injectKubioScriptDependencies( 'fancybox' );
 	AssetsDependencyInjector::injectKubioFrontendStyleDependencies( 'fancybox' );
-
-	AssetsDependencyInjector::injectKubioScriptDependencies( 'typed' );
 	AssetsDependencyInjector::injectKubioScriptDependencies( 'jquery-masonry', false );
 
+	do_action( 'kubio/editor/load_gutenberg_assets' );
+	
 	wp_enqueue_style( 'kubio-pro' );
-
 	wp_enqueue_script( 'kubio-block-patterns' );
 	wp_enqueue_script( 'kubio-third-party-blocks' );
 	wp_localize_script(
@@ -621,7 +617,6 @@ function kubio_fix_template_and_parts_default_editor() {
 		sprintf( 'wp.data.select("core").getCurrentTheme = () => { return %s }', wp_json_encode( $theme_data ) ),
 		'after'
 	);
-
 }
 
 function kubio_get_post_types() {
@@ -745,10 +740,14 @@ function kubio_edit_site_init( $hook ) {
 
 	// prepare editor context
 	$editor_context_props = array( 'name' => 'core/edit-site' );
-	$query_post_id        = Arr::get( $_REQUEST, 'postId', null );
-	$query_post_type      = Arr::get( $_REQUEST, 'postType', null );
-	$page_on_front        = get_option( 'page_on_front', null );
-	$post_to_load         = null;
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$query_post_id = Arr::get( $_REQUEST, 'postId', null );
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$query_post_type = Arr::get( $_REQUEST, 'postType', null );
+	$page_on_front   = get_option( 'page_on_front', null );
+	$post_to_load    = null;
 
 	if ( ! $query_post_id && ! $query_post_type ) {
 		if ( $page_on_front ) {
@@ -827,16 +826,22 @@ function kubio_edit_site_init( $hook ) {
 	kubio_enqueue_editor_page_assets();
 	$settings['postTypes'] = kubio_get_post_types();
 
-	$ai_hash                          = Flags::get( 'start_with_ai_hash', null );
-	$ai_hash_param                    = Arr::get( $_REQUEST, 'ai', null );
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$ai_hash = sanitize_text_field( Flags::get( 'start_with_ai_hash', null ) );
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$ai_hash_param = sanitize_text_field( Arr::get( $_REQUEST, 'ai', null ) );
+
 	$settings['startWithAIFrontPage'] = ( $ai_hash && $ai_hash_param && $ai_hash_param === $ai_hash );
 
-	$black_wizard_onboarding_hash               = Flags::get( 'black_wizard_onboarding_hash', null );
-	$black_wizard_onboarding_param              = Arr::get( $_REQUEST, 'black-wizard-onboarding', null );
+	$black_wizard_onboarding_hash = Flags::get( 'black_wizard_onboarding_hash', null );
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$black_wizard_onboarding_param              = sanitize_text_field( Arr::get( $_REQUEST, 'black-wizard-onboarding', null ) );
 	$settings['startWithBlackWizardOnboarding'] = ( kubio_is_black_wizard_onboarding_enabled() &&
-		 $black_wizard_onboarding_hash &&
-		 $black_wizard_onboarding_param &&
-		 $black_wizard_onboarding_hash === $black_wizard_onboarding_param );
+		$black_wizard_onboarding_hash &&
+		$black_wizard_onboarding_param &&
+		$black_wizard_onboarding_hash === $black_wizard_onboarding_param );
 
 	if ( $settings['startWithBlackWizardOnboarding'] ) {
 		add_filter(
@@ -847,6 +852,8 @@ function kubio_edit_site_init( $hook ) {
 			}
 		);
 	}
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	if ( isset( $_REQUEST['generate-ai-frontpage'] ) && ! Flags::get( 'generated_from_getting_started', false ) ) {
 		$settings['startGeneratingAIFrontPage'] = true;
 		Flags::set( 'generated_from_getting_started', true );
@@ -876,7 +883,6 @@ function kubio_edit_site_init( $hook ) {
 	) {
 		wp_enqueue_style( 'wp-block-library-theme' );
 	}
-
 }
 
 add_action( 'admin_enqueue_scripts', 'kubio_edit_site_init' );
@@ -950,7 +956,10 @@ function kubio_edit_site_render_block_editor() {
 	</style>
 	<div id="kubio-editor" class="kubio">
 		<div class="kubio-loading-editor">
-			<?php echo kubio_get_iframe_loader( array( 'size' => '120px' ) ); ?>
+			<?php
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo kubio_get_iframe_loader( array( 'size' => '120px' ) );
+			?>
 		</div>
 	</div>
 	<?php
@@ -1081,6 +1090,8 @@ function kubio_register_site_editor_homepage_settings() {
 	global $wp_registered_settings;
 
 	if ( ! isset( $wp_registered_settings['show_on_front'] ) ) {
+
+		// phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingDynamic
 		register_setting(
 			'reading',
 			'show_on_front',
@@ -1093,6 +1104,7 @@ function kubio_register_site_editor_homepage_settings() {
 	}
 
 	if ( ! isset( $wp_registered_settings['page_on_front'] ) ) {
+		// phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingDynamic
 		register_setting(
 			'reading',
 			'page_on_front',
@@ -1107,6 +1119,7 @@ function kubio_register_site_editor_homepage_settings() {
 		);
 	}
 	if ( ! isset( $wp_registered_settings['page_for_posts'] ) ) {
+		// phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingDynamic
 		register_setting(
 			'reading',
 			'page_for_posts',
@@ -1122,6 +1135,7 @@ function kubio_register_site_editor_homepage_settings() {
 	}
 
 	if ( ! isset( $wp_registered_settings['site_icon'] ) ) {
+		// phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingDynamic
 		register_setting(
 			'general',
 			'site_icon',
@@ -1222,13 +1236,14 @@ add_action(
 				<?php
 				_kubio_requirements_not_met_notice();
 				$content = ob_get_clean();
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				wp_die( $content );
 			}
 
 			if ( ! current_user_can( 'edit_theme_options' ) ) {
 				wp_die(
-					'<h1>' . __( 'You need a higher level of permission.', 'kubio' ) . '</h1>' .
-						'<p>' . __( 'Sorry, you are not allowed to customize this site.', 'kubio' ) . '</p>',
+					'<h1>' . esc_html__( 'You need a higher level of permission.', 'kubio' ) . '</h1>' .
+						'<p>' . esc_html__( 'Sorry, you are not allowed to customize this site.', 'kubio' ) . '</p>',
 					403
 				);
 			}

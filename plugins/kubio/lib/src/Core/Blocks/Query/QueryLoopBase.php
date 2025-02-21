@@ -18,17 +18,17 @@ class QueryLoopBase extends BlockContainerBase {
 
 
 	public function mapPropsToElements() {
-		$layout_media   = $this->getPropByMedia( 'layout' );
-		$layout_helper  = new LayoutHelper( $layout_media );
-		$masonry        = $this->getAttribute( 'masonry', false );
-		$masonryClasses = array();
+		$layout_media    = $this->getPropByMedia( 'layout' );
+		$layout_helper   = new LayoutHelper( $layout_media );
+		$masonry         = $this->getAttribute( 'masonry', false );
+		$masonry_classes = array();
 		if ( $masonry ) {
-			$masonryClasses[] = 'kubio-query-loop--use-masonry';
+			$masonry_classes[] = 'kubio-query-loop--use-masonry';
 		}
 		$map                    = array();
 		$map[ self::CONTAINER ] = array( 'className' => $layout_helper->getRowGapClasses() );
 		$map[ self::INNER ]     = array(
-			'className' => LodashBasic::concat( $layout_helper->getRowGapInnerClasses(), $layout_helper->getRowAlignClasses(), $masonryClasses ),
+			'className' => LodashBasic::concat( $layout_helper->getRowGapInnerClasses(), $layout_helper->getRowAlignClasses(), $masonry_classes ),
 			'innerHTML' => $this->renderList(),
 		);
 
@@ -50,7 +50,7 @@ class QueryLoopBase extends BlockContainerBase {
 				$not_found_text = __( 'No {post_title} found!', 'kubio' );
 			}
 
-			$content .= '<h2 class="kubio-empty-query-result">' . str_replace( '{post_title}', $label, kubio_wpml_get_translated_string($not_found_text) ) . '</h2>';
+			$content .= '<h2 class="kubio-empty-query-result">' . str_replace( '{post_title}', $label, kubio_wpml_get_translated_string( $not_found_text ) ) . '</h2>';
 		} else {
 			foreach ( (array) $posts as $post ) {
 				foreach ( $this->block_data['innerBlocks'] as $inner_block ) {
@@ -104,7 +104,9 @@ class QueryLoopBase extends BlockContainerBase {
 				'postType'     => 'post',
 				'sticky'       => false,
 				'post__in'     => array(),
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
 				'post__not_in' => array(),
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 				'exclude'      => array(),
 				'categoryIds'  => array(),
 				'perPage'      => get_option( 'posts_per_page' ),
@@ -121,7 +123,8 @@ class QueryLoopBase extends BlockContainerBase {
 	public function getPostsQueryList() {
 		$context  = $this->getQueryContext();
 		$page_key = isset( $context['queryId'] ) ? 'query-' . $context['queryId'] . '-page' : 'query-page';
-		$page     = empty( $_GET[ $page_key ] ) ? 1 : filter_var( $_GET[ $page_key ], FILTER_VALIDATE_INT );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+		$page = empty( $_GET[ $page_key ] ) ? 1 : filter_var( $_GET[ $page_key ], FILTER_VALIDATE_INT );
 
 		/** @noinspection PhpParamsInspection */
 		$query_args                        = build_query_vars_from_query_block( (object) array( 'context' => $context ), $page );
@@ -129,7 +132,6 @@ class QueryLoopBase extends BlockContainerBase {
 		$query                             = new \WP_Query( $query_args );
 
 		return $query->posts;
-
 	}
 
 	public function getPostType() {

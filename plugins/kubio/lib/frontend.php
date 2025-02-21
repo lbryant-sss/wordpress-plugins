@@ -15,6 +15,7 @@ function kubio_enqueue_frontend_assets() {
 
 	//when we are inside the editor and render the content inside a post or a woo product. We don't want to add a new instance
 	//of global colors or aditional css. Because it will overwrite the css from the editor
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	if ( ! Arr::has( $_REQUEST, '__kubio-rendered-styles' ) ) {
 		$style = array(
 			// shapes
@@ -46,12 +47,11 @@ function kubio_render_page_css() {
 	$content = '<style type="text/css" data-name="kubio-style">' . kubio_get_page_css() . '</style>';
 
 	return $content;
-
 }
 
 add_filter(
 	'style_loader_tag',
-	function( $tag, $handle ) {
+	function ( $tag, $handle ) {
 		$asynced_styles = array( 'kubio-google-fonts' );
 
 		if ( in_array( $handle, $asynced_styles, true ) ) {

@@ -5,7 +5,6 @@ namespace Kubio\Blocks;
 use Kubio\Core\Blocks\BlockContainerBase;
 use Kubio\Core\Registry;
 use Kubio\Core\Styles\FlexAlign;
-use Kubio\Core\StyleManager\DynamicStyles;
 
 class SectionBlock extends BlockContainerBase {
 

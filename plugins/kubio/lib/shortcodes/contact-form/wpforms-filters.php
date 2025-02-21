@@ -33,9 +33,9 @@ add_filter(
 
 			ob_start();
 			wp_print_styles();
-			$ob_content    = ob_get_clean();
-			 $extraContent = "\n\n<!--header  shortcode=wpforms scripts-->\n{$ob_content}<!--header scripts-->\n\n";
-			 return $extraContent . $content;
+			$ob_content   = ob_get_clean();
+			$extraContent = "\n\n<!--header  shortcode=wpforms scripts-->\n{$ob_content}<!--header scripts-->\n\n";
+			return $extraContent . $content;
 		}
 		return $content;
 	},
@@ -63,7 +63,6 @@ add_filter(
 			return $content . $extraContent;
 		}
 		return $content;
-
 	},
 	10,
 	2

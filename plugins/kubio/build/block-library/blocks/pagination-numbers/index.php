@@ -24,9 +24,9 @@ class PaginationNumbersBlock extends BlockBase {
 		return paginate_links(
 			array(
 				'prev_next' => false,
-				'total'     => esc_attr($pages_data['total']),
-				'current'   => esc_attr($pages_data['current']),
-				'show_all'  => esc_attr($this->getAttribute( 'show_all', false )),
+				'total'     => esc_attr( $pages_data['total'] ),
+				'current'   => esc_attr( $pages_data['current'] ),
+				'show_all'  => esc_attr( $this->getAttribute( 'show_all', false ) ),
 			)
 		);
 	}
@@ -43,8 +43,9 @@ class PaginationNumbersBlock extends BlockBase {
 
 			$query_id = Arr::get( $this->block_context, 'queryId', false );
 			$page_key = $query_id ? 'query-' . $query_id . '-page' : 'query-page';
-			$current  = empty( $_GET[ $page_key ] ) ? 1 : filter_var( $_GET[ $page_key ], FILTER_VALIDATE_INT );
-			$total    = Arr::get( $this->block_context, 'query.pages', 1 );
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+			$current = empty( $_GET[ $page_key ] ) ? 1 : filter_var( $_GET[ $page_key ], FILTER_VALIDATE_INT );
+			$total   = Arr::get( $this->block_context, 'query.pages', 1 );
 		}
 
 		return array(
@@ -95,7 +96,6 @@ class PaginationNumbersBlock extends BlockBase {
 
 		return ( $pages > 1 );
 	}
-
 }
 
 Registry::registerBlock( __DIR__, PaginationNumbersBlock::class );

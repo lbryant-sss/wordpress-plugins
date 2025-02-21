@@ -6,95 +6,80 @@ jQuery(document).ready(function ($) {
         $('.wpd-form-foot', $(this).parents('.wpd_comm_form')).slideDown(parseInt(wpdiscuzAjaxObj.enableDropAnimation) ? 500 : 0);
     });
 
-    $('body').on('change', '.wmu-add-files', function () {
-        var btn = $(this);
-        var form = btn.parents('.wpd_comm_form');
-        var files = btn[0].files ? btn[0].files : [];
+    $(document).delegate('.wmu-add-files', 'change', function () {
+        const btn = $(this);
+        const form = btn.closest('.wpd_comm_form');
+        const files = btn[0].files ? btn[0].files : [];
         if (files.length) {
-            wmuUploadFiles(btn, form, files);
+            $('.wmu-action-wrap .wmu-tabs', form).html('');
+            $.each(files, function (key, file) {
+                let mimeType = file.type;
+                let previewArgs = {
+                    'id': '',
+                    'icon': '',
+                    'fullname': file.name,
+                    'shortname': getShortname(file.name),
+                    'type': '',
+                };
+
+                if (mimeType.match(/^image/)) {
+                    previewArgs.type = 'images';
+                    if (window.FileReader) {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onloadend = function () {
+                            previewArgs.icon = this.result;
+                            previewArgs.shortname = '';
+                            initPreview(form, previewArgs);
+                        }
+                    }
+                } else if (mimeType.match(/^video/) || mimeType.match(/^audio/)) {
+                    previewArgs.type = 'videos';
+                    previewArgs.icon = wpdiscuzAjaxObj.wmuIconVideo;
+                    initPreview(form, previewArgs);
+                } else {
+                    previewArgs.type = 'files';
+                    previewArgs.icon = wpdiscuzAjaxObj.wmuIconFile;
+                    initPreview(form, previewArgs);
+                }
+            });
+        } else {
+            return;
         }
     });
 
-    function wmuUploadFiles(btn, form, files) {
-        form.attr('data-uploading', 'true');
-        var data = new FormData();
-        data.append('action', 'wmuUploadFiles');
-        data.append('wmuAttachmentsData', $('.wmu-attachments-data', form).val());
-        data.append('uniqueId', form.find('.wpdiscuz_unique_id').val());
-        var size = 0;
-        $.each(files, function (i, file) {
-            size += file.size;
-            data.append(wpdiscuzAjaxObj.wmuInput + '[' + i + ']', file);
-        });
-        if (size > parseInt(wpdiscuzAjaxObj.wmuMaxFileSize)) {
-            wpdiscuzAjaxObj.setCommentMessage(wpdiscuzAjaxObj.applyFilterOnPhrase(wpdiscuzAjaxObj.wmuPhraseMaxFileSize, 'wmuPhraseMaxFileSize', btn), 'error', 3000);
-        } else if (size > parseInt(wpdiscuzAjaxObj.wmuPostMaxSize)) {
-            wpdiscuzAjaxObj.setCommentMessage(wpdiscuzAjaxObj.applyFilterOnPhrase(wpdiscuzAjaxObj.wmuPhrasePostMaxSize, 'wmuPhrasePostMaxSize', btn), 'error', 3000);
-        } else {
-            wpdiscuzAjaxObj.getAjaxObj(wpNativeAjax, true, data)
-                .done(function (r) {
-                    if (r.success) {
-                        $('.wmu-attached-data-info', form).remove();
-                        $('.wmu-add-files', form).after(r.data.attachmentsHtml);
-                        if (r.data.tooltip) {
-                            $('.wmu-upload-wrap', form).attr('wpd-tooltip', r.data.tooltip);
-                        }
-                        wmuDisplayPreviews(form, r);
-                        if (r.data.errors.length) {
-                            wpdiscuzAjaxObj.setCommentMessage(r.data.errors, 'error', 3000);
-                            console.log(r.data.errors);
-                        }
-                    } else {
-                        if (r.data.errorCode) {
-                            wpdiscuzAjaxObj.setCommentMessage(wpdiscuzAjaxObj.applyFilterOnPhrase(wpdiscuzAjaxObj[r.data.errorCode], r.data.errorCode, form), 'error', 3000);
-                        } else if (r.data.error) {
-                            wpdiscuzAjaxObj.setCommentMessage(r.data.error, 'error', 3000);
-                        }
-                    }
-                    $('#wpdiscuz-loading-bar').fadeOut(250);
-                    form.attr('data-uploading', 'false');
-                })
-                .fail(function (jqXHR, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                    $('#wpdiscuz-loading-bar').fadeOut(250);
-                    form.attr('data-uploading', 'false');
-                });
-        }
+    /**
+     * @param form
+     * @param args
+     */
+    function initPreview(form, args = {}) {
+        console.log('init: ' + JSON.stringify(args));
+        let previewTemplate = wpdiscuzAjaxObj.previewTemplate;
+        previewTemplate = previewTemplate.replace('[PREVIEW_TYPE_CLASS]', 'wmu-preview-' + args.type);
+        previewTemplate = previewTemplate.replace('[PREVIEW_TITLE]', args.fullname);
+        previewTemplate = previewTemplate.replace('[PREVIEW_TYPE]', args.type);
+        previewTemplate = previewTemplate.replace('[PREVIEW_ID]', args.id);
+        previewTemplate = previewTemplate.replace('[PREVIEW_ICON]', args.icon);
+        previewTemplate = previewTemplate.replace('[PREVIEW_FILENAME]', args.shortname);
+        $('.wmu-action-wrap .wmu-' + args.type + '-tab', form).removeClass('wmu-hide').append(previewTemplate);
     }
 
-    function wmuDisplayPreviews(form, r) {
-        $.each(r.data.previewsData, function (key, fileList) {
-            $('.wmu-action-wrap .wmu-' + key + '-tab', form).html('');
-            $.each(fileList, function (index, fileData) {
-                var pId = fileData.id;
-                var pIcon = '';
-                var pFullname = fileData.fullname;
-                var pShortname = fileData.shortname;
-                if (key == wpdiscuzAjaxObj.wmuKeyImages) {
-                    pIcon = fileData.url;
-                    pShortname = '';
-                } else if (key == wpdiscuzAjaxObj.wmuKeyVideos) {
-                    pIcon = wpdiscuzAjaxObj.wmuIconVideo;
-                } else if (key == wpdiscuzAjaxObj.wmuKeyFiles) {
-                    pIcon = wpdiscuzAjaxObj.wmuIconFile;
-                }
-                var previewTemplate = '<div class="wmu-preview [PREVIEW_TYPE_CLASS]" title="[PREVIEW_TITLE]" data-wmu-type="[PREVIEW_TYPE]" data-wmu-attachment="[PREVIEW_ID]"><div class="wmu-preview-remove"><img class="wmu-preview-img" src="[PREVIEW_ICON]"><div class="wmu-file-name">[PREVIEW_FILENAME]</div><div class="wmu-delete">&nbsp;</div></div></div>';
-                previewTemplate = previewTemplate.replace('[PREVIEW_TYPE_CLASS]', 'wmu-preview-' + key);
-                previewTemplate = previewTemplate.replace('[PREVIEW_TITLE]', pFullname);
-                previewTemplate = previewTemplate.replace('[PREVIEW_TYPE]', key);
-                previewTemplate = previewTemplate.replace('[PREVIEW_ID]', pId);
-                previewTemplate = previewTemplate.replace('[PREVIEW_ICON]', pIcon);
-                previewTemplate = previewTemplate.replace('[PREVIEW_FILENAME]', pShortname);
-                $('.wmu-action-wrap .wmu-' + key + '-tab', form).removeClass('wmu-hide').append(previewTemplate);
-            });
-        });
+    function getShortname(str) {
+        let shortname = str;
+        if ((typeof str !== 'undefined') && str.length) {
+            if (str.length > 40) {
+                shortname = str.substring(str.length - 40);
+                shortname = "..." + shortname;
+            }
+        }
+        return shortname;
     }
 
     $('body').on('click', '.wmu-attachment-delete', function (e) {
         if (confirm(wpdiscuzAjaxObj.wmuPhraseConfirmDelete)) {
-            var btn = $(this);
-            var attachmentId = btn.data('wmu-attachment');
-            var data = new FormData();
+            const btn = $(this);
+            const attachmentId = btn.data('wmu-attachment');
+            const data = new FormData();
             data.append('action', 'wmuDeleteAttachment');
             data.append('attachmentId', attachmentId);
             wpdiscuzAjaxObj.getAjaxObj(wpNativeAjax, true, data)
@@ -127,51 +112,6 @@ jQuery(document).ready(function ($) {
         } else {
             console.log('canceled');
         }
-    });
-    /**
-     * ajax request
-     * remove preview from frontend (html) and backend (db data)
-     */
-    $('body').on('click', '.wmu-preview', function () {
-        var btn = $(this);
-        var form = btn.parents('.wpd_comm_form');
-        var type = btn.data('wmu-type');
-        var id = btn.data('wmu-attachment');
-        var data = new FormData();
-        data.append('action', 'wmuRemoveAttachmentPreview');
-        data.append('attachmentId', id);
-        data.append('wmuAttachmentsData', $('.wmu-attachments-data', form).val());
-        data.append('uniqueId', form.find('.wpdiscuz_unique_id').val());
-        wpdiscuzAjaxObj.getAjaxObj(wpNativeAjax, true, data)
-            .done(function (r) {
-                if (r.success) {
-                    btn.remove();
-                    var tabs = $('.wmu-tabs', form);
-                    $.each(tabs, function (i, tab) {
-                        if ($('.wmu-preview', tab).length) {
-                            $(tab).removeClass('wmu-hide');
-                        } else {
-                            $(tab).addClass('wmu-hide');
-                        }
-                    });
-                    $('.wmu-attached-data-info', form).remove();
-                    $('.wmu-add-files', form).after(r.data.attachmentsHtml);
-                    if (r.data.tooltip) {
-                        $('.wmu-upload-wrap', form).attr('wpd-tooltip', r.data.tooltip);
-                    }
-                } else {
-                    if (r.data.errorCode) {
-                        wpdiscuzAjaxObj.setCommentMessage(wpdiscuzAjaxObj.applyFilterOnPhrase(wpdiscuzAjaxObj[r.data.errorCode], r.data.errorCode, form), 'error', 3000);
-                    } else if (r.data.error) {
-                        wpdiscuzAjaxObj.setCommentMessage(r.data.error, 'error', 3000);
-                    }
-                }
-                $('#wpdiscuz-loading-bar').fadeOut(250);
-            })
-            .fail(function (jqXHR, textStatus, errorThrown) {
-                console.log(errorThrown);
-                $('#wpdiscuz-loading-bar').fadeOut(250);
-            });
     });
 
     if (parseInt(wpdiscuzAjaxObj.wmuIsLightbox)) {

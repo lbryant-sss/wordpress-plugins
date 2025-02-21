@@ -167,7 +167,6 @@ function kubio_handle_autosaved_posts_and_templates() {
 				$kubio_preview_located_template_data = array( 'template' => $template_file );
 				return $template_file;
 			};
-
 		}
 	);
 }

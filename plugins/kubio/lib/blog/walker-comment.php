@@ -2,7 +2,7 @@
 
 class Kubio_Walker_Comment extends Walker_Comment {
 
-	private function prinAvatar( $comment, $depth, $args ) {
+	private function printAvatar( $comment, $depth, $args ) {
 		if ( 0 != $args['avatar_size'] ) {
 			echo get_avatar( $comment, $args['avatar_size'] );
 		}
@@ -15,31 +15,36 @@ class Kubio_Walker_Comment extends Walker_Comment {
 			$comment_author = get_comment_author( $comment );
 		}
 
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		printf( '<b class="fn">%s</b>', $comment_author );
-
 	}
 
 	private function printMetadata( $comment, $depth, $args ) {
 		printf(
 			'<a href="%s"><time datetime="%s">%s</time></a>',
 			esc_url( get_comment_link( $comment, $args ) ),
+			//  phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			get_comment_time( 'c' ),
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			sprintf(
 				/* translators: 1: Comment date, 2: Comment time. */
-				__( '%1$s at %2$s' ),
+				esc_html__( '%1$s at %2$s', 'kubio' ),
+				//  phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				get_comment_date( '', $comment ),
+				//  phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				get_comment_time()
 			)
 		);
 
-		edit_comment_link( __( 'Edit' ), ' <span class="edit-link">', '</span>' );
+		edit_comment_link( __( 'Edit', 'kubio' ), ' <span class="edit-link">', '</span>' );
 
 		$commenter = wp_get_current_commenter();
 		if ( $commenter['comment_author_email'] ) {
-			$moderation_note = __( 'Your comment is awaiting moderation.' );
+			$moderation_note = __( 'Your comment is awaiting moderation.', 'kubio' );
 		} else {
 			$moderation_note = __(
-				'Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved.'
+				'Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved.',
+				'kubio'
 			);
 		}
 
@@ -66,12 +71,13 @@ class Kubio_Walker_Comment extends Walker_Comment {
 		$commenter          = wp_get_current_commenter();
 		$show_pending_links = ! empty( $commenter['comment_author'] );
 
+		// phpcs:disable
 		?>
 		<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?>>
 			<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
 				<footer class="comment-meta">
 					<div class="comment-author vcard">
-						<?php $this->prinAvatar( $comment, $depth, $args ); ?>
+						<?php $this->printAvatar( $comment, $depth, $args ); ?>
 						<div>
 						<div>
 							<?php $this->printAuthor( $comment, $depth, $args ); ?>
@@ -105,5 +111,7 @@ class Kubio_Walker_Comment extends Walker_Comment {
 				?>
 			</article><!-- .comment-body -->
 		<?php
+
+		// phpcs:enable
 	}
 }

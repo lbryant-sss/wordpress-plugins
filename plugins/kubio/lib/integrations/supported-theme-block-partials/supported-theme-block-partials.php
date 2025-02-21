@@ -42,6 +42,7 @@ add_filter(
 						kubio_get_page_css(),
 					);
 
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					echo '<style>' . implode( "\n", $style ) . '</style>';
 				}
 			}

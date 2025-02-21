@@ -46,15 +46,12 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
             add_filter("comment_text", [&$this, "commentText"], 100, 3);
             add_filter("wpdiscuz_after_read_more", [&$this, "afterReadMore"], 100, 3);
 
-            add_action("comment_post", [&$this, "addAttachments"]);
+//            add_action("comment_post", [&$this, "addAttachments"]);
             add_filter("wpdiscuz_comment_post", [&$this, "postComment"], 10);
             add_filter("wpdiscuz_ajax_callbacks", [&$this, "wmuImageCallbacks"], 10);
 
-            add_action("wp_ajax_wmuUploadFiles", [&$this, "uploadFiles"]);
-            add_action("wp_ajax_nopriv_wmuUploadFiles", [&$this, "uploadFiles"]);
-
-            add_action("wp_ajax_wmuRemoveAttachmentPreview", [&$this, "removeAttachmentPreview"]);
-            add_action("wp_ajax_nopriv_wmuRemoveAttachmentPreview", [&$this, "removeAttachmentPreview"]);
+            add_action("wpdiscuz_before_wp_new_comment", [$this, "checkFiles"]);
+            add_action("wpdiscuz_add_comment_before_wp_list_comments", [&$this, "uploadFiles"], 10, 2);
 
             add_action("wp_ajax_wmuDeleteAttachment", [&$this, "deleteAttachment"]);
             add_action("wp_ajax_nopriv_wmuDeleteAttachment", [&$this, "deleteAttachment"]);
@@ -101,7 +98,7 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
             $html        .= "<span class='wmu-upload-wrap' wpd-tooltip='" . esc_attr($this->options->getPhrase("wmuAttachImage", ["unique_id" => $uniqueId])) . "' wpd-tooltip-position='" . (!is_rtl() ? 'left' : 'right') . "'>";
             $html        .= "<label class='wmu-add'>";
             $html        .= "<i class='$faIcon'></i>";
-            $html        .= "<input style='display:none;' class='wmu-add-files' type='file' name='" . self::INPUT_NAME . "[]' $type $allowedExts/>";
+            $html        .= "<input style='display:none;' class='wmu-add-files' type='file' name='" . self::INPUT_NAME . "' $type $allowedExts/>";
             $html        .= "</label>";
             $html        .= "</span>";
         }
@@ -249,27 +246,24 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
         return $images;
     }
 
-    public function addAttachments($cId) {
-        if ($cId && !empty($_POST["wmu_attachments"])) {
-            $wmuAttachments = json_decode(stripslashes($_POST["wmu_attachments"]), JSON_OBJECT_AS_ARRAY);
-            if ($wmuAttachments && is_array($wmuAttachments)) {
+    public function addAttachments($cId, $attachmentsIdData) {
+        if ($attachmentsIdData && is_array($attachmentsIdData)) {
 
-                $attachments = [];
+            $attachments = [];
 
-                foreach ($wmuAttachments as $key => $data) {
-                    if ($data && is_array($data)) {
-                        foreach ($data as $attachmentId) {
-                            if (!empty($attachmentId) && ($attachmentId = self::decrypt($attachmentId))) {
-                                $attachments[$key][] = $attachmentId;
-                                update_post_meta($attachmentId, self::METAKEY_ATTCHMENT_COMMENT_ID, $cId);
-                            }
+            foreach ($attachmentsIdData as $key => $data) {
+                if ($data && is_array($data)) {
+                    foreach ($data as $attachmentId) {
+                        if (!empty($attachmentId) && ($attachmentId = self::decrypt($attachmentId))) {
+                            $attachments[$key][] = $attachmentId;
+                            update_post_meta($attachmentId, self::METAKEY_ATTCHMENT_COMMENT_ID, $cId);
                         }
                     }
                 }
+            }
 
-                if ($attachments) {
-                    update_comment_meta($cId, self::METAKEY_ATTACHMENTS, $attachments);
-                }
+            if ($attachments) {
+                update_comment_meta($cId, self::METAKEY_ATTACHMENTS, $attachments);
             }
         }
     }
@@ -285,75 +279,46 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
         return $response;
     }
 
-    public function uploadFiles() {
+
+    private function getFilteredFiles() {
+        $files = $this->combineArray($_FILES[self::INPUT_NAME]);
+
+        foreach ($files as $key => $file) {
+            if (empty($file["tmp_name"]) || empty($file["size"])) {
+                unset($files[$key]);
+            }
+        }
+        return $files;
+    }
+
+    public function checkFiles() {
         $this->helper->validateNonce();
-        $response = ["errorCode" => "", "error" => "", "errors" => [], "attachmentsHtml" => "", "previewsData" => ""];
-        $postId   = WpdiscuzHelper::sanitize(INPUT_POST, "postId", FILTER_SANITIZE_NUMBER_INT, 0);
-        $uniqueId = WpdiscuzHelper::sanitize(INPUT_POST, "uniqueId", "FILTER_SANITIZE_STRING");
+        $postId = WpdiscuzHelper::sanitize(INPUT_POST, "postId", FILTER_SANITIZE_NUMBER_INT, 0);
 
         if (!$postId) {
-            $response["errorCode"] = "msgPostIdNotExists";
-            wp_send_json_error($response);
+            wp_send_json_error("msgPostIdNotExists");
         }
 
-        if (empty($_FILES[self::INPUT_NAME])) {
-            $response["errorCode"] = "msgEmptyFile";
-            wp_send_json_error($response);
+        if (empty($_FILES[self::INPUT_NAME]) || !is_array($_FILES[self::INPUT_NAME])) {
+            return;
         }
 
-
-        $files        = $this->combineArray($_FILES[self::INPUT_NAME]);
+        $files        = $this->getFilteredFiles();
         $filesCount   = count($files);
         $allowedCount = apply_filters("wpdiscuz_mu_file_count", 1);
 
         if ($filesCount > $allowedCount) {
-            $response["errorCode"] = "wmuPhraseMaxFileCount";
-            wp_send_json_error($response);
+            wp_send_json_error("wmuPhraseMaxFileCount");
         }
 
         $post = get_post($postId);
         if (!$this->isUploadingAllowed($post)) {
-            $response["errorCode"] = "msgUploadingNotAllowed";
-            wp_send_json_error($response);
-        }
-
-
-        // all expected data are correct, continue uploading
-        $attachmentIds      = apply_filters("wpdiscuz_mu_attachment_ids", [self::KEY_IMAGES => []]);
-        $attachmentsData    = apply_filters("wpdiscuz_mu_attachments_data", [self::KEY_IMAGES => []]);
-        $wmuAttachmentsData = empty($_POST["wmuAttachmentsData"]) ? "" : json_decode(stripslashes(sanitize_text_field($_POST["wmuAttachmentsData"])), JSON_OBJECT_AS_ARRAY);
-
-        if ($wmuAttachmentsData && is_array($wmuAttachmentsData)) {
-            if ($allowedCount == 1) {
-                foreach ($wmuAttachmentsData as $key => $value) {
-                    if ($value && is_array($value)) {
-                        foreach ($value as $v) {
-                            wp_delete_attachment($v["id"], true);
-                        }
-                    }
-                }
-            } else {
-                foreach ($wmuAttachmentsData as $key => $value) {
-                    if ($value && is_array($value)) {
-                        $filesCount += count($value);
-                        foreach ($value as $v) {
-                            $attachmentIds[$key][]   = $v["id"];
-                            $attachmentsData[$key][] = $v;
-                        }
-                    }
-                }
-            }
-        }
-
-        if ($filesCount > $allowedCount) {
-            $response["errorCode"] = "wmuPhraseMaxFileCount";
-            wp_send_json_error($response);
+            wp_send_json_error("msgUploadingNotAllowed");
         }
 
         $postSize = empty($_SERVER["CONTENT_LENGTH"]) ? 0 : intval($_SERVER["CONTENT_LENGTH"]);
         if ($postSize && $postSize > $this->options->wmuPostMaxSize) {
-            $response["errorCode"] = "wmuPhrasePostMaxSize";
-            wp_send_json_error($response);
+            wp_send_json_error("wmuPhrasePostMaxSize");
         }
 
         $size = 0;
@@ -361,13 +326,30 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
             $size += empty($file["size"]) ? 0 : intval($file["size"]);
         }
         if ($size > ($this->options->content["wmuMaxFileSize"] * 1024 * 1024)) {
-            $response["errorCode"] = "wmuPhraseMaxFileSize";
-            wp_send_json_error($response);
+            wp_send_json_error("wmuPhraseMaxFileSize");
+        }
+    }
+
+    /**
+     * @param $newComment WP_Comment
+     * @param $currentUser
+     * @return void
+     */
+    public function uploadFiles($newComment, $currentUser) {
+
+        if (empty($_FILES[self::INPUT_NAME]) || !is_array($_FILES[self::INPUT_NAME])) {
+            return;
         }
 
+        $files = $this->getFilteredFiles();
+
+        // all expected data are correct, continue uploading
         $this->includeImageFunctions();
 
+        $attachmentIds = [];
+
         foreach ($files as $file) {
+
             $error     = false;
             $extension = strtolower(pathinfo($file["name"], PATHINFO_EXTENSION));
             if ($mimeType = $this->isImage($file)) {
@@ -391,8 +373,7 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
                 }
                 $file["type"] = $mimeType;
             } else {
-                $error                = true;
-                $response["errors"][] = $file["name"] . " " . (current_user_can("manage_options") ? "(mimetype - " . $mimeType . ") " : "") . "- " . esc_html($this->options->getPhrase("wmuPhraseNotAllowedFile"));
+                $error = true;
             }
 
             do_action("wpdiscuz_mu_preupload", $file);
@@ -401,29 +382,17 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
                 $attachmentData = $this->uploadSingleFile($file);
                 if ($attachmentData) {
                     if (strpos($file["type"], "image/") !== false) {
-                        $attachmentIds[self::KEY_IMAGES][]   = $attachmentData["id"];
-                        $attachmentsData[self::KEY_IMAGES][] = $attachmentData;
+                        $attachmentIds[self::KEY_IMAGES][] = $attachmentData["id"];
                     } else {
-                        $attachmentIds   = apply_filters("wpdiscuz_mu_add_attachment_ids", $attachmentIds, $attachmentData, $file);
-                        $attachmentsData = apply_filters("wpdiscuz_mu_add_attachments_data", $attachmentsData, $attachmentData, $file);
+                        $attachmentIds = apply_filters("wpdiscuz_mu_add_attachment_ids", $attachmentIds, $attachmentData, $file);
                     }
                 }
             }
         }
 
         if ($attachmentIds) {
-            $response["attachmentsHtml"] = "<div class='wmu-attached-data-info wmu-hide'>";
-//            $response["attachmentsHtml"] .= "<input class='wmu-attachments-ids' type='hidden' name='wmu_attachments' value='" . esc_attr(json_encode($attachmentIds)) . "'/>";
-            $response["attachmentsHtml"] .= "<textarea class='wmu-attachments-ids' name='wmu_attachments'>" . esc_attr(json_encode($attachmentIds)) . "</textarea>";
-            $response["attachmentsHtml"] .= "<textarea class='wmu-attachments-data'>" . esc_attr(json_encode($attachmentsData)) . "</textarea>";
-//            $response["attachmentsHtml"] .= "<input class='wmu-attachments-data' type='hidden' value='" . esc_attr(json_encode($attachmentsData)) . "'/>";
-            $response["attachmentsHtml"] .= "</div>";
-            $response["previewsData"]    = $attachmentsData;
-            if ($allowedCount == 1) {
-                $response["tooltip"] = esc_html($this->options->getPhrase("wmuChangeImage", ["unique_id" => $uniqueId]));
-            }
+            $this->addAttachments($newComment->comment_ID, $attachmentIds);
         }
-        wp_send_json_success($response);
     }
 
     public static function encrypt($data) {
@@ -483,63 +452,6 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
             }
         }
         return $mimeType;
-    }
-
-    public function removeAttachmentPreview() {
-        $this->helper->validateNonce();
-        $response     = ["errorCode" => "", "error" => "", "attachmentsHtml" => ""];
-        $attachmentId = WpdiscuzHelper::sanitize(INPUT_POST, "attachmentId", "FILTER_SANITIZE_STRING", 0);
-        $attachmentId = self::decrypt($attachmentId);
-        $uniqueId     = WpdiscuzHelper::sanitize(INPUT_POST, "uniqueId", "FILTER_SANITIZE_STRING");
-        $attachment   = get_post($attachmentId);
-
-        // add attachment not exists message in wpdoptions > jsargs
-        if (!$attachment) {
-            $response["errorCode"] = "wmuMsgAttachmentNotExists";
-            wp_send_json_error($response);
-        }
-
-        if (empty($this->currentUser->ID)) {
-            $this->setCurrentUser(WpdiscuzHelper::getCurrentUser());
-        }
-        $ip      = WpdiscuzHelper::getRealIPAddr();
-        $ownerIp = get_post_meta($attachmentId, self::METAKEY_ATTCHMENT_OWNER_IP, true);
-        if (!current_user_can("manage_options") && (($attachment->post_author != 0 && $attachment->post_author != $this->currentUser->ID) || ($attachment->post_author == 0 && $ownerIp !== $ip))) {
-            $response["errorCode"] = "msgPermissionDenied";
-            wp_send_json_error($response);
-        }
-
-        $filesCount      = 0;
-        $attachmentIds   = apply_filters("wpdiscuz_mu_attachment_ids", [self::KEY_IMAGES => []]);
-        $attachmentsData = apply_filters("wpdiscuz_mu_attachments_data", [self::KEY_IMAGES => []]);
-        wp_delete_attachment($attachmentId, true);
-
-        $wmuAttachmentsData = empty($_POST["wmuAttachmentsData"]) ? "" : json_decode(stripslashes(sanitize_text_field($_POST["wmuAttachmentsData"])), JSON_OBJECT_AS_ARRAY);
-
-        if ($wmuAttachmentsData && is_array($wmuAttachmentsData)) {
-            foreach ($wmuAttachmentsData as $key => $value) {
-                if ($value && is_array($value)) {
-                    foreach ($value as $v) {
-                        $attachmentDataId = self::decrypt($v["id"]);
-                        if ($attachmentDataId != $attachmentId) {
-                            $attachmentIds[$key][]   = $v["id"];
-                            $attachmentsData[$key][] = $v;
-                            $filesCount++;
-                        }
-                    }
-                }
-            }
-        }
-
-        if ($filesCount) {
-            $response["attachmentsHtml"] = "<div class='wmu-attached-data-info wmu-hide'>";
-            $response["attachmentsHtml"] .= "<input class='wmu-attachments-ids' type='hidden' name='wmu_attachments' value='" . esc_attr(json_encode($attachmentIds)) . "'/>";
-            $response["attachmentsHtml"] .= "<input class='wmu-attachments-data' type='hidden' value='" . esc_attr(json_encode($attachmentsData)) . "'/>";
-            $response["attachmentsHtml"] .= "</div>";
-        } else {
-            $response["tooltip"] = esc_html($this->options->getPhrase("wmuAttachImage", ["unique_id" => $uniqueId]));
-        }
-        wp_send_json_success($response);
     }
 
     public function deleteAttachment() {
@@ -726,7 +638,6 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
                 $name = function_exists("mb_substr") ? mb_substr($name, -40, 40, "UTF-8") : substr($name, -40, 40);
                 $name = "..." . $name;
             }
-            $name = ucfirst(str_replace(["-", "_"], " ", $name));
         }
         return $name;
     }
@@ -952,7 +863,7 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
         ]);
 
         foreach ($attachments as $attachId) {
-            $fileName = get_post_meta($attachId, "_wp_attached_file", true);
+            $fileName               = get_post_meta($attachId, "_wp_attached_file", true);
             $is_wpdiscuz_attachment = (int)get_post_meta($attachId, '_wmu_comment_id', true);
             if (!$fileName || !$is_wpdiscuz_attachment) {
                 continue;
@@ -981,6 +892,10 @@ class WpdiscuzHelperUpload implements WpDiscuzConstants {
         }
 
         if (!function_exists("wp_get_additional_image_sizes")) {
+            require_once ABSPATH . "wp-includes/media.php";
+        }
+
+        if (!function_exists("wp_read_audio_metadata")) {
             require_once ABSPATH . "wp-admin/includes/media.php";
         }
     }

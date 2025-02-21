@@ -225,6 +225,7 @@ function kubio_edit_wp_template_part_filter_current_theme_templates_only( $query
 	$stylesheet = get_stylesheet();
 
 	if ( $screen && $screen->id === 'edit-wp_template_part' ) {
+		// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 		$query->query_vars['tax_query'] = array(
 			array(
 				'taxonomy' => 'wp_theme',
@@ -237,8 +238,7 @@ function kubio_edit_wp_template_part_filter_current_theme_templates_only( $query
 
 add_action(
 	'current_screen',
-	function() {
+	function () {
 		add_action( 'pre_get_posts', 'kubio_edit_wp_template_part_filter_current_theme_templates_only' );
-
 	}
 );

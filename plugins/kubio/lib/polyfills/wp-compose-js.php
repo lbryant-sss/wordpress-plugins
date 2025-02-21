@@ -26,7 +26,7 @@ function kubio_wp_compose_js_polyfill() {
 		})(wp.compose)
 		</script>
 	<?php
-	$content = strip_tags( ob_get_clean() );
+	$content = wp_strip_all_tags( ob_get_clean() );
 
 	wp_add_inline_script( 'wp-compose', $content, 'after' );
 }

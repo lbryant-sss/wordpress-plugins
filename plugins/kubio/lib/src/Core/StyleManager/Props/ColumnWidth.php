@@ -5,7 +5,6 @@ namespace Kubio\Core\StyleManager\Props;
 
 use Kubio\Core\LodashBasic;
 use Kubio\Core\StyleManager\ParserUtils;
-use Kubio\Core\Styles\Utils;
 
 class ColumnWidth extends PropertyBase {
 	public function parse( $value, $options ) {

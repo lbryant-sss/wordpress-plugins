@@ -76,17 +76,19 @@ $text_align = is_rtl() ? 'right' : 'left';
 	foreach ( $tracking_items as $key => $tracking_item ) {
 
 		if ( '' != $tracking_item[ 'formatted_tracking_provider' ] ) {
-			$ast_provider_title = apply_filters( 'ast_provider_title', esc_html( $tracking_item[ 'formatted_tracking_provider' ] )); 
+			$ast_provider_title = apply_filters( 'ast_provider_title', $tracking_item[ 'formatted_tracking_provider' ] );
 		} else {
 			$ast_provider_title = '';
-			if ( $tracking_item[ 'tracking_provider' ] != '' ) {
+		
+			if ( '' != $tracking_item[ 'tracking_provider' ] ) {
 				$ast_provider_title = $tracking_item[ 'tracking_provider' ];
-			} else if ( $tracking_item[ 'custom_tracking_provider' ] != '' ) {
+			} elseif ( '' != $tracking_item[ 'custom_tracking_provider' ] ) {
 				$ast_provider_title = $tracking_item[ 'custom_tracking_provider' ];
 			}
-
+		
 			$ast_provider_title = apply_filters( 'ast_provider_title', esc_html( $ast_provider_title ));
 		}
+
 		?>
 	<table class="fluid_table fluid_table_2cl">
 		<tbody class="fluid_tbody_2cl">

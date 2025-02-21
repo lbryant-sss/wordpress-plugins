@@ -1,7 +1,6 @@
 <?php
 
 namespace Kubio\Core\Background;
-use Kubio\Config;
 use Kubio\Core\Element;
 use Kubio\Core\ElementBase;
 use function array_push;
@@ -91,4 +90,3 @@ class BackgroundOverlay extends ElementBase {
 		) . '';
 	}
 }
-

@@ -129,7 +129,6 @@ function kubio_render_block_callback( $attributes, $content, $block ) {
 	Registry::getInstance()->removeBlockFromStack( $block_wrapper );
 
 	return $result;
-
 }
 
 function kubio_no_block_manifest_notice() {
@@ -139,7 +138,6 @@ function kubio_no_block_manifest_notice() {
 		<p><?php esc_html_e( 'Kubio Error: Blocks manifest file (blocks-manifest.php) does not exists. Please recompile the plugin', 'kubio' ); ?> </p>
 	</div>
 	<?php
-
 }
 
 function kubio_register_block_types() {
@@ -182,7 +180,6 @@ function kubio_register_block_types() {
 	foreach ( $block_files as $file ) {
 		require_once "{$blocks_dir}/{$file}";
 	}
-
 }
 
 
@@ -364,9 +361,9 @@ function kubio_serialize_block( $block ) {
 
 	$index = 0;
 
-	if( isset($block['innerContent']) ){
+	if ( isset( $block['innerContent'] ) ) {
 		foreach ( $block['innerContent'] as $chunk ) {
-			$block_content .= is_string( $chunk ) ? $chunk : kubio_serialize_block( $block['innerBlocks'][ $index ++ ] );
+			$block_content .= is_string( $chunk ) ? $chunk : kubio_serialize_block( $block['innerBlocks'][ $index++ ] );
 		}
 	}
 

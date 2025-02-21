@@ -22,6 +22,28 @@ if (!defined("ABSPATH")) {
 <!-- Option end -->
 
 <!-- Option start -->
+<div class="wpd-opt-row" data-wpd-opt="userInteractionCheck">
+    <div class="wpd-opt-name">
+        <label><?php echo esc_html($setting["options"]["userInteractionCheck"]["label"]) ?></label>
+        <p class="wpd-desc"><?php echo wp_kses($setting["options"]["userInteractionCheck"]["description"], wp_kses_allowed_html('post')); ?></p>
+    </div>
+    <div class="wpd-opt-input">
+        <div class="wpd-switch-field">
+            <input type="radio" value="1" <?php checked(1 == $this->live["userInteractionCheck"]); ?>
+                   name="<?php echo esc_attr(WpdiscuzCore::TAB_LIVE); ?>[userInteractionCheck]" id="enableUserInteractionCheck"/>
+            <label for="enableUserInteractionCheck" style="min-width:60px;"><?php esc_html_e("Enable", "wpdiscuz"); ?></label>
+            <input type="radio" value="0" <?php checked(0 == $this->live["userInteractionCheck"]); ?>
+                   name="<?php echo esc_attr(WpdiscuzCore::TAB_LIVE); ?>[userInteractionCheck]" id="disableUserInteractionCheck"/>
+            <label for="disableUserInteractionCheck" style="min-width:60px;"><?php esc_html_e("Disable", "wpdiscuz"); ?></label>
+        </div>
+    </div>
+    <div class="wpd-opt-doc">
+        <?php $this->printDocLink($setting["options"]["userInteractionCheck"]["docurl"]) ?>
+    </div>
+</div>
+<!-- Option end -->
+
+<!-- Option start -->
 <div class="wpd-opt-row" data-wpd-opt="bubble">
     <div class="wpd-opt-name">
         <label><?php echo esc_html($setting["options"]["bubble"]["label"]) ?></label>

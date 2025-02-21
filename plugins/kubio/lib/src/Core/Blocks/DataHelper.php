@@ -86,7 +86,7 @@ class DataHelper {
 			$mergedStyledComponents
 		);
 		return $denormalizedMergedStyle;
-		//	return LodashBasic::merge($defaultStyle, $style);
+		//  return LodashBasic::merge($defaultStyle, $style);
 	}
 
 
@@ -210,7 +210,7 @@ class DataHelper {
 	}
 
 	function getPathByMedia( $relPath, $defaultValue, $options, $type = 'style' ) {
-		 $byMedia   = array();
+		$byMedia    = array();
 		$mediasById = Config::mediasById();
 		foreach ( $mediasById as $id => $media ) {
 			$mediaOptions   = LodashBasic::merge(
@@ -241,5 +241,4 @@ class DataHelper {
 		$mergedOptions  = LodashBasic::merge( $defaultOptions, $options );
 		return $this->getPathValue( $relPath, $defaultValue, $mergedOptions );
 	}
-
 }

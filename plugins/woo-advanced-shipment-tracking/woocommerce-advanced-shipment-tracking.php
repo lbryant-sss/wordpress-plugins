@@ -4,13 +4,13 @@
  * Plugin Name: Advanced Shipment Tracking for WooCommerce 
  * Plugin URI: https://www.zorem.com/products/woocommerce-advanced-shipment-tracking/ 
  * Description: Add shipment tracking information to your WooCommerce orders and provide customers with an easy way to track their orders. Shipment tracking Info will appear in customers accounts (in the order panel) and in WooCommerce order complete email. 
- * Version: 3.7.5
+ * Version: 3.7.6
  * Author: zorem
  * Author URI: https://www.zorem.com 
  * License: GPL-2.0+
  * License URI: 
  * Text Domain: woo-advanced-shipment-tracking 
- * WC tested up to: 9.6.0
+ * WC tested up to: 9.6.2
  * Requires Plugins: woocommerce
 */
 
@@ -21,7 +21,7 @@ class Zorem_Woocommerce_Advanced_Shipment_Tracking {
 	 *
 	 * @var string
 	 */
-	public $version = '3.7.5';
+	public $version = '3.7.6';
 	public $plugin_file;
 	public $plugin_path;
 	public $table;
@@ -80,8 +80,6 @@ class Zorem_Woocommerce_Advanced_Shipment_Tracking {
 		if ( $this->is_ast_pro_active() ) {
 			deactivate_plugins( 'woo-advanced-shipment-tracking/woocommerce-advanced-shipment-tracking.php' );
 		}
-
-		add_action( 'init', array( $this, 'wst_load_textdomain') );
 
 		if ( ! $this->is_ast_pro_active() || ! $this->ast_pro_version_check() ) {
 			// Include required files.
@@ -298,11 +296,6 @@ class Zorem_Woocommerce_Advanced_Shipment_Tracking {
 		add_action( 'rest_api_init', array( $this, 'rest_api_register_routes' ) );
 	}
 		
-	/*** Method load Language file ***/
-	public function wst_load_textdomain() {
-		load_plugin_textdomain( 'woo-advanced-shipment-tracking', false, dirname( plugin_basename(__FILE__) ) . '/lang' );
-	}
-		
 	/**
 	 * Gets the absolute plugin path without a trailing slash, e.g.
 	 * /path/to/wp-content/plugins/plugin-directory.
@@ -394,7 +387,7 @@ class Zorem_Woocommerce_Advanced_Shipment_Tracking {
 
 		require_once $this->get_plugin_path() . '/includes/tracking-info.php';
 
-		require_once $this->get_plugin_path() . '/includes/class-wc-admin-notices.php';		
+		load_plugin_textdomain( 'woo-advanced-shipment-tracking', false, dirname( plugin_basename(__FILE__) ) . '/lang' );
 	}
 	
 	/*

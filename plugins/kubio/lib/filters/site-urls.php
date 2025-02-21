@@ -68,11 +68,10 @@ function kubio_get_site_url_for( $key, $utms = array() ) {
 	}
 
 	return $url;
-
 }
 
 function kubio_try_demo_url( $template_slug ) {
-	list($url,$args) = explode( '?', kubio_get_site_url_for( 'try_starter_site' ) );
+	list($url, $args) = explode( '?', kubio_get_site_url_for( 'try_starter_site' ) );
 
 	$url = untrailingslashit( $url ) . "/{$template_slug}";
 

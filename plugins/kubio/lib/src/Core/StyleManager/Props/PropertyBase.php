@@ -14,11 +14,11 @@ class PropertyBase {
 
 
 	public function __construct( $name = '' ) {
-		 $this->name = $name;
+		$this->name = $name;
 	}
 
 	public function parse( $value, $options ) {
-		 return $value;
+		return $value;
 	}
 
 	public function valueWithDefault( $value ) {
@@ -27,7 +27,7 @@ class PropertyBase {
 	}
 
 	public function getDefaultValue() {
-		 return $this->config( 'default' );
+		return $this->config( 'default' );
 	}
 
 	public function config( $path ) {

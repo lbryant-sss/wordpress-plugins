@@ -20,4 +20,3 @@ class Transition extends PropertyBase {
 		return $style;
 	}
 }
-

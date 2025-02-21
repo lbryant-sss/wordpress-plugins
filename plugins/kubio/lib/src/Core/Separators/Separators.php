@@ -62,4 +62,3 @@ class Separators extends Element {
 		$this->children = $separators;
 	}
 }
-

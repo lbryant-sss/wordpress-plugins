@@ -3,7 +3,6 @@
 namespace Kubio\Core\Separators;
 
 use IlluminateAgnostic\Arr\Support\Arr;
-use Kubio\Config;
 use Kubio\Core\Element;
 use Kubio\Core\LodashBasic;
 use Kubio\Core\StyleManager\ParserUtils;
@@ -25,12 +24,12 @@ class Separator extends Element {
 
 		$visibilityPerMedia = $this->getVisibilityPerMedia( $enabledByMedia );
 
-		$children = [];
+		$children = array();
 
-		$height = ParserUtils::toValueUnitString( $this->getProp( 'height' ));
-		$style = array(
+		$height = ParserUtils::toValueUnitString( $this->getProp( 'height' ) );
+		$style  = array(
 			'fill'   => $this->getProp( 'color' ),
-			'height' =>  $height,
+			'height' => $height,
 		);
 
 		if ( ! $this->getProp( 'overlap' ) ) {
@@ -41,7 +40,7 @@ class Separator extends Element {
 
 		$type = sanitize_file_name( $this->getProp( 'type' ) );
 
-		$top    = $position === 'top';
+		$top               = $position === 'top';
 		$shouldUseNegative = $negative && file_exists( KUBIO_ROOT_DIR . "lib/shapes/separators/${type}-negative.svg" );
 
 		$supportsNegative = file_exists( KUBIO_ROOT_DIR . "lib/shapes/separators/${type}-negative.svg" );
@@ -62,26 +61,26 @@ class Separator extends Element {
 			)
 		);
 
-		if(in_array( true, array_values( $enabledByMedia ))){
-			$medias = $this->getMediaProps($block);
+		if ( in_array( true, array_values( $enabledByMedia ) ) ) {
+			$medias = $this->getMediaProps( $block );
 
-			$media_style = "<style>";
+			$media_style = '<style>';
 			foreach ( $enabledByMedia as $media => $enabled ) {
-				if($media === 'desktop') {
+				if ( $media === 'desktop' ) {
 					continue;
 				}
-				if($enabled){
-					$parent_class = $this->getBlockStyleRefAsClass($block);
-					$media_height = ParserUtils::toValueUnitString($this->getHeightForMedia($medias, $media, $position));
-					if(empty($media_height)) {
+				if ( $enabled ) {
+					$parent_class = $this->getBlockStyleRefAsClass( $block );
+					$media_height = ParserUtils::toValueUnitString( $this->getHeightForMedia( $medias, $media, $position ) );
+					if ( empty( $media_height ) ) {
 						continue;
 					}
 
-					$media_style .= $this->getStyleForMedia($parent_class, $media, $position, $media_height);
+					$media_style .= $this->getStyleForMedia( $parent_class, $media, $position, $media_height );
 				}
 			}
-			$media_style .= "</style>";
-			$children[] = $media_style;
+			$media_style .= '</style>';
+			$children[]   = $media_style;
 		}
 
 		$children[] = $html;
@@ -103,53 +102,45 @@ class Separator extends Element {
 		return $classes;
 	}
 
-	public function getMediaProps($block){
+	public function getMediaProps( $block ) {
 		$separator_element = $block->separatorElement;
-		$key = "attrs.kubio.style.descendants.${separator_element}.media";
+		$key               = "attrs.kubio.style.descendants.${separator_element}.media";
 
-		return Arr::get($block->block_data, $key);
+		return Arr::get( $block->block_data, $key );
 	}
 
-	public function getHeightForMedia($array, $media, $position){
-		return Arr::get($array, "${media}.separators.${position}.height");
+	public function getHeightForMedia( $array, $media, $position ) {
+		return Arr::get( $array, "${media}.separators.${position}.height" );
 	}
 
-	public function getStyleForMedia($parent_class, $media = 'desktop', $position = 'bottom', $height = '100px' ){
-		if($media === 'desktop') {
+	public function getStyleForMedia( $parent_class, $media = 'desktop', $position = 'bottom', $height = '100px' ) {
+		if ( $media === 'desktop' ) {
 			return '';
 		}
-		$height = str_replace('%', '%%', $height);
-		$style = "";
+		$height = str_replace( '%', '%%', $height );
+		$style  = '';
 
-		if($media === 'tablet'){
-			$style = __(
-				"@media (min-width: 768px) and (max-width: 1023px){
+		if ( $media === 'tablet' ) {
+			$style = "@media (min-width: 768px) and (max-width: 1023px){
 					.%s > .h-separator.h-separator--%s {
 						height: ${height} !important;
 					}
-				}\n",
-				"kubio"
-			);
-		}
-		else if($media === 'mobile'){
-			$style = __(
-				"@media (max-width: 767px){
+				}";
+		} elseif ( $media === 'mobile' ) {
+			$style = "@media (max-width: 767px){
 					.%s > .h-separator.h-separator--%s {
 						height: ${height} !important;
 					}
-				}\n",
-				"kubio"
-			);
+				}\n";
 		}
 
-		return sprintf($style, $parent_class, $position);
+		return sprintf( $style, $parent_class, $position );
 	}
 
-	public function getBlockStyleRefAsClass($block){
-		$style_ref = Arr::get($block->block_data, 'attrs.kubio.styleRef');
+	public function getBlockStyleRefAsClass( $block ) {
+		$style_ref         = Arr::get( $block->block_data, 'attrs.kubio.styleRef' );
 		$separator_element = $block->separatorElement;
 
-		return implode('-', ["style", $style_ref, $separator_element] );
+		return implode( '-', array( 'style', $style_ref, $separator_element ) );
 	}
 }
-

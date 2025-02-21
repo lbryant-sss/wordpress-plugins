@@ -13,6 +13,7 @@ function kubio_print_admin_page_header( $subtitle = null, $tabs = array(), $opti
 
 	$action_params = Arr::get( $options, 'action_params', array() );
 
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	$current_tab = sanitize_key( Arr::get( $_REQUEST, 'tab', 'get-started' ) );
 
 	if ( ! isset( $tabs[ $current_tab ] ) && count( $tabs ) > 0 ) {
@@ -26,7 +27,7 @@ function kubio_print_admin_page_header( $subtitle = null, $tabs = array(), $opti
 	<style>
 		:root{
 			<?php foreach ( Arr::get( (array) $colors, 'colors', array() ) as $index => $color ) : ?>
-				--kubio-admin-page-color-<?php echo esc_html( $index + 1 ); ?>:<?php echo  esc_html( Utils::hex2rgba( $color, false, true ) ); ?>;
+				--kubio-admin-page-color-<?php echo esc_html( $index + 1 ); ?>:<?php echo esc_html( Utils::hex2rgba( $color, false, true ) ); ?>;
 			<?php endforeach; ?>
 		}
 	</style>
@@ -54,12 +55,12 @@ function kubio_print_admin_page_header( $subtitle = null, $tabs = array(), $opti
 					<div class="kubio-admin-page-header-start-editing">
 						<?php if ( CoreUtils::isTryOnlineEnabled() ) : ?>
 							<a target="_blank" href="<?php echo esc_url( Arr::get( kubio_get_site_urls(), 'theme_try_online' ) ); ?>"
-						   class="button button-hero button-try-online">
+							class="button button-hero button-try-online">
 							<?php esc_html_e( 'Try PRO Online', 'kubio' ); ?>
 						</a>
 						<?php endif; ?>
 						<a href="<?php echo esc_url( add_query_arg( 'page', 'kubio', admin_url( 'admin.php' ) ) ); ?>"
-						   class="button button-hero button-primary">
+							class="button button-hero button-primary">
 							<?php esc_html_e( 'Start editing', 'kubio' ); ?>
 						</a>
 					</div>
@@ -123,7 +124,6 @@ function kubio_print_admin_page_start() {
 	<div class="wrap">
 		<div id="kubio-admin-page">
 	<?php
-
 }
 
 function kubio_print_admin_page_end() {
@@ -131,12 +131,10 @@ function kubio_print_admin_page_end() {
 		</div>
 	</div>
 	<?php
-
 }
 
 function kubio_admin_assets_path() {
 	return KUBIO_ROOT_DIR . '/static/admin-pages/';
-
 }
 
 
@@ -153,7 +151,6 @@ function kubio_admin_page_class( $page_name, $extra_classes = array(), $echo = t
 	} else {
 		return $classes;
 	}
-
 }
 
 function kubio_admin_page_component_class( $component, $extra_classes = array(), $echo = true ) {
@@ -169,7 +166,6 @@ function kubio_admin_page_component_class( $component, $extra_classes = array(),
 	} else {
 		return $classes;
 	}
-
 }
 
 function kubio_print_continous_loading_bar( $hidden = false ) {
@@ -186,6 +182,7 @@ add_action(
 	function () {
 		$screen = get_current_screen();
 		global $post;
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$action          = $screen->action ? $screen->action : Arr::get( $_REQUEST, 'action', '' );
 		$is_block_editor = $screen->is_block_editor || ( ! empty( $action ) && $post && use_block_editor_for_post( $post ) );
 		$is_block_editor = $is_block_editor || did_filter( 'block_editor_settings_all' );

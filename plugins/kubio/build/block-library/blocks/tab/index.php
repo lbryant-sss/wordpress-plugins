@@ -89,13 +89,13 @@ class TabItemBlock extends BlockBase {
 
 	public function mapPropsToElements() {
 		$isFirst = LodashBasic::get( $this->parent_block_->block_data, 'innerBlocks.0.attrs.kubio.hash' )
-			   === LodashBasic::get( $this->block_data, 'attrs.kubio.hash' );
+				=== LodashBasic::get( $this->block_data, 'attrs.kubio.hash' );
 
 		$slug = $this->getAttribute( 'slug' );
 		return array(
 			self::OUTER => array(),
 			self::INNER => array(
-				'id'        => esc_attr($slug),
+				'id'        => esc_attr( $slug ),
 				'className' => $isFirst ? 'h-tabs-content-active' : '',
 			),
 		);
@@ -170,14 +170,14 @@ class TabNavigationItemBlock extends BlockBase {
 		$link       = sprintf( '#%s', LodashBasic::get( $this->block_context, 'slug' ) );
 		return array(
 			self::LINK => array(
-				'href'      => esc_url($link),
+				'href'      => esc_url( $link ),
 				'className' => $arrayIndex === 0 ? 'h-tabs-navigation-active-item h-custom-active-state' : '',
 			),
 			self::ICON => array(
 				'name' => $iconName,
 			),
 			self::TEXT => array(
-				'innerHTML' => wp_kses_post($title),
+				'innerHTML' => wp_kses_post( $title ),
 			),
 		);
 	}

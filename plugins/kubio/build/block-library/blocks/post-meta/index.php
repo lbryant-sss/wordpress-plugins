@@ -45,7 +45,6 @@ class PostMetaBlock extends BlockBase {
 		);
 
 		return $map;
-
 	}
 
 	private function getMetaItems() {
@@ -199,7 +198,6 @@ class PostMetaBlock extends BlockBase {
 
 		return apply_filters( 'kubio_post_meta_comments_content', $content );
 	}
-
 }
 
 

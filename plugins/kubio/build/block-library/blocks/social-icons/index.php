@@ -20,7 +20,6 @@ class SocialIconsBlock extends BlockBase {
 			self::OUTER => array(),
 		);
 	}
-
 }
 
 Registry::registerBlock( __DIR__, SocialIconsBlock::class );

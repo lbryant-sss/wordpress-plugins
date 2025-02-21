@@ -160,7 +160,7 @@ if ( ! class_exists( 'CR_Sender' ) ) :
 					if ( ! wp_next_scheduled( 'ivole_send_reminder', array( $order_id ) ) ) {
 						$delay = $delay_channel[0]['delay'];
 						$timestamp = apply_filters( 'cr_reminder_delay', time() + $delay * DAY_IN_SECONDS, $order_id, $delay );
-						if( false === wp_schedule_single_event( $timestamp, 'ivole_send_reminder', array( $order_id ) ) ) {
+						if ( false === wp_schedule_single_event( $timestamp, 'ivole_send_reminder', array( $order_id ) ) ) {
 							$order->add_order_note( __( 'CR: a review reminder could not be scheduled.', 'customer-reviews-woocommerce' ) );
 						} else {
 							$count = $order->get_meta( '_ivole_review_reminder', true );

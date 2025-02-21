@@ -4,11 +4,11 @@ namespace Kubio\Ai;
 class KubioImageManager {
 	private $folder = '/static/ai-assets/generated/';
 
-	public function get_file_path_from_url( $url ) : string {
+	public function get_file_path_from_url( $url ) {
 		return KUBIO_ROOT_DIR . $this->folder . basename( $url );
 	}
 
-	public function get_folder_path() : string {
+	public function get_folder_path() {
 		return $this->folder;
 	}
 
@@ -29,9 +29,13 @@ class KubioImageManager {
 			$output_file = wp_generate_uuid4() . '.png';
 		}
 
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 		$filename = fopen( $this->get_image_path( $output_file ), 'wb' );
 
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 		fwrite( $filename, $image_string );
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 		fclose( $filename );
 
 		return kubio_url( $this->folder . $output_file );
@@ -39,10 +43,14 @@ class KubioImageManager {
 
 
 	public function base64_to_image( $base64_string, $output_file ) {
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 		$filename = fopen(
 			$this->get_image_path( $output_file ),
 			'wb'
 		);
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 		fwrite(
 			$filename,
 			base64_decode(
@@ -53,6 +61,8 @@ class KubioImageManager {
 				)
 			)
 		);
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 		fclose( $filename );
 
 		return kubio_url( $this->folder . $output_file );
@@ -96,6 +106,7 @@ class KubioImageManager {
 			'post_type'   => 'attachment',
 			'post_status' => 'inherit',
 			'fields'      => 'ids',
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 			'meta_query'  => array(
 				array(
 					'value'   => $file,
@@ -124,9 +135,5 @@ class KubioImageManager {
 			}
 		}
 		return $path;
-
 	}
-
-
-
 }

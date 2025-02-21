@@ -41,7 +41,9 @@ class ImportDemoSiteCommand {
 	 */
 	public function __invoke( $args, $assoc_args ) {
 
-		ini_set( 'max_execution_time', 0 );
+		// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
+		@ini_set( 'max_execution_time', 0 );
+		// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 		set_time_limit( 0 );
 
 		if ( ! defined( 'KUBIO_IS_STARTER_SITES_IMPORT' ) ) {

@@ -50,7 +50,10 @@ function kubio_mc4wp_filter( $content ) {
 	?>
 	<div class=" kubio-newsletter__agree-terms-group kubio-newsletter-group">
 			<input type="checkbox" name="AGREE_TO_TERMS" value="1" required/>
-			<?php echo wpautop( wp_kses_post( stripslashes( $attrs['agree_terms_label'] ) ) ); ?>
+			<?php
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo wpautop( wp_kses_post( stripslashes( $attrs['agree_terms_label'] ) ) );
+			?>
 	</div>
 	<?php
 	$agree_terms_html = ob_get_clean();
@@ -108,5 +111,5 @@ function kubio_newsletter_shortcode( $attrs ) {
 		//$attrs['agree_terms_label'] = Utils::shortcodeDecode( $attrs['agree_terms_label'] );
 	}
 	Utils::kubioCacheSet( 'kubio_newsletter_attrs', $attrs );
-	return do_shortcode( wp_kses_post($attrs['shortcode']) );
+	return do_shortcode( wp_kses_post( $attrs['shortcode'] ) );
 }

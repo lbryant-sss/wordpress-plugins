@@ -110,7 +110,7 @@ add_action( 'wp_body_open', 'kubio_add_page_top_div' );
 
 add_filter(
 	'wp_list_table_class_name',
-	function( $class ) {
+	function ( $class ) {
 		global $post_type;
 
 		if ( $post_type === 'wp_template_part' || $post_type === 'wp_template' ) {

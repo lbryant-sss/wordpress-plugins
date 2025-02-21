@@ -9,7 +9,7 @@ use Kubio\Core\StyleManager\ParserUtils;
 class Height extends PropertyBase {
 	public function parse( $value, $options ) {
 
-		if (is_string($value)) {
+		if ( is_string( $value ) ) {
 			return $value;
 		}
 
@@ -18,4 +18,3 @@ class Height extends PropertyBase {
 		return $style;
 	}
 }
-

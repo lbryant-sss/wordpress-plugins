@@ -42,7 +42,7 @@ class SocialLogin
 
     public function login()
     {
-        if(!get_option( 'users_can_register' )){
+        if (!get_option('users_can_register')) {
             return;
         }
         $postID = Sanitizer::sanitize(INPUT_POST, "postID", FILTER_SANITIZE_NUMBER_INT);
@@ -95,7 +95,7 @@ class SocialLogin
 
     public function loginCallBack()
     {
-        if(!get_option( 'users_can_register' )){
+        if (!get_option('users_can_register')) {
             return;
         }
         $this->deleteCookie();
@@ -1612,112 +1612,112 @@ class SocialLogin
     private function facebookButton()
     {
         if ($this->generalOptions->social["enableFbLogin"] && $this->generalOptions->social["fbAppID"] && $this->generalOptions->social["fbAppSecret"]) {
-            echo "<span class='wpdsn wpdsn-fb wpdiscuz-login-button' wpd-tooltip='Facebook'><i class='fab fa-facebook'></i></span>";
+            echo "<span class='wpdsn wpdsn-fb wpdiscuz-login-button' wpd-tooltip='Facebook'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path d='M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z'/></svg></i></span>";
         }
     }
 
     private function instagramButton()
     {
         if ($this->generalOptions->social["enableInstagramLogin"] && $this->generalOptions->social["instagramAppID"] && $this->generalOptions->social["instagramAppSecret"]) {
-            echo "<span class='wpdsn wpdsn-insta wpdiscuz-login-button' wpd-tooltip='Instagram'><i class='fab fa-instagram'></i></span>";
+            echo "<span class='wpdsn wpdsn-insta wpdiscuz-login-button' wpd-tooltip='Instagram'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path d='M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z'/></svg></i></span>";
         }
     }
 
     private function linkedinButton()
     {
         if ($this->generalOptions->social["enableLinkedinLogin"] && $this->generalOptions->social["linkedinClientID"] && $this->generalOptions->social["linkedinClientSecret"]) {
-            echo "<span class='wpdsn wpdsn-linked wpdiscuz-login-button' wpd-tooltip='Linkedin'><i class='fab fa-linkedin-in'></i></span>";
+            echo "<span class='wpdsn wpdsn-linked wpdiscuz-login-button' wpd-tooltip='Linkedin'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path d='M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z'/></svg></i></span>";
         }
     }
 
     private function twitterButton()
     {
         if ($this->generalOptions->social["enableTwitterLogin"] && $this->generalOptions->social["twitterAppID"] && $this->generalOptions->social["twitterAppSecret"]) {
-            echo "<span class='wpdsn wpdsn-tw wpdiscuz-login-button' wpd-tooltip='Twitter'><i class='fab fa-twitter'></i></span>";
+            echo "<span class='wpdsn wpdsn-tw wpdiscuz-login-button' wpd-tooltip='X'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z'/></svg></i></span>";
         }
     }
 
     private function googleButton()
     {
         if ($this->generalOptions->social["enableGoogleLogin"] && $this->generalOptions->social["googleClientID"] && $this->generalOptions->social["googleClientSecret"]) {
-            echo "<span class='wpdsn wpdsn-gg wpdiscuz-login-button' wpd-tooltip='Google'><i class='fab fa-google'></i></span>";
+            echo "<span class='wpdsn wpdsn-gg wpdiscuz-login-button' wpd-tooltip='Google'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 488 512'><path d='M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z'/></svg></i></span>";
         }
     }
 
     private function disqusButton()
     {
         if ($this->generalOptions->social["enableDisqusLogin"] && $this->generalOptions->social["disqusPublicKey"] && $this->generalOptions->social["disqusSecretKey"]) {
-            echo "<span class='wpdsn wpdsn-ds wpdiscuz-login-button' wpd-tooltip='Disqus'><i class='wpd-disqus'>D</i></span>";
+            echo "<span class='wpdsn wpdsn-ds wpdiscuz-login-button' wpd-tooltip='Disqus'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'><path d='M0 96C0 60.7 28.7 32 64 32l96 0c123.7 0 224 100.3 224 224s-100.3 224-224 224l-96 0c-35.3 0-64-28.7-64-64L0 96zm160 0L64 96l0 320 96 0c88.4 0 160-71.6 160-160s-71.6-160-160-160z'/></svg></i></span>";
         }
     }
 
     private function wordpressButton()
     {
         if ($this->generalOptions->social["enableWordpressLogin"] && $this->generalOptions->social["wordpressClientID"] && $this->generalOptions->social["wordpressClientSecret"]) {
-            echo "<span class='wpdsn wpdsn-wp wpdiscuz-login-button' wpd-tooltip='WordPress'><i class='fab fa-wordpress-simple'></i></span>";
+            echo "<span class='wpdsn wpdsn-wp wpdiscuz-login-button' wpd-tooltip='WordPress'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M256 8C119.3 8 8 119.2 8 256c0 136.7 111.3 248 248 248s248-111.3 248-248C504 119.2 392.7 8 256 8zM33 256c0-32.3 6.9-63 19.3-90.7l106.4 291.4C84.3 420.5 33 344.2 33 256zm223 223c-21.9 0-43-3.2-63-9.1l66.9-194.4 68.5 187.8c.5 1.1 1 2.1 1.6 3.1-23.1 8.1-48 12.6-74 12.6zm30.7-327.5c13.4-.7 25.5-2.1 25.5-2.1 12-1.4 10.6-19.1-1.4-18.4 0 0-36.1 2.8-59.4 2.8-21.9 0-58.7-2.8-58.7-2.8-12-.7-13.4 17.7-1.4 18.4 0 0 11.4 1.4 23.4 2.1l34.7 95.2L200.6 393l-81.2-241.5c13.4-.7 25.5-2.1 25.5-2.1 12-1.4 10.6-19.1-1.4-18.4 0 0-36.1 2.8-59.4 2.8-4.2 0-9.1-.1-14.4-.3C109.6 73 178.1 33 256 33c58 0 110.9 22.2 150.6 58.5-1-.1-1.9-.2-2.9-.2-21.9 0-37.4 19.1-37.4 39.6 0 18.4 10.6 33.9 21.9 52.3 8.5 14.8 18.4 33.9 18.4 61.5 0 19.1-7.3 41.2-17 72.1l-22.2 74.3-80.7-239.6zm81.4 297.2l68.1-196.9c12.7-31.8 17-57.2 17-79.9 0-8.2-.5-15.8-1.5-22.9 17.4 31.8 27.3 68.2 27.3 107 0 82.3-44.6 154.1-110.9 192.7z'/></svg></i></span>";
         }
     }
 
     private function telegramButton()
     {
         if ($this->generalOptions->social["enableTelegramLogin"] && $this->generalOptions->social["telegramToken"]) {
-            echo "<span class='wpdsn wpdsn-telegram wpdiscuz-login-button' wpd-tooltip='Telegram'><i class='fab fa-telegram-plane'></i></span>";
+            echo "<span class='wpdsn wpdsn-telegram wpdiscuz-login-button' wpd-tooltip='Telegram'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 496 512'><path d='M248 8C111 8 0 119 0 256S111 504 248 504 496 393 496 256 385 8 248 8zM363 176.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7 .2-.7 .3-3.1-1.2-4.4s-3.6-.8-5.1-.5q-3.3 .7-104.6 69.1-14.8 10.2-26.9 9.9c-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3q.8-6.7 18.5-13.7 108.4-47.2 144.6-62.3c68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6 .5 9.6 2.9a10.5 10.5 0 0 1 3.5 6.7A43.8 43.8 0 0 1 363 176.7z'/></svg></i></span>";
         }
     }
 
     private function okButton()
     {
         if ($this->generalOptions->social["enableOkLogin"] && $this->generalOptions->social["okAppID"] && $this->generalOptions->social["okAppSecret"]) {
-            echo "<span class='wpdsn wpdsn-ok wpdiscuz-login-button' wpd-tooltip='Odnoklassniki'><i class='fab fa-odnoklassniki'></i></span>";
+            echo "<span class='wpdsn wpdsn-ok wpdiscuz-login-button' wpd-tooltip='Odnoklassniki'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path d='M275.1 334c-27.4 17.4-65.1 24.3-90 26.9l20.9 20.6 76.3 76.3c27.9 28.6-17.5 73.3-45.7 45.7-19.1-19.4-47.1-47.4-76.3-76.6L84 503.4c-28.2 27.5-73.6-17.6-45.4-45.7 19.4-19.4 47.1-47.4 76.3-76.3l20.6-20.6c-24.6-2.6-62.9-9.1-90.6-26.9-32.6-21-46.9-33.3-34.3-59 7.4-14.6 27.7-26.9 54.6-5.7 0 0 36.3 28.9 94.9 28.9s94.9-28.9 94.9-28.9c26.9-21.1 47.1-8.9 54.6 5.7 12.4 25.7-1.9 38-34.5 59.1zM30.3 129.7C30.3 58 88.6 0 160 0s129.7 58 129.7 129.7c0 71.4-58.3 129.4-129.7 129.4s-129.7-58-129.7-129.4zm66 0c0 35.1 28.6 63.7 63.7 63.7s63.7-28.6 63.7-63.7c0-35.4-28.6-64-63.7-64s-63.7 28.6-63.7 64z'/></svg></i></span>";
         }
     }
 
     private function vkButton()
     {
         if ($this->generalOptions->social["enableVkLogin"] && $this->generalOptions->social["vkAppID"] && $this->generalOptions->social["vkAppSecret"]) {
-            echo "<span class='wpdsn wpdsn-vk wpdiscuz-login-button' wpd-tooltip='VKontakte'><i class='fab fa-vk'></i></span>";
+            echo "<span class='wpdsn wpdsn-vk wpdiscuz-login-button' wpd-tooltip='VKontakte'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path d='M31.5 63.5C0 95 0 145.7 0 247V265C0 366.3 0 417 31.5 448.5C63 480 113.7 480 215 480H233C334.3 480 385 480 416.5 448.5C448 417 448 366.3 448 265V247C448 145.7 448 95 416.5 63.5C385 32 334.3 32 233 32H215C113.7 32 63 32 31.5 63.5zM75.6 168.3H126.7C128.4 253.8 166.1 290 196 297.4V168.3H244.2V242C273.7 238.8 304.6 205.2 315.1 168.3H363.3C359.3 187.4 351.5 205.6 340.2 221.6C328.9 237.6 314.5 251.1 297.7 261.2C316.4 270.5 332.9 283.6 346.1 299.8C359.4 315.9 369 334.6 374.5 354.7H321.4C316.6 337.3 306.6 321.6 292.9 309.8C279.1 297.9 262.2 290.4 244.2 288.1V354.7H238.4C136.3 354.7 78 284.7 75.6 168.3z'/></svg></i></span>";
         }
     }
 
     private function yandexButton()
     {
         if ($this->generalOptions->social["enableYandexLogin"] && $this->generalOptions->social["yandexID"] && $this->generalOptions->social["yandexPassword"]) {
-            echo "<span class='wpdsn wpdsn-yandex wpdiscuz-login-button' wpd-tooltip='Yandex'><i class='fab fa-yandex-international'></i></span>";
+            echo "<span class='wpdsn wpdsn-yandex wpdiscuz-login-button' wpd-tooltip='Yandex'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path d='M129.5 512V345.9L18.5 48h55.8l81.8 229.7L250.2 0h51.3L180.8 347.8V512h-51.3z'/></svg></i></span>";
         }
     }
 
     private function mailruButton()
     {
         if ($this->generalOptions->social["enableMailruLogin"] && $this->generalOptions->social["mailruClientID"] && $this->generalOptions->social["mailruClientSecret"]) {
-            echo "<span class='wpdsn wpdsn-mailru wpdiscuz-login-button' wpd-tooltip='Mail.ru'><i class='fas fa-at'></i></span>";
+            echo "<span class='wpdsn wpdsn-mailru wpdiscuz-login-button' wpd-tooltip='Mail.ru'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M256 64C150 64 64 150 64 256s86 192 192 192c17.7 0 32 14.3 32 32s-14.3 32-32 32C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256l0 32c0 53-43 96-96 96c-29.3 0-55.6-13.2-73.2-33.9C320 371.1 289.5 384 256 384c-70.7 0-128-57.3-128-128s57.3-128 128-128c27.9 0 53.7 8.9 74.7 24.1c5.7-5 13.1-8.1 21.3-8.1c17.7 0 32 14.3 32 32l0 80 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32c0-106-86-192-192-192zm64 192a64 64 0 1 0 -128 0 64 64 0 1 0 128 0z'/></svg></i></span>";
         }
     }
 
     private function wechatButton()
     {
         if ($this->generalOptions->social["enableWechatLogin"] && $this->generalOptions->social["wechatAppID"] && $this->generalOptions->social["wechatSecret"]) {
-            echo "<span class='wpdsn wpdsn-weixin wpdiscuz-login-button' wpd-tooltip='WeChat'><i class='fab fa-weixin'></i></span>";
+            echo "<span class='wpdsn wpdsn-weixin wpdiscuz-login-button' wpd-tooltip='WeChat'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'><path d='M385.2 167.6c6.4 0 12.6 .3 18.8 1.1C387.4 90.3 303.3 32 207.7 32 100.5 32 13 104.8 13 197.4c0 53.4 29.3 97.5 77.9 131.6l-19.3 58.6 68-34.1c24.4 4.8 43.8 9.7 68.2 9.7 6.2 0 12.1-.3 18.3-.8-4-12.9-6.2-26.6-6.2-40.8-.1-84.9 72.9-154 165.3-154zm-104.5-52.9c14.5 0 24.2 9.7 24.2 24.4 0 14.5-9.7 24.2-24.2 24.2-14.8 0-29.3-9.7-29.3-24.2 .1-14.7 14.6-24.4 29.3-24.4zm-136.4 48.6c-14.5 0-29.3-9.7-29.3-24.2 0-14.8 14.8-24.4 29.3-24.4 14.8 0 24.4 9.7 24.4 24.4 0 14.6-9.6 24.2-24.4 24.2zM563 319.4c0-77.9-77.9-141.3-165.4-141.3-92.7 0-165.4 63.4-165.4 141.3S305 460.7 397.6 460.7c19.3 0 38.9-5.1 58.6-9.9l53.4 29.3-14.8-48.6C534 402.1 563 363.2 563 319.4zm-219.1-24.5c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.8 0 24.4 9.7 24.4 19.3 0 10-9.7 19.6-24.4 19.6zm107.1 0c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.5 0 24.4 9.7 24.4 19.3 .1 10-9.9 19.6-24.4 19.6z'/></svg></i></span>";
         }
     }
 
     private function baiduButton()
     {
         if ($this->generalOptions->social["enableBaiduLogin"] && $this->generalOptions->social["baiduAppID"] && $this->generalOptions->social["baiduSecret"]) {
-            echo "<span class='wpdsn wpdsn-baidu wpdiscuz-login-button' wpd-tooltip='Baidu'><i class='fas fa-paw'></i></span>";
+            echo "<span class='wpdsn wpdsn-baidu wpdiscuz-login-button' wpd-tooltip='Baidu'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5l0 1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3l0-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z'/></svg></i></span>";
         }
     }
 
     private function qqButton()
     {
         if ($this->generalOptions->social["enableQQLogin"] && $this->generalOptions->social["qqAppID"] && $this->generalOptions->social["qqSecret"]) {
-            echo "<span class='wpdsn wpdsn-qq wpdiscuz-login-button' wpd-tooltip='Tencent QQ'><i class='fab fa-qq'></i></span>";
+            echo "<span class='wpdsn wpdsn-qq wpdiscuz-login-button' wpd-tooltip='Tencent QQ'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path d='M433.8 420.4c-11.5 1.4-44.9-52.7-44.9-52.7 0 31.3-16.1 72.2-51.1 101.8 16.8 5.2 54.8 19.2 45.8 34.4-7.3 12.3-125.5 7.9-159.6 4-34.1 3.8-152.3 8.3-159.6-4-9-15.3 28.9-29.2 45.8-34.4-34.9-29.5-51.1-70.4-51.1-101.8 0 0-33.3 54.1-44.9 52.7-5.4-.7-12.4-29.6 9.3-99.7 10.3-33 22-60.5 40.1-105.8C60.7 98.1 109 0 224 0c113.7 0 163.2 96.1 160.3 215 18.1 45.2 29.9 72.9 40.1 105.8 21.8 70.1 14.7 99.1 9.3 99.7z'/></svg></i></span>";
         }
     }
 
     private function weiboButton()
     {
         if ($this->generalOptions->social["enableWeiboLogin"] && $this->generalOptions->social["weiboKey"] && $this->generalOptions->social["weiboSecret"]) {
-            echo "<span class='wpdsn wpdsn-weibo wpdiscuz-login-button' wpd-tooltip='Sina Weibo'><i class='fab fa-weibo'></i></span>";
+            echo "<span class='wpdsn wpdsn-weibo wpdiscuz-login-button' wpd-tooltip='Sina Weibo'><i><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8 .3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4 .6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z'/></svg></i></span>";
         }
     }
 

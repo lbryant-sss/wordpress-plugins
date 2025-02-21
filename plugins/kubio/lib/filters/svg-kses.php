@@ -75,7 +75,6 @@ function kubio_get_svg_kses_allowed_elements( $allowed_html = array() ) {
 	}
 
 	return $allowed_html;
-
 }
 
 add_filter( 'wp_kses_allowed_html', 'kubio_get_svg_kses_allowed_elements' );

@@ -33,7 +33,7 @@ class WXRExporter {
 
 		$esses = array_fill( 0, count( $post_types ), '%s' );
 
-		// phpcs:ignore WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+		// phpcs:ignore WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, WordPress.DB.PreparedSQL.NotPrepared
 		$where = $wpdb->prepare( "{$wpdb->posts}.post_type IN (" . implode( ',', $esses ) . ')', $post_types );
 
 		if ( $args['status'] && ( 'post' === $args['content'] || 'page' === $args['content'] ) ) {
@@ -66,6 +66,7 @@ class WXRExporter {
 		}
 
 		// Grab a snapshot of post IDs, just in case it changes during the export.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$post_ids = $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} $join WHERE $where" );
 
 		$cats  = array();
@@ -123,10 +124,10 @@ class WXRExporter {
 
 		<?php the_generator( 'export' ); ?>
 		<rss version="2.0"
-			 xmlns:excerpt="http://wordpress.org/export/<?php echo WXRExporter::WXR_VERSION; ?>/excerpt/"
-			 xmlns:content="http://purl.org/rss/1.0/modules/content/"
-			 xmlns:dc="http://purl.org/dc/elements/1.1/"
-			 xmlns:wp="http://wordpress.org/export/<?php echo WXRExporter::WXR_VERSION; ?>/"
+			xmlns:excerpt="http://wordpress.org/export/<?php echo WXRExporter::WXR_VERSION; ?>/excerpt/"
+			xmlns:content="http://purl.org/rss/1.0/modules/content/"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:wp="http://wordpress.org/export/<?php echo WXRExporter::WXR_VERSION; ?>/"
 		>
 
 			<channel>
@@ -197,6 +198,7 @@ class WXRExporter {
 					// Fetch 20 posts at a time rather than loading the entire table into memory.
 					while ( $next_posts = array_splice( $post_ids, 0, 20 ) ) {
 						$where = 'WHERE ID IN (' . implode( ',', $next_posts ) . ')';
+						// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 						$posts = $wpdb->get_results( "SELECT * FROM {$wpdb->posts} $where" );
 
 						// Begin Loop.
@@ -263,6 +265,7 @@ class WXRExporter {
 								<?php endif; ?>
 								<?php static::printPostTaxonomy( $post ); ?>
 								<?php
+								// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 								$postmeta = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->postmeta WHERE post_id = %d", $post->ID ) );
 								foreach ( $postmeta as $meta ) :
 									/**
@@ -288,7 +291,7 @@ class WXRExporter {
 									}
 
 								endforeach;
-
+								// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 								$_comments = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_approved <> 'spam'", $post->ID ) );
 								$comments  = array_map( 'get_comment', $_comments );
 								foreach ( $comments as $c ) :
@@ -307,6 +310,7 @@ class WXRExporter {
 										<wp:comment_parent><?php echo (int) $c->comment_parent; ?></wp:comment_parent>
 										<wp:comment_user_id><?php echo (int) $c->user_id; ?></wp:comment_user_id>
 										<?php
+										// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 										$c_meta = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->commentmeta WHERE comment_id = %d", $c->comment_ID ) );
 										foreach ( $c_meta as $meta ) :
 											/**
@@ -384,6 +388,7 @@ class WXRExporter {
 		}
 
 		$authors = array();
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$results = $wpdb->get_results( "SELECT DISTINCT post_author FROM $wpdb->posts WHERE post_status != 'auto-draft' $and" );
 		foreach ( (array) $results as $result ) {
 			$authors[] = get_userdata( $result->post_author );
@@ -465,6 +470,7 @@ class WXRExporter {
 	private static function printTermMeta( $term ) {
 		global $wpdb;
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$termmeta = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->termmeta WHERE term_id = %d", $term->term_id ) );
 
 		foreach ( $termmeta as $meta ) {
@@ -606,5 +612,4 @@ class WXRExporter {
 
 		return $return_me;
 	}
-
 }

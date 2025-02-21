@@ -15,7 +15,6 @@ class LoopItemBlock extends QueryLoopItemBase {
 	public function loopBlockName() {
 		return 'kubio/query-loop';
 	}
-
 }
 
 Registry::registerBlock(
@@ -26,4 +25,3 @@ Registry::registerBlock(
 		'metadata_mixins' => array( './block.json' ),
 	)
 );
-

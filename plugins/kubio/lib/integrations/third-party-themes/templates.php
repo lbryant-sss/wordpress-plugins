@@ -101,7 +101,6 @@ function kubio_third_party_themes_default_block_template_parts( $templates ) {
 	}
 
 	return $templates;
-
 }
 
 
@@ -159,7 +158,6 @@ function kubio_register_template_source_rest_field() {
 			'update_callback' => 'kubio_update_template_source',
 		)
 	);
-
 }
 
 add_action( 'rest_api_init', 'kubio_register_template_source_rest_field' );

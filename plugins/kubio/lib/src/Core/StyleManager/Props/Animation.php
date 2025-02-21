@@ -18,4 +18,3 @@ class Animation extends PropertyBase {
 		return $style;
 	}
 }
-

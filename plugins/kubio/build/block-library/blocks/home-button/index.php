@@ -10,7 +10,7 @@ class HomeButtonBlock extends ButtonBlock {
 		$current_map = parent::mapPropsToElements();
 
 		$current_map[ ButtonBlock::LINK ] = array(
-			'href'          => esc_url(home_url()),
+			'href'          => esc_url( home_url() ),
 			'typeOpenLink'  => 'sameWindow',
 			'noFollow'      => false,
 			'lightboxMedia' => '',

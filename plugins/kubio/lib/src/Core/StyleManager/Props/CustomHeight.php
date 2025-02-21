@@ -5,8 +5,6 @@ namespace Kubio\Core\StyleManager\Props;
 
 use Kubio\Core\LodashBasic;
 use Kubio\Core\StyleManager\ParserUtils;
-use Kubio\Core\Styles\Utils;
-use function array_keys;
 
 class CustomHeight extends PropertyBase {
 	public function parse( $value, $options ) {

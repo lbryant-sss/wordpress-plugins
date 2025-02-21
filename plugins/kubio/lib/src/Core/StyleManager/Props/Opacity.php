@@ -22,4 +22,3 @@ class Opacity extends PropertyBase {
 		return $style;
 	}
 }
-

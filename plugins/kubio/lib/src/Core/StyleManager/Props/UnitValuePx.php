@@ -13,4 +13,3 @@ class UnitValuePx extends PropertyBase {
 		return $style;
 	}
 }
-

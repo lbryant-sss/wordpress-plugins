@@ -489,7 +489,7 @@ class WP_REST_Menus_Controller extends WP_REST_Terms_Controller {
 	 *
 	 * @return bool The value of auto_add.
 	 */
-	public  function get_menu_auto_add( $menu_id ) {
+	public function get_menu_auto_add( $menu_id ) {
 		$nav_menu_option = (array) get_option( 'nav_menu_options', array( 'auto_add' => array() ) );
 		$check           = in_array( $menu_id, $nav_menu_option['auto_add'], true );
 

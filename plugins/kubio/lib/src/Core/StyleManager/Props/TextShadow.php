@@ -5,8 +5,6 @@ namespace Kubio\Core\StyleManager\Props;
 
 
 use Kubio\Core\LodashBasic;
-use Kubio\Core\StyleManager\ParserUtils;
-use Kubio\Core\StyleManager\Utils;
 use function join;
 
 class TextShadow extends PropertyBase {

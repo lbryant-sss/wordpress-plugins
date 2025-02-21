@@ -1,6 +1,5 @@
 <?php
 
-use Kubio\PluginsManager;
 
 function kubio_wpform_get_forms() {
 	$wp_forms = wpforms()->form->get( '', array( 'order' => 'DESC' ) );
@@ -78,6 +77,5 @@ add_action(
 
 			)
 		);
-
 	}
 );

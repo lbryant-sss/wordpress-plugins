@@ -20,10 +20,9 @@ class PostTagsBlock extends BlockBase {
 				'innerHTML' => $this->renderTagsContent( $post_tags ),
 			),
 			self::PLACEHOLDER => array(
-				'innerHTML' => empty( $post_tags ) ? wp_kses_post($this->getAttribute( 'placeholder' )) : '',
+				'innerHTML' => empty( $post_tags ) ? wp_kses_post( $this->getAttribute( 'placeholder' ) ) : '',
 			),
 		);
-
 	}
 
 	function renderTagsContent( $post_tags ) {
@@ -41,7 +40,7 @@ class PostTagsBlock extends BlockBase {
 			$output  = trim( $output );
 			$output .= '</div>';
 
-			return wp_kses_post($output);
+			return wp_kses_post( $output );
 		}
 	}
 }

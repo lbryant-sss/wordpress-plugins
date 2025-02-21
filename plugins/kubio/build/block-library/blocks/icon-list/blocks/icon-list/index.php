@@ -2,10 +2,8 @@
 
 namespace Kubio\Blocks;
 
-use Kubio\Core\LodashBasic;
 use Kubio\Core\Blocks\BlockBase;
 use Kubio\Core\Registry;
-use Kubio\Core\Utils;
 
 class IconListBlock extends BlockBase {
 	const OUTER = 'outer';

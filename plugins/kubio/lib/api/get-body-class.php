@@ -6,6 +6,7 @@ use IlluminateAgnostic\Arr\Support\Arr;
 add_action(
 	'template_redirect',
 	function () {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( Arr::has( $_REQUEST, '__kubio-body-class' ) && Utils::canEdit() ) {
 
 			$omit_classes = array( 'logged-in', 'admin-bar', 'no-customize-support', 'wp-custom-logo' );

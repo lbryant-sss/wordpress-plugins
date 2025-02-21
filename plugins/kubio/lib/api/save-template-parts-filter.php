@@ -68,5 +68,3 @@ register_post_meta(
 add_filter( 'kubio/save-template-entity/page/autosave', 'kubio_template_autosave', 10, 2 );
 add_filter( 'kubio/save-template-entity/wp_template/autosave', 'kubio_template_autosave', 10, 2 );
 add_filter( 'kubio/save-template-entity/wp_template_part/autosave', 'kubio_template_autosave', 10, 2 );
-
-

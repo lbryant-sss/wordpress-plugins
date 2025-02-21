@@ -54,7 +54,7 @@ class PostAuthorAvatarBlock extends BlockBase {
 			return '';
 		}
 
-		return  $this->getLinkAttributes( $authorId );
+		return $this->getLinkAttributes( $authorId );
 	}
 
 	public function getLinkAttributes( $aAuthorId ) {

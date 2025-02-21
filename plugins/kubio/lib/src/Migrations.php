@@ -29,7 +29,6 @@ class Migrations {
 		}
 
 		return apply_filters( 'kubio/available_migrations', $migrations );
-
 	}
 
 	private static function parseMigration( $migration ) {
@@ -43,7 +42,6 @@ class Migrations {
 		}
 
 		return null;
-
 	}
 	public static function loadMissingMigrations() {
 
@@ -77,6 +75,7 @@ class Migrations {
 				require_once KUBIO_ROOT_DIR . "/migrations/{$slug}.php";
 				if ( ! function_exists( $callback ) ) {
 					if ( CoreUtils::isDebug() ) {
+						// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						wp_die( "Migrations functon kubio_{$callback} does not exists" );
 					}
 					return; // leave migration process
@@ -90,6 +89,7 @@ class Migrations {
 				call_user_func( $callback );
 			} catch ( \Exception $e ) {
 				if ( CoreUtils::isDebug() ) {
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					wp_die( "Migrations {$callback} error" );
 				}
 			}
@@ -97,7 +97,6 @@ class Migrations {
 		}
 
 		kubio_set_global_data( 'migrations', $executed_migrations );
-
 	}
 
 

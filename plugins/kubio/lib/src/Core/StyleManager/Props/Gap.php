@@ -15,4 +15,3 @@ class Gap extends PropertyBase {
 		return $style;
 	}
 }
-

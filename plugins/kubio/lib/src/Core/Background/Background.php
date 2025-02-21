@@ -100,4 +100,3 @@ class Background extends Element {
 		}
 	}
 }
-

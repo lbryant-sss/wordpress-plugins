@@ -105,6 +105,4 @@ class Utils {
 		# Finish with the whole new prefixed string/file in one line
 		return( preg_replace( '/\s+/', ' ', implode( '} ', $parts ) ) );
 	}
-
 }
-

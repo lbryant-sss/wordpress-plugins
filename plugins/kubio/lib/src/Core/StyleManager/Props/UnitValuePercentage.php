@@ -13,4 +13,3 @@ class UnitValuePercentage extends PropertyBase {
 		return $style;
 	}
 }
-

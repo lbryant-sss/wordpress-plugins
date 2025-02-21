@@ -2,10 +2,7 @@
 
 namespace Kubio\Core\StyleManager\Props;
 
-use Kubio\Config;
-use Kubio\Core\LodashBasic;
 use Kubio\Core\StyleManager\ParserUtils;
-use Kubio\Core\Styles\Utils;
 use function join;
 
 class TBLR extends PropertyBase {

@@ -8,13 +8,13 @@ function kubio_set_admin_bar_menu_customize_to_kubio_editor( WP_Admin_Bar &$admi
 		return;
 	}
 
-	$url            = kubio_frontend_get_editor_url();
-	$appearanceNode = $admin_bar->get_node( 'customize' );
-	if ( ! $appearanceNode ) {
+	$url             = kubio_frontend_get_editor_url();
+	$appearance_node = $admin_bar->get_node( 'customize' );
+	if ( ! $appearance_node ) {
 		return;
 	}
-	$appearanceNode->href = $url;
-	$admin_bar->add_node( $appearanceNode );
+	$appearance_node->href = $url;
+	$admin_bar->add_node( $appearance_node );
 }
 
 function kubio_set_admin_bar_customize_to_kubio_editor() {
@@ -33,7 +33,6 @@ function kubio_set_admin_bar_customize_to_kubio_editor() {
 		}
 		$submenu['themes.php'][ $key ][2] = 'admin.php?page=kubio';
 	}
-
 }
 
 function kubio_update_theme_page_customize_url( $prepared_themes ) {
@@ -51,8 +50,8 @@ function kubio_update_theme_page_customize_url( $prepared_themes ) {
 
 function kubio_update_dashboard_customizer_url() {
 
-
-	$request_uri                 = $_SERVER['REQUEST_URI'];
+	// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	$request_uri                 = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
 	$is_dashboard_admin_or_theme = str_contains( $request_uri, 'wp-admin/index.php' ) || str_contains( $request_uri, 'wp-admin/themes.php' );
 
 	//Dashboard page or theme page
@@ -86,6 +85,8 @@ function kubio_update_dashboard_customizer_url() {
 		})(jQuery)
 	</script>
 	<?php
+
+	// phpcs:ignore WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
 	$script = strip_tags( ob_get_clean() );
 	wp_add_inline_script( 'jquery', $script );
 	return;

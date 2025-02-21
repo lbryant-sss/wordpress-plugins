@@ -158,7 +158,6 @@ class DemoSitesHelpers {
 		$wxr_path = static::writeFile( $wxr_content, $path );
 
 		return array( $wxr_path, $import_options );
-
 	}
 
 	public static function useUploadedKDSFile( $kds_file ) {
@@ -180,7 +179,6 @@ class DemoSitesHelpers {
 		$wxr_path = static::writeFile( $wxr_content, $path );
 
 		return array( $wxr_path, $import_options );
-
 	}
 
 	/**
@@ -221,7 +219,7 @@ class DemoSitesHelpers {
 		}
 
 		if ( ! file_exists( dirname( $file_path ) ) ) {
-			mkdir( dirname( $file_path ), 0777, true );
+			wp_mkdir_p( dirname( $file_path ) );
 		}
 
 		if ( false === file_put_contents( $file_path, $content ) ) {
@@ -306,14 +304,14 @@ class DemoSitesHelpers {
 		$separator = PHP_EOL . '---' . $separator_text . '---' . PHP_EOL;
 
 		if ( ! file_exists( dirname( $file_path ) ) ) {
-			mkdir( dirname( $file_path ), 0777, true );
+			wp_mkdir_p( dirname( $file_path ) );
 		}
 
 		if ( ! file_put_contents( $file_path, $existing_data . $separator . $content . PHP_EOL ) ) {
 			return new \WP_Error(
 				'failed_writing_file_to_server',
 				sprintf( /* translators: %1$s - br HTML tag, %2$s - file path */
-					__( 'An error occurred while writing file to your server! Tried to write a file to: %1$s%2$s.', 'one-click-demo-import' ),
+					__( 'An error occurred while writing file to your server! Tried to write a file to: %1$s%2$s.', 'kubio' ),
 					'<br>',
 					$file_path
 				)

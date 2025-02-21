@@ -16,5 +16,4 @@ class FlexAlign {
 		$alignPrefix = $self ? 'justify-self' : 'justify-content';
 		return Utils::composeClassesByMedia( $alignByMedia, $alignPrefix );
 	}
-
 }

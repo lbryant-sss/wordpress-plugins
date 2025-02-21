@@ -45,7 +45,3 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 
 	add_action( 'rest_api_init', 'kubio_register_rest_menu_controller' );
 }
-
-
-
-

@@ -46,14 +46,11 @@ class DropDownMenuBlock extends BlockBase {
 
 	private function isLineEffect( $effect ) {
 		return ( $effect && strpos( $effect, 'bordered-active-item' ) !== false );
-
 	}
 
 	private function isBackgroundEffect( $effect ) {
 		return ( $effect && strpos( $effect, 'solid-active-item' ) !== false );
-
 	}
-
 }
 
 

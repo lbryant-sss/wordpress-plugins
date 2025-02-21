@@ -81,7 +81,7 @@ add_action(
  */
 function kubio_save_block_snippet( WP_REST_Request $request ) {
 	if ( ! class_exists( 'ZipArchive' ) ) {
-		wp_send_json_error( __( 'Zip Export not supported.' ) );
+		wp_send_json_error( __( 'Zip Export not supported.', 'kubio' ) );
 	}
 
 	$name        = $request->get_param( 'name' );
@@ -95,12 +95,12 @@ function kubio_save_block_snippet( WP_REST_Request $request ) {
 	$screenshot_ext = explode( 'data:image/', $screenshot_ext[0] );
 
 	if ( empty( $screenshot_ext[1] ) ) {
-		wp_send_json_error( __( 'Bad screenshot.' ) );
+		wp_send_json_error( __( 'Bad screenshot.', 'kubio' ) );
 	}
 
 	// allow only letters, numbers, underscore, dashe and space characters.
 	if ( preg_match( '/[^A-Za-z0-9_ \-]/', $name ) || strlen( $name ) > 100 ) {
-		wp_send_json_error( __( 'Bad name.' ) );
+		wp_send_json_error( __( 'Bad name.', 'kubio' ) );
 	}
 
 	$zip = kubio_create_snippet_zip( $zip_path, $snippet, $screenshot, $global_data );
@@ -142,7 +142,7 @@ function kubio_save_block_snippet( WP_REST_Request $request ) {
 
 function kubio_update_block_snippet( WP_REST_Request $request ) {
 	if ( ! class_exists( 'ZipArchive' ) ) {
-		wp_send_json_error( __( 'Zip Export not supported.' ) );
+		wp_send_json_error( __( 'Zip Export not supported.', 'kubio' ) );
 	}
 
 	$id          = $request->get_param( 'id' );
@@ -155,12 +155,12 @@ function kubio_update_block_snippet( WP_REST_Request $request ) {
 	$zip_path = get_temp_dir() . $name . '.zip';
 
 	if ( empty( $id ) ) {
-		wp_send_json_error( __( 'No id.' ) );
+		wp_send_json_error( __( 'No id.', 'kubio' ) );
 	}
 
 	// allow only letters, numbers, underscore, dashe and space characters.
 	if ( preg_match( '/[^A-Za-z0-9_ \-]/', $name ) || strlen( $name ) > 100 ) {
-		wp_send_json_error( __( 'Bad name.' ) );
+		wp_send_json_error( __( 'Bad name.', 'kubio' ) );
 	}
 
 	$zip = kubio_create_snippet_zip( $zip_path, $snippet, $screenshot, $global_data );
@@ -215,7 +215,7 @@ function kubio_create_snippet_zip( $path, $snippet, $screenshot_data, $global_da
 	// create the zip archive and start adding.
 	$zip = new ZipArchive();
 	if ( true !== $zip->open( $path, ZipArchive::CREATE | ZipArchive::OVERWRITE ) ) {
-		wp_send_json_error( __( 'Unable to open export file (archive) for writing.' ) );
+		wp_send_json_error( __( 'Unable to open export file (archive) for writing.', 'kubio' ) );
 	}
 
 	// handle the screenshot data and add it to the zip
@@ -295,7 +295,7 @@ function kubio_parse_blocks_for_media_id_atts_and_stack( $block, $uploaded_files
 
 			if ( ! empty( $id ) ) {
 				$url      = wp_get_attachment_url( $id );
-				$parsed   = parse_url( $url );
+				$parsed   = wp_parse_url( $url );
 				$new_path = str_replace( '/wp-content/uploads', '', $parsed['path'] );
 				if ( ! in_array( $new_path, $uploaded_files ) ) {
 					$uploaded_files[] = $new_path;
@@ -377,7 +377,7 @@ function kubio_colibri_data_export() {
 				false
 			)
 		);
-		  switch_theme( $theme );
+			switch_theme( $theme );
 	} else {
 		wp_send_json_error(
 			array(

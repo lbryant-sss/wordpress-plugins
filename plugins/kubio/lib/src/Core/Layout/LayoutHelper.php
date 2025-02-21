@@ -43,7 +43,7 @@ class LayoutHelper {
 	}
 
 	public function getColumnLayoutClasses( $columnWidthByMedia ) {
-		 $equalWidth = LodashBasic::get( $this->rowLayoutByMedia, array( 'desktop', 'equalWidth' ), false );
+		$equalWidth = LodashBasic::get( $this->rowLayoutByMedia, array( 'desktop', 'equalWidth' ), false );
 		if ( $equalWidth ) {
 			return $this->getColumnGridClasses();
 		}
@@ -149,6 +149,5 @@ class LayoutHelper {
 				return 'flex-basis-100';
 		}
 	}
-
 }
 LayoutHelper::init();

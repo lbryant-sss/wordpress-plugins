@@ -77,7 +77,7 @@ class ImageGalleryBlock extends BlockBase {
 		$local_style_class = $this->getLocalIdClass( 'container' );
 
 		foreach ( $columns_per_media as $key => $value ) {
-			$nr_columns_per_media = esc_attr($value);
+			$nr_columns_per_media = esc_attr( $value );
 
 			$style .= $columns_media_sizes[ $key ];
 
@@ -111,11 +111,11 @@ class ImageGalleryItemBlock extends BlockBase {
 		$size      = $this->parent_block->getAttribute( 'size' );
 		$alt       = $this->getAttribute( 'alt' );
 		$caption   = $this->getAttribute( 'caption' );
-		$id        = \kubio_wpml_get_translated_media_id($this->getAttribute( 'id' ));
+		$id        = \kubio_wpml_get_translated_media_id( $this->getAttribute( 'id' ) );
 		$url       = $this->getAttribute( 'url', '' );
 
 		//https://mantis.iconvert.pro/view.php?id=51034 For some reason caption is array in this bug
-		if ( $caption !== null && gettype($caption) !== 'string' ) {
+		if ( $caption !== null && gettype( $caption ) !== 'string' ) {
 			$caption = null;
 		}
 		$image_classnames = array(
@@ -166,9 +166,9 @@ class ImageGalleryItemBlock extends BlockBase {
 				'className' => $link_classname,
 			),
 			self::IMAGE           => array(
-				'src'       => esc_url($src),
-				'alt'       => esc_attr($alt),
-				'className' => array( esc_attr('wp-image-' . $id) ),
+				'src'       => esc_url( $src ),
+				'alt'       => esc_attr( $alt ),
+				'className' => array( esc_attr( 'wp-image-' . $id ) ),
 			),
 			self::IMAGE_OVERLAY   => array(),
 			self::CAPTION         => array(
@@ -178,7 +178,7 @@ class ImageGalleryItemBlock extends BlockBase {
 	}
 
 	function getParentBlock() {
-		 return Registry::getInstance()->getLastBlockOfName( 'kubio/image-gallery' );
+		return Registry::getInstance()->getLastBlockOfName( 'kubio/image-gallery' );
 	}
 
 	public function computed() {

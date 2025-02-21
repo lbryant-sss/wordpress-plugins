@@ -347,6 +347,12 @@ jQuery(document).on("click", ".pagination_link", function(){
 	});	
 });
 
+jQuery("#search_provider").keyup(function(event) {
+	if (event.which === 13) {
+		jQuery(".search-icon").click();
+	}
+});
+
 jQuery(document).on( "click", ".search-icon", function(){	
 	var search_term = jQuery('#search_provider').val();
 	var nonce = jQuery( '#nonce_shipping_provider' ).val();

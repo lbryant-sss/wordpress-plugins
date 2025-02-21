@@ -131,7 +131,6 @@ class Flags {
 	 */
 	function getFlag( $flag, $fallback = null ) {
 		return $this->withFlags( 'get', $flag, $fallback );
-
 	}
 
 	public function save() {
@@ -166,7 +165,7 @@ class Flags {
 
 	public static function setSetting( $path, $value ) {
 		$settings = static::getSettings( true );
-		 Arr::set( $settings, $path, $value );
+		Arr::set( $settings, $path, $value );
 		static::setSettings( $settings );
 	}
 

@@ -10,10 +10,10 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 		<div class="limited-width">
 			<div class="kubio-admin-page-section">
 				<div class="kubio-admin-page-section-header">
-					<?php _e( 'You need a higher level of permission.', 'kubio' ); ?>
+					<?php esc_html_e( 'You need a higher level of permission.', 'kubio' ); ?>
 				</div>
 				<div class="kubio-admin-page-section-content">
-					<p><?php _e( 'Current user is not allowed to import starter sites. This feature is available only for administrators', 'kubio' ); ?></p>
+					<p><?php esc_html_e( 'Current user is not allowed to import starter sites. This feature is available only for administrators', 'kubio' ); ?></p>
 				</div>
 			</div>
 		</div>
@@ -21,7 +21,7 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 	<?php
 	return;
 } else {
-
+	$kubio_demo_sites_display_pro_badge = apply_filters( 'kubio/demo-sites/display-pro-badge', true );
 	?>
 
 	<div class="kubio-admin-page-section">
@@ -32,16 +32,18 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 				<?php endif; ?>
 				<?php foreach ( DemoSitesRepository::getDemos() as $demo ) : ?>
 					<div class="<?php kubio_admin_page_component_class( 'template' ); ?>"
-						 data-demo-site="<?php echo esc_attr( Arr::get( $demo, 'slug', '' ) ); ?>">
+						data-demo-site="<?php echo esc_attr( Arr::get( $demo, 'slug', '' ) ); ?>">
 
-						<?php if ( Arr::get( $demo, 'is_pro', '' ) && ! kubio_is_pro() ) : ?>
+						<?php if ( Arr::get( $demo, 'is_pro', '' ) && $kubio_demo_sites_display_pro_badge ) : ?>
 						<div class="<?php kubio_admin_page_component_class( 'pro-badge' ); ?>">PRO</div>
 						<?php endif; ?>
 
 						<div class="<?php kubio_admin_page_component_class( 'template-image' ); ?>">
+							<?php // phpcs:disable ?>
 							<img src="<?php echo esc_url( Arr::get( $demo, 'thumb', kubio_url( '/static/admin-pages/' ) ) ); ?>"
 								 alt="image">
 							<?php if ( Arr::get( $demo, 'preview', 'null' ) ) : ?>
+								
 								<div class="<?php kubio_admin_page_component_class( 'template-image-overlay' ); ?>">
 									<a href="<?php echo esc_url( Arr::get( $demo, 'preview' ) ); ?>" target="_blank">
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"/></svg>
@@ -49,6 +51,7 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 									</a>
 								</div>
 							<?php endif; ?>
+							<?php // phpcs:enable ?>
 						</div>
 
 						<div class="<?php kubio_admin_page_component_class( 'template-body' ); ?>">
@@ -76,7 +79,7 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 				<?php endforeach; ?>
 			</div>
 			<div id="kubio-template-installing"
-				 class="<?php kubio_admin_page_component_class( 'template-installing', array( 'hidden' ) ); ?>">
+				class="<?php kubio_admin_page_component_class( 'template-installing', array( 'hidden' ) ); ?>">
 				<div class="<?php kubio_admin_page_component_class( 'template-installing-wrapper' ); ?>">
 					<div class="kubio-admin-row nowrap">
 						<div class="<?php kubio_admin_page_component_class( 'template-installing-image-col' ); ?>">
@@ -88,7 +91,7 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 							<h1 data-title></h1>
 
 							<div data-info
-								 class="<?php kubio_admin_page_component_class( 'template-installing-info' ); ?>">
+								class="<?php kubio_admin_page_component_class( 'template-installing-info' ); ?>">
 								<h2><?php esc_html_e( 'You are about to import a demo site', 'kubio' ); ?></h2>
 								<ul>
 									<li>
@@ -111,7 +114,7 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 								</div>
 							</div>
 							<div data-progress
-								 class="<?php kubio_admin_page_component_class( 'template-installing-progress', array( 'hidden' ) ); ?>">
+								class="<?php kubio_admin_page_component_class( 'template-installing-progress', array( 'hidden' ) ); ?>">
 
 								<ul data-progress-list>
 									<li data-installing-plugins>
@@ -126,7 +129,7 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 								</ul>
 
 								<div data-importing-errors
-									 class="<?php kubio_admin_page_component_class( 'template-installing-errors', array( 'hidden' ) ); ?>">
+									class="<?php kubio_admin_page_component_class( 'template-installing-errors', array( 'hidden' ) ); ?>">
 									<p><?php esc_html_e( 'Errors', 'kubio' ); ?></p>
 									<div data-importing-errors-content>
 
@@ -141,7 +144,7 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 							</h2>
 
 							<div data-install-buttons
-								 class="<?php kubio_admin_page_component_class( 'template-installing-buttons' ); ?>">
+								class="<?php kubio_admin_page_component_class( 'template-installing-buttons' ); ?>">
 								<button class="button " data-cancel-import>
 									<?php esc_html_e( 'Cancel', 'kubio' ); ?>
 								</button>
@@ -155,7 +158,7 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 							</div>
 
 							<div data-install-success-buttons
-								 class="<?php kubio_admin_page_component_class( 'template-installing-success-buttons', array( 'hidden' ) ); ?>">
+								class="<?php kubio_admin_page_component_class( 'template-installing-success-buttons', array( 'hidden' ) ); ?>">
 								<div class="kubio-admin-row">
 									<div class="kubio-admin-col">
 										<p><?php esc_html_e( 'Demo site imported sucessfuly', 'kubio' ); ?></p>
@@ -163,11 +166,11 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 									<div class="kubio-admin-col">
 
 										<a target="_blank" href="<?php echo esc_url( site_url() ); ?>"
-										   class="button " t>
+											class="button " t>
 											<?php esc_html_e( 'View site', 'kubio' ); ?>
 										</a>
 										<a href="<?php echo esc_url( add_query_arg( 'page', 'kubio', admin_url( 'admin.php' ) ) ); ?>"
-										   class="button button-primary">
+											class="button button-primary">
 											<?php esc_html_e( 'Start editing', 'kubio' ); ?>
 										</a>
 
@@ -193,10 +196,10 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 		$plugins_states = DemoSitesRepository::getPluginsStates();
 
 		$data = array(
-			'ajax_url'         => admin_url( 'admin-ajax.php' ),
-			'demos'            => $demos,
-			'ajax_nonce'       => wp_create_nonce( 'kubio-ajax-demo-site-verification' ),
-			'texts'            => array(
+			'ajax_url'       => admin_url( 'admin-ajax.php' ),
+			'demos'          => $demos,
+			'ajax_nonce'     => wp_create_nonce( 'kubio-ajax-demo-site-verification' ),
+			'texts'          => array(
 				'importing_template' => '%s',
 				'plugins_states'     => array(
 					'ACTIVE'        => esc_html__( 'Active', 'kubio' ),
@@ -205,9 +208,10 @@ if ( ! current_user_can( 'edit_theme_options' ) ) {
 				),
 				'import_stopped'     => esc_html__( 'Import stopped', 'kubio' ),
 			),
-			'plugins_states'   => $plugins_states,
-			'kubio_pro_active' => kubio_is_pro(),
+			'plugins_states' => $plugins_states,
 		);
+
+		$data = apply_filters( 'kubio/admin-page/templates-js-init', $data );
 
 		wp_add_inline_script(
 			'kubio-admin-area',

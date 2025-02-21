@@ -26,30 +26,30 @@ class SearchForm extends BlockBase {
 		return $computedProps;
 	}
 	public function mapPropsToElements() {
-		$inputPlaceholder = kubio_wpml_get_translated_string($this->getAttribute( 'placeholderText' ));
-		$buttonText       = kubio_wpml_get_translated_string($this->getProp( 'buttonText' ));
+		$inputPlaceholder = kubio_wpml_get_translated_string( $this->getAttribute( 'placeholderText' ) );
+		$buttonText       = kubio_wpml_get_translated_string( $this->getProp( 'buttonText' ) );
 		$button           = array( 'className' => array( 'search-button' ) );
 		$iconButton       = $this->getAttribute( 'iconName' );
 
 		return array(
 			self::FORM       => array(
 				'className' => array( 'd-flex', 'search-form' ),
-				'action'    => esc_url(home_url()),
+				'action'    => esc_url( home_url() ),
 				'role'      => 'search',
 				'method'    => 'GET',
 			),
 			self::BUTTON     => $button,
 			self::INPUT      => array(
 				'className'   => array( 'search-input' ),
-				'placeholder' => esc_attr($inputPlaceholder),
-				'value'       => esc_attr(get_search_query()),
+				'placeholder' => esc_attr( $inputPlaceholder ),
+				'value'       => esc_attr( get_search_query() ),
 				'name'        => 's',
 			),
 			self::ICON       => array(
 				'name' => $iconButton,
 			),
 			self::BUTTONTEXT => array(
-				'innerHTML' => wp_kses_post($buttonText),
+				'innerHTML' => wp_kses_post( $buttonText ),
 			),
 		);
 	}

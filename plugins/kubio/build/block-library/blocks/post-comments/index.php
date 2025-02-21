@@ -39,21 +39,20 @@ class PostCommentsBlock extends BlockBase {
 
 		$atts = array_merge(
 			array(
-				'none'        => __('No responses yet', 'kubio'),
-				'one'         => __('One response', 'kubio'),
-				'multiple'    => __('{COMMENTS-COUNT} Responses', 'kubio'),
-				'disabled'    => __('Comments are closed', 'kubio'),
+				'none'        => __( 'No responses yet', 'kubio' ),
+				'one'         => __( 'One response', 'kubio' ),
+				'multiple'    => __( '{COMMENTS-COUNT} Responses', 'kubio' ),
+				'disabled'    => __( 'Comments are closed', 'kubio' ),
 				'avatar_size' => 32,
 			),
 			$attrs
 		);
 
-		if(kubio_wpml_is_active()) {
-			foreach($atts as $key => $value) {
-				$atts[$key] = kubio_wpml_get_translated_string($value);
+		if ( kubio_wpml_is_active() ) {
+			foreach ( $atts as $key => $value ) {
+				$atts[ $key ] = kubio_wpml_get_translated_string( $value );
 			}
 		}
-
 
 		global $kubio_comments_data;
 		$kubio_comments_data = $atts;
@@ -65,7 +64,7 @@ class PostCommentsBlock extends BlockBase {
 		if ( comments_open( get_the_ID() ) ) {
 			comments_template();
 		} else {
-			return sprintf( '<p class="comments-disabled">%s</p>', esc_attr($atts['disabled']) );
+			return sprintf( '<p class="comments-disabled">%s</p>', esc_attr( $atts['disabled'] ) );
 		}
 		$content = ob_get_clean();
 
@@ -90,11 +89,11 @@ class PostCommentsBlock extends BlockBase {
 			self::CONTAINER => array(
 				'innerHTML' => $this->getPostComments(
 					array(
-						'none'        => wp_kses_post($this->getAttribute( 'noCommentsTitle' )),
-						'one'         => wp_kses_post($this->getAttribute( 'oneCommentTitle' )),
-						'multiple'    => wp_kses_post($this->getAttribute( 'multipleComments' )),
-						'disabled'    => wp_kses_post($this->getAttribute( 'commentsDisabled' )),
-						'avatar_size' => wp_kses_post($this->getAttribute( 'avatarSize' )),
+						'none'        => wp_kses_post( $this->getAttribute( 'noCommentsTitle' ) ),
+						'one'         => wp_kses_post( $this->getAttribute( 'oneCommentTitle' ) ),
+						'multiple'    => wp_kses_post( $this->getAttribute( 'multipleComments' ) ),
+						'disabled'    => wp_kses_post( $this->getAttribute( 'commentsDisabled' ) ),
+						'avatar_size' => wp_kses_post( $this->getAttribute( 'avatarSize' ) ),
 						'html5'       => true,
 					)
 				),

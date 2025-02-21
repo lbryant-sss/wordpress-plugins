@@ -42,6 +42,8 @@ class ExportDemoSiteCommand {
 			WP_CLI::error( "File: '{$file}' already exists. Please use another name!" );
 			return;
 		}
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable
 		if ( ! is_writable( dirname( $file ) ) ) {
 			WP_CLI::error( "File: '{$file}' is not writable. Please use another location!" );
 			return;

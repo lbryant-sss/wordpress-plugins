@@ -24,7 +24,10 @@ class KubioCloudSDApi {
 	function __construct( $api_key = false, $api_model = false, $api_dummy_response = false ) {
 		$this->api_dummy_response = $api_dummy_response;
 
-		ini_set( 'max_execution_time', 70 );
+		// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
+		@ini_set( 'max_execution_time', 70 );
+
+		// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 		set_time_limit( 70 );
 	}
 
@@ -41,29 +44,21 @@ class KubioCloudSDApi {
 		return $this->response( $response );
 	}
 
-	public function set_api_endpoint( $api_endpoint ): void {
+	public function set_api_endpoint( $api_endpoint ) {
 		if ( $api_endpoint !== false ) {
 			$this->api_endpoint = $api_endpoint;
 		}
 	}
 
-	private function get_api_url() : string {
+	private function get_api_url() {
 		return $this->api_endpoint;
 	}
 
-	private function get_headers() : array {
-		return array(
-			'Accept'        => $this->api_accept_type,
-			'Content-Type'  => $this->api_content_type,
-			'Authorization' => 'Bearer ' . $this->api_key,
-		);
-	}
-
-	public function set_api_accept_type( $api_accept_type ) : void {
+	public function set_api_accept_type( $api_accept_type ) {
 		$this->api_accept_type = $api_accept_type;
 	}
 
-	public function set_api_content_type( $api_content_type ) : void {
+	public function set_api_content_type( $api_content_type ) {
 		$this->api_content_type = $api_content_type;
 	}
 
@@ -103,7 +98,6 @@ class KubioCloudSDApi {
 				'content' => $images,
 			)
 		);
-
 	}
 
 	function maybe_log_response( $resp, $section = 'text_to_image_sd', $level = 'info' ) {
@@ -115,5 +109,4 @@ class KubioCloudSDApi {
 			array()
 		);
 	}
-
 }

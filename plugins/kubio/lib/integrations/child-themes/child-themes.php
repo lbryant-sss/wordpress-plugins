@@ -23,7 +23,6 @@ function kubio_sync_child_theme_templates_and_parts() {
 			Importer::createTemplatePart( $parent_template->slug, $parent_template->content, false, $source );
 		}
 	}
-
 }
 
 
@@ -42,7 +41,6 @@ function kubio_sync_child_theme_global_data() {
 			}
 		}
 	}
-
 }
 
 add_action( 'admin_init', 'kubio_sync_child_theme_templates_and_parts', 10 );

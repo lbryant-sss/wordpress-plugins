@@ -55,7 +55,6 @@ class PostCommentsFormBlock extends BlockBase {
 				'innerHTML' => $this->renderForm(),
 			),
 		);
-
 	}
 }
 

@@ -30,13 +30,14 @@ if ( kubio_is_hybdrid_theme_iframe_preview() ) {
 }
 
 function kubio_hybrid_theme_load_template( $template ) {
-	$classicTemplateId = Arr::get( $_REQUEST, '__kubio-site-edit-iframe-classic-template', false );
-	if ( ! $classicTemplateId ) {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$template_id = Arr::get( $_REQUEST, '__kubio-site-edit-iframe-classic-template', false );
+	if ( ! $template_id ) {
 		return $template;
 	}
 
-	$new_template = locate_template( array( $classicTemplateId ) );
-	if ( '' != $new_template ) {
+	$new_template = locate_template( array( $template_id ) );
+	if ( '' !== $new_template ) {
 		return $new_template;
 	}
 	return $template;
@@ -51,7 +52,6 @@ function kubio_wp_redirect_maybe_add_hybrid_theme_query_param( $location ) {
 	}
 
 	return $location;
-
 }
 
 add_filter( 'wp_redirect', 'kubio_wp_redirect_maybe_add_hybrid_theme_query_param' );

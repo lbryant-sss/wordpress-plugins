@@ -25,4 +25,3 @@ class ObjectCss extends PropertyBase {
 		return $style;
 	}
 }
-

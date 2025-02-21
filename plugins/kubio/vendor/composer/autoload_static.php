@@ -4,11 +4,14 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
+class ComposerStaticInita29046130091afd291c080d1a17b6568
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
-        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
+        'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
+        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '91c98f290cee6130db6e4364079af680' => __DIR__ . '/..' . '/lodash-php/lodash-php/src/bootstrap.php',
         'bbd3f4c222c0dc01d51aaddd000c7145' => __DIR__ . '/..' . '/pragmarx/ia-arr/src/Support/helpers.php',
@@ -25,11 +28,12 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
-            'Symfony\\Polyfill\\Php72\\' => 23,
+            'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
+            'Symfony\\Polyfill\\Intl\\Grapheme\\' => 31,
             'Symfony\\Component\\VarDumper\\' => 28,
+            'Symfony\\Component\\String\\' => 25,
+            'Symfony\\Component\\PropertyInfo\\' => 31,
             'Symfony\\Component\\PropertyAccess\\' => 33,
-            'Symfony\\Component\\Inflector\\' => 28,
-            'Symfony\\Component\\Dotenv\\' => 25,
         ),
         'P' => 
         array (
@@ -37,6 +41,7 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         ),
         'K' => 
         array (
+            'Kubio\\Core\\License\\' => 19,
             'Kubio\\' => 6,
         ),
         'I' => 
@@ -57,29 +62,37 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
-        'Symfony\\Polyfill\\Php72\\' => 
+        'Symfony\\Polyfill\\Intl\\Normalizer\\' => 
         array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
+            0 => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer',
+        ),
+        'Symfony\\Polyfill\\Intl\\Grapheme\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme',
         ),
         'Symfony\\Component\\VarDumper\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
+        'Symfony\\Component\\String\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/string',
+        ),
+        'Symfony\\Component\\PropertyInfo\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/property-info',
+        ),
         'Symfony\\Component\\PropertyAccess\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/property-access',
         ),
-        'Symfony\\Component\\Inflector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/inflector',
-        ),
-        'Symfony\\Component\\Dotenv\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/dotenv',
-        ),
         'ProteusThemes\\WPContentImporter2\\' => 
         array (
             0 => __DIR__ . '/..' . '/proteusthemes/wp-content-importer-v2/src',
+        ),
+        'Kubio\\Core\\License\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/lib/pro/src/Core/License',
         ),
         'Kubio\\' => 
         array (
@@ -105,6 +118,7 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
 
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'IlluminateAgnostic\\Arr\\Contracts\\Support\\Arrayable' => __DIR__ . '/..' . '/pragmarx/ia-arr/src/Contracts/Support/Arrayable.php',
         'IlluminateAgnostic\\Arr\\Contracts\\Support\\Htmlable' => __DIR__ . '/..' . '/pragmarx/ia-arr/src/Contracts/Support/Htmlable.php',
         'IlluminateAgnostic\\Arr\\Contracts\\Support\\Jsonable' => __DIR__ . '/..' . '/pragmarx/ia-arr/src/Contracts/Support/Jsonable.php',
@@ -164,41 +178,29 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         'Kubio\\Core\\Importer' => __DIR__ . '/../..' . '/lib/src/Core/Importer.php',
         'Kubio\\Core\\InnerBlocks' => __DIR__ . '/../..' . '/lib/src/Core/InnerBlocks.php',
         'Kubio\\Core\\Layout\\LayoutHelper' => __DIR__ . '/../..' . '/lib/src/Core/Layout/LayoutHelper.php',
-        'Kubio\\Core\\License\\ActivationForm' => __DIR__ . '/../..' . '/lib/src/Core/License/ActivationForm.php',
-        'Kubio\\Core\\License\\CheckForm' => __DIR__ . '/../..' . '/lib/src/Core/License/CheckForm.php',
-        'Kubio\\Core\\License\\Endpoint' => __DIR__ . '/../..' . '/lib/src/Core/License/Endpoint.php',
-        'Kubio\\Core\\License\\License' => __DIR__ . '/../..' . '/lib/src/Core/License/License.php',
-        'Kubio\\Core\\License\\RequestResponse' => __DIR__ . '/../..' . '/lib/src/Core/License/RequestResponse.php',
-        'Kubio\\Core\\License\\Updater' => __DIR__ . '/../..' . '/lib/src/Core/License/Updater.php',
+        'Kubio\\Core\\License\\ActivationForm' => __DIR__ . '/../..' . '/lib/pro/src/Core/License/ActivationForm.php',
+        'Kubio\\Core\\License\\CheckForm' => __DIR__ . '/../..' . '/lib/pro/src/Core/License/CheckForm.php',
+        'Kubio\\Core\\License\\Endpoint' => __DIR__ . '/../..' . '/lib/pro/src/Core/License/Endpoint.php',
+        'Kubio\\Core\\License\\License' => __DIR__ . '/../..' . '/lib/pro/src/Core/License/License.php',
+        'Kubio\\Core\\License\\RequestResponse' => __DIR__ . '/../..' . '/lib/pro/src/Core/License/RequestResponse.php',
+        'Kubio\\Core\\License\\Updater' => __DIR__ . '/../..' . '/lib/pro/src/Core/License/Updater.php',
         'Kubio\\Core\\LodashBasic' => __DIR__ . '/../..' . '/lib/src/Core/LodashBasic.php',
         'Kubio\\Core\\Registry' => __DIR__ . '/../..' . '/lib/src/Core/Registry.php',
         'Kubio\\Core\\Separators\\Separator' => __DIR__ . '/../..' . '/lib/src/Core/Separators/Separator.php',
         'Kubio\\Core\\Separators\\Separators' => __DIR__ . '/../..' . '/lib/src/Core/Separators/Separators.php',
-        'Kubio\\Core\\StyleManager\\AncestorStyleRender' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/StyleRender.php',
-        'Kubio\\Core\\StyleManager\\AncestorsStyleContext' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/StyleRender.php',
-        'Kubio\\Core\\StyleManager\\AncestorsStyleRender' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/StyleRender.php',
-        'Kubio\\Core\\StyleManager\\BasicPropsConfig' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/StyleRender.php',
         'Kubio\\Core\\StyleManager\\BlockStyleRender' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/BlockStyleRender.php',
         'Kubio\\Core\\StyleManager\\DynamicStyles' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/DynamicStyles.php',
-        'Kubio\\Core\\StyleManager\\ElementConfig' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/StyleRender.php',
-        'Kubio\\Core\\StyleManager\\ElementStyleMediaRender' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/StyleRender.php',
-        'Kubio\\Core\\StyleManager\\ElementStyleRender' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/StyleRender.php',
-        'Kubio\\Core\\StyleManager\\ElementStyleStateRender' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/StyleRender.php',
         'Kubio\\Core\\StyleManager\\Generics\\UnitValue' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Generics/UnitValue.php',
         'Kubio\\Core\\StyleManager\\GlobalStyleRender' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/GlobalStyleRender.php',
         'Kubio\\Core\\StyleManager\\ParserUtils' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/ParserUtils.php',
         'Kubio\\Core\\StyleManager\\Props\\Animation' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/Animation.php',
         'Kubio\\Core\\StyleManager\\Props\\Background' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/Background.php',
         'Kubio\\Core\\StyleManager\\Props\\BackgroundImage' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/BackgroundImage.php',
-        'Kubio\\Core\\StyleManager\\Props\\BackgroundImagePosition' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/BackgroundImage.php',
-        'Kubio\\Core\\StyleManager\\Props\\BackgroundImageSize' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/BackgroundImage.php',
-        'Kubio\\Core\\StyleManager\\Props\\BackgroundImageSource' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/BackgroundImage.php',
         'Kubio\\Core\\StyleManager\\Props\\Border' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/Border.php',
         'Kubio\\Core\\StyleManager\\Props\\BoxShadow' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/BoxShadow.php',
         'Kubio\\Core\\StyleManager\\Props\\ColumnWidth' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/ColumnWidth.php',
         'Kubio\\Core\\StyleManager\\Props\\CustomHeight' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/CustomHeight.php',
         'Kubio\\Core\\StyleManager\\Props\\CustomSize' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/CustomSize.php',
-        'Kubio\\Core\\StyleManager\\Props\\FeaturedImageBackgroundImageSource' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/BackgroundImage.php',
         'Kubio\\Core\\StyleManager\\Props\\Gap' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/Gap.php',
         'Kubio\\Core\\StyleManager\\Props\\Height' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/Height.php',
         'Kubio\\Core\\StyleManager\\Props\\JustifyContent' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/JustifyContent.php',
@@ -219,7 +221,6 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         'Kubio\\Core\\StyleManager\\Props\\UnitValuePx' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/UnitValuePx.php',
         'Kubio\\Core\\StyleManager\\Props\\ValueProxy' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/ValueProxy.php',
         'Kubio\\Core\\StyleManager\\Props\\Width' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Props/Width.php',
-        'Kubio\\Core\\StyleManager\\StateConfig' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/StyleRender.php',
         'Kubio\\Core\\StyleManager\\StyleManager' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/StyleManager.php',
         'Kubio\\Core\\StyleManager\\StyleParser' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/StyleParser.php',
         'Kubio\\Core\\StyleManager\\StyleRender' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/StyleRender.php',
@@ -242,6 +243,8 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         'Kubio\\Migrations' => __DIR__ . '/../..' . '/lib/src/Migrations.php',
         'Kubio\\NotificationsManager' => __DIR__ . '/../..' . '/lib/src/NotificationsManager.php',
         'Kubio\\PluginsManager' => __DIR__ . '/../..' . '/lib/src/PluginsManager.php',
+        'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
+        'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
         'ProteusThemes\\WPContentImporter2\\Importer' => __DIR__ . '/..' . '/proteusthemes/wp-content-importer-v2/src/Importer.php',
         'ProteusThemes\\WPContentImporter2\\WPImporterLogger' => __DIR__ . '/..' . '/proteusthemes/wp-content-importer-v2/src/WPImporterLogger.php',
         'ProteusThemes\\WPContentImporter2\\WPImporterLoggerCLI' => __DIR__ . '/..' . '/proteusthemes/wp-content-importer-v2/src/WPImporterLoggerCLI.php',
@@ -253,12 +256,14 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         'SebastianBergmann\\Comparator\\DOMNodeComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/DOMNodeComparator.php',
         'SebastianBergmann\\Comparator\\DateTimeComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/DateTimeComparator.php',
         'SebastianBergmann\\Comparator\\DoubleComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/DoubleComparator.php',
+        'SebastianBergmann\\Comparator\\Exception' => __DIR__ . '/..' . '/sebastian/comparator/src/exceptions/Exception.php',
         'SebastianBergmann\\Comparator\\ExceptionComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/ExceptionComparator.php',
         'SebastianBergmann\\Comparator\\Factory' => __DIR__ . '/..' . '/sebastian/comparator/src/Factory.php',
         'SebastianBergmann\\Comparator\\MockObjectComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/MockObjectComparator.php',
         'SebastianBergmann\\Comparator\\NumericComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/NumericComparator.php',
         'SebastianBergmann\\Comparator\\ObjectComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/ObjectComparator.php',
         'SebastianBergmann\\Comparator\\ResourceComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/ResourceComparator.php',
+        'SebastianBergmann\\Comparator\\RuntimeException' => __DIR__ . '/..' . '/sebastian/comparator/src/exceptions/RuntimeException.php',
         'SebastianBergmann\\Comparator\\ScalarComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/ScalarComparator.php',
         'SebastianBergmann\\Comparator\\SplObjectStorageComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/SplObjectStorageComparator.php',
         'SebastianBergmann\\Comparator\\TypeComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/TypeComparator.php',
@@ -283,12 +288,6 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         'SebastianBergmann\\RecursionContext\\Exception' => __DIR__ . '/..' . '/sebastian/recursion-context/src/Exception.php',
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
-        'Symfony\\Component\\Dotenv\\Dotenv' => __DIR__ . '/..' . '/symfony/dotenv/Dotenv.php',
-        'Symfony\\Component\\Dotenv\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/symfony/dotenv/Exception/ExceptionInterface.php',
-        'Symfony\\Component\\Dotenv\\Exception\\FormatException' => __DIR__ . '/..' . '/symfony/dotenv/Exception/FormatException.php',
-        'Symfony\\Component\\Dotenv\\Exception\\FormatExceptionContext' => __DIR__ . '/..' . '/symfony/dotenv/Exception/FormatExceptionContext.php',
-        'Symfony\\Component\\Dotenv\\Exception\\PathException' => __DIR__ . '/..' . '/symfony/dotenv/Exception/PathException.php',
-        'Symfony\\Component\\Inflector\\Inflector' => __DIR__ . '/..' . '/symfony/inflector/Inflector.php',
         'Symfony\\Component\\PropertyAccess\\Exception\\AccessException' => __DIR__ . '/..' . '/symfony/property-access/Exception/AccessException.php',
         'Symfony\\Component\\PropertyAccess\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/symfony/property-access/Exception/ExceptionInterface.php',
         'Symfony\\Component\\PropertyAccess\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/symfony/property-access/Exception/InvalidArgumentException.php',
@@ -298,6 +297,7 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         'Symfony\\Component\\PropertyAccess\\Exception\\OutOfBoundsException' => __DIR__ . '/..' . '/symfony/property-access/Exception/OutOfBoundsException.php',
         'Symfony\\Component\\PropertyAccess\\Exception\\RuntimeException' => __DIR__ . '/..' . '/symfony/property-access/Exception/RuntimeException.php',
         'Symfony\\Component\\PropertyAccess\\Exception\\UnexpectedTypeException' => __DIR__ . '/..' . '/symfony/property-access/Exception/UnexpectedTypeException.php',
+        'Symfony\\Component\\PropertyAccess\\Exception\\UninitializedPropertyException' => __DIR__ . '/..' . '/symfony/property-access/Exception/UninitializedPropertyException.php',
         'Symfony\\Component\\PropertyAccess\\PropertyAccess' => __DIR__ . '/..' . '/symfony/property-access/PropertyAccess.php',
         'Symfony\\Component\\PropertyAccess\\PropertyAccessor' => __DIR__ . '/..' . '/symfony/property-access/PropertyAccessor.php',
         'Symfony\\Component\\PropertyAccess\\PropertyAccessorBuilder' => __DIR__ . '/..' . '/symfony/property-access/PropertyAccessorBuilder.php',
@@ -307,6 +307,45 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         'Symfony\\Component\\PropertyAccess\\PropertyPathInterface' => __DIR__ . '/..' . '/symfony/property-access/PropertyPathInterface.php',
         'Symfony\\Component\\PropertyAccess\\PropertyPathIterator' => __DIR__ . '/..' . '/symfony/property-access/PropertyPathIterator.php',
         'Symfony\\Component\\PropertyAccess\\PropertyPathIteratorInterface' => __DIR__ . '/..' . '/symfony/property-access/PropertyPathIteratorInterface.php',
+        'Symfony\\Component\\PropertyInfo\\DependencyInjection\\PropertyInfoConstructorPass' => __DIR__ . '/..' . '/symfony/property-info/DependencyInjection/PropertyInfoConstructorPass.php',
+        'Symfony\\Component\\PropertyInfo\\DependencyInjection\\PropertyInfoPass' => __DIR__ . '/..' . '/symfony/property-info/DependencyInjection/PropertyInfoPass.php',
+        'Symfony\\Component\\PropertyInfo\\Extractor\\ConstructorArgumentTypeExtractorInterface' => __DIR__ . '/..' . '/symfony/property-info/Extractor/ConstructorArgumentTypeExtractorInterface.php',
+        'Symfony\\Component\\PropertyInfo\\Extractor\\ConstructorExtractor' => __DIR__ . '/..' . '/symfony/property-info/Extractor/ConstructorExtractor.php',
+        'Symfony\\Component\\PropertyInfo\\Extractor\\PhpDocExtractor' => __DIR__ . '/..' . '/symfony/property-info/Extractor/PhpDocExtractor.php',
+        'Symfony\\Component\\PropertyInfo\\Extractor\\PhpStanExtractor' => __DIR__ . '/..' . '/symfony/property-info/Extractor/PhpStanExtractor.php',
+        'Symfony\\Component\\PropertyInfo\\Extractor\\ReflectionExtractor' => __DIR__ . '/..' . '/symfony/property-info/Extractor/ReflectionExtractor.php',
+        'Symfony\\Component\\PropertyInfo\\Extractor\\SerializerExtractor' => __DIR__ . '/..' . '/symfony/property-info/Extractor/SerializerExtractor.php',
+        'Symfony\\Component\\PropertyInfo\\PhpStan\\NameScope' => __DIR__ . '/..' . '/symfony/property-info/PhpStan/NameScope.php',
+        'Symfony\\Component\\PropertyInfo\\PhpStan\\NameScopeFactory' => __DIR__ . '/..' . '/symfony/property-info/PhpStan/NameScopeFactory.php',
+        'Symfony\\Component\\PropertyInfo\\PropertyAccessExtractorInterface' => __DIR__ . '/..' . '/symfony/property-info/PropertyAccessExtractorInterface.php',
+        'Symfony\\Component\\PropertyInfo\\PropertyDescriptionExtractorInterface' => __DIR__ . '/..' . '/symfony/property-info/PropertyDescriptionExtractorInterface.php',
+        'Symfony\\Component\\PropertyInfo\\PropertyInfoCacheExtractor' => __DIR__ . '/..' . '/symfony/property-info/PropertyInfoCacheExtractor.php',
+        'Symfony\\Component\\PropertyInfo\\PropertyInfoExtractor' => __DIR__ . '/..' . '/symfony/property-info/PropertyInfoExtractor.php',
+        'Symfony\\Component\\PropertyInfo\\PropertyInfoExtractorInterface' => __DIR__ . '/..' . '/symfony/property-info/PropertyInfoExtractorInterface.php',
+        'Symfony\\Component\\PropertyInfo\\PropertyInitializableExtractorInterface' => __DIR__ . '/..' . '/symfony/property-info/PropertyInitializableExtractorInterface.php',
+        'Symfony\\Component\\PropertyInfo\\PropertyListExtractorInterface' => __DIR__ . '/..' . '/symfony/property-info/PropertyListExtractorInterface.php',
+        'Symfony\\Component\\PropertyInfo\\PropertyReadInfo' => __DIR__ . '/..' . '/symfony/property-info/PropertyReadInfo.php',
+        'Symfony\\Component\\PropertyInfo\\PropertyReadInfoExtractorInterface' => __DIR__ . '/..' . '/symfony/property-info/PropertyReadInfoExtractorInterface.php',
+        'Symfony\\Component\\PropertyInfo\\PropertyTypeExtractorInterface' => __DIR__ . '/..' . '/symfony/property-info/PropertyTypeExtractorInterface.php',
+        'Symfony\\Component\\PropertyInfo\\PropertyWriteInfo' => __DIR__ . '/..' . '/symfony/property-info/PropertyWriteInfo.php',
+        'Symfony\\Component\\PropertyInfo\\PropertyWriteInfoExtractorInterface' => __DIR__ . '/..' . '/symfony/property-info/PropertyWriteInfoExtractorInterface.php',
+        'Symfony\\Component\\PropertyInfo\\Type' => __DIR__ . '/..' . '/symfony/property-info/Type.php',
+        'Symfony\\Component\\PropertyInfo\\Util\\PhpDocTypeHelper' => __DIR__ . '/..' . '/symfony/property-info/Util/PhpDocTypeHelper.php',
+        'Symfony\\Component\\PropertyInfo\\Util\\PhpStanTypeHelper' => __DIR__ . '/..' . '/symfony/property-info/Util/PhpStanTypeHelper.php',
+        'Symfony\\Component\\String\\AbstractString' => __DIR__ . '/..' . '/symfony/string/AbstractString.php',
+        'Symfony\\Component\\String\\AbstractUnicodeString' => __DIR__ . '/..' . '/symfony/string/AbstractUnicodeString.php',
+        'Symfony\\Component\\String\\ByteString' => __DIR__ . '/..' . '/symfony/string/ByteString.php',
+        'Symfony\\Component\\String\\CodePointString' => __DIR__ . '/..' . '/symfony/string/CodePointString.php',
+        'Symfony\\Component\\String\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/symfony/string/Exception/ExceptionInterface.php',
+        'Symfony\\Component\\String\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/symfony/string/Exception/InvalidArgumentException.php',
+        'Symfony\\Component\\String\\Exception\\RuntimeException' => __DIR__ . '/..' . '/symfony/string/Exception/RuntimeException.php',
+        'Symfony\\Component\\String\\Inflector\\EnglishInflector' => __DIR__ . '/..' . '/symfony/string/Inflector/EnglishInflector.php',
+        'Symfony\\Component\\String\\Inflector\\FrenchInflector' => __DIR__ . '/..' . '/symfony/string/Inflector/FrenchInflector.php',
+        'Symfony\\Component\\String\\Inflector\\InflectorInterface' => __DIR__ . '/..' . '/symfony/string/Inflector/InflectorInterface.php',
+        'Symfony\\Component\\String\\LazyString' => __DIR__ . '/..' . '/symfony/string/LazyString.php',
+        'Symfony\\Component\\String\\Slugger\\AsciiSlugger' => __DIR__ . '/..' . '/symfony/string/Slugger/AsciiSlugger.php',
+        'Symfony\\Component\\String\\Slugger\\SluggerInterface' => __DIR__ . '/..' . '/symfony/string/Slugger/SluggerInterface.php',
+        'Symfony\\Component\\String\\UnicodeString' => __DIR__ . '/..' . '/symfony/string/UnicodeString.php',
         'Symfony\\Component\\VarDumper\\Caster\\AmqpCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/AmqpCaster.php',
         'Symfony\\Component\\VarDumper\\Caster\\ArgsStub' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/ArgsStub.php',
         'Symfony\\Component\\VarDumper\\Caster\\Caster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/Caster.php',
@@ -321,6 +360,7 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         'Symfony\\Component\\VarDumper\\Caster\\DsPairStub' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/DsPairStub.php',
         'Symfony\\Component\\VarDumper\\Caster\\EnumStub' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/EnumStub.php',
         'Symfony\\Component\\VarDumper\\Caster\\ExceptionCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/ExceptionCaster.php',
+        'Symfony\\Component\\VarDumper\\Caster\\FiberCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/FiberCaster.php',
         'Symfony\\Component\\VarDumper\\Caster\\FrameStub' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/FrameStub.php',
         'Symfony\\Component\\VarDumper\\Caster\\GmpCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/GmpCaster.php',
         'Symfony\\Component\\VarDumper\\Caster\\ImagineCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/ImagineCaster.php',
@@ -328,9 +368,11 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         'Symfony\\Component\\VarDumper\\Caster\\IntlCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/IntlCaster.php',
         'Symfony\\Component\\VarDumper\\Caster\\LinkStub' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/LinkStub.php',
         'Symfony\\Component\\VarDumper\\Caster\\MemcachedCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/MemcachedCaster.php',
+        'Symfony\\Component\\VarDumper\\Caster\\MysqliCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/MysqliCaster.php',
         'Symfony\\Component\\VarDumper\\Caster\\PdoCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/PdoCaster.php',
         'Symfony\\Component\\VarDumper\\Caster\\PgSqlCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/PgSqlCaster.php',
         'Symfony\\Component\\VarDumper\\Caster\\ProxyManagerCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/ProxyManagerCaster.php',
+        'Symfony\\Component\\VarDumper\\Caster\\RdKafkaCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/RdKafkaCaster.php',
         'Symfony\\Component\\VarDumper\\Caster\\RedisCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/RedisCaster.php',
         'Symfony\\Component\\VarDumper\\Caster\\ReflectionCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/ReflectionCaster.php',
         'Symfony\\Component\\VarDumper\\Caster\\ResourceCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/ResourceCaster.php',
@@ -367,8 +409,10 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
         'Symfony\\Component\\VarDumper\\Server\\DumpServer' => __DIR__ . '/..' . '/symfony/var-dumper/Server/DumpServer.php',
         'Symfony\\Component\\VarDumper\\Test\\VarDumperTestTrait' => __DIR__ . '/..' . '/symfony/var-dumper/Test/VarDumperTestTrait.php',
         'Symfony\\Component\\VarDumper\\VarDumper' => __DIR__ . '/..' . '/symfony/var-dumper/VarDumper.php',
-        'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
+        'Symfony\\Polyfill\\Intl\\Grapheme\\Grapheme' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/Grapheme.php',
+        'Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Normalizer.php',
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
+        'Symfony\\Polyfill\\Php80\\PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/PhpToken.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'Wolfcast\\BrowserDetection' => __DIR__ . '/..' . '/wolfcast/browser-detection/lib/BrowserDetection.php',
@@ -378,9 +422,9 @@ class ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitaad5fb371e1d7fdf97649d53f8979fbf::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita29046130091afd291c080d1a17b6568::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita29046130091afd291c080d1a17b6568::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita29046130091afd291c080d1a17b6568::$classMap;
 
         }, null, ClassLoader::class);
     }

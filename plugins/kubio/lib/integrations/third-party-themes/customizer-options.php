@@ -17,7 +17,6 @@ function kubio_customizer_add_edit_page_in_kubio( $wp_customize ) {
 	);
 
 	return;
-
 }
 
 add_action( 'customize_register', 'kubio_customizer_add_edit_page_in_kubio' );

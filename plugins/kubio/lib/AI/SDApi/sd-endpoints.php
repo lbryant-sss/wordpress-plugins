@@ -64,13 +64,9 @@ add_action(
 				},
 			)
 		);
-
 	}
 );
 
-// function kubio_ai_sd_image_from_text_( WP_REST_Request $request ) {
-// 	// return kubio_ai_sd_generate_image_from_text( $request['prompt'], $request['imageSize'] );
-// }
 
 function kubio_ai_api_generate_images( WP_REST_Request $request ) {
 	$image_generate = new Kubio\Ai\KubioImageGenerate();

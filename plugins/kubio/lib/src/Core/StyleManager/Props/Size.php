@@ -17,4 +17,3 @@ class Size extends PropertyBase {
 		return $style;
 	}
 }
-

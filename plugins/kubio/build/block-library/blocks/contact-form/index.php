@@ -64,7 +64,6 @@ class ContactFormBlock extends BlockBase {
 			),
 		);
 	}
-
 }
 
 Registry::registerBlock(

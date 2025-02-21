@@ -74,4 +74,3 @@ Registry::registerBlock(
 	__DIR__,
 	ColumnBlock::class
 );
-

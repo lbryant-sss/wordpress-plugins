@@ -3,7 +3,6 @@
 namespace Kubio\Blocks;
 
 use Kubio\Core\Blocks\BlockBase;
-use Kubio\Core\Utils;
 use Kubio\Core\Registry;
 
 class PageTitleBlock extends BlockBase {
@@ -73,45 +72,45 @@ class PageTitleBlock extends BlockBase {
 					$title_type = 'authorArchive';
 				} elseif ( is_year() ) {
 					/* translators: Yearly archive title. 1: Year */
-					$title      = get_the_date( _x( 'Y', 'yearly archives date format' ) );
+					$title      = get_the_date( _x( 'Y', 'yearly archives date format', 'kubio' ) );
 					$title_type = 'yearArchive';
 				} elseif ( is_month() ) {
 					/* translators: Monthly archive title. 1: Month name and year */
-					$title      = get_the_date( _x( 'F Y', 'monthly archives date format' ) );
+					$title      = get_the_date( _x( 'F Y', 'monthly archives date format', 'kubio' ) );
 					$title_type = 'monthArchive';
 				} elseif ( is_day() ) {
 					/* translators: Daily archive title. 1: Date */
-					$title      = get_the_date( _x( 'F j, Y', 'daily archives date format' ) );
+					$title      = get_the_date( _x( 'F j, Y', 'daily archives date format', 'kubio' ) );
 					$title_type = 'dayArchive';
 				} elseif ( is_tax( 'post_format' ) ) {
 					if ( is_tax( 'post_format', 'post-format-aside' ) ) {
-						$title = _x( 'Asides', 'post format archive title' );
-					} elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
-						$title = _x( 'Galleries', 'post format archive title' );
-					} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
-						$title = _x( 'Images', 'post format archive title' );
-					} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
-						$title = _x( 'Videos', 'post format archive title' );
-					} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
-						$title = _x( 'Quotes', 'post format archive title' );
-					} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
-						$title = _x( 'Links', 'post format archive title' );
-					} elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
-						$title = _x( 'Statuses', 'post format archive title' );
-					} elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
-						$title = _x( 'Audio', 'post format archive title' );
+						$title = _x( 'Asides', 'post format archive title', 'kubio' );
+					} elseif ( is_tax( 'post_format', 'post-format-gallery', 'kubio' ) ) {
+						$title = _x( 'Galleries', 'post format archive title', 'kubio' );
+					} elseif ( is_tax( 'post_format', 'post-format-image', 'kubio' ) ) {
+						$title = _x( 'Images', 'post format archive title', 'kubio' );
+					} elseif ( is_tax( 'post_format', 'post-format-video', 'kubio' ) ) {
+						$title = _x( 'Videos', 'post format archive title', 'kubio' );
+					} elseif ( is_tax( 'post_format', 'post-format-quote', 'kubio' ) ) {
+						$title = _x( 'Quotes', 'post format archive title', 'kubio' );
+					} elseif ( is_tax( 'post_format', 'post-format-link', 'kubio' ) ) {
+						$title = _x( 'Links', 'post format archive title', 'kubio' );
+					} elseif ( is_tax( 'post_format', 'post-format-status', 'kubio' ) ) {
+						$title = _x( 'Statuses', 'post format archive title', 'kubio' );
+					} elseif ( is_tax( 'post_format', 'post-format-audio', 'kubio' ) ) {
+						$title = _x( 'Audio', 'post format archive title', 'kubio' );
 					} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
-						$title = _x( 'Chats', 'post format archive title' );
+						$title = _x( 'Chats', 'post format archive title', 'kubio' );
 					}
 				} elseif ( is_post_type_archive() ) {
 					/* translators: Post type archive title. 1: Post type name */
-					$title = sprintf( __( 'Archives: %s' ), post_type_archive_title( '', false ) );
+					$title = sprintf( __( 'Archives: %s', 'kubio' ), post_type_archive_title( '', false ) );
 				} elseif ( is_tax() ) {
 					$tax = get_taxonomy( get_queried_object()->taxonomy );
 					/* translators: Taxonomy term archive title. 1: Taxonomy singular name, 2: Current taxonomy term */
-					$title = sprintf( __( '%1$s: %2$s' ), $tax->labels->singular_name, single_term_title( '', false ) );
+					$title = sprintf( __( '%1$s: %2$s', 'kubio' ), $tax->labels->singular_name, single_term_title( '', false ) );
 				} else {
-					$title = __( 'Archives' );
+					$title = __( 'Archives', 'kubio' );
 				}
 			}
 		} elseif ( is_single() ) {
@@ -128,7 +127,7 @@ class PageTitleBlock extends BlockBase {
 			$title_type = 'normalPage';
 		}
 
-		$final_title = $title_type ? str_replace( '{TITLE}', $title,  kubio_wpml_get_translated_string($titles[ $title_type ]) ) : $title;
+		$final_title = $title_type ? str_replace( '{TITLE}', $title, kubio_wpml_get_translated_string( $titles[ $title_type ] ) ) : $title;
 
 		$content = ob_get_clean();
 
@@ -141,14 +140,16 @@ class PageTitleBlock extends BlockBase {
 		}
 
 		$result = $content ? $content : $final_title;
-		return wp_kses_post($result);
+		return wp_kses_post( $result );
 	}
 
 
 	public function mapPropsToElements() {
-		$headingType = esc_attr($this->getProp( 'level' ) ?
+		$headingType = esc_attr(
+			$this->getProp( 'level' ) ?
 			$this->getProp( 'level' ) :
-			$this->getAttribute( 'tag' ));
+			$this->getAttribute( 'tag' )
+		);
 
 		return array(
 			self::CONTAINER => array(
@@ -156,7 +157,6 @@ class PageTitleBlock extends BlockBase {
 				'tag'       => $headingType,
 			),
 		);
-
 	}
 }
 

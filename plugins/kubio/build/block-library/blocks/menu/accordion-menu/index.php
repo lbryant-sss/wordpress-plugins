@@ -5,7 +5,6 @@ namespace Kubio\Blocks;
 use Kubio\Core\Blocks\BlockBase;
 use Kubio\Core\Registry;
 use Kubio\Core\Utils;
-use IlluminateAgnostic\Arr\Support\Arr;
 
 class AccordionMenuBlock extends BlockBase {
 	const BLOCK_NAME = 'kubio/accordion-menu';

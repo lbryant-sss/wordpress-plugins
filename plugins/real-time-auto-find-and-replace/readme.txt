@@ -1,6 +1,8 @@
 === Better Find and Replace ===
-Contributors: codesolz, m.tuhin
-Tags: database, search replace, search, replace, search and replace, real-time replace, find, find and replace, gutenberg, block-editor, search replace elementor 
+Author: codesolz
+Author URI: https://www.codesolz.net
+Contributors: m.tuhin, codesolz
+Tags: database, search replace, search, replace, search and replace, real-time replace, find, find and replace 
 Donate link: https://codesolz.net/our-products/wordpress-plugin/real-time-auto-find-and-replace/?utm_source=wordpress.org&utm_medium=README_DONATE_BTN
 Requires at least: 4.0
 Tested up to: 6.7

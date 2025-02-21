@@ -243,6 +243,7 @@ class WC_Advanced_Shipment_Tracking_Admin {
 			<div class="woocommerce zorem_admin_layout">
 				<div class="ast_admin_content zorem_admin_settings">
 					<div class="ast_nav_div">
+						<?php echo do_shortcode('[ast_settings_admin_notice]'); ?>
 						<?php include 'views/activity_panel.php'; ?>
 						<?php
 						$this->get_html_menu_tab( $this->get_ast_tab_settings_data() );
@@ -1573,13 +1574,13 @@ class WC_Advanced_Shipment_Tracking_Admin {
 
 		if ( null != $search_term ) {
 			$totla_shipping_provider = $wpdb->get_row( $wpdb->prepare( 'SELECT COUNT(*) as total_providers FROM %1s WHERE ( provider_name LIKE %s OR shipping_country_name LIKE %s) AND ( display_in_order = 1 )', $this->table, '%%' . $search_term . '%%', '%' . $search_term . '%' ) );			
-			$shippment_providers = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM %1s WHERE WHERE ( provider_name LIKE %s OR shipping_country_name LIKE %s) AND ( display_in_order = 1 ) ORDER BY shipping_default ASC, display_in_order DESC, trackship_supported DESC, id ASC LIMIT %4$d, %5$d', $this->table, '%%' . $search_term . '%%', '%' . $search_term . '%', $offset, $items_per_page ) );
+			$shippment_providers = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM %1s WHERE ( provider_name LIKE %s OR shipping_country_name LIKE %s) AND ( display_in_order = 1 ) ORDER BY shipping_default ASC, display_in_order DESC, trackship_supported DESC, id ASC LIMIT %4$d, %5$d', $this->table, '%%' . $search_term . '%%', '%' . $search_term . '%', $offset, $items_per_page ) );
 		} else {
 			$totla_shipping_provider = $wpdb->get_row( $wpdb->prepare( 'SELECT COUNT(*) as total_providers FROM %1s WHERE display_in_order = 1', $this->table ) );			
 			$shippment_providers = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM %1s WHERE display_in_order = 1 ORDER BY shipping_default ASC, display_in_order DESC, trackship_supported DESC, id ASC LIMIT %d, %d', $this->table, $offset, $items_per_page ) );
 		}
 
-		$total_provders = $totla_shipping_provider->total_providers;			
+		$total_provders = $totla_shipping_provider->total_providers;		
 
 		foreach ( $shippment_providers as $key => $value ) {
 			

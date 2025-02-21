@@ -7,6 +7,7 @@ use IlluminateAgnostic\Arr\Support\Arr;
 add_action(
 	'template_redirect',
 	function () {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( Arr::has( $_REQUEST, '__kubio-page-title' ) && Utils::canEdit() ) {
 			return wp_send_json_success(
 				PageTitleBlock::getTitle( true )

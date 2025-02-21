@@ -4,7 +4,6 @@ namespace Kubio\Core\StyleManager\Generics;
 
 use Kubio\Core\StyleManager\ParserUtils;
 use Kubio\Core\StyleManager\Props\Property;
-use Kubio\Core\Styles\Utils;
 use function is_string;
 
 class UnitValue extends Property {

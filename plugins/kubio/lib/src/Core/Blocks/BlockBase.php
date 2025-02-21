@@ -41,13 +41,12 @@ class BlockBase extends DataHelper {
 			$block['blockName']
 		);
 
-
-
 		$this->styledElementsByName = $this->getBlockStyledElementsByName();
 		$this->defaultElement       = $this->getDefaultElement();
 
 		if ( ! $this->defaultElement ) {
 			throw new Exception(
+				// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 				"Kubio \"{$block['name']}\" has no default element defined"
 			);
 		}
@@ -213,7 +212,7 @@ class BlockBase extends DataHelper {
 	}
 
 	public function getAppliedMigrations() {
-		return  $this->getAttribute( 'kubio.migrations', array() );
+		return $this->getAttribute( 'kubio.migrations', array() );
 	}
 
 	public function getAppliedMigrationsClasses() {
@@ -412,7 +411,7 @@ class BlockBase extends DataHelper {
 	public function getBlockInnerHtml() {
 
 		$content = trim( $this->block_data['innerHTML'] );
-		$content = str_replace( array("\r\n", "\r", "\n", "\\n"), '<br/>', $content );
+		$content = str_replace( array( "\r\n", "\r", "\n", "\\n" ), '<br/>', $content );
 
 		return $content;
 	}

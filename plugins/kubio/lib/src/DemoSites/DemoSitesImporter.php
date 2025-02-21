@@ -21,6 +21,7 @@ class DemoSitesImporter {
 		if ( $type === 'ajax' ) {
 			// pick up only a few keys from the request.
 			$this->config = wp_parse_args(
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$_REQUEST,
 				array(
 					'is_stepped'           => true,
@@ -83,6 +84,7 @@ class DemoSitesImporter {
 		$this->setIniMemoryLimit();
 
 		if ( ! $use_existing_importer_data ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$kds_file = Arr::get( $_FILES, 'kds_file', null );
 			if ( ! $kds_file ) {
 				$this->prepareRemoteImport();
@@ -174,7 +176,6 @@ class DemoSitesImporter {
 			),
 			$this->logger
 		);
-
 	}
 
 	/**
@@ -192,6 +193,7 @@ class DemoSitesImporter {
 	 * If it is not allowed warn in the logs about it.
 	 */
 	private function setIniMemoryLimit() {
+		// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 		if ( ! @ini_set( 'memory_limit', '512M' ) ) {
 			DemoSitesHelpers::appendToFile(
 				esc_html__( 'Warn: Unable set memory_limit', 'kubio' ),
@@ -370,6 +372,7 @@ class DemoSitesImporter {
 				'post_type'      => 'wp_template',
 				'post_status'    => array( 'publish' ),
 				'posts_per_page' => - 1,
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 				'tax_query'      => array(
 					array(
 						'taxonomy' => 'wp_theme',
@@ -393,6 +396,7 @@ class DemoSitesImporter {
 				'post_type'      => 'wp_template_part',
 				'post_status'    => array( 'publish' ),
 				'posts_per_page' => - 1,
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 				'tax_query'      => array(
 					array(
 						'taxonomy' => 'wp_theme',
@@ -431,7 +435,7 @@ class DemoSitesImporter {
 		foreach ( $menus as $menu ) {
 			$index = - 1;
 			do {
-				$index ++;
+				++$index;
 				list($base_name) = sscanf( $menu->name, '%s - %s' );
 
 				$new_name = sprintf(
@@ -450,7 +454,6 @@ class DemoSitesImporter {
 				)
 			);
 		}
-
 	}
 
 	/**

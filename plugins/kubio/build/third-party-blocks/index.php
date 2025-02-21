@@ -211,7 +211,6 @@ class ThirdPartySupportRegistry {
 
 		return $args;
 	}
-
 }
 
 ThirdPartySupportRegistry::load();

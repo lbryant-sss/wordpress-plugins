@@ -3,7 +3,6 @@
 
 namespace Kubio\Core\StyleManager;
 
-use Kubio\Core\LodashBasic;
 
 class DynamicStyles {
 
@@ -36,7 +35,7 @@ class DynamicStyles {
 	}
 
 	public static function vSpace( $spaceByMedia, $negative = false ) {
-		 $style = array();
+		$style = array();
 		foreach ( $spaceByMedia as $media => $mediaValue ) {
 			$style[ $media ] = array();
 			if ( isset( $mediaValue['value'] ) ) {

@@ -43,7 +43,7 @@ class ImageBlock extends BlockContainerBase {
 		//the wp image class is used to add the src set by WordPress
 		$image_classes = array( 'wp-image-' . $this->getAttribute( 'id' ) );
 		$default_img   = Utils::getDefaultAssetsURL( 'default-image.png' );
-		$src = null;
+		$src           = null;
 		if ( $id ) {
 			$src = wp_get_attachment_image_url( $id, $size_slug );
 		}

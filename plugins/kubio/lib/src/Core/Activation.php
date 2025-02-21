@@ -31,11 +31,13 @@ class Activation {
 						admin_url( 'admin.php' )
 					);
 
+					// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 					if ( ! $this->isCLI() && ! Arr::has( $_REQUEST, 'tgmpa-activate' ) && ! $this->isAJAX() ) {
 						wp_redirect( $url );
 						exit();
 					} else {
 
+						// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 						if ( Arr::has( $_REQUEST, 'tgmpa-activate' ) || $this->isAJAX() ) {
 							Flags::set( 'activated_from_tgmpa_or_ajax', true );
 						}
@@ -91,6 +93,7 @@ class Activation {
 					return;
 				}
 
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$hash       = sanitize_text_field( Arr::get( $_REQUEST, 'kubio-activation-hash', null ) );
 				$saved_hash = Flags::get( 'activation-hash', false );
 				if ( $saved_hash === $hash ) {
@@ -160,10 +163,7 @@ class Activation {
 			return;
 		}
 
-		// activate pro
-		if ( kubio_is_pro() && ! Flags::get( 'kubio_pro_activation_time', false ) ) {
-			Flags::set( 'kubio_pro_activation_time', time() );
-		}
+		do_action( 'kubio/before_activation' );
 
 		// if free previously activated return
 		if ( Flags::get( 'kubio_activation_time', false ) ) {
@@ -182,7 +182,7 @@ class Activation {
 
 		//set site uuid on activation
 		Flags::getSiteUUID();
-		
+
 		add_filter( 'kubio/importer/page_path', array( $this, 'getDesignPagePath' ), 10, 2 );
 
 		if ( $this->importCustomizedTemplates() ) {
@@ -270,7 +270,6 @@ class Activation {
 				exit();
 			}
 		}
-
 	}
 
 	public function addCommonFilters() {
@@ -524,7 +523,7 @@ class Activation {
 						$menu_item_object_is_front_page = $menu_item->type === 'post_type' && $menu_item->object === 'page' && intval( $menu_item->object_id ) === intval( get_option( 'page_on_front' ) );
 						$custom_url                     = $menu_item->type === 'custom' ? $menu_item->url : '';
 						$menu_item_link_is_front_page   = false;
-						$parsed_url                     = parse_url( $custom_url );
+						$parsed_url                     = wp_parse_url( $custom_url );
 
 						if ( $parsed_url && $custom_url ) {
 							$site_url = site_url();
@@ -631,7 +630,7 @@ class Activation {
 	}
 
 	public static function skipAfterSwitchTheme() {
-		 set_transient( 'kubio_skip_after_theme_switch', true );
+		set_transient( 'kubio_skip_after_theme_switch', true );
 	}
 
 	public function afterSwitchTheme() {

@@ -50,8 +50,8 @@ class MenuOffscreen extends BlockBase {
 				array(
 					'data-target'               => "#{$this->offscreen_id}",
 					'data-target-id'            => "{$this->offscreen_id}",
-					'data-direction'            => esc_attr($direction),
-					'data-width'                => esc_attr("{$width['value']}{$width['unit']}"),
+					'data-direction'            => esc_attr( $direction ),
+					'data-width'                => esc_attr( "{$width['value']}{$width['unit']}" ),
 					'data-offcanvas-overlay-id' => "{$this->offscreen_id}-overlay",
 					'aria-label'                => __( 'Mobile Menu', 'kubio' ),
 				),

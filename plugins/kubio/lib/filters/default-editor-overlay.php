@@ -11,6 +11,7 @@ if ( is_admin() ) {
 function kubio_choose_editor( $use_block_editor, $post ) {
 
 	if ( $use_block_editor && $post && $post->post_type === 'page' && ! in_array( $post->post_status, array( 'draft', 'auto-draft' ) ) ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( Arr::get( $_REQUEST, 'kubio-edit' ) !== 'default-editor' ) {
 			return false;
 		}
@@ -138,7 +139,7 @@ function kubio_maintainable_page_editor( $editor = '', $skip_default_editor = fa
 
 	<script>
 		window.cp_open_page_in_kubio = function(postId, postType) {
-			var link = '<?php echo admin_url( 'admin.php?page=kubio' ); ?>&postId=' + postId + '&postType=' + postType;
+			var link = '<?php echo esc_url( admin_url( 'admin.php?page=kubio' ) ); ?>&postId=' + postId + '&postType=' + postType;
 			return link;
 		}
 	</script>
@@ -146,14 +147,18 @@ function kubio_maintainable_page_editor( $editor = '', $skip_default_editor = fa
 	<div class="kubio-classic-editor-overlay <?php echo ( $is_blog_page ? 'kubio-blog-page' : '' ); ?>">
 		<div class="middle-align">
 			<div>
-				<button onclick="window.location.replace(cp_open_page_in_kubio('<?php echo kubio_wpml_get_original_language_post_id($post->ID,$post->post_type); ?>', '<?php echo get_post_type( $post->ID ); ?>')); return false;" class="button button-hero button-primary kubio-overlay-edit-with-kubio">
-					<?php echo KUBIO_LOGO_SVG; ?>
-					<?php _e( 'Edit with Kubio', 'kubio' ); ?>
+				<?php $wpml_original_post_id = kubio_wpml_get_original_language_post_id( $post->ID, $post->post_type ); ?>
+				<button onclick="window.location.replace(cp_open_page_in_kubio('<?php echo esc_attr( $wpml_original_post_id ); ?>', '<?php echo esc_attr( get_post_type( $post->ID ) ); ?>')); return false;" class="button button-hero button-primary kubio-overlay-edit-with-kubio">
+					<?php
+					// phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction, WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo KUBIO_LOGO_SVG;
+					?>
+					<?php esc_html_e( 'Edit with Kubio', 'kubio' ); ?>
 				</button>
 			</div>
 			<?php if ( ! $skip_default_editor ) : ?>
 				<div class="kubio-edit-with-default-wrapper">
-					<a class="button button-link" href="<?php echo esc_url( $edit_with_default_url ); ?>"><?php _e( 'Edit with default editor', 'kubio' ); ?></a>
+					<a class="button button-link" href="<?php echo esc_url( $edit_with_default_url ); ?>"><?php esc_html_e( 'Edit with default editor', 'kubio' ); ?></a>
 				</div>
 			<?php endif; ?>
 		</div>

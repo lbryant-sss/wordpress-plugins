@@ -10,10 +10,10 @@ use Kubio\Core\StyleManager\DynamicStyles;
 
 abstract class QueryLoopItemBase extends BlockContainerBase {
 
-	const CONTAINER          = 'container';
-	const INNER              = 'inner';
-	const ALIGN              = 'align';
-	const VSPACE             = 'v-space';
+	const CONTAINER = 'container';
+	const INNER     = 'inner';
+	const ALIGN     = 'align';
+	const VSPACE    = 'v-space';
 
 	public function mapDynamicStyleToElements() {
 		$dynamic_styles = array();
@@ -22,7 +22,7 @@ abstract class QueryLoopItemBase extends BlockContainerBase {
 			array()
 		);
 
-		$dynamic_styles[ self::VSPACE ]             = DynamicStyles::vSpace( $space_by_media );
+		$dynamic_styles[ self::VSPACE ] = DynamicStyles::vSpace( $space_by_media );
 
 		return $dynamic_styles;
 	}
@@ -71,5 +71,5 @@ abstract class QueryLoopItemBase extends BlockContainerBase {
 	/**
 	 * @return string
 	 */
-	public abstract function loopBlockName();
+	abstract public function loopBlockName();
 }

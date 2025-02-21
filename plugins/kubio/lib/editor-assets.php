@@ -40,21 +40,13 @@ function kubio_override_style( $styles, $handle, $src, $deps = array(), $ver = f
 function kubio_register_kubio_scripts_scripts_dependencies( $version ) {
 	$scripts = array(
 		array(
-			'handle' => 'typed',
-			'deps'   => array( 'jquery' ),
-			'src'    => 'typed.js',
-		),
-		array(
 			'handle' => 'fancybox',
 			'deps'   => array( 'jquery' ),
 			'src'    => 'fancybox/jquery.fancybox.min.js',
-		),
-		array(
-			'handle' => 'swiper',
-			'deps'   => array( 'jquery' ),
-			'src'    => 'swiper/js/swiper.js',
-		),
+		)
 	);
+
+	$scripts  = apply_filters("kubio/register_kubio_scripts_dependencies", $scripts );
 
 	foreach ( $scripts as $script ) {
 		AssetsDependencyInjector::registerKubioScriptsDependency(
@@ -64,13 +56,12 @@ function kubio_register_kubio_scripts_scripts_dependencies( $version ) {
 			$version
 		);
 	}
-
 }
 
 function kubio_register_frontend_script( $handle ) {
 	add_filter(
 		'kubio/frontend/scripts',
-		function( $scripts ) use ( $handle ) {
+		function ( $scripts ) use ( $handle ) {
 
 			if ( ! in_array( $handle, $scripts ) ) {
 				$scripts[] = $handle;
@@ -103,7 +94,7 @@ function kubio_register_packages_scripts() {
 		$handle       = 'kubio-' . basename( dirname( $path ) );
 		$asset_file   = substr( $path, 0, - 3 ) . '.asset.php';
 		$asset        = file_exists( $asset_file )
-				? require( $asset_file )
+				? require $asset_file
 				: null;
 		$dependencies = isset( $asset['dependencies'] ) ? $asset['dependencies'] : array();
 
@@ -207,7 +198,7 @@ function kubio_replace_default_scripts( $scripts ) {
 		$asset_file  = KUBIO_ROOT_DIR . "/build/{$new}/index.asset.php";
 
 		$asset        = file_exists( $asset_file )
-				? require( $asset_file )
+				? require $asset_file
 				: null;
 		$dependencies = isset( $asset['dependencies'] ) ? $asset['dependencies'] : array();
 		$version      = isset( $asset['version'] ) ? $asset['version'] : filemtime( $script_path );
@@ -227,7 +218,6 @@ function kubio_replace_default_scripts( $scripts ) {
 			true
 		);
 	}
-
 }
 
 
@@ -236,12 +226,10 @@ function kubio_register_kubio_block_library_style_dependencies( $version ) {
 		array(
 			'handle' => 'fancybox',
 			'src'    => 'fancybox/jquery.fancybox.min.css',
-		),
-		array(
-			'handle' => 'swiper',
-			'src'    => 'swiper/css/swiper.min.css',
-		),
+		)
 	);
+
+	$styles  = apply_filters("kubio/register_block_library_style_dependencies", $styles );
 
 	foreach ( $styles as $style ) {
 		AssetsDependencyInjector::registerKubioFrontendStyleDependency(
@@ -251,7 +239,6 @@ function kubio_register_kubio_block_library_style_dependencies( $version ) {
 			$version
 		);
 	}
-
 }
 
 
@@ -345,7 +332,6 @@ function kubio_replace_default_styles( $styles ) {
 		filemtime( KUBIO_ROOT_DIR . 'build/editor/style.css' )
 	);
 	$styles->add_data( 'wp-block-editor', 'rtl', 'replace' );
-
 }
 
 add_action( 'init', 'kubio_register_packages_scripts' );
@@ -401,7 +387,7 @@ add_action(
 						'activatedOnStage2'              => Flags::getSetting( 'activatedOnStage2', false ),
 						'aiStage2'                       => Flags::getSetting( 'aiStage2', false ),
 						'advancedMode'                   => Flags::getSetting( 'advancedMode', true ),
-						'featuresVersion'                      => Flags::getSetting( 'featuresVersion', 1 ),
+						'featuresVersion'                => Flags::getSetting( 'featuresVersion', 1 ),
 						'wpAdminUpgradePage'             => add_query_arg(
 							array(
 								'tab'  => 'pro-upgrade',
@@ -465,7 +451,7 @@ function kubio_print_style_manager_web_worker() {
 
 	$script = preg_replace_callback(
 		'#<script(.*?)>(.*?)</script>#s',
-		function( $matches ) {
+		function ( $matches ) {
 			$script_attrs = Arr::get( $matches, 1, '' );
 			preg_match( "#src=(\"|')(.*?)(\"|')#", $script_attrs, $attrs_match );
 			$url     = Arr::get( $attrs_match, 2, '' );
@@ -496,6 +482,7 @@ function kubio_print_style_manager_web_worker() {
 		header( 'Etag: ' . md5( $content ) );
 	}
 
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	die( $content );
 }
 
@@ -530,7 +517,7 @@ add_action(
 	</script>
 		<?php
 
-		$content = strip_tags( ob_get_clean() );
+		$content = wp_strip_all_tags( ob_get_clean() );
 
 		wp_add_inline_script( 'wp-polyfill', $content, 'after' );
 	}
@@ -557,10 +544,11 @@ function kubio_defer_kubio_styles( $tag, $handle, $href, $media ) {
 		return $tag;
 	}
 
-	$defferable_handles = array( 'kubio-google-fonts', 'kubio-third-party-blocks' );
+	$deferrable_handles = array( 'kubio-google-fonts', 'kubio-third-party-blocks' );
 
-	if ( in_array( $handle, $defferable_handles ) ) {
-		$tag  = preg_replace( "#rel='(.*?)'#", 'rel="preload" as="style" onload="this.onload=null;this.rel=\'$1\'"', $tag );
+	if ( in_array( $handle, $deferrable_handles ) ) {
+		$tag = preg_replace( "#rel='(.*?)'#", 'rel="preload" as="style" onload="this.onload=null;this.rel=\'$1\'"', $tag );
+		// phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
 		$tag .= "<noscript><link rel='stylesheet' href='{$href}' media='{$media}'></noscript>";
 	}
 

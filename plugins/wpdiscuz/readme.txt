@@ -2,8 +2,8 @@
 Contributors: gVectors Team
 Tags: comment, comments, ajax comments, comment form, comment fields
 Requires at least: 5.0
-Tested up to: 6.6
-Stable tag: 7.6.27
+Tested up to: 6.7
+Stable tag: 7.6.28
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -188,6 +188,17 @@ Nothing will be lost!  **Comments - wpDiscuz** will show all old comments.
 **IMPORTANT!**
 
 Please don't forget delete all caches and purge CDN after the update.
+
+= Comments - wpDiscuz v7.6.28 - 20.02.2025 =
+
+* Added: A new option to check users last interaction with the website and optimize the live update requests
+* Added: A new JS event before comment post "wpdiscuz_new_comment"
+* Added: A new action before comment insertion "wpdiscuz_before_wp_new_comment"
+* Fixed: Issue with  subscriptions
+* Fixed: Issue with unsubscription links
+* Fixed: Issue with wpdiscuz-feedback shordcode's attributes
+* Changed: Uploading media files on comment post only
+* Changed: SVG icons for Social Login
 
 = Comments - wpDiscuz v7.6.27 - 14.10.2024 =
 

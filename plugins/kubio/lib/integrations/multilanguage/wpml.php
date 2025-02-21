@@ -1,11 +1,6 @@
 <?php
 
-
-
-function kubio_wpml_is_active(): bool {
-	if(!kubio_is_pro()) {
-		return false;
-	}
+function kubio_wpml_is_active() {
 	static $is_active = null;
 	if ( $is_active === null ) {
 		$is_active = defined( 'ICL_SITEPRESS_VERSION' );
@@ -32,7 +27,6 @@ function kubio_wpml_get_translated_media_id( $id ) {
 	$translated_attachment_id = apply_filters( 'wpml_object_id', $id, 'attachment', true, $current_language );
 
 	return $translated_attachment_id;
-
 }
 
 function kubio_wpml_get_translated_media_url( $url ) {
@@ -55,16 +49,15 @@ function kubio_wpml_get_translated_media_url( $url ) {
 	return $url;
 }
 
-function kubio_wpml_get_original_language_post_id($post_id, $post_type) {
-	if(!kubio_wpml_is_active()) {
+function kubio_wpml_get_original_language_post_id( $post_id, $post_type ) {
+	if ( ! kubio_wpml_is_active() ) {
 		return $post_id;
 	}
 
-	$translated_id = apply_filters( 'wpml_object_id', $post_id , $post_type, true, wpml_get_default_language() );
-	if(!empty($translated_id) && $translated_id !== 0 && $translated_id !== $post_id) {
+	$translated_id = apply_filters( 'wpml_object_id', $post_id, $post_type, true, wpml_get_default_language() );
+	if ( ! empty( $translated_id ) && $translated_id !== 0 && $translated_id !== $post_id ) {
 		$post_id = $translated_id;
 	}
 
 	return $post_id;
 }
-

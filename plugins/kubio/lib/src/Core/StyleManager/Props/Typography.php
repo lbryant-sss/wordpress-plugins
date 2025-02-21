@@ -21,10 +21,10 @@ class Typography extends PropertyBase {
 				return '.h-lead';
 
 			case 'blockquote':
-				return  'blockquote p';
+				return 'blockquote p';
 
 			default:
-				return  $name;
+				return $name;
 		}
 	}
 

@@ -17,7 +17,7 @@ class HeadingBlock extends BlockBase {
 
 		$headingType = $this->getProp( 'level', $this->getAttribute( 'headerType', 2 ) );
 
-		$tagName   = esc_attr("h$headingType");
+		$tagName   = esc_attr( "h$headingType" );
 		$fancyHtml = $this->getFancyHtml();
 		return array(
 			self::TEXT => array(
@@ -87,7 +87,10 @@ class HeadingBlock extends BlockBase {
 				<span class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 					<?php echo wp_kses_post( $fancy_word ); ?>
 				</span>
-				<?php echo $svg; ?>
+				<?php
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo $svg;
+				?>
 			</span>
 		</span>
 		<?php
@@ -129,10 +132,10 @@ class HeadingBlock extends BlockBase {
 
 		?>
 		<span data-kubio-component="fancy-title"
-			  data-animation-duration="<?php echo esc_attr( $duration ); ?>"
-			  data-type-animation="<?php echo esc_attr( $animation ); ?>"
+				data-animation-duration="<?php echo esc_attr( $duration ); ?>"
+				data-type-animation="<?php echo esc_attr( $animation ); ?>"
 		>
-		<span class='ah-headline <?php echo  esc_attr( $animation ); ?>'>
+		<span class='ah-headline <?php echo esc_attr( $animation ); ?>'>
 				<span style="position: relative" class="ah-words-wrapper">
 					<?php echo wp_kses_post( $rotating_html ); ?>
 				</span>
@@ -179,15 +182,15 @@ class HeadingBlock extends BlockBase {
 
 		?>
 		<span data-kubio-component="fancy-title"
-			  data-animation-duration="<?php echo esc_attr( $animationDuration ); ?>"
-			  data-type-animation-duration-in="<?php echo esc_attr( $typeAnimationDurationIn ); ?>"
-			  data-type-animation-duration-out="<?php echo esc_attr( $typeAnimationDurationOut ); ?>"
-			  data-type-animation="<?php echo esc_attr( $typeAnimation ); ?>"
-			  data-word="<?php echo esc_attr( $fancy_word ); ?>"
-			  data-rotating-words="<?php echo esc_attr( $fancy_rotating_words ); ?>"
-			  data-animation-type="true">
+				data-animation-duration="<?php echo esc_attr( $animationDuration ); ?>"
+				data-type-animation-duration-in="<?php echo esc_attr( $typeAnimationDurationIn ); ?>"
+				data-type-animation-duration-out="<?php echo esc_attr( $typeAnimationDurationOut ); ?>"
+				data-type-animation="<?php echo esc_attr( $typeAnimation ); ?>"
+				data-word="<?php echo esc_attr( $fancy_word ); ?>"
+				data-rotating-words="<?php echo esc_attr( $fancy_rotating_words ); ?>"
+				data-animation-type="true">
 
-			  <?php echo wp_kses_post( $fancy_word ); ?>
+				<?php echo wp_kses_post( $fancy_word ); ?>
 		</span>
 		<?php
 		$htmlContent = ob_get_clean();

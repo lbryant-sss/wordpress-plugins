@@ -57,7 +57,6 @@ function kubio_woocommerce_support_template_include( $template ) {
 	}
 
 	return $template;
-
 }
 
 function kubio_woocommerce_support_rendered_content( $content ) {

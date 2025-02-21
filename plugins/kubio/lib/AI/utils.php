@@ -295,7 +295,7 @@ function kubio_ai_get_original_image_dimensions( $imag_url ) {
 
 	list($width, $height) = $image_size;
 
-	unlink( $temp_file );
+	wp_delete_file( $temp_file );
 
 	$ratio       = floor( $width / $height * 100 ) / 100;
 	$orientation = $ratio < 1 ? 'portrait' : 'landscape';
@@ -309,7 +309,6 @@ function kubio_ai_get_original_image_dimensions( $imag_url ) {
 		'height'      => $height,
 		'orientation' => $orientation,
 	);
-
 }
 
 /**
@@ -321,10 +320,15 @@ function kubio_ai_get_original_image_dimensions( $imag_url ) {
  */
 function kubio_ai_call_api( $path, $payload = array(), $extra = array() ) {
 
-	$is_guest      = isset( $_GET['is_guest'] ) && ! ! $_GET['is_guest'];
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized 
+	$is_guest = isset( $_GET['is_guest'] ) && ! ! $_GET['is_guest'];
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized 
 	$skip_ai_cache = isset( $_GET['skip_ai_cache'] ) && ! ! $_GET['skip_ai_cache'];
 	$timeout       = 120;
+
+	// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 	ini_set( 'max_execution_time', $timeout );
+	// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 	set_time_limit( $timeout );
 
 	$log = defined( 'KUBIO_AI_LOG' ) ? KUBIO_AI_LOG : false;
@@ -497,7 +501,8 @@ function kubio_ai_call_api( $path, $payload = array(), $extra = array() ) {
 				'prompt_tokens'     => Arr::get( $debug_content, 'prompt_tokens', 0 ),
 				'completion_tokens' => Arr::get( $debug_content, 'completion_tokens', 0 ),
 			),
-			Arr::get( $_REQUEST, '__kubio_call_id', null )
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			sanitize_text_field( Arr::get( $_REQUEST, '__kubio_call_id', null ) )
 		);
 	}
 
@@ -507,4 +512,3 @@ function kubio_ai_call_api( $path, $payload = array(), $extra = array() ) {
 
 	return $result;
 }
-

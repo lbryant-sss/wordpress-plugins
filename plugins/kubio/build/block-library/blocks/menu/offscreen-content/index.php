@@ -4,7 +4,6 @@ namespace Kubio\Blocks;
 
 use Kubio\Core\Blocks\BlockBase;
 use Kubio\Core\Registry;
-use Kubio\Core\Utils;
 
 
 
@@ -15,4 +14,3 @@ Registry::registerBlock(
 	__DIR__,
 	MenuOffscreenContent::class
 );
-

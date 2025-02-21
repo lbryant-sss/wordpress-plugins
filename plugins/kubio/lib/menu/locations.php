@@ -1,7 +1,7 @@
 <?php
 
 function kubio_register_menus_locations() {
-	 $current_locations = array_keys( get_registered_nav_menus() );
+	$current_locations = array_keys( get_registered_nav_menus() );
 
 	$kubio_locations = apply_filters(
 		'kubio_menus_locations',

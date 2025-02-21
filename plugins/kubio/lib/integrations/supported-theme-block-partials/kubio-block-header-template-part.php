@@ -16,6 +16,7 @@ if ( class_exists( 'Kubio\Theme\Components\Header' ) ) {
 			if ( $part ) {
 				global $kubio_force_render_partials_style;
 				$kubio_force_render_partials_style = true;
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo do_blocks( $part->content );
 			} else {
 				parent::renderContent( $parameters );

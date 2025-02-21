@@ -120,7 +120,6 @@ class CustomizerImporter {
 
 			static::$current_data = $data;
 		}
-
 	}
 
 	private function canProcessCurrent() {
@@ -173,7 +172,6 @@ class CustomizerImporter {
 		}
 
 		return $parsed_blocks;
-
 	}
 
 	private function postProcessBlock( $parsed_block, $current_data ) {
@@ -574,7 +572,6 @@ class CustomizerImporter {
 		}
 
 		return array();
-
 	}
 
 	private function normalizeTexts( $parsed_block, $data, $item_data ) {
@@ -756,8 +753,8 @@ class CustomizerImporter {
 
 		$bg_slides = static::prepareBackgroundSlides( $bg_slides );
 
-		list($r,$g,$b,$a) = sscanf( $overlay_color['value'], 'rgba(%d,%d,%d,%f)' );
-		list($r,$g,$b,$a) = sscanf( $overlay_color['value'], 'rgba(%d,%d,%d,%f)' );
+		list($r, $g, $b, $a) = sscanf( $overlay_color['value'], 'rgba(%d,%d,%d,%f)' );
+		list($r, $g, $b, $a) = sscanf( $overlay_color['value'], 'rgba(%d,%d,%d,%f)' );
 		if ( is_numeric( $r ) && is_numeric( $g ) && is_numeric( $b ) && is_numeric( $a ) ) {
 			$overlay_color = array(
 				'opacity' => $a,
@@ -788,7 +785,7 @@ class CustomizerImporter {
 				'style.descendants.outer.background.type',
 				'none'
 			);
-		} else if ( $bg_type === 'image' || $bg_type === 'gradient' ) {
+		} elseif ( $bg_type === 'image' || $bg_type === 'gradient' ) {
 			Arr::set( $data, 'style.descendants.outer.background.image.0.source.type', $bg_type );
 		}
 
@@ -1070,7 +1067,6 @@ class CustomizerImporter {
 		}
 
 		return $parsed_blocks;
-
 	}
 
 	private function setColumnsWidth( $parsed_blocks, $text_column_width ) {
@@ -1168,7 +1164,6 @@ class CustomizerImporter {
 		}
 
 		return $parsed_blocks;
-
 	}
 
 	static function swapColumns( $row ) {

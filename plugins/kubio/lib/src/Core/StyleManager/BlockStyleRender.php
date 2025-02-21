@@ -3,10 +3,9 @@
 namespace Kubio\Core\StyleManager;
 
 use Kubio\Config;
-use Kubio\Core\Blocks\BlockBase;
 use Kubio\Core\LodashBasic;
 
-class BlockStyleRender extends  StyleRender {
+class BlockStyleRender extends StyleRender {
 	protected $block;
 	private $styleRef;
 
@@ -26,7 +25,6 @@ class BlockStyleRender extends  StyleRender {
 
 
 	public function setFlags() {
-
 	}
 
 

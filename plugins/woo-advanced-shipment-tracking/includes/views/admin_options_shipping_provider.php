@@ -24,8 +24,8 @@ if ( isset( $_GET['open'] ) && 'synch_providers' == $_GET['open'] ) {
 		<div class="provider_top">																					
 			<div class="search_section">				
 				<h2 class="shipping_carrier_heading"><?php esc_html_e( 'Shipping Carriers', 'woo-advanced-shipment-tracking' ); ?></h2>
-				<!--span class="dashicons dashicons-search search-icon"></span>
-				<input class="provider_search_bar" type="text" name="search_provider" id="search_provider" placeholder="<?php //esc_html_e( 'Search by carrier / country', 'woo-advanced-shipment-tracking' ); ?>"-->		
+				<span class="dashicons dashicons-search search-icon"></span>
+				<input class="provider_search_bar" type="text" name="search_provider" id="search_provider" placeholder="<?php esc_html_e( 'Search by carrier / country', 'woo-advanced-shipment-tracking' ); ?>">	
 			</div>			
 			
 			<button class="button button-primary" style="display:none;" id="delete_provider_bulk" data-remove="selected-page"><?php esc_html_e( 'Remove Selected', 'woo-advanced-shipment-tracking' ); ?></button>
@@ -76,7 +76,9 @@ if ( isset( $_GET['open'] ) && 'synch_providers' == $_GET['open'] ) {
 								<span class="dashicons dashicons-search search-carrier-icon"></span>
 								<input class="provider_search_bar" type="text" name="search_default_provider" id="search_default_provider" placeholder="<?php esc_html_e( 'Search by carrier / country', 'woo-advanced-shipment-tracking' ); ?>">		
 							</div>
-							<?php echo wp_kses_post( $this->shipping_pagination_fun( 1 ) ); ?>
+							<div class="default_privder_list">
+								<?php echo wp_kses_post( $this->shipping_pagination_fun( 1 ) ); ?>
+							</div>
 						</div>
 					</div>
 					<div class="top_search_section">

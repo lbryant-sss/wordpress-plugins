@@ -47,7 +47,6 @@ class Deactivation {
 		Flags::setSetting( "deactivation_backup_key.{$template}", $identifier );
 		$this->deleteBlockTemplates( 'wp_template' );
 		$this->deleteBlockTemplates( 'wp_template_part' );
-
 	}
 
 	private function deleteBlockTemplates( $post_type = 'wp_template' ) {
@@ -57,5 +56,4 @@ class Deactivation {
 			wp_delete_post( $entity->wp_id, true );
 		}
 	}
-
 }

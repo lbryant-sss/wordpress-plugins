@@ -22,7 +22,7 @@ class PostAuthorBioBlock extends BlockBase {
 		return array(
 			self::TEXT => array_merge(
 				array(
-					'innerHTML' => wp_kses_post($this->author_data_desc),
+					'innerHTML' => wp_kses_post( $this->author_data_desc ),
 				)
 			),
 		);
@@ -40,7 +40,6 @@ class PostAuthorBioBlock extends BlockBase {
 
 		return get_userdata( $authorId );
 	}
-
 }
 
 Registry::registerBlock(

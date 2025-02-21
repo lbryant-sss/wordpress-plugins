@@ -68,6 +68,7 @@ class WXRImporter extends ProteusImporter {
 					'post_status'    => array( 'publish' ),
 					'posts_per_page' => - 1,
 					'fields'         => 'ids',
+					// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 					'exclude'        => kubio_global_data_post_id(),
 				)
 			);
@@ -152,7 +153,6 @@ class WXRImporter extends ProteusImporter {
 
 			$this->blocksMapping( $import_id, $block['innerBlocks'] );
 		}
-
 	}
 
 	private function setHasBlockMapping( $import_id, $block_name ) {
@@ -194,7 +194,6 @@ class WXRImporter extends ProteusImporter {
 		}
 
 		return $data;
-
 	}
 
 	public function afterTermImport( $term_id, $data ) {
@@ -262,6 +261,7 @@ class WXRImporter extends ProteusImporter {
 	public function import_content( $import_file ) {
 
 		if ( strpos( ini_get( 'disable_functions' ), 'set_time_limit' ) === false ) {
+			// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 			set_time_limit( 300 );
 		}
 
@@ -413,7 +413,6 @@ class WXRImporter extends ProteusImporter {
 		}
 
 		return preg_replace( static::EMAIL_REGEXP, 'mail@example.com', $content );
-
 	}
 
 	protected function post_process() {
@@ -426,7 +425,6 @@ class WXRImporter extends ProteusImporter {
 
 		// execute post process blocks after the template parts were set
 		$this->postProccessBlocks();
-
 	}
 
 	// update nav menu items parent meta value
@@ -442,6 +440,7 @@ class WXRImporter extends ProteusImporter {
 				intval( $original )
 			);
 
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared
 			$wpdb->query( $query );
 		}
 	}
@@ -484,7 +483,6 @@ class WXRImporter extends ProteusImporter {
 				$this->new_ajax_request_maybe();
 			}
 		}
-
 	}
 
 	private function applyBlocksMapping( $blocks, $import_id ) {
@@ -548,7 +546,7 @@ class WXRImporter extends ProteusImporter {
 		);
 
 		// Add message to log file.
-		$this->logger->info( __( 'New AJAX call!', 'wordpress-importer' ) );
+		$this->logger->info( __( 'New AJAX call!', 'kubio' ) );
 
 		// Set the current importer state, so it can be continued on the next AJAX call.
 		$this->set_current_importer_data();
@@ -592,8 +590,14 @@ class WXRImporter extends ProteusImporter {
 				$found_term = term_exists( $term['slug'], $term['taxonomy'] );
 
 				if ( ! $found_term ) {
-					// translators %1$s = term slug, %2$s = taxonomy
-					$this->logger->info( sprintf( __( 'Create term `%1$s` in `%2$s`', 'kubio' ), $term['slug'], $term['taxonomy'] ) );
+					$this->logger->info(
+						sprintf(
+							// translators: %1$s = term slug, %2$s = taxonomy
+							__( 'Create term `%1$s` in `%2$s`', 'kubio' ),
+							$term['slug'],
+							$term['taxonomy']
+						)
+					);
 					$found_term = wp_insert_term(
 						$term['name'],
 						$term['taxonomy'],

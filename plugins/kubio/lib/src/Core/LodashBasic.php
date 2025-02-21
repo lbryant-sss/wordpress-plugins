@@ -21,7 +21,7 @@ function array_get_value( &$array, $parents = '', $default = null, $glue = '.' )
 	}
 
 	if ( ! is_array( $parents ) ) {
-		if($parents === null) {
+		if ( $parents === null ) {
 			$parents = '';
 		}
 		$parents = explode( $glue, $parents );
@@ -250,7 +250,7 @@ class LodashBasic {
 	}
 
 	static function kebabCase( $string ) {
-		return Str::kebab(  strval($string) );
+		return Str::kebab( strval( $string ) );
 	}
 
 	/**
@@ -298,5 +298,4 @@ class LodashBasic {
 
 		return $r;
 	}
-
 }

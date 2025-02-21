@@ -5,7 +5,6 @@ namespace Kubio\Blocks;
 use Kubio\Core\LodashBasic;
 use Kubio\Core\Blocks\BlockBase;
 use Kubio\Core\Registry;
-use Kubio\Core\Utils;
 
 
 class IconListItemBlock extends BlockBase {
@@ -83,7 +82,6 @@ class IconListItemBlock extends BlockBase {
 		$disabledItem = $this->getAttribute( 'disabledItem' );
 		return ! $disabledItem ? $this->getAttribute( 'link', null ) : null;
 	}
-
 }
 
 

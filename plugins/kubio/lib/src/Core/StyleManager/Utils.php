@@ -5,7 +5,6 @@ namespace Kubio\Core\StyleManager;
 use Kubio\Config;
 use Kubio\Core\LodashBasic;
 use function array_keys;
-use function array_merge_recursive;
 
 class Utils {
 
@@ -29,7 +28,7 @@ class Utils {
 		$componentStates = array();
 		self::walkStyle(
 			$style,
-			function( $data ) use ( &$componentStates ) {
+			function ( $data ) use ( &$componentStates ) {
 				$component = LodashBasic::get( $data, 'element' );
 				$media     = LodashBasic::get( $data, 'media' );
 				$state     = LodashBasic::get( $data, 'state' );

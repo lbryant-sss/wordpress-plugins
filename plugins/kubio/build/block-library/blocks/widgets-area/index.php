@@ -46,6 +46,3 @@ class WidgetAreaBlock extends BlockBase {
 }
 
 Registry::registerBlock( __DIR__, WidgetAreaBlock::class );
-
-
-

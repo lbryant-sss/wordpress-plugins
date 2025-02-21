@@ -15,7 +15,7 @@ function kubio_set_editor_ui_version() {
 //after the theme changes update the aiStage2 flag
 add_filter(
 	'after_switch_theme',
-	function() {
+	function () {
 		Flags::setSetting( 'aiStage2', apply_filters( 'kubio/ai_stage_2', false ) || ( defined( 'KUBIO_AI_STAGE_2' ) && KUBIO_AI_STAGE_2 ) );
 	}
 );
@@ -27,7 +27,7 @@ add_action( 'kubio/after_activation', '_kubio_set_fresh_site' );
 add_action( 'kubio/after_activation', 'flush_rewrite_rules' );
 add_action(
 	'kubio/after_activation',
-	function() {
+	function () {
 		Flags::setSetting( 'aiWizardDescriptionOptional', true );
 	}
 );

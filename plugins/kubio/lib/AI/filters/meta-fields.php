@@ -41,7 +41,6 @@ function kubio_register_kubio_ai_meta_fields() {
 			'update_callback' => 'kubio_set_post_kubio_ai_page_context',
 		)
 	);
-
 }
 
 add_action( 'rest_api_init', 'kubio_register_kubio_ai_meta_fields' );

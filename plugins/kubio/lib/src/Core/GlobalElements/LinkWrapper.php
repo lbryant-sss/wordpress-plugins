@@ -31,4 +31,3 @@ class LinkWrapper extends BlockElement {
 		return parent::__toString();
 	}
 }
-

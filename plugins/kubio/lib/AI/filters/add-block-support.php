@@ -15,4 +15,3 @@ function kubio_ai_add_block_support( $args, $block_name ) {
 
 
 add_filter( 'register_block_type_args', 'kubio_ai_add_block_support', 10, 2 );
-

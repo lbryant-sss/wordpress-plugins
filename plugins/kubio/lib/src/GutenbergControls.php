@@ -11,7 +11,7 @@ class GutenbergControls {
 
 	public function addGutenbergControls() {
 		add_theme_support( 'border' );
-		add_theme_support( 'custom-background', [] );
+		add_theme_support( 'custom-background', array() );
 		add_theme_support( 'link-color' );
 		add_theme_support( 'custom-spacing' );
 		add_theme_support( 'custom-units' );

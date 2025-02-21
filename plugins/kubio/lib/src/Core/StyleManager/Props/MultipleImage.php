@@ -2,9 +2,7 @@
 
 namespace Kubio\Core\StyleManager\Props;
 
-use Kubio\Config;
 use Kubio\Core\LodashBasic;
-use Kubio\Core\StyleManager\ParserUtils;
 
 class MultipleImage extends PropertyBase {
 	public function parse( $value, $options ) {
@@ -26,4 +24,3 @@ class MultipleImage extends PropertyBase {
 		return $style;
 	}
 }
-

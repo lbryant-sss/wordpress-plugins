@@ -76,7 +76,6 @@ function kubio_get_current_changeset_data( $path = '', $fallback = null ) {
 	}
 
 	return Arr::get( $changeset_data, $path, $fallback );
-
 }
 
 function kubio_prepare_changest_post() {
@@ -171,7 +170,7 @@ add_filter(
 add_action(
 	'wp_ajax_kubio-delete-changeset',
 	function () {
-		check_ajax_referer('kubio_ajax_nonce');
+		check_ajax_referer( 'kubio_ajax_nonce' );
 		$uuid = sanitize_text_field( Arr::get( $_REQUEST, 'uuid', false ) );
 
 		$changeset = kubio_get_changeset_post_by_uuid( $uuid );
@@ -179,7 +178,6 @@ add_action(
 		if ( $changeset && intval( $changeset->post_author ) === get_current_user_id() ) {
 			wp_delete_post( $changeset->ID, true );
 		}
-
 	}
 );
 
@@ -192,6 +190,7 @@ function kubio_get_template_part_id_by_slug( $slug ) {
 			'post_name__in'  => array( $slug ),
 			'posts_per_page' => 1,
 			'no_found_rows'  => true,
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 			'tax_query'      => array(
 				array(
 					'taxonomy' => 'wp_theme',
@@ -224,6 +223,7 @@ require_once __DIR__ . '/site-data-preview.php';
 
 
 function kubio_get_preview_uuid() {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	$uuid = sanitize_text_field( Arr::get( $_REQUEST, 'kubio-preview', false ) );
 	$uuid = $uuid === 'saved' ? false : $uuid;
 
@@ -231,6 +231,7 @@ function kubio_get_preview_uuid() {
 }
 
 function kubio_is_page_preview() {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	return Arr::has( $_REQUEST, 'kubio-preview' );
 }
 
@@ -264,7 +265,6 @@ add_action(
 			do_action( 'kubio/preview/handle_custom_data', $custom_data );
 
 		}
-
 	}
 );
 
@@ -275,5 +275,3 @@ function kubio_enqueue_preview_url_maintainer() {
 		wp_add_inline_script( 'kubio-maintain-preview-url', 'kubioMaintainPreviewURLBase="' . site_url() . '"', 'before' );
 	}
 }
-
-

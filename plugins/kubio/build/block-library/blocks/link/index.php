@@ -47,11 +47,10 @@ class LinkBlock extends BlockBase {
 			),
 
 			self::TEXT => array(
-				'innerHTML' => wp_kses_post($text),
+				'innerHTML' => wp_kses_post( $text ),
 			),
 		);
 	}
-
 }
 
 Registry::registerBlock( __DIR__, LinkBlock::class );

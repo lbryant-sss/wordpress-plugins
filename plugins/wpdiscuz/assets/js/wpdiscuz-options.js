@@ -688,10 +688,13 @@ jQuery(document).ready(function ($) {
                 $('html, body').animate({
                     scrollTop: wpdopt.offset().top - 32
                 }, 500, function () {
-                    wpdopt.css('background-color', '#ebebeb');
+                    wpdopt.css({
+                        'background-color': 'rgba(7, 178, 144, 0.3)'
+                    });
                     setTimeout(function () {
-                        wpdopt.css('background-color', 'transparent');
-                    }, 500);
+                        // wpdopt.css('background-color', 'transparent');
+                        wpdopt.removeAttr('style');
+                    }, 2000);
                 });
             }
         }

@@ -18,7 +18,7 @@ function kubio_template_locate( $template, $type, $templates ) {
 
 	if ( $type === 'frontpage' && get_option( 'show_on_front' ) !== 'page' ) {
 		$type      = 'home';
-		$templates = array(  'home.php', 'index.php', );
+		$templates = array( 'home.php', 'index.php' );
 
 	}
 
@@ -208,10 +208,13 @@ function kubio_create_entity_for_template_part_block( $block ) {
 					'post_type'      => 'wp_template_part',
 					'post_status'    => array( 'publish' ),
 					'name'           => $block['attrs']['slug'],
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query, WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 					'meta_key'       => 'theme',
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 					'meta_value'     => $block['attrs']['theme'],
 					'posts_per_page' => 1,
 					'no_found_rows'  => true,
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 					'tax_query'      => array(
 						array(
 							'taxonomy' => 'wp_theme',
@@ -221,7 +224,7 @@ function kubio_create_entity_for_template_part_block( $block ) {
 					),
 				)
 			);
-			$template_part_post  = $template_part_query->have_posts() ? $template_part_query->next_post() : null;
+			$template_part_post = $template_part_query->have_posts() ? $template_part_query->next_post() : null;
 			if ( $template_part_post && 'auto-draft' !== $template_part_post->post_status ) {
 				$template_part_id = $template_part_post->ID;
 			} else {

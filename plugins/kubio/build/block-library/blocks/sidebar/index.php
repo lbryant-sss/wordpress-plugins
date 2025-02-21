@@ -4,7 +4,6 @@ namespace Kubio\Blocks;
 
 use Kubio\Core\Blocks\TemplatePartBlockBase;
 use Kubio\Core\Registry;
-use Kubio\Core\StyleManager\DynamicStyles;
 
 class SidebarTemplatePart extends TemplatePartBlockBase {
 

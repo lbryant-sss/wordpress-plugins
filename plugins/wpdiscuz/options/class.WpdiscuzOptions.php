@@ -352,6 +352,7 @@ class WpdiscuzOptions implements WpDiscuzConstants {
         $this->content["wmuThumbnailSizes"]       = isset($options[self::TAB_CONTENT]["wmuThumbnailSizes"]) ? array_filter($options[self::TAB_CONTENT]["wmuThumbnailSizes"]) : $defaultOptions[self::TAB_CONTENT]["wmuThumbnailSizes"];
         $this->content["wmuIsThumbnailsViaCron"]  = isset($options[self::TAB_CONTENT]["wmuIsThumbnailsViaCron"]) ? $options[self::TAB_CONTENT]["wmuIsThumbnailsViaCron"] : $defaultOptions[self::TAB_CONTENT]["wmuIsThumbnailsViaCron"];
         /* live */
+        $this->live["userInteractionCheck"]        = isset($options[self::TAB_LIVE]["userInteractionCheck"]) ? $options[self::TAB_LIVE]["userInteractionCheck"] : $defaultOptions[self::TAB_LIVE]["userInteractionCheck"];
         $this->live["enableBubble"]                = isset($options[self::TAB_LIVE]["enableBubble"]) ? $options[self::TAB_LIVE]["enableBubble"] : $defaultOptions[self::TAB_LIVE]["enableBubble"];
         $this->live["bubbleLiveUpdate"]            = isset($options[self::TAB_LIVE]["bubbleLiveUpdate"]) ? $options[self::TAB_LIVE]["bubbleLiveUpdate"] : $defaultOptions[self::TAB_LIVE]["bubbleLiveUpdate"];
         $this->live["bubbleLocation"]              = isset($options[self::TAB_LIVE]["bubbleLocation"]) ? $options[self::TAB_LIVE]["bubbleLocation"] : $defaultOptions[self::TAB_LIVE]["bubbleLocation"];
@@ -853,6 +854,7 @@ class WpdiscuzOptions implements WpDiscuzConstants {
                 "wmuIsThumbnailsViaCron"  => $this->content["wmuIsThumbnailsViaCron"],
             ],
             self::TAB_LIVE           => [
+                "userInteractionCheck"        => $this->live["userInteractionCheck"],
                 "enableBubble"                => $this->live["enableBubble"],
                 "bubbleLiveUpdate"            => $this->live["bubbleLiveUpdate"],
                 "bubbleLocation"              => $this->live["bubbleLocation"],
@@ -1120,6 +1122,7 @@ class WpdiscuzOptions implements WpDiscuzConstants {
                 "wmuIsThumbnailsViaCron"  => 1,
             ],
             self::TAB_LIVE           => [
+                "userInteractionCheck"        => 1,
                 "enableBubble"                => 0,
                 "bubbleLiveUpdate"            => 0,
                 "bubbleLocation"              => "content_left",
@@ -1242,6 +1245,7 @@ class WpdiscuzOptions implements WpDiscuzConstants {
         $jsArgs["commentFormView"]              = $this->form["commentFormView"];
         $jsArgs["enableDropAnimation"]          = $this->form["enableDropAnimation"];
         $jsArgs["isNativeAjaxEnabled"]          = $this->general["isNativeAjaxEnabled"];
+        $jsArgs["userInteractionCheck"]         = $this->live["userInteractionCheck"];
         $jsArgs["enableBubble"]                 = $this->live["enableBubble"];
         $jsArgs["bubbleLiveUpdate"]             = $this->live["bubbleLiveUpdate"];
         $jsArgs["bubbleHintTimeout"]            = $this->live["bubbleHintTimeout"];
@@ -1283,6 +1287,10 @@ class WpdiscuzOptions implements WpDiscuzConstants {
         $jsArgs["wmuKeyImages"]            = self::KEY_IMAGES;
         $jsArgs["wmuSingleImageWidth"]     = $this->content["wmuSingleImageWidth"];
         $jsArgs["wmuSingleImageHeight"]    = $this->content["wmuSingleImageHeight"];
+
+        ob_start();
+        include_once WPDISCUZ_DIR_PATH . '/utils/layouts/media-preview/preview.php';
+        $jsArgs["previewTemplate"] = ob_get_clean();
 
         if ($currentUserId = get_current_user_id()) {
             $jsArgs["isUserRated"] = $this->dbManager->isUserRated($currentUserId, "", $post->ID);
@@ -1623,6 +1631,7 @@ class WpdiscuzOptions implements WpDiscuzConstants {
                 $this->content["wmuThumbnailSizes"]       = isset($_POST[self::TAB_CONTENT]["wmuThumbnailSizes"]) && is_array($_POST[self::TAB_CONTENT]["wmuThumbnailSizes"]) && ($sizes = array_filter($_POST[self::TAB_CONTENT]["wmuThumbnailSizes"])) ? $sizes : [];
                 $this->content["wmuIsThumbnailsViaCron"]  = isset($_POST[self::TAB_CONTENT]["wmuIsThumbnailsViaCron"]) ? absint($_POST[self::TAB_CONTENT]["wmuIsThumbnailsViaCron"]) : 0;
             } else if (self::TAB_LIVE === $_POST["wpd_tab"]) {
+                $this->live["userInteractionCheck"]        = isset($_POST[self::TAB_LIVE]["userInteractionCheck"]) ? absint($_POST[self::TAB_LIVE]["userInteractionCheck"]) : 0;
                 $this->live["enableBubble"]                = isset($_POST[self::TAB_LIVE]["enableBubble"]) ? absint($_POST[self::TAB_LIVE]["enableBubble"]) : 0;
                 $this->live["bubbleLiveUpdate"]            = isset($_POST[self::TAB_LIVE]["bubbleLiveUpdate"]) ? absint($_POST[self::TAB_LIVE]["bubbleLiveUpdate"]) : 0;
                 $this->live["bubbleLocation"]              = isset($_POST[self::TAB_LIVE]["bubbleLocation"]) ? trim(sanitize_text_field($_POST[self::TAB_LIVE]["bubbleLocation"])) : "content_left";
@@ -3945,6 +3954,13 @@ class WpdiscuzOptions implements WpDiscuzConstants {
                     "status"         => "new",
                     "file_path"      => WPDISCUZ_DIR_PATH . "/options/options-layouts/html-" . WpdiscuzCore::TAB_LIVE . ".php",
                     "options"        => [
+                        "userInteractionCheck"        => [
+                            "label"                => esc_html__("User Interaction Check", "wpdiscuz"),
+                            "label_original"       => "User Interaction Check",
+                            "description"          => sprintf(__("<span>If enabled, the plugin will check when the user last interacted with the website and automatically determine whether to allow 'live update' requests.</span><br><br><span>For example:<br><br>The requests of the live update will be blocked if the user last interacted 31 seconds ago and %s is set to 1 minute.</span>", "wpdiscuz"), "<a href='" . admin_url('admin.php?page=' . WpDiscuzConstants::PAGE_SETTINGS . '&wpd_tab=' . WpDiscuzConstants::TAB_LIVE) . "#wpdOpt-commentListUpdateTimer'>the timer frequency</a>"),
+                            "description_original" => "If enabled, the plugin will check when the user last interacted with the website and automatically determine whether to allow 'live update' requests. For example: The requests of the live update will be blocked if the user last interacted 31 seconds ago and the timer frequency is set to 1 minute.",
+                            "docurl"               => "https://wpdiscuz.com/docs/wpdiscuz-7/plugin-settings/live-commenting-and-notifications/#comment-user-interaction-check",
+                        ],
                         "bubble"                      => [
                             "label"                => esc_html__("Comment Bubble", "wpdiscuz"),
                             "label_original"       => "Comment Bubble",

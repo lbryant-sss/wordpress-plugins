@@ -226,5 +226,4 @@ class Kubio_Nav_Menu_Walker extends \Walker_Nav_Menu {
 		}
 		$output .= "</li>{$n}";
 	}
-
 }

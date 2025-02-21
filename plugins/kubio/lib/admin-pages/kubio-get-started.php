@@ -30,10 +30,27 @@ function kubio_get_started_page_tabs() {
 		);
 	}
 
-	return apply_filters(
+	$tabs = apply_filters(
 		'kubio/admin-page/info_page_tabs',
 		$default_tabs
 	);
+
+	if ( apply_filters( 'kubio/admin-page/upgrade_to_pro_tab', true ) ) {
+		$tabs = array_merge(
+			$tabs,
+			array(
+				'pro-upgrade' => array(
+					'type'        => 'page',
+					'label'       => __( 'Upgrade to PRO', 'kubio' ),
+					'tab-partial' => 'upgrade-pro.php',
+					'subtitle'    => __( 'The first block-based WordPress builder', 'kubio' ),
+					'class'       => 'tab_get_pro',
+				),
+			)
+		);
+	}
+
+	return $tabs;
 }
 
 
@@ -45,6 +62,7 @@ function kubio_get_started_page() {
 	kubio_print_admin_page_start();
 	$kubio_get_started_page_tabs = kubio_get_started_page_tabs();
 
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	$current_tab      = sanitize_key( Arr::get( $_REQUEST, 'tab', 'get-started' ) );
 	$current_tab_data = Arr::get( $kubio_get_started_page_tabs, $current_tab, null );
 

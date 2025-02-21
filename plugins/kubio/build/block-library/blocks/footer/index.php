@@ -5,7 +5,6 @@ namespace Kubio\Blocks;
 use Kubio\Core\Blocks\TemplatePartBlockBase;
 use Kubio\Core\Registry;
 use Kubio\Core\Utils;
-use Kubio\Core\StyleManager\DynamicStyles;
 
 class FooterTemplatePart extends TemplatePartBlockBase {
 

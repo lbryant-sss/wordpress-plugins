@@ -9,8 +9,8 @@ use Kubio\Core\Utils;
 class MenuItemsBlock extends BlockBase {
 	const BLOCK_NAME        = 'kubio/menu-items';
 	const PARENT_MENU_ARROW = '<svg class="kubio-menu-item-icon" role="img" viewBox="0 0 320 512">' .
-							  '	<path d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>' .
-							  '</svg>';
+								'	<path d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>' .
+								'</svg>';
 
 
 	private static $instances = array();
@@ -135,7 +135,6 @@ class MenuItemsBlock extends BlockBase {
 		static::$instances[ $instance_key ] = $menu_content;
 
 		return $menu_content;
-
 	}
 
 	public function fallback() {

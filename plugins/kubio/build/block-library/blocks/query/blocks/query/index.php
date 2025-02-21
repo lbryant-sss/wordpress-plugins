@@ -14,4 +14,3 @@ Registry::registerBlock(
 		'metadata' => './block.json',
 	)
 );
-

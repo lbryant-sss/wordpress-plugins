@@ -119,6 +119,7 @@ function kubio_filter_template_part_area( $type ) {
 		$type,
 		WP_TEMPLATE_PART_AREA_UNCATEGORIZED
 	);
+	// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
 	trigger_error( wp_kses_post( $warning_message ), E_USER_NOTICE );
 	return WP_TEMPLATE_PART_AREA_UNCATEGORIZED;
 }

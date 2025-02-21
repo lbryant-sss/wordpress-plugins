@@ -34,41 +34,41 @@ class StyleParser {
 	public static $instance = null;
 
 	protected function __construct() {
-		 $properties = array(
-			 new Background( 'background' ),
-			 new TBLR( 'padding' ),
-			 new TBLR( 'margin' ),
-			 new ColumnWidth( 'columnWidth' ),
-			 new CustomHeight( 'customHeight' ),
-			 new BoxShadow( 'boxShadow' ),
-			 new TextShadow( 'textShadow' ),
-			 new Border( 'border' ),
-			 new Typography( 'typography' ),
-			 new Size( 'size' ),
-			 new Transform( 'transform' ),
-			 new Opacity( 'opacity' ),
-			 new Gap( 'gap' ),
-			 new JustifyContent( 'justifyContent' ),
-			 new Width( 'width' ),
-			 new Height( 'height' ),
-			 new Stroke( 'stroke' ),
-			 new MultipleImage( 'multipleImage' ),
-			 new UnitValuePercentage( 'top' ),
-			 new UnitValuePercentage( 'right' ),
-			 new UnitValuePercentage( 'bottom' ),
-			 new UnitValuePercentage( 'left' ),
-			 new MaxWidth( 'maxWidth' ),
-			 new UnitValuePx( 'maxHeight' ),
-			 new UnitValuePx( 'minHeight' ),
-			 new ObjectCss( 'object' ),
-			 new Animation( 'animation' ),
-			 new Transition( 'transition' ),
-		 );
+		$properties = array(
+			new Background( 'background' ),
+			new TBLR( 'padding' ),
+			new TBLR( 'margin' ),
+			new ColumnWidth( 'columnWidth' ),
+			new CustomHeight( 'customHeight' ),
+			new BoxShadow( 'boxShadow' ),
+			new TextShadow( 'textShadow' ),
+			new Border( 'border' ),
+			new Typography( 'typography' ),
+			new Size( 'size' ),
+			new Transform( 'transform' ),
+			new Opacity( 'opacity' ),
+			new Gap( 'gap' ),
+			new JustifyContent( 'justifyContent' ),
+			new Width( 'width' ),
+			new Height( 'height' ),
+			new Stroke( 'stroke' ),
+			new MultipleImage( 'multipleImage' ),
+			new UnitValuePercentage( 'top' ),
+			new UnitValuePercentage( 'right' ),
+			new UnitValuePercentage( 'bottom' ),
+			new UnitValuePercentage( 'left' ),
+			new MaxWidth( 'maxWidth' ),
+			new UnitValuePx( 'maxHeight' ),
+			new UnitValuePx( 'minHeight' ),
+			new ObjectCss( 'object' ),
+			new Animation( 'animation' ),
+			new Transition( 'transition' ),
+		);
 
-		 $this->groups = array();
-		 foreach ( $properties as $property ) {
-			 $this->addProperty( $property->name, $property );
-		 }
+		$this->groups = array();
+		foreach ( $properties as $property ) {
+			$this->addProperty( $property->name, $property );
+		}
 	}
 
 	public static function getInstance() {
@@ -143,6 +143,5 @@ class StyleParser {
 		Arr::forget( $obj, $props_to_unset );
 
 		return $obj;
-
 	}
 }

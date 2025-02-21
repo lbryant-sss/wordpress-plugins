@@ -14,10 +14,9 @@ function kubio_plugin_activated() {
 
 function kubio_plugin_deactivated() {
 
-	$active_plugins        = get_option( 'active_plugins' );
-	$pro_builder_is_active = in_array( 'kubio-pro/plugin.php', $active_plugins );
+	$run_deactivation = apply_filters( 'kubio/run_deactivation_hooks', false );
 
-	if ( ! kubio_is_pro() && $pro_builder_is_active ) {
+	if ( ! $run_deactivation ) {
 		return;
 	}
 
@@ -34,7 +33,6 @@ function kubio_enable_block_support() {
 	if ( ! current_theme_supports( 'align-full' ) ) {
 		add_theme_support( 'align-full' );
 	}
-
 }
 
 function kubio_plugin_init() {

@@ -17,8 +17,8 @@ class Config {
 	public static $config_types = array();
 
 
-	private static  $medias_by_id = null;
-	private static  $states_by_id = null;
+	private static $medias_by_id = null;
+	private static $states_by_id = null;
 
 	public static function load() {
 		$types_f            = KUBIO_ROOT_DIR . 'build/types.json';
@@ -50,7 +50,6 @@ class Config {
 
 		static::$medias_by_id = $result;
 		return static::$medias_by_id;
-
 	}
 
 	public static function statesById() {

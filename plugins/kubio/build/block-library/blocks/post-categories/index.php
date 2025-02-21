@@ -22,10 +22,9 @@ class PostCategoriesBlock extends BlockBase {
 			),
 			self::PLACEHOLDER => array(
 				'shouldRender' => empty( $post_tags ) ? true : false,
-				'innerHTML'    => wp_kses_post($this->getAttribute( 'placeholder' )),
+				'innerHTML'    => wp_kses_post( $this->getAttribute( 'placeholder' ) ),
 			),
 		);
-
 	}
 
 	function renderCategoriesContent( $post_tags ) {
@@ -43,12 +42,12 @@ class PostCategoriesBlock extends BlockBase {
 				if ( $i < $count - 1 ) {
 					$output .= '<span class="separator">' . $this->getAttribute( 'separator' ) . '</span>';
 				}
-				$i++;
+				++$i;
 			}
 
 			$output = trim( $output );
 
-			return wp_kses_post($output);
+			return wp_kses_post( $output );
 		}
 	}
 }

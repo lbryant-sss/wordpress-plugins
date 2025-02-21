@@ -32,6 +32,7 @@ class DemoSites {
 		$fse_base_query = array(
 			'post_status'    => array( 'publish' ),
 			'posts_per_page' => - 1,
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 			'tax_query'      => array(
 				array(
 					'taxonomy' => 'wp_theme',
@@ -92,6 +93,7 @@ class DemoSites {
 		$fse_base_query = array(
 			'post_status'    => array( 'publish' ),
 			'posts_per_page' => - 1,
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 			'tax_query'      => array(
 				array(
 					'taxonomy' => 'wp_theme',
@@ -250,7 +252,7 @@ class DemoSites {
 
 		function get_post_list_content( $post_list, $extra_columns = array() ) {
 			return array_map(
-				function( $post ) use ( $extra_columns ) {
+				function ( $post ) use ( $extra_columns ) {
 					$extra_content = array();
 
 					foreach ( $extra_columns as $key => $post_key ) {
@@ -325,6 +327,7 @@ class DemoSites {
 	public function installPlugin() {
 		DemoSitesHelpers::verifyAjaxCall();
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$slug = sanitize_text_field( Arr::get( $_REQUEST, 'slug', null ) );
 
 		if ( empty( $slug ) ) {
@@ -344,6 +347,7 @@ class DemoSites {
 	public function activatePlugin() {
 		DemoSitesHelpers::verifyAjaxCall();
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$slug = sanitize_text_field( Arr::get( $_REQUEST, 'slug', null ) );
 
 		if ( empty( $slug ) ) {
@@ -359,5 +363,4 @@ class DemoSites {
 			wp_send_json_success();
 		}
 	}
-
 }

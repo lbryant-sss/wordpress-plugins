@@ -6,7 +6,7 @@ msgstr ""
 "(latest release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/customer-reviews-"
 "woocommerce\n"
-"POT-Creation-Date: 2025-02-19T01:13:12+00:00\n"
+"POT-Creation-Date: 2025-02-21T00:17:53+00:00\n"
 "PO-Revision-Date: 2018-11-24 18:45+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -145,7 +145,7 @@ msgstr ""
 
 #: includes/analytics/class-cr-reminders-log.php:415
 #: includes/analytics/class-cr-reviews-top-charts.php:254
-#: includes/reminders/class-cr-reminders-list-table.php:71
+#: includes/reminders/class-cr-reminders-list-table.php:69
 msgid "Automatic"
 msgstr ""
 
@@ -1685,8 +1685,8 @@ msgstr ""
 #: includes/import-export/class-cr-export-reviews.php:159
 #: includes/qna/class-cr-admin-menu-qna.php:187
 #: includes/reminders/class-cr-manual.php:391
-#: includes/reminders/class-cr-reminders-list-table.php:196
-#: includes/reminders/class-cr-reminders-list-table.php:387
+#: includes/reminders/class-cr-reminders-list-table.php:194
+#: includes/reminders/class-cr-reminders-list-table.php:398
 #: includes/reviews/class-cr-admin-menu-reviews.php:246
 #: includes/settings/class-cr-settings-forms-rating.php:186
 #: includes/settings/class-cr-settings-forms-rating.php:213
@@ -2269,7 +2269,7 @@ msgid "No questions / answers found."
 msgstr ""
 
 #: includes/qna/class-cr-qna-list-table.php:370
-#: includes/reminders/class-cr-reminders-list-table.php:212
+#: includes/reminders/class-cr-reminders-list-table.php:210
 #: includes/reminders/class-cr-reminders-log-table.php:91
 #: includes/reviews/class-cr-reviews-list-table.php:447
 msgid "Customer"
@@ -2508,11 +2508,11 @@ msgstr ""
 msgid "Review reminder was canceled by a manual action"
 msgstr ""
 
-#: includes/reminders/class-cr-admin-menu-reminders.php:315
+#: includes/reminders/class-cr-admin-menu-reminders.php:311
 msgid "Reminder opened"
 msgstr ""
 
-#: includes/reminders/class-cr-admin-menu-reminders.php:321
+#: includes/reminders/class-cr-admin-menu-reminders.php:317
 msgid "Form opened"
 msgstr ""
 
@@ -2805,40 +2805,40 @@ msgid "Not opened yet"
 msgstr ""
 
 #. translators: please keep '%1$s' and '%2$s' as is
-#: includes/reminders/class-cr-reminders-list-table.php:178
+#: includes/reminders/class-cr-reminders-list-table.php:176
 msgid ""
 "The plugin is configured to use CR Cron for scheduling review reminders "
 "(%1$s'Reminders Scheduler' setting%2$s)."
 msgstr ""
 
 #. translators: please keep '%1$s' and '%2$s' as is
-#: includes/reminders/class-cr-reminders-list-table.php:181
+#: includes/reminders/class-cr-reminders-list-table.php:179
 #: includes/reminders/class-cr-reminders-log-table.php:73
 msgid ""
 "Please log in to your account on %1$sCusRev website%2$s to view and manage "
 "the reminders."
 msgstr ""
 
-#: includes/reminders/class-cr-reminders-list-table.php:183
+#: includes/reminders/class-cr-reminders-list-table.php:181
 msgid "There are currently no scheduled review reminders"
 msgstr ""
 
-#: includes/reminders/class-cr-reminders-list-table.php:197
-#: includes/reminders/class-cr-reminders-list-table.php:389
+#: includes/reminders/class-cr-reminders-list-table.php:195
+#: includes/reminders/class-cr-reminders-list-table.php:400
 msgid "Send Now"
 msgstr ""
 
-#: includes/reminders/class-cr-reminders-list-table.php:211
+#: includes/reminders/class-cr-reminders-list-table.php:209
 msgid "Order Number"
 msgstr ""
 
-#: includes/reminders/class-cr-reminders-list-table.php:213
+#: includes/reminders/class-cr-reminders-list-table.php:211
 #: templates/reminders-admin-page.php:22 admin/build/index.js:1
 #: admin/src/Reminders.jsx:32
 msgid "Scheduled"
 msgstr ""
 
-#: includes/reminders/class-cr-reminders-list-table.php:214
+#: includes/reminders/class-cr-reminders-list-table.php:212
 #: includes/reminders/class-cr-reminders-log-table.php:92
 #: includes/settings/class-cr-settings-forms.php:514
 #: includes/settings/class-cr-settings-forms.php:628
@@ -2847,13 +2847,25 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: includes/reminders/class-cr-reminders-list-table.php:215
+#: includes/reminders/class-cr-reminders-list-table.php:213
 msgid "Actions"
 msgstr ""
 
-#: includes/reminders/class-cr-reminders-list-table.php:301
+#: includes/reminders/class-cr-reminders-list-table.php:299
 #: includes/reminders/class-cr-reminders-log-table.php:157
 msgid "Select reminder"
+msgstr ""
+
+#: includes/reminders/class-cr-reminders-list-table.php:346
+msgid "The reminder is overdue"
+msgstr ""
+
+#: includes/reminders/class-cr-reminders-list-table.php:348
+msgid ""
+"The reminder was not sent as scheduled, which may indicate an issue with WP "
+"Cron on this website. Try refreshing the page 2-3 times to see if the issue "
+"resolves. If the problem persists, contact your web hosting provider and "
+"request that WP Cron be enabled on your website."
 msgstr ""
 
 #. translators: please keep '%1$s' and '%2$s' as is
