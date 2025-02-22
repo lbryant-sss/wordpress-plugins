@@ -94,10 +94,10 @@ class ACUI_Homepage{
 						<th scope="row"><label for="role"><?php _e( 'Default role', 'import-users-from-csv-with-meta' ); ?></label></th>
 						<td>
 						<?php ACUIHTML()->select( array(
-                            'options' => ACUI_Helper::get_editable_roles( false ),
+                            'options' => ACUI_Helper::get_editable_roles(),
                             'name' => 'role[]',
                             'show_option_all' => false,
-                            'show_option_none' => false,
+                            'show_option_none' => true,
 							'multiple' => true,
 							'selected' => is_array( $settings->get( 'role' ) ) ? $settings->get( 'role' ) : array( $settings->get( 'role' ) ),
 							'style' => 'width:100%;'

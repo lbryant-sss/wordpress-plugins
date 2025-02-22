@@ -146,7 +146,7 @@ class WPCaptcha_AJAX extends WPCaptcha
     static function verify_captcha($type, $site_key, $secret_key, $response)
     {
         if ($type == 'builtin') {
-            if (isset($_COOKIE['wpcaptcha_captcha']) && $response === $_COOKIE['wpcaptcha_captcha']) {
+            if (isset($_COOKIE['wpcaptcha_captcha']) && hash_hmac('sha256', $response, AUTH_SALT) === $_COOKIE['wpcaptcha_captcha']) {
                 return true;
             } else {
                 return new WP_Error('wpcaptcha_builtin_captcha_failed', __("<strong>ERROR</strong>: captcha verification failed.<br /><br />Please try again.", 'advanced-google-recaptcha'));

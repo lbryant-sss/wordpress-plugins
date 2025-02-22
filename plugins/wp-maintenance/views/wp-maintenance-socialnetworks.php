@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) or die( 'Not allowed' );
 $messageUpdate = 0;
 
 /* Update des paramètres */
-if( isset($_POST['action']) && $_POST['action'] == 'update_footer' && wp_verify_nonce($_POST['security-socialn'], 'valid-socialn') ) {
+if( isset($_POST['action']) && $_POST['action'] == 'socialnetworks' && wp_verify_nonce($_POST['security-socialn'], 'valid-socialn') ) {
    
     if( isset($_POST["wpso"]['reset']) && $_POST["wpso"]['reset'] ==1 ) {
         unset($_POST["wp_maintenance_list_socialnetworks"]);
@@ -23,7 +23,11 @@ if( isset($_POST['action']) && $_POST['action'] == 'update_footer' && wp_verify_
 $paramSocial = get_option('wp_maintenance_list_socialnetworks');
 if(get_option('wp_maintenance_settings_socialnetworks')) { extract(get_option('wp_maintenance_settings_socialnetworks')); }
 $paramSocialOption = get_option('wp_maintenance_settings_socialnetworks');
-
+if( array_key_exists('tiktok', $paramSocial) ) {
+    
+} else {
+    $paramSocial = array_merge($paramSocial, array('tiktok' => ''));
+}
 ?>
 <script>
   jQuery( function() {
@@ -57,7 +61,7 @@ $paramSocialOption = get_option('wp_maintenance_settings_socialnetworks');
         <div class="wp-maintenance-tab-content wp-maintenance-tab-content-welcome" id="wp-maintenance-tab-content">
 
             <form method="post" action="" id="valide_settings" name="valide_settings">
-                <input type="hidden" name="action" value="update_footer" />
+                <input type="hidden" name="action" value="update_socialnetworks" />
                 <?php wp_nonce_field('valid-socialn', 'security-socialn'); ?>
                 
                 <!-- LINK TO LOGIN -->

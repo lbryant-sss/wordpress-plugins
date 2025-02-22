@@ -3,9 +3,9 @@ Contributors: daveshine, p4fbradjohnson, deckerweb, wpautobahn, pacotole, creapu
 Donate link: https://github.com/sponsors/creame
 Tags: elementor, polylang, multilingual, language switcher, languages, templates, widget, finder, dynamic tags
 Requires at least: 5.4
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 2.4.5
+Stable tag: 2.4.6
 License: GPL-2.0-or-later
 License URI: https://opensource.org/licenses/GPL-2.0
 
@@ -199,6 +199,9 @@ There are quite a few:
 
 
 == Changelog ==
+
+= 2.4.6 =
+* Bump tested versions WordPress 6.7 & Elementor 3.27.
 
 = 2.4.5 =
 * Bump tested versions WordPress 6.6 & Elementor 3.24.

@@ -111,4 +111,20 @@ abstract class amePersistentModule extends ameModule {
 	protected function getSettingAliases() {
 		return [];
 	}
+
+	/**
+	 * Is it meaningful and safe to export the module settings?
+	 *
+	 * Defaults to true. Subclasses should override this if necessary. Some modules have settings
+	 * that only make sense on the current site, and exporting them either wouldn't work or would
+	 * break things on the target site.
+	 *
+	 * Note that the module doesn't have to implement any export functionality to return true here.
+	 * This method is intended for external code that wants to know if the module should be exported.
+	 *
+	 * @return bool
+	 */
+	public function isSuitableForExport() {
+		return true;
+	}
 }

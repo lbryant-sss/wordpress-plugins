@@ -145,7 +145,7 @@ use Meta_Tag_Manager\Schema;
 		$image_id = empty($schema['logo']) ? get_theme_mod( 'custom_logo' ) : $schema['logo'];
 		$image = intval( $image_id ) > 0 ? wp_get_attachment_image( $image_id ) : '';
 		?>
-		<tr class="mtm-image-upload" data-action="mtm_get_logo_url">
+		<tr class="mtm-image-upload" data-action="mtm_get_logo_url" data-nonce="<?php echo wp_create_nonce('mtm_get_logo_url'); ?>">
 			<th><?php esc_html_e( 'Logo' ); ?></th>
 			<td>
 				<div class="mtm-image-upload-preview"><?php echo $image; ?></div>

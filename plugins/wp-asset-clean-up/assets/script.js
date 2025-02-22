@@ -360,7 +360,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         $wpacuFileSizeArea = $wpacuCurrentTarget.next();
                         $wpacuFileSizeArea.show();
 
-                        if (wpacuRemoteFile.includes('/?')) { // Dynamic CSS/JS
+                        if (wpacu_object.current_host_same_as_host_from_target_url && wpacuRemoteFile.includes('/?')) { // Dynamic CSS/JS
                             $.get(wpacuRemoteFile, {}, function (output, textStatus, request) {
                                 if (textStatus !== 'success') {
                                     return 'N/A';
@@ -620,7 +620,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         'force_manage_dash' : wpacu_object.force_manage_dash,
                         'is_for_singular'   : false, // e.g. Post ID, Post Title
                         'wpacu_nonce'       : wpacu_object.wpacu_ajax_get_loaded_assets_nonce,
-                        'time_r'            : new Date().getTime()
+                        'wpacu_time_r'      : new Date().getTime()
                     };
 
                     if ($.fn.wpAssetCleanUp().getParameterByName('page') === wpacu_object.plugin_prefix + '_assets_manager') {
@@ -671,7 +671,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             'action'      : wpacu_object.plugin_prefix + '_load_page_restricted_area',
                             'post_id'     : wpacu_object.post_id,
                             'wpacu_nonce' : wpacu_object.wpacu_ajax_load_page_restricted_area_nonce,
-                            'time_r'      : new Date().getTime()
+                            'wpacu_time_r'      : new Date().getTime()
                         };
 
                         $.post(wpacu_object.ajax_url, dataLoadPageRestrictedArea, function (response) {
@@ -692,12 +692,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (wpacu_object.dom_get_type === 'direct') {
                         dataDirect[wpacu_object.plugin_prefix + '_load']   = 1;
-                        dataDirect[wpacu_object.plugin_prefix + '_time_r'] = new Date().getTime();
+                        dataDirect['wpacu_time_r'] = new Date().getTime();
 
                         $.ajax({
                             method: 'GET',
                             url: wpacu_object.page_url,
                             data: dataDirect,
+                            xhrFields: { withCredentials: true }, // Ensures authentication cookies are sent
                             cache: false,
                             complete: function (xhr, textStatus) {
                                 if (xhr.statusText === 'error') {
@@ -742,7 +743,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             'wpacu_taxonomy':     wpacu_object.wpacu_taxonomy,
                             'force_manage_dash':  wpacu_object.force_manage_dash,
                             'wpacu_nonce':        wpacu_object.wpacu_ajax_get_loaded_assets_nonce,
-                            'time_r':             new Date().getTime()
+                            'wpacu_time_r':       new Date().getTime()
                         };
 
                         if ($.fn.wpAssetCleanUp().getParameterByName('page') === wpacu_object.plugin_prefix + '_assets_manager') {
@@ -795,7 +796,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         'action'          : wpacu_object.plugin_prefix + '_print_loaded_hardcoded_assets',
                         'wpacu_list_h'    : wpacuListH,
                         'wpacu_settings'  : wpacuSettings, // includes $data values as well (with rules) to pass to the hardcoded list
-                        'time_r'          : new Date().getTime(),
+                        'wpacu_time_r'    : new Date().getTime(),
                         'wpacu_nonce'     : wpacu_object.wpacu_print_loaded_hardcoded_assets_nonce
                     };
 
@@ -881,7 +882,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         'wpacu_nonce'                  : wpacu_object.wpacu_update_specific_settings_nonce,
                         'wpacu_update_keep_the_groups' : 'yes',
                         'wpacu_keep_the_groups_state'  : newState, // "expanded" or "contracted"
-                        'time_r'                       : new Date().getTime() // avoid any caching
+                        'wpacu_time_r'                 : new Date().getTime() // avoid any caching
                     };
 
                     try {
@@ -904,7 +905,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         'wpacu_asset_row_state'        : newState, // "expanded" or "contracted"
                         'wpacu_handle'                 : handle,
                         'wpacu_handle_for'             : handleFor,
-                        'time_r'                       : new Date().getTime(), // avoid any caching
+                        'wpacu_time_r'                 : new Date().getTime(), // avoid any caching
                         'wpacu_nonce'                  : wpacu_object.wpacu_update_asset_row_state_nonce
                     };
 
@@ -923,7 +924,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         'wpacu_area_update_assets_row_state' : 'yes',
                         'wpacu_area_assets_row_state'        : newState, // "expanded" or "contracted"
                         'wpacu_area_handles'                 : handles,
-                        'time_r'                             : new Date().getTime(), // avoid any caching
+                        'wpacu_time_r'                       : new Date().getTime(), // avoid any caching
                         'wpacu_nonce'                        : wpacu_object.wpacu_area_update_assets_row_state_nonce
                     };
 
@@ -1209,7 +1210,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         $.post(wpacu_object.ajax_url, {
                             'action': wpacu_object.plugin_prefix + '_add_new_no_features_load_row',
-                            'time_r': new Date().getTime()
+                            'wpacu_time_r': new Date().getTime()
                         }, function (newRowOutput) {
                             $('#wpacu-prevent-feature-rule-areas-wrap').append(newRowOutput);
 
@@ -1533,7 +1534,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if ($('#wpacu-assets-collapsible-wrap-hardcoded-list').length > 0) {
                         let dataFetchHardcodedList = {};
                         dataFetchHardcodedList[wpacu_object.plugin_prefix + '_load']   = 1;
-                        dataFetchHardcodedList[wpacu_object.plugin_prefix + '_time_r'] = new Date().getTime();
+                        dataFetchHardcodedList['wpacu_time_r'] = new Date().getTime();
                         dataFetchHardcodedList['wpacu_just_hardcoded']                 = 1;
 
                         if ($.fn.wpAssetCleanUp().getParameterByName('wpacu_ignore_no_load_option') !== null) {
@@ -1731,48 +1732,49 @@ document.addEventListener("DOMContentLoaded", function () {
             $.fn.wpAssetCleanUp().wpacuCheckSourcesFor404Errors();
         });
     })(jQuery);
+});
 
-    /*
+/*
     * [START INFO MODAL BOX]
     */
-    document.addEventListener("DOMContentLoaded", () => {
-        function wpacuShowHideInfoModal(targetedModalId) {
-            // Show the modal
-            document.getElementById(targetedModalId).style.display = 'block';
+document.addEventListener("DOMContentLoaded", () => {
+    function wpacuShowHideInfoModal(targetedModalId) {
+        // Show the modal
+        document.getElementById(targetedModalId).style.display = 'block';
 
-            // Clicking outside the modal area (close it)
-            document.getElementById(targetedModalId).addEventListener('click', function (event) {
-                if (event.target.id === targetedModalId) {
-                    document.getElementById(targetedModalId).style.display = 'none';
-                }
-            });
-        }
-
-        document.body.addEventListener('click', function (event) {
-            // "a" tag is clicked with "data-wpacu-modal-target" attribute
-            if (event.target.tagName.toLowerCase() === 'a') {
-                if (event.target.getAttribute('data-wpacu-modal-target') && event.target.getAttribute('data-wpacu-modal-target').startsWith('wpacu-')) {
-                    let wpacuLinkRef = event.target.getAttribute('data-wpacu-modal-target');
-                    let wpacuPossibleModalId = wpacuLinkRef.replace('-target', '');
-
-                    if (document.getElementById(wpacuPossibleModalId)) {
-                        wpacuShowHideInfoModal(wpacuPossibleModalId);
-                        event.preventDefault();
-                    }
-                }
-            }
-
-            // "x" is clicked within the modal box
-            if (event.target.tagName.toLowerCase() === 'span' && event.target.classList.contains('wpacu-close')) {
-                event.target.parentNode.parentNode.style.display = 'none';
-                event.preventDefault();
+        // Clicking outside the modal area (close it)
+        document.getElementById(targetedModalId).addEventListener('click', function (event) {
+            if (event.target.id === targetedModalId) {
+                document.getElementById(targetedModalId).style.display = 'none';
             }
         });
+    }
+
+    document.body.addEventListener('click', function (event) {
+        // "a" tag is clicked with "data-wpacu-modal-target" attribute
+        if (event.target.tagName.toLowerCase() === 'a') {
+            if (event.target.getAttribute('data-wpacu-modal-target') && event.target.getAttribute('data-wpacu-modal-target').startsWith('wpacu-')) {
+                let wpacuLinkRef = event.target.getAttribute('data-wpacu-modal-target');
+                let wpacuPossibleModalId = wpacuLinkRef.replace('-target', '');
+
+                if (document.getElementById(wpacuPossibleModalId)) {
+                    wpacuShowHideInfoModal(wpacuPossibleModalId);
+                    event.preventDefault();
+                }
+            }
+        }
+
+        // "x" is clicked within the modal box
+        if (event.target.tagName.toLowerCase() === 'span' && event.target.classList.contains('wpacu-close')) {
+            event.target.parentNode.parentNode.style.display = 'none';
+            event.preventDefault();
+        }
     });
-    /*
-    * [END INFO MODAL BOX]
-    */
 });
+/*
+* [END INFO MODAL BOX]
+*/
+
 //
 // [END] Core file
 //

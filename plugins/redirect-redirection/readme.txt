@@ -2,8 +2,8 @@
 Contributors: Socialdude
 Tags: Redirect, Redirection, 301, 404, Redirects
 Requires at least: 4.6
-Tested up to: 6.7.1
-Stable tag: 1.2.5
+Tested up to: 6.7.2
+Stable tag: 1.2.6
 License: GPLv3
 Requires PHP: 5.6
 
@@ -94,6 +94,12 @@ Vietnamese: [Đặt 301, 307, 404, một chuyển hướng khác.](https://vi.wo
 5. HTTP codes explanation
 
 == Changelog ==
+
+= 1.2.6 =
+* Tested with WordPress 6.7.2
+* Increased URL field length from 255 to 1000 characters for more flexibility in “from” and “to” fields.
+* Ensure redirects settings are saved correctly.
+* Enhanced URL Parameters Matching.
 
 = 1.2.5 =
 * Tested with WordPress 6.7.1
@@ -199,19 +205,12 @@ Vietnamese: [Đặt 301, 307, 404, một chuyển hướng khác.](https://vi.wo
 = 1.1.1 =
 * Reverted change of template redirection priority
 
-= 1.1.0 =
-* Tested up to WP v6.1-RC5
-* Added optional opt-in module
-* Updated try it option in readme
-* Fixed issue with logs clean-up - database errors PHP 8+
-* Removed unnecessary files from codebase
-* Adjusted redirection, it won't redirect twice before destination site
-
-Changelogs stripped due to character limitation.
+Changelog truncated due to WordPress 5000-character limit.
 
 == Upgrade Notice ==
 
-= 1.2.5 =
-* Tested with WordPress 6.7.1
-* Fixed parameters being cut off after an encoded slash.
-* Fixed loading translations too early.
+= 1.2.6 =
+* Tested with WordPress 6.7.2
+* Increased URL field length from 255 to 1000 characters for more flexibility in “from” and “to” fields.
+* Ensure redirects settings are saved correctly.
+* Enhanced URL Parameters Matching.

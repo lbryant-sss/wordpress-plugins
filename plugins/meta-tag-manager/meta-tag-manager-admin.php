@@ -179,13 +179,15 @@ class Meta_Tag_Manager_Admin {
 	}
 	
 	public static function ajax_logo_preview() {
-		if( isset($_GET['id']) ){
-			$image = wp_get_attachment_image( filter_input( INPUT_GET, 'id', FILTER_VALIDATE_INT ) );
-			$data = array( 'image' => $image );
-			wp_send_json_success( $data );
-		} else {
-			wp_send_json_error();
+		if ( !empty($_REQUEST['nonce']) && wp_verify_nonce( $_REQUEST['nonce'], 'mtm_get_logo_url') ) {
+			if ( isset( $_GET['id'] ) ) {
+				$image = wp_get_attachment_image( filter_input( INPUT_GET, 'id', FILTER_VALIDATE_INT ) );
+				$data = array ( 'image' => $image );
+				wp_send_json_success( $data );
+				return true;
+			}
 		}
+		wp_send_json_error();
 	}
 	
 	/**

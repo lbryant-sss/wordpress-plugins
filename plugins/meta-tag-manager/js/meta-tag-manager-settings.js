@@ -89,6 +89,7 @@ jQuery(document).ready(function($){
 				// refresh image
 				var data = {
 					action: wrap.data('action'),
+					nonce: wrap.data('nonce'),
 					id: ids
 				};
 				jQuery.get( ajaxurl, data, function (response) {

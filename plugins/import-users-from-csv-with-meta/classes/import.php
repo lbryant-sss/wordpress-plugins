@@ -823,6 +823,10 @@ class ACUI_Import{
                 endif;
 
                 $result = $this->import_user( $row, $columns, $headers, $data, $positions, $form_data, $settings );
+
+                if( empty( $result['role'] ) )
+                    $result['role'] = array();
+
                 $roles_appeared = array_unique( array_intersect( $roles_appeared, $result['role'] ) );
 
                 switch( $result['result'] ){

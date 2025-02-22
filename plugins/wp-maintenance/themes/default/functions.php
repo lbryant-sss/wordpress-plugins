@@ -135,7 +135,8 @@ function wpm_text() {
     $output = '';
 
     if(!empty($o['text_maintenance']) ) {
-        $text = nl2br(stripslashes($o['text_maintenance']));
+        //$text = nl2br(stripslashes($o['text_maintenance']));
+        $text = str_replace("\r\n", "<br />", stripslashes($o['text_maintenance']));
         $output = wp_kses(trim($text), wpm_autorizeHtml());
     }
     return $output;
@@ -200,11 +201,13 @@ function wpm_customcss() {
     
 
     /* Si on a activé un motif */
-   if(isset($picture['b_enable_image']) && $picture['b_enable_image'] == 2 ) {
+    if(isset($picture['b_enable_image']) && $picture['b_enable_image'] == 2 ) {
 
-        $addStyleGeneral .= 'body {
-        background-image: url('.esc_url(WP_PLUGIN_URL.'/wp-maintenance/images/pattern'.$picture['b_pattern'].'.png').');
-        background-repeat: repeat;
+        $addStyleGeneral .= 'body {';
+        if( isset($picture['b_pattern']) && $picture['b_pattern']>=1) {
+            $addStyleGeneral .= 'background-image: url('.esc_url(WP_PLUGIN_URL.'/wp-maintenance/images/pattern'.$picture['b_pattern'].'.png').');';
+        }
+        $addStyleGeneral .= 'background-repeat: repeat;
         background-color: '.$colors['color_bg'].';}';
         
     }
@@ -314,7 +317,7 @@ function wpm_headercode() {
     $output = '';
 
    if(isset($o['headercode']) && $o['headercode']!='') {
-        $output = stripslashes($o['headercode']);
+        $output = '<script>'.stripslashes($o['headercode']).'</script>';
     }
 
     return $output;

@@ -7,7 +7,7 @@
   Tested up to: WP 6.7
   Author: realmag777
   Author URI: https://pluginus.net/
-  Version: 1.3.6.4
+  Version: 1.3.6.5
   Requires PHP: 7.4
   Tags: filter,search,woocommerce,woocommerce filter,woocommerce product filter,woocommerce products filter,products filter,product filter,filter of products,filter for products,filter for woocommerce
   Text Domain: woocommerce-products-filter
@@ -56,7 +56,7 @@ define('WOOF_PATH', plugin_dir_path(__FILE__));
 define('WOOF_LINK', plugin_dir_url(__FILE__));
 define('WOOF_PLUGIN_NAME', plugin_basename(__FILE__));
 define('WOOF_EXT_PATH', WOOF_PATH . 'ext/');
-define('WOOF_VERSION', '1.3.6.4');
+define('WOOF_VERSION', '1.3.6.5');
 //define('WOOF_VERSION', uniqid('woof-')); //for dev only to avoid js/css cache
 define('WOOF_MIN_WOOCOMMERCE_VERSION', '6.0');
 //classes
@@ -74,7 +74,7 @@ include WOOF_PATH . 'lib/alert/index.php';
 //***
 include WOOF_PATH . 'installer/first_settings.php';
 
-//30-12-2024
+//21-02-2025
 final class WOOF {
 
     public $settings = array();

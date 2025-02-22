@@ -197,6 +197,10 @@ class ContentPermissionsModule extends \amePersistentModule {
 
 		$settings->save();
 	}
+
+	public function isSuitableForExport() {
+		return false;
+	}
 }
 
 class ContentPermissionsEnforcer {

@@ -36,7 +36,7 @@ $test_url_twitter = "https://cards-dev.twitter.com/validator?url=" . urlencode(g
 		$image_id = empty($og['home']['image']) ? get_theme_mod( 'custom_logo' ) : $og['home']['image'];
 		$image = intval( $image_id ) > 0 ? wp_get_attachment_image( $image_id ) : '';
 		?>
-		<tr class="mtm-image-upload" data-action="mtm_get_logo_url">
+		<tr class="mtm-image-upload" data-action="mtm_get_logo_url" data-nonce="<?php echo wp_create_nonce('mtm_get_logo_url'); ?>">
 			<th><?php esc_html_e( 'Logo' ); ?></th>
 			<td>
 				<div class="mtm-image-upload-preview"><?php echo $image; ?></div>

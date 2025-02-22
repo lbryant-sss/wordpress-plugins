@@ -93,7 +93,7 @@ Upload text, images, videos, and audio. Then organize everything you upload into
 * Sticky toolbar for the media library - navigate and organize your folders
 * Metadata details on Media Library hover - show useful metadata including title, size, type, date, dimension & more on hover
 * Customize the look and feel of your folders
-* Replace media for all file types - Replace any kind of files while uploading including PDF/SVG/DOCS/XLSX/etc
+* Replace media for all file types - Replace any kind of files while uploading including PDF, SVG, DOCX, XLSX, etc
 * Compare the new media library file with the old file when you replace media - compare old media library files with the new one and compare size, dimension & more
 * Folders user restriction - when enabled, users will only be able to access their folders and media. Only Admin users will be able to view all folders (can be enabled for the Dynamic Folders as well)
 * Move files to the trash by default before deleting

@@ -612,7 +612,7 @@ jQuery(document).ready(function ($) {
 
             var captcha_html = "";
             captcha_html += '<p><label for="wpcaptcha_captcha">Are you human? Please solve:';
-            captcha_html += '<img class="wpcaptcha-captcha-img" style="vertical-align: text-top;" src="' + wpcaptcha_vars.plugin_url + "libs/captcha.php?wpcaptcha-generate-image=true&color=#FFFFFF&noise=1&rnd=" + Math.floor(Math.random() * 1000) + '" alt="Captcha" />';
+            captcha_html += '<img class="wpcaptcha-captcha-img" style="vertical-align: text-top;" src="' + wpcaptcha_vars.captcha_admin_test + '" alt="Captcha" />';
             captcha_html += '<input class="input" type="text" size="3" name="wpcaptcha_captcha" id="wpcaptcha_builtin_captcha" />';
             captcha_html += "</label></p>";
 

@@ -59,6 +59,7 @@ class WPCaptcha_Admin extends WPCaptcha
         'stats_locks' => WPCaptcha_Stats::get_stats('locks'),
         'stats_fails' => WPCaptcha_Stats::get_stats('fails'),
         'wp301_install_url' => add_query_arg(array('action' => 'wpcaptcha_install_wp301', '_wpnonce' => wp_create_nonce('install_wp301'), 'rnd' => wp_rand()), admin_url('admin.php')),
+        'captcha_admin_test' => WPCaptcha_Functions::math_captcha_generate()
       );
 
       $js_localize['chart_colors'] = array('#4285f4', '#ff5429', '#ff7d5c', '#ffac97');

@@ -322,7 +322,7 @@ class WPCaptcha_Functions extends WPCaptcha
             if (isset($_POST['wpcaptcha_captcha'])) { // phpcs:ignore
                 $captcha_responses = array_map('sanitize_text_field', wp_unslash($_POST['wpcaptcha_captcha'])); // phpcs:ignore
                 foreach ($captcha_responses as $captcha_id => $captcha_val) {
-                    if (isset($_COOKIE['wpcaptcha_captcha_' . $captcha_id]) && $captcha_val === $_COOKIE['wpcaptcha_captcha_' . $captcha_id]) {
+                    if (isset($_COOKIE['wpcaptcha_captcha_' . $captcha_id]) && hash_hmac('sha256', $captcha_val, AUTH_SALT) === $_COOKIE['wpcaptcha_captcha_' . $captcha_id]) {
                         return true;
                     } else {
                         return new WP_Error('wpcaptcha_builtin_captcha_failed', __("<strong>ERROR</strong>: captcha verification failed.<br /><br />Please try again.", 'advanced-google-recaptcha'));
@@ -513,7 +513,7 @@ class WPCaptcha_Functions extends WPCaptcha
         } else if ($options['captcha'] == 'builtin') {
             $output .= '<p><label for="wpcaptcha_captcha">Are you human? Please solve: ';
             $captcha_id = wp_rand(1000, 9999);
-            $output .= '<img class="wpcaptcha-captcha-img" style="vertical-align: text-top;" src="' . esc_url(WPCAPTCHA_PLUGIN_URL) . 'libs/captcha.php?wpcaptcha-generate-image=true&color=' . esc_attr(urlencode('#FFFFFF')) . '&noise=1&id=' . intval($captcha_id) . '" alt="Captcha" />';
+            $output .= '<img class="wpcaptcha-captcha-img" style="vertical-align: text-top;" src="' . self::math_captcha_generate($captcha_id) . '" alt="Captcha" />';
             $output .= '<input class="input" type="text" size="3" name="wpcaptcha_captcha[' . intval($captcha_id) . ']" id="wpcaptcha_captcha" />';
             $output .= '</label></p><br />';
         }
@@ -1260,4 +1260,109 @@ class WPCaptcha_Functions extends WPCaptcha
             wp_safe_redirect($redirect_url);
         }
     }
+
+    // convert HEX(HTML) color notation to RGB
+    static function hex2rgb($color)
+    {
+        if ($color[0] == '#') {
+            $color = substr($color, 1);
+        }
+
+        if (strlen($color) == 6) {
+            list($r, $g, $b) = array(
+                $color[0] . $color[1],
+                $color[2] . $color[3],
+                $color[4] . $color[5]
+            );
+        } elseif (strlen($color) == 3) {
+            list($r, $g, $b) = array($color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2]);
+        } else {
+            return array(255, 255, 255);
+        }
+
+        $r = hexdec($r);
+        $g = hexdec($g);
+        $b = hexdec($b);
+
+        return array($r, $g, $b);
+    } // html2rgb
+
+
+    // output captcha image
+    static function math_captcha_generate($captcha_id = false)
+    {
+        ob_start();
+        
+        $a = wp_rand(0, (int) 10);
+        $b = wp_rand(0, (int) 10);
+        if(isset($_GET['color'])){ // phpcs:ignore
+            $color = substr($_GET['color'],0,7); // phpcs:ignore
+            $color = urldecode($color);
+        } else{
+            $color = '#FFFFFF';
+        }
+        if (isset($captcha_id) && false !== $captcha_id) { // phpcs:ignore
+            $captcha_cookie_name = 'wpcaptcha_captcha_' . intval($captcha_id); // phpcs:ignore
+        } else {
+            $captcha_cookie_name = 'wpcaptcha_captcha';
+        }
+
+        if ($a > $b) {
+            $out = "$a - $b";
+            $captcha_value = $a - $b;
+        } else {
+            $out = "$a + $b";
+            $captcha_value = $a + $b;
+        }
+
+        setcookie($captcha_cookie_name, hash_hmac('sha256', $captcha_value, AUTH_SALT), time() + 300, '/');
+
+        $font   = 5;
+        $width  = ImageFontWidth($font) * strlen($out);
+        $height = ImageFontHeight($font);
+        $im     = ImageCreate($width, $height);
+
+        $x = imagesx($im) - $width;
+        $y = imagesy($im) - $height;
+
+        $white = imagecolorallocate($im, 255, 255, 255);
+        $gray = imagecolorallocate($im, 66, 66, 66);
+        $black = imagecolorallocate($im, 0, 0, 0);
+        $trans_color = $white; //transparent color
+
+        if ($color) {
+            $color = self::hex2rgb($color);
+            $new_color = imagecolorallocate($im, $color[0], $color[1], $color[2]);
+            imagefill($im, 1, 1, $new_color);
+        } else {
+            imagecolortransparent($im, $trans_color);
+        }
+
+        imagestring($im, $font, $x, $y, $out, $black);
+
+        // always add noise
+        if (1 == 1) {
+            $color_min = 100;
+            $color_max = 200;
+            $rand1 = imagecolorallocate($im, wp_rand($color_min, $color_max), wp_rand($color_min, $color_max), wp_rand($color_min, $color_max));
+            $rand2 = imagecolorallocate($im, wp_rand($color_min, $color_max), wp_rand($color_min, $color_max), wp_rand($color_min, $color_max));
+            $rand3 = imagecolorallocate($im, wp_rand($color_min, $color_max), wp_rand($color_min, $color_max), wp_rand($color_min, $color_max));
+            $rand4 = imagecolorallocate($im, wp_rand($color_min, $color_max), wp_rand($color_min, $color_max), wp_rand($color_min, $color_max));
+            $rand5 = imagecolorallocate($im, wp_rand($color_min, $color_max), wp_rand($color_min, $color_max), wp_rand($color_min, $color_max));
+
+            $style = array($rand1, $rand2, $rand3, $rand4, $rand5);
+            imagesetstyle($im, $style);
+            imageline($im, wp_rand(0, $width), 0, wp_rand(0, $width), $height, IMG_COLOR_STYLED);
+            imageline($im, wp_rand(0, $width), 0, wp_rand(0, $width), $height, IMG_COLOR_STYLED);
+            imageline($im, wp_rand(0, $width), 0, wp_rand(0, $width), $height, IMG_COLOR_STYLED);
+            imageline($im, wp_rand(0, $width), 0, wp_rand(0, $width), $height, IMG_COLOR_STYLED);
+            imageline($im, wp_rand(0, $width), 0, wp_rand(0, $width), $height, IMG_COLOR_STYLED);
+        }
+
+        imagegif($im);
+
+        // Get image data
+        $image_data = ob_get_clean();
+        return 'data:image/png;base64,' . base64_encode($image_data);
+    } // create
 } // class

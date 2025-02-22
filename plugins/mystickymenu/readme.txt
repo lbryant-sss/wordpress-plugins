@@ -48,7 +48,7 @@ My Sticky Bar is tested and compatible with Elementor website builder, Divi, WPB
 * Redirect your visitors to another URL on-click
 
 = 📌 WITH MY STICKY BAR YOU CAN: =
-* Show sticky header on scroll down/up
+* Show sticky header when scrolling the page
 * Fade or slide effect
 * Disable at a small screen
 * Choose when to make visible on scroll
