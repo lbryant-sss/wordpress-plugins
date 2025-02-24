@@ -161,6 +161,77 @@ final class Base {
 			$element[ 'settings' ]['exad_countdown_time'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_countdown_time' ] ) );
 		}
 		
+		if ( isset( $element[ 'settings' ]['exad_before_label'] ) ) {
+			
+			$element[ 'settings' ]['exad_before_label'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_before_label' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_after_label'] ) ) {
+			
+			$element[ 'settings' ]['exad_after_label'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_after_label' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_default_offset_pct'] ) ) {
+			
+			$element[ 'settings' ]['exad_default_offset_pct'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_default_offset_pct' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_image_comparison_handle_type'] ) ) {
+			
+			$element[ 'settings' ]['exad_image_comparison_handle_type'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_image_comparison_handle_type' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_animated_text_before_text'] ) ) {
+			
+			$element[ 'settings' ]['exad_animated_text_before_text'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_animated_text_before_text' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_animated_text_animated_heading'] ) ) {
+			
+			$element[ 'settings' ]['exad_animated_text_animated_heading'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_animated_text_animated_heading' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_animated_text_after_text'] ) ) {
+			
+			$element[ 'settings' ]['exad_animated_text_after_text'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_animated_text_after_text' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_animated_text_animated_heading_animated_type'] ) ) {
+			
+			$element[ 'settings' ]['exad_animated_text_animated_heading_animated_type'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_animated_text_animated_heading_animated_type' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_animated_text_animated_heading_animation_style'] ) ) {
+			
+			$element[ 'settings' ]['exad_animated_text_animated_heading_animation_style'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_animated_text_animated_heading_animation_style' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_animated_text_animation_speed'] ) ) {
+			
+			$element[ 'settings' ]['exad_animated_text_animation_speed'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_animated_text_animation_speed' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_animated_text_type_speed'] ) ) {
+			
+			$element[ 'settings' ]['exad_animated_text_type_speed'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_animated_text_type_speed' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_animated_text_back_type_speed'] ) ) {
+			
+			$element[ 'settings' ]['exad_animated_text_back_type_speed'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_animated_text_back_type_speed' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_animated_text_start_delay'] ) ) {
+			
+			$element[ 'settings' ]['exad_animated_text_start_delay'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_animated_text_start_delay' ] ) );
+		}
+		
+		if ( isset( $element[ 'settings' ]['exad_animated_text_back_delay'] ) ) {
+			
+			$element[ 'settings' ]['exad_animated_text_back_delay'] = esc_attr( sanitize_text_field( $element[ 'settings' ][ 'exad_animated_text_back_delay' ] ) );
+		}
+		
+		
 		return $element;
 	}
 	

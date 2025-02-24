@@ -7,6 +7,7 @@ use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Widget_Base;
 use \Elementor\Utils;
+use \ExclusiveAddons\Elementor\Helper;
 
 class Animated_Text extends Widget_Base {
 
@@ -532,6 +533,11 @@ class Animated_Text extends Widget_Base {
 		$before_text   = $settings['exad_animated_text_before_text'];
 		$heading_text  = $settings['exad_animated_text_animated_heading'];
 		$after_text    = $settings['exad_animated_text_after_text'];
+		
+		$before_text = esc_attr( sanitize_text_field( $before_text ) );
+		$heading_text = esc_attr( sanitize_text_field( $heading_text ) );
+		$after_text = esc_attr( sanitize_text_field( $after_text ) );
+		
 		$heading_tag   = Utils::validate_html_tag( $settings['exad_animated_text_animated_heading_tag'] );
 		$heading_align = $settings['exad_animated_text_animated_heading_alignment'];
 
