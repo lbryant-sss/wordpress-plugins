@@ -23,6 +23,15 @@ import { STORE_NAME as LogsStore } from '../../../data/src/logs/constants';
 import { Logo } from '../../../components/icons';
 import { Body, Empty, Header, StyledNotice, StyledSurface } from './styles';
 
+// Fix for iframe height miscalculation.
+const sandBoxStyle = `
+	html,
+	body,
+	body > div {
+		height: auto !important;
+	}
+`;
+
 /**
  * Component for displaying the details of a log.
  */
@@ -82,7 +91,7 @@ function LogDetail() {
 					{ __( 'Body', 'LION' ) }
 				</Text>
 				<StyledSurface variant={ 'info' }>
-					<SandBox html={ selectedLog.message } />
+					<SandBox html={ selectedLog.message } styles={ [ sandBoxStyle ] } />
 				</StyledSurface>
 				<Button
 					variant={ 'secondary' }

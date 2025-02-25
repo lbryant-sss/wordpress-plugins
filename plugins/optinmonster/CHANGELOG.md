@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to the OptinMonster plugin will be documented in this file.
 
+### 2.16.16 - 2025-02-24
+* Added WooCommerce 9.6 compatibility.
+* Performance improvements while in various editor contexts, by preventing unnecessary API calls.
+* Updated URL used for OptinMonster API calls.
+* Updates to the OptinMonster Gutenberg block to improve compatibility with iframes in the Block Editor.
+
 ### 2.16.15 - 2025-02-03
 * Added WordPress 6.7 compatibility.
 

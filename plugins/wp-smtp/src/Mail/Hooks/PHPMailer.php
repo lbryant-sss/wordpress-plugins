@@ -5,7 +5,6 @@ namespace SolidWP\Mail\Hooks;
 use PHPMailer\PHPMailer\SMTP;
 use SolidWP\Mail\AbstractController;
 use SolidWP\Mail\App;
-use SolidWP\Mail\Contracts;
 use SolidWP\Mail\Repository\ProvidersRepository;
 use SolidWP\Mail\SolidMailer;
 
@@ -69,6 +68,7 @@ class PHPMailer extends AbstractController {
 			require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
 			require_once ABSPATH . WPINC . '/PHPMailer/Exception.php';
 
+			// phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 			$phpmailer = new SolidMailer( true );
 			$phpmailer->set_connector( $active_provider );
 		}

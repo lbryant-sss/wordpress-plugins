@@ -12,9 +12,11 @@ return array(
     'StellarWP\\Telemetry\\Views_Dir\\' => array($vendorDir . '/stellarwp/telemetry/src/views'),
     'StellarWP\\Telemetry\\Assets_Dir\\' => array($vendorDir . '/stellarwp/telemetry/src/resources'),
     'StellarWP\\Telemetry\\' => array($vendorDir . '/stellarwp/telemetry/src/Telemetry'),
+    'StellarWP\\SuperGlobals\\' => array($vendorDir . '/stellarwp/superglobals/src/SuperGlobals'),
     'StellarWP\\FieldConditions\\' => array($vendorDir . '/stellarwp/field-conditions/src'),
     'StellarWP\\ContainerContract\\' => array($vendorDir . '/stellarwp/container-contract/src'),
     'StellarWP\\Assets\\' => array($vendorDir . '/stellarwp/assets/src/Assets'),
+    'StellarWP\\Arrays\\' => array($vendorDir . '/stellarwp/arrays/src/Arrays'),
     'SolidWP\\' => array($baseDir . '/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
 );

@@ -18,7 +18,6 @@ use WP_Error;
  * @since   2.1.3
  * @package SolidWP\Mail\Pro
  * @extends PHPMailer
- *
  */
 class SolidMailer extends PHPMailer {
 
@@ -37,7 +36,6 @@ class SolidMailer extends PHPMailer {
 	 *
 	 * @since 2.1.3
 	 * @return void
-	 *
 	 */
 	public function set_connector( ConnectorSMTP $connector ): void {
 		$this->connector = $connector;
@@ -48,7 +46,6 @@ class SolidMailer extends PHPMailer {
 	 *
 	 * @since 2.1.3
 	 * @return void
-	 *
 	 */
 	public function isAPI() {
 		$this->Mailer = 'api';
@@ -63,7 +60,6 @@ class SolidMailer extends PHPMailer {
 	 * @since 2.1.3
 	 * @return bool | WP_Error The result from the API send operation
 	 * @throws \Exception
-	 *
 	 */
 	public function apiSend( $header, $body ) {
 		$email_data = $this->getEmailData( $header, $body );
@@ -122,6 +118,7 @@ class SolidMailer extends PHPMailer {
 		);
 
 		$email_data = [
+			// phpcs:ignore Squiz.PHP.CommentedOutCode.Found
 			// Recipients with format: [[email, name], [email, name], ...]
 			'to'             => $this->to,
 			'cc'             => $this->cc,
@@ -148,7 +145,7 @@ class SolidMailer extends PHPMailer {
 			'encoding'       => $this->Encoding ?? '8bit',
 
 			// Attachments
-			'attachments'    => $this->attachment
+			'attachments'    => $this->attachment,
 		];
 
 		// Validate required data
@@ -156,7 +153,7 @@ class SolidMailer extends PHPMailer {
 			return new WP_Error(
 				'email_missing_from',
 				'From address is required',
-				array( 'status' => self::STOP_CRITICAL )
+				[ 'status' => self::STOP_CRITICAL ]
 			);
 		}
 
@@ -164,7 +161,7 @@ class SolidMailer extends PHPMailer {
 			return new WP_Error(
 				'email_missing_recipients',
 				'At least one recipient is required',
-				array( 'status' => self::STOP_CRITICAL )
+				[ 'status' => self::STOP_CRITICAL ]
 			);
 		}
 

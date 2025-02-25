@@ -34,7 +34,7 @@ class OMAPI_Api {
 	 *
 	 * @var string
 	 */
-	public $base = OPTINMONSTER_APP_URL;
+	public $base = OPTINMONSTER_API_URL;
 
 	/**
 	 * Current API route.

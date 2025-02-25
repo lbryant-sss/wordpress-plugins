@@ -371,10 +371,13 @@ class ConnectorSMTP {
 		];
 
 		if ( $this->is_authentication() ) {
-			$rules = array_merge( $rules, [
-				'smtp_username' => [ 'required' ],
-				'smtp_password' => [ 'required' ],
-			] );
+			$rules = array_merge(
+				$rules,
+				[
+					'smtp_username' => [ 'required' ],
+					'smtp_password' => [ 'required' ],
+				] 
+			);
 		}
 
 		$validator = new Validator( $rules, $data, $labels );

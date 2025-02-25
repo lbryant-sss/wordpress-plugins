@@ -130,7 +130,7 @@ class Logs extends \WP_REST_Controller {
 		// Serve CSV file
 		header( 'Content-Type: text/csv' );
 		header( 'Content-Disposition: attachment; filename="' . sanitize_file_name( $csv_filename ) . '"' );
-		echo $csv_content;
+		echo $csv_content; // phpcs:ignore StellarWP.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		exit;
 	}

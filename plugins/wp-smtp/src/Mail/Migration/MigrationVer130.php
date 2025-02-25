@@ -7,6 +7,7 @@ use SolidWP\Mail\Admin\SettingsScreen;
 use SolidWP\Mail\Connectors\ConnectorSMTP;
 use SolidWP\Mail\Repository\ProvidersRepository;
 use SolidWP\Mail\Service\ConnectionService;
+use SolidWP\Mail\StellarWP\SuperGlobals\SuperGlobals;
 
 /**
  * Class ControllerMigration130
@@ -59,7 +60,7 @@ class MigrationVer130 extends AbstractController {
 			return;
 		}
 
-		$page = $_GET['page'] ?? '';
+		$page = (string) SuperGlobals::get_get_var( 'page' );
 
 		if ( $page === 'wp-smtp/wp-smtp.php' ) {
 			wp_safe_redirect( admin_url( 'admin.php?page=solidwp-mail' ) );
@@ -137,7 +138,7 @@ class MigrationVer130 extends AbstractController {
 			$this->providers_repository->save( $provider );
 
 			// and we add a notice about the error.
-			update_option('solid_mail_migration_error', $result->get_error_message());
+			update_option( 'solid_mail_migration_error', $result->get_error_message() );
 		}
 
 		update_option( self::OPTION_VERSION_NAME, WPSMTP_VERSION );
@@ -148,8 +149,11 @@ class MigrationVer130 extends AbstractController {
 			$disable_logs = $smtp['disable_logs'];
 		}
 
-		update_option( SettingsScreen::SETTINGS_SLUG, [
-			'disable_logs' => $disable_logs,
-		] );
+		update_option(
+			SettingsScreen::SETTINGS_SLUG,
+			[
+				'disable_logs' => $disable_logs,
+			] 
+		);
 	}
 }

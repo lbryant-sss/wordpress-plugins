@@ -1,11 +1,11 @@
 === Advanced AJAX Product Filters ===
 Plugin Name: Advanced AJAX Product Filters
-Contributors: dholovnia, berocket
+Contributors: berocket, dholovnia
 Donate link: https://berocket.com/woocommerce-ajax-products-filter/?utm_source=wordpress_org&utm_medium=donate&utm_campaign=ajax_filters
 Tags: product filters, ajax product filters, woocommerce filters, wc filters, category filter
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 1.6.8.1
+Stable tag: 1.6.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -183,6 +183,15 @@ You can try this plugin's admin side [here](https://berocket.com/woocommerce-aja
 ---
 
 == Changelog ==
+
+= 1.6.8.2 =
+* Enhancement - New button designs
+* Enhancement - New checkbox and selected filters area designs
+* Enhancement - Style for selected filters area in global settings
+* Enhancement - Better compatibility with Elementor page builder
+* Enhancement - Setup wizard options sanitisation improvement
+* Fix - Compatibility with Advanced Custom Field
+* Fix - Issues in storefront, button images text and few small issues
 
 = 1.6.8.1 =
 * HOTFIX - Display message for deprecated errors

@@ -8,7 +8,6 @@
 namespace SolidWP\Mail\Admin;
 
 use SolidWP\Mail\AbstractController;
-use SolidWP\Mail\StellarWP\Assets\Assets;
 
 /**
  * Class ControllerLogs

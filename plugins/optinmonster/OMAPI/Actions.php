@@ -99,7 +99,7 @@ class OMAPI_Actions {
 		$is_onboarding_connect = ! empty( $connection_token ) && wp_validate_boolean( $onboarding_connect );
 
 		// Determine if we're missing API key credentials.
-		$missing_api_key = empty( $creds['apikey'] ) && empty( $creds['user'] ) && empty( $creds['key'] );
+		$missing_api_key = ! OMAPI_ApiKey::has_credentials();
 
 		// If we don't have an API Key yet, we can't fetch anything else.
 		if ( $missing_api_key && ! $is_onboarding_connect ) {

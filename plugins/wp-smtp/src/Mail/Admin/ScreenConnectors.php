@@ -57,7 +57,7 @@ class ScreenConnectors extends AbstractController {
 	 */
 	public function __construct( ConnectionService $connection_service, Container $container ) {
 		$this->connection_service = $connection_service;
-		$this->container = $container;
+		$this->container          = $container;
 	}
 
 	/**
@@ -70,10 +70,10 @@ class ScreenConnectors extends AbstractController {
 		add_action( 'wp_mail_failed', [ $this, 'record_error' ] );
 
 		// ajax functions.
-		add_action( 'wp_ajax_solidwp_mail_save_connection', array( $this, 'save_connection' ) );
-		add_action( 'wp_ajax_solidwp_mail_delete_connection', array( $this, 'delete_connection' ) );
-		add_action( 'wp_ajax_solidwp_mail_make_provider_active', array( $this, 'make_connection_active' ) );
-		add_action( 'wp_ajax_solidwp_mail_send_test_email', array( $this, 'send_test_email' ) );
+		add_action( 'wp_ajax_solidwp_mail_save_connection', [ $this, 'save_connection' ] );
+		add_action( 'wp_ajax_solidwp_mail_delete_connection', [ $this, 'delete_connection' ] );
+		add_action( 'wp_ajax_solidwp_mail_make_provider_active', [ $this, 'make_connection_active' ] );
+		add_action( 'wp_ajax_solidwp_mail_send_test_email', [ $this, 'send_test_email' ] );
 	}
 
 	/**
@@ -122,12 +122,13 @@ class ScreenConnectors extends AbstractController {
 			);
 		}
 
+		// phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_mail_wp_mail
 		$sent = wp_mail( $data['to_email'], $data['subject'], $data['message'] );
 		// Return a JSON response indicating success or failure.
 		if ( $sent ) {
 			wp_send_json_success( [ 'message' => __( 'Test email sent successfully.', 'LION' ) ] );
 		} else {
-			$wp_error = $this->container->get( 'phpmailer_send_error');
+			$wp_error = $this->container->get( 'phpmailer_send_error' );
 			if ( is_wp_error( $wp_error ) ) {
 				// error found, send more detailed version.
 				$error_message = $wp_error->get_error_message();

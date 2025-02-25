@@ -28,7 +28,6 @@ class ConnectorPostmark extends ConnectorSMTP implements Api_Connector {
 	 * @param array $data Optional. Configuration data for the connector.
 	 *
 	 * @since 1.2.0
-	 *
 	 */
 	public function __construct( array $data = [] ) {
 		parent::__construct( $data );
@@ -109,7 +108,7 @@ class ConnectorPostmark extends ConnectorSMTP implements Api_Connector {
 							$attachments[] = [
 								'Name'        => basename( $attachment_file ),
 								'Content'     => base64_encode( $file_content ),
-								'ContentType' => mime_content_type( $attachment_file )
+								'ContentType' => mime_content_type( $attachment_file ),
 							];
 						}
 					}
@@ -122,8 +121,8 @@ class ConnectorPostmark extends ConnectorSMTP implements Api_Connector {
 				'To'            => $to,
 				'Subject'       => $email_data['subject'],
 				'HtmlBody'      => $email_data['raw_body'],
-				'TextBody'      => strip_tags( $email_data['raw_body'] ),
-				'MessageStream' => 'outbound'
+				'TextBody'      => wp_strip_all_tags( $email_data['raw_body'] ),
+				'MessageStream' => 'outbound',
 			];
 
 			// if this is plain text then force to remove the HTML.
@@ -151,10 +150,11 @@ class ConnectorPostmark extends ConnectorSMTP implements Api_Connector {
 					'headers' => [
 						'Accept'                  => 'application/json',
 						'Content-Type'            => 'application/json',
-						'X-Postmark-Server-Token' => $this->smtp_username
+						'X-Postmark-Server-Token' => $this->smtp_username,
 					],
 					'body'    => wp_json_encode( $body ),
-					'timeout' => 15
+					// phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout
+					'timeout' => 15, // @TODO: can we decrease timeout?
 				]
 			);
 
@@ -167,9 +167,7 @@ class ConnectorPostmark extends ConnectorSMTP implements Api_Connector {
 			$response_data = json_decode( $response_body, true );
 
 			if ( $response_code !== 200 ) {
-				$error_message = isset( $response_data['Message'] )
-					? $response_data['Message']
-					: 'Unknown error occurred';
+				$error_message = $response_data['Message'] ?? 'Unknown error occurred';
 
 				return new WP_Error( 'postmark_api_error', $error_message );
 			}
@@ -193,10 +191,16 @@ class ConnectorPostmark extends ConnectorSMTP implements Api_Connector {
 	 * @return string Formatted string of email addresses.
 	 */
 	private function format_address_list( array $addresses ): string {
-		return implode( ',', array_map( function ( $address ) {
-			return ! empty( $address[1] ) ?
-				sprintf( '%s <%s>', $address[1], $address[0] ) :
-				$address[0];
-		}, $addresses ) );
+		return implode(
+			',',
+			array_map(
+				function ( $address ) {
+					return ! empty( $address[1] ) ?
+					sprintf( '%s <%s>', $address[1], $address[0] ) :
+					$address[0];
+				},
+				$addresses 
+			) 
+		);
 	}
 }

@@ -193,7 +193,7 @@ To reset your password, visit the following address:";s:31:"kt_woomail[email_loa
 			// Setup internal vars.
 			$kt_woomail_import_error = false;
 			$template                = 'kadence-woomail-designer';
-			$overrides               = array( 'test_form' => false, 'test_type' => false, 'mimes' => array( 'dat' => 'text/plain', 'json' => 'text/plain' ) );
+			$overrides               = array( 'test_form' => false, 'test_type' => true, 'mimes' => array( 'dat' => 'text/plain', 'json' => 'text/plain' ) );
 			$file                    = wp_handle_upload( $_FILES['kadence-woomail-import-file'], $overrides );
 
 			// Make sure we have an uploaded file.

@@ -76,8 +76,11 @@ class LogsRepository {
 			);
 		}
 
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// @TODO: Consider using wp_cache_get() / wp_cache_set() or wp_cache_delete()
 		$data = $wpdb->get_results(
 			$wpdb->prepare(
+				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 				"SELECT * FROM {$this->table} {$search_sql} ORDER BY {$valid_orderby} {$valid_order} LIMIT %d OFFSET %d",
 				$per_page,
 				$offset
@@ -112,9 +115,10 @@ class LogsRepository {
 
 		$data = $wpdb->get_results(
 			$wpdb->prepare(
+				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 				"SELECT * FROM {$this->table} WHERE `timestamp` BETWEEN %s AND %s ORDER BY `timestamp` ASC",
-				wp_date('Y-m-d H:i:s', $from),
-				wp_date('Y-m-d H:i:s', $to)
+				wp_date( 'Y-m-d H:i:s', $from ),
+				wp_date( 'Y-m-d H:i:s', $to )
 			),
 			ARRAY_A
 		);
@@ -162,6 +166,7 @@ class LogsRepository {
 
 		$placeholders = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
 		$results      = $wpdb->query(
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
 			$wpdb->prepare( "DELETE FROM {$this->table} WHERE mail_id IN ($placeholders)", $ids )
 		);
 
@@ -194,8 +199,10 @@ class LogsRepository {
 
 		return absint(
 			$wpdb->get_var(
+				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 				"SELECT COUNT(*) FROM {$this->table} $search_sql"
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	}
 }

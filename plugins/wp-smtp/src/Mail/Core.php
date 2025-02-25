@@ -10,9 +10,7 @@
 namespace SolidWP\Mail;
 
 use InvalidArgumentException;
-use SolidWP\Mail\Admin\ScreenConnectors;
 use SolidWP\Mail\Psr\Container\ContainerInterface as PsrContainerInterface;
-use SolidWP\Mail\Repository\ProvidersRepository;
 use SolidWP\Mail\StellarWP\Assets\Config as Assets_Config;
 use SolidWP\Mail\StellarWP\ContainerContract\ContainerInterface;
 use SolidWP\Mail\StellarWP\Validation\Config;

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd0d553f81d690a6e3257f4c6e3b3c5db
+class ComposerStaticInit412aa77a091b9763219f44ee3b500769
 {
     public static $prefixLengthsPsr4 = array (
         'l' => 
@@ -21,9 +21,11 @@ class ComposerStaticInitd0d553f81d690a6e3257f4c6e3b3c5db
             'StellarWP\\Telemetry\\Views_Dir\\' => 30,
             'StellarWP\\Telemetry\\Assets_Dir\\' => 31,
             'StellarWP\\Telemetry\\' => 20,
+            'StellarWP\\SuperGlobals\\' => 23,
             'StellarWP\\FieldConditions\\' => 26,
             'StellarWP\\ContainerContract\\' => 28,
             'StellarWP\\Assets\\' => 17,
+            'StellarWP\\Arrays\\' => 17,
             'SolidWP\\' => 8,
         ),
         'P' => 
@@ -57,6 +59,10 @@ class ComposerStaticInitd0d553f81d690a6e3257f4c6e3b3c5db
         array (
             0 => __DIR__ . '/..' . '/stellarwp/telemetry/src/Telemetry',
         ),
+        'StellarWP\\SuperGlobals\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stellarwp/superglobals/src/SuperGlobals',
+        ),
         'StellarWP\\FieldConditions\\' => 
         array (
             0 => __DIR__ . '/..' . '/stellarwp/field-conditions/src',
@@ -68,6 +74,10 @@ class ComposerStaticInitd0d553f81d690a6e3257f4c6e3b3c5db
         'StellarWP\\Assets\\' => 
         array (
             0 => __DIR__ . '/..' . '/stellarwp/assets/src/Assets',
+        ),
+        'StellarWP\\Arrays\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stellarwp/arrays/src/Arrays',
         ),
         'SolidWP\\' => 
         array (
@@ -86,9 +96,9 @@ class ComposerStaticInitd0d553f81d690a6e3257f4c6e3b3c5db
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd0d553f81d690a6e3257f4c6e3b3c5db::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd0d553f81d690a6e3257f4c6e3b3c5db::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitd0d553f81d690a6e3257f4c6e3b3c5db::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit412aa77a091b9763219f44ee3b500769::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit412aa77a091b9763219f44ee3b500769::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit412aa77a091b9763219f44ee3b500769::$classMap;
 
         }, null, ClassLoader::class);
     }

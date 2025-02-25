@@ -22,7 +22,7 @@ class Health_Data {
 	 * @param ProvidersRepository $providers_repository
 	 */
 	public function __construct( LogsRepository $logs_repository, ProvidersRepository $providers_repository ) {
-		$this->logs_repository = $logs_repository;
+		$this->logs_repository      = $logs_repository;
 		$this->providers_repository = $providers_repository;
 	}
 
@@ -38,29 +38,29 @@ class Health_Data {
 	 * @return array
 	 */
 	public function add_summary_to_telemetry( array $info ): array {
-		$active_provider       = $this->providers_repository->get_active_provider();
-		$brevo_connections     = 0;
-		$mailgun_connections   = 0;
-		$sendgrid_connections  = 0;
-		$ses_connections       = 0;
-		$smtp_connections      = 0;
-		$all_providers         = $this->providers_repository->get_all_providers();
+		$active_provider      = $this->providers_repository->get_active_provider();
+		$brevo_connections    = 0;
+		$mailgun_connections  = 0;
+		$sendgrid_connections = 0;
+		$ses_connections      = 0;
+		$smtp_connections     = 0;
+		$all_providers        = $this->providers_repository->get_all_providers();
 		foreach ( $all_providers as $provider ) {
 			if ( $provider->get_name() === 'brevo' ) {
-				$brevo_connections++;
+				++$brevo_connections;
 			} elseif ( $provider->get_name() === 'mailgun' ) {
-				$mailgun_connections++;
+				++$mailgun_connections;
 			} elseif ( $provider->get_name() === 'sendgrid' ) {
-				$sendgrid_connections++;
+				++$sendgrid_connections;
 			} elseif ( $provider->get_name() === 'amazon_ses' ) {
-				$ses_connections++;
+				++$ses_connections;
 			} elseif ( $provider->get_name() === 'other' ) {
-				$smtp_connections++;
+				++$smtp_connections;
 			}
 		}
 
 		// Get count of all logs for mail sends
-		$number_of_logs        = $this->logs_repository->count_all_logs();
+		$number_of_logs = $this->logs_repository->count_all_logs();
 
 		$active_provider_name = is_object( $active_provider ) ? $active_provider->get_name() : 'n/a';
 		$active_provider_name = $active_provider_name === 'other' ? 'SMTP' : ucfirst( $active_provider_name );
@@ -102,8 +102,8 @@ class Health_Data {
 					'label' => esc_html__( 'Number of sent emails', 'LION' ),
 					'value' => $number_of_logs,
 					'debug' => $number_of_logs,
-				]
-			]
+				],
+			],
 		];
 
 		return $info;

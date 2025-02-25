@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce 9.7.0-rc.1\n"
+"Project-Id-Version: WooCommerce 9.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-11T14:30:16+00:00\n"
+"POT-Creation-Date: 2025-02-19T18:35:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: woocommerce\n"
@@ -9368,7 +9368,7 @@ msgstr ""
 #: includes/admin/class-wc-admin-reports.php:152
 #: includes/admin/list-tables/class-wc-admin-list-table-products.php:279
 #: includes/admin/reports/class-wc-report-stock.php:120
-#: includes/wc-product-functions.php:998
+#: includes/wc-product-functions.php:999
 #: src/Internal/Features/ProductBlockEditor/ProductTemplates/ProductVariationTemplate.php:396
 #: src/Internal/Features/ProductBlockEditor/ProductTemplates/SimpleProductTemplate.php:857
 #: assets/client/admin/chunks/analytics-report-stock.js:1
@@ -14403,7 +14403,7 @@ msgstr ""
 
 #: includes/admin/list-tables/class-wc-admin-list-table-products.php:275
 #: includes/admin/reports/class-wc-report-stock.php:116
-#: includes/wc-product-functions.php:999
+#: includes/wc-product-functions.php:1000
 #: src/Internal/Features/ProductBlockEditor/ProductTemplates/ProductVariationTemplate.php:400
 #: src/Internal/Features/ProductBlockEditor/ProductTemplates/SimpleProductTemplate.php:861
 #: assets/client/admin/chunks/analytics-report-stock.js:1
@@ -14414,7 +14414,7 @@ msgstr ""
 #: includes/admin/list-tables/class-wc-admin-list-table-products.php:277
 #: includes/admin/reports/class-wc-report-stock.php:118
 #: includes/wc-formatting-functions.php:1256
-#: includes/wc-product-functions.php:997
+#: includes/wc-product-functions.php:998
 #: src/Internal/Features/ProductBlockEditor/ProductTemplates/ProductVariationTemplate.php:392
 #: src/Internal/Features/ProductBlockEditor/ProductTemplates/SimpleProductTemplate.php:853
 #: assets/client/admin/chunks/analytics-report-stock.js:1
@@ -18639,7 +18639,7 @@ msgstr ""
 #: includes/admin/settings/views/html-settings-tax.php:24
 #: includes/admin/views/html-bulk-edit-product.php:97
 #: includes/admin/views/html-quick-edit-product.php:72
-#: includes/wc-product-functions.php:977
+#: includes/wc-product-functions.php:978
 msgid "Standard"
 msgstr ""
 
@@ -19978,7 +19978,7 @@ msgstr ""
 #: includes/admin/views/html-bulk-edit-product.php:230
 #: includes/admin/views/html-quick-edit-product.php:148
 #: includes/customizer/class-wc-shop-customizer.php:766
-#: includes/wc-product-functions.php:963
+#: includes/wc-product-functions.php:964
 #: assets/client/admin/product-editor/index.js:2
 msgid "Hidden"
 msgstr ""
@@ -21536,7 +21536,7 @@ msgid "required"
 msgstr ""
 
 #: includes/class-wc-frontend-scripts.php:573
-#: includes/wc-template-functions.php:3039
+#: includes/wc-template-functions.php:3051
 msgid "optional"
 msgstr ""
 
@@ -23048,7 +23048,7 @@ msgstr ""
 
 #: includes/class-wc-privacy.php:124
 #: src/Admin/Features/Blueprint/Exporters/ExportWCPaymentGateways.php:81
-#: src/Internal/Admin/Settings/PaymentsController.php:72
+#: src/Internal/Admin/Settings/PaymentsController.php:106
 #: src/Internal/Admin/WcPayWelcomePage.php:93
 #: assets/client/admin/chunks/4457.js:1
 msgid "Payments"
@@ -26784,7 +26784,7 @@ msgstr ""
 #: includes/rest-api/Controllers/Version1/class-wc-rest-products-v1-controller.php:318
 #: includes/rest-api/Controllers/Version2/class-wc-rest-products-v2-controller.php:447
 #: includes/rest-api/Controllers/Version2/class-wc-rest-products-v2-controller.php:448
-#: includes/wc-product-functions.php:369
+#: includes/wc-product-functions.php:370
 #: assets/client/blocks/order-confirmation-additional-fields.js:1
 #: assets/client/blocks/order-confirmation-billing-address.js:1
 #: assets/client/blocks/order-confirmation-shipping-address.js:1
@@ -31154,46 +31154,46 @@ msgstr ""
 msgid "%1$s should not be called before the %2$s, %3$s and %4$s actions have finished."
 msgstr ""
 
-#: includes/wc-product-functions.php:645
+#: includes/wc-product-functions.php:646
 msgid "Simple product"
 msgstr ""
 
-#: includes/wc-product-functions.php:646
+#: includes/wc-product-functions.php:647
 #: src/Admin/Features/ProductBlockEditor/Init.php:297
 #: assets/client/admin/chunks/6262.js:1
 msgid "Grouped product"
 msgstr ""
 
-#: includes/wc-product-functions.php:647
+#: includes/wc-product-functions.php:648
 msgid "External/Affiliate product"
 msgstr ""
 
-#: includes/wc-product-functions.php:648
+#: includes/wc-product-functions.php:649
 #: assets/client/admin/chunks/6262.js:1
 msgid "Variable product"
 msgstr ""
 
-#: includes/wc-product-functions.php:960
+#: includes/wc-product-functions.php:961
 msgid "Shop and search results"
 msgstr ""
 
-#: includes/wc-product-functions.php:961
+#: includes/wc-product-functions.php:962
 msgid "Shop only"
 msgstr ""
 
-#: includes/wc-product-functions.php:962
+#: includes/wc-product-functions.php:963
 msgid "Search results only"
 msgstr ""
 
-#: includes/wc-product-functions.php:1012
+#: includes/wc-product-functions.php:1013
 msgid "Do not allow"
 msgstr ""
 
-#: includes/wc-product-functions.php:1013
+#: includes/wc-product-functions.php:1014
 msgid "Allow, but notify customer"
 msgstr ""
 
-#: includes/wc-product-functions.php:1014
+#: includes/wc-product-functions.php:1015
 msgid "Allow"
 msgstr ""
 
@@ -35173,24 +35173,24 @@ msgstr ""
 msgid "Task is not a subclass of `Task`"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/TaskLists.php:148
+#: src/Admin/Features/OnboardingTasks/TaskLists.php:146
 msgid "Get ready to start selling"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/TaskLists.php:162
+#: src/Admin/Features/OnboardingTasks/TaskLists.php:160
 #: assets/client/admin/app/index.js:2
 msgid "Things to do next"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/TaskLists.php:263
+#: src/Admin/Features/OnboardingTasks/TaskLists.php:261
 msgid "Task list ID already exists"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/TaskLists.php:283
+#: src/Admin/Features/OnboardingTasks/TaskLists.php:281
 msgid "Task list ID does not exist"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/TaskLists.php:453
+#: src/Admin/Features/OnboardingTasks/TaskLists.php:451
 msgctxt "Admin menu name"
 msgid "Home"
 msgstr ""
@@ -35200,14 +35200,14 @@ msgid "Set up additional payment options"
 msgstr ""
 
 #: src/Admin/Features/OnboardingTasks/Tasks/AdditionalPayments.php:56
-#: src/Admin/Features/OnboardingTasks/Tasks/Payments.php:45
+#: src/Admin/Features/OnboardingTasks/Tasks/Payments.php:44
 msgid "Choose payment providers and enable payment methods at checkout."
 msgstr ""
 
 #: src/Admin/Features/OnboardingTasks/Tasks/AdditionalPayments.php:68
 #: src/Admin/Features/OnboardingTasks/Tasks/Appearance.php:61
 #: src/Admin/Features/OnboardingTasks/Tasks/Marketing.php:56
-#: src/Admin/Features/OnboardingTasks/Tasks/Payments.php:57
+#: src/Admin/Features/OnboardingTasks/Tasks/Payments.php:56
 #: src/Admin/Features/OnboardingTasks/Tasks/WooCommercePayments.php:93
 msgid "2 minutes"
 msgstr ""
@@ -35263,7 +35263,7 @@ msgstr ""
 msgid "Add recommended marketing tools to reach new customers and grow your business"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/Tasks/Payments.php:36
+#: src/Admin/Features/OnboardingTasks/Tasks/Payments.php:35
 #: assets/client/admin/app/index.js:2
 msgid "Get paid"
 msgstr ""
@@ -49935,10 +49935,6 @@ msgid "Installing"
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "More payment options"
-msgstr ""
-
-#: assets/client/admin/chunks/settings-payments-main.js:1
 msgid "Currently selected: %s"
 msgstr ""
 
@@ -50103,6 +50099,10 @@ msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
 msgid "%s: There was a problem connecting your WordPress.com account — please try again."
+msgstr ""
+
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "More payment options"
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-methods.js:1

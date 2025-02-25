@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @package Solid_SMTP
  */
-class App extends DI52App{
+class App extends DI52App {
 
 	/**
 	 * A reference to the singleton instance of the DI container

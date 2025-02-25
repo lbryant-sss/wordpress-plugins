@@ -2,9 +2,6 @@
 
 namespace SolidWP\Mail;
 
-use SolidWP\Mail\Repository\LogsRepository;
-use SolidWP\Mail\Repository\ProvidersRepository;
-
 /**
  * Class AbstractComponent
  *

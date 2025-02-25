@@ -25,7 +25,7 @@ class Modal {
 			return $args;
 		}
 
-		$args['plugin_logo'] = WPSMTP_ASSETS_URL . 'images/solid-mail-logo.png';
+		$args['plugin_logo']        = WPSMTP_ASSETS_URL . 'images/solid-mail-logo.png';
 		$args['plugin_logo_width']  = 233;
 		$args['plugin_logo_height'] = 48;
 		$args['permissions_url']    = 'https://go.solidwp.com/solid-mail-opt-in-usage-sharing';
