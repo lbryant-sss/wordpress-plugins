@@ -32,7 +32,7 @@ class Aggregator
         $pageview_aggregator = new Pageview_Aggregator();
 
         // rename file to temporary location so nothing new is written to it while we process it
-        $tmp_filename = \dirname($buffer_file) . '/events-buffer.' . \time() . '.php';
+        $tmp_filename = $buffer_file . '.busy';
         $renamed = \rename($buffer_file, $tmp_filename);
         if ($renamed !== true) {
             if (WP_DEBUG) {
@@ -54,9 +54,6 @@ class Aggregator
             return;
         }
 
-        // read and ignore first line (the PHP header that prevents direct file access)
-        \fgets($file_handle);
-
         while (($line = \fgets($file_handle)) !== false) {
             $line = \trim($line);
             if ($line === '' || $line === '<?php exit; ?>') {
@@ -66,6 +63,7 @@ class Aggregator
             $params = \unserialize($line, ['allowed_classes' => false]);
             if (! \is_array($params)) {
                 error_log('Koko Analytics: unserialize error encountered while processing line in buffer file');
+                continue;
             }
             $type   = \array_shift($params);
 

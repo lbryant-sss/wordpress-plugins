@@ -30,7 +30,7 @@ class Testimonial_Carousel extends Base {
 	}
 
 	public function get_style_depends() {
-		return [ 'e-swiper', 'swiper' ];
+		return [ 'e-swiper', 'swiper', 'elementor-icons' ];
 	}
 
 	protected function register_controls() {

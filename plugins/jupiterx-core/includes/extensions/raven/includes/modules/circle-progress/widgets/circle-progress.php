@@ -345,6 +345,7 @@ class Circle_Progress extends Base_Widget {
 				'selectors' => [
 					'{{WRAPPER}} .raven-circle-progress-meter'  => 'stroke: {{VALUE}};',
 				],
+				'frontend_available' => 'true',
 			]
 		);
 
@@ -358,6 +359,7 @@ class Circle_Progress extends Base_Widget {
 				'selectors' => [
 					'{{WRAPPER}} .raven-circle-progress-value'  => 'stroke: {{VALUE}};',
 				],
+				'frontend_available' => 'true',
 			]
 		);
 

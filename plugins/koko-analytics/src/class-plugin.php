@@ -32,8 +32,33 @@ class Plugin
     public static function remove_optimized_endpoint(): void
     {
         // delete custom endpoint file
-        if (file_exists(ABSPATH . '/koko-analytics-collect.php')) {
-            unlink(ABSPATH . '/koko-analytics-collect.php');
+        if (file_exists(rtrim(ABSPATH, '/') . '/koko-analytics-collect.php')) {
+            unlink(rtrim(ABSPATH, '/') . '/koko-analytics-collect.php');
         }
+    }
+
+    public static function create_and_protect_uploads_dir(): void
+    {
+        $filename = get_buffer_filename();
+        $directory = \dirname($filename);
+        if (! \is_dir($directory)) {
+            \mkdir($directory, 0755, true);
+        }
+
+        // create empty index.html to prevent directory listing
+        file_put_contents("$directory/index.html", '');
+
+        // create .htaccess in case we're using apache
+        $lines = [
+            '<IfModule !authz_core_module>',
+            'Order deny,allow',
+            'Deny from all',
+            '</IfModule>',
+            '<IfModule authz_core_module>',
+            'Require all denied',
+            '</IfModule>',
+            '',
+        ];
+        file_put_contents("$directory/.htaccess", join(PHP_EOL, $lines));
     }
 }

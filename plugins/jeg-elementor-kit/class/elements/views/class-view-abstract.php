@@ -101,8 +101,15 @@ class View_Abstract extends Elements_View_Abstract {
 
 		foreach ( explode( ',', $attr['custom_attributes'] ) as $attribute ) {
 			if ( $attribute ) {
-				$value             = explode( '|', $attribute );
-				$custom_attributes = $custom_attributes . ' ' . $value[0] . '="' . $value[1] . '" ';
+				$key_value = explode( '|', $attribute );
+				$key       = $key_value[0];
+				$value     = '';
+
+				if ( isset( $key_value[1] ) ) {
+					$value = trim( $key_value[1] );
+				}
+
+				$custom_attributes = $custom_attributes . ' ' . $key . '="' . $value . '" ';
 			}
 		}
 

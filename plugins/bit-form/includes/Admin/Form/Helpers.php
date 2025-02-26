@@ -314,4 +314,26 @@ LOAD_SECRIPT;
     }
     return self::$encryptEntryIds[$entryId];
   }
+
+  public static function PDFPassHash($entryId)
+  {
+    return abs(crc32($entryId));
+  }
+
+  public static function encryptBinaryData($plaintext)
+  {
+    $iv = openssl_random_pseudo_bytes(16);
+    $encrypted = openssl_encrypt($plaintext, 'AES-256-CBC', BITFORMS_SECRET_KEY, OPENSSL_RAW_DATA, $iv);
+
+    return bin2hex($iv . $encrypted);
+  }
+
+  public static function decryptBinaryData($encryptedHex)
+  {
+    $decoded = hex2bin($encryptedHex);
+    $iv = substr($decoded, 0, 16);
+    $cipherText = substr($decoded, 16);
+
+    return openssl_decrypt($cipherText, 'AES-256-CBC', BITFORMS_SECRET_KEY, OPENSSL_RAW_DATA, $iv);
+  }
 }

@@ -1733,7 +1733,7 @@ class AdminAjax
   {
     if (wp_verify_nonce(sanitize_text_field($_REQUEST['_ajax_nonce']), 'bitforms_save')) {
       if (!function_exists('rwmb_meta')) {
-        wp_send_json_error(__('Meta Box must be activated!', 'bit-integrations'));
+        wp_send_json_error(__('Meta Box must be activated!', 'bit-form'));
       }
 
       $input = json_decode(file_get_contents('php://input'));
@@ -1775,7 +1775,7 @@ class AdminAjax
         wp_send_json_success(
           __(
             'Conversational CSS Saved Successfully!',
-            'bitform'
+            'bit-form'
           ),
           200
         );
@@ -1783,7 +1783,7 @@ class AdminAjax
         wp_send_json_error(
           __(
             'Invalid form id',
-            'bitform'
+            'bit-form'
           ),
           401
         );
@@ -1792,7 +1792,7 @@ class AdminAjax
       wp_send_json_error(
         __(
           'Token expired',
-          'bitform'
+          'bit-form'
         ),
         401
       );

@@ -131,6 +131,24 @@ class Shopping_Cart extends Base_Widget {
 			]
 		);
 
+		$this->add_control(
+			'tap_outside_close',
+			[
+				'label' => esc_html__( 'Tap Outside to Close', 'jupiterx-core' ),
+				'type' => 'switcher',
+				'label_off' => esc_html__( 'No', 'jupiterx-core' ),
+				'label_on' => esc_html__( 'Yes', 'jupiterx-core' ),
+				'default' => 'no',
+				'return_value'       => 'yes',
+				'render_type'        => 'template',
+				'frontend_available' => true,
+				'description'    => esc_html__( 'Close the Cart Quick view when clicking outside of it.', 'jupiterx-core' ),
+				'condition' => [
+					'show_cart_quick_view!' => '',
+				],
+			]
+		);
+
 		$this->end_controls_section();
 	}
 

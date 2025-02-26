@@ -7,7 +7,7 @@ function wpa_load_scripts(){
 }
 
 function wpa_plugin_menu(){
-    add_menu_page( 'WP Armour', 'WP Armour', 'manage_options', 'wp-armour', 'wpa_options','dashicons-shield');
+    add_menu_page( 'WP Armour', 'WP Armour', 'edit_pages', 'wp-armour', 'wpa_options','dashicons-shield');
 }
 
 function wpa_options(){

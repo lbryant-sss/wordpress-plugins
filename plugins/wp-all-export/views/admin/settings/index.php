@@ -126,12 +126,14 @@ if(!defined('ABSPATH')) {
                         <input type="submit" class="button-secondary" name="pmxe_scheduling_license_activate"
                                value="<?php esc_html_e('Activate License', 'wp_all_export_plugin'); ?>"/>
                         <div class="license-status inline error"><?php echo esc_html($post['scheduling_license_status']); ?></div>
+                        <input type="hidden" name="scheduling_license_limit" value="<?php echo get_option('wpai_wpae_scheduling_license_site_limit', 0); ?>">
                     <?php } ?>
 
                 <?php } ?>
                 <?php
                 $scheduling = \Wpae\Scheduling\Scheduling::create();
                 if(!($scheduling->checkLicense()['success'] ?? false)){
+	                require_once(PMXE_Plugin::ROOT_DIR . '/src/Scheduling/views/SchedulingActiveSitesLimitUI.php');
                     ?>
                     <p class="description"><?php echo wp_kses_post(__('A license key is required to use Automatic Scheduling. If you have already subscribed, <a href="https://www.wpallimport.com/portal/automatic-scheduling/" target="_blank">click here to access your license key</a>.<br>If you don\'t have a license, <a class="scheduling-subscribe-link" href="#">click here to subscribe</a>.', 'wp_all_export_plugin')); ?></p>
 	                <?php

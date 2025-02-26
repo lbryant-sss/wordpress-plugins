@@ -581,6 +581,7 @@ class Hotspot extends Base_Widget {
 					'{{WRAPPER}} {{CURRENT_ITEM}}' =>
 							'{{hotspot_horizontal.VALUE}}: {{SIZE}}%; --raven-hotspot-translate-x: {{SIZE}}%;',
 				],
+				'frontend_available' => 'true',
 			]
 		);
 
@@ -618,6 +619,7 @@ class Hotspot extends Base_Widget {
 					'{{WRAPPER}} {{CURRENT_ITEM}}' =>
 							'{{hotspot_vertical.VALUE}}: {{SIZE}}%; --raven-hotspot-translate-y: {{SIZE}}%;',
 				],
+				'frontend_available' => 'true',
 			]
 		);
 

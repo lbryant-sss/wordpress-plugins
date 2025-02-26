@@ -140,7 +140,8 @@ class Frontend {
 		if ( $is_archive_template ) {
 			global $wp_query;
 
-			$args = $wp_query->query_vars;
+			$args                        = $wp_query->query_vars;
+			$args['ignore_sticky_posts'] = true;
 
 			if ( $this->archive_query ) {
 				$args = $this->archive_query;

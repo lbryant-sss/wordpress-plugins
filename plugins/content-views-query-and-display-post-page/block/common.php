@@ -160,7 +160,7 @@ class ContentViews_Block_Common {
 			'title_tags'				 => PT_CV_Values::title_tag(),
 			'content_show'				 => array_merge( PT_CV_Values::content_show() ),
 			'thumb_positions'			 => PT_CV_Values::thumbnail_position(),
-			'img_sizes'					 => PT_CV_Values::field_thumbnail_sizes(),
+			'img_sizes'					 => self::img_size_options(),
 			'img_sub'					 => self::img_sub_options(),
 			'paging_types'				 => PT_CV_Values::pagination_types(),
 			'paging_styles'				 => PT_CV_Values::pagination_styles(),
@@ -434,6 +434,13 @@ class ContentViews_Block_Common {
 		return $result;
 	}
 
+	static function img_size_options() {
+		$arr = PT_CV_Values::field_thumbnail_sizes();
+		// remove this for blocks & widgets
+		unset( $arr[ PT_CV_PREFIX . 'custom' ] );
+		return $arr;
+	}
+
 	static function img_sub_options() {
 		return array(
 			'none'			 => '(' . __( 'None' ) . ')',
@@ -514,7 +521,9 @@ class ContentViews_Block_Common {
 				$field_selector = array( $view_selector . ' .' . PT_CV_PREFIX . 'thumb-wrapper.miniwrap' => array( 'width' ), $field_selector => '' );
 			}
 			if ( $field === 'thumbnailAll' ) {
-				$field_selector = array( $view_selector . ' .' . PT_CV_PREFIX . 'thumb-wrapper' => array( 'margin' ), $view_selector . ' .' . PT_CV_PREFIX . 'thumbnail' => '' );
+				$field_selector = array( $view_selector . ' .' . PT_CV_PREFIX . 'thumb-wrapper' => array( 'margin' ),
+					$view_selector . '[class*="cveffect"]' . ' .' . PT_CV_PREFIX . 'thumb-wrapper' . ', ' . $view_selector . ':not([class*="cveffect"])' . ' .' . PT_CV_PREFIX . 'thumbnail' => array( 'border-style', 'border-color', 'border-width', 'border-radius' ),
+					$view_selector . ' .' . PT_CV_PREFIX . 'thumbnail' => '' );
 			}
 			if ( $field === 'readmore' ) {
 				$field_selector = array( $view_selector . ' .' . PT_CV_PREFIX . 'rmwrap' => array( 'text-align' ), $field_selector => '' );

@@ -13,3 +13,15 @@ div.pt-cv-pinterest .pt-cv-page::before {
 
 /* Show loading icon for Preview only */
 .pt-cv-pginfinite+.pt-cv-pagination-wrapper .pt-cv-more[data-elpreview] + .pt-cv-spinner {opacity: 1 !important}
+
+
+/* Style in Editor output */
+.cv-elementor-wid {
+	background: #ececec;
+	display: inline-block;
+	font-size: 13px;
+	font-family: monospace;
+}
+body.elementor-editor-active .pt-cv-wrapper:hover .cv-elementor-wid {
+	opacity: 1 !important;
+}

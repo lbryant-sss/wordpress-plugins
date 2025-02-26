@@ -245,7 +245,6 @@ final class FrontendFormManager extends FormManager
       foreach ($formFields as $key => $field) {
         if ('signature' === $field['type']) {
           $saveResponse['fields'][$key] = $uploadPath . DIRECTORY_SEPARATOR . $saveResponse['fields'][$key];
-          break;
         }
       }
 

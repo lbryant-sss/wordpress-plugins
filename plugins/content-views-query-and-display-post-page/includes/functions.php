@@ -1382,7 +1382,9 @@ if ( !class_exists( 'PT_CV_Functions' ) ) {
 			$filters_bak = $wp_filter;
 
 			remove_all_filters( 'paginate_links' );
-			remove_all_filters( 'get_pagenum_link' );
+			if ( !cv_is_active_plugin( 'polylang' ) ) {
+				remove_all_filters( 'get_pagenum_link' );
+			}
 			add_filter( 'paginate_links', array( __CLASS__, 'remove_pagination_params' ) );
 
 			$params = array(

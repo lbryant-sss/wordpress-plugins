@@ -84,7 +84,7 @@ class Testimonials_View extends View_Abstract {
 		foreach ( $this->attribute['sg_testimonials_list'] as $testimonial ) {
 			$client_name        = esc_attr( $testimonial['sg_testimonials_list_client_name'] );
 			$client_designation = esc_attr( $testimonial['sg_testimonials_list_designation'] );
-			$client_review      = esc_attr( $testimonial['sg_testimonials_list_review'] );
+			$client_review      = wp_kses_post( $testimonial['sg_testimonials_list_review'] );
 			$id                 = 'elementor-repeater-item-' . esc_attr( $testimonial['_id'] );
 			$rating_stars       = 'yes' === $this->attribute['sg_setting_rating'] ? $this->render_rating( floatval( $testimonial['sg_testimonials_list_rating']['size'] ) ) : '';
 			$icon_content       = '<div class="' . $icon_class . '">' . $icon . '</div>';
@@ -148,7 +148,7 @@ class Testimonials_View extends View_Abstract {
 		foreach ( $this->attribute['sg_testimonials_list'] as $testimonial ) {
 			$client_name        = esc_attr( $testimonial['sg_testimonials_list_client_name'] );
 			$client_designation = esc_attr( $testimonial['sg_testimonials_list_designation'] );
-			$client_review      = esc_attr( $testimonial['sg_testimonials_list_review'] );
+			$client_review      = wp_kses_post( $testimonial['sg_testimonials_list_review'] );
 			$id                 = 'elementor-repeater-item-' . esc_attr( $testimonial['_id'] );
 			$rating_stars       = 'yes' === $this->attribute['sg_setting_rating'] ? $this->render_rating( floatval( $testimonial['sg_testimonials_list_rating']['size'] ) ) : '';
 			$icon_content       = '<div class="' . $icon_class . '">' . $icon . '</div>';
@@ -220,7 +220,7 @@ class Testimonials_View extends View_Abstract {
 		foreach ( $this->attribute['sg_testimonials_list'] as $testimonial ) {
 			$client_name        = esc_attr( $testimonial['sg_testimonials_list_client_name'] );
 			$client_designation = esc_attr( $testimonial['sg_testimonials_list_designation'] );
-			$client_review      = esc_attr( $testimonial['sg_testimonials_list_review'] );
+			$client_review      = wp_kses_post( $testimonial['sg_testimonials_list_review'] );
 			$id                 = 'elementor-repeater-item-' . esc_attr( $testimonial['_id'] );
 			$rating_stars       = 'yes' === $this->attribute['sg_setting_rating'] ? $this->render_rating( floatval( $testimonial['sg_testimonials_list_rating']['size'] ) ) : '';
 			$icon_content       = '<div class="' . $icon_class . '">' . $icon . '</div>';
@@ -281,7 +281,7 @@ class Testimonials_View extends View_Abstract {
 		foreach ( $this->attribute['sg_testimonials_list'] as $testimonial ) {
 			$client_name        = esc_attr( $testimonial['sg_testimonials_list_client_name'] );
 			$client_designation = esc_attr( $testimonial['sg_testimonials_list_designation'] );
-			$client_review      = esc_attr( $testimonial['sg_testimonials_list_review'] );
+			$client_review      = wp_kses_post( $testimonial['sg_testimonials_list_review'] );
 			$id                 = 'elementor-repeater-item-' . esc_attr( $testimonial['_id'] );
 			$rating_stars       = 'yes' === $this->attribute['sg_setting_rating'] ? $this->render_rating( floatval( $testimonial['sg_testimonials_list_rating']['size'] ) ) : '';
 			$icon_content       = '<div class="' . $icon_class . '">' . $icon . '</div>';

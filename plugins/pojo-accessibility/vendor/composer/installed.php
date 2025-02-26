@@ -3,7 +3,7 @@
         'name' => 'pojome/pojo-accessibility',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '9c31ef5d593414624a333d51864c9f40d6b250c0',
+        'reference' => '2066da1d9ed7617b928b194a1e4fcb9009f6992f',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'pojome/pojo-accessibility' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '9c31ef5d593414624a333d51864c9f40d6b250c0',
+            'reference' => '2066da1d9ed7617b928b194a1e4fcb9009f6992f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

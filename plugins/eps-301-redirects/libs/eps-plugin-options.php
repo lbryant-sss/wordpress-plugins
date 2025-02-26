@@ -127,16 +127,11 @@ if (!class_exists('EPS_Redirects_Plugin_Options')) {
 
       foreach ($this->settings as $section => $args) {
 
-        register_setting(
-          $this->setting_slug($section),
-          $this->setting_slug($section),
-          array($this, 'sanitize_inputs')
-        );
+        register_setting($this->setting_slug($section), $this->setting_slug($section), array($this, 'sanitize_inputs')); //phpcs:ignore
 
         add_settings_section(
           $this->setting_slug($section),
           $args['title'],
-          // array( $this, 'section_'.$section.'_callback'),
           array($this, 'section_callback'),
           $this->plugin->config('option_slug')  . '_' . $section
         );

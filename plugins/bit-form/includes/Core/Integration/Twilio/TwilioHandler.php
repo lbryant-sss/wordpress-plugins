@@ -45,7 +45,7 @@ final class TwilioHandler
         wp_send_json_error(
           __(
             'Requested parameter is empty',
-            'bit-integrations'
+            'bit-form'
           ),
           400
         );
@@ -90,7 +90,7 @@ final class TwilioHandler
       || empty($from_num)
       || empty($fieldMap)
     ) {
-      $error = new WP_Error('REQ_FIELD_EMPTY', __('SID, Auth Token,From Number and mapping fields are required for rapidmail api', 'bitform'));
+      $error = new WP_Error('REQ_FIELD_EMPTY', __('SID, Auth Token,From Number and mapping fields are required for rapidmail api', 'bit-form'));
       return $error;
     }
     $recordApiHelper = new RecordApiHelper($integrationDetails, $sid, $token, $from_num, $logID, $this->_formID, $entryID);

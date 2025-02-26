@@ -29,13 +29,19 @@ class Off_Canvas_View extends View_Abstract {
 		$panel_position = ! empty( $this->attribute['st_panel_position'] ) ? esc_attr( $this->attribute['st_panel_position'] ) : 'right';
 		$toggle_type    = esc_attr( $this->attribute['sg_setting_open_type'] );
 		$close_icon     = $this->render_icon_element( $this->attribute['sg_setting_close_icon'] );
-		$template       = Plugin::$instance->frontend->get_builder_content( $this->attribute['sg_setting_template'], true );
 		$link_attr      = array(
 			'url'               => '#',
 			'is_external'       => '',
 			'nofollow'          => '',
 			'custom_attributes' => 'aria-label|Off Canvas Button',
 		);
+
+		$template_id = jkit_get_selected_elementor_template( $this->attribute['sg_setting_template'] );
+		$template    = '';
+
+		if ( $template_id ) {
+			$template = Plugin::$instance->frontend->get_builder_content( $template_id, true );
+		}
 
 		if ( 'icon' === $toggle_type ) {
 			$icon = $this->render_icon_element( $this->attribute['sg_setting_open_icon'] );

@@ -877,7 +877,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
       if (null !== $reportIsDefault) {
         $updated_data['form_content']['is_default'] = $reportIsDefault;
       }
-      $updated_data['message'] = __('Form updated successfully.', 'bitform');
+      $updated_data['message'] = __('Form updated successfully.', 'bit-form');
       return $updated_data;
     }
   }
@@ -1936,7 +1936,11 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
     // $formEntry = new FormEntryModel();
 
     $entries = $entryMeta->getSingleEntryMeta($formFields, $entryId);
-    return $entries[0];
+
+    if (!is_wp_error($entries)) {
+      return $entries[0];
+    }
+    return new WP_Error('entry_not_fonud', __('Entry Not Found!', 'bit-form'));
 
     // $customFieldHandler = new CustomFieldHandler();
     // $formEntries = $customFieldHandler->updatedEntries($formEntries, $fieldDetails);
@@ -2603,7 +2607,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
     }
 
     $canSave = null;
-    switch($paySetting->type) {
+    switch ($paySetting->type) {
       case 'PayPal':
         $canSave = $this->addWebhookToPaypal($paySetting);
         break;

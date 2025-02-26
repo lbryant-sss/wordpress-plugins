@@ -469,6 +469,26 @@ if ( ! function_exists( 'jkit_get_elementor_saved_template_option' ) ) {
 	}
 }
 
+if ( ! function_exists( 'jkit_get_selected_elementor_template' ) ) {
+	/**
+	 * Get the valid Elementor Template ID
+	 *
+	 * @param int|string $template_id Template ID.
+	 * @param array      $args Query args.
+	 *
+	 * @return array
+	 */
+	function jkit_get_selected_elementor_template( $template_id, $args = array() ) {
+		$available_templates = jkit_get_elementor_saved_template_option( $args );
+
+		if ( ! empty( $available_templates ) && array_key_exists( $template_id, $available_templates ) ) {
+			return $template_id;
+		}
+
+		return false;
+	}
+}
+
 if ( ! function_exists( 'jkit_get_responsive_breakpoints' ) ) {
 	/**
 	 * Get Elementor responsive breakpoints
@@ -487,6 +507,7 @@ if ( ! function_exists( 'jkit_get_responsive_breakpoints' ) ) {
 					array(
 						'key'   => $key,
 						'value' => $breakpoint->get_value(),
+						'label' => $breakpoint->get_label(),
 					)
 				);
 			}

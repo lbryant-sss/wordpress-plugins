@@ -547,6 +547,10 @@ class JupiterX_Core_Condition_Manager {
 		$filtered = [];
 		$to_check = [ 'entire' ];
 
+		if ( ! is_array( $conditions ) ) {
+			return $filtered;
+		}
+
 		foreach ( $conditions as $condition ) {
 			$condition_b = $condition['conditionB'];
 			$condition_c = $condition['conditionC'];

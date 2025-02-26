@@ -22,6 +22,8 @@ define('BITFORMS_UPLOAD_BASE_URL', $wpUploadBaseURL . '/bitforms');
 define('BITFORMS_BF_SEPARATOR', '__bf__');
 define('BITFORMS_PREFIX', 'bitforms_');
 
+define('BITFORMS_SECRET_KEY', hash('sha256', 'bf-strong-cipher-secret-key', true));
+
 if (!defined('AUTH_SALT')) {
   define('AUTH_SALT', random_bytes(32));
 }

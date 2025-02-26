@@ -131,7 +131,7 @@ if ( !class_exists( 'ContentViews_Elementor_Style_Controls' ) ) {
 					'options'	 => ContentViews_Elementor_Widget::_get_options( 'border_styles' ),
 					'default'	 => ContentViews_Elementor_Widget::_get_default_val( 'border_styles' ),
 					'selectors' => [
-						"{{WRAPPER}} {$prefix}thumbnail" => 'border-style: {{VALUE}};'
+						"{{WRAPPER}} {$prefix}view[class*='cveffect'] {$prefix}thumb-wrapper, {{WRAPPER}} {$prefix}view:not([class*='cveffect']) {$prefix}thumbnail" => 'border-style: {{VALUE}};'
 					],
 				],
 				"thumbnailAllBorderWidth" =>
@@ -149,7 +149,7 @@ if ( !class_exists( 'ContentViews_Elementor_Style_Controls' ) ) {
 						],
 					],
 					'selectors' => [
-						"{{WRAPPER}} {$prefix}thumbnail" => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+						"{{WRAPPER}} {$prefix}view[class*='cveffect'] {$prefix}thumb-wrapper, {{WRAPPER}} {$prefix}view:not([class*='cveffect']) {$prefix}thumbnail" => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 					],
 				],
 				"thumbnailAllBorderColor" =>
@@ -166,7 +166,7 @@ if ( !class_exists( 'ContentViews_Elementor_Style_Controls' ) ) {
 						],
 					],
 					'selectors' => [
-						"{{WRAPPER}} {$prefix}thumbnail" => 'border-color: {{VALUE}};'
+						"{{WRAPPER}} {$prefix}view[class*='cveffect'] {$prefix}thumb-wrapper, {{WRAPPER}} {$prefix}view:not([class*='cveffect']) {$prefix}thumbnail" => 'border-color: {{VALUE}};'
 					],
 				],
 				"thumbnailAllBorderRadius" =>
@@ -175,7 +175,7 @@ if ( !class_exists( 'ContentViews_Elementor_Style_Controls' ) ) {
 					'type'	 => \Elementor\Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', 'em', 'rem', '%' ],
 					'selectors' => [
-						"{{WRAPPER}} {$prefix}thumbnail" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+						"{{WRAPPER}} {$prefix}view[class*='cveffect'] {$prefix}thumb-wrapper, {{WRAPPER}} {$prefix}view:not([class*='cveffect']) {$prefix}thumbnail" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 					],
 				],
 				"thumbnailAllBoxShadow" =>

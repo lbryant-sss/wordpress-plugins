@@ -186,7 +186,7 @@ class Module extends Module_Base {
 			$image_fit = 'raven-masonry-image';
 		}
 
-		if ( strpos( self::$settings['swap_effect'], 'gallery' ) !== false ) {
+		if ( ! empty( self::$settings['swap_effect'] ) && strpos( self::$settings['swap_effect'], 'gallery' ) !== false ) {
 			$image_fit = '';
 		}
 
@@ -300,10 +300,6 @@ class Module extends Module_Base {
 			if ( 'outside' === $location && 'overlay' === $layout ) {
 				add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 999 );
 			}
-		}
-
-		if ( function_exists( 'woocommerce_show_product_loop_sale_flash' ) && 'sellkit_get_products' === $request_action ) {
-			add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
 		}
 	}
 

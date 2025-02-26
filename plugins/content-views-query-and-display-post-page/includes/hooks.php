@@ -439,8 +439,8 @@ if ( !class_exists( 'PT_CV_Hooks' ) ) {
 				}
 
 				foreach ( $args[ 'fields' ] as $idx => $field ) {
-					if ( $field !== 'title' && strpos( $field, 'woo' ) === false && !PT_CV_Functions::setting_value( PT_CV_PREFIX . "show-field-$field-Others" ) ) {
-						unset( $args[ 'fields' ][ $idx ] );
+					if ( apply_filters( PT_CV_PREFIX_ . 'unset_fields', $field !== 'title', $field ) && strpos( $field, 'woo' ) === false && !PT_CV_Functions::setting_value( PT_CV_PREFIX . "show-field-$field-Others" ) ) {
+                        unset( $args[ 'fields' ][ $idx ] );
 					}
 				}
 

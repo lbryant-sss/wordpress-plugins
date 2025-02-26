@@ -295,15 +295,25 @@ class Nav_Menu_Option extends Option_Abstract {
 			),
 		);
 
+		$breakpoints = array();
+
+		foreach ( jkit_get_responsive_breakpoints() as $breakpoint ) {
+			$key   = $breakpoint['key'];
+			$label = $breakpoint['label'];
+
+			if ( 'widescreen' === $key ) {
+				continue;
+			}
+
+			$breakpoints[ $key ] = esc_html( $label );
+		}
+
 		$this->options['sg_menu_breakpoint'] = array(
 			'type'    => 'select',
 			'title'   => esc_html__( 'Responsive Breakpoint', 'jeg-elementor-kit' ),
 			'default' => 'tablet',
 			'segment' => 'segment_menu',
-			'options' => array(
-				'tablet' => esc_html__( 'Tablet', 'jeg-elementor-kit' ),
-				'mobile' => esc_html__( 'Mobile', 'jeg-elementor-kit' ),
-			),
+			'options' => $breakpoints,
 		);
 
 		$this->options['sg_mobile_menu_logo'] = array(
@@ -429,6 +439,19 @@ class Nav_Menu_Option extends Option_Abstract {
 				'classic',
 				'gradient',
 			),
+		);
+
+		$this->options['st_menu_wrapper_mobile_color'] = array(
+			'type'        => 'color',
+			'title'       => esc_html__( 'Responsive Background Color', 'jeg-elementor-kit' ),
+			'selectors'   => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper.active' => 'background-color: {{VALUE}}',
+				),
+			),
+			'responsive'  => true,
+			'segment'     => 'style_menu_wrapper',
+			'description' => esc_html__( 'Since the addition of Breakpoints, the responsive mechanism has changed. To add a background color in the menu panel, make sure to use this option instead of the `Mobile Background Color` option.', 'jeg-elementor-kit' ),
 		);
 
 		$this->options['st_menu_wrapper_mobile_color_tablet'] = array(

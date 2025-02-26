@@ -363,7 +363,7 @@ final class IntegrationHandler
         $submitted_fields = $formContent->fields;
         $fieldValueForMail = FieldValueHandler::formatFieldValueForMail($submitted_fields, $workFlowReturnedData['fields']);
         foreach ($triggerData['mail'] as $value) {
-          MailNotifier::notify($value, $triggerData['formID'], $fieldValueForMail, $triggerData['entryID']);
+          MailNotifier::notify($value, $triggerData['formID'], $fieldValueForMail, $triggerData['entryID'], false, $triggerData['logID']);
         }
       }
       do_action('bitforms_exec_integrations', $triggerData['integrations'], $workFlowReturnedData['fields'], $triggerData['formID'], $triggerData['entryID'], $triggerData['logID']);

@@ -2,9 +2,9 @@
 Contributors: pt-guy
 Tags: post grid, blocks, elementor, gutenberg, recent posts, gutenberg blocks, grid, display posts, post list, post slider, post accordion, category post, news, magazine, portfolio, latest posts, related posts
 Requires at least: 3.3
-Tested up to: 6.7
+Tested up to: 6.7.2
 Requires PHP: 5.6
-Stable tag: 4.0.2
+Stable tag: 4.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -261,6 +261,15 @@ If you encounter any difficulties or if you have questions about Content Views, 
 
 
 == Changelog ==
+
+= 4.1 =
+* Fix: pagination url issue when activating Polylang plugin and setting language from subdomain
+* Fix: update Bootstrap library to fix issues
+* Fix: issue with thumbnail border & border radius when enabling "Hover Effect"
+* Fix: [Block] prevent "Error loading block: Invalid parameter(s): attributes" caused by another plugin
+* Update: [Elementor] show Widget ID in the editor output (which can be used as VIEW_ID in custom CSS/PHP code)
+* Update: [Block] Add search function to the "Select..." dropdown of Categories, Tags
+* Other improvements
 
 = 4.0.2 =
 * Fix: warning about loading translations too early in WordPress 6.7

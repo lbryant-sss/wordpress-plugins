@@ -22,7 +22,7 @@ class Icon_Box_View extends View_Abstract {
 		$hover_direction           = esc_attr( $this->attribute['st_background_hover_direction'] );
 		$container_hover_animation = esc_attr( $this->attribute['st_container_hover_animation'] );
 		$icon_hover_animation      = esc_attr( $this->attribute['st_icon_hover_animation'] );
-		$icon_description          = nl2br( $this->attribute['sg_icon_description'] );
+		$icon_description          = wp_kses_post( $this->attribute['sg_icon_description'] );
 		$icon_position             = ( 'top' !== $this->attribute['sg_setting_icon_position'] && empty( $this->attribute['sg_setting_icon_position_responsive'] ) ) ? esc_attr( $this->attribute['sg_setting_icon_position'] ) : esc_attr( $this->attribute['sg_setting_icon_position_responsive'] );
 		$icon_color_style          = esc_attr( $this->attribute['sg_icon_color_style'] );
 
@@ -55,8 +55,7 @@ class Icon_Box_View extends View_Abstract {
 	 */
 	private function render_title() {
 		$title_tag = isset( $this->attribute['sg_setting_html_tag'] ) && ! empty( $this->attribute['sg_setting_html_tag'] ) ? \Elementor\Utils::validate_html_tag( $this->attribute['sg_setting_html_tag'] ) : 'h2';
-		$title     = esc_attr( $this->attribute['sg_icon_text'] );
-		$title     = ! empty( $title ) ? '<' . $title_tag . ' class="title">' . esc_attr( $this->attribute['sg_icon_text'] ) . '</' . $title_tag . '>' : '';
+		$title     = ! empty( $this->attribute['sg_icon_text'] ) ? '<' . $title_tag . ' class="title">' . wp_kses_post( $this->attribute['sg_icon_text'] ) . '</' . $title_tag . '>' : '';
 
 		return $title;
 	}

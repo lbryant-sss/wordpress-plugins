@@ -1,3 +1,6 @@
+= Version 3.0.7 =
+- Support WordPress 6.7.2
+
 = Version 3.0.6 =
 - Support WordPress 6.6.2 & Divi 4.26.1
 

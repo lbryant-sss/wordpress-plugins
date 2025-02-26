@@ -4,14 +4,14 @@
  * Plugin URI: http://jegtheme.com/
  * Description: Additional highly customizable widgets for Elementor page builder
  * Requires Plugins: elementor
- * Version: 2.6.11
+ * Version: 2.6.12
  * Author: Jegtheme
  * Author URI: http://jegtheme.com
  * License: GPLv3
  * Text Domain: jeg-elementor-kit
  *
- * Elementor tested up to: 3.25.10
- * Elementor Pro tested up to: 3.25.4
+ * Elementor tested up to: 3.27.6
+ * Elementor Pro tested up to: 3.27.4
  *
  * @author: Jegtheme
  * @since 1.0.0
@@ -26,7 +26,7 @@ add_action(
 	function () {
 		defined( 'JEG_ELEMENTOR_KIT' ) || define( 'JEG_ELEMENTOR_KIT', 'jeg-elementor-kit' );
 		defined( 'JEG_ELEMENTOR_KIT_NAME' ) || define( 'JEG_ELEMENTOR_KIT_NAME', 'Jeg Elementor Kit' );
-		defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '2.6.11' );
+		defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '2.6.12' );
 		defined( 'JEG_ELEMENTOR_KIT_URL' ) || define( 'JEG_ELEMENTOR_KIT_URL', plugins_url( JEG_ELEMENTOR_KIT ) );
 		defined( 'JEG_ELEMENTOR_KIT_FILE' ) || define( 'JEG_ELEMENTOR_KIT_FILE', __FILE__ );
 		defined( 'JEG_ELEMENTOR_KIT_BASE' ) || define( 'JEG_ELEMENTOR_KIT_BASE', plugin_basename( __FILE__ ) );
@@ -82,7 +82,7 @@ add_action(
  * }
  */
 function jkit_update_complete( $upgrader, $hook_extra ) {
-	if ( isset( $hook_extra['plugins'] ) && plugin_basename( __FILE__ ) === $hook_extra['plugins'][0] ) {
+	if ( isset( $hook_extra['plugins'] ) && isset( $hook_extra['plugins'][0] ) && plugin_basename( __FILE__ ) === $hook_extra['plugins'][0] ) {
 		\Jeg\Elementor_Kit\Banner\Banner::instance()->register_active_banner();
 	}
 }

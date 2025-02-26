@@ -5042,6 +5042,7 @@ class Products extends Base_Widget {
 			'layout' => ! empty( $settings['layout'] ) ? $settings['layout'] : 'default',
 			'total_pages' => 'yes' === $settings['show_pagination'] ? (int) $query_results->total_pages : 1,
 			'image_size' => ! empty( $settings['image_size'] ) ? $settings['image_size'] : 'woocommerce_thumbnail',
+			'atc_button' => ! empty( $settings['atc_button'] ) ? $settings['atc_button'] : '',
 		];
 
 		$query_array = wp_json_encode( (array) $query );

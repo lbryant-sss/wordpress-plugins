@@ -77,7 +77,7 @@ class Post_Navigation extends Base_Widget {
 		$this->add_control(
 			'post_thumbnail',
 			[
-				'label'        => esc_html__( 'Post Thubmnail', 'jupiterx-core' ),
+				'label'        => esc_html__( 'Post Thumbnail', 'jupiterx-core' ),
 				'type'         => 'switcher',
 				'label_on'     => esc_html__( 'Show', 'jupiterx-core' ),
 				'label_off'    => esc_html__( 'Hide', 'jupiterx-core' ),
@@ -1223,7 +1223,7 @@ class Post_Navigation extends Base_Widget {
 		}
 
 		?>
-		<<?php ElementorUtils::print_validated_html_tag( $all_posts_tag ) . ' ' . $this->get_render_attribute_string( 'all-posts-wrapper' ); ?>>
+		<<?php ElementorUtils::print_validated_html_tag( $all_posts_tag ); ?> <?php $this->print_render_attribute_string( 'all-posts-wrapper' ); ?>>
 			<?php ElementorUtils::print_unescaped_internal_string( $all_posts ); ?>
 		</<?php ElementorUtils::print_validated_html_tag( $all_posts_tag ); ?>>
 		<?php

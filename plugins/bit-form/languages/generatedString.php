@@ -633,15 +633,15 @@ $i18n_strings = array(
 
     'Add Groups' => __('Add Groups', 'bit-form'),
 
-    'Type' => __('Type', 'bit-form'),
-
-    'Add Type' => __('Add Type', 'bit-form'),
+    'Add Subscriber Status' => __('Add Subscriber Status', 'bit-form'),
 
     'Update Subscriber' => __('Update Subscriber', 'bit-form'),
 
     'Update Responses with MailerLite exist Subscriber?' => __('Update Responses with MailerLite exist Subscriber?', 'bit-form'),
 
     'Refresh Groups' => __('Refresh Groups', 'bit-form'),
+
+    'Type' => __('Type', 'bit-form'),
 
     'Select Version:' => __('Select Version:', 'bit-form'),
 
@@ -2653,7 +2653,11 @@ $i18n_strings = array(
 
     'Timeline' => __('Timeline', 'bit-form'),
 
+    'PDF Downloads' => __('PDF Downloads', 'bit-form'),
+
     'Google Ads Information' => __('Google Ads Information', 'bit-form'),
+
+    'No PDF templates available' => __('No PDF templates available', 'bit-form'),
 
     'Related Info' => __('Related Info', 'bit-form'),
 
@@ -3051,6 +3055,24 @@ $i18n_strings = array(
 
     'PDF Templates' => __('PDF Templates', 'bit-form'),
 
+    'PDF File Name' => __('PDF File Name', 'bit-form'),
+
+    'PDF Password' => __('PDF Password', 'bit-form'),
+
+    'Static Password' => __('Static Password', 'bit-form'),
+
+    'PDF Password Shortcode' => __('PDF Password Shortcode', 'bit-form'),
+
+    'Allow Download (Link)' => __('Allow Download (Link)', 'bit-form'),
+
+    'All User' => __('All User', 'bit-form'),
+
+    'Only Logged In User' => __('Only Logged In User', 'bit-form'),
+
+    'Download Link Shortcode' => __('Download Link Shortcode', 'bit-form'),
+
+    'Override Default Settings' => __('Override Default Settings', 'bit-form'),
+
     'Paper Size' => __('Paper Size', 'bit-form'),
 
     'Orientation' => __('Orientation', 'bit-form'),
@@ -3062,8 +3084,6 @@ $i18n_strings = array(
     'Font Family' => __('Font Family', 'bit-form'),
 
     'Font Size (Pixels)' => __('Font Size (Pixels)', 'bit-form'),
-
-    'PDF File Name' => __('PDF File Name', 'bit-form'),
 
     'Watermark' => __('Watermark', 'bit-form'),
 
@@ -3081,9 +3101,23 @@ $i18n_strings = array(
 
     'Language Direction' => __('Language Direction', 'bit-form'),
 
+    'LTR' => __('LTR', 'bit-form'),
+
+    'RTL' => __('RTL', 'bit-form'),
+
     'Go to PDF Settings' => __('Go to PDF Settings', 'bit-form'),
 
     'Please configure PDF settings first.' => __('Please configure PDF settings first.', 'bit-form'),
+
+    'Upload' => __('Upload', 'bit-form'),
+
+    'Image width' => __('Image width', 'bit-form'),
+
+    'Image height' => __('Image height', 'bit-form'),
+
+    'Position X' => __('Position X', 'bit-form'),
+
+    'Position Y' => __('Position Y', 'bit-form'),
 
     'Learn more about PDF Attachment' => __('Learn more about PDF Attachment', 'bit-form'),
 
@@ -3096,12 +3130,6 @@ $i18n_strings = array(
     'Please update your PHP version is 7.4 or higher.' => __('Please update your PHP version is 7.4 or higher.', 'bit-form'),
 
     'PHP extension is missing in your server. Please install it.' => __('PHP extension is missing in your server. Please install it.', 'bit-form'),
-
-    'Upload' => __('Upload', 'bit-form'),
-
-    'LTR' => __('LTR', 'bit-form'),
-
-    'RTL' => __('RTL', 'bit-form'),
 
     'Razorpay Settings' => __('Razorpay Settings', 'bit-form'),
 
@@ -3942,6 +3970,8 @@ $i18n_strings = array(
     'Rating Message on Hover' => __('Rating Message on Hover', 'bit-form'),
 
     'Rating Message on Select' => __('Rating Message on Select', 'bit-form'),
+
+    'PDF Template' => __('PDF Template', 'bit-form'),
 
     'Name is the unique identifier for the field. It is used to reference the field in the form submission data.' => __('Name is the unique identifier for the field. It is used to reference the field in the form submission data.', 'bit-form'),
 

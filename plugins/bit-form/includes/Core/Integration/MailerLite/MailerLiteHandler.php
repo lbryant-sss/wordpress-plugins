@@ -45,7 +45,7 @@ class MailerLiteHandler
         wp_send_json_error(
           __(
             'Requested parameter is empty',
-            'bitform'
+            'bit-form'
           ),
           400
         );
@@ -107,7 +107,7 @@ class MailerLiteHandler
       wp_send_json_error(
         __(
           'Token expired',
-          'bitform'
+          'bit-form'
         ),
         401
       );
@@ -126,7 +126,7 @@ class MailerLiteHandler
         wp_send_json_error(
           __(
             'Requested parameter is empty',
-            'bitform'
+            'bit-form'
           ),
           400
         );
@@ -167,7 +167,7 @@ class MailerLiteHandler
           wp_send_json_error(
             __(
               'Invalid API Token',
-              'bitform'
+              'bit-form'
             ),
             401
           );
@@ -197,7 +197,7 @@ class MailerLiteHandler
           wp_send_json_error(
             __(
               'Invalid API Token',
-              'bitform'
+              'bit-form'
             ),
             401
           );
@@ -207,7 +207,7 @@ class MailerLiteHandler
       wp_send_json_error(
         __(
           'Token expired',
-          'bitform'
+          'bit-form'
         ),
         401
       );
@@ -228,7 +228,7 @@ class MailerLiteHandler
       empty($fieldMap)
        || empty($auth_token)
     ) {
-      return new WP_Error('REQ_FIELD_EMPTY', __('module, fields are required for MailerLite api', 'bit-integrations'));
+      return new WP_Error('REQ_FIELD_EMPTY', __('module, fields are required for MailerLite api', 'bit-form'));
     }
     $recordApiHelper = new RecordApiHelper($auth_token, $this->_integrationID, $logID, $entryID, $actions, $version);
     $mailerliteApiResponse = $recordApiHelper->executeRecordApi(

@@ -29,6 +29,8 @@ if ( !class_exists( 'ContentViews_Elementor_Render' ) ) {
 			$settings	 = $all_data[ 1 ];
 			$view_id	 = $_this->get_id();
 
+			self::show_widget_id( $view_id );
+
 			echo PT_CV_Functions::view_process_settings( $view_id, $settings );
 
 			// maybe need view_final_output();
@@ -245,6 +247,15 @@ if ( !class_exists( 'ContentViews_Elementor_Render' ) ) {
 		// Populate format [value=>, label=>]
 		static function value_like_block( $value ) {
 			return [ 'value' => $value, 'label' => $value ];
+		}
+
+		// Show Widget ID in Edit mode
+		static function show_widget_id( $view_id ) {
+			$is_edit = \Elementor\Plugin::$instance->editor->is_edit_mode();
+			if ( $is_edit ) {
+				$desc = __( 'Use it as the VIEW_ID in custom code', 'content-views-query-and-display-post-page' );
+				printf( '<div class="cv-elementor-wid" style="opacity:0" title="%s">ID: %s</div>', esc_attr( $desc ), esc_html( $view_id ) );
+			}
 		}
 
 	}

@@ -14,7 +14,7 @@ final class FieldValueHandler
     if (!is_string($stringToReplaceField)) {
       $stringToReplaceField = wp_json_encode($stringToReplaceField);
     }
-    $stringToReplaceField = static::replaceSmartTagWithValue($stringToReplaceField);
+    $stringToReplaceField = self::replaceSmartTagWithValue($stringToReplaceField);
     $fieldPattern = '/\${\w[^ ${}]*}/';
     preg_match_all($fieldPattern, $stringToReplaceField, $matchedField);
     if (empty($matchedField)) {
@@ -236,20 +236,61 @@ final class FieldValueHandler
     return $merge_values;
   }
 
+  // public static function changeImagePathInHTMLString($html_body, $path)
+  // {
+  //   $html_body = preg_replace_callback(
+  //     '/<img\s+src="([^"]+)"/i',
+  //     function ($matches) use ($path) {
+  //       $src = $matches[1];
+  //       if (null === parse_url($src, PHP_URL_SCHEME)) {
+  //         $src = $path . ltrim($src, '/');
+  //       }
+  //       return '<img src="' . htmlspecialchars($src, ENT_QUOTES) . '"';
+  //     },
+  //     $html_body
+  //   );
+
+  //   return $html_body;
+  // }
+
   public static function changeImagePathInHTMLString($html_body, $path)
   {
-    $html_body = preg_replace_callback(
-      '/<img\s+src="([^"]+)"/i',
-      function ($matches) use ($path) {
+    $allowedExtensions = ['jpg', 'jpeg', 'png', 'svg'];
+    if (empty($html_body) || empty($path)) {
+      return $html_body;
+    }
+
+    $allowedMimeTypes = [
+      'jpg'  => ['image/jpeg', 'image/pjpeg'],
+      'jpeg' => ['image/jpeg', 'image/pjpeg'],
+      'png'  => ['image/png'],
+      'svg'  => ['image/svg+xml']
+    ];
+
+    return preg_replace_callback(
+      '/<img\s+[^>]*src="([^"]+)"[^>]*>/i',
+      function ($matches) use ($path, $allowedExtensions, $allowedMimeTypes) {
         $src = $matches[1];
-        if (null === parse_url($src, PHP_URL_SCHEME)) {
-          $src = $path . ltrim($src, '/');
+
+        if (filter_var($src, FILTER_VALIDATE_URL)) {
+          return $matches[0];
         }
-        return '<img src="' . htmlspecialchars($src, ENT_QUOTES) . '"';
+
+        $fullPath = rtrim($path, '/') . '/' . ltrim($src, '/');
+
+        $extension = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
+        if (!file_exists($fullPath) || !isset($allowedMimeTypes[$extension])) {
+          return '';
+        }
+
+        $mimeType = mime_content_type($fullPath);
+        if (!in_array($mimeType, $allowedMimeTypes[$extension], true)) {
+          return '';
+        }
+
+        return str_replace($src, htmlspecialchars($fullPath, ENT_QUOTES), $matches[0]);
       },
       $html_body
     );
-
-    return $html_body;
   }
 }

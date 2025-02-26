@@ -142,6 +142,7 @@ function get_upload_dir(): string
         return KOKO_ANALYTICS_UPLOAD_DIR;
     }
 
+    // For backwards compatibility with optimize endpoints installed before the above constant was defined
     if (\defined('KOKO_ANALYTICS_BUFFER_FILE')) {
         return \dirname(KOKO_ANALYTICS_BUFFER_FILE) . '/koko-analytics';
     }
@@ -154,7 +155,20 @@ function get_upload_dir(): string
 function get_buffer_filename(): string
 {
     $upload_dir = get_upload_dir();
-    return "{$upload_dir}/events-buffer.php";
+
+    // return first file in directory that matches these conditions
+    $filenames = \scandir($upload_dir);
+    if (\is_array($filenames)) {
+        foreach ($filenames as $filename) {
+            if (\str_starts_with($filename, "buffer-") && ! \str_ends_with($filename, ".busy")) {
+                return "{$upload_dir}/{$filename}";
+            }
+        }
+    }
+
+    // if no such file exists, generate a new random filename
+    $filename = "buffer-" . \bin2hex(\random_bytes(16)) . ".csv";
+    return "{$upload_dir}/{$filename}";
 }
 
 function collect_in_file(array $data): bool
@@ -165,16 +179,9 @@ function collect_in_file(array $data): bool
         \mkdir($directory, 0755, true);
     }
 
-    // if file does not yet exist, add PHP header to prevent direct file access
-    if (!\is_file($filename)) {
-        $content = '<?php exit; ?>';
-        $content .= PHP_EOL;
-    } else {
-        $content = '';
-    }
-
     // append serialized data to file
-    $content .= \serialize($data);
+    // TODO: Write CSV data here, but ideally we want to run the aggregator just once using the old data format after each plugin update
+    $content = \serialize($data);
     $content .= PHP_EOL;
 
     return (bool) \file_put_contents($filename, $content, FILE_APPEND);

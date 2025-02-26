@@ -40,13 +40,22 @@
             <em>Only visible when Admin user is logged in.</em>
         </td>
     </tr>
-       
-    <tr>        
-    	<td colspan="2">
-            <?php wp_nonce_field( 'wpa_save_settings', 'wpa_nonce' ); ?>
-            <input type="submit" name="submit-wpa-general-settings" class="button-primary" value="Save General Settings" />
-        </td>
-	</tr>
+
+    <?php if (current_user_can('manage_options')) { ?>       
+        <tr>        
+            <td colspan="2">
+                <?php wp_nonce_field( 'wpa_save_settings', 'wpa_nonce' ); ?>
+                <input type="submit" name="submit-wpa-general-settings" class="button-primary" value="Save General Settings" />
+            </td>
+        </tr>
+    <?php } else { ?>
+        <tr>
+            <td colspan="2">
+                <p style="color: red;">Only Administrators can make changes to these settings.</p>
+            </td>
+        </tr>
+    <?php } ?>
+    
     </form>
     
     </tbody>

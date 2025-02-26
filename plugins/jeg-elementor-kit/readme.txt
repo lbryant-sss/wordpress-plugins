@@ -2,9 +2,9 @@
 Contributors: Jegtheme
 Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 2.6.11
+Stable tag: 2.6.12
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -88,6 +88,17 @@ Please make sure the WP Memory Limit on your site has set to 128 MB or greater. 
 https://elementor.com/help/requirements/ Also you can disable some widgets that you don't need from Jeg Elementor Kit > Elements dashboard to reduce memory usage.
 
 == Changelog ==
+
+= 2.6.12 - 25-02-2025 =
+* Improvement: Capable to add HTML on review content in Testimonial widget
+* Improvement: Security issues
+* Improvement: Add more Breakpoints for Responsive Mode in Nav Menu widget
+* Improvement: Add Line Break feature for Title on Icon Box widget
+* Fix: Discounts on sale issue in Product Grid widget
+* Fix: Responsive Issues in Gallery widget
+* Fix: Undefined Array Key Error for Custom Attributes on Links Elements
+* Fix: Undefined Offset when plugin updates
+* Fix: Heading tag HTML issues in Animated Text widget
 
 = 2.6.11 - 29-11-2024 =
 * Fix: Block Content not working on Post Content widget

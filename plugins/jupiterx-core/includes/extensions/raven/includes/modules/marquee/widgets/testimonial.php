@@ -31,6 +31,10 @@ class Testimonial extends Marquee {
 		return 'raven-element-icon raven-element-icon-testimonial-marquee';
 	}
 
+	public function get_style_depends() {
+		return [ 'elementor-icons' ];
+	}
+
 	protected function register_controls() {
 		$this->register_content_settings();
 		$this->register_card_style_settings();

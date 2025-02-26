@@ -2,6 +2,7 @@
 
 namespace BitCode\BitForm\Core\Util;
 
+use BitCode\BitForm\Admin\Form\Helpers;
 use BitCode\BitForm\Core\Database\FormEntryMetaModel;
 use BitCode\BitForm\Core\Messages\EmailTemplateHandler;
 use BitCode\BitForm\Core\Messages\PdfTemplateHandler;
@@ -11,20 +12,23 @@ final class MailNotifier
 {
   public static function notify($notifyDetails, $formID, $fieldValue, $entryID, $isDblOptin = false, $logId = '')
   {
+    $apiResponse = new ApiResponse();
+    $entryDetails = ['formId' => $formID, 'entryId' => $entryID, 'fieldValues' => $fieldValue];
     $emailTemplateHandler = new EmailTemplateHandler($formID);
     $attachments = [];
     $tempPdfLink = '';
+    $pdfPassForEmail = '';
     if (!empty($notifyDetails->pdfId) && is_string($notifyDetails->pdfId)) {
       $pdfTemplateID = json_decode($notifyDetails->pdfId)->id;
       $pdfTemplateHandler = new PdfTemplateHandler($formID);
 
       $pdfTemplate = $pdfTemplateHandler->getById($pdfTemplateID);
-      $pdfBody = FieldValueHandler::replaceFieldWithValue($pdfTemplate[0]->body, $fieldValue);
 
       $pdfSetting = json_decode($pdfTemplate[0]->setting);
+      // error_log('PDF Setting before pdfFileName: ' . print_r([$pdfSetting, $fieldValue], true));
 
       $path = BITFORMS_CONTENT_DIR . DIRECTORY_SEPARATOR . 'pdf';
-      $fileName = 'bit-form-pdf-' . $formID . '-' . $entryID;
+      // $fileName = 'bit-form-pdf-' . $formID . '-' . $entryID;
 
       if (!is_dir($path)) {
         mkdir($path, 0777, true);
@@ -32,13 +36,30 @@ final class MailNotifier
 
       if (class_exists('\BitCode\BitFormPro\Admin\AppSetting\Pdf')) {
         $serverPath = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR;
+
+        if (isset($pdfSetting->password)) {
+          if (isset($pdfSetting->password->static) && $pdfSetting->password->static && !empty($pdfSetting->password->pass)) {
+            $pass = FieldValueHandler::replaceFieldWithValue($pdfSetting->password->pass, $fieldValue);
+            $pdfSetting->password->pass = $pass;
+          } elseif (isset($pdfSetting->password->dynamic)) {
+            $pass = Helpers::PDFPassHash($entryID);
+            $pdfSetting->password->pass = $pass;
+          }
+        }
+        if (isset($pdfSetting->pdfFileName)) {
+          $pdfSetting->pdfFileName = FieldValueHandler::replaceFieldWithValue($pdfSetting->pdfFileName, $fieldValue);
+        }
+        $pdfBody = FieldValueHandler::replaceFieldWithValue($pdfTemplate[0]->body, $fieldValue);
         $pdfBody = FieldValueHandler::changeImagePathInHTMLString($pdfBody, $serverPath);
+
         $generatedPdf = Pdf::getInstance()->generator($pdfSetting, $pdfBody, $path, $entryID, 'F');
 
         if (!is_wp_error($generatedPdf) && file_exists($generatedPdf)) {
           $attachments[] = $generatedPdf;
           $tempPdfLink = $generatedPdf;
+          $apiResponse->apiResponse($logId, '', ['type' =>  'record', 'type_name' => 'pdf'], 'success', 'PDF successfully generated.', $entryDetails);
         } else {
+          $apiResponse->apiResponse($logId, '', ['type' =>  'record', 'type_name' => 'pdf'], 'errors', 'Error in generating PDF.', $entryDetails);
           Log::debug_log('Error in generating PDF: ' . $generatedPdf->get_error_message());
         }
       }
@@ -54,7 +75,6 @@ final class MailNotifier
           if (isset($notifyDetails->from_name) && !empty($notifyDetails->from_name)) {
             $from_name = $notifyDetails->from_name;
           }
-
           $mailHeaders = [
             // 'Content-Type: text/html; charset=UTF-8',
             // $embeddedMailHeader
@@ -68,7 +88,15 @@ final class MailNotifier
           }
           (new MailConfig())->sendMail(['from_name' => $from_name, 'from_email' => $from_mail]);
           $mailSubject = FieldValueHandler::replaceFieldWithValue($mailTemplate[0]->sub, $fieldValue);
-          $mailBody = FieldValueHandler::replaceFieldWithValue($mailTemplate[0]->body, $fieldValue);
+
+          $mailBody = $mailTemplate[0]->body;
+          if (class_exists('\BitCode\BitFormPro\Admin\DownloadFile')) {
+            $downloadFile = new \BitCode\BitFormPro\Admin\DownloadFile();
+            $mailBody = $downloadFile->replacePdfShortCodeToLink($mailBody, $formID, $entryID);
+            $mailBody = $downloadFile->replaceShortCodeToPdfPassword($mailBody, $formID, $entryID);
+          }
+
+          $mailBody = FieldValueHandler::replaceFieldWithValue($mailBody, $fieldValue);
           $webUrl = BITFORMS_UPLOAD_BASE_URL . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
           $mailBody = FieldValueHandler::changeImagePathInHTMLString($mailBody, $webUrl);
 
@@ -143,12 +171,15 @@ final class MailNotifier
           $mailSubject = stripcslashes($mailSubject);
           add_filter('wp_mail_content_type', [self::class, 'filterMailContentType']);
           $status = wp_mail($mailTo, $mailSubject, $mailBody, $mailHeaders, $attachments);
+
           if (!$status) {
-            $status = wp_mail($mailTo, $mailSubject, $mailBody, $mailHeaders);
+            $apiResponse->apiResponse($logId, '', ['type' =>  'record', 'type_name' => 'smtp'], 'errors', 'Mail dose not send successfully', $entryDetails);
+          } else {
+            $apiResponse->apiResponse($logId, '', ['type' =>  'record', 'type_name' => 'smtp'], 'success', 'Mail successfully send.', $entryDetails);
           }
           if ($status && $isDblOptin && false !== strpos($oldMailBody, 'entry_confirmation_url')) {
             $entryMeta = new FormEntryMetaModel();
-
+            $apiResponse->apiResponse($logId, '', ['type' =>  'record', 'type_name' => 'smtp'], 'success', 'Mail successfully send.', $entryDetails);
             $entryMeta->insert(
               [
                 'bitforms_form_entry_id' => $entryID,

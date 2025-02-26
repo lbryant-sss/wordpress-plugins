@@ -54,6 +54,13 @@ if ( !class_exists( 'ContentViews_Block' ) ) {
 
 			$this->attributes = apply_filters( PT_CV_PREFIX_ . 'block_attrs', $this->attributes );
 
+			// Backup filters
+			global $wp_filter;
+			$filters_backup = $wp_filter;
+
+			// Prevent block error
+			remove_all_filters( 'register_block_type_args' );
+
 			register_block_type( 'contentviews/' . $this->block_name, array(
 				'title'				 => $this->title,
 				'attributes'		 => $this->attributes,
@@ -61,6 +68,9 @@ if ( !class_exists( 'ContentViews_Block' ) ) {
 				'editor_script'		 => 'contentviews-block-script',
 				'render_callback'	 => array( $this, 'block_output' ),
 			) );
+
+			// Restore filters
+			$wp_filter = $filters_backup;
 		}
 
 		// Render block output

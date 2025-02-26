@@ -3,7 +3,7 @@
 Plugin Name: WPC Smart Quick View for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: WPC Smart Quick View allows users to get a quick look of products without opening the product page.
-Version: 4.1.5
+Version: 4.1.6
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: woo-smart-quick-view
@@ -12,14 +12,14 @@ Requires Plugins: woocommerce
 Requires at least: 4.0
 Tested up to: 6.7
 WC requires at least: 3.0
-WC tested up to: 9.5
+WC tested up to: 9.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSQ_VERSION' ) && define( 'WOOSQ_VERSION', '4.1.5' );
+! defined( 'WOOSQ_VERSION' ) && define( 'WOOSQ_VERSION', '4.1.6' );
 ! defined( 'WOOSQ_LITE' ) && define( 'WOOSQ_LITE', __FILE__ );
 ! defined( 'WOOSQ_FILE' ) && define( 'WOOSQ_FILE', __FILE__ );
 ! defined( 'WOOSQ_URI' ) && define( 'WOOSQ_URI', plugin_dir_url( __FILE__ ) );
@@ -132,16 +132,17 @@ if ( ! function_exists( 'woosq_init' ) ) {
 					self::$settings       = (array) get_option( 'woosq_settings', [] );
 					self::$localization   = (array) get_option( 'woosq_localization', [] );
 					self::$fields         = apply_filters( 'woosq_fields', [
-						'title'       => esc_html__( 'Title', 'woo-smart-quick-view' ),
-						'rating'      => esc_html__( 'Rating', 'woo-smart-quick-view' ),
-						'price'       => esc_html__( 'Price', 'woo-smart-quick-view' ),
-						'excerpt'     => esc_html__( 'Short description', 'woo-smart-quick-view' ),
-						'add_to_cart' => esc_html__( 'Add to cart', 'woo-smart-quick-view' ),
-						'meta'        => esc_html__( 'Meta', 'woo-smart-quick-view' ),
-						'description' => esc_html__( 'Description', 'woo-smart-quick-view' ),
-						'weight'      => esc_html__( 'Weight', 'woo-smart-quick-view' ),
-						'dimensions'  => esc_html__( 'Dimensions', 'woo-smart-quick-view' ),
-						'additional'  => esc_html__( 'Additional information', 'woo-smart-quick-view' ),
+						'title'        => esc_html__( 'Title', 'woo-smart-quick-view' ),
+						'rating'       => esc_html__( 'Rating', 'woo-smart-quick-view' ),
+						'price'        => esc_html__( 'Price', 'woo-smart-quick-view' ),
+						'availability' => esc_html__( 'Availability', 'woo-smart-quick-view' ),
+						'excerpt'      => esc_html__( 'Short description', 'woo-smart-quick-view' ),
+						'add_to_cart'  => esc_html__( 'Add to cart', 'woo-smart-quick-view' ),
+						'meta'         => esc_html__( 'Meta', 'woo-smart-quick-view' ),
+						'description'  => esc_html__( 'Description', 'woo-smart-quick-view' ),
+						'weight'       => esc_html__( 'Weight', 'woo-smart-quick-view' ),
+						'dimensions'   => esc_html__( 'Dimensions', 'woo-smart-quick-view' ),
+						'additional'   => esc_html__( 'Additional information', 'woo-smart-quick-view' ),
 					] );
 					self::$default_fields = apply_filters( 'woosq_default_fields', [
 						'title',
@@ -410,7 +411,7 @@ if ( ! function_exists( 'woosq_init' ) ) {
 															echo '<span class="woosq-weight-label">' . esc_html( $field['label'] ) . '</span>';
 														}
 
-														echo '<span class="woosq-weight-value">' . wc_format_weight( $product->get_weight() ) . '</span>';
+														echo '<span class="woosq-weight-value">' . wp_kses_post( apply_filters( 'woosq_product_dimensions', wc_format_weight( $product->get_weight() ), $product ) ) . '</span>';
 														echo '</div>';
 
 														do_action( 'woosq_after_weight', $product );
@@ -424,10 +425,24 @@ if ( ! function_exists( 'woosq_init' ) ) {
 															echo '<span class="woosq-dimensions-label">' . esc_html( $field['label'] ) . '</span>';
 														}
 
-														echo '<span class="woosq-dimensions-value">' . wc_format_dimensions( $product->get_dimensions( false ) ) . '</span>';
+														echo '<span class="woosq-dimensions-value">' . wp_kses_post( apply_filters( 'woosq_product_dimensions', wc_format_dimensions( $product->get_dimensions( false ) ), $product ) ) . '</span>';
 														echo '</div>';
 
 														do_action( 'woosq_after_dimensions', $product );
+														break;
+													case 'availability':
+														do_action( 'woosq_before_availability', $product );
+
+														echo '<div class="woosq-availability">';
+
+														if ( $field['label'] !== '' ) {
+															echo '<span class="woosq-availability-label">' . esc_html( $field['label'] ) . '</span>';
+														}
+
+														echo '<span class="woosq-availability-value">' . wp_kses_post( apply_filters( 'woosq_product_availability', wc_get_stock_html( $product ), $product ) ) . '</span>';
+														echo '</div>';
+
+														do_action( 'woosq_after_availability', $product );
 														break;
 													case 'additional':
 														do_action( 'woosq_before_additional', $product );
@@ -560,9 +575,12 @@ if ( ! function_exists( 'woosq_init' ) ) {
                             <p>
 								<?php printf( /* translators: stars */ esc_html__( 'Thank you for using our plugin! If you are satisfied, please reward it a full five-star %s rating.', 'woo-smart-quick-view' ), '<span style="color:#ffb900">&#9733;&#9733;&#9733;&#9733;&#9733;</span>' ); ?>
                                 <br/>
-                                <a href="<?php echo esc_url( WOOSQ_REVIEWS ); ?>" target="_blank"><?php esc_html_e( 'Reviews', 'woo-smart-quick-view' ); ?></a> |
-                                <a href="<?php echo esc_url( WOOSQ_CHANGELOG ); ?>" target="_blank"><?php esc_html_e( 'Changelog', 'woo-smart-quick-view' ); ?></a> |
-                                <a href="<?php echo esc_url( WOOSQ_DISCUSSION ); ?>" target="_blank"><?php esc_html_e( 'Discussion', 'woo-smart-quick-view' ); ?></a>
+                                <a href="<?php echo esc_url( WOOSQ_REVIEWS ); ?>"
+                                   target="_blank"><?php esc_html_e( 'Reviews', 'woo-smart-quick-view' ); ?></a> |
+                                <a href="<?php echo esc_url( WOOSQ_CHANGELOG ); ?>"
+                                   target="_blank"><?php esc_html_e( 'Changelog', 'woo-smart-quick-view' ); ?></a> |
+                                <a href="<?php echo esc_url( WOOSQ_DISCUSSION ); ?>"
+                                   target="_blank"><?php esc_html_e( 'Discussion', 'woo-smart-quick-view' ); ?></a>
                             </p>
                         </div>
 						<?php if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) { ?>
@@ -572,16 +590,21 @@ if ( ! function_exists( 'woosq_init' ) ) {
 						<?php } ?>
                         <div class="wpclever_settings_page_nav">
                             <h2 class="nav-tab-wrapper">
-                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woosq&tab=settings' ) ); ?>" class="<?php echo esc_attr( $active_tab === 'settings' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
+                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woosq&tab=settings' ) ); ?>"
+                                   class="<?php echo esc_attr( $active_tab === 'settings' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
 									<?php esc_html_e( 'Settings', 'woo-smart-quick-view' ); ?>
                                 </a>
-                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woosq&tab=localization' ) ); ?>" class="<?php echo esc_attr( $active_tab === 'localization' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
+                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woosq&tab=localization' ) ); ?>"
+                                   class="<?php echo esc_attr( $active_tab === 'localization' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
 									<?php esc_html_e( 'Localization', 'woo-smart-quick-view' ); ?>
                                 </a>
-                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woosq&tab=premium' ) ); ?>" class="<?php echo esc_attr( $active_tab === 'premium' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>" style="color: #c9356e;">
+                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woosq&tab=premium' ) ); ?>"
+                                   class="<?php echo esc_attr( $active_tab === 'premium' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>"
+                                   style="color: #c9356e;">
 									<?php esc_html_e( 'Premium Version', 'woo-smart-quick-view' ); ?>
                                 </a>
-                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-kit' ) ); ?>" class="nav-tab">
+                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-kit' ) ); ?>"
+                                   class="nav-tab">
 									<?php esc_html_e( 'Essential Kit', 'woo-smart-quick-view' ); ?>
                                 </a>
                             </h2>
@@ -637,7 +660,8 @@ if ( ! function_exists( 'woosq_init' ) ) {
                                             <th scope="row"><?php esc_html_e( 'Use icon', 'woo-smart-quick-view' ); ?></th>
                                             <td>
                                                 <label>
-                                                    <select name="woosq_settings[button_icon]" class="woosq_button_icon">
+                                                    <select name="woosq_settings[button_icon]"
+                                                            class="woosq_button_icon">
                                                         <option value="left" <?php selected( $button_icon, 'left' ); ?>><?php esc_html_e( 'Icon on the left', 'woo-smart-quick-view' ); ?></option>
                                                         <option value="right" <?php selected( $button_icon, 'right' ); ?>><?php esc_html_e( 'Icon on the right', 'woo-smart-quick-view' ); ?></option>
                                                         <option value="only" <?php selected( $button_icon, 'only' ); ?>><?php esc_html_e( 'Icon only', 'woo-smart-quick-view' ); ?></option>
@@ -649,7 +673,8 @@ if ( ! function_exists( 'woosq_init' ) ) {
                                             <th><?php esc_html_e( 'Icon', 'woo-smart-quick-view' ); ?></th>
                                             <td>
                                                 <label>
-                                                    <select name="woosq_settings[button_normal_icon]" class="woosq_icon_picker">
+                                                    <select name="woosq_settings[button_normal_icon]"
+                                                            class="woosq_icon_picker">
 														<?php for ( $i = 1; $i <= 64; $i ++ ) {
 															echo '<option value="woosq-icon-' . $i . '" ' . selected( $button_normal_icon, 'woosq-icon-' . $i, false ) . '>woosq-icon-' . $i . '</option>';
 														} ?>
@@ -660,7 +685,8 @@ if ( ! function_exists( 'woosq_init' ) ) {
                                             <th scope="row"><?php esc_html_e( 'Extra CSS class (optional)', 'woo-smart-quick-view' ); ?></th>
                                             <td>
                                                 <label>
-                                                    <input type="text" name="woosq_settings[button_class]" value="<?php echo esc_attr( self::get_setting( 'button_class', '' ) ); ?>"/>
+                                                    <input type="text" name="woosq_settings[button_class]"
+                                                           value="<?php echo esc_attr( self::get_setting( 'button_class', '' ) ); ?>"/>
                                                 </label>
                                                 <span class="description"><?php esc_html_e( 'Add extra CSS class for action button/link, split by one space.', 'woo-smart-quick-view' ); ?></span>
                                             </td>
@@ -842,7 +868,9 @@ if ( ! function_exists( 'woosq_init' ) ) {
 												<?php esc_html_e( 'Content', 'woo-smart-quick-view' ); ?>
                                             </th>
                                             <td>
-                                                <span style="color: #c9356e">Below settings are available on Premium Version only, click <a href="https://wpclever.net/downloads/smart-quick-view?utm_source=pro&utm_medium=woosq&utm_campaign=wporg" target="_blank">here</a> to buy, just $29!</span>
+                                                <span style="color: #c9356e">Below settings are available on Premium Version only, click <a
+                                                            href="https://wpclever.net/downloads/smart-quick-view?utm_source=pro&utm_medium=woosq&utm_campaign=wporg"
+                                                            target="_blank">here</a> to buy, just $29!</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -978,13 +1006,18 @@ if ( ! function_exists( 'woosq_init' ) ) {
 																	echo '</optgroup>';
 																}
 																?>
-                                                                <optgroup label="<?php esc_attr_e( 'Custom', 'woo-smart-quick-view' ); ?>">
-                                                                    <option value="custom_field" data-type="custom_field"><?php esc_html_e( 'Custom field', 'woo-smart-quick-view' ); ?></option>
-                                                                    <option value="custom_attribute" data-type="custom_attribute"><?php esc_html_e( 'Custom attribute', 'woo-smart-quick-view' ); ?></option>
-                                                                    <option value="text" data-type="text"><?php esc_html_e( 'Custom text/shortcode', 'woo-smart-quick-view' ); ?></option>
+                                                                <optgroup
+                                                                        label="<?php esc_attr_e( 'Custom', 'woo-smart-quick-view' ); ?>">
+                                                                    <option value="custom_field"
+                                                                            data-type="custom_field"><?php esc_html_e( 'Custom field', 'woo-smart-quick-view' ); ?></option>
+                                                                    <option value="custom_attribute"
+                                                                            data-type="custom_attribute"><?php esc_html_e( 'Custom attribute', 'woo-smart-quick-view' ); ?></option>
+                                                                    <option value="text"
+                                                                            data-type="text"><?php esc_html_e( 'Custom text/shortcode', 'woo-smart-quick-view' ); ?></option>
                                                                 </optgroup>
                                                             </select> </label>
-                                                        <button type="button" class="button woosq-field-add" data-setting="fields"><?php esc_html_e( '+ Add', 'woo-smart-quick-view' ); ?></button>
+                                                        <button type="button" class="button woosq-field-add"
+                                                                data-setting="fields"><?php esc_html_e( '+ Add', 'woo-smart-quick-view' ); ?></button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -1004,28 +1037,43 @@ if ( ! function_exists( 'woosq_init' ) ) {
                                             <td>
                                                 <ul>
                                                     <li>
-                                                        <label><input type="checkbox" name="woosq_settings[related_products][]" value="related" <?php echo esc_attr( in_array( 'related', $suggested ) ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Related products', 'woo-smart-quick-view' ); ?>
+                                                        <label><input type="checkbox"
+                                                                      name="woosq_settings[related_products][]"
+                                                                      value="related" <?php echo esc_attr( in_array( 'related', $suggested ) ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Related products', 'woo-smart-quick-view' ); ?>
                                                         </label></li>
                                                     <li>
-                                                        <label><input type="checkbox" name="woosq_settings[related_products][]" value="up-sells" <?php echo esc_attr( in_array( 'up-sells', $suggested ) ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Upsells products', 'woo-smart-quick-view' ); ?>
+                                                        <label><input type="checkbox"
+                                                                      name="woosq_settings[related_products][]"
+                                                                      value="up-sells" <?php echo esc_attr( in_array( 'up-sells', $suggested ) ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Upsells products', 'woo-smart-quick-view' ); ?>
                                                         </label></li>
                                                     <li>
-                                                        <label><input type="checkbox" name="woosq_settings[related_products][]" value="cross-sells" <?php echo esc_attr( in_array( 'cross-sells', $suggested ) ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Cross-sells products', 'woo-smart-quick-view' ); ?>
+                                                        <label><input type="checkbox"
+                                                                      name="woosq_settings[related_products][]"
+                                                                      value="cross-sells" <?php echo esc_attr( in_array( 'cross-sells', $suggested ) ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Cross-sells products', 'woo-smart-quick-view' ); ?>
                                                         </label></li>
                                                     <li>
-                                                        <label><input type="checkbox" name="woosq_settings[related_products][]" value="wishlist" <?php echo esc_attr( in_array( 'wishlist', $suggested ) ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Wishlist', 'woo-smart-quick-view' ); ?>
+                                                        <label><input type="checkbox"
+                                                                      name="woosq_settings[related_products][]"
+                                                                      value="wishlist" <?php echo esc_attr( in_array( 'wishlist', $suggested ) ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Wishlist', 'woo-smart-quick-view' ); ?>
                                                         </label> <span class="description">(from
-                                                            <a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=woo-smart-wishlist&TB_iframe=true&width=800&height=550' ) ); ?>" class="thickbox" title="WPC Smart Wishlist">WPC Smart Wishlist</a>)</span>
+                                                            <a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=woo-smart-wishlist&TB_iframe=true&width=800&height=550' ) ); ?>"
+                                                               class="thickbox" title="WPC Smart Wishlist">WPC Smart Wishlist</a>)</span>
                                                     </li>
                                                     <li>
-                                                        <label><input type="checkbox" name="woosq_settings[related_products][]" value="compare" <?php echo esc_attr( in_array( 'compare', $suggested ) ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Compare', 'woo-smart-quick-view' ); ?>
+                                                        <label><input type="checkbox"
+                                                                      name="woosq_settings[related_products][]"
+                                                                      value="compare" <?php echo esc_attr( in_array( 'compare', $suggested ) ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Compare', 'woo-smart-quick-view' ); ?>
                                                         </label> <span class="description">(from
-                                                        <a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=woo-smart-compare&TB_iframe=true&width=800&height=550' ) ); ?>" class="thickbox" title="WPC Smart Compare">WPC Smart Compare</a>)</span>
+                                                        <a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=woo-smart-compare&TB_iframe=true&width=800&height=550' ) ); ?>"
+                                                           class="thickbox"
+                                                           title="WPC Smart Compare">WPC Smart Compare</a>)</span>
                                                     </li>
                                                 </ul>
                                                 <span class="description">You can use
-                                                    <a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=wpc-custom-related-products&TB_iframe=true&width=800&height=550' ) ); ?>" class="thickbox" title="WPC Custom Related Products">WPC Custom Related Products</a> or
-                                                    <a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=wpc-smart-linked-products&TB_iframe=true&width=800&height=550' ) ); ?>" class="thickbox" title="WPC Smart Linked Products">WPC Smart Linked Products</a> plugin to configure related/upsells/cross-sells in bulk with smart conditions.
+                                                    <a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=wpc-custom-related-products&TB_iframe=true&width=800&height=550' ) ); ?>"
+                                                       class="thickbox" title="WPC Custom Related Products">WPC Custom Related Products</a> or
+                                                    <a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=wpc-smart-linked-products&TB_iframe=true&width=800&height=550' ) ); ?>"
+                                                       class="thickbox" title="WPC Smart Linked Products">WPC Smart Linked Products</a> plugin to configure related/upsells/cross-sells in bulk with smart conditions.
                                                 </span>
                                             </td>
                                         </tr>
@@ -1058,7 +1106,10 @@ if ( ! function_exists( 'woosq_init' ) ) {
                                             <th><?php esc_html_e( 'Button text', 'woo-smart-quick-view' ); ?></th>
                                             <td>
                                                 <label>
-                                                    <input type="text" class="regular-text" name="woosq_localization[button]" value="<?php echo esc_attr( self::localization( 'button' ) ); ?>" placeholder="<?php esc_attr_e( 'Quick view', 'woo-smart-quick-view' ); ?>"/>
+                                                    <input type="text" class="regular-text"
+                                                           name="woosq_localization[button]"
+                                                           value="<?php echo esc_attr( self::localization( 'button' ) ); ?>"
+                                                           placeholder="<?php esc_attr_e( 'Quick view', 'woo-smart-quick-view' ); ?>"/>
                                                 </label>
                                             </td>
                                         </tr>
@@ -1066,7 +1117,10 @@ if ( ! function_exists( 'woosq_init' ) ) {
                                             <th><?php esc_html_e( 'Close', 'woo-smart-quick-view' ); ?></th>
                                             <td>
                                                 <label>
-                                                    <input type="text" class="regular-text" name="woosq_localization[close]" value="<?php echo esc_attr( self::localization( 'close' ) ); ?>" placeholder="<?php esc_attr_e( 'Close (Esc)', 'woo-smart-quick-view' ); ?>"/>
+                                                    <input type="text" class="regular-text"
+                                                           name="woosq_localization[close]"
+                                                           value="<?php echo esc_attr( self::localization( 'close' ) ); ?>"
+                                                           placeholder="<?php esc_attr_e( 'Close (Esc)', 'woo-smart-quick-view' ); ?>"/>
                                                 </label>
                                             </td>
                                         </tr>
@@ -1074,7 +1128,10 @@ if ( ! function_exists( 'woosq_init' ) ) {
                                             <th><?php esc_html_e( 'Next', 'woo-smart-quick-view' ); ?></th>
                                             <td>
                                                 <label>
-                                                    <input type="text" class="regular-text" name="woosq_localization[next]" value="<?php echo esc_attr( self::localization( 'next' ) ); ?>" placeholder="<?php esc_attr_e( 'Next (Right arrow key)', 'woo-smart-quick-view' ); ?>"/>
+                                                    <input type="text" class="regular-text"
+                                                           name="woosq_localization[next]"
+                                                           value="<?php echo esc_attr( self::localization( 'next' ) ); ?>"
+                                                           placeholder="<?php esc_attr_e( 'Next (Right arrow key)', 'woo-smart-quick-view' ); ?>"/>
                                                 </label>
                                             </td>
                                         </tr>
@@ -1082,7 +1139,10 @@ if ( ! function_exists( 'woosq_init' ) ) {
                                             <th><?php esc_html_e( 'Previous', 'woo-smart-quick-view' ); ?></th>
                                             <td>
                                                 <label>
-                                                    <input type="text" class="regular-text" name="woosq_localization[prev]" value="<?php echo esc_attr( self::localization( 'prev' ) ); ?>" placeholder="<?php esc_attr_e( 'Previous (Left arrow key)', 'woo-smart-quick-view' ); ?>"/>
+                                                    <input type="text" class="regular-text"
+                                                           name="woosq_localization[prev]"
+                                                           value="<?php echo esc_attr( self::localization( 'prev' ) ); ?>"
+                                                           placeholder="<?php esc_attr_e( 'Previous (Left arrow key)', 'woo-smart-quick-view' ); ?>"/>
                                                 </label>
                                             </td>
                                         </tr>
@@ -1090,7 +1150,10 @@ if ( ! function_exists( 'woosq_init' ) ) {
                                             <th><?php esc_html_e( 'Suggested products', 'woo-smart-quick-view' ); ?></th>
                                             <td>
                                                 <label>
-                                                    <input type="text" class="regular-text" name="woosq_localization[related_products]" value="<?php echo esc_attr( self::localization( 'related_products' ) ); ?>" placeholder="<?php esc_attr_e( 'You may also like&hellip;', 'woo-smart-quick-view' ); ?>"/>
+                                                    <input type="text" class="regular-text"
+                                                           name="woosq_localization[related_products]"
+                                                           value="<?php echo esc_attr( self::localization( 'related_products' ) ); ?>"
+                                                           placeholder="<?php esc_attr_e( 'You may also like&hellip;', 'woo-smart-quick-view' ); ?>"/>
                                                 </label>
                                             </td>
                                         </tr>
@@ -1098,7 +1161,10 @@ if ( ! function_exists( 'woosq_init' ) ) {
                                             <th><?php esc_html_e( 'View details text', 'woo-smart-quick-view' ); ?></th>
                                             <td>
                                                 <label>
-                                                    <input type="text" class="regular-text" name="woosq_localization[view_details]" value="<?php echo esc_attr( self::localization( 'view_details' ) ); ?>" placeholder="<?php esc_attr_e( 'View product details', 'woo-smart-quick-view' ); ?>"/>
+                                                    <input type="text" class="regular-text"
+                                                           name="woosq_localization[view_details]"
+                                                           value="<?php echo esc_attr( self::localization( 'view_details' ) ); ?>"
+                                                           placeholder="<?php esc_attr_e( 'View product details', 'woo-smart-quick-view' ); ?>"/>
                                                 </label>
                                             </td>
                                         </tr>
@@ -1112,7 +1178,8 @@ if ( ! function_exists( 'woosq_init' ) ) {
 							<?php } elseif ( $active_tab === 'premium' ) { ?>
                                 <div class="wpclever_settings_page_content_text">
                                     <p>Get the Premium Version just $29!
-                                        <a href="https://wpclever.net/downloads/smart-quick-view?utm_source=pro&utm_medium=woosq&utm_campaign=wporg" target="_blank">https://wpclever.net/downloads/smart-quick-view</a>
+                                        <a href="https://wpclever.net/downloads/smart-quick-view?utm_source=pro&utm_medium=woosq&utm_campaign=wporg"
+                                           target="_blank">https://wpclever.net/downloads/smart-quick-view</a>
                                     </p>
                                     <p><strong>Extra features for Premium Version:</strong></p>
                                     <ul style="margin-bottom: 0">
@@ -1130,13 +1197,17 @@ if ( ! function_exists( 'woosq_init' ) ) {
                             </div>
                             <div class="wpclever_settings_page_suggestion_content">
                                 <div>
-                                    To display custom engaging real-time messages on any wished positions, please install
-                                    <a href="https://wordpress.org/plugins/wpc-smart-messages/" target="_blank">WPC Smart Messages</a> plugin. It's free!
+                                    To display custom engaging real-time messages on any wished positions, please
+                                    install
+                                    <a href="https://wordpress.org/plugins/wpc-smart-messages/" target="_blank">WPC
+                                        Smart Messages</a> plugin. It's free!
                                 </div>
                                 <div>
                                     Wanna save your precious time working on variations? Try our brand-new free plugin
-                                    <a href="https://wordpress.org/plugins/wpc-variation-bulk-editor/" target="_blank">WPC Variation Bulk Editor</a> and
-                                    <a href="https://wordpress.org/plugins/wpc-variation-duplicator/" target="_blank">WPC Variation Duplicator</a>.
+                                    <a href="https://wordpress.org/plugins/wpc-variation-bulk-editor/" target="_blank">WPC
+                                        Variation Bulk Editor</a> and
+                                    <a href="https://wordpress.org/plugins/wpc-variation-duplicator/" target="_blank">WPC
+                                        Variation Duplicator</a>.
                                 </div>
                             </div>
                         </div>

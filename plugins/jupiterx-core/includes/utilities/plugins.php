@@ -303,6 +303,11 @@ if ( ! function_exists( 'jupiterx_core_get_plugins_from_api' ) ) {
 			$repo_plugins = jupiterx_core_get_wp_plugins_info( array_column( $repo_plugins, 'slug' ) );
 
 			foreach ( $repo_plugins as $slug => $info ) {
+
+				if ( ! is_array( $plugins_list[ $slug ] ) ) {
+					continue;
+				}
+
 				$plugins_list[ $slug ]['version'] = $info['version'];
 				$plugins_list[ $slug ]['desc']    = $info['short_description'];
 				$plugins_list[ $slug ]['img_url'] = isset( $info['icons']['1x'] ) ? $info['icons']['1x'] : $info['icons']['default'];

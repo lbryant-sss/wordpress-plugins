@@ -241,7 +241,7 @@ class Jupiterx_Product_Review_Content {
 			echo '<label class="jupiterx-product-review-marked"></label>';
 		}
 
-		$unmarked = 5 - $rating;
+		$unmarked = 5 - (int) $rating;
 
 		for ( $i = 1; $i <= $unmarked; $i++ ) {
 			echo '<label class="jupiterx-product-review-unmarked"></label>';

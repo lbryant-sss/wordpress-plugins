@@ -66,6 +66,9 @@ class CHT_Admin_Base
             add_action('admin_head', [$this, 'cht_inline_css_admin']);
         }
 
+        // load language files
+        add_action('init', [$this, 'chaty_text']);
+
         // add_action('updated_option', array($this, 'cht_clear_all_caches'));
         // Send message to owner
         add_action('wp_ajax_wcp_admin_send_message_to_owner', [$this, 'wcp_admin_send_message_to_owner']);
@@ -81,9 +84,6 @@ class CHT_Admin_Base
         add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts'], 99);
 
         add_action("wp_ajax_chaty_update_status", [$this, 'chaty_update_status']);
-
-        // load language files
-        add_action('plugins_loaded', [$this, 'chaty_text']);
 
         add_action("wp_ajax_update_popup_status", [$this, 'update_popup_status']);
         add_action("wp_ajax_update_channel_setting", [$this, 'update_channel_setting']);

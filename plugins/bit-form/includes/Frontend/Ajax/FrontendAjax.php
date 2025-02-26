@@ -106,7 +106,7 @@ final class FrontendAjax
 
   public function addHiddenField()
   {
-    ignore_user_abort();
+    \ignore_user_abort();
     $request = file_get_contents('php://input');
     if ($request) {
       $data = is_string($request) ? \json_decode($request) : $request;
@@ -121,7 +121,7 @@ final class FrontendAjax
 
   public function triggerWorkFlow()
   {
-    ignore_user_abort();
+    \ignore_user_abort(true);
     $inputJSON = file_get_contents('php://input');
     if ($inputJSON) {
       $request = is_string($inputJSON) ? \json_decode($inputJSON) : $inputJSON;
@@ -129,6 +129,7 @@ final class FrontendAjax
       if (isset($request->id, $request->cronNotOk)) {
         $formID = str_replace('bitforms_', '', $request->id);
         if (!wp_verify_nonce($request->token, $request->id) && is_user_logged_in()) {
+          error_log('wp_verify_nonce failed for formID=' . $formID . ' Token=' . $request->token . ' ID=' . $request->id);
           wp_send_json_error();
         }
         $cronNotOk = $request->cronNotOk;
@@ -143,12 +144,15 @@ final class FrontendAjax
           );
           if ($queueudEntry) {
             if (!empty($queueudEntry[0]->response_obj) && \strpos($queueudEntry[0]->response_obj, 'processed') > 0) {
+              error_log('Cron Not Ok[2]Already Processed');
               wp_send_json_error();
             }
           } else {
+            error_log('Cron Not Ok[2]Query Entry data not found');
             wp_send_json_error();
           }
         } else {
+          error_log('Cron Not Ok[2](Log Id) data not found');
           wp_send_json_error();
         }
         $trnasientData = get_transient("bitform_trigger_transient_{$entryID}");
@@ -159,6 +163,7 @@ final class FrontendAjax
         } else {
           $formManager = new AdminFormManager($formID);
           if (!$formManager->isExist()) {
+            error_log('provided form does not exists');
             return wp_send_json(new WP_Error('trigger_empty_form', __('provided form does not exists', 'bit-form')));
           }
           $formEntryModel = new FormEntryModel();
@@ -173,6 +178,7 @@ final class FrontendAjax
           );
 
           if (!$formEntry) {
+            error_log('provided form entries does not exists. EntryId=' . $entryID . ', FormId=' . $formID);
             return new WP_Error('trigger_empty_form', __('provided form entries does not exists', 'bit-form'));
           }
           $formEntryMeta = $entryMeta->get(
@@ -255,8 +261,16 @@ final class FrontendAjax
               ['id' => $cronNotOk[2]]
             );
           }
+        } else {
+          error_log('No Trigger Data Found');
         }
+      } else {
+        error_log('Cron Not Ok data not found');
+        wp_send_json_error('Cron Not Ok data found', 400);
       }
+    } else {
+      error_log('No Input data found');
+      wp_send_json_error('Invalid Request', 400);
     }
 
     wp_send_json_success();

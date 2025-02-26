@@ -561,6 +561,19 @@ class Team_Members extends Base_Widget {
 			]
 		);
 
+		$this->add_control(
+			'social_links_target',
+			[
+				'label' => esc_html__( 'Open Links in new Tab', 'jupiterx-core' ),
+				'description' => esc_html__( 'This option open the Social links in new tab', 'jupiterx-core' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'jupiterx-core' ),
+				'label_off' => esc_html__( 'No', 'jupiterx-core' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -1469,10 +1482,10 @@ class Team_Members extends Base_Widget {
 		<div class="team-member--image-wrapper">
 			<?php
 			if ( 'social-overlay' === $settings['layout'] ) {
-				Utils::print_unescaped_internal_string( $this->get_social_icons( $member ) );
+				Utils::print_unescaped_internal_string( $this->get_social_icons( $member, $settings ) );
 			}
 
-			if ( isset( $member['link_type'] ) && 'image' === $member['link_type'] ) {
+			if ( isset( $member['link_type'] ) && 'image' === $member['link_type'] && ! in_array( $settings['layout'], [ 'creative', 'full-overlay' ], true ) ) {
 				$link_attributes = $this->get_member_link_attributes( $member );
 
 				Utils::print_unescaped_internal_string( '<a ' . $link_attributes . '>' );
@@ -1536,7 +1549,7 @@ class Team_Members extends Base_Widget {
 			}
 
 			if ( 'social-overlay' !== $settings['layout'] ) {
-				Utils::print_unescaped_internal_string( $this->get_social_icons( $member ) );
+				Utils::print_unescaped_internal_string( $this->get_social_icons( $member, $settings ) );
 			}
 			?>
 		</div>
@@ -1741,8 +1754,11 @@ class Team_Members extends Base_Widget {
 	 * @return string
 	 * @since 3.0.0
 	 */
-	private function get_social_icons( $member ) {
-		$html = '';
+	private function get_social_icons( $member, $settings = [] ) {
+		$html            = '';
+		$open_in_new_tab = 'yes' === $settings['social_links_target'] ? '_blank' : '_self';
+		//this attribute added to prevent security issue related to blank target
+		$rel = '_blank' === $open_in_new_tab ? 'noopener noreferrer' : '';
 
 		foreach ( $this->social_links as $social => $icon_class ) {
 			if ( empty( $member[ $social ] ) ) {
@@ -1777,10 +1793,12 @@ class Team_Members extends Base_Widget {
 			}
 
 			$html .= sprintf(
-				'<div class="team-member--social"><a class="social-%1$s" title="%1$s" href="%2$s">%3$s</a></div>',
+				'<div class="team-member--social"><a class="social-%1$s" title="%1$s" href="%2$s" target="%4$s" rel="%5$s">%3$s</a></div>',
 				esc_attr( $social ),
 				esc_attr( $link ),
-				$icon
+				$icon,
+				$open_in_new_tab,
+				$rel
 			);
 		}
 

@@ -117,8 +117,14 @@ class Countdown_View extends View_Abstract {
 			$data['redirect-link']  = esc_url( $this->attribute['sg_expire_link'] );
 			$data['iframe-content'] = esc_html__( 'Your page will be redirected on frontend', 'jeg-elementor-kit' );
 		} elseif ( 'template' === $type ) {
-			$template         = Plugin::$instance->frontend->get_builder_content( $this->attribute['sg_expire_template'], true );
-			$template         = preg_replace( '~[\r\n\s]+~', ' ', $template );
+			$template_id = jkit_get_selected_elementor_template( $this->attribute['sg_expire_template'] );
+			$template    = '';
+
+			if ( $template_id ) {
+				$template = Plugin::$instance->frontend->get_builder_content( $template_id, true );
+				$template = preg_replace( '~[\r\n\s]+~', ' ', $template );
+			}
+
 			$data['template'] = esc_attr( $template );
 		}
 

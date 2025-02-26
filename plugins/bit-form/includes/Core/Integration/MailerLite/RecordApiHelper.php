@@ -54,7 +54,7 @@ class RecordApiHelper
       wp_send_json_error(
         __(
           'Requested parameter is empty',
-          'bit-integrations'
+          'bit-form'
         ),
         400
       );
@@ -76,7 +76,7 @@ class RecordApiHelper
       wp_send_json_error(
         __(
           'Requested parameter is empty',
-          'bit-integrations'
+          'bit-form'
         ),
         400
       );

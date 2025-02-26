@@ -3,7 +3,7 @@ Contributors: artbees
 Tags: jupiter, jupiterx
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 4.8.8
+Stable tag: 4.8.9
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,6 +29,22 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+= 4.8.9 =
+* Added new settings ( `Post Meta` label ) for Advanced Posts widget.
+* Added new option to open a new tab to the link of socials.
+* Added Default padding to Products item when set layout to overlay
+* Fixed conflict in Layout builder display for removed templates.
+* Fixed issue on Shopping Cart - Close on Overly Click.
+* Fixed link issue in team member widget when for creative & full overlay.
+* Fixed Link to `All Posts` in Post Navigation widget.
+* Fixed display eicons in Testimonial Carousel & Testimonial Marquee.
+* Fixed responsive layout option on Product carousel widget.
+* Fixed typo in Post navigation widget.
+* Fixed Content loading of products widget when apply filters.
+* Fixed fatal error o product review widget.
+* Fixed security issue related to password fields on Form Widget.
+* Fixed displaying Sticky posts on Search Results regardless match search criteria.
+
 = 4.8.8 =
 * Fixed Stripe Button issues.
 * Fixed issue on Advanced post.

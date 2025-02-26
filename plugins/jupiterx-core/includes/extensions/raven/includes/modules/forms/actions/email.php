@@ -290,7 +290,7 @@ class Email extends Action_Base {
 
 		// Body.
 		foreach ( $form_settings['fields'] as $field ) {
-			if ( 'html' === $field['type'] ) {
+			if ( 'html' === $field['type'] || 'password' === $field['type'] ) {
 				continue;
 			}
 

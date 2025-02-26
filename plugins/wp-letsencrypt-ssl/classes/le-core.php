@@ -489,35 +489,35 @@ class WPLE_Core
      */
     public function wple_send_usage_data()
     {
-        WPLE_Trait::wple_logger('Syncing debug log');
-        $readlog = file_get_contents(WPLE_DEBUGGER . 'debug.log');
-        $handle = curl_init();
-        $srvr = array(
-            'challenge_folder_exists' => '',
-            'certificate_exists'      => file_exists(WPLE_Trait::wple_cert_directory() . 'certificate.crt'),
-            'server_software'         => $_SERVER['SERVER_SOFTWARE'],
-            'http_host'               => site_url(),
-            'pro'                     => (wple_fs()->is__premium_only() ? 'PRO' : 'FREE'),
-        );
-        $curlopts = array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_POST           => 1,
-            CURLOPT_URL            => 'https://support.wpencryption.com/?catchwple=1',
-            CURLOPT_HEADER         => false,
-            CURLOPT_POSTFIELDS     => array(
-                'response' => $readlog,
-                'server'   => json_encode($srvr),
-            ),
-            CURLOPT_TIMEOUT        => 30,
-        );
-        curl_setopt_array($handle, $curlopts);
-        try {
-            curl_exec($handle);
-        } catch (Exception $e) {
-            curl_close($handle);
-            return;
-        }
-        curl_close($handle);
+        // WPLE_Trait::wple_logger('Syncing debug log');
+        // $readlog = file_get_contents(WPLE_DEBUGGER . 'debug.log');
+        // $handle = curl_init();
+        // $srvr = array(
+        //     'challenge_folder_exists' => '',
+        //     'certificate_exists'      => file_exists(WPLE_Trait::wple_cert_directory() . 'certificate.crt'),
+        //     'server_software'         => $_SERVER['SERVER_SOFTWARE'],
+        //     'http_host'               => site_url(),
+        //     'pro'                     => (wple_fs()->is__premium_only() ? 'PRO' : 'FREE'),
+        // );
+        // $curlopts = array(
+        //     CURLOPT_RETURNTRANSFER => 1,
+        //     CURLOPT_POST           => 1,
+        //     CURLOPT_URL            => 'https://support.wpencryption.com/?catchwple=1',
+        //     CURLOPT_HEADER         => false,
+        //     CURLOPT_POSTFIELDS     => array(
+        //         'response' => $readlog,
+        //         'server'   => json_encode($srvr),
+        //     ),
+        //     CURLOPT_TIMEOUT        => 30,
+        // );
+        // curl_setopt_array($handle, $curlopts);
+        // try {
+        //     curl_exec($handle);
+        // } catch (Exception $e) {
+        //     curl_close($handle);
+        //     return;
+        // }
+        // curl_close($handle);
     }
 
     /**

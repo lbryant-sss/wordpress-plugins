@@ -263,6 +263,7 @@ class Price_List extends Base_Widget {
 				'selectors' => [
 					'{{WRAPPER}} .raven-price-list-separator' => 'border-bottom-style: {{VALUE}}',
 				],
+				'frontend_available' => 'true'
 			]
 		);
 
@@ -513,7 +514,7 @@ class Price_List extends Base_Widget {
 								<?php if ( ! empty( $item['item_title'] ) ) : ?>
 									<span <?php echo $this->get_render_attribute_string( $title_repeater_setting_key ); ?>><?php echo wp_kses_post( $item['item_title'] ); ?></span>
 								<?php endif; ?>
-								<?php if ( 'none' !== $settings['separator_style'] ) : ?>
+								<?php if ( isset( $settings['separator_style'] ) && 'none' !== $settings['separator_style'] ) : ?>
 									<span class="raven-price-list-separator"></span>
 								<?php endif; ?>
 								<?php if ( ! empty( $item['item_price'] ) ) : ?>

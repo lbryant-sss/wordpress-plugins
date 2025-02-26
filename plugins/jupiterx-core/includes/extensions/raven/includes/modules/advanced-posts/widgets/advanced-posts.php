@@ -685,6 +685,14 @@ class Advanced_Posts extends Base_Widget {
 		);
 
 		$this->add_control(
+			'post_meta_heading',
+			[
+				'label' => esc_html__( 'Post Meta', 'jupiterx-core' ),
+				'type' => 'heading',
+			]
+		);
+
+		$this->add_control(
 			'show_author',
 			[
 				'label' => esc_html__( 'Author', 'jupiterx-core' ),

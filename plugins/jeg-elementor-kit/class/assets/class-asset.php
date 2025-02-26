@@ -1031,16 +1031,18 @@ class Asset {
 		$selector          = '.elementor-element.elementor-element-' . $element->get_id() . ' .jeg-elementor-kit.jkit-gallery';
 		$columns           = $settings['sg_setting_column_responsive'];
 
-		if ( $count_breakpoints > 0 ) {
-			$css .= '@media (min-width: ' . strval( $breakpoints[0]['value'] + 1 ) . 'px) {' . $selector . ' .gallery-items .gallery-item-wrap { width: calc(100% / ' . strval( intval( $columns['size'] ) ) . ' ); float: left; } }';
-		} else {
-			$css .= $selector . ' .gallery-items .gallery-item-wrap { width: calc(100% / ' . strval( intval( $columns['size'] ) ) . ' ); float: left; }';
-		}
+		$css .= $selector . ' .gallery-items .gallery-item-wrap { width: calc(100% / ' . strval( intval( $columns['size'] ) ) . ' ); float: left; }';
 
 		for ( $i = 0; $i < $count_breakpoints - 1; $i++ ) {
 			if ( isset( $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $i ]['key'] ]['size'] ) && ! empty( $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $i ]['key'] ]['size'] ) ) {
+				$max_min = 'max';
 				$columns = $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $i ]['key'] ];
-				$css    .= '@media (min-width: ' . strval( $breakpoints[ $i + 1 ]['value'] + 1 ) . 'px) and (max-width: ' . strval( $breakpoints[ $i ]['value'] ) . 'px) {' . $selector . ' .gallery-items .gallery-item-wrap { width: calc(100% / ' . strval( intval( $columns['size'] ) ) . ' ); float: left; } }';
+
+				if ( 'widescreen' === $breakpoints[ $i ]['key'] ) {
+					$max_min = 'min';
+				}
+
+				$css .= '@media (' . $max_min . '-width: ' . strval( $breakpoints[ $i ]['value'] ) . 'px) {' . $selector . ' .gallery-items .gallery-item-wrap { width: calc(100% / ' . strval( intval( $columns['size'] ) ) . ' ); float: left; } }';
 			}
 		}
 

@@ -13362,6 +13362,8 @@ exports["default"] = _default;
 
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _module = _interopRequireDefault(require("../utils/module"));
 
 var ProductsCarousel = _module["default"].extend({
@@ -13422,15 +13424,48 @@ var ProductsCarousel = _module["default"].extend({
     this.addClassToContent();
     this.wrapAllContents();
     var settings = this.getCarouselSettings(),
-        breakpointsSettings = {},
-        breakpoints = elementorFrontend.config.responsive.activeBreakpoints;
-    Object.keys(breakpoints).forEach(function (breakpointName) {
-      breakpointsSettings[breakpoints[breakpointName].value] = {
-        slidesPerView: _this.getDeviceSlidesPerView(breakpointName),
-        slidesPerGroup: _this.getDeviceSlidesToScroll(breakpointName),
-        spaceBetween: _this.getSpaceBetween(breakpointName)
-      };
+        breakpoints = elementorFrontend.config.responsive.activeBreakpoints,
+        breakpointsSettings = {};
+    var breakpointsArray = Object.entries(breakpoints).sort(function (_ref, _ref2) {
+      var _ref3 = (0, _slicedToArray2["default"])(_ref, 2),
+          a = _ref3[1];
+
+      var _ref4 = (0, _slicedToArray2["default"])(_ref2, 2),
+          b = _ref4[1];
+
+      return a.value - b.value;
     });
+    var lastMinWidth = 0;
+    var desktopBreakpoint = 0;
+    breakpointsArray.forEach(function (_ref5) {
+      var _ref6 = (0, _slicedToArray2["default"])(_ref5, 2),
+          breakpointName = _ref6[0],
+          bp = _ref6[1];
+
+      if (bp.direction === 'max') {
+        breakpointsSettings[lastMinWidth] = {
+          slidesPerView: _this.getDeviceSlidesPerView(breakpointName),
+          slidesPerGroup: _this.getDeviceSlidesToScroll(breakpointName),
+          spaceBetween: _this.getSpaceBetween(breakpointName)
+        }; // Keep track of the largest max-value breakpoint
+
+        desktopBreakpoint = Math.max(desktopBreakpoint, bp.value);
+      } else {
+        breakpointsSettings[bp.value] = {
+          slidesPerView: _this.getDeviceSlidesPerView(breakpointName),
+          slidesPerGroup: _this.getDeviceSlidesToScroll(breakpointName),
+          spaceBetween: _this.getSpaceBetween(breakpointName)
+        };
+      }
+
+      lastMinWidth = bp.value;
+    }); // Explicitly define "Desktop" as anything beyond the highest max breakpoint
+
+    breakpointsSettings[desktopBreakpoint] = {
+      slidesPerView: this.getDeviceSlidesPerView('desktop'),
+      slidesPerGroup: this.getDeviceSlidesToScroll('desktop'),
+      spaceBetween: this.getSpaceBetween('desktop')
+    };
     var options = {
       draggable: false,
       autoplay: settings.enable_autoplay === 'yes' ? {
@@ -13652,7 +13687,7 @@ function _default($scope) {
   });
 }
 
-},{"../utils/module":9,"@babel/runtime/helpers/interopRequireDefault":96,"@babel/runtime/helpers/toConsumableArray":105}],62:[function(require,module,exports){
+},{"../utils/module":9,"@babel/runtime/helpers/interopRequireDefault":96,"@babel/runtime/helpers/slicedToArray":103,"@babel/runtime/helpers/toConsumableArray":105}],62:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -13970,12 +14005,14 @@ var ShoppingCart = _module["default"].extend({
 
     if (this.getElementSettings('show_cart_quick_view') === 'yes' && this.getElementSettings('enable_ajax_add_to_cart') === 'yes' && (this.elements.$body.find('form.cart').hasClass('bundle_form') || this.elements.$body.find('form.cart').hasClass('grouped_form'))) {
       this.handleMiniCartOpenClose();
+      this.handleTapToCloseOutside();
       return;
     }
 
     if (this.getElementSettings('show_cart_quick_view') === 'yes' && this.getElementSettings('enable_ajax_add_to_cart') !== 'yes') {
       this.handleMiniCartOpenClose();
       this.handleRemoveFromCart();
+      this.handleTapToCloseOutside();
       return;
     }
 
@@ -13987,6 +14024,7 @@ var ShoppingCart = _module["default"].extend({
     this.handleMiniCartOnAddToCart();
     this.ajaxAddToCart();
     this.handleRemoveFromCart();
+    this.handleTapToCloseOutside();
   },
   handleAjaxAddToCartOnPage: function handleAjaxAddToCartOnPage() {
     var _this2 = this;
@@ -14223,6 +14261,29 @@ var ShoppingCart = _module["default"].extend({
         dataType: 'json'
       });
     });
+  },
+  handleTapToCloseOutside: function handleTapToCloseOutside() {
+    var _this3 = this;
+
+    var tabToClose = this.getElementSettings('tap_outside_close');
+
+    if (tabToClose === 'yes') {
+      var BlurContent = this.getElementSettings('content_effect_blur_content'),
+          overlayColor = this.getElementSettings('content_effect_content_overlay'),
+          ravenShoppingCart = document.getElementsByClassName('raven-shopping-cart')[0],
+          ravenShoppingCartQuickView = document.getElementsByClassName('jupiterx-cart-quick-view')[0];
+      document.addEventListener('click', function (event) {
+        var _this3$$element, _event$target$classLi, _event$target$classLi2;
+
+        if (!(ravenShoppingCart === null || ravenShoppingCart === void 0 ? void 0 : ravenShoppingCart.contains(event.target)) && !(ravenShoppingCartQuickView === null || ravenShoppingCartQuickView === void 0 ? void 0 : ravenShoppingCartQuickView.contains(event.target)) && ((_this3$$element = _this3.$element) === null || _this3$$element === void 0 ? void 0 : _this3$$element.hasClass('jupiterx-raven-cart-quick-view-overlay')) && !((_event$target$classLi = event.target.classList) === null || _event$target$classLi === void 0 ? void 0 : _event$target$classLi.contains('add_to_cart_button')) && !((_event$target$classLi2 = event.target.classList) === null || _event$target$classLi2 === void 0 ? void 0 : _event$target$classLi2.contains('single_add_to_cart_button'))) {
+          _this3.$element.alterClass('jupiterx-raven-cart-quick-view-overlay');
+
+          if (overlayColor === 'enabled' || BlurContent === 'enabled') {
+            _this3.elements.$overlay.removeClass('jupiterx-shopping-cart-overlay-activated');
+          }
+        }
+      });
+    }
   }
 });
 
@@ -18167,17 +18228,6 @@ var Products = _module["default"].extend({
        apply on the new elements that are added because of the sellkit pro filters.
        */
       self.refreshElements();
-      self.elements.$products.each(function (index, item) {
-        var image = item.querySelector('img');
-
-        if (image && self.getInstanceValue('layout') === 'custom' && self.getInstanceValue('general_layout') !== 'masonry') {
-          image.parentElement.classList.add('raven-image-fit');
-        }
-
-        if (image && self.getInstanceValue('layout') === 'default') {
-          image.parentElement.classList.remove('raven-image-fit');
-        }
-      });
       self.zoom();
       self.flexslider();
       self.wrapContentData();
