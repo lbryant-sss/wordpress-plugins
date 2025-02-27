@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Flexible Shipping plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flexible Shipping 5.2.0\n"
+"Project-Id-Version: Flexible Shipping 5.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-shipping\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-18T13:26:29+00:00\n"
+"POT-Creation-Date: 2025-02-26T11:22:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: flexible-shipping\n"
@@ -292,17 +292,18 @@ msgstr ""
 msgid "Select all"
 msgstr ""
 
-#. Translators: matched condition.
 #. Translators: add method.
 #. Translators: free shipping.
+#. Translators: matched condition.
 #: classes/table-rate/views/html-shipping-method-settings.php:55
 #: classes/table-rate/views/html-shipping-method-settings.php:63
 #: classes/table-rate/views/html-shipping-method-settings.php:72
-#: src/WPDesk/FS/TableRate/Rule/Condition/AbstractCondition.php:175
-#: src/WPDesk/FS/TableRate/Rule/Condition/None.php:64
 #: src/WPDesk/FS/TableRate/ShippingMethod/RateCalculator.php:262
 #: src/WPDesk/FS/TableRate/ShippingMethod/RateCalculator.php:268
 #: src/WPDesk/FS/TableRate/ShippingMethod/RateCalculator.php:279
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php:160
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php:331
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/None.php:62
 #: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/Settings/CheckboxValue.php:23
 msgid "yes"
 msgstr ""
@@ -829,7 +830,7 @@ msgstr ""
 
 #: src/WPDesk/FS/Shipment/ModifyOrderTable.php:66
 #: src/WPDesk/FS/Shipment/ModifyOrderTable.php:73
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingCost.php:19
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ShippingCost.php:18
 msgid "Shipping"
 msgstr ""
 
@@ -1084,390 +1085,6 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: src/WPDesk/FS/TableRate/Rule/Condition/AbstractCondition.php:91
-msgctxt "Default Condition Group"
-msgid "General"
-msgstr ""
-
-#. Translators: condition name.
-#: src/WPDesk/FS/TableRate/Rule/Condition/AbstractCondition.php:154
-#: src/WPDesk/FS/TableRate/Rule/Condition/None.php:62
-msgid "Condition: %1$s;"
-msgstr ""
-
-#. Translators: input data.
-#: src/WPDesk/FS/TableRate/Rule/Condition/AbstractCondition.php:172
-msgid " input data: %1$s;"
-msgstr ""
-
-#. Translators: matched condition.
-#: src/WPDesk/FS/TableRate/Rule/Condition/AbstractCondition.php:175
-#: src/WPDesk/FS/TableRate/Rule/Condition/None.php:64
-msgid " matched: %1$s"
-msgstr ""
-
-#. Translators: matched condition.
-#. Translators: add method.
-#. Translators: free shipping.
-#: src/WPDesk/FS/TableRate/Rule/Condition/AbstractCondition.php:175
-#: src/WPDesk/FS/TableRate/Rule/Condition/None.php:64
-#: src/WPDesk/FS/TableRate/ShippingMethod/RateCalculator.php:262
-#: src/WPDesk/FS/TableRate/ShippingMethod/RateCalculator.php:268
-#: src/WPDesk/FS/TableRate/ShippingMethod/RateCalculator.php:279
-#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/Settings/CheckboxValue.php:23
-msgid "no"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/None.php:28
-msgid "Always"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/None.php:29
-msgid "Fixed shipping cost"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:31
-#: src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:55
-#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/BasedOnOptions.php:20
-msgid "Price"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:32
-msgid "Shipping cost based on the cart total or package value"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:33
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/CartLineItem.php:27
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Item.php:25
-msgid "Cart"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:90
-msgid "price is from"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:91
-msgid "min"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:92
-#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:78
-#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:79
-msgid "is from"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:98
-msgid "price to"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:99
-msgid "max"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:100
-#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:86
-#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:87
-msgid "to"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/CartLineItem.php:26
-msgid "Cart line item"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/CartLineItem.php:31
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/DayOfTheWeek.php:29
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/DimensionalWeight.php:29
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Item.php:29
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/MaxDimension.php:30
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Product.php:31
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductCategory.php:31
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php:27
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionLength.php:27
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php:27
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldRange.php:21
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldValue.php:19
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockQuantity.php:22
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockStatus.php:19
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductTag.php:31
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingClass.php:29
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingCost.php:22
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/TimeOfTheDay.php:29
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/TotalOverallDimensions.php:31
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/UserRole.php:29
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Volume.php:29
-msgid "(PRO feature)"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/DayOfTheWeek.php:24
-msgid "Day of the week"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/DayOfTheWeek.php:25
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/TimeOfTheDay.php:25
-msgid "Destination & Time"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/DimensionalWeight.php:24
-msgid "Dimensional weight"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/DimensionalWeight.php:25
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/MaxDimension.php:26
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Product.php:26
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Product.php:27
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductCategory.php:27
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php:23
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionLength.php:23
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php:23
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldRange.php:17
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldValue.php:15
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockQuantity.php:18
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockStatus.php:15
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductTag.php:27
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingClass.php:25
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/TotalOverallDimensions.php:27
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Volume.php:25
-#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:33
-msgid "Product"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Item.php:24
-msgid "Item"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/MaxDimension.php:24
-msgid "Max dimension"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/MaxDimension.php:25
-msgid "Shipping cost based on the product's maximum dimension"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductCategory.php:26
-msgid "Product category"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php:21
-msgid "Height"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php:22
-msgid "Shipping cost based on the product's height"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionLength.php:21
-msgid "Length"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionLength.php:22
-msgid "Shipping cost based on the product's length"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php:21
-msgid "Width"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php:22
-msgid "Shipping cost based on the product's width"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldRange.php:15
-msgid "Field range"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldRange.php:16
-msgid "Shipping cost based on the product's field range"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldValue.php:13
-msgid "Field value"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldValue.php:14
-msgid "Shipping cost based on the product's field value"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockQuantity.php:16
-msgid "Stock quantity"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockQuantity.php:17
-msgid "Shipping cost based on the product's stock quantity"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockStatus.php:13
-msgid "Stock status"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockStatus.php:14
-msgid "Shipping cost based on the product's stock status"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductTag.php:26
-msgid "Product tag"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingClass.php:24
-msgid "Shipping class"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingCost.php:17
-msgid "Shipping cost"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingCost.php:18
-msgid "Shipping cost based on current shipping cost"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/TimeOfTheDay.php:24
-msgid "Time of the day"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/TotalOverallDimensions.php:26
-msgid "Total overall dimensions"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/UserRole.php:24
-msgid "User Role"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/UserRole.php:25
-msgid "User"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Volume.php:24
-msgid "Volume"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:31
-#: src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:36
-#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/BasedOnOptions.php:20
-msgid "Weight"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:32
-msgid "Shipping cost based on the weight of the cart or package"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:77
-msgid "weight is from"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:85
-msgid "weight to"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Cost/AbstractAdditionalCost.php:109
-msgid "additional cost:"
-msgstr ""
-
-#. Translators: cost per.
-#: src/WPDesk/FS/TableRate/Rule/Cost/AbstractAdditionalCost.php:111
-msgid "%1$s per %2$s"
-msgstr ""
-
-#. Translators: based on.
-#: src/WPDesk/FS/TableRate/Rule/Cost/AbstractAdditionalCost.php:113
-msgid "based on: %1$s"
-msgstr ""
-
-#. Translators: input data.
-#: src/WPDesk/FS/TableRate/Rule/Cost/AbstractAdditionalCost.php:115
-msgid "input data: %1$s"
-msgstr ""
-
-#. Translators: calculated.
-#: src/WPDesk/FS/TableRate/Rule/Cost/AbstractAdditionalCost.php:117
-msgid "calculated: %1$s"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:69
-#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:70
-msgid "additional cost"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:71
-msgid "additional cost is"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:78
-#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:87
-msgid "additional cost per"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:79
-#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:80
-msgid "per"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Cost/RuleCostFieldsFactory.php:50
-msgid "Cost per order"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Cost/RuleCostFieldsFactory.php:51
-msgid "rule cost is"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Cost/RuleCostFieldsFactory.php:52
-msgid "Enter shipment cost for this rule."
-msgstr ""
-
-#. Translators: rule cost.
-#: src/WPDesk/FS/TableRate/Rule/CostsCalculator.php:223
-msgid "Calculated rule cost: %1$s %2$s"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:37
-msgid "Weight-based shipping"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:38
-msgid "Shipping cost increases in line with the cart total weight."
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:56
-msgid "Price-based shipping"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:57
-msgid "Shipping cost decreases in line with the cart total. Free shipping once $300 threshold is reached."
-msgstr ""
-
-#. Translators: items.
-#: src/WPDesk/FS/TableRate/Rule/Rule.php:159
-msgid "   Matched items: %1$s"
-msgstr ""
-
-#. Translators: items costs.
-#: src/WPDesk/FS/TableRate/Rule/Rule.php:162
-msgid "   Matched items cost: %1$d %2$s"
-msgstr ""
-
-#. Translators: items weight.
-#: src/WPDesk/FS/TableRate/Rule/Rule.php:165
-msgid "   Matched items weight: %1$s"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/Rule.php:166
-msgid "Rule costs:"
-msgstr ""
-
-#. Translators: rule number.
-#: src/WPDesk/FS/TableRate/Rule/Rule.php:245
-msgid "Rule %1$s:"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/SpecialAction/None.php:19
-#: src/WPDesk/FS/TableRate/ShippingMethod/CommonMethodSettings.php:187
-#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/BasedOnOptions.php:20
-#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/Settings/IntegrationSettingsImplementation.php:40
-msgid "None"
-msgstr ""
-
-#: src/WPDesk/FS/TableRate/Rule/SpecialAction/SpecialActionFieldsFactory.php:65
-msgid "special action"
-msgstr ""
-
 #: src/WPDesk/FS/TableRate/ShippingMethod/CommonMethodSettings.php:39
 #: src/WPDesk/FS/TableRate/ShippingMethod/RateCalculator.php:368
 msgid "Free"
@@ -1550,6 +1167,13 @@ msgstr ""
 #: src/WPDesk/FS/TableRate/ShippingMethod/CommonMethodSettings.php:165
 #: src/WPDesk/FS/TableRate/ShippingMethodsIntegration/SettingsFields.php:132
 msgid "Shipping Cost Calculation Rules"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/ShippingMethod/CommonMethodSettings.php:187
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/SpecialAction/None.php:20
+#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/BasedOnOptions.php:20
+#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/Settings/IntegrationSettingsImplementation.php:40
+msgid "None"
 msgstr ""
 
 #: src/WPDesk/FS/TableRate/ShippingMethod/CommonMethodSettings.php:191
@@ -1668,6 +1292,19 @@ msgstr ""
 #. Translators: add method.
 #: src/WPDesk/FS/TableRate/ShippingMethod/RateCalculator.php:262
 msgid "Used and displayed in the cart/checkout: %1$s"
+msgstr ""
+
+#. Translators: add method.
+#. Translators: free shipping.
+#. Translators: matched condition.
+#: src/WPDesk/FS/TableRate/ShippingMethod/RateCalculator.php:262
+#: src/WPDesk/FS/TableRate/ShippingMethod/RateCalculator.php:268
+#: src/WPDesk/FS/TableRate/ShippingMethod/RateCalculator.php:279
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php:160
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php:331
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/None.php:62
+#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/Settings/CheckboxValue.php:23
+msgid "no"
 msgstr ""
 
 #. Translators: add method.
@@ -1827,6 +1464,391 @@ msgstr ""
 #: templates/email/after_order_table.php:15
 #: templates/myaccount/after_order_table.php:18
 msgid "Track shipment: "
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php:82
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php:253
+msgctxt "Default Condition Group"
+msgid "General"
+msgstr ""
+
+#. Translators: condition name.
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php:144
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php:315
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/None.php:60
+msgid "Condition: %1$s;"
+msgstr ""
+
+#. Translators: input data.
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php:158
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php:329
+msgid " input data: %1$s;"
+msgstr ""
+
+#. Translators: matched condition.
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php:160
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php:331
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/None.php:62
+msgid " matched: %1$s"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/None.php:27
+msgid "Always"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/None.php:28
+msgid "Fixed shipping cost"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:30
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:87
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:46
+#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/BasedOnOptions.php:20
+msgid "Price"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:31
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:88
+msgid "Shipping cost based on the cart total or package value"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:32
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:89
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/CartLineItem.php:26
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/Item.php:24
+msgid "Cart"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:70
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:127
+msgid "price is from"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:70
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:127
+msgid "min"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:70
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:127
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:57
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:101
+msgid "is from"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:70
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:127
+msgid "price to"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:70
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:127
+msgid "max"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:70
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php:127
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:57
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:101
+msgid "to"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/CartLineItem.php:25
+msgid "Cart line item"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/CartLineItem.php:29
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/DayOfTheWeek.php:27
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/DimensionalWeight.php:27
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/Item.php:27
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/MaxDimension.php:28
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/Product.php:29
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductCategory.php:29
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php:25
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionLength.php:25
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php:25
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductFieldRange.php:17
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductFieldValue.php:17
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductStockQuantity.php:19
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductStockStatus.php:17
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductTag.php:29
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ShippingClass.php:27
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ShippingCost.php:20
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/TimeOfTheDay.php:27
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/TotalOverallDimensions.php:29
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/UserRole.php:27
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/Volume.php:27
+msgid "(PRO feature)"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/DayOfTheWeek.php:23
+msgid "Day of the week"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/DayOfTheWeek.php:24
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/TimeOfTheDay.php:24
+msgid "Destination & Time"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/DimensionalWeight.php:23
+msgid "Dimensional weight"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/DimensionalWeight.php:24
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/MaxDimension.php:25
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/Product.php:25
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/Product.php:26
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductCategory.php:26
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php:22
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionLength.php:22
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php:22
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductFieldRange.php:14
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductFieldValue.php:14
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductStockQuantity.php:16
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductStockStatus.php:14
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductTag.php:26
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ShippingClass.php:24
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/TotalOverallDimensions.php:26
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/Volume.php:24
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:32
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:76
+msgid "Product"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/Item.php:23
+msgid "Item"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/MaxDimension.php:23
+msgid "Max dimension"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/MaxDimension.php:24
+msgid "Shipping cost based on the product's maximum dimension"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductCategory.php:25
+msgid "Product category"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php:20
+msgid "Height"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php:21
+msgid "Shipping cost based on the product's height"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionLength.php:20
+msgid "Length"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionLength.php:21
+msgid "Shipping cost based on the product's length"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php:20
+msgid "Width"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php:21
+msgid "Shipping cost based on the product's width"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductFieldRange.php:12
+msgid "Field range"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductFieldRange.php:13
+msgid "Shipping cost based on the product's field range"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductFieldValue.php:12
+msgid "Field value"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductFieldValue.php:13
+msgid "Shipping cost based on the product's field value"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductStockQuantity.php:14
+msgid "Stock quantity"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductStockQuantity.php:15
+msgid "Shipping cost based on the product's stock quantity"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductStockStatus.php:12
+msgid "Stock status"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductStockStatus.php:13
+msgid "Shipping cost based on the product's stock status"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductTag.php:25
+msgid "Product tag"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ShippingClass.php:23
+msgid "Shipping class"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ShippingCost.php:16
+msgid "Shipping cost"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ShippingCost.php:17
+msgid "Shipping cost based on current shipping cost"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/TimeOfTheDay.php:23
+msgid "Time of the day"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/TotalOverallDimensions.php:25
+msgid "Total overall dimensions"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/UserRole.php:23
+msgid "User Role"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/UserRole.php:24
+msgid "User"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/Volume.php:23
+msgid "Volume"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:30
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:74
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:34
+#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/BasedOnOptions.php:20
+msgid "Weight"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:31
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:75
+msgid "Shipping cost based on the weight of the cart or package"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:57
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:101
+msgid "weight is from"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:57
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php:101
+msgid "weight to"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/AbstractAdditionalCost.php:99
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/AbstractAdditionalCost.php:238
+msgid "additional cost:"
+msgstr ""
+
+#. Translators: cost per.
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/AbstractAdditionalCost.php:101
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/AbstractAdditionalCost.php:240
+msgid "%1$s per %2$s"
+msgstr ""
+
+#. Translators: based on.
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/AbstractAdditionalCost.php:103
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/AbstractAdditionalCost.php:242
+msgid "based on: %1$s"
+msgstr ""
+
+#. Translators: input data.
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/AbstractAdditionalCost.php:105
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/AbstractAdditionalCost.php:244
+msgid "input data: %1$s"
+msgstr ""
+
+#. Translators: calculated.
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/AbstractAdditionalCost.php:107
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/AbstractAdditionalCost.php:246
+msgid "calculated: %1$s"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:58
+msgid "additional cost"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:58
+msgid "additional cost is"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:58
+msgid "additional cost per"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:58
+msgid "per"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/RuleCostFieldsFactory.php:42
+msgid "Cost per order"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/RuleCostFieldsFactory.php:42
+msgid "rule cost is"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/RuleCostFieldsFactory.php:42
+msgid "Enter shipment cost for this rule."
+msgstr ""
+
+#. Translators: rule cost.
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/CostsCalculator.php:178
+msgid "Calculated rule cost: %1$s %2$s"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:34
+msgid "Weight-based shipping"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:34
+msgid "Shipping cost increases in line with the cart total weight."
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:46
+msgid "Price-based shipping"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:46
+msgid "Shipping cost decreases in line with the cart total. Free shipping once $300 threshold is reached."
+msgstr ""
+
+#. Translators: items.
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:136
+msgid "   Matched items: %1$s"
+msgstr ""
+
+#. Translators: items costs.
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:138
+msgid "   Matched items cost: %1$d %2$s"
+msgstr ""
+
+#. Translators: items weight.
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:140
+msgid "   Matched items weight: %1$s"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:141
+msgid "Rule costs:"
+msgstr ""
+
+#. Translators: rule number.
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:211
+msgid "Rule %1$s:"
+msgstr ""
+
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/SpecialAction/SpecialActionFieldsFactory.php:56
+msgid "special action"
 msgstr ""
 
 #: vendor_prefixed/octolize/octolize-checkout-block-integration/src/Blocks/StoreEndpoint.php:57
@@ -2051,7 +2073,7 @@ msgctxt "Page title"
 msgid "Shipping Extensions"
 msgstr ""
 
-#: vendor_prefixed/octolize/wp-shipping-extensions/src/ShippingExtensions/Page.php:65
+#: vendor_prefixed/octolize/wp-shipping-extensions/src/ShippingExtensions/Page.php:66
 msgctxt "Menu Title"
 msgid ""
 "Shipping\n"
@@ -2264,7 +2286,7 @@ msgid "Conditionally display and hide the shipping methods in your WooCommerce s
 msgstr ""
 
 #: vendor_prefixed/octolize/wp-shipping-extensions/src/ShippingExtensions/Plugin/PluginFactory.php:117
-#: vendor_prefixed/octolize/wp-shipping-extensions/src/ShippingExtensions/views/html-shipping-extensions-page.php:28
+#: vendor_prefixed/octolize/wp-shipping-extensions/src/ShippingExtensions/views/html-shipping-extensions-page.php:32
 msgid "All"
 msgstr ""
 
@@ -2289,15 +2311,15 @@ msgctxt "Link on plugin list page"
 msgid "Extensions"
 msgstr ""
 
-#: vendor_prefixed/octolize/wp-shipping-extensions/src/ShippingExtensions/views/html-shipping-extensions-page.php:22
+#: vendor_prefixed/octolize/wp-shipping-extensions/src/ShippingExtensions/views/html-shipping-extensions-page.php:23
 msgid "Shipping Extensions by"
 msgstr ""
 
-#: vendor_prefixed/octolize/wp-shipping-extensions/src/ShippingExtensions/views/html-shipping-extensions-page.php:25
+#: vendor_prefixed/octolize/wp-shipping-extensions/src/ShippingExtensions/views/html-shipping-extensions-page.php:26
 msgid "Dive into a system of Octolize ecommerce shipping plugins for WooCommerce. Don’t lose your customers, time and money. Let our plugins secure your sales!"
 msgstr ""
 
-#: vendor_prefixed/octolize/wp-shipping-extensions/src/ShippingExtensions/views/html-shipping-extensions-page.php:31
+#: vendor_prefixed/octolize/wp-shipping-extensions/src/ShippingExtensions/views/html-shipping-extensions-page.php:35
 msgid "Filter plugins:"
 msgstr ""
 
@@ -2830,7 +2852,7 @@ msgstr ""
 msgid "Value not found"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/html-woo-select.js:274
+#: assets-src/rules-settings/js/components/html-woo-select.js:278
 #: assets/js/rules-settings.js:101
 msgid "Missing Id: %s"
 msgstr ""

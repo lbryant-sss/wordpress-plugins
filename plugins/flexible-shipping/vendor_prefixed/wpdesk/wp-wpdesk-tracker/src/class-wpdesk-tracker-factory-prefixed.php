@@ -11,7 +11,7 @@ namespace FSVendor;
  * @category    Class
  * @author        WP Desk
  */
-use Psr\Log\LoggerInterface;
+use FSVendor\Psr\Log\LoggerInterface;
 if (!\defined('ABSPATH')) {
     exit;
 }

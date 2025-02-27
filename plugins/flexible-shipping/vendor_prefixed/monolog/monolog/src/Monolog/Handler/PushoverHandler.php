@@ -13,7 +13,7 @@ namespace FSVendor\Monolog\Handler;
 
 use FSVendor\Monolog\Logger;
 use FSVendor\Monolog\Utils;
-use Psr\Log\LogLevel;
+use FSVendor\Psr\Log\LogLevel;
 /**
  * Sends notifications through the pushover api to mobile phones
  *

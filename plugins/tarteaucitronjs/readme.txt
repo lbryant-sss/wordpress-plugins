@@ -32,6 +32,9 @@ Free for 7 days, licence required after the trial.
 
 == Changelog ==
 
+= 1.9.2 =
+* Fix video not loading
+
 = 1.9.1 =
 * Add options to hide features
 

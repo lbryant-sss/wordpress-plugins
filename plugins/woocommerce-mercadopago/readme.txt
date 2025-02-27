@@ -1,5 +1,5 @@
 === Mercado Pago payments for WooCommerce ===
-Contributors:
+Contributors: mercadopago
 Tags: ecommerce, mercadopago, woocommerce
 Requires at least: 6.3
 Tested up to: 6.7

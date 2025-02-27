@@ -3,7 +3,7 @@
 Plugin Name: tarteaucitron.io
 Plugin URI: https://tarteaucitron.io/
 Description: Compliant and accessible cookie banner
-Version: 1.9.1
+Version: 1.9.2
 Text Domain: tarteaucitronjs
 Domain Path: /languages/
 Author: Amauri
@@ -144,7 +144,7 @@ function _tarteaucitron_admin_bar_css() {
     add_filter( 'embed_oembed_html', 'tarteaucitronjs_oembed_dataparse', PHP_INT_MAX, 4 );
     function tarteaucitronjs_oembed_dataparse($cache, $url, $attr, $post_ID) {
         
-        if (is_admin() || isset($_GET['fl_builder']) || get_option('tarteaucitronShowWidget', 'visible') == 'invisible') {return;}
+        if (is_admin() || isset($_GET['fl_builder']) || get_option('tarteaucitronShowWidget', 'visible') == 'invisible') {return $cache;}
         
         $url = esc_url($url);
         

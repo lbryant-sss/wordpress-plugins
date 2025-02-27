@@ -13,9 +13,9 @@ namespace FSVendor\Monolog;
 
 use DateTimeZone;
 use FSVendor\Monolog\Handler\HandlerInterface;
-use Psr\Log\LoggerInterface;
-use Psr\Log\InvalidArgumentException;
-use Psr\Log\LogLevel;
+use FSVendor\Psr\Log\LoggerInterface;
+use FSVendor\Psr\Log\InvalidArgumentException;
+use FSVendor\Psr\Log\LogLevel;
 use Throwable;
 use Stringable;
 /**

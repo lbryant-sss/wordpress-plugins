@@ -12,7 +12,7 @@ declare (strict_types=1);
 namespace FSVendor\Monolog\Handler\FingersCrossed;
 
 use FSVendor\Monolog\Logger;
-use Psr\Log\LogLevel;
+use FSVendor\Psr\Log\LogLevel;
 /**
  * Channel and Error level based monolog activation strategy. Allows to trigger activation
  * based on level per channel. e.g. trigger activation on level 'ERROR' by default, except

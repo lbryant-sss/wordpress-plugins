@@ -16,7 +16,7 @@ use FSVendor\Monolog\Handler\FingersCrossed\ActivationStrategyInterface;
 use FSVendor\Monolog\Logger;
 use FSVendor\Monolog\ResettableInterface;
 use FSVendor\Monolog\Formatter\FormatterInterface;
-use Psr\Log\LogLevel;
+use FSVendor\Psr\Log\LogLevel;
 /**
  * Buffers all records until a certain level is reached
  *

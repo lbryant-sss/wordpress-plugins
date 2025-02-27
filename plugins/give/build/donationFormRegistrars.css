@@ -739,8 +739,7 @@
 
 .react-datepicker__aria-live {
   position: absolute;
-  -webkit-clip-path: circle(0);
-          clip-path: circle(0);
+  clip-path: circle(0);
   border: 0;
   height: 1px;
   margin: -1px;

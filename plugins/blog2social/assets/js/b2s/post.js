@@ -1,12 +1,14 @@
 jQuery.noConflict();
 
-if (typeof wp.heartbeat !== "undefined") {
-    jQuery(document).on('heartbeat-send', function (e, data) {
-        data['b2s_heartbeat'] = 'b2s_listener';
-    });
-    wp.heartbeat.connectNow();
-}
 jQuery(window).on("load", function () {
+
+    if (typeof wp.heartbeat !== "undefined") {
+        jQuery(document).on('heartbeat-send', function (e, data) {
+            data['b2s_heartbeat'] = 'b2s_listener';
+        });
+        wp.heartbeat.connectNow();
+    }
+    
     jQuery('#b2sPagination').val("1");
     b2sSortFormSubmit();
 

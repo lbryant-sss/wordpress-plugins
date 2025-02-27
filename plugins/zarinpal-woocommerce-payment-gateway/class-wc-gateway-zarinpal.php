@@ -413,13 +413,10 @@ function Load_ZarinPal_Gateway() {
                 ob_start();
                 ?>
                 <tr valign="top">
-                    <th scope="row" class="titledesc">
-                        <?php echo esc_html($field['title']); ?>
-                    </th>
+                    <th scope="row" class="titledesc"><?php echo esc_html($field['title']); ?></th>
                     <td class="forminp">
                         <textarea readonly style="direction: ltr; white-space: pre-wrap; width: 100%; height: 100px;"><?php echo esc_textarea($field['default']); ?></textarea>
-                        <br/>
-                        <?php echo wp_kses_post($field['description']); ?>
+                        <br/><?php echo wp_kses_post($field['description']); ?>
                     </td>
                 </tr>
                 <?php
@@ -448,6 +445,7 @@ function Load_ZarinPal_Gateway() {
     }
 }
 add_action('plugins_loaded', 'Load_ZarinPal_Gateway', 11);
+
 add_action('wp_ajax_zpal_transaction_info', 'zpal_display_transaction_info');
 add_action('wp_ajax_nopriv_zpal_transaction_info', 'zpal_display_transaction_info');
 function zpal_display_transaction_info() {
@@ -596,3 +594,87 @@ function zpal_display_transaction_info() {
     }
     exit;
 }
+
+add_action('wp_ajax_zpal_manual_verify', 'zpal_manual_verify_transaction');
+function zpal_manual_verify_transaction() {
+    if (!current_user_can('manage_woocommerce')) {
+        wp_die(__('شما دسترسی لازم برای انجام این عملیات را ندارید.', WC_ZPAL_TEXT_DOMAIN));
+    }
+    $order_id = isset($_POST['order_id']) ? intval($_POST['order_id']) : 0;
+    if (!$order_id) {
+        wp_die(__('سفارش یافت نشد.', WC_ZPAL_TEXT_DOMAIN));
+    }
+    $order = wc_get_order($order_id);
+    if (!$order) {
+        wp_die(__('سفارش یافت نشد.', WC_ZPAL_TEXT_DOMAIN));
+    }
+    $settings = get_option('woocommerce_WC_ZPal_settings');
+    $merchantCode = isset($settings['merchantcode']) ? $settings['merchantcode'] : '';
+    $sandbox = (isset($settings['sandbox']) && $settings['sandbox'] === 'yes');
+    $accessToken = isset($settings['access_token']) ? $settings['access_token'] : '';
+    $zarinpal = new ZarinpalHelperClass($merchantCode, $sandbox, $accessToken);
+    $authority = $order->get_meta('_zarinpal_authority');
+    if (empty($authority)) {
+        wp_die(__('کد آتوریتی برای این سفارش یافت نشد.', WC_ZPAL_TEXT_DOMAIN));
+    }
+    $amount = intval($order->get_total());
+    $currency = strtolower($order->get_currency());
+    if ($currency === 'irht') {
+        $amount *= 10000;
+    } elseif ($currency === 'irhr') {
+        $amount *= 1000;
+    } elseif ($currency === 'irt') {
+        $amount *= 10;
+    }
+    try {
+        $response = $zarinpal->verifyPayment($authority, $amount);
+        if ($response['code'] == 100) {
+            $transaction_id = $response['ref_id'];
+            if (!$order->is_paid()) {
+                $order->payment_complete($transaction_id);
+            }
+            $order->add_order_note(sprintf(__('پرداخت با موفقیت انجام شد. کد رهگیری: %s', WC_ZPAL_TEXT_DOMAIN), $transaction_id));
+            $message = sprintf(__('پرداخت با موفقیت انجام شد. کد رهگیری: %s', WC_ZPAL_TEXT_DOMAIN), $transaction_id);
+            echo '<div class="notice notice-success is-dismissible"><p>' . $message . '</p></div>';
+        } elseif ($response['code'] == 101) {
+            $message = __('تراکنش قبلا وریفای شده است.', WC_ZPAL_TEXT_DOMAIN);
+            echo '<div class="notice notice-info is-dismissible"><p>' . $message . '</p></div>';
+        } else {
+            throw new Exception('تراکنش ناموفق بود.');
+        }
+    } catch (Exception $e) {
+        echo '<div class="notice notice-error is-dismissible"><p>' . __('خطا: ', WC_ZPAL_TEXT_DOMAIN) . esc_html($e->getMessage()) . '</p></div>';
+    }
+    wp_die();
+}
+
+add_action('woocommerce_admin_order_data_after_order_details', 'zpal_manual_verify_button');
+function zpal_manual_verify_button($order) {
+    if ($order->get_payment_method() !== 'WC_ZPal') {
+        return;
+    }
+    $order_id = $order->get_id();
+    ?>
+    <p style="margin-top:20px;">
+        <a href="#" id="zpal-manual-verify-btn" class="button button-primary" style="margin-top:20px;">
+            <?php _e('اعتبارسنجی مجدد تراکنش', WC_ZPAL_TEXT_DOMAIN); ?>
+        </a>
+    </p>
+    <div id="zpal-manual-verify-result"></div>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $('#zpal-manual-verify-btn').on('click', function(e) {
+                e.preventDefault();
+                var btn = $(this);
+                btn.prop('disabled', true);
+                $('#zpal-manual-verify-result').html('<div class="notice notice-info is-dismissible"><p><?php echo esc_js(__('در حال بررسی تراکنش...', WC_ZPAL_TEXT_DOMAIN)); ?></p></div>');
+                $.post(ajaxurl, { action: 'zpal_manual_verify', order_id: <?php echo intval($order_id); ?> }, function(response) {
+                    $('#zpal-manual-verify-result').html(response);
+                    btn.prop('disabled', false);
+                });
+            });
+        });
+    </script>
+    <?php
+}
+?>

@@ -14,7 +14,7 @@ namespace FSVendor\Monolog\Handler;
 use FSVendor\Monolog\Logger;
 use FSVendor\Monolog\ResettableInterface;
 use FSVendor\Monolog\Formatter\FormatterInterface;
-use Psr\Log\LogLevel;
+use FSVendor\Psr\Log\LogLevel;
 /**
  * Simple handler wrapper that filters records based on a list of levels
  *

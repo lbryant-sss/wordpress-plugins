@@ -7,8 +7,8 @@
  */
 namespace FSVendor\WPDesk\FS\TableRate\Logger;
 
-use Psr\Log\LoggerInterface;
-use Psr\Log\LoggerTrait;
+use FSVendor\Psr\Log\LoggerInterface;
+use FSVendor\Psr\Log\LoggerTrait;
 /**
  * Can log shipping method messages.
  */

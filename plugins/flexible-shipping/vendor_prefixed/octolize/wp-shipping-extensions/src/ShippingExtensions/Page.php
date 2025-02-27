@@ -55,6 +55,7 @@ class Page implements Hookable
         $assets_url = $this->assets_url;
         $plugins = $this->get_plugins();
         $categories = $this->get_categories();
+        $header_promo = $this->get_header_promo();
         require_once __DIR__ . '/views/html-shipping-extensions-page.php';
     }
     /**
@@ -136,5 +137,13 @@ class Page implements Hookable
     private function get_categories(): array
     {
         return array_values(PluginFactory::get_categories());
+    }
+    private function get_header_promo(): array
+    {
+        $promo = [];
+        if (current_time('timestamp') < strtotime('2025-04-11')) {
+            $promo['new10'] = '<span><strong>Get an Extra 10% OFF your First Order!</strong> New customers only | Valid until April 10</span><span class="oct-code">NEW10 <span class="oct-copy-to-clipboard" data-value="NEW10">Copy code</span></span>';
+        }
+        return array_values(apply_filters('octolize/shipping-extensions/header-promo', $promo));
     }
 }

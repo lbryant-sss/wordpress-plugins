@@ -5,6 +5,7 @@ Plugin Name: Ad Inserter
 Version: 2.8.1
 Description: Ad management with many advanced advertising features to insert ads at optimal positions
 Author: Igor Funa
+Author URI: http://igorfuna.com/
 Plugin URI: https://adinserter.pro/documentation
 Text Domain: ad-inserter
 Domain Path: /languages

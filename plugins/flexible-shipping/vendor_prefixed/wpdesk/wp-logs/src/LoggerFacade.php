@@ -3,7 +3,7 @@
 namespace FSVendor\WPDesk\Logger;
 
 use FSVendor\Monolog\Logger;
-use Psr\Log\LogLevel;
+use FSVendor\Psr\Log\LogLevel;
 use WP_Error;
 use Exception;
 /**

@@ -91,14 +91,12 @@ class Ajax_Post {
                 //get public client ip
                 $clientIp = file_get_contents('https://ipinfo.io/ip');
                 if (filter_var($clientIp, FILTER_VALIDATE_IP)) {
-                    $res = json_decode(B2S_Api_Get::get(B2S_PLUGIN_API_ENDPOINT . 'get.php?action=debugConnection&client_blog_url=' . urlencode(get_option('home')) . '&client_ip=' . sanitize_text_field($clientIp)),30);
-                    if (isset($res->result) && $res->result == true) {
-                        $command = "ping -c 4 " . escapeshellarg($res->server_ip);
-                        $resPing = shell_exec($command);
-                        $output = $res->response . "<br><hr><br>" . $resPing;
-                        echo json_encode(array('result' => true, 'output' => $output));
-                        wp_die();
-                    }
+                    $com = "ping -c 4 " . escapeshellarg('178.77.85.168');
+                    $resPing = shell_exec($com);
+                    $resPing = "Server IP:" . $clientIp . "<br><br>" . utf8_encode($resPing)."<br><br>";
+                    $output = wp_kses($resPing, array('br' => array()));
+                    echo json_encode(array('result' => true, 'output' => $output));
+                    wp_die();
                 }
                 echo json_encode(array('result' => false, 'error' => 'default'));
                 wp_die();

@@ -12,7 +12,7 @@ declare (strict_types=1);
 namespace FSVendor\Monolog\Handler;
 
 use FSVendor\Monolog\Logger;
-use Psr\Log\LoggerInterface;
+use FSVendor\Psr\Log\LoggerInterface;
 use FSVendor\Monolog\Formatter\FormatterInterface;
 /**
  * Proxies log messages to an existing PSR-3 compliant logger.

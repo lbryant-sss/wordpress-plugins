@@ -1,11 +1,11 @@
 <?php
 
+use FSVendor\Psr\Log\LoggerInterface;
 use FSVendor\WPDesk\Beacon\Beacon\WooCommerceSettingsFieldsModifier;
 use FSVendor\WPDesk\FS\TableRate\Logger\NoticeLogger;
 use FSVendor\WPDesk\FS\TableRate\Logger\ShippingMethodLogger;
 use FSVendor\WPDesk\FS\TableRate\Settings\MethodSettings;
 use FSVendor\WPDesk\FS\TableRate\Settings\MethodSettingsFactory;
-use Psr\Log\LoggerInterface;
 use WPDesk\FS\TableRate\Rates\FlexibleShippingRates;
 use WPDesk\FS\TableRate\RulesSettingsField;
 use WPDesk\FS\TableRate\ShippingMethod\CommonMethodSettings;

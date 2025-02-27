@@ -22,7 +22,9 @@ We designed this plugin to be **very lightweight**. There are no options or sett
 - Super lightweight (will not slow down your site).
 - No logs (fully GDPR compliant).
 - Helps with SEO.
-- Unlike other plugins, this is 100% free and we do not sell upgrades/marketing.
+- 100% free with nothing locked behind a "pro" version.
+
+This free plugin is brought to you by [pipdig](https://www.pipdig.co)
 
 == Frequently Asked Questions ==
 

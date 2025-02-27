@@ -7,10 +7,10 @@
 
 namespace WPDesk\FS\TableRate;
 
+use FSVendor\Psr\Log\LoggerInterface;
 use FSVendor\WPDesk\FS\TableRate\Logger\NoticeLogger;
 use FSVendor\WPDesk\FS\TableRate\Logger\ShippingMethodLogger;
 use FSVendor\WPDesk\FS\TableRate\Settings\MethodSettingsFactory;
-use Psr\Log\LoggerInterface;
 use WC_Shipping_Method;
 use WPDesk\FS\TableRate\Rule\Condition\ConditionsFactory;
 use WPDesk\FS\TableRate\Rule\Cost\RuleAdditionalCostFactory;

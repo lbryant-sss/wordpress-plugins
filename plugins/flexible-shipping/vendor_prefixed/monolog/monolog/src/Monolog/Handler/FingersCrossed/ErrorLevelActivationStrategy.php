@@ -12,7 +12,7 @@ declare (strict_types=1);
 namespace FSVendor\Monolog\Handler\FingersCrossed;
 
 use FSVendor\Monolog\Logger;
-use Psr\Log\LogLevel;
+use FSVendor\Psr\Log\LogLevel;
 /**
  * Error level based activation strategy.
  *

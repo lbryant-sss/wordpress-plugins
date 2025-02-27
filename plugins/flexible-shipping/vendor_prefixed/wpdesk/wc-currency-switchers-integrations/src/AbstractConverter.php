@@ -7,8 +7,8 @@
  */
 namespace FSVendor\WPDesk\WooCommerce\CurrencySwitchers;
 
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
+use FSVendor\Psr\Log\LoggerAwareInterface;
+use FSVendor\Psr\Log\LoggerAwareTrait;
 /**
  * Abstract class for converters.
  */

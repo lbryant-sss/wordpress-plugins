@@ -4,7 +4,7 @@ Donate link: https://octol.io/fs-repo-up
 Tags: woocommerce shipping, table rate shipping, woocommerce table rate shipping, advanced shipping, flexible shipping woocommerce
 Requires at least: 5.8
 Tested up to: 6.7
-Stable tag: 5.2.0
+Stable tag: 5.3.1
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -238,7 +238,15 @@ If you are upgrading from the old Flexible Shipping version (1.3.2, woo-flexible
 
 == Changelog ==
 
-= 5.2.0 - 2025-02-18 =
+= 5.3.1 - 2025-02-25 =
+* Fixed prefixing Psr\Log library
+
+= 5.3.0 - 2025-02-25 =
+* Prefixed Psr\Log library
+* Fixed conflicts with plugins and themes using non prefixed Psr\Log library
+* Fixed rules table crash with Flexible Shipping Locations Add-On
+
+= 5.2.0 - 2025-01-30 =
 * Improved rules table settings REACT component
 * Fixed fatal Unsupported operand types: string + float with some shipping methods integration.
 

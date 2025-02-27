@@ -1,12 +1,14 @@
 jQuery.noConflict();
 
-if (typeof wp.heartbeat !== "undefined") {
-    jQuery(document).on('heartbeat-send', function (e, data) {
-        data['b2s_heartbeat'] = 'b2s_listener';
-    });
-    wp.heartbeat.connectNow();
-}
 jQuery(window).on("load", function () {
+
+    if (typeof wp.heartbeat !== "undefined") {
+        jQuery(document).on('heartbeat-send', function (e, data) {
+            data['b2s_heartbeat'] = 'b2s_listener';
+        });
+        wp.heartbeat.connectNow();
+    }
+
     var url_string = window.location.href;
     var url_param = new URL(url_string);
     var type = url_param.searchParams.get("type");
@@ -138,7 +140,7 @@ jQuery(document).on('change', '#b2s-post-curation-ship-type', function () {
         if (jQuery('#b2s-post-curation-ship-date').attr('data-language') == 'de') {
             setTodayDate = padDate(today.getDate()) + '.' + (padDate(today.getMonth() + 1)) + '.' + today.getFullYear() + ' ' + padDate(today.getHours()) + ':' + padDate(today.getMinutes());
         }
-        
+
         //MaxSchedDate
         var maxDate = new Date(jQuery('#b2sMaxSchedDate').val());
         jQuery('#b2s-post-curation-ship-date').b2sdatepicker({'autoClose': true, 'toggleSelected': false, 'minutesStep': 15, 'minDate': new Date(), 'maxDate': maxDate, 'startDate': today, 'todayButton': new Date(), 'position': 'top left'});
@@ -366,7 +368,7 @@ jQuery(document).on('click', '#b2s-btn-curation-share', function () {
                 if (data.currenOpenDailyLimit <= 0) {
                     jQuery('.b2s-current-licence-open-daily-post-quota-sidebar-info').show();
                 }
-                
+
                 //Network Condition
                 jQuery('#current_network_open_sched_post_quota').html(data.currentNetwork45OpenSchedLimit);
                 jQuery('#current_network_open_daily_post_quota').val(data.currentNetwork45OpenDailyLimit);
@@ -374,7 +376,7 @@ jQuery(document).on('click', '#b2s-btn-curation-share', function () {
                 if (data.currentNetwork45OpenDailyLimit <= 0) {
                     jQuery('.b2s-current-network-open-daily-post-quota-sidebar-info').show();
                 }
-                
+
             } else {
                 jQuery('.b2s-loading-area').hide();
                 jQuery('.b2s-curation-post-list-area').hide();
@@ -1068,8 +1070,8 @@ jQuery(document).on('click', '.b2s-re-share-btn', function () {
     } else {
         jQuery('.b2s-curation-image-area').show();
     }
-    
-    
+
+
 });
 
 function loadDraftShipData() {

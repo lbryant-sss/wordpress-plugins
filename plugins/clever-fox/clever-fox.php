@@ -1,12 +1,15 @@
 <?php
-/*
-Plugin Name: Clever Fox
-Description: Clever Fox plugin to enhance the functionality of free themes made by Nayra Themes. More than 60000+ trusted websites with Nayra Themes. It provides intuitive features to your website. 45+ Themes compatible with Clever Fox. See below free themes listed here. Avril, Gradiant, Flavita, Fiona Blog, MetaSoft, Conceptly & ColorPress is one of highest installations themes in our collections. Visit our website and find theme as you need. https://www.nayrathemes.com/themes/
-Version: 26.2.66
-Author: nayrathemes
-Author URI: https://nayrathemes.com
-Text Domain: clever-fox
-Requires PHP: 5.6
+/**
+* Plugin Name: Clever Fox
+* Description: Clever Fox plugin to enhance the functionality of free themes made by Nayra Themes. More than 60000+ trusted websites with Nayra Themes. It provides intuitive features to your website. 45+ Themes compatible with Clever Fox. See below free themes listed here. Avril, Gradiant, Flavita, Fiona Blog, MetaSoft, Conceptly & ColorPress is one of highest installations themes in our collections. Visit our website and find theme as you need. https://www.nayrathemes.com/themes/
+* Version: 26.2.67
+* Author: nayrathemes
+* Author URI: https://nayrathemes.com
+* Requires:	4.6 or higher
+* License:	GPLv3 or later
+* License URI:	http://www.gnu.org/licenses/gpl-3.0.html
+* Text Domain:	clever-fox
+* Requires PHP: 5.6
 */
 define( 'CLEVERFOX_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'CLEVERFOX_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );

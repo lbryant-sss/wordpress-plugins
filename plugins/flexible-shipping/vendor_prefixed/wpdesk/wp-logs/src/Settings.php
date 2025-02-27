@@ -2,7 +2,7 @@
 
 namespace FSVendor\WPDesk\Logger;
 
-use Psr\Log\LogLevel;
+use FSVendor\Psr\Log\LogLevel;
 /**
  * @deprecated
  */

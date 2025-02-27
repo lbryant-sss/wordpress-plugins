@@ -7,10 +7,9 @@
  */
 namespace FSVendor\WPDesk\FS\TableRate\Logger;
 
-use Psr\Log\LoggerInterface;
-use Psr\Log\LoggerTrait;
+use FSVendor\Psr\Log\LoggerInterface;
+use FSVendor\Psr\Log\LoggerTrait;
 use FSVendor\WPDesk\View\Renderer\SimplePhpRenderer;
-use FSVendor\WPDesk\View\Resolver\ChainResolver;
 use FSVendor\WPDesk\View\Resolver\DirResolver;
 /**
  * Can log to WC Notice.

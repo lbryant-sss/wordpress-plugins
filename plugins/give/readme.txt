@@ -5,7 +5,7 @@ Tags: donation, donate, recurring donations, fundraising, crowdfunding
 Requires at least: 6.5
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 3.21.1
+Stable tag: 3.22.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -161,6 +161,8 @@ Here’s a few ways you can contribute to GiveWP:
 
 * Join the [GiveWP Community Facebook group](https://go.givewp.com/fb-group). We chat about all things related to WordPress, GiveWP, fundraising, and online donations in general.
 
+== Upgrade Notice ==
+
 == Installation ==
 
 = Minimum Requirements =
@@ -264,6 +266,13 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 10. Use almost any payment gateway integration with GiveWP through our add-ons or by creating your own add-on.
 
 == Changelog ==
+= 3.22.0: February 26th, 2025 =
+* New: Added initial WPML and Polylang multilingual translation support to visual form builder forms that currently excludes custom fields
+* Fix: Resolved a validation issue with PayPal donations when using Akismet
+* Fix: Resolved an issue with the custom amount block input behaving unexpectedly with some currencies and languages
+* Fix: Prevent recording donation status change if no modification (Open-source contribution by @yiedpozi)
+* Fix: Provide message for the donor when card is declined via Stripe (Open-source contribution by @Genevieve-K)  
+
 = 3.21.1: February 14th, 2025 =
 * Fix: Resolved an issue that was preventing WordPress plugins from being updated
 
@@ -604,9 +613,6 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 == Upgrade Notice ==
-
-= 3.21.1 = 
-IMPORTANT: Do not attempt to update any plugins. There is an issue in GiveWP 3.21.0 that prevents all plugins from updating. Your site should be fully operational, but upgrading a plugin will fail and may cause a crash. How to upgrade to 3.21.1 safely: https://go.givewp.com/moreinfo
 
 = 2.9.0 =
 This version contains a database upgrade that improves performance by migrating donation meta to a new revenue table. Please ensure you have a backup in place prior to updating and be sure to update GiveWP Core and then your GiveWP Add-ons to the latest versions for maximum compatibility.

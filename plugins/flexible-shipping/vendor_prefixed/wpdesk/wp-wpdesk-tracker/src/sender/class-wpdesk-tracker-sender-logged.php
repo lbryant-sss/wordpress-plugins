@@ -2,7 +2,7 @@
 
 namespace FSVendor;
 
-use Psr\Log\LoggerInterface;
+use FSVendor\Psr\Log\LoggerInterface;
 if (!\defined('ABSPATH')) {
     exit;
 }

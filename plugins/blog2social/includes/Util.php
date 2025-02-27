@@ -312,7 +312,7 @@ class B2S_Util {
                     parse_url($featuredImage, PHP_URL_PATH),
                     PATHINFO_EXTENSION
             );
-            if (!in_array($ext, array('jpg', 'png', 'webp'))) {
+            if (!in_array($ext, array('jpg', 'png', 'webp', 'gif'))) {
                 return array(0 => array(0 => $featuredImage, 1 => esc_attr($image_alt)));
             }
         }
@@ -328,7 +328,7 @@ class B2S_Util {
                     continue;
                 }
 //AllowedExtensions?
-                if (!$network && !in_array(substr($imgUrl, strrpos($imgUrl, '.')), array('.jpg', '.png', '.webp'))) {
+                if (!$network && !in_array(substr($imgUrl, strrpos($imgUrl, '.')), array('.jpg', '.png', '.webp', '.gif'))) {
                     continue;
                 }
 //isRelativ?

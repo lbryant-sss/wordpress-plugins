@@ -2,13 +2,13 @@
 
 namespace WPDesk\FS\TableRate\ShippingMethodsIntegration;
 
+use FSVendor\Psr\Log\LoggerInterface;
+use FSVendor\Psr\Log\NullLogger;
 use FSVendor\WPDesk\FS\TableRate\Logger\NoticeLogger;
 use FSVendor\WPDesk\FS\TableRate\Logger\ShippingMethodLogger;
 use FSVendor\WPDesk\FS\TableRate\Settings\MethodSettings;
 use FSVendor\WPDesk\FS\TableRate\Settings\MethodSettingsFactory;
 use FSVendor\WPDesk\PluginBuilder\Plugin\Hookable;
-use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 use WPDesk\FS\TableRate\Rule\Condition\ConditionsFactory;
 use WPDesk\FS\TableRate\Rule\Cost\RuleAdditionalCostFactory;
 use WPDesk\FS\TableRate\Rule\Cost\RuleCostFieldsFactory;

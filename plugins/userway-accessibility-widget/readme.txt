@@ -3,7 +3,7 @@ Contributors: userwayorg
 Tags: ada, wcag, EAA compliance, section 508, accessibility
 Requires at least: 4.7
 Tested up to: 6.7.2
-Stable tag: 2.5.3
+Stable tag: 2.5.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -85,6 +85,10 @@ Implementation of Compliant Admin Notice
 = 2.5.2 =
 Admin banner CTA button event added
 = 2.5.3 =
+Api script reworked
+= 2.5.4 =
+Api script reworked
+= 2.5.5 =
 Api script reworked
 
 *

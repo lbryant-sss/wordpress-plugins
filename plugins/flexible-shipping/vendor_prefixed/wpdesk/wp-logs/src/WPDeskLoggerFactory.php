@@ -9,7 +9,7 @@ use FSVendor\Monolog\Handler\NullHandler;
 use FSVendor\Monolog\Logger;
 use FSVendor\Monolog\Registry;
 use FSVendor\Monolog\Handler\StreamHandler;
-use Psr\Log\LogLevel;
+use FSVendor\Psr\Log\LogLevel;
 use FSVendor\WPDesk\Logger\WC\WooCommerceCapture;
 use FSVendor\WPDesk\Logger\WP\WPCapture;
 /**

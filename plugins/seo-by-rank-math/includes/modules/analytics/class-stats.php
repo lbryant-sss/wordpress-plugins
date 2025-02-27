@@ -467,7 +467,7 @@ class Stats extends Keywords {
 		}
 
 		if ( ! empty( $_COOKIE[ $cookie_key ] ) ) {
-			return sanitize_title( $_COOKIE[ $cookie_key ] );
+			return sanitize_text_field( $_COOKIE[ $cookie_key ] );
 		}
 
 		return $default_value;

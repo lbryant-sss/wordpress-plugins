@@ -7,7 +7,7 @@
  */
 namespace FSVendor\WPDesk\FS\Shipment;
 
-use Psr\Log\LoggerInterface;
+use FSVendor\Psr\Log\LoggerInterface;
 use FSVendor\WPDesk\FS\Shipment\Label\SingleLabelFileDispatcher;
 use FSVendor\WPDesk\FS\Shipment\Manifest\ManifestCustomPostType;
 use FSVendor\WPDesk\FS\Shipment\Metabox\Ajax;

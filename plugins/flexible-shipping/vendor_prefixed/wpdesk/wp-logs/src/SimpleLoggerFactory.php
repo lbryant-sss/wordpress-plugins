@@ -9,7 +9,7 @@ use FSVendor\Monolog\Logger;
 use FSVendor\Monolog\Handler\ErrorLogHandler;
 use FSVendor\Monolog\Processor\PsrLogMessageProcessor;
 use FSVendor\Monolog\Processor\UidProcessor;
-use Psr\Log\LogLevel;
+use FSVendor\Psr\Log\LogLevel;
 use FSVendor\WPDesk\Logger\WC\WooCommerceHandler;
 final class SimpleLoggerFactory implements LoggerFactory
 {
