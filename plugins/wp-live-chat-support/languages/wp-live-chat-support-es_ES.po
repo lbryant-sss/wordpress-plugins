@@ -97,7 +97,7 @@ msgstr "Chat en Vivo 3CX"
 
 #. Plugin URI of the plugin/theme
 #. Author URI of the plugin/theme
-msgid "https://www.3cx.com/wp-live-chat/"
+msgid "https://www.3cx.com/live-chat/free-wordpress-plugin/"
 msgstr "https://www.3cx.es/chat-en-vivo/plugin-de-wordpress-gratis/"
 
 #. Description of the plugin/theme

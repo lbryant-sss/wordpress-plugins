@@ -94,26 +94,7 @@ class Plugin
             }
         });
 
-        add_action('woocommerce_init', function() {
-            /** @noinspection TypeUnsafeComparisonInspection */
-            if (function_exists('wc_get_shipping_method_count') && wc_get_shipping_method_count(true) == 0) {
-                $trv = WC_Cache_Helper::get_transient_version('shipping');
-                if (version_compare(WC()->version, '3.6.0', '>=')) {
-                    set_transient(
-                        'wc_shipping_method_count_legacy',
-                        ['value' => 1, 'version' => $trv],
-                        DAY_IN_SECONDS * 30
-                    );
-                }
-                else {
-                    set_transient(
-                        'wc_shipping_method_count_1_'.$trv,
-                        1,
-                        DAY_IN_SECONDS * 30
-                    );
-                }
-            }
-        });
+        $this->fixIncorrectHidingOfShippingSectionWhenNoShippingZoneMethodsDefined();
     }
 
 
@@ -200,5 +181,45 @@ class Plugin
             $this->meta->paths->root.'/migrations',
             new ConfigStorage('wbs\\_%config', $options)
         );
+    }
+
+    private function fixIncorrectHidingOfShippingSectionWhenNoShippingZoneMethodsDefined(): void
+    {
+        add_action('woocommerce_init', function() {
+
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $transient = $field = null;
+            $wcver = WC()->version;
+            if (version_compare($wcver, '9.7.0') >= 0) {
+                $transient = 'transient_wc_shipping_method_count';
+                $field = 'legacy';
+            }
+            else if (version_compare($wcver, '3.6.0') >= 0) {
+                $transient = 'transient_wc_shipping_method_count_legacy';
+                $field = 'value';
+            }
+            else {
+                return;
+            }
+
+            add_filter($transient, function($value) use ($field) {
+                static $running = false;
+
+                if ($running) return $value;
+                $running = true;
+                try {
+                    $trv = WC_Cache_Helper::get_transient_version('shipping');
+                    if ($value === null || (int)($value[$field] ?? null) === 0 || ($value['version'] ?? null) !== $trv) {
+                        $value[$field] = max(1, wc_get_shipping_method_count(true));
+                        $value['version'] = $trv;
+                    }
+                }
+                finally {
+                    $running = false;
+                }
+
+                return $value;
+            }, PHP_INT_MAX);
+        }, 0);
     }
 }

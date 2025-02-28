@@ -1,7 +1,7 @@
 === Easy Digital Downloads – eCommerce Payments and Subscriptions made easy ===
 Author URI: https://easydigitaldownloads.com
 Plugin URI: https://easydigitaldownloads.com
-Contributors: easydigitaldownloads, am, cklosows, littlerchicken, achchu93, smub, mordauk, chriscct7, sumobi, SpencerFinnell, drewapicture, johnjamesjacoby, lisacee
+Contributors: easydigitaldownloads, am, cklosows, littlerchicken, achchu93, smub, chriscct7, sumobi, SpencerFinnell, johnjamesjacoby
 Tags: ecommerce, payments, sell, digital store, stripe
 Requires at least: 6.2
 Tested up to: 6.7

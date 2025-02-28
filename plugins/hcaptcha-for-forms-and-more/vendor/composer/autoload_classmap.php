@@ -40,6 +40,7 @@ return array(
     'HCaptcha\\CF7\\Admin' => $baseDir . '/src/php/CF7/Admin.php',
     'HCaptcha\\CF7\\Base' => $baseDir . '/src/php/CF7/Base.php',
     'HCaptcha\\CF7\\CF7' => $baseDir . '/src/php/CF7/CF7.php',
+    'HCaptcha\\CF7\\ReallySimpleCaptcha' => $baseDir . '/src/php/CF7/ReallySimpleCaptcha.php',
     'HCaptcha\\ClassifiedListing\\Contact' => $baseDir . '/src/php/ClassifiedListing/Contact.php',
     'HCaptcha\\ClassifiedListing\\Login' => $baseDir . '/src/php/ClassifiedListing/Login.php',
     'HCaptcha\\ClassifiedListing\\LostPassword' => $baseDir . '/src/php/ClassifiedListing/LostPassword.php',

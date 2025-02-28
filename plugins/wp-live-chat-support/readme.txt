@@ -2,9 +2,9 @@
 Contributors: WP-LiveChat, wordpress3cx, wp3cx
 Tags: live chat, free live chat, live help, live support, wordpress live chat
 Requires at least: 5.3
-Tested up to: 6.5
+Tested up to: 6.7
 Requires PHP: 5.4
-Stable tag: 10.0.14
+Stable tag: 10.0.15
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: wp-live-chat-support
@@ -19,7 +19,7 @@ The plugin includes a complete communications system for your business - for fre
 
 Zero cost business communications from one central hub. Receive WhatsApp, Facebook and SMS messages on the same dashboard as your live chats and calls.
 
-Tried and tested with more than 30,000 active installations, 3CX Live Chat is a reliable free live chat solution for WordPress. 
+Tried and tested with more than 100,000 active installations, 3CX Live Chat is a reliable free live chat solution for WordPress. 
 
 = NO HIDDEN COSTS =
 
@@ -92,6 +92,10 @@ With 3CX Dedicated (hosted or self-managed) you get live chat included free for 
 Huge update with over 300 changes that include: Bugfixes, Vulnerability Fixes & Plugin Security, Plugin Optimization & Rebranding Updates. We suggest you remove any existing installations of this plugin and install 8.1.x fresh.
 
 == Changelog ==
+
+= 10.0.15 - 2025-02-27 =
+* callus.js update
+* tested with WordPress 6.7
 
 = 10.0.14 - 2024-07-04 =
 * Limit incomplete installation warnings to 1

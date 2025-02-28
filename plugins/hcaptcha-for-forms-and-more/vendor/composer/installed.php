@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'hcaptcha/hcaptcha-wordpress-plugin',
-        'pretty_version' => '4.10.0',
-        'version' => '4.10.0.0',
-        'reference' => '3f3d675e6a0c12404a0a7aa20b4472b5d37ea88d',
+        'pretty_version' => '4.11.0',
+        'version' => '4.11.0.0',
+        'reference' => '83b1b3615b255290d2a5050750f078835392d129',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'hcaptcha/hcaptcha-wordpress-plugin' => array(
-            'pretty_version' => '4.10.0',
-            'version' => '4.10.0.0',
-            'reference' => '3f3d675e6a0c12404a0a7aa20b4472b5d37ea88d',
+            'pretty_version' => '4.11.0',
+            'version' => '4.11.0.0',
+            'reference' => '83b1b3615b255290d2a5050750f078835392d129',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -34,6 +34,15 @@
             'reference' => 'e7d13b2c7e2f2268e1424aaed02085518afa02d9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../matthiasmullie/path-converter',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'woocommerce/action-scheduler' => array(
+            'pretty_version' => '3.9.2',
+            'version' => '3.9.2.0',
+            'reference' => 'efbb7953f72a433086335b249292f280dd43ddfe',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../woocommerce/action-scheduler',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

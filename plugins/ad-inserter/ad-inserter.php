@@ -9,7 +9,7 @@ Author URI: http://igorfuna.com/
 Plugin URI: https://adinserter.pro/documentation
 Text Domain: ad-inserter
 Domain Path: /languages
-Requires at least: 5
+Requires at least: 5.0
 Requires PHP: 7.4
 License: GPLv3
 */

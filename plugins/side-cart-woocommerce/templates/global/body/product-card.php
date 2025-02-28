@@ -9,7 +9,7 @@
  * maintain compatibility. We try to do this as little as possible, but it does
  * happen.
  * @see     https://docs.xootix.com/side-cart-woocommerce/
- * @version 2.6.1
+ * @version 2.6.2
  */
 
 
@@ -50,33 +50,37 @@ $priceHTML 		= $showPprice && !$oneLiner ? sprintf( '<span class="xoo-wsc-card-p
 <?php ob_start(); // Quantity & Price HTML ?>
 
 
+<div class="xoo-wsc-qty-box-cont">
 
-<?php if( $updateQty ): ?>
+	<?php if( $updateQty ): ?>
 
-	
-<?php else: ?>
-
-	<?php if( $oneLiner ): ?>
-
-		<div class="xoo-wsc-qty-price">
-			<span><?php echo $cart_item['quantity']; ?></span>
-			<span>X</span>
-			<span><?php echo $product_price; ?></span>
-			<span>=</span>
-			<span><?php echo $product_subtotal ?></span>
-		</div>
-
+		
 	<?php else: ?>
 
-		<?php if( $showPqty ): ?>
-			<div class="xoo-wsc-sml-qty"><?php _e( 'Qty:', 'side-cart-woocommerce' ) ?> <span><?php echo $cart_item['quantity']; ?></span></div>
+		<?php if( $oneLiner ): ?>
+
+			<div class="xoo-wsc-qty-price">
+				<span><?php echo $cart_item['quantity']; ?></span>
+				<span>X</span>
+				<span><?php echo $product_price; ?></span>
+				<span>=</span>
+				<span><?php echo $product_subtotal ?></span>
+			</div>
+
+		<?php else: ?>
+
+			<?php if( $showPqty ): ?>
+				<div class="xoo-wsc-sml-qty"><?php _e( 'Qty:', 'side-cart-woocommerce' ) ?> <span><?php echo $cart_item['quantity']; ?></span></div>
+			<?php endif; ?>
+
 		<?php endif; ?>
+
 
 	<?php endif; ?>
 
+	<?php echo $totalHTML ?>
 
-<?php endif; ?>
-
+</div>
 
 
 <?php $qtyHTML = ob_get_clean(); ?>
@@ -88,7 +92,6 @@ $priceHTML 		= $showPprice && !$oneLiner ? sprintf( '<span class="xoo-wsc-card-p
 <?php echo in_array( 'link', $details ) ? $viewLinkHTML : '' ?>
 <?php echo in_array( 'price', $details ) ? $priceHTML : '' ?>
 <?php echo in_array( 'qty', $details ) ? $qtyHTML : '' ?>
-<?php echo in_array( 'total', $details ) && !$updateQty ? $totalHTML : '' ?>
 <?php do_action( 'xoo_wsc_product_card_back', $_product, $cart_item_key ); ?>
 <?php $backHTML = ob_get_clean(); ?>
 
@@ -149,7 +152,6 @@ $productClasses 	= apply_filters( 'xoo_wsc_product_class', $productClasses, $_pr
 		<?php echo $allFront || !in_array( 'price', $details ) ? $priceHTML : '' ?>
 		<?php echo $allFront || !in_array( 'meta', $details ) ? $metaHTML : '' ?>
 		<?php echo $allFront || !in_array( 'qty', $details ) ? $qtyHTML : '' ?>
-		<?php echo ( $allFront || !in_array( 'total', $details ) ) && !$updateQty ? $totalHTML : '' ?>
 
 		<?php do_action( 'xoo_wsc_product_card_front', $_product, $cart_item_key ); ?>
 		

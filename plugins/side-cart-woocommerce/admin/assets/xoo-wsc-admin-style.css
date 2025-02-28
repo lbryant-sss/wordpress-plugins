@@ -1025,6 +1025,20 @@ a.xoo-wsc-smr-link {
     flex-wrap: wrap;
 }
 
+.xoo-wsc-qty-box-cont {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0!important;
+}
+
+.xoo-wsc-qty-box-cont > * {
+    margin: 3px 3px 0;
+}
+
+
 select[name="xoo-wsc-sy-options[scb-playout]"] {
     display: none;
 }

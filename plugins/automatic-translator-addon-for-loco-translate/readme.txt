@@ -3,10 +3,10 @@ Contributors: narinder-singh, satindersingh, coolplugins
 Donate link: https://paypal.me/CoolPlugins/10USD/
 Tags:ai translation, google translate, translate, chatgpt, multilingual
 Requires at least:5.0
-Tested up to:6.7.1
+Tested up to: 6.7.2
 Requires PHP: 7.2
 Loco Translate Tested Up to: 2.7.1
-Stable tag: 2.4.6
+Stable tag: 2.4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,16 +162,19 @@ Or
 This plugin works as an add-on for **Loco Translate** official plugin. First, you need to install and activate the free version of "Loco Translate" then install this addon and use one-click machine translations (supported by Yandex Translate Widget).
 
 = Are you using any language translation API❔ =
-No, there is no requirement for any paid translate API key to use this plugin free or pro version. It uses free page translation widgets and services for unlimited automatic translations. But to use Gemini for translation [get free API key](https://ai.google.dev/gemini-api/docs/api-key).
 
-Free license users can use **[Yandex Translate Widget]** but if you are using a premium license then you can also use **Google Translate Widget**, **DeepL Doc Translator**, **ChatGPT** and **Gemini**.
+No, there is no requirement for any paid translate API key to use this plugin free or pro version. It uses free page translation widgets and services for unlimited automatic translations. But to use Gemini for translation get free API key.
+Free license users can use **[Yandex Translate Widget] but if you are using a premium license then you can also use Google Chrome AI, Google Translate Widget, DeepL Doc Translator, ChatGPT, and Gemini**.
+[get free API key](https://ai.google.dev/gemini-api/docs/api-key)
+
 
 = Is there any translation limit❔ =
 There is no limit. Yes, you can translate unlimited characters without any paid API key.
 
-**Free license** users:- can translate unlimited characters only via Yandex Page Translate Widget.
+**Free license** users can translate unlimited characters only via the Yandex Page Translate Widget.
 
-**Premium license** users:- can also use Google Page Translate Widget, DeepL Doc Translator, ChatGPT & Gemini for unlimited translations. DeepL Doc Translator provides a limited number of free docs translations per day, you can purchase their pro license to increase this limit.
+**Premium license** Premium users can use Google, DeepL, ChatGPT, Chrome built-in AI, and Gemini AI for translations, with no character limits! Plus, priority support ensures you get help fast if you need it.
+
 
 > This addon only provides an interface to use third-party translation widgets and services, it does not provide any translation service. Any auto-translate provider can stop providing free translation widgets or services anytime in the future, in that case, the plugin will not support that auto-translate provider.
 
@@ -221,9 +224,16 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 1. Automatic Translate (No paid API Required)
 2. Translate Using Yandex Translate Widget
 3. Free License v/s Premium License
-4. DeepL Doc Translator (Premium)
 
 == Changelog ==
+<strong>Version 2.4.7 |27/02/2025 </strong>
+<pre>
+Added: Review Notice.
+Fixed: Fixed Popup issue.
+Fixed: Bug Fixes.
+Improvements: Translator popup.
+</pre>
+
 <strong>Version 2.4.6 |27/01/2025 </strong>
 <pre>
 Fixed: Fixed string merging issue with Loco Translate 2.7 latest version.

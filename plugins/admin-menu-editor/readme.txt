@@ -3,7 +3,7 @@ Contributors: whiteshadow
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6P9S6CE3SRSW
 Tags: admin, dashboard, menu, security, wpmu
 License: GPLv3
-Requires at least: 4.7
+Requires at least: 5.4
 Tested up to: 6.7.1
 Stable tag: 1.12.4
 

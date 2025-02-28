@@ -36,28 +36,33 @@
 
 <!-- Quantity HTML -->
 <?php ob_start(); ?>
-<# if ( data.product.oneLiner ) { #>
-	<div class="xoo-wsc-qty-price">
-		<span><?php echo $product_quantity; ?></span>
-		<span>X</span>
-		<span>
-			<# if( data.product.priceType === "actual" ){ #>
-				<?php echo $product_price; ?>
-			<# }else{ #>
-				<?php echo $product_sale_price ?>
-			<# } #>
-		</span>
-		<span>=</span>
-		<span><?php echo $product_subtotal ?></span>
-	</div>
+<div class="xoo-wsc-qty-box-cont">
+	<# if ( data.product.oneLiner ) { #>
+		<div class="xoo-wsc-qty-price">
+			<span><?php echo $product_quantity; ?></span>
+			<span>X</span>
+			<span>
+				<# if( data.product.priceType === "actual" ){ #>
+					<?php echo $product_price; ?>
+				<# }else{ #>
+					<?php echo $product_sale_price ?>
+				<# } #>
+			</span>
+			<span>=</span>
+			<span><?php echo $product_subtotal ?></span>
+		</div>
 
-<# }else{ #>
+	<# }else{ #>
 
-	<# if ( data.product.showPqty ) { #>
-		<span class="xoo-wsc-sml-qty"><?php _e( 'Qty:', 'side-cart-woocommerce' ) ?> <?php echo $product_quantity; ?></span>
+		<# if ( data.product.showPqty ) { #>
+			<span class="xoo-wsc-sml-qty"><?php _e( 'Qty:', 'side-cart-woocommerce' ) ?> <?php echo $product_quantity; ?></span>
+		<# } #>
+
 	<# } #>
 
-<# } #>
+	<?php echo $totalHTML ?>
+
+</div>
 <?php $qtyHTML = ob_get_clean(); ?>
 
 
@@ -114,10 +119,6 @@
 						<?php echo $qtyHTML; ?>
 					<# } #>
 
-					<# if ( data.card.backShow.total && data.product.updateQty !== 'yes' ) { #>
-						<?php echo $totalHTML; ?>
-					<# } #>
-
 				</div>
 
 			</div>
@@ -145,10 +146,6 @@
 
 			<# if ( !data.card.backShow.qty || data.card.visibility === 'all_on_front' ) { #>
 				<?php echo $qtyHTML; ?>
-			<# } #>
-
-			<# if ( !data.card.backShow.total || data.card.visibility === 'all_on_front' ) { #>
-				<?php echo $totalHTML; ?>
 			<# } #>
 			
 		</div>

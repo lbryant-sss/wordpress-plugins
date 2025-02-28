@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5b9e71c5ecc4233f8a6f35918bdc1f18
+class ComposerStaticInit3e48e8c03c5b5a02f16696bf1a21546e
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -68,6 +68,7 @@ class ComposerStaticInit5b9e71c5ecc4233f8a6f35918bdc1f18
         'HCaptcha\\CF7\\Admin' => __DIR__ . '/../..' . '/src/php/CF7/Admin.php',
         'HCaptcha\\CF7\\Base' => __DIR__ . '/../..' . '/src/php/CF7/Base.php',
         'HCaptcha\\CF7\\CF7' => __DIR__ . '/../..' . '/src/php/CF7/CF7.php',
+        'HCaptcha\\CF7\\ReallySimpleCaptcha' => __DIR__ . '/../..' . '/src/php/CF7/ReallySimpleCaptcha.php',
         'HCaptcha\\ClassifiedListing\\Contact' => __DIR__ . '/../..' . '/src/php/ClassifiedListing/Contact.php',
         'HCaptcha\\ClassifiedListing\\Login' => __DIR__ . '/../..' . '/src/php/ClassifiedListing/Login.php',
         'HCaptcha\\ClassifiedListing\\LostPassword' => __DIR__ . '/../..' . '/src/php/ClassifiedListing/LostPassword.php',
@@ -215,9 +216,9 @@ class ComposerStaticInit5b9e71c5ecc4233f8a6f35918bdc1f18
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5b9e71c5ecc4233f8a6f35918bdc1f18::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5b9e71c5ecc4233f8a6f35918bdc1f18::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit5b9e71c5ecc4233f8a6f35918bdc1f18::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3e48e8c03c5b5a02f16696bf1a21546e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3e48e8c03c5b5a02f16696bf1a21546e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3e48e8c03c5b5a02f16696bf1a21546e::$classMap;
 
         }, null, ClassLoader::class);
     }

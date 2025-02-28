@@ -3,7 +3,7 @@
 	Plugin Name: MouseWheel Smooth Scroll
 	Plugin URI: https://kubiq.sk
 	Description: MouseWheel smooth scrolling for your WordPress website
-	Version: 6.7.1
+	Version: 6.7.2
 	Author: KubiQ
 	Author URI: https://kubiq.sk
 	Text Domain: wpmss
@@ -400,7 +400,7 @@ class wpmss{
 					<label for="q_field_11">allowedBrowsers:</label> 
 				</th>
 				<td>
-					<select name="general[allowedBrowsers[]]" id="q_field_11" multiple="multiple" style="height:150px">
+					<select name="general[allowedBrowsers][]" id="q_field_11" multiple="multiple" style="height:150px">
 						<?php foreach([
 							'Mobile' => 'mobile browsers',
 							'IEWin7' => 'IEWin7',

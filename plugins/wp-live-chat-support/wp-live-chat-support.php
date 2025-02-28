@@ -2,11 +2,11 @@
 
 /*
   Plugin Name: 3CX Live Chat
-  Plugin URI: https://www.3cx.com/wp-live-chat/
+  Plugin URI: https://www.3cx.com/live-chat/free-wordpress-plugin/
   Description: Chat and Call with your web visitors for free. Setup your free 3CX account to activate.
-  Version: 10.0.14
+  Version: 10.0.15
   Author: 3CX
-  Author URI: https://www.3cx.com/wp-live-chat/
+  Author URI: https://www.3cx.com/live-chat/free-wordpress-plugin/
   Domain Path: /languages
   License: GPLv2 or later
   License URI: https://www.gnu.org/licenses/gpl-2.0.html

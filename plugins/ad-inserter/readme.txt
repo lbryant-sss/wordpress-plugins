@@ -6,7 +6,7 @@ Tags: ads, adsense, amp, ad rotation, ad manager
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.8.0
+Stable tag: 2.8.1
 License: GPLv3
 
 Manage Google AdSense, Media.net, Amazon banners, ads.txt, ad rotation, sticky widgets, AMP ads, DFP, tracking, AdSense header and footer code
@@ -444,9 +444,8 @@ Few minor bug fixes, cosmetic changes and code improvements
 Replaced placeholder image generator service - changed to dummyimage.com;
 Fix for false ad blocking detection when using external scripts;
 Security fix for potential cross site scripting (Pro only);
-Added support to show rotation options in the list of blocks;
-Added support for custom reports for clients (Pro only);
-Few minor bug fixes, cosmetic changes and code improvements
+Added support to show rotation options;
+Added support for custom reports(Pro only)
 
 = 2.7.39 =
 Improved frontend code;
