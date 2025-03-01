@@ -118,8 +118,17 @@ class WPCaptcha_AJAX extends WPCaptcha
             }
             $captcha_response = sanitize_text_field(wp_unslash($_POST['captcha_response']));
 
+            if($captcha_type == 'builtin' && !isset($_POST['captcha_response_token'])){
+                wp_send_json_error(__('Unknown response token.', 'advanced-google-recaptcha'));
+            }
 
-            $captcha_result = self::verify_captcha($captcha_type, $captcha_site_key, $captcha_secret_key, $captcha_response);
+            if(isset($_POST['captcha_response_token'])){
+                $captcha_response_token = sanitize_text_field(wp_unslash($_POST['captcha_response_token']));
+            } else {
+                $captcha_response_token = '';
+            }
+
+            $captcha_result = self::verify_captcha($captcha_type, $captcha_site_key, $captcha_secret_key, $captcha_response, $captcha_response_token);
             if (is_wp_error($captcha_result)) {
                 wp_send_json_error($captcha_result->get_error_message());
             }
@@ -143,10 +152,10 @@ class WPCaptcha_AJAX extends WPCaptcha
         return '<span class="wpcaptcha-dt-small">' . self::humanTiming($interval, true) . '</span><br />' . gmdate('Y/m/d', $timestamp) . ' <span class="wpcaptcha-dt-small">' . gmdate('h:i:s A', $timestamp) . '</span>';
     }
 
-    static function verify_captcha($type, $site_key, $secret_key, $response)
+    static function verify_captcha($type, $site_key, $secret_key, $response, $captcha_response_token = false)
     {
         if ($type == 'builtin') {
-            if (isset($_COOKIE['wpcaptcha_captcha']) && hash_hmac('sha256', $response, AUTH_SALT) === $_COOKIE['wpcaptcha_captcha']) {
+            if (wp_hash($response) === $captcha_response_token) {
                 return true;
             } else {
                 return new WP_Error('wpcaptcha_builtin_captcha_failed', __("<strong>ERROR</strong>: captcha verification failed.<br /><br />Please try again.", 'advanced-google-recaptcha'));

@@ -145,7 +145,9 @@ jQuery( function( $ ) {
 
 	$('#the-list').on('click', '#wpz-insta_reconnect', function (e) {
 		e.preventDefault();
-		window.wpzInstaAuthenticateInstagram( $(this).attr('href') );
+        if( $(this).attr('href').length > 0 ) {
+            window.wpzInstaAuthenticateInstagram( $(this).attr('href') );
+        }
 	});
 
     $('.wpzoom-instagram-widget-settings-request-type-wrapper').find('input[type=radio]').on('change', function (e) {
@@ -181,18 +183,41 @@ jQuery( function( $ ) {
 			}
 		},
 		100
-	);
+	);    
 
-	if ( window.opener && window.location.hash.length > 1 ) {
-		if( window.location.hash.includes( 'access_token' ) ) {
-			window.opener.wpzInstaHandleReturnedToken( window.location );
-		}
-		else if( window.location.hash.includes( 'access_graph_token' ) ) {
+	
+    if ( window.opener && window.location.hash.length > 1 || isLikelyPopup( 700, 960, 750, 1200 ) && window.location.hash.length > 1 ) {
+            if ( window.opener &&  typeof window.opener.wpzInstaHandleReturnedToken === 'function' ) {
+                window.opener.wpzInstaHandleReturnedToken( window.location );
+                window.close();
+            } else {
+                var getToken = getAccessTokenFromURL( window.location );
+                var notice = $('#wpz-insta_modal-dialog-connection-failed');
+                $('#wpz_generated_token').text( getToken );
+                notice.addClass('open');
+                $('#wpfooter').show();
+            }
+		if( window.location.hash.includes( 'access_graph_token' ) ) {
 			window.opener.wpzInstaHandleReturnedGraphToken( window.location );
+            window.close();
 		}
-		
-		window.close();
 	}
+
+    function getAccessTokenFromURL() {
+        // Get the full URL from window.location.href
+        const url = window.location.href;
+    
+        // Check if the URL contains a hash and if it includes 'access_token'
+        const hash = url.split('#')[1];  // Get everything after the '#'
+        if (hash && hash.includes('access_token=')) {
+            // Extract the query parameters in the hash
+            const params = new URLSearchParams(hash);
+            // Get the value of 'access_token'
+            const accessToken = params.get('access_token');
+            return accessToken;
+        }
+        return null; // Return null if no access_token is found
+    }
 
 
 	$( '#screen-meta #wpz-insta_account-photo-hide, #screen-meta #wpz-insta_account-bio-hide, #screen-meta #wpz-insta_account-token-hide, #screen-meta #wpz-insta_actions-hide' ).closest( 'label' ).remove();
@@ -320,6 +345,13 @@ jQuery( function( $ ) {
 	$( '#wpz-insta_modal_graph-dialog' ).find( '.wpz-insta_modal-dialog_ok-button, .wpz-insta_modal-dialog_close-button' ).on( 'click', function( e ) {
 		e.preventDefault();
 		let $dialog = $('#wpz-insta_modal_graph-dialog');
+		$dialog.removeClass('open');
+	} );
+
+	$( '#wpz-insta_modal-dialog-connection-failed' ).find( '.wpz-insta_modal-dialog_ok-button, .wpz-insta_modal-dialog_close-button' ).on( 'click', function( e ) {
+		e.preventDefault();
+		let $dialog = $('#wpz-insta_modal-dialog-connection-failed');
+        window.close();
 		$dialog.removeClass('open');
 	} );
 
@@ -603,6 +635,21 @@ jQuery( function( $ ) {
 
 		window.open( url, '', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupLeft + ',top=' + popupTop );
 	};
+    
+    // Helper function to check if the current window is a popup
+    function isLikelyPopup(minWidth, maxWidth, minHeight, maxHeight) {
+        const windowWidth = window.outerWidth;
+        const windowHeight = window.outerHeight;
+    
+        // Check if the window is smaller than the full screen
+        const isSmallerThanScreen = windowWidth < window.screen.width && windowHeight < window.screen.height;
+    
+        // Check if the window size falls within the expected range
+        const withinWidthRange = windowWidth >= minWidth && windowWidth <= maxWidth;
+        const withinHeightRange = windowHeight >= minHeight && windowHeight <= maxHeight;
+    
+        return isSmallerThanScreen && withinWidthRange && withinHeightRange;
+    }
 
 	window.wpzInstaParseQuery = function ( queryString ) {
 		var query = {};
@@ -667,9 +714,13 @@ jQuery( function( $ ) {
 	// Set the selected API
 	$('#wpz-insta-select-api').on('change', function (e) {
 		var selected = $(this).val();
-		$(this).parent().find( '#wpz-insta_reconnect' ).attr('href', selected );
-
+        $(this).parent().find( '#wpz-insta_reconnect' ).attr('href', selected );
 	} );
+
+    $('#wpz-add_manual_token').on( 'click', function (e) { 
+        e.preventDefault();
+        $('#wpz-insta-token_label').toggle();
+    } );
 
 	// Function to connect the selected business account
 	$('#wpz-insta-graph-connect-account').on('click', function (e) {

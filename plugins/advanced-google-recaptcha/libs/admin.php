@@ -42,6 +42,8 @@ class WPCaptcha_Admin extends WPCaptcha
       wp_enqueue_script('wp-color-picker');
       wp_enqueue_media();
 
+      $captcha = WPCaptcha_Functions::math_captcha_generate();
+
       $js_localize = array(
         'undocumented_error' => __('An undocumented error has occurred. Please refresh the page and try again.', 'advanced-google-recaptcha'),
         'documented_error' => __('An error has occurred.', 'advanced-google-recaptcha'),
@@ -59,7 +61,8 @@ class WPCaptcha_Admin extends WPCaptcha
         'stats_locks' => WPCaptcha_Stats::get_stats('locks'),
         'stats_fails' => WPCaptcha_Stats::get_stats('fails'),
         'wp301_install_url' => add_query_arg(array('action' => 'wpcaptcha_install_wp301', '_wpnonce' => wp_create_nonce('install_wp301'), 'rnd' => wp_rand()), admin_url('admin.php')),
-        'captcha_admin_test' => WPCaptcha_Functions::math_captcha_generate()
+        'captcha_admin_test' => $captcha['img'],
+        'captcha_admin_test_token' => wp_hash($captcha['value']),
       );
 
       $js_localize['chart_colors'] = array('#4285f4', '#ff5429', '#ff7d5c', '#ffac97');

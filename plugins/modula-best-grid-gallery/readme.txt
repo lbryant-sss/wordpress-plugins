@@ -4,7 +4,7 @@ Tags: gallery plugin, image gallery, video gallery, responsive gallery, WordPres
 Requires at least: 5.3  
 Tested up to: 6.7  
 Requires PHP: 5.6  
-Stable tag: 2.11.11  
+Stable tag: 2.12.0 
 
 License: GNU General Public License v3.0 or later  
 
@@ -12,6 +12,7 @@ License: GNU General Public License v3.0 or later
 ## The Best Gallery Plugin for Beautiful Image & Video Galleries in WordPress
 
 **Modula gallery plugin** makes creating stunning galleries easy. Just add images, pick a gallery type, and publish—effortless for everyone!
+**Modula AI** helps you quickly improve your gallery images by optimizing **titles**, **captions**, and **ALT text** in just a few clicks. Manual edits for each image are a thing of the past—save time and let **AI** do the work for you.
 
 ## How to Create a Gallery with Modula
 
@@ -31,7 +32,7 @@ https://www.youtube.com/watch?v=Ah1vHSTEW-c
 * **[Video gallery](https://wp-modula.com/kb/modula-video/?utm_source=wordpress.org&utm_medium=link&utm_campaign=description&utm_term=Video+gallery)**: Use the Video extension to combine videos with images in your galleries. It works with YouTube, Vimeo, and self-hosted videos.
 * **[Lightbox slideshow](https://wp-modula.com/kb/lightbox-slideshow/?utm_source=wordpress.org&utm_medium=link&utm_campaign=description&utm_term=Lightbox+slideshow)**: Improve the user experience with your galleries by presenting the images in a stunning slideshow.
 * **[Slider gallery](https://wp-modula.com/kb/modula-slider/?utm_source=wordpress.org&utm_medium=link&utm_campaign=description&utm_term=Slider+gallery)**: This helps display your gallery images in a new format type: slider. It can be synced with a thumbnail strip below it. You can switch it up by adding different elements to the slider: dots, arrows, a fade effect, infinite loop, center mode, and more.
-* **[Gallery Filters](https://wp-modula.com/kb/how-to-use-filters-in-modula/?utm_source=wordpress.org&utm_medium=link&utm_campaign=description&utm_term=Gallery+filters)**: Apply one or more filters to your images to allow your website’s visitors to easily sort through your gallery.
+* **[Gallery Filters](https://wp-modula.com/kb/use-filters-in-modula/?utm_source=wordpress.org&utm_medium=link&utm_campaign=description&utm_term=Gallery+filters)**: Apply one or more filters to your images to allow your website’s visitors to easily sort through your gallery.
 * **[Albums](https://wp-modula.com/kb/modula-albums/?utm_source=wordpress.org&utm_medium=link&utm_campaign=description&utm_term=Albums)**: Let’s say you are going on a holiday trip and wish to document each day in a separate gallery. The Albums extension will allow you to group up all your holiday galleries in a single listing, enabling easy access to your precious memories.
 * Multiple dynamic effects: [Loading Effects](https://wp-modula.com/kb/modula-loading-effects/?utm_source=wordpress.org&utm_medium=link&utm_campaign=description&utm_term=Loading+effects), [Hover effects](https://wp-modula.com/kb/modula-hover-effects/?utm_source=wordpress.org&utm_medium=link&utm_campaign=description&utm_term=Hover+effects) and [Zoom effects](https://wp-modula.com/kb/modula-zoom/?utm_source=wordpress.org&utm_medium=link&utm_campaign=description&utm_term=Zoom+effects)
 * **[Watermark images](https://wp-modula.com/kb/modula-watermark/?utm_source=wordpress.org&utm_medium=link&utm_campaign=description&utm_term=Watermark+images)**: Protect your photos by adding custom watermarks.
@@ -126,6 +127,9 @@ The simplest way to install is to click on \'Plugins\' then \'Add\' and type \'M
 4. Responsive galleries created with Modula
 
 == Changelog ==
+= 2.12.0 – 28.02.2025 =
+Added: AI Image Optimizer.
+
 = 2.11.11 – 07.01.2025 =
 Fixed: ZIP file vulnerability fix.
 

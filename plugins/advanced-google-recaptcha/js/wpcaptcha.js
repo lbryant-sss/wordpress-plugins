@@ -589,7 +589,7 @@ jQuery(document).ready(function ($) {
 
   $(".settings_page_wpcaptcha").on("click", "#verify-captcha", function (e) {
     e.preventDefault();
-    var captcha_response;
+    var captcha_response, captcha_response_token;
 
     wpcaptcha_swal
       .fire({
@@ -614,6 +614,7 @@ jQuery(document).ready(function ($) {
             captcha_html += '<p><label for="wpcaptcha_captcha">Are you human? Please solve:';
             captcha_html += '<img class="wpcaptcha-captcha-img" style="vertical-align: text-top;" src="' + wpcaptcha_vars.captcha_admin_test + '" alt="Captcha" />';
             captcha_html += '<input class="input" type="text" size="3" name="wpcaptcha_captcha" id="wpcaptcha_builtin_captcha" />';
+            captcha_html += '<input type="hidden" name="wpcaptcha_captcha_token" id="wpcaptcha_captcha_token" value="' + wpcaptcha_vars.captcha_admin_test_token + '" />';
             captcha_html += "</label></p>";
 
             $("#wpcaptcha_captcha_box").html(captcha_html);
@@ -621,6 +622,8 @@ jQuery(document).ready(function ($) {
             $("#wpcaptcha_builtin_captcha").on("blur change keyup", function () {
               captcha_response = $(this).val();
             });
+
+            captcha_response_token = $("#wpcaptcha_captcha_token").val();
           }
 
           window.wpcaptcha_captcha_script.onerror = function () {
@@ -674,6 +677,7 @@ jQuery(document).ready(function ($) {
               captcha_site_key: $("#captcha_site_key").val(),
               captcha_secret_key: $("#captcha_secret_key").val(),
               captcha_response: captcha_response,
+              captcha_response_token: captcha_response_token,
             },
           })
             .always(function (response) {

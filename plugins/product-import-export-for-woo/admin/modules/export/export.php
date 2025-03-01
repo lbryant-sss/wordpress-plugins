@@ -331,7 +331,15 @@ class Wt_Import_Export_For_Woo_Basic_Export
 
 		$delimiter_default = isset($advanced_form_data['wt_iew_delimiter']) ? $advanced_form_data['wt_iew_delimiter'] : ",";
 		$advanced_screen_fields=array(
-
+			'file_name'=>array(
+				'label'=>__("Export file name"),
+				'type'=>'text',
+				'field_name'=>'file_name',
+				'help_text'=>__('Specify a filename for the exported file. If left blank, the system generates the name automatically.', 'wt-import-export-for-woo'),
+				'after_form_field_html'=>'<div class="wt_iew_file_ext_info_basic">.csv</div>',
+				'td_class3'=>'wt_iew_file_ext_info_td',
+				'validation_rule'=>array('type'=>'file_name'),
+			),
 			'batch_count'=>array(
 				'label'=>__("Export in batches of"),
 				'type'=>'text',
@@ -434,6 +442,9 @@ class Wt_Import_Export_For_Woo_Basic_Export
 				'choose_template'=>__('Please select an export template.'),
 				'step'=>__('Step'),
 				'choose_ftp_profile'=>__('Please select an FTP profile.'),
+				//localized strings for filename validation
+				'filename_title' => __('Only letters, numbers and hyphens are allowed', 'product-import-export-for-woo'),
+				'filename_placeholder' => __('Enter file name (letters, numbers, hyphens only)', 'product-import-export-for-woo'),
 			),
 		);
 		wp_localize_script($this->module_id, 'wt_iew_export_basic_params', $params);

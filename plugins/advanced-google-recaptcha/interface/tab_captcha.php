@@ -111,7 +111,7 @@ class WPCaptcha_Tab_Captcha extends WPCaptcha
                 echo '<div class="captcha-box-desc">';
                     echo '<h3>Built-in Math Captcha</h3>';
                     echo '<ul>';
-                    echo '<li>Medium Security</li>';
+                    echo '<li>Low Security</li>';
                     echo '<li>No API keys</li>';
                     echo '<li>No 3rd party services</li>';
                     echo '<li>GDPR Compatible</li>';

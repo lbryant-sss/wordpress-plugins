@@ -60,7 +60,7 @@ If you would like to appreciate it, you can try [the PRO version](https://url.ma
 1. Upload the plugin files to the `/wp-content/plugins/webp-converter-for-media` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the `Plugins` screen in WordPress Admin Panel.
 3. Use the `Settings -> Settings -> Converter for Media` screen to configure the plugin.
-4. Click on the `Start Bulk Optimization` button and wait.
+4. Click on the `Start Bulk Optimization` button and wait for the process to complete.
 5. Check if everything works fine using [this tutorial](https://url.mattplugins.com/converter-readme-installation-instruction).
 
 That's all! Your website is already loading faster!
