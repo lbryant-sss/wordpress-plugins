@@ -836,7 +836,7 @@ class TheLib_Html extends TheLib  {
 
 		if ( ! empty( $value ) ) {
 			if ( ! preg_match( '/\d\d\d\d-\d\d-\d\d/', $value ) ) {
-				$value = date( 'Y-m-d', strtotime( $value ) );
+				$value = gmdate( 'Y-m-d', strtotime( $value ) );
 			}
 		}
 
@@ -1092,7 +1092,7 @@ class TheLib_Html extends TheLib  {
 	 */
 	private function element_wp_editor( $labels, $id, $value, $options ) {
 		if ( empty( $id ) ) {
-			$id = 'wpmulib-wp-editor-'.rand();
+			$id = 'wpmulib-wp-editor-'.wp_rand();
 		}
 		$this->element_label( $labels );
 		wp_editor( $value, $id, $options );
@@ -1362,7 +1362,7 @@ class TheLib_Html extends TheLib  {
 		printf(
 			'<a id="%1$s" title="%2$s" class="wpmui-link %3$s" href="%4$s" target="%7$s" %6$s>%5$s</a>',
 			esc_attr( $id ),
-			esc_attr( strip_tags( $title ) ),
+			esc_attr( wp_strip_all_tags( $title ) ),
 			esc_attr( $class ),
 			esc_url( $url ),
 			esc_html( $label ),
@@ -1740,12 +1740,12 @@ class TheLib_Html extends TheLib  {
 		$content .= sprintf(
 			'<a href="#" class="image-reset %s">%s</a>',
 			esc_attr( $image_src? '': 'disabled' ),
-			esc_html__( 'Clear' )
+			esc_html__( 'Clear', 'custom-sidebars' )
 		);
 		$content .= '</div>';
 		$content .= sprintf(
 			'<input type="button" class="button button-select-image" value="%s" />',
-			esc_attr__( 'Browse' )
+			esc_attr__( 'Browse', 'custom-sidebars' )
 		);
 		$content .= sprintf(
 			'<input type="hidden" name="%s" value="%s" class="attachment-id" />',

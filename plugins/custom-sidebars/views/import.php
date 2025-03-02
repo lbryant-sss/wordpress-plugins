@@ -77,7 +77,7 @@ if ( ! function_exists( 'list_sidebar_replacement' ) ) {
 					</tr>
 					<tr>
 						<th><?php esc_html_e( 'Exported on', 'custom-sidebars' ); ?></th>
-						<td colspan="2"><?php echo esc_html( ' ' . date( $date_format, $import['meta']['created'] ) ); ?></td>
+						<td colspan="2"><?php echo esc_html( ' ' . gmdate( $date_format, $import['meta']['created'] ) ); ?></td>
 					</tr>
 				</tbody>
 			</table>

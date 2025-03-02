@@ -92,7 +92,7 @@ $code = str_replace( array( "\r", "\n" ), '', $code );
 
 					<?php if ( $once ) : ?>
 					jQuery.post( ajaxurl, {
-						pointer: '<?php esc_attr_e( $pointer_id ); ?>',
+						pointer: '<?php echo esc_attr( $pointer_id ); ?>',
 						action: 'dismiss-wp-pointer'
 					});
 					<?php endif; ?>

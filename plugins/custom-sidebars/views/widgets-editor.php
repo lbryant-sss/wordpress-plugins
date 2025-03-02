@@ -25,13 +25,7 @@
 	<div class="wpmui-grid-8 csb-more-content">
 		<div class="col-8 hint">
 			<strong><?php esc_html_e( 'Caution:', 'custom-sidebars' ); ?></strong>
-			<?php CustomSidebars::wp_kses_wf(__(
-				'Before-after title-widget properties define the html code that will wrap ' .
-				'the widgets and their titles in the sidebars, more info about them on the '.
-				'<a href="http://justintadlock.com/archives/2010/11/08/sidebars-in-wordpress" target="_blank">Justin ' .
-				'Tadlock Blog</a>. Do not use these fields if you are not sure what you are doing, it can break ' .
-				'the design of your site. Leave these fields blank to use the theme sidebars design.', 'custom-sidebars'
-			)); ?>
+			<?php CustomSidebars::wp_kses_wf(__('Before-after title-widget properties define the html code that will wrap the widgets and their titles in the sidebars, more info about them on the <a href="http://justintadlock.com/archives/2010/11/08/sidebars-in-wordpress" target="_blank">Justin Tadlock Blog</a>. Do not use these fields if you are not sure what you are doing, it can break the design of your site. Leave these fields blank to use the theme sidebars design.', 'custom-sidebars')); ?>
 		</div>
 	</div>
 	<div class="wpmui-grid-8 csb-more-content">

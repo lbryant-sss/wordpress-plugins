@@ -201,7 +201,7 @@ class TheLib_Debug extends TheLib  {
 			$plain_text = $this->plain_text;
 			$this->format_text();
 			$log_file = WP_CONTENT_DIR . '/lib3.log';
-			$time = date( "Y-m-d\tH:i:s\t" );
+			$time = gmdate( "Y-m-d\tH:i:s\t" );
 
 			foreach ( func_get_args() as $param ) {
 				if ( is_scalar( $param ) ) {
@@ -274,7 +274,7 @@ class TheLib_Debug extends TheLib  {
 		$this->add_scripts();
 
 		if ( ! $plain_text ) {
-			$block_id = 'wdev-debug-' . md5( rand() );
+			$block_id = 'wdev-debug-' . md5( wp_rand() );
 			$block_label = '';
 			if ( is_scalar( $first_arg ) && ! empty( $first_arg ) ) {
 				$block_label = ': ' . (string) $first_arg;
@@ -331,7 +331,7 @@ class TheLib_Debug extends TheLib  {
 		$trace_str = '';
 
 		if ( ! $plain_text ) {
-			$block_id = 'wdev-debug-' . md5( rand() );
+			$block_id = 'wdev-debug-' . md5( wp_rand() );
 			$trace_str .= sprintf(
 				'<span class="wdev-trace-toggle" onclick="toggleBlock(\'%1$s-trace\')">
 					<b>Back-Trace</b>
@@ -403,7 +403,7 @@ class TheLib_Debug extends TheLib  {
 					"\r\n  %s. \t %s \t by %s",
 					str_pad( $line, 2, ' ', STR_PAD_LEFT ),
 					$file . ': ' . str_pad( $line_item['line'], 5, ' ', STR_PAD_LEFT ),
-					$item['class'] . $item['type'] . $item['function'] . '(' . strip_tags( $args ) . ')'
+					$item['class'] . $item['type'] . $item['function'] . '(' . wp_strip_all_tags( $args ) . ')'
 				);
 			} else {
 				$trace_str .= sprintf(
@@ -511,7 +511,7 @@ class TheLib_Debug extends TheLib  {
 				if ( ! $populated ) {
 					$populated = true;
 
-					$id = substr( md5( rand() . ':' . $key . ':' . count( $level ) ), 0, 8 );
+					$id = substr( md5( wp_rand() . ':' . $key . ':' . count( $level ) ), 0, 8 );
 					$args['containers'][] = $id;
 					$collapse = count( $args['containers'] ) >= $default_depth;
 					if ( $collapse ) {
@@ -916,7 +916,7 @@ class TheLib_Debug extends TheLib  {
 	 * }
 	 */
 	public function marker_html( $label = null, $styles = array() ) {
-		$hash = md5( rand( 1000, 9999 ) . time() );
+		$hash = md5( wp_rand( 1000, 9999 ) . time() );
 
 		if ( null === $label ) {
 			$label = $hash;

@@ -34,11 +34,10 @@ if ( ! function_exists( '_show_replaceable' ) ) {
                 id="<?php echo esc_attr( $inp_id ); ?>"
                 class="detail-toggle"
                 />
-<?php printf(
-	__( 'As <strong>%1$s</strong> for selected %2$s', 'custom-sidebars' ),
-	esc_attr($sidebar['name']),
-	esc_attr($cat_name)
-); ?>
+<?php 
+/* translators: %1$s is replaced with the sidebar name, %1$s is replaced with the category name */
+CustomSidebars::wp_kses_wf(sprintf(__( 'As <strong>%1$s</strong> for selected %2$s', 'custom-sidebars' ), esc_attr($sidebar['name']), esc_attr($cat_name))); 
+?>
         </label>
         <div class="details">
             <select
@@ -47,10 +46,8 @@ if ( ! function_exists( '_show_replaceable' ) ) {
                 name="<?php echo esc_attr( $inp_name ); ?>[]"
                 multiple="multiple"
                 placeholder="<?php echo esc_attr(
-					sprintf(
-						__( 'Click here to pick available %1$s', 'custom-sidebars' ),
-						$cat_name
-					)
+                    /* translators: %s the category name */
+					sprintf(__( 'Click here to pick available %1$s', 'custom-sidebars' ), $cat_name)
 				); ?>"
             >
             </select>
@@ -72,15 +69,12 @@ if ( ! function_exists( '_show_replaceable' ) ) {
 	<p class="message unique-post">
 		<i class="dashicons dashicons-info light"></i>
 		<?php
-		printf(
-			__(
-				'To attach this sidebar to a unique Post or Page please visit ' .
-				'that <a href="%1$s">Post</a> or <a href="%2$s">Page</a> & set it ' .
-				'up via the sidebars metabox.', 'custom-sidebars'
-			),
+		CustomSidebars::wp_kses_wf(sprintf(
+            /* translators: %1$s is replaced with the URL to create a Post, %2$s is replaced with the URL to create a Page */
+			__('To attach this sidebar to a unique Post or Page please visit that <a href="%1$s">Post</a> or <a href="%2$s">Page</a> & set it up via the sidebars metabox.', 'custom-sidebars'),
 			admin_url( 'edit.php' ),
 			admin_url( 'edit.php?post_type=page' )
-		);
+		));
 		?>
 	</p>
 

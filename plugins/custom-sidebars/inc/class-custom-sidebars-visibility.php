@@ -169,7 +169,7 @@ class CustomSidebarsVisibility extends CustomSidebars {
 			// Remove taxonomies without values.
 			if ( ! self::$filtered_tax_list ) {
 				foreach ( $tax_list as $index => $tax_item ) {
-					$tags = get_terms( $tax_item->name, array( 'hide_empty' => false ) );
+					$tags = get_terms( $tax_item->name );
 					if ( empty( $tags ) ) {
 						unset( $tax_list[ $index ] );
 					}
@@ -199,7 +199,7 @@ class CustomSidebarsVisibility extends CustomSidebars {
 		<?php if ( ! isset( $_POST['csb-visibility-button'] ) ) : ?>
 			<a href="#" class="button csb-visibility-button"><span class="dashicons dashicons-visibility"></span> <?php esc_html_e( 'Visibility', 'custom-sidebars' ); ?></a>
 		<?php else : ?>
-			<script>jQuery(function() { jQuery('.csb-visibility-<?php esc_attr_e( $widget->id ); ?>').closest('.widget').trigger('csb:update'); }); </script>
+			<script>jQuery(function() { jQuery('.csb-visibility-<?php echo esc_attr( $widget->id ); ?>').closest('.widget').trigger('csb:update'); }); </script>
 		<?php endif; ?>
 
 		<div class="csb-visibility-inner" <?php if ( ! $is_visible ) : ?>style="display:none"<?php endif; ?>>
@@ -383,7 +383,9 @@ class CustomSidebarsVisibility extends CustomSidebars {
 			<?php /* SPECIFIC POSTS */ ?>
 			<?php foreach ( $type_list as $type_item ) :
 				$row_id = 'pt-' . $type_item->name;
+                /* translators: %s is replaced with the post type name */
 				$lbl_all = sprintf( __( 'Only for specific %s', 'custom-sidebars' ), $type_item->labels->name );
+				/* translators: %s is replaced with the post type name */
 				$lbl_single = sprintf( __( 'Only these %s:', 'custom-sidebars' ), $type_item->labels->name );
 				$is_selected = in_array( $type_item->name, $cond['posttypes'] );
 				$ajax_url = admin_url( 'admin-ajax.php?action=cs-ajax&do=visibility&posttype=' . $type_item->name );

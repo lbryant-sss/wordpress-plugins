@@ -345,7 +345,7 @@ class CustomSidebarsExport extends CustomSidebars {
 			'%s.sidebars.%s.%s.json',
 			$site_name,
 			$this->version,
-			date( 'Y-m-d.H-i-s' )
+			gmdate( 'Y-m-d.H-i-s' )
 		);
 		return $filename;
 	}
@@ -517,10 +517,7 @@ class CustomSidebarsExport extends CustomSidebars {
 		} else {
 			return self::req_err(
 				$req,
-				__(
-					'Something unexpected happened and we could not finish ' .
-					'the import. Please try again.', 'custom-sidebars'
-				)
+				__('Something unexpected happened and we could not finish the import. Please try again.', 'custom-sidebars')
 			);
 		}
 
@@ -725,12 +722,8 @@ class CustomSidebarsExport extends CustomSidebars {
 		if ( $sidebar_count > 0 ) {
 			self::set_custom_sidebars( $sidebars );
 			$msg[] = sprintf(
-				_n(
-					'Imported %d custom sidebar!',
-					'Imported %d custom sidebars!',
-					$sidebar_count,
-					'custom-sidebars'
-				),
+                /* translators: %d is replaced with the number of custom sidebars imported */
+				_n('Imported %d custom sidebar!', 'Imported %d custom sidebars!', $sidebar_count, 'custom-sidebars'),
 				$sidebar_count
 			);
 		}
@@ -790,12 +783,8 @@ class CustomSidebarsExport extends CustomSidebars {
 		if ( $widget_count > 0 ) {
 			wp_set_sidebars_widgets( $def_sidebars );
 			$msg[] = sprintf(
-				_n(
-					'Imported %d widget!',
-					'Imported %d widgets!',
-					$widget_count,
-					'custom-sidebars'
-				),
+                /* translators: %d is replaced with the number of imported widgets */
+				_n('Imported %d widget!', 'Imported %d widgets!', $widget_count, 'custom-sidebars'),
 				$widget_count
 			);
 		}

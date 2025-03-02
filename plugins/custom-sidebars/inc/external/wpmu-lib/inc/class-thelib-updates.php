@@ -244,7 +244,7 @@ class TheLib_Updates extends TheLib  {
 
 		// Create the empty snapshot file.
 		$filename = sanitize_html_class( $file );
-		$filename .= '-' . date( 'Ymd-His' );
+		$filename .= '-' . gmdate( 'Ymd-His' );
 		$ext = '.' . $ext;
 		$i = '';
 		$sep = '';

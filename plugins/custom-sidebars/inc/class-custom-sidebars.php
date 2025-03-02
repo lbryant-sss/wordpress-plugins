@@ -105,21 +105,16 @@ class CustomSidebars {
 			return;
 		}
 
-		$post_link = 'https://premium.wpmudev.org/blog/retiring-custom-sidebars/';
 		?>
 		<div id="wpmudev-cs-retirement-notice" class="notice notice-warning is-dismissible">
 			<p>
 				<?php
 				printf(
-					esc_html__(
-						'%1$sCustom Sidebars Notice %2$sStarting from version 5.7, WordPress will be using Gutenberg\'s block-based Widget Screen. Custom Sidebars is not compatible due to the fact that once Full Site Editing is in place, such plugins will not be required anymore. Therefore Custom Sidebars has been discontinued. If you have existing sidebars that you need to modify, you can switch back to a legacy Widgets screen by adding %3$s in your theme\'s functions.php file. You can read more about this %4$shere%5$s.',
-						'custom-sidebars'
-					),
+                    /* translators: %1$s,%2$s,%3$s is replaced with HTML tags that should not be escaped */
+					esc_html__('%1$sCustom Sidebars Notice %2$sStarting from version 5.7, WordPress will be using Gutenberg\'s block-based Widget Screen. Custom Sidebars is not compatible due to the fact that once Full Site Editing is in place, such plugins will not be required anymore. Therefore Custom Sidebars has been discontinued. If you have existing sidebars that you need to modify, you can switch back to a legacy Widgets screen by adding %3$s in your theme\'s functions.php file.',	'custom-sidebars'),
 					'<strong>',
 					'</strong><br />',
 					"<code>remove_theme_support( 'widgets-block-editor' );</code>",
-					"<a href=\"" . esc_url($post_link) . "\" target=\"_blank\">",
-					'</a>'
 				);
 				?>
 			</p>
@@ -152,6 +147,7 @@ class CustomSidebars {
 
 		$return = array(
 			'success' => true,
+            /* translators: %1$s is replaced with the user ID */
 			'message' => sprintf( esc_html__( 'Notice dismissed for user %d', 'custom-sidebars' ), $user_id ),
 		);
 
@@ -257,14 +253,8 @@ class CustomSidebars {
 				'wpmudcs1',                            // Internal Pointer-ID
 				'#menu-appearance',                    // Point at
 				$plugin_title,
-				sprintf(
-					__(
-						'Now you can create and edit custom sidebars in your ' .
-						'<a href="%1$s">Widgets screen</a>!',
-						'custom-sidebars'
-					),
-					admin_url( 'widgets.php' )
-				)                                        // Body
+                /* translators: %1$s is replaced with the link to the Widgets screen */
+				sprintf(__('Now you can create and edit custom sidebars in your <a href="%1$s">Widgets screen</a>!','custom-sidebars'),	admin_url( 'widgets.php' ))
 			);
 		}
 
@@ -276,16 +266,8 @@ class CustomSidebars {
 		if ( true === self::$accessibility_mode ) {
 			$nonce = wp_create_nonce( 'widgets-access' );
 			lib3()->ui->admin_message(
-				sprintf(
-					__(
-						'<strong>Accessibility mode is not supported by the
-						%1$s plugin.</strong><br /><a href="%2$s">Click here</a>
-						to disable accessibility mode and use the %1$s plugin!',
-						'custom-sidebars'
-					),
-					$plugin_title,
-					admin_url( 'widgets.php?widgets-access=off&_wpnonce=' . urlencode( $nonce ) )
-				),
+                /* translators: %1$s is replaced with the URL of the link to disable acessibility mode */
+				sprintf(__('<strong>Accessibility mode is not supported by the Custom Sidebars plugin.</strong><br /><a href="%1$s">Click here</a>	to disable accessibility mode and use the Custom Sidebars plugin!', 'custom-sidebars'), $plugin_title,	admin_url( 'widgets.php?widgets-access=off&_wpnonce=' . urlencode( $nonce ) )),
 				'err',
 				'widgets'
 			);

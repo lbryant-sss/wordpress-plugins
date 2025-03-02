@@ -166,9 +166,9 @@ class CustomSidebarsExplain extends CustomSidebars {
 	 * @return [type] [description]
 	 */
 	static public function get_color() {
-		$r = rand( 40, 140 );
-		$g = rand( 40, 140 );
-		$b = rand( 40, 140 );
+		$r = wp_rand( 40, 140 );
+		$g = wp_rand( 40, 140 );
+		$b = wp_rand( 40, 140 );
 		return '#' . dechex( $r ) . dechex( $g ) . dechex( $b );
 	}
 

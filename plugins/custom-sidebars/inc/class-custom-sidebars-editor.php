@@ -300,18 +300,14 @@ class CustomSidebarsEditor extends CustomSidebars {
 		}
 		if ( 'insert' == $action ) {
 			$sidebars[] = $sidebar;
-			$req->message = sprintf(
-				__( 'Created new sidebar <strong>%1$s</strong>', 'custom-sidebars' ),
-				esc_html( $sidebar['name'] )
-			);
+            /* translators: %1$s is replaced with the sidebar name */
+			$req->message = sprintf(__( 'Created new sidebar <strong>%1$s</strong>', 'custom-sidebars' ),esc_html( $sidebar['name'] ));
 		} else {
 			$found = false;
 			foreach ( $sidebars as $ind => $item ) {
 				if ( $item['id'] == $sb_id ) {
-					$req->message = sprintf(
-						__( 'Updated sidebar <strong>%1$s</strong>', 'custom-sidebars' ),
-						esc_html( $sidebar['name'] )
-					);
+                    /* translators: %1$s is replaced with the sidebar name */
+					$req->message = sprintf(__( 'Updated sidebar <strong>%1$s</strong>', 'custom-sidebars' ),esc_html( $sidebar['name'] ));
 					$sidebars[ $ind ] = $sidebar;
 					$found = true;
 					break;
@@ -384,10 +380,8 @@ class CustomSidebarsEditor extends CustomSidebars {
 		foreach ( $sidebars as $ind => $item ) {
 			if ( $item['id'] == $req->id ) {
 				$found = true;
-				$req->message = sprintf(
-					__( 'Deleted sidebar <strong>%1$s</strong>', 'custom-sidebars' ),
-					esc_html( $req->sidebar['name'] )
-				);
+                /* translators: %1$s is replaced with the sidebar name */
+				$req->message = sprintf(__( 'Deleted sidebar <strong>%1$s</strong>', 'custom-sidebars' ),esc_html( $req->sidebar['name'] ));
 				unset( $sidebars[ $ind ] );
 				break;
 			}
@@ -473,17 +467,21 @@ class CustomSidebarsEditor extends CustomSidebars {
 					/**
 				 * this a legacy and backward compatibility
 				 */
+                    /* translators: %1$s is replaced with the taxonomy name */
 					$archive_type['_tags'] = sprintf( __( '%s Archives', 'custom-sidebars' ), $taxonomy->labels->singular_name );
 				break;
 				case 'category':
+                    /* translators: %1$s is replaced with the taxonomy name */
 					$archive_type[ '_'.$taxonomy->name ] = sprintf( __( '%s Archives', 'custom-sidebars' ), $taxonomy->labels->singular_name );
 				break;
 			}
 		}
 		foreach ( $raw_taxonomies['custom'] as $taxonomy ) {
 			if ( in_array( $taxonomy->labels->singular_name, $default_taxonomies ) ) {
+                /* translators: %1$s is replaced with the taxonomy name */
 				$archive_type[ '_taxonomy_'.$taxonomy->name ] = sprintf( __( '%s Archives', 'custom-sidebars' ), ucfirst( $taxonomy->name ) );
 			} else {
+                /* translators: %1$s is replaced with the taxonomy name */
 				$archive_type[ '_taxonomy_'.$taxonomy->name ] = sprintf( __( '%s Archives', 'custom-sidebars' ), $taxonomy->labels->singular_name );
 			}
 		}
@@ -527,10 +525,8 @@ class CustomSidebarsEditor extends CustomSidebars {
 				$label = __( 'Post Index', 'custom-sidebars' );
 			} else {
 				if ( ! $item->has_archive ) { continue; }
-				$label = sprintf(
-					__( '%1$s Archives', 'custom-sidebars' ),
-					$item->labels->singular_name
-				);
+                /* translators: %1$s is replaced with the post type name */
+				$label = sprintf(__( '%1$s Archives', 'custom-sidebars' ),$item->labels->singular_name);
 			}
 			$sel_archive = @$defaults['post_type_archive'][ $item->name ];
 			$archives[ $item->name ] = array(
@@ -556,8 +552,10 @@ class CustomSidebarsEditor extends CustomSidebars {
 				isset( $defaults['taxonomies_archive'] )
 				&& isset( $defaults['taxonomies_archive'][ $taxonomy ] )
 			) {
+                /* translators: %1$s is replaced with the taxonomy name */
 				$name  = sprintf( __( '%s Archives', 'custom-sidebars' ), $t->labels->singular_name );
 				if ( in_array( $t->labels->singular_name, $default_taxonomies ) ) {
+                    /* translators: %1$s is replaced with the taxonomy name */
 					$name = sprintf( __( '%s Archives', 'custom-sidebars' ), ucfirst( $taxonomy ) );
 				}
 				$sel_archive = $defaults['taxonomies_archive'][ $taxonomy ];
@@ -574,11 +572,9 @@ class CustomSidebarsEditor extends CustomSidebars {
 		 * @since 3.1.4
 		 */
 		$allowed = get_option( $this->custom_taxonomies_name, array() );
-		$args = array(
-			'hide_empty' => true,
-		);
+		
 		foreach ( $allowed as $key ) {
-			$t = get_terms( $key, $args );
+			$t = get_terms( $key );
 			$terms = array();
 			foreach ( $t as $item ) {
 				$sel_single = $sel_archive = array();
@@ -612,6 +608,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 				if ( isset( $defaults['category_archive'] ) ) {
 					$sel_archive = $defaults['category_archive'];
 					$archives['_category'] = array(
+                        /* translators: %1$s is replaced with the category name */
 						'name' => sprintf( __( '%s Archives', 'custom-sidebars' ), $t->labels->singular_name ),
 						'archive' => self::get_array( $sel_archive ),
 					);
@@ -819,7 +816,7 @@ class CustomSidebarsEditor extends CustomSidebars {
 				 */
 				foreach ( $raw_taxonomies['custom'] as $taxonomy ) {
 					$key = '_taxonomy_'.$taxonomy.'_single';
-					$terms = get_terms( $taxonomy, array( 'hide_empty' => false ) );
+					$terms = get_terms( $taxonomy );
 					foreach ( $terms as $term ) {
 						$term_id = $term->term_id;
 						if (
@@ -878,10 +875,8 @@ class CustomSidebarsEditor extends CustomSidebars {
 			krsort( $size );
 		}
 		$options['screen'][ $req->id ] = $size;
-		$req->message = sprintf(
-			__( 'Updated sidebar <strong>%1$s</strong> settings.', 'custom-sidebars' ),
-			esc_html( $req->sidebar['name'] )
-		);
+        /* translators: %1$s is replaced with the sidebar name */
+		$req->message = sprintf(__( 'Updated sidebar <strong>%1$s</strong> settings.', 'custom-sidebars' ),	esc_html( $req->sidebar['name'] ));
 		/**
 		 * Allow to change data of locations before save.
 		 *

@@ -28,10 +28,8 @@ if ( ! function_exists( 'custom_sidebars_col_sideber_not_available' ) ) {
 	 * @param string $page_name Page Name to display.
 	 */
 	function custom_sidebars_col_sideber_not_available( $page_name ) {
-		$content = sprintf(
-			esc_attr__( 'Not available for %s', 'custom-sidebars' ),
-			$page_name
-		);
+        /* translators: %s is replaced with Page Name */
+		$content = sprintf(esc_attr__( 'Not available for %s', 'custom-sidebars' ),	$page_name);
 		printf(
 			'<small>%s</small>',
 			esc_html( $content )

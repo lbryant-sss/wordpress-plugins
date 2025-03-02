@@ -13,10 +13,7 @@
 		<p>
 			<i class="dashicons dashicons-info light"></i>
 			<?php
-			esc_html_e(
-				'This will generate a complete export file containing all ' .
-				'your sidebars and the current sidebar configuration.', 'custom-sidebars'
-			);
+			esc_html_e('This will generate a complete export file containing all your sidebars and the current sidebar configuration.', 'custom-sidebars');
 			?>
 		</p>
 		<p>

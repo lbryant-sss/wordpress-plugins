@@ -55,7 +55,7 @@ Craft your perfect side cart look with an abundance of styling choices. Achieve 
 
 Give customers full control: easily change the quantity and enjoy full transparency with detailed breakdowns of taxes, fees, and discounts for a hassle-free shopping experience.
 
-##One click paypal and amazon checkout
+##One click paypal, google pay, apple pay and amazon checkout
 
 Streamline your checkout experience: no more lengthy form-filling! Let customers make a purchase in an instant with just one click
 
@@ -79,7 +79,7 @@ Customers can directly update their shipping location and get the exact shipping
 
 ##Rewards progress bar
 
-Incentivize with progress: Free gifts and free shipping, display the minimum amount required to achieve a reward on progress bar.
+Incentivize with progress: Free gifts, discounts and free shipping, display the minimum amount required to achieve a reward on progress bar.
 
 ##Cart notifications
 
@@ -118,12 +118,14 @@ You can use any third party plugin such as Loco Translate for hassle free transl
 5. Save Location: Your wordpress directory/wp-content/languages/
 
 == Screenshots ==
-1. Side cart.
-2. Side Cart Pro
-3. Floating Basket
-4. Apply Coupon Pro
-5. Shortcode [xoo_wsc_cart]
-6. Change Shipping Pro
+1. Card Layout
+2. Card Layout - Pro
+3. Row Layout
+4. Row Layout - Pro
+5. Floating Basket
+6. Apply Coupon Pro
+7. Shortcode [xoo_wsc_cart]
+8. Change Shipping Pro
 
 == Changelog ==
 

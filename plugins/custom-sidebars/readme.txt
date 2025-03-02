@@ -1,26 +1,26 @@
-=== Custom Sidebars - Dynamic Sidebar Widget Area Manager ===
+=== Custom Sidebars - Dynamic Sidebar Classic Widget Area Manager ===
 Contributors: WebFactory
-Tags: sidebar, widget, custom sidebar, dynamic widgets, manage sidebars, flexible layout, replace widgets, custom widget area, footer
+Tags: sidebar, widget, custom sidebar, dynamic widgets, classic widgets
 Requires at least: 4.6
-Tested up to: 6.1
-Stable tag: 3.36
+Tested up to: 6.7
+Stable tag: 3.37
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Flexible sidebars for custom widget configurations on any page or post. Create custom sidebars with ease!
+Flexible sidebars for custom classic widget configurations on any page or post. Create custom sidebars with ease!
 
 == Description ==
 
-**Manage and replace sidebars and other widget areas on your site with Custom Sidebars, a flexible widget area manager.**
+**Manage and replace sidebars and other classic widget areas on your site with Custom Sidebars, a flexible widget area manager.**
 
-Make custom sidebar configurations and be able to choose what widgets display on each page or post of your site.
+Make custom sidebar configurations and be able to choose what classic widgets display on each page or post of your site.
 
-> Need to make a **widget sticky** or fixed? Try our free <a href="https://wordpress.org/plugins/sticky-menu-or-anything-on-scroll/">WP Sticky Anything</a> plugin.
+* Need to make a **widget sticky** or fixed? Try our free <a href="https://wordpress.org/plugins/sticky-menu-or-anything-on-scroll/">WP Sticky Anything</a> plugin.
 
 Custom Sidebars works ONLY with the classic widgets screen that was used in WordPress before version 5.8. If you want to use it with version 5.8 (and above) you have to install the official <a href="https://wordpress.org/plugins/classic-widgets/">Classic Widgets</a> plugin, or enable the classic widgets interface yourself. Once the classic widgets screen is activated the plugin will work the same as before.
 
-> Having problems setting up SSL or generating an SSL certificate? Install the free <a href="https://wordpress.org/plugins/wp-force-ssl/">WP Force SSL</a> plugin.
+* Having problems setting up SSL or generating an SSL certificate? Install the free <a href="https://wordpress.org/plugins/wp-force-ssl/">WP Force SSL</a> plugin.
 
 = Display Different Sidebars on Pages and Posts =
 
@@ -34,18 +34,18 @@ Custom Sidebars allows you to dynamically display custom widget configurations o
 
 Every part of Custom Sidebars integrates seamlessly with the Widgets menu for simplicity and control. No confusing settings pages or added menu items, just simple core integration.
 
-> #### A Simple Flexible Sidebar Manager
-> ** Custom Sidebars Includes: **
-> * Unlimited custom widget configurations
-> * Set custom widgets for individual posts and pages, categories, post types, and archives
-> * Seamless integration with the WordPress Widgets menu
-> * Works with well-coded themes and doesn't slow down your site
-> * Set individual widget visibility – for guests, by user role, by post type, for special pages or categories
-> * Author specific sidebars – display a custom sidebar for each of your authors
-> * Clone and sync widget settings – quickly edit complex configurations
-> * Import and export custom sidebars – backup and share sidebars
->
-> Install Custom Sidebars and see for yourself why it's the most popular widget extension plugin available for WordPress with over 200,000 active installs.
+#### A Simple Flexible Sidebar Manager
+** Custom Sidebars Includes: **
+* Unlimited custom widget configurations
+* Set custom widgets for individual posts and pages, categories, post types, and archives
+* Seamless integration with the WordPress Widgets menu
+* Works with well-coded themes and doesn't slow down your site
+* Set individual widget visibility – for guests, by user role, by post type, for special pages or categories
+* Author specific sidebars – display a custom sidebar for each of your authors
+* Clone and sync widget settings – quickly edit complex configurations
+* Import and export custom sidebars – backup and share sidebars
+
+Install Custom Sidebars and see for yourself why it's the most popular widget extension plugin available for WordPress with over 200,000 active installs.
 
 == Screenshots ==
 
@@ -99,6 +99,10 @@ Any user that can switch themes, can create sidebars. Switch_themes is the capab
 Custom Sidebars has the same license as WordPress, so you can use it wherever you want for free. Yay!
 
 == Changelog ==
+= 3.37 =
+* 2025-03-01
+* Minor security and compatibility fixes
+
 = 3.36 =
 * 2022-11-26
 * Minor security fixes

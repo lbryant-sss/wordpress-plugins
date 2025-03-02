@@ -205,7 +205,7 @@ class CustomSidebarsCloning {
 		<?php if ( ! isset( $_POST['csb-clone-button'] ) && ( 'widgets' === get_current_screen()->id ) ) : ?>
 			<a href="#" class="button csb-clone-button"><?php esc_html_e( 'Clone', 'custom-sidebars' ); ?></a>
 		<?php else : ?>
-			<script>jQuery(function() { jQuery('.csb-clone-<?php esc_attr_e( $widget->id ); ?>').closest('.widget').trigger('csb:update'); }); </script>
+			<script>jQuery(function() { jQuery('.csb-clone-<?php echo esc_attr( $widget->id ); ?>').closest('.widget').trigger('csb:update'); }); </script>
 		<?php endif; ?>
 
 		</div>

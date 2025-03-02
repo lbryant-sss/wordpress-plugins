@@ -32,18 +32,16 @@ if ( ! function_exists( 'custom_sidebars_replace_not_allowed' ) ) {
 		printf(
 			'<strong>%s</strong>',
 			sprintf(
+                /* translators: %s is replaced with the Page Name */
 				esc_html__( 'To change the sidebar for %s', 'custom-sidebars' ),
 				esc_html( $page_name )
 			)
 		);
 		echo '<ul>';
-		printf(
+		CustomSidebars::wp_kses_wf(sprintf(
 			'<li>%s</li>',
-			sprintf(
-				__( 'Go to the <a href="%1$s">Widgets page</a>', 'custom-sidebars' ),
-				admin_url( 'widgets.php' )
-			)
-		);
+            /* translators: %1$s is replaced with the link to edit the Widgets page */
+			sprintf(__( 'Go to the <a href="%1$s">Widgets page</a>', 'custom-sidebars' ), admin_url( 'widgets.php' ))));
 		printf(
 			'<li>%s</li>',
 			esc_html__( 'Click on "Sidebar Location"', 'custom-sidebars' )
@@ -54,10 +52,8 @@ if ( ! function_exists( 'custom_sidebars_replace_not_allowed' ) ) {
 		);
 		printf(
 			'<li>%s</li>',
-			sprintf(
-				esc_html__( 'Choose "%s"', 'custom-sidebars' ),
-				esc_html( empty( $archive )? $page_name : $archive )
-			)
+            /* translators: %s is replaced with the Page Name or Archive Name */
+			sprintf(esc_html__( 'Choose "%s"', 'custom-sidebars' ),	esc_html( empty( $archive )? $page_name : $archive ))
 		);
 		echo '</ul>';
 		echo '</p>';
@@ -82,6 +78,7 @@ if ( $is_front  ) {
 } elseif ( $is_woo_shop ) {
 	$page_name = esc_html__( 'WooCommerce Shop', 'custom-sidebars' );
 	$post_type_object = get_post_type_object( 'product' );
+    /* translators: %s is replaced with the Archive name */
 	$archive = sprintf( esc_html__( '%s Archives', 'custom-sidebars' ), $post_type_object->label );
 	custom_sidebars_replace_not_allowed( $page_name, 'wooshop-info.png', $archive );
 } else {
@@ -112,10 +109,8 @@ if ( $is_front  ) {
 		}
 	} else {
 		echo '<p id="message" class="updated">';
-		printf(
-			__( 'All sidebars have been locked, you cannot replace them. Go to <a href="%s">the widgets page</a> to unlock a sidebar.', 'custom-sidebars' ),
-			admin_url( 'widgets.php' )
-		);
+        /* translators: %s is replaced with the URL of the Widgets page */
+		CustomSidebars::wp_kses_wf(sprintf(__( 'All sidebars have been locked, you cannot replace them. Go to <a href="%s">the widgets page</a> to unlock a sidebar.', 'custom-sidebars' ), admin_url( 'widgets.php' )));
 		echo '</p>';
 	}
 }

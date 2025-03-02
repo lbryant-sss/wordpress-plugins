@@ -527,13 +527,13 @@ class TheLib_Ui extends TheLib {
 		foreach ( $items as $item ) {
 			extract( $item ); // text, class, screen, id
 			if ( empty( $screen ) || $screen_id == $screen ) {
-				printf(
-					'<div class="%1$s notice notice-%1$s is-dismissible %3$s"><p>%2$s</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">%4$s</span></button></div>',
+                /* translators: %1$s is replaced with the notice's CSS class, %2$s is replaced with the notice text, %3$s is replaced with the notice ID */
+				CustomSidebars::wp_kses_wf(sprintf('<div class="%1$s notice notice-%1$s is-dismissible %3$s"><p>%2$s</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">%4$s</span></button></div>',
 					esc_attr( $class ),
 					esc_html( $text ),
 					esc_attr( $id ),
-					__( 'Dismiss this notice.' )
-				);
+					__( 'Dismiss this notice.', 'custom-sidebars' )
+				));
 			}
 		}
 	}
