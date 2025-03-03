@@ -506,7 +506,32 @@ ul.htoption-feature li + li {
 .htmega-opt-get-pro .upgrade-button {
   margin-top: 20px;
 }
-
+.upgrade-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #FF6067;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1.5px solid #FF6067;
+  box-shadow: none;
+}
+.upgrade-button svg path{
+  fill: #FF6067;
+  transition: all 0.3s ease;
+}
+.upgrade-button:hover {
+  background: #3489FE;
+  transform: none;
+  box-shadow: none;
+  border-color: #3489FE;
+  color: #fff;
+}
 .htoption-rating-area {
   padding: 30px;
   background-image: url(../images/reating-sidebar-bg.png);
@@ -1066,6 +1091,7 @@ margin-left: 10px;
   gap: 27px;
   padding: 106px;
   text-align: left;
+  background-color: #8a2be2;
 }
 
 .htmega-banner-content {

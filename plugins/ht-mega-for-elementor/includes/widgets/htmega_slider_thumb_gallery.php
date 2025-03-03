@@ -73,6 +73,9 @@ class HTMega_Elementor_Widget_Slider_Thumb_Gallery extends Widget_Base {
                 [
                     'label'   => __( 'Title', 'htmega-addons' ),
                     'type'    => Controls_Manager::TEXT,
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                     'default' => __('Location Name Here.','htmega-addons'),
                 ]
             );
@@ -81,6 +84,9 @@ class HTMega_Elementor_Widget_Slider_Thumb_Gallery extends Widget_Base {
                 [
                     'label'   => __( 'Sub Title', 'htmega-addons' ),
                     'type'    => Controls_Manager::TEXT,
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -89,6 +95,9 @@ class HTMega_Elementor_Widget_Slider_Thumb_Gallery extends Widget_Base {
                 [
                     'label' => __( 'Image', 'htmega-addons' ),
                     'type' => Controls_Manager::MEDIA,
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 

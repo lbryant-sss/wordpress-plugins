@@ -243,8 +243,9 @@ class Menu {
                     'description' => __( 'Enable/Disable the Modules anytime you want from the HT Mega Dashboard.', 'htmega-addons' ),
                 ],
                 'gopro' => [
-                    'title' => sprintf( __( 'Upgrade to %s Today!', 'htmega-addons' ), '<span class="gradient-text">' . __( 'PRO', 'htmega-addons' ) . '</span>' ),
-                    'subtitle' => __( 'Unlock 6+ Premium Modules & 30+ Elements', 'htmega-addons' ),
+                    'title' => __( '🚀 Get 30 Days of <span style="display:inline-block;">HT Mega Pro</span> <span style="display:inline-block;">100% Free Trial!</span>', 'htmega-addons' ),
+                    'subtitle' => __( '💡 No restrictions. No commitment. Just limitless creativity.', 'htmega-addons' ),
+                    'offer_badge' => __( 'Don’t Miss Out – Unlock Full Elementor Power for FREE!.', 'htmega-addons' ),
                     'section_title' => __( 'Explore Premium Features', 'htmega-addons' ),
                     'description' => __( 'You can get a lot more out of it upgrading to premium. Get all features', 'htmega-addons' ),
                     'features' => [
@@ -258,7 +259,21 @@ class Menu {
                         'cross_domain_copy' => __( 'Live Copy Paste', 'htmega-addons' ),
                     ],
                     'more_features_text' => __( '& Many More Features...', 'htmega-addons' ),
-                    'upgrade_button' => __( 'Upgrade To PRO', 'htmega-addons' ),
+                    'value_props' => [
+                        'widget_experience' => [
+                            'title' => __( 'Experience 135+ Widgets & 14 Modules', 'htmega-addons' ),
+                            'desc'  => __( 'No more Elementor limits!', 'htmega-addons' )
+                        ],
+                        'risk_free' => [
+                            'title' => __( 'Risk-Free, No Credit Card Required', 'htmega-addons' ),
+                            'desc'  => __( 'Try it for 30 days, cancel anytime.', 'htmega-addons' )
+                        ],
+                        'lifetime_access' => [
+                            'title' => __( 'Lifetime Access & Updates Available', 'htmega-addons' ),
+                            'desc'  => __( 'One-time payment, unlimited benefits.', 'htmega-addons' )
+                        ]
+                    ],
+                    'upgrade_button' => __( 'Activate My Free Trial', 'htmega-addons' ),
                 ],
                 'templates' => [
                     'title' => sprintf( __( 'Explore %s Templates', 'htmega-addons' ), '<span class="gradient-text">900+</span>' ),

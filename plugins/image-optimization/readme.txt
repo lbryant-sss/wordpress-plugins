@@ -118,7 +118,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 5. Image Optimizer - Image Optimization in the Media Uploader
 
 == Changelog ==
-= 1.6.5 - 2025-03-07 =
+= 1.6.5 - 2025-02-03 =
 * Fix: Moved Connect Modal to Image Optimizer settings pages
 
 = 1.6.4 - 2025-02-03 =

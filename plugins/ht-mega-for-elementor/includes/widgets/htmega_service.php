@@ -144,6 +144,73 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                     'placeholder' => __( 'Read More', 'htmega-addons' ),
                 ]
             );
+            $this->add_control(
+                'htmega_service_button_icon',
+                [
+                    'label' => esc_html__( 'Icon', 'htmega-addons' ),
+                    'type' => Controls_Manager::ICONS,
+                    'fa4compatibility' => 'none',
+                    'skin' => 'inline',
+                    'label_block' => false,
+                    'condition' => [
+                        'htmega_service_button_text!' => '',
+                    ],
+                ]
+            );
+        
+            $this->add_control(
+                'htmega_service_button_icon_position',
+                [
+                    'label' => esc_html__( 'Icon Position', 'htmega-addons' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'default' => is_rtl() ? 'row-reverse' : 'row',
+                    'options' => [
+                        'row-reverse' => [
+                            'title' => esc_html__( 'Left', 'htmega-addons' ),
+                            'icon' => "eicon-h-align-left",
+                        ],
+                        'row' => [
+                            'title' => esc_html__( 'End', 'htmega-addons' ),
+                            'icon' => "eicon-h-align-right",
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .htmega-service a.readmore_btn' => 'display:inline-flex;flex-direction: {{VALUE}};align-items:center',
+                    ],
+                    'condition' => [
+                        'htmega_service_button_text!' => '',
+                        'htmega_service_button_icon[value]!' => '',
+                    ],
+                ]
+            );
+    
+            $this->add_control(
+                'htmega_service_button_icon_space',
+                [
+                    'label' => esc_html__( 'Icon Spacing', 'htmega-addons' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', 'em', 'rem', 'custom' ],
+                    'range' => [
+                        'px' => [
+                            'max' => 50,
+                        ],
+                        'em' => [
+                            'max' => 5,
+                        ],
+                        'rem' => [
+                            'max' => 5,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .htmega-service a.readmore_btn' => 'gap: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'htmega_service_button_text!' => '',
+                        'htmega_service_button_icon[value]!' => '',
+                    ],
+                ]
+            );
+
 
             $this->add_control(
                 'service_link',
@@ -540,7 +607,27 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                     'separator' =>'before',
                 ]
             );
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'service_description_border',
+                    'label' => __( 'Border', 'htmega-addons' ),
+                    'selector' => '{{WRAPPER}} .htmega-service .content p',
+                ]
+            );
 
+            $this->add_responsive_control(
+                'service_description_border_radius',
+                [
+                    'label' => esc_html__( 'Border Radius', 'htmega-addons' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%' ],
+                    'default' => [ 'unit' => 'px', ],
+                    'selectors' => [
+                        '{{WRAPPER}} .htmega-service .content p' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
             $this->add_responsive_control(
                 'service_description_align',
                 [
@@ -930,12 +1017,17 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                 [
                     'label' => __( 'Width', 'htmega-addons' ),
                     'type'  => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
                     'range' => [
                         'px' => [
                             'min' => 0,
                             'max' => 1000,
                         ],
                     ],
+                    'default' => [
+                                'unit' => 'px',
+                                'size' => '',
+                            ],
                     'selectors' => [
                         '{{WRAPPER}} .htmega-service-style-6 .thumb,{{WRAPPER}} .htmega-service .thumb' => 'width: {{SIZE}}{{UNIT}};',
                     ],
@@ -947,12 +1039,17 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                 [
                     'label' => __( 'Height', 'htmega-addons' ),
                     'type'  => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
                     'range' => [
                         'px' => [
                             'min' => 0,
                             'max' => 1000,
                         ],
                     ],
+                    'default' => [
+                                'unit' => 'px',
+                                'size' => '',
+                            ],
                     'selectors' => [
                         '{{WRAPPER}} .htmega-service-style-6 .thumb,{{WRAPPER}} .htmega-service .thumb' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
                     ],
@@ -1010,7 +1107,7 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                     'label' => esc_html__( 'Border Radius', 'htmega-addons' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'selectors' => [
-                        '{{WRAPPER}} .htmega-service .thumb' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
+                        '{{WRAPPER}} .htmega-service .thumb' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;overflow:hidden;',
                     ],
                 ]
             );
@@ -1082,6 +1179,8 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                             'default' => '#0056ff',
                             'selectors' => [
                                 '{{WRAPPER}} .htmega-service a.readmore_btn' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .htmega-service a.readmore_btn i' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .htmega-service a.readmore_btn svg path' => 'fill: {{VALUE}};',
                             ],
                         ]
                     );
@@ -1093,6 +1192,52 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                             'selector' => '{{WRAPPER}} .htmega-service a.readmore_btn',
                         ]
                     );
+                    $this->add_control(
+                        'service_button_icon_color',
+                        [
+                            'label' => __( 'Icon Color', 'htmega-addons' ),
+                            'type' => Controls_Manager::COLOR,
+                            'default' => '',
+                            'selectors' => [
+                                '{{WRAPPER}} .htmega-service a.readmore_btn i' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .htmega-service a.readmore_btn svg path' => 'fill: {{VALUE}};',
+                            ],
+                            'condition' =>[
+                                'htmega_service_button_icon[value]!' => '',
+                            ]
+                        ]
+                    );
+                    $this->add_responsive_control(
+                        'service_button_icon_size',
+                        [
+                            'label' => esc_html__( 'Icon Size', 'htmega-addons' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                            'range' => [
+                                'px' => [
+                                    'min' => 0,
+                                    'max' => 1000,
+                                    'step' => 5,
+                                ],
+                                '%' => [
+                                    'min' => 0,
+                                    'max' => 100,
+                                ],
+                            ],
+                            'default' => [
+                                'unit' => 'px',
+                                'size' => '20',
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}} .htmega-service a.readmore_btn i' => 'font-size: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .htmega-service a.readmore_btn svg' => 'width: {{SIZE}}{{UNIT}};',
+                            ],
+                            'condition' =>[
+                                'htmega_service_button_icon[value]!' => '',
+                            ]
+                        ]
+                    );
+
 
                     $this->add_responsive_control(
                         'service_button_margin',
@@ -1168,10 +1313,26 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                             'default' => '#ffffff',
                             'selectors' => [
                                 '{{WRAPPER}} .htmega-service a.readmore_btn:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .htmega-service a.readmore_btn:hover i' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .htmega-service a.readmore_btn:hover svg path' => 'fill: {{VALUE}};',
                             ],
                         ]
                     );
-
+                    $this->add_control(
+                        'service_button_icon_color_hover',
+                        [
+                            'label' => __( 'Icon Color', 'htmega-addons' ),
+                            'type' => Controls_Manager::COLOR,
+                            'default' => '',
+                            'selectors' => [
+                                '{{WRAPPER}} .htmega-service a.readmore_btn:hover i' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .htmega-service a.readmore_btn:hover svg path' => 'fill: {{VALUE}};',
+                            ],
+                            'condition' =>[
+                                'htmega_service_button_icon[value]!' => '',
+                            ]
+                        ]
+                    );
                     $this->add_group_control(
                         Group_Control_Background::get_type(),
                         [
@@ -1275,7 +1436,17 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                             echo '<p>'.htmega_kses_desc( $settings['htmega_service_description'] ).'</p>';
                         }
                         if( !empty($settings['htmega_service_button_text']) && !empty( $settings['service_link']['url'] ) ){
-                            echo sprintf( '<a %1$s>%2$s</a>', $this->get_render_attribute_string( 'url' ), htmega_kses_desc( $settings['htmega_service_button_text'] ) );
+                            $button_text = htmega_kses_desc( $settings['htmega_service_button_text'] );
+                            $button_icon = '';
+                            
+                            if ( ! empty( $settings['htmega_service_button_icon']['value'] ) ) {
+                                ob_start();
+                                Icons_Manager::render_icon( $settings['htmega_service_button_icon'], [ 'aria-hidden' => 'true' ] );
+                                $button_icon = ob_get_clean();
+                            }
+                            $button_content = '<span class="button-text">' . $button_text . '</span>' . $button_icon;
+
+                            echo sprintf( '<a %1$s>%2$s</a>', $this->get_render_attribute_string( 'url' ), $button_content );
                         }
                     ?>
                 </div>
@@ -1286,4 +1457,3 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
     }
 
 }
-

@@ -6,7 +6,14 @@
 
     var icon = (sttm['buton_icon'] ) ? sttm['buton_icon'] : 'fa fa-facebook';
     var stt_icon_type = (sttm['stt_icon_type'] ) ? sttm['stt_icon_type'] : '';
-    var stt_button_text = (sttm['stt_button_text'] ) ? '<span>'+sttm['stt_button_text'] + '</span>' : '';
+
+    // Sanitize button text
+    var stt_button_text = '';
+    if (sttm['stt_button_text']) {
+        var $temp = $('<div></div>');
+        $temp.text(sttm['stt_button_text']); // Use text() to escape HTML
+        stt_button_text = '<span>' + $temp.html() + '</span>';
+    }
 
     // icon generate
     if ('icon' == stt_icon_type && 'svg' != icon['library'] && '' != icon['value']) {

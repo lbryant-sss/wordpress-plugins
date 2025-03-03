@@ -29,15 +29,20 @@ class HTMega_Elementor_Widget_Tablepress extends Widget_Base {
         return 'https://wphtmega.com/docs/3rd-party-plugin-widgets/tablepress-widget/';
     }
     public function htmega_tablepress_table_list() {
-        $table_ids = \TablePress::$model_table->load_all( false );
-        $table_data['0'] = esc_html__( 'Select Table', 'htmega-addons' );
-        foreach ( $table_ids as $table_id ) {
-            $table = \TablePress::$model_table->load( $table_id, false, false );
-            if ( '' === trim( $table['name'] ) ) {
-                $table['name'] = __( '(no name)', 'htmega-addons' );
+        $table_data = array('0' => esc_html__( 'Select Table', 'htmega-addons' ));
+        
+        if ( class_exists( 'TablePress' ) && isset( \TablePress::$model_table ) ) {
+            $table_ids = \TablePress::$model_table->load_all( false );
+            
+            foreach ( $table_ids as $table_id ) {
+                $table = \TablePress::$model_table->load( $table_id, false, false );
+                if ( '' === trim( $table['name'] ) ) {
+                    $table['name'] = __( '(no name)', 'htmega-addons' );
+                }
+                $table_data[$table['id']] = $table['name'];
             }
-            $table_data[$table['id']] = $table['name'];
         }
+        
         return $table_data;
     }
     protected function register_controls() {
@@ -500,4 +505,3 @@ class HTMega_Elementor_Widget_Tablepress extends Widget_Base {
     }
 
 }
-

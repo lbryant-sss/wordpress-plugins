@@ -220,8 +220,13 @@ class HTMega_Template_Library{
 
             $new_post_id = wp_insert_post( $args );
 
-            update_post_meta( $new_post_id, '_elementor_data', $response_data['content']['content'] );
-            update_post_meta( $new_post_id, '_elementor_template_type', $response_data['type'] );
+            if ( isset( $response_data['content']['content'] ) ) {
+                update_post_meta( $new_post_id, '_elementor_data', $response_data['content']['content'] );
+            }
+            if ( isset( $response_data['type'] ) ) {
+                update_post_meta( $new_post_id, '_elementor_template_type', $response_data['type'] );
+            }
+           
             update_post_meta( $new_post_id, '_elementor_edit_mode', 'builder' );
             
             if( isset( $response_data['page_settings'] ) ){

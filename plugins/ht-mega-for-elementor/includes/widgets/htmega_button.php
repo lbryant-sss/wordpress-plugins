@@ -593,6 +593,14 @@ class HTMega_Elementor_Widget_Button extends Widget_Base {
                             'name' => 'button_icon_typography',
                             'label' => __( 'Typography', 'htmega-addons' ),
                             'selector' => '{{WRAPPER}} .htmega-button .htb-btn .htmega_button_icon',
+                            'fields_options'=>[
+                                'font_size' => [
+                                    'selectors' => [
+                                        '{{WRAPPER}} .htmega-button .htb-btn .htmega_button_icon' => 'font-size: {{SIZE}}{{UNIT}}',
+                                        '{{WRAPPER}} .htmega-button .htb-btn .htmega_button_icon svg' => 'width: {{SIZE}}{{UNIT}}',
+                                    ],
+                                ]
+                            ],
                         ]
                     );
 

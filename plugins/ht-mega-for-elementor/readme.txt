@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, tarekht, zenaulislam, aslamhasi
 Tags: elementor, elementor addons, elementor widgets, elementor templates, addons, elementor slider, elementor page builder, mega menu, addons for elementor, post grid, elements, header footer builder
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.8.2
+Stable tag: 2.8.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -528,6 +528,16 @@ Visit [HasThemes](https://hasthemes.com/) for more details about HTML, Shopify a
 
 
 == Changelog ==
+
+= Version 2.8.3 - Date: 2025-03-02 =
+* Added: BuildBes Construction – Elementor Template Kit.
+* Added: Dynamic Tag option in the Thumbnail Slider Widget.
+* Added: Option to add a Button Icon in the Service Widget.
+* Added: Option to adjust Input Width in the MailChimp Widget.
+* Fixed: SVG Icon size issue in the Button Widget.
+* Fixed: Video Play Icon alignment issue in the Video Player Widget.
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
 
 = Version 2.8.2 - Date: 2025-02-04 =
 * Fixed: Escaping & Sanitizing issues.

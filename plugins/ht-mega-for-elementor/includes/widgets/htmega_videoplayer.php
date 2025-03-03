@@ -141,7 +141,7 @@ class HTMega_Elementor_Widget_VideoPlayer extends Widget_Base {
                     'default' => 'row',
                     'toggle' => false,
                     'selectors' => [
-                        '{{WRAPPER}} .htmega-player-container a' => 'flex-direction: {{VALUE}};',
+                        '{{WRAPPER}} .htmega-player-container a' => 'flex-direction: {{VALUE}};justify-content:center',
                     ],
                     'condition' =>[
                         'videocontainer' =>'popup',
@@ -389,6 +389,7 @@ class HTMega_Elementor_Widget_VideoPlayer extends Widget_Base {
                     ],
                 ]
             );
+            
             $this->add_responsive_control(
                 'video_button_width',
                 [

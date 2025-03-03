@@ -372,6 +372,24 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
             var mapsettings = googlemap_elem.data('mapmarkers');
             var mapsoptions = googlemap_elem.data('mapoptions');
             var mapstyles   = googlemap_elem.data('mapstyle');
+
+            // Sanitize marker content
+            if (mapsettings && Array.isArray(mapsettings)) {
+                mapsettings = mapsettings.map(function(marker) {
+                    if (marker.baloon_text) {
+                        // Create a temporary div to sanitize HTML
+                        var $temp = $('<div></div>');
+                        $temp.html(marker.baloon_text);
+                        // Remove potentially dangerous elements and attributes
+                        $temp.find('script,iframe,object,embed,form,input,style,meta,link,base,applet').remove();
+                        $temp.find('*').removeAttr('onclick onload onerror onmouseover onmouseout onmouseenter onmouseleave');
+                        
+                        marker.baloon_text = $temp.html();
+                    }
+                    return marker;
+                });
+            }
+
             var myMarkers = {
                 "markers": mapsettings,
             };
@@ -381,7 +399,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                 styles  : mapstyles,
                 markers : myMarkers,
             });
-        };
+        }
     }
 
     // Accordion One
@@ -468,7 +486,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                                 <span class="ht-count htmega-next htmega-bottom">${next}</span>
                                 <span class="ht-count htmega-curr htmega-bottom">${curr}</span>
                             </div>
-                            <span class="htmega-label"><p>${($countdownoptions['lavelhide'] == 'yes') ? '' : $countdownoptions['htmegadaytxt']}</p></span>
+                            <span class="htmega-label">${($countdownoptions['lavelhide'] == 'yes') ? '' : $('<p>').text($countdownoptions['htmegadaytxt']).html()}</span>
                         </div>`
                     )
                 }else if(($countdownoptions['htmegahours'] == 'yes') && (label.toLowerCase() == 'hours')){
@@ -480,7 +498,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                                 <span class="ht-count htmega-next htmega-bottom">${next}</span>
                                 <span class="ht-count htmega-curr htmega-bottom">${curr}</span>
                             </div>
-                            <span class="htmega-label"><p>${($countdownoptions['lavelhide'] == 'yes') ? '' : $countdownoptions['htmegahourtxt']}</p></span>
+                            <span class="htmega-label">${($countdownoptions['lavelhide'] == 'yes') ? '' : $('<p>').text($countdownoptions['htmegahourtxt']).html()}</span>
                         </div>`
                     )
                 }else if(($countdownoptions['htmegaminiute'] == 'yes') && (label.toLowerCase() == 'mins')){
@@ -492,7 +510,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                                 <span class="ht-count htmega-next htmega-bottom">${next}</span>
                                 <span class="ht-count htmega-curr htmega-bottom">${curr}</span>
                             </div>
-                            <span class="htmega-label"><p>${($countdownoptions['lavelhide'] == 'yes') ? '' : $countdownoptions['htmegaminutestxt']}</p></span>
+                            <span class="htmega-label">${($countdownoptions['lavelhide'] == 'yes') ? '' : $('<p>').text($countdownoptions['htmegaminutestxt']).html()}</span>
                         </div>`
                     )
                 }else if(($countdownoptions['htmegasecond'] == 'yes') && (label.toLowerCase() == 'secs')){
@@ -504,7 +522,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                                 <span class="ht-count htmega-next htmega-bottom">${next}</span>
                                 <span class="ht-count htmega-curr htmega-bottom">${curr}</span>
                             </div>
-                            <span class="htmega-label"><p>${($countdownoptions['lavelhide'] == 'yes') ? '' : $countdownoptions['htmegasecondstxt']}</p></span>
+                            <span class="htmega-label">${($countdownoptions['lavelhide'] == 'yes') ? '' : $('<p>').text($countdownoptions['htmegasecondstxt']).html()}</span>
                         </div>`
                     )
                 }
@@ -586,12 +604,12 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                             minutes = '<span class="ht-count minutes"><span class="count-inner"><span class="time-count">%M</span> </span></span>';
                             second = '<span class="ht-count second"><span class="count-inner"><span class="time-count">%S</span> </span></span>';
                         }else{
-                            daysTime = '<span class="ht-count days"><span class="count-inner"><span class="time-count">%-D</span> <p>'+countdownoptions.htmegadaytxt+ '</p></span></span>';
-                            hours = '<span class="ht-count hour"><span class="count-inner"><span class="time-count">%-H</span> <p>'+countdownoptions.htmegahourtxt+ '</p></span></span>';
-                            minutes = '<span class="ht-count minutes"><span class="count-inner"><span class="time-count">%M</span> <p>'+countdownoptions.htmegaminutestxt+ '</p></span></span>';
-                            second = '<span class="ht-count second"><span class="count-inner"><span class="time-count">%S</span> <p>'+countdownoptions.htmegasecondstxt+ '</p></span></span>';
+                            daysTime = '<span class="ht-count days"><span class="count-inner"><span class="time-count">%-D</span>'+$('<p>').text(countdownoptions.htmegadaytxt).html()+ '</span></span>';
+                            hours = '<span class="ht-count hour"><span class="count-inner"><span class="time-count">%-H</span> ' +$('<p>').text(countdownoptions.htmegahourtxt).html()+ '</span></span>';
+                            minutes = '<span class="ht-count minutes"><span class="count-inner"><span class="time-count">%M</span>' +$('<p>').text(countdownoptions.htmegaminutestxt).html()+ '</span></span>';
+                            second = '<span class="ht-count second"><span class="count-inner"><span class="time-count">%S</span>'+$('<p>').text(countdownoptions.htmegasecondstxt).html()+ '</span></span>';
                         }
-
+                        
                         // Total default target time
                         finalTime = daysTime + hours + minutes + second;
 
@@ -718,6 +736,19 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
 
             $(notify_opt.notify_btn_class).on("click", function () {
 
+              // Create a temporary div to parse HTML safely
+              var $temp = $('<div></div>');
+              $temp.html(notify_opt.notifymessage);
+              
+              // Remove all attributes from all elements (prevents onerror, onload, etc.)
+              $temp.find('*').removeAttr('onclick onload onerror onmouseover onmouseout onmouseenter onmouseleave');
+              
+              // Remove all potentially dangerous elements
+              $temp.find('script,iframe,object,embed,form,input,style,meta,link,base,applet').remove();
+              
+              // Get the sanitized HTML
+              var message = $temp.html();
+
                 $.notify({}, {
                     type: notify_opt.type,
                     element: notify_opt.notify_class,
@@ -740,7 +771,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                     spacing: 10,
                     z_index: 99999,
 template: '<div class="htmega-alert-wrap-'+notify_opt.wrapid+' '+notify_opt.width+' alert alert-{0}">' +
-    '<span data-notify="dismiss" class="htmega-close"><i class="fas fa-times"></i></span>' +notify_opt.icon+'<span class="notify-message-content">' + notify_opt.notifymessage +
+    '<span data-notify="dismiss" class="htmega-close"><i class="fas fa-times"></i></span>' +notify_opt.icon+'<span class="notify-message-content">' + message +
     '</span></div>'
 
                 });
