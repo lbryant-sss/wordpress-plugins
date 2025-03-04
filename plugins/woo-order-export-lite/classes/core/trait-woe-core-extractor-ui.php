@@ -676,6 +676,11 @@ trait WOE_Core_Extractor_UI {
 				'checked' => 0,
 				'format'  => 'string',
 			),
+			'returning_customer'    => array(
+				'label'   => __( 'New or Returning', 'woo-order-export-lite' ),
+				'checked' => 0,
+				'format'  => 'string',
+			),
 			'customer_total_orders' => array(
 				'label'   => __( 'Customer Total Orders', 'woo-order-export-lite' ),
 				'checked' => 0,

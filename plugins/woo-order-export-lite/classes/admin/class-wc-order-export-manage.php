@@ -263,6 +263,7 @@ class WC_Order_Export_Manage {
 			'format_xls_sheet_name'                    => __( 'Orders', 'woo-order-export-lite' ),
 			'format_xls_display_column_names'          => 1,
 			'format_xls_auto_width'                    => 1,
+			'format_xls_auto_height'                   => 1,
 			'format_xls_direction_rtl'                 => 0,
 			'format_xls_force_general_format'          => 0,
             'format_xls_remove_emojis'                 => 0,

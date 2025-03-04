@@ -17,7 +17,7 @@
       </span>
 
       <div
-        v-if="item.googleMeetLink || item.zoomLink || item.lessonSpaceLink"
+        v-if="item.googleMeetLink || item.zoomLink || item.lessonSpaceLink || item.microsoftTeamsLink"
         class="am-cc__periods-link__list"
       >
         <!-- GoogleMeet Link -->
@@ -26,6 +26,13 @@
           {{ amLabels.google_meet_link }}
         </a>
         <!-- /GoogleMeet link -->
+
+        <!-- Microsoft Teams Link -->
+        <a v-if="item.microsoftTeamsLink" class="am-cc__periods-link" :href="item.microsoftTeamsLink" target="_blank">
+          <span class="am-icon-link"></span>
+          {{ amLabels.microsoft_teams_link }}
+        </a>
+        <!-- /Microsoft Teams link -->
 
         <!-- Zoom Link -->
         <a v-if="item.zoomLink" class="am-cc__periods-link" :href="item.zoomLink" target="_blank">

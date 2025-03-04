@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bit Form 2.18.0\n"
+"Project-Id-Version: Bit Form 2.18.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bit-form\n"
 "Last-Translator: developer@bitcode.pro\n"
 "Language-Team: support@bitcode.pro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-25T07:27:52+00:00\n"
+"POT-Creation-Date: 2025-03-03T08:56:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: bit-form\n"
@@ -593,7 +593,7 @@ msgstr ""
 
 #: includes/Core/Form/FormManager.php:839
 #: includes/Core/WorkFlow/WorkFlow.php:208
-#: includes/Core/WorkFlow/WorkFlow.php:294
+#: includes/Core/WorkFlow/WorkFlow.php:292
 msgid "Entry Updated Successfully"
 msgstr ""
 
@@ -1023,7 +1023,7 @@ msgid "SVG file is not valid"
 msgstr ""
 
 #: includes/Core/WorkFlow/WorkFlow.php:207
-#: includes/Core/WorkFlow/WorkFlow.php:293
+#: includes/Core/WorkFlow/WorkFlow.php:291
 #: includes/Frontend/Form/FrontendFormManager.php:289
 msgid "Form Submitted Successfully"
 msgstr ""

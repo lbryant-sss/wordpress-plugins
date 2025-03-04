@@ -32,10 +32,7 @@ function getGivenDateOfMonth (date, monthWeek, weekDay) {
   return resultDate
 }
 
-function useExpectedDates (store, startDate, endDate, maxDays, type, interval, weekDays, monthRule) {
-  let cartItem = useCartItem(store)
-  let lastAvailableDate = cartItem.services[cartItem.serviceId].lastDate
-
+function useExpectedDates (lastAvailableDate, startDate, endDate, maxDays, type, interval, weekDays, monthRule) {
   let lastDate = endDate ? moment(endDate) : moment().add(maxDays, 'days')
 
   let selectedDate = moment(startDate, 'YYYY-MM-DD')
@@ -127,17 +124,7 @@ function useExpectedDates (store, startDate, endDate, maxDays, type, interval, w
   return expectedDates
 }
 
-function useProposedDates (store, slots, expectedDates, startDate, endDate, count) {
-  let service = store.getters['entities/getService'](
-    store.getters['booking/getServiceId']
-  )
-
-  let cartItem = useCartItem(store)
-
-  let activeService = cartItem.services[cartItem.serviceId]
-
-  let startTime = activeService.list[0].time
-
+function useProposedDates (service, slots, expectedDates, startDate, startTime, endDate, count) {
   let recurringStartDate = moment(startDate, 'YYYY-MM-DD')
   let recurringEndDate = endDate ? moment(endDate, 'YYYY-MM-DD') : null
 
@@ -162,10 +149,14 @@ function useProposedDates (store, slots, expectedDates, startDate, endDate, coun
     ) {
       let isAvailableTime = startTime in slots[expectedDateString]
 
+      let expectedTime = isAvailableTime ? startTime : Object.keys(slots[expectedDateString])[0]
+
       proposedDates[expectedDateString] = {
         isSubstituteDate: false,
         isSubstituteTime: !isAvailableTime,
-        time: isAvailableTime ? startTime : Object.keys(slots[expectedDateString])[0],
+        time: expectedTime,
+        times: Object.keys(slots[expectedDateString]),
+        slot: slots[expectedDateString][expectedTime],
       }
     } else if (expectedDateString !== bookingStartString && !(expectedDateString in proposedDates) && isBefore) {
       let previousDate = null
@@ -219,10 +210,14 @@ function useProposedDates (store, slots, expectedDates, startDate, endDate, coun
         ) {
           let isAvailableTime = startTime in slots[substituteDateString]
 
+          let substituteTime = isAvailableTime ? startTime : Object.keys(slots[substituteDateString])[0]
+
           proposedDates[substituteDateString] = {
             isSubstituteDate: true,
             isSubstituteTime: !isAvailableTime,
-            time: isAvailableTime ? startTime : Object.keys(slots[substituteDateString])[0],
+            time: substituteTime,
+            times: Object.keys(slots[substituteDateString]),
+            slot: slots[substituteDateString][substituteTime],
           }
         }
       }

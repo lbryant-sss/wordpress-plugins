@@ -6,6 +6,7 @@ use BitCode\BitForm\Core\Cryptography\Cryptography;
 use BitCode\BitForm\Core\Database\FormEntryModel;
 use BitCode\BitForm\Core\Util\Log;
 use Exception;
+use WP_Error;
 
 class Helpers
 {
@@ -335,5 +336,15 @@ LOAD_SECRIPT;
     $cipherText = substr($decoded, 16);
 
     return openssl_decrypt($cipherText, 'AES-256-CBC', BITFORMS_SECRET_KEY, OPENSSL_RAW_DATA, $iv);
+  }
+
+  public static function sanitizeUrlParam($param)
+  {
+    if (preg_match('/\.\.?\//', $param)) {
+      return new WP_Error('parameter_error', 'Invalid URL parameter');
+    }
+
+    $param = htmlspecialchars(trim($param), ENT_QUOTES, 'UTF-8');
+    return sanitize_text_field($param);
   }
 }

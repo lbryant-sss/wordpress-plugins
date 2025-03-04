@@ -6,6 +6,7 @@ import {
 } from "../../plugins/settings.js";
 import {useUrlParams, useUrlQueryParams} from "../../assets/js/common/helper";
 import { getBadgeTranslated, useTranslateEntities } from "../../assets/js/public/translation";
+import { useParsedCustomPricing } from "../../assets/js/common/employee";
 
 function isEmployeeServiceLocation (relations, employeeId, serviceId, locationId = null) {
   if (locationId) {
@@ -13,27 +14,6 @@ function isEmployeeServiceLocation (relations, employeeId, serviceId, locationId
   }
 
   return employeeId in relations && serviceId in relations[employeeId]
-}
-
-function getParsedCustomPricing (service) {
-  if (!('customPricing' in service) || service.customPricing === null) {
-    service.customPricing = {enabled: false, durations: {}}
-  } else {
-    let customPricing = (typeof service.customPricing === 'object') ? service.customPricing : JSON.parse(service.customPricing)
-
-    service.customPricing = {enabled: customPricing.enabled, durations: {}}
-
-    service.customPricing.durations[service.duration] = {price: service.price, rules: []}
-
-    if (customPricing.enabled) {
-      service.customPricing.durations = Object.assign(
-        service.customPricing.durations,
-        customPricing.durations
-      )
-    }
-  }
-
-  return service.customPricing
 }
 
 function setLiteService () {
@@ -163,7 +143,7 @@ function setEntities ({ commit, rootState }, entities, types, licence, showHidde
           category.serviceList.sort((a, b) => a.position - b.position)
         }
         category.serviceList.forEach((service, serviceIndex) => {
-          entities[ent][categoryIndex].serviceList[serviceIndex].customPricing = getParsedCustomPricing(service)
+          entities[ent][categoryIndex].serviceList[serviceIndex].customPricing = useParsedCustomPricing(service)
         })
       })
     }
@@ -186,7 +166,7 @@ function setEntities ({ commit, rootState }, entities, types, licence, showHidde
           entities[ent][employeeIndex].serviceList[serviceIndex].minCapacity = employeeMinCapacity
           entities[ent][employeeIndex].serviceList[serviceIndex].maxCapacity = employeeMaxCapacity
 
-          entities[ent][employeeIndex].serviceList[serviceIndex].customPricing = getParsedCustomPricing(
+          entities[ent][employeeIndex].serviceList[serviceIndex].customPricing = useParsedCustomPricing(
             employeeService.customPricing ? employeeService : service
           )
         })
@@ -237,6 +217,7 @@ export default {
   namespaced: true,
 
   state: () => ({
+    settings: [],
     taxes: [],
     categories: [],
     services: [],
@@ -247,6 +228,8 @@ export default {
     packages: [],
     entitiesRelations: {},
     customFields: [],
+    tags: [],
+    spaces: [],
     ready: false,
     showHidden: false,
     originalPreselected: {},
@@ -254,6 +237,14 @@ export default {
   }),
 
   getters: {
+    getSettings (state) {
+      return state.settings
+    },
+
+    getSpaces (state) {
+      return state.spaces
+    },
+
     getEntitiesRelations (state) {
       return state.entitiesRelations
     },
@@ -338,6 +329,10 @@ export default {
       return state.locations.find(i => parseInt(i.id) === parseInt(id)) || null
     },
 
+    getTags (state) {
+      return state.tags
+    },
+
     getCustomFields (state) {
       return state.customFields
     },
@@ -349,11 +344,12 @@ export default {
     filteredCategories: (state, getters) => (data) => {
       let categories = []
 
-      let categoriesIds = getters.filteredServices(data).map(service => service.categoryId)
+      let categoriesIds = getters.filteredServices(data).filter(service => !data.serviceId || service.id === data.serviceId).map(service => service.categoryId)
 
       state.categories.forEach((category) => {
         if (categoriesIds.indexOf(category.id) !== -1) {
           let availableCategory = Object.assign(
+            {},
             category
           )
           availableCategory.serviceList = getters.filteredServices(data).filter(service => service.categoryId === category.id)
@@ -554,6 +550,14 @@ export default {
   },
 
   mutations: {
+    setSettings (state, payload) {
+      state.settings = payload
+    },
+
+    setSpaces (state, payload) {
+      state.spaces = payload
+    },
+
     setTaxes (state, payload) {
       state.taxes = payload
     },
@@ -586,6 +590,10 @@ export default {
 
     setLocations (state, payload) {
       state.locations = payload
+    },
+
+    setTags (state, payload) {
+      state.tags = payload
     },
 
     setPackages (state, payload) {
@@ -753,7 +761,7 @@ export default {
     getEntities ({ commit, rootState }, payload) {
       let types = payload.types
 
-      if (payload.loadEntities && !getEntitiesVariableName()) {
+      if (payload.loadEntities && (payload.isPanel || !getEntitiesVariableName())) {
         httpClient.get('/entities', { params: useUrlParams({types: types, page: 'booking', lite: true}) }).then(response => {
           window.ameliaAppointmentEntities = response.data.data
 

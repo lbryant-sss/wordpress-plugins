@@ -308,7 +308,7 @@ export default {
           elite: true
         },
         {
-          feature: 'Online Platforms (Zoom, GoogleMeet, LessonSpace)',
+          feature: 'Online Platforms (Zoom, GoogleMeet, MicrosoftTeams, LessonSpace)',
           lite: false,
           starter: false,
           standard: true,

@@ -364,6 +364,7 @@
         <!-- Pagination -->
         <pagination-block
             :params="params"
+            :show="$root.settings.general.itemsPerPageBackEnd"
             :count="options.filteredCount"
             :label="$root.labels.customers_lower"
             :visible="fetched && customers.length !== 0 && fetchedFiltered"

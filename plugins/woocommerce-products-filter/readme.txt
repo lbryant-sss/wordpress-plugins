@@ -172,6 +172,9 @@ R: [Codex](https://products-filter.com/codex/)
 Q: What about security fixes?
 R: We take this seriously and do them regularly
 
+Q: Where can I send security bug report about the plugin?
+R: You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/woocommerce-products-filter)
+
 
 == Screenshots ==
 1. The plugin settings

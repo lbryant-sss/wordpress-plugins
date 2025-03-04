@@ -14,7 +14,30 @@ export default {
     token: null,
     profile: null,
     profileDeleted: false,
-    loggedOut: false
+    loggedOut: false,
+    googleLoading: false,
+    outlookLoading: false,
+    appleLoading: false,
+    stripeLoading: false,
+    zoomLoading: false,
+    spacesLoading: false,
+    zoomUsers: [],
+    googleCalendars: [],
+    outlookCalendars: [],
+    appleCalendars: [],
+    stripeProvider: {
+      id: '',
+      type: '',
+      email: '',
+      completed: false,
+    },
+    spaces: [],
+    loadingAppointmentsCounter: 0,
+    loadingEventsCounter: 0,
+    preloaded: {
+      customers: [],
+      events: [],
+    },
   }),
 
   getters: {
@@ -52,6 +75,70 @@ export default {
 
     getLoggedOut (state) {
       return state.loggedOut
+    },
+
+    getGoogleLoading (state) {
+      return state.googleLoading
+    },
+
+    getOutlookLoading (state) {
+      return state.outlookLoading
+    },
+
+    getAppleLoading (state) {
+      return state.appleLoading
+    },
+
+    getStripeLoading (state) {
+      return state.stripeLoading
+    },
+
+    getZoomLoading (state) {
+      return state.zoomLoading
+    },
+
+    getSpacesLoading (state) {
+      return state.spacesLoading
+    },
+
+    getZoomUsers (state) {
+      return state.zoomUsers
+    },
+
+    getSpaces (state) {
+      return state.spaces
+    },
+
+    getGoogleCalendars (state) {
+      return state.googleCalendars
+    },
+
+    getOutlookCalendars (state) {
+      return state.outlookCalendars
+    },
+
+    getAppleCalendars (state) {
+      return state.appleCalendars
+    },
+
+    getStripeProvider (state) {
+      return state.stripeProvider
+    },
+
+    getLoadingAppointmentsCounter (state) {
+      return state.loadingAppointmentsCounter
+    },
+
+    getLoadingEventsCounter (state) {
+      return state.loadingEventsCounter
+    },
+
+    getPreloadedEvents (state) {
+      return state.preloaded.events
+    },
+
+    getPreloadedCustomers (state) {
+      return state.preloaded.customers
     },
   },
 
@@ -122,6 +209,70 @@ export default {
 
     setLoggedOut (state, payload) {
       state.loggedOut = payload
+    },
+
+    setGoogleLoading (state, payload) {
+      state.googleLoading = payload
+    },
+
+    setOutlookLoading (state, payload) {
+      state.outlookLoading = payload
+    },
+
+    setAppleLoading (state, payload) {
+      state.appleLoading = payload
+    },
+
+    setStripeLoading (state, payload) {
+      state.stripeLoading = payload
+    },
+
+    setZoomLoading (state, payload) {
+      state.zoomLoading = payload
+    },
+
+    setSpacesLoading (state, payload) {
+      state.spacesLoading = payload
+    },
+
+    setZoomUsers (state, payload) {
+      state.zoomUsers = payload
+    },
+
+    setSpaces (state, payload) {
+      state.spaces = payload
+    },
+
+    setGoogleCalendars (state, payload) {
+      state.googleCalendars = payload
+    },
+
+    setOutlookCalendars (state, payload) {
+      state.outlookCalendars = payload
+    },
+
+    setAppleCalendars (state, payload) {
+      state.appleCalendars = payload
+    },
+
+    setStripeProvider (state, payload) {
+      state.stripeProvider = payload
+    },
+
+    setLoadingAppointmentsCounter (state, payload) {
+      state.loadingAppointmentsCounter = payload
+    },
+
+    setLoadingEventsCounter (state, payload) {
+      state.loadingEventsCounter = payload
+    },
+
+    setPreloadedEvents (state, payload) {
+      state.preloaded.events = payload
+    },
+
+    setPreloadedCustomers (state, payload) {
+      state.preloaded.customers = payload
     },
   },
 

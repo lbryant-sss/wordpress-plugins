@@ -8,6 +8,20 @@
       :responsive-class="responsiveClass"
     />
 
+    <div
+      v-if="pageRenderKey === 'cape'"
+      class="am-cap__actions"
+    >
+      <AmButton
+        prefix="plus"
+        size="small"
+        category="primary"
+        :type="amCustomize.cape.appointments.options.newAppBtn.buttonType"
+      >
+        <span>{{amLabels.new_appointment}}</span>
+      </AmButton>
+    </div>
+
     <AppointmentsList
       :grouped-appointments="dateGroupedAppointments"
       :page-width="pageWidth"
@@ -37,6 +51,9 @@ import AppointmentsList from "./parts/AppointmentsList.vue";
 import {
   useResponsiveClass
 } from "../../../../../../../assets/js/common/responsive";
+import AmButton from "../../../../../../_components/button/AmButton.vue";
+
+let pageRenderKey = inject('pageRenderKey')
 
 // * Plugin Licence
 let licence = inject('licence')
@@ -44,6 +61,12 @@ let licence = inject('licence')
 // * Page Content width
 let pageContainer = ref(null)
 let pageWidth = ref(0)
+
+// * Global labels
+let amLabels = inject('labels')
+
+// * Customize
+let amCustomize = inject('customize')
 
 // * Sidebar collapsed var
 let sidebarCollapsed = inject('sidebarCollapsed')
@@ -100,6 +123,13 @@ let paramList = ref({
 
 if (licence.isStarter) {
   delete paramList.value.locations
+}
+
+if (pageRenderKey.value === 'cape') {
+  delete paramList.value.providers
+  paramList.value.customers = {
+    name: 'customers', icon: 'user', ids: []
+  }
 }
 
 let arrApp = [
@@ -278,6 +308,7 @@ arrApp.forEach((item, index) => {
     locationId: 1,
     notifyParticipants: 1,
     outlookCalendarEventId: null,
+    microsoftTeamsUrl: '#',
     parentId: null,
     past: false,
     provider: {
@@ -310,5 +341,24 @@ export default {
 </script>
 
 <style lang="scss">
+@mixin am-cabinet-appointments {
+  .am-cap {
+    &__actions {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 0 16px;
 
+      .am-button {
+        .am-icon-plus {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+#amelia-app-backend-new #amelia-container {
+  @include am-cabinet-appointments;
+}
 </style>

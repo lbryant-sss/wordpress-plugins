@@ -26,7 +26,7 @@
           {{ useSecondsToDuration(item.duration, amLabels.h, amLabels.min) }}
         </span>
         <span
-          v-if="item.price"
+          v-if="shortcodeData.cabinetType === 'customer' && item.price"
           class="am-cc__extras-price"
         >
           {{ useFormattedPrice(item.price) }}
@@ -57,7 +57,8 @@ import { useSecondsToDuration } from "../../../../../../../../assets/js/common/d
 // * Vars
 const amLabels = inject('amLabels')
 
-
+// * Data in shortcode
+const shortcodeData = inject('shortcodeData')
 
 let props = defineProps({
   data: {

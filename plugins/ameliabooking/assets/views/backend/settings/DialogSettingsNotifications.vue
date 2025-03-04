@@ -153,6 +153,17 @@
           </el-input>
         </el-form-item>
 
+        <!-- Reply to -->
+        <el-form-item :label="$root.labels.reply_to + ':'" prop="replyTo">
+          <el-input
+              v-model="settings.replyTo"
+              :placeholder="$root.labels.email_placeholder"
+              @input="clearValidation()"
+              @change = "trimProperty(settings,'replyTo')"
+          >
+          </el-input>
+        </el-form-item>
+
         <!-- Mailgun Endpoint -->
         <el-form-item
             v-show="settings.mailService === 'mailgun'"
@@ -526,6 +537,8 @@
                               '%lesson_space_url_date_time%',
                               '%google_meet_url_date%',
                               '%google_meet_url_date_time%',
+                              '%microsoft_teams_url_date%',
+                              '%microsoft_teams_url_date_time%',
                               '%zoom_join_url_date%',
                               '%zoom_join_url_date_time%',
                               '%zoom_host_url_date%',
@@ -636,6 +649,9 @@
           ],
           senderEmail: [
             {required: true, message: this.$root.labels.sender_email_warning, trigger: 'submit'},
+            {type: 'email', message: this.$root.labels.enter_valid_email_warning, trigger: 'submit'}
+          ],
+          replyTo: [
             {type: 'email', message: this.$root.labels.enter_valid_email_warning, trigger: 'submit'}
           ],
           smtpHost: [],

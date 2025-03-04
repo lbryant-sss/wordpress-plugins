@@ -49,6 +49,7 @@ export default defineConfig({
   base: '',
 
   build: {
+    target: 'esnext',
     chunkSizeWarningLimit: 1500,
     rollupOptions: {
       input: ['src/assets/js/admin/admin.js', 'src/assets/js/public/public.js'],

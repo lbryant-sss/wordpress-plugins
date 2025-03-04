@@ -400,30 +400,6 @@ function useAppointmentBookingAmountData (store, appointment, includedTaxInTotal
   }
 }
 
-function useTaxLabel (store, label) {
-  let taxes = {}
-
-  useCart(store).forEach((item) => {
-    item.services[item.serviceId].list.forEach((appointment) => {
-      let serviceTax = useEntityTax(store, item.serviceId, 'service')
-
-      if (serviceTax) {
-        taxes[serviceTax.id] = serviceTax.name
-      }
-
-      appointment.extras.forEach((selectedExtra) => {
-        let extraTax = useEntityTax(store, selectedExtra.extraId, 'extra')
-
-        if (extraTax) {
-          taxes[extraTax.id] = extraTax.name
-        }
-      })
-    })
-  })
-
-  return Object.keys(taxes).length === 1 ? Object.values(taxes)[0] : label
-}
-
 function useAppointmentsAmountInfo (store) {
   let amountsInfo = []
 
@@ -1141,6 +1117,5 @@ export {
   usePaymentError,
   useServices,
   useEmployeeService,
-  useTaxLabel,
   useAppointmentBookingAmountData,
 }

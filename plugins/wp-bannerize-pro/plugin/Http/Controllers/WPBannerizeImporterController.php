@@ -336,6 +336,8 @@ class WPBannerizeImporterController extends Controller
     update_post_meta($post_id, 'wp_bannerize_banner_url', $row->filename);
     update_post_meta($post_id, 'wp_bannerize_banner_external_url', $row->filename);
     update_post_meta($post_id, 'wp_bannerize_banner_mime_type', $mime_type);
+    update_post_meta($post_id, 'wp_bannerize_banner_max_impressions', $row->max_impressions);
+    update_post_meta($post_id, 'wp_bannerize_banner_max_clicks', $row->max_clicks);
 
     return $post_id;
   }

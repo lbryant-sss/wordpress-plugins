@@ -103,6 +103,11 @@ import { useResponsiveClass } from '../../../../../../assets/js/common/responsiv
 import { useColorTransparency } from '../../../../../../assets/js/common/colorManipulation'
 import { useRemoveUrlParameter, useUrlQueryParams, useUrlQueryParam } from '../../../../../../assets/js/common/helper'
 import { useDisableAuthorizationHeader } from '../../../../../../assets/js/public/panel'
+import {
+  useParsedCustomPricing,
+  useFrontendEmployee,
+  useFrontendEmployeeServiceList,
+} from '../../../../../../assets/js/common/employee'
 
 // * Components
 import { formFieldsTemplates } from '../../../../../../assets/js/common/formFieldsTemplates'
@@ -110,6 +115,14 @@ import AmButton from '../../../../../_components/button/AmButton.vue'
 import Skeleton from './Skeleton'
 import AmAlert from '../../../../../_components/alert/AmAlert.vue'
 import IconComponent from "../../../../../_components/icons/IconComponent.vue";
+import { useGoogleSync } from "../../../../../../assets/js/common/integrationGoogle";
+import { useOutlookSync } from "../../../../../../assets/js/common/integrationOutlook";
+import { useZoomUsers } from "../../../../../../assets/js/common/integrationZoom";
+import { useStripeSync } from "../../../../../../assets/js/common/integrationStripe";
+import { useAppleSync } from "../../../../../../assets/js/common/integrationApple";
+
+// * Plugin Licence
+let licence = inject('licence')
 
 // * Vars
 let store = useStore()
@@ -294,11 +307,92 @@ function useAuthenticate (tokenValue, isUrlToken, checkIfWpUser, changePass) {
       store.commit('auth/setToken', response.data.data.token)
     }
 
+    if ('user' in response.data.data && response.data.data.user.type === 'provider') {
+      let employee = {
+        id: response.data.data.user.id,
+        firstName: response.data.data.user.firstName,
+        lastName: response.data.data.user.lastName,
+        email: response.data.data.user.email,
+        phone: response.data.data.user.phone,
+        countryPhoneIso: response.data.data.user.countryPhoneIso,
+        googleCalendar: {
+          id: 'id' in response.data.data.user.googleCalendar ? response.data.data.user.googleCalendar.id : null,
+          calendarId: response.data.data.user.googleCalendar.calendarId ? response.data.data.user.googleCalendar.calendarId : '',
+          token: 'token' in response.data.data.user.googleCalendar ? response.data.data.user.googleCalendar.token : null,
+        },
+        outlookCalendar: {
+          id: 'id' in response.data.data.user.outlookCalendar ? response.data.data.user.outlookCalendar.id : null,
+          calendarId: response.data.data.user.outlookCalendar.calendarId ? response.data.data.user.outlookCalendar.calendarId : '',
+          token: 'token' in response.data.data.user.outlookCalendar ? response.data.data.user.outlookCalendar.token : null,
+        },
+        appleCalendarId: response.data.data.user.appleCalendarId ? response.data.data.user.appleCalendarId : '',
+        stripeConnect: response.data.data.user.stripeConnect,
+        zoomUserId: response.data.data.user.zoomUserId ? response.data.data.user.zoomUserId : '',
+        locationId: response.data.data.user.locationId,
+        pictureFullPath: response.data.data.user.pictureFullPath,
+        pictureThumbPath: response.data.data.user.pictureThumbPath,
+        description: response.data.data.user.description,
+        weekDayList: response.data.data.user.weekDayList,
+        specialDayList: response.data.data.user.specialDayList,
+        dayOffList: response.data.data.user.dayOffList,
+        serviceList: response.data.data.user.serviceList,
+      }
+
+      employee.serviceList.forEach(employeeService => {
+        useParsedCustomPricing(employeeService)
+      })
+
+      if (store.getters['entities/getReady']) {
+        store.commit('entities/setEmployees', [JSON.parse(JSON.stringify(employee))])
+
+        employee.serviceList = useFrontendEmployeeServiceList(store, employee.serviceList)
+      }
+
+      store.commit('employee/setEmployee', useFrontendEmployee(store, employee))
+
+      store.commit(
+        'auth/setOutlookCalendars',
+        response.data.data.user.outlookCalendar?.calendarList ? response.data.data.user.outlookCalendar.calendarList : []
+      )
+
+      store.commit(
+        'auth/setGoogleCalendars',
+        response.data.data.user.googleCalendar?.calendarList ? response.data.data.user.googleCalendar.calendarList : []
+      )
+
+      if (amSettings.appleCalendar &&
+        !licence.isLite &&
+        !licence.isStarter
+      ) {
+        useAppleSync(store)
+      }
+
+      if (amSettings.payments.stripe.enabled &&
+        amSettings.payments.stripe.connect.enabled &&
+        !licence.isLite &&
+        !licence.isStarter &&
+        !licence.isBasic
+      ) {
+        useStripeSync(store)
+      }
+
+      if (amSettings.zoom.enabled &&
+        !licence.isLite &&
+        !licence.isStarter
+      ) {
+        useZoomUsers(store)
+      }
+    }
+
     if (useUrlQueryParam('token')) {
       window.history.replaceState(null, null, useRemoveUrlParameter(window.location.href, 'token'))
     }
 
     store.commit('auth/setProfile', response.data.data.user)
+
+    if (response.data.data.user.timeZone) {
+      store.commit('cabinet/setTimeZone', response.data.data.user.timeZone)
+    }
 
     if ('set_password' in response.data.data && response.data.data.set_password) {
       pageKey.value = 'setPassword'
@@ -306,6 +400,19 @@ function useAuthenticate (tokenValue, isUrlToken, checkIfWpUser, changePass) {
       pageKey.value = 'setPassword'
     } else {
       store.commit('auth/setAuthenticated', true)
+    }
+
+    let tokenValidTime = cabinetType.value === 'customer'
+      ? amSettings.roles.customerCabinet.tokenValidTime * 1000
+      : amSettings.roles.providerCabinet.tokenValidTime * 1000
+
+    if (tokenValidTime > 0 && tokenValidTime < 1814400000) {
+      setTimeout(
+        () => {
+          store.dispatch('auth/logout')
+        },
+        tokenValidTime
+      )
     }
   }).catch((error) => {
     if (!('data' in error.response.data) && 'message' in error.response.data) {
@@ -336,16 +443,28 @@ function submitForm() {
   })
 }
 
+function authenticate () {
+  useAuthenticateUser(
+    vueCookies.get('ameliaToken'),
+    'changePass' in useUrlQueryParams(window.location.href)
+  )
+}
+
 onBeforeMount(() => {
   store.commit('setLoading', true)
 })
 
 onMounted(() => {
   if (!store.getters['auth/getLoggedOut']) {
-    useAuthenticateUser(
-        vueCookies.get('ameliaToken'),
-        'changePass' in useUrlQueryParams(window.location.href)
-    )
+    let queryParams = useUrlQueryParams(window.location.href)
+
+    if (amSettings.googleCalendar.enabled && cabinetType.value === 'provider' && queryParams && queryParams['code'] && queryParams['scope']) {
+      useGoogleSync(queryParams['code'], authenticate)
+    } else if (amSettings.outlookCalendar.enabled && cabinetType.value === 'provider' && queryParams && queryParams['code'] && queryParams['state']) {
+      useOutlookSync(queryParams['code'], authenticate)
+    } else {
+      authenticate()
+    }
   } else {
     if (!amSettings.roles[cabinetType.value + 'Cabinet']['loginEnabled']) {
       pageKey.value = 'sendAccessLink'

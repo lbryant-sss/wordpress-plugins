@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=L77YYA8AVH2UW
 Tags: Banner Management, Advertising, Marketing Tools, Ad Placement, Campaign Optimization
 Requires at least: 6.2
 Tested up to: 6.7
-Stable tag: 1.9.4
+Stable tag: 1.10.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,8 @@ Bannerize is a WordPress plugin that allows you to create and manage advertising
 * Sort your Banners with easy Drag & Drop
 * Set the filters such as random order, numbers, user roles and campaigns filters
 * Date Time schedule
+* ✨ Max Impressions
+* ✨ Max Clicks
 * Display your Banners by PHP code, WordPress shortcode or Widget (🚧 Block is coming soon)
 * Manage WordPress Users roles for Banners and Campaigns
 * Create your Banners Campaigns
@@ -65,6 +67,11 @@ This section describes [how to install](https://bannerize.vercel.app/docs/Gettin
 Your screenshot
 
 == Changelog ==
+
+= 1.10.0 =
+
+* Added max impressions and max clicks for single banner
+* Minor improvements
 
 = 1.9.1 =
 

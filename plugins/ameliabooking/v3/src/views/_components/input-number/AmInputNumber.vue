@@ -43,7 +43,7 @@ const props = defineProps({
   },
   max: {
     type: Number,
-    required: true,
+    default: Infinity
   },
   step: {
     type: Number,
@@ -140,7 +140,9 @@ let cssVars = computed(() => {
   '--am-c-inp-number-border': amColors.value.colorInpBorder,
   '--am-c-inp-number-text': amColors.value.colorInpText,
   '--am-c-inp-number-text-op10': useColorTransparency(amColors.value.colorInpText, 0.1),
+  '--am-c-inp-number-text-op03': useColorTransparency(amColors.value.colorInpText, 0.03),
   '--am-c-inp-number-text-op40': useColorTransparency(amColors.value.colorInpText, 0.4),
+  '--am-c-inp-number-text-op60': useColorTransparency(amColors.value.colorInpText, 0.6),
   '--am-c-inp-number-placeholder': amColors.value.colorInpPlaceHolder,
   }
 })
@@ -184,6 +186,7 @@ let cssVars = computed(() => {
         background-color: var(--am-c-inp-number-bgr);
         padding: var(--am-input-number-padding) !important;
         margin: 0;
+        max-width: 100%;
 
         &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
           color: var(--am-c-inp-number-placeholder);
@@ -219,16 +222,21 @@ let cssVars = computed(() => {
         }
       }
 
-      &.is-disabled {
-        .el-icon {
-          color: var(--am-c-inp-number-text-op40);
-        }
-      }
-
       .el-icon {
         width: 22px;
         height: 22px;
         color: var(--am-c-inp-number-text);
+      }
+    }
+
+    &.is-disabled {
+      .el-icon {
+        color: var(--am-c-inp-number-text-op40);
+      }
+
+      .el-input__inner {
+        background-color: var(--am-c-inp-number-text-op03);
+        color: var(--am-c-inp-number-text-op60);
       }
     }
   }

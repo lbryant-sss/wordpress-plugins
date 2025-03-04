@@ -159,7 +159,7 @@ final class Actions
     return $fieldValue;
   }
 
-  public function setOnFormSuccess($data, $actions, $fieldValue)
+  public function setOnFormSuccess($data, $actions, $fieldValue, $entryID)
   {
     if (empty($actions)) {
       return $data;
@@ -170,7 +170,7 @@ final class Actions
       if (!empty($id)) {
         switch ($successActionDetail->type) {
           case 'successMsg':
-            $data['workFlowReturnable'] = $this->confirmationMessage($data['workFlowReturnable'], $id, $fieldValue);
+            $data['workFlowReturnable'] = $this->confirmationMessage($data['workFlowReturnable'], $id, $fieldValue, $entryID);
             break;
           case 'redirectPage':
             $data['workFlowReturnable'] = $this->redirectPage($data['workFlowReturnable'], $id, $fieldValue);
@@ -198,13 +198,22 @@ final class Actions
     return $data;
   }
 
-  public function confirmationMessage($workFlowReturnable, $successActionDetailId, $fieldValue)
+  public function confirmationMessage($workFlowReturnable, $successActionDetailId, $fieldValue, $entryID = null)
   {
     $id = json_decode($successActionDetailId)->id;
     $messageHandler = new SuccessMessageHandler(static::$_formID);
     $message = $messageHandler->getAMessage($id);
     if (!is_wp_error($message) && !empty($message)) {
-      $workFlowReturnable['message'] = Helper::replaceFieldWithValue($message[0]->message_content, $fieldValue);
+      $messageContent = $message[0]->message_content;
+
+      // replace pdf link and password
+      if (class_exists('\BitCode\BitFormPro\Admin\DownloadFile') && !empty($entryID)) {
+        $downloadFile = new \BitCode\BitFormPro\Admin\DownloadFile();
+        $messageContent = $downloadFile->replacePdfShortCodeToLink($messageContent, static::$_formID, $entryID);
+        $messageContent = $downloadFile->replaceShortCodeToPdfPassword($messageContent, static::$_formID, $entryID);
+      }
+
+      $workFlowReturnable['message'] = Helper::replaceFieldWithValue($messageContent, $fieldValue);
       if (!empty($workFlowReturnable['message']) && Utilities::isPro()) {
         $workFlowReturnable['message'] = do_shortcode($workFlowReturnable['message']);
       }

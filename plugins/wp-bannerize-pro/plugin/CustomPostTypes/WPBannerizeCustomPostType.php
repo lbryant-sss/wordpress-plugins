@@ -47,6 +47,8 @@ class WPBannerizeCustomPostType extends WordPressCustomPostTypeServiceProvider
     'wp_bannerize_banner_clicks_enabled',
     'wp_bannerize_banner_date_from',
     'wp_bannerize_banner_date_expiry',
+    'wp_bannerize_banner_max_impressions',
+    'wp_bannerize_banner_max_clicks',
     'wp_bannerize_preview_background_color',
   ];
 
@@ -257,6 +259,14 @@ class WPBannerizeCustomPostType extends WordPressCustomPostTypeServiceProvider
         ? esc_attr($_POST['wp_bannerize_preview_background_color'])
         : '#ffffff');
 
+      $max_impressions = isset($_POST['wp_bannerize_banner_max_impressions'])
+        ? absint($_POST['wp_bannerize_banner_max_impressions'])
+        : 0;
+
+      $max_clicks = isset($_POST['wp_bannerize_banner_max_clicks'])
+        ? absint($_POST['wp_bannerize_banner_max_clicks'])
+        : 0;
+
       $meta = [
         'wp_bannerize_banner_type' => $type,
         'wp_bannerize_banner_url' => $url,
@@ -273,6 +283,8 @@ class WPBannerizeCustomPostType extends WordPressCustomPostTypeServiceProvider
         'wp_bannerize_banner_date_from' => $date_from,
         'wp_bannerize_banner_date_expiry' => $date_expiry,
         'wp_bannerize_preview_background_color' => $background_color,
+        'wp_bannerize_banner_max_impressions' => $max_impressions,
+        'wp_bannerize_banner_max_clicks' => $max_clicks,
       ];
 
       foreach ($meta as $key => $value) {
@@ -500,14 +512,14 @@ class WPBannerizeCustomPostType extends WordPressCustomPostTypeServiceProvider
       $post_columns,
       'wp_bannerize_column_date_from',
       __('Visible from', 'wp-bannerize'),
-      count($post_columns)
+      count($post_columns) - 2
     );
 
     $post_columns = wpbones_array_insert(
       $post_columns,
       'wp_bannerize_column_date_expiry',
       __('Expires', 'wp-bannerize'),
-      count($post_columns)
+      count($post_columns) - 2
     );
 
     return $post_columns;
@@ -527,28 +539,28 @@ class WPBannerizeCustomPostType extends WordPressCustomPostTypeServiceProvider
     $banner = WPBannerizePost::find($post->ID);
 
     switch ($column_name) {
-        // Thumbnail
+      // Thumbnail
       case 'wp_bannerize_column_thumbnail':
         echo $banner->thumbnail();
 
         break;
 
-        // order
+      // order
       case 'wp_bannerize_column_menu_order':
         printf('<i data-order="%s" class="dashicons dashicons-move"/>', esc_attr($post->menu_order));
         break;
 
-        // impressions
+      // impressions
       case 'wp_bannerize_column_impressions':
         echo esc_attr($banner->banner_impressions);
         break;
 
-        // clicks
+      // clicks
       case 'wp_bannerize_column_clicks':
         echo esc_attr($banner->banner_clicks);
         break;
 
-        // ctr
+      // ctr
       case 'wp_bannerize_column_ctr':
         $impressions = intval($banner->banner_impressions);
         $clicks = intval($banner->banner_clicks);
@@ -559,15 +571,16 @@ class WPBannerizeCustomPostType extends WordPressCustomPostTypeServiceProvider
 
         break;
 
-        // date from
+      // date from
       case 'wp_bannerize_column_date_from':
         $this->dateFrom($banner->banner_date_from);
-
         break;
 
-        // date expiry
+      // date expiry
       case 'wp_bannerize_column_date_expiry':
         $this->dateExpiry($banner->banner_date_expiry);
+        echo esc_attr($banner->banner_max_impressions) > 0 ? ($banner->banner_date_expiry ? ' or ' : '') . 'Impressions > ' . esc_attr($banner->banner_max_impressions) : '';
+        echo esc_attr($banner->banner_max_clicks) > 0 ? ($banner->banner_date_expiry ? ' or ' : '') . 'Clicks > ' . esc_attr($banner->banner_max_clicks) : '';
 
         break;
 

@@ -202,29 +202,25 @@ export default {
        isValidEmail: true,
        blogPosts: [],
        changelog: {
-         version: '8.0',
+         version: '8.1',
          starter: {
            feature: [
-             'Added option to block specific customer from future booking'
+             'Newly redesigned Employee Panel with effortless appointment and event management alongside improvements in functionality',
+             'Implemented option to add new customer to the booking on the Employee Panel 2.0'
            ],
            improvement: [
-             'Added class for every status option on Event Calendar form 2.0',
-             ...((this.$root.licence.isStarter || this.$root.licence.isBasic)
-               ? [
-                 'Improved logic to assign coupon to new service/event when selected “All services/events”',
-                 'Optimized placeholder service - fetching coupon and customers'
-               ]
-               : [])
+             'Added new “Reply to” option for e-mail notifications',
+             'Added extras information to the export option',
+             'Implemented a mechanism that allows custom validation checks before service booking'
            ],
-           translations: [],
+           translations: [
+             'Updated Turkish, Czech and French translations'
+           ],
            bugfix: [
-             'Fixed  issue with the "Allow admin to book any time" option and employees breaks',
-             'Fixed issue with appointments when employee is logged in and the "Default items per page for Backend" option',
-             'Fixed error regarding translations caused by 6.7 WordPress update',
-             'Fixed issue with categories sorting not working when "Load entities on page load" is enabled',
-             'Fixed issue with group appointments that cover 2 days',
-             'Fixed issue with notifications when the appointment status is changed to Approved',
-             'Fixed compatibility issue with older PHP versions'
+             'Fixed issue with invoices when SMTP plugin and WP mail in Amelia used',
+             'Fixed issue with "Bringing anyone with you" input number',
+             'Fixed issue with the "Default items per page" option',
+             'Fixed issue with 403 error while attempting to save a customization'
            ],
            other: [
              'Other small bug fixes and stability improvements'
@@ -232,31 +228,31 @@ export default {
          },
          basic: {
            feature: [
-             'iCal synchronization for appointments and events'
+             'Microsoft Teams integration for scheduling and maintaining online meetings'
            ],
-           improvement: [],
+           improvement: [
+             'Added search into Location selection in “Add/Edit Event” dialog'
+           ],
            translations: [],
            bugfix: [
-             'Fixed issue with pay now/later info when deposit is higher than appointment price because of a coupon/discount',
-             'Fixed issue with locations when booking on the back-end and "Allow admin to book any time" option',
-             'Fixed issue with notifications translations when language removed',
-             'Fixed issue with the calendar when a customer reschedules appointments on the back-end (no locations)',
-             'Fixed issue with global days off that repeat yearly and employees timezone',
-             'Fixed issue with default location and time slots when multiple locations in work hours',
-             'Fixed issue with time slots when locations chosen in Work hours and "Allow admin to book any time" enabled'
+             'Fixed issue with the Load entities option and Days off (multiple locations)',
+             'Fixed issue with the locations filter on the Calendar page',
+             'Fixed issue with Status change webhook and payments via links',
+             'Fixed issue with Outlook integration and canceling appointments'
            ],
            other: []
          },
          pro: {
            feature: [],
-           improvement: (!this.$root.licence.isStarter && !this.$root.licence.isBasic) ? [
-             'Improved logic to assign coupon to new service/event/package when selected “All services/events/packages”',
-             'Optimized placeholder service - fetching coupons, customFields and customers'
-           ] : [],
+           improvement: [
+             'Added option to delete Package image'
+           ],
            translations: [],
            bugfix: [
-             'Fixed issue with the waiting list when “Allow bringing more people“ is disabled and custom pricing',
-             'Fixed issue with services order on the Booking preview step when booking packages'
+             'Fixed issue with booking approved appointments in packages when default status is pending',
+             'Fixed issue with canceling/editing group appointments on the Manage packages page',
+             'Fixed issue with services order on the Booking preview step when booking packages',
+             'Fixed issue with the waiting list when "Allow bringing more people" is disabled and custom pricing'
            ],
            other: []
          },
@@ -264,7 +260,10 @@ export default {
            feature: [],
            improvement: [],
            translations: [],
-           bugfix: [],
+           bugfix: [
+             'Fixed issue with API when key is not correct',
+             'Fixed issue with edit update coupon mandatory field related to API call'
+           ],
            other: []
          }
        },

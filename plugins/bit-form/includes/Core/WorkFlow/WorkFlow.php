@@ -267,7 +267,7 @@ final class WorkFlow
             $conditionStatus = apply_filters('bitform_filter_workflow_condition_status', $conditionStatus, $condition, $fieldData, $this::$_formID);
             if (($conditionStatus && in_array($type, ['if', 'else-if'])) || 'else' === $type) {
               $fieldValue = $this->_actions->setOnSubmitSetFieldValue($actions->fields, $fieldValue);
-              $onFormSuccessActionDefault = $this->_actions->setOnFormSuccess($onFormSuccessActionDefault, $actions->success, $fieldValue);
+              $onFormSuccessActionDefault = $this->_actions->setOnFormSuccess($onFormSuccessActionDefault, $actions->success, $fieldValue, $entryID);
               $onFormSuccessActionDefault['workFlowReturnable']['fields'] = $fieldValue;
               break;
             }
@@ -276,14 +276,12 @@ final class WorkFlow
       } elseif ('always' === $conditionBehaviour) {
         $actions = $conditions[0]->actions;
         $fieldValue = $this->_actions->setOnSubmitSetFieldValue($actions->fields, $fieldValue);
-        $onFormSuccessActionDefault = $this->_actions->setOnFormSuccess($onFormSuccessActionDefault, $actions->success, $fieldValue);
+        $onFormSuccessActionDefault = $this->_actions->setOnFormSuccess($onFormSuccessActionDefault, $actions->success, $fieldValue, $entryID);
         $onFormSuccessActionDefault['workFlowReturnable']['fields'] = $fieldValue;
       }
     }
-
     $workFlowReturnable = $onFormSuccessActionDefault['workFlowReturnable'];
     $integrationsToExc = $onFormSuccessActionDefault['integrationsToExc'];
-
     if (empty($workFlowReturnable['message'])) {
       $defaultConfimation = Helper::setDefaultSubmitConfirmation('successMsg', $fieldValue, static::$_formID, $logID);
       $workFlowReturnable['message'] = $defaultConfimation['confirmation'];

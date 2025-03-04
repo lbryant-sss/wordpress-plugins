@@ -350,7 +350,7 @@
                     :options="options"
                     :purchasedPackage="purchasedPackage"
                     @showDialogEditPackageAppointment="showDialogEditPackageAppointment"
-                    @updatePackageAppointmentStatus="updatePackageAppointmentStatusCallback"
+                    @updatePackageAppointmentBookingStatus="updatePackageAppointmentBookingStatusCallback"
                     @showDialogNewPackageAppointment="showDialogNewPackageAppointment"
                     @handleCheckPackageAppointment="handleToaster"
                   >
@@ -424,6 +424,7 @@
             :appointment="appointment"
             :recurringAppointments="recurringAppointments"
             :savedAppointment="savedAppointment"
+            :totalBookings="totalBookings"
             :bookings="bookings"
             :options="options"
             :customerCreatedCount="customerCreatedCount"
@@ -431,7 +432,7 @@
             :packageServices="packageServices"
             :packageCustomer="packageCustomer"
             @sortBookings="sortBookings"
-            @saveCallback="saveAppointmentCallback"
+            @saveCallback="(response) => {appointment.id ? saveAppointmentCallback(response, true) : saveAppointmentCallback(response)}"
             @duplicateCallback="duplicateAppointmentCallback"
             @closeDialog="closeDialogAppointment"
             @showDialogNewCustomer="showDialogNewCustomer()"
@@ -721,6 +722,8 @@ export default {
 
       showDialogEditPackageAppointment (id, packageCustomer) {
         this.packageServices = this.getAvailableServicesForPurchase(packageCustomer)
+
+        this.packageCustomer = packageCustomer
 
         this.showDialogEditAppointment(id, packageCustomer.appointments[0].booking.customerId)
       },
@@ -1200,11 +1203,11 @@ export default {
         return 'pending'
       },
 
-      updatePackageAppointmentStatusCallback (appointment, packageCustomer, originalStatus) {
-        this.updateAppointmentStatus(appointment, appointment.status, false, (success) => {
-          if ((originalStatus === 'approved' || originalStatus === 'pending') && (appointment.status === 'canceled' || appointment.status === 'rejected')) {
+      updatePackageAppointmentBookingStatusCallback (booking, packageCustomer, originalStatus) {
+        this.updateAppointmentBookingStatus(booking, booking.status, packageCustomer, (success) => {
+          if ((originalStatus === 'approved' || originalStatus === 'pending') && (booking.status === 'canceled' || booking.status === 'rejected')) {
             packageCustomer.count++
-          } else if ((originalStatus === 'canceled' || originalStatus === 'rejected') && (appointment.status === 'approved' || appointment.status === 'pending')) {
+          } else if ((originalStatus === 'canceled' || originalStatus === 'rejected') && (booking.status === 'approved' || booking.status === 'pending')) {
             packageCustomer.count--
           }
         })

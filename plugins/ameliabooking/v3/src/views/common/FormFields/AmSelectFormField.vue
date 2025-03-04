@@ -11,13 +11,16 @@
     <AmSelect
       v-model="model"
       :fit-input-width="true"
-      :clearable="true"
+      :clearable="props.clearable"
+      :prefix-icon="props.prefixIcon"
+      :placeholder="props.placeholder"
+      :disabled="props.disabled"
     >
       <AmOption
         v-for="(option, i) in props.options"
         :key="i"
         :label="option.label"
-        :value="option.label"
+        :value="option.value ? option.value : option.label"
       />
     </AmSelect>
   </el-form-item>
@@ -54,6 +57,22 @@ let props = defineProps({
   },
   options: {
     type: Array,
+  },
+  prefixIcon: {
+    type: [String, Object],
+    default: ''
+  },
+  placeholder: {
+    type: String,
+    default: ''
+  },
+  clearable: {
+    type: Boolean,
+    default: true
+  },
+  disabled: {
+    type: Boolean,
+    default: false
   }
 })
 

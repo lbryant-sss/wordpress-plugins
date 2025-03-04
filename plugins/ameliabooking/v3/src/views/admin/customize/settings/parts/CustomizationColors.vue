@@ -137,7 +137,7 @@
       </AmCollapseItem>
 
       <!-- Calendar -->
-      <AmCollapseItem v-if="pageRenderKey !== 'cbf' && pageRenderKey !== 'ecf'" borderless :side="true">
+      <AmCollapseItem v-if="pageRenderKey !== 'cbf' && pageRenderKey !== 'ecf' && pageRenderKey !== 'cape'" borderless :side="true">
         <template #heading>
           <div class="am-cs-colors__heading">
             <img :src="`${baseUrls.wpAmeliaPluginURL}v3/src/assets/img/admin/customize/calendar.svg`" alt="Calendar"> {{amLabels.calendar}}

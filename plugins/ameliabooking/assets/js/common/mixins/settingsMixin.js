@@ -61,6 +61,10 @@ export default {
             enabled: this.$root.settings.googleCalendar.enabled && this.$root.settings.googleCalendar.googleMeetEnabled
           }
 
+          entitySettings.microsoftTeams = {
+            enabled: this.$root.settings.outlookCalendar.enabled && this.$root.settings.outlookCalendar.microsoftTeamsEnabled
+          }
+
           break
         case ('event'):
           entitySettings.general = {
@@ -77,6 +81,10 @@ export default {
 
           entitySettings.googleMeet = {
             enabled: this.$root.settings.googleCalendar.enabled && this.$root.settings.googleCalendar.googleMeetEnabled
+          }
+
+          entitySettings.microsoftTeams = {
+            enabled: this.$root.settings.outlookCalendar.enabled && this.$root.settings.outlookCalendar.microsoftTeamsEnabled
           }
 
           entitySettings.waitingList = {

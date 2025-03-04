@@ -10,6 +10,20 @@
     />
 
     <div
+      v-if="pageRenderKey === 'cape'"
+      class="am-cap__actions"
+    >
+      <AmButton
+        prefix="plus"
+        size="small"
+        category="primary"
+        :type="amCustomize.cape.events.options.newEvtBtn.buttonType"
+      >
+        <span>{{amLabels.new_event}}</span>
+      </AmButton>
+    </div>
+
+    <div
       class="am-cape__wrapper"
       :class="[{'am-no-border': dateGroupedEvents && Object.keys(dateGroupedEvents).length === 1}, responsiveClass]"
     >
@@ -42,6 +56,7 @@
           :custom-fields="event.bookings[0].customFields"
           :location="event.location"
           :google-meet-link="event.periods[0].googleMeetUrl"
+          :microsoft-teams-link="event.periods[0].microsoftTeamsUrl"
           :zoom-link="event.periods[0].zoomMeeting.joinUrl"
           :lesson-space-link="event.periods[0].lessonSpace"
           :bookable="event"
@@ -99,12 +114,20 @@ import {
   useColorTransparency
 } from "../../../../../../../assets/js/common/colorManipulation";
 
+// * Components
+import AmButton from "../../../../../../_components/button/AmButton.vue";
+
+let pageRenderKey = inject('pageRenderKey')
+
 // * Plugin Licence
 let licence = inject('licence')
 
 // * Page Content width
 let pageContainer = ref(null)
 let pageWidth = ref(0)
+
+// * Global labels
+let amLabels = inject('labels')
 
 // * Sidebar collapsed var
 let sidebarCollapsed = inject('sidebarCollapsed')
@@ -164,6 +187,13 @@ let paramList = ref({
 
 if (licence.isStarter) {
   delete paramList.value.locations
+}
+
+if (pageRenderKey.value === 'cape') {
+  delete paramList.value.providers
+  paramList.value.customers = {
+    name: 'customers', icon: 'user', ids: []
+  }
 }
 
 let arrApp = [
@@ -370,6 +400,7 @@ arrApp.forEach((item, index) => {
         id: index,
         lessonSpace: '/',
         outlookCalendarEventId: '/',
+        microsoftTeamsUrl: '/',
         appleCalendarEventId: null,
         periodEnd: `${moment().add(item.when+1, 'days').format('YYYY-MM-DD')} 23:00:00`,
         periodStart: `${moment().add(item.when, 'days').format('YYYY-MM-DD')} 03:00:00`,
@@ -385,6 +416,7 @@ arrApp.forEach((item, index) => {
         id: index+1,
         lessonSpace: '/',
         outlookCalendarEventId: '/',
+        microsoftTeamsUrl: '/',
         appleCalendarEventId: null,
         periodEnd: `${moment().add(item.when+3, 'days').format('YYYY-MM-DD')} 23:00:00`,
         periodStart: `${moment().add(item.when+2, 'days').format('YYYY-MM-DD')} 03:00:00`,
@@ -400,6 +432,7 @@ arrApp.forEach((item, index) => {
         id: index+2,
         lessonSpace: '/',
         outlookCalendarEventId: '/',
+        microsoftTeamsUrl: '/',
         appleCalendarEventId: null,
         periodEnd: `${moment().add(item.when+5, 'days').format('YYYY-MM-DD')} 23:00:00`,
         periodStart: `${moment().add(item.when+4, 'days').format('YYYY-MM-DD')} 03:00:00`,
@@ -440,7 +473,6 @@ arrApp.forEach((item, index) => {
 
 // * Customize
 let amCustomize = inject('customize')
-let pageRenderKey = inject('pageRenderKey')
 let stepName = inject('stepName')
 
 // * Cancel Event
@@ -565,6 +597,21 @@ export default {
 
         &:after {
           display: none;
+        }
+      }
+    }
+  }
+
+  .am-cap {
+    &__actions {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 0 16px;
+
+      .am-button {
+        .am-icon-plus {
+          font-size: 24px;
         }
       }
     }

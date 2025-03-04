@@ -34,7 +34,7 @@ function useAppointmentDuration(store, appointment) {
   return largestBookingDuration + largestBookingExtrasDuration
 }
 
-function useParsedAppointments (appointments, timeZone) {
+function useParsedAppointments (appointments, timeZone, allBookings) {
   for (let dateString in appointments) {
     appointments[dateString].appointments.forEach(appointment => {
       let appointmentCustomerBookings = {}
@@ -74,7 +74,9 @@ function useParsedAppointments (appointments, timeZone) {
           appointment.bookingEnd = useConvertedUtcToLocalDateTime(appointment.bookingEnd)
         }
 
-        appointment.bookings = [booking]
+        if (!allBookings) {
+          appointment.bookings = [booking]
+        }
       })
     })
   }

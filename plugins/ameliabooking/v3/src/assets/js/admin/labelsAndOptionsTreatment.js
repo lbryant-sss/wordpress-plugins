@@ -270,6 +270,7 @@ let starterLabelsTreatment = deepMerge(
           'pay_now_btn',
           'paid',
           'google_meet_link',
+          'microsoft_teams_link',
           'zoom_link'
         ]
       },
@@ -282,6 +283,7 @@ let starterLabelsTreatment = deepMerge(
           'paid',
           'event_organizer',
           'google_meet_link',
+          'microsoft_teams_link',
           'zoom_link',
           'event_tickets',
           'event_ticket'
@@ -511,6 +513,14 @@ let starterOptionsTreatment = deepMerge(
       ],
       info: [
         'tax'
+      ]
+    },
+    cape:{
+      appointments: [
+        'locationsFilter'
+      ],
+      events: [
+        'locationsFilter'
       ]
     }
   },

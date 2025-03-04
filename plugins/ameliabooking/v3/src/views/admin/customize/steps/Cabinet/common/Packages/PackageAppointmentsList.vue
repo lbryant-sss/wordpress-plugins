@@ -438,6 +438,7 @@ arrService.forEach((serv) => {
       locationId: 1,
       notifyParticipants: 1,
       outlookCalendarEventId: null,
+      microsoftTeamsUrl: '#',
       appleCalendarEventId: null,
       parentId: null,
       past: false,

@@ -267,7 +267,7 @@ function getPackagesAppointments (passedData) {
       })
     })
 
-    let parsedAppointments = useParsedAppointments(response.data.data.appointments, timeZone)
+    let parsedAppointments = useParsedAppointments(response.data.data.appointments, timeZone, cabinetType.value === 'provider')
 
     Object.keys(parsedAppointments).forEach((dateKey) => {
       parsedAppointments[dateKey].appointments.forEach((appointment) => {

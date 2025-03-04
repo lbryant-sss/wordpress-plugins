@@ -272,6 +272,19 @@ export default {
         commit('setLoading', true, {root: true})
       }
 
+      if (rootState.settings.appointments.pastDaysEvents !== null && eventParams.dates.length === 1) {
+        eventParams.dates[0] =
+          moment(eventParams.dates[0], 'YYYY-MM-DD')
+          .subtract(rootState.settings.appointments.pastDaysEvents, 'days')
+          .format('YYYY-MM-DD')
+
+        rootState.settings.appointments.pastDaysEvents = 0
+      } else if (rootState.settings.appointments.pastDaysEvents === null && eventParams.dates.length === 1) {
+        eventParams.dates = []
+
+        rootState.settings.appointments.pastDaysEvents = 0
+      }
+
       httpClient.get(
         '/events',
         { params: useUrlParams(eventParams)}

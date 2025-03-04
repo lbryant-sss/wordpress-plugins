@@ -8,11 +8,14 @@
       <!-- Step by step select for page type -->
       <div
         class="am-customize__fs-flow"
-        :class="[{'am-customize__capc-panel': pageRenderKey === 'capc' && pagesType === 'panel'}, {'am-customize__capc-auth': pageRenderKey === 'capc' && pagesType === 'auth'}]"
+        :class="[
+          {'am-customize__capc-panel': pageRenderKey === 'capc' && pagesType === 'panel'},
+          {'am-customize__capc-auth': pageRenderKey === 'capc' && pagesType === 'auth'}
+        ]"
         style="justify-content: space-between"
       >
         <div
-          v-if="!licence.isBasic && !licence.isStarter && !licence.isLite && pageRenderKey !== 'capc'"
+          v-if="!licence.isBasic && !licence.isStarter && !licence.isLite && pageRenderKey !== 'capc' && pageRenderKey !== 'cape'"
           style="display: flex; align-items: center"
         >
           <div class="am-customize__fs-flow__label">
@@ -30,7 +33,7 @@
 
         <!-- Cabinet select for page type -->
         <div
-          v-if="!licence.isLite && pageRenderKey === 'capc'"
+          v-if="!licence.isLite && (pageRenderKey === 'capc' || pageRenderKey === 'cape')"
           style="display: flex; align-items: center"
         >
           <div class="am-customize__fs-flow__label">
@@ -48,7 +51,7 @@
 
         <!-- Button that will redirect to Catalog form -->
         <AmButton
-          v-if="urlParams.get('current') !== 'sbsNew' && pageRenderKey !== 'capc'"
+          v-if="urlParams.get('current') !== 'sbsNew' && pageRenderKey !== 'capc' && pageRenderKey !== 'cape'"
           :style="{margin: '0 0 0 auto'}"
           @click="handleClick('menu', 0, urlParams.get('current'))"
         >
@@ -87,8 +90,9 @@ import CustomizeMainPage from './navigation/CustomizeMainPage.vue';
 import CustomizeStepNew from "./pages/CustomizeStepNew.vue";
 import CustomizeCatalog from "./pages/CustomizeCatalog.vue";
 import CustomizeEventList from "./pages/CustomizeEventList.vue";
-import CustomizeCustomerPanel from "./pages/CustomizeCustomerPanel.vue";
 import CustomizeEventCalendar from "./pages/CustomizeEventCalendar.vue";
+import CustomizeCustomerPanel from "./pages/CustomizeCustomerPanel.vue";
+import CustomizeEmployeePanel from "./pages/CustomizeEmployeePanel.vue";
 
 // * Import form Vue
 import {
@@ -224,8 +228,9 @@ let pagesObject = {
   sbsNew: markRaw(CustomizeStepNew),
   cbf: markRaw(CustomizeCatalog),
   elf: markRaw(CustomizeEventList),
+  ecf: markRaw(CustomizeEventCalendar),
   capc: markRaw(CustomizeCustomerPanel),
-  ecf: markRaw(CustomizeEventCalendar)
+  cape: markRaw(CustomizeEmployeePanel)
 }
 
 let urlParams = new URLSearchParams(window.location.search)
@@ -303,6 +308,12 @@ let stepKey = computed(() => {
   return subStepName.value ? subStepName.value : stepName.value
 })
 
+let filterByKey = (key) => {
+  return computed(() =>
+      amCustomize.value[key] ? { [key]: amCustomize.value[key], 'fonts': amCustomize.value['fonts'] } : amCustomize.value
+  )
+}
+
 function updateCustomizeLabel (labelObj) {
   let parentObjKey = stepKey.value
   if (parentPath.value === 'sidebar') parentObjKey = parentPath.value
@@ -358,9 +369,11 @@ provide('updateLabelObject', updateLabelObject)
 
 // * Save Changes function
 function saveChanges () {
+  let currentForm = filterByKey(pageRenderKey.value)
+
   httpClient.post(
     '/settings',
-    {customizedData: amCustomize.value}
+    {customizedData: currentForm.value}
   )
     .then(() => {
       notify(amLabels.success, amLabels.settings_saved, 'success')

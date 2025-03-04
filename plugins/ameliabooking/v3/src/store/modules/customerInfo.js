@@ -5,13 +5,21 @@ export default {
 
   state: () => ({
     id: null,
-    externalId: null,
+    externalId: '',
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
-    countryPhoneIso : '',
+    countryPhoneIso: '',
     loggedUser: false,
+    translations: '',
+    gender: '',
+    birthday: '',
+    note: '',
+    loading: false,
+    customers: [],
+    customersIds: [],
+    wpUsers: []
   }),
 
   getters: {
@@ -43,6 +51,22 @@ export default {
       return state.countryPhoneIso
     },
 
+    getCustomerLanguage (state) {
+      return state.translations.defaultLanguage
+    },
+
+    getCustomerBirthday (state) {
+      return state.birthday
+    },
+
+    getCustomerGender (state) {
+      return state.gender
+    },
+
+    getCustomerNote (state) {
+      return state.note
+    },
+
     getLoggedUser (state) {
       return state.loggedUser
     },
@@ -57,6 +81,38 @@ export default {
         phone: state.phone,
         countryPhoneIso : state.countryPhoneIso,
         loggedUser: state.loggedUser
+      }
+    },
+
+    getLoading (state) {
+      return state.loading
+    },
+
+    getCustomers (state) {
+      return state.customers
+    },
+
+    getCustomersIds (state) {
+      return state.customersIds
+    },
+
+    getWpUsers (state) {
+      return state.wpUsers
+    },
+
+    getCustomer (state) {
+      return {
+        id: state.id,
+        externalId: state.externalId,
+        firstName: state.firstName,
+        lastName: state.lastName,
+        email: state.email,
+        phone: state.phone,
+        countryPhoneIso: state.countryPhoneIso,
+        translations: state.translations,
+        gender: state.gender,
+        birthday: state.birthday,
+        note: state.note,
       }
     }
   },
@@ -90,6 +146,22 @@ export default {
       state.countryPhoneIso = payload
     },
 
+    setCustomerBirthday (state, payload) {
+      state.birthday = payload
+    },
+
+    setCustomerLanguage (state, payload) {
+      state.translations.defaultLanguage = payload
+    },
+
+    setCustomerGender (state, payload) {
+      state.gender = payload
+    },
+
+    setCustomerNote (state, payload) {
+      state.note = payload
+    },
+
     setLoggedUser (state, payload) {
       state.loggedUser = payload
     },
@@ -100,8 +172,8 @@ export default {
       state.firstName = payload.firstName
       state.lastName = payload.lastName
       state.email = payload.email
-      state.phone = payload.phone ? payload.phone : ''
-      state.countryPhoneIso = payload.countryPhoneIso ? payload.countryPhoneIso : ''
+      state.phone = payload.phone || ''
+      state.countryPhoneIso = payload.countryPhoneIso || ''
     },
 
     setAllData (state, payload) {
@@ -113,6 +185,36 @@ export default {
       state.phone = payload.phone
       state.countryPhoneIso = payload.countryPhoneIso
       state.loggedUser = payload.loggedUser
+    },
+
+    setCustomer (state, payload) {
+      state.id = payload.id
+      state.externalId = payload.externalId
+      state.firstName = payload.firstName
+      state.lastName = payload.lastName
+      state.email = payload.email
+      state.phone = payload.phone
+      state.countryPhoneIso = payload.countryPhoneIso
+      state.translations = payload.translations
+      state.gender = payload.gender
+      state.birthday = payload.birthday
+      state.note = payload.note
+    },
+
+    setLoading (state, payload) {
+      state.loading = payload
+    },
+
+    setCustomers (state, payload) {
+      state.customers = payload
+    },
+
+    setCustomersIds (state, payload) {
+      state.customersIds = payload
+    },
+
+    setWpUsers (state, payload) {
+      state.wpUsers = payload
     }
   },
 
@@ -147,6 +249,48 @@ export default {
           1000
         )
       }
+    },
+
+    requestWpUsers ({ commit, getters }, payload) {
+      let { label } = payload
+      commit('setLoading', true)
+      httpClient.get(
+        'users/wp-users',
+        {
+          params: {
+            id: getters['getCustomerId'],
+            role: 'customer'
+          }
+        }
+      ).then((response) => {
+        commit('setWpUsers', [{value: 0, label: label}, ...response.data.data.users])
+
+        if (getters['getWpUsers'].map(user => user.value).indexOf(getters['getCustomerExternalId']) === -1) {
+          commit('setCustomerExternalId', null)
+        }
+
+        commit('setLoading', false)
+      }).catch(() => {
+        commit('setLoading', false)
+      }).finally(() => {
+        commit('setLoading', false)
+      })
+    },
+
+    resetCustomer({commit}) {
+      commit('setCustomer', {
+        id: null,
+        externalId: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        countryPhoneIso: '',
+        translations: {defaultLanguage: ''},
+        gender: '',
+        birthday: '',
+        note: '',
+      })
     }
   }
 }

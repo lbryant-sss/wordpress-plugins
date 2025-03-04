@@ -397,7 +397,7 @@
     </el-collapse>
 
 
-    <el-collapse :class="licenceClass()" v-model="integrationsSettingsCollapse" v-if="zoomSettings || lessonSpaceSettings || googleMeetSettings">
+    <el-collapse :class="licenceClass()" v-model="integrationsSettingsCollapse" v-if="zoomSettings || lessonSpaceSettings || googleMeetSettings || microsoftTeamsSettings">
       <el-collapse-item :disabled="notInLicence()" class="am-setting-box" name="integrationsSettings">
         <!-- Title -->
         <template slot="title">
@@ -448,6 +448,23 @@
           </el-row>
         </div>
 
+        <!-- Microsoft Teams -->
+        <div class="am-setting-box am-switch-box" v-if="microsoftTeamsSettings">
+          <el-row type="flex" align="middle" :gutter="24">
+            <el-col :span="16">
+              {{ $root.labels.enable_microsoft_teams }}
+            </el-col>
+            <el-col :span="8" class="align-right">
+              <el-switch
+                  v-model="microsoftTeamsSettings.enabled"
+                  active-text=""
+                  inactive-text=""
+              >
+              </el-switch>
+            </el-col>
+          </el-row>
+        </div>
+
         <!-- Lesson Space -->
         <div class="am-setting-box am-switch-box" v-if="lessonSpaceSettings">
           <el-row type="flex" align="middle" :gutter="24">
@@ -481,6 +498,7 @@
       zoomSettings: null,
       lessonSpaceSettings: null,
       googleMeetSettings: null,
+      microsoftTeamsSettings: null,
       paymentsSettings: null,
       generalSettings: null,
       settings: null,

@@ -1,101 +1,170 @@
 <template>
   <div
     ref="pageContainer"
-    class="am-cap"
+    class="am-cap am-cape-main"
+    :class="{'am-capei-main': eventVisibility || (eventAttendeeVisibility || attendeeOpenFromAttendees)}"
     :style="cssVars"
   >
-    <AmAlert
-      v-if="alertVisibility"
-      ref="alertContainer"
-      :type= "alertType"
-      :show-border="true"
-      :close-after="5000"
-      custom-class="am-cap__alert"
-      @close="closeAlert"
-      @trigger-close="closeAlert"
+    <div
+      class="am-cape-main__inner"
+      :class="responsiveClass"
     >
-      <template #title>
-        <span class="am-icon-checkmark-circle-full"></span> {{ alertMessage }}
-      </template>
-    </AmAlert>
-
-    <CabinetFilters
-      :step-key="'events'"
-      :empty="empty"
-      :responsive-class="responsiveClass"
-      @change-filters="getEvents"
-    />
-
-    <template v-if="!loading">
-      <div
-        v-if="dateGroupedEvents && Object.keys(dateGroupedEvents).length > 0"
-        class="am-cape__wrapper"
-        :class="[{'am-no-border': dateGroupedEvents && Object.keys(dateGroupedEvents).length === 1}, responsiveClass]"
+      <AmAlert
+        v-if="alertVisibility"
+        ref="alertContainer"
+        :type= "alertType"
+        :show-border="true"
+        :close-after="5000"
+        custom-class="am-cap__alert"
+        @close="closeAlert"
+        @trigger-close="closeAlert"
       >
-        <div
-          v-for="(item, dateKey) in dateGroupedEvents"
-          :key="dateKey"
-          class="am-cape"
+        <template #title>
+          <span class="am-icon-checkmark-circle-full"></span> {{ alertMessage }}
+        </template>
+      </AmAlert>
+
+      <CabinetFilters
+        v-if="!eventAttendeeVisibility && !eventVisibility && !eventAttendeesVisibility && ready"
+        :step-key="'events'"
+        :empty="empty"
+        :responsive-class="responsiveClass"
+        @change-filters="getEvents"
+      />
+
+      <div
+        v-if="shortcodeData.cabinetType === 'employee' && amSettings.roles.allowWriteEvents && !eventAttendeeVisibility && !eventVisibility && !eventAttendeesVisibility && ready"
+        class="am-cap__actions"
+      >
+        <AmButton
+          :icon="plusIcon"
+          prefix="plus"
+          size="small"
+          category="primary"
+          :type="amCustomize.events.options.newEvtBtn.buttonType"
+          @click="addEvent"
         >
-          <div
-            class="am-cape__date"
-            :class="[
-              {'am-today': getFrontedFormattedDate(dateKey) === getFrontedFormattedDate(moment().format('YYYY-MM-DD'))},
-              {'am-no-flag': dateGroupedEvents && Object.keys(dateGroupedEvents).length === 1},
-              responsiveClass
-            ]"
-          >
-            {{getFrontedFormattedDate(dateKey)}}
-          </div>
-          <CollapseCard
-            v-for="(event, index) in item.events"
-            :key="index"
-            :start="getFrontedFormattedTime(event.periods[0].periodStart.split(' ')[1].slice(0, 5))"
-            :name="event.name"
-            :employee="eventEmployees(event)"
-            :price="useEventBookingsPrice(event)"
-            :duration="null"
-            :periods="(periods = usePeriodsData(event.periods)) ? periods : []"
-            :extras="[]"
-            :tickets="useTicketsData(event)"
-            :custom-fields="useCustomFieldsData(event.bookings)"
-            :location="useEventLocation(store, event)"
-            :google-meet-link="event.periods.length === 1 && event.periods[0].googleMeetUrl ? event.periods[0].googleMeetUrl : ''"
-            :zoom-link="event.periods.length === 1 && event.periods[0].zoomMeeting ? event.periods[0].zoomMeeting.joinUrl : ''"
-            :lesson-space-link="event.periods.length === 1 && event.periods[0].lessonSpace ? event.periods[0].lessonSpace : ''"
-            :bookable="event"
-            :reservation="event"
-            :booking="event.bookings[0]"
-            :responsive-class="responsiveClass"
-            :parent-width="pageWidth"
-            :customized-options="customizedOptions('events')"
-            @cancel-booking="(data) => {
-            targetBooking = data
-          }"
-          ></CollapseCard>
-        </div>
+          <span>{{amLabels.new_event}}</span>
+        </AmButton>
       </div>
 
-      <EmptyState
-        v-if="dateGroupedEvents === null || Object.keys(dateGroupedEvents).length === 0"
-        :heading="amLabels.no_evt_found"
-        :text="amLabels.have_no_evt"
-      ></EmptyState>
+      <template v-if="!loading && ready">
+        <div
+          v-if="!eventAttendeeVisibility && !eventVisibility && !eventAttendeesVisibility && dateGroupedEvents && Object.keys(dateGroupedEvents).length > 0"
+          class="am-cape__wrapper"
+          :class="[{'am-no-border': dateGroupedEvents && Object.keys(dateGroupedEvents).length === 1}, responsiveClass]"
+        >
+          <div
+            v-for="(item, dateKey) in dateGroupedEvents"
+            :key="dateKey"
+            class="am-cape"
+          >
+            <div
+              class="am-cape__date"
+              :class="[
+                {'am-today': getFrontedFormattedDate(dateKey) === getFrontedFormattedDate(moment().format('YYYY-MM-DD'))},
+                {'am-no-flag': dateGroupedEvents && Object.keys(dateGroupedEvents).length === 1},
+                responsiveClass
+              ]"
+            >
+              {{getFrontedFormattedDate(dateKey)}}
+            </div>
+            <CollapseCard
+              v-for="(event, index) in item.events"
+              :key="index"
+              :start="getFrontedFormattedTime(event.periods[0].periodStart.split(' ')[1].slice(0, 5))"
+              :name="event.name"
+              :employee="eventEmployees(event)"
+              :customers="event.bookings.filter(i => i.status !== 'rejected' && i.status !== 'canceled').map(i => i.customer)"
+              :price="useEventBookingsPrice(event)"
+              :duration="null"
+              :periods="(periods = usePeriodsData(event.periods)) ? periods : []"
+              :extras="[]"
+              :tickets="useTicketsData(event)"
+              :custom-fields="useCustomFieldsData(event.bookings, shortcodeData.cabinetType)"
+              :location="useEventLocation(store, event)"
+              :google-meet-link="event.periods.length === 1 && event.periods[0].googleMeetUrl ? event.periods[0].googleMeetUrl : ''"
+              :microsoft-teams-link="event.periods.length === 1 && event.periods[0].microsoftTeamsUrl ? event.periods[0].microsoftTeamsUrl : ''"
+              :zoom-link="event.periods.length === 1 && event.periods[0].zoomMeeting ? event.periods[0].zoomMeeting.joinUrl : ''"
+              :lesson-space-link="event.periods.length === 1 && event.periods[0].lessonSpace ? event.periods[0].lessonSpace : ''"
+              :bookable="event"
+              :reservation="event"
+              :booking="event.bookings[0]"
+              :responsive-class="responsiveClass"
+              :parent-width="pageWidth"
+              :customized-options="customizedOptions('events')"
+              @edit-event="editEvent"
+              @add-event-attendee="addEventAttendee"
+              @list-event-attendees="listEventAttendees"
+              @cancel-booking="(data) => {
+                targetBooking = data
+              }"
+            ></CollapseCard>
+          </div>
+        </div>
 
-      <CancelPopup
-        :visibility="targetBooking !== null"
-        :title="customizedLabels('cancelEvent').cancel_event"
-        :description="customizedLabels('cancelEvent').confirm_cancel_event"
-        :close-btn-text="customizedLabels('cancelEvent').close"
-        :confirm-btn-text="customizedLabels('cancelEvent').confirm"
-        :customized-options="customizedOptions('cancelEvent')"
-        :loading="waitingForCancelation"
-        @close="targetBooking = null"
-        @confirm="cancelBooking"
-      >
-      </CancelPopup>
-    </template>
-    <Skeleton v-else></Skeleton>
+        <EmptyState
+          v-if="!eventAttendeeVisibility && !eventVisibility && !eventAttendeesVisibility && (dateGroupedEvents === null || Object.keys(dateGroupedEvents).length === 0)"
+          :heading="amLabels.no_evt_found"
+          :text="amLabels.have_no_evt"
+        ></EmptyState>
+
+        <AmPagination
+          v-if="!eventAttendeeVisibility && !eventVisibility && !eventAttendeesVisibility && dateGroupedEvents && Object.keys(dateGroupedEvents).length > 0 && eventsCount > amSettings.general.itemsPerPageBackEnd"
+          :page-size="amSettings.general.itemsPerPageBackEnd"
+          :pager-count="5"
+          layout="prev, pager, next"
+          :total="eventsCount"
+          :current-page="eventsPage"
+          @current-change="eventsPageChange"
+        />
+
+        <Event
+          v-if="eventVisibility"
+          :page-width="pageWidth"
+          :responsive-class="responsiveClass"
+          @close="closeEvent"
+          @save="saveEventCallback"
+          @duplicate="duplicateEvent"
+        ></Event>
+
+        <EventAttendees
+          v-if="!eventAttendeeVisibility && eventAttendeesVisibility"
+          :event="targetEvent"
+          :page-width="pageWidth"
+          :responsive-class="responsiveClass"
+          @close="closeEventAttendees"
+          @open-attendee="openAttendee"
+        ></EventAttendees>
+
+        <Attendee
+          v-if="eventAttendeeVisibility"
+          :visibility="eventAttendeeVisibility"
+          :title="editAttendeeRecognition ? amLabels.event_edit_attendee : amLabels.event_add_attendee"
+          :event="targetEvent"
+          :page-width="pageWidth"
+          :is-new="!editAttendeeRecognition"
+          @save="savedEventAttendee"
+          @close="closedEventAttendee"
+        ></Attendee>
+
+        <CancelPopup
+          v-if="originKey === 'capc'"
+          :visibility="targetBooking !== null"
+          :title="customizedLabels('cancelEvent').cancel_event"
+          :description="customizedLabels('cancelEvent').confirm_cancel_event"
+          :close-btn-text="customizedLabels('cancelEvent').close"
+          :confirm-btn-text="customizedLabels('cancelEvent').confirm"
+          :customized-options="customizedOptions('cancelEvent')"
+          :loading="waitingForCancelation"
+          @close="targetBooking = null"
+          @decline="targetBooking = null"
+          @confirm="cancelBooking"
+        >
+        </CancelPopup>
+      </template>
+      <Skeleton v-else></Skeleton>
+    </div>
   </div>
 </template>
 
@@ -109,8 +178,9 @@ import {
   provide,
   onMounted,
   watch,
-  nextTick,
 } from "vue";
+
+import { useElementSize } from "@vueuse/core";
 
 // * Import from Vuex
 import { useStore } from "vuex";
@@ -141,6 +211,12 @@ import {
   useEventLocation,
 } from "../../../../../assets/js/admin/event";
 import {
+  useFrontEvent,
+} from "../../../../../assets/js/common/events";
+import {
+  useInitAttendee,
+} from "../../../../../assets/js/common/attendees";
+import {
   useCustomFieldsData,
 } from "../../../../../assets/js/admin/booking";
 import {
@@ -155,58 +231,43 @@ import {
 import moment from "moment";
 import EmptyState from "../parts/EmptyState.vue";
 import AmAlert from "../../../../_components/alert/AmAlert.vue";
+import AmButton from "../../../../_components/button/AmButton.vue";
+import Event from "../Events/parts/Event.vue";
+import EventAttendees from "../Events/parts/Attendees.vue";
+import Attendee from "../Events/parts/Attendee.vue";
 import {useScrollTo} from "../../../../../assets/js/common/scrollElements";
+import IconComponent from "../../../../_components/icons/IconComponent.vue";
+import {usePopulateSettings} from "../../../../../assets/js/common/settings";
+import AmPagination from "../../../../_components/pagination/AmPagination.vue";
 
 // * Store
 let store = useStore()
 
 // * Page Content width
 let pageContainer = ref(null)
-let pageWidth = ref(0)
 
-// * Sidebar collapsed var
-let sidebarCollapsed = inject('sidebarCollapsed')
-
-// * window resize listener
-window.addEventListener('resize', resize);
-// * resize function
-function resize() {
-  if (pageContainer.value) {
-    pageWidth.value = pageContainer.value.offsetWidth
-  }
-}
-
-watch(sidebarCollapsed, (current) => {
-  if (current) {
-    setTimeout(() => {
-      collapseTriggered()
-    }, 1500)
-  } else {
-    setTimeout(() => {
-      collapseTriggered()
-    }, 500)
-  }
-})
-
-function collapseTriggered () {
-  pageWidth.value = pageContainer.value.offsetWidth
-}
-
-onMounted(() => {
-  nextTick(() => {
-    pageWidth.value = pageContainer.value.offsetWidth
-  })
-})
+let { width: pageWidth } = useElementSize(pageContainer)
 
 let responsiveClass = computed(() => {
   return useResponsiveClass(pageWidth.value)
 })
 
+// * Plus icon
+let plusIcon = {
+  components: {IconComponent},
+  template: `<IconComponent icon="plus"/>`
+}
+
 // * Root Settings
 const amSettings = inject('settings')
 
+let originKey = inject('originKey')
+
 // * Customized form data
 let amCustomize = inject('amCustomize')
+
+// * Data in shortcode
+const shortcodeData = inject('shortcodeData')
 
 // * labels
 const labels = inject('labels')
@@ -268,6 +329,8 @@ function customizedOptions (step) {
   return amCustomize.value[step].options
 }
 
+let ready = computed(() => store.getters['entities/getReady'])
+
 /********
  * Form *
  ********/
@@ -291,7 +354,17 @@ let targetBooking = ref(null)
 
 let dateGroupedEvents = ref(null)
 
-function getEvents () {
+let eventsCount = ref(0)
+
+let eventsPage = ref(1)
+
+function eventsPageChange(page) {
+  eventsPage.value = page
+
+  getEvents(page)
+}
+
+function getEvents (page = 1) {
   targetBooking.value = null
 
   store.commit('cabinet/setEventsLoading', true)
@@ -302,43 +375,192 @@ function getEvents () {
   params.timeZone = timeZone
   params.source = 'cabinet-' + cabinetType.value
   params.id = params.events
+  params.group = true
+  params.page = page
+  params.limit = amSettings.general.itemsPerPageBackEnd
+
+  if (params.customers) {
+    params.customerId = params.customers
+  }
+
+  store.commit('auth/setLoadingEventsCounter', store.getters['auth/getLoadingEventsCounter'] + 1)
+
+  let loadingCounter = store.getters['auth/getLoadingEventsCounter']
 
   httpClient.get(
     '/events',
-      useUrlParams(
-        Object.assign(
-          useAuthorizationHeaderObject(store),
-          {params: params}
-        )
-      )
+    Object.assign(
+      useAuthorizationHeaderObject(store),
+      {params: useUrlParams(params)}
+    )
   ).then((response) => {
+    if (loadingCounter !== store.getters['auth/getLoadingEventsCounter']) {
+      return
+    }
+
+    store.dispatch(
+      'cabinetFilters/injectEventsOptions',
+      response.data.data.events
+    )
+
+    store.commit('auth/setPreloadedEvents', response.data.data.events)
+
+    eventsCount.value = response.data.data.count
+
     store.commit('eventEntities/setEvents', response.data.data.events)
     dateGroupedEvents.value = useParsedEvents(
       response.data.data.events,
       store.getters['cabinet/getTimeZone'],
       store
     )
-
-    let filterEmpty = !(params.events.length || params.providers.length || params.locations.length)
-    empty.value = (!dateGroupedEvents.value || Object.values(dateGroupedEvents.value).length === 0) && filterEmpty
-
-    if (dateGroupedEvents.value && Object.values(dateGroupedEvents.value).length > 0 && filterEmpty) {
-      store.dispatch('cabinetFilters/injectEventsOptions')
-
-      let providerIds = Object.values(dateGroupedEvents.value)
-        .map(a => a.events.map(ap => ap.organizerId)).flat()
-        .concat(Object.values(dateGroupedEvents.value).map(a => a.events.map(ap => ap.providers).flat().map(p => p.id)).flat())
-        .filter((item, index, array) => array.indexOf(item) === index)
-      store.dispatch('cabinetFilters/injectProviderOptions', providerIds)
-
-      let locationIds = Object.values(dateGroupedEvents.value).map(a => a.events.map(ap => ap.locationId)).flat().filter((item, index, array) => array.indexOf(item) === index)
-      store.dispatch('cabinetFilters/injectLocationOptions', locationIds)
+  }).catch((error) => {
+    if(error?.response?.data?.data?.reauthorize !== undefined && error.response.data.data.reauthorize) {
+      store.dispatch('auth/logout')
     }
+
+    console.log(error)
+  }).finally(() => {
+    if (loadingCounter !== store.getters['auth/getLoadingEventsCounter']) {
+      return
+    }
+
+    store.commit('cabinet/setEventsLoading', false)
+  })
+}
+
+/*********
+ * Event *
+ *********/
+function editEvent (event) {
+  store.commit('cabinet/setEventsLoading', true)
+
+  httpClient.get(
+    '/events/' + event.id,
+    Object.assign(
+      {
+        params: {
+          source: 'cabinet-' + cabinetType.value,
+          timeZone: store.getters['cabinet/getTimeZone'],
+        },
+      },
+      useAuthorizationHeaderObject(store)
+    )
+  ).then((response) => {
+    store.commit(
+      'event/setEvent',
+      useFrontEvent(store, response.data.data.event)
+    )
+
+    eventVisibility.value = true
   }).catch((error) => {
     console.log(error)
   }).finally(() => {
     store.commit('cabinet/setEventsLoading', false)
   })
+}
+
+let eventVisibility = ref(false)
+
+let eventAttendeesVisibility = ref(false)
+
+let eventAttendeeVisibility = ref(false)
+
+let editAttendeeRecognition = ref(false)
+
+let attendeeOpenFromAttendees = ref(false)
+
+let targetEvent = ref(null)
+
+function duplicateEvent (event) {
+  store.commit('cabinet/setEventsLoading', true)
+
+  eventVisibility.value = false
+
+  setTimeout(() => {
+    store.commit('event/setEvent', event)
+
+    eventVisibility.value = true
+
+    store.commit('cabinet/setEventsLoading', false)
+  }, 500)
+}
+
+function saveEventCallback () {
+  alertVisibility.value = true
+  alertMessage.value = amLabels.value.event_saved
+
+  if (pageContainer.value && alertContainer.value) {
+    setTimeout(function () {
+      useScrollTo(pageContainer.value, alertContainer.value.$el, 0, 300)
+    }, 500)
+  }
+
+  getEvents()
+
+  closeEvent()
+}
+
+function addEvent () {
+  resetEvent()
+
+  eventVisibility.value = true
+}
+
+function addEventAttendee (event) {
+  targetEvent.value = event
+
+  resetEventAttendee(useInitAttendee(store, store.getters['attendee/getDefaultAttendee'], event))
+
+  eventAttendeeVisibility.value = true
+}
+
+function savedEventAttendee () {
+  getEvents(eventsPage.value)
+
+  closedEventAttendee()
+}
+
+function closedEventAttendee () {
+  eventAttendeeVisibility.value = false
+  editAttendeeRecognition.value = false
+}
+
+function listEventAttendees (event) {
+  targetEvent.value = event
+
+  eventAttendeesVisibility.value = true
+}
+
+function closeEventAttendees () {
+  targetEvent.value = null
+
+  getEvents(eventsPage.value)
+
+  resetEventAttendee(useInitAttendee(store, store.getters['attendee/getDefaultAttendee']))
+
+  eventAttendeesVisibility.value = false
+  attendeeOpenFromAttendees.value = false
+}
+
+function openAttendee (open) {
+  attendeeOpenFromAttendees.value = open
+}
+
+function resetEventAttendee (payload = {}) {
+  store.commit('attendee/setAttendee', payload)
+}
+
+function closeEvent () {
+  eventVisibility.value = false
+
+  resetEvent()
+}
+
+function resetEvent () {
+  store.commit(
+    'event/setEvent',
+    {bookings: [], settings: usePopulateSettings(amSettings, store.getters['event/getSettings'], {}, {})}
+  )
 }
 
 let waitingForCancelation = ref(false)
@@ -411,6 +633,37 @@ function eventEmployees (evt) {
   return arr
 }
 
+// * No Show Function
+function noShowData(noShowCount) {
+  if (noShowCount) {
+    if (noShowCount === 1) {
+      return {
+        class: 'am-no-show-1',
+        icon: 'no-show-1',
+      }
+    }
+    if (noShowCount === 2) {
+      return {
+        class: 'am-no-show-2',
+        icon: 'no-show-2',
+      }
+    }
+
+    if (noShowCount > 2) {
+      return {
+        class: 'am-no-show-3',
+        icon: 'no-show-3',
+      }
+    }
+  }
+
+  return {
+    class: '',
+    icon: '',
+  }
+}
+provide('noShowData', { noShowData })
+
 // * Colors
 let amColors = inject('amColors')
 
@@ -421,6 +674,15 @@ let cssVars = computed(() => {
     '--am-c-cape-text-op70': useColorTransparency(amColors.value.colorMainText, 0.7),
     '--am-c-cape-text-op25': useColorTransparency(amColors.value.colorMainText, 0.25),
     '--am-c-cape-primary': amColors.value.colorPrimary,
+
+    '--am-c-cust-no1': amColors.value.colorMainText,
+    '--am-c-cust-no1-bgr': useColorTransparency(amColors.value.colorMainText, 0.1),
+    '--am-c-cust-no2': amColors.value.colorWarning,
+    '--am-c-cust-no2-bgr': useColorTransparency(amColors.value.colorWarning, 0.1),
+    '--am-c-cust-no3': amColors.value.colorError,
+    '--am-c-cust-no3-bgr': useColorTransparency(amColors.value.colorError, 0.1),
+    '--am-c-cust-text': amColors.value.colorMainText,
+    '--am-c-cust-link': useColorTransparency(amColors.value.colorMainText, 0.5),
   }
 })
 </script>
@@ -532,6 +794,19 @@ export default {
   }
 
   .am-cap {
+    &__actions {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 0 16px;
+
+      .am-button {
+        .am-icon-plus {
+          font-size: 24px;
+        }
+      }
+    }
+
     &__alert {
       margin: 0 0 16px;
       .el-alert {
@@ -557,6 +832,111 @@ export default {
             color: var(--am-c-alerts-bgr);
           }
         }
+      }
+    }
+  }
+
+  .am-fs__main-content.am-cap {
+    //  am    - amelia
+    //  capei - cabinet panel event item
+    &.am-capei-main {
+      height: calc(100% - 148px);
+    }
+
+    &.am-cape-main {
+      padding: 0;
+
+      .am-cape-main__inner {
+        display: block;
+        padding: 16px 32px;
+
+        &.am-rw- {
+          &480 {
+            padding: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  // Customer
+  .am-capei-customer {
+    &__name {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.555556;
+      color: var(--am-c-cust-text);
+
+      &[class*='am-no-show-'] {
+        border: 1px solid var(--am-c-no-show);
+        padding: 0 8px 0 4px;
+        border-radius: 6px;
+        background-color: var(--am-c-no-show-bgr);
+      }
+
+      [class^='am-icon-'] {
+        font-size: 28px;
+        line-height: 1;
+        color: var(--am-c-no-show);
+      }
+
+      &.am-no-show-1 {
+        --am-c-no-show: var(--am-c-cust-no1);
+        --am-c-no-show-bgr: var(--am-c-cust-no1-bgr);
+      }
+
+      &.am-no-show-2 {
+        --am-c-no-show: var(--am-c-cust-no2);
+        --am-c-no-show-bgr: var(--am-c-cust-no2-bgr);
+      }
+
+      &.am-no-show-3 {
+        --am-c-no-show: var(--am-c-cust-no3);
+        --am-c-no-show-bgr: var(--am-c-cust-no3-bgr);
+      }
+    }
+
+    // Customer Email and Phone
+    &__data {
+      display: flex;
+      align-items: center;
+      gap: 0 4px;
+
+      &.am-rw {
+        &-420 {
+          width: 100%;
+        }
+      }
+
+      &-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &.am-rw {
+          &-420 {
+            flex-wrap: wrap;
+            gap: 4px;
+          }
+        }
+      }
+
+      a {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1;
+        color: var(--am-c-cust-link);
+        text-decoration: none;
+      }
+
+      [class^='am-icon-'] {
+        font-size: 28px;
+        line-height: 1;
+        color: var(--am-c-cust-text);
       }
     }
   }

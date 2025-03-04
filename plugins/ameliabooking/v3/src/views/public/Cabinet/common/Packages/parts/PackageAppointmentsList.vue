@@ -181,6 +181,7 @@
       :confirm-btn-text="customizedLabels('cancelPackage').confirm"
       :customized-options="customizedOptions('cancelPackage')"
       @close="() => { activePurchaseCancel = false }"
+      @decline="() => { activePurchaseCancel = false }"
       @confirm="cancelPurchase"
     >
     </CancelPopup>

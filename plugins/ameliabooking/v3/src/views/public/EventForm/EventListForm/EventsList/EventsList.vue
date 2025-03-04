@@ -160,7 +160,7 @@ import AmOption from '../../../../_components/select/AmOption.vue'
 import AmInput from '../../../../_components/input/AmInput.vue'
 import AmDatePickerFull from '../../../../_components/date-picker-full/AmDatePickerFull.vue'
 import IconComponent from '../../../../_components/icons/IconComponent.vue'
-import AmPagination from '../../../../_components/pagination/AmPagintaion.vue'
+import AmPagination from '../../../../_components/pagination/AmPagination.vue'
 
 // * Dedicated Components
 import EventCard from '../../Common/Parts/EventCard.vue'

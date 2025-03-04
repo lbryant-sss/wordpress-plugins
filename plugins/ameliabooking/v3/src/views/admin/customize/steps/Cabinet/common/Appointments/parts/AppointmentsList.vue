@@ -33,6 +33,7 @@
         :custom-fields="appointment.bookings[0].customFields"
         :location="appointment.location"
         :google-meet-link="appointment.googleMeetUrl"
+        :microsoft-teams-link="appointment.microsoftTeamsUrl"
         :zoom-link="appointment.zoomMeeting ? appointment.zoomMeeting.joinUrl : ''"
         :lesson-space-link="appointment.lessonSpace"
         :bookable="appointment.service"

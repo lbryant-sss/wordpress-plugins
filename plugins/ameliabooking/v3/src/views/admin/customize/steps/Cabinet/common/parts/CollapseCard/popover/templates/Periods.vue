@@ -24,6 +24,13 @@
         </a>
         <!-- /GoogleMeet link -->
 
+        <!-- Microsoft Teams Link -->
+        <a v-if="item.microsoftTeamsLink" class="am-cc__periods-link">
+          <span class="am-icon-link"></span>
+          {{ amLabels.microsoft_teams_link }}
+        </a>
+        <!-- /Microsoft Teams link -->
+
         <!-- Zoom Link -->
         <a v-if="item.zoomLink" class="am-cc__periods-link">
           <span class="am-icon-link"></span>

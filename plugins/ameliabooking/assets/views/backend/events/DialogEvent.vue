@@ -136,6 +136,26 @@
                   </el-col>
                 </el-row>
 
+                <!-- Google Meet -->
+                <el-row v-if="$root.settings.googleCalendar.googleMeetEnabled && period.googleMeetUrl && !$root.licence.isLite && !$root.licence.isStarter" :gutter="10">
+                  <el-col :sm="12">
+                    <p>{{ $root.labels.google_meet_link }}</p>
+                  </el-col>
+                  <el-col :sm="12">
+                    <p><a class="am-link" :href="period.googleMeetUrl">{{ $root.labels.google_meet_join }}</a></p>
+                  </el-col>
+                </el-row>
+
+                <!-- Microsoft Teams -->
+                <el-row v-if="$root.settings.outlookCalendar.microsoftTeamsEnabled && period.microsoftTeamsUrl && !$root.licence.isLite && !$root.licence.isStarter" :gutter="10">
+                  <el-col :sm="12">
+                    <p>{{ $root.labels.microsoft_teams_link }}</p>
+                  </el-col>
+                  <el-col :sm="12">
+                    <p><a class="am-link" :href="period.microsoftTeamsUrl">{{ $root.labels.microsoft_teams_join }}</a></p>
+                  </el-col>
+                </el-row>
+
                 <!-- Lesson Space -->
                 <el-row v-if="$root.settings.lessonSpace.enabled && period.lessonSpace" :gutter="10">
                   <el-col :sm="12">
@@ -480,6 +500,7 @@
                     :placeholder="$root.labels.select"
                     :popper-class="'am-dropdown-cabinet'"
                     :clearable="true"
+                    :filterable="true"
                     :value="null"
                   >
                     <el-option
@@ -1476,6 +1497,7 @@
               :generalSettings="event.settings.general"
               :lessonSpaceSettings="event.settings.lessonSpace"
               :google-meet-settings="event.settings.googleMeet"
+              :microsoft-teams-settings="event.settings.microsoftTeams"
             >
             </entity-settings>
           </el-tab-pane>
@@ -1715,7 +1737,7 @@
         closeAfterMin: false,
         currentUser: null,
         customPrice: 0,
-        calendarConflict: {enable: false},
+        calendarConflict: {enabled: false},
         checkCalendarEvents: false,
         customPricingEnabled: false,
         customPricingByDateRangeEnabled: false,
@@ -1944,6 +1966,7 @@
             googleCalendarEventId: period.googleCalendarEventId,
             googleMeetUrl: period.googleMeetUrl,
             outlookCalendarEventId: period.outlookCalendarEventId,
+            microsoftTeamsUrl: period.microsoftTeamsUrl,
             appleCalendarEventId: period.appleCalendarEventId
           })
         })

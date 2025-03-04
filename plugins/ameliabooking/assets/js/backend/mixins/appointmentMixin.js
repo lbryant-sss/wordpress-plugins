@@ -31,10 +31,12 @@ export default {
           {label: this.$root.labels.status, value: 'status', checked: true},
           {label: this.$root.labels.custom_fields, value: 'customFields', checked: true},
           {label: this.$root.labels.ph_booking_number_of_persons, value: 'persons', checked: true},
-          {label: this.$root.labels.coupon_code, value: 'couponCode', checked: true}
+          {label: this.$root.labels.coupon_code, value: 'couponCode', checked: true},
+          {label: this.$root.labels.extras, value: 'extras', checked: true}
         ]
       },
       savedAppointment: null,
+      totalBookings: 0,
       statuses: [
         {
           value: 'approved',
@@ -171,12 +173,15 @@ export default {
       }, 500)
     },
 
-    saveAppointmentCallback (response) {
-      if (response.booking) {
+    saveAppointmentCallback (response, isReassign = false) {
+      this.appointment = this.getInitAppointmentObject(null)
+
+      if (response && 'booking' in response && response.booking && !isReassign) {
         this.$http.post(`${this.$root.getAjaxUrl}/bookings/success/` + response.booking.id, {
           type: 'appointment',
           appointmentStatusChanged: response.appointmentStatusChanged,
-          paymentId: 'paymentId' in response && response.paymentId ? response.paymentId : null
+          paymentId: 'paymentId' in response && response.paymentId ? response.paymentId : null,
+          packageBookingFromBackend: 'packageBookingFromBackend' in response ? response.packageBookingFromBackend : null
         })
       }
 
@@ -271,6 +276,8 @@ export default {
         config
       )
         .then(response => {
+          this.totalBookings = response.data.data.appointment.bookings.length
+
           if (customerId) {
             response.data.data.appointment.bookings = response.data.data.appointment.bookings.filter(i => parseInt(i.customerId) === parseInt(customerId))
           }
@@ -484,6 +491,38 @@ export default {
             this.notify(this.$root.labels.error, this.$root.labels.time_slot_unavailable, 'error')
 
             app.status = e.response.data.data.status
+          }
+
+          this.updateStatusDisabled = false
+        })
+    },
+
+    updateAppointmentBookingStatus (booking, status, packageCustomer, callback = null) {
+      this.updateStatusDisabled = true
+
+      this.form.post(`${this.$root.getAjaxUrl}/bookings/status/${booking.id}`, {
+        'status': status
+      })
+        .then(response => {
+          this.notify(
+            (status === response.data.booking.status) ? this.$root.labels.success : this.$root.labels.error,
+            this.$root.labels.booking_status_changed + (this.$root.labels[response.data.booking.status]).toLowerCase(),
+            (status === response.data.booking.status) ? 'success' : 'error'
+          )
+
+          booking.status = response.data.booking.status
+
+          if (packageCustomer && callback) {
+            callback()
+          }
+
+          this.updateStatusDisabled = false
+        })
+        .catch(e => {
+          if ('timeSlotUnavailable' in e.response.data.data && e.response.data.data.timeSlotUnavailable === true) {
+            this.notify(this.$root.labels.error, this.$root.labels.time_slot_unavailable, 'error')
+
+            booking.status = e.response.data.data.status
           }
 
           this.updateStatusDisabled = false

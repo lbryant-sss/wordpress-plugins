@@ -1,5 +1,46 @@
 # Release Notes
 
+## 1.9.1 - January 14, 2025
+
+### 🐛 Fixed
+
+- Remove `ABS_PATH` validation in `helpers.php` to improve PHPUnit compatibility and test loading mechanism
+---
+
+## 1.9.0 - December 22, 2024
+
+### ✨ Added
+
+- Added new `registerPlaceholderTitle` overwritten method in `WordPressCustomPostTypeServiceProvider` to set the placeholder title for the custom post type.
+- Added new `registerAfterTitleView` overwritten method in `WordPressCustomPostTypeServiceProvider` to set the after title view for the custom post type.
+- Added new `registerColumns` overwritten method in `WordPressCustomPostTypeServiceProvider` to set the columns for the custom post type.
+- Added new `registerPostMeta` overwritten method in `WordPressCustomPostTypeServiceProvider` to register the post meta for the custom post type.
+- Added new `registerMetaBoxes` overwritten method in `WordPressCustomPostTypeServiceProvider` to register the post meta for the custom post type.
+- Added new `registerLabels` overwritten method in `WordPressCustomPostTypeServiceProvider` to set the labels for the custom post type.
+- Added new `columnContent` overwritten method in `WordPressCustomPostTypeServiceProvider` to handle the column content for the custom post type.
+- Added new `wpbones_console_deploy_dont_skip_files_folders` filters to exclude specific files from deployment
+- Added new `wpbones_console_deploy_default_skip_files_folders` filters the default list of the files and folder to skip during deployment
+- Added new `wpbones_console_deploy_build_assets` filters to skip asset building during deployment
+
+### 🐛 Fixed
+
+- Minor fixes in the [documentation](https://wpbones.com/docs)
+
+### 💎 Changed and Improved
+
+- Updated the [Custom Post Type](https://wpbones.com/docs/ServicesProvider/custom-post-types) documentation to reflect the new changes
+- Added the [Custom Post Type](https://wpbones.com/docs/CoreClasses/cpt) core class documentation
+- Improved documentation header generation to provide concise page content summaries
+- Enhance package manager handling within the `php bones` command for improved reliability and performance
+- Enhance `php bones install` command with comprehensive package installation support (#54)
+- Minor fixes and improvements to the `php bones` command.
+
+## 💥 Breaking Changes
+
+- The `registerMetaBoxCallback` property in the `WordPressCustomPostTypeServiceProvider` is **deprecated**, use `registerMetaBoxes` overwritten method instead.
+
+---
+
 ## 1.8.0 - November 15, 2024
 
 ### ✨ Added
@@ -23,6 +64,8 @@
 - Updated the [Service Providers](https://wpbones.com/docs/ServicesProvider/services) documentation to reflect the new changes
 - Completely rewrote all boilerplates using the new [`wpkirk-helpers`](https://github.com/wpbones/wpkirk-helpers) package, enhancing project structure and maintainability
 - Improved documentation for Boilerplate, addressing minor bug fixes and enhancing overall clarity
+
+---
 
 ## 1.7.0 - October 16, 2024
 
@@ -54,6 +97,8 @@
 - The `"log"` entry in the `config/plugin.php` file is **deprecated**. Use the new setting `logging` instead.
 - The `"log_level"` entry in the `config/plugin.php` file is **deprecated** as it is no longer used.
 
+---
+
 ## 1.6.5 - October 2, 2024
 
 ### ✨ Added
@@ -78,6 +123,8 @@
 ## 💥 Breaking Changes
 
 - Deprecated `withScripts()` and `withStyles()` fluent methods in the [`View Class`](https://wpbones.com/docs/CoreClasses/view) - use `withScript()` and `withStyle()` instead.
+
+---
 
 ## 1.6.0 - September 24, 2024
 

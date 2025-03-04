@@ -30,7 +30,7 @@ class Routes extends WP_REST_Controller
       [
         [
           'methods'             => WP_REST_Server::READABLE,
-          'callback'            => [$this->entryController, 'googleAuth'],
+          'callback'            => [$this->entryController, 'authRedirect'],
           'permission_callback' => '__return_true'
         ]
 
@@ -43,7 +43,7 @@ class Routes extends WP_REST_Controller
       [
         [
           'methods'             => WP_REST_Server::READABLE,
-          'callback'            => [$this->entryController, 'oneDriveAuth'],
+          'callback'            => [$this->entryController, 'authRedirect'],
           'permission_callback' => '__return_true'
         ]
 

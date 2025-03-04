@@ -95,7 +95,7 @@ let model = computed({
 let addressCustomFields = ref()
 
 onMounted(() => {
-  if (model.value) {
+  if (model.value && addressCustomFields.value) {
     addressCustomFields.value.update(model.value)
   }
 })

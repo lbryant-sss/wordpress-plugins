@@ -294,7 +294,7 @@
 
             <!-- Outlook Calendar -->
             <el-row
-              v-if="$root.settings.outlookCalendar && employee.id !== 0 && !$root.licence.isLite && !$root.licence.isStarter"
+              v-if="$root.settings.outlookCalendar.enabled && employee.id !== 0 && !$root.licence.isLite && !$root.licence.isStarter"
               :gutter="16"
             >
 
@@ -1124,7 +1124,7 @@
       },
 
       getOutlookAuthURL (inlineSVG) {
-        if (this.employee.id && this.$root.settings.outlookCalendar) {
+        if (this.employee.id && this.$root.settings.outlookCalendar.enabled) {
           this.$http.get(`${this.$root.getAjaxUrl}/outlook/authorization/url/` + this.employee.id)
             .then(response => {
               this.outlookAuthURL = response.data.data.authUrl

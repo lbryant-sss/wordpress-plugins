@@ -215,8 +215,8 @@ export default {
                 googleCalendarEventId: period.googleCalendarEventId,
                 googleMeetUrl: period.googleMeetUrl,
                 outlookCalendarEventId: period.outlookCalendarEventId,
+                microsoftTeamsUrl: period.microsoftTeamsUrl,
                 appleCalendarEventId: period.appleCalendarEventId
-
               }
             )
           })

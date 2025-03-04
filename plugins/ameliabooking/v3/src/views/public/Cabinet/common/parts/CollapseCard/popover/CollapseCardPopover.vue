@@ -36,6 +36,7 @@ import Extras from "./templates/Extras.vue";
 import Tickets from "./templates/Tickets.vue";
 import CustomFields from "./templates/CustomFields.vue";
 import Employee from "./templates/Employee.vue";
+import Customers from "./templates/Customers.vue";
 
 // * Import from Vue
 import {
@@ -68,7 +69,8 @@ let templates = ref({
   extras: markRaw(Extras),
   ticket: markRaw(Tickets),
   customField: markRaw(CustomFields),
-  employee: markRaw(Employee)
+  employee: markRaw(Employee),
+  customers: markRaw(Customers),
 })
 
 // * Fonts

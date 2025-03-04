@@ -148,6 +148,7 @@ function woe_create_selected_fields( old_output_format, format, format_changed )
 	}
 
 	if (!jQuery('#display_summary_row_checkbox').is(":checked")) {
+        jQuery('.summary-row-title').addClass('hide');
 		jQuery('#title_for_summary_row_block').hide();
 	}
 
@@ -1836,6 +1837,7 @@ jQuery( document ).ready( function ( $ ) {
 
                                 jQuery('.mapping_row-sum_field_block').addClass('hide');
                                 jQuery('.summary-row-title').addClass('hide');
+								jQuery('#display_summary_row_checkbox').prop('checked', false);
 			}
 
 		} else {
@@ -1938,6 +1940,7 @@ jQuery( document ).ready( function ( $ ) {
 
 				jQuery('.mapping_row-sum_field_block').addClass('hide');
 				jQuery('.summary-row-title').addClass('hide');
+				jQuery('#display_summary_row_checkbox').prop('checked', false);
 			}
 
 			$( '#unselected_fields .segment_choice[data-segment="' + segment + '"]' ).addClass( 'active' );

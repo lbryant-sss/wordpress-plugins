@@ -26,7 +26,7 @@
     </div>
     <el-config-provider :locale="elementPlusTranslations(props.lang)">
       <el-date-picker
-        v-bind="$props"
+        v-bind="filteredProps"
         :id="id"
         ref="amDatePicker"
         v-model="model"
@@ -39,17 +39,20 @@
         :default-value="defaultValue"
         :clearable="clearable"
         :disabled-date="disabledDate"
+        :disabled="disabled"
         :value-format="valueFormat"
         :format="format"
         :editable="editable"
         class="am-date-picker"
         :popper-style="cssVars"
+        :style="cssVars"
         :class="[`am-date-picker--${size}`, {'am-date-picker--disabled': disabled}, {'am-date-picker--custom': props.type === 'daterange' && props.customInputDisplay}]"
         @input="(eventValue) => $emit('input', eventValue)"
         @change="(eventValue) => $emit('change', eventValue)"
         @blur="(e) => $emit('blur', e)"
         @focus="(e) => $emit('focus', e)"
         @calendar-change="(e) => $emit('calendar-change', e)"
+        @panel-change="(e) => $emit('panel-change', e)"
       ></el-date-picker>
     </el-config-provider>
   </div>
@@ -162,10 +165,20 @@ const props = defineProps({
   }
 })
 
+const unrefProps = (props) => {
+  const unref = {};
+  for (const key in props) {
+    unref[key] = props[key].value; // Get the value of each ref
+  }
+  return unref;
+};
+
+const { size, ...filteredProps } = unrefProps(toRefs(props));
+
 /**
  * Component Emits
  * */
-const emits = defineEmits(['change', 'input', 'visible-change', 'remove-tag', 'clear', 'blur', 'focus', 'calendar-change', 'update:modelValue'])
+const emits = defineEmits(['change', 'input', 'visible-change', 'remove-tag', 'clear', 'blur', 'focus', 'calendar-change', 'panel-change', 'update:modelValue'])
 
 /**
  * Component model
@@ -206,11 +219,16 @@ let cssVars = computed(() => {
     '--am-c-inp-bgr': amColors.value.colorInpBgr,
     '--am-c-inp-border': amColors.value.colorInpBorder,
     '--am-c-inp-text': amColors.value.colorInpText,
+    '--am-c-inp-text-op03': useColorTransparency(amColors.value.colorInpText, 0.03),
+    '--am-c-inp-text-op60': useColorTransparency(amColors.value.colorInpText, 0.6),
     '--am-c-inp-placeholder': amColors.value.colorInpPlaceHolder,
     '--am-c-drop-bgr': amColors.value.colorDropBgr,
     '--am-c-drop-text': amColors.value.colorDropText,
+    '--am-c-drop-text-op03': useColorTransparency(amColors.value.colorDropText, 0.03),
     '--am-c-drop-text-op10': useColorTransparency(amColors.value.colorDropText, 0.1),
+    '--am-c-drop-text-op30': useColorTransparency(amColors.value.colorDropText, 0.3),
     '--am-c-drop-text-op50': useColorTransparency(amColors.value.colorDropText, 0.5),
+    '--am-c-drop-text-op70': useColorTransparency(amColors.value.colorDropText, 0.7),
     '--am-c-drop-text-op80': useColorTransparency(amColors.value.colorDropText, 0.8),
     '--am-c-drop-border': amColors.value.colorDropBorder,
     '--am-c-btn-prim': amColors.value.colorBtnPrim,
@@ -236,6 +254,10 @@ let cssVars = computed(() => {
     flex: 1;
 
     &.am-date-picker {
+      &--default {
+        height: 40px;
+      }
+
       &--small {
         height: 32px;
       }
@@ -273,6 +295,13 @@ let cssVars = computed(() => {
         border: 1px solid var(--am-c-inp-border);
       }
 
+      &.is-disabled {
+        .el-input__inner {
+          background: var(--am-c-inp-text-op03);
+          color: var(--am-c-inp-text-op60);
+        }
+      }
+
       // Size - default / medium / small / mini / micro
       &--default .el-input__inner {
         height: 40px;
@@ -293,7 +322,7 @@ let cssVars = computed(() => {
           align-items: center;
 
           .am-icon-calendar {
-            font-size: 24px;
+            font-size: 20px;
           }
         }
 
@@ -313,6 +342,10 @@ let cssVars = computed(() => {
     }
 
     .am-date-picker {
+      &--default {
+        height: 40px;
+      }
+
       &__input {
         display: flex;
         align-items: center;
@@ -339,7 +372,7 @@ let cssVars = computed(() => {
         }
 
         .am-icon-calendar {
-          font-size: 24px;
+          font-size: 20px;
           color: var(--am-c-capf-text);
         }
 
@@ -358,6 +391,19 @@ let cssVars = computed(() => {
         top: -16px;
       }
     }
+
+    .el-range {
+      &-input {
+        background-color: transparent;
+        color: var(--am-c-inp-text);
+        font-size: var(--am-fs-input);
+      }
+
+      &__icon {
+        font-size: 24px;
+        color: var(--am-c-inp-text);
+      }
+    }
   }
 }
 
@@ -366,25 +412,29 @@ let cssVars = computed(() => {
   color: var(--am-c-drop-text);
   border: 1px solid var(--am-c-drop-border);
 
-  &__icon-btn:hover {
-    //background: transparent;
-    color: var(--am-c-btn-prim)
+  &__icon-btn {
+    color: var(--am-c-drop-text);
+
+    &:hover {
+      color: var(--am-c-btn-prim)
+    }
   }
 
   &__content {
+    &.is-left {
+      border-right: 1px solid var(--am-c-drop-text-op10);
+    }
     table, table td, table tr, table tr:is(.el-date-table__row) {
       border: none !important;
     }
     table tr:not(.el-date-table__row) th {
+      color: var(--am-c-drop-text-op70);
       border: none !important;
-      border-bottom: 1px solid #ebeef5 !important;
+      border-bottom: 1px solid var(--am-c-drop-text-op10) !important;
     }
     table {
       td.today .el-date-table-cell__text {
         color: var(--am-c-drop-text);
-        &:hover {
-          //color: white;
-        }
       }
       td.current:not(.disabled) .el-date-table-cell__text {
         background: var(--am-c-btn-prim);
@@ -407,7 +457,19 @@ let cssVars = computed(() => {
       td.today.start-date .el-date-table-cell__text {
         color: var(--am-c-drop-bgr);
       }
+      td.prev-month, td.next-month {
+        color: var(--am-c-drop-text-op30);
+      }
+
+      td.disabled .el-date-table-cell {
+        color: var(--am-c-drop-text-op30);
+        background-color: var(--am-c-drop-text-op03);
+      }
     }
+  }
+
+  .d-arrow-left, .d-arrow-right {
+    display: none;
   }
 }
 
@@ -425,7 +487,7 @@ let cssVars = computed(() => {
     color: #303133;
     cursor: pointer;
     margin-top: 8px;
-    border-width: 0px;
+    border-width: 0;
     border-style: initial;
     border-color: initial;
     border-image: initial;
@@ -446,6 +508,19 @@ let cssVars = computed(() => {
   }
   &-label:hover {
     color: var(--am-c-btn-prim);
+  }
+}
+
+.el-popper {
+  &.el-picker__popper {
+    &[data-popper-placement^="top"],
+    &[data-popper-placement^="bottom"],
+    &[data-popper-placement^="left"],
+    &[data-popper-placement^="right"] {
+      .el-popper__arrow {
+        display: none;
+      }
+    }
   }
 }
 

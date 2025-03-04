@@ -7,7 +7,10 @@
             <span class="am-icon-options"></span> {{amLabels.options}}
           </span>
         </AmArrowMenuItem>
-        <AmArrowMenuItem @click="handleClick('labels')">
+        <AmArrowMenuItem
+          v-if="pageRenderKey !== 'cape'"
+          @click="handleClick('labels')"
+        >
           <span class="am-cs-part__item">
             <span class="am-icon-labels"></span> {{amLabels.labels}}
           </span>
@@ -20,6 +23,8 @@
 <script setup>
 import AmArrowMenuItem from "../../../_components/arrow-menu/AmArrowMenuItem";
 import { inject } from "vue";
+
+let pageRenderKey = inject('pageRenderKey')
 
 let { goBackPath, parentPath, handleClick } = inject('sidebarFunctionality')
 goBackPath.value = 'menu'

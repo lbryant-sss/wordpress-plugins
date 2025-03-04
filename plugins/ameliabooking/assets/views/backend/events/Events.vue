@@ -695,6 +695,7 @@
           period.googleCalendarEventId = null
           period.googleMeetUrl = null
           period.outlookCalendarEventId = null
+          period.microsoftTeamsUrl = null
           period.appleCalendarEventId = null
         })
 

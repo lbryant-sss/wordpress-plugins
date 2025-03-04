@@ -4,87 +4,89 @@
     class="am-capi"
     :style="cssVars"
   >
-    <AmAlert
-      v-if="alertVisibility"
-      type="success"
-      :show-border="true"
-      :close-after="5000"
-      custom-class="am-capi__alert"
-      @trigger-close="closeAlert"
-    >
-      <template #title>
-        <span class="am-icon-checkmark-circle-full"></span> {{ successMessage }}
-      </template>
-    </AmAlert>
-
-    <el-tabs
-      v-model="activeTab"
-      class="am-capi__tabs"
-      @tab-click="tabClick"
-    >
-      <el-tab-pane
-        class="am-capi__tabs-item"
-        :label="labelsDisplay('personal_info')"
-        name="first"
+    <div class="am-capi__inner">
+      <AmAlert
+        v-if="alertVisibility"
+        type="success"
+        :show-border="true"
+        :close-after="5000"
+        custom-class="am-capi__alert"
+        @trigger-close="closeAlert"
       >
-        <el-form
-          ref="infoFormRef"
-          :model="infoFormData"
-          :rules="infoFormRules"
-          label-position="top"
-          class="am-capi__form"
-          :class="responsiveClass"
-        >
-          <template v-for="item in amCustomize.capc.profile.order" :key="item.id">
-            <component
-              :is="infoFormConstruction[item.id].template"
-              v-if="amCustomize[pageRenderKey].profile.options[item.id] ? amCustomize[pageRenderKey].profile.options[item.id].visibility : true"
-              ref="customerCollectorRef"
-              v-model="infoFormData[item.id]"
-              v-model:countryPhoneIso="infoFormConstruction[item.id].countryPhoneIso"
-              v-bind="infoFormConstruction[item.id].props"
-            ></component>
-          </template>
-        </el-form>
-      </el-tab-pane>
-      <el-tab-pane
-        class="am-capi__tabs-item"
-        :label="labelsDisplay('password_tab')"
-        name="second"
+        <template #title>
+          <span class="am-icon-checkmark-circle-full"></span> {{ successMessage }}
+        </template>
+      </AmAlert>
+
+      <el-tabs
+        v-model="activeTab"
+        class="am-capi__tabs"
+        @tab-click="tabClick"
       >
-        <el-form
-          ref="passFormRef"
-          :model="passFormData"
-          :rules="passFormRules"
-          label-position="top"
-          class="am-capi__form"
-          :class="responsiveClass"
+        <el-tab-pane
+          class="am-capi__tabs-item"
+          :label="labelsDisplay('personal_info')"
+          name="first"
         >
-          <template v-for="(item, key) in passFormConstruction" :key="item.props.itemName">
-            <component
-              :is="item.template"
-              ref="customerPassCollectorRef"
-              v-model="passFormData[key]"
-              v-bind="item.props"
-            ></component>
-          </template>
-        </el-form>
-      </el-tab-pane>
-    </el-tabs>
+          <el-form
+            ref="infoFormRef"
+            :model="infoFormData"
+            :rules="infoFormRules"
+            label-position="top"
+            class="am-capi__form"
+            :class="responsiveClass"
+          >
+            <template v-for="item in amCustomize.capc.profile.order" :key="item.id">
+              <component
+                :is="infoFormConstruction[item.id].template"
+                v-if="amCustomize[pageRenderKey].profile.options[item.id] ? amCustomize[pageRenderKey].profile.options[item.id].visibility : true"
+                ref="customerCollectorRef"
+                v-model="infoFormData[item.id]"
+                v-model:countryPhoneIso="infoFormConstruction[item.id].countryPhoneIso"
+                v-bind="infoFormConstruction[item.id].props"
+              ></component>
+            </template>
+          </el-form>
+        </el-tab-pane>
+        <el-tab-pane
+          class="am-capi__tabs-item"
+          :label="labelsDisplay('password_tab')"
+          name="second"
+        >
+          <el-form
+            ref="passFormRef"
+            :model="passFormData"
+            :rules="passFormRules"
+            label-position="top"
+            class="am-capi__form"
+            :class="responsiveClass"
+          >
+            <template v-for="(item, key) in passFormConstruction" :key="item.props.itemName">
+              <component
+                :is="item.template"
+                ref="customerPassCollectorRef"
+                v-model="passFormData[key]"
+                v-bind="item.props"
+              ></component>
+            </template>
+          </el-form>
+        </el-tab-pane>
+      </el-tabs>
 
-    <DeleteProfile
-      :visibility="deleteProfileVisibility"
-      :customized-labels="globalStepLabels('deleteProfile')"
-      :customized-options="amCustomize.capc.deleteProfile.options"
-    />
+      <DeleteProfile
+        :visibility="deleteProfileVisibility"
+        :customized-labels="globalStepLabels('deleteProfile')"
+        :customized-options="amCustomize.capc.deleteProfile.options"
+      />
 
-    <MainProfileFooter
-      :display="activeTab"
-      :customized-labels="globalStepLabels('profile')"
-      :delete-footer-type="amCustomize.capc.profile.options.deleteFooterButton.buttonType"
-      :save-footer-button="amCustomize.capc.profile.options.saveFooterButton.buttonType"
-      :pass-footer-button="amCustomize.capc.profile.options.passFooterButton.buttonType"
-    />
+      <MainProfileFooter
+        :display="activeTab"
+        :customized-labels="globalStepLabels('profile')"
+        :delete-footer-type="amCustomize.capc.profile.options.deleteFooterButton.buttonType"
+        :save-footer-button="amCustomize.capc.profile.options.saveFooterButton.buttonType"
+        :pass-footer-button="amCustomize.capc.profile.options.passFooterButton.buttonType"
+      />
+    </div>
   </div>
 </template>
 
@@ -467,6 +469,12 @@ export default {
   // capi - cabinet personal information
   // capp - cabinet personal password
   .am-capi {
+    &__inner {
+      display: block;
+      padding: 16px 32px;
+    }
+
+    // Tabs
     .el-tabs {
 
       &__nav {
@@ -521,7 +529,7 @@ export default {
       .el-form {
         &-item {
           display: block;
-          font-family: var(--am-font-family);
+          font-family: var(--am-font-family), sans-serif;
           font-size: var(--am-fs-label);
           margin-bottom: 24px;
 

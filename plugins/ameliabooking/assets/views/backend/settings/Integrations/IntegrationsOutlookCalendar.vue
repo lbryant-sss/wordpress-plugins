@@ -71,7 +71,7 @@
     </el-form-item>
     <!-- /Redirect URI -->
 
-
+    <!-- Title & Description -->
     <el-collapse>
       <el-collapse-item class="am-setting-box">
         <template slot="title">
@@ -233,7 +233,29 @@
         </template>
       </el-collapse-item>
     </el-collapse>
-    <!-- /Event Title -->
+    <!-- /Event Title & Description -->
+
+    <!-- Enable Microsoft Teams -->
+    <div class="am-setting-box am-switch-box">
+      <el-row type="flex" align="middle" :gutter="24">
+        <el-col :span="20">
+          {{ $root.labels.enable_microsoft_teams }}
+          <el-tooltip placement="top">
+            <div slot="content" v-html="$root.labels.enable_microsoft_teams_tooltip"></div>
+            <i class="el-icon-question am-tooltip-icon"></i>
+          </el-tooltip>
+        </el-col>
+        <el-col :span="4" class="align-right">
+          <el-switch
+              v-model="settings.enableMicrosoftTeams"
+              active-text=""
+              inactive-text=""
+          >
+          </el-switch>
+        </el-col>
+      </el-row>
+    </div>
+    <!-- /Enable Microsoft Teams -->
 
     <!-- Insert Pending Appointments -->
     <div class="am-setting-box am-switch-box">

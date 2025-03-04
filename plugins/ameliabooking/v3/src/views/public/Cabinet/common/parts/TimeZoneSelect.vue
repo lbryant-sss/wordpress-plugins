@@ -1,5 +1,6 @@
 <template>
   <AmSelect
+    v-if="!activeBooking"
     v-model="timeZoneSelection"
     :filterable="true"
     :placeholder="useCurrentTimeZone()"
@@ -70,6 +71,8 @@ let timeZoneSelection = computed({
     store.commit('cabinet/setTimeZone', val ? val : '')
   }
 })
+
+let activeBooking = computed(() => store.getters['appointment/getActive'] || store.getters['event/getActive'] || store.getters['attendee/getActive'])
 
 const adminTimeZone = inject('timeZone')
 

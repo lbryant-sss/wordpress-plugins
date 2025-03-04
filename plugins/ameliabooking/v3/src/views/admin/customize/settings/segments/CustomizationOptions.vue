@@ -23,7 +23,7 @@
           <AmSwitch
             v-model="option.required"
             @change="requiredChange(option.name)"
-          ></AmSwitch>
+          />
         </div>
 
         <!-- Visibility -->
@@ -37,7 +37,7 @@
           <AmSwitch
             v-model="option.visibility"
             :disabled="option.required"
-          ></AmSwitch>
+          />
         </div>
 
         <!-- Filterable -->
@@ -50,7 +50,7 @@
           </span>
           <AmSwitch
             v-model="option.filterable"
-          ></AmSwitch>
+          />
         </div>
 
         <!-- Button Type -->
@@ -85,7 +85,7 @@
 </template>
 
 <script setup>
-import AmSwitch from '../../../_components/switch/AmSwitch.vue'
+import AmSwitch from '../../../../_components/switch/AmSwitch.vue'
 import AmRadioGroup from '../../../../_components/radio/AmRadioGroup.vue'
 import AmRadio from '../../../../_components/radio/AmRadio.vue'
 import AmButton from '../../../../_components/button/AmButton.vue'

@@ -62,10 +62,7 @@
               class="am-cc__heading-actions"
               :class="props.responsiveClass"
             >
-              <PaymentButton
-                v-if="!props.isPackageBooking && !licence.isStarter"
-              >
-              </PaymentButton>
+              <PaymentButton v-if="!props.isPackageBooking && !licence.isStarter && pageRenderKey !== 'cape'"/>
               <el-popover
                 v-if="props.reservation.cancelable || props.reservation.reschedulable"
                 ref="editRef"
@@ -85,6 +82,7 @@
                   ></span>
                 </template>
                 <div
+                  v-if="pageRenderKey === 'capc'"
                   v-click-outside="closeEditItemPopup"
                   class="am-cc__edit"
                 >
@@ -114,6 +112,51 @@
                   </div>
                   <!-- /Cancel item -->
                 </div>
+
+                <template v-if="pageRenderKey === 'cape'">
+                  <div
+                    v-click-outside="closeEditItemPopup"
+                    class="am-cc__edit"
+                  >
+                    <!-- Edit Appointment -->
+                    <div class="am-cc__edit-item am-edit">
+                      <span class="am-icon-edit"/>
+                      <span class="am-cc__edit-text">
+                      {{ amLabels.edit }}
+                    </span>
+                    </div>
+                    <!-- /Edit Appointment -->
+                  </div>
+
+                  <template v-if="props.reservation.type === 'event'">
+                    <div
+                      v-click-outside="closeEditItemPopup"
+                      class="am-cc__edit"
+                    >
+                      <!-- Edit Attendee -->
+                      <div class="am-cc__edit-item am-edit">
+                        <span class="am-icon-users-plus"></span>
+                        <span class="am-cc__edit-text">
+                        {{ amLabels.event_add_attendee }}
+                      </span>
+                      </div>
+                      <!-- /Edit Attendee -->
+                    </div>
+                    <div
+                      v-click-outside="closeEditItemPopup"
+                      class="am-cc__edit"
+                    >
+                      <!-- List Event Attendees -->
+                      <div class="am-cc__edit-item am-edit">
+                        <span class="am-icon-user"></span>
+                        <span class="am-cc__edit-text">
+                        {{ amLabels.attendees }}
+                      </span>
+                      </div>
+                      <!-- /List Event Attendees -->
+                    </div>
+                  </template>
+                </template>
               </el-popover>
             </div>
           </div>
@@ -125,7 +168,7 @@
           >
             <div class="am-cc__content-inner">
               <!-- Employee -->
-              <template v-if="props.employee && props.customizedOptions.employee.visibility">
+              <template v-if="pageRenderKey === 'capc' && props.employee && props.customizedOptions.employee.visibility">
                 <CollapseCardPopover
                   v-if="Array.isArray(props.employee) ? props.employee.length : Object.keys(props.employee).length"
                   :header-text="Array.isArray(props.employee) ? labelsDisplay('view_employees') : labelsDisplay('provider_profile')"
@@ -187,6 +230,15 @@
                 </a>
               </div>
               <!-- /GoogleMeet link -->
+
+              <!-- Microsoft Teams Link -->
+              <div v-if="props.microsoftTeamsLink && !licence.isStarter" class="am-cc__data link">
+                <span class="am-icon-link"></span>
+                <a class="am-cc__data-text link">
+                  {{ labelsDisplay('microsoft_teams_link') }}
+                </a>
+              </div>
+              <!-- /Microsoft Teams link -->
 
               <!-- Zoom Link -->
               <div v-if="props.zoomLink && !licence.isStarter" class="am-cc__data link">
@@ -370,6 +422,10 @@ let props = defineProps({
     type: String,
     default: ''
   },
+  microsoftTeamsLink: {
+    type: String,
+    default: ''
+  },
   zoomLink: {
     type: String,
     default: ''
@@ -485,7 +541,7 @@ export default {
   // cc - collapse card
   .am-cc {
     * {
-      font-family: var(--am-font-family);
+      font-family: var(--am-font-family), sans-serif;
       box-sizing: border-box;
     }
 
@@ -775,7 +831,7 @@ export default {
     box-shadow: 0 2px 12px 0 var(--am-c-cc-text-op10);
 
     * {
-      font-family: var(--am-font-family);
+      font-family: var(--am-font-family), sans-serif;
       box-sizing: border-box;
     }
   }

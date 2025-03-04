@@ -279,7 +279,7 @@ class WC_Order_Export_Engine {
 
 	}
 
-	protected static function _install_options( $settings ) {
+	protected static function _install_options( $settings, $order_ids ) {
 		global $wpdb;
 
 		$format = strtolower( $settings['format'] );
@@ -293,7 +293,16 @@ class WC_Order_Export_Engine {
 		if ( ! empty( $settings['all_products_from_order'] ) ) {
 			$options['include_products'] = false;
 		} else {
-			$options['include_products'] = $wpdb->get_col( WC_Order_Export_Data_Extractor::sql_get_product_ids( $settings ) );
+			// we get exact order ids -- export started via Bulk Actions
+			if( $order_ids ) {
+				$main_settings = WC_Order_Export_Main_Settings::get_settings();
+				if( apply_filters("woe_filter_bulk_action_export", $main_settings['apply_filters_to_bulk_actions']) )
+					$options['include_products'] = $wpdb->get_col( WC_Order_Export_Data_Extractor::sql_get_product_ids( $settings ) );
+				else
+					$options['include_products'] = false;//don't filter products by default
+			}
+			else
+				$options['include_products'] = $wpdb->get_col( WC_Order_Export_Data_Extractor::sql_get_product_ids( $settings ) );
 		}
 
 		if ( empty( $settings['export_matched_items'] ) ) {
@@ -419,17 +428,20 @@ class WC_Order_Export_Engine {
 			$order_data_store = WC_Data_Store::load( 'order' );
 			$order_type = $order_data_store->get_order_type( $order_id );
 			if($order_type == "shop_order") { //set new status only for order!
-				$order = new WC_Order( $order_id );
-				$order->update_status( $settings['change_order_status_to'] );
+				$order = wc_get_order( $order_id );
+				if( $order )
+					$order->update_status( $settings['change_order_status_to'] );
 			}
 		}
 	}
 
 	protected static function try_mark_order( $order_id, $settings ) {
 		if ( $settings['mark_exported_orders'] ) {
-            $order = new WC_Order($order_id);
-            $order->add_meta_data('woe_order_exported' . apply_filters("woe_exported_postfix",''), current_time( 'timestamp' ), true);
-            $order->save();
+            $order = wc_get_order($order_id);
+			if( $order ) {
+				$order->add_meta_data('woe_order_exported' . apply_filters("woe_exported_postfix",''), current_time( 'timestamp' ), true);
+				$order->save();
+			}
 		}
 	}
 
@@ -456,7 +468,7 @@ class WC_Order_Export_Engine {
 			WC_Order_Export_Data_Extractor::start_track_queries();
 		}
 		// might run sql!
-		self::$extractor_options = self::_install_options( $settings );
+		self::$extractor_options = self::_install_options( $settings, [] );
 
 		if ( $output_mode == 'browser' ) {
 			$filename = 'php://output';
@@ -479,7 +491,7 @@ class WC_Order_Export_Engine {
 
 		//get IDs
 		$sql = WC_Order_Export_Data_Extractor::sql_get_order_ids( $settings );//backtrace
-                $sort_field = $settings['sort'];
+		$sort_field = $settings['sort'];
 		$settings = self::replace_sort_field( $settings );
 		if ( $make_mode == 'estimate' OR $make_mode =='estimate_preview' ) { //if estimate return total count
 			return $wpdb->get_var( str_replace( 'orders.ID AS order_id', 'COUNT(orders.ID) AS order_count', $sql ) );
@@ -586,7 +598,7 @@ class WC_Order_Export_Engine {
 		self::$current_job_settings   = $settings;
 		self::$current_job_build_mode = 'full';
 		self::$date_format            = trim( $settings['date_format'] . ' ' . $settings['time_format'] );
-		self::$extractor_options      = self::_install_options( $settings );
+		self::$extractor_options      = self::_install_options( $settings, $order_ids );
 		
 		$main_settings = WC_Order_Export_Main_Settings::get_settings();
 
@@ -602,6 +614,7 @@ class WC_Order_Export_Engine {
 		$settings['order_ids'] = $order_ids;
 		//get IDs
 		$sql = WC_Order_Export_Data_Extractor::sql_get_order_ids( $settings );
+		$sort_field = $settings['sort'];
 		$settings = self::replace_sort_field( $settings );
 		$sql .= apply_filters( "woe_sql_get_order_ids_order_by",
 			" ORDER BY " . $settings['sort'] . " " . $settings['sort_direction'] );
@@ -621,6 +634,7 @@ class WC_Order_Export_Engine {
 			return false;
 		}
 
+		$settings['sort'] = $sort_field;
 		$settings = apply_filters('woe_adjust_settings_for_known_orders', $settings, $order_ids);
 
 		$formater = self::init_formater( '', $settings, $filename, $labels, $static_vals, 0 );

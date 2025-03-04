@@ -183,6 +183,9 @@ R: [Video Tutorials](https://currency-switcher.com/video/)
 Q: More FAQ answers?
 R: [FAQ](https://currency-switcher.com/faq/)
 
+Q: Where can I send security bug report about the plugin?
+R: You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/woocommerce-currency-switcher)
+
 
 == Screenshots ==
 1. Currency options

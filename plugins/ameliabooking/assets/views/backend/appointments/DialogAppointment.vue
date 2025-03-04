@@ -50,7 +50,7 @@
                 :popper-class="'am-dropdown-cabinet'"
                 :remote-method="searchExistingCustomers"
                 @change="handleCustomerChange"
-                :disabled="packageServices && !appointment.id"
+                :disabled="packageCustomer !== null"
               >
                 <div class="am-drop">
                   <div
@@ -163,7 +163,8 @@
                           class="small-status"
                           :popper-class="'am-dropdown-cabinet'"
                           :no-data-text="$root.labels.choose_a_group_service"
-                          @change="handleBookingChange(true)"
+                          @change="handlePersonsChange"
+                          :disabled="packageCustomer !== null || booking.packageCustomerService !== null"
                         >
                           <el-option
                             v-for="n in appointment.providerServiceMaxAdditonalCapacity"
@@ -200,7 +201,7 @@
                         </el-select>
                       </div>
 
-                      <div class="am-appointment-remove small">
+                      <div class="am-appointment-remove small" v-if="packageCustomer === null">
                         <el-tooltip placement="top">
                           <div slot="content" v-html="$root.labels.customers_tooltip"></div>
                           <i class="el-icon-question am-tooltip-icon"></i>
@@ -808,9 +809,10 @@
     <dialog-actions
       v-if="appointment !== null && !dialogLoading && this.$root.settings.role !== 'customer'"
       formName="appointment"
-      :urlName="!packageCustomer ? 'appointments' : 'bookings'"
+      :urlName="packageCustomer === null ? 'appointments' : 'bookings'"
+      :urlSubName="packageCustomer === null ? '' : '/reassign'"
       :isNew="appointment.id === 0"
-      :entity="appointment"
+      :entity="packageCustomer == null || !appointment.id ? appointment : appointment.bookings[0]"
       :getParsedEntity="getParsedEntity"
       @errorCallback="errorCallback"
       @validationTabFailCallback="validationTabFailCallback"
@@ -927,6 +929,10 @@
       appointment: null,
       recurringAppointments: null,
       savedAppointment: null,
+      totalBookings: {
+        type: Number,
+        default: 0
+      },
       bookings: null,
       options: null,
       customerCreatedCount: 0,
@@ -1548,6 +1554,21 @@
       getParsedEntity (createPaymentLinks) {
         let bookings = []
 
+        if (this.packageCustomer !== null && this.appointment.id) {
+          return {
+            bookingStart: this.getBookingStart(),
+            status: this.appointment.bookings[0].status,
+            locationId: this.appointment.locationId,
+            providerId: this.appointment.providerId,
+            serviceId: this.appointment.serviceId,
+            timeZone: this.selectedTimeZone === 'UTC' ? null : this.selectedTimeZone,
+            notifyParticipants: this.appointment.notifyParticipants ? 1 : 0,
+            customFields: this.appointment.bookings[0].customFields,
+            internalNotes: this.appointment.internalNotes,
+            createPaymentLinks: false
+          }
+        }
+
         if (this.packageCustomer !== null) {
           this.appointment.bookings.forEach((bookItem) => {
             let customFields = bookItem.customFields
@@ -1984,6 +2005,10 @@
         this.statusMessage = this.getApprovedPersonsCount() < this.appointment.providerServiceMinCapacity ? '(minimum ' + this.appointment.providerServiceMinCapacity + ')' : ''
       },
 
+      handlePersonsChange () {
+        this.handleBookingChange(true)
+      },
+
       handleBookingChange (fetchSlots = false) {
         let duration = this.appointment.duration
 
@@ -2155,6 +2180,16 @@
 
           let currentIndex = this.slotsIndexCounter
 
+          let excludedAppointmentId = appointment.id
+
+          if (this.savedAppointment && this.packageCustomer && this.totalBookings > 1 && (
+            this.savedAppointment.serviceId !== appointment.serviceId ||
+            this.savedAppointment.providerId !== appointment.providerId ||
+            this.savedAppointment.locationId !== appointment.locationId
+          )) {
+            excludedAppointmentId = null
+          }
+
           this.$http.get(`${this.$root.getAjaxUrl}/slots`, {
             params: this.getAppropriateUrlParams({
               serviceId: appointment.serviceId,
@@ -2162,8 +2197,8 @@
               locationId: appointment.locationId,
               providerIds: appointment.providerId ? [appointment.providerId] : [],
               extras: JSON.stringify(extras),
-              excludeAppointmentId: appointment.id,
-              group: this.$root.settings.role === 'customer' || !this.appointment.id ? 1 : 0,
+              excludeAppointmentId: excludedAppointmentId,
+              group: this.$root.settings.role === 'customer' || this.packageCustomer || !this.appointment.id ? 1 : 0,
               timeZone: this.selectedTimeZone,
               monthsLoad: this.monthsLoad,
               startDateTime: this.startDateTime

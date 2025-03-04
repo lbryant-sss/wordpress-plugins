@@ -15,6 +15,8 @@
       class="am-checkbox"
       @change="(e) => $emit('change', e)"
     >
+      <template v-if="label && !$slots.default">{{ label }}</template>
+      <slot></slot>
     </el-checkbox>
   </div>
 
@@ -98,7 +100,8 @@ let cssVars = computed(() => {
   return {
     '--am-c-checkbox-text-op60': useColorTransparency(amColors.value.colorInpText, 0.6),
     '--am-c-checkbox-btn-op80': useColorTransparency(amColors.value.colorBtnPrim, 0.8),
-    '--am-c-checkbox-btn-op60': useColorTransparency(amColors.value.colorInpBgr, 0.6),
+    '--am-c-checkbox-btn-op60': useColorTransparency(amColors.value.colorBtnPrim, 0.6),
+    '--am-c-checkbox-btn-dsb-op60': useColorTransparency(amColors.value.colorInpBgr, 0.6),
   }
 })
 
@@ -151,6 +154,22 @@ let cssVars = computed(() => {
           border-radius: var(--am-rad-checkbox);
           align-self: flex-start;
           padding: 2px 0;
+
+          &.is-indeterminate.is-checked {
+            .el-checkbox__inner {
+              --am-c-checkbox-border: var(--am-c-btn-prim);
+              --am-c-checkbox-bgr: var(--am-c-inp-bgr);
+
+              &:before {
+                background-color: var(--am-c-btn-prim);
+                transform: scale(1) translate(-50%, -50%);
+                top: 50%;
+                left: 50%;
+                width: 70%;
+                height: 2px;
+              }
+            }
+          }
         }
 
         &__label {
@@ -168,6 +187,7 @@ let cssVars = computed(() => {
           height: 16px;
           border: 1px solid var(--am-c-checkbox-border);
           background: var(--am-c-checkbox-bgr);
+          border-radius: var(--am-rad-checkbox);
 
           &:after {
             left: 5px;
@@ -187,14 +207,24 @@ let cssVars = computed(() => {
         &.is-checked {
           --am-c-checkbox-bgr: var(--am-c-checkbox-bgr-checked);
           --am-c-checkbox-text-op60: var(--am-c-inp-text);
+
+          &.is-disabled {
+            --am-c-checkbox-bgr: var(--am-c-checkbox-btn-op60);
+
+            .el-checkbox__inner {
+              &:hover {
+                --am-c-checkbox-bgr: var(--am-c-checkbox-btn-op60);
+              }
+            }
+          }
         }
 
         &.is-disabled {
-          --am-c-checkbox-bgr: var(--am-c-checkbox-btn-op60);
+          --am-c-checkbox-bgr: var(--am-c-checkbox-btn-dsb-op60);
 
           .el-checkbox__inner {
             &:hover {
-              --am-c-checkbox-bgr: var(--am-c-checkbox-btn-op60);
+              --am-c-checkbox-bgr: var(--am-c-checkbox-btn-dsb-op60);
             }
           }
         }

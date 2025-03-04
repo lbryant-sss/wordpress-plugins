@@ -47,7 +47,7 @@
           :size="cWidth <= 360 ? 'small' : 'default'"
           :type="customizedOptions.cancelBtn.buttonType"
           :disabled="loading"
-          @click="() => { emits('close') }"
+          @click="() => { emits('decline') }"
         >
           {{ props.closeBtnText }}
         </AmButton>
@@ -78,7 +78,7 @@ import IconComponent from "../../../../_components/icons/IconComponent.vue";
 import AmButton from "../../../../_components/button/AmButton.vue";
 
 // * Component emits
-const emits = defineEmits(['close', 'confirm'])
+const emits = defineEmits(['close', 'confirm', 'decline'])
 
 /********
  * Form *

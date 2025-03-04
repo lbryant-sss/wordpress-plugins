@@ -62,6 +62,18 @@
           </el-row>
           <!-- /Google meet -->
 
+          <!-- Microsoft Teams -->
+          <el-row v-if="app.microsoftTeamsUrl" class="am-zoom has-divider">
+            <el-col :sm="5" class="am-zoom-col-icon">
+              <p class="am-data">{{ $root.labels.ph_microsoft_teams_url}}:</p>
+            </el-col>
+            <el-col :sm="7">
+              <p class="am-value">
+                <a class="am-link" :href="app.microsoftTeamsUrl">{{ $root.labels.microsoft_teams_join }}</a></p>
+            </el-col>
+          </el-row>
+          <!-- /Microsoft Teams -->
+
           <!-- Lesson Space -->
           <el-row v-if="app.lessonSpace" class="am-zoom has-divider">
             <el-col :sm="5" class="am-zoom-col-icon">

@@ -131,6 +131,24 @@
             </div>
             <!-- /Allow employees managing their events -->
 
+            <!-- Allow employees add Customers -->
+            <div class="am-setting-box am-switch-box">
+              <el-row type="flex" align="middle" :gutter="24">
+                <el-col :span="20">
+                  {{ $root.labels.allow_write_customers }}
+                </el-col>
+                <el-col :span="4" class="align-right">
+                  <el-switch
+                    v-model="settings.allowWriteCustomers"
+                    active-text=""
+                    inactive-text=""
+                  >
+                  </el-switch>
+                </el-col>
+              </el-row>
+            </div>
+            <!-- /Allow employees add Customers -->
+
             <!-- Enable Employee Cabinet -->
             <div class="am-setting-box am-switch-box">
               <el-row type="flex" align="middle" :gutter="24">
@@ -178,7 +196,9 @@
                       class="am-manage-employee-badges-icon"
                       width="24px"
                       height="24px"
-                      :src="$root.getUrl+'public/img/am-manage-badges.svg'">
+                      :src="$root.getUrl+'public/img/am-manage-badges.svg'"
+                      alt="Employee Badges"
+                    >
                     {{ $root.labels.manage }}
                   </div>
                 </el-col>
@@ -326,7 +346,7 @@
                   <i class="el-icon-question am-tooltip-icon"></i>
                 </el-tooltip>
                 <div class="am-service-translate" @click="showDialogTranslate()">
-                  <img class="am-dialog-translate-svg" width="16px" :src="$root.getUrl+'public/img/translate.svg'">
+                  <img class="am-dialog-translate-svg" width="16px" :src="$root.getUrl+'public/img/translate.svg'" alt="Translate">
                   {{ $root.labels.manage_languages }}
                 </div>
               </label>

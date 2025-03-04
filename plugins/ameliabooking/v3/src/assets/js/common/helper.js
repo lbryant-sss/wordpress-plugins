@@ -28,7 +28,24 @@ function useUrlParams (params) {
     return params
   }
 
-  let names = ['categories', 'services', 'packages', 'employees', 'providers', 'providerIds', 'extras', 'locations', 'events', 'types', 'dates']
+  let names = [
+    'categories',
+    'services',
+    'packages',
+    'employees',
+    'providers',
+    'providerIds',
+    'extras',
+    'locations',
+    'events',
+    'types',
+    'dates',
+    'customers',
+    'providers',
+    'services',
+    'locations',
+    'status',
+  ]
 
   let convertedParams = JSON.parse(JSON.stringify(params))
 

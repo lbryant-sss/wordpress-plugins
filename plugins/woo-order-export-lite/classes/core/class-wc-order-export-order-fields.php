@@ -344,6 +344,8 @@ class WC_Order_Export_Order_Fields {
 			}
 			else
 				$row[$field] =  "";
+		} elseif ( $field == 'returning_customer' ) {
+			$row[$field] = $this->get_returning_customer( $this->order_id );
 		} elseif ($field == 'customer_user') {
             $row[$field] = isset ($this->user->ID) ? $this->user->ID : 0;
         } elseif ( $field == 'customer_total_orders' ) {
@@ -700,5 +702,19 @@ class WC_Order_Export_Order_Fields {
 		$currency_symbol = isset( $symbols[ $currency ] ) ? $symbols[ $currency ] : '';
 
 		return apply_filters( 'woocommerce_currency_symbol', $currency_symbol, $currency );
+	}
+
+	function get_returning_customer( $order_id ){
+		global $wpdb;
+		$returning_customer = $wpdb->get_var(
+			$wpdb->prepare("SELECT returning_customer FROM {$wpdb->prefix}wc_order_stats WHERE order_id = %d",$order_id )
+		);
+		if ($returning_customer === "1")
+			$value = __( 'Returning', 'woo-order-export-lite' );
+		elseif ($returning_customer === "0")
+			$value = __( 'New', 'woo-order-export-lite' );
+		else
+			$value = __( 'Unknown', 'woo-order-export-lite' );
+		return $value;
 	}
 }

@@ -1,3 +1,17 @@
+import httpClient from "../../../plugins/axios";
+import {useUrlParams} from "../common/helper";
+
+function useEvents (params, callback) {
+  httpClient.get(
+    '/events',
+    {params: useUrlParams(params)}
+  ).then(response => {
+    callback(response.data.data.events)
+  }).catch(() => {
+    callback([])
+  })
+}
+
 function useEventLocation (event, locations) {
     let locationAddress = ''
 
@@ -159,6 +173,7 @@ function useWaitingListOccupancy (evt) {
 
 export {
   // getEventAvailability,
+  useEvents,
   useEventLocation,
   useMinTicketPrice,
   showEventCapacity,

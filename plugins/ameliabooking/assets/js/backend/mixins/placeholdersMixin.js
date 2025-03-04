@@ -351,6 +351,10 @@ export default {
             label: this.$root.labels.ph_google_meet_url
           },
           {
+            value: '%microsoft_teams_url%',
+            label: this.$root.labels.ph_microsoft_teams_url
+          },
+          {
             value: '%lesson_space_url%',
             label: this.$root.labels.ph_lesson_space_url
           },
@@ -497,6 +501,14 @@ export default {
           {
             value: '%google_meet_url_date_time%',
             label: this.$root.labels.ph_google_meet_url_date_date
+          },
+          {
+            value: '%microsoft_teams_url_date%',
+            label: this.$root.labels.ph_microsoft_teams_url_date
+          },
+          {
+            value: '%microsoft_teams_url_date_time%',
+            label: this.$root.labels.ph_microsoft_teams_url_date_date
           },
           {
             value: '%zoom_host_url_date%',

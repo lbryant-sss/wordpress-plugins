@@ -258,6 +258,10 @@
     props: {
       formName: '',
       urlName: null,
+      urlSubName: {
+        type: String,
+        default: ''
+      },
       isNew: null,
       entity: null,
       getParsedEntity: null,
@@ -458,7 +462,7 @@
         }
 
         this.$http.post(
-          this.$root.getAjaxUrl + '/' + this.urlName + '/' + this.entity.id,
+          this.$root.getAjaxUrl + '/' + this.urlName + this.urlSubName + '/' + this.entity.id,
           this.getParsedEntity(applyGlobally),
           config
         ).then(response => {

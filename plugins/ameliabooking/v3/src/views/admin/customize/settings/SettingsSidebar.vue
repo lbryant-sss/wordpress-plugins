@@ -9,7 +9,11 @@
       <component :is="settingsComponents[componentKey].component" :sub-step="settingsComponents[componentKey].subStep"></component>
     </SidebarCardTemplate>
 
-    <div v-if="settingsComponents[componentKey].globalColors" class="am-cs__global-colors" @click="handleClick('colors')">
+    <div
+      v-if="settingsComponents[componentKey].globalColors"
+      class="am-cs__global-colors"
+      @click="handleClick('colors')"
+    >
       {{amLabels.change_colors}} <span class="am-icon-settings"></span>
     </div>
 
@@ -415,6 +419,85 @@ let elfSettingsObj = ref({
   }
 })
 
+let ecfSettingsObj = ref({
+  menu: {
+    component: markRaw(CustomizationMenu),
+    backBtnVisibility: false
+  },
+  global: {
+    headingText: amLabels.cb_global_settings_heading,
+    component: markRaw(CustomizationGlobal),
+    backBtnVisibility: true
+  },
+  fonts: {
+    headingText: amLabels.fonts,
+    component: markRaw(CustomizationFonts),
+    backBtnVisibility: true
+  },
+  colors: {
+    headingText: amLabels.colors,
+    component: markRaw(CustomizationColors),
+    backBtnVisibility: true
+  },
+  order: {
+    headingText: amLabels.cb_field_order_heading,
+    component: markRaw(CustomizationOrder),
+    backBtnVisibility: true
+  },
+  options: {
+    headingText: amLabels.options,
+    component: markRaw(CustomizationOptions),
+    backBtnVisibility: true
+  },
+  labels: {
+    headingText: amLabels.labels,
+    component: markRaw(CustomizationLabels),
+    backBtnVisibility: true
+  },
+  calendar: {
+    headingText: amLabels.csb_events_calendar,
+    component: markRaw(CustomizationEventsCalendar),
+    backBtnVisibility: true,
+    globalColors: true,
+  },
+  info: {
+    headingText: amLabels.csb_event_info,
+    component: markRaw(CustomizationEventInfo),
+    backBtnVisibility: true,
+    globalColors: true,
+  },
+  bringing: {
+    headingText: amLabels.bringing_anyone,
+    component: markRaw(CustomizationBringing),
+    backBtnVisibility: true,
+    globalColors: true,
+  },
+  tickets: {
+    headingText: amLabels.csb_event_tickets,
+    component: markRaw(CustomizationEventTickets),
+    backBtnVisibility: true,
+    globalColors: true,
+  },
+  customerInfo: {
+    headingText: amLabels.csb_event_customer,
+    component: markRaw(CustomizationEventCustomerInfo),
+    backBtnVisibility: true,
+    globalColors: true,
+  },
+  payment: {
+    headingText: amLabels.csb_event_payment,
+    component: markRaw(CustomizationEventPayment),
+    backBtnVisibility: true,
+    globalColors: true,
+  },
+  congrats: {
+    headingText: amLabels.csb_event_congratulations,
+    component: markRaw(CustomizationEventCongratulations),
+    backBtnVisibility: true,
+    globalColors: true,
+  }
+})
+
 let capcSettingsObj = ref({
   menu: {
     component: markRaw(CustomizationMenu),
@@ -547,7 +630,7 @@ let capcSettingsObj = ref({
   }
 })
 
-let ecfSettingsObj = ref({
+let capeSettingsObj = ref({
   menu: {
     component: markRaw(CustomizationMenu),
     backBtnVisibility: false
@@ -555,6 +638,11 @@ let ecfSettingsObj = ref({
   global: {
     headingText: amLabels.cb_global_settings_heading,
     component: markRaw(CustomizationGlobal),
+    backBtnVisibility: true
+  },
+  sidebar: {
+    headingText: amLabels.cb_sidebar,
+    component: markRaw(CustomizationSidebar),
     backBtnVisibility: true
   },
   fonts: {
@@ -567,11 +655,6 @@ let ecfSettingsObj = ref({
     component: markRaw(CustomizationColors),
     backBtnVisibility: true
   },
-  order: {
-    headingText: amLabels.cb_field_order_heading,
-    component: markRaw(CustomizationOrder),
-    backBtnVisibility: true
-  },
   options: {
     headingText: amLabels.options,
     component: markRaw(CustomizationOptions),
@@ -582,45 +665,39 @@ let ecfSettingsObj = ref({
     component: markRaw(CustomizationLabels),
     backBtnVisibility: true
   },
-  calendar: {
-    headingText: amLabels.csb_events_calendar,
-    component: markRaw(CustomizationEventsCalendar),
+  appointments: {
+    headingText: amLabels.csb_cust_appointments,
+    component: markRaw(CustomizationCabinetAppointments),
     backBtnVisibility: true,
     globalColors: true,
   },
-  info: {
-    headingText: amLabels.csb_event_info,
-    component: markRaw(CustomizationEventInfo),
+  events: {
+    headingText: amLabels.csb_cust_events,
+    component: markRaw(CustomizationCabinetEvents),
     backBtnVisibility: true,
     globalColors: true,
   },
-  bringing: {
-    headingText: amLabels.bringing_anyone,
-    component: markRaw(CustomizationBringing),
+  signIn: {
+    headingText: amLabels.csb_cust_sign_in,
+    component: markRaw(CustomizationCabinetSignIn),
     backBtnVisibility: true,
     globalColors: true,
   },
-  tickets: {
-    headingText: amLabels.csb_event_tickets,
-    component: markRaw(CustomizationEventTickets),
+  accessLink: {
+    headingText: amLabels.csb_cust_access_link,
+    component: markRaw(CustomizationCabinetLink),
     backBtnVisibility: true,
     globalColors: true,
   },
-  customerInfo: {
-    headingText: amLabels.csb_event_customer,
-    component: markRaw(CustomizationEventCustomerInfo),
+  accessLinkSuccess: {
+    headingText: amLabels.csb_cust_access_link_success,
+    component: markRaw(CustomizationCabinetLinkSuccess),
     backBtnVisibility: true,
     globalColors: true,
   },
-  payment: {
-    headingText: amLabels.csb_event_payment,
-    component: markRaw(CustomizationEventPayment),
-    backBtnVisibility: true,
-    globalColors: true,
-  },
-  congrats: {
-    headingText: amLabels.csb_event_congratulations,
-    component: markRaw(CustomizationEventCongratulations),
+  setPass: {
+    headingText: amLabels.csb_cust_set_new_pass,
+    component: markRaw(CustomizationCabinetSetPass),
     backBtnVisibility: true,
     globalColors: true,
   }
@@ -629,8 +706,9 @@ let ecfSettingsObj = ref({
 let settingsComponents = computed(() => {
   if (pageRenderKey.value === 'cbf') return cbfSettingsObj.value
   if (pageRenderKey.value === 'elf') return elfSettingsObj.value
-  if (pageRenderKey.value === 'capc') return capcSettingsObj.value
   if (pageRenderKey.value === 'ecf') return ecfSettingsObj.value
+  if (pageRenderKey.value === 'capc') return capcSettingsObj.value
+  if (pageRenderKey.value === 'cape') return capeSettingsObj.value
 
   return sbsNewSettingsObj.value
 })

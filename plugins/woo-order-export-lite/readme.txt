@@ -61,9 +61,9 @@ Install and activate plugin, visit WooCommerce > Export Orders.
 
 == Frequently Asked Questions ==
 
-Please, review [user guide](https://docs.algolplus.com/order-export-docs/) at first.
+Please, review [user guide](https://docs.algolplus.com/category/algol_order_export/) at first.
 
-Check [some snippets](https://algolplus.com/plugins/snippets-plugins/) for popular plugins or review  [this page](https://algolplus.com/plugins/code-samples/) to study how to extend the plugin.
+Check [some snippets](https://docs.algolplus.com/category/algol_order_export/developers-algol_order_export/codes-for-plugins-developers-algol_order_export/) for popular plugins or review  [this page](https://docs.algolplus.com/category/algol_order_export/developers-algol_order_export/code-samples-developers-algol_order_export/) to study how to extend the plugin.
 
 Still need help? Create ticket in [helpdesk system](https://algolplus.freshdesk.com). Don't forget to attach your settings or some screenshots. It will significantly reduce reply time :)
 
@@ -120,10 +120,20 @@ Yes, you can email a request to aprokaev@gmail.com. We intensively develop this 
 
 == Changelog ==
 
+= 3.6.0 - 2025-03-04 =
+* Changed behavior for mode "Export refunds"!
+* New field "New or Returning" (>Setup Fields>Customer)
+* Added option "Auto row height" to section "XLS"
+* Fixed bug - product filters  were applied to export via "Bulk actions"
+* Fixed bug - wrong sorting for XLS/PDF formats, in mode "Export without progress"
+
+= 3.5.8 - 2025-01-28 =
+* Internal, not released
+
 = 3.5.7 - 2025-01-20 =
 * Added checkbox "Display summary row" to section "Setup Fields"
 * Added option "Exclude free items" to section "Filter by item and metadata"
-* New field "Quantity (Refunded)" (>Setup Fields>Products)
+* New field "Quantity (Refunded)" (>Setup Fields>Product Order Items)
 * New field "Tax Rates" (>Setup Fields>Product Order Items)
 * Added tip (with expected action) for new field created via >Setup Fields>Add Field
 * Fixed bug - wrong values in field "Currency symbol"

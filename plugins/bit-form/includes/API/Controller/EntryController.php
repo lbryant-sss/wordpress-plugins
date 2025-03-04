@@ -18,39 +18,41 @@ class EntryController extends WP_REST_Controller
     $this->formModel = new FormModel();
   }
 
-  public function googleAuth()
-  {
-    $state = $_GET['state'];
-    $code = urlencode($_GET['code']);
-    // echo $code;
-    if (wp_redirect($state . '&code=' . $code, 302)) {
-      exit;
-    }
-  }
-
-  public function oneDriveAuth()
-  {
-    $state = $_GET['state'];
-    $code = urlencode($_GET['code']);
-    // echo $code;
-    if (wp_redirect($state . '&code=' . $code, 302)) {
-      exit;
-    }
-  }
+  // public function oneDriveAuth()
+  // {
+  //   $state = $_GET['state'];
+  //   $code = urlencode($_GET['code']);
+  //   // echo $code;
+  //   if (wp_redirect($state . '&code=' . $code, 302)) {
+  //     exit;
+  //   }
+  // }
 
   public function authRedirect(WP_REST_Request $request)
   {
     $state = $request->get_param('state');
-    $parsed_url = wp_parse_url(get_site_url());
-    $site_url = $parsed_url['scheme'] . '://' . $parsed_url['host'];
-    $site_url .= empty($parsed_url['port']) ? null : ':' . $parsed_url['port'];
-    if (false === strpos($state, $site_url)) {
-      return new WP_Error('404');
+    $site_url = $this->getDomain(get_site_url());
+    $state_domain = $this->getDomain($state);
+
+    if ($site_url !== $state_domain) {
+      return new WP_Error('404', 'Invalid redirect URL: ' . $state_domain);
     }
+
     $params = $request->get_params();
     unset($params['rest_route'], $params['state']);
-    if (wp_redirect($state . '&' . http_build_query($params), 302)) {
+
+    $redirect_url = $state . '&' . http_build_query($params);
+
+    if (wp_redirect($redirect_url, 302)) {
       exit;
     }
+  }
+
+  private function getDomain($url)
+  {
+    $parsed_url = wp_parse_url($url);
+    $domain = $parsed_url['scheme'] . '://' . $parsed_url['host'];
+    $domain .= empty($parsed_url['port']) ? null : ':' . $parsed_url['port'];
+    return $domain;
   }
 }

@@ -1,5 +1,6 @@
 <template>
   <el-form-item
+    v-if="props.isUpload"
     :id="props.id"
     ref="formFieldRef"
     class="am-ff__item"
@@ -13,12 +14,24 @@
       :id="props.id"
       v-model="model"
       :auto-upload="false"
+      :accept="customFieldsAllowedExtensions"
       @change="onAddFile"
       @remove="onRemoveFile"
     >
       {{props.btnLabel}}
     </AmAttachment>
   </el-form-item>
+  <div v-else>
+    <p v-for="(fileInfo, index) in props.modelValue" :key="index">
+      <a
+        :key="index"
+        :href="ajaxUrl + '/fields/' + props.id + '/' + props.bookingId + '/' + index + '&source=cabinet-provider'"
+        target="_blank"
+      >
+        {{ fileInfo.name }}
+      </a>
+    </p>
+  </div>
 </template>
 
 <script setup>
@@ -27,10 +40,14 @@ import AmAttachment from '../../_components/attachment/AmAttachment.vue'
 
 // * Import from Vue
 import {
-  computed,
+  computed, onMounted,
   ref,
   toRefs
 } from "vue";
+import {settings} from "../../../plugins/settings";
+
+// * Import from Vuex
+import { useStore } from 'vuex'
 
 // * Form Item Props
 let props = defineProps({
@@ -41,9 +58,16 @@ let props = defineProps({
   id: {
     type: [String, Number]
   },
+  bookingId: {
+    type: [String, Number]
+  },
   itemName: {
     type: String,
     required: true
+  },
+  isUpload: {
+    type: Boolean,
+    default: true
   },
   label: {
     type: String
@@ -60,6 +84,10 @@ let props = defineProps({
 // * Define Emits
 const emits = defineEmits(['update:modelValue', 'change', 'remove'])
 
+const store = useStore()
+
+let ajaxUrl = computed(() => store.getters['getBaseUrls'].wpAmeliaPluginAjaxURL)
+
 // * Component model
 let { modelValue } = toRefs(props)
 let model = computed({
@@ -74,6 +102,14 @@ let formFieldRef = ref(null)
 
 defineExpose({
   formFieldRef
+})
+
+let customFieldsAllowedExtensions = ref('')
+
+onMounted(() => {
+  if (settings.general.customFieldsAllowedExtensions) {
+    customFieldsAllowedExtensions.value = Object.keys(settings.general.customFieldsAllowedExtensions).join(', ')
+  }
 })
 
 function onAddFile (a) {

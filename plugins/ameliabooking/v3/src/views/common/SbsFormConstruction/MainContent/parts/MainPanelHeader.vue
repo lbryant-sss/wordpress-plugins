@@ -73,7 +73,7 @@ let cssVars = computed(() => {
     }
 
     &__text {
-      font-family: var(--am-font-family);
+      font-family: var(--am-font-family), sans-serif;
       font-size: 18px;
       font-weight: 500;
       font-style: normal;
@@ -88,6 +88,10 @@ let cssVars = computed(() => {
       &:before { // theme Twenty Nineteen
         display: none;
       }
+    }
+
+    &__menu {
+      font-size: 24px;
     }
 
     .am-select-wrapper {

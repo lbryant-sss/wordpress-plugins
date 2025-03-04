@@ -1,6 +1,6 @@
 <template>
   <!-- Select -->
-  <div class="am-select-wrapper">
+  <div class="am-select-wrapper" :class="props.parentClass">
     <el-select
       :id="id"
       ref="amSelect"
@@ -50,7 +50,7 @@
           :is="prefixIcon"
           v-if="typeof prefixIcon === 'object'"
         />
-        <span v-if="typeof prefixIcon === 'string'" :class="`am-icon-${prefixIcon}`"/>
+        <span v-if="typeof prefixIcon === 'string'" :class="`am-icon-${prefixIcon}`" :style="`color: ${prefixIconColor}`"/>
       </template>
       <slot/>
     </el-select>
@@ -161,6 +161,10 @@ const props = defineProps({
     type: String,
     default: ''
   },
+  parentClass: {
+    type: String,
+    default: ''
+  },
   popperClass: {
     type: String,
     default: ''
@@ -198,6 +202,10 @@ const props = defineProps({
     default: 'info'
   },
   prefixIcon: {
+    type: [String, Object, Function],
+    default: ''
+  },
+  prefixIconColor: {
     type: [String, Object, Function],
     default: ''
   },
@@ -270,8 +278,10 @@ let cssVars = computed(() => {
     '--am-c-select-placeholder': amColors.value.colorInpPlaceHolder,
     '--am-c-select-shadow': useColorTransparency(amColors.value.colorInpText, 0.05),
     '--am-c-select-text-op60': useColorTransparency(amColors.value.colorInpText, 0.6),
+    '--am-c-select-text-op50': useColorTransparency(amColors.value.colorInpText, 0.5),
     '--am-c-select-text-op40': useColorTransparency(amColors.value.colorInpText, 0.4),
-    '--am-c-select-text-op10': useColorTransparency(amColors.value.colorInpText, 0.03),
+    '--am-c-select-text-op03': useColorTransparency(amColors.value.colorInpText, 0.03),
+    '--am-c-select-text-op06': useColorTransparency(amColors.value.colorInpText, 0.06),
     '--am-font-family': amFonts.value.fontFamily,
   }
 })
@@ -288,10 +298,14 @@ onMounted(() => {
 })
 
 function visibleChange (eventValue) {
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-success', amColors.value.colorSuccess)
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-error', amColors.value.colorError)
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-warning', amColors.value.colorWarning)
   amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-bgr', amColors.value.colorDropBgr)
   amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-border', amColors.value.colorDropBorder)
   amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-text', amColors.value.colorDropText)
   amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-text-op65', useColorTransparency(amColors.value.colorDropText, 0.65))
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-text-op15', useColorTransparency(amColors.value.colorDropText, 0.15))
   amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-hover', useColorTransparency(amColors.value.colorDropText, 0.1))
   amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-selected', amColors.value.colorPrimary)
   amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-selected-op10', useColorTransparency(amColors.value.colorPrimary, 0.1))
@@ -356,8 +370,45 @@ export default {
 
     // Disabled
     &--disabled {
-      --am-c-select-bgr: var(--am-c-select-text-op10);
-      --am-c-select-text: var(--am-c-select-text-op60);
+      --am-c-select-bgr: var(--am-c-select-text-op03) !important;
+      --am-c-select-text: var(--am-c-select-text-op60) !important;
+    }
+
+    // Multiple select
+    .el-select {
+      &__tags {
+        & > span {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 4px 0;
+        }
+
+        &-text {
+          margin-left: 5px;
+          margin-right: 5px;
+          color: var(--am-c-select-text-op50);
+          justify-content: unset;
+        }
+
+        // Multiple select - collapse tags not set to true
+        & + .el-input {
+          .el-input__inner {
+            min-height: var(--am-h-select);
+            line-height: 1.46666667;
+            box-sizing: border-box;
+          }
+        }
+      }
+    }
+
+    .el-tag {
+      margin-left: 10px;
+      background-color: var(--am-c-select-text-op06);
+
+      &__close {
+        color: var(--am-c-select-text-op50);
+      }
     }
 
     // Input
@@ -412,6 +463,18 @@ export default {
         .el-input__validateIcon {
           display: none;
         }
+      }
+    }
+
+    // Select Input
+    .el-select {
+      &__input {
+        border: none;
+        background-color: transparent;
+        padding: var(--am-padd-select);
+        padding-right: 0;
+        padding-top: 0;
+        padding-bottom: 0;
       }
     }
   }

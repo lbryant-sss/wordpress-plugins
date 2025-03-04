@@ -240,7 +240,7 @@ class EventReservationService extends AbstractReservationService
         $paymentAmount = $this->getPaymentAmount($booking, $event)['price'];
 
         $applyDeposit =
-            $eventData['bookings'][0]['deposit'] && $eventData['payment']['gateway'] !== PaymentType::ON_SITE;
+            !empty($eventData['bookings'][0]['deposit']) && $eventData['payment']['gateway'] !== PaymentType::ON_SITE;
 
         if ($applyDeposit) {
             $personsCount = $booking->getPersons()->getValue();

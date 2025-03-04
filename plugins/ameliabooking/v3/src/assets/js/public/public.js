@@ -5,6 +5,10 @@ import {
 import { createStore } from "vuex";
 import entities from "./../../../store/modules/entities";
 import booking from "./../../../store/modules/booking";
+import event from "./../../../store/modules/event";
+import attendee from "./../../../store/modules/attendee";
+import appointment from "./../../../store/modules/appointment";
+import employee from "./../../../store/modules/employee";
 import eventEntities from "../../../store/modules/eventEntities";
 import eventBooking from "../../../store/modules/eventBooking";
 import shortcodeParams from "../../../store/modules/shortcodeParams";
@@ -12,6 +16,7 @@ import params from "../../../store/modules/params";
 import pagination from "../../../store/modules/pagination";
 import customerInfo from "../../../store/modules/customerInfo";
 import customFields from "../../../store/modules/customFields";
+import recurring from "../../../store/modules/recurring";
 import persons from "../../../store/modules/persons.js";
 import tickets from "../../../store/modules/tickets.js";
 import payment from "../../../store/modules/payment.js";
@@ -35,6 +40,15 @@ import {
 } from "./facebookPixel.js";
 
 import {useLicence} from "../common/licence";
+
+import dayjs from "dayjs";
+import updateLocale from "dayjs/plugin/updateLocale";
+
+dayjs.extend(updateLocale);
+
+dayjs.updateLocale(dayjs.locale(), {
+  weekStart: window.wpAmeliaSettings.wordpress.startOfWeek,
+})
 
 // It is necessary to investigate what is the best practice
 // import axios from './plugins/axios'
@@ -186,11 +200,13 @@ window.ameliaShortcodeData.forEach((item) => {
 function createAmelia(shortcodeData) {
   const settings = reactive(window.wpAmeliaSettings)
 
+  let wpAmeliaTimeZones = 'wpAmeliaTimeZones' in window ? window.wpAmeliaTimeZones : []
+
   let app = createApp({
     setup() {
       const baseURLs = reactive(window.wpAmeliaUrls)
       const labels = reactive(window.wpAmeliaLabels)
-      const timeZones = reactive(window.wpAmeliaTimeZones)
+      const timeZones = reactive(wpAmeliaTimeZones)
       const timeZone = ref('wpAmeliaTimeZone' in window ? window.wpAmeliaTimeZone[0] : '')
       const localLanguage = ref(window.localeLanguage[0])
       const licence = reactive(useLicence())
@@ -240,7 +256,7 @@ function createAmelia(shortcodeData) {
           labels: reactive(window.wpAmeliaLabels),
           localLanguage: ref(window.localeLanguage[0]),
           baseUrls: reactive(window.wpAmeliaUrls),
-          timeZones: reactive(window.wpAmeliaTimeZones),
+          timeZones: reactive(wpAmeliaTimeZones),
           timeZone: ref('wpAmeliaTimeZone' in window ? window.wpAmeliaTimeZone[0] : ''),
           ready: false,
           loading: true,
@@ -294,6 +310,10 @@ function createAmelia(shortcodeData) {
         modules: {
           entities,
           booking,
+          event,
+          attendee,
+          appointment,
+          employee,
           eventEntities,
           eventBooking,
           shortcodeParams,
@@ -301,6 +321,7 @@ function createAmelia(shortcodeData) {
           pagination,
           customerInfo,
           customFields,
+          recurring,
           persons,
           tickets,
           payment,

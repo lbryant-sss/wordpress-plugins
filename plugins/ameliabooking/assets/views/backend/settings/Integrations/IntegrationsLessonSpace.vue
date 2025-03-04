@@ -50,6 +50,8 @@
             '%zoom_host_url_date_time%',
             '%google_meet_url_date%',
             '%google_meet_url_date_time%',
+            '%microsoft_teams_url_date%',
+            '%microsoft_teams_url_date_time%',
             '%lesson_space_url_date%',
             '%lesson_space_url_date_time%'
           ]
@@ -96,6 +98,8 @@
             '%zoom_host_url_date_time%',
             '%google_meet_url_date%',
             '%google_meet_url_date_time%',
+            '%microsoft_teams_url_date%',
+            '%microsoft_teams_url_date_time%',
             '%lesson_space_url_date%',
             '%lesson_space_url_date_time%'
           ]

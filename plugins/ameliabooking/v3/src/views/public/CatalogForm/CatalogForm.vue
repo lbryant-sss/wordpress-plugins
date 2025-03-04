@@ -140,6 +140,7 @@ store.dispatch('entities/getEntities', {
       : shortcodeData.value.hasApiCall
     : true,
   showHidden: false,
+  isPanel: false,
 })
 
 // * Components

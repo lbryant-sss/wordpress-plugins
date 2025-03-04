@@ -13,11 +13,14 @@
             {{ item.name }}
           </span>
           <span class="am-cc__tickets-calc">
-            {{ `${item.persons} ${item.persons > 1 ? amLabels.event_tickets : amLabels.event_ticket} x ${useFormattedPrice(item.price)}` }}
+            {{ `${item.persons} ${item.persons > 1 ? amLabels.event_tickets : amLabels.event_ticket}${shortcodeData.cabinetType === 'customer' ? ' x ' + useFormattedPrice(item.price) : ''}` }}
           </span>
         </div>
 
-        <div class="am-cc__tickets-price">
+        <div
+          v-if="shortcodeData.cabinetType === 'customer'"
+          class="am-cc__tickets-price"
+        >
           {{ useFormattedPrice(item.persons * item.price) }}
         </div>
       </div>
@@ -38,6 +41,9 @@ import { useFormattedPrice } from "../../../../../../../../assets/js/common/form
 
 // * Vars
 const amLabels = inject('amLabels')
+
+// * Data in shortcode
+const shortcodeData = inject('shortcodeData')
 
 let props = defineProps({
   data: {

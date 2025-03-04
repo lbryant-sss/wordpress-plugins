@@ -174,6 +174,12 @@ function momentDateFormat () {
   })
 }
 
+function getFrontedFormattedDateTime (dateTime) {
+  let data = dateTime.split(' ')
+
+  return getFrontedFormattedDate(data[0]) + ' ' + getFrontedFormattedTime(data[1].substring(0, 5))
+}
+
 function getFrontedFormattedTime (time) {
   return DateTime.fromFormat(time, 'HH:mm').toFormat(jsTimeFormat())
 }
@@ -324,6 +330,7 @@ export {
   useSecondsInTime,
   getFrontedFormattedTime,
   getFrontedFormattedDate,
+  getFrontedFormattedDateTime,
   addSeconds,
   getFirstDayOfWeek,
   useSecondsToDuration,

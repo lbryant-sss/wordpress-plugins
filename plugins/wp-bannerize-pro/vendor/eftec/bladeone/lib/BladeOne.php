@@ -32,16 +32,16 @@ use InvalidArgumentException;
  *
  * @package   BladeOne
  * @author    Jorge Patricio Castro Castillo <jcastro arroba eftec dot cl>
- * @copyright Copyright (c) 2016-2024 Jorge Patricio Castro Castillo MIT License.
+ * @copyright Copyright (c) 2016-2025 Jorge Patricio Castro Castillo MIT License.
  *            Don't delete this comment, its part of the license.
  *            Part of this code is based in the work of Laravel PHP Components.
- * @version   4.16
+ * @version   4.18
  * @link      https://github.com/EFTEC/BladeOne
  */
 class BladeOne
 {
     //<editor-fold desc="fields">
-    public const VERSION = '4.16';
+    public const VERSION = '4.18';
     /** @var int BladeOne reads if the compiled file has changed. If it has changed,then the file is replaced. */
     public const MODE_AUTO = 0;
     /** @var int Then compiled file is always replaced. It's slow and it's useful for development. */
@@ -100,16 +100,12 @@ class BladeOne
      * @var bool if true then the variables defined in the "include" as arguments are scoped to work only
      * inside the "include" statement.<br>
      * If false (default value), then the variables defined in the "include" as arguments are defined globally.<br>
-     * **Example: (includeScope=false)**<br>
-     * ```
-     * @include("template",['a1'=>'abc']) // a1 is equals to abc
-     * @include("template",[]) // a1 is equals to abc
-     * ```
-     * **Example: (includeScope=true)**<br>
-     * ```
-     * @include("template",['a1'=>'abc']) // a1 is equals to abc
-     * @include("template",[]) // a1 is not defined
-     * ```
+     * <b>Example: (includeScope=false)</b><br>
+     * include("template",['a1'=>'abc']) // a1 is equals to abc<br>
+     * include("template",[]) // a1 is equals to abc<br>
+     * <br><b>Example: (includeScope=true)</b><br>
+     * include("template",['a1'=>'abc']) // a1 is equals to abc<br>
+     * include("template",[]) // a1 is not defined<br>
      */
     public bool $includeScope = false;
     /**
@@ -184,6 +180,7 @@ class BladeOne
     protected int $uidCounter = 0;
     /** @var string The main url of the system. Don't use raw $_SERVER values unless the value is sanitized */
     protected string $baseUrl = '.';
+    protected string $cdnUrl = '.';
     /** @var string|null The base domain of the system */
     protected ?string $baseDomain;
     /** @var string|null It stores the current canonical url. */
@@ -194,6 +191,7 @@ class BladeOne
     protected string $relativePath = '';
     /** @var string[] Dictionary of assets */
     protected array $assetDict = [];
+    protected array $assetDictCDN = [];
     /** @var bool if true then it removes tabs and unneeded spaces */
     protected bool $optimize = true;
     /** @var bool if false, then the template is not compiled (but executed on memory). */
@@ -249,18 +247,18 @@ class BladeOne
      * $blade=new BladeOne("pathtemplate","pathcompile",BladeOne::MODE_AUTO,2);
      * ```
      *
-     * @param null $templatePath If null then it uses (caller_folder)/views
-     * @param null $compiledPath If null then it uses (caller_folder)/compiles
-     * @param int  $mode         =[BladeOne::MODE_AUTO,BladeOne::MODE_DEBUG,BladeOne::MODE_FAST,BladeOne::MODE_SLOW][$i]<br>
-     *                           **BladeOne::MODE_AUTO** (default mode)<br>
-     *                           **BladeOne::MODE_DEBUG** errors will be more verbose, and it will compile code every
-     *                           time<br>
-     *                           **BladeOne::MODE_FAST** it will not check if the compiled file exists<br>
-     *                           **BladeOne::MODE_SLOW** it will compile the code everytime<br>
-     * @param int  $commentMode  =[0,1,2][$i] <br>
-     *                           **0** comments are generated as php code.<br>
-     *                           **1** comments are generated as html code<br>
-     *                           **2** comments are ignored (no code is generated)<br>
+     * @param string|null $templatePath If null then it uses (caller_folder)/views
+     * @param string|null $compiledPath If null then it uses (caller_folder)/compiles
+     * @param int         $mode         =[BladeOne::MODE_AUTO,BladeOne::MODE_DEBUG,BladeOne::MODE_FAST,BladeOne::MODE_SLOW][$i]<br>
+     *                                  **BladeOne::MODE_AUTO** (default mode)<br>
+     *                                  **BladeOne::MODE_DEBUG** errors will be more verbose, and it will compile code
+     *                                  every time<br>
+     *                                  **BladeOne::MODE_FAST** it will not check if the compiled file exists<br>
+     *                                  **BladeOne::MODE_SLOW** it will compile the code everytime<br>
+     * @param int         $commentMode  =[0,1,2][$i] <br>
+     *                                  **0** comments are generated as php code.<br>
+     *                                  **1** comments are generated as html code<br>
+     *                                  **2** comments are ignored (no code is generated)<br>
      */
     public function __construct($templatePath = null, $compiledPath = null, $mode = 0, $commentMode = 0)
     {
@@ -885,6 +883,14 @@ class BladeOne
             $this->assetDict[$name] = $url;
         }
     }
+    public function addAssetDictCDN($name, $url = ''): void
+    {
+        if (\is_array($name)) {
+            $this->assetDictCDN = \array_merge($this->assetDictCDN, $name);
+        } else {
+            $this->assetDictCDN[$name] = $url;
+        }
+    }
 
     /**
      * Compile the push statements into valid PHP.
@@ -1098,7 +1104,7 @@ class BladeOne
      * @param mixed         $default
      * @return mixed
      */
-    public static function last($array, callable $callback = null, $default = null)
+    public static function last($array, ?callable $callback = null, $default = null)
     {
         if (\is_null($callback)) {
             return empty($array) ? static::value($default) : \end($array);
@@ -1125,7 +1131,7 @@ class BladeOne
      * @param mixed         $default
      * @return mixed
      */
-    public static function first($array, callable $callback = null, $default = null)
+    public static function first($array, ?callable $callback = null, $default = null)
     {
         if (\is_null($callback)) {
             return empty($array) ? static::value($default) : \reset($array);
@@ -1438,6 +1444,7 @@ class BladeOne
      * Get the mode of the engine.See BladeOne::MODE_* constants
      *
      * @return int=[self::MODE_AUTO,self::MODE_DEBUG,self::MODE_FAST,self::MODE_SLOW][$i]
+     * @noinspection PhpUndefinedConstantInspection
      */
     public function getMode(): int
     {
@@ -1668,7 +1675,7 @@ class BladeOne
         if (!\is_array($array)) {
             return $array;  // nothing to convert.
         }
-        return \implode(' ', \array_map('static::convertArgCallBack', \array_keys($array), $array));
+        return \implode(' ', \array_map('BladeOne::convertArgCallBack', \array_keys($array), $array));
     }
 
     /**
@@ -2198,7 +2205,8 @@ class BladeOne
             return $string;
         }
         $me = $this;
-        $result = preg_replace_callback('/' . $this->escapeStack0 . '\s?([A-Za-z0-9_:() ,*.@$]+)\s?' . $this->escapeStack1 . '/u',
+        // we returned the escape character.
+        return preg_replace_callback('/' . $this->escapeStack0 . '\s?([A-Za-z0-9_:() ,*.@$]+)\s?' . $this->escapeStack1 . '/u',
             static function($matches) use ($me) {
                 $l0 = strlen($me->escapeStack0);
                 $l1 = strlen($me->escapeStack1);
@@ -2207,8 +2215,6 @@ class BladeOne
                 return $me->yieldPushContent($items[0], $items[1] ?? null);
                 //return is_array($r) ? $flagtxt . json_encode($r) : $flagtxt . $r;
             }, $string);
-        // we returned the escape character.
-        return $result;
     }
 
     /**
@@ -2452,7 +2458,7 @@ class BladeOne
      * @param string $baseUrl Example http://www.web.com/folder  https://www.web.com/folder/anotherfolder
      * @return BladeOne
      */
-    public function setBaseUrl($baseUrl): BladeOne
+    public function setBaseUrl(string $baseUrl): BladeOne
     {
         $this->baseUrl = \rtrim($baseUrl, '/'); // base with the url trimmed
         $this->baseDomain = @parse_url($this->baseUrl)['host'];
@@ -2469,6 +2475,22 @@ class BladeOne
         } else {
             $this->relativePath = '';
         }
+        return $this;
+    }
+
+    /**
+     * It sets a CDN Url used by @assetcdn("someresource.jpg")<br>
+     * **Example:**
+     * ```
+     * $this->setCDNUrl('http://domain.dom/myblog');
+     * ```
+     *
+     * @param string $cdnurl the full path url without the trailing slash
+     * @return $this
+     */
+    public function setCDNUrl(string $cdnurl): BladeOne
+    {
+        $this->cdnUrl = $cdnurl;
         return $this;
     }
 
@@ -4272,6 +4294,10 @@ class BladeOne
     protected function compileAsset($expression): string
     {
         return $this->phpTagEcho . "(isset(\$this->assetDict[$expression]))?\$this->assetDict[$expression]:\$this->baseUrl.'/'.$expression; ?>";
+    }
+    protected function compileAssetCDN($expression): string
+    {
+        return $this->phpTagEcho . "(isset(\$this->assetDictCDN[$expression]))?\$this->assetDictCDN[$expression]:\$this->cdnUrl.'/'.$expression; ?>";
     }
 
     protected function compileJSon($expression): string

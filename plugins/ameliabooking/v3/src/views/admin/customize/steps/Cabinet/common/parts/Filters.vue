@@ -96,7 +96,7 @@ import TimeZoneSelect from "./TimeZoneSelect.vue";
 import {
   ref,
   computed,
-  inject, defineComponent
+  inject
 } from "vue";
 
 // * Composables
@@ -157,6 +157,7 @@ let filterParams = ref({
   ],
   services: [],
   providers: [],
+  customers: [],
   locations: [],
   events: [],
   packages: []
@@ -194,6 +195,18 @@ let entities = ref({
     },
   ],
   providers: [
+    {
+      id: 1,
+      firstName: 'John',
+      lastName: 'Doe'
+    },
+    {
+      id: 2,
+      firstName: 'Jane',
+      lastName: 'Doe'
+    }
+  ],
+  customers: [
     {
       id: 1,
       firstName: 'John',
@@ -245,10 +258,10 @@ let entities = ref({
   ]
 })
 
-let filterIcon = defineComponent({
+let filterIcon = {
   components: {IconComponent},
   template: `<IconComponent icon="filter"/>`
-})
+}
 
 let cWidth = inject('containerWidth')
 

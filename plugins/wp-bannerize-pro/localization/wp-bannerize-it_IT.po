@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Bannerize Pro 1.9.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-bannerize\n"
-"POT-Creation-Date: 2024-09-09T12:26:38+00:00\n"
-"PO-Revision-Date: 2024-09-09 14:33+0200\n"
+"POT-Creation-Date: 2025-03-03T06:56:57+00:00\n"
+"PO-Revision-Date: 2025-03-03 08:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -23,7 +23,7 @@ msgstr "WP Bannerize Pro"
 #. Plugin URI of the plugin
 #: wp-bannerize.php
 msgid "https://bannerize.vercel.app/"
-msgstr ""
+msgstr "https://bannerize.vercel.app/"
 
 #. Description of the plugin
 #: wp-bannerize.php
@@ -45,9 +45,11 @@ msgstr "Giovambattista Fazioli"
 #. Author URI of the plugin
 #: wp-bannerize.php
 msgid "https://undolog.substack.com/"
-msgstr ""
+msgstr "https://undolog.substack.com/"
 
-#: config/menus.php:20 public/apps/settings/settings.js:1
+#: config/menus.php:20 resources/views/cpt/analytics.php:5
+#: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/TabsSettings.jsx:34
 msgid "Analytics"
 msgstr "Statistiche"
 
@@ -66,112 +68,134 @@ msgstr "Nessun ID banner impostato"
 msgid "No referrer set"
 msgstr "Nessun referrer impostato"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:98
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:110
-#: public/apps/analytics/analytics.js:1 public/block/index.js:1
-msgid "Banners"
-msgstr ""
-
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:99
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:101
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:111
-#: public/apps/settings/settings.js:1
-msgid "Banner"
-msgstr ""
-
 #: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:100
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:112
+#: public/apps/analytics/analytics.js:1 public/block/index.js:1
+#: resources/assets/apps/analytics/TopMost.jsx:79
+#: resources/assets/block/components/BannersInput.js:42
+msgid "Banners"
+msgstr "Banners"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:101
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:103
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:113
+#: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/ThemeSettings.jsx:10
+msgid "Banner"
+msgstr "Banner"
+
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:102
 msgid "WP Bannerize"
 msgstr "WP Bannerize"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:102
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:104
 msgid "Add New"
 msgstr "Aggiungi Nuovo"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:103
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:105
 msgid "Add New Banner"
 msgstr "Aggiungi nuovo Banner"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:104
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:106
 msgid "Edit Banner"
 msgstr "Modifica Banner"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:105
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:107
 msgid "New Banner"
 msgstr "Nuovo Banner"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:106
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:108
 msgid "View Banner"
 msgstr "Vedi Banner"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:107
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:109
 msgid "Search Banner"
 msgstr "Cerca Banner"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:108
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:110
 msgid "No Banner found"
 msgstr "Nessun Banner trovato"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:109
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:111
 msgid "No Banners found in trash"
 msgstr "Nessun banner trovato nella spazzatura"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:177
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:179
 msgid "You are not allowed to do this"
 msgstr "Non ti è permesso farlo"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:183
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:185
 msgid "Timed"
 msgstr "A tempo"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:209
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:211
 msgid "Expired"
 msgstr "Scaduto"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:214
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:216
 msgid "Scheduled"
 msgstr "Programmato"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:321
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:333
 msgid "Preview"
 msgstr "Anteprima"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:379
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:391
 msgid "Enter Banner name"
 msgstr "Inserisci il nome del banner"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:474
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:486
 msgid "Thumbnail"
 msgstr "Miniatura"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:481
-#: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:493
+#: resources/views/widgets/form.php:47 public/apps/analytics/analytics.js:1
+#: public/apps/settings/settings.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:55
+#: resources/assets/apps/analytics/AnalyticsTabs.jsx:47
+#: resources/assets/apps/analytics/OverallDonutChart.jsx:27
+#: resources/assets/apps/analytics/TopMost.jsx:26
+#: resources/assets/apps/analytics/TrendCharts.jsx:55
+#: resources/assets/apps/settings/AnalyticsSettings.jsx:9
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:49
 msgid "Impressions"
 msgstr "Impressioni"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:488
-#: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:500
+#: resources/views/widgets/form.php:48 public/apps/analytics/analytics.js:1
+#: public/apps/settings/settings.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:54
+#: resources/assets/apps/analytics/AnalyticsTabs.jsx:52
+#: resources/assets/apps/analytics/OverallDonutChart.jsx:26
+#: resources/assets/apps/analytics/TopMost.jsx:27
+#: resources/assets/apps/analytics/TrendCharts.jsx:56
+#: resources/assets/apps/settings/AnalyticsSettings.jsx:22
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:48
 msgid "Clicks"
 msgstr "Clicks"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:495
-#: public/apps/analytics/analytics.js:1
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:507
+#: resources/views/widgets/form.php:49 public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/TopMost.jsx:28
+#: resources/assets/apps/analytics/TopMost.jsx:34
+#: resources/assets/apps/analytics/TrendCharts.jsx:57
 msgid "CTR"
 msgstr "CTR"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:502
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:514
 msgid "Visible from"
 msgstr "Visibile da"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:509
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:521
 msgid "Expires"
 msgstr "Scade"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:584
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:594
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:597
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:607
 msgid "in %s"
 msgstr "in %s"
 
-#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:593
+#: plugin/CustomPostTypes/WPBannerizeCustomPostType.php:606
 msgid "%s ago"
 msgstr "%s fa"
 
@@ -262,7 +286,7 @@ msgstr "Utilizzare \"campagne\" invece di \"categorie\""
 #: plugin/Providers/WPBannerizeServiceProvider.php:57
 #: plugin/Providers/WPBannerizeServiceProvider.php:69
 msgid "Bannerize"
-msgstr ""
+msgstr "Bannerize"
 
 #: plugin/Providers/WPBannerizeServiceProvider.php:77
 #: plugin/Providers/WPBannerizeServiceProvider.php:80
@@ -310,74 +334,462 @@ msgid "to complete the import!"
 msgstr "per completare l'importazione!"
 
 #: plugin/Providers/WPBannerizeServiceProvider.php:136
+#: resources/views/cpt/settings.php:6
 msgid "Settings"
 msgstr "Impostazioni"
 
+#: resources/views/cpt/analytics.php:9
+msgid "Of course, you can turn off the analytics for a single banner"
+msgstr "Naturalmente, puoi disattivare l'analisi per un singolo banner"
+
+#: resources/views/cpt/analytics.php:15 public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/AnalyticsSettings.jsx:12
+msgid "Enable Impressions"
+msgstr "Abilita Impressioni"
+
+#: resources/views/cpt/analytics.php:21 public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/AnalyticsSettings.jsx:25
+msgid "Enable Clicks"
+msgstr "Abilita Clicks"
+
+#: resources/views/cpt/bannertype.php:1
+msgid "Choose a Banner type"
+msgstr "Scegli un tipo di banner"
+
+#: resources/views/cpt/bannertype.php:6
+msgid "Select the type of Banner"
+msgstr "Seleziona il tipo di Banner"
+
+#: resources/views/cpt/bannertype.php:13
+msgid "Local"
+msgstr "Locale"
+
+#: resources/views/cpt/bannertype.php:14
+msgid "Remote"
+msgstr "Remoto"
+
+#: resources/views/cpt/bannertype.php:15
+msgid "Text"
+msgstr "Testo"
+
+#: resources/views/cpt/bannertype.php:29
+msgid ""
+"From this panel you can upload a local media into your WordPress "
+"installation."
+msgstr ""
+"Da questo pannello puoi caricare un media locale nella tua installazione di "
+"WordPress."
+
+#: resources/views/cpt/bannertype.php:34 resources/views/cpt/bannertype.php:35
+msgid "Choose a file"
+msgstr "Scegli un file"
+
+#: resources/views/cpt/bannertype.php:34
+msgid "Select"
+msgstr "Seleziona"
+
+#: resources/views/cpt/bannertype.php:42
+msgid "Use this panel to insert a remote URL for your media."
+msgstr ""
+"Usa questo pannello per inserire un URL remoto per i tuoi file multimediali."
+
+#: resources/views/cpt/bannertype.php:46
+msgid "URL"
+msgstr "URL"
+
+#: resources/views/cpt/bannertype.php:55
+msgid ""
+"This is an amazing feature! You can create your own banner with this free "
+"rich text editor."
+msgstr ""
+"Questa è una caratteristica straordinaria! Puoi creare il tuo banner con "
+"questo editor di testo RTF gratuito."
+
+#: resources/views/cpt/preview-image.php:18
+msgid "Background Color Preview"
+msgstr "Anteprima colore di sfondo"
+
+#: resources/views/cpt/preview-image.php:29
+#: resources/views/cpt/preview-txt.php:30
+msgid "Type"
+msgstr "Tipo"
+
+#: resources/views/cpt/preview-image.php:30
+#: resources/views/cpt/preview-txt.php:31 resources/views/cpt/size.php:6
+msgid "Size"
+msgstr "Dimensione"
+
+#: resources/views/cpt/preview-not-available.php:6
+msgid "Preview not available"
+msgstr "Anteprima non disponibile"
+
+#: resources/views/cpt/preview-not-available.php:9
+msgid "Update the banner content"
+msgstr "Aggiorna il contenuto del banner"
+
+#: resources/views/cpt/rules.php:6
+msgid "Rules"
+msgstr "Regole"
+
+#: resources/views/cpt/rules.php:11
+msgid "Date range rules"
+msgstr "Regole per intervallo di date"
+
+#: resources/views/cpt/rules.php:13
+msgid ""
+"This banner will be visible on for the following date range. Of course, you "
+"can left any fields blank for no date range."
+msgstr ""
+"Questo banner sarà visibile per il seguente intervallo di date. "
+"Naturalmente, puoi lasciare vuoti tutti i campi per evitare alcun intervallo "
+"di date."
+
+#: resources/views/cpt/rules.php:19
+msgid "Date from"
+msgstr "Arrivo"
+
+#: resources/views/cpt/rules.php:29
+msgid "Date to"
+msgstr "Alla data"
+
+#: resources/views/cpt/rules.php:39
+msgid "Impression rules"
+msgstr "Regole di impressione"
+
+#: resources/views/cpt/rules.php:42
+msgid "Here you can set the maximum number of impressions for this banner."
+msgstr "Qui puoi impostare il numero massimo di impressioni per questo banner."
+
+#: resources/views/cpt/rules.php:46
+msgid "Maximum impressions"
+msgstr "Impressioni Massime"
+
+#: resources/views/cpt/rules.php:54
+msgid "Current impressions:"
+msgstr "Impressioni attuali:"
+
+#: resources/views/cpt/rules.php:59
+msgid "Click rules"
+msgstr "Regole di clic"
+
+#: resources/views/cpt/rules.php:62
+msgid "Here you can set the maximum number of clicks for this banner."
+msgstr "Qui puoi impostare il numero massimo di clic per questo banner."
+
+#: resources/views/cpt/rules.php:66
+msgid "Maximum clicks"
+msgstr "Numero massimo di clic"
+
+#: resources/views/cpt/rules.php:74
+msgid "Current clicks:"
+msgstr "Clic attuali:"
+
+#: resources/views/cpt/settings.php:10
+msgid "Here you can set the link and other attributes"
+msgstr "Qui puoi impostare il link e altri attributi"
+
+#: resources/views/cpt/settings.php:15
+msgid "Link"
+msgstr "Link"
+
+#: resources/views/cpt/settings.php:16
+msgid "This is the URL that allows you to link the banner"
+msgstr "Questo è l'URL che ti permette di collegare il banner"
+
+#: resources/views/cpt/settings.php:19
+msgid "http://"
+msgstr "http://"
+
+#: resources/views/cpt/settings.php:25
+msgid "Target"
+msgstr "Target"
+
+#: resources/views/cpt/settings.php:27
+msgid "None"
+msgstr "Nessuna"
+
+#: resources/views/cpt/settings.php:28
+msgid "_blank"
+msgstr "_blank"
+
+#: resources/views/cpt/settings.php:29
+msgid "_parent"
+msgstr "_parent"
+
+#: resources/views/cpt/settings.php:30
+msgid "_self"
+msgstr "_self"
+
+#: resources/views/cpt/settings.php:31
+msgid "_top"
+msgstr ""
+
+#: resources/views/cpt/settings.php:47
+msgid "Add \"nofollow\""
+msgstr "Aggiungi “nofollow”"
+
+#: resources/views/cpt/settings.php:55
+msgid ""
+"Use this field as alternative alt/title description for banner. If you leave "
+"this field blank the title of banner will be use instead."
+msgstr ""
+"Utilizzare questo campo come descrizione alternativa dell'alt/titolo per il "
+"banner. Se lasci vuoto questo campo, verrà utilizzato il titolo del banner."
+
+#: resources/views/cpt/size.php:20
+msgid "Custom width"
+msgstr "Larghezza personalizzata"
+
+#: resources/views/cpt/size.php:21 resources/views/cpt/size.php:27
+msgid "eg: 100%"
+msgstr "es: 100%"
+
+#: resources/views/cpt/size.php:26
+msgid "Custom height"
+msgstr "Altezza personalizzata"
+
+#: resources/views/importer/dropped.php:10
+msgid "Previous table dropped!"
+msgstr "La tabella precedente è stato eliminata!"
+
+#: resources/views/importer/dropped.php:14
+#: resources/views/importer/successfully.php:14
+msgid "Manage your new banners"
+msgstr "Gestisci i tuoi nuovi banner"
+
+#: resources/views/importer/index.php:184
+msgid ""
+"The previous WP Bannerize database table is empty! Of course, you can drop "
+"it by click the button below."
+msgstr ""
+"La precedente tabella del database WP Bannerize è vuota! Naturalmente, puoi "
+"rilasciarlo facendo clic sul pulsante qui sotto."
+
+#: resources/views/importer/successfully.php:10
+msgid "Previous table imported successfully!"
+msgstr "La tabella precedente è stata importata con successo!"
+
+#: resources/views/widgets/form.php:5
+msgid "Display"
+msgstr "Visualizza"
+
+#: resources/views/widgets/form.php:9
+msgid "Title"
+msgstr "Titolo"
+
+#: resources/views/widgets/form.php:10
+msgid "eg: title on top"
+msgstr "es: titolo in alto"
+
+#: resources/views/widgets/form.php:16
+msgid "Layout"
+msgstr "Layout"
+
+#: resources/views/widgets/form.php:18
+msgid "Vertical"
+msgstr "Verticale"
+
+#: resources/views/widgets/form.php:19
+msgid "Horizontal"
+msgstr "Orizzontale"
+
+#: resources/views/widgets/form.php:26 resources/views/widgets/form.php:32
+msgid "Maximum number of Banners to display: use -1 to display all banners"
+msgstr ""
+"Numero massimo di banner da visualizzare: utilizzare -1 per visualizzare "
+"tutti i banner"
+
+#: resources/views/widgets/form.php:31 public/block/index.js:1
+#: resources/assets/block/edit.js:86
+msgid "Numbers"
+msgstr "Numeri"
+
+#: resources/views/widgets/form.php:38
+msgid ""
+"Warning! The \"Order\" param will ignored when RANDOM \"Order by\" is "
+"selected."
+msgstr ""
+"Avvertimento! Il parametro \"Ordina\" verrà ignorato quando viene "
+"selezionato \"Ordina per\" CASUALE."
+
+#: resources/views/widgets/form.php:43
+msgid "Order By"
+msgstr "Ordina per"
+
+#: resources/views/widgets/form.php:45
+msgid "Manual"
+msgstr "Manuale"
+
+#: resources/views/widgets/form.php:46
+msgid "Random"
+msgstr "Casuale"
+
+#: resources/views/widgets/form.php:54
+msgid "Order"
+msgstr "Ordine"
+
+#: resources/views/widgets/form.php:56
+msgid "Descending"
+msgstr "Discendente"
+
+#: resources/views/widgets/form.php:57
+msgid "Ascending"
+msgstr "Ascendente"
+
+#: resources/views/widgets/form.php:64
+msgid ""
+"Switch on to give some chances to the banners to be showed when use "
+"Impressions, Click or CTR order by. Switch off to absolute order."
+msgstr ""
+"Attiva per dare alcune possibilità ai banner di essere mostrati quando usi "
+"Impressioni, clic o CTR ordina per. Disattivare l'ordine assoluto."
+
+#: resources/views/widgets/form.php:69
+msgid "Rank"
+msgstr "Classifica"
+
+#: resources/views/widgets/form.php:74
+msgid "Devices"
+msgstr "Dispositivi"
+
+#: resources/views/widgets/form.php:80
+msgid "Any"
+msgstr "Qualsiasi"
+
+#: resources/views/widgets/form.php:86
+msgid "Mobile"
+msgstr "Cellulare"
+
+#: resources/views/widgets/form.php:93
+msgid "Desktop"
+msgstr "Desktop"
+
+#: resources/views/widgets/form.php:98 public/block/index.js:1
+#: resources/assets/block/edit.js:64
+msgid "Filters"
+msgstr "Filtri"
+
+#: resources/views/widgets/form.php:109
+msgid "Geo Localization"
+msgstr "Geolocalizzazione"
+
+#: resources/views/widgets/form.php:113
+msgid "Display selected"
+msgstr "Display selezionato"
+
+#: resources/views/widgets/form.php:145
+msgid "Selected countries:"
+msgstr "Paesi selezionati:"
+
+#: resources/views/widgets/form.php:147
+msgid "Deselect all"
+msgstr "Deseleziona tutto"
+
+#: resources/views/widgets/form.php:155
+msgid "Bannerize Campaigns"
+msgstr "Campagne banner"
+
+#: resources/views/widgets/form.php:187
+msgid "Post Categories"
+msgstr "Categorie articolo"
+
+#: resources/views/widgets/form.php:216
+msgid "User Roles"
+msgstr "Ruoli utente"
+
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/BannersMultiSelect.jsx:33
 msgid "Pick one or more Banners..."
 msgstr "Scegli uno o più banner..."
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/BulkActions.jsx:22
 msgid "Bulk Actions"
 msgstr "Azioni in blocco"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/BulkActions.jsx:38
 msgid "Apply"
 msgstr "Applica"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/CampaignsMultiSelect.jsx:38
 msgid "Pick one or more Campaigns..."
 msgstr "Scegli una o più campagne..."
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:89
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:129
 msgid "Please confirm your action"
 msgstr "Conferma la tua azione"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:133
 msgid "Are your sure you want to delete the selected records"
 msgstr "Sei sicuro di voler eliminare i record selezionati"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:95
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:140
 msgid "This action cannot be undone"
 msgstr "Questa azione non può essere ripristinata"
 
 #: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:99
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:144
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:69
 msgid "Confirm"
 msgstr "Conferma"
 
 #: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:100
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:145
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:70
 msgid "Cancel"
 msgstr "Annulla"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:113
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:159
 msgid "Deleted"
 msgstr "Cancellata"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:160
 msgid "have been deleted"
 msgstr "sono stati cancellati"
 
 #: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:191
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:152
 msgid "Export"
 msgstr "Esporta"
 
 #: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:202
+#: resources/assets/apps/analytics/TrendCharts.jsx:215
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:166
 msgid "Export CSV"
 msgstr "Esporta CSV"
 
 #: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:211
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:178
 msgid "Export SQL"
 msgstr "Esportazione SQL"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:292
 msgid "Delete"
 msgstr "Elimina"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:293
 msgid "You do not have permission to delete records"
 msgstr "Non si dispone dell'autorizzazione per eliminare i record"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:81
 msgid ""
 "Date: %s\n"
 "Banner ID: %s\n"
@@ -390,111 +802,140 @@ msgstr ""
 "Campagne: %s"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:93
 msgid "Are your sure you want to delete the record"
 msgstr "Sei sicuro di voler eliminare il record"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/AnalyticsDataTable.jsx:114
 msgid "has been deleted"
 msgstr "è stato cancellato"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/OverallDonutChart.jsx:35
 msgid "Total %s"
 msgstr "Totale %s"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/OverallDonutChart.jsx:40
 msgid "Total Banner %s"
 msgstr "Totale dei Banner %s"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/OverallDonutChart.jsx:45
 msgid "Total Banner Count by Referrer"
 msgstr "Conteggio totale dei banner per referrer"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/OverallDonutChart.jsx:50
 msgid "Total Referrer %s"
 msgstr "Referrer totali %s"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/OverallDonutChart.jsx:55
 msgid "Total Unique IP %s"
 msgstr "Totale %s IP univoco"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/TrendCharts.jsx:133
 msgid "Line"
 msgstr "Linea"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/TrendCharts.jsx:148
 msgid "Bar"
 msgstr "Barre"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/TrendCharts.jsx:173
 msgid "Day"
 msgstr "Giorno"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/TrendCharts.jsx:188
 msgid "Month"
 msgstr "Mese"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/TrendCharts.jsx:200
 msgid "Tools"
 msgstr "Strumenti"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/TrendCharts.jsx:204
 msgid "Charts"
 msgstr "Grafici"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/TrendCharts.jsx:224
 msgid "Refresh"
 msgstr "Aggiorna"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/TopMost.jsx:32
 msgid "Viewed"
 msgstr "Visualizzato"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/TopMost.jsx:33
 msgid "Clicked"
 msgstr "Cliccati"
 
 #: public/apps/analytics/analytics.js:1 public/apps/settings/settings.js:1
-#: public/block/index.js:1
+#: public/block/index.js:1 resources/assets/apps/analytics/TopMost.jsx:78
+#: resources/assets/apps/settings/ThemeSettings.jsx:53
+#: resources/assets/block/components/Banner.js:27
+#: resources/assets/block/components/CampaignInput.js:42
 msgid "Campaigns"
 msgstr "Campagne"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/AnalyticsTabs.jsx:42
 msgid "Overview"
 msgstr "Panoramica"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/AnalyticsTabs.jsx:57
 msgid "Reports"
 msgstr "Rapporti"
 
 #: public/apps/analytics/analytics.js:1
+#: resources/assets/apps/analytics/analytics.jsx:23
 msgid "Bannerize Analytics"
 msgstr "Statistiche di Bannerize"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:114
 msgid "Manually"
 msgstr "Manualmente"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:115
 msgid "Twice Daily"
 msgstr "Due volte al giorno"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:116
 msgid "Once Daily"
 msgstr "Una volta al giorno"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:117
 msgid "Once Weekly"
 msgstr "Una volta a settimana"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:131
 msgid "Impressions table maintenance"
 msgstr "Manutenzione della tabella delle impronte"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:136
 msgid "The current table contains"
 msgstr "La tabella corrente contiene"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:139
 msgid ""
 "%s records. You can enable automatic table maintenance to keep the table "
 "clean."
@@ -503,26 +944,32 @@ msgstr ""
 "mantenerlo pulito."
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:191
 msgid "Disabled"
 msgstr "Disabilitato"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:193
 msgid "Max Records"
 msgstr "Record massimi"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:197
 msgid "Recent Months"
 msgstr "Ultimi mesi"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:207
 msgid "Delete records when the maximum is exceeded"
 msgstr "Elimina i record quando viene superato il massimo"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:217
 msgid "Retain Impressions Within Recent Months"
 msgstr "Conserva le impressioni degli ultimi mesi"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:62
 msgid ""
 "Are you sure you want to run the clean up process? This action cannot be "
 "undone."
@@ -531,42 +978,42 @@ msgstr ""
 "essere annullata."
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:85
 msgid "%s Clean Up successfully"
 msgstr "%s Pulizia riuscita"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:89
 msgid "%s %s have been deleted."
 msgstr "%s %s sono stati eliminati."
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:98
 msgid "%s Clean Up"
 msgstr "%s Pulizia"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:100
 msgid "There are no %s to delete"
 msgstr "Non ci sono %s da eliminare"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/KeepCleanSettings.jsx:237
 msgid "Clean up Now"
 msgstr "Pulisci ora"
 
 #: public/apps/settings/settings.js:1
-msgid "Enable Impressions"
-msgstr "Impressioni"
-
-#: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/AnalyticsSettings.jsx:13
 msgid "Enable tracking of banner Impressions"
 msgstr "Abilita il monitoraggio delle impressioni dei banner"
 
 #: public/apps/settings/settings.js:1
-msgid "Enable Clicks"
-msgstr "Abilita Clicks"
-
-#: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/AnalyticsSettings.jsx:26
 msgid "Enable tracking of banner Clicks"
 msgstr "Abilita il monitoraggio dei clic sui banner"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/GeoSettings.jsx:44
 msgid ""
 "To start, or continue using the Geolocalizer features, you must register "
 "with one of the services listed below."
@@ -575,130 +1022,152 @@ msgstr ""
 "è necessario registrarsi a uno dei servizi elencati di seguito."
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/GeoSettings.jsx:51
 msgid "IPStack"
 msgstr ""
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/GeoSettings.jsx:61
 msgid "Success!"
 msgstr "Successo!"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/GeoSettings.jsx:63
 msgid "Great! You have an API KEY on"
 msgstr "Benissimo! Hai una CHIAVE API attiva"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/GeoSettings.jsx:73
 msgid "Sign up for Free on"
 msgstr "Registrati gratuitamente su"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/GeoSettings.jsx:77
 msgid "service to get your"
 msgstr "servizio per ottenere il tuo"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/GeoSettings.jsx:86
 msgid "Enter your API KEY to enable the Geolocalizer features"
 msgstr ""
 "Inserisci la tua CHIAVE API per abilitare le funzionalità del "
 "geolocalizzatore"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/GeoSettings.jsx:98
 msgid "Your GEO information"
 msgstr "Le tue informazioni GEO"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/GeoSettings.jsx:100
 msgid "Invalid JSON"
 msgstr "JSON non valido"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/ThemeSettings.jsx:13
 msgid "Enable Custom page"
 msgstr "Abilita pagina personalizzata"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/ThemeSettings.jsx:14
 msgid "Enable the custom page for the single banners"
 msgstr "Abilita la pagina personalizzata per i singoli banner"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/ThemeSettings.jsx:20
+#: resources/assets/apps/settings/ThemeSettings.jsx:63
 msgid "Additional elements"
 msgstr "Elementi aggiuntivi"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/ThemeSettings.jsx:23
+#: resources/assets/apps/settings/ThemeSettings.jsx:66
 msgid "Header"
 msgstr "Header"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/ThemeSettings.jsx:24
+#: resources/assets/apps/settings/ThemeSettings.jsx:67
 msgid "Display header on the custom page"
 msgstr "Visualizza l'intestazione nella pagina personalizzata"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/ThemeSettings.jsx:32
+#: resources/assets/apps/settings/ThemeSettings.jsx:75
 msgid "Footer"
 msgstr "Footer"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/ThemeSettings.jsx:33
+#: resources/assets/apps/settings/ThemeSettings.jsx:76
 msgid "Display footer on the custom page"
 msgstr "Visualizzare il piè di pagina nella pagina personalizzata"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/ThemeSettings.jsx:41
+#: resources/assets/apps/settings/ThemeSettings.jsx:84
 msgid "Sidebar"
 msgstr "Barra laterale"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/ThemeSettings.jsx:42
+#: resources/assets/apps/settings/ThemeSettings.jsx:85
 msgid "Display sidebar on the custom page"
 msgstr "Visualizza la barra laterale sulla pagina personalizzata"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/ThemeSettings.jsx:56
 msgid "Enable custom Campaigns page"
 msgstr "Abilita la pagina Campagne personalizzate"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/ThemeSettings.jsx:57
 msgid "Enable the custom page for the campaigns"
 msgstr "Abilita la pagina personalizzata per le campagne"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/TabsSettings.jsx:39
 msgid "Geo Location"
 msgstr "Geolocalizzazione"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/TabsSettings.jsx:42
 msgid "Theme"
 msgstr "Tema"
 
 #: public/apps/settings/settings.js:1
+#: resources/assets/apps/settings/settings.jsx:27
 msgid "Bannerize Settings"
 msgstr "Impostazioni Bannerize"
 
-#: public/block/index.js:1
+#: public/block/index.js:1 resources/assets/block/components/BannersInput.js:40
 msgid "Type to search for banners"
 msgstr "Digita per cercare i banner"
 
 #: public/block/index.js:1
+#: resources/assets/block/components/CampaignInput.js:40
 msgid "Type to search for campaigns"
 msgstr "Digita per cercare le campagne"
 
-#: public/block/index.js:1
-msgid "Filters"
-msgstr "Filtri"
-
-#: public/block/index.js:1
+#: public/block/index.js:1 resources/assets/block/edit.js:75
 msgid "Order by"
 msgstr "Ordina per"
 
-#: public/block/index.js:1
+#: public/block/index.js:1 resources/assets/block/edit.js:84
 msgid "Set the numbers of banners to show (-1 for all)"
 msgstr "Imposta il numero di striscioni da mostrare (-1 per tutti)"
 
-#: public/block/index.js:1
-msgid "Numbers"
-msgstr "Numeri"
-
-#: public/block/block.json
+#: public/block/block.json resources/assets/block/block.json
 msgctxt "block title"
 msgid "Bannerize"
-msgstr ""
+msgstr "Bannerize"
 
-#: public/block/block.json
+#: public/block/block.json resources/assets/block/block.json
 msgctxt "block description"
 msgid "Display a list of banners in accordance with the settings below."
 msgstr "Visualizza un elenco di banner in base alle impostazioni seguenti."
 
-#: public/block/block.json
+#: public/block/block.json resources/assets/block/block.json
 msgctxt "block keyword"
 msgid "ab967f"
 msgstr ""

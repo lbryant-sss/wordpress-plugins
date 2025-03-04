@@ -4,110 +4,112 @@
     class="am-capi"
     :style="cssVars"
   >
-    <AmAlert
-      v-if="alertVisibility"
-      type="success"
-      :show-border="true"
-      :close-after="5000"
-      custom-class="am-capi__alert"
-      @close="closeAlert"
-      @trigger-close="closeAlert"
-    >
-      <template #title>
-        <span class="am-icon-checkmark-circle-full"></span> {{ successMessage }}
-      </template>
-    </AmAlert>
-
-    <el-tabs
-      v-model="activeTab"
-      class="am-capi__tabs"
-      @tab-click="tabClick"
-    >
-      <el-tab-pane
-        class="am-capi__tabs-item"
-        :label="amLabels.personal_info"
-        name="first"
+    <div class="am-capi__inner">
+      <AmAlert
+        v-if="alertVisibility"
+        type="success"
+        :show-border="true"
+        :close-after="5000"
+        custom-class="am-capi__alert"
+        @close="closeAlert"
+        @trigger-close="closeAlert"
       >
-        <template v-if="!loading">
-          <el-form
-            v-if="store.getters['auth/getProfile']"
-            ref="infoFormRef"
-            :model="infoFormData"
-            :rules="infoFormRules"
-            label-position="top"
-            class="am-capi__form"
-            :class="responsiveClass"
-          >
-            <template v-for="item in amCustomize.profile.order" :key="item.id">
-              <component
-                :is="infoFormConstruction[item.id].template"
-                v-if="customizedOptions[item.id] ? customizedOptions[item.id].visibility : true"
-                ref="customerCollectorRef"
-                v-model="infoFormData[item.id]"
-                v-model:countryPhoneIso="infoFormConstruction[item.id].countryPhoneIso"
-                v-bind="infoFormConstruction[item.id].props"
-              ></component>
-            </template>
-          </el-form>
+        <template #title>
+          <span class="am-icon-checkmark-circle-full"></span> {{ successMessage }}
         </template>
-        <ProfileSkeleton
-          v-else
-          :count="5"
-          :page-width="pageWidth"
-        ></ProfileSkeleton>
-      </el-tab-pane>
+      </AmAlert>
 
-      <el-tab-pane
-        class="am-capi__tabs-item"
-        :label="amLabels.password_tab"
-        name="second"
+      <el-tabs
+        v-model="activeTab"
+        class="am-capi__tabs"
+        @tab-click="tabClick"
       >
-        <template v-if="!loading">
-          <el-form
-            ref="passFormRef"
-            :model="passFormData"
-            :rules="passFormRules"
-            label-position="top"
-            class="am-capi__form"
-            :class="responsiveClass"
-          >
-            <template v-for="(item, key) in passFormConstruction" :key="item.props.itemName">
-              <component
-                :is="item.template"
-                ref="customerPassCollectorRef"
-                v-model="passFormData[key]"
-                v-bind="item.props"
-              ></component>
-            </template>
-          </el-form>
-        </template>
+        <el-tab-pane
+          class="am-capi__tabs-item"
+          :label="amLabels.personal_info"
+          name="first"
+        >
+          <template v-if="!loading">
+            <el-form
+              v-if="store.getters['auth/getProfile']"
+              ref="infoFormRef"
+              :model="infoFormData"
+              :rules="infoFormRules"
+              label-position="top"
+              class="am-capi__form"
+              :class="responsiveClass"
+            >
+              <template v-for="item in amCustomize.profile.order" :key="item.id">
+                <component
+                  :is="infoFormConstruction[item.id].template"
+                  v-if="customizedOptions[item.id] ? customizedOptions[item.id].visibility : true"
+                  ref="customerCollectorRef"
+                  v-model="infoFormData[item.id]"
+                  v-model:countryPhoneIso="infoFormConstruction[item.id].countryPhoneIso"
+                  v-bind="infoFormConstruction[item.id].props"
+                ></component>
+              </template>
+            </el-form>
+          </template>
+          <ProfileSkeleton
+            v-else
+            :count="5"
+            :page-width="pageWidth"
+          ></ProfileSkeleton>
+        </el-tab-pane>
 
-        <ProfileSkeleton
-          v-else
-          :item-direction="'column'"
-          :count="2"
-          :page-width="pageWidth"
-        ></ProfileSkeleton>
-      </el-tab-pane>
-    </el-tabs>
+        <el-tab-pane
+          class="am-capi__tabs-item"
+          :label="amLabels.password_tab"
+          name="second"
+        >
+          <template v-if="!loading">
+            <el-form
+              ref="passFormRef"
+              :model="passFormData"
+              :rules="passFormRules"
+              label-position="top"
+              class="am-capi__form"
+              :class="responsiveClass"
+            >
+              <template v-for="(item, key) in passFormConstruction" :key="item.props.itemName">
+                <component
+                  :is="item.template"
+                  ref="customerPassCollectorRef"
+                  v-model="passFormData[key]"
+                  v-bind="item.props"
+                ></component>
+              </template>
+            </el-form>
+          </template>
 
-    <DeleteProfile
-      :visibility="deleteProfileDialog"
-      :customized-labels="customizedStepLabels('deleteProfile')"
-      :customized-options="amCustomize.deleteProfile.options"
-      @close="deleteProfileDialog = false"
-      @delete-profile="deleteProfile"
-    />
+          <ProfileSkeleton
+            v-else
+            :item-direction="'column'"
+            :count="2"
+            :page-width="pageWidth"
+          ></ProfileSkeleton>
+        </el-tab-pane>
+      </el-tabs>
 
-    <MainProfileFooter
-      :loading="loading"
-      :display="activeTab"
-      :parent-width="pageWidth"
-      :customized-labels="amLabels"
-      :save-footer-button="customizedOptions.saveFooterButton.buttonType"
-      :delete-footer-type="customizedOptions.deleteFooterButton.buttonType"
-      :pass-footer-button="customizedOptions.passFooterButton.buttonType"
-    />
+      <DeleteProfile
+        :visibility="deleteProfileDialog"
+        :customized-labels="customizedStepLabels('deleteProfile')"
+        :customized-options="amCustomize.deleteProfile.options"
+        @close="deleteProfileDialog = false"
+        @delete-profile="deleteProfile"
+      />
+
+      <MainProfileFooter
+        :loading="loading"
+        :display="activeTab"
+        :parent-width="pageWidth"
+        :customized-labels="amLabels"
+        :save-footer-button="customizedOptions.saveFooterButton.buttonType"
+        :delete-footer-type="customizedOptions.deleteFooterButton.buttonType"
+        :pass-footer-button="customizedOptions.passFooterButton.buttonType"
+      />
+    </div>
   </div>
 </template>
 
@@ -540,16 +542,17 @@ function tabClick () {
 function changeProfilePassword() {
   passFormRef.value.validate((valid) => {
     if (valid) {
-      successMessage.value = 'Password changed Successfully'
       let user = store.getters['auth/getProfile']
 
       store.commit('setLoading', true)
 
       httpClient.post(
-        '/users/' + cabinetType.value + 's/' + user.id,
+        '/users/customers/' + user.id,
         {password: store.getters['auth/getNewPassword']},
         useAuthorizationHeaderObject(store)
       ).then(() => {
+        successMessage.value = amLabels.value.password_success
+
         store.commit('auth/setNewPassword', '')
         store.commit('auth/setConfirmPassword', '')
       }).catch(() => {
@@ -636,8 +639,13 @@ export default {
   // capi - cabinet personal information
   // capp - cabinet personal password
   .am-capi {
-    .el-tabs {
+    &__inner {
+      display: block;
+      padding: 16px 32px;
+    }
 
+    // Tabs
+    .el-tabs {
       &__header {
         margin: 0 0 15px;
       }
@@ -647,6 +655,16 @@ export default {
           &:after {
             background-color: var(--am-c-capi-text-op10);
           }
+
+          &.is-scrollable {
+            padding: 0 24px;
+          }
+        }
+
+        &-next,
+        &-prev {
+          color: var(--am-c-capi-text);
+          top: 11px;
         }
       }
 
@@ -683,6 +701,7 @@ export default {
 
       &__content {
         overflow: unset;
+        position: static;
       }
     }
 

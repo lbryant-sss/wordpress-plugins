@@ -2,6 +2,13 @@ import { reactive } from "vue";
 
 const globalLabels = reactive(window.wpAmeliaLabels)
 
+// * sbsNew - step by step new
+// * cbf    - catalog booking form
+// * elf    - events list form
+// * ecf    - events calendar form
+// * capc   - cabinet panel customer
+// * cape   - cabinet panel employee
+
 let defaultCustomizeSettings = {
   fonts: {
     fontFamily: 'Amelia Roboto, sans-serif',
@@ -1383,6 +1390,164 @@ let defaultCustomizeSettings = {
       translations: null
     }
   },
+  cape: {
+    colors: {
+      colorPrimary: '#1246D6',
+      colorSuccess: '#019719',
+      colorError: '#B4190F',
+      colorWarning: '#CCA20C',
+      colorInpBgr: '#FFFFFF',
+      colorInpBorder: '#D1D5D7',
+      colorInpText: '#1A2C37',
+      colorInpPlaceHolder: '#808A90',
+      colorDropBgr: '#FFFFFF',
+      colorDropBorder: '#FFFFFF',
+      colorDropText: '#0E1920',
+      colorSbBgr: '#17295A',
+      colorSbText: '#FFFFFF',
+      colorMainBgr: '#FFFFFF',
+      colorMainHeadingText: '#33434C',
+      colorMainText: '#1A2C37',
+      colorBtnPrim: '#265CF2',
+      colorBtnPrimText: '#FFFFFF',
+      colorBtnSec: '#1A2C37',
+      colorBtnSecText: '#FFFFFF',
+      colorBtnDanger: '#B4190F',
+      colorBtnDangerText: '#FFFFFF',
+    },
+    sidebar: {
+      options: {
+        toggle: {
+          name: globalLabels.toggled_sidebar,
+          visibility: false
+        },
+      },
+      translations: null
+    },
+    appointments: {
+      options: {
+        timeZone: {
+          name: globalLabels.time_zone,
+          visibility: true
+        },
+        servicesFilter: {
+          name: globalLabels.csb_cust_filter_service,
+          visibility: true
+        },
+        customersFilter: {
+          name: globalLabels.csb_cust_filter_customer,
+          visibility: true
+        },
+        locationsFilter: {
+          name: globalLabels.csb_cust_filter_location,
+          visibility: true
+        },
+        filterBtn: {
+          name: globalLabels.filters_button_type,
+          buttonType: 'filled',
+          typeOptions: ['filled', 'plain', 'text']
+        },
+        newAppBtn: {
+          name: globalLabels.new_app_button_type,
+          buttonType: 'filled',
+          typeOptions: ['filled', 'plain', 'text']
+        },
+        customer: {
+          name: globalLabels.csb_cust_appointment_customer,
+          visibility: true
+        },
+        customerPhone: {
+          name: globalLabels.csb_cust_appointment_customer_phone,
+          visibility: true
+        },
+        customerEmail: {
+          name: globalLabels.csb_cust_appointment_customer_email,
+          visibility: true
+        },
+        price: {
+          name: globalLabels.appointment_price,
+          visibility: true
+        },
+      },
+      translations: null
+    },
+    events: {
+      options: {
+        timeZone: {
+          name: globalLabels.time_zone,
+          visibility: true
+        },
+        eventsFilter: {
+          name: globalLabels.csb_cust_filter_event,
+          visibility: true
+        },
+        customersFilter: {
+          name: globalLabels.csb_cust_filter_customer,
+          visibility: true
+        },
+        locationsFilter: {
+          name: globalLabels.csb_cust_filter_location,
+          visibility: true
+        },
+        filterBtn: {
+          name: globalLabels.filters_button_type,
+          buttonType: 'filled',
+          typeOptions: ['filled', 'plain', 'text']
+        },
+        newEvtBtn: {
+          name: globalLabels.new_evt_button_type,
+          buttonType: 'filled',
+          typeOptions: ['filled', 'plain', 'text']
+        },
+        customerPhone: {
+          name: globalLabels.csb_cust_event_customer_phone,
+          visibility: true
+        },
+        customerEmail: {
+          name: globalLabels.csb_cust_event_customer_email,
+          visibility: true
+        },
+        price: {
+          name: globalLabels.event_price,
+          visibility: true
+        }
+      },
+      translations: null
+    },
+    signIn: {
+      options: {
+        signInBtn: {
+          name: globalLabels.sign_in_button_type,
+          buttonType: 'filled',
+          typeOptions: ['filled', 'plain', 'text']
+        },
+      },
+      translations: null
+    },
+    accessLink: {
+      options: {
+        sendBtn: {
+          name: globalLabels.send_button_type,
+          buttonType: 'filled',
+          typeOptions: ['filled', 'plain', 'text']
+        },
+      },
+      translations: null
+    },
+    accessLinkSuccess: {
+      translations: null
+    },
+    setPass: {
+      options: {
+        newPassBtn: {
+          name: globalLabels.new_pass_button_type,
+          buttonType: 'filled',
+          typeOptions: ['filled', 'plain', 'text']
+        },
+      },
+      translations: null
+    }
+  },
   ecf: {
     colors: {
       colorPrimary: '#1246D6',
@@ -2717,6 +2882,7 @@ let defaultTranslations = {
           cancel: null,
           provider_profile: null,
           google_meet_link: null,
+          microsoft_teams_link: null,
           zoom_link: null,
           lesson_space_link: null,
           extras: null,
@@ -2825,6 +2991,7 @@ let defaultTranslations = {
           provider_profile: null,
           event_timetable: null,
           google_meet_link: null,
+          microsoft_teams_link: null,
           zoom_link: null,
           lesson_space_link: null,
           custom_fields: null,
@@ -2941,6 +3108,7 @@ let defaultTranslations = {
           reschedule: null,
           cancel: null,
           google_meet_link: null,
+          microsoft_teams_link: null,
           zoom_link: null,
           lesson_space_link: null,
           extras: null,
@@ -3020,6 +3188,103 @@ let defaultTranslations = {
         }
       }
     },
+    signIn: {
+      alert: {
+        name: globalLabels.alert_message,
+        labels: {
+          profile_deleted: null
+        }
+      },
+      heading: {
+        name: globalLabels.heading_title,
+        labels: {
+          welcome_back: null,
+          enter_credentials: null
+        }
+      },
+      input: {
+        name: globalLabels.input_fields,
+        labels: {
+          email_or_username: null,
+          enter_email_or_username_warning: null,
+          password: null,
+          enter_password_warning: null
+        }
+      },
+      footer: {
+        name: globalLabels.footer_content,
+        labels: {
+          sign_in: null,
+          forgot_your_password: null,
+          reset_password: null,
+        }
+      }
+    },
+    accessLink: {
+      heading: {
+        name: globalLabels.heading_title,
+        labels: {
+          access_link_send: null,
+          access_link_send_description: null
+        }
+      },
+      input: {
+        name: globalLabels.input_fields,
+        labels: {
+          email: null,
+          enter_email_warning: null
+        }
+      },
+      footer: {
+        name: globalLabels.footer_content,
+        labels: {
+          send: null,
+          sign_in: null
+        }
+      }
+    },
+    accessLinkSuccess: {
+      heading: {
+        name: globalLabels.heading_title,
+        labels: {
+          access_link_send_check: null,
+          access_link_send_click: null
+        }
+      },
+      footer: {
+        name: globalLabels.footer_content,
+        labels: {
+          access_link_send_inbox: null,
+          access_link_send_retry: null
+        }
+      }
+    },
+    setPass: {
+      heading: {
+        name: globalLabels.heading_title,
+        labels: {
+          new_password_set: null,
+          new_password_set_description: null
+        }
+      },
+      input: {
+        name: globalLabels.input_fields,
+        labels: {
+          new_password_colon: null,
+          new_password_required: null,
+          new_password_length: null,
+          new_password_colon_retype: null
+        }
+      },
+      footer: {
+        name: globalLabels.footer_content,
+        labels: {
+          new_password_set_action: null
+        }
+      }
+    }
+  },
+  cape: {
     signIn: {
       alert: {
         name: globalLabels.alert_message,

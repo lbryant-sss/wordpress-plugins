@@ -147,6 +147,7 @@
             :id="cf.id"
             v-model="infoFormData['cf' + cf.id]"
             :auto-upload="false"
+            :accept="customFieldsAllowedExtensions"
             @change="onAddFile"
             @remove="onRemoveFile"
           >
@@ -439,6 +440,8 @@ function onRemoveFile (a) {
 
 let phoneError = ref(false)
 
+let customFieldsAllowedExtensions = ref('')
+
 let loggedInUser = computed(() => (store.getters['booking/getCustomerId'] && store.getters['booking/getCustomerEmail'])
     || (!!window.ameliaUser && window.ameliaUser.type == 'admin'))
 /**
@@ -505,6 +508,10 @@ watchEffect(() => {
 let addressCustomFields = ref([])
 
 onMounted(() => {
+  if (settings.general.customFieldsAllowedExtensions) {
+    customFieldsAllowedExtensions.value = Object.keys(settings.general.customFieldsAllowedExtensions).join(', ')
+  }
+
   Object.keys(availableCustomFields.value).forEach((id) => {
     infoFormData.value['cf' + id] = computed({
       get: () => store.state.booking.appointment.bookings[0].customFields[id].value,

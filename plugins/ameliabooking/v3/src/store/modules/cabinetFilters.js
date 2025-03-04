@@ -3,12 +3,14 @@ export default {
 
   state: () => ({
     dates: [],
+    customers: [],
     services: [],
     events: [],
     packages: [],
     providers: [],
     locations: [],
     options: {
+      customers: [],
       services: [],
       events: [],
       packages: [],
@@ -20,6 +22,10 @@ export default {
   getters: {
     getDates (state) {
       return state.dates
+    },
+
+    getCustomers (state) {
+      return state.customers
     },
 
     getServices (state) {
@@ -45,6 +51,7 @@ export default {
     getAppointmentsFilters (state) {
       return {
         dates: state.dates,
+        customers: state.customers,
         services: state.services,
         providers: state.providers,
         locations: state.locations
@@ -54,6 +61,7 @@ export default {
     getEventsFilters (state) {
       return {
         dates: state.dates,
+        customers: state.customers,
         events: state.events,
         providers: state.providers,
         locations: state.locations
@@ -69,7 +77,14 @@ export default {
       }
     },
 
-    getAppointmentFilterOptions (state) {
+    getAppointmentFilterOptions: (state) => (type) => {
+      if (type === 'employee') {
+        return {
+          customers: state.options.customers,
+          services: state.options.services,
+          locations: state.options.locations
+        }
+      }
       return {
         services: state.options.services,
         providers: state.options.providers,
@@ -77,7 +92,15 @@ export default {
       }
     },
 
-    getEventFiltersOption (state) {
+    getEventFiltersOption: (state) => (type) => {
+      if (type === 'employee') {
+        return {
+          events: state.options.events,
+          customers: state.options.customers,
+          locations: state.options.locations
+        }
+      }
+
       return {
         events: state.options.events,
         providers: state.options.providers,
@@ -100,6 +123,10 @@ export default {
       state.dates = payload
     },
 
+    setCustomers (state, payload) {
+      state.customers = payload
+    },
+
     setServices (state, payload) {
       state.services = payload
     },
@@ -118,6 +145,10 @@ export default {
 
     setPackages (state, payload) {
       state.packages = payload
+    },
+
+    setCustomerOptions (state, payload) {
+      state.options.customers = payload
     },
 
     setServiceOptions (state, payload) {
@@ -141,6 +172,7 @@ export default {
     },
 
     setResetFilters (state) {
+      state.customers = []
       state.services = []
       state.events = []
       state.packages = []
@@ -150,6 +182,10 @@ export default {
   },
 
   actions: {
+    injectCustomerOptions ({ commit}, payload) {
+      commit('setCustomerOptions', payload)
+    },
+
     injectServiceOptions ({ commit, rootGetters}, payload) {
       let services = rootGetters['entities/getServices'].filter(s => payload.includes(s.id))
       commit('setServiceOptions', services)
@@ -165,8 +201,8 @@ export default {
       commit('setLocationOptions', locations)
     },
 
-    injectEventsOptions ({ commit, rootGetters}) {
-      commit('setEventsOptions', rootGetters['eventEntities/getEvents'])
+    injectEventsOptions ({ commit}, payload) {
+      commit('setEventsOptions', payload)
     },
 
     injectPackagesOptions ({ commit, rootGetters}, payload) {

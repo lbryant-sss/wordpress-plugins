@@ -4,9 +4,9 @@ Author URI: https://tmsproducts.io/
 Tags: appointments, booking, event booking system, booking system, scheduling
 Donate link: https://wpamelia.com/
 Requires at least: 4.5
-Tested up to: 6.7
+Tested up to: 6.7.2
 Requires PHP: 7.4
-Stable tag: 1.2.17
+Stable tag: 1.2.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -289,6 +289,14 @@ Installing Amelia Lite WordPress Booking Plugin is as easy as 1-2-3!
 
 
 == Changelog ==
+V1.2.18
+* Improvement: Added new ‘Reply to’ option for e-mail notifications
+* Improvement: Implemented a mechanism that allows custom validation checks before service booking
+* Updated Turkish, Czech and French translations
+* BugFix: Fixed issue with the 'Default items per page' option
+* BugFix: Fixed issue with 403 error while attempting to save a customization
+* Other small bug fixes and stability improvements
+
 V1.2.17
 * Fixed IDOR vulnerability issue
 * Small bug fixes and stability improvements

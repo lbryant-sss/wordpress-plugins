@@ -9,7 +9,7 @@
     >
       <div class="am-cc__cf-item">
         <span class="am-cc__cf-name" v-html="item.label"></span>
-        <div class="am-cc__cf-value">
+        <div v-if="'value' in item" class="am-cc__cf-value">
           <span class="am-cc__cf-value__inner">
             {{ customFieldValueDisplay(item.value) }}
           </span>

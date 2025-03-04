@@ -1,17 +1,17 @@
 <template>
   <div
-    v-if="!loading"
+    v-if="!loading && ready"
     class="am-capf"
     :style="cssVars"
   >
     <div v-if="cWidth <= 480 && customizedOptions.timeZone.visibility && props.stepKey !== 'packages'" class="am-capf__zone">
-      <TimeZoneSelect size="small"></TimeZoneSelect>
+      <TimeZoneSelect size="small"/>
     </div>
     <div class="am-capf__menu">
       <TimeZoneSelect
         v-if="cWidth <= 480 && customizedOptions.timeZone.visibility && props.stepKey === 'packages'"
         size="small"
-      ></TimeZoneSelect>
+      />
       <AmDatePicker
         v-if="props.stepKey !== 'packages'"
         v-model="selection.dates"
@@ -22,11 +22,11 @@
         :format="momentDateFormat()"
         :style="cssVars"
         :lang="localLanguage"
-        class="am-capf__menu-datepicker"
+        :class="['am-capf__menu-datepicker', props.responsiveClass]"
         :popper-class="'am-capf__menu-datepicker-popper'"
         :custom-input-display="true"
-      ></AmDatePicker>
-      <div v-if="!props.empty && filterCustomizeVisibility && filterVisibility">
+      />
+      <template v-if="!props.empty && filterCustomizeVisibility && filterVisibility">
         <AmButton
           :icon="filterIcon"
           :icon-only="cWidth <= 700"
@@ -36,10 +36,10 @@
           :type="customizedOptions.filterBtn ? customizedOptions.filterBtn.buttonType : 'filled'"
           @click="filtersMenuVisibility = !filtersMenuVisibility"
         >
-          <span class="am-icon-filter"></span>
+          <span class="am-icon-filter"/>
           <span v-if="cWidth > 700">{{amLabels.filters}}</span>
         </AmButton>
-      </div>
+      </template>
     </div>
     <Transition name="am-slide-fade">
       <div v-if="filtersMenuVisibility && !props.empty" class="am-capf__list">
@@ -48,20 +48,25 @@
           :key="name"
         >
           <span
-            v-if="options[name].length > 0 && amCustomize[objectRecognition].options[`${name}Filter`].visibility"
+            v-if="(options[name].length > 0 || name === 'customers' || name === 'events') && amCustomize[objectRecognition].options[`${name}Filter`].visibility"
             class="am-capf__list-item"
             :class="[{'am-selected': selection[name].length > 0}, `am-capf__list-item-${itemsNumber}`, props.responsiveClass]"
           >
             <AmSelect
               :id="`am-select-${name}`"
               v-model="selection[name]"
-              :multiple="true"
-              :placeholder="amLabels[`${name}_dropdown`]"
+              :multiple="name !== 'customers' && name !== 'events'"
+              remote
+              clearable
+              :filterable="name === 'customers' || name === 'events'"
+              :placeholder="amLabels[name + '' + (name === 'customers' ? '' : '_dropdown')]"
               :prefix-icon="inputIcon(name)"
               :collapse-tags="true"
               size="small"
               :popper-class="'am-filter-select-popper'"
+              :remote-method="(val) => { searchFilter(name, val) }"
               @change="changeFilters"
+              @clear="loadDefault"
             >
               <AmOption
                 v-for="entity in options[name]"
@@ -99,12 +104,19 @@ import {
   reactive,
   computed,
   inject,
+  onMounted,
 } from "vue";
 
 // * Composables
 import {
   useColorTransparency
 } from "../../../../../assets/js/common/colorManipulation";
+import {
+  useCustomers,
+} from "../../../../../assets/js/admin/customers";
+import {
+  useEvents,
+} from "../../../../../assets/js/public/events";
 
 import {
   momentDateFormat,
@@ -115,6 +127,8 @@ import {
 import { useStore } from "vuex";
 import AmButton from "../../../../_components/button/AmButton.vue";
 import IconComponent from "../../../../_components/icons/IconComponent.vue";
+import moment from "moment";
+import {settings} from "../../../../../plugins/settings";
 
 // * Component properties
 let props = defineProps({
@@ -137,17 +151,23 @@ let props = defineProps({
 })
 
 // * Component emits
-const emits = defineEmits(['changeFilters'])
+const emits = defineEmits([
+  'changeFilters',
+  'addAppointment',
+])
 
 // * Store
 let store = useStore()
 
+let ready = computed(() => store.getters['entities/getReady'])
+
 // * Loading
-let loading = computed(() => {
-  return store.getters['getLoading']
-})
+let loading = computed(() => store.getters['getLoading'])
 
 let objectRecognition = computed(() => props.stepKey === 'packages' ? 'packagesList' : props.stepKey )
+
+// * Data in shortcode
+const shortcodeData = inject('shortcodeData')
 
 // * Root Settings
 const amSettings = inject('settings')
@@ -185,6 +205,7 @@ let amLabels = computed(() => {
 })
 
 function inputIcon (name) {
+  if (name === 'customers') return 'user'
   if (name === 'services') return 'service'
   if (name === 'providers') return 'employee'
   if (name === 'locations') return 'locations'
@@ -211,9 +232,15 @@ let selection = ref({
   dates: computed({
     get: () => store.getters['cabinetFilters/getDates'],
     set: (val) => {
-      setDatePickerSelectedDaysCount()
+      setDatePickerSelectedDaysCount(val[0], val[1])
       store.commit('cabinetFilters/setDates', val)
       emits('changeFilters')
+    }
+  }),
+  customers: computed({
+    get: () => store.getters['cabinetFilters/getCustomers'],
+    set: (val) => {
+      store.commit('cabinetFilters/setCustomers', val)
     }
   }),
   services: computed({
@@ -250,20 +277,106 @@ let selection = ref({
 
 // * Filters options
 let options = computed(() => {
-  if (props.stepKey === 'events') return store.getters['cabinetFilters/getEventFiltersOption']
+  if (props.stepKey === 'events') return store.getters['cabinetFilters/getEventFiltersOption'](shortcodeData.value.cabinetType)
   if (props.stepKey === 'packages') return store.getters['cabinetFilters/getPackageFilterOptions']
-  return store.getters['cabinetFilters/getAppointmentFilterOptions']
+  return store.getters['cabinetFilters/getAppointmentFilterOptions'](shortcodeData.value.cabinetType)
 })
 
 let itemsNumber = computed(() => {
   let numb = 0
   Object.keys(options.value).forEach(name => {
-    if (options.value[name].length > 0 && amCustomize.value[objectRecognition.value].options[`${name}Filter`].visibility) {
-      numb++
+    if (amCustomize.value[objectRecognition.value].options[`${name}Filter`].visibility) {
+      if (name === 'customers' || name === 'events') {
+        numb++
+      } else if (options.value[name].length > 0) {
+        numb++
+      }
     }
   })
+
   return numb
 })
+
+function searchFilter(name, val) {
+  switch (name) {
+    case 'customers':
+      searchCustomers(val)
+
+      break
+    case 'events':
+      searchEvents(val)
+
+      break
+  }
+}
+
+function loadDefault () {
+  if (shortcodeData.value.cabinetType === 'employee') {
+    searchCustomers('', store.getters['auth/getPreloadedCustomers'])
+  }
+}
+
+function searchCustomers(val = '', customers = []) {
+  if (customers.length) {
+    store.dispatch('cabinetFilters/injectCustomerOptions', customers)
+
+    return
+  }
+
+  setTimeout(
+    () => {
+      useCustomers(
+        {
+          search: val,
+          page: 1,
+          limit: settings.general.customersFilterLimit,
+          skipCount: 1,
+        },
+        (result) => {
+          store.dispatch(
+            'cabinetFilters/injectCustomerOptions',
+            result
+          )
+
+          if (store.getters['auth/getPreloadedCustomers'].length === 0) {
+            store.commit('auth/setPreloadedCustomers', result)
+          }
+        }
+      )
+    },
+    500
+  )
+}
+
+function searchEvents(val = '', events = []) {
+  if (events.length) {
+    store.dispatch('cabinetFilters/injectEventsOptions', events)
+
+    return
+  }
+
+  setTimeout(
+    () => {
+      useEvents(
+        {
+          dates: [moment().format('YYYY-MM-DD')],
+          timeZone: store.getters['cabinet/getTimeZone'],
+          group: true,
+          page: 1,
+          limit: amSettings.general.itemsPerPageBackEnd,
+          search: val,
+        },
+        (result) => {
+          store.dispatch(
+            'cabinetFilters/injectEventsOptions',
+            result
+          )
+        }
+      )
+    },
+    500
+  )
+}
 
 function clearFilter (name) {
   let string = name.charAt(0).toUpperCase() + name.slice(1)
@@ -276,15 +389,31 @@ let customizedOptions = computed(() => {
 })
 
 let filterCustomizeVisibility = computed(() => {
-  if (props.stepKey === 'appointments') return customizedOptions.value.servicesFilter.visibility || customizedOptions.value.providersFilter.visibility || customizedOptions.value.locationsFilter.visibility
-  if (props.stepKey === 'events') return customizedOptions.value.eventsFilter.visibility || customizedOptions.value.providersFilter.visibility || customizedOptions.value.locationsFilter.visibility
+  if (props.stepKey === 'appointments') {
+    if (shortcodeData.value.cabinetType === 'employee') return customizedOptions.value.servicesFilter.visibility || customizedOptions.value.customersFilter.visibility || customizedOptions.value.locationsFilter.visibility
+    return customizedOptions.value.servicesFilter.visibility || customizedOptions.value.providersFilter.visibility || customizedOptions.value.locationsFilter.visibility
+  }
+  if (props.stepKey === 'events') {
+    if (shortcodeData.value.cabinetType === 'employee') return customizedOptions.value.eventsFilter.visibility || customizedOptions.value.customersFilter.visibility || customizedOptions.value.locationsFilter.visibility
+    return customizedOptions.value.eventsFilter.visibility || customizedOptions.value.providersFilter.visibility || customizedOptions.value.locationsFilter.visibility
+  }
   return customizedOptions.value.packagesFilter.visibility || customizedOptions.value.servicesFilter.visibility || customizedOptions.value.providersFilter.visibility || customizedOptions.value.locationsFilter.visibility
 })
 
 let filterVisibility = computed(() => {
-  if (props.stepKey === 'appointments') return !!(options.value.services.length || options.value.providers.length || options.value.locations.length)
-  if (props.stepKey === 'events') return !!(options.value.events.length || options.value.providers.length || options.value.locations.length)
+  if (props.stepKey === 'appointments') {
+    if (shortcodeData.value.cabinetType === 'employee') return !!(options.value.services.length || options.value.customers.length || options.value.locations.length)
+    return !!(options.value.services.length || options.value.providers.length || options.value.locations.length)
+  }
+  if (props.stepKey === 'events') {
+    if (shortcodeData.value.cabinetType === 'employee') return !!(options.value.events.length || options.value.customers.length || options.value.locations.length)
+    return !!(options.value.events.length || options.value.providers.length || options.value.locations.length)
+  }
   return !!(options.value.packages.length || options.value.services.length || options.value.providers.length || options.value.locations.length)
+})
+
+onMounted(() => {
+  loadDefault()
 })
 
 // * Colors
@@ -366,12 +495,14 @@ export default {
               & > span {
                 display: flex;
                 width: 100%;
+                flex-wrap: nowrap;
               }
 
               &-text {
                 max-width: unset !important;
                 width: 100%;
                 font-size: 14px;
+                color: var(--am-c-capf-text);
               }
 
               .el-tag {
@@ -453,6 +584,16 @@ export default {
         justify-content: right;
 
         &-datepicker {
+          &.am-rw- {
+            &420 {
+              display: flex;
+              width: 100%;
+              max-width: 100%;
+              flex-direction: column;
+              height: auto;
+            }
+          }
+
           .el-input {
             &__prefix {
               font-size: 24px;
@@ -505,6 +646,10 @@ export default {
           }
 
           .am-icon-filter {
+            font-size: 24px;
+          }
+
+          .am-icon-plus {
             font-size: 24px;
           }
         }

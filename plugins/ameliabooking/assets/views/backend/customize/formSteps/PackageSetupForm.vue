@@ -71,7 +71,7 @@
         @mouseenter="mouseEnterDefault"
         @mouseleave="mouseLeaveDefault"
       >
-        {{ $root.labels.package_next_appointment }}
+        {{ $root.labels.add_appointment }}
       </div>
 
       <div class="am-button-wrapper">

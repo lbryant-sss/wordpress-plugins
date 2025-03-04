@@ -1,5 +1,8 @@
 <template>
-  <div class="am-input-wrapper">
+  <div
+    class="am-input-wrapper"
+    :style="cssVars"
+  >
     <el-input
       :id="id"
       ref="amInput"
@@ -14,7 +17,6 @@
         {'is-icon-start': iconStart},
         {'is-icon-end': iconEnd}
         ]"
-      :style="cssVars"
       :disabled="disabled"
       :controls="controls"
       :controls-position="controlsPosition"
@@ -25,6 +27,8 @@
       :readonly="readOnly"
       :show-password="showPassword"
       :validate-event="validateEvent"
+      :formatter="formatter"
+      :parser="parser"
       @blur="(e) => $emit('blur', e)"
       @focus="(e) => $emit('focus', e)"
       @change="(currentValue, oldValue) => $emit('change', currentValue, oldValue)"
@@ -37,7 +41,10 @@
 </template>
 
 <script setup>
-import { computed, ref, toRefs } from 'vue';
+import { computed, ref, toRefs, inject } from 'vue';
+import { format, unformat } from 'v-money3';
+import { useColorTransparency } from "../../../assets/js/common/colorManipulation";
+import { useCurrencyOptions } from "../../../assets/js/common/formatting";
 
 /**
  * Component Props
@@ -47,7 +54,7 @@ const props = defineProps({
     type: String
   },
   modelValue: {
-    type: String
+    type: [String, Number, null, undefined]
   },
   type: {
     type: String,
@@ -112,6 +119,16 @@ const props = defineProps({
   validateEvent: {
     type: Boolean,
     default: true
+  },
+  formatter: {
+    type: Function
+  },
+  parser: {
+    type: Function
+  },
+  isMoney: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -126,15 +143,48 @@ const emits = defineEmits(['change', 'input', 'visible-change', 'clear', 'blur',
 let { modelValue } = toRefs(props)
 
 let model = computed({
-  get: () => modelValue.value,
+  get: () => {
+    return props.isMoney ? format(modelValue.value, useCurrencyOptions()) : modelValue.value
+  },
   set: (val) => {
-    emits('update:modelValue', val)
+    emits(
+      'update:modelValue',
+      props.isMoney ? unformat(val, { ...useCurrencyOptions(), modelModifiers: { number: true } }) : val
+    )
   }
 })
 
-function cssVars () {
-  return {}
-}
+// * Color Vars
+let amColors = inject('amColors', ref({
+  colorPrimary: '#1246D6',
+  colorSuccess: '#019719',
+  colorError: '#B4190F',
+  colorWarning: '#CCA20C',
+  colorMainBgr: '#FFFFFF',
+  colorMainHeadingText: '#33434C',
+  colorMainText: '#1A2C37',
+  colorSbBgr: '#17295A',
+  colorSbText: '#FFFFFF',
+  colorInpBgr: '#FFFFFF',
+  colorInpBorder: '#D1D5D7',
+  colorInpText: '#1A2C37',
+  colorInpPlaceHolder: '#808A90',
+  colorDropBgr: '#FFFFFF',
+  colorDropBorder: '#D1D5D7',
+  colorDropText: '#0E1920',
+  colorBtnPrim: '#265CF2',
+  colorBtnPrimText: '#FFFFFF',
+  colorBtnSec: '#1A2C37',
+  colorBtnSecText: '#FFFFFF',
+}))
+
+// * Css Variables
+let cssVars = computed(() => {
+  return {
+    '--am-c-inp-text-op03': useColorTransparency(amColors.value.colorInpText, 0.03),
+    '--am-c-inp-text-op60': useColorTransparency(amColors.value.colorInpText, 0.6),
+  }
+})
 
 /**
  * Component reference
@@ -322,29 +372,28 @@ const amInput = ref(null)
         &:active, &:focus {
           --am-input-color-border: var(--am-c-btn-prim);
           outline: none;
-          box-shadow: 0 2px 2px rgba(14, 25, 32, 0.03);
+          box-shadow: 0 2px 2px var(--am-c-inp-text-op03);
           padding: 8px 12px;
         }
 
         // Placeholder
         &::-webkit-input-placeholder, &:-ms-input-placeholder, &::placeholder {
-          color: #808A90;
+          color: var(--am-input-c-placeholder);
         }
       }
 
       // Disabled
       &.is-disabled {
         input {
-          background: #FBFBFB;
-          border-color: #D1D5D7;
+          --am-input-c-bgr: var(--am-c-inp-text-op03);
+          --am-input-c-text: var(--am-c-inp-text-op60);
           box-shadow: none;
           cursor: not-allowed;
-          color: #667279;
 
           // Placeholder
           &::-webkit-input-placeholder, &:-ms-input-placeholder, &::placeholder {
             // TODO
-            color: #667279;
+            color: var(--am-input-c-placeholder);
           }
 
           // Hover
@@ -354,7 +403,7 @@ const amInput = ref(null)
 
           // Active & Focus
           &:active, &:focus {
-            border: 1px solid #D1D5D7;
+            --am-input-c-border: var(--am-c-inp-border);
             box-shadow: unset;
           }
         }

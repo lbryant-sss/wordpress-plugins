@@ -74,8 +74,20 @@ function useRandomIntFromInterval (min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
+function useCurrencyOptions () {
+  return  {
+    thousands: getPriceThousandSeparator(),
+    decimal: getPriceDecimalSeparator(),
+    precision: getPriceNumberOfDecimalPlaces(),
+    suffix: getPriceSuffix(),
+    prefix: getPricePrefix(),
+  }
+}
+
 export {
+  useCurrencyOptions,
   useFormattedPrice,
   useRandomIntFromInterval,
-  capitalizeFirstLetter
+  capitalizeFirstLetter,
+  getCurrencySymbol,
 }

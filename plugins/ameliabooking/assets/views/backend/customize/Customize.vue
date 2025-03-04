@@ -444,6 +444,34 @@
           </div>
           <!-- /Customer Panel -->
 
+          <!-- Employee Panel -->
+          <div
+            v-if="!$root.licence.isLite"
+            class="am-customize-main__form-card"
+          >
+            <div class="am-customize-main__form-card__content">
+              <img
+                :src="`${$root.getUrl}v3/src/assets/img/admin/customize/amelia-cape-2-0.png`"
+                :alt="$root.labels.capa_form"
+                class="am-customize-main__form-card__content-img"
+              >
+              <div class="am-customize-main__form-card__heading">
+                <h3>
+                  <span>{{$root.labels.cape_form}}</span>
+                  <span class="am-pill-wrapper">
+                    <span class="am-pill-beta">{{$root.labels.beta_caps}}</span>
+                    <span class="am-pill-new">{{$root.labels.new_caps}}</span>
+                  </span>
+                </h3>
+                <p>
+                  {{$root.labels.redesigned_cape_form}}
+                </p>
+              </div>
+            </div>
+            <el-button @click="goToNewCustomize('cape')" type="primary">{{ $root.labels.continue }}</el-button>
+          </div>
+          <!-- /Employee Panel -->
+
           <!-- Old Customize -->
           <div class="am-customize-main__form-card">
             <div class="am-customize-main__form-card__content">

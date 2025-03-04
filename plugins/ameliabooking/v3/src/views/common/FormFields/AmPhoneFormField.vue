@@ -77,6 +77,7 @@ let props = defineProps({
   },
   defaultCode: {
     type: String,
+    default: ''
   },
   isWhatsApp: {
     type: [Boolean, String, Number],
@@ -114,6 +115,7 @@ let cssVars = computed(() => {
   return {
     // is - Info Step, wa - WhatsApp
     '--am-c-is-wa-text': useColorTransparency(amColors.value.colorMainText, 0.5),
+    // ! Inline styles need to be removed
     'margin-bottom': props.isWhatsApp && !props.phoneError ? '10px' : '24px'
   }
 })
@@ -134,7 +136,7 @@ export default {
 <style lang="scss">
 .amelia-v2-booking {
   #amelia-container {
-    .am-fs__info-form__item {
+    .am-fs__info-form__item, .am-ff__item {
       .am-whatsapp-opt-in-text {
         color: var(--am-c-is-wa-text);
         font-weight: 400;
