@@ -4,7 +4,7 @@ Tags: hide,security,firewall,login,wp admin
 Requires at least: 5.3
 Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 5.4.01
+Stable tag: 5.4.02
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,7 @@ WP Ghost is packed with over 50 security free features:
 > *   Brute Force Protection with Math reCaptcha
 > *   Brute Force Protection with Google reCaptcha V2
 > *   Brute Force Protection with Google reCaptcha V3
+> *   Brute Force Protection with Google Enterprise reCaptcha
 > *   Brute Force Protection on Login
 > *   Brute Force Protection on Password Lost
 > *   Brute Force Protection on Signup
@@ -216,7 +217,7 @@ WP Ghost is packed with over 50 security free features:
 > <a href="https://hidemywpghost.com/hide-my-wp-ghost-security-features/">Hide My WP Premium Feature</a>
 
 Compatible server types: <strong>WP Multisite, Apache, Litespeed, Nginx and Windows IIS</strong>.
-Hosting Compatibility checked: **WP Engine, Inmotion Hosting, Hostgator Hosting, Godaddy Hosting, Host1plus, Payperhost, Fastcomet, Dreamhost, Bitnami Apache, Bitnami Nginx, Google Cloud Hosting, Amazon AWS Lightsail, Litespeed Hosting, Flywheels Hosting, Kinsta Hosting, Ploi.io, CloudPanel, RunCloud**
+Hosting Compatibility checked: **WP Engine, Inmotion Hosting, Hostgator Hosting, Godaddy Hosting, Host1plus, Payperhost, Fastcomet, Dreamhost, Bitnami Apache, Bitnami Nginx, Google Cloud Hosting, Amazon AWS Lightsail, Litespeed Hosting, Flywheels Hosting, Kinsta Hosting, Ploi.io, CloudPanel, RunCloud, Rocket Domain**
 
 Plugins Compatibility updates: **Woocommerce, WPML, WPMUDEV, W3 Total Cache, Gravity, WP Super Cache, WP Fastest Cache, Hummingbird Cache, Cachify Cache, Litespeed Cache, SiteGround Optimizer, Nitropack,
 Cache Enabler, CDN Enabler, WOT Cache, Autoptimize, Jetpack by WordPress, Contact Form 7, bbPress, Manage WP,
@@ -326,6 +327,19 @@ Enjoy!
 17. New custom core paths changed with Hide My WP Ghost
 
 == Changelog ==
+= 5.4.02 (04 Mar 2025) =
+* Update - Security update on wp-activate.php path call
+* Update - Translations in all languages for the last changes
+* Update - the Brute Force to load Google Enterprise reCaptcha
+* Update - Brute Force compatibility with other plugins
+* Fix - Headers check on Brute Force to get the real IP behind Proxy
+* Fix - Include parent theme in the custom theme name list if the child theme is loaded
+* Fix - Admin layout issue when other plugins notification is loading in Wp Ghost settings
+* Fix - Prevent redirecting URLs to hidden paths like new admin path or new login path
+* Fix - Paths changed in cache files when CSS and JS files are loaded dynamically
+* Fix - Hide the new login on registration redirect when the registration is deactivated
+* Fix - Remove newlines from the rewrite rules
+
 = 5.4.01 (06 Ian 2025) =
 * Update - Changed Hide My WP Ghost plugin name with short WP Ghost
 * Update - WP Ghost comes with a new logo in 2025

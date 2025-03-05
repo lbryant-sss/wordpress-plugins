@@ -72,7 +72,40 @@ class OptimizerCli extends WP_CLI_Command
      */
     public function flush($args, $assoc_args)
     {
-        \TenWebOptimizer\OptimizerAdmin::clear_cache() ? WP_CLI::success('Cache cleared.') : WP_CLI::error('Error during cache clear.');
+        $exclude_critical_regeneration = isset($assoc_args['exclude-critical-regeneration']);
+        $clear_critical = isset($assoc_args['clear-critical']);
+        $skip_warmup = isset($assoc_args['skip-warmup']);
+        $skip_home_critical_generation = isset($assoc_args['skip-home-critical-generation']);
+
+        if ($exclude_critical_regeneration) {
+            WP_CLI::warning('Critical CSS regeneration is excluded.');
+        }
+
+        if ($clear_critical) {
+            WP_CLI::warning('Critical CSS is cleared.');
+        }
+
+        if ($skip_warmup) {
+            WP_CLI::warning('Warmup is skipped.');
+        }
+
+        if ($skip_home_critical_generation) {
+            WP_CLI::warning('Home critical CSS generation is skipped.');
+        }
+
+        \TenWebOptimizer\OptimizerAdmin::clear_cache(
+            false,
+            $exclude_critical_regeneration,
+            true,
+            true,
+            'front_page',
+            $clear_critical,
+            true,
+            ! $skip_warmup,
+            false,
+            '',
+            $skip_home_critical_generation
+        ) ? WP_CLI::success('Cache cleared.') : WP_CLI::error('Error during cache clear.');
     }
 
     /**

@@ -29,6 +29,8 @@ if (!function_exists('wpae_get_blocked_integrations') || !in_array('wp_login_for
 
 
 	function wpae_lostpassword_extra_validation( $errors ) {
+		if ( is_admin() ) { return; }
+
 	    if (wpa_check_is_spam($_POST)){
 				do_action('wpa_handle_spammers','losspassword', $_POST);
 				$errors->add( 'user_login', __($GLOBALS['wpa_error_message']) );

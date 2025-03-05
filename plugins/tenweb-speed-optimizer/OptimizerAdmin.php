@@ -169,73 +169,76 @@ class OptimizerAdmin
         ob_start();
 
         // phpcs:ignore
-        if (!isset($_GET[ 'two_nooptimize' ]) && !isset($_GET[ 'two_action' ]) && current_user_can('manage_options')) {
-            add_action('admin_init', [ $this, 'update' ]);
-            add_action('admin_init', [$this, 'redirect_after_activation'], 20);
-            add_action('admin_init', [$this, 'checkDiviSettingsChange']);
-            add_action('admin_menu', [ $this, 'admin_menu' ]);
-            add_action('admin_enqueue_scripts', [ '\TenWebOptimizer\OptimizerAdmin', 'two_enqueue_admin_assets' ]);
-            add_action('wp_enqueue_scripts', [ $this, 'two_enqueue_assets' ]);
-
-            add_action('wp_ajax_two_settings', [ $this, 'ajax_two_settings' ]);
-            add_action('wp_ajax_two_update_setting', [ $this, 'ajax_two_update_setting' ]);
+        if (!isset($_GET[ 'two_nooptimize' ]) && !isset($_GET[ 'two_action' ])) {
             add_action('wp_ajax_nopriv_two_manager_clear_cache', [ $this, 'manager_clear_cache' ]);
-            add_action('wp_ajax_two_critical', [ $this, 'two_critical' ]);
-            add_action('wp_ajax_two_critical_statuses', [ $this, 'two_critical_statuses' ]);
-            add_action('wp_ajax_two_deactivate_plugins', [ $this, 'two_deactivate_plugin' ]);
-            add_action('wp_ajax_two_white_label', [ $this, 'two_white_label' ]);
-            add_action('wp_ajax_two_elementor_regenerate_ccss', [$this, 'two_elementor_regenerate_ccss']);
 
-            add_filter('plugin_action_links_' . TENWEB_SO_BASENAME, [ $this, 'add_action_link' ], 10, 2);
+            if (current_user_can('manage_options')) {
+                add_action('admin_init', [$this, 'update']);
+                add_action('admin_init', [$this, 'redirect_after_activation'], 20);
+                add_action('admin_init', [$this, 'checkDiviSettingsChange']);
+                add_action('admin_menu', [$this, 'admin_menu']);
+                add_action('admin_enqueue_scripts', ['\TenWebOptimizer\OptimizerAdmin', 'two_enqueue_admin_assets']);
+                add_action('wp_enqueue_scripts', [$this, 'two_enqueue_assets']);
 
-            if (!is_admin() && !isset($_GET[ 'elementor-preview' ]) && isset($_GET[ 'two-menu' ])) {  // phpcs:ignore
-                add_action('admin_bar_menu', [ $this, 'two_admin_bar_menu' ], 99999);
+                add_action('wp_ajax_two_settings', [$this, 'ajax_two_settings']);
+                add_action('wp_ajax_two_update_setting', [$this, 'ajax_two_update_setting']);
+                add_action('wp_ajax_two_critical', [$this, 'two_critical']);
+                add_action('wp_ajax_two_critical_statuses', [$this, 'two_critical_statuses']);
+                add_action('wp_ajax_two_deactivate_plugins', [$this, 'two_deactivate_plugin']);
+                add_action('wp_ajax_two_white_label', [$this, 'two_white_label']);
+                add_action('wp_ajax_two_elementor_regenerate_ccss', [$this, 'two_elementor_regenerate_ccss']);
+
+                add_filter('plugin_action_links_' . TENWEB_SO_BASENAME, [$this, 'add_action_link'], 10, 2);
+
+                if (!is_admin() && !isset($_GET['elementor-preview']) && isset($_GET['two-menu'])) {  // phpcs:ignore
+                    add_action('admin_bar_menu', [$this, 'two_admin_bar_menu'], 99999);
+                }
+
+                add_action('wp_ajax_two_css_options', [$this, 'save_css_options']);
+
+                add_action('wp_ajax_two_get_posts_for_critical', [$this, 'get_posts_for_critical']);
+                // TODO: BOOST-1575 Ensure that the cache for the updated post is cleared for both logged-in and non-logged-in users.
+                // Once TODO is fixed, delete the 'post_clear_all_cache' function and use the post_clear_cache.
+                //add_action('save_post', [$this, 'post_clear_cache'], 10, 3); // Clearing all the caches to handle templates. Editing a template will clear entire cache.
+                add_action('save_post', [$this, 'post_clear_all_cache'], 10, 3); // Clearing all the page caches
+
+                add_action('switch_theme', [$this, 'clear_cache'], 10, 0);  // When user change theme.
+                add_action('update_option_show_on_front', [$this, 'change_front_page'], 10, 3);  // When reading settings for front page are updated.
+                add_action('update_option_page_on_front', [$this, 'change_front_page'], 10, 3);  // When reading settings for front page are updated.
+                add_action('wp_update_nav_menu', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When a custom menu is update.
+                add_action('update_option_sidebars_widgets', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When you change the order of widgets.
+                add_action('update_option_category_base', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When category permalink is updated.
+                add_action('update_option_tag_base', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When tag permalink is updated.
+                add_action('permalink_structure_changed', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When permalink structure is update.
+                add_action('add_link', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When a link is added.
+                add_action('edit_link', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When a link is updated.
+                add_action('delete_link', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When a link is deleted.
+                add_action('customize_save', [$this, 'clear_cache'], 10, 0);  // When customizer is saved.
+                add_action('update_option_theme_mods_' . get_option('stylesheet'), [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0); // When location of a menu is updated.
+                add_action('sidebar_admin_setup', [$this, 'clear_cache'], 10, 0);
+                add_action('activated_plugin', [$this, 'clear_cache_conditionally_activate'], 10, 1);
+                add_action('upgrader_process_complete', [$this, 'clear_cache_conditionally_update'], 10, 2);
+                add_action('deactivated_plugin', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);
+                add_action('_core_updated_successfully', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);
+
+                //detect ContactForm7 changes
+                add_action('wpcf7_save_contact_form', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);
+
+                //detect WooThemes settings changes
+                add_action('update_option_woo_options', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);
+
+                // Disabled temporarily as ACF triggers save_post from front.
+                // phpcs:ignore
+                /*if ( class_exists( 'ACF' ) ) {
+                  add_action( 'save_post', array('\TenWebOptimizer\OptimizerAdmin', 'acf_update_fields'), 10, 2 );
+                }*/
+
+                //detect Formidable changes
+                add_action('frm_update_form', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);
+
+                //detect Contact Form by WP Forms changes
+                add_action('wpforms_builder_save_form', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);
             }
-
-            add_action('wp_ajax_two_css_options', [ $this, 'save_css_options' ]);
-
-            add_action('wp_ajax_two_get_posts_for_critical', [ $this, 'get_posts_for_critical' ]);
-            // TODO: BOOST-1575 Ensure that the cache for the updated post is cleared for both logged-in and non-logged-in users.
-            // Once TODO is fixed, delete the 'post_clear_all_cache' function and use the post_clear_cache.
-            //add_action('save_post', [$this, 'post_clear_cache'], 10, 3); // Clearing all the caches to handle templates. Editing a template will clear entire cache.
-            add_action('save_post', [$this, 'post_clear_all_cache'], 10, 3); // Clearing all the page caches
-
-            add_action('switch_theme', [$this, 'clear_cache'], 10, 0);  // When user change theme.
-            add_action('update_option_show_on_front', [ $this, 'change_front_page' ], 10, 3);  // When reading settings for front page are updated.
-            add_action('update_option_page_on_front', [ $this, 'change_front_page' ], 10, 3);  // When reading settings for front page are updated.
-            add_action('wp_update_nav_menu', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When a custom menu is update.
-            add_action('update_option_sidebars_widgets', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When you change the order of widgets.
-            add_action('update_option_category_base', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When category permalink is updated.
-            add_action('update_option_tag_base', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When tag permalink is updated.
-            add_action('permalink_structure_changed', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When permalink structure is update.
-            add_action('add_link', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When a link is added.
-            add_action('edit_link', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When a link is updated.
-            add_action('delete_link', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);  // When a link is deleted.
-            add_action('customize_save', [$this, 'clear_cache'], 10, 0);  // When customizer is saved.
-            add_action('update_option_theme_mods_' . get_option('stylesheet'), [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0); // When location of a menu is updated.
-            add_action('sidebar_admin_setup', [$this, 'clear_cache'], 10, 0);
-            add_action('activated_plugin', [$this, 'clear_cache_conditionally_activate'], 10, 1);
-            add_action('upgrader_process_complete', [$this, 'clear_cache_conditionally_update'], 10, 2);
-            add_action('deactivated_plugin', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);
-            add_action('_core_updated_successfully', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);
-
-            //detect ContactForm7 changes
-            add_action('wpcf7_save_contact_form', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);
-
-            //detect WooThemes settings changes
-            add_action('update_option_woo_options', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);
-
-            // Disabled temporarily as ACF triggers save_post from front.
-            // phpcs:ignore
-            /*if ( class_exists( 'ACF' ) ) {
-              add_action( 'save_post', array('\TenWebOptimizer\OptimizerAdmin', 'acf_update_fields'), 10, 2 );
-            }*/
-
-            //detect Formidable changes
-            add_action('frm_update_form', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);
-
-            //detect Contact Form by WP Forms changes
-            add_action('wpforms_builder_save_form', [$this, 'clear_cache_without_critical_css_regeneration'], 10, 0);
         }
         add_action('wp_ajax_two_flow_set_mode', [ $this, 'two_flow_set_mode' ]);
         add_action('wp_ajax_two_update_flow_status', [ $this, 'two_update_flow_status' ]);
@@ -1211,7 +1214,8 @@ class OptimizerAdmin
 
     public function manager_clear_cache()
     {
-        $two_token_clear_cache = \TenWebWpTransients\OptimizerTransients::get('two_token_clear_cache');
+        // this should be native WP transient as it could be set in other plugins
+        $two_token_clear_cache = get_transient('two_token_clear_cache');
 
         if (isset($_POST['two_token']) && $two_token_clear_cache === $_POST['two_token']) { // phpcs:ignore
             \TenWebWpTransients\OptimizerTransients::delete('two_token_clear_cache');
@@ -1238,7 +1242,8 @@ class OptimizerAdmin
         $clear_two_cloudflare_cache = true,
         $warmup_cache = true,
         $delete_files = false,
-        $clear_cache_from = ''
+        $clear_cache_from = '',
+        $skip_home_critical_generation = false
     ) {
         do_action('two_before_clear_cache', debug_backtrace()); //phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace
         $date = time();
@@ -1285,7 +1290,7 @@ class OptimizerAdmin
         }
 
         if ($clear_critical) {
-            self::clear_critical_cache();
+            self::clear_critical_cache($skip_home_critical_generation);
         }
 
         OptimizerLogger::add_clear_cache_log($is_json, $excludeCriticalRegeneration, $delete_tenweb_manager_cache, $delete_cloudflare_cache, $critical_regeneration_mode, $clear_critical);
@@ -1309,7 +1314,7 @@ class OptimizerAdmin
         return $success;
     }
 
-    public static function clear_critical_cache()
+    public static function clear_critical_cache($skip_home_critical_generation = false)
     {
         global $TwoSettings;
         $two_critical_pages = OptimizerUtils::getCriticalPages();
@@ -1328,7 +1333,7 @@ class OptimizerAdmin
         $prefix = 'critical/two_*.*';
         OptimizerUtils::delete_files_by_prefix($prefix);
 
-        if ($home_critical) {
+        if ($home_critical && ! $skip_home_critical_generation) {
             OptimizerCriticalCss::generate_critical_css_by_id('front_page');
         }
     }

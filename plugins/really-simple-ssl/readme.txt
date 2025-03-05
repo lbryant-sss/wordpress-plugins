@@ -153,8 +153,8 @@ If you can't deactivate, do not just remove the plugin folder to uninstall! Foll
 == Changelog ==
 = 9.3.2 =
 * March 4th, 2025
-* Improvement: Added filters to customize Let's Encrypt Wizard behaviour
-* Fix: Removed default checkbox behaviour from configuration settings.
+* Improvement: Added filters to customize Let's Encrypt Wizard behavior
+* Fix: Removed default checkbox behavior from configuration settings.
 * Fix: Handle multiple tooltip reasons for disabled select fields
 
 = 9.3.1 =

@@ -469,9 +469,31 @@ class HMWP_Models_Rewrite {
 		//Initialize WordPress Filesystem
 		$wp_filesystem = HMWP_Classes_ObjController::initFilesystem();
 
-		$all_themes = HMWP_Classes_Tools::getAllThemes();
+		if ( HMWP_Classes_Tools::isMultisites() ) {
+			// Get the all network themes
+			$all_themes = HMWP_Classes_Tools::getAllThemes();
+		} else {
+
+			// Get only the active theme
+			$theme = wp_get_theme();
+			if ( $theme->exists() && $theme->get_stylesheet() <> '' ) {
+				$all_themes[ sanitize_text_field( $theme->get_stylesheet() ) ] = array(
+					'name'       => $theme->get( 'Name' ),
+					'theme_root' => $theme->get_theme_root()
+				);
+
+				// If it's a child theme, include also the parent
+				if( strpos( $theme->get_stylesheet(), '-child' ) !== false ) {
+					$all_themes[ str_replace( '-child', '', sanitize_text_field( $theme->get_stylesheet() )) ] = array(
+						'name'       => $theme->get( 'Name' ),
+						'theme_root' => $theme->get_theme_root()
+					);
+				}
+			}
+		}
 
 		foreach ( $all_themes as $theme => $value ) {
+
 			if ( $wp_filesystem->is_dir( $value['theme_root'] ) ) {
 				$dbthemes['to'][]   = substr( md5( $theme ), 0, 10 );
 				$dbthemes['from'][] = str_replace( ' ', '+', $theme ) . '/';
@@ -480,6 +502,7 @@ class HMWP_Models_Rewrite {
 
 		HMWP_Classes_Tools::saveOptions( 'hmwp_themes', $dbthemes );
 	}
+
 
 	/**
 	 * ADMIN_PATH is the new path and set in /config.php
@@ -3245,23 +3268,14 @@ class HMWP_Models_Rewrite {
 
 		// Remove the oembed/1.0/embed REST route.
 		add_filter( 'rest_endpoints', function ( $endpoints ){
-			unset( $endpoints['/oembed/1.0/embed'] );
+			if( isset($endpoints['/oembed/1.0/embed']) ){
+				unset( $endpoints['/oembed/1.0/embed'] );
+			}
 			return $endpoints;
 		} );
 
 		// Turn off oEmbed auto discovery.
 		add_filter( 'embed_oembed_discover', '__return_false' );
-
-		// Remove all embeds rewrite rules.
-		add_filter( 'rewrite_rules_array', function ( $rules ) {
-			foreach ( $rules as $rule => $rewrite ) {
-				if ( false !== strpos( $rewrite, 'embed=true' ) ) {
-					unset( $rules[ $rule ] );
-				}
-			}
-
-			return $rules;
-		} );
 
 	}
 

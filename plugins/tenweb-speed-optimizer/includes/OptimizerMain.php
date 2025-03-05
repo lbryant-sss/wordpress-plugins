@@ -200,7 +200,7 @@ class OptimizerMain
 
         $dir = OptimizerCache::get_path();
 
-        if (OptimizerUtils::dirsize($dir) > 1000000000) { // 1Gb
+        if (OptimizerUtils::dirsize($dir) > TENWEB_CACHE_ALLOWED_DIR_SIZE_IN_BYTES) { // 1Gb
             $this->clear_cache(false, false, true, true, 'front_page', false, true, true, true);
         }
 

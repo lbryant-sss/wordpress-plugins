@@ -23,6 +23,7 @@ define( '_HMWP_CHECK_SSL_', ( ( ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'
  * Directories
  */
 define( '_HMWP_ROOT_DIR_', realpath( $currentDir . '/..' ) );
+define( '_HMWP_CONFIG_DIR_', ( defined( '_HMWP_CONFIGPATH' ) ? _HMWP_CONFIGPATH : false ) );
 define( '_HMWP_CLASSES_DIR_', _HMWP_ROOT_DIR_ . '/classes/' );
 define( '_HMWP_CONTROLLER_DIR_', _HMWP_ROOT_DIR_ . '/controllers/' );
 define( '_HMWP_MODEL_DIR_', _HMWP_ROOT_DIR_ . '/models/' );

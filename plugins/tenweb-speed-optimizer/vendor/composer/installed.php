@@ -3,7 +3,7 @@
         'name' => 'plugins/tenweb-speed-optimizer',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'c1443a5f95b7bd4aba518d957324a0309a8f98c6',
+        'reference' => 'a9a3d77971a28ae07f52bb2deb1425459e7d8ea8',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -133,7 +133,7 @@
         'monperrus/crawler-user-agents' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'ed7e74974c28980351d4bdbbe109998688d71234',
+            'reference' => 'b3f4fad51d809f7b4d165cea42d47f7648020aa5',
             'type' => 'library',
             'install_path' => __DIR__ . '/../monperrus/crawler-user-agents',
             'aliases' => array(
@@ -162,7 +162,7 @@
         'plugins/tenweb-speed-optimizer' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'c1443a5f95b7bd4aba518d957324a0309a8f98c6',
+            'reference' => 'a9a3d77971a28ae07f52bb2deb1425459e7d8ea8',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

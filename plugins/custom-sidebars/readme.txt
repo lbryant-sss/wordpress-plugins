@@ -3,7 +3,7 @@ Contributors: WebFactory
 Tags: sidebar, widget, custom sidebar, dynamic widgets, classic widgets
 Requires at least: 4.6
 Tested up to: 6.7
-Stable tag: 3.37
+Stable tag: 3.38
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -99,6 +99,10 @@ Any user that can switch themes, can create sidebars. Switch_themes is the capab
 Custom Sidebars has the same license as WordPress, so you can use it wherever you want for free. Yay!
 
 == Changelog ==
+= 3.38 =
+* 2025-03-04
+* Bug fix related to notice on Dashboard page causing a fatal error
+
 = 3.37 =
 * 2025-03-01
 * Minor security and compatibility fixes

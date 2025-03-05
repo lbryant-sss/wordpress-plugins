@@ -351,6 +351,8 @@ Yes, the plugin offers multilingual support, which makes it suitable for website
 
 == Changelog ==
 = 5.3.0 - March 03, 2025 =
+* New - Added Moono theme
+* Update - Some UI improvements
 * Fixed .svg sanitization issue
 
 = 5.2.14 - Jan 15, 2025 =

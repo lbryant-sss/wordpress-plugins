@@ -1,6 +1,6 @@
 <?php
 
-define('TENWEB_SO_VERSION', '2.30.9');
+define('TENWEB_SO_VERSION', '2.30.18');
 define('TENWEB_SO_CONNECTED_FROM', 'speed_optimizer');
 define('TENWEB_SO_DIR', plugin_dir_path(TWO_PLUGIN_FILE));
 define('TENWEB_SO_PLUGIN_DIR', plugin_dir_path(TWO_PLUGIN_FILE));
@@ -38,6 +38,11 @@ if (!defined('TENWEB_SO_LOGS_MAX_LINES_LIMIT')) {
 
 if (!defined('TENWEB_SO_DEBUG_MODE')) {
     define('TENWEB_SO_DEBUG_MODE', false); //set this to true to enable logging in plugin
+}
+
+if (!defined('TENWEB_CACHE_ALLOWED_DIR_SIZE_IN_BYTES')) {
+    //MAX Allowed size 1GB
+    define('TENWEB_CACHE_ALLOWED_DIR_SIZE_IN_BYTES', 1000000000);
 }
 
 if (!defined('TENWEB_CACHE_STRUCTURE_ALLOWED_SIZE')) {

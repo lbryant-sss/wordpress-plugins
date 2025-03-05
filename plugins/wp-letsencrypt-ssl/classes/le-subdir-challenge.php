@@ -25,6 +25,7 @@
  *
  */
 require_once WPLE_DIR . 'classes/le-trait.php';
+
 /**
  * Sub-directory http challenge
  *
@@ -37,12 +38,21 @@ class WPLE_Subdir_Challenge_Helper
         if (!array_key_exists('challenge_files', $opts) && !array_key_exists('dns_challenges', $opts)) {
             return esc_html__('Could not retrieve domain verification challenges. Please go back and try again.', 'wp-letsencrypt-ssl');
         }
+
         $output = '<h2 style="color:#777">' . WPLE_Trait::wple_kses(__('Please verify your domain ownership by completing <strong>one</strong> of the below challenges', 'wp-letsencrypt-ssl')) . ':</h2>';
+
+        if (wple_fs()->can_use_premium_code__premium_only()) {
+            $output .= '<p>Automatic domain verification could not succeed so manual verification is required.</p>';
+        }
+
         $output .= WPLE_Trait::wple_progress_bar();
+
         $output .= '<div id="wple-letsdebug"></div>';
+
         if (get_option('wple_order_refreshed')) {
             $output .= '<div class="wple-order-refresh">Order failed and re-created due to failed verification. Please complete the NEW challenge with <b>alternate</b> method than previous attempt.</div>';
         }
+
         $output .= '<div class="subdir-challenges-block">    
     <div class="subdir-http-challenge manualchallenge">' . SELF::HTTP_challenges_block($opts['challenge_files'], $opts) . '</div>
     <div class="subdir-dns-challenge manualchallenge">' . SELF::DNS_challenges_block($opts['dns_challenges']) . '</div>
@@ -53,7 +63,9 @@ class WPLE_Subdir_Challenge_Helper
         <div class="wple-error">Error</div>
       </div>
     </div>';
-        $havecPanel = (FALSE !== get_option('wple_have_cpanel') ? get_option('wple_have_cpanel') : 0);
+
+        $havecPanel = (FALSE !== get_option('wple_have_cpanel')) ? get_option('wple_have_cpanel') : 0;
+
         // if (!wple_fs()->can_use_premium_code__premium_only() && FALSE == get_option('wple_no_pricing')) {
         //   if (!$havecPanel) {
         //     $output .= '<div class="wple-error-firewall">
@@ -62,18 +74,22 @@ class WPLE_Subdir_Challenge_Helper
         //     </div>
         //     <div class="wple-upgrade-features">
         //       <span><b>Instant</b><br>Firewall Setup</span>
-        //       <span><b>Premium</b><br>Sectigo SSL</span>
+        //       <span><b>Premium</b><br>Sectigo SSL</span>          
         //       <span><b>Most Secure</b><br>Firewall</span>
-        //       <span><b>Accelerate</b><br>Site with CDN</span>
+        //       <span><b>Accelerate</b><br>Site with CDN</span>        
         //       <a href="https://wpencryption.com/cdn-firewall/?utm_campaign=wpencryption&utm_source=wordpress&utm_medium=gocdn" target="_blank">Learn More <span class="dashicons dashicons-external"></span></a>
         //     </div>
         //   </div>';
         //   } else {
+
         $upgradeurl = admin_url('/admin.php?page=wp_encryption-pricing&checkout=true&plan_id=8210&plan_name=pro&billing_cycle=lifetime&pricing_id=7965&currency=usd');
+
         if (!$havecPanel) {
             $upgradeurl = admin_url('/admin.php?page=wp_encryption-pricing&checkout=true&plan_id=8210&plan_name=pro&billing_cycle=annual&pricing_id=7965&currency=usd');
         }
-        $output .= '<div class="wple-error-firewall">
+
+        if (!wple_fs()->can_use_premium_code__premium_only()) {
+            $output .= '<div class="wple-error-firewall">
         <div>
           <img src="' . WPLE_URL . 'admin/assets/firewall-shield-pro.png"/>
         </div>
@@ -87,7 +103,9 @@ class WPLE_Subdir_Challenge_Helper
           <a href="' . $upgradeurl . '">UPGRADE</a>
         </div>
       </div>';
+        }
         // }
+
         return $output;
     }
 
@@ -131,9 +149,9 @@ class WPLE_Subdir_Challenge_Helper
     ' . wp_nonce_field('verifyhttprecords', 'checkhttp', false, false) . '
     <button id="verify-subhttp" class="subdir_verify"><span class="dashicons dashicons-update stable"></span>&nbsp;' . esc_html__('Verify HTTP Challenges', 'wp-letsencrypt-ssl') . '</button>
 
-    <div class="http-notvalid">' . esc_html__('Could not verify HTTP challenges. Please check whether HTTP challenge files uploaded to acme-challenge folder is publicly accessible.', 'wp-letsencrypt-ssl') . ' ' . esc_html__('Some hosts purposefully block BOT access to acme-challenge folder, please try completing DNS challenge in such case.', 'wp-letsencrypt-ssl') . ' For any help, please open support ticket via free support link located in top right.<br>';
+    <div class="http-notvalid">' . esc_html__('Could not verify HTTP challenges. ', 'wp-letsencrypt-ssl') . ' ' . esc_html__('Please open support ticket via free support link located in top right for help.', 'wp-letsencrypt-ssl');
 
-        if (!wple_fs()->can_use_premium_code__premium_only()) {
+        if (FALSE !== ($havecp = get_option('wple_have_cpanel')) && $havecp && !wple_fs()->can_use_premium_code__premium_only()) {
             $list .= ' Upgrade to <b>PRO</b> version for fully automatic domain verification.';
         }
 
@@ -142,7 +160,7 @@ class WPLE_Subdir_Challenge_Helper
         //5.8.2
         $list .= '<div class="http-notvalid-blocked">' . esc_html__('HTTP verification not possible on your site as your hosting server blocks bot access. Please proceed with DNS verification.', 'wp-letsencrypt-ssl');
 
-        if (!wple_fs()->can_use_premium_code__premium_only()) {
+        if (FALSE !== ($havecp = get_option('wple_have_cpanel')) && $havecp && !wple_fs()->can_use_premium_code__premium_only()) {
             $list .= ' Upgrade to <b>PRO</b> version for fully automatic domain verification.';
         }
 
@@ -193,9 +211,9 @@ class WPLE_Subdir_Challenge_Helper
     ' . wp_nonce_field('verifydnsrecords', 'checkdns', false, false) . '
     <button id="verify-subdns" class="subdir_verify"><span class="dashicons dashicons-update stable"></span>&nbsp;' . esc_html__('Verify DNS Challenges', 'wp-letsencrypt-ssl') . '</button>
 
-    <div class="dns-notvalid">' . esc_html__('Could not verify DNS records. Please check whether you have added above DNS records perfectly or try again after 5 minutes if you added DNS records just now.', 'wp-letsencrypt-ssl') . ' For any help, please open support ticket via free support link located in top right.<br>';
+    <div class="dns-notvalid">' . esc_html__('Could not verify DNS records. ', 'wp-letsencrypt-ssl') . 'Please open support ticket via free support link located in top right for help.';
 
-        if (!wple_fs()->can_use_premium_code__premium_only()) {
+        if (FALSE !== ($havecp = get_option('wple_have_cpanel')) && $havecp && !wple_fs()->can_use_premium_code__premium_only()) {
             $list .= ' Upgrade to <b>PRO</b> version for fully automatic domain verification.';
         }
 
@@ -207,16 +225,21 @@ class WPLE_Subdir_Challenge_Helper
     public static function download_challenge_files()
     {
         if (isset($_GET['subdir_chfile'])) {
+
             if (!wp_verify_nonce($_GET['nc'], 'subdir_ch') || !current_user_can('manage_options')) {
                 die('Unauthorized request. Please try again.');
             }
+
             $opts = get_option('wple_opts');
+
             if (isset($opts['challenge_files']) && !empty($opts['challenge_files'])) {
                 $req = intval($_GET['subdir_chfile']) - 1;
                 $ch = $opts['challenge_files'][$req];
+
                 if (!isset($ch)) {
                     wp_die('Requested challenge file not exists. Please go back and try again.');
                 }
+
                 SELF::compose_challenge_files($ch['file'], $ch['value']);
             } else {
                 wp_die('HTTP challenge files not ready. Please go back and try again.');
@@ -227,22 +250,22 @@ class WPLE_Subdir_Challenge_Helper
     private static function compose_challenge_files($name, $content)
     {
         $chfile = sanitize_file_name($name);
+
         $first_letter = substr($name, 0, 1);
         if ($first_letter == '_') {
-            $chfile = '_' . $chfile;
-            //there was underscore at beginning
-        } else {
-            if ($first_letter == '-') {
-                $chfile = '-' . $chfile;
-                //there was a dash at beginning
-            }
+            $chfile = '_' . $chfile; //there was underscore at beginning
+        } else if ($first_letter == '-') {
+            $chfile = '-' . $chfile; //there was a dash at beginning
         }
+
         file_put_contents($chfile, sanitize_text_field($content));
+
         header('Content-Description: File Transfer');
         header('Content-Type: text/plain; charset=UTF-8');
         header('Content-Length: ' . filesize($chfile));
         header('Content-Disposition: attachment; filename=' . basename($chfile));
+
         readfile($chfile);
-        exit;
+        exit();
     }
 }

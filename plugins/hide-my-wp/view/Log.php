@@ -25,7 +25,7 @@
                             </div>
                             <div class="checker col-sm-12 row my-2 py-1" style="opacity: 0.3" onclick="jQuery('#hmwp_ghost_mode_modal').modal('show')">
                                 <div class="col-sm-12 p-0 switch switch-sm">
-                                    <img src="<?php echo esc_url( _HMWP_ASSETS_URL_ . 'img/events.png' ) ?>" />
+                                    <img src="<?php echo esc_url( _HMWP_ASSETS_URL_ . 'img/events.png' ) ?>" style="width: 100%" />
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                 <div class="card-body f-gray-dark text-left">
                     <h3 class="card-title"><?php echo esc_html__( 'Events Log', 'hide-my-wp' ); ?></h3>
                     <div class="text-info mb-3"><?php echo esc_html__( "The Events Log Report will document every action users take when trying to log in or are already logged in to your site (for the last 30 days), so you’ll know who does what on your site.", 'hide-my-wp' ); ?></div>
-                    <div class="text-black-50 small mb-3"><?php echo esc_html__( "(*this refers to actions that could impact your site’s security. WP Ghost will NOT log users’ actions such as clicking on a Menu or other similar, everyday actions that a user regularly takes in the frontend of a site)", 'hide-my-wp' ); ?></div>
+                    <div class="text-black-50 mb-3"><?php echo esc_html__( "This refers to actions that could impact your site’s security. WP Ghost will NOT log users’ actions such as clicking on a Menu or other similar, everyday actions that a user regularly takes in the frontend of a site.", 'hide-my-wp' ); ?></div>
                 </div>
             </div>
             <div class="card col-sm-12 p-0">

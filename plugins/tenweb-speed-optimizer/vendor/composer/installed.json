@@ -536,15 +536,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monperrus/crawler-user-agents.git",
-                "reference": "ed7e74974c28980351d4bdbbe109998688d71234"
+                "reference": "b3f4fad51d809f7b4d165cea42d47f7648020aa5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monperrus/crawler-user-agents/zipball/ed7e74974c28980351d4bdbbe109998688d71234",
-                "reference": "ed7e74974c28980351d4bdbbe109998688d71234",
+                "url": "https://api.github.com/repos/monperrus/crawler-user-agents/zipball/b3f4fad51d809f7b4d165cea42d47f7648020aa5",
+                "reference": "b3f4fad51d809f7b4d165cea42d47f7648020aa5",
                 "shasum": ""
             },
-            "time": "2024-12-21T08:17:12+00:00",
+            "time": "2025-01-07T14:02:50+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",

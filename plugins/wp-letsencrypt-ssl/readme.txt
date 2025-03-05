@@ -1,4 +1,4 @@
-=== WP Encryption - One Click Free SSL Certificate & SSL / HTTPS Redirect to Force HTTPS, Security ===
+=== WP Encryption - One Click Free SSL Certificate & SSL / HTTPS Redirect to Force HTTPS, SSL Scan ===
 Contributors: gowebsmarty, gwsharsha
 Tags: free ssl,ssl,https,https redirect,ssl certificate
 Requires at least: 5.4

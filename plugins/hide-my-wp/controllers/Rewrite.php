@@ -69,7 +69,7 @@ class HMWP_Controllers_Rewrite extends HMWP_Classes_FrontController {
 		if ( HMWP_Classes_Tools::getIsset( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) ) ) {
 			if ( HMWP_Classes_Tools::getValue( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) ) == HMWP_Classes_Tools::getOption( 'hmwp_disable' ) ) {
 
-				HMWP_Classes_ObjController::getClass( 'HMWP_Controllers_Brute' )->clearBlockedIPs();
+				HMWP_Classes_ObjController::getClass( 'HMWP_Models_Bruteforce_Database' )->clearBlockedIPs();
 				HMWP_Classes_Tools::saveOptions( 'banlist_ip', json_encode( array() ) );
 
 				add_filter( 'site_url', array( $this->model, 'site_url' ), PHP_INT_MAX, 2 );

@@ -503,17 +503,22 @@ class HMWP_Models_Files {
 				wp_safe_redirect( $new_url, 301 );
 				exit();
 
-			} elseif (  stripos( trailingslashit( $url_no_query ), '/' . HMWP_Classes_Tools::getOption( 'hmwp_activate_url' ) . '/' ) !== false ) {
+			} elseif (  HMWP_Classes_Tools::isMultisites() && stripos( trailingslashit( $url_no_query ), '/' . HMWP_Classes_Tools::getOption( 'hmwp_activate_url' ) . '/' ) !== false ) {
 
-				header( "HTTP/1.1 200 OK" );
+				$new_path = realpath( $new_path );
 
-				ob_start();
-				include $new_path;
-				$content = ob_get_clean();
+				if ( strpos( $new_path, 'wp-activate.php' ) && $wp_filesystem->exists( $new_path ) ) {
+					header( "HTTP/1.1 200 OK" );
 
-				//Echo the html file content
-				echo $content;
-				die();
+					ob_start();
+					global $wp_object_cache, $wp_query;
+					require_once $new_path;
+					$content = ob_get_clean();
+
+					//Echo the html file content
+					echo $content;
+					die();
+				}
 
 			}
 

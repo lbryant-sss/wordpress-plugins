@@ -4,7 +4,7 @@ Tags: cache, speed, optimize, performance, pagespeed, web vitals, critical css
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 2.30.9
+Stable tag: 2.30.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -271,6 +271,13 @@ Yes. 10Web Booster is an all-in-one solution for optimizing websites. It impleme
 
 
 == Changelog ==
+
+
+= 2.30.18 =
+Improved: Updated dependencies
+Improved: CLI cache clearing features
+Improved: Max cache size is dynamic now
+Fixed: Clearing cache from header menu
 
 = 2.30.9 =
 Improved: Updated dependencies
