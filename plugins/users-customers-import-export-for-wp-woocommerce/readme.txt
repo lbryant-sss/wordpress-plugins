@@ -4,7 +4,7 @@ Tags: import customers, export customers, import users from csv, export users to
 Requires at least: 3.0.1
 Tested up to: 6.7.2
 Requires PHP: 5.6
-Stable tag: 2.6.1
+Stable tag: 2.6.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -219,6 +219,8 @@ Please refer the article on how to <a href="https://www.webtoffee.com/refresh-wo
 
 == Changelog ==
 
+= 2.6.2 2025-03-05 =
+* [Fix] - Updated review button link in the banner.
 = 2.6.1 2025-03-01 =
 * [Add] - Feature request functionality.
 * [Add] - New header section.
@@ -536,11 +538,5 @@ Please refer the article on how to <a href="https://www.webtoffee.com/refresh-wo
 
 == Upgrade Notice ==
 
-= 2.6.1 =
-* [Add] - Feature request functionality.
-* [Add] - New header section.
-* [Add] - Help button.
-* [Add] - Setup guide, FAQ, and support contact link.
-* [Add] - New review banner for feedback.
-* [Compatibility] - Tested OK with WooCommerce 9.7.0
-* [Compatibility] - Tested OK with WordPress 6.7.2
+= 2.6.2 =
+* [Fix] - Updated review button link in the banner.

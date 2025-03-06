@@ -811,14 +811,14 @@ class HMWP_Models_Rewrite {
 				//Add the URL Mapping rules
 				if ( ! empty( $this->_umrewrites ) ) {
 					foreach ( $this->_umrewrites as $rewrite ) {
-						$rewritecode .= 'RewriteRule ^' . $rewrite['from'] . ' ' . $rewrite['to'] . " [QSA,L]" . PHP_EOL;
+						$rewritecode .= 'RewriteRule ^' . $rewrite['from'] . ' ' . $rewrite['to'] . " [QSA,NC,L]" . PHP_EOL;
 					}
 				}
 
 				//Add the New Paths rules
 				foreach ( $this->_rewrites as $rewrite ) {
 					if ( strpos( $rewrite['to'], 'index.php' ) === false ) {
-						$rewritecode .= 'RewriteRule ^' . $rewrite['from'] . ' ' . $rewrite['to'] . " [QSA,L]" . PHP_EOL;
+						$rewritecode .= 'RewriteRule ^' . $rewrite['from'] . ' ' . $rewrite['to'] . " [QSA,NC,L]" . PHP_EOL;
 					}
 				}
 				$rewritecode .= "</IfModule>" . PHP_EOL;
@@ -957,14 +957,14 @@ class HMWP_Models_Rewrite {
 				//Add the URL Mapping rules
 				if ( ! empty( $this->_umrewrites ) ) {
 					foreach ( $this->_umrewrites as $rewrite ) {
-						$rewritecode .= 'RewriteRule ^' . $rewrite['from'] . ' ' . $rewrite['to'] . " [QSA,L]" . PHP_EOL;
+						$rewritecode .= 'RewriteRule ^' . $rewrite['from'] . ' ' . $rewrite['to'] . " [QSA,NC,L]" . PHP_EOL;
 					}
 				}
 
 				//Add the New Paths rules
 				foreach ( $this->_rewrites as $rewrite ) {
 					if ( strpos( $rewrite['to'], 'index.php' ) === false ) {
-						$rewritecode .= 'RewriteRule ^' . $rewrite['from'] . ' ' . $rewrite['to'] . " [QSA,L]" . PHP_EOL;
+						$rewritecode .= 'RewriteRule ^' . $rewrite['from'] . ' ' . $rewrite['to'] . " [QSA,NC,L]" . PHP_EOL;
 					}
 				}
 				$rewritecode .= "</IfModule>" . PHP_EOL;

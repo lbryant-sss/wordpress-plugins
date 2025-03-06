@@ -149,7 +149,7 @@ class WPLE_Subdir_Challenge_Helper
     ' . wp_nonce_field('verifyhttprecords', 'checkhttp', false, false) . '
     <button id="verify-subhttp" class="subdir_verify"><span class="dashicons dashicons-update stable"></span>&nbsp;' . esc_html__('Verify HTTP Challenges', 'wp-letsencrypt-ssl') . '</button>
 
-    <div class="http-notvalid">' . esc_html__('Could not verify HTTP challenges. ', 'wp-letsencrypt-ssl') . ' ' . esc_html__('Please open support ticket via free support link located in top right for help.', 'wp-letsencrypt-ssl');
+    <div class="http-notvalid">' . esc_html__('Could not verify HTTP challenges. ', 'wp-letsencrypt-ssl') . ' We can definitely help with the verification, Please open <a href="https://wordpress.org/support/plugin/wp-letsencrypt-ssl/#new-topic-0" target="_blank">support ticket</a>';
 
         if (FALSE !== ($havecp = get_option('wple_have_cpanel')) && $havecp && !wple_fs()->can_use_premium_code__premium_only()) {
             $list .= ' Upgrade to <b>PRO</b> version for fully automatic domain verification.';
@@ -211,7 +211,7 @@ class WPLE_Subdir_Challenge_Helper
     ' . wp_nonce_field('verifydnsrecords', 'checkdns', false, false) . '
     <button id="verify-subdns" class="subdir_verify"><span class="dashicons dashicons-update stable"></span>&nbsp;' . esc_html__('Verify DNS Challenges', 'wp-letsencrypt-ssl') . '</button>
 
-    <div class="dns-notvalid">' . esc_html__('Could not verify DNS records. ', 'wp-letsencrypt-ssl') . 'Please open support ticket via free support link located in top right for help.';
+    <div class="dns-notvalid">' . esc_html__('Could not verify DNS records. ', 'wp-letsencrypt-ssl') . 'We can definitely help with the verification, Please open <a href="https://wordpress.org/support/plugin/wp-letsencrypt-ssl/#new-topic-0" target="_blank">support ticket</a>';
 
         if (FALSE !== ($havecp = get_option('wple_have_cpanel')) && $havecp && !wple_fs()->can_use_premium_code__premium_only()) {
             $list .= ' Upgrade to <b>PRO</b> version for fully automatic domain verification.';

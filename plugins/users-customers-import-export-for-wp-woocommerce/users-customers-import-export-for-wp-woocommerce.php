@@ -5,7 +5,7 @@
   Description: Export and Import User/Customers details From and To your WordPress/WooCommerce.
   Author: WebToffee
   Author URI: https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/
-  Version: 2.6.1
+  Version: 2.6.2
   Text Domain: users-customers-import-export-for-wp-woocommerce
   Domain Path: /languages
   WC tested up to: 9.7.0
@@ -48,7 +48,7 @@ if (!defined('WT_IEW_DEBUG_BASIC_TROUBLESHOOT')) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('WT_U_IEW_VERSION', '2.6.1');
+define('WT_U_IEW_VERSION', '2.6.2');
 
 /**
  * The code that runs during plugin activation.

@@ -353,7 +353,7 @@ class User_import_export_Review_Request
                     var elm = $(this);
                     var btn_type = elm.attr('data-type');
                     if (btn_type == 'review') {
-                        window.open('<?php echo esc_url($this->new_review_url); ?>');
+                        window.open('<?php echo esc_url($this->review_url); ?>');
                     }
                     elm.parents('.<?php echo $this->banner_css_class; ?>').hide();
 

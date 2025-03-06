@@ -15711,7 +15711,9 @@ function CoverEdit({
               disableCustomColors: true,
               value: overlayColor.color,
               onChange: onSetOverlayColor,
-              clearable: false
+              clearable: false,
+              asButtons: true,
+              "aria-label": (0,external_wp_i18n_namespaceObject.__)('Overlay color')
             })
           })
         })]
@@ -19530,7 +19532,8 @@ const form_edit_Edit = ({
               method: 'post'
             });
           },
-          help: (0,external_wp_i18n_namespaceObject.__)('The email address where form submissions will be sent. Separate multiple email addresses with a comma.')
+          help: (0,external_wp_i18n_namespaceObject.__)('The email address where form submissions will be sent. Separate multiple email addresses with a comma.'),
+          type: "email"
         })]
       })
     }), submissionMethod !== 'email' && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_wp_blockEditor_namespaceObject.InspectorControls, {
@@ -19562,7 +19565,8 @@ const form_edit_Edit = ({
             action: newVal
           });
         },
-        help: (0,external_wp_i18n_namespaceObject.__)('The URL where the form should be submitted.')
+        help: (0,external_wp_i18n_namespaceObject.__)('The URL where the form should be submitted.'),
+        type: "url"
       })]
     }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("form", {
       ...innerBlocksProps,
@@ -38222,7 +38226,8 @@ function Controls({
             url: urlValue
           }, setAttributes, attributes);
         },
-        autoComplete: "off"
+        autoComplete: "off",
+        type: "url"
       })
     }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalToolsPanelItem, {
       hasValue: () => !!description,
@@ -39381,7 +39386,8 @@ function NavigationSubmenuEdit({
               });
             },
             label: (0,external_wp_i18n_namespaceObject.__)('Link'),
-            autoComplete: "off"
+            autoComplete: "off",
+            type: "url"
           })
         }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalToolsPanelItem, {
           label: (0,external_wp_i18n_namespaceObject.__)('Description'),
@@ -42841,10 +42847,17 @@ const post_comments_count_metadata = {
         fontSize: true
       }
     },
+    __experimentalBorder: {
+      radius: true,
+      color: true,
+      width: true,
+      style: true
+    },
     interactivity: {
       clientNavigation: true
     }
-  }
+  },
+  style: "wp-block-post-comments-count"
 };
 
 const {
@@ -45201,7 +45214,7 @@ function PostNavigationLinkEdit({
         "aria-label": ariaLabel,
         placeholder: placeholder,
         value: label,
-        allowedFormats: ['core/bold', 'core/italic'],
+        withoutInteractiveFormatting: true,
         onChange: newLabel => setAttributes({
           label: newLabel
         })
@@ -47838,7 +47851,9 @@ const loop = /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(exter
 
 
 
+
 /** @typedef {import('@wordpress/blocks').WPBlockVariation} WPBlockVariation */
+/** @typedef {import('@wordpress/components/build-types/query-controls/types').OrderByOption} OrderByOption */
 
 /**
  * @typedef IHasNameAndId
@@ -48014,6 +48029,48 @@ function useIsPostTypeHierarchical(postType) {
     const type = select(external_wp_coreData_namespaceObject.store).getPostType(postType);
     return type?.viewable && type?.hierarchical;
   }, [postType]);
+}
+
+/**
+ * List of avaiable options to order by.
+ *
+ * @param {string} postType The post type to check.
+ * @return {OrderByOption[]} List of order options.
+ */
+function useOrderByOptions(postType) {
+  const supportsCustomOrder = (0,external_wp_data_namespaceObject.useSelect)(select => {
+    const type = select(external_wp_coreData_namespaceObject.store).getPostType(postType);
+    return !!type?.supports?.['page-attributes'];
+  }, [postType]);
+  return (0,external_wp_element_namespaceObject.useMemo)(() => {
+    const orderByOptions = [{
+      label: (0,external_wp_i18n_namespaceObject.__)('Newest to oldest'),
+      value: 'date/desc'
+    }, {
+      label: (0,external_wp_i18n_namespaceObject.__)('Oldest to newest'),
+      value: 'date/asc'
+    }, {
+      /* translators: Label for ordering posts by title in ascending order. */
+      label: (0,external_wp_i18n_namespaceObject.__)('A → Z'),
+      value: 'title/asc'
+    }, {
+      /* translators: Label for ordering posts by title in descending order. */
+      label: (0,external_wp_i18n_namespaceObject.__)('Z → A'),
+      value: 'title/desc'
+    }];
+    if (supportsCustomOrder) {
+      orderByOptions.push({
+        /* translators: Label for ordering posts by ascending menu order. */
+        label: (0,external_wp_i18n_namespaceObject.__)('Ascending by order'),
+        value: 'menu_order/asc'
+      }, {
+        /* translators: Label for ordering posts by descending menu order. */
+        label: (0,external_wp_i18n_namespaceObject.__)('Descending by order'),
+        value: 'menu_order/desc'
+      });
+    }
+    return orderByOptions;
+  }, [supportsCustomOrder]);
 }
 
 /**
@@ -48309,7 +48366,7 @@ function EnhancedPaginationControl({
 
 
 
-const orderOptions = [{
+const defaultOrderByOptions = [{
   label: (0,external_wp_i18n_namespaceObject.__)('Newest to oldest'),
   value: 'date/desc'
 }, {
@@ -48327,6 +48384,7 @@ const orderOptions = [{
 function OrderControl({
   order,
   orderBy,
+  orderByOptions = defaultOrderByOptions,
   onChange
 }) {
   return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.SelectControl, {
@@ -48334,7 +48392,7 @@ function OrderControl({
     __next40pxDefaultSize: true,
     label: (0,external_wp_i18n_namespaceObject.__)('Order by'),
     value: `${orderBy}/${order}`,
-    options: orderOptions,
+    options: orderByOptions,
     onChange: value => {
       const [newOrderBy, newOrder] = value.split('/');
       onChange({
@@ -49085,6 +49143,7 @@ function QueryInspectorControls(props) {
     onChangeDebounced();
     return onChangeDebounced.cancel;
   }, [querySearch, onChangeDebounced]);
+  const orderByOptions = useOrderByOptions(postType);
   const showInheritControl = !isSingular && isControlAllowed(allowedControls, 'inherit');
   const showPostTypeControl = !inherit && isControlAllowed(allowedControls, 'postType');
   const postTypeControlLabel = (0,external_wp_i18n_namespaceObject.__)('Post type');
@@ -49216,6 +49275,7 @@ function QueryInspectorControls(props) {
         children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(order_control, {
           order,
           orderBy,
+          orderByOptions,
           onChange: setQuery
         })
       }), showStickyControl && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalToolsPanelItem, {
@@ -55530,10 +55590,6 @@ function LogoEdit({
     setTemporaryURL();
   };
   const onFilesDrop = filesList => {
-    if (filesList?.length > 1) {
-      onUploadError((0,external_wp_i18n_namespaceObject.__)('Only one image can be used as a site logo.'));
-      return;
-    }
     getSettings().mediaUpload({
       allowedTypes: site_logo_edit_ALLOWED_MEDIA_TYPES,
       filesList,
@@ -55544,7 +55600,8 @@ function LogoEdit({
         }
         onInitialSelectLogo(image);
       },
-      onError: onUploadError
+      onError: onUploadError,
+      multiple: false
     });
   };
   const mediaReplaceFlowProps = {
@@ -65028,7 +65085,11 @@ const VideoSettings = ({
     const toggleAttribute = attribute => {
       return newValue => {
         setAttributes({
-          [attribute]: newValue
+          [attribute]: newValue,
+          // Set muted when autoplay changes
+          ...(attribute === 'autoplay' && {
+            muted: newValue
+          })
         });
       };
     };
@@ -65052,7 +65113,8 @@ const VideoSettings = ({
       hasValue: () => !!autoplay,
       onDeselect: () => {
         setAttributes({
-          autoplay: false
+          autoplay: false,
+          muted: false
         });
       },
       children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.ToggleControl, {
@@ -65090,7 +65152,9 @@ const VideoSettings = ({
         __nextHasNoMarginBottom: true,
         label: (0,external_wp_i18n_namespaceObject.__)('Muted'),
         onChange: toggleFactory.muted,
-        checked: !!muted
+        checked: !!muted,
+        disabled: autoplay,
+        help: autoplay ? (0,external_wp_i18n_namespaceObject.__)('Muted because of Autoplay.') : null
       })
     }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalToolsPanelItem, {
       label: (0,external_wp_i18n_namespaceObject.__)('Playback controls'),

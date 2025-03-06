@@ -100,6 +100,9 @@ There may be other plugins (like fancybox, elementor) that also use image links 
 
 == Changelog ==
 
+= 4.6.5 =
+* Fix textdomain error
+
 = 4.6.4 =
 * Fix Instagram feed limit
 
