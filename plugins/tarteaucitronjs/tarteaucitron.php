@@ -3,7 +3,7 @@
 Plugin Name: tarteaucitron.io
 Plugin URI: https://tarteaucitron.io/
 Description: Compliant and accessible cookie banner
-Version: 1.9.2
+Version: 1.9.3
 Text Domain: tarteaucitronjs
 Domain Path: /languages/
 Author: Amauri

@@ -1,11 +1,14 @@
 <?php
 $settings = new \NitroPack\WordPress\Settings();
+$notifications = new \NitroPack\WordPress\Notifications\Notifications();
 $usage = '0 MB';
 $max_usage = '1 GB';
 $page_views = '0';
 $max_page_views = '10000'; ?>
-<?php nitropack_display_admin_notices(); ?>
-<div class="grid grid-cols-2 gap-6 grid-col-1-tablet items-start">
+
+<?php $notifications->nitropack_display_admin_notices();  ?>
+
+<div class="grid grid-cols-2 gap-6 grid-col-1-tablet items-start nitropack-dashboard">
   <div class="col-span-1">
     <!-- Optimized Pages Card -->
     <div class="card card-optimized-pages">
@@ -47,11 +50,14 @@ $max_page_views = '10000'; ?>
       </div>
       <?php $modes = array('standard' => esc_html__('Standard', 'nitropack'), 'medium' =>  esc_html__('Medium', 'nitropack'), 'strong' =>  esc_html__('Strong', 'nitropack'), 'ludicrous' =>  esc_html__('Ludicrous', 'nitropack'), 'custom' =>  esc_html__('Custom', 'nitropack')); ?>
       <div class="tabs-wrapper">
-        <div class="tabs" id="optimization-modes">
-          <?php foreach ($modes as $mode_id => $mode) : ?>
-            <a class="btn tab-link btn-link" data-mode="<?php echo $mode_id; ?>" data-modal-target="modal-optimization-mode" data-modal-toggle="modal-optimization-mode"><?php echo $mode; ?></a>
-          <?php endforeach; ?>
-        </div>
+      <div class="tabs" id="optimization-modes">
+					<?php foreach ( $modes as $mode_id => $mode ) :
+						$disabled = ( $mode_id === 'custom' ) ? 'disabled' : '';
+						?>
+						<a class="btn tab-link btn-link <?php echo $disabled; ?>" data-mode="<?php echo $mode_id; ?>"
+							data-modal-target="modal-optimization-mode" data-modal-toggle="modal-optimization-mode" <?php echo $disabled; ?>><?php echo $mode; ?></a>
+					<?php endforeach; ?>
+				</div>
         <p><?php esc_html_e('Active Mode', 'nitropack'); ?>: <span class="active-mode"></span></p>
         <div class="tab-content-wrapper">
           <div class="hidden tab-content" role="tabpanel" data-tab="standard-tab">
@@ -204,24 +210,9 @@ $max_page_views = '10000'; ?>
               <img src="<?php echo plugin_dir_url(__FILE__) . 'images/loading.svg'; ?>" alt="loading" class="icon"> <span class="msg"><?php esc_html_e('Loading cache warmup status', 'nitropack'); ?></span>
             </div>
           </div>
-          <div class="nitro-option" id="test-mode-widget">
-            <div class="nitro-option-main">
-              <div class="text-box" id="safemode-status-slider">
-                <h6><?php esc_html_e('Test Mode', 'nitropack'); ?></h6>
-                <p><?php esc_html_e('Test NitroPack\'s features without affecting your visitors\' experience', 'nitropack'); ?>. <a href="https://support.nitropack.io/en/articles/8390292-test-mode" class="text-blue" target="_blank"><?php esc_html_e('Learn more', 'nitropack'); ?></a></p>
-              </div>
 
-              <label class="inline-flex items-center cursor-pointer ml-auto">
-                <input type="checkbox" class="sr-only peer" id="safemode-status">
-
-                <div class="toggle"></div>
-              </label>
-            </div>
-            <div class="msg-container" id="loading-safemode-status">
-              <img src="<?php echo plugin_dir_url(__FILE__) . 'images/loading.svg'; ?>" alt="loading" class="icon"> <?php esc_html_e('Loading test mode status', 'nitropack'); ?>
-            </div>
-            <?php require_once NITROPACK_PLUGIN_DIR . 'view/modals/modal-test-mode.php'; ?>
-          </div>
+          <?php $settings->test_mode->render(); ?>
+          
           <div class="nitro-option" id="compression-widget">
             <div class="nitro-option-main">
               <div class="text-box">
@@ -468,7 +459,12 @@ $max_page_views = '10000'; ?>
         NitropackUI.triggerToast('error', '<?php esc_html_e('Error while fetching plan data', 'nitropack'); ?>');
       }, __ => {});
     }
-
+    window.addEventListener("cache.invalidate.success", getOptimizations);
+    if ($('#np-onstate-cache-purge').length) {
+      window.addEventListener("cache.purge.success", function(){setTimeout(function(){document.cookie = "nitropack_apwarning=1; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=<?php echo nitropack_cookiepath(); ?>"; window.location.reload()}, 1500)});
+    } else {
+      window.addEventListener("cache.purge.success", getOptimizations);
+    }
 
     $(document).on('click', "#compression-test-btn", e => {
       e.preventDefault();

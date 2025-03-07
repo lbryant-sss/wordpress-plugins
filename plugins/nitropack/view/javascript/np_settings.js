@@ -13,6 +13,10 @@ jQuery(document).ready(function ($) {
       //run settings
       this.cacheWarmUp();
       this.ajaxShortcodes = this.ajaxShortcodes();
+      this.restoreConnection();
+      this.windowNotification();
+      this.nitropackAddEventListeners();
+      this.clearResidualCache();
       //logger
       this.loggerToggle();
       this.setLoggerLevel();
@@ -212,14 +216,19 @@ jQuery(document).ready(function ($) {
       });
       //template for selected shortcodes tags
       let select2 = $("#ajax-shortcodes-dropdown").select2({
-        selectOnClose: false,
-        tags: true,
-        multiple: true,
-        width: "100%",
-        placeholder: "Enter a shortcode",
-        templateSelection: shortcodeTagTemplate,
-      });
-      nitroSelf.initial_settings.ajaxShortcodes.shortcodes.push(select2.val());
+          selectOnClose: false,
+          tags: true,
+          multiple: true,
+          width: "100%",
+          placeholder: "Enter a shortcode",
+          templateSelection: shortcodeTagTemplate,
+        }),
+        shortcodes_val = select2.val();
+      if (shortcodes_val.length > 0) {
+        nitroSelf.initial_settings.ajaxShortcodes.shortcodes = select2.val();
+      } else {
+        nitroSelf.initial_settings.ajaxShortcodes.shortcodes = [];
+      }
 
       select2.on("change", (event) => {
         const selectedValues = $(event.target).val(); // Get selected values
@@ -273,15 +282,12 @@ jQuery(document).ready(function ($) {
         let data_obj = {
           action: "nitropack_set_ajax_shortcodes_ajax",
           nonce: np_settings.nitroNonce,
+          shortcodes:
+            Array.isArray(shortcodes) && shortcodes.length
+              ? shortcodes
+              : [JSON.stringify([])], // Ensure it's always an array
         };
 
-        if (Array.isArray(shortcodes)) {
-          if (shortcodes.length == 0) {
-            data_obj.shortcodes = [""];
-          } else {
-            data_obj.shortcodes = shortcodes;
-          }
-        }
         if (enabled !== null) data_obj.enabled = enabled;
 
         const response = $.ajax({
@@ -299,10 +305,11 @@ jQuery(document).ready(function ($) {
                 $(".ajax-shortcodes").addClass("hidden");
                 nitroSelf.modified_settings.ajaxShortcodes.enabled = 0;
               }
-              if (shortcodes) {
+              // Ensure we're setting an array in settings
+              if (Array.isArray(shortcodes) && shortcodes.length) {
                 nitroSelf.initial_settings.ajaxShortcodes.shortcodes =
                   shortcodes;
-              } else if (data_obj.shortcods == [""]) {
+              } else {
                 nitroSelf.initial_settings.ajaxShortcodes.shortcodes = [];
               }
               NitropackUI.triggerToast("success", np_settings.success_msg);
@@ -552,6 +559,209 @@ jQuery(document).ready(function ($) {
             }
           }
         );
+      });
+    }
+    restoreConnection() {
+      const loading_icon =
+          '<img src="' +
+          np_settings.nitro_plugin_url +
+          '/view/images/loading.svg" width="14" class="icon loading"/>',
+        success_icon =
+          '<img src="' +
+          np_settings.nitro_plugin_url +
+          '/view/images/check.svg" width="16" class="icon success"/>';
+
+      $("#nitro-restore-connection-btn").on("click", function () {
+        $.ajax({
+          url: ajaxurl,
+          type: "GET",
+          data: {
+            action: "nitropack_reconfigure_webhooks",
+            nonce: nitroNonce,
+          },
+          dataType: "json",
+          beforeSend: function () {
+            $("#nitro-restore-connection-btn")
+              .attr("disabled", true)
+              .html(loading_icon);
+          },
+          success: function (data) {
+            if (!data.status || data.status != "success") {
+              if (data.message) {
+                alert(
+                  "<?php esc_html_e('Error:', 'nitropack'); ?> " + data.message
+                );
+              } else {
+                alert(
+                  "<?php esc_html_e('Error: We were unable to restore the connection. Please contact our support team to get this resolved.', 'nitropack'); ?>"
+                );
+              }
+            } else {
+              $("#nitro-restore-connection-btn")
+                .attr("disabled", true)
+                .html(success_icon);
+              NitropackUI.triggerToast("success", data.message);
+            }
+          },
+          complete: function () {
+            location.reload();
+          },
+        });
+      });
+    }
+    /* Was used in dashboard.php and oneclick.php */
+    loadDismissibleNotices() {
+      var $ = jQuery;
+
+      $(".nitro-notification.is-dismissible").each(function () {
+        var b = $(this),
+          c = $(
+            '<button type="button" class="notice-dismiss"><span class="screen-reader-text"></span></button>'
+          );
+        c.on("click.wp-dismiss-notice", function ($) {
+          $.preventDefault(),
+            b.fadeTo(100, 0, function () {
+              b.slideUp(100, function () {
+                b.remove();
+              });
+            });
+        }),
+          b.append(c);
+      });
+    }
+
+    clearCacheHandler = (clearCacheAction) => {
+      return function (success, error) {
+        $.ajax({
+          url: ajaxurl,
+          type: "GET",
+          data: {
+            action: "nitropack_" + clearCacheAction + "_cache",
+            nonce: nitroNonce,
+          },
+          dataType: "json",
+          beforeSend: function () {
+            $("#optimizations-purge-cache").attr("disabled", true);
+          },
+          success: function (data) {
+            if (data.type === "success") {
+              NitropackUI.triggerToast("success", data.message);
+              window.dispatchEvent(
+                new Event("cache." + clearCacheAction + ".success")
+              );
+            } else {
+              NitropackUI.triggerToast("error", data.message);
+              window.dispatchEvent(
+                new Event("cache." + clearCacheAction + ".error")
+              );
+            }
+          },
+          error: function (data) {
+            NitropackUI.triggerToast("error", data.message);
+            window.dispatchEvent(
+              new Event("cache." + clearCacheAction + ".error")
+            );
+          },
+          complete: function () {
+            setTimeout(function () {
+              $("#optimizations-purge-cache").attr("disabled", false);
+            }, 3000);
+          },
+        });
+      };
+    };
+    windowNotification() {
+      const nitroSelf = this;
+      window.Notification = ((_) => {
+        var timeout;
+        var display = (msg, type) => {
+          clearTimeout(timeout);
+          $(".nitro-notification").remove();
+          //tbd
+          $('[name="form"]').prepend(
+            '<div class="nitro-notification notification-' +
+              type +
+              '" is-dismissible"><p>' +
+              msg +
+              "</p></div>"
+          );
+
+          timeout = setTimeout((_) => {
+            $(".nitro-notification").remove();
+          }, 10000);
+
+          nitroSelf.loadDismissibleNotices();
+        };
+
+        return {
+          success: (msg) => {
+            display(msg, "success");
+          },
+          error: (msg) => {
+            display(msg, "error");
+          },
+          info: (msg) => {
+            display(msg, "info");
+          },
+          warning: (msg) => {
+            display(msg, "warning");
+          },
+        };
+      })();
+    }
+    nitropackAddEventListeners() {
+      const nitroSelf = this;
+      $(window).on("load", (_) => {
+        window.addEventListener(
+          "cache.invalidate.request",
+          nitroSelf.clearCacheHandler("invalidate")
+        );
+        window.addEventListener(
+          "cache.purge.request",
+          nitroSelf.clearCacheHandler("purge")
+        );
+        if ($("#np-onstate-cache-purge").length) {
+          window.addEventListener("cache.purge.success", function () {
+            setTimeout(function () {
+              document.cookie =
+                "nitropack_apwarning=1; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+              window.location.reload();
+            }, 1500);
+          });
+        }
+      });
+    }
+    clearResidualCache() {
+      let isClearing = false;
+      $(document).on("click", ".btn[nitropack-rc-data]", function (e) {
+        e.preventDefault();
+        if (isClearing) return;
+        let currentButton = $(this);
+        $.ajax({
+          url: ajaxurl,
+          type: "POST",
+          dataType: "text",
+          data: {
+            action: "nitropack_clear_residual_cache",
+            gde: currentButton.attr("nitropack-rc-data"),
+            nonce: nitroNonce,
+          },
+          beforeSend: function () {
+            isClearing = true;
+          },
+          success: function (resp) {
+            NitropackUI.triggerToast("success", np_settings.success_msg);
+          },
+          error: function (resp) {
+            NitropackUI.triggerToast("error", np_settings.success_msg);
+          },
+          complete: function () {
+            isClearing = false;
+            setTimeout(function () {
+              location.reload();
+            }, 3000);
+          },
+        });
       });
     }
   }

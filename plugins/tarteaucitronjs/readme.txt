@@ -32,6 +32,9 @@ Free for 7 days, licence required after the trial.
 
 == Changelog ==
 
+= 1.9.3 =
+* Add a notice if the licence is invalid
+
 = 1.9.2 =
 * Fix video not loading
 

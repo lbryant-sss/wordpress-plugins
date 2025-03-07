@@ -58,32 +58,48 @@ class Components {
 	 * Renders a notification message.
 	 *
 	 * @param string $msg The notification message to display.
-	 * @param string $type The type of notification (e.g., 'info', 'error', 'success'). Defaults to 'info'.
-	 * @param bool|string $dismissID The ID used to dismiss the notification. If false, the notification is not dismissible.
+	 * @param string $type The type of notification (e.g., 'info', 'warning, 'error', 'success' and 'promo'. Defaults to 'info'.
 	 * @param bool|string $title The title of the notification. If false, the notification is displayed without a title.
+	 * @param bool|string $actions The actions of the notification, mostly buttons (CTAs).
+	 * @param bool|array $classes The css classes of the notification. If present, an array must be used.
+	 * @param bool|string $dismissibleId The ID used for dismissing the notification as cookie in np_notices.js
 	 * @param bool|array $app_notification An array containing 'end_date' and 'id' for app-specific notifications. If false, no app-specific notification is rendered.
-	 * @param bool|string $dismissibleId The ID used for dismissing the notification via AJAX. If false, no AJAX dismissible functionality is added.
 	 *
 	 * @return void
 	 */
-	public function render_notification( $msg, $type, $dismissID = false, $title = false, $app_notification = false, $dismissibleId = false ) {
-		if ( ! $type )
+	public function render_notification( $msg, $type = false, $title = false, $actions = false, $classes = false, $dismissibleId = false, $app_notification = false ) {
+		$default_classes = [ 'nitro-notification', 'notification-' . $type ];
+		if ( ! $title ) {
+			$default_classes[] = 'compact';
+		}
+		if ( $app_notification ) {
+			$default_classes[] = 'app-notification';
+		}
+		if ( $classes && is_array( $classes ) ) {
+			$default_classes = array_merge( $default_classes, $classes );
+
+		}
+		$default_classes = implode( ' ', $default_classes );
+		if ( ! $type ) {
 			$type = 'info';
-		if ( ! $title )
-			$classes = 'compact';
-		if ( $dismissID ) {
-			if ( ! empty( $_COOKIE[ "dismissed_notice_" . $dismissID ] ) )
+		}
+
+		/* Don't display if dismissed by cookie */
+		if ( $dismissibleId ) {
+			if ( ! empty( $_COOKIE[ "dismissed_notice_" . $dismissibleId ] ) && $_COOKIE[ "dismissed_notice_" . $dismissibleId ] === '1' ) {
 				return;
-			echo '<div class="nitro-notification notification-' . $type . ' ' . $classes . ' is-dismissible" data-dismissible-id="' . $dismissibleId . '">';
+			}
+
+			echo '<div class="' . $default_classes . ' is-dismissible" data-dismissible-id="' . $dismissibleId . '">';
 		} else {
-			echo '<div class="nitro-notification notification-' . $type . ' ' . $classes . '">';
+			echo '<div class="' . $default_classes . '">';
 		} ?>
 		<div class="notification-inner">
 			<div class="title-msg">
 				<div class="title-wrapper">
 					<?php if ( $title ) {
 						echo $this->get_icon_notification( $type );
-						echo $title;
+						echo '<h5 class="title">' . $title . '</h5>';
 					} ?>
 				</div>
 				<div class="msg">
@@ -94,12 +110,24 @@ class Components {
 					?>
 				</div>
 			</div>
-			<div class="col-span-4 ml-auto actions">
-				<?php if ( $app_notification ) {
-					echo '<a class="btn btn-secondary btn-dismiss rml_btn" data-notification_end="' . $app_notification['end_date'] . '" data-notification_id="' . $app_notification['id'] . '">' . esc_html__( 'Dismiss', 'nitropack' ) . '</a>';
+			<div class="col-span-4 actions">
+				<?php
+				if ( $actions ) {
+					echo $actions;
+
+				}
+				if ( isset( $app_notification['cta_details_list'] ) && is_array( $app_notification['cta_details_list'] ) ) {
+					foreach ( $app_notification['cta_details_list'] as $cta ) {
+						echo '<a href="' . esc_url( $cta['url'] ) . '" class="btn btn-' . esc_attr( $app_notification['type'] ) . '" target="_blank">' . esc_html( $cta['text'] ) . '</a>';
+					}
+				}
+				if ( $app_notification && $app_notification['end_date'] && $app_notification['id'] ) {
+					echo '<a class="btn btn-secondary btn-dismiss" data-notification_end="' . $app_notification['end_date'] . '" data-notification_id="' . $app_notification['id'] . '">' . esc_html__( 'Dismiss', 'nitropack' ) . '</a>';
 				} else if ( $dismissibleId ) {
-					echo '<a class="btn btn-secondary btn-dismiss" onclick="jQuery.post(ajaxurl, {action: \'' . $dismissibleId . '\', nonce: \'' . wp_create_nonce( NITROPACK_NONCE ) . '\'}); jQuery(this).closest(\'.is-dismissible\').hide();">' . esc_html__( 'Dismiss', 'nitropack' ) . '</a>';
-				} ?>
+					echo '<a class="btn btn-secondary btn-dismiss" onclick="jQuery.post(ajaxurl, {action: \'' . $dismissibleId . '\', nonce: \'' . wp_create_nonce( NITROPACK_NONCE ) . '\'}); jQuery(this).closest(\'.is-dismissible\').remove();">' . esc_html__( 'Dismiss', 'nitropack' ) . '</a>';
+				}
+
+				?>
 			</div>
 		</div>
 		</div>

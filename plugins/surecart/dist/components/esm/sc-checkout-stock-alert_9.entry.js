@@ -260,13 +260,9 @@ const ScFormComponentsValidator = class {
         this.hasInvoiceDetails = !!this.el.querySelector('sc-invoice-details');
         this.hasInvoiceMemo = !!this.el.querySelector('sc-invoice-memo');
         this.hasTrialLineItem = !!this.el.querySelector('sc-line-item-trial');
-        // automatically add address field if tax is enabled.
-        if ((_a = this.taxProtocol) === null || _a === void 0 ? void 0 : _a.tax_enabled) {
-            this.addAddressField();
-            // if eu vat is required, add the tax id field.
-            if ((_b = this.taxProtocol) === null || _b === void 0 ? void 0 : _b.eu_vat_required) {
-                this.addTaxIDField();
-            }
+        // if eu vat is required, add the tax id field.
+        if (((_a = this.taxProtocol) === null || _a === void 0 ? void 0 : _a.tax_enabled) && ((_b = this.taxProtocol) === null || _b === void 0 ? void 0 : _b.eu_vat_required)) {
+            this.addTaxIDField();
         }
         this.handleOrderChange();
         this.removeCheckoutListener = onChange('checkout', () => this.handleOrderChange());
@@ -420,7 +416,7 @@ const ScFormComponentsValidator = class {
         this.hasTrialLineItem = true;
     }
     render() {
-        return h("slot", { key: 'e66bd28dd1186def415bcd23fa32a6aa818ae5c0' });
+        return h("slot", { key: '4610a472a62e049ef7b66e1bc092ce001c7df87d' });
     }
     get el() { return getElement(this); }
     static get watchers() { return {

@@ -2,8 +2,8 @@
 
 namespace NitroPack\WordPress;
 
+use NitroPack\WordPress\Settings\TestMode;
 use NitroPack\WordPress\Settings\Shortcodes;
-
 use NitroPack\WordPress\Settings\Logger;
 
 /**
@@ -26,7 +26,11 @@ class Settings {
 	 * - 'nitropack-distribution': (string) Distribution type, default is 'regular'.
 	 */
 	private $settings;
-
+	/**
+	 * Grabs TestMode class
+	 * @var TestMode
+	 */
+	public $test_mode;
 	/**
 	 * Grabs Shortcodes class
 	 * @var Shortcodes
@@ -41,7 +45,8 @@ class Settings {
 	function __construct($config = null) {
 		$this->default_required_settings();
 		//initialize each setting
-		$this->shortcodes = new Shortcodes();
+		$this->test_mode = new TestMode();
+        $this->shortcodes = new Shortcodes();
         $this->logger = new Logger($config);
 	}
 
@@ -73,8 +78,13 @@ class Settings {
 	 * @return void
 	 */
 	public function set_required_settings( $token = null ) {
-		//update option for webhook token
-		$this->generate_webhook_token();
+        
+        if ($token !== null) {
+            $this->settings['nitropack-webhookToken'] = $token;
+        } else {
+            // Generate a new webhook token if it is not passed
+            $this->generate_webhook_token();
+        }
 
         foreach ($this->settings as $option => $value) {
             if (get_option($option) === false && $value !== null) {
@@ -261,5 +271,4 @@ class Settings {
 
     <?php
     }
-
 }

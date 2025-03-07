@@ -66,12 +66,18 @@ class NitroPack {
 	public $Config;
 
 	/**
-	 * Notifier instance.
+	 * Notifications instance.
 	 *
 	 * @var Notifications
 	 */
 	public $Notifications;
 
+	/**
+	 * Notifications instance.
+	 *
+	 * @var AppNotifications
+	 */
+	public $AppNotifications;
 	/**
 	 * Get instance.
 	 *
@@ -204,7 +210,7 @@ class NitroPack {
 	public $settings;
 	public function __construct() {
 		$this->Config = new Config();
-		$this->Notifications = new Notifications( $this );
+		$this->Notifications = Notifications\Notifications::getInstance();
 		$this->settings = new Settings( $this->Config );
 		$this->logger = new Logger( $this );
 		$this->loggingEvents = new LoggingEvents( $this->logger );

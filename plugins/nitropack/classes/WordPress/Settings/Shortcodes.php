@@ -10,7 +10,7 @@ namespace NitroPack\WordPress\Settings;
  * @package NitroPack\WordPress\Settings
  */
 class Shortcodes {
-	function __construct() {
+	public function __construct() {
 		add_action( 'wp_ajax_nitropack_set_ajax_shortcodes_ajax', [ $this, 'nitropack_set_ajax_shortcodes_ajax' ] );
 	}
 	/**
@@ -137,13 +137,7 @@ class Shortcodes {
 				</p>
 			</div>
 			<label class="inline-flex items-center cursor-pointer ml-auto">
-                <input type="checkbox"
-                    value=""
-                    class="sr-only peer"
-                    name="ajax_shortcodes"
-                    id="ajax-shortcodes"
-                    <?php echo ($ajax_shortcodes_enabled ? 'checked' : '') ?>
-                    >
+				<input type="checkbox" value="" class="sr-only peer" name="ajax_shortcodes" id="ajax-shortcodes" <?php echo ( $ajax_shortcodes_enabled ? 'checked' : '' ) ?>>
 				<div class="toggle"></div>
 			</label>
 		</div>
@@ -181,8 +175,10 @@ class Shortcodes {
 		}
 
 		if ( ! is_null( $new_shortcodes ) ) {
+			
 			/* If the user has cleared the input field, we should set the shortcodes to an empty array */
-			$existing_options = ( is_array( $new_shortcodes ) && $new_shortcodes[0] === '' ) ? [] : $new_shortcodes;
+			$existing_options = ( is_array( $new_shortcodes ) && $new_shortcodes[0] !== '[]' ) ? $new_shortcodes : [];
+			
 			/* update config.json */
 			$siteConfig[ $configKey ]['options_cache']['ajaxShortcodes']['shortcodes'] = $existing_options;
 		}

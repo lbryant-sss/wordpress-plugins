@@ -16,7 +16,7 @@ function tarteaucitron_admin_css() {
 }
 
 function tarteaucitron_config_page() {
-    
+
     settings_fields( 'tarteaucitron' );
 
     echo '<style>.tarteaucitronjs .button.button-primary {
@@ -34,9 +34,9 @@ function tarteaucitron_config_page() {
             update_option('tarteaucitronToken', tac_sanitize($_POST['tarteaucitronPass'], 'token'));
         }
     }
-            
+
     if(get_option('tarteaucitronUUID') != '' && get_option('tarteaucitronToken') != '') {
-    
+
         if(tarteaucitron_post('check=1') != "1") {
 
             update_option('tarteaucitronToken', '');
@@ -46,17 +46,17 @@ function tarteaucitron_config_page() {
             </div><?php
         }
     }
-            
+
     if (isset($_POST['tarteaucitronLogout']) && wp_verify_nonce( $_POST['_wpnonce'], 'tac_logout' )) {
-    
+
         tarteaucitron_post('remove=1');
         update_option('tarteaucitronToken', '');
-    
+
     } elseif(isset($_POST['tarteaucitron_send_services_static']) AND $_POST['wp_tarteaucitron__service'] != '' AND wp_verify_nonce( $_POST['_wpnonce'], 'tac_service' )) {
-    
+
         $service = tac_sanitize($_POST['wp_tarteaucitron__service'], 'alpha');
         $r = 'service='.$service.'&configure_services='.tac_sanitize($_POST['wp_tarteaucitron__configure_services'], 'numeric').'&';
-        
+
         foreach ($_POST as $key => $val) {
             if (preg_match('#^wp_tarteaucitron__'.$service.'#', $key)) {
                 $r .= preg_replace('#^wp_tarteaucitron__#', '', $key).'='.$val.'&';
@@ -64,7 +64,7 @@ function tarteaucitron_config_page() {
         }
         tarteaucitron_post(trim($r, '&'));
     }
-                
+
     if(get_option('tarteaucitronToken', '') == '' OR get_option('tarteaucitronUUID', '') == '') {
 
         echo '<div class="tarteaucitronjs wrap">
@@ -93,7 +93,7 @@ function tarteaucitron_config_page() {
         </div>
         <style type="text/css">.tarteaucitronDiv{background:#FFF;padding: 10px;border: 1px solid #ccc;border-bottom: 2px solid #bbb;max-width: 750px;}</style>';
     } else {
-                
+
         $abo = tarteaucitron_post('abonnement=1');
 
         if($abo > time()) {
@@ -121,7 +121,7 @@ function tarteaucitron_config_page() {
         } else {
             $abonnement = "<span style='color:darkred'>".__('invalid', 'tarteaucitronjs')."</span>";
         }
-                
+
         echo '<div class="tarteaucitronjs wrap">
 		<h2 style="margin-bottom:20px">'.__('Dashboard', 'tarteaucitronjs').'<br/><a href="https://tarteaucitron.io/dashboard/" style="font-size:14px" target="_blank">https://tarteaucitron.io/dashboard/ ↗</a></h2>
             <form method="post" action="">';
@@ -183,7 +183,40 @@ function tarteaucitron_config_page() {
                 </div>
                 </div>';
             }
-        echo '<style type="text/css">.tarteaucitronDiv{background:#FFF;padding: 10px;border: 1px solid #ccc;border-bottom: 2px solid #bbb;max-width: 750px;}</style>';
+        echo '<style type="text/css">.tarteaucitronDiv{background:#FFF;padding: 10px;border: 1px solid #ccc;border-bottom: 2px solid #bbb;max-width: 750px;}#tarteaucitron-expired-notice {max-width: 743px;}</style>';
     }
 }
 
+/** Check licence **/
+add_action('admin_notices', function () {
+
+    if (!current_user_can('manage_options')) {return;}
+
+    if (tac_sanitize(get_option('tarteaucitronUUID'), 'uuid') == "") {return;}
+
+    $url = 'https://tarteaucitron.io/load.js?domain=' . $_SERVER['SERVER_NAME'] . '&uuid=' . tac_sanitize(get_option('tarteaucitronUUID'), 'uuid');
+    $response = wp_remote_get($url);
+
+    if (!is_wp_error($response) && isset($response['body'])) {
+        $body = $response['body'];
+
+        if (!empty($body) && strpos($body, 'console.error') === 0) {
+            ?>
+            <style>#wp-admin-bar-tarteaucitronjs {background: rgb(180, 0, 0)!important;}</style>
+
+            <?php
+            $current_screen = get_current_screen();
+            if ($current_screen && $current_screen->id === 'settings_page_tarteaucitronjs') { ?>
+                <div class="notice notice-error" id="tarteaucitron-expired-notice">
+                    <?php
+                    if (get_user_locale() === 'fr_FR') { ?>
+                        <p><big>🍪🚨 Votre licence tarteaucitron.io est expirée</big><br/>Connectez-vous pour prolonger la licence : <a href="https://tarteaucitron.io/dashboard/" target="_blank">https://tarteaucitron.io/dashboard/</a></p>
+                    <?php } else { ?>
+                        <p><big>🍪🚨 Your tarteaucitron.io license is expired</big><br/>Login to renew your license: <a href="https://tarteaucitron.io/en/my-dashboard/" target="_blank">https://tarteaucitron.io/en/my-dashboard/</a></p>
+                    <?php } ?>
+                </div>
+                <?php
+            }
+        }
+    }
+});

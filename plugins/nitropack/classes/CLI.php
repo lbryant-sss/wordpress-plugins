@@ -296,13 +296,16 @@ class CLI {
 			$command = empty( $args[0] ) ? 'status' : $args[0];
 			if ( 'enable' === $command ) {
 				$sdk->enableSafeMode();
+				nitropack_cache_safemode_status( 1 );
 			} elseif ( 'disable' === $command ) {
 				$sdk->disableSafeMode();
+				nitropack_cache_safemode_status( 0 );
 			} else {
 				$api = $this->get_vendor_api();
 				$status = $api->isSafeModeEnabled();
 				$this->logger->notice( 'Test mode is ' . ( $status ? 'enabled' : 'disabled' ) );
 				WP_CLI::success( sprintf( 'Test mode is %s.', $status ? 'enabled' : 'disabled' ) );
+				nitropack_cache_safemode_status( $status ? 1 : 0 );
 				return;
 			}
 		} catch (\Exception $e) {
