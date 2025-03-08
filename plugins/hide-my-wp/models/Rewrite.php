@@ -469,22 +469,23 @@ class HMWP_Models_Rewrite {
 		//Initialize WordPress Filesystem
 		$wp_filesystem = HMWP_Classes_ObjController::initFilesystem();
 
-		if ( HMWP_Classes_Tools::isMultisites() ) {
+		if ( HMWP_Classes_Tools::getOption( 'hmwp_hide_all_themes' ) ) {
 			// Get the all network themes
 			$all_themes = HMWP_Classes_Tools::getAllThemes();
 		} else {
 
 			// Get only the active theme
 			$theme = wp_get_theme();
+
 			if ( $theme->exists() && $theme->get_stylesheet() <> '' ) {
-				$all_themes[ sanitize_text_field( $theme->get_stylesheet() ) ] = array(
+				$all_themes[ $theme->get_stylesheet() ] = array(
 					'name'       => $theme->get( 'Name' ),
 					'theme_root' => $theme->get_theme_root()
 				);
 
 				// If it's a child theme, include also the parent
 				if( strpos( $theme->get_stylesheet(), '-child' ) !== false ) {
-					$all_themes[ str_replace( '-child', '', sanitize_text_field( $theme->get_stylesheet() )) ] = array(
+					$all_themes[ str_replace( '-child', '', $theme->get_stylesheet() ) ] = array(
 						'name'       => $theme->get( 'Name' ),
 						'theme_root' => $theme->get_theme_root()
 					);
@@ -495,6 +496,22 @@ class HMWP_Models_Rewrite {
 		foreach ( $all_themes as $theme => $value ) {
 
 			if ( $wp_filesystem->is_dir( $value['theme_root'] ) ) {
+
+				//If it's set to use custom themes names mapping
+				if ( HMWP_Classes_Tools::getOption( 'hmwp_hide_themes_advanced' ) ) {
+					//Check if the theme is customized
+					$themes = (array) HMWP_Classes_Tools::getOption( 'hmw_themes_mapping' );
+					if ( in_array( $theme, array_keys( $themes ), true ) ) {
+						if ( $theme <> $themes[ $theme ] ) {
+							//change with the custom theme names
+							$dbthemes['to'][]   = $themes[ $theme ];
+							$dbthemes['from'][] = str_replace( ' ', '+', $theme ) . '/';
+						}
+						//go to the next plugin
+						continue;
+					}
+				}
+
 				$dbthemes['to'][]   = substr( md5( $theme ), 0, 10 );
 				$dbthemes['from'][] = str_replace( ' ', '+', $theme ) . '/';
 			}
@@ -502,7 +519,6 @@ class HMWP_Models_Rewrite {
 
 		HMWP_Classes_Tools::saveOptions( 'hmwp_themes', $dbthemes );
 	}
-
 
 	/**
 	 * ADMIN_PATH is the new path and set in /config.php

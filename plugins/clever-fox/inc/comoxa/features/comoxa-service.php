@@ -187,6 +187,10 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 			
 				<a class="customizer_service_upgrade_section up-to-pro" href="https://www.nayrathemes.com/colorsy-pro/" target="_blank" style="display: none;"><?php esc_html_e('Upgrade to Pro','clever-fox'); ?></a>
 				
+			<?php }elseif('GradiantX' == $theme->name){ ?>
+			
+				<a class="customizer_service_upgrade_section up-to-pro" href="https://www.nayrathemes.com/gradiantx-pro/" target="_blank" style="display: none;"><?php esc_html_e('Upgrade to Pro','clever-fox'); ?></a>
+				
 			<?php
 			}}
 		}

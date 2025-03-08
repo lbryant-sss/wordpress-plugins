@@ -98,6 +98,12 @@ function filterForProducts($exclude, $query)
 
 == Changelog ==
 
+= 2.4.5 =
+* fix: search exclude in ajax
+
+= 2.4.4 =
+* fix: load plugin textdomain
+
 = 2.4.3 =
 * fix: search exclude documentation url
 

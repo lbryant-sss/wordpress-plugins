@@ -315,15 +315,22 @@ class HMWP_Models_Files {
 	 * @return string
 	 */
 	public function getOriginalPath( $new_url ) {
-		// Remove domain from path
+		//remove domain from path
 		$new_path = str_replace( home_url(), '', $new_url );
 
-		// Remove queries from path
+		//remove queries from path
 		if ( strpos( $new_path, '?' ) !== false ) {
 			$new_path = substr( $new_path, 0, strpos( $new_path, '?' ) );
 		}
 
-		return HMWP_Classes_Tools::getRootPath() . ltrim( $new_path, '/' );
+		$new_path = realpath( HMWP_Classes_Tools::getRootPath() . ltrim( $new_path, '/' ) );
+		$new_path = str_replace( '\\', '/', $new_path );
+
+		if ( strpos( $new_path, HMWP_Classes_Tools::getRootPath() ) === false ) {
+			return false;
+		}
+
+		return $new_path;
 	}
 
 	/**

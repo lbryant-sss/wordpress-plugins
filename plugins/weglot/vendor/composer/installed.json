@@ -276,12 +276,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:weglot/weglot-php.git",
-                "reference": "36edd352efdd1babddac13c802151edfcbf246ec"
+                "reference": "0c267ac3eb73ecba82cd58cb576f61a866a90bfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/weglot/weglot-php/zipball/36edd352efdd1babddac13c802151edfcbf246ec",
-                "reference": "36edd352efdd1babddac13c802151edfcbf246ec",
+                "url": "https://api.github.com/repos/weglot/weglot-php/zipball/0c267ac3eb73ecba82cd58cb576f61a866a90bfd",
+                "reference": "0c267ac3eb73ecba82cd58cb576f61a866a90bfd",
                 "shasum": ""
             },
             "require": {
@@ -301,7 +301,7 @@
                 "symfony/cache": "^3.4 || 4.4 || ^5.4 || ^6.4 || ^7.1",
                 "symfony/dotenv": "^3.4 || 4.4 || ^5.4 || ^6.4 || ^7.1"
             },
-            "time": "2025-02-27T17:05:56+00:00",
+            "time": "2025-03-07T07:41:52+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {

@@ -11,7 +11,7 @@ if (!class_exists('BVInfo')) :
 		public $ip_header_option = 'bvipheader';
 		public $brand_option = 'bv_whitelabel_infos';
 		public $wp_lp_whitelabel_option = 'bvLpWhitelabelConf';
-		public $version = '5.91';
+		public $version = '5.92';
 		public $webpage = 'https://blogvault.net';
 		public $appurl = 'https://app.blogvault.net';
 		public $slug = 'blogvault-real-time-backup/blogvault.php';
@@ -92,21 +92,6 @@ if (!class_exists('BVInfo')) :
 			return BV_REQUEST_ID;
 		}
 
-		public function canSetCWBranding() {
-			if (BVWPSiteInfo::isCWServer()) {
-
-				$bot_protect_accounts = BVAccount::accountsByType($this->settings, 'botprotect');
-				if (sizeof($bot_protect_accounts) >= 1)
-					return true;
-
-				$bot_protect_accounts = BVAccount::accountsByPattern($this->settings, 'email', '/@cw_user\.com$/');
-				if (sizeof($bot_protect_accounts) >= 1)
-					return true;
-			}
-
-			return false;
-		}
-
 		public function canWhiteLabel($slug = NULL) {
 			// phpcs:disable WordPress.Security.NonceVerification.Recommended
 			if (array_key_exists("bv_override_global_whitelabel", $_REQUEST)) {
@@ -162,7 +147,6 @@ if (!class_exists('BVInfo')) :
 			if (is_array($brand) && array_key_exists('menuname', $brand)) {
 				return $brand['menuname'];
 			}
-		  
 			return $this->brandname;
 		}
 

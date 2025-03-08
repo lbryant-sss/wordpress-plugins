@@ -14,7 +14,10 @@ if( 'Comoxa' == $theme->name){
 	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/colorsy/images';
 }elseif('Appointo' == $theme->name){
 	$file = CLEVERFOX_PLUGIN_URL .'inc/appointo/images/logo.png';
-	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/appointo/images';	
+	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/appointo/images';
+}elseif('GradiantX' == $theme->name){
+	$file = CLEVERFOX_PLUGIN_URL .'inc/gradiantx/images/logo.png';
+	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/gradiantx/images';	
 }else{
 	$file = CLEVERFOX_PLUGIN_URL .'inc/gradiant/images/logo.png';
 	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/gradiant/images';

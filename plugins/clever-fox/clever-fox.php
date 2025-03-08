@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Clever Fox
 * Description: Clever Fox plugin to enhance the functionality of free themes made by Nayra Themes. More than 60000+ trusted websites with Nayra Themes. It provides intuitive features to your website. 45+ Themes compatible with Clever Fox. See below free themes listed here. Avril, Gradiant, Flavita, Fiona Blog, MetaSoft, Conceptly & ColorPress is one of highest installations themes in our collections. Visit our website and find theme as you need. https://www.nayrathemes.com/themes/
-* Version: 26.2.67
+* Version: 26.2.68
 * Author: nayrathemes
 * Author URI: https://nayrathemes.com
 * Requires:	4.6 or higher
@@ -246,6 +246,10 @@ function cleverfox_activate() {
 		if( 'Nexcraft BPO' == $theme->name){
 			require_once('inc/nexcraft-bpo/nexcraft-bpo.php');
 		}
+		
+		if( 'GradiantX' == $theme->name){
+			require_once('inc/gradiantx/gradiantx.php');
+		}
 	}
 add_action( 'init', 'cleverfox_activate' );
 
@@ -262,7 +266,7 @@ if( 'Fiona Blog' == $theme->name || 'Fiona Food' == $theme->name || 'Fiona News'
 /**
  * Gradiant Block
  */
-if( 'Gradiant' == $theme->name  || 'Comoxa' == $theme->name  || 'ColorPress' == $theme->name  || 'Flavita' == $theme->name){
+if( 'Gradiant' == $theme->name  || 'Comoxa' == $theme->name  || 'ColorPress' == $theme->name  || 'Flavita' == $theme->name || 'GradiantX' == $theme->name ){
 	require CLEVERFOX_PLUGIN_DIR . '/inc/gradiant/block/info-box.php'; 
 }
 

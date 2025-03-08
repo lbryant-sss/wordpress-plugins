@@ -173,7 +173,7 @@ class Cleverfox_Activator {
 				require CLEVERFOX_PLUGIN_DIR . 'inc/boostify/default-widgets/default-widget.php';
 			}
 			
-			if ( 'Gradiant' == $theme->name  || 'Comoxa' == $theme->name  || 'ColorPress' == $theme->name  || 'Flavita' == $theme->name  || 'Colorsy' == $theme->name  || 'Appointo' == $theme->name){
+			if ( 'Gradiant' == $theme->name  || 'Comoxa' == $theme->name  || 'ColorPress' == $theme->name  || 'Flavita' == $theme->name  || 'Colorsy' == $theme->name  || 'Appointo' == $theme->name || 'GradiantX' == $theme->name ){
 				require CLEVERFOX_PLUGIN_DIR . 'inc/gradiant/default-pages/upload-media.php';
 				require CLEVERFOX_PLUGIN_DIR . 'inc/gradiant/default-pages/home-page.php';
 				require CLEVERFOX_PLUGIN_DIR . 'inc/gradiant/default-widgets/default-widget.php';

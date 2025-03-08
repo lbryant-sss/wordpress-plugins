@@ -5,9 +5,9 @@ Donate link: https://livemeshelementor.com/
 Contributors: livemesh, elementoraddons, freemius
 Tags: elementor, elementor addons, elementor extensions, elementor widgets, page builder
 Requires at least: 5.8
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.8
-Stable Tag: 8.7
+Stable Tag: 8.8
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -214,6 +214,9 @@ Email us at support[at]livemeshthemes.com and we will be happy to assist you.
 == Changelog ==
 
 
+
+= 8.8 =
+* Updated - Freemius SDK to 2.11.0
 
 = 8.7 =
 * Enabled widget output caching on the widgets

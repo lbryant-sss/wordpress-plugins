@@ -15,9 +15,10 @@ $activate = array(
 			 'search-1',
         )
     );
+	$theme = wp_get_theme();
     /* the default titles will appear */
    update_option('widget_text', array(  
-		1 => array('title' => 'About Gradiant',
+		1 => array('title' => 'About '. $theme->name,
         'text'=>'<div class="textwidget">
 				<p>'.sprintf(/* translators: %s: Description */esc_html__( '%s.', 'clever-fox' ),CLEVERFOX_FOOTER_ABOUT).'</p>
 				<div class="footer-badge">

@@ -101,7 +101,7 @@ function render_gradiant_info( $attributes ) {
     $link = isset($link) ? esc_url($link) : '#'; // Escaping URL
     $isInfoType = isset($isInfoType) ? (bool) $isInfoType : true; // Ensuring boolean value
     $infoType = isset($infoType) ? esc_attr($infoType) : 'Style 1'; // Escaping dynamic content
-	if($infoType =='Style 2'){
+	if($infoType =='Style 2' || $infoType =='Style 6'){
 		$infoTypes='info-wrapper2';
 	}elseif($infoType =='Style 3'){
 		$infoTypes='info-wrapper2 info-wrapper3';
@@ -119,10 +119,15 @@ function render_gradiant_info( $attributes ) {
 	$linkEl = $isLink ? esc_url($link) : ''; // Escaping URL
     $iconEl = $isIcon && $icon['class'] ? "<div class='contact-icon'><i class='".esc_attr($icon['class'])."'></i></div>" : '';
 
-    if ($infoType == 'Style 2' || $infoType == 'Style 3') {
+    if ($infoType == 'Style 2' || $infoType == 'Style 3' || $infoType == 'Style 4' || $infoType == 'Style 6') {
         $titleEl = $isTitle ? "<a href='".esc_url($linkEl)."' class='contact-info'><span class='text'>".esc_html($title)."</span>" : '';
         $descEl = $isDesc ? "<span class='description title'>".esc_html($desc)."</span></a>" : '';
-    } else {
+    }elseif($infoType =='Style 5'){
+		$iconEl = $isIcon && $icon['class'] ? "<div class='contact-above'><div class='contact-icon'><i class='".$icon['class']."'></i></div>" : '';
+		$titleEl = $isTitle ? "<div class='contact-info'><a href='". $linkEl ."' ><span class='title'>$title</span></a></div></div>" : '';
+		$descEl = $isDesc ? "<div class='contact-below'><div class='contact-info'><span class='description text'><p>$desc</p></span></div>
+</div>" : '';
+	} else {
         $titleEl = $isTitle ? "<a href='".esc_url($linkEl)."' class='contact-info'><span class='title'>".esc_html($title)."</span></a>" : '';
         $descEl = $isDesc ? "<span class='description text'>".esc_html($desc)."</span>" : '';
     }	
@@ -137,7 +142,8 @@ function render_gradiant_info( $attributes ) {
 		// </aside>
     // </div>";
 	
-	echo "<div class='av-column-" . esc_attr($columns['desktop']) . " " . esc_attr($infoTypes) . "' id='gradiantInfo-" . esc_attr($cId) . "'>
+	
+	echo "<div class='av-column-" . esc_attr($columns['desktop']) . "  " . esc_attr($infoTypes) . " " .strtolower(str_replace(' ','-',$infoType))."' id='gradiantInfo-" . esc_attr($cId) . "'>
         <aside class='widget widget-contact'>
             <div class='contact-area'>
                 " . wp_kses_post($iconEl) . " " . wp_kses_post($titleEl) . " " . wp_kses_post($descEl) . "

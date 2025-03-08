@@ -400,8 +400,9 @@ class HMWP_Classes_Tools {
 			'hmwp_hide_newlogin'             => 1,
 			'hmwp_disable_language_switcher' => 0,
 			'hmwp_hide_plugins'              => 1,
-			'hmwp_hide_all_plugins'          => 0,
+			'hmwp_hide_all_plugins'          => ( self::isMultisites() ? 1 : 0 ),
 			'hmwp_hide_themes'               => 1,
+			'hmwp_hide_all_themes'          => ( self::isMultisites() ? 1 : 0 ),
 			'hmwp_emulate_cms'               => 'drupal11',
 			//
 			'hmwp_hide_img_classes'          => 1,
