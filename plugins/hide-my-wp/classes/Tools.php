@@ -333,6 +333,7 @@ class HMWP_Classes_Tools {
 			'hmwp_hide_plugins'              => 0,
 			'hmwp_hide_all_plugins'          => 0,
 			'hmwp_hide_themes'               => 0,
+			'hmwp_hide_all_themes'           => 0,
 			'hmwp_emulate_cms'               => '',
 
 			//--secure headers
@@ -402,7 +403,7 @@ class HMWP_Classes_Tools {
 			'hmwp_hide_plugins'              => 1,
 			'hmwp_hide_all_plugins'          => ( self::isMultisites() ? 1 : 0 ),
 			'hmwp_hide_themes'               => 1,
-			'hmwp_hide_all_themes'          => ( self::isMultisites() ? 1 : 0 ),
+			'hmwp_hide_all_themes'           => ( self::isMultisites() ? 1 : 0 ),
 			'hmwp_emulate_cms'               => 'drupal11',
 			//
 			'hmwp_hide_img_classes'          => 1,
@@ -1644,6 +1645,7 @@ class HMWP_Classes_Tools {
 	 * @return array
 	 */
 	public static function getAllPlugins() {
+
 		// Check if the HMWP option to hide all plugins is enabled
 		if ( HMWP_Classes_Tools::getOption( 'hmwp_hide_all_plugins' ) ) {
 			// Ensure the get_plugins() function is included before use
@@ -1678,7 +1680,30 @@ class HMWP_Classes_Tools {
 	 * @return array
 	 */
 	public static function getAllThemes() {
-		return search_theme_directories();
+
+		if ( HMWP_Classes_Tools::getOption( 'hmwp_hide_all_themes' ) ) {
+			// Get the all network themes
+			$all_themes = search_theme_directories();
+		} else {
+
+			// Get only the active theme
+			$theme = wp_get_theme();
+
+			if ( $theme->exists() && $theme->get_stylesheet() <> '' ) {
+				$all_themes[ $theme->get_stylesheet() ] = array(
+					'theme_root' => $theme->get_theme_root()
+				);
+
+				// If it's a child theme, include also the parent
+				if( strpos( $theme->get_stylesheet(), '-child' ) !== false ) {
+					$all_themes[ str_replace( '-child', '', $theme->get_stylesheet() ) ] = array(
+						'theme_root' => $theme->get_theme_root()
+					);
+				}
+			}
+		}
+
+		return $all_themes;
 	}
 
 	/**

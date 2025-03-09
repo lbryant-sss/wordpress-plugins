@@ -59,48 +59,14 @@ class HMWP_Models_Files {
 			'mpeg',
 			'zip',
 			'rar',
-			'map',
-			'txt'
+			'map'
 		);
 
 		// The safe extensions for static files
-		$this->_safe_files = array(
-			'jpgh',
-			'jpegh',
-			'pngh',
-			'bmph',
-			'gifh',
-			'jp2h',
-			'webah',
-			'webph',
-			'webmh',
-			'cssh',
-			'scssh',
-			'jsh',
-			'woffh',
-			'woff2h',
-			'ttfh',
-			'otfh',
-			'pfbh',
-			'pfmh',
-			'tfilh',
-			'eoth',
-			'svgh',
-			'pdfh',
-			'doch',
-			'docxh',
-			'csvh',
-			'xlsh',
-			'xslxh',
-			'mp2h',
-			'mp3h',
-			'mp4h',
-			'mpegh',
-			'ziph',
-			'rarh',
-			'maph',
-			'rtxt'
-		);
+		//the safe extensions for static files
+		$this->_safe_files = array_map(function($file) {
+			return $file . 'h';
+		}, $this->_files);
 
 		// Init the replacement array
 		$this->_replace = array( 'from' => [], 'to' => [] );
@@ -154,7 +120,8 @@ class HMWP_Models_Files {
 		// Remove queries from URL
 		$url_no_query = ( ( strpos( $url, '?' ) !== false ) ? substr( $url, 0, strpos( $url, '?' ) ) : $url );
 
-		if ( strpos( trailingslashit( $url_no_query ), '/' . HMWP_Classes_Tools::getOption( 'hmwp_login_url' ) . '/' ) || strpos( trailingslashit( $url_no_query ), '/' . HMWP_Classes_Tools::getDefault( 'hmwp_login_url' ) . '/' ) ) {
+		if ( strpos( trailingslashit( $url_no_query ), '/' . HMWP_Classes_Tools::getOption( 'hmwp_login_url' ) . '/' ) ||
+		     strpos( trailingslashit( $url_no_query ), '/' . HMWP_Classes_Tools::getDefault( 'hmwp_login_url' ) . '/' ) ) {
 
 			add_filter( 'hmwp_option_hmwp_remove_third_hooks', '__return_true' );
 
@@ -203,7 +170,13 @@ class HMWP_Models_Files {
 			// build the URL in the address bar
 			$url = is_ssl() ? 'https://' : 'http://';
 			$url .= $_SERVER['HTTP_HOST'];
-			$url .= rawurldecode( $_SERVER['REQUEST_URI'] );
+			if ( HMWP_Classes_Tools::getOption( 'hmwp_mapping_text_show' ) &&
+			     HMWP_Classes_Tools::getOption( 'hmwp_mapping_file' ) &&
+			     HMWP_Classes_Tools::getValue( 'hmwp_url' ) ) {
+				$url .= HMWP_Classes_Tools::getValue( 'hmwp_url' );
+			} elseif ( isset( $_SERVER['REQUEST_URI'] ) ) {
+				$url .= rawurldecode( $_SERVER['REQUEST_URI'] );
+			}
 		}
 
 		return $url;
@@ -303,7 +276,7 @@ class HMWP_Models_Files {
 		}
 
 		// Return the constructed URL
-		return $new_url;
+		return sanitize_url( $new_url );
 
 	}
 
@@ -331,6 +304,70 @@ class HMWP_Models_Files {
 		}
 
 		return $new_path;
+	}
+
+	/**
+	 * Return the file mime based on extension
+	 *
+	 * @param $ext
+	 *
+	 * @return false|string
+	 */
+	private function getMime( $ext ) {
+
+		switch ( $ext ) {
+			case "scss":
+			case "csv":
+			case "css":
+				return "text/css";
+			case "js":
+			case "mjs":
+				return "text/javascript";
+			case "svg":
+				return "image/svg+xml";
+			case "jpg":
+				return "image/jpeg";
+			case "jpeg":
+			case "png":
+			case "bmp":
+			case "gif":
+			case "jp2":
+			case "tiff":
+			case "webp":
+			case "avif":
+				return "image/" . $ext;
+			case "ico":
+			case "icon":
+				return "image/vnd.microsoft.icon";
+			case "woff":
+			case "woff2":
+			case "ttf":
+			case "otf":
+				return "font/" . $ext;
+			case "eot":
+				return "application/vnd.ms-fontobject";
+			case "avi":
+				return "video/x-msvideo";
+			case "mp4":
+			case "mpeg":
+			case "webm":
+				return "video/" . $ext;
+			case "doc":
+				return "application/msword";
+			case "xls":
+				return "application/vnd.ms-excel";
+			case "json":
+				return "application/json";
+			case "docx":
+				return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+			case "xlsx":
+				return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+			case "xml":
+			case "zip":
+				return "application/" . $ext;
+		}
+
+		return false;
 	}
 
 	/**
@@ -362,7 +399,7 @@ class HMWP_Models_Files {
 		$new_url          = $this->getOriginalUrl( $url );
 		$new_url_no_query = ( ( strpos( $new_url, '?' ) !== false ) ? substr( $new_url, 0, strpos( $new_url, '?' ) ) : $new_url );
 		$new_path         = $this->getOriginalPath( $new_url );
-		$ctype            = false;
+		$mime            = false;
 
 		// Hook the original url/path when handles by WP
 		do_action( 'hmwp_files_show_file', $new_url, $new_path );
@@ -370,9 +407,9 @@ class HMWP_Models_Files {
 		if ( $ext = $this->isFile( $new_url ) ) {
 
 			// If the file exists on the server
-			if ( $wp_filesystem->exists( $new_path ) ) {
+			if ( $new_path && $wp_filesystem->exists( $new_path ) ) {
 
-				// If the plugin is not set to mapp all the files dynamically
+				// If the plugin is not set to map all the files dynamically
 				if ( ! HMW_DYNAMIC_FILES && ! HMWP_Classes_Tools::getOption( 'hmwp_mapping_file' ) ) {
 					// If file is loaded through WordPress rewrites and not through config file
 					if ( wp_parse_url( $url ) && $url <> $new_url && in_array( $ext, array( 'png', 'jpg', 'jpeg', 'webp', 'gif') ) ) {
@@ -391,40 +428,39 @@ class HMWP_Models_Files {
 					}
 
 				}
+
 				//////////////////////////////////////////////////////////////////////////
 
-				switch ( $ext ) {
-					case "scss":
-					case "css":
-						$ctype = "text/css";
-						break;
-					case "js":
-						$ctype = "application/javascript";
-						break;
-					case "svg":
-						$ctype = "image/svg+xml";
-						break;
-					default:
-						if ( function_exists( 'mime_content_type' ) ) {
-							$ctype = @mime_content_type( $new_path );
-						}
+				if ( ! $mime = $this->getMime( $ext ) ) {
+					if ( function_exists( 'mime_content_type' ) ) {
+						$mime = @mime_content_type( $new_path );
+					} else {
+						$mime = 'text/plain';
+					}
 				}
+
+				//////////////////////////////////////////////////////////////////////////
 
 				ob_clean(); //clear the buffer
 				$content = $wp_filesystem->get_contents( $new_path );
 				$etag    = md5_file( $new_path );
 
+				if ( function_exists( 'http_response_code' ) ) {
+					http_response_code( 200 );
+				}
+
 				header( "HTTP/1.1 200 OK" );
 				header( "Cache-Control: max-age=2592000, must-revalidate" );
 				header( "Expires: " . gmdate( 'r', strtotime( "+1 month" ) ) );
-				header( 'Vary: Accept-Encoding' );
+				header( "Vary: Accept-Encoding" );
 				header( "Pragma: public" );
 				header( "Etag: \"{$etag}\"" );
 
-				if ( $ctype ) {
-					header( 'Content-Type: ' . $ctype . '; charset: UTF-8' );
+				if ( $mime ) {
+					header( 'Content-Type: ' . $mime . '; charset: UTF-8' );
 				}
 
+				//////////////////////////////////////////////////////////////////////////
 				// Change the .cssh and .jsh to .css and .js in files
 				if ( HMW_DYNAMIC_FILES ) {
 					if ( strpos( $new_url, '.js' ) ) {
@@ -444,23 +480,33 @@ class HMWP_Models_Files {
 					}
 				}
 
+				//////////////////////////////////////////////////////////////////////////
 				// If CSS, JS or SCSS
 				if ( strpos( $new_url, '.js' ) || strpos( $new_url, '.css' ) || strpos( $new_url, '.scss' ) ) {
 
-					//URL Mapping for all css and js files
+					// URL Mapping for all css and js files
 					$content = HMWP_Classes_ObjController::getClass( 'HMWP_Models_Rewrite' )->find_replace_url( $content );
-					//Text Mapping for all css and js files
+					// Text Mapping for all css and js files
 					$content = HMWP_Classes_ObjController::getClass( 'HMWP_Models_Rewrite' )->replaceTextMapping( $content, true );
+
+					if ( function_exists( 'brotli_compress' ) ) {
+						// Brotli the CSS, JS
+						header( "Content-Encoding: br" );
+						$content = brotli_compress($content, 1);
+					} elseif ( function_exists( 'gzcompress' ) ) {
+						// deflate the  CSS, JS
+						header( "Content-Encoding: deflate" );
+						$content = gzcompress( $content );
+					} elseif ( function_exists( 'gzencode' ) ) {
+						// Gzip the  CSS, JS
+						header( "Content-Encoding: gzip" );
+						$content = gzencode( $content );
+					}
+
+					// Show the file html content
+					header( 'Content-Length: ' . strlen( $content ) );
 				}
 
-				// Gzip the CSS
-				if ( function_exists( 'gzencode' ) ) {
-					header( "Content-Encoding: gzip" ); //HTTP 1.1
-					$content = gzencode( $content );
-				}
-
-				// Show the file html content
-				header( 'Content-Length: ' . strlen( $content ) );
 				echo $content;
 				exit();
 			}
@@ -512,9 +558,7 @@ class HMWP_Models_Files {
 
 			} elseif (  HMWP_Classes_Tools::isMultisites() && stripos( trailingslashit( $url_no_query ), '/' . HMWP_Classes_Tools::getOption( 'hmwp_activate_url' ) . '/' ) !== false ) {
 
-				$new_path = realpath( $new_path );
-
-				if ( strpos( $new_path, 'wp-activate.php' ) && $wp_filesystem->exists( $new_path ) ) {
+				if ( $new_path && strpos( $new_path, 'wp-activate.php' ) && $wp_filesystem->exists( $new_path ) ) {
 					header( "HTTP/1.1 200 OK" );
 
 					ob_start();

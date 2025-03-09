@@ -469,49 +469,11 @@ class HMWP_Models_Rewrite {
 		//Initialize WordPress Filesystem
 		$wp_filesystem = HMWP_Classes_ObjController::initFilesystem();
 
-		if ( HMWP_Classes_Tools::getOption( 'hmwp_hide_all_themes' ) ) {
-			// Get the all network themes
-			$all_themes = HMWP_Classes_Tools::getAllThemes();
-		} else {
-
-			// Get only the active theme
-			$theme = wp_get_theme();
-
-			if ( $theme->exists() && $theme->get_stylesheet() <> '' ) {
-				$all_themes[ $theme->get_stylesheet() ] = array(
-					'name'       => $theme->get( 'Name' ),
-					'theme_root' => $theme->get_theme_root()
-				);
-
-				// If it's a child theme, include also the parent
-				if( strpos( $theme->get_stylesheet(), '-child' ) !== false ) {
-					$all_themes[ str_replace( '-child', '', $theme->get_stylesheet() ) ] = array(
-						'name'       => $theme->get( 'Name' ),
-						'theme_root' => $theme->get_theme_root()
-					);
-				}
-			}
-		}
+		$all_themes = HMWP_Classes_Tools::getAllThemes();
 
 		foreach ( $all_themes as $theme => $value ) {
 
 			if ( $wp_filesystem->is_dir( $value['theme_root'] ) ) {
-
-				//If it's set to use custom themes names mapping
-				if ( HMWP_Classes_Tools::getOption( 'hmwp_hide_themes_advanced' ) ) {
-					//Check if the theme is customized
-					$themes = (array) HMWP_Classes_Tools::getOption( 'hmw_themes_mapping' );
-					if ( in_array( $theme, array_keys( $themes ), true ) ) {
-						if ( $theme <> $themes[ $theme ] ) {
-							//change with the custom theme names
-							$dbthemes['to'][]   = $themes[ $theme ];
-							$dbthemes['from'][] = str_replace( ' ', '+', $theme ) . '/';
-						}
-						//go to the next plugin
-						continue;
-					}
-				}
-
 				$dbthemes['to'][]   = substr( md5( $theme ), 0, 10 );
 				$dbthemes['from'][] = str_replace( ' ', '+', $theme ) . '/';
 			}
@@ -817,7 +779,7 @@ class HMWP_Models_Rewrite {
 					$rewritecode .= "RewriteCond %{REQUEST_URI} ^" . $home_root . HMWP_Classes_Tools::getOption( 'hmwp_wp-content_url' ) . "/[^\.]+\.[^\.]+ [NC,OR]" . PHP_EOL;
 					$rewritecode .= "RewriteCond %{REQUEST_URI} ^" . $home_root . HMWP_Classes_Tools::getOption( 'hmwp_wp-includes_url' ) . "/[^\.]+\.[^\.]+ [NC,OR]" . PHP_EOL;
 					$rewritecode .= "RewriteCond %{REQUEST_URI} ^" . $home_root . HMWP_Classes_Tools::getOption( 'hmwp_upload_url' ) . "/[^\.]+\.[^\.]+ [NC]" . PHP_EOL;
-					$rewritecode .= "RewriteRule ^([_0-9a-zA-Z-]+/)?(.*)\.(js|css|scss)$ " . $home_root . "$1$2.$3h" . " [QSA,L]" . PHP_EOL;
+					$rewritecode .= "RewriteRule ^([_0-9a-zA-Z-]+/)?(.*)\.(js|css|scss)$ index.php?hmwp_url=" . $home_root . "$1$2.$3" . " [QSA,L]" . PHP_EOL;
 					$rewritecode .= "</IfModule>" . PHP_EOL;
 				}
 
@@ -932,7 +894,7 @@ class HMWP_Models_Rewrite {
 					$rewritecode .= "RewriteCond %{REQUEST_URI} ^" . $home_root . HMWP_Classes_Tools::getOption( 'hmwp_wp-content_url' ) . "/[^\.]+\.[^\.]+ [NC,OR]" . PHP_EOL;
 					$rewritecode .= "RewriteCond %{REQUEST_URI} ^" . $home_root . HMWP_Classes_Tools::getOption( 'hmwp_wp-includes_url' ) . "/[^\.]+\.[^\.]+ [NC,OR]" . PHP_EOL;
 					$rewritecode .= "RewriteCond %{REQUEST_URI} ^" . $home_root . HMWP_Classes_Tools::getOption( 'hmwp_upload_url' ) . "/[^\.]+\.[^\.]+ [NC]" . PHP_EOL;
-					$rewritecode .= "RewriteRule ^([_0-9a-zA-Z-]+/)?(.*)\.(js|css|scss)$ " . $home_root . "$1$2.$3h" . " [QSA,L]" . PHP_EOL;
+					$rewritecode .= "RewriteRule ^([_0-9a-zA-Z-]+/)?(.*)\.(js|css|scss)$ index.php?hmwp_url=" . $home_root . "$1$2.$3" . " [QSA,L]" . PHP_EOL;
 					$rewritecode .= "</IfModule>" . PHP_EOL;
 				}
 
@@ -1008,7 +970,7 @@ class HMWP_Models_Rewrite {
 					$cachecode .= 'if ($request_uri ~* ^' . $home_root . HMWP_Classes_Tools::getOption( 'hmwp_wp-content_url' ) . '/[^\.]+\.[^\.]+) { set $cond "${cond}+redirect_uri"; }' . PHP_EOL;
 					$cachecode .= 'if ($request_uri ~* ^' . $home_root . HMWP_Classes_Tools::getOption( 'hmwp_wp-includes_url' ) . '/[^\.]+\.[^\.]+) { set $cond "${cond}+redirect_uri"; }' . PHP_EOL;
 					$cachecode .= 'if ($request_uri ~* ^' . $home_root . HMWP_Classes_Tools::getOption( 'hmwp_upload_url' ) . '/[^\.]+\.[^\.]+) { set $cond "${cond}+redirect_uri"; }' . PHP_EOL;
-					$cachecode .= 'if ($cond = "cookie+redirect_uri") {  rewrite ^/([_0-9a-zA-Z-]+/)?(.*)\.(js|css|scss)$ /$1$2.$3h last; } ' . PHP_EOL . PHP_EOL;
+					$cachecode .= 'if ($cond = "cookie+redirect_uri") {  rewrite ^/([_0-9a-zA-Z-]+/)?(.*)\.(js|css|scss)$ index.php?hmwp_url=/$1$2.$3 last; } ' . PHP_EOL . PHP_EOL;
 				}
 
 				if ( HMWP_Classes_Tools::getOption( 'hmwp_file_cache' ) ) {
@@ -1549,6 +1511,7 @@ class HMWP_Models_Rewrite {
 
 			wp_register_script( 'password-strength-meter', _HMWP_WPLOGIN_URL_ . 'js/password-strength-meter.min.js', array(
 				'jquery',
+				'wp-i18n',
 				'zxcvbn-async'
 			), HMWP_VERSION_ID, true );
 			wp_register_script( 'user-profile', _HMWP_WPLOGIN_URL_ . 'js/user-profile.min.js', array(

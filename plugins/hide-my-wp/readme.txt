@@ -327,6 +327,13 @@ Enjoy!
 17. New custom core paths changed with Hide My WP Ghost
 
 == Changelog ==
+= 5.4.03 (07 Mar 2025) =
+* Update - Add the option to customize all active and inactive themes
+* Fix - File security when the rewrite rules are not loaded correctly
+* Fix - Prevent Brute Force from updating the warning text without space when switched off
+* Fix - Prevent PHP warning when IP address unknown in Brute Force IP check
+* Fix - Load i18n on login page for password-strength-meter messages when the Clean Login option is activated
+
 = 5.4.02 (04 Mar 2025) =
 * Update - Security update on wp-activate.php path call
 * Update - Translations in all languages for the last changes
