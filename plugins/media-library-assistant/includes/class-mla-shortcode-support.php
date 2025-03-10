@@ -19,12 +19,8 @@ if ( !class_exists( 'MLAData' ) ) {
 
 if ( !class_exists( 'MLATemplate_Support' ) ) {
 	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-template-support.php' );
-
-	if ( did_action('init') ) {
-		MLATemplate_Support::mla_localize_template_definitions();
-	}
+	MLATemplate_Support::mla_localize_template_definitions();
 }
-//error_log( __LINE__ . ' DEBUG: MLAShortcode_Support $_REQUEST = ' . var_export( $_REQUEST, true ), 0 );
 
 /**
  * Class MLA (Media Library Assistant) Shortcode Support provides the functions that

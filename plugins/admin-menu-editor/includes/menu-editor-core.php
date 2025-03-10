@@ -378,6 +378,9 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			'admin.php?page=elementor-connect' => true,
 			//Elementor Pro (based on user reports, not verified)
 			'elementor-pro-notes-proxy'        => true,
+			//Post SMTP 3.1.3
+			'index.php?page=post-about'        => true,
+			'index.php?page=post-credits'      => true,
 		);
 
 		//AJAXify hints and warnings

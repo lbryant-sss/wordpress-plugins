@@ -22,21 +22,36 @@
 		"wp": {
 			"global": "wp"
 		},
+		"@wordpress/data": {
+			"global": "wp.data"
+		},
 		"@wordpress/blocks": {
 			"global": "wp.blocks"
 		},
 		"tiny-slider": {
 			"global": "tns"
 		},
+		"dompurify": {
+			"global": "DOMPurify"
+		},
 		"udbLoginCustomizer": {
 			"global": "udbLoginCustomizer"
 		}
 	},
 	"devDependencies": {
-		"@types/jquery": "^3.5.31",
+		"@types/codemirror": "^5.60.15",
+		"@types/jquery": "^3.5.32",
+		"@types/jqueryui": "^1.12.23",
+		"@types/lodash": "^4.17.15",
 		"@types/select2": "^4.0.63",
-		"@types/wordpress__customize-browser": "^5.5.5",
-		"parcel": "^2.12.0"
+		"parcel": "^2.13.3",
+		"wordpress__customize-browser": "github:ultrafastcloud/wordpress__customize-browser"
+	},
+	"dependencies": {
+		"@wordpress/data": "^10.18.0",
+		"@wordpress/escape-html": "^3.18.0",
+		"dompurify": "^3.2.4",
+		"tiny-slider": "github:usefulteam/tiny-slider"
 	},
 	"scripts": {
 		"watch-login-customizer": "parcel watch ./modules/login-customizer/src/js/controls.ts ./modules/login-customizer/src/js/preview.ts --dist-dir ./modules/login-customizer/assets/js",
@@ -46,7 +61,9 @@
 		"watch-onboarding-wizard": "parcel watch ./modules/onboarding-wizard/src/onboarding-wizard.js --dist-dir ./modules/onboarding-wizard/assets/js",
 		"build-onboarding-wizard": "parcel build ./modules/onboarding-wizard/src/onboarding-wizard.js --dist-dir ./modules/onboarding-wizard/assets/js"
 	},
-	"dependencies": {
-		"tiny-slider": "github:usefulteam/tiny-slider"
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@swc/core"
+		]
 	}
 }

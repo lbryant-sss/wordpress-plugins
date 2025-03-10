@@ -30,7 +30,7 @@ class MLACore {
 	 *
 	 * @var	string
 	 */
-	const MLA_DEVELOPMENT_VERSION = '20250216';
+	const MLA_DEVELOPMENT_VERSION = '20250308';
 
 	/**
 	 * Slug for registering and enqueueing plugin style sheets (moved from class-mla-main.php)
@@ -2126,6 +2126,10 @@ add_action( 'init', 'MLAObjects::initialize', 0x7FFFFFFF );
 // MIME Type functions; some filters required in all modes.
 require_once( MLA_PLUGIN_PATH . 'includes/class-mla-mime-types.php' );
 add_action( 'init', 'MLAMime::initialize', 0x7FFFFFFF );
+
+// Intermediate image sizes functions; some filters required in all modes.
+//require_once( MLA_PLUGIN_PATH . 'includes/class-mla-image-sizes.php' );
+//add_action( 'init', 'MLAImage_Size::initialize', 0x7FFFFFFF );
 
 // Admin Columns plugin support
 add_filter( 'cac/storage_models', 'MLACore::admin_columns_support_deprecated', 10, 2 );
