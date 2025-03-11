@@ -80,9 +80,26 @@ class Frontend extends Jupiterx_Popup_Template_Base {
 	 * @SuppressWarnings(PHPMD.NPathComplexity)
 	 */
 	public function get_content() {
-		$data             = $this->data;
+		$data = $this->data;
+
+		$translated_id = apply_filters( 'wpml_object_id', $data['id'], 'post', true );
+
+		$popup_language_code = apply_filters(
+			'wpml_element_language_code',
+			null,
+			[
+				'element_id' => $translated_id,
+				'element_type' => 'jupiterx-popups',
+			]
+		);
+
+		$current_lang = apply_filters( 'wpml_current_language', null );
+		if ( $popup_language_code !== $current_lang ) {
+			return;
+		}
+
 		$classes          = $this->get_classes();
-		$data['uniqe_id'] = 'jupiterx-popups-' . $data['id'];
+		$data['uniqe_id'] = 'jupiterx-popups-' . $translated_id;
 
 		$meta_settings       = get_post_meta( $data['id'], '_elementor_page_settings', true );
 		$popup_settings_main = wp_parse_args( $meta_settings, $this->popup_default_settings );
@@ -180,7 +197,7 @@ class Frontend extends Jupiterx_Popup_Template_Base {
 
 								if ( ! filter_var( $popup_settings_main['use_ajax'], FILTER_VALIDATE_BOOLEAN ) ) {
 									$plugin  = \Elementor\Plugin::instance();
-									$content = $plugin->frontend->get_builder_content_for_display( $data['id'], false );
+									$content = $plugin->frontend->get_builder_content_for_display( $translated_id, false );
 
 									echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 								}

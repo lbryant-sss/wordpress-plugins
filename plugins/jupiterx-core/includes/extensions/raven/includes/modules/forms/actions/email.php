@@ -17,6 +17,8 @@ defined( 'ABSPATH' ) || die();
  *
  * Initializing the email action by extending action base.
  *
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ *
  * @since 1.0.0
  */
 class Email extends Action_Base {
@@ -290,7 +292,7 @@ class Email extends Action_Base {
 
 		// Body.
 		foreach ( $form_settings['fields'] as $field ) {
-			if ( 'html' === $field['type'] || 'password' === $field['type'] ) {
+			if ( ! isset( $field['type'] ) || in_array( $field['type'], [ 'html', 'password', 'recaptcha', 'recaptcha_v3' ], true ) ) {
 				continue;
 			}
 
@@ -299,6 +301,16 @@ class Email extends Action_Base {
 
 			if ( 'textarea' === $field['type'] && 'html' === $content_type ) {
 				$content = str_replace( [ "\r\n", "\n", "\r" ], '<br>', $content );
+			}
+
+			if ( 'acceptance' === $field['type'] ) {
+				$newsletter_key = isset( $ajax_handler->record['fields']['register_acceptance'] ) ? 'register_acceptance' : $field['_id'];
+				$newsletter     = $ajax_handler->record['fields'][ $newsletter_key ];
+				$content        = 'on' === $newsletter ? __( 'Yes', 'jupiterx-core' ) : __( 'No', 'jupiterx-core' );
+			}
+
+			if ( 'newsletter' === $field['map_to'] && 'acceptance' === $field['type'] ) {
+				$title = empty( $title ) ? __( 'Newsletter', 'jupiterx-core' ) : $title;
 			}
 
 			$body .= $title . ': ' . $content . $line_break;

@@ -1421,7 +1421,7 @@ class Slider extends Base_Widget {
 		$show_arrows = in_array( $settings['navigation'], [ 'arrows', 'both' ], true );
 
 		$slides_count = count( $settings['slides'] );
-		$swiper_class = Elementor::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$swiper_class = 'swiper';
 		?>
 		<div class="elementor-swiper">
 			<div class="raven-slider-wrapper elementor-main-swiper <?php echo esc_attr( $swiper_class ); ?>" dir="<?php Utils::print_unescaped_internal_string( $direction ); ?>" data-animation="<?php echo esc_attr( $settings['content_animation'] ); ?>">
@@ -1460,8 +1460,6 @@ class Slider extends Base_Widget {
 	protected function content_template() {
 		?>
 		<#
-			const isSwiperLast = elementorFrontend.config.experimentalFeatures?.e_swiper_latest ? 'swiper' : 'swiper-container';
-
 			var direction        = elementorFrontend.config.is_rtl ? 'rtl' : 'ltr',
 				next             = elementorFrontend.config.is_rtl ? 'left' : 'right',
 				prev             = elementorFrontend.config.is_rtl ? 'right' : 'left',
@@ -1471,7 +1469,7 @@ class Slider extends Base_Widget {
 				buttonSize       = settings.button_size;
 		#>
 		<div class="elementor-swiper">
-			<div class="raven-slider-wrapper elementor-main-swiper {{ isSwiperLast }}" dir="{{ direction }}" data-animation="{{ settings.content_animation }}">
+			<div class="raven-slider-wrapper elementor-main-swiper swiper" dir="{{ direction }}" data-animation="{{ settings.content_animation }}">
 				<div class="swiper-wrapper raven-slider">
 					<# jQuery.each( settings.slides, function( index, slide ) { #>
 						<div class="elementor-repeater-item-{{ slide._id }} swiper-slide">

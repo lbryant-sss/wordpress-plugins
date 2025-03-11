@@ -5,6 +5,7 @@
 use Kubio\CLI\CLI;
 use Kubio\Core\Activation;
 use Kubio\Core\Deactivation;
+use Kubio\Core\KubioFrontPageRevertNotice;
 
 use Kubio\DemoSites\DemoSites;
 use Kubio\GoogleFontsLocalLoader;
@@ -90,3 +91,4 @@ GoogleFontsLocalLoader::registerFontResolver();
 Migrations::load();
 CLI::load();
 GutenbergControls::load();
+KubioFrontPageRevertNotice::load();

@@ -102,6 +102,10 @@ class Bulk_Actions implements Runner {
 			}
 		}
 
+		if ( Helper::has_cap( 'onpage_general' ) && Helper::should_add_keyword_intent() ) {
+			$new_actions['rank_math_bulk_detect_keyword_intent'] = __( 'Detect Keyword Intent', 'rank-math' );
+		}
+
 		if ( is_array( $actions ) && count( $new_actions ) > 1 ) {
 			return array_merge( $actions, $new_actions );
 		}

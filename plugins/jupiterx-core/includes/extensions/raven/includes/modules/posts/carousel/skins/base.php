@@ -1186,7 +1186,7 @@ abstract class Base extends Skin_Base {
 		];
 
 		$slides_view = $this->get_instance_value( 'slides_view' );
-		$swiper_class = Elementor::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$swiper_class = 'swiper';
 		?>
 		<div class="raven-posts-carousel raven-swiper-slider">
 			<div class="raven-posts-carousel-swiper-container <?php echo esc_attr( $swiper_class ); ?>">

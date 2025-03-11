@@ -3102,7 +3102,7 @@ class Products_Carousel extends Base_Widget {
 			'/<\/li>/', // End product data.
 		];
 
-		$swiper_class = Elementor::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$swiper_class = 'swiper';
 
 		$replacements = [
 			'<div class="woocommerce raven-products-carousel-swiper-container ' . $swiper_class . ' ', //Carousel wrapper.

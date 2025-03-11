@@ -322,13 +322,20 @@ class Slack extends Action_Base {
 				}
 
 				$field_value = $ajax_handler->record['fields'][ $field['_id'] ];
+				$label       = isset( $field['label'] ) ? $field['label'] : '';
 
 				if ( 'acceptance' === $field['type'] ) {
-					$field_value = empty( $field_value ) ? __( 'No', 'jupiterx-core' ) : __( 'Yes', 'jupiterx-core' );
+					$newsletter_key = isset( $ajax_handler->record['fields']['register_acceptance'] ) ? 'register_acceptance' : $field['_id'];
+					$newsletter     = $ajax_handler->record['fields'][ $newsletter_key ];
+					$field_value    = 'on' === $newsletter ? __( 'Yes', 'jupiterx-core' ) : __( 'No', 'jupiterx-core' );
+				}
+
+				if ( 'newsletter' === $field['map_to'] && 'acceptance' === $field['type'] ) {
+					$label = empty( $label ) ? __( 'Newsletter', 'jupiterx-core' ) : $label;
 				}
 
 				$fields[] = [
-					'title' => $field['label'] ? $field['label'] : '',
+					'title' => $label,
 					'value' => $field_value,
 					'short' => false,
 				];

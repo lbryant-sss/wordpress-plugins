@@ -1654,24 +1654,24 @@ class HMWP_Classes_Tools {
 			}
 
 			// Retrieve all plugin file paths from WordPress
-			$all_plugins = array_keys( get_plugins() );
+			$plugins = array_keys( get_plugins() );
 		} else {
 			// Retrieve only the active plugins from WordPress options
-			$all_plugins = (array) get_option( 'active_plugins', array() );
+			$plugins = (array) get_option( 'active_plugins', array() );
 		}
 
 		// Check if WordPress is running as a multisite
 		if ( self::isMultisites() ) {
 			// Merge active plugins with any sitewide active plugins
-			$all_plugins = array_merge( array_values( $all_plugins ), array_keys( get_site_option( 'active_sitewide_plugins' ) ) );
+			$plugins = array_merge( array_values( $plugins ), array_keys( get_site_option( 'active_sitewide_plugins' ) ) );
 		}
 
 		// Remove duplicate entries from the plugins array
-		if ( ! empty( $all_plugins ) ) {
-			$all_plugins = array_unique( $all_plugins );
+		if ( ! empty( $plugins ) ) {
+			$plugins = array_unique( $plugins );
 		}
 
-		return $all_plugins;
+		return $plugins;
 	}
 
 	/**
@@ -1683,27 +1683,35 @@ class HMWP_Classes_Tools {
 
 		if ( HMWP_Classes_Tools::getOption( 'hmwp_hide_all_themes' ) ) {
 			// Get the all network themes
-			$all_themes = search_theme_directories();
+			$themes = search_theme_directories();
 		} else {
 
 			// Get only the active theme
 			$theme = wp_get_theme();
 
 			if ( $theme->exists() && $theme->get_stylesheet() <> '' ) {
-				$all_themes[ $theme->get_stylesheet() ] = array(
+				$themes[ $theme->get_stylesheet() ] = array(
 					'theme_root' => $theme->get_theme_root()
 				);
 
-				// If it's a child theme, include also the parent
-				if( strpos( $theme->get_stylesheet(), '-child' ) !== false ) {
-					$all_themes[ str_replace( '-child', '', $theme->get_stylesheet() ) ] = array(
-						'theme_root' => $theme->get_theme_root()
-					);
+				// If it's a child theme, search and include also the parent
+				if( stripos( $theme->get_stylesheet(), '-child' ) !== false ) {
+					$parent_theme = str_ireplace( '-child', '', $theme->get_stylesheet() );
+					$all_themes = search_theme_directories();
+
+					if (!empty($all_themes)){
+						foreach ( $all_themes as $theme => $value ) {
+							if( stripos( $theme, $parent_theme ) !== false ) {
+								$themes[ $theme ] = $value;
+							}
+						}
+					}
+
 				}
 			}
 		}
 
-		return $all_themes;
+		return $themes;
 	}
 
 	/**
@@ -1961,10 +1969,10 @@ class HMWP_Classes_Tools {
 		try {
 			//Check if tere are plugins added to website
 			if ( HMWP_Classes_Tools::getOption( 'hmwp_hide_plugins' ) ) {
-				$all_plugins = HMWP_Classes_Tools::getAllPlugins();
+				$plugins = HMWP_Classes_Tools::getAllPlugins();
 				$dbplugins   = HMWP_Classes_Tools::getOption( 'hmwp_plugins' );
-				foreach ( $all_plugins as $plugin ) {
-					if ( function_exists( 'is_plugin_active' ) && is_plugin_active( $plugin ) && isset( $dbplugins['from'] ) && ! empty( $dbplugins['from'] ) ) {
+				foreach ( $plugins as $plugin ) {
+					if ( ! empty( $dbplugins['from'] ) ) {
 						if ( ! in_array( plugin_dir_path( $plugin ), $dbplugins['from'] ) ) {
 							HMWP_Classes_Tools::saveOptions( 'changes', true );
 						}
@@ -1974,14 +1982,10 @@ class HMWP_Classes_Tools {
 
 			//Check if there are themes added to website
 			if ( HMWP_Classes_Tools::getOption( 'hmwp_hide_themes' ) ) {
-
-				//Initialize WordPress Filesystem
-				$wp_filesystem = HMWP_Classes_ObjController::initFilesystem();
-
-				$all_themes = HMWP_Classes_Tools::getAllThemes();
+				$themes = HMWP_Classes_Tools::getAllThemes();
 				$dbthemes   = HMWP_Classes_Tools::getOption( 'hmwp_themes' );
-				foreach ( $all_themes as $theme => $value ) {
-					if ( $wp_filesystem->is_dir( $value['theme_root'] ) && isset( $dbthemes['from'] ) && ! empty( $dbthemes['from'] ) ) {
+				foreach ( $themes as $theme => $value ) {
+					if ( ! empty( $dbthemes['from'] ) ) {
 						if ( ! in_array( $theme . '/', $dbthemes['from'] ) ) {
 							HMWP_Classes_Tools::saveOptions( 'changes', true );
 						}

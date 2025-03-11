@@ -1,4 +1,4 @@
-/*! elementor - v3.28.0 - 03-03-2025 */
+/*! elementor - v3.28.0 - 10-03-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -8712,12 +8712,12 @@ var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/run
 var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "../node_modules/@babel/runtime/helpers/inherits.js"));
 function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2.default)(o), (0, _possibleConstructorReturn2.default)(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2.default)(t).constructor) : o.apply(t, e)); }
 function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-var Drop = exports.Drop = /*#__PURE__*/function (_$e$modules$CommandBa) {
+var Drop = exports.Drop = /*#__PURE__*/function (_$e$modules$editor$Co) {
   function Drop() {
     (0, _classCallCheck2.default)(this, Drop);
     return _callSuper(this, Drop, arguments);
   }
-  (0, _inherits2.default)(Drop, _$e$modules$CommandBa);
+  (0, _inherits2.default)(Drop, _$e$modules$editor$Co);
   return (0, _createClass2.default)(Drop, [{
     key: "validateArgs",
     value: function validateArgs() {
@@ -8743,7 +8743,7 @@ var Drop = exports.Drop = /*#__PURE__*/function (_$e$modules$CommandBa) {
       return result;
     }
   }]);
-}($e.modules.CommandBase);
+}($e.modules.editor.CommandContainerBase);
 
 /***/ }),
 

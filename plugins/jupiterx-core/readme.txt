@@ -3,7 +3,7 @@ Contributors: artbees
 Tags: jupiter, jupiterx
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 4.8.9
+Stable tag: 4.8.10
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,6 +29,14 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+= 4.8.10 =
+* Compatible JupiterX with Elementor 3.28.0.
+* Compatible JupiterX Popup with WPML.
+* Improve Form and Email Actions.
+* Fixed issue of Product carousel.
+* Fixed displaying Arrow on Media gallery lightbox.
+* Fixed strips the forward slash on Advanced Menu.
+
 = 4.8.9 =
 * Added new settings ( `Post Meta` label ) for Advanced Posts widget.
 * Added new option to open a new tab to the link of socials.

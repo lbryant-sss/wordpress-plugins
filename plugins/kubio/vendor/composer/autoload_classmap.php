@@ -66,6 +66,7 @@ return array(
     'Kubio\\Core\\GlobalElements\\LinkWrapper' => $baseDir . '/lib/src/Core/GlobalElements/LinkWrapper.php',
     'Kubio\\Core\\Importer' => $baseDir . '/lib/src/Core/Importer.php',
     'Kubio\\Core\\InnerBlocks' => $baseDir . '/lib/src/Core/InnerBlocks.php',
+    'Kubio\\Core\\KubioFrontPageRevertNotice' => $baseDir . '/lib/src/Core/KubioFrontPageRevertNotice.php',
     'Kubio\\Core\\Layout\\LayoutHelper' => $baseDir . '/lib/src/Core/Layout/LayoutHelper.php',
     'Kubio\\Core\\License\\ActivationForm' => $baseDir . '/lib/pro/src/Core/License/ActivationForm.php',
     'Kubio\\Core\\License\\CheckForm' => $baseDir . '/lib/pro/src/Core/License/CheckForm.php',

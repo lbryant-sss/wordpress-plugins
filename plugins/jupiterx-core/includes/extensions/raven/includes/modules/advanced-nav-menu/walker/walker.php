@@ -228,7 +228,7 @@ class Walker {
 		// Unhash the URL, and get the hash value from "Hash" control if exists.
 		$url_parts = explode( '#', $item_data['link']['url'], 2 );
 		$url       = [
-			'unhashed_url' => ! empty( $url_parts[0] ) ? untrailingslashit( $url_parts[0] ) : '',
+			'unhashed_url' => ! empty( $url_parts[0] ) ? trailingslashit( $url_parts[0] ) : '',
 			'hash'         => ! empty( $url_parts[1] ) ? '#' . $url_parts[1] : '',
 		];
 

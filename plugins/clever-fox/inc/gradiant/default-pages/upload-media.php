@@ -18,6 +18,12 @@ if( 'Comoxa' == $theme->name){
 }elseif('GradiantX' == $theme->name){
 	$file = CLEVERFOX_PLUGIN_URL .'inc/gradiantx/images/logo.png';
 	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/gradiantx/images';	
+}elseif('ColorFlow' == $theme->name){
+	$file = CLEVERFOX_PLUGIN_URL .'inc/colorflow/images/logo.png';
+	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/colorflow/images';	
+}elseif('Shadiant' == $theme->name){
+	$file = CLEVERFOX_PLUGIN_URL .'inc/shadiant/images/logo.png';
+	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/shadiant/images';	
 }else{
 	$file = CLEVERFOX_PLUGIN_URL .'inc/gradiant/images/logo.png';
 	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/gradiant/images';

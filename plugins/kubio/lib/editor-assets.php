@@ -5,6 +5,7 @@ use Kubio\AssetsDependencyInjector;
 use Kubio\Core\Utils;
 use Kubio\DemoSites\DemoSitesRepository;
 use Kubio\Flags;
+use Kubio\Core\KubioFrontPageRevertNotice;
 
 function kubio_override_script( $scripts, $handle, $src, $deps = array(), $ver = false, $in_footer = false ) {
 	$script = $scripts->query( $handle, 'registered' );
@@ -396,10 +397,13 @@ add_action(
 							admin_url( 'admin.php' )
 						),
 						'adminLanguage'                  => get_user_locale(),
-						'autoStartBlackWizardOnboarding' => get_option( '_kubio_auto_start_black_wizard_onboarding', false ),
+						'autoStartBlackWizardOnboarding' =>  Flags::get( 'auto_start_black_wizard_onboarding', false ),
 						'importDesignIndex'              => Flags::get( 'import_design_index', null ),
 						'importDesignAiStructure'        => Flags::get( 'import_design_ai_structure', null ),
 						'aiWizardDescriptionOptional'    => Flags::getSetting( 'aiWizardDescriptionOptional', false ),
+						'showFrontPageRevertNotice'		 => KubioFrontPageRevertNotice::getShowNoticeInEditor(),
+						'frontPageRevertBackupData'		 => KubioFrontPageRevertNotice::getInstance()->getFrontPageBackupData(),
+						'frontPageRevertNoticeNonce' 	 =>  wp_create_nonce(KubioFrontPageRevertNotice::$nonceKey),
 						'allow3rdPartyBlogOverride'      => apply_filters( 'kubio/allow_3rd_party_blog_override', true ),
 						'multilanguage'                  => array(
 							'hasTranslator'    => $is_wpml_active || $is_polylang_active,

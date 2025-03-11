@@ -14,6 +14,8 @@ class Activation {
 
 
 	public function __construct() {
+
+
 		add_action(
 			'activated_plugin',
 			function ( $plugin ) {
@@ -119,13 +121,29 @@ class Activation {
 		return Flags::get( 'start_with_ai', false ) !== false;
 	}
 
+	public function activatedFromCustomizerOnboardingWizard() {
+		return Flags::get( 'auto_start_black_wizard_onboarding', false );
+	}
+
+	public function startWithBlackWizardOnboarding() {
+		//return false;
+		$onboarding_is_supported = kubio_is_black_wizard_onboarding_enabled() && Flags::get( 'import_design_ai_structure', false );
+		if(!$onboarding_is_supported) {
+			return false;
+		}
+
+		$activated_from_notice = 	$this->activeWithFrontpage() &&  Flags::get( 'start_source', false ) == 'notice-homepage';
+		$activated_from_theme_customizer =  $this->activatedFromCustomizerOnboardingWizard();
+		return $activated_from_notice || $activated_from_theme_customizer;
+	}
+
 	public function activeWithFrontpage() {
 
 		if ( $this->startWithAI() ) {
 			return true;
 		}
-
-		return apply_filters( 'kubio/activation/activate_with_frontpage', Flags::get( 'import_design', false ) !== false );
+		$import_design = Flags::get( 'import_design', false );
+		return apply_filters( 'kubio/activation/activate_with_frontpage',  $import_design !== false );
 	}
 
 	public function importUnmodifiedTemplates() {
@@ -194,12 +212,21 @@ class Activation {
 		}
 
 		wp_cache_flush();
+
+
+		//store current data to restore if user wants it
+		KubioFrontPageRevertNotice::getInstance()->backupUserData();
+
+
 		$this->importDesign();
 		$this->importTemplates();
 		$this->importTemplateParts();
+
 		wp_cache_flush();
 		do_action( 'kubio/after_activation' );
-
+		//we wait for the template parts to import so we can backup them
+		KubioFrontPageRevertNotice::getInstance()->backupTemplateParts();
+		KubioFrontPageRevertNotice::getInstance()->backupGlobalData();
 		if ( ! $this->isCLI() ) {
 
 			// make an educated guess about the start source if not set
@@ -212,6 +239,7 @@ class Activation {
 				}
 				Flags::set( 'start_source', $start_source );
 			}
+
 
 			if ( $this->startWithAI() ) {
 				Flags::set( 'start_with_ai', false );
@@ -226,26 +254,28 @@ class Activation {
 				);
 				exit();
 			}
+			if( $this->startWithBlackWizardOnboarding()) {
+					$black_wizard_onboarding_hash = md5( uniqid( 'black-wizard-onboarding' ) );
+					Flags::set( 'black_wizard_onboarding_hash', $black_wizard_onboarding_hash );
+					$url = Utils::kubioGetEditorURL(
+						array(
+							'black-wizard-onboarding' => $black_wizard_onboarding_hash,
+						)
+					);
+					wp_redirect( $url );
+					exit();
+			}
 
 			if ( $this->activeWithFrontpage() ) {
 				if ( Flags::get( 'start_source', false ) == 'notice-homepage' ) {
-					if ( kubio_is_black_wizard_onboarding_enabled() && Flags::get( 'import_design_ai_structure', false ) ) {
-						$black_wizard_onboarding_hash = md5( uniqid( 'black-wizard-onboarding' ) );
-						Flags::set( 'black_wizard_onboarding_hash', $black_wizard_onboarding_hash );
-						$url = Utils::kubioGetEditorURL(
-							array(
-								'black-wizard-onboarding' => $black_wizard_onboarding_hash,
-							)
-						);
-					} else {
-						$url = add_query_arg(
-							array(
-								'page'                    => 'kubio-get-started',
-								'kubio-designed-imported' => intval( ! ! Flags::get( 'import_design', false ) ),
-							),
-							admin_url( 'admin.php' )
-						);
-					}
+
+					$url = add_query_arg(
+						array(
+							'page'                    => 'kubio-get-started',
+							'kubio-designed-imported' => intval( ! ! Flags::get( 'import_design', false ) ),
+						),
+						admin_url( 'admin.php' )
+					);
 
 					wp_redirect( $url );
 
@@ -346,6 +376,7 @@ class Activation {
 			return;
 		}
 
+
 		$result = $this->setPages();
 
 		// try to set the blog page and menu
@@ -355,6 +386,7 @@ class Activation {
 			// only set menu location
 			static::preparePrimaryMenu( false );
 		}
+
 	}
 
 	private function setPages( $data = array() ) {
@@ -362,6 +394,7 @@ class Activation {
 		if ( ! kubio_theme_has_kubio_block_support() ) {
 			return new \WP_Error( 'not_supported_themes' );
 		}
+
 
 		$data = array_merge(
 			array(
@@ -427,18 +460,20 @@ class Activation {
 
 		$content = '';
 
-		if ( $this->activeWithFrontpage() ) {
+		if ( $this->activeWithFrontpage()) {
 			$content = Importer::getTemplateContent( 'page', 'front-page' );
 		}
 
 		if ( $query->have_posts() && ! apply_filters( 'kubio/activation/force_front_page_creation', false ) ) {
 			if ( apply_filters( 'kubio/activation/override_front_page_content', false ) ) {
+				KubioFrontPageRevertNotice::getInstance()->backupUserUsedStarterContentFrontpage($page_on_front);
 				wp_update_post(
 					array(
 						'ID'           => intval( $page_on_front ),
 						'post_content' => wp_slash( kubio_serialize_blocks( parse_blocks( $content ) ) ),
 					)
 				);
+				update_post_meta($page_on_front, '_wp_page_template', '');
 			}
 
 			return intval( $page_on_front );

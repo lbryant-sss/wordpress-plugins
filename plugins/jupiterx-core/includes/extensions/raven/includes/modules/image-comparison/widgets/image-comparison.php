@@ -1537,7 +1537,7 @@ class Image_Comparison extends Base_Widget {
 	public function render() {
 		$settings = $this->get_settings_for_display();
 
-		$swiper_class = Elementor::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$swiper_class = 'swiper';
 		?>
 		<div class="raven-image-comparison raven-swiper-slider">
 			<div class="raven-image-comparison-swiper-container <?php echo esc_attr( $swiper_class ); ?>">

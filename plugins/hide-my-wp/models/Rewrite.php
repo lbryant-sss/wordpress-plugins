@@ -450,9 +450,9 @@ class HMWP_Models_Rewrite {
 	public function hidePluginNames() {
 		$dbplugins = array();
 
-		$all_plugins = HMWP_Classes_Tools::getAllPlugins();
+		$plugins = HMWP_Classes_Tools::getAllPlugins();
 
-		foreach ( $all_plugins as $plugin ) {
+		foreach ( $plugins as $plugin ) {
 			$dbplugins['to'][]   = substr( md5( $plugin ), 0, 10 );
 			$dbplugins['from'][] = str_replace( ' ', '+', plugin_dir_path( $plugin ) );
 		}
@@ -469,9 +469,9 @@ class HMWP_Models_Rewrite {
 		//Initialize WordPress Filesystem
 		$wp_filesystem = HMWP_Classes_ObjController::initFilesystem();
 
-		$all_themes = HMWP_Classes_Tools::getAllThemes();
+		$themes = HMWP_Classes_Tools::getAllThemes();
 
-		foreach ( $all_themes as $theme => $value ) {
+		foreach ( $themes as $theme => $value ) {
 
 			if ( $wp_filesystem->is_dir( $value['theme_root'] ) ) {
 				$dbthemes['to'][]   = substr( md5( $theme ), 0, 10 );
@@ -772,7 +772,7 @@ class HMWP_Models_Rewrite {
 			//if there are no rewrites, return true
 			if ( ! empty( $this->_rewrites ) ) {
 
-				if ( HMWP_Classes_Tools::getOption( 'hmwp_mapping_text_show' ) && HMWP_Classes_Tools::getOption( 'hmwp_mapping_file' ) ) {
+				if ( HMW_DYNAMIC_FILES || ( HMWP_Classes_Tools::getOption( 'hmwp_mapping_text_show' ) && HMWP_Classes_Tools::getOption( 'hmwp_mapping_file' ) ) ) {
 					$rewritecode .= "<IfModule mod_rewrite.c>" . PHP_EOL;
 					$rewritecode .= "RewriteEngine On" . PHP_EOL;
 					$rewritecode .= "RewriteCond %{HTTP:Cookie} !(wordpress_logged_in_|" . HMWP_LOGGED_IN_COOKIE . ") [NC]" . PHP_EOL;
@@ -887,7 +887,7 @@ class HMWP_Models_Rewrite {
 			//if there are no rewrites, return true
 			if ( ! empty( $this->_rewrites ) ) {
 
-				if ( HMWP_Classes_Tools::getOption( 'hmwp_mapping_text_show' ) && HMWP_Classes_Tools::getOption( 'hmwp_mapping_file' ) ) {
+				if ( HMW_DYNAMIC_FILES || ( HMWP_Classes_Tools::getOption( 'hmwp_mapping_text_show' ) && HMWP_Classes_Tools::getOption( 'hmwp_mapping_file' ) ) ) {
 					$rewritecode .= "<IfModule mod_rewrite.c>" . PHP_EOL;
 					$rewritecode .= "RewriteEngine On" . PHP_EOL;
 					$rewritecode .= "RewriteCond %{HTTP:Cookie} !(wordpress_logged_in_|" . HMWP_LOGGED_IN_COOKIE . ") [NC]" . PHP_EOL;
@@ -964,7 +964,7 @@ class HMWP_Models_Rewrite {
 			//if there are no rewrites, return true
 			if ( ! empty( $this->_rewrites ) ) {
 
-				if ( HMWP_Classes_Tools::getOption( 'hmwp_mapping_text_show' ) && HMWP_Classes_Tools::getOption( 'hmwp_mapping_file' ) ) {
+				if ( HMW_DYNAMIC_FILES || ( HMWP_Classes_Tools::getOption( 'hmwp_mapping_text_show' ) && HMWP_Classes_Tools::getOption( 'hmwp_mapping_file' ) ) ) {
 					$cachecode .= 'set $cond "";' . PHP_EOL;
 					$cachecode .= 'if ($http_cookie !~* "wordpress_logged_in_|' . HMWP_LOGGED_IN_COOKIE . '" ) {  set $cond cookie; }' . PHP_EOL;
 					$cachecode .= 'if ($request_uri ~* ^' . $home_root . HMWP_Classes_Tools::getOption( 'hmwp_wp-content_url' ) . '/[^\.]+\.[^\.]+) { set $cond "${cond}+redirect_uri"; }' . PHP_EOL;
@@ -2572,15 +2572,6 @@ class HMWP_Models_Rewrite {
 					$content = $this->replaceTextMapping( $content );
 				}
 
-				//rename the CSS in Dynamic File mode to make sure they are not cached by Nginx of Apache
-				if ( HMW_DYNAMIC_FILES && ! is_admin() ) {
-					$content = preg_replace( array(
-						'/(<link[^>]+' . str_replace( '/', '\/', $this->getSiteUrl() ) . '[^>]+).(css|scss)([\'|"|\?][^>]+type=[\'"]text\/css[\'"][^>]+>)/i',
-						'/(<link[^>]+type=[\'"]text\/css[\'"][^>]+' . str_replace( '/', '\/', $this->getSiteUrl() ) . '[^>]+).(css|scss)([\'|"|\?][^>]+>)/i',
-						'/(<script[^>]+' . str_replace( '/', '\/', $this->getSiteUrl() ) . '[^>]+).(js)([\'|"|\?][^>]+>)/i',
-					), '$1.$2h$3', $content );
-				}
-
 			}
 
 			//emulate other CMS on request
@@ -2887,7 +2878,8 @@ class HMWP_Models_Rewrite {
 		$findtextmapping = array();
 
 		// Change the text in css and js files only for visitors
-		if ( HMWP_Classes_Tools::getOption( 'hmwp_mapping_text_show' ) && HMWP_Classes_Tools::getOption( 'hmwp_mapping_file' ) && function_exists( 'is_user_logged_in' ) && is_user_logged_in() ) {
+		if ( HMWP_Classes_Tools::getOption( 'hmwp_mapping_text_show' ) && HMWP_Classes_Tools::getOption( 'hmwp_mapping_file' ) &&
+		     function_exists( 'is_user_logged_in' ) && is_user_logged_in() ) {
 			return $content;
 		}
 

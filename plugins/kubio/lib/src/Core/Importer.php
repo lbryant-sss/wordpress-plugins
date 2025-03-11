@@ -61,6 +61,23 @@ class Importer {
 		return true;
 	}
 
+	public static function deleteTemplate($slug) {
+		// Query to find the wp_template with slug 'front_page'
+		$query = new WP_Query([
+			'post_type' => 'wp_template',
+			'name' => $slug,
+			'posts_per_page' => 1,
+		]);
+
+		if ( $query->have_posts() ) {
+
+			$template_post = $query->posts[0];
+
+
+			wp_trash_post( $template_post->ID, true );
+		}
+	}
+
 	public static function allowImportCaps( $all_cap, $caps ) {
 
 		foreach ( $caps as $cap ) {

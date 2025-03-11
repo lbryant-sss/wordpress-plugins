@@ -263,7 +263,7 @@ class Price_List extends Base_Widget {
 				'selectors' => [
 					'{{WRAPPER}} .raven-price-list-separator' => 'border-bottom-style: {{VALUE}}',
 				],
-				'frontend_available' => 'true'
+				'frontend_available' => 'true',
 			]
 		);
 

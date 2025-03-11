@@ -101,7 +101,7 @@ function render_gradiant_info( $attributes ) {
     $link = isset($link) ? esc_url($link) : '#'; // Escaping URL
     $isInfoType = isset($isInfoType) ? (bool) $isInfoType : true; // Ensuring boolean value
     $infoType = isset($infoType) ? esc_attr($infoType) : 'Style 1'; // Escaping dynamic content
-	if($infoType =='Style 2' || $infoType =='Style 6'){
+	if($infoType =='Style 2' || $infoType =='Style 6' || $infoType =='Style 4' || $infoType =='Style 5' ){
 		$infoTypes='info-wrapper2';
 	}elseif($infoType =='Style 3'){
 		$infoTypes='info-wrapper2 info-wrapper3';

@@ -282,17 +282,7 @@ add_action(
 			)
 		);
 
-		register_rest_route(
-			$namespace,
-			'/remove-auto-start-black-wizard-flag',
-			array(
-				'methods'             => 'POST',
-				'callback'            => 'kubio_remove_auto_start_black_wizard_onboarding_flag',
-				'permission_callback' => function () {
-					return current_user_can( 'edit_theme_options' );
-				},
-			)
-		);
+
 
 		register_rest_route(
 			$namespace,
@@ -731,7 +721,3 @@ function kubio_ai_sd_image_from_text( WP_REST_Request $request ) {
 }
 
 
-function kubio_remove_auto_start_black_wizard_onboarding_flag() {
-	delete_option( '_kubio_auto_start_black_wizard_onboarding' );
-	return true;
-}

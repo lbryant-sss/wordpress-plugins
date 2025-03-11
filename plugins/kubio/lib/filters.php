@@ -3,6 +3,7 @@
 use IlluminateAgnostic\Arr\Support\Arr;
 use Kubio\Core\LodashBasic;
 use Kubio\Core\Utils;
+use Kubio\Flags;
 
 add_filter(
 	'kubio/preview/template_part_blocks',
@@ -313,6 +314,41 @@ function kubio_remove_widget_block_editor() {
 	remove_theme_support( 'widgets-block-editor' );
 }
 add_action( 'after_setup_theme', 'kubio_remove_widget_block_editor' );
+
+
+//when blog as homepage disable the front page template in the function used to determine the page template
+add_filter('pre_get_block_templates', function( $template, $query, $template_type) {
+	$is_front_page = LodashBasic::get($query, 'slug__in.0') === 'front-page';
+	if(!$is_front_page) {
+		return $template;
+	}
+
+	$blog_as_homepage = get_option('show_on_front') === 'posts';
+	if(!$blog_as_homepage) {
+		return $template;
+	}
+
+
+	//only allow the option to use index as blog for new sites to not have the frontpage change for exsiting users
+	if(	!Flags::getSetting( 'enableBlogAsFrontPageFromGeneralSettings' )){
+		return $template;
+	}
+
+	$blog_query = [
+		'slug__in' => [
+			//can't have two templates as it will cause errors if the site has both home and index templates
+		//	'home',
+			'index',
+		]
+	];
+	$result = get_block_templates($blog_query, 'wp_template');
+	if(!empty($result)) {
+		return $result;
+	}
+
+	return $template;
+}, 9999, 3);
+
 
 require_once __DIR__ . '/filters/kubio-fresh-site.php';
 require_once __DIR__ . '/filters/dismissable-notice.php';

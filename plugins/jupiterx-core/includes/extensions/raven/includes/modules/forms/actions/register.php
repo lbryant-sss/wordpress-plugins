@@ -212,13 +212,17 @@ class Register extends Action_Base {
 		}
 
 		if ( ! empty( $full_name ) && empty( $first_name ) ) {
-			$splitted   = explode( ' ', $full_name );
-			$first_name = $splitted[0];
+			$splitted = explode( ' ', $full_name );
+			if ( isset( $splitted[0] ) ) {
+				$first_name = $splitted[0];
+			}
 		}
 
 		if ( ! empty( $full_name ) && empty( $last_name ) ) {
-			$splitted  = explode( ' ', $full_name );
-			$last_name = $splitted[1];
+			$splitted = explode( ' ', $full_name );
+			if ( isset( $splitted[1] ) ) {
+				$last_name = $splitted[1];
+			}
 		}
 
 		$user_data = [
@@ -248,7 +252,7 @@ class Register extends Action_Base {
 			update_user_meta( $user_id, 'billing_phone', $phone );
 		}
 
-		if ( 'on' === $newsletter ) {
+		if ( isset( $newsletter ) && 'on' === $newsletter ) {
 			update_user_meta( $user_id, 'jupiterx_raven_register_newsletter', 'on' );
 		}
 

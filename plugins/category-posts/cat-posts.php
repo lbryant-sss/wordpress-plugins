@@ -12,7 +12,7 @@ Plugin Name: Category Posts Widget
 Plugin URI: https://wordpress.org/plugins/category-posts/
 Description: Adds a widget that shows the most recent posts from a single category.
 Author: TipTopPress
-Version: 4.9.18
+Version: 4.9.19
 Author URI: https://tiptoppress.com
 Text Domain: category-posts
 Domain Path: /languages
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const VERSION        = '4.9.18';
+const VERSION        = '4.9.19';
 const DOC_URL        = 'https://tiptoppress.com/category-posts-widget/documentation-4-9/';
 const PRO_URL        = 'https://tiptoppress.com/term-and-category-based-posts-widget/';
 const SUPPORT_URL    = 'https://wordpress.org/support/plugin/category-posts/';
@@ -1066,6 +1066,23 @@ function mce_external_languages( $locales ) {
 }
 
 add_filter( 'mce_external_languages', __NAMESPACE__ . '\mce_external_languages' );
+
+/**
+ *  The Legacy Widget block widget-type filter
+ *
+ *  @param array Excluded widget-types.
+ *
+ *  @return array Widgets which are not available.
+ *
+ *  @since 5.0
+ */
+function hide_as_legacy_widget( $widget_types ) {
+    $widget_types[] = 'category-posts';
+	
+    return $widget_types;
+}
+
+add_filter( 'widget_types_to_hide_from_legacy_widget_block', __NAMESPACE__ . '\hide_as_legacy_widget' );
 
 /*
  * user profile related functions.

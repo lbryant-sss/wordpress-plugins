@@ -554,7 +554,7 @@ var _default = JupiterxConditionManager();
 
 exports["default"] = _default;
 
-},{"@wordpress/i18n":95}],2:[function(require,module,exports){
+},{"@wordpress/i18n":96}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -833,7 +833,7 @@ var _default = sellkitPreview();
 
 exports["default"] = _default;
 
-},{"@wordpress/i18n":95}],6:[function(require,module,exports){
+},{"@wordpress/i18n":96}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -989,7 +989,7 @@ var _default = Templates();
 
 exports["default"] = _default;
 
-},{"@wordpress/i18n":95}],7:[function(require,module,exports){
+},{"@wordpress/i18n":96}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1751,7 +1751,8 @@ var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
         'raven-stripe-button': checkWidgetIsActive('payments') && require('./widgets/stripe-button')["default"],
         'raven-advanced-nav-menu': checkWidgetIsActive('advanced-nav-menu') && require('./widgets/advanced-nav-menu')["default"],
         'raven-media-gallery': checkWidgetIsActive('media-gallery') && require('./widgets/media-gallery')["default"],
-        'raven-shopping-cart': checkWidgetIsActive('shopping-cart') && require('./widgets/shopping-cart')["default"]
+        'raven-shopping-cart': checkWidgetIsActive('shopping-cart') && require('./widgets/shopping-cart')["default"],
+        'raven-register': checkWidgetIsActive('forms') && require('./widgets/register')["default"]
       };
 
       for (var widget in widgets) {
@@ -1971,7 +1972,7 @@ var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
   window.ravenEditor = new RavenEditor();
 })(jQuery, window);
 
-},{"./components/conditions":1,"./components/custom-css":3,"./components/custom-css-widget":2,"./components/preview-settings":4,"./components/sellkit-preview":5,"./components/templates":6,"./components/woocommerce-settings":7,"./controls/checkbox":8,"./controls/file-uploader":9,"./controls/media":10,"./controls/presets":11,"./controls/query":12,"./global-widget/global-widget":20,"./utils/form/form":36,"./utils/module":41,"./utils/video-playlist/video-playlist":45,"./widgets/advanced-nav-menu":46,"./widgets/categories":47,"./widgets/flip-box":48,"./widgets/form":49,"./widgets/media-gallery":63,"./widgets/my-account":64,"./widgets/posts":65,"./widgets/shopping-cart":66,"./widgets/stripe-button":67,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/typeof":86}],14:[function(require,module,exports){
+},{"./components/conditions":1,"./components/custom-css":3,"./components/custom-css-widget":2,"./components/preview-settings":4,"./components/sellkit-preview":5,"./components/templates":6,"./components/woocommerce-settings":7,"./controls/checkbox":8,"./controls/file-uploader":9,"./controls/media":10,"./controls/presets":11,"./controls/query":12,"./global-widget/global-widget":20,"./utils/form/form":36,"./utils/module":41,"./utils/video-playlist/video-playlist":45,"./widgets/advanced-nav-menu":46,"./widgets/categories":47,"./widgets/flip-box":48,"./widgets/form":49,"./widgets/media-gallery":63,"./widgets/my-account":64,"./widgets/posts":65,"./widgets/register":66,"./widgets/shopping-cart":67,"./widgets/stripe-button":68,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/typeof":87}],14:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -2036,7 +2037,7 @@ exports.Templates = Templates;
 var _default = Templates;
 exports["default"] = _default;
 
-},{"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82,"@babel/runtime/helpers/slicedToArray":84}],15:[function(require,module,exports){
+},{"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83,"@babel/runtime/helpers/slicedToArray":85}],15:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -2154,7 +2155,7 @@ exports.SaveTemplates = SaveTemplates;
 var _default = SaveTemplates;
 exports["default"] = _default;
 
-},{"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82,"@babel/runtime/helpers/slicedToArray":84}],16:[function(require,module,exports){
+},{"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83,"@babel/runtime/helpers/slicedToArray":85}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2284,7 +2285,7 @@ exports.Link = Link;
 var _default = Link;
 exports["default"] = _default;
 
-},{"../../global-widget":20,"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82,"@wordpress/i18n":95}],18:[function(require,module,exports){
+},{"../../global-widget":20,"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83,"@wordpress/i18n":96}],18:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -2407,7 +2408,7 @@ exports.Unlink = Unlink;
 var _default = Unlink;
 exports["default"] = _default;
 
-},{"../../global-widget":20,"@babel/runtime/helpers/asyncToGenerator":71,"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82,"@babel/runtime/regenerator":88,"@wordpress/i18n":95}],19:[function(require,module,exports){
+},{"../../global-widget":20,"@babel/runtime/helpers/asyncToGenerator":72,"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83,"@babel/runtime/regenerator":89,"@wordpress/i18n":96}],19:[function(require,module,exports){
 "use strict";
 
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
@@ -2542,7 +2543,7 @@ exports.Component = Component;
 var _default = Component;
 exports["default"] = _default;
 
-},{"./commands/commands-data/templates":14,"./commands/commands-internal/save-templates":15,"./commands/commands/":16,"./hooks/":28,"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/get":75,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/interopRequireWildcard":79,"@babel/runtime/helpers/possibleConstructorReturn":82,"@babel/runtime/helpers/slicedToArray":84}],20:[function(require,module,exports){
+},{"./commands/commands-data/templates":14,"./commands/commands-internal/save-templates":15,"./commands/commands/":16,"./hooks/":28,"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/get":76,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/interopRequireWildcard":80,"@babel/runtime/helpers/possibleConstructorReturn":83,"@babel/runtime/helpers/slicedToArray":85}],20:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -2712,7 +2713,7 @@ var globalWidgetObject = new GlobalWidget();
 var _default = globalWidgetObject;
 exports["default"] = _default;
 
-},{"./component":19,"./views/global-templates-view":30,"./views/panel-page":32,"./widget/model":33,"./widget/view":34,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/typeof":86,"@wordpress/i18n":95}],21:[function(require,module,exports){
+},{"./component":19,"./views/global-templates-view":30,"./views/panel-page":32,"./widget/model":33,"./widget/view":34,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/typeof":87,"@wordpress/i18n":96}],21:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -2787,7 +2788,7 @@ exports.BaseGlobalWidgetPrepareUpdate = BaseGlobalWidgetPrepareUpdate;
 var _default = BaseGlobalWidgetPrepareUpdate;
 exports["default"] = _default;
 
-},{"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],22:[function(require,module,exports){
+},{"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],22:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -2893,7 +2894,7 @@ exports.GlobalWidgetLoadTemplates = GlobalWidgetLoadTemplates;
 var _default = GlobalWidgetLoadTemplates;
 exports["default"] = _default;
 
-},{"../../../../global-widget":20,"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82,"@babel/runtime/helpers/slicedToArray":84}],23:[function(require,module,exports){
+},{"../../../../global-widget":20,"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83,"@babel/runtime/helpers/slicedToArray":85}],23:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -2945,7 +2946,7 @@ var GlobalWidgetPrepareUpdateElementSetSettings = /*#__PURE__*/function (_BaseGl
 
 exports.GlobalWidgetPrepareUpdateElementSetSettings = GlobalWidgetPrepareUpdateElementSetSettings;
 
-},{"../../../base-global-widget-prepare-update":21,"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],24:[function(require,module,exports){
+},{"../../../base-global-widget-prepare-update":21,"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],24:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -3010,7 +3011,7 @@ var GlobalWidgetDoUpdate = /*#__PURE__*/function (_window$$e$modules$ho) {
 
 exports.GlobalWidgetDoUpdate = GlobalWidgetDoUpdate;
 
-},{"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],25:[function(require,module,exports){
+},{"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],25:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -3062,7 +3063,7 @@ var GlobalWidgetPrepareUpdateRepeaterInsert = /*#__PURE__*/function (_BaseGlobal
 
 exports.GlobalWidgetPrepareUpdateRepeaterInsert = GlobalWidgetPrepareUpdateRepeaterInsert;
 
-},{"../../../base-global-widget-prepare-update":21,"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],26:[function(require,module,exports){
+},{"../../../base-global-widget-prepare-update":21,"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],26:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -3114,7 +3115,7 @@ var GlobalWidgetPrepareUpdateRepeaterRemove = /*#__PURE__*/function (_BaseGlobal
 
 exports.GlobalWidgetPrepareUpdateRepeaterRemove = GlobalWidgetPrepareUpdateRepeaterRemove;
 
-},{"../../../base-global-widget-prepare-update":21,"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],27:[function(require,module,exports){
+},{"../../../base-global-widget-prepare-update":21,"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],27:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -3180,7 +3181,7 @@ var GlobalWidgetSaveTemplates = /*#__PURE__*/function (_window$$e$modules$ho) {
 
 exports.GlobalWidgetSaveTemplates = GlobalWidgetSaveTemplates;
 
-},{"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],28:[function(require,module,exports){
+},{"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],28:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3316,7 +3317,7 @@ var GlobalWidgetHistoryUpdate = /*#__PURE__*/function (_window$$e$modules$ho) {
 
 exports.GlobalWidgetHistoryUpdate = GlobalWidgetHistoryUpdate;
 
-},{"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],30:[function(require,module,exports){
+},{"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],30:[function(require,module,exports){
 "use strict";
 
 module.exports = elementor.modules.layouts.panel.pages.elements.views.Elements.extend({
@@ -3408,7 +3409,7 @@ module.exports = window.Marionette.ItemView.extend({
   }
 });
 
-},{"@wordpress/i18n":95}],33:[function(require,module,exports){
+},{"@wordpress/i18n":96}],33:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -3482,7 +3483,7 @@ exports.Model = Model;
 var _default = Model;
 exports["default"] = _default;
 
-},{"../global-widget":20,"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/get":75,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],34:[function(require,module,exports){
+},{"../global-widget":20,"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/get":76,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],34:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -3582,7 +3583,7 @@ exports.View = View;
 var _default = View;
 exports["default"] = _default;
 
-},{"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/get":75,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],35:[function(require,module,exports){
+},{"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/get":76,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],35:[function(require,module,exports){
 "use strict";
 
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
@@ -3638,7 +3639,7 @@ exports.Component = Component;
 var _default = Component;
 exports["default"] = _default;
 
-},{"./hooks/":39,"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/interopRequireWildcard":79,"@babel/runtime/helpers/possibleConstructorReturn":82}],36:[function(require,module,exports){
+},{"./hooks/":39,"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/interopRequireWildcard":80,"@babel/runtime/helpers/possibleConstructorReturn":83}],36:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -3769,7 +3770,7 @@ var Form = _module["default"].extend({
 var _default = Form;
 exports["default"] = _default;
 
-},{"../module":41,"./component":35,"@babel/runtime/helpers/interopRequireDefault":78}],37:[function(require,module,exports){
+},{"../module":41,"./component":35,"@babel/runtime/helpers/interopRequireDefault":79}],37:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -3855,7 +3856,7 @@ exports.FormFieldsSanitizeCustomId = FormFieldsSanitizeCustomId;
 var _default = FormFieldsSanitizeCustomId;
 exports["default"] = _default;
 
-},{"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],38:[function(require,module,exports){
+},{"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],38:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -3949,7 +3950,7 @@ exports.FormFieldsSetCustomId = FormFieldsSetCustomId;
 var _default = FormFieldsSetCustomId;
 exports["default"] = _default;
 
-},{"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],39:[function(require,module,exports){
+},{"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],39:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4062,7 +4063,7 @@ exports.FormFieldsUpdateShortCode = FormFieldsUpdateShortCode;
 var _default = FormFieldsUpdateShortCode;
 exports["default"] = _default;
 
-},{"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],41:[function(require,module,exports){
+},{"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],41:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4177,7 +4178,7 @@ exports.Component = Component;
 var _default = Component;
 exports["default"] = _default;
 
-},{"./hooks/":43,"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/interopRequireWildcard":79,"@babel/runtime/helpers/possibleConstructorReturn":82}],43:[function(require,module,exports){
+},{"./hooks/":43,"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/interopRequireWildcard":80,"@babel/runtime/helpers/possibleConstructorReturn":83}],43:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4263,7 +4264,7 @@ exports.ActiveTab = ActiveTab;
 var _default = ActiveTab;
 exports["default"] = _default;
 
-},{"@babel/runtime/helpers/classCallCheck":72,"@babel/runtime/helpers/createClass":73,"@babel/runtime/helpers/getPrototypeOf":76,"@babel/runtime/helpers/inherits":77,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/possibleConstructorReturn":82}],45:[function(require,module,exports){
+},{"@babel/runtime/helpers/classCallCheck":73,"@babel/runtime/helpers/createClass":74,"@babel/runtime/helpers/getPrototypeOf":77,"@babel/runtime/helpers/inherits":78,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/possibleConstructorReturn":83}],45:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -4313,7 +4314,7 @@ var VideoPlaylist = _module["default"].extend({
 
 new VideoPlaylist();
 
-},{"../module":41,"./component":42,"@babel/runtime/helpers/interopRequireDefault":78,"@babel/runtime/helpers/typeof":86}],46:[function(require,module,exports){
+},{"../module":41,"./component":42,"@babel/runtime/helpers/interopRequireDefault":79,"@babel/runtime/helpers/typeof":87}],46:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -4544,7 +4545,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":78,"@wordpress/i18n":95}],47:[function(require,module,exports){
+},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":79,"@wordpress/i18n":96}],47:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -4616,7 +4617,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":78}],48:[function(require,module,exports){
+},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":79}],48:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -4664,7 +4665,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":78}],49:[function(require,module,exports){
+},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":79}],49:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4824,7 +4825,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":78}],51:[function(require,module,exports){
+},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":79}],51:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -4857,7 +4858,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"./crm/crm-base":52,"@babel/runtime/helpers/interopRequireDefault":78}],52:[function(require,module,exports){
+},{"./crm/crm-base":52,"@babel/runtime/helpers/interopRequireDefault":79}],52:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -5171,7 +5172,7 @@ var _default = _module["default"].extend({
 
 exports["default"] = _default;
 
-},{"../../../utils/module":41,"@babel/runtime/helpers/defineProperty":74,"@babel/runtime/helpers/interopRequireDefault":78,"@wordpress/i18n":95}],53:[function(require,module,exports){
+},{"../../../utils/module":41,"@babel/runtime/helpers/defineProperty":75,"@babel/runtime/helpers/interopRequireDefault":79,"@wordpress/i18n":96}],53:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -5233,7 +5234,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":78}],54:[function(require,module,exports){
+},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":79}],54:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -5266,7 +5267,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"./crm/crm-base":52,"@babel/runtime/helpers/interopRequireDefault":78}],55:[function(require,module,exports){
+},{"./crm/crm-base":52,"@babel/runtime/helpers/interopRequireDefault":79}],55:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -5313,7 +5314,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":78}],56:[function(require,module,exports){
+},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":79}],56:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -5360,7 +5361,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":78}],57:[function(require,module,exports){
+},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":79}],57:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -5393,7 +5394,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"./crm/crm-base":52,"@babel/runtime/helpers/interopRequireDefault":78}],58:[function(require,module,exports){
+},{"./crm/crm-base":52,"@babel/runtime/helpers/interopRequireDefault":79}],58:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -5471,7 +5472,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"./../../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":78}],59:[function(require,module,exports){
+},{"./../../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":79}],59:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -5643,7 +5644,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":78}],60:[function(require,module,exports){
+},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":79}],60:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -5667,7 +5668,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"./crm/crm-base":52,"@babel/runtime/helpers/interopRequireDefault":78}],61:[function(require,module,exports){
+},{"./crm/crm-base":52,"@babel/runtime/helpers/interopRequireDefault":79}],61:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -5813,7 +5814,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":78}],62:[function(require,module,exports){
+},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":79}],62:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -5889,7 +5890,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":78,"intl-tel-input":99}],63:[function(require,module,exports){
+},{"../../utils/form/form":36,"@babel/runtime/helpers/interopRequireDefault":79,"intl-tel-input":100}],63:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -6035,7 +6036,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":78}],64:[function(require,module,exports){
+},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":79}],64:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -6195,7 +6196,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":78}],65:[function(require,module,exports){
+},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":79}],65:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -6236,7 +6237,166 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":78}],66:[function(require,module,exports){
+},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":79}],66:[function(require,module,exports){
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = _default;
+
+var _module = _interopRequireDefault(require("../utils/module"));
+
+var _component = _interopRequireDefault(require("../utils/form/component"));
+
+function _default(panel, model, view) {
+  var Register = _module["default"].extend({
+    panel: panel,
+    model: model,
+    sectionName: 'section_form_fields',
+    fieldsRepeater: null,
+    fieldViews: [],
+    onInit: function onInit() {
+      this.init();
+
+      if (this.sectionName !== this.panel.content.currentView.activeSection) {
+        return;
+      }
+
+      elementor.channels.editor.on('section:activated', this.onSectionActivated.bind(this));
+      this.onElementorInitComponents();
+    },
+    onSectionActivated: function onSectionActivated(activeSection, section) {
+      if (activeSection !== this.sectionName) {
+        return;
+      }
+
+      if (section.model.id !== model.get('id')) {
+        return;
+      }
+
+      this.init();
+    },
+    init: function init() {
+      this.fieldsRepeater = this.getControlView('fields');
+      this.fieldsRepeater.on('add:child', this.refresh.bind(this));
+      this.fieldsRepeater.on('childview:click:remove', this.refresh.bind(this));
+      this.refresh();
+    },
+    refresh: function refresh() {
+      this.getRowsView();
+      this.initialize();
+    },
+    getRowsView: function getRowsView() {
+      var _this = this;
+
+      this.fieldViews = [];
+      this.fieldsRepeater.children.each(function (repeaterRow) {
+        _this.fieldViews.push(repeaterRow);
+      });
+      this.fieldViews.sort(function (a, b) {
+        return a.itemIndex - b.itemIndex;
+      });
+    },
+    initialize: function initialize() {
+      var _this2 = this;
+
+      _.each(this.fieldViews, function (fieldView, index) {
+        var typeControl = fieldView.children.find(function (option) {
+          return 'type' === option.model.get('name');
+        }).$el.find('select');
+        var mapToControl = fieldView.children.find(function (option) {
+          return 'map_to' === option.model.get('name');
+        }).$el.find('select');
+        typeControl.off('change', _this2.handleTypeChange.bind(_this2));
+        typeControl.on('change', {
+          index: index
+        }, _this2.handleTypeChange.bind(_this2));
+        mapToControl.off('change', _this2.handleMapToChange.bind(_this2));
+        mapToControl.on('change', {
+          index: index
+        }, _this2.handleMapToChange.bind(_this2));
+      });
+
+      this.checkInitialStates();
+    },
+    checkInitialStates: function checkInitialStates() {
+      var _this3 = this;
+
+      _.each(this.fieldViews, function (fieldView) {
+        _this3.updateFieldCustomIdSettings(fieldView);
+      });
+    },
+    handleTypeChange: function handleTypeChange(event) {
+      this.updateFieldCustomIdReadonly(event);
+    },
+    handleMapToChange: function handleMapToChange(event) {
+      this.updateFieldCustomIdReadonly(event);
+    },
+    updateFieldCustomIdReadonly: function updateFieldCustomIdReadonly(event) {
+      var fieldView = this.fieldViews[event.data.index];
+      this.updateFieldCustomIdSettings(fieldView);
+    },
+    updateFieldCustomIdSettings: function updateFieldCustomIdSettings(fieldView) {
+      var typeControl = fieldView.children.find(function (option) {
+        return 'type' === option.model.get('name');
+      }).$el.find('select');
+      var mapToControl = fieldView.children.find(function (option) {
+        return 'map_to' === option.model.get('name');
+      }).$el.find('select');
+      var fieldCustomIdControl = fieldView.children.find(function (option) {
+        return 'field_custom_id' === option.model.get('name');
+      }).$el.find('input');
+      var itemContainer = fieldView.children.find(function (option) {
+        return 'field_custom_id' === option.model.get('name');
+      }).container;
+      var type = typeControl.val();
+      var mapTo = mapToControl.val();
+      var currentFieldCustomId = fieldCustomIdControl.val();
+
+      if (!itemContainer) {
+        return;
+      }
+
+      if (type === 'acceptance' && mapTo === 'newsletter') {
+        fieldCustomIdControl.attr('readonly', true);
+        window.$e.run('document/elements/settings', {
+          container: itemContainer,
+          settings: {
+            field_custom_id: 'register_acceptance'
+          },
+          options: {
+            external: true
+          }
+        });
+      } else if (currentFieldCustomId === 'register_acceptance') {
+        fieldCustomIdControl.attr('readonly', false);
+        window.$e.run('document/elements/settings', {
+          container: itemContainer,
+          settings: {
+            field_custom_id: 'field_' + itemContainer.id
+          },
+          options: {
+            external: true
+          }
+        });
+      }
+    },
+    onElementorInitComponents: function onElementorInitComponents() {
+      window.$e.components.register(new _component["default"]({
+        manager: this
+      }));
+    }
+  });
+
+  new Register({
+    $element: view.$el
+  });
+}
+
+},{"../utils/form/component":35,"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":79}],67:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -6280,7 +6440,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":78}],67:[function(require,module,exports){
+},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":79}],68:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -6344,7 +6504,7 @@ function _default(panel, model, view) {
   });
 }
 
-},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":78}],68:[function(require,module,exports){
+},{"../utils/module":41,"@babel/runtime/helpers/interopRequireDefault":79}],69:[function(require,module,exports){
 function _arrayLikeToArray(arr, len) {
   if (len == null || len > arr.length) len = arr.length;
 
@@ -6356,13 +6516,13 @@ function _arrayLikeToArray(arr, len) {
 }
 
 module.exports = _arrayLikeToArray;
-},{}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
 module.exports = _arrayWithHoles;
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -6372,7 +6532,7 @@ function _assertThisInitialized(self) {
 }
 
 module.exports = _assertThisInitialized;
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -6410,7 +6570,7 @@ function _asyncToGenerator(fn) {
 }
 
 module.exports = _asyncToGenerator;
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -6418,7 +6578,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 module.exports = _classCallCheck;
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -6436,7 +6596,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 module.exports = _createClass;
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -6453,7 +6613,7 @@ function _defineProperty(obj, key, value) {
 }
 
 module.exports = _defineProperty;
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 var superPropBase = require("./superPropBase");
 
 function _get(target, property, receiver) {
@@ -6477,7 +6637,7 @@ function _get(target, property, receiver) {
 }
 
 module.exports = _get;
-},{"./superPropBase":85}],76:[function(require,module,exports){
+},{"./superPropBase":86}],77:[function(require,module,exports){
 function _getPrototypeOf(o) {
   module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
@@ -6486,7 +6646,7 @@ function _getPrototypeOf(o) {
 }
 
 module.exports = _getPrototypeOf;
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 var setPrototypeOf = require("./setPrototypeOf");
 
 function _inherits(subClass, superClass) {
@@ -6505,7 +6665,7 @@ function _inherits(subClass, superClass) {
 }
 
 module.exports = _inherits;
-},{"./setPrototypeOf":83}],78:[function(require,module,exports){
+},{"./setPrototypeOf":84}],79:[function(require,module,exports){
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
     "default": obj
@@ -6513,7 +6673,7 @@ function _interopRequireDefault(obj) {
 }
 
 module.exports = _interopRequireDefault;
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 var _typeof = require("../helpers/typeof");
 
 function _getRequireWildcardCache() {
@@ -6569,7 +6729,7 @@ function _interopRequireWildcard(obj) {
 }
 
 module.exports = _interopRequireWildcard;
-},{"../helpers/typeof":86}],80:[function(require,module,exports){
+},{"../helpers/typeof":87}],81:[function(require,module,exports){
 function _iterableToArrayLimit(arr, i) {
   if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
   var _arr = [];
@@ -6598,13 +6758,13 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 module.exports = _iterableToArrayLimit;
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
 module.exports = _nonIterableRest;
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 var _typeof = require("../helpers/typeof");
 
 var assertThisInitialized = require("./assertThisInitialized");
@@ -6618,7 +6778,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 module.exports = _possibleConstructorReturn;
-},{"../helpers/typeof":86,"./assertThisInitialized":70}],83:[function(require,module,exports){
+},{"../helpers/typeof":87,"./assertThisInitialized":71}],84:[function(require,module,exports){
 function _setPrototypeOf(o, p) {
   module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
     o.__proto__ = p;
@@ -6629,7 +6789,7 @@ function _setPrototypeOf(o, p) {
 }
 
 module.exports = _setPrototypeOf;
-},{}],84:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 var arrayWithHoles = require("./arrayWithHoles");
 
 var iterableToArrayLimit = require("./iterableToArrayLimit");
@@ -6643,7 +6803,7 @@ function _slicedToArray(arr, i) {
 }
 
 module.exports = _slicedToArray;
-},{"./arrayWithHoles":69,"./iterableToArrayLimit":80,"./nonIterableRest":81,"./unsupportedIterableToArray":87}],85:[function(require,module,exports){
+},{"./arrayWithHoles":70,"./iterableToArrayLimit":81,"./nonIterableRest":82,"./unsupportedIterableToArray":88}],86:[function(require,module,exports){
 var getPrototypeOf = require("./getPrototypeOf");
 
 function _superPropBase(object, property) {
@@ -6656,7 +6816,7 @@ function _superPropBase(object, property) {
 }
 
 module.exports = _superPropBase;
-},{"./getPrototypeOf":76}],86:[function(require,module,exports){
+},{"./getPrototypeOf":77}],87:[function(require,module,exports){
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -6674,7 +6834,7 @@ function _typeof(obj) {
 }
 
 module.exports = _typeof;
-},{}],87:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 var arrayLikeToArray = require("./arrayLikeToArray");
 
 function _unsupportedIterableToArray(o, minLen) {
@@ -6687,10 +6847,10 @@ function _unsupportedIterableToArray(o, minLen) {
 }
 
 module.exports = _unsupportedIterableToArray;
-},{"./arrayLikeToArray":68}],88:[function(require,module,exports){
+},{"./arrayLikeToArray":69}],89:[function(require,module,exports){
 module.exports = require("regenerator-runtime");
 
-},{"regenerator-runtime":102}],89:[function(require,module,exports){
+},{"regenerator-runtime":103}],90:[function(require,module,exports){
 'use strict';
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
@@ -6727,7 +6887,7 @@ function compile( expression ) {
 
 module.exports = compile;
 
-},{"@tannin/evaluate":90,"@tannin/postfix":92}],90:[function(require,module,exports){
+},{"@tannin/evaluate":91,"@tannin/postfix":93}],91:[function(require,module,exports){
 'use strict';
 
 /**
@@ -6843,7 +7003,7 @@ function evaluate( postfix, variables ) {
 
 module.exports = evaluate;
 
-},{}],91:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 'use strict';
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
@@ -6869,7 +7029,7 @@ function pluralForms( expression ) {
 
 module.exports = pluralForms;
 
-},{"@tannin/compile":89}],92:[function(require,module,exports){
+},{"@tannin/compile":90}],93:[function(require,module,exports){
 'use strict';
 
 var PRECEDENCE, OPENERS, TERMINATORS, PATTERN;
@@ -6999,7 +7159,7 @@ function postfix( expression ) {
 
 module.exports = postfix;
 
-},{}],93:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -7214,7 +7374,7 @@ var createI18n = function createI18n(initialData, initialDomain) {
 
 exports.createI18n = createI18n;
 
-},{"@babel/runtime/helpers/defineProperty":74,"@babel/runtime/helpers/interopRequireDefault":78,"tannin":103}],94:[function(require,module,exports){
+},{"@babel/runtime/helpers/defineProperty":75,"@babel/runtime/helpers/interopRequireDefault":79,"tannin":104}],95:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7333,7 +7493,7 @@ exports._nx = _nx;
 var isRTL = i18n.isRTL.bind(i18n);
 exports.isRTL = isRTL;
 
-},{"./create-i18n":93}],95:[function(require,module,exports){
+},{"./create-i18n":94}],96:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7408,7 +7568,7 @@ Object.keys(_createI18n).forEach(function (key) {
 
 var _defaultI18n = require("./default-i18n");
 
-},{"./create-i18n":93,"./default-i18n":94,"./sprintf":96}],96:[function(require,module,exports){
+},{"./create-i18n":94,"./default-i18n":95,"./sprintf":97}],97:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -7460,7 +7620,7 @@ function sprintf(format) {
   }
 }
 
-},{"@babel/runtime/helpers/interopRequireDefault":78,"memize":100,"sprintf-js":97}],97:[function(require,module,exports){
+},{"@babel/runtime/helpers/interopRequireDefault":79,"memize":101,"sprintf-js":98}],98:[function(require,module,exports){
 /* global window, exports, define */
 
 !function() {
@@ -7693,7 +7853,7 @@ function sprintf(format) {
     /* eslint-enable quote-props */
 }(); // eslint-disable-line
 
-},{}],98:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 /*
  * International Telephone Input v17.0.18
  * https://github.com/jackocnr/intl-tel-input.git
@@ -9047,13 +9207,13 @@ function sprintf(format) {
         };
     }();
 });
-},{}],99:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 /**
  * Exposing intl-tel-input as a component
  */
 module.exports = require("./build/js/intlTelInput");
 
-},{"./build/js/intlTelInput":98}],100:[function(require,module,exports){
+},{"./build/js/intlTelInput":99}],101:[function(require,module,exports){
 (function (process){
 /**
  * Memize options object.
@@ -9224,7 +9384,7 @@ function memize( fn, options ) {
 module.exports = memize;
 
 }).call(this,require('_process'))
-},{"_process":101}],101:[function(require,module,exports){
+},{"_process":102}],102:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -9410,7 +9570,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],102:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -10141,7 +10301,7 @@ try {
   Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}],103:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 'use strict';
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
@@ -10362,4 +10522,4 @@ Tannin.prototype.dcnpgettext = function( domain, context, singular, plural, n ) 
 
 module.exports = Tannin;
 
-},{"@tannin/plural-forms":91}]},{},[13]);
+},{"@tannin/plural-forms":92}]},{},[13]);

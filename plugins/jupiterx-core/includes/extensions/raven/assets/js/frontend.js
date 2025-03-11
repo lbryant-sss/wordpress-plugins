@@ -13539,12 +13539,6 @@ var ProductsCarousel = _module["default"].extend({
             swiperObj.autoplay.start();
           }
         });
-      }
-
-      if (swiperObj) {
-        swiperObj.params.slidesPerView = self.getDeviceSlidesPerView('desktop');
-        swiperObj.breakpoints = breakpointsSettings;
-        swiperObj.update();
       } // Expose the swiper instance in the frontend.
 
 

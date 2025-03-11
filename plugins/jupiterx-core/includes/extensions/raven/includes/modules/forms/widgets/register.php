@@ -8,6 +8,7 @@ use JupiterX_Core\Raven\Modules\Forms\Module;
 use JupiterX_Core\Raven\Utils;
 use JupiterX_Core\Raven\Modules\Forms\Widgets\Form;
 use Elementor\Plugin as Elementor;
+use Elementor\Controls_Manager;
 
 /**
  * Register widget class.
@@ -82,6 +83,15 @@ class Register extends Form {
 		);
 
 		$repeater = new \Elementor\Repeater();
+
+		$repeater->start_controls_tabs( 'form_fields_tabs' );
+
+		$repeater->start_controls_tab(
+			'form_fields_content_tab',
+			[
+				'label' => esc_html__( 'Content', 'jupiterx-core' ),
+			]
+		);
 
 		$repeater->add_control(
 			'type',
@@ -564,6 +574,48 @@ class Register extends Form {
 			]
 		);
 
+		$repeater->end_controls_tab();
+
+		$repeater->start_controls_tab(
+			'form_fields_advanced_tab',
+			[
+				'label' => esc_html__( 'Advanced', 'jupiterx-core' ),
+				'condition' => [
+					'type!' => 'html',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'field_custom_id',
+			[
+				'label' => esc_html__( 'ID', 'jupiterx-core' ),
+				'type' => Controls_Manager::TEXT,
+				'description' => esc_html__( 'Please make sure the ID is unique and not used elsewhere in this form. This field allows `A-z 0-9` & underscore chars without spaces.', 'jupiterx-core' ),
+				'render_type' => 'none',
+				'required' => true,
+				'dynamic' => [
+					'active' => true,
+				],
+			]
+		);
+
+		$shortcode_template = '{{ view.container.settings.get( \'field_custom_id\' ) }}';
+
+		$repeater->add_control(
+			'shortcode',
+			[
+				'label' => esc_html__( 'Shortcode', 'jupiterx-core' ),
+				'type' => Controls_Manager::RAW_HTML,
+				'classes' => 'forms-field-shortcode',
+				'raw' => '<input class="elementor-form-field-shortcode" value=\'[field id="' . $shortcode_template . '"]\' readonly />',
+			]
+		);
+
+		$repeater->end_controls_tab();
+
+		$repeater->end_controls_tabs();
+
 		$this->add_control(
 			'fields',
 			[
@@ -572,20 +624,22 @@ class Register extends Form {
 				'frontend_available' => true,
 				'default' => [
 					[
+						'label' => __( 'Email', 'jupiterx-core' ),
 						'type' => 'email',
 						'map_to' => 'user_email',
-						'label' => __( 'Email', 'jupiterx-core' ),
+						'field_custom_id' => 'email',
 						'required' => 'true',
 					],
 					[
-						'type' => 'text',
 						'label' => __( 'Full Name', 'jupiterx-core' ),
-						'required' => 'true',
+						'type' => 'text',
 						'map_to' => 'full_name',
+						'field_custom_id' => 'name',
+						'required' => 'true',
 					],
 					[
-						'type' => 'password',
 						'label' => __( 'Password', 'jupiterx-core' ),
+						'type' => 'password',
 						'map_to' => 'user_password',
 						'confirm_password' => 'true',
 						'required' => 'true',

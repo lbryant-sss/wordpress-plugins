@@ -9,6 +9,7 @@ function kubio_set_editor_ui_version() {
 	Flags::setSetting( 'aiStage2', apply_filters( 'kubio/ai_stage_2', false ) || ( defined( 'KUBIO_AI_STAGE_2' ) && KUBIO_AI_STAGE_2 ) );
 	Flags::setSetting( 'advancedMode', apply_filters( 'kubio/advanced_mode_enabled', false ) );
 	Flags::setSetting( 'featuresVersion', apply_filters( 'kubio/featuresVersion', 2 ) );
+	Flags::setSetting( 'enableBlogAsFrontPageFromGeneralSettings', true );
 }
 
 

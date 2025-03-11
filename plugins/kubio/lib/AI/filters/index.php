@@ -13,8 +13,14 @@ function kubio_ai_remove_start_with_ai_hash() {
 	}
 }
 function kubio_ai_remove_black_wizard_onboarding_hash() {
-	if ( Utils::isRestRequest() && Flags::get( 'black_wizard_onboarding_hash' ) ) {
+	if( !Utils::isRestRequest()) {
+		return;
+	}
+	if ( Flags::get( 'black_wizard_onboarding_hash' ) ) {
 		Flags::delete( 'black_wizard_onboarding_hash' );
+	}
+	if ( Flags::get( 'auto_start_black_wizard_onboarding' ) ) {
+		Flags::delete( 'auto_start_black_wizard_onboarding' );
 	}
 }
 

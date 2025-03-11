@@ -2,14 +2,14 @@
 # This file is distributed under the GPL3+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Kubio 2.5.0\n"
+"Project-Id-Version: Kubio 2.5.1\n"
 "Report-Msgid-Bugs-To: support@kubiobuilder.com\n"
 "Last-Translator: Kubio <support@kubiobuilder.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-20T16:59:10+02:00\n"
+"POT-Creation-Date: 2025-03-06T17:53:01+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: kubio\n"
@@ -233,7 +233,7 @@ msgid "The supercharged block-based WordPress builder"
 msgstr ""
 
 #: lib/admin-pages/kubio-get-started.php:25
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Starter sites"
 msgstr ""
 
@@ -285,7 +285,7 @@ msgid "Retrieving starter sites..."
 msgstr ""
 
 #: lib/admin-pages/main-page/demo-sites.php:50
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Preview"
 msgstr ""
 
@@ -304,17 +304,17 @@ msgid "Try Online"
 msgstr ""
 
 #: lib/admin-pages/main-page/demo-sites.php:95
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "You are about to import a demo site"
 msgstr ""
 
 #: lib/admin-pages/main-page/demo-sites.php:98
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Current pages will be moved to trash. You can restore the content back at any time."
 msgstr ""
 
 #: lib/admin-pages/main-page/demo-sites.php:101
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Posts, pages, images, widgets, menus and other theme settings will get imported."
 msgstr ""
 
@@ -323,7 +323,7 @@ msgid "Your current design will be completely overwritten by the new template. T
 msgstr ""
 
 #: lib/admin-pages/main-page/demo-sites.php:110
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "The following plugins will be installed as they are part of the demo"
 msgstr ""
 
@@ -353,9 +353,10 @@ msgstr ""
 #: build/block-editor/index.js:96
 #: build/block-library/index.js:19
 #: build/controls/index.js:35
+#: build/editor/index.js:1
 #: build/editor/index.js:7
-#: build/editor/index.js:23
-#: build/editor/index.js:33
+#: build/editor/index.js:21
+#: build/editor/index.js:31
 msgid "Cancel"
 msgstr ""
 
@@ -381,12 +382,12 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/block-library/index.js:37
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Active"
 msgstr ""
 
 #: lib/admin-pages/main-page/demo-sites.php:206
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Installed"
 msgstr ""
 
@@ -521,7 +522,7 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
-#: lib/AI/api.php:710
+#: lib/AI/api.php:700
 #: lib/AI/SDApi/KubioCloudSDApi.php:75
 msgid "No image was generated"
 msgstr ""
@@ -1158,7 +1159,7 @@ msgstr ""
 
 #: lib/full-site-editing/template-parts.php:13
 #: lib/kubio-block-library.php:41
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Template Parts"
 msgstr ""
 
@@ -1263,12 +1264,12 @@ msgid "Themes"
 msgstr ""
 
 #: lib/full-site-editing/templates.php:45
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Templates"
 msgstr ""
 
 #: lib/full-site-editing/templates.php:46
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Template"
 msgstr ""
 
@@ -1362,15 +1363,19 @@ msgstr ""
 
 #: lib/integrations/third-party-themes/templates-importer.php:285
 #: lib/kubio-editor.php:160
-#: lib/src/Core/Activation.php:391
-#: lib/src/Core/Activation.php:573
-#: build/editor/index.js:23
+#: lib/src/Core/Activation.php:424
+#: lib/src/Core/Activation.php:608
+#: lib/src/Core/KubioFrontPageRevertNotice.php:545
+#: build/editor/index.js:21
 msgid "Blog"
 msgstr ""
 
 #: lib/integrations/third-party-themes/templates-importer.php:323
-#: lib/src/Core/Activation.php:456
-#: lib/src/Core/Activation.php:559
+#: lib/src/Core/Activation.php:491
+#: lib/src/Core/Activation.php:594
+#: lib/src/Core/KubioFrontPageRevertNotice.php:470
+#: lib/src/Core/KubioFrontPageRevertNotice.php:519
+#: lib/src/Core/KubioFrontPageRevertNotice.php:532
 msgid "Home"
 msgstr ""
 
@@ -1378,7 +1383,7 @@ msgstr ""
 #: build/controls/index.js:19
 #: build/core/index.js:7
 #: build/editor-data/index.js:1
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Page"
 msgstr ""
 
@@ -1472,8 +1477,8 @@ msgstr ""
 #: build/block-library/index.js:37
 #: build/editor/index.js:3
 #: build/editor/index.js:7
+#: build/editor/index.js:21
 #: build/editor/index.js:23
-#: build/editor/index.js:25
 #: build/third-party-blocks/index.js:1
 msgid "Content"
 msgstr ""
@@ -1825,7 +1830,7 @@ msgstr ""
 msgid "Current license key was removed! Reason: %s"
 msgstr ""
 
-#: lib/src/Core/Activation.php:509
+#: lib/src/Core/Activation.php:544
 msgid "Primary menu"
 msgstr ""
 
@@ -1856,6 +1861,32 @@ msgstr ""
 
 #: lib/src/Core/EditInKubioCustomizerPanel.php:84
 msgid " Please use the button below to open the Kubio editor."
+msgstr ""
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:699
+msgid "Keep the new home page?"
+msgstr ""
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:703
+msgid " We created a new home page for you. If you don't like it you can restore your previous home page."
+msgstr ""
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:707
+msgid "Yes, keep my new home page"
+msgstr ""
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:710
+msgid "Restore my previous home page"
+msgstr ""
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:737
+#: build/editor/index.js:1
+msgid "Your previous home page was showing the most recent blog posts. Are you sure you want to restore your previous home page?"
+msgstr ""
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:739
+#: build/editor/index.js:1
+msgid "Are you sure you want to restore your previous home page?"
 msgstr ""
 
 #: lib/src/Core/Utils.php:107
@@ -2014,7 +2045,7 @@ msgstr ""
 #: build/admin-area/index.js:1
 #: build/block-library/index.js:33
 #: build/controls/index.js:21
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Loading…"
 msgstr ""
 
@@ -2162,8 +2193,8 @@ msgstr ""
 #: build/block-library/index.js:37
 #: build/controls/index.js:35
 #: build/editor/index.js:3
-#: build/editor/index.js:21
-#: build/editor/index.js:37
+#: build/editor/index.js:19
+#: build/editor/index.js:35
 #: build/format-library/index.js:1
 #: build/wp-global-styles/index.js:1
 msgid "Typography"
@@ -2296,7 +2327,7 @@ msgid "Hero"
 msgstr ""
 
 #: build/ai/index.js:3
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Save changes"
 msgstr ""
 
@@ -2316,15 +2347,16 @@ msgstr ""
 #: build/ai/index.js:3
 #: build/controls/index.js:35
 #: build/editor/index.js:1
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 #: build/editor/index.js:53
 #: build/editor/index.js:55
 msgid "Back"
 msgstr ""
 
 #: build/ai/index.js:3
+#: build/editor/index.js:19
+#: build/editor/index.js:33
 #: build/editor/index.js:35
-#: build/editor/index.js:37
 msgid "Continue"
 msgstr ""
 
@@ -2333,9 +2365,8 @@ msgid "Search…"
 msgstr ""
 
 #: build/ai/index.js:3
-#: build/core-hooks/index.js:1
-#: build/editor/index.js:15
-msgid "Select"
+#: build/controls/index.js:1
+msgid "Select…"
 msgstr ""
 
 #: build/ai/index.js:3
@@ -2969,7 +3000,7 @@ msgid "Tell us a few things about the page we're about to generate."
 msgstr ""
 
 #: build/ai/index.js:3
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Generate with Kubio AI"
 msgstr ""
 
@@ -3020,7 +3051,7 @@ msgstr ""
 #. translators: accessibility text for the footer landmark region.
 #: build/ai/index.js:5
 #: build/editor/index.js:1
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 #: build/editor/index.js:51
 #: build/editor/index.js:55
 msgid "Close"
@@ -3386,8 +3417,8 @@ msgstr ""
 #: build/block-editor/index.js:78
 #: build/block-library/index.js:1
 #: build/block-library/index.js:19
+#: build/editor/index.js:31
 #: build/editor/index.js:33
-#: build/editor/index.js:35
 msgid "Delete"
 msgstr ""
 
@@ -3465,7 +3496,7 @@ msgstr ""
 
 #. translators: Patterns tab title in the block inserter.
 #: build/block-editor/index.js:23
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Sections"
 msgstr ""
 
@@ -3493,7 +3524,7 @@ msgstr ""
 
 #: build/block-editor/index.js:23
 #: build/block-library/index.js:25
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 #: build/editor/index.js:53
 msgid "Search"
 msgstr ""
@@ -3731,7 +3762,7 @@ msgstr ""
 
 #: build/block-editor/index.js:78
 #: build/block-library/index.js:1
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Duplicate"
 msgstr ""
 
@@ -4128,7 +4159,7 @@ msgstr ""
 #: build/controls/index.js:39
 #: build/editor/index.js:3
 #: build/editor/index.js:7
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Advanced"
 msgstr ""
 
@@ -4163,12 +4194,12 @@ msgstr ""
 #: build/block-editor/index.js:118
 #: build/editor/index.js:1
 #: build/editor/index.js:3
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Settings"
 msgstr ""
 
 #: build/block-editor/index.js:118
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "List View"
 msgstr ""
 
@@ -4341,7 +4372,7 @@ msgid "Update block preset"
 msgstr ""
 
 #: build/block-library/index.js:3
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Connect to Kubio Cloud"
 msgstr ""
 
@@ -4381,13 +4412,13 @@ msgstr ""
 
 #. translators: %s is the name of item that was saved
 #: build/block-library/index.js:5
-#: build/editor/index.js:29
+#: build/editor/index.js:27
 msgid "%s saved successfully!"
 msgstr ""
 
 #. translators: %s is the name of item that was not saved
 #: build/block-library/index.js:7
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "An error occurred. %s was not saved"
 msgstr ""
 
@@ -4798,8 +4829,8 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/block-library/index.js:37
 #: build/editor/index.js:15
-#: build/editor/index.js:31
-#: build/editor/index.js:35
+#: build/editor/index.js:29
+#: build/editor/index.js:33
 msgid "Title"
 msgstr ""
 
@@ -6763,7 +6794,7 @@ msgid "Paragraph properties"
 msgstr ""
 
 #: build/block-library/index.js:25
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Paragraph"
 msgstr ""
 
@@ -7720,7 +7751,7 @@ msgid "Show only first level"
 msgstr ""
 
 #: build/block-library/index.js:33
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Mobile"
 msgstr ""
 
@@ -8794,19 +8825,19 @@ msgid "Blank"
 msgstr ""
 
 #: build/constants/index.js:1
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 #: build/utils/index.js:1
 msgid "Custom templates"
 msgstr ""
 
 #: build/constants/index.js:1
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 #: build/utils/index.js:1
 msgid "Theme templates"
 msgstr ""
 
 #: build/constants/index.js:1
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 #: build/utils/index.js:1
 msgid "Kubio templates"
 msgstr ""
@@ -8847,43 +8878,43 @@ msgid "Kubio Default"
 msgstr ""
 
 #: build/constants/index.js:1
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 #: build/utils/index.js:1
 msgid "Color Scheme 1"
 msgstr ""
 
 #: build/constants/index.js:1
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 #: build/utils/index.js:1
 msgid "Color Scheme 2"
 msgstr ""
 
 #: build/constants/index.js:1
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 #: build/utils/index.js:1
 msgid "Color Scheme 3"
 msgstr ""
 
 #: build/constants/index.js:1
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 #: build/utils/index.js:1
 msgid "Color Scheme 4"
 msgstr ""
 
 #: build/constants/index.js:1
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 #: build/utils/index.js:1
 msgid "Color Scheme 5"
 msgstr ""
 
 #: build/constants/index.js:1
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 #: build/utils/index.js:1
 msgid "Color Scheme 6"
 msgstr ""
 
 #: build/constants/index.js:1
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 #: build/utils/index.js:1
 msgid "Color Scheme 7"
 msgstr ""
@@ -8940,6 +8971,11 @@ msgstr ""
 #: build/utils/index.js:21
 #: build/utils/index.js:22
 msgid "Playful %s"
+msgstr ""
+
+#: build/constants/index.js:22
+#: build/utils/index.js:22
+msgid "Contact form plugin"
 msgstr ""
 
 #: build/controls/index.js:1
@@ -8999,10 +9035,6 @@ msgstr ""
 #: build/controls/index.js:19
 #: build/controls/index.js:39
 msgid "Hidden"
-msgstr ""
-
-#: build/controls/index.js:1
-msgid "Select…"
 msgstr ""
 
 #: build/controls/index.js:1
@@ -9294,7 +9326,7 @@ msgid "Step %1$d of %2$d"
 msgstr ""
 
 #: build/controls/index.js:35
-#: build/editor/index.js:37
+#: build/editor/index.js:35
 msgid "Finish"
 msgstr ""
 
@@ -10062,12 +10094,17 @@ msgstr[1] ""
 msgid "Unlink"
 msgstr ""
 
+#: build/core-hooks/index.js:1
+#: build/editor/index.js:15
+msgid "Select"
+msgstr ""
+
 #: build/core/index.js:1
 msgid "Unnamed section"
 msgstr ""
 
 #: build/core/index.js:1
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "(no title)"
 msgstr ""
 
@@ -10097,7 +10134,7 @@ msgid "Inner Page"
 msgstr ""
 
 #: build/core/index.js:3
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Post Page"
 msgstr ""
 
@@ -10179,6 +10216,14 @@ msgid "Edit page in the default language"
 msgstr ""
 
 #: build/editor/index.js:1
+msgid "Confirm home page restore"
+msgstr ""
+
+#: build/editor/index.js:1
+msgid "Restore home page"
+msgstr ""
+
+#: build/editor/index.js:1
 #: build/editor/index.js:53
 msgid "Add block"
 msgstr ""
@@ -10256,37 +10301,37 @@ msgid "There was an error while importing the Kubio blog. Please try again"
 msgstr ""
 
 #: build/editor/index.js:3
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Kubio blog templates were imported successfully! Refresh the editor to enjoy the full site editing experience"
 msgstr ""
 
 #: build/editor/index.js:3
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Refresh page now"
 msgstr ""
 
 #: build/editor/index.js:3
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "💫 Start with the Kubio blog!"
 msgstr ""
 
 #: build/editor/index.js:3
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Kubio comes with a fully customizable blog area for your site."
 msgstr ""
 
 #: build/editor/index.js:3
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Would you like to use the Kubio blog templates? "
 msgstr ""
 
 #: build/editor/index.js:3
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Import Kubio blog"
 msgstr ""
 
 #: build/editor/index.js:3
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Importing Kubio blog…"
 msgstr ""
 
@@ -10327,7 +10372,8 @@ msgid "Generate color scheme"
 msgstr ""
 
 #: build/editor/index.js:3
-#: build/editor/index.js:37
+#: build/editor/index.js:19
+#: build/editor/index.js:35
 msgid "Color Scheme"
 msgstr ""
 
@@ -10546,7 +10592,7 @@ msgstr ""
 
 #. translators: %s: number of the preset, Set refers to the color scheme preset
 #: build/editor/index.js:7
-#: build/editor/index.js:37
+#: build/editor/index.js:35
 msgid "Set %s"
 msgstr ""
 
@@ -10686,7 +10732,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: build/editor/index.js:15
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Close panel"
 msgstr ""
 
@@ -10718,693 +10764,717 @@ msgstr ""
 msgid "Feature activated"
 msgstr ""
 
-#: build/editor/index.js:15
-#: build/editor/index.js:19
-msgid "Preparing page content"
-msgstr ""
-
-#. translators: %s section name
-#: build/editor/index.js:17
-msgid "Generating \"%s\" section"
-msgstr ""
-
 #. translators: %s is the url to pexels
-#: build/editor/index.js:19
+#: build/editor/index.js:17
 #: build/editor/index.js:55
 msgid "The media items like photos and videos are provided by %s"
 msgstr ""
 
+#: build/editor/index.js:17
+#: build/editor/index.js:37
+msgid "Preparing page content"
+msgstr ""
+
 #. translators: %s section name
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Tailoring \"%s\" section"
 msgstr ""
 
-#: build/editor/index.js:21
-msgid "Color Presets"
-msgstr ""
-
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Theme colors"
 msgstr ""
 
-#: build/editor/index.js:21
-#: build/editor/index.js:39
-msgid "Generating…"
-msgstr ""
-
-#: build/editor/index.js:21
-msgid "Preparing site structure"
-msgstr ""
-
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Tailoring page structure"
 msgstr ""
 
-#: build/editor/index.js:21
+#: build/editor/index.js:19
+msgid "The following features will be installed:"
+msgstr ""
+
+#: build/editor/index.js:19
+msgid "The following plugins will be installed to add features that are needed for this type of website."
+msgstr ""
+
+#: build/editor/index.js:19
+msgid "Home page with tailored content"
+msgstr ""
+
+#: build/editor/index.js:19
+msgid "Our AI will create a first draft of home page content specific for the <strong>%s</strong> industry"
+msgstr ""
+
+#: build/editor/index.js:19
+msgid "The following pages will be created:"
+msgstr ""
+
+#: build/editor/index.js:19
+msgid "Here's how we will tailor your website"
+msgstr ""
+
+#: build/editor/index.js:19
+msgid "You can deselect any of the suggested customizations if you don't think they would fit your website."
+msgstr ""
+
+#: build/editor/index.js:19
+#: build/editor/index.js:37
+msgid "Skip"
+msgstr ""
+
+#: build/editor/index.js:19
+msgid "Preparing site structure"
+msgstr ""
+
+#: build/editor/index.js:19
 msgid "Toggle Kubio debug"
 msgstr ""
 
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Export AI structure"
 msgstr ""
 
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Switch to Kubio Editor layout"
 msgstr ""
 
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Switch to WordPress Editor layout"
 msgstr ""
 
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Switch to the new Kubio editor layout for a more friendly editing experience"
 msgstr ""
 
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Switch to the WordPress editor layout to have the default editing experience"
 msgstr ""
 
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Disable Kubio AI capabilities"
 msgstr ""
 
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Enable Kubio AI capabilities"
 msgstr ""
 
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Hide Kubio AI buttons in editors interface"
 msgstr ""
 
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Show Kubio AI buttons in editors interface"
 msgstr ""
 
-#: build/editor/index.js:21
+#: build/editor/index.js:19
 msgid "Connect this site to Kubio Cloud"
 msgstr ""
 
 #. translators: %s is Kubio Cloud the account email
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Currently connected as %s"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Disconnect from Kubio Cloud"
 msgstr ""
 
-#: build/editor/index.js:23
-#: build/editor/index.js:35
+#: build/editor/index.js:21
+#: build/editor/index.js:33
 msgid "More tools & options"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgctxt "noun"
 msgid "View"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Spotlight mode"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Focus on one block at a time"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Spotlight mode activated"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Spotlight mode deactivated"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Open theme customizer"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Plugins"
 msgstr ""
 
+#: build/editor/index.js:21
 #: build/editor/index.js:23
-#: build/editor/index.js:25
 msgid "Full page"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Only this page"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "All pages"
 msgstr ""
 
-#: build/editor/index.js:23
-#: build/editor/index.js:35
+#: build/editor/index.js:21
+#: build/editor/index.js:33
 msgid "Pages"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Favorites"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Could not import content. Please try again later"
 msgstr ""
 
+#: build/editor/index.js:21
 #: build/editor/index.js:23
-#: build/editor/index.js:25
 #: build/editor/index.js:51
 #: build/editor/index.js:53
 #: build/pro/index.js:1
 msgid "PRO"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "ALL"
 msgstr ""
 
+#: build/editor/index.js:21
 #: build/editor/index.js:23
-#: build/editor/index.js:25
 #: build/editor/index.js:51
 msgid "FREE"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Close dialog"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Find a starter site…"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Import Starter Site"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Preview starter site"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Not installed"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Your current design will be completely overwritten by the new template. This process is irreversible. If you wish to be able to go back to the current design,please create a backup of your site before proceedingwith the import."
 msgstr ""
 
+#: build/editor/index.js:21
 #: build/editor/index.js:23
-#: build/editor/index.js:25
 msgid "Import full starter site"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "No Starter Site Found"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Find a page…"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "No Page Found"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "This section is available only in the PRO version."
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "NO ELEMENTS FOUND"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "No Section Found"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Find a section…"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Kubio Library"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Back to Starter Sites"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Back to Pages"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "You can't import page content"
 msgstr ""
 
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "other"
 msgstr ""
 
 #. translators: %s: page name
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "You are being redirected to <strong>%s</strong> page."
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "You have unsaved changes"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 #: build/editor/index.js:51
 msgid "Would you like to save these changes or discard them?"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Discard changes"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Could not redirect to the page you selected"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "This content can be imported only on the blog template"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Switch to the blog template"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "This content can be imported only on the singe post template"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Switch to the singe post template"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "This content can be imported only on the search template"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Switch to the search template"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "This content can be imported only on the 404 template"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Switch to the 404 template"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Could not create new page"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "This content can be imported only on a page"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Create new page"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Live Preview"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Starter site colors"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Heading 1"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Heading 2"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Heading 3"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Heading 4"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Heading 5"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Heading 6"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Starter site typography"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Replace global styles"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "The selected starter site content will be added after your existing sections"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Your header, content and footer will be all replaced with the ones from the selected page"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Full starter site"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "All content will be replaced with the selected full starter site"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Import selection"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "What to import:"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "This content can't be imported here"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "This page is only available in the PRO version of Kubio. Please select a free page to import or upgrade to the PRO version."
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Import"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "This starter site is only available in the PRO version of Kubio. Please select a free starter site to import or upgrade to the PRO version."
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Something went wrong"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Templates Gallery"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Generating preview…"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Desktop"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Tablet"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 #: build/editor/index.js:53
 msgid "Redo"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 #: build/editor/index.js:53
 msgid "Undo"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "AI page generation"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Generate page"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Close the site content panel"
 msgstr ""
 
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Change page"
 msgstr ""
 
 #. translators: Editing current page
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Editing: %s"
 msgstr ""
 
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Save your changes."
 msgstr ""
 
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Undo your last changes."
 msgstr ""
 
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Redo your last undo."
 msgstr ""
 
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Open the block list view."
 msgstr ""
 
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 #: build/editor/index.js:51
 msgid "Maybe later"
 msgstr ""
 
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Creating new page…"
 msgstr ""
 
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "How would you like to create your new page?"
 msgstr ""
 
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Choose one of the two methods below for creating your new page."
 msgstr ""
 
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "New Page"
 msgstr ""
 
-#: build/editor/index.js:27
-#: build/editor/index.js:35
+#: build/editor/index.js:25
+#: build/editor/index.js:33
 msgid "Add page"
 msgstr ""
 
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Create from scratch"
 msgstr ""
 
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Build your page by hand starting from a blank canvas. This option is recommended for advanced users who wish to create their own, custom design."
 msgstr ""
 
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Get a head start by letting Kubio Al generate a first draft of the page for you. Then you can further customize the page to your liking."
 msgstr ""
 
 #. translators: %s is the name of item that was not saved
-#: build/editor/index.js:31
+#: build/editor/index.js:29
 msgid "An error occurred. %s was not saved!"
 msgstr ""
 
-#: build/editor/index.js:31
+#: build/editor/index.js:29
 msgid "Duplicate page"
 msgstr ""
 
-#: build/editor/index.js:31
+#: build/editor/index.js:29
 msgid "Delete "
 msgstr ""
 
-#: build/editor/index.js:31
+#: build/editor/index.js:29
 msgid " page?"
 msgstr ""
 
 #. translators: %s: page name
-#: build/editor/index.js:33
+#: build/editor/index.js:31
 msgid "The <strong>%s</strong> page will be moved in the trash."
 msgstr ""
 
-#: build/editor/index.js:33
+#: build/editor/index.js:31
 msgid "You can recover it later from WP Admin -> Pages -> Trash"
 msgstr ""
 
-#: build/editor/index.js:33
+#: build/editor/index.js:31
 msgid " moved to trash!"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Homepage"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Posts page"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Shop page"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "[Draft]"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Search results"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "All Posts"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Posts"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Categories"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Dashboard"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Site Content"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Add Template"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "New"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Page templates"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Post templates"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "General templates"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Toggle navigation"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "List view"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Close list view sidebar"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Hero Image"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Hero Slideshow"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Are you happy with the hero image selected by Kubio AI?"
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Are you happy with the hero slideshow images selected by Kubio AI?"
 msgstr ""
 
+#: build/editor/index.js:33
 #: build/editor/index.js:35
-#: build/editor/index.js:37
 msgid "Below are a few alternatives. You can also change this later."
 msgstr ""
 
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Set 1"
 msgstr ""
 
-#: build/editor/index.js:37
+#: build/editor/index.js:35
 msgid "Are you happy with the color scheme selected by Kubio AI?"
 msgstr ""
 
-#: build/editor/index.js:37
+#: build/editor/index.js:35
 msgid "Are you happy with the family fonts selected by Kubio AI?"
 msgstr ""
 
-#: build/editor/index.js:37
+#: build/editor/index.js:35
 msgid "You can edit the content of the website after you finish the setup."
 msgstr ""
 
 #. translators: %1$s is the current step index, %2$s is the total number of steps
-#: build/editor/index.js:39
+#: build/editor/index.js:37
 msgid "Step %1$s of %2$s"
 msgstr ""
 
-#: build/editor/index.js:39
+#: build/editor/index.js:37
 msgid "Finishing Touches"
 msgstr ""
 
-#: build/editor/index.js:39
+#: build/editor/index.js:37
 msgid "3. What is your website about?"
 msgstr ""
 
-#: build/editor/index.js:39
+#: build/editor/index.js:37
 msgid "Add logo"
 msgstr ""
 
-#: build/editor/index.js:39
+#: build/editor/index.js:37
 msgid "Choose File"
 msgstr ""
 
-#: build/editor/index.js:39
+#: build/editor/index.js:37
 msgid "2. What is your website name?"
 msgstr ""
 
-#: build/editor/index.js:39
+#: build/editor/index.js:37
 msgid "1. Your Favorite Colors and Fonts"
 msgstr ""
 
-#: build/editor/index.js:39
+#: build/editor/index.js:37
 msgid "Finish Setup"
 msgstr ""
 
-#: build/editor/index.js:39
+#: build/editor/index.js:37
 msgid "Initial Setup"
 msgstr ""
 
-#: build/editor/index.js:39
+#: build/editor/index.js:37
 msgid "Let's set up your website essentials."
 msgstr ""
 
+#: build/editor/index.js:37
+msgid "Field is Required"
+msgstr ""
+
+#. translators: %s section name
 #: build/editor/index.js:39
-msgid "Skip"
+msgid "Generating \"%s\" section"
 msgstr ""
 
 #: build/editor/index.js:39
-msgid "Field is Required"
+msgid "Generating…"
 msgstr ""
 
 #: build/editor/index.js:39

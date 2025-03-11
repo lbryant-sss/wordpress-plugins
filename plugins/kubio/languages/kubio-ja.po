@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-20T16:59:10+02:00\n"
+"POT-Creation-Date: 2025-03-06T17:53:01+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: \n"
 "X-Generator: WP-CLI 2.11.0\n"
@@ -233,7 +233,7 @@ msgid "The supercharged block-based WordPress builder"
 msgstr "スーパーチャージされたブロックベースのWordPressビルダー"
 
 #: lib/admin-pages/kubio-get-started.php:25
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Starter sites"
 msgstr "スターターサイト"
 
@@ -285,7 +285,7 @@ msgid "Retrieving starter sites..."
 msgstr "スターターサイトを取得中..."
 
 #: lib/admin-pages/main-page/demo-sites.php:50
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Preview"
 msgstr "プレビュー"
 
@@ -304,17 +304,17 @@ msgid "Try Online"
 msgstr "オンラインで試す"
 
 #: lib/admin-pages/main-page/demo-sites.php:95
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "You are about to import a demo site"
 msgstr "デモサイトをインポートしようとしています"
 
 #: lib/admin-pages/main-page/demo-sites.php:98
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Current pages will be moved to trash. You can restore the content back at any time."
 msgstr "現在のページはゴミ箱に移動されます。いつでもコンテンツを復元できます。"
 
 #: lib/admin-pages/main-page/demo-sites.php:101
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Posts, pages, images, widgets, menus and other theme settings will get imported."
 msgstr "投稿、ページ、画像、ウィジェット、メニュー、その他のテーマ設定がインポートされます。"
 
@@ -323,7 +323,7 @@ msgid "Your current design will be completely overwritten by the new template. T
 msgstr "現在のデザインは新しいテンプレートに完全に上書きされます。このプロセスは取り消せません。現在のデザインに戻りたい場合は、インポートを進める前にサイトのバックアップを作成してください。"
 
 #: lib/admin-pages/main-page/demo-sites.php:110
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "The following plugins will be installed as they are part of the demo"
 msgstr "次のプラグインはデモの一部としてインストールされます"
 
@@ -353,9 +353,10 @@ msgstr "Kubio PROでのみ利用可能"
 #: build/block-editor/index.js:96
 #: build/block-library/index.js:19
 #: build/controls/index.js:35
+#: build/editor/index.js:1
 #: build/editor/index.js:7
-#: build/editor/index.js:23
-#: build/editor/index.js:33
+#: build/editor/index.js:21
+#: build/editor/index.js:31
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -381,12 +382,12 @@ msgstr "編集を開始"
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/block-library/index.js:37
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Active"
 msgstr "有効"
 
 #: lib/admin-pages/main-page/demo-sites.php:206
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Installed"
 msgstr "インストール済み"
 
@@ -521,7 +522,7 @@ msgstr "Kubio AIを使ってスマートかつ迅速に構築"
 msgid "Unauthorized"
 msgstr "無許可"
 
-#: lib/AI/api.php:710
+#: lib/AI/api.php:700
 #: lib/AI/SDApi/KubioCloudSDApi.php:75
 msgid "No image was generated"
 msgstr "画像が生成されませんでした"
@@ -1158,7 +1159,7 @@ msgstr "テンプレートパーツエリア"
 
 #: lib/full-site-editing/template-parts.php:13
 #: lib/kubio-block-library.php:41
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Template Parts"
 msgstr "テンプレートパーツ"
 
@@ -1263,12 +1264,12 @@ msgid "Themes"
 msgstr "テーマ"
 
 #: lib/full-site-editing/templates.php:45
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Templates"
 msgstr "テンプレート"
 
 #: lib/full-site-editing/templates.php:46
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Template"
 msgstr "テンプレート"
 
@@ -1362,15 +1363,19 @@ msgstr "Kubioの色 %s"
 
 #: lib/integrations/third-party-themes/templates-importer.php:285
 #: lib/kubio-editor.php:160
-#: lib/src/Core/Activation.php:391
-#: lib/src/Core/Activation.php:573
-#: build/editor/index.js:23
+#: lib/src/Core/Activation.php:424
+#: lib/src/Core/Activation.php:608
+#: lib/src/Core/KubioFrontPageRevertNotice.php:545
+#: build/editor/index.js:21
 msgid "Blog"
 msgstr "ブログ"
 
 #: lib/integrations/third-party-themes/templates-importer.php:323
-#: lib/src/Core/Activation.php:456
-#: lib/src/Core/Activation.php:559
+#: lib/src/Core/Activation.php:491
+#: lib/src/Core/Activation.php:594
+#: lib/src/Core/KubioFrontPageRevertNotice.php:470
+#: lib/src/Core/KubioFrontPageRevertNotice.php:519
+#: lib/src/Core/KubioFrontPageRevertNotice.php:532
 msgid "Home"
 msgstr "ホーム"
 
@@ -1378,7 +1383,7 @@ msgstr "ホーム"
 #: build/controls/index.js:19
 #: build/core/index.js:7
 #: build/editor-data/index.js:1
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Page"
 msgstr "固定ページ"
 
@@ -1472,8 +1477,8 @@ msgstr "機能"
 #: build/block-library/index.js:37
 #: build/editor/index.js:3
 #: build/editor/index.js:7
+#: build/editor/index.js:21
 #: build/editor/index.js:23
-#: build/editor/index.js:25
 #: build/third-party-blocks/index.js:1
 msgid "Content"
 msgstr "コンテンツ"
@@ -1825,7 +1830,7 @@ msgstr "Kubio ライセンスサーバーの呼び出し中にエラーが発生
 msgid "Current license key was removed! Reason: %s"
 msgstr "現在のライセンスキーが削除されました！理由：%s"
 
-#: lib/src/Core/Activation.php:509
+#: lib/src/Core/Activation.php:544
 msgid "Primary menu"
 msgstr "メインメニュー"
 
@@ -1857,6 +1862,32 @@ msgstr "Kubioビルダーをインストールすると、カスタマイザー�
 #: lib/src/Core/EditInKubioCustomizerPanel.php:84
 msgid " Please use the button below to open the Kubio editor."
 msgstr "下のボタンを使用してKubioエディターを開いてください。"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:699
+msgid "Keep the new home page?"
+msgstr "新しいホームページを維持しますか？"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:703
+msgid " We created a new home page for you. If you don't like it you can restore your previous home page."
+msgstr "新しいホームページを作成しました。気に入らない場合は、以前のホームページに戻すことができます。"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:707
+msgid "Yes, keep my new home page"
+msgstr "はい、新しいホームページを保持します"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:710
+msgid "Restore my previous home page"
+msgstr "以前のホームページを復元する"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:737
+#: build/editor/index.js:1
+msgid "Your previous home page was showing the most recent blog posts. Are you sure you want to restore your previous home page?"
+msgstr "以前のホームページでは最新のブログ投稿が表示されていました。以前のホームページを復元してもよろしいですか？"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:739
+#: build/editor/index.js:1
+msgid "Are you sure you want to restore your previous home page?"
+msgstr "以前のホームページを復元しますか？"
 
 #: lib/src/Core/Utils.php:107
 msgid "Shortcode is empty."

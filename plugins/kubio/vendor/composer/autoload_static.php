@@ -177,6 +177,7 @@ class ComposerStaticInita29046130091afd291c080d1a17b6568
         'Kubio\\Core\\GlobalElements\\LinkWrapper' => __DIR__ . '/../..' . '/lib/src/Core/GlobalElements/LinkWrapper.php',
         'Kubio\\Core\\Importer' => __DIR__ . '/../..' . '/lib/src/Core/Importer.php',
         'Kubio\\Core\\InnerBlocks' => __DIR__ . '/../..' . '/lib/src/Core/InnerBlocks.php',
+        'Kubio\\Core\\KubioFrontPageRevertNotice' => __DIR__ . '/../..' . '/lib/src/Core/KubioFrontPageRevertNotice.php',
         'Kubio\\Core\\Layout\\LayoutHelper' => __DIR__ . '/../..' . '/lib/src/Core/Layout/LayoutHelper.php',
         'Kubio\\Core\\License\\ActivationForm' => __DIR__ . '/../..' . '/lib/pro/src/Core/License/ActivationForm.php',
         'Kubio\\Core\\License\\CheckForm' => __DIR__ . '/../..' . '/lib/pro/src/Core/License/CheckForm.php',

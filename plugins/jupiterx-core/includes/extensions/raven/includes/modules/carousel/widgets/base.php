@@ -636,7 +636,7 @@ abstract class Base extends Base_Widget {
 
 		$slides_count = count( $settings['slides'] );
 
-		$swiper_class = Elementor::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$swiper_class = 'swiper';
 		?>
 		<div class="raven-swiper">
 			<div class="<?php echo esc_attr( $settings['container_class'] ); ?> <?php echo esc_attr( $swiper_class ); ?>">

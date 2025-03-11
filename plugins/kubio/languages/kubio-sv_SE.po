@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-20T16:59:10+02:00\n"
+"POT-Creation-Date: 2025-03-06T17:53:01+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: \n"
 "X-Generator: WP-CLI 2.11.0\n"
@@ -233,7 +233,7 @@ msgid "The supercharged block-based WordPress builder"
 msgstr "Den superladdade blockbaserade WordPress-byggaren"
 
 #: lib/admin-pages/kubio-get-started.php:25
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Starter sites"
 msgstr "Startwebbplatser"
 
@@ -285,7 +285,7 @@ msgid "Retrieving starter sites..."
 msgstr "Hämtar startplatser..."
 
 #: lib/admin-pages/main-page/demo-sites.php:50
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Preview"
 msgstr "Förhandsgranska"
 
@@ -304,17 +304,17 @@ msgid "Try Online"
 msgstr "Prova online"
 
 #: lib/admin-pages/main-page/demo-sites.php:95
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "You are about to import a demo site"
 msgstr "Du är på väg att importera en demo-webbplats"
 
 #: lib/admin-pages/main-page/demo-sites.php:98
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Current pages will be moved to trash. You can restore the content back at any time."
 msgstr "Nuvarande sidor kommer att flyttas till papperskorgen. Du kan återställa innehållet när som helst."
 
 #: lib/admin-pages/main-page/demo-sites.php:101
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Posts, pages, images, widgets, menus and other theme settings will get imported."
 msgstr "Inlägg, sidor, bilder, widgets, menyer och andra temainställningar kommer att importeras."
 
@@ -323,7 +323,7 @@ msgid "Your current design will be completely overwritten by the new template. T
 msgstr "Din nuvarande design kommer att skrivas över helt av den nya mallen. Denna process är oåterkallelig. Om du vill kunna återgå till den nuvarande designen, vänligen skapa en säkerhetskopia av din webbplats innan du fortsätter med importen."
 
 #: lib/admin-pages/main-page/demo-sites.php:110
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "The following plugins will be installed as they are part of the demo"
 msgstr "Följande tillägg kommer att installeras eftersom de är en del av demot"
 
@@ -353,9 +353,10 @@ msgstr "Endast tillgängligt med Kubio PRO"
 #: build/block-editor/index.js:96
 #: build/block-library/index.js:19
 #: build/controls/index.js:35
+#: build/editor/index.js:1
 #: build/editor/index.js:7
-#: build/editor/index.js:23
-#: build/editor/index.js:33
+#: build/editor/index.js:21
+#: build/editor/index.js:31
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -381,12 +382,12 @@ msgstr "Börja redigera"
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/block-library/index.js:37
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Active"
 msgstr "Aktiv"
 
 #: lib/admin-pages/main-page/demo-sites.php:206
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Installed"
 msgstr "Installerat"
 
@@ -521,7 +522,7 @@ msgstr "Bygg smartare och snabbare med Kubio AI"
 msgid "Unauthorized"
 msgstr "Obehörig"
 
-#: lib/AI/api.php:710
+#: lib/AI/api.php:700
 #: lib/AI/SDApi/KubioCloudSDApi.php:75
 msgid "No image was generated"
 msgstr "Ingen bild genererades"
@@ -1158,7 +1159,7 @@ msgstr "Malldelsyta"
 
 #: lib/full-site-editing/template-parts.php:13
 #: lib/kubio-block-library.php:41
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Template Parts"
 msgstr "Malldelar"
 
@@ -1263,12 +1264,12 @@ msgid "Themes"
 msgstr "Teman"
 
 #: lib/full-site-editing/templates.php:45
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Templates"
 msgstr "Mallar"
 
 #: lib/full-site-editing/templates.php:46
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Template"
 msgstr "Mall"
 
@@ -1362,15 +1363,19 @@ msgstr "Kubio färg %s"
 
 #: lib/integrations/third-party-themes/templates-importer.php:285
 #: lib/kubio-editor.php:160
-#: lib/src/Core/Activation.php:391
-#: lib/src/Core/Activation.php:573
-#: build/editor/index.js:23
+#: lib/src/Core/Activation.php:424
+#: lib/src/Core/Activation.php:608
+#: lib/src/Core/KubioFrontPageRevertNotice.php:545
+#: build/editor/index.js:21
 msgid "Blog"
 msgstr "Blogg"
 
 #: lib/integrations/third-party-themes/templates-importer.php:323
-#: lib/src/Core/Activation.php:456
-#: lib/src/Core/Activation.php:559
+#: lib/src/Core/Activation.php:491
+#: lib/src/Core/Activation.php:594
+#: lib/src/Core/KubioFrontPageRevertNotice.php:470
+#: lib/src/Core/KubioFrontPageRevertNotice.php:519
+#: lib/src/Core/KubioFrontPageRevertNotice.php:532
 msgid "Home"
 msgstr "Hem"
 
@@ -1378,7 +1383,7 @@ msgstr "Hem"
 #: build/controls/index.js:19
 #: build/core/index.js:7
 #: build/editor-data/index.js:1
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Page"
 msgstr "Sida"
 
@@ -1472,8 +1477,8 @@ msgstr "Funktioner"
 #: build/block-library/index.js:37
 #: build/editor/index.js:3
 #: build/editor/index.js:7
+#: build/editor/index.js:21
 #: build/editor/index.js:23
-#: build/editor/index.js:25
 #: build/third-party-blocks/index.js:1
 msgid "Content"
 msgstr "Innehåll"
@@ -1825,7 +1830,7 @@ msgstr "Det uppstod ett fel vid anrop till Kubio License Server: <code>%1$s</cod
 msgid "Current license key was removed! Reason: %s"
 msgstr "Aktuell licensnyckel har tagits bort! Anledning: %s"
 
-#: lib/src/Core/Activation.php:509
+#: lib/src/Core/Activation.php:544
 msgid "Primary menu"
 msgstr "Primär meny"
 
@@ -1857,6 +1862,32 @@ msgstr "När du har installerat Kubio-byggaren kommer all webbplatsredigering at
 #: lib/src/Core/EditInKubioCustomizerPanel.php:84
 msgid " Please use the button below to open the Kubio editor."
 msgstr "Använd knappen nedan för att öppna Kubio-editorn."
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:699
+msgid "Keep the new home page?"
+msgstr "Behåll den nya startsidan?"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:703
+msgid " We created a new home page for you. If you don't like it you can restore your previous home page."
+msgstr "Vi har skapat en ny startsida åt dig. Om du inte gillar den kan du återställa din föregående startsida."
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:707
+msgid "Yes, keep my new home page"
+msgstr "Ja, behåll min nya startsida"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:710
+msgid "Restore my previous home page"
+msgstr "Återställ min föregående startsida"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:737
+#: build/editor/index.js:1
+msgid "Your previous home page was showing the most recent blog posts. Are you sure you want to restore your previous home page?"
+msgstr "Din föregående startsida visades de senaste blogginläggen. Är du säker på att du vill återställa din föregående startsida?"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:739
+#: build/editor/index.js:1
+msgid "Are you sure you want to restore your previous home page?"
+msgstr "Är du säker på att du vill återställa din tidigare startsida?"
 
 #: lib/src/Core/Utils.php:107
 msgid "Shortcode is empty."

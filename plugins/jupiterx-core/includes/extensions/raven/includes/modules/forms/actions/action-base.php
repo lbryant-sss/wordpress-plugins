@@ -126,7 +126,7 @@ abstract class Action_Base {
 	 *
 	 * @param string $setting Shortcode string.
 	 * @param string $record_fields Fields that user filled in the form.
-	 * @param string $form_settings_fields Form elementor settings.
+	 * @param array $form_settings_fields Form elementor settings.
 	 * @param string $content_type Content type.
 	 * @param string $line_break Line break.
 	 * @param string $content_field Content field determines that if the shortcode is for the email body or another fields.
@@ -136,41 +136,47 @@ abstract class Action_Base {
 	public static function replace_setting_shortcodes( $setting, $record_fields, $form_settings_fields, $content_type, $line_break, $content_field = true ) {
 		// Shortcode can be `[field id="fds21fd"]` or `[field title="Email" id="fds21fd"]`, multiple shortcodes are allowed
 		return preg_replace_callback( '/(\[field[^]]*id="(\w+)"[^]]*\])/', function( $matches ) use ( $record_fields, $form_settings_fields, $content_type, $line_break, $content_field ) {
-			$value    = '';
 			$field_id = '';
 			$body     = '';
 
-			foreach ( $form_settings_fields as $key => $default ) {
-				if ( $default['field_custom_id'] === $matches[2] ) {
-					$field_id = $default['_id'];
-
+			// Find the matching field
+			foreach ( $form_settings_fields as $field ) {
+				if ( $field['field_custom_id'] === $matches[2] ) {
+					$field_id = $field['_id'];
 					break;
 				}
 			}
 
-			if ( isset( $record_fields[ $field_id ] ) ) {
-				$value = $record_fields[ $field_id ];
-			}
+			$value   = $record_fields[ $field_id ] ?? '';
+			$content = $value;
 
 			if ( ! $content_field ) {
 				return $value;
 			}
 
 			foreach ( $form_settings_fields as $field ) {
-				if ( 'html' === $field['type'] ) {
+				if ( $field['_id'] !== $field_id || 'html' === $field['type'] ) {
 					continue;
 				}
 
-				$title   = $field['label'];
-				$content = $record_fields[ $field['_id'] ];
+				$title = $field['label'];
 
 				if ( 'textarea' === $field['type'] && 'html' === $content_type ) {
-					$value = str_replace( [ "\r\n", "\n", "\r" ], '<br>', $value );
+					$content = nl2br( $content );
 				}
 
-				if ( $content === $value && $field_id === $field['_id'] ) {
-					$body = $title . ': ' . $value . $line_break;
+				if ( 'acceptance' === $field['type'] ) {
+					$newsletter_key = isset( $record_fields['register_acceptance'] ) ? 'register_acceptance' : $field['_id'];
+					$newsletter     = $record_fields[ $newsletter_key ];
+					$content        = 'on' === $newsletter ? __( 'Yes', 'jupiterx-core' ) : __( 'No', 'jupiterx-core' );
 				}
+
+				if ( 'newsletter' === $field['map_to'] && 'acceptance' === $field['type'] ) {
+					$title = empty( $title ) ? __( 'Newsletter', 'jupiterx-core' ) : $title;
+				}
+
+				$body = $title . ': ' . $content . $line_break;
+				break;
 			}
 
 			return $body;

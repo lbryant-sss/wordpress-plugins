@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-20T16:59:10+02:00\n"
+"POT-Creation-Date: 2025-03-06T17:53:01+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: \n"
 "X-Generator: WP-CLI 2.11.0\n"
@@ -233,7 +233,7 @@ msgid "The supercharged block-based WordPress builder"
 msgstr "Constructorul WordPress cu blocuri super încărcat"
 
 #: lib/admin-pages/kubio-get-started.php:25
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Starter sites"
 msgstr "Site-uri pentru a începe"
 
@@ -285,7 +285,7 @@ msgid "Retrieving starter sites..."
 msgstr "Se preiau site-urile de pornire..."
 
 #: lib/admin-pages/main-page/demo-sites.php:50
-#: build/editor/index.js:25
+#: build/editor/index.js:23
 msgid "Preview"
 msgstr "Previzualizează"
 
@@ -304,17 +304,17 @@ msgid "Try Online"
 msgstr "Încearcă online"
 
 #: lib/admin-pages/main-page/demo-sites.php:95
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "You are about to import a demo site"
 msgstr "Ești pe cale să imporți un site demonstrativ"
 
 #: lib/admin-pages/main-page/demo-sites.php:98
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Current pages will be moved to trash. You can restore the content back at any time."
 msgstr "Paginile curente vor fi aruncate la gunoi. Poți să restaurezi înapoi conținutul, oricând."
 
 #: lib/admin-pages/main-page/demo-sites.php:101
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Posts, pages, images, widgets, menus and other theme settings will get imported."
 msgstr "Vor fi importate articolele, paginile, imaginile, piesele, meniurile și alte setări pentru temă."
 
@@ -323,7 +323,7 @@ msgid "Your current design will be completely overwritten by the new template. T
 msgstr "Designul tău actual va fi complet suprascris de noul șablon. Acest proces este ireversibil. Dacă dorești să poți reveni la designul actual, te rog să-ți faci o copie de siguranță a site-ului înainte de a continua cu importul."
 
 #: lib/admin-pages/main-page/demo-sites.php:110
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "The following plugins will be installed as they are part of the demo"
 msgstr "Deoarece fac parte din demonstrație, vor fi instalate modulele următoare"
 
@@ -353,9 +353,10 @@ msgstr "Disponibil doar cu Kubio PRO"
 #: build/block-editor/index.js:96
 #: build/block-library/index.js:19
 #: build/controls/index.js:35
+#: build/editor/index.js:1
 #: build/editor/index.js:7
-#: build/editor/index.js:23
-#: build/editor/index.js:33
+#: build/editor/index.js:21
+#: build/editor/index.js:31
 msgid "Cancel"
 msgstr "Anulează"
 
@@ -381,12 +382,12 @@ msgstr "Începe editarea"
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/block-library/index.js:37
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Active"
 msgstr "Active"
 
 #: lib/admin-pages/main-page/demo-sites.php:206
-#: build/editor/index.js:23
+#: build/editor/index.js:21
 msgid "Installed"
 msgstr "Instalată"
 
@@ -521,7 +522,7 @@ msgstr "Construiește mai inteligent și mai rapid cu Kubio AI"
 msgid "Unauthorized"
 msgstr "Neautorizat"
 
-#: lib/AI/api.php:710
+#: lib/AI/api.php:700
 #: lib/AI/SDApi/KubioCloudSDApi.php:75
 msgid "No image was generated"
 msgstr "Nu a fost generată nicio imagine"
@@ -1158,7 +1159,7 @@ msgstr "Zonă pentru partea de șablon"
 
 #: lib/full-site-editing/template-parts.php:13
 #: lib/kubio-block-library.php:41
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Template Parts"
 msgstr "Părți de șablon"
 
@@ -1263,12 +1264,12 @@ msgid "Themes"
 msgstr "Teme"
 
 #: lib/full-site-editing/templates.php:45
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Templates"
 msgstr "Șabloane"
 
 #: lib/full-site-editing/templates.php:46
-#: build/editor/index.js:35
+#: build/editor/index.js:33
 msgid "Template"
 msgstr "Șablon"
 
@@ -1362,15 +1363,19 @@ msgstr "Culoare Kubio %s"
 
 #: lib/integrations/third-party-themes/templates-importer.php:285
 #: lib/kubio-editor.php:160
-#: lib/src/Core/Activation.php:391
-#: lib/src/Core/Activation.php:573
-#: build/editor/index.js:23
+#: lib/src/Core/Activation.php:424
+#: lib/src/Core/Activation.php:608
+#: lib/src/Core/KubioFrontPageRevertNotice.php:545
+#: build/editor/index.js:21
 msgid "Blog"
 msgstr "Blog"
 
 #: lib/integrations/third-party-themes/templates-importer.php:323
-#: lib/src/Core/Activation.php:456
-#: lib/src/Core/Activation.php:559
+#: lib/src/Core/Activation.php:491
+#: lib/src/Core/Activation.php:594
+#: lib/src/Core/KubioFrontPageRevertNotice.php:470
+#: lib/src/Core/KubioFrontPageRevertNotice.php:519
+#: lib/src/Core/KubioFrontPageRevertNotice.php:532
 msgid "Home"
 msgstr "Prima pagină"
 
@@ -1378,7 +1383,7 @@ msgstr "Prima pagină"
 #: build/controls/index.js:19
 #: build/core/index.js:7
 #: build/editor-data/index.js:1
-#: build/editor/index.js:27
+#: build/editor/index.js:25
 msgid "Page"
 msgstr "Pagină"
 
@@ -1472,8 +1477,8 @@ msgstr "Funcționalități"
 #: build/block-library/index.js:37
 #: build/editor/index.js:3
 #: build/editor/index.js:7
+#: build/editor/index.js:21
 #: build/editor/index.js:23
-#: build/editor/index.js:25
 #: build/third-party-blocks/index.js:1
 msgid "Content"
 msgstr "Conținut"
@@ -1825,7 +1830,7 @@ msgstr "A apărut o eroare la apelarea serverului de licențe Kubio: <code>%1$s<
 msgid "Current license key was removed! Reason: %s"
 msgstr "Cheia de licență actuală a fost înlăturată! Motiv: %s"
 
-#: lib/src/Core/Activation.php:509
+#: lib/src/Core/Activation.php:544
 msgid "Primary menu"
 msgstr "Meniu principal"
 
@@ -1857,6 +1862,32 @@ msgstr "După ce instalezi constructorul Kubio, toate editările de pe site se v
 #: lib/src/Core/EditInKubioCustomizerPanel.php:84
 msgid " Please use the button below to open the Kubio editor."
 msgstr "Te rog folosește butonul de mai jos pentru a deschide editorul Kubio."
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:699
+msgid "Keep the new home page?"
+msgstr "Păstrezi noua pagină de start?"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:703
+msgid " We created a new home page for you. If you don't like it you can restore your previous home page."
+msgstr "Am creat o nouă pagină de pornire pentru tine. Dacă nu îți place, poți restaura pagina ta de pornire anterioară."
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:707
+msgid "Yes, keep my new home page"
+msgstr "Da, păstrează-mi noua pagină de pornire"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:710
+msgid "Restore my previous home page"
+msgstr "Restabilește pagina mea de start anterioară"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:737
+#: build/editor/index.js:1
+msgid "Your previous home page was showing the most recent blog posts. Are you sure you want to restore your previous home page?"
+msgstr "Pagina ta de start anterioară afișa cele mai recente articole de pe blog. Ești sigur că vrei să-ți restaurezi pagina de start anterioară?"
+
+#: lib/src/Core/KubioFrontPageRevertNotice.php:739
+#: build/editor/index.js:1
+msgid "Are you sure you want to restore your previous home page?"
+msgstr "Ești sigur că vrei să-ți restaurezi pagina de start anterioară?"
 
 #: lib/src/Core/Utils.php:107
 msgid "Shortcode is empty."

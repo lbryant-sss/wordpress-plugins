@@ -154,8 +154,9 @@ class THWCFD_Admin_Settings_Block_Fields extends THWCFD_Admin_Settings{
 						$disabled_cb = $disable_actions ? 'disabled' : '';
 						
 						$non_editable_field = $name === 'email' ? ' not-editable' : '';
+						$not_deletable_field = $name === 'country' ? ' not-deletable' : '';
 					?>
-						<tr class="row_<?php echo esc_attr($i); echo($is_enabled === 1 ? '' : ' thpladmin-disabled');  echo esc_attr($non_editable_field);?>">
+						<tr class="row_<?php echo esc_attr($i); echo($is_enabled === 1 ? '' : ' thpladmin-disabled');  echo esc_attr($non_editable_field); echo esc_attr($not_deletable_field);?>">
 							<td width="1%" class="sort ui-sortable-handle">
 								<input type="hidden" name="f_name[<?php echo esc_attr($i); ?>]" class="f_name" value="<?php echo esc_attr($name); ?>" />
 								<input type="hidden" name="f_order[<?php echo esc_attr($i); ?>]" class="f_order" value="<?php echo esc_attr($i); ?>" />

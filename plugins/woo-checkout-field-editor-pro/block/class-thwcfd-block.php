@@ -40,6 +40,7 @@ class THWCFD_Block {
         //add_filter('woocommerce_shared_settings', array($this, 'update_default_fields_data'), 999);
         add_action('woocommerce_blocks_checkout_block_registration', array($this, 'update_default_fields_data_with_block'), 999);
         add_action('woocommerce_validate_additional_field', array($this, 'validate_additional_field'), 10, 3);
+        add_filter('woocommerce_get_country_locale', array($this, 'update_address_fields_data'), 999);
         if($this->has_block_checkout()){
             add_filter('woocommerce_default_address_fields', array($this, 'update_default_fields_data'), 999);
         }  
@@ -62,6 +63,7 @@ class THWCFD_Block {
         if (!is_array($fieldset) || !is_array($default_address_fields)) {
             return;
         }
+        $remove_optional = apply_filters('thwcfe_remove_optional_label', false);
         $additional_fields = array_diff_key($fieldset, $default_address_fields);
         foreach ($additional_fields as $field_data) {
 			if($field_data['type'] === 'checkbox'){
@@ -76,6 +78,11 @@ class THWCFD_Block {
 				array(
 					'id'          => 'thwcfe-block/'.$field_data['name'],
 					'label'       => $field_data['label'],
+                    'optionalLabel' =>  $remove_optional ? $field_data['label'] : sprintf(
+                        /* translators: %s Field label. */
+                        __( '%s (optional)', 'woocommerce' ),
+                        $field_data['label']
+				    ),
 					'placeholder' => $field_data['placeholder'],
 					'location'    => 'address',
 					'type'        => $field_data['type'],
@@ -102,6 +109,45 @@ class THWCFD_Block {
 		return $field_options;
 	}
 
+    public function update_address_fields_data($locale){
+ 
+        if(! function_exists('has_block') || ! has_block( 'woocommerce/checkout' )) {
+            return $locale;
+        }
+        $change_default_address_fields = apply_filters('thwcfe_change_default_block_address_fields', true);
+        if (!$change_default_address_fields) {
+            return $locale;
+        }
+
+        $field_set = $this->get_section_field_set('address');
+        $address_field_keys = array('address_1', 'postcode', 'city', 'state');
+        $address_fields = array_intersect_key($field_set, array_flip($address_field_keys));
+ 
+        foreach ($locale as $key => $value) {
+            $this->update_locale_field($locale, $key, 'address_1', $address_fields);
+            $this->update_locale_field($locale, $key, 'postcode', $address_fields);
+            $this->update_locale_field($locale, $key, 'city', $address_fields);
+            $this->update_locale_field($locale, $key, 'state', $address_fields);
+        }
+  
+        return $locale;
+    }
+ 
+    private function update_locale_field(&$locale, $key, $field_name, $address_fields) {
+
+        if (isset($address_fields[$field_name])) {
+            $locale[$key][$field_name] = [
+                'required' => $address_fields[$field_name]['required'] ?? true,
+                'hidden'   => false,
+            ];
+        } else {
+            $locale[$key][$field_name] = [
+                'required' => false,
+                'hidden'   => true,
+            ];
+        }
+    }
+
     public function update_default_fields_data_with_block() {
 
 		if (!class_exists('Automattic\WooCommerce\Blocks\Package') || !class_exists('Automattic\WooCommerce\Blocks\Assets\AssetDataRegistry') || !class_exists('Automattic\WooCommerce\Blocks\Domain\Services\CheckoutFields')) {
@@ -116,7 +162,8 @@ class THWCFD_Block {
 		$asset_data_registry = Package::container()->get(AssetDataRegistry::class);
         $default_address_fields = THWCFD_Utils_Block::get_core_fields();
         $field_set = $this->get_section_field_set('address');
-       
+        $remove_optional = apply_filters('thwcfe_remove_optional_label', false);
+
         foreach( $default_address_fields as $key => &$field){
             if($key === 'email'){
                 continue;
@@ -124,7 +171,13 @@ class THWCFD_Block {
             if (isset($field_set[$key])) {
                 $field['index'] = $field_set[$key]['priority'] ?? $field['index'];
                 $field['label'] = $field_set[$key]['label']?? $field['label'];
+                if($remove_optional){
+                    $field['optionalLabel'] = $field_set[$key]['label']?? $field['optionalLabel'];
+                }else{
+                    $field['optionalLabel'] = $field_set[$key]['label']? $field_set[$key]['label'].' (optional)' : $field['optionalLabel'];
+                }
                 $field['required'] = $field_set[$key]['required'] ?? $field['required'];
+                
             } else {
                 $field['hidden'] = true;
             }
@@ -192,7 +245,7 @@ class THWCFD_Block {
                         $errors->add(
                             'invalid_email_field',
                             sprintf(
-                                __('The provided %s is not a valid email address.', 'woocommerce'),
+                                __('The provided %s is not a valid email address.', 'woo-checkout-field-editor-pro'),
                                 esc_html($field_properties['title'] ?? 'value')
                             )
                         );
@@ -205,7 +258,7 @@ class THWCFD_Block {
                         $errors->add(
                             'invalid_phone_field',
                             sprintf(
-                                __('The provided %s is not a valid phone number.', 'woocommerce'),
+                                __('The provided %s is not a valid phone number.', 'woo-checkout-field-editor-pro'),
                                 esc_html($field_properties['title'] ?? 'value')
                             )
                         );
@@ -218,7 +271,7 @@ class THWCFD_Block {
                         $errors->add(
                             'invalid_postcode',
                             sprintf(
-                                __('The provided %s is not a valid postcode.', 'woocommerce'),
+                                __('The provided %s is not a valid postcode.', 'woo-checkout-field-editor-pro'),
                                 esc_html($field_properties['title'] ?? 'value')
                             )
                         );

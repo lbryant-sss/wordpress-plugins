@@ -39,6 +39,10 @@ class Media_Gallery extends Base_Widget {
 		return 'raven-element-icon raven-element-icon-media-gallery';
 	}
 
+	public function get_style_depends() {
+		return [ 'e-swiper', 'swiper' ];
+	}
+
 	public function register_controls() {
 		$this->register_content_settings_controls();
 		$this->register_content_layout_controls();
