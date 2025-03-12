@@ -1,9 +1,9 @@
 import { r as registerInstance, c as createEvent, h, a as getElement } from './index-745b6bec.js';
-import { s as state } from './mutations-83ea96b2.js';
+import { s as state } from './mutations-6f9b9a86.js';
 import { s as state$1 } from './store-627acec4.js';
 import { s as state$3 } from './store-f54d1b1f.js';
-import './watchers-8dce998c.js';
-import { s as state$2 } from './getters-09d843cb.js';
+import './watchers-876133bf.js';
+import { s as state$2 } from './getters-07c1280c.js';
 import { U as Universe } from './universe-5a73abb7.js';
 import './index-06061d4e.js';
 import './utils-cd1431df.js';
@@ -12,7 +12,7 @@ import './add-query-args-0e2a8393.js';
 import './index-c5a96d53.js';
 import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
-import './price-d5770168.js';
+import './price-7bb626d0.js';
 import './watchers-38693c1f.js';
 import './util-50af2a83.js';
 

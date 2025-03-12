@@ -6,8 +6,8 @@ export declare class ScProductPrice {
     saleText: string;
     /** The product id */
     productId: string;
-    renderRange(): any;
+    renderRange(): string;
     renderVariantPrice(selectedVariant: Variant): any;
-    renderPrice(price: Price, variantAmount?: number): any;
+    renderPrice(price: Price, variant?: Variant): any;
     render(): any;
 }

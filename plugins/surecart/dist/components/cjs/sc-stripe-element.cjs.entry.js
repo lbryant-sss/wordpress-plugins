@@ -6,9 +6,9 @@ const index = require('./index-8acc3c89.js');
 const pure = require('./pure-bd6f0a6e.js');
 const consumer = require('./consumer-9f4ee0e3.js');
 const watchers = require('./watchers-2ad3abd1.js');
-const getters = require('./getters-4ca6c14e.js');
+const getters = require('./getters-82d9bfb6.js');
 const mutations$1 = require('./mutations-11c8f9a8.js');
-const mutations = require('./mutations-757d8d21.js');
+const mutations = require('./mutations-747a9cc3.js');
 require('./index-bcdafe6e.js');
 require('./util-b877b2bd.js');
 require('./utils-2e91d46c.js');
@@ -18,7 +18,7 @@ require('./add-query-args-49dcb630.js');
 require('./google-59d23803.js');
 require('./currency-71fce0f0.js');
 require('./store-4a539aea.js');
-require('./price-653ec1cb.js');
+require('./price-ca4a4318.js');
 
 const scStripeElementCss = "sc-stripe-element{display:block;--focus-ring:0 0 0 var(--sc-focus-ring-width) var(--sc-focus-ring-color-primary)}sc-stripe-element sc-input{--sc-input-height-medium:auto}.sc-stripe *{font-family:var(--sc-input-font-family);font-weight:var(--sc-input-font-weight);font-size:var(--sc-input-font-size)}.sc-stripe-element{border-radius:var(--sc-input-border-radius-medium);font-size:var(--sc-input-font-size-medium);height:var(--sc-input-height-medium);width:100%;box-sizing:border-box !important;background-color:var(--sc-input-background-color);border:solid 1px var(--sc-input-border-color, var(--sc-input-border));box-shadow:var(--sc-input-box-shadow);transition:var(--sc-input-transition, var(--sc-transition-medium)) color, var(--sc-input-transition, var(--sc-transition-medium)) border, var(--sc-input-transition, var(--sc-transition-medium)) box-shadow}.sc-stripe-element:hover{background-color:var(--sc-input-background-color-hover);border-color:var(--sc-input-border-color-hover)}.sc-stripe-element.StripeElement--focus{background-color:var(--sc-input-background-color-focus);border-color:var(--sc-input-border-color-focus);box-shadow:var(--focus-ring)}.sc-stripe fieldset{margin:0 15px 20px;padding:0;border-style:none;background-color:#7795f8;box-shadow:0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #829fff;border-radius:4px}.sc-stripe .row{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;margin-left:15px}.sc-stripe .row+.row{border-top:1px solid #819efc}.sc-stripe label{width:15%;min-width:70px;padding:11px 0;color:#c4f0ff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sc-stripe input,.sc-stripe button{-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none;border-style:none}.sc-stripe input:-webkit-autofill{-webkit-text-fill-color:#fce883;transition:background-color 100000000s;-webkit-animation:1ms void-animation-out}.sc-stripe .StripeElement--webkit-autofill{background:transparent !important}.sc-stripe .StripeElement{width:100%;padding:var(--sc-input-spacing-small)}.sc-stripe input{width:100%;padding:11px;color:#fff;background-color:transparent;-webkit-animation:1ms void-animation-out}.sc-stripe input::-webkit-input-placeholder{color:#87bbfd}.sc-stripe input::-moz-placeholder{color:#87bbfd}.sc-stripe input:-ms-input-placeholder{color:#87bbfd}.sc-stripe button{display:block;width:calc(100% - 30px);height:40px;margin:40px 15px 0;background-color:#f6a4eb;box-shadow:0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #ffb9f6;border-radius:4px;color:#fff;font-weight:600;cursor:pointer}.sc-stripe button:active{background-color:#d782d9;box-shadow:0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #e298d8}.sc-stripe .error svg .base{fill:#fff}.sc-stripe .error svg .glyph{fill:#6772e5}.sc-stripe .error .message{color:#fff}.sc-stripe .success .icon .border{stroke:#87bbfd}.sc-stripe .success .icon .checkmark{stroke:#fff}.sc-stripe .success .title{color:#fff}.sc-stripe .success .message{color:#9cdbff}.sc-stripe .success .reset path{fill:#fff}";
 const ScStripeElementStyle0 = scStripeElementCss;
@@ -186,7 +186,7 @@ const ScStripeElement = class {
         this.element.on('blur', () => (this.hasFocus = false));
     }
     render() {
-        return (index.h(index.Fragment, { key: '926244e2aea64228f6bf56224434528501598e8a' }, index.h("sc-form-control", { key: 'b3073f73c7288b6d220857da0dadc2fe7f18b5b8', class: "sc-stripe", size: this.size, label: this.label }, index.h("div", { key: '44eb0c8c5e0ffa319ebf887937af0fcfc687f563', class: "sc-stripe-element", ref: el => (this.container = el) })), this.error && (index.h("sc-text", { key: '376ad99c6cc6ac7aa650d9ae0100ac8dc9c422c6', style: {
+        return (index.h(index.Fragment, { key: '3121857d41e5089a7cd94ac958583e1bfeeaca54' }, index.h("sc-form-control", { key: '2c5441d36ba4ba7e419c86d1f79b8c8cf35f4a5d', class: "sc-stripe", size: this.size, label: this.label }, index.h("div", { key: 'f4a6bcff3a35627057ea5efe0f64f958a0057b40', class: "sc-stripe-element", ref: el => (this.container = el) })), this.error && (index.h("sc-text", { key: '029371e865e1003ff2e2b07d1ca9d9ac6715a02e', style: {
                 'color': 'var(--sc-color-danger-500)',
                 '--font-size': 'var(--sc-font-size-small)',
                 'marginTop': '0.5em',

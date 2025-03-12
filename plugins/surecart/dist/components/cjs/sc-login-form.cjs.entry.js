@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const fetch = require('./fetch-aaab7645.js');
+const fetch = require('./fetch-d644cebd.js');
 require('./add-query-args-49dcb630.js');
 require('./remove-query-args-b57e8cd3.js');
 
@@ -146,7 +146,7 @@ const ScLogin = class {
     }
     render() {
         var _a, _b;
-        return (index.h("div", { key: 'a5dc72cbce20c6561b7f475f8f7357bc064cf99e', class: "login-form" }, index.h("sc-card", { key: '725f4531c1f40548faffb12fca0c4632df847e8e' }, !!this.error && (index.h("sc-alert", { key: 'bd75b6cd331a83456621cf4fec9c244b5ba5d354', open: true, type: "danger", closable: true, onScHide: () => (this.error = null) }, index.h("span", { key: '1d825ab9eedfaeadea9d260093165333d7bbbe05', slot: "title", innerHTML: (_a = this.error) === null || _a === void 0 ? void 0 : _a.message }), (((_b = this.error) === null || _b === void 0 ? void 0 : _b.additional_errors) || []).map(({ message }) => (index.h("div", { innerHTML: message }))))), this.renderInner()), this.loading && index.h("sc-block-ui", { key: '721665c3210a8a0a6546cac84e87a10aa15ba5b3', spinner: true, style: { 'zIndex': '9', '--sc-block-ui-opacity': '0.5' } })));
+        return (index.h("div", { key: '460e8423a8c23071c8a8db26cec678b6b5603a10', class: "login-form" }, index.h("sc-card", { key: '6fe154bc4c0e4f7ba01d85be879959905bef9515' }, !!this.error && (index.h("sc-alert", { key: 'a04d192323a8ed2dfa8fe6787df0d46691d02e0f', open: true, type: "danger", closable: true, onScHide: () => (this.error = null) }, index.h("span", { key: 'c3e0dc7dd21fb5467843bc377ac9cac8029d3c13', slot: "title", innerHTML: (_a = this.error) === null || _a === void 0 ? void 0 : _a.message }), (((_b = this.error) === null || _b === void 0 ? void 0 : _b.additional_errors) || []).map(({ message }) => (index.h("div", { innerHTML: message }))))), this.renderInner()), this.loading && index.h("sc-block-ui", { key: '6a14a3bd1098c9e1cac4882db67dfac215d42407', spinner: true, style: { 'zIndex': '9', '--sc-block-ui-opacity': '0.5' } })));
     }
     static get watchers() { return {
         "step": ["handleStepChange"],

@@ -1,8 +1,8 @@
 import { r as registerInstance, c as createEvent, h, F as Fragment, a as getElement } from './index-745b6bec.js';
 import { s as speak } from './index-c5a96d53.js';
 import { i as isRtl } from './page-align-0cdacf32.js';
-import { a as getHumanDiscount, c as getHumanDiscountRedeemableStatus } from './price-d5770168.js';
-import { s as state } from './mutations-83ea96b2.js';
+import { a as getHumanDiscount, b as getHumanDiscountRedeemableStatus } from './price-7bb626d0.js';
+import { s as state } from './mutations-6f9b9a86.js';
 import './currency-a0c9bff4.js';
 import './index-06061d4e.js';
 import './utils-cd1431df.js';
@@ -27,6 +27,7 @@ const ScCouponForm = class {
         this.discount = undefined;
         this.currency = undefined;
         this.discountAmount = undefined;
+        this.discountsDisplayAmount = undefined;
         this.showInterval = undefined;
         this.open = undefined;
         this.collapsed = undefined;
@@ -123,7 +124,7 @@ const ScCouponForm = class {
                         this.scApplyCoupon.emit(null);
                         this.open = false;
                     }
-                }, ref: el => (this.couponTag = el), role: "button", "aria-label": wp.i18n.sprintf(wp.i18n.__('Press enter to remove coupon code %s.', 'surecart'), ((_g = (_f = this === null || this === void 0 ? void 0 : this.discount) === null || _f === void 0 ? void 0 : _f.promotion) === null || _g === void 0 ? void 0 : _g.code) || this.input.value || '') }, (_j = (_h = this === null || this === void 0 ? void 0 : this.discount) === null || _h === void 0 ? void 0 : _h.promotion) === null || _j === void 0 ? void 0 : _j.code)), 'redeemable' === ((_k = this.discount) === null || _k === void 0 ? void 0 : _k.redeemable_status) ? (h(Fragment, null, humanDiscount && (h("span", { class: "coupon-human-discount", slot: "price-description" }, this.translateHumanDiscountWithDuration(humanDiscount))), h("span", { slot: isFreeTrial ? 'price-description' : 'price' }, isFreeTrial ? this.renderTrialText() : h("sc-format-number", { type: "currency", currency: this === null || this === void 0 ? void 0 : this.currency, value: this === null || this === void 0 ? void 0 : this.discountAmount })))) : (h("div", { class: "coupon__status", slot: "price-description" }, h("sc-icon", { name: "alert-triangle" }), getHumanDiscountRedeemableStatus((_l = this.discount) === null || _l === void 0 ? void 0 : _l.redeemable_status)))));
+                }, ref: el => (this.couponTag = el), role: "button", "aria-label": wp.i18n.sprintf(wp.i18n.__('Press enter to remove coupon code %s.', 'surecart'), ((_g = (_f = this === null || this === void 0 ? void 0 : this.discount) === null || _f === void 0 ? void 0 : _f.promotion) === null || _g === void 0 ? void 0 : _g.code) || this.input.value || '') }, (_j = (_h = this === null || this === void 0 ? void 0 : this.discount) === null || _h === void 0 ? void 0 : _h.promotion) === null || _j === void 0 ? void 0 : _j.code)), 'redeemable' === ((_k = this.discount) === null || _k === void 0 ? void 0 : _k.redeemable_status) ? (h(Fragment, null, humanDiscount && (h("span", { class: "coupon-human-discount", slot: "price-description" }, this.translateHumanDiscountWithDuration(humanDiscount))), h("span", { slot: isFreeTrial ? 'price-description' : 'price' }, isFreeTrial ? (this.renderTrialText()) : this.discountsDisplayAmount ? (this.discountsDisplayAmount) : (h("sc-format-number", { type: "currency", currency: this === null || this === void 0 ? void 0 : this.currency, value: this === null || this === void 0 ? void 0 : this.discountAmount }))))) : (h("div", { class: "coupon__status", slot: "price-description" }, h("sc-icon", { name: "alert-triangle" }), getHumanDiscountRedeemableStatus((_l = this.discount) === null || _l === void 0 ? void 0 : _l.redeemable_status)))));
         }
         return this.collapsed ? (h("div", { part: "base", class: {
                 'coupon-form': true,

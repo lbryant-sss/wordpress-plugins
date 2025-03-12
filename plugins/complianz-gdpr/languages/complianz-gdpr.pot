@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Complianz | GDPR/CCPA Cookie Consent plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Complianz | GDPR/CCPA Cookie Consent 7.3.0\n"
+"Project-Id-Version: Complianz | GDPR/CCPA Cookie Consent 7.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/trunk\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-12T14:11:57+00:00\n"
+"POT-Creation-Date: 2025-03-06T12:12:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: complianz-gdpr\n"
@@ -56,7 +56,7 @@ msgstr ""
 #: class-admin.php:236
 #: settings/config/menu.php:277
 #: settings/config/menu.php:281
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Support"
 msgstr ""
 
@@ -67,7 +67,7 @@ msgstr ""
 
 #: class-admin.php:348
 #: functions.php:1994
-#: websitescan/class-wsc-scanner.php:1104
+#: websitescan/class-wsc-scanner.php:1102
 #: settings/build/1699.7f743f61b0213950d8b9.js:1
 #: settings/build/4570.76dcf7267af80a785acb.js:1
 #: settings/build/6644.2ea25b710cb1cc5b721b.js:1
@@ -251,8 +251,8 @@ msgstr ""
 
 #: class-document.php:2356
 #: class-document.php:2400
-#: documents/class-document.php:1442
-#: documents/class-document.php:1486
+#: documents/class-document.php:1456
+#: documents/class-document.php:1500
 msgid "Click to accept the cookies for this service"
 msgstr ""
 
@@ -764,6 +764,7 @@ msgstr ""
 #: settings/config/fields/wizard/consent.php:257
 #: settings/config/fields/wizard/consent.php:282
 #: settings/config/fields/wizard/consent.php:306
+#: settings/config/fields/wizard/consent.php:400
 #: settings/config/fields/wizard/services.php:89
 msgid "No"
 msgstr ""
@@ -820,7 +821,7 @@ msgstr ""
 
 #: config/countries.php:60
 #: config/countries.php:133
-#: config/countries.php:389
+#: config/countries.php:394
 msgid "United States"
 msgstr ""
 
@@ -829,7 +830,7 @@ msgid "CA"
 msgstr ""
 
 #: config/countries.php:70
-#: config/countries.php:196
+#: config/countries.php:201
 msgid "Canada"
 msgstr ""
 
@@ -850,7 +851,7 @@ msgid "UK"
 msgstr ""
 
 #: config/countries.php:90
-#: config/countries.php:388
+#: config/countries.php:393
 msgid "United Kingdom"
 msgstr ""
 
@@ -863,7 +864,7 @@ msgid "AU"
 msgstr ""
 
 #: config/countries.php:100
-#: config/countries.php:171
+#: config/countries.php:176
 msgid "Australia"
 msgstr ""
 
@@ -872,7 +873,7 @@ msgid "ZA"
 msgstr ""
 
 #: config/countries.php:110
-#: config/countries.php:360
+#: config/countries.php:365
 msgid "South Africa"
 msgstr ""
 
@@ -885,7 +886,7 @@ msgid "BR"
 msgstr ""
 
 #: config/countries.php:120
-#: config/countries.php:188
+#: config/countries.php:193
 msgid "Brazil"
 msgstr ""
 
@@ -930,1026 +931,1046 @@ msgid "Connecticut (CTDPA)"
 msgstr ""
 
 #: config/countries.php:144
-msgid "Montana (MCDPA)"
+msgid "Delaware (PDPA)"
 msgstr ""
 
 #: config/countries.php:145
-msgid "Nevada (NRS 603A)"
+msgid "Iowa (CDPA)"
 msgstr ""
 
 #: config/countries.php:146
-msgid "Oregon (OCPA)"
+msgid "Montana (MCDPA)"
 msgstr ""
 
 #: config/countries.php:147
-msgid "Texas (TDPSA)"
+msgid "Nebraska (DPA)"
 msgstr ""
 
 #: config/countries.php:148
-msgid "Utah (UCPA)"
+msgid "Nevada (NRS 603A)"
 msgstr ""
 
 #: config/countries.php:149
+msgid "New Hampshire (DPA)"
+msgstr ""
+
+#: config/countries.php:150
+msgid "New Jersey (DPL)"
+msgstr ""
+
+#: config/countries.php:151
+msgid "Oregon (OCPA)"
+msgstr ""
+
+#: config/countries.php:152
+msgid "Texas (TDPSA)"
+msgstr ""
+
+#: config/countries.php:153
+msgid "Utah (UCPA)"
+msgstr ""
+
+#: config/countries.php:154
 msgid "Virginia (CDPA)"
 msgstr ""
 
-#: config/countries.php:158
+#: config/countries.php:163
 msgid "Afghanistan"
 msgstr ""
 
-#: config/countries.php:159
+#: config/countries.php:164
 msgid "Aland Islands"
 msgstr ""
 
-#: config/countries.php:160
+#: config/countries.php:165
 msgid "Albania"
 msgstr ""
 
-#: config/countries.php:161
+#: config/countries.php:166
 msgid "Algeria"
 msgstr ""
 
-#: config/countries.php:162
+#: config/countries.php:167
 msgid "American Samoa"
 msgstr ""
 
-#: config/countries.php:163
+#: config/countries.php:168
 msgid "Andorra"
 msgstr ""
 
-#: config/countries.php:164
+#: config/countries.php:169
 msgid "Angola"
 msgstr ""
 
-#: config/countries.php:165
+#: config/countries.php:170
 msgid "Anguilla"
 msgstr ""
 
-#: config/countries.php:166
+#: config/countries.php:171
 msgid "Antarctica"
 msgstr ""
 
-#: config/countries.php:167
+#: config/countries.php:172
 msgid "Antigua And Barbuda"
 msgstr ""
 
-#: config/countries.php:168
+#: config/countries.php:173
 msgid "Argentina"
 msgstr ""
 
-#: config/countries.php:169
+#: config/countries.php:174
 msgid "Armenia"
 msgstr ""
 
-#: config/countries.php:170
+#: config/countries.php:175
 msgid "Aruba"
 msgstr ""
 
-#: config/countries.php:172
+#: config/countries.php:177
 msgid "Austria"
 msgstr ""
 
-#: config/countries.php:173
+#: config/countries.php:178
 msgid "Azerbaijan"
 msgstr ""
 
-#: config/countries.php:174
+#: config/countries.php:179
 msgid "Bahamas"
 msgstr ""
 
-#: config/countries.php:175
+#: config/countries.php:180
 msgid "Bahrain"
 msgstr ""
 
-#: config/countries.php:176
+#: config/countries.php:181
 msgid "Bangladesh"
 msgstr ""
 
-#: config/countries.php:177
+#: config/countries.php:182
 msgid "Barbados"
 msgstr ""
 
-#: config/countries.php:178
+#: config/countries.php:183
 msgid "Belarus"
 msgstr ""
 
-#: config/countries.php:179
+#: config/countries.php:184
 msgid "Belgium"
 msgstr ""
 
-#: config/countries.php:180
+#: config/countries.php:185
 msgid "Belize"
 msgstr ""
 
-#: config/countries.php:181
+#: config/countries.php:186
 msgid "Benin"
 msgstr ""
 
-#: config/countries.php:182
+#: config/countries.php:187
 msgid "Bermuda"
 msgstr ""
 
-#: config/countries.php:183
+#: config/countries.php:188
 msgid "Bhutan"
 msgstr ""
 
-#: config/countries.php:184
+#: config/countries.php:189
 msgid "Bolivia"
 msgstr ""
 
-#: config/countries.php:185
+#: config/countries.php:190
 msgid "Bosnia And Herzegovina"
 msgstr ""
 
-#: config/countries.php:186
+#: config/countries.php:191
 msgid "Botswana"
 msgstr ""
 
-#: config/countries.php:187
+#: config/countries.php:192
 msgid "Bouvet Island"
 msgstr ""
 
-#: config/countries.php:189
+#: config/countries.php:194
 msgid "British Indian Ocean Territory"
 msgstr ""
 
-#: config/countries.php:190
+#: config/countries.php:195
 msgid "Brunei Darussalam"
 msgstr ""
 
-#: config/countries.php:191
+#: config/countries.php:196
 msgid "Bulgaria"
 msgstr ""
 
-#: config/countries.php:192
+#: config/countries.php:197
 msgid "Burkina Faso"
 msgstr ""
 
-#: config/countries.php:193
+#: config/countries.php:198
 msgid "Burundi"
 msgstr ""
 
-#: config/countries.php:194
+#: config/countries.php:199
 msgid "Cambodia"
 msgstr ""
 
-#: config/countries.php:195
+#: config/countries.php:200
 msgid "Cameroon"
 msgstr ""
 
-#: config/countries.php:197
+#: config/countries.php:202
 msgid "Cape Verde"
 msgstr ""
 
-#: config/countries.php:198
+#: config/countries.php:203
 msgid "Cayman Islands"
 msgstr ""
 
-#: config/countries.php:199
+#: config/countries.php:204
 msgid "Central African Republic"
 msgstr ""
 
-#: config/countries.php:200
+#: config/countries.php:205
 msgid "Chad"
 msgstr ""
 
-#: config/countries.php:201
+#: config/countries.php:206
 msgid "Chile"
 msgstr ""
 
-#: config/countries.php:202
+#: config/countries.php:207
 msgid "China"
 msgstr ""
 
-#: config/countries.php:203
+#: config/countries.php:208
 msgid "Christmas Island"
 msgstr ""
 
-#: config/countries.php:204
+#: config/countries.php:209
 msgid "Cocos (Keeling) Islands"
 msgstr ""
 
-#: config/countries.php:205
+#: config/countries.php:210
 msgid "Colombia"
 msgstr ""
 
-#: config/countries.php:206
+#: config/countries.php:211
 msgid "Comoros"
 msgstr ""
 
-#: config/countries.php:207
+#: config/countries.php:212
 msgid "Congo"
 msgstr ""
 
-#: config/countries.php:208
+#: config/countries.php:213
 msgid "Congo, Democratic Republic"
 msgstr ""
 
-#: config/countries.php:209
+#: config/countries.php:214
 msgid "Cook Islands"
 msgstr ""
 
-#: config/countries.php:210
+#: config/countries.php:215
 msgid "Costa Rica"
 msgstr ""
 
-#: config/countries.php:211
+#: config/countries.php:216
 msgid "Cote D'Ivoire"
 msgstr ""
 
-#: config/countries.php:212
+#: config/countries.php:217
 msgid "Croatia"
 msgstr ""
 
-#: config/countries.php:213
+#: config/countries.php:218
 msgid "Cuba"
 msgstr ""
 
-#: config/countries.php:214
+#: config/countries.php:219
 msgid "Cyprus"
 msgstr ""
 
-#: config/countries.php:215
+#: config/countries.php:220
 msgid "Czech Republic"
 msgstr ""
 
-#: config/countries.php:216
+#: config/countries.php:221
 msgid "Denmark"
 msgstr ""
 
-#: config/countries.php:217
+#: config/countries.php:222
 msgid "Djibouti"
 msgstr ""
 
-#: config/countries.php:218
+#: config/countries.php:223
 msgid "Dominica"
 msgstr ""
 
-#: config/countries.php:219
+#: config/countries.php:224
 msgid "Dominican Republic"
 msgstr ""
 
-#: config/countries.php:220
+#: config/countries.php:225
 msgid "Ecuador"
 msgstr ""
 
-#: config/countries.php:221
+#: config/countries.php:226
 msgid "Egypt"
 msgstr ""
 
-#: config/countries.php:222
+#: config/countries.php:227
 msgid "El Salvador"
 msgstr ""
 
-#: config/countries.php:223
+#: config/countries.php:228
 msgid "Equatorial Guinea"
 msgstr ""
 
-#: config/countries.php:224
+#: config/countries.php:229
 msgid "Eritrea"
 msgstr ""
 
-#: config/countries.php:225
+#: config/countries.php:230
 msgid "Estonia"
 msgstr ""
 
-#: config/countries.php:226
+#: config/countries.php:231
 msgid "Ethiopia"
 msgstr ""
 
-#: config/countries.php:227
+#: config/countries.php:232
 msgid "Falkland Islands (Malvinas)"
 msgstr ""
 
-#: config/countries.php:228
+#: config/countries.php:233
 msgid "Faroe Islands"
 msgstr ""
 
-#: config/countries.php:229
+#: config/countries.php:234
 msgid "Fiji"
 msgstr ""
 
-#: config/countries.php:230
+#: config/countries.php:235
 msgid "Finland"
 msgstr ""
 
-#: config/countries.php:231
+#: config/countries.php:236
 msgid "France"
 msgstr ""
 
-#: config/countries.php:232
+#: config/countries.php:237
 msgid "French Guiana"
 msgstr ""
 
-#: config/countries.php:233
+#: config/countries.php:238
 msgid "French Polynesia"
 msgstr ""
 
-#: config/countries.php:234
+#: config/countries.php:239
 msgid "French Southern Territories"
 msgstr ""
 
-#: config/countries.php:235
+#: config/countries.php:240
 msgid "Gabon"
 msgstr ""
 
-#: config/countries.php:236
+#: config/countries.php:241
 msgid "Gambia"
 msgstr ""
 
-#: config/countries.php:237
+#: config/countries.php:242
 msgid "Georgia"
 msgstr ""
 
-#: config/countries.php:238
+#: config/countries.php:243
 msgid "Germany"
 msgstr ""
 
-#: config/countries.php:239
+#: config/countries.php:244
 msgid "Ghana"
 msgstr ""
 
-#: config/countries.php:240
+#: config/countries.php:245
 msgid "Gibraltar"
 msgstr ""
 
-#: config/countries.php:241
+#: config/countries.php:246
 msgid "Greece"
 msgstr ""
 
-#: config/countries.php:242
+#: config/countries.php:247
 msgid "Greenland"
 msgstr ""
 
-#: config/countries.php:243
+#: config/countries.php:248
 msgid "Grenada"
 msgstr ""
 
-#: config/countries.php:244
+#: config/countries.php:249
 msgid "Guadeloupe"
 msgstr ""
 
-#: config/countries.php:245
+#: config/countries.php:250
 msgid "Guam"
 msgstr ""
 
-#: config/countries.php:246
+#: config/countries.php:251
 msgid "Guatemala"
 msgstr ""
 
-#: config/countries.php:247
+#: config/countries.php:252
 msgid "Guernsey"
 msgstr ""
 
-#: config/countries.php:248
+#: config/countries.php:253
 msgid "Guinea"
 msgstr ""
 
-#: config/countries.php:249
+#: config/countries.php:254
 msgid "Guinea-Bissau"
 msgstr ""
 
-#: config/countries.php:250
+#: config/countries.php:255
 msgid "Guyana"
 msgstr ""
 
-#: config/countries.php:251
+#: config/countries.php:256
 msgid "Haiti"
 msgstr ""
 
-#: config/countries.php:252
+#: config/countries.php:257
 msgid "Heard Island & Mcdonald Islands"
 msgstr ""
 
-#: config/countries.php:253
+#: config/countries.php:258
 msgid "Holy See (Vatican City State)"
 msgstr ""
 
-#: config/countries.php:254
+#: config/countries.php:259
 msgid "Honduras"
 msgstr ""
 
-#: config/countries.php:255
+#: config/countries.php:260
 msgid "Hong Kong"
 msgstr ""
 
-#: config/countries.php:256
+#: config/countries.php:261
 msgid "Hungary"
 msgstr ""
 
-#: config/countries.php:257
+#: config/countries.php:262
 msgid "Iceland"
 msgstr ""
 
-#: config/countries.php:258
+#: config/countries.php:263
 msgid "India"
 msgstr ""
 
-#: config/countries.php:259
+#: config/countries.php:264
 msgid "Indonesia"
 msgstr ""
 
-#: config/countries.php:260
+#: config/countries.php:265
 msgid "Iran, Islamic Republic Of"
 msgstr ""
 
-#: config/countries.php:261
+#: config/countries.php:266
 msgid "Iraq"
 msgstr ""
 
-#: config/countries.php:262
+#: config/countries.php:267
 msgid "Ireland"
 msgstr ""
 
-#: config/countries.php:263
+#: config/countries.php:268
 msgid "Isle Of Man"
 msgstr ""
 
-#: config/countries.php:264
+#: config/countries.php:269
 msgid "Israel"
 msgstr ""
 
-#: config/countries.php:265
+#: config/countries.php:270
 msgid "Italy"
 msgstr ""
 
-#: config/countries.php:266
+#: config/countries.php:271
 msgid "Jamaica"
 msgstr ""
 
-#: config/countries.php:267
+#: config/countries.php:272
 msgid "Japan"
 msgstr ""
 
-#: config/countries.php:268
+#: config/countries.php:273
 msgid "Jersey"
 msgstr ""
 
-#: config/countries.php:269
+#: config/countries.php:274
 msgid "Jordan"
 msgstr ""
 
-#: config/countries.php:270
+#: config/countries.php:275
 msgid "Kazakhstan"
 msgstr ""
 
-#: config/countries.php:271
+#: config/countries.php:276
 msgid "Kenya"
 msgstr ""
 
-#: config/countries.php:272
+#: config/countries.php:277
 msgid "Kiribati"
 msgstr ""
 
-#: config/countries.php:273
+#: config/countries.php:278
 msgid "Korea"
 msgstr ""
 
-#: config/countries.php:274
+#: config/countries.php:279
 msgid "Kuwait"
 msgstr ""
 
-#: config/countries.php:275
+#: config/countries.php:280
 msgid "Kyrgyzstan"
 msgstr ""
 
-#: config/countries.php:276
+#: config/countries.php:281
 msgid "Lao People's Democratic Republic"
 msgstr ""
 
-#: config/countries.php:277
+#: config/countries.php:282
 msgid "Latvia"
 msgstr ""
 
-#: config/countries.php:278
+#: config/countries.php:283
 msgid "Lebanon"
 msgstr ""
 
-#: config/countries.php:279
+#: config/countries.php:284
 msgid "Lesotho"
 msgstr ""
 
-#: config/countries.php:280
+#: config/countries.php:285
 msgid "Liberia"
 msgstr ""
 
-#: config/countries.php:281
+#: config/countries.php:286
 msgid "Libyan Arab Jamahiriya"
 msgstr ""
 
-#: config/countries.php:282
+#: config/countries.php:287
 msgid "Liechtenstein"
 msgstr ""
 
-#: config/countries.php:283
+#: config/countries.php:288
 msgid "Lithuania"
 msgstr ""
 
-#: config/countries.php:284
+#: config/countries.php:289
 msgid "Luxembourg"
 msgstr ""
 
-#: config/countries.php:285
+#: config/countries.php:290
 msgid "Macao"
 msgstr ""
 
-#: config/countries.php:286
+#: config/countries.php:291
 msgid "North Macedonia"
 msgstr ""
 
-#: config/countries.php:287
+#: config/countries.php:292
 msgid "Madagascar"
 msgstr ""
 
-#: config/countries.php:288
+#: config/countries.php:293
 msgid "Malawi"
 msgstr ""
 
-#: config/countries.php:289
+#: config/countries.php:294
 msgid "Malaysia"
 msgstr ""
 
-#: config/countries.php:290
+#: config/countries.php:295
 msgid "Maldives"
 msgstr ""
 
-#: config/countries.php:291
+#: config/countries.php:296
 msgid "Mali"
 msgstr ""
 
-#: config/countries.php:292
+#: config/countries.php:297
 msgid "Malta"
 msgstr ""
 
-#: config/countries.php:293
+#: config/countries.php:298
 msgid "Marshall Islands"
 msgstr ""
 
-#: config/countries.php:294
+#: config/countries.php:299
 msgid "Martinique"
 msgstr ""
 
-#: config/countries.php:295
+#: config/countries.php:300
 msgid "Mauritania"
 msgstr ""
 
-#: config/countries.php:296
+#: config/countries.php:301
 msgid "Mauritius"
 msgstr ""
 
-#: config/countries.php:297
+#: config/countries.php:302
 msgid "Mayotte"
 msgstr ""
 
-#: config/countries.php:298
+#: config/countries.php:303
 msgid "Mexico"
 msgstr ""
 
-#: config/countries.php:299
+#: config/countries.php:304
 msgid "Micronesia, Federated States Of"
 msgstr ""
 
-#: config/countries.php:300
+#: config/countries.php:305
 msgid "Moldova"
 msgstr ""
 
-#: config/countries.php:301
+#: config/countries.php:306
 msgid "Monaco"
 msgstr ""
 
-#: config/countries.php:302
+#: config/countries.php:307
 msgid "Mongolia"
 msgstr ""
 
-#: config/countries.php:303
+#: config/countries.php:308
 msgid "Montenegro"
 msgstr ""
 
-#: config/countries.php:304
+#: config/countries.php:309
 msgid "Montserrat"
 msgstr ""
 
-#: config/countries.php:305
+#: config/countries.php:310
 msgid "Morocco"
 msgstr ""
 
-#: config/countries.php:306
+#: config/countries.php:311
 msgid "Mozambique"
 msgstr ""
 
-#: config/countries.php:307
+#: config/countries.php:312
 msgid "Myanmar"
 msgstr ""
 
-#: config/countries.php:308
+#: config/countries.php:313
 msgid "Namibia"
 msgstr ""
 
-#: config/countries.php:309
+#: config/countries.php:314
 msgid "Nauru"
 msgstr ""
 
-#: config/countries.php:310
+#: config/countries.php:315
 msgid "Nepal"
 msgstr ""
 
-#: config/countries.php:311
+#: config/countries.php:316
 msgid "Netherlands"
 msgstr ""
 
-#: config/countries.php:312
+#: config/countries.php:317
 msgid "Netherlands Antilles"
 msgstr ""
 
-#: config/countries.php:313
+#: config/countries.php:318
 msgid "New Caledonia"
 msgstr ""
 
-#: config/countries.php:314
+#: config/countries.php:319
 msgid "New Zealand"
 msgstr ""
 
-#: config/countries.php:315
+#: config/countries.php:320
 msgid "Nicaragua"
 msgstr ""
 
-#: config/countries.php:316
+#: config/countries.php:321
 msgid "Niger"
 msgstr ""
 
-#: config/countries.php:317
+#: config/countries.php:322
 msgid "Nigeria"
 msgstr ""
 
-#: config/countries.php:318
+#: config/countries.php:323
 msgid "Niue"
 msgstr ""
 
-#: config/countries.php:319
+#: config/countries.php:324
 msgid "Norfolk Island"
 msgstr ""
 
-#: config/countries.php:320
+#: config/countries.php:325
 msgid "Northern Mariana Islands"
 msgstr ""
 
-#: config/countries.php:321
+#: config/countries.php:326
 msgid "Norway"
 msgstr ""
 
-#: config/countries.php:322
+#: config/countries.php:327
 msgid "Oman"
 msgstr ""
 
-#: config/countries.php:323
+#: config/countries.php:328
 msgid "Pakistan"
 msgstr ""
 
-#: config/countries.php:324
+#: config/countries.php:329
 msgid "Palau"
 msgstr ""
 
-#: config/countries.php:325
+#: config/countries.php:330
 msgid "Palestinian Territory, Occupied"
 msgstr ""
 
-#: config/countries.php:326
+#: config/countries.php:331
 msgid "Panama"
 msgstr ""
 
-#: config/countries.php:327
+#: config/countries.php:332
 msgid "Papua New Guinea"
 msgstr ""
 
-#: config/countries.php:328
+#: config/countries.php:333
 msgid "Paraguay"
 msgstr ""
 
-#: config/countries.php:329
+#: config/countries.php:334
 msgid "Peru"
 msgstr ""
 
-#: config/countries.php:330
+#: config/countries.php:335
 msgid "Philippines"
 msgstr ""
 
-#: config/countries.php:331
+#: config/countries.php:336
 msgid "Pitcairn"
 msgstr ""
 
-#: config/countries.php:332
+#: config/countries.php:337
 msgid "Poland"
 msgstr ""
 
-#: config/countries.php:333
+#: config/countries.php:338
 msgid "Portugal"
 msgstr ""
 
-#: config/countries.php:334
+#: config/countries.php:339
 msgid "Puerto Rico"
 msgstr ""
 
-#: config/countries.php:335
+#: config/countries.php:340
 msgid "Qatar"
 msgstr ""
 
-#: config/countries.php:336
+#: config/countries.php:341
 msgid "Reunion"
 msgstr ""
 
-#: config/countries.php:337
+#: config/countries.php:342
 msgid "Romania"
 msgstr ""
 
-#: config/countries.php:338
+#: config/countries.php:343
 msgid "Russian Federation"
 msgstr ""
 
-#: config/countries.php:339
+#: config/countries.php:344
 msgid "Rwanda"
 msgstr ""
 
-#: config/countries.php:340
+#: config/countries.php:345
 msgid "Saint Barthelemy"
 msgstr ""
 
-#: config/countries.php:341
+#: config/countries.php:346
 msgid "Saint Helena"
 msgstr ""
 
-#: config/countries.php:342
+#: config/countries.php:347
 msgid "Saint Kitts And Nevis"
 msgstr ""
 
-#: config/countries.php:343
+#: config/countries.php:348
 msgid "Saint Lucia"
 msgstr ""
 
-#: config/countries.php:344
+#: config/countries.php:349
 msgid "Saint Martin"
 msgstr ""
 
-#: config/countries.php:345
+#: config/countries.php:350
 msgid "Saint Pierre And Miquelon"
 msgstr ""
 
-#: config/countries.php:346
+#: config/countries.php:351
 msgid "Saint Vincent And Grenadines"
 msgstr ""
 
-#: config/countries.php:347
+#: config/countries.php:352
 msgid "Samoa"
 msgstr ""
 
-#: config/countries.php:348
+#: config/countries.php:353
 msgid "San Marino"
 msgstr ""
 
-#: config/countries.php:349
+#: config/countries.php:354
 msgid "Sao Tome And Principe"
 msgstr ""
 
-#: config/countries.php:350
+#: config/countries.php:355
 msgid "Saudi Arabia"
 msgstr ""
 
-#: config/countries.php:351
+#: config/countries.php:356
 msgid "Senegal"
 msgstr ""
 
-#: config/countries.php:352
+#: config/countries.php:357
 msgid "Serbia"
 msgstr ""
 
-#: config/countries.php:353
+#: config/countries.php:358
 msgid "Seychelles"
 msgstr ""
 
-#: config/countries.php:354
+#: config/countries.php:359
 msgid "Sierra Leone"
 msgstr ""
 
-#: config/countries.php:355
+#: config/countries.php:360
 msgid "Singapore"
 msgstr ""
 
-#: config/countries.php:356
+#: config/countries.php:361
 msgid "Slovakia"
 msgstr ""
 
-#: config/countries.php:357
+#: config/countries.php:362
 msgid "Slovenia"
 msgstr ""
 
-#: config/countries.php:358
+#: config/countries.php:363
 msgid "Solomon Islands"
 msgstr ""
 
-#: config/countries.php:359
+#: config/countries.php:364
 msgid "Somalia"
 msgstr ""
 
-#: config/countries.php:361
+#: config/countries.php:366
 msgid "South Georgia And Sandwich Isl."
 msgstr ""
 
-#: config/countries.php:362
+#: config/countries.php:367
 msgid "Spain"
 msgstr ""
 
-#: config/countries.php:363
+#: config/countries.php:368
 msgid "Sri Lanka"
 msgstr ""
 
-#: config/countries.php:364
+#: config/countries.php:369
 msgid "Sudan"
 msgstr ""
 
-#: config/countries.php:365
+#: config/countries.php:370
 msgid "Suriname"
 msgstr ""
 
-#: config/countries.php:366
+#: config/countries.php:371
 msgid "Svalbard And Jan Mayen"
 msgstr ""
 
-#: config/countries.php:367
+#: config/countries.php:372
 msgid "Swaziland"
 msgstr ""
 
-#: config/countries.php:368
+#: config/countries.php:373
 msgid "Sweden"
 msgstr ""
 
-#: config/countries.php:369
+#: config/countries.php:374
 msgid "Switzerland"
 msgstr ""
 
-#: config/countries.php:370
+#: config/countries.php:375
 msgid "Syrian Arab Republic"
 msgstr ""
 
-#: config/countries.php:371
+#: config/countries.php:376
 msgid "Taiwan"
 msgstr ""
 
-#: config/countries.php:372
+#: config/countries.php:377
 msgid "Tajikistan"
 msgstr ""
 
-#: config/countries.php:373
+#: config/countries.php:378
 msgid "Tanzania"
 msgstr ""
 
-#: config/countries.php:374
+#: config/countries.php:379
 msgid "Thailand"
 msgstr ""
 
-#: config/countries.php:375
+#: config/countries.php:380
 msgid "Timor-Leste"
 msgstr ""
 
-#: config/countries.php:376
+#: config/countries.php:381
 msgid "Togo"
 msgstr ""
 
-#: config/countries.php:377
+#: config/countries.php:382
 msgid "Tokelau"
 msgstr ""
 
-#: config/countries.php:378
+#: config/countries.php:383
 msgid "Tonga"
 msgstr ""
 
-#: config/countries.php:379
+#: config/countries.php:384
 msgid "Trinidad And Tobago"
 msgstr ""
 
-#: config/countries.php:380
+#: config/countries.php:385
 msgid "Tunisia"
 msgstr ""
 
-#: config/countries.php:381
+#: config/countries.php:386
 msgid "Turkey"
 msgstr ""
 
-#: config/countries.php:382
+#: config/countries.php:387
 msgid "Turkmenistan"
 msgstr ""
 
-#: config/countries.php:383
+#: config/countries.php:388
 msgid "Turks And Caicos Islands"
 msgstr ""
 
-#: config/countries.php:384
+#: config/countries.php:389
 msgid "Tuvalu"
 msgstr ""
 
-#: config/countries.php:385
+#: config/countries.php:390
 msgid "Uganda"
 msgstr ""
 
-#: config/countries.php:386
+#: config/countries.php:391
 msgid "Ukraine"
 msgstr ""
 
-#: config/countries.php:387
+#: config/countries.php:392
 msgid "United Arab Emirates"
 msgstr ""
 
-#: config/countries.php:390
+#: config/countries.php:395
 msgid "United States Outlying Islands"
 msgstr ""
 
-#: config/countries.php:391
+#: config/countries.php:396
 msgid "Uruguay"
 msgstr ""
 
-#: config/countries.php:392
+#: config/countries.php:397
 msgid "Uzbekistan"
 msgstr ""
 
-#: config/countries.php:393
+#: config/countries.php:398
 msgid "Vanuatu"
 msgstr ""
 
-#: config/countries.php:394
+#: config/countries.php:399
 msgid "Venezuela"
 msgstr ""
 
-#: config/countries.php:395
+#: config/countries.php:400
 msgid "Viet Nam"
 msgstr ""
 
-#: config/countries.php:396
+#: config/countries.php:401
 msgid "Virgin Islands, British"
 msgstr ""
 
-#: config/countries.php:397
+#: config/countries.php:402
 msgid "Virgin Islands, U.S."
 msgstr ""
 
-#: config/countries.php:398
+#: config/countries.php:403
 msgid "Wallis And Futuna"
 msgstr ""
 
-#: config/countries.php:399
+#: config/countries.php:404
 msgid "Western Sahara"
 msgstr ""
 
-#: config/countries.php:400
+#: config/countries.php:405
 msgid "Yemen"
 msgstr ""
 
-#: config/countries.php:401
+#: config/countries.php:406
 msgid "Zambia"
 msgstr ""
 
-#: config/countries.php:402
+#: config/countries.php:407
 msgid "Zimbabwe"
 msgstr ""
 
-#: config/countries.php:410
+#: config/countries.php:415
 msgid "English"
 msgstr ""
 
-#: config/countries.php:411
+#: config/countries.php:416
 msgid "Danish"
 msgstr ""
 
-#: config/countries.php:412
+#: config/countries.php:417
 msgid "German"
 msgstr ""
 
-#: config/countries.php:413
+#: config/countries.php:418
 msgid "Greek"
 msgstr ""
 
-#: config/countries.php:414
+#: config/countries.php:419
 msgid "Spanish"
 msgstr ""
 
-#: config/countries.php:415
+#: config/countries.php:420
 msgid "Estonian"
 msgstr ""
 
-#: config/countries.php:416
+#: config/countries.php:421
 msgid "French"
 msgstr ""
 
-#: config/countries.php:417
+#: config/countries.php:422
 msgid "Italian"
 msgstr ""
 
-#: config/countries.php:418
+#: config/countries.php:423
 msgid "Dutch"
 msgstr ""
 
-#: config/countries.php:419
+#: config/countries.php:424
 msgid "Norwegian"
 msgstr ""
 
-#: config/countries.php:420
+#: config/countries.php:425
 msgid "Swedish"
 msgstr ""
 
@@ -2778,162 +2799,158 @@ msgid "Your PHP version is lower than the recommended PHP version. Some features
 msgstr ""
 
 #: config/warnings.php:15
-msgid "Complianz GDPR/CCPA %s. Learn more about our newest release."
-msgstr ""
-
-#: config/warnings.php:21
 msgid "Migrate.js, which allowed a smooth upgrade to 6.0, has been deprecated."
 msgstr ""
 
-#: config/warnings.php:44
+#: config/warnings.php:38
 msgid "Do Not Track and Global Privacy Control are respected."
 msgstr ""
 
-#: config/warnings.php:51
+#: config/warnings.php:45
 msgid "Please check if your REST API is loading correctly. Your site currently is using the slower Ajax fallback method to load the settings."
 msgstr ""
 
-#: config/warnings.php:60
+#: config/warnings.php:54
 msgid "You have currently selected an informal language, which will result in informal use of language on the legal documents. If you prefer the formal style, you can activate this in the general settings."
 msgstr ""
 
-#: config/warnings.php:70
+#: config/warnings.php:64
 msgid "Google Fonts requires your attention."
 msgstr ""
 
-#: config/warnings.php:70
+#: config/warnings.php:64
 msgid "We have added additional support and recommend reviewing your settings."
 msgstr ""
 
-#: config/warnings.php:70
+#: config/warnings.php:64
 msgid "Please read this %sarticle%s to read our position on self-hosting Google Fonts and Privacy by Design."
 msgstr ""
 
-#: config/warnings.php:80
+#: config/warnings.php:74
 msgid "No cookie changes have been detected."
 msgstr ""
 
-#: config/warnings.php:81
+#: config/warnings.php:75
 msgid "Cookie changes have been detected."
 msgstr ""
 
-#: config/warnings.php:81
+#: config/warnings.php:75
 msgid "Please review your cookies for changes."
 msgstr ""
 
-#: config/warnings.php:88
+#: config/warnings.php:82
 msgid "Last site scan completed on %s."
 msgstr ""
 
-#: config/warnings.php:89
+#: config/warnings.php:83
 msgid "No site scan has been completed yet."
 msgstr ""
 
-#: config/warnings.php:99
+#: config/warnings.php:93
 msgid "All required pages have been generated."
 msgstr ""
 
-#: config/warnings.php:100
+#: config/warnings.php:94
 msgid "Not all required pages have been generated."
 msgstr ""
 
-#: config/warnings.php:106
+#: config/warnings.php:100
 msgid "Harden your website and quickly detect vulnerabilities with Really Simple Security"
 msgstr ""
 
-#: config/warnings.php:116
+#: config/warnings.php:110
 msgid "Google Analytics is being used, but is not configured in Complianz."
 msgstr ""
 
-#: config/warnings.php:125
+#: config/warnings.php:119
 msgid "Google Tag Manager is being used, but is not configured in Complianz."
 msgstr ""
 
-#: config/warnings.php:134
+#: config/warnings.php:128
 msgid "Matomo is being used, but is not configured in Complianz."
 msgstr ""
 
-#: config/warnings.php:141
+#: config/warnings.php:135
 msgid "Your documents have not been updated in the past 12 months. Run the wizard to check your settings."
 msgstr ""
 
-#: config/warnings.php:149
+#: config/warnings.php:143
 msgid "You have cookies with incomplete descriptions."
 msgstr ""
 
-#: config/warnings.php:150
+#: config/warnings.php:144
 msgid "Enable the cookiedatabase.org API for automatic descriptions, or add these manually."
 msgstr ""
 
-#: config/warnings.php:160
+#: config/warnings.php:154
 msgid "You have a duplicate implementation of your statistics tool on your site."
 msgstr ""
 
-#: config/warnings.php:161
+#: config/warnings.php:155
 msgid "After the issue has been resolved, please re-run a scan to clear this message."
 msgstr ""
 
-#: config/warnings.php:172
+#: config/warnings.php:166
 msgid "JavaScript errors are detected on the front-end of your site. This may break the consent banner functionality."
 msgstr ""
 
-#: config/warnings.php:173
+#: config/warnings.php:167
 msgid "Last error in the console:"
 msgstr ""
 
-#: config/warnings.php:185
+#: config/warnings.php:179
 msgid "Your site requires a consent banner, which has been enabled."
 msgstr ""
 
-#: config/warnings.php:186
+#: config/warnings.php:180
 msgid "Your site is not configured to show a consent banner at the moment."
 msgstr ""
 
-#: config/warnings.php:197
+#: config/warnings.php:191
 msgid "Pretty permalinks are not enabled on your site. This can cause issues with the REST API, used by Complianz."
 msgstr ""
 
-#: config/warnings.php:207
+#: config/warnings.php:201
 msgid "Your uploads folder is not writable. Complianz needs this folder to save the consent banner CSS."
 msgstr ""
 
-#: config/warnings.php:218
+#: config/warnings.php:212
 msgid "We see you have enabled Google Maps as a service, but we can't find an integration. You can integrate manually if needed."
 msgstr ""
 
-#: config/warnings.php:226
+#: config/warnings.php:220
 msgid "We have detected the %s plugin on your website."
 msgstr ""
 
-#: config/warnings.php:226
+#: config/warnings.php:220
 msgid "As Complianz handles all the functionality this plugin provides, you should disable this plugin to prevent unexpected behaviour."
 msgstr ""
 
-#: config/warnings.php:233
+#: config/warnings.php:227
 msgid "Are you showing ads on your site? Consider implementing TCF."
 msgstr ""
 
-#: config/warnings.php:240
+#: config/warnings.php:234
 msgid "Create a Privacy Statement and other Legal Documents with Complianz."
 msgstr ""
 
-#: config/warnings.php:249
+#: config/warnings.php:243
 msgid "Black Friday sale! Get 40% Off Complianz GDPR/CCPA premium!"
 msgstr ""
 
-#: config/warnings.php:256
+#: config/warnings.php:250
 msgid "Legal compliance for webshops."
 msgstr ""
 
-#: config/warnings.php:264
+#: config/warnings.php:258
 msgid "Learn more about Google Consent Mode V2."
 msgstr ""
 
-#: config/warnings.php:272
+#: config/warnings.php:266
 msgid "Are you targeting multiple regions?"
 msgstr ""
 
-#: config/warnings.php:279
+#: config/warnings.php:273
 msgid "You might see a notice about Complianz when debugging your WordPress website. Although not a breaking issue, pleasee know we're attending to this issue."
 msgstr ""
 
@@ -2992,16 +3009,16 @@ msgstr ""
 msgid "On a cookie policy, the banner will be minimized by default"
 msgstr ""
 
-#: cookiebanner/class-banner-loader.php:830
+#: cookiebanner/class-banner-loader.php:840
 #: functions.php:1997
 msgid "Purpose pending investigation"
 msgstr ""
 
-#: cookiebanner/class-banner-loader.php:1134
+#: cookiebanner/class-banner-loader.php:1144
 msgid "%s at %s"
 msgstr ""
 
-#: cookiebanner/class-banner-loader.php:1154
+#: cookiebanner/class-banner-loader.php:1164
 msgid "(not synced yet)"
 msgstr ""
 
@@ -3660,7 +3677,7 @@ msgstr ""
 msgid "Terms & Conditions"
 msgstr ""
 
-#: documents/class-document.php:2089
+#: documents/class-document.php:2104
 msgid "No title"
 msgstr ""
 
@@ -3709,7 +3726,7 @@ msgstr ""
 #: settings/build/4644.e14f5e28eb94b8e242e7.js:1
 #: settings/build/8596.2c253cf399d8f84c2746.js:1
 #: settings/build/9487.e36e1ed4df8b9cfcb7e5.js:1
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Upgrade"
 msgstr ""
 
@@ -3760,9 +3777,9 @@ msgstr ""
 
 #: integrations/admin/integrations.php:362
 #: settings/config/menu.php:135
-#: websitescan/class-wsc-scanner.php:1182
-#: websitescan/class-wsc-scanner.php:1191
-#: websitescan/class-wsc-scanner.php:1200
+#: websitescan/class-wsc-scanner.php:1180
+#: websitescan/class-wsc-scanner.php:1189
+#: websitescan/class-wsc-scanner.php:1198
 msgid "Advertising"
 msgstr ""
 
@@ -4179,6 +4196,16 @@ msgstr ""
 
 #: settings/config/fields-notices.php:178
 msgid "You have enabled TCF. This option can only be used in combination with the Cookie Policy generated by Complianz."
+msgstr ""
+
+#: settings/config/fields-notices.php:186
+msgid "TCF enabled: Review customization guidelines"
+msgstr ""
+
+#: settings/config/fields-notices.php:187
+msgid ""
+"You have enabled TCF. Please check the do's and don'ts regarding customizations:\n"
+"\t\t                     <a href='https://complianz.io/customizing-the-tcf-banner/?utm_source=tipstricks&utm_medium=plugin&utm_campaign=articles&utm_id=66&utm_content=tcf' target='_blank'>Read more</a>"
 msgstr ""
 
 #: settings/config/fields/general-settings/settings.php:13
@@ -4817,7 +4844,7 @@ msgid "Additional Google Tags - Statistics"
 msgstr ""
 
 #: settings/config/fields/wizard/consent.php:364
-#: settings/config/fields/wizard/consent.php:423
+#: settings/config/fields/wizard/consent.php:447
 msgid "You can add additional tags, comma separated."
 msgstr ""
 
@@ -4826,13 +4853,13 @@ msgid "Please enter your GTM container ID"
 msgstr ""
 
 #: settings/config/fields/wizard/consent.php:376
-#: settings/config/fields/wizard/consent.php:445
-#: settings/config/fields/wizard/consent.php:467
+#: settings/config/fields/wizard/consent.php:469
+#: settings/config/fields/wizard/consent.php:491
 msgid "Configuration by Complianz"
 msgstr ""
 
 #: settings/config/fields/wizard/consent.php:377
-#: settings/config/fields/wizard/consent.php:468
+#: settings/config/fields/wizard/consent.php:492
 msgid "If you add the ID for your statistics tool here, Complianz will configure your site for statistics tracking."
 msgstr ""
 
@@ -4841,61 +4868,73 @@ msgid "For the Google Tag Manager code, log in and you will immediatly see your 
 msgstr ""
 
 #: settings/config/fields/wizard/consent.php:397
-msgid "Google Tag - Marketing or Advertising"
-msgstr ""
-
-#: settings/config/fields/wizard/consent.php:398
-msgid "This will be fired on marketing consent."
+msgid "Do you want to force the script in the header?"
 msgstr ""
 
 #: settings/config/fields/wizard/consent.php:399
+msgid "Yes - (Experimental)"
+msgstr ""
+
+#: settings/config/fields/wizard/consent.php:402
+msgid "It's possible that forcing this script in the header breaks configurations and integrations with other plugins."
+msgstr ""
+
+#: settings/config/fields/wizard/consent.php:421
+msgid "Google Tag - Marketing or Advertising"
+msgstr ""
+
+#: settings/config/fields/wizard/consent.php:422
+msgid "This will be fired on marketing consent."
+msgstr ""
+
+#: settings/config/fields/wizard/consent.php:423
 msgid "Optional."
 msgstr ""
 
-#: settings/config/fields/wizard/consent.php:415
+#: settings/config/fields/wizard/consent.php:439
 msgid "Additional Google Tags - Marketing or Advertising"
 msgstr ""
 
-#: settings/config/fields/wizard/consent.php:435
-#: settings/config/fields/wizard/consent.php:482
+#: settings/config/fields/wizard/consent.php:459
+#: settings/config/fields/wizard/consent.php:506
 msgid "Enter the URL of Matomo"
 msgstr ""
 
-#: settings/config/fields/wizard/consent.php:446
-#: settings/config/fields/wizard/consent.php:493
+#: settings/config/fields/wizard/consent.php:470
+#: settings/config/fields/wizard/consent.php:517
 msgid "The URL depends on your configuration of Matomo."
 msgstr ""
 
-#: settings/config/fields/wizard/consent.php:454
+#: settings/config/fields/wizard/consent.php:478
 msgid "Enter your Matomo site ID"
 msgstr ""
 
-#: settings/config/fields/wizard/consent.php:492
-#: settings/config/fields/wizard/consent.php:531
+#: settings/config/fields/wizard/consent.php:516
+#: settings/config/fields/wizard/consent.php:555
 msgid "Configuration"
 msgstr ""
 
-#: settings/config/fields/wizard/consent.php:505
+#: settings/config/fields/wizard/consent.php:529
 msgid "Enter your Matomo container ID"
 msgstr ""
 
-#: settings/config/fields/wizard/consent.php:521
+#: settings/config/fields/wizard/consent.php:545
 msgid "Enter your Clicky site ID"
 msgstr ""
 
-#: settings/config/fields/wizard/consent.php:532
+#: settings/config/fields/wizard/consent.php:556
 msgid "Because Clicky always sets a so-called unique identifier cookie, consent for statistics is always required."
 msgstr ""
 
-#: settings/config/fields/wizard/consent.php:543
+#: settings/config/fields/wizard/consent.php:567
 msgid "Enter your Yandex ID"
 msgstr ""
 
-#: settings/config/fields/wizard/consent.php:559
+#: settings/config/fields/wizard/consent.php:583
 msgid "Enter your Clarity project ID"
 msgstr ""
 
-#: settings/config/fields/wizard/consent.php:576
+#: settings/config/fields/wizard/consent.php:600
 msgid "Do you want to enable the Yandex ecommerce datalayer?"
 msgstr ""
 
@@ -5312,7 +5351,7 @@ msgid "Choose the appropriate frameworks needed for your configuration."
 msgstr ""
 
 #: settings/config/fields/wizard/services.php:232
-msgid "Google Advertising Products requires Google CMP Certified Consent Management. If you don't show ads, but use Google Advertising Products with Google Consent Mode, an additional framework is not required."
+msgid "Google Advertising Products requires Google CMP Certified Consent Management. If you don't show ads, but use Google Advertising Products with Google Consent Mode, an additional framework is not required. Please be aware that this consent banner has additional guidelines and restricts customization."
 msgstr ""
 
 #: settings/config/fields/wizard/services.php:322
@@ -5927,94 +5966,94 @@ msgid "[Complianz] Compliance report for %s"
 msgstr ""
 
 #. translators: %1$s: site url, %2$s: website name.
-#: websitescan/class-wsc-scanner.php:1002
+#: websitescan/class-wsc-scanner.php:1000
 msgid "This compliance report was sent from your site <a href=\"%1$s\" target=\"_blank\">%2$s</a> by Complianz"
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1006
+#: websitescan/class-wsc-scanner.php:1004
 msgid "You can find the most important takeaways below:"
 msgstr ""
 
 #. translators: %1$s: website name.
-#: websitescan/class-wsc-scanner.php:1015
+#: websitescan/class-wsc-scanner.php:1013
 msgid "Are you no longer the website administrator? <a href=\"%1$s\" target=\"_blank\">Click here</a> to dismiss notifications."
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1153
-#: websitescan/class-wsc-scanner.php:1162
-#: websitescan/class-wsc-scanner.php:1171
+#: websitescan/class-wsc-scanner.php:1151
+#: websitescan/class-wsc-scanner.php:1160
+#: websitescan/class-wsc-scanner.php:1169
 msgid "Consent mode"
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1154
-#: websitescan/class-wsc-scanner.php:1163
-#: websitescan/class-wsc-scanner.php:1172
+#: websitescan/class-wsc-scanner.php:1152
+#: websitescan/class-wsc-scanner.php:1161
+#: websitescan/class-wsc-scanner.php:1170
 msgid "We have found {technology} on your site and recommend <a target=\"_blank\" href=\"{admin_url}\">enabling</a> Google Consent Mode V2 to optimize your analytics implementation."
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1183
-#: websitescan/class-wsc-scanner.php:1192
-#: websitescan/class-wsc-scanner.php:1201
+#: websitescan/class-wsc-scanner.php:1181
+#: websitescan/class-wsc-scanner.php:1190
+#: websitescan/class-wsc-scanner.php:1199
 msgid "If you’re showing ads on your website it’s likely you need a Google certified CMP to make sure your ads are shown correctly. With Complianz you can <a target=\"_blank\" href=\"{admin_url}\">enable TCF</a> with our Google certified CMP."
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1211
-#: websitescan/class-wsc-scanner.php:1219
-#: websitescan/class-wsc-scanner.php:1227
+#: websitescan/class-wsc-scanner.php:1209
+#: websitescan/class-wsc-scanner.php:1217
+#: websitescan/class-wsc-scanner.php:1225
 msgid "Privacy laws"
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1212
-#: websitescan/class-wsc-scanner.php:1220
-#: websitescan/class-wsc-scanner.php:1228
+#: websitescan/class-wsc-scanner.php:1210
+#: websitescan/class-wsc-scanner.php:1218
+#: websitescan/class-wsc-scanner.php:1226
 msgid "On websites with multiple languages you need to consider that your visitors might be from various regions, and therefore different privacy laws might apply. Double-check and see if you’re complying with all relevant regions."
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1237
-#: websitescan/class-wsc-scanner.php:1245
-#: websitescan/class-wsc-scanner.php:1253
+#: websitescan/class-wsc-scanner.php:1235
+#: websitescan/class-wsc-scanner.php:1243
+#: websitescan/class-wsc-scanner.php:1251
 msgid "Collecting data"
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1238
-#: websitescan/class-wsc-scanner.php:1246
-#: websitescan/class-wsc-scanner.php:1254
+#: websitescan/class-wsc-scanner.php:1236
+#: websitescan/class-wsc-scanner.php:1244
+#: websitescan/class-wsc-scanner.php:1252
 msgid "We found a privacy statement! Please double-check if your privacy statement has all the needed elements expected from a privacy statement. Make sure you also allow for data request forms and records of consent to support your privacy statement."
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1263
-#: websitescan/class-wsc-scanner.php:1272
-#: websitescan/class-wsc-scanner.php:1281
+#: websitescan/class-wsc-scanner.php:1261
+#: websitescan/class-wsc-scanner.php:1270
+#: websitescan/class-wsc-scanner.php:1279
 msgid "Privacy statement"
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1264
-#: websitescan/class-wsc-scanner.php:1273
-#: websitescan/class-wsc-scanner.php:1282
+#: websitescan/class-wsc-scanner.php:1262
+#: websitescan/class-wsc-scanner.php:1271
+#: websitescan/class-wsc-scanner.php:1280
 msgid "We didn’t find a privacy statement. Please <a target=\"_blank\" href=\"{admin_url}\">add a privacy statement</a> that has all the needed elements expected from a privacy statement. Make sure you allow for DSR and Consent Records that respect the data minimization principle as well."
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1292
-#: websitescan/class-wsc-scanner.php:1300
-#: websitescan/class-wsc-scanner.php:1308
+#: websitescan/class-wsc-scanner.php:1290
+#: websitescan/class-wsc-scanner.php:1298
+#: websitescan/class-wsc-scanner.php:1306
 msgid "WooCommerce"
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1293
-#: websitescan/class-wsc-scanner.php:1301
-#: websitescan/class-wsc-scanner.php:1309
+#: websitescan/class-wsc-scanner.php:1291
+#: websitescan/class-wsc-scanner.php:1299
+#: websitescan/class-wsc-scanner.php:1307
 msgid "When selling with WooCommerce, compliance with privacy laws and customer rights is essential. Complianz simplifies this by generating required documents and managing privacy obligations effectively."
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1318
-#: websitescan/class-wsc-scanner.php:1326
-#: websitescan/class-wsc-scanner.php:1334
+#: websitescan/class-wsc-scanner.php:1316
+#: websitescan/class-wsc-scanner.php:1324
+#: websitescan/class-wsc-scanner.php:1332
 msgid "Funding choices"
 msgstr ""
 
-#: websitescan/class-wsc-scanner.php:1319
-#: websitescan/class-wsc-scanner.php:1327
-#: websitescan/class-wsc-scanner.php:1335
+#: websitescan/class-wsc-scanner.php:1317
+#: websitescan/class-wsc-scanner.php:1325
+#: websitescan/class-wsc-scanner.php:1333
 msgid "Are you using the Google consent banner for advertising and Complianz for everything else? Why not remove one banner by combining everything with our Google Certified CMP that enablesd TCF and Consent Mode for Google products, without the need of multiple consent banners."
 msgstr ""
 
@@ -6105,7 +6144,7 @@ msgstr ""
 #: settings/build/5193.36f7ad16867d52c6e417.js:1
 #: settings/build/7771.e02ee81de473e3a1d5a9.js:1
 #: settings/build/9709.781936e00f4b80cef590.js:1
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Something went wrong"
 msgstr ""
 
@@ -7236,7 +7275,7 @@ msgstr ""
 #: settings/build/4570.76dcf7267af80a785acb.js:1
 #: settings/build/6644.2ea25b710cb1cc5b721b.js:1
 #: settings/build/8596.2c253cf399d8f84c2746.js:1
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Documentation"
 msgstr ""
 
@@ -7795,110 +7834,110 @@ msgstr ""
 msgid "%s rating based on %d ratings"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Go Pro"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "New"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "The wizard is currently in use by user with ID: "
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "To prevent conflicts during saving the wizard is temporarily locked."
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "The lock will automatically clear after two minutes."
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Switch between banners"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Banner"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Edit consent types"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Saving settings..."
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Settings saved"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "This field is required"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Please enter a valid URL"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Please enter a valid email address"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Please enter a valid number"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Please enter a valid phone number"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "required"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Please check if security settings on the server or a plugin is blocking the requests from Complianz."
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "The Complianz Rest API is disabled."
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "The Complianz Rest API returned a not found."
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "The Complianz Rest API returned a 403 forbidden error."
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "A problem was detected during the loading of the settings"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "The request returned the following errors:"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Response code:"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Status code:"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Server response:"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "More information"
 msgstr ""
 
-#: settings/build/index.5759e5e3aa398b592695.js:1
+#: settings/build/index.31cf1ab07566417a2cf9.js:1
 msgid "Unexpected error"
 msgstr ""

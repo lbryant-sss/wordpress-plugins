@@ -12,5 +12,6 @@ export declare class ScLineItemTotal {
     hasSubscription(checkout: Checkout): boolean;
     renderLineItemTitle(checkout: Checkout): any;
     renderLineItemDescription(checkout: Checkout): any;
+    renderConversion(): any;
     render(): any;
 }

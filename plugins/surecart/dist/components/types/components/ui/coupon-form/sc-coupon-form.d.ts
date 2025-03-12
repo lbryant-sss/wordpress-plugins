@@ -44,6 +44,8 @@ export declare class ScCouponForm {
     currency: string;
     /** The discount amount */
     discountAmount: number;
+    /** The discounts display amount */
+    discountsDisplayAmount: string;
     /** Has recurring */
     showInterval: boolean;
     /** Is it open */

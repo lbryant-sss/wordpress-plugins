@@ -118,8 +118,8 @@ if (!class_exists("cmplz_wsc_onboarding")) {
 				return;
 			}
 
-			if (!isset($_GET['websitescan']) && $this->should_onboard()) {
-				wp_redirect(add_query_arg(['websitescan' => ''], cmplz_admin_url()));
+			if ( ! isset( $_GET['websitescan'] ) && isset( $_GET['page'] ) && strpos( $_GET['page'], 'complianz' ) !== false && $this->should_onboard() ) {
+				wp_redirect( add_query_arg( ['websitescan' => ''], cmplz_admin_url() ) );
 				exit;
 			}
 		}

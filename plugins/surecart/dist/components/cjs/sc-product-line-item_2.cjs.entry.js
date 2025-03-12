@@ -19,6 +19,8 @@ const ScProductLineItem = class {
         this.variantLabel = '';
         this.quantity = undefined;
         this.amount = undefined;
+        this.displayAmount = undefined;
+        this.scratchDisplayAmount = undefined;
         this.fees = undefined;
         this.setupFeeTrialEnabled = true;
         this.scratchAmount = undefined;
@@ -31,15 +33,22 @@ const ScProductLineItem = class {
         this.sku = '';
         this.purchasableStatusDisplay = undefined;
     }
+    renderAmount() {
+        if (this.displayAmount) {
+            return this.displayAmount;
+        }
+        return index.h("sc-format-number", { type: "currency", currency: this.currency, value: this.amount });
+    }
     renderPriceAndInterval() {
         const setupFee = (this.fees || []).find(fee => fee.fee_type === 'setup');
         if (this.trialDurationDays) {
             return (index.h("div", { class: "item__price", part: "price" }, index.h("div", { class: "price", part: "price__amount" }, !!setupFee && !this.setupFeeTrialEnabled ? (index.h(index.Fragment, null, setupFee === null || setupFee === void 0 ? void 0 :
-                setupFee.description, " ", index.h("sc-format-number", { part: "price__amount", type: "currency", currency: this.currency, value: setupFee.amount }))) : (wp.i18n.sprintf(wp.i18n._n('%d day free', '%d days free', this.trialDurationDays, 'surecart'), this.trialDurationDays))), index.h("div", { class: "price__description", part: "price__description" }, 
+                setupFee.description, " ", setupFee === null || setupFee === void 0 ? void 0 :
+                setupFee.display_amount)) : (wp.i18n.sprintf(wp.i18n._n('%d day free', '%d days free', this.trialDurationDays, 'surecart'), this.trialDurationDays))), index.h("div", { class: "price__description", part: "price__description" }, 
             /** translators: 30 days free, Then $99 per month. */
-            wp.i18n.__('Then', 'surecart'), ' ', !!this.scratchAmount && this.scratchAmount > this.amount && (index.h(index.Fragment, null, index.h("sc-format-number", { class: "item__scratch-price", part: "price__scratch", type: "currency", currency: this.currency, value: this.scratchAmount }), ' ')), index.h("sc-format-number", { part: "price__amount", type: "currency", currency: this.currency, value: this.amount }), " ", !!this.interval && this.interval, !!setupFee && !this.setupFeeTrialEnabled && wp.i18n.sprintf(wp.i18n._n('starting in %d day', 'starting in %d days', this.trialDurationDays, 'surecart'), this.trialDurationDays))));
+            wp.i18n.__('Then', 'surecart'), ' ', !!this.scratchAmount && this.scratchAmount > this.amount && (index.h(index.Fragment, null, index.h("span", { class: "item__scratch-price" }, this.scratchDisplayAmount), ' ')), index.h("span", { slot: "price__amount" }, this.renderAmount()), " ", !!this.interval && this.interval, !!setupFee && !this.setupFeeTrialEnabled && wp.i18n.sprintf(wp.i18n._n('starting in %d day', 'starting in %d days', this.trialDurationDays, 'surecart'), this.trialDurationDays))));
         }
-        return (index.h("div", { class: "item__price", part: "price" }, index.h("div", { class: "price", part: "price__amount" }, !!this.scratchAmount && this.scratchAmount !== this.amount && (index.h(index.Fragment, null, index.h("sc-format-number", { class: "item__scratch-price", type: "currency", currency: this.currency, value: this.scratchAmount }), ' ')), index.h("sc-format-number", { type: "currency", currency: this.currency, value: this.amount })), !!this.interval && (index.h("div", { class: "price__description", part: "price__description" }, this.interval))));
+        return (index.h("div", { class: "item__price", part: "price" }, index.h("div", { class: "price", part: "price__amount" }, !!this.scratchAmount && this.scratchAmount !== this.amount && (index.h(index.Fragment, null, index.h("span", { class: "item__scratch-price" }, this.scratchDisplayAmount), ' ')), this.renderAmount()), !!this.interval && (index.h("div", { class: "price__description", part: "price__description" }, this.interval))));
     }
     renderPurchasableStatus() {
         if (!this.purchasableStatusDisplay)
@@ -48,22 +57,22 @@ const ScProductLineItem = class {
     }
     render() {
         var _a, _b;
-        return (index.h("div", { key: 'aaf09adfcb8a6e31ef25a2abed7cb870094a59de', class: "base", part: "base" }, index.h("div", { key: '0e4c611a4c1f12f1d5e3572d923a1a7622f7e22b', part: "product-line-item", class: {
+        return (index.h("div", { key: '8c39cff1fe1818cedfba25c9cbb7350bbc250184', class: "base", part: "base" }, index.h("div", { key: '695926aa83b934b64fe256b9cb132c50c1139a3a', part: "product-line-item", class: {
                 'item': true,
                 'item--has-image': !!((_a = this.image) === null || _a === void 0 ? void 0 : _a.src),
                 'item--is-rtl': pageAlign.isRtl(),
                 'product-line-item__editable': this.editable,
                 'product-line-item__removable': this.removable,
-            } }, !!((_b = this.image) === null || _b === void 0 ? void 0 : _b.src) && index.h("img", { key: '7a52cee496b81fac4d24c945c03bd63a8a496047', ...this.image, part: "image" }), index.h("div", { key: '724b80e7abdc5c25cb830f8e2565c5bacd789701', class: "item__text", part: "text" }, index.h("div", { key: 'e572f08e9f2e31a3608adaf670fdd28b15ffdef0', class: "item__text-details" }, index.h("div", { key: 'b21df4f7c9a157851867988b95444bc926af6082', class: "item__title", part: "title" }, index.h("slot", { key: '04eb5f1a39b1fa2fb15174eb9f317749e7222369', name: "title" }, this.name)), index.h("div", { key: '0adb73eddb027dfcbf2056525d993e058765f880', class: "item__description item__price-variant", part: "description" }, index.h("div", { key: '38dd6a3d2796f79b54425e593e8dda0b369261b2' }, this.variantLabel), index.h("div", { key: 'a2c47ade2e8ed09830691fddd3b902bda0eca3f6' }, this.priceName), !!this.sku && (index.h("div", { key: '3a50293143356c559a5236052f99bd7a69147ce3' }, wp.i18n.__('SKU:', 'surecart'), " ", this.sku))), !this.editable && this.quantity > 1 && (index.h("span", { key: '3fc33db963e73e5ad5728748ebaf8acd925633c9', class: "item__description", part: "static-quantity" }, wp.i18n.__('Qty:', 'surecart'), " ", this.quantity))), this.editable && (index.h("sc-quantity-select", { key: 'c5ae17cfb022f369006ce22f71dd9a0a6557fb0b', max: this.max || Infinity, exportparts: "base:quantity, minus:quantity__minus, minus-icon:quantity__minus-icon, plus:quantity__plus, plus-icon:quantity__plus-icon, input:quantity__input", clickEl: this.el, quantity: this.quantity, size: "small", onScChange: e => e.detail && this.scUpdateQuantity.emit(e.detail), "aria-label": 
+            } }, !!((_b = this.image) === null || _b === void 0 ? void 0 : _b.src) && index.h("img", { key: '9b8044a0b44519d427e4df3ee90d02b66718304e', ...this.image, part: "image" }), index.h("div", { key: 'bb489a3749fc8bf46915c3099013f09efd676d06', class: "item__text", part: "text" }, index.h("div", { key: '567082bd9b913479a6b6243b2303a906f10bed6e', class: "item__text-details" }, index.h("div", { key: '37f84b7032d998a0ef765fc6b2fbca9975303484', class: "item__title", part: "title" }, index.h("slot", { key: '4db217ab914fa42957897c9796df7871de1fac94', name: "title" }, this.name)), index.h("div", { key: '772ba7b2bcaddda71e23b3b4ff88a693b8c28082', class: "item__description item__price-variant", part: "description" }, index.h("div", { key: '85b9425c9075d3c81f402df7052f0388cb97479f' }, this.variantLabel), index.h("div", { key: 'e73b10f8ab345d105a8647417eb33b0b46cfd8e9' }, this.priceName), !!this.sku && (index.h("div", { key: '0e43491c45053e06dddc6672cc313cce00b6f399' }, wp.i18n.__('SKU:', 'surecart'), " ", this.sku))), !this.editable && this.quantity > 1 && (index.h("span", { key: '43b79796f461acee024b704b2030bec3b2886166', class: "item__description", part: "static-quantity" }, wp.i18n.__('Qty:', 'surecart'), " ", this.quantity))), this.editable && (index.h("sc-quantity-select", { key: '8605a6bd8893e68ed24d8a636995d1772962eba4', max: this.max || Infinity, exportparts: "base:quantity, minus:quantity__minus, minus-icon:quantity__minus-icon, plus:quantity__plus, plus-icon:quantity__plus-icon, input:quantity__input", clickEl: this.el, quantity: this.quantity, size: "small", onScChange: e => e.detail && this.scUpdateQuantity.emit(e.detail), "aria-label": 
             /** translators: %1$s: product name, %2$s: product price name */
-            wp.i18n.sprintf(wp.i18n.__('Change Quantity - %1$s %2$s', 'surecart'), this.name, this.priceName) }))), index.h("div", { key: '1e34e13c89d5860ed7a0f077ffb9d24d178fd50e', class: "item__suffix", part: "suffix" }, this.removable ? (index.h("sc-icon", { exportparts: "base:remove-icon__base", class: "item__remove", name: "x", onClick: () => this.scRemove.emit(), onKeyDown: e => {
+            wp.i18n.sprintf(wp.i18n.__('Change Quantity - %1$s %2$s', 'surecart'), this.name, this.priceName) }))), index.h("div", { key: '5c73379f01b9d73412f1ac20cfca817fec9d359a', class: "item__suffix", part: "suffix" }, this.removable ? (index.h("sc-icon", { exportparts: "base:remove-icon__base", class: "item__remove", name: "x", onClick: () => this.scRemove.emit(), onKeyDown: e => {
                 if (e.key === 'Enter') {
                     this.scRemove.emit();
                 }
             }, tabindex: "0", "aria-label": wp.i18n.sprintf(wp.i18n.__('Remove Item - %1$s %2$s', 'surecart'), this.name, this.priceName) })) : (index.h("div", null)), this.renderPriceAndInterval(), this.renderPurchasableStatus())), (this.fees || []).map(fee => {
             if (this.trialDurationDays && !this.setupFeeTrialEnabled && fee.fee_type === 'setup')
                 return null;
-            return (index.h("sc-line-item", { exportparts: "price-description:line-item__price-description" }, index.h("sc-format-number", { slot: "price-description", type: "currency", value: fee === null || fee === void 0 ? void 0 : fee.amount, currency: this.currency || 'usd' }), index.h("span", { slot: "price-description", class: "fee__description" }, fee === null || fee === void 0 ? void 0 : fee.description)));
+            return (index.h("sc-line-item", { exportparts: "price-description:line-item__price-description" }, index.h("span", { slot: "price-description" }, fee === null || fee === void 0 ? void 0 : fee.display_amount), index.h("span", { slot: "price-description", class: "fee__description" }, fee === null || fee === void 0 ? void 0 : fee.description)));
         })));
     }
     get el() { return index.getElement(this); }
@@ -119,14 +128,14 @@ const ScQuantitySelect = class {
         this.scInput.emit(this.quantity);
     }
     render() {
-        return (index.h("div", { key: '261e7fa6fd5584ed3e848e0018e18186ff31e9de', part: "base", class: {
+        return (index.h("div", { key: '9223957d5c201fa2e1053326169d8dc37ecab5da', part: "base", class: {
                 'quantity': true,
                 // States
                 'quantity--focused': this.hasFocus,
                 'quantity--disabled': this.disabled,
                 'quantity--is-rtl': pageAlign.isRtl(),
                 'quantity--small': this.size === 'small',
-            } }, index.h("button", { key: 'c17cefade64350c49ba1c8f1c68b5ccf9282f0a5', part: "minus", "aria-label": wp.i18n.__('Decrease quantity by one.', 'surecart'), "aria-disabled": this.disabled || (this.quantity <= this.min && this.min > 1), class: { 'button__decrease': true, 'button--disabled': this.quantity <= this.min && this.min > 1 }, onClick: () => this.quantity > this.min && this.decrease(), disabled: this.disabled || (this.quantity <= this.min && this.min > 1) }, index.h("sc-icon", { key: '0fa10d4d207483cfbdf8d3fb5d17136a7572a5e0', name: "minus", exportparts: "base:minus__icon" })), index.h("input", { key: '3e451d042cb345e04c830bb3ed597f99ee074ca0', part: "input", class: "input__control", ref: el => (this.input = el), step: "1", type: "number", max: this.max, min: this.min, value: this.quantity, disabled: this.disabled, autocomplete: "off", role: "spinbutton", "aria-valuemax": this.max, "aria-valuemin": this.min, "aria-valuenow": this.quantity, "aria-disabled": this.disabled, onChange: () => this.handleChange(), onInput: () => this.handleInput(), onFocus: () => this.handleFocus(), onBlur: () => this.handleBlur() }), index.h("button", { key: 'e3089b57f21e375c9e2af211f610b78acbb2fd04', part: "plus", "aria-label": wp.i18n.__('Increase quantity by one.', 'surecart'), class: { 'button__increase': true, 'button--disabled': this.quantity >= this.max }, onClick: () => this.quantity < this.max && this.increase(), "aria-disabled": this.disabled || this.quantity >= this.max, disabled: this.disabled || this.quantity >= this.max }, index.h("sc-icon", { key: '2d5285088471d64ba31abf044a02ab676e4a2e0e', name: "plus", exportparts: "base:plus__icon" }))));
+            } }, index.h("button", { key: 'c3aa6bc3941b0d82179013f23c827a02d0a14d3f', part: "minus", "aria-label": wp.i18n.__('Decrease quantity by one.', 'surecart'), "aria-disabled": this.disabled || (this.quantity <= this.min && this.min > 1), class: { 'button__decrease': true, 'button--disabled': this.quantity <= this.min && this.min > 1 }, onClick: () => this.quantity > this.min && this.decrease(), disabled: this.disabled || (this.quantity <= this.min && this.min > 1) }, index.h("sc-icon", { key: 'ad6b0a8fe8cdd11b7db62a3a6baf3478e0c8e006', name: "minus", exportparts: "base:minus__icon" })), index.h("input", { key: '4865b01efae93e9a5c917888b4b10800cab86ac2', part: "input", class: "input__control", ref: el => (this.input = el), step: "1", type: "number", max: this.max, min: this.min, value: this.quantity, disabled: this.disabled, autocomplete: "off", role: "spinbutton", "aria-valuemax": this.max, "aria-valuemin": this.min, "aria-valuenow": this.quantity, "aria-disabled": this.disabled, onChange: () => this.handleChange(), onInput: () => this.handleInput(), onFocus: () => this.handleFocus(), onBlur: () => this.handleBlur() }), index.h("button", { key: '82a547f9d40d3e27281da45fd0588ff690a91909', part: "plus", "aria-label": wp.i18n.__('Increase quantity by one.', 'surecart'), class: { 'button__increase': true, 'button--disabled': this.quantity >= this.max }, onClick: () => this.quantity < this.max && this.increase(), "aria-disabled": this.disabled || this.quantity >= this.max, disabled: this.disabled || this.quantity >= this.max }, index.h("sc-icon", { key: '22d2bd6ea9f784906c5bcf1c788f97b8b6d820e1', name: "plus", exportparts: "base:plus__icon" }))));
     }
     get el() { return index.getElement(this); }
 };

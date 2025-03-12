@@ -366,10 +366,6 @@ class HMWP_Classes_Tools {
 				'bb-config.php',
 				'error_log'
 			),
-			//
-			'hmwp_category_base'             => '',
-			'hmwp_tag_base'                  => '',
-			//
 		);
 
 		// Set options for "Lite Mode".
@@ -458,24 +454,15 @@ class HMWP_Classes_Tools {
 			$options['whitelist_level'] = ( $options['whitelist_paths'] == 1 ? 2 : 1 );
 		}
 
-		// Set the category and tag bases considering multisite setup.
-		$category_base = get_option( 'category_base' );
-		$tag_base      = get_option( 'tag_base' );
-
-		if ( self::isMultisites() && ! is_subdomain_install() && is_main_site() && 0 === strpos( get_option( 'permalink_structure' ), '/blog/' ) ) {
-			$category_base = preg_replace( '|^/?blog|', '', $category_base );
-			$tag_base      = preg_replace( '|^/?blog|', '', $tag_base );
-		}
-
-		$options['hmwp_category_base'] = $category_base;
-		$options['hmwp_tag_base']      = $tag_base;
-
 		// Set priority and rewrite rules settings if defined constants are set.
 		if ( HMW_PRIORITY ) {
 			$options['hmwp_priorityload'] = 1;
 		}
 		if ( HMW_RULES_IN_WP_RULES ) {
 			$options['hmwp_rewrites_in_wp_rules'] = 1;
+		}
+		if ( HMW_DYNAMIC_FILES ) {
+			$options['hmwp_mapping_file'] = 1;
 		}
 
 		// Return the final options array.
@@ -1399,6 +1386,10 @@ class HMWP_Classes_Tools {
 			return true;
 		}
 
+		if ( HMWP_Classes_Tools::isWpengine() ){
+			return false;
+		}
+
 		return ( $is_nginx || ( isset( $_SERVER['SERVER_SOFTWARE'] ) && ( stripos( $_SERVER['SERVER_SOFTWARE'], 'nginx' ) !== false || stripos( $_SERVER['SERVER_SOFTWARE'], 'TasteWP' ) !== false ) ) );
 	}
 
@@ -1408,17 +1399,18 @@ class HMWP_Classes_Tools {
 	 * @return boolean
 	 */
 	public static function isWpengine() {
-		//If custom defined
+
+		// Check if a custom-defined server type matches WPEngine
 		if ( HMWP_Classes_Tools::getOption( 'hmwp_server_type' ) <> 'auto' ) {
 			return ( HMWP_Classes_Tools::getOption( 'hmwp_server_type' ) == 'wpengine' );
 		}
 
-		//If custom defined
+		// Return true if the custom server type constant matches WPEngine
 		if ( defined( 'HMWP_SERVER_TYPE' ) && strtolower( HMWP_SERVER_TYPE ) == 'wpengine' ) {
 			return true;
 		}
 
-		return ( isset( $_SERVER['WPENGINE_PHPSESSIONS'] ) );
+		return ( isset( $_SERVER['IS_WPE'] ) || isset( $_SERVER['HTTP_X_WPE_SSL'] ) || isset( $_SERVER['HTTP_X_WPENGINE_PHP_VERSION'] ) );
 	}
 
 	/**

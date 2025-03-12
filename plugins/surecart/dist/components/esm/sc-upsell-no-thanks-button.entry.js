@@ -1,6 +1,6 @@
 import { r as registerInstance, h, H as Host } from './index-745b6bec.js';
-import { d as decline } from './mutations-6d1a62d0.js';
-import './fetch-2d92a73e.js';
+import { d as decline } from './mutations-5702cb96.js';
+import './fetch-8ecbbe53.js';
 import './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 import './store-4bc13420.js';
@@ -22,7 +22,7 @@ const ScUpsellNoThanksButton = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: '490adbfe64f3c4661284cd74c85b56e4575b36fc', onClick: () => decline() }, h("slot", { key: 'ec79ec99b39e1e59c0e0f8d21eb2ad902fbd8aed' })));
+        return (h(Host, { key: 'f18d3db24d4641d47b50024789e9888281f7c392', onClick: () => decline() }, h("slot", { key: '37c9f99de73e5a3da7bc8671852762d3cd3ff85b' })));
     }
 };
 ScUpsellNoThanksButton.style = ScUpsellNoThanksButtonStyle0;

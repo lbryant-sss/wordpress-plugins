@@ -3,10 +3,10 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const price = require('./price-653ec1cb.js');
-const getters = require('./getters-7f1a1d9c.js');
+const price = require('./price-ca4a4318.js');
+const getters = require('./getters-24219863.js');
 const getters$1 = require('./getters-87b7ef91.js');
-const mutations = require('./mutations-757d8d21.js');
+const mutations = require('./mutations-747a9cc3.js');
 require('./currency-71fce0f0.js');
 require('./address-4c70d641.js');
 require('./store-4a539aea.js');
@@ -72,7 +72,8 @@ const ScProductSelectedPrice = class {
                 if (e.key === 'Enter') {
                     this.onSubmit(e);
                 }
-            } }, index.h("sc-button", { slot: "suffix", type: "link", submit: true }, wp.i18n.__('Update', 'surecart'))))) : (index.h(index.Fragment, null, index.h("div", { class: "selected-price__wrap" }, index.h("span", { class: "selected-price__price", "aria-label": wp.i18n.__('Product price', 'surecart') }, (price$1 === null || price$1 === void 0 ? void 0 : price$1.scratch_amount) > price$1.amount && (index.h(index.Fragment, null, index.h("sc-format-number", { class: "selected-price__scratch-price", part: "price__scratch", type: "currency", currency: price$1 === null || price$1 === void 0 ? void 0 : price$1.currency, value: price$1 === null || price$1 === void 0 ? void 0 : price$1.scratch_amount }), ' ')), index.h("sc-format-number", { type: "currency", currency: price$1 === null || price$1 === void 0 ? void 0 : price$1.currency, value: ((_e = this.lineItem()) === null || _e === void 0 ? void 0 : _e.ad_hoc_amount) !== null ? (_f = this.lineItem()) === null || _f === void 0 ? void 0 : _f.ad_hoc_amount : (variant === null || variant === void 0 ? void 0 : variant.amount) || (price$1 === null || price$1 === void 0 ? void 0 : price$1.amount) })), index.h("span", { class: "selected-price__interval", "aria-label": wp.i18n.__('Price interval', 'surecart') }, price.intervalString(price$1, {
+            } }, index.h("sc-button", { slot: "suffix", type: "link", submit: true }, wp.i18n.__('Update', 'surecart'))))) : (index.h(index.Fragment, null, index.h("div", { class: "selected-price__wrap" }, index.h("span", { class: "selected-price__price", "aria-label": wp.i18n.__('Product price', 'surecart') }, (price$1 === null || price$1 === void 0 ? void 0 : price$1.scratch_amount) > price$1.amount && (index.h(index.Fragment, null, index.h("span", { class: "selected-price__scratch-price", part: "price__scratch" }, price$1 === null || price$1 === void 0 ? void 0 :
+            price$1.scratch_display_amount, ' '))), ((_e = this.lineItem()) === null || _e === void 0 ? void 0 : _e.ad_hoc_amount) !== null ? (_f = this.lineItem()) === null || _f === void 0 ? void 0 : _f.ad_hoc_display_amount : (variant === null || variant === void 0 ? void 0 : variant.display_amount) || (price$1 === null || price$1 === void 0 ? void 0 : price$1.display_amount)), index.h("span", { class: "selected-price__interval", "aria-label": wp.i18n.__('Price interval', 'surecart') }, price.intervalString(price$1, {
             labels: {
                 interval: '/',
                 period: 

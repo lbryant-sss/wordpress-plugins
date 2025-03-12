@@ -1,9 +1,9 @@
 import { r as registerInstance, c as createEvent, h, H as Host } from './index-745b6bec.js';
-import { c as createOrUpdateCheckout } from './index-01c97eb1.js';
+import { c as createOrUpdateCheckout } from './index-885ece77.js';
 import { a as getValueFromUrl } from './util-50af2a83.js';
 import { s as state$1 } from './store-f54d1b1f.js';
-import { s as state, o as onChange } from './mutations-83ea96b2.js';
-import './fetch-2d92a73e.js';
+import { s as state, o as onChange } from './mutations-6f9b9a86.js';
+import './fetch-8ecbbe53.js';
 import './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 import './index-06061d4e.js';
@@ -12,7 +12,7 @@ import './index-c5a96d53.js';
 import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
 import './store-627acec4.js';
-import './price-d5770168.js';
+import './price-7bb626d0.js';
 
 const scCustomerEmailCss = ":host{display:block}a{color:var(--sc-color-primary-500)}a.customer-email__login-link{color:var(--sc-customer-login-link-color, var(--sc-input-placeholder-color));text-decoration:none;font-size:var(--sc-font-size-small)}.tracking-confirmation-message{font-size:var(--sc-font-size-xx-small)}.tracking-confirmation-message span{opacity:0.75}";
 const ScCustomerEmailStyle0 = scCustomerEmailCss;

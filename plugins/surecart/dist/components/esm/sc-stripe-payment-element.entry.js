@@ -1,13 +1,13 @@
 import { r as registerInstance, c as createEvent, h, a as getElement } from './index-745b6bec.js';
 import { p as pure } from './pure-963214cb.js';
 import { s as state$2 } from './watchers-38693c1f.js';
-import { o as onChange, s as state, u as updateFormState } from './mutations-83ea96b2.js';
+import { o as onChange, s as state, u as updateFormState } from './mutations-6f9b9a86.js';
 import { o as onChange$1 } from './store-627acec4.js';
-import './watchers-8dce998c.js';
-import { s as state$1, g as getProcessorByType } from './getters-09d843cb.js';
+import './watchers-876133bf.js';
+import { s as state$1, g as getProcessorByType } from './getters-07c1280c.js';
 import { c as currentFormState } from './getters-487612aa.js';
 import { c as createErrorNotice } from './mutations-ed6d0770.js';
-import { b as getCompleteAddress } from './getters-76e355c6.js';
+import { b as getCompleteAddress } from './getters-3a0d4ac0.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
 import './index-06061d4e.js';
 import './utils-cd1431df.js';
@@ -15,7 +15,7 @@ import './remove-query-args-938c53ea.js';
 import './index-c5a96d53.js';
 import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
-import './price-d5770168.js';
+import './price-7bb626d0.js';
 import './util-50af2a83.js';
 import './address-b892540d.js';
 
@@ -306,11 +306,11 @@ const ScStripePaymentElement = class {
         }
     }
     render() {
-        return (h("div", { key: 'aa70fadc7501c04584172115e3f73d6865372ed5', class: "sc-stripe-payment-element", "data-testid": "stripe-payment-element" }, !!this.error && (h("sc-text", { key: '37351735c30206e55ecb141c7a4b5a84944c59be', style: {
+        return (h("div", { key: '8f42bfedaa1fbb9979a6ed2022563a72266d0776', class: "sc-stripe-payment-element", "data-testid": "stripe-payment-element" }, !!this.error && (h("sc-text", { key: 'a67ddaf806610fd42e36dd0b7919d0682df01731', style: {
                 'color': 'var(--sc-color-danger-500)',
                 '--font-size': 'var(--sc-font-size-small)',
                 'marginBottom': '0.5em',
-            } }, this.error)), h("div", { key: '364a66d83bfed957b20bf45a6e80f2e21fc17064', class: "loader", hidden: this.loaded }, h("div", { key: 'd8864af904a928951abde5dbbe44fab5380ed4ed', class: "loader__row" }, h("div", { key: 'b9b9ec7a68265a0000282d08ab864a651391d6ab', style: { width: '50%' } }, h("sc-skeleton", { key: 'aea12029d0271e8787c66a94570189cd4a1d8a80', style: { width: '50%', marginBottom: '0.5em' } }), h("sc-skeleton", { key: 'dcfc23fb8290afe66be9d3e19c4b6ea387b308b7' })), h("div", { key: '8b07295e238cb127b98fcbc2d2e912e4590e49ad', style: { flex: '1' } }, h("sc-skeleton", { key: '003bed770da61ffd13aa91cb572874015be49522', style: { width: '50%', marginBottom: '0.5em' } }), h("sc-skeleton", { key: '069a1a264cd25c5ad65eb751e9e38f0f180c5b4f' })), h("div", { key: '609c9f9141ba8eea038f301b0735fca4f400f7c2', style: { flex: '1' } }, h("sc-skeleton", { key: 'ddaf19df8c59309b7044aa0df90eda1229ce09f4', style: { width: '50%', marginBottom: '0.5em' } }), h("sc-skeleton", { key: 'b75438ceb24e0f07d8d8a6efb5a8c68f7746bd37' }))), h("div", { key: 'db45c61d0703b89c129c1f4b1ef07ec0ec3e005c', class: "loader__details" }, h("sc-skeleton", { key: 'c5fd920a65c612be8358bd6eabc3aff1c537b1a9', style: { height: '1rem' } }), h("sc-skeleton", { key: '059d19e4da6d37bba59788a738ea6524c28f14dd', style: { height: '1rem', width: '30%' } }))), h("div", { key: '5e3ef10ca63c79197ad11653ce702fcac7f7f17a', hidden: !this.loaded, class: "sc-payment-element-container", ref: el => (this.container = el) })));
+            } }, this.error)), h("div", { key: '57aba218fff3413dc94a376abef96401c30fd973', class: "loader", hidden: this.loaded }, h("div", { key: '7b1dc355ab12d40d9dbaf103e220675aa8ea945c', class: "loader__row" }, h("div", { key: 'a0383898a18de082dbc877488fdb0495943b005d', style: { width: '50%' } }, h("sc-skeleton", { key: '1841981aa2c24b9b9d6bb706f1cc0b5535a24144', style: { width: '50%', marginBottom: '0.5em' } }), h("sc-skeleton", { key: '7d456095f10f9580e4a03d05296a4cc95b5338b5' })), h("div", { key: 'db92c1cc7e6bc7006c4fd82bc323e27eb4ca7235', style: { flex: '1' } }, h("sc-skeleton", { key: 'a4b194ad82b683d0d5e71ddc7994cce43cffce92', style: { width: '50%', marginBottom: '0.5em' } }), h("sc-skeleton", { key: '2be7c019361d37b0171c1c4e551bde500cd42cbc' })), h("div", { key: '7e33a55b7bd9e2b8a1ac37b50d1da7173b46e19f', style: { flex: '1' } }, h("sc-skeleton", { key: '321a70208e7f4e2c549d941867b587c716305ebc', style: { width: '50%', marginBottom: '0.5em' } }), h("sc-skeleton", { key: 'ebe50b51a890d90a1777b1c1d6d96442bb85bbc7' }))), h("div", { key: '93f89dc11bdbb642886132e98a8f59ee6d70f763', class: "loader__details" }, h("sc-skeleton", { key: '4fd8caee9f3483dffb056ca9bf5d59dac0aa5a6c', style: { height: '1rem' } }), h("sc-skeleton", { key: 'a3ec58783b74ce37cb832dddc9871b7921a4f5c1', style: { height: '1rem', width: '30%' } }))), h("div", { key: 'c19cd37014887f5dfe59141c57af64cb778b0fe6', hidden: !this.loaded, class: "sc-payment-element-container", ref: el => (this.container = el) })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

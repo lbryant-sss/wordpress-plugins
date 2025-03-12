@@ -5,8 +5,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 const index = require('./index-8acc3c89.js');
 const consumer = require('./consumer-9f4ee0e3.js');
 const index$1 = require('./index-21f8920e.js');
-const price$1 = require('./price-653ec1cb.js');
-const fetch = require('./fetch-aaab7645.js');
+const price$1 = require('./price-ca4a4318.js');
+const fetch = require('./fetch-d644cebd.js');
 const addQueryArgs = require('./add-query-args-49dcb630.js');
 require('./currency-71fce0f0.js');
 require('./remove-query-args-b57e8cd3.js');
@@ -779,7 +779,9 @@ const ScPriceChoice = class {
         return index.h(index.Host, { style: { display: 'none' } });
     }
     renderPrice() {
-        return (index.h(index.Fragment, null, index.h("sc-format-number", { type: "currency", value: this.price.amount, currency: this.price.currency }), price$1.intervalString(this.price, {
+        var _a;
+        return (index.h(index.Fragment, null, (_a = this.price) === null || _a === void 0 ? void 0 :
+            _a.display_amount, price$1.intervalString(this.price, {
             showOnce: true,
             abbreviate: true,
             labels: {
@@ -791,7 +793,7 @@ const ScPriceChoice = class {
         })));
     }
     render() {
-        var _a, _b, _c, _d, _e, _f, _g, _h;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
         if (this.loading) {
             return (index.h("sc-choice-container", { showControl: this.showControl, name: "loading", disabled: true }, index.h("div", { class: "price-choice" }, index.h("sc-skeleton", { style: { width: '60px', display: 'inline-block' } }), index.h("sc-skeleton", { style: { width: '80px', display: 'inline-block' } }))));
         }
@@ -802,7 +804,8 @@ const ScPriceChoice = class {
         if ((_c = this.product) === null || _c === void 0 ? void 0 : _c.archived) {
             return this.renderEmpty();
         }
-        return (index.h("sc-choice-container", { ref: el => (this.choice = el), value: this.priceId, type: this.type, showControl: this.showControl, checked: this.isChecked() }, index.h("div", { class: "price-choice" }, this.showLabel && (index.h("div", { class: "price-choice__title" }, index.h("div", { class: "price-choice__name" }, this.label || ((_d = this === null || this === void 0 ? void 0 : this.price) === null || _d === void 0 ? void 0 : _d.name) || ((_e = this === null || this === void 0 ? void 0 : this.product) === null || _e === void 0 ? void 0 : _e.name)), !!this.description && index.h("div", { class: "price-choice__description" }, this.description))), this.showPrice && (index.h("div", { class: "price-choice__details" }, index.h("div", { class: "price-choice__price" }, ((_f = this.price) === null || _f === void 0 ? void 0 : _f.ad_hoc) ? (wp.i18n.__('Custom Amount', 'surecart')) : (index.h(index.Fragment, null, index.h("sc-format-number", { type: "currency", value: this.price.amount, currency: this.price.currency }), price$1.intervalString(this.price, {
+        return (index.h("sc-choice-container", { ref: el => (this.choice = el), value: this.priceId, type: this.type, showControl: this.showControl, checked: this.isChecked() }, index.h("div", { class: "price-choice" }, this.showLabel && (index.h("div", { class: "price-choice__title" }, index.h("div", { class: "price-choice__name" }, this.label || ((_d = this === null || this === void 0 ? void 0 : this.price) === null || _d === void 0 ? void 0 : _d.name) || ((_e = this === null || this === void 0 ? void 0 : this.product) === null || _e === void 0 ? void 0 : _e.name)), !!this.description && index.h("div", { class: "price-choice__description" }, this.description))), this.showPrice && (index.h("div", { class: "price-choice__details" }, index.h("div", { class: "price-choice__price" }, ((_f = this.price) === null || _f === void 0 ? void 0 : _f.ad_hoc) ? (wp.i18n.__('Custom Amount', 'surecart')) : (index.h(index.Fragment, null, (_g = this.price) === null || _g === void 0 ? void 0 :
+            _g.display_amount, price$1.intervalString(this.price, {
             showOnce: true,
             abbreviate: true,
             labels: {
@@ -811,7 +814,8 @@ const ScPriceChoice = class {
                 /** translators: used as in time period: "for 3 months" */
                 wp.i18n.__('for', 'surecart'),
             },
-        })))), !!this.price.trial_duration_days && (index.h("div", { class: "price-choice__trial" }, wp.i18n.sprintf(wp.i18n._n('Starting in %s day', 'Starting in %s days', this.price.trial_duration_days, 'surecart'), this.price.trial_duration_days))), !!this.price.setup_fee_enabled && ((_g = this.price) === null || _g === void 0 ? void 0 : _g.setup_fee_amount) && (index.h("div", { class: "price-choice__setup-fee" }, index.h("sc-format-number", { type: "currency", value: Math.abs(this.price.setup_fee_amount), currency: this.price.currency }), ' ', this.price.setup_fee_name || (((_h = this.price) === null || _h === void 0 ? void 0 : _h.setup_fee_amount) < 0 ? wp.i18n.__('Discount', 'surecart') : wp.i18n.__('Setup Fee', 'surecart')))))))));
+        })))), !!this.price.trial_duration_days && (index.h("div", { class: "price-choice__trial" }, wp.i18n.sprintf(wp.i18n._n('Starting in %s day', 'Starting in %s days', this.price.trial_duration_days, 'surecart'), this.price.trial_duration_days))), !!this.price.setup_fee_enabled && ((_h = this.price) === null || _h === void 0 ? void 0 : _h.setup_fee_amount) && (index.h("div", { class: "price-choice__setup-fee" }, (_j = this.price) === null || _j === void 0 ? void 0 :
+            _j.setup_fee_display_amount, ' ', ((_k = this.price) === null || _k === void 0 ? void 0 : _k.setup_fee_name) || (((_l = this.price) === null || _l === void 0 ? void 0 : _l.setup_fee_amount) < 0 ? wp.i18n.__('Discount', 'surecart') : wp.i18n.__('Setup Fee', 'surecart')))))))));
     }
     static get watchers() { return {
         "priceId": ["handlePriceIdChage"],

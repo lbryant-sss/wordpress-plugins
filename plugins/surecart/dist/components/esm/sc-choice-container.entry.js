@@ -123,20 +123,20 @@ const ScChoiceContainer = class {
         }
     }
     render() {
-        return (h("div", { key: '77d6fb9d20fd772e4b2285b69c52c222d22ef092', part: "base", class: {
+        return (h("div", { key: 'fbb252d6687a765e77bb31e4a381f4cbdd4a7fa7', part: "base", class: {
                 'choice': true,
                 'choice--checked': this.checked,
                 'choice--disabled': this.disabled,
                 'choice--focused': this.hasFocus,
                 'choice--is-rtl': isRtl(),
                 [`choice--size-${this.size}`]: true,
-            }, role: "radio", "aria-checked": this.checked ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', onKeyDown: e => this.handleKeyDown(e) }, h("slot", { key: '101cfc39748136ba55dbee171804db93baa78bf6', name: "header" }), h("div", { key: '68cfa1b7394ae4800329dd1cc0893d1af0149e30', class: "choice__content", part: "content" }, h("span", { key: 'fa4f61f13df55cd900ea393dd77ba00a224f6c4a', part: "control", class: {
+            }, role: "radio", "aria-checked": this.checked ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', onKeyDown: e => this.handleKeyDown(e) }, h("slot", { key: 'd5b594ee2353500f4ab9ae52c5d069813a024b21', name: "header" }), h("div", { key: 'adc025a8062525469fd4211877eeceb41c4f2e26', class: "choice__content", part: "content" }, h("span", { key: 'c22e88638ff85bac0aa8369555599c83f97fecf4', part: "control", class: {
                 choice__control: true,
                 choice__checkbox: this.type === 'checkbox',
                 choice__radio: this.type === 'radio',
-            }, hidden: !this.showControl }, h("span", { key: '2500e5d5f6133defdd37bf83005615bec88e1b4f', part: "checked-icon", class: "choice__icon" }, this.type === 'checkbox' ? (h("svg", { viewBox: "0 0 16 16" }, h("g", { stroke: "none", "stroke-width": "1", fill: "none", "fill-rule": "evenodd", "stroke-linecap": "round" }, h("g", { stroke: "currentColor", "stroke-width": "2" }, h("g", { transform: "translate(3.428571, 3.428571)" }, h("path", { d: "M0,5.71428571 L3.42857143,9.14285714" }), h("path", { d: "M9.14285714,0 L3.42857143,9.14285714" })))))) : (h("svg", { viewBox: "0 0 16 16" }, h("g", { stroke: "none", "stroke-width": "1", fill: "none", "fill-rule": "evenodd" }, h("g", { fill: "currentColor" }, h("circle", { cx: "8", cy: "8", r: "3.42857143" })))))), h("input", { key: 'a332bef15f7cfc702f802b89f0abca997853bdb3', id: this.inputId, ref: el => (this.input = el), type: this.type, name: this.name, value: this.value, checked: this.checked, disabled: this.disabled, "aria-checked": this.checked ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', "aria-labelledby": this.labelId, tabindex: "0",
+            }, hidden: !this.showControl }, h("span", { key: '1a492b131f44591e9acd6c89b4311947f851ec79', part: "checked-icon", class: "choice__icon" }, this.type === 'checkbox' ? (h("svg", { viewBox: "0 0 16 16" }, h("g", { stroke: "none", "stroke-width": "1", fill: "none", "fill-rule": "evenodd", "stroke-linecap": "round" }, h("g", { stroke: "currentColor", "stroke-width": "2" }, h("g", { transform: "translate(3.428571, 3.428571)" }, h("path", { d: "M0,5.71428571 L3.42857143,9.14285714" }), h("path", { d: "M9.14285714,0 L3.42857143,9.14285714" })))))) : (h("svg", { viewBox: "0 0 16 16" }, h("g", { stroke: "none", "stroke-width": "1", fill: "none", "fill-rule": "evenodd" }, h("g", { fill: "currentColor" }, h("circle", { cx: "8", cy: "8", r: "3.42857143" })))))), h("input", { key: '724a8e539c569481eb320de26277043c76ee97a5', id: this.inputId, ref: el => (this.input = el), type: this.type, name: this.name, value: this.value, checked: this.checked, disabled: this.disabled, "aria-checked": this.checked ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', "aria-labelledby": this.labelId, tabindex: "0",
             // required={this.required}
-            onBlur: () => this.handleBlur(), onFocus: () => this.handleFocus(), onChange: () => this.handleClickEvent(), role: this.role })), h("label", { key: 'a70d774a37d07a4a82929c200cf0e66cdd732b31', part: "label", id: this.labelId, class: "choice__label" }, h("slot", { key: 'c53a4e8e218862392f25c716b6e7afc2c75c5eb7' })))));
+            onBlur: () => this.handleBlur(), onFocus: () => this.handleFocus(), onChange: () => this.handleClickEvent(), role: this.role })), h("label", { key: 'a5811161b8717c231f73b80d0c2c2a8e8f2c3e00', part: "label", id: this.labelId, class: "choice__label" }, h("slot", { key: 'ce445cbe4a12c71a47ac75a724185ce9607202db' })))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const fetch = require('./fetch-aaab7645.js');
+const fetch = require('./fetch-d644cebd.js');
 const lazy = require('./lazy-2b509fa7.js');
 const addQueryArgs = require('./add-query-args-49dcb630.js');
 require('./remove-query-args-b57e8cd3.js');
@@ -51,7 +51,7 @@ const ScDashboardCustomerDetails = class {
         }
     }
     render() {
-        return (index.h("sc-customer-details", { key: '1896331a0ec0570d43006588d70ed8bfa9d85b99', customer: this.customer, loading: this.loading, error: this.error, heading: this.heading, "edit-link": addQueryArgs.addQueryArgs(window.location.href, {
+        return (index.h("sc-customer-details", { key: 'ed3eb7a0790566f7fda4b70159844e10ad803013', customer: this.customer, loading: this.loading, error: this.error, heading: this.heading, "edit-link": addQueryArgs.addQueryArgs(window.location.href, {
                 action: 'edit',
                 model: 'customer',
                 id: this.customerId,

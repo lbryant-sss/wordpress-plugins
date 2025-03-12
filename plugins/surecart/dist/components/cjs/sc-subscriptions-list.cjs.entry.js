@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const fetch = require('./fetch-aaab7645.js');
+const fetch = require('./fetch-d644cebd.js');
 const lazy = require('./lazy-2b509fa7.js');
 const addQueryArgs = require('./add-query-args-49dcb630.js');
 require('./remove-query-args-b57e8cd3.js');
@@ -119,7 +119,7 @@ const ScSubscriptionsList = class {
     }
     render() {
         var _a, _b;
-        return (index.h("sc-dashboard-module", { key: '94410649ba1138510c9be20d8aba6d86cb6c9ce6', class: "subscriptions-list", error: this.error }, index.h("span", { key: 'b2cb86c42b398b70c675c2bd8e3d32929f116b2d', slot: "heading" }, index.h("slot", { key: '904419d351e4ec7304697fbb1e9dd95ac05a7bdb', name: "heading" }, this.heading || wp.i18n.__('Subscriptions', 'surecart'))), !!this.allLink && !!((_a = this.subscriptions) === null || _a === void 0 ? void 0 : _a.length) && (index.h("sc-button", { key: '637cec9d3af368b53369b6bcbfe31744b624e00f', type: "link", href: this.allLink, slot: "end", "aria-label": wp.i18n.sprintf(wp.i18n.__('View all %s', 'surecart'), this.heading || 'Subscriptions') }, wp.i18n.__('View all', 'surecart'), index.h("sc-icon", { key: '529bb83393af8aa05ea58f921f978c9534a5cc9a', "aria-hidden": "true", name: "chevron-right", slot: "suffix" }))), this.renderContent(), !this.allLink && (index.h("sc-pagination", { key: '2e0dd6372ab15693511f0bcee42d35e04bf69307', page: this.query.page, perPage: this.query.per_page, total: this.pagination.total, totalPages: this.pagination.total_pages, totalShowing: (_b = this === null || this === void 0 ? void 0 : this.subscriptions) === null || _b === void 0 ? void 0 : _b.length, onScNextPage: () => this.nextPage(), onScPrevPage: () => this.prevPage() })), this.busy && index.h("sc-block-ui", { key: '0a5b2f433fe9b76fd3a25c8d86c7d6676cb997af' })));
+        return (index.h("sc-dashboard-module", { key: '490e11e7d08841e211a7f00d995e63a8ce3a5f1d', class: "subscriptions-list", error: this.error }, index.h("span", { key: '1147e896fff7e797c8db754b7e31644bcd4191b3', slot: "heading" }, index.h("slot", { key: '25bca49c4759aa5b457defca3a9000de448b6c59', name: "heading" }, this.heading || wp.i18n.__('Subscriptions', 'surecart'))), !!this.allLink && !!((_a = this.subscriptions) === null || _a === void 0 ? void 0 : _a.length) && (index.h("sc-button", { key: '17dbae8143ec759614f8654322b2111f665b57ef', type: "link", href: this.allLink, slot: "end", "aria-label": wp.i18n.sprintf(wp.i18n.__('View all %s', 'surecart'), this.heading || 'Subscriptions') }, wp.i18n.__('View all', 'surecart'), index.h("sc-icon", { key: '11119358e1f4bd8e4b70ae3692f4f1c6a9f22b0c', "aria-hidden": "true", name: "chevron-right", slot: "suffix" }))), this.renderContent(), !this.allLink && (index.h("sc-pagination", { key: 'c554e72acf9cc64b805fc45bab5765a059116baa', page: this.query.page, perPage: this.query.per_page, total: this.pagination.total, totalPages: this.pagination.total_pages, totalShowing: (_b = this === null || this === void 0 ? void 0 : this.subscriptions) === null || _b === void 0 ? void 0 : _b.length, onScNextPage: () => this.nextPage(), onScPrevPage: () => this.prevPage() })), this.busy && index.h("sc-block-ui", { key: 'b411c6211492bf54228edc9f5bb30168c73b5252' })));
     }
     get el() { return index.getElement(this); }
 };

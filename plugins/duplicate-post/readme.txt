@@ -1,12 +1,12 @@
 === Yoast Duplicate Post ===
 Contributors: 		yoast, lopo
 Donate link: 		https://yoast.com/wordpress/plugins/duplicate-post/
-Tags: 				duplicate post, copy, clone
+Tags: 			duplicate post, copy, clone
 Requires at least: 	6.6
 Tested up to: 		6.7
 Stable tag: 		4.5
 Requires PHP:		5.6.20
-License: 			GPLv2 or later
+License: 		GPLv2 or later
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
 
 The go-to tool for cloning posts and pages, including the powerful Rewrite & Republish feature.

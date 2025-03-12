@@ -1,8 +1,8 @@
 import { r as registerInstance, c as createEvent, h } from './index-745b6bec.js';
 import { s as state$1 } from './store-f54d1b1f.js';
-import { s as state, o as onChange } from './mutations-83ea96b2.js';
+import { s as state, o as onChange } from './mutations-6f9b9a86.js';
 import { a as getValueFromUrl } from './util-50af2a83.js';
-import { c as createOrUpdateCheckout } from './index-01c97eb1.js';
+import { c as createOrUpdateCheckout } from './index-885ece77.js';
 import './index-06061d4e.js';
 import './utils-cd1431df.js';
 import './remove-query-args-938c53ea.js';
@@ -11,8 +11,8 @@ import './index-c5a96d53.js';
 import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
 import './store-627acec4.js';
-import './price-d5770168.js';
-import './fetch-2d92a73e.js';
+import './price-7bb626d0.js';
+import './fetch-8ecbbe53.js';
 
 const scCustomerLastnameCss = ":host{display:block}";
 const ScCustomerLastnameStyle0 = scCustomerLastnameCss;

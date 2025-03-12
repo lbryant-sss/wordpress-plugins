@@ -3,7 +3,7 @@
 Plugin Name: Accessibility by UserWay
 Plugin URI: https://userway.org
 Description: The UserWay Accessibility Widget is a WordPress plugin that instantly finds and fixes accessibility violations in website code. It works 24/7 to comply with standards like WCAG 2.2, ADA, Section 508, and EAA, automatically improving your site's accessibility and regulatory compliance.
-Version: 2.5.5
+Version: 2.5.6
 Author: UserWay.org
 Author URI: https://userway.org
 */

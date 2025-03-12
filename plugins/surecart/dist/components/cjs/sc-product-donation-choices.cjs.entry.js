@@ -3,24 +3,24 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const watchers = require('./watchers-70496b0d.js');
+const watchers = require('./watchers-3bc4ba54.js');
 require('./index-bcdafe6e.js');
 require('./utils-2e91d46c.js');
-require('./getters-7f1a1d9c.js');
-require('./mutations-757d8d21.js');
+require('./getters-24219863.js');
+require('./mutations-747a9cc3.js');
 require('./remove-query-args-b57e8cd3.js');
 require('./add-query-args-49dcb630.js');
 require('./index-fb76df07.js');
 require('./google-59d23803.js');
 require('./currency-71fce0f0.js');
 require('./store-4a539aea.js');
-require('./price-653ec1cb.js');
+require('./price-ca4a4318.js');
 require('./address-4c70d641.js');
 require('./util-b877b2bd.js');
-require('./mutations-1516ddea.js');
+require('./mutations-44b0ed06.js');
 require('./mutations-11c8f9a8.js');
-require('./index-2f2cb68c.js');
-require('./fetch-aaab7645.js');
+require('./index-4f958947.js');
+require('./fetch-d644cebd.js');
 
 const scProductDonationChoicesCss = ":host{display:block}.sc-product-donation-choices{display:grid;gap:2em;position:relative;--columns:4}.sc-product-donation-choices__form{display:grid;gap:var(--sc-spacing-small)}.sc-donation-recurring-choices{display:grid;gap:var(--sc-spacing-small);position:relative;--columns:2}";
 const ScProductDonationChoicesStyle0 = scProductDonationChoicesCss;

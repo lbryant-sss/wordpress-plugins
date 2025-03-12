@@ -911,13 +911,13 @@ if (!class_exists("cmplz_wsc_scanner")) {
 			$this->reset_wsc_dismissed_warnings( $detections );
 
 			// Create and send the notification.
-			$disable_automatic_cookiescan = cmplz_get_option( 'disable_automatic_cookiescan' );
+ 			$disable_automatic_cookiescan = (bool) cmplz_get_option( 'disable_automatic_cookiescan' );
 			if ( $disable_automatic_cookiescan ) {
 				return;
 			}
 
 			// If the email address is not valid, return.
-			$notification_email_address = cmplz_get_option( 'notifications_email_address' ) !== '' ? cmplz_get_option( 'notifications_email_address' ) : get_bloginfo( 'admin_email' );
+			$notification_email_address =  empty(cmplz_get_option('cmplz_wsc_email')) ? get_bloginfo('admin_email') : cmplz_get_option('cmplz_wsc_email');
 			if ( ! filter_var( $notification_email_address, FILTER_VALIDATE_EMAIL ) ) {
 				return;
 			}
@@ -951,10 +951,8 @@ if (!class_exists("cmplz_wsc_scanner")) {
 		 * @return bool True if the email was sent successfully, false otherwise.
 		 */
 		private function wsc_send_notification( string $notification, string $title, string $notification_email_address ): bool {
-			$sitename = get_bloginfo( 'name' );
 			// define mailer.
-			$headers  = sprintf( 'From: %1$s <%2$s>', $sitename, $notification_email_address ) . "\r\n";
-			$headers .= "Content-Type: text/html; charset=UTF-8";
+			$headers = "Content-Type: text/html; charset=UTF-8";
 
 			$mailer          = new cmplz_mailer();
 			$mailer->to      = $notification_email_address;

@@ -146,7 +146,7 @@ class Form_Data
                         }
 
                         if (isset($value['widgetType']) && $value['widgetType'] == 'mf-mobile') {
-                            $output = isset($form_data[$key]) && !empty($form_data[$key]) ? '+' . esc_html($form_data[$key]) : '';
+                            $output = isset($form_data[$key]) && !empty($form_data[$key]) ? esc_html($form_data[$key]) : '';
                             echo "<td>" . $output . "</td>";
                         }
                         
@@ -380,7 +380,7 @@ class Form_Data
                         }
 
                         if (isset($value['widgetType']) && $value['widgetType'] == 'mf-mobile') {
-                            $output = isset($form_data[$key]) && !empty($form_data[$key]) ? '+' . esc_html($form_data[$key]) : '';
+                            $output = isset($form_data[$key]) && !empty($form_data[$key]) ? esc_html($form_data[$key]) : '';
                             echo "<td>" . $output . "</td>";
                         }
                         

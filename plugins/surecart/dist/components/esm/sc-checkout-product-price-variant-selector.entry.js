@@ -1,8 +1,8 @@
 import { r as registerInstance, h, F as Fragment, a as getElement } from './index-745b6bec.js';
-import { g as getLineItemByProductId } from './getters-76e355c6.js';
-import { u as updateFormState, s as state, o as onChange } from './mutations-83ea96b2.js';
+import { g as getLineItemByProductId } from './getters-3a0d4ac0.js';
+import { u as updateFormState, s as state, o as onChange } from './mutations-6f9b9a86.js';
 import { g as getVariantFromValues } from './util-50af2a83.js';
-import { u as updateLineItem, a as addLineItem } from './index-01c97eb1.js';
+import { u as updateLineItem, a as addLineItem } from './index-885ece77.js';
 import { c as createErrorNotice } from './mutations-ed6d0770.js';
 import { i as isProductVariantOptionSoldOut, a as isProductVariantOptionMissing } from './utils-cd1431df.js';
 import './address-b892540d.js';
@@ -13,8 +13,8 @@ import './index-c5a96d53.js';
 import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
 import './store-627acec4.js';
-import './price-d5770168.js';
-import './fetch-2d92a73e.js';
+import './price-7bb626d0.js';
+import './fetch-8ecbbe53.js';
 
 const scCheckoutProductPriceVariantSelectorCss = "sc-checkout-product-price-variant-selector{display:block}.sc-checkout-product-price-variant-selector{position:relative}.sc-checkout-product-price-variant-selector>*:not(:last-child){display:block;margin-bottom:var(--sc-form-row-spacing, 0.75em)}.sc-checkout-product-price-variant-selector__pills-wrapper{display:flex;flex-wrap:wrap;gap:var(--sc-spacing-x-small)}.sc-checkout-product-price-variant-selector__hidden-input{position:absolute !important;top:0 !important;left:0 !important;opacity:0 !important;padding:0px !important;margin:0px !important;pointer-events:none !important;width:0 !important}";
 const ScCheckoutProductPriceVariantSelectorStyle0 = scCheckoutProductPriceVariantSelectorCss;

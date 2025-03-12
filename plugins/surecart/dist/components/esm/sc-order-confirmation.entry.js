@@ -1,5 +1,5 @@
 import { r as registerInstance, h } from './index-745b6bec.js';
-import { a as apiFetch } from './fetch-2d92a73e.js';
+import { a as apiFetch } from './fetch-8ecbbe53.js';
 import { U as Universe } from './universe-5a73abb7.js';
 import { g as getQueryArg } from './remove-query-args-938c53ea.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
@@ -53,6 +53,7 @@ const ScOrderConfirmation = class {
                         'shipping_address',
                     ],
                     refresh_status: true,
+                    currency_conversion: false,
                 }),
             }));
         }
@@ -98,10 +99,10 @@ const ScOrderConfirmation = class {
     }
     render() {
         var _a, _b;
-        return (h(Universe.Provider, { key: 'b659e8338c0273dd7ef253ed4f32464e2146a48b', state: this.state() }, h("div", { key: '5d84c1bd84442419ddcb1a982650206689f2058d', class: { 'order-confirmation': true } }, h("div", { key: '42624f443d33444d29ec135987f7c849a80ae0b5', class: {
+        return (h(Universe.Provider, { key: '0ec0bf6375a8d2984afd140641ff7aa0b08d2d6b', state: this.state() }, h("div", { key: '50ec95cac58659680f4c8d61125e038356fb4de3', class: { 'order-confirmation': true } }, h("div", { key: 'd857726a6d2674249d45a90a48af954ecaf1a75d', class: {
                 'order-confirmation__content': true,
                 'hidden': !((_a = this.order) === null || _a === void 0 ? void 0 : _a.id) && !this.loading,
-            } }, h("sc-order-confirm-components-validator", { key: '641a174a2bd69de8cb9fa8b5075b29f2f4c7e06b', checkout: this.order }, h("slot", { key: '8cf3285abdcb9a3ffd37df7af8e974d2f433d8a5' }))), !((_b = this.order) === null || _b === void 0 ? void 0 : _b.id) && !this.loading && (h("sc-heading", { key: '315539c145ce66fbff3765f63d39738d1ed969da' }, wp.i18n.__('Order not found.', 'surecart'), h("span", { key: '3981783f698410bdecccc2429bc5a37faef496ef', slot: "description" }, wp.i18n.__('This order could not be found. Please try again.', 'surecart')))))));
+            } }, h("sc-order-confirm-components-validator", { key: 'ebaf4a3b890961683c7d1796487b331bc66f12af', checkout: this.order }, h("slot", { key: 'ce3115033f66d85a3b50eea57bd77d918c36dd0e' }))), !((_b = this.order) === null || _b === void 0 ? void 0 : _b.id) && !this.loading && (h("sc-heading", { key: 'dd906afd44fcca32c8415fa93d78aa8be39f0454' }, wp.i18n.__('Order not found.', 'surecart'), h("span", { key: '3f09d15923ae8b46a9accf76bd39ce99420c1313', slot: "description" }, wp.i18n.__('This order could not be found. Please try again.', 'surecart')))))));
     }
 };
 ScOrderConfirmation.style = ScOrderConfirmationStyle0;

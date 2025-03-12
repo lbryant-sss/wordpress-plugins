@@ -1,5 +1,5 @@
 import { r as registerInstance, h } from './index-745b6bec.js';
-import { s as state } from './mutations-83ea96b2.js';
+import { s as state } from './mutations-6f9b9a86.js';
 import './index-06061d4e.js';
 import './utils-cd1431df.js';
 import './remove-query-args-938c53ea.js';
@@ -8,7 +8,7 @@ import './index-c5a96d53.js';
 import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
 import './store-627acec4.js';
-import './price-d5770168.js';
+import './price-7bb626d0.js';
 
 const scCartLoaderCss = ":host{position:absolute;z-index:var(--sc-cart-z-index, 999999);font-family:var(--sc-font-sans)}";
 const ScCartLoaderStyle0 = scCartLoaderCss;

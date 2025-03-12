@@ -1,5 +1,5 @@
 import { r as registerInstance, h, a as getElement } from './index-745b6bec.js';
-import { a as apiFetch } from './fetch-2d92a73e.js';
+import { a as apiFetch } from './fetch-8ecbbe53.js';
 import { o as onFirstVisible } from './lazy-deb42890.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
@@ -92,7 +92,7 @@ const ScDownloadsList = class {
     }
     render() {
         var _a;
-        return (h("sc-purchase-downloads-list", { key: '81c0c9665a0039623b851a5b519cca34f5bdf81f', heading: this.heading, allLink: this.allLink && this.pagination.total_pages > 1 ? this.allLink : '', loading: this.loading, busy: this.busy, requestNonce: this.requestNonce, error: this.error, purchases: this.purchases }, h("span", { key: '9b295257cc9f6e060d3b433c6098524605a64634', slot: "heading" }, h("slot", { key: 'fee93edb49150167b7ba0fe808ceb4f24855a364', name: "heading" }, this.heading || wp.i18n.__('Downloads', 'surecart'))), h("sc-pagination", { key: '4e4c4577801b8bd242ea35a121fe120000a3ce62', slot: "after", page: this.query.page, perPage: this.query.per_page, total: this.pagination.total, totalPages: this.pagination.total_pages, totalShowing: (_a = this === null || this === void 0 ? void 0 : this.purchases) === null || _a === void 0 ? void 0 : _a.length, onScNextPage: () => this.nextPage(), onScPrevPage: () => this.prevPage() })));
+        return (h("sc-purchase-downloads-list", { key: '8a407e34ef1f0391cd10eaa26fe39f9b514df13d', heading: this.heading, allLink: this.allLink && this.pagination.total_pages > 1 ? this.allLink : '', loading: this.loading, busy: this.busy, requestNonce: this.requestNonce, error: this.error, purchases: this.purchases }, h("span", { key: '96f5cfb120ced4bb1df6c7fe91ceac0d8404211e', slot: "heading" }, h("slot", { key: '350f2eeeef60a8e1e02e45b254bbf7e1445c3c9a', name: "heading" }, this.heading || wp.i18n.__('Downloads', 'surecart'))), h("sc-pagination", { key: 'dcf0d6d0c55b026de43a23cabb495aac69702686', slot: "after", page: this.query.page, perPage: this.query.per_page, total: this.pagination.total, totalPages: this.pagination.total_pages, totalShowing: (_a = this === null || this === void 0 ? void 0 : this.purchases) === null || _a === void 0 ? void 0 : _a.length, onScNextPage: () => this.nextPage(), onScPrevPage: () => this.prevPage() })));
     }
     get el() { return getElement(this); }
 };

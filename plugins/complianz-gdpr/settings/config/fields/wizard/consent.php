@@ -386,6 +386,30 @@ function cmplz_wizard_consent_fields( $fields ) {
 				'tooltip'                 => __( "For the Google Tag Manager code, log in and you will immediatly see your container codes. The one next to your website name is the code you will need to fill in here, the container ID.", 'complianz-gdpr' ),
 			],
 			[
+				'id'               => 'gtm_code_head',
+				'menu_id'          => 'statistics-configuration',
+				'type'             => 'radio',
+				'default'          => 'no',
+				'premium'          => [
+					'url'     => 'https://complianz.io/pricing',
+					'disabled'=> false,
+				],
+				'label'            => __( "Do you want to force the script in the header?", 'complianz-gdpr' ),
+				'options'          => array(
+					'yes' => __( 'Yes - (Experimental)', 'complianz-gdpr' ),
+					'no'  => __( 'No', 'complianz-gdpr' ),
+				),
+				'comment'          => __("It's possible that forcing this script in the header breaks configurations and integrations with other plugins.", "complianz-gdpr"),
+				'disabled'         => true,
+				'react_conditions' => [
+					'relation' => 'AND',
+					[
+						'compile_statistics' => [ 'google-analytics', 'google-tag-manager' ],
+						'configuration_by_complianz' => 'yes'
+					]
+				],
+			],
+			[
 				'id'                      => 'aw_code',
 				'menu_id'                 => 'statistics-configuration',
 				'source'                  => 'wizard',

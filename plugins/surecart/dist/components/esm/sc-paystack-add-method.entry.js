@@ -1,6 +1,6 @@
 import { r as registerInstance, h, H as Host } from './index-745b6bec.js';
 import { s as se } from './inline-c012a0f9.js';
-import { a as apiFetch } from './fetch-2d92a73e.js';
+import { a as apiFetch } from './fetch-8ecbbe53.js';
 import './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 
@@ -67,7 +67,7 @@ const ScPaystackAddMethod = class {
         }
     }
     render() {
-        return (h(Host, { key: '71b5eaa5a8711fd2b2324fe22ac80f17db19b4fe' }, this.error && (h("sc-alert", { key: '9f0a1bc2225a89dd292bdc9dbc4d65286c756d92', open: !!this.error, type: "danger" }, h("span", { key: '4461970f9e9c067d0411f84cb30b66eeb6ae014c', slot: "title" }, wp.i18n.__('Error', 'surecart')), this.error)), h("div", { key: '18e705e50952fbe805d5f5bd2e39d1c512eace48', class: "sc-paystack-button-container" }, h("sc-alert", { key: '70e3af27926b8c6e5d843761c0522d6fb29d64f5', open: true, type: "warning" }, wp.i18n.__('In order to add a new card, we will need to make a small transaction to authenticate it. This is for authentication purposes and will be immediately refunded.', 'surecart'), h("div", { key: 'e4f5dc73e58ef161f15c2557b2fd3b3ac3b48f8a' }, h("sc-button", { key: '3a4646bff957eecd8fadabd34d908d14f358a1cd', loading: this.loading, type: "primary", onClick: () => this.createPaymentIntent(), style: { marginTop: 'var(--sc-spacing-medium)' } }, wp.i18n.__('Add New Card', 'surecart')))))));
+        return (h(Host, { key: '8a19fc59bc0d87ad22f1a5574c9d942f464aba4f' }, this.error && (h("sc-alert", { key: '661046d0974f7c00cff964ec88eb6cbed177d78c', open: !!this.error, type: "danger" }, h("span", { key: '3410da48c11db8f4bd1b48f04b08d41b15d38c9e', slot: "title" }, wp.i18n.__('Error', 'surecart')), this.error)), h("div", { key: 'aa037364c7b1999e3b58f933f745d9f6e62b2f82', class: "sc-paystack-button-container" }, h("sc-alert", { key: 'c25fb3973c4d124016d43240dfccbae4601b0e7c', open: true, type: "warning" }, wp.i18n.__('In order to add a new card, we will need to make a small transaction to authenticate it. This is for authentication purposes and will be immediately refunded.', 'surecart'), h("div", { key: 'beb25c49ee9c02ee4187dd97f90e5126cb28ed0b' }, h("sc-button", { key: '5d21c5e4c8ecfeb8416288587082ad7bd7dc0b7b', loading: this.loading, type: "primary", onClick: () => this.createPaymentIntent(), style: { marginTop: 'var(--sc-spacing-medium)' } }, wp.i18n.__('Add New Card', 'surecart')))))));
     }
     static get watchers() { return {
         "paymentIntent": ["handlePaymentIntentCreate"]

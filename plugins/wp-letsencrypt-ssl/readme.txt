@@ -5,7 +5,7 @@ Requires at least: 5.4
 License: GPL3
 Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 7.7.4
+Stable tag: 7.7.5
 
 Lifetime SSL solution - Install free SSL certificate & enable HTTPS redirect, HTTPS mail, fix SSL errors, SSL score, SSL details & SSL monitoring.
 
@@ -171,6 +171,10 @@ Security is an important subject regarding SSL/TLS certificates, of course. It i
 6. Mixed Content Scanner to identify insecure contents on HTTPS site
 
 == Changelog ==
+
+= 7.7.5 =
+* PRO - Improved DNS verification
+* Added recommended drawer
 
 = 7.7.2 =
 * Premium only - WPLE_Security class fix

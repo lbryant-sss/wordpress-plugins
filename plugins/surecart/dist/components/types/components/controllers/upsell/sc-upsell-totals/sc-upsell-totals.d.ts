@@ -1,4 +1,5 @@
 export declare class ScUpsellTotals {
-    renderAmountDue(): any;
+    renderAmountDue(): string;
+    renderConversion(): any;
     render(): any;
 }

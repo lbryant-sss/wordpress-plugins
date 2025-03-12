@@ -1,6 +1,6 @@
 import { r as registerInstance, h, F as Fragment } from './index-745b6bec.js';
-import { a as apiFetch } from './fetch-2d92a73e.js';
-import { p as productNameWithPrice, i as intervalString } from './price-d5770168.js';
+import { a as apiFetch } from './fetch-8ecbbe53.js';
+import { p as productNameWithPrice, i as intervalString } from './price-7bb626d0.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 import './currency-a0c9bff4.js';
@@ -99,7 +99,7 @@ const ScSubscriptionDetails = class {
         if (((_a = this === null || this === void 0 ? void 0 : this.subscription) === null || _a === void 0 ? void 0 : _a.cancel_at_period_end) && ((_b = this === null || this === void 0 ? void 0 : this.subscription) === null || _b === void 0 ? void 0 : _b.current_period_end_at)) {
             return (h("span", { "aria-label": wp.i18n.sprintf(
                 /* translators: %s: current period end date */
-                wp.i18n.__('Renewal Update - Your plan will be canceled on %s', 'surecart'), this.subscription.current_period_end_at_date) }, tag, " ", ' ', 
+                wp.i18n.__('Renewal Update - Your plan will be canceled on %s', 'surecart'), this.subscription.current_period_end_at_date) }, tag, ' ', 
             /* translators: %s: current period end date */
             wp.i18n.sprintf(wp.i18n.__('Your plan will be canceled on %s', 'surecart'), this.subscription.current_period_end_at_date)));
         }
@@ -126,11 +126,11 @@ const ScSubscriptionDetails = class {
         if (((_w = this.subscription) === null || _w === void 0 ? void 0 : _w.status) === 'active' && ((_x = this.subscription) === null || _x === void 0 ? void 0 : _x.current_period_end_at)) {
             return (h("span", { "aria-label": wp.i18n.sprintf(
                 /* translators: %s: current period end date */
-                wp.i18n.__('Renewal Update - Your next payment is on %s', 'surecart'), this.subscription.current_period_end_at_date) }, tag, ' ', ((_y = this.subscription) === null || _y === void 0 ? void 0 : _y.remaining_period_count) === null ? (
-            /* translators: %s: current period end date */
-            wp.i18n.sprintf(wp.i18n.__('Your plan renews on %s', 'surecart'), this.subscription.current_period_end_at_date)) : (
-            /* translators: %s: current period end date */
-            wp.i18n.sprintf(wp.i18n.__('Your next payment is on %s', 'surecart'), this.subscription.current_period_end_at_date))));
+                wp.i18n.__('Renewal Update - Your next payment is on %s', 'surecart'), this.subscription.current_period_end_at_date) }, tag, ' ', ((_y = this.subscription) === null || _y === void 0 ? void 0 : _y.remaining_period_count) === null
+                ? /* translators: %s: current period end date */
+                    wp.i18n.sprintf(wp.i18n.__('Your plan renews on %s', 'surecart'), this.subscription.current_period_end_at_date)
+                : /* translators: %s: current period end date */
+                    wp.i18n.sprintf(wp.i18n.__('Your next payment is on %s', 'surecart'), this.subscription.current_period_end_at_date)));
         }
         return tag;
     }
@@ -169,11 +169,11 @@ const ScSubscriptionDetails = class {
         return ((_g = (_f = this.subscription) === null || _f === void 0 ? void 0 : _f.price) === null || _g === void 0 ? void 0 : _g.amount) !== 0;
     }
     render() {
-        return (h("div", { key: 'cf831edde3bfc8a1216f87e2f78c2120ddfc9c08', class: "subscription-details" }, this.hasPendingUpdate && (h("div", { key: 'f952d4ff5d641ca852a9c5449846864c667ff204' }, h("sc-tag", { key: 'f30265be642e183135f2c7f7928003808220d9e6', size: "small", type: "warning" }, wp.i18n.__('Update Scheduled', 'surecart')))), h("sc-flex", { key: '2cf3e8c6239499154a8f744e3c6a6956647fdf69', alignItems: "center", justifyContent: "flex-start" }, h("sc-text", { key: '92343b43b2d3def03896baa1394deb669f0af456', "aria-label": wp.i18n.sprintf(
+        return (h("div", { key: 'e640f90fc526a25d04e1158799925e35add636bf', class: "subscription-details" }, this.hasPendingUpdate && (h("div", { key: '0e7e066677cee4db69c50fa0ddf39dd98980b3bf' }, h("sc-tag", { key: '62a14d0f7a21916cc2b2beac59677606ebd34af8', size: "small", type: "warning" }, wp.i18n.__('Update Scheduled', 'surecart')))), h("sc-flex", { key: '53aadf662a0b9e7636533c5826c33d64f1e23c69', alignItems: "center", justifyContent: "flex-start" }, h("sc-text", { key: '3413194d4aa83659d5cade9febcc186ba15ea5c3', "aria-label": wp.i18n.sprintf(
             /* translators: %s: plan name */
-            wp.i18n.__('Plan name - %s', 'surecart'), this.renderName()), style: { '--font-weight': 'var(--sc-font-weight-bold)' } }, this.renderName()), this.renderActivations()), !this.hideRenewalText && h("div", { key: '9a9f3fb6c288780c5873f26326ff1b44a52a5424' }, this.renderRenewalText(), " "), h("slot", { key: '6a3a019c11d81476846c6ce50174472d180c8721' }), h("sc-dialog", { key: '0ab9ac467ad2d8700e5bc57b96770cf451aeb3e8', label: wp.i18n.__('Activations', 'surecart'), onScRequestClose: () => (this.activationsModal = false), open: !!this.activationsModal }, h("sc-card", { key: '58ae6a0b6488e824cfc335502b3355032d360f33', "no-padding": true, style: { '--overflow': 'hidden' } }, h("sc-stacked-list", { key: 'a0e701f486f7e8e2644a63d4b2c973f7bcd2aef4' }, (this.getActivations() || []).map(activation => {
+            wp.i18n.__('Plan name - %s', 'surecart'), this.renderName()), style: { '--font-weight': 'var(--sc-font-weight-bold)' } }, this.renderName()), this.renderActivations()), !this.hideRenewalText && h("div", { key: '21c1b05e817851a95e7271db5aa15224e6fc8a63' }, this.renderRenewalText(), " "), h("slot", { key: '151181ebd2a31a01d1add55346e5f8b3fba50ff6' }), h("sc-dialog", { key: '78878beecf0c04c8344b820a6b27bdc31bf4ce78', label: wp.i18n.__('Activations', 'surecart'), onScRequestClose: () => (this.activationsModal = false), open: !!this.activationsModal }, h("sc-card", { key: '02d8fa942bb4489c8941c4e990410b59630b7c70', "no-padding": true, style: { '--overflow': 'hidden' } }, h("sc-stacked-list", { key: 'e920f9f546dbdfd4b9c6b27c4948090d37414794' }, (this.getActivations() || []).map(activation => {
             return (h("sc-stacked-list-row", { style: { '--columns': '2' }, mobileSize: 0 }, h("sc-text", { style: { '--line-height': 'var(--sc-line-height-dense)' } }, h("strong", null, activation === null || activation === void 0 ? void 0 : activation.name), h("div", null, h("sc-text", { style: { '--color': 'var(--sc-color-gray-500)' } }, activation === null || activation === void 0 ? void 0 : activation.fingerprint))), h("sc-text", { style: { '--color': 'var(--sc-color-gray-500)' } }, activation === null || activation === void 0 ? void 0 : activation.created_at_date)));
-        })))), this.showWarning() && (h("div", { key: '7cf0247ba10ccafb275090fd87e157ad9b0217a9' }, h("sc-tag", { key: 'c80722f8068e6ea7272ce8ab14a1c7c97471eb7e', type: "warning" }, h("div", { key: '4ff3fdd5a010557ae0c53ed94c56957c0bd1d61e', class: "subscription-details__missing-method" }, h("sc-icon", { key: 'a7f3aa814c32a8fb325193de376d7ecd8c94e7f4', name: "alert-triangle" }), wp.i18n.__('Payment Method Missing', 'surecart')))))));
+        })))), this.showWarning() && (h("div", { key: '257a053e6a6b7ecf3c9644808e2cc4b95eb69d80' }, h("sc-tag", { key: 'fdba4baf6e5bf62047e9bd984f88220b92063abe', type: "warning" }, h("div", { key: 'b9784536b215cc8057e89ca8041453aade15ae26', class: "subscription-details__missing-method" }, h("sc-icon", { key: '23f26265d946a4a8d7475f15a1e41cce92124ba9', name: "alert-triangle" }), wp.i18n.__('Payment Method Missing', 'surecart')))))));
     }
     static get watchers() { return {
         "subscription": ["handleSubscriptionChange"]
@@ -244,7 +244,7 @@ const ScSubscriptionStatusBadge = class {
         }
     }
     render() {
-        return (h("sc-tag", { key: '1ac73efd661a9d997b52552ff94c963fed3fd962', "aria-label": wp.i18n.sprintf(wp.i18n.__('Plan Status - %s', 'surecart'), this.getText()), type: this.getType() }, this.getText()));
+        return (h("sc-tag", { key: 'c054cba164edd310a201a47dc43defefeeba8e77', "aria-label": wp.i18n.sprintf(wp.i18n.__('Plan Status - %s', 'surecart'), this.getText()), type: this.getType() }, this.getText()));
     }
 };
 ScSubscriptionStatusBadge.style = ScSubscriptionStatusBadgeStyle0;

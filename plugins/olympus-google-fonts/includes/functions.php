@@ -160,7 +160,11 @@ function ogf_get_elements() {
  * @return array All Google Fonts.
  */
 function ogf_fonts_array() {
-	$fonts = array();
+	static $fonts = array();
+
+	if ( ! empty( $fonts ) ) {
+		return $fonts;
+	}
 
 	$fonts_json = file_get_contents( OGF_DIR_PATH . '/blocks/src/google-fonts/fonts.json' );
 
@@ -428,6 +432,16 @@ function ogf_is_memberpress_courses_activated() {
 	} else {
 		return false;
 	}
+}
+
+/**
+ * Check if MemberPress Courses is activated.
+ */
+function ogf_is_elementor_activated() {
+	if ( defined( 'ELEMENTOR_VERSION' ) ) {
+		return true;
+	}
+	return false;
 }
 
 /**

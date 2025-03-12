@@ -1,6 +1,6 @@
 import { r as registerInstance, h, a as getElement } from './index-745b6bec.js';
 import { o as onFirstVisible } from './lazy-deb42890.js';
-import { a as apiFetch } from './fetch-2d92a73e.js';
+import { a as apiFetch } from './fetch-8ecbbe53.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 
@@ -113,7 +113,7 @@ const ScLicensesList = class {
     }
     render() {
         var _a;
-        return (h("sc-dashboard-module", { key: '5fca3fe2d936824b5a5d05cf056436d2618e37c5', class: "purchase", part: "base", error: this.error }, h("span", { key: 'f77dc153da8da257c194cda3cddd767a71f02dd8', slot: "heading" }, h("slot", { key: '5a7e5e54c9ad2d882b40f04e83302f2035103de1', name: "heading" }, this.heading || wp.i18n.__('License Keys', 'surecart'))), !!this.allLink && !!((_a = this.licenses) === null || _a === void 0 ? void 0 : _a.length) && (h("sc-button", { key: '8426296f2e7bb8c298672b67766286bc13a5aa51', type: "link", href: this.allLink, slot: "end" }, wp.i18n.__('View all', 'surecart'), h("sc-icon", { key: '2dbb9966fe39e845b7194f8576a01461df69ba0d', name: "chevron-right", slot: "suffix" }))), this.renderContent()));
+        return (h("sc-dashboard-module", { key: 'fc989681ab3152e9ec3dc7606cb1cf0bd9dd1444', class: "purchase", part: "base", error: this.error }, h("span", { key: 'a5b82af04312192c00355eac1ac9f09122a657dd', slot: "heading" }, h("slot", { key: 'f723eb7bd5ca0a862e15576fa4923ad12ab241bd', name: "heading" }, this.heading || wp.i18n.__('License Keys', 'surecart'))), !!this.allLink && !!((_a = this.licenses) === null || _a === void 0 ? void 0 : _a.length) && (h("sc-button", { key: 'f2c77bbc3b501ac0949cb55ac6ca4211e7392e3b', type: "link", href: this.allLink, slot: "end" }, wp.i18n.__('View all', 'surecart'), h("sc-icon", { key: 'fd935365e1bb1ee04dce5053614cc1d3fd4992b5', name: "chevron-right", slot: "suffix" }))), this.renderContent()));
     }
     get el() { return getElement(this); }
 };

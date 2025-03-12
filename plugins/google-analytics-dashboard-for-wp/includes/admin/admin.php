@@ -148,17 +148,6 @@ function exactmetrics_admin_menu()
 	if (!exactmetrics_is_pro_version()) {
 		add_submenu_page($parent_slug, __('Upgrade to Pro:', 'google-analytics-dashboard-for-wp'), '<span class="exactmetrics-upgrade-submenu"> ' . __('Upgrade to Pro', 'google-analytics-dashboard-for-wp') . '</span>', 'exactmetrics_save_settings', exactmetrics_get_upgrade_link('admin-menu', 'submenu', "https://www.exactmetrics.com/lite/"));
 	}
-
-	if ( class_exists( 'WooCommerce' ) ) {
-		// Show the Payments submenu only when WooCommerce is active.
-		add_submenu_page(
-			$parent_slug,
-			__('Payments:', 'google-analytics-dashboard-for-wp'),
-			__('Payments', 'google-analytics-dashboard-for-wp'),
-			'manage_options',
-			$submenu_base . '#/payments'
-		);
-	}
 }
 
 add_action('admin_menu', 'exactmetrics_admin_menu');

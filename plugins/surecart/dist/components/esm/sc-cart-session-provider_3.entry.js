@@ -1,8 +1,8 @@
 import { r as registerInstance, c as createEvent, h, a as getElement } from './index-745b6bec.js';
-import { u as updateFormState, s as state } from './mutations-83ea96b2.js';
-import { d as updateCheckout } from './index-01c97eb1.js';
+import { u as updateFormState, s as state } from './mutations-6f9b9a86.js';
+import { d as updateCheckout } from './index-885ece77.js';
 import { c as createErrorNotice, s as state$1 } from './mutations-ed6d0770.js';
-import { c as clearCheckout } from './mutations-c3035316.js';
+import { c as clearCheckout } from './mutations-56e6eb22.js';
 import { s as setDefaultAnimation, g as getAnimation, a as animateTo, b as stopAnimations } from './animation-registry-12eed2e3.js';
 import { g as getAdditionalErrorMessages } from './getters-a7eec27c.js';
 import './index-06061d4e.js';
@@ -13,8 +13,8 @@ import './index-c5a96d53.js';
 import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
 import './store-627acec4.js';
-import './price-d5770168.js';
-import './fetch-2d92a73e.js';
+import './price-7bb626d0.js';
+import './fetch-8ecbbe53.js';
 
 const ScCartSessionProvider = class {
     constructor(hostRef) {
@@ -86,7 +86,7 @@ const ScCartSessionProvider = class {
         }
     }
     render() {
-        return (h("sc-line-items-provider", { key: 'a29f7c029f0d4d31e0954a562a8413f101ef127d', order: state.checkout, onScUpdateLineItems: e => this.loadUpdate({ line_items: e.detail }) }, h("slot", { key: '52312ff0130b58f3ede57e900dab062c7929200b' })));
+        return (h("sc-line-items-provider", { key: 'b03bc4282ccee380e290a98d807dbbaf09b327e0', order: state.checkout, onScUpdateLineItems: e => this.loadUpdate({ line_items: e.detail }) }, h("slot", { key: '0083107333007904f65f77fdf09d08836f611041' })));
     }
     get el() { return getElement(this); }
 };
@@ -215,7 +215,7 @@ const ScDrawer = class {
         }
     }
     render() {
-        return (h("div", { key: '993db774b89138d7bb1ad43a131feced95879375', part: "base", class: {
+        return (h("div", { key: '579f29d1cf9ab37e375dd58cce04f53d921cdf03', part: "base", class: {
                 'drawer': true,
                 'drawer--open': this.open,
                 'drawer--top': this.placement === 'top',
@@ -225,9 +225,9 @@ const ScDrawer = class {
                 'drawer--contained': this.contained,
                 'drawer--fixed': !this.contained,
                 'drawer--has-footer': this.el.querySelector('[slot="footer"]') !== null,
-            }, ref: el => (this.drawer = el), onKeyDown: (e) => this.handleKeyDown(e) }, h("div", { key: 'c4f1e4caae6c3506742a8936274844f14245c61e', part: "overlay", class: "drawer__overlay", onClick: () => this.requestClose('overlay'), tabindex: "-1", ref: el => (this.overlay = el) }), h("div", { key: '959ee2cefae71c5d8c64f7e4ef7c30c19f05e061', part: "panel", class: "drawer__panel", role: "dialog", "aria-modal": "true", "aria-hidden": this.open ? 'false' : 'true', "aria-label": this.noHeader ? this.label : undefined, "aria-labelledby": !this.noHeader ? 'title' : undefined, tabindex: "0", ref: el => (this.panel = el) }, !this.noHeader && (h("header", { key: '9399131883a89301751ef8b98cc8cb1581ae57f4', part: "header", class: this.stickyHeader ? 'header__sticky' : '' }, h("slot", { key: 'd4fc246a98fe07d8daeaa1c2c3f9cb59d4b197c8', name: "header" }, h("div", { key: 'e7109cc2d22bf8382163b697365811774c4ad2a4', class: "drawer__header" }, h("h2", { key: '7411ac3941667f3b5463199f05bcf1c12fe42799', part: "title", class: "drawer__title", id: "title" }, h("slot", { key: '3a2fff42af1808bc3ffc2b7b8ebf72281dc25c19', name: "label" }, this.label.length > 0 ? this.label : ' ', " ")), h("sc-icon", { key: 'd46362405e1005c3cb4d187396fac53e96a9ba71', part: "close-button", exportparts: "base:close-button__base", class: "drawer__close", name: "x", label: 
+            }, ref: el => (this.drawer = el), onKeyDown: (e) => this.handleKeyDown(e) }, h("div", { key: 'fb4ab2f48812e841ed5b73230e040cbe2ab7aff0', part: "overlay", class: "drawer__overlay", onClick: () => this.requestClose('overlay'), tabindex: "-1", ref: el => (this.overlay = el) }), h("div", { key: '25e13f640cc5bc18d64a396d9cfcd1293c557dae', part: "panel", class: "drawer__panel", role: "dialog", "aria-modal": "true", "aria-hidden": this.open ? 'false' : 'true', "aria-label": this.noHeader ? this.label : undefined, "aria-labelledby": !this.noHeader ? 'title' : undefined, tabindex: "0", ref: el => (this.panel = el) }, !this.noHeader && (h("header", { key: 'd08459179136aa8eb6e045d1b1a9d1a7bce0d766', part: "header", class: this.stickyHeader ? 'header__sticky' : '' }, h("slot", { key: '4382038d66d2b9f35525fc92fc34bf4b16d75257', name: "header" }, h("div", { key: '26b45c6f34b74c8d0b6943cc3e37c98689719c1d', class: "drawer__header" }, h("h2", { key: '104ebc6bcf78f09574074436385bea197474aac1', part: "title", class: "drawer__title", id: "title" }, h("slot", { key: 'fbf44c9139e8cdbc729111698ca26931f4cde21e', name: "label" }, this.label.length > 0 ? this.label : ' ', " ")), h("sc-icon", { key: 'a10c2470cb85beb31d82c7860cfb6778c5af1ed0', part: "close-button", exportparts: "base:close-button__base", class: "drawer__close", name: "x", label: 
             /** translators: Close this modal window. */
-            wp.i18n.__('Close', 'surecart'), onClick: () => this.requestClose('close-button') }))))), h("footer", { key: '1913337a792b0e335b557d5830b249f6b54928ba', part: "header-suffix", class: "drawer__header-suffix" }, h("slot", { key: 'da1fd4783c396f3c994912caa2686aec11548486', name: "header-suffix" })), h("div", { key: '050b5d1fa70e4f89457e89e42755dcf07330a0b2', part: "body", class: "drawer__body" }, h("slot", { key: '7423d4af54ed7d0846a3e7903b69572b0a61cb5e' })), h("footer", { key: '46dc71ff5c263cdf9e9b27a134b313e493c79e39', part: "footer", class: "drawer__footer" }, h("slot", { key: '315b35f84c747979c9a344c93e31752371aa136d', name: "footer" })))));
+            wp.i18n.__('Close', 'surecart'), onClick: () => this.requestClose('close-button') }))))), h("footer", { key: '79d380cf7f6ff2328303671057cbbe9c2a68a12d', part: "header-suffix", class: "drawer__header-suffix" }, h("slot", { key: '90b4dd2f67960415e3e5a4f3d75040c59444eb62', name: "header-suffix" })), h("div", { key: '10520e2b3e5c78db50884db6a36fecaaa7c27c14', part: "body", class: "drawer__body" }, h("slot", { key: '8ec87f28a66c2983630e42256230f9a6b91fd03c' })), h("footer", { key: 'd036d9bdb6abdbbd96d75102a83df0b5abb4ec6d', part: "footer", class: "drawer__footer" }, h("slot", { key: '459084ed2a2b6056db73064ab1e02d71a8d8e0df', name: "footer" })))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

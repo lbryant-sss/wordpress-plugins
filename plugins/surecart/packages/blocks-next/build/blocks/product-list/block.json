@@ -381,6 +381,7 @@
     "interactivity": true,
     "layout": true,
     "align": true,
+    "currencyConversion": true,
     "spacing": {
       "padding": true,
       "margin": true,

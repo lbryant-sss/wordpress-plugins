@@ -1,5 +1,5 @@
 import { r as registerInstance, h, H as Host, F as Fragment } from './index-745b6bec.js';
-import { i as intervalString } from './price-d5770168.js';
+import { i as intervalString } from './price-7bb626d0.js';
 import './currency-a0c9bff4.js';
 
 const scPriceCss = ":host{display:block}.price{display:inline-flex;flex-direction:column;gap:var(--sc-spacing-xxx-small);text-align:var(--sc-product-price-alignment, left);justify-content:var(--sc-product-price-alignment, left)}.price__amounts{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:var(--sc-spacing-xx-small);justify-content:var(--sc-product-price-alignment, left);text-align:var(--sc-product-price-alignment, left)}.price__scratch{text-decoration:line-through;opacity:0.75}.price__interval{font-size:min(var(--sc-font-size-small), 16px);opacity:0.75}.price__details{font-size:min(var(--sc-font-size-small), 16px);opacity:0.75}.price__sale-badge{font-size:min(1em, 14px);align-self:center}";
@@ -11,6 +11,8 @@ const ScProductPrice = class {
         this.currency = undefined;
         this.amount = undefined;
         this.scratchAmount = undefined;
+        this.scratchDisplayAmount = undefined;
+        this.displayAmount = undefined;
         this.saleText = undefined;
         this.adHoc = undefined;
         this.recurringPeriodCount = undefined;
@@ -24,7 +26,7 @@ const ScProductPrice = class {
         if (this.adHoc) {
             return h(Host, { role: "paragraph" }, wp.i18n.__('Custom Amount', 'surecart'));
         }
-        return (h(Host, { role: "paragraph" }, h("div", { class: "price", id: "price" }, h("div", { class: "price__amounts" }, !!this.scratchAmount && this.scratchAmount !== this.amount && (h(Fragment, null, this.scratchAmount === 0 ? (wp.i18n.__('Free', 'surecart')) : (h(Fragment, null, h("sc-visually-hidden", null, wp.i18n.__('The price was', 'surecart'), " "), h("sc-format-number", { class: "price__scratch", part: "price__scratch", type: "currency", currency: this.currency, value: this.scratchAmount }), h("sc-visually-hidden", null, " ", wp.i18n.__('now discounted to', 'surecart')))))), this.amount === 0 ? wp.i18n.__('Free', 'surecart') : h("sc-format-number", { class: "price__amount", type: "currency", value: this.amount, currency: this.currency }), h("div", { class: "price__interval" }, this.recurringPeriodCount && 1 < this.recurringPeriodCount && (h("sc-visually-hidden", null, ' ', wp.i18n.__('This is a repeating price. Payment will happen', 'surecart'), ' ', intervalString({
+        return (h(Host, { role: "paragraph" }, h("div", { class: "price", id: "price" }, h("div", { class: "price__amounts" }, !!this.scratchAmount && this.scratchAmount !== this.amount && (h(Fragment, null, this.scratchAmount === 0 ? (wp.i18n.__('Free', 'surecart')) : (h(Fragment, null, h("sc-visually-hidden", null, wp.i18n.__('The price was', 'surecart'), " "), !!this.scratchDisplayAmount ? (h("span", { class: "price__scratch" }, this.scratchDisplayAmount)) : (h("sc-format-number", { class: "price__scratch", part: "price__scratch", type: "currency", currency: this.currency, value: this.scratchAmount })), h("sc-visually-hidden", null, " ", wp.i18n.__('now discounted to', 'surecart')))))), this.amount === 0 ? (wp.i18n.__('Free', 'surecart')) : this.displayAmount ? (this.displayAmount) : (h("sc-format-number", { class: "price__amount", type: "currency", value: this.amount, currency: this.currency })), h("div", { class: "price__interval" }, this.recurringPeriodCount && 1 < this.recurringPeriodCount && (h("sc-visually-hidden", null, ' ', wp.i18n.__('This is a repeating price. Payment will happen', 'surecart'), ' ', intervalString({
             recurring_interval_count: this.recurringIntervalCount,
             recurring_interval: this.recurringInterval,
             recurring_period_count: this.recurringPeriodCount,

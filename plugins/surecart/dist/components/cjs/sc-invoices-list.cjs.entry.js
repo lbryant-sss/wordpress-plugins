@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const fetch = require('./fetch-aaab7645.js');
+const fetch = require('./fetch-d644cebd.js');
 const lazy = require('./lazy-2b509fa7.js');
 const addQueryArgs = require('./add-query-args-49dcb630.js');
 require('./remove-query-args-b57e8cd3.js');
@@ -113,9 +113,9 @@ const ScInvoicesList = class {
             const { checkout, due_date_date } = invoice;
             if (!checkout)
                 return null;
-            const { amount_due, currency } = checkout;
+            const { amount_due_display_amount } = checkout;
             return (index.h("sc-stacked-list-row", { href: this.getInvoiceRedirectUrl(invoice), style: { '--columns': '4' }, "mobile-size": 500 }, index.h("div", null, "#", invoice === null || invoice === void 0 ? void 0 :
-                invoice.order_number), index.h("div", null, due_date_date && (invoice === null || invoice === void 0 ? void 0 : invoice.status) === 'open' ? wp.i18n.sprintf(wp.i18n.__('Due %s', 'surecart'), due_date_date) : '—'), index.h("div", { class: "invoices-list__status" }, index.h("sc-invoice-status-badge", { status: invoice === null || invoice === void 0 ? void 0 : invoice.status })), index.h("div", null, index.h("sc-format-number", { type: "currency", currency: currency, value: amount_due }))));
+                invoice.order_number), index.h("div", null, due_date_date && (invoice === null || invoice === void 0 ? void 0 : invoice.status) === 'open' ? wp.i18n.sprintf(wp.i18n.__('Due %s', 'surecart'), due_date_date) : '—'), index.h("div", { class: "invoices-list__status" }, index.h("sc-invoice-status-badge", { status: invoice === null || invoice === void 0 ? void 0 : invoice.status })), index.h("div", null, amount_due_display_amount)));
         });
     }
     renderContent() {
@@ -130,7 +130,7 @@ const ScInvoicesList = class {
     }
     render() {
         var _a, _b;
-        return (index.h("sc-dashboard-module", { key: '0ddd647a474609a28ac2ad0d34c406a51fb08552', class: "invoices-list", error: this.error }, index.h("span", { key: '4e243def7f4d8b31c2dba44f46036f73568d5bec', slot: "heading" }, index.h("slot", { key: '837c2ce0dd715f6d8006169e28b7e94c223cbb72', name: "heading" }, this.heading || wp.i18n.__('Invoices', 'surecart'))), !!this.allLink && !!((_a = this.invoices) === null || _a === void 0 ? void 0 : _a.length) && (index.h("sc-button", { key: '7f39eca0203173351b193b2244ab072441e609d9', type: "link", href: this.allLink, slot: "end", "aria-label": wp.i18n.sprintf(wp.i18n.__('View all %s', 'surecart'), this.heading || wp.i18n.__('Invoices', 'surecart')) }, wp.i18n.__('View all', 'surecart'), index.h("sc-icon", { key: 'c5cda6c955a446aec12d96ec941d61c63f03871e', "aria-hidden": "true", name: "chevron-right", slot: "suffix" }))), this.renderContent(), !this.allLink && (index.h("sc-pagination", { key: '7e0296eb10b1ab1691f694672e0ee64111b912ab', page: this.query.page, perPage: this.query.per_page, total: this.pagination.total, totalPages: this.pagination.total_pages, totalShowing: (_b = this === null || this === void 0 ? void 0 : this.invoices) === null || _b === void 0 ? void 0 : _b.length, onScNextPage: () => this.nextPage(), onScPrevPage: () => this.prevPage() })), this.busy && index.h("sc-block-ui", { key: '9f2ebb613f45525cd8202c1658e4778bfcb9da07' })));
+        return (index.h("sc-dashboard-module", { key: '48903841bd51cc6d15f6137974a3aca51d2a64f2', class: "invoices-list", error: this.error }, index.h("span", { key: '132aba486b307cf53361f2cd99e771eeff585866', slot: "heading" }, index.h("slot", { key: '49319d28dde268ad2e88f123672bedd268f9d606', name: "heading" }, this.heading || wp.i18n.__('Invoices', 'surecart'))), !!this.allLink && !!((_a = this.invoices) === null || _a === void 0 ? void 0 : _a.length) && (index.h("sc-button", { key: '6766e31aa8028421210ad47f848eb351153d5ab0', type: "link", href: this.allLink, slot: "end", "aria-label": wp.i18n.sprintf(wp.i18n.__('View all %s', 'surecart'), this.heading || wp.i18n.__('Invoices', 'surecart')) }, wp.i18n.__('View all', 'surecart'), index.h("sc-icon", { key: '9e2e4e728a577df926ffb7da4b4f1b08ba959b17', "aria-hidden": "true", name: "chevron-right", slot: "suffix" }))), this.renderContent(), !this.allLink && (index.h("sc-pagination", { key: '0bf3d371c4fb8f0625005545d8050c2a7e2e877b', page: this.query.page, perPage: this.query.per_page, total: this.pagination.total, totalPages: this.pagination.total_pages, totalShowing: (_b = this === null || this === void 0 ? void 0 : this.invoices) === null || _b === void 0 ? void 0 : _b.length, onScNextPage: () => this.nextPage(), onScPrevPage: () => this.prevPage() })), this.busy && index.h("sc-block-ui", { key: '86adde80321aa866904551e4ed2efed45d3cf0f6' })));
     }
     get el() { return index.getElement(this); }
 };

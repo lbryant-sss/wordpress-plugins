@@ -3,10 +3,10 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const getters$2 = require('./getters-7f1a1d9c.js');
-const getters = require('./getters-4ca6c14e.js');
+const getters$2 = require('./getters-24219863.js');
+const getters = require('./getters-82d9bfb6.js');
 const watchers = require('./watchers-2ad3abd1.js');
-const mutations = require('./mutations-757d8d21.js');
+const mutations = require('./mutations-747a9cc3.js');
 const consumer = require('./consumer-9f4ee0e3.js');
 const getters$1 = require('./getters-87b7ef91.js');
 require('./address-4c70d641.js');
@@ -19,7 +19,7 @@ require('./index-fb76df07.js');
 require('./google-59d23803.js');
 require('./currency-71fce0f0.js');
 require('./store-4a539aea.js');
-require('./price-653ec1cb.js');
+require('./price-ca4a4318.js');
 
 const getProcessorData = (processors = [], type, mode) => {
     var _a;

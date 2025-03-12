@@ -13,7 +13,7 @@ const ScProvisionalBanner = class {
         this.claimUrl = '';
     }
     render() {
-        return (index.h("div", { key: 'a8dfc6e10ce931434f2094313ed744ea895bce66', class: { 'sc-banner': true } }, index.h("p", { key: 'a73fe6c543dada145568886bf06f5caefa9f8752' }, wp.i18n.__('Complete your store setup to go live.', 'surecart'), index.h("a", { key: '47459d392df1e28b787c1b15af6382e4dc15afa4', href: this.claimUrl }, wp.i18n.__('Complete Setup', 'surecart'), " ", index.h("sc-icon", { key: 'd128652fdbbe8dc83313a670767fabadad46a586', name: "arrow-right" })))));
+        return (index.h("div", { key: '48303db6e6ba950bfb1261b30177fb31ff2e23b4', class: { 'sc-banner': true } }, index.h("p", { key: 'f3cc37256746dc3af088a125dcb1f5afb795dd51' }, wp.i18n.__('Complete your store setup to go live.', 'surecart'), index.h("a", { key: 'b247e58d52915bfebd03a9f15ae58553975047f2', href: this.claimUrl }, wp.i18n.__('Complete Setup', 'surecart'), " ", index.h("sc-icon", { key: '9906778ec5f82f38407cc34bd1e65279ce92c54d', name: "arrow-right" })))));
     }
 };
 ScProvisionalBanner.style = ScProvisionalBannerStyle0;

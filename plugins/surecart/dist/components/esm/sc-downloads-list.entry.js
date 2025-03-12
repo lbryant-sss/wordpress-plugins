@@ -1,5 +1,5 @@
 import { r as registerInstance, h } from './index-745b6bec.js';
-import { a as apiFetch } from './fetch-2d92a73e.js';
+import { a as apiFetch } from './fetch-8ecbbe53.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 
@@ -81,7 +81,7 @@ const ScDownloadsList = class {
     }
     render() {
         const downloads = this.downloads || [];
-        return (h("sc-dashboard-module", { key: '7ef3dca046fbcd55ff81c5ab92f52b2dd8630f3b', class: "purchase", part: "base", heading: wp.i18n.__('Downloads', 'surecart') }, h("span", { key: 'd3d95afb070f1fb26319c1002d02e5d075e196f0', slot: "heading" }, h("slot", { key: 'c35e1ad0ffa901edab292c0f10c9bd489e406478', name: "heading" }, this.heading || wp.i18n.__('Downloads', 'surecart'))), h("sc-card", { key: '8152d989ca16d8c791cb2fc5ace95d4211c56ad2', "no-padding": true }, h("sc-stacked-list", { key: '413b8f5775ea4f611adf3e513f6b2941fed45ca1' }, downloads.map(download => {
+        return (h("sc-dashboard-module", { key: 'ff99634c5a10b0ebe5faa223c9e37cbbf44476f4', class: "purchase", part: "base", heading: wp.i18n.__('Downloads', 'surecart') }, h("span", { key: '3c05a3f6d54aaf54e4b1c4d311db1d16f4a6ffa7', slot: "heading" }, h("slot", { key: 'fe4fcb0c532b2f327e2096ddc2afff8eb71946c9', name: "heading" }, this.heading || wp.i18n.__('Downloads', 'surecart'))), h("sc-card", { key: '232e4cd2a53c451ce75c67812b437b39990e7b04', "no-padding": true }, h("sc-stacked-list", { key: 'a2503975f22cd80b70be7da6c9f558c63fff39cb' }, downloads.map(download => {
             var _a, _b, _c, _d;
             const media = download === null || download === void 0 ? void 0 : download.media;
             return (h("sc-stacked-list-row", { style: { '--columns': '1' } }, h("sc-flex", { class: "single-download", justifyContent: "flex-start", alignItems: "center" }, h("div", { class: "single-download__preview" }, this.renderFileExt(download)), h("div", null, h("div", null, h("strong", null, (_b = (_a = media === null || media === void 0 ? void 0 : media.filename) !== null && _a !== void 0 ? _a : download === null || download === void 0 ? void 0 : download.name) !== null && _b !== void 0 ? _b : '')), h("sc-flex", { justifyContent: "flex-start", alignItems: "center", style: { gap: '0.5em' } }, (media === null || media === void 0 ? void 0 : media.byte_size) && h("sc-format-bytes", { value: media.byte_size }), !!((_c = media === null || media === void 0 ? void 0 : media.release_json) === null || _c === void 0 ? void 0 : _c.version) && (h("sc-tag", { type: "primary", size: "small", style: {

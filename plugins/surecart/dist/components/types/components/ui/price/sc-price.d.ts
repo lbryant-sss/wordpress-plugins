@@ -8,6 +8,10 @@ export declare class ScProductPrice {
     amount: number;
     /** The scratch amount */
     scratchAmount: number;
+    /** The scratch display amount */
+    scratchDisplayAmount: string;
+    /** The display amount */
+    displayAmount: string;
     /** The sale text */
     saleText: string;
     /** Is the product ad_hoc? */

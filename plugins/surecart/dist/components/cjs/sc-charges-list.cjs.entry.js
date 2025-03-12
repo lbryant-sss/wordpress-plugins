@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const fetch = require('./fetch-aaab7645.js');
+const fetch = require('./fetch-d644cebd.js');
 const lazy = require('./lazy-2b509fa7.js');
 const addQueryArgs = require('./add-query-args-49dcb630.js');
 require('./remove-query-args-b57e8cd3.js');
@@ -92,12 +92,12 @@ const ScChargesList = class {
         }
         return this.charges.map(charge => {
             var _a;
-            const { currency, amount, created_at_date } = charge;
+            const { created_at_date, display_amount } = charge;
             return (index.h("sc-stacked-list-row", { style: { '--columns': '4' }, "mobile-size": 600, href: addQueryArgs.addQueryArgs(window.location.href, {
                     action: 'show',
                     model: 'order',
                     id: (_a = charge.checkout.order) === null || _a === void 0 ? void 0 : _a.id,
-                }) }, index.h("strong", null, created_at_date), index.h("sc-text", { style: { '--color': 'var(--sc-color-gray-500)' } }, wp.i18n.sprintf(wp.i18n.__('#%s', 'surecart'), charge.checkout.order.number)), index.h("div", null, this.renderRefundStatus(charge)), index.h("strong", null, index.h("sc-format-number", { type: "currency", value: amount, currency: currency }))));
+                }) }, index.h("strong", null, created_at_date), index.h("sc-text", { style: { '--color': 'var(--sc-color-gray-500)' } }, wp.i18n.sprintf(wp.i18n.__('#%s', 'surecart'), charge.checkout.order.number)), index.h("div", null, this.renderRefundStatus(charge)), index.h("strong", null, display_amount)));
         });
     }
     nextPage() {
@@ -110,7 +110,7 @@ const ScChargesList = class {
     }
     render() {
         var _a;
-        return (index.h("sc-dashboard-module", { key: '932ef18bbc6c4f2964cbc9db6f4fa1356e3a6cfe', class: "charges-list", error: this.error }, index.h("span", { key: 'aed23eac26eca14ae80ccf9de99838d60c5cf32f', slot: "heading" }, index.h("slot", { key: 'ae4b87c5404c5dd22e72a936a13ded59a83ee063', name: "heading" }, this.heading || wp.i18n.__('Payment History', 'surecart'))), !!this.allLink && (index.h("sc-button", { key: '14dbf0f05d5d62ecb283df0f9341daf50298531b', type: "link", href: this.allLink, slot: "end" }, wp.i18n.__('View all', 'surecart'), index.h("sc-icon", { key: '0e3b91393f473a2675f76fe07020e10e20865d25', name: "chevron-right", slot: "suffix" }))), index.h("sc-card", { key: 'bee3f25c4b04e9e873254ba872e7be776e15725e', "no-padding": true, style: { '--overflow': 'hidden' } }, index.h("sc-stacked-list", { key: '93d1bec458065f27d30560cc891761a97fad9d91' }, this.renderContent())), this.showPagination && (index.h("sc-pagination", { key: 'bf7720349c3c3a9036f3c6cbc4d224652e884c80', page: this.query.page, perPage: this.query.per_page, total: this.pagination.total, totalPages: this.pagination.total_pages, totalShowing: (_a = this === null || this === void 0 ? void 0 : this.charges) === null || _a === void 0 ? void 0 : _a.length, onScNextPage: () => this.nextPage(), onScPrevPage: () => this.prevPage() })), this.loading && this.loaded && index.h("sc-block-ui", { key: 'a4e0b4163265b7bf28379e2df25349864c0a0087', spinner: true })));
+        return (index.h("sc-dashboard-module", { key: '694ccddceb466addce8c4a5efa52d8def0f15a6c', class: "charges-list", error: this.error }, index.h("span", { key: '2e67a7595708193402c8cf063375e08db97820d6', slot: "heading" }, index.h("slot", { key: 'a3710378d7c579f0cd487d65710591baee0a2798', name: "heading" }, this.heading || wp.i18n.__('Payment History', 'surecart'))), !!this.allLink && (index.h("sc-button", { key: '078a935096b4413d116a3ca1c999b4b21f8b6317', type: "link", href: this.allLink, slot: "end" }, wp.i18n.__('View all', 'surecart'), index.h("sc-icon", { key: '481a0cc8557aee9bd1b6972e55d6cd89105d97f9', name: "chevron-right", slot: "suffix" }))), index.h("sc-card", { key: '50e7c7956538bd21e6f39eec8488600c363e5ecb', "no-padding": true, style: { '--overflow': 'hidden' } }, index.h("sc-stacked-list", { key: 'fe09dc61473d1a8fcb788a9ed57515497d601df5' }, this.renderContent())), this.showPagination && (index.h("sc-pagination", { key: 'a5a06f247799e7579cf53ad0d6e0eb2c209e40be', page: this.query.page, perPage: this.query.per_page, total: this.pagination.total, totalPages: this.pagination.total_pages, totalShowing: (_a = this === null || this === void 0 ? void 0 : this.charges) === null || _a === void 0 ? void 0 : _a.length, onScNextPage: () => this.nextPage(), onScPrevPage: () => this.prevPage() })), this.loading && this.loaded && index.h("sc-block-ui", { key: '496fb42b86d4cd66fb8b9cd7dbb7cce2cef0f3d1', spinner: true })));
     }
     get el() { return index.getElement(this); }
 };

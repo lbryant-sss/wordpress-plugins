@@ -20,7 +20,7 @@ const ScOrderReturnBadge = class {
         this.clearable = false;
     }
     render() {
-        return (h("sc-tag", { key: 'bae24922b7ee77d821455a17d4b66e4afc596bc2', type: type === null || type === void 0 ? void 0 : type[this === null || this === void 0 ? void 0 : this.status], pill: this.pill }, (status === null || status === void 0 ? void 0 : status[this.status]) || this.status));
+        return (h("sc-tag", { key: '6fc215029e43367b150712613cdaf40ccff5523a', type: type === null || type === void 0 ? void 0 : type[this === null || this === void 0 ? void 0 : this.status], pill: this.pill }, (status === null || status === void 0 ? void 0 : status[this.status]) || this.status));
     }
 };
 ScOrderReturnBadge.style = ScOrderReturnBadgeStyle0;

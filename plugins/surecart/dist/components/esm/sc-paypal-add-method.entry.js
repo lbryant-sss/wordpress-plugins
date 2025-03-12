@@ -1,6 +1,6 @@
 import { r as registerInstance, h, H as Host } from './index-745b6bec.js';
 import { l as loadScript, g as getScriptLoadParams } from './functions-2a4a4ba3.js';
-import { a as apiFetch } from './fetch-2d92a73e.js';
+import { a as apiFetch } from './fetch-8ecbbe53.js';
 import './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 
@@ -106,7 +106,7 @@ const ScPaypalAddMethod = class {
         }
     }
     render() {
-        return (h(Host, { key: '8248c22c8a4cbb1746e50102af66a65284f4ca1b' }, this.error && (h("sc-alert", { key: 'c170d57805570a508df704d1f034c18bfc362ef3', open: !!this.error, type: "danger" }, h("span", { key: 'f34ce3790ed8f2d082d226e03a243f34d5b67c62', slot: "title" }, wp.i18n.__('Error', 'surecart')), this.error)), h("div", { key: '1ec2c4534cc4aa0f1125a9ca9feed7a718c9d657', class: "sc-paypal-button-container", hidden: !this.loaded, ref: el => (this.container = el) })));
+        return (h(Host, { key: '99b6aaa570727d206cc37cfe55fa04ea87072bc7' }, this.error && (h("sc-alert", { key: '3e3765a43fa5b67ca72cb11815be68a148dace88', open: !!this.error, type: "danger" }, h("span", { key: 'f0ae56e1672bbd87c74c3d8cae8929ce4998cf4e', slot: "title" }, wp.i18n.__('Error', 'surecart')), this.error)), h("div", { key: 'b99ad82af69bab5eee7d883e24d958aee189f202', class: "sc-paypal-button-container", hidden: !this.loaded, ref: el => (this.container = el) })));
     }
     static get watchers() { return {
         "paymentIntent": ["handlePaymentIntentCreate"]

@@ -148,17 +148,6 @@ function monsterinsights_admin_menu()
 	if (!monsterinsights_is_pro_version()) {
 		add_submenu_page($parent_slug, __('Upgrade to Pro:', 'google-analytics-for-wordpress'), '<span class="monsterinsights-upgrade-submenu"> ' . __('Upgrade to Pro', 'google-analytics-for-wordpress') . '</span>', 'monsterinsights_save_settings', monsterinsights_get_upgrade_link('admin-menu', 'submenu', "https://www.monsterinsights.com/lite/"));
 	}
-
-	if ( class_exists( 'WooCommerce' ) ) {
-		// Show the Payments submenu only when WooCommerce is active.
-		add_submenu_page(
-			$parent_slug,
-			__('Payments:', 'google-analytics-for-wordpress'),
-			__('Payments', 'google-analytics-for-wordpress'),
-			'manage_options',
-			$submenu_base . '#/payments'
-		);
-	}
 }
 
 add_action('admin_menu', 'monsterinsights_admin_menu');

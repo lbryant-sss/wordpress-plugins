@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const fetch = require('./fetch-aaab7645.js');
+const fetch = require('./fetch-d644cebd.js');
 const lazy = require('./lazy-2b509fa7.js');
 const addQueryArgs = require('./add-query-args-49dcb630.js');
 require('./remove-query-args-b57e8cd3.js');
@@ -96,7 +96,7 @@ const ScDownloadsList = class {
     }
     render() {
         var _a;
-        return (index.h("sc-purchase-downloads-list", { key: '81c0c9665a0039623b851a5b519cca34f5bdf81f', heading: this.heading, allLink: this.allLink && this.pagination.total_pages > 1 ? this.allLink : '', loading: this.loading, busy: this.busy, requestNonce: this.requestNonce, error: this.error, purchases: this.purchases }, index.h("span", { key: '9b295257cc9f6e060d3b433c6098524605a64634', slot: "heading" }, index.h("slot", { key: 'fee93edb49150167b7ba0fe808ceb4f24855a364', name: "heading" }, this.heading || wp.i18n.__('Downloads', 'surecart'))), index.h("sc-pagination", { key: '4e4c4577801b8bd242ea35a121fe120000a3ce62', slot: "after", page: this.query.page, perPage: this.query.per_page, total: this.pagination.total, totalPages: this.pagination.total_pages, totalShowing: (_a = this === null || this === void 0 ? void 0 : this.purchases) === null || _a === void 0 ? void 0 : _a.length, onScNextPage: () => this.nextPage(), onScPrevPage: () => this.prevPage() })));
+        return (index.h("sc-purchase-downloads-list", { key: '8a407e34ef1f0391cd10eaa26fe39f9b514df13d', heading: this.heading, allLink: this.allLink && this.pagination.total_pages > 1 ? this.allLink : '', loading: this.loading, busy: this.busy, requestNonce: this.requestNonce, error: this.error, purchases: this.purchases }, index.h("span", { key: '96f5cfb120ced4bb1df6c7fe91ceac0d8404211e', slot: "heading" }, index.h("slot", { key: '350f2eeeef60a8e1e02e45b254bbf7e1445c3c9a', name: "heading" }, this.heading || wp.i18n.__('Downloads', 'surecart'))), index.h("sc-pagination", { key: 'dcf0d6d0c55b026de43a23cabb495aac69702686', slot: "after", page: this.query.page, perPage: this.query.per_page, total: this.pagination.total, totalPages: this.pagination.total_pages, totalShowing: (_a = this === null || this === void 0 ? void 0 : this.purchases) === null || _a === void 0 ? void 0 : _a.length, onScNextPage: () => this.nextPage(), onScPrevPage: () => this.prevPage() })));
     }
     get el() { return index.getElement(this); }
 };

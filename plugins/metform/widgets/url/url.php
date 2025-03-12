@@ -154,7 +154,7 @@ Class MetForm_Input_Url extends Widget_Base{
 
 		$configData = [
 			'message' 		=> $errorMessage 	= isset($mf_input_validation_warning_message) ? !empty($mf_input_validation_warning_message) ? $mf_input_validation_warning_message : esc_html__('This field is required.', 'metform') : esc_html__('This field is required.', 'metform'),
-			'urlMessage'	=> esc_html__('Please enter a valid URL', 'metform'),
+			'urlMessage'    => esc_html__('Please enter a valid URL starting with http:// or https://', 'metform'),
 			'minLength'		=> isset($mf_input_min_length) ? $mf_input_min_length : 1,
 			'maxLength'		=> isset($mf_input_max_length) ? $mf_input_max_length : '',
 			'type'			=> isset($mf_input_validation_type) ? $mf_input_validation_type : '',

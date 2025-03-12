@@ -3,8 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const mutations = require('./mutations-ecc3d722.js');
-require('./fetch-aaab7645.js');
+const mutations = require('./mutations-ac3b22d5.js');
+require('./fetch-d644cebd.js');
 require('./add-query-args-49dcb630.js');
 require('./remove-query-args-b57e8cd3.js');
 require('./store-ce062aec.js');
@@ -26,7 +26,7 @@ const ScUpsellNoThanksButton = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: '490adbfe64f3c4661284cd74c85b56e4575b36fc', onClick: () => mutations.decline() }, index.h("slot", { key: 'ec79ec99b39e1e59c0e0f8d21eb2ad902fbd8aed' })));
+        return (index.h(index.Host, { key: 'f18d3db24d4641d47b50024789e9888281f7c392', onClick: () => mutations.decline() }, index.h("slot", { key: '37c9f99de73e5a3da7bc8671852762d3cd3ff85b' })));
     }
 };
 ScUpsellNoThanksButton.style = ScUpsellNoThanksButtonStyle0;

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const fetch = require('./fetch-aaab7645.js');
+const fetch = require('./fetch-d644cebd.js');
 const addQueryArgs = require('./add-query-args-49dcb630.js');
 require('./remove-query-args-b57e8cd3.js');
 
@@ -85,7 +85,7 @@ const ScDownloadsList = class {
     }
     render() {
         const downloads = this.downloads || [];
-        return (index.h("sc-dashboard-module", { key: '7ef3dca046fbcd55ff81c5ab92f52b2dd8630f3b', class: "purchase", part: "base", heading: wp.i18n.__('Downloads', 'surecart') }, index.h("span", { key: 'd3d95afb070f1fb26319c1002d02e5d075e196f0', slot: "heading" }, index.h("slot", { key: 'c35e1ad0ffa901edab292c0f10c9bd489e406478', name: "heading" }, this.heading || wp.i18n.__('Downloads', 'surecart'))), index.h("sc-card", { key: '8152d989ca16d8c791cb2fc5ace95d4211c56ad2', "no-padding": true }, index.h("sc-stacked-list", { key: '413b8f5775ea4f611adf3e513f6b2941fed45ca1' }, downloads.map(download => {
+        return (index.h("sc-dashboard-module", { key: 'ff99634c5a10b0ebe5faa223c9e37cbbf44476f4', class: "purchase", part: "base", heading: wp.i18n.__('Downloads', 'surecart') }, index.h("span", { key: '3c05a3f6d54aaf54e4b1c4d311db1d16f4a6ffa7', slot: "heading" }, index.h("slot", { key: 'fe4fcb0c532b2f327e2096ddc2afff8eb71946c9', name: "heading" }, this.heading || wp.i18n.__('Downloads', 'surecart'))), index.h("sc-card", { key: '232e4cd2a53c451ce75c67812b437b39990e7b04', "no-padding": true }, index.h("sc-stacked-list", { key: 'a2503975f22cd80b70be7da6c9f558c63fff39cb' }, downloads.map(download => {
             var _a, _b, _c, _d;
             const media = download === null || download === void 0 ? void 0 : download.media;
             return (index.h("sc-stacked-list-row", { style: { '--columns': '1' } }, index.h("sc-flex", { class: "single-download", justifyContent: "flex-start", alignItems: "center" }, index.h("div", { class: "single-download__preview" }, this.renderFileExt(download)), index.h("div", null, index.h("div", null, index.h("strong", null, (_b = (_a = media === null || media === void 0 ? void 0 : media.filename) !== null && _a !== void 0 ? _a : download === null || download === void 0 ? void 0 : download.name) !== null && _b !== void 0 ? _b : '')), index.h("sc-flex", { justifyContent: "flex-start", alignItems: "center", style: { gap: '0.5em' } }, (media === null || media === void 0 ? void 0 : media.byte_size) && index.h("sc-format-bytes", { value: media.byte_size }), !!((_c = media === null || media === void 0 ? void 0 : media.release_json) === null || _c === void 0 ? void 0 : _c.version) && (index.h("sc-tag", { type: "primary", size: "small", style: {

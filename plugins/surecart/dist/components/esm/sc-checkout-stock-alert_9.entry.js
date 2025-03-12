@@ -1,14 +1,14 @@
 import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-745b6bec.js';
-import { s as state, o as onChange, u as updateFormState } from './mutations-83ea96b2.js';
-import { d as updateCheckout, e as expand, f as finalizeCheckout, g as fetchCheckout, h as createCheckout, c as createOrUpdateCheckout } from './index-01c97eb1.js';
+import { s as state, o as onChange, u as updateFormState } from './mutations-6f9b9a86.js';
+import { d as updateCheckout, e as expand, f as finalizeCheckout, g as fetchCheckout, h as createCheckout, c as createOrUpdateCheckout } from './index-885ece77.js';
 import { c as currentFormState } from './getters-487612aa.js';
-import './watchers-8dce998c.js';
-import { s as state$1 } from './getters-09d843cb.js';
+import './watchers-876133bf.js';
+import { s as state$1 } from './getters-07c1280c.js';
 import { s as state$2 } from './watchers-38693c1f.js';
-import { c as clearCheckout } from './mutations-c3035316.js';
-import { s as shippingAddressRequired } from './getters-76e355c6.js';
+import { c as clearCheckout } from './mutations-56e6eb22.js';
+import { s as shippingAddressRequired } from './getters-3a0d4ac0.js';
 import { v, c as checkoutMachine, s as state$3 } from './store-627acec4.js';
-import { a as apiFetch } from './fetch-2d92a73e.js';
+import { a as apiFetch } from './fetch-8ecbbe53.js';
 import { s as speak } from './index-c5a96d53.js';
 import { c as createErrorNotice, r as removeNotice, a as createInfoNotice } from './mutations-ed6d0770.js';
 import { a as addQueryArgs, g as getQueryArgs } from './add-query-args-0e2a8393.js';
@@ -18,7 +18,7 @@ import './index-06061d4e.js';
 import './utils-cd1431df.js';
 import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
-import './price-d5770168.js';
+import './price-7bb626d0.js';
 import './util-50af2a83.js';
 import './address-b892540d.js';
 
@@ -416,7 +416,7 @@ const ScFormComponentsValidator = class {
         this.hasTrialLineItem = true;
     }
     render() {
-        return h("slot", { key: '4610a472a62e049ef7b66e1bc092ce001c7df87d' });
+        return h("slot", { key: 'dbec2ed416c0178a6a8973185a39cc0c3687355b' });
     }
     get el() { return getElement(this); }
     static get watchers() { return {
@@ -439,7 +439,7 @@ const ScFormErrorProvider = class {
         (_b = (_a = this.el.querySelector('sc-form')) === null || _a === void 0 ? void 0 : _a.prepend) === null || _b === void 0 ? void 0 : _b.call(_a, errorsComponent);
     }
     render() {
-        return h("slot", { key: 'cc12da4f1a1b51408b597cbfc88f6b295349dcc3' });
+        return h("slot", { key: '5a498fc47ac1233a38625e465a36fbb1afc92913' });
     }
     get el() { return getElement(this); }
 };
@@ -558,10 +558,10 @@ const ScLoginProvider = class {
         }
     }
     render() {
-        return (h(Host, { key: 'a763c6b9213e0956cbffc957eb5437ea2deabffd' }, !!this.notice && (h("sc-alert", { key: 'e777c76f58e730844f1af07f335e889907b3a102', type: "success", open: true, style: { marginBottom: 'var(--sc-form-row-spacing)' }, closable: true }, h("span", { key: '1f81a88f218bee201dc7fb6e4159c3b2520b87c0', slot: "title" }, wp.i18n.__('Welcome back!', 'surecart')), wp.i18n.__('You have logged in successfully.', 'surecart'))), h("slot", { key: '62be3a16c2d427dd195ae6f2717e1fe3d5c26c41' }), !this.loggedIn && (h("sc-dialog", { key: '13661d9b1392306d30939a86a7be1bf0b37a1734', label: wp.i18n.__('Login to your account', 'surecart'), open: this.open, onScRequestClose: () => (this.open = false) }, h("sc-form", { key: '694e35ef08476e3cce5f0c5617ba096e817f79b4', ref: el => (this.loginForm = el), onScFormSubmit: e => {
+        return (h(Host, { key: 'b05fbcb8e36c9515bae1f5ff69cffb6f4a41d87b' }, !!this.notice && (h("sc-alert", { key: '3862ea8f130400a67c94cce8daea4adcfc595b5e', type: "success", open: true, style: { marginBottom: 'var(--sc-form-row-spacing)' }, closable: true }, h("span", { key: '9e33fc503ce1bb6c13afcd752a515242389c1578', slot: "title" }, wp.i18n.__('Welcome back!', 'surecart')), wp.i18n.__('You have logged in successfully.', 'surecart'))), h("slot", { key: '17419306f57283917a0804c07a4989e2d83fc299' }), !this.loggedIn && (h("sc-dialog", { key: 'b0839b8387989840d88896861773898ba92d3e21', label: wp.i18n.__('Login to your account', 'surecart'), open: this.open, onScRequestClose: () => (this.open = false) }, h("sc-form", { key: '406625df6eca8f49734ea82db4340cfd663b7b65', ref: el => (this.loginForm = el), onScFormSubmit: e => {
                 e.preventDefault();
                 e.stopImmediatePropagation();
-            }, onScSubmit: e => this.handleFormSubmit(e) }, !!this.error && (h("sc-alert", { key: '0cfe2942095223c9e3e87b54f868c69ab38b2696', type: "danger", open: !!this.error }, this.error)), h("sc-input", { key: '53d7104a3aa67aba54e31e932b74008765f43ecf', label: wp.i18n.__('Email or Username', 'surecart'), type: "text", name: "login", required: true, autofocus: this.open }), h("sc-input", { key: '77ddf7f0099f4c62bd5af9ebdfc273123b888a40', label: wp.i18n.__('Password', 'surecart'), type: "password", name: "password", required: true }), h("sc-button", { key: 'fa7141488876dce1c30aa80abdf49a8e56c4c15a', type: "primary", full: true, loading: this.loading, submit: true }, wp.i18n.__('Login', 'surecart')))))));
+            }, onScSubmit: e => this.handleFormSubmit(e) }, !!this.error && (h("sc-alert", { key: '333187aebbea9f692d988b3fc5c1e87cef5f823e', type: "danger", open: !!this.error }, this.error)), h("sc-input", { key: '45dd2465390e44a84def81892dd8edcb9566b316', label: wp.i18n.__('Email or Username', 'surecart'), type: "text", name: "login", required: true, autofocus: this.open }), h("sc-input", { key: '0459ac1965803189acef490eb2c2a88f67b9b38e', label: wp.i18n.__('Password', 'surecart'), type: "password", name: "password", required: true }), h("sc-button", { key: '0b2766ea52fb2f803ab1f84a366c8879031f5f8d', type: "primary", full: true, loading: this.loading, submit: true }, wp.i18n.__('Login', 'surecart')))))));
     }
     static get watchers() { return {
         "open": ["handleLoginDialogChange"],
@@ -655,7 +655,7 @@ const ScOrderConfirmProvider = class {
     }
     render() {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
-        return (h(Host, { key: '7973aba1a56af4b61401a696edfa067abd141373' }, h("slot", { key: 'fdacfae32ead0829bce54e408d269a24f2fc150b' }), h("sc-dialog", { key: '15e80e613a598d8a2bde41acb684da589eb4932b', open: !!this.showSuccessModal, style: { '--body-spacing': 'var(--sc-spacing-xxx-large)', '--width': '400px' }, noHeader: true, onScRequestClose: e => e.preventDefault() }, h("div", { key: '26de364fd655801745d31dedfaeab6756043aaff', class: "confirm__icon" }, h("div", { key: '0f900301ba4b239105bfb99e4b4840bf25edc7df', class: "confirm__icon-container" }, h("sc-icon", { key: '3ef65dd6612a716dfb7b85c7d32add0f4f1c37dc', name: "check" }))), h("sc-dashboard-module", { key: 'a1045a752a3bf5f1c0e924eed98810d10c0c6fb5', heading: ((_b = (_a = state$3 === null || state$3 === void 0 ? void 0 : state$3.text) === null || _a === void 0 ? void 0 : _a.success) === null || _b === void 0 ? void 0 : _b.title) || wp.i18n.__('Thanks for your order!', 'surecart'), style: { '--sc-dashboard-module-spacing': 'var(--sc-spacing-x-large)', 'textAlign': 'center' } }, h("span", { key: '224b1a413a4a5fcf2bd2c1436187d2345672c50b', slot: "description" }, ((_d = (_c = state$3 === null || state$3 === void 0 ? void 0 : state$3.text) === null || _c === void 0 ? void 0 : _c.success) === null || _d === void 0 ? void 0 : _d.description) || wp.i18n.__('Your payment was successful. A receipt is on its way to your inbox.', 'surecart')), !!((_e = this.manualPaymentMethod) === null || _e === void 0 ? void 0 : _e.name) && !!((_f = this.manualPaymentMethod) === null || _f === void 0 ? void 0 : _f.instructions) && (h("sc-alert", { key: 'c5a97549d2be58accd40d902d1bfae3c2067b59a', type: "info", open: true, style: { 'text-align': 'left' } }, h("span", { key: '1c3f2e8246961b4130390b0e3280a156508b4449', slot: "title" }, (_g = this.manualPaymentMethod) === null || _g === void 0 ? void 0 : _g.name), h("div", { key: '2e7b13d7408a534e8486029cf138b371ee481c44', innerHTML: (_h = this.manualPaymentMethod) === null || _h === void 0 ? void 0 : _h.instructions }))), h("sc-button", { key: '40833754a20769b934a6a78a3166dc232205241c', href: this.getSuccessUrl(), size: "large", type: "primary", ref: el => (this.continueButton = el) }, ((_k = (_j = state$3 === null || state$3 === void 0 ? void 0 : state$3.text) === null || _j === void 0 ? void 0 : _j.success) === null || _k === void 0 ? void 0 : _k.button) || wp.i18n.__('Continue', 'surecart'), h("sc-icon", { key: '3624aed8d8bb2ed6075cab3f37abb0ec09c854d7', name: "arrow-right", slot: "suffix" }))))));
+        return (h(Host, { key: 'd9b39cadf86f646acd05abe6f923fc8736edcea5' }, h("slot", { key: '9c8f0609afc183bd409931fc654f16c8aa66f5be' }), h("sc-dialog", { key: 'f7eea0b871063e38c72aec19abe57d6139c37eb5', open: !!this.showSuccessModal, style: { '--body-spacing': 'var(--sc-spacing-xxx-large)', '--width': '400px' }, noHeader: true, onScRequestClose: e => e.preventDefault() }, h("div", { key: '41b62f522b82fe56507b0e9b9e27ec11cf943eea', class: "confirm__icon" }, h("div", { key: '31eff7ac5e1a73a5b34a4880087e6868bfa4f859', class: "confirm__icon-container" }, h("sc-icon", { key: '1f2d89ba9bf01ae184a6841e06fe9be14fed9c22', name: "check" }))), h("sc-dashboard-module", { key: 'c1fc69f8733d758a8f61e9ab45d8831bf41b05bf', heading: ((_b = (_a = state$3 === null || state$3 === void 0 ? void 0 : state$3.text) === null || _a === void 0 ? void 0 : _a.success) === null || _b === void 0 ? void 0 : _b.title) || wp.i18n.__('Thanks for your order!', 'surecart'), style: { '--sc-dashboard-module-spacing': 'var(--sc-spacing-x-large)', 'textAlign': 'center' } }, h("span", { key: 'f00e95c9d8ec5b0ee02efe5bdb67839d1a467882', slot: "description" }, ((_d = (_c = state$3 === null || state$3 === void 0 ? void 0 : state$3.text) === null || _c === void 0 ? void 0 : _c.success) === null || _d === void 0 ? void 0 : _d.description) || wp.i18n.__('Your payment was successful. A receipt is on its way to your inbox.', 'surecart')), !!((_e = this.manualPaymentMethod) === null || _e === void 0 ? void 0 : _e.name) && !!((_f = this.manualPaymentMethod) === null || _f === void 0 ? void 0 : _f.instructions) && (h("sc-alert", { key: '4f53d675472a9b3d0c6149223d2ef3eb3cc00eb4', type: "info", open: true, style: { 'text-align': 'left' } }, h("span", { key: 'a6889f7175a3f59791ec76ec931918d51edc6ab9', slot: "title" }, (_g = this.manualPaymentMethod) === null || _g === void 0 ? void 0 : _g.name), h("div", { key: '275fa3030d3ed9e1eee2a634d799bbf014d5f5ba', innerHTML: (_h = this.manualPaymentMethod) === null || _h === void 0 ? void 0 : _h.instructions }))), h("sc-button", { key: '46de3820ec3418725b471ba71ca841584f5743d9', href: this.getSuccessUrl(), size: "large", type: "primary", ref: el => (this.continueButton = el) }, ((_k = (_j = state$3 === null || state$3 === void 0 ? void 0 : state$3.text) === null || _j === void 0 ? void 0 : _j.success) === null || _k === void 0 ? void 0 : _k.button) || wp.i18n.__('Continue', 'surecart'), h("sc-icon", { key: 'c3a28669c1626c28b2391265270bd38f74c4615e', name: "arrow-right", slot: "suffix" }))))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {
@@ -1179,7 +1179,7 @@ const ScSessionProvider = class {
         }
     }
     render() {
-        return (h("sc-line-items-provider", { key: '0a7984960c0c8dead92a33df1f710dea3f6d05bd', order: state === null || state === void 0 ? void 0 : state.checkout, onScUpdateLineItems: e => this.loadUpdate({ line_items: e.detail }) }, h("slot", { key: '4d99d1933eab656fea62abd856bf70bfd3f59049' })));
+        return (h("sc-line-items-provider", { key: '87c49db9f597d2b9286f96a95fd5add3c6391b99', order: state === null || state === void 0 ? void 0 : state.checkout, onScUpdateLineItems: e => this.loadUpdate({ line_items: e.detail }) }, h("slot", { key: '1bfc46f14698a4054d90359fdb4332e7b9a53c2f' })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

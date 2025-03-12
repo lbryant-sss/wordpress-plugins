@@ -52,9 +52,11 @@ function usw_userway_settings_page() {
             const MESSAGE_ACTION_TOGGLE = 'WIDGET_TOGGLE';
             const MESSAGE_ACTION_SIGNUP = "WIDGET_SIGNUP";
             const MESSAGE_ACTION_SIGNIN = "WIDGET_SIGNIN";
+            const MESSAGE_ACTION_REFRESH = "IFRAME_REFRESH";
+
             const siteUrl = '<?= get_site_url(); ?>';
 
-            const request = (data) => {
+            const requestSave = (data) => {
                 return jQuery.when(
                     jQuery.ajax({
                         url: `${siteUrl}/index.php?rest_route=/userway/v1/save`,
@@ -82,13 +84,17 @@ function usw_userway_settings_page() {
                 const frameContentWindow = selector.contentWindow;
                 const {url} = selector.dataset;
                 window.addEventListener('message', postMessage => {
+					if (postMessage.source === frameContentWindow && postMessage.data && postMessage.data.action === MESSAGE_ACTION_REFRESH) {
+                        window.location.reload();
+                    }
+
                     if (postMessage.source !== frameContentWindow || !isPostMessageValid(postMessage)) {
                         return;
                     }
                     console.log('[userway/v1/postMassage]', postMessage);
-                    request({
-                        account: postMessage.data.account,
-                        state: postMessage.data.state,
+				    requestSave({
+                           account: postMessage.data.account,
+                           state: postMessage.data.state,
                     }).then(res => console.log(res))
                         .catch(err => console.error(err));
                 });

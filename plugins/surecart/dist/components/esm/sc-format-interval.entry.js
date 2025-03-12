@@ -1,5 +1,5 @@
 import { r as registerInstance } from './index-745b6bec.js';
-import { t as translateInterval } from './price-d5770168.js';
+import { t as translateInterval } from './price-7bb626d0.js';
 import './currency-a0c9bff4.js';
 
 const ScFormatInterval = class {

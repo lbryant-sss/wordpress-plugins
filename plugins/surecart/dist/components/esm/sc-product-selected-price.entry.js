@@ -1,8 +1,8 @@
 import { r as registerInstance, c as createEvent, h, F as Fragment, H as Host } from './index-745b6bec.js';
-import { i as intervalString } from './price-d5770168.js';
-import { g as getLineItemByProductId } from './getters-76e355c6.js';
+import { i as intervalString } from './price-7bb626d0.js';
+import { g as getLineItemByProductId } from './getters-3a0d4ac0.js';
 import { f as formBusy } from './getters-487612aa.js';
-import { o as onChange } from './mutations-83ea96b2.js';
+import { o as onChange } from './mutations-6f9b9a86.js';
 import './currency-a0c9bff4.js';
 import './address-b892540d.js';
 import './store-627acec4.js';
@@ -68,7 +68,8 @@ const ScProductSelectedPrice = class {
                 if (e.key === 'Enter') {
                     this.onSubmit(e);
                 }
-            } }, h("sc-button", { slot: "suffix", type: "link", submit: true }, wp.i18n.__('Update', 'surecart'))))) : (h(Fragment, null, h("div", { class: "selected-price__wrap" }, h("span", { class: "selected-price__price", "aria-label": wp.i18n.__('Product price', 'surecart') }, (price === null || price === void 0 ? void 0 : price.scratch_amount) > price.amount && (h(Fragment, null, h("sc-format-number", { class: "selected-price__scratch-price", part: "price__scratch", type: "currency", currency: price === null || price === void 0 ? void 0 : price.currency, value: price === null || price === void 0 ? void 0 : price.scratch_amount }), ' ')), h("sc-format-number", { type: "currency", currency: price === null || price === void 0 ? void 0 : price.currency, value: ((_e = this.lineItem()) === null || _e === void 0 ? void 0 : _e.ad_hoc_amount) !== null ? (_f = this.lineItem()) === null || _f === void 0 ? void 0 : _f.ad_hoc_amount : (variant === null || variant === void 0 ? void 0 : variant.amount) || (price === null || price === void 0 ? void 0 : price.amount) })), h("span", { class: "selected-price__interval", "aria-label": wp.i18n.__('Price interval', 'surecart') }, intervalString(price, {
+            } }, h("sc-button", { slot: "suffix", type: "link", submit: true }, wp.i18n.__('Update', 'surecart'))))) : (h(Fragment, null, h("div", { class: "selected-price__wrap" }, h("span", { class: "selected-price__price", "aria-label": wp.i18n.__('Product price', 'surecart') }, (price === null || price === void 0 ? void 0 : price.scratch_amount) > price.amount && (h(Fragment, null, h("span", { class: "selected-price__scratch-price", part: "price__scratch" }, price === null || price === void 0 ? void 0 :
+            price.scratch_display_amount, ' '))), ((_e = this.lineItem()) === null || _e === void 0 ? void 0 : _e.ad_hoc_amount) !== null ? (_f = this.lineItem()) === null || _f === void 0 ? void 0 : _f.ad_hoc_display_amount : (variant === null || variant === void 0 ? void 0 : variant.display_amount) || (price === null || price === void 0 ? void 0 : price.display_amount)), h("span", { class: "selected-price__interval", "aria-label": wp.i18n.__('Price interval', 'surecart') }, intervalString(price, {
             labels: {
                 interval: '/',
                 period: 

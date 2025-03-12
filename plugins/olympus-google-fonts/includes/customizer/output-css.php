@@ -204,6 +204,15 @@ function ogf_generate_css( $selector, $option_name ) {
  */
 function ogf_build_font_stack( $font_id ) {
 
+	// Try to get cached font stack first.
+	$cache_key    = 'ogf_font_stack_' . md5( $font_id );
+	$cached_stack = wp_cache_get( $cache_key );
+	
+	if ( $cached_stack !== false ) {
+		return $cached_stack;
+	}
+
+	// Initialize stack.
 	$stack = '';
 
 	if ( str_starts_with( $font_id, 'sf-' ) !== false ) {
@@ -239,6 +248,10 @@ function ogf_build_font_stack( $font_id ) {
 		}
 	}
 
+	// Cache the result.
+    wp_cache_set( $cache_key, $stack, 'ogf_font_stacks', HOUR_IN_SECONDS );
+    
+	// Allow filtering of the final stack.
 	return apply_filters( "ogf_{$font_id}_stack", $stack );
 }
 

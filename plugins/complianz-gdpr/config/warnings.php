@@ -10,12 +10,6 @@ function cmplz_load_warning_types() {
 			'plus_one' => true,
 			'include_in_progress' => true,
 		),
-		'upgraded_to_7' => array(
-			'warning_condition'  => 'cmplz_upgraded_to_current_version',
-			'open' => cmplz_sprintf(__( 'Complianz GDPR/CCPA %s. Learn more about our newest release.', 'complianz-gdpr' ),'7.0'),
-			'url' => 'https://complianz.io/meet-complianz-7/',
-			'admin_notice' => true,
-		),
 		'migrate_js' => array(
 			'warning_condition'  => 'get_value_enable_migrate_js==yes',
 			'open' => __( 'Migrate.js, which allowed a smooth upgrade to 6.0, has been deprecated.', 'complianz-gdpr' ),

@@ -1,7 +1,7 @@
 import { r as registerInstance, h, F as Fragment, H as Host, a as getElement } from './index-745b6bec.js';
-import { s as state$1 } from './mutations-83ea96b2.js';
-import './watchers-8dce998c.js';
-import { s as state, h as hasOtherAvailableCreditCardProcessor, d as hasMultipleProcessorChoices, e as getAvailableProcessor, a as availableProcessors, b as availableManualPaymentMethods } from './getters-09d843cb.js';
+import { s as state$1 } from './mutations-6f9b9a86.js';
+import './watchers-876133bf.js';
+import { s as state, h as hasOtherAvailableCreditCardProcessor, d as hasMultipleProcessorChoices, e as getAvailableProcessor, a as availableProcessors, b as availableManualPaymentMethods } from './getters-07c1280c.js';
 import { s as state$2 } from './watchers-38693c1f.js';
 import { M as ManualPaymentMethods, a as MockProcessor } from './MockProcessor-498b60c5.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
@@ -12,7 +12,7 @@ import './index-c5a96d53.js';
 import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
 import './store-627acec4.js';
-import './price-d5770168.js';
+import './price-7bb626d0.js';
 import './util-50af2a83.js';
 
 const scPaymentCss = ":host{display:flex !important;flex-direction:column;gap:var(--sc-input-label-margin);position:relative;font-family:var(--sc-font-sans)}.sc-payment-toggle-summary{line-height:1;display:flex;align-items:center;gap:0.5em;font-weight:var(--sc-font-weight-semibold)}.sc-payment-label{display:flex;justify-content:space-between}.sc-payment-instructions{color:var(--sc-color-gray-600);font-size:var(--sc-font-size-small);line-height:var(--sc-line-height-dense)}.sc-payment__stripe-card-element{display:flex !important;flex-direction:column;gap:var(--sc-input-label-margin);position:relative}";

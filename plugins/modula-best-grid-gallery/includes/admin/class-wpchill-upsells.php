@@ -114,7 +114,7 @@ if ( ! class_exists( 'WPChill_Upsells' ) ) {
 		 * @since 1.0.0
 		 */
 		public function get_transient( $name ){
-			return $this->slug . '_' . $name;
+			return 'wp_' . $this->slug . '_' . $name;
 		}
 
 		/**

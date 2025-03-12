@@ -34,14 +34,14 @@ const ScTab = class {
         // If the user didn't provide an ID, we'll set one so we can link tabs and tab panels with aria labels
         this.el.id = this.el.id || this.componentId;
         const Tag = this.href ? 'a' : 'div';
-        return (h(Tag, { key: '2cf5bb1143886b64d50d4e6f0b370b57a0cb8209', part: `base ${this.active ? `active` : ``}`, href: this.href, class: {
+        return (h(Tag, { key: '6d3643aacfe129679c267535b083dc69eecff3de', part: `base ${this.active ? `active` : ``}`, href: this.href, class: {
                 'tab': true,
                 'tab--active': this.active,
                 'tab--disabled': this.disabled,
                 'tab--has-prefix': this.hasPrefix,
                 'tab--has-suffix': this.hasSuffix,
                 'tab--is-rtl': isRtl(),
-            }, ref: el => (this.tab = el), role: "tab", "aria-disabled": this.disabled ? 'true' : 'false', "aria-selected": this.active ? 'true' : 'false', tabindex: this.disabled ? '-1' : '0' }, h("span", { key: '90777d24bf4e9e477481edfe9e63669211a2af44', part: "prefix", class: "tab__prefix" }, h("slot", { key: 'f2c1347884bd6e2566c4af0900143b369b6a988c', onSlotchange: () => this.handleSlotChange(), name: "prefix" })), h("div", { key: '321d33962dd136fe0bc1a7ca4a61152d2225aeda', class: "tab__content", part: "content" }, h("slot", { key: '947c15259d3835803c29165462d6a89651d1665e' })), h("span", { key: 'bd751760dab881c052e6caed0f60162c147f458e', part: "suffix", class: "tab__suffix" }, h("slot", { key: '09d10a1cb0c19156403e85be30a7ab64c2959fe6', onSlotchange: () => this.handleSlotChange(), name: "suffix" })), h("slot", { key: '4897bf8809e8ea5f8da265913da2e5cc7b8e9e73', name: "suffix" }, !!this.count && (h("div", { key: '6a0826562463e2e005de6b9313c7787f27d7feca', class: "tab__counter", part: "counter" }, this.count)))));
+            }, ref: el => (this.tab = el), role: "tab", "aria-disabled": this.disabled ? 'true' : 'false', "aria-selected": this.active ? 'true' : 'false', tabindex: this.disabled ? '-1' : '0' }, h("span", { key: 'e1aad4713ae5ac190e0078e80f3c12cf19de7223', part: "prefix", class: "tab__prefix" }, h("slot", { key: 'ef303d8316ca09d55b747cdf4ad375a0fc31aa2c', onSlotchange: () => this.handleSlotChange(), name: "prefix" })), h("div", { key: '9e54a33e99691ce2f01f8ffecf78c505b5bc3452', class: "tab__content", part: "content" }, h("slot", { key: '8490da0efdf7d6cc402fcf8f552375666affb08c' })), h("span", { key: '4e0246715722d984cc8f5e2d8012316deacc08bb', part: "suffix", class: "tab__suffix" }, h("slot", { key: '7514eb30efca985e32ab906b92dbe04487c9b560', onSlotchange: () => this.handleSlotChange(), name: "suffix" })), h("slot", { key: 'a2f018c9617e38a24dcfb29fc66f21d703314a32', name: "suffix" }, !!this.count && (h("div", { key: '3bccbf95fedea3bf993f6d6a4e04d5cd366ba7d0', class: "tab__counter", part: "counter" }, this.count)))));
     }
     get el() { return getElement(this); }
 };

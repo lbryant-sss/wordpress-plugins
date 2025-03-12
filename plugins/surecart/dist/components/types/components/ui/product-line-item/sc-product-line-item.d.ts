@@ -35,6 +35,10 @@ export declare class ScProductLineItem {
     quantity: number;
     /** Product monetary amount */
     amount: number;
+    /** Product display amount */
+    displayAmount: string;
+    /** Product scratch display amount */
+    scratchDisplayAmount: string;
     /** Product line item fees. */
     fees: Fee[];
     /** Is the setup fee not included in the free trial? */
@@ -61,6 +65,7 @@ export declare class ScProductLineItem {
     scUpdateQuantity: EventEmitter<number>;
     /** Emitted when the quantity changes. */
     scRemove: EventEmitter<void>;
+    renderAmount(): any;
     renderPriceAndInterval(): any;
     renderPurchasableStatus(): any;
     render(): any;

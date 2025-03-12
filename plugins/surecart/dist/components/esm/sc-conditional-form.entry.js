@@ -1,8 +1,8 @@
 import { r as registerInstance, h, H as Host } from './index-745b6bec.js';
 import { s as state } from './watchers-38693c1f.js';
-import { c as currentCheckout } from './getters-76e355c6.js';
+import { c as currentCheckout } from './getters-3a0d4ac0.js';
 import './index-06061d4e.js';
-import './mutations-83ea96b2.js';
+import './mutations-6f9b9a86.js';
 import './utils-cd1431df.js';
 import './remove-query-args-938c53ea.js';
 import './add-query-args-0e2a8393.js';
@@ -10,7 +10,7 @@ import './index-c5a96d53.js';
 import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
 import './store-627acec4.js';
-import './price-d5770168.js';
+import './price-7bb626d0.js';
 import './address-b892540d.js';
 
 /**
