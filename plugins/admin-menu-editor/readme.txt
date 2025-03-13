@@ -92,6 +92,7 @@ Plugins installed in the `mu-plugins` directory are treated as "always on", so y
 * Fixed a potential crash when the Zlib extension is enabled but the gzuncompress() function is disabled.
 * Fixed default redirects not being saved due to a bug in the "delete settings associated with missing roles" feature.
 * Fixed a minor conflict with Elementor that caused the hidden menu items "Elementor -> Connect" and "Elementor -> Note Proxy" to become visible.
+* Fixed a minor conflict with Post SMTP that caused the hidden menu items "Dashboard -> Welcome" and "Dashboard -> Credits" to become visible.
 * Tested with WP 6.7.2 and WP 6.8-alpha.
 * Increased minimum required WP version to 5.4.
 

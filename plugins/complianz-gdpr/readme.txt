@@ -6,7 +6,7 @@ Requires at least: 5.9
 License: GPL2
 Requires PHP: 7.4
 Tested up to: 6.7.2
-Stable tag: 7.3.0
+Stable tag: 7.3.1
 
 Configure your Cookie Banner, Cookie Consent and Cookie Policy with our Wizard and Cookie Scan.
 
@@ -198,17 +198,24 @@ The Brazilian General Data Protection Law is similar to the GDPR, the UK-GDPR it
 With some custom CSS this is possible, but we do not consider a cookie wall to be GDPR compliant, so it's not actively supported. We do, however, have the option to create a Soft Cookie Wall. Which blocks interaction with the website, but dismissing remains a possibility.
 
 == Changelog ==
+= 7.3.1 =
+* March 5th, 2025
+* Fix: removed admin redirect for cmplz_admin redirect solving issues with manageWP and forceful scan onboarding.
+* Enhancement: Add support for New Jersey, Iowa, Delaware, New Hampshire, Nebraska state privacy laws.
+* Enhancement: Email obfuscation now uses HTML entities and CSS to prevent spam bots from reading the email address.
+* Enhancement: Google Tag Manager script placement can now be dynamically set to load in the header or footer based on user preference, addressing Google Diagnostics warnings.
+* Enhancement:Small labels and descriptions adjustments.
 
 = 7.3.0 =
 * February 12th, 2025
-Enhancement: Website Scan, added services detection.
-Enhancement: Improved Omnisnippet compatibility.
-Enhancement: Removed "BETA" references on Google Consent Mode V2 to reflect its finalized status.
-Enhancement: Removed the soft cookie wall preview functionality and updated its description.
-Enhancement: Added new Tips & Tricks.
-Enhancement: Updated email field validation to allow the use of certain special characters.
-Fix: Resolved issues with vendor links by improving the parsing logic to handle commas in vendor names or URLs correctly.
-Fix: Triggered GeoIP database installation to ensure proper functionality during upgrades.
+* Enhancement: Website Scan, added services detection.
+* Enhancement: Improved Omnisnippet compatibility.
+* Enhancement: Removed "BETA" references on Google Consent Mode V2 to reflect its finalized status.
+* Enhancement: Removed the soft cookie wall preview functionality and updated its description.
+* Enhancement: Added new Tips & Tricks.
+* Enhancement: Updated email field validation to allow the use of certain special characters.
+* Fix: Resolved issues with vendor links by improving the parsing logic to handle commas in vendor names or URLs correctly.
+* Fix: Triggered GeoIP database installation to ensure proper functionality during upgrades.
 
 = 7.2.0 =
 * December 16th, 2024

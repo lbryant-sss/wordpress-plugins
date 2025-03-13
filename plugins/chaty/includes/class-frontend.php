@@ -1155,7 +1155,7 @@ class CHT_Frontend extends CHT_Admin_Base
                             $mobileTarget  = "_blank";
                         } else if ($channelType == "slack") {
                             // setting for Twitter
-                            $url           = esc_url($url);
+                            $url           = esc_url($value['value']);
                             $desktopTarget = "_blank";
                             $mobileTarget  = "_blank";
                         } else if ($channelType == "tiktok") {

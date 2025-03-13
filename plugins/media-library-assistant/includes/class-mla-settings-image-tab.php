@@ -806,10 +806,12 @@ error_log( __LINE__ . " MLA_Image_List_Table::_build_rollover_actions( {$column}
 
 		$actions['inline hide-if-no-js'] = '<a class="editinline" href="#" title="' . __( 'Edit this item inline', 'media-library-assistant' ) . '">' . __( 'Quick Edit', 'media-library-assistant' ) . '</a>';
 
-		if ( isset( $existing_sizes[ $item->slug ] ) ) {
-			$actions['delete'] = '<a class="delete-tag"' . ' href="' . add_query_arg( $view_args, MLACore::mla_nonce_url( '?mla_admin_action=' . MLACore::MLA_ADMIN_SINGLE_DELETE, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Revert to standard item', 'media-library-assistant' ) . '">' . __( 'Revert to Standard', 'media-library-assistant' ) . '</a>';
-		} else {
-			$actions['delete'] = '<a class="delete-tag"' . ' href="' . add_query_arg( $view_args, MLACore::mla_nonce_url( '?mla_admin_action=' . MLACore::MLA_ADMIN_SINGLE_DELETE, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Delete this item Permanently', 'media-library-assistant' ) . '">' . __( 'Delete Permanently', 'media-library-assistant' ) . '</a>';
+		if ( 'custom' === $item->source ) {
+			if ( isset( $existing_sizes[ $item->slug ] ) ) {
+				$actions['delete'] = '<a class="delete-tag"' . ' href="' . add_query_arg( $view_args, MLACore::mla_nonce_url( '?mla_admin_action=' . MLACore::MLA_ADMIN_SINGLE_DELETE, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Revert to standard item', 'media-library-assistant' ) . '">' . __( 'Revert to Standard', 'media-library-assistant' ) . '</a>';
+			} else {
+				$actions['delete'] = '<a class="delete-tag"' . ' href="' . add_query_arg( $view_args, MLACore::mla_nonce_url( '?mla_admin_action=' . MLACore::MLA_ADMIN_SINGLE_DELETE, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Delete this item Permanently', 'media-library-assistant' ) . '">' . __( 'Delete Permanently', 'media-library-assistant' ) . '</a>';
+			}
 		}
 
 		return $actions;

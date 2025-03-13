@@ -470,7 +470,7 @@ trait Content_AI {
 	/**
 	 * Whether to add Keyword Intent.
 	 */
-	public static function should_add_keyword_intent() {
-		return apply_filters( 'rank_math/add_keyword_intent', true );
+	public static function should_determine_search_intent() {
+		return apply_filters( 'rank_math/determine_search_intent', true );
 	}
 }

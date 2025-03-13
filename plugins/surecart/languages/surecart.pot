@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-11T19:11:39+00:00\n"
+"POT-Creation-Date: 2025-03-12T19:30:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 
@@ -177,7 +177,7 @@ msgstr ""
 #: src/BlockLibrary/ProductSelectedPriceMigrationService.php:57
 #: src/Integrations/Bricks/Elements/SaleBadge.php:71
 #: Blocks/Product/Price/replace.js:82
-#: sc-price2.js:59
+#: sc-price2.js:60
 msgid "Sale"
 msgstr ""
 
@@ -2113,7 +2113,7 @@ msgid "Edit Upsell"
 msgstr ""
 
 #: src/Controllers/Admin/Upsells/UpsellsListTable.php:249
-#: src/Controllers/Web/UpsellPageController.php:53
+#: src/Controllers/Web/UpsellPageController.php:55
 #: upsell-funnels/EditFunnel.js:220
 msgid "Edit Upsell Funnel"
 msgstr ""
@@ -2891,7 +2891,7 @@ msgstr ""
 #: products/modules/Prices/Price/Header.js:130
 #: sc-price-choice-container2.js:52
 #: sc-price-choice.js:806
-#: sc-price2.js:31
+#: sc-price2.js:32
 #: sc-recurring-price-choice-container2.js:77
 msgid "Custom Amount"
 msgstr ""
@@ -3191,7 +3191,7 @@ msgstr ""
 #: checkouts/modules/SelectShipping.js:130
 #: invoices/modules/SelectShipping.js:95
 #: sc-order-bump2.js:69
-#: sc-price2.js:33
+#: sc-price2.js:34
 #: sc-shipping-choices2.js:69
 #: sc-upsell-totals.js:20
 msgid "Free"
@@ -3422,7 +3422,7 @@ msgstr ""
 
 #. translators: %s is the number of days.
 #: src/Models/Price.php:195
-#: sc-price2.js:59
+#: sc-price2.js:60
 msgid "Starting in %s day."
 msgid_plural "Starting in %s days."
 msgstr[0] ""
@@ -3439,7 +3439,7 @@ msgstr ""
 #: src/blocks/product-selected-price-fees/edit.js:16
 #: sc-price-choice-container2.js:72
 #: sc-price-choice.js:817
-#: sc-price2.js:59
+#: sc-price2.js:60
 #: sc-recurring-price-choice-container2.js:86
 msgid "Setup Fee"
 msgstr ""
@@ -12676,7 +12676,7 @@ msgstr ""
 #: price.js:32
 #: price.js:65
 #: sc-price-choice-container2.js:57
-#: sc-price2.js:41
+#: sc-price2.js:42
 msgid "every"
 msgstr ""
 
@@ -23154,8 +23154,8 @@ msgstr ""
 #: sc-price-choice-container2.js:69
 #: sc-price-choice.js:790
 #: sc-price-choice.js:814
-#: sc-price2.js:44
-#: sc-price2.js:57
+#: sc-price2.js:45
+#: sc-price2.js:58
 #: sc-product-price-choices.js:28
 #: sc-product-selected-price.js:78
 #: sc-recurring-price-choice-container2.js:54
@@ -23417,12 +23417,12 @@ msgid "Premium"
 msgstr ""
 
 #: sc-price-choice-container2.js:53
-#: sc-price2.js:33
+#: sc-price2.js:34
 msgid "This is a repeating price. Payment will happen"
 msgstr ""
 
 #: sc-price-choice-container2.js:71
-#: sc-price2.js:59
+#: sc-price2.js:60
 msgid "You have a %d-day trial before payment becomes necessary."
 msgstr ""
 
@@ -23446,19 +23446,19 @@ msgstr ""
 msgid "Price range from"
 msgstr ""
 
-#: sc-price2.js:33
+#: sc-price2.js:34
 msgid "The price was"
 msgstr ""
 
-#: sc-price2.js:33
+#: sc-price2.js:34
 msgid "now discounted to"
 msgstr ""
 
-#: sc-price2.js:59
+#: sc-price2.js:60
 msgid "This product is available for sale."
 msgstr ""
 
-#: sc-price2.js:59
+#: sc-price2.js:60
 msgid "This product has"
 msgstr ""
 

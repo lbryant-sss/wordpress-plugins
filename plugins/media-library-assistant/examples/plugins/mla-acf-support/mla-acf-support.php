@@ -7,7 +7,7 @@
  * https://wordpress.org/support/topic/apply-mla-taxonomy-picker-to-an-acf-gallery-field/
  *
  * @package MLA ACF Support
- * @version 1.01
+ * @version 1.02
  */
 
 /*
@@ -15,7 +15,7 @@ Plugin Name: MLA ACF Support
 Plugin URI: http://davidlingren.com/
 Description: Adds MLA-style taxonomy to the ACF Gallery custom field handler.
 Author: David Lingren
-Version: 1.01
+Version: 1.02
 Author URI: http://davidlingren.com/
 
 Copyright 2025 David Lingren
@@ -48,7 +48,7 @@ class MLAACFSupport {
 	 *
 	 * @var	string
 	 */
-	const PLUGIN_VERSION = '1.01';
+	const PLUGIN_VERSION = '1.02';
 
 	/**
 	 * Slug prefix for registering and enqueueing submenu pages, style sheets, scripts and settings
@@ -191,8 +191,9 @@ class MLAACFSupport {
 		if ( ! is_admin() )
 			return;
 
-		if ( ( ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_MODAL_TOOLBAR ) )
-			 || ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_GRID_TOOLBAR ) ) ) ) {
+		if ( ( 'checked' === MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_MODAL_TOOLBAR ) ) && 
+			 ( ( 'checked' === MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX ) )
+			 || ( 'checked' === MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_MODAL_DETAILS_TAG_METABOX ) ) ) ) {
 			add_filter( 'mla_media_modal_settings', 'MLAACFSupport::mla_media_view_settings_filter', 10, 2 );
 			add_filter( 'mla_media_modal_strings', 'MLAACFSupport::mla_media_view_strings_filter', 10, 2 );
 			add_action( 'wp_enqueue_media', 'MLAACFSupport::mla_wp_enqueue_media_action', 10, 0 );
@@ -232,8 +233,14 @@ class MLAACFSupport {
 	 * @return	array	updated $settings array
 	 */
 	public static function mla_media_view_settings_filter( $settings, $post ) {
+		if ( empty( $post ) ) {
+			$post_id = 0;
+		} else {
+			$post_id = $post->ID;
+		}
+
 		$settings = array_merge( $settings, array( 'mla_acf_settings' => array( 'placeholder' => 'Placeholder' ) ) );
-		MLACore::mla_debug_add( __LINE__ . " MLAACFSupport::mla_media_view_settings_filter( {$post->ID} ) settings = " . var_export( $settings, true ), ( self::MLA_DEBUG_CATEGORY | MLACore::MLA_DEBUG_CATEGORY_MMMW ) );
+		MLACore::mla_debug_add( __LINE__ . " MLAACFSupport::mla_media_view_settings_filter( {$post_id} ) settings = " . var_export( $settings, true ), ( self::MLA_DEBUG_CATEGORY | MLACore::MLA_DEBUG_CATEGORY_MMMW ) );
 		return $settings;
 	} // mla_mla_media_view_settings_filter
 
@@ -248,8 +255,14 @@ class MLAACFSupport {
 	 * @return	array	updated $strings array
 	 */
 	public static function mla_media_view_strings_filter( $strings, $post ) {
+		if ( empty( $post ) ) {
+			$post_id = 0;
+		} else {
+			$post_id = $post->ID;
+		}
+
 		$strings = array_merge( $strings, array( 'mla_acf_strings' => array( 'placeholder' => 'Placeholder' ) ) );
-		MLACore::mla_debug_add( __LINE__ . " MLAACFSupport::mla_media_view_strings_filter( {$post->ID} ) strings = " . var_export( $strings, true ), ( self::MLA_DEBUG_CATEGORY | MLACore::MLA_DEBUG_CATEGORY_MMMW ) );
+		MLACore::mla_debug_add( __LINE__ . " MLAACFSupport::mla_media_view_strings_filter( {$post_id} ) strings = " . var_export( $strings, true ), ( self::MLA_DEBUG_CATEGORY | MLACore::MLA_DEBUG_CATEGORY_MMMW ) );
 		return $strings;
 	} // mla_mla_media_view_strings_filter
 
@@ -263,7 +276,7 @@ class MLAACFSupport {
 	private static function _script_version() {
 		$script_version =  self::PLUGIN_VERSION;
 		$script_version .=  ( strlen( MLACore::MLA_DEVELOPMENT_VERSION ) ) ? '.' . MLACore::MLA_DEVELOPMENT_VERSION : '';
-		
+
 		return $script_version;
 	}
 
@@ -330,10 +343,6 @@ class MLAACFSupport {
 	 * @return	array	updated descriptors for the "compat-attachment-fields"
 	 */
 	public static function mla_attachment_fields_to_edit_filter( $form_fields, $post ) {
-		if ( ! isset( $form_fields['acf-form-data'] ) ) {
-			//return $form_fields;
-		}
-
 		// This logic is only required for the ACF Gallery custom field blocks
 		if ( ! isset( $_REQUEST['action'] ) || 'acf/fields/gallery/get_attachment' !== $_REQUEST['action'] ) {
 			return $form_fields;
@@ -345,6 +354,7 @@ class MLAACFSupport {
 
 		$post_id = $post->ID;
 		$mla_form_data = '';
+		$taxonomies = array();
 		foreach ( get_taxonomies( array ( 'show_ui' => true ), 'objects' ) as $key => $value ) {
 			if ( MLACore::mla_taxonomy_support( $key ) ) {
 				$label = $value->labels->name;
@@ -407,13 +417,15 @@ class MLAACFSupport {
 				$row .= "\t\t</td>\n";
 				$row .= "\t\t</tr>\n";
 				$mla_form_data .= $row;
+				$taxonomies[] = $key;
 			} // is supported
 		} // foreach
 
 		if ( ! empty( $mla_form_data ) ) {
 			$mla_form_data = "\t<table>\n" . $mla_form_data . "\t</table>\n";
-	
+
 			if ( isset( $form_fields['acf-form-data'] ) ) {
+				MLACore::mla_debug_add( __LINE__ . " MLAACFSupport::mla_attachment_fields_to_edit_filter( {$post_id} ) adding to acf-form-data for taxonomies = " . var_export( $taxonomies, true ), ( self::MLA_DEBUG_CATEGORY | MLACore::MLA_DEBUG_CATEGORY_MMMW ) );
 				$acf_html = $form_fields['acf-form-data']['html'];
 				$offset = strpos( $acf_html, '<tr class="compat-field-acf-blank' );
 				if ( $offset ) {
@@ -448,6 +460,8 @@ class MLAACFSupport {
 					'input' => 'html',
 					'html'  => $html,
 				);
+
+				MLACore::mla_debug_add( __LINE__ . " MLAACFSupport::mla_attachment_fields_to_edit_filter( {$post_id} ) creating acf-form-data for taxonomies = " . var_export( $taxonomies, true ), ( self::MLA_DEBUG_CATEGORY | MLACore::MLA_DEBUG_CATEGORY_MMMW ) );
 			}
 		}
 

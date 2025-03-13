@@ -108,12 +108,13 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_sizes() adding {$slug}, c
 					update_option( $slug . '_size_h', absint( $value['height'] ) );
 
 					if ( ! empty( $crop ) ) {
-						update_option( $slug . '_crop', $crop );
+						// WordPress does not allow arrays in its crop settings
+						update_option( $slug . '_crop', 1 );
 					} else {
 						update_option( $slug . '_crop', '' );
 					}
 				}
-			}
+			} // source === custom
 		}
 	} // mla_setup_image_sizes
 
@@ -286,6 +287,7 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 		}
 
 		$clean_request = array (
+			'source' => '',
 			'orderby' => 'slug',
 			'order' => 'ASC',
 			's' => ''
@@ -293,6 +295,9 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 
 		foreach ( $raw_request as $key => $value ) {
 			switch ( $key ) {
+				case 'source':
+					$clean_request['source'] = sanitize_title( strtolower( $value ) );
+					break;
 				case 'orderby':
 					if ( 'none' === $value ) {
 						$clean_request[ $key ] = $value;
@@ -345,6 +350,7 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 		}
 
 		// Sort and filter the list
+		$source = isset( $request['source'] ) ? $request['source'] : '';
 		$keyword = isset( $request['s'] ) ? $request['s'] : '';
 		$index = 0;
 		$sorted_types = array();
@@ -364,6 +370,10 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 				if ( ! $found ) {
 					continue;
 				}
+			}
+
+			if ( ! empty( $source ) && ( $source !== $value['source'] ) ) {
+				continue;
 			}
 
 			$value['slug'] = $slug;
@@ -454,8 +464,16 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 	 *
 	 * @return	array	MLA post_mime_type objects
 	 */
-	public static function mla_query_image_size_items( $request, $offset, $count ) {
-		$request = self::_prepare_image_size_items_query( $request, $offset, $count );
+	public static function mla_query_image_size_items( $request, $offset = NULL, $count = NULL ) {
+		if ( ! empty( $offset ) ) {
+			$request['offset'] = $offset;
+		}
+
+		if ( ! empty( $count ) ) {
+			$request['posts_per_page'] = $count;
+		}
+
+		$request = self::_prepare_image_size_items_query( $request );
 		$results = self::_execute_image_size_items_query( $request );
 		return $results;
 	}
@@ -512,9 +530,32 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 	 *		}
 	 * } $all_sizes
 	 */
-	public static function mla_get_registered_image_subsizes() {
+	public static function mla_get_registered_image_subsizes( $delete_slug = '') {
 		self::$disable_mla_filtering = true;
+		$custom_sizes = MLACore::mla_get_option( MLACoreOptions::MLA_IMAGE_SIZES, false, true );
+		$original_settings = NULL;
+		if ( isset( $custom_sizes[ $delete_slug ] ) ) {
+			if ( isset( $custom_sizes[ $delete_slug ]['original_settings'] ) ) {
+				$original_settings = $custom_sizes[ $delete_slug ]['original_settings'];
+			}
+			
+			unset( $custom_sizes[ $delete_slug ] );
+		}
+error_log( __LINE__ . " MLAImage_Size::mla_get_registered_image_subsizes( {$delete_slug} ) custom_sizes = " . var_export( $custom_sizes, true ), 0 );
+error_log( __LINE__ . " MLAImage_Size::mla_get_registered_image_subsizes( {$delete_slug} ) original_settings = " . var_export( $original_settings, true ), 0 );
+
 		$additional_sizes = wp_get_additional_image_sizes();
+		if ( isset( $additional_sizes[ $delete_slug ] ) ) {
+			if ( ! empty( $original_settings ) && ( 'other' === $original_settings['source'] ) ) {
+				$additional_sizes[ $delete_slug ]['width'] = $original_settings['width'];
+				$additional_sizes[ $delete_slug ]['height'] = $original_settings['height'];
+				$additional_sizes[ $delete_slug ]['crop'] = $original_settings['crop'];
+			} else {
+				unset( $additional_sizes[ $delete_slug ] );
+			}
+		}
+error_log( __LINE__ . " MLAImage_Size::mla_get_registered_image_subsizes( {$delete_slug} ) additional_sizes = " . var_export( $additional_sizes, true ), 0 );
+
 		$all_sizes        = array();
 
 		/** This filter is documented in wp-admin/includes/media.php */
@@ -540,7 +581,11 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 				'description' => '',
 				'source' => 'core',
 			);
-	
+
+			if ( isset( $custom_sizes[ $size_slug ] ) ) {
+				continue;
+			}
+
 			if ( isset( $size_names[ $size_slug ] ) ) {
 				// For sizes added by WordPress, plugins and themes.
 				$size_data['name'] = $size_names[ $size_slug ];
@@ -583,6 +628,7 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 				$size_data['source'] = 'other';
 			}
 
+error_log( __LINE__ . " MLAImage_Size::mla_get_registered_image_subsizes( {$size_slug}, {$delete_slug} ) size_data = " . var_export( $size_data, true ), 0 );
 			$all_sizes[ $size_slug ] = $size_data;
 		}
 	
@@ -596,16 +642,17 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 	 * @since 3.25
 	 *
 	 * @param	boolean	Force a reload/recalculation of types
+	 * @param	slug of deleted (custom) item
 	 *
 	 * @return	boolean	Success (true) or failure (false) of the operation
 	 */
-	private static function _get_image_size_templates( $force_refresh = false ) {
+	private static function _get_image_size_templates( $force_refresh = false, $delete_slug = '' ) {
 		if ( false === $force_refresh && NULL !== self::$mla_image_size_templates ) {
 			return true;
 		}
 
 		// Find the existing core and other sizes
-		$existing_sizes = self::mla_get_registered_image_subsizes();
+		$existing_sizes = self::mla_get_registered_image_subsizes( $delete_slug );
 //error_log( __LINE__ . " MLAImage_Size::_get_image_size_templates( {$force_refresh} ) existing_sizes = " . var_export( $existing_sizes, true ), 0 );
 		if ( ! is_array( $existing_sizes ) ) {
 			$existing_sizes = array ();
@@ -615,6 +662,10 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 		$custom_sizes = MLACore::mla_get_option( MLACoreOptions::MLA_IMAGE_SIZES, false, true );
 //error_log( __LINE__ . " MLAImage_Size::_get_image_size_templates( {$force_refresh} ) custom_sizes = " . var_export( $custom_sizes, true ), 0 );
 		if ( is_array( $custom_sizes ) ) {
+			if ( isset( $custom_sizes[ $delete_slug ] ) ) {
+				unset( $custom_sizes[ $delete_slug ] );
+			}
+
 			$all_sizes = array_merge( $existing_sizes, $custom_sizes );
 		} else {
 			$all_sizes = $existing_sizes;
@@ -763,6 +814,7 @@ error_log( __LINE__ . ' mla_add_image_size request -= ' . var_export( $request, 
 
 		$messages = '';
 		$errors = '';
+		$original_settings = NULL;
 		$slug = sanitize_title( $request['slug'] );
 		$original_slug = isset( $request['original_slug'] ) ? $request['original_slug'] : $slug;
 		unset( $request['original_slug'] );
@@ -770,6 +822,12 @@ error_log( __LINE__ . ' mla_add_image_size request -= ' . var_export( $request, 
 		if ( isset( self::$mla_image_size_templates[ $original_slug ] ) ) {
 			$original_size = self::$mla_image_size_templates[ $original_slug ];
 			unset( $original_size['post_ID'] );
+
+			// If changing a core size, preserve the original settings
+			if ( isset( $original_size['original_settings'] ) && ( $slug === $original_slug ) ) {
+				$original_settings = $original_size['original_settings'];
+				unset( $original_size['original_settings'] );
+			}
 		} else {
 			$original_size = array(
 				'name'  => '',
@@ -784,6 +842,7 @@ error_log( __LINE__ . ' mla_add_image_size request -= ' . var_export( $request, 
 			);
 		}
 error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$original_slug} ) original_size = " . var_export( $original_size, true ), 0 );
+error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$original_slug} ) original_settings = " . var_export( $original_settings, true ), 0 );
 
 		// Validate changed slug value
 		if ( $slug !== $original_slug ) {
@@ -799,6 +858,8 @@ error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$origina
 			} else {
 				/* translators: 1: element name 2: old_value 3: new_value */
 				$messages .= sprintf( '<br>' . __( 'Changing %1$s from "%2$s" to "%3$s"', 'media-library-assistant' ), __( 'Slug', 'media-library-assistant' ), $original_slug, $slug );
+
+			$original_settings = NULL;
 			}
 		}
 
@@ -844,7 +905,6 @@ error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$origina
 		$new_size['description'] = sanitize_text_field( $request['description'] );
 		$new_size['source'] = 'custom';
 
-error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$original_slug} ) new_size = " . var_export( $new_size, true ), 0 );
 		if ( ( $slug === $original_slug ) && ( $original_size === $new_size ) ) {
 			return array(
 				/* translators: 1: slug */
@@ -853,6 +913,19 @@ error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$origina
 			);
 		}
 
+		// Preserve the original source settings
+		if ( ! empty( $original_settings ) ) {
+			$new_size['original_settings'] = $original_settings;
+		} elseif ( ( 'custom' !== $original_size['source'] )  && ( $slug === $original_slug ) ) {
+			$new_size['original_settings'] = array (
+				'width'  => $original_size['width'],
+				'height' => $original_size['height'],
+				'crop'   => $original_size['crop'],
+				'source'   => $original_size['source'],
+			);
+		}
+
+error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$original_slug} ) new_size = " . var_export( $new_size, true ), 0 );
 		self::$mla_image_size_templates[ $slug ] = $new_size;
 
 		if ( $slug !== $original_slug ) {
@@ -929,11 +1002,27 @@ error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$origina
 		}
 
 		if ( isset( self::$mla_image_size_templates[ $slug ] ) ) {
-			unset( self::$mla_image_size_templates[ $slug ] );
-			self::_put_image_size_templates();
+			// Restore original option settings for core sizes
+			if ( ! empty( self::$mla_image_size_templates[ $slug ]['original_settings'] ) ) {
+				$original_settings = self::$mla_image_size_templates[ $slug ]['original_settings'];
+
+				if ( in_array( $slug, array( 'thumbnail', 'medium', 'medium_large', 'large' ) ) ) {
+					update_option( $slug . '_size_w', absint( $original_settings['width'] ) );
+					update_option( $slug . '_size_h', absint( $original_settings['height'] ) );
+
+					if ( ! empty( $original_settings['crop'] ) ) {
+						// WordPress does not allow arrays in its crop settings
+						update_option( $slug . '_crop', 1 );
+					} else {
+						update_option( $slug . '_crop', '' );
+					}
+				}
+			}
+
+			self::_get_image_size_templates( true, $slug );
+error_log( __LINE__ . " MLAImage_Size::mla_delete_image_size( {$slug} ) sizes = " . var_export( self::$mla_image_size_templates, true ), 0 );
 			self::_get_image_size_templates( true );
 error_log( __LINE__ . " MLAImage_Size::mla_delete_image_size( {$slug} ) sizes = " . var_export( self::$mla_image_size_templates, true ), 0 );
-
 			if ( isset( self::$mla_image_size_templates[ $slug ] ) ) {
 				return array(
 					/* translators: 1: slug */

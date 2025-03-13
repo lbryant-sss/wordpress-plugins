@@ -24,6 +24,8 @@ export declare class ScProductPrice {
     recurringInterval: 'week' | 'month' | 'year' | 'never';
     /** The setup fee amount */
     setupFeeAmount: number;
+    /** The setup fee text */
+    setupFeeText: string;
     /** The trial duration days */
     trialDurationDays: number;
     /** The setup fee name */

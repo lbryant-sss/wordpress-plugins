@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 /** Actions *************************************************************/
 add_action( 'wpbd_delete_comments_form', 'wpdb_render_delete_comments_status' );
+add_action( 'wpbd_delete_comments_form', 'wpdb_render_delete_comments_type' );
 add_action( 'wpbd_delete_comments_form', 'wpdb_render_delete_comments_users' );
 add_action( 'wpbd_delete_comments_form', 'wpdb_render_delete_comments_posts' );
 add_action( 'wpbd_delete_comments_form', 'wpdb_render_delete_comments_date_interval' );
@@ -84,6 +85,7 @@ function xt_delete_comments_form_process( $data ) {
  * @return void
  */
 function wpdb_render_delete_comments_status(){
+    global $wpdb;
     $comment_status = array(
         'moderated' => esc_attr__( 'Pending Comments', 'wp-bulk-delete'),
         'spam' => esc_attr__( 'Spam Comments', 'wp-bulk-delete'),
@@ -106,7 +108,7 @@ function wpdb_render_delete_comments_status(){
                 <path d="M16.59 8.29492L12 12.8749L7.41 8.29492L6 9.70492L12 15.7049L18 9.70492L16.59 8.29492Z" fill="currentColor"></path>
             </svg>
         </div>
-        <div class="content"  aria-expanded="true" style="gap:0;" >
+        <div class="content"  aria-expanded="true" >
             <div class="wpbd-inner-main-section">
                 <div class="wpbd-inner-section-1" >
                     <span class="wpbd-title-text" >
@@ -126,8 +128,16 @@ function wpdb_render_delete_comments_status(){
                 </div>
                 <div class="wpbd-inner-section-2">
                     <?php
-                        //get comments counts
-                        $get_counts = wp_count_comments();
+                        $get_counts = $wpdb->get_results( "SELECT comment_approved AS status, COUNT(*) AS count FROM {$wpdb->comments} GROUP BY comment_approved" );
+                        
+                        $comment_status_counts = array();
+                        // Loop through the results to build a dynamic array
+                        if ( ! empty( $get_counts ) ) {
+                            foreach ( $get_counts as $status_data ) {
+                                $status_data->status = ($status_data->status == '0') ? 'moderated' : (($status_data->status == '1') ? 'approved' : $status_data->status);
+                                $comment_status_counts[ $status_data->status ] = intval( $status_data->count );
+                            }
+                        }
 
                         if( ! empty( $comment_status ) ){
                             foreach ($comment_status as $comment_status_value => $comment_status_name ) {
@@ -135,7 +145,7 @@ function wpdb_render_delete_comments_status(){
                                 <div>
                                     <input name="delete_comment_status[]" class="delete_comment_status" id="comment_status_<?php echo esc_attr__( $comment_status_value ); ?>" type="checkbox" value="<?php echo esc_attr__( $comment_status_value ); ?>" >
                                     <span for="comment_status_<?php echo esc_attr__( $comment_status_value ); ?>">
-                                        <?php echo esc_attr__( $comment_status_name ) . ' ' . sprintf( esc_attr__( '( %s Comment(s) )', 'wp-bulk-delete' ), esc_attr__( $get_counts->$comment_status_value ) ); ?>
+                                    <?php echo esc_attr__( $comment_status_name ) . ' ' . sprintf( esc_attr__( '( %s Comment(s) )', 'wp-bulk-delete' ), isset( $comment_status_counts[$comment_status_value] ) ? esc_attr__( $comment_status_counts[$comment_status_value] ) : '0' ); ?>
                                     </span>
                                 </div>
                             <?php
@@ -144,6 +154,56 @@ function wpdb_render_delete_comments_status(){
                     ?>
                 </div>
             </div>
+        </div>
+    </div>
+    <?php
+}
+
+
+/**
+ * Render Comment Type Dropdown.
+ *
+ * @since 1.1.0
+ * @return void
+ */
+function wpdb_render_delete_comments_type(){
+    global $wpdb;
+    ?>
+    <div class="wpbd-card" >
+        <div class="header toggles" >
+            <div class="text" >
+                <div class="header-icon" ></div>
+                <div class="header-title" >
+                    <span><?php esc_html_e('Comment Type ','wp-bulk-delete');  if( !wpbd_is_pro() ){ echo '<div class="wpbd-pro-badge"> PRO </div>'; } ?></span>
+                </div>
+                <div class="header-extra" ></div>
+            </div>
+            <svg viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg" class="wpbd-caret">
+                <path d="M16.59 8.29492L12 12.8749L7.41 8.29492L6 9.70492L12 15.7049L18 9.70492L16.59 8.29492Z" fill="currentColor"></path>
+            </svg>
+        </div>
+        <div class="content"  aria-expanded="false" style="display:none;" >
+            <?php 
+                if( wpbd_is_pro() && class_exists( 'WP_Bulk_Delete_Pro_Common' ) ){
+                        $wpdb->common_pro->wpdb_render_delete_comments_types_pro();
+                }else{
+                    ?>
+                        <div class="wpbd-blur-filter" >
+                            <div class="wpbd-blur" >
+                                <div class="wpbd-blur-filter-option">
+                                    <?php
+                                        wpdb_render_delete_comments_types();
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="wpbd-blur-filter-cta" >
+                                <span style="color: red"><?php echo esc_html_e( 'Available in Pro version.', 'wp-bulk-delete' ); ?> </span><a href="<?php echo esc_url(WPBD_PLUGIN_BUY_NOW_URL); ?>"><?php echo esc_html_e( 'Buy Now', 'wp-bulk-delete' ); ?></a>
+                            </div>
+                        </div>
+                    <?php
+                }
+            ?>
         </div>
     </div>
     <?php
@@ -412,6 +472,26 @@ function wpbd_render_delete_comment_author(){
             </select>
         </div>
     </div>
+    <?php
+}
+
+/**
+ * Render Comment Author
+ */
+function wpdb_render_delete_comments_types(){
+    ?>
+        <div class="wpbd-inner-main-section">
+            <div class="wpbd-inner-section-1" >
+                <span class="wpbd-title-text" >
+                    <?php esc_html_e('Comment Type ','wp-bulk-delete'); ?>
+                </span>
+            </div>
+            <div class="wpbd-inner-section-2">
+                <select name="sample1" class="comment_author" disabled="disabled" >
+                    <option value=""><?php esc_attr_e( 'Select Comment Type', 'wp-bulk-delete' ); ?></option>
+                </select>
+            </div>
+        </div>
     <?php
 }
 

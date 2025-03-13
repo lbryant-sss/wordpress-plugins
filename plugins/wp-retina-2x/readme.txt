@@ -5,7 +5,7 @@ Donate link: https://www.patreon.com/meowapps
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 7.0.1
+Stable tag: 7.0.2
 
 Optimize your images effortlessly. Replace, regenerate, resize, upscale, improve, transform, and achieve perfect images for your site.
 
@@ -61,6 +61,11 @@ Disable WordPress’ automatic scaling of large images, preventing files with "-
 3. Navigate to the plugin settings to configure your preferences.
 
 == Changelog ==
+
+= 7.0.2 (2025/03/12) =
+* Update: Added a check for WebP and AVIF support before using GD and Imagick.
+* Fix: Corrected a typo for better accuracy.
+* Add: Implemented an Imagick handler for WebP and AVIF conversion.
 
 = 7.0.1 (2025/02/17) =
 * Update: Adjusted rendering to align with React 18 deprecation changes.

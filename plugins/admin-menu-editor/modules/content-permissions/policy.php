@@ -393,8 +393,24 @@ class PolicyStore {
 
 class Action implements \JsonSerializable {
 	protected $name;
-	protected $label;
-	protected $description;
+
+	/**
+	 * @var string|null
+	 */
+	protected $label = null;
+	/**
+	 * @var null|callable
+	 */
+	protected $labelGenerator = null;
+
+	/**
+	 * @var string|null
+	 */
+	protected $description = null;
+	/**
+	 * @var null|callable
+	 */
+	protected $descriptionGenerator = null;
 
 	const OBJECT_TYPE_POST = 'post';
 	const OBJECT_TYPE_TERM = 'term';
@@ -408,16 +424,32 @@ class Action implements \JsonSerializable {
 	/**
 	 * @param string $name
 	 * @param array $supportedObjectTypes
-	 * @param string $label
-	 * @param string $description
+	 * @param string|callable $label
+	 * @param string|callable $description
 	 * @param string|null $postMetaCap
 	 */
-	public function __construct($name, array $supportedObjectTypes, $label, $description = '', $postMetaCap = null) {
+	public function __construct(
+		$name,
+		array $supportedObjectTypes,
+		$label,
+		$description = '',
+		$postMetaCap = null
+	) {
 		$this->name = $name;
-		$this->label = $label;
-		$this->description = $description;
 		$this->supportedObjectTypes = $supportedObjectTypes;
 		$this->postMetaCap = $postMetaCap;
+
+		if ( is_string($label) ) {
+			$this->label = $label;
+		} else if ( $label !== null ) {
+			$this->labelGenerator = $label;
+		}
+
+		if ( is_string($description) ) {
+			$this->description = $description;
+		} else if ( $description !== null ) {
+			$this->descriptionGenerator = $description;
+		}
 	}
 
 	/**
@@ -431,6 +463,9 @@ class Action implements \JsonSerializable {
 	 * @return string
 	 */
 	public function getLabel() {
+		if ( ($this->label === null) && is_callable($this->labelGenerator) ) {
+			$this->label = call_user_func($this->labelGenerator);
+		}
 		return $this->label;
 	}
 
@@ -438,6 +473,9 @@ class Action implements \JsonSerializable {
 	 * @return string
 	 */
 	public function getDescription() {
+		if ( ($this->description === null) && is_callable($this->descriptionGenerator) ) {
+			$this->description = call_user_func($this->descriptionGenerator);
+		}
 		return $this->description;
 	}
 
@@ -487,38 +525,50 @@ class ActionRegistry {
 		$this->addAction(new Action(
 			self::ACTION_READ,
 			[Action::OBJECT_TYPE_POST, Action::OBJECT_TYPE_TERM,],
-			_x('Read', 'content permissions: action name', 'admin-menu-editor'),
+			function () {
+				return _x('Read', 'content permissions: action name', 'admin-menu-editor');
+			},
 			'',
 			'read_post'
 		));
 		$this->addAction(new Action(
 			self::ACTION_VIEW_IN_LISTS,
 			[Action::OBJECT_TYPE_POST, Action::OBJECT_TYPE_TERM],
-			_x('View in lists', 'content permissions: action name', 'admin-menu-editor'),
-			__(
-				'Applies to places like the post list in the admin dashboard and archive pages on the front end.',
-				'admin-menu-editor'
-			),
+			function () {
+				return _x('View in lists', 'content permissions: action name', 'admin-menu-editor');
+			},
+			function () {
+				return __(
+					'Applies to places like the post list in the admin dashboard and archive pages on the front end.',
+					'admin-menu-editor'
+				);
+			},
 			'read_post'
 		));
 		$this->addAction(new Action(
 			self::ACTION_EDIT,
 			[Action::OBJECT_TYPE_POST, Action::OBJECT_TYPE_TERM],
-			_x('Edit', 'content permissions: action name', 'admin-menu-editor'),
+			function () {
+				return _x('Edit', 'content permissions: action name', 'admin-menu-editor');
+			},
 			'',
 			'edit_post'
 		));
 		$this->addAction(new Action(
 			self::ACTION_DELETE,
 			[Action::OBJECT_TYPE_POST, Action::OBJECT_TYPE_TERM],
-			_x('Delete', 'content permissions: action name', 'admin-menu-editor'),
+			function () {
+				return _x('Delete', 'content permissions: action name', 'admin-menu-editor');
+			},
 			'',
 			'delete_post'
 		));
 		$this->addAction(new Action(
 			self::ACTION_PUBLISH,
 			[Action::OBJECT_TYPE_POST],
-			_x('Publish', 'content permissions: action name', 'admin-menu-editor'),
+			function () {
+				return _x('Publish', 'content permissions: action name', 'admin-menu-editor');
+			},
 			'',
 			'publish_post'
 		));

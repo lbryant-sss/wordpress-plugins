@@ -1605,7 +1605,16 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			return $this->cached_custom_menu;
 		}
 
-		//Modules may include custom hooks that change how menu settings are loaded, so we need to load active modules
+		//Modules should not do anything in their constructor that immediately triggers a menu load.
+		//The menu configuration might not load correctly if all active modules have not been loaded
+		//first (see below).
+		if ( $this->is_loading_modules ) {
+			throw new LogicException(
+				'Modules should not immediately trigger a menu configuration load. This is a bug or plugin conflict.'
+			);
+		}
+
+		//Modules can register custom hooks that change how menu settings are loaded, so we need to load active modules
 		//before we load the menu configuration. Usually that happens automatically, but there are some plugins that
 		//trigger AME filters that need menu data before modules would normally be loaded.
 		if ( !$this->are_modules_loaded ) {

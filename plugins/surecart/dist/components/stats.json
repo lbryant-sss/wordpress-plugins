@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-03-11T19:07:34",
+  "timestamp": "2025-03-12T19:26:49",
   "compiler": {
     "name": "node",
     "version": "16.20.2"
@@ -3326,8 +3326,6 @@
           "./dist/surecart/p-36e59877.entry.js.map",
           "./dist/surecart/p-3884d595.entry.js",
           "./dist/surecart/p-3884d595.entry.js.map",
-          "./dist/surecart/p-3896ae49.entry.js",
-          "./dist/surecart/p-3896ae49.entry.js.map",
           "./dist/surecart/p-3918a0cc.js",
           "./dist/surecart/p-3918a0cc.js.map",
           "./dist/surecart/p-393cb717.js",
@@ -3408,6 +3406,8 @@
           "./dist/surecart/p-6ac8a168.entry.js.map",
           "./dist/surecart/p-6cbad57b.entry.js",
           "./dist/surecart/p-6cbad57b.entry.js.map",
+          "./dist/surecart/p-6f847baf.entry.js",
+          "./dist/surecart/p-6f847baf.entry.js.map",
           "./dist/surecart/p-6f9e2726.entry.js",
           "./dist/surecart/p-6f9e2726.entry.js.map",
           "./dist/surecart/p-715ed809.entry.js",
@@ -3500,6 +3500,8 @@
           "./dist/surecart/p-9f02ebaa.entry.js.map",
           "./dist/surecart/p-a15af810.entry.js",
           "./dist/surecart/p-a15af810.entry.js.map",
+          "./dist/surecart/p-a18c221f.entry.js",
+          "./dist/surecart/p-a18c221f.entry.js.map",
           "./dist/surecart/p-a1fef032.entry.js",
           "./dist/surecart/p-a1fef032.entry.js.map",
           "./dist/surecart/p-a2a36669.entry.js",
@@ -3622,8 +3624,6 @@
           "./dist/surecart/p-f09ee70b.js.map",
           "./dist/surecart/p-f0a07296.entry.js",
           "./dist/surecart/p-f0a07296.entry.js.map",
-          "./dist/surecart/p-f2efac35.entry.js",
-          "./dist/surecart/p-f2efac35.entry.js.map",
           "./dist/surecart/p-f3136eb4.entry.js",
           "./dist/surecart/p-f3136eb4.entry.js.map",
           "./dist/surecart/p-f4a54cb4.entry.js",
@@ -3762,8 +3762,6 @@
           "./www/build/p-36e59877.entry.js.map",
           "./www/build/p-3884d595.entry.js",
           "./www/build/p-3884d595.entry.js.map",
-          "./www/build/p-3896ae49.entry.js",
-          "./www/build/p-3896ae49.entry.js.map",
           "./www/build/p-3918a0cc.js",
           "./www/build/p-3918a0cc.js.map",
           "./www/build/p-393cb717.js",
@@ -3844,6 +3842,8 @@
           "./www/build/p-6ac8a168.entry.js.map",
           "./www/build/p-6cbad57b.entry.js",
           "./www/build/p-6cbad57b.entry.js.map",
+          "./www/build/p-6f847baf.entry.js",
+          "./www/build/p-6f847baf.entry.js.map",
           "./www/build/p-6f9e2726.entry.js",
           "./www/build/p-6f9e2726.entry.js.map",
           "./www/build/p-715ed809.entry.js",
@@ -3936,6 +3936,8 @@
           "./www/build/p-9f02ebaa.entry.js.map",
           "./www/build/p-a15af810.entry.js",
           "./www/build/p-a15af810.entry.js.map",
+          "./www/build/p-a18c221f.entry.js",
+          "./www/build/p-a18c221f.entry.js.map",
           "./www/build/p-a1fef032.entry.js",
           "./www/build/p-a1fef032.entry.js.map",
           "./www/build/p-a2a36669.entry.js",
@@ -4058,8 +4060,6 @@
           "./www/build/p-f09ee70b.js.map",
           "./www/build/p-f0a07296.entry.js",
           "./www/build/p-f0a07296.entry.js.map",
-          "./www/build/p-f2efac35.entry.js",
-          "./www/build/p-f2efac35.entry.js.map",
           "./www/build/p-f3136eb4.entry.js",
           "./www/build/p-f3136eb4.entry.js.map",
           "./www/build/p-f4a54cb4.entry.js",
@@ -5466,8 +5466,8 @@
         "components": [
           "sc-product-price"
         ],
-        "bundleId": "p-3896ae49",
-        "fileName": "p-3896ae49.entry.js",
+        "bundleId": "p-6f847baf",
+        "fileName": "p-6f847baf.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-863940e9.js",
@@ -5487,7 +5487,7 @@
           "p-d3366af3.js",
           "p-1f60f497.js"
         ],
-        "originalByteSize": 4894
+        "originalByteSize": 4976
       },
       {
         "key": "sc-product-price-choices.entry",
@@ -6304,14 +6304,14 @@
         "components": [
           "sc-price"
         ],
-        "bundleId": "p-f2efac35",
-        "fileName": "p-f2efac35.entry.js",
+        "bundleId": "p-a18c221f",
+        "fileName": "p-a18c221f.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-88aed607.js",
           "p-3f6362a4.js"
         ],
-        "originalByteSize": 5517
+        "originalByteSize": 5609
       },
       {
         "key": "sc-product-item.entry",
@@ -8445,7 +8445,7 @@
           "remove-query-args-938c53ea.js",
           "mutations-ed6d0770.js"
         ],
-        "originalByteSize": 5003
+        "originalByteSize": 5085
       },
       {
         "key": "sc-product-price-choices.entry",
@@ -9269,7 +9269,7 @@
           "price-7bb626d0.js",
           "currency-a0c9bff4.js"
         ],
-        "originalByteSize": 5532
+        "originalByteSize": 5624
       },
       {
         "key": "sc-product-item.entry",
@@ -11405,7 +11405,7 @@
           "remove-query-args-b57e8cd3.js",
           "mutations-11c8f9a8.js"
         ],
-        "originalByteSize": 5220
+        "originalByteSize": 5302
       },
       {
         "key": "sc-product-price-choices.entry",
@@ -12229,7 +12229,7 @@
           "price-ca4a4318.js",
           "currency-71fce0f0.js"
         ],
-        "originalByteSize": 5756
+        "originalByteSize": 5860
       },
       {
         "key": "sc-product-item.entry",
@@ -38777,6 +38777,25 @@
           "docs": {
             "tags": [],
             "text": "The setup fee amount"
+          },
+          "internal": false
+        },
+        {
+          "name": "setupFeeText",
+          "type": "string",
+          "attribute": "setup-fee-text",
+          "reflect": false,
+          "mutable": false,
+          "required": false,
+          "optional": false,
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "docs": {
+            "tags": [],
+            "text": "The setup fee text"
           },
           "internal": false
         },
@@ -76138,6 +76157,7 @@
             "saleText",
             "adHoc",
             "trialDurationDays",
+            "setupFeeText",
             "setupFeeAmount",
             "setupFeeName",
             "recurringPeriodCount",
@@ -88996,6 +89016,25 @@
               "docs": {
                 "tags": [],
                 "text": "The setup fee amount"
+              },
+              "internal": false
+            },
+            {
+              "name": "setupFeeText",
+              "type": "string",
+              "attribute": "setup-fee-text",
+              "reflect": false,
+              "mutable": false,
+              "required": false,
+              "optional": false,
+              "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": "The setup fee text"
               },
               "internal": false
             },
