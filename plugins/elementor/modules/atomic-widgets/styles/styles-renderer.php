@@ -6,44 +6,37 @@ use Elementor\Core\Utils\Collection;
 use Elementor\Modules\AtomicWidgets\PropsResolver\Props_Resolver;
 
 class Styles_Renderer {
-	const DEFAULT_SELECTOR_PREFIX = '.elementor';
-
 	/**
-	 * @var array<string, array{direction: 'min' | 'max', value: int, is_enabled: boolean}>
+	 * @var array<string, array{direction: 'min' | 'max', value: int, is_enabled: boolean}> $breakpoints
 	 */
 	private array $breakpoints;
 
-	private $on_prop_transform;
-
-	private string $selector_prefix;
-
 	/**
-	 * @param array<string, array{direction: 'min' | 'max', value: int, is_enabled: boolean}> $breakpoints
-	 * @param string $selector_prefix
+	 * Styles_Renderer constructor.
+	 *
+	 * @param array{
+	 *     breakpoints: array<string, array{direction: 'min' | 'max', value: int, is_enabled: boolean}>
+	 * } $config
 	 */
-	private function __construct( array $breakpoints, string $selector_prefix = self::DEFAULT_SELECTOR_PREFIX ) {
-		$this->breakpoints = $breakpoints;
-		$this->selector_prefix = $selector_prefix;
+	public function __construct( array $config ) {
+		$this->breakpoints = $config['breakpoints'];
 	}
 
-	public static function make( array $breakpoints, string $selector_prefix = self::DEFAULT_SELECTOR_PREFIX ): self {
-		return new self( $breakpoints, $selector_prefix );
+	public static function make( array $config ): self {
+		return new self( $config );
 	}
 
 	/**
 	 * Render the styles to a CSS string.
 	 *
-	 * Styles format:
-	 *   array<int, array{
+	 * @param array<int, array{
 	 *     id: string,
 	 *     type: string,
 	 *     variants: array<int, array{
 	 *         props: array<string, mixed>,
 	 *         meta: array<string, mixed>
 	 *     }>
-	 *   }>
-	 *
-	 * @param array $styles Array of style definitions.
+	 * }> $styles Array of style definitions.
 	 *
 	 * @return string Rendered CSS string.
 	 */
@@ -56,12 +49,6 @@ class Styles_Renderer {
 		}
 
 		return implode( '', $css_style );
-	}
-
-	public function on_prop_transform( callable $callback ): self {
-		$this->on_prop_transform = $callback;
-
-		return $this;
 	}
 
 	private function style_definition_to_css_string( array $style ): string {
@@ -95,15 +82,7 @@ class Styles_Renderer {
 			isset( $map[ $style_def['type'] ] ) &&
 			$style_def['id']
 		) {
-			$type = $map[ $style_def['type'] ];
-			$id = $style_def['id'];
-
-			$selector_parts = array_filter( [
-				$this->selector_prefix,
-				"{$type}{$id}",
-			] );
-
-			return implode( ' ', $selector_parts );
+			return $map[ $style_def['type'] ] . $style_def['id'];
 		}
 
 		return null;
@@ -134,10 +113,6 @@ class Styles_Renderer {
 		return Collection::make( Props_Resolver::for_styles()->resolve( $schema, $props ) )
 			->filter()
 			->map( function ( $value, $prop ) {
-				if ( $this->on_prop_transform ) {
-					call_user_func( $this->on_prop_transform, $prop, $value );
-				}
-
 				return $prop . ':' . $value . ';';
 			} )
 			->implode( '' );

@@ -247,7 +247,7 @@ class Revisions_Manager {
 	 * @param $data
 	 *
 	 * @return array
-	 * @throws \Exception Id Exception.
+	 * @throws \Exception
 	 */
 	public static function ajax_get_revision_data( array $data ) {
 		if ( ! isset( $data['id'] ) ) {
@@ -357,7 +357,7 @@ class Revisions_Manager {
 	}
 
 	/**
-	 * @throws \Exception If the user doesn't have permissions or not found.
+	 * @throws \Exception
 	 */
 	public static function ajax_get_revisions( $data ) {
 		Plugin::$instance->documents->check_permissions( $data['editor_post_id'] );

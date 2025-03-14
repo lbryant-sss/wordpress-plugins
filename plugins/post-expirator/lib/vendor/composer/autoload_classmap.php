@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'JWadhams\\JsonLogic' => $vendorDir . '/jwadhams/json-logic-php/src/JWadhams/JsonLogic.php',
 );

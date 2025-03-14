@@ -60,4 +60,5 @@ class Contact_Buttons_Core_Render extends Contact_Buttons_Render_Base {
 			'id' => 'e-contact-buttons__content-wrapper',
 		] );
 	}
+
 }

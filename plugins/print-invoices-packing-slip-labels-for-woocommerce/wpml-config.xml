@@ -17,6 +17,12 @@
     <key name="wf_woocommerce_packing_list_invoice">
       <key name="woocommerce_wf_packinglist_footer"/>
     </key>
+    <key name="wf_woocommerce_packing_list_packinglist">
+      <key name="woocommerce_wf_packinglist_footer"/>
+    </key>
+    <key name="wf_woocommerce_packing_list_proformainvoice">
+      <key name="woocommerce_wf_packinglist_footer"/>
+    </key>
     <key name="woocommerce_wf_packinglist_companyname"/>
     <key name="woocommerce_wf_packinglist_footer"/>
     <key name="woocommerce_wf_packinglist_sender_address_line1"/>

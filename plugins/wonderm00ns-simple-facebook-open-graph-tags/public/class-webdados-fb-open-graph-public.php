@@ -115,16 +115,27 @@ class Webdados_FB_Public {
 		
 					global $post;
 					// Title
-						//It's a Post or a Page or an attachment page - It can also be the homepage if it's set as a page
-						$fb_title = wp_strip_all_tags( stripslashes( $post->post_title ), true );
-						//SubHeading
-						if ( isset( $this->options['fb_show_subheading'] ) && ( intval( $this->options['fb_show_subheading'] ) == 1 ) && $webdados_fb->is_subheading_plugin_active() ) {
-							if (isset($this->options['fb_subheading_position']) && $this->options['fb_subheading_position']=='before' ) {
-								$fb_title = trim( trim(get_the_subheading()).' - '.trim($fb_title), ' -' );
-							} else {
-								$fb_title = trim( trim($fb_title).' - '.trim(get_the_subheading()), ' -' );
-							}
-						}
+
+
+                    $_webdados_fb_open_graph_specific_title = get_post_meta( $post->ID, '_webdados_fb_open_graph_specific_title', true );
+
+                    if ( empty( $_webdados_fb_open_graph_specific_title ) ) {
+                        //It's a Post or a Page or an attachment page - It can also be the homepage if it's set as a page
+                        $fb_title = wp_strip_all_tags( stripslashes( $post->post_title ), true );
+                        //SubHeading
+                        if ( isset( $this->options['fb_show_subheading'] ) && ( intval( $this->options['fb_show_subheading'] ) == 1 ) && $webdados_fb->is_subheading_plugin_active() ) {
+                            if (isset($this->options['fb_subheading_position']) && $this->options['fb_subheading_position']=='before' ) {
+                                $fb_title = trim( trim(get_the_subheading()).' - '.trim($fb_title), ' -' );
+                            } else {
+                                $fb_title = trim( trim($fb_title).' - '.trim(get_the_subheading()), ' -' );
+                            }
+                        }
+                    } else {
+                        $fb_title = $_webdados_fb_open_graph_specific_title;
+                    }
+
+
+
 					// URL
 						$fb_url = get_permalink();
 					// Type if it's a homepage page

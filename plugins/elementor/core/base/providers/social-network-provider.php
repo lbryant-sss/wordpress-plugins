@@ -53,6 +53,7 @@ class Social_Network_Provider {
 		}
 
 		return '';
+
 	}
 
 	public static function get_name_mapping( string $platform ): string {

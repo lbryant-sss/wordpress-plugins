@@ -18,7 +18,6 @@ class Manager {
 
 	/**
 	 * Holds registered asset types
-	 *
 	 * @var array
 	 */
 	protected $asset_types = [];
@@ -48,7 +47,6 @@ class Manager {
 
 	/**
 	 * Add Asset
-	 *
 	 * @param $instance
 	 */
 	public function add_asset( $instance ) {

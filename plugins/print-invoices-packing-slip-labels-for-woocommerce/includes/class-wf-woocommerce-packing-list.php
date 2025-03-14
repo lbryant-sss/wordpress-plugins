@@ -116,8 +116,8 @@ class Wf_Woocommerce_Packing_List {
 			self::$base_version = WF_PKLIST_VERSION;
 		}else 
 		{
-			$this->version = '4.7.4';
-			self::$base_version = '4.7.4';
+			$this->version = '4.7.5';
+			self::$base_version = '4.7.5';
 		}
 		if(defined('WF_PKLIST_PLUGIN_NAME'))
 		{
@@ -353,6 +353,9 @@ class Wf_Woocommerce_Packing_List {
 		$this->loader->add_action('woocommerce_order_details_after_order_table',$this->plugin_admin,'add_fontend_print_actions',10); /* Add print action buttons in user dashboard orders page */		
 		
 		$this->loader->add_filter('woocommerce_my_account_my_orders_actions', $this->plugin_admin, 'add_order_list_page_print_actions', 10, 2); /* Add print action buttons in user dashboard orders page */	
+		
+		$this->loader->add_filter('woocommerce_my_account_my_orders_actions', $this->plugin_admin, 'hide_print_buttons_from_action_row_on_order_details_page', 99, 1); // Hide print buttons from action row on order details page - 4.7.5
+
 		//email print action buttons
 		$this->loader->add_action('woocommerce_email_after_order_table',$this->plugin_admin,'add_email_print_actions',10); /* Add print action buttons in order */		
 				

@@ -1,4 +1,5 @@
 <?php
+
 namespace Elementor\App\Modules\ImportExport\Runners\Import;
 
 use Elementor\App\Modules\ImportExport\Utils as ImportExportUtils;
@@ -16,7 +17,7 @@ class Elementor_Content extends Import_Runner_Base {
 		$this->init_page_on_front_data();
 	}
 
-	public static function get_name(): string {
+	public static function get_name() : string {
 		return 'elementor-content';
 	}
 
@@ -94,7 +95,7 @@ class Elementor_Content extends Import_Runner_Base {
 		);
 
 		if ( is_wp_error( $new_document ) ) {
-			throw new \Exception( esc_html( $new_document->get_error_message() ) );
+			throw new \Exception( $new_document->get_error_message() );
 		}
 
 		$post_data['import_settings'] = $post_settings;
@@ -150,7 +151,7 @@ class Elementor_Content extends Import_Runner_Base {
 		}
 	}
 
-	public function get_import_session_metadata(): array {
+	public function get_import_session_metadata() : array {
 		return [
 			'page_on_front' => $this->page_on_front_id ?? 0,
 		];

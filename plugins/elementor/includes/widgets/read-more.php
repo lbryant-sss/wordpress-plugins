@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Elementor HTML widget.
  *
  * Elementor widget that insert a custom HTML code into the page.
+ *
  */
 class Widget_Read_More extends Widget_Base {
 

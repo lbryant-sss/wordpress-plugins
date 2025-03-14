@@ -1,4 +1,5 @@
 <?php
+
 namespace Elementor\Core\Settings\General;
 
 use Elementor\Plugin;
@@ -13,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @deprecated 3.0.0 Use `Plugin::$instance->kits_manager->get_active_kit_for_frontend()` instead.
  */
+
 class Model {
 
 	/**

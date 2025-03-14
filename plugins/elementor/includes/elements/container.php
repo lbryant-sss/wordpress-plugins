@@ -1950,9 +1950,9 @@ class Container extends Element_Base {
 	}
 
 	/**
-	 * Convert slider to gaps control for the 3.16 upgrade script
+	 * convert slider to gaps control for the 3.16 upgrade script
 	 *
-	 * @param array $element
+	 * @param $element
 	 * @return array
 	 */
 	public static function slider_to_gaps_converter( $element ) {

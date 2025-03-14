@@ -14,13 +14,25 @@ class ComposerStaticInitPublishPressFuture
         'a61bc28a742b9f9f2fd5ef4d2d1e2037' => __DIR__ . '/..' . '/publishpress/wordpress-version-notices/src/include.php',
     );
 
+    public static $prefixesPsr0 = array (
+        'J' => 
+        array (
+            'JWadhams' => 
+            array (
+                0 => __DIR__ . '/..' . '/jwadhams/json-logic-php/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'JWadhams\\JsonLogic' => __DIR__ . '/..' . '/jwadhams/json-logic-php/src/JWadhams/JsonLogic.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixesPsr0 = ComposerStaticInitPublishPressFuture::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitPublishPressFuture::$classMap;
 
         }, null, ClassLoader::class);

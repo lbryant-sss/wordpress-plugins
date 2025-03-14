@@ -159,11 +159,6 @@ class Controls_Manager {
 	const CHOOSE = 'choose';
 
 	/**
-	 * Visual_Choice control.
-	 */
-	const VISUAL_CHOICE = 'visual_choice';
-
-	/**
 	 * WYSIWYG control.
 	 */
 	const WYSIWYG = 'wysiwyg';
@@ -426,7 +421,6 @@ class Controls_Manager {
 			self::SLIDER,
 			self::DIMENSIONS,
 			self::CHOOSE,
-			self::VISUAL_CHOICE,
 			self::WYSIWYG,
 			self::CODE,
 			self::FONT,
@@ -495,12 +489,12 @@ class Controls_Manager {
 		 * @param Controls_Manager $this The controls manager.
 		 */
 		// TODO: Uncomment when Pro uses the new hook.
-		// Plugin::$instance->modules_manager->get_modules( 'dev-tools' )->deprecation->do_deprecated_action(
-		// 'elementor/controls/controls_registered',
-		// [ $this ],
-		// '3.5.0',
-		// 'elementor/controls/register'
-		// );
+		//Plugin::$instance->modules_manager->get_modules( 'dev-tools' )->deprecation->do_deprecated_action(
+		//	'elementor/controls/controls_registered',
+		//	[ $this ],
+		//	'3.5.0',
+		//	'elementor/controls/register'
+		//);
 
 		do_action( 'elementor/controls/controls_registered', $this );
 
@@ -532,11 +526,11 @@ class Controls_Manager {
 	 */
 	public function register_control( $control_id, Base_Control $control_instance ) {
 		// TODO: Uncomment when Pro uses the new hook.
-		// Plugin::$instance->modules_manager->get_modules( 'dev-tools' )->deprecation->deprecated_function(
-		// __METHOD__,
-		// '3.5.0',
-		// 'register()'
-		// );
+		//Plugin::$instance->modules_manager->get_modules( 'dev-tools' )->deprecation->deprecated_function(
+		//	__METHOD__,
+		//	'3.5.0',
+		//	'register()'
+		//);
 
 		$this->register( $control_instance, $control_id );
 	}
@@ -888,7 +882,7 @@ class Controls_Manager {
 	 * @since 1.0.0
 	 * @access public
 	 *
-	 * @param string       $stack_id   Stack ID.
+	 * @param string $stack_id   Stack ID.
 	 * @param array|string $control_id The ID of the control to remove.
 	 *
 	 * @return bool|\WP_Error True if the stack was removed, False otherwise.
@@ -913,7 +907,6 @@ class Controls_Manager {
 
 	/**
 	 * Has Stacks Cache Been Cleared.
-	 *
 	 * @since 3.13.0
 	 * @access public
 	 * @return bool True if the CSS requires to clear the controls stack cache, False otherwise.
@@ -925,7 +918,6 @@ class Controls_Manager {
 	/**
 	 * Clear stack.
 	 * This method clears the stack.
-	 *
 	 * @since 3.13.0
 	 * @access public
 	 */
@@ -1065,8 +1057,9 @@ class Controls_Manager {
 	 * @access public
 	 *
 	 * @param Controls_Stack $controls_stack .
-	 * @param string         $tab
-	 * @param array          $additional_messages
+	 * @param string $tab
+	 * @param array $additional_messages
+	 *
 	 */
 	public function add_custom_css_controls( Controls_Stack $controls_stack, $tab = self::TAB_ADVANCED, $additional_messages = [] ) {
 		$controls_stack->start_controls_section(
@@ -1108,8 +1101,8 @@ class Controls_Manager {
 	 * Elementor Pro.
 	 *
 	 * @param Controls_Stack $controls_stack .
-	 * @param string         $tab
-	 * @param array          $additional_messages
+	 * @param string $tab
+	 * @param array $additional_messages
 	 *
 	 * @return void
 	 */
@@ -1192,10 +1185,10 @@ class Controls_Manager {
 	 * version of elementor uses this method to display an upgrade message to
 	 * Elementor Pro.
 	 *
-	 * @param Controls_Stack $controls_stack .
-	 * @param string         $tab
 	 * @since 2.8.3
 	 * @access public
+	 *
+	 * @param Controls_Stack $controls_stack.
 	 */
 	public function add_custom_attributes_controls( Controls_Stack $controls_stack, string $tab = self::TAB_ADVANCED ) {
 		$controls_stack->start_controls_section(
@@ -1226,7 +1219,7 @@ class Controls_Manager {
 	/**
 	 * Check if a stack should be cleaned by the current responsive control duplication mode.
 	 *
-	 * @param array $stack
+	 * @param $stack
 	 * @return bool
 	 */
 	private function should_clean_stack( $stack ): bool {

@@ -423,7 +423,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		add_filter('user_has_cap', array($this, 'regrant_virtual_caps_to_user'), 200, 1);
 
 		//Update caches when the current user changes.
-		add_action('set_current_user', array($this, 'update_current_user_cache'), 1, 0); //Run before most plugins.
+		add_action('set_current_user', array($this, 'update_current_user_cache'), 2, 0); //Run before most plugins.
 		//Clear or refresh per-user caches when the user's roles or capabilities change.
 		add_action('updated_user_meta', array($this, 'on_user_metadata_changed'), 10, 3);
 		add_action('deleted_user_meta', array($this, 'on_user_metadata_changed'), 10, 3);

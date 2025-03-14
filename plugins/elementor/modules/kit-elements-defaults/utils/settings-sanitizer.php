@@ -167,6 +167,7 @@ class Settings_Sanitizer {
 
 	/**
 	 * @param string $type
+	 * @param array $settings
 	 *
 	 * @return Element_Base|null
 	 */

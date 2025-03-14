@@ -5,11 +5,6 @@ use Elementor\Core\Common\Modules\Ajax\Module as Ajax;
 use Elementor\Core\Utils\Collection;
 use Elementor\Core\Utils\Exceptions;
 use Elementor\Core\Utils\Force_Locale;
-use Elementor\Modules\AtomicWidgets\Elements\Atomic_Button\Atomic_Button;
-use Elementor\Modules\AtomicWidgets\Elements\Atomic_Heading\Atomic_Heading;
-use Elementor\Modules\AtomicWidgets\Elements\Atomic_Image\Atomic_Image;
-use Elementor\Modules\AtomicWidgets\Elements\Atomic_Paragraph\Atomic_Paragraph;
-use Elementor\Modules\AtomicWidgets\Elements\Atomic_Svg\Atomic_Svg;
 use Elementor\Modules\NestedAccordion\Widgets\Nested_Accordion;
 use Elementor\Modules\NestedElements\Module as NestedElementsModule;
 use Elementor\Modules\NestedTabs\Widgets\NestedTabs;
@@ -57,13 +52,6 @@ class Widgets_Manager {
 			NestedTabs::class,
 			Nested_Accordion::class,
 		],
-		'atomic_widgets' => [
-			Atomic_Heading::class,
-			Atomic_Image::class,
-			Atomic_Paragraph::class,
-			Atomic_Button::class,
-			Atomic_Svg::class,
-		],
 	];
 
 	/**
@@ -74,7 +62,7 @@ class Widgets_Manager {
 	 *
 	 * @since 2.0.0
 	 * @access private
-	 */
+	*/
 	private function init_widgets() {
 		$build_widgets_filename = [
 			'common-base',
@@ -168,7 +156,7 @@ class Widgets_Manager {
 	 *
 	 * @since 2.0.0
 	 * @access private
-	 */
+	*/
 	private function register_wp_widgets() {
 		global $wp_widget_factory;
 
@@ -209,7 +197,7 @@ class Widgets_Manager {
 	 *
 	 * @since 2.0.0
 	 * @access private
-	 */
+	*/
 	private function require_files() {
 		require ELEMENTOR_PATH . 'includes/base/widget-base.php';
 	}
@@ -237,7 +225,7 @@ class Widgets_Manager {
 	 * @param Widget_Base $widget Elementor widget.
 	 *
 	 * @return true True if the widget was registered.
-	 */
+	*/
 	public function register_widget_type( Widget_Base $widget ) {
 		Plugin::$instance->modules_manager->get_modules( 'dev-tools' )->deprecation->deprecated_function(
 			__METHOD__,
@@ -307,7 +295,7 @@ class Widgets_Manager {
 	 * @param string $name Widget name.
 	 *
 	 * @return true True if the widget was unregistered, False otherwise.
-	 */
+	*/
 	public function unregister_widget_type( $name ) {
 		Plugin::$instance->modules_manager->get_modules( 'dev-tools' )->deprecation->deprecated_function(
 			__METHOD__,
@@ -351,7 +339,7 @@ class Widgets_Manager {
 	 * @param string $widget_name Optional. Widget name. Default is null.
 	 *
 	 * @return Widget_Base|Widget_Base[]|null Registered widget types.
-	 */
+	*/
 	public function get_widget_types( $widget_name = null ) {
 		if ( is_null( $this->_widget_types ) ) {
 			$this->init_widgets();
@@ -373,7 +361,7 @@ class Widgets_Manager {
 	 * @access public
 	 *
 	 * @return array Registered widget types with each widget config.
-	 */
+	*/
 	public function get_widget_types_config() {
 		$config = [];
 
@@ -385,7 +373,7 @@ class Widgets_Manager {
 	}
 
 	/**
-	 * @throws \Exception Exception.
+	 * @throws \Exception
 	 */
 	public function ajax_get_widget_types_controls_config( array $data ) {
 		Plugin::$instance->documents->check_permissions( $data['editor_post_id'] );
@@ -493,7 +481,7 @@ class Widgets_Manager {
 	 * @param array $request Ajax request.
 	 *
 	 * @return bool|string Rendered widget form.
-	 * @throws \Exception If there is an error processing the request.
+	 * @throws \Exception
 	 */
 	public function ajax_get_wp_widget_form( $request ) {
 		Plugin::$instance->documents->check_permissions( $request['editor_post_id'] );
@@ -533,7 +521,7 @@ class Widgets_Manager {
 	 *
 	 * @since 1.0.0
 	 * @access public
-	 */
+	*/
 	public function render_widgets_content() {
 		foreach ( $this->get_widget_types() as $widget ) {
 			$widget->print_template();
@@ -550,7 +538,7 @@ class Widgets_Manager {
 	 * @access public
 	 *
 	 * @return array Registered widget types with settings keys for each widget.
-	 */
+	*/
 	public function get_widgets_frontend_settings_keys() {
 		$keys = [];
 
@@ -627,7 +615,7 @@ class Widgets_Manager {
 	 *
 	 * @since 1.3.0
 	 * @access public
-	 */
+	*/
 	public function enqueue_widgets_scripts() {
 		foreach ( $this->get_widget_types() as $widget ) {
 			$widget->enqueue_scripts();
@@ -710,7 +698,7 @@ class Widgets_Manager {
 	 *
 	 * @since 1.0.0
 	 * @access public
-	 */
+	*/
 	public function __construct() {
 		$this->require_files();
 
@@ -738,11 +726,11 @@ class Widgets_Manager {
 	}
 
 	/**
-	 * @param string $experiment_name
-	 * @param array  $classes
+	 * @param $experiment_name
+	 * @param $classes
 	 * @return void
 	 */
-	public function register_promoted_active_widgets( string $experiment_name, array $classes ): void {
+	public function register_promoted_active_widgets( string $experiment_name, array $classes ) : void {
 		if ( ! Plugin::$instance->experiments->is_feature_active( $experiment_name ) || empty( $classes ) ) {
 			return;
 		}

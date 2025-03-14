@@ -5009,4 +5009,20 @@ class Wf_Woocommerce_Packing_List_Admin {
 		
 		return $new_settings;
 	}
+
+	public function hide_print_buttons_from_action_row_on_order_details_page( $actions ) {
+
+		// Check if we're on the order details page and thank you page.
+		if ( is_wc_endpoint_url( 'view-order' ) || is_wc_endpoint_url( 'order-received' ) ) {
+	
+			// Loop through actions and unset any with 'wt_pklist_' in the key.
+			foreach ( $actions as $key => $action ) {
+				if ( false !== strpos( $key, 'wt_pklist_' ) ) {
+					unset( $actions[$key] );
+				}
+			}
+		}
+	
+		return $actions;
+	}
 }

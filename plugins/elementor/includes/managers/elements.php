@@ -35,7 +35,7 @@ class Elements_Manager {
 	 *
 	 * @access private
 	 *
-	 * @var $categories
+	 * @var
 	 */
 	private $categories;
 
@@ -276,10 +276,6 @@ class Elements_Manager {
 	 */
 	private function init_categories() {
 		$this->categories = [
-			'v4-elements' => [
-				'title' => esc_html__( 'V4 Elements', 'elementor' ),
-				'hideIfEmpty' => true,
-			],
 			'layout' => [
 				'title' => esc_html__( 'Layout', 'elementor' ),
 				'hideIfEmpty' => true,

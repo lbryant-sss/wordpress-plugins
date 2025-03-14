@@ -21,7 +21,7 @@ use ElementorPro\Modules\Library\Widgets\Template;
 use Elementor\Core\Utils\Promotions\Filtered_Promotions_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+	exit; // Exit if accessed directly
 }
 
 /**
@@ -549,8 +549,10 @@ abstract class Document extends Controls_Stack {
 	 * @since 2.0.0
 	 * @access public
 	 *
+	 *
 	 * @return bool|Document
 	 */
+
 	public function get_newer_autosave() {
 		$autosave = $this->get_autosave();
 
@@ -924,7 +926,7 @@ abstract class Document extends Controls_Stack {
 	 * @return bool Whether the post was built with Elementor.
 	 */
 	public function is_built_with_elementor() {
-		return (bool) $this->get_meta( self::BUILT_WITH_ELEMENTOR_META_KEY );
+		return ! ! $this->get_meta( self::BUILT_WITH_ELEMENTOR_META_KEY );
 	}
 
 	/**
@@ -1087,7 +1089,7 @@ abstract class Document extends Controls_Stack {
 			}
 
 			$editor_data[] = $element_data;
-		}
+		} // End foreach().
 
 		Plugin::$instance->documents->restore_document();
 
@@ -1281,7 +1283,7 @@ abstract class Document extends Controls_Stack {
 	 *
 	 * @return array Element data.
 	 */
-	public static function on_import_update_dynamic_content( array $config, array $data, $controls = null ): array {
+	public static function on_import_update_dynamic_content( array $config, array $data, $controls = null ) : array {
 		foreach ( $config as &$element_config ) {
 			$element_instance = Plugin::$instance->elements_manager->create_element_instance( $element_config );
 
@@ -1420,6 +1422,7 @@ abstract class Document extends Controls_Stack {
 			 * @since 2.5.12
 			 *
 			 * @param \Elementor\Core\Base\Document $this The current document.
+			 *
 			 */
 			do_action( 'elementor/document/save_version', $this );
 		}
@@ -1588,7 +1591,7 @@ abstract class Document extends Controls_Stack {
 				$this->post = get_post( $data['post_id'] );
 
 				if ( ! $this->post ) {
-					throw new \Exception( sprintf( 'Post ID #%s does not exist.', esc_html( $data['post_id'] ) ), Exceptions::NOT_FOUND ); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
+					throw new \Exception( sprintf( 'Post ID #%s does not exist.', $data['post_id'] ), Exceptions::NOT_FOUND );
 				}
 			}
 
@@ -1608,7 +1611,7 @@ abstract class Document extends Controls_Stack {
 		parent::__construct( $data );
 	}
 
-	/**
+	/*
 	 * Get Export Data
 	 *
 	 * Filters a document's data on export
@@ -1647,7 +1650,7 @@ abstract class Document extends Controls_Stack {
 		];
 	}
 
-	/**
+	/*
 	 * Get Import Data
 	 *
 	 * Filters a document's data on import

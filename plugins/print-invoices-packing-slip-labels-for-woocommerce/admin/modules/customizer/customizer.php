@@ -1195,6 +1195,10 @@ class Wf_Woocommerce_Packing_List_Customizer
 		 		.wfte_invoice_data div{ text-align:left !important; padding-left:10px !important;}';
 			}
 
+			/**
+			 * @since 4.7.4
+			 * Table text alignment for RTL
+			 */
 			$this->custom_css .= '
 		 	body, html{direction:rtl; unicode-bidi:bidi-override; }
 		 	.wfte_rtl_main .float_left{ float:right; }
@@ -1205,7 +1209,13 @@ class Wf_Woocommerce_Packing_List_Customizer
 		 	.wfte_invoice_data div span:nth-child(1){  float:right !important;} 
 		 	.wfte_order_data div span:nth-child(1){ float:right !important;} 
 		 	.wfte_list_view div span:nth-child(1){ float:right !important;}	
-		 	.wfte_extra_fields span:nth-child(1){ float:right !important;}';
+		 	.wfte_extra_fields span:nth-child(1){ float:right !important;}
+
+			/*Table text-align*/
+			.wfte_rtl_template_main .wfte_product_table th,
+			.wfte_rtl_template_main .wfte_product_table td {
+				text-align: right; /* Align headings and table data to the right */
+			}';
 		}
 		return $html;
 	}

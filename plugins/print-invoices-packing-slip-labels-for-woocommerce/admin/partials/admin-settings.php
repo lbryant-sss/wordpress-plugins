@@ -65,15 +65,23 @@ if(isset($_GET['debug']))
             ?>
             <?php do_action('wt_pklist_add_additional_tab_content_into_module',$main_module_id,$main_module_base); ?>
             <?php do_action('wf_pklist_plugin_out_settings_form');?>
+            
         </div>
+       
     </div>
+
     <div class="wf_settings_right" style="display:none;">
     </div>
-</div><?php
+
+</div>
+
+<?php
 /**
  * Fires at the end of the settings page.
  *
  * @since 4.7.0
  */
+include WF_PKLIST_PLUGIN_PATH . '/admin/partials/marketing-cta/marketing-cta.php';
 do_action('wt_pdf_plugin_settings_after_wrap');
+
 ?>

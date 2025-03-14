@@ -1,4 +1,4 @@
-/*! elementor - v3.28.0 - 10-03-2025 */
+/*! elementor - v3.27.0 - 13-03-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -3245,9 +3245,10 @@ var Commands = exports["default"] = /*#__PURE__*/function (_CommandsBackwardsCom
             _this3.catchApply(e, instance);
             _this3.afterRun(instance.command, instance.args, e);
           });
-          return _result.done(function (__result) {
-            return _this3.applyRunAfterAsyncResult(instance, __result);
+          _result.done(function (__result) {
+            _this3.applyRunAfterSync(instance, __result);
           });
+          return _result;
         };
         return handleJQueryDeferred(result);
       } else if (result instanceof Promise) {
@@ -7089,7 +7090,7 @@ var CommandBase = exports["default"] = /*#__PURE__*/function (_CommandInfra) {
     value: function onAfterApply() {
       var args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var result = arguments.length > 1 ? arguments[1] : undefined;
-      return $e.hooks.runDataAfter(this.command, args, result);
+      $e.hooks.runDataAfter(this.command, args, result);
     }
   }, {
     key: "onCatchApply",

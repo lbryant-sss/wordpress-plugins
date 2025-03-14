@@ -113,6 +113,28 @@ class Webdados_FB_Admin {
 		global $post, $webdados_fb;
 		// Add an nonce field so we can check for it later.
 		wp_nonce_field( 'webdados_fb_open_graph_custom_box', 'webdados_fb_open_graph_custom_box_nonce' );
+
+        $ogtags_title_field = true;
+        $ogtags_title_field = apply_filters( 'fb_ogtags_title_field', $ogtags_title_field );
+
+        if ( $ogtags_title_field ) {
+            // Current title value
+            $value_title = get_post_meta($post->ID, '_webdados_fb_open_graph_specific_title', true);
+            ?>
+            <p>
+                <strong>
+                    <label for="webdados_fb_open_graph_specific_title">
+                        <?php _e('Use this title', 'wonderm00ns-simple-facebook-open-graph-tags'); ?>:
+                    </label>
+                </strong>
+                <br/>
+                <input type="text" id="webdados_fb_open_graph_specific_title" name="webdados_fb_open_graph_specific_title" value="<?php echo esc_attr( $value_title ); ?>" size="50"/>
+                <br/>
+                <?php _e('If this field is not filled, the title will be generated from the post title', 'wonderm00ns-simple-facebook-open-graph-tags'); ?>
+            </p>
+            <?php
+        }
+
 		// Current image value
 
         $ogtags_featured_image = true;
@@ -259,6 +281,13 @@ class Webdados_FB_Admin {
 				// Update the meta field in the database.
 				update_post_meta($post_id, '_webdados_fb_open_graph_specific_description', $mydata);
 			}
+
+            if ( isset( $_POST['webdados_fb_open_graph_specific_title'] ) ) {
+                // Sanitize user input.
+                $mydata = trim( sanitize_text_field( $_POST['webdados_fb_open_graph_specific_title'] ) );
+                // Update the meta field in the database.
+                update_post_meta( $post_id, '_webdados_fb_open_graph_specific_title', $mydata );
+            }
 		}
 		if ($save) {
 			//Force Facebook update anyway - Our meta box could be hidden - Not really! We'll just update if we got our metabox

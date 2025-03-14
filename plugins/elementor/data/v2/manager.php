@@ -6,7 +6,7 @@ use Elementor\Data\V2\Base\Processor;
 use Elementor\Data\V2\Base\Controller;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+	exit; // Exit if accessed directly
 }
 
 /**
@@ -97,6 +97,7 @@ class Manager extends BaseModule {
 	 *
 	 * @param string $command
 	 * @param string $format
+	 *
 	 */
 	public function register_endpoint_format( $command, $format ) {
 		$this->command_formats[ $command ] = untrailingslashit( $format );
@@ -295,8 +296,8 @@ class Manager extends BaseModule {
 	 * @param string $endpoint
 	 * @param array $args
 	 * @param string $method
-	 * @param string $namespace Optional.
-	 * @param string $version Optional.
+	 * @param string $namespace (optional)
+	 * @param string $version (optional)
 	 *
 	 * @return \WP_REST_Response
 	 */

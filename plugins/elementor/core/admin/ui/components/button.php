@@ -11,7 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Button extends Base_Object {
 
 	private $options;
-
 	/**
 	 * @inheritDoc
 	 */
@@ -71,7 +70,7 @@ class Button extends Base_Object {
 	}
 
 	/**
-	 * @param string $option Optional default is null.
+	 * @param string $option Optional default is null
 	 * @return array|mixed
 	 */
 	private function get_options( $option = null ) {
@@ -94,7 +93,7 @@ class Button extends Base_Object {
 			'before' => '',
 		];
 
-		if ( null !== $option && -1 !== in_array( $option, $default_options, true ) ) {
+		if ( null !== $option && -1 !== in_array( $option, $default_options ) ) {
 			return $default_options[ $option ];
 		}
 

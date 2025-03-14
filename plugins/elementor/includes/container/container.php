@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 3.24.0
  */
+
 class Container {
 
 	protected static $instance;

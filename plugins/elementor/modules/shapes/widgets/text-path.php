@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Elementor WordArt widget.
  *
  * Elementor widget that displays text along SVG path.
+ *
  */
 class TextPath extends Widget_Base {
 
@@ -30,6 +31,7 @@ class TextPath extends Widget_Base {
 	 *
 	 * @return string Widget name.
 	 * @access public
+	 *
 	 */
 	public function get_name() {
 		return 'text-path';
@@ -46,6 +48,7 @@ class TextPath extends Widget_Base {
 	 *
 	 * @return string Widget title.
 	 * @access public
+	 *
 	 */
 	public function get_title() {
 		return esc_html__( 'Text Path', 'elementor' );
@@ -58,6 +61,7 @@ class TextPath extends Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 * @access public
+	 *
 	 */
 	public function get_icon() {
 		return 'eicon-wordart';
@@ -70,6 +74,7 @@ class TextPath extends Widget_Base {
 	 *
 	 * @return array Widget keywords.
 	 * @access public
+	 *
 	 */
 	public function get_keywords() {
 		return [ 'text path', 'word path', 'text on path', 'wordart', 'word art' ];

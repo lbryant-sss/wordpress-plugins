@@ -25,11 +25,8 @@ use Elementor\Core\Page_Assets\Loader as Assets_Loader;
 use Elementor\Modules\System_Info\Module as System_Info_Module;
 use Elementor\Data\Manager as Data_Manager;
 use Elementor\Data\V2\Manager as Data_Manager_V2;
-use Elementor\Core\Files\Uploads_Manager;
-use ElementorDeps\DI\{
-	DependencyException,
-	NotFoundException,
-};
+use Elementor\Core\Common\Modules\DevTools\Module as Dev_Tools;
+use Elementor\Core\Files\Uploads_Manager as Uploads_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -96,6 +93,19 @@ class Plugin {
 	 * @var Documents_Manager
 	 */
 	public $documents;
+
+	/**
+	 * Schemes manager.
+	 *
+	 * Holds the plugin schemes manager.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @deprecated 3.0.0
+	 *
+	 * @var Schemes_Manager
+	 */
+	public $schemes_manager;
 
 	/**
 	 * Elements manager.
@@ -429,6 +439,17 @@ class Plugin {
 	public $logger;
 
 	/**
+	 * Dev tools.
+	 *
+	 * Holds the plugin dev tools.
+	 *
+	 * @access private
+	 *
+	 * @var Dev_Tools
+	 */
+	private $dev_tools;
+
+	/**
 	 * Upgrade manager.
 	 *
 	 * Holds the plugin upgrade manager.
@@ -628,21 +649,13 @@ class Plugin {
 
 	/**
 	 * Get the Elementor container or resolve a dependency.
-	 *
-	 * @param string|null $dependency The dependency to resolve. If null, returns the container instance.
-	 *
-	 * @return mixed The container instance or the resolved dependency.
-	 *
-	 * @throws \InvalidArgumentException The name parameter must be of type string.
-	 * @throws DependencyException Error while resolving the entry.
-	 * @throws NotFoundException No entry found for the given name.
 	 */
-	public function elementor_container( $dependency = null ) {
-		if ( is_null( $dependency ) ) {
+	public function elementor_container( $abstract = null ) {
+		if ( is_null( $abstract ) ) {
 			return $this->container;
 		}
 
-		return $this->container->make( $dependency );
+		return $this->container->make( $abstract );
 	}
 
 	/**
@@ -815,14 +828,14 @@ class Plugin {
 	}
 
 	/**
-	 * Magic getter for accessing certain properties.
+	 * Plugin Magic Getter
 	 *
 	 * @since 3.1.0
 	 * @access public
 	 *
-	 * @param string $property The property name.
-	 * @return mixed The property value or null if not found.
-	 * @throws \Exception If trying to access a private property.
+	 * @param $property
+	 * @return mixed
+	 * @throws \Exception
 	 */
 	public function __get( $property ) {
 		if ( 'posts_css_manager' === $property ) {

@@ -28,10 +28,10 @@ class Props_Resolver {
 	 */
 	private static array $instances = [];
 
-	private Transformers_Registry $transformers_registry;
+	private Transformers_Registry $transformers;
 
-	private function __construct( Transformers_Registry $transformers_registry ) {
-		$this->transformers_registry = $transformers_registry;
+	private function __construct( Transformers_Registry $transformers ) {
+		$this->transformers = $transformers;
 	}
 
 	public static function for_styles(): self {
@@ -44,15 +44,11 @@ class Props_Resolver {
 
 	private static function instance( string $context ): self {
 		if ( ! isset( self::$instances[ $context ] ) ) {
-			$instance = new self( new Transformers_Registry() );
+			$registry = new Transformers_Registry();
 
-			self::$instances[ $context ] = $instance;
+			do_action( "elementor/atomic-widgets/$context/transformers/register", $registry );
 
-			do_action(
-				"elementor/atomic-widgets/$context/transformers/register",
-				$instance->get_transformers_registry(),
-				$instance
-			);
+			self::$instances[ $context ] = new self( $registry );
 		}
 
 		return self::$instances[ $context ];
@@ -60,10 +56,6 @@ class Props_Resolver {
 
 	public static function reset(): void {
 		self::$instances = [];
-	}
-
-	public function get_transformers_registry(): Transformers_Registry {
-		return $this->transformers_registry;
 	}
 
 	public function resolve( array $schema, array $props ): array {
@@ -81,11 +73,7 @@ class Props_Resolver {
 	}
 
 	private function transform( $value, $key, Prop_Type $prop_type, int $depth = 0 ) {
-		if ( null === $value ) {
-			return null;
-		}
-
-		if ( ! $this->is_transformable( $value ) ) {
+		if ( ! $value || ! $this->is_transformable( $value ) ) {
 			return $value;
 		}
 
@@ -127,7 +115,7 @@ class Props_Resolver {
 			);
 		}
 
-		$transformer = $this->transformers_registry->get( $value['$$type'] );
+		$transformer = $this->transformers->get( $value['$$type'] );
 
 		if ( ! ( $transformer instanceof Transformer_Base ) ) {
 			return null;

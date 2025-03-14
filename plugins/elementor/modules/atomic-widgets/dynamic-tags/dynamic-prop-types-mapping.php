@@ -10,7 +10,6 @@ use Elementor\Modules\AtomicWidgets\PropTypes\Image_Src_Prop_Type;
 use Elementor\Modules\AtomicWidgets\PropTypes\Primitives\Number_Prop_Type;
 use Elementor\Modules\AtomicWidgets\PropTypes\Primitives\String_Prop_Type;
 use Elementor\Modules\AtomicWidgets\PropTypes\Union_Prop_Type;
-use Elementor\Modules\AtomicWidgets\PropTypes\Url_Prop_Type;
 use Elementor\Modules\DynamicTags\Module as V1_Dynamic_Tags_Module;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -106,10 +105,6 @@ class Dynamic_Prop_Types_Mapping {
 
 		if ( $prop_type instanceof String_Prop_Type && empty( $prop_type->get_enum() ) ) {
 			return [ V1_Dynamic_Tags_Module::TEXT_CATEGORY ];
-		}
-
-		if ( $prop_type instanceof Url_Prop_Type ) {
-			return [ V1_Dynamic_Tags_Module::URL_CATEGORY ];
 		}
 
 		return [];

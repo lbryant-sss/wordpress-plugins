@@ -10,7 +10,6 @@ return [
 	'deps' => [
 		'elementor-v2-editor-elements',
 		'elementor-v2-editor-v1-adapters',
-		'elementor-v2-utils',
 		'react',
 	],
 ];

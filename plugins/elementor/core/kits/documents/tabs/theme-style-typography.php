@@ -1,11 +1,12 @@
 <?php
+
 namespace Elementor\Core\Kits\Documents\Tabs;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+	exit; // Exit if accessed directly
 }
 
 class Theme_Style_Typography extends Tab_Base {
@@ -90,7 +91,7 @@ class Theme_Style_Typography extends Tab_Base {
 			]
 		);
 
-		// Link Selectors
+		//Link Selectors
 		$link_selectors = [
 			'{{WRAPPER}} a',
 		];

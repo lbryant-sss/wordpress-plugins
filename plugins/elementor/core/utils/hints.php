@@ -21,8 +21,7 @@ class Hints {
 	const PLUGIN_ACTIVE = 'plugin_active';
 
 	/**
-	 * Get_notice_types
-	 *
+	 * get_notice_types
 	 * @return string[]
 	 */
 	public static function get_notice_types(): array {
@@ -35,7 +34,7 @@ class Hints {
 	}
 
 	/**
-	 * Get_hints
+	 * get_hints
 	 *
 	 * @param $hint_key
 	 *
@@ -72,8 +71,7 @@ class Hints {
 	}
 
 	/**
-	 * Get_notice_icon
-	 *
+	 * get_notice_icon
 	 * @return string
 	 */
 	public static function get_notice_icon(): string {
@@ -85,10 +83,9 @@ class Hints {
 	}
 
 	/**
-	 * Get_notice_template
+	 * get_notice_template
 	 *
 	 * Print or Retrieve the notice template.
-	 *
 	 * @param array $notice
 	 * @param bool $return
 	 *
@@ -135,7 +132,7 @@ class Hints {
 		}
 
 		if ( ! empty( $notice_settings['button_text'] ) ) {
-			$button_settings = ( ! empty( $notice_settings['button_data'] ) ) ? ' data-settings="' . esc_attr( wp_json_encode( $notice_settings['button_data'] ) ) . '"' : '';
+			$button_settings = ( ! empty( $notice_settings['button_data'] ) ) ? ' data-settings="' . esc_attr( json_encode( $notice_settings['button_data'] ) ) . '"' : '';
 			$button = '<div class="elementor-control-notice-main-actions">
 				<button type="button" class="e-btn e-' . $notice_settings['type'] . ' e-btn-1" data-event="' . $notice_settings['button_event'] . '"' . $button_settings . '>
 					' . $notice_settings['button_text'] . '
@@ -174,8 +171,7 @@ class Hints {
 	}
 
 	/**
-	 * Get_plugin_install_url
-	 *
+	 * get_plugin_install_url
 	 * @param $plugin_slug
 	 *
 	 * @return string
@@ -195,8 +191,7 @@ class Hints {
 	}
 
 	/**
-	 * Get_plugin_activate_url
-	 *
+	 * get_plugin_activate_url
 	 * @param $plugin_slug
 	 *
 	 * @return string
@@ -210,8 +205,7 @@ class Hints {
 	}
 
 	/**
-	 * Is_dismissed
-	 *
+	 * is_dismissed
 	 * @param $key
 	 *
 	 * @return bool
@@ -222,8 +216,7 @@ class Hints {
 	}
 
 	/**
-	 * Should_display_hint
-	 *
+	 * should_display_hint
 	 * @param $hint_key
 	 *
 	 * @return bool
@@ -293,21 +286,19 @@ class Hints {
 	}
 
 	/**
-	 * Is_plugin_installed
-	 *
+	 * is_plugin_installed
 	 * @param $plugin
 	 *
 	 * @return bool
 	 */
-	public static function is_plugin_installed( $plugin ): bool {
+	public static function is_plugin_installed( $plugin ) : bool {
 		$plugins = get_plugins();
 		$plugin = self::ensure_plugin_folder( $plugin );
 		return ! empty( $plugins[ $plugin ] );
 	}
 
 	/**
-	 * Is_plugin_active
-	 *
+	 * is_plugin_active
 	 * @param $plugin
 	 *
 	 * @return bool
@@ -318,8 +309,7 @@ class Hints {
 	}
 
 	/**
-	 * Get_plugin_action_url
-	 *
+	 * get_plugin_action_url
 	 * @param $plugin
 	 *
 	 * @return string
@@ -337,8 +327,7 @@ class Hints {
 	}
 
 	/**
-	 * Ensure_plugin_folder
-	 *
+	 * ensure_plugin_folder
 	 * @param $plugin
 	 *
 	 * @return string
@@ -351,8 +340,7 @@ class Hints {
 	}
 
 	/**
-	 * Get_notice_allowed_html
-	 *
+	 * get_notice_allowed_html
 	 * @return array[]
 	 */
 	public static function get_notice_allowed_html(): array {

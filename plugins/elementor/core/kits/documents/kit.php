@@ -3,12 +3,13 @@ namespace Elementor\Core\Kits\Documents;
 
 use Elementor\Core\DocumentTypes\PageBase;
 use Elementor\Core\Files\CSS\Post as Post_CSS;
+use Elementor\Core\Kits\Documents\Tabs;
 use Elementor\Core\Settings\Manager as SettingsManager;
 use Elementor\Core\Settings\Page\Manager as PageManager;
 use Elementor\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+	exit; // Exit if accessed directly
 }
 
 class Kit extends PageBase {
@@ -111,10 +112,10 @@ class Kit extends PageBase {
 	 * Register a kit settings menu.
 	 *
 	 * @param $id
-	 * @param $class_name
+	 * @param $class
 	 */
-	public function register_tab( $id, $class_name ) {
-		$this->tabs[ $id ] = new $class_name( $this );
+	public function register_tab( $id, $class ) {
+		$this->tabs[ $id ] = new $class( $this );
 	}
 
 	/**
@@ -173,7 +174,7 @@ class Kit extends PageBase {
 		$page_settings_manager = SettingsManager::get_settings_managers( 'page' );
 		$page_settings_manager->save_settings( $document_settings, $this->get_id() );
 
-		/** @var Kit $autosave */
+		/** @var Kit $autosave **/
 		$autosave = $this->get_autosave();
 
 		if ( $autosave ) {

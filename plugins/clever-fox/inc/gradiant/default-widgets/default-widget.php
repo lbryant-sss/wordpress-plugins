@@ -45,5 +45,6 @@ $activate = array(
     update_option('sidebars_widgets',  $activate);
 	$MediaId = get_option('gradiant_media_id');
 	set_theme_mod( 'custom_logo', $MediaId[0] );
+	set_theme_mod( 'footer_first_img', CLEVERFOX_PLUGIN_URL .'inc/'.strtolower($theme->name).'/images/logo.png' );
 	set_theme_mod('nav_btn_lbl','Book Now');
 ?>

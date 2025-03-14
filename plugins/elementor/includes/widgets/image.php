@@ -693,7 +693,7 @@ class Widget_Image extends Widget_Base {
 	 *
 	 * @access private
 	 * @since 2.3.0
-	 * @param array $settings
+	 * @param $settings
 	 *
 	 * @return string
 	 */

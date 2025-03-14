@@ -21,7 +21,7 @@ class Module extends BaseModule {
 	}
 
 	public function enqueue_assets() {
-		$suffix = Utils::is_script_debug() ? '' : '.min';
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 		wp_enqueue_script(
 			'e-wc-product-editor',

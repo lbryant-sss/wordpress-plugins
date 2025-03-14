@@ -13,14 +13,14 @@
  * Requires Plugins:  woocommerce
  * Plugin URI:        https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/
  * Description:       Prints Packing List,Invoice,Delivery Note and Shipping Label.
- * Version:           4.7.4
+ * Version:           4.7.5
  * Author:            WebToffee
  * Author URI:        https://www.webtoffee.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       print-invoices-packing-slip-labels-for-woocommerce
  * Domain Path:       /languages
- * WC tested up to:   9.6
+ * WC tested up to:   9.7
  */
 // If this file is called directly, abort.
 if (! defined('WPINC')) {
@@ -67,7 +67,7 @@ if (!defined('WF_PKLIST_VERSION')) //check plugin file already included
     /**
      * Currently plugin version.
      */
-    define('WF_PKLIST_VERSION', '4.7.4');
+    define('WF_PKLIST_VERSION', '4.7.5');
 }
 
 

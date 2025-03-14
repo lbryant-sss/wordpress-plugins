@@ -4,7 +4,7 @@ namespace Elementor\Modules\GlobalClasses;
 
 use Elementor\Core\Utils\Collection;
 
-class Global_Classes {
+class Global_Classes implements \JsonSerializable {
 	private Collection $items;
 	private Collection $order;
 
@@ -30,5 +30,9 @@ class Global_Classes {
 			'items' => $this->get_items()->all(),
 			'order' => $this->get_order()->all(),
 		];
+	}
+
+	public function jsonSerialize() {
+		$this->get();
 	}
 }

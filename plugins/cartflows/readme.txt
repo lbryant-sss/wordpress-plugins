@@ -15,8 +15,9 @@ WooCommerce checkout & funnel builder to boost conversion and revenue with beaut
 **#1 WooCommerce Checkout & Funnel Builder by CartFlows – The Secret to High-Converting WooCommerce Stores** <br>
 ★★★★★<br>
 
-👉 [Official Website](https://cartflows.com)
-👉 [Watch Tutorials](https://www.youtube.com/@CartFlows)
+[youtube https://www.youtube.com/watch?v=tCm60PWOd0M]
+
+[What's New](https://cartflows.com/whats-new/) | [Docs](https://cartflows.com/docs/) | [Video Tutorials](https://www.youtube.com/@CartFlows/) | [Get Help](https://cartflows.com/support/open-a-ticket/) | [Community](https://www.facebook.com/groups/cartflows)
 
 ### The Best WooCommerce Checkout & Funnel Builder Ever⚡
 

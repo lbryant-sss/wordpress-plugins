@@ -1,17 +1,17 @@
 <?php
 defined('_VALID_AI') or die('Direct Access to this location is not allowed.');
 
-aiPostboxOpen("id-help-jquery", "Small jQuery help", $closedArray, "100%", " show-always");  
+aiPostboxOpen("id-help-jquery", "Small jQuery help", $closedArray, "100%", " show-always");
 ?>
-      <p>
-     <?php _e('You can use jQuery selector patterns directly to identify the elements you want to modify at some of the settings. This plugin does use this selectors than at the right place. This is already an advanced topic if you are not familiar with jQuery.', 'advanced-iframe') ?>
-      </p>
-<?php if (true) {  ?>
-    <p>
-    <a href="#" onclick="jQuery('#jquery-help').show(); return false;" > <?php _e('Show me a small jQuery selector help.', 'advanced-iframe') ?></a>
-    </p>
-      <?php
-      _e('<div id="jquery-help">
+  <p>
+    <?php _e('You can use jQuery selector patterns directly to identify the elements you want to modify at some of the settings. This plugin does use this selectors than at the right place. This is already an advanced topic if you are not familiar with jQuery.', 'advanced-iframe') ?>
+  </p>
+  <p>
+    <a href="#"
+       onclick="jQuery('#jquery-help').show(); return false;"> <?php _e('Show me a small jQuery selector help.', 'advanced-iframe') ?></a>
+  </p>
+  <?php
+  _e('<div id="jquery-help">
       <p>
       This is a small jQuery selector help which is optimized for the advanced iframes scenarios.
       </p>
@@ -128,7 +128,7 @@ aiPostboxOpen("id-help-jquery", "Small jQuery help", $closedArray, "100%", " sho
         <h4>Examples</h4>
         <ul>
 		<li><strong>$("div") selects all &lt;div&gt; elements</strong></li>
-		<li><strong>$("div a") selects all &lt;a&gt; elements within &lt;div&gt; elements</strong></li>	
+		<li><strong>$("div a") selects all &lt;a&gt; elements within &lt;div&gt; elements</strong></li>
 		<li><strong>$("div.someClass") selects all &lt;div&gt; elements with a class name of someClass</strong></li>
 		<li><strong>$(".someClass") selects all elements with class name someClass</strong></li>
 		<li><strong>$(".someClass.2ndClass") selects all elements with class="someClass 2ndClass"</strong></li>
@@ -148,7 +148,7 @@ aiPostboxOpen("id-help-jquery", "Small jQuery help", $closedArray, "100%", " sho
         <p>You can create the union of multiple disparate selectors by listing them, separated by commas. For example, the following matches all &lt;div&gt; and &lt;p&gt; elements: div,p</p>
          
        <h3>Usage in Advanced iframe</h3>
-       Above the default usage in jQuery is shown in the examples In Advanced iFrame the jQuery part is already rendered by the plugin. Therefore you only need to specify the selector. Also the following two rules apply: 
+       Above the default usage in jQuery is shown in the examples In Advanced iFrame the jQuery part is already rendered by the plugin. Therefore you only need to specify the selector. Also the following two rules apply:
        
        <ol>
        <li><b>Only single quotes are allowed</b>. So please always use \' and never ".</li>
@@ -159,20 +159,11 @@ aiPostboxOpen("id-help-jquery", "Small jQuery help", $closedArray, "100%", " sho
          <li>$("div") -> div</li>
           <li>$("#id1") -> #id1</li>
          <li>$("p:has(b)") -> p:has(b)</li>
-         <li>$("a[href$=.pdf]") -> a{{href$=.pdf}}</li> 
+         <li>$("a[href$=.pdf]") -> a{{href$=.pdf}}</li>
          <li>a[href="example.html"] -> a{{href=\'example.html\'}}</li>
        </ul>
-      </div>    
+      </div>
       ', 'advanced-iframe');
 
-} else {
-      _e('<p>Please go to the jQuery API <a target="_blank" href="https://api.jquery.com/category/selectors/">https://api.jquery.com/category/selectors/</a> for the official documentation.
-          </p>
-          <p>
-          The <strong>advanced iframe pro</strong> version has an included jQuery help with examples.
-          </p>
-          ', 'advanced-iframe');
-     }
-	
-	aiPostboxClose();	
+aiPostboxClose();
 ?>
