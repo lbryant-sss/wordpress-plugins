@@ -39,6 +39,9 @@ Like the plugin? Leave a [review](https://wordpress.org/support/plugin/weight-ba
 
 == Changelog ==
 
+= 6.6.0 =
+* Fix the issue when the shipping tax is excluded from the shipping total after an order is placed when using the checkout block with WooCommerce 9.7+.
+
 = 6.5.0 =
 * Fix the global shipping method not being activated by WooCommerce 9.7.
 * Tested with WooCommerce 9.7.
