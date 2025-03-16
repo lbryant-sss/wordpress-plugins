@@ -1,5 +1,6 @@
 <?php
 defined('_VALID_AI') or die('Direct Access to this location is not allowed.');
+
 ?>
 <br/>
 <div>
@@ -53,8 +54,8 @@ defined('_VALID_AI') or die('Direct Access to this location is not allowed.');
       <ol>
         <li><b class="bold">Add the following Javascript to the external web page you want to show in the iframe</b> (The optimal place is before the &lt;/body&gt; if possible. Otherwise, put it in the head section. NEVER place it just after the &lt;body&gt; as than the height of the script element would be measured!):', 'advanced-iframe') ?>
   <div class="manage-menus nounderline sub-domain-container hide-search">
-    <p class="bold">&lt;script src="<?php echo plugins_url(); ?>
-      /advanced-iframe/js/ai_external.js"&gt;&lt;/script&gt;</p>
+    <span class="ai-red">Important:</span> In the free and codecanyon version the plugin folder is "advanced-iframe". In the new pro version it is "advanced-iframe-pro". If you update from free to pro please change the path. For more details see <a href="https://www.tinywebgallery.com/blog/advanced-iframe/update-advanced-iframe-free-to-advanced-iframe-pro" target="_blank">here</a>.
+    <p class="bold">&lt;script src="<?php echo AIP_URL ?>js/ai_external.js"&gt;&lt;/script&gt;</p>
   </div>
   <p>
     <a href="#"
@@ -108,7 +109,7 @@ defined('_VALID_AI') or die('Direct Access to this location is not allowed.');
            <li>Use Chrome for debugging</li>
            <li>Force a full reload (win: ctrl + F5) and clean the browser cache</li>
 		   <li>Open ai_external.js directly in the browser by clicking <a target="_blank" href="', 'advanced-iframe');
-      echo plugins_url() . '/advanced-iframe/js/ai_external.js';
+      echo AIP_URL . 'js/ai_external.js';
       _e('">here</a> and also force a full reload. Sometimes the file is cached by a proxy. Check the time stamp (Created:) on the top of the file.</li>
            <li>I recommend to start with auto height only. Open the Javascript console (press F12 to open the developer tools of the browser), check for errors and fix them. Advanced iframe does also show configuration errors there!</li>
            <li>Check if ai_external.js is loaded in the network tab (F12). If you do not see it check if the file is included properly.</li>
@@ -260,7 +261,7 @@ defined('_VALID_AI') or die('Direct Access to this location is not allowed.');
         &nbsp;&nbsp;&nbsp;var keepOverflowHidden = "false";<br />
         &lt;/script&gt;<br />
       ', 'advanced-iframe') ?>
-  &lt;script src="<?php echo plugins_url(); ?>/advanced-iframe/js/ai_external.js"&gt;&lt;/script&gt;
+  &lt;script src="<?php echo AIP_URL ?>js/ai_external.js"&gt;&lt;/script&gt;
   </p>
 
   <?php
@@ -288,12 +289,12 @@ defined('_VALID_AI') or die('Direct Access to this location is not allowed.');
         </li>
         <li>
           <?php _e('a. Include the config file to the external_ai.js', 'advanced-iframe') ?><br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="<?php echo plugins_url(); ?>/advanced-iframe/js/ai_external.js"&gt;&lt;/script&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="<?php echo AIP_URL ?>js/ai_external.js"&gt;&lt;/script&gt;
           <br/>
           or
           <br/>
           b. &lt;script src="<?php echo plugins_url(); ?>/advanced-iframe-custom/ai_external_config_example.js"&gt;&lt;/script&gt;<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="<?php echo plugins_url(); ?>/advanced-iframe/js/ai_external.js"&gt;&lt;/script&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="<?php echo AIP_URL ?>js/ai_external.js"&gt;&lt;/script&gt;
         </li>
         <li>
           <?php _e('Done. Make sure that you refresh the browser cache if you make changes to your config file. My recommended way is to use option a and if different configurations are needed to use the config switcher template ai_config_switcher_template.js from the js folder as base <a href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo/external-workaround-auto-height-and-css-modifications#e7" target="_blank">Example 7</a> shows a working setup.', 'advanced-iframe') ?>

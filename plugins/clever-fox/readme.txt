@@ -4,7 +4,7 @@ Tags: homepage setup, companion, one click demo, sections, customizer
 Requires at least: 4.6 or higher
 Tested up to: 6.7.1
 Requires PHP: 5.6
-Stable tag: 26.2.72
+Stable tag: 26.2.73
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -83,6 +83,7 @@ Clever Fox plugin to enhance the functionality of free themes made by <a href="h
 - [Evion](https://wordpress.org/themes/evion/)				- [Free Demo](https://www.nayrathemes.com/demo/lite/evion/)
 - [Nexcraft](https://wordpress.org/themes/nexcraft/)		- [Free Demo](https://www.nayrathemes.com/demo/lite/nexcraft/)
 - [Nexcraft BPO](https://wordpress.org/themes/nexcraft-bpo/)	- [Free Demo](https://www.nayrathemes.com/demo/lite/nexcraft-bpo/)
+- [GradiantX](https://wordpress.org/themes/gradiantx/)		- [Free Demo](https://www.nayrathemes.com/demo/lite/gradiantx/)
 
 == Installation ==
 
@@ -168,6 +169,7 @@ Yes, This plugin is specially make for Nayra Themes. You can install theme for e
 - [Evion](https://wordpress.org/themes/evion/)
 - [Nexcraft](https://wordpress.org/themes/nexcraft/)
 - [Nexcraft BPO](https://wordpress.org/themes/nexcraft-bpo/)
+- [GradiantX](https://wordpress.org/themes/gradiantx/)
 
 == Screenshots ==
 
@@ -196,6 +198,9 @@ Clever Fox WordPress Plugin is licensed under the GPL3 (https://www.gnu.org/lice
 
 
 == Changelog ==
+
+= 26.2.73 =
+* Readme Updated
 
 = 26.2.72 =
 * Footer Logo Issue Resolved

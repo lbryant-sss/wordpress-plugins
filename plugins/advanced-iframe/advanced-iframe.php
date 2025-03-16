@@ -2,7 +2,7 @@
 /*
 Plugin Name: Advanced iFrame
 Plugin URI: https://wordpress.org/plugins/advanced-iframe/
-Version: 2025.0
+Version: 2025.1
 Text Domain: advanced-iframe
 Domain Path: /languages
 Author: Michael Dempfle
@@ -31,7 +31,7 @@ define('AIP_IMGURL', AIP_URL . 'img');
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-$aiVersion = '2025.0';
+$aiVersion = '2025.1';
 // check $aiJsSize
 
 $cons_advancediFrame = null;
@@ -950,8 +950,8 @@ if (function_exists('ai_fs')) {
           // double check if it is somehow the expected content.
           if ($this->aiContains($minifiedContent, 'var extendedDebug') && $this->aiContains($minifiedContent, 'ddOnloadEvent(aiExecuteWorkaround')) {
             $type = $this->aiContains($newContent, 'Advanced iframe pro') ? 'pro' : 'free';
-            $minifiedContent = '/** Advanced iframe ' . $type . ' external workaround file ' . $aiVersion . '. Created: ' . date("Y-m-d H:i:s") . " */\n" . $minifiedContent;
-          } else {
+            $minifiedContent = '/** Advanced iframe ' . $type . ' external workaround file ' . $aiVersion . '. Created: ' . date("Y-m-d H:i:s") . " */\n" . $minifiedContent;        
+		  } else {
             $minifiedContent = $newContent;
           }
         }
@@ -962,7 +962,7 @@ if (function_exists('ai_fs')) {
 
       function createMinimizedAiJs($backend) {
         global $aiVersion;
-        $aiJsSize = 87385;
+        $aiJsSize = 87363;
         $newContent = file_get_contents(dirname(__FILE__) . '/js/ai.js');
         $oldFileName = dirname(__FILE__) . '/js/ai.min.js';
         if ((strlen($newContent) == $aiJsSize) && file_exists($oldFileName)) {
@@ -982,8 +982,7 @@ if (function_exists('ai_fs')) {
         } else {
           // double check if it is somehow the expected content.
           if ($this->aiContains($minifiedContent, 'aiExtraSpace') && $this->aiContains($minifiedContent, 'aiOpenIframeOnClick')) {
-            $type = $this->aiContains($newContent, 'Advanced iframe pro') ? 'pro' : 'free';
-            $minifiedContent = '/** Advanced iframe ' . $type . ' functions v' . $aiVersion . '. Created: ' . date("Y-m-d H:i:s") . " */\n" . $minifiedContent;
+            $minifiedContent = '/** Advanced iframe functions v' . $aiVersion . '. Created: ' . date("Y-m-d H:i:s") . " */\n" . $minifiedContent;
           } else {
             $minifiedContent = $newContent;
           }

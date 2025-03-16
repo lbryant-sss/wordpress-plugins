@@ -6,7 +6,6 @@ defined('_VALID_AI') or die('Direct Access to this location is not allowed.');
 
 $filenamedir = dirname(__FILE__) . '/../../advanced-iframe-custom';
 
-
 if ($debug_js === 'bottom' && !isset($_REQUEST['debugRendered'])) {
   $html .= '<div id="aiDebugDivTotal"><div id="aiDebugDivHeader">Advanced iframe debug console - l: local messages, r: remote messages</div><div id="aiDebugDiv">';
   include_once dirname(__FILE__) . '/advanced-iframe-admin-functions.php';
@@ -186,7 +185,7 @@ if (!empty($hide_part_of_iframe)) {
             $div_content = trim(file_get_contents($filename));
             // evaluate shortcodes
             $div_content = do_shortcode($div_content);
-            $div_content = str_replace('{site}', site_url(), $div_content);
+            $div_content = str_replace('{plugin_url}', AIP_URL , $div_content);
             $div_content = str_replace('{x_style}', $x_style, $div_content);
             $div_content = str_replace('{x_distance}', $r_x, $div_content);
             $div_content = str_replace('{y_style}', $y_style, $div_content);
@@ -194,7 +193,7 @@ if (!empty($hide_part_of_iframe)) {
             $div_content = str_replace('{width}', $r_width, $div_content);
             $div_content = str_replace('{height}', $r_height, $div_content);
             $div_content = str_replace('{id}', $id, $div_content);
-            if ($fullscreen_button_style !== 'black') {
+			 if ($fullscreen_button_style !== 'black') {
               switch ($fullscreen_button_style) {
                 case 'black2':
                   $button_open = "fullscreen2_open.png";
@@ -353,7 +352,7 @@ if ($src_hide != '') {
     $src = get_site_url() . "/?aiUrl=" . $hash_url;
   } else {
     AdvancedIframeHelper::aiUpdateOption('aip_' . $hash_url, base64_encode($src), intval($srcHide));
-    $src = get_site_url() . '/wp-content/plugins/advanced-iframe/includes/iframe.php?aiUrl="' . $hash_url;
+     $src = AIP_URL . "includes/iframe.php?aiUrl=" . $hash_url;
   }
 }
 

@@ -182,6 +182,7 @@ function printDonation($devOptions, $evanto, $closedArray) {
     aiPostboxOpen("id-options-pro", "Upgrading to Advanced iFrame Pro", $closedArray);
     if ($isFreemiusMigration) {
       _e('<p>Advanced iframe is <strong>free for personal use</strong> and the Pro version a bargain for your business.</p>', 'advanced-iframe');
+	  _e('<p><span class="ai-red">Important:</span> if you upgrade to the new pro version you need to change the path of ai_external.js because of a different main directory. For more details see <a href="https://www.tinywebgallery.com/blog/advanced-iframe/update-advanced-iframe-free-to-advanced-iframe-pro" target="_blank">here</a>.</p>', 'advanced-iframe');
 	} else {
       _e('<p>Advanced iframe is <strong>free for personal use</strong> and the Pro version a bargain for your business. It has a limit of 10.000 views a month without a notice text, which should normally not been hit by a personal website.</p>', 'advanced-iframe');
     }

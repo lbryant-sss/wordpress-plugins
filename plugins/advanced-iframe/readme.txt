@@ -4,7 +4,7 @@ Donate link: http://www.tinywebgallery.com
 Tags: iframe, embed, resize, shortcode, modify css
 Requires at least: 3.3
 Tested up to: 6.7.2
-Stable tag: 2025.0
+Stable tag: 2025.1
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -167,6 +167,10 @@ Use the Wordpress installer to update or simply overwrite all files from your pr
 If you have some radio elements empty after the update simply select the one you like and save again.
 
 == Changelog ==
+= 2025.1 =
+- Fix: Documentation at the external workaround tab for the ai_external.js fixed and a link how to migrate from free to pro was added.
+- Fix: hide_fullscreen.html was linking to the old plugins folder in the pro version. Now a placeholder is filled automatically. Please delete the hide_fullscreen.html in the advanced-iframe-custom folder once and enter the administration to get a new version generated. See https://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo/full-screen-demo
+
 = 2025.0 =
 - New: Tested with WordPress 6.7.2
 - New: Tested with php 8.2, 8.3, 8.4

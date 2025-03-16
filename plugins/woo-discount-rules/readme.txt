@@ -351,7 +351,7 @@ Choose the discount type as Buy X get X. Then choose the filter and quantity ran
 * Dutch Translation - [@mvdburg1971](https://profiles.wordpress.org/mvdburg1971) - Michael van der Burg
 
 == Changelog ==
-= 2.6.7 - 19/02/24 =
+= 2.6.7 - 19/02/25 =
 * Added: Event: advanced_woo_discount_rules_free_product_price [PRO].
 * Added: jQuery event trigger wdr_dynamic_price_update [Core].
 * Added: Event: wlr_is_purchasable_need_to_check [Core].

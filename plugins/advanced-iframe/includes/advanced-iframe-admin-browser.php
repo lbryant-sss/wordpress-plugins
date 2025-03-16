@@ -71,7 +71,7 @@ aiPostboxOpen("id-help-browser", "Advanced iframe browser detection", $closedArr
          If the automatic update does not work you can get an updated version of the browsercap.ini lite file here: https://browscap.org/<br />Please use the light version as it contains all settings for the provided settings !
       </p>
       <p>
-         If you want to update the browser detection file get the lite_php_browscap.ini from there and rename it to browscap.ini and place it in the /wp-content/plugins/advanced-iframe/includesphp-browser-detection/cache/ folder<br />
+         If you want to update the browser detection file get the lite_php_browscap.ini from there, rename it to browscap.ini and place it in the ../includes/php-browser-detection/cache/ folder of the plugin<br />
          Or always get the latest version of the advanced iframe pro plugin. This file is also updated there!
       </p>
       </div>

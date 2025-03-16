@@ -201,9 +201,17 @@ class Widget_Output extends Base_Output {
 
 			} elseif ( 'icon' === $widget_type ) {
 
+				$link = is_string( $link ) ? $link : '';
+
+				if ( 0 === strpos( $link, './wp-admin/' ) ) {
+					// Prevent double wp-admin string ('/wp-admin/wp-admin/') when rendering the link.
+					$link = str_replace( './wp-admin/', './', $link );
+				}
+
 				$output = sprintf(
-					'<a href="%1s" target="%2s"><i class="%3s"></i></a>',
-					esc_url( $link ),
+					'<a href="%1$s" target="%2$s"><i class="%3$s"></i></a>',
+					// We don't use esc_url() here since $link can be a relative path.
+					esc_attr( $link ),
 					esc_attr( $target ),
 					esc_attr( $icon )
 				);
