@@ -1,5 +1,5 @@
 /**
- *  Advanced iframe functions v2025.1
+ *  Advanced iframe functions v2025.2
  */
 /* jslint devel: true, unused: false */
 /* globals ai_show_id_only:false, aiIsIe8: false, aiChangeUrl: false, aiResizeIframeHeightId: false, aiShowIframeId: false, findAndReplaceDOMText: false, aiShowDebug: false */
@@ -11,10 +11,8 @@ var aiAccTime = 0;
 var aiRealFullscreen = (typeof aiRealFullscreen === 'undefined') ? false : aiRealFullscreen;
 var aiInFullscreen = false;
 var aiOnloadEventsCounter = 0;
-const htmljQuery = jQuery('html');
-const bodyjQuery = jQuery('body');
-var aiOverflowHtml = htmljQuery.css('overflow') ?? 'visible';
-var aiOverflowBody = bodyjQuery.css('overflow') ?? 'visible';
+var aiOverflowHtml = jQuery('html').css('overflow') ?? 'visible';
+var aiOverflowBody = jQuery('body').css('overflow') ?? 'visible';
 
 var aiCallbackExists = typeof aiReadyCallbacks !== 'undefined' && aiReadyCallbacks instanceof Array;
 var aiReadyCallbacks = aiCallbackExists ? aiReadyCallbacks : [];
@@ -639,7 +637,7 @@ function aiInitAdminConfiguration(isPro, acc_type) {
     var nonceValue = jQuery('#twg-options').val();
     inputs += '<input type="hidden" name="twg-options" value="' + nonceValue + '" />';
 
-    bodyjQuery.append('<form action="' + url + '" method="post" id="poster">' + inputs + '</form>');
+    jQuery('body').append('<form action="' + url + '" method="post" id="poster">' + inputs + '</form>');
     jQuery('#poster').submit();
   });
 
@@ -1579,10 +1577,9 @@ function aiShowLayerIframe(event, id, path, showLoadingIcon, keep, reload) {
     .css('visibility', 'visible');
   }
 
-  htmljQuery.css('overflow-y', 'visible');
-  bodyjQuery.css('overflow', 'hidden')
+  jQuery('html').css('overflow-y', 'visible');
+  jQuery('body').css('overflow', 'hidden')
   .append('<img alt="" id="ai_backlink" src="' + path + 'close.png" style="z-index:100005;position:fixed;top:0;right:0;cursor:pointer" />');
-  // was 'body' before
 
   var icon = '<!-- -->';
   if (reload && showLoadingIcon === 'true') {
@@ -1617,8 +1614,8 @@ function aiHideLayerIframe(id, keep) {
   jQuery('#ai_backlink').remove();
   jQuery('#ai_backlayer').remove();
   jQuery('#ai-div-loader-global').remove();
-  bodyjQuery.css('overflow', 'auto');
-  htmljQuery.css('overflow-y', 'scroll');
+  jQuery('body').css('overflow', 'auto');
+  jQuery('html').css('overflow-y', 'scroll');
 }
 
 /**
@@ -1984,8 +1981,8 @@ jQuery(document).ready(function () {
     // remove css for fullscreen-open
     jQuery('div.ai-wrapper-div').removeClass("ai-fullscreen-wrapper")
     jQuery('iframe.ai-fullscreen').removeClass("ai-fullscreen");
-    htmljQuery.css('overflow', aiOverflowHtml);
-    bodyjQuery.css('overflow', aiOverflowBody);
+    jQuery('html').css('overflow', aiOverflowHtml);
+    jQuery('body').css('overflow', aiOverflowBody);
 
     // hide/remove the close button
     jQuery('.ai-fullscreen-close').hide();

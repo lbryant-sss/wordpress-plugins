@@ -8,11 +8,11 @@ if ($evanto || $isDemo) { ?>
 
   <?php _e('You can only show a part of the iframe. This solution DOES WORK across domains without any hacks! This is a solution that works only with css by placing a window over the iframe which does a clipping. All areas of the iframe that are not inside the window cannot be seen. Please specify the upper left corner coordinates x and y and the height and width that should be shown. Specify a fixed height and width in the iframe options at the top for optimal results! I recommend to make the iframe itself that big that no scrollbars do exist anymore. Otherwise scrolling e.g. with the mouse wheel on some browsers is possible. Simply select the area you want to show with the graphical area selector! You can even zoom the selected area that it fits properly e.g. on a mobile phone. Please go to the <a target="_blank" href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo/show-only-a-part-of-the-iframe">pro demo</a> for some working examples. Please also check the additional 5 options. These are the advanced features to handle changes in the iframe.<p>Also media queries are supported! This enables you to show different areas depending on the browser width. Please see <a  target="_blank" href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo/show-only-a-part-of-the-iframe#e55">example 55</a> for a working demo.</p>', 'advanced-iframe');
 
-  echo '<p><input id="s" class="button-primary" type="button" name="update_iframe-loader" onclick="aiOpenSelectorWindow(\'' . plugins_url() . '/advanced-iframe/includes/advanced-iframe-area-selector.html\');" value="';
+  echo '<p><input id="s" class="button-primary" type="button" name="update_iframe-loader" onclick="aiOpenSelectorWindow(\'' . plugins_url() . '/'.$aiSlug.'/includes/advanced-iframe-area-selector.html\');" value="';
   _e('Open the area selector', 'advanced-iframe');
   echo '" /><a href="#" id="ai-selector-help-link">Show me an image how the settings are used.</a></p>';
 
-  echo '<div id="ai-selector-help"><img alt="" src="' . plugins_url() . '/advanced-iframe/img/help-area-selector.gif"></div>';
+  echo '<div id="ai-selector-help"><img alt="" src="' . plugins_url() . '/'.$aiSlug.'/img/help-area-selector.gif"></div>';
 
 
   echo '<table class="form-table">';
@@ -59,7 +59,7 @@ if ($evanto || $isDemo) {
     <?php _e('Please note: This is an advanced setting! You need to know basic html/css to use all possibilities of this feature! You can define an area which will be hidden by a rectangle you define. This can e.g. be used to hide a logo.', 'advanced-iframe'); ?>
   </p>
   <?php
-  echo '<p><input id="s" class="button-primary" type="button" name="update_iframe-loader" onclick="aiOpenSelectorWindow(\'' . plugins_url() . '/advanced-iframe/includes/advanced-iframe-area-selector.html?hide_feature=true\');" value="';
+  echo '<p><input id="s" class="button-primary" type="button" name="update_iframe-loader" onclick="aiOpenSelectorWindow(\'' . plugins_url() . '/'.$aiSlug.'/includes/advanced-iframe-area-selector.html?hide_feature=true\');" value="';
   _e('Open the area selector in the hide parts mode', 'advanced-iframe');
   echo '" /></p>';
   ?>

@@ -9,7 +9,7 @@ _e('This is done e.g. by the tag name itself. header, footer, h1 can often be us
 _e('Most of the other elements in html are divs which very often can be identified by either an id or a class. ', 'advanced-iframe');
 _e('Ids are (should be) unique in a page while classes can be used several times.<br>Now lets find them:', 'advanced-iframe');
 echo '</p>';
-echo '<img class="img-find-id" src="' . plugins_url() . '/advanced-iframe/img/how-to-find-id.png">';
+echo '<img class="img-find-id" src="' . plugins_url() . '/'.$aiSlug.'/img/how-to-find-id.png">';
 echo '<ol><li>';
 _e('Go to the page and press F12. This does open the developer tools. On the left upper corner is a small arrow icon.', 'advanced-iframe');
 echo '</li><li>';

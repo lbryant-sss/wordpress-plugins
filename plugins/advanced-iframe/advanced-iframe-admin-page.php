@@ -12,7 +12,7 @@ defined('_VALID_AI') or die('Direct Access to this location is not allowed.');
 include_once dirname(__FILE__) . '/includes/advanced-iframe-admin-functions.php';
 include_once dirname(__FILE__) . '/includes/advanced-iframe-admin-quickstart.php';
 
-global $aiVersion, $isFreemius, $isFreemiusMigration, $showFreemiusMigration, $ai_fs;
+global $aiVersion, $isFreemius, $isFreemiusMigration, $showFreemiusMigration, $ai_fs, $aiSlug;
 
 $updated = false;
 $evanto = (file_exists(dirname(__FILE__) . "/includes/class-cw-envato-api.php"));

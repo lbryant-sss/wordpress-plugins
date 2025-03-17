@@ -55,7 +55,7 @@ if (isset($aip_standalone)) {
     }
   }
 
-  $aiPath = "/advanced-iframe";
+  $aiPath = "/" . $aiSlug;
   $options = get_option('advancediFrameAdminOptions');
 // set defaults for not existing settings
 // can happen if users never save the config but only use the shortcodes

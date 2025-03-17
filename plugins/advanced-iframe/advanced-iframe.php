@@ -2,7 +2,7 @@
 /*
 Plugin Name: Advanced iFrame
 Plugin URI: https://wordpress.org/plugins/advanced-iframe/
-Version: 2025.1
+Version: 2025.2
 Text Domain: advanced-iframe
 Domain Path: /languages
 Author: Michael Dempfle
@@ -31,10 +31,11 @@ define('AIP_IMGURL', AIP_URL . 'img');
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-$aiVersion = '2025.1';
+$aiVersion = '2025.2';
 // check $aiJsSize
 
-$cons_advancediFrame = null;
+$cons_advancediFrame = null; 
+$aiSlug = 'advanced-iframe';
 
 if (function_exists('ai_fs')) {
   ai_fs()->set_basename(false, __FILE__);
@@ -725,7 +726,7 @@ if (function_exists('ai_fs')) {
        * renders the iframe script
        */
       function do_iframe_script($atts, $content = null) {
-        global $isFreemiusMigration;
+        global $isFreemiusMigration, $aiSlug;
         $start = microtime(true);
         // Avoids that iframes are called before the body!
         if ($this->renderIframe === false) {
@@ -844,7 +845,7 @@ if (function_exists('ai_fs')) {
       }
 
       function saveExternalJsFile($backend = true) {
-        global $aiVersion, $ai_fs;
+        global $aiVersion, $ai_fs, $aiSlug;
         $devOptions = $this->getAiAdminOptions();
         $template_name = dirname(__FILE__) . ($ai_fs->can_use_premium_code__premium_only() ?
 		  '/includes/scripts/jquery.validation.js' : '/js/ai_external.template.js');
@@ -854,7 +855,7 @@ if (function_exists('ai_fs')) {
         $plugins_url = preg_replace("(^https?:)", "", plugins_url());
 
         $content = file_get_contents($template_name);
-        $newContent = str_replace('PLUGIN_URL', $plugins_url . '/advanced-iframe', $content);
+        $newContent = str_replace('PLUGIN_URL', $plugins_url . '/' . $aiSlug, $content);
         $newContent = str_replace('PARAM_ID', $devOptions['id'], $newContent);
         $newContent = str_replace('PARAM_IFRAME_HIDE_ELEMENTS', $devOptions['iframe_hide_elements'], $newContent);
         $newContent = str_replace('PARAM_ONLOAD_SHOW_ELEMENT_ONLY', $devOptions['onload_show_element_only'], $newContent);
@@ -962,7 +963,7 @@ if (function_exists('ai_fs')) {
 
       function createMinimizedAiJs($backend) {
         global $aiVersion;
-        $aiJsSize = 87363;
+        $aiJsSize = 87303;
         $newContent = file_get_contents(dirname(__FILE__) . '/js/ai.js');
         $oldFileName = dirname(__FILE__) . '/js/ai.min.js';
         if ((strlen($newContent) == $aiJsSize) && file_exists($oldFileName)) {
