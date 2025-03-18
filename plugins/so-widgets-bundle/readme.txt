@@ -3,8 +3,8 @@ Tags: widgets, blocks, contact form, blog, slider
 Requires at least: 4.2
 Tested up to: 6.7
 Requires PHP: 7.0.0
-Stable tag: 1.66.0
-Build time: 2025-03-01T12:24:46+00:00
+Stable tag: 1.67.0
+Build time: 2025-03-17T17:13:29+02:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis, alexgso
 Donate link: https://siteorigin.com/downloads/premium/
@@ -108,6 +108,16 @@ SiteOrigin Premium includes access to our professional email support service, pe
 The Widgets Bundle global interface is available at Plugins > SiteOrigin Widgets. Widgets can be enabled or disabled as needed. If a widget offers global settings, you can access those via the Settings button next to each applicable widget.
 
 == Changelog ==
+
+= 1.67.0 - 17 March 2025 =
+* SiteOrigin Widget Block: Transitioned from a single multi-select block to dedicated individual blocks for each widget, significantly improving the block editor experience.
+* Blog: Improved author avatar sizing and prevented false positive Web Application Firewall (WAF) flags.
+* Cards, Post Carousel: Enhanced resize handling after posts are loaded and fixed dot navigation.
+* Google Maps: Resolved type check issues.
+* Post Carousel: Implemented sizing improvements.
+* Recent Posts: Prevented WAF blocking.
+* General: Added more info link to legacy block and implemented preview check for widget blocks.
+* Developer: Updated Google Fonts and Font Awesome libraries.
 
 = 1.66.0 - 01 March 2025 =
 * Carousel: Improved resize handling by delaying events, ensuring adaptive height application and correct breakpoints, and reorganizing layout.

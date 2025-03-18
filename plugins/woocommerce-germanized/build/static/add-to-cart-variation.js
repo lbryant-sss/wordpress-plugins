@@ -37,7 +37,7 @@ var __webpack_exports__ = {};
     self.$wrapper.find('' + '.woocommerce-product-attributes-item--food_description, ' + '.woocommerce-product-attributes-item--alcohol_content, ' + '.woocommerce-product-attributes-item--net_filling_quantity, ' + '.woocommerce-product-attributes-item--drained_weight, ' + '.woocommerce-product-attributes-item--food_place_of_origin, ' + '.woocommerce-product-attributes-item--nutri_score, ' + '.woocommerce-product-attributes-item--food_distributor').each(function () {
       var $tr = $(this);
       if ($tr.find('.woocommerce-product-attributes-item__value').is(':empty') || $tr.find('.woocommerce-product-attributes-item__value .wc-gzd-additional-info-placeholder').is(':empty')) {
-        $tr.addClass('wc-gzd-additional-info-placeholder');
+        $tr.attr('aria-hidden', 'true').addClass('wc-gzd-additional-info-placeholder');
       }
     });
   };
@@ -160,21 +160,21 @@ var __webpack_exports__ = {};
       $this.attr('data-o_content', $this.html());
     }
     $this.html(content);
-    $this.addClass('variation_modified variation_gzd_modified').removeClass('wc-gzd-additional-info-placeholder').show();
+    $this.addClass('variation_modified variation_gzd_modified').attr('aria-hidden', 'false').removeClass('wc-gzd-additional-info-placeholder').show();
     if ($this.is(':empty')) {
-      $this.hide();
+      $this.attr('aria-hidden', 'true').hide();
       if ($this.parents('.wp-block-woocommerce-gzd-product-price-label').length > 0) {
-        $this.parents('.wp-block-woocommerce-gzd-product-price-label').addClass('wp-block-woocommerce-gzd-product-is-empty');
+        $this.parents('.wp-block-woocommerce-gzd-product-price-label').attr('aria-hidden', 'true').addClass('wp-block-woocommerce-gzd-product-is-empty');
       }
       if ($this.parents('.woocommerce-product-attributes-item').length > 0) {
-        $this.parents('.woocommerce-product-attributes-item').hide();
+        $this.parents('.woocommerce-product-attributes-item').attr('aria-hidden', 'true').hide();
       }
     } else {
       if ($this.parents('.wp-block-woocommerce-gzd-product-price-label').length > 0) {
-        $this.parents('.wp-block-woocommerce-gzd-product-price-label').removeClass('wp-block-woocommerce-gzd-product-is-empty');
+        $this.parents('.wp-block-woocommerce-gzd-product-price-label').attr('aria-hidden', 'false').removeClass('wp-block-woocommerce-gzd-product-is-empty');
       }
       if ($this.parents('.woocommerce-product-attributes-item').length > 0) {
-        $this.parents('.woocommerce-product-attributes-item').show();
+        $this.parents('.woocommerce-product-attributes-item').attr('aria-hidden', 'false').show();
       }
     }
   };
@@ -189,16 +189,16 @@ var __webpack_exports__ = {};
       $this.removeClass('variation_modified variation_gzd_modified').show();
     }
     if ($this.is(':empty')) {
-      $this.addClass('wc-gzd-additional-info-placeholder').hide();
+      $this.addClass('wc-gzd-additional-info-placeholder').attr('aria-hidden', 'true').hide();
       if ($this.parents('.wp-block-woocommerce-gzd-product-price-label').length > 0) {
-        $this.parents('.wp-block-woocommerce-gzd-product-price-label').addClass('wp-block-woocommerce-gzd-product-is-empty');
+        $this.parents('.wp-block-woocommerce-gzd-product-price-label').addClass('wp-block-woocommerce-gzd-product-is-empty').attr('aria-hidden', 'true');
       }
       if ($this.parents('.woocommerce-product-attributes-item').length > 0) {
         $this.parents('.woocommerce-product-attributes-item').hide();
       }
     } else {
       if ($this.parents('.wp-block-woocommerce-gzd-product-price-label').length > 0) {
-        $this.parents('.wp-block-woocommerce-gzd-product-price-label').removeClass('wp-block-woocommerce-gzd-product-is-empty');
+        $this.parents('.wp-block-woocommerce-gzd-product-price-label').removeClass('wp-block-woocommerce-gzd-product-is-empty').attr('aria-hidden', 'false');
       }
       if ($this.parents('.woocommerce-product-attributes-item').length > 0) {
         $this.parents('.woocommerce-product-attributes-item').show();

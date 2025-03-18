@@ -1,13 +1,13 @@
 === Ally - Web Accessibility & Usability ===
-Contributors: elemntor, pojo.me, KingYes, ariel.k, jzaltzberg, bainternet
+Contributors: elemntor
 Tags: Web Accessibility, Accessibility, A11y, Accessibility statement, wcag
 Requires at least: 4.1
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 License: GPLv2 or later
 
-Ally Web Accessibility (formerly One Click Accessibility) enables you to include easy-to-set accessibility features that make your website more inclusive to visitors regardless of their abilities.
+Ally, the web accessibility plugin (formerly One Click Accessibility), adds easy-to-set features to make your website more inclusive for all visitors.
 
 == Description ==
 
@@ -159,6 +159,15 @@ An accessibility statement is a declaration of your commitment to providing an i
 5. Widget on Site: This is how the accessibility widget appears on a live website.
 
 == Changelog ==
+= 3.0.3 2025-03-17 =
+* New: Added an option to manage URL change
+* New: added Danish language support to widget
+* New: added compatibility with popular caching plugins
+* Tweak: Improved connect flow
+* Tweak: Admin panel UI widget preview improvements
+* Tweak: Improved Admin panel UI accessibility
+* Fix: PHP notice on legacy admin pages in +PHP8.2
+
 = 3.0.2 2025-02-25 =
 * New: Added an option to revert to the legacy widget
 * Fix: Media library not loading in some sites

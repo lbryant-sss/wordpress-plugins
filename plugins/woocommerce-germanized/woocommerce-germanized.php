@@ -3,13 +3,12 @@
  * Plugin Name: Germanized for WooCommerce
  * Plugin URI: https://www.vendidero.de/woocommerce-germanized
  * Description: Germanized for WooCommerce extends WooCommerce to become a legally compliant store in the german market.
- * Version: 3.18.7
+ * Version: 3.19.1
  * Author: vendidero
  * Author URI: https://vendidero.de
  * Requires at least: 5.4
- * Tested up to: 6.7
  * WC requires at least: 3.9
- * WC tested up to: 9.6
+ * WC tested up to: 9.7
  *
  * Text Domain: woocommerce-germanized
  * Domain Path: /i18n/languages/
@@ -69,7 +68,7 @@ if ( ! class_exists( 'WooCommerce_Germanized' ) ) :
 		 *
 		 * @var string
 		 */
-		public $version = '3.18.7';
+		public $version = '3.19.1';
 
 		/**
 		 * @var WooCommerce_Germanized $instance of the plugin
@@ -322,6 +321,8 @@ if ( ! class_exists( 'WooCommerce_Germanized' ) ) :
 			add_filter( 'woocommerce_product_get_global_unique_id', array( $this, 'add_gtin_fallback' ), 10, 2 );
 			add_filter( 'woocommerce_product_variation_get_global_unique_id', array( $this, 'add_gtin_fallback' ), 10, 2 );
 
+			add_action( 'change_locale', array( $this, 'on_change_locale' ) );
+
 			// Payment gateways
 			add_filter( 'woocommerce_payment_gateways', array( $this, 'register_gateways' ) );
 
@@ -336,6 +337,14 @@ if ( ! class_exists( 'WooCommerce_Germanized' ) ) :
 			 * @since 1.0.0
 			 */
 			do_action( 'woocommerce_germanized_init' );
+		}
+
+		public function on_change_locale() {
+			if ( function_exists( 'WC' ) ) {
+				WC()->countries = new WC_Countries();
+			}
+
+			WC_GZD_Post_Types::register_taxonomies();
 		}
 
 		protected function check_corona_notice() {
@@ -685,7 +694,6 @@ if ( ! class_exists( 'WooCommerce_Germanized' ) ) :
 					'woocommerce-subscriptions'        => 'WC_GZD_Compatibility_WooCommerce_Subscriptions',
 					'woo-paypalplus'                   => 'WC_GZD_Compatibility_Woo_PaypalPlus',
 					'woocommerce-paypal-payments'      => 'WC_GZD_Compatibility_WooCommerce_PayPal_Payments',
-					'translatepress-multilingual'      => 'WC_GZD_Compatibility_TranslatePress_Multilingual',
 					'elementor-pro'                    => 'WC_GZD_Compatibility_Elementor_Pro',
 					'elementor'                        => 'WC_GZD_Compatibility_Elementor',
 					'klarna-checkout-for-woocommerce'  => 'WC_GZD_Compatibility_Klarna_Checkout_For_WooCommerce',
@@ -918,6 +926,7 @@ if ( ! class_exists( 'WooCommerce_Germanized' ) ) :
 
 			$locale = apply_filters( 'plugin_locale', $locale, 'woocommerce-germanized' );
 
+			unload_textdomain( 'woocommerce-germanized', true );
 			load_textdomain( 'woocommerce-germanized', trailingslashit( WP_LANG_DIR ) . 'woocommerce-germanized/woocommerce-germanized-' . $locale . '.mo' );
 			load_plugin_textdomain( 'woocommerce-germanized', false, plugin_basename( __DIR__ ) . '/i18n/languages/' );
 		}

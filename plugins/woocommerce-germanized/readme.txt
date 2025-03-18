@@ -2,10 +2,10 @@
 Contributors: vendidero, vdwoocommercesupport
 Tags: woocommerce, germany, germany, deutsch, woo
 Requires at least: 5.4
-Tested up to: 6.7
+Tested up to: 6.8
 WC requires at least: 3.9
-WC tested up to: 9.6
-Stable tag: 3.18.7
+WC tested up to: 9.7
+Stable tag: 3.19.1
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -206,6 +206,21 @@ Bug reports may be filed via our [GitHub repository](https://github.com/vendider
 6. Edit pdf documents (Pro)
 
 == Changelog ==
+= 3.19.1 =
+* Fix: Warning while declaring Shiptastic feature compatibility in Woo Core
+* Fix: Shiptastic migration script force reset options to prevent unnecessary warnings
+* Fix: Possible infinite loop when using WPML with Shiptastic
+* Fix: WooCommerce PayPal Payments legacy Shipments namespace compatibility
+
+= 3.19.0 =
+* New: Refactored Shipments to Shiptastic. Read more at https://vendidero.de/doc/woocommerce-germanized/shipments-zu-shiptastic-migration
+* Improvement: Use inner spans to apply delivery time html classes
+* Improvement: Add shipping tax rates even for shipping costs with zero taxes, e.g. free shipping
+* Improvement: Watch for attribute changes while observing prices too
+* Improvement: Shipping method: Added tax status option to make sure Woo can retrieve the right tax status
+* Improvement: Assembled bundle handling when creating shipments
+* Fix: Hide block-fill-wrapper in block checkout
+
 = 3.18.7 =
 * New: Support labelling (power supply) for wireless electronic devices
 * Improvement: Latest WC Checkout block UI compatibility

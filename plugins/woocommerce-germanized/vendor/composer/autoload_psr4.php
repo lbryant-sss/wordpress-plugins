@@ -8,8 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'setasign\\Fpdi\\' => array($vendorDir . '/setasign/fpdi/src'),
     'baltpeter\\Internetmarke\\' => array($vendorDir . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke'),
-    'Vendidero\\Germanized\\Shipments\\' => array($baseDir . '/packages/woocommerce-germanized-shipments/src'),
-    'Vendidero\\Germanized\\DHL\\' => array($baseDir . '/packages/woocommerce-germanized-dhl/src'),
+    'Vendidero\\Shiptastic\\DHL\\' => array($baseDir . '/packages/dhl-for-shiptastic/src'),
+    'Vendidero\\Shiptastic\\' => array($baseDir . '/packages/shiptastic-for-woocommerce/src'),
     'Vendidero\\Germanized\\' => array($baseDir . '/src'),
     'Vendidero\\EUTaxHelper\\' => array($baseDir . '/packages/woocommerce-eu-tax-helper/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),

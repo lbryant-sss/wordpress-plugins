@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Checkout Field Editor (Checkout Manager) for WooCommerce – The best WooCommerce checkout manager plugin to manage WooCommerce checkout fields.
 
 == Description ==
-**WooCommerce checkout field editor** enables you to edit the default checkout fields of your WooCommerce platform, add, edit, hide, or delete the default fields, change labels, rearrange checkout fields, validate the checkout fields, add custom css classes etc.
+**WooCommerce Checkout Field Editor** enables you to edit the default checkout fields of your WooCommerce platform, add, edit, hide, or delete the default fields, change labels, rearrange checkout fields, validate the checkout fields, add custom css classes etc.
 
 🔥 **#The Ultimate Solution for Customizing WooCommerce Checkout Fields**
 
@@ -36,16 +36,14 @@ The default WooCommerce checkout field editor offers only basic fields, limiting
 
 **👉Note:** Block Compatibility → Our Checkout Field Editor (Checkout Manager) for WooCommerce now supports WooCommerce Checkout Blocks, allowing customization with Text, Select, Radio, and Checkbox fields, plus validation for Email, Phone, and URL. More field types will be added in upcoming updates.
 
-[Try Demo]((https://flydemos.com/wcfe/?utm_source=wcfe_free&utm_medium=readme&utm_campaign=try_demo)) |
-[Documentation](https://www.themehigh.com/docs/docs-category/checkout-field-editor-for-woocommerce/?utm_source=wcfe_free&utm_medium=readme&utm_campaign=help_docs) | 
-[Get Pro ](https://www.themehigh.com/product/woocommerce-checkout-field-editor-pro/?utm_source=wcfe_free&utm_medium=readme&utm_campaign=wcfe_upgrade_link) 
+[Try Demo]((https://flydemos.com/wcfe/?utm_source=wcfe_free&utm_medium=readme&utm_campaign=try_demo)) | [Documentation](https://www.themehigh.com/docs/docs-category/checkout-field-editor-for-woocommerce/?utm_source=wcfe_free&utm_medium=readme&utm_campaign=help_docs) | [Get Pro ](https://www.themehigh.com/product/woocommerce-checkout-field-editor-pro/?utm_source=wcfe_free&utm_medium=readme&utm_campaign=wcfe_upgrade_link) 
 
 ==🔥 EXPLORE WHAT OUR FREE VERSION OFFERS  ==
 
 = ✅  ADD FIELDS TYPES TO CHECKOUT PAGE =
 👉 Easily add up to 20 different checkout field types to gather more customer information using **Classic checkout**.
 
-	1.  Text
+    1.  Text
     2.  Number
     3.  Hidden
     4.  Password
@@ -75,7 +73,7 @@ The default WooCommerce checkout field editor offers only basic fields, limiting
 
 Users can **edit, delete and enable/disable these fields**. With the simple drag-and-drop interface, users can also easily **reposition fields** to meet their business needs effortlessly.
 
-= ✅ Validate the Checkout Fields =
+= ✅ VALIDATE THE CHECKOUT FIELDS =
 Validate both custom and default checkout fields to prevent incomplete or incorrect submissions, enhancing the user experience and reducing errors during checkout. 
 	
 *  **Number**: Restricts input to numerical values
@@ -84,23 +82,23 @@ Validate both custom and default checkout fields to prevent incomplete or incorr
 * **State & Postcode**: Checks location-based details
 * **URL**: Allows only properly formatted web addresses
 
-= ✅ Manage Custom Checkout Field Visibility =
+= ✅ MANAGE CUSTOM CHECKOUT FIELD VISIBILITY =
 - In **Classic checkout** control the visibility of custom checkout fields on the Order Details Page and in emails with a simple checkbox option
 
 - In **Block checkout** control the visibility of custom checkout fields in the Admin emails, customer emails, admin order details & customer order details with a simple checkbox option
 
-= ✅  Prevent Address Field Overrides =
+= ✅  PREVENT ADDRESS FIELD OVERRIDES =
 By default, WooCommerce will change the address format based on the countries. Using this plugin, you can prevent the override address field properties and use the values set using the plugin. You can also change the address formats displayed in the addresses in **My Account page**, **Thank You page** and **Transactional Emails**.
 
 **👉Note:** The custom fields created using this plugin can also be included in the addresses using the override feature.
 
-= ✅ One-Click Reset to Default Fields =
+= ✅ ONE-CLICK RESET TO DEFAULT FIELDS =
 Restore the original state and revert to default fields effortlessly with a single click.
 
-= ✅ Easily Translate to Other Languages =
+= ✅ EASILY TRANSLATE TO OTHER LANGUAGES =
 The Checkout Field Editor plugin supports WPML, Polylang, and Loco Translate, making it simple to translate fields into different languages. For dynamic strings, use the Polylang or WPML plugin.
 
-==🔥 Why  Switch to Pro?==
+==🔥 WHY SWITCH TO PRO?==
 
 While the free version of [Checkout Field Editor for WooCommerce](https://flydemos.com/wcfe/?utm_source=wcfe_free&utm_medium=readme&utm_campaign=try_demo%29) offers essential features to enhance your checkout pages, the premium version offers full control over your checkout process & easily customize WooCommerce Checkout Fields – Works with Both Classic & Block Checkout!—ensuring a better customer experience and higher revenue such as:
 
@@ -130,7 +128,7 @@ The Extra product options plugin is WPML compatible and it lets you create produ
 = ✅ POSITION SECTIONS AT 14 POSITIONS  = 
 Display sections at 14 different locations, offering greater flexibility in organizing your checkout page.
 
-	1.  Before customer details
+    1.  Before customer details
     2.  After customer details
     3.  Before billing form
     4.  After billing form

@@ -666,8 +666,8 @@ class WC_GZD_Legal_Checkbox_Manager {
 								$title = $rate->label;
 							}
 
-							if ( function_exists( 'wc_gzd_get_shipping_provider_method' ) ) {
-								if ( $method = wc_gzd_get_shipping_provider_method( $rate ) ) {
+							if ( function_exists( 'wc_stc_get_shipping_provider_method' ) ) {
+								if ( $method = wc_stc_get_shipping_provider_method( $rate ) ) {
 									if ( $provider = $method->get_shipping_provider_instance() ) {
 										$title = $provider->get_title();
 									}
@@ -851,7 +851,7 @@ class WC_GZD_Legal_Checkbox_Manager {
 			$visible = ! empty( $_POST[ $checkbox->get_html_name() . '-field' ] ) ? true : false; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
 			if ( $visible && ! $checkbox->validate( $value, 'checkout' ) ) {
-				$errors->add( 'checkbox', $checkbox->get_error_message(), array( 'id' => $checkbox->get_html_id() ) );
+				$errors->add( $checkbox->get_html_name(), $checkbox->get_error_message(), array( 'id' => $checkbox->get_html_id() ) );
 			}
 		}
 	}
