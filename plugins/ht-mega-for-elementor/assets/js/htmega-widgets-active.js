@@ -26,7 +26,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
             var scroll_columns = parseInt(settings['scroll_columns']) || 1;
             var tablet_width = parseInt(settings['tablet_width']) || 800;
             var tablet_display_columns = parseInt(settings['tablet_display_columns']) || 1;
-            var tablet_scroll_columns = parseInt( settings['tablet_scroll_columns'] ) || 1;
+            var tablet_scroll_columns = parseInt(settings['tablet_scroll_columns']) || 1;
             var mobile_width = parseInt(settings['mobile_width']) || 480;
             var mobile_display_columns = parseInt(settings['mobile_display_columns']) || 1;
             var mobile_scroll_columns = parseInt(settings['mobile_scroll_columns']) || 1;
@@ -376,16 +376,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
             // Sanitize marker content
             if (mapsettings && Array.isArray(mapsettings)) {
                 mapsettings = mapsettings.map(function(marker) {
-                    if (marker.baloon_text) {
-                        // Create a temporary div to sanitize HTML
-                        var $temp = $('<div></div>');
-                        $temp.html(marker.baloon_text);
-                        // Remove potentially dangerous elements and attributes
-                        $temp.find('script,iframe,object,embed,form,input,style,meta,link,base,applet').remove();
-                        $temp.find('*').removeAttr('onclick onload onerror onmouseover onmouseout onmouseenter onmouseleave');
-                        
-                        marker.baloon_text = $temp.html();
-                    }
+                    marker.baloon_text = DOMPurify.sanitize(marker.baloon_text);
                     return marker;
                 });
             }
@@ -735,20 +726,6 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
         if( notify_elem.length > 0 ){
 
             $(notify_opt.notify_btn_class).on("click", function () {
-
-              // Create a temporary div to parse HTML safely
-              var $temp = $('<div></div>');
-              $temp.html(notify_opt.notifymessage);
-              
-              // Remove all attributes from all elements (prevents onerror, onload, etc.)
-              $temp.find('*').removeAttr('onclick onload onerror onmouseover onmouseout onmouseenter onmouseleave');
-              
-              // Remove all potentially dangerous elements
-              $temp.find('script,iframe,object,embed,form,input,style,meta,link,base,applet').remove();
-              
-              // Get the sanitized HTML
-              var message = $temp.html();
-
                 $.notify({}, {
                     type: notify_opt.type,
                     element: notify_opt.notify_class,
@@ -770,9 +747,9 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                     offset: notify_opt.offset,
                     spacing: 10,
                     z_index: 99999,
-template: '<div class="htmega-alert-wrap-'+notify_opt.wrapid+' '+notify_opt.width+' alert alert-{0}">' +
-    '<span data-notify="dismiss" class="htmega-close"><i class="fas fa-times"></i></span>' +notify_opt.icon+'<span class="notify-message-content">' + message +
-    '</span></div>'
+                    template: '<div class="htmega-alert-wrap-'+notify_opt.wrapid+' '+notify_opt.width+' alert alert-{0}">' +
+                    '<span data-notify="dismiss" class="htmega-close"><i class="fas fa-times"></i></span>' +notify_opt.icon+'<span class="notify-message-content">' + DOMPurify.sanitize(notify_opt.notifymessage) +
+                    '</span></div>'
 
                 });
 

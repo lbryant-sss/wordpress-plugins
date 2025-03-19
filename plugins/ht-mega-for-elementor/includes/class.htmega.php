@@ -350,6 +350,17 @@ final class HTMega_Addons_Elementor {
         require_once ( HTMEGA_ADDONS_PL_PATH . 'includes/class.updater.php' );
         require_once ( HTMEGA_ADDONS_PL_PATH . 'admin/include/custom-control/preset-manage.php' );
         require_once ( HTMEGA_ADDONS_PL_PATH . 'admin/include/custom-control/preset-select.php' );
+        
+        // Initialize Template Builder
+
+
+        if ( is_plugin_active( 'htmega-pro/htmega_pro.php' ) && file_exists( HTMEGA_ADDONS_PL_PATH_PRO . 'includes/admin/class.theme-builder.php' ) ) {
+            require_once ( HTMEGA_ADDONS_PL_PATH_PRO . 'includes/admin/class.theme-builder.php' );
+        } else {
+            require_once ( HTMEGA_ADDONS_PL_PATH . 'admin/include/class.theme-builder.php' );
+        }
+  
+
         // Initialize onboarding early
         if ( ! get_option( 'htmega_onboarding_completed' ) && ! get_option('htmega_element_tabs') && ! get_option('htmega_advance_element_tabs ') ) {
             require_once ( HTMEGA_ADDONS_PL_PATH . 'admin/include/settings-panel/includes/classes/Onboarding.php' );

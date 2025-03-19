@@ -83,6 +83,7 @@
 
 		<div class="flexible-shipping-rules-settings" id="<?php echo esc_attr( $settings_field_id ); ?>"
 			 data-settings-field-name="<?php echo esc_attr( $settings_field_name ); ?>">
+			<input name="<?php echo esc_attr( $settings_field_name ); ?>" type="hidden" value="<?php echo esc_attr( json_encode( $rules_table_settings['rules_settings'] ) ); ?>">
 			<div class="notice notice-error inline">
 				<?php echo wp_kses_post( wpautop( __( 'This is where the rules table should be displayed. If it\'s not, it is usually caused by the conflict with the other plugins you are currently using, JavaScript error or the caching issue. Clear your browser\'s cache or deactivate the plugins which may be interfering.', 'flexible-shipping' ) ) ); ?>
 			</div>

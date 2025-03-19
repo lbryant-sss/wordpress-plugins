@@ -47,7 +47,10 @@ class SingleRuleSettings
             unset($converted_rule_settings['based_on']);
             unset($converted_rule_settings['min']);
             unset($converted_rule_settings['max']);
-            $rule_settings = apply_filters('flexible_shipping_converted_rule_settings', $converted_rule_settings, $rule_settings);
+            if (function_exists('apply_filters')) {
+                // Filter present in Flexible Shipping Locations.
+                $rule_settings = apply_filters('flexible_shipping_converted_rule_settings', $converted_rule_settings, $rule_settings);
+            }
             if (empty($rule_settings['conditions'])) {
                 $rule_settings['conditions'] = array(array('condition_id' => 'none'));
             }

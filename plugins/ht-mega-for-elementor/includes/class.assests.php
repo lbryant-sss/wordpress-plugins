@@ -174,6 +174,11 @@ if ( !class_exists( 'HTMega_Elementor_Addons_Assests' ) ) {
                     'version' => HTMEGA_VERSION,
                     'deps'    => [ 'jquery' ]
                 ],
+                'dompurify' => [
+                    'src'     => HTMEGA_ADDONS_PL_URL . 'assets/js/purify.min.js',
+                    'version' => HTMEGA_VERSION,
+                    'deps'    => [ 'jquery','htmega-widgets-scripts','htmega-widgets-scripts-min' ]
+                ],
                 'htmega-widgets-scripts' => [
                     'src'     => HTMEGA_ADDONS_PL_URL . 'assets/js/htmega-widgets-active.js',
                     'version' => HTMEGA_VERSION,
@@ -575,6 +580,7 @@ if ( !class_exists( 'HTMega_Elementor_Addons_Assests' ) ) {
             wp_enqueue_script( 'htmega-popper' );
             wp_enqueue_script( 'htbbootstrap' );
             wp_enqueue_script( 'waypoints' ); 
+            wp_enqueue_script( 'dompurify' ); 
 
 
             if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
@@ -582,7 +588,7 @@ if ( !class_exists( 'HTMega_Elementor_Addons_Assests' ) ) {
                 wp_enqueue_script( 'htmega-widgets-scripts' ); 
             } else {
                 wp_enqueue_style( 'htmega-global-style-min' );
-                wp_enqueue_script( 'htmega-widgets-scripts' );
+                wp_enqueue_script( 'htmega-widgets-scripts-min' );
             }
 
             if ( ! htmega_is_editing_mode() ) {

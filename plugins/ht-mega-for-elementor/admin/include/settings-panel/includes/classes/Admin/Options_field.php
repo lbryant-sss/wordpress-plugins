@@ -1491,37 +1491,81 @@ class Options_Field {
                         array(
                             'id'    => 'single_blog_page',
                             'name'   => __( 'Single Blog Template.', 'htmega-addons' ),
-                            'desc' => __( 'You can select a single blog page from here. Or create a ', 'htmega-addons' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=elementor_library&tabs_group=library' ) ) . '">' . esc_html__( 'new one', 'htmega-addons' ) . '</a>',
+                            'desc' => __( 'You can select a single blog page from here. Or create a ', 'htmega-addons' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=htmega_theme_builder' ) ) . '">' . esc_html__( 'new one', 'htmega-addons' ) . '</a>',
                             'type'    => 'select',
                             'default' => '0',
-                            'options' => htmega_elementor_template(),
+                            'options' => [
+                                'group'=>[
+                                    'htmega' => [
+                                        'label' => __( 'HT Mega', 'htmega-addons' ),
+                                        'options' => htmega_theme_builder_templates(['single_blog_page']),
+                                    ],
+                                    'elementor' => [
+                                        'label' => __( 'Elementor', 'htmega-addons' ),
+                                        'options' => htmega_elementor_template()
+                                    ]
+                                ]
+                            ],
                             'condition' => [ ['condition_key' => 'themebuilder_enable', 'condition_value' => 'on'] ]
                         ),
                         array(
                             'id'    => 'archive_blog_page',
                             'name'   => __( 'Blog Template.', 'htmega-addons' ),
-                            'desc'    => __( 'You can select blog page from here. Or create a ', 'htmega-addons' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=elementor_library&tabs_group=library' ) ) . '">' . esc_html__( 'new one', 'htmega-addons' ) . '</a>',
+                            'desc'    => __( 'You can select blog page from here. Or create a ', 'htmega-addons' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=htmega_theme_builder' ) ) . '">' . esc_html__( 'new one', 'htmega-addons' ) . '</a>',
                             'type'    => 'select',
                             'default' => '0',
-                            'options' => htmega_elementor_template(),
+                            'options' => [
+                                'group'=>[
+                                    'htmega' => [
+                                        'label' => __( 'HT Mega', 'htmega-addons' ),
+                                        'options' => htmega_theme_builder_templates(['archive_blog_page']),
+                                    ],
+                                    'elementor' => [
+                                        'label' => __( 'Elementor', 'htmega-addons' ),
+                                        'options' => htmega_elementor_template()
+                                    ]
+                                ]
+                            ],
                             'condition' => [ ['condition_key' => 'themebuilder_enable', 'condition_value' => 'on'] ]
                         ),
                         array(
                             'id'    => 'header_page',
                             'name'   => __( 'Header Template.', 'htmega-addons' ),
-                            'desc'    => __( 'You can select header template from here. Or create a ', 'htmega-addons' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=elementor_library&tabs_group=library' ) ) . '">' . esc_html__( 'new one', 'htmega-addons' ) . '</a>',
+                            'desc'    => __( 'You can select header template from here. Or create a ', 'htmega-addons' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=htmega_theme_builder' ) ) . '">' . esc_html__( 'new one', 'htmega-addons' ) . '</a>',
                             'type'    => 'select',
                             'default' => '0',
-                            'options' => htmega_elementor_template(),
+                            'options' => [
+                                'group'=>[
+                                    'htmega' => [
+                                        'label' => __( 'HT Mega', 'htmega-addons' ),
+                                        'options' => htmega_theme_builder_templates(['header_page']),
+                                    ],
+                                    'elementor' => [
+                                        'label' => __( 'Elementor', 'htmega-addons' ),
+                                        'options' => htmega_elementor_template()
+                                    ]
+                                ]
+                            ],
                             'condition' => [ ['condition_key' => 'themebuilder_enable', 'condition_value' => 'on'] ]
                         ),
                         array(
                             'id'    => 'footer_page',
                             'name'   => __( 'Footer Template.', 'htmega-addons' ),
-                            'desc'    => __( 'You can select footer template from here. Or create a ', 'htmega-addons' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=elementor_library&tabs_group=library' ) ) . '">' . esc_html__( 'new one', 'htmega-addons' ) . '</a>',
+                            'desc'    => __( 'You can select footer template from here. Or create a ', 'htmega-addons' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=htmega_theme_builder' ) ) . '">' . esc_html__( 'new one', 'htmega-addons' ) . '</a>',
                             'type'    => 'select',
                             'default' => '0',
-                            'options' => htmega_elementor_template(),
+                            'options' => [
+                                'group'=>[
+                                    'htmega' => [
+                                        'label' => __( 'HT Mega', 'htmega-addons' ),
+                                        'options' => htmega_theme_builder_templates(['footer_page']),
+                                    ],
+                                    'elementor' => [
+                                        'label' => __( 'Elementor', 'htmega-addons' ),
+                                        'options' => htmega_elementor_template()
+                                    ]
+                                ]
+                            ],
                             'condition' => [ ['condition_key' => 'themebuilder_enable', 'condition_value' => 'on'] ]
                         ),
                         array(
@@ -1530,7 +1574,18 @@ class Options_Field {
                             'desc'    => __( 'You can select search page from here.', 'htmega-addons' ),
                             'type'    => 'select',
                             'default' => '0',
-                            'options' => htmega_elementor_template(),
+                            'options' => [
+                                'group'=>[
+                                    'htmega' => [
+                                        'label' => __( 'HT Mega', 'htmega-addons' ),
+                                        'options' => htmega_theme_builder_templates(['search_page']),
+                                    ],
+                                    'elementor' => [
+                                        'label' => __( 'Elementor', 'htmega-addons' ),
+                                        'options' => htmega_elementor_template()
+                                    ]
+                                ]
+                            ],
                             'is_pro' => true,
                             'condition' => [ ['condition_key' => 'themebuilder_enable', 'condition_value' => 'on'] ]
                         ),
@@ -1540,7 +1595,18 @@ class Options_Field {
                             'desc'    => __( 'You can select 404 page from here.', 'htmega-addons' ),
                             'type'    => 'select',
                             'default' => '0',
-                            'options' => htmega_elementor_template(),
+                            'options' => [
+                                'group'=>[
+                                    'htmega' => [
+                                        'label' => __( 'HT Mega', 'htmega-addons' ),
+                                        'options' => htmega_theme_builder_templates(['error_page']),
+                                    ],
+                                    'elementor' => [
+                                        'label' => __( 'Elementor', 'htmega-addons' ),
+                                        'options' => htmega_elementor_template()
+                                    ]
+                                ]
+                            ],
                             'is_pro' => true,
                             'condition' => [ ['condition_key' => 'themebuilder_enable', 'condition_value' => 'on'] ]
                         ),
@@ -1550,7 +1616,18 @@ class Options_Field {
                             'desc'    => __( 'You can select coming soon page from here.', 'htmega-addons' ),
                             'type'    => 'select',
                             'default' => '0',
-                            'options' => htmega_elementor_template(),
+                            'options' => [
+                                'group'=>[
+                                    'htmega' => [
+                                        'label' => __( 'HT Mega', 'htmega-addons' ),
+                                        'options' => htmega_theme_builder_templates(['coming_soon_page']),
+                                    ],
+                                    'elementor' => [
+                                        'label' => __( 'Elementor', 'htmega-addons' ),
+                                        'options' => htmega_elementor_template()
+                                    ]
+                                ]
+                            ],
                             'is_pro' => true,
                             'condition' => [ ['condition_key' => 'themebuilder_enable', 'condition_value' => 'on'] ]
                         ),

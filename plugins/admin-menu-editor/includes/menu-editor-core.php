@@ -110,7 +110,11 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	 */
 	private $loaded_modules = array();
 	private $are_modules_loaded = false;
-	private $is_loading_modules = false;
+
+	const MODULE_STATE_LOADING = 1;
+	const MODULE_STATE_LOADED = 2;
+	private $module_load_state = array();
+	private $module_loader_recursion_depth = 0;
 
 	/**
 	 * @var array List of capabilities that are used in the default admin menu. Used to detect meta capabilities.
@@ -520,18 +524,19 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	}
 
 	public function load_modules() {
-		//Prevent indirect recursion. This can happen if, for example, a module
-		//immediately tries to check user capabilities when it's loaded.
-		if ( $this->is_loading_modules ) {
-			return;
-		}
-		$this->is_loading_modules = true;
+		$this->module_loader_recursion_depth++;
 
 		//Load any active modules that haven't been loaded yet.
 		foreach($this->get_active_modules() as $id => $module) {
-			if ( array_key_exists($id, $this->loaded_modules) ) {
+			//Skip modules that are already loaded or are in the process of being loaded.
+			if (
+				array_key_exists($id, $this->loaded_modules)
+				|| !empty($this->module_load_state[$id])
+			) {
 				continue;
 			}
+
+			$this->module_load_state[$id] = self::MODULE_STATE_LOADING;
 
 			include ($module['path']);
 			if ( !empty($module['className']) ) {
@@ -540,20 +545,26 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			} else {
 				$this->loaded_modules[$id] = true;
 			}
-		}
-		$this->are_modules_loaded = true;
 
-		//Set up the tabs for the menu editor page. Many tabs are provided by modules.
-		$firstTabs = array('editor' => 'Admin Menu');
-		if ( is_network_admin() ) {
-			//TODO: This could be in extras.php
-			$firstTabs = array('network-admin-menu' => 'Network Admin Menu');
+			$this->module_load_state[$id] = self::MODULE_STATE_LOADED;
 		}
-		$this->tabs = apply_filters('admin_menu_editor-tabs', $firstTabs);
-		//The "Settings" tab is always last.
-		$this->tabs['settings'] = 'Settings';
 
-		$this->is_loading_modules = false;
+		//This final setup step should only run once, after all modules have been loaded.
+		if ( $this->module_loader_recursion_depth === 1 ) {
+			$this->are_modules_loaded = true;
+
+			//Set up the tabs for the menu editor page. Many tabs are provided by modules.
+			$firstTabs = array('editor' => 'Admin Menu');
+			if ( is_network_admin() ) {
+				//TODO: This could be in extras.php
+				$firstTabs = array('network-admin-menu' => 'Network Admin Menu');
+			}
+			$this->tabs = apply_filters('admin_menu_editor-tabs', $firstTabs);
+			//The "Settings" tab is always last.
+			$this->tabs['settings'] = 'Settings';
+		}
+
+		$this->module_loader_recursion_depth--;
 	}
 
 	/**
@@ -1603,15 +1614,6 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 
 		if ( ($this->cached_custom_menu !== null) && ($this->loaded_menu_config_id === $config_id) ) {
 			return $this->cached_custom_menu;
-		}
-
-		//Modules should not do anything in their constructor that immediately triggers a menu load.
-		//The menu configuration might not load correctly if all active modules have not been loaded
-		//first (see below).
-		if ( $this->is_loading_modules ) {
-			throw new LogicException(
-				'Modules should not immediately trigger a menu configuration load. This is a bug or plugin conflict.'
-			);
 		}
 
 		//Modules can register custom hooks that change how menu settings are loaded, so we need to load active modules

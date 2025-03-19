@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.2-alpha] - unreleased
+
+This is an alpha version! The changes listed here are not final.
+
+### Changed
+- Update package dependencies.
+
+### Fixed
+- My Jetpack: Add back legacy properties to get_info() function
+- Product Interstitial Modal: Fix not running custom onClick events if a customModalTrigger was used.
+
 ## [5.7.1] - 2025-03-17
 ### Fixed
 - Allow screen readers to read stats. [#42275]
@@ -2025,6 +2036,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Created package
 
+[5.7.2-alpha]: https://github.com/Automattic/jetpack-my-jetpack/compare/5.7.1...5.7.2-alpha
 [5.7.1]: https://github.com/Automattic/jetpack-my-jetpack/compare/5.7.0...5.7.1
 [5.7.0]: https://github.com/Automattic/jetpack-my-jetpack/compare/5.6.0...5.7.0
 [5.6.0]: https://github.com/Automattic/jetpack-my-jetpack/compare/5.5.3...5.6.0

@@ -294,6 +294,11 @@ if ( ! class_exists( 'HasTech_Notices' ) ){
          * @return void
          */
         public function show_admin_notices(){
+            $screen  = get_current_screen();
+            $id      = isset($screen->id) ? $screen->id : "";
+            if ($id === 'plugins') { 
+                return;
+            }
             $notices_displayed_count = 0;
             $notices = $this->get_notices();
 

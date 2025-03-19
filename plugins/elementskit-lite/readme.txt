@@ -4,7 +4,7 @@ Tags: Elementor addons, mega menu builder,  header footer builder, elementor add
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 3.4.4
+Stable tag: 3.4.7
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,7 +21,7 @@ Besides exclusive features, ElementsKit offers exclusive functions and unique co
 🏆 Great **Elementor Addon**! Check the [**ElementsKit demo**](https://wpmet.com/plugin/elementskit/elements/?utm_source=org&utm_medium=readme) for new website-building possibilities. 
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VhBl3dHT5SY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://www.youtube.com/watch?v=VhBl3dHT5SY
 
 | [ElementsKit Home Page](https://wpmet.com/plugin/elementskit/?utm_source=org&utm_medium=readme) | [ElementsKit Elementor Templates](https://wpmet.com/plugin/elementskit/templates/?utm_source=org&utm_medium=readme) | [Blog](https://wpmet.com/blog/?utm_source=org&utm_medium=readme) | [Documentation](https://wpmet.com/doc/elementskit/?utm_source=org&utm_medium=readme) | [Need Support?](https://wpmet.com/support-ticket-form/?utm_source=org&utm_medium=readme) | [How to get started with ElementsKit Pro](https://wpmet.com/doc/how-to-purchase-and-activate-elementskit-pro-license/?utm_source=org&utm_medium=readme) |
 
@@ -32,7 +32,7 @@ Besides exclusive features, ElementsKit offers exclusive functions and unique co
 
 ## KEY FEATURES
 
-🔥 All time **downloads of ELementsKit : 32,006,450** (32 million+ all time downloads).
+🔥 All time **downloads of ElementsKit : 32,602,118** (32 million+ all time downloads).
 
 ⭐ 90+ Free and Premium Widgets
 
@@ -332,6 +332,14 @@ If you like using ElementsKit Elementor addon, then consider checking out our ot
 Visit  [wpmet](https://wpmet.com/?utm_source=org&utm_medium=readme)  to learn more about how to get the best of WordPress with  [Tutorials, Tips & Tricks](https://wpmet.com/blog)!
 
 == Changelog ==
+ElementsKit Elementor Addons Version: 3.4.7 (2025-03-18)
+Fixed: Swiper compatibility support for `Elementor 3.28.0`
+
+ElementsKit Elementor Addons Version: 3.4.6 (2025-03-18)
+Fixed: Date picker issue in DateTime control in widget builder
+Fixed: Ajax pagination not working in blog posts widget
+Fixed: Add styles for swiper arrow buttons in image accordion widget
+
 ElementsKit Elementor Addons Version: 3.4.4 (2025-02-16)
 Improved: Submenu indicators styling controls in nav menu widget
 Improved: Countdown timer widget sanitization and escaping

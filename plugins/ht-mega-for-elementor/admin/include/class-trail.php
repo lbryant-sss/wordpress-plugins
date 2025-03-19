@@ -159,7 +159,7 @@ if ( ! class_exists( 'HTMega_Trial' ) ) {
          */
         public function is_plugin_screen() {
             $screen  = get_current_screen();
-	    $id      = isset( $screen->id ) ? $screen->id : "";
+	        $id      = isset( $screen->id ) ? $screen->id : "";
             $result  = in_array($id, $this->screen_ids) ? true : false;
 
             return $result;

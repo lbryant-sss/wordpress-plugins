@@ -212,6 +212,23 @@ Go to the settings menu after you activate the plugin and follow the instruction
 
 == Changelog ==
 
+= 5.3.9 - 17/Mar/2025 =
+
+* FEATURE: Added commenting capability to IP whitelists
+* FEATURE: Added diagnostics reporting
+* FEATURE: Added a whitelist and user role-based access limit to the REST API firewall
+* FIX: "Undefined index: path" error when front-end HTTP Authentication is enabled.
+* FIX: Resolved dashboard translation issue where text lacked whitespace and was not properly translated
+* TWEAK: Remove uses of unserialize without restriction of allowed_classes
+* TWEAK: Refactored IP commands class to use response helper
+* TWEAK: Removed WP REST API tab
+* TWEAK: Switched "Critical Feature Status" toggle buttons on the dashboard to a status light system
+* TWEAK: Updated the security strength meter on the dashboard
+* TWEAK: Improved the dashboard widget to display a chart showing the number of logins over the last 7 days
+* TWEAK: Enhanced the maintenance mode switch on the dashboard for consistency with the rest of the plugin
+* TWEAK: Converted Brute Force menu actions to use AJAX
+* TWEAK: Updated seasonal notices 
+
 = 5.3.8 - 16/Dec/2024 =
 
 * FIX: Updated the plugin notices to fix translation related fatal errors.
@@ -1527,4 +1544,4 @@ those who want to enable the basic firewall but do not have "AllowOverride" opti
 - First commit to the WP repository.
 
 == Upgrade Notice ==
-* 5.3.8: Fixed a translation related fatal error. See changelog for full details. A recommended update for all.
+* 5.3.9: Added commenting capability to IP lists and various other tweaks. See changelog for full details. A recommended update for all.

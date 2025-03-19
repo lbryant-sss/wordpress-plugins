@@ -64,6 +64,30 @@ class AmeActorSelectorCore {
         _.forEach(this.actorManager.getRoles(), function (role) {
             actors.push(role);
         });
+        //Sort the default roles in a fixed order, the rest alphabetically.
+        const defaultRoleOrder = {
+            'role:administrator': 1,
+            'role:editor': 2,
+            'role:author': 3,
+            'role:contributor': 4,
+            'role:subscriber': 5
+        };
+        actors.sort(function (a, b) {
+            const aId = a.getId();
+            const bId = b.getId();
+            if (defaultRoleOrder.hasOwnProperty(aId) && defaultRoleOrder.hasOwnProperty(bId)) {
+                return defaultRoleOrder[aId] - defaultRoleOrder[bId];
+            }
+            else if (defaultRoleOrder.hasOwnProperty(aId)) {
+                return -1;
+            }
+            else if (defaultRoleOrder.hasOwnProperty(bId)) {
+                return 1;
+            }
+            else {
+                return a.getDisplayName().localeCompare(b.getDisplayName());
+            }
+        });
         //Include the Super Admin (multisite only).
         const user = this.actorManager.getUser(this.currentUserLogin);
         if (user && user.isSuperAdmin) {

@@ -2,6 +2,24 @@
 
 ### This is a list detailing changes for all Jetpack releases.
 
+## 14.5-a.6 - unreleased
+
+This is an alpha version! The changes listed here are not final.
+
+### Enhancements
+- Forms: Add quick link in the admin bar for form entries
+
+### Bug fixes
+- Forms: add a default label for multi text field
+- Forms: removes the salesforce beta badge
+
+### Other changes <!-- Non-user-facing changes go here. This section will not be copied to readme.txt. -->
+- Backup: Move admin menu addition to a function hooked into admin_menu, preventing PHP warnings.
+- OpenTable block: removed the ability to search restaurants by name
+- SEO Enhancer: Persist features on store and update UI
+- SEO Enhancer: Respect alt text feature toggle and only request alt text on URL change
+- Update package dependencies.
+
 ## 14.5-a.5 - 2025-03-17
 ### Enhancements
 - Social: Add "Schedule" functionality to the Share Post modal. [#42376]

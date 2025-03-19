@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Payment Plugins for Stripe WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Payment Plugins for Stripe WooCommerce 3.3.83\n"
+"Project-Id-Version: Payment Plugins for Stripe WooCommerce 3.3.84\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-stripe-payment\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-15T00:56:06+00:00\n"
+"POT-Creation-Date: 2025-03-18T19:32:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: woo-stripe-payment\n"
@@ -1207,16 +1207,16 @@ msgstr ""
 msgid "Invalid amount entered."
 msgstr ""
 
-#: includes/controllers/class-wc-stripe-controller-order-actions.php:198
-#: includes/controllers/class-wc-stripe-controller-order-actions.php:201
+#: includes/controllers/class-wc-stripe-controller-order-actions.php:193
+#: includes/controllers/class-wc-stripe-controller-order-actions.php:196
 msgid "Order total must be greater than zero."
 msgstr ""
 
-#: includes/controllers/class-wc-stripe-controller-order-actions.php:215
+#: includes/controllers/class-wc-stripe-controller-order-actions.php:210
 msgid "This order has already been processed. Transaction ID: %1$s. Payment method: %2$s"
 msgstr ""
 
-#: includes/controllers/class-wc-stripe-controller-order-actions.php:231
+#: includes/controllers/class-wc-stripe-controller-order-actions.php:226
 msgid "Order customer Id and payment method customer Id do not match."
 msgstr ""
 

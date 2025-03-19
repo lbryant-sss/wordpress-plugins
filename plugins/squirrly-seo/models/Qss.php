@@ -85,7 +85,7 @@ class SQ_Models_Qss {
 		if ( $rows ) {
 			foreach ( $rows as $row ) {
 				$metas = SQ_Classes_ObjController::getDomain( 'SQ_Models_Domain_Sq', maybe_unserialize( $row->seo ) );
-				if ( ! empty( $metas->innerlinks ) ) {
+				if ( get_post( $row->seo->post_id ) && ! empty( $metas->innerlinks ) ) {
 					foreach ( $metas->innerlinks as $id => $innerlink ) {
 						$innerlink['id']   = $id;
 						$innerlinks[ $id ] = SQ_Classes_ObjController::getDomain( 'SQ_Models_Domain_Innerlink', $innerlink );

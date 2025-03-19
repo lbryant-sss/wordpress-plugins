@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HT Mega – Absolute Addons for Elementor.\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-24 08:30+0000\n"
+"POT-Creation-Date: 2025-03-18 07:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid " hours ago"
 msgstr ""
 
-#: includes/helper-function.php:1160
+#: includes/helper-function.php:1236
 msgid " is missing! Please install and activate "
 msgstr ""
 
@@ -106,6 +106,13 @@ msgstr ""
 #, php-format
 msgid "%s Comments"
 msgstr ""
+
+#: admin/include/class.theme-builder.php:607
+#, php-format
+msgid "%s template moved to trash."
+msgid_plural "%s templates moved to trash."
+msgstr[0] ""
+msgstr[1] ""
 
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:261
 msgid "& Many More Features..."
@@ -481,7 +488,7 @@ msgstr ""
 msgid "31"
 msgstr ""
 
-#: includes/class.assests.php:784
+#: includes/class.assests.php:790
 msgid "360 Rotation"
 msgstr ""
 
@@ -694,7 +701,7 @@ msgstr ""
 msgid "Accordion Title Two"
 msgstr ""
 
-#: includes/class.assests.php:432 admin/include/template-library.php:323
+#: includes/class.assests.php:437 admin/include/template-library.php:323
 #: admin/include/template-library.php:422
 #: includes/recommended-plugins/class.recommended-plugins.php:247
 msgid "Activate"
@@ -708,19 +715,19 @@ msgstr ""
 msgid "Activate the Elements You Require"
 msgstr ""
 
-#: includes/class.assests.php:431 admin/include/template-library.php:331
+#: includes/class.assests.php:436 admin/include/template-library.php:331
 #: admin/include/template-library.php:433
 #: includes/recommended-plugins/class.recommended-plugins.php:128
 #: includes/recommended-plugins/class.recommended-plugins.php:258
 msgid "Activated"
 msgstr ""
 
-#: includes/class.assests.php:429
+#: includes/class.assests.php:434
 #: includes/recommended-plugins/class.recommended-plugins.php:127
 msgid "Activating.."
 msgstr ""
 
-#: includes/class.assests.php:430 includes/widgets/htmega_accordion.php:632
+#: includes/class.assests.php:435 includes/widgets/htmega_accordion.php:632
 #: includes/widgets/htmega_accordion.php:1183
 #: includes/widgets/htmega_buddy_press.php:71
 #: includes/widgets/htmega_carousel.php:1006
@@ -794,6 +801,15 @@ msgstr ""
 msgid "Add Images"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:71
+msgid "Add New"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:72
+#: admin/include/class.theme-builder.php:663
+msgid "Add New Template"
+msgstr ""
+
 #: extensions/scroll-to-top/class.scroll-to-top.php:172
 #: extensions/scroll-to-top/class.scroll-to-top.php:199
 msgid "Add the position X  Offest of the button"
@@ -859,7 +875,7 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: includes/class.assests.php:628
+#: includes/class.assests.php:634
 #: admin/include/settings-panel/includes/templates/sidebar-banner.php:57
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:252
 msgid "Advanced Slider"
@@ -1011,10 +1027,10 @@ msgstr ""
 #: includes/widgets/htmega_tablepress.php:410
 #: includes/widgets/htmega_tabs.php:652
 #: includes/widgets/htmega_teammember.php:610
-#: includes/widgets/htmega_teammember.php:739
-#: includes/widgets/htmega_teammember.php:829
-#: includes/widgets/htmega_teammember.php:920
-#: includes/widgets/htmega_teammember.php:987
+#: includes/widgets/htmega_teammember.php:788
+#: includes/widgets/htmega_teammember.php:878
+#: includes/widgets/htmega_teammember.php:969
+#: includes/widgets/htmega_teammember.php:1036
 #: includes/widgets/htmega_testimonial_grid.php:553
 #: includes/widgets/htmega_toggle.php:193
 #: includes/widgets/htmega_tooltip.php:234
@@ -1055,7 +1071,8 @@ msgstr ""
 msgid "ALL"
 msgstr ""
 
-#: includes/class.assests.php:451 includes/widgets/htmega_calendly.php:60
+#: includes/class.assests.php:456 admin/include/class.theme-builder.php:228
+#: includes/widgets/htmega_calendly.php:60
 #: includes/widgets/htmega_data_table.php:597
 msgid "All"
 msgstr ""
@@ -1087,7 +1104,7 @@ msgstr ""
 msgid "All Data Saved"
 msgstr ""
 
-#: includes/class.assests.php:412
+#: includes/class.assests.php:417
 msgid "All Items have been Loaded"
 msgstr ""
 
@@ -1095,7 +1112,11 @@ msgstr ""
 msgid "All settings has been reset successfully."
 msgstr ""
 
-#: includes/class.assests.php:437
+#: admin/include/class.theme-builder.php:75
+msgid "All Templates"
+msgstr ""
+
+#: includes/class.assests.php:442
 msgid "All Types"
 msgstr ""
 
@@ -1192,6 +1213,11 @@ msgstr ""
 msgid "Are you cheating?"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:667
+msgid "Are you sure you want to delete this template?"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:628
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:109
 msgid "Are you sure?"
 msgstr ""
@@ -1263,7 +1289,7 @@ msgid "Ascending"
 msgstr ""
 
 #. 1: Project Name, 2: Opening strong tag, 3: Closing strong tag, 4: Privacy Policy link
-#: admin/include/class.diagnostic-data.php:486
+#: admin/include/class.diagnostic-data.php:492
 #, php-format
 msgid ""
 "At %2$s%1$s%3$s, we prioritize continuous improvement and compatibility. To "
@@ -1795,7 +1821,7 @@ msgstr ""
 msgid "Background Second Color"
 msgstr ""
 
-#: includes/class.assests.php:634
+#: includes/class.assests.php:640
 msgid "Background Switcher"
 msgstr ""
 
@@ -1957,7 +1983,7 @@ msgstr ""
 msgid "Bio Info"
 msgstr ""
 
-#: includes/widgets/htmega_teammember.php:862
+#: includes/widgets/htmega_teammember.php:911
 msgid "Bio info"
 msgstr ""
 
@@ -1999,6 +2025,7 @@ msgstr ""
 msgid "Blocks"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:31
 #: admin/include/templates/dashboard-widget.php:88
 msgid "Blog"
 msgstr ""
@@ -2292,7 +2319,8 @@ msgstr ""
 #: includes/widgets/htmega_teammember.php:357
 #: includes/widgets/htmega_teammember.php:498
 #: includes/widgets/htmega_teammember.php:556
-#: includes/widgets/htmega_teammember.php:1018
+#: includes/widgets/htmega_teammember.php:690
+#: includes/widgets/htmega_teammember.php:1067
 #: includes/widgets/htmega_testimonial_grid.php:311
 #: includes/widgets/htmega_testimonial_grid.php:356
 #: includes/widgets/htmega_testimonial_grid.php:401
@@ -2678,7 +2706,8 @@ msgstr ""
 #: includes/widgets/htmega_tabs.php:1007 includes/widgets/htmega_tabs.php:1072
 #: includes/widgets/htmega_teammember.php:369
 #: includes/widgets/htmega_teammember.php:567
-#: includes/widgets/htmega_teammember.php:1026
+#: includes/widgets/htmega_teammember.php:698
+#: includes/widgets/htmega_teammember.php:1075
 #: includes/widgets/htmega_testimonial_grid.php:319
 #: includes/widgets/htmega_testimonial_grid.php:409
 #: includes/widgets/htmega_testimonial_grid.php:633
@@ -3022,7 +3051,8 @@ msgstr ""
 #: includes/widgets/htmega_service.php:1118
 #: includes/widgets/htmega_socialshere.php:453
 #: includes/widgets/htmega_teammember.php:397
-#: includes/widgets/htmega_teammember.php:1037
+#: includes/widgets/htmega_teammember.php:710
+#: includes/widgets/htmega_teammember.php:1086
 #: includes/widgets/htmega_testimonial_grid.php:330
 #: includes/widgets/htmega_testimonial_grid.php:379
 #: includes/widgets/htmega_testimonial_grid.php:673
@@ -3080,7 +3110,7 @@ msgstr ""
 msgid "Brands"
 msgstr ""
 
-#: includes/class.assests.php:640
+#: includes/class.assests.php:646
 msgid "Breadcrumbs"
 msgstr ""
 
@@ -3274,7 +3304,7 @@ msgstr ""
 msgid "Buttons"
 msgstr ""
 
-#: includes/class.assests.php:426 admin/include/template-library.php:441
+#: includes/class.assests.php:431 admin/include/template-library.php:441
 #: includes/recommended-plugins/class.recommended-plugins.php:124
 #: includes/recommended-plugins/class.recommended-plugins.php:235
 #: includes/recommended-plugins/class.recommended-plugins.php:289
@@ -3356,6 +3386,10 @@ msgstr ""
 msgid "Call to Action Title"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:633
+msgid "Cancel"
+msgstr ""
+
 #: extensions/ht-builder/widgets/bl_post_comments.php:325
 msgid "Cancel reply"
 msgstr ""
@@ -3406,7 +3440,7 @@ msgstr ""
 msgid "Category Area"
 msgstr ""
 
-#: includes/class.assests.php:646
+#: includes/class.assests.php:652
 msgid "Category List"
 msgstr ""
 
@@ -3529,10 +3563,10 @@ msgstr ""
 #: includes/widgets/htmega_tablepress.php:418
 #: includes/widgets/htmega_tabs.php:431 includes/widgets/htmega_tabs.php:660
 #: includes/widgets/htmega_teammember.php:618
-#: includes/widgets/htmega_teammember.php:747
-#: includes/widgets/htmega_teammember.php:837
-#: includes/widgets/htmega_teammember.php:928
-#: includes/widgets/htmega_teammember.php:995
+#: includes/widgets/htmega_teammember.php:796
+#: includes/widgets/htmega_teammember.php:886
+#: includes/widgets/htmega_teammember.php:977
+#: includes/widgets/htmega_teammember.php:1044
 #: includes/widgets/htmega_testimonial_grid.php:561
 #: includes/widgets/htmega_toggle.php:201
 #: includes/widgets/htmega_tooltip.php:242
@@ -3612,7 +3646,7 @@ msgstr ""
 msgid "Center Top"
 msgstr ""
 
-#: includes/class.assests.php:652
+#: includes/class.assests.php:658
 msgid "Chart"
 msgstr ""
 
@@ -3718,7 +3752,7 @@ msgstr ""
 msgid "Clip Width"
 msgstr ""
 
-#: includes/class.assests.php:436
+#: includes/class.assests.php:441
 #: includes/widgets/htmega_business_hours.php:173
 #: includes/widgets/htmega_modal.php:834
 #: includes/widgets/htmega_post_grid_tab.php:884
@@ -4045,9 +4079,9 @@ msgstr ""
 #: includes/widgets/htmega_tablepress.php:454
 #: includes/widgets/htmega_tabs.php:680 includes/widgets/htmega_tabs.php:766
 #: includes/widgets/htmega_tabs.php:1033
-#: includes/widgets/htmega_teammember.php:694
-#: includes/widgets/htmega_teammember.php:784
-#: includes/widgets/htmega_teammember.php:874
+#: includes/widgets/htmega_teammember.php:743
+#: includes/widgets/htmega_teammember.php:833
+#: includes/widgets/htmega_teammember.php:923
 #: includes/widgets/htmega_testimonial_grid.php:431
 #: includes/widgets/htmega_testimonial_grid.php:492
 #: includes/widgets/htmega_testimonial_grid.php:584
@@ -4234,6 +4268,10 @@ msgstr ""
 #: includes/widgets/htmega_wc_categories.php:42
 #: extensions/ht-builder/widgets/bl_post_archive.php:62
 msgid "Columns"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:34
+msgid "Coming Soon"
 msgstr ""
 
 #: extensions/ht-builder/widgets/bl_post_comments.php:328
@@ -4455,7 +4493,7 @@ msgstr ""
 msgid "Content Type"
 msgstr ""
 
-#: includes/class.assests.php:809
+#: includes/class.assests.php:815
 msgid "Copy Coupon Code"
 msgstr ""
 
@@ -4477,7 +4515,7 @@ msgstr ""
 msgid "Count Layout"
 msgstr ""
 
-#: admin/include/class.diagnostic-data.php:489
+#: admin/include/class.diagnostic-data.php:495
 msgid "Count Me In"
 msgstr ""
 
@@ -4511,8 +4549,12 @@ msgstr ""
 msgid "Cover"
 msgstr ""
 
-#: includes/class.assests.php:445 admin/include/templates_list.php:16
+#: includes/class.assests.php:450 admin/include/templates_list.php:16
 msgid "Create a new page from this template"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:666
+msgid "Create Template"
 msgstr ""
 
 #: extensions/wc-sales-notification/admin/setting.php:212
@@ -4768,6 +4810,7 @@ msgstr ""
 msgid "December"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:169
 #: extensions/scroll-to-top/class.scroll-to-top.php:158
 #: includes/widgets/htmega_booked_calender.php:55
 #: includes/widgets/htmega_booked_calender.php:167
@@ -4785,6 +4828,14 @@ msgstr ""
 
 #: includes/widgets/htmega_gallery_justify.php:121
 msgid "Default Popup"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:495
+msgid "Default template removed"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:489
+msgid "Default template updated"
 msgstr ""
 
 #: includes/widgets/htmega_googlemap.php:60
@@ -4879,7 +4930,7 @@ msgstr ""
 #: includes/widgets/htmega_data_table.php:172
 #: includes/widgets/htmega_pricing_list_view.php:452
 #: includes/widgets/htmega_teammember.php:161
-#: includes/widgets/htmega_teammember.php:772
+#: includes/widgets/htmega_teammember.php:821
 #: includes/widgets/htmega_testimonial_grid.php:179
 #: includes/widgets/htmega_testimonial_grid.php:484
 msgid "Designation"
@@ -4965,7 +5016,7 @@ msgstr ""
 msgid "Display Options"
 msgstr ""
 
-#: includes/helper-function.php:230
+#: includes/helper-function.php:266
 msgid "div"
 msgstr ""
 
@@ -4979,7 +5030,7 @@ msgid ""
 "Pro )</span>"
 msgstr ""
 
-#: includes/class.htmega.php:456
+#: includes/class.htmega.php:467
 #: admin/include/templates/dashboard-widget.php:94
 #: admin/include/settings-panel/includes/templates/dashboard-general.php:59
 #: admin/include/settings-panel/includes/templates/dashboard-general.php:63
@@ -5055,7 +5106,7 @@ msgstr ""
 msgid "Duration Time"
 msgstr ""
 
-#: includes/class.assests.php:658
+#: includes/class.assests.php:664
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:258
 msgid "Dynamic Gallery"
 msgstr ""
@@ -5098,7 +5149,8 @@ msgstr ""
 msgid "Edit Page"
 msgstr ""
 
-#: includes/class.assests.php:435 admin/include/template-library.php:243
+#: includes/class.assests.php:440 admin/include/class.theme-builder.php:73
+#: admin/include/template-library.php:243
 msgid "Edit Template"
 msgstr ""
 
@@ -5226,7 +5278,7 @@ msgstr ""
 msgid "Elementor Template (Pro)"
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Onboarding.php:56
+#: admin/include/settings-panel/includes/classes/Onboarding.php:55
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:184
 msgid "Elements"
 msgstr ""
@@ -5236,11 +5288,11 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: includes/helper-function.php:537
+#: includes/helper-function.php:573
 msgid "Email Already in Use"
 msgstr ""
 
-#: includes/helper-function.php:532
+#: includes/helper-function.php:568
 msgid "Email is not valid"
 msgstr ""
 
@@ -5306,7 +5358,7 @@ msgid ""
 "not function properly"
 msgstr ""
 
-#: includes/class.assests.php:447
+#: includes/class.assests.php:452
 msgid "Enter a Page Name"
 msgstr ""
 
@@ -5316,6 +5368,10 @@ msgstr ""
 
 #: includes/widgets/htmega_audio_player.php:83
 msgid "Enter remote audio URL"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:665
+msgid "Enter Template Name"
 msgstr ""
 
 #: includes/widgets/htmega_data_table.php:568
@@ -5373,6 +5429,10 @@ msgstr ""
 msgid "Entries Style"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:33
+msgid "Error"
+msgstr ""
+
 #: includes/widgets/htmega_ninja_form.php:1141
 msgid "Error Color"
 msgstr ""
@@ -5416,7 +5476,7 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-#: includes/class.assests.php:664
+#: includes/class.assests.php:670
 msgid "Event Box"
 msgstr ""
 
@@ -5432,7 +5492,7 @@ msgstr ""
 msgid "Event Button text"
 msgstr ""
 
-#: includes/class.assests.php:670
+#: includes/class.assests.php:676
 msgid "Event Calendar"
 msgstr ""
 
@@ -5554,11 +5614,11 @@ msgstr ""
 msgid "Facebook"
 msgstr ""
 
-#: includes/class.htmega.php:457
+#: includes/class.htmega.php:468
 msgid "Facebook Group"
 msgstr ""
 
-#: includes/class.assests.php:676
+#: includes/class.assests.php:682
 msgid "Facebook Review"
 msgstr ""
 
@@ -5629,8 +5689,12 @@ msgstr ""
 msgid "fadeOutUp"
 msgstr ""
 
-#: includes/class.assests.php:415
+#: includes/class.assests.php:420
 msgid "Failed to load templates"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:612
+msgid "Failed to move templates to trash"
 msgstr ""
 
 #: extensions/wc-sales-notification/admin/setting.php:70
@@ -5648,7 +5712,7 @@ msgstr ""
 msgid "Feature Jobs only"
 msgstr ""
 
-#: includes/class.assests.php:682
+#: includes/class.assests.php:688
 msgid "Feature List"
 msgstr ""
 
@@ -5680,7 +5744,7 @@ msgstr ""
 msgid "Fill Color"
 msgstr ""
 
-#: includes/class.assests.php:688
+#: includes/class.assests.php:694
 msgid "Filterable Gallery"
 msgstr ""
 
@@ -5693,7 +5757,7 @@ msgstr ""
 msgid "Filters"
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Onboarding.php:60
+#: admin/include/settings-panel/includes/classes/Onboarding.php:59
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:188
 msgid "Finalize"
 msgstr ""
@@ -5720,11 +5784,11 @@ msgstr ""
 msgid "Fixed Maps Address:"
 msgstr ""
 
-#: includes/class.assests.php:796
+#: includes/class.assests.php:802
 msgid "Flip Carousel"
 msgstr ""
 
-#: includes/class.assests.php:694
+#: includes/class.assests.php:700
 msgid "Flip Switcher Pricing Table"
 msgstr ""
 
@@ -5806,13 +5870,14 @@ msgstr ""
 #: includes/widgets/htmega_search.php:465
 #: includes/widgets/htmega_search.php:717
 #: includes/widgets/htmega_slider_thumb_gallery.php:880
-#: includes/widgets/htmega_teammember.php:1045
+#: includes/widgets/htmega_teammember.php:1094
 #: includes/widgets/htmega_twitter_feed.php:1092
 #: includes/widgets/htmega_working_process.php:959
 #: extensions/ht-builder/widgets/bl_post_meta_info.php:478
 msgid "Font Size"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:29
 #: includes/widgets/htmega_modal.php:747
 msgid "Footer"
 msgstr ""
@@ -5885,7 +5950,7 @@ msgstr ""
 msgid "Form not found"
 msgstr ""
 
-#: includes/helper-function.php:381
+#: includes/helper-function.php:417
 #: includes/widgets/htmega_gravity_forms.php:69
 #: includes/widgets/htmega_quforms.php:43
 msgid "Form Not Found!"
@@ -6009,7 +6074,7 @@ msgstr ""
 
 #: includes/class.htmega.php:293
 #: admin/include/templates/library/templates.php:71
-#: admin/include/settings-panel/includes/classes/Onboarding.php:58
+#: admin/include/settings-panel/includes/classes/Onboarding.php:57
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:186
 msgid "Go Pro"
 msgstr ""
@@ -6090,27 +6155,27 @@ msgstr ""
 msgid "Group Item Style"
 msgstr ""
 
-#: includes/helper-function.php:223
+#: includes/helper-function.php:259
 msgid "H1"
 msgstr ""
 
-#: includes/helper-function.php:224
+#: includes/helper-function.php:260
 msgid "H2"
 msgstr ""
 
-#: includes/helper-function.php:225
+#: includes/helper-function.php:261
 msgid "H3"
 msgstr ""
 
-#: includes/helper-function.php:226
+#: includes/helper-function.php:262
 msgid "H4"
 msgstr ""
 
-#: includes/helper-function.php:227
+#: includes/helper-function.php:263
 msgid "H5"
 msgstr ""
 
-#: includes/helper-function.php:228
+#: includes/helper-function.php:264
 msgid "H6"
 msgstr ""
 
@@ -6153,6 +6218,7 @@ msgid ""
 "requests. Our commitment to our clients is second to none."
 msgstr ""
 
+#: admin/include/class.theme-builder.php:28
 #: includes/widgets/htmega_booked_calender.php:187
 #: includes/widgets/htmega_modal.php:575
 #: includes/widgets/htmega_popover.php:582
@@ -6264,7 +6330,7 @@ msgstr ""
 msgid "Height"
 msgstr ""
 
-#: includes/widgets/htmega_teammember.php:1068
+#: includes/widgets/htmega_teammember.php:1117
 msgid "Height and Width"
 msgstr ""
 
@@ -6851,7 +6917,7 @@ msgstr ""
 msgid "Icon Background"
 msgstr ""
 
-#: includes/class.assests.php:700
+#: includes/class.assests.php:706
 msgid "Icon Box"
 msgstr ""
 
@@ -7064,6 +7130,7 @@ msgstr ""
 #: includes/widgets/htmega_slider_thumb_gallery.php:96
 #: includes/widgets/htmega_special_day_banner.php:62
 #: includes/widgets/htmega_tabs.php:91 includes/widgets/htmega_tabs.php:111
+#: includes/widgets/htmega_teammember.php:682
 #: includes/widgets/htmega_testimonial_grid.php:199
 #: includes/widgets/htmega_testimonial_grid.php:392
 #: includes/widgets/htmega_tooltip.php:58
@@ -7187,7 +7254,7 @@ msgstr ""
 msgid "Image Position On"
 msgstr ""
 
-#: includes/class.assests.php:706
+#: includes/class.assests.php:712
 msgid "Image Rotate"
 msgstr ""
 
@@ -7209,7 +7276,7 @@ msgstr ""
 msgid "Image/Icon Position"
 msgstr ""
 
-#: includes/class.assests.php:425
+#: includes/class.assests.php:430
 msgid "Import"
 msgstr ""
 
@@ -7219,23 +7286,27 @@ msgid ""
 "design with minimal effort."
 msgstr ""
 
-#: includes/class.assests.php:446 admin/include/templates_list.php:13
+#: admin/include/class.theme-builder.php:249
+msgid "Import Previously Assigned Templates"
+msgstr ""
+
+#: includes/class.assests.php:451 admin/include/templates_list.php:13
 msgid "Import template to your Library"
 msgstr ""
 
-#: includes/class.assests.php:423
+#: includes/class.assests.php:428
 msgid "Import to Library"
 msgstr ""
 
-#: includes/class.assests.php:424
+#: includes/class.assests.php:429
 msgid "Import to Page"
 msgstr ""
 
-#: includes/class.assests.php:418
+#: includes/class.assests.php:423
 msgid "Importing template..."
 msgstr ""
 
-#: includes/class.assests.php:411
+#: includes/class.assests.php:416
 msgid "in this package"
 msgstr ""
 
@@ -7305,7 +7376,7 @@ msgstr ""
 msgid "Info Address Style"
 msgstr ""
 
-#: includes/class.assests.php:622
+#: includes/class.assests.php:628
 #: htmega-blocks/includes/classes/Blocks_List.php:72
 msgid "Info Box"
 msgstr ""
@@ -7425,7 +7496,7 @@ msgstr ""
 msgid "Instagram Feed"
 msgstr ""
 
-#: includes/class.assests.php:433
+#: includes/class.assests.php:438
 msgid "Install"
 msgstr ""
 
@@ -7435,7 +7506,7 @@ msgstr ""
 msgid "Install Now"
 msgstr ""
 
-#: includes/class.assests.php:428
+#: includes/class.assests.php:433
 #: includes/recommended-plugins/class.recommended-plugins.php:126
 msgid "Installing.."
 msgstr ""
@@ -7449,11 +7520,11 @@ msgstr ""
 msgid "Instragram Feed"
 msgstr ""
 
-#: includes/class.assests.php:803
+#: includes/class.assests.php:809
 msgid "Interactive Circle Infographic"
 msgstr ""
 
-#: includes/class.assests.php:712
+#: includes/class.assests.php:718
 msgid "Interactive Promo"
 msgstr ""
 
@@ -7474,23 +7545,29 @@ msgstr ""
 msgid "Invalid email."
 msgstr ""
 
+#: admin/include/class.theme-builder.php:465
+#: admin/include/class.theme-builder.php:580
+msgid "Invalid nonce"
+msgstr ""
+
 #: admin/include/custom-control/preset-manage.php:15
 msgid "Invalid preset request"
 msgstr ""
 
-#: includes/helper-function.php:443 includes/helper-function.php:450
+#: includes/helper-function.php:479 includes/helper-function.php:486
 msgid "Invalid Request"
-msgstr ""
-
-#: admin/include/settings-panel/includes/classes/Onboarding.php:281
-msgid "Invalid security token"
 msgstr ""
 
 #: includes/twitteroauth.php:682
 msgid "Invalid signature"
 msgstr ""
 
-#: includes/helper-function.php:421
+#: admin/include/class.theme-builder.php:384
+#: admin/include/class.theme-builder.php:478
+msgid "Invalid template type"
+msgstr ""
+
+#: includes/helper-function.php:457
 msgid "Invalid username or password!"
 msgstr ""
 
@@ -7553,6 +7630,12 @@ msgid ""
 "uncover many web sites still in their infancy. Various versions have evolved "
 "over the years, sometimes by accident, sometimes on purpose injected humour "
 "and the like."
+msgstr ""
+
+#: admin/include/class.theme-builder.php:629
+msgid ""
+"It will import those templates that were created from the \"Templates\" menu "
+"of Elementor and assigned to corresponding pages."
 msgstr ""
 
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:110
@@ -7800,10 +7883,10 @@ msgstr ""
 #: includes/widgets/htmega_special_day_banner.php:281
 #: includes/widgets/htmega_tablepress.php:269
 #: includes/widgets/htmega_tablepress.php:426
-#: includes/widgets/htmega_teammember.php:755
-#: includes/widgets/htmega_teammember.php:845
-#: includes/widgets/htmega_teammember.php:936
-#: includes/widgets/htmega_teammember.php:1003
+#: includes/widgets/htmega_teammember.php:804
+#: includes/widgets/htmega_teammember.php:894
+#: includes/widgets/htmega_teammember.php:985
+#: includes/widgets/htmega_teammember.php:1052
 #: includes/widgets/htmega_testimonial_grid.php:569
 #: includes/widgets/htmega_toggle.php:209
 #: includes/widgets/htmega_tooltip.php:250
@@ -8082,10 +8165,10 @@ msgstr ""
 #: includes/widgets/htmega_tabs.php:656 includes/widgets/htmega_tabs.php:868
 #: includes/widgets/htmega_teammember.php:103
 #: includes/widgets/htmega_teammember.php:614
-#: includes/widgets/htmega_teammember.php:743
-#: includes/widgets/htmega_teammember.php:833
-#: includes/widgets/htmega_teammember.php:924
-#: includes/widgets/htmega_teammember.php:991
+#: includes/widgets/htmega_teammember.php:792
+#: includes/widgets/htmega_teammember.php:882
+#: includes/widgets/htmega_teammember.php:973
+#: includes/widgets/htmega_teammember.php:1040
 #: includes/widgets/htmega_testimonial_grid.php:557
 #: includes/widgets/htmega_toggle.php:197
 #: includes/widgets/htmega_tooltip.php:178
@@ -8315,7 +8398,7 @@ msgstr ""
 msgid "Login Header Title"
 msgstr ""
 
-#: includes/helper-function.php:424
+#: includes/helper-function.php:460
 msgid "Login Successfully"
 msgstr ""
 
@@ -8427,7 +8510,7 @@ msgstr ""
 msgid "Lost your password?"
 msgstr ""
 
-#: includes/class.assests.php:718
+#: includes/class.assests.php:724
 msgid "Lottie"
 msgstr ""
 
@@ -8732,10 +8815,10 @@ msgstr ""
 #: includes/widgets/htmega_tabs.php:494 includes/widgets/htmega_tabs.php:724
 #: includes/widgets/htmega_tabs.php:1096
 #: includes/widgets/htmega_teammember.php:328
-#: includes/widgets/htmega_teammember.php:713
-#: includes/widgets/htmega_teammember.php:803
-#: includes/widgets/htmega_teammember.php:894
-#: includes/widgets/htmega_teammember.php:961
+#: includes/widgets/htmega_teammember.php:762
+#: includes/widgets/htmega_teammember.php:852
+#: includes/widgets/htmega_teammember.php:943
+#: includes/widgets/htmega_teammember.php:1010
 #: includes/widgets/htmega_testimonial_grid.php:275
 #: includes/widgets/htmega_testimonial_grid.php:453
 #: includes/widgets/htmega_testimonial_grid.php:513
@@ -9127,7 +9210,7 @@ msgid ""
 "personalized website."
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Onboarding.php:57
+#: admin/include/settings-panel/includes/classes/Onboarding.php:56
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:185
 msgid "Modules"
 msgstr ""
@@ -9157,6 +9240,10 @@ msgstr ""
 msgid "Mouse Wheel"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:332
+msgid "Move to Trash"
+msgstr ""
+
 #: admin/include/settings-panel/includes/templates/sidebar-banner.php:59
 msgid "Much More.."
 msgstr ""
@@ -9184,7 +9271,7 @@ msgstr ""
 #: includes/widgets/htmega_pricing_list_view.php:77
 #: includes/widgets/htmega_pricing_list_view.php:448
 #: includes/widgets/htmega_teammember.php:151
-#: includes/widgets/htmega_teammember.php:683
+#: includes/widgets/htmega_teammember.php:732
 #: includes/widgets/htmega_testimonial_grid.php:170
 #: includes/widgets/htmega_testimonial_grid.php:423
 #: includes/widgets/htmega_wc_categories.php:130
@@ -9217,6 +9304,10 @@ msgid ""
 "hours after receiving your inquiry."
 msgstr ""
 
+#: admin/include/class.theme-builder.php:74
+msgid "New Template"
+msgstr ""
+
 #: includes/widgets/htmega_buddy_press.php:69
 msgid "Newest"
 msgstr ""
@@ -9230,7 +9321,7 @@ msgstr ""
 msgid "News Ticker"
 msgstr ""
 
-#: includes/class.assests.php:369 includes/widgets/htmega_data_table.php:699
+#: includes/class.assests.php:374 includes/widgets/htmega_data_table.php:699
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:191
 msgid "Next"
 msgstr ""
@@ -9306,7 +9397,7 @@ msgstr ""
 msgid "No Comments"
 msgstr ""
 
-#: includes/helper-function.php:303
+#: includes/helper-function.php:339
 msgid "No contact form found"
 msgstr ""
 
@@ -9334,7 +9425,7 @@ msgstr ""
 msgid "No selected template"
 msgstr ""
 
-#: includes/helper-function.php:160
+#: includes/helper-function.php:196
 msgid "No sidebars were found"
 msgstr ""
 
@@ -9342,15 +9433,28 @@ msgstr ""
 msgid "No Slider Found."
 msgstr ""
 
-#: includes/class.assests.php:413 admin/include/template-library.php:70
+#: includes/class.assests.php:418 admin/include/class.theme-builder.php:78
+#: admin/include/template-library.php:70
 msgid "No templates found"
 msgstr ""
 
-#: includes/class.assests.php:414
+#: admin/include/class.theme-builder.php:79
+msgid "No templates found in Trash"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:593
+msgid "No templates selected"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:668
+msgid "No templates selected."
+msgstr ""
+
+#: includes/class.assests.php:419
 msgid "No templates were found matching your criteria"
 msgstr ""
 
-#: admin/include/class.diagnostic-data.php:492
+#: admin/include/class.diagnostic-data.php:498
 msgid "No, Thanks"
 msgstr ""
 
@@ -9359,7 +9463,11 @@ msgstr ""
 msgid "Nonce already used: %s"
 msgstr ""
 
-#: includes/helper-function.php:320
+#: admin/include/class.theme-builder.php:515
+msgid "Nonce verification failed!"
+msgstr ""
+
+#: includes/helper-function.php:356
 #: extensions/scroll-to-top/class.scroll-to-top.php:321
 #: includes/widgets/htmega_accordion.php:81
 #: includes/widgets/htmega_blockquote.php:407
@@ -9793,7 +9901,7 @@ msgstr ""
 msgid "Options for number of Rows"
 msgstr ""
 
-#: includes/class.assests.php:448
+#: includes/class.assests.php:453
 msgid "OR"
 msgstr ""
 
@@ -9893,7 +10001,7 @@ msgstr ""
 msgid "Override Title"
 msgstr ""
 
-#: includes/helper-function.php:229
+#: includes/helper-function.php:265
 msgid "p"
 msgstr ""
 
@@ -10095,10 +10203,11 @@ msgstr ""
 #: includes/widgets/htmega_tabs.php:481 includes/widgets/htmega_tabs.php:711
 #: includes/widgets/htmega_tabs.php:1083
 #: includes/widgets/htmega_teammember.php:341
-#: includes/widgets/htmega_teammember.php:726
-#: includes/widgets/htmega_teammember.php:816
-#: includes/widgets/htmega_teammember.php:907
-#: includes/widgets/htmega_teammember.php:974
+#: includes/widgets/htmega_teammember.php:717
+#: includes/widgets/htmega_teammember.php:775
+#: includes/widgets/htmega_teammember.php:865
+#: includes/widgets/htmega_teammember.php:956
+#: includes/widgets/htmega_teammember.php:1023
 #: includes/widgets/htmega_testimonial_grid.php:288
 #: includes/widgets/htmega_testimonial_grid.php:467
 #: includes/widgets/htmega_testimonial_grid.php:527
@@ -10177,7 +10286,7 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-#: includes/class.assests.php:724
+#: includes/class.assests.php:730
 msgid "Page List"
 msgstr ""
 
@@ -10266,7 +10375,7 @@ msgstr ""
 msgid "Password Label"
 msgstr ""
 
-#: includes/helper-function.php:524
+#: includes/helper-function.php:560
 msgid "Password length must be greater than 5"
 msgstr ""
 
@@ -10299,7 +10408,8 @@ msgstr ""
 msgid "Per Month Typography"
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Onboarding.php:287
+#: admin/include/class.theme-builder.php:375
+#: admin/include/class.theme-builder.php:586
 msgid "Permission denied"
 msgstr ""
 
@@ -10385,7 +10495,7 @@ msgid ""
 "future users."
 msgstr ""
 
-#: includes/class.assests.php:420
+#: includes/class.assests.php:425
 msgid "Please enter a page name"
 msgstr ""
 
@@ -10610,7 +10720,7 @@ msgstr ""
 msgid "Post Grid Tab"
 msgstr ""
 
-#: includes/class.assests.php:730
+#: includes/class.assests.php:736
 msgid "Post Masonry"
 msgstr ""
 
@@ -10635,7 +10745,7 @@ msgstr ""
 msgid "Post Search Form"
 msgstr ""
 
-#: includes/class.assests.php:736
+#: includes/class.assests.php:742
 msgid "Post Timeline"
 msgstr ""
 
@@ -10673,13 +10783,13 @@ msgstr ""
 msgid "Preset not found"
 msgstr ""
 
-#: includes/class.assests.php:427
+#: includes/class.assests.php:432
 #: includes/recommended-plugins/class.recommended-plugins.php:125
 #: admin/include/templates/library/templates.php:140
 msgid "Preview"
 msgstr ""
 
-#: includes/class.assests.php:370 includes/widgets/htmega_data_table.php:708
+#: includes/class.assests.php:375 includes/widgets/htmega_data_table.php:708
 msgid "Previous"
 msgstr ""
 
@@ -10713,11 +10823,11 @@ msgstr ""
 msgid "Pricing List View"
 msgstr ""
 
-#: includes/class.assests.php:742
+#: includes/class.assests.php:748
 msgid "Pricing Menu"
 msgstr ""
 
-#: includes/class.assests.php:748
+#: includes/class.assests.php:754
 msgid "Pricing Table Flip Box"
 msgstr ""
 
@@ -10742,7 +10852,8 @@ msgstr ""
 msgid "PRO"
 msgstr ""
 
-#: includes/class.assests.php:408 includes/class.assests.php:434
+#: includes/class.assests.php:413 includes/class.assests.php:439
+#: admin/include/class.theme-builder.php:240
 #: admin/include/templates_list.php:58
 #: admin/include/templates/library/templates.php:126
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:84
@@ -10923,7 +11034,7 @@ msgstr ""
 msgid "Random"
 msgstr ""
 
-#: includes/class.htmega.php:458
+#: includes/class.htmega.php:469
 msgid "Rate the plugin"
 msgstr ""
 
@@ -11095,7 +11206,7 @@ msgstr ""
 msgid "Required Label Style"
 msgstr ""
 
-#: includes/class.assests.php:419
+#: includes/class.assests.php:424
 msgid "Required Plugins:"
 msgstr ""
 
@@ -11254,10 +11365,10 @@ msgstr ""
 #: includes/widgets/htmega_tabs.php:664 includes/widgets/htmega_tabs.php:876
 #: includes/widgets/htmega_teammember.php:104
 #: includes/widgets/htmega_teammember.php:622
-#: includes/widgets/htmega_teammember.php:751
-#: includes/widgets/htmega_teammember.php:841
-#: includes/widgets/htmega_teammember.php:932
-#: includes/widgets/htmega_teammember.php:999
+#: includes/widgets/htmega_teammember.php:800
+#: includes/widgets/htmega_teammember.php:890
+#: includes/widgets/htmega_teammember.php:981
+#: includes/widgets/htmega_teammember.php:1048
 #: includes/widgets/htmega_testimonial_grid.php:565
 #: includes/widgets/htmega_toggle.php:205
 #: includes/widgets/htmega_tooltip.php:179
@@ -11459,6 +11570,7 @@ msgstr ""
 msgid "Scroll Type"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:32
 #: includes/widgets/htmega_data_table.php:677
 #: includes/widgets/htmega_search.php:14 includes/widgets/htmega_search.php:36
 #: includes/widgets/htmega_search.php:61 includes/widgets/htmega_search.php:62
@@ -11494,7 +11606,11 @@ msgstr ""
 msgid "Search Hide"
 msgstr ""
 
-#: includes/class.assests.php:449
+#: admin/include/class.theme-builder.php:77
+msgid "Search Templates"
+msgstr ""
+
+#: includes/class.assests.php:454
 msgid "Search templates..."
 msgstr ""
 
@@ -11545,7 +11661,7 @@ msgstr ""
 msgid "Section Title"
 msgstr ""
 
-#: includes/helper-function.php:849
+#: includes/helper-function.php:885
 #: includes/widgets/htmega_wc_element_pages.php:51
 msgid "Select"
 msgstr ""
@@ -11589,7 +11705,7 @@ msgstr ""
 msgid "Select File"
 msgstr ""
 
-#: includes/helper-function.php:371 includes/widgets/htmega_caldera_form.php:69
+#: includes/helper-function.php:407 includes/widgets/htmega_caldera_form.php:69
 #: includes/widgets/htmega_gravity_forms.php:62
 #: includes/widgets/htmega_gravity_forms.php:87
 #: includes/widgets/htmega_ninja_form.php:75
@@ -11618,7 +11734,7 @@ msgstr ""
 msgid "Select Post Type"
 msgstr ""
 
-#: includes/helper-function.php:162 includes/widgets/htmega_offcanvas.php:75
+#: includes/helper-function.php:198 includes/widgets/htmega_offcanvas.php:75
 msgid "Select Sidebar"
 msgstr ""
 
@@ -11640,6 +11756,10 @@ msgstr ""
 #: includes/helper-function.php:114 includes/widgets/htmega_offcanvas.php:61
 #: extensions/ht-menu/menu/helper_function.php:19
 msgid "Select Template"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:664
+msgid "Select Template Type"
 msgstr ""
 
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:237
@@ -11720,7 +11840,7 @@ msgstr ""
 msgid "September"
 msgstr ""
 
-#: admin/include/class.diagnostic-data.php:487
+#: admin/include/class.diagnostic-data.php:493
 #, php-format
 msgid ""
 "Server information (Web server, PHP version, MySQL version), WordPress "
@@ -12069,6 +12189,10 @@ msgstr ""
 msgid "Simulate Touch"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:30
+msgid "Single"
+msgstr ""
+
 #: includes/widgets/htmega_bbpress.php:58
 msgid "Single Forum"
 msgstr ""
@@ -12298,11 +12422,11 @@ msgstr ""
 
 #: includes/widgets/htmega_socialshere.php:54
 #: includes/widgets/htmega_teammember.php:203
-#: includes/widgets/htmega_teammember.php:953
+#: includes/widgets/htmega_teammember.php:1002
 msgid "Social Media"
 msgstr ""
 
-#: includes/class.assests.php:754
+#: includes/class.assests.php:760
 msgid "Social Network Icons"
 msgstr ""
 
@@ -12311,8 +12435,12 @@ msgstr ""
 msgid "Social Share"
 msgstr ""
 
-#: includes/helper-function.php:480
+#: includes/helper-function.php:516
 msgid "Something is wrong please check again!"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:569
+msgid "Something went wrong!"
 msgstr ""
 
 #: admin/include/class.newsletter-data.php:68
@@ -12320,11 +12448,11 @@ msgstr ""
 msgid "Something went wrong."
 msgstr ""
 
-#: includes/helper-function.php:508
+#: includes/helper-function.php:544
 msgid "Sorry, that username already exists!"
 msgstr ""
 
-#: includes/helper-function.php:515
+#: includes/helper-function.php:551
 msgid "Sorry, the username you entered is not valid"
 msgstr ""
 
@@ -12341,7 +12469,7 @@ msgstr ""
 msgid "Source"
 msgstr ""
 
-#: includes/class.assests.php:760
+#: includes/class.assests.php:766
 msgid "Source Code"
 msgstr ""
 
@@ -12371,7 +12499,7 @@ msgstr ""
 msgid "Space(px)"
 msgstr ""
 
-#: includes/helper-function.php:231
+#: includes/helper-function.php:267
 msgid "span"
 msgstr ""
 
@@ -12411,7 +12539,7 @@ msgstr ""
 msgid "Steps"
 msgstr ""
 
-#: includes/class.assests.php:766
+#: includes/class.assests.php:772
 msgid "Sticky Section"
 msgstr ""
 
@@ -12802,7 +12930,7 @@ msgstr ""
 msgid "Successfully data saved"
 msgstr ""
 
-#: includes/helper-function.php:483
+#: includes/helper-function.php:519
 msgid "Successfully Register"
 msgstr ""
 
@@ -13057,7 +13185,7 @@ msgstr ""
 msgid "Taxonomy"
 msgstr ""
 
-#: includes/class.assests.php:772
+#: includes/class.assests.php:778
 msgid "Taxonomy Terms"
 msgstr ""
 
@@ -13069,7 +13197,7 @@ msgstr ""
 msgid "Team Box Style"
 msgstr ""
 
-#: includes/class.assests.php:778
+#: includes/class.assests.php:784
 msgid "Team Carousel"
 msgstr ""
 
@@ -13082,6 +13210,8 @@ msgstr ""
 msgid "Telegram"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:70
+#: admin/include/class.theme-builder.php:273
 #: includes/widgets/htmega_template_selector.php:37
 msgid "Template"
 msgstr ""
@@ -13098,11 +13228,15 @@ msgstr ""
 msgid "Template id missing"
 msgstr ""
 
-#: includes/class.assests.php:416
+#: includes/class.assests.php:421
 msgid "Template Imported Successfully!"
 msgstr ""
 
-#: includes/helper-function.php:1129
+#: admin/include/class.theme-builder.php:388
+msgid "Template name is required"
+msgstr ""
+
+#: includes/helper-function.php:1205
 msgid "Template not published or does not exist"
 msgstr ""
 
@@ -13110,10 +13244,19 @@ msgstr ""
 msgid "Template Selector"
 msgstr ""
 
-#: includes/class.assests.php:450 admin/include/templates_list.php:33
-#: admin/include/settings-panel/includes/classes/Onboarding.php:59
+#: admin/include/class.theme-builder.php:266
+msgid "Template type not found."
+msgstr ""
+
+#: includes/class.assests.php:455 admin/include/class.theme-builder.php:69
+#: admin/include/class.theme-builder.php:81 admin/include/templates_list.php:33
+#: admin/include/settings-panel/includes/classes/Onboarding.php:58
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:187
 msgid "Templates"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:563
+msgid "Templates have been imported successfully"
 msgstr ""
 
 #: admin/include/template-library.php:104
@@ -13277,7 +13420,7 @@ msgid ""
 msgstr ""
 
 #. 1: Project Name, 2: Opening strong tag, 3: Closing strong tag
-#: admin/include/class.diagnostic-data.php:513
+#: admin/include/class.diagnostic-data.php:519
 #, php-format
 msgid "Thank you very much for supporting %2$s%1$s%3$s."
 msgstr ""
@@ -13335,6 +13478,8 @@ msgstr ""
 msgid "Theme Activated"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:117
+#: admin/include/class.theme-builder.php:118
 #: extensions/ht-builder/admin/setting.php:32
 #: admin/include/settings-panel/includes/templates/sidebar-banner.php:56
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:254
@@ -13356,7 +13501,7 @@ msgid "There are no posts in this query"
 msgstr ""
 
 #. %s: List of supported HTML tags
-#: includes/helper-function.php:812
+#: includes/helper-function.php:848
 #, php-format
 msgid "This input field supports the following HTML tags: %1$s"
 msgstr ""
@@ -13933,6 +14078,7 @@ msgstr ""
 msgid "Two"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:170
 #: includes/widgets/htmega_animated_heading.php:79
 #: includes/widgets/htmega_buddy_press.php:51
 msgid "Type"
@@ -14108,7 +14254,7 @@ msgstr ""
 msgid "Upgrade to HT Mega Pro"
 msgstr ""
 
-#: includes/class.assests.php:438
+#: includes/class.assests.php:443
 msgid "Upgrade To PRO"
 msgstr ""
 
@@ -14121,7 +14267,7 @@ msgid "Upgrade To PRO "
 msgstr ""
 
 #. 1: Opening strong and anchor tags for Pro Version link, 2: Closing anchor and strong tags
-#: includes/helper-function.php:961 includes/widgets/htmega_data_table.php:1773
+#: includes/helper-function.php:997 includes/widgets/htmega_data_table.php:1773
 #: includes/widgets/htmega_imagemarker.php:1216
 #: includes/widgets/htmega_user_login_form.php:579
 #: includes/widgets/htmega_user_login_form.php:1679
@@ -14161,7 +14307,7 @@ msgstr ""
 msgid "User Name Style"
 msgstr ""
 
-#: includes/helper-function.php:454
+#: includes/helper-function.php:490
 msgid "User registration is currently not allowed."
 msgstr ""
 
@@ -14188,11 +14334,11 @@ msgstr ""
 msgid "Username Placeholder"
 msgstr ""
 
-#: includes/helper-function.php:502
+#: includes/helper-function.php:538
 msgid "Username too short. At least 4 characters is required"
 msgstr ""
 
-#: includes/helper-function.php:496
+#: includes/helper-function.php:532
 msgid "Username, Password and E-Mail are required"
 msgstr ""
 
@@ -14285,7 +14431,7 @@ msgstr ""
 msgid "Video Container"
 msgstr ""
 
-#: includes/class.assests.php:815
+#: includes/class.assests.php:821
 msgid "Video Gallery"
 msgstr ""
 
@@ -14302,7 +14448,7 @@ msgstr ""
 msgid "Video Player"
 msgstr ""
 
-#: includes/class.assests.php:821
+#: includes/class.assests.php:827
 msgid "Video Playlist"
 msgstr ""
 
@@ -14342,6 +14488,10 @@ msgstr ""
 
 #: admin/include/settings-panel/includes/templates/dashboard-general.php:105
 msgid "View More Videos"
+msgstr ""
+
+#: admin/include/class.theme-builder.php:76
+msgid "View Template"
 msgstr ""
 
 #: includes/widgets/htmega_accordion.php:416
@@ -14430,7 +14580,7 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: includes/helper-function.php:543
+#: includes/helper-function.php:579
 msgid "Website is not a valid URL"
 msgstr ""
 
@@ -14446,7 +14596,7 @@ msgstr ""
 msgid "Weibo"
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Onboarding.php:55
+#: admin/include/settings-panel/includes/classes/Onboarding.php:54
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:183
 msgid "Welcome"
 msgstr ""
@@ -14471,7 +14621,7 @@ msgstr ""
 msgid "Whatsapp"
 msgstr ""
 
-#: includes/class.assests.php:790
+#: includes/class.assests.php:796
 msgid "WhatsApp Chat"
 msgstr ""
 
@@ -14609,6 +14759,7 @@ msgstr ""
 msgid "Year"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:632
 #: extensions/reading-progress-bar/class.reading-progress-bar.php:82
 #: extensions/reading-progress-bar/class.reading-progress-bar.php:95
 #: extensions/scroll-to-top/class.scroll-to-top.php:100
@@ -14670,6 +14821,10 @@ msgstr ""
 msgid "You are not permitted to save CSS."
 msgstr ""
 
+#: admin/include/class.theme-builder.php:509
+msgid "You are unauthorized to import templates!"
+msgstr ""
+
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:250
 msgid "You can get a lot more out of it upgrading to premium. Get all features"
 msgstr ""
@@ -14690,6 +14845,10 @@ msgstr ""
 msgid "You do not have permission to install plugins"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:470
+msgid "You do not have permission to perform this action"
+msgstr ""
+
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:297
 msgid "You Have Completed Your Setup for HT Mega"
 msgstr ""
@@ -14706,7 +14865,7 @@ msgstr ""
 msgid "Your cart is currently empty."
 msgstr ""
 
-#: includes/class.assests.php:417
+#: includes/class.assests.php:422
 msgid "Your template has been imported and is ready to use"
 msgstr ""
 
@@ -14747,7 +14906,7 @@ msgstr ""
 msgid "Zoomable"
 msgstr ""
 
-#: admin/include/class.diagnostic-data.php:497
+#: admin/include/class.diagnostic-data.php:503
 #, php-format
 msgid "🌟 Enhance Your %1$s Experience as a Valued Contributor!"
 msgstr ""

@@ -471,6 +471,12 @@ if ( ! class_exists( 'HTMega_Diagnostic_Data' ) ) {
             if ( 'no' === $this->is_capable_user() ) {
                 return;
             }
+            $screen  = get_current_screen();
+            $id      = isset($screen->id) ? $screen->id : "";
+            if ($id === 'plugins') { 
+                return;
+            }
+
 
             if ( 'yes' === $this->is_show_core_notice() ) {
                 $this->show_core_notice();

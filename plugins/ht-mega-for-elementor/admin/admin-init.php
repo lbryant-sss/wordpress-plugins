@@ -212,7 +212,8 @@ class HTMega_Admin_Setting{
              'htmega-addons_page_htmega_addons_templates_library'  == $screen->base ||
               'htmega-addons_page_htmeganotification'  == $screen->base  ||
               'htmega-addons_page_htmega-pro'  == $screen->base  ||
-               'htmega-addons_page_htmega-addons_extensions'  == $screen->base ) {
+               'htmega-addons_page_htmega-addons_extensions'  == $screen->base ||
+               'edit'  == $screen->base ) {
                 remove_all_actions('admin_notices');
                 remove_all_actions('all_admin_notices');
             }

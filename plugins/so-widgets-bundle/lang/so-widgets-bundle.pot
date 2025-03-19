@@ -36,7 +36,7 @@ msgstr ""
 msgid "https://siteorigin.com/widgets-bundle/"
 msgstr ""
 
-#: so-widgets-bundle.php:419, so-widgets-bundle.php:447, so-widgets-bundle.php:461, so-widgets-bundle.php:491, so-widgets-bundle.php:503, so-widgets-bundle.php:570, so-widgets-bundle.php:583, base/base.php:59, base/base.php:63, base/base.php:418, base/base.php:425, base/base.php:430, base/inc/actions.php:11, base/inc/actions.php:99, base/inc/actions.php:205, base/inc/actions.php:249, base/inc/actions.php:261, base/inc/actions.php:265, base/inc/actions.php:353, base/inc/actions.php:357
+#: so-widgets-bundle.php:419, so-widgets-bundle.php:447, so-widgets-bundle.php:461, so-widgets-bundle.php:491, so-widgets-bundle.php:503, so-widgets-bundle.php:570, so-widgets-bundle.php:583, base/base.php:59, base/base.php:63, base/base.php:418, base/base.php:425, base/base.php:430, base/inc/actions.php:11, base/inc/actions.php:99, base/inc/actions.php:209, base/inc/actions.php:251, base/inc/actions.php:263, base/inc/actions.php:267, base/inc/actions.php:355, base/inc/actions.php:359
 msgid "Invalid request."
 msgstr ""
 
@@ -236,15 +236,15 @@ msgstr ""
 msgid "Invalid widget."
 msgstr ""
 
-#: base/inc/actions.php:303
+#: base/inc/actions.php:305
 msgid "Nonce error"
 msgstr ""
 
-#: base/inc/actions.php:312
+#: base/inc/actions.php:314
 msgid "Signature error"
 msgstr ""
 
-#: base/inc/actions.php:337
+#: base/inc/actions.php:339
 msgid "Attachment error"
 msgstr ""
 
@@ -264,23 +264,23 @@ msgstr ""
 msgid "No description available."
 msgstr ""
 
-#: compat/block-editor/widget-block.php:273
+#: compat/block-editor/widget-block.php:277
 msgid "For improved block navigation, individual SiteOrigin Widget Blocks are now available. The multi-select SiteOrigin Widget Block will be automatically converted sitewide to the new individual SiteOrigin Widget Block format on page save; this action requires your consent to proceed. %sFind out more about this migration%s."
 msgstr ""
 
-#: compat/block-editor/widget-block.php:314
+#: compat/block-editor/widget-block.php:318
 msgid "You need to select a widget type before you'll see anything here. :)"
 msgstr ""
 
-#: compat/block-editor/widget-block.php:344
+#: compat/block-editor/widget-block.php:348
 msgid "Invalid widget class %s. Please make sure the widget has been activated in %sSiteOrigin Widgets%s."
 msgstr ""
 
-#: compat/block-editor/widget-block.php:377
+#: compat/block-editor/widget-block.php:381
 msgid "No widget preview available."
 msgstr ""
 
-#: compat/block-editor/widget-block.php:482
+#: compat/block-editor/widget-block.php:486
 msgid "Invalid Widgets Bundle data"
 msgstr ""
 
@@ -3589,7 +3589,11 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: base/inc/fields/autocomplete.class.php:61, base/inc/fields/link.class.php:46
+#: base/inc/fields/autocomplete.class.php:60, base/inc/fields/link.class.php:45
+msgid "No results found."
+msgstr ""
+
+#: base/inc/fields/autocomplete.class.php:63, base/inc/fields/link.class.php:48
 msgid "Close"
 msgstr ""
 

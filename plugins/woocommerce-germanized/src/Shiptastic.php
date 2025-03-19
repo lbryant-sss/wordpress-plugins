@@ -75,23 +75,23 @@ class Shiptastic {
 			'init',
 			function () {
 				foreach ( wc_stc_get_shipment_statuses() as $status_name => $title ) {
-					add_action( "woocommerce_shiptastic_shipment_status_{$status_name}", function( $shipment_id, $shipment ) {
-						$args = array(
-							$shipment_id,
-							new Shipments\SimpleShipment( $shipment )
-						);
+					add_action(
+						"woocommerce_shiptastic_shipment_status_{$status_name}",
+						function ( $shipment_id, $shipment ) {
+							self::legacy_action_callback( $shipment_id, \Vendidero\Germanized\Shipments\Shipment::from_shiptastic( $shipment ) );
+						},
+						10,
+						2
+					);
 
-						self::legacy_action_callback( $args );
-					}, 10, 2 );
-
-					add_action( "woocommerce_shiptastic_return_shipment_status_{$status_name}", function( $shipment_id, $shipment ) {
-						$args = array(
-							$shipment_id,
-							new Shipments\ReturnShipment( $shipment )
-						);
-
-						self::legacy_action_callback( $args );
-					}, 10, 2 );
+					add_action(
+						"woocommerce_shiptastic_return_shipment_status_{$status_name}",
+						function ( $shipment_id, $shipment ) {
+							self::legacy_action_callback( $shipment_id, \Vendidero\Germanized\Shipments\Shipment::from_shiptastic( $shipment ) );
+						},
+						10,
+						2
+					);
 				}
 			}
 		);
@@ -136,6 +136,16 @@ class Shiptastic {
 				);
 			}
 		);
+	}
+
+	public static function legacy_shipment_item_classname( $item_class, $item_id, $item_type ) {
+		$item_class = 'Vendidero\Germanized\Shipments\ShipmentItem';
+
+		if ( 'return' === $item_type ) {
+			$item_class = 'Vendidero\Germanized\Shipments\ShipmentReturnItem';
+		}
+
+		return $item_class;
 	}
 
 	protected static function remove_gzd_status_prefix( $status ) {

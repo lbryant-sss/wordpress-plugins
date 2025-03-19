@@ -127,6 +127,42 @@ if( !function_exists('htmega_elementor_template') ){
         }
     }
 }
+/**
+ * Get HTMega templates list by type
+ *
+ * @param string $type Template type to filter by
+ * @return array Filtered list of templates
+ */
+if( !function_exists('htmega_theme_builder_templates') ){
+
+    function htmega_theme_builder_templates( $type = [] ){
+        $template_lists = [];
+
+        $args = array(
+            'post_type'            => 'htmega_theme_builder',
+            'post_status'          => 'publish',
+            'ignore_sticky_posts'  => 1,
+            'posts_per_page'       => -1,
+        );
+
+        if( is_array( $type ) && count( $type ) > 0 ){
+            $args['meta_key'] = '_htmega_template_type';
+            $args['meta_value'] = $type;
+            $args['meta_compare'] = 'IN';
+        }
+
+        $templates = new WP_Query( $args );
+
+        if( $templates->have_posts() ){
+            foreach ( $templates->get_posts() as $post ) {
+                $template_lists[ $post->ID ] = $post->post_title;
+            }
+        }
+        wp_reset_query();
+        return $template_lists;
+
+    }
+}
 
 /*
  * Elementor Setting page value
@@ -1009,6 +1045,46 @@ if( !function_exists('htmega_get_module_option') ) {
     }
 }
 
+/**
+ * Update module option value
+ * @input section, option_id, option_key, value
+ * @return boolean
+ */
+if( !function_exists('htmega_update_module_option') ) {
+    function htmega_update_module_option( $section = '', $option_id = '', $option_key = '', $value = null ){
+
+        $module_settings = get_option( $section );
+        
+        if( $option_id && is_array( $module_settings ) && count( $module_settings ) > 0 ) {
+
+            if( isset ( $module_settings[ $option_id ] ) && '' != $module_settings[ $option_id ] ) {
+
+                $option_value = json_decode( $module_settings[ $option_id ], true );
+
+                if( $option_key && is_array( $option_value  ) && count( $option_value  ) > 0 ) {
+
+                    if ( isset($option_value[$option_key] ) && '' != $option_value[$option_key] ) {
+                        $option_value[$option_key] = $value;
+                    } else {
+                        $option_value[$option_key] = $value;
+                    }
+
+                    $module_settings[ $option_id ] = json_encode( $option_value );
+                } else {
+                    $module_settings[ $option_id ] = $value;
+                }
+
+                return update_option( $section, $module_settings );
+                
+            } else {
+                return false;
+            }
+
+        } else {
+            return false;
+        }
+    }
+}
 /**
  * [htmega_clean]
  * @param  [JSON] $var

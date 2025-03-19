@@ -8,9 +8,9 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.3.8';
+		public $version = '5.3.9';
 
-		public $db_version = '2.1.2';
+		public $db_version = '2.1.3';
 
 		public $firewall_version = '1.0.8';
 
@@ -42,6 +42,10 @@ if (!class_exists('AIO_WP_Security')) {
 		public $captcha_obj;
 				
 		public $cleanup_obj;
+
+		public $sender_obj;
+
+		public $debug_obj;
 
 		/**
 		 * Whether the page is admin dashboard page.
@@ -228,6 +232,10 @@ if (!class_exists('AIO_WP_Security')) {
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-block-userini.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-block-wpconfig.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-block-muplugin.php');
+
+			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-reporting.php');
+			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-debug.php');
+			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-sender-service.php');
 
 			// At this time, sometimes is_admin() can't be populated, It gives the error PHP Fatal error:  Uncaught Error: Class 'AIOWPSecurity_Admin_Init' not found.
 			// so we should not use is_admin() condition.
@@ -464,6 +472,8 @@ if (!class_exists('AIO_WP_Security')) {
 			$this->captcha_obj = new AIOWPSecurity_Captcha(); // Do the CAPTCHA tasks
 			$this->cleanup_obj = new AIOWPSecurity_Cleanup(); // Object to handle cleanup tasks
 			$this->scan_obj = new AIOWPSecurity_Scan();//Object to handle scan tasks
+			$this->sender_obj = new AIOWPSecurity_Sender_Service();//Object to handle sending emails
+			$this->debug_obj =new AIOWPSecurity_Debug();//Object to handle debug tasks
 			add_action('wp_footer', array($this, 'aiowps_footer_content'));
 
 			add_action('wp_login', array('AIOWPSecurity_User_Login', 'wp_login_action_handler'), 10, 2);
@@ -474,6 +484,7 @@ if (!class_exists('AIO_WP_Security')) {
 
 			new AIOWPSecurity_General_Init_Tasks();
 			new AIOWPSecurity_Comment();
+			new AIOWPSecurity_Reporting();
 
 			$this->redirect_user_after_force_logout();
 		}

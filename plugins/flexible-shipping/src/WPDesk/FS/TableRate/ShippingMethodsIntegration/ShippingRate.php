@@ -77,6 +77,9 @@ class ShippingRate implements Hookable {
 	 * @return array
 	 */
 	public function add_table_rate_shipping_rate( $args, $shipping_method ) {
+		if ( ! isset( $this->package ) ) {
+			return $args;
+		}
 		if ( ! is_array( $args ) || $shipping_method->get_option( SettingsFields::FS_CALCULATION_ENABLED, 'no' ) === 'no' ) {
 			return $args;
 		}

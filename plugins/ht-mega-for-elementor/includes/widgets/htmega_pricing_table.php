@@ -469,7 +469,7 @@ class HTMega_Elementor_Widget_Pricing_Table extends Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .htmega-pricing-panel .htmega-pricing-heading .htmega-pricing-header-align' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .htmega-pricing-panel .htmega-pricing-heading .htmega-pricing-header-align,{{WRAPPER}} .htmega-pricing-heading' => 'text-align: {{VALUE}};',
                 ],
                 'condition' => [
                     'htmega_pricing_style!' => '1',
@@ -820,7 +820,32 @@ class HTMega_Elementor_Widget_Pricing_Table extends Widget_Base
                 ],
             ]
         );
-
+        $this->add_responsive_control(
+            'htmega_footer_alignment',
+            [
+                'label' => esc_html__('Alignment', 'htmega-addons'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__('Left', 'htmega-addons'),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__('Center', 'htmega-addons'),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__('Right', 'htmega-addons'),
+                        'icon' => 'eicon-text-align-right',
+                    ],
+                ],
+                'toggle' => true,
+                'selectors' => [
+                    '{{WRAPPER}} .htmega-pricing-footer' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .htmega-pricing-style-5 .htmega-pricing-body a.price_btn' => '{{VALUE}}: 0;transform: translateX(0)',
+                ],
+            ]
+        );
         $this->end_controls_section(); // Footer Fields tab end
 
         // Style tab section start
@@ -2142,7 +2167,7 @@ class HTMega_Elementor_Widget_Pricing_Table extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'pricing_footer_typography',
-                'selector' => '{{WRAPPER}} .htmega-pricing-panel .htmega-pricing-footer a.price_btn',
+                'selector' => '{{WRAPPER}} .htmega-pricing-panel .htmega-pricing-footer a.price_btn, {{WRAPPER}} .htmega-pricing-style-5 .htmega-pricing-body a.price_btn',
             ]
         );
 
@@ -2241,7 +2266,7 @@ class HTMega_Elementor_Widget_Pricing_Table extends Widget_Base
                 'name' => 'pricing_footer_hover_background',
                 'label' => esc_html__('Background', 'htmega-addons'),
                 'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .htmega-pricing-footer a.price_btn:hover',
+                'selector' => '{{WRAPPER}} .htmega-pricing-footer a.price_btn:hover,{{WRAPPER}} .htmega-pricing-body a.price_btn:hover,{{WRAPPER}} .htmega-pricing-style-5 .htmega-pricing-body a.price_btn:hover span',
             ]
         );
 

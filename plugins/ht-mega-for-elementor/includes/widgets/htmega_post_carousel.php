@@ -595,17 +595,53 @@ class HTMega_Elementor_Widget_Post_Carousel extends Widget_Base {
                         '{{WRAPPER}} .htmega-single-post-slide .thumb' => 'height: {{SIZE}}{{UNIT}};',
                     ],
                 ]
-            );            
+            );
             $this->add_responsive_control(
-                'items_radius',
+                'item_radius',
                 [
-                    'label' => esc_html__( 'Border Radius', 'htmega-addons' ),
+                    'label' => esc_html__( 'Card Border Radius', 'htmega-addons' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em' ],
+                    'default' => [
+                        'unit' => 'px',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .htmega-single-post-slide' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'separator' => 'before',
+                ]
+            );
+            $this->add_responsive_control(
+                'item_padding',
+                [
+                    'label' => __( 'Padding', 'htmega-addons' ),
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%', 'em' ],
                     'selectors' => [
-                        '{{WRAPPER}} .htmega-single-post-slide .thumb a img,{{WRAPPER}} .htmega-single-post-slide .thumb a:after' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .htmega-single-post-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'separator' => 'before',
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'item_border',
+                    'label' => __( 'Border', 'htmega-addons' ),
+                    'selector' => '{{WRAPPER}} .htmega-single-post-slide',
+                ]
+            );
+            
+            $this->add_control(
+                'item_background_color',
+                [
+                    'label' => __( 'Backgournd Color', 'htmega-addons' ),
+                    'type' => Controls_Manager::COLOR,
+                    'default'=>'',
+                    'selectors' => [
+                        '{{WRAPPER}} .htmega-single-post-slide' => 'background-color: {{VALUE}}',
+                    ],
                 ]
             );
             $this->add_control(
@@ -650,7 +686,18 @@ class HTMega_Elementor_Widget_Post_Carousel extends Widget_Base {
                     ]
                 ]
             );
- 
+            $this->add_responsive_control(
+                'items_radius',
+                [
+                    'label' => esc_html__( 'Image Border Radius', 'htmega-addons' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .htmega-single-post-slide .thumb a img,{{WRAPPER}} .htmega-single-post-slide .thumb a:after' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'separator' => 'before',
+                ]
+            );
             // Content box style start
             $this->add_control(
                 'content_box_heading',

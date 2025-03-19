@@ -148,14 +148,17 @@ class CostsCalculator
      */
     private function calculate_cost($calculated_cost = null): float
     {
-        /**
-         * Rules calculation function.
-         * Default rules calculation is sum.
-         *
-         * @param callback $callbac Callback function.
-         * @param string   $callback_setting Callback setting.
-         */
-        $calculation_method_callback = apply_filters('flexible-shipping/shipping-method/rules-calculation-function', [$this, 'sum_calculation'], $this->method_settings->get_calculation_method());
+        $calculation_method_callback = [$this, 'sum_calculation'];
+        if (function_exists('apply_filters')) {
+            /**
+             * Rules calculation function.
+             * Default rules calculation is sum.
+             *
+             * @param callback $callbac          Callback function.
+             * @param string   $callback_setting Callback setting.
+             */
+            $calculation_method_callback = apply_filters('flexible-shipping/shipping-method/rules-calculation-function', $calculation_method_callback, $this->method_settings->get_calculation_method());
+        }
         $this->shipping_contents->reset_contents();
         $this->shipping_contents->set_calculated_shipping_cost((float) ($calculated_cost ?? 0.0));
         foreach ($this->prepared_rules as $rule_index => $calculated_rule) {
@@ -193,13 +196,16 @@ class CostsCalculator
         if (null === $calculated_cost) {
             $calculated_cost = 0.0;
         }
-        /**
-         * Calculated shipping method cost.
-         *
-         * @param float $calculated_cost          Calculated cost.
-         * @param array $shipping_method_settings Current shipping method settings.
-         */
-        return (float) apply_filters('flexible-shipping/shipping-method/calculated-cost', $calculated_cost, $this->method_settings->get_raw_settings());
+        if (function_exists('apply_filters')) {
+            /**
+             * Calculated shipping method cost.
+             *
+             * @param float $calculated_cost          Calculated cost.
+             * @param array $shipping_method_settings Current shipping method settings.
+             */
+            $calculated_cost = (float) apply_filters('flexible-shipping/shipping-method/calculated-cost', $calculated_cost, $this->method_settings->get_raw_settings());
+        }
+        return $calculated_cost;
     }
     /**
      * @param Rule\Rule[] $prepared_rules .

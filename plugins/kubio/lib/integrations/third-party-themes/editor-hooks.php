@@ -36,6 +36,12 @@ function kubio_hybrid_theme_load_template( $template ) {
 		return $template;
 	}
 
+
+	if(!kubio_get_is_valid_classic_template_id($template_id)) {
+		return $template;
+	}
+
+
 	$new_template = locate_template( array( $template_id ) );
 	if ( '' !== $new_template ) {
 		return $new_template;
@@ -43,7 +49,38 @@ function kubio_hybrid_theme_load_template( $template ) {
 	return $template;
 }
 
+function kubio_get_is_valid_classic_template_id($template_id) {
 
+	$theme = wp_get_theme();
+	$templates = $theme->get_page_templates();
+	$default_templates = [
+		'index.php',
+		'front-page.php',
+		'home.php',
+		'single.php',
+		'page.php',
+		'archive.php',
+		'category.php',
+		'tag.php',
+		'taxonomy.php',
+		'author.php',
+		'date.php',
+		'search.php',
+		'attachment.php',
+		'image.php',
+		'video.php',
+		'audio.php',
+		'404.php',
+	];
+	$theme_templates_values = array_keys($templates);
+	$merged_templates = array_merge($theme_templates_values, $default_templates);
+
+
+
+
+	$value = in_array(strtolower($template_id), array_map('strtolower', $merged_templates));
+	return $value;
+}
 
 function kubio_wp_redirect_maybe_add_hybrid_theme_query_param( $location ) {
 

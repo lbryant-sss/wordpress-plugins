@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc0a3b5db930be7d3b9dbe43f6ef2d249
+class ComposerStaticInitb9e6833a9bc114dada325effe69b68d9
 {
     public static $prefixLengthsPsr4 = array (
         'W' => 
@@ -579,40 +579,40 @@ class ComposerStaticInitc0a3b5db930be7d3b9dbe43f6ef2d249
         'WPDesk\\FS\\TableRate\\Rates\\FlexibleShippingRates' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rates/FlexibleShippingRates.php',
         'WPDesk\\FS\\TableRate\\Rule\\Condition\\AbstractCondition' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/AbstractCondition.php',
         'WPDesk\\FS\\TableRate\\Rule\\Condition\\Condition' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Condition.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\ConditionsFactory' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/ConditionsFactory.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\ConditionsFactory' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/ConditionsFactory.php',
         'WPDesk\\FS\\TableRate\\Rule\\Condition\\None' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/None.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Price' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Price.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\CartLineItem' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/CartLineItem.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\DayOfTheWeek' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/DayOfTheWeek.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\DimensionalWeight' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/DimensionalWeight.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\Item' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/Item.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\MaxDimension' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/MaxDimension.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\Product' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/Product.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductCategory' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductCategory.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductDimensionHeight' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductDimensionLength' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionLength.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductDimensionWidth' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductFieldRange' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductFieldRange.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductFieldValue' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductFieldValue.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductStockQuantity' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductStockQuantity.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductStockStatus' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductStockStatus.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductTag' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ProductTag.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ShippingClass' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ShippingClass.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ShippingCost' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/ShippingCost.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\TimeOfTheDay' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/TimeOfTheDay.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\TotalOverallDimensions' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/TotalOverallDimensions.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\UserRole' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/UserRole.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\Volume' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Pro/Volume.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Weight' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Condition/Weight.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Price' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Price.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\CartLineItem' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/CartLineItem.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\DayOfTheWeek' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/DayOfTheWeek.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\DimensionalWeight' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/DimensionalWeight.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\Item' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/Item.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\MaxDimension' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/MaxDimension.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\Product' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/Product.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductCategory' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductCategory.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductDimensionHeight' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductDimensionLength' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionLength.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductDimensionWidth' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductFieldRange' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldRange.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductFieldValue' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldValue.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductStockQuantity' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockQuantity.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductStockStatus' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockStatus.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ProductTag' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductTag.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ShippingClass' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingClass.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\ShippingCost' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingCost.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\TimeOfTheDay' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/TimeOfTheDay.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\TotalOverallDimensions' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/TotalOverallDimensions.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\UserRole' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/UserRole.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Pro\\Volume' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Pro/Volume.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Condition\\Weight' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Condition/Weight.php',
         'WPDesk\\FS\\TableRate\\Rule\\ContentsFilter' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/ContentsFilter.php',
         'WPDesk\\FS\\TableRate\\Rule\\Cost\\AbstractAdditionalCost' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/AbstractAdditionalCost.php',
         'WPDesk\\FS\\TableRate\\Rule\\Cost\\AdditionalCost' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/AdditionalCost.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Cost\\RuleAdditionalCostFactory' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/RuleAdditionalCostFactory.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Cost\\RuleAdditionalCostFieldsFactory' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php',
-        'WPDesk\\FS\\TableRate\\Rule\\Cost\\RuleCostFieldsFactory' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Cost/RuleCostFieldsFactory.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Cost\\RuleAdditionalCostFactory' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFactory.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Cost\\RuleAdditionalCostFieldsFactory' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php',
+        'WPDesk\\FS\\TableRate\\Rule\\Cost\\RuleCostFieldsFactory' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/Cost/RuleCostFieldsFactory.php',
         'WPDesk\\FS\\TableRate\\Rule\\CostsCalculator' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/CostsCalculator.php',
-        'WPDesk\\FS\\TableRate\\Rule\\PreconfiguredScenarios\\PreconfiguredScenariosFactory' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php',
-        'WPDesk\\FS\\TableRate\\Rule\\PreconfiguredScenarios\\PredefinedScenario' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/PreconfiguredScenarios/PredefinedScenario.php',
+        'WPDesk\\FS\\TableRate\\Rule\\PreconfiguredScenarios\\PreconfiguredScenariosFactory' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php',
+        'WPDesk\\FS\\TableRate\\Rule\\PreconfiguredScenarios\\PredefinedScenario' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PredefinedScenario.php',
         'WPDesk\\FS\\TableRate\\Rule\\PreconfiguredScenarios\\Tracker\\AjaxTracker' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/Tracker/AjaxTracker.php',
         'WPDesk\\FS\\TableRate\\Rule\\PreconfiguredScenarios\\Tracker\\Tracker' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/Tracker/Tracker.php',
         'WPDesk\\FS\\TableRate\\Rule\\PreconfiguredScenarios\\Tracker\\TrackingData' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/Tracker/TrackingData.php',
@@ -627,8 +627,8 @@ class ComposerStaticInitc0a3b5db930be7d3b9dbe43f6ef2d249
         'WPDesk\\FS\\TableRate\\Rule\\SpecialAction\\AbstractSpecialAction' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/SpecialAction/AbstractSpecialAction.php',
         'WPDesk\\FS\\TableRate\\Rule\\SpecialAction\\None' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/SpecialAction/None.php',
         'WPDesk\\FS\\TableRate\\Rule\\SpecialAction\\SpecialAction' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/SpecialAction/SpecialAction.php',
-        'WPDesk\\FS\\TableRate\\Rule\\SpecialAction\\SpecialActionFactory' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/SpecialAction/SpecialActionFactory.php',
-        'WPDesk\\FS\\TableRate\\Rule\\SpecialAction\\SpecialActionFieldsFactory' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/SpecialAction/SpecialActionFieldsFactory.php',
+        'WPDesk\\FS\\TableRate\\Rule\\SpecialAction\\SpecialActionFactory' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/SpecialAction/SpecialActionFactory.php',
+        'WPDesk\\FS\\TableRate\\Rule\\SpecialAction\\SpecialActionFieldsFactory' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/SpecialAction/SpecialActionFieldsFactory.php',
         'WPDesk\\FS\\TableRate\\Rule\\TrackerData' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Rule/TrackerData.php',
         'WPDesk\\FS\\TableRate\\RulesSettingsFactory' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/RulesSettingsFactory.php',
         'WPDesk\\FS\\TableRate\\RulesSettingsField' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/RulesSettingsField.php',
@@ -684,9 +684,9 @@ class ComposerStaticInitc0a3b5db930be7d3b9dbe43f6ef2d249
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc0a3b5db930be7d3b9dbe43f6ef2d249::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc0a3b5db930be7d3b9dbe43f6ef2d249::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitc0a3b5db930be7d3b9dbe43f6ef2d249::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb9e6833a9bc114dada325effe69b68d9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb9e6833a9bc114dada325effe69b68d9::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitb9e6833a9bc114dada325effe69b68d9::$classMap;
 
         }, null, ClassLoader::class);
     }

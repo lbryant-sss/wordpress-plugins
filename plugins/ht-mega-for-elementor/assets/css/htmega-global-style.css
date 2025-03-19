@@ -211,6 +211,9 @@ body:has( .htmega_mega_menu ){
   .htmega_button_icon svg {
     width: 20px;
   }
+  .htmega-button span svg path {
+	transition: all 0.4s ease-in-out 0s;
+}
   .htmega-button .htb-btn {
     border-radius: 0;
     position: relative;
@@ -2709,7 +2712,7 @@ body:has( .htmega_mega_menu ){
       position: relative;
       border: 1px solid transparent;
       padding: 4px;
-      transition: 0.5;
+      transition: 0.5s;
   }
   
   .htmega-pricing-style-5 .htmega-pricing-body a.price_btn span {
@@ -2719,6 +2722,7 @@ body:has( .htmega_mega_menu ){
       border-radius: 20px;
       height: 40px;
       line-height: 40px;
+      transition: 0.5s;
   }
   
   .htmega-pricing-style-5 .htmega-pricing-body a.price_btn:hover {
@@ -2738,10 +2742,7 @@ body:has( .htmega_mega_menu ){
   .htmega-pricing-style-5 sub {
     font-size: 40px;
     position: static;
-  }
-  
-  /* Pricing Table Style 6 */
-  
+  }  
   .htmega-pricing-style-6 {
       background: #fff;
       box-shadow: 0 0 20px 1px rgba(35, 31, 32, 0.2);
@@ -11230,8 +11231,11 @@ justify-content: center;
   .htmega-counter-content {
     line-height: 1;
   }
-  .htmega-counter-icon span{
+  .htmega-counter-icon span {
     display: inline-block;
+  }
+  .htmega-counter-img, .htmega-counter-icon {
+    margin: auto;
   }
   .htmega-counter-icon svg {
     width: 20px;
@@ -11935,6 +11939,7 @@ justify-content: center;
   */
   .htmega-single-post-slide {
       position: relative;
+      overflow: hidden;
   }
   .htmega-single-post-slide img{
     width: 100%;
@@ -18905,6 +18910,9 @@ justify-content: center;
     /* Svg icon height auto css */
     [class*='htmega-'] svg{
         height: auto;
+    }
+    [class*='htmega-'] svg path{
+        transition:  all 0.3s ease-in-out;
     }
     [class*='htmega-']>div {
         overflow-wrap: break-word;

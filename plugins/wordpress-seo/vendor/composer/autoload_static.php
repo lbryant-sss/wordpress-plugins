@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit63d0b82815785090ebe3682d71898252
+class ComposerStaticInitb0de001ebedfe6eb3bf4d74f21a6b2ca
 {
     public static $files = array (
         '81db02b30f563b92907e271b66bd7559' => __DIR__ . '/..' . '/yoast/whip/src/Facades/wordpress.php',
@@ -679,10 +679,12 @@ class ComposerStaticInit63d0b82815785090ebe3682d71898252
         'Yoast\\WP\\SEO\\Dashboard\\Application\\Score_Results\\Current_Scores_Repository' => __DIR__ . '/../..' . '/src/dashboard/application/score-results/current-scores-repository.php',
         'Yoast\\WP\\SEO\\Dashboard\\Application\\Score_Results\\Readability_Score_Results\\Readability_Score_Results_Repository' => __DIR__ . '/../..' . '/src/dashboard/application/score-results/readability-score-results/readability-score-results-repository.php',
         'Yoast\\WP\\SEO\\Dashboard\\Application\\Score_Results\\SEO_Score_Results\\SEO_Score_Results_Repository' => __DIR__ . '/../..' . '/src/dashboard/application/score-results/seo-score-results/seo-score-results-repository.php',
+        'Yoast\\WP\\SEO\\Dashboard\\Application\\Search_Rankings\\Search_Ranking_Compare_Repository' => __DIR__ . '/../..' . '/src/dashboard/application/search-rankings/search-ranking-compare-repository.php',
         'Yoast\\WP\\SEO\\Dashboard\\Application\\Search_Rankings\\Top_Page_Repository' => __DIR__ . '/../..' . '/src/dashboard/application/search-rankings/top-page-repository.php',
         'Yoast\\WP\\SEO\\Dashboard\\Application\\Search_Rankings\\Top_Query_Repository' => __DIR__ . '/../..' . '/src/dashboard/application/search-rankings/top-query-repository.php',
         'Yoast\\WP\\SEO\\Dashboard\\Application\\Taxonomies\\Taxonomies_Repository' => __DIR__ . '/../..' . '/src/dashboard/application/taxonomies/taxonomies-repository.php',
-        'Yoast\\WP\\SEO\\Dashboard\\Application\\Traffic\\Organic_Sessions_Repository' => __DIR__ . '/../..' . '/src/dashboard/application/traffic/organic-sessions-repository.php',
+        'Yoast\\WP\\SEO\\Dashboard\\Application\\Traffic\\Organic_Sessions_Compare_Repository' => __DIR__ . '/../..' . '/src/dashboard/application/traffic/organic-sessions-compare-repository.php',
+        'Yoast\\WP\\SEO\\Dashboard\\Application\\Traffic\\Organic_Sessions_Daily_Repository' => __DIR__ . '/../..' . '/src/dashboard/application/traffic/organic-sessions-daily-repository.php',
         'Yoast\\WP\\SEO\\Dashboard\\Domain\\Analytics_4\\Failed_Request_Exception' => __DIR__ . '/../..' . '/src/dashboard/domain/analytics-4/failed-request-exception.php',
         'Yoast\\WP\\SEO\\Dashboard\\Domain\\Analytics_4\\Invalid_Request_Exception' => __DIR__ . '/../..' . '/src/dashboard/domain/analytics-4/invalid-request-exception.php',
         'Yoast\\WP\\SEO\\Dashboard\\Domain\\Analytics_4\\Unexpected_Response_Exception' => __DIR__ . '/../..' . '/src/dashboard/domain/analytics-4/unexpected-response-exception.php',
@@ -716,6 +718,7 @@ class ComposerStaticInit63d0b82815785090ebe3682d71898252
         'Yoast\\WP\\SEO\\Dashboard\\Domain\\Score_Results\\Score_Results_Not_Found_Exception' => __DIR__ . '/../..' . '/src/dashboard/domain/score-results/score-results-not-found-exception.php',
         'Yoast\\WP\\SEO\\Dashboard\\Domain\\Search_Console\\Failed_Request_Exception' => __DIR__ . '/../..' . '/src/dashboard/domain/search-console/failed-request-exception.php',
         'Yoast\\WP\\SEO\\Dashboard\\Domain\\Search_Console\\Unexpected_Response_Exception' => __DIR__ . '/../..' . '/src/dashboard/domain/search-console/unexpected-response-exception.php',
+        'Yoast\\WP\\SEO\\Dashboard\\Domain\\Search_Rankings\\Comparison_Search_Ranking_Data' => __DIR__ . '/../..' . '/src/dashboard/domain/search-rankings/comparison-search-ranking-data.php',
         'Yoast\\WP\\SEO\\Dashboard\\Domain\\Search_Rankings\\Search_Ranking_Data' => __DIR__ . '/../..' . '/src/dashboard/domain/search-rankings/search-ranking-data.php',
         'Yoast\\WP\\SEO\\Dashboard\\Domain\\Search_Rankings\\Top_Page_Data' => __DIR__ . '/../..' . '/src/dashboard/domain/search-rankings/top-page-data.php',
         'Yoast\\WP\\SEO\\Dashboard\\Domain\\Taxonomies\\Taxonomy' => __DIR__ . '/../..' . '/src/dashboard/domain/taxonomies/taxonomy.php',
@@ -1237,9 +1240,9 @@ class ComposerStaticInit63d0b82815785090ebe3682d71898252
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit63d0b82815785090ebe3682d71898252::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit63d0b82815785090ebe3682d71898252::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit63d0b82815785090ebe3682d71898252::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb0de001ebedfe6eb3bf4d74f21a6b2ca::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb0de001ebedfe6eb3bf4d74f21a6b2ca::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitb0de001ebedfe6eb3bf4d74f21a6b2ca::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -28,12 +28,19 @@ class SettingsFields implements Hookable {
 	 * @return bool
 	 */
 	public function remove_modal_settings_from_shipping_methods( $supports, $feature, $shipping_method ) {
+		if ( isset( $_GET['page'] ) && $_GET['page'] === 'wc-settings'
+			&& isset( $_GET['tab'] ) && $_GET['tab'] === 'shipping'
+			&& isset( $_GET['instance_id'] )
+		) {
+			if ( $feature === 'instance-settings-modal' ) {
+				return false;
+			}
+		}
 		if ( in_array( $shipping_method->id ?? '', $this->get_allowed_shipping_methods_instance_settings(), true ) ) {
 			if ( $feature === 'instance-settings-modal' ) {
 				return false;
 			}
 		}
-
 		return $supports;
 	}
 
@@ -93,7 +100,7 @@ class SettingsFields implements Hookable {
 	 */
 	public function generate_shipping_rules_html( $field_html, $key, $data, $shipping_method ): string {
 		$title          = $data['title'];
-		$field_key      = 'woocommerce_' . $shipping_method->id . '_' . self::SETTING_METHOD_RULES;
+		$field_key      = $shipping_method->plugin_id . $shipping_method->id . '_' . self::SETTING_METHOD_RULES;
 		$rules_settings = new RulesSettingsField(
 			$field_key,
 			$field_key,
@@ -144,8 +151,10 @@ class SettingsFields implements Hookable {
 	 * @return string
 	 */
 	public static function sanitize_shipping_rules( $value ) {
-
-		return json_encode( $value );
+		if ( is_array( $value ) ) {
+			return json_encode( $value );
+		} else {
+			return $value;
+		}
 	}
-
 }

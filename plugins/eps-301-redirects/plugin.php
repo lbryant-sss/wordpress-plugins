@@ -784,7 +784,7 @@ class EPS_Redirects_Plugin
 	{
 		global $original_request_uri;
         if(isset($_SERVER['REQUEST_URI'])){
-		    $original_request_uri = strtolower(urldecode(sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI']))));
+		    $original_request_uri = strtolower(sanitize_text_field(wp_unslash(urldecode($_SERVER['REQUEST_URI']))));
         }
 	}
 

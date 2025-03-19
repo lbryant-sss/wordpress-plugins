@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, tarekht, zenaulislam, aslamhasi
 Tags: elementor, elementor addons, elementor widgets, elementor templates, addons, elementor slider, elementor page builder, mega menu, addons for elementor, post grid, elements, header footer builder
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.8.3
+Stable tag: 2.8.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -528,6 +528,24 @@ Visit [HasThemes](https://hasthemes.com/) for more details about HTML, Shopify a
 
 
 == Changelog ==
+
+= Version 2.8.4 - Date: 2025-03-18 =
+* Added: Mailbes SaaS – Elementor Template Kit.
+* Added: Constia Construction – Elementor Template Kit.
+* Added: Saafigo SaaS – Elementor Template Kit.
+* Added: MedCare Medical – Elementor Template Kit.
+* Added: Appixy SaaS – Elementor Template Kit.
+* Added: SaaSo SaaS – Elementor Template Kit.
+* Added: Theme Builder to easily manage HT Mega Theme Builder Templates.
+* Added: Pricing Button Alignment option in the Pricing Table Widget.
+* Added: Option to add Card Border, Border Radius, Background Color, and Padding in the Post Carousel Widget.
+* Added: Option to add Team Member Image Border, Border Radius, and Padding in the Team Member Widget.
+* Fixed: Button Typography not working issue in the Pricing Table Widget.
+* Fixed: Button SVG Icon transition issue in the Button Widget.
+* Fixed: Pricing Header Alignment issue in the Pricing Table Widget.
+* Fixed: Pricing Button Background Hover color issue in the Pricing Table Widget.
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
 
 = Version 2.8.3 - Date: 2025-03-02 =
 * Added: BuildBes Construction – Elementor Template Kit.
