@@ -186,19 +186,17 @@ class Entry extends Model
         // todo: handle these pro models deletion
         // todo: delete files
         try {
-            if(defined('FLUENTFORMPRO_VERSION')) {
-                wpFluent()->table('fluentform_order_items')
-                    ->whereIn('submission_id', $entryIds)
-                    ->delete();
+            wpFluent()->table('fluentform_order_items')
+                ->whereIn('submission_id', $entryIds)
+                ->delete();
 
-                wpFluent()->table('fluentform_transactions')
-                    ->whereIn('submission_id', $entryIds)
-                    ->delete();
+            wpFluent()->table('fluentform_transactions')
+                ->whereIn('submission_id', $entryIds)
+                ->delete();
 
-                wpFluent()->table('fluentform_subscriptions')
-                    ->whereIn('submission_id', $entryIds)
-                    ->delete();
-            }
+            wpFluent()->table('fluentform_subscriptions')
+                ->whereIn('submission_id', $entryIds)
+                ->delete();
 
             wpFluent()->table('ff_scheduled_actions')
                 ->whereIn('origin_id', $entryIds)

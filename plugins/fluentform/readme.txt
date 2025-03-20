@@ -4,7 +4,7 @@ Tags: contact form, wp forms, forms, form builder, custom form
 Requires at least: 4.5
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 5.2.12
+Stable tag: 6.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -430,9 +430,24 @@ You can get support from our official support thread at <a href="https://wpmanag
 
 == Changelog ==
 
+= 6.0.0 (Date: March 19, 2025) =
+- Adds Payment fields with subscription
+- Adds Stripe payment gateway
+- Adds Advanced Conditionals group for enhanced form logic
+- Adds FluentFormAI for creating AI assisted forms
+- Adds New Form Templates
+- Improves hCaptcha settings saving method
+- Improves Captchas Loading after first interactions on Popups
+- Improves CleanTalk API
+- Improves spam processing logs
+- Fixes Stripe fields language issues
+- Fixes "customer_name" issue for Stripe
+- Fixes conditional {dynamic.} shortcode in Custom HTML fields
+- Fixes front end facing site_url with home_url
+
 = 5.2.12 (Date: February 18, 2025) =
 - Adds token-based spam protection for enhanced form security
-- Adds Italian Translation
+- Adds Italian Language Translation
 - Improve Honeypot Security for better bot detection
 - Improve Turnstile appearance option names for clarity
 

@@ -1,11 +1,11 @@
 === Go Live Update Urls ===
-Contributors: Mat Lipe, onpointplugins
+Contributors: onpointplugins, Mat Lipe
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=paypal%40onpointplugins%2ecom&lc=US&item_name=Go%20Live%20Update%20Urls&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest
 Tags: search and replace, database, urls, domain, update urls
 Requires at least: 6.2.0
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 Requires PHP: 7.4.0
-Stable tag: 7.0.2
+Stable tag: 7.0.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Change the domain on your site with one click.
@@ -16,11 +16,12 @@ Change the domain on your site with one click.
 
 Goes through entire site and replaces all instances of an old URL with a new one. Used most often when changing the domain of your site.
 
-### Goals
+**Developed and supported by <a href="https://onpointplugins.com/go-live-update-urls/" target="_blank">OnPoint Plugins</a>.**
 
-* Take the guesswork out of changing a domain.
-* Provide a super simple process for updating URLs.
-* Accurately update all instances of a URL on any site.
+### Purpose
+
+1. Provides a super simple process for changing a domain or URL.
+2. Accurately updates all instances of a domain or URL on any site.
 
 ### Features
 
@@ -173,6 +174,12 @@ If you find you are running into issues with custom tables, you may want to chec
 3. Update prevented due to incomplete data entered.
 
 == Changelog ==
+
+= 7.0.3 = 
+* Added original plugin author to the readme. 
+* Upgraded PHPStan to version 2.
+* Updated nanoid to latest version to resolve dependency vulnerability.
+* Tested to WordPress 6.7.2.
 
 = 7.0.2 =
 * Adjusted memory limit during counting to assure all tables are counted.

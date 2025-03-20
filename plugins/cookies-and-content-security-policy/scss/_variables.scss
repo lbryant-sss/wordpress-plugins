@@ -1,13 +1,13 @@
 // Colors
 $black: #000 !default;
 $white: #fff !default;
-$green: #47b973 !default;
-$green-light: lighten(#47b973, 30%) !default;
-$green-dark: darken(#47b973, 20%) !default;
+$green: #4b7d5e !default;
+$green-light: lighten($green, 45%) !default;
+$green-dark: darken($green, 20%) !default;
 $gray: lighten($black, 70%) !default;
 $gray-light: lighten($black, 90%) !default;
-$red: #d9534f !default;
-$red-light: lighten($red, 30%) !default; 
+$red: #bd403c !default;
+$red-light: lighten($red, 40%) !default; 
 
 // Default element colors
 $header-bg: $black !default;

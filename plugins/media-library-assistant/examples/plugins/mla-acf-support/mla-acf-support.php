@@ -7,7 +7,7 @@
  * https://wordpress.org/support/topic/apply-mla-taxonomy-picker-to-an-acf-gallery-field/
  *
  * @package MLA ACF Support
- * @version 1.02
+ * @version 1.03
  */
 
 /*
@@ -15,7 +15,7 @@ Plugin Name: MLA ACF Support
 Plugin URI: http://davidlingren.com/
 Description: Adds MLA-style taxonomy to the ACF Gallery custom field handler.
 Author: David Lingren
-Version: 1.02
+Version: 1.03
 Author URI: http://davidlingren.com/
 
 Copyright 2025 David Lingren
@@ -48,7 +48,7 @@ class MLAACFSupport {
 	 *
 	 * @var	string
 	 */
-	const PLUGIN_VERSION = '1.02';
+	const PLUGIN_VERSION = '1.03';
 
 	/**
 	 * Slug prefix for registering and enqueueing submenu pages, style sheets, scripts and settings

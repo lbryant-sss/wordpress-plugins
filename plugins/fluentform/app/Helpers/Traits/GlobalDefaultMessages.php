@@ -103,8 +103,8 @@ trait GlobalDefaultMessages
 
         if (defined('FLUENTFORMPRO')) {
             $default_message_setting_fields['valid_phone_number'] = [
-                'label'     => __('Valid Phone Number', 'fluentformpro'),
-                'value'     => __('Phone number is not valid', 'fluentformpro'),
+                'label'     => __('Valid Phone Number', 'fluentform'),
+                'value'     => __('Phone number is not valid', 'fluentform'),
                 'help_text' => __("This message will be shown if validation fails for validate phone number.",
                     'fluentform'),
             ];

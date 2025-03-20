@@ -109,6 +109,7 @@
 <form action="[+form_url+]" method="get" id="mla-search-images-form">
 	<input type="hidden" name="page" value="mla-settings-menu-image" />
 	<input type="hidden" name="mla_tab" value="image" />
+	[+view_args+]
 	[+_wpnonce+]
 	[+results+]
 	<p class="search-box" style="margin-top: 1em">
@@ -124,6 +125,7 @@
 			<form action="[+form_url+]" method="post" id="mla-search-images-filter">
 				<input type="hidden" name="page" value="mla-settings-menu-image" />
 				<input type="hidden" name="mla_tab" value="image" />
+				[+view_args+]
 				[+_wpnonce+]
 
 <!-- template="after-table" -->
@@ -215,7 +217,7 @@ try{document.forms.addtag['mla-image-slug'].focus();}catch(e){}
 						<div class="inline-edit-col">
 							<h4>[+Quick Edit+]</h4>
 							<label class="alignleft"> <span class="title">[+Slug+]</span> <span class="input-text-wrap">
-								<input type="text" name="slug" class="ptitle" value="" />
+								<input type="text" readonly="readonly" name="slug" class="ptitle" value="" />
 								</span> </label>
 							<label class="alignleft"> <span class="title">[+Name+]</span> <span class="input-text-wrap">
 								<input type="text" name="name" class="ptitle" value="" />

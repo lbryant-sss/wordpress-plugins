@@ -4,7 +4,7 @@
 * Plugin URI: https://plugins.followmedarling.se/cookies-and-content-security-policy/
 * Description: Block cookies and unwanted external content by setting Content Security Policy. A modal will be shown on the front end to let the visitor choose what kind of resources to accept.
 * Short Description: Be fully GDPR and CCPA compliant through Content Security Policy. Blocks cookies and unwanted external content.
-* Version: 2.28
+* Version: 2.29
 * Author: Jonk @ Follow me Darling
 * Author URI: https://plugins.followmedarling.se/
 * Domain Path: /languages
@@ -41,6 +41,7 @@ function cacsp_check_activated() {
 
 if ( !is_admin() && !get_cacsp_options( 'cacsp_option_only_csp' ) ) {
 	add_action( 'wp_enqueue_scripts', 'enqueue_cacsp_front', 10 );
+	add_action( 'login_enqueue_scripts', 'enqueue_cacsp_front', 10 );
 	function enqueue_cacsp_front() {
 		if ( cacsp_option_actived() ) {
 			if ( !get_cacsp_options( 'cacsp_option_own_style' ) ) {
@@ -73,6 +74,7 @@ if ( !is_admin() && !get_cacsp_options( 'cacsp_option_only_csp' ) ) {
 					cacsp_get_plugin_version(), 
 					true 
 				);
+				wp_localize_script( 'cookies-and-content-security-policy', 'cacsp_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 				if ( !get_cacsp_options( 'cacsp_option_only_csp' ) && get_cacsp_options( 'cacsp_option_disable_content_not_allowed_message', false, '0' ) == "0" ) {
 					$blog_id = '';
 					if ( is_multisite() ) {
@@ -107,6 +109,7 @@ if ( !is_admin() && !get_cacsp_options( 'cacsp_option_only_csp' ) ) {
 		}
 	}
 	add_action('wp_head', 'cacsp_options_settings_colors', 12);
+	add_action('login_head', 'cacsp_options_settings_colors', 12);
 	function cacsp_options_settings_colors() {
 		if ( cacsp_option_actived() ) {
 			$cacsp_option_color_backdrop = get_cacsp_options( 'cacsp_option_color_backdrop' );
@@ -288,6 +291,7 @@ if ( !is_admin() && !get_cacsp_options( 'cacsp_option_only_csp' ) ) {
 }
 
 add_filter( 'body_class', 'body_class_cacsp_front' );
+add_filter( 'login_body_class', 'body_class_cacsp_front' );
 function body_class_cacsp_front( $classes ) {
 	global $post;
 	if ( isset( $post ) ) {

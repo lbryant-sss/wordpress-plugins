@@ -654,10 +654,10 @@ class Helper
             $paramKey = 'fluent-form';
         }
         if ($key) {
-            return site_url('?' . $paramKey . '=' . $formId . '&form=' . $key);
+            return static::getFrontendFacingUrl('?' . $paramKey . '=' . $formId . '&form=' . $key);
         }
         
-        return site_url('?' . $paramKey . '=' . $formId);
+        return static::getFrontendFacingUrl('?' . $paramKey . '=' . $formId);
     }
     
     public static function fileUploadLocations()
@@ -1083,7 +1083,9 @@ class Helper
             '__ff_all_applied_coupons',
             '__entry_intermediate_hash',
             '__square_payment_method_id',
-            '__square_verify_buyer_id'
+            '__square_verify_buyer_id',
+            'ct_bot_detector_event_token',
+            'ff_ct_form_load_time'
         ];
         
         return apply_filters('fluentform/white_listed_fields', $whiteListedFields, $formId);
@@ -1168,7 +1170,21 @@ class Helper
         $globalSettings = get_option('_fluentform_global_form_settings');
         return 'wp_default' === ArrayHelper::get($globalSettings, 'misc.default_admin_date_time');
     }
-    
+
+    public static function isPaymentCompatible()
+    {
+        if (!self::hasPro()) {
+            return true;
+        } else {
+            return version_compare(FLUENTFORMPRO_VERSION, FLUENTFORM_MINIMUM_PRO_VERSION, '>=') ;
+        }
+    }
+
+    public static function hasPro()
+    {
+        return defined('FLUENTFORMPRO');
+    }
+
     public static function getLandingPageEnabledForms()
     {
         if (class_exists(\FluentFormPro\classes\SharePage\SharePage::class)) {
@@ -1192,5 +1208,10 @@ class Helper
             return $sanitized;
         }
         return sanitize_text_field(trim($values));
+    }
+    
+    public static function getFrontendFacingUrl($args = '')
+    {
+        return home_url($args);
     }
 }

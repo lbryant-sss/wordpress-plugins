@@ -3,45 +3,11 @@ var wp, acf, jQuery, _,
 		// Properties
 		strings: {},
 		settings: {},
-
-		// Utility functions
-		// utility: {
-		// },
-
-		// Components
-		// tagBox: null
 	},
 	mlaModal;
-	/* = {
-		// Properties
-		strings: {},
-		settings: {},
-		initialHTML: {},
-		uploading: false,
-		cid: null,
-
-		// Utility functions
-		utility: {
-			originalMediaAjax: null,
-			mlaAttachmentsBrowser: null,
-			parseTermsOptions: null,
-			arrayCleanup: null,
-			parseTaxonomyId: null,
-			hookCompatTaxonomies: null,
-			fillCompatTaxonomies: null,
-			supportCompatTaxonomies: null
-		},
-
-		// Components
-		tagBox: null
-	}; */
 
 ( function( $ ){
 	var acfGallery = typeof acf.models.GalleryField === 'undefined' ? null : acf.models.GalleryField;
-/*		mlaAttachmentsBrowser = wp.media.view.AttachmentsBrowser,
-	    mlaAttachmentCompat = wp.media.view.AttachmentCompat,
-	    mlaSelection = wp.media.model.Selection; */
-	
 /*	for debug : trace every event triggered in the ACF GalleryField model * /
 	var originalACFTrigger = acf.models.GalleryField.prototype.trigger;
 	acf.models.GalleryField.prototype.trigger = function(){
@@ -75,12 +41,14 @@ var wp, acf, jQuery, _,
 		if ( null !== acfGallery ) {
 			acf.models.GalleryField = acf.models.GalleryField.extend({
 				onClickSelect: function( t, e ) {
+					var thisGallery = this.data['key'];
+					
 					// Call the base method in the super class
 					acfGallery.prototype.onClickSelect.apply( this, arguments );
 	
 					$( document ).one( 'ajaxSuccess', function( event ) {
-						//console.log( 'ajaxSuccess attachment: ' + e.data('id') );
-						mlaModal.utility.hookCompatTaxonomies( e.data('id'), this );
+						context = $( '#acf-' + thisGallery );
+						mlaModal.utility.hookCompatTaxonomies( e.data('id'), context );
 					});
 
 					return this;

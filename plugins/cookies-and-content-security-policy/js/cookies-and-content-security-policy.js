@@ -143,7 +143,7 @@ function saveCookiesAndContentPolicySettings() {
 			if (cacspMessages.cacspOptionSaveConsent == '1') {
 				jQuery.ajax({
 					type: "POST",
-					url: "/wp-admin/admin-ajax.php",
+					url: cacsp_ajax_object.ajax_url,
 					data: {
 						action: 'cacsp_insert_consent_data',
 						accepted_cookies: acceptedCookies.toString(),

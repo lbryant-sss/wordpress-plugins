@@ -747,7 +747,14 @@ abstract class Auto extends Simple implements ShippingProviderAuto {
 		$pickup_location_data = get_transient( $cache_key );
 		$pickup_locations     = array();
 
-		if ( false === $pickup_location_data && ( ! empty( $address['postcode'] ) || ! empty( $address['city'] ) ) ) {
+		/**
+		 * Require at least either a postcode or a city to search for pickup locations.
+		 */
+		if ( empty( $address['postcode'] ) && empty( $address['city'] ) ) {
+			return $pickup_locations;
+		}
+
+		if ( false === $pickup_location_data ) {
 			$pickup_locations = $this->fetch_pickup_locations( $address, $query_args );
 
 			if ( ! is_null( $pickup_locations ) ) {
@@ -775,7 +782,7 @@ abstract class Auto extends Simple implements ShippingProviderAuto {
 					function ( $pickup_location_d ) {
 						return $this->get_pickup_location_instance( $pickup_location_d );
 					},
-					$pickup_location_data
+					(array) $pickup_location_data
 				)
 			);
 		}
@@ -1295,13 +1302,17 @@ abstract class Auto extends Simple implements ShippingProviderAuto {
 			$props = wp_parse_args( $props, $default_props );
 		}
 
-		$props = wp_parse_args(
-			$props,
-			array(
-				'services'     => array(),
-				'print_format' => '',
-				'product_id'   => '',
-			)
+		$props = apply_filters(
+			"{$this->get_general_hook_prefix()}create_label_props",
+			wp_parse_args(
+				$props,
+				array(
+					'services'     => array(),
+					'print_format' => '',
+					'product_id'   => '',
+				)
+			),
+			$shipment
 		);
 
 		/**

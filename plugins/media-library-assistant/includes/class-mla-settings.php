@@ -1324,7 +1324,7 @@ If you find the Media Library Assistant plugin useful and would like to support 
 		$action = false;
 
 		if ( isset( $_REQUEST['action'] ) ) {
-			if ( -1 !== $_REQUEST['action'] ) {
+			if ( '-1' !== $_REQUEST['action'] ) {
 				return sanitize_text_field( wp_unslash( $_REQUEST['action'] ) );
 			}
 
@@ -1332,7 +1332,7 @@ If you find the Media Library Assistant plugin useful and would like to support 
 		} // isset action
 
 		if ( isset( $_REQUEST['action2'] ) ) {
-			if ( -1 !== $_REQUEST['action2'] ) {
+			if ( '-1' !== $_REQUEST['action2'] ) {
 				return sanitize_text_field( wp_unslash( $_REQUEST['action2'] ) );
 			}
 

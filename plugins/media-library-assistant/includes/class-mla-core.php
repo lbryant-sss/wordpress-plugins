@@ -30,7 +30,7 @@ class MLACore {
 	 *
 	 * @var	string
 	 */
-	const MLA_DEVELOPMENT_VERSION = '20250312';
+	const MLA_DEVELOPMENT_VERSION = '20250319';
 
 	/**
 	 * Slug for registering and enqueueing plugin style sheets (moved from class-mla-main.php)
@@ -1529,10 +1529,11 @@ class MLACore {
 	 *
 	 * @param object The current post
 	 * @param array The meta box parameters
+	 * @param string Optional prefix to make HTML ID unique
 	 *
 	 * @return void Echoes HTML for the form fields
 	 */
-	public static function mla_checklist_meta_box( $target_post, $box ) {
+	public static function mla_checklist_meta_box( $target_post, $box, $prefix = '' ) {
 		global $post;
 
 		$defaults = array('taxonomy' => 'category', 'in_modal' => false );
@@ -1557,30 +1558,31 @@ class MLACore {
 				$post = $target_post; // for wp_popular_terms_checklist
 			}
 
+			$id_prefix = "mla-{$prefix}-{$taxonomy}";
 			$div_taxonomy_id = "mla-taxonomy-{$taxonomy}";
-			$tabs_ul_id = "mla-{$taxonomy}-tabs";
-			$tab_all_id = "mla-{$taxonomy}-all";
-			$tab_all_ul_id = "mla-{$taxonomy}-checklist";
-			$tab_pop_id = "mla-{$taxonomy}-pop";
-			$tab_pop_ul_id = "mla-{$taxonomy}-checklist-pop";
+			$tabs_ul_id = "{$id_prefix}-tabs";
+			$tab_all_id = "{$id_prefix}-all";
+			$tab_all_ul_id = "{$id_prefix}-checklist"; // wp-lists
+			$tab_pop_id = "{$id_prefix}-pop";
+			$tab_pop_ul_id = "{$id_prefix}-checklist-pop";
 			$input_terms_name = "mla_attachments[{$post_id}][{$name}][]";
 			$input_terms_id = "mla-{$name}-id";
-			$div_adder_id = "mla-{$taxonomy}-adder";
+			$div_adder_id = "{$id_prefix}-adder";
 			$div_adder_class = "mla-hidden-children";
-			$link_adder_id = "mla-{$taxonomy}-add-toggle";
-			$link_adder_p_id = "mla-{$taxonomy}-add";
-			$div_search_id = "mla-{$taxonomy}-searcher";
+			$link_adder_id = "{$id_prefix}-add-toggle";
+			$link_adder_p_id = "{$id_prefix}-add"; // wp-lists
+			$div_search_id = "{$id_prefix}-searcher";
 			$div_search_class = "mla-hidden-children";
-			$link_search_id = "mla-{$taxonomy}-search-toggle";
-			$link_search_p_id = "mla-{$taxonomy}-search";
+			$link_search_id = "{$id_prefix}-search-toggle";
+			$link_search_p_id = "{$id_prefix}-search";
 			$input_new_name = "new{$taxonomy}";
 			$input_new_id = "mla-new-{$taxonomy}";
 			$input_new_parent_name = "new{$taxonomy}_parent";
-			$input_new_submit_id = "mla-{$taxonomy}-add-submit";
-			$span_new_ajax_id = "mla-{$taxonomy}-ajax-response";
+			$input_new_submit_id = "{$id_prefix}-add-submit";
+			$span_new_ajax_id = "{$id_prefix}-ajax-response";
 			$input_search_name = "search-{$taxonomy}";
 			$input_search_id = "mla-search-{$taxonomy}";
-			$span_search_ajax_id = "mla-{$taxonomy}-search-ajax-response";
+			$span_search_ajax_id = "{$id_prefix}-search-ajax-response";
 		} else {
 			$div_taxonomy_id = "taxonomy-{$taxonomy}";
 			$tabs_ul_id = "{$taxonomy}-tabs";
@@ -1625,7 +1627,7 @@ class MLACore {
 				// Allows for an empty term set to be sent. 0 is an invalid Term ID and will be ignored by empty() checks.
 				echo "<input type='hidden' name='" . esc_html( $input_terms_name) . "' id='" . esc_html( $input_terms_id ) . "' value='0' />";
 				?>
-				<ul id="<?php echo esc_html( $tab_all_ul_id ); ?>" data-wp-lists="list:<?php echo esc_html( $taxonomy )?>" class="categorychecklist form-no-clear">
+				<ul id="<?php echo esc_html( $tab_all_ul_id ); ?>" data-wp-lists="list:<?php echo esc_html( $prefix . '-' . $taxonomy )?>" class="categorychecklist form-no-clear">
 					<?php if ( $tax->hierarchical ): ?>
 					<?php wp_terms_checklist($post->ID, array( 'taxonomy' => $taxonomy, 'popular_cats' => $popular_ids, 'checked_ontop'=> MLACore::mla_taxonomy_support( $taxonomy, 'checked-on-top' ) ) ) ?>
 					<?php else: ?>

@@ -45,7 +45,7 @@ class SlackNotificationActions
         $response = Slack::handle($feed, $formData, $form, $entry);
         if ('success' === Arr::get($response, 'status')) {
             do_action('fluentform/integration_action_result', $feed, 'success',
-                __('Slack feed has been successfully initialed and pushed data', 'fluentformpro'));
+                __('Slack feed has been successfully initialed and pushed data', 'fluentform'));
         } else {
             $error = Arr::get($response, 'message');
             do_action('fluentform/integration_action_result', $feed, 'failed', $error);

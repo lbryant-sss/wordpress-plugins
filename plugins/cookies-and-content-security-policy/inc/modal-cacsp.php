@@ -3,6 +3,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 if ( !get_cacsp_options( 'cacsp_option_only_csp' ) && !is_admin() ) {
 	add_action( 'wp_footer', 'modal_content_security_policy' );
+	add_action( 'login_footer', 'modal_content_security_policy' );
 	function modal_content_security_policy() {
 		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 			$block_editor = true;

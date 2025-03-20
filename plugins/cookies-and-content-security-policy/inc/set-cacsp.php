@@ -211,6 +211,7 @@ function cacsp_texts( $data ) {
 // add_action( 'plugins_loaded', 'cacsp_init' ); // OLD:
 // add_filter( 'wp_headers', 'cacsp_init' ); // New alternative
 add_action( 'send_headers', 'cacsp_init', 10, 0 ); // https://docs.wpvip.com/infrastructure/http-headers/
+add_action( 'login_enqueue_scripts', 'cacsp_init', 10, 0 );
 function cacsp_init() {
 	if ( !is_admin() && cacsp_option_actived() ) {
 		set_content_security_policy();

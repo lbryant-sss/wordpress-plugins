@@ -7,28 +7,38 @@ use FluentForm\Framework\Helpers\ArrayHelper;
 
 class CleanTalkHandler
 {
+    public function setCleanTalkScript()
+    {
+        $hasCleanTalk = self::isCleantalkActivated();
+        if ($hasCleanTalk) {
+            wp_enqueue_script(
+                'ct_bot_detector',
+                'https://moderate.cleantalk.org/ct-bot-detector-wrapper.js',
+                [],
+                FLUENTFORM_VERSION,
+                [
+                    'in_footer' => false,
+                    'strategy' => 'defer'
+                ]
+            );
+
+            echo '<input type="hidden" name="ff_ct_form_load_time" class="ff_ct_form_load_time" value="">';
+        }
+    }
+    
     public static function validate($accessKey)
     {
         $cleanTalkRequest = [
-            'method_name' => 'check_newuser',
+            'method_name' => 'notice_paid_till',
             'auth_key' => $accessKey,
-            'sender_email' => wp_get_current_user()->user_email,
-            'sender_ip' => wpFluentForm()->request->getIp(),
-            'js_on' => 1,
-            'submit_time' => time(),
-            'sender_nickname' => wp_get_current_user()->user_login,
-            'sender_info' => [
-                'REFFERRER' => $_SERVER['HTTP_REFERER'],
-                'USER_AGENT' => $_SERVER['HTTP_USER_AGENT']
-            ]
         ];
 
         $response = wp_remote_post(
-            'https://moderate.cleantalk.org/api2.0',
+            'https://api.cleantalk.org/',
             [
-                'body'    => \json_encode($cleanTalkRequest, true),
+                'body'    => \http_build_query($cleanTalkRequest, true),
                 'headers' => [
-                    'Content-Type' => 'application/json',
+                    'Content-Type' => 'application/x-www-form-urlencoded',
                 ],
             ]
         );
@@ -39,7 +49,7 @@ class CleanTalkHandler
 
         $response = json_decode(wp_remote_retrieve_body($response));
 
-        if ($response->allow == 1 && $response->inactive == 0 && $response->account_status == 1) {
+        if ($response->data->moderate == 1 && $response->data->valid == 1 && $response->data->product_id == 1) {
             return true;
         } else {
             return false;
@@ -48,27 +58,38 @@ class CleanTalkHandler
 
     public static function spamSubmissionCheckWithApi($formData, $form)
     {
+        global $cleantalk_executed;
+        
         $accessKey = ArrayHelper::get(get_option('_fluentform_cleantalk_details'), 'accessKey');
 
         if (!$accessKey) {
             return false;
         }
 
+        $eventToken = ArrayHelper::get($formData, 'ct_bot_detector_event_token');
+        $submitTime = isset($formData['ff_ct_form_load_time']) ? time() - (int)$formData['ff_ct_form_load_time'] : null;
+
         $cleanTalkRequest = [
             'method_name'     => 'check_message',
             'auth_key'        => $accessKey,
             'sender_ip'       => wpFluentForm()->request->getIp(),
-            'event_token'     => hash('sha256', uniqid(mt_rand(), true)),
-            'submit_time'     => time(),
-            'sender_info'     => [
-                'REFERRER'   => urlencode($formData['_wp_http_referer']),
-                'USER_AGENT' => htmlspecialchars(@$_SERVER['SERVER_NAME'] . @$_SERVER['REQUEST_URI'])
-            ],
+            'event_token'     => $eventToken,
+            'submit_time'     => $submitTime,
+            'sender_info'     => json_encode([
+                'REFERRER'   => $_SERVER['HTTP_REFERER'],
+                'USER_AGENT' => htmlspecialchars(@$_SERVER['HTTP_USER_AGENT'])
+            ]),
             'js_on'           => 1,
             'sender_nickname' => '',
             'sender_email'    => '',
             'message'         => '',
-            'phone'           => ''
+            'phone'           => '',
+            'agent'           => 'wordpress-fluentforms-' . FLUENTFORM_VERSION,
+            'post_info'       => [
+                'comment_type' => 'fluent_forms_vendor_integration__use_api',
+                'post_url'     => $_SERVER['HTTP_REFERER']
+            ],
+            'all_headers'   => strtolower(json_encode(wpFluentForm()->request->header())),
         ];
 
         $maps = [
@@ -112,11 +133,11 @@ class CleanTalkHandler
 
         $response = json_decode(wp_remote_retrieve_body($response));
 
-        if ($response->allow == 1 && $response->spam == 0 && $response->account_status == 1) {
-            return false;
-        } else {
-            return true;
-        }
+        $cleantalkPassed = $response->allow == 1 && $response->spam == 0 && $response->account_status == 1;
+
+        $cleantalk_executed = true;
+
+        return !$cleantalkPassed;
     }
 
     public static function isCleantalkActivated()

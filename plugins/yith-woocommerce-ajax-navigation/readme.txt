@@ -4,7 +4,7 @@ Contributors: yithemes
 Tags: shop filter, Ajax product filter, product filter, woocommerce product filter, woocommerce filter
 Requires at least: 6.5
 Tested up to: 6.7
-Stable tag: 5.8.0
+Stable tag: 5.9.0
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -157,6 +157,16 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 14. Gutenberg block
 
 == Changelog ==
+
+= 5.9.0 - Released on 19 March 2025 =
+
+* New: support for WooCommerce 9.8
+* New: add locale to Admin AJAX calls
+* Tweak: localized locale for admin scripts
+* Tweak: filter locale in admin when WPML is active
+* Update: YITH plugin framework
+* Fix: wrong taxonomy shown on loading more filters in the backend
+* Dev: added new filter yith_wcan_filter_tax_get_term_children_count
 
 = 5.8.0 - Released on 20 February 2025 =
 

@@ -124,7 +124,7 @@ class MLASettings_Image {
 		$option_text = '';
 		foreach ( $options as $slug => $text ) {
 			$option_values = array (
-				'selected' => ( $slug == $selection ) ? 'selected="selected"' : '',
+				'selected' => ( $slug === $selection ) ? 'selected="selected"' : '',
 				'value' => $slug,
 				'text' => $text
 			);
@@ -254,7 +254,7 @@ class MLASettings_Image {
 			'Update' => __( 'Update', 'media-library-assistant' ),
 			'Cancel' => __( 'Cancel', 'media-library-assistant' ),
 		);
-error_log( __LINE__ . ' page_values = ' . var_export( $page_values, true ), 0 );
+
 		foreach ( $item as $key => $value ) {
 			switch ( $key ) {
 				case 'crop':
@@ -265,7 +265,6 @@ error_log( __LINE__ . ' page_values = ' . var_export( $page_values, true ), 0 );
 					$page_values[ $key ] = $value;
 			}
 		}
-error_log( __LINE__ . ' page = ' . var_export( MLAData::mla_parse_template( $templates['single-item-edit'], $page_values ), true ), 0 );
 
 		return array(
 			'message' => '',
@@ -324,7 +323,7 @@ error_log( __LINE__ . ' page = ' . var_export( MLAData::mla_parse_template( $tem
 
 		// Process bulk actions that affect an array of items
 		$bulk_action = MLASettings::mla_current_bulk_action();
-		if ( $bulk_action && ( $bulk_action != 'none' ) ) {
+		if ( $bulk_action && ( $bulk_action !== 'none' ) ) {
 			if ( isset( $_REQUEST['cb_mla_item_ID'] ) ) {
 				// Convert post-ID to slug; separate loop required because delete changes post_IDs
 				$slugs = array();
@@ -416,7 +415,7 @@ error_log( __LINE__ . ' page = ' . var_export( MLAData::mla_parse_template( $tem
 		}
 
 		// Check for disabled status
-		if ( 'checked' != MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_IMAGE_SIZES ) ) {
+		if ( 'checked' !== MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_IMAGE_SIZES ) ) {
 			// Fill in with any page-level options
 			$options_list = '';
 			foreach ( MLACoreOptions::$mla_option_definitions as $key => $value ) {
@@ -438,16 +437,21 @@ error_log( __LINE__ . ' page = ' . var_export( MLAData::mla_parse_template( $tem
 		}
 
 		// Display the Image Table
-		$_SERVER['REQUEST_URI'] = remove_query_arg( array(
-			'mla_admin_action',
-			'mla_item_slug',
-			'mla_item_ID',
-			'_wpnonce',
-			'_wp_http_referer',
-			'action',
-			'action2',
-			'cb_mla_item_ID',
-		), $_SERVER['REQUEST_URI'] ); // phpcs:ignore
+		if ( isset( $_SERVER['REQUEST_URI'] ) ) {
+			$_SERVER['REQUEST_URI'] = remove_query_arg( array(
+				'mla_admin_action',
+				'mla_item_slug',
+				'mla_item_ID',
+				'_wpnonce',
+				'_wp_http_referer',
+				'action',
+				'action2',
+				'cb_mla_item_ID',
+				'mla-edit-image-cancel',
+				'mla-edit-image-submit',
+				'mla-image-options-save',
+			), $_SERVER['REQUEST_URI'] ); // phpcs:ignore
+		}
 
 		//	Create an instance of our package class
 		$MLAListImageTable = new MLA_Image_List_Table();
@@ -463,6 +467,27 @@ error_log( __LINE__ . ' page = ' . var_export( MLAData::mla_parse_template( $tem
 			}
 		}
 
+		// WPML requires that lang be the first argument after page
+		$view_arguments = MLA_Image_List_Table::mla_submenu_arguments();
+		$form_language = isset( $view_arguments['lang'] ) ? '&lang=' . $view_arguments['lang'] : '';
+		$form_arguments = '?page=mla-settings-menu-image' . $form_language . '&mla_tab=image';
+
+		// We need to remember all the view arguments
+		$view_args = '';
+		foreach ( $view_arguments as $key => $value ) {
+			// 'lang' has already been added to the form action attribute
+			if ( in_array( $key, array( 'lang' ) ) ) {
+				continue;
+			}
+
+			if ( is_array( $value ) ) {
+				foreach ( $value as $element_key => $element_value )
+					$view_args .= "\t" . sprintf( '<input type="hidden" name="%1$s[%2$s]" value="%3$s" />', $key, $element_key, esc_attr( urldecode( $element_value ) ) ) . "\n";
+			} else {
+				$view_args .= "\t" . sprintf( '<input type="hidden" name="%1$s" value="%2$s" />', $key, esc_attr( urldecode( $value ) ) ) . "\n";
+			}
+		}
+
 		$page_values = array(
 			'Image Sizes Processing' => __( 'Image Sizes Processing', 'media-library-assistant' ),
 			'In this tab' => __( 'In this tab you can manage the list of "Intermediate Image Sizes", which are used by WordPress to generate and access intermediate image sizes for Media Library items.', 'media-library-assistant' ),
@@ -470,6 +495,7 @@ error_log( __LINE__ . ' page = ' . var_export( MLAData::mla_parse_template( $tem
 			'You can find' => __( 'You can find more information about managing image sizes by clicking the <strong>"Help"</strong> tab in the upper-right corner of this screen.', 'media-library-assistant' ),
 			'settingsURL' => admin_url('options-general.php'),
 			'form_url' => admin_url( 'options-general.php' ) . '?page=mla-settings-menu-image&mla_tab=image',
+			'view_args' => $view_args,
 			'_wpnonce' => wp_nonce_field( MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME, true, false ),
 			'results' => ! empty( $_REQUEST['s'] ) ? '<h2 class="alignleft">' . __( 'Displaying search results for', 'media-library-assistant' ) . ': "' . esc_html( trim( wp_kses( wp_unslash( $_REQUEST['s'] ), 'post' ) ) ) . '"</h2>' : '',
 			'Search Sizes' => __( 'Search Sizes', 'media-library-assistant' ),
@@ -559,18 +585,13 @@ error_log( __LINE__ . ' page = ' . var_export( MLAData::mla_parse_template( $tem
 		}
 
 		$request = self::_sanitize_inline_image_item();
-error_log( __LINE__ . ' mla_inline_edit_image_action request = ' . var_export( $request, true ), 0 );
 		$results = MLAImage_Size::mla_update_image_size( $request );
-error_log( __LINE__ . ' mla_inline_edit_image_action results = ' . var_export( $results, true ), 0 );
 
 		if ( false === strpos( $results['message'], __( 'ERROR', 'media-library-assistant' ) ) ) {
 			$new_item = (object) MLAImage_Size::mla_get_image_size( $request['slug'] );
 		} else {
 			$new_item = (object) MLAImage_Size::mla_get_image_size( $request['original_slug'] );
 		}
-error_log( __LINE__ . ' mla_inline_edit_image_action new_item = ' . var_export( $new_item, true ), 0 );
-
-//		$new_item->post_ID = isset( $_REQUEST['post_ID'] ) ? absint( $_REQUEST['post_ID'] ) : 0;
 
 		//	Create an instance of our package class and echo the new HTML
 		$MLAListImageTable = new MLA_Image_List_Table();
@@ -775,31 +796,14 @@ class MLA_Image_List_Table extends WP_List_Table {
 		$actions = array();
 
 		// Compose view arguments
-		$view_args = array(
+		$view_args = array_merge( array(
 			'page' => MLACoreOptions::MLA_SETTINGS_SLUG . '-image',
 			'mla_tab' => 'image',
 			'mla_item_slug' => urlencode( $item->slug )
-		);
+		), MLA_Image_List_Table::mla_submenu_arguments() );
 
 		if ( isset( $_REQUEST['paged'] ) ) {
 			$view_args['paged'] = absint( $_REQUEST['paged'] );
-		}
-
-		if ( isset( $_REQUEST['order'] ) ) {
-			$field = strtoupper( sanitize_text_field( wp_unslash( $_REQUEST['order'] ) ) );
-			$view_args['order'] = 'DESC' === $field ? 'DESC' : 'ASC';
-		}
-
-		$field = strtolower( sanitize_text_field( isset( $_REQUEST['orderby'] ) ? wp_unslash( $_REQUEST['orderby'] ) : '' ) );
-		if ( array_key_exists( $field, MLAImage_Size::$default_sortable_image_size_columns ) ) {
-			$view_args['orderby'] = urlencode( $field );
-		}
-
-		// Find the existing core and other sizes
-		$existing_sizes = MLAImage_Size::mla_get_registered_image_subsizes();
-error_log( __LINE__ . " MLA_Image_List_Table::_build_rollover_actions( {$column} ) existing_sizes = " . var_export( $existing_sizes, true ), 0 );
-		if ( ! is_array( $existing_sizes ) ) {
-			$existing_sizes = array ();
 		}
 
 		$actions['edit'] = '<a href="' . add_query_arg( $view_args, MLACore::mla_nonce_url( '?mla_admin_action=' . MLACore::MLA_ADMIN_SINGLE_EDIT_DISPLAY, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Edit this item', 'media-library-assistant' ) . '">' . __( 'Edit', 'media-library-assistant' ) . '</a>';
@@ -807,7 +811,7 @@ error_log( __LINE__ . " MLA_Image_List_Table::_build_rollover_actions( {$column}
 		$actions['inline hide-if-no-js'] = '<a class="editinline" href="#" title="' . __( 'Edit this item inline', 'media-library-assistant' ) . '">' . __( 'Quick Edit', 'media-library-assistant' ) . '</a>';
 
 		if ( 'custom' === $item->source ) {
-			if ( isset( $existing_sizes[ $item->slug ] ) ) {
+			if ( isset( $item->original_settings ) ) {
 				$actions['delete'] = '<a class="delete-tag"' . ' href="' . add_query_arg( $view_args, MLACore::mla_nonce_url( '?mla_admin_action=' . MLACore::MLA_ADMIN_SINGLE_DELETE, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Revert to standard item', 'media-library-assistant' ) . '">' . __( 'Revert to Standard', 'media-library-assistant' ) . '</a>';
 			} else {
 				$actions['delete'] = '<a class="delete-tag"' . ' href="' . add_query_arg( $view_args, MLACore::mla_nonce_url( '?mla_admin_action=' . MLACore::MLA_ADMIN_SINGLE_DELETE, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Delete this item Permanently', 'media-library-assistant' ) . '">' . __( 'Delete Permanently', 'media-library-assistant' ) . '</a>';
@@ -815,7 +819,7 @@ error_log( __LINE__ . " MLA_Image_List_Table::_build_rollover_actions( {$column}
 		}
 
 		return $actions;
-	}
+	} // _build_rollover_actions
 
 	/**
 	 * Add hidden fields with the data for use in the inline editor
@@ -827,6 +831,10 @@ error_log( __LINE__ . " MLA_Image_List_Table::_build_rollover_actions( {$column}
 	 * @return	string	HTML <div> with row data
 	 */
 	private function _build_inline_data( $item ) {
+		// Supply default values for dropdown controls
+		$horizontal = empty( $item->horizontal ) ? 'center' : $item->horizontal;
+		$vertical = empty( $item->vertical ) ? 'center' : $item->vertical;
+
 		$inline_data = "\r\n" . '<div class="hidden" id="inline_' . $item->post_ID . "\">\r\n";
 		$inline_data .= '	<div class="original_slug">' . esc_attr( $item->slug ) . "</div>\r\n";
 		$inline_data .= '	<div class="slug">' . esc_attr( $item->slug ) . "</div>\r\n";
@@ -834,8 +842,8 @@ error_log( __LINE__ . " MLA_Image_List_Table::_build_rollover_actions( {$column}
 		$inline_data .= '	<div class="width">' . esc_attr( $item->width ) . "</div>\r\n";
 		$inline_data .= '	<div class="height">' . esc_attr( $item->height ) . "</div>\r\n";
 		$inline_data .= '	<div class="crop">' . esc_attr( $item->crop ) . "</div>\r\n";
-		$inline_data .= '	<div class="horizontal">' . esc_attr( $item->horizontal ) . "</div>\r\n";
-		$inline_data .= '	<div class="vertical">' . esc_attr( $item->vertical ) . "</div>\r\n";
+		$inline_data .= '	<div class="horizontal">' . esc_attr( $horizontal ) . "</div>\r\n";
+		$inline_data .= '	<div class="vertical">' . esc_attr( $vertical ) . "</div>\r\n";
 		$inline_data .= '	<div class="disabled">' . esc_attr( $item->disabled ) . "</div>\r\n";
 		$inline_data .= '	<div class="description">' . esc_attr( $item->description ) . "</div>\r\n";
 		$inline_data .= '	<div class="source">' . esc_attr( $item->source ) . "</div>\r\n";
@@ -979,6 +987,20 @@ error_log( __LINE__ . " MLA_Image_List_Table::_build_rollover_actions( {$column}
 	}
 
 	/**
+	 * Display the pagination, adding view, search and filter arguments
+	 *
+	 * @since 3.25
+	 * 
+	 * @param string	'top' | 'bottom'
+	 */
+	function pagination( $which ) {
+		$save_uri = $_SERVER['REQUEST_URI']; // phpcs:ignore
+		$_SERVER['REQUEST_URI'] = add_query_arg( MLA_Image_List_Table::mla_submenu_arguments(), $save_uri );
+		parent::pagination( $which );
+		$_SERVER['REQUEST_URI'] = $save_uri;
+	}
+
+	/**
 	 * This method dictates the table's columns and titles
 	 *
 	 * @since 3.25
@@ -1021,6 +1043,112 @@ error_log( __LINE__ . " MLA_Image_List_Table::_build_rollover_actions( {$column}
 	}
 
 	/**
+	 * Process $_REQUEST, building $submenu_arguments
+	 *
+	 * @since 3.25
+	 *
+	 * @param boolean $include_filters Optional. Include the "click filter" values in the results. Default true.
+	 * @return array non-empty view, search, filter and sort arguments
+	 */
+	public static function mla_submenu_arguments( $include_filters = true ) {
+		static $submenu_arguments = NULL, $has_filters = NULL;
+
+		if ( is_array( $submenu_arguments ) && ( $has_filters === $include_filters ) ) {
+			return $submenu_arguments;
+		}
+
+		$submenu_arguments = array();
+		$has_filters = $include_filters;
+
+		// Search box arguments
+		if ( !empty( $_REQUEST['s'] ) ) {
+			$submenu_arguments['s'] = urlencode( wp_kses( wp_unslash( $_REQUEST['s'] ), 'post' ) );
+		}
+
+		// View arguments - see also MLAImage_Size::mla_tabulate_items
+		$field = sanitize_text_field( isset( $_REQUEST['mla_image_view'] ) ? wp_unslash( $_REQUEST['mla_image_view'] ) : 'all' );
+		if ( in_array( $field, array( 'all', 'core', 'other', 'custom' ) ) ) {
+			$submenu_arguments['mla_image_view'] = $field;
+		}
+
+		// Filter arguments (from table header)
+		$field = strtolower( sanitize_text_field( isset( $_REQUEST['mla_image_status'] ) ? wp_unslash( $_REQUEST['mla_image_status'] ) : 'any' ) );
+		if ( 'any' !== $field ) {
+			if ( in_array( $field, array( 'active', 'inactive' ) ) ) {
+				$submenu_arguments['mla_image_status'] = $field;
+			}
+		}
+
+		// Sort arguments (from column header)
+		if ( isset( $_REQUEST['order'] ) ) {
+			$field = strtoupper( sanitize_text_field( wp_unslash( $_REQUEST['order'] ) ) );
+			$submenu_arguments['order'] = 'DESC' === $field ? 'DESC' : 'ASC';
+		}
+
+		$field = strtolower( sanitize_text_field( isset( $_REQUEST['orderby'] ) ? wp_unslash( $_REQUEST['orderby'] ) : '' ) );
+		if ( array_key_exists( $field, MLAImage_Size::$default_sortable_image_size_columns ) ) {
+			$submenu_arguments['orderby'] = $field;
+		}
+
+		return $submenu_arguments = apply_filters( 'mla_setting_table_submenu_arguments', $submenu_arguments, $include_filters, 'MLASettings_CustomFields' );
+	}
+
+	/**
+	 * Returns HTML markup for one view that can be used with this table
+	 *
+	 * @since 3.25
+	 *
+	 * @param	string	View slug
+	 * @param	array	count and labels for the View
+	 * @param	string	Slug for current view 
+	 * 
+	 * @return	string | false	HTML for link to display the view, false if count = zero
+	 */
+	function _get_view( $view_slug, $item, $current_view ) {
+		static $base_url = NULL;
+
+		$class = ( $view_slug === $current_view ) ? ' class="current"' : '';
+
+		// Calculate the common values once per page load
+		if ( is_null( $base_url ) ) {
+			// Remember the view filters
+			$base_url = 'options-general.php?page=' . MLACoreOptions::MLA_SETTINGS_SLUG . '-image&mla_tab=image';
+
+			if ( isset( $_REQUEST['s'] ) ) {
+				$base_url = add_query_arg( array( 's' => wp_kses( wp_unslash( $_REQUEST['s'] ), 'post' ) ), $base_url );
+			}
+		}
+
+		$singular = sprintf('%s <span class="count">(%%s)</span>', $item['singular'] );
+		$plural = sprintf('%s <span class="count">(%%s)</span>', $item['plural'] );
+		$nooped_plural = _n_noop( $singular, $plural, 'media-library-assistant' );
+		return "<a href='" . add_query_arg( array( 'mla_image_view' => $view_slug ), $base_url )
+			. "'$class>" . sprintf( translate_nooped_plural( $nooped_plural, $item['count'], 'media-library-assistant' ), number_format_i18n( $item['count'] ) ) . '</a>';
+	} // _get_view
+
+	/**
+	 * Returns an associative array listing all the views that can be used with this table.
+	 * These are listed across the top of the page and managed by WordPress.
+	 *
+	 * @since 3.25
+	 * 
+	 * @return	array	View information,e.g., array ( id => link )
+	 */
+	function get_views( ) {
+		// Find current view
+		$current_view = isset( $_REQUEST['mla_image_view'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['mla_image_view'] ) ) : 'all';
+
+		// Generate the list of views, retaining keyword search criterion
+		$s = wp_kses( isset( $_REQUEST['s'] ) ? wp_unslash( $_REQUEST['s'] ) : '', 'post' );
+		$items = MLAImage_Size::mla_tabulate_items( $s );
+		$view_links = array();
+		foreach ( $items as $slug => $item )
+			$view_links[ $slug ] = self::_get_view( $slug, $item, $current_view );
+
+		return $view_links;
+	}
+
+	/**
 	 * Get an associative array ( option_name => option_title ) with the list
 	 * of bulk actions available on this table.
 	 *
@@ -1030,11 +1158,81 @@ error_log( __LINE__ . " MLA_Image_List_Table::_build_rollover_actions( {$column}
 	 */
 	function get_bulk_actions( ) {
 		$actions = array();
+		$view = isset( $_REQUEST['mla_image_view'] ) ? $_REQUEST['mla_image_view'] : 'all';
 
 		$actions['edit'] = __( 'Edit', 'media-library-assistant' );
-		$actions['delete'] = __( 'Delete Permanently', 'media-library-assistant' );
-
+		
+		if ( ( 'all' === $view ) || ( 'custom' === $view ) ) {
+			$actions['delete'] = __( 'Delete Permanently', 'media-library-assistant' );
+		}
+		
 		return $actions;
+	}
+
+	/**
+	 * Get dropdown box of rule status values, i.e., Active/Inactive.
+	 *
+	 * @since 3.25
+	 *
+	 * @param string $selected Optional. Currently selected status. Default 'any'.
+	 * @return string HTML markup for dropdown box.
+	 */
+	public static function mla_get_image_status_dropdown( $selected = 'any' ) {
+		$dropdown  = '<select name="mla_image_status" class="postform" id="name">' . "\n";
+
+		$selected_attribute = ( $selected === 'any' ) ? ' selected="selected"' : '';
+		$dropdown .= "\t" . sprintf( '<option value="any"%1$s>%2$s</option>', $selected_attribute, _wp_specialchars( __( 'Any Status', 'media-library-assistant' ) ) ) . "\n";
+
+		$selected_attribute = ( $selected === 'active' ) ? ' selected="selected"' : '';
+		$dropdown .= "\t" . sprintf( '<option value="active"%1$s>%2$s</option>', $selected_attribute, _wp_specialchars( __( 'Active', 'media-library-assistant' ) ) ) . "\n";
+
+		$selected_attribute = ( $selected === 'inactive' ) ? ' selected="selected"' : '';
+		$dropdown .= "\t" . sprintf( '<option value="inactive"%1$s>%2$s</option>', $selected_attribute, _wp_specialchars( __( 'Inactive', 'media-library-assistant' ) ) ) . "\n";
+
+		$dropdown .= '</select>';
+
+		return $dropdown;
+	}
+
+	/**
+	 * Extra controls to be displayed between bulk actions and pagination
+	 *
+	 * Modeled after class-wp-posts-list-table.php in wp-admin/includes.
+	 *
+	 * @since 3.25
+	 * 
+	 * @param	string	'top' or 'bottom', i.e., above or below the table rows
+	 *
+	 * @return	void
+	 */
+	function extra_tablenav( $which ) {
+		// Decide which actions to show
+		if ( 'top' === $which ) {
+			$actions = array( 'mla_image_status', 'mla_filter' );
+		} else {
+			$actions = array();
+		}
+
+		if ( empty( $actions ) ) {
+			return;
+		}
+
+		echo ( '<div class="alignleft actions">' );
+
+		foreach ( $actions as $action ) {
+			switch ( $action ) {
+				case 'mla_image_status':
+					echo self::mla_get_image_status_dropdown( isset( $_REQUEST['mla_image_status'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['mla_image_status'] ) ) : 'any' ); // phpcs:ignore
+					break;
+				case 'mla_filter':
+					submit_button( __( 'Filter', 'media-library-assistant' ), 'secondary', 'mla_filter', false, array( 'id' => 'template-query-submit' ) );
+					break;
+				default:
+					// ignore anything else
+			}
+		}
+
+		echo ( '</div>' );
 	}
 
 	/**

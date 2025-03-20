@@ -377,6 +377,14 @@ class MLAModal_Ajax {
 			wp_send_json_success( $results );
 		}
 
+		$prefix = '';
+		foreach( $requested as $index => $value ) {
+			if ( 0 === strpos( $value, 'prefix:' ) ) {
+				$prefix = sanitize_title( substr( $value, 7 ) );
+				unset( $requested[ $index ] );
+			}
+		}
+			
 		// Flat taxonomy handling is WP version-specific
 		$wp_version = get_bloginfo('version');
 		$generate_tag_buttons = version_compare( $wp_version, '4.6.99', '>' );
@@ -412,7 +420,11 @@ class MLAModal_Ajax {
 
 						$list = array();
 						foreach ( $terms as $term ) {
-							$list[] = $term->term_id;
+							if ( $value->hierarchical ) {
+								$list[] = $term->term_id;
+							} else {
+								$list[] = $term->slug;
+							}
 						} // foreach $term
 
 						sort( $list );
@@ -428,7 +440,7 @@ class MLAModal_Ajax {
 						);
 
 						ob_start();
-						MLACore::mla_checklist_meta_box( $post, $box );
+						MLACore::mla_checklist_meta_box( $post, $box, $prefix );
 						$row_content = ob_get_clean();
 
 						$row = "\t\t<th class='label' valign='top' scope='row' style='width: 99%;'>\n";
@@ -578,6 +590,7 @@ class MLAModal_Ajax {
 
 		do_action( 'mla_media_modal_begin_update_compat_fields', $post );
 
+		$prefix = isset( $_REQUEST['prefix'] ) ? sanitize_title( $_REQUEST['prefix'] ) : '';
 		$taxonomies = array();
 		$results = array();
 
@@ -602,10 +615,16 @@ class MLAModal_Ajax {
 					delete_transient( MLA_OPTION_PREFIX . 't_term_counts_' . $key );
 				}
 
+				if ( empty( $prefix ) ) {
+					$id_prefix = "mla-";
+				} else {
+					$id_prefix = "mla-{$prefix}-";
+				}
+
 				if ( $use_checklist ) {
 					ob_start();
 					$popular_ids = wp_popular_terms_checklist( $key );
-					$results[$key]["mla-{$key}-checklist-pop"] = ob_get_clean();
+					$results[$key]["{$id_prefix}{$key}-checklist-pop"] = ob_get_clean();
 
 					ob_start();
 
@@ -616,7 +635,7 @@ class MLAModal_Ajax {
 						wp_terms_checklist( $post_id, array( 'taxonomy' => $key, 'popular_cats' => $popular_ids, 'walker' => $checklist_walker ) );
 					}
 
-					$results[$key]["mla-{$key}-checklist"] = ob_get_clean();
+					$results[$key]["{$id_prefix}{$key}-checklist"] = ob_get_clean();
 				} else {
 					$terms = get_object_term_cache( $post_id, $key );
 

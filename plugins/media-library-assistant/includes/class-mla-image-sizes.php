@@ -78,7 +78,7 @@ class MLAImage_Size {
 
 		self::_get_image_size_templates( true );
 		foreach( self::$mla_image_size_templates as $slug => $value ) {
-			if ( $value['source'] === 'custom' ) {
+			if ( $value['source'] === 'custom' && $value['disabled'] === false ) {
 				if ( $crop = $value['crop'] ) {
 					// Look for non-default crop position
 					if ( in_array( $value['horizontal'], array( 'left', 'right' ) ) ) {
@@ -97,11 +97,14 @@ class MLAImage_Size {
 						$crop = array ( $horizontal, $vertical );
 					}
 				}
-				
-error_log( __LINE__ . " MLAImage_Size::mla_setup_image_sizes() adding {$slug}, value = " . var_export( $value, true ), 0 );
-error_log( __LINE__ . " MLAImage_Size::mla_setup_image_sizes() adding {$slug}, crop = " . var_export( $crop, true ), 0 );
-				add_image_size( $slug, absint( $value['width'] ), absint( $value['height'] ), $crop );
-				
+
+				// The delete action is processed after this filter is executed
+				if ( isset( $_REQUEST['mla_admin_action'] ) && ( 'single_item_delete' === $_REQUEST['mla_admin_action'] ) ) {
+					continue;
+				} else {
+					add_image_size( $slug, absint( $value['width'] ), absint( $value['height'] ), $crop );
+				}
+
 				//Update WordPress reserved sizes
 				if ( in_array( $slug, array( 'thumbnail', 'medium', 'medium_large', 'large' ) ) ) {
 					update_option( $slug . '_size_w', absint( $value['width'] ) );
@@ -135,7 +138,6 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_sizes() adding {$slug}, c
 		self::_get_image_size_templates( true );
 		foreach( self::$mla_image_size_templates as $slug => $value ) {
 			if ( $value['source'] === 'custom' && ! empty( $value['name'] ) ) {
-error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slug}, name = " . var_export( $value['name'], true ), 0 );
 				$size_names[ $slug ] = $value['name'];
 			}
 		}
@@ -287,16 +289,24 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 		}
 
 		$clean_request = array (
+			's' => '',
+			'mla_image_view' => 'all',
+			'mla_image_status' => 'any',
 			'source' => '',
 			'orderby' => 'slug',
 			'order' => 'ASC',
-			's' => ''
 		);
 
 		foreach ( $raw_request as $key => $value ) {
 			switch ( $key ) {
+				// ['s'] - Search Sizes by one or more keywords
+				case 's':
+					$clean_request[ $key ] = sanitize_text_field( stripslashes( trim( $value ) ) );
+					break;
+				case 'mla_image_view':
+				case 'mla_image_status':
 				case 'source':
-					$clean_request['source'] = sanitize_title( strtolower( $value ) );
+					$clean_request[ $key ] = sanitize_title( strtolower( $value ) );
 					break;
 				case 'orderby':
 					if ( 'none' === $value ) {
@@ -316,10 +326,6 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 						default:
 							$clean_request[ $key ] = 'ASC';
 					}
-					break;
-				// ['s'] - Search Sizes by one or more keywords
-				case 's':
-					$clean_request[ $key ] = stripslashes( trim( $value ) );
 					break;
 				default:
 					// ignore anything else in $raw_request
@@ -350,13 +356,16 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 		}
 
 		// Sort and filter the list
-		$source = isset( $request['source'] ) ? $request['source'] : '';
 		$keyword = isset( $request['s'] ) ? $request['s'] : '';
+		$view = isset( $request['mla_image_view'] ) ? $request['mla_image_view'] : 'all';
+		$status = isset( $request['mla_image_status'] ) ? $request['mla_image_status'] : 'any';
+		$source = isset( $request['source'] ) ? $request['source'] : '';
 		$index = 0;
 		$sorted_types = array();
 
 		foreach ( self::$mla_image_size_templates as $slug => $value ) {
 			$index++;
+			
 			if ( ! empty( $keyword ) ) {
 				$found  = false !== stripos( $slug, $keyword );
 				$found |= false !== stripos( $value['name'], $keyword );
@@ -366,10 +375,39 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 				$found |= false !== stripos( $value['vertical'], $keyword );
 				$found |= false !== stripos( $value['description'], $keyword );
 				$found |= false !== stripos( $value['source'], $keyword );
-
+			
 				if ( ! $found ) {
 					continue;
 				}
+			}
+
+			switch( $view ) {
+				case 'core':
+				case 'other':
+				case 'custom':
+					$found = $view === $value['source'];
+					break;
+				default:
+					$found = true;
+			}// $view
+
+			if ( ! $found ) {
+				continue;
+			}
+
+			switch( $status ) {
+				case 'active':
+					$found = ! $value['disabled'];
+					break;
+				case 'inactive':
+					$found = $value['disabled'];
+					break;
+				default:
+					$found = true;
+			}// $status
+
+			if ( ! $found ) {
+				continue;
 			}
 
 			if ( ! empty( $source ) && ( $source !== $value['source'] ) ) {
@@ -420,7 +458,6 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 		if ( 'DESC' === $request['order'] ) {
 			$sorted_types = array_reverse( $sorted_types, true );
 		}
-
 		// Paginate the sorted list
 		$results = array();
 		$offset = isset( $request['offset'] ) ? absint( $request['offset'] ) : 0;
@@ -465,15 +502,7 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 	 * @return	array	MLA post_mime_type objects
 	 */
 	public static function mla_query_image_size_items( $request, $offset = NULL, $count = NULL ) {
-		if ( ! empty( $offset ) ) {
-			$request['offset'] = $offset;
-		}
-
-		if ( ! empty( $count ) ) {
-			$request['posts_per_page'] = $count;
-		}
-
-		$request = self::_prepare_image_size_items_query( $request );
+		$request = self::_prepare_image_size_items_query( $request, $offset, $count );
 		$results = self::_execute_image_size_items_query( $request );
 		return $results;
 	}
@@ -540,9 +569,8 @@ error_log( __LINE__ . " MLAImage_Size::mla_setup_image_size_names() adding {$slu
 			}
 			
 			unset( $custom_sizes[ $delete_slug ] );
+			MLACore::mla_update_option( MLACoreOptions::MLA_IMAGE_SIZES, $custom_sizes );
 		}
-error_log( __LINE__ . " MLAImage_Size::mla_get_registered_image_subsizes( {$delete_slug} ) custom_sizes = " . var_export( $custom_sizes, true ), 0 );
-error_log( __LINE__ . " MLAImage_Size::mla_get_registered_image_subsizes( {$delete_slug} ) original_settings = " . var_export( $original_settings, true ), 0 );
 
 		$additional_sizes = wp_get_additional_image_sizes();
 		if ( isset( $additional_sizes[ $delete_slug ] ) ) {
@@ -554,9 +582,8 @@ error_log( __LINE__ . " MLAImage_Size::mla_get_registered_image_subsizes( {$dele
 				unset( $additional_sizes[ $delete_slug ] );
 			}
 		}
-error_log( __LINE__ . " MLAImage_Size::mla_get_registered_image_subsizes( {$delete_slug} ) additional_sizes = " . var_export( $additional_sizes, true ), 0 );
 
-		$all_sizes        = array();
+		$all_sizes = array();
 
 		/** This filter is documented in wp-admin/includes/media.php */
 		$size_names = apply_filters( 'image_size_names_choose',
@@ -628,7 +655,6 @@ error_log( __LINE__ . " MLAImage_Size::mla_get_registered_image_subsizes( {$dele
 				$size_data['source'] = 'other';
 			}
 
-error_log( __LINE__ . " MLAImage_Size::mla_get_registered_image_subsizes( {$size_slug}, {$delete_slug} ) size_data = " . var_export( $size_data, true ), 0 );
 			$all_sizes[ $size_slug ] = $size_data;
 		}
 	
@@ -653,14 +679,12 @@ error_log( __LINE__ . " MLAImage_Size::mla_get_registered_image_subsizes( {$size
 
 		// Find the existing core and other sizes
 		$existing_sizes = self::mla_get_registered_image_subsizes( $delete_slug );
-//error_log( __LINE__ . " MLAImage_Size::_get_image_size_templates( {$force_refresh} ) existing_sizes = " . var_export( $existing_sizes, true ), 0 );
 		if ( ! is_array( $existing_sizes ) ) {
 			$existing_sizes = array ();
 		}
 
 		// Add the MLA custom sizes
 		$custom_sizes = MLACore::mla_get_option( MLACoreOptions::MLA_IMAGE_SIZES, false, true );
-//error_log( __LINE__ . " MLAImage_Size::_get_image_size_templates( {$force_refresh} ) custom_sizes = " . var_export( $custom_sizes, true ), 0 );
 		if ( is_array( $custom_sizes ) ) {
 			if ( isset( $custom_sizes[ $delete_slug ] ) ) {
 				unset( $custom_sizes[ $delete_slug ] );
@@ -694,7 +718,6 @@ error_log( __LINE__ . " MLAImage_Size::mla_get_registered_image_subsizes( {$size
 	private static function _put_image_size_templates() {
 		// Find the existing core and other sizes
 		$existing_sizes = self::mla_get_registered_image_subsizes();
-error_log( __LINE__ . " MLAImage_Size::_put_image_size_templates() existing_sizes = " . var_export( $existing_sizes, true ), 0 );
 		if ( ! is_array( $existing_sizes ) ) {
 			$existing_sizes = array ();
 		}
@@ -709,8 +732,12 @@ error_log( __LINE__ . " MLAImage_Size::_put_image_size_templates() existing_size
 			$custom_sizes[ $slug ] = $value;
 		}
 
-error_log( __LINE__ . " MLAImage_Size::_put_image_size_templates() custom_sizes = " . var_export( $custom_sizes, true ), 0 );
-		MLACore::mla_update_option( MLACoreOptions::MLA_IMAGE_SIZES, $custom_sizes );
+		if ( empty( $custom_sizes ) ) {
+			MLACore::mla_delete_option( MLACoreOptions::MLA_IMAGE_SIZES );
+		} else {
+			MLACore::mla_update_option( MLACoreOptions::MLA_IMAGE_SIZES, $custom_sizes );
+		}
+
 		return true;
 	}
 
@@ -724,7 +751,6 @@ error_log( __LINE__ . " MLAImage_Size::_put_image_size_templates() custom_sizes 
 	 * @return	array	Message(s) reflecting the results of the operation
 	 */
 	public static function mla_add_image_size( $request ) {
-error_log( __LINE__ . ' mla_add_image_size request -= ' . var_export( $request, true ), 0 );
 		if ( ! self::_get_image_size_templates() ) {
 			self::$mla_image_size_templates = array ();
 		}
@@ -841,8 +867,6 @@ error_log( __LINE__ . ' mla_add_image_size request -= ' . var_export( $request, 
 				'source' => 'core',
 			);
 		}
-error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$original_slug} ) original_size = " . var_export( $original_size, true ), 0 );
-error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$original_slug} ) original_settings = " . var_export( $original_settings, true ), 0 );
 
 		// Validate changed slug value
 		if ( $slug !== $original_slug ) {
@@ -925,7 +949,6 @@ error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$origina
 			);
 		}
 
-error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$original_slug} ) new_size = " . var_export( $new_size, true ), 0 );
 		self::$mla_image_size_templates[ $slug ] = $new_size;
 
 		if ( $slug !== $original_slug ) {
@@ -1020,9 +1043,6 @@ error_log( __LINE__ . " MLAImage_Size::mla_update_image_size( {$slug}, {$origina
 			}
 
 			self::_get_image_size_templates( true, $slug );
-error_log( __LINE__ . " MLAImage_Size::mla_delete_image_size( {$slug} ) sizes = " . var_export( self::$mla_image_size_templates, true ), 0 );
-			self::_get_image_size_templates( true );
-error_log( __LINE__ . " MLAImage_Size::mla_delete_image_size( {$slug} ) sizes = " . var_export( self::$mla_image_size_templates, true ), 0 );
 			if ( isset( self::$mla_image_size_templates[ $slug ] ) ) {
 				return array(
 					/* translators: 1: slug */
@@ -1054,14 +1074,14 @@ error_log( __LINE__ . " MLAImage_Size::mla_delete_image_size( {$slug} ) sizes = 
 	 *
 	 * @return	array	( 'singular' label, 'plural' label, 'count' of items )
 	 */
-	public static function mla_tabulate_image_sizes( $s = '' ) {
+	public static function mla_tabulate_items( $s = '' ) {
 		if ( empty( $s ) ) {
-			$request = array(); // array( 'mla_upload_view' => 'all' );
+			$request = array();
 		} else {
 			$request = array( 's' => $s );
 		}
 
-		$items = self::mla_query_upload_items( $request, 0, 0 );
+		$items = self::mla_query_image_size_items( $request, 0, 0 );
 
 		$image_items = array(
 			'all' => array(
@@ -1083,11 +1103,11 @@ error_log( __LINE__ . " MLAImage_Size::mla_delete_image_size( {$slug} ) sizes = 
 		);
 
 		foreach ( $items as $value ) {
-			$upload_items['all']['count']++;
-			$upload_items[ $value->source ]['count']++;
+			$image_items['all']['count']++;
+			$image_items[ $value->source ]['count']++;
 		}
 
-		return $upload_items;
+		return $image_items;
 	} // mla_tabulate_image_sizes
 } //Class MLAImage_Size
 ?>

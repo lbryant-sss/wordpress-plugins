@@ -4,7 +4,7 @@ Tags: woocommerce export orders, woocommerce import orders, advanced order expor
 Requires at least: 3.0
 Tested up to: 6.7.2
 Requires PHP: 5.6
-Stable tag: 2.6.0
+Stable tag: 2.6.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -206,6 +206,11 @@ Yes.
 14. Exported coupon CSV
 
 == Changelog ==
+= 2.6.1 2025-03-19 =
+* [Fix] - Vulnerable to Server-Side Request Forgery.
+* [Fix] - Vulnerable to Arbitrary File Deletion.
+* [Fix] - Vulnerable to PHP Object Injection.
+* [Fix] - Vulnerable to Directory Traversal.
 
 = 2.6.0 2025-02-28 =
 * [Add] - Feature request functionality.
@@ -610,11 +615,8 @@ Yes.
 
 == Upgrade Notice ==
 
-= 2.6.0 =
-* [Add] - Feature request functionality.
-* [Add] - New header section.
-* [Add] - Help button.
-* [Add] - Setup guide, FAQ, and support contact link.
-* [Add] - New review banner for feedback.
-* [Compatibility] - Tested OK with WooCommerce 9.7.0
-* [Compatibility] - Tested OK with WordPress 6.7.2
+= 2.6.1 =
+* [Fix] - Vulnerable to Server-Side Request Forgery.
+* [Fix] - Vulnerable to Arbitrary File Deletion.
+* [Fix] - Vulnerable to PHP Object Injection.
+* [Fix] - Vulnerable to Directory Traversal.

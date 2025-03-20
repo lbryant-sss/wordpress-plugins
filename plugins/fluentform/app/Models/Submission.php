@@ -262,22 +262,20 @@ class Submission extends Model
 
         EntryDetails::whereIn('submission_id', $submissionIds)->delete();
 
-        //delete the pro models this way for now
-        // todo: handle these pro models deletion
+        //delete  models this way for now
+        // todo: update wpFluent to the framework model
         try {
-            if(defined('FLUENTFORMPRO_VERSION')) {
-                wpFluent()->table('fluentform_order_items')
-                    ->whereIn('submission_id', $submissionIds)
-                    ->delete();
+            wpFluent()->table('fluentform_order_items')
+                ->whereIn('submission_id', $submissionIds)
+                ->delete();
 
-                wpFluent()->table('fluentform_transactions')
-                    ->whereIn('submission_id', $submissionIds)
-                    ->delete();
+            wpFluent()->table('fluentform_transactions')
+                ->whereIn('submission_id', $submissionIds)
+                ->delete();
 
-                wpFluent()->table('fluentform_subscriptions')
-                    ->whereIn('submission_id', $submissionIds)
-                    ->delete();
-            }
+            wpFluent()->table('fluentform_subscriptions')
+                ->whereIn('submission_id', $submissionIds)
+                ->delete();
 
             wpFluent()->table('ff_scheduled_actions')
                 ->whereIn('origin_id', $submissionIds)

@@ -305,7 +305,7 @@ class SettingsService
             $params['form'] = $meta['share_key'];
         }
 
-        $shareUrl = add_query_arg($params, site_url());
+        $shareUrl = add_query_arg($params, Helper::getFrontendFacingUrl());
         return [
             'message'   => __('Settings successfully updated'),
             'share_url' => $shareUrl,

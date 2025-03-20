@@ -150,7 +150,13 @@ class FormValidationService
                     $errors[$inputName] = [];
                 }
                 if (is_string($error)) {
-                    $error = [$error];
+                    $error = [fluentform_sanitize_html($error)];
+                } else {
+                    if (is_array($error)) {
+                        foreach ($error as $rule => $message) {
+                            $error[$rule] = fluentform_sanitize_html($message);
+                        }
+                    }
                 }
                 $errors[$inputName] = array_merge($error, $errors[$inputName]);
             }

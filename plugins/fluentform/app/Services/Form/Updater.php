@@ -112,7 +112,9 @@ class Updater
         }
         $fieldsArray['fields'] = $this->sanitizeFieldMaps($fieldsArray['fields']);
         $fieldsArray['fields'] = $this->sanitizeCustomSubmit($fieldsArray['fields']);
-        
+        if ($stepsWrapper = Arr::get($fieldsArray, 'stepsWrapper')) {
+            $fieldsArray['stepsWrapper'] = $this->sanitizeStepsWrapper($stepsWrapper);
+        }
 
         return json_encode($fieldsArray);
     }
@@ -286,7 +288,54 @@ class Updater
         }
         return $fields;
     }
-    
+
+    private function sanitizeStepsWrapper($stepWrapper)
+    {
+        $stepsSanitizationMap = [
+            'prev_btn' => [
+                'type'    => 'sanitize_text_field',
+                'text'    => 'sanitize_text_field',
+                'img_url' => 'esc_url_raw',
+            ],
+        ];
+
+        foreach ($stepWrapper as $fieldIndex => $field) {
+            $element = Arr::get($field, 'element');
+
+            if ($element === 'step_start' || $element === 'step_end') {
+                if (!empty($field['settings']['step_titles']) && is_array($field['settings']['step_titles'])) {
+                    foreach ($field['settings']['step_titles'] as $index => $title) {
+                        $field['settings']['step_titles'][$index] = fluentform_sanitize_html($title);
+                    }
+                }
+
+                if (!empty($field['settings']['prev_btn']) && is_array($field['settings']['prev_btn'])) {
+                    foreach ($field['settings']['prev_btn'] as $key => $value) {
+                        if (isset($stepsSanitizationMap['prev_btn'][$key])) {
+                            $sanitizeFunction = $stepsSanitizationMap['prev_btn'][$key];
+                            $field['settings']['prev_btn'][$key] = $sanitizeFunction($value);
+                        }
+                    }
+                }
+                
+                if (!empty($field['attributes']['class'])) {
+                    $field['attributes']['class'] = sanitize_text_field($field['attributes']['class']);
+                }
+                if (!empty($field['attributes']['id'])) {
+                    $field['attributes']['id'] = sanitize_text_field($field['attributes']['id']);
+                }
+            }
+
+            if ($element === 'step_start' && isset($field['fields'])) {
+                $field['fields'] = $this->sanitizeStepsWrapper($field['fields']);
+            }
+
+            $stepWrapper[$fieldIndex] = $field;
+        }
+
+        return $stepWrapper;
+    }
+
     public function sanitizeMinWidth($value)
     {
         if (is_string($value) && preg_match('/^\d+%$/', $value)) {

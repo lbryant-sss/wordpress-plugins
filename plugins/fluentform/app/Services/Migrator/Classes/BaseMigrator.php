@@ -1380,7 +1380,7 @@ abstract class BaseMigrator
                     'validation_rules'   => [
                         'required'           => [
                             'value'   => ArrayHelper::isTrue($args,'required'),
-                            'message' => __('This field is required', 'fluentformpro'),
+                            'message' => __('This field is required', 'fluentform'),
                         ]
                     ],
                     'conditional_logics' => []

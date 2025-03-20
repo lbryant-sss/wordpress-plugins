@@ -203,6 +203,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 * New: A new example plugin, "MLA Gallery Download Checklist", supports downloading a ZIP archive of items selected by checking boxes in an `[mla_gallery]` display.
 * New: For items attached to a parent post/page, the `parent:` field-level prefix gives access to values assigned to the item's parent.
 * New: The `author:` field-level prefix gives access to values assigned to the item's author in the "users" and "usermeta" database tables.
+
+* Fix: Some defects in the handling of "MLA enhanced taxonomy support" in the Media Manager Modal Window have been corrected.
 * Fix: When the Settings/Media Library Assistant Uploads feature is active, a defect that prevented the installation of Google Fonts has been corrected.
 * Fix: A defect in option deletion during plugin deletion has been corrected.
 * Fix: A defect in processing shortcode parameters with field-level datasources containing brackets, e.g., `{+size_bytes{medium}+}`, has been corrected.

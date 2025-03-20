@@ -867,7 +867,8 @@ var YITH_WCAN_Filter = /*#__PURE__*/function () {
             taxonomy: $taxonomySelect.val(),
             selected: $termSearch.val(),
             action: 'yith_wcan_search_term',
-            security: yith_wcan_admin.nonce.search_term
+            security: yith_wcan_admin.nonce.search_term,
+            lang: yith_wcan_admin.current_lang
           };
         },
         select2_args = {
@@ -979,6 +980,9 @@ var YITH_WCAN_Filter = /*#__PURE__*/function () {
           currentValue = $taxonomySelect.val();
         prevValue !== currentValue && _this5.afterTaxonomyChange();
       });
+      setTimeout(function () {
+        $taxonomySelect.select2();
+      }, 1000);
     }
   }, {
     key: "afterTaxonomyChange",

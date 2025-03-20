@@ -116,9 +116,27 @@ class GlobalSearchService
                 "path"  => '?page=fluent_forms_transfer#apilogs',
                 "tags"  => ['tools', 'api logs']
             ],
+            [
+                "title" => 'Payments',
+                "icon"  => '',
+                "path"  => '?page=fluent_forms_payment_entries',
+                "tags"  => ['all', 'payments', 'entries']
+            ],
+            [
+                "title" => 'Global Settings > Payment > Settings',
+                "icon"  => '',
+                "path"  => '?page=fluent_forms_settings' . (Helper::isPaymentCompatible() ? '#payments/general_settings' : '&component=payment_settings%2F#/'),
+                "tags"  => ['global', 'settings', 'payment']
+            ],
+            [
+                "title" => 'Global Settings > Payment > Payment Methods',
+                "icon"  => '',
+                "path"  => '?page=fluent_forms_settings' . (Helper::isPaymentCompatible() ? '#payments/payment_methods' : '&component=payment_settings%2F#/payment_methods'),
+                "tags"  => ['global', 'settings', 'payment', 'method', 'stripe']
+            ],
         ];
 
-        if (defined('FLUENTFORMPRO')) {
+        if (Helper::hasPro()) {
             $links = array_merge($links, [
                 [
                     "title" => 'Global Settings > Double Opt-in',
@@ -127,28 +145,10 @@ class GlobalSearchService
                     "tags"  => ['global', 'security', 'double opt-in', 'optin']
                 ],
                 [
-                    "title" => 'Payments',
-                    "icon"  => '',
-                    "path"  => '?page=fluent_forms_payment_entries',
-                    "tags"  => ['all', 'payments', 'entries']
-                ],
-                [
-                    "title" => 'Global Settings > Payment > Settings',
-                    "icon"  => '',
-                    "path"  => '?page=fluent_forms_settings&component=payment_settings%2F#/',
-                    "tags"  => ['global', 'settings', 'payment']
-                ],
-                [
                     "title" => 'Global Settings > Payment > Coupons',
                     "icon"  => '',
-                    "path"  => '?page=fluent_forms_settings&component=payment_settings%2F#/coupons',
+                    "path"  => '?page=fluent_forms_settings' . (Helper::isPaymentCompatible() ? '#payments/coupons' : '&component=payment_settings%2F#/coupons'),
                     "tags"  => ['global', 'settings', 'payment', 'coupons']
-                ],
-                [
-                    "title" => 'Global Settings > Payment > Payment Methods',
-                    "icon"  => '',
-                    "path"  => '?page=fluent_forms_settings&component=payment_settings%2F#/payment_methods',
-                    "tags"  => ['global', 'settings', 'payment', 'method', 'stripe']
                 ],
                 [
                     "title" => 'Global Settings > License',

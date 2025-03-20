@@ -705,6 +705,8 @@ if ( ! class_exists( 'YITH_WCAN_Filter_Tax' ) ) {
 
 			$count = YITH_WCAN_Cache_Helper::get_for_current_query( 'products_in_term_count', $term_id );
 
+			$count = apply_filters( 'yith_wcan_filter_tax_get_term_children_count', $count, $this->get_taxonomy(), $term_id );
+
 			if ( false === $count ) {
 				$products = $this->get_term_products( $term_id );
 			}

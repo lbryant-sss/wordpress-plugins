@@ -414,6 +414,65 @@ class SubmissionHandlerService
             $formData
         );
     }
+
+    private function isSpamAndSkipProcessing($insertData)
+    {
+        if (Arr::get($insertData, 'status') !== 'spam') {
+            return false;
+        }
+
+        $spamSources = Arr::get($insertData, 'spam_from', []);
+        
+        if ($spamSources) {
+            unset($insertData['spam_from']);
+        }
+
+        $insertId = Submission::insertGetId($insertData);
+
+        if (!$insertId) {
+            return false;
+        }
+
+        $shouldSkip = false;
+        
+        foreach ($spamSources as $source) {
+            if ($this->shouldSkipProcessingForSource($source)) {
+                $this->processSpamSubmission($insertId, $source);
+                $shouldSkip = true;
+            }
+        }
+        
+        if ($shouldSkip) {
+            return [
+                'insert_id' => $insertId,
+                'result' => $this->getReturnData($insertId, $this->form, $this->formData),
+            ];
+        }
+
+        return false;
+    }
+
+    private function shouldSkipProcessingForSource($source)
+    {
+        $settings = get_option('_fluentform_global_form_settings');
+        $cleanTalkSettings = get_option('_fluentform_cleantalk_details');
+        
+        switch ($source) {
+            case 'Akismet':
+                return $settings &&
+                       'yes' == Arr::get($settings, 'misc.akismet_status') &&
+                       'mark_as_spam_and_skip_processing' == Arr::get($settings, 'misc.akismet_validation');
+            case 'CleanTalk':
+                return $settings &&
+                       'yes' == Arr::get($settings, 'misc.cleantalk_status') &&
+                       'mark_as_spam_and_skip_processing' == Arr::get($settings, 'misc.cleantalk_validation');
+            case 'CleanTalk API':
+                return Arr::get($cleanTalkSettings, 'status') &&
+                       'mark_as_spam_and_skip_processing' == Arr::get($cleanTalkSettings, 'validation');
+            default:
+                return false;
+        }
+    }
     
     /**
      * Validates Submission
@@ -426,22 +485,32 @@ class SubmissionHandlerService
         $this->validationService->setFormData($this->formData);
 
         $this->validationService->validateSubmission($this->fields, $this->formData);
-    
-        $insertData = $this->prepareInsertData();
+        $hasSpam = false;
+        $spamFrom = [];
         
         if ($this->validationService->isAkismetSpam($this->formData, $this->form)) {
-            $insertData['status'] = 'spam';
+            $hasSpam = true;
             $this->validationService->handleAkismetSpamError();
+            $spamFrom[] = 'Akismet';
         }
 
         if ($this->validationService->isCleanTalkSpam($this->formData, $this->form)) {
-            $insertData['status'] = 'spam';
+            $hasSpam = true;
             $this->validationService->handleCleanTalkSpamError();
+            $spamFrom[] = 'CleanTalk';
         }
 
         if ($this->validationService->isCleanTalkSpamUsingApi($this->formData, $this->form)) {
-            $insertData['status'] = 'spam';
+            $hasSpam = true;
             $this->validationService->handleCleanTalkSpamErrorUsingAPi();
+            $spamFrom[] = 'CleanTalk API';
+            unset($this->formData['ff_ct_form_load_time'], $this->formData['ct_bot_detector_event_token']);
+        }
+        
+        $insertData = $this->prepareInsertData();
+        if ($hasSpam) {
+            $insertData['status'] = 'spam';
+            $insertData['spam_from'] = $spamFrom;
         }
 
         return $insertData;
@@ -488,52 +557,25 @@ class SubmissionHandlerService
         return $insertId;
     }
 
-    protected function isSpamAndSkipProcessing($insertData)
+    private function processSpamSubmission($insertId, $type)
     {
-        if ('spam' == Arr::get($insertData, 'status')) {
-            $settings = get_option('_fluentform_global_form_settings');
-            $cleantalkSettings = get_option('_fluentform_cleantalk_details');
-            if (
-                $settings &&
-                (
-                    'mark_as_spam_and_skip_processing' == Arr::get($settings, 'misc.akismet_validation') ||
-                    'mark_as_spam_and_skip_processing' == Arr::get($settings, 'misc.cleantalk_validation') ||
-                    'mark_as_spam_and_skip_processing' == Arr::get($cleantalkSettings, 'validation')
-                )
-            ) {
-                return $this->processSpamSubmission($insertData);
-            }
+        $uidHash = md5(wp_generate_uuid4() . $insertId);
+        Helper::setSubmissionMeta($insertId, '_entry_uid_hash', $uidHash, $this->form->id);
+        ob_start();
+        $this->submissionService->recordEntryDetails($insertId, $this->form->id, $this->formData);
+        $isError = ob_get_clean();
+        if ($isError) {
+            SubmissionDetails::migrate();
         }
-        return false;
+        Helper::setSubmissionMeta($insertId, 'is_form_action_fired', 'yes');
+        do_action('fluentform/log_data', [
+            'parent_source_id' => $this->form->id,
+            'source_type' => 'submission_item',
+            'source_id' => $insertId,
+            'component' => $type . ' Integration',
+            'status' => 'info',
+            'title' => __('Skip Submission Processing', 'fluentform'),
+            'description' => __('Submission marked as spammed. And skip all actions processing', 'fluentform')
+        ]);
     }
-
-    protected function processSpamSubmission($insertData)
-    {
-        if ($insertId = Submission::insertGetId($insertData)) {
-            $uidHash = md5(wp_generate_uuid4() . $insertId);
-            Helper::setSubmissionMeta($insertId, '_entry_uid_hash', $uidHash, $this->form->id);
-            ob_start();
-            $this->submissionService->recordEntryDetails($insertId, $this->form->id, $this->formData);
-            $isError = ob_get_clean();
-            if ($isError) {
-                SubmissionDetails::migrate();
-            }
-            Helper::setSubmissionMeta($insertId, 'is_form_action_fired', 'yes');
-            do_action('fluentform/log_data', [
-                'parent_source_id' => $this->form->id,
-                'source_type'      => 'submission_item',
-                'source_id'        => $insertId,
-                'component'        => 'Akismet Integration',
-                'status'           => 'info',
-                'title'            => __('Skip Submission Processing', 'fluentform'),
-                'description'      => __('Submission marked as spammed. And skip all actions processing', 'fluentform')
-            ]);
-            return [
-                'insert_id' => $insertId,
-                'result'    => $this->getReturnData($insertId, $this->form, $this->formData),
-            ];
-        }
-        return false;
-    }
-    
 }
