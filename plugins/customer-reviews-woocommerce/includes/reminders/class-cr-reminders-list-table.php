@@ -388,7 +388,8 @@ class CR_Reminders_List_Table extends WP_List_Table {
 			add_query_arg(
 				array(
 					'action'   => 'sendreminder',
-					'order_id' => $reminder['order_id']
+					'order_id' => $reminder['order_id'],
+					'type'     => $reminder['type']
 				),
 				$url
 			),

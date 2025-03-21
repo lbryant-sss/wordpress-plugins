@@ -3,8 +3,8 @@ Tags: widgets, blocks, contact form, blog, slider
 Requires at least: 4.2
 Tested up to: 6.7
 Requires PHP: 7.0.0
-Stable tag: 1.67.1
-Build time: 2025-03-18T23:10:27+02:00
+Stable tag: 1.67.2
+Build time: 2025-03-20T22:18:32+02:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis, alexgso
 Donate link: https://siteorigin.com/downloads/premium/
@@ -109,10 +109,16 @@ The Widgets Bundle global interface is available at Plugins > SiteOrigin Widgets
 
 == Changelog ==
 
+= 1.67.2 - 20 March 2025 =
+* Call To Action: Cleared floats to prevent content overflow.
+* Contact: Fixed Really Simple Captcha functionality.
+* Video Player: Improved hide controls handling, prevented self-hosted videos from not autoplaying, ensured hide controls setting doesn't affect externally hosted videos, and fixed missing media elements in external videos.
+* General: Prevented JavaScript variable declaration conflict with 'sowb' identifier.
+
 = 1.67.1 - 18 March 2025 =
 * Posts Query: Added no results text for improved user feedback.
 * Posts Query: Enhanced autocomplete functionality to pass post ID.
-* Video: Added click-to-play functionality for self-hosted videos.
+* Video Player: Added click-to-play functionality for self-hosted videos.
 * General: Implemented manual widget block tests.
 
 = 1.67.0 - 17 March 2025 =

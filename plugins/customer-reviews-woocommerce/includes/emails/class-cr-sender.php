@@ -191,7 +191,7 @@ if ( ! class_exists( 'CR_Sender' ) ) :
 				$w = new CR_Wtsap( $order_id );
 				$result = $w->send_message( $order_id, $schedule );
 			} else {
-				$e = new Ivole_Email( $order_id );
+				$e = new Ivole_Email( $order_id, $sequence );
 				$result = $e->trigger2( $order_id, null, $schedule );
 				// logging
 				$log = new CR_Reminders_Log();

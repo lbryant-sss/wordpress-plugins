@@ -6,7 +6,7 @@ Requires at least: 6.0
 License: GPL2
 Requires PHP: 7.2
 Tested up to: 6.7
-Stable tag: 1.7.6
+Stable tag: 1.7.6.1
 
 Self-hosted, privacy-friendly stats for WordPress. Simple interface, no setup. Get detailed analytics with Burst Statistics.
 
@@ -94,6 +94,9 @@ Performance is almost not affected. We have built Burst to be very performant fo
 We value your feedback. You can [submit a support request on the WordPress forums](https://wordpress.org/support/plugin/burst-statistics/), and we will respond promptly.
 
 == Change log ==
+= 1.7.6.1 =
+* Fix: prevent conflicts between Really Simple SSL, Complianz and Burst installers 
+
 = 1.7.6 =
 * Fix: translations not loading correctly
 * Fix: when using the reset button, a fatal error occurred

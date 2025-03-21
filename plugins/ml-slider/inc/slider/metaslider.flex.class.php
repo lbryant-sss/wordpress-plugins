@@ -75,7 +75,7 @@ class MetaFlexSlider extends MetaSlider
                 $options["itemWidth"] = $this->get_setting('width');
                 $options["animation"] = "'slide'";
                 $options["direction"] = "'horizontal'";
-                $options["minItems"] = 1;
+                $options["minItems"] = $this->get_setting('minItems');
                 $options["move"] = 1;
                 $options["itemMargin"] = apply_filters('metaslider_carousel_margin', $this->get_setting('carouselMargin'), $slider_id);
                 //activate infinite loop when carousel is set to 'continously' and 'autoplay'
@@ -88,7 +88,22 @@ class MetaFlexSlider extends MetaSlider
                         var ul = $('#metaslider_" . $slider_id . " .slides');
                         ul.find('li').clone(true).appendTo(ul);
                     "));
-                }                
+                }
+                
+                if ( (int) $options['minItems'] > 1 && $this->get_setting('forceHeight') == 'true' ) {
+                    $options['init'] = isset( $options['init'] ) ? $options['init'] : array();
+                    $options['init'] = array_merge( $options['init'], array("
+                        var container = $('#metaslider-id-" . $slider_id . "');
+                        var height = container.attr('data-height') || false;
+
+                        if (height) {
+                            container.addClass('ms-carousel-force-height');
+                            container.find('.slides > li').each(function () {
+                                $(this).css({height: height + 'px'});
+                            });
+                        }
+                    "));
+                }
             }
             unset($options["carouselMode"]);
         }
@@ -589,9 +604,15 @@ class MetaFlexSlider extends MetaSlider
                 $script .= "$('.flex-pauseplay a').text('" . addslashes($settings['playText']) . "');";
             }
         
+            $options['start'] = isset($options['start']) ? $options['start'] : array();
             $options['start'] = array_merge($options['start'], [$script]);
+        }
+        /* @since 3.97 - disable hover on pause when play button is enabled */
+        if (isset($settings['pausePlay']) && $settings['pausePlay'] === 'true') {
+            unset($options['pauseOnHover']);
         }
         
         return $options;
     }
 }
+

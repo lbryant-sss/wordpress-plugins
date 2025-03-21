@@ -84,7 +84,7 @@ const ScSwitch = class {
     }
     render() {
         const Tag = this.edit ? 'div' : 'label';
-        return (h(Tag, { key: '650bd824a5e356051a250a56159b9e367c239132', part: "base", htmlFor: this.switchId, class: {
+        return (h(Tag, { key: 'bd52b793e147f7d685fda62ed0adba0de66000d4', part: "base", htmlFor: this.switchId, class: {
                 'switch': true,
                 'switch--is-required': this.required,
                 'switch--checked': this.checked,
@@ -93,7 +93,7 @@ const ScSwitch = class {
                 'switch--reversed': this.reversed,
                 'switch--editing': this.edit,
                 'switch--has-description': this.hasDescription,
-            }, onMouseDown: e => this.handleMouseDown(e) }, h("span", { key: 'e0558457e581f57e66d1cc0c76c6de1bbf3f14f2', part: "control", class: "switch__control" }, h("span", { key: 'd4351ab6d5937323b221659cb56af99df0af8406', part: "thumb", class: "switch__thumb" }), h("input", { key: '8ea99e793ee30ceb754e8ae240cc62cc10020e74', ref: el => (this.input = el), id: this.switchId, type: "checkbox", role: "switch", name: this.name, value: this.value || 'on', checked: this.checked, disabled: this.disabled, required: this.required, "aria-checked": this.checked ? 'true' : 'false', "aria-labelledby": this.labelId, onClick: () => this.handleClick(), onBlur: () => this.handleBlur(), onFocus: () => this.handleFocus(), onKeyDown: e => this.handleKeyDown(e) })), h("span", { key: '53662433a0e3bbba11e6954dd1e8d3f13898c230', class: "switch__label" }, h("span", { key: 'd384be4b212ed7795cda71f71c5308f26bb236d8', part: "title", id: this.labelId, class: "switch__title" }, h("slot", { key: 'b3b86c765cf7803e4dc9b910b486d2483a5d0940' })), h("span", { key: 'a658595fdcabec1536035e680bb0bd27f2cd8d1a', class: "switch__description", part: "description" }, h("slot", { key: '10ade345cff53c1503358d16866fdf1aa1180c4e', name: "description" })))));
+            }, onMouseDown: e => this.handleMouseDown(e) }, h("span", { key: '156c5e190e68e48132c043df6b0b1822fdd010c4', part: "control", class: "switch__control" }, h("span", { key: '930c71686b878508c70f3156942dde9dbc76524c', part: "thumb", class: "switch__thumb" }), h("input", { key: 'a20cf7e6c04f60c7ee4ddbfeec6e821b32887184', ref: el => (this.input = el), id: this.switchId, type: "checkbox", role: "switch", name: this.name, value: this.value || 'on', checked: this.checked, disabled: this.disabled, required: this.required, "aria-checked": this.checked ? 'true' : 'false', "aria-labelledby": this.labelId, onClick: () => this.handleClick(), onBlur: () => this.handleBlur(), onFocus: () => this.handleFocus(), onKeyDown: e => this.handleKeyDown(e) })), h("span", { key: '32d276e8fe1f23c991a50a4307b310a3f4feae75', class: "switch__label" }, h("span", { key: '48d11c607341e53b4732a5e690174a48811703a2', part: "title", id: this.labelId, class: "switch__title" }, h("slot", { key: 'd95a53b28d17a4c3a498149c36986231bb66404a' })), h("span", { key: 'ed3766e51b27b1f8075f314350c3355bde775f5b', class: "switch__description", part: "description" }, h("slot", { key: '474ae283ed2f811ecc1e39c0060afc8aeaf9ea13', name: "description" })))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

@@ -2,7 +2,7 @@
 Contributors: andergmartins, htmgarcia, publishpress, stevejburge, rochdesigns
 Tags: slider, video slider, image slider, carousel slider, gallery
 Requires at least: 5.0
-Stable tag: 3.96.0
+Stable tag: 3.97.0
 Requires PHP: 7.0
 Tested up to: 6.7
 License: GPLv2 or later
@@ -319,6 +319,29 @@ Yes, you can build Elementor slides and Beaver Builder slideshows. You can creat
 
 The format is based on [Keep a Changelog recommendations](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
+
+= [3.97.0] - 21 Mar 2025 =
+
+* ADDED: Way to hide elements on screen sizes, #1010;
+* ADDED: Hide / Show / Hover for Navigation, #1498;
+* ADDED: Allow users to customize the number of slides at once for Carousel mode, #1462;
+* ADDED: Allow users to show different slideshows for different screen sizes, #1194;
+* ADDED: Can we show users if their slideshows are being used, #1330;
+* FIXED: PHP 8.3 depreciations, #1480;
+* FIXED: Hover pause conflicts with Play/pause button, #1469;
+* FIXED: Italian, Spanish and French translation updates, #1484;
+* FIXED: Do we need getRecentSlideshows call?, #1493;
+* FIXED: Conflict with Plugins using body:after{content}, #1491;
+* FIXED: $options['start'] is not declared, #1486;
+* FIXED: Empty "Slide" box in Theme area, #1538;
+* FIXED: Make Shortcode Syntax Consistent, #1533;
+* CHANGED: Check on the state of transitions, #1485;
+* CHANGED: Replace "Mobile" with "Device", #1515;
+* CHANGED: Update thumbnail image for Hero theme, #1527;
+* CHANGED: Add Custom HTML sldies to sales table, #1487;
+* CHANGED: Update "Not in use" and "View Pages" text, #1530;
+* CHANGED: "Transition Options" under the "Theme", #1541;
+* REMOVED: $slideshow_id param in metaslider_extra_themes, #1349;
 
 = [3.96.0] - 13 Feb 2025 =
 

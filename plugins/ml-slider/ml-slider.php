@@ -5,7 +5,7 @@
  * Plugin Name: MetaSlider
  * Plugin URI:  https://www.metaslider.com
  * Description: MetaSlider gives you the power to create a beautiful slideshow, carousel, or gallery on your WordPress site.
- * Version:     3.96.0
+ * Version:     3.97.0
  * Author:      MetaSlider
  * Author URI:  https://www.metaslider.com
  * License:     GPL-2.0+
@@ -42,7 +42,7 @@ if (! class_exists('MetaSliderPlugin')) {
          *
          * @var string
          */
-        public $version = '3.96.0';
+        public $version = '3.97.0';
 
         /**
          * Pro installed version number
@@ -298,6 +298,7 @@ if (! class_exists('MetaSliderPlugin')) {
         {
             add_shortcode('metaslider', array($this, 'register_shortcode'));
             add_shortcode('ml-slider', array($this, 'register_shortcode')); // backwards compatibility
+            add_shortcode('metaslider_hide', array($this, 'metaslider_hide_shortcode'));
         }
 
 
@@ -380,6 +381,9 @@ if (! class_exists('MetaSliderPlugin')) {
 
             // html5 compatibility for stylesheets enqueued within <body>
             add_filter('style_loader_tag', array($this, 'add_property_attribute_to_stylesheet_links'), 11, 2);
+        
+            //add body class for mobile settings to prevent other plugins from overwriting
+            add_filter('body_class', array($this, 'metaslider_add_body_class'));
         }
 
         /**
@@ -563,7 +567,8 @@ if (! class_exists('MetaSliderPlugin')) {
                     'id' => false,
                     'title' => false,
                     'restrict_to' => false,
-                    'theme' => null
+                    'theme' => null,
+                    'hide_on' => '', // Accepts desktop, laptop, tablet, smartphone
                 ],
                 $atts,
                 'metaslider'
@@ -636,7 +641,7 @@ if (! class_exists('MetaSliderPlugin')) {
                     $atts['theme'] = $custom_themes[$theme['folder']]['base'];
                 }
             }
-
+            
             // Set up the slideshow and load the slideshow theme
             $this->set_slider($id, $atts);
             MetaSlider_Themes::get_instance()->load_theme($id, $atts['theme']);
@@ -644,6 +649,23 @@ if (! class_exists('MetaSliderPlugin')) {
             return $this->slider->render_public_slides();
         }
 
+        /**
+         * Shortcode used to hide elements on devices
+         * @since 3.97
+        */
+        public function metaslider_hide_shortcode($atts, $content = null) {
+            $atts = shortcode_atts(['devices' => ''], $atts);
+            
+            if (empty($content)) {
+                return '';
+            }
+
+            $devices = preg_replace('/\s*,\s*/', ',', $atts['devices']);
+            $device_classes = !empty($devices) ? 'hide-' . str_replace(',', ' hide-', $devices) : '';
+        
+            return '<div class="metaslider-hidden-content ' . esc_attr($device_classes) . '">' . $content . '</div>';
+        }
+        
         /**
          * Initialise translations
          */
@@ -1186,6 +1208,10 @@ if (! class_exists('MetaSliderPlugin')) {
                             break;
 
                         case 'local_video':
+                            $msQuickstartPro->set_slideshow_theme( $id, 'blend' );
+                            break;
+
+                        case 'custom_html':
                             $msQuickstartPro->set_slideshow_theme( $id, 'blend' );
                             break;
                     }
@@ -2444,6 +2470,10 @@ if (! class_exists('MetaSliderPlugin')) {
             return $tag;
         }
 
+        public function metaslider_add_body_class($classes) {
+            $classes[] = 'metaslider-plugin';
+            return $classes;
+        }
 
         public function quickstart_params(){ 
             if (isset($_REQUEST['page']) && 'metaslider-start' == $_REQUEST['page']) {

@@ -705,7 +705,7 @@ return $theme;
          *  '/path/to/wp-content/themes/my-theme/ms-themes/'
          * )
          */
-        $extra_themes = apply_filters('metaslider_extra_themes', array(), $slideshow_id);
+        $extra_themes = apply_filters('metaslider_extra_themes', array());
         foreach ($extra_themes as $location) {
             if (file_exists(trailingslashit($location) . $theme['folder'])) {
                 $theme_dir = trailingslashit($location) . $theme['folder'];

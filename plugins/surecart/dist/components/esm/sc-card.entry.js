@@ -21,11 +21,11 @@ const ScCard = class {
     }
     render() {
         const Tag = this.href ? 'a' : 'div';
-        return (h(Tag, { key: '704b5df62321a26ad74653823cfb877987f2a3aa', part: "base", class: {
+        return (h(Tag, { key: '7dc7afdda0809275a96121abbf9bafd88f09f43b', part: "base", class: {
                 'card': true,
                 'card--borderless': this.borderless,
                 'card--no-padding': this.noPadding,
-            } }, h("slot", { key: '4da7326c64dd6aecd2d50026ccbe5970e964df4e' })));
+            } }, h("slot", { key: 'cf56dd6b0661cd03e19b8f8a9a487b4a7f2796db' })));
     }
     get el() { return getElement(this); }
 };

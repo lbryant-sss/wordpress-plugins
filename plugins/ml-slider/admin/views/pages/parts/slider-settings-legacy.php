@@ -1,271 +1,442 @@
 
 <table class="ms-settings-table border-0">
     <tbody>
-            <?php
-            $aFields = array(
-                'type' => array(
-                    'priority' => 0,
-                    'type' => 'slider-lib',
-                    'value' => $this->slider->get_setting('type'),
-                    'options' => array(
-                        'flex' => array('label' => "FlexSlider"),
-                        'responsive' => array('label' => "R. Slides"),
-                        'nivo' => array('label' => "Nivo Slider"),
-                        'coin' => array('label' => "Coin Slider")
+    <?php
+    $aFields = array(
+        'type' => array(
+            'priority' => 0,
+            'type' => 'slider-lib',
+            'value' => $this->slider->get_setting('type'),
+            'options' => array(
+                'flex' => array('label' => "FlexSlider"),
+                'responsive' => array('label' => "R. Slides"),
+                'nivo' => array('label' => "Nivo Slider"),
+                'coin' => array('label' => "Coin Slider")
+            )
+        ),
+        'mainOptions' => array(
+            'priority' => 1,
+            'type' => 'highlight',
+            'value' => esc_html__( 'Main Options', 'ml-slider' )
+        ),
+        'width' => array(
+            'priority' => 10,
+            'type' => 'number',
+            'size' => 3,
+            'min' => 0,
+            'max' => 9999,
+            'step' => 1,
+            'value' => $this->slider->get_setting('width'),
+            'label' => __("Width", "ml-slider"),
+            'class' => 'coin flex responsive nivo',
+            'helptext' => __("Slideshow width", "ml-slider"),
+            'after' => __("px", "ml-slider")
+        ),
+        'height' => array(
+            'priority' => 20,
+            'type' => 'number',
+            'size' => 3,
+            'min' => 0,
+            'max' => 9999,
+            'step' => 1,
+            'value' => $this->slider->get_setting('height'),
+            'label' => __("Height", "ml-slider"),
+            'class' => 'coin flex responsive nivo',
+            'helptext' => __("Slideshow height", "ml-slider"),
+            'after' => __("px", "ml-slider")
+        ),
+        'links' => array(
+            'priority' => 50,
+            'type' => 'select',
+            'label' => __("Arrows", "ml-slider"),
+            'class' => 'option coin flex nivo responsive',
+            'value' => $this->slider->get_setting('links'),
+            'helptext' => __(
+                "Show the Previous / Next arrows.",
+                "ml-slider"
+            ),
+            'options' => array(
+                'false' => array(
+                    'label' => __("Hidden", "ml-slider")
+                ),
+                'true' => array(
+                    'label' => __("Visible", "ml-slider")
+                ),
+                'onhover' => array(
+                    'label' => __("Visible On Hover", "ml-slider")
+                )
+            ),
+            'dependencies' => array(
+                array(
+                    'show' => 'mobileArrows_smartphone',
+                    'when' => array(
+                        'true',
+                        'onhover'
+                    )
+                )
+            )
+        ),
+        'navigation' => array(
+            'priority' => 60,
+            'type' => 'navigation',
+            'label' => __("Navigation", "ml-slider"),
+            'class' => 'option coin flex nivo responsive',
+            'value' => $this->slider->get_setting('navigation'),
+            'helptext' => __(
+                "Show navigation options so that users can browse the slides.",
+                "ml-slider"
+            ),
+            'options' => array(
+                'false' => array(
+                    'label' => __("Hidden", "ml-slider")
+                ),
+                'true' => array(
+                    'label' => __("Dots", "ml-slider")
+                ),
+                'dots_onhover' => array(
+                    'label' => __("Dots - Visible On Hover", "ml-slider")
+                ),
+                'thumbs' => array(
+                    'label' => __("Thumbnails (Pro)", "ml-slider"),
+                    'addon_required' => true
+                ),
+                'thumbs_onhover' => array(
+                    'label' => __("Thumbnails - Visible On Hover (Pro)", "ml-slider"),
+                    'addon_required' => true
+                ),
+                'filmstrip' => array(
+                    'label' => __("Filmstrip (Pro)", "ml-slider"),
+                    'addon_required' => true
+                ),
+                'filmstrip_onhover' => array(
+                    'label' => __("Filmstrip - Visible On Hover (Pro)", "ml-slider"),
+                    'addon_required' => true
+                ),
+            ),
+            'dependencies' => array(
+                array(
+                    'show' => 'mobileNavigation_smartphone',
+                    'when' => array(
+                        'true',
+                        'thumbs', 
+                        'filmstrip'
                     )
                 ),
-                'mainOptions' => array(
-                    'priority' => 1,
-                    'type' => 'highlight',
-                    'value' => esc_html__( 'Main Options', 'ml-slider' )
-                ),
-                'width' => array(
-                    'priority' => 10,
-                    'type' => 'number',
-                    'size' => 3,
-                    'min' => 0,
-                    'max' => 9999,
-                    'step' => 1,
-                    'value' => $this->slider->get_setting('width'),
-                    'label' => __("Width", "ml-slider"),
-                    'class' => 'coin flex responsive nivo',
-                    'helptext' => __("Slideshow width", "ml-slider"),
-                    'after' => __("px", "ml-slider")
-                ),
-                'height' => array(
-                    'priority' => 20,
-                    'type' => 'number',
-                    'size' => 3,
-                    'min' => 0,
-                    'max' => 9999,
-                    'step' => 1,
-                    'value' => $this->slider->get_setting('height'),
-                    'label' => __("Height", "ml-slider"),
-                    'class' => 'coin flex responsive nivo',
-                    'helptext' => __("Slideshow height", "ml-slider"),
-                    'after' => __("px", "ml-slider")
-                ),
-                'effect' => array(
-                    'priority' => 30,
-                    'type' => 'select',
-                    'value' => $this->slider->get_setting('effect'),
-                    'label' => __("Transition Effect", "ml-slider"),
-                    'class' => 'effect coin flex responsive nivo width w-40',
-                    'helptext' => __("This animation is used when changing slides.", "ml-slider"),
-                    'dependencies' => array(
-                        array(
-                            'show' => 'easing', // Show Easing setting
-                            'when' => 'slide' // When Effect is 'slide'
-                        ),
-                        array(
-                            'show' => 'firstSlideFadeIn',
-                            'when' => 'fade'
-                        )
-                    ),
-                    'options' => array(
-                        'random' => array(
-                            'class' => 'option coin nivo',
-                            'label' => __("Random", "ml-slider")
-                        ),
-                        'swirl' => array(
-                            'class' => 'option coin',
-                            'label' => __("Swirl", "ml-slider")
-                        ),
-                        'rain' => array(
-                            'class' => 'option coin',
-                            'label' => __("Rain", "ml-slider")
-                        ),
-                        'straight' => array(
-                            'class' => 'option coin',
-                            'label' => __("Straight", "ml-slider")
-                        ),
-                        'sliceDown' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Slice Down", "ml-slider")
-                        ),
-                        'sliceUp' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Slice Up", "ml-slider")
-                        ),
-                        'sliceUpLeft' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Slice Up Left", "ml-slider")
-                        ),
-                        'sliceUpDown' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Slide Up Down", "ml-slider")
-                        ),
-                        'sliceUpDownLeft' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Slice Up Down Left", "ml-slider")
-                        ),
-                        'fade' => array(
-                            'class' => 'option nivo flex responsive',
-                            'label' => __("Fade", "ml-slider")
-                        ),
-                        'fold' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Fold", "ml-slider")
-                        ),
-                        'slideInRight' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Slide in Right", "ml-slider")
-                        ),
-                        'slideInLeft' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Slide in Left", "ml-slider")
-                        ),
-                        'boxRandom' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Box Random", "ml-slider")
-                        ),
-                        'boxRain' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Box Rain", "ml-slider")
-                        ),
-                        'boxRainReverse' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Box Rain Reverse", "ml-slider")
-                        ),
-                        'boxRainGrow' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Box Rain Grow", "ml-slider")
-                        ),
-                        'boxRainGrowReverse' => array(
-                            'class' => 'option nivo',
-                            'label' => __("Box Rain Grow Reverse", "ml-slider")
-                        ),
-                        'slide' => array(
-                            'class' => 'option flex',
-                            'label' => __("Slide", "ml-slider")
-                        )
-                    ),
-                ),
-                'links' => array(
-                    'priority' => 50,
-                    'type' => 'select',
-                    'label' => __("Arrows", "ml-slider"),
-                    'class' => 'option coin flex nivo responsive',
-                    'value' => $this->slider->get_setting('links'),
-                    'helptext' => __(
-                        "Show the Previous / Next arrows.",
-                        "ml-slider"
-                    ),
-                    'options' => array(
-                        'false' => array(
-                            'label' => __("Hidden", "ml-slider")
-                        ),
-                        'true' => array(
-                            'label' => __("Visible", "ml-slider")
-                        ),
-                        'onhover' => array(
-                            'label' => __("Visible On Hover", "ml-slider")
-                        )
-                    ),
-                    'dependencies' => array(
-                        array(
-                            'show' => 'mobileArrows_smartphone',
-                            'when' => array(
-                                'true',
-                                'onhover'
-                            )
-                        )
+                array(
+                    'show' => 'ariaCurrent',
+                    'when' => array(
+                        'true',
+                        'thumbs', 
+                        'filmstrip'
                     )
                 ),
-                'navigation' => array(
-                    'priority' => 60,
-                    'type' => 'navigation',
-                    'label' => __("Navigation", "ml-slider"),
-                    'class' => 'option coin flex nivo responsive',
-                    'value' => $this->slider->get_setting('navigation'),
-                    'helptext' => __(
-                        "Show navigation options so that users can browse the slides.",
-                        "ml-slider"
-                    ),
-                    'options' => array(
-                        'false' => array(
-                            'label' => __("Hidden", "ml-slider")
-                        ),
-                        'true' => array(
-                            'label' => __("Dots", "ml-slider")
-                        ),
-                        'thumbs' => array(
-                            'label' => __("Thumbnail", "ml-slider"),
-                            'addon_required' => true
-                        ),
-                        'filmstrip' => array(
-                            'label' => __("Filmstrip", "ml-slider"),
-                            'addon_required' => true
-                        ),
-                    ),
-                    'dependencies' => array(
-                        array(
-                            'show' => 'mobileNavigation_smartphone',
-                            'when' => array(
-                                'true',
-                                'thumbs', 
-                                'filmstrip'
-                            )
-                        ),
-                        array(
-                            'show' => 'ariaCurrent',
-                            'when' => array(
-                                'true',
-                                'thumbs', 
-                                'filmstrip'
-                            )
-                        ),
-                    )
-                ),
-                'fullWidth' => array(
-                    'priority' => 570,
-                    'type' => 'checkbox',
-                    'label' => esc_html__("100% Width", "ml-slider"),
-                    'class' => 'option flex nivo responsive',
-                    'checked' => $this->slider->get_setting(
-                        'fullWidth'
-                    ) == 'true' ? 'checked' : '',
-                    'helptext' => esc_html__(
-                        "Stretch the slideshow output to fill its parent container.",
-                        "ml-slider"
-                    )
-                ),
-            );
+            )
+        ),
+        'fullWidth' => array(
+            'priority' => 570,
+            'type' => 'checkbox',
+            'label' => esc_html__("100% Width", "ml-slider"),
+            'class' => 'option flex nivo responsive',
+            'checked' => $this->slider->get_setting(
+                'fullWidth'
+            ) == 'true' ? 'checked' : '',
+            'helptext' => esc_html__(
+                "Stretch the slideshow output to fill its parent container.",
+                "ml-slider"
+            )
+        ),
+    );
 
-            $aFields = apply_filters(
-                'metaslider_basic_settings',
-                $aFields,
-                $this->slider
-            );
+    $aFields = apply_filters(
+        'metaslider_basic_settings',
+        $aFields,
+        $this->slider
+    );
 
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            echo $this->build_settings_rows($aFields);
-            ?>
+    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    echo $this->build_settings_rows($aFields);
+    ?>
+    <tr class="empty-row-spacing">
+        <td colspan="2"></td>
+    </tr>
+    <tr class="highlight">
+        <td colspan="2">
+            <?php esc_html_e( 'Theme', 'ml-slider' ) ?>
+        </td>
+    </tr>
+    <tr class="empty-row-spacing">
+        <td colspan="2"></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <metaslider-theme-viewer
+                    theme-directory-url="<?php
+                    echo esc_url(METASLIDER_THEMES_URL); ?>"
+            ></metaslider-theme-viewer>
+        </td>
+    </tr>
+    <tr class="empty-row-spacing transitionOptions">
+        <td colspan="2"></td>
+    </tr>
+    <?php
+    $aFields = array(
+            'transitionOptions' => array(
+            'priority' => 1,
+            'type' => 'highlight',
+            'value' => esc_html__( 'Transition Options', 'ml-slider' )
+        ),
+        'effect' => array(
+            'priority' => 10,
+            'type' => 'select',
+            'value' => $this->slider->get_setting('effect'),
+            'label' => __("Transition Effect", "ml-slider"),
+            'class' => 'effect coin flex responsive nivo width w-40',
+            'helptext' => __("This animation is used when changing slides.", "ml-slider"),
+            'dependencies' => array(
+                array(
+                    'show' => 'easing', // Show Easing setting
+                    'when' => 'slide' // When Effect is 'slide'
+                ),
+                array(
+                    'show' => 'firstSlideFadeIn',
+                    'when' => 'fade'
+                )
+            ),
+            'options' => array(
+                'random' => array(
+                    'class' => 'option coin nivo',
+                    'label' => __("Random", "ml-slider")
+                ),
+                'swirl' => array(
+                    'class' => 'option coin',
+                    'label' => __("Swirl", "ml-slider")
+                ),
+                'rain' => array(
+                    'class' => 'option coin',
+                    'label' => __("Rain", "ml-slider")
+                ),
+                'straight' => array(
+                    'class' => 'option coin',
+                    'label' => __("Straight", "ml-slider")
+                ),
+                'sliceDown' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Slice Down", "ml-slider")
+                ),
+                'sliceUp' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Slice Up", "ml-slider")
+                ),
+                'sliceUpLeft' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Slice Up Left", "ml-slider")
+                ),
+                'sliceUpDown' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Slide Up Down", "ml-slider")
+                ),
+                'sliceUpDownLeft' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Slice Up Down Left", "ml-slider")
+                ),
+                'fade' => array(
+                    'class' => 'option nivo flex responsive',
+                    'label' => __("Fade", "ml-slider")
+                ),
+                'fold' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Fold", "ml-slider")
+                ),
+                'slideInRight' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Slide in Right", "ml-slider")
+                ),
+                'slideInLeft' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Slide in Left", "ml-slider")
+                ),
+                'boxRandom' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Box Random", "ml-slider")
+                ),
+                'boxRain' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Box Rain", "ml-slider")
+                ),
+                'boxRainReverse' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Box Rain Reverse", "ml-slider")
+                ),
+                'boxRainGrow' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Box Rain Grow", "ml-slider")
+                ),
+                'boxRainGrowReverse' => array(
+                    'class' => 'option nivo',
+                    'label' => __("Box Rain Grow Reverse", "ml-slider")
+                ),
+                'slide' => array(
+                    'class' => 'option flex',
+                    'label' => __("Slide", "ml-slider")
+                ),
+                'zooming' => array(
+                    'class' => 'option flex',
+                    'label' => __("Zooming", "ml-slider")
+                ),
+                'flip' => array(
+                    'class' => 'option flex',
+                    'label' => __("Flip", "ml-slider")
+                )
+            ),
+        ),
+        'delay' => array(
+            'priority' => 20,
+            'type' => 'number',
+            'size' => 3,
+            'min' => 500,
+            'max' => 10000,
+            'step' => 100,
+            'value' => $this->slider->get_setting('delay'),
+            'label' => esc_html__("Slide Delay", "ml-slider"),
+            'class' => 'option coin flex responsive nivo',
+            'helptext' => esc_html__(
+                "How long to display each slide, in milliseconds.",
+                "ml-slider"
+            ),
+            'after' => esc_html_x(
+                "ms",
+                "Short for milliseconds",
+                "ml-slider"
+            )
+        ),
+        'animationSpeed' => array(
+            'priority' => 30,
+            'type' => 'number',
+            'size' => 3,
+            'min' => 0,
+            'max' => 2000,
+            'step' => 100,
+            'value' => $this->slider->get_setting('animationSpeed'),
+            'label' => esc_html__("Transition Speed", "ml-slider"),
+            'class' => 'option flex responsive nivo',
+            'helptext' => esc_html__(
+                'Choose the speed of the animation in milliseconds. You can select the animation in the "Effect" field.',
+                'ml-slider'
+            ),
+            'after' => esc_html_x(
+                "ms",
+                "Short for milliseconds",
+                "ml-slider"
+            )
+        ),
+        'slices' => array(
+            'priority' => 40,
+            'type' => 'number',
+            'size' => 3,
+            'min' => 0,
+            'max' => 20,
+            'step' => 1,
+            'value' => $this->slider->get_setting('slices'),
+            'label' => esc_html__("Number of Slices", "ml-slider"),
+            'class' => 'option nivo',
+            'helptext' => esc_html__("Number of Slices", "ml-slider"),
+        ),
+        'spw' => array(
+            'priority' => 50,
+            'type' => 'number',
+            'size' => 3,
+            'min' => 0,
+            'max' => 20,
+            'step' => 1,
+            'value' => $this->slider->get_setting('spw'),
+            'label' => esc_html__(
+                    "Number of Squares",
+                    "ml-slider"
+                ) . " (" . esc_html__("Width", "ml-slider") . ")",
+            'class' => 'option nivo',
+            'helptext' => esc_html__("Number of squares", "ml-slider"),
+            'after' => ''
+        ),
+        'sph' => array(
+            'priority' => 60,
+            'type' => 'number',
+            'size' => 3,
+            'min' => 0,
+            'max' => 20,
+            'step' => 1,
+            'value' => $this->slider->get_setting('sph'),
+            'label' => esc_html__(
+                    "Number of Squares",
+                    "ml-slider"
+                ) . " (" . esc_html__("Height", "ml-slider") . ")",
+            'class' => 'option nivo',
+            'helptext' => esc_html__("Number of squares", "ml-slider"),
+            'after' => ''
+        ),
+        'direction' => array(
+            'priority' => 70,
+            'type' => 'select',
+            'label' => esc_html__("Slide Direction", "ml-slider"),
+            'class' => 'option flex',
+            'helptext' => esc_html__(
+                'Select the direction that slides will move. Vertical will not work if "Carousel mode" is enabled or "Transition Effect" is set to "Fade".',
+                'ml-slider'
+            ),
+            'value' => $this->slider->get_setting('direction'),
+            'options' => array(
+                'horizontal' => array(
+                    'label' => esc_html__(
+                        "Horizontal",
+                        "ml-slider"
+                    ),
+                    'class' => ''
+                ),
+                'vertical' => array(
+                    'label' => esc_html__(
+                        "Vertical",
+                        "ml-slider"
+                    ),
+                    'class' => ''
+                ),
+            )
+        ),
+        'easing' => array(
+            'priority' => 80,
+            'type' => 'select',
+            'label' => esc_html__("Image Animation", "ml-slider"),
+            'class' => 'option flex',
+            'helptext' => esc_html__(
+                'This feature adds gradual acceleration and deceleration to slide transitions, rather than abrupt starts and stops. This feature only works with the "Slide" Transition Effect.',
+                "ml-slider"
+            ),
+            'value' => $this->slider->get_setting('easing'),
+            'options' => $this->get_easing_options()
+        ),
+        'firstSlideFadeIn' => array(
+            'priority' => 90,
+            'type' => 'checkbox',
+            'label' => esc_html__("Fade In", "ml-slider"),
+            'class' => 'option flex',
+            'checked' => 'true' == $this->slider->get_setting(
+                'firstSlideFadeIn'
+            ) ? 'checked' : '',
+            'helptext' => esc_html__(
+                'This adds an animation when the slideshow loads. It only uses the "Fade" transition effect.',
+                "ml-slider"
+            ),
+        )
+    );
+
+    // Transition effects options
+    $aFields = apply_filters(
+        'metaslider_transition_settings',
+        $aFields,
+        $this->slider
+    );
+
+    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    echo $this->build_settings_rows($aFields);
             
-            <tr class="empty-row-spacing">
-                <td colspan="2"></td>
-            </tr>
-            <tr class="highlight">
-                <td colspan="2">
-                    <?php esc_html_e( 'Theme', 'ml-slider' ) ?>
-                </td>
-            </tr>
-            <tr class="empty-row-spacing">
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <metaslider-theme-viewer
-                            theme-directory-url="<?php
-                            echo esc_url(METASLIDER_THEMES_URL); ?>"
-                    ></metaslider-theme-viewer>
-                </td>
-            </tr>
-            <tr class="empty-row-spacing">
-                <td colspan="2"></td>
-            </tr>
-            
-<?php
     // Mobile options
     if ( !isset( $global_settings['mobileSettings'] ) 
         || ( isset( $global_settings['mobileSettings'] ) && true == $global_settings['mobileSettings'] )  
@@ -277,12 +448,16 @@
             'laptop' => isset( $default_settings['laptop'] ) ? (int) $default_settings['laptop'] : 1024,
             'desktop' => isset( $default_settings['desktop'] ) ? (int) $default_settings['desktop'] : 1440
         );
-
+        ?>
+        <tr class="empty-row-spacing mobileOptions">
+            <td colspan="2"></td>
+        </tr>
+        <?php
         $aFields = array(
             'advancedOptions' => array(
                 'priority' => 0,
                 'type' => 'highlight',
-                'value' => esc_html__( 'Mobile Options', 'ml-slider' )
+                'value' => esc_html__( 'Device Options', 'ml-slider' )
             ),
             'mobileArrows' => array(
                 'priority' => 1,
@@ -375,6 +550,55 @@
                         'helptext' => sprintf( 
                             __( 
                                 'When enabled this setting will hide the navigation on screen widths equal to or greater than %spx.', 
+                                'ml-slider'
+                            ), 
+                            $breakpoints['desktop'] 
+                        )
+                    ),
+                )
+            ),
+            'mobileSlideshow' => array(
+                'priority' => 3,
+                'type' => 'mobile',
+                'label' => __("Hide Slideshow On", "ml-slider"),
+                'options' => array(
+                    'smartphone' => array(
+                        'checked' => $this->slider->get_setting('mobileSlideshow_smartphone') == 'true' ? 'checked' : '',
+                        'helptext' => sprintf( 
+                            __( 
+                                'When enabled this setting will hide the slideshow on screen widths less than %spx.', 
+                                'ml-slider'
+                            ), 
+                            $breakpoints['tablet'] 
+                        )
+                    ),
+                    'tablet' => array(
+                        'checked' => $this->slider->get_setting('mobileSlideshow_tablet') == 'true' ? 'checked' : '',
+                        'helptext' => sprintf( 
+                            __( 
+                                'When enabled this setting will hide the slideshow on screen widths of %1$spx to %2$spx.', 
+                                'ml-slider'
+                            ), 
+                            $breakpoints['tablet'],
+                            $breakpoints['laptop'] - 1
+                        )
+                    ),
+                    'laptop' => array(
+                        'checked' => $this->slider->get_setting('mobileSlideshow_laptop') == 'true' ? 'checked' : '',
+                        'helptext' => sprintf( 
+                            __( 
+                                'When enabled this setting will hide the slideshow on screen widths of %1$spx to %2$spx.', 
+                                'ml-slider'
+                            ), 
+                            $breakpoints['laptop'],
+                            $breakpoints['desktop'] - 1
+                        )
+                    ),
+                    'desktop' => array(
+                        'checked' => $this->slider->get_setting('mobileSlideshow_desktop') == 'true' ? 'checked' : '',
+                        'helptext' => sprintf( 
+                            __( 
+                                'When enabled this setting will hide the slideshow on screen widths equal to or greater than %spx.', 
                                 'ml-slider'
                             ), 
                             $breakpoints['desktop'] 
@@ -478,8 +702,21 @@
                         'pauseText'
                     ) == 'false' ? '' : $this->slider->get_setting('pauseText')
                 ),
-                'loop' => array(
+                'hoverPause' => array(
                     'priority' => 25,
+                    'type' => 'checkbox',
+                    'label' => esc_html__("Hover Pause", "ml-slider"),
+                    'class' => 'option coin flex nivo responsive',
+                    'checked' => $this->slider->get_setting(
+                        'hoverPause'
+                    ) == 'true' ? 'checked' : '',
+                    'helptext' => esc_html__(
+                        "Pause the slideshow when hovering over slider, then resume when no longer hovering.",
+                        "ml-slider"
+                    )
+                ),
+                'loop' => array(
+                    'priority' => 26,
                     'type' => 'select',
                     'label' => __("Loop", "ml-slider"),
                     'class' => 'option flex nivo',
@@ -598,6 +835,14 @@
                         array(
                             'show' => 'carouselMargin',
                             'when' => true
+                        ),
+                        array(
+                            'show' => 'minItems', // Show Carousel items
+                            'when' => true // When carouselMode is true
+                        ),
+                        array(
+                            'show' => 'forceHeight', // Show Force height
+                            'when' => true // When carouselMode is true
                         )
                     )
                 ),
@@ -630,18 +875,34 @@
                     ),
                     'after' => esc_html__("px", "ml-slider")
                 ),
-                'firstSlideFadeIn' => array(
-                    'priority' => 47,
-                    'type' => 'checkbox',
-                    'label' => esc_html__("Fade In", "ml-slider"),
-                    'class' => 'option flex',
-                    'checked' => 'true' == $this->slider->get_setting(
-                        'firstSlideFadeIn'
-                    ) ? 'checked' : '',
+                'minItems' => array(
+                    'priority' => 46,
+                    'type' => 'number',
+                    'size' => 3,
+                    'min' => 1,
+                    'max' => 6,
+                    'step' => 1,
+                    'value' => $this->slider->get_setting('minItems'),
+                    'label' => esc_html__("Carousel Items", "ml-slider"),
+                    'class' => 'flex',
                     'helptext' => esc_html__(
-                        'This adds an animation when the slideshow loads. It only uses the "Fade" transition effect.',
+                        "Minimum number of slides to be displayed at once in carousel.",
                         "ml-slider"
                     ),
+                    'after' => ''
+                ),
+                'forceHeight' => array(
+                    'priority' => 48,
+                    'type' => 'checkbox',
+                    'label' => esc_html__("Force Height", "ml-slider"),
+                    'class' => 'option flex',
+                    'checked' => $this->slider->get_setting(
+                        'forceHeight'
+                    ) == 'true' ? 'checked' : '',
+                    'helptext' => esc_html__(
+                        "If the slideshow looks small, force slideshow height when using Carousel mode. Please note when is enabled slides may look cropped.",
+                        "ml-slider"
+                    )
                 ),
                 'random' => array(
                     'priority' => 50,
@@ -665,19 +926,6 @@
                     ),
                     'helptext' => esc_html__(
                         "Select the order in which slides appear in the slideshow. This impacts the frontend view.",
-                        "ml-slider"
-                    )
-                ),
-                'hoverPause' => array(
-                    'priority' => 60,
-                    'type' => 'checkbox',
-                    'label' => esc_html__("Hover Pause", "ml-slider"),
-                    'class' => 'option coin flex nivo responsive',
-                    'checked' => $this->slider->get_setting(
-                        'hoverPause'
-                    ) == 'true' ? 'checked' : '',
-                    'helptext' => esc_html__(
-                        "Pause the slideshow when hovering over slider, then resume when no longer hovering.",
                         "ml-slider"
                     )
                 ),
@@ -719,129 +967,6 @@
                         "Displays a visual indicator showing the time left before the next slide.",
                         "ml-slider"
                     )
-                ),
-                'delay' => array(
-                    'priority' => 85,
-                    'type' => 'number',
-                    'size' => 3,
-                    'min' => 500,
-                    'max' => 10000,
-                    'step' => 100,
-                    'value' => $this->slider->get_setting('delay'),
-                    'label' => esc_html__("Slide Delay", "ml-slider"),
-                    'class' => 'option coin flex responsive nivo',
-                    'helptext' => esc_html__(
-                        "How long to display each slide, in milliseconds.",
-                        "ml-slider"
-                    ),
-                    'after' => esc_html_x(
-                        "ms",
-                        "Short for milliseconds",
-                        "ml-slider"
-                    )
-                ),
-                'animationSpeed' => array(
-                    'priority' => 90,
-                    'type' => 'number',
-                    'size' => 3,
-                    'min' => 0,
-                    'max' => 2000,
-                    'step' => 100,
-                    'value' => $this->slider->get_setting('animationSpeed'),
-                    'label' => esc_html__("Transition Speed", "ml-slider"),
-                    'class' => 'option flex responsive nivo',
-                    'helptext' => esc_html__(
-                        'Choose the speed of the animation in milliseconds. You can select the animation in the "Effect" field.',
-                        'ml-slider'
-                    ),
-                    'after' => esc_html_x(
-                        "ms",
-                        "Short for milliseconds",
-                        "ml-slider"
-                    )
-                ),
-                'slices' => array(
-                    'priority' => 100,
-                    'type' => 'number',
-                    'size' => 3,
-                    'min' => 0,
-                    'max' => 20,
-                    'step' => 1,
-                    'value' => $this->slider->get_setting('slices'),
-                    'label' => esc_html__("Number of Slices", "ml-slider"),
-                    'class' => 'option nivo',
-                    'helptext' => esc_html__("Number of Slices", "ml-slider"),
-                ),
-                'spw' => array(
-                    'priority' => 110,
-                    'type' => 'number',
-                    'size' => 3,
-                    'min' => 0,
-                    'max' => 20,
-                    'step' => 1,
-                    'value' => $this->slider->get_setting('spw'),
-                    'label' => esc_html__(
-                            "Number of Squares",
-                            "ml-slider"
-                        ) . " (" . esc_html__("Width", "ml-slider") . ")",
-                    'class' => 'option nivo',
-                    'helptext' => esc_html__("Number of squares", "ml-slider"),
-                    'after' => ''
-                ),
-                'sph' => array(
-                    'priority' => 120,
-                    'type' => 'number',
-                    'size' => 3,
-                    'min' => 0,
-                    'max' => 20,
-                    'step' => 1,
-                    'value' => $this->slider->get_setting('sph'),
-                    'label' => esc_html__(
-                            "Number of Squares",
-                            "ml-slider"
-                        ) . " (" . esc_html__("Height", "ml-slider") . ")",
-                    'class' => 'option nivo',
-                    'helptext' => esc_html__("Number of squares", "ml-slider"),
-                    'after' => ''
-                ),
-                'direction' => array(
-                    'priority' => 130,
-                    'type' => 'select',
-                    'label' => esc_html__("Slide Direction", "ml-slider"),
-                    'class' => 'option flex',
-                    'helptext' => esc_html__(
-                        'Select the direction that slides will move. Vertical will not work if "Carousel mode" is enabled or "Transition Effect" is set to "Fade".',
-                        'ml-slider'
-                    ),
-                    'value' => $this->slider->get_setting('direction'),
-                    'options' => array(
-                        'horizontal' => array(
-                            'label' => esc_html__(
-                                "Horizontal",
-                                "ml-slider"
-                            ),
-                            'class' => ''
-                        ),
-                        'vertical' => array(
-                            'label' => esc_html__(
-                                "Vertical",
-                                "ml-slider"
-                            ),
-                            'class' => ''
-                        ),
-                    )
-                ),
-                'easing' => array(
-                    'priority' => 140,
-                    'type' => 'select',
-                    'label' => esc_html__("Image Animation", "ml-slider"),
-                    'class' => 'option flex',
-                    'helptext' => esc_html__(
-                        'This feature adds gradual acceleration and deceleration to slide transitions, rather than abrupt starts and stops. This feature only works with the "Slide" Transition Effect.',
-                        "ml-slider"
-                    ),
-                    'value' => $this->slider->get_setting('easing'),
-                    'options' => $this->get_easing_options()
                 ),
                 'prevText' => array(
                     'priority' => 150,

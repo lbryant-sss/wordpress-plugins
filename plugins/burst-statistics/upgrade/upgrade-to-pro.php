@@ -24,11 +24,20 @@ if ( ! class_exists( 'burst_upgrade_to_pro' ) ) {
 		private $dashboard_url;
 		private $instructions;
 		private $account_url;
-
+        private $known_plugins = [
+            'burst_pro',
+        ];
 		/**
 		 * Class constructor.
 		 */
 		public function __construct() {
+            if ( !isset($_GET['license'], $_GET['item_id'], $_GET['plugin']) || (isset($_GET['install_pro']) && $_GET['install_pro'] !== 'true') ) {
+                return;
+            }
+
+            if ( !in_array($_GET['plugin'], $this->known_plugins ) ) {
+                return;
+            }
 
 			if ( isset( $_GET['license'] ) ) {
 				$this->license = sanitize_title( $_GET['license'] );
@@ -357,6 +366,10 @@ if ( ! class_exists( 'burst_upgrade_to_pro' ) ) {
 			$response = array(
 				'success' => false,
 			);
+
+            if ( empty($this->slug) ) {
+                $error = true;
+            }
 
 			if ( ! isset( $_GET['token'] ) || ! burst_verify_nonce( $_GET['token'], 'upgrade_to_pro_nonce' ) ) {
 				$error = true;

@@ -9,12 +9,12 @@ const ScHeading = class {
         this.size = 'medium';
     }
     render() {
-        return (h("div", { key: '09047c0bbf108f16b1439c15f7d359fa3d6fac7c', part: "base", class: {
+        return (h("div", { key: '1211cf08fc5b135b73d756d166040975bf72234a', part: "base", class: {
                 'heading': true,
                 'heading--small': this.size === 'small',
                 'heading--medium': this.size === 'medium',
                 'heading--large': this.size === 'large',
-            } }, h("div", { key: '2460b2388cd79f9c2697a80fcec2a7c3d0f3dc7e', class: { heading__text: true } }, h("div", { key: '97191bba70ddc15e2f96061ecab6950e595ac2e2', class: "heading__title", part: "title" }, h("slot", { key: 'ba9b432499a9c8edeb976699a901b76fcd79971c' })), h("div", { key: '7d3e9cac2a2b012e5d34b439ebcb7b8aaf2ea6c1', class: "heading__description", part: "description" }, h("slot", { key: '1c05640c30a1143acb23a9c286749bac9ab49f9a', name: "description" }))), h("slot", { key: '415e9766f9d7ffe294397df29dc18b1f093ac678', name: "end" })));
+            } }, h("div", { key: 'a4865e2fa2765c827d7e4310344b03bfbfeb6768', class: { heading__text: true } }, h("div", { key: '8d2be6d0aeb80c54809d8289f48107c47dbf4376', class: "heading__title", part: "title" }, h("slot", { key: '5d94fce9c489f05d83b47cdfa6be08477636c0e2' })), h("div", { key: 'bc7679e5d03740b2d72c405bab7eac10456a4ba0', class: "heading__description", part: "description" }, h("slot", { key: '2b52741b6e98c42688bce72f89a01dfd4429ba3c', name: "description" }))), h("slot", { key: '13a14d39e385af1ee47346d9b8f7f92d816f88f9', name: "end" })));
     }
     get el() { return getElement(this); }
 };

@@ -5,24 +5,16 @@ export declare class ScOrderShippingAddress {
     label: string;
     /** Is this required (defaults to false) */
     required: boolean;
-    /** Show the   address */
+    /** Show the address */
     full: boolean;
     /** Show the name field. */
     showName: boolean;
-    /** Show the placeholder fields. */
-    namePlaceholder: string;
-    countryPlaceholder: string;
-    cityPlaceholder: string;
-    line1Placeholder: string;
-    line2Placeholder: string;
-    postalCodePlaceholder: string;
-    statePlaceholder: string;
     /** Default country for address */
     defaultCountry: string;
+    /** Show the line 2 field. */
+    showLine2: boolean;
     /** Whether to require the name in the address */
     requireName: boolean;
-    /** Placeholder values. */
-    placeholders: Partial<Address>;
     /** Address to pass to the component */
     address: Partial<Address>;
     /** Names for the address */

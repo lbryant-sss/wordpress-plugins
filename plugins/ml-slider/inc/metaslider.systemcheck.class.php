@@ -103,7 +103,11 @@ return;
      */
     private function checkWordPressVersion()
     {
-        if (isset($this->options['wordPressVersion']) && $this->options['wordPressVersion']  === false) {
+        if (!isset($this->options['wordPressVersion']) || !is_bool($this->options['wordPressVersion'])) {
+            $this->options['wordPressVersion'] = null;
+        }
+
+        if ($this->options['wordPressVersion'] === true) {
             return;
         }
 
@@ -111,7 +115,7 @@ return;
             $error = "MetaSlider requires WordPress 3.5 or above. Please upgrade your WordPress installation.";
             $this->printMessage($error, 'wordPressVersion');
         } else {
-            $this->options['wordPressVersion'] = false;
+            $this->options['wordPressVersion'] = true;
         }
     }
 

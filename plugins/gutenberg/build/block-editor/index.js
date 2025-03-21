@@ -24631,7 +24631,8 @@ const MediaReplaceFlow = ({
             url
           }) => {
             onSelectURL(url);
-          }
+          },
+          searchInputPlaceholder: (0,external_wp_i18n_namespaceObject.__)('Paste or type URL')
         })]
       })]
     })
@@ -26620,7 +26621,7 @@ function renderShadowToggle(shadow, onShadowChange) {
     const shadowButtonRef = (0,external_wp_element_namespaceObject.useRef)(undefined);
     const toggleProps = {
       onClick: onToggle,
-      className: dist_clsx({
+      className: dist_clsx('block-editor-global-styles__shadow-dropdown-toggle', {
         'is-open': isOpen
       }),
       'aria-expanded': isOpen,
@@ -32713,7 +32714,7 @@ const scrollContainerCache = new WeakMap();
  * @param {Object} contentRef
  */
 function usePopoverScroll(contentRef) {
-  return (0,external_wp_compose_namespaceObject.useRefEffect)(node => {
+  const effect = (0,external_wp_compose_namespaceObject.useRefEffect)(node => {
     function onWheel(event) {
       const {
         deltaX,
@@ -32737,6 +32738,7 @@ function usePopoverScroll(contentRef) {
       node.removeEventListener('wheel', onWheel, options);
     };
   }, [contentRef]);
+  return contentRef ? effect : null;
 }
 /* harmony default export */ const use_popover_scroll = (usePopoverScroll);
 
@@ -34197,7 +34199,7 @@ const renderToggle = (duotone, resetDuotone) => ({
   const duotoneButtonRef = (0,external_wp_element_namespaceObject.useRef)(undefined);
   const toggleProps = {
     onClick: onToggle,
-    className: dist_clsx({
+    className: dist_clsx('block-editor-global-styles-filters-panel__dropdown-toggle', {
       'is-open': isOpen
     }),
     'aria-expanded': isOpen,
@@ -69595,14 +69597,11 @@ function VariationsDropdown({
     toggleProps: {
       iconPosition: 'right'
     },
-    children: () => /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("div", {
-      className: `${className}__container`,
-      children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.MenuGroup, {
-        children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.MenuItemsChoice, {
-          choices: selectOptions,
-          value: selectedValue,
-          onSelect: onSelectVariation
-        })
+    children: () => /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.MenuGroup, {
+      children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.MenuItemsChoice, {
+        choices: selectOptions,
+        value: selectedValue,
+        onSelect: onSelectVariation
       })
     })
   });

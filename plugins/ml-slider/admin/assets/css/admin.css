@@ -1492,6 +1492,61 @@ input.no_last_pass {
     height: 150px;
 }
 
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+.shortcode-modal {
+	background: #fff;
+	border: 1px solid #ccc;
+	box-shadow: 0 0 10px rgba(0,0,0,.2);
+	display: none;
+	left: 50%;
+	max-width: 500px;
+	min-width: 300px;
+	padding: 20px;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width: 400px;
+	z-index: 1000;
+	max-height: 400px;
+	overflow: auto;
+}
+.shortcode-modal .modal-content {
+    position: relative;
+    padding: 10px;
+}
+.shortcode-modal .close-modal {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}
+.shortcode-modal ul {
+	list-style: disc;
+	padding-left: 20px;
+}
+.shortcode-modal li {
+	margin: 0;
+	font-size: 14px;
+	line-height: 21px;
+}
+.shortcode-modal h5 {
+	margin: 10px 0 0 0;
+	text-transform: uppercase;
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+
 /* Force CSS properties overriden by core for .form-select class */
 .form-select--forced {
     background-color: #fff !important;
@@ -1749,6 +1804,10 @@ td .dot.available {
                 }
             }
 
+            &.customizer-slide {
+                display: none !important;
+            }
+            
             td {
                 padding-left: 10px;
                 padding-right: 10px;

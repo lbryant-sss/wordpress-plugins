@@ -54,12 +54,12 @@ const ScCartButton = class {
         this.link.style.display = !this.cartMenuAlwaysShown && !this.getItemsCount() ? 'none' : null;
     }
     render() {
-        return (index.h(index.Host, { key: 'fe2b06b4a11e223d228511ba7529f9071c38f009', tabindex: 0, role: "button", "aria-label": wp.i18n.sprintf(wp.i18n.__('Open Cart Menu Icon with %d items.', 'surecart'), this.getItemsCount()), onKeyDown: e => {
+        return (index.h(index.Host, { key: 'adc63fe4d1e627e4c184b986f13bdf291f064011', tabindex: 0, role: "button", "aria-label": wp.i18n.sprintf(wp.i18n.__('Open Cart Menu Icon with %d items.', 'surecart'), this.getItemsCount()), onKeyDown: e => {
                 if ('Enter' === (e === null || e === void 0 ? void 0 : e.code) || 'Space' === (e === null || e === void 0 ? void 0 : e.code)) {
                     mutations.store.state.cart = { ...mutations.store.state.cart, open: !mutations.store.state.cart.open };
                     e.preventDefault();
                 }
-            } }, index.h("div", { key: '30406c99d087f0583c2247d4abc6b3ca761a0e96', class: "cart__button", part: "base" }, index.h("div", { key: '4d034690df33d86f28c81f48615854a7cbf08bff', class: "cart__content" }, (this.showEmptyCount || !!this.getItemsCount()) && (index.h("span", { key: 'd8976c4ba9241d68e9f4096ce814c22184ce7d3e', class: "cart__count", part: "count" }, this.getItemsCount())), index.h("div", { key: '589862869afe9310c7d30845d682025717a8a993', class: "cart__icon" }, index.h("slot", { key: '2f37ee5cdee8f20343d6f9f4187cce61c13ef50f' }))))));
+            } }, index.h("div", { key: 'a7669076ea83cee77624e9d09387521ffbbe5a9e', class: "cart__button", part: "base" }, index.h("div", { key: '7da1e1a9201cf135949f6e0e085580986349ccf7', class: "cart__content" }, (this.showEmptyCount || !!this.getItemsCount()) && (index.h("span", { key: 'af60480dc62c9f622766a877060651eb02118050', class: "cart__count", part: "count" }, this.getItemsCount())), index.h("div", { key: 'f774fe1e03ba7952e7b0548103d827cfe8c8eb3d', class: "cart__icon" }, index.h("slot", { key: 'a00308edf6ac846a577d625b37e61a7e7b854cc5' }))))));
     }
     get el() { return index.getElement(this); }
 };

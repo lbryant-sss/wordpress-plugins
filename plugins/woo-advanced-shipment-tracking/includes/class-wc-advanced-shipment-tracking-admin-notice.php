@@ -16,7 +16,7 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 	 * Initialize the main plugin function
 	*/
 	public function __construct() {
-		$this->init();	
+		$this->init();
 	}
 
 	/**
@@ -54,15 +54,23 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 	* init from parent mail class
 	*/
 	public function init() {
+		
+		add_action( 'admin_init', array( $this, 'ast_pro_notice_ignore_cb' ) );
 
-		// add_action( 'ast_settings_admin_notice', array( $this, 'ast_settings_admin_notice' ) );
+		$page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : '';
 
-		add_action( 'admin_notices', array( $this, 'ast_trackship_notice' ) );	
-		add_action( 'admin_init', array( $this, 'ast_trackship_notice_ignore' ) );
+		if ( 'woocommerce-advanced-shipment-tracking' != $page ) {
+			// Shipping Integration Notice
+			add_action( 'admin_notices', array( $this, 'ast_admin_notice_shipping_integration' ) );
+			
+			// AST PRO Notice
+			add_action( 'admin_notices', array( $this, 'ast_pro_admin_notice' ) );
+			
+			// Trackship Notice
+			add_action( 'admin_notices', array( $this, 'ast_pro_trackship_notice' ) );
+		}
 
-		add_action( 'admin_notices', array( $this, 'ast_admin_notice_shipping_integration' ) );	
-		add_action( 'admin_init', array( $this, 'ast_pro_shipping_integration_notice_ignore' ) );
-
+		// AST PRO Notice
 		add_shortcode( 'ast_settings_admin_notice', array( $this, 'ast_settings_admin_notice' ) );
 	}
 
@@ -82,34 +90,138 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 	 * Display admin notice for missing shipping integration
 	 */
 	public function ast_settings_admin_notice() {
-		// Only show the notice if no shipping plugins are active AND it's before or on March 15, 2025
-		if ( $this->is_any_shipping_plugin_active() && strtotime('now') > strtotime('2025-03-15') ) {
-			ob_start();
+		// Only show the notice if no shipping plugins are active AND it's before or on April 15, 2025
+		ob_start();
+		if ( $this->is_any_shipping_plugin_active() && strtotime('now') > strtotime('2025-04-15') ) {
 			include 'views/admin_message_panel.php';
-			return ob_get_clean();
 		} else if ( ! $this->is_any_shipping_plugin_active() ) {
-			ob_start();
 			include 'views/admin_message_panel.php';
-			return ob_get_clean();
+		}
+		return ob_get_clean();
+	}
+
+	/*
+	* Display admin notice on plugin install or update
+	*/
+	public function ast_pro_trackship_notice() {
+		
+		// Check if the date is past April 15, 2025
+		if ( strtotime( 'now' ) > strtotime( '2025-04-15' ) ) {
+			return;
+		}
+		
+		if ( function_exists( 'trackship_for_woocommerce' ) ) {
+			return;
+		}
+		
+		if ( get_option('ts4wc_notice_ignore_377') ) {
+			return;
+		}	
+
+		if ( !get_option( 'integration_notice_ignore_377' ) && !get_option('ast_pro_update_ignore_377') ) {
+			return;
+		}
+		
+		$nonce = wp_create_nonce('ast_pro_dismiss_notice');
+		$dismissable_url = esc_url(add_query_arg(['ts4wc-notice' => 'true', 'nonce' => $nonce]));
+
+		?>
+		<style>
+		.wp-core-ui .notice.trackship-dismissable-notice{
+			position: relative;
+			padding-right: 38px;
+			border-left-color: #005B9A;
+		}
+		.wp-core-ui .notice.trackship-dismissable-notice h3{
+			margin-bottom: 5px;
+		} 
+		.wp-core-ui .notice.trackship-dismissable-notice a.notice-dismiss{
+			padding: 9px;
+			text-decoration: none;
+		} 
+		.wp-core-ui .button-primary.trackship_notice_btn {
+			background: #005B9A;
+			color: #fff;
+			border-color: #005B9A;
+			text-transform: uppercase;
+			padding: 0 11px;
+			font-size: 12px;
+			height: 30px;
+			line-height: 28px;
+			margin: 5px 0 15px;
+		}
+		.trackship-dismissable-notice strong{
+			font-weight:bold;
+		}
+		</style>
+		<div class="notice updated notice-success trackship-dismissable-notice">
+			<a href="<?php esc_html_e( $dismissable_url ); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
+			<h2>🚀 Provide seamless experience from Shipping to Delivery! 🎉</h2>
+			<p><a href="https://wordpress.org/plugins/trackship-for-woocommerce/" target="_blank">TrackShip for WooCommerce</a> automates tracking from shipping to delivery, saving you time and reducing customer service costs:</p>
+			<ul>
+				<li>🔹Automatically track all shipments and keep customers informed.</li>
+				<li>🔹Create a seamless branded tracking experience to boost engagement.</li>
+				<li>🔹Reduce "Where is my order?" support tickets with real-time updates.</li>
+			</ul>
+			<p><strong>Special Offer:</strong> Get <strong>50% OFF</strong> your first three months with coupon code <strong>TRACKSHIP503M</strong>(Valid until April 15)</p>
+			<a class="button-primary trackship_notice_btn" target="blank" href="https://my.trackship.com/settings/#billing">Upgrade Now & Save 50%</a>
+			<a class="button-primary trackship_notice_btn" href="<?php esc_html_e( $dismissable_url ); ?>">Dismiss</a>
+		</div>	
+		<?php
+	}
+
+	/*
+	* Dismiss admin notice for trackship
+	*/
+	public function ast_pro_notice_ignore_cb() {
+		if ( isset( $_GET['ts4wc-notice'] ) ) {
+			if (isset($_GET['nonce'])) {
+				$nonce = sanitize_text_field($_GET['nonce']);
+				if (wp_verify_nonce($nonce, 'ast_pro_dismiss_notice')) {
+					update_option('ts4wc_notice_ignore_377', 'true');
+				}
+			}
+		}
+
+		if ( isset( $_GET['ast-pro-update-notice'] ) ) {
+			if (isset($_GET['nonce'])) {
+				$nonce = sanitize_text_field($_GET['nonce']);
+				if (wp_verify_nonce($nonce, 'ast_pro_dismiss_notice')) {
+					update_option('ast_pro_update_ignore_377', 'true');
+				}
+			}
+		}
+
+		if ( isset( $_GET['integration-pro-ignore'] ) ) {
+			if (isset($_GET['nonce'])) {
+				$nonce = sanitize_text_field($_GET['nonce']);
+				if (wp_verify_nonce($nonce, 'ast_pro_dismiss_notice')) {
+					update_option('integration_notice_ignore_377', 'true');
+				}
+			}
 		}
 	}
 
 	/*
 	* Display admin notice on plugin install or update
 	*/
-	public function ast_trackship_notice() { 		
+	public function ast_pro_admin_notice() {
 		
-		$ts4wc_installed = ( function_exists( 'trackship_for_woocommerce' ) ) ? true : false;
-		if ( $ts4wc_installed ) {
+		// Check if the date is past April 15, 2025
+		if ( strtotime( 'now' ) > strtotime( '2025-04-15' ) ) {
 			return;
 		}
 		
-		if ( get_option('ast_trackship_notice_ignore') ) {
+		if ( get_option('ast_pro_update_ignore_377') ) {
 			return;
-		}	
+		}
+
+		if ( $this->is_any_shipping_plugin_active() ) {
+			return;
+		}
 		
-		$nonce = wp_create_nonce('ast_trackship_dismiss_notice');
-		$dismissable_url = esc_url(add_query_arg(['ast-trackship-notice' => 'true', 'nonce' => $nonce]));
+		$nonce = wp_create_nonce('ast_pro_dismiss_notice');
+		$dismissable_url = esc_url(add_query_arg(['ast-pro-update-notice' => 'true', 'nonce' => $nonce]));
 
 		?>
 		<style>		
@@ -134,48 +246,35 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 			font-size: 12px;
 			height: 30px;
 			line-height: 28px;
-			margin: 5px 0 15px;
+			margin: 5px 0 0px;
+		}
+		.ast-dismissable-notice strong{
+			font-weight:bold;
 		}
 		</style>
-		<div class="notice updated notice-success ast-dismissable-notice">			
-			<a href="<?php esc_html_e( $dismissable_url ); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>			
-			<h3>Supercharge Customer Experience!</h3>
-			<p>Enhance your WooCommerce store with TrackShip's powerful shipment tracking features! Streamline your post-purchase experience, reduce customer inquiries, boost customer satisfaction and build long lasting relationships with your customers</p>				
+		<div class="notice updated notice-success ast-dismissable-notice">
+			<a href="<?php esc_html_e( $dismissable_url ); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
+			<h2>🚀 Upgrade to Automate Your Shipping Workflow! 🎉</h2>
+			<p>Streamline your fulfillment process with the <strong>Advanced Shipment Tracking Pro</strong> and save time on daily shipping tasks. Automate the order fulfillment with integration with <strong>20+ shipping services</strong>, and manage all shipments in Woo from a centralized dashboard.</p>
 			
-			<a class="button-primary ast_notice_btn" target="blank" href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=search&s=TrackShip For WooCommerce&plugin-search-input=Search+Plugins' ) ); ?>">Install TrackShip for WooCommerce</a>
-			<a class="button-primary ast_notice_btn" href="<?php esc_html_e( $dismissable_url ); ?>">Dismiss</a>				
-		</div>	
-		<?php 				
-	}	
-	
-	/*
-	* Dismiss admin notice for trackship
-	*/
-	public function ast_trackship_notice_ignore() {
-		if ( isset( $_GET['ast-trackship-notice'] ) ) {
-			
-			if (isset($_GET['nonce'])) {
-				$nonce = sanitize_text_field($_GET['nonce']);
-				if (wp_verify_nonce($nonce, 'ast_trackship_dismiss_notice')) {
-					update_option('ast_trackship_notice_ignore', 'true');
-				}
-			}
-			
-		}
+			<p><strong>Get 20% Off*!</strong> Use code <strong>ASTPRO20</strong> at checkout.</p>
+			<a class="button-primary ast_notice_btn" target="blank" href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=search&s=TrackShip For WooCommerce&plugin-search-input=Search+Plugins' ) ); ?>">Upgrade Now</a>
+			<a class="button-primary ast_notice_btn" href="<?php esc_html_e( $dismissable_url ); ?>">Dismiss</a>
+			<p><strong>★</strong> for new customers only</p>
+		</div>
+		<?php
 	}
 
-	
 	/**
 	 * Display admin notice on plugin install or update
 	 */
 	public function ast_admin_notice_shipping_integration() {
 
-		if ( get_option( 'ast_pro_shipping_integration_notice_ignore' ) ) {
+		// Check if the date is past April 15, 2025
+		if ( strtotime( 'now' ) > strtotime( '2025-04-15' ) ) {
 			return;
 		}
-
-		// Check if the date is past March 15, 2025
-		if ( strtotime( 'now' ) > strtotime( '2025-03-15' ) ) {
+		if ( get_option( 'integration_notice_ignore_377' ) || !$this->is_any_shipping_plugin_active() ) {
 			return;
 		}
 
@@ -191,16 +290,16 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 	 * Display AST PRO upgrade notice
 	 */
 	private function display_ast_pro_notice( $service_name ) {
-
-		// Check if the date is past March 15, 2025
-		if ( strtotime( 'now' ) > strtotime( '2025-03-15' ) ) {
+		// Check if the date is past April 15, 2025
+		if ( strtotime( 'now' ) > strtotime( '2025-04-15' ) ) {
 			return;
 		}
 		
 		$nonce = wp_create_nonce('ast_pro_dismiss_notice');
-		$dismissable_url = esc_url(add_query_arg(['ast-pro-notice' => 'true', 'nonce' => $nonce]));
+		$dismissable_url = esc_url(add_query_arg(['integration-pro-ignore' => 'true', 'nonce' => $nonce]));
 
-		echo '<style>
+		?>
+		<style>
 		.wp-core-ui .notice.ast-dismissable-notice {
 			position: relative;
 			padding-right: 38px;
@@ -213,7 +312,7 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 			padding: 9px;
 			text-decoration: none;
 		}
-		.wp-core-ui .button-primary.ast_notice_btn {
+		.wp-core-ui .button-primary.ast_intigration_btn {
 			background: #005B9A;
 			color: #fff;
 			border-color: #005B9A;
@@ -224,40 +323,24 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 			line-height: 28px;
 			margin: 5px 0 15px;
 		}
-		</style>';
-		
-		echo '<div class="notice updated notice-success ast-dismissable-notice">  
+		.ast-dismissable-notice strong{
+			font-weight: bold;
+		}
+		</style>
+		<div class="notice updated notice-success ast-dismissable-notice">
+			<a href="<?php esc_html_e($dismissable_url); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a> 
 			<h3><strong>🚀 Automate Your WooCommerce Order Fulfillment with AST PRO! 🎉</strong></h3>
-			<p>You\'re using <strong>' . esc_html($service_name) . '</strong>, and with <strong>AST PRO</strong> you can streamline your order fulfillment process by automatically adding tracking information and marking orders as fulfilled—saving you time and effort.</p>
+			<p>You are using <strong><?php esc_html($service_name); ?></strong>, and with <strong>AST PRO</strong> you can streamline your order fulfillment process by automatically adding tracking information and marking orders as fulfilled—saving you time and effort.</p>
 			<ul>
 				<li>✅ Auto-add tracking details to orders</li>
 				<li>✅ Mark orders as fulfilled instantly</li>
 				<li>✅ Eliminate manual updates & reduce errors</li>
 			</ul>
 			<p>🔥 Limited-Time Offer: Use code <strong>ASTPRO30</strong> to save 30% on your upgrade!</p>
-			<p>⏳ Hurry! Offer valid until <strong>March 15, 2025.</strong></p>
-			<a href="https://www.zorem.com/product/woocommerce-advanced-shipment-tracking/" class="button button-primary ast_notice_btn">👉 Upgrade Now</a>
-			<a class="button-primary ast_notice_btn" href="' . esc_url($dismissable_url) . '">Not interested</a>
-		</div>';
+			<p>⏳ Hurry! Offer valid until <strong>April 15, 2025.</strong></p>
+			<a href="https://www.zorem.com/product/woocommerce-advanced-shipment-tracking/" class="button button-primary ast_intigration_btn">👉 Upgrade Now</a>
+			<a class="button-primary ast_intigration_btn" href="<?php esc_html_e($dismissable_url); ?>">Not interested</a>
+		</div>
+		<?php
 	}
-
-	/*
-	* Dismiss admin notice for trackship
-	*/
-	public function ast_pro_shipping_integration_notice_ignore() {
-		if ( isset( $_GET['ast-pro-notice'] ) ) {
-			// if (isset($_GET['nonce']) && wp_verify_nonce($_GET['nonce'], 'ast_pro_dismiss_notice')) {
-			// 	update_option( 'ast_pro_shipping_integration_notice_ignore', 'true' );
-			// }
-			
-			if (isset($_GET['nonce'])) {
-				$nonce = sanitize_text_field($_GET['nonce']);
-				if (wp_verify_nonce($nonce, 'ast_pro_dismiss_notice')) {
-					update_option('ast_pro_shipping_integration_notice_ignore', 'true');
-				}
-			}
-			
-		}
-	}
-
 }

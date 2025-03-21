@@ -109,19 +109,21 @@ const ScCompactAddress = class {
         return reportChildrenValidity(this.el);
     }
     getStatePlaceholder() {
-        var _a, _b;
+        var _a, _b, _c;
         if ((_a = this.placeholders) === null || _a === void 0 ? void 0 : _a.state)
             return this.placeholders.state;
-        if (((_b = this.address) === null || _b === void 0 ? void 0 : _b.country) === 'US')
+        if (((_b = this.address) === null || _b === void 0 ? void 0 : _b.country) === 'CA')
+            return wp.i18n.__('Province', 'surecart');
+        if (((_c = this.address) === null || _c === void 0 ? void 0 : _c.country) === 'US')
             return wp.i18n.__('State', 'surecart');
         return wp.i18n.__('Province/Region', 'surecart');
     }
     render() {
         var _a, _b, _c, _d, _e;
-        return (h("div", { key: '9df18b242c2609f8c0728d28839e8e16a705276f', class: "sc-address", part: "base" }, h("sc-form-control", { key: 'd807585c658c0618f98f5f63cede12813714b871', exportparts: "label, help-text, form-control", label: this.label, class: "sc-address__control", part: "control", required: this.required }, h("sc-select", { key: 'a6db6c7ab449b1c246d28168c9557162ab41dc0a', exportparts: "base:select__base, input, form-control, label, help-text, trigger, panel, caret, search__base, search__input, search__form-control, menu__base, spinner__base, empty", value: (_a = this.address) === null || _a === void 0 ? void 0 : _a.country, onScChange: (e) => {
+        return (h("div", { key: '0b27cd5e6995493bc2f8704327cc5c33c39a6cb1', class: "sc-address", part: "base" }, h("sc-form-control", { key: 'a020ea376faa5a2248c8f7a71884769f1c2a6f76', exportparts: "label, help-text, form-control", label: this.label, class: "sc-address__control", part: "control", required: this.required }, h("sc-select", { key: 'acdc5a07f0a4645bba7cf5c258309c9a2e039819', exportparts: "base:select__base, input, form-control, label, help-text, trigger, panel, caret, search__base, search__input, search__form-control, menu__base, spinner__base, empty", value: (_a = this.address) === null || _a === void 0 ? void 0 : _a.country, onScChange: (e) => {
                 this.clearAddress();
                 this.updateAddress({ country: e.target.value || null });
-            }, choices: this.countryChoices, autocomplete: 'country-name', placeholder: ((_b = this.placeholders) === null || _b === void 0 ? void 0 : _b.country) || wp.i18n.__('Select Your Country', 'surecart'), name: this.names.country, search: true, unselect: false, "squared-bottom": this.showState || this.showPostal, required: this.required }), h("div", { key: 'fc6fd8cf9a5ac9b51673dff0a76bfe2a9e6b714c', class: "sc-address__columns" }, this.showState && (h("sc-select", { key: '445bdefeecfb28f037f8e2e6d61ced7be18b5d05', exportparts: "base:select__base, input, form-control, label, help-text, trigger, panel, caret, search__base, search__input, search__form-control, menu__base, spinner__base, empty", placeholder: this.getStatePlaceholder(), name: this.names.state, autocomplete: 'address-level1', value: (_c = this === null || this === void 0 ? void 0 : this.address) === null || _c === void 0 ? void 0 : _c.state, onScChange: (e) => this.updateAddress({ state: e.target.value || null }), choices: this.regions, required: this.required, search: true, "squared-top": true, unselect: false, "squared-right": this.showPostal })), this.showPostal && (h("sc-input", { key: '816268c99cb225841fc0bb073548068afecc91c6', exportparts: "base:input__base, input, form-control, label, help-text", placeholder: ((_d = this.placeholders) === null || _d === void 0 ? void 0 : _d.postal_code) || wp.i18n.__('Postal Code/Zip', 'surecart'), name: this.names.postal_code, onScChange: (e) => this.updateAddress({ postal_code: e.target.value || null }), onScInput: (e) => this.handleAddressInput({ name: e.target.value || null }), autocomplete: 'postal-code', required: this.required, value: (_e = this === null || this === void 0 ? void 0 : this.address) === null || _e === void 0 ? void 0 : _e.postal_code, "squared-top": true, maxlength: 5, "squared-left": this.showState })))), this.loading && h("sc-block-ui", { key: 'a1336bb9bfe0b15ceeb778aed09bec804c7c62ac', exportparts: "base:block-ui, content:block-ui__content" })));
+            }, choices: this.countryChoices, autocomplete: 'country-name', placeholder: ((_b = this.placeholders) === null || _b === void 0 ? void 0 : _b.country) || wp.i18n.__('Select Your Country', 'surecart'), name: this.names.country, search: true, unselect: false, "squared-bottom": this.showState || this.showPostal, required: this.required }), h("div", { key: '3b0e404cd9530252aa968c091abcab3f18359b56', class: "sc-address__columns" }, this.showState && (h("sc-select", { key: '8cf5cd0e0f3819bd220efafeda66b46caafa377f', exportparts: "base:select__base, input, form-control, label, help-text, trigger, panel, caret, search__base, search__input, search__form-control, menu__base, spinner__base, empty", placeholder: this.getStatePlaceholder(), name: this.names.state, autocomplete: 'address-level1', value: (_c = this === null || this === void 0 ? void 0 : this.address) === null || _c === void 0 ? void 0 : _c.state, onScChange: (e) => this.updateAddress({ state: e.target.value || null }), choices: this.regions, required: this.required, search: true, "squared-top": true, unselect: false, "squared-right": this.showPostal })), this.showPostal && (h("sc-input", { key: '4672c4cf13675c2204443b1485025486cce2e6d1', exportparts: "base:input__base, input, form-control, label, help-text", placeholder: ((_d = this.placeholders) === null || _d === void 0 ? void 0 : _d.postal_code) || wp.i18n.__('Postal Code/Zip', 'surecart'), name: this.names.postal_code, onScChange: (e) => this.updateAddress({ postal_code: e.target.value || null }), onScInput: (e) => this.handleAddressInput({ name: e.target.value || null }), autocomplete: 'postal-code', required: this.required, value: (_e = this === null || this === void 0 ? void 0 : this.address) === null || _e === void 0 ? void 0 : _e.postal_code, "squared-top": true, maxlength: 5, "squared-left": this.showState })))), this.loading && h("sc-block-ui", { key: 'c2d43b5f64921e76228da469a326906b4fb42d99', exportparts: "base:block-ui, content:block-ui__content" })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {
@@ -328,12 +330,6 @@ const ScOrderBillingAddress = class {
         this.label = undefined;
         this.showName = undefined;
         this.namePlaceholder = wp.i18n.__('Name or Company Name', 'surecart');
-        this.countryPlaceholder = wp.i18n.__('Country', 'surecart');
-        this.cityPlaceholder = wp.i18n.__('City', 'surecart');
-        this.line1Placeholder = wp.i18n.__('Address', 'surecart');
-        this.line2Placeholder = wp.i18n.__('Address Line 2', 'surecart');
-        this.postalCodePlaceholder = wp.i18n.__('Postal Code/Zip', 'surecart');
-        this.statePlaceholder = wp.i18n.__('State/Province/Region', 'surecart');
         this.defaultCountry = undefined;
         this.toggleLabel = wp.i18n.__('Billing address is same as shipping', 'surecart');
         this.address = {
@@ -401,17 +397,9 @@ const ScOrderBillingAddress = class {
     }
     render() {
         var _a, _b;
-        return (h(Fragment, { key: '77e7bb05d506d9d884773382b8dc3a6416eecd47' }, this.shippingAddressFieldExists() && (h("sc-checkbox", { key: 'd01d4908f3ab9495b9dfb463a6a0578373f7a439', class: "order-billing-address__toggle", onScChange: e => this.onToggleBillingMatchesShipping(e), checked: (_a = state.checkout) === null || _a === void 0 ? void 0 : _a.billing_matches_shipping }, this.toggleLabel)), (!this.shippingAddressFieldExists() || !((_b = state.checkout) === null || _b === void 0 ? void 0 : _b.billing_matches_shipping)) && (h("sc-address", { key: '5aa8eef12cab2285fae0fdda5da49b64657b7de6', exportparts: "label, help-text, form-control, input__base, select__base, columns, search__base, menu__base", ref: el => {
+        return (h(Fragment, { key: 'ac025fb50a179d589c2c96561305b92164fe7e51' }, this.shippingAddressFieldExists() && (h("sc-checkbox", { key: '5bd206c5d00aebb934f2361c85bff8f3c8751884', class: "order-billing-address__toggle", onScChange: e => this.onToggleBillingMatchesShipping(e), checked: (_a = state.checkout) === null || _a === void 0 ? void 0 : _a.billing_matches_shipping }, this.toggleLabel)), (!this.shippingAddressFieldExists() || !((_b = state.checkout) === null || _b === void 0 ? void 0 : _b.billing_matches_shipping)) && (h("sc-address", { key: '857afdf76f5eba6febf77f7fe9453edc4b7146f7', exportparts: "label, help-text, form-control, input__base, select__base, columns, search__base, menu__base", ref: el => {
                 this.input = el;
-            }, label: this.label || wp.i18n.__('Billing Address', 'surecart'), placeholders: {
-                name: this.namePlaceholder,
-                country: this.countryPlaceholder,
-                city: this.cityPlaceholder,
-                line_1: this.line1Placeholder,
-                line_2: this.line2Placeholder,
-                postal_code: this.postalCodePlaceholder,
-                state: this.statePlaceholder,
-            }, names: {
+            }, label: this.label || wp.i18n.__('Billing Address', 'surecart'), names: {
                 name: 'billing_name',
                 country: 'billing_country',
                 city: 'billing_city',
@@ -563,24 +551,9 @@ const ScOrderShippingAddress = class {
         this.required = false;
         this.full = undefined;
         this.showName = undefined;
-        this.namePlaceholder = wp.i18n.__('Name or Company Name', 'surecart');
-        this.countryPlaceholder = wp.i18n.__('Country', 'surecart');
-        this.cityPlaceholder = wp.i18n.__('City', 'surecart');
-        this.line1Placeholder = wp.i18n.__('Address', 'surecart');
-        this.line2Placeholder = wp.i18n.__('Address Line 2', 'surecart');
-        this.postalCodePlaceholder = wp.i18n.__('Postal Code/Zip', 'surecart');
-        this.statePlaceholder = wp.i18n.__('State/Province/Region', 'surecart');
         this.defaultCountry = undefined;
+        this.showLine2 = undefined;
         this.requireName = false;
-        this.placeholders = {
-            name: wp.i18n.__('Name or Company Name', 'surecart'),
-            country: wp.i18n.__('Country', 'surecart'),
-            city: wp.i18n.__('City', 'surecart'),
-            line_1: wp.i18n.__('Address', 'surecart'),
-            line_2: wp.i18n.__('Address Line 2', 'surecart'),
-            postal_code: wp.i18n.__('Postal Code/Zip', 'surecart'),
-            state: wp.i18n.__('State/Province/Region', 'surecart'),
-        };
         this.address = {
             country: null,
             city: null,
@@ -637,25 +610,9 @@ const ScOrderShippingAddress = class {
     render() {
         // use full if checkout requires it, it's set, or we're showing/requiring name field.
         if (fullShippingAddressRequired() || this.full || this.requireName || this.showName) {
-            return (h("sc-address", { exportparts: "label, help-text, form-control, input__base, select__base, columns, search__base, menu__base", ref: el => (this.input = el), label: this.label || wp.i18n.__('Shipping Address', 'surecart'), placeholders: {
-                    name: this.namePlaceholder,
-                    country: this.countryPlaceholder,
-                    city: this.cityPlaceholder,
-                    line_1: this.line1Placeholder,
-                    line_2: this.line2Placeholder,
-                    postal_code: this.postalCodePlaceholder,
-                    state: this.statePlaceholder,
-                }, names: this.names, required: this.required || shippingAddressRequired(), loading: formLoading(), address: this.address, "show-name": this.showName, "require-name": this.requireName, onScChangeAddress: e => this.updateAddressState(e.detail) }));
+            return (h("sc-address", { exportparts: "label, help-text, form-control, input__base, select__base, columns, search__base, menu__base", ref: el => (this.input = el), label: this.label || wp.i18n.__('Shipping Address', 'surecart'), names: this.names, required: this.required || shippingAddressRequired(), loading: formLoading(), address: this.address, "show-name": this.showName, "require-name": this.requireName, "show-line-2": this.showLine2, onScChangeAddress: e => this.updateAddressState(e.detail) }));
         }
-        return (h("sc-compact-address", { ref: el => (this.input = el), required: this.required || shippingAddressRequired(), loading: formLoading(), address: this.address, placeholders: {
-                name: this.namePlaceholder,
-                country: this.countryPlaceholder,
-                city: this.cityPlaceholder,
-                line_1: this.line1Placeholder,
-                line_2: this.line2Placeholder,
-                postal_code: this.postalCodePlaceholder,
-                state: this.statePlaceholder,
-            }, names: this.names, label: this.label, onScChangeAddress: e => this.updateAddressState(e.detail) }));
+        return (h("sc-compact-address", { ref: el => (this.input = el), required: this.required || shippingAddressRequired(), loading: formLoading(), address: this.address, names: this.names, label: this.label, onScChangeAddress: e => this.updateAddressState(e.detail) }));
     }
 };
 ScOrderShippingAddress.style = ScOrderShippingAddressStyle0;
@@ -828,13 +785,13 @@ const ScRadio = class {
     }
     render() {
         const Tag = this.edit ? 'div' : 'label';
-        return (h(Tag, { key: '0894940d7506ba9f500385b7f304e5b748071b39', part: "base", class: {
+        return (h(Tag, { key: '10da3deb0356ef2e21cf550474e797118409d11e', part: "base", class: {
                 'radio': true,
                 'radio--checked': this.checked,
                 'radio--disabled': this.disabled,
                 'radio--focused': this.hasFocus,
                 'radio--editing': this.edit,
-            }, htmlFor: this.inputId, onKeyDown: e => this.handleKeyDown(e), onMouseDown: e => this.handleMouseDown(e) }, h("span", { key: 'aedfc958c6fed40c5d7ca9f7c4ba186332235cfb', part: "control", class: "radio__control" }, h("span", { key: '264d4ac9898d655d134a70a37ca71730058c8352', part: "checked-icon", class: "radio__icon" }, h("svg", { key: '72f8d8717d2544e1a6992e97bd37e16f88914363', viewBox: "0 0 16 16" }, h("g", { key: '48a3d9fe8cdda6184bd50b539e507ab2213333cb', stroke: "none", "stroke-width": "1", fill: "none", "fill-rule": "evenodd" }, h("g", { key: 'c43c937eeb33db2d1a66778152ad57e4db76a5f8', fill: "currentColor" }, h("circle", { key: '98e9d605ba231d0201dac48ec075acd07aadaea2', cx: "8", cy: "8", r: "3.42857143" }))))), h("input", { key: '1445b1029e5a91a1fa19a64fbc2b8a5dc3b93a98', id: this.inputId, ref: el => (this.input = el), type: "radio", name: this.name, value: this.value, checked: this.checked, disabled: this.disabled, required: this.required, "aria-checked": this.checked ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', "aria-labelledby": this.labelId, onClick: () => this.handleClick(), onBlur: () => this.handleBlur(), onFocus: () => this.handleFocus() })), h("span", { key: '5bcbec305ae0c0b589666bd7afbeb283837af821', part: "label", id: this.labelId, class: "radio__label" }, h("slot", { key: '6bab4c42dac246fd656f8acaa3773098ad071f58' }), h("slot", { key: '4ac8ed9823583e9d9d029cae311e5efd10386a6d', name: "description" }))));
+            }, htmlFor: this.inputId, onKeyDown: e => this.handleKeyDown(e), onMouseDown: e => this.handleMouseDown(e) }, h("span", { key: '5f60707d68d9a62abc849e09bb1ee4408da4e3ec', part: "control", class: "radio__control" }, h("span", { key: '5e583365f3fa1a13e61b0a36b1a1b08c6e3dac22', part: "checked-icon", class: "radio__icon" }, h("svg", { key: 'eae1fce6267d3c28c53a04aceafb4b13be22874e', viewBox: "0 0 16 16" }, h("g", { key: '075d28f941be0c04d7d4d11bbb750a2ad2abb28f', stroke: "none", "stroke-width": "1", fill: "none", "fill-rule": "evenodd" }, h("g", { key: '3c1f603f1c7edb7581bb766bde205f4944b08f59', fill: "currentColor" }, h("circle", { key: 'e650dd636501b96c8b4861106cc802d5dcc0e61e', cx: "8", cy: "8", r: "3.42857143" }))))), h("input", { key: '667d10ed76a6d6764fc8e5fe1ea5241d8ea2cc17', id: this.inputId, ref: el => (this.input = el), type: "radio", name: this.name, value: this.value, checked: this.checked, disabled: this.disabled, required: this.required, "aria-checked": this.checked ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', "aria-labelledby": this.labelId, onClick: () => this.handleClick(), onBlur: () => this.handleBlur(), onFocus: () => this.handleFocus() })), h("span", { key: 'a3a3263f8c523387c763ada0baee6bafcc165d11', part: "label", id: this.labelId, class: "radio__label" }, h("slot", { key: 'a4990600b9760c47d44d339520f2a2c382a0ac72' }), h("slot", { key: '496d8ec35116ed254c5aade2516e048775c5ccda', name: "description" }))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {
@@ -882,12 +839,12 @@ const ScRadioGroup = class {
         });
     }
     render() {
-        return (h("fieldset", { key: 'b01eed0c4db08fe9bf5c27bf0d2620ca7a3aef06', part: "base", class: {
+        return (h("fieldset", { key: '78f0654f93c8565f37eb4c6b72bf37dfec582127', part: "base", class: {
                 'radio-group': true,
                 'radio-group--invalid': this.invalid,
                 'radio-group--is-required': this.required,
                 'radio-group--is-rtl': isRtl(),
-            }, "aria-invalid": this.invalid, role: "radiogroup" }, h("legend", { key: 'b5b99177ce06b13b8e5f6b2b51c28205076c858b', part: "label", class: "radio-group__label" }, h("slot", { key: '4f6c0646658e02bb0c763ec03d4102d734c8a239', name: "label" }, this.label)), h("input", { key: 'c5fa85141c3c93d6d6efab536fc5b000bb98e27c', type: "text", class: "radio-group__hidden-input", ref: el => (this.input = el), required: this.required, value: this.value, tabindex: "-1" }), h("div", { key: '55fa72770dc1bb137b878cdfa0beab0896c8d69e', part: "items", class: "radio-group__items" }, h("slot", { key: '2a591203bf069f5cc5ae4988f258c9198b12f18a' }))));
+            }, "aria-invalid": this.invalid, role: "radiogroup" }, h("legend", { key: 'a7c7d92e3a8a6f09ac4fded67c04964dee9ec563', part: "label", class: "radio-group__label" }, h("slot", { key: '64333b9d4792d351f010348843d8735e06d9330a', name: "label" }, this.label)), h("input", { key: '1ea2c1c69b47b5afe4c9ee9c598f085cfc227e66', type: "text", class: "radio-group__hidden-input", ref: el => (this.input = el), required: this.required, value: this.value, tabindex: "-1" }), h("div", { key: 'da12dccf0d664d24f342d826560a335bf0485e57', part: "items", class: "radio-group__items" }, h("slot", { key: '3a5e82b58e4a47d89829f98f27c5c3ba0f7a82ec' }))));
     }
     get el() { return getElement(this); }
 };

@@ -121,6 +121,14 @@ body .metaslider .flexslider .flex-direction-nav li {
     z-index: 2;
 }
 
+.metaslider.has-dots-onhover-navigation .flexslider .flex-control-paging {
+    opacity: 0;
+    transition: all .3s ease;
+}
+.metaslider.has-dots-onhover-navigation .flexslider .flex-control-paging:hover {
+    opacity: 1;
+}
+
 .metaslider-flex.ms-theme-default .flex-next:focus {
     background: url('bg_direction_nav.png') scroll right 0 transparent!important;
     height: 27px!important;
@@ -438,6 +446,14 @@ div.metaslider .slider-wrapper .nivo-controlNav a {
     background-color: #fff;
     transition: width 2s linear;
     z-index: 999;
+}
+/* Carousel */
+.ms-carousel-force-height .slides > li {
+    overflow: hidden;
+}
+.ms-carousel-force-height .slides > li.ms-image img {
+    height: 100%;
+    width: auto;
 }
 @media only screen and (max-width : 767px) {
     .metaslider.ms-theme-precognition .flex-control-nav li a {

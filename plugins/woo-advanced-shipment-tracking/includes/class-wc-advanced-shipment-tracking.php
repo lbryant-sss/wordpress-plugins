@@ -982,7 +982,12 @@ class WC_Advanced_Shipment_Tracking_Actions {
 			}		
 		}
 
-		$order = wc_get_order( $order_id );		
+		$order = wc_get_order( $order_id );
+
+		if ( ! $order ) {
+			return $formatted;
+		}
+
 		$postcode = $order->get_shipping_postcode();
 
 		$formatted['formatted_tracking_provider'] = '';

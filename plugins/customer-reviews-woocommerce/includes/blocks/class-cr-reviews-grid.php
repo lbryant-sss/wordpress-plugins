@@ -1090,18 +1090,35 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 		public static function cr_get_avatar( $avatar, $id_or_email, $size = 96, $default = '', $alt = '' ) {
 			if ( is_object( $id_or_email ) && isset( $id_or_email->comment_ID ) ) {
 				$id_or_email = get_comment( $id_or_email );
-				$author = trim( mb_ereg_replace( '[\.,]', ' ', get_comment_author( $id_or_email ) ) );
-				if( 0 < mb_strlen( $author ) ) {
-					$initials = mb_substr( $author, 0, 1 );
-					$words = mb_split( '\s+', $author );
-					if( 1 < count( $words ) ) {
-						$initials .= mb_substr( $words[1], 0, 1 );
+				$initials = '';
+				if ( function_exists( 'mb_ereg_replace' ) ) {
+					$author = trim( mb_ereg_replace( '[\.,]', ' ', get_comment_author( $id_or_email ) ) );
+					if ( 0 < mb_strlen( $author ) ) {
+						$initials = mb_substr( $author, 0, 1 );
+						$words = mb_split( '\s+', $author );
+						if( 1 < count( $words ) ) {
+							$initials .= mb_substr( $words[1], 0, 1 );
+						}
+						$initials = mb_strtoupper( $initials );
+						if ( ! $alt ) {
+							$alt = $initials;
+						}
 					}
-					$initials = mb_strtoupper( $initials );
-					if ( ! $alt ) {
-						$alt = $initials;
+				} else {
+					$author = trim( preg_replace( '/[\.,]/', ' ', get_comment_author( $id_or_email ) ) );
+					if( 0 < strlen( $author ) ) {
+						$initials = substr( $author, 0, 1 );
+						$words = preg_split( '/\s+/', $author );
+						if( 1 < count( $words ) ) {
+							$initials .= substr( $words[1], 0, 1 );
+						}
+						$initials = strtoupper( $initials );
+						if ( ! $alt ) {
+							$alt = $initials;
+						}
 					}
-
+				}
+				if ( $initials ) {
 					$svg_template = '
 						<svg width="%d" height="%d" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 							<rect x="0" y="0" width="%d" height="%d" style="fill: #CCD1D4"></rect>
@@ -1117,7 +1134,7 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 
 					$svg = sprintf( $svg_template, $size, $size, $size, $size, $size/2, $initials );
 
-					$avatar = sprintf( '<img alt="%s" src="%s" width="%d" height="%d" class="%s"><div class="cr-avatar-check">%s</div>', $alt, 'data:image/svg+xml;base64,' . base64_encode( $svg ), $size, $size, 'avatar', $svg_avatar_check );
+					$avatar = sprintf( '<img alt="%s" src="%s" width="%d" height="%d" class="%s"><div class="cr-avatar-check">%s</div>', $alt, 'data:image/svg+xml;base64,' . base64_encode( $svg ), $size, $size, 'cr-avatar', $svg_avatar_check );
 				}
 			}
 			return $avatar;

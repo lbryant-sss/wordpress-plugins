@@ -9,7 +9,7 @@ const ScStackedList = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return h("slot", { key: '55394a46d56ca9983211b4a2359615f2327583f8' });
+        return h("slot", { key: '57b8eee5739ee77da6555fb298816b8122eb2167' });
     }
 };
 ScStackedList.style = ScStackedListStyle0;
@@ -44,13 +44,13 @@ const ScStackedListRow = class {
     }
     render() {
         const Tag = this.href ? 'a' : 'div';
-        return (h(Tag, { key: '9b027556b03bede50ad920616f7645ab125fdf95', href: this.href, target: this.target, part: "base", class: {
+        return (h(Tag, { key: 'd067eb96bb3c94f1da3bf09b00d220130d507080', href: this.href, target: this.target, part: "base", class: {
                 'list-row': true,
                 'list-row--has-prefix': this.hasPrefix,
                 'list-row--has-suffix': this.hasSuffix,
                 'breakpoint-lg': this.width >= this.mobileSize,
                 'list-row--is-rtl': isRtl()
-            } }, h("span", { key: '25105ba92056074eeb51b2627b2139c47ff93d63', class: "list-row__prefix" }, h("slot", { key: '0abed3b6a6e784c05d34ee49b8d89ce91739bbbc', name: "prefix", onSlotchange: () => this.handleSlotChange() })), h("slot", { key: '980256964df5738e36d6763def9b7e03028af1a3', onSlotchange: () => this.handleSlotChange() }), h("span", { key: '735a309598b514d4792b441156b6e57b5def1733', class: "list-row__suffix" }, h("slot", { key: '44589620784d9694e3f897931572e4ac53a379a4', name: "suffix", onSlotchange: () => this.handleSlotChange() }))));
+            } }, h("span", { key: '327a49e1bb71b3680cf7faddae838a32f60d15ce', class: "list-row__prefix" }, h("slot", { key: 'd2cd53273ed1367713a15e259d767f0449fd4de3', name: "prefix", onSlotchange: () => this.handleSlotChange() })), h("slot", { key: 'd7b25cf9c8bd2cf1089ae8c5074741e7b62d5371', onSlotchange: () => this.handleSlotChange() }), h("span", { key: 'd367675045c77cf7ec410beda39e77714c557f22', class: "list-row__suffix" }, h("slot", { key: 'b8b34764c0cac1a71f76455ca24914f068baf1d3', name: "suffix", onSlotchange: () => this.handleSlotChange() }))));
     }
     get el() { return getElement(this); }
 };

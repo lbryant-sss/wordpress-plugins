@@ -1304,4 +1304,19 @@ export interface CustomStripeElementChangeEvent extends StripeElementChangeEvent
         type: string;
     };
 }
+export interface CountryLocaleFieldValue {
+    name: string;
+    priority: number;
+    label: boolean;
+}
+export interface CountryLocaleField {
+    [key: string]: {
+        name: CountryLocaleFieldValue;
+        address_1: CountryLocaleFieldValue;
+        address_2: CountryLocaleFieldValue;
+        city: CountryLocaleFieldValue;
+        state: CountryLocaleFieldValue;
+        postcode: CountryLocaleFieldValue;
+    };
+}
 export {};

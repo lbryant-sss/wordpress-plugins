@@ -476,22 +476,24 @@ window.jQuery(function ($) {
     });
 
     var showHidePlayButtonOptions = function () {
-        var $table = $('.ms-settings-table');
-        var $pausePlay = $table.find('input[name="settings[pausePlay]"]');
-        var $showPlayText = $table.find('input[name="settings[showPlayText]"]');
-        var $infiniteLoop = $table.find('input[name="settings[infiniteLoop]"]');
-        var $playTextRow = $table.find('input[name="settings[playText]"]').closest('tr');
-        var $pauseTextRow = $table.find('input[name="settings[pauseText]"]').closest('tr');
-        var $pausePlayRow = $pausePlay.closest('tr');
-        var $showPlayTextRow = $showPlayText.closest('tr');
+        var table = $('.ms-settings-table');
+        var pausePlay = table.find('input[name="settings[pausePlay]"]');
+        var showPlayText = table.find('input[name="settings[showPlayText]"]');
+        var infiniteLoop = table.find('input[name="settings[infiniteLoop]"]');
+        var hoverPauseRow = table.find('input[name="settings[hoverPause]"]').closest('tr');
+        var playTextRow = table.find('input[name="settings[playText]"]').closest('tr');
+        var pauseTextRow = table.find('input[name="settings[pauseText]"]').closest('tr');
+        var pausePlayRow = pausePlay.closest('tr');
+        var showPlayTextRow = showPlayText.closest('tr');
     
-        if ($infiniteLoop.is(':checked')) {
-            $pausePlayRow.add($showPlayTextRow).add($playTextRow).add($pauseTextRow).hide();
+        if (infiniteLoop.is(':checked')) {
+            pausePlayRow.add(showPlayTextRow).add(playTextRow).add(pauseTextRow).hide();
         } else {
-            $pausePlayRow.show();
-            $showPlayTextRow.toggle($pausePlay.is(':checked'));
-            var showText = $pausePlay.is(':checked') && $showPlayText.is(':checked');
-            $playTextRow.add($pauseTextRow).toggle(showText);
+            pausePlayRow.show();
+            showPlayTextRow.toggle(pausePlay.is(':checked'));
+            var showText = pausePlay.is(':checked') && showPlayText.is(':checked');
+            playTextRow.add(pauseTextRow).toggle(showText);
+            hoverPauseRow.toggle(!pausePlay.is(':checked'));
         }
     };
     
@@ -1300,7 +1302,7 @@ window.jQuery(function ($) {
 
     /* Add mobile icon for slides with existing mobile setting */
     var show_mobile_icon = function (slide_id) {
-        var mobile_label = APP && APP.__('Mobile options are enabled for this slide. Adjust using the Mobile tab.', 'ml-slider');
+        var mobile_label = APP && APP.__('Device options are enabled for this slide. Adjust using the Mobile tab.', 'ml-slider');
         var mobile_checkboxes = $('#metaslider-slides-list #'+ slide_id +' .mobile-checkbox:checked');
         var icon = '<span class="mobile_setting_enabled float-left tipsy-tooltip-top" title="'+ mobile_label +'"><span class="inline-block mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-smartphone"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></span></span>';
         var mobile_enabled = $('#metaslider-slides-list #'+ slide_id +' .slide-details .mobile_setting_enabled');
@@ -1323,7 +1325,7 @@ window.jQuery(function ($) {
         show_mobile_icon('slide-'+slider_id);
     });
 
-    /* Hide the Mobile Options section when all options are hidden */
+    /* Hide the Device Options section when all options are hidden */
     function mobileSectionChecker(){
         if ($('[name="settings[links]"]').val() == 'false' && $('[name="settings[navigation]"]').val() == 'false') {
             $('.highlight.mobileOptions, .empty-row-spacing.mobileOptions').hide();
@@ -1343,7 +1345,6 @@ window.jQuery(function ($) {
         setInterval(function() {
             count = container.find(":nth-child(" + count + ")").fadeOut().next().length ? count + 1 : 1;
             container.find(":nth-child(" + count + ")").fadeIn();
-            console.log(container.find(":nth-child(" + count + ")"));
         }, 2000);
     });
 
@@ -1360,6 +1361,20 @@ window.jQuery(function ($) {
         }
     }
     sampleSlidesWereAdded();
+
+    /* Dashboard modal */
+    $(".open-modal").on("click", function () {
+        event.preventDefault(); 
+        let id = $(this).data("id");
+        $("#modal-" + id).fadeIn();
+        $("#overlay-" + id).fadeIn();
+    });
+
+    $(".close-modal, .modal-overlay").on("click", function () {
+        let id = $(this).data("id") || $(this).attr("id").replace("overlay-", "");
+        $("#modal-" + id).fadeOut();
+        $("#overlay-" + id).fadeOut();
+    });  
 });
 
 /**

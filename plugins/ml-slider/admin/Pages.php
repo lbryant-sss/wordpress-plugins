@@ -133,7 +133,7 @@ class MetaSlider_Admin_Pages extends MetaSliderPlugin
                 'desktop' => 1440
             );
         }
-        
+
         wp_localize_script('metaslider-admin-script', 'metaslider', array(
             'url' => esc_html__("URL", "ml-slider"),
             'caption' => esc_html__("Caption", "ml-slider"),
@@ -165,7 +165,14 @@ class MetaSlider_Admin_Pages extends MetaSliderPlugin
             'quickstart_slugs' => $this->quickstart_slugs(),
             'breakpoints' => $breakpoints,
             'tone' => esc_html__( 'Tone', 'ml-slider' ),
-            'opacity' => esc_html__( 'Opacity', 'ml-slider' )
+            'opacity' => esc_html__( 'Opacity', 'ml-slider' ),
+            'device_options_dropdown'  => esc_html__('Device Options', 'ml-slider'),
+            'hide_on_mobile'  => esc_html__('Hide on Smartphone', 'ml-slider'),
+            'hide_on_tablet'  => esc_html__('Hide on Tablet', 'ml-slider'),
+            'hide_on_laptop'  => esc_html__('Hide on Laptop', 'ml-slider'),
+            'hide_on_desktop' => esc_html__('Hide on Desktop', 'ml-slider'),
+            'mobile_settings' => !isset($global_settings['mobileSettings']) || (isset($global_settings['mobileSettings']) && $global_settings['mobileSettings'] === true)
+
         ));
         wp_enqueue_script('metaslider-admin-script');
         do_action('metaslider_register_admin_scripts');

@@ -69,13 +69,13 @@
                 </template>
 			</switch-single-input>
 			<switch-single-input v-model="globalSettings.mobileSettings" @change="saveGlobalSettings()">
-				<template slot="header">{{ __('Enable Mobile Settings', 'ml-slider') }}</template>
+				<template slot="header">{{ __('Enable Device Settings', 'ml-slider') }}</template>
 				<template slot="description">{{ __('Add option to hide slides and captions per screen size.', 'ml-slider') }}</template>
 			</switch-single-input>
 			<template v-if="globalSettings.mobileSettings">
 				<div id="mobile-settings" class="bg-white shadow mb-4 relative px-4 py-5 md:p-6">
 					<h3 class="text-lg leading-6 m-0 font-medium text-gray-darkest">
-						{{ __('Mobile Settings', 'ml-slider') }}
+						{{ __('Device Settings', 'ml-slider') }}
 					</h3>
 					<div class="mt-2 max-w-xl text-sm leading-5 text-gray-dark">
 						<div class="m-0 pt-0">

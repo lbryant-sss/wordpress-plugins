@@ -6,7 +6,7 @@ import './watchers-876133bf.js';
 import { s as state$1 } from './getters-07c1280c.js';
 import { s as state$2 } from './watchers-38693c1f.js';
 import { c as clearCheckout } from './mutations-56e6eb22.js';
-import { s as shippingAddressRequired } from './getters-3a0d4ac0.js';
+import { s as shippingAddressRequired, f as fullShippingAddressRequired } from './getters-3a0d4ac0.js';
 import { v, c as checkoutMachine, s as state$3 } from './store-627acec4.js';
 import { a as apiFetch } from './fetch-8ecbbe53.js';
 import { s as speak } from './index-c5a96d53.js';
@@ -310,11 +310,15 @@ const ScFormComponentsValidator = class {
         }
         const payment = this.el.querySelector('sc-payment');
         const shippingAddress = document.createElement('sc-order-shipping-address');
-        shippingAddress.label = wp.i18n.__('Shipping Address', 'surecart');
-        const billingAddress = document.createElement('sc-order-billing-address');
-        billingAddress.label = wp.i18n.__('Billing Address', 'surecart');
         payment.parentNode.insertBefore(shippingAddress, payment);
-        payment.parentNode.insertBefore(billingAddress, payment);
+        if (fullShippingAddressRequired()) {
+            const billingAddress = document.createElement('sc-order-billing-address');
+            billingAddress.label = wp.i18n.__('Billing Address', 'surecart');
+            payment.parentNode.insertBefore(billingAddress, payment);
+        }
+        else {
+            shippingAddress.label = wp.i18n.__('Address', 'surecart');
+        }
         this.hasAddress = true;
     }
     addTaxIDField() {
@@ -416,7 +420,7 @@ const ScFormComponentsValidator = class {
         this.hasTrialLineItem = true;
     }
     render() {
-        return h("slot", { key: 'dbec2ed416c0178a6a8973185a39cc0c3687355b' });
+        return h("slot", { key: '3407d9cea028e820a8dc588372e47e8c33e13e7d' });
     }
     get el() { return getElement(this); }
     static get watchers() { return {

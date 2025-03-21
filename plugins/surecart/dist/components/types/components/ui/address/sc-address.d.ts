@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { Address } from '../../../types';
+import { Address, CountryLocaleField, CountryLocaleFieldValue } from '../../../types';
 /**
  * @part base - The elements base wrapper.
  * @part input__base - The inputs base element.
@@ -25,7 +25,6 @@ export declare class ScAddress {
     /** The address. */
     address: Partial<Address>;
     names: Partial<Address>;
-    placeholders: Partial<Address>;
     /** Is this loading?  */
     loading: boolean;
     /** Is this disabled? */
@@ -40,6 +39,10 @@ export declare class ScAddress {
     required: boolean;
     /** Is the name required */
     requireName: boolean;
+    /** Default country fields */
+    defaultCountryFields: Array<CountryLocaleFieldValue>;
+    /** Country fields by country code */
+    countryFields: Array<CountryLocaleField>;
     /** Should we show the city field? */
     showCity: boolean;
     /** Should we show the postal field? */
@@ -69,5 +72,15 @@ export declare class ScAddress {
     setRegions(): void;
     componentWillLoad(): void;
     reportValidity(): Promise<boolean>;
+    /**
+     * Compute and return the sorted fields based on current country, defaultCountryFields and countryFields.
+     * This method can be used as a computed property.
+     */
+    sortedFields(): Array<CountryLocaleFieldValue>;
+    getRoundedProps(index: number, length: number): {
+        squaredTop: boolean;
+        squaredBottom: boolean;
+        squared: boolean;
+    };
     render(): any;
 }

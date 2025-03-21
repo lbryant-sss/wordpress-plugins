@@ -12,7 +12,7 @@ const ScColumn = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: 'eb364aa730db6e47cc1172a0ba9b19a90ad3d84d' }, index.h("slot", { key: '5d1babf8e3f4cc593544aafa3c0a9d8270a4938c' })));
+        return (index.h(index.Host, { key: 'c7cb7c951e62f93267e33ea002cb0dff92d76f05' }, index.h("slot", { key: '1282a2643e7f164b19c6694bda171f01b08f523a' })));
     }
 };
 ScColumn.style = ScColumnStyle0;
@@ -29,13 +29,13 @@ const ScColumns = class {
         this.isReversedOnMobile = undefined;
     }
     render() {
-        return (index.h(index.Host, { key: '326ee1b110d255f73b7c4b99823e4557130783a9', class: {
+        return (index.h(index.Host, { key: '51377626c824cc8e97376288bb4572d36970a8c6', class: {
                 'sc-columns': true,
                 [`are-vertically-aligned-${this.verticalAlignment}`]: !!this.verticalAlignment,
                 'is-not-stacked-on-mobile': !this.isStackedOnMobile,
                 'is-full-height': !!this.isFullHeight,
                 'is-reversed-on-mobile': !!this.isReversedOnMobile,
-            } }, index.h("slot", { key: 'da9b003c2a834ecda2628cdfeeb973b1ff81609a' })));
+            } }, index.h("slot", { key: 'bfea8246fa41a6fd1defcd3fb9b7e80427ecae52' })));
     }
 };
 ScColumns.style = ScColumnsStyle0;

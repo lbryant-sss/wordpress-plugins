@@ -8,7 +8,7 @@ const ScMenuDivider = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return h("div", { key: 'a5d2411e2cdd1861787d5f5640aefbfc8715714e', part: "base", class: "menu-divider", role: "separator", "aria-hidden": "true" });
+        return h("div", { key: '984f324f3d30b8b6fba14679458abbfafd3894c1', part: "base", class: "menu-divider", role: "separator", "aria-hidden": "true" });
     }
 };
 ScMenuDivider.style = ScMenuDividerStyle0;

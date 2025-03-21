@@ -9,18 +9,6 @@ export declare class ScOrderBillingAddress {
     showName: boolean;
     /** Name placeholder */
     namePlaceholder: string;
-    /** Country placeholder */
-    countryPlaceholder: string;
-    /** City placeholder */
-    cityPlaceholder: string;
-    /** Address placeholder */
-    line1Placeholder: string;
-    /** Address Line 2 placeholder */
-    line2Placeholder: string;
-    /** Postal Code placeholder */
-    postalCodePlaceholder: string;
-    /** State placeholder */
-    statePlaceholder: string;
     /** Default country for address */
     defaultCountry: string;
     /** Toggle label */

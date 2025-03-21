@@ -702,8 +702,6 @@ defined( 'ABSPATH' ) or die( "Cheating........Uh!!" );
 							<td colspan="2">
 							<div>
 							<?php _e( 'Master control to enable standard sharing', 'sassy-social-share' ) ?>
-							<div style="clear:both"></div>
-							<img width="550" src="<?php echo plugins_url( '../../images/snaps/sss_horizontal_sharing.png', __FILE__ ); ?>" />
 							</div>
 							</td>
 						</tr>
@@ -1424,7 +1422,6 @@ defined( 'ABSPATH' ) or die( "Cheating........Uh!!" );
 							<td colspan="2">
 							<div>
 							<?php _e( 'If enabled, share counts are displayed above sharing icons.', 'sassy-social-share' ) ?>
-							<img width="550" src="<?php echo plugins_url( '../../images/snaps/sss_share_count.png', __FILE__ ); ?>" />
 							</div>
 							</td>
 						</tr>
@@ -1443,7 +1440,6 @@ defined( 'ABSPATH' ) or die( "Cheating........Uh!!" );
 							<td colspan="2">
 							<div>
 							<?php _e( 'If enabled, total shares will be displayed with sharing icons', 'sassy-social-share' ) ?>
-							<img width="550" src="<?php echo plugins_url( '../../images/snaps/sss_horizontal_total_shares.png', __FILE__ ); ?>" />
 							</div>
 							</td>
 						</tr>
@@ -1530,7 +1526,6 @@ defined( 'ABSPATH' ) or die( "Cheating........Uh!!" );
 							<td colspan="2">
 							<div>
 							<?php _e( 'Master control to enable floating sharing widget', 'sassy-social-share' ) ?>
-							<img width="550" src="<?php echo plugins_url( '../../images/snaps/sss_vertical_sharing.png', __FILE__ ); ?>" />
 							</div>
 							</td>
 						</tr>
@@ -1958,7 +1953,6 @@ defined( 'ABSPATH' ) or die( "Cheating........Uh!!" );
 							<td colspan="2">
 							<div>
 							<?php _e( 'If enabled, share counts are displayed above sharing icons.', 'sassy-social-share' ) ?>
-							<img width="550" src="<?php echo plugins_url( '../../images/snaps/sss_vertical_sharing_count.png', __FILE__ ); ?>" />
 							</div>
 							</td>
 						</tr>
@@ -1977,7 +1971,6 @@ defined( 'ABSPATH' ) or die( "Cheating........Uh!!" );
 							<td colspan="2">
 							<div>
 							<?php _e( 'If enabled, total shares will be displayed with sharing icons', 'sassy-social-share' ) ?>
-							<img width="550" src="<?php echo plugins_url( '../../images/snaps/sss_vertical_total_shares.png', __FILE__ ); ?>" />
 							</div>
 							</td>
 						</tr>
@@ -2057,7 +2050,6 @@ defined( 'ABSPATH' ) or die( "Cheating........Uh!!" );
 							<td colspan="2">
 							<div>
 							<?php _e( 'Stick vertical floating interface horizontally at bottom only when screen is narrower than the width specified', 'sassy-social-share' ) ?>
-							<img src="<?php echo plugins_url( '../../images/snaps/sss_mobile_sharing.png', __FILE__ ); ?>" />
 							</div>
 							</td>
 						</tr>

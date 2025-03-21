@@ -357,6 +357,13 @@ class WC_Advanced_Shipment_Tracking_Install {
 				update_option( 'wc_advanced_shipment_tracking', '4.3' );
 			}
 
+			if ( version_compare( get_option( 'wc_advanced_shipment_tracking', '4.3' ), '4.4', '<' ) ) {
+				delete_option( 'ast_trackship_notice_ignore' );
+				delete_option( 'ast_pro_shipping_integration_notice_ignore' );
+
+				update_option( 'wc_advanced_shipment_tracking', '4.4' );
+			}
+
 		}
 	}		
 	

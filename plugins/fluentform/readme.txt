@@ -4,7 +4,7 @@ Tags: contact form, wp forms, forms, form builder, custom form
 Requires at least: 4.5
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 6.0.0
+Stable tag: 6.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -430,8 +430,11 @@ You can get support from our official support thread at <a href="https://wpmanag
 
 == Changelog ==
 
+= 6.0.1 (Date: March 20, 2025) =
+- Fixes container conditional logic issue
+
 = 6.0.0 (Date: March 19, 2025) =
-- Adds Payment fields with subscription
+- Adds Payment fields with Subscription
 - Adds Stripe payment gateway
 - Adds Advanced Conditionals group for enhanced form logic
 - Adds FluentFormAI for creating AI assisted forms

@@ -681,7 +681,7 @@ class MetaSlider_Slideshows
             return $slideshows;
         }
 
-        $slideshows_formatted = array_map('self::build_slideshow_object', $slideshows->posts);
+        $slideshows_formatted = array_map([self::class, 'build_slideshow_object'], $slideshows->posts);
 
         $remaining_pages = intval($slideshows->max_num_pages) - intval($page);
         if ($remaining_pages > 0) {

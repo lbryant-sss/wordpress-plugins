@@ -314,11 +314,15 @@ const ScFormComponentsValidator = class {
         }
         const payment = this.el.querySelector('sc-payment');
         const shippingAddress = document.createElement('sc-order-shipping-address');
-        shippingAddress.label = wp.i18n.__('Shipping Address', 'surecart');
-        const billingAddress = document.createElement('sc-order-billing-address');
-        billingAddress.label = wp.i18n.__('Billing Address', 'surecart');
         payment.parentNode.insertBefore(shippingAddress, payment);
-        payment.parentNode.insertBefore(billingAddress, payment);
+        if (getters$2.fullShippingAddressRequired()) {
+            const billingAddress = document.createElement('sc-order-billing-address');
+            billingAddress.label = wp.i18n.__('Billing Address', 'surecart');
+            payment.parentNode.insertBefore(billingAddress, payment);
+        }
+        else {
+            shippingAddress.label = wp.i18n.__('Address', 'surecart');
+        }
         this.hasAddress = true;
     }
     addTaxIDField() {
@@ -420,7 +424,7 @@ const ScFormComponentsValidator = class {
         this.hasTrialLineItem = true;
     }
     render() {
-        return index.h("slot", { key: 'dbec2ed416c0178a6a8973185a39cc0c3687355b' });
+        return index.h("slot", { key: '3407d9cea028e820a8dc588372e47e8c33e13e7d' });
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

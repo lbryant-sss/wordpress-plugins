@@ -454,7 +454,10 @@ class MetaImageSlide extends MetaSlide
         $row  = "<tr id='slide-" . esc_attr($this->slide->ID) . "' class='slide image flex responsive nivo coin' data-attachment-id='" . esc_attr($attachment_id) . "'>
                     <td class='col-1'>
                         <div class='metaslider-ui-controls ui-sortable-handle rtl:pl-0 rtl:pr-3'>
-                        <h4 class='slide-details'>" . esc_html($slide_label) . " | ID: ". esc_html($this->slide->ID) . "</h4>";
+                        <h4 class='slide-details'>" . 
+                            apply_filters( 'metaslider_slide_details', '', $this->slide->ID ) . // @since 3.97
+                            esc_html($slide_label) . " | ID: ". 
+                            esc_html($this->slide->ID) . "</h4>";
         if (metaslider_this_is_trash($this->slide)) {
             $row .= '<div class="row-actions trash-btns">';
             $row .= "<span class='untrash'>{$this->get_undelete_button_html()}</span>";
@@ -561,7 +564,7 @@ class MetaImageSlide extends MetaSlide
             $mobile_tab = ob_get_clean();
 
             $tabs['mobile'] = array(
-                'title' => __("Mobile", "ml-slider"),
+                'title' => __("Device", "ml-slider"),
                 'content' => $mobile_tab
             );
         }
@@ -1020,7 +1023,7 @@ class MetaImageSlide extends MetaSlide
 
         // This textarea might be hidden, so only update it if it exists
         if (isset($fields['post_excerpt'])) {
-            $args['post_excerpt'] = $fields['post_excerpt'];
+            $args['post_excerpt'] = $this->cleanup_content_kses($fields['post_excerpt']);
         }
 
         wp_update_post($args);

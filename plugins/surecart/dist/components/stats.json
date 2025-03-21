@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-03-14T15:46:16",
+  "timestamp": "2025-03-20T20:16:04",
   "compiler": {
     "name": "node",
     "version": "16.20.2"
@@ -9,11 +9,11 @@
     "fsNamespace": "surecart",
     "components": 228,
     "entries": 228,
-    "bundles": 4072,
+    "bundles": 4078,
     "outputs": [
       {
         "name": "dist-collection",
-        "files": 1282,
+        "files": 1288,
         "generatedFiles": [
           "./dist/collection/components/context/consumer/sc-consumer.js",
           "./dist/collection/components/context/consumer/sc-consumer.js.map",
@@ -1115,6 +1115,8 @@
           "./dist/collection/components/util/format-number/test/sc-format-number.spec.js.map",
           "./dist/collection/components/util/visually-hidden/sc-visually-hidden.js",
           "./dist/collection/components/util/visually-hidden/sc-visually-hidden.js.map",
+          "./dist/collection/functions/address-settings.js",
+          "./dist/collection/functions/address-settings.js.map",
           "./dist/collection/functions/address.js",
           "./dist/collection/functions/address.js.map",
           "./dist/collection/functions/animate.js",
@@ -1217,6 +1219,10 @@
           "./dist/collection/store/form/store.js.map",
           "./dist/collection/store/form/watchers.js",
           "./dist/collection/store/form/watchers.js.map",
+          "./dist/collection/store/i18n/index.js",
+          "./dist/collection/store/i18n/index.js.map",
+          "./dist/collection/store/i18n/store.js",
+          "./dist/collection/store/i18n/store.js.map",
           "./dist/collection/store/local/index.js",
           "./dist/collection/store/local/index.js.map",
           "./dist/collection/store/local/storage.js",
@@ -3226,78 +3232,66 @@
           "./dist/index.js",
           "./dist/surecart/index.esm.js",
           "./dist/surecart/index.esm.js.map",
+          "./dist/surecart/p-0056da7a.entry.js",
+          "./dist/surecart/p-0056da7a.entry.js.map",
           "./dist/surecart/p-00831dc8.entry.js",
           "./dist/surecart/p-00831dc8.entry.js.map",
           "./dist/surecart/p-00c1ed1d.entry.js",
           "./dist/surecart/p-00c1ed1d.entry.js.map",
-          "./dist/surecart/p-02aa828b.entry.js",
-          "./dist/surecart/p-02aa828b.entry.js.map",
           "./dist/surecart/p-03631502.js",
           "./dist/surecart/p-03631502.js.map",
-          "./dist/surecart/p-041bb5a1.entry.js",
-          "./dist/surecart/p-041bb5a1.entry.js.map",
           "./dist/surecart/p-045f4836.entry.js",
           "./dist/surecart/p-045f4836.entry.js.map",
           "./dist/surecart/p-05966dcd.entry.js",
           "./dist/surecart/p-05966dcd.entry.js.map",
-          "./dist/surecart/p-0781cc24.entry.js",
-          "./dist/surecart/p-0781cc24.entry.js.map",
           "./dist/surecart/p-07b1b1ed.js",
           "./dist/surecart/p-07b1b1ed.js.map",
           "./dist/surecart/p-08cba892.entry.js",
           "./dist/surecart/p-08cba892.entry.js.map",
-          "./dist/surecart/p-0900ce76.entry.js",
-          "./dist/surecart/p-0900ce76.entry.js.map",
           "./dist/surecart/p-0b0c03f7.js",
           "./dist/surecart/p-0b0c03f7.js.map",
-          "./dist/surecart/p-0e27312e.entry.js",
-          "./dist/surecart/p-0e27312e.entry.js.map",
-          "./dist/surecart/p-0eeb8293.entry.js",
-          "./dist/surecart/p-0eeb8293.entry.js.map",
           "./dist/surecart/p-0ef36383.entry.js",
           "./dist/surecart/p-0ef36383.entry.js.map",
-          "./dist/surecart/p-11e9fd83.entry.js",
-          "./dist/surecart/p-11e9fd83.entry.js.map",
+          "./dist/surecart/p-11473c44.entry.js",
+          "./dist/surecart/p-11473c44.entry.js.map",
+          "./dist/surecart/p-1187e40f.entry.js",
+          "./dist/surecart/p-1187e40f.entry.js.map",
           "./dist/surecart/p-1348e564.entry.js",
           "./dist/surecart/p-1348e564.entry.js.map",
           "./dist/surecart/p-13f5e4e1.js",
           "./dist/surecart/p-13f5e4e1.js.map",
           "./dist/surecart/p-145eb10d.entry.js",
           "./dist/surecart/p-145eb10d.entry.js.map",
-          "./dist/surecart/p-14a2105b.entry.js",
-          "./dist/surecart/p-14a2105b.entry.js.map",
           "./dist/surecart/p-14d5e0fd.entry.js",
           "./dist/surecart/p-14d5e0fd.entry.js.map",
           "./dist/surecart/p-15d96c16.entry.js",
           "./dist/surecart/p-15d96c16.entry.js.map",
           "./dist/surecart/p-15fc6bbd.entry.js",
           "./dist/surecart/p-15fc6bbd.entry.js.map",
-          "./dist/surecart/p-15fd4cfe.entry.js",
-          "./dist/surecart/p-15fd4cfe.entry.js.map",
-          "./dist/surecart/p-16c1868e.entry.js",
-          "./dist/surecart/p-16c1868e.entry.js.map",
-          "./dist/surecart/p-19c3d42c.entry.js",
-          "./dist/surecart/p-19c3d42c.entry.js.map",
-          "./dist/surecart/p-1a07f633.entry.js",
-          "./dist/surecart/p-1a07f633.entry.js.map",
+          "./dist/surecart/p-1987d09d.entry.js",
+          "./dist/surecart/p-1987d09d.entry.js.map",
           "./dist/surecart/p-1b16d197.entry.js",
           "./dist/surecart/p-1b16d197.entry.js.map",
           "./dist/surecart/p-1b470883.js",
           "./dist/surecart/p-1b470883.js.map",
+          "./dist/surecart/p-1c86ed36.entry.js",
+          "./dist/surecart/p-1c86ed36.entry.js.map",
           "./dist/surecart/p-1d72a9f5.entry.js",
           "./dist/surecart/p-1d72a9f5.entry.js.map",
-          "./dist/surecart/p-1ec11474.entry.js",
-          "./dist/surecart/p-1ec11474.entry.js.map",
           "./dist/surecart/p-1f60f497.js",
           "./dist/surecart/p-1f60f497.js.map",
           "./dist/surecart/p-20f9c906.entry.js",
           "./dist/surecart/p-20f9c906.entry.js.map",
+          "./dist/surecart/p-2169db5d.entry.js",
+          "./dist/surecart/p-2169db5d.entry.js.map",
+          "./dist/surecart/p-2174d110.entry.js",
+          "./dist/surecart/p-2174d110.entry.js.map",
           "./dist/surecart/p-227f95c9.entry.js",
           "./dist/surecart/p-227f95c9.entry.js.map",
-          "./dist/surecart/p-22db856b.entry.js",
-          "./dist/surecart/p-22db856b.entry.js.map",
           "./dist/surecart/p-23b6cc2c.entry.js",
           "./dist/surecart/p-23b6cc2c.entry.js.map",
+          "./dist/surecart/p-240edd37.entry.js",
+          "./dist/surecart/p-240edd37.entry.js.map",
           "./dist/surecart/p-269ad1aa.entry.js",
           "./dist/surecart/p-269ad1aa.entry.js.map",
           "./dist/surecart/p-2725f5b1.entry.js",
@@ -3306,10 +3300,6 @@
           "./dist/surecart/p-281d44dd.entry.js.map",
           "./dist/surecart/p-28d98d61.js",
           "./dist/surecart/p-28d98d61.js.map",
-          "./dist/surecart/p-28ee3d3c.entry.js",
-          "./dist/surecart/p-28ee3d3c.entry.js.map",
-          "./dist/surecart/p-298b5e09.entry.js",
-          "./dist/surecart/p-298b5e09.entry.js.map",
           "./dist/surecart/p-2a0dde4d.entry.js",
           "./dist/surecart/p-2a0dde4d.entry.js.map",
           "./dist/surecart/p-2af3d7a7.entry.js",
@@ -3318,14 +3308,22 @@
           "./dist/surecart/p-2d2ea552.js.map",
           "./dist/surecart/p-2f3f0fb1.entry.js",
           "./dist/surecart/p-2f3f0fb1.entry.js.map",
-          "./dist/surecart/p-34268666.entry.js",
-          "./dist/surecart/p-34268666.entry.js.map",
+          "./dist/surecart/p-2f7f3775.entry.js",
+          "./dist/surecart/p-2f7f3775.entry.js.map",
+          "./dist/surecart/p-308046cb.entry.js",
+          "./dist/surecart/p-308046cb.entry.js.map",
+          "./dist/surecart/p-3110f151.entry.js",
+          "./dist/surecart/p-3110f151.entry.js.map",
+          "./dist/surecart/p-32a37bc1.entry.js",
+          "./dist/surecart/p-32a37bc1.entry.js.map",
           "./dist/surecart/p-3598892f.entry.js",
           "./dist/surecart/p-3598892f.entry.js.map",
           "./dist/surecart/p-36e59877.entry.js",
           "./dist/surecart/p-36e59877.entry.js.map",
-          "./dist/surecart/p-3884d595.entry.js",
-          "./dist/surecart/p-3884d595.entry.js.map",
+          "./dist/surecart/p-37c6de3f.entry.js",
+          "./dist/surecart/p-37c6de3f.entry.js.map",
+          "./dist/surecart/p-38443820.entry.js",
+          "./dist/surecart/p-38443820.entry.js.map",
           "./dist/surecart/p-3918a0cc.js",
           "./dist/surecart/p-3918a0cc.js.map",
           "./dist/surecart/p-393cb717.js",
@@ -3340,12 +3338,14 @@
           "./dist/surecart/p-3f6362a4.js.map",
           "./dist/surecart/p-401e165e.js",
           "./dist/surecart/p-401e165e.js.map",
-          "./dist/surecart/p-42efcf53.entry.js",
-          "./dist/surecart/p-42efcf53.entry.js.map",
+          "./dist/surecart/p-4043fc91.entry.js",
+          "./dist/surecart/p-4043fc91.entry.js.map",
+          "./dist/surecart/p-4058ecc1.entry.js",
+          "./dist/surecart/p-4058ecc1.entry.js.map",
+          "./dist/surecart/p-40cf44fb.entry.js",
+          "./dist/surecart/p-40cf44fb.entry.js.map",
           "./dist/surecart/p-4309e2af.entry.js",
           "./dist/surecart/p-4309e2af.entry.js.map",
-          "./dist/surecart/p-430a62f1.entry.js",
-          "./dist/surecart/p-430a62f1.entry.js.map",
           "./dist/surecart/p-43e1c1b1.entry.js",
           "./dist/surecart/p-43e1c1b1.entry.js.map",
           "./dist/surecart/p-44160a61.entry.js",
@@ -3354,36 +3354,38 @@
           "./dist/surecart/p-449324ed.js.map",
           "./dist/surecart/p-44966374.entry.js",
           "./dist/surecart/p-44966374.entry.js.map",
+          "./dist/surecart/p-44fd51de.entry.js",
+          "./dist/surecart/p-44fd51de.entry.js.map",
           "./dist/surecart/p-4519e1ff.js",
           "./dist/surecart/p-4519e1ff.js.map",
-          "./dist/surecart/p-45763ac2.entry.js",
-          "./dist/surecart/p-45763ac2.entry.js.map",
           "./dist/surecart/p-45c65e2d.entry.js",
           "./dist/surecart/p-45c65e2d.entry.js.map",
           "./dist/surecart/p-46584f2c.entry.js",
           "./dist/surecart/p-46584f2c.entry.js.map",
           "./dist/surecart/p-47fc4e65.entry.js",
           "./dist/surecart/p-47fc4e65.entry.js.map",
-          "./dist/surecart/p-493c1c4c.entry.js",
-          "./dist/surecart/p-493c1c4c.entry.js.map",
-          "./dist/surecart/p-4aec1470.entry.js",
-          "./dist/surecart/p-4aec1470.entry.js.map",
           "./dist/surecart/p-4b6388d1.entry.js",
           "./dist/surecart/p-4b6388d1.entry.js.map",
-          "./dist/surecart/p-4ba754d7.entry.js",
-          "./dist/surecart/p-4ba754d7.entry.js.map",
           "./dist/surecart/p-4be9e1f2.entry.js",
           "./dist/surecart/p-4be9e1f2.entry.js.map",
           "./dist/surecart/p-4ea36f1e.js",
           "./dist/surecart/p-4ea36f1e.js.map",
-          "./dist/surecart/p-502d26c4.entry.js",
-          "./dist/surecart/p-502d26c4.entry.js.map",
-          "./dist/surecart/p-56a0b3a9.entry.js",
-          "./dist/surecart/p-56a0b3a9.entry.js.map",
+          "./dist/surecart/p-512a0cb4.entry.js",
+          "./dist/surecart/p-512a0cb4.entry.js.map",
+          "./dist/surecart/p-51345365.entry.js",
+          "./dist/surecart/p-51345365.entry.js.map",
+          "./dist/surecart/p-530f724d.entry.js",
+          "./dist/surecart/p-530f724d.entry.js.map",
+          "./dist/surecart/p-5412695c.entry.js",
+          "./dist/surecart/p-5412695c.entry.js.map",
+          "./dist/surecart/p-5570e9c1.entry.js",
+          "./dist/surecart/p-5570e9c1.entry.js.map",
           "./dist/surecart/p-56d85a8b.entry.js",
           "./dist/surecart/p-56d85a8b.entry.js.map",
           "./dist/surecart/p-580e43b9.entry.js",
           "./dist/surecart/p-580e43b9.entry.js.map",
+          "./dist/surecart/p-586acaec.entry.js",
+          "./dist/surecart/p-586acaec.entry.js.map",
           "./dist/surecart/p-591c90d4.entry.js",
           "./dist/surecart/p-591c90d4.entry.js.map",
           "./dist/surecart/p-5b78672c.entry.js",
@@ -3392,44 +3394,50 @@
           "./dist/surecart/p-5c1a03e5.js.map",
           "./dist/surecart/p-5eaa8679.entry.js",
           "./dist/surecart/p-5eaa8679.entry.js.map",
-          "./dist/surecart/p-6182e1c9.entry.js",
-          "./dist/surecart/p-6182e1c9.entry.js.map",
+          "./dist/surecart/p-5feef65b.entry.js",
+          "./dist/surecart/p-5feef65b.entry.js.map",
+          "./dist/surecart/p-6168143f.entry.js",
+          "./dist/surecart/p-6168143f.entry.js.map",
           "./dist/surecart/p-61ba97ac.entry.js",
           "./dist/surecart/p-61ba97ac.entry.js.map",
           "./dist/surecart/p-6495d30f.entry.js",
           "./dist/surecart/p-6495d30f.entry.js.map",
           "./dist/surecart/p-64f502e6.entry.js",
           "./dist/surecart/p-64f502e6.entry.js.map",
-          "./dist/surecart/p-659f210d.entry.js",
-          "./dist/surecart/p-659f210d.entry.js.map",
-          "./dist/surecart/p-6ac8a168.entry.js",
-          "./dist/surecart/p-6ac8a168.entry.js.map",
+          "./dist/surecart/p-67259f0d.entry.js",
+          "./dist/surecart/p-67259f0d.entry.js.map",
+          "./dist/surecart/p-6b456476.entry.js",
+          "./dist/surecart/p-6b456476.entry.js.map",
+          "./dist/surecart/p-6c2a6d58.entry.js",
+          "./dist/surecart/p-6c2a6d58.entry.js.map",
           "./dist/surecart/p-6cbad57b.entry.js",
           "./dist/surecart/p-6cbad57b.entry.js.map",
           "./dist/surecart/p-6f847baf.entry.js",
           "./dist/surecart/p-6f847baf.entry.js.map",
           "./dist/surecart/p-6f9e2726.entry.js",
           "./dist/surecart/p-6f9e2726.entry.js.map",
-          "./dist/surecart/p-715ed809.entry.js",
-          "./dist/surecart/p-715ed809.entry.js.map",
+          "./dist/surecart/p-719ec474.entry.js",
+          "./dist/surecart/p-719ec474.entry.js.map",
           "./dist/surecart/p-72386d0b.entry.js",
           "./dist/surecart/p-72386d0b.entry.js.map",
-          "./dist/surecart/p-7535babf.entry.js",
-          "./dist/surecart/p-7535babf.entry.js.map",
           "./dist/surecart/p-75555783.entry.js",
           "./dist/surecart/p-75555783.entry.js.map",
+          "./dist/surecart/p-756a4a41.entry.js",
+          "./dist/surecart/p-756a4a41.entry.js.map",
           "./dist/surecart/p-76c7689d.entry.js",
           "./dist/surecart/p-76c7689d.entry.js.map",
           "./dist/surecart/p-7933c9e8.entry.js",
           "./dist/surecart/p-7933c9e8.entry.js.map",
-          "./dist/surecart/p-7d4843c1.entry.js",
-          "./dist/surecart/p-7d4843c1.entry.js.map",
+          "./dist/surecart/p-7a1365d4.entry.js",
+          "./dist/surecart/p-7a1365d4.entry.js.map",
+          "./dist/surecart/p-7a9032f9.entry.js",
+          "./dist/surecart/p-7a9032f9.entry.js.map",
+          "./dist/surecart/p-7c844bf1.entry.js",
+          "./dist/surecart/p-7c844bf1.entry.js.map",
           "./dist/surecart/p-7f01a36e.js",
           "./dist/surecart/p-7f01a36e.js.map",
           "./dist/surecart/p-812babe9.entry.js",
           "./dist/surecart/p-812babe9.entry.js.map",
-          "./dist/surecart/p-82a061c4.entry.js",
-          "./dist/surecart/p-82a061c4.entry.js.map",
           "./dist/surecart/p-830ab1a3.js",
           "./dist/surecart/p-830ab1a3.js.map",
           "./dist/surecart/p-8631e2b9.entry.js",
@@ -3438,28 +3446,28 @@
           "./dist/surecart/p-863940e9.js.map",
           "./dist/surecart/p-868f7950.entry.js",
           "./dist/surecart/p-868f7950.entry.js.map",
-          "./dist/surecart/p-8690ad44.entry.js",
-          "./dist/surecart/p-8690ad44.entry.js.map",
           "./dist/surecart/p-86fd1a31.js",
           "./dist/surecart/p-86fd1a31.js.map",
+          "./dist/surecart/p-876e7492.entry.js",
+          "./dist/surecart/p-876e7492.entry.js.map",
           "./dist/surecart/p-88aed607.js",
           "./dist/surecart/p-88aed607.js.map",
+          "./dist/surecart/p-890caf22.entry.js",
+          "./dist/surecart/p-890caf22.entry.js.map",
           "./dist/surecart/p-894c7006.js",
           "./dist/surecart/p-894c7006.js.map",
-          "./dist/surecart/p-89562646.entry.js",
-          "./dist/surecart/p-89562646.entry.js.map",
-          "./dist/surecart/p-896c77cd.entry.js",
-          "./dist/surecart/p-896c77cd.entry.js.map",
           "./dist/surecart/p-89bbc5b1.entry.js",
           "./dist/surecart/p-89bbc5b1.entry.js.map",
           "./dist/surecart/p-8b323bfb.js",
           "./dist/surecart/p-8b323bfb.js.map",
           "./dist/surecart/p-8bba23e1.entry.js",
           "./dist/surecart/p-8bba23e1.entry.js.map",
-          "./dist/surecart/p-8dc076fc.entry.js",
-          "./dist/surecart/p-8dc076fc.entry.js.map",
           "./dist/surecart/p-8e1549b8.js",
           "./dist/surecart/p-8e1549b8.js.map",
+          "./dist/surecart/p-8f5b5b2c.entry.js",
+          "./dist/surecart/p-8f5b5b2c.entry.js.map",
+          "./dist/surecart/p-9005ff38.entry.js",
+          "./dist/surecart/p-9005ff38.entry.js.map",
           "./dist/surecart/p-9110e374.entry.js",
           "./dist/surecart/p-9110e374.entry.js.map",
           "./dist/surecart/p-9205ca91.entry.js",
@@ -3470,20 +3478,14 @@
           "./dist/surecart/p-930ac855.js.map",
           "./dist/surecart/p-93127aa7.js",
           "./dist/surecart/p-93127aa7.js.map",
-          "./dist/surecart/p-93258ac5.entry.js",
-          "./dist/surecart/p-93258ac5.entry.js.map",
+          "./dist/surecart/p-937ecbc0.entry.js",
+          "./dist/surecart/p-937ecbc0.entry.js.map",
           "./dist/surecart/p-95325ec5.js",
           "./dist/surecart/p-95325ec5.js.map",
-          "./dist/surecart/p-9867d306.entry.js",
-          "./dist/surecart/p-9867d306.entry.js.map",
-          "./dist/surecart/p-99222c19.entry.js",
-          "./dist/surecart/p-99222c19.entry.js.map",
           "./dist/surecart/p-9a49a1cf.entry.js",
           "./dist/surecart/p-9a49a1cf.entry.js.map",
           "./dist/surecart/p-9a919c4d.entry.js",
           "./dist/surecart/p-9a919c4d.entry.js.map",
-          "./dist/surecart/p-9ac0953f.entry.js",
-          "./dist/surecart/p-9ac0953f.entry.js.map",
           "./dist/surecart/p-9c1e51ce.entry.js",
           "./dist/surecart/p-9c1e51ce.entry.js.map",
           "./dist/surecart/p-9cdf4258.entry.js",
@@ -3504,100 +3506,110 @@
           "./dist/surecart/p-a15af810.entry.js.map",
           "./dist/surecart/p-a18c221f.entry.js",
           "./dist/surecart/p-a18c221f.entry.js.map",
-          "./dist/surecart/p-a2a36669.entry.js",
-          "./dist/surecart/p-a2a36669.entry.js.map",
+          "./dist/surecart/p-a32b9d48.entry.js",
+          "./dist/surecart/p-a32b9d48.entry.js.map",
           "./dist/surecart/p-a3393cd2.entry.js",
           "./dist/surecart/p-a3393cd2.entry.js.map",
           "./dist/surecart/p-a4c8c943.entry.js",
           "./dist/surecart/p-a4c8c943.entry.js.map",
-          "./dist/surecart/p-a719a7f1.entry.js",
-          "./dist/surecart/p-a719a7f1.entry.js.map",
-          "./dist/surecart/p-a74f51c2.entry.js",
-          "./dist/surecart/p-a74f51c2.entry.js.map",
-          "./dist/surecart/p-a8a003cc.entry.js",
-          "./dist/surecart/p-a8a003cc.entry.js.map",
+          "./dist/surecart/p-a6eaf93e.entry.js",
+          "./dist/surecart/p-a6eaf93e.entry.js.map",
           "./dist/surecart/p-a8d408dd.entry.js",
           "./dist/surecart/p-a8d408dd.entry.js.map",
           "./dist/surecart/p-a9471a9f.entry.js",
           "./dist/surecart/p-a9471a9f.entry.js.map",
           "./dist/surecart/p-a9496d60.entry.js",
           "./dist/surecart/p-a9496d60.entry.js.map",
-          "./dist/surecart/p-aa80af12.entry.js",
-          "./dist/surecart/p-aa80af12.entry.js.map",
+          "./dist/surecart/p-aa3ef08b.entry.js",
+          "./dist/surecart/p-aa3ef08b.entry.js.map",
           "./dist/surecart/p-ac5c366f.entry.js",
           "./dist/surecart/p-ac5c366f.entry.js.map",
-          "./dist/surecart/p-ada5ad3a.entry.js",
-          "./dist/surecart/p-ada5ad3a.entry.js.map",
+          "./dist/surecart/p-ad20e05b.entry.js",
+          "./dist/surecart/p-ad20e05b.entry.js.map",
           "./dist/surecart/p-addaf7a4.js",
           "./dist/surecart/p-addaf7a4.js.map",
+          "./dist/surecart/p-ae9aa5c3.entry.js",
+          "./dist/surecart/p-ae9aa5c3.entry.js.map",
+          "./dist/surecart/p-b01c5e87.entry.js",
+          "./dist/surecart/p-b01c5e87.entry.js.map",
           "./dist/surecart/p-b082ff14.entry.js",
           "./dist/surecart/p-b082ff14.entry.js.map",
           "./dist/surecart/p-b0d8cd6e.js",
           "./dist/surecart/p-b0d8cd6e.js.map",
+          "./dist/surecart/p-b0e82bc5.entry.js",
+          "./dist/surecart/p-b0e82bc5.entry.js.map",
+          "./dist/surecart/p-b0f2fe79.entry.js",
+          "./dist/surecart/p-b0f2fe79.entry.js.map",
           "./dist/surecart/p-b103c19b.entry.js",
           "./dist/surecart/p-b103c19b.entry.js.map",
           "./dist/surecart/p-b12b08e4.entry.js",
           "./dist/surecart/p-b12b08e4.entry.js.map",
+          "./dist/surecart/p-b32b34ac.entry.js",
+          "./dist/surecart/p-b32b34ac.entry.js.map",
           "./dist/surecart/p-b4ee16e8.entry.js",
           "./dist/surecart/p-b4ee16e8.entry.js.map",
           "./dist/surecart/p-b4f905eb.entry.js",
           "./dist/surecart/p-b4f905eb.entry.js.map",
           "./dist/surecart/p-b719a497.js",
           "./dist/surecart/p-b719a497.js.map",
-          "./dist/surecart/p-b85fb549.entry.js",
-          "./dist/surecart/p-b85fb549.entry.js.map",
+          "./dist/surecart/p-bacf3144.entry.js",
+          "./dist/surecart/p-bacf3144.entry.js.map",
           "./dist/surecart/p-bad5a365.entry.js",
           "./dist/surecart/p-bad5a365.entry.js.map",
           "./dist/surecart/p-bad6322c.entry.js",
           "./dist/surecart/p-bad6322c.entry.js.map",
           "./dist/surecart/p-bbc67020.entry.js",
           "./dist/surecart/p-bbc67020.entry.js.map",
-          "./dist/surecart/p-bbf69be9.entry.js",
-          "./dist/surecart/p-bbf69be9.entry.js.map",
+          "./dist/surecart/p-bd3f9511.entry.js",
+          "./dist/surecart/p-bd3f9511.entry.js.map",
           "./dist/surecart/p-be1d8313.entry.js",
           "./dist/surecart/p-be1d8313.entry.js.map",
+          "./dist/surecart/p-be62f55f.entry.js",
+          "./dist/surecart/p-be62f55f.entry.js.map",
           "./dist/surecart/p-bf85dcae.entry.js",
           "./dist/surecart/p-bf85dcae.entry.js.map",
+          "./dist/surecart/p-bfe25815.entry.js",
+          "./dist/surecart/p-bfe25815.entry.js.map",
+          "./dist/surecart/p-c0b80eac.entry.js",
+          "./dist/surecart/p-c0b80eac.entry.js.map",
           "./dist/surecart/p-c1014ac0.entry.js",
           "./dist/surecart/p-c1014ac0.entry.js.map",
-          "./dist/surecart/p-c1e85152.entry.js",
-          "./dist/surecart/p-c1e85152.entry.js.map",
-          "./dist/surecart/p-c26211d6.entry.js",
-          "./dist/surecart/p-c26211d6.entry.js.map",
-          "./dist/surecart/p-c376f9dd.entry.js",
-          "./dist/surecart/p-c376f9dd.entry.js.map",
           "./dist/surecart/p-c4264df6.js",
           "./dist/surecart/p-c4264df6.js.map",
-          "./dist/surecart/p-c42a39ba.entry.js",
-          "./dist/surecart/p-c42a39ba.entry.js.map",
-          "./dist/surecart/p-c4bb3bca.entry.js",
-          "./dist/surecart/p-c4bb3bca.entry.js.map",
-          "./dist/surecart/p-c7141e5a.entry.js",
-          "./dist/surecart/p-c7141e5a.entry.js.map",
+          "./dist/surecart/p-c6aadaa3.entry.js",
+          "./dist/surecart/p-c6aadaa3.entry.js.map",
+          "./dist/surecart/p-c8b17ea8.entry.js",
+          "./dist/surecart/p-c8b17ea8.entry.js.map",
           "./dist/surecart/p-c9d96372.entry.js",
           "./dist/surecart/p-c9d96372.entry.js.map",
-          "./dist/surecart/p-ccb331eb.entry.js",
-          "./dist/surecart/p-ccb331eb.entry.js.map",
           "./dist/surecart/p-ce0fbcda.entry.js",
           "./dist/surecart/p-ce0fbcda.entry.js.map",
-          "./dist/surecart/p-ce3b900a.entry.js",
-          "./dist/surecart/p-ce3b900a.entry.js.map",
+          "./dist/surecart/p-d005499e.entry.js",
+          "./dist/surecart/p-d005499e.entry.js.map",
           "./dist/surecart/p-d00aa4cb.entry.js",
           "./dist/surecart/p-d00aa4cb.entry.js.map",
+          "./dist/surecart/p-d0373769.entry.js",
+          "./dist/surecart/p-d0373769.entry.js.map",
           "./dist/surecart/p-d225de50.js",
           "./dist/surecart/p-d225de50.js.map",
           "./dist/surecart/p-d3366af3.js",
           "./dist/surecart/p-d3366af3.js.map",
-          "./dist/surecart/p-d412b8b3.entry.js",
-          "./dist/surecart/p-d412b8b3.entry.js.map",
-          "./dist/surecart/p-d43fdb91.entry.js",
-          "./dist/surecart/p-d43fdb91.entry.js.map",
+          "./dist/surecart/p-d72e20d9.entry.js",
+          "./dist/surecart/p-d72e20d9.entry.js.map",
+          "./dist/surecart/p-d9398ea3.entry.js",
+          "./dist/surecart/p-d9398ea3.entry.js.map",
           "./dist/surecart/p-d9fa04f9.js",
           "./dist/surecart/p-d9fa04f9.js.map",
+          "./dist/surecart/p-da554ca5.entry.js",
+          "./dist/surecart/p-da554ca5.entry.js.map",
           "./dist/surecart/p-df064a41.entry.js",
           "./dist/surecart/p-df064a41.entry.js.map",
+          "./dist/surecart/p-dfe58188.entry.js",
+          "./dist/surecart/p-dfe58188.entry.js.map",
           "./dist/surecart/p-e2395d3c.entry.js",
           "./dist/surecart/p-e2395d3c.entry.js.map",
+          "./dist/surecart/p-e286f627.entry.js",
+          "./dist/surecart/p-e286f627.entry.js.map",
           "./dist/surecart/p-e3bd9beb.entry.js",
           "./dist/surecart/p-e3bd9beb.entry.js.map",
           "./dist/surecart/p-e3be4c23.entry.js",
@@ -3608,48 +3620,42 @@
           "./dist/surecart/p-e677365e.js.map",
           "./dist/surecart/p-e885ba5f.js",
           "./dist/surecart/p-e885ba5f.js.map",
+          "./dist/surecart/p-e8cf5c6b.entry.js",
+          "./dist/surecart/p-e8cf5c6b.entry.js.map",
           "./dist/surecart/p-e97fde0a.js",
           "./dist/surecart/p-e97fde0a.js.map",
-          "./dist/surecart/p-eb530658.entry.js",
-          "./dist/surecart/p-eb530658.entry.js.map",
+          "./dist/surecart/p-e9cbebdb.entry.js",
+          "./dist/surecart/p-e9cbebdb.entry.js.map",
           "./dist/surecart/p-ec182234.js",
           "./dist/surecart/p-ec182234.js.map",
           "./dist/surecart/p-edd617b4.js",
           "./dist/surecart/p-edd617b4.js.map",
-          "./dist/surecart/p-ee6978d1.entry.js",
-          "./dist/surecart/p-ee6978d1.entry.js.map",
           "./dist/surecart/p-efa4a196.entry.js",
           "./dist/surecart/p-efa4a196.entry.js.map",
           "./dist/surecart/p-f09ee70b.js",
           "./dist/surecart/p-f09ee70b.js.map",
-          "./dist/surecart/p-f0a07296.entry.js",
-          "./dist/surecart/p-f0a07296.entry.js.map",
-          "./dist/surecart/p-f3136eb4.entry.js",
-          "./dist/surecart/p-f3136eb4.entry.js.map",
           "./dist/surecart/p-f4a54cb4.entry.js",
           "./dist/surecart/p-f4a54cb4.entry.js.map",
           "./dist/surecart/p-f6303e31.js",
           "./dist/surecart/p-f6303e31.js.map",
-          "./dist/surecart/p-f642010f.entry.js",
-          "./dist/surecart/p-f642010f.entry.js.map",
           "./dist/surecart/p-f6654b1f.entry.js",
           "./dist/surecart/p-f6654b1f.entry.js.map",
           "./dist/surecart/p-f6732e7e.entry.js",
           "./dist/surecart/p-f6732e7e.entry.js.map",
-          "./dist/surecart/p-f698ed26.entry.js",
-          "./dist/surecart/p-f698ed26.entry.js.map",
+          "./dist/surecart/p-f6a273f3.entry.js",
+          "./dist/surecart/p-f6a273f3.entry.js.map",
           "./dist/surecart/p-f8695c1b.js",
           "./dist/surecart/p-f8695c1b.js.map",
-          "./dist/surecart/p-f87a1158.entry.js",
-          "./dist/surecart/p-f87a1158.entry.js.map",
-          "./dist/surecart/p-f9d7ccc7.entry.js",
-          "./dist/surecart/p-f9d7ccc7.entry.js.map",
+          "./dist/surecart/p-f89ecee0.entry.js",
+          "./dist/surecart/p-f89ecee0.entry.js.map",
+          "./dist/surecart/p-f9744b4e.entry.js",
+          "./dist/surecart/p-f9744b4e.entry.js.map",
           "./dist/surecart/p-f9faa2a8.entry.js",
           "./dist/surecart/p-f9faa2a8.entry.js.map",
           "./dist/surecart/p-fab02ef6.js",
           "./dist/surecart/p-fab02ef6.js.map",
-          "./dist/surecart/p-fb31553e.entry.js",
-          "./dist/surecart/p-fb31553e.entry.js.map",
+          "./dist/surecart/p-fbdb1c0a.entry.js",
+          "./dist/surecart/p-fbdb1c0a.entry.js.map",
           "./dist/surecart/p-fc3977c2.entry.js",
           "./dist/surecart/p-fc3977c2.entry.js.map",
           "./dist/surecart/p-fd1598d9.js",
@@ -3662,78 +3668,66 @@
           "./dist/surecart/surecart.esm.js.map",
           "./www/build/index.esm.js",
           "./www/build/index.esm.js.map",
+          "./www/build/p-0056da7a.entry.js",
+          "./www/build/p-0056da7a.entry.js.map",
           "./www/build/p-00831dc8.entry.js",
           "./www/build/p-00831dc8.entry.js.map",
           "./www/build/p-00c1ed1d.entry.js",
           "./www/build/p-00c1ed1d.entry.js.map",
-          "./www/build/p-02aa828b.entry.js",
-          "./www/build/p-02aa828b.entry.js.map",
           "./www/build/p-03631502.js",
           "./www/build/p-03631502.js.map",
-          "./www/build/p-041bb5a1.entry.js",
-          "./www/build/p-041bb5a1.entry.js.map",
           "./www/build/p-045f4836.entry.js",
           "./www/build/p-045f4836.entry.js.map",
           "./www/build/p-05966dcd.entry.js",
           "./www/build/p-05966dcd.entry.js.map",
-          "./www/build/p-0781cc24.entry.js",
-          "./www/build/p-0781cc24.entry.js.map",
           "./www/build/p-07b1b1ed.js",
           "./www/build/p-07b1b1ed.js.map",
           "./www/build/p-08cba892.entry.js",
           "./www/build/p-08cba892.entry.js.map",
-          "./www/build/p-0900ce76.entry.js",
-          "./www/build/p-0900ce76.entry.js.map",
           "./www/build/p-0b0c03f7.js",
           "./www/build/p-0b0c03f7.js.map",
-          "./www/build/p-0e27312e.entry.js",
-          "./www/build/p-0e27312e.entry.js.map",
-          "./www/build/p-0eeb8293.entry.js",
-          "./www/build/p-0eeb8293.entry.js.map",
           "./www/build/p-0ef36383.entry.js",
           "./www/build/p-0ef36383.entry.js.map",
-          "./www/build/p-11e9fd83.entry.js",
-          "./www/build/p-11e9fd83.entry.js.map",
+          "./www/build/p-11473c44.entry.js",
+          "./www/build/p-11473c44.entry.js.map",
+          "./www/build/p-1187e40f.entry.js",
+          "./www/build/p-1187e40f.entry.js.map",
           "./www/build/p-1348e564.entry.js",
           "./www/build/p-1348e564.entry.js.map",
           "./www/build/p-13f5e4e1.js",
           "./www/build/p-13f5e4e1.js.map",
           "./www/build/p-145eb10d.entry.js",
           "./www/build/p-145eb10d.entry.js.map",
-          "./www/build/p-14a2105b.entry.js",
-          "./www/build/p-14a2105b.entry.js.map",
           "./www/build/p-14d5e0fd.entry.js",
           "./www/build/p-14d5e0fd.entry.js.map",
           "./www/build/p-15d96c16.entry.js",
           "./www/build/p-15d96c16.entry.js.map",
           "./www/build/p-15fc6bbd.entry.js",
           "./www/build/p-15fc6bbd.entry.js.map",
-          "./www/build/p-15fd4cfe.entry.js",
-          "./www/build/p-15fd4cfe.entry.js.map",
-          "./www/build/p-16c1868e.entry.js",
-          "./www/build/p-16c1868e.entry.js.map",
-          "./www/build/p-19c3d42c.entry.js",
-          "./www/build/p-19c3d42c.entry.js.map",
-          "./www/build/p-1a07f633.entry.js",
-          "./www/build/p-1a07f633.entry.js.map",
+          "./www/build/p-1987d09d.entry.js",
+          "./www/build/p-1987d09d.entry.js.map",
           "./www/build/p-1b16d197.entry.js",
           "./www/build/p-1b16d197.entry.js.map",
           "./www/build/p-1b470883.js",
           "./www/build/p-1b470883.js.map",
+          "./www/build/p-1c86ed36.entry.js",
+          "./www/build/p-1c86ed36.entry.js.map",
           "./www/build/p-1d72a9f5.entry.js",
           "./www/build/p-1d72a9f5.entry.js.map",
-          "./www/build/p-1ec11474.entry.js",
-          "./www/build/p-1ec11474.entry.js.map",
           "./www/build/p-1f60f497.js",
           "./www/build/p-1f60f497.js.map",
           "./www/build/p-20f9c906.entry.js",
           "./www/build/p-20f9c906.entry.js.map",
+          "./www/build/p-2169db5d.entry.js",
+          "./www/build/p-2169db5d.entry.js.map",
+          "./www/build/p-2174d110.entry.js",
+          "./www/build/p-2174d110.entry.js.map",
           "./www/build/p-227f95c9.entry.js",
           "./www/build/p-227f95c9.entry.js.map",
-          "./www/build/p-22db856b.entry.js",
-          "./www/build/p-22db856b.entry.js.map",
           "./www/build/p-23b6cc2c.entry.js",
           "./www/build/p-23b6cc2c.entry.js.map",
+          "./www/build/p-240edd37.entry.js",
+          "./www/build/p-240edd37.entry.js.map",
           "./www/build/p-269ad1aa.entry.js",
           "./www/build/p-269ad1aa.entry.js.map",
           "./www/build/p-2725f5b1.entry.js",
@@ -3742,10 +3736,6 @@
           "./www/build/p-281d44dd.entry.js.map",
           "./www/build/p-28d98d61.js",
           "./www/build/p-28d98d61.js.map",
-          "./www/build/p-28ee3d3c.entry.js",
-          "./www/build/p-28ee3d3c.entry.js.map",
-          "./www/build/p-298b5e09.entry.js",
-          "./www/build/p-298b5e09.entry.js.map",
           "./www/build/p-2a0dde4d.entry.js",
           "./www/build/p-2a0dde4d.entry.js.map",
           "./www/build/p-2af3d7a7.entry.js",
@@ -3754,14 +3744,22 @@
           "./www/build/p-2d2ea552.js.map",
           "./www/build/p-2f3f0fb1.entry.js",
           "./www/build/p-2f3f0fb1.entry.js.map",
-          "./www/build/p-34268666.entry.js",
-          "./www/build/p-34268666.entry.js.map",
+          "./www/build/p-2f7f3775.entry.js",
+          "./www/build/p-2f7f3775.entry.js.map",
+          "./www/build/p-308046cb.entry.js",
+          "./www/build/p-308046cb.entry.js.map",
+          "./www/build/p-3110f151.entry.js",
+          "./www/build/p-3110f151.entry.js.map",
+          "./www/build/p-32a37bc1.entry.js",
+          "./www/build/p-32a37bc1.entry.js.map",
           "./www/build/p-3598892f.entry.js",
           "./www/build/p-3598892f.entry.js.map",
           "./www/build/p-36e59877.entry.js",
           "./www/build/p-36e59877.entry.js.map",
-          "./www/build/p-3884d595.entry.js",
-          "./www/build/p-3884d595.entry.js.map",
+          "./www/build/p-37c6de3f.entry.js",
+          "./www/build/p-37c6de3f.entry.js.map",
+          "./www/build/p-38443820.entry.js",
+          "./www/build/p-38443820.entry.js.map",
           "./www/build/p-3918a0cc.js",
           "./www/build/p-3918a0cc.js.map",
           "./www/build/p-393cb717.js",
@@ -3776,12 +3774,14 @@
           "./www/build/p-3f6362a4.js.map",
           "./www/build/p-401e165e.js",
           "./www/build/p-401e165e.js.map",
-          "./www/build/p-42efcf53.entry.js",
-          "./www/build/p-42efcf53.entry.js.map",
+          "./www/build/p-4043fc91.entry.js",
+          "./www/build/p-4043fc91.entry.js.map",
+          "./www/build/p-4058ecc1.entry.js",
+          "./www/build/p-4058ecc1.entry.js.map",
+          "./www/build/p-40cf44fb.entry.js",
+          "./www/build/p-40cf44fb.entry.js.map",
           "./www/build/p-4309e2af.entry.js",
           "./www/build/p-4309e2af.entry.js.map",
-          "./www/build/p-430a62f1.entry.js",
-          "./www/build/p-430a62f1.entry.js.map",
           "./www/build/p-43e1c1b1.entry.js",
           "./www/build/p-43e1c1b1.entry.js.map",
           "./www/build/p-44160a61.entry.js",
@@ -3790,36 +3790,38 @@
           "./www/build/p-449324ed.js.map",
           "./www/build/p-44966374.entry.js",
           "./www/build/p-44966374.entry.js.map",
+          "./www/build/p-44fd51de.entry.js",
+          "./www/build/p-44fd51de.entry.js.map",
           "./www/build/p-4519e1ff.js",
           "./www/build/p-4519e1ff.js.map",
-          "./www/build/p-45763ac2.entry.js",
-          "./www/build/p-45763ac2.entry.js.map",
           "./www/build/p-45c65e2d.entry.js",
           "./www/build/p-45c65e2d.entry.js.map",
           "./www/build/p-46584f2c.entry.js",
           "./www/build/p-46584f2c.entry.js.map",
           "./www/build/p-47fc4e65.entry.js",
           "./www/build/p-47fc4e65.entry.js.map",
-          "./www/build/p-493c1c4c.entry.js",
-          "./www/build/p-493c1c4c.entry.js.map",
-          "./www/build/p-4aec1470.entry.js",
-          "./www/build/p-4aec1470.entry.js.map",
           "./www/build/p-4b6388d1.entry.js",
           "./www/build/p-4b6388d1.entry.js.map",
-          "./www/build/p-4ba754d7.entry.js",
-          "./www/build/p-4ba754d7.entry.js.map",
           "./www/build/p-4be9e1f2.entry.js",
           "./www/build/p-4be9e1f2.entry.js.map",
           "./www/build/p-4ea36f1e.js",
           "./www/build/p-4ea36f1e.js.map",
-          "./www/build/p-502d26c4.entry.js",
-          "./www/build/p-502d26c4.entry.js.map",
-          "./www/build/p-56a0b3a9.entry.js",
-          "./www/build/p-56a0b3a9.entry.js.map",
+          "./www/build/p-512a0cb4.entry.js",
+          "./www/build/p-512a0cb4.entry.js.map",
+          "./www/build/p-51345365.entry.js",
+          "./www/build/p-51345365.entry.js.map",
+          "./www/build/p-530f724d.entry.js",
+          "./www/build/p-530f724d.entry.js.map",
+          "./www/build/p-5412695c.entry.js",
+          "./www/build/p-5412695c.entry.js.map",
+          "./www/build/p-5570e9c1.entry.js",
+          "./www/build/p-5570e9c1.entry.js.map",
           "./www/build/p-56d85a8b.entry.js",
           "./www/build/p-56d85a8b.entry.js.map",
           "./www/build/p-580e43b9.entry.js",
           "./www/build/p-580e43b9.entry.js.map",
+          "./www/build/p-586acaec.entry.js",
+          "./www/build/p-586acaec.entry.js.map",
           "./www/build/p-591c90d4.entry.js",
           "./www/build/p-591c90d4.entry.js.map",
           "./www/build/p-5b78672c.entry.js",
@@ -3828,44 +3830,50 @@
           "./www/build/p-5c1a03e5.js.map",
           "./www/build/p-5eaa8679.entry.js",
           "./www/build/p-5eaa8679.entry.js.map",
-          "./www/build/p-6182e1c9.entry.js",
-          "./www/build/p-6182e1c9.entry.js.map",
+          "./www/build/p-5feef65b.entry.js",
+          "./www/build/p-5feef65b.entry.js.map",
+          "./www/build/p-6168143f.entry.js",
+          "./www/build/p-6168143f.entry.js.map",
           "./www/build/p-61ba97ac.entry.js",
           "./www/build/p-61ba97ac.entry.js.map",
           "./www/build/p-6495d30f.entry.js",
           "./www/build/p-6495d30f.entry.js.map",
           "./www/build/p-64f502e6.entry.js",
           "./www/build/p-64f502e6.entry.js.map",
-          "./www/build/p-659f210d.entry.js",
-          "./www/build/p-659f210d.entry.js.map",
-          "./www/build/p-6ac8a168.entry.js",
-          "./www/build/p-6ac8a168.entry.js.map",
+          "./www/build/p-67259f0d.entry.js",
+          "./www/build/p-67259f0d.entry.js.map",
+          "./www/build/p-6b456476.entry.js",
+          "./www/build/p-6b456476.entry.js.map",
+          "./www/build/p-6c2a6d58.entry.js",
+          "./www/build/p-6c2a6d58.entry.js.map",
           "./www/build/p-6cbad57b.entry.js",
           "./www/build/p-6cbad57b.entry.js.map",
           "./www/build/p-6f847baf.entry.js",
           "./www/build/p-6f847baf.entry.js.map",
           "./www/build/p-6f9e2726.entry.js",
           "./www/build/p-6f9e2726.entry.js.map",
-          "./www/build/p-715ed809.entry.js",
-          "./www/build/p-715ed809.entry.js.map",
+          "./www/build/p-719ec474.entry.js",
+          "./www/build/p-719ec474.entry.js.map",
           "./www/build/p-72386d0b.entry.js",
           "./www/build/p-72386d0b.entry.js.map",
-          "./www/build/p-7535babf.entry.js",
-          "./www/build/p-7535babf.entry.js.map",
           "./www/build/p-75555783.entry.js",
           "./www/build/p-75555783.entry.js.map",
+          "./www/build/p-756a4a41.entry.js",
+          "./www/build/p-756a4a41.entry.js.map",
           "./www/build/p-76c7689d.entry.js",
           "./www/build/p-76c7689d.entry.js.map",
           "./www/build/p-7933c9e8.entry.js",
           "./www/build/p-7933c9e8.entry.js.map",
-          "./www/build/p-7d4843c1.entry.js",
-          "./www/build/p-7d4843c1.entry.js.map",
+          "./www/build/p-7a1365d4.entry.js",
+          "./www/build/p-7a1365d4.entry.js.map",
+          "./www/build/p-7a9032f9.entry.js",
+          "./www/build/p-7a9032f9.entry.js.map",
+          "./www/build/p-7c844bf1.entry.js",
+          "./www/build/p-7c844bf1.entry.js.map",
           "./www/build/p-7f01a36e.js",
           "./www/build/p-7f01a36e.js.map",
           "./www/build/p-812babe9.entry.js",
           "./www/build/p-812babe9.entry.js.map",
-          "./www/build/p-82a061c4.entry.js",
-          "./www/build/p-82a061c4.entry.js.map",
           "./www/build/p-830ab1a3.js",
           "./www/build/p-830ab1a3.js.map",
           "./www/build/p-8631e2b9.entry.js",
@@ -3874,28 +3882,28 @@
           "./www/build/p-863940e9.js.map",
           "./www/build/p-868f7950.entry.js",
           "./www/build/p-868f7950.entry.js.map",
-          "./www/build/p-8690ad44.entry.js",
-          "./www/build/p-8690ad44.entry.js.map",
           "./www/build/p-86fd1a31.js",
           "./www/build/p-86fd1a31.js.map",
+          "./www/build/p-876e7492.entry.js",
+          "./www/build/p-876e7492.entry.js.map",
           "./www/build/p-88aed607.js",
           "./www/build/p-88aed607.js.map",
+          "./www/build/p-890caf22.entry.js",
+          "./www/build/p-890caf22.entry.js.map",
           "./www/build/p-894c7006.js",
           "./www/build/p-894c7006.js.map",
-          "./www/build/p-89562646.entry.js",
-          "./www/build/p-89562646.entry.js.map",
-          "./www/build/p-896c77cd.entry.js",
-          "./www/build/p-896c77cd.entry.js.map",
           "./www/build/p-89bbc5b1.entry.js",
           "./www/build/p-89bbc5b1.entry.js.map",
           "./www/build/p-8b323bfb.js",
           "./www/build/p-8b323bfb.js.map",
           "./www/build/p-8bba23e1.entry.js",
           "./www/build/p-8bba23e1.entry.js.map",
-          "./www/build/p-8dc076fc.entry.js",
-          "./www/build/p-8dc076fc.entry.js.map",
           "./www/build/p-8e1549b8.js",
           "./www/build/p-8e1549b8.js.map",
+          "./www/build/p-8f5b5b2c.entry.js",
+          "./www/build/p-8f5b5b2c.entry.js.map",
+          "./www/build/p-9005ff38.entry.js",
+          "./www/build/p-9005ff38.entry.js.map",
           "./www/build/p-9110e374.entry.js",
           "./www/build/p-9110e374.entry.js.map",
           "./www/build/p-9205ca91.entry.js",
@@ -3906,20 +3914,14 @@
           "./www/build/p-930ac855.js.map",
           "./www/build/p-93127aa7.js",
           "./www/build/p-93127aa7.js.map",
-          "./www/build/p-93258ac5.entry.js",
-          "./www/build/p-93258ac5.entry.js.map",
+          "./www/build/p-937ecbc0.entry.js",
+          "./www/build/p-937ecbc0.entry.js.map",
           "./www/build/p-95325ec5.js",
           "./www/build/p-95325ec5.js.map",
-          "./www/build/p-9867d306.entry.js",
-          "./www/build/p-9867d306.entry.js.map",
-          "./www/build/p-99222c19.entry.js",
-          "./www/build/p-99222c19.entry.js.map",
           "./www/build/p-9a49a1cf.entry.js",
           "./www/build/p-9a49a1cf.entry.js.map",
           "./www/build/p-9a919c4d.entry.js",
           "./www/build/p-9a919c4d.entry.js.map",
-          "./www/build/p-9ac0953f.entry.js",
-          "./www/build/p-9ac0953f.entry.js.map",
           "./www/build/p-9c1e51ce.entry.js",
           "./www/build/p-9c1e51ce.entry.js.map",
           "./www/build/p-9cdf4258.entry.js",
@@ -3940,100 +3942,110 @@
           "./www/build/p-a15af810.entry.js.map",
           "./www/build/p-a18c221f.entry.js",
           "./www/build/p-a18c221f.entry.js.map",
-          "./www/build/p-a2a36669.entry.js",
-          "./www/build/p-a2a36669.entry.js.map",
+          "./www/build/p-a32b9d48.entry.js",
+          "./www/build/p-a32b9d48.entry.js.map",
           "./www/build/p-a3393cd2.entry.js",
           "./www/build/p-a3393cd2.entry.js.map",
           "./www/build/p-a4c8c943.entry.js",
           "./www/build/p-a4c8c943.entry.js.map",
-          "./www/build/p-a719a7f1.entry.js",
-          "./www/build/p-a719a7f1.entry.js.map",
-          "./www/build/p-a74f51c2.entry.js",
-          "./www/build/p-a74f51c2.entry.js.map",
-          "./www/build/p-a8a003cc.entry.js",
-          "./www/build/p-a8a003cc.entry.js.map",
+          "./www/build/p-a6eaf93e.entry.js",
+          "./www/build/p-a6eaf93e.entry.js.map",
           "./www/build/p-a8d408dd.entry.js",
           "./www/build/p-a8d408dd.entry.js.map",
           "./www/build/p-a9471a9f.entry.js",
           "./www/build/p-a9471a9f.entry.js.map",
           "./www/build/p-a9496d60.entry.js",
           "./www/build/p-a9496d60.entry.js.map",
-          "./www/build/p-aa80af12.entry.js",
-          "./www/build/p-aa80af12.entry.js.map",
+          "./www/build/p-aa3ef08b.entry.js",
+          "./www/build/p-aa3ef08b.entry.js.map",
           "./www/build/p-ac5c366f.entry.js",
           "./www/build/p-ac5c366f.entry.js.map",
-          "./www/build/p-ada5ad3a.entry.js",
-          "./www/build/p-ada5ad3a.entry.js.map",
+          "./www/build/p-ad20e05b.entry.js",
+          "./www/build/p-ad20e05b.entry.js.map",
           "./www/build/p-addaf7a4.js",
           "./www/build/p-addaf7a4.js.map",
+          "./www/build/p-ae9aa5c3.entry.js",
+          "./www/build/p-ae9aa5c3.entry.js.map",
+          "./www/build/p-b01c5e87.entry.js",
+          "./www/build/p-b01c5e87.entry.js.map",
           "./www/build/p-b082ff14.entry.js",
           "./www/build/p-b082ff14.entry.js.map",
           "./www/build/p-b0d8cd6e.js",
           "./www/build/p-b0d8cd6e.js.map",
+          "./www/build/p-b0e82bc5.entry.js",
+          "./www/build/p-b0e82bc5.entry.js.map",
+          "./www/build/p-b0f2fe79.entry.js",
+          "./www/build/p-b0f2fe79.entry.js.map",
           "./www/build/p-b103c19b.entry.js",
           "./www/build/p-b103c19b.entry.js.map",
           "./www/build/p-b12b08e4.entry.js",
           "./www/build/p-b12b08e4.entry.js.map",
+          "./www/build/p-b32b34ac.entry.js",
+          "./www/build/p-b32b34ac.entry.js.map",
           "./www/build/p-b4ee16e8.entry.js",
           "./www/build/p-b4ee16e8.entry.js.map",
           "./www/build/p-b4f905eb.entry.js",
           "./www/build/p-b4f905eb.entry.js.map",
           "./www/build/p-b719a497.js",
           "./www/build/p-b719a497.js.map",
-          "./www/build/p-b85fb549.entry.js",
-          "./www/build/p-b85fb549.entry.js.map",
+          "./www/build/p-bacf3144.entry.js",
+          "./www/build/p-bacf3144.entry.js.map",
           "./www/build/p-bad5a365.entry.js",
           "./www/build/p-bad5a365.entry.js.map",
           "./www/build/p-bad6322c.entry.js",
           "./www/build/p-bad6322c.entry.js.map",
           "./www/build/p-bbc67020.entry.js",
           "./www/build/p-bbc67020.entry.js.map",
-          "./www/build/p-bbf69be9.entry.js",
-          "./www/build/p-bbf69be9.entry.js.map",
+          "./www/build/p-bd3f9511.entry.js",
+          "./www/build/p-bd3f9511.entry.js.map",
           "./www/build/p-be1d8313.entry.js",
           "./www/build/p-be1d8313.entry.js.map",
+          "./www/build/p-be62f55f.entry.js",
+          "./www/build/p-be62f55f.entry.js.map",
           "./www/build/p-bf85dcae.entry.js",
           "./www/build/p-bf85dcae.entry.js.map",
+          "./www/build/p-bfe25815.entry.js",
+          "./www/build/p-bfe25815.entry.js.map",
+          "./www/build/p-c0b80eac.entry.js",
+          "./www/build/p-c0b80eac.entry.js.map",
           "./www/build/p-c1014ac0.entry.js",
           "./www/build/p-c1014ac0.entry.js.map",
-          "./www/build/p-c1e85152.entry.js",
-          "./www/build/p-c1e85152.entry.js.map",
-          "./www/build/p-c26211d6.entry.js",
-          "./www/build/p-c26211d6.entry.js.map",
-          "./www/build/p-c376f9dd.entry.js",
-          "./www/build/p-c376f9dd.entry.js.map",
           "./www/build/p-c4264df6.js",
           "./www/build/p-c4264df6.js.map",
-          "./www/build/p-c42a39ba.entry.js",
-          "./www/build/p-c42a39ba.entry.js.map",
-          "./www/build/p-c4bb3bca.entry.js",
-          "./www/build/p-c4bb3bca.entry.js.map",
-          "./www/build/p-c7141e5a.entry.js",
-          "./www/build/p-c7141e5a.entry.js.map",
+          "./www/build/p-c6aadaa3.entry.js",
+          "./www/build/p-c6aadaa3.entry.js.map",
+          "./www/build/p-c8b17ea8.entry.js",
+          "./www/build/p-c8b17ea8.entry.js.map",
           "./www/build/p-c9d96372.entry.js",
           "./www/build/p-c9d96372.entry.js.map",
-          "./www/build/p-ccb331eb.entry.js",
-          "./www/build/p-ccb331eb.entry.js.map",
           "./www/build/p-ce0fbcda.entry.js",
           "./www/build/p-ce0fbcda.entry.js.map",
-          "./www/build/p-ce3b900a.entry.js",
-          "./www/build/p-ce3b900a.entry.js.map",
+          "./www/build/p-d005499e.entry.js",
+          "./www/build/p-d005499e.entry.js.map",
           "./www/build/p-d00aa4cb.entry.js",
           "./www/build/p-d00aa4cb.entry.js.map",
+          "./www/build/p-d0373769.entry.js",
+          "./www/build/p-d0373769.entry.js.map",
           "./www/build/p-d225de50.js",
           "./www/build/p-d225de50.js.map",
           "./www/build/p-d3366af3.js",
           "./www/build/p-d3366af3.js.map",
-          "./www/build/p-d412b8b3.entry.js",
-          "./www/build/p-d412b8b3.entry.js.map",
-          "./www/build/p-d43fdb91.entry.js",
-          "./www/build/p-d43fdb91.entry.js.map",
+          "./www/build/p-d72e20d9.entry.js",
+          "./www/build/p-d72e20d9.entry.js.map",
+          "./www/build/p-d9398ea3.entry.js",
+          "./www/build/p-d9398ea3.entry.js.map",
           "./www/build/p-d9fa04f9.js",
           "./www/build/p-d9fa04f9.js.map",
+          "./www/build/p-da554ca5.entry.js",
+          "./www/build/p-da554ca5.entry.js.map",
           "./www/build/p-df064a41.entry.js",
           "./www/build/p-df064a41.entry.js.map",
+          "./www/build/p-dfe58188.entry.js",
+          "./www/build/p-dfe58188.entry.js.map",
           "./www/build/p-e2395d3c.entry.js",
           "./www/build/p-e2395d3c.entry.js.map",
+          "./www/build/p-e286f627.entry.js",
+          "./www/build/p-e286f627.entry.js.map",
           "./www/build/p-e3bd9beb.entry.js",
           "./www/build/p-e3bd9beb.entry.js.map",
           "./www/build/p-e3be4c23.entry.js",
@@ -4044,48 +4056,42 @@
           "./www/build/p-e677365e.js.map",
           "./www/build/p-e885ba5f.js",
           "./www/build/p-e885ba5f.js.map",
+          "./www/build/p-e8cf5c6b.entry.js",
+          "./www/build/p-e8cf5c6b.entry.js.map",
           "./www/build/p-e97fde0a.js",
           "./www/build/p-e97fde0a.js.map",
-          "./www/build/p-eb530658.entry.js",
-          "./www/build/p-eb530658.entry.js.map",
+          "./www/build/p-e9cbebdb.entry.js",
+          "./www/build/p-e9cbebdb.entry.js.map",
           "./www/build/p-ec182234.js",
           "./www/build/p-ec182234.js.map",
           "./www/build/p-edd617b4.js",
           "./www/build/p-edd617b4.js.map",
-          "./www/build/p-ee6978d1.entry.js",
-          "./www/build/p-ee6978d1.entry.js.map",
           "./www/build/p-efa4a196.entry.js",
           "./www/build/p-efa4a196.entry.js.map",
           "./www/build/p-f09ee70b.js",
           "./www/build/p-f09ee70b.js.map",
-          "./www/build/p-f0a07296.entry.js",
-          "./www/build/p-f0a07296.entry.js.map",
-          "./www/build/p-f3136eb4.entry.js",
-          "./www/build/p-f3136eb4.entry.js.map",
           "./www/build/p-f4a54cb4.entry.js",
           "./www/build/p-f4a54cb4.entry.js.map",
           "./www/build/p-f6303e31.js",
           "./www/build/p-f6303e31.js.map",
-          "./www/build/p-f642010f.entry.js",
-          "./www/build/p-f642010f.entry.js.map",
           "./www/build/p-f6654b1f.entry.js",
           "./www/build/p-f6654b1f.entry.js.map",
           "./www/build/p-f6732e7e.entry.js",
           "./www/build/p-f6732e7e.entry.js.map",
-          "./www/build/p-f698ed26.entry.js",
-          "./www/build/p-f698ed26.entry.js.map",
+          "./www/build/p-f6a273f3.entry.js",
+          "./www/build/p-f6a273f3.entry.js.map",
           "./www/build/p-f8695c1b.js",
           "./www/build/p-f8695c1b.js.map",
-          "./www/build/p-f87a1158.entry.js",
-          "./www/build/p-f87a1158.entry.js.map",
-          "./www/build/p-f9d7ccc7.entry.js",
-          "./www/build/p-f9d7ccc7.entry.js.map",
+          "./www/build/p-f89ecee0.entry.js",
+          "./www/build/p-f89ecee0.entry.js.map",
+          "./www/build/p-f9744b4e.entry.js",
+          "./www/build/p-f9744b4e.entry.js.map",
           "./www/build/p-f9faa2a8.entry.js",
           "./www/build/p-f9faa2a8.entry.js.map",
           "./www/build/p-fab02ef6.js",
           "./www/build/p-fab02ef6.js.map",
-          "./www/build/p-fb31553e.entry.js",
-          "./www/build/p-fb31553e.entry.js.map",
+          "./www/build/p-fbdb1c0a.entry.js",
+          "./www/build/p-fbdb1c0a.entry.js.map",
           "./www/build/p-fc3977c2.entry.js",
           "./www/build/p-fc3977c2.entry.js.map",
           "./www/build/p-fd1598d9.js",
@@ -4139,8 +4145,8 @@
           "sc-subscription-reactivate",
           "sc-text"
         ],
-        "bundleId": "p-715ed809",
-        "fileName": "p-715ed809.entry.js",
+        "bundleId": "p-530f724d",
+        "fileName": "p-530f724d.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-b0d8cd6e.js",
@@ -4157,8 +4163,8 @@
         "components": [
           "sc-avatar"
         ],
-        "bundleId": "p-34268666",
-        "fileName": "p-34268666.entry.js",
+        "bundleId": "p-308046cb",
+        "fileName": "p-308046cb.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -4169,8 +4175,8 @@
         "components": [
           "sc-badge-notice"
         ],
-        "bundleId": "p-041bb5a1",
-        "fileName": "p-041bb5a1.entry.js",
+        "bundleId": "p-876e7492",
+        "fileName": "p-876e7492.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -4181,8 +4187,8 @@
         "components": [
           "sc-breadcrumb"
         ],
-        "bundleId": "p-15fd4cfe",
-        "fileName": "p-15fd4cfe.entry.js",
+        "bundleId": "p-240edd37",
+        "fileName": "p-240edd37.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -4193,8 +4199,8 @@
         "components": [
           "sc-breadcrumbs"
         ],
-        "bundleId": "p-42efcf53",
-        "fileName": "p-42efcf53.entry.js",
+        "bundleId": "p-9005ff38",
+        "fileName": "p-9005ff38.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -4205,8 +4211,8 @@
         "components": [
           "sc-button-group"
         ],
-        "bundleId": "p-c26211d6",
-        "fileName": "p-c26211d6.entry.js",
+        "bundleId": "p-fbdb1c0a",
+        "fileName": "p-fbdb1c0a.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -4243,8 +4249,8 @@
         "components": [
           "sc-cart-button"
         ],
-        "bundleId": "p-7d4843c1",
-        "fileName": "p-7d4843c1.entry.js",
+        "bundleId": "p-7c844bf1",
+        "fileName": "p-7c844bf1.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-f09ee70b.js",
@@ -4739,8 +4745,8 @@
         "components": [
           "sc-feature-demo-banner"
         ],
-        "bundleId": "p-56a0b3a9",
-        "fileName": "p-56a0b3a9.entry.js",
+        "bundleId": "p-5feef65b",
+        "fileName": "p-5feef65b.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -4751,8 +4757,8 @@
         "components": [
           "sc-form-row"
         ],
-        "bundleId": "p-a719a7f1",
-        "fileName": "p-a719a7f1.entry.js",
+        "bundleId": "p-512a0cb4",
+        "fileName": "p-512a0cb4.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -4792,8 +4798,8 @@
         "components": [
           "sc-image-slider"
         ],
-        "bundleId": "p-22db856b",
-        "fileName": "p-22db856b.entry.js",
+        "bundleId": "p-2174d110",
+        "fileName": "p-2174d110.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -4918,8 +4924,8 @@
         "components": [
           "sc-menu-divider"
         ],
-        "bundleId": "p-6182e1c9",
-        "fileName": "p-6182e1c9.entry.js",
+        "bundleId": "p-bd3f9511",
+        "fileName": "p-bd3f9511.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -5045,8 +5051,8 @@
         "components": [
           "sc-order-fulfillment-badge"
         ],
-        "bundleId": "p-b85fb549",
-        "fileName": "p-b85fb549.entry.js",
+        "bundleId": "p-44fd51de",
+        "fileName": "p-44fd51de.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -5070,8 +5076,8 @@
         "components": [
           "sc-order-return-badge"
         ],
-        "bundleId": "p-f0a07296",
-        "fileName": "p-f0a07296.entry.js",
+        "bundleId": "p-b0e82bc5",
+        "fileName": "p-b0e82bc5.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -5193,8 +5199,8 @@
         "components": [
           "sc-payment-method-details"
         ],
-        "bundleId": "p-493c1c4c",
-        "fileName": "p-493c1c4c.entry.js",
+        "bundleId": "p-f9744b4e",
+        "fileName": "p-f9744b4e.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -5221,8 +5227,8 @@
         "components": [
           "sc-paypal-add-method"
         ],
-        "bundleId": "p-19c3d42c",
-        "fileName": "p-19c3d42c.entry.js",
+        "bundleId": "p-6b456476",
+        "fileName": "p-6b456476.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-e885ba5f.js",
@@ -5237,8 +5243,8 @@
         "components": [
           "sc-paystack-add-method"
         ],
-        "bundleId": "p-0e27312e",
-        "fileName": "p-0e27312e.entry.js",
+        "bundleId": "p-c0b80eac",
+        "fileName": "p-c0b80eac.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-3aa9debd.js",
@@ -5253,8 +5259,8 @@
         "components": [
           "sc-premium-tag"
         ],
-        "bundleId": "p-a8a003cc",
-        "fileName": "p-a8a003cc.entry.js",
+        "bundleId": "p-4043fc91",
+        "fileName": "p-4043fc91.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -5623,8 +5629,8 @@
         "components": [
           "sc-provisional-banner"
         ],
-        "bundleId": "p-89562646",
-        "fileName": "p-89562646.entry.js",
+        "bundleId": "p-bfe25815",
+        "fileName": "p-bfe25815.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -5635,8 +5641,8 @@
         "components": [
           "sc-rich-text"
         ],
-        "bundleId": "p-ccb331eb",
-        "fileName": "p-ccb331eb.entry.js",
+        "bundleId": "p-1187e40f",
+        "fileName": "p-1187e40f.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -5647,8 +5653,8 @@
         "components": [
           "sc-stripe-add-method"
         ],
-        "bundleId": "p-11e9fd83",
-        "fileName": "p-11e9fd83.entry.js",
+        "bundleId": "p-4058ecc1",
+        "fileName": "p-4058ecc1.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-9ef0f73f.js",
@@ -5663,8 +5669,8 @@
         "components": [
           "sc-stripe-element"
         ],
-        "bundleId": "p-d43fdb91",
-        "fileName": "p-d43fdb91.entry.js",
+        "bundleId": "p-c8b17ea8",
+        "fileName": "p-c8b17ea8.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-9ef0f73f.js",
@@ -5691,8 +5697,8 @@
         "components": [
           "sc-stripe-payment-element"
         ],
-        "bundleId": "p-f3136eb4",
-        "fileName": "p-f3136eb4.entry.js",
+        "bundleId": "p-6168143f",
+        "fileName": "p-6168143f.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-9ef0f73f.js",
@@ -5834,8 +5840,8 @@
         "components": [
           "sc-tab"
         ],
-        "bundleId": "p-99222c19",
-        "fileName": "p-99222c19.entry.js",
+        "bundleId": "p-e8cf5c6b",
+        "fileName": "p-e8cf5c6b.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-b0d8cd6e.js"
@@ -5847,8 +5853,8 @@
         "components": [
           "sc-tab-group"
         ],
-        "bundleId": "p-430a62f1",
-        "fileName": "p-430a62f1.entry.js",
+        "bundleId": "p-756a4a41",
+        "fileName": "p-756a4a41.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -5859,8 +5865,8 @@
         "components": [
           "sc-tab-panel"
         ],
-        "bundleId": "p-502d26c4",
-        "fileName": "p-502d26c4.entry.js",
+        "bundleId": "p-d9398ea3",
+        "fileName": "p-d9398ea3.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -5871,8 +5877,8 @@
         "components": [
           "sc-table-head"
         ],
-        "bundleId": "p-4ba754d7",
-        "fileName": "p-4ba754d7.entry.js",
+        "bundleId": "p-aa3ef08b",
+        "fileName": "p-aa3ef08b.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6104,8 +6110,8 @@
           "sc-drawer",
           "sc-error"
         ],
-        "bundleId": "p-6ac8a168",
-        "fileName": "p-6ac8a168.entry.js",
+        "bundleId": "p-67259f0d",
+        "fileName": "p-67259f0d.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-f09ee70b.js",
@@ -6176,8 +6182,8 @@
           "sc-order-confirm-provider",
           "sc-session-provider"
         ],
-        "bundleId": "p-28ee3d3c",
-        "fileName": "p-28ee3d3c.entry.js",
+        "bundleId": "p-ad20e05b",
+        "fileName": "p-ad20e05b.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-f09ee70b.js",
@@ -6203,7 +6209,7 @@
           "p-93127aa7.js",
           "p-07b1b1ed.js"
         ],
-        "originalByteSize": 61348
+        "originalByteSize": 61469
       },
       {
         "key": "sc-fulfillment-shipping-status-badge.entry",
@@ -6223,8 +6229,8 @@
           "sc-heading",
           "sc-order-confirm-components-validator"
         ],
-        "bundleId": "p-93258ac5",
-        "fileName": "p-93258ac5.entry.js",
+        "bundleId": "p-0056da7a",
+        "fileName": "p-0056da7a.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6235,8 +6241,8 @@
         "components": [
           "sc-invoice-status-badge"
         ],
-        "bundleId": "p-f87a1158",
-        "fileName": "p-f87a1158.entry.js",
+        "bundleId": "p-d72e20d9",
+        "fileName": "p-d72e20d9.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6278,8 +6284,8 @@
           "sc-paypal-buttons",
           "sc-secure-notice"
         ],
-        "bundleId": "p-fb31553e",
-        "fileName": "p-fb31553e.entry.js",
+        "bundleId": "p-38443820",
+        "fileName": "p-38443820.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-e885ba5f.js",
@@ -6344,8 +6350,8 @@
         "components": [
           "sc-stripe-payment-request"
         ],
-        "bundleId": "p-298b5e09",
-        "fileName": "p-298b5e09.entry.js",
+        "bundleId": "p-37c6de3f",
+        "fileName": "p-37c6de3f.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-9ef0f73f.js",
@@ -6371,8 +6377,8 @@
         "components": [
           "sc-summary"
         ],
-        "bundleId": "p-ee6978d1",
-        "fileName": "p-ee6978d1.entry.js",
+        "bundleId": "p-be62f55f",
+        "fileName": "p-be62f55f.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-830ab1a3.js",
@@ -6385,8 +6391,8 @@
         "components": [
           "sc-switch"
         ],
-        "bundleId": "p-f9d7ccc7",
-        "fileName": "p-f9d7ccc7.entry.js",
+        "bundleId": "p-f89ecee0",
+        "fileName": "p-f89ecee0.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-8b323bfb.js"
@@ -6398,8 +6404,8 @@
         "components": [
           "sc-toggles"
         ],
-        "bundleId": "p-aa80af12",
-        "fileName": "p-aa80af12.entry.js",
+        "bundleId": "p-a6eaf93e",
+        "fileName": "p-a6eaf93e.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6413,8 +6419,8 @@
           "sc-subscription-cancel",
           "sc-textarea"
         ],
-        "bundleId": "p-8dc076fc",
-        "fileName": "p-8dc076fc.entry.js",
+        "bundleId": "p-b0f2fe79",
+        "fileName": "p-b0f2fe79.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-d9fa04f9.js",
@@ -6451,8 +6457,8 @@
           "sc-column",
           "sc-columns"
         ],
-        "bundleId": "p-1a07f633",
-        "fileName": "p-1a07f633.entry.js",
+        "bundleId": "p-7a1365d4",
+        "fileName": "p-7a1365d4.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6486,8 +6492,8 @@
         "components": [
           "sc-customer-details"
         ],
-        "bundleId": "p-9ac0953f",
-        "fileName": "p-9ac0953f.entry.js",
+        "bundleId": "p-dfe58188",
+        "fileName": "p-dfe58188.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-07b1b1ed.js",
@@ -6516,8 +6522,8 @@
           "sc-radio-group",
           "sc-shipping-choices"
         ],
-        "bundleId": "p-896c77cd",
-        "fileName": "p-896c77cd.entry.js",
+        "bundleId": "p-719ec474",
+        "fileName": "p-719ec474.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-07b1b1ed.js",
@@ -6541,7 +6547,7 @@
           "p-3f6362a4.js",
           "p-d9fa04f9.js"
         ],
-        "originalByteSize": 64252
+        "originalByteSize": 61927
       },
       {
         "key": "sc-line-item-total.entry",
@@ -6572,8 +6578,8 @@
           "sc-payment-method-choice",
           "sc-payment-selected"
         ],
-        "bundleId": "p-c1e85152",
-        "fileName": "p-c1e85152.entry.js",
+        "bundleId": "p-586acaec",
+        "fileName": "p-586acaec.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-fab02ef6.js",
@@ -6586,8 +6592,8 @@
         "components": [
           "sc-phone-input"
         ],
-        "bundleId": "p-0900ce76",
-        "fileName": "p-0900ce76.entry.js",
+        "bundleId": "p-2169db5d",
+        "fileName": "p-2169db5d.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-0b0c03f7.js",
@@ -6600,8 +6606,8 @@
         "components": [
           "sc-pill-option"
         ],
-        "bundleId": "p-0eeb8293",
-        "fileName": "p-0eeb8293.entry.js",
+        "bundleId": "p-c6aadaa3",
+        "fileName": "p-c6aadaa3.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6643,8 +6649,8 @@
         "components": [
           "sc-purchase-downloads-list"
         ],
-        "bundleId": "p-14a2105b",
-        "fileName": "p-14a2105b.entry.js",
+        "bundleId": "p-1987d09d",
+        "fileName": "p-1987d09d.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-401e165e.js"
@@ -6658,8 +6664,8 @@
           "sc-table-cell",
           "sc-table-row"
         ],
-        "bundleId": "p-16c1868e",
-        "fileName": "p-16c1868e.entry.js",
+        "bundleId": "p-2f7f3775",
+        "fileName": "p-2f7f3775.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6683,8 +6689,8 @@
         "components": [
           "sc-order-status-badge"
         ],
-        "bundleId": "p-1ec11474",
-        "fileName": "p-1ec11474.entry.js",
+        "bundleId": "p-ae9aa5c3",
+        "fileName": "p-ae9aa5c3.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6695,8 +6701,8 @@
         "components": [
           "sc-password"
         ],
-        "bundleId": "p-eb530658",
-        "fileName": "p-eb530658.entry.js",
+        "bundleId": "p-b32b34ac",
+        "fileName": "p-b32b34ac.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-830ab1a3.js"
@@ -6709,8 +6715,8 @@
           "sc-subscription-details",
           "sc-subscription-status-badge"
         ],
-        "bundleId": "p-c42a39ba",
-        "fileName": "p-c42a39ba.entry.js",
+        "bundleId": "p-1c86ed36",
+        "fileName": "p-1c86ed36.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-d9fa04f9.js",
@@ -6726,8 +6732,8 @@
         "components": [
           "sc-toggle"
         ],
-        "bundleId": "p-8690ad44",
-        "fileName": "p-8690ad44.entry.js",
+        "bundleId": "p-f6a273f3",
+        "fileName": "p-f6a273f3.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-c4264df6.js",
@@ -6743,17 +6749,19 @@
           "sc-checkbox",
           "sc-tax-id-input"
         ],
-        "bundleId": "p-02aa828b",
-        "fileName": "p-02aa828b.entry.js",
+        "bundleId": "p-e286f627",
+        "fileName": "p-e286f627.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-07b1b1ed.js",
           "p-8b323bfb.js",
+          "p-03631502.js",
+          "p-9dbc54d6.js",
           "p-b0d8cd6e.js",
           "p-830ab1a3.js",
           "p-e677365e.js"
         ],
-        "originalByteSize": 26364
+        "originalByteSize": 28980
       },
       {
         "key": "sc-format-bytes.entry",
@@ -6787,8 +6795,8 @@
           "sc-payment-method",
           "sc-prose"
         ],
-        "bundleId": "p-659f210d",
-        "fileName": "p-659f210d.entry.js",
+        "bundleId": "p-e9cbebdb",
+        "fileName": "p-e9cbebdb.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6799,8 +6807,8 @@
         "components": [
           "sc-spacing"
         ],
-        "bundleId": "p-7535babf",
-        "fileName": "p-7535babf.entry.js",
+        "bundleId": "p-32a37bc1",
+        "fileName": "p-32a37bc1.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6845,8 +6853,8 @@
         "components": [
           "sc-price-input"
         ],
-        "bundleId": "p-f698ed26",
-        "fileName": "p-f698ed26.entry.js",
+        "bundleId": "p-5412695c",
+        "fileName": "p-5412695c.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-88aed607.js",
@@ -6861,8 +6869,8 @@
           "sc-product-line-item",
           "sc-quantity-select"
         ],
-        "bundleId": "p-a2a36669",
-        "fileName": "p-a2a36669.entry.js",
+        "bundleId": "p-3110f151",
+        "fileName": "p-3110f151.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-b0d8cd6e.js"
@@ -6874,8 +6882,8 @@
         "components": [
           "sc-choice-container"
         ],
-        "bundleId": "p-45763ac2",
-        "fileName": "p-45763ac2.entry.js",
+        "bundleId": "p-a32b9d48",
+        "fileName": "p-a32b9d48.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-8b323bfb.js",
@@ -6889,14 +6897,14 @@
           "sc-menu-label",
           "sc-select"
         ],
-        "bundleId": "p-f642010f",
-        "fileName": "p-f642010f.entry.js",
+        "bundleId": "p-5570e9c1",
+        "fileName": "p-5570e9c1.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-8b323bfb.js",
           "p-93127aa7.js"
         ],
-        "originalByteSize": 59974
+        "originalByteSize": 59961
       },
       {
         "key": "sc-cc-logo.sc-tooltip.entry",
@@ -6904,8 +6912,8 @@
           "sc-cc-logo",
           "sc-tooltip"
         ],
-        "bundleId": "p-c376f9dd",
-        "fileName": "p-c376f9dd.entry.js",
+        "bundleId": "p-51345365",
+        "fileName": "p-51345365.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6916,8 +6924,8 @@
         "components": [
           "sc-choice"
         ],
-        "bundleId": "p-bbf69be9",
-        "fileName": "p-bbf69be9.entry.js",
+        "bundleId": "p-7a9032f9",
+        "fileName": "p-7a9032f9.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-8b323bfb.js",
@@ -6930,8 +6938,8 @@
         "components": [
           "sc-choices"
         ],
-        "bundleId": "p-ada5ad3a",
-        "fileName": "p-ada5ad3a.entry.js",
+        "bundleId": "p-d005499e",
+        "fileName": "p-d005499e.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6944,8 +6952,8 @@
           "sc-menu",
           "sc-menu-item"
         ],
-        "bundleId": "p-3884d595",
-        "fileName": "p-3884d595.entry.js",
+        "bundleId": "p-d0373769",
+        "fileName": "p-d0373769.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-830ab1a3.js",
@@ -6958,8 +6966,8 @@
         "components": [
           "sc-empty"
         ],
-        "bundleId": "p-a74f51c2",
-        "fileName": "p-a74f51c2.entry.js",
+        "bundleId": "p-11473c44",
+        "fileName": "p-11473c44.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6971,8 +6979,8 @@
           "sc-stacked-list",
           "sc-stacked-list-row"
         ],
-        "bundleId": "p-82a061c4",
-        "fileName": "p-82a061c4.entry.js",
+        "bundleId": "p-da554ca5",
+        "fileName": "p-da554ca5.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-b0d8cd6e.js"
@@ -6984,8 +6992,8 @@
         "components": [
           "sc-form"
         ],
-        "bundleId": "p-c7141e5a",
-        "fileName": "p-c7141e5a.entry.js",
+        "bundleId": "p-8f5b5b2c",
+        "fileName": "p-8f5b5b2c.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -6996,21 +7004,21 @@
         "components": [
           "sc-line-item"
         ],
-        "bundleId": "p-ce3b900a",
-        "fileName": "p-ce3b900a.entry.js",
+        "bundleId": "p-890caf22",
+        "fileName": "p-890caf22.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-b0d8cd6e.js"
         ],
-        "originalByteSize": 5683
+        "originalByteSize": 5756
       },
       {
         "key": "sc-divider.entry",
         "components": [
           "sc-divider"
         ],
-        "bundleId": "p-4aec1470",
-        "fileName": "p-4aec1470.entry.js",
+        "bundleId": "p-937ecbc0",
+        "fileName": "p-937ecbc0.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -7035,8 +7043,8 @@
           "sc-form-control",
           "sc-input"
         ],
-        "bundleId": "p-9867d306",
-        "fileName": "p-9867d306.entry.js",
+        "bundleId": "p-bacf3144",
+        "fileName": "p-bacf3144.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-b0d8cd6e.js",
@@ -7049,8 +7057,8 @@
         "components": [
           "sc-card"
         ],
-        "bundleId": "p-0781cc24",
-        "fileName": "p-0781cc24.entry.js",
+        "bundleId": "p-40cf44fb",
+        "fileName": "p-40cf44fb.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -7061,8 +7069,8 @@
         "components": [
           "sc-tag"
         ],
-        "bundleId": "p-d412b8b3",
-        "fileName": "p-d412b8b3.entry.js",
+        "bundleId": "p-6c2a6d58",
+        "fileName": "p-6c2a6d58.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -7073,8 +7081,8 @@
         "components": [
           "sc-visually-hidden"
         ],
-        "bundleId": "p-c4bb3bca",
-        "fileName": "p-c4bb3bca.entry.js",
+        "bundleId": "p-b01c5e87",
+        "fileName": "p-b01c5e87.entry.js",
         "imports": [
           "p-e97fde0a.js"
         ],
@@ -9161,7 +9169,7 @@
           "util-50af2a83.js",
           "address-b892540d.js"
         ],
-        "originalByteSize": 61494
+        "originalByteSize": 61615
       },
       {
         "key": "sc-fulfillment-shipping-status-badge.entry",
@@ -9499,7 +9507,7 @@
           "currency-a0c9bff4.js",
           "fetch-8ecbbe53.js"
         ],
-        "originalByteSize": 64399
+        "originalByteSize": 62074
       },
       {
         "key": "sc-line-item-total.entry",
@@ -9707,11 +9715,13 @@
           "index-745b6bec.js",
           "address-b892540d.js",
           "form-data-76641f16.js",
+          "index-06061d4e.js",
+          "utils-cd1431df.js",
           "page-align-0cdacf32.js",
           "index-c5a96d53.js",
           "tax-a03623ca.js"
         ],
-        "originalByteSize": 26400
+        "originalByteSize": 29024
       },
       {
         "key": "sc-format-bytes.entry",
@@ -9854,7 +9864,7 @@
           "form-data-76641f16.js",
           "util-50af2a83.js"
         ],
-        "originalByteSize": 59989
+        "originalByteSize": 59976
       },
       {
         "key": "sc-cc-logo.sc-tooltip.entry",
@@ -9960,7 +9970,7 @@
           "index-745b6bec.js",
           "page-align-0cdacf32.js"
         ],
-        "originalByteSize": 5696
+        "originalByteSize": 5769
       },
       {
         "key": "sc-divider.entry",
@@ -12121,7 +12131,7 @@
           "util-b877b2bd.js",
           "address-4c70d641.js"
         ],
-        "originalByteSize": 63544
+        "originalByteSize": 63641
       },
       {
         "key": "sc-fulfillment-shipping-status-badge.entry",
@@ -12459,7 +12469,7 @@
           "currency-71fce0f0.js",
           "fetch-d644cebd.js"
         ],
-        "originalByteSize": 66243
+        "originalByteSize": 63918
       },
       {
         "key": "sc-line-item-total.entry",
@@ -12667,11 +12677,13 @@
           "index-8acc3c89.js",
           "address-4c70d641.js",
           "form-data-0da9940f.js",
+          "index-bcdafe6e.js",
+          "utils-2e91d46c.js",
           "page-align-5a2ab493.js",
           "index-fb76df07.js",
           "tax-a4582e73.js"
         ],
-        "originalByteSize": 26830
+        "originalByteSize": 29543
       },
       {
         "key": "sc-format-bytes.entry",
@@ -12814,7 +12826,7 @@
           "form-data-0da9940f.js",
           "util-b877b2bd.js"
         ],
-        "originalByteSize": 60228
+        "originalByteSize": 60215
       },
       {
         "key": "sc-cc-logo.sc-tooltip.entry",
@@ -12920,7 +12932,7 @@
           "index-8acc3c89.js",
           "page-align-5a2ab493.js"
         ],
-        "originalByteSize": 5854
+        "originalByteSize": 5927
       },
       {
         "key": "sc-divider.entry",
@@ -13030,8 +13042,8 @@
       ],
       "directDependencies": [
         "sc-form-control",
-        "sc-input",
         "sc-select",
+        "sc-input",
         "sc-block-ui"
       ],
       "directDependents": [
@@ -13199,8 +13211,8 @@
       ],
       "potentialCmpRefs": [
         "sc-form-control",
-        "sc-input",
         "sc-select",
+        "sc-input",
         "sc-block-ui"
       ],
       "properties": [
@@ -13241,35 +13253,6 @@
           "required": false,
           "optional": false,
           "defaultValue": "{\n    name: 'shipping_name',\n    country: 'shipping_country',\n    city: 'shipping_city',\n    line_1: 'shipping_line_1',\n    line_2: 'shipping_line_2',\n    postal_code: 'shipping_postal_code',\n    state: 'shipping_state',\n  }",
-          "complexType": {
-            "original": "Partial<Address>",
-            "resolved": "{ name?: string; line_1?: string; line_2?: string; city?: string; state?: string; postal_code?: string; country?: string; constructor?: Function; toString?: () => string; toLocaleString?: () => string; valueOf?: () => Object; hasOwnProperty?: (v: PropertyKey) => boolean; isPrototypeOf?: (v: Object) => boolean; propertyIsEnumerable?: (v: PropertyKey) => boolean; }",
-            "references": {
-              "Partial": {
-                "location": "global",
-                "id": "global::Partial"
-              },
-              "Address": {
-                "location": "import",
-                "path": "../../../types",
-                "id": "src/types.ts::Address"
-              }
-            }
-          },
-          "docs": {
-            "tags": [],
-            "text": ""
-          },
-          "internal": false
-        },
-        {
-          "name": "placeholders",
-          "type": "unknown",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "{}",
           "complexType": {
             "original": "Partial<Address>",
             "resolved": "{ name?: string; line_1?: string; line_2?: string; city?: string; state?: string; postal_code?: string; country?: string; constructor?: Function; toString?: () => string; toLocaleString?: () => string; valueOf?: () => Object; hasOwnProperty?: (v: PropertyKey) => boolean; isPrototypeOf?: (v: Object) => boolean; propertyIsEnumerable?: (v: PropertyKey) => boolean; }",
@@ -13424,6 +13407,62 @@
           "docs": {
             "tags": [],
             "text": "Is the name required"
+          },
+          "internal": false
+        },
+        {
+          "name": "defaultCountryFields",
+          "type": "unknown",
+          "reflect": false,
+          "mutable": true,
+          "required": false,
+          "optional": false,
+          "complexType": {
+            "original": "Array<CountryLocaleFieldValue>",
+            "resolved": "CountryLocaleFieldValue[]",
+            "references": {
+              "Array": {
+                "location": "global",
+                "id": "global::Array"
+              },
+              "CountryLocaleFieldValue": {
+                "location": "import",
+                "path": "../../../types",
+                "id": "src/types.ts::CountryLocaleFieldValue"
+              }
+            }
+          },
+          "docs": {
+            "tags": [],
+            "text": "Default country fields"
+          },
+          "internal": false
+        },
+        {
+          "name": "countryFields",
+          "type": "unknown",
+          "reflect": false,
+          "mutable": true,
+          "required": false,
+          "optional": false,
+          "complexType": {
+            "original": "Array<CountryLocaleField>",
+            "resolved": "CountryLocaleField[]",
+            "references": {
+              "Array": {
+                "location": "global",
+                "id": "global::Array"
+              },
+              "CountryLocaleField": {
+                "location": "import",
+                "path": "../../../types",
+                "id": "src/types.ts::CountryLocaleField"
+              }
+            }
+          },
+          "docs": {
+            "tags": [],
+            "text": "Country fields by country code"
           },
           "internal": false
         }
@@ -31810,126 +31849,6 @@
           "internal": false
         },
         {
-          "name": "countryPlaceholder",
-          "type": "string",
-          "attribute": "country-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('Country', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": "Country placeholder"
-          },
-          "internal": false
-        },
-        {
-          "name": "cityPlaceholder",
-          "type": "string",
-          "attribute": "city-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('City', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": "City placeholder"
-          },
-          "internal": false
-        },
-        {
-          "name": "line1Placeholder",
-          "type": "string",
-          "attribute": "line-1-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('Address', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": "Address placeholder"
-          },
-          "internal": false
-        },
-        {
-          "name": "line2Placeholder",
-          "type": "string",
-          "attribute": "line-2-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('Address Line 2', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": "Address Line 2 placeholder"
-          },
-          "internal": false
-        },
-        {
-          "name": "postalCodePlaceholder",
-          "type": "string",
-          "attribute": "postal-code-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('Postal Code/Zip', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": "Postal Code placeholder"
-          },
-          "internal": false
-        },
-        {
-          "name": "statePlaceholder",
-          "type": "string",
-          "attribute": "state-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('State/Province/Region', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": "State placeholder"
-          },
-          "internal": false
-        },
-        {
           "name": "defaultCountry",
           "type": "string",
           "attribute": "default-country",
@@ -34127,7 +34046,7 @@
           },
           "docs": {
             "tags": [],
-            "text": "Show the   address"
+            "text": "Show the address"
           },
           "internal": false
         },
@@ -34151,146 +34070,6 @@
           "internal": false
         },
         {
-          "name": "namePlaceholder",
-          "type": "string",
-          "attribute": "name-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('Name or Company Name', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": "Show the placeholder fields."
-          },
-          "internal": false
-        },
-        {
-          "name": "countryPlaceholder",
-          "type": "string",
-          "attribute": "country-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('Country', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": ""
-          },
-          "internal": false
-        },
-        {
-          "name": "cityPlaceholder",
-          "type": "string",
-          "attribute": "city-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('City', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": ""
-          },
-          "internal": false
-        },
-        {
-          "name": "line1Placeholder",
-          "type": "string",
-          "attribute": "line-1-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('Address', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": ""
-          },
-          "internal": false
-        },
-        {
-          "name": "line2Placeholder",
-          "type": "string",
-          "attribute": "line-2-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('Address Line 2', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": ""
-          },
-          "internal": false
-        },
-        {
-          "name": "postalCodePlaceholder",
-          "type": "string",
-          "attribute": "postal-code-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('Postal Code/Zip', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": ""
-          },
-          "internal": false
-        },
-        {
-          "name": "statePlaceholder",
-          "type": "string",
-          "attribute": "state-placeholder",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "__('State/Province/Region', 'surecart')",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "docs": {
-            "tags": [],
-            "text": ""
-          },
-          "internal": false
-        },
-        {
           "name": "defaultCountry",
           "type": "string",
           "attribute": "default-country",
@@ -34306,6 +34085,25 @@
           "docs": {
             "tags": [],
             "text": "Default country for address"
+          },
+          "internal": false
+        },
+        {
+          "name": "showLine2",
+          "type": "boolean",
+          "attribute": "show-line-2",
+          "reflect": true,
+          "mutable": false,
+          "required": false,
+          "optional": false,
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "docs": {
+            "tags": [],
+            "text": "Show the line 2 field."
           },
           "internal": false
         },
@@ -34326,35 +34124,6 @@
           "docs": {
             "tags": [],
             "text": "Whether to require the name in the address"
-          },
-          "internal": false
-        },
-        {
-          "name": "placeholders",
-          "type": "unknown",
-          "reflect": false,
-          "mutable": false,
-          "required": false,
-          "optional": false,
-          "defaultValue": "{\n    name: __('Name or Company Name', 'surecart'),\n    country: __('Country', 'surecart'),\n    city: __('City', 'surecart'),\n    line_1: __('Address', 'surecart'),\n    line_2: __('Address Line 2', 'surecart'),\n    postal_code: __('Postal Code/Zip', 'surecart'),\n    state: __('State/Province/Region', 'surecart'),\n  }",
-          "complexType": {
-            "original": "Partial<Address>",
-            "resolved": "{ name?: string; line_1?: string; line_2?: string; city?: string; state?: string; postal_code?: string; country?: string; constructor?: Function; toString?: () => string; toLocaleString?: () => string; valueOf?: () => Object; hasOwnProperty?: (v: PropertyKey) => boolean; isPrototypeOf?: (v: Object) => boolean; propertyIsEnumerable?: (v: PropertyKey) => boolean; }",
-            "references": {
-              "Partial": {
-                "location": "global",
-                "id": "global::Partial"
-              },
-              "Address": {
-                "location": "import",
-                "path": "../../../../types",
-                "id": "src/types.ts::Address"
-              }
-            }
-          },
-          "docs": {
-            "tags": [],
-            "text": "Placeholder values."
           },
           "internal": false
         }
@@ -95723,126 +95492,6 @@
               "internal": false
             },
             {
-              "name": "countryPlaceholder",
-              "type": "string",
-              "attribute": "country-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('Country', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": "Country placeholder"
-              },
-              "internal": false
-            },
-            {
-              "name": "cityPlaceholder",
-              "type": "string",
-              "attribute": "city-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('City', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": "City placeholder"
-              },
-              "internal": false
-            },
-            {
-              "name": "line1Placeholder",
-              "type": "string",
-              "attribute": "line-1-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('Address', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": "Address placeholder"
-              },
-              "internal": false
-            },
-            {
-              "name": "line2Placeholder",
-              "type": "string",
-              "attribute": "line-2-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('Address Line 2', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": "Address Line 2 placeholder"
-              },
-              "internal": false
-            },
-            {
-              "name": "postalCodePlaceholder",
-              "type": "string",
-              "attribute": "postal-code-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('Postal Code/Zip', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": "Postal Code placeholder"
-              },
-              "internal": false
-            },
-            {
-              "name": "statePlaceholder",
-              "type": "string",
-              "attribute": "state-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('State/Province/Region', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": "State placeholder"
-              },
-              "internal": false
-            },
-            {
               "name": "defaultCountry",
               "type": "string",
               "attribute": "default-country",
@@ -95991,7 +95640,6 @@
             "exportparts",
             "ref",
             "label",
-            "placeholders",
             "names",
             "required",
             "loading",
@@ -96467,7 +96115,7 @@
               },
               "docs": {
                 "tags": [],
-                "text": "Show the   address"
+                "text": "Show the address"
               },
               "internal": false
             },
@@ -96491,146 +96139,6 @@
               "internal": false
             },
             {
-              "name": "namePlaceholder",
-              "type": "string",
-              "attribute": "name-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('Name or Company Name', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": "Show the placeholder fields."
-              },
-              "internal": false
-            },
-            {
-              "name": "countryPlaceholder",
-              "type": "string",
-              "attribute": "country-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('Country', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
-              "name": "cityPlaceholder",
-              "type": "string",
-              "attribute": "city-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('City', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
-              "name": "line1Placeholder",
-              "type": "string",
-              "attribute": "line-1-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('Address', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
-              "name": "line2Placeholder",
-              "type": "string",
-              "attribute": "line-2-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('Address Line 2', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
-              "name": "postalCodePlaceholder",
-              "type": "string",
-              "attribute": "postal-code-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('Postal Code/Zip', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
-              "name": "statePlaceholder",
-              "type": "string",
-              "attribute": "state-placeholder",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "__('State/Province/Region', 'surecart')",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
               "name": "defaultCountry",
               "type": "string",
               "attribute": "default-country",
@@ -96646,6 +96154,25 @@
               "docs": {
                 "tags": [],
                 "text": "Default country for address"
+              },
+              "internal": false
+            },
+            {
+              "name": "showLine2",
+              "type": "boolean",
+              "attribute": "show-line-2",
+              "reflect": true,
+              "mutable": false,
+              "required": false,
+              "optional": false,
+              "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": "Show the line 2 field."
               },
               "internal": false
             },
@@ -96666,35 +96193,6 @@
               "docs": {
                 "tags": [],
                 "text": "Whether to require the name in the address"
-              },
-              "internal": false
-            },
-            {
-              "name": "placeholders",
-              "type": "unknown",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "{\n    name: __('Name or Company Name', 'surecart'),\n    country: __('Country', 'surecart'),\n    city: __('City', 'surecart'),\n    line_1: __('Address', 'surecart'),\n    line_2: __('Address Line 2', 'surecart'),\n    postal_code: __('Postal Code/Zip', 'surecart'),\n    state: __('State/Province/Region', 'surecart'),\n  }",
-              "complexType": {
-                "original": "Partial<Address>",
-                "resolved": "{ name?: string; line_1?: string; line_2?: string; city?: string; state?: string; postal_code?: string; country?: string; constructor?: Function; toString?: () => string; toLocaleString?: () => string; valueOf?: () => Object; hasOwnProperty?: (v: PropertyKey) => boolean; isPrototypeOf?: (v: Object) => boolean; propertyIsEnumerable?: (v: PropertyKey) => boolean; }",
-                "references": {
-                  "Partial": {
-                    "location": "global",
-                    "id": "global::Partial"
-                  },
-                  "Address": {
-                    "location": "import",
-                    "path": "../../../../types",
-                    "id": "src/types.ts::Address"
-                  }
-                }
-              },
-              "docs": {
-                "tags": [],
-                "text": "Placeholder values."
               },
               "internal": false
             }
@@ -96804,13 +96302,13 @@
             "exportparts",
             "ref",
             "label",
-            "placeholders",
             "names",
             "required",
             "loading",
             "address",
             "show-name",
             "require-name",
+            "show-line-2",
             "onScChangeAddress"
           ],
           "htmlTagNames": [
@@ -103298,35 +102796,6 @@
               "internal": false
             },
             {
-              "name": "placeholders",
-              "type": "unknown",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "{}",
-              "complexType": {
-                "original": "Partial<Address>",
-                "resolved": "{ name?: string; line_1?: string; line_2?: string; city?: string; state?: string; postal_code?: string; country?: string; constructor?: Function; toString?: () => string; toLocaleString?: () => string; valueOf?: () => Object; hasOwnProperty?: (v: PropertyKey) => boolean; isPrototypeOf?: (v: Object) => boolean; propertyIsEnumerable?: (v: PropertyKey) => boolean; }",
-                "references": {
-                  "Partial": {
-                    "location": "global",
-                    "id": "global::Partial"
-                  },
-                  "Address": {
-                    "location": "import",
-                    "path": "../../../types",
-                    "id": "src/types.ts::Address"
-                  }
-                }
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
               "name": "loading",
               "type": "boolean",
               "attribute": "loading",
@@ -103459,6 +102928,62 @@
               "docs": {
                 "tags": [],
                 "text": "Is the name required"
+              },
+              "internal": false
+            },
+            {
+              "name": "defaultCountryFields",
+              "type": "unknown",
+              "reflect": false,
+              "mutable": true,
+              "required": false,
+              "optional": false,
+              "complexType": {
+                "original": "Array<CountryLocaleFieldValue>",
+                "resolved": "CountryLocaleFieldValue[]",
+                "references": {
+                  "Array": {
+                    "location": "global",
+                    "id": "global::Array"
+                  },
+                  "CountryLocaleFieldValue": {
+                    "location": "import",
+                    "path": "../../../types",
+                    "id": "src/types.ts::CountryLocaleFieldValue"
+                  }
+                }
+              },
+              "docs": {
+                "tags": [],
+                "text": "Default country fields"
+              },
+              "internal": false
+            },
+            {
+              "name": "countryFields",
+              "type": "unknown",
+              "reflect": false,
+              "mutable": true,
+              "required": false,
+              "optional": false,
+              "complexType": {
+                "original": "Array<CountryLocaleField>",
+                "resolved": "CountryLocaleField[]",
+                "references": {
+                  "Array": {
+                    "location": "global",
+                    "id": "global::Array"
+                  },
+                  "CountryLocaleField": {
+                    "location": "import",
+                    "path": "../../../types",
+                    "id": "src/types.ts::CountryLocaleField"
+                  }
+                }
+              },
+              "docs": {
+                "tags": [],
+                "text": "Country fields by country code"
               },
               "internal": false
             }
@@ -103698,20 +103223,19 @@
           "hasState": true,
           "hasStyle": true,
           "hasVdomAttribute": true,
-          "hasVdomXlink": false,
+          "hasVdomXlink": true,
           "hasVdomClass": true,
           "hasVdomFunctional": false,
           "hasVdomKey": true,
           "hasVdomListener": true,
           "hasVdomPropOrAttr": true,
-          "hasVdomRef": false,
+          "hasVdomRef": true,
           "hasVdomRender": true,
-          "hasVdomStyle": false,
+          "hasVdomStyle": true,
           "hasVdomText": true,
           "hasWatchCallback": true,
           "isPlain": false,
           "htmlAttrNames": [
-            "key",
             "class",
             "part",
             "label",
@@ -103719,39 +103243,33 @@
             "required",
             "value",
             "onScChange",
-            "onScInput",
+            "choices",
             "autocomplete",
             "placeholder",
             "name",
-            "squared-bottom",
-            "disabled",
-            "aria-label",
-            "choices",
             "search",
             "unselect",
-            "squared",
-            "squared-top",
-            "squared-right",
-            "maxlength",
-            "squared-left"
+            "disabled",
+            "aria-label",
+            "onScInput",
+            "maxlength"
           ],
           "htmlTagNames": [
             "div",
             "sc-form-control",
-            "sc-input",
             "sc-select",
+            "sc-input",
             "sc-block-ui"
           ],
           "htmlParts": [
             "base",
-            "name__input",
-            "columns"
+            "name__input"
           ],
           "isUpdateable": true,
           "potentialCmpRefs": [
             "sc-form-control",
-            "sc-input",
             "sc-select",
+            "sc-input",
             "sc-block-ui"
           ],
           "dependents": [
@@ -103781,8 +103299,8 @@
           ],
           "directDependencies": [
             "sc-form-control",
-            "sc-input",
             "sc-select",
+            "sc-input",
             "sc-block-ui"
           ]
         },
@@ -116072,6 +115590,8 @@
       "p-e97fde0a.js",
       "p-07b1b1ed.js",
       "p-8b323bfb.js",
+      "p-03631502.js",
+      "p-9dbc54d6.js",
       "p-b0d8cd6e.js",
       "p-830ab1a3.js",
       "p-e677365e.js"
@@ -116280,6 +115800,8 @@
       "p-e97fde0a.js",
       "p-07b1b1ed.js",
       "p-8b323bfb.js",
+      "p-03631502.js",
+      "p-9dbc54d6.js",
       "p-b0d8cd6e.js",
       "p-830ab1a3.js",
       "p-e677365e.js"
@@ -118192,6 +117714,8 @@
       "p-e97fde0a.js",
       "p-07b1b1ed.js",
       "p-8b323bfb.js",
+      "p-03631502.js",
+      "p-9dbc54d6.js",
       "p-b0d8cd6e.js",
       "p-830ab1a3.js",
       "p-e677365e.js"
@@ -119510,6 +119034,7 @@
       "./src/components/util/format-number/sc-format-number"
     ],
     "./src/components/util/visually-hidden/sc-visually-hidden.tsx": [],
+    "./src/functions/address-settings.ts": [],
     "./src/functions/address.ts": [
       "./src/functions/countries.json"
     ],
@@ -119624,6 +119149,8 @@
       "./src/components/providers/form-state-provider/checkout-machine",
       "./src/store/form/store"
     ],
+    "./src/store/i18n/index.ts": [],
+    "./src/store/i18n/store.ts": [],
     "./src/store/local/index.ts": [],
     "./src/store/local/storage.ts": [],
     "./src/store/local/types.ts": [],
