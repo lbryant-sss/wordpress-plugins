@@ -9,7 +9,7 @@ Stable tag: 1.0.240
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
-Rank Math SEO is the best WordPress SEO plugin with the features of many SEO and AI SEO tools in a single package to help multiply your SEO traffic and improve your site's SEO ranking.
+Rank Math SEO is the best WordPress SEO plugin with the features of many SEO and AI SEO tools in a single package to help multiply your SEO traffic.
 
 == Description ==
 

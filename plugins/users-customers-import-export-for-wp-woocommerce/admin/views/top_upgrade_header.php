@@ -34,6 +34,24 @@ if (0 === $top_header_loaded) {
       color: #fff;
     }
 
+    .wbtf_users_top_header .wbtf_top_header_text a {
+      text-decoration: underline;
+    }
+
+    .wbtf_users_top_header .wbtf_top_header_text .arrow-symbol {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      margin-left: 2px;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    .wbtf_users_top_header .wbtf_top_header_text a:hover {
+      color: #f0f0f0;
+      text-decoration: none;
+    }
+
     .wbtf_users_top_header .wbtf_top_header_content_wrapper {
       display: flex;
       justify-content: center;
@@ -66,7 +84,7 @@ if (is_plugin_active('order-import-export-for-woocommerce/order-import-export-fo
 
   <div class="wbtf_users_top_header">
     <div class="wbtf_top_header_content_wrapper">
-      <p class="wbtf_top_header_text"><?php echo  esc_html__('You’re using our free version. To unlock more features,', 'product-import-export-for-woo'); ?> <a href="<?php echo $plugin_pro_url; ?>" id="wbtf_top_header_pro_link" target="_blank"><?php echo  esc_html__('upgrade to pro ', 'product-import-export-for-woo'); ?> →</a> </p>
+      <p class="wbtf_top_header_text"><?php echo  esc_html__('You\'re using our free version. To unlock more features,', 'product-import-export-for-woo'); ?> <a href="<?php echo $plugin_pro_url; ?>" id="wbtf_top_header_pro_link" target="_blank"><?php echo  esc_html__('upgrade to pro', 'product-import-export-for-woo'); ?><span class="arrow-symbol"> →</span></a> </p>
     </div>
     <button class="wbtf_close_btn" onclick="closeTopHeader()">×</button>
 

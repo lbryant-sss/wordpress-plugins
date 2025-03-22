@@ -45,8 +45,14 @@ const ScLineItemTotal = class {
         }
         return (h("span", { slot: "description" }, h("slot", { name: "description" })));
     }
+    // Determine if the currency should be displayed to avoid duplication in the amount display.
+    getCurrencyToDisplay() {
+        var _a, _b, _c, _d;
+        const checkout = this.checkout || (state === null || state === void 0 ? void 0 : state.checkout);
+        return ((_b = (_a = checkout === null || checkout === void 0 ? void 0 : checkout.amount_due_default_currency_display_amount) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === null || _b === void 0 ? void 0 : _b.includes((_c = checkout === null || checkout === void 0 ? void 0 : checkout.currency) === null || _c === void 0 ? void 0 : _c.toLowerCase())) ? '' : (_d = checkout === null || checkout === void 0 ? void 0 : checkout.currency) === null || _d === void 0 ? void 0 : _d.toUpperCase();
+    }
     renderConversion() {
-        var _a, _b, _c;
+        var _a;
         if (this.total !== 'total') {
             return null;
         }
@@ -62,8 +68,8 @@ const ScLineItemTotal = class {
         if (!(checkout === null || checkout === void 0 ? void 0 : checkout.amount_due)) {
             return null;
         }
-        return (h(Fragment, null, h("sc-divider", null), h("sc-line-item", { style: { '--price-size': 'var(--sc-font-size-x-large)' } }, h("span", { slot: "title" }, h("slot", { name: "charge-amount-description" }, wp.i18n.sprintf(wp.i18n.__('Payment Total', 'surecart'), (_a = checkout === null || checkout === void 0 ? void 0 : checkout.currency) === null || _a === void 0 ? void 0 : _a.toUpperCase()))), h("span", { slot: "price" }, h("span", { class: "currency-label" }, (_b = checkout === null || checkout === void 0 ? void 0 : checkout.currency) === null || _b === void 0 ? void 0 : _b.toUpperCase()), checkout === null || checkout === void 0 ? void 0 :
-            checkout.amount_due_default_currency_display_amount)), h("sc-line-item", null, h("span", { slot: "description", class: "conversion-description" }, wp.i18n.sprintf(wp.i18n.__('Your payment will be processed in %s.', 'surecart'), (_c = checkout === null || checkout === void 0 ? void 0 : checkout.currency) === null || _c === void 0 ? void 0 : _c.toUpperCase())))));
+        return (h(Fragment, null, h("sc-divider", null), h("sc-line-item", { style: { '--price-size': 'var(--sc-font-size-x-large)' } }, h("span", { slot: "title" }, h("slot", { name: "charge-amount-description" }, wp.i18n.__('Payment Total', 'surecart'))), h("span", { slot: "price" }, this.getCurrencyToDisplay() && h("span", { class: "currency-label" }, this.getCurrencyToDisplay()), checkout === null || checkout === void 0 ? void 0 :
+            checkout.amount_due_default_currency_display_amount)), h("sc-line-item", null, h("span", { slot: "description", class: "conversion-description" }, wp.i18n.sprintf(wp.i18n.__('Your payment will be processed in %s.', 'surecart'), (_a = checkout === null || checkout === void 0 ? void 0 : checkout.currency) === null || _a === void 0 ? void 0 : _a.toUpperCase())))));
     }
     render() {
         var _a;

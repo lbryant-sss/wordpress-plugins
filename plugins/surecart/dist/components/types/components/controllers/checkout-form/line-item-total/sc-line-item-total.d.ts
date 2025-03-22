@@ -12,6 +12,7 @@ export declare class ScLineItemTotal {
     hasSubscription(checkout: Checkout): boolean;
     renderLineItemTitle(checkout: Checkout): any;
     renderLineItemDescription(checkout: Checkout): any;
+    getCurrencyToDisplay(): string;
     renderConversion(): any;
     render(): any;
 }

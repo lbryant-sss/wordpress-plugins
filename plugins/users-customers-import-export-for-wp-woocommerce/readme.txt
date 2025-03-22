@@ -4,7 +4,7 @@ Tags: import customers, export customers, import users from csv, export users to
 Requires at least: 3.0.1
 Tested up to: 6.7.2
 Requires PHP: 5.6
-Stable tag: 2.6.2
+Stable tag: 2.6.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -219,6 +219,11 @@ Please refer the article on how to <a href="https://www.webtoffee.com/refresh-wo
 
 == Changelog ==
 
+= 2.6.3 2025-03-21 =
+* [Fix] - Vulnerable to Server-Side Request Forgery.
+* [Fix] - Vulnerable to Arbitrary File Deletion.
+* [Fix] - Vulnerable to PHP Object Injection.
+* [Fix] - Vulnerable to Directory Traversal
 = 2.6.2 2025-03-05 =
 * [Fix] - Updated review button link in the banner.
 = 2.6.1 2025-03-01 =
@@ -538,5 +543,8 @@ Please refer the article on how to <a href="https://www.webtoffee.com/refresh-wo
 
 == Upgrade Notice ==
 
-= 2.6.2 =
-* [Fix] - Updated review button link in the banner.
+= 2.6.3 =
+* [Fix] - Vulnerable to Server-Side Request Forgery.
+* [Fix] - Vulnerable to Arbitrary File Deletion.
+* [Fix] - Vulnerable to PHP Object Injection.
+* [Fix] - Vulnerable to Directory Traversal

@@ -350,7 +350,7 @@ if (!class_exists('Wt_Import_Export_For_Woo_Admin_Basic')) {
 				$out['msg'] = __('Settings Updated');
 				do_action('wt_iew_after_advanced_setting_update_basic', $new_advanced_settings);
 			}
-			echo json_encode($out);
+			echo wp_json_encode($out);
 			exit();
 		}
 

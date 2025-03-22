@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-03-20T20:16:04",
+  "timestamp": "2025-03-21T15:36:25",
   "compiler": {
     "name": "node",
     "version": "16.20.2"
@@ -3508,8 +3508,6 @@
           "./dist/surecart/p-a18c221f.entry.js.map",
           "./dist/surecart/p-a32b9d48.entry.js",
           "./dist/surecart/p-a32b9d48.entry.js.map",
-          "./dist/surecart/p-a3393cd2.entry.js",
-          "./dist/surecart/p-a3393cd2.entry.js.map",
           "./dist/surecart/p-a4c8c943.entry.js",
           "./dist/surecart/p-a4c8c943.entry.js.map",
           "./dist/surecart/p-a6eaf93e.entry.js",
@@ -3582,6 +3580,8 @@
           "./dist/surecart/p-c8b17ea8.entry.js.map",
           "./dist/surecart/p-c9d96372.entry.js",
           "./dist/surecart/p-c9d96372.entry.js.map",
+          "./dist/surecart/p-cc00398e.entry.js",
+          "./dist/surecart/p-cc00398e.entry.js.map",
           "./dist/surecart/p-ce0fbcda.entry.js",
           "./dist/surecart/p-ce0fbcda.entry.js.map",
           "./dist/surecart/p-d005499e.entry.js",
@@ -3602,6 +3602,8 @@
           "./dist/surecart/p-d9fa04f9.js.map",
           "./dist/surecart/p-da554ca5.entry.js",
           "./dist/surecart/p-da554ca5.entry.js.map",
+          "./dist/surecart/p-de1dcf48.entry.js",
+          "./dist/surecart/p-de1dcf48.entry.js.map",
           "./dist/surecart/p-df064a41.entry.js",
           "./dist/surecart/p-df064a41.entry.js.map",
           "./dist/surecart/p-dfe58188.entry.js",
@@ -3612,8 +3614,6 @@
           "./dist/surecart/p-e286f627.entry.js.map",
           "./dist/surecart/p-e3bd9beb.entry.js",
           "./dist/surecart/p-e3bd9beb.entry.js.map",
-          "./dist/surecart/p-e3be4c23.entry.js",
-          "./dist/surecart/p-e3be4c23.entry.js.map",
           "./dist/surecart/p-e4b6bdf7.entry.js",
           "./dist/surecart/p-e4b6bdf7.entry.js.map",
           "./dist/surecart/p-e677365e.js",
@@ -3944,8 +3944,6 @@
           "./www/build/p-a18c221f.entry.js.map",
           "./www/build/p-a32b9d48.entry.js",
           "./www/build/p-a32b9d48.entry.js.map",
-          "./www/build/p-a3393cd2.entry.js",
-          "./www/build/p-a3393cd2.entry.js.map",
           "./www/build/p-a4c8c943.entry.js",
           "./www/build/p-a4c8c943.entry.js.map",
           "./www/build/p-a6eaf93e.entry.js",
@@ -4018,6 +4016,8 @@
           "./www/build/p-c8b17ea8.entry.js.map",
           "./www/build/p-c9d96372.entry.js",
           "./www/build/p-c9d96372.entry.js.map",
+          "./www/build/p-cc00398e.entry.js",
+          "./www/build/p-cc00398e.entry.js.map",
           "./www/build/p-ce0fbcda.entry.js",
           "./www/build/p-ce0fbcda.entry.js.map",
           "./www/build/p-d005499e.entry.js",
@@ -4038,6 +4038,8 @@
           "./www/build/p-d9fa04f9.js.map",
           "./www/build/p-da554ca5.entry.js",
           "./www/build/p-da554ca5.entry.js.map",
+          "./www/build/p-de1dcf48.entry.js",
+          "./www/build/p-de1dcf48.entry.js.map",
           "./www/build/p-df064a41.entry.js",
           "./www/build/p-df064a41.entry.js.map",
           "./www/build/p-dfe58188.entry.js",
@@ -4048,8 +4050,6 @@
           "./www/build/p-e286f627.entry.js.map",
           "./www/build/p-e3bd9beb.entry.js",
           "./www/build/p-e3bd9beb.entry.js.map",
-          "./www/build/p-e3be4c23.entry.js",
-          "./www/build/p-e3be4c23.entry.js.map",
           "./www/build/p-e4b6bdf7.entry.js",
           "./www/build/p-e4b6bdf7.entry.js.map",
           "./www/build/p-e677365e.js",
@@ -6018,8 +6018,8 @@
         "components": [
           "sc-upsell-totals"
         ],
-        "bundleId": "p-e3be4c23",
-        "fileName": "p-e3be4c23.entry.js",
+        "bundleId": "p-cc00398e",
+        "fileName": "p-cc00398e.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-2d2ea552.js",
@@ -6039,7 +6039,7 @@
           "p-d3366af3.js",
           "p-1f60f497.js"
         ],
-        "originalByteSize": 5745
+        "originalByteSize": 6461
       },
       {
         "key": "sc-wordpress-password-edit.entry",
@@ -6554,8 +6554,8 @@
         "components": [
           "sc-line-item-total"
         ],
-        "bundleId": "p-a3393cd2",
-        "fileName": "p-a3393cd2.entry.js",
+        "bundleId": "p-de1dcf48",
+        "fileName": "p-de1dcf48.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-ff10bfbf.js",
@@ -6570,7 +6570,7 @@
           "p-3f6362a4.js",
           "p-88aed607.js"
         ],
-        "originalByteSize": 8426
+        "originalByteSize": 8972
       },
       {
         "key": "sc-payment-method-choice.sc-payment-selected.entry",
@@ -8999,7 +8999,7 @@
           "remove-query-args-938c53ea.js",
           "mutations-ed6d0770.js"
         ],
-        "originalByteSize": 5854
+        "originalByteSize": 6570
       },
       {
         "key": "sc-wordpress-password-edit.entry",
@@ -9530,7 +9530,7 @@
           "currency-a0c9bff4.js",
           "price-7bb626d0.js"
         ],
-        "originalByteSize": 8505
+        "originalByteSize": 9051
       },
       {
         "key": "sc-payment-method-choice.sc-payment-selected.entry",
@@ -11961,7 +11961,7 @@
           "remove-query-args-b57e8cd3.js",
           "mutations-11c8f9a8.js"
         ],
-        "originalByteSize": 6282
+        "originalByteSize": 7034
       },
       {
         "key": "sc-wordpress-password-edit.entry",
@@ -12492,7 +12492,7 @@
           "currency-71fce0f0.js",
           "price-ca4a4318.js"
         ],
-        "originalByteSize": 8934
+        "originalByteSize": 9510
       },
       {
         "key": "sc-payment-method-choice.sc-payment-selected.entry",
