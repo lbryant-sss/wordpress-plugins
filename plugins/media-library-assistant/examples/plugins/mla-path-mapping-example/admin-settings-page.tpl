@@ -97,7 +97,6 @@ p.submit.mla-settings-submit {
     <h3>Plugin Tool(s)</h3>
     <p>The plugin tools let you copy term definitions or term assignments from a source taxonomy to one destination taxonomy. Pick your source and destination sites, then run one of the tools below.</p>
     <form action="[+form_url+]" method="post" class="mla-display-settings-page" id="mla-display-settings-general-tools-form">
-      <input name="[+slug_prefix+]_tools[path_delimiter]" id="[+slug_prefix+]_tools_path_delimiter" type="hidden" value="[+path_delimiter+]" />
       <table style="border: 1px solid; width: 100%">
         <tbody>
           <tr>
@@ -126,16 +125,20 @@ p.submit.mla-settings-submit {
       <table style="border: 1px solid; width: 100%">
         <tbody>
           <tr> 
-            <!--          <td valign="top" width="300px">
+            <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td valign="top">
             <table>
               <tbody>
                 <tr>
-                  <td valign="top" class="textright"><input name="[+slug_prefix+]_tools[copy_defaults]" id="[+slug_prefix+]_tools_copy_defaults" type="checkbox" [+copy_defaults_checked+] value="1" /></td>
-                  <td valign="top">&nbsp;<strong>Copy Defaults</strong></td>
+                  <td valign="top" class="textright"><input name="[+slug_prefix+]_tools[copy_term_meta]" id="[+slug_prefix+]_tools_copy_term_meta" type="checkbox" [+copy_term_meta_checked+] value="1" /></td>
+                  <td valign="top">&nbsp;<strong>Copy Term Meta values</strong></td>
                 </tr>
               </tbody>
             </table>
-          </td> -->
+			&nbsp;
+            </td>
+          </tr>
+          <tr> 
             <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td valign="top"><span class="submit mla-settings-submit">
               <input name="[+slug_prefix+]_tools_copy_definitions" class="button-primary" id="[+slug_prefix+]_tools_definitions" type="submit" value="Copy Term Definitions" />
@@ -147,7 +150,7 @@ p.submit.mla-settings-submit {
           </tr>
         </tbody>
       </table>
-      <p>The "Copy Term Assignments" tool lets you copy term definitions from a source MLA site to one or more destination sites.</p>
+      <p>The "Copy Term Assignments" tool lets you copy term definitions from a source taxonomy to one destination taxonomy.</p>
       <table style="border: 1px solid; width: 100%">
       <tbody>
         <tr>

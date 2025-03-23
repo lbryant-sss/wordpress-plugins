@@ -1074,7 +1074,7 @@ class MLASettings {
 	private static function _localize_tablist() {
 		self::$mla_tablist = array(
 			'general' => array( 'title' => __ ( 'General', 'media-library-assistant' ), 'render' => array( 'MLASettings', '_compose_general_tab' ) ),
-//			'image' => array( 'title' => __ ( 'Image', 'media-library-assistant' ), 'render' => array( 'MLASettings_Image', 'mla_compose_image_tab' ) ),
+			'image' => array( 'title' => __ ( 'Image', 'media-library-assistant' ), 'render' => array( 'MLASettings_Image', 'mla_compose_image_tab' ) ),
 			'view' => array( 'title' => __ ( 'Views', 'media-library-assistant' ), 'render' => array( 'MLASettings_View', 'mla_compose_view_tab' ) ),
 			'upload' => array( 'title' => __ ( 'Uploads', 'media-library-assistant' ), 'render' => array( 'MLASettings_Upload', 'mla_compose_upload_tab' ) ),
 			'shortcodes' => array( 'title' => __ ( 'Shortcodes', 'media-library-assistant' ), 'render' => array( 'MLASettings_Shortcodes', 'mla_compose_shortcodes_tab' ) ),

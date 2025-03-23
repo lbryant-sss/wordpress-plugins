@@ -1542,7 +1542,10 @@ this.listenTo( this, 'all', this.selectionEvent );
 	mlaModal.utility.hookCompatTaxonomies = function( attachmentId, context ) {
 		var prefix, taxonomy, clickTaxonomy = null;
 		
-		prefix = $( context ).attr('id');
+		mlaModal.settings.prefix++,
+		prefix = mlaModal.settings.prefix.toString();
+
+/*		prefix = $( context ).attr('id');
 		
 		if ( 'undefined' === typeof prefix ) {
 			prefix = $( context ).attr('class');
@@ -1550,7 +1553,7 @@ this.listenTo( this, 'all', this.selectionEvent );
 			if ( 'undefined' === typeof prefix ) {
 				prefix = '';
 			}
-		}
+		} // */
 
 		//console.log( 'hook prefix: ' + prefix + ' attachmentId: ' + attachmentId );
 		$('.mla-taxonomy-field .categorydiv', context ).each( function(){

@@ -7,7 +7,7 @@
  * https://wordpress.org/support/topic/apply-mla-taxonomy-picker-to-an-acf-gallery-field/
  *
  * @package MLA ACF Support
- * @version 1.03
+ * @version 1.04
  */
 
 /*
@@ -15,7 +15,7 @@ Plugin Name: MLA ACF Support
 Plugin URI: http://davidlingren.com/
 Description: Adds MLA-style taxonomy to the ACF Gallery custom field handler.
 Author: David Lingren
-Version: 1.03
+Version: 1.04
 Author URI: http://davidlingren.com/
 
 Copyright 2025 David Lingren
@@ -48,7 +48,7 @@ class MLAACFSupport {
 	 *
 	 * @var	string
 	 */
-	const PLUGIN_VERSION = '1.03';
+	const PLUGIN_VERSION = '1.04';
 
 	/**
 	 * Slug prefix for registering and enqueueing submenu pages, style sheets, scripts and settings
@@ -212,6 +212,82 @@ class MLAACFSupport {
 			 */
 			add_filter( 'get_media_item_args', 'MLAACFSupport::mla_get_media_item_args_filter', 10, 1 );
 			add_filter( 'attachment_fields_to_edit', 'MLAACFSupport::mla_attachment_fields_to_edit_filter', 0x7FFFFFFF, 2 );
+
+			/*
+			 * The 'acf/fields/gallery/update_attachment' action updates taxonomy and custom field
+			 * values for an ACF Gallery item. Remove any MLA-enhanced taxonomy data from the
+			 * incoming data.
+			 */
+			if ( ( $_REQUEST['action'] === 'acf/fields/gallery/update_attachment' ) ){
+				if ( empty( $_REQUEST['attachments'] ) ) {
+					wp_send_json_error();
+				}
+
+				// Find the attachment ID
+				foreach( $_REQUEST['attachments'] as $id => $value ) {
+				}
+	
+				if ( isset( $_REQUEST['mla_attachments'] ) ) {
+					unset( $_REQUEST['mla_attachments'] );
+					unset( $_POST['mla_attachments'] );
+				}
+	
+				if ( isset( $_REQUEST['tax_input'] ) ) {
+					unset( $_REQUEST['tax_input'] );
+					unset( $_POST['tax_input'] );
+				}
+	
+				if ( isset( $_REQUEST['mla_tags'] ) ) {
+					unset( $_REQUEST['mla_tags'] );
+					unset( $_POST['mla_tags'] );
+				}
+	
+				if ( isset( $_REQUEST['newtag'] ) ) {
+					unset( $_REQUEST['newtag'] );
+					unset( $_POST['newtag'] );
+				}
+	
+				// Build a list of supported taxonomies for later $_REQUEST/$_POST cleansing.
+				$mla_supported_taxonomies = array();
+				foreach ( get_taxonomies( array ( 'show_ui' => true ), 'objects' ) as $key => $value ) {
+					if ( MLACore::mla_taxonomy_support( $key ) ) {
+						$mla_supported_taxonomies[] = $key;
+					} // supported
+				} // foreach taxonomy 
+		
+				foreach( $mla_supported_taxonomies as $taxonomy ) {
+					if ( isset( $_REQUEST['attachments'][ $id ][ $taxonomy ] ) ) {
+						unset( $_REQUEST['attachments'][ $id ][ $taxonomy ] );
+						unset( $_POST['attachments'][ $id ][ $taxonomy ] );
+					}
+	
+					if ( isset( $_REQUEST[ $taxonomy ] ) ) {
+						unset( $_REQUEST[ $taxonomy ] );
+						unset( $_POST[ $taxonomy ] );
+					}
+	
+					if ( ( 'category' == $taxonomy ) && isset( $_REQUEST['post_category'] ) ) {
+						unset( $_REQUEST['post_category'] );
+						unset( $_POST['post_category'] );
+					}
+	
+					if ( isset( $_REQUEST[ 'new' . $taxonomy ] ) ) {
+						unset( $_REQUEST[ 'new' . $taxonomy ] );
+						unset( $_POST[ 'new' . $taxonomy ] );
+						unset( $_REQUEST[ 'new' . $taxonomy . '_parent' ] );
+						unset( $_POST[ 'new' . $taxonomy . '_parent' ] );
+						unset( $_REQUEST[ '_ajax_nonce-add-' . $taxonomy ] );
+						unset( $_POST[ '_ajax_nonce-add-' . $taxonomy ] );
+					}
+	
+					if ( isset( $_REQUEST[ 'search-' . $taxonomy ] ) ) {
+						unset( $_REQUEST[ 'search-' . $taxonomy ] );
+						unset( $_POST[ 'search-' . $taxonomy ] );
+						unset( $_REQUEST[ '_ajax_nonce-search-' . $taxonomy ] );
+						unset( $_POST[ '_ajax_nonce-search-' . $taxonomy ] );
+					}
+				} // foreach taxonomy
+			} // acf/fields/gallery/update_attachment
 		} // Media Modal support enabled
 
 		// Add the run-time values to the settings
