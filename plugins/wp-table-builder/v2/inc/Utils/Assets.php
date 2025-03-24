@@ -23,7 +23,7 @@ class Assets
         self::enqueue_config();
         self::enqueue_i18n();
 
-        $assets = new AssetLoader(self::CDN_HOST, WPTB_PLUGIN_DIR . '/dist/.vite/manifest.json', WPTB_PLUGIN_DIR . '/tmp/.hotfile');
+        $assets = new AssetLoader(self::CDN_HOST, WPTB_PLUGIN_DIR . '/dist/vite/manifest.json', WPTB_PLUGIN_DIR . '/tmp/.hotfile');
 
         $assets->register('src/wptb-common.ts');
         $assets->register_style('wptb-v2-editor-style', 'src/editor.scss');
@@ -54,6 +54,7 @@ class Assets
             'SECURITY_CODE' => wp_create_nonce('wptb-import-security-nonce'),
             'EXPORT_KEY' => wp_create_nonce('wptb_table_export_main_export'),
             'SETTINGS' => [
+                'is_authorized'=> current_user_can('manage_options'),
                 'version' => WPTableBuilder::VERSION,
                 'general' => get_option('wp_table_builder_settings'),
                 'table_style' => get_option('wptb-general-styles'),
@@ -67,8 +68,10 @@ class Assets
                 ],
             ],
             'NONCE' => [
+                'wp_rest' => wp_create_nonce('wp_rest'),
                 'table' => wp_create_nonce('wptb_nonce_table'),
                 'preview' => wp_create_nonce('wptb_nonce_table_preview'),
+                'create_term' => wp_create_nonce('wptb_create_term'),
             ]
 
         ];

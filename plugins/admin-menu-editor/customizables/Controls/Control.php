@@ -374,21 +374,6 @@ abstract class Control extends UiElement {
 		}
 		$result['settings'] = $settingIds;
 
-		//Input classes.
-		if ( !empty($this->inputClasses) ) {
-			$result['inputClasses'] = $this->inputClasses;
-		}
-
-		//Input attributes.
-		if ( !empty($this->inputAttributes) ) {
-			$result['inputAttributes'] = $this->inputAttributes;
-		}
-
-		//Primary input ID.
-		if ( $this->hasPrimaryInput ) {
-			$result['primaryInputId'] = $this->getPrimaryInputId();
-		}
-
 		//Enabled state or condition.
 		$result['enabled'] = $this->serializeConditionForJs();
 
@@ -403,5 +388,26 @@ abstract class Control extends UiElement {
 		}
 
 		return $result;
+	}
+
+	protected function getKoComponentParams() {
+		$params = parent::getKoComponentParams();
+
+		//Primary input ID.
+		if ( $this->hasPrimaryInput ) {
+			$params['primaryInputId'] = $this->getPrimaryInputId();
+		}
+
+		//Input classes.
+		if ( !empty($this->inputClasses) ) {
+			$params['inputClasses'] = $this->inputClasses;
+		}
+
+		//Input attributes.
+		if ( !empty($this->inputAttributes) ) {
+			$params['inputAttributes'] = $this->inputAttributes;
+		}
+
+		return $params;
 	}
 }

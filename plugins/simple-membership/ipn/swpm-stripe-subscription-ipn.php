@@ -33,6 +33,21 @@ class SwpmStripeSubscriptionIpnHandler {
 			// SwpmLog::log_simple_debug($input, true);
 			$event_json = json_decode( $input );
 
+			// Check if webhook event data needs to be validated.
+			$webhook_signing_secret = SwpmSettings::get_instance()->get_value( 'stripe-webhook-signing-secret' );
+			if (!empty($webhook_signing_secret)){
+				SwpmLog::log_simple_debug( 'Stripe webhook signing secret is configured. Validating this webhook event...', true );
+				$event_json = $this->validate_webhook_data($input);
+				if (empty($event_json)){
+					//Invalid webhook data received. Don't process this request.
+					http_response_code(400);
+					echo 'Error: Invalid webhook data received.';
+					exit();
+				} else {
+					SwpmLog::log_simple_debug( 'Stripe webhook event data validated successfully!', true );
+				}
+			}
+
 			$type = $event_json->type;
 			SwpmLog::log_simple_debug( sprintf( 'Stripe subscription webhook received: %s. Checking if we need to handle this webhook.', $type ), true );
 
@@ -89,9 +104,9 @@ class SwpmStripeSubscriptionIpnHandler {
 
 					$zero_cents = unserialize( SIMPLE_WP_MEMBERSHIP_STRIPE_ZERO_CENTS );
 					if ( in_array( $currency_code, $zero_cents, true ) ) {
-							$payment_amount = $price_in_cents;
+						$payment_amount = $price_in_cents;
 					} else {
-							$payment_amount = $price_in_cents / 100;// The amount (in cents). This value is used in Stripe API.
+						$payment_amount = $price_in_cents / 100;// The amount (in cents). This value is used in Stripe API.
 					}
 					$payment_amount = floatval( $payment_amount );
 
@@ -106,9 +121,9 @@ class SwpmStripeSubscriptionIpnHandler {
 					//Retrieve the member record for this subscription
 					$member_record = SwpmMemberUtils::get_user_by_subsriber_id( $sub_id );
 					if ( $member_record ) {
-									// Found a member record
-									$member_id           = $member_record->member_id;
-									$membership_level_id = $member_record->membership_level;
+							// Found a member record
+							$member_id           = $member_record->member_id;
+							$membership_level_id = $member_record->membership_level;
 						if ( empty( $first_name ) ) {
 							$first_name = $member_record->first_name;
 						}
@@ -116,9 +131,23 @@ class SwpmStripeSubscriptionIpnHandler {
 							$last_name = $member_record->last_name;
 						}
 					} else {
-									SwpmLog::log_simple_debug( 'Could not find an existing member record for the given subscriber ID: ' . $sub_id . '. This user profile may have been deleted.', false );
-									$member_id           = '';
-									$membership_level_id = '';
+						SwpmLog::log_simple_debug( 'Could not find an existing member record for the given subscriber ID: ' . $sub_id . '. This user profile may have been deleted.', false );
+						$member_id           = '';
+						$membership_level_id = '';
+					}
+
+					// Retrieve the customer's email address.
+					$customer_email = isset($event_json->data->object->customer_email) ? $event_json->data->object->customer_email : '';
+					
+					// Retrieve the transaction ID (Charge ID) for this payment.
+					$txn_id = isset($event_json->data->object->charge) ? $event_json->data->object->charge : '';
+
+					// Handle if it's a 100% discount. Charge id is not available for this case.
+					if ( empty( $txn_id ) ){
+						if ( isset($event_json->data->object->discount->coupon->percent_off) && ($event_json->data->object->discount->coupon->percent_off == 100) ){
+							// create dummy txn id.
+							$txn_id = "free_sub_" . hash("md5", $sub_id);
+						}
 					}
 
 					//Create the custom field
@@ -130,9 +159,9 @@ class SwpmStripeSubscriptionIpnHandler {
 					$ipn_data['mc_gross']         = $payment_amount;
 					$ipn_data['first_name']       = $first_name;
 					$ipn_data['last_name']        = $last_name;
-					$ipn_data['payer_email']      = $event_json->data->object->customer_email;
+					$ipn_data['payer_email']      = $customer_email;
 					$ipn_data['membership_level'] = $membership_level_id;
-					$ipn_data['txn_id']           = $event_json->data->object->charge;
+					$ipn_data['txn_id']           = $txn_id;
 					$ipn_data['subscr_id']        = $sub_id;
 					$ipn_data['swpm_id']          = $member_id;
 					$ipn_data['ip']               = '';
@@ -287,6 +316,48 @@ class SwpmStripeSubscriptionIpnHandler {
 		SwpmLog::log_simple_debug( 'Redirecting customer to: ' . $return_url, true );
 		SwpmLog::log_simple_debug( 'End of Stripe subscription IPN processing.', true, true );
 		SwpmMiscUtils::redirect_to_url( $return_url );
+	}
+
+	public function validate_webhook_data( $event_data_raw ){
+		$event_json = json_decode( $event_data_raw );
+
+		$sub_id = $event_json->data->object->subscription;
+
+		$sub_agreement_cpt_id = SWPM_Utils_Subscriptions::get_subscription_agreement_cpt_id_by_subs_id($sub_id);;
+
+		// Check if the sandbox mode is enabled
+		$sandbox_enabled = SwpmSettings::get_instance()->get_value( 'enable-sandbox-testing' );
+		$webhook_signing_secret = SwpmSettings::get_instance()->get_value( 'stripe-webhook-signing-secret' );
+
+		$payment_button_id = get_post_meta($sub_agreement_cpt_id, 'payment_button_id', true);
+
+		$api_keys = SwpmMiscUtils::get_stripe_api_keys_from_payment_button( $payment_button_id, !$sandbox_enabled );
+
+		if (!isset($api_keys['secret'])){
+			SwpmLog::log_simple_debug('Stripe API secret key could not be retrieved. Could not validate this webhook.', false);
+			return false;
+		}
+
+		// Include the Stripe library.
+		SwpmMiscUtils::load_stripe_lib();
+
+		\Stripe\Stripe::setApiKey( $api_keys['secret'] );
+
+		$stripe_signature_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
+
+		try {
+			$event_json = \Stripe\Webhook::constructEvent($event_data_raw, $stripe_signature_header, $webhook_signing_secret);
+		} catch(\UnexpectedValueException $e) {
+			// Invalid payload. Don't Process this request.
+			SwpmLog::log_simple_debug('Error parsing payload: ' . $e->getMessage() , false);
+			return false;
+		} catch(\Stripe\Exception\SignatureVerificationException $e) {
+			// Invalid signature. Don't Process this request.
+			SwpmLog::log_simple_debug('Error verifying webhook signature: ' . $e->getMessage() , false);
+			return false;
+		}
+
+		return $event_json;
 	}
 
 }

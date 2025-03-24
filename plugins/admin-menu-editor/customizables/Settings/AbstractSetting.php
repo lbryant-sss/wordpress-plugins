@@ -434,6 +434,7 @@ abstract class AbstractSetting extends Customizable implements UpdateNotificatio
 
 			//Descend into structs and arrays, except composite settings.
 			//WP 4.9.6+ includes a polyfill for is_iterable().
+			/** @noinspection PhpElementIsNotAvailableInCurrentPhpVersionInspection */
 			$isContainer = is_iterable($setting) && !($setting instanceof CompositeSetting);
 
 			if ( ($setting instanceof AbstractSetting) && (!$isContainer || !$leavesOnly) ) {

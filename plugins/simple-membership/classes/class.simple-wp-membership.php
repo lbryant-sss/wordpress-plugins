@@ -38,6 +38,7 @@ include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'classes/class.swpm-cronjob.php' );
 include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'ipn/swpm_handle_subsc_ipn.php' );
 include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'lib/paypal/class-swpm-paypal-main.php' );
 include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'classes/class.swpm-limit-active-login.php');
+include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'classes/class.swpm-event-logger.php');
 
 class SimpleWpMembership {
     
@@ -46,6 +47,7 @@ class SimpleWpMembership {
         new SwpmShortcodesHandler(); //Tackle the shortcode definitions and implementation.
         new SwpmSelfActionHandler(); //Tackle the self action hook handling.
 	    new SwpmLimitActiveLogin(); // Tackle login limit functionalities.
+		new SwpmEventLogger(); // Tackle event log related functionalities.
 
         //Load the plugin text domain
         //We are loading the text domain in init with a high priority for better compatibility with other plugins. Most langauges (example: de_DE) work fine with this. Alternative is to load it in plugins_loaded.
@@ -1031,6 +1033,7 @@ class SimpleWpMembership {
         add_submenu_page($menu_parent_slug, __("Settings", 'simple-membership'), __("Settings", 'simple-membership'), SWPM_MANAGEMENT_PERMISSION, 'simple_wp_membership_settings', array(&$this, "admin_settings_menu"));
         add_submenu_page($menu_parent_slug, __("Payments", 'simple-membership'), __("Payments", 'simple-membership'), SWPM_MANAGEMENT_PERMISSION, 'simple_wp_membership_payments', array(&$this, "admin_payments_menu"));
         add_submenu_page($menu_parent_slug, __("Tools", 'simple-membership'), __("Tools", 'simple-membership'), SWPM_MANAGEMENT_PERMISSION, 'simple_wp_membership_tools', array(&$this, "admin_tools_menu"));
+        add_submenu_page($menu_parent_slug, __("Reports", 'simple-membership'), __("Reports", 'simple-membership'), SWPM_MANAGEMENT_PERMISSION, 'simple_wp_membership_reports', array(&$this, "admin_reports_menu"));
         add_submenu_page($menu_parent_slug, __("Add-ons", 'simple-membership'), __("Add-ons", 'simple-membership'), SWPM_MANAGEMENT_PERMISSION, 'simple_wp_membership_addons', array(&$this, "admin_add_ons_menu"));
         do_action('swpm_after_main_admin_menu', $menu_parent_slug);
 
@@ -1072,6 +1075,12 @@ class SimpleWpMembership {
 		$tools_admin->handle_tools_admin_menu();
 	}
 
+	public function admin_reports_menu() {
+		include_once(SIMPLE_WP_MEMBERSHIP_PATH . 'classes/admin-includes/class.swpm-reports-admin-menu.php');
+		$tools_admin = new SwpmReportsAdminMenu();
+		$tools_admin->handle_reports_admin_menu();
+	}
+
     public function admin_add_ons_menu() {
         include(SIMPLE_WP_MEMBERSHIP_PATH . 'views/admin_add_ons_page.php');
     }
@@ -1089,11 +1098,15 @@ class SimpleWpMembership {
 
     public static function activate() {
         //Schedule the cron job events.
-        //We use the daily cronjob events for account status and expiry checks. This cron event is also used by the ENB extension.
+        //We use the daily cronjob events for account status and expiry checks, delete pending accounts, prune events etc. 
+        //The daily cron event is also used by the ENB extension.
+
+        //TODO - Move the all the daily crons to the newly added 'swpm_daily_cron_event' hook.
         wp_schedule_event(time(), 'daily', 'swpm_account_status_event');
-        //Schedule the pending account deletion cron event.
         wp_schedule_event(time(), 'daily', 'swpm_delete_pending_account_event');
 
+        //New daily and twicedaily cron events.
+        wp_schedule_event(time(), 'daily', 'swpm_daily_cron_event');
         wp_schedule_event(time(), 'twicedaily', 'swpm_twicedaily_cron_event');
 
         //Run the standard installer steps
@@ -1104,6 +1117,8 @@ class SimpleWpMembership {
     public static function deactivate() {
         wp_clear_scheduled_hook('swpm_account_status_event');
         wp_clear_scheduled_hook('swpm_delete_pending_account_event');
+        wp_clear_scheduled_hook('swpm_daily_cron_event');
+        wp_clear_scheduled_hook('swpm_twicedaily_cron_event');
     }
 
 }

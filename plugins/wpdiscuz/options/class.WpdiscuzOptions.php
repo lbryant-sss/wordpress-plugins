@@ -81,6 +81,8 @@ class WpdiscuzOptions implements WpDiscuzConstants {
         add_action("admin_init", [&$this, "exportOptionsOrPhrases"], 1);
 
         add_action("admin_notices", [&$this, "adminNotices"]);
+        add_action('switch_blog', [$this, "reInitFormOptions"], 10, 3);
+
     }
 
     public function getOptions() {
@@ -1166,6 +1168,10 @@ class WpdiscuzOptions implements WpDiscuzConstants {
     private function initFormRelations() {
         $this->formContentTypeRel = get_option("wpdiscuz_form_content_type_rel", []);
         $this->formPostRel        = get_option("wpdiscuz_form_post_rel", []);
+    }
+
+    public function reInitFormOptions($new_blog_id, $prev_blog_id, $switch) {
+        $this->initFormRelations();
     }
 
     public function isShareEnabled() {

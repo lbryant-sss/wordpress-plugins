@@ -16,10 +16,15 @@ class ApiHandler
     {
         TableGet::register(self::ROUTE_NAMESPACE);
         TablePost::register(self::ROUTE_NAMESPACE);
+        Tags::register(self::ROUTE_NAMESPACE);
     }
 
 
-
-
+    public static function response($data, $status = 200) {
+        return new \WP_REST_Response($data, $status, [
+            'Content-Type' => 'application/json',
+            'Cache-Control' => 'no-cache',
+        ]);
+    }
 
 }

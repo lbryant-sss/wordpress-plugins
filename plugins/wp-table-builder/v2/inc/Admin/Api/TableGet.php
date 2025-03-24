@@ -2,7 +2,7 @@
 
 namespace WPTableBuilder\Admin\Api;
 use WP_Query;
-use WP_REST_Response;
+use WPTableBuilder\Admin\Authorization;
 use WPTableBuilder\WPTableBuilder;
 
 class TableGet
@@ -13,16 +13,19 @@ class TableGet
         register_rest_route($apiBase, '/table', [
             'methods' => 'GET',
             'callback' => [self::class, 'get_table'],
+            'permission_callback' => [Authorization::class, 'can_edit'],
         ]);
 
         register_rest_route($apiBase, '/tables', [
             'methods' => 'GET',
             'callback' => [self::class, 'get_tables'],
+            'permission_callback' => [Authorization::class, 'can_edit'],
         ]);
 
         register_rest_route($apiBase, '/patterns', [
             'methods' => 'GET',
             'callback' => [self::class, 'get_patterns'],
+            'permission_callback' => [Authorization::class, 'can_edit'],
         ]);
     }
 
@@ -31,11 +34,18 @@ class TableGet
         $id = absint($req->get_param('id'));
         $post = get_post($id);
         $table = get_post_meta($id, '_wptb_content_', true);
+        $is_template = get_post_meta($id, '_wptb_prebuilt_', true) ? true : false;
         $name = '';
+        $tags = [];
         if ($post) {
             $name = $post->post_title;
+            $terms = wp_get_post_terms($id, Tags::TAX_ID);
+            $tags = [];
+            foreach ($terms as $term) {
+                $tags[] = $term->term_id;
+            }
         }
-        return new WP_REST_Response(compact('table', 'name'));
+        return ApiHandler::response(compact('table', 'name', 'tags', 'is_template'));
     }
 
     public static function get_tables($request)
@@ -99,6 +109,7 @@ class TableGet
                     'title' => get_the_title(),
                     'date' => get_the_date('h:i A, d M, Y'),
                     'modified' => get_the_modified_date('h:i A, d M, Y'),
+                    'is_template' => get_post_meta(get_the_ID(), '_wptb_prebuilt_', true) ? true : false
                 ];
             }
             wp_reset_postdata();
@@ -107,13 +118,13 @@ class TableGet
         $total_pages = $query->max_num_pages;
         $total_count = $query->found_posts;
 
-        return [
+        return ApiHandler::response([
             'posts' => $post_data,
             'total_count' => $total_count,
             'total_pages' => $total_pages,
             'current_page' => $page,
             'per_page' => $per_page,
-        ];
+        ]);
     }
 
     public static function get_patterns($req)
@@ -184,9 +195,9 @@ class TableGet
             }
         }
 
-        return [
+        return ApiHandler::response([
             'patterns' => $patterns
-        ];
+        ]);
 
     }
 }

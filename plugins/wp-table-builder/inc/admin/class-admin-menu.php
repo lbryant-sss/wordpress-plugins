@@ -291,8 +291,8 @@ class Admin_Menu
 			array($this, 'welcome')
 		);
 
-		if (!WPTB_LEGACY_BUILDER) {
-			\WPTableBuilder\WPTableBuilder::add_menu();
+		if (!WPTB_LEGACY_BUILDER && (!isset($_GET['wptb-force-builder']) || $_GET['wptb-force-builder'] !== 'legacy')) {
+			\WPTableBuilder\WPTableBuilder::add_menu($menu_cap);
 			return;
 		}
 
@@ -386,7 +386,13 @@ class Admin_Menu
 	{
 		if (!WPTB_LEGACY_BUILDER && (
 			!isset( $_GET['page'] ) ||
-			$_GET['page'] !== 'wp-table-builder-welcome'
+			(
+				$_GET['page'] !== 'wp-table-builder-welcome'
+				&& !(
+					isset( $_GET['wptb-force-builder'] )
+					&& $_GET['wptb-force-builder'] === 'legacy'
+				)
+			)
 		)) {
 			return;
 		}
@@ -544,9 +550,12 @@ class Admin_Menu
 			$handler = 'wptb-import-menu';
 			$plugin_version = NS\PLUGIN_VERSION;
 
+			
 			// script and style enqueue
+			wp_register_script('wptb-admin-builder-purify', plugin_dir_url(__FILE__) . 'js/purify.min.js', array(), NS\PLUGIN_VERSION, false);
 			wp_enqueue_script($handler, $script_url, [], $plugin_version, true);
 			wp_register_script('wptb-admin-builder-js', plugin_dir_url(__FILE__) . 'js/admin.js', array('jquery'), $plugin_version, true);
+			wp_enqueue_script('wptb-admin-builder-purify');
 			wp_enqueue_script('wptb-admin-builder-js');
 			wp_enqueue_style('wptb-settings-manager-style', $style_url, [], $plugin_version);
 
