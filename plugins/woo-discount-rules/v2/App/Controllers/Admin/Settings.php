@@ -3,6 +3,7 @@
 namespace Wdr\App\Controllers\Admin;
 
 use Wdr\App\Controllers\Admin\Tabs\Addons;
+use Wdr\App\Controllers\Admin\Tabs\Recommendations;
 use Wdr\App\Controllers\Admin\Tabs\Compatible;
 use Wdr\App\Controllers\Admin\Tabs\DiscountRules;
 use Wdr\App\Controllers\Admin\Tabs\Help;
@@ -198,6 +199,7 @@ class Settings extends Base
             'help' => new Help(),
             'recipe' => new Recipe(),
             'addons' => new Addons(),
+	        'recommendations' => new Recommendations()
         ));
         uasort($tabs, function ($tab1, $tab2) {
             $priority1 = (int)isset($tab1->priority) ? $tab1->priority : 1000;

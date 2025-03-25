@@ -3,8 +3,8 @@
  * Plugin Name: 1 Razorpay: Signup for FREE PG
  * Plugin URI: https://razorpay.com
  * Description: Razorpay Payment Gateway Integration for WooCommerce.Razorpay Welcome Back Offer: New to Razorpay? Sign up to enjoy FREE payments* of INR 2 lakh till March 31st! Transact before January 10th to grab the offer.
- * Version: 4.7.0
- * Stable tag: 4.7.0
+ * Version: 4.7.1
+ * Stable tag: 4.7.1
  * Author: Team Razorpay
  * WC tested up to: 9.1.2
  * Author URI: https://razorpay.com
@@ -909,6 +909,7 @@ function woocommerce_razorpay_init()
             try
             {
                 $api = $this->getRazorpayApiInstance();
+                $api->setHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 $webhook = $api->request->request($method, $url, $data);
             }
@@ -1080,22 +1081,8 @@ function woocommerce_razorpay_init()
          */
         protected function getRazorpayPaymentParams($order, $orderId)
         {
-            $getWebhookFlag =  get_option('webhook_enable_flag');
-            $time = time();
-            if (empty($getWebhookFlag) == false)
-            {
-                if ($getWebhookFlag + 86400 < time())
-                {
-                    $this->autoEnableWebhook();
-                }
-            }
-            else
-            {
-                update_option('webhook_enable_flag', $time);
-                $this->autoEnableWebhook();
-            }
-
             rzpLogInfo("getRazorpayPaymentParams $orderId");
+
             $razorpayOrderId = $this->createOrGetRazorpayOrderId($order, $orderId);
 
             if ($razorpayOrderId === null)
@@ -1236,7 +1223,6 @@ function woocommerce_razorpay_init()
         protected function createRazorpayOrderId($orderId, $sessionKey)
         {
             rzpLogInfo("Called createRazorpayOrderId with params orderId $orderId and sessionKey $sessionKey");
-
 
             // Calls the helper function to create order data
             global $woocommerce;

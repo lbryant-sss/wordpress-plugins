@@ -2,13 +2,6 @@
 
 if (!defined('ABSPATH')) exit;
 
-function bbq_languages() {
-	
-	load_plugin_textdomain('block-bad-queries', false, dirname(BBQ_BASE_FILE) .'/languages/');
-	
-}
-add_action('init', 'bbq_languages');
-
 function bbq_options() {
 	
 	$bbq_options = array(
@@ -41,11 +34,11 @@ function bbq_check_plugin() {
 	}
 	
 }
-add_action('admin_init', 'bbq_check_plugin');
+register_activation_hook(BBQ_DIR .'block-bad-queries.php', 'bbq_check_plugin');
 
 function bbq_admin_footer_text($text) {
 	
-	$screen_id = bbq_get_current_screen_id();
+	$screen_id = bbq_get_screen_id();
 	
 	$ids = array('settings_page_bbq_settings');
 	
@@ -64,7 +57,7 @@ function bbq_admin_footer_text($text) {
 }
 add_filter('admin_footer_text', 'bbq_admin_footer_text', 10, 1);
 
-function bbq_get_current_screen_id() {
+function bbq_get_screen_id() {
 	
 	if (!function_exists('get_current_screen')) require_once ABSPATH .'/wp-admin/includes/screen.php';
 	
@@ -111,7 +104,7 @@ function bbq_register_settings() {
 	
 	bbq_maybe_display_count();
 	
-	add_settings_field('rate-plugin',  esc_html__('Rate Plugin',  'block-bad-queries'), 'bbq_callback_rate',    'bbq_options_free', 'general', array('id' => 'rate-plugin',  'label' => ''));
+	add_settings_field('rate-plugin',  esc_html__('Rate Plugin',  'block-bad-queries'), 'bbq_callback_rate_plugin', 'bbq_options_free', 'general', array('id' => 'rate-plugin',  'label' => ''));
 	
 	add_settings_field('show-support', esc_html__('Show Support', 'block-bad-queries'), 'bbq_callback_support', 'bbq_options_free', 'general', array('id' => 'show-support', 'label' => ''));
 	
@@ -206,7 +199,7 @@ function bbq_callback_test($args) {
 	
 }
 
-function bbq_callback_rate($args) {
+function bbq_callback_rate_plugin($args) {
 	
 	$href  = 'https://wordpress.org/support/plugin/block-bad-queries/reviews/?rate=5#new-post';
 	$title = esc_attr__('Let others know about BBQ Firewall! A huge THANK YOU for your support!', 'block-bad-queries');
@@ -308,7 +301,7 @@ function bbq_display_settings() { ?>
 
 function bbq_enqueue_resources_admin() {
 	
-	$screen_id = bbq_get_current_screen_id();
+	$screen_id = bbq_get_screen_id();
 	
 	if ($screen_id === 'settings_page_bbq_settings') {
 		
@@ -323,9 +316,9 @@ function bbq_enqueue_resources_admin() {
 }
 add_action('admin_enqueue_scripts', 'bbq_enqueue_resources_admin');
 
-function bbq_print_js_vars_admin() { 
+function bbq_print_js_admin() { 
 	
-	$screen_id = bbq_get_current_screen_id();
+	$screen_id = bbq_get_screen_id();
 	
 	if ($screen_id === 'settings_page_bbq_settings') : ?>
 		
@@ -340,27 +333,27 @@ function bbq_print_js_vars_admin() {
 	<?php endif;
 	
 }
-add_action('admin_print_scripts', 'bbq_print_js_vars_admin');
+add_action('admin_print_scripts', 'bbq_print_js_admin');
 
 //
 
 function bbq_admin_notice() {
 	
-	if (bbq_get_current_screen_id() === 'settings_page_bbq_settings') {
+	if (bbq_get_screen_id() === 'settings_page_bbq_settings') {
 		
-		if (!bbq_check_date_expired() && !bbq_dismiss_notice_check()) {
+		if (!bbq_check_date_expiration() && !bbq_dismiss_notice_check_option()) {
 			
 			?>
 			
-			<div class="notice notice-success notice-margin">
+			<div class="notice notice-success notice-margin notice-custom">
 				<p>
-					<strong><?php esc_html_e('Fall Sale!', 'block-bad-queries'); ?></strong> 
-					<?php esc_html_e('Take 25% OFF any of our', 'block-bad-queries'); ?> 
+					<strong><?php esc_html_e('Spring Sale!', 'block-bad-queries'); ?></strong> 
+					<?php esc_html_e('Take 30% OFF any of our', 'block-bad-queries'); ?> 
 					<a target="_blank" rel="noopener noreferrer" href="https://plugin-planet.com/"><?php esc_html_e('Pro WordPress plugins', 'block-bad-queries'); ?></a> 
 					<?php esc_html_e('and', 'block-bad-queries'); ?> 
 					<a target="_blank" rel="noopener noreferrer" href="https://books.perishablepress.com/"><?php esc_html_e('books', 'block-bad-queries'); ?></a>. 
-					<?php esc_html_e('Apply code', 'block-bad-queries'); ?> <code>FALL2024</code> <?php esc_html_e('at checkout. Sale ends 12/21/24.', 'block-bad-queries'); ?> 
-					<?php echo bbq_dismiss_notice_link(); ?>
+					<?php esc_html_e('Apply code', 'block-bad-queries'); ?> <code>SPRING2025</code> <?php esc_html_e('at checkout. Sale ends 6/25/2025.', 'block-bad-queries'); ?> 
+					<?php echo bbq_dismiss_notice_button(); ?>
 				</p>
 			</div>
 			
@@ -373,14 +366,14 @@ function bbq_admin_notice() {
 }
 add_action('admin_notices', 'bbq_admin_notice');
 
-function bbq_dismiss_notice_activate() {
+function bbq_dismiss_notice_activation() {
 	
 	delete_option('bbq-firewall-dismiss-notice');
 	
 }
-register_activation_hook(BBQ_FILE, 'bbq_dismiss_notice_activate');
+register_activation_hook(BBQ_FILE, 'bbq_dismiss_notice_activation');
 
-function bbq_dismiss_notice_version() {
+function bbq_dismiss_notice_version_number() {
 	
 	$version_current = BBQ_VERSION;
 	
@@ -395,9 +388,9 @@ function bbq_dismiss_notice_version() {
 	}
 	
 }
-add_action('admin_init', 'bbq_dismiss_notice_version');
+add_action('admin_init', 'bbq_dismiss_notice_version_number');
 
-function bbq_dismiss_notice_check() {
+function bbq_dismiss_notice_check_option() {
 	
 	$check = get_option('bbq-firewall-dismiss-notice');
 	
@@ -405,7 +398,7 @@ function bbq_dismiss_notice_check() {
 	
 }
 
-function bbq_dismiss_notice_save() {
+function bbq_dismiss_notice_save_option() {
 	
 	if (isset($_GET['dismiss-notice-verify']) && wp_verify_nonce($_GET['dismiss-notice-verify'], 'bbq_dismiss_notice')) {
 		
@@ -424,9 +417,9 @@ function bbq_dismiss_notice_save() {
 	}
 	
 }
-add_action('admin_init', 'bbq_dismiss_notice_save');
+add_action('admin_init', 'bbq_dismiss_notice_save_option');
 
-function bbq_dismiss_notice_link() {
+function bbq_dismiss_notice_button() {
 	
 	$nonce = wp_create_nonce('bbq_dismiss_notice');
 	
@@ -438,9 +431,9 @@ function bbq_dismiss_notice_link() {
 	
 }
 
-function bbq_check_date_expired() {
+function bbq_check_date_expiration() {
 	
-	$expires = apply_filters('bbq_check_date_expired', '2024-12-21');
+	$expires = apply_filters('bbq_check_date_expiration', '2025-06-25');
 	
 	return (new DateTime() > new DateTime($expires)) ? true : false;
 	

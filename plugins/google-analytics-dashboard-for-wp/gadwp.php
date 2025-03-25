@@ -5,7 +5,7 @@
  * Plugin URI: https://exactmetrics.com
  * Description: Displays Google Analytics Reports and Real-Time Statistics in your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: ExactMetrics
- * Version: 8.3.2
+ * Version: 8.4.0
  * Requires at least: 5.6.0
  * Requires PHP: 7.2
  * Author URI: https://exactmetrics.com/lite/?utm_source=liteplugin&utm_medium=pluginheader&utm_campaign=authoruri&utm_content=7%2E0%2E0
@@ -46,7 +46,7 @@ final class ExactMetrics_Lite {
 	 * @access public
 	 * @var string $version Plugin version.
 	 */
-	public $version = '8.3.2';
+	public $version = '8.4.0';
 
 	/**
 	 * Plugin file.
@@ -221,13 +221,6 @@ final class ExactMetrics_Lite {
 				exactmetrics_lite_call_install_and_upgrade();
 			}
 
-			if ( is_admin() ) {
-				new AM_Deactivation_Survey( 'ExactMetrics', 'google-analytics-dashboard-for-wp' );
-			}
-
-			// Load the plugin textdomain.
-			add_action( 'init', array( self::$instance, 'load_textdomain' ), 15 );
-
 			// Load admin only components.
 			if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
 				self::$instance->notices            = new ExactMetrics_Notice_Admin();
@@ -371,26 +364,6 @@ final class ExactMetrics_Lite {
 	}
 
 	/**
-	 * Loads the plugin textdomain for translations.
-	 *
-	 * @access public
-	 * @return void
-	 * @since 6.0.0
-	 *
-	 */
-	public function load_textdomain() {
-		$plugin_text_domain = 'google-analytics-dashboard-for-wp';
-
-		$plugin_dir = basename( __DIR__ );
-
-		load_plugin_textdomain(
-			$plugin_text_domain,
-			false,
-			$plugin_dir . '/languages'
-		);
-	}
-
-	/**
 	 * Output a nag notice if the user has both Lite and Pro activated
 	 *
 	 * @access public
@@ -484,7 +457,6 @@ final class ExactMetrics_Lite {
 		if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
 
 			// Lite and Pro files
-			require_once EXACTMETRICS_PLUGIN_DIR . 'assets/lib/pandora/class-am-deactivation-survey.php';
 			require_once EXACTMETRICS_PLUGIN_DIR . 'includes/admin/ajax.php';
 			require_once EXACTMETRICS_PLUGIN_DIR . 'includes/admin/admin.php';
 			require_once EXACTMETRICS_PLUGIN_DIR . 'includes/admin/em-admin.php';
@@ -535,6 +507,21 @@ final class ExactMetrics_Lite {
 		if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
 			// Late loading classes (self instantiating)
 			require_once EXACTMETRICS_PLUGIN_DIR . 'includes/admin/tracking.php';
+		}
+
+		if (is_admin()) {
+			require_once EXACTMETRICS_PLUGIN_DIR . 'includes/admin/class-exactmetrics-am-deactivation-survey.php';
+			add_action('admin_menu', function () {
+
+				new \ExactMetrics_AM_Deactivation_Survey(
+					'ExactMetrics Lite',
+					'google-analytics-dashboard-for-wp',
+					apply_filters(
+						'exactmetrics_deactivation_survey_url',
+						'https://exactmetrics.com/wp-json/am-deactivate-survey/v1/deactivation-data'
+					)
+				);
+			}, 100);
 		}
 
 		require_once EXACTMETRICS_PLUGIN_DIR . 'includes/frontend/frontend.php';

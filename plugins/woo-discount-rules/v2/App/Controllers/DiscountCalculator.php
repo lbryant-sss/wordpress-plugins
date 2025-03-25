@@ -699,7 +699,7 @@ class DiscountCalculator extends Base
                                                 $price_as_cart_discount[$rule_id][$product_id] = array(
                                                     'discount_type' => 'wdr_bulk_discount',
                                                     'apply_type' => isset($product_bulk_discount['discount_type']) ? $product_bulk_discount['discount_type'] : '',
-                                                    'discount_label' => wp_unslash($bulk_discount->cart_label),
+                                                    'discount_label' => apply_filters('advanced_woo_discount_customize_bulk_discount_label', wp_unslash($bulk_discount->cart_label),$discount_type, $bulk_discount,$quantity),
                                                     'discount_value' => isset($product_bulk_discount['discount_value']) ? $product_bulk_discount['discount_value'] : 0,
                                                     'discounted_price' => $cart_discounted_price,
                                                     'rule_name' => $rule->getTitle(),

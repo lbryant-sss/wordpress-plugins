@@ -664,17 +664,30 @@ class Ivole_Email {
 	}
 
 	private function map_error_desc( $desc ) {
-		if ( 0 === strcmp( 'Too many review invitations for a single order', $desc ) ) {
+		if (
+			0 === strcmp( 'Too many review invitations for a single order', $desc )
+		) {
 			return __( 'Error: only one review invitation per order is allowed.', 'customer-reviews-woocommerce' ) . ' <a href="https://cusrev.freshdesk.com/support/solutions/articles/43000511299-error-only-one-review-invitation-per-order-is-allowed" target="_blank" rel="noopener noreferrer">' . __( 'View additional information', 'customer-reviews-woocommerce' ) . '</a>.';
-		} elseif ( 0 === strcmp( 'All products were reviewed by this customer', $desc ) ) {
+		} elseif (
+			0 === strcmp( 'All products were reviewed by this customer', $desc )
+		) {
 			return __( 'Error: the customer has already reviewed all products from this order.', 'customer-reviews-woocommerce' );
 		} elseif (
 			0 === strcmp( 'Unable to send reminder to specified email', $desc ) ||
 			0 === strcmp( 'Customer has unsubscribed from emails', $desc )
 		) {
 			return __( 'Error: the customer has unsubscribed from emails.', 'customer-reviews-woocommerce' );
-		} elseif ( 0 === strcmp( 'The customer already reviewed shop or products in the past', $desc ) ) {
+		} elseif (
+			0 === strcmp( 'The customer already reviewed shop or products in the past', $desc )
+		) {
 			return __( 'Error: the customer has already left a review for a different order in the past.', 'customer-reviews-woocommerce' );
+		} elseif (
+			0 === strcmp( 'A review reminder could not be sent because the shop does not exist.', $desc )
+		) {
+			return __(
+				'Error: a review reminder could not be sent using CusRev mailer. Please re-save options on the CusRev.com tab at the plugin\'s settings page.',
+				'customer-reviews-woocommerce'
+			);
 		} else {
 			return $desc;
 		}

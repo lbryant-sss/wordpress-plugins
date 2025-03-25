@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Mega_Menu_Locations' ) ) :
 
 	/**
-	 * Handles the Mega Menu > Menu Settings page
+	 * Handles the Mega Menu > Menu Locations page
 	 */
 	class Mega_Menu_Locations {
 
@@ -37,7 +37,7 @@ if ( ! class_exists( 'Mega_Menu_Locations' ) ) :
 		 * @since 2.8
 		 */
 		public function add_locations_tab( $tabs ) {
-			$tabs['menu_locations'] = __( 'Menu Settings', 'megamenu' );
+			$tabs['menu_locations'] = __( 'Menu Locations', 'megamenu' );
 			return $tabs;
 		}
 
@@ -262,7 +262,7 @@ if ( ! class_exists( 'Mega_Menu_Locations' ) ) :
 
 				<?php $this->print_messages(); ?>
 
-				<h3 class='first'><?php esc_html_e( 'Menu Settings', 'megamenu' ); ?></h3>
+				<h3 class='first'><?php esc_html_e( 'Menu Locations', 'megamenu' ); ?></h3>
 
 				<table>
 					<tr>

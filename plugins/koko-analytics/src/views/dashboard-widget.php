@@ -12,6 +12,7 @@
 */
 
 use KokoAnalytics\Chart_View;
+use KokoAnalytics\Fmt;
 
 ?>
 <link rel="stylesheet" href="<?php echo plugins_url('assets/dist/css/dashboard.css', KOKO_ANALYTICS_PLUGIN_FILE); ?>?v=<?php echo KOKO_ANALYTICS_VERSION; ?>">
@@ -28,7 +29,7 @@ use KokoAnalytics\Chart_View;
     <h3>
        <?php esc_html_e('Showing site visits over last 14 days', 'koko-analytics'); ?>
     </h3>
-    <?php new Chart_View($chart_data, $dateStart, $dateEnd, 200); ?>
+    <?php new Chart_View($chart_data, $dateStart, $dateEnd, 200, false); ?>
 </div>
 
 <?php if ($number_of_top_items > 0 && (count($posts) > 0 || count($referrers) > 0)) { ?>
@@ -56,7 +57,7 @@ use KokoAnalytics\Chart_View;
             <ul class="ka-ul">
                 <?php foreach ($referrers as $referrer) {  ?>
                     <li>
-                        <span><?php echo number_format_i18n($referrer->pageviews); ?></span> <a href="<?php echo esc_attr($referrer->url); ?>"><?php echo esc_html(parse_url($referrer->url, PHP_URL_HOST)); ?></a>
+                        <span><?php echo number_format_i18n($referrer->pageviews); ?></span> <a href="<?php echo esc_attr(Fmt::referrer_url_href($referrer->url)); ?>"><?php echo esc_html(parse_url($referrer->url, PHP_URL_HOST)); ?></a>
                     </li>
                 <?php } ?>
             </ul>

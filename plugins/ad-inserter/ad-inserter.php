@@ -18,6 +18,9 @@ License: GPLv3
 
 Change Log
 
+Ad Inserter 2.8.2 - 2025-03-24
+- Added support for any post tag list check
+
 Ad Inserter 2.8.1 - 2025-02-12
 - Updated depercated backend jQuery code
 - Fix for reflected cross-site scripting (XSS)

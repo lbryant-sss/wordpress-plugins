@@ -199,6 +199,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 == Changelog ==
 
 = 3.25 =
+* New: The Settings/Media Library Assistant Image tab lets you add, view and manage Intermediate Size values for image items.
+* New: For the Settings/Media Library Assistant Uploads tab, the active/inactive status has been changed from views to a filter dropdown.
 * New: For the "MLA Path Mapping Example" plugin (v1.12), the Copy Term Definitions tool has been enhanced with an option to copy Term Meta values as well as term definitions.
 * New: A new example plugin, "MLA ACF Support", adds MLA enhanced taxonomy support to the ACF Pro Gallery field type.
 * New: A new example plugin, "MLA Gallery Download Checklist", supports downloading a ZIP archive of items selected by checking boxes in an `[mla_gallery]` display.

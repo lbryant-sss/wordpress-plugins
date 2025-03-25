@@ -419,27 +419,21 @@ class ManageDiscount extends Base
      * Remove duplicate strikeout price
      * */
     function removeDuplicateStrikeoutPrice($item_price){
-        $del_pattern = "/<del>(.*?)<\/del>/s";
-        preg_match($del_pattern, $item_price, $matches);
-        $del_content = isset($matches[1]) ? $matches[1] : '';
-        if($del_content === ''){
-            $del_pattern = '/<del aria-hidden="true">(.*?)<\/del>/s';
-            preg_match($del_pattern, $item_price, $matches);
-            $del_content = isset($matches[1]) ? $matches[1] : '';
-        }
-        $del_content = trim(strip_tags($del_content));
-        $ins_pattern = "/<ins>(.*?)<\/ins>/s";
-        preg_match($ins_pattern, $item_price, $matches);
-        $ins_content_org = isset($matches[1]) ? $matches[1] : '';
-        $ins_content = trim(strip_tags($ins_content_org));
+	    $del_pattern = "/<del[^>]*>(.*?)<\/del>/s";
+	    preg_match($del_pattern, $item_price, $matches);
+	    $del_content = isset($matches[1]) ? trim(strip_tags($matches[1])) : '';
+	    // Match <ins> with possible attributes
+	    $ins_pattern = "/<ins[^>]*>(.*?)<\/ins>/s";
+	    preg_match($ins_pattern, $item_price, $matches);
+	    $ins_content_org = isset($matches[1]) ? $matches[1] : '';
+	    $ins_content = trim(strip_tags($ins_content_org));
 
-        if(!empty($del_content) && !empty($ins_content)){
-            if($del_content == $ins_content){
-                $item_price = $ins_content_org;
-            }
-        }
+	    // Remove <del> if its content matches <ins>
+	    if (!empty($del_content) && !empty($ins_content) && $del_content === $ins_content) {
+		    $item_price = $ins_content_org;
+	    }
 
-        return $item_price;
+	    return $item_price;
     }
 
     /**
@@ -1961,8 +1955,8 @@ class ManageDiscount extends Base
                 return $cart_total_price;
             }
             $total_discount = self::$woocommerce_helper->formatPrice($total_discount);
-            $cart_total_price .= '<br>' . $this->getYouSavedText($total_discount);
-	        $cart_total_price = apply_filters('advanced_woo_discount_rules_cart_total_saved_text', $cart_total_price, $total_discount);
+	        $cart_total_additional_text = '<br>' . $this->getYouSavedText($total_discount);
+	        $cart_total_price .= apply_filters('advanced_woo_discount_rules_cart_total_saved_text', $cart_total_additional_text, $total_discount);
         }
         return $cart_total_price;
     }
@@ -2880,7 +2874,7 @@ class ManageDiscount extends Base
         if (!empty($total_discount)) {
             $total_discounted_price = self::$woocommerce_helper->formatPrice($total_discount, array('currency' => self::$woocommerce_helper->getOrderCurrency($order)));
             $subtotal_additional_text = $this->getYouSavedText($total_discounted_price);
-            $save_text = apply_filters('advanced_woo_discount_rules_order_saved_text', $subtotal_additional_text, $total_discounted_price, $total_discount);
+	        $save_text = apply_filters('advanced_woo_discount_rules_order_saved_text', $subtotal_additional_text, $total_discounted_price, $total_discount,['filter_type'=>'complete_order_total','order'=>$order, 'item'=>$items]);
         }
         return $total . $save_text;
     }
@@ -2919,7 +2913,7 @@ class ManageDiscount extends Base
             if (!empty($total_discount)) {
                 $total_discounted_price = self::$woocommerce_helper->formatPrice($total_discount, array('currency' => self::$woocommerce_helper->getOrderCurrency($order)));
                 $subtotal_additional_text = $this->getYouSavedText($total_discounted_price);
-                $subtotal .= apply_filters('advanced_woo_discount_rules_order_saved_text', $subtotal_additional_text, $total_discounted_price, $total_discount);
+	            $subtotal .= apply_filters('advanced_woo_discount_rules_order_saved_text', $subtotal_additional_text, $total_discounted_price, $total_discount,['filter_type'=>'complete_order_line_item','order'=> $order, 'item'=>$item]);
             }
         }
         return $subtotal;
@@ -2940,7 +2934,7 @@ class ManageDiscount extends Base
             if (!empty($order) && !empty($total_discount)) {
                 $total_discounted_price = self::$woocommerce_helper->formatPrice($total_discount, array('currency' => self::$woocommerce_helper->getOrderCurrency($order)));
                 $subtotal_additional_text = $this->getYouSavedText($total_discounted_price);
-                echo apply_filters('advanced_woo_discount_rules_order_saved_text', $subtotal_additional_text, $total_discounted_price, $total_discount);
+	            echo apply_filters('advanced_woo_discount_rules_order_saved_text', $subtotal_additional_text, $total_discounted_price, $total_discount,['filter_type'=>'woo_order_line_item','order'=>$order, 'item'=>$item]);
             }
         }
     }
@@ -3050,7 +3044,7 @@ class ManageDiscount extends Base
         if (!empty($total_discount)) {
             $total_discounted_price = self::$woocommerce_helper->formatPrice($total_discount, array('currency' => self::$woocommerce_helper->getOrderCurrency($order)));
             $subtotal_additional_text = $this->getYouSavedText($total_discounted_price);
-            $save_text = apply_filters('advanced_woo_discount_rules_order_saved_text', $subtotal_additional_text, $total_discounted_price, $total_discount);
+	        $save_text = apply_filters('advanced_woo_discount_rules_order_saved_text', $subtotal_additional_text, $total_discounted_price, $total_discount,['filter_type'=>'woo_order_total','order'=>$order, 'item'=>$items]);
         }
         echo $save_text;
     }
@@ -3074,4 +3068,19 @@ class ManageDiscount extends Base
 
         return $fee;
     }
+
+	/**
+	 * Change the custom taxonomies label
+	 *
+	 * @param $custom_taxonomies
+	 *
+	 * @return array
+	 */
+	public static function changeCustomTaxonomyLabel($custom_taxonomies){
+		if(!empty($custom_taxonomies) && is_array($custom_taxonomies) && method_exists(Woocommerce::class,'changeCustomTaxonomyLabel') ){
+			return Woocommerce::changeCustomTaxonomyLabel($custom_taxonomies);
+		}
+		return $custom_taxonomies;
+
+	}
 }

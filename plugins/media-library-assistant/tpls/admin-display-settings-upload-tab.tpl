@@ -106,6 +106,7 @@
 <form action="[+form_url+]" method="get" id="mla-search-uploads-form">
 	<input type="hidden" name="page" value="mla-settings-menu-upload" />
 	<input type="hidden" name="mla_tab" value="upload" />
+	[+view_args+]
 	[+_wpnonce+]
 	[+results+]
 	<p class="search-box" style="margin-top: 1em; display: inline-block">
@@ -122,6 +123,7 @@
 			<form action="[+form_url+]" method="post" id="mla-search-uploads-filter">
 				<input type="hidden" name="page" value="mla-settings-menu-upload" />
 				<input type="hidden" name="mla_tab" value="upload" />
+				[+view_args+]
 				[+_wpnonce+]
 
 <!-- template="after-table" -->

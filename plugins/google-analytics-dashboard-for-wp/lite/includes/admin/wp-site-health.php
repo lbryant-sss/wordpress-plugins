@@ -83,7 +83,7 @@ class ExactMetrics_WP_Site_Health_Lite {
 
 		if ( $this->is_tracking() ) {
 			$tests['async']['exactmetrics_tracking_code'] = array(
-				'label' => __( 'ExactMetrics Tracking Code', 'exactmetrics-premium' ),
+				'label' => __( 'ExactMetrics Tracking Code', 'google-analytics-dashboard-for-wp' ),
 				'test'  => 'exactmetrics_test_tracking_code',
 			);
 		}
@@ -458,8 +458,8 @@ class ExactMetrics_WP_Site_Health_Lite {
 		if ( ! empty( $errors ) && is_array( $errors ) && ! empty( $errors[0] ) ) {
 			if ( $this->is_coming_soon_active() ) {
 				$result['status']      = 'good';
-				$result['label']       = __( 'Tracking code disabled: coming soon/maintenance mode plugin present', 'exactmetrics-premium' );
-				$result['description'] = __( 'ExactMetrics has detected that you have a coming soon or maintenance mode plugin currently activated on your site. This plugin does not allow other plugins (like ExactMetrics) to output Javascript, and thus ExactMetrics is not currently tracking your users (expected). Once the coming soon/maintenance mode plugin is deactivated, tracking will resume automatically.', 'exactmetrics-premium' );
+				$result['label']       = __( 'Tracking code disabled: coming soon/maintenance mode plugin present', 'google-analytics-dashboard-for-wp' );
+				$result['description'] = __( 'ExactMetrics has detected that you have a coming soon or maintenance mode plugin currently activated on your site. This plugin does not allow other plugins (like ExactMetrics) to output Javascript, and thus ExactMetrics is not currently tracking your users (expected). Once the coming soon/maintenance mode plugin is deactivated, tracking will resume automatically.', 'google-analytics-dashboard-for-wp' );
 			} else {
 				$result['status']      = 'critical';
 				$result['label']       = __( 'ExactMetrics has automatically detected an issue with your tracking setup', 'google-analytics-dashboard-for-wp' );

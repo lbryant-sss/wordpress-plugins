@@ -100,12 +100,12 @@ class ExactMetrics_Dashboard_Widget {
 			array( $this, 'dashboard_widget_content' )
 		);
 
-		// Attept to place the widget at the top.
+		// Attempt to place the widget at the top.
 		$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
 		$widget_instance  = array( self::WIDGET_KEY => $normal_dashboard[ self::WIDGET_KEY ] );
 		unset( $normal_dashboard[ self::WIDGET_KEY ] );
 		$sorted_dashboard                             = array_merge( $widget_instance, $normal_dashboard );
-		$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+		$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Nothing to see here...
 	}
 
 	/**
@@ -207,7 +207,6 @@ class ExactMetrics_Dashboard_Widget {
 					'ajax'                   => admin_url( 'admin-ajax.php' ),
 					'nonce'                  => wp_create_nonce( 'mi-admin-nonce' ),
 					'network'                => is_network_admin(),
-					'translations'           => wp_get_jed_locale_data( exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp' ),
 					'assets'                 => plugins_url( $version_path . '/assets/vue', EXACTMETRICS_PLUGIN_FILE ),
 					'shareasale_id'          => exactmetrics_get_shareasale_id(),
 					'shareasale_url'         => exactmetrics_get_shareasale_url( exactmetrics_get_shareasale_id(), '' ),
@@ -231,6 +230,14 @@ class ExactMetrics_Dashboard_Widget {
 			);
 
 			$this->remove_conflicting_asset_files();
+
+			$text_domain = exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp';
+
+			wp_scripts()->add_inline_script(
+				'exactmetrics-vue-widget',
+				exactmetrics_get_printable_translations( $text_domain ),
+				'translation'
+			);
 		}
 	}
 
@@ -290,7 +297,7 @@ class ExactMetrics_Dashboard_Widget {
 			$this->options = self::wp_parse_args_recursive( get_user_meta( get_current_user_id(), 'exactmetrics_user_preferences', true ), self::$default_options );
 		}
 
-        // Set interval fixed to last30days on lite plugin.
+		// Set interval fixed to last30days on lite plugin.
 		$this->options['interval'] = 'last30days';
 
 		return apply_filters( 'exactmetrics_dashboard_widget_options', $this->options );

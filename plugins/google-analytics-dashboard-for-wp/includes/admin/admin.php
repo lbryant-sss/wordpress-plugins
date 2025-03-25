@@ -42,55 +42,55 @@ function exactmetrics_admin_menu()
 	$hide_reports_submenu = false;
 	$is_lite              = ! exactmetrics_is_pro_version();
 
-    // If user not dismissed setup checklist.
+	// If user not dismissed setup checklist.
 	if ( ! ExactMetrics()->setup_checklist->is_dismissed() ) {
 		$hide_reports_submenu = true;
-    }
+	}
 
-    // If user disabled report view, and it is a lite user.
+	// If user disabled report view, and it is a lite user.
 	if ( $hook === 'exactmetrics_settings' ) {
 		$hide_reports_submenu = true;
-    }
+	}
 
 	add_menu_page(__('ExactMetrics', 'google-analytics-dashboard-for-wp'), 'ExactMetrics' . $menu_notification_indicator, 'exactmetrics_view_dashboard', $parent_slug, 'exactmetrics_reports_page', $menu_icon_inline, '100.00013467543');
 
-    if ( ! ExactMetrics()->setup_checklist->is_dismissed() ) {
-        add_submenu_page( $hook, __( 'Setup Checklist', 'google-analytics-dashboard-for-wp' ), __( 'Setup Checklist', 'google-analytics-dashboard-for-wp' ) . ExactMetrics()->setup_checklist->get_menu_count(), 'exactmetrics_save_settings', 'exactmetrics_settings#/setup-checklist', 'exactmetrics_settings_page' );
-    }
+	if ( ! ExactMetrics()->setup_checklist->is_dismissed() ) {
+		add_submenu_page( $hook, __( 'Setup Checklist', 'google-analytics-dashboard-for-wp' ), __( 'Setup Checklist', 'google-analytics-dashboard-for-wp' ) . ExactMetrics()->setup_checklist->get_menu_count(), 'exactmetrics_save_settings', 'exactmetrics_settings#/setup-checklist', 'exactmetrics_settings_page' );
+	}
 
 	if ( $hook === 'exactmetrics_reports' ) {
 		add_submenu_page( $parent_slug, __( 'General Reports:', 'google-analytics-dashboard-for-wp' ), __( 'Reports', 'google-analytics-dashboard-for-wp' ), 'exactmetrics_view_dashboard', 'exactmetrics_reports', 'exactmetrics_reports_page' );
 	}
 
-    // then settings page
-    add_submenu_page( $parent_slug, __( 'ExactMetrics', 'google-analytics-dashboard-for-wp' ), __( 'Settings', 'google-analytics-dashboard-for-wp' ), 'exactmetrics_save_settings', 'exactmetrics_settings', 'exactmetrics_settings_page' );
+	// then settings page
+	add_submenu_page( $parent_slug, __( 'ExactMetrics', 'google-analytics-dashboard-for-wp' ), __( 'Settings', 'google-analytics-dashboard-for-wp' ), 'exactmetrics_save_settings', 'exactmetrics_settings', 'exactmetrics_settings_page' );
 
-    // Add dashboard submenu.
-    add_submenu_page( 'index.php', __( 'General Reports:', 'google-analytics-dashboard-for-wp' ), 'ExactMetrics', 'exactmetrics_view_dashboard', 'admin.php?page=exactmetrics_reports' );
+	// Add dashboard submenu.
+	add_submenu_page( 'index.php', __( 'General Reports:', 'google-analytics-dashboard-for-wp' ), 'ExactMetrics', 'exactmetrics_view_dashboard', 'admin.php?page=exactmetrics_reports' );
 
-    // If the setup checklist is not dismissed, remove the own submenu of `Insights` main menu that we added on line 52.
-    // This way the Checklist will be the first submenu which is an important thing for onboarding.
-    if ( $hide_reports_submenu ) {
+	// If the setup checklist is not dismissed, remove the own submenu of `Insights` main menu that we added on line 52.
+	// This way the Checklist will be the first submenu which is an important thing for onboarding.
+	if ( $hide_reports_submenu ) {
 
-        // Check if the user has the capability to save settings and view dashboard.
-        // We should skip this for editors that have only view capability have only item in the submenu, removing that would break the menu.
-        if ( ! ( ! current_user_can( 'exactmetrics_save_settings' ) && current_user_can( 'exactmetrics_view_dashboard' ) ) ) {
-            // Remove own submenu of `Insights` main menu.
-            remove_submenu_page( 'exactmetrics_reports', 'exactmetrics_reports' );
-        }
-    }
+		// Check if the user has the capability to save settings and view dashboard.
+		// We should skip this for editors that have only view capability have only item in the submenu, removing that would break the menu.
+		if ( ! ( ! current_user_can( 'exactmetrics_save_settings' ) && current_user_can( 'exactmetrics_view_dashboard' ) ) ) {
+			// Remove own submenu of `Insights` main menu.
+			remove_submenu_page( 'exactmetrics_reports', 'exactmetrics_reports' );
+		}
+	}
 
 	$submenu_base = add_query_arg('page', 'exactmetrics_settings', admin_url('admin.php'));
 
-    //  Site Notes
+	//  Site Notes
 	add_submenu_page( $parent_slug, __( 'Site Notes:', 'google-analytics-dashboard-for-wp' ), __( 'Site Notes', 'google-analytics-dashboard-for-wp' ), 'exactmetrics_save_settings', $submenu_base . '#/site-notes' );
 
-    // If report disabled then remove this menu.
-    if ( $hook === 'exactmetrics_reports' || $is_lite ) {
-	    //  AI Insights
-	    // translators: Icon
-	    add_submenu_page( $parent_slug, __( 'AI Insights:', 'google-analytics-dashboard-for-wp' ), sprintf( __( '%s AI Insights', 'google-analytics-dashboard-for-wp' ), exactmetrics_get_ai_menu_icon() ), 'exactmetrics_save_settings', 'admin.php?page=exactmetrics_reports#/ai-insights' );
-    }
+	// If report disabled then remove this menu.
+	if ( $hook === 'exactmetrics_reports' || $is_lite ) {
+		//  AI Insights
+		// translators: Icon
+		add_submenu_page( $parent_slug, __( 'AI Insights:', 'google-analytics-dashboard-for-wp' ), sprintf( __( '%s AI Insights', 'google-analytics-dashboard-for-wp' ), exactmetrics_get_ai_menu_icon() ), 'exactmetrics_save_settings', 'admin.php?page=exactmetrics_reports#/ai-insights' );
+	}
 
 	$license_type = ExactMetrics()->license->get_license_type();
 
@@ -147,6 +147,17 @@ function exactmetrics_admin_menu()
 	// then Upgrade To Pro.
 	if (!exactmetrics_is_pro_version()) {
 		add_submenu_page($parent_slug, __('Upgrade to Pro:', 'google-analytics-dashboard-for-wp'), '<span class="exactmetrics-upgrade-submenu"> ' . __('Upgrade to Pro', 'google-analytics-dashboard-for-wp') . '</span>', 'exactmetrics_save_settings', exactmetrics_get_upgrade_link('admin-menu', 'submenu', "https://www.exactmetrics.com/lite/"));
+	}
+
+	if ( class_exists( 'WooCommerce' ) ) {
+		// Show the Payments submenu only when WooCommerce is active.
+		add_submenu_page(
+			$parent_slug,
+			__('Payments:', 'google-analytics-dashboard-for-wp'),
+			__('Payments', 'google-analytics-dashboard-for-wp'),
+			'manage_options',
+			$submenu_base . '#/payments'
+		);
 	}
 }
 
@@ -471,7 +482,7 @@ function exactmetrics_admin_setup_notices()
 	}
 
 	// Priority:
-    // 0. UA sunset
+	// 0. UA sunset
 	// 1. Google Analytics not authenticated
 	// 2. License key not entered for pro
 	// 3. License key not valid/okay for pro
@@ -482,31 +493,31 @@ function exactmetrics_admin_setup_notices()
 	// 8. Woo upsell
 	// 9. EDD upsell
 
-    //  0. UA sunset supported alert
-    $profile = is_network_admin() ? ExactMetrics()->auth->get_network_analytics_profile() : ExactMetrics()->auth->get_analytics_profile();
+	//  0. UA sunset supported alert
+	$profile = is_network_admin() ? ExactMetrics()->auth->get_network_analytics_profile() : ExactMetrics()->auth->get_analytics_profile();
 
-    if ( !empty($profile['ua']) && empty($profile['v4']) && !exactmetrics_is_own_admin_page() ) {
-        $title = __('Urgent: Your Website is Not Tracking Any Google Analytics Data!', 'google-analytics-dashboard-for-wp');
-        $message = __('Google Analytics 3 (UA) and support was sunset on July 1, 2023. Your website is currently NOT tracking any analytics. </br>Create or connect a new Google Analytics 4 property immediately to start tracking.', 'google-analytics-dashboard-for-wp');
+	if ( !empty($profile['ua']) && empty($profile['v4']) && !exactmetrics_is_own_admin_page() ) {
+		$title = __('Urgent: Your Website is Not Tracking Any Google Analytics Data!', 'google-analytics-dashboard-for-wp');
+		$message = __('Google Analytics 3 (UA) and support was sunset on July 1, 2023. Your website is currently NOT tracking any analytics. </br>Create or connect a new Google Analytics 4 property immediately to start tracking.', 'google-analytics-dashboard-for-wp');
 
-        $wizard_url     = admin_url('admin.php?page=exactmetrics-onboarding');
+		$wizard_url     = admin_url('admin.php?page=exactmetrics-onboarding');
 
-        echo '<div class="notice notice-error is-dismissible exactmetrics-notice" data-notice="exactmetrics_ua_sunset">';
-        echo '<p><strong>' . $title . '</strong></p>';
-        echo '<p>' . $message . '</p>';
-        echo '<p>';
-        echo '<a href="https://www.exactmetrics.com/docs/connect-google-analytics/"
+		echo '<div class="notice notice-error is-dismissible exactmetrics-notice" data-notice="exactmetrics_ua_sunset">';
+		echo '<p><strong>' . esc_html($title) . '</strong></p>';
+		echo '<p>' . wp_kses_post($message) . '</p>';
+		echo '<p>';
+		echo '<a href="https://www.exactmetrics.com/docs/connect-google-analytics/"
                    target="_blank" rel="noopener noreferrer">' .
-            __( 'Learn How to Create a GA4 Property', 'google-analytics-dashboard-for-wp' ) .
-            '</a><br>';
-        echo '<a href="' . $wizard_url . '">' .
-            __( 'Connect a Property', 'google-analytics-dashboard-for-wp' ) .
-            '</a><br>';
-        echo '</p>';
-        echo '</div>';
+			__( 'Learn How to Create a GA4 Property', 'google-analytics-dashboard-for-wp' ) . // phpcs:ignore
+			'</a><br>';
+		echo '<a href="' . esc_url($wizard_url) . '">' .
+			__( 'Connect a Property', 'google-analytics-dashboard-for-wp' ) . // phpcs:ignore
+			'</a><br>';
+		echo '</p>';
+		echo '</div>';
 
-        return;
-    }
+		return;
+	}
 
 	$is_plugins_page = 'plugins' === get_current_screen()->id;
 
@@ -520,7 +531,7 @@ function exactmetrics_admin_setup_notices()
 		$secondary    = esc_html__( 'Learn More', 'google-analytics-dashboard-for-wp' );
 		$urltwo       = $submenu_base . '#/about/getting-started';
 		$message      = esc_html__( 'ExactMetrics, the WordPress Analytics plugin, helps you easily connect your website to Google Analytics, so that you can see how people find and use your website. Over 1 million smart website owners use ExactMetrics to grow faster.', 'google-analytics-dashboard-for-wp' );
-		echo '<div class="notice notice-info"><p style="font-weight:700">' . $title . '</p><p>' . $message . '</p><p><a href="' . $urlone . '" class="button-primary">' . $primary . '</a>&nbsp;&nbsp;&nbsp;<a href="' . $urltwo . '" class="button-secondary">' . $secondary . '</a></p></div>';
+		echo '<div class="notice notice-info"><p style="font-weight:700">' . $title . '</p><p>' . $message . '</p><p><a href="' . $urlone . '" class="button-primary">' . $primary . '</a>&nbsp;&nbsp;&nbsp;<a href="' . $urltwo . '" class="button-secondary">' . $secondary . '</a></p></div>'; // phpcs:ignore -- All escaped above
 
 		return;
 	}
@@ -727,6 +738,7 @@ function exactmetrics_admin_setup_notices()
 			$woo_notice_offer_icon = esc_url(trailingslashit(EXACTMETRICS_PLUGIN_URL)) . 'assets/images/upsell/woo-offer-icon.svg';
 			$woo_notice_style = "<style>.exactmetrics-wooedd-upsell-left .button-hero,.exactmetrics-wooedd-upsell-offer{width:270px;margin-bottom:20px;text-align:center}.exactmetrics-wooedd-upsell-row{display:flex;background-image:url($woo_notice_bg);background-repeat:no-repeat;background-position:96% bottom}.exactmetrics-wooedd-upsell-left{margin-left:20px}.exactmetrics-wooedd-upsell-offer{background:#fafeb0;padding:6px 0;position:relative;font-weight:700;font-size:15px;line-height:28px}.exactmetrics-wooedd-upsell-offer span{color:#338eef}.exactmetrics-wooedd-upsell-offer:before{content:url('$woo_notice_offer_icon');position:absolute;left:-23px;bottom:-30px}@media (max-width:1300px){.exactmetrics-wooedd-upsell-row{background-size:60%}}@media (max-width:900px){.exactmetrics-wooedd-upsell-row{background-image:none}.exactmetrics-wooedd-upsell-left,.exactmetrics-wooedd-upsell-left .button-hero,.exactmetrics-wooedd-upsell-offer{width:100%}}</style>";
 
+			// phpcs:disable
 			echo sprintf(
 				$woo_notice_template,
 				$woo_notice_style,
@@ -739,6 +751,7 @@ function exactmetrics_admin_setup_notices()
 				$woo_notice_button
 			);
 			return;
+			// phpcs:enable
 		}
 	}
 
@@ -875,10 +888,15 @@ add_action( 'network_admin_notices', 'exactmetrics_admin_setup_notices' );
  * @return bool
  */
 function check_is_it_exactmetrics_lite() {
-    return 'googleanalytics.php' == basename( EXACTMETRICS_PLUGIN_FILE );
+	return 'googleanalytics.php' == basename( EXACTMETRICS_PLUGIN_FILE );
 }
 
 /**
  * Add EEA Compliance file.
  */
 require_once __DIR__ . '/eea-compliance.php';
+
+/**
+ * Add translations functionality.
+ */
+require_once __DIR__ . '/translations.php';

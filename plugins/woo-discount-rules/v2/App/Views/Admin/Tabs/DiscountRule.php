@@ -3,12 +3,13 @@ if (!defined('ABSPATH')) exit;
 
 $rules_count = isset($rule_count) && !empty($rule_count) ? $rule_count : 0 ;
 $total_page = isset($total_count) && !empty($total_count) ? $total_count : 0 ;
+$recommended_addon = isset($recommended_addon) && !empty($recommended_addon) ?  $recommended_addon: [] ;
 $is_pro = \Wdr\App\Helpers\Helper::hasPro();
 ?>
 <br>
 <div id="wpbody-content" class="awdr-container">
     <div class="" style="<?php if (!$is_pro) {
-        echo "width: 71%; float: left;";
+        echo "width: 70%; float: left;";
     } ?>">
         <div class="col-md-6 col-lg-6 text-left awdr-list-header-btn" <?php if (!$is_pro) {
             echo 'style="width:100%; float: left"';
@@ -423,40 +424,76 @@ $is_pro = \Wdr\App\Helpers\Helper::hasPro();
         </form>
         <br class="clear">
     </div>
+	<?php  if($total_count > 1) : ?>
+    </div>
+    </div>
+	<?php endif;?>
+
     <?php
     if (!$is_pro) { ?>
-        <div class="col-md-6 col-lg-6 text-right" style="width: 27%; float: right;">
-            <div class="col-md-12">
-                <a href="https://docs.flycart.org/en/articles/3806305-upgrade-from-free-to-pro?utm_source=wpwoodiscountrules&utm_medium=plugin&utm_campaign=inline&utm_content=upgrade"
-                   target="_blank"
-                   class="btn btn-success"><?php esc_html_e('Looking for more features? Upgrade to PRO', 'woo-discount-rules'); ?></a>
-            </div>
-            <div class="woo-side-panel">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h3><?php esc_html_e('With PRO version, you can create:', 'woo-discount-rules') ?></h3>
-                        <p><?php esc_html_e('- Categories based discounts', 'woo-discount-rules') ?></p>
-                        <p><?php esc_html_e('- User roles based discounts', 'woo-discount-rules') ?></p>
-                        <p><?php esc_html_e('- Buy One Get One Free deals', 'woo-discount-rules') ?></p>
-                        <p><?php esc_html_e('- Buy X Get Y deals', 'woo-discount-rules') ?></p>
-                        <p><?php esc_html_e('- Buy 2, get 1 at 50% discount', 'woo-discount-rules') ?></p>
-                        <p><?php esc_html_e('- Buy 3 for $10 (Package / Bundle [Set] Discount)', 'woo-discount-rules') ?></p>
-                        <p><?php esc_html_e('- Different discounts with one coupon code', 'woo-discount-rules') ?></p>
-                        <p><?php esc_html_e('- Purchase history based discounts', 'woo-discount-rules') ?></p>
-                        <p><?php esc_html_e('- Free product / gift', 'woo-discount-rules') ?></p>
-                        <p><?php esc_html_e('- Discount for variants', 'woo-discount-rules') ?></p>
-                        <p><?php esc_html_e('- Conditional discounts', 'woo-discount-rules') ?></p>
-                        <p><?php esc_html_e('- Fixed cost discounts', 'woo-discount-rules') ?></p>
-                        <p><?php esc_html_e('- Offer fixed price on certain conditions', 'woo-discount-rules') ?></p>
-                        <p>
+        <div class="awdr-pro-content-card-list">
+            <div class="awdr-pro-content-card card" style="float: right;">
+                <div class="card-body text-right">
+                    <img class="banner" style="    width: 100%;height: 160px;object-fit: cover;"  src="https://static.flycart.net/recommendation/image/discount-rule.png"
+                         alt="discount-rule-banner-image">
+                    <div class="awdr-pro-content-header">
+                        <div class="awdr-pro-content-icon">
+                            <img src="https://static.flycart.net/recommendation/icons/discount-rules.png"
+                                 alt="discount-rule-icon" width="48" height="48">
+                        </div>
+                        <h2><?php esc_html_e('Discount Rules PRO for WooCommerce', 'woo-discount-rules') ?></h2>
+                    </div>
+                    <a href="https://docs.flycart.org/en/articles/3806305-upgrade-from-free-to-pro?utm_source=wpwoodiscountrules&utm_medium=plugin&utm_campaign=inline&utm_content=upgrade"
+                       target="_blank"
+                       class="btn btn-dark-blue"><?php esc_html_e('Looking for more features? Upgrade to PRO', 'woo-discount-rules'); ?></a>
+                    <div class="woo-side-panel mt-3">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <h3><?php esc_html_e('With PRO version, you can create:', 'woo-discount-rules') ?></h3>
+                                <ul class="list-unstyled">
+                                    <li><?php esc_html_e('- Categories based discounts', 'woo-discount-rules') ?></li>
+                                    <li><?php esc_html_e('- User roles based discounts', 'woo-discount-rules') ?></li>
+                                    <li><?php esc_html_e('- Buy One Get One Free deals', 'woo-discount-rules') ?></li>
+                                    <li><?php esc_html_e('- Buy X Get Y deals', 'woo-discount-rules') ?></li>
+                                    <li><?php esc_html_e('- Buy 2, get 1 at 50% discount', 'woo-discount-rules') ?></li>
+                                    <li><?php esc_html_e('- Buy 3 for $10 (Package / Bundle [Set] Discount)', 'woo-discount-rules') ?></li>
+                                    <li><?php esc_html_e('- Different discounts with one coupon code', 'woo-discount-rules') ?></li>
+                                    <li><?php esc_html_e('- Purchase history based discounts', 'woo-discount-rules') ?></li>
+                                    <li><?php esc_html_e('- Free product / gift', 'woo-discount-rules') ?></li>
+                                    <li><?php esc_html_e('- Discount for variants', 'woo-discount-rules') ?></li>
+                                    <li><?php esc_html_e('- Conditional discounts', 'woo-discount-rules') ?></li>
+                                    <li><?php esc_html_e('- Fixed cost discounts', 'woo-discount-rules') ?></li>
+                                    <li><?php esc_html_e('- Offer fixed price on certain conditions', 'woo-discount-rules') ?></li>
+                                </ul>
+                            </div>
+
                             <a href="https://www.flycart.org/products/wordpress/woocommerce-discount-rules?utm_source=wpwoodiscountrules&amp;utm_medium=plugin&amp;utm_campaign=inline&amp;utm_content=woo-discount-rules"
-                               class="btn btn-success"
-                               target="_blank"><?php esc_html_e('Go PRO', 'woo-discount-rules'); ?></a></p>
+                                   class="btn btn-dark-blue"
+                                   target="_blank"><?php esc_html_e('Go PRO', 'woo-discount-rules'); ?></a>
+                        </div>
                     </div>
                 </div>
             </div>
+            <?php foreach ($recommended_addon as  $slug => $recommendation) :?>
+            <div class="awdr-pro-content-card card" style="float: right;">
+                <div class="card-body text-right">
+                    <div class="awdr-pro-content-header">
+                        <div class="awdr-pro-content-icon">
+                            <img src="<?php echo esc_url($recommendation['icon_url']); ?>"
+                                 alt="discount-rule-icon" width="48" height="48">
+                        </div>
+                        <h2><?php esc_html_e($recommendation['name'], 'woo-discount-rules') ?></h2>
+                    </div>
+                    <div class="description" style="margin-bottom: 6px;">
+                        <?php echo esc_html($recommendation['description'], 'woo-discount-rules'); ?>
+                    </div>
+                    <a href="<?php echo esc_url($recommendation['plugin_url']); ?>"
+                       class="btn btn-dark-blue"
+                       target="_blank"><?php esc_html_e('Get Plugin', 'woo-discount-rules'); ?></a>
+                </div>
+            </div>
+             <?php endforeach; ?>
         </div>
-
     <?php } ?>
 
 

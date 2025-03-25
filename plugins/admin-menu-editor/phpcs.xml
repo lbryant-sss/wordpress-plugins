@@ -38,6 +38,13 @@
 			<property name="customEscapingFunctions" type="array">
 				<!-- Register a custom escaping function for WP_Error objects. -->
 				<element value="wsAmeEscapeWpError"/>
+				
+				<!--
+				In more recent versions of WordPress Code Standards, the function names get
+				lowercased before comparison. So the name must be lowercase here, too.
+				-->
+				<element value="wsameescapewperror"/>
+				<element value="htmlhelper"/>
 			</property>
 		</properties>
 	</rule>

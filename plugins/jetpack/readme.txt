@@ -326,16 +326,22 @@ Jetpack Backup can do a full website migration to a new host, migrate theme file
 
 
 == Changelog ==
-### 14.5-a.5 - 2025-03-17
+### 14.5-a.9 - 2025-03-24
 #### Enhancements
-- Social: Add "Schedule" functionality to the Share Post modal.
+- My Jetpack: Introduce a new onboarding screen to provide clear, step-by-step instructions for new users connecting to Jetpack.
+
+#### Improved compatibility
+- VideoPress: Add block sidebar notice to transform embed into a block.
+- AI Assistant: Improve performance by optimizing state management in the AI feature hook.
+- Components: Prevent deprecation notices by adding `__next40pxDefaultSize` to controls.
 
 #### Bug fixes
-- Forms: Fix core list bullets not showing.
-- Slideshow: Fix misaligned controls in site editor.
-- Social: Resolve connection issues with LinkedIn company pages and Tumblr additional blogs.
-- Twitter Timeline Widget: Prevent broken links when using Twitter's deprecated data-widget-id approach.
-- VideoPress Block: Fix broken undo functionality.
+- Admin Color Scheme: Fix colors in the Aquatic color scheme.
+- Newsletter: Ensure external links are marked as such in the Newsletter widget.
+- Search: Ensure the count of returned results is shown after searching.
+- Site Badge: Update styles of the Coming Soon badge.
+- Site Verification: Fix auto-verification via Google when Social is disabled.
+- Stats: Ensure the Stats widget is automatically disabled when the Stats module is disabled.
 
 --------
 

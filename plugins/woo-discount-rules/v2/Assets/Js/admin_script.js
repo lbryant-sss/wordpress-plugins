@@ -1534,6 +1534,42 @@ jQuery(document).ready(function ($) {
                             $(element).find('.wdr-to-time').css("border", "1px solid #7e8993");
                         }
                         break;
+                    case 'wdr_cart_item_pwb-brand':
+                        let perfect_brands = $(element).find('.wdr-product-tax-selector select').val();
+                        let perfect_category_quantity = $(element).find('.wdr-product_filter_qty input').val();
+                        if (perfect_brands == '') {
+                            condition_array.push("fails");
+                            $(element).find('.wdr-product-tax-selector span.select2-selection').css("border", "1px solid red");
+                            $(element).find('.wdr-product-tax-selector select').select2('focus');
+                        } else {
+                            $(element).find('.wdr-product-tax-selector span.select2-selection').css("border", "1px solid #7e8993");
+                        }
+                        if (perfect_category_quantity == '' || perfect_category_quantity <= 0) {
+                            condition_array.push("fails");
+                            $(element).find('.wdr-product_filter_qty input').css("border", "1px solid red");
+                            $(element).find('.wdr-product_filter_qty input').focus();
+                        } else {
+                            $(element).find('.wdr-product_filter_qty input').css("border", "1px solid #7e8993");
+                        }
+                        break;
+                    case 'wdr_cart_item_product_brand':
+                        let woo_brands = $(element).find('.wdr-product-tax-selector select').val();
+                        let woo_category_quantity = $(element).find('.wdr-product_filter_qty input').val();
+                        if (woo_brands == '') {
+                            condition_array.push("fails");
+                            $(element).find('.wdr-product-tax-selector span.select2-selection').css("border", "1px solid red");
+                            $(element).find('.wdr-product-tax-selector select').select2('focus');
+                        } else {
+                            $(element).find('.wdr-product-tax-selector span.select2-selection').css("border", "1px solid #7e8993");
+                        }
+                        if (woo_category_quantity == '' || woo_category_quantity <= 0) {
+                            condition_array.push("fails");
+                            $(element).find('.wdr-product_filter_qty input').css("border", "1px solid red");
+                            $(element).find('.wdr-product_filter_qty input').focus();
+                        } else {
+                            $(element).find('.wdr-product_filter_qty input').css("border", "1px solid #7e8993");
+                        }
+                        break;
                     case 'purchase_last_order':
                         let last_order = $(element).find('.wdr-wc-order-status').val();
                         if (last_order.length == 0) {

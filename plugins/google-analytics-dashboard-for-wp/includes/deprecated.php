@@ -1,4 +1,5 @@
 <?php
+// phpcs:ignoreFile
 /**
  * Deprecated functions.
  *
@@ -188,7 +189,7 @@ function _exactmetrics_deprecated_function( $function, $version, $backtrace = nu
 		// Translators: Placeholders add the hook name, plugin version and bold text.
 		trigger_error( sprintf( esc_html__( '%1$s is %3$sdeprecated%4$s since ExactMetrics version %2$s.', 'google-analytics-dashboard-for-wp' ), $function, $version, '<strong>', '</strong>' ) );
 		// Limited to previous 1028 characters, but since we only need to move back 1 in stack that should be fine.
-		trigger_error( print_r( $backtrace, 1 ) ); // phpcs:ignore 
+		trigger_error( print_r( $backtrace, 1 ) ); // phpcs:ignore
 		// Alternatively we could dump this to a file.
 	}
 }
@@ -289,7 +290,7 @@ function _exactmetrics_notice_deprecated_facebook_instant_articles()
 	?>
 	<div data-dismissible="deprecated-addon-facebook-instant-articles" class="notice notice-error is-dismissible">
 		<p>
-			<?php echo __( 'Facebook Instant Article support ended in April 2023. You may deactivate and delete the ExactMetrics addon at your earliest convenience.', 'exactmetrics-premium' ); ?>
+			<?php echo __( 'Facebook Instant Article support ended in April 2023. You may deactivate and delete the ExactMetrics addon at your earliest convenience.', 'google-analytics-dashboard-for-wp' ); ?>
 		</p>
 	</div>
 	<?php
@@ -308,56 +309,56 @@ function _exactmetrics_notice_deprecated_google_optimize()
 	?>
 	<div data-dismissible="deprecated-addon-facebook-instant-articles" class="notice notice-error is-dismissible">
 		<p>
-			<?php echo __( 'Google Optimize and Optimize 360 support ended in September 2023. You may deactivate and delete the ExactMetrics addon at your earliest convenience.', 'exactmetrics-premium' ); ?>
+			<?php echo __( 'Google Optimize and Optimize 360 support ended in September 2023. You may deactivate and delete the ExactMetrics addon at your earliest convenience.', 'google-analytics-dashboard-for-wp' ); ?>
 		</p>
 	</div>
 	<?php
 }
 
 if (!function_exists('exactmetrics_get_ua')) {
-    function exactmetrics_get_ua() {
-        return '';
-    }
+	function exactmetrics_get_ua() {
+		return '';
+	}
 }
 
 if (!function_exists('exactmetrics_get_network_ua')) {
-    function exactmetrics_get_network_ua() {
-        return '';
-    }
+	function exactmetrics_get_network_ua() {
+		return '';
+	}
 }
 
 if (!function_exists('exactmetrics_mp_track_event_call')) {
-    function exactmetrics_mp_track_event_call() {
-        return '';
-    }
+	function exactmetrics_mp_track_event_call() {
+		return '';
+	}
 }
 
 if (!function_exists('exactmetrics_mp_api_call')) {
-    function exactmetrics_mp_api_call() {
-        return '';
-    }
+	function exactmetrics_mp_api_call() {
+		return '';
+	}
 }
 
 if (!function_exists('exactmetrics_get_mp_api_url')) {
-    function exactmetrics_get_mp_api_url() {
-        return '';
-    }
+	function exactmetrics_get_mp_api_url() {
+		return '';
+	}
 }
 
 if (!function_exists('exactmetrics_get_tracking_ids')) {
-    function exactmetrics_get_tracking_ids() {
-        return '';
-    }
+	function exactmetrics_get_tracking_ids() {
+		return '';
+	}
 }
 
 if (!function_exists('exactmetrics_is_valid_ua')) {
-    function exactmetrics_is_valid_ua() {
-        return false;
-    }
+	function exactmetrics_is_valid_ua() {
+		return false;
+	}
 }
 
 if (!function_exists('exactmetrics_get_ua_to_output')) {
-    function exactmetrics_get_ua_to_output() {
-        return '';
-    }
+	function exactmetrics_get_ua_to_output() {
+		return '';
+	}
 }

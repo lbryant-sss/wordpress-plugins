@@ -200,7 +200,7 @@ class MLAMime {
 		}
 
 		// Build and sort the type => extensions list
-		$items = self::mla_query_upload_items( array( 'mla_upload_view' => 'active' ), 0, 0 );
+		$items = self::mla_query_upload_items( array( 'mla_upload_status' => 'active' ), 0, 0 );
 		$pairs = array();
 		foreach ( $items as $value )
 			if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_MLA_ICONS ) ) {
@@ -307,7 +307,7 @@ class MLAMime {
 		}
 
 		// Build and sort the extension => type list
-		$items = self::mla_query_upload_items( array( 'mla_upload_view' => 'active' ), 0, 0 );
+		$items = self::mla_query_upload_items( array( 'mla_upload_status' => 'active' ), 0, 0 );
 		$pairs = array();
 		foreach ( $items as $value ) {
 			$pairs[ $value->slug ] = $value->mime_type;
@@ -389,7 +389,7 @@ class MLAMime {
 		}
 
 		// Build and sort the extension => type list
-		$items = self::mla_query_upload_items( array( 'mla_upload_view' => 'active' ), 0, 0 );
+		$items = self::mla_query_upload_items( array( 'mla_upload_status' => 'active' ), 0, 0 );
 		$pairs = array();
 		foreach ( $items as $value ) {
 			$pairs[ $value->slug ] = $value->mime_type;
@@ -1511,15 +1511,21 @@ class MLAMime {
 		}
 
 		$clean_request = array (
+			's' => '',
 			'mla_upload_view' => 'all',
+			'mla_upload_status' => 'any',
 			'orderby' => 'slug',
 			'order' => 'ASC',
-			's' => ''
 		);
 
 		foreach ( $raw_request as $key => $value ) {
 			switch ( $key ) {
+				// ['s'] - Search Media by one or more keywords
+				case 's':
+					$clean_request[ $key ] = stripslashes( trim( $value ) );
+					break;
 				case 'mla_upload_view':
+				case 'mla_upload_status':
 					$clean_request[ $key ] = $value;
 					break;
 				case 'orderby':
@@ -1541,20 +1547,12 @@ class MLAMime {
 							$clean_request[ $key ] = 'ASC';
 					}
 					break;
-				/*
-				 * ['s'] - Search Media by one or more keywords
-				 */
-				case 's':
-					$clean_request[ $key ] = stripslashes( trim( $value ) );
-					break;
 				default:
 					// ignore anything else in $_REQUEST
 			} // switch $key
 		} // foreach $raw_request
 
-		/*
-		 * Ignore incoming paged value; use offset and count instead
-		 */
+		// Ignore incoming paged value; use offset and count instead
 		if ( ( (int) $count ) > 0 ) {
 			$clean_request['offset'] = $offset;
 			$clean_request['posts_per_page'] = $count;
@@ -1577,12 +1575,11 @@ class MLAMime {
 			return array ();
 		}
 
-		/*
-		 * Sort and filter the list
-		 */
+		// Sort and filter the list
 		$keyword = isset( $request['s'] ) ? $request['s'] : '';
 		$extension = 0 === strpos( $keyword, '.' ) ? substr( $keyword, 1) : false;
 		$view = isset( $request['mla_upload_view'] ) ? $request['mla_upload_view'] : 'all';
+		$status = isset( $request['mla_upload_status'] ) ? $request['mla_upload_status'] : 'any';
 		$sorted_types = array();
 
 		foreach ( self::$mla_upload_mime_templates as $slug => $value ) {
@@ -1605,20 +1602,29 @@ class MLAMime {
 			}
 
 			switch( $view ) {
+				case 'core':
+				case 'mla':
+				case 'custom':
+					$found = $view === $value['source'];
+					break;
+				default:
+					$found = true;
+			}// $view
+
+			if ( ! $found ) {
+				continue;
+			}
+
+			switch( $status ) {
 				case 'active':
 					$found = ! $value['disabled'];
 					break;
 				case 'inactive':
 					$found = $value['disabled'];
 					break;
-				case 'core':
-				case 'mla':
-				case 'custom':
-					$found = $view == $value['source'];
-					break;
 				default:
 					$found = true;
-			}// $view
+			}// $status
 
 			if ( ! $found ) {
 				continue;
@@ -1739,14 +1745,6 @@ class MLAMime {
 				'singular' => _x( 'All', 'table_view_singular', 'media-library-assistant' ),
 				'plural' => _x( 'All', 'table_view_plural', 'media-library-assistant' ),
 				'count' => 0 ),
-			'active' => array(
-				'singular' => _x( 'Active', 'table_view_singular', 'media-library-assistant' ),
-				'plural' => _x( 'Active', 'table_view_plural', 'media-library-assistant' ),
-				'count' => 0 ),
-			'inactive' => array(
-				'singular' => _x( 'Inactive', 'table_view_singular', 'media-library-assistant' ),
-				'plural' => _x( 'Inactive', 'table_view_plural', 'media-library-assistant' ),
-				'count' => 0 ),
 			'core' => array(
 				'singular' => _x( 'WordPress', 'table_view_singular', 'media-library-assistant' ),
 				'plural' => _x( 'WordPress', 'table_view_plural', 'media-library-assistant' ),
@@ -1763,7 +1761,6 @@ class MLAMime {
 
 		foreach ( $items as $value ) {
 			$upload_items['all']['count']++;
-			$value->disabled ? $upload_items['inactive']['count']++ : $upload_items['active']['count']++;
 			$upload_items[ $value->source ]['count']++;
 		}
 

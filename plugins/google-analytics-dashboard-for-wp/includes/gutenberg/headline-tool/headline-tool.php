@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:ignoreFile
 namespace ExactMetricsHeadlineToolPlugin;
 
 // setup defines

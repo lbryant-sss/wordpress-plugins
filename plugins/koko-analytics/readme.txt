@@ -4,7 +4,7 @@ Donate link: https://wordpress.org/support/plugin/koko-analytics/reviews/#new-po
 Tags: analytics, statistics, stats, privacy, counter
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 License: GPL-3.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -50,6 +50,7 @@ All of the features listed above are available for free. Some additional feature
 - [CSV Export](https://www.kokoanalytics.com/features/csv-export/): The ability to export your dashboard data to CSV for advanced analysis.
 - [Pageviews Column](https://www.kokoanalytics.com/features/pageviews-column/): Shows the number of pageviews over a configurable time period right in your WP Admin posts and pages overview.
 - [Admin Bar](https://www.kokoanalytics.com/features/admin-bar/): Shows daily pageviews for a specific page in your WordPress Admin Bar.
+- [Traffic Spike Notifications](https://www.kokoanalytics.com/features/traffic-spike-notifications/): receive an email notification when your website experiences a traffic spike.
 
 You can [purchase Koko Analytics Pro here](https://www.kokoanalytics.com/pricing/).
 
@@ -150,6 +151,12 @@ You can [purchase Koko Analytics Pro](https://www.kokoanalytics.com/pricing/) to
 
 
 == Changelog ==
+
+### 1.7.2 - Mar 24, 2025
+
+- Hide chart group options on dashboard widget chart.
+- Run referrer URL's in dashboard widget through href normalizer.
+- Very minor performance optimisation for generating chart HTML.
 
 
 ### 1.7.1 - Mar 10, 2025
@@ -777,9 +784,5 @@ If your WordPress root directory is not writable, go to the Koko Analytics setti
 #### 1.0.6 - Jan 20, 2020
 
 - Remember view period when navigating away from analytics dashboard.
-- Add filter hook to prevent loading the tracking script: `koko_analytics_load_tracking_script`
-- Ignore all user agents containing the word `seo`
-- Ignore requests if page is loaded inside an iframe.
-- Only read `document.cookie` if cookie use is actually enabled.
-- In chart, ...
+- Add filter hook to prevent loading the tracking ...
 

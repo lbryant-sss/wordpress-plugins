@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+require_once( __DIR__ . '/includes/misc/class-cr-utils.php' );
 require_once( __DIR__ . '/includes/emails/class-cr-email-func.php' );
 require_once( __DIR__ . '/includes/emails/class-cr-sender.php' );
 require_once( __DIR__ . '/includes/emails/class-cr-email.php' );
@@ -81,7 +82,7 @@ require_once( __DIR__ . '/includes/analytics/class-cr-reminders-log.php' );
 require_once( __DIR__ . '/includes/analytics/class-cr-reviews-top-charts.php' );
 
 class Ivole {
-	const CR_VERSION = '5.71.0';
+	const CR_VERSION = '5.72.0';
 
 	public function __construct() {
 		if( function_exists( 'wc' ) ) {

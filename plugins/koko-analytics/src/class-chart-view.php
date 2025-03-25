@@ -10,7 +10,7 @@ namespace KokoAnalytics;
 
 class Chart_View
 {
-    public function __construct(array $data, \DateTimeInterface $dateStart, \DateTimeInterface $dateEnd, int $height = 280)
+    public function __construct(array $data, \DateTimeInterface $dateStart, \DateTimeInterface $dateEnd, int $height = 280, bool $showGroupOptions = true)
     {
         $n = count($data);
         $tick_width = $n > 0 ? 100.0 / (float) $n : 100.0;
@@ -26,9 +26,10 @@ class Chart_View
         $height_modifier = $y_max_nice > 0 ? $inner_height / $y_max_nice : 1;
         $dateFormat = (string) get_option('date_format', 'Y-m-d');
         $daysDiff = abs($dateEnd->diff($dateStart)->days);
+        $timezone = wp_timezone();
         ?>
         <div class="ka-chart">
-            <?php if ($daysDiff > 7) { ?>
+            <?php if ($showGroupOptions && $daysDiff > 7) { ?>
             <div class="ka-chart-group-by">
                 <?php esc_html_e('Group by', 'koko-analytics'); ?>
                 <a href="<?php echo esc_attr(add_query_arg(['group' => 'day'])); ?>"><?php esc_html_e('days', 'koko-analytics'); ?></a>
@@ -37,7 +38,7 @@ class Chart_View
                     ?><a href="<?php echo esc_attr(add_query_arg(['group' => 'month'])); ?>"><?php esc_html_e('months', 'koko-analytics'); ?></a><?php
                 } ?>
             </div>
-            <?php } ?>
+            <?php } /* end show group options */ ?>
             <svg width="100%" height="<?php echo $height; ?>" id="ka-chart">
               <g class="axes-y" transform="translate(<?php echo $padding_left; ?>, <?php echo $padding_top; ?>)" text-anchor="end" data-padding="<?php echo $padding_left; ?>">
                 <text x="0" y="<?php echo $inner_height; ?>" fill="#757575" dy="0.3em" >0</text>
@@ -53,7 +54,7 @@ class Chart_View
               </g>
                <g class="bars" transform="translate(0, <?php echo $padding_top; ?>)" style="display: none;">
                 <?php foreach ($data as $tick) {
-                    $dt = (new \DateTimeImmutable($tick->date, wp_timezone()));
+                    $dt = (new \DateTimeImmutable($tick->date, $timezone));
                     $is_weekend = (int) $dt->format('N') >= 6;
                     $class_attr = $is_weekend ? 'class="weekend" ' : '';
                     // data attributes are for the hover tooltip, which is handled in JS

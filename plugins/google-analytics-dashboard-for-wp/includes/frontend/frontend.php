@@ -198,7 +198,6 @@ function exactmetrics_frontend_admin_bar_scripts() {
 				'ajax'                 => admin_url( 'admin-ajax.php' ),
 				'nonce'                => wp_create_nonce( 'mi-admin-nonce' ),
 				'network'              => is_network_admin(),
-				'translations'         => wp_get_jed_locale_data( exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp' ),
 				'assets'               => plugins_url( $version_path . '/assets/vue', EXACTMETRICS_PLUGIN_FILE ),
 				'addons_url'           => is_multisite() ? network_admin_url( 'admin.php?page=exactmetrics_network#/addons' ) : admin_url( 'admin.php?page=exactmetrics_settings#/addons' ),
 				'page_id'              => is_singular() ? get_the_ID() : false,
@@ -253,14 +252,14 @@ function exactmetrics_administrator_tracking_notice() {
 
 	?>
 <div class="exactmetrics-tracking-notice exactmetrics-tracking-notice-hide">
-    <div class="exactmetrics-tracking-notice-icon">
-        <img src="<?php echo esc_url( plugins_url( 'assets/images/em-mascot.png', EXACTMETRICS_PLUGIN_FILE ) ); ?>"
-            width="40" alt="ExactMetrics Mascot" />
-    </div>
-    <div class="exactmetrics-tracking-notice-text">
-        <h3><?php esc_html_e( 'Tracking is Disabled for Administrators', 'google-analytics-dashboard-for-wp' ); ?></h3>
-        <p>
-            <?php
+	<div class="exactmetrics-tracking-notice-icon">
+		<img src="<?php echo esc_url( plugins_url( 'assets/images/em-mascot.png', EXACTMETRICS_PLUGIN_FILE ) ); ?>"
+			width="40" alt="ExactMetrics Mascot" />
+	</div>
+	<div class="exactmetrics-tracking-notice-text">
+		<h3><?php esc_html_e( 'Tracking is Disabled for Administrators', 'google-analytics-dashboard-for-wp' ); ?></h3>
+		<p>
+			<?php
 				$doc_url = 'https://exactmetrics.com/docs/tracking-disabled-administrators-editors';
 				$doc_url = add_query_arg(
 					array(
@@ -273,95 +272,95 @@ function exactmetrics_administrator_tracking_notice() {
 				// Translators: %s is the link to the article where more details about tracking are listed.
 				printf( esc_html__( 'To keep stats accurate, we do not load Google Analytics scripts for admin users. %1$sLearn More &raquo;%2$s', 'google-analytics-dashboard-for-wp' ), '<a href="' . esc_url( $doc_url ) . '" target="_blank">', '</a>' );
 			?>
-        </p>
-    </div>
-    <div class="exactmetrics-tracking-notice-close">&times;</div>
+		</p>
+	</div>
+	<div class="exactmetrics-tracking-notice-close">&times;</div>
 </div>
 <style type="text/css">
 .exactmetrics-tracking-notice {
-    position: fixed;
-    bottom: 20px;
-    right: 15px;
-    font-family: Arial, Helvetica, "Trebuchet MS", sans-serif;
-    background: #fff;
-    box-shadow: 0 0 10px 0 #dedede;
-    padding: 6px 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 380px;
-    max-width: calc(100% - 30px);
-    border-radius: 6px;
-    transition: bottom 700ms ease;
-    z-index: 10000;
+	position: fixed;
+	bottom: 20px;
+	right: 15px;
+	font-family: Arial, Helvetica, "Trebuchet MS", sans-serif;
+	background: #fff;
+	box-shadow: 0 0 10px 0 #dedede;
+	padding: 6px 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 380px;
+	max-width: calc(100% - 30px);
+	border-radius: 6px;
+	transition: bottom 700ms ease;
+	z-index: 10000;
 }
 
 .exactmetrics-tracking-notice h3 {
-    font-size: 13px;
-    color: #222;
-    font-weight: 700;
-    margin: 0 0 8px;
-    padding: 0;
-    line-height: 1;
-    border: none;
+	font-size: 13px;
+	color: #222;
+	font-weight: 700;
+	margin: 0 0 8px;
+	padding: 0;
+	line-height: 1;
+	border: none;
 }
 
 .exactmetrics-tracking-notice p {
-    font-size: 13px;
-    color: #7f7f7f;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
-    line-height: 1.2;
-    border: none;
+	font-size: 13px;
+	color: #7f7f7f;
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
+	line-height: 1.2;
+	border: none;
 }
 
 .exactmetrics-tracking-notice p a {
-    color: #7f7f7f;
-    font-size: 13px;
-    line-height: 1.2;
-    margin: 0;
-    padding: 0;
-    text-decoration: underline;
-    font-weight: 400;
+	color: #7f7f7f;
+	font-size: 13px;
+	line-height: 1.2;
+	margin: 0;
+	padding: 0;
+	text-decoration: underline;
+	font-weight: 400;
 }
 
 .exactmetrics-tracking-notice p a:hover {
-    color: #7f7f7f;
-    text-decoration: none;
+	color: #7f7f7f;
+	text-decoration: none;
 }
 
 .exactmetrics-tracking-notice-icon img {
-    height: auto;
-    display: block;
-    margin: 0;
+	height: auto;
+	display: block;
+	margin: 0;
 }
 
 .exactmetrics-tracking-notice-icon {
-    padding: 14px;
-    background-color: #f4f3f7;
-    border-radius: 6px;
-    flex-grow: 0;
-    flex-shrink: 0;
-    margin-right: 12px;
+	padding: 14px;
+	background-color: #f4f3f7;
+	border-radius: 6px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	margin-right: 12px;
 }
 
 .exactmetrics-tracking-notice-close {
-    padding: 0;
-    margin: 0 3px 0 0;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    color: #7f7f7f;
-    background: transparent;
-    line-height: 1;
-    align-self: flex-start;
-    cursor: pointer;
-    font-weight: 400;
+	padding: 0;
+	margin: 0 3px 0 0;
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	color: #7f7f7f;
+	background: transparent;
+	line-height: 1;
+	align-self: flex-start;
+	cursor: pointer;
+	font-weight: 400;
 }
 
 .exactmetrics-tracking-notice.exactmetrics-tracking-notice-hide {
-    bottom: -200px;
+	bottom: -200px;
 }
 </style>
 <?php
@@ -372,24 +371,24 @@ function exactmetrics_administrator_tracking_notice() {
 	?>
 <script>
 if ('undefined' !== typeof jQuery) {
-    jQuery(document).ready(function($) {
-        /* Don't show the notice if we don't have a way to hide it (no js, no jQuery). */
-        $(document.querySelector('.exactmetrics-tracking-notice')).removeClass(
-            'exactmetrics-tracking-notice-hide');
-        $(document.querySelector('.exactmetrics-tracking-notice-close')).on('click', function(e) {
-            e.preventDefault();
-            $(this).closest('.exactmetrics-tracking-notice').addClass(
-                'exactmetrics-tracking-notice-hide');
-            $.ajax({
-                url: '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
-                method: 'POST',
-                data: {
-                    action: 'exactmetrics_dismiss_tracking_notice',
-                    nonce: '<?php echo esc_js( wp_create_nonce( 'exactmetrics-tracking-notice' ) ); ?>',
-                }
-            });
-        });
-    });
+	jQuery(document).ready(function($) {
+		/* Don't show the notice if we don't have a way to hide it (no js, no jQuery). */
+		$(document.querySelector('.exactmetrics-tracking-notice')).removeClass(
+			'exactmetrics-tracking-notice-hide');
+		$(document.querySelector('.exactmetrics-tracking-notice-close')).on('click', function(e) {
+			e.preventDefault();
+			$(this).closest('.exactmetrics-tracking-notice').addClass(
+				'exactmetrics-tracking-notice-hide');
+			$.ajax({
+				url: '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
+				method: 'POST',
+				data: {
+					action: 'exactmetrics_dismiss_tracking_notice',
+					nonce: '<?php echo esc_js( wp_create_nonce( 'exactmetrics-tracking-notice' ) ); ?>',
+				}
+			});
+		});
+	});
 }
 </script>
 <?php
@@ -437,7 +436,7 @@ function exactmetrics_exclude_query_params_v4() {
 		return;
 	}
 
-	$current_page_url = add_query_arg( $_SERVER['QUERY_STRING'], '', trailingslashit( home_url( $wp->request ) ) );
+	$current_page_url = add_query_arg( !empty($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '', '', trailingslashit( home_url( $wp->request ) ) ); // phpcs:ignore
 	$query_options    = exactmetrics_get_option( 'exclude_query_params_options', false );
 	$pg_options       = $query_options ? explode( ',', $query_options ) : array();
 

@@ -2770,7 +2770,7 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 						)
 					);
 
-					if ( ! defined( 'MEGAMENU_ENABLE_FLEX_OPTION' ) || MEGAMENU_ENABLE_FLEX_OPTION === false ) {
+					if ( ! defined( 'MEGAMENU_ENABLE_FLEX_CSS_OPTION' ) || MEGAMENU_ENABLE_FLEX_CSS_OPTION === false ) {
 						unset($settings['general']['settings']['use_flex_css']);
 					}
 	

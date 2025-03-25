@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Discount Rules Core plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Discount Rules Core 2.6.7\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-discount-rules-core\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: Discount Rules Core 2.6.8\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-discount-rules\n"
+"Last-Translator: Flycart <support@flycart.org>\n"
+"Language-Team: Flycart <support@flycart.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-19T07:16:37+00:00\n"
+"POT-Creation-Date: 2025-03-24T04:58:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: woo-discount-rules\n"
@@ -83,10 +83,10 @@ msgstr ""
 #: v1/index.php:27
 #: v1/index.php:28
 #: v1/menu-html.php:97
-#: v2/App/Controllers/Admin/Settings.php:46
 #: v2/App/Controllers/Admin/Settings.php:47
+#: v2/App/Controllers/Admin/Settings.php:48
 #: v2/App/Controllers/Admin/Tabs/DiscountRules.php:25
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:16
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:17
 msgid "Discount Rules"
 msgstr ""
 
@@ -169,179 +169,179 @@ msgstr ""
 msgid "Subtotal"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:107
+#: v2/App/Controllers/Admin/Settings.php:108
 #: v2/App/Controllers/Admin/Tabs/GeneralSettings.php:23
 #: v2/App/Views/Admin/Tabs/Addons.php:114
 msgid "Settings"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:292
+#: v2/App/Controllers/Admin/Settings.php:294
 msgid "We found that your were using our old \"Woo discount rules\" plugin, Please disable it!"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:365
+#: v2/App/Controllers/Admin/Settings.php:367
 msgid "no results"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:366
+#: v2/App/Controllers/Admin/Settings.php:368
 msgid "Select Values"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:367
+#: v2/App/Controllers/Admin/Settings.php:369
 msgid "Searching…"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:456
+#: v2/App/Controllers/Admin/Settings.php:458
 msgid "Guest"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:564
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:97
+#: v2/App/Controllers/Admin/Settings.php:566
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:98
 msgid "Disable"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:565
+#: v2/App/Controllers/Admin/Settings.php:567
 msgid "Active"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:566
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:96
+#: v2/App/Controllers/Admin/Settings.php:568
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:97
 msgid "Enable"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:567
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:334
+#: v2/App/Controllers/Admin/Settings.php:569
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:335
 msgid " - (Running)"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:568
+#: v2/App/Controllers/Admin/Settings.php:570
 msgid "Oops!! something went wrong!"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:569
+#: v2/App/Controllers/Admin/Settings.php:571
 msgid "Rule duplicated successfully!"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:570
+#: v2/App/Controllers/Admin/Settings.php:572
 msgid "Rule deleted successfully!"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:571
+#: v2/App/Controllers/Admin/Settings.php:573
 msgid "Are you sure want to delete this rule!"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:572
+#: v2/App/Controllers/Admin/Settings.php:574
 msgid "Rule disabled successfully!"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:573
+#: v2/App/Controllers/Admin/Settings.php:575
 msgid "Rule enabled successfully!"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:574
+#: v2/App/Controllers/Admin/Settings.php:576
 msgid "Rule saved successfully!"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:575
+#: v2/App/Controllers/Admin/Settings.php:577
 msgid "Settings saved successfully!"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:576
+#: v2/App/Controllers/Admin/Settings.php:578
 msgid "Rule priority changed successfully!"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:577
+#: v2/App/Controllers/Admin/Settings.php:579
 msgid "Rule priority not changed !"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:578
+#: v2/App/Controllers/Admin/Settings.php:580
 msgid "No data for this period"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:579
+#: v2/App/Controllers/Admin/Settings.php:581
 msgid "Oops! Coupon already exists in Woocommerce"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:580
-#: v2/App/Controllers/Admin/Settings.php:651
+#: v2/App/Controllers/Admin/Settings.php:582
+#: v2/App/Controllers/Admin/Settings.php:653
 msgid "Copied!"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:581
+#: v2/App/Controllers/Admin/Settings.php:583
 #: v2/App/Views/Admin/Tabs/settings.php:598
 msgid "Copy ShortCode"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:582
+#: v2/App/Controllers/Admin/Settings.php:584
 msgid "If you make this recursive other row(s) will be removed!"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:583
+#: v2/App/Controllers/Admin/Settings.php:585
 msgid "Quantity"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:584
+#: v2/App/Controllers/Admin/Settings.php:586
 msgid "Minimum Quantity"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:585
+#: v2/App/Controllers/Admin/Settings.php:587
 msgid "Discount value"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:586
+#: v2/App/Controllers/Admin/Settings.php:588
 msgid "Discount percentage"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:587
+#: v2/App/Controllers/Admin/Settings.php:589
 msgid "Filter (Buy)"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:588
+#: v2/App/Controllers/Admin/Settings.php:590
 #: v2/App/Views/Admin/Rules/Manage.php:197
 msgid "Filter"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:589
+#: v2/App/Controllers/Admin/Settings.php:591
 msgid ""
 "<p>Choose <b>what gets discount</b> (products/categories/attributes/SKU and so on )</p>\n"
 "<p>Note : You can also exclude products/categories.</p>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:591
+#: v2/App/Controllers/Admin/Settings.php:593
 #: v2/App/Helpers/Rule.php:1227
 #: v2/App/Views/Admin/Rules/Discounts/Bulk.php:59
 #: v2/App/Views/Admin/Rules/Manage.php:243
 msgid "Discount"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:592
+#: v2/App/Controllers/Admin/Settings.php:594
 msgid "Discount - <a href=\"https://docs.flycart.org/en/articles/3807208-bulk-discounts-or-tiered-pricing\" style=\"font-size: 12px;\" target=\"_blank\">Read Docs</a>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:593
+#: v2/App/Controllers/Admin/Settings.php:595
 msgid "Discount - <a href=\"https://docs.flycart.org/en/articles/3809899-bundle-set-discount-discount-rules-2-0?utm_source=woo-discount-rules-v2&utm_campaign=doc&utm_medium=text-click&utm_content=bundle_set\" style=\"font-size: 12px;\" target=\"_blank\">Read Docs</a>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:594
+#: v2/App/Controllers/Admin/Settings.php:596
 msgid "Discount - <a href=\"https://docs.flycart.org/en/articles/3810570-buy-x-get-y-discount-rules-2-0?utm_source=woo-discount-rules-v2&utm_campaign=doc&utm_medium=text-click&utm_content=bxgy\" style=\"font-size: 12px;\" target=\"_blank\">Read Docs</a>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:595
+#: v2/App/Controllers/Admin/Settings.php:597
 msgid "Discount - <a href=\"https://docs.flycart.org/en/articles/3810071-buy-one-get-one-free-buy-x-get-x-discount-rules-2-0?utm_source=woo-discount-rules-v2&utm_campaign=doc&utm_medium=text-click&utm_content=bxgx\" style=\"font-size: 12px;\" target=\"_blank\">Read Docs</a>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:596
+#: v2/App/Controllers/Admin/Settings.php:598
 msgid "<p>Select discount type and its value (percentage/price/fixed price)</p>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:597
+#: v2/App/Controllers/Admin/Settings.php:599
 msgid ""
 "<p>Select discount type and its value (percentage/price/fixed price)</p> <div class=\"awdr-count-by-description\"><b>Filter set above :</b><p> This will count the quantities of products set in the “Filter” section.</p>\n"
 "<p><b>Example:</b> If you selected a few categories there, it will count the quantities of products in those categories added in cart. If you selected a few products in the filters section, then it will count the quantities together.</p>\n"
 "<p><b>Example:</b> Let’s say, you wanted to offer a Bulk Quantity discount for Category A and chosen Category A in the filters. So when a customer adds 1 quantity each of X, Y and Z from Category A, then the count here is 3.</p></div>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:603
+#: v2/App/Controllers/Admin/Settings.php:605
 msgid ""
 "<p>Select discount type and its value (percentage/price/fixed price)</p> <div class=\"awdr-count-by-description\"><b>Individual Product :</b><p>This counts the total quantity of each product / line item separately.</p>\n"
 "<p><b>Example:</b> If a customer wanted to buy 2 quantities of Product A,  3 quantities of Product B, then count will be maintained at the product level. </p>\n"
@@ -350,7 +350,7 @@ msgid ""
 "<p>In case of variable products, the count will be based on each variant because WooCommerce considers a variant as a product itself.  </p></div>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:609
+#: v2/App/Controllers/Admin/Settings.php:611
 msgid ""
 "<p>Select discount type and its value (percentage/price/fixed price)</p><div class=\"awdr-count-by-description\"><b>All variants in each product together :</b><p>Useful when applying discounts based on variable products and you want the quantity to be counted based on the parent product.</p>\n"
 "<p><b>Example:</b>\n"
@@ -359,137 +359,137 @@ msgid ""
 "</p></div>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:615
+#: v2/App/Controllers/Admin/Settings.php:617
 msgid "Rules (optional)"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:617
+#: v2/App/Controllers/Admin/Settings.php:619
 msgid "<p>Choose Buy Products. (products/categories/attributes/tags/sku) Example : For Buy X get Y scenarios, choose X here.</p>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:618
+#: v2/App/Controllers/Admin/Settings.php:620
 msgid "<p>Choose on which products the discount should be applied (This can be products/categories/SKU)</p>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:619
 #: v2/App/Controllers/Admin/Settings.php:621
+#: v2/App/Controllers/Admin/Settings.php:623
 msgid "Get Discount"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:620
+#: v2/App/Controllers/Admin/Settings.php:622
 msgid "<p>Enter the min/max ranges and choose free item quantity.</p><p>Note : Enable recursive checkbox if the discounts should be applied in sequential ranges. </p><p>Example : Buy 1 get 1, Buy 2 get 2, Buy 3 get 3 and so on..</p>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:622
+#: v2/App/Controllers/Admin/Settings.php:624
 msgid "<p>Choose the adjustment type to which the discount should be applied. You can choose from products/categories/all products.</p><p>Note : Enable recursive checkbox if the discounts should be applied in sequential ranges. </p>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:623
+#: v2/App/Controllers/Admin/Settings.php:625
 msgid "<p>Discount will be applied <b>only the selected products (based on mode of apply)</b></p><p>Note : Enable recursive checkbox if the discounts should be applied in sequential ranges. </p>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:624
+#: v2/App/Controllers/Admin/Settings.php:626
 msgid "<p>Discount will be applied <b>only the selected categories (based on mode of apply)</b></p><p>Note : Enable recursive checkbox if the discounts should be applied in sequential ranges. </p><p>Example ranges:</p><p>Buy 2, get 1 free (a.k.a: Buy 1 get 1 free)</p><table><tbody><tr><td>Min quantity</td><td>Max quantity</td><td>Free quantity</td></tr><tr><td>2</td><td>3</td><td>1</td></tr></tr><tr><td>4</td><td>5</td><td>2</td></tr></tbody></table>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:625
+#: v2/App/Controllers/Admin/Settings.php:627
 msgid "<p>Discount applies on the cheapest/highest priced <b>product IN CART</b>.</p><p>Note : Enable recursive checkbox if the discounts should be applied in sequential ranges. </p><p>Example ranges:</p><p>Buy 2, get 1 free (a.k.a: Buy 1 get 1 free)</p><table><tbody><tr><td>Min quantity</td><td>Max quantity</td><td>Free quantity</td></tr><tr><td>2</td><td>3</td><td>1</td></tr></tr><tr><td>4</td><td>5</td><td>2</td></tr></tbody></table>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:628
+#: v2/App/Controllers/Admin/Settings.php:630
 msgid "<p>Processing migration, please wait...</p>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:629
+#: v2/App/Controllers/Admin/Settings.php:631
 msgid "<p>Migration completed.</p>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:630
+#: v2/App/Controllers/Admin/Settings.php:632
 msgid "<p>Migration skipped.</p>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:631
+#: v2/App/Controllers/Admin/Settings.php:633
 msgid "<p>Skipping migration, please wait...</p>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:632
+#: v2/App/Controllers/Admin/Settings.php:634
 msgid "<span><b>Example:</b> Product A - Small and Product A - Medium will be counted as 2 quantity</span>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:633
+#: v2/App/Controllers/Admin/Settings.php:635
 msgid "<span>Discount applies to all eligible products in the store</span>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:634
+#: v2/App/Controllers/Admin/Settings.php:636
 msgid "<span>Choose products that get the discount using \"In List\". If you want to exclude a few products, choose \"Not In List\" and select the products you wanted to exclude from discount. (You can add multiple filters)</span>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:635
+#: v2/App/Controllers/Admin/Settings.php:637
 msgid "<span>Choose categories that get the discount using \"In List\". If you want to exclude a few categories, choose \"Not In List\" and select the categories you wanted to exclude from discount. (You can add multiple filters of same type)</span>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:636
+#: v2/App/Controllers/Admin/Settings.php:638
 msgid "<span> Choose attributes that get the discount using \"In List\". If you want to exclude a few attributes, choose \"Not In List\" and select the attributes you wanted to exclude from discount. (You can add multiple filters of same type)</span>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:637
+#: v2/App/Controllers/Admin/Settings.php:639
 msgid "<span>Choose tags that get the discount using \"In List\". If you want to exclude a few tags, choose \"Not In List\" and select the tags you wanted to exclude from discount. (You can add multiple filters of same type)</span>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:638
+#: v2/App/Controllers/Admin/Settings.php:640
 msgid "<span>Choose SKUs that get the discount using \"In List\". If you want to exclude a few SKUs, choose \"Not In List\" and select the SKUs you wanted to exclude from discount. (You can add multiple filters of same type)</span>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:639
+#: v2/App/Controllers/Admin/Settings.php:641
 msgid "<span>Choose whether you want to include (or exclude) products on sale (those having a sale price) for the discount </span>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:640
+#: v2/App/Controllers/Admin/Settings.php:642
 msgid "<span>Discount applies to custom taxonomy</span>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:641
+#: v2/App/Controllers/Admin/Settings.php:643
 #: v2/App/Views/Admin/Menu.php:33
 msgid "Rebuild index"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:642
+#: v2/App/Controllers/Admin/Settings.php:644
 msgid "Processing please wait.."
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:643
+#: v2/App/Controllers/Admin/Settings.php:645
 msgid "Rebuild index processed"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:644
+#: v2/App/Controllers/Admin/Settings.php:646
 msgid "Please select the rules to build index"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:645
+#: v2/App/Controllers/Admin/Settings.php:647
 msgid "Invalid File. Upload : <b style='color:red;'>.csv</b> File. </br>"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:646
+#: v2/App/Controllers/Admin/Settings.php:648
 msgid "<b>This rule is not running currently:</b> Rule reached maximum usage limit"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:647
+#: v2/App/Controllers/Admin/Settings.php:649
 msgid "<b>This rule is not running currently:</b> Start date and time is set in the future date"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:648
+#: v2/App/Controllers/Admin/Settings.php:650
 msgid "<b>This rule is not running currently:</b> Validity expired"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:649
+#: v2/App/Controllers/Admin/Settings.php:651
 msgid "Select State"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:650
+#: v2/App/Controllers/Admin/Settings.php:652
 msgid "Copy URL"
 msgstr ""
 
-#: v2/App/Controllers/Admin/Settings.php:652
+#: v2/App/Controllers/Admin/Settings.php:654
 msgid "Coupon url copied!"
 msgstr ""
 
@@ -518,7 +518,7 @@ msgid "Compatibility"
 msgstr ""
 
 #: v2/App/Controllers/Admin/Tabs/Help.php:17
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:69
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:70
 #: v2/App/Views/Admin/Tabs/help.php:8
 msgid "Documentation"
 msgstr ""
@@ -529,6 +529,10 @@ msgstr ""
 
 #: v2/App/Controllers/Admin/Tabs/Recipe.php:24
 msgid "Recipe"
+msgstr ""
+
+#: v2/App/Controllers/Admin/Tabs/Recommendations.php:22
+msgid "Recommendations"
 msgstr ""
 
 #: v2/App/Controllers/Admin/Tabs/Reports/RuleAmount.php:15
@@ -630,7 +634,7 @@ msgid "Customer"
 msgstr ""
 
 #: v2/App/Controllers/Base.php:201
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:225
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:226
 msgid "Product Adjustment"
 msgstr ""
 
@@ -642,14 +646,14 @@ msgid "Simple Discount"
 msgstr ""
 
 #: v2/App/Controllers/Base.php:207
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:228
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:229
 msgid "Cart Adjustment"
 msgstr ""
 
 #: v2/App/Controllers/Base.php:213
 #: v2/App/Controllers/Base.php:214
 #: v2/App/Helpers/ProOptions.php:338
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:234
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:235
 msgid "Bulk Discount"
 msgstr ""
 
@@ -661,28 +665,28 @@ msgstr ""
 msgid "<span class=\"onsale\">Sale!</span>"
 msgstr ""
 
-#: v2/App/Controllers/ManageDiscount.php:801
-#: v2/App/Controllers/ManageDiscount.php:1061
-#: v2/App/Controllers/ManageDiscount.php:1064
+#: v2/App/Controllers/ManageDiscount.php:795
+#: v2/App/Controllers/ManageDiscount.php:1055
+#: v2/App/Controllers/ManageDiscount.php:1058
 #: v2/App/Helpers/Helper.php:271
 #: v2/App/Helpers/Helper.php:272
 msgid "Cart discount"
 msgstr ""
 
-#: v2/App/Controllers/ManageDiscount.php:1130
+#: v2/App/Controllers/ManageDiscount.php:1124
 msgid "Coupon \"%s\" is currently not available!"
 msgstr ""
 
-#: v2/App/Controllers/ManageDiscount.php:1348
+#: v2/App/Controllers/ManageDiscount.php:1342
 msgid "Sorry, it is not possible to apply coupon <b>\"%s\"</b> as you already have a discount applied in cart."
 msgstr ""
 
-#: v2/App/Controllers/ManageDiscount.php:1762
+#: v2/App/Controllers/ManageDiscount.php:1756
 #: v2/App/Views/Admin/Tabs/settings.php:461
 msgid "Discount <strong>{{title}}</strong> has been applied to your cart."
 msgstr ""
 
-#: v2/App/Controllers/ManageDiscount.php:1892
+#: v2/App/Controllers/ManageDiscount.php:1886
 msgid "You saved {{total_discount}}"
 msgstr ""
 
@@ -1024,135 +1028,135 @@ msgstr ""
 msgid "Validation error"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1090
+#: v2/App/Helpers/Woocommerce.php:1104
 msgid "Sunday"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1091
+#: v2/App/Helpers/Woocommerce.php:1105
 msgid "Monday"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1092
+#: v2/App/Helpers/Woocommerce.php:1106
 msgid "Tuesday"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1093
+#: v2/App/Helpers/Woocommerce.php:1107
 msgid "Wednesday"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1094
+#: v2/App/Helpers/Woocommerce.php:1108
 msgid "Thursday"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1095
+#: v2/App/Helpers/Woocommerce.php:1109
 msgid "Friday"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1096
+#: v2/App/Helpers/Woocommerce.php:1110
 msgid "Saturday"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1107
+#: v2/App/Helpers/Woocommerce.php:1121
 msgid "Woocommerce before main content(Archive / Shop / Cat Pages / single product)"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1108
+#: v2/App/Helpers/Woocommerce.php:1122
 msgid "Woocommerce archive description(Archive / Shop / Cat Pages)"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1109
+#: v2/App/Helpers/Woocommerce.php:1123
 msgid "Woocommerce before shop loop(Archive / Shop / Cat Pages)"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1110
+#: v2/App/Helpers/Woocommerce.php:1124
 msgid "Woocommerce after shop loop(Archive / Shop / Cat Pages)"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1111
+#: v2/App/Helpers/Woocommerce.php:1125
 msgid "Woocommerce after main content(Archive / Shop / Cat Pages / single product)"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1112
+#: v2/App/Helpers/Woocommerce.php:1126
 #: v2/App/Views/Admin/Tabs/settings.php:233
 #: v2/App/Views/Admin/Tabs/settings.php:251
 msgid "Woocommerce before single product"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1113
+#: v2/App/Helpers/Woocommerce.php:1127
 #: v2/App/Views/Admin/Tabs/settings.php:235
 #: v2/App/Views/Admin/Tabs/settings.php:253
 msgid "Woocommerce before single product summary"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1114
+#: v2/App/Helpers/Woocommerce.php:1128
 #: v2/App/Views/Admin/Tabs/settings.php:234
 #: v2/App/Views/Admin/Tabs/settings.php:252
 msgid "Woocommerce after single product summary"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1115
+#: v2/App/Helpers/Woocommerce.php:1129
 #: v2/App/Views/Admin/Tabs/settings.php:232
 #: v2/App/Views/Admin/Tabs/settings.php:250
 msgid "Woocommerce after single product"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1116
+#: v2/App/Helpers/Woocommerce.php:1130
 msgid "Woocommerce before cart"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1117
+#: v2/App/Helpers/Woocommerce.php:1131
 msgid "Woocommerce before cart table"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1118
+#: v2/App/Helpers/Woocommerce.php:1132
 msgid "Woocommerce before cart contents"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1119
+#: v2/App/Helpers/Woocommerce.php:1133
 msgid "Woocommerce cart contents"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1120
+#: v2/App/Helpers/Woocommerce.php:1134
 msgid "Woocommerce after cart contents"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1121
+#: v2/App/Helpers/Woocommerce.php:1135
 msgid "Woocommerce after cart table"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1122
+#: v2/App/Helpers/Woocommerce.php:1136
 msgid "Woocommerce after cart"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1123
+#: v2/App/Helpers/Woocommerce.php:1137
 msgid "Woocommerce before checkout form"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1125
+#: v2/App/Helpers/Woocommerce.php:1139
 msgid "Woocommerce before checkout billing form"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1126
+#: v2/App/Helpers/Woocommerce.php:1140
 msgid "Woocommerce after checkout billing form"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1127
+#: v2/App/Helpers/Woocommerce.php:1141
 msgid "Woocommerce before checkout shipping form"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1128
+#: v2/App/Helpers/Woocommerce.php:1142
 msgid "Woocommerce after checkout shipping form"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1129
+#: v2/App/Helpers/Woocommerce.php:1143
 msgid "Woocommerce before order notes"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1130
+#: v2/App/Helpers/Woocommerce.php:1144
 msgid "Woocommerce after order notes"
 msgstr ""
 
-#: v2/App/Helpers/Woocommerce.php:1698
+#: v2/App/Helpers/Woocommerce.php:1712
 msgid "Coupon already exists in WooCommerce. Please select another name"
 msgstr ""
 
@@ -1504,8 +1508,8 @@ msgstr ""
 #: v2/App/Views/Admin/Rules/Discounts/Bulk.php:53
 #: v2/App/Views/Admin/Rules/Discounts/Cart.php:24
 #: v2/App/Views/Admin/Rules/Discounts/simple.php:23
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:141
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:376
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:142
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:377
 msgid "Discount Type"
 msgstr ""
 
@@ -1925,278 +1929,288 @@ msgid ""
 "Please tick them (by checking the box) and then save. This will help discount rules to run smoothly along with these plugins"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:18
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:19
 msgid "Add New Rule"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:22
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:23
 msgid "Migrate rules from v1"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:30
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:31
 msgid "Migration"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:34
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:35
 #: v2/App/Views/Admin/welcome-text.php:9
 msgid "Migrate rules from v1 to v2"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:38
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:39
 msgid "Available price rules"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:41
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:42
 msgid "Available cart rules"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:44
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:45
 msgid "Once migration is completed, please open the rules and check their configuration once again to make sure it meets your discount scenario. If required, please adjust the rule configuration. If you need any help, just open a ticket at <a href=\"https://www.flycart.org/support\" target=\"_blank\">https://www.flycart.org/support</a>"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:49
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:50
 #: v2/App/Views/Admin/welcome-text.php:14
 msgid "Migrate"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:50
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:51
 #: v2/App/Views/Admin/welcome-text.php:15
 msgid "Skip"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:65
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:66
 msgid "View Examples"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:85
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:93
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:107
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:86
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:94
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:108
 msgid "Search Rules"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:87
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:88
 msgid "Limit"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:95
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:96
 msgid "Bulk Actions"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:98
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:350
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:99
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:351
 msgid "Delete"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:101
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:102
 msgid "Apply"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:116
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:117
 msgid "All"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:121
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:414
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:122
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:415
 msgid "item"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:121
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:414
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:122
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:415
 msgid "items"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:136
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:137
 msgid "Re - Order"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:139
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:373
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:140
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:374
 msgid "Title"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:143
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:378
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:144
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:379
 msgid "Start Date"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:145
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:380
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:146
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:381
 msgid "Expired On"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:150
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:385
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:151
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:386
 msgid "Language(s)"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:158
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:393
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:159
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:394
 msgid "Status"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:160
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:395
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:161
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:396
 msgid "Action"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:182
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:183
 msgid "Exclusive"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:211
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:212
 msgid "Created by: "
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:212
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:216
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:213
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:217
 msgid " On: "
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:215
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:216
 msgid "Modified by: "
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:231
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:232
 #: v2/App/Views/Admin/Tabs/help.php:112
 msgid "Free Shipping"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:237
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:238
 msgid "Set Discount"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:240
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:241
 msgid "Buy X get X"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:243
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:244
 msgid "Buy X get Y"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:286
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:287
 msgid "Enabled"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:286
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:287
 #: v2/App/Views/Admin/Tabs/settings.php:418
 msgid "Disabled"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:297
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:312
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:328
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:298
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:313
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:329
 msgid " - ( Not running )"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:298
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:315
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:331
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:299
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:316
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:332
 msgid "Rule reached maximum usage limit"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:302
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:303
 msgid " - ( Will run in future)"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:306
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:322
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:307
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:323
 msgid "Your server current date and time:"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:318
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:319
 msgid " - ( Not running - validity expired)"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:342
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:343
 msgid "Edit"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:345
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:346
 msgid "Duplicate"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:361
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:362
 msgid "No rules found."
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:432
-#: v2/App/Views/Admin/Tabs/help.php:160
-msgid "Looking for more features? Upgrade to PRO"
-msgstr ""
-
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:437
-#: v2/App/Views/Admin/Tabs/help.php:165
-msgid "With PRO version, you can create:"
-msgstr ""
-
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:438
-#: v2/App/Views/Admin/Tabs/help.php:166
-msgid "- Categories based discounts"
-msgstr ""
-
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:439
-#: v2/App/Views/Admin/Tabs/help.php:167
-msgid "- User roles based discounts"
-msgstr ""
-
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:440
-#: v2/App/Views/Admin/Tabs/help.php:168
-msgid "- Buy One Get One Free deals"
-msgstr ""
-
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:441
-#: v2/App/Views/Admin/Tabs/help.php:169
-msgid "- Buy X Get Y deals"
-msgstr ""
-
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:442
-#: v2/App/Views/Admin/Tabs/help.php:170
-msgid "- Buy 2, get 1 at 50% discount"
-msgstr ""
-
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:443
-#: v2/App/Views/Admin/Tabs/help.php:171
-msgid "- Buy 3 for $10 (Package / Bundle [Set] Discount)"
-msgstr ""
-
 #: v2/App/Views/Admin/Tabs/DiscountRule.php:444
-#: v2/App/Views/Admin/Tabs/help.php:172
-msgid "- Different discounts with one coupon code"
-msgstr ""
-
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:445
-#: v2/App/Views/Admin/Tabs/help.php:173
-msgid "- Purchase history based discounts"
-msgstr ""
-
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:446
-#: v2/App/Views/Admin/Tabs/help.php:174
-msgid "- Free product / gift"
-msgstr ""
-
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:447
-#: v2/App/Views/Admin/Tabs/help.php:175
-msgid "- Discount for variants"
+#: v2/App/Views/Admin/Tabs/help.php:167
+msgid "Discount Rules PRO for WooCommerce"
 msgstr ""
 
 #: v2/App/Views/Admin/Tabs/DiscountRule.php:448
-#: v2/App/Views/Admin/Tabs/help.php:176
-msgid "- Conditional discounts"
+#: v2/App/Views/Admin/Tabs/help.php:171
+msgid "Looking for more features? Upgrade to PRO"
 msgstr ""
 
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:449
-#: v2/App/Views/Admin/Tabs/help.php:177
-msgid "- Fixed cost discounts"
-msgstr ""
-
-#: v2/App/Views/Admin/Tabs/DiscountRule.php:450
-#: v2/App/Views/Admin/Tabs/help.php:178
-msgid "- Offer fixed price on certain conditions"
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:452
+#: v2/App/Views/Admin/Tabs/help.php:175
+msgid "With PRO version, you can create:"
 msgstr ""
 
 #: v2/App/Views/Admin/Tabs/DiscountRule.php:454
+#: v2/App/Views/Admin/Tabs/help.php:177
+msgid "- Categories based discounts"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:455
+#: v2/App/Views/Admin/Tabs/help.php:178
+msgid "- User roles based discounts"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:456
 #: v2/App/Views/Admin/Tabs/help.php:179
+msgid "- Buy One Get One Free deals"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:457
+#: v2/App/Views/Admin/Tabs/help.php:180
+msgid "- Buy X Get Y deals"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:458
+#: v2/App/Views/Admin/Tabs/help.php:181
+msgid "- Buy 2, get 1 at 50% discount"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:459
+#: v2/App/Views/Admin/Tabs/help.php:182
+msgid "- Buy 3 for $10 (Package / Bundle [Set] Discount)"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:460
+#: v2/App/Views/Admin/Tabs/help.php:183
+msgid "- Different discounts with one coupon code"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:461
+#: v2/App/Views/Admin/Tabs/help.php:184
+msgid "- Purchase history based discounts"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:462
+#: v2/App/Views/Admin/Tabs/help.php:185
+msgid "- Free product / gift"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:463
+#: v2/App/Views/Admin/Tabs/help.php:186
+msgid "- Discount for variants"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:464
+#: v2/App/Views/Admin/Tabs/help.php:187
+msgid "- Conditional discounts"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:465
+#: v2/App/Views/Admin/Tabs/help.php:188
+msgid "- Fixed cost discounts"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:466
+#: v2/App/Views/Admin/Tabs/help.php:189
+msgid "- Offer fixed price on certain conditions"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:472
+#: v2/App/Views/Admin/Tabs/help.php:195
 msgid "Go PRO"
+msgstr ""
+
+#: v2/App/Views/Admin/Tabs/DiscountRule.php:492
+#: v2/App/Views/Admin/Tabs/help.php:215
+msgid "Get Plugin"
 msgstr ""
 
 #: v2/App/Views/Admin/Tabs/help.php:15

@@ -104,13 +104,13 @@ function exactmetrics_settings_error_page( $id = 'exactmetrics-vue-site-settings
 						</p>
 						<div style="display: none" id="exactmetrics-nojs-error-message">
 							<div class="" style="  border: 1px solid #E75066;
-                                                                border-left: 3px solid #E75066;
-                                                                background-color: #FEF8F9;
-                                                                color: #E75066;
-                                                                font-size: 14px;
-                                                                padding: 18px 18px 18px 21px;
-                                                                font-weight: 300;
-                                                                text-align: left;">
+																border-left: 3px solid #E75066;
+																background-color: #FEF8F9;
+																color: #E75066;
+																font-size: 14px;
+																padding: 18px 18px 18px 21px;
+																font-weight: 300;
+																text-align: left;">
 								<strong style="font-weight: 500;" id="exactmetrics-alert-message"></strong>
 							</div>
 							<p class=""

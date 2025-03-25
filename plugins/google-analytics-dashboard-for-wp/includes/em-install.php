@@ -182,7 +182,7 @@ class ExactMetrics_Install {
 	 */
 	public function new_install() {
 
-        $this->new_settings = $this->get_exactmetrics_default_values();
+		$this->new_settings = $this->get_exactmetrics_default_values();
 
 		$this->maybe_import_thirstyaffiliates_options();
 
@@ -334,9 +334,9 @@ class ExactMetrics_Install {
 			$schedule['minute'] = rand( 0, 59 );
 			$schedule['second'] = rand( 0, 59 );
 			$schedule['offset'] = ( $schedule['day'] * DAY_IN_SECONDS ) +
-			                      ( $schedule['hour'] * HOUR_IN_SECONDS ) +
-			                      ( $schedule['minute'] * MINUTE_IN_SECONDS ) +
-			                      $schedule['second'];
+								  ( $schedule['hour'] * HOUR_IN_SECONDS ) +
+								  ( $schedule['minute'] * MINUTE_IN_SECONDS ) +
+								  $schedule['second'];
 			$next_run           = strtotime( 'next saturday' ) + $schedule['offset'];
 			wp_schedule_event( $next_run, 'weekly', 'exactmetrics_email_summaries_cron' );
 		}

@@ -5,16 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [5.7.2-alpha] - unreleased
+## [5.9.0] - 2025-03-24
+### Added
+- Add an email input to the social login form, allowing users to log into Jetpack seamlessly through a magic link. [#42600]
+- Add a new social login form to the onboarding screen for first-time Jetpack connections. [#42561]
 
-This is an alpha version! The changes listed here are not final.
-
-### Changed
-- Update package dependencies.
+## [5.8.0] - 2025-03-21
+### Added
+- Introduce a new onboarding screen to provide clear, step-by-step instructions for new users connecting to Jetpack. [#42523]
 
 ### Fixed
-- My Jetpack: Add back legacy properties to get_info() function
-- Product Interstitial Modal: Fix not running custom onClick events if a customModalTrigger was used.
+- Enable screen readers to read Boost score. [#42306]
+
+## [5.7.3] - 2025-03-19
+### Changed
+- Update dependencies. [#38910]
+
+## [5.7.2] - 2025-03-18
+### Changed
+- Update package dependencies. [#42509] [#42511]
+
+### Fixed
+- My Jetpack: Add legacy properties back to `get_info()` function. [#42542]
+- Product Interstitial Modal: Fix not running custom onClick events if a customModalTrigger was used. [#42527]
 
 ## [5.7.1] - 2025-03-17
 ### Fixed
@@ -2036,7 +2049,10 @@ This is an alpha version! The changes listed here are not final.
 ### Added
 - Created package
 
-[5.7.2-alpha]: https://github.com/Automattic/jetpack-my-jetpack/compare/5.7.1...5.7.2-alpha
+[5.9.0]: https://github.com/Automattic/jetpack-my-jetpack/compare/5.8.0...5.9.0
+[5.8.0]: https://github.com/Automattic/jetpack-my-jetpack/compare/5.7.3...5.8.0
+[5.7.3]: https://github.com/Automattic/jetpack-my-jetpack/compare/5.7.2...5.7.3
+[5.7.2]: https://github.com/Automattic/jetpack-my-jetpack/compare/5.7.1...5.7.2
 [5.7.1]: https://github.com/Automattic/jetpack-my-jetpack/compare/5.7.0...5.7.1
 [5.7.0]: https://github.com/Automattic/jetpack-my-jetpack/compare/5.6.0...5.7.0
 [5.6.0]: https://github.com/Automattic/jetpack-my-jetpack/compare/5.5.3...5.6.0

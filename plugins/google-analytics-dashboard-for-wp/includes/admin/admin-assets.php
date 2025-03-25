@@ -152,6 +152,7 @@ class ExactMetrics_Admin_Assets {
 		}
 
 		$version_path = exactmetrics_is_pro_version() ? 'pro' : 'lite';
+		$text_domain  = exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp';
 
 		// For the settings page, load the Vue app.
 		if ( exactmetrics_is_settings_page() ) {
@@ -236,10 +237,16 @@ class ExactMetrics_Admin_Assets {
 					'wpmailsmtp_admin_url'            => admin_url( 'admin.php?page=wp-mail-smtp' ),
 					'load_headline_analyzer_settings' => exactmetrics_load_gutenberg_app() ? 'true' : 'false',
 					'exit_url'                        => add_query_arg( 'page', 'exactmetrics_settings', admin_url( 'admin.php' ) ),
-					'timezone'                        => date( 'e' ),
+					'timezone'                        => date( 'e' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- We need this to depend on the runtime timezone.
 					'funnelkit_stripe_woo_page_url'   => admin_url( 'admin.php?page=wc-settings&tab=fkwcs_api_settings' ),
 					'funnelkit_stripe_woo_nonce'      => wp_create_nonce( 'exactmetrics-funnelkit-stripe-woo-nonce' ),
 				)
+			);
+
+			wp_scripts()->add_inline_script(
+				'exactmetrics-vue-script',
+				exactmetrics_get_printable_translations( $text_domain ),
+				'translation'
 			);
 
 			// Don't load other scripts on the settings page.
@@ -268,7 +275,6 @@ class ExactMetrics_Admin_Assets {
 					'rest_nonce'          => wp_create_nonce( 'wp_rest' ),
 					'rest_url'            => get_rest_url(),
 					'network'             => is_network_admin(),
-					'translations'        => wp_get_jed_locale_data( exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp' ),
 					'assets'              => plugins_url( $version_path . '/assets/vue', EXACTMETRICS_PLUGIN_FILE ),
 					'pro_assets'          => plugins_url( $version_path . '/assets', EXACTMETRICS_PLUGIN_FILE ),
 					'shareasale_id'       => exactmetrics_get_shareasale_id(),
@@ -298,11 +304,10 @@ class ExactMetrics_Admin_Assets {
 				)
 			);
 
-			// Load the script with specific translations.
-			wp_set_script_translations(
+			wp_scripts()->add_inline_script(
 				'exactmetrics-vue-reports',
-				exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp',
-				EXACTMETRICS_PLUGIN_DIR . 'languages'
+				exactmetrics_get_printable_translations( $text_domain ),
+				'translation'
 			);
 
 			return;

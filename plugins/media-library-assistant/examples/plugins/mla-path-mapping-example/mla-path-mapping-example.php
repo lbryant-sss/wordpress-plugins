@@ -19,7 +19,7 @@
  * https://wordpress.org/support/topic/taxonomy-in-the-assistant-listing/
  *
  * @package MLA Path Mapping Example
- * @version 1.12
+ * @version 1.13
  */
 
 /*
@@ -27,7 +27,7 @@ Plugin Name: MLA Path Mapping Example
 Plugin URI: http://davidlingren.com/
 Description: Adds hierarchical path specification to the IPTC/EXIF taxonomy mapping features, and has tools to copy term definitions and assignments between taxonomies.
 Author: David Lingren
-Version: 1.12
+Version: 1.13
 Author URI: http://davidlingren.com/
 
 Copyright 2018-2025 David Lingren
@@ -61,7 +61,7 @@ class MLAPathMappingExample {
 	 *
 	 * @var	string
 	 */
-	const PLUGIN_VERSION = '1.12';
+	const PLUGIN_VERSION = '1.13';
 
 	/**
 	 * Slug prefix for registering and enqueueing submenu pages, style sheets, scripts and settings
@@ -325,7 +325,7 @@ class MLAPathMappingExample {
 				if ( ! empty( $term_meta ) ) {
 					foreach ( $term_meta as $key => $value ) {
 						if ( 1 === count( $value )  ) {
-							$term_meta[ $key ] = $value[0];
+							$term_meta[ $key ] = maybe_unserialize( $value[0] );
 						}
 					}
 

@@ -100,7 +100,6 @@ function exactmetrics_gutenberg_editor_assets() {
 			'nonce'                        => wp_create_nonce( 'exactmetrics_gutenberg_headline_nonce' ),
 			'allowed_post_types'           => apply_filters( 'exactmetrics_headline_analyzer_post_types', array( 'post' ) ),
 			'current_post_type'            => $posttype,
-			'translations'                 => wp_get_jed_locale_data( exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp' ),
 			'is_headline_analyzer_enabled' => apply_filters( 'exactmetrics_headline_analyzer_enabled', true ) && 'true' !== exactmetrics_get_option( 'disable_headline_analyzer' ),
 			'reports_url'                  => add_query_arg( 'page', 'exactmetrics_reports', admin_url( 'admin.php' ) ),
 			'vue_assets_path'              => plugins_url( $version_path . '/assets/vue/', EXACTMETRICS_PLUGIN_FILE ),
@@ -117,6 +116,14 @@ function exactmetrics_gutenberg_editor_assets() {
 			'dismiss_envira_promo'         => isset($plugins['envira-gallery-lite/envira-gallery-lite.php']) || isset($plugins['envira-gallery/envira-gallery.php']) || get_transient('_exactmetrics_dismiss_envira_promo'),
 		) )
 	);
+
+	$textdomain  = exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp';
+
+	wp_scripts()->add_inline_script(
+		'exactmetrics-gutenberg-editor-js',
+		exactmetrics_get_printable_translations( $textdomain )
+	);
+
 }
 
 add_action( 'enqueue_block_editor_assets', 'exactmetrics_gutenberg_editor_assets' );

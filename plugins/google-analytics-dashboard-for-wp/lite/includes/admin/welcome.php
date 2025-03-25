@@ -137,7 +137,6 @@ class ExactMetrics_Welcome {
 				'ajax'                 => add_query_arg( 'page', 'exactmetrics-onboarding', admin_url( 'admin-ajax.php' ) ),
 				'nonce'                => wp_create_nonce( 'mi-admin-nonce' ),
 				'network'              => is_network_admin(),
-				'translations'         => wp_get_jed_locale_data( 'mi-vue-app' ),
 				'assets'               => plugins_url( $version_path . '/assets/vue', EXACTMETRICS_PLUGIN_FILE ),
 				'roles'                => exactmetrics_get_roles(),
 				'roles_manage_options' => exactmetrics_get_manage_options_roles(),
@@ -151,6 +150,14 @@ class ExactMetrics_Welcome {
 				'exit_url'             => add_query_arg( 'page', 'exactmetrics_settings', admin_url( 'admin.php' ) ),
 				'had_ecommerce'        => exactmetrics_get_option( 'gadwp_ecommerce', false ),
 			)
+		);
+
+		$text_domain = exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp';
+
+		wp_scripts()->add_inline_script(
+			'exactmetrics-vue-script',
+			exactmetrics_get_printable_translations( $text_domain ),
+			'translation'
 		);
 	}
 

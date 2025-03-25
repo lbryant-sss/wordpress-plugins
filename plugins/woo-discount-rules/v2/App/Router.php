@@ -10,7 +10,6 @@ use Wdr\App\Controllers\Admin\Tabs;
 use Wdr\App\Controllers\ManageDiscount;
 use Wdr\App\Controllers\OnSaleShortCode;
 use Wdr\App\Controllers\ShortCodeManager;
-
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class Router
@@ -66,6 +65,7 @@ class Router
          */
         $manage_discount_class = self::$manage_discount = (!empty(self::$manage_discount)) ? self::$manage_discount : new ManageDiscount();
         add_filter('advanced_woo_discount_rules_get_product_discount_price_from_custom_price', array(self::$manage_discount, 'calculateProductDiscountPrice'), 100, 7);
+        add_filter('advanced_woo_discount_rules_get_custom_taxonomies', array( self::$manage_discount, 'changeCustomTaxonomyLabel'), 100);
 
         // Filter hooks since v2.6.0
         add_filter('advanced_woo_discount_rules_get_product_discount_price', array(self::$manage_discount, 'getDiscountPriceOfAProduct'), 10, 4);

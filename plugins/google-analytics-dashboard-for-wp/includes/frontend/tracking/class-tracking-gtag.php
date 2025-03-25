@@ -211,7 +211,7 @@ class ExactMetrics_Tracking_Gtag extends ExactMetrics_Tracking_Abstract {
 				var em_track_user = <?php echo $track_user ? 'true' : 'false'; ?>;
 				var em_no_track_reason = <?php echo $reason ? "'" . esc_js( $reason ) . "'" : "''"; ?>;
 				<?php do_action( 'exactmetrics_tracking_gtag_frontend_output_after_em_track_user' ); ?>
-				var ExactMetricsDefaultLocations = <?php echo $this->get_default_locations(); ?>;
+				var ExactMetricsDefaultLocations = <?php echo $this->get_default_locations(); // phpcs:ignore -- JSON ?>;
 				if ( typeof ExactMetricsPrivacyGuardFilter === 'function' ) {
 					var ExactMetricsLocations = (typeof ExactMetricsExcludeQuery === 'object') ? ExactMetricsPrivacyGuardFilter( ExactMetricsExcludeQuery ) : ExactMetricsPrivacyGuardFilter( ExactMetricsDefaultLocations );
 				} else {
@@ -472,7 +472,7 @@ class ExactMetrics_Tracking_Gtag extends ExactMetrics_Tracking_Abstract {
 	private function get_default_locations() {
 		global $wp;
 
-		$urls['page_location'] = add_query_arg( $_SERVER['QUERY_STRING'], '', trailingslashit( home_url( $wp->request ) ) );
+		$urls['page_location'] = add_query_arg( !empty($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '', '', trailingslashit( home_url( $wp->request ) ) ); // phpcs:ignore
 
 		if ( $referer = wp_get_referer() ) {
 			$urls['page_referrer'] = $referer;

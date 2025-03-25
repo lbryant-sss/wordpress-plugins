@@ -140,8 +140,7 @@ See https://www.megamenu.com for more screenshots
 * Fix: Error loading scss in some instances
 * Improvement: Use style attributes on grid layout to define number of rows and columns, in preparation for using CSS Grid styling
 * Improvement: Refactor mobile CSS, remove usage of :has
-* Improvement: Refactor second and third level item styling so that it can be used within tab sub menus without being repeated
-* Improvement: Rename menu locations page to menu settings
+* Improvement: Refactor second and third level item styling so that it can be used within tab sub menus without being duplicated
 
 = 3.4.1 =
 

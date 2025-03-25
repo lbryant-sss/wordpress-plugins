@@ -9069,11 +9069,20 @@ echo '</body>
 
     if ($tags == AD_EMPTY_DATA) return true;
 
+    if ($tags == '*') {
+      $has_any_tag = has_tag ('', ai_get_post_id ());
+
+      if ($tag_type == AI_BLACK_LIST) {
+        return !$has_any_tag;
+      } else {
+          return $has_any_tag;
+        }
+    }
+
     $tags_listed = explode (",", $tags);
     foreach ($tags_listed as $index => $tag_listed) {
       $tags_listed [$index] = trim ($tag_listed);
     }
-//    $has_any_of_the_given_tags = has_tag ($tags_listed);
     $has_any_of_the_given_tags = has_tag ($tags_listed, ai_get_post_id ());
 
     if ($tag_type == AI_BLACK_LIST) {

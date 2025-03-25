@@ -134,9 +134,9 @@ class ExactMetrics_Review {
 				<p>
 					<a
 						href="https://wordpress.org/support/plugin/google-analytics-dashboard-for-wp/reviews/?filter=5#new-post"
-					   	class="exactmetrics-dismiss-review-notice exactmetrics-review-out"
+						   class="exactmetrics-dismiss-review-notice exactmetrics-review-out"
 						target="_blank"
-					   	rel="noopener noreferrer"
+						   rel="noopener noreferrer"
 					>
 						<?php esc_html_e( 'Ok, you deserve it', 'google-analytics-dashboard-for-wp' ); ?>
 					</a>
@@ -144,7 +144,7 @@ class ExactMetrics_Review {
 					<a
 						href="#"
 						class="exactmetrics-dismiss-review-notice exactmetrics-review-later"
-					   	rel="noopener noreferrer"
+						   rel="noopener noreferrer"
 					>
 						<?php esc_html_e( 'Nope, maybe later', 'google-analytics-dashboard-for-wp' ); ?>
 					</a>
@@ -152,7 +152,7 @@ class ExactMetrics_Review {
 					<a
 						href="#"
 						class="exactmetrics-dismiss-review-notice"
-					   	rel="noopener noreferrer"
+						   rel="noopener noreferrer"
 					>
 						<?php esc_html_e( 'I already did', 'google-analytics-dashboard-for-wp' ); ?>
 					</a>
@@ -160,18 +160,18 @@ class ExactMetrics_Review {
 			</div>
 		</div>
 		<script type="text/javascript">
-            jQuery(document).ready(function ($) {
-                $(document).on('click', '.exactmetrics-dismiss-review-notice', function (event) {
-                    if (!$(this).hasClass('exactmetrics-review-out')) {
-                        event.preventDefault();
-                    }
-                    $.post(ajaxurl, {
-                        action: 'exactmetrics_review_dismiss',
-                        review_later: $(this).hasClass('exactmetrics-review-later')
-                    });
-                    $('.exactmetrics-review-notice').remove();
-                });
-            });
+			jQuery(document).ready(function ($) {
+				$(document).on('click', '.exactmetrics-dismiss-review-notice', function (event) {
+					if (!$(this).hasClass('exactmetrics-review-out')) {
+						event.preventDefault();
+					}
+					$.post(ajaxurl, {
+						action: 'exactmetrics_review_dismiss',
+						review_later: $(this).hasClass('exactmetrics-review-later')
+					});
+					$('.exactmetrics-review-notice').remove();
+				});
+			});
 		</script>
 		<?php
 	}

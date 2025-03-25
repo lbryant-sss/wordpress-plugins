@@ -468,6 +468,20 @@ class Woocommerce
         return self::$custom_taxonomies;
     }
 
+	public static function changeCustomTaxonomyLabel(array $custom_taxonomies): array {
+		foreach ($custom_taxonomies as $customTaxonomy => $taxonomy) {
+			if (!is_object($taxonomy) && !($taxonomy instanceof WP_Taxonomy)) {
+				continue;
+			}
+			if ($customTaxonomy === 'pwb-brand' && isset($taxonomy->labels->menu_name)) {
+				$custom_taxonomies[$customTaxonomy]->labels->menu_name = 'Perfect Brands';
+			} elseif ($customTaxonomy === 'product_brand' && isset($taxonomy->labels->menu_name)) {
+				$custom_taxonomies[$customTaxonomy]->labels->menu_name = 'Woocommerce Brands';
+			}
+		}
+		return $custom_taxonomies;
+	}
+
     /**
      * Format the sale price
      * @param $price1

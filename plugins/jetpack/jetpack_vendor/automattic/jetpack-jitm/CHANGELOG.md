@@ -5,12 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [4.2.5-alpha] - unreleased
-
-This is an alpha version! The changes listed here are not final.
-
+## [4.2.7] - 2025-03-24
 ### Changed
-- Update dependencies.
+- Allow JITM functionality to be enabled on Simple sites. [#41252]
+
+## [4.2.6] - 2025-03-21
+### Changed
+- Internal updates.
+
+## [4.2.5] - 2025-03-18
+### Changed
+- Update dependencies. [#42545]
 
 ## [4.2.4] - 2025-03-17
 ### Changed
@@ -864,7 +869,9 @@ This is an alpha version! The changes listed here are not final.
 
 - Update Jetpack to use new JITM package
 
-[4.2.5-alpha]: https://github.com/Automattic/jetpack-jitm/compare/v4.2.4...v4.2.5-alpha
+[4.2.7]: https://github.com/Automattic/jetpack-jitm/compare/v4.2.6...v4.2.7
+[4.2.6]: https://github.com/Automattic/jetpack-jitm/compare/v4.2.5...v4.2.6
+[4.2.5]: https://github.com/Automattic/jetpack-jitm/compare/v4.2.4...v4.2.5
 [4.2.4]: https://github.com/Automattic/jetpack-jitm/compare/v4.2.3...v4.2.4
 [4.2.3]: https://github.com/Automattic/jetpack-jitm/compare/v4.2.2...v4.2.3
 [4.2.2]: https://github.com/Automattic/jetpack-jitm/compare/v4.2.1...v4.2.2
