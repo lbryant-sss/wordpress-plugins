@@ -103,7 +103,7 @@ function useFrontEvent (store, event) {
       maxCustomCapacityEnabled: event.maxCustomCapacity !== null,
       closeAfterMinEnabled: event.closeAfterMin > 0,
       closeAfterMinBookings: event.closeAfterMinBookings ? 'on' : 'off',
-      maxExtraPeopleEnabled: event.maxExtraPeopleEnabled !== null ? event.maxExtraPeopleEnabled : false,
+      maxExtraPeopleEnabled: !!event.maxExtraPeople,
       locationId: event.locationId === null && event.customLocation ? 0 : event.locationId,
       settings: usePopulateSettings(
         settings,
@@ -225,7 +225,7 @@ function useBackEvent (store) {
     locationId: store.getters['event/getLocationId'] === 0 ? null : store.getters['event/getLocationId'],
     maxCapacity: store.getters['event/getMaxCapacity'],
     maxCustomCapacity: store.getters['event/getMaxCustomCapacityEnabled'] ? store.getters['event/getMaxCustomCapacity'] : null,
-    maxExtraPeople: store.getters['event/getMaxExtraPeople'],
+    maxExtraPeople: store.getters['event/getMaxExtraPeopleEnabled'] ? store.getters['event/getMaxExtraPeople'] : null,
     name: store.getters['event/getName'],
     notifyParticipants: store.getters['event/getNotifyParticipants'],
     organizerId: store.getters['event/getOrganizerId'],

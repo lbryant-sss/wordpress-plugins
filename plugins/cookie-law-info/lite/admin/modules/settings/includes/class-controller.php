@@ -429,6 +429,7 @@ class Controller extends Cloud {
 					'is_trial_with_card'   => isset( $response['trial_with_card'] ) && true === $response['trial_with_card'],
 					'grace_period_ends_at' => $grace_period_ends,
 					'payment_status'       => isset( $response['payment_status'] ) && true === $response['payment_status'],
+					'selected_plan'        => isset( $plan['slug'] ) ? sanitize_text_field( $plan['slug'] ) : 'free',
 				),
 			);
 			return $data;

@@ -51,14 +51,14 @@
 
     <div v-show="!loading">
       <PaymentOnSite
-        v-if="isWaitingAvailable || (instantBooking && (amSettings.payments.wc.enabled ? amSettings.payments.wc.onSiteIfFree : true))"
+        v-if="isWaitingAvailable || (instantBooking && (amSettings.payments.wc.enabled ? amSettings.payments.wc.onSiteIfFree || !wcEventEnabled : true))"
         ref="refOnSiteBooking"
         :instant-booking="instantBooking"
         @payment-error="callPaymentError"
       />
 
       <PaymentWc
-        v-if="instantBooking && amSettings.payments.wc.enabled && !amSettings.payments.wc.onSiteIfFree"
+        v-if="instantBooking && amSettings.payments.wc.enabled && !amSettings.payments.wc.onSiteIfFree && wcEventEnabled"
         ref="refWcBooking"
         :instant-booking="instantBooking"
         @payment-error="callPaymentError"
@@ -100,6 +100,7 @@ import { usePrepaidPrice } from "../../../../../assets/js/common/appointments";
 // * _components
 import AmAlert from "../../../../_components/alert/AmAlert.vue";
 import useAction from "../../../../../assets/js/public/actions";
+import {settings} from "../../../../../plugins/settings";
 
 let props = defineProps({
   globalClass: {
@@ -177,6 +178,8 @@ let {
     value: false
   }
 })
+
+let selectedEvent = computed(() => store.getters['eventEntities/getEvent'](store.getters['eventBooking/getSelectedEventId']))
 
 // * Custom Fields Array
 let eventCustomFieldsArray = computed(() => store.getters['customFields/getFilteredCustomFieldsArray'])
@@ -400,7 +403,15 @@ Object.keys(customFields.value).forEach((fieldKey) => {
   }
 })
 
+let wcEventEnabled = ref(false)
+
 onMounted(() => {
+  let eventPayments = selectedEvent && selectedEvent.value.settings ? JSON.parse(selectedEvent.value.settings)['payments'] : null
+
+  wcEventEnabled.value = eventPayments && 'wc' in eventPayments
+    ? !('enabled' in eventPayments.wc) || eventPayments.wc.enabled
+    : settings.payments.wc.enabled
+
   if (isWaitingAvailable.value) {
     if (eventFluidStepKey.value.indexOf('eventPayment') !== -1) {
       let index = eventFluidStepKey.value.indexOf('eventPayment')
@@ -498,7 +509,7 @@ function submitForm() {
         if (!instantBooking.value) {
           nextStep()
         } else {
-          if (amSettings.payments.wc.enabled && !amSettings.payments.wc.onSiteIfFree) {
+          if (amSettings.payments.wc.enabled && !amSettings.payments.wc.onSiteIfFree && wcEventEnabled.value) {
             store.commit('payment/setPaymentGateway', 'wc')
 
             refWcBooking.value.continueWithBooking()

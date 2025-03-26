@@ -72,7 +72,7 @@ class MonsterInsights_Admin_Assets {
 		// Change the script tag by adding type="module" and return it.
 		$html = str_replace( '></script>', ' type="module"></script>', $tag );
 
-		$domain = monsterinsights_is_pro_version() ? 'ga-premium' : 'google-analytics-for-wordpress';
+		$domain = monsterinsights_is_pro_version() ? 'google-analytics-premium' : 'google-analytics-for-wordpress';
 		$html   = monsterinsights_get_printable_translations( $domain ) . $html;
 
 		return $html;
@@ -152,6 +152,7 @@ class MonsterInsights_Admin_Assets {
 		}
 
 		$version_path = monsterinsights_is_pro_version() ? 'pro' : 'lite';
+		$text_domain  = monsterinsights_is_pro_version() ? 'google-analytics-premium' : 'google-analytics-for-wordpress';
 
 		// For the settings page, load the Vue app.
 		if ( monsterinsights_is_settings_page() ) {
@@ -236,10 +237,16 @@ class MonsterInsights_Admin_Assets {
 					'wpmailsmtp_admin_url'            => admin_url( 'admin.php?page=wp-mail-smtp' ),
 					'load_headline_analyzer_settings' => monsterinsights_load_gutenberg_app() ? 'true' : 'false',
 					'exit_url'                        => add_query_arg( 'page', 'monsterinsights_settings', admin_url( 'admin.php' ) ),
-					'timezone'                        => date( 'e' ),
+					'timezone'                        => date( 'e' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- We need this to depend on the runtime timezone.
 					'funnelkit_stripe_woo_page_url'   => admin_url( 'admin.php?page=wc-settings&tab=fkwcs_api_settings' ),
 					'funnelkit_stripe_woo_nonce'      => wp_create_nonce( 'monsterinsights-funnelkit-stripe-woo-nonce' ),
 				)
+			);
+
+			wp_scripts()->add_inline_script(
+				'monsterinsights-vue-script',
+				monsterinsights_get_printable_translations( $text_domain ),
+				'translation'
 			);
 
 			// Don't load other scripts on the settings page.
@@ -268,7 +275,6 @@ class MonsterInsights_Admin_Assets {
 					'rest_nonce'          => wp_create_nonce( 'wp_rest' ),
 					'rest_url'            => get_rest_url(),
 					'network'             => is_network_admin(),
-					'translations'        => wp_get_jed_locale_data( monsterinsights_is_pro_version() ? 'ga-premium' : 'google-analytics-for-wordpress' ),
 					'assets'              => plugins_url( $version_path . '/assets/vue', MONSTERINSIGHTS_PLUGIN_FILE ),
 					'pro_assets'          => plugins_url( $version_path . '/assets', MONSTERINSIGHTS_PLUGIN_FILE ),
 					'shareasale_id'       => monsterinsights_get_shareasale_id(),
@@ -298,11 +304,10 @@ class MonsterInsights_Admin_Assets {
 				)
 			);
 
-			// Load the script with specific translations.
-			wp_set_script_translations(
+			wp_scripts()->add_inline_script(
 				'monsterinsights-vue-reports',
-				monsterinsights_is_pro_version() ? 'ga-premium' : 'google-analytics-for-wordpress',
-				MONSTERINSIGHTS_PLUGIN_DIR . 'languages'
+				monsterinsights_get_printable_translations( $text_domain ),
+				'translation'
 			);
 
 			return;

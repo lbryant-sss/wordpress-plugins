@@ -62,7 +62,7 @@ class Product_Import_Export_Review_Request
     private $last_dismiss_date_option_name = '';
 
     public function __construct()
-    {
+    { 
         global $wt_iew_review_banner_shown;
         
         //Set config vars
@@ -70,7 +70,6 @@ class Product_Import_Export_Review_Request
 
         add_action($this->activation_hook, array($this, 'on_activate'));
         add_action($this->deactivation_hook, array($this, 'on_deactivate'));
-
         add_action('admin_notices', array($this, 'show_banner_cta'));
 
         if ($this->check_condition()) /* checks the banner is active now */ { 
@@ -258,12 +257,12 @@ class Product_Import_Export_Review_Request
             $banner_color = 'rgba(233, 242, 252, 1)';
             $border_radius = '8px'; 
             $border_color = '#A0B2D6';
-            $this->new_review_banner_message = sprintf(__('Hi  %1$s, %2$s We’re thrilled to see you making great use of our plugin! It’s our mission to make %3$s data management %4$s as %5$s efficient %6$s as possible for you. If you found the plugin helpful, please leave us a quick %7$s 5-star review. %8$s', 'product-import-export-for-woos'),  '<b>' . $user_first_name . '</b>', '<br>', '<b>', '</b>', '<b>', '</b>', '<b>', '</b>');
+            $this->new_review_banner_message = sprintf(__('Hi  %1$s, %2$s We\'re thrilled to see you making great use of our plugin! It\'s our mission to make %3$s data management %4$s as %5$s efficient %6$s as possible for you. If you found the plugin helpful, please leave us a quick %7$s 5-star review. %8$s', 'product-import-export-for-woo'),  '<b>' . $user_first_name . '</b>', '<br>', '<b>', '</b>', '<b>', '</b>', '<b>', '</b>');
 
         }else{
             $banner_color = '#ffffff';
             $border_color = '#ffffff';
-            $this->new_review_banner_message = sprintf(__('Hi  %1$s, %2$s We’re thrilled to see you making great use of our WooCommerce import export plugin! It’s our mission to make %3$s data management %4$s as %5$s efficient %6$s as possible for you. %7$s If you found the plugin helpful, please leave us a quick %8$s 5-star review. %9$s It would mean the world to us. %10$s Warm regards, %11$s Team WebToffee %12$s', 'product-import-export-for-woo'), '<b>' . $user_first_name . '</b>', '<br>', '<b>', '</b>', '<b>', '</b>', '<br><br>', '<b>', '</b>', '<br><br>', '<br><b>', '</b>');
+            $this->new_review_banner_message = sprintf(__('Hi  %1$s, %2$s We\'re thrilled to see you making great use of our WooCommerce import export plugin! It\'s our mission to make %3$s data management %4$s as %5$s efficient %6$s as possible for you. %7$s If you found the plugin helpful, please leave us a quick %8$s 5-star review. %9$s It would mean the world to us. %10$s Warm regards, %11$s Team WebToffee %12$s', 'product-import-export-for-woo'), '<b>' . $user_first_name . '</b>', '<br>', '<b>', '</b>', '<b>', '</b>', '<br><br>', '<b>', '</b>', '<br><br>', '<br><b>', '</b>');
         }
     ?>
         <div class="<?php echo esc_attr($this->banner_css_class); ?> notice-info notice is-dismissible " style="padding: 20px; border: 1px solid <?php echo esc_attr($border_color); ?>; border-radius: <?php echo esc_attr($border_radius); ?>; background-color: <?php echo esc_attr($banner_color); ?>; );">
@@ -558,6 +557,7 @@ class Product_Import_Export_Review_Request
 
     public function show_banner_cta()
     {
+        global $wt_iew_review_banner_shown;
         // Check if the WooCommerce Product Import Export plugin is active
         if (is_plugin_active('product-import-export-for-woo/product-import-export-for-woo.php')) {
 
@@ -654,9 +654,93 @@ class Product_Import_Export_Review_Request
                             });
                         })(jQuery);
                     </script>
-<?php
+                    <?php
                 }
+                
             }
+        }
+
+        // Additional conditions for WooCommerce pages
+        $screen = get_current_screen();
+        $wc_pages_banners = array(
+            'woocommerce_page_wc-orders' => array(
+                'cookie_name' => 'hide_cta_wc_orders',
+                'content' => '<span style="color: #212121;">' . esc_html__('You can now bulk import or export WooCommerce orders, coupons, and subscriptions using CSV, XML, or Excel files.', 'product-import-export-for-woo') . '</span>',
+                'plugin_url' => 'https://www.webtoffee.com/product/order-import-export-plugin-for-woocommerce/?utm_source=cross_promotion&utm_medium=woocommerce_orders&utm_campaign=Order_import_export',
+                'plugin_check' => 'order-import-export-for-woocommerce/order-import-export-for-woocommerce.php',
+                'banner_color' => '#4750CB',
+                'banner_image' => 'assets/images/idea_bulb_blue.svg',
+                'premium_plugin' => 'wt-import-export-for-woo-order/wt-import-export-for-woo-order.php'
+            ),
+            'edit-product' => array(
+                'cookie_name' => 'hide_cta_wc_products',
+                'content' => '<span style="color: #212121;">' . esc_html__('You can now easily import and export WooCommerce products with images using CSV, XML, or Excel files.', 'product-import-export-for-woo') . '</span>' ,
+                'plugin_url' => 'https://www.webtoffee.com/product/product-import-export-woocommerce/?utm_source=cross_promotion&utm_medium=all_products_tab&utm_campaign=Product_import_export',
+                'plugin_check' => 'product-import-export-for-woo/product-import-export-for-woo.php',
+                'banner_color' => '#7B54E0',
+                'banner_image' => 'assets/images/idea_bulb_gloomy_purple.svg',
+                'premium_plugin' => 'wt-import-export-for-woo-product/wt-import-export-for-woo-product.php'
+            ),
+            'users' => array(
+                'cookie_name' => 'hide_cta_wc_customers',
+                'content' => '<span style="color: #212121;">' . esc_html__('Easily import and export WordPress users & WooCommerce customers to CSV, XML, or Excel for seamless data management.', 'product-import-export-for-woo') . '</span>',
+                'plugin_url' => 'https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/?utm_source=cross_promotion&utm_medium=woocommerce_customers&utm_campaign=User_import_export',
+                'plugin_check' => 'users-customers-import-export-for-wp-woocommerce/users-customers-import-export-for-wp-woocommerce.php',
+                'banner_color' => '#9D47CB',
+                'banner_image' => 'assets/images/idea_bulb_morado_purple.svg',
+                'premium_plugin' => 'wt-import-export-for-woo-user/wt-import-export-for-woo-user.php'
+            )
+        );
+
+        if (isset($wc_pages_banners[$screen->id])) {
+            $banner_data = $wc_pages_banners[$screen->id];
+
+            // Check if premium plugin is active - if so, don't show the banner
+            if (isset($banner_data['premium_plugin']) && is_plugin_active($banner_data['premium_plugin'])) {
+                return;
+            }
+
+            global $wt_iew_review_banner_shown; 
+            if (true === $wt_iew_review_banner_shown) {
+                return false;
+            }
+
+            // Check if banner is hidden via cookie
+            if (isset($_COOKIE[$banner_data['cookie_name']]) && sanitize_text_field($_COOKIE[$banner_data['cookie_name']]) === 'true') {
+                return;
+            }
+
+            
+            // HTML for the banner remains unchanged
+            $title = esc_html__('Did You Know?', 'product-import-export-for-woo');
+            ?>
+            <div id="wt-iew-cta-banner" class="notice notice-info" style="position: relative; padding: 15px; height: 38px; background-color: #fff; border-left: 4px solid <?php echo esc_attr($banner_data['banner_color']); ?>; display: flex; justify-content: space-between; align-items: center; border-radius: 1px; margin: 10px 0px 10px 0;">
+                <button type="button" class="wt-iew-notice-dismiss" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); border: none; margin: 0; padding: 0; background: none; color: #6E6E6E; cursor: pointer; font-size: 20px; line-height: 1; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;">×</button>
+                <div style="display: flex; align-items: center; gap: 15px; flex: 1;">
+                    <div style="display: flex; align-items: center; ">
+                        <img src="<?php echo esc_url(WT_P_IEW_PLUGIN_URL . $banner_data['banner_image']); ?>" style="width: 25px; margin-right: 10px; color: <?php echo esc_attr($banner_data['banner_color']); ?>;">
+                        <h2 style="color: <?php echo esc_attr($banner_data['banner_color']); ?>; font-weight: 500; font-size:15px;"><?php echo esc_html($title); ?></h2>
+                        <span style="margin: 0 6px; font-size: 13px; color: #212121; line-height: 1.4;"><?php echo wp_kses_post($banner_data['content']); ?></span>
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: center; ">
+                        <a href="<?php echo esc_url($banner_data['plugin_url']); ?>" target="_blank" class="button-primary" style="background: <?php echo esc_attr($banner_data['banner_color']); ?>; color: white; border: none; padding: 8px 15px; border-radius: 4px; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: 13px; height: 32px; line-height: 1;"><?php esc_html_e('Check out plugin →', 'product-import-export-for-woo'); ?></a>
+                        <button class="wt-iew-maybe-later button-secondary" style="background-color: #fff; color: #64594D; border: 1px solid #FFF; border-radius: 4px; font-size: 13px; display: flex; align-items: center; justify-content: center; height: 32px; line-height: 1;"><?php esc_html_e('Maybe later', 'product-import-export-for-woo'); ?></button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <script type="text/javascript">
+                (function($) {
+                    $('.wt-iew-maybe-later, .wt-iew-notice-dismiss').on('click', function(e) {
+                        e.preventDefault();
+                        document.cookie = "<?php echo esc_js($banner_data['cookie_name']); ?>=true; path=/; max-age=" + (30 * 24 * 60 * 60) + ";";
+                        $(this).closest('#wt-iew-cta-banner').remove();
+                    });
+                })(jQuery);
+            </script>
+            <?php
+            $wt_iew_review_banner_shown = true;
         }
     }
     

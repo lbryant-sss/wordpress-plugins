@@ -3,7 +3,7 @@ Contributors: xpeedstudio, ataurr, emranio
 Tags: form builder, Elementor contact form, contact form builder, Elementor forms builder, custom form
 Requires at least: 5.0
 Tested up to: 6.7.2
-Stable tag: 3.9.6
+Stable tag: 3.9.7
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -238,6 +238,11 @@ If you like using the MetForm form builder, then consider checking out our other
 **Check out** [Tutorials, Tips & Tricks](https://wpmet.com/blog)! 👌
 
 == Changelog ==
+Version: 3.9.7 // 2025-03-25
+Improved: Form creation process.
+Fixed: Form settings notification issue on the admin area.
+Fixed: Onboarding UI issue.
+
 Version: 3.9.6 // 2025-03-10
 Added: Compatibility with Elementor plugin performance improvement.
 Fixed: URL widget validation issue.

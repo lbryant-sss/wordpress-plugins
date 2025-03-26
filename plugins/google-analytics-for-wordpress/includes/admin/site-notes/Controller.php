@@ -723,7 +723,7 @@ class MonsterInsights_SiteNotes_Controller {
 		$data['data']['overviewgraph']['notes'] = array();
 
 		foreach ($notes['items'] as $note) {
-			$date_index = date('j M', strtotime($note['note_date'], current_time('U')));
+			$date_index = date('j M', strtotime($note['note_date'], current_time('U'))); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- We need this to depend on the runtime timezone.
 			if (!isset($data['data']['overviewgraph']['notes'][$date_index])) {
 				$data['data']['overviewgraph']['notes'][$date_index] = array();
 			}
@@ -821,7 +821,7 @@ class MonsterInsights_SiteNotes_Controller {
 		$prepared_notes = array();
 
 		foreach ( $notes['items'] as $note ) {
-			$date_index = date( 'j M', strtotime( $note['note_date'], current_time( 'U' ) ) );
+			$date_index = date( 'j M', strtotime( $note['note_date'], current_time( 'U' ) ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- We need this to depend on the runtime timezone.
 
 			if ( ! isset( $prepared_notes[ $date_index ] ) ) {
 				$prepared_notes[ $date_index ] = array();

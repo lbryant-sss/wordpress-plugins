@@ -210,7 +210,11 @@ let hasDeposit = computed(() => {
       let depositPayment = false
 
       useCart(store).filter(i => 'services' in i && Object.keys(i.services).length).forEach((item) => {
-        let service = store.getters['entities/getService'](item.serviceId)
+        let service = store.getters['entities/getCategories'].find(
+          i => i.serviceList.filter(j => j.id === item.serviceId).length
+        ).serviceList.find(
+          i => i.id === item.serviceId
+        )
 
         if (service.depositPayment!== 'disabled') {
           depositPayment = true
@@ -238,7 +242,11 @@ let fullAmount = computed(() => {
   let fullAmountPayment = false
 
   useCart(store).filter(i => 'services' in i && Object.keys(i.services).length).forEach((item) => {
-    let service = store.getters['entities/getService'](item.serviceId)
+    let service = store.getters['entities/getCategories'].find(
+      i => i.serviceList.filter(j => j.id === item.serviceId).length
+    ).serviceList.find(
+      i => i.id === item.serviceId
+    )
 
     if (service.fullPayment) {
       fullAmountPayment = true

@@ -965,19 +965,34 @@
 				</div>
 			</div>
 		</div>
+        <?php
+        $settingValue = $this->getFilterSetting($this->settings['settings'], 'display_only_descendants_category', 0);
+        $hiddenStyle = $settingValue ? '' : 'wpfHidden';
+        ?>
 		<div class="row row-settings-block">
 			<div class="settings-block-label col-xs-4 col-lg-3">
-				<?php esc_html_e('Display Only Children Of Current Category', 'woo-product-filter'); ?>
+				<?php esc_html_e('Display Only Descendants Of Current Category', 'woo-product-filter'); ?>
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr(__('On the category page, display only the child elements of the current category', 'woo-product-filter') ); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-8 col-lg-9">
 				<div class="settings-value settings-w100">
 					<?php
-					HtmlWpf::checkboxToggle('settings[display_only_children_category]', array(
-						'checked' => $this->getFilterSetting($this->settings['settings'], 'display_only_children_category', 0),
+					HtmlWpf::checkboxToggle('settings[display_only_descendants_category]', array(
+						'checked' => $settingValue,
 					));
 					?>
 				</div>
+                	<div class="settings-value settings-w100 <?php echo esc_attr($hiddenStyle); ?>"
+                        data-parent="settings[display_only_descendants_category]">
+                        <div class="settings-value-label">
+                            <?php esc_html_e('Display Only Children Of Current Category', 'woo-product-filter'); ?>
+                        </div>
+                        <?php
+                        HtmlWpf::checkboxToggle('settings[display_only_children_category]', array(
+                            'checked' => $this->getFilterSetting($this->settings['settings'], 'display_only_children_category', 0)
+                        ));
+                        ?>
+                    </div>
 			</div>
 		</div>
 		<div class="row row-settings-block">

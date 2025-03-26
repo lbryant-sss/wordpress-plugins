@@ -130,19 +130,19 @@ final class MonsterInsights_API_Auth {
 
 		$site_type = monsterinsights_get_option( 'site_type' );
 
-        $auth_request_args = array(
-            'tt'        => $this->get_tt(),
-            'sitei'     => $sitei,
-            'miversion' => MONSTERINSIGHTS_VERSION,
-            'ajaxurl'   => admin_url( 'admin-ajax.php' ),
-            'network'   => is_network_admin() ? 'network' : 'site',
-            'siteurl'   => is_network_admin() ? network_admin_url() : home_url(),
-            'return'    => is_network_admin() ? network_admin_url( 'admin.php?page=monsterinsights_network' ) : admin_url( 'admin.php?page=monsterinsights_settings' ),
-            'testurl'   => 'https://' . monsterinsights_get_api_url() . 'test/',
-            'site_type' => $site_type ?: 'business',
-        );
+		$auth_request_args = array(
+			'tt'        => $this->get_tt(),
+			'sitei'     => $sitei,
+			'miversion' => MONSTERINSIGHTS_VERSION,
+			'ajaxurl'   => admin_url( 'admin-ajax.php' ),
+			'network'   => is_network_admin() ? 'network' : 'site',
+			'siteurl'   => is_network_admin() ? network_admin_url() : home_url(),
+			'return'    => is_network_admin() ? network_admin_url( 'admin.php?page=monsterinsights_network' ) : admin_url( 'admin.php?page=monsterinsights_settings' ),
+			'testurl'   => 'https://' . monsterinsights_get_api_url() . 'test/',
+			'site_type' => $site_type ?: 'business',
+		);
 
-        $auth_request_args = apply_filters('monsterinsights_auth_request_body', $auth_request_args);
+		$auth_request_args = apply_filters('monsterinsights_auth_request_body', $auth_request_args);
 
 		$siteurl = add_query_arg($auth_request_args, $this->get_route( 'https://' . monsterinsights_get_api_url() . 'auth/new/{type}' ) );
 
@@ -331,21 +331,21 @@ final class MonsterInsights_API_Auth {
 
 		$site_type = monsterinsights_get_option( 'site_type' );
 
-        $auth_request_args = array(
-            'tt'        => $this->get_tt(),
-            'sitei'     => $this->get_sitei(),
-            'miversion' => MONSTERINSIGHTS_VERSION,
-            'ajaxurl'   => admin_url( 'admin-ajax.php' ),
-            'network'   => is_network_admin() ? 'network' : 'site',
-            'siteurl'   => is_network_admin() ? network_admin_url() : home_url(),
-            'key'       => is_network_admin() ? MonsterInsights()->auth->get_network_key() : MonsterInsights()->auth->get_key(),
-            'token'     => is_network_admin() ? MonsterInsights()->auth->get_network_token() : MonsterInsights()->auth->get_token(),
-            'return'    => is_network_admin() ? network_admin_url( 'admin.php?page=monsterinsights_network' ) : admin_url( 'admin.php?page=monsterinsights_settings' ),
-            'testurl'   => 'https://' . monsterinsights_get_api_url() . 'test/',
-            'site_type' => $site_type ?: 'business',
-        );
+		$auth_request_args = array(
+			'tt'        => $this->get_tt(),
+			'sitei'     => $this->get_sitei(),
+			'miversion' => MONSTERINSIGHTS_VERSION,
+			'ajaxurl'   => admin_url( 'admin-ajax.php' ),
+			'network'   => is_network_admin() ? 'network' : 'site',
+			'siteurl'   => is_network_admin() ? network_admin_url() : home_url(),
+			'key'       => is_network_admin() ? MonsterInsights()->auth->get_network_key() : MonsterInsights()->auth->get_key(),
+			'token'     => is_network_admin() ? MonsterInsights()->auth->get_network_token() : MonsterInsights()->auth->get_token(),
+			'return'    => is_network_admin() ? network_admin_url( 'admin.php?page=monsterinsights_network' ) : admin_url( 'admin.php?page=monsterinsights_settings' ),
+			'testurl'   => 'https://' . monsterinsights_get_api_url() . 'test/',
+			'site_type' => $site_type ?: 'business',
+		);
 
-        $auth_request_args = apply_filters('monsterinsights_auth_request_body', $auth_request_args);
+		$auth_request_args = apply_filters('monsterinsights_auth_request_body', $auth_request_args);
 
 		$siteurl = add_query_arg( $auth_request_args, $this->get_route( 'https://' . monsterinsights_get_api_url() . 'auth/reauth/{type}' ) );
 
@@ -377,7 +377,7 @@ final class MonsterInsights_API_Auth {
 
 		// Make sure has required params
 		if (
-            empty( $_REQUEST['v4'] ) ||
+			empty( $_REQUEST['v4'] ) ||
 			empty( $_REQUEST['miview'] ) ||
 			empty( $_REQUEST['a'] ) ||
 			empty( $_REQUEST['w'] ) ||
@@ -780,7 +780,7 @@ final class MonsterInsights_API_Auth {
 			: $auth->get_key();
 
 		$hashed_data = array(
-			'mp_token'  => sanitize_text_field($_POST['mp_token']),
+			'mp_token'  => !empty($_POST['mp_token']) ? sanitize_text_field($_POST['mp_token']) : '', // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			'timestamp' => $timestamp,
 		);
 

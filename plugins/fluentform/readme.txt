@@ -1,5 +1,5 @@
 === Fluent Forms - Customizable Contact Forms, Survey, Quiz, & Conversational Form Builder ===
-Contributors: techjewel,adreastrian,heera,pyrobd,hrdelwar,dhrupo,wpmanageninja
+Contributors: techjewel,adreastrian,heera,wpmanageninja
 Tags: contact form, wp forms, forms, form builder, custom form
 Requires at least: 4.5
 Tested up to: 6.7
@@ -29,21 +29,20 @@ Anything from a simple contact form to a more advanced payment, quiz, or calcula
 * Drag & drop builder
 * Smart conditional logic
 * Conversational form
+* Built-in AI Form Builder
 * 25+ ready-to-use input fields
 * Reusable form templates
+* Accept Payments with Stripe*
 * Adjustable multi-column form layout
 * [Spam protection using reCAPTCHA, hCaptcha & more](https://fluentforms.com/form-security/)
 * Email notification
 * Form scheduling & restriction
 * Export/import forms
 * Export entries in CSV/Excel/ODS/JSON format
-* Filter entries
-* Form Finder
-* Form Edit history
-* Undo/redo
+* Filter entries & Form Finder
+* Undo/redo & Form Edit history
 * Role manager
-* Form analytics
-* Visual data report
+* Form analytics & Visual data report
 * Set default value for input fields or populate from URL parameters
 * Custom CSS & JS
 * Fully responsive & accessible for users with special needs
@@ -110,6 +109,12 @@ Our drag-and-drop form builder allows you to easily create any form you can imag
 * Password Field
 * Custom Submit Button
 * One/Two/Three/Four/Five/Six Column Container
+* Payment Item
+* Subscription
+* Custom Payment Amount
+* Item Quantity
+* Payment Method
+* Payment Summary
 
 **Available in the Pro Version**
 
@@ -131,12 +136,6 @@ Our drag-and-drop form builder allows you to easily create any form you can imag
 * Rich Text Input
 * Save & Resume
 * Quiz Score
-* Payment Item
-* Subscription
-* Custom Payment Amount
-* Item Quantity
-* Payment Method
-* Payment Summary
 * Coupon
 * Post Title
 * Post Content
@@ -151,7 +150,7 @@ Our drag-and-drop form builder allows you to easily create any form you can imag
 Fluent Forms has been developed to make sure that it satisfies devices of all display sizes. Display your forms on all devices without any extra hassle.
 
 == Reusable Form Templates ==
-Why do the same thing over and over again? Fluent Forms enables you to choose a pre-built form with a single click and make necessary tweaks in a short time, which will save you precious time. We have dozens of useful pre-built form templates for quick form building. Here are a few of them:
+Why do the same thing over and over again? Fluent Forms enables you to choose a pre-built form with a single click and make necessary tweaks in a short time, saving time. We have dozens of useful pre-built form templates for quick form building. Here are a few of them:
 
 * **Contact Form**
 * **Support Form**
@@ -185,6 +184,14 @@ One of the best features of any form builder plugin is its ability to create dif
 [View Conversational Form Demo](https://fluentforms.com/?fluent-form=138)
 With Fluent Forms Pro, you can enjoy more advanced functionalities in conversational forms. Users can browse through questions with scroll and key press. They can also customize the fonts, colors, backgrounds, and more to match brand identity.
 
+== AI Form Builder ==
+Say hello to smarter form creation with Fluent Forms 6.0! We’re excited to bring the AI-powered Form Builder to all users for free.Fluent Forms AI Form Builder streamlines the form creation process,create form by telling what you need, saving you time while ensuring your forms are both effective and has all fields you need for your purpose.
+
+We first introduced ChatGPT integration in Fluent Forms Pro 5.1.18, with it pro users can use chatGPT to build forms.**Now, Fluent Forms free users can use AI forms builder for free powered by Fluent Forms AI assistant.**
+
+== Accept Payments with Stripe ==
+Fluent Forms 6.0 brings payment fields to free users, letting you accept Stripe payments for event registrations, donations, or product sales with just a 1.9% transaction fee. **The free version also includes the Subscription field for easy recurring payments.** Upgrade to Pro to ditch the 1.9% fee (only Stripe’s fees apply)
+
 == Built-in Data Visualization Tool ==
 With Fluent Forms, you can easily analyze form submissions using pie charts, bar charts, or tabular views. Whether you're using it as a form plugin, or quiz builder, Fluent Forms simplifies data analysis for you. You can graphically see the results of any survey or poll in real-time.
 
@@ -195,7 +202,7 @@ Get notified every time someone submits a form and also send a confirmation emai
 Stack input fields in multiple columns and make the long, boring form appear compact and smart. This will lead to a lower form abandonment rate. There are six types of column containers to choose from.
 
 == Conditional Logic ==
-Show or hide specific input fields according to users’ behavior so they do not have to be bothered with unnecessary fields. Users can set multiple conditions by selecting input fields and defining rules such as equal, not equal, greater than, less than, includes, not includes and more. Using [conditional logic](https://fluentforms.com/conditional-logic/), you can receive email notifications automatically upon form submissions and display different confirmation messages to different users when specific conditions are met.
+Show or hide specific input fields according to users’ behavior so they do not have to be bothered with unnecessary fields. Users can set multiple conditions groups by selecting input fields and defining rules such as equal, not equal, greater than, less than, includes, not includes and more. Using [conditional logic](https://fluentforms.com/conditional-logic/), you can receive email notifications automatically upon form submissions and display different confirmation messages to different users when specific conditions are met.
 
 == Calculator for Advanced Form Calculation ==
 The numeric field of Fluent Forms gives you the power to create smart calculators. Whether it's a car loan calculator, BMI calculator, simple mortgage calculator, or tax calculator, creating these calculator forms is a no-brainer. You can set minimum and maximum values to define the acceptable range for numerical input fields.
@@ -294,6 +301,11 @@ Improve your website’s efficiency by bridging the gap from visitor input to em
 
 Fluent Forms is open to all WordPress users worldwide. You can utilize the [Developer API, hooks, and filters](https://developers.fluentforms.com/) to create your own integrations or extensions.
 
+== Brand Guideline ==
+When writing about Fluent Forms, please make sure to use Fluent Forms with a space between 2 words &  uppercase initial 2 letters.
+
+* Correct : Fluent Forms (correct)
+* incorrect : FluentForms, Fluent Form, fluentforms, fluent forms, fluent form, fluent forms
 
 == Check Out the Documentation and the Video Tutorials ==
 
@@ -451,14 +463,14 @@ You can get support from our official support thread at <a href="https://wpmanag
 = 5.2.12 (Date: February 18, 2025) =
 - Adds token-based spam protection for enhanced form security
 - Adds Italian Language Translation
-- Improve Honeypot Security for better bot detection
-- Improve Turnstile appearance option names for clarity
+- Improves Honeypot Security for better bot detection
+- Improves Turnstile appearance option names for clarity
 
 = 5.2.11 (Date: February 10, 2025) =
 - Adds CleanTalk Spam Protection with API
 - Adds Hungarian Language Translation
 - Adds form editor options for reCaptcha V3 badge rendering
-- Improve Honeypot spam protection
+- Improves Honeypot spam protection
 - Fixes WordFence vulnerability IP-Spoofing CVE-2024-13666
 - Fixes fluentform/load_default_public filter not affects Block Editor
 
@@ -469,7 +481,7 @@ You can get support from our official support thread at <a href="https://wpmanag
 
 = 5.2.9 (Date: January 06, 2025) =
 - Adds CleanTalk Spam Protection
-- Improve Step Form accessibility
+- Improves Step Form accessibility
 - Update Akismet option with spam submission skips integration
 - Fixes WP Forms multipage form migration
 - Fixes container drop inside another container
@@ -845,38 +857,6 @@ You can get support from our official support thread at <a href="https://wpmanag
 - Fixes email footer HTML issue
 - Fixes Numeric field formatting issue
 
-= 4.3.5 (Date: Apr 22, 2022) =
-- Adds CLI support
-- Adds Oxygen builder native widget support
-- Adds support for programmatically form rendering
-- Adds digits validation for numeric field
-- Adds mechanism for adding custom validation rules
-- Adds {all_data_without_hidden_fields} shortcode
-- Improves payment status translations
-- Improves deactivated form styles
-- Fixes help message tooltip position issue
-- Fixes tooltip behavior in Elementor Popup
-- Fixes reCAPTCHA v3 issue in Elementor Popup
-- Fixes entries table style
-- Fixes dropdown open style issue
-- Fixes Elementor widget issue
-
-= 4.3.4 (Date: Mar 18, 2022) =
-- Adds configuragion option for email summary subject
-- Adds RTL support for backend
-- Adds Datepicker field language support
-- Adds integration search option on form settings
-- Adds elementor popup support for Conversation Forms
-- Adds quick form deactivation toggle option
-- Adds Timezone preset for Dropdown field
-- Improves calculation module
-- Improves chained select CSV upload
-- Improves conditional rendering module
-- Improves Select field data rendering
-- Improves entry user update module
-- Fixes US style numerical value calculation
-- Fixes shareable link bug
-- Fixes mask field bug
 ...
 
 [View full changelog for all versions](https://fluentforms.com/docs/changelog/).

@@ -727,11 +727,11 @@ class MetaModelWpf extends ModelWpf {
 									$vars[] = $vId;
 								}
 							}
-							if (empty($vars)) {
-								continue;
-							}
 						} else {
 							$vars = $valuesArr;
+						}
+						if (empty($vars)) {
+							continue;
 						}
 
 						$q = $query . '(' . implode(',', UtilsWpf::controlNumericValues($vars, 'id')) . ') LIMIT 1';

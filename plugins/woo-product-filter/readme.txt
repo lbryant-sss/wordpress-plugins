@@ -4,7 +4,7 @@ Donate link: https://woobewoo.com/product/woocommerce-filter/
 Tags: product filter, WooCommerce product filter, shop filter, e-commerce filter, WooCommerce filter
 Requires at least: 3.4.0
 Tested up to: 6.7
-Stable tag: 2.7.9
+Stable tag: 2.8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
  
@@ -150,6 +150,22 @@ If none of this advice helps you, contact us via [support form on our website](h
 You may help us translate the plugin into your language and get the PRO version of the plugin for free as soon as it is released. If this method seems to be too complicated, please send us a request and we will let you know as soon as the WBW Filter plugin will be available in your localization.
 
 == Changelog ==
+
+= 2.8.0 =
+ * Fixed conflict with custom-woocommerce-enhancements
+ * Fix open_one_by_one filter functionality
+ * Add space between taxonomy attributes
+ * Fix subcategory display
+ * Fix elementor pagination compatibility
+ * Add warning for invalid default ID in categories
+ * Fix add duplicate filter dialog
+ * Fix AWS Plugin Integration
+ * Fix if FiboSearch is active with Divi theme
+ * Fix custom attribute sorting
+ * Fixed conflict with jet-woo-builder
+ * Fixed compatibility with Flatsome+UX Builder
+ * Fix pagination reset with JetSmartFilters
+ * Fix early loader hiding
 
 = 2.7.8 =
  * Added options Show/initialise filter immediately

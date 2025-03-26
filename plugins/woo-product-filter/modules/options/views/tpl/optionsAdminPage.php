@@ -77,6 +77,20 @@
 				</div>
 			</div>
 		</div>
+        <div id="wpfwpfDuplicateDialog" class="woobewoo-plugin woobewoo-hidden" title="<?php echo esc_attr__('Duplicate product filter', 'woo-product-filter'); ?>" data-button="<?php echo esc_attr__('Duplicate', 'woo-product-filter'); ?>">
+			<div>
+				<form id="tableForm">
+					<div class="wpfPopupBlock">
+						<label class="wpfPopupLabel"><?php esc_html_e('Filter name', 'woo-product-filter'); ?></label>
+						<input id="addDialog_title" class="woobewoo-text woobewoo-width-full" type="text"/>
+					</div>
+					<input type="hidden" id="addDialog_duplicateid" class="woobewoo-text woobewoo-width-full"/>
+				</form>
+				<div id="formError" class="woobewoo-hidden">
+					<p></p>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="woobewoo-plugin-loader">
 		<div>Loading...<i class="fa fa-spinner fa-spin"></i></div>

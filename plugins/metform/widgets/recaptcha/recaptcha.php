@@ -47,7 +47,7 @@ Class MetForm_Input_Recaptcha extends Widget_Base{
 			[
 				'label' => esc_html__( 'reCAPTCHA configure: ', 'metform' ),
 				'type' => Controls_Manager::RAW_HTML,
-				'raw' => \MetForm\Utils\Util::kses( 'Turn on recaptcha from form setting.<br>Then you have to must configure recaptcha site and secret key from MetForm -> Settings <a target="__blank" href="'.get_dashboard_url().'admin.php?page=metform-menu-settings'.'">from here.</a><br><a target="__blank" href="https://help.wpmet.com/docs/form-settings/recaptcha-integration">See Documentation.</a>', 'metform-pro' ),
+				'raw' => \MetForm\Utils\Util::kses( 'Turn on recaptcha from form setting.<br>Then you have to must configure recaptcha site and secret key from MetForm -> Settings <a target="__blank" href="'.get_dashboard_url().'admin.php?page=metform-menu-settings#mf-general_options'.'">from here.</a><br><a target="__blank" href="https://help.wpmet.com/docs/form-settings/recaptcha-integration">See Documentation.</a>', 'metform-pro' ),
 				'content_classes' => 'mf-input-map-api-notice',
 			]
 		);

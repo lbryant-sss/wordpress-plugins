@@ -6,7 +6,7 @@ Donate link: https://wpamelia.com/
 Requires at least: 4.5
 Tested up to: 6.7.2
 Requires PHP: 7.4
-Stable tag: 1.2.18
+Stable tag: 1.2.20
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -289,6 +289,19 @@ Installing Amelia Lite WordPress Booking Plugin is as easy as 1-2-3!
 
 
 == Changelog ==
+V1.2.20
+* BugFix: Fixed issue CVE-2025-2578
+* Other small bug fixes and stability improvements
+
+V1.2.19
+* BugFix: Fixed issue with selection fields when booking on the back-end on iOS
+* BugFix: Fixed issue with appointment and payment dates on the Finance page
+* BugFix: Fixed issue with placeholder images on front-end
+* BugFix: Fixed issue with Status filter on the Appointments page
+* BugFix: Fixed issue with hidden buttons of SBS form on Iphone SE
+* BugFix: Fixed issue with preselected parameters in shortcode
+* Other small bug fixes and stability improvements
+
 V1.2.18
 * Improvement: Added new ‘Reply to’ option for e-mail notifications
 * Improvement: Implemented a mechanism that allows custom validation checks before service booking

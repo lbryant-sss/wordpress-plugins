@@ -79,6 +79,13 @@ function resetDialogState () {
   dialogVisibility.value = false
 }
 
+let dynamicVh = ref(0)
+function updateVH() {
+  dynamicVh.value = window.visualViewport.height
+}
+
+window.addEventListener('resize', updateVH)
+
 onMounted(() => {
   useRenderAction(
     'renderPopup',
@@ -86,6 +93,8 @@ onMounted(() => {
       resizeAfter
     },
   )
+
+  updateVH()
 })
 
 // * Root Settings
@@ -109,6 +118,7 @@ let cssVars = computed(() => {
     '--am-c-main-bgr': amColors.value.colorMainBgr,
     '--am-c-main-heading-text': amColors.value.colorMainHeadingText,
     '--am-c-main-text': amColors.value.colorMainText,
+    '--am-dvh': dynamicVh.value ? `${dynamicVh.value}px` : '100dvh',
   }
 })
 
@@ -158,6 +168,7 @@ export default {
 
     &.am-cbf {
       .el-dialog {
+        margin-top: 32px;
         &__headerbtn {
           top: -32px;
           right: 0;
@@ -182,6 +193,54 @@ export default {
       box-shadow: none;
       border-radius: 8px;
       background-color: transparent;
+
+      @media only screen and (max-width: 768px) {
+        margin-top: 0;
+        width: 100%;
+        max-width: 100%;
+
+        #amelia-container {
+          &.am-fs {
+            &__wrapper {
+              max-height: unset;
+              height: var(--am-dvh, 100vh);
+            }
+          }
+
+          .am-fs {
+            &-sb {
+              &__step-wrapper {
+                height: calc(var(--am-dvh, 100vh) - 182px);
+              }
+            }
+
+            &__main-content {
+              height: calc(var(--am-dvh, 100vh) - 118px);
+            }
+          }
+
+          .am-els {
+            &__wrapper {
+              overflow-x: hidden;
+              height: calc(var(--am-dvh, 100vh) - 230px);
+
+              &::-webkit-scrollbar {
+                width: 6px;
+              }
+
+              &::-webkit-scrollbar-thumb {
+                border-radius: 6px;
+                background: var(--am-c-scroll-op30);
+              }
+
+              &::-webkit-scrollbar-track {
+                border-radius: 6px;
+                background: var(--am-c-scroll-op10);
+              }
+            }
+          }
+        }
+      }
 
       &__header {
         padding: 0;
@@ -217,7 +276,7 @@ export default {
 
     #amelia-container {
       * {
-        font-family: var(--am-font-family);
+        font-family: var(--am-font-family), sans-serif;
         box-sizing: border-box;
         word-break: break-word;
       }

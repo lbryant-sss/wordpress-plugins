@@ -98,7 +98,25 @@ export default {
         return this.$root.getUrl + 'public/img/default-service.svg'
       }
 
-      return location.protocol + '//via.placeholder.com/120/' + colorHex + '/fff?text=' + initials
+      // Make canvas
+      const canvas = document.createElement('canvas')
+      canvas.width = 100
+      canvas.height = 100
+      const ctx = canvas.getContext('2d')
+
+      // Draw background color
+      ctx.fillStyle = colorHex.startsWith('#') ? colorHex : `#${colorHex}` // Background color
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+      // Draw initials text
+      ctx.font = '40px Arial'
+      ctx.fillStyle = '#ffffff' // Text color
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'middle'
+      ctx.fillText(initials, canvas.width / 2, canvas.height / 2)
+
+      // Convert canvas to data URL (as image source)
+      return canvas.toDataURL('image/png')
     },
 
     pictureLoad: function (entity, isPerson) {

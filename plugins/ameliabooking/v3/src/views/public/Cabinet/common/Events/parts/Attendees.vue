@@ -705,7 +705,7 @@ function getBookings(statuses, page = 1) {
           params: useUrlParams(
             {
               source: 'cabinet-provider',
-              status: statuses,
+              statuses: statuses,
               page: page,
               limit: parseInt(amSettings.general.itemsPerPageBackEnd),
               events: [props.event.id],

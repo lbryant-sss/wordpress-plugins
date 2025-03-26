@@ -7,6 +7,9 @@ include_once 'class-wc-order-export-order-fields.php';
 include_once 'class-wc-order-export-order-product-fields.php';
 include_once 'class-wc-order-export-order-coupon-fields.php';
 
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.NoCaching
+
 class WC_Order_Export_Data_Extractor {
 	use WOE_Core_Extractor;
 	
@@ -35,7 +38,7 @@ class WC_Order_Export_Data_Extractor {
         $total_orders = get_transient($transient_key_total);
 
         if ($total_orders === false) {
-            $total_orders = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->posts}  WHERE post_type = '" . self::$object_type . "'" );
+            $total_orders = $wpdb->get_var( $wpdb->prepare("SELECT COUNT(*) FROM {$wpdb->posts}  WHERE post_type = %s", self::$object_type) );
             set_transient($transient_key_total, $total_orders, 300); // valid for 5 minutes
         }
 
@@ -47,7 +50,7 @@ class WC_Order_Export_Data_Extractor {
 
             if ($orders_ids === false) {
                 $limit = self::HUGE_SHOP_ORDERS;
-                $orders_ids = $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} WHERE post_type = '" . self::$object_type . "' ORDER BY post_date DESC LIMIT {$limit}" );
+                $orders_ids = $wpdb->get_col( $wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE post_type = %s ORDER BY post_date DESC LIMIT %d", self::$object_type, $limit) );
                 $orders_ids[] = 0; // add fake zero
                 $orders_ids = join( ",", $orders_ids );
 
@@ -67,7 +70,8 @@ class WC_Order_Export_Data_Extractor {
 		$fields = get_transient( $transient_key );
 		if ( $fields === false ) {
             $where_posts = self::get_where_last_orders("ID");
-            $fields = $wpdb->get_col( "SELECT DISTINCT meta_key FROM {$wpdb->posts} INNER JOIN {$wpdb->postmeta} ON {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id WHERE post_type = '" . self::$object_type . "' " . $where_posts );
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+            $fields = $wpdb->get_col( $wpdb->prepare("SELECT DISTINCT meta_key FROM {$wpdb->posts} INNER JOIN {$wpdb->postmeta} ON {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id WHERE post_type = %s $where_posts", self::$object_type) );
 			sort( $fields );
 			set_transient( $transient_key, $fields, 60 ); //valid for a minute
 		}
@@ -82,7 +86,8 @@ class WC_Order_Export_Data_Extractor {
 		$metas = get_transient( $transient_key );
 		if ( $metas === false ) {
             $where_posts = self::get_where_last_orders("item.order_id", "WHERE");
-			$metas = $wpdb->get_col( "SELECT DISTINCT meta.meta_key FROM {$wpdb->prefix}woocommerce_order_itemmeta meta inner join {$wpdb->prefix}woocommerce_order_items item on item.order_item_id=meta.order_item_id and item.order_item_type = 'line_item' $where_posts" );
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$metas = $wpdb->get_col( $wpdb->prepare("SELECT DISTINCT meta.meta_key FROM {$wpdb->prefix}woocommerce_order_itemmeta meta inner join {$wpdb->prefix}woocommerce_order_items item on item.order_item_id=meta.order_item_id and item.order_item_type = 'line_item' $where_posts") );
 			sort( $metas );
 			set_transient( $transient_key, $metas, 60 ); //valid for a minute
 		}
@@ -97,6 +102,7 @@ class WC_Order_Export_Data_Extractor {
 		$metas = false; //get_transient( $transient_key );
 		if ( $metas === false ) {
             $where_posts = self::get_where_last_orders("order_id");
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
             $metas = $wpdb->get_col( "SELECT DISTINCT order_item_name FROM {$wpdb->prefix}woocommerce_order_items WHERE order_item_type = 'shipping' $where_posts AND order_item_name <> '' " );
 			sort( $metas );
 			set_transient( $transient_key, $metas, 60 ); //valid for a minute
@@ -112,6 +118,7 @@ class WC_Order_Export_Data_Extractor {
 		$metas = get_transient( $transient_key );
 		if ( $metas === false ) {
             $where_posts = self::get_where_last_orders("order_id");
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
             $metas = $wpdb->get_col( "SELECT DISTINCT order_item_name FROM {$wpdb->prefix}woocommerce_order_items WHERE order_item_type = 'fee' $where_posts AND order_item_name <> '' " );
 			sort( $metas );
 			set_transient( $transient_key, $metas, 60 ); //valid for a minute
@@ -127,6 +134,7 @@ class WC_Order_Export_Data_Extractor {
 		$metas = get_transient( $transient_key );
 		if ( $metas === false ) {
             $where_posts = self::get_where_last_orders("order_id");
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
             $metas = $wpdb->get_col( "SELECT DISTINCT order_item_name FROM {$wpdb->prefix}woocommerce_order_items WHERE order_item_type = 'tax' $where_posts AND order_item_name <> '' " );
 			sort( $metas );
 			set_transient( $transient_key, $metas, 60 ); //valid for a minute
@@ -595,8 +603,9 @@ class WC_Order_Export_Data_Extractor {
 		$user_ids_ui_filters_applied = false;
 		if ( ! empty( $settings['user_names'] ) ) {
 			$user_ids          = array_filter( array_map( "intval", $settings['user_names'] ) );
-			$values            = self::sql_subset( $user_ids );
-			$user_meta_where[] = "( {$wpdb->users}.ID IN ($values) )";
+			$list_placeholders = implode(',', array_fill(0, count($user_ids), '%d'));
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- Ignored for allowing interpolation in the IN statement.
+			$user_meta_where[] = $wpdb->prepare( "( {$wpdb->users}.ID IN ($list_placeholders) )",$user_ids );
 		}
 		//roles
 		if ( ! empty( $settings['user_roles'] ) ) {
@@ -605,7 +614,7 @@ class WC_Order_Export_Data_Extractor {
 
 			$roles_where = array();
 			foreach ( $settings['user_roles'] as $role ) {
-				$roles_where[] = "( usermeta_cf_role.meta_value LIKE '%\"$role\"%' )";
+				$roles_where[] = $wpdb->prepare( "( usermeta_cf_role.meta_value LIKE %s )", "%\"$role\"%");
 			}
 			$user_meta_where[] = "(" . join( ' OR ', $roles_where ) . ")";
 		}
@@ -616,7 +625,8 @@ class WC_Order_Export_Data_Extractor {
 			if ( self::$track_sql_queries ) {
 				self::$sql_queries[] = $sql;
 			}
-			$user_ids                    = $wpdb->get_col( $sql );
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$user_ids                    = $wpdb->get_col( $wpdb->prepare("SELECT DISTINCT ID FROM {$wpdb->users} $inner_join_user_meta WHERE $user_meta_where") );
 			$user_ids_ui_filters_applied = true;
 		}
 		$user_ids = apply_filters( "woe_sql_get_customer_ids", $user_ids, $settings );
@@ -831,19 +841,23 @@ class WC_Order_Export_Data_Extractor {
 			return false;
 		}
 		
+		$statuses = array_keys( wc_get_order_statuses() );
+		$list_placeholders = implode(',', array_fill(0, count($statuses), '%s'));
 
-		$order = $wpdb->get_var(
-		// phpcs:disable WordPress.DB.PreparedSQL.NotPrepared
-			"SELECT posts.ID
+		//phpcs:ignore WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber  -- Ignored for allowing interpolation in the IN statement.
+        $order = $wpdb->get_var( $wpdb->prepare(
+            //phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+            "SELECT posts.ID
 			FROM $wpdb->posts AS posts
 			LEFT JOIN {$wpdb->postmeta} AS meta on posts.ID = meta.post_id
-			WHERE meta.meta_key = '" . $meta_key ."'
-			AND   meta.meta_value = '" . esc_sql( $meta_value ) . "'
+			WHERE meta.meta_key = %s
+			AND   meta.meta_value = %s
 			AND   posts.post_type = 'shop_order'
-			AND   posts.post_status IN ( '" . implode( "','", array_map( 'esc_sql', array_keys( wc_get_order_statuses() ) ) ) . "' )
-			ORDER BY posts.ID {$direction}"
-		// phpcs:enable
-		);
+			AND   posts.post_status IN ( $list_placeholders)
+			ORDER BY posts.ID  " . esc_sql( $direction),
+            //phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+            array_merge([$meta_key,$meta_value],$statuses)
+        ) );
 
 		if ( ! $order ) {
 			return false;
@@ -860,25 +874,29 @@ class WC_Order_Export_Data_Extractor {
 	public static function get_customer_order_count_by_email( $billing_email ) {
 		global $wpdb;
 		
-		$statuses = "'" . implode( "','", array_map( 'esc_sql', array_keys( wc_get_order_statuses() ) ) ) . "'";
+		$statuses = array_keys( wc_get_order_statuses() );
 		
 		if( self::$has_order_stats) 
 			return self::get_customer_order_stats(self::$current_order, $statuses, "COUNT(*)");
 
 		//SLOW way
-		$count = $wpdb->get_var(
-			// phpcs:disable WordPress.DB.PreparedSQL.NotPrepared
-			"SELECT COUNT(*)
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		$list_placeholders = implode(',', array_fill(0, count($statuses), '%s'));
+		//phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- Ignored for allowing interpolation in the IN statement.
+		$count = $wpdb->get_var( $wpdb->prepare(
+            //phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+            "SELECT COUNT(*)
 			FROM $wpdb->posts as posts
 			LEFT JOIN {$wpdb->postmeta} AS meta ON posts.ID = meta.post_id
 			LEFT JOIN {$wpdb->postmeta} AS meta2 ON posts.ID = meta2.post_id
 			WHERE   meta.meta_key = '_billing_email'
 			AND     meta2.meta_key = '_customer_user' AND meta2.meta_value = '0'
 			AND     posts.post_type = 'shop_order'
-			AND     posts.post_status IN ( $statuses )
-			AND     meta.meta_value = '" . esc_sql( $billing_email ) . "'"
-			// phpcs:enable
-		);
+			AND     posts.post_status IN ( $list_placeholders )
+			AND     meta.meta_value = %s"
+            //phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+            , array_merge($statuses ,[$billing_email])
+		)	);
 
 		return is_numeric( $count ) ? intval( $count ) : 0;
 	}
@@ -891,29 +909,33 @@ class WC_Order_Export_Data_Extractor {
 	public static function get_customer_total_spent_by_email( $billing_email ) {
 		global $wpdb;
 		
-		$statuses = implode( ',', array_map( function ( $status ) {
+		$statuses = array_map( function ( $status ) {
 			return sprintf( "'wc-%s'", esc_sql( $status ) );
-		}, wc_get_is_paid_statuses() ) );
+		}, wc_get_is_paid_statuses() ) ;
 		
 		if( self::$has_order_stats) 
 			return self::get_customer_order_stats(self::$current_order, $statuses, "SUM(total_sales)");
 
 		//SLOW way
-		$spent    = $wpdb->get_var(
-			// phpcs:disable WordPress.DB.PreparedSQL.NotPrepared
-			"SELECT SUM(meta2.meta_value)
+		$list_placeholders = implode(',', array_fill(0, count($statuses), '%s'));
+		//phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		//phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- Ignored for allowing interpolation in the IN statement.
+		$spent    = $wpdb->get_var($wpdb->prepare(
+            //phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+            "SELECT SUM(meta2.meta_value)
 			FROM $wpdb->posts as posts
 			LEFT JOIN {$wpdb->postmeta} AS meta ON posts.ID = meta.post_id
 			LEFT JOIN {$wpdb->postmeta} AS meta2 ON posts.ID = meta2.post_id
 			LEFT JOIN {$wpdb->postmeta} AS meta3 ON posts.ID = meta3.post_id
 			WHERE   meta.meta_key       = '_billing_email'
-			AND     meta.meta_value     = '" . esc_sql( $billing_email ) . "'
+			AND     meta.meta_value     = %s
 			AND     meta3.meta_key = '_customer_user' AND meta3.meta_value = '0'
 			AND     posts.post_type     = 'shop_order'
-			AND     posts.post_status   IN ( $statuses )
+			AND     posts.post_status   IN ( $list_placeholders )
 			AND     meta2.meta_key      = '_order_total'"
-			// phpcs:enable
-		);
+            //phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+            ,array_merge([$billing_email],$statuses)
+		)	);
 
 		return is_numeric( $spent ) ? floatval( $spent ) : 0;
 	}	
@@ -927,13 +949,14 @@ class WC_Order_Export_Data_Extractor {
 	public static function get_customer_paid_orders_count( $customer_id, $billing_email ) {
 		global $wpdb;
 		
-		$statuses = implode( ',', array_map( function ( $status ) {
+		$statuses = array_map( function ( $status ) {
 			return sprintf( "'wc-%s'", esc_sql( $status ) );
-		}, wc_get_is_paid_statuses() ) );
+		}, wc_get_is_paid_statuses() );
 		
 		if( self::$has_order_stats) 
 			return self::get_customer_order_stats(self::$current_order, $statuses, "COUNT(*)");
 		
+
 		//SLOW way
 		if( $customer_id ) {
 			$key = '_customer_user';
@@ -947,17 +970,21 @@ class WC_Order_Export_Data_Extractor {
 			$guest_where = "AND meta2.meta_key = '_customer_user' AND meta2.meta_value = '0'";
 		}
 
-		return $wpdb->get_var(
-				"SELECT COUNT(*)
+		$list_placeholders = implode(',', array_fill(0, count($statuses), '%s'));
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare,WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber	 -- Ignored for allowing interpolation in the IN statement.
+		return $wpdb->get_var( $wpdb->prepare("SELECT COUNT(*)
 				FROM $wpdb->posts as posts
 				LEFT JOIN {$wpdb->postmeta} AS meta ON posts.ID = meta.post_id
 				$guest_join
-				WHERE   meta.meta_key = '$key'
+				WHERE   meta.meta_key = %s
 				$guest_where
 				AND     posts.post_type = 'shop_order'
-				AND     posts.post_status IN ( $statuses )
-				AND     meta.meta_value = '" . esc_sql( $value ) . "'"
-		);
+				AND     posts.post_status IN ( $list_placeholders )
+				AND     meta.meta_value = %s",
+				array_merge([$key],$statuses,[$value])
+		)	);
+		// phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 	}	
 
 }

@@ -4,10 +4,10 @@ Donate link: https://www.heateor.com/donate/?action=Sassy+Social+Share
 Tags: social share, social sharing, social media, wordpress social share, share buttons, facebook share, facebook like, social share buttons, twitter tweet, whatsapp share, line share, gab share, gab social share, gab, parler share, parler social share, gettr, gettr share, gettr social share, mewe share, mewe social share, mewe, mastodon share, mastodon social share, mastodon, rutube share, rutube social share, rutube, google news, google news share, google news icon, RSS, RSS Feed, x, x share, yelp, google translate, Google maps, tiktok, Teams, flickr, threads, Gab, Gab share, Line, bluesky
 Requires at least: 2.5.0
 Tested up to: 6.7.2
-Stable tag: 3.3.71
+Stable tag: 3.3.72
 License: GPLv2 or later
 
-Slickest, Simplest and Optimized Share buttons. Facebook, X (Twitter), Reddit, Pinterest, Whatsapp, Gab, Gettr and over 100 more.
+Slickest, Simplest and Optimized Share buttons. Facebook, X, Reddit, Pinterest, Whatsapp, Gab, Gettr and over 100 more.
 
 == Description ==
 Sassy Social Share allows your website visitors to share your content over Facebook, Twitter, Google, Linkedin, Whatsapp, Tumblr, Pinterest, Reddit, Gab, Gettr and over 110 more social sharing and bookmarking services.
@@ -25,7 +25,7 @@ This is the Simplest and Slickest Social Share plugin with optimized and great l
 * Compatible with myCRED (append myCRED referral ID at the end of the url being shared)
 * Around **100 Social Sharing/Bookmarking** services
 * Social Media follow icons (Redirect website visitors to your Social Media pages)
-* Share counts are supported for X (Twitter), Buffer, Reddit, Pinterest, Odnoklassniki, Fintel and Vkontakte
+* Share counts are supported for Buffer, Reddit, Pinterest, Odnoklassniki, Fintel and Vkontakte
 * FREE **Icon Customization** options
 * Options to specify sharing icon shape - Square, Round and Rectangular
 * Options to specify sharing icon size - minimum 16 pixels, no upper limit
@@ -123,8 +123,13 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 4. **Social Share Services**: Over 100 Social Share and Bookmarking services
 
 == Changelog ==
-= 3.3.71 [20 March 2025] =
+= 3.3.72 [25 March 2025] =
+* [Security] Fixed an Open Redirect Vulnerability exposed in the Mastodon share in AMP
 * [Improvement] Updated the icon being displayed with the plugin-menu in the admin area
+* [Improvement] Updated the official Facebook SDK being used throughout the plugin to the version 22.0
+* [Improvement] Admin UI improvements
+
+= 3.3.71 [20 March 2025] =
 * [Improvement] Updated the official Facebook SDK being used throughout the plugin to the version 21.0
 * [Improvement] CSS improvements
 
@@ -1500,6 +1505,11 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 * [Improvement] Minor improvements
 
 = 3.3.71 [20 March 2025] =
-* [Improvement] Updated the icon being displayed with the plugin-menu in the admin area
 * [Improvement] Updated the official Facebook SDK being used throughout the plugin to the version 21.0
 * [Improvement] CSS improvements
+
+= 3.3.72 [25 March 2025] =
+* [Security] Fixed an Open Redirect Vulnerability exposed in the Mastodon share in AMP
+* [Improvement] Updated the icon being displayed with the plugin-menu in the admin area
+* [Improvement] Updated the official Facebook SDK being used throughout the plugin to the version 22.0
+* [Improvement] Admin UI improvements

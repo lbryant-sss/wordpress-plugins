@@ -1381,7 +1381,13 @@
 			_thisObj.QStringWork('avia-element-paging', '', noWooPage, $filterWrapper, 'remove');
 
 			var curUrl = getCurrentUrlPartsWpf();
-			if (curUrl.search.length) {
+            if (curUrl.search.length) {                
+                // Remove any URL parameters that start with 'e-page-'
+                var ePageMatch = curUrl.search.match(/[?&](e-page-[^=&]+)=/);
+                if (ePageMatch && ePageMatch[1]) {
+                    _thisObj.QStringWork(ePageMatch[1], '', noWooPage, $filterWrapper, 'remove');
+                }
+
 				var $pages = curUrl.search.match(/query-\d+-page/i);
 				if ($pages != null && $pages.length) _thisObj.QStringWork($pages[0], '', noWooPage, $filterWrapper, 'remove');
 			}
@@ -2093,9 +2099,7 @@
 			isContainer = (productContainerSelector != '');
 
 		_thisObj.filterLoadTypes[_thisObj.currentLoadId] = 'force';
-		if ($wrapperSettings.recalculate_filters !== '1') {
-			_thisObj.ajaxOnlyRecount(requestData);
-		}
+		
 		jQuery.ajax({
 			type: "GET",
 			url: curUrl + (curUrl.indexOf('?') == -1 ? '?' : '&') + 'wpf_skip=1&wpf_fid=' + _thisObj.filteringId,
@@ -2122,20 +2126,24 @@
 					block = jQuery(data).find(productListSelector);
 				}
 				var pageBlock = jQuery(isContainer && (foundContainer || block.length == 0) ? productContainerSelector : productListSelector);
-				if (block.length == 0 || pageBlock.length == 0) {
-					if ($wrapperSettings.recalculate_filters === '1') {
-						var existsTermsJS = jQuery(data).find('.wpfExistsTermsJS').html();
-						_thisObj.setAjaxJScript(existsTermsJS);
-					}
-					if ($wrapperSettings.no_redirect_by_no_products === '1' && pageBlock.length > 0) {
-						block = jQuery('<div><div class="wpfNoProducts">' + $wrapperSettings.text_no_products + '</div></div>');
-						noProducts = true;
-					} else {
-						_thisObj.filterLoadTypes[_thisObj.currentLoadId] = 'reload';
+                if (block.length == 0 || pageBlock.length == 0) {
+                    if ($wrapperSettings.recalculate_filters === '1') {
+                        var existsTermsJS = jQuery(data).find('.wpfExistsTermsJS').html();
+                        _thisObj.setAjaxJScript(existsTermsJS);
+                    }
+                    if ($wrapperSettings.no_redirect_by_no_products === '1' && pageBlock.length > 0) {
+                        block = jQuery('<div><div class="wpfNoProducts">' + $wrapperSettings.text_no_products + '</div></div>');
+                        noProducts = true;
+                    } else {
+                        _thisObj.filterLoadTypes[_thisObj.currentLoadId] = 'reload';
 						location.reload();
 						return;
-					}
-				}
+                    }
+                } 
+                if ($wrapperSettings.recalculate_filters !== '1') {
+                    _thisObj.ajaxOnlyRecount(requestData);
+                }
+                    
 				_thisObj.currentProductBlock = (typeof pageBlock.selector !== 'undefined') ? pageBlock.selector : productListSelector ;
 
 				block.each(function (index, value) {
@@ -3556,8 +3564,19 @@ function removePageQString() {
 		page = path.indexOf('/page/');
 	if(page != -1 && history.pushState) {
 		window.wpfNewUrl = path.substr(0, page + 1) + curUrl.search;
-	}
+	} else {
+        window.wpfNewUrl = curUrl.path + removePagenum(curUrl.search);
+    }
 }
+
+function removePagenum(url) {
+    return url.replace(/([&?])pagenum=\d+(&|$)/g, function(match, prefix, suffix) {
+        return prefix === '?' && suffix === '&' ? '?' : 
+               prefix === '&' && suffix === '' ? '' :
+               prefix;
+    });
+}
+
 //Function used to remove querystring
 function removeQString(key, $wooPage, $filterWrapper) {
 	removePageQString();

@@ -5,7 +5,7 @@ Tags: cookie notice, cookie consent, cookie banner, eu cookie law, cookieyes
 Requires at least: 5.0.0
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 3.2.8
+Stable tag: 3.2.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -185,7 +185,7 @@ Alternatively, you can upload the zip using the FTP application. Extract the zip
 
 - After activating the plugin, click **CookieYes** on your WordPress dashboard menu.
 
-- Click **Connect to Web App**. You will be prompted to sign up for a new account or log in if you already have one.
+- Click **Connect to a new account**. You will be prompted to sign up for a new account or log in if you already have one.
 
 = Plugin updates =
 
@@ -205,6 +205,13 @@ Every time we update the plugin, you will see a notification on the installed pl
 9. Privacy policy generator and cookie policy generator
 
 == Changelog ==
+
+= 3.2.9 =
+
+[Compatibility] – Tested OK up to WordPress version 6.7.2.  
+[Enhancement] – UI/UX improvements in the Dashboard for both web app-connected and non-connected users.  
+[Add] – Display of warning banner for plugin-connected websites.  
+
 
 = 3.2.8 =
 
@@ -732,8 +739,8 @@ Tested OK with WordPress version 6.2
 
 == Upgrade Notice ==
 
-= 3.2.8 =
+= 3.2.9 =
 
-[Compatibility] – Tested OK with WordPress version 6.7
-[Add] - Support Custom name for dataLayer
-[Fix] - Minor bug fixes.
+[Compatibility] – Tested OK up to WordPress version 6.7.2.  
+[Enhancement] – UI/UX improvements in the Dashboard for both web app-connected and non-connected users.  
+[Add] – Display of warning banner for plugin-connected websites.  

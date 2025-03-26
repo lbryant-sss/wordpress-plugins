@@ -833,7 +833,7 @@
                     </el-col>
 
                     <el-col :span="12">
-                      <el-form-item>
+                      <el-form-item prop="deposit" :rules="rules.deposit">
                         <label :slot="'label'">
                           {{ $root.labels.deposit_amount + (depositPayment === 'fixed' ? ' (' + getCurrencySymbol() + ')' : '') + (depositPayment === 'percentage' ? ' (%)' : '') +  ':' }}
                         </label>
@@ -1670,6 +1670,8 @@
 
       let validatePositiveValue = (rule, price, callback) => {
         if (price <= 0) {
+          this.defaultEventTab = 'pricing'
+
           callback(new Error(this.$root.labels.enter_positive_price_warning))
         } else {
           callback()
@@ -2301,7 +2303,11 @@
       },
 
       validationFailCallback () {
-        this.defaultEventTab = 'details'
+        if (this.event.depositPayment !== 'disabled' && this.event.deposit <= 0) {
+          this.defaultEventTab = 'pricing'
+        } else {
+          this.defaultEventTab = 'details'
+        }
       },
 
       tagsChanged (tags) {

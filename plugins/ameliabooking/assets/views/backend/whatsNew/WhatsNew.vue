@@ -202,25 +202,22 @@ export default {
        isValidEmail: true,
        blogPosts: [],
        changelog: {
-         version: '8.1',
+         version: '8.1.1',
          starter: {
            feature: [
-             'Newly redesigned Employee Panel with effortless appointment and event management alongside improvements in functionality',
-             'Implemented option to add new customer to the booking on the Employee Panel 2.0'
            ],
            improvement: [
-             'Added new “Reply to” option for e-mail notifications',
-             'Added extras information to the export option',
-             'Implemented a mechanism that allows custom validation checks before service booking'
            ],
            translations: [
-             'Updated Turkish, Czech and French translations'
            ],
            bugfix: [
-             'Fixed issue with invoices when SMTP plugin and WP mail in Amelia used',
-             'Fixed issue with "Bringing anyone with you" input number',
-             'Fixed issue with the "Default items per page" option',
-             'Fixed issue with 403 error while attempting to save a customization'
+             'Fixed issue with selection fields when booking on the back-end on iOS',
+             'Fixed issue with appointment and payment dates on the Finance page',
+             'Fixed issue with placeholder images on front-end',
+             'Fixed issue with Status filter on the Appointments page',
+             'Fixed issue with hidden buttons of SBS form on Iphone SE',
+             'Fixed issue with services "Show service onsite" option',
+             'Fixed issue with preselected parameters in shortcode'
            ],
            other: [
              'Other small bug fixes and stability improvements'
@@ -228,43 +225,43 @@ export default {
          },
          basic: {
            feature: [
-             'Microsoft Teams integration for scheduling and maintaining online meetings'
            ],
            improvement: [
-             'Added search into Location selection in “Add/Edit Event” dialog'
            ],
-           translations: [],
+           translations: [
+           ],
            bugfix: [
-             'Fixed issue with the Load entities option and Days off (multiple locations)',
-             'Fixed issue with the locations filter on the Calendar page',
-             'Fixed issue with Status change webhook and payments via links',
-             'Fixed issue with Outlook integration and canceling appointments'
+             'Fixed issue with WooCommerce availability as payment method even though disabled in service'
            ],
-           other: []
+           other: [
+           ]
          },
          pro: {
-           feature: [],
+           feature: [
+           ],
            improvement: [
-             'Added option to delete Package image'
            ],
-           translations: [],
+           translations: [
+           ],
            bugfix: [
-             'Fixed issue with booking approved appointments in packages when default status is pending',
-             'Fixed issue with canceling/editing group appointments on the Manage packages page',
-             'Fixed issue with services order on the Booking preview step when booking packages',
-             'Fixed issue with the waiting list when "Allow bringing more people" is disabled and custom pricing'
+             'Fixed issue with Packages payments step and Show service onsite option',
+             'Fixed issue with invoices in Cart notifications',
+             'Fixed issue with Waiting list and invoices'
            ],
-           other: []
+           other: [
+           ]
          },
          developer: {
-           feature: [],
-           improvement: [],
-           translations: [],
-           bugfix: [
-             'Fixed issue with API when key is not correct',
-             'Fixed issue with edit update coupon mandatory field related to API call'
+           feature: [
            ],
-           other: []
+           improvement: [
+           ],
+           translations: [
+           ],
+           bugfix: [
+           ],
+           other: [
+           ]
          }
        },
        loading: false

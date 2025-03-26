@@ -25,7 +25,7 @@ final class Plugin {
 
     public function version()
     {
-        return '3.9.6';
+        return '3.9.7';
     }
 
     public function package_type()
@@ -111,11 +111,14 @@ final class Plugin {
          *  @set_first_appear_day methods
          * ----------------------------------------
          */
-        Onboard::instance()->init();
+        if( ! isset($_GET['redirect_from']) || ! $_GET['redirect_from'] == 'mf_promo_banner'){
 
-        if(isset($_GET['met-onboard-steps']) && isset($_GET['met-onboard-steps-nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['met-onboard-steps-nonce'])),'met-onboard-steps-action')) {
-            Attr::instance();
-		}
+            Onboard::instance()->init();
+    
+            if(isset($_GET['met-onboard-steps']) && isset($_GET['met-onboard-steps-nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['met-onboard-steps-nonce'])),'met-onboard-steps-action')) {
+                Attr::instance();
+            }
+        }
 
         //  Load Text Domain Just In Time error Notice issue fix
         add_filter('doing_it_wrong_trigger_error', function($doing_it_wrong, $function_name) {
@@ -221,7 +224,7 @@ final class Plugin {
 			    ->set_plugin_row_meta('Facebook Community', 'https://wpmet.com/fb-group', ['target' => '_blank'])
 			    ->set_plugin_row_meta('Rate the plugin ★★★★★', 'https://wordpress.org/support/plugin/metform/reviews/#new-post', ['target' => '_blank'])
 			    ->set_plugin_action_link('Settings', admin_url() . 'admin.php?page=metform-menu-settings')
-			    ->set_plugin_action_link($is_pro_active, 'https://wpmet.com/plugin/metform', ['target' => '_blank', 'style' => 'color: #FCB214; font-weight: bold;'])
+			    ->set_plugin_action_link($is_pro_active, 'https://wpmet.com/plugin/metform/pricing/', ['target' => '_blank', 'style' => 'color: #FCB214; font-weight: bold;'])
 			    ->call();
 		}
 

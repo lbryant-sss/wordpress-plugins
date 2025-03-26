@@ -25,9 +25,6 @@ class MonsterInsights_Site_Insights_Block {
 
 		wp_register_script( 'monsterinsights-block-scripts', $scripts_url, array( 'apexcharts', 'jquery' ), monsterinsights_get_asset_version(), true );
 
-		// Load the script with specific translations.
-		wp_set_script_translations( 'monsterinsights-block-scripts', monsterinsights_is_pro_version() ? 'ga-premium' : 'google-analytics-for-wordpress', plugin_dir_path( __FILE__ ) . 'languages' );
-
 		$style_url = apply_filters(
 			'monsterinsights_frontend_style_url',
 			plugins_url( 'assets/css/frontend' . $suffix . '.css', MONSTERINSIGHTS_PLUGIN_FILE )
@@ -74,15 +71,15 @@ class MonsterInsights_Site_Insights_Block {
 		}
 
 		// Based on the $type and $metric we'll compose the template path and class name for the block output.
-		$template_file = MONSTERINSIGHTS_PLUGIN_DIR . 'includes/gutenberg/site-insights/templates/' . $type . '/class-' . $type . '-' . $metric . '.php';
+		$template_file = MONSTERINSIGHTS_PLUGIN_DIR . 'includes/gutenberg/site-insights/templates/' . $type . '/class-' . $type . '-' . $metric;
 
-		if ( ! file_exists( $template_file ) ) {
+		if ( ! file_exists( $template_file . '.php' ) ) {
 			return false;
 		}
 
 		require_once MONSTERINSIGHTS_PLUGIN_DIR . '/includes/gutenberg/site-insights/templates/class-site-insights-metric-template.php';
 		require_once MONSTERINSIGHTS_PLUGIN_DIR . '/includes/gutenberg/site-insights/templates/class-site-insights-duoscorecard-template.php';
-		require_once $template_file;
+		require_once $template_file . '.php';
 
 		$class_name = 'MonsterInsights_SiteInsights_Template_' . ucfirst( $type ) . '_' . ucfirst( $metric );
 
@@ -122,8 +119,8 @@ class MonsterInsights_Site_Insights_Block {
 
 		$data = $report->get_data(
 			array(
-				'start' => date( 'Y-m-d', strtotime( '-31 days' ) ),
-				'end' => date( 'Y-m-d', strtotime( '-1 days' ) ),
+				'start' => date( 'Y-m-d', strtotime( '-31 days' ) ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- We need this to depend on the runtime timezone.
+				'end' => date( 'Y-m-d', strtotime( '-1 days' ) ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- We need this to depend on the runtime timezone.
 			)
 		);
 

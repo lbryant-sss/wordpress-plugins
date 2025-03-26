@@ -3382,7 +3382,7 @@ class WoofiltersViewWpf extends ViewWpf {
 	 * Set filter id
 	 */
 	public function setFitlerId() {
-		return  'id="' . self::$blockId . '" data-order-key="' . self::$filterOrderKey . '" ';
+		return  ' id="' . self::$blockId . '" data-order-key="' . self::$filterOrderKey . '" ';
 	}
 
 	/**

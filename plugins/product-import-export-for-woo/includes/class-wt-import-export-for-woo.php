@@ -27,6 +27,7 @@
  * @subpackage Wt_Import_Export_For_Woo/includes
  * @author     Webtoffee <info@webtoffee.com>
  */
+
 if (!class_exists('Wt_Import_Export_For_Woo_Basic')) {
 	class Wt_Import_Export_For_Woo_Basic
 	{
@@ -83,10 +84,10 @@ if (!class_exists('Wt_Import_Export_For_Woo_Basic')) {
 			if (defined('WT_P_IEW_VERSION')) {
 				$this->version = WT_P_IEW_VERSION;
 			} else {
-				$this->version = '2.5.0';
+				$this->version = '2.5.1';
 			}
 			$this->plugin_name = 'wt-import-export-for-woo-basic';
-
+			
 			$this->load_dependencies();
 			$this->set_locale();
 			$this->define_admin_hooks();
@@ -110,7 +111,7 @@ if (!class_exists('Wt_Import_Export_For_Woo_Basic')) {
 		 * @access   private
 		 */
 		private function load_dependencies()
-		{
+		{ 
 
 			/**
 			 * The class responsible for orchestrating the actions and filters of the
@@ -159,8 +160,6 @@ if (!class_exists('Wt_Import_Export_For_Woo_Basic')) {
 			 * Class includes helper functions for bfcm banner
 			 */
 			require_once plugin_dir_path(dirname(__FILE__)) . 'admin/banner/class-wtier-bfcm-twenty-twenty-four.php';
-
-
 			/**
 			 * Class includes log writing functions
 			 */

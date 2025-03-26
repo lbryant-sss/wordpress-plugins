@@ -642,7 +642,7 @@
                 </el-col>
 
                 <el-col :span="12">
-                  <el-form-item :label="$root.labels.deposit_amount + (depositPayment === 'fixed' ? ' (' + getCurrencySymbol() + ')' : '') + (depositPayment === 'percentage' ? ' (%)' : '') +  ':'">
+                  <el-form-item :label="$root.labels.deposit_amount + (depositPayment === 'fixed' ? ' (' + getCurrencySymbol() + ')' : '') + (depositPayment === 'percentage' ? ' (%)' : '') +  ':'" prop="deposit">
                     <div v-if="depositPayment === 'fixed'" class="el-input">
                       <money v-model="service.deposit" v-bind="moneyComponentData" @input="depositChanged" class="el-input__inner"></money>
                     </div>
@@ -1110,6 +1110,8 @@
 
       let validatePositiveValue = (rule, price, callback) => {
         if (price <= 0) {
+          this.serviceTabs = 'pricing'
+
           callback(new Error(this.$root.labels.enter_positive_price_warning))
         } else {
           callback()

@@ -100,6 +100,8 @@ class GetEntitiesCommandHandler extends CommandHandler
 
         $params = $command->getField('params');
 
+        $params['types'] = !empty($params['types']) ? $params['types'] : [];
+
         $result = new CommandResult();
 
         $this->checkMandatoryFields($command);

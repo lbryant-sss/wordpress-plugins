@@ -897,6 +897,10 @@
     "file": "img/monsterinsights-onboarding-logo.svg",
     "src": "src/assets/img/wizard-onboarding/monsterinsights-onboarding-logo.svg"
   },
+  "src/assets/img/wizard-onboarding/onboarding-success-button-arrow.svg": {
+    "file": "img/onboarding-success-button-arrow.svg",
+    "src": "src/assets/img/wizard-onboarding/onboarding-success-button-arrow.svg"
+  },
   "src/assets/img/wizard-onboarding/wpforms.png": {
     "file": "img/wpforms.png",
     "src": "src/assets/img/wizard-onboarding/wpforms.png"
@@ -1460,6 +1464,7 @@
       "img/addon-icon-media.png",
       "img/wpforms.png",
       "img/icon-warning.png",
+      "img/onboarding-success-button-arrow.svg",
       "img/welcome-mascot.png",
       "img/testimonial-avatar.jpeg",
       "img/testimonial-avatar-2.png",

@@ -26,8 +26,8 @@ function monsterinsights_ajax_set_user_setting() {
 	check_ajax_referer( 'monsterinsights-set-user-setting', 'nonce' );
 
 	// Prepare variables.
-	$name  = stripslashes( $_POST['name'] );
-	$value = stripslashes( $_POST['value'] );
+	$name  = stripslashes( !empty($_POST['name']) ? sanitize_text_field($_POST['name']) : '' );
+	$value = stripslashes( !empty($_POST['value']) ? sanitize_text_field($_POST['value']) : '' );
 
 	// Set user setting.
 	set_user_setting( $name, $value );
@@ -326,29 +326,29 @@ add_action( 'wp_ajax_monsterinsights_get_aiseo_cta_status', 'monsterinsights_get
 
 function monsterinsights_handle_get_plugin_info() {
 
-    $auth = MonsterInsights()->auth;
+	$auth = MonsterInsights()->auth;
 
-    //  Authenticate with public key
-    $key = sanitize_text_field($_REQUEST['key']);
+	//  Authenticate with public key
+	$key = !empty($_REQUEST['key']) ? sanitize_text_field($_REQUEST['key']) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
-    $site_key = is_network_admin() ? $auth->get_network_key() : $auth->get_key();
+	$site_key = is_network_admin() ? $auth->get_network_key() : $auth->get_key();
 
-    if ( !hash_equals( $site_key, $key ) ) {
-        wp_send_json_error([
-            'error'     => __( 'Invalid site key.', 'google-analytics-for-wordpress' )
-        ], 401);
-    }
+	if ( !hash_equals( $site_key, $key ) ) {
+		wp_send_json_error([
+			'error'     => __( 'Invalid site key.', 'google-analytics-for-wordpress' )
+		], 401);
+	}
 
-    $v4 = is_network_admin() ? $auth->get_network_v4_id() :  $auth->get_v4_id();
-    $has_secret = is_network_admin() ?
-        !empty( $auth->get_network_measurement_protocol_secret() ) :
-        !empty( $auth->get_measurement_protocol_secret() );
+	$v4 = is_network_admin() ? $auth->get_network_v4_id() :  $auth->get_v4_id();
+	$has_secret = is_network_admin() ?
+		!empty( $auth->get_network_measurement_protocol_secret() ) :
+		!empty( $auth->get_measurement_protocol_secret() );
 
-    wp_send_json([
-        'v4'                => $v4,
-        'has_mp_secret'     => $has_secret,
-        'plugin_version'    => MonsterInsights()->version
-    ]);
+	wp_send_json([
+		'v4'                => $v4,
+		'has_mp_secret'     => $has_secret,
+		'plugin_version'    => MonsterInsights()->version
+	]);
 }
 
 add_action( 'wp_ajax_nopriv_monsterinsights_get_plugin_info', 'monsterinsights_handle_get_plugin_info' );

@@ -9,7 +9,10 @@
                     <button type="button" class="attr-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="attr-modal-title" id="metform_form_modalLabel">
                         <?php esc_html_e('Form Settings', 'metform'); ?></h4>
-                    <div id="message" style="display:none" class="attr-alert attr-alert-success mf-success-msg"></div>
+                        <div id="message" style="display:none" class="attr-alert attr-alert-success mf-success-msg"> 
+                            <div class="mf-notification-close"></div>
+                            <div class="mf-message-body"></div>
+                        </div>
                     <ul class="attr-nav attr-nav-tabs" role="tablist">
                         <li role="presentation" class="attr-active"><a href="#mf-general" aria-controls="general" role="tab" data-toggle="tab"><?php esc_html_e('General', 'metform'); ?></a>
                         </li>

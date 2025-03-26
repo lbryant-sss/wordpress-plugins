@@ -353,7 +353,7 @@ export default {
             category
           )
           availableCategory.serviceList = getters.filteredServices(data).filter(service => service.categoryId === category.id)
-          categories.push(category)
+          categories.push(availableCategory)
         }
       })
 

@@ -211,7 +211,7 @@ class MonsterInsights_Tracking_Gtag extends MonsterInsights_Tracking_Abstract {
 				var mi_track_user = <?php echo $track_user ? 'true' : 'false'; ?>;
 				var mi_no_track_reason = <?php echo $reason ? "'" . esc_js( $reason ) . "'" : "''"; ?>;
 				<?php do_action( 'monsterinsights_tracking_gtag_frontend_output_after_mi_track_user' ); ?>
-				var MonsterInsightsDefaultLocations = <?php echo $this->get_default_locations(); ?>;
+				var MonsterInsightsDefaultLocations = <?php echo $this->get_default_locations(); // phpcs:ignore -- JSON ?>;
 				if ( typeof MonsterInsightsPrivacyGuardFilter === 'function' ) {
 					var MonsterInsightsLocations = (typeof MonsterInsightsExcludeQuery === 'object') ? MonsterInsightsPrivacyGuardFilter( MonsterInsightsExcludeQuery ) : MonsterInsightsPrivacyGuardFilter( MonsterInsightsDefaultLocations );
 				} else {
@@ -472,7 +472,7 @@ class MonsterInsights_Tracking_Gtag extends MonsterInsights_Tracking_Abstract {
 	private function get_default_locations() {
 		global $wp;
 
-		$urls['page_location'] = add_query_arg( $_SERVER['QUERY_STRING'], '', trailingslashit( home_url( $wp->request ) ) );
+		$urls['page_location'] = add_query_arg( !empty($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '', '', trailingslashit( home_url( $wp->request ) ) ); // phpcs:ignore
 
 		if ( $referer = wp_get_referer() ) {
 			$urls['page_referrer'] = $referer;

@@ -232,8 +232,19 @@ class WoofiltersControllerWpf extends ControllerWpf {
 
 		$calcParentCategory = null;
 		$showProducts = true;
-		if ( !isset($parts['query']) || '' === $parts['query'] || 'wpf_fbv=1' === $parts['query']) {
-			if ( $shopPageId == $currentPageId ) {
+
+        $is_filter_category_selected = false;
+        if (!empty($parts['query']) && $use_category_filtration) {
+            if (!$categoryPageId && preg_match('/wpf_filter_cat_(\d+)=([^&]+)/', $parts['query'], $matches)) {
+                $categoryPageId = (int) $matches[2];
+            }
+            if ($categoryPageId) {
+                $is_filter_category_selected = true;
+            }
+        }
+
+		if ( !isset($parts['query']) || '' === $parts['query'] || 'wpf_fbv=1' === $parts['query'] || $is_filter_category_selected) {
+			if ( $shopPageId == $currentPageId && !$is_filter_category_selected) {
 				$pageDisplay = get_option( 'woocommerce_shop_page_display', '' );
 				if ( 'subcategories' == $pageDisplay || 'both' == $pageDisplay ) {
 					$calcParentCategory = 0;
@@ -282,7 +293,6 @@ class WoofiltersControllerWpf extends ControllerWpf {
 		} else {
 			$args = DispatcherWpf::applyFilters('beforeFilterExistsTerms', $args, $filterSettings, $urlQuery);
 		}
-
 		$filterItems = $module->getFilterExistsItems($args, $taxonomies, $calcParentCategory, $categoryPageId, $generalSettings, true , $filterSettings, array(), $urlQuery);
 		if ($onlyStatistics) {
 			$isFound = empty($filterItems['have_posts']) ? 0 : 1;
@@ -815,7 +825,17 @@ class WoofiltersControllerWpf extends ControllerWpf {
 						if ($stockstatus) {
 							$metaKeyId = $module->getMetaKeyId('_stock_status');
 							if ( $metaKeyId ) {
-								$values = FrameWpf::_()->getModule( 'meta' )->getModel( 'meta_values' )->getMetaValueIds( $metaKeyId, $stockstatus );
+								$stockValues = FrameWpf::_()->getModule( 'meta' )->getModel( 'meta_values' )->getKeyValueIds( $metaKeyId, array(), true );
+								if (!is_array($stockstatus)) {
+									$stockstatus = array($stockstatus);
+								}
+								$values = array();
+								foreach ($stockstatus as $ss) {
+									$foundId = array_search($ss, $stockValues);
+									if (false !== $foundId) {
+										$values[] = $foundId;
+									}
+								}
 								$module->addWpfMetaClauses( array(
 									'keyId'  => $metaKeyId,
 									'isAnd'  => false,

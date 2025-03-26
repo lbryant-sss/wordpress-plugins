@@ -26,7 +26,7 @@
       ]"
     >
       <template v-for="item in amCustomize.infoStep.order" :key="item.id">
-        <component :is="formFields[item.id]" ref="primeCollectorRef" :phone-error="phoneError" :logged-in-user="loggedInUser"></component>
+        <component :is="formFields[item.id]" ref="primeCollectorRef" :phone-error="phoneError" :logged-in-user="!!loggedInUser"></component>
       </template>
 
       <!-- Custom Fields TODO - validation for custom fields isn't set-->
@@ -161,7 +161,7 @@
           <!-- ####### INPUT ####### -->
         </el-form-item>
       </template>
-      <div v-if="instantBooking && settings.payments.wc.enabled && !settings.payments.wc.onSiteIfFree" class="am-fs__payments-sentence">
+      <div v-if="instantBooking && settings.payments.wc.enabled && !settings.payments.wc.onSiteIfFree && wcEntityEnabled" class="am-fs__payments-sentence">
         <p>
           {{amLabels.payment_wc_mollie_sentence}}
         </p>
@@ -169,14 +169,14 @@
     </el-form>
 
     <PaymentOnSite
-      v-if="instantBooking && (settings.payments.wc.enabled ? settings.payments.wc.onSiteIfFree : true)"
+      v-if="instantBooking && (settings.payments.wc.enabled ? settings.payments.wc.onSiteIfFree || !wcEntityEnabled : true)"
       ref="refOnSiteBooking"
       :instant-booking="instantBooking"
       @payment-error="callPaymentError"
     />
 
     <PaymentWc
-      v-if="instantBooking && settings.payments.wc.enabled && !settings.payments.wc.onSiteIfFree"
+      v-if="instantBooking && settings.payments.wc.enabled && !settings.payments.wc.onSiteIfFree && wcEntityEnabled"
       ref="refWcBooking"
       :instant-booking="instantBooking"
       @payment-error="callPaymentError"
@@ -229,6 +229,7 @@ import { useCustomFields } from "../../../../assets/js/public/customFields";
 import VueGoogleAutocomplete from 'vue-google-autocomplete'
 import useAction from "../../../../assets/js/public/actions";
 import { useElementSize } from "@vueuse/core";
+import { useCartHasItems } from "../../../../assets/js/public/cart";
 
 let props = defineProps({
   globalClass: {
@@ -470,7 +471,7 @@ function submitForm() {
       if (!instantBooking.value) {
         nextStep()
       } else {
-        if (settings.payments.wc.enabled && !settings.payments.wc.onSiteIfFree) {
+        if (settings.payments.wc.enabled && !settings.payments.wc.onSiteIfFree && wcEntityEnabled.value) {
           store.commit('booking/setPaymentGateway', 'wc')
 
           refWcBooking.value.continueWithBooking()
@@ -507,7 +508,33 @@ watchEffect(() => {
 
 let addressCustomFields = ref([])
 
+let wcEntityEnabled = ref(false)
+
 onMounted(() => {
+  let entity = null
+
+  switch (store.getters['booking/getBookableType']) {
+    case ('appointment'):
+      entity = useCartHasItems(store) === 1 ? store.getters['entities/getBookableFromBookableEntities'](
+        store.getters['booking/getSelection']
+      ) : null
+
+      break
+
+    case ('package'):
+      entity = store.getters['entities/getPackage'](
+        store.getters['booking/getPackageId']
+      )
+
+      break
+  }
+
+  let entityPayments = entity && entity.settings ? JSON.parse(entity.settings)['payments'] : null
+
+  wcEntityEnabled.value = entityPayments && 'wc' in entityPayments
+    ? !('enabled' in entityPayments.wc) || entityPayments.wc.enabled
+    : settings.payments.wc.enabled
+
   if (settings.general.customFieldsAllowedExtensions) {
     customFieldsAllowedExtensions.value = Object.keys(settings.general.customFieldsAllowedExtensions).join(', ')
   }

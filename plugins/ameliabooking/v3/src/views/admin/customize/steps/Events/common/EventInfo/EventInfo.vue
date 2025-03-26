@@ -637,6 +637,7 @@ export default {
         align-items: center;
         justify-content: flex-end;
         width: 100%;
+        gap: 8px;
 
         &.am-rw-500 {
           flex-direction: column;
@@ -644,13 +645,11 @@ export default {
           .am-button--secondary {
             order: 2;
             width: 100%;
-            margin: 0;
           }
 
           .am-button--primary {
             order: 1;
             width: 100%;
-            margin-bottom: 8px;
           }
         }
       }

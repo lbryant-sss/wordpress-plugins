@@ -4,7 +4,7 @@ Tags: product export, product import, CSV import export, woocommerce product imp
 Requires at least: 3.0.1
 Tested up to: 6.7.2
 Requires PHP: 5.6
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -235,6 +235,12 @@ Yes, you can import grouped, affiliate/external products in addition to simple p
 
 
 == CHANGELOG ==
+= 2.5.1 2025-03-25 =
+* [Fix] - Vulnerable to Server-Side Request Forgery.
+* [Fix] - Vulnerable to Arbitrary File Deletion.
+* [Fix] - Vulnerable to PHP Object Injection.
+* [Fix] - Vulnerable to Directory Traversal.
+* [Fix] - CTA Banners.
 = 2.5.0 2025-02-28 =
 * [Add] - Feature request functionality.
 * [Add] - New header section.
@@ -705,11 +711,9 @@ Yes, you can import grouped, affiliate/external products in addition to simple p
 
 == Upgrade Notice ==
 
-= 2.5.0 =
-* [Add] - Feature request functionality.
-* [Add] - New header section.
-* [Add] - Help button.
-* [Add] - Setup guide, FAQ, and support contact link.
-* [Add] - New review banner for feedback.
-* [Compatibility] - Tested OK with WooCommerce 9.7.0
-* [Compatibility] - Tested OK with WordPress 6.7.2
+= 2.5.1 =
+* [Fix] - Vulnerable to Server-Side Request Forgery.
+* [Fix] - Vulnerable to Arbitrary File Deletion.
+* [Fix] - Vulnerable to PHP Object Injection.
+* [Fix] - Vulnerable to Directory Traversal.
+* [Fix] - CTA Banners.

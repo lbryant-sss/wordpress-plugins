@@ -272,7 +272,7 @@ class Admin {
 						'loginUrl'   => CKY_APP_URL . '/login',
 						'signUpUrl'  => CKY_APP_URL . '/signup',
 						'pricingUrl' => CKY_APP_URL . '/plans-list',
-						'checkoutUrl'=> CKY_APP_URL . '/checkout',
+						'checkoutUrl'=> CKY_APP_URL . '/trial',
 					),
 					'path'         => array(
 						'base'  => plugin_dir_path( __FILE__ ),

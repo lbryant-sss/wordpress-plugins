@@ -126,6 +126,14 @@ const emits = defineEmits(['isRestored'])
 // * Global flag for determination when component is fully loaded (used for Amelia popup)
 let isMounted = inject('isMounted')
 
+// * Dynamic height
+let dynamicVh = ref(0)
+function updateVH() {
+  dynamicVh.value = window.visualViewport.height
+}
+
+window.addEventListener('resize', updateVH)
+
 // * Popup Visibility
 const popupVisible = ref(false)
 provide('popupVisible', popupVisible)
@@ -371,6 +379,8 @@ onMounted(() => {
 
   useAction(store, {containerWidth}, 'ContainerWidth', 'event', null, null)
 
+  updateVH()
+
   isMounted.value = true
 })
 
@@ -548,6 +558,9 @@ let cssVars = computed(() => {
     '--am-c-skeleton-op60': useColorTransparency(amColors.value.colorMainText, 0.6),
     '--am-font-family': amFonts.value.fontFamily,
 
+    // -dvh- dynamic height
+    '--am-dvh': dynamicVh.value ? `${dynamicVh.value}px` : '100dvh',
+
     // -mw- max width
     '--am-mw-main': '792px',
     // -hd- height dialog
@@ -656,9 +669,13 @@ export default {
       overflow: hidden;
       background-color: var(--am-c-main-bgr);
 
+      @media only screen and (max-width: 768px) {
+        margin-top: 0;
+      }
+
       * {
         box-sizing: border-box;
-        font-family: var(--am-font-family);
+        font-family: var(--am-font-family), sans-serif;
         word-break: break-word;
       }
 
@@ -711,7 +728,7 @@ export default {
     }
 
     * {
-      font-family: var(--am-font-family);
+      font-family: var(--am-font-family), sans-serif;
       box-sizing: border-box;
       word-break: break-word;
     }
@@ -723,6 +740,15 @@ export default {
         display: block;
         overflow-x: hidden;
         padding: 16px 24px 24px;
+
+        @media only screen and (max-width: 768px) {
+          max-height: unset;
+          height: calc(var(--am-dvh, 100vh) - 128px);
+
+          &.am-eli {
+            height: calc(var(--am-dvh, 100vh) - 68px);
+          }
+        }
 
         &::-webkit-scrollbar {
           width: 6px;

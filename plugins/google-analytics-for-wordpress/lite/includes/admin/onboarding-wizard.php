@@ -56,12 +56,12 @@ class MonsterInsights_Onboarding_Wizard {
 
 		// Check if the page is not set, or if it's not the onboarding wizard page
 		if ( empty( $_GET['page'] ) || 'monsterinsights-onboarding' !== $_GET['page'] ) {
-		        return;
+				return;
 		}
 
 		// Check if the current user is allowed to save settings
 		if ( ! current_user_can( 'monsterinsights_save_settings' ) ) {
-		        return;
+				return;
 		}
 
 		// Don't load the interface if doing an ajax call.
@@ -127,7 +127,6 @@ class MonsterInsights_Onboarding_Wizard {
 				'ajax'                 => add_query_arg( 'page', 'monsterinsights-onboarding', admin_url( 'admin-ajax.php' ) ),
 				'nonce'                => wp_create_nonce( 'mi-admin-nonce' ),
 				'network'              => is_network_admin(),
-				'translations'         => wp_get_jed_locale_data( 'mi-vue-app' ),
 				'assets'               => plugins_url( $version_path . '/assets/vue', MONSTERINSIGHTS_PLUGIN_FILE ),
 				'roles'                => monsterinsights_get_roles(),
 				'roles_manage_options' => monsterinsights_get_manage_options_roles(),
@@ -143,9 +142,17 @@ class MonsterInsights_Onboarding_Wizard {
 				'plugin_version'       => MONSTERINSIGHTS_VERSION,
 				'migrated'             => monsterinsights_get_option( 'gadwp_migrated', false ),
 				'allow_file_edit'      => $is_file_edit_allowed,
+				'reports_url'          => admin_url( 'admin.php?page=monsterinsights_reports' ),
 			)
 		);
 
+		$text_domain = monsterinsights_is_pro_version() ? 'google-analytics-premium' : 'google-analytics-for-wordpress';
+
+		wp_scripts()->add_inline_script(
+			'monsterinsights-vue-script',
+			monsterinsights_get_printable_translations( $text_domain ),
+			'translation'
+		);
 	}
 
 	/**
