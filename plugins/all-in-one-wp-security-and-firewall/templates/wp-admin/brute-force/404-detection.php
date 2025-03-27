@@ -14,7 +14,7 @@ if (!defined('AIOWPSECURITY_NOADS_B') || !AIOWPSECURITY_NOADS_B) {
 ?>
 	<div class="aio_grey_box">
 		<?php
-		$premium_plugin_link = '<strong><a href="https://aiosplugin.com/" target="_blank">'.htmlspecialchars(__('All In One WP Security & Firewall Premium', 'all-in-one-wp-security-and-firewall')).'</a></strong>';
+		$premium_plugin_link = '<strong><a href="https://teamupdraft.com/all-in-one-security/pricing/?utm_source=aios-plugin&utm_medium=referral&utm_campaign=paac&utm_content=premium-cta-on-brute-force-tab&utm_creative_format=text" target="_blank">'.esc_html__('All-In-One Security Premium', 'all-in-one-wp-security-and-firewall').'</a></strong>';
 		$info_msg = sprintf(__('You may also be interested in %s.', 'all-in-one-wp-security-and-firewall'), $premium_plugin_link);
 		$info_msg2 = sprintf(__('This plugin adds a number of extra features including %s and %s.', 'all-in-one-wp-security-and-firewall'), '<strong>'.__('smart 404 blocking', 'all-in-one-wp-security-and-firewall').'</strong>', '<strong>'.__('country IP blocking', 'all-in-one-wp-security-and-firewall').'</strong>');
 

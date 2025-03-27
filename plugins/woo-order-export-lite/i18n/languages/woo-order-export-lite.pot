@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Advanced Order Export For WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-25 05:02+0000\n"
+"POT-Creation-Date: 2025-03-26 16:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -25,7 +25,7 @@ msgid " order"
 msgstr ""
 
 #. number of orders when bulk action completed (at orders list)
-#: classes/class-wc-order-export-admin.php:649
+#: classes/class-wc-order-export-admin.php:646
 #, php-format
 msgid "%s order marked."
 msgid_plural "%s orders marked."
@@ -33,7 +33,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. number of orders when bulk action completed (at orders list)
-#: classes/class-wc-order-export-admin.php:661
+#: classes/class-wc-order-export-admin.php:658
 #, php-format
 msgid "%s order unmarked."
 msgid_plural "%s orders unmarked."
@@ -622,7 +622,7 @@ msgstr ""
 msgid "empty meta key"
 msgstr ""
 
-#: classes/class-wc-order-export-admin.php:520
+#: classes/class-wc-order-export-admin.php:517
 msgid "Empty method"
 msgstr ""
 
@@ -671,7 +671,7 @@ msgid "Export all products from the order"
 msgstr ""
 
 #. label for export in Bulk Actions (at orders list)
-#: classes/class-wc-order-export-admin.php:578
+#: classes/class-wc-order-export-admin.php:575
 #, php-format
 msgid "Export as %s"
 msgstr ""
@@ -681,7 +681,7 @@ msgid "Export as .xls (Binary File Format)"
 msgstr ""
 
 #. results of export when bulk action finished
-#: classes/admin/tabs/ajax/class-wc-order-export-ajax.php:46
+#: classes/admin/tabs/ajax/class-wc-order-export-ajax.php:43
 #, php-format
 msgid "Export as profile \"%s\"."
 msgstr ""
@@ -1099,7 +1099,7 @@ msgid "Main SQL queries are listed below"
 msgstr ""
 
 #. labels in Bulk Actions (at orders list)
-#: classes/class-wc-order-export-admin.php:585
+#: classes/class-wc-order-export-admin.php:582
 msgid "Mark exported"
 msgstr ""
 
@@ -1165,7 +1165,7 @@ msgstr ""
 msgid "No page numbers"
 msgstr ""
 
-#: classes/formats/class-woe-formatter-xls.php:244
+#: classes/formats/class-woe-formatter-xls.php:249
 #: classes/formats/abstract-class-woe-formatter-sv.php:110
 #: classes/formats/class-woe-formatter-pdf.php:184
 #: classes/formats/class-woe-formatter-html.php:157
@@ -1177,7 +1177,6 @@ msgid "Non variation attributes"
 msgstr ""
 
 #: classes/admin/tabs/ajax/class-wc-order-export-ajax.php:18
-#: classes/admin/tabs/ajax/class-wc-order-export-ajax.php:37
 msgid "Nonce verification failed!"
 msgstr ""
 
@@ -1382,7 +1381,7 @@ msgid "Order Type"
 msgstr ""
 
 #: classes/admin/class-wc-order-export-manage.php:263
-#: classes/formats/class-woe-formatter-xls.php:378
+#: classes/formats/class-woe-formatter-xls.php:383
 msgid "Orders"
 msgstr ""
 
@@ -1492,16 +1491,24 @@ msgstr ""
 msgid "Phone (Shipping)"
 msgstr ""
 
+#. PHP version requred for Excel format
+#: classes/formats/class-woe-formatter-xls.php:12
+#, php-format
+msgid "PhpSpreadsheet requires PHP version %s or later."
+msgstr ""
+
 #: view/settings-form.php:948
 msgid ""
 "Please check permissions for your role. You must have capability "
 "“edit_themes” to use this box."
 msgstr ""
 
-#: woo-order-export-lite.php:35
+#. href link to Plugins page
+#: woo-order-export-lite.php:38
+#, php-format
 msgid ""
-"Please, <a href=\"plugins.php\">deactivate</a> Free version of Advanced "
-"Order Export For WooCommerce!"
+"Please, %1$s deactivate %2$s Free version of Advanced Order Export For "
+"WooCommerce!"
 msgstr ""
 
 #: classes/core/trait-woe-core-extractor-ui.php:1415
@@ -1720,7 +1727,7 @@ msgstr ""
 msgid "Resubscribe Order"
 msgstr ""
 
-#: classes/admin/tabs/ajax/class-wc-order-export-ajax.php:46
+#: classes/admin/tabs/ajax/class-wc-order-export-ajax.php:43
 #, php-format
 msgid "Result: %s"
 msgstr ""
@@ -2197,18 +2204,18 @@ msgid "Unknown"
 msgstr ""
 
 #. error message for bad ajax method
-#: classes/class-wc-order-export-admin.php:535
+#: classes/class-wc-order-export-admin.php:532
 #, php-format
 msgid "Unknown AJAX method %s"
 msgstr ""
 
 #. error message if current tab doesn't support ajax method
-#: classes/class-wc-order-export-admin.php:544
+#: classes/class-wc-order-export-admin.php:541
 #, php-format
 msgid "Unknown tab method %s"
 msgstr ""
 
-#: classes/class-wc-order-export-admin.php:586
+#: classes/class-wc-order-export-admin.php:583
 msgid "Unmark exported"
 msgstr ""
 
@@ -2285,8 +2292,7 @@ msgstr ""
 msgid "WooCommerce"
 msgstr ""
 
-#: classes/class-wc-order-export-admin.php:512
-#: classes/class-wc-order-export-admin.php:548
+#: classes/class-wc-order-export-admin.php:545
 msgid "Wrong nonce"
 msgstr ""
 
@@ -2302,7 +2308,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: classes/class-wc-order-export-admin.php:516
+#: classes/class-wc-order-export-admin.php:513
 msgid "You can not do it"
 msgstr ""
 

@@ -56,19 +56,21 @@ class UserFeedback_Search {
 			$post_title  = $request->get_param( 'search' );
 		}
 		$post_types  = array( 'post', 'page' );
+		$id_results = array();
 		
 		if ( ! empty( $post_title ) ) {
 			$post_title = urldecode( $post_title );
+			
+			$search_text = '%' . $post_title . '%';
+	
+			// get all the post ids with a title that matches our parameter
+			$id_results = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s", $search_text ) );
+			if ( empty( $id_results ) ) {
+				$result = array();
+				return rest_ensure_response( $result );
+			}
 		}
-		
-		$search_text = '%' . $post_title . '%';
 
-		// get all the post ids with a title that matches our parameter
-		$id_results = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s", $search_text ) );
-		if ( empty( $id_results ) ) {
-			$result = array();
-			return rest_ensure_response( $result );
-		}
 
 		// format the ids into an array
 		$post_ids = array();
@@ -81,7 +83,7 @@ class UserFeedback_Search {
 			'post_type'      => $post_types,
 			'post_status'    => 'publish',
 			'posts_per_page' => -1,
-			'post__in'       => $post_ids,
+			'post__in'       => $post_ids
 		);
 		$posts = get_posts( $args );
 		$data  = array();

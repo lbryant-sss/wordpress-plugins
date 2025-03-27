@@ -222,7 +222,7 @@ trait WOE_Core_Extractor {
 
 		// has exact products?
 		if ( $settings['products'] ) {
-			;// do nothing 
+			;// do nothing
 		} elseif ( empty( $settings['product_vendors'] ) AND empty( $settings['product_custom_fields'] ) ) {
 			$settings['products'] = array();
 		} else {
@@ -353,7 +353,7 @@ trait WOE_Core_Extractor {
 			$cat_ids                = join( ',', $cat_ids );
 			$product_category_where = "SELECT  DISTINCT object_id FROM {$wpdb->term_relationships} AS product_in_cat
 						LEFT JOIN {$wpdb->term_taxonomy} AS product_category ON product_category.term_taxonomy_id = product_in_cat.term_taxonomy_id
-						WHERE product_category.term_id IN ($cat_ids) 
+						WHERE product_category.term_id IN ($cat_ids)
 					";
 			// get products and variations!
 			$product_category_where = "AND orderitemmeta_product.meta_value IN
@@ -405,7 +405,7 @@ trait WOE_Core_Extractor {
 		}
 		return " $field $operator '$value' ";
 	}
-	
+
     private static function get_date_meta_for_subscription_filters( $field, $date_from, $date_to ) {
         $order_meta_where_parts = [];
 
@@ -453,7 +453,7 @@ trait WOE_Core_Extractor {
 		$result = array();
 		$diff_utc = current_time( "timestamp" ) - current_time( "timestamp", 1 );
 
-		// fixed date range 
+		// fixed date range
 		if ( ! empty( $settings['from_date'] ) OR ! empty( $settings['to_date'] ) ) {
 			if ( $settings['from_date'] ) {
 		                $from_date = self::format_date_to_day_start( $settings['from_date'] );
@@ -622,7 +622,7 @@ trait WOE_Core_Extractor {
 
 	public static function convert_date_to_utc( $date, $diff_utc ) {
 		return gmdate("Y-m-d H:i:s", strtotime($date) - $diff_utc);
-	}	
+	}
 
 	public static function get_quarter_month( $time ) {
 		$month = gmdate( "m", $time );
@@ -647,7 +647,7 @@ trait WOE_Core_Extractor {
 		self::$export_line_categories_separator = apply_filters( 'woe_export_line_categories_separator', ",\n" );
 		self::$export_itemmeta_values_separator = apply_filters( 'woe_export_itemmeta_values_separator', ", " );
 		self::$export_custom_fields_separator   = apply_filters( 'woe_export_custom_fields_separator', ", " );
-		
+
 		//detect if has order stats tables
 		global $wpdb;
 		$table_name = $wpdb->prefix.'wc_order_stats';
@@ -657,7 +657,7 @@ trait WOE_Core_Extractor {
 		self::set_order_meta_field_prefix();
 	}
 
-	//for debug 
+	//for debug
 	public static function start_track_queries() {
 		self::$track_sql_queries = true;
 		self::$sql_queries       = array();
@@ -705,7 +705,7 @@ trait WOE_Core_Extractor {
 			$coupon = new WC_Order_Export_Order_Coupon_Fields( $item, $labels, $static_vals );
 			foreach ( $labels->unique_keys() as $field ) {
 				$row[ $field ] = $coupon->get($field);
-				
+
 				$row[ $field ] = apply_filters( "woe_get_order_coupon_value_{$field}", $row[ $field ], $order,
 					$item );
 			}
@@ -833,10 +833,10 @@ trait WOE_Core_Extractor {
 					}
 				}
 			}
-			
+
 			$product   = $item->get_product();
 			$product   = apply_filters( "woe_get_order_product", $product );
-			
+
 			$item_meta = get_metadata( 'order_item', $item_id );
 			foreach ( $item_meta as $key => $value ) {
 				$clear_key = wc_sanitize_taxonomy_name( $key );
@@ -847,13 +847,13 @@ trait WOE_Core_Extractor {
 						$item_meta[ 'attribute_' . $key ][0] = isset( $term->name ) ? $term->name : $value[0];
 					}
 				}
-				
+
 				//some plugins encode meta keys!
 				$key2 = html_entity_decode ($key,ENT_QUOTES);
 				if( !isset($item_meta[$key2]) )
 					$item_meta[$key2] = $item_meta[$key];
 			}
-			
+
 			$item_meta = apply_filters( "woe_get_order_product_item_meta", $item_meta );
 			$product   = apply_filters( "woe_get_order_product_and_item_meta", $product, $item_meta );
 			if ( $product ) {
@@ -905,7 +905,7 @@ trait WOE_Core_Extractor {
 		return apply_filters( "woe_fetch_order_products", $products, $order, $labels->get_legacy_labels(), $format = "",
 			$static_vals );
 	}
-	
+
 	/**
 	 * @param $product WC_Product
 	 *
@@ -1196,7 +1196,7 @@ trait WOE_Core_Extractor {
 				$value = $m[1];
 			}
 		}
-		return $value;		
+		return $value;
 	}
 
 	// Following functions copied from \woocommerce\src\Internal\Traits\OrderAttributionMeta.php
@@ -1373,7 +1373,7 @@ trait WOE_Core_Extractor {
 		self::$order_meta_field_prefix = "{$prefix}_";
 	}
 	// Above functions copied from \woocommerce\src\Internal\Traits\OrderAttributionMeta.php
-	
+
 	/**
 	 * @return float/int
 	 */
@@ -1384,9 +1384,9 @@ trait WOE_Core_Extractor {
 
 		$list_placeholders = implode(',', array_fill(0, count($statuses), '%s'));
 		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- Ignored for allowing interpolation in the IN statement.
-		$result = $wpdb->get_var( $wpdb->prepare("SELECT $operation FROM {$wpdb->prefix}wc_order_stats WHERE customer_id = %d  AND status IN ($list_placeholders) )",array_merge([$customer_id],$statuses)) );
+		$result = $wpdb->get_var( $wpdb->prepare("SELECT $operation FROM {$wpdb->prefix}wc_order_stats WHERE customer_id = %d  AND status IN ($list_placeholders)",array_merge([$customer_id],$statuses)) );
 		if(!$result) $result  = 0; // NULL for SUM!
 		return $result;
 	}
-	
+
 }

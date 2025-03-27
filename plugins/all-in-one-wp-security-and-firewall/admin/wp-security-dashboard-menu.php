@@ -332,11 +332,11 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu {
 	public function widget_spread_the_word() {
 		?>
 		<p><?php echo esc_html__('We are working hard to make your WordPress site more secure.', 'all-in-one-wp-security-and-firewall') . ' ' . esc_html__('Please support us, here is how:', 'all-in-one-wp-security-and-firewall');?></p>
-		<p><a href="https://twitter.com/intent/user?screen_name=UpdraftPlus" target="_blank"><?php esc_html_e('Follow us on', 'all-in-one-wp-security-and-firewall');?> Twitter</a>
+		<p><a href="https://x.com/TeamUpdraftWP" target="_blank"><?php esc_html_e('Follow us on', 'all-in-one-wp-security-and-firewall');?> X</a>
 		</p>
 		<p>
 			<a href="http://twitter.com/intent/tweet?url=https://wordpress.org/plugins/all-in-one-wp-security-and-firewall&text=I love the All In One WP Security and Firewall plugin!"
-			target="_blank" class="aio_tweet_link"><?php esc_html_e('Post to Twitter', 'all-in-one-wp-security-and-firewall');?></a>
+			target="_blank" class="aio_tweet_link"><?php esc_html_e('Post to X', 'all-in-one-wp-security-and-firewall');?></a>
 		</p>
 		<p>
 			<a href="http://wordpress.org/support/view/plugin-reviews/all-in-one-wp-security-and-firewall/"

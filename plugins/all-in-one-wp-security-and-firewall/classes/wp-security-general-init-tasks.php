@@ -225,7 +225,7 @@ class AIOWPSecurity_General_Init_Tasks {
 				add_filter('wp_die_handler', function () {
 					return function ($message, $title, $args) {
 						if ('Application passwords are not available.' == $message) {
-							$message = htmlspecialchars(__('Application passwords have been disabled by All In One WP Security & Firewall plugin.', 'all-in-one-wp-security-and-firewall'));
+							$message = htmlspecialchars(__('Application passwords have been disabled by All-In-One Security plugin.', 'all-in-one-wp-security-and-firewall'));
 						}
 						_default_wp_die_handler($message, $title, $args);
 					};
@@ -532,7 +532,7 @@ class AIOWPSecurity_General_Init_Tasks {
 			$disabled_message .= '<tbody>';
 			$disabled_message .= '<tr id="disable-password">';
 			$disabled_message .= '<th>'.__('Disabled', 'all-in-one-wp-security-and-firewall').'</th>';
-			$disabled_message .= '<td>'.htmlspecialchars(__('Application passwords have been disabled by All In One WP Security & Firewall plugin.', 'all-in-one-wp-security-and-firewall'));
+			$disabled_message .= '<td>'.htmlspecialchars(__('Application passwords have been disabled by All-In-One Security plugin.', 'all-in-one-wp-security-and-firewall'));
 			if (AIOWPSecurity_Utility_Permissions::has_manage_cap()) {
 				$aiowps_additional_setting_url = 'admin.php?page=aiowpsec_userlogin&tab=additional';
 				$change_setting_url = is_multisite() ? network_admin_url($aiowps_additional_setting_url) : admin_url($aiowps_additional_setting_url);

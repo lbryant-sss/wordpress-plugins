@@ -57,6 +57,16 @@ function userfeedback_admin_menu() {
 		'userfeedback_results_page'
 	);
 
+	//  Heatmaps
+	add_submenu_page(
+		$menu_slug,
+		__( 'Heatmaps', 'userfeedback' ),
+		__( 'Heatmaps', 'userfeedback' ),
+		'manage_options',
+		'userfeedback_heatmaps',
+		'userfeedback_heatmaps_page'
+	);
+
 	$settings_menu_slug = 'userfeedback_settings';
 
 	// Settings
@@ -108,11 +118,20 @@ function userfeedback_admin_menu() {
 		'manage_options',
 		$settings_submenu_base . '#/about'
 	);
-
+	
+	// Suggest a Feature
+	add_submenu_page(
+		$menu_slug,
+		__( 'Suggest a Feature', 'userfeedback' ),
+		'<span id="suggest_feature_menu">' . __( 'Suggest a Feature', 'userfeedback' ) . '</span>',
+		'manage_options',
+		userfeedback_get_url( 'admin-menu', '', 'https://www.userfeedback.com/suggest-feature/' )
+	);
+	
 	if ( ! userfeedback_is_pro_version() ) {
 		add_submenu_page(
 			$menu_slug,
-			__( 'Upgrade to Pro:', 'google-analytics-for-wordpress' ),
+			__( 'Upgrade to Pro:', 'userfeedback' ),
 			'<span class="userfeedback-upgrade-submenu"> ' . __( 'Upgrade to Pro', 'userfeedback' ) . '</span>',
 			'userfeedback_save_settings',
 			userfeedback_get_upgrade_link( 'admin-menu', 'submenu', 'https://www.userfeedback.com/lite/' )
@@ -200,6 +219,15 @@ function userfeedback_results_page() {
 }
 
 /**
+ * Render UserFeedback Heatmap page
+ *
+ * @return void
+ */
+function userfeedback_heatmaps_page() {
+	echo '<div id="userfeedback-heatmap"></div>';
+}
+
+/**
  * Render UserFeedback Settings page
  *
  * @return void
@@ -246,7 +274,7 @@ add_action( 'admin_head', 'userfeedback_hide_admin_notices', 1 );
  */
 function userfeedback_add_action_links( $links ) {
 
-	$docs = '<a title="' . esc_attr__( 'UserFeedback Knowledge Base', 'google-analytics-for-wordpress' ) . '" target="_blank" rel="noopener" href="' . userfeedback_get_url( 'all-plugins', 'kb-link', 'https://www.userfeedback.com/docs/' ) . '">' . esc_html__( 'Documentation', 'userfeedback' ) . '</a>';
+	$docs = '<a title="' . esc_attr__( 'UserFeedback Knowledge Base', 'userfeedback' ) . '" target="_blank" rel="noopener" href="' . userfeedback_get_url( 'all-plugins', 'kb-link', 'https://www.userfeedback.com/docs/' ) . '">' . esc_html__( 'Documentation', 'userfeedback' ) . '</a>';
 	array_unshift( $links, $docs );
 
 	// If Lite, support goes to forum. If pro, it goes to our website

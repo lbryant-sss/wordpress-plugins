@@ -8,7 +8,7 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.3.9';
+		public $version = '5.3.10';
 
 		public $db_version = '2.1.3';
 
@@ -342,7 +342,7 @@ if (!class_exists('AIO_WP_Security')) {
 			do_action('aio_wp_security_before_template', $path, $template_file, $return_instead_of_echo, $extract_these);
 
 			if (!file_exists($template_file)) {
-				error_log("All In One WP Security: template not found: $template_file");
+				error_log("All-In-One Security: template not found: $template_file");
 				echo __('Error:', 'all-in-one-wp-security-and-firewall').' '.__('template not found', 'all-in-one-wp-security-and-firewall')." ($template_file)";
 			} else {
 				extract($extract_these);
@@ -592,9 +592,9 @@ if (!class_exists('AIO_WP_Security')) {
 		}
 
 		/**
-		 * Check whether current admin page is All In One WP Security admin page or not.
+		 * Check whether current admin page is All-In-One Security admin page or not.
 		 *
-		 * @return boolean True if All In One WP Security admin page, Otherwise false.
+		 * @return boolean True if All-In-One Security admin page, Otherwise false.
 		 */
 		public function is_aiowps_admin_page() {
 			if (isset($this->is_aiowps_admin_page)) {

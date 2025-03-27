@@ -17,7 +17,7 @@ class WC_Order_Export_Admin {
 	public $path_views_default, $settings;
 
 	protected $tabs;
-	
+
 	const last_bulk_export_results = 'woe-last-bulk-export-results';
 	public static $cap_export_orders = "export_woocommerce_orders";
 
@@ -47,7 +47,7 @@ class WC_Order_Export_Admin {
 			add_action( 'wp_loaded' , function() { //init tabs after loading text domains!
 				$this->tabs = $this->get_tabs();
 			});
-			
+
 
 			add_action( 'wp_ajax_order_exporter', array( $this, 'ajax_gate' ) );
 
@@ -60,7 +60,7 @@ class WC_Order_Export_Admin {
 			add_action( 'admin_notices', array( $this, 'export_orders_bulk_action_notices' ) );
 
 			//HPOS bulk actions
-			add_filter( 'bulk_actions-woocommerce_page_wc-orders', array( $this, 'export_orders_bulk_action' ) );     
+			add_filter( 'bulk_actions-woocommerce_page_wc-orders', array( $this, 'export_orders_bulk_action' ) );
 			add_filter( 'handle_bulk_actions-woocommerce_page_wc-orders', array(
 				$this,
 				'export_orders_bulk_action_process',
@@ -308,7 +308,7 @@ class WC_Order_Export_Admin {
 		add_action( 'learn-press/admin/after-enqueue-scripts', function () {
 			wp_scripts()->dequeue( array('learn-press-utils', 'lp-admin-learnpress', 'lp-admin') );
 		},PHP_INT_MAX );
-		
+
 		wp_enqueue_style( 'export', $this->url_plugin . 'assets/css/export.css', array(), WOE_VERSION );
 
 		wp_enqueue_style( 'woocommerce_admin_styles', WC()->plugin_url() . '/assets/css/admin.css', array(), WOE_VERSION );
@@ -508,9 +508,6 @@ class WC_Order_Export_Admin {
 	// AJAX part
 	// calls ajax_action_XXXX
 	public function ajax_gate() {
-        if (! check_admin_referer( 'woe_nonce', 'woe_nonce' ) ) {
-            die( esc_html__( 'Wrong nonce', 'woo-order-export-lite' ) );
-        }
 
 		if( !current_user_can('view_woocommerce_reports')  AND !current_user_can(self::$cap_export_orders) ){
 			die( esc_html__( 'You can not do it', 'woo-order-export-lite' ) );
@@ -528,7 +525,7 @@ class WC_Order_Export_Admin {
 
 		do_action( 'woe_order_export_admin_ajax_gate_before');
 
-		if ( ! isset( $this->tabs[ $active_tab ] ) ) {
+		if ( ! isset( $this->tabs[ $tab ] ) ) {
 			$ajax_handler = apply_filters( 'woe_global_ajax_handler', new WC_Order_Export_Ajax() );
 			if ( ! method_exists( $ajax_handler, $method ) ) {
 				/* translators: error message for bad ajax method */
@@ -669,7 +666,7 @@ class WC_Order_Export_Admin {
 				echo "<div id=\"notice-orders\" class=\"notice notice-info is-dismissible\" style=\"padding: 15px\">". esc_html($logs)."</div>";
 			}
 		}
-		
+
 	}
 
 	function must_run_ajax_methods() {

@@ -5,7 +5,7 @@ Tags: order export,export orders,woocommerce,order,export
 Requires PHP: 8.1.0
 Requires at least: 4.7
 Tested up to: 6.7
-Stable tag: 3.6.0
+Stable tag: 4.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -120,9 +120,13 @@ Yes, you can email a request to aprokaev@gmail.com. We intensively develop this 
 
 == Changelog ==
 
-= 4.0.0 - 2025-04-02 =
-* Uses new library to generate Excel files. If you created custom code to format Excel files - please migrate from [PHPExcel to PhpSpreadsheet](https://phpspreadsheet.readthedocs.io/en/latest/topics/migration-from-PHPExcel/#manual-changes)
+= 4.0.2 - 2025-03-31 =
+* Fixed critical bug - fatal error on page load (if WooCommerce uses "WordPress posts storage (legacy)")
+
+= 4.0.1 - 2025-03-26 =
 * Requires PHP 8.1+
+* Uses new library to generate Excel files. If you created custom code to format Excel files - please migrate from [PHPExcel to PhpSpreadsheet](https://phpspreadsheet.readthedocs.io/en/latest/topics/migration-from-PHPExcel/#manual-changes)
+* Fixed broken bulk actions
 
 = 3.6.0 - 2025-03-04 =
 * Changed behavior for mode "Export refunds"!

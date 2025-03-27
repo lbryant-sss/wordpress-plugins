@@ -12,7 +12,7 @@ include_once 'class-wc-order-export-order-coupon-fields.php';
 
 class WC_Order_Export_Data_Extractor {
 	use WOE_Core_Extractor;
-	
+
 	static $statuses;
 	static $countries;
 	static $prices_include_tax;
@@ -230,7 +230,7 @@ class WC_Order_Export_Data_Extractor {
 		$left_join_order_items_meta = join( "  ", $left_join_order_items_meta );
 
 		$order_items_meta_where = apply_filters( "woe_sql_get_product_ids_where", $order_items_meta_where, $settings );
-		
+
 		// final sql from WC tables
 		if ( ! $order_items_meta_where ) {
 			return false;
@@ -376,7 +376,7 @@ class WC_Order_Export_Data_Extractor {
 			}
 			$ship_where = join( ' OR ', $ship_where );
 
-			//done 
+			//done
 			$order_items_where .= " AND orders.ID IN (SELECT order_shippings.order_id FROM {$wpdb->prefix}woocommerce_order_items as order_shippings
 						LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta AS shipping_itemmeta ON  shipping_itemmeta.order_item_id = order_shippings.order_item_id
 						WHERE order_shippings.order_item_type='shipping' AND $ship_where )";
@@ -541,7 +541,7 @@ class WC_Order_Export_Data_Extractor {
 					$order_meta_where[] = $custom_sql;
 				else
 					$order_meta_where[] = "( " . join( apply_filters("woe_sql_get_order_ids_custom_order_fields_operator", " AND "), $order_custom_fields_where) . " )";
-			}		
+			}
 		}
 		if ( ! empty( $settings['user_custom_fields'] ) ) {
 			$filters  = self::parse_complex_pairs( $settings['user_custom_fields'] );
@@ -832,7 +832,7 @@ class WC_Order_Export_Data_Extractor {
 		} else {
 			return false;
 		}
-		
+
 		if ( 'first' === $first_or_last ) {
 			$direction = 'ASC';
 		} else if ( 'last' === $first_or_last ) {
@@ -840,7 +840,7 @@ class WC_Order_Export_Data_Extractor {
 		} else {
 			return false;
 		}
-		
+
 		$statuses = array_keys( wc_get_order_statuses() );
 		$list_placeholders = implode(',', array_fill(0, count($statuses), '%s'));
 
@@ -873,10 +873,10 @@ class WC_Order_Export_Data_Extractor {
 	 */
 	public static function get_customer_order_count_by_email( $billing_email ) {
 		global $wpdb;
-		
+
 		$statuses = array_keys( wc_get_order_statuses() );
-		
-		if( self::$has_order_stats) 
+
+		if( self::$has_order_stats)
 			return self::get_customer_order_stats(self::$current_order, $statuses, "COUNT(*)");
 
 		//SLOW way
@@ -908,12 +908,12 @@ class WC_Order_Export_Data_Extractor {
 	 */
 	public static function get_customer_total_spent_by_email( $billing_email ) {
 		global $wpdb;
-		
+
 		$statuses = array_map( function ( $status ) {
-			return sprintf( "'wc-%s'", esc_sql( $status ) );
+			return sprintf( "wc-%s", esc_sql( $status ) );
 		}, wc_get_is_paid_statuses() ) ;
-		
-		if( self::$has_order_stats) 
+
+		if( self::$has_order_stats)
 			return self::get_customer_order_stats(self::$current_order, $statuses, "SUM(total_sales)");
 
 		//SLOW way
@@ -938,8 +938,8 @@ class WC_Order_Export_Data_Extractor {
 		)	);
 
 		return is_numeric( $spent ) ? floatval( $spent ) : 0;
-	}	
-	
+	}
+
 	/**
 	 * @param in $customer_id
 	 * @param string $billing_email
@@ -948,14 +948,14 @@ class WC_Order_Export_Data_Extractor {
 	 */
 	public static function get_customer_paid_orders_count( $customer_id, $billing_email ) {
 		global $wpdb;
-		
+
 		$statuses = array_map( function ( $status ) {
-			return sprintf( "'wc-%s'", esc_sql( $status ) );
+			return sprintf( "wc-%s", esc_sql( $status ) );
 		}, wc_get_is_paid_statuses() );
-		
-		if( self::$has_order_stats) 
+
+		if( self::$has_order_stats)
 			return self::get_customer_order_stats(self::$current_order, $statuses, "COUNT(*)");
-		
+
 
 		//SLOW way
 		if( $customer_id ) {
@@ -963,7 +963,7 @@ class WC_Order_Export_Data_Extractor {
 			$value = $customer_id;
 			$guest_join = "";
 			$guest_where = "";
-		} else { 
+		} else {
 			$key = '_billing_email';
 			$value = $billing_email;
 			$guest_join = "LEFT JOIN {$wpdb->postmeta} AS meta2 ON posts.ID = meta2.post_id";
@@ -985,6 +985,6 @@ class WC_Order_Export_Data_Extractor {
 				array_merge([$key],$statuses,[$value])
 		)	);
 		// phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-	}	
+	}
 
 }

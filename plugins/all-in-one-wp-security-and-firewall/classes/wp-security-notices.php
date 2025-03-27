@@ -112,7 +112,7 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 		$child_notice_content = array(
 			// Upgrade AIOS backup to UDP backup in the 5.0.0 version
 			'automated-database-backup' => array(
-				'title'		  => htmlspecialchars(__('Removed database backup feature from the All In One WP Security & Firewall plugin', 'all-in-one-wp-security-and-firewall')),
+				'title'		  => htmlspecialchars(__('Removed database backup feature from the All-In-One Security plugin', 'all-in-one-wp-security-and-firewall')),
 				'text' 		  => '<p>' .
 									__('Beginning with version 5.0.0, AIOS has replaced the AIOS backup method with the superior UpdraftPlus method.', 'all-in-one-wp-security-and-firewall') . '  '.
 									__('It remains free and is fully supported by the UpdraftPlus team.', 'all-in-one-wp-security-and-firewall') .
@@ -253,7 +253,7 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 						'utm_content' => 'bf-sale',
 						'utm_creative_format' => 'advert',
 					),
-				'https://www.teamupdraft.com/all-in-one-security/pricing'),
+				'https://teamupdraft.com/all-in-one-security/blackfriday'),
 				'campaign' => 'blackfriday',
 				'button_meta' => 'inline',
 				'dismiss_time' => 'dismiss_season',
@@ -277,7 +277,7 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 						'utm_content' => 'new-year-sale',
 						'utm_creative_format' => 'advert',
 					),
-				'https://www.teamupdraft.com/all-in-one-security/pricing'),
+				'https://teamupdraft.com/all-in-one-security/pricing'),
 				'campaign' => 'newyear',
 				'button_meta' => 'inline',
 				'dismiss_time' => 'dismiss_season',
@@ -301,7 +301,7 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 						'utm_content' => 'spring-sale',
 						'utm_creative_format' => 'advert',
 					),
-				'https://www.teamupdraft.com/all-in-one-security/pricing'),
+				'https://teamupdraft.com/all-in-one-security/pricing'),
 				'campaign' => 'spring',
 				'button_meta' => 'inline',
 				'dismiss_time' => 'dismiss_season',
@@ -325,7 +325,7 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 						'utm_content' => 'summer-sale',
 						'utm_creative_format' => 'advert',
 					),
-				'https://www.teamupdraft.com/all-in-one-security/pricing'),
+				'https://teamupdraft.com/all-in-one-security/pricing'),
 				'campaign' => 'summer',
 				'button_meta' => 'inline',
 				'dismiss_time' => 'dismiss_season',

@@ -179,5 +179,7 @@ class UserFeedback_Install {
 	private function create_userfeedback_tables() {
 		( new UserFeedback_Survey() )->create_table();
 		( new UserFeedback_Response() )->create_table();
+		( new UserFeedback_Heatmap() )->create_table();
+		( new UserFeedback_Heatmap_Recording() )->create_table();
 	}
 }

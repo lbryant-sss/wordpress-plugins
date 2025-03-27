@@ -11,12 +11,19 @@
  * Check if roles and capabilities follow proper naming convention
  *
  * @package AAM
- * @version 6.9.40
+ * @version 7.0.0
  */
 class AAM_Audit_RoleCapabilityNamingConventionCheck
 {
 
     use AAM_Audit_AuditCheckTrait;
+
+    /**
+     * Step ID
+     *
+     * @version 7.0.0
+     */
+    const ID = 'roles_caps_naming_convention';
 
     /**
      * Run the check
@@ -25,7 +32,8 @@ class AAM_Audit_RoleCapabilityNamingConventionCheck
      *
      * @access public
      * @static
-     * @version 6.9.40
+     *
+     * @version 7.0.0
      */
     public static function run()
     {
@@ -38,10 +46,13 @@ class AAM_Audit_RoleCapabilityNamingConventionCheck
                 ...self::_validate_naming_convention(self::_read_role_key_option())
             );
         } catch (Exception $e) {
-            array_push($issues, self::_format_issue(sprintf(
-                __('Unexpected application error: %s', AAM_KEY),
-                $e->getMessage()
-            ), 'APPLICATION_ERROR', 'error'));
+            array_push($failure, self::_format_issue(
+                'APPLICATION_ERROR',
+                [
+                    'message' => $e->getMessage()
+                ],
+                'error'
+            ));
         }
 
         if (count($issues) > 0) {
@@ -55,6 +66,29 @@ class AAM_Audit_RoleCapabilityNamingConventionCheck
     }
 
     /**
+     * Get a collection of error messages for current step
+     *
+     * @return array
+     * @access private
+     * @static
+     *
+     * @version 7.0.0
+     */
+    private static function _get_message_templates()
+    {
+        return [
+            'INVALID_ROLE_SLUG' => __(
+                'Detected role %s (%s) with invalid slug',
+                'advanced-access-manager'
+            ),
+            'INVALID_CAP_SLUG' => __(
+                'Detected invalid capability %s for %s (%s) role',
+                'advanced-access-manager'
+            )
+        ];
+    }
+
+    /**
      * Validate that all roles and capabilities are following proper naming
      * convention
      *
@@ -64,7 +98,8 @@ class AAM_Audit_RoleCapabilityNamingConventionCheck
      *
      * @access private
      * @static
-     * @version 6.9.40
+     *
+     * @version 7.0.0
      */
     private static function _validate_naming_convention($db_roles)
     {
@@ -72,19 +107,29 @@ class AAM_Audit_RoleCapabilityNamingConventionCheck
 
         foreach($db_roles as $role_id => $role) {
             if (preg_match('/^[a-z\d_\-]+$/', $role_id) !== 1) {
-                array_push($response, self::_format_issue(sprintf(
-                    __('Detected role "%s" with incorrect identifier', AAM_KEY),
-                    $role_id
-                ), 'INCORRECT_ROLE_SLUG'));
+                array_push($response, self::_format_issue(
+                    'INVALID_ROLE_SLUG',
+                    [
+                        'name' => translate_user_role(
+                            !empty($role['name']) ? $role['name'] : $role_id
+                        ),
+                        'slug' => $role_id
+                    ]
+                ));
             }
 
             foreach(array_keys($role['capabilities']) as $cap) {
                 if (preg_match('/^[a-z\d_\-]+$/', $cap) !== 1) {
-                    array_push($response, self::_format_issue(sprintf(
-                        __('Detected incorrect capability "%s" for %s role', AAM_KEY),
-                        $cap,
-                        $role_id
-                    ), 'INCORRECT_CAP_SLUG'));
+                    array_push($response, self::_format_issue(
+                        'INVALID_CAP_SLUG',
+                        [
+                            'slug'      => $cap,
+                            'role_name' => translate_user_role(
+                                !empty($role['name']) ? $role['name'] : $role_id
+                            ),
+                            'role_slug' => $role_id
+                        ]
+                    ));
                 }
             }
         }

@@ -25,19 +25,11 @@
 			if (empty($install_activate_link)) {
 				$link_title = esc_html__('Automate backup in the UpdraftPlus plugin', 'all-in-one-wp-security-and-firewall');
 			?>
-			<a href="<?php echo esc_url(
-				add_query_arg(
-					array(
-						'page' => 'updraftplus',
-						'tab'  => 'settings',
-					),
-					UpdraftPlus_Options::admin_page_url()
-				)
-			);
-			?>" title="<?php echo esc_attr($link_title); ?>" alt="<?php echo esc_attr($link_title); ?>">
 			<?php
-			echo esc_html__('The AIOS 5.0.0 version release has removed the automated backup feature.', 'all-in-one-wp-security-and-firewall') . ' ' . esc_html__('The AIOS automated backup had issues that made it less robust than we could be happy with.', 'all-in-one-wp-security-and-firewall') . ' ' . esc_html__('Follow this link to automate backups in the superior UpdraftPlus backup plugin.', 'all-in-one-wp-security-and-firewall');
+			echo esc_html__('The automated backup feature in All-In-One Security was removed as of version 5.0.0.', 'all-in-one-wp-security-and-firewall') . ' ' . __('For a reliable backup solution, we recommend', 'all-in-one-wp-security-and-firewall');
 			?>
+			<a href="https://teamupdraft.com/updraftplus/" title="<?php echo $link_title; ?>" alt="<?php echo $link_title; ?>">
+			UpdraftPlus
 			</a>
 			<?php
 			} else {

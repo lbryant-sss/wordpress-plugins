@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to the OptinMonster plugin will be documented in this file.
 
+### 2.16.18 - 2025-03-26
+* Fixed a scenario where the wrong screenshot may load
+
+### 2.16.17 - 2025-03-26
+* Improvements to campaign screenshots
+* Blocksy theme compatibility enhancements
+
 ### 2.16.16 - 2025-02-24
 * Added WooCommerce 9.6 compatibility.
 * Performance improvements while in various editor contexts, by preventing unnecessary API calls.

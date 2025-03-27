@@ -3,7 +3,7 @@
   Plugin Name: Advanced Google reCAPTCHA
   Plugin URI: https://getwpcaptcha.com/
   Description: Advanced Google reCAPTCHA will safeguard your WordPress site from spam comments and brute force attacks. With this plugin, you can easily add Google reCAPTCHA to WordPress comment form, login form and other forms.
-  Version: 1.29
+  Version: 1.30
   Author: WebFactory Ltd
   Author URI: https://www.webfactoryltd.com/
   License: GNU General Public License v3.0

@@ -86,6 +86,7 @@ class ComposerStaticInit7de0ca65b1f7a32edee25f959b3b69ac
         'QuadLayers\\QLWAPP\\Controllers\\Admin_Menu_WooCommerce' => __DIR__ . '/../..' . '/lib/controllers/class-admin-menu-woocommerce.php',
         'QuadLayers\\QLWAPP\\Controllers\\Components' => __DIR__ . '/../..' . '/lib/controllers/class-components.php',
         'QuadLayers\\QLWAPP\\Controllers\\Helpers' => __DIR__ . '/../..' . '/lib/controllers/class-helpers.php',
+        'QuadLayers\\QLWAPP\\Controllers\\New_Admin_Menu' => __DIR__ . '/../..' . '/lib/controllers/class-new-admin-menu.php',
         'QuadLayers\\QLWAPP\\Entities\\Box' => __DIR__ . '/../..' . '/lib/entities/class-box.php',
         'QuadLayers\\QLWAPP\\Entities\\Button' => __DIR__ . '/../..' . '/lib/entities/class-button.php',
         'QuadLayers\\QLWAPP\\Entities\\Contact' => __DIR__ . '/../..' . '/lib/entities/class-contact.php',

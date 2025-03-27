@@ -6,7 +6,7 @@
 		<?php wp_nonce_field('aiowpsec-firewall-setup'); ?>
 		<input type="hidden" name="action" value="aiowps_firewall_setup">
 		<p>
-			<strong><?php esc_html_e('All In One WP Security and Firewall', 'all-in-one-wp-security-and-firewall'); ?></strong>
+			<strong><?php esc_html_e('All-In-One Security', 'all-in-one-wp-security-and-firewall'); ?></strong>
 		</p>
 		<p>
 			<?php echo esc_html__('Our PHP-based firewall has been created to give you even greater protection.', 'all-in-one-wp-security-and-firewall') . ' ' .

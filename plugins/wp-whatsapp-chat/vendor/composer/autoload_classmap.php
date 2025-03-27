@@ -36,6 +36,7 @@ return array(
     'QuadLayers\\QLWAPP\\Controllers\\Admin_Menu_WooCommerce' => $baseDir . '/lib/controllers/class-admin-menu-woocommerce.php',
     'QuadLayers\\QLWAPP\\Controllers\\Components' => $baseDir . '/lib/controllers/class-components.php',
     'QuadLayers\\QLWAPP\\Controllers\\Helpers' => $baseDir . '/lib/controllers/class-helpers.php',
+    'QuadLayers\\QLWAPP\\Controllers\\New_Admin_Menu' => $baseDir . '/lib/controllers/class-new-admin-menu.php',
     'QuadLayers\\QLWAPP\\Entities\\Box' => $baseDir . '/lib/entities/class-box.php',
     'QuadLayers\\QLWAPP\\Entities\\Button' => $baseDir . '/lib/entities/class-button.php',
     'QuadLayers\\QLWAPP\\Entities\\Contact' => $baseDir . '/lib/entities/class-contact.php',

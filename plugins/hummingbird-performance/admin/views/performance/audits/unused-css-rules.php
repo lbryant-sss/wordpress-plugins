@@ -12,13 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$url = add_query_arg(
-	array(
-		'enable-advanced-settings' => 'true',
-		'_wpnonce'                 => wp_create_nonce( 'wphb-enable-advanced-settings' ),
-	),
-	\Hummingbird\Core\Utils::get_admin_menu_url( 'minification' )
-);
+$url = \Hummingbird\Core\Utils::get_admin_menu_url( 'minification' );
 
 ?>
 
@@ -80,7 +74,7 @@ $url = add_query_arg(
 		<li><?php esc_html_e( 'Combine non-critical styles, compress your stylesheets, and move them into the footer.', 'wphb' ); ?></li>
 	</ol>
 	<?php if ( $url ) : ?>
-		<a href="<?php echo esc_url( $url ); ?>" class="wphb-button-link">
+		<a href="<?php echo esc_url( $url ); ?>" class="sui-button">
 			<?php esc_html_e( 'Configure Asset Optimization', 'wphb' ); ?>
 		</a>
 	<?php endif; ?>

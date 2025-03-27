@@ -330,8 +330,8 @@ class AIOWPSecurity_Admin_Init {
 		wp_enqueue_script('dashboard');
 		wp_enqueue_script('thickbox');
 		wp_enqueue_script('media-upload');
-		wp_enqueue_script('chart-bundle', AIO_WP_SECURITY_URL . '/includes/chartjs/Chart.bundle.js', array(), AIO_WP_SECURITY_VERSION, true);
-		wp_enqueue_script('chartjs-gauge', AIO_WP_SECURITY_URL . '/includes/chartjs/chartjs-gauge.js', array(), AIO_WP_SECURITY_VERSION, true);
+		wp_enqueue_script('chart-bundle', AIO_WP_SECURITY_URL . '/includes/chartjs/Chart.bundle.min.js', array(), AIO_WP_SECURITY_VERSION, true);
+		wp_enqueue_script('chartjs-gauge', AIO_WP_SECURITY_URL . '/includes/chartjs/chartjs-gauge.min.js', array(), AIO_WP_SECURITY_VERSION, true);
 		wp_register_script('jquery-blockui', AIO_WP_SECURITY_URL.'/includes/blockui/jquery.blockUI.js', array('jquery'), AIO_WP_SECURITY_VERSION, true);
 		wp_enqueue_script('jquery-blockui');
 		wp_register_script('aiowpsec-admin-js', AIO_WP_SECURITY_URL. '/js/wp-security-admin-script.js', array('jquery'), AIO_WP_SECURITY_VERSION, true);
@@ -350,7 +350,7 @@ class AIOWPSecurity_Admin_Init {
 				'no_import_file' => __('You have not yet selected a file to import.', 'all-in-one-wp-security-and-firewall'),
 				'processing' => __('Processing...', 'all-in-one-wp-security-and-firewall'),
 				'invalid_domain' => __('Please enter a valid IP address or domain name.', 'all-in-one-wp-security-and-firewall'),
-				'logo' => AIO_WP_SECURITY_URL.'/images/plugin-logos/aios-logo.png',
+				'logo' => AIO_WP_SECURITY_URL.'/images/plugin-logos/icon-aios-rgb.svg',
 				'saving' => __('Saving...', 'all-in-one-wp-security-and-firewall'),
 				'deleting' => __('Deleting...', 'all-in-one-wp-security-and-firewall'),
 				'blocking' => __('Blocking...', 'all-in-one-wp-security-and-firewall'),
@@ -421,7 +421,7 @@ class AIOWPSecurity_Admin_Init {
 	public function display_footer_review_message() {
 		$message = sprintf(
 			__('Enjoyed %s? Please leave us a %s rating on %s or %s', 'all-in-one-wp-security-and-firewall').' '.__('We really appreciate your support!', 'all-in-one-wp-security-and-firewall'),
-			'<b>' . htmlspecialchars('All In One WP Security & Firewall') . '</b>',
+			'<b>' . htmlspecialchars('All-In-One Security') . '</b>',
 			'<span style="color:#2271b1">&starf;&starf;&starf;&starf;&starf;</span>',
 			'<a href="https://uk.trustpilot.com/review/aiosplugin.com" target="_blank">Trustpilot</a>',
 			'<a href="https://www.g2.com/products/all-in-one-wp-security-firewall/reviews" target="_blank">G2.com</a>'

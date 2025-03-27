@@ -164,7 +164,7 @@ class OMAPI_Blocks {
 		$is_widgets_page = 'widgets.php' === $pagenow;
 
 		// Prevent enqueueing sidebar settings on widgets screen...
-		if ( ! $is_widgets_page ) {
+		if ( ! $is_widgets_page && ! is_customize_preview() ) {
 			wp_enqueue_script(
 				$this->base->plugin_slug . '-gutenberg-sidebar-settings',
 				$this->base->url . 'assets/dist/js/om-settings.min.js',

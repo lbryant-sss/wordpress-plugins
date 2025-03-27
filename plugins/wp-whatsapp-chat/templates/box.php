@@ -2,16 +2,16 @@
 	<div class="qlwapp-container">
 		<?php if ( $button['box'] === 'yes' ) : ?>
 			<div class="qlwapp-box">
-				<?php if ( ! empty( $box['header'] ) ) : ?>
 					<div class="qlwapp-header">
 						<i class="qlwapp-close" data-action="close">&times;</i>
-						<div class="qlwapp-description">
-							<div class="qlwapp-description-container">
-								<?php echo wpautop( wp_kses_post( wpautop( $box['header'] ) ) ); ?>
+							<div class="qlwapp-description">
+							<?php if ( ! empty( $box['header'] ) ) : ?>
+								<div class="qlwapp-description-container">
+									<?php echo wpautop( wp_kses_post( wpautop( $box['header'] ) ) ); ?>
+								</div>
+								<?php endif; ?>
 							</div>
-						</div>
 					</div>
-				<?php endif; ?>
 				<div class="qlwapp-body">
 					<?php if ( isset( $contacts[0] ) ) : ?>
 						<a class="qlwapp-account" data-action="open" data-phone="<?php echo qlwapp_format_phone( $contacts[0]['phone'] ); ?>" data-message="<?php echo esc_html( $button['message'] ); ?>" role="button" tabindex="0" target="_blank">

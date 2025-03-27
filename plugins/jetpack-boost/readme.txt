@@ -183,19 +183,22 @@ If you run into compatibility issues, please do let us know. You can drop us a l
 2. Jetpack Boost Speed Improvement
 
 == Changelog ==
-### 3.11.0 - 2025-03-19
+### 3.12.0-beta2 - 2025-03-26
 #### Added
-- Page Cache: Add more cookies to the ignore-list for better caching.
+- Add Account Protection initialization
+- Cache: Add Page Cache Preloading for Cornerstone Pages
+- My Jetpack: An onboarding screen has been implemented to provide clear, step-by-step instructions for new users connecting to Jetpack.
 
 #### Changed
-- Cache: Hide conflicting notice about cache setup on WoA.
-- Concatenate JS/CSS: Ensure delivery method tester is only tested once per network on Multisite.
-- UI: Change style of pills.
-- UI: Upgrade CTAs on the Jetpack Boost admin now opens a modal instead of navigating to the upgrade page.
-- Update package dependencies.
+- Connection: Allow pre-selected login providers
+- Critical CSS: Improve reliability of generation by running hooks after saving the state.
+- UI: Show module loading errors with details.
+
+#### Removed
+- Compatibility: Remove redundant compatibility code.
 
 #### Fixed
-- Critical CSS: Prevent the process from failing when a single provider fails storing its CSS.
+- Critical CSS: Prevent the generation process from failing when an individual page fails to load.
 
 --------
 

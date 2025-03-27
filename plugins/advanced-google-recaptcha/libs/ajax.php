@@ -18,6 +18,11 @@ class WPCaptcha_AJAX extends WPCaptcha
         global $wpdb;
 
         check_ajax_referer('wpcaptcha_run_tool');
+
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error(__('You are not allowed to run this action.', 'advanced-google-recaptcha'));
+        }
+
         set_time_limit(300);
 
         if(!isset($_REQUEST['tool'])){
@@ -234,236 +239,264 @@ class WPCaptcha_AJAX extends WPCaptcha
      *
      * @return null
      */
-    static function get_locks_logs()
-    {
-        // phpcs:ignore db call warnings as we are using a custom table 
-        
+    static function get_locks_logs() {
         global $wpdb;
         check_ajax_referer('wpcaptcha_run_tool');
-
+    
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error(__('You are not allowed to run this action.', 'advanced-google-recaptcha'));
+        }
+    
         $aColumns = array('accesslock_ID', 'unlocked', 'accesslock_date', 'release_date', 'reason', 'accesslock_IP');
-        $sIndexColumn = "accesslock_ID";
-
-        // paging
+    
         $sLimit = '';
         if (isset($_GET['iDisplayStart']) && isset($_GET['iDisplayLength']) && $_GET['iDisplayLength'] != '-1') {
-            $sLimit = "LIMIT " . intval($_GET['iDisplayStart']) . ", " . intval($_GET['iDisplayLength']);
-        } // paging
-
-        // ordering
+            $limit_offset = intval($_GET['iDisplayStart']);
+            $limit_count = intval($_GET['iDisplayLength']);
+            $sLimit = $wpdb->prepare(" LIMIT %d, %d", $limit_offset, $limit_count);
+        }
+    
         $sOrder = '';
+        $order_clauses = [];
         if (isset($_GET['iSortCol_0']) && isset($_GET['iSortingCols'])) {
-            $sOrder = "ORDER BY  ";
             for ($i = 0; $i < intval($_GET['iSortingCols']); $i++) {
-                $iSortCol = isset($_GET['iSortCol_' . $i])?intval($_GET['iSortCol_' . $i]):0;
-                $sSortDir = isset($_GET['sSortDir_' . $i])?sanitize_key($_GET['sSortDir_' . $i]):'asc';
-                if (isset($_GET['bSortable_' . $iSortCol]) && $_GET['bSortable_' . $iSortCol] == "true") {
-                    $sOrder .= $aColumns[$iSortCol] . " "
-                        . ($sSortDir == 'desc'?'desc':'asc') . ", ";
+                $iSortCol = isset($_GET['iSortCol_' . $i]) ? intval($_GET['iSortCol_' . $i]) : 0;
+                $sSortDir = isset($_GET['sSortDir_' . $i]) ? sanitize_key($_GET['sSortDir_' . $i]) : 'asc';
+    
+                if (isset($_GET['bSortable_' . $iSortCol]) && $_GET['bSortable_' . $iSortCol] === "true") {
+                    $column = $aColumns[$iSortCol];
+                    $dir = ($sSortDir === 'desc') ? 'DESC' : 'ASC';
+                    $order_clauses[] = "`$column` $dir";
                 }
             }
-
-            $sOrder = substr_replace($sOrder, '', -2);
-            if ($sOrder == "ORDER BY") {
-                $sOrder = '';
+    
+            if (!empty($order_clauses)) {
+                $sOrder = "ORDER BY " . implode(', ', $order_clauses);
             }
-        } // ordering
-
-        // filtering
+        }
+    
         $sWhere = '';
-        if (isset($_GET['sSearch']) && $_GET['sSearch'] != '') {
-            $sWhere = "WHERE (";
-            for ($i = 0; $i < count($aColumns); $i++) {
-                $sWhere .= $aColumns[$i] . " LIKE '%" . sanitize_text_field(wp_unslash($_GET['sSearch'])) . "%' OR ";
+        $where_clauses = [];
+        $query_vars = [];
+    
+        if (!empty($_GET['sSearch'])) {
+            $search_term = '%' . $wpdb->esc_like(sanitize_text_field(wp_unslash($_GET['sSearch']))) . '%'; //sanitize_text_field is used to sanitize according to WordPress PCP
+            $sub_clauses = [];
+    
+            foreach ($aColumns as $col) {
+                $sub_clauses[] = "`$col` LIKE %s";
+                $query_vars[] = $search_term;
             }
-            $sWhere  = substr_replace($sWhere, '', -3);
-            $sWhere .= ')';
-        } // filtering
-
-        // individual column filtering
+    
+            $where_clauses[] = '(' . implode(' OR ', $sub_clauses) . ')';
+        }
+    
         for ($i = 0; $i < count($aColumns); $i++) {
-            if (isset($_GET['bSearchable_' . $i]) && $_GET['bSearchable_' . $i] == "true" && (!isset($_GET['sSearch_' . $i]) || $_GET['sSearch_' . $i] != '')) {
-                if ($sWhere == '') {
-                    $sWhere = "WHERE ";
-                } else {
-                    $sWhere .= " AND ";
-                }
-                $sWhere .= $aColumns[$i] . " LIKE '%" . sanitize_text_field(wp_unslash($_GET['sSearch_' . $i])) . "%' ";
+            if (isset($_GET['bSearchable_' . $i]) && $_GET['bSearchable_' . $i] === "true" && !empty($_GET['sSearch_' . $i])) {
+                $search_term = '%' . $wpdb->esc_like(sanitize_text_field(wp_unslash($_GET['sSearch_' . $i]))) . '%';
+                $where_clauses[] = "`" . $aColumns[$i] . "` LIKE %s";
+                $query_vars[] = $search_term;
             }
-        } // individual columns
-
-        // build query
-        $wpdb->sQuery = "SELECT SQL_CALC_FOUND_ROWS " . str_replace(" , ", " ", implode(", ", $aColumns)) . " FROM " . $wpdb->wpcatcha_accesslocks . " $sWhere $sOrder $sLimit";
-
-        $rResult = $wpdb->get_results($wpdb->sQuery); // phpcs:ignore
-
-        // data set length after filtering
-        $wpdb->sQuery = "SELECT FOUND_ROWS()";
-        $iFilteredTotal = $wpdb->get_var($wpdb->sQuery); // phpcs:ignore
-
-        // total data set length
-        $wpdb->sQuery = "SELECT COUNT(" . $sIndexColumn . ") FROM " . $wpdb->wpcatcha_accesslocks;
-        $iTotal = $wpdb->get_var($wpdb->sQuery); // phpcs:ignore
-
-        // construct output
+        }
+    
+        if (!empty($where_clauses)) {
+            $sWhere = "WHERE " . implode(' AND ', $where_clauses);
+        }
+    
+        $sql = "SELECT SQL_CALC_FOUND_ROWS " . implode(", ", $aColumns) .
+            " FROM `{$wpdb->wpcatcha_accesslocks}` $sWhere $sOrder";
+    
+        if (!empty($sLimit)) {
+            $sql .= $sLimit;
+        }
+    
+        if (!empty($query_vars)) {
+            $prepared_sql = $wpdb->prepare($sql, $query_vars); //phpcs:ignore
+        } else {
+            $prepared_sql = $sql;
+        }
+    
+        $rResult = $wpdb->get_results($prepared_sql); //phpcs:ignore
+    
+        $iFilteredTotal = $wpdb->get_var("SELECT FOUND_ROWS()");
+    
+        $iTotal = $wpdb->get_var("SELECT COUNT(`accesslock_ID`) FROM `{$wpdb->wpcatcha_accesslocks}`");
+    
         $output = array(
-            "sEcho" => isset($_GET['sEcho'])?intval($_GET['sEcho']):'',
+            "sEcho" => isset($_GET['sEcho']) ? intval($_GET['sEcho']) : '',
             "iTotalRecords" => $iTotal,
             "iTotalDisplayRecords" => $iFilteredTotal,
             "aaData" => array()
         );
-
+    
         foreach ($rResult as $aRow) {
             $row = array();
             $row['DT_RowId'] = $aRow->accesslock_ID;
-
+    
             if (strtotime($aRow->release_date) < time()) {
                 $row['DT_RowClass'] = 'lock_expired';
             }
-
-            for ($i = 0; $i < count($aColumns); $i++) {
-
-                if ($aColumns[$i] == 'unlocked') {
-                    $unblocked = $aRow->{$aColumns[$i]};
+    
+            foreach ($aColumns as $col) {
+                if ($col === 'unlocked') {
+                    $unblocked = $aRow->$col;
                     if ($unblocked == 0 && strtotime($aRow->release_date) > time()) {
                         $row[] = '<div class="tooltip unlock_accesslock" data-lock-id="' . $aRow->accesslock_ID . '" title="Unlock"><i class="wpcaptcha-icon wpcaptcha-lock"></i></div>';
                     } else {
                         $row[] = '<div class="tooltip unlocked_accesslock" title="Unlock"><i class="wpcaptcha-icon wpcaptcha-unlock"></i></div>';
                     }
-                } else if ($aColumns[$i] == 'accesslock_date') {
-                    $row[] = self::get_date_time(strtotime($aRow->{$aColumns[$i]}));
-                } else if ($aColumns[$i] == 'reason') {
-                    $row[] = $aRow->{$aColumns[$i]};
-                } else if ($aColumns[$i] == 'accesslock_IP') {
+                } elseif ($col === 'accesslock_date') {
+                    $row[] = self::get_date_time(strtotime($aRow->$col));
+                } elseif ($col === 'reason') {
+                    $row[] = $aRow->$col;
+                } elseif ($col === 'accesslock_IP') {
                     $row[] = '<a href="#" class="open-pro-dialog pro-feature" data-pro-feature="access-log-user-location">Available in PRO</a>';
                     $row[] = '<a href="#" class="open-pro-dialog pro-feature" data-pro-feature="access-log-user-agent">Available in PRO</a>';
-                } 
+                }
             }
-            $row[] = '<div data-lock-id="' . $aRow->accesslock_ID . '" class="tooltip delete_lock_entry" title="Delete Access Lock?" data-msg-success="Access Lock deleted" data-btn-confirm="Delete Access Lock" data-title="Delete Access Lock?" data-wait-msg="Deleting. Please wait." data-name="" title="Delete this Access Lock"><i class="wpcaptcha-icon wpcaptcha-trash"></i></div>';
+    
+            $row[] = '<div data-lock-id="' . $aRow->accesslock_ID . '" class="tooltip delete_lock_entry" title="Delete Access Lock?" data-msg-success="Access Lock deleted" data-btn-confirm="Delete Access Lock" data-title="Delete Access Lock?" data-wait-msg="Deleting. Please wait." data-name=""><i class="wpcaptcha-icon wpcaptcha-trash"></i></div>';
             $output['aaData'][] = $row;
-        } // foreach row
-
-        // json encoded output
+        }
+    
         @ob_end_clean();
         header('Cache-Control: no-cache, must-revalidate');
         header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
         echo json_encode($output);
         die();
     }
+    
 
     /**
      * Fetch activity logs and output JSON for datatables
      *
      * @return null
      */
-    static function get_activity_logs()
-    {
-        // phpcs:ignore db call warnings as we are using a custom table 
-        
+    static function get_activity_logs() {
         global $wpdb;
         check_ajax_referer('wpcaptcha_run_tool');
-
+    
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error(__('You are not allowed to run this action.', 'advanced-google-recaptcha'));
+        }
+    
         $options = WPCaptcha_Setup::get_options();
-
+    
         $aColumns = array('login_attempt_ID', 'login_attempt_date', 'failed_user', 'failed_pass', 'login_attempt_IP', 'reason');
-        $sIndexColumn = "login_attempt_ID";
-
-        // paging
+    
         $sLimit = '';
         if (isset($_GET['iDisplayStart']) && isset($_GET['iDisplayLength']) && $_GET['iDisplayLength'] != '-1') {
-            $sLimit = "LIMIT " . intval($_GET['iDisplayStart']) . ", " . intval($_GET['iDisplayLength']);
-        } // paging
-
-        // ordering
+            $sLimit = "LIMIT %d, %d";
+            $limit_offset = intval($_GET['iDisplayStart']);
+            $limit_count = intval($_GET['iDisplayLength']);
+        }
+    
         $sOrder = '';
+        $order_clauses = [];
         if (isset($_GET['iSortCol_0']) && isset($_GET['iSortingCols'])) {
-            $sOrder = "ORDER BY  ";
             for ($i = 0; $i < intval($_GET['iSortingCols']); $i++) {
-                $iSortCol = isset($_GET['iSortCol_' . $i])?intval($_GET['iSortCol_' . $i]):0;
-                $sSortDir = isset($_GET['sSortDir_' . $i])?sanitize_key($_GET['sSortDir_' . $i]):'asc';
-                if (isset($_GET['bSortable_' . $iSortCol]) && $_GET['bSortable_' . $iSortCol] == "true") {
-                    $sOrder .= $aColumns[$iSortCol] . " "
-                        . ($sSortDir == 'desc'?'desc':'asc') . ", ";
+                $iSortCol = isset($_GET['iSortCol_' . $i]) ? intval($_GET['iSortCol_' . $i]) : 0;
+                $sSortDir = isset($_GET['sSortDir_' . $i]) ? sanitize_key($_GET['sSortDir_' . $i]) : 'asc';
+    
+                if (isset($_GET['bSortable_' . $iSortCol]) && $_GET['bSortable_' . $iSortCol] === "true") {
+                    $column = $aColumns[$iSortCol];
+                    $dir = ($sSortDir === 'desc') ? 'DESC' : 'ASC';
+                    $order_clauses[] = "`$column` $dir";
                 }
             }
-
-            $sOrder = substr_replace($sOrder, '', -2);
-            if ($sOrder == "ORDER BY") {
-                $sOrder = '';
+    
+            if (!empty($order_clauses)) {
+                $sOrder = "ORDER BY " . implode(', ', $order_clauses);
             }
-        } // ordering
-
+        }
+    
         // filtering
         $sWhere = '';
-        if (isset($_GET['sSearch']) && $_GET['sSearch'] != '') {
-            $sWhere = "WHERE (";
-            for ($i = 0; $i < count($aColumns); $i++) {
-                $sWhere .= $aColumns[$i] . " LIKE '%" . sanitize_text_field(wp_unslash($_GET['sSearch'])) . "%' OR ";
+        $where_clauses = [];
+        $query_vars = [];
+    
+        if (!empty($_GET['sSearch'])) {
+            $search_term = '%' . $wpdb->esc_like(sanitize_text_field(wp_unslash($_GET['sSearch']))) . '%'; //sanitize_text_field is used to sanitize according to WordPress PCP
+            $sub_clauses = [];
+    
+            foreach ($aColumns as $col) {
+                $sub_clauses[] = "`$col` LIKE %s";
+                $query_vars[] = $search_term;
             }
-            $sWhere  = substr_replace($sWhere, '', -3);
-            $sWhere .= ')';
-        } // filtering
-
-        // individual column filtering
+    
+            $where_clauses[] = '(' . implode(' OR ', $sub_clauses) . ')';
+        }
+    
         for ($i = 0; $i < count($aColumns); $i++) {
-            if (isset($_GET['bSearchable_' . $i]) && $_GET['bSearchable_' . $i] == "true" && (!isset($_GET['sSearch_' . $i]) || $_GET['sSearch_' . $i] != '')) {
-                if ($sWhere == '') {
-                    $sWhere = "WHERE ";
-                } else {
-                    $sWhere .= " AND ";
-                }
-                $sWhere .= $aColumns[$i] . " LIKE '%" . sanitize_text_field(wp_unslash($_GET['sSearch_' . $i])) . "%' ";
+            if (isset($_GET['bSearchable_' . $i]) && $_GET['bSearchable_' . $i] === "true" && !empty($_GET['sSearch_' . $i])) {
+                $search_term = '%' . $wpdb->esc_like(sanitize_text_field(wp_unslash($_GET['sSearch_' . $i]))) . '%';
+                $where_clauses[] = "`" . $aColumns[$i] . "` LIKE %s";
+                $query_vars[] = $search_term;
             }
-        } // individual columns
-
+        }
+    
+        if (!empty($where_clauses)) {
+            $sWhere = "WHERE " . implode(' AND ', $where_clauses);
+        }
+    
         // build query
-        $wpdb->sQuery = "SELECT SQL_CALC_FOUND_ROWS " . str_replace(" , ", " ", implode(", ", $aColumns)) .
-            " FROM " . $wpdb->wpcatcha_login_fails . " $sWhere $sOrder $sLimit";
-
-        $rResult = $wpdb->get_results($wpdb->sQuery); // phpcs:ignore
-
-        // data set length after filtering
-        $wpdb->sQuery = "SELECT FOUND_ROWS()";
-        $iFilteredTotal = $wpdb->get_var($wpdb->sQuery); // phpcs:ignore
-
-        // total data set length
-        $wpdb->sQuery = "SELECT COUNT(" . $sIndexColumn . ") FROM " . $wpdb->wpcatcha_login_fails;
-        $iTotal = $wpdb->get_var($wpdb->sQuery); // phpcs:ignore
-
-        // construct output
+        $sql = "SELECT SQL_CALC_FOUND_ROWS " . implode(", ", $aColumns) .
+            " FROM " . $wpdb->wpcatcha_login_fails . " $sWhere $sOrder";
+    
+        if (!empty($sLimit)) {
+            $sql .= " " . $wpdb->prepare("LIMIT %d, %d", $limit_offset, $limit_count);//phpcs:ignore
+        }
+    
+        //phpcs:ignore because the query parts are dynamic based on the number of columns
+        if (!empty($query_vars)) {
+            $prepared_sql = $wpdb->prepare($sql, $query_vars);//phpcs:ignore
+        } else {
+            $prepared_sql = $sql;
+        }
+    
+        $rResult = $wpdb->get_results($prepared_sql); //phpcs:ignore
+    
+        // filtered count
+        $iFilteredTotal = $wpdb->get_var("SELECT FOUND_ROWS()");
+    
+        // total count
+        //phpcs: no need to prepare, $sIndexColumn
+        $iTotal = $wpdb->get_var("SELECT COUNT(`login_attempt_ID`) FROM {$wpdb->wpcatcha_login_fails}");
+    
+        // output formatting
         $output = array(
-            "sEcho" => isset($_GET['sEcho'])?intval($_GET['sEcho']):'',
+            "sEcho" => isset($_GET['sEcho']) ? intval($_GET['sEcho']) : '',
             "iTotalRecords" => $iTotal,
             "iTotalDisplayRecords" => $iFilteredTotal,
             "aaData" => array()
         );
-
+    
         foreach ($rResult as $aRow) {
             $row = array();
             $row['DT_RowId'] = $aRow->login_attempt_ID;
-
-            for ($i = 0; $i < count($aColumns); $i++) {
-                if ($aColumns[$i] == 'login_attempt_date') {
-                    $row[] = self::get_date_time(strtotime($aRow->{$aColumns[$i]}));
-                } elseif ($aColumns[$i] == 'failed_user') {
-                    $failed_login = '';
-                    $failed_login .= '<strong>User:</strong> ' . htmlspecialchars($aRow->failed_user) . '<br />';
+    
+            foreach ($aColumns as $col) {
+                if ($col == 'login_attempt_date') {
+                    $row[] = self::get_date_time(strtotime($aRow->$col));
+                } elseif ($col == 'failed_user') {
+                    $failed_login = '<strong>User:</strong> ' . htmlspecialchars($aRow->failed_user) . '<br />';
                     if ($options['log_passwords'] == 1) {
                         $failed_login .= '<strong>Pass:</strong> ' . htmlspecialchars($aRow->failed_pass) . '<br />';
                     }
                     $row[] = $failed_login;
-                } else if ($aColumns[$i] == 'login_attempt_IP') {
+                } elseif ($col == 'login_attempt_IP') {
                     $row[] = '<a href="#" class="open-pro-dialog pro-feature" data-pro-feature="fail-log-user-location">Available in PRO</a>';
                     $row[] = '<a href="#" class="open-pro-dialog pro-feature" data-pro-feature="fail-log-user-agent">Available in PRO</a>';
-                } elseif ($aColumns[$i] == 'reason') {
-                    $row[] = WPCaptcha_Functions::pretty_fail_errors($aRow->{$aColumns[$i]});
+                } elseif ($col == 'reason') {
+                    $row[] = WPCaptcha_Functions::pretty_fail_errors($aRow->$col);
                 }
             }
-            $row[] = '<div data-failed-id="' . $aRow->login_attempt_ID . '" class="tooltip delete_failed_entry" title="Delete failed login attempt log entry" data-msg-success="Failed login attempt log entry deleted" data-btn-confirm="Delete failed login attempt log entry" data-title="Delete failed login attempt log entry" data-wait-msg="Deleting. Please wait." data-name="" title="Delete this failed login attempt log entry"><i class="wpcaptcha-icon wpcaptcha-trash"></i></div>';
+    
+            $row[] = '<div data-failed-id="' . $aRow->login_attempt_ID . '" class="tooltip delete_failed_entry" title="Delete failed login attempt log entry" data-msg-success="Failed login attempt log entry deleted" data-btn-confirm="Delete failed login attempt log entry" data-title="Delete failed login attempt log entry" data-wait-msg="Deleting. Please wait." data-name=""><i class="wpcaptcha-icon wpcaptcha-trash"></i></div>';
+    
             $output['aaData'][] = $row;
-        } // foreach row
-
-        // json encoded output
+        }
+    
         @ob_end_clean();
         header('Cache-Control: no-cache, must-revalidate');
         header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');

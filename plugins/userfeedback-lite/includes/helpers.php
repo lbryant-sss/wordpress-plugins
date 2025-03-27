@@ -256,6 +256,18 @@ function userfeedback_screen_is_results()
 	return strpos($screen->id, 'userfeedback_results') !== false;
 }
 
+function userfeedback_screen_is_heatmap()
+{
+	$screen = get_current_screen();
+	return strpos($screen->id, 'userfeedback_heatmaps') !== false;
+}
+
+function userfeedback_heatmap_preview()
+{
+	$heatmaps_basename = userfeedback_get_plugin_basename_from_slug( 'userfeedback-heatmaps' );
+	return ( ! is_plugin_active( $heatmaps_basename ) );
+}
+
 function userfeedback_screen_is_settings()
 {
 	$screen = get_current_screen();

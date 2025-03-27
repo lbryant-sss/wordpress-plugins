@@ -173,6 +173,15 @@ function userfeedback_admin_styles() {
 		);
 	}
 
+	if ( userfeedback_screen_is_heatmap() ) {
+		wp_enqueue_style(
+			'userfeedback-vue-heatmap',
+			userfeedback_get_admin_asset_url( '/assets/vue/css/heatmap-admin.css' ),
+			array(),
+			userfeedback_get_asset_version()
+		);
+	}
+
 	if ( userfeedback_screen_is_settings() ) {
 		wp_enqueue_style(
 			'userfeedback-vue-settings',
@@ -317,6 +326,25 @@ function userfeedback_admin_scripts() {
 	// --------------------------------------------------
 
 	// --------------------------------------------------
+	// --------------- Heatmap scripts ------------------
+	if ( userfeedback_screen_is_heatmap() && userfeedback_heatmap_preview() ) {
+		wp_register_script(
+			'userfeedback-vue-heatmap-preview-script',
+			userfeedback_get_admin_asset_url( '/assets/vue/js/heatmap-admin.js' ),
+			apply_filters( 'userfeedback_heatmap_script_dependencies', array() ),
+			userfeedback_get_asset_version(),
+			true
+		);
+		wp_enqueue_script( 'userfeedback-vue-heatmap-preview-script' );
+		wp_localize_script(
+			'userfeedback-vue-heatmap-preview-script',
+			'userfeedback',
+			userfeedback_get_common_script_localization_object()
+		);
+	}
+	// --------------------------------------------------
+
+	// --------------------------------------------------
 	// -------------- Settings scripts ------------------
 	if ( userfeedback_screen_is_settings() ) {
 
@@ -395,6 +423,18 @@ function userfeedback_admin_scripts() {
 }
 
 add_action( 'admin_enqueue_scripts', 'userfeedback_admin_scripts', 99 );
+add_action( 'admin_head', 'userfeedback_admin_menu_open_new_tab_script' );
+
+function userfeedback_admin_menu_open_new_tab_script() 
+{
+    ?>
+    <script type="text/javascript">
+        jQuery(document).ready( function($) {   
+            $('#suggest_feature_menu').parent().attr('target','_blank');
+        });
+    </script>
+    <?php
+}
 
 // ----------------------------------------------------
 // --------------------- Helpers ----------------------

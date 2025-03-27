@@ -349,7 +349,8 @@ class WPCaptcha_Functions extends WPCaptcha
 
     static function process_lost_password_form($errors)
     {
-        if( !isset( $_POST['pass1'] ) &&  !isset( $_POST['user_login'] ) ){
+        //phpcs:no nonce is set in the WordPress reset pass form
+        if( !isset( $_POST['pass1'] ) &&  !isset( $_POST['user_login'] ) ){ //phpcs:ignore
             return $errors;
         }
         

@@ -8,8 +8,8 @@
 </div>
 <div class="aio_yellow_box">
 	<?php
-		$tutorial_link = '<a href="https://aiosplugin.com/how-to-use-cookie-based-brute-force-login-attack-prevention-feature/" target="_blank">' . __('tutorial', 'all-in-one-wp-security-and-firewall') . '</a>';
-		$info_msg = sprintf(__('To learn more about how to use this feature, please read the following %s.', 'all-in-one-wp-security-and-firewall'), $tutorial_link);
+		$tutorial_link = '<a href="https://teamupdraft.com/documentation/all-in-one-security/faqs/how-to-use-cookie-based-brute-force-login-attack-prevention-feature/?utm_source=aios-plugin&utm_medium=referral&utm_campaign=paac&utm_content=tutorial-on-brute-force-prevention&utm_creative_format=text" target="_blank">' . __('Read our tutorial on how to use the cookie-based brute force prevention feature', 'all-in-one-wp-security-and-firewall') . '</a>';
+		$info_msg = sprintf(__('%s.', 'all-in-one-wp-security-and-firewall'), $tutorial_link);
 		echo '<p>' . $info_msg . '</p>';
 	?>
 </div>
@@ -32,7 +32,7 @@
 		<form action="" id="aios-cookie-based-settings-form">
 			<div class="aio_orange_box">
 				<p>
-				<?php echo __('This feature can lock you out of admin if it doesn\'t work correctly on your site.', 'all-in-one-wp-security-and-firewall').' ' . sprintf(__('Before activating this feature you must read the following %s.', 'all-in-one-wp-security-and-firewall'), '<a href="https://aiosplugin.com/important-note-on-intermediate-and-advanced-features" target="_blank">'.__('message', 'all-in-one-wp-security-and-firewall').'</a>'); ?>
+				<?php echo __('This feature can lock you out of admin if it doesn\'t work correctly on your site.', 'all-in-one-wp-security-and-firewall').' ' . sprintf(__('Before activating this feature, please read the following %s.', 'all-in-one-wp-security-and-firewall'), '<a href="https://teamupdraft.com/documentation/all-in-one-security/faqs/important-note-on-intermediate-and-advanced-features/?utm_source=aios-plugin&utm_medium=referral&utm_campaign=paac&utm_content=you-must-read-this-to-activate-brute-force-login-prevention-feature&utm_creative_format=text" target="_blank">'.__('message', 'all-in-one-wp-security-and-firewall').'</a>'); ?>
 				</p>
 			</div>
 			<div id="cookie-test-result-div">

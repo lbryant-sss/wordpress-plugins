@@ -119,7 +119,7 @@ class AIOWPSecurity_Firewall_Menu extends AIOWPSecurity_Admin_Menu {
 			// firewall config is unavailable
 			?>
 				<div class="notice notice-error">
-					<p><strong><?php esc_html_e('All in One WP Security and Firewall', 'all-in-one-wp-security-and-firewall'); ?></strong></p>
+					<p><strong><?php esc_html_e('All-In-One Security', 'all-in-one-wp-security-and-firewall'); ?></strong></p>
 					<p><?php esc_html_e('We were unable to access the firewall\'s configuration file:', 'all-in-one-wp-security-and-firewall');?></p>
 					<pre style="max-width: 100%;background-color: #f0f0f0;border: #ccc solid 1px;padding: 10px;white-space: pre-wrap;"><?php echo esc_html(AIOWPSecurity_Utility_Firewall::get_firewall_rules_path() . 'settings.php'); ?></pre>
 					<p><?php esc_html_e('As a result, the firewall will be unavailable.', 'all-in-one-wp-security-and-firewall');?></p>

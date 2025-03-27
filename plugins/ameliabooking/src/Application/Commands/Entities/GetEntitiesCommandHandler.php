@@ -123,8 +123,6 @@ class GetEntitiesCommandHandler extends CommandHandler
 
         $resultData = [];
 
-
-
         /** Events */
         if (in_array(Entities::EVENTS, $params['types'], true)) {
             /** @var EventApplicationService $eventAS */

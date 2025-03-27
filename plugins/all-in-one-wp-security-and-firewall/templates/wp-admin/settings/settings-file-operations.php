@@ -2,8 +2,8 @@
 <h2><?php esc_html_e('Export or import your AIOS settings', 'all-in-one-wp-security-and-firewall'); ?></h2>
 <div class="aio_blue_box">
 	<?php
-	echo '<p>' . esc_html__('This section allows you to export or import your All In One WP Security & Firewall settings.', 'all-in-one-wp-security-and-firewall');
-	echo '<br />'.esc_html__('This can be handy if you wanted to save time by applying the settings from one site to another site.', 'all-in-one-wp-security-and-firewall').'
+	echo '<p>' . esc_html__('This section allows you to export or import your All-In-One Security settings.', 'all-in-one-wp-security-and-firewall');
+	echo '<br />' .esc_html__('This can be handy if you wanted to save time by applying the settings from one site to another site.', 'all-in-one-wp-security-and-firewall').'
 	<br />'.esc_html__('NOTE: Before importing, it is your responsibility to know what settings you are trying to import.', 'all-in-one-wp-security-and-firewall') . ' ' . esc_html__('Importing settings blindly can cause you to be locked out of your site.', 'all-in-one-wp-security-and-firewall').'
 	<br />'.esc_html__('For Example: If a settings item relies on the domain URL then it may not work correctly when imported into a site with a different domain.', 'all-in-one-wp-security-and-firewall').'
 	</p>';
@@ -15,7 +15,7 @@
 		<form action="" method="POST" id="aiowpsec-export-settings-form">
 			<table class="form-table">
 				<tr valign="top">
-					<span class="description"><?php echo esc_html__('To export your All In One WP Security & Firewall settings press the button below.', 'all-in-one-wp-security-and-firewall'); ?></span>
+					<span class="description"><?php echo esc_html__('To export your All-In-One Security settings press the button below.', 'all-in-one-wp-security-and-firewall'); ?></span>
 				</tr>
 			</table>
 			<input type="submit" name="aiowps_export_settings" value="<?php esc_html_e('Export AIOS settings', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary">
@@ -28,7 +28,7 @@
 		<form id="aiowps_restore_settings_form" action="" method="POST">
 			<table class="form-table">
 				<tr valign="top">
-					<span class="description"><?php echo esc_html__('Use this section to import your All In One WP Security & Firewall settings from a file.', 'all-in-one-wp-security-and-firewall'); ?></span>
+					<span class="description"><?php echo esc_html__('Use this section to import your All-In-One Security settings from a file.', 'all-in-one-wp-security-and-firewall'); ?></span>
 					<th scope="row">
 						<label for="aiowps_import_settings_file_button"><?php esc_html_e('Settings file to restore from', 'all-in-one-wp-security-and-firewall'); ?>:</label>
 					</th>

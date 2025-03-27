@@ -7,6 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 include_once 'abstract-class-woe-formatter-plain-format.php';
 
 if ( ! class_exists( 'Spreadsheet' ) ) {
+	if (version_compare(phpversion(), WOE_MIN_PHP_VERSION, '<')) {
+		/* translators: PHP version requred for Excel format */
+		echo esc_html(sprintf(__( 'PhpSpreadsheet requires PHP version %s or later.', 'woo-order-export-lite' ), WOE_MIN_PHP_VERSION));
+		die();
+	}
 	include_once dirname( __FILE__ ) . '/../vendor/autoload.php';
 }
 
@@ -32,7 +37,7 @@ class WOE_Formatter_Xls extends WOE_Formatter_Plain_Format {
 	private $money_format;
 	private $number_format;
 	private $format_number_fields_original;
-	
+
 	public $objPHPExcel, $last_row;
 
 	/**
@@ -94,8 +99,8 @@ class WOE_Formatter_Xls extends WOE_Formatter_Plain_Format {
 			$this->money_format  = apply_filters( 'woe_xls_money_format', NumberFormat::FORMAT_NUMBER_00 );
 			$this->number_format = apply_filters( 'woe_xls_number_format', NumberFormat::FORMAT_NUMBER );
 			// Excel will format!
-			$this->date_format_original = $this->date_format; // Excel view will use correct date format 
-			$this->date_format = "Y-m-d H:i:s"; //dates will be comverted to mysql format 
+			$this->date_format_original = $this->date_format; // Excel view will use correct date format
+			$this->date_format = "Y-m-d H:i:s"; //dates will be comverted to mysql format
 			$this->format_number_fields_original = $this->format_number_fields;
 			$this->format_number_fields          = false;
 
@@ -223,15 +228,15 @@ class WOE_Formatter_Xls extends WOE_Formatter_Plain_Format {
 			add_filter('woe_storage_sort_by_field', function () use ($settings) {
 				$settings['sort'] = str_replace("setup_field__plain", "setup_field_string_plain", $settings['sort']); //fix fields with undefined format
 				$field = preg_replace('/setup_field_(.+?)_/i', '', $settings['sort']);
-				$field = str_replace("plain_orders_", "", $field); //remove extra prefix 
+				$field = str_replace("plain_orders_", "", $field); //remove extra prefix
 				return [$field, $settings['sort_direction'], preg_match('/setup_field_(.+?)_/i', $settings['sort'], $matches) ? $matches[1] : 'string'];
 			});
 		}
-		
+
 		if ( $this->mode === 'preview' ) {
 			if($this->summary_report_products || $this->summary_report_customers) {
 				$this->rows = $this->storage->processDataForPreview($this->rows);
-			}	
+			}
 			$this->rows = apply_filters( "woe_{$this->format}_preview_rows", $this->rows );
 			if ( has_filter( 'woe_storage_sort_by_field') )
 				$this->sort_by_custom_field();
@@ -277,7 +282,7 @@ class WOE_Formatter_Xls extends WOE_Formatter_Plain_Format {
 					fwrite( $this->handle, '<tr><td>' . join( '</td><td>', $row ) . "</td><tr>\n" );
 				}
 
-				// for non-summary modes 
+				// for non-summary modes
 				if( !$this->summary_report_products AND !$this->summary_report_customers) {
 					foreach ( $row as $column => &$cell ) {
 						foreach($this->settings['global_job_settings']['order_fields'] as $order_field) {
@@ -290,8 +295,8 @@ class WOE_Formatter_Xls extends WOE_Formatter_Plain_Format {
 							}
 						}
 					}
-				}	
-				
+				}
+
 			}
 
                         if (!empty( array_keys($summary_row) ) && array_filter($summary_row, function ($row) { return $row !== ''; })) {
@@ -313,13 +318,13 @@ class WOE_Formatter_Xls extends WOE_Formatter_Plain_Format {
 			if ( has_filter( 'woe_storage_sort_by_field') ) {
 				if( $this->summary_report_products || $this->summary_report_customers ) {
 					$this->storage->sortRowsByColumn( apply_filters( 'woe_storage_sort_by_field',["plain_products_name", "asc", "string"]) );
-				} else { 
+				} else {
 					// plain export
 					$this->storage->loadFull();
 					$this->storage->sortRowsByColumn( apply_filters( 'woe_storage_sort_by_field',["plain_products_name", "asc", "string"]) );
 					$this->storage->forceSave();
 					$this->storage->close();
-				}	
+				}
 			}
 
 			//more memory for XLS?
@@ -491,7 +496,7 @@ class WOE_Formatter_Xls extends WOE_Formatter_Plain_Format {
 						$path = $value;
 					} else {
 						$path = trailingslashit(get_temp_dir()) . md5( $value ).".jpg"; //filename with non-ascii chars
-						if( file_exists($value) ) 
+						if( file_exists($value) )
 							copy($value,$path);
 					}
 

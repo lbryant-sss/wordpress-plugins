@@ -20,7 +20,7 @@ if (!class_exists('UserFeedback_Base')) {
 		 * @access public
 		 * @var string $version Plugin version
 		 */
-		public $version = '1.4.0';
+		public $version = '1.5.0';
 
 		/**
 		 * Plugin file.
@@ -168,7 +168,7 @@ if (!class_exists('UserFeedback_Base')) {
 
 				// This does the version to version background upgrade routines and initial install
 				$uf_version = get_option('userfeedback_current_version', '0.0.0');
-				if (version_compare($uf_version, '1.2.0', '<')) {
+				if (version_compare($uf_version, '1.5.0', '<')) {
 					add_action('wp_loaded', array(self::$instance, 'install_and_upgrade'));
 				}
 
@@ -177,14 +177,8 @@ if (!class_exists('UserFeedback_Base')) {
 					add_action('plugins_loaded', array(self::$instance, 'fix_db_timestamp_column'), 15);
 				}
 
-				if (is_admin()) {
-					// new AM_Deactivation_Survey('UserFeedback', self::$instance->plugin_slug);
-				}
-
 				// Load the plugin textdomain.
 				add_action('plugins_loaded', array(self::$instance, 'load_plugin_textdomain'), 15);
-
-				
 
 				// Load admin only components.
 				if (is_admin() || (defined('DOING_CRON') && DOING_CRON)) {
@@ -335,6 +329,8 @@ if (!class_exists('UserFeedback_Base')) {
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/db/class-userfeedback-db.php';
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/db/class-userfeedback-survey.php';
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/db/class-userfeedback-response.php';
+			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/db/class-userfeedback-heatmap.php';
+			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/db/class-userfeedback-heatmap-recording.php';
 
 			// Survey templates helper
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/survey-templates/class-userfeedback-survey-templates.php';
@@ -377,7 +373,6 @@ if (!class_exists('UserFeedback_Base')) {
 			if (is_admin() || (defined('DOING_CRON') && DOING_CRON)) {
 
 				// Lite and Pro files
-				require_once USERFEEDBACK_PLUGIN_DIR . 'assets/lib/pandora/class-am-deactivation-survey.php';
 				require_once USERFEEDBACK_PLUGIN_DIR . 'includes/admin/class-userfeedback-admin-notice.php';
 				require_once USERFEEDBACK_PLUGIN_DIR . 'includes/admin/admin.php';
 				require_once USERFEEDBACK_PLUGIN_DIR . 'includes/admin/ajax.php';
@@ -396,6 +391,19 @@ if (!class_exists('UserFeedback_Base')) {
 
 			if (is_admin()) {
 				require_once USERFEEDBACK_PLUGIN_DIR . 'includes/admin/class-userfeedback-dashboard-widget.php';
+
+				require_once USERFEEDBACK_PLUGIN_DIR . 'includes/admin/class-userfeedback-am-deactivation-survey.php';
+				add_action('admin_menu', function () {
+
+					new \UserFeedback_AM_Deactivation_Survey(
+						userfeedback_is_pro_version() ? 'UserFeedback Premium' : 'UserFeedback Lite',
+						userfeedback_is_pro_version() ? 'userfeedback-premium' : 'userfeedback-lite',
+						apply_filters(
+							'userfeedback_deactivation_survey_url',
+							'https://userfeedback.com/wp-json/am-deactivate-survey/v1/deactivation-data'
+						)
+					);
+				}, 100);
 			}
 
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/frontend/class-userfeedback-frontend.php';
@@ -407,7 +415,7 @@ if (!class_exists('UserFeedback_Base')) {
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/admin/class-userfeedback-logic-type.php';
 
 			// Review
-			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/admin/class-userfeedback-review.php';			
+			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/admin/class-userfeedback-review.php';
 			// Auto-updates
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/admin/licensing/autoupdate.php';
 			// Metaboxes

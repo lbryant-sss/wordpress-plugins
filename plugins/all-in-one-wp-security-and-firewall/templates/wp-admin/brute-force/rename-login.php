@@ -27,7 +27,7 @@ $aio_wp_security->include_template('wp-admin/brute-force/partials/rename-login-n
 		<form action="" id="aios-rename-login-page-form">
 			<div class="aio_orange_box">
 				<?php
-				echo '<p>' . __('This feature can lock you out of admin if it doesn\'t work correctly on your site.', 'all-in-one-wp-security-and-firewall') . ' '. sprintf(__('Before activating this feature you must read the following %s.', 'all-in-one-wp-security-and-firewall'), '<a href="https://aiosplugin.com/important-note-on-intermediate-and-advanced-features" target="_blank">'.__('message', 'all-in-one-wp-security-and-firewall').'</a>') . '</p>';
+				echo '<p>' . __('This feature can lock you out of admin if it doesn\'t work correctly on your site.', 'all-in-one-wp-security-and-firewall') . ' '. sprintf(__('Before activating this feature, you must read the following %s.', 'all-in-one-wp-security-and-firewall'), '<a href="https://teamupdraft.com/documentation/all-in-one-security/faqs/important-note-on-intermediate-and-advanced-features/?utm_source=aios-plugin&utm_medium=referral&utm_campaign=paac&utm_content=you-must-read-this-to-activate-rename-login-feature&utm_creative_format=text" target="_blank">'.__('message', 'all-in-one-wp-security-and-firewall').'</a>') . '</p>';
 				echo '<p>' . __("NOTE: If you are hosting your site on WPEngine or a provider which performs server caching, you will need to ask the host support people to NOT cache your renamed login page.", 'all-in-one-wp-security-and-firewall') . '</p>';
 				?>
 			</div>

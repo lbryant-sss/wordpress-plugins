@@ -12,7 +12,7 @@
 		<form action="" method="POST" id="aios-enable-salt-postfix-form">
 			<div class="aio_blue_box">
 				<?php
-				echo '<p>'.esc_html__('WordPress "salts" are secret phrases which are combined with user passwords when those passwords are stored, with the end result that they become much harder for an attacker to crack even if he managed to steal the database of your website.', 'all-in-one-wp-security-and-firewall').' <a href="https://aiosplugin.com/wordpress-salts-adding-extra-security/" target="_blank">'.esc_html__('For more information about WordPress salts, follow this link.', 'all-in-one-wp-security-and-firewall').'</a></p>';
+				echo '<p>'.esc_html__('WordPress "salts" are secret phrases which are combined with user passwords when those passwords are stored, with the end result that they become much harder for an attacker to crack even if he managed to steal the database of your website.', 'all-in-one-wp-security-and-firewall').' <a href="https://teamupdraft.com/blog/wordpress-salts-security-added-to-aios-free-and-premium/?utm_source=aios-plugin&utm_medium=referral&utm_campaign=paac&utm_content=salts-security-info&utm_creative_format=text" target="_blank">'.esc_html__('Learn more about WordPress Salts.', 'all-in-one-wp-security-and-firewall').'</a></p>';
 				?>
 			</div>
 			<div class="aio_orange_box">

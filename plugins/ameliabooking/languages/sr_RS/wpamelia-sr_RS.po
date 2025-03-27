@@ -311,27 +311,23 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:87
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:120
-#, fuzzy
 msgid "Available from Starter license"
-msgstr "Dostupne Slike"
+msgstr "Dostupno od Starter licence"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:88
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:121
-#, fuzzy
 msgid "Available from Standard license"
-msgstr "Dostupne Slike"
+msgstr "Dostupno od Standard licence"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:89
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:122
-#, fuzzy
 msgid "Available from Pro license"
-msgstr "Dostupne Slike"
+msgstr "Dostupno od Pro licence"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:90
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:123
-#, fuzzy
 msgid "Available in Elite licence"
-msgstr "Dostupno u paketu"
+msgstr "Dostupno od Elite licence"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:91
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:124

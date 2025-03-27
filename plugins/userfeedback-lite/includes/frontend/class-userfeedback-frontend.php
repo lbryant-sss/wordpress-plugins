@@ -23,7 +23,24 @@ class UserFeedback_Frontend
 
 		add_action('template_redirect', array($this, 'enqueue_styles_and_scripts_for_surveys'), 20);
 		add_action('rest_api_init', array($this, 'register_frontend_routes'));
+		add_filter( 'userfeedback_detect_page_id', array( $this, 'userfeedback_detect_page_id' ) );
+	}
 
+	public function userfeedback_detect_page_id()
+	{
+		$page_id = get_queried_object_id();
+
+		if ( empty( $page_id ) ) {
+			if (
+				function_exists( 'is_shop' ) &&
+				is_shop() &&
+				function_exists( 'wc_get_page_id' )
+			) {
+				$page_id = wc_get_page_id( 'shop' );
+			}
+		}
+
+		return $page_id;
 	}
 
 	/**
@@ -377,6 +394,7 @@ class UserFeedback_Frontend
 			}
 		}
 
+		$this->register_chunc_scripts();
 		/*
 		 * If there are no Surveys available, we don't enqueue the scripts
 		 */
@@ -765,13 +783,7 @@ class UserFeedback_Frontend
 		);
 	}
 
-	/**
-	 * Load frontend scripts
-	 *
-	 * @return void
-	 */
-	public function enqueue_base_frontend_scripts()
-	{
+	private function register_chunc_scripts() {
 		wp_register_script(
 			'userfeedback-frontend-vendors',
 			$this->get_frontend_asset_url('/assets/vue/js/chunk-vendors.js'),
@@ -779,7 +791,6 @@ class UserFeedback_Frontend
 			userfeedback_get_asset_version(),
 			true
 		);
-		wp_enqueue_script('userfeedback-frontend-vendors');
 
 		wp_register_script(
 			'userfeedback-frontend-common',
@@ -788,7 +799,6 @@ class UserFeedback_Frontend
 			userfeedback_get_asset_version(),
 			true
 		);
-		wp_enqueue_script('userfeedback-frontend-common');
 
 		wp_localize_script(
 			'userfeedback-frontend-common',
@@ -796,10 +806,35 @@ class UserFeedback_Frontend
 			array()
 		);
 
+		add_filter( 'script_loader_tag', function ( $tag, $handle ) {
+			if (
+				in_array(
+					$handle, 
+					array(
+						'userfeedback-frontend-vendors',
+						'userfeedback-frontend-common'
+					),
+					true
+				)
+			) {
+				return str_replace( ' src', ' defer src', $tag );
+			}
+		
+			return $tag;
+		}, 10, 2 );
+	}
+
+	/**
+	 * Load frontend scripts
+	 *
+	 * @return void
+	 */
+	public function enqueue_base_frontend_scripts()
+	{
 		wp_register_script(
 			'userfeedback-frontend-widget',
 			$this->get_frontend_asset_url('/assets/vue/js/frontend.js'),
-			apply_filters('userfeedback_frontend_script_dependencies', array()),
+			apply_filters('userfeedback_frontend_script_dependencies', array( 'userfeedback-frontend-vendors', 'userfeedback-frontend-common' )),
 			userfeedback_get_asset_version(),
 			true
 		);
@@ -810,8 +845,6 @@ class UserFeedback_Frontend
 				in_array(
 					$handle, 
 					array(
-						'userfeedback-frontend-vendors',
-						'userfeedback-frontend-common',
 						'userfeedback-frontend-widget'
 					),
 					true

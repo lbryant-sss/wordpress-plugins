@@ -8,7 +8,7 @@ Author: Jeff Starr
 Author URI: https://plugin-planet.com/
 Contributors: specialk, aldolat, WpBlogHost, jameswilkes, juliobox, lernerconsult
 Donate link: https://monzillamedia.com/donate.html
-Requires at least: 5.6
+Requires at least: 4.7
 Tested up to: 6.8
 Stable tag: 20250324
 Version:    20250324

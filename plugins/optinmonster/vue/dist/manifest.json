@@ -6,8 +6,8 @@
     "campaign-edit.js": "/js/campaign-edit.5d7e00e8.js",
     "campaigns.css": "/css/campaigns.e3485e0d.css",
     "campaigns.js": "/js/campaigns.8a3c9bb9.js",
-    "common.css": "/css/common.37196342.css",
-    "common.js": "/wp-om-app-b0feee82.js",
+    "common.css": "/css/common.1c72c470.css",
+    "common.js": "/wp-om-app-ed884af7.js",
     "connect.js": "/js/connect.1e32bc92.js",
     "dashboard.css": "/css/dashboard.caa48cd8.css",
     "dashboard.js": "/js/dashboard.6b6db9c1.js",
@@ -82,6 +82,7 @@
     "img/rocket.svg": "/img/rocket.7083a484.svg",
     "img/scheduled-blue.svg": "/img/scheduled-blue.6d20a04d.svg",
     "img/scheduled.svg": "/img/scheduled.7fba0e7f.svg",
+    "img/screenshot-fallback.svg": "/img/screenshot-fallback.6002babb.svg",
     "img/search.svg": "/img/search.f816f534.svg",
     "img/slide-icon.svg": "/img/slide-icon.691dc3b1.svg",
     "img/split.svg": "/img/split.3715982c.svg",
@@ -126,6 +127,6 @@
     "templates.js": "/js/templates.08e9af2c.js",
     "university.css": "/css/university.32c4cb23.css",
     "university.js": "/js/university.4994188f.js",
-    "wp-om-app-b0feee82.js.map": "/wp-om-app-b0feee82.js.map",
-    "wp-om-app-b732e243.js.map": "/wp-om-app-b732e243.js.map"
+    "wp-om-app-b732e243.js.map": "/wp-om-app-b732e243.js.map",
+    "wp-om-app-ed884af7.js.map": "/wp-om-app-ed884af7.js.map"
 }

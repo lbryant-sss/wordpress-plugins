@@ -769,9 +769,7 @@ abstract class UserFeedback_DB {
 
 		$sql = "{$this->sql()} LIMIT 1";
 
-		$raw_item = $wpdb->get_row(
-			$wpdb->prepare( $sql )
-		);
+		$raw_item = $wpdb->get_row( $sql );
 
 		return $raw_item ? $this->process_item( $raw_item ) : null;
 	}

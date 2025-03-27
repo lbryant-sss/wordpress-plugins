@@ -56,6 +56,12 @@ abstract class Base implements Route_Interface {
 
 	public function handle_response( $response ) {
 
+		if ( null === $response ) {
+			return rest_ensure_response(
+				array()
+			);
+		}
+
 		if ( isset( $response['code'], $response['message'] ) ) {
 			return rest_ensure_response(
 				self::get_error(

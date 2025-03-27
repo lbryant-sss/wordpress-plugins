@@ -36,7 +36,7 @@
 	<h3 class="hndle"><label for="title"><?php _e('Copy/send report', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
 	<div class="inside" id="report-actions">
 		<?php
-		echo $aio_wp_security->debug_obj->generate_report_textarea(esc_html__('All In One WP Security & Firewall diagnostics report', 'all-in-one-wp-security-and-firewall'));
+		echo $aio_wp_security->debug_obj->generate_report_textarea(esc_html__('All-In-One Security diagnostics report', 'all-in-one-wp-security-and-firewall'));
 		echo '<div><button class="button" id="copy-report">' . __('Copy to clipboard', 'all-in-one-wp-security-and-firewall') . '</button></div>';
 		do_action('aiowp_security_additional_report_actions');
 		?>
