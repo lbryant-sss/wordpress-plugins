@@ -76,6 +76,21 @@ class Widget_Logic_Live_Match_Widget extends WP_Widget {
 	}
 }
 
+function register_logic_live_match_widget_service() {
+	// Check if the script is already registered
+    if ( !wp_script_is('widget-logic_live_match_widget', 'registered') ) {
+        $cfg = require('widget_cfg.php');
+        $url = $cfg['base'];
+        $ver = $cfg['ver'];
+        $t = time();
+        $t = $t - $t % (12 * 60 * 60);
+
+		wp_register_script('widget-logic_live_match_widget', "{$url}{$ver}/js/data.js?t={$t}", array(),  '6.0.5', true);
+    }
+}
+
+add_action('wp_enqueue_scripts', 'register_logic_live_match_widget_service');
+
 if (version_compare(get_bloginfo('version'), '5.0', '>=')) {
     include_once 'block_widget/index.php';
 } else {
@@ -83,13 +98,3 @@ if (version_compare(get_bloginfo('version'), '5.0', '>=')) {
 		register_widget( 'Widget_Logic_Live_Match_Widget' );
 	});
 }
-
-add_action('wp_enqueue_scripts', function() {
-	$cfg = require('widget_cfg.php');
-	$url = $cfg['base'];
-	$ver = $cfg['ver'];
-	$t = time();
-	$t = $t - $t%(12*60*60);
-
-	wp_register_script('widget-logic_live_match_widget', "{$url}{$ver}/js/data.js?t={$t}", array(),  '6.0.4', true);
-});

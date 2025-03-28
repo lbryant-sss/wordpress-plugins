@@ -1,3 +1,6 @@
+= Version 3.0.8 =
+- Update plugin description
+
 = Version 3.0.7 =
 - Support WordPress 6.7.2
 

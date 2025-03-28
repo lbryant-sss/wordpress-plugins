@@ -20,7 +20,7 @@ if (!class_exists('UserFeedback_Base')) {
 		 * @access public
 		 * @var string $version Plugin version
 		 */
-		public $version = '1.5.0';
+		public $version = '1.5.1';
 
 		/**
 		 * Plugin file.
@@ -396,12 +396,12 @@ if (!class_exists('UserFeedback_Base')) {
 				add_action('admin_menu', function () {
 
 					new \UserFeedback_AM_Deactivation_Survey(
-						userfeedback_is_pro_version() ? 'UserFeedback Premium' : 'UserFeedback Lite',
-						userfeedback_is_pro_version() ? 'userfeedback-premium' : 'userfeedback-lite',
 						apply_filters(
 							'userfeedback_deactivation_survey_url',
 							'https://userfeedback.com/wp-json/am-deactivate-survey/v1/deactivation-data'
-						)
+						),
+						userfeedback_is_pro_version() ? 'UserFeedback Premium' : 'UserFeedback Lite',
+						userfeedback_is_pro_version() ? 'userfeedback-premium' : 'userfeedback-lite'
 					);
 				}, 100);
 			}

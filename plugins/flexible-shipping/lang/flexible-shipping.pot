@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Flexible Shipping plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flexible Shipping 5.3.5\n"
+"Project-Id-Version: Flexible Shipping 6.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-shipping\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-18T15:53:20+00:00\n"
+"POT-Creation-Date: 2025-03-27T14:36:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: flexible-shipping\n"
@@ -331,8 +331,6 @@ msgstr ""
 
 #: classes/table-rate/views/html-shipping-method-settings.php:110
 #: classes/table-rate/views/html-shipping-method-settings.php:113
-#: assets-src/rules-settings/js/components/rules-settings.js:445
-#: assets/js/rules-settings.js:101
 msgid "Import"
 msgstr ""
 
@@ -1257,6 +1255,8 @@ msgid "%1$s%2$s%3$s shipping method duplication error. Please try again later."
 msgstr ""
 
 #: src/WPDesk/FS/TableRate/ShippingMethod/Duplicate/DuplicateScript.php:68
+#: assets-src/rules-settings/js/components/rules-settings.js:480
+#: assets/js/rules-settings.js:101
 msgid "Duplicate"
 msgstr ""
 
@@ -1626,13 +1626,13 @@ msgid "Only .jpg, .png, .jpeg, .gif files are supported."
 msgstr ""
 
 #: vendor_prefixed/octolize/wp-betterdocs-beacon/src/BeaconOptions.php:30
-#: assets-src/rules-settings/js/components/rules-settings.js:476
+#: assets-src/rules-settings/js/components/rules-settings.js:548
 #: assets/js/rules-settings.js:101
 msgid "Sending"
 msgstr ""
 
 #: vendor_prefixed/octolize/wp-betterdocs-beacon/src/BeaconOptions.php:30
-#: assets-src/rules-settings/js/components/rules-settings.js:476
+#: assets-src/rules-settings/js/components/rules-settings.js:548
 #: assets/js/rules-settings.js:101
 msgid "Send"
 msgstr ""
@@ -2632,98 +2632,135 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:313
+#: assets-src/rules-settings/js/components/rules-settings.js:336
+#: assets/js/rules-settings.js:101
+msgid "Invalid rules table config! JSON parse failed with message: %s"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:337
+#: assets-src/rules-settings/js/components/rules-settings.js:351
+#: assets/js/rules-settings.js:101
+msgid "Invalid rules table config!"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:359
 #: assets/js/rules-settings.js:101
 msgid "Rules table successfully pasted."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:315
-#: assets/js/rules-settings.js:101
-msgid "Invalid rules table config! Paste failed."
-msgstr ""
-
-#: assets-src/rules-settings/js/components/rules-settings.js:331
-#: assets/js/rules-settings.js:101
-msgid "Invalid rules table config! Import failed."
-msgstr ""
-
-#: assets-src/rules-settings/js/components/rules-settings.js:337
+#: assets-src/rules-settings/js/components/rules-settings.js:368
 #: assets/js/rules-settings.js:101
 msgid "Rules table successfully imported."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:386
+#: assets-src/rules-settings/js/components/rules-settings.js:415
 #: assets/js/rules-settings.js:101
 msgid "Conditions"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:387
+#: assets-src/rules-settings/js/components/rules-settings.js:416
 #: assets/js/rules-settings.js:101
 msgid "Costs"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:389
+#: assets-src/rules-settings/js/components/rules-settings.js:418
 #: assets/js/rules-settings.js:101
 msgid "Special action"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:413
+#: assets-src/rules-settings/js/components/rules-settings.js:442
 #: assets/js/rules-settings.js:101
-msgid "Add the first rule or use one of the ready-made scenarios"
+msgid "You can"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:422
+#: assets-src/rules-settings/js/components/rules-settings.js:445
+#: assets/js/rules-settings.js:101
+msgid "save time with AI ✦"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:445
+#: assets-src/rules-settings/js/components/rules-settings.js:449
+#: assets/js/rules-settings.js:101
+msgid "or"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:448
+#: assets/js/rules-settings.js:101
+msgid "add the first rule"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:449
+#: assets/js/rules-settings.js:101
+msgid "use one of the ready-made scenarios"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:458
 #: assets/js/rules-settings.js:101
 msgid "Add rule"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:424
+#: assets-src/rules-settings/js/components/rules-settings.js:464
 #: assets/js/rules-settings.js:101
-msgid "Duplicate selected rules"
+msgid "Selected rules:"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:426
+#: assets-src/rules-settings/js/components/rules-settings.js:472
 #: assets/js/rules-settings.js:101
-msgid "Delete selected rules"
+msgid "Delete"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:428
+#: assets-src/rules-settings/js/components/rules-settings.js:491
+#: assets/js/rules-settings.js:101
+msgid "Rules table"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:496
+#: assets/js/rules-settings.js:101
+msgid "Paste JSON from clipboard"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:506
+#: assets/js/rules-settings.js:101
+msgid "Import JSON file"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:512
+#: assets/js/rules-settings.js:101
+msgid "Save JSON file"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:516
 #: assets/js/rules-settings.js:101
 msgid "Use ready-made scenarios"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:438
+#: assets-src/rules-settings/js/components/rules-settings.js:525
 #: assets/js/rules-settings.js:101
-msgid "Paste"
+msgid "Save time with AI ✦"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:453
-#: assets/js/rules-settings.js:101
-msgid "Export"
-msgstr ""
-
-#: assets-src/rules-settings/js/components/rules-settings.js:465
+#: assets-src/rules-settings/js/components/rules-settings.js:539
 #: assets/js/rules-settings.js:101
 msgid "AI Prompt"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:501
-#: assets-src/rules-settings/js/components/rules-settings.js:508
+#: assets-src/rules-settings/js/components/rules-settings.js:573
+#: assets-src/rules-settings/js/components/rules-settings.js:580
 #: assets/js/rules-settings.js:101
 msgid "PRO Features"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:503
+#: assets-src/rules-settings/js/components/rules-settings.js:575
 #: assets/js/rules-settings.js:101
 msgid "Tick this checkbox to display the features and shipping cost calculation conditions coming with the plugin's PRO version."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:513
+#: assets-src/rules-settings/js/components/rules-settings.js:585
 #: assets/js/rules-settings.js:101
 msgid "Show the options available in the PRO version."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:517
+#: assets-src/rules-settings/js/components/rules-settings.js:589
 #: assets/js/rules-settings.js:101
 msgid "Learn more about PRO version →"
 msgstr ""
@@ -2736,6 +2773,26 @@ msgstr ""
 #: assets-src/rules-settings/js/components/single-condition.js:247
 #: assets/js/rules-settings.js:101
 msgid "When"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/validate_rules_table_config.js:15
+#: assets/js/rules-settings.js:101
+msgid "Rules table configuration is missing."
+msgstr ""
+
+#: assets-src/rules-settings/js/components/validate_rules_table_config.js:19
+#: assets/js/rules-settings.js:101
+msgid "Invalid conditions in rule."
+msgstr ""
+
+#: assets-src/rules-settings/js/components/validate_rules_table_config.js:28
+#: assets/js/rules-settings.js:101
+msgid "Additional costs are available only in the Flexible Shipping PRO plugin!"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/validate_rules_table_config.js:32
+#: assets/js/rules-settings.js:101
+msgid "Special actions are available only in the Flexible Shipping PRO plugin!"
 msgstr ""
 
 #: assets-src/blocks/free-shipping-notice-block-integration/block.json

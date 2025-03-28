@@ -3,7 +3,7 @@ Contributors: timstrifler, devjenndivilife, strackerphil-1
 Tags: popup, marketing, divi
 Requires at least: 4.0.0
 Tested up to: 6.7.2
-Stable tag: 3.0.7
+Stable tag: 3.0.8
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -88,6 +88,10 @@ or
 
 == Frequently Asked Questions ==
 
+= How do I use Popups for Divi to create a popup? =
+
+https://player.vimeo.com/video/1070058157?app_id=58479
+
 = How much performance does Popups for Divi need? =
 
 Actually none! We designed it with maximum page performance in mind. Our tests did show literally no change in page loading speed.
@@ -170,6 +174,9 @@ When you need additional features, then please have a look at our the Premium pl
 5. Our free email course walks you through every aspect of the plugin - from the basics to advanced use-cases and techniques.
 
 == Changelog ==
+
+= Version 3.0.8 =
+- Update plugin description
 
 = Version 3.0.7 =
 - Support WordPress 6.7.2

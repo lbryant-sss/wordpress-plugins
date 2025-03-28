@@ -118,6 +118,9 @@ class RulesSettingsField {
 			'preconfigured_scenarios' => $preconfigured_scenarios,
 			'is_pro_activated'        => $is_pro_activated,
 			'pro_features_data'       => $pro_features_data,
+			'paste_available'         => true,
+			'ai_button_available'     => true,
+			'ai_button_url'           => 'https://octol.io/fs-rules-table-ai',
 		];
 
 		$rules_table_settings = apply_filters( 'flexible-shipping/rules-table/settings', $rules_table_settings, $this->shipping_method_settings );

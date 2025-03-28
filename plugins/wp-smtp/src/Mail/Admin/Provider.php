@@ -59,7 +59,6 @@ class Provider extends Service_Provider {
 		add_action( 'admin_init', $this->container->callback( SettingsScreen::class, 'register_settings_screen' ) );
 		add_action( 'rest_api_init', $this->container->callback( SettingsScreen::class, 'register_settings_screen' ) );
 
-		add_action( 'admin_notices', $this->container->callback( Notice::class, 'display_notice_new_ownership' ) );
 		add_action( 'admin_notices', $this->container->callback( Notice::class, 'display_notice_migration_error' ) );
 		add_action( 'admin_notices', $this->container->callback( Notice::class, 'maybe_display_notice_200_211_error' ) );
 		add_action( 'wp_ajax_dismiss_solid_mail_notice', $this->container->callback( Notice::class, 'dismiss_notice' ) );

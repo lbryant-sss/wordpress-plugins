@@ -4,7 +4,7 @@ Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
 Tags: analytics,feedback,surveys,user feedback, website feedback,insights
 Requires at least: 5.9.0
 Tested Up To: 6.7.1
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 Requires PHP: 5.6
 License: GPL v3
 
@@ -114,6 +114,9 @@ For documentation, tutorials, FAQ and videos check out: [UserFeedback Documentat
 4. Want more features? <a href=href="https://www.userFeedback.com/?utm_source=wprepo&utm_medium=link&utm_campaign=lite" rel="friend" title="UserFeedback">Purchase UserFeedback Pro</a>!
 
 == Changelog ==
+= 1.5.1: March 27, 2025 =
+- Fixed: Minor updates and bug fixes
+
 = 1.5.0: March 26, 2025 =
 - New: Heatmaps! See exactly where your visitors are clicking and engaging
 - Fixed: Minor updates and bug fixes

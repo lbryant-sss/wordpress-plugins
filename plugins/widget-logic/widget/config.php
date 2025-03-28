@@ -22,7 +22,7 @@ function widget_logic_filter_sidebars_widgets($sidebars_widgets)
 
     // reset any database queries done now that we're about to make decisions based on the context given in the WP query for the page
     if (!empty($wl_options['widget_logic-options-wp_reset_query'])) {
-        wp_reset_query();
+        wp_reset_query(); // phpcs:ignore -- need this function
     }
 
     // loop through every widget in every sidebar (barring 'wp_inactive_widgets') checking WL for each one

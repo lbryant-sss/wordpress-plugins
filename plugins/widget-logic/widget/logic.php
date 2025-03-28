@@ -19,7 +19,7 @@ function widget_logic_check_logic($logic)
         $logic = 'return (' . html_entity_decode($logic, ENT_COMPAT | ENT_HTML401 | ENT_QUOTES) . ');';
     }
 
-    set_error_handler('widget_logic_error_handler');
+    set_error_handler('widget_logic_error_handler'); // phpcs:ignore -- we have mode for debugging for admins
 
     try {
         $show_widget = eval ($logic); // @codingStandardsIgnoreLine - widget can't work without eval

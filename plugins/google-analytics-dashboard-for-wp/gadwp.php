@@ -5,7 +5,7 @@
  * Plugin URI: https://exactmetrics.com
  * Description: Displays Google Analytics Reports and Real-Time Statistics in your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: ExactMetrics
- * Version: 8.4.0
+ * Version: 8.4.1
  * Requires at least: 5.6.0
  * Requires PHP: 7.2
  * Author URI: https://exactmetrics.com/lite/?utm_source=liteplugin&utm_medium=pluginheader&utm_campaign=authoruri&utm_content=7%2E0%2E0
@@ -46,7 +46,7 @@ final class ExactMetrics_Lite {
 	 * @access public
 	 * @var string $version Plugin version.
 	 */
-	public $version = '8.4.0';
+	public $version = '8.4.1';
 
 	/**
 	 * Plugin file.
@@ -514,12 +514,12 @@ final class ExactMetrics_Lite {
 			add_action('admin_menu', function () {
 
 				new \ExactMetrics_AM_Deactivation_Survey(
-					'ExactMetrics Lite',
-					'google-analytics-dashboard-for-wp',
 					apply_filters(
 						'exactmetrics_deactivation_survey_url',
 						'https://exactmetrics.com/wp-json/am-deactivate-survey/v1/deactivation-data'
-					)
+					),
+					'ExactMetrics Lite',
+					'google-analytics-dashboard-for-wp'
 				);
 			}, 100);
 		}

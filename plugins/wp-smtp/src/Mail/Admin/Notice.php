@@ -14,13 +14,6 @@ use SolidWP\Mail\Migration\MigrationVer210;
 class Notice {
 
 	/**
-	 * Meta key to store the dismissed state of the new ownership notice.
-	 *
-	 * @var string
-	 */
-	private string $new_ownership_flag = 'solid_mail_notice_new_ownership_dismissed';
-
-	/**
 	 * Meta key to store the dismissed state of the migration error notice.
 	 *
 	 * @var string
@@ -110,47 +103,6 @@ class Notice {
 						action: 'dismiss_solid_mail_notice',
 						_wpnonce: '<?= esc_html( $nonce ); ?>',
 						flag: '<?= esc_html( $this->migration_200_211_error_flag ); ?>'
-					} );
-				} );
-			} )( jQuery );
-		</script>
-		<?php
-	}
-
-	/**
-	 * Displays the admin notice informing users about the new ownership.
-	 *
-	 * Checks if the notice has been dismissed by the current user. If not,
-	 * it outputs the HTML for the notice and a script to handle its dismissal
-	 * via AJAX.
-	 *
-	 * @return void
-	 */
-	public function display_notice_new_ownership() {
-		// only admin should see this.
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
-		}
-		// Check if the user has dismissed the notice
-		if ( get_user_meta( get_current_user_id(), $this->new_ownership_flag, true ) ) {
-			return;
-		}
-
-		$nonce = wp_create_nonce( 'dismiss_solid_mail_notice' );
-		?>
-		<div class="notice notice-info is-dismissible solid-mail-notice">
-			<p><?php esc_html_e( 'WP SMTP is now Solid Mail and is being maintained and supported by the team from SolidWP.', 'LION' ); ?>
-				<a href="https://go.solidwp.com/wp-smtp-is-now-solid-mail"
-					target="_blank"><?php esc_html_e( 'Learn more.', 'LION' ); ?></a>
-			</p>
-		</div>
-		<script type="text/javascript">
-			( function ( $ ) {
-				$( document ).on( 'click', '.solid-mail-notice .notice-dismiss', function () {
-					$.post( ajaxurl, {
-						action: 'dismiss_solid_mail_notice',
-						_wpnonce: '<?= esc_attr( $nonce ); ?>',
-						flag: '<?= esc_attr( $this->new_ownership_flag ); ?>'
 					} );
 				} );
 			} )( jQuery );

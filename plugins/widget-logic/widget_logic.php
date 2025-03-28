@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 /*
 Plugin Name: Widget Logic
 Description: Control widgets with WP's conditional tags is_home etc, for Enable Gutenberg widgets and new built-in widgets visit the settings page.
-Version:     6.0.4
+Version:     6.0.5
 Author:      Widget Logic
 Author URI:  https://widgetlogic.org
 Text Domain: widget-logic

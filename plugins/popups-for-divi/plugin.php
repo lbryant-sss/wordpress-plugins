@@ -2,6 +2,7 @@
 /**
  * Enables JS popups within Divi.
  *
+ * @formatter:off
  * @package     Popups_For_Divi
  * @author      Divimode
  * @copyright   2020 Divimode
@@ -9,11 +10,18 @@
  *
  * Plugin Name: Popups for Divi
  * Description: Finally, a simple and intuitive way to add custom popups to your Divi pages!
+ * // @start-divimode-block
  * Plugin URI:  https://divimode.com/divi-popup/?utm_source=wpadmin&utm_medium=link&utm_campaign=popups-for-divi
  * Author:      divimode.com
  * Author URI:  https://divimode.com/?utm_source=wpadmin&utm_medium=link&utm_campaign=popups-for-divi
+ * // @end-divimode-block
+ * // @start-etmarket-block
+ * Plugin URI:  https://www.elegantthemes.com/marketplace/popups-for-divi
+ * Author:      divimode.com (Divi Marketplace)
+ * Author URI:  https://www.elegantthemes.com/marketplace/author/divimode/
+ * // @end-etmarket-block
  * Created:     30.12.2017
- * Version:     3.0.7
+ * Version:     3.0.8
  * Text Domain: divi-popup
  * Domain Path: /lang
  * License:     GPL v2 or later
@@ -34,6 +42,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  *
+ * @formatter:on
  */
 
 defined( 'ABSPATH' ) || die();
@@ -43,7 +52,7 @@ defined( 'ABSPATH' ) || die();
  *
  * @var string
  */
-const DIVI_POPUP_VERSION = '3.0.7';
+const DIVI_POPUP_VERSION = '3.0.8';
 
 /**
  * Absolute path and file name of the main plugin file.

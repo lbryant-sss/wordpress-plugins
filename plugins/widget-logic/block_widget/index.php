@@ -2,6 +2,12 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
+function widget_logic_register_block() {
+    register_logic_live_match_widget_service();
+    register_block_type(__DIR__ . '/block.json');
+}
+add_action('init', 'widget_logic_register_block');
+
 // Register block scripts and styles.
 function widget_logic_widget_enqueue_block_editor_assets()
 {
@@ -14,6 +20,11 @@ function widget_logic_widget_enqueue_block_editor_assets()
             filemtime(plugin_dir_path(__FILE__) . '/js/widget.js'),
             false // Do not enqueue the script in the footer.
         );
+        wp_add_inline_script(
+            'block-widget',
+            'var myPluginBlockImageUrl = "' . plugins_url('preview.png', __FILE__) . '";',
+            'before'
+        );
     }
     wp_enqueue_style(
         'block-widget',
@@ -21,6 +32,5 @@ function widget_logic_widget_enqueue_block_editor_assets()
         array(),
         filemtime(plugin_dir_path(__FILE__) . '/css/widget.css')
     );
-    wp_enqueue_script('widget-logic_live_match_widget');
 }
 add_action('enqueue_block_assets', 'widget_logic_widget_enqueue_block_editor_assets');

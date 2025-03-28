@@ -41,7 +41,7 @@ class WidgetLogicAdminConfig
             return $links;
         }
 
-        $settings_link = '<a href="options-general.php?page=widget-logic-admin-config">> Enable Gutenberg widgets and new built-in widgets <</a>';
+        $settings_link = '<a href="options-general.php?page=widget-logic">> Enable Gutenberg widgets and new built-in widgets <</a>';
 
         $links[] = $settings_link;
 
@@ -49,13 +49,13 @@ class WidgetLogicAdminConfig
     }
 
     public function addPage() {
-        add_options_page('Theme Options', 'Widget Logic', 'manage_options', 'widget-logic-admin-config', array($this, 'displayPage'));
+        add_options_page('Theme Options', 'Widget Logic', 'manage_options', 'widget-logic', array($this, 'displayPage'));
     }
 
     public function displayPage() {
     ?>
     <div class='wrap'>
-		<h1><?php esc_html_e('Widget Logic Settings', 'widget_logic_admin_settings'); ?></h1>
+		<h1><?php esc_html_e('Widget Logic Settings', 'widget-logic'); ?></h1>
 		<div id="poststuff" class="metabox-holder">
 			<div class="widget">
                 <form method="post" action="options.php">
@@ -91,7 +91,7 @@ class WidgetLogicAdminConfig
         add_settings_field('widget_logic_is_fully_enabled', 'Enable Gutenberg support', array($this, 'isEnabledSettingsField'), __FILE__, 'widget_logic_section');
 
         // Register Settings
-        register_setting(__FILE__, 'widget_logic_settings_options', array($this, 'validateOptions'));
+        register_setting(__FILE__, 'widget_logic_settings_options', array($this, 'validateOptions')); // phpcs:ignore -- this is simple array
     }
 
     public function validateOptions($fields) {

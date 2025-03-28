@@ -305,7 +305,7 @@ class AIOWPSecurity_Commands {
 		global $aio_wp_security;
 
 		// Sanitize the email address first.
-		$sanitized_email = sanitize_email($data['report_email'] ?? '');
+		$sanitized_email = !empty($data['report_email']) ? sanitize_email($data['report_email']) : '';
 
 		if ('' === $sanitized_email || !is_email($sanitized_email)) {
 			return array(

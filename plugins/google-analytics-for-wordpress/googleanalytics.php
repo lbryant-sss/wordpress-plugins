@@ -7,7 +7,7 @@
  * Author:              MonsterInsights
  * Author URI:          https://www.monsterinsights.com/lite/?utm_source=liteplugin&utm_medium=pluginheader&utm_campaign=authoruri&utm_content=7%2E0%2E0
  *
- * Version:             9.4.0
+ * Version:             9.4.1
  * Requires at least:   5.6.0
  * Requires PHP:        7.2
  *
@@ -71,7 +71,7 @@ final class MonsterInsights_Lite {
 	 * @access public
 	 * @var string $version Plugin version.
 	 */
-	public $version = '9.4.0';
+	public $version = '9.4.1';
 
 	/**
 	 * Plugin file.
@@ -529,12 +529,12 @@ final class MonsterInsights_Lite {
 			add_action('admin_menu', function () {
 
 				new \MonsterInsights_AM_Deactivation_Survey(
-					'MonsterInsights Lite',
-					'google-analytics-for-wordpress',
 					apply_filters(
 						'monsterinsights_deactivation_survey_url',
 						'https://monsterinsights.com/wp-json/am-deactivate-survey/v1/deactivation-data'
-					)
+					),
+					'MonsterInsights Lite',
+					'google-analytics-for-wordpress'
 				);
 			}, 100);
 		}

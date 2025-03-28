@@ -104,7 +104,7 @@ function widget_logic_expand_control()
 
         $wl_options['widget_logic-options-wp_reset_query'] = !empty($_POST['widget_logic-options-wp_reset_query']);
         $wl_options['widget_logic-options-show_errors']    = !empty($_POST['widget_logic-options-show_errors']);
-        $wl_options['widget_logic-options-load_point']     = sanitize_text_field(wp_unslash($_POST['widget_logic-options-load_point']));
+        $wl_options['widget_logic-options-load_point']     = sanitize_text_field(wp_unslash(isset($_POST['widget_logic-options-load_point']) ? $_POST['widget_logic-options-load_point'] : ''));
     }
 
     update_option('widget_logic', $wl_options);

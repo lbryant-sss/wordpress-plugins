@@ -26,7 +26,7 @@ class ExactMetrics_AM_Deactivation_Survey {
 	 *
 	 * If `AWESOMEMOTIVE_DEV_MODE` is set to true then
 	 *
-	 * @since 1.0.0
+	 * @since 9.4.0
 	 * @var   string
 	 */
 	public $api_url;
@@ -34,7 +34,7 @@ class ExactMetrics_AM_Deactivation_Survey {
 	/**
 	 * Name for this plugin.
 	 *
-	 * @since 1.0.0
+	 * @since 9.4.0
 	 * @var   string
 	 */
 	public $name;
@@ -42,7 +42,7 @@ class ExactMetrics_AM_Deactivation_Survey {
 	/**
 	 * Unique slug for this plugin.
 	 *
-	 * @since 1.0.0
+	 * @since 9.4.0
 	 * @var   string
 	 */
 	public $plugin;
@@ -50,12 +50,12 @@ class ExactMetrics_AM_Deactivation_Survey {
 	/**
 	 * Primary class constructor.
 	 *
-	 * @since 1.0.0
+	 * @since 9.4.0
+	 * @param string $url    Endpoint for this instance of the survey.
 	 * @param string $name   Plugin name.
 	 * @param string $plugin Plugin slug.
-	 * @param string $url Endpoint for this instance of the survey.
 	 */
-	public function __construct( $name = '', $plugin = '', $url ) {
+	public function __construct( $url, $name = '', $plugin = '' ) {
 		
 		$this->name = $name;
 		$this->plugin  = $plugin;
@@ -157,7 +157,7 @@ class ExactMetrics_AM_Deactivation_Survey {
 	/**
 	 * Survey javascript.
 	 *
-	 * @since 1.0.0
+	 * @since 9.4.0
 	 */
 	public function js() {
 
@@ -244,7 +244,7 @@ class ExactMetrics_AM_Deactivation_Survey {
 	/**
 	 * Survey CSS.
 	 *
-	 * @since 1.0.0
+	 * @since 9.4.0
 	 */
 	public function css() {
 
@@ -328,7 +328,7 @@ class ExactMetrics_AM_Deactivation_Survey {
 	/**
 	 * Survey modal.
 	 *
-	 * @since 1.0.0
+	 * @since 9.4.0
 	 */
 	public function modal() {
 

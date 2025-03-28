@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Facebook for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Facebook for WooCommerce 3.4.3\n"
+"Project-Id-Version: Facebook for WooCommerce 3.4.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/facebook-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-19T14:13:43+00:00\n"
+"POT-Creation-Date: 2025-03-25T11:18:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: facebook-for-woocommerce\n"
@@ -50,7 +50,7 @@ msgstr ""
 #: class-wc-facebookcommerce.php:147
 #: facebook-commerce.php:382
 #: includes/Admin/Enhanced_Catalog_Attribute_Fields.php:68
-#: includes/fbbackground.php:41
+#: includes/fbbackground.php:45
 #: includes/fbproduct.php:147
 msgid "The %s property is private and should not be accessed outside its class."
 msgstr ""
@@ -612,8 +612,8 @@ msgstr ""
 msgid "This is an experimental feature in testing phase. Only enable this if you are experiencing problems with feed generation. <a href=\"%s\" target=\"_blank\">Learn more</a>."
 msgstr ""
 
+#: includes/Admin/Settings_Screens/Product_Sets.php:37
 #: includes/Admin/Settings_Screens/Product_Sets.php:38
-#: includes/Admin/Settings_Screens/Product_Sets.php:39
 msgid "Product sets"
 msgstr ""
 
@@ -956,55 +956,51 @@ msgstr ""
 msgid "There was an error trying sync products using the Catalog Batch API for job %1$s: %2$s"
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:254
+#: includes/ProductSync/ProductValidator.php:251
 msgid "Product sync is globally disabled."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:267
+#: includes/ProductSync/ProductValidator.php:264
 msgid "Product is not published."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:278
-msgid "Product must be in stock."
-msgstr ""
-
-#: includes/ProductSync/ProductValidator.php:293
+#: includes/ProductSync/ProductValidator.php:279
 msgid "This product cannot be synced to Facebook because it is hidden from your store catalog."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:308
+#: includes/ProductSync/ProductValidator.php:294
 msgid "Product excluded because of categories."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:315
+#: includes/ProductSync/ProductValidator.php:301
 msgid "Product excluded because of tags."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:326
+#: includes/ProductSync/ProductValidator.php:312
 msgid "Sync disabled in product field."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:336
+#: includes/ProductSync/ProductValidator.php:322
 msgid "Product excluded by wc_facebook_should_sync_product filter."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:370
+#: includes/ProductSync/ProductValidator.php:356
 msgid "If product is not simple, variable or variation it must have a price."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:396
+#: includes/ProductSync/ProductValidator.php:382
 msgid "Product description is all capital letters. Please change the description to sentence case in order to allow synchronization of your product."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:399
+#: includes/ProductSync/ProductValidator.php:385
 msgid "Product description is too long. Maximum allowed length is 5000 characters."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:417
+#: includes/ProductSync/ProductValidator.php:403
 msgid "Product title is too long. Maximum allowed length is 150 characters."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:441
+#: includes/ProductSync/ProductValidator.php:427
 msgid "Too many attributes selected for product. Use 4 or less."
 msgstr ""
 

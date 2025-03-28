@@ -218,10 +218,20 @@ if ( ! class_exists( 'WC_GZD_Install' ) ) :
 					 * Skip table if exists
 					 */
 					if ( ! $new_table_exists || $new_table_exists !== $new_table_name || $force_override ) {
-						$db_updates[ $table ] = array(
-							'main'       => "RENAME TABLE `{$table}` TO `{$new_table_name}`;",
-							'additional' => array(),
-						);
+						if ( $force_override && strstr( $table, "woocommerce_{$existing_prefix}_" ) ) {
+							$db_updates[ $table ] = array(
+								'main'       => array(
+									"DROP TABLE IF EXISTS `{$new_table_name}`;",
+									"RENAME TABLE `{$table}` TO `{$new_table_name}`;",
+								),
+								'additional' => array(),
+							);
+						} else {
+							$db_updates[ $table ] = array(
+								'main'       => array( "RENAME TABLE `{$table}` TO `{$new_table_name}`;" ),
+								'additional' => array(),
+							);
+						}
 
 						foreach ( $columns as $column ) {
 							$new_column_name = str_replace( "{$existing_prefix}_", "{$new_prefix}_", $column );
@@ -257,40 +267,82 @@ if ( ! class_exists( 'WC_GZD_Install' ) ) :
 			}
 
 			if ( ! $is_downgrade ) {
-				$db_updates[ $wpdb->options ] = array(
-					'main'       => '',
-					'additional' => array(
-						$wpdb->prepare( "UPDATE {$wpdb->options} SET option_name = REPLACE(option_name, %s, %s);", 'woocommerce_gzd_dhl_', 'woocommerce_shiptastic_dhl_' ),
-						$wpdb->prepare( "UPDATE {$wpdb->options} SET option_name = REPLACE(option_name, %s, %s);", 'woocommerce_gzd_shipments_', 'woocommerce_shiptastic_' ),
-					),
-				);
+				/**
+				 * Do only try to rename options in case legacy options do still exist
+				 */
+				$legacy_options      = $wpdb->get_results( $wpdb->prepare( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s", $wpdb->esc_like( 'woocommerce_gzd_shipments_' ) . '%', $wpdb->esc_like( 'woocommerce_gzd_dhl_' ) . '%' ) );
+				$legacy_option_names = self::get_legacy_option_names( $legacy_options );
 
-				$status_options = array(
-					'woocommerce_shiptastic_auto_default_status',
-				);
+				if ( ! empty( $legacy_option_names ) ) {
+					$legacy_options_in = "'" . implode( "','", $legacy_option_names ) . "'";
 
-				foreach ( $status_options as $option ) {
-					$db_updates[ $wpdb->options ]['additional'][] = $wpdb->prepare( "UPDATE {$wpdb->options} SET option_value = REPLACE(option_value, %s, %s) WHERE option_name = %s;", 'gzd-', '', $option );
+					$db_updates[ $wpdb->options ] = array(
+						'main'       => array( "DELETE FROM {$wpdb->options} WHERE option_name IN ($legacy_options_in);" ),
+						'additional' => array(
+							$wpdb->prepare( "UPDATE {$wpdb->options} SET option_name = REPLACE(option_name, %s, %s);", 'woocommerce_gzd_dhl_', 'woocommerce_shiptastic_dhl_' ),
+							$wpdb->prepare( "UPDATE {$wpdb->options} SET option_name = REPLACE(option_name, %s, %s);", 'woocommerce_gzd_shipments_', 'woocommerce_shiptastic_' ),
+						),
+					);
+
+					$status_options = array(
+						'woocommerce_shiptastic_auto_default_status',
+					);
+
+					foreach ( $status_options as $option ) {
+						if ( in_array( $option, $legacy_option_names, true ) ) {
+							$db_updates[ $wpdb->options ]['additional'][] = $wpdb->prepare( "UPDATE {$wpdb->options} SET option_value = REPLACE(option_value, %s, %s) WHERE option_name = %s;", 'gzd-', '', $option );
+						}
+					}
 				}
 			} else {
-				$db_updates[ $wpdb->options ] = array(
-					'main'       => '',
-					'additional' => array(
-						$wpdb->prepare( "UPDATE {$wpdb->options} SET option_name = REPLACE(option_name, %s, %s);", 'woocommerce_shiptastic_dhl_', 'woocommerce_gzd_dhl_' ),
-						$wpdb->prepare( "UPDATE {$wpdb->options} SET option_name = REPLACE(option_name, %s, %s);", 'woocommerce_shiptastic_', 'woocommerce_gzd_shipments_' ),
-					),
-				);
+				/**
+				 * Do only try to rename options in case legacy options do still exist
+				 */
+				$legacy_options      = $wpdb->get_results( $wpdb->prepare( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s", $wpdb->esc_like( 'woocommerce_shiptastic_' ) . '%' ) );
+				$legacy_option_names = self::get_legacy_option_names( $legacy_options, true );
 
-				$status_options = array(
-					'woocommerce_gzd_shipments_auto_default_status',
-				);
+				if ( ! empty( $legacy_option_names ) ) {
+					$legacy_options_in = "'" . implode( "','", $legacy_option_names ) . "'";
 
-				foreach ( $status_options as $option ) {
-					$db_updates[ $wpdb->options ]['additional'][] = $wpdb->prepare( "UPDATE {$wpdb->options} SET option_value = CONCAT(%s, option_value) WHERE option_name = %s;", 'gzd-', $option );
+					$db_updates[ $wpdb->options ] = array(
+						'main'       => array( "DELETE FROM {$wpdb->options} WHERE option_name IN ($legacy_options_in);" ),
+						'additional' => array(
+							$wpdb->prepare( "UPDATE {$wpdb->options} SET option_name = REPLACE(option_name, %s, %s);", 'woocommerce_shiptastic_dhl_', 'woocommerce_gzd_dhl_' ),
+							$wpdb->prepare( "UPDATE {$wpdb->options} SET option_name = REPLACE(option_name, %s, %s);", 'woocommerce_shiptastic_', 'woocommerce_gzd_shipments_' ),
+						),
+					);
+
+					$status_options = array(
+						'woocommerce_gzd_shipments_auto_default_status',
+					);
+
+					foreach ( $status_options as $option ) {
+						if ( in_array( $option, $legacy_option_names, true ) ) {
+							$db_updates[ $wpdb->options ]['additional'][] = $wpdb->prepare( "UPDATE {$wpdb->options} SET option_value = CONCAT(%s, option_value) WHERE option_name = %s;", 'gzd-', $option );
+						}
+					}
 				}
 			}
 
 			return $db_updates;
+		}
+
+		protected static function get_legacy_option_names( $legacy_options, $is_downgrade = false ) {
+			$option_names = array();
+
+			foreach ( $legacy_options as $legacy_row ) {
+				if ( $is_downgrade ) {
+					$new_option_name = str_replace( 'woocommerce_shiptastic_dhl_', 'woocommerce_gzd_dhl_', $legacy_row->option_name );
+					$new_option_name = str_replace( 'woocommerce_shiptastic_', 'woocommerce_gzd_shipments_', $new_option_name );
+				} else {
+					$new_option_name = str_replace( 'woocommerce_gzd_dhl_', 'woocommerce_shiptastic_dhl_', $legacy_row->option_name );
+					$new_option_name = str_replace( 'woocommerce_gzd_shipments_', 'woocommerce_shiptastic_', $new_option_name );
+				}
+
+				$option_names[] = $new_option_name;
+			}
+
+			return $option_names;
 		}
 
 		public static function get_shipments_legacy_upload_folder() {
@@ -311,7 +363,7 @@ if ( ! class_exists( 'WC_GZD_Install' ) ) :
 			return false;
 		}
 
-		public static function migrate_shipments_to_shiptastic( $force_override = false ) {
+		public static function migrate_shipments_to_shiptastic( $force_override = false, $is_initial_migration = false ) {
 			global $wpdb;
 			$error = new WP_Error();
 			$wpdb->hide_errors();
@@ -333,46 +385,50 @@ if ( ! class_exists( 'WC_GZD_Install' ) ) :
 
 			$wpdb->flush();
 
-			/**
-			 * Do only delete new options in case legacy options still exist
-			 */
-			$has_legacy_options = $wpdb->query( $wpdb->prepare( "SELECT * FROM {$wpdb->options} WHERE option_name LIKE %s LIMIT 1", $wpdb->esc_like( 'woocommerce_gzd_shipments_' ) . '%' ) );
-
-			if ( ! empty( $has_legacy_options ) ) {
-				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s", $wpdb->esc_like( 'woocommerce_shiptastic_' ) . '%' ) );
-			}
-
 			foreach ( self::get_shiptastic_db_updates( $force_override ) as $table => $db_updates ) {
 				$db_updates = wp_parse_args(
 					$db_updates,
 					array(
-						'main'       => '',
+						'main'       => array(),
 						'additional' => array(),
 					)
 				);
 
-				$exists = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table ) ) );
+				$exists         = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table ) ) );
+				$has_main_error = false;
 
 				if ( $exists && $exists === $table ) {
-					if ( $force_override && ! empty( $db_updates['main'] ) && strstr( $table, 'woocommerce_gzd_' ) ) {
-						$new_table_name = str_replace( 'woocommerce_gzd_', 'woocommerce_stc_', $table );
-						$wpdb->query( "DROP TABLE IF EXISTS `{$new_table_name}`" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+					if ( ! empty( $db_updates['main'] ) ) {
+						foreach ( $db_updates['main'] as $main_query ) {
+							$result = $wpdb->query( $main_query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+
+							if ( false === $result ) {
+								$last_error = $wpdb->last_error;
+								$error->add( 'main_query', sprintf( _x( 'Error while querying %1$s: %2$s', 'shipments-migration', 'woocommerce-germanized' ), $table, $last_error ) );
+								$has_main_error = true;
+								break;
+							}
+						}
 					}
 
-					if ( ! empty( $db_updates['main'] ) ) {
-						$result = $wpdb->query( $db_updates['main'] ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+					// Do not run additional queries in case of error within main query.
+					if ( $has_main_error ) {
+						continue;
+					}
 
-						if ( false === $result ) {
-							$last_error = $wpdb->last_error;
-							$error->add( 'main_query', sprintf( _x( 'Error while updating %1$s: %2$s', 'shipments-migration', 'woocommerce-germanized' ), $table, $last_error ) );
-							continue;
-						}
+					$mute_errors = false;
+
+					/**
+					 * Mute duplicate wp_options key errors on subsequent migration requests
+					 */
+					if ( $wpdb->options === $table && ! $is_initial_migration ) {
+						$mute_errors = true;
 					}
 
 					foreach ( $db_updates['additional'] as $db_query ) {
 						$result = $wpdb->query( $db_query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
-						if ( false === $result ) {
+						if ( false === $result && ! $mute_errors ) {
 							$last_error = $wpdb->last_error;
 							$error->add( 'additional_query', sprintf( _x( 'Error while running additional query on %1$s: %2$s', 'shipments-migration', 'woocommerce-germanized' ), $table, $last_error ) );
 						}
@@ -484,7 +540,7 @@ if ( ! class_exists( 'WC_GZD_Install' ) ) :
 			add_filter( 'oss_woocommerce_enable_extended_logging', '__return_true', 5 );
 
 			if ( ! is_null( $current_db_version ) && version_compare( $current_db_version, '3.19.0', '<' ) ) {
-				self::migrate_shipments_to_shiptastic();
+				self::migrate_shipments_to_shiptastic( false, true );
 			}
 
 			self::install_packages();
