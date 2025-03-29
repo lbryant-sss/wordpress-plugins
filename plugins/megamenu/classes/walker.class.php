@@ -35,7 +35,7 @@ if ( ! class_exists( 'Mega_Menu_Walker' ) ) :
 
 			if ( is_array( $classes ) && in_array( 'menu-row', $classes ) ) {
 				if ( isset( $this->currentItem->styles ) && count( $this->currentItem->styles ) ) {
-					$style = " style='" . implode( "; ", $this->currentItem->styles ) . "'";
+					$style = " style='" . esc_attr( implode( "; ", $this->currentItem->styles ) ) . "'";
 				}
 			}
 

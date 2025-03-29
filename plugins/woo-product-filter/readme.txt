@@ -152,7 +152,7 @@ You may help us translate the plugin into your language and get the PRO version 
 == Changelog ==
 
 = 2.8.0 =
- * Fixed conflict with custom-woocommerce-enhancements
+ * Fixed conflict with custom-woocommerce-enhancements 
  * Fix open_one_by_one filter functionality
  * Add space between taxonomy attributes
  * Fix subcategory display

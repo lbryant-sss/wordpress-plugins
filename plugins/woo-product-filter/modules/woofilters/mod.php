@@ -292,8 +292,12 @@ class WoofiltersWpf extends ModuleWpf {
                 }
             }
             $originalUrl = $matches[1];
-            $urlParts = parse_url($originalUrl);
-            $baseUrl = $urlParts['scheme'] . '://' . $urlParts['host'] . (isset($urlParts['path']) ? $urlParts['path'] : '');
+            $urlParts = parse_url($originalUrl);            
+            $baseUrl =
+                (isset($urlParts['scheme']) ? $urlParts['scheme'] : '') .
+                '://' .
+                (isset($urlParts['host']) ? $urlParts['host'] : '') .
+                (isset($urlParts['path']) ? $urlParts['path'] : '');
             $existingParams = [];
             if (isset($urlParts['query'])) {
                 parse_str($urlParts['query'], $existingParams);

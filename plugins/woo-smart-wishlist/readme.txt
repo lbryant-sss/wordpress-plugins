@@ -3,8 +3,8 @@ Contributors: wpclever
 Donate link: https://wpclever.net
 Tags: woocommerce, wpc, wishlist, wait-list
 Tested up to: 6.7
-Version: 4.9.8
-Stable tag: 4.9.8
+Version: 4.9.9
+Stable tag: 4.9.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,10 @@ Example:
 `echo do_shortcode('[woosw id="99"]');`
 
 == Changelog ==
+
+= 4.9.9 =
+* Updated: Optimized the code
+* Updated: Compatible with WP 6.7 & Woo 9.7
 
 = 4.9.8 =
 * Updated: Optimized the code
