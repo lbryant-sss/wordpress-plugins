@@ -385,6 +385,37 @@ class ameUtils {
 		}
 		return null;
 	}
+
+	/**
+	 * Convert a color in the #RRGGBB or #RGB format to the rgba() format.
+	 *
+	 * @param string $color
+	 * @param float $opacity
+	 * @return string
+	 */
+	public static function convertHexColorToRgba($color, $opacity = 1.0) {
+		$color = trim($color);
+		if ( $color === '' ) {
+			return 'rgba(0, 0, 0, ' . $opacity . ')';
+		}
+
+		//Strip the leading hash, if any.
+		if ( $color[0] === '#' ) {
+			$color = substr($color, 1);
+		}
+
+		//Convert 3-digit hex to 6-digit hex.
+		if ( strlen($color) === 3 ) {
+			$color = $color[0] . $color[0] . $color[1] . $color[1] . $color[2] . $color[2];
+		}
+
+		//Convert hex to RGB.
+		$red = hexdec(substr($color, 0, 2));
+		$green = hexdec(substr($color, 2, 2));
+		$blue = hexdec(substr($color, 4, 2));
+
+		return 'rgba(' . $red . ', ' . $green . ', ' . $blue . ', ' . $opacity . ')';
+	}
 }
 
 /**

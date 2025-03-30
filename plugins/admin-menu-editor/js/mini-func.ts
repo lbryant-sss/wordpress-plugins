@@ -37,15 +37,15 @@ namespace AmeMiniFunc {
 			return this.value;
 		}
 
-		isDefined(): boolean {
+		isDefined(): this is Some<T> {
 			return true;
 		}
 
-		isEmpty(): boolean {
+		isEmpty(): this is None {
 			return false;
 		}
 
-		nonEmpty(): boolean {
+		nonEmpty(): this is Some<T> {
 			return true;
 		}
 
@@ -91,7 +91,7 @@ namespace AmeMiniFunc {
 			throw new Error('Cannot get value from None');
 		}
 
-		isDefined(): boolean {
+		isDefined(): this is Some<never> {
 			return false;
 		}
 
@@ -99,7 +99,7 @@ namespace AmeMiniFunc {
 			return true;
 		}
 
-		nonEmpty(): boolean {
+		nonEmpty(): this is Some<never> {
 			return false;
 		}
 
