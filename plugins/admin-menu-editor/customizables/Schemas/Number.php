@@ -124,7 +124,7 @@ class Number extends CheckableSchema {
 		if ( $max !== null ) {
 			$numericParserConfig['max'] = $max;
 		}
-		$result['parsers'][] = [['numeric', $numericParserConfig]];
+		$result['parsers'][] = ['numeric', $numericParserConfig];
 
 		if ( $this->isInt() ) {
 			$result['parsers'][] = ['int'];

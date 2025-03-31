@@ -135,6 +135,25 @@ abstract class Schema {
 	}
 
 	/**
+	 * Set the class name and optional parameters for settings that may be created from this schema.
+	 *
+	 * Shortcut for settingClassHint() and settingParams().
+	 *
+	 * @param class-string<Settings\AbstractSetting>|null $className
+	 * @param array<string,mixed>|null $params
+	 * @return $this
+	 */
+	public function s($className, $params = null) {
+		if ( $className ) {
+			$this->settingClassHint($className);
+		}
+		if ( is_array($params) ) {
+			$this->settingParams($params);
+		}
+		return $this;
+	}
+
+	/**
 	 * Add parameters to be used when creating a setting from this schema.
 	 *
 	 * These parameters don't affect the schema itself. This is just a way to pass additional
@@ -146,16 +165,6 @@ abstract class Schema {
 	public function settingParams(array $params) {
 		$this->getOrCreateSettingHints()->addParams($params);
 		return $this;
-	}
-
-	/**
-	 * Alias for settingParams()
-	 *
-	 * @param array<string,mixed> $params
-	 * @return $this
-	 */
-	public function s($params) {
-		return $this->settingParams($params);
 	}
 
 	/**
@@ -185,6 +194,17 @@ abstract class Schema {
 		return $this->settingClassHint($className);
 	}
 
+	/**
+	 * Add a hint for the setting builder that an item in the $params array should be set to
+	 * the sibling setting that has the specified key.
+	 *
+	 * This is useful for settings that are related to each other, e.g. child settings being
+	 * generated from the same schema.
+	 *
+	 * @param string $paramName
+	 * @param string $siblingSettingKey
+	 * @return $this
+	 */
 	public function settingReference($paramName, $siblingSettingKey) {
 		$this->getOrCreateSettingHints()->addSettingReference($paramName, $siblingSettingKey);
 		return $this;

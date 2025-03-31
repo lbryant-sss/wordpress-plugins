@@ -10,7 +10,7 @@ final class DFI {
 	 *
 	 * @var self
 	 */
-	protected static $inst = null;
+	protected static $inst;
 
 	/**
 	 * Create instance of this class.
@@ -28,15 +28,6 @@ final class DFI {
 	 * The constructor
 	 */
 	private function __construct() {
-	}
-
-	/**
-	 * Uninstall
-	 *
-	 * @return void
-	 */
-	public static function uninstall() {
-		delete_option( 'dfi_image_id' );
 	}
 
 	/**
@@ -195,7 +186,7 @@ final class DFI {
 	 */
 	public function admin_scripts() {
 		wp_enqueue_media(); // scripts used for uploader.
-		wp_enqueue_script( 'dfi-script', DFI_URL . 'set-default-featured-image.js', array(), DFI_VERSION, true );
+		wp_enqueue_script( 'dfi-script', DFI_URL . 'src/dfi-admin.js', array(), DFI_VERSION, true );
 		wp_localize_script(
 			'dfi-script',
 			'dfi_L10n',
@@ -216,9 +207,8 @@ final class DFI {
 	public function preview_image( $image_id ) {
 		$output  = '<div id="preview-image" style="float:left; padding: 0 5px 0 0;">';
 		$output .= wp_get_attachment_image( $image_id, array( 80, 60 ), true );
-		$output .= '</div>';
 
-		return $output;
+		return $output . '</div>';
 	}
 
 	/**

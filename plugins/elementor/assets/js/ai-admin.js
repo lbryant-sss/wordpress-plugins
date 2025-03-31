@@ -1,6 +1,104 @@
-/*! elementor - v3.28.0 - 23-03-2025 */
+/*! elementor - v3.28.0 - 30-03-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
+
+/***/ "../assets/dev/js/editor/utils/files-upload-handler.js":
+/*!*************************************************************!*\
+  !*** ../assets/dev/js/editor/utils/files-upload-handler.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+/* provided dependency */ var __ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n")["__"];
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "../node_modules/@babel/runtime/helpers/classCallCheck.js"));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "../node_modules/@babel/runtime/helpers/createClass.js"));
+var FilesUploadHandler = exports["default"] = /*#__PURE__*/function () {
+  function FilesUploadHandler() {
+    (0, _classCallCheck2.default)(this, FilesUploadHandler);
+  }
+  return (0, _createClass2.default)(FilesUploadHandler, null, [{
+    key: "isUploadEnabled",
+    value: function isUploadEnabled(mediaType) {
+      var unfilteredFilesTypes = ['svg', 'application/json'];
+      if (!unfilteredFilesTypes.includes(mediaType)) {
+        return true;
+      }
+      return elementorCommon.config.filesUpload.unfilteredFiles;
+    }
+  }, {
+    key: "setUploadTypeCaller",
+    value: function setUploadTypeCaller(frame) {
+      frame.uploader.uploader.param('uploadTypeCaller', 'elementor-wp-media-upload');
+    }
+  }, {
+    key: "getUnfilteredFilesNonAdminDialog",
+    value: function getUnfilteredFilesNonAdminDialog() {
+      return elementorCommon.dialogsManager.createWidget('alert', {
+        id: 'e-unfiltered-files-disabled-dialog',
+        headerMessage: __('Sorry, you can\'t upload that file yet', 'elementor'),
+        message: __('This is because JSON files may pose a security risk.', 'elementor') + '<br><br>' + __('To upload them anyway, ask the site administrator to enable unfiltered file uploads.', 'elementor'),
+        strings: {
+          confirm: __('Got it', 'elementor')
+        }
+      });
+    }
+  }, {
+    key: "getUnfilteredFilesNotEnabledDialog",
+    value: function getUnfilteredFilesNotEnabledDialog(callback) {
+      var elementorInstance = window.elementorAdmin || window.elementor;
+      if (!elementorInstance.config.user.is_administrator) {
+        return this.getUnfilteredFilesNonAdminDialog();
+      }
+      var onConfirm = function onConfirm() {
+        elementorCommon.ajax.addRequest('enable_unfiltered_files_upload', {}, true);
+        elementorCommon.config.filesUpload.unfilteredFiles = true;
+        callback();
+      };
+      return elementorInstance.helpers.getSimpleDialog('e-enable-unfiltered-files-dialog', __('Enable Unfiltered File Uploads', 'elementor'), __('Before you enable unfiltered files upload, note that such files include a security risk. Elementor does run a process to remove possible malicious code, but there is still risk involved when using such files.', 'elementor'), __('Enable', 'elementor'), onConfirm);
+    }
+  }, {
+    key: "getUnfilteredFilesNotEnabledImportTemplateDialog",
+    value: function getUnfilteredFilesNotEnabledImportTemplateDialog(callback) {
+      if (!(window.elementorAdmin || window.elementor).config.user.is_administrator) {
+        return this.getUnfilteredFilesNonAdminDialog();
+      }
+      return elementorCommon.dialogsManager.createWidget('confirm', {
+        id: 'e-enable-unfiltered-files-dialog-import-template',
+        headerMessage: __('Enable Unfiltered File Uploads', 'elementor'),
+        message: __('Before you enable unfiltered files upload, note that such files include a security risk. Elementor does run a process to remove possible malicious code, but there is still risk involved when using such files.', 'elementor') + '<br /><br />' + __('If you do not enable uploading unfiltered files, any SVG or JSON (including lottie) files used in the uploaded template will not be imported.', 'elementor'),
+        position: {
+          my: 'center center',
+          at: 'center center'
+        },
+        strings: {
+          confirm: __('Enable and Import', 'elementor'),
+          cancel: __('Import Without Enabling', 'elementor')
+        },
+        onConfirm: function onConfirm() {
+          elementorCommon.ajax.addRequest('enable_unfiltered_files_upload', {
+            success: function success() {
+              // This utility is used in both the admin and the Editor.
+              elementorCommon.config.filesUpload.unfilteredFiles = true;
+              callback();
+            }
+          }, true);
+        },
+        onCancel: function onCancel() {
+          return callback();
+        }
+      });
+    }
+  }]);
+}();
+
+/***/ }),
 
 /***/ "../assets/dev/js/utils/react.js":
 /*!***************************************!*\
@@ -11107,6 +11205,17 @@ var IMAGE_PROMPT_CATEGORIES = exports.IMAGE_PROMPT_CATEGORIES = {
       photorealistic: (0, _i18n.__)('Photorealistic', 'elementor')
     }
   },
+  vector: {
+    label: (0, _i18n.__)('Vector', 'elementor'),
+    subCategories: {
+      '': (0, _i18n.__)('None', 'elementor'),
+      'typographic-logo': (0, _i18n.__)('Typographic Logo', 'elementor'),
+      'shape-logo': (0, _i18n.__)('Shape Logo', 'elementor'),
+      'handwritten-logo': (0, _i18n.__)('Handwritten Logo', 'elementor'),
+      'line-art-logo': (0, _i18n.__)('Line Art Logo', 'elementor'),
+      'old-school-logo': (0, _i18n.__)('Old School Logo', 'elementor')
+    }
+  },
   background: {
     label: (0, _i18n.__)('Background', 'elementor'),
     subCategories: {
@@ -11533,6 +11642,7 @@ var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/run
 var _editImageContext = __webpack_require__(/*! ../context/edit-image-context */ "../modules/ai/assets/js/editor/pages/form-media/context/edit-image-context.js");
 var _useImageUpload2 = _interopRequireDefault(__webpack_require__(/*! ./use-image-upload */ "../modules/ai/assets/js/editor/pages/form-media/hooks/use-image-upload.js"));
 var _globalActionsContext = __webpack_require__(/*! ../context/global-actions-context */ "../modules/ai/assets/js/editor/pages/form-media/context/global-actions-context.js");
+var _filesUploadHandler = _interopRequireDefault(__webpack_require__(/*! elementor-editor/utils/files-upload-handler */ "../assets/dev/js/editor/utils/files-upload-handler.js"));
 var _excluded = ["image"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -11558,7 +11668,21 @@ var useImageActions = function useImageActions() {
     uploadError = _useImageUpload.uploadError,
     uploadImage = _useImageUpload.upload,
     resetUpload = _useImageUpload.resetUpload;
+  var ensureSVGUploading = function ensureSVGUploading(imageUrl) {
+    if (!imageUrl) {
+      return true;
+    }
+    var imageExtension = new URL(imageUrl).pathname.split('.').pop();
+    var isUploadAllowed = window._wpPluploadSettings.defaults.filters.mime_types[0].extensions.split(',').includes(imageExtension) || elementorCommon.config.filesUpload.unfilteredFiles;
+    if (!isUploadAllowed) {
+      _filesUploadHandler.default.getUnfilteredFilesNotEnabledDialog(function () {}).show();
+    }
+    return isUploadAllowed;
+  };
   var upload = function upload(imageToUpload, prompt) {
+    if (!ensureSVGUploading(imageToUpload.image_url)) {
+      return Promise.reject(new Error('SVG Uploading is not allowed'));
+    }
     return uploadImage({
       image: normalizeImageData(imageToUpload),
       prompt: prompt || imageToUpload.prompt
@@ -11583,7 +11707,7 @@ var useImageActions = function useImageActions() {
             return upload(imageToUpload, prompt);
           case 6:
             result = _context.sent;
-            return _context.abrupt("return", result.image);
+            return _context.abrupt("return", result === null || result === void 0 ? void 0 : result.image);
           case 8:
           case "end":
             return _context.stop();
@@ -23935,6 +24059,41 @@ function _asyncToGenerator(n) {
   };
 }
 module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "../node_modules/@babel/runtime/helpers/classCallCheck.js":
+/*!****************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/classCallCheck.js ***!
+  \****************************************************************/
+/***/ ((module) => {
+
+function _classCallCheck(a, n) {
+  if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function");
+}
+module.exports = _classCallCheck, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "../node_modules/@babel/runtime/helpers/createClass.js":
+/*!*************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/createClass.js ***!
+  \*************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var toPropertyKey = __webpack_require__(/*! ./toPropertyKey.js */ "../node_modules/@babel/runtime/helpers/toPropertyKey.js");
+function _defineProperties(e, r) {
+  for (var t = 0; t < r.length; t++) {
+    var o = r[t];
+    o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, toPropertyKey(o.key), o);
+  }
+}
+function _createClass(e, r, t) {
+  return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", {
+    writable: !1
+  }), e;
+}
+module.exports = _createClass, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 

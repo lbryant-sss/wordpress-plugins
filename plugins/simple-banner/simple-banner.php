@@ -3,16 +3,16 @@
  * Plugin Name: Simple Banner
  * Plugin URI: https://github.com/rpetersen29/simple-banner
  * Description: Display a simple banner at the top or bottom of your website. Now with multi-banner support
- * Version: 3.0.4
+ * Version: 3.0.5
  * Author: Ryan Petersen
  * Author URI: http://rpetersen29.github.io/
  * License: GPLv3
  *
  * @package Simple Banner
- * @version 3.0.4
+ * @version 3.0.5
  * @author Ryan Petersen <rpetersen.dev@gmail.com>
  */
-define ('SB_VERSION', '3.0.4');
+define ('SB_VERSION', '3.0.5');
 
 register_activation_hook( __FILE__, 'simple_banner_activate' );
 function simple_banner_activate() {
@@ -597,6 +597,7 @@ function simple_banner_settings_page() {
 			text-align: center;
 		}
 	</style>
+	<script type="text/javascript" src="<?php echo plugin_dir_url( __FILE__ ) .'vendors/purify.min.js' ?>"></script>
 
 	<div class="wrap">
 		<div style="display: flex;justify-content: space-between;">
@@ -705,7 +706,8 @@ function simple_banner_settings_page() {
 				while (strippedString.match(scriptStyleRegex)) { 
 				    strippedString = strippedString.replace(scriptStyleRegex, '')
 				};
-				return strippedString.replace(hrefRegex, "href=\"https://$1\"");
+				const secureString = strippedString.replace(hrefRegex, "href=\"https://$1\"");
+				return DOMPurify.sanitize(secureString);
 			}
 			document.getElementById(`preview_banner_text${banner_id}`).innerHTML = document.getElementById(`simple_banner_text${banner_id}`).value != "" ? 
 							'<span>'+stripBannerText(document.getElementById(`simple_banner_text${banner_id}`).value)+'</span>' : 
@@ -978,4 +980,107 @@ function simple_banner_settings_page() {
 	</script>
 	<?php
 }
+
+// Clear cache on save
+function clear_all_caches() {
+    try {
+        $this->clearW3TotalCache();
+        $this->clearWPSuperCache();
+        $this->clearWPEngineCache();
+        $this->clearWPFastestCache();
+        $this->clearWPRocket();
+        $this->clearAutoOptimizeCache();
+        $this->clearLiteSpeedCache();
+        $this->clearHummingbirdCache();
+        
+        return true;
+    } catch (Exception $e) {
+        return 1;
+    }
+}
+
+function clearW3TotalCache() {
+    if (function_exists('w3tc_flush_all')) {
+        w3tc_flush_all();
+    }
+}
+
+function clearWPSuperCache() {
+    if (function_exists('wp_cache_clean_cache')) {
+        global $file_prefix, $supercachedir;
+        if (empty($supercachedir) && function_exists('get_supercache_dir')) {
+            $supercachedir = get_supercache_dir();
+        }
+        wp_cache_clean_cache($file_prefix);
+    }
+}
+
+function clearWPEngineCache() {
+    if (!class_exists('WpeCommon')) {
+        return;
+    }
+
+    $methods = [
+        'purge_memcached',
+        'clear_maxcdn_cache',
+        'purge_varnish_cache'
+    ];
+
+    foreach ($methods as $method) {
+        if (method_exists('WpeCommon', $method)) {
+            // WpeCommon::$method();  // Currently commented out in original code
+        }
+    }
+}
+
+function clearWPFastestCache() {
+    global $wp_fastest_cache;
+    if (method_exists('WpFastestCache', 'deleteCache') && !empty($wp_fastest_cache)) {
+        $wp_fastest_cache->deleteCache();
+    }
+}
+
+function clearWPRocket() {
+    if (!function_exists('rocket_clean_domain')) {
+        return;
+    }
+    
+    rocket_clean_domain();
+    if (function_exists('run_rocket_sitemap_preload')) {
+        run_rocket_sitemap_preload();
+    }
+}
+
+function clearAutoOptimizeCache() {
+    if (class_exists("autoptimizeCache") && method_exists("autoptimizeCache", "clearall")) {
+        autoptimizeCache::clearall();
+    }
+}
+
+function clearLiteSpeedCache() {
+    if (class_exists("LiteSpeed_Cache_API") && method_exists("autoptimizeCache", "purge_all")) {
+        LiteSpeed_Cache_API::purge_all();
+    }
+}
+
+function clearHummingbirdCache() {
+    if (!class_exists('\Hummingbird\Core\Utils')) {
+        return;
+    }
+
+    $modules = \Hummingbird\Core\Utils::get_active_cache_modules();
+    foreach ($modules as $module => $name) {
+        $mod = \Hummingbird\Core\Utils::get_module($module);
+        
+        if ($mod->is_active()) {
+            if ('minify' === $module) {
+                $mod->clear_files();
+            } else {
+                $mod->clear_cache();
+            }
+        }
+    }
+}
+
+
 ?>
