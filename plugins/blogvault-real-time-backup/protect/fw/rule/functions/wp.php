@@ -2,8 +2,8 @@
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 if (!defined('ABSPATH') && !defined('MCDATAPATH')) exit;
 
-if (!trait_exists('BVProtectFWRuleWPFunc_V592')) :
-trait BVProtectFWRuleWPFunc_V592 {
+if (!trait_exists('BVProtectFWRuleWPFunc_V593')) :
+trait BVProtectFWRuleWPFunc_V593 {
 	private function _rf_sanitizeUser() {
 		$args = $this->processRuleFunctionParams(
 			'sanitizeUser',
@@ -15,8 +15,8 @@ trait BVProtectFWRuleWPFunc_V592 {
 		$username = $args[0];
 		$strict = $args[1];
 
-		if (!function_exists('sanitize_user') || !BVProtectUtils_V592::haveMupluginsLoaded()) {
-			throw new BVProtectRuleError_V592(
+		if (!function_exists('sanitize_user') || !BVProtectUtils_V593::haveMupluginsLoaded()) {
+			throw new BVProtectRuleError_V593(
 				$this->addExState("sanitizeUser: Func sanitize_user doesn't exist.")
 			);
 		}
@@ -33,8 +33,8 @@ trait BVProtectFWRuleWPFunc_V592 {
 		);
 		$data = $args[0];
 
-		if (!function_exists('maybe_serialize') || !BVProtectUtils_V592::haveMupluginsLoaded()) {
-			throw new BVProtectRuleError_V592(
+		if (!function_exists('maybe_serialize') || !BVProtectUtils_V593::haveMupluginsLoaded()) {
+			throw new BVProtectRuleError_V593(
 				$this->addExState("maybeSerialize: Func maybe_serialize doesn't exist.")
 			);
 		}
@@ -49,8 +49,8 @@ trait BVProtectFWRuleWPFunc_V592 {
 			func_get_args()
 		);
 
-		if (!function_exists('is_user_logged_in') || !BVProtectUtils_V592::havePluginsLoaded()) {
-			throw new BVProtectRuleError_V592(
+		if (!function_exists('is_user_logged_in') || !BVProtectUtils_V593::havePluginsLoaded()) {
+			throw new BVProtectRuleError_V593(
 				$this->addExState("isUserLoggedIn: Func is_user_logged_in doesn't exist.")
 			);
 		}
@@ -65,13 +65,13 @@ trait BVProtectFWRuleWPFunc_V592 {
 			func_get_args()
 		);
 
-		if (!function_exists('wp_get_current_user') || !BVProtectUtils_V592::havePluginsLoaded()) {
-			throw new BVProtectRuleError_V592(
+		if (!function_exists('wp_get_current_user') || !BVProtectUtils_V593::havePluginsLoaded()) {
+			throw new BVProtectRuleError_V593(
 				$this->addExState("getCurrentWPUser: Func wp_get_current_user doesn't exist.")
 			);
 		}
 
-		return BVProtectFWRuleEngine_V592::toAllowedType(wp_get_current_user());
+		return BVProtectFWRuleEngine_V593::toAllowedType(wp_get_current_user());
 	}
 
 	private function _rf_currentUserCan() {
@@ -86,8 +86,8 @@ trait BVProtectFWRuleWPFunc_V592 {
 		$arg1 = isset($args[1]) ? $args[1] : null;
 		$arg2 = isset($args[2]) ? $args[2] : null;
 
-		if (!function_exists('current_user_can') || !BVProtectUtils_V592::havePluginsLoaded()) {
-			throw new BVProtectRuleError_V592(
+		if (!function_exists('current_user_can') || !BVProtectUtils_V593::havePluginsLoaded()) {
+			throw new BVProtectRuleError_V593(
 				$this->addExState("currentUserCan: Required funcs doesn't exist.")
 			);
 		}
@@ -114,20 +114,20 @@ trait BVProtectFWRuleWPFunc_V592 {
 		$field = $args[0];
 		$value = $args[1];
 
-		if (!function_exists('get_user_by') || !BVProtectUtils_V592::havePluginsLoaded()) {
-			throw new BVProtectRuleError_V592(
+		if (!function_exists('get_user_by') || !BVProtectUtils_V593::havePluginsLoaded()) {
+			throw new BVProtectRuleError_V593(
 				$this->addExState("getUserBy: Func get_user_by doesn't exist")
 			);
 		}
 
 		if ($field === 'ID' || $field === 'id') {
 			if (!is_string($value) && !is_int($value)) {
-				throw new BVProtectRuleError_V592(
+				throw new BVProtectRuleError_V593(
 					$this->addExState("getUserBy: Value must be a valid string or an integer")
 				);
 			}
 		} elseif (!is_string($value)) {
-			throw new BVProtectRuleError_V592(
+			throw new BVProtectRuleError_V593(
 				$this->addExState("getUserBy: Value must be a valid string")
 			);
 		}
@@ -137,7 +137,7 @@ trait BVProtectFWRuleWPFunc_V592 {
 			return null;
 		}
 
-		return BVProtectFWRuleEngine_V592::toAllowedType($user);
+		return BVProtectFWRuleEngine_V593::toAllowedType($user);
 	}
 
 	private function _rf_getCurrentWPUserCapabilities() {
@@ -150,12 +150,12 @@ trait BVProtectFWRuleWPFunc_V592 {
 		$user = $this->_rf_getCurrentWPUser();
 
 		if (!array_key_exists("allcaps", $user)) {
-			throw new BVProtectRuleError_V592(
+			throw new BVProtectRuleError_V593(
 				$this->addExState("getCurrentWPUserCapabilities: allcaps doesn't exist in user.")
 			);
 		}
 
-		return BVProtectFWRuleEngine_V592::toAllowedType($user["allcaps"]);
+		return BVProtectFWRuleEngine_V593::toAllowedType($user["allcaps"]);
 	}
 
 	private function _rf_getUserCapabilities() {
@@ -173,12 +173,12 @@ trait BVProtectFWRuleWPFunc_V592 {
 		}
 
 		if (!array_key_exists("allcaps", $user)) {
-			throw new BVProtectRuleError_V592(
+			throw new BVProtectRuleError_V593(
 				$this->addExState("getUserCapabilities: allcaps doesn't exist in user.")
 			);
 		}
 
-		return BVProtectFWRuleEngine_V592::toAllowedType($user["allcaps"]);
+		return BVProtectFWRuleEngine_V593::toAllowedType($user["allcaps"]);
 	}
 
 	private function _rf_getDefaultUserRole() {
@@ -202,13 +202,13 @@ trait BVProtectFWRuleWPFunc_V592 {
 		$option = $args[0];
 		$default_value = isset($args[1]) ? $args[1] : false;
 
-		if (!function_exists('get_option') || !BVProtectUtils_V592::haveMupluginsLoaded()) {
-			throw new BVProtectRuleError_V592(
+		if (!function_exists('get_option') || !BVProtectUtils_V593::haveMupluginsLoaded()) {
+			throw new BVProtectRuleError_V593(
 				$this->addExState("getOption: Func get_option doesn't exist.")
 			);
 		}
 
-		return BVProtectFWRuleEngine_V592::toAllowedType(get_option($option, $default_value));
+		return BVProtectFWRuleEngine_V593::toAllowedType(get_option($option, $default_value));
 	}
 
 	private function _rf_checkPasswordResetKey() {
@@ -222,8 +222,8 @@ trait BVProtectFWRuleWPFunc_V592 {
 		$key = $args[0];
 		$login = $args[1];
 
-		if (!function_exists('check_password_reset_key') || !BVProtectUtils_V592::havePluginsLoaded()) {
-			throw new BVProtectRuleError_V592(
+		if (!function_exists('check_password_reset_key') || !BVProtectUtils_V593::havePluginsLoaded()) {
+			throw new BVProtectRuleError_V593(
 				$this->addExState("checkPasswordResetKey: Func check_password_reset_key doesn't exist.")
 			);
 		}
@@ -231,7 +231,7 @@ trait BVProtectFWRuleWPFunc_V592 {
 		$user = check_password_reset_key($key, $login);
 
 		if (is_a($user, "WP_User")) {
-			return BVProtectFWRuleEngine_V592::toAllowedType($user);
+			return BVProtectFWRuleEngine_V593::toAllowedType($user);
 		}
 
 		return null;
@@ -286,14 +286,14 @@ trait BVProtectFWRuleWPFunc_V592 {
 		);
 		$value = $args[0];
 
-		if (!function_exists('wp_unslash') || !BVProtectUtils_V592::haveMuPluginsLoaded()) {
-			throw new BVProtectRuleError_V592(
+		if (!function_exists('wp_unslash') || !BVProtectUtils_V593::haveMuPluginsLoaded()) {
+			throw new BVProtectRuleError_V593(
 				$this->addExState("wpUnslash: Func wp_unslash doesn't exist.")
 			);
 		}
 
 		if (!is_string($value) && !is_array($value)) {
-			throw new BVProtectRuleError_V592(
+			throw new BVProtectRuleError_V593(
 				$this->addExState("wpUnslash: Value must be a valid string or an array")
 			);
 		}
@@ -309,7 +309,7 @@ trait BVProtectFWRuleWPFunc_V592 {
 		);
 
 		if (!defined('COOKIEHASH')) {
-			throw new BVProtectRuleError_V592(
+			throw new BVProtectRuleError_V593(
 				$this->addExState("parseResetPassCookie: COOKIEHASH is not defined.")
 			);
 		}

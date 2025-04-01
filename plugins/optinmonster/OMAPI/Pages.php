@@ -546,6 +546,9 @@ class OMAPI_Pages {
 				$args['onboardingPlugins'] = $onboarding_plugins;
 			}
 
+			$args['isWpmlActive'] = OMAPI_Utils::is_wpml_active();
+			$args['wpmlDomains']  = OMAPI_Utils::get_wpml_language_domains();
+
 			$js_args = wp_parse_args( $args, $defaults );
 			$js_args = apply_filters( 'optin_monster_campaigns_js_api_args', $js_args );
 

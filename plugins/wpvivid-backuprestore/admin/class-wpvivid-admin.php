@@ -96,6 +96,7 @@ class WPvivid_Admin
         add_action('admin_notices', array($this, 'check_wpvivid_free_htaccess_rule'));
 
         add_filter('wpvivid_current_user_show_toolbar', array($this, 'current_user_show_toolbar'), 10, 2);
+        add_action('in_admin_header',array( $this,'hide_notices'), 98);
 
         $this->plugin_name = $plugin_name;
         $this->version = $version;
@@ -1001,6 +1002,17 @@ class WPvivid_Admin
         }
     }
 
+    public function hide_notices()
+    {
+        $this->screen_ids=apply_filters('wpvivid_get_screen_ids',$this->screen_ids);
+        if(in_array(get_current_screen()->id,$this->screen_ids))
+        {
+            remove_all_actions('admin_notices');
+            add_action('admin_notices', array($this, 'check_wpvivid_pro_version'));
+            add_action('admin_notices', array($this, 'check_wpvivid_free_htaccess_rule'));
+        }
+    }
+
     public function init_js_var()
     {
         global $wpvivid_plugin;
@@ -1671,7 +1683,6 @@ class WPvivid_Admin
                     <td>
                         <p><strong><?php esc_html_e('Domains', 'wpvivid-backuprestore'); ?></strong></p>
                         <p><strong><?php esc_html_e('Backup & Migration Pro', 'wpvivid-backuprestore'); ?></strong></p>
-                        <p><strong><?php esc_html_e('Image Optimization Pro (Unlimited/domain)', 'wpvivid-backuprestore'); ?></strong></p>
                         <p><strong><?php esc_html_e('Mulitsite Support', 'wpvivid-backuprestore'); ?></strong></p>
                         <p><strong><?php esc_html_e('Staging Pro', 'wpvivid-backuprestore'); ?></strong></p>
                         <p><strong><?php esc_html_e('White Label', 'wpvivid-backuprestore'); ?></strong></p>
@@ -1679,7 +1690,6 @@ class WPvivid_Admin
                     </td>
                     <td style="text-align:center;">
                         <p><span style="color: #81d742;"><?php esc_html_e('2 domains', 'wpvivid-backuprestore'); ?></span></p>
-                        <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
                         <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
                         <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
                         <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
@@ -1693,7 +1703,6 @@ class WPvivid_Admin
                         <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
                         <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
                         <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
-                        <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
                     </td>
                     <td style="text-align:center;">
                         <p><span style="color: #81d742;"><?php esc_html_e('Up to 50 domains', 'wpvivid-backuprestore'); ?></span></p>
@@ -1702,11 +1711,9 @@ class WPvivid_Admin
                         <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
                         <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
                         <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
-                        <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
                     </td>
                     <td style="text-align:center;">
                         <p><span style="color: #81d742;"><?php esc_html_e('Unlimited domains', 'wpvivid-backuprestore'); ?></span></p>
-                        <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
                         <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
                         <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>
                         <p><span style="height: 12px;width: 12px;background-color: #81d742;border-radius: 50%;display: inline-block;"></span></p>

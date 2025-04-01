@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 5.72.0
+Stable tag: 5.73.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -233,6 +233,11 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.73.1 =
+* Reorganization of language files
+= 5.73.0 =
+* Improvement: 'show more reviews' button of the [cusrev_reviews_grid] shortcode includes the number of reviews
+* Bug fix: incorrect display of reviews in the [cusrev_reviews_grid] shortcode when WPML plugin is active
 = 5.72.0 =
 * Improvement: SVG-based solution for display of rating stars instead of the custom font
 * Improvement: compatibility with WooCommerce B2B Sales Agents plugin

@@ -65,15 +65,6 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 			}
 		}
 
-		/**
-		* Returns the review grid markup.
-		*
-		* @since 3.61
-		*
-		* @param array $attributes Block attributes.
-		*
-		* @return string
-		*/
 		public function render_reviews_grid( $attributes ) {
 			wp_enqueue_script( 'cr-colcade' );
 			$this->attributes = $attributes;
@@ -241,6 +232,8 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 			}
 
 			$reviews = [];
+			$count_all_product_reviews = 0;
+			$count_all_shop_reviews = 0;
 			// Query needs to be modified if min_chars constraints are set
 			if ( ! empty( $attributes['min_chars'] ) ) {
 				$this->min_chars = $attributes['min_chars'];
@@ -265,22 +258,34 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 					$args['order'] = $order;
 					$args['number'] = $max_reviews;
 					$reviews = get_comments( $args );
+					// get the total count of product reviews for use on the show more button label
+					$args_c = $args;
+					unset( $args_c['number'] );
+					$args_c['count'] = true;
+					$count_all_product_reviews = get_comments( $args_c );
+				} else {
+					$args = null;
 				}
 			}
 
-			$shop_page_id = wc_get_page_id( 'shop' );
+			$shop_page_ids = CR_Reviews_List_Table::get_shop_page();
 			if( true === $attributes['shop_reviews'] ) {
 				$max_shop_reviews = $attributes['count_shop_reviews'];
-				if( $shop_page_id > 0 && $max_shop_reviews > 0 ) {
+				if ( 0 < count( $shop_page_ids ) && 0 < $max_shop_reviews ) {
 					$args_s = array(
 						'status'      => 'approve',
 						'post_status' => 'publish',
-						'post_id'			=> $shop_page_id,
+						'post__in'    => $shop_page_ids,
 						'meta_key'    => 'rating',
 						'orderby'     => $order_by,
 						'comment__in' => $comment_in,
 						'comment__not_in' => $comment__not_in
 					);
+
+					if ( function_exists( 'pll_current_language' ) ) {
+						// Polylang compatibility
+						$args_s['lang'] = '';
+					}
 
 					if( get_query_var( CR_Reviews::$rating_get_filter ) ) {
 						$rating = intval( get_query_var( CR_Reviews::$rating_get_filter ) );
@@ -295,7 +300,7 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 					}
 
 					$shop_reviews = [];
-					if( 'RAND' === $order ) {
+					if ( 'RAND' === $order ) {
 						$all_shop_reviews = get_comments( $args_s );
 						$count_all_shop_reviews = count( $all_shop_reviews );
 						if( 0 < $count_all_shop_reviews ) {
@@ -314,6 +319,11 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 							$args_s['order'] = $order;
 							$args_s['number'] = $max_shop_reviews;
 							$shop_reviews = get_comments( $args_s );
+							// get the total count of shop reviews for use on the show more button label
+							$args_s_c = $args_s;
+							unset( $args_s_c['number'] );
+							$args_s_c['count'] = true;
+							$count_all_shop_reviews = get_comments( $args_s_c );
 						}
 					}
 
@@ -327,15 +337,8 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 			}
 			remove_filter( 'comments_clauses', array( $this, 'min_chars_comments_clauses' ) );
 
-			// WPML compatibility
-			if( has_filter( 'wpml_current_language' ) && ! function_exists( 'pll_current_language' ) ) {
-				global $sitepress;
-				if ( $sitepress ) {
-					add_filter( 'comments_clauses', array( $sitepress, 'comments_clauses' ), 10, 2 );
-				}
-			}
-
 			$num_reviews = count( $reviews );
+			$count_all_reviews = $count_all_product_reviews + $count_all_shop_reviews;
 
 			// make sure that we do not return more reviews than necessary
 			if( 0 < $attributes['count_total'] ) {
@@ -348,6 +351,8 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 					$reviews = $reviews_temp;
 				}
 			}
+
+			$remaining_reviews = $count_all_reviews - count( $reviews );
 
 			$cr_verified_label = get_option( 'ivole_verified_owner', '' );
 			if( $cr_verified_label ) {
@@ -402,8 +407,15 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 			// display a summary bar
 			$summary_bar = '';
 			if ( $attributes['show_summary_bar'] || $attributes['add_review'] ) {
-				if( !empty($args_s) ) $summary_bar = $this->show_summary_table( $args, $args_s );
-				else $summary_bar = $this->show_summary_table( $args );
+				$summary_bar = $this->show_summary_table( $args, $args_s );
+			}
+
+			// WPML compatibility
+			if ( has_filter( 'wpml_current_language' ) && ! function_exists( 'pll_current_language' ) ) {
+				global $sitepress;
+				if ( $sitepress ) {
+					add_filter( 'comments_clauses', array( $sitepress, 'comments_clauses' ), 10, 2 );
+				}
 			}
 
 			// display incentivized badges
@@ -866,7 +878,7 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 			return $clauses;
 		}
 
-		private function show_summary_table( $args, $args_shop = array() ){
+		private function show_summary_table( $args, $args_shop ){
 			$all = $this->count_ratings( 0, $args, $args_shop );
 			$output = '';
 			if ($all > 0) {
@@ -1044,27 +1056,32 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 			return $output;
 		}
 
-		private function count_ratings( $rating, $args, $args_shop = array() ) {
-			$args['count'] = true;
-			$args['type__not_in'] = 'cr_qna';
-			$args['parent'] = 0;
-			unset($args['meta_query']);
-
-			if ($rating > 0) {
-				$args['meta_query'][] = array(
-					'key' => 'rating',
-					'value'   => $rating,
-					'compare' => '=',
-					'type'    => 'numeric'
-				);
-			}
+		private function count_ratings( $rating, $args, $args_shop ) {
+			$count = 0;
 
 			if ( ! empty( $this->min_chars ) ) {
 				add_filter( 'comments_clauses', array( $this, 'min_chars_comments_clauses' ) );
 			}
-			$count = get_comments( $args );
 
-			if( !empty( $args_shop ) ){
+			if ( $args && is_array( $args ) ) {
+				$args['count'] = true;
+				$args['type__not_in'] = 'cr_qna';
+				$args['parent'] = 0;
+				unset($args['meta_query']);
+
+				if ($rating > 0) {
+					$args['meta_query'][] = array(
+						'key' => 'rating',
+						'value'   => $rating,
+						'compare' => '=',
+						'type'    => 'numeric'
+					);
+				}
+
+				$count = get_comments( $args );
+			}
+
+			if ( $args_shop && is_array( $args_shop ) ) {
 				$args_shop['count'] = true;
 				$args_shop['type__not_in'] = 'cr_qna';
 				$args_shop['parent'] = 0;
@@ -1082,6 +1099,7 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 				$count_shop = get_comments($args_shop);
 				$count = $count + $count_shop;
 			}
+			
 			remove_filter( 'comments_clauses', array( $this, 'min_chars_comments_clauses' ) );
 
 			return $count;

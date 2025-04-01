@@ -2,9 +2,9 @@
 Contributors: yithemes
 Tags: woocommerce, quick view, woocommerce quick view, products quick view
 Requires PHP: 7.4
-Requires at least: 6.5
-Tested up to: 6.7
-Stable tag: 2.3.0
+Requires at least: 6.6
+Tested up to: 6.8
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 3. The quick view modal.
 
 == Changelog ==
+
+= 2.4.0 = Released 31 March 2025
+* New: support for WordPress 6.8
+* New: support for WooCommerce 9.8
 
 = 2.3.0 = Released 27 February 2025
 * New: support for WooCommerce 9.7

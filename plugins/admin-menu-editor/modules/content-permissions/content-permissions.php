@@ -152,6 +152,18 @@ class ContentPermissionsModule extends \amePersistentModule {
 					),
 				]
 			),
+			$f->enum(
+				'detectCapsWithNonExistentUser',
+				[null, true, false],
+				__('Detect post type capabilities by checking them with a non-existent user', 'admin-menu-editor'),
+				[
+					'description' => __(
+						'This usually produces more accurate results, but it can cause errors in some plugins and themes. If you see errors in the post editor, try disabling this option.',
+						'admin-menu-editor'
+					),
+					'default'     => null,
+				]
+			),
 		];
 	}
 
@@ -161,6 +173,7 @@ class ContentPermissionsModule extends \amePersistentModule {
 			return;
 		}
 		$enforcementDisabled = $settings->getSetting('enforcementDisabled');
+		$detectCapsWithNonExistentUser = $settings->getSetting('detectCapsWithNonExistentUser');
 
 		?>
 		<tr id="ame-content-permissions-section">
@@ -182,6 +195,15 @@ class ContentPermissionsModule extends \amePersistentModule {
 						<?php endif; ?>
 					</label>
 				</p>
+				<p>
+					<label>
+						<input type="checkbox" name="ame_cpe_detectCapsWithNonExistentUser"
+							<?php checked($detectCapsWithNonExistentUser->getValue(true)); ?>>
+						<?php echo esc_html($detectCapsWithNonExistentUser->getLabel()); ?>
+						<br><span class="description"><?php
+							echo esc_html($detectCapsWithNonExistentUser->getDescription()); ?>
+						</span>
+					</label>
 			</td>
 		</tr>
 		<?php
@@ -194,6 +216,9 @@ class ContentPermissionsModule extends \amePersistentModule {
 		}
 		$enforcementDisabled = $settings->getSetting('enforcementDisabled');
 		$enforcementDisabled->update(!empty($post['ame_cpe_enforcementDisabled']));
+
+		$detectCapsWithNonExistentUser = $settings->getSetting('detectCapsWithNonExistentUser');
+		$detectCapsWithNonExistentUser->update(!empty($post['ame_cpe_detectCapsWithNonExistentUser']));
 
 		$settings->save();
 	}

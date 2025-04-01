@@ -254,7 +254,8 @@ class Math_BigInteger
                 $php_version=PHP_VERSION;
             }
             if((substr($php_version, 0, 3) === '8.2') && version_compare($php_version, '8.2.26', '>=') ||
-                (substr($php_version, 0, 3) === '8.3') && version_compare($php_version, '8.3.14', '>='))
+                (substr($php_version, 0, 3) === '8.3') && version_compare($php_version, '8.3.14', '>=') ||
+                (substr($php_version, 0, 3) === '8.4') && version_compare($php_version, '8.4.0', '>='))
             {
                 switch (true) {
                     case extension_loaded('bcmath'):

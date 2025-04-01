@@ -2,6 +2,8 @@
 
 namespace Give\FormBuilder;
 
+use Give\Campaigns\ValueObjects\CampaignType;
+use Give\Framework\Database\DB;
 use Give\Helpers\Language;
 
 class FormBuilderRouteBuilder
@@ -58,17 +60,36 @@ class FormBuilderRouteBuilder
     }
 
     /**
+     * @since 4.0.0 add p2p param
      * @since 3.22.0 Add locale support
      * @since 3.0.0
      */
     public function getUrl(): string
     {
+        $queryArgs = [
+            'post_type' => 'give_forms',
+            'page' => self::SLUG,
+            'donationFormID' => $this->donationFormID,
+            'locale' => $this->locale,
+        ];
+
+        if (isset($_GET['campaignId'])) {
+            $queryArgs['campaignId'] = $_GET['campaignId'];
+        }
+
+        // Check if it's P2P form
+        $form = DB::table('give_campaigns')
+            ->where('form_id', $this->donationFormID)
+            ->where('campaign_type', CampaignType::CORE, '!=')
+            ->get();
+
+        if ($form) {
+            $queryArgs['p2p'] = true;
+        }
+
         return add_query_arg(
             [
-                'post_type' => 'give_forms',
-                'page' => self::SLUG,
-                'donationFormID' => $this->donationFormID,
-                'locale' => $this->locale,
+                $queryArgs,
             ],
             admin_url('edit.php')
         );

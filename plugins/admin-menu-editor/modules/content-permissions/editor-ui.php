@@ -10,6 +10,7 @@ use YahnisElsts\AdminMenuEditor\ContentPermissions\Policy\Action;
 use YahnisElsts\AdminMenuEditor\ContentPermissions\Policy\ActionRegistry;
 use YahnisElsts\AdminMenuEditor\ContentPermissions\Policy\ContentItemPolicy;
 use YahnisElsts\AdminMenuEditor\ContentPermissions\Policy\PolicyStore;
+use YahnisElsts\AdminMenuEditor\Customizable\Storage\AbstractSettingsDictionary;
 
 class ContentPermissionsMetaBox {
 	const BOX_ID = 'ame-cpe-content-permissions';
@@ -105,6 +106,8 @@ class ContentPermissionsMetaBox {
 			return;
 		}
 
+		$moduleSettings = $this->module->loadSettings();
+
 		//Nonce field(s). The referer field may be redundant if another plugin also adds a meta box
 		//with its own nonce fields, but we can't easily detect that.
 		wp_nonce_field(self::BOX_NONCE_ACTION, self::BOX_NONCE_NAME);
@@ -119,9 +122,32 @@ class ContentPermissionsMetaBox {
 		//Figure out what capabilities are required for each action. This is used to populate
 		//the default permissions for each action (only for presentation purposes).
 		$requiredCapabilities = $this->enforcer->runWithoutPolicyEnforcement(
-			function () use ($post, $applicableActions) {
+			function () use ($post, $applicableActions, $moduleSettings) {
+				/*
+				By default, we detect capabilities by calling map_meta_cap() with user ID 0.
+				Unfortunately, this causes some plugins and themes to crash since they expect
+				the user ID to always be valid and have no error checking.
+
+				To mitigate this, the first time we try this (i.e. detectCapsWithNonExistentUser = null),
+				we set the setting to `false` and detect capabilities as usual. If execution
+				isn't interrupted by a crash, we set it to `true` and don't change it again.
+
+				The user can also manually disable this setting in the "Settings" tab.
+				 */
+				$detectCapsWithNonExistentUser = $moduleSettings['detectCapsWithNonExistentUser'];
+				$doFirstRunTest = (
+					($detectCapsWithNonExistentUser === null)
+					&& ($moduleSettings instanceof AbstractSettingsDictionary)
+				);
+				if ( $doFirstRunTest ) {
+					$detectCapsWithNonExistentUser = true;
+					$moduleSettings->set('detectCapsWithNonExistentUser', false);
+					$moduleSettings->save();
+				}
+
 				$postStatus = get_post_status_object($post->ID);
 				$isDraftLike = !$postStatus || (!$postStatus->public && !$postStatus->private);
+				$postTypeObject = get_post_type_object($post->post_type);
 
 				$requiredCapabilities = [];
 				foreach ($applicableActions as $action) {
@@ -130,26 +156,37 @@ class ContentPermissionsMetaBox {
 						continue;
 					}
 
+					//Special case: The trick we use to get required caps through map_meta_cap() doesn't
+					//work so well for drafts because the logic in the "read_post" case ends up calling
+					//map_meta_cap() recursively with "edit_post" and returns "edit_others_posts" or similar.
+					//Instead, let's look at post type capabilities directly.
 					if ( $isDraftLike && ($metaCap === 'read_post') ) {
-						//Special case: The trick we use to get required caps through map_meta_cap() doesn't
-						//work so well for drafts because the logic in the "read_post" case ends up calling
-						//map_meta_cap() recursively with "edit_post" and returns "edit_others_posts" or similar.
-						//Instead, let's look at post type capabilities directly.
-						$postTypeObject = get_post_type_object($post->post_type);
 						if ( $postTypeObject && !empty($postTypeObject->cap->read) ) {
 							$requiredCapabilities[$action->getName()] = [$postTypeObject->cap->read];
 						}
-					} else {
+						continue;
+					}
+
+					if ( $detectCapsWithNonExistentUser ) {
 						//Note: Invalid user ID is intentional. We want a "general" mapping, for someone
 						//that's not the author of the post or otherwise special. There doesn't seem to be
 						//a good way to do that with real users (and there might be no real user that fits
 						//those criteria).
 						$caps = map_meta_cap($metaCap, 0, $post->ID);
-						if ( !empty($caps) ) {
-							$requiredCapabilities[$action->getName()] = $caps;
-						}
+					} else {
+						$caps = $this->mapMetaCapDirectly($metaCap, $postTypeObject);
+					}
+					if ( !empty($caps) ) {
+						$requiredCapabilities[$action->getName()] = $caps;
 					}
 				}
+
+				if ( $doFirstRunTest ) {
+					//If we got here, it means the test was successful, and we can enable the setting.
+					$moduleSettings->set('detectCapsWithNonExistentUser', true);
+					$moduleSettings->save();
+				}
+
 				return $requiredCapabilities;
 			}
 		);
@@ -162,11 +199,64 @@ class ContentPermissionsMetaBox {
 			'applicableActions'    => $applicableActions,
 			'requiredCapabilities' => $requiredCapabilities,
 			'policy'               => $policy,
-			'enforcementDisabled'  => boolval($this->module->loadSettings()['enforcementDisabled']),
+			'enforcementDisabled'  => boolval($moduleSettings['enforcementDisabled']),
 			'adminLikeRoles'       => $this->getAdminLikeRoles(),
 		];
 		$cpeSettingsUrl = $this->settingsPageUrl . '#ame-content-permissions-section';
 		require __DIR__ . '/metabox-template.php';
+	}
+
+	/**
+	 * A very simplified version of map_meta_cap() that only handles the meta caps we care about
+	 * and doesn't use the current user.
+	 *
+	 * @param string $metaCap
+	 * @param object $postTypeObject
+	 * @return string[]
+	 */
+	private function mapMetaCapDirectly($metaCap, $postTypeObject) {
+		if ( !$postTypeObject ) {
+			return [];
+		}
+
+		$othersMetaCaps = [
+			'edit_post'   => 'edit_others_posts',
+			'delete_post' => 'delete_others_posts',
+		];
+
+		switch ($metaCap) {
+			case 'read_post':
+				if ( !empty($postTypeObject->cap->read) ) {
+					return [$postTypeObject->cap->read];
+				}
+				break;
+			case 'edit_post':
+			case 'delete_post':
+				if ( !$postTypeObject->map_meta_cap ) {
+					if ( !empty($postTypeObject->cap->$metaCap) ) {
+						return [$postTypeObject->cap->$metaCap];
+					}
+					break;
+				}
+
+				if ( isset($othersMetaCaps[$metaCap]) ) {
+					$othersCap = $othersMetaCaps[$metaCap];
+					if ( !empty($postTypeObject->cap->$othersCap) ) {
+						return [$postTypeObject->cap->$othersCap];
+					}
+				}
+				break;
+
+			case 'publish_post':
+				//WordPress doesn't check $postTypeObject->map_meta_cap for "publish_post",
+				//it always goes to "publish_posts".
+				if ( !empty($postTypeObject->cap->publish_posts) ) {
+					return [$postTypeObject->cap->publish_posts];
+				}
+				break;
+		}
+
+		return [];
 	}
 
 	private function getEnabledPostTypes() {

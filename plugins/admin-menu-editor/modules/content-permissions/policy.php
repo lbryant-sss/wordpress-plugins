@@ -503,8 +503,8 @@ class Action implements \JsonSerializable {
 	public function jsonSerialize() {
 		return [
 			'name'        => $this->name,
-			'label'       => $this->label,
-			'description' => $this->description,
+			'label'       => $this->getLabel(),
+			'description' => $this->getDescription(),
 		];
 	}
 }

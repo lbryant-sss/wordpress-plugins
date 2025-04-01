@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to the OptinMonster plugin will be documented in this file.
 
+### 2.16.19 - 2025-03-31
+* Improved support for the WPML plugin
+
 ### 2.16.18 - 2025-03-26
 * Fixed a scenario where the wrong screenshot may load
 

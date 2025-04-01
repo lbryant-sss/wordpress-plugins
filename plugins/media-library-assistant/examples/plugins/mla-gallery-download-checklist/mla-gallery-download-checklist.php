@@ -3,7 +3,7 @@
  * Downloads an array of checked items as a ZIP archive
  *
  * Includes 1) a shortcode that generates an HTML form Submit button and several hidden elements
- * that customize the ZIP archive. 2) An AJAX-based "action" function that creates the ZUIP archive
+ * that customize the ZIP archive. 2) An AJAX-based "action" function that creates the ZIP archive
  * and sends it to the client system.
  *
  * You can find more information about using all of the features of this plugin in the Documentation tab
@@ -20,7 +20,7 @@
 /*
 Plugin Name: MLA Gallery Download Checklist
 Plugin URI: http://davidlingren.com/
-Description: Generate HTML form elements and ownload checked items as a ZIP archive
+Description: Generate HTML form elements and download checked items as a ZIP archive
 Author: David Lingren
 Version: 1.00
 Author URI: http://davidlingren.com/
@@ -167,7 +167,7 @@ class MLAGalleryDownloadChecklist {
 		if ( ! class_exists( 'MLACore', false ) ) {
 			return;
 		}
-		
+
 		// The plugin settings class is shared with other MLA example plugins
 		if ( ! class_exists( 'MLAExamplePluginSettings102' ) ) {
 			require_once( pathinfo( __FILE__, PATHINFO_DIRNAME ) . '/class-mla-example-plugin-settings-102.php' );
@@ -474,7 +474,7 @@ class MLAGalleryDownloadChecklist {
 
 		$input_id = sanitize_title_with_dashes( trim( $archive_title . '-submit' ) );
 		$form_text .= sprintf( '<input %1$s%2$stype="submit" id="%3$s" name="%4$s" value="%5$s">', $button_attributes, $button_class, $input_id, $archive_name, esc_attr( $button_text ) );
-		
+
 		return $form_text;
 	} //mla_download_checklist_shortcode
 } //MLAGalleryDownloadChecklist

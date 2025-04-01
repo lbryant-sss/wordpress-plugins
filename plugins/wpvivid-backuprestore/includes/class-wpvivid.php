@@ -3695,16 +3695,6 @@ class WPvivid
                 }
             }
 
-            $wp_version_check=$backup_item->check_wp_version();
-            if($wp_version_check)
-            {
-                $ret['wp_version_check']=true;
-            }
-            else
-            {
-                $ret['wp_version_check']=false;
-            }
-
             echo wp_json_encode($ret);
         }
         catch (Exception $error)
@@ -4015,16 +4005,6 @@ class WPvivid
                 {
                     $ret['has_zero_date']=1;
                 }
-            }
-
-            $wp_version_check=$backup_item->check_wp_version();
-            if($wp_version_check)
-            {
-                $ret['wp_version_check']=true;
-            }
-            else
-            {
-                $ret['wp_version_check']=false;
             }
 
             $ret['result']=WPVIVID_SUCCESS;

@@ -92,6 +92,11 @@ class OMAPI_Refresh {
 	public function set() {
 		self::$instance = $this;
 		$this->base     = OMAPI::get_instance();
+
+		// If WPML is enabled, add the language domains to the parameter.
+		if ( OMAPI_Utils::is_wpml_active() ) {
+			$this->api_args['wpml_domains'] = json_encode( OMAPI_Utils::get_wpml_language_domains() );
+		}
 	}
 
 	/**

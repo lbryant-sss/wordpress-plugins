@@ -110,7 +110,9 @@
         };
 
         plugin.showPanel = function(anchor, immediate) {
-            if ( anchor.is("li.mega-menu-item") ) {
+            if ( $.isNumeric(anchor) ) {
+                anchor = $("li.mega-menu-item-" + anchor, $menu).find("a.mega-menu-link").first();
+            } else if ( anchor.is("li.mega-menu-item") ) {
                 anchor = anchor.find("a.mega-menu-link").first();
             }
 
@@ -176,7 +178,9 @@
 
 
         plugin.hidePanel = function(anchor, immediate) {
-            if ( anchor.is("li.mega-menu-item") ) {
+            if ( $.isNumeric(anchor) ) {
+                anchor = $("li.mega-menu-item-" + anchor, $menu).find("a.mega-menu-link").first();
+            } else if ( anchor.is("li.mega-menu-item") ) {
                 anchor = anchor.find("a.mega-menu-link").first();
             }
 
@@ -683,16 +687,16 @@
             plugin.initIndicators();
         };
 
+        plugin.initMobile = function() {
+            plugin.switchToMobile();
+        };
+
         plugin.switchToDesktop = function() {
             $menu.data("view", "desktop");
             plugin.bindMegaMenuEvents();
             plugin.reverseRightAlignedItems();
             plugin.hideAllPanels();
             plugin.hideMobileMenu(true);
-        };
-
-        plugin.initMobile = function() {
-            plugin.switchToMobile();
         };
 
         plugin.switchToMobile = function() {
@@ -723,12 +727,10 @@
              $menu.off('click.megamenu', '.mega-indicator');
 
              $menu.on('click.megamenu', '.mega-indicator', function(e) {
-                console.log($(this).attr('class'));
                 e.preventDefault();
                 e.stopPropagation();
 
                 if ( $(this).closest(".mega-menu-item").hasClass("mega-toggle-on") ) {
-                    console.log('has mega-toggle-on');
                     if ( ! $(this).closest("ul.mega-sub-menu").parent().hasClass("mega-menu-tabbed") || plugin.isMobileView() ) {
                         plugin.hidePanel($(this).parent(), false);
                     }

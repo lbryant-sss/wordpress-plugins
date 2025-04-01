@@ -1,21 +1,21 @@
 <?php
 if (!defined('ABSPATH') && !defined('MCDATAPATH')) exit;
 
-if (!class_exists('BVProtectLogger_V592')) :
+if (!class_exists('BVProtectLogger_V593')) :
 require_once dirname( __FILE__ ) . '/logger/fs.php';
 require_once dirname( __FILE__ ) . '/logger/db.php';
 
-class BVProtectLogger_V592 {
+class BVProtectLogger_V593 {
 	private $log_destination;
 
 	const TYPE_FS = 0;
 	const TYPE_DB = 1;
 
-	function __construct($name, $type = BVProtectLogger_V592::TYPE_DB) {
-		if ($type == BVProtectLogger_V592::TYPE_FS) {
-			$this->log_destination = new BVProtectLoggerFS_V592($name);
+	function __construct($name, $type = BVProtectLogger_V593::TYPE_DB) {
+		if ($type == BVProtectLogger_V593::TYPE_FS) {
+			$this->log_destination = new BVProtectLoggerFS_V593($name);
 		} else {
-			$this->log_destination = new BVProtectLoggerDB_V592($name);
+			$this->log_destination = new BVProtectLoggerDB_V593($name);
 		}
 	}
 

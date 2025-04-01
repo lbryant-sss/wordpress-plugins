@@ -7835,8 +7835,10 @@ The following hooks are defined in <code>/media-library-assistant/includes/class
 <td class="mla-doc-hook-definition">Called when the MLA_List_Table can't find a value for a given column.</td>
 </tr>
 <tr>
-<td class="mla-doc-hook-label">mla_list_table_submenu_arguments</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to filter the URL parameters that will be retained when the submenu page refreshes.</td>
+<td class="mla-doc-hook-label">mla_list_table_submenu_arguments,<br />
+mla_setting_table_submenu_arguments
+</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to filter the URL parameters that will be retained when the submenu page refreshes. The "mla_list_table..." filter is used in the Media/Assistant submenu. The "mla_setting_table..." filter is used in several Settings/Media Library Assistant submenu tabs. An additional parameter for this filter specifies which tab the filter applies to.</td>
 </tr>
 <tr>
 <td class="mla-doc-hook-label">mla_list_table_prepare_items_pagination</td>

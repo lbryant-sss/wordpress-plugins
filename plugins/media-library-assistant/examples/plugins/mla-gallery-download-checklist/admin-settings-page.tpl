@@ -153,7 +153,7 @@ ul.mla_settings li {
 </p>
 <h3>Introduction</h3>
 <p>
-This plugin provides a way to create a ZIP archive of Media Library items from a list of item IDs, typically composed by checking one or more boxes in a form surrounding a gallery created by the <code>[mla_gallery]</code> shortcode. An appliation including this plugin has four elements:</p>
+This plugin provides a way to create a ZIP archive of Media Library items from a list of item IDs, typically composed by checking one or more boxes in a form surrounding a gallery created by the <code>[mla_gallery]</code> shortcode. An application including this plugin has four elements:</p>
 <ul class="mla-doc-toc-list">
 <li>A custom markup template with checkbox elements for selecting items,</li>
 <li>An HTML form in the post/page content,</li>
@@ -275,7 +275,7 @@ The <code>name</code> attribute value must match the value used in the <code>[ml
 	<li>Scroll to the bottom and click "Update".</li>
 </ol>
 <p>
-Once that’s done you are ready to use the new template in your <code>[mla_gallery]</code> shortcode.
+Once that's done you are ready to use the new template in your <code>[mla_gallery]</code> shortcode.
 </p>
 <h4>HTML form</h4>
 <p>
@@ -319,13 +319,10 @@ For this example include <code>allow_empty_gallery=false</code> to substitute a 
 </p>
 <h3>Debugging and Troubleshooting</h3>
 <p>
-If you are not getting the results you expect from the plugin carefully inspecting the results of parsing the specification and generating the query can be a valuable exercise. You can add the <code>muie_debug=true</code> or <code>muie_debug=log</code> parameters to the <code>[mla_gallery]</code> or <code>[mla_term_list]</code> shortcode, run a test and inspect the log file or the screen messages for more information about what's going on.
+If you are not getting the results you expect from the plugin carefully inspecting the results of parsing the specification and generating the query can be a valuable exercise. You can add the <code>mla_debug=true</code> or <code>mla_debug=log</code> parameters to the <code>[mla_gallery]</code> shortcode, run a test and inspect the log file or the screen messages for more information about what's going on.
 </p>
 <p>
-You can also add the <code>mla_debug=true</code> or <code>mla_debug=log</code> parameters to the <code>[mla_gallery]</code> shortcode for even more debug information. If you do this, make sure that both <code>muie_debug</code> and <code>mla_debug</code> are set to the same value, i.e., both "true" or both "log".
-</p>
-<p>
-Most of the shortcodes added by this example plugin are very straightforward and they do not generate debug log entries. The <code>[muie_archive_list]</code> shortcode can be much more complex. For this shortcode adding &ldquo;0x8000&rdquo; to the MLA Reporting value will generate useful information.
+The <code>[mla_download_checklist]</code> shortcode added by this example plugin is very straightforward but the debug log entries might be helpful. For this shortcode adding &ldquo;0x8000&rdquo; to the MLA Reporting value will generate useful information.
 </p>
 <p>
 To activate MLA&rsquo;s debug logging:

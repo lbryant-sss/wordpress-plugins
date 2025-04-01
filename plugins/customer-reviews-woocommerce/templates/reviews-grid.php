@@ -197,9 +197,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 			<?php endforeach; ?>
 		</div>
-		<?php if ( $show_more ): ?>
+		<?php if ( $show_more && 0 < $remaining_reviews ): ?>
 			<div class="cr-show-more">
-				<button class="cr-show-more-button" type="button"><?php echo __( 'Show more', 'customer-reviews-woocommerce' ); ?></button>
+				<button class="cr-show-more-button" type="button">
+					<?php echo sprintf( __( 'Show more reviews (%d)', 'customer-reviews-woocommerce' ), $remaining_reviews ); ?>
+				</button>
 				<span class="cr-show-more-spinner" style="display:none;"></span>
 			</div>
 		<?php else: ?>
