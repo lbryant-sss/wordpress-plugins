@@ -9,7 +9,7 @@ include_once dirname(__FILE__, 2) . '/lib/hybridauth/autoload.php';
 use Hybridauth\Exception\Exception;
 use Hybridauth\Hybridauth;
 use Hybridauth\HttpClient;
-use Hybridauth\Storage\Session;
+use Hybridauth\Storage\Transient;
 
 class Loginizer_Social_Login{
 
@@ -24,34 +24,34 @@ class Loginizer_Social_Login{
 	static function login_init(){
 		global $loginizer;
 
-		self::$storage = new Session();
+		try {			
+			self::$storage = new Transient();
 
-		// Security check here.
-		$lz_social_nonce = '';
-		if(!empty($_GET['social_security'])){
-			$lz_social_nonce = sanitize_text_field(wp_unslash($_GET['social_security']));
-		} elseif(!empty(self::$storage) && !empty(self::$storage->get('social_security'))){
-			$lz_social_nonce = sanitize_text_field(self::$storage->get('social_security'));
-		}
+			// Security check here.
+			$lz_social_nonce = '';
+			if(!empty($_GET['social_security'])){
+				$lz_social_nonce = sanitize_text_field(wp_unslash($_GET['social_security']));
+			} elseif(!empty(self::$storage) && !empty(self::$storage->get('social_security'))){
+				$lz_social_nonce = sanitize_text_field(self::$storage->get('social_security'));
+			}
 
-		if(!wp_verify_nonce($lz_social_nonce, 'loginizer_social_check')){
-			self::$error['security-check'] = __('Security check failed when trying to login', 'loginizer');
-			self::trigger_error();
-			return;
-		}
+			if(!wp_verify_nonce($lz_social_nonce, 'loginizer_social_check')){
+				self::$error['security-check'] = __('Security check failed when trying to login', 'loginizer');
+				self::trigger_error();
+				return;
+			}
 
-		$providers = self::build_provider_arr();
+			$providers = self::build_provider_arr();
 
-		if(empty($providers)){
-			self::$error['login_error'] = __('No Provider is configured, please contact the admin about this issue', 'loginizer');
-			self::trigger_error();
-			return;
-		}
+			if(empty($providers)){
+				self::$error['login_error'] = __('No Provider is configured, please contact the admin about this issue', 'loginizer');
+				self::trigger_error();
+				return;
+			}
 
-		$callback_query = [];
-		$callback_query['lz_social_provider'] = lz_optget('lz_social_provider');
+			$callback_query = [];
+			$callback_query['lz_social_provider'] = lz_optget('lz_social_provider');
 
-		try {
 			$config = [
 				// Location where to redirect users once they authenticate with a provider
 				'callback' => wp_login_url().'?'.http_build_query($callback_query),
@@ -60,7 +60,7 @@ class Loginizer_Social_Login{
 				'providers' => $providers
 			];
 
-			$hybridauth = new Hybridauth($config);
+			$hybridauth = new Hybridauth($config, null, self::$storage);
 	
 			//Step 1: Here we will be redirected to the App Auth page
 			if(!empty($_GET['lz_social_provider'])){
@@ -73,7 +73,7 @@ class Loginizer_Social_Login{
 					}
 
 					self::$storage->set('social_security', wp_create_nonce('loginizer_social_check'));
-					
+
 					if(!empty($_REQUEST['ref']) && wp_http_validate_url(sanitize_url(wp_unslash($_REQUEST['ref'])))){
 						self::$storage->set('ref', rawurlencode(sanitize_url(wp_unslash($_REQUEST['ref']))));
 					}

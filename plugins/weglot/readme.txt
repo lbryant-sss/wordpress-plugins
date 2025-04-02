@@ -4,7 +4,7 @@ Tags: translate, multilingual, language, translation, localization, multilingual
 Requires at least: 4.5
 Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 4.3.1
+Stable tag: 4.3.2
 License: GPLv2 or later
 URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -272,7 +272,7 @@ See changelog for upgrade changes.
 * Update - named mousedown eventlistener to allow to remove it.
 * Added - Filter to prevent access to specific role.
 
-= 4.3.2 (24/03/2025) =
+= 4.3.2 (01/04/2025) =
 
 * Update: update weglot/languages to 1.9
 

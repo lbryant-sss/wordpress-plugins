@@ -2,16 +2,16 @@
 # This file is distributed under the same license as the Complianz | GDPR/CCPA Cookie Consent plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Complianz | GDPR/CCPA Cookie Consent 7.3.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/trunk\n"
+"Project-Id-Version: Complianz | GDPR/CCPA Cookie Consent 7.4.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/complianz-gdpr\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-06T12:12:56+00:00\n"
+"POT-Creation-Date: 2025-03-25T11:33:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: complianz-gdpr\n"
 
 #. Plugin Name of the plugin
@@ -56,7 +56,7 @@ msgstr ""
 #: class-admin.php:236
 #: settings/config/menu.php:277
 #: settings/config/menu.php:281
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Support"
 msgstr ""
 
@@ -736,15 +736,15 @@ msgstr ""
 msgid "Save and Style Cookie Banner"
 msgstr ""
 
-#: complianz-gpdr.php:44
+#: complianz-gpdr.php:46
 msgid "Complianz GDPR cannot be activated. The plugin requires PHP 7.2 or higher"
 msgstr ""
 
-#: complianz-gpdr.php:51
+#: complianz-gpdr.php:57
 msgid "Complianz GDPR cannot be activated. The plugin requires WordPress 4.9 or higher"
 msgstr ""
 
-#: config/class-config.php:272
+#: config/config-i18n.php:11
 #: integrations/plugins/elementor-pro/elementor-pro.php:82
 #: settings/config/fields/wizard/consent.php:173
 #: settings/config/fields/wizard/consent.php:196
@@ -755,7 +755,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: config/class-config.php:273
+#: config/config-i18n.php:12
 #: integrations/plugins/elementor-pro/elementor-pro.php:83
 #: settings/config/fields/wizard/consent.php:40
 #: settings/config/fields/wizard/consent.php:174
@@ -769,165 +769,1710 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: config/class-config.php:277
+#: config/config-i18n.php:13
 msgid "I obtain permission from the person concerned"
 msgstr ""
 
-#: config/class-config.php:278
+#: config/config-i18n.php:14
 msgid "It is necessary for the execution of an agreement with the person concerned"
 msgstr ""
 
-#: config/class-config.php:279
+#: config/config-i18n.php:15
 msgid "I am obligated by law"
 msgstr ""
 
-#: config/class-config.php:280
-msgid "It is necessary to fulfilll a task concerning public law"
+#: config/config-i18n.php:16
+msgid "It is necessary to fulfill a task concerning public law"
 msgstr ""
 
-#: config/class-config.php:281
+#: config/config-i18n.php:17
 msgid "It is necessary for my own legitimate interest, and that interest outweighs the interest of the person concerned"
 msgstr ""
 
-#: config/class-config.php:282
+#: config/config-i18n.php:18
 msgid "It is necessary to protect the life or physical safety of a person"
 msgstr ""
 
-#: config/class-config.php:286
+#: config/config-i18n.php:19
+msgid "It is necessary to carry out studies by a research body, ensuring, whenever possible, the anonymization of personal data"
+msgstr ""
+
+#: config/config-i18n.php:20
+msgid "It is necessary for the regular exercise of rights in judicial, administrative or arbitration proceedings"
+msgstr ""
+
+#: config/config-i18n.php:21
+msgid "It is necessary for the protection of health, exclusively, in a procedure performed by health professionals, health services or health authority"
+msgstr ""
+
+#: config/config-i18n.php:23
 #: settings/config/fields/tools/placeholders.php:108
 #: gutenberg/build/index.js:1
 msgid "Default"
 msgstr ""
 
-#: config/class-config.php:335
-msgid "It is necessary to carry out studies by a research body, ensuring, whenever possible, the anonymization of personal data"
+#: config/config-i18n.php:24
+#: config/countries.php:415
+msgid "English"
 msgstr ""
 
-#: config/class-config.php:336
-msgid "It is necessary for the regular exercise of rights in judicial, administrative or arbitration proceedings"
+#: config/config-i18n.php:25
+#: config/countries.php:416
+msgid "Danish"
 msgstr ""
 
-#: config/class-config.php:337
-msgid "It is necessary for the protection of health, exclusively, in a procedure performed by health professionals, health services or health authority"
+#: config/config-i18n.php:26
+#: config/countries.php:417
+msgid "German"
 msgstr ""
 
-#: config/class-config.php:338
-msgid "It is necessary for credit protection"
+#: config/config-i18n.php:27
+#: config/countries.php:418
+msgid "Greek"
 msgstr ""
 
-#: config/countries.php:59
-msgid "US"
+#: config/config-i18n.php:28
+#: config/countries.php:419
+msgid "Spanish"
 msgstr ""
 
+#: config/config-i18n.php:29
+#: config/countries.php:420
+msgid "Estonian"
+msgstr ""
+
+#: config/config-i18n.php:30
+#: config/countries.php:421
+msgid "French"
+msgstr ""
+
+#: config/config-i18n.php:31
+#: config/countries.php:422
+msgid "Italian"
+msgstr ""
+
+#: config/config-i18n.php:32
+#: config/countries.php:423
+msgid "Dutch"
+msgstr ""
+
+#: config/config-i18n.php:33
+#: config/countries.php:424
+msgid "Norwegian"
+msgstr ""
+
+#: config/config-i18n.php:34
+#: config/countries.php:425
+msgid "Swedish"
+msgstr ""
+
+#: config/config-i18n.php:35
+#: config/countries.php:163
+msgid "Afghanistan"
+msgstr ""
+
+#: config/config-i18n.php:36
+#: config/countries.php:164
+msgid "Aland Islands"
+msgstr ""
+
+#: config/config-i18n.php:37
+#: config/countries.php:165
+msgid "Albania"
+msgstr ""
+
+#: config/config-i18n.php:38
+#: config/countries.php:166
+msgid "Algeria"
+msgstr ""
+
+#: config/config-i18n.php:39
+#: config/countries.php:167
+msgid "American Samoa"
+msgstr ""
+
+#: config/config-i18n.php:40
+#: config/countries.php:168
+msgid "Andorra"
+msgstr ""
+
+#: config/config-i18n.php:41
+#: config/countries.php:169
+msgid "Angola"
+msgstr ""
+
+#: config/config-i18n.php:42
+#: config/countries.php:170
+msgid "Anguilla"
+msgstr ""
+
+#: config/config-i18n.php:43
+#: config/countries.php:171
+msgid "Antarctica"
+msgstr ""
+
+#: config/config-i18n.php:44
+#: config/countries.php:172
+msgid "Antigua And Barbuda"
+msgstr ""
+
+#: config/config-i18n.php:45
+#: config/countries.php:173
+msgid "Argentina"
+msgstr ""
+
+#: config/config-i18n.php:46
+#: config/countries.php:174
+msgid "Armenia"
+msgstr ""
+
+#: config/config-i18n.php:47
+#: config/countries.php:175
+msgid "Aruba"
+msgstr ""
+
+#: config/config-i18n.php:48
+#: config/config-i18n.php:306
+#: config/countries.php:100
+#: config/countries.php:176
+msgid "Australia"
+msgstr ""
+
+#: config/config-i18n.php:49
+#: config/countries.php:177
+msgid "Austria"
+msgstr ""
+
+#: config/config-i18n.php:50
+#: config/countries.php:178
+msgid "Azerbaijan"
+msgstr ""
+
+#: config/config-i18n.php:51
+#: config/countries.php:179
+msgid "Bahamas"
+msgstr ""
+
+#: config/config-i18n.php:52
+#: config/countries.php:180
+msgid "Bahrain"
+msgstr ""
+
+#: config/config-i18n.php:53
+#: config/countries.php:181
+msgid "Bangladesh"
+msgstr ""
+
+#: config/config-i18n.php:54
+#: config/countries.php:182
+msgid "Barbados"
+msgstr ""
+
+#: config/config-i18n.php:55
+#: config/countries.php:183
+msgid "Belarus"
+msgstr ""
+
+#: config/config-i18n.php:56
+#: config/countries.php:184
+msgid "Belgium"
+msgstr ""
+
+#: config/config-i18n.php:57
+#: config/countries.php:185
+msgid "Belize"
+msgstr ""
+
+#: config/config-i18n.php:58
+#: config/countries.php:186
+msgid "Benin"
+msgstr ""
+
+#: config/config-i18n.php:59
+#: config/countries.php:187
+msgid "Bermuda"
+msgstr ""
+
+#: config/config-i18n.php:60
+#: config/countries.php:188
+msgid "Bhutan"
+msgstr ""
+
+#: config/config-i18n.php:61
+#: config/countries.php:189
+msgid "Bolivia"
+msgstr ""
+
+#: config/config-i18n.php:62
+#: config/countries.php:190
+msgid "Bosnia And Herzegovina"
+msgstr ""
+
+#: config/config-i18n.php:63
+#: config/countries.php:191
+msgid "Botswana"
+msgstr ""
+
+#: config/config-i18n.php:64
+#: config/countries.php:192
+msgid "Bouvet Island"
+msgstr ""
+
+#: config/config-i18n.php:65
+#: config/config-i18n.php:311
+#: config/countries.php:120
+#: config/countries.php:193
+msgid "Brazil"
+msgstr ""
+
+#: config/config-i18n.php:66
+#: config/countries.php:194
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: config/config-i18n.php:67
+#: config/countries.php:195
+msgid "Brunei Darussalam"
+msgstr ""
+
+#: config/config-i18n.php:68
+#: config/countries.php:196
+msgid "Bulgaria"
+msgstr ""
+
+#: config/config-i18n.php:69
+#: config/countries.php:197
+msgid "Burkina Faso"
+msgstr ""
+
+#: config/config-i18n.php:70
+#: config/countries.php:198
+msgid "Burundi"
+msgstr ""
+
+#: config/config-i18n.php:71
+#: config/countries.php:199
+msgid "Cambodia"
+msgstr ""
+
+#: config/config-i18n.php:72
+#: config/countries.php:200
+msgid "Cameroon"
+msgstr ""
+
+#: config/config-i18n.php:73
+#: config/config-i18n.php:299
+#: config/countries.php:70
+#: config/countries.php:201
+msgid "Canada"
+msgstr ""
+
+#: config/config-i18n.php:74
+#: config/countries.php:202
+msgid "Cape Verde"
+msgstr ""
+
+#: config/config-i18n.php:75
+#: config/countries.php:203
+msgid "Cayman Islands"
+msgstr ""
+
+#: config/config-i18n.php:76
+#: config/countries.php:204
+msgid "Central African Republic"
+msgstr ""
+
+#: config/config-i18n.php:77
+#: config/countries.php:205
+msgid "Chad"
+msgstr ""
+
+#: config/config-i18n.php:78
+#: config/countries.php:206
+msgid "Chile"
+msgstr ""
+
+#: config/config-i18n.php:79
+#: config/countries.php:207
+msgid "China"
+msgstr ""
+
+#: config/config-i18n.php:80
+#: config/countries.php:208
+msgid "Christmas Island"
+msgstr ""
+
+#: config/config-i18n.php:81
+#: config/countries.php:209
+msgid "Cocos (Keeling) Islands"
+msgstr ""
+
+#: config/config-i18n.php:82
+#: config/countries.php:210
+msgid "Colombia"
+msgstr ""
+
+#: config/config-i18n.php:83
+#: config/countries.php:211
+msgid "Comoros"
+msgstr ""
+
+#: config/config-i18n.php:84
+#: config/countries.php:212
+msgid "Congo"
+msgstr ""
+
+#: config/config-i18n.php:85
+#: config/countries.php:213
+msgid "Congo, Democratic Republic"
+msgstr ""
+
+#: config/config-i18n.php:86
+#: config/countries.php:214
+msgid "Cook Islands"
+msgstr ""
+
+#: config/config-i18n.php:87
+#: config/countries.php:215
+msgid "Costa Rica"
+msgstr ""
+
+#: config/config-i18n.php:88
+#: config/countries.php:216
+msgid "Cote D'Ivoire"
+msgstr ""
+
+#: config/config-i18n.php:89
+#: config/countries.php:217
+msgid "Croatia"
+msgstr ""
+
+#: config/config-i18n.php:90
+#: config/countries.php:218
+msgid "Cuba"
+msgstr ""
+
+#: config/config-i18n.php:91
+#: config/countries.php:219
+msgid "Cyprus"
+msgstr ""
+
+#: config/config-i18n.php:92
+#: config/countries.php:220
+msgid "Czech Republic"
+msgstr ""
+
+#: config/config-i18n.php:93
+#: config/countries.php:221
+msgid "Denmark"
+msgstr ""
+
+#: config/config-i18n.php:94
+#: config/countries.php:222
+msgid "Djibouti"
+msgstr ""
+
+#: config/config-i18n.php:95
+#: config/countries.php:223
+msgid "Dominica"
+msgstr ""
+
+#: config/config-i18n.php:96
+#: config/countries.php:224
+msgid "Dominican Republic"
+msgstr ""
+
+#: config/config-i18n.php:97
+#: config/countries.php:225
+msgid "Ecuador"
+msgstr ""
+
+#: config/config-i18n.php:98
+#: config/countries.php:226
+msgid "Egypt"
+msgstr ""
+
+#: config/config-i18n.php:99
+#: config/countries.php:227
+msgid "El Salvador"
+msgstr ""
+
+#: config/config-i18n.php:100
+#: config/countries.php:228
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: config/config-i18n.php:101
+#: config/countries.php:229
+msgid "Eritrea"
+msgstr ""
+
+#: config/config-i18n.php:102
+#: config/countries.php:230
+msgid "Estonia"
+msgstr ""
+
+#: config/config-i18n.php:103
+#: config/countries.php:231
+msgid "Ethiopia"
+msgstr ""
+
+#: config/config-i18n.php:104
+#: config/countries.php:232
+msgid "Falkland Islands (Malvinas)"
+msgstr ""
+
+#: config/config-i18n.php:105
+#: config/countries.php:233
+msgid "Faroe Islands"
+msgstr ""
+
+#: config/config-i18n.php:106
+#: config/countries.php:234
+msgid "Fiji"
+msgstr ""
+
+#: config/config-i18n.php:107
+#: config/countries.php:235
+msgid "Finland"
+msgstr ""
+
+#: config/config-i18n.php:108
+#: config/countries.php:236
+msgid "France"
+msgstr ""
+
+#: config/config-i18n.php:109
+#: config/countries.php:237
+msgid "French Guiana"
+msgstr ""
+
+#: config/config-i18n.php:110
+#: config/countries.php:238
+msgid "French Polynesia"
+msgstr ""
+
+#: config/config-i18n.php:111
+#: config/countries.php:239
+msgid "French Southern Territories"
+msgstr ""
+
+#: config/config-i18n.php:112
+#: config/countries.php:240
+msgid "Gabon"
+msgstr ""
+
+#: config/config-i18n.php:113
+#: config/countries.php:241
+msgid "Gambia"
+msgstr ""
+
+#: config/config-i18n.php:114
+#: config/countries.php:242
+msgid "Georgia"
+msgstr ""
+
+#: config/config-i18n.php:115
+#: config/countries.php:243
+msgid "Germany"
+msgstr ""
+
+#: config/config-i18n.php:116
+#: config/countries.php:244
+msgid "Ghana"
+msgstr ""
+
+#: config/config-i18n.php:117
+#: config/countries.php:245
+msgid "Gibraltar"
+msgstr ""
+
+#: config/config-i18n.php:118
+#: config/countries.php:246
+msgid "Greece"
+msgstr ""
+
+#: config/config-i18n.php:119
+#: config/countries.php:247
+msgid "Greenland"
+msgstr ""
+
+#: config/config-i18n.php:120
+#: config/countries.php:248
+msgid "Grenada"
+msgstr ""
+
+#: config/config-i18n.php:121
+#: config/countries.php:249
+msgid "Guadeloupe"
+msgstr ""
+
+#: config/config-i18n.php:122
+#: config/countries.php:250
+msgid "Guam"
+msgstr ""
+
+#: config/config-i18n.php:123
+#: config/countries.php:251
+msgid "Guatemala"
+msgstr ""
+
+#: config/config-i18n.php:124
+#: config/countries.php:252
+msgid "Guernsey"
+msgstr ""
+
+#: config/config-i18n.php:125
+#: config/countries.php:253
+msgid "Guinea"
+msgstr ""
+
+#: config/config-i18n.php:126
+#: config/countries.php:254
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: config/config-i18n.php:127
+#: config/countries.php:255
+msgid "Guyana"
+msgstr ""
+
+#: config/config-i18n.php:128
+#: config/countries.php:256
+msgid "Haiti"
+msgstr ""
+
+#: config/config-i18n.php:129
+#: config/countries.php:257
+msgid "Heard Island & Mcdonald Islands"
+msgstr ""
+
+#: config/config-i18n.php:130
+#: config/countries.php:258
+msgid "Holy See (Vatican City State)"
+msgstr ""
+
+#: config/config-i18n.php:131
+#: config/countries.php:259
+msgid "Honduras"
+msgstr ""
+
+#: config/config-i18n.php:132
+#: config/countries.php:260
+msgid "Hong Kong"
+msgstr ""
+
+#: config/config-i18n.php:133
+#: config/countries.php:261
+msgid "Hungary"
+msgstr ""
+
+#: config/config-i18n.php:134
+#: config/countries.php:262
+msgid "Iceland"
+msgstr ""
+
+#: config/config-i18n.php:135
+#: config/countries.php:263
+msgid "India"
+msgstr ""
+
+#: config/config-i18n.php:136
+#: config/countries.php:264
+msgid "Indonesia"
+msgstr ""
+
+#: config/config-i18n.php:137
+#: config/countries.php:265
+msgid "Iran, Islamic Republic Of"
+msgstr ""
+
+#: config/config-i18n.php:138
+#: config/countries.php:266
+msgid "Iraq"
+msgstr ""
+
+#: config/config-i18n.php:139
+#: config/countries.php:267
+msgid "Ireland"
+msgstr ""
+
+#: config/config-i18n.php:140
+#: config/countries.php:268
+msgid "Isle Of Man"
+msgstr ""
+
+#: config/config-i18n.php:141
+#: config/countries.php:269
+msgid "Israel"
+msgstr ""
+
+#: config/config-i18n.php:142
+#: config/countries.php:270
+msgid "Italy"
+msgstr ""
+
+#: config/config-i18n.php:143
+#: config/countries.php:271
+msgid "Jamaica"
+msgstr ""
+
+#: config/config-i18n.php:144
+#: config/countries.php:272
+msgid "Japan"
+msgstr ""
+
+#: config/config-i18n.php:145
+#: config/countries.php:273
+msgid "Jersey"
+msgstr ""
+
+#: config/config-i18n.php:146
+#: config/countries.php:274
+msgid "Jordan"
+msgstr ""
+
+#: config/config-i18n.php:147
+#: config/countries.php:275
+msgid "Kazakhstan"
+msgstr ""
+
+#: config/config-i18n.php:148
+#: config/countries.php:276
+msgid "Kenya"
+msgstr ""
+
+#: config/config-i18n.php:149
+#: config/countries.php:277
+msgid "Kiribati"
+msgstr ""
+
+#: config/config-i18n.php:150
+#: config/countries.php:278
+msgid "Korea"
+msgstr ""
+
+#: config/config-i18n.php:151
+#: config/countries.php:279
+msgid "Kuwait"
+msgstr ""
+
+#: config/config-i18n.php:152
+#: config/countries.php:280
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: config/config-i18n.php:153
+#: config/countries.php:281
+msgid "Lao People's Democratic Republic"
+msgstr ""
+
+#: config/config-i18n.php:154
+#: config/countries.php:282
+msgid "Latvia"
+msgstr ""
+
+#: config/config-i18n.php:155
+#: config/countries.php:283
+msgid "Lebanon"
+msgstr ""
+
+#: config/config-i18n.php:156
+#: config/countries.php:284
+msgid "Lesotho"
+msgstr ""
+
+#: config/config-i18n.php:157
+#: config/countries.php:285
+msgid "Liberia"
+msgstr ""
+
+#: config/config-i18n.php:158
+#: config/countries.php:286
+msgid "Libyan Arab Jamahiriya"
+msgstr ""
+
+#: config/config-i18n.php:159
+#: config/countries.php:287
+msgid "Liechtenstein"
+msgstr ""
+
+#: config/config-i18n.php:160
+#: config/countries.php:288
+msgid "Lithuania"
+msgstr ""
+
+#: config/config-i18n.php:161
+#: config/countries.php:289
+msgid "Luxembourg"
+msgstr ""
+
+#: config/config-i18n.php:162
+#: config/countries.php:290
+msgid "Macao"
+msgstr ""
+
+#: config/config-i18n.php:163
+#: config/countries.php:291
+msgid "North Macedonia"
+msgstr ""
+
+#: config/config-i18n.php:164
+#: config/countries.php:292
+msgid "Madagascar"
+msgstr ""
+
+#: config/config-i18n.php:165
+#: config/countries.php:293
+msgid "Malawi"
+msgstr ""
+
+#: config/config-i18n.php:166
+#: config/countries.php:294
+msgid "Malaysia"
+msgstr ""
+
+#: config/config-i18n.php:167
+#: config/countries.php:295
+msgid "Maldives"
+msgstr ""
+
+#: config/config-i18n.php:168
+#: config/countries.php:296
+msgid "Mali"
+msgstr ""
+
+#: config/config-i18n.php:169
+#: config/countries.php:297
+msgid "Malta"
+msgstr ""
+
+#: config/config-i18n.php:170
+#: config/countries.php:298
+msgid "Marshall Islands"
+msgstr ""
+
+#: config/config-i18n.php:171
+#: config/countries.php:299
+msgid "Martinique"
+msgstr ""
+
+#: config/config-i18n.php:172
+#: config/countries.php:300
+msgid "Mauritania"
+msgstr ""
+
+#: config/config-i18n.php:173
+#: config/countries.php:301
+msgid "Mauritius"
+msgstr ""
+
+#: config/config-i18n.php:174
+#: config/countries.php:302
+msgid "Mayotte"
+msgstr ""
+
+#: config/config-i18n.php:175
+#: config/countries.php:303
+msgid "Mexico"
+msgstr ""
+
+#: config/config-i18n.php:176
+#: config/countries.php:304
+msgid "Micronesia, Federated States Of"
+msgstr ""
+
+#: config/config-i18n.php:177
+#: config/countries.php:305
+msgid "Moldova"
+msgstr ""
+
+#: config/config-i18n.php:178
+#: config/countries.php:306
+msgid "Monaco"
+msgstr ""
+
+#: config/config-i18n.php:179
+#: config/countries.php:307
+msgid "Mongolia"
+msgstr ""
+
+#: config/config-i18n.php:180
+#: config/countries.php:308
+msgid "Montenegro"
+msgstr ""
+
+#: config/config-i18n.php:181
+#: config/countries.php:309
+msgid "Montserrat"
+msgstr ""
+
+#: config/config-i18n.php:182
+#: config/countries.php:310
+msgid "Morocco"
+msgstr ""
+
+#: config/config-i18n.php:183
+#: config/countries.php:311
+msgid "Mozambique"
+msgstr ""
+
+#: config/config-i18n.php:184
+#: config/countries.php:312
+msgid "Myanmar"
+msgstr ""
+
+#: config/config-i18n.php:185
+#: config/countries.php:313
+msgid "Namibia"
+msgstr ""
+
+#: config/config-i18n.php:186
+#: config/countries.php:314
+msgid "Nauru"
+msgstr ""
+
+#: config/config-i18n.php:187
+#: config/countries.php:315
+msgid "Nepal"
+msgstr ""
+
+#: config/config-i18n.php:188
+#: config/countries.php:316
+msgid "Netherlands"
+msgstr ""
+
+#: config/config-i18n.php:189
+#: config/countries.php:317
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: config/config-i18n.php:190
+#: config/countries.php:318
+msgid "New Caledonia"
+msgstr ""
+
+#: config/config-i18n.php:191
+#: config/countries.php:319
+msgid "New Zealand"
+msgstr ""
+
+#: config/config-i18n.php:192
+#: config/countries.php:320
+msgid "Nicaragua"
+msgstr ""
+
+#: config/config-i18n.php:193
+#: config/countries.php:321
+msgid "Niger"
+msgstr ""
+
+#: config/config-i18n.php:194
+#: config/countries.php:322
+msgid "Nigeria"
+msgstr ""
+
+#: config/config-i18n.php:195
+#: config/countries.php:323
+msgid "Niue"
+msgstr ""
+
+#: config/config-i18n.php:196
+#: config/countries.php:324
+msgid "Norfolk Island"
+msgstr ""
+
+#: config/config-i18n.php:197
+#: config/countries.php:325
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: config/config-i18n.php:198
+#: config/countries.php:326
+msgid "Norway"
+msgstr ""
+
+#: config/config-i18n.php:199
+#: config/countries.php:327
+msgid "Oman"
+msgstr ""
+
+#: config/config-i18n.php:200
+#: config/countries.php:328
+msgid "Pakistan"
+msgstr ""
+
+#: config/config-i18n.php:201
+#: config/countries.php:329
+msgid "Palau"
+msgstr ""
+
+#: config/config-i18n.php:202
+#: config/countries.php:330
+msgid "Palestinian Territory, Occupied"
+msgstr ""
+
+#: config/config-i18n.php:203
+#: config/countries.php:331
+msgid "Panama"
+msgstr ""
+
+#: config/config-i18n.php:204
+#: config/countries.php:332
+msgid "Papua New Guinea"
+msgstr ""
+
+#: config/config-i18n.php:205
+#: config/countries.php:333
+msgid "Paraguay"
+msgstr ""
+
+#: config/config-i18n.php:206
+#: config/countries.php:334
+msgid "Peru"
+msgstr ""
+
+#: config/config-i18n.php:207
+#: config/countries.php:335
+msgid "Philippines"
+msgstr ""
+
+#: config/config-i18n.php:208
+#: config/countries.php:336
+msgid "Pitcairn"
+msgstr ""
+
+#: config/config-i18n.php:209
+#: config/countries.php:337
+msgid "Poland"
+msgstr ""
+
+#: config/config-i18n.php:210
+#: config/countries.php:338
+msgid "Portugal"
+msgstr ""
+
+#: config/config-i18n.php:211
+#: config/countries.php:339
+msgid "Puerto Rico"
+msgstr ""
+
+#: config/config-i18n.php:212
+#: config/countries.php:340
+msgid "Qatar"
+msgstr ""
+
+#: config/config-i18n.php:213
+#: config/countries.php:341
+msgid "Reunion"
+msgstr ""
+
+#: config/config-i18n.php:214
+#: config/countries.php:342
+msgid "Romania"
+msgstr ""
+
+#: config/config-i18n.php:215
+#: config/countries.php:343
+msgid "Russian Federation"
+msgstr ""
+
+#: config/config-i18n.php:216
+#: config/countries.php:344
+msgid "Rwanda"
+msgstr ""
+
+#: config/config-i18n.php:217
+#: config/countries.php:345
+msgid "Saint Barthelemy"
+msgstr ""
+
+#: config/config-i18n.php:218
+#: config/countries.php:346
+msgid "Saint Helena"
+msgstr ""
+
+#: config/config-i18n.php:219
+#: config/countries.php:347
+msgid "Saint Kitts And Nevis"
+msgstr ""
+
+#: config/config-i18n.php:220
+#: config/countries.php:348
+msgid "Saint Lucia"
+msgstr ""
+
+#: config/config-i18n.php:221
+#: config/countries.php:349
+msgid "Saint Martin"
+msgstr ""
+
+#: config/config-i18n.php:222
+#: config/countries.php:350
+msgid "Saint Pierre And Miquelon"
+msgstr ""
+
+#: config/config-i18n.php:223
+#: config/countries.php:351
+msgid "Saint Vincent And Grenadines"
+msgstr ""
+
+#: config/config-i18n.php:224
+#: config/countries.php:352
+msgid "Samoa"
+msgstr ""
+
+#: config/config-i18n.php:225
+#: config/countries.php:353
+msgid "San Marino"
+msgstr ""
+
+#: config/config-i18n.php:226
+#: config/countries.php:354
+msgid "Sao Tome And Principe"
+msgstr ""
+
+#: config/config-i18n.php:227
+#: config/countries.php:355
+msgid "Saudi Arabia"
+msgstr ""
+
+#: config/config-i18n.php:228
+#: config/countries.php:356
+msgid "Senegal"
+msgstr ""
+
+#: config/config-i18n.php:229
+#: config/countries.php:357
+msgid "Serbia"
+msgstr ""
+
+#: config/config-i18n.php:230
+#: config/countries.php:358
+msgid "Seychelles"
+msgstr ""
+
+#: config/config-i18n.php:231
+#: config/countries.php:359
+msgid "Sierra Leone"
+msgstr ""
+
+#: config/config-i18n.php:232
+#: config/countries.php:360
+msgid "Singapore"
+msgstr ""
+
+#: config/config-i18n.php:233
+#: config/countries.php:361
+msgid "Slovakia"
+msgstr ""
+
+#: config/config-i18n.php:234
+#: config/countries.php:362
+msgid "Slovenia"
+msgstr ""
+
+#: config/config-i18n.php:235
+#: config/countries.php:363
+msgid "Solomon Islands"
+msgstr ""
+
+#: config/config-i18n.php:236
+#: config/countries.php:364
+msgid "Somalia"
+msgstr ""
+
+#: config/config-i18n.php:237
+#: config/config-i18n.php:308
+#: config/countries.php:110
+#: config/countries.php:365
+msgid "South Africa"
+msgstr ""
+
+#: config/config-i18n.php:238
+#: config/countries.php:366
+msgid "South Georgia And Sandwich Isl."
+msgstr ""
+
+#: config/config-i18n.php:239
+#: config/countries.php:367
+msgid "Spain"
+msgstr ""
+
+#: config/config-i18n.php:240
+#: config/countries.php:368
+msgid "Sri Lanka"
+msgstr ""
+
+#: config/config-i18n.php:241
+#: config/countries.php:369
+msgid "Sudan"
+msgstr ""
+
+#: config/config-i18n.php:242
+#: config/countries.php:370
+msgid "Suriname"
+msgstr ""
+
+#: config/config-i18n.php:243
+#: config/countries.php:371
+msgid "Svalbard And Jan Mayen"
+msgstr ""
+
+#: config/config-i18n.php:244
+#: config/countries.php:372
+msgid "Swaziland"
+msgstr ""
+
+#: config/config-i18n.php:245
+#: config/countries.php:373
+msgid "Sweden"
+msgstr ""
+
+#: config/config-i18n.php:246
+#: config/countries.php:374
+msgid "Switzerland"
+msgstr ""
+
+#: config/config-i18n.php:247
+#: config/countries.php:375
+msgid "Syrian Arab Republic"
+msgstr ""
+
+#: config/config-i18n.php:248
+#: config/countries.php:376
+msgid "Taiwan"
+msgstr ""
+
+#: config/config-i18n.php:249
+#: config/countries.php:377
+msgid "Tajikistan"
+msgstr ""
+
+#: config/config-i18n.php:250
+#: config/countries.php:378
+msgid "Tanzania"
+msgstr ""
+
+#: config/config-i18n.php:251
+#: config/countries.php:379
+msgid "Thailand"
+msgstr ""
+
+#: config/config-i18n.php:252
+#: config/countries.php:380
+msgid "Timor-Leste"
+msgstr ""
+
+#: config/config-i18n.php:253
+#: config/countries.php:381
+msgid "Togo"
+msgstr ""
+
+#: config/config-i18n.php:254
+#: config/countries.php:382
+msgid "Tokelau"
+msgstr ""
+
+#: config/config-i18n.php:255
+#: config/countries.php:383
+msgid "Tonga"
+msgstr ""
+
+#: config/config-i18n.php:256
+#: config/countries.php:384
+msgid "Trinidad And Tobago"
+msgstr ""
+
+#: config/config-i18n.php:257
+#: config/countries.php:385
+msgid "Tunisia"
+msgstr ""
+
+#: config/config-i18n.php:258
+#: config/countries.php:386
+msgid "Turkey"
+msgstr ""
+
+#: config/config-i18n.php:259
+#: config/countries.php:387
+msgid "Turkmenistan"
+msgstr ""
+
+#: config/config-i18n.php:260
+#: config/countries.php:388
+msgid "Turks And Caicos Islands"
+msgstr ""
+
+#: config/config-i18n.php:261
+#: config/countries.php:389
+msgid "Tuvalu"
+msgstr ""
+
+#: config/config-i18n.php:262
+#: config/countries.php:390
+msgid "Uganda"
+msgstr ""
+
+#: config/config-i18n.php:263
+#: config/countries.php:391
+msgid "Ukraine"
+msgstr ""
+
+#: config/config-i18n.php:264
+#: config/countries.php:392
+msgid "United Arab Emirates"
+msgstr ""
+
+#: config/config-i18n.php:265
+#: config/config-i18n.php:303
+#: config/countries.php:90
+#: config/countries.php:393
+msgid "United Kingdom"
+msgstr ""
+
+#: config/config-i18n.php:266
+#: config/config-i18n.php:291
+#: config/config-i18n.php:297
 #: config/countries.php:60
 #: config/countries.php:133
 #: config/countries.php:394
 msgid "United States"
 msgstr ""
 
-#: config/countries.php:69
-msgid "CA"
+#: config/config-i18n.php:267
+#: config/countries.php:395
+msgid "United States Outlying Islands"
 msgstr ""
 
-#: config/countries.php:70
-#: config/countries.php:201
-msgid "Canada"
+#: config/config-i18n.php:268
+#: config/countries.php:396
+msgid "Uruguay"
 msgstr ""
 
-#: config/countries.php:79
-msgid "EU"
+#: config/config-i18n.php:269
+#: config/countries.php:397
+msgid "Uzbekistan"
 msgstr ""
 
-#: config/countries.php:80
-msgid "European Union"
+#: config/config-i18n.php:270
+#: config/countries.php:398
+msgid "Vanuatu"
 msgstr ""
 
-#: config/countries.php:82
-msgid "GDPR"
+#: config/config-i18n.php:271
+#: config/countries.php:399
+msgid "Venezuela"
 msgstr ""
 
-#: config/countries.php:89
-msgid "UK"
+#: config/config-i18n.php:272
+#: config/countries.php:400
+msgid "Viet Nam"
 msgstr ""
 
-#: config/countries.php:90
-#: config/countries.php:393
-msgid "United Kingdom"
+#: config/config-i18n.php:273
+#: config/countries.php:401
+msgid "Virgin Islands, British"
 msgstr ""
 
-#: config/countries.php:92
-msgid "UK-GDPR"
+#: config/config-i18n.php:274
+#: config/countries.php:402
+msgid "Virgin Islands, U.S."
 msgstr ""
 
-#: config/countries.php:99
-msgid "AU"
+#: config/config-i18n.php:275
+#: config/countries.php:403
+msgid "Wallis And Futuna"
 msgstr ""
 
-#: config/countries.php:100
-#: config/countries.php:176
-msgid "Australia"
+#: config/config-i18n.php:276
+#: config/countries.php:404
+msgid "Western Sahara"
 msgstr ""
 
-#: config/countries.php:109
-msgid "ZA"
+#: config/config-i18n.php:277
+#: config/countries.php:405
+msgid "Yemen"
 msgstr ""
 
-#: config/countries.php:110
-#: config/countries.php:365
-msgid "South Africa"
+#: config/config-i18n.php:278
+#: config/countries.php:406
+msgid "Zambia"
 msgstr ""
 
-#: config/countries.php:112
-msgid "POPIA"
+#: config/config-i18n.php:279
+#: config/countries.php:407
+msgid "Zimbabwe"
 msgstr ""
 
-#: config/countries.php:119
-msgid "BR"
-msgstr ""
-
-#: config/countries.php:120
-#: config/countries.php:193
-msgid "Brazil"
-msgstr ""
-
-#: config/countries.php:122
-msgid "LGPD"
-msgstr ""
-
-#: config/countries.php:131
-msgid "European Union (GDPR)"
-msgstr ""
-
-#: config/countries.php:132
-msgid "United Kingdom (UK-GDPR, PECR, Data Protection Act)"
-msgstr ""
-
-#: config/countries.php:134
-msgid "Canada (PIPEDA)"
-msgstr ""
-
-#: config/countries.php:135
-msgid "Australia (Privacy Act 1988)"
-msgstr ""
-
-#: config/countries.php:136
-msgid "South Africa (POPIA)"
-msgstr ""
-
-#: config/countries.php:137
-msgid "Brazil (LGPD)"
-msgstr ""
-
+#: config/config-i18n.php:280
 #: config/countries.php:141
 msgid "California (CPRA)"
 msgstr ""
 
+#: config/config-i18n.php:281
 #: config/countries.php:142
 msgid "Colorado (CPA)"
 msgstr ""
 
+#: config/config-i18n.php:282
 #: config/countries.php:143
 msgid "Connecticut (CTDPA)"
+msgstr ""
+
+#: config/config-i18n.php:283
+#: config/countries.php:146
+msgid "Montana (MCDPA)"
+msgstr ""
+
+#: config/config-i18n.php:284
+#: config/countries.php:148
+msgid "Nevada (NRS 603A)"
+msgstr ""
+
+#: config/config-i18n.php:285
+#: config/countries.php:151
+msgid "Oregon (OCPA)"
+msgstr ""
+
+#: config/config-i18n.php:286
+#: config/countries.php:152
+msgid "Texas (TDPSA)"
+msgstr ""
+
+#: config/config-i18n.php:287
+#: config/countries.php:153
+msgid "Utah (UCPA)"
+msgstr ""
+
+#: config/config-i18n.php:288
+#: config/countries.php:154
+msgid "Virginia (CDPA)"
+msgstr ""
+
+#: config/config-i18n.php:289
+#: config/countries.php:131
+msgid "European Union (GDPR)"
+msgstr ""
+
+#: config/config-i18n.php:290
+#: config/countries.php:132
+msgid "United Kingdom (UK-GDPR, PECR, Data Protection Act)"
+msgstr ""
+
+#: config/config-i18n.php:292
+#: config/countries.php:134
+msgid "Canada (PIPEDA)"
+msgstr ""
+
+#: config/config-i18n.php:293
+#: config/countries.php:135
+msgid "Australia (Privacy Act 1988)"
+msgstr ""
+
+#: config/config-i18n.php:294
+#: config/countries.php:136
+msgid "South Africa (POPIA)"
+msgstr ""
+
+#: config/config-i18n.php:295
+#: config/countries.php:137
+msgid "Brazil (LGPD)"
+msgstr ""
+
+#: config/config-i18n.php:296
+#: config/countries.php:59
+msgid "US"
+msgstr ""
+
+#: config/config-i18n.php:298
+#: config/countries.php:69
+msgid "CA"
+msgstr ""
+
+#: config/config-i18n.php:300
+#: config/countries.php:79
+msgid "EU"
+msgstr ""
+
+#: config/config-i18n.php:301
+#: config/countries.php:80
+msgid "European Union"
+msgstr ""
+
+#: config/config-i18n.php:302
+#: config/countries.php:89
+msgid "UK"
+msgstr ""
+
+#: config/config-i18n.php:304
+#: config/countries.php:92
+msgid "UK-GDPR"
+msgstr ""
+
+#: config/config-i18n.php:305
+#: config/countries.php:99
+msgid "AU"
+msgstr ""
+
+#: config/config-i18n.php:307
+#: config/countries.php:109
+msgid "ZA"
+msgstr ""
+
+#: config/config-i18n.php:309
+#: config/countries.php:112
+msgid "POPIA"
+msgstr ""
+
+#: config/config-i18n.php:310
+#: config/countries.php:119
+msgid "BR"
+msgstr ""
+
+#: config/config-i18n.php:312
+#: config/countries.php:122
+msgid "LGPD"
+msgstr ""
+
+#: config/config-i18n.php:313
+#: config/purpose.php:3
+msgid "Contact - Through phone, mail, email and/or webforms"
+msgstr ""
+
+#: config/config-i18n.php:314
+#: config/purpose.php:4
+msgid "Payments"
+msgstr ""
+
+#: config/config-i18n.php:315
+#: config/purpose.php:5
+msgid "Registering an account"
+msgstr ""
+
+#: config/config-i18n.php:316
+#: config/purpose.php:6
+msgid "Newsletters"
+msgstr ""
+
+#: config/config-i18n.php:317
+#: config/purpose.php:7
+msgid "To support services or products that a customer wants to buy or has purchased"
+msgstr ""
+
+#: config/config-i18n.php:318
+#: config/purpose.php:8
+msgid "To be able to comply with legal obligations"
+msgstr ""
+
+#: config/config-i18n.php:319
+#: config/purpose.php:9
+msgid "Compiling and analyzing statistics for website improvement."
+msgstr ""
+
+#: config/config-i18n.php:320
+#: config/purpose.php:10
+msgid "To be able to offer personalized products and services"
+msgstr ""
+
+#: config/config-i18n.php:321
+#: config/purpose.php:11
+msgid "To sell or share data with a third party"
+msgstr ""
+
+#: config/config-i18n.php:322
+#: config/purpose.php:12
+msgid "Deliveries"
+msgstr ""
+
+#: config/config-i18n.php:323
+#: config/purpose.php:16
+msgid "A first and last name"
+msgstr ""
+
+#: config/config-i18n.php:324
+#: config/purpose.php:17
+msgid "Account name or alias"
+msgstr ""
+
+#: config/config-i18n.php:325
+#: config/purpose.php:18
+msgid "A home or other physical address, including street name and name of a city or town"
+msgstr ""
+
+#: config/config-i18n.php:326
+#: config/purpose.php:19
+msgid "An email address"
+msgstr ""
+
+#: config/config-i18n.php:327
+#: config/purpose.php:20
+msgid "A telephone number"
+msgstr ""
+
+#: config/config-i18n.php:328
+#: config/purpose.php:21
+#: settings/build/3078.7547fadc99516cff6788.js:1
+msgid "IP Address"
+msgstr ""
+
+#: config/config-i18n.php:329
+#: config/purpose.php:22
+msgid "Internet activity information, including, but not limited to, browsing history, search history, and information regarding a consumer's interaction with an Internet Web site, application, or advertisement"
+msgstr ""
+
+#: config/config-i18n.php:330
+#: config/purpose.php:23
+msgid "Geolocation data"
+msgstr ""
+
+#: config/config-i18n.php:331
+#: config/purpose.php:24
+msgid "Marital status"
+msgstr ""
+
+#: config/config-i18n.php:332
+#: config/purpose.php:25
+msgid "Date of birth"
+msgstr ""
+
+#: config/config-i18n.php:333
+#: config/purpose.php:26
+msgid "Sex"
+msgstr ""
+
+#: config/config-i18n.php:334
+#: config/purpose.php:27
+msgid "Photos"
+msgstr ""
+
+#: config/config-i18n.php:335
+#: config/purpose.php:28
+msgid "Social Media accounts"
+msgstr ""
+
+#: config/config-i18n.php:336
+#: config/purpose.php:29
+msgid "A social security number"
+msgstr ""
+
+#: config/config-i18n.php:337
+#: config/purpose.php:30
+msgid "A signature"
+msgstr ""
+
+#: config/config-i18n.php:338
+#: config/purpose.php:31
+msgid "Physical characteristics or description"
+msgstr ""
+
+#: config/config-i18n.php:339
+#: config/purpose.php:32
+msgid "Passport number"
+msgstr ""
+
+#: config/config-i18n.php:340
+#: config/purpose.php:33
+msgid "Driver's license"
+msgstr ""
+
+#: config/config-i18n.php:341
+#: config/purpose.php:34
+msgid "State identification card number"
+msgstr ""
+
+#: config/config-i18n.php:342
+#: config/purpose.php:35
+msgid "Insurance policy number"
+msgstr ""
+
+#: config/config-i18n.php:343
+#: config/purpose.php:36
+msgid "Education information"
+msgstr ""
+
+#: config/config-i18n.php:344
+#: config/purpose.php:37
+msgid "Professional or employment-related information"
+msgstr ""
+
+#: config/config-i18n.php:345
+#: config/purpose.php:38
+msgid "Employment history"
+msgstr ""
+
+#: config/config-i18n.php:346
+#: config/purpose.php:39
+msgid "Financial information such as bank account number or credit card number"
+msgstr ""
+
+#: config/config-i18n.php:347
+#: config/purpose.php:40
+msgid "Medical information"
+msgstr ""
+
+#: config/config-i18n.php:348
+#: config/purpose.php:41
+msgid "Health insurance information"
+msgstr ""
+
+#: config/config-i18n.php:349
+#: config/purpose.php:42
+msgid "Commercial information, including records of personal property, products or services purchased, obtained, or considered"
+msgstr ""
+
+#: config/config-i18n.php:350
+#: config/purpose.php:43
+msgid "Biometric information"
+msgstr ""
+
+#: config/config-i18n.php:351
+#: config/purpose.php:44
+msgid "Audio, electronic, visual, thermal, olfactory, or similar information"
+msgstr ""
+
+#: config/config-i18n.php:352
+#: config/purpose.php:48
+msgid "a first and last name"
+msgstr ""
+
+#: config/config-i18n.php:353
+#: config/purpose.php:49
+msgid "a home or other physical address including street name and name of a city or town"
+msgstr ""
+
+#: config/config-i18n.php:354
+#: config/purpose.php:50
+msgid "an email address from the child"
+msgstr ""
+
+#: config/config-i18n.php:355
+#: config/purpose.php:51
+msgid "an email address from the parent or guardian"
+msgstr ""
+
+#: config/config-i18n.php:356
+#: config/purpose.php:52
+msgid "a telephone number"
+msgstr ""
+
+#: config/config-i18n.php:357
+#: config/purpose.php:53
+msgid "a Social Security number"
+msgstr ""
+
+#: config/config-i18n.php:358
+#: config/purpose.php:54
+msgid "an identifier that permits the physical or online contacting of a child"
+msgstr ""
+
+#: config/config-i18n.php:359
+#: config/purpose.php:55
+msgid "other information concerning the child or the parents, combined with an identifier as described above"
+msgstr ""
+
+#: config/countries.php:82
+msgid "GDPR"
 msgstr ""
 
 #: config/countries.php:144
@@ -938,16 +2483,8 @@ msgstr ""
 msgid "Iowa (CDPA)"
 msgstr ""
 
-#: config/countries.php:146
-msgid "Montana (MCDPA)"
-msgstr ""
-
 #: config/countries.php:147
 msgid "Nebraska (DPA)"
-msgstr ""
-
-#: config/countries.php:148
-msgid "Nevada (NRS 603A)"
 msgstr ""
 
 #: config/countries.php:149
@@ -956,1022 +2493,6 @@ msgstr ""
 
 #: config/countries.php:150
 msgid "New Jersey (DPL)"
-msgstr ""
-
-#: config/countries.php:151
-msgid "Oregon (OCPA)"
-msgstr ""
-
-#: config/countries.php:152
-msgid "Texas (TDPSA)"
-msgstr ""
-
-#: config/countries.php:153
-msgid "Utah (UCPA)"
-msgstr ""
-
-#: config/countries.php:154
-msgid "Virginia (CDPA)"
-msgstr ""
-
-#: config/countries.php:163
-msgid "Afghanistan"
-msgstr ""
-
-#: config/countries.php:164
-msgid "Aland Islands"
-msgstr ""
-
-#: config/countries.php:165
-msgid "Albania"
-msgstr ""
-
-#: config/countries.php:166
-msgid "Algeria"
-msgstr ""
-
-#: config/countries.php:167
-msgid "American Samoa"
-msgstr ""
-
-#: config/countries.php:168
-msgid "Andorra"
-msgstr ""
-
-#: config/countries.php:169
-msgid "Angola"
-msgstr ""
-
-#: config/countries.php:170
-msgid "Anguilla"
-msgstr ""
-
-#: config/countries.php:171
-msgid "Antarctica"
-msgstr ""
-
-#: config/countries.php:172
-msgid "Antigua And Barbuda"
-msgstr ""
-
-#: config/countries.php:173
-msgid "Argentina"
-msgstr ""
-
-#: config/countries.php:174
-msgid "Armenia"
-msgstr ""
-
-#: config/countries.php:175
-msgid "Aruba"
-msgstr ""
-
-#: config/countries.php:177
-msgid "Austria"
-msgstr ""
-
-#: config/countries.php:178
-msgid "Azerbaijan"
-msgstr ""
-
-#: config/countries.php:179
-msgid "Bahamas"
-msgstr ""
-
-#: config/countries.php:180
-msgid "Bahrain"
-msgstr ""
-
-#: config/countries.php:181
-msgid "Bangladesh"
-msgstr ""
-
-#: config/countries.php:182
-msgid "Barbados"
-msgstr ""
-
-#: config/countries.php:183
-msgid "Belarus"
-msgstr ""
-
-#: config/countries.php:184
-msgid "Belgium"
-msgstr ""
-
-#: config/countries.php:185
-msgid "Belize"
-msgstr ""
-
-#: config/countries.php:186
-msgid "Benin"
-msgstr ""
-
-#: config/countries.php:187
-msgid "Bermuda"
-msgstr ""
-
-#: config/countries.php:188
-msgid "Bhutan"
-msgstr ""
-
-#: config/countries.php:189
-msgid "Bolivia"
-msgstr ""
-
-#: config/countries.php:190
-msgid "Bosnia And Herzegovina"
-msgstr ""
-
-#: config/countries.php:191
-msgid "Botswana"
-msgstr ""
-
-#: config/countries.php:192
-msgid "Bouvet Island"
-msgstr ""
-
-#: config/countries.php:194
-msgid "British Indian Ocean Territory"
-msgstr ""
-
-#: config/countries.php:195
-msgid "Brunei Darussalam"
-msgstr ""
-
-#: config/countries.php:196
-msgid "Bulgaria"
-msgstr ""
-
-#: config/countries.php:197
-msgid "Burkina Faso"
-msgstr ""
-
-#: config/countries.php:198
-msgid "Burundi"
-msgstr ""
-
-#: config/countries.php:199
-msgid "Cambodia"
-msgstr ""
-
-#: config/countries.php:200
-msgid "Cameroon"
-msgstr ""
-
-#: config/countries.php:202
-msgid "Cape Verde"
-msgstr ""
-
-#: config/countries.php:203
-msgid "Cayman Islands"
-msgstr ""
-
-#: config/countries.php:204
-msgid "Central African Republic"
-msgstr ""
-
-#: config/countries.php:205
-msgid "Chad"
-msgstr ""
-
-#: config/countries.php:206
-msgid "Chile"
-msgstr ""
-
-#: config/countries.php:207
-msgid "China"
-msgstr ""
-
-#: config/countries.php:208
-msgid "Christmas Island"
-msgstr ""
-
-#: config/countries.php:209
-msgid "Cocos (Keeling) Islands"
-msgstr ""
-
-#: config/countries.php:210
-msgid "Colombia"
-msgstr ""
-
-#: config/countries.php:211
-msgid "Comoros"
-msgstr ""
-
-#: config/countries.php:212
-msgid "Congo"
-msgstr ""
-
-#: config/countries.php:213
-msgid "Congo, Democratic Republic"
-msgstr ""
-
-#: config/countries.php:214
-msgid "Cook Islands"
-msgstr ""
-
-#: config/countries.php:215
-msgid "Costa Rica"
-msgstr ""
-
-#: config/countries.php:216
-msgid "Cote D'Ivoire"
-msgstr ""
-
-#: config/countries.php:217
-msgid "Croatia"
-msgstr ""
-
-#: config/countries.php:218
-msgid "Cuba"
-msgstr ""
-
-#: config/countries.php:219
-msgid "Cyprus"
-msgstr ""
-
-#: config/countries.php:220
-msgid "Czech Republic"
-msgstr ""
-
-#: config/countries.php:221
-msgid "Denmark"
-msgstr ""
-
-#: config/countries.php:222
-msgid "Djibouti"
-msgstr ""
-
-#: config/countries.php:223
-msgid "Dominica"
-msgstr ""
-
-#: config/countries.php:224
-msgid "Dominican Republic"
-msgstr ""
-
-#: config/countries.php:225
-msgid "Ecuador"
-msgstr ""
-
-#: config/countries.php:226
-msgid "Egypt"
-msgstr ""
-
-#: config/countries.php:227
-msgid "El Salvador"
-msgstr ""
-
-#: config/countries.php:228
-msgid "Equatorial Guinea"
-msgstr ""
-
-#: config/countries.php:229
-msgid "Eritrea"
-msgstr ""
-
-#: config/countries.php:230
-msgid "Estonia"
-msgstr ""
-
-#: config/countries.php:231
-msgid "Ethiopia"
-msgstr ""
-
-#: config/countries.php:232
-msgid "Falkland Islands (Malvinas)"
-msgstr ""
-
-#: config/countries.php:233
-msgid "Faroe Islands"
-msgstr ""
-
-#: config/countries.php:234
-msgid "Fiji"
-msgstr ""
-
-#: config/countries.php:235
-msgid "Finland"
-msgstr ""
-
-#: config/countries.php:236
-msgid "France"
-msgstr ""
-
-#: config/countries.php:237
-msgid "French Guiana"
-msgstr ""
-
-#: config/countries.php:238
-msgid "French Polynesia"
-msgstr ""
-
-#: config/countries.php:239
-msgid "French Southern Territories"
-msgstr ""
-
-#: config/countries.php:240
-msgid "Gabon"
-msgstr ""
-
-#: config/countries.php:241
-msgid "Gambia"
-msgstr ""
-
-#: config/countries.php:242
-msgid "Georgia"
-msgstr ""
-
-#: config/countries.php:243
-msgid "Germany"
-msgstr ""
-
-#: config/countries.php:244
-msgid "Ghana"
-msgstr ""
-
-#: config/countries.php:245
-msgid "Gibraltar"
-msgstr ""
-
-#: config/countries.php:246
-msgid "Greece"
-msgstr ""
-
-#: config/countries.php:247
-msgid "Greenland"
-msgstr ""
-
-#: config/countries.php:248
-msgid "Grenada"
-msgstr ""
-
-#: config/countries.php:249
-msgid "Guadeloupe"
-msgstr ""
-
-#: config/countries.php:250
-msgid "Guam"
-msgstr ""
-
-#: config/countries.php:251
-msgid "Guatemala"
-msgstr ""
-
-#: config/countries.php:252
-msgid "Guernsey"
-msgstr ""
-
-#: config/countries.php:253
-msgid "Guinea"
-msgstr ""
-
-#: config/countries.php:254
-msgid "Guinea-Bissau"
-msgstr ""
-
-#: config/countries.php:255
-msgid "Guyana"
-msgstr ""
-
-#: config/countries.php:256
-msgid "Haiti"
-msgstr ""
-
-#: config/countries.php:257
-msgid "Heard Island & Mcdonald Islands"
-msgstr ""
-
-#: config/countries.php:258
-msgid "Holy See (Vatican City State)"
-msgstr ""
-
-#: config/countries.php:259
-msgid "Honduras"
-msgstr ""
-
-#: config/countries.php:260
-msgid "Hong Kong"
-msgstr ""
-
-#: config/countries.php:261
-msgid "Hungary"
-msgstr ""
-
-#: config/countries.php:262
-msgid "Iceland"
-msgstr ""
-
-#: config/countries.php:263
-msgid "India"
-msgstr ""
-
-#: config/countries.php:264
-msgid "Indonesia"
-msgstr ""
-
-#: config/countries.php:265
-msgid "Iran, Islamic Republic Of"
-msgstr ""
-
-#: config/countries.php:266
-msgid "Iraq"
-msgstr ""
-
-#: config/countries.php:267
-msgid "Ireland"
-msgstr ""
-
-#: config/countries.php:268
-msgid "Isle Of Man"
-msgstr ""
-
-#: config/countries.php:269
-msgid "Israel"
-msgstr ""
-
-#: config/countries.php:270
-msgid "Italy"
-msgstr ""
-
-#: config/countries.php:271
-msgid "Jamaica"
-msgstr ""
-
-#: config/countries.php:272
-msgid "Japan"
-msgstr ""
-
-#: config/countries.php:273
-msgid "Jersey"
-msgstr ""
-
-#: config/countries.php:274
-msgid "Jordan"
-msgstr ""
-
-#: config/countries.php:275
-msgid "Kazakhstan"
-msgstr ""
-
-#: config/countries.php:276
-msgid "Kenya"
-msgstr ""
-
-#: config/countries.php:277
-msgid "Kiribati"
-msgstr ""
-
-#: config/countries.php:278
-msgid "Korea"
-msgstr ""
-
-#: config/countries.php:279
-msgid "Kuwait"
-msgstr ""
-
-#: config/countries.php:280
-msgid "Kyrgyzstan"
-msgstr ""
-
-#: config/countries.php:281
-msgid "Lao People's Democratic Republic"
-msgstr ""
-
-#: config/countries.php:282
-msgid "Latvia"
-msgstr ""
-
-#: config/countries.php:283
-msgid "Lebanon"
-msgstr ""
-
-#: config/countries.php:284
-msgid "Lesotho"
-msgstr ""
-
-#: config/countries.php:285
-msgid "Liberia"
-msgstr ""
-
-#: config/countries.php:286
-msgid "Libyan Arab Jamahiriya"
-msgstr ""
-
-#: config/countries.php:287
-msgid "Liechtenstein"
-msgstr ""
-
-#: config/countries.php:288
-msgid "Lithuania"
-msgstr ""
-
-#: config/countries.php:289
-msgid "Luxembourg"
-msgstr ""
-
-#: config/countries.php:290
-msgid "Macao"
-msgstr ""
-
-#: config/countries.php:291
-msgid "North Macedonia"
-msgstr ""
-
-#: config/countries.php:292
-msgid "Madagascar"
-msgstr ""
-
-#: config/countries.php:293
-msgid "Malawi"
-msgstr ""
-
-#: config/countries.php:294
-msgid "Malaysia"
-msgstr ""
-
-#: config/countries.php:295
-msgid "Maldives"
-msgstr ""
-
-#: config/countries.php:296
-msgid "Mali"
-msgstr ""
-
-#: config/countries.php:297
-msgid "Malta"
-msgstr ""
-
-#: config/countries.php:298
-msgid "Marshall Islands"
-msgstr ""
-
-#: config/countries.php:299
-msgid "Martinique"
-msgstr ""
-
-#: config/countries.php:300
-msgid "Mauritania"
-msgstr ""
-
-#: config/countries.php:301
-msgid "Mauritius"
-msgstr ""
-
-#: config/countries.php:302
-msgid "Mayotte"
-msgstr ""
-
-#: config/countries.php:303
-msgid "Mexico"
-msgstr ""
-
-#: config/countries.php:304
-msgid "Micronesia, Federated States Of"
-msgstr ""
-
-#: config/countries.php:305
-msgid "Moldova"
-msgstr ""
-
-#: config/countries.php:306
-msgid "Monaco"
-msgstr ""
-
-#: config/countries.php:307
-msgid "Mongolia"
-msgstr ""
-
-#: config/countries.php:308
-msgid "Montenegro"
-msgstr ""
-
-#: config/countries.php:309
-msgid "Montserrat"
-msgstr ""
-
-#: config/countries.php:310
-msgid "Morocco"
-msgstr ""
-
-#: config/countries.php:311
-msgid "Mozambique"
-msgstr ""
-
-#: config/countries.php:312
-msgid "Myanmar"
-msgstr ""
-
-#: config/countries.php:313
-msgid "Namibia"
-msgstr ""
-
-#: config/countries.php:314
-msgid "Nauru"
-msgstr ""
-
-#: config/countries.php:315
-msgid "Nepal"
-msgstr ""
-
-#: config/countries.php:316
-msgid "Netherlands"
-msgstr ""
-
-#: config/countries.php:317
-msgid "Netherlands Antilles"
-msgstr ""
-
-#: config/countries.php:318
-msgid "New Caledonia"
-msgstr ""
-
-#: config/countries.php:319
-msgid "New Zealand"
-msgstr ""
-
-#: config/countries.php:320
-msgid "Nicaragua"
-msgstr ""
-
-#: config/countries.php:321
-msgid "Niger"
-msgstr ""
-
-#: config/countries.php:322
-msgid "Nigeria"
-msgstr ""
-
-#: config/countries.php:323
-msgid "Niue"
-msgstr ""
-
-#: config/countries.php:324
-msgid "Norfolk Island"
-msgstr ""
-
-#: config/countries.php:325
-msgid "Northern Mariana Islands"
-msgstr ""
-
-#: config/countries.php:326
-msgid "Norway"
-msgstr ""
-
-#: config/countries.php:327
-msgid "Oman"
-msgstr ""
-
-#: config/countries.php:328
-msgid "Pakistan"
-msgstr ""
-
-#: config/countries.php:329
-msgid "Palau"
-msgstr ""
-
-#: config/countries.php:330
-msgid "Palestinian Territory, Occupied"
-msgstr ""
-
-#: config/countries.php:331
-msgid "Panama"
-msgstr ""
-
-#: config/countries.php:332
-msgid "Papua New Guinea"
-msgstr ""
-
-#: config/countries.php:333
-msgid "Paraguay"
-msgstr ""
-
-#: config/countries.php:334
-msgid "Peru"
-msgstr ""
-
-#: config/countries.php:335
-msgid "Philippines"
-msgstr ""
-
-#: config/countries.php:336
-msgid "Pitcairn"
-msgstr ""
-
-#: config/countries.php:337
-msgid "Poland"
-msgstr ""
-
-#: config/countries.php:338
-msgid "Portugal"
-msgstr ""
-
-#: config/countries.php:339
-msgid "Puerto Rico"
-msgstr ""
-
-#: config/countries.php:340
-msgid "Qatar"
-msgstr ""
-
-#: config/countries.php:341
-msgid "Reunion"
-msgstr ""
-
-#: config/countries.php:342
-msgid "Romania"
-msgstr ""
-
-#: config/countries.php:343
-msgid "Russian Federation"
-msgstr ""
-
-#: config/countries.php:344
-msgid "Rwanda"
-msgstr ""
-
-#: config/countries.php:345
-msgid "Saint Barthelemy"
-msgstr ""
-
-#: config/countries.php:346
-msgid "Saint Helena"
-msgstr ""
-
-#: config/countries.php:347
-msgid "Saint Kitts And Nevis"
-msgstr ""
-
-#: config/countries.php:348
-msgid "Saint Lucia"
-msgstr ""
-
-#: config/countries.php:349
-msgid "Saint Martin"
-msgstr ""
-
-#: config/countries.php:350
-msgid "Saint Pierre And Miquelon"
-msgstr ""
-
-#: config/countries.php:351
-msgid "Saint Vincent And Grenadines"
-msgstr ""
-
-#: config/countries.php:352
-msgid "Samoa"
-msgstr ""
-
-#: config/countries.php:353
-msgid "San Marino"
-msgstr ""
-
-#: config/countries.php:354
-msgid "Sao Tome And Principe"
-msgstr ""
-
-#: config/countries.php:355
-msgid "Saudi Arabia"
-msgstr ""
-
-#: config/countries.php:356
-msgid "Senegal"
-msgstr ""
-
-#: config/countries.php:357
-msgid "Serbia"
-msgstr ""
-
-#: config/countries.php:358
-msgid "Seychelles"
-msgstr ""
-
-#: config/countries.php:359
-msgid "Sierra Leone"
-msgstr ""
-
-#: config/countries.php:360
-msgid "Singapore"
-msgstr ""
-
-#: config/countries.php:361
-msgid "Slovakia"
-msgstr ""
-
-#: config/countries.php:362
-msgid "Slovenia"
-msgstr ""
-
-#: config/countries.php:363
-msgid "Solomon Islands"
-msgstr ""
-
-#: config/countries.php:364
-msgid "Somalia"
-msgstr ""
-
-#: config/countries.php:366
-msgid "South Georgia And Sandwich Isl."
-msgstr ""
-
-#: config/countries.php:367
-msgid "Spain"
-msgstr ""
-
-#: config/countries.php:368
-msgid "Sri Lanka"
-msgstr ""
-
-#: config/countries.php:369
-msgid "Sudan"
-msgstr ""
-
-#: config/countries.php:370
-msgid "Suriname"
-msgstr ""
-
-#: config/countries.php:371
-msgid "Svalbard And Jan Mayen"
-msgstr ""
-
-#: config/countries.php:372
-msgid "Swaziland"
-msgstr ""
-
-#: config/countries.php:373
-msgid "Sweden"
-msgstr ""
-
-#: config/countries.php:374
-msgid "Switzerland"
-msgstr ""
-
-#: config/countries.php:375
-msgid "Syrian Arab Republic"
-msgstr ""
-
-#: config/countries.php:376
-msgid "Taiwan"
-msgstr ""
-
-#: config/countries.php:377
-msgid "Tajikistan"
-msgstr ""
-
-#: config/countries.php:378
-msgid "Tanzania"
-msgstr ""
-
-#: config/countries.php:379
-msgid "Thailand"
-msgstr ""
-
-#: config/countries.php:380
-msgid "Timor-Leste"
-msgstr ""
-
-#: config/countries.php:381
-msgid "Togo"
-msgstr ""
-
-#: config/countries.php:382
-msgid "Tokelau"
-msgstr ""
-
-#: config/countries.php:383
-msgid "Tonga"
-msgstr ""
-
-#: config/countries.php:384
-msgid "Trinidad And Tobago"
-msgstr ""
-
-#: config/countries.php:385
-msgid "Tunisia"
-msgstr ""
-
-#: config/countries.php:386
-msgid "Turkey"
-msgstr ""
-
-#: config/countries.php:387
-msgid "Turkmenistan"
-msgstr ""
-
-#: config/countries.php:388
-msgid "Turks And Caicos Islands"
-msgstr ""
-
-#: config/countries.php:389
-msgid "Tuvalu"
-msgstr ""
-
-#: config/countries.php:390
-msgid "Uganda"
-msgstr ""
-
-#: config/countries.php:391
-msgid "Ukraine"
-msgstr ""
-
-#: config/countries.php:392
-msgid "United Arab Emirates"
-msgstr ""
-
-#: config/countries.php:395
-msgid "United States Outlying Islands"
-msgstr ""
-
-#: config/countries.php:396
-msgid "Uruguay"
-msgstr ""
-
-#: config/countries.php:397
-msgid "Uzbekistan"
-msgstr ""
-
-#: config/countries.php:398
-msgid "Vanuatu"
-msgstr ""
-
-#: config/countries.php:399
-msgid "Venezuela"
-msgstr ""
-
-#: config/countries.php:400
-msgid "Viet Nam"
-msgstr ""
-
-#: config/countries.php:401
-msgid "Virgin Islands, British"
-msgstr ""
-
-#: config/countries.php:402
-msgid "Virgin Islands, U.S."
-msgstr ""
-
-#: config/countries.php:403
-msgid "Wallis And Futuna"
-msgstr ""
-
-#: config/countries.php:404
-msgid "Western Sahara"
-msgstr ""
-
-#: config/countries.php:405
-msgid "Yemen"
-msgstr ""
-
-#: config/countries.php:406
-msgid "Zambia"
-msgstr ""
-
-#: config/countries.php:407
-msgid "Zimbabwe"
-msgstr ""
-
-#: config/countries.php:415
-msgid "English"
-msgstr ""
-
-#: config/countries.php:416
-msgid "Danish"
-msgstr ""
-
-#: config/countries.php:417
-msgid "German"
-msgstr ""
-
-#: config/countries.php:418
-msgid "Greek"
-msgstr ""
-
-#: config/countries.php:419
-msgid "Spanish"
-msgstr ""
-
-#: config/countries.php:420
-msgid "Estonian"
-msgstr ""
-
-#: config/countries.php:421
-msgid "French"
-msgstr ""
-
-#: config/countries.php:422
-msgid "Italian"
-msgstr ""
-
-#: config/countries.php:423
-msgid "Dutch"
-msgstr ""
-
-#: config/countries.php:424
-msgid "Norwegian"
-msgstr ""
-
-#: config/countries.php:425
-msgid "Swedish"
 msgstr ""
 
 #: config/documents/cookie-policy-au.php:122
@@ -2603,195 +3124,6 @@ msgstr ""
 #: settings/config/fields/wizard/general.php:171
 #: settings/config/menu.php:40
 msgid "Imprint"
-msgstr ""
-
-#: config/purpose.php:3
-msgid "Contact - Through phone, mail, email and/or webforms"
-msgstr ""
-
-#: config/purpose.php:4
-msgid "Payments"
-msgstr ""
-
-#: config/purpose.php:5
-msgid "Registering an account"
-msgstr ""
-
-#: config/purpose.php:6
-msgid "Newsletters"
-msgstr ""
-
-#: config/purpose.php:7
-msgid "To support services or products that a customer wants to buy or has purchased"
-msgstr ""
-
-#: config/purpose.php:8
-msgid "To be able to comply with legal obligations"
-msgstr ""
-
-#: config/purpose.php:9
-msgid "Compiling and analyzing statistics for website improvement."
-msgstr ""
-
-#: config/purpose.php:10
-msgid "To be able to offer personalized products and services"
-msgstr ""
-
-#: config/purpose.php:11
-msgid "To sell or share data with a third party"
-msgstr ""
-
-#: config/purpose.php:12
-msgid "Deliveries"
-msgstr ""
-
-#: config/purpose.php:16
-msgid "A first and last name"
-msgstr ""
-
-#: config/purpose.php:17
-msgid "Account name or alias"
-msgstr ""
-
-#: config/purpose.php:18
-msgid "A home or other physical address, including street name and name of a city or town"
-msgstr ""
-
-#: config/purpose.php:19
-msgid "An email address"
-msgstr ""
-
-#: config/purpose.php:20
-msgid "A telephone number"
-msgstr ""
-
-#: config/purpose.php:21
-#: settings/build/3078.7547fadc99516cff6788.js:1
-msgid "IP Address"
-msgstr ""
-
-#: config/purpose.php:22
-msgid "Internet activity information, including, but not limited to, browsing history, search history, and information regarding a consumer's interaction with an Internet Web site, application, or advertisement"
-msgstr ""
-
-#: config/purpose.php:23
-msgid "Geolocation data"
-msgstr ""
-
-#: config/purpose.php:24
-msgid "Marital status"
-msgstr ""
-
-#: config/purpose.php:25
-msgid "Date of birth"
-msgstr ""
-
-#: config/purpose.php:26
-msgid "Sex"
-msgstr ""
-
-#: config/purpose.php:27
-msgid "Photos"
-msgstr ""
-
-#: config/purpose.php:28
-msgid "Social Media accounts"
-msgstr ""
-
-#: config/purpose.php:29
-msgid "A social security number"
-msgstr ""
-
-#: config/purpose.php:30
-msgid "A signature"
-msgstr ""
-
-#: config/purpose.php:31
-msgid "Physical characteristics or description"
-msgstr ""
-
-#: config/purpose.php:32
-msgid "Passport number"
-msgstr ""
-
-#: config/purpose.php:33
-msgid "Driver's license"
-msgstr ""
-
-#: config/purpose.php:34
-msgid "State identification card number"
-msgstr ""
-
-#: config/purpose.php:35
-msgid "Insurance policy number"
-msgstr ""
-
-#: config/purpose.php:36
-msgid "Education information"
-msgstr ""
-
-#: config/purpose.php:37
-msgid "Professional or employment-related information"
-msgstr ""
-
-#: config/purpose.php:38
-msgid "Employment history"
-msgstr ""
-
-#: config/purpose.php:39
-msgid "Financial information such as bank account number or credit card number"
-msgstr ""
-
-#: config/purpose.php:40
-msgid "Medical information"
-msgstr ""
-
-#: config/purpose.php:41
-msgid "Health insurance information"
-msgstr ""
-
-#: config/purpose.php:42
-msgid "Commercial information, including records of personal property, products or services purchased, obtained, or considered"
-msgstr ""
-
-#: config/purpose.php:43
-msgid "Biometric information"
-msgstr ""
-
-#: config/purpose.php:44
-msgid "Audio, electronic, visual, thermal, olfactory, or similar information"
-msgstr ""
-
-#: config/purpose.php:48
-msgid "a first and last name"
-msgstr ""
-
-#: config/purpose.php:49
-msgid "a home or other physical address including street name and name of a city or town"
-msgstr ""
-
-#: config/purpose.php:50
-msgid "an email address from the child"
-msgstr ""
-
-#: config/purpose.php:51
-msgid "an email address from the parent or guardian"
-msgstr ""
-
-#: config/purpose.php:52
-msgid "a telephone number"
-msgstr ""
-
-#: config/purpose.php:53
-msgid "a Social Security number"
-msgstr ""
-
-#: config/purpose.php:54
-msgid "an identifier that permits the physical or online contacting of a child"
-msgstr ""
-
-#: config/purpose.php:55
-msgid "other information concerning the child or the parents, combined with an identifier as described above"
 msgstr ""
 
 #: config/warnings.php:8
@@ -3726,7 +4058,7 @@ msgstr ""
 #: settings/build/4644.e14f5e28eb94b8e242e7.js:1
 #: settings/build/8596.2c253cf399d8f84c2746.js:1
 #: settings/build/9487.e36e1ed4df8b9cfcb7e5.js:1
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Upgrade"
 msgstr ""
 
@@ -6144,7 +6476,7 @@ msgstr ""
 #: settings/build/5193.36f7ad16867d52c6e417.js:1
 #: settings/build/7771.e02ee81de473e3a1d5a9.js:1
 #: settings/build/9709.781936e00f4b80cef590.js:1
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Something went wrong"
 msgstr ""
 
@@ -7275,7 +7607,7 @@ msgstr ""
 #: settings/build/4570.76dcf7267af80a785acb.js:1
 #: settings/build/6644.2ea25b710cb1cc5b721b.js:1
 #: settings/build/8596.2c253cf399d8f84c2746.js:1
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Documentation"
 msgstr ""
 
@@ -7834,110 +8166,110 @@ msgstr ""
 msgid "%s rating based on %d ratings"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Go Pro"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "New"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "The wizard is currently in use by user with ID: "
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "To prevent conflicts during saving the wizard is temporarily locked."
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "The lock will automatically clear after two minutes."
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Switch between banners"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Banner"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Edit consent types"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Saving settings..."
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Settings saved"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "This field is required"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Please enter a valid URL"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Please enter a valid email address"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Please enter a valid number"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Please enter a valid phone number"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "required"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Please check if security settings on the server or a plugin is blocking the requests from Complianz."
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "The Complianz Rest API is disabled."
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "The Complianz Rest API returned a not found."
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "The Complianz Rest API returned a 403 forbidden error."
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "A problem was detected during the loading of the settings"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "The request returned the following errors:"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Response code:"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Status code:"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Server response:"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "More information"
 msgstr ""
 
-#: settings/build/index.31cf1ab07566417a2cf9.js:1
+#: settings/build/index.5759e5e3aa398b592695.js:1
 msgid "Unexpected error"
 msgstr ""

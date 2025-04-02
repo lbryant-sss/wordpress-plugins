@@ -14,7 +14,6 @@ use function is_array;
 
 class EditorBlockController extends AdminController
 {
-
     public function init()
     {
         parent::init();
@@ -29,6 +28,8 @@ class EditorBlockController extends AdminController
 
     public function ajaxEdit()
     {
+        Core::$plugin->admin->checkAjaxReferer();
+
         $post = get_post((int)Core::$plugin->request->get('postId'));
         $attrs = Core::$plugin->request->get('attrs');
         if (!is_array($attrs)) {
@@ -59,6 +60,8 @@ class EditorBlockController extends AdminController
 
     public function ajaxView()
     {
+        Core::$plugin->admin->checkAjaxReferer();
+
         $attrs = Core::$plugin->request->get('attrs');
         if (!is_array($attrs)) {
             $attrs = [];

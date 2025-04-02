@@ -103,6 +103,30 @@ if ( ! class_exists( 'Mega_Menu_Style_Manager' ) ) :
 
 
 		/**
+		 * Return the version of MMM that was used to generate the current CSS file
+		 */
+		public static function get_css_version() {
+			if ( $version = get_option('megamenu_css_version') ) {
+				return $version;
+			}
+
+			return get_transient('megamenu_css_version');
+		}
+
+
+		/**
+		 * Return the date when the menu CSS was last generated
+		 */
+		public static function get_css_last_updated() {
+			if ( $date = get_option('megamenu_css_last_updated') ) {
+				return $date;
+			}
+
+			return get_transient('megamenu_css_last_updated');
+		}
+
+
+		/**
 		 * Return the default menu theme
 		 */
 		public function get_default_theme() {
@@ -561,6 +585,8 @@ if ( ! class_exists( 'Mega_Menu_Style_Manager' ) ) :
 
 			$dir = trailingslashit( $upload_dir['basedir'] ) . 'maxmegamenu/';
 
+			delete_option( 'megamenu_failed_to_write_css_to_filesystem' );
+
 			WP_Filesystem();
 
 			if ( ! $wp_filesystem->is_dir( $dir ) ) {
@@ -582,9 +608,7 @@ if ( ! class_exists( 'Mega_Menu_Style_Manager' ) ) :
 				update_option( 'megamenu_settings', $settings );
 				$this->settings = get_option( 'megamenu_settings' );
 
-				// set a far expiration date to prevent transient from being autoloaded
-				$hundred_years_in_seconds = 3153600000;
-				set_transient( 'megamenu_failed_to_write_css_to_filesystem', 'true', $hundred_years_in_seconds );
+				update_option( 'megamenu_failed_to_write_css_to_filesystem', 'true' );
 			}
 
 		}
@@ -1105,8 +1129,8 @@ if ( ! class_exists( 'Mega_Menu_Style_Manager' ) ) :
 			$hundred_years_in_seconds = 3153600000;
 
 			set_transient( $this->get_transient_key(), $css, $hundred_years_in_seconds );
-			set_transient( 'megamenu_css_version', MEGAMENU_VERSION, $hundred_years_in_seconds );
-			set_transient( 'megamenu_css_last_updated', time(), $hundred_years_in_seconds );
+			update_option( 'megamenu_css_version', MEGAMENU_VERSION );
+			update_option( 'megamenu_css_last_updated', time() );
 		}
 
 

@@ -3,7 +3,7 @@
 Plugin Name: LuckyWP Table of Contents
 Plugin URI: https://theluckywp.com/product/table-of-contents/
 Description: Creates a table of contents for your posts/pages. Works automatically or manually (via shortcode, Gutenberg block or widget).
-Version: 2.1.10
+Version: 2.1.11
 Author: LuckyWP
 Author URI: https://theluckywp.com/
 Text Domain: luckywp-table-of-contents
@@ -49,6 +49,6 @@ $lwptocAutoloader->register();
 $lwptocAutoloader->addNamespace('luckywp\tableOfContents', __DIR__);
 
 $config = require(__DIR__ . '/config/plugin.php');
-(new \luckywp\tableOfContents\plugin\Plugin($config))->run('2.1.10', __FILE__, 'lwptoc_');
+(new \luckywp\tableOfContents\plugin\Plugin($config))->run('2.1.11', __FILE__, 'lwptoc_');
 
 require_once __DIR__ . '/functions.php';

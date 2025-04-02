@@ -289,7 +289,7 @@ span.xoo-wsch-close {
 
 .xoo-wsc-sc-bki{
 	font-size: <?php echo $SCbasketSize ?>px;
-	color: <?php echo $SCbasketSize ?>;
+	color: <?php echo $SCbasketColor ?>;
 }
 .xoo-wsc-sc-cont{
 	color: <?php echo $SCtxtColor ?>;

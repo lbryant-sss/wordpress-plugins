@@ -299,7 +299,7 @@ class General extends Tab {
 				'title'   => _x( 'Update status', 'shipments', 'woocommerce-germanized' ),
 				'desc'    => _x( 'Mark order as completed after order is fully shipped.', 'shipments', 'woocommerce-germanized' ) . '<div class="wc-shiptastic-additional-desc">' . _x( 'This option will automatically update the order status to completed as soon as all required shipments have been marked as shipped.', 'shipments', 'woocommerce-germanized' ) . '</div>',
 				'id'      => 'woocommerce_shiptastic_auto_order_shipped_completed_enable',
-				'default' => 'yes',
+				'default' => 'no',
 				'type'    => 'shiptastic_toggle',
 			),
 

@@ -168,6 +168,7 @@
                     display: none;
                 }
 
+                &.mega-toggle-on.mega-menu-megamenu ul.mega-sub-menu,
                 &.mega-toggle-on > ul.mega-sub-menu {
                     display: flex;
                 }

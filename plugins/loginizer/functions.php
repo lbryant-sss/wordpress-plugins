@@ -72,6 +72,10 @@ function lz_selectquery($query, $array = 0){
 
 // Check if an IP is valid
 function lz_valid_ip($ip){
+
+	if(empty($ip)){
+		return false;
+	}
 	
 	// IPv6
 	if(lz_valid_ipv6($ip)){

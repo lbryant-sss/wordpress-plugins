@@ -211,8 +211,11 @@ class Xoo_Wsc_Template_Args{
 		$checkoutTxt	= esc_html( self::$gl['sct-ft-chkbtn'] );
 		$buttonDesign 	= self::$sy['scf-btns-theme'];
 		$buttonClass 	=  xoo_wsc_frontend()->get_button_classes( 'array', array( 'xoo-wsc-ft-btn' ) );
+
+		$isChkoutLogin 	= !is_user_logged_in() && self::$gl['scf-chklogin-en'] === "yes" && function_exists('xoo_el');
+
 		
-		$chkoutBtnClass = !is_user_logged_in() && self::$gl['scf-chklogin-en'] === "yes" && function_exists('xoo_el') ? array_merge( $buttonClass, array( 'xoo-el-login-tgr' ) ) : $buttonClass;	
+		$chkoutBtnClass = $isChkoutLogin ? array_merge( $buttonClass, array( 'xoo-el-login-tgr' ) ) : $buttonClass;	
 
 		$checkoutTotal = self::$gl['scf-chkbtntotal-en'] === 'yes' ? WC()->cart->get_total() : '';
 
@@ -240,6 +243,10 @@ class Xoo_Wsc_Template_Args{
 
 		
 		$buttons = array_merge( array_flip( $buttonOrder ), $buttons );
+
+		if( $isChkoutLogin ){
+			$buttons['checkout']['data'] = 'data-redirect="'.$buttons['checkout']['url'].'"'; 
+		}
 
 		//Remove cart & checkout button if cart is empty
 		if( WC()->cart->is_empty() ){

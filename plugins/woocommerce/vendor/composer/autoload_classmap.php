@@ -807,6 +807,7 @@ return array(
     'Automattic\\WooCommerce\\Internal\\Admin\\RemoteFreeExtensions\\DefaultFreeExtensions' => $baseDir . '/src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php',
     'Automattic\\WooCommerce\\Internal\\Admin\\RemoteFreeExtensions\\EvaluateExtension' => $baseDir . '/src/Internal/Admin/RemoteFreeExtensions/EvaluateExtension.php',
     'Automattic\\WooCommerce\\Internal\\Admin\\RemoteFreeExtensions\\Init' => $baseDir . '/src/Internal/Admin/RemoteFreeExtensions/Init.php',
+    'Automattic\\WooCommerce\\Internal\\Admin\\RemoteFreeExtensions\\ProcessCoreProfilerPluginInstallOptions' => $baseDir . '/src/Internal/Admin/RemoteFreeExtensions/ProcessCoreProfilerPluginInstallOptions.php',
     'Automattic\\WooCommerce\\Internal\\Admin\\RemoteFreeExtensions\\RemoteFreeExtensionsDataSourcePoller' => $baseDir . '/src/Internal/Admin/RemoteFreeExtensions/RemoteFreeExtensionsDataSourcePoller.php',
     'Automattic\\WooCommerce\\Internal\\Admin\\RemoteInboxNotifications' => $baseDir . '/src/Internal/Admin/RemoteInboxNotifications.php',
     'Automattic\\WooCommerce\\Internal\\Admin\\Schedulers\\CustomersScheduler' => $baseDir . '/src/Internal/Admin/Schedulers/CustomersScheduler.php',

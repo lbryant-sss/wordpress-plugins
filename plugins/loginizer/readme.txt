@@ -4,7 +4,7 @@ Tags: security, access, admin, Loginizer, login, logs, ban ip, failed login, ip,
 Requires at least: 3.0
 Tested up to: 6.7
 Requires PHP: 5.5
-Stable tag: 1.9.8
+Stable tag: 1.9.9
 License: LGPLv2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -84,6 +84,11 @@ That's it. You're done!
 3. Loginizer Brute Force Settings page
 
 == Changelog ==
+
+= 1.9.9 =
+* [Task] There was a warning on PHP 8.2, that has been fixed.
+* [Bug-Fix] In some cases the session in Social Login was breaking that has been fixed.
+* [Bug-Fix Pro] For some page builders, changing the login slug caused the wp-login.php 404 error page to not load shortcodes properly. This issue has now been fixed.
 
 = 1.9.8 =
 * [Feature Pro] Now you can hide the wp-admin totally from non logged in users.

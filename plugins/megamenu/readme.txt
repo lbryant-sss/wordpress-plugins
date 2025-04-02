@@ -132,6 +132,13 @@ See https://www.megamenu.com for more screenshots
 
 == Changelog ==
 
+= 3.5.dev =
+
+* Fix: Double blue 'Mega Menu' button in Enfold theme
+* Change: Use options rather than transients to store CSS version and generation date
+* Fix: Sub menu items in mega menus don't appear on mobile when flex styling is used
+* Improvement: Use more reliable/cleaner method to add toggle bar html to menu output
+
 = 3.5 =
 
 * New: Dedicated Elementor Widget

@@ -56,23 +56,14 @@ if ( ! class_exists( 'Mega_Menu_Toggle_Blocks' ) ) :
 		 * @return string
 		 */
 		public function output_menu_public_toggle_block_html( $html, $settings ) {
+			$closed_text = isset( $settings['closed_text'] ) ? do_shortcode( stripslashes( $settings['closed_text'] ) ) : 'MENU';
+			$open_text   = isset( $settings['open_text'] ) ? do_shortcode( stripslashes( $settings['open_text'] ) ) : 'MENU';
 
-			$css_version = get_transient( 'megamenu_css_version' );
-
-			// only use HTML version of toggle block if CSS version is above 2.4.0.2
-			// if transient is missing, assume the latest version of the CSS is present and use Flex layout
-			if ( ! $css_version || version_compare( $css_version, '2.4.0.2' ) >= 0 ) {
-				$closed_text = isset( $settings['closed_text'] ) ? do_shortcode( stripslashes( $settings['closed_text'] ) ) : 'MENU';
-				$open_text   = isset( $settings['open_text'] ) ? do_shortcode( stripslashes( $settings['open_text'] ) ) : 'MENU';
-
-				$html = "<span class='mega-toggle-label' role='button' aria-expanded='false'><span class='mega-toggle-label-closed'>{$closed_text}</span><span class='mega-toggle-label-open'>{$open_text}</span></span>";
-			} else {
-				$html = '';
-			}
+			$html = "<span class='mega-toggle-label' role='button' aria-expanded='false'><span class='mega-toggle-label-closed'>{$closed_text}</span><span class='mega-toggle-label-open'>{$open_text}</span></span>";
 
 			return apply_filters( 'megamenu_toggle_menu_toggle_html', $html );
-
 		}
+
 
 		/**
 		 * Return the saved toggle blocks for a specified theme
@@ -150,16 +141,7 @@ if ( ! class_exists( 'Mega_Menu_Toggle_Blocks' ) ) :
 			$blocks_html = '';
 
 			if ( is_array( $toggle_blocks ) ) {
-
-				$css_version = get_transient( 'megamenu_css_version' );
-
-				// only use Flex layout version of toggle blocks if CSS version is above 2.4.0.2
-				// if transient is missing, assume the latest version of the CSS is present and use Flex layout
-				if ( ! $css_version || version_compare( $css_version, '2.4.0.2' ) >= 0 ) {
-					$blocks_html = $this->get_flex_blocks_html( $toggle_blocks, $content, $nav_menu, $args, $theme_id );
-				} else {
-					$blocks_html = $this->get_backwards_compatibility_blocks_html( $toggle_blocks, $content, $nav_menu, $args, $theme_id );
-				}
+				$blocks_html = $this->get_flex_blocks_html( $toggle_blocks, $content, $nav_menu, $args, $theme_id );
 			}
 
 			$content .= $blocks_html;
@@ -263,75 +245,7 @@ if ( ! class_exists( 'Mega_Menu_Toggle_Blocks' ) ) :
 
 			return $block_html;
 		}
-
-
-		/**
-		 * Return a flat HTML list of menu toggle blocks. Only used when CSS version has not been updated to 2.4.1+
-		 *
-		 * @param array $toggle_blocks
-		 * @since 2.4.1
-		 * @return string html
-		 */
-		private function get_backwards_compatibility_blocks_html( $toggle_blocks, $content, $nav_menu, $args, $theme_id ) {
-
-			$blocks_html = '';
-
-			foreach ( $toggle_blocks as $block_id => $block ) {
-
-				if ( isset( $block['type'] ) ) {
-					$class = 'mega-' . str_replace( '_', '-', $block['type'] ) . '-block';
-				} else {
-					$class = '';
-				}
-
-				if ( isset( $block['align'] ) ) {
-					$align = 'mega-toggle-block-' . $block['align'];
-				} else {
-					$align = 'mega-toggle-block-left';
-				}
-
-				// @todo remove ID once MMM Pro has been updated to use classes
-				$id = apply_filters( 'megamenu_toggle_block_id', 'mega-toggle-block-' . $block_id );
-
-				$attributes = apply_filters(
-					'megamenu_toggle_block_attributes',
-					array(
-						'class' => "mega-toggle-block {$class} {$align} mega-toggle-block-{$block_id}",
-						'id'    => "mega-toggle-block-{$block_id}",
-					),
-					$block,
-					$content,
-					$nav_menu,
-					$args,
-					$theme_id
-				);
-
-				/**
-				 *
-				 * function remove_ids_from_toggle_blocks($attributes, $block, $content, $nav_menu, $args, $theme_id) {
-				 *    if (isset($attributes['id'])) {
-				 *        unset($attributes['id']);
-				 *    }
-				 *    return $attributes;
-				 * }
-				 * add_filter('megamenu_toggle_block_attributes', 'remove_ids_from_toggle_blocks', 10, 6);
-				 *
-				 */
-
-				$blocks_html .= '<div';
-
-				foreach ( $attributes as $attribute => $val ) {
-					$blocks_html .= ' ' . $attribute . "='" . esc_attr( $val ) . "'";
-				}
-
-				$blocks_html .= '>';
-				$blocks_html .= apply_filters( "megamenu_output_public_toggle_block_{$block['type']}", '', $block );
-				$blocks_html .= '</div>';
-			}
-
-			return $blocks_html;
-		}
-
+		
 
 		/**
 		 * Save the toggle blocks when the theme is saved

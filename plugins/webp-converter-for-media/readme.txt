@@ -3,9 +3,9 @@ Contributors: mateuszgbiorczyk
 Donate link: https://url.mattplugins.com/converter-readme-donate-link
 Tags: convert webp, webp, optimize images, image optimization, compress images
 Requires at least: 4.9
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.1
-Stable tag: 6.2.0
+Stable tag: 6.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,7 +60,7 @@ If you would like to appreciate it, you can try [the PRO version](https://url.ma
 1. Upload the plugin files to the `/wp-content/plugins/webp-converter-for-media` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the `Plugins` screen in WordPress Admin Panel.
 3. Use the `Settings -> Settings -> Converter for Media` screen to configure the plugin.
-4. Click on the `Start Bulk Optimization` button and wait for the process to complete.
+4. Click on the `Start Bulk Optimization` button and wait.
 5. Check if everything works fine using [this tutorial](https://url.mattplugins.com/converter-readme-installation-instruction).
 
 That's all! Your website is already loading faster!
@@ -305,7 +305,12 @@ Current list of supported CDN servers:
 
 == Changelog ==
 
-= 6.2.0 (2024-12-18)
+= 6.2.1 (2025-04-01) =
+* `[Fixed]` Handling of excluded directories when uploading new images
+* `[Added]` Error detection of required functions in disable_functions list in PHP configuration
+* `[Added]` Support for WordPress 6.8
+
+= 6.2.0 (2024-12-18) =
 * `[Changed]` Minimum required PHP version from 7.0 to 7.1
 * `[Added]` Compatibility with PHP 8.4
 
@@ -325,6 +330,12 @@ Current list of supported CDN servers:
 * `[Fixed]` Handling of excluded filenames when uploading new images
 * `[Fixed]` Adding support for custom directories using webpc_source_directories filter
 * `[Fixed]` Verification of rewrites_not_working server configuration error when HTTP referer is required
+
+= 6.0.0 (2024-08-28) =
+* `[Fixed]` Generating statistics on plugin settings page when WebP format is unchecked
+* `[Fixed]` Restoring original images in Media Library
+* `[Changed]` Optimization statistics in Media Library
+* `[Added]` Warnings with explanations in plugin settings field: Image loading mode
 
 See [changelog.txt](https://url.mattplugins.com/converter-readme-changelog) for previous versions.
 

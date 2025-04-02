@@ -173,18 +173,7 @@ class Akismet_Admin {
 			wp_register_style( 'akismet-admin', plugin_dir_url( __FILE__ ) . $akismet_admin_css_path, array(), self::get_asset_file_version( $akismet_admin_css_path ) );
 			wp_enqueue_style( 'akismet-admin' );
 
-			// Enqueue the Akismet activation banner background separately so we can
-			// include the right path to the image. Shown on edit-comments.php and plugins.php.
-			if ( in_array( $hook_suffix, self::$activation_banner_pages, true ) ) {
-				$activation_banner_url = esc_url(
-					plugin_dir_url( __FILE__ ) . '_inc/img/akismet-activation-banner-elements.png'
-				);
-				$inline_css            = '.akismet-activate {' . PHP_EOL .
-					'background-image: url(' . $activation_banner_url . ');' . PHP_EOL .
-					'}';
-
-				wp_add_inline_style( 'akismet-admin', $inline_css );
-			}
+			wp_add_inline_style( 'akismet-admin', self::get_inline_css() );
 
 			wp_register_script( 'akismet.js', plugin_dir_url( __FILE__ ) . '_inc/akismet.js', array( 'jquery' ), self::get_asset_file_version( '_inc/akismet.js' ) );
 			wp_enqueue_script( 'akismet.js' );
@@ -1555,5 +1544,38 @@ class Akismet_Admin {
 
 		// Otherwise, use the AKISMET_VERSION.
 		return AKISMET_VERSION;
+	}
+
+	/**
+	 * Return inline CSS for Akismet admin.
+	 *
+	 * @return string
+	 */
+	protected static function get_inline_css(): string {
+		global $hook_suffix;
+
+		// Hide excess compatible plugins when there are lots.
+		$inline_css = '
+			.akismet-compatible-plugins__card:nth-child(n+' . esc_attr( Akismet_Compatible_Plugins::DEFAULT_VISIBLE_PLUGIN_COUNT + 1 ) . ') {
+				display: none;
+			}
+
+			.akismet-compatible-plugins__list.is-expanded .akismet-compatible-plugins__card:nth-child(n+' . esc_attr( Akismet_Compatible_Plugins::DEFAULT_VISIBLE_PLUGIN_COUNT + 1 ) . ') {
+				display: flex;
+			}
+		';
+
+		// Enqueue the Akismet activation banner background separately so we can
+		// include the right path to the image. Shown on edit-comments.php and plugins.php.
+		if ( in_array( $hook_suffix, self::$activation_banner_pages, true ) ) {
+			$activation_banner_url = esc_url(
+				plugin_dir_url( __FILE__ ) . '_inc/img/akismet-activation-banner-elements.png'
+			);
+			$inline_css           .= '.akismet-activate {' . PHP_EOL .
+				'background-image: url(' . $activation_banner_url . ');' . PHP_EOL .
+				'}';
+		}
+
+		return $inline_css;
 	}
 }

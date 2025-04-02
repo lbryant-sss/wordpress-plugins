@@ -32,6 +32,11 @@ Upload the Akismet plugin to your blog, activate it, and then enter your Akismet
 
 == Changelog ==
 
+= 5.4.0 =
+*Release Date - TBD*
+
+* The stats pages now use the user's locale instead of the site's locale if they're different.
+
 = 5.3.7 =
 *Release Date - 14 February 2025*
 

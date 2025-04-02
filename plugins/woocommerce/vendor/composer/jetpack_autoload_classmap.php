@@ -3330,6 +3330,10 @@ return array(
 		'version' => '9.8.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/RemoteFreeExtensions/Init.php'
 	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\RemoteFreeExtensions\\ProcessCoreProfilerPluginInstallOptions' => array(
+		'version' => '9.8.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/RemoteFreeExtensions/ProcessCoreProfilerPluginInstallOptions.php'
+	),
 	'Automattic\\WooCommerce\\Internal\\Admin\\RemoteFreeExtensions\\RemoteFreeExtensionsDataSourcePoller' => array(
 		'version' => '9.8.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/RemoteFreeExtensions/RemoteFreeExtensionsDataSourcePoller.php'
@@ -5053,6 +5057,10 @@ return array(
 	'Automattic\\WooCommerce\\Tests\\Internal\\Admin\\RemoteFreeExtensions\\InitTest' => array(
 		'version' => '9.8.0.0',
 		'path'    => $baseDir . '/tests/php/src/Internal/Admin/RemoteFreeExtensions/InitTest.php'
+	),
+	'Automattic\\WooCommerce\\Tests\\Internal\\Admin\\RemoteFreeExtensions\\ProcessCoreProfilerPluginInstallOptionsTest' => array(
+		'version' => '9.8.0.0',
+		'path'    => $baseDir . '/tests/php/src/Internal/Admin/RemoteFreeExtensions/ProcessCoreProfilerPluginInstallOptionsTest.php'
 	),
 	'Automattic\\WooCommerce\\Tests\\Internal\\Admin\\Settings\\Mocks\\FakePaymentGateway' => array(
 		'version' => '9.8.0.0',

@@ -927,6 +927,7 @@ class ComposerStaticInit873bafa9ae6aaccf6c844a0451868b60
         'Automattic\\WooCommerce\\Internal\\Admin\\RemoteFreeExtensions\\DefaultFreeExtensions' => __DIR__ . '/../..' . '/src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php',
         'Automattic\\WooCommerce\\Internal\\Admin\\RemoteFreeExtensions\\EvaluateExtension' => __DIR__ . '/../..' . '/src/Internal/Admin/RemoteFreeExtensions/EvaluateExtension.php',
         'Automattic\\WooCommerce\\Internal\\Admin\\RemoteFreeExtensions\\Init' => __DIR__ . '/../..' . '/src/Internal/Admin/RemoteFreeExtensions/Init.php',
+        'Automattic\\WooCommerce\\Internal\\Admin\\RemoteFreeExtensions\\ProcessCoreProfilerPluginInstallOptions' => __DIR__ . '/../..' . '/src/Internal/Admin/RemoteFreeExtensions/ProcessCoreProfilerPluginInstallOptions.php',
         'Automattic\\WooCommerce\\Internal\\Admin\\RemoteFreeExtensions\\RemoteFreeExtensionsDataSourcePoller' => __DIR__ . '/../..' . '/src/Internal/Admin/RemoteFreeExtensions/RemoteFreeExtensionsDataSourcePoller.php',
         'Automattic\\WooCommerce\\Internal\\Admin\\RemoteInboxNotifications' => __DIR__ . '/../..' . '/src/Internal/Admin/RemoteInboxNotifications.php',
         'Automattic\\WooCommerce\\Internal\\Admin\\Schedulers\\CustomersScheduler' => __DIR__ . '/../..' . '/src/Internal/Admin/Schedulers/CustomersScheduler.php',

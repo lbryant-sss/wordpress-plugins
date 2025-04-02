@@ -17,6 +17,7 @@ use Exception;
 use SureTriggers\Integrations\AutomateAction;
 use SureTriggers\Traits\SingletonLoader;
 use FluentBoards\App\Services\BoardService;
+use FluentBoards\App\Models\Board;
 /**
  * AddUserToBoard
  *
@@ -82,13 +83,25 @@ class AddUserToBoard extends AutomateAction {
 		if ( ! class_exists( 'FluentBoards\App\Services\BoardService' ) ) {
 			return;
 		}
+		if ( ! class_exists( 'FluentBoards\App\Models\Board' ) ) {
+			return;
+		}
+		
+		$board = \FluentBoards\App\Models\Board::find( $board_id );
+
+		if ( ! $board ) {
+			throw new Exception( __( 'Board not found.', 'suretriggers' ) );
+		}
 		$board_service = new BoardService();
 		$member        = $board_service->addMembersInBoard(
 			$board_id,
 			$assignee
 		);
 
-		return $member;
+		return [
+			'board'  => $board,
+			'member' => $member,
+		];
 	}
 }
 

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/xootix
 Tags: woocommerce cart, floating cart, cart popup, woocommerce, slider
 Requires at least: 3.0.1
 Tested up to: 6.7
-Stable tag: 2.6.2
+Stable tag: 2.6.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,7 +77,7 @@ Three different styles to choose from - drawer, slider and column. You can set t
 
 Customers can directly update their shipping location and get the exact shipping fee. You will no longer need a cart page to calculate the shipping value.
 
-##Rewards progress bar
+##Rewards & Checkpoints
 
 Incentivize with progress: Free gifts, discounts and free shipping, display the minimum amount required to achieve a reward on progress bar.
 
@@ -128,6 +128,10 @@ You can use any third party plugin such as Loco Translate for hassle free transl
 8. Change Shipping Pro
 
 == Changelog ==
+
+= 2.6.3 =
+* Improv - Login popup/slider redirects to checkout page on login success.
+* Template update - global/footer/buttons.php
 
 = 2.6.2 =
 * Fix - Card layout design 
