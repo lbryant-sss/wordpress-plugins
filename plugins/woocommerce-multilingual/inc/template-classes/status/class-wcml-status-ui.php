@@ -41,7 +41,7 @@ class WCML_Status_UI extends WCML_Templates_Factory {
 			'taxonomies'     => $WCML_Status_Taxonomies_UI->get_view(),
 			'multi_currency' => $WCML_Status_Multi_Currencies_UI->get_view(),
 			'media'          => $WCML_Status_Media_UI->get_view(),
-			'troubl_url'     => admin_url( 'admin.php?page=wpml-wcml&tab=troubleshooting' ),
+			'troubl_url'     => \WCML\Utilities\AdminUrl::getTroubleshootingTab(),
 			'strings'        => [
 				'troubl' => __( 'Troubleshooting', 'woocommerce-multilingual' ),
 			],

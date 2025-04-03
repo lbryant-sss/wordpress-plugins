@@ -40,9 +40,9 @@ class DownloadsList {
 		$releaseNotes          = '';
 		$installerReleaseNotes = '';
 		if ( ! empty( $download['release-notes'] ) ) {
-			$releaseNotes = '<a class="js-release-notes handle" href="#">' . esc_html__( 'Release notes', 'installer' ) . '</a>';
+			$releaseNotes = '<a class="js-release-notes handle" data-plugin-id="'.$download_id.'" href="#">' . esc_html__( 'Release notes', 'installer' ) . '</a>';
 
-			$installerReleaseNotes = '<tr class="installer-release-notes">
+			$installerReleaseNotes = '<tr id="'.$download_id.'_release-notes" class="installer-release-notes">
 		                                <td colspan="9">
 		                                    <div class="arrow_box">
 		                                        <div>' . force_balance_tags( $download['release-notes'] ) . '</div>
@@ -51,29 +51,35 @@ class DownloadsList {
                             </tr>';
 		}
 
-		return '<tr>
-	                <td class="installer_checkbox">
+		$leadDescription = '';
+		if (array_key_exists('lead_description', $download)) {
+			if (array_key_exists('en', $download['lead_description'])) {
+				$leadDescription = '<p id="'.$download_id.'_lead-description">'.$download['lead_description']['en'].'</p>';
+			}
+		}
+
+		return '<tr id="'.$download_id.'_plugin-row">
+	                <td class="installer_checkbox for_spinner_js">
 	                    <label>
 	                    <input type="checkbox" name="downloads[]" value="' . $download_data . '" data-slug="' . $download['slug'] . '" ' . $disabled . ' />&nbsp;
 	                    </label>
+	                    <span class="spinner"></span>
 	                </td>
-	                <td class="installer_plugin_name">' . $download['name'] . '</td>
-	                <td class="installer_version_installed">' . $upToDateClass . '</td>
+	                <td class="installer_plugin_name">
+	                	<span>' . $download['name'] . '</span>'
+	                	. $leadDescription . '
+	                </td>
+	                <td class="installer_version_installed for_spinner_js">
+	                	<div class="installer_version_installed_wrapper">
+	                		<span class="installed-version">' . $upToDateClass . '</span>
+							<span class="spinner"></span>
+						</div>
+	                </td>
 	                <td class="installer_version">' . $download['version'] . '</td>
 	                <td class="installer_release_date">' . date_i18n( 'F j, Y', strtotime( $download['date'] ) ) . '</td>
-	                <td>' . $releaseNotes . '</td>
-	                <td>
-	                    <span class="installer-status-installing">' . __( 'installing...', 'installer' ) . '</span>
-	                    <span class="installer-status-updating">' . __( 'updating...', 'installer' ) . '</span>
-	                    <span class="installer-status-installed" data-fail="' . __( 'failed!', 'installer' ) . '">' . __( 'installed', 'installer' ) . '</span>
-	                    <span class="installer-status-updated" data-fail="' . __( 'failed!', 'installer' ) . '">' . __( 'updated', 'installer' ) . '</span>
-	                </td>
-	                <td>
-	                    <span class="installer-status-activating">' . __( 'activating', 'installer' ) . '</span>
-	                    <span class="installer-status-activated">' . __( 'activated', 'installer' ) . '</span>
-	                </td>
-	                <td class="for_spinner_js"><span class="spinner"></span></td>
+	                <td></td>
+					<td>' . $releaseNotes . '</td>
 	            </tr>' .
-		        $installerReleaseNotes;
+		       $installerReleaseNotes;
 	}
 }

@@ -46,7 +46,7 @@ class WCML_Store_Pages {
 		$isTranslationPreview = $getData->get( 'preview' ) && $getData->get( 'jobId' );
 		if (
 			! ( $is_admin || $isTranslationPreview ) ||
-			( 'admin.php' === $pagenow && 'wc-settings' === $getData->get( 'page' ) ) ||
+			( 'admin.php' === $pagenow && \WCML\Utilities\AdminUrl::PAGE_WOO_SETTINGS === $getData->get( 'page' ) ) ||
 			( 'edit.php' === $pagenow && 'page' === $getData->get( 'post_type' ) )
 		) {
 			// Translate shop page ids
@@ -341,7 +341,7 @@ class WCML_Store_Pages {
 	public function create_missing_store_pages_with_redirect() {
 		$this->create_missing_store_pages();
 
-		wcml_safe_redirect( admin_url( 'admin.php?page=wpml-wcml&tab=status' ) );
+		wcml_safe_redirect( \WCML\Utilities\AdminUrl::getStatusTab() );
 	}
 
 	/**
@@ -660,7 +660,7 @@ class WCML_Store_Pages {
 					$text = sprintf(
 						/* translators: %1$s and %2$s are opening and closing HTML link tags */
 						__( 'To quickly translate this and other WooCommerce store pages, please run the %1$ssetup wizard%2$s.', 'woocommerce-multilingual' ),
-						'<a href="' . admin_url( 'admin.php?page=wcml-setup' ) . '">',
+						'<a href="' . \WCML\Utilities\AdminUrl::getSetup() . '">',
 						'</a>'
 					);
 

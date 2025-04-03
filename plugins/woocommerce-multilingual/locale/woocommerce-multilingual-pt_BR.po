@@ -1,28 +1,39 @@
-# Copyright (C) 2023 OnTheGoSystems
+# Copyright (C) 2024 OnTheGoSystems
 # This file is distributed under the same license as the WooCommerce Multilingual & Multicurrency plugin.
 msgid ""
-msgstr "Project-Id-Version: WooCommerce Multilingual & Multicurrency 5.2.0\nReport-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-multilingual\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPOT-Creation-Date: 2023-05-30T16:11:04-03:00\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nX-Generator: WP-CLI 2.6.0\nX-Domain: woocommerce-multilingual\n"
+msgstr ""
+"Project-Id-Version: WooCommerce Multilingual & Multicurrency 5.4.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-multilingual\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-12-27T11:26:23-03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.8.1\n"
+"X-Domain: woocommerce-multilingual\n"
 
 #. Plugin Name of the plugin
-#: inc/admin-menus/class-wcml-admin-menus.php:396
+#: inc/admin-menus/class-wcml-admin-menus.php:388
 msgid "WooCommerce Multilingual & Multicurrency"
-msgstr ""
+msgstr "WooCommerce Multilingual & Multicurrency"
 
 #. Plugin URI of the plugin
 msgid "https://wpml.org/documentation/related-projects/woocommerce-multilingual/?utm_source=plugin&utm_medium=gui&utm_campaign=wcml"
-msgstr ""
+msgstr "https://wpml.org/documentation/related-projects/woocommerce-multilingual/?utm_source=plugin&utm_medium=gui&utm_campaign=wcml"
 
 #. Description of the plugin
 msgid "Make your store multilingual and enable multiple currencies | <a href=\"https://wpml.org/documentation/related-projects/woocommerce-multilingual/?utm_source=plugin&utm_medium=gui&utm_campaign=wcml\">Documentation</a>"
-msgstr ""
+msgstr "Torne sua loja multilíngue e habilite várias moedas - <a href=\"https://wpml.org/documentation/related-projects/woocommerce-multilingual/?utm_source=plugin&utm_medium=gui&utm_campaign=wcml\">Documentation</a>"
 
 #. Author of the plugin
 msgid "OnTheGoSystems"
-msgstr ""
+msgstr "Sistemas OnTheGoSystems"
 
 #. Author URI of the plugin
 msgid "http://www.onthegosystems.com/"
-msgstr ""
+msgstr "http://www.onthegosystems.com/"
 
 #: classes/AdminNotices/CachePlugins.php:33
 msgid "WooCommerce Multilingual & Multicurrency detected an active cache plugin on your site."
@@ -36,6 +47,24 @@ msgstr "O armazenamento em cache pode causar problemas de exibição de moedas p
 msgid "To avoid this, set your cache plugin to not cache pages for visitors that have a cookie set in their browser."
 msgstr "Para evitar isso, configure seu plugin de cache para não armazenar em cache para os visitantes páginas que tiverem um cookie definido em seu navegador."
 
+#. translators: %s is a link.
+#: classes/AdminNotices/ExportImport.php:161
+msgid "Migrating your multilingual shop? With %s you can transfer your translated content to a new site, including cross-sells, up-sells, and product attributes."
+msgstr "Migrando sua loja multilíngue? Com o %s você pode transferir seu conteúdo traduzido para um novo site, incluindo vendas cruzadas, vendas incrementais e atributos de produtos."
+
+#. translators: %1$s and %2$s are both links.
+#: classes/AdminNotices/ExportImport.php:172
+msgid "Looking to import your multilingual shop? With %1$s and %2$s in both your original and new site, you can export and import your translations automatically."
+msgstr "Procurando importar sua loja multilíngue? Com o %1$s e o %2$s tanto no seu site original quanto no novo, você pode exportar e importar suas traduções automaticamente."
+
+#: classes/AdminNotices/ExportImport.php:183
+msgid "WPML Export and Import"
+msgstr "Exportação e Importação WPML"
+
+#: classes/AdminNotices/ExportImport.php:194
+msgid "WooCommerce Multilingual"
+msgstr "WooCommerce Multilíngue"
+
 #: classes/AdminNotices/MultiCurrencyMissing.php:45
 msgid "You haven't added any secondary currencies"
 msgstr "Você não adicionou nenhuma moeda secundária"
@@ -44,62 +73,62 @@ msgstr "Você não adicionou nenhuma moeda secundária"
 msgid "Please add another currency to fully utilize multicurrency mode. If you do not need multiple currencies, you can disable this setting to improve your site's performance."
 msgstr "Adicione outra moeda para utilizar plenamente o modo de múltiplas moedas. Se não precisa de mais de uma moeda, você pode desabilitar essa configuração para melhorar o desempenho do seu site."
 
-#: classes/AdminNotices/MultiCurrencyMissing.php:47
+#: classes/AdminNotices/MultiCurrencyMissing.php:49
 msgid "Configure multicurrency mode"
 msgstr "Configure o modo de múltiplas moedas"
 
-#: classes/AdminNotices/Review.php:64
-#: tests/phpunit/tests/classes/AdminNotices/TestReview.php:206
+#: classes/AdminNotices/Review.php:47
 msgid "Review WooCommerce Multilingual & Multicurrency"
 msgstr "Avalie o WooCommerce Multilingual & Multicurrency"
 
-#: classes/AdminNotices/Review.php:80
-#: tests/phpunit/tests/classes/AdminNotices/TestReview.php:218
-msgid "Congrats! You've just earned some money using WooCommerce Multilingual & Multicurrency."
-msgstr "Parabéns! Você acabou de ganhar dinheiro usando o WooCommerce Multilingual & Multicurrency."
+#: classes/AdminNotices/Review.php:58
+msgid "Congrats on making your first multicurrency sale!"
+msgstr "Parabéns por fazer sua primeira venda multimoeda!"
 
-#: classes/AdminNotices/Review.php:84
-#: tests/phpunit/tests/classes/AdminNotices/TestReview.php:222
-msgid "How do you feel getting your very first order in foreign language or currency?"
-msgstr "Qual é a sensação de ter realizado sua primeira venda em um idioma ou moeda estrangeira?"
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: classes/AdminNotices/Review.php:64
+msgid "Want to help <strong>WooCommerce Multilingual & Multicurrency</strong> plugin? %1$sGive us a review%2$s!"
+msgstr "Quer ajudar o plugin <strong>WooCommerce Multilingual & Multicurrency</strong>? %1$sDê-nos uma avaliação%2$s!"
 
-#: classes/AdminNotices/Review.php:86
-#: tests/phpunit/tests/classes/AdminNotices/TestReview.php:224
-msgid "We for sure are super thrilled about your success! Will you help WCML improve and grow?"
-msgstr "Nós com certeza ficamos super empolgados com seu sucesso! Gostaria de ajudar o WCML a melhorar e crescer?"
+#: classes/AdminNotices/TranslationControlMovedNotice.php:57
+msgid "The Translation Controls Have Moved"
+msgstr "Os Controles de Tradução Foram Movidos"
 
-#: classes/AdminNotices/Review.php:90
-#: tests/phpunit/tests/classes/AdminNotices/TestReview.php:228
-msgid "Give us <span class=\"rating\">5.0 <i class=\"otgs-ico-star\"></i></span> review now."
-msgstr "Avalie-nos agora com <span class=\"rating\">5,0<i class=\"otgs-ico-star\"></i></span>."
+#: classes/AdminNotices/TranslationControlMovedNotice.php:59
+msgid "We updated WooCommerce Multilingual to streamline your translation work."
+msgstr "Atualizamos o WooCommerce Multilíngue para simplificar seu trabalho de tradução."
+
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: classes/AdminNotices/TranslationControlMovedNotice.php:65
+msgid "Translate your whole site's content, including products, from %1$sWPML &rarr; Translation Management%2$s."
+msgstr "Traduza todo o conteúdo do seu site, incluindo produtos, em %1$sWPML &rarr; Gerenciamento de Traduções%2$s."
 
 #: classes/currencies/class-wcml-admin-currency-selector.php:87
-#: inc/currencies/class-wcml-multi-currency-reports.php:176
+#: inc/currencies/class-wcml-multi-currency-reports.php:177
 msgid "Currency - no orders found"
 msgstr "Moeda - nenhuma ordem encontrada"
 
 #: classes/currencies/class-wcml-admin-currency-selector.php:105
-#: compatibility/WcBookings/MulticurrencyHooks.php:734
-#: inc/class-wcml-orders.php:448
-#: inc/currencies/class-wcml-multi-currency-configuration.php:297
-#: inc/currencies/class-wcml-multi-currency-orders.php:477
-#: inc/currencies/class-wcml-multi-currency-reports.php:153
+#: compatibility/WcBookings/MulticurrencyHooks.php:736
+#: inc/class-wcml-orders.php:274
+#: inc/currencies/class-wcml-multi-currency-configuration.php:301
+#: inc/currencies/class-wcml-multi-currency-orders.php:445
+#: inc/currencies/class-wcml-multi-currency-reports.php:154
 msgid "Invalid nonce"
 msgstr "Nonce inválido"
 
-#: classes/Email/Settings/Hooks.php:130
-#: inc/class-wcml-wc-gateways.php:309
-#: inc/class-wcml-wc-strings.php:310
-msgid "translations"
-msgstr "traduções"
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: classes/Email/Settings/TranslationControls.php:119
+msgid "To translate custom WooCommerce email notifications, go to the %1$sTranslation Dashboard%2$s."
+msgstr "Para traduzir notificações de e-mail personalizadas do WooCommerce, vá para o %1$sPainel de Tradução%2$s."
 
 #. translators: %s is the month day
-#: classes/multi-currency/class-wcml-exchange-rates.php:399
+#: classes/multi-currency/class-wcml-exchange-rates.php:400
 msgid "Monthly on the %s"
 msgstr "Mensalmente no dia %s"
 
 #. translators: %s is the week day
-#: classes/multi-currency/class-wcml-exchange-rates.php:408
+#: classes/multi-currency/class-wcml-exchange-rates.php:409
 msgid "Weekly on %s"
 msgstr "Semanalmente no(a) %s"
 
@@ -124,11 +153,11 @@ msgstr "Defina a moeda na qual seu cliente verá o preço final na finalização
 #: classes/multi-currency/payment-gateways/class-wcml-payment-gateway-paypal-v2.php:32
 #: classes/multi-currency/payment-gateways/class-wcml-payment-gateway-paypal.php:47
 #: classes/multi-currency/payment-gateways/class-wcml-payment-gateway-stripe.php:18
-#: classes/Multicurrency/Analytics/Export.php:24
-#: classes/Multicurrency/Analytics/Export.php:26
-#: classes/Multicurrency/Analytics/Hooks.php:84
+#: classes/Multicurrency/Analytics/Export.php:29
+#: classes/Multicurrency/Analytics/Export.php:31
+#: classes/Multicurrency/Analytics/Hooks.php:86
 #: classes/Multicurrency/UI/Hooks.php:200
-#: inc/class-wcml-wc-gateways.php:375
+#: inc/class-wcml-wc-gateways.php:334
 msgid "Currency"
 msgstr "Moeda"
 
@@ -175,7 +204,15 @@ msgstr "Chave publicável ativa"
 msgid "Live Secret Key"
 msgstr "Chave secreta ativa"
 
-#: classes/Multicurrency/Analytics/Export.php:19
+#: classes/multi-currency/payment-gateways/class-wcml-payment-gateway-stripe.php:21
+msgid "Test Publishable Key"
+msgstr "Chave Publicável de Teste"
+
+#: classes/multi-currency/payment-gateways/class-wcml-payment-gateway-stripe.php:22
+msgid "Test Secret Key"
+msgstr "Chave Secreta de Teste"
+
+#: classes/Multicurrency/Analytics/Export.php:25
 #: classes/Reports/Orders/Hooks.php:24
 msgid "Language"
 msgstr "Idioma"
@@ -262,7 +299,6 @@ msgid "default"
 msgstr "padrão"
 
 #: classes/Multicurrency/UI/Hooks.php:204
-#: inc/template-classes/class-wcml-products-ui.php:56
 msgid "Edit"
 msgstr "Editar"
 
@@ -298,7 +334,7 @@ msgid "Disable %1$s for %2$s"
 msgstr "Desabilitar %1$s para %2$s"
 
 #: classes/Multicurrency/UI/Hooks.php:214
-#: inc/template-classes/class-wcml-menus-wrap.php:146
+#: inc/template-classes/class-wcml-menus-wrap.php:48
 #: inc/template-classes/multi-currency/class-wcml-multi-currency-ui.php:68
 msgid "Settings"
 msgstr "Configurações"
@@ -324,49 +360,50 @@ msgstr "Taxa de câmbio"
 
 #: classes/Multicurrency/UI/Hooks.php:220
 #: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:64
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:94
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:114
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:99
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:126
 msgid "Only numeric"
 msgstr "Somente numérico"
 
 #. translators: %s for currency exchange rate value
+#. translators: %s is a currency previous rate
 #: classes/Multicurrency/UI/Hooks.php:222
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:73
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:76
 msgid "(previous value: %s)"
 msgstr "(valor anterior: %s)"
 
 #: classes/Multicurrency/UI/Hooks.php:223
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:76
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:81
 msgid "Currency Preview"
 msgstr "Visualização da moeda"
 
 #: classes/Multicurrency/UI/Hooks.php:224
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:80
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:85
 msgid "Currency Position"
 msgstr "Posição da moeda"
 
 #: classes/Multicurrency/UI/Hooks.php:225
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:81
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:86
 msgid "Left"
 msgstr "Esquerda"
 
 #: classes/Multicurrency/UI/Hooks.php:226
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:82
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:87
 msgid "Right"
 msgstr "Direita"
 
 #: classes/Multicurrency/UI/Hooks.php:227
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:83
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:88
 msgid "Left with space"
 msgstr "À esquerda com espaço"
 
 #: classes/Multicurrency/UI/Hooks.php:228
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:84
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:89
 msgid "Right with space"
 msgstr "À direita com espaço"
 
 #: classes/Multicurrency/UI/Hooks.php:229
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:87
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:92
 msgid "Thousand Separator"
 msgstr "Separador de milhar"
 
@@ -375,120 +412,123 @@ msgid "(Space)"
 msgstr "(Espaço)"
 
 #: classes/Multicurrency/UI/Hooks.php:231
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:90
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:95
 msgid "Decimal Separator"
 msgstr "Separador decimal"
 
 #: classes/Multicurrency/UI/Hooks.php:232
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:93
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:98
 msgid "Number of Decimals"
 msgstr "Número de casas decimais"
 
 #: classes/Multicurrency/UI/Hooks.php:233
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:97
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:102
 msgid "Rounding to the nearest integer"
 msgstr "Arredondamento para o número inteiro mais próximo"
 
 #: classes/Multicurrency/UI/Hooks.php:234
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:98
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:103
 msgid "Disabled"
 msgstr "Desabilitado"
 
 #: classes/Multicurrency/UI/Hooks.php:235
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:99
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:104
 msgid "Up"
 msgstr "Para cima"
 
 #: classes/Multicurrency/UI/Hooks.php:236
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:100
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:105
 msgid "Down"
 msgstr "Para baixo"
 
 #: classes/Multicurrency/UI/Hooks.php:237
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:101
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:106
 msgid "Nearest"
 msgstr "Mais próximo"
 
 #: classes/Multicurrency/UI/Hooks.php:238
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:102
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:107
 msgid "Increment for nearest integer"
 msgstr "Incremento para o número inteiro mais próximo"
 
 #. translators: %s is an HTML break line
+#. translators: %s is HTML tag <br> (new line)
 #: classes/Multicurrency/UI/Hooks.php:240
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:105
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:115
 msgid "The resulting price will be an increment of this value after initial rounding.%se.g.:"
 msgstr "O preço resultante será um incremento desse valor após o arredondamento inicial.%sp. ex.:"
 
 #: classes/Multicurrency/UI/Hooks.php:241
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:106
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:118
 msgid "1454.07 &raquo; 1454 when set to 1"
 msgstr "1454,07 &raquo; 1454 quando definido para 1"
 
 #: classes/Multicurrency/UI/Hooks.php:242
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:107
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:119
 msgid "1454.07 &raquo; 1450 when set to 10"
 msgstr "1454,07 &raquo; 1450 quando definido para 10"
 
 #: classes/Multicurrency/UI/Hooks.php:243
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:108
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:120
 msgid "1454.07 &raquo; 1500 when set to 100"
 msgstr "1454,07 &raquo; 1500 quando definido para 100"
 
 #. translators: %s is an HTML break line
+#. translators: %s is HTML tag <br> (new line)
 #: classes/Multicurrency/UI/Hooks.php:245
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:104
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:110
 msgid "Round the converted price to the closest integer. %se.g. 15.78 becomes 16.00"
 msgstr "Arredondar o preço convertido para o número inteiro mais próximo. %sp. ex.: 15,78 vira 16,00"
 
 #: classes/Multicurrency/UI/Hooks.php:246
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:109
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:121
 msgid "The value to be subtracted from the amount obtained previously."
 msgstr "O valor a ser subtraído do valor obtido anteriormente."
 
 #: classes/Multicurrency/UI/Hooks.php:247
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:110
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:122
 msgid "For 1454.07, when the increment for the nearest integer is 100 and the auto-subtract amount is 1, the resulting amount is 1499."
 msgstr "Para 1454,07, quando o incremento para o número inteiro mais próximo for 100 e o valor de subtração automática for 1, o valor resultante é 1499."
 
 #: classes/Multicurrency/UI/Hooks.php:248
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:113
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:125
 msgid "Autosubtract amount"
 msgstr "Subtrair valor automaticamente"
 
 #: classes/Multicurrency/UI/Hooks.php:249
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:117
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:129
 msgid "Payment Gateways"
 msgstr "Gateways de pagamento"
 
 #. translators: %s is a currency code
+#. translators: %s is current currency
 #: classes/Multicurrency/UI/Hooks.php:251
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:118
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:132
 msgid "Custom settings for %s"
 msgstr "Configurações personalizadas para %s"
 
 #: classes/Multicurrency/UI/Hooks.php:253
-#: inc/template-classes/class-wcml-pointer-ui.php:28
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:120
+#: inc/template-classes/class-wcml-pointer-ui.php:37
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:136
 msgid "Learn more"
 msgstr "Saiba mais"
 
 #: classes/Multicurrency/UI/Hooks.php:254
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:122
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:138
 msgid "Please enter a valid number"
 msgstr "Insira um número válido"
 
 #: classes/Multicurrency/UI/Hooks.php:255
 #: compatibility/WcProductAddons/MulticurrencyHooks.php:305
 #: inc/template-classes/currency-switcher/class-wcml-currency-switcher-options-dialog.php:80
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:123
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:139
 #: inc/template-classes/store-urls/class-wcml-store-urls-edit-base-ui.php:50
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: classes/Multicurrency/UI/Hooks.php:256
 #: inc/template-classes/currency-switcher/class-wcml-currency-switcher-options-dialog.php:81
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:124
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:140
 #: inc/template-classes/store-urls/class-wcml-store-urls-edit-base-ui.php:51
 msgid "Save"
 msgstr "Salvar"
@@ -498,7 +538,7 @@ msgid "Currency available in"
 msgstr "Moeda disponível em"
 
 #: classes/Multicurrency/UI/Hooks.php:258
-#: classes/PaymentGateways/Hooks.php:87
+#: classes/PaymentGateways/Hooks.php:149
 msgid "All countries"
 msgstr "Todos os países"
 
@@ -507,12 +547,12 @@ msgid "All countries except: "
 msgstr "Todos os países, exceto: "
 
 #: classes/Multicurrency/UI/Hooks.php:260
-#: classes/PaymentGateways/Hooks.php:89
+#: classes/PaymentGateways/Hooks.php:151
 msgid "All countries except..."
 msgstr "Todos os países, exceto..."
 
 #: classes/Multicurrency/UI/Hooks.php:261
-#: classes/PaymentGateways/Hooks.php:90
+#: classes/PaymentGateways/Hooks.php:152
 msgid "Specific countries"
 msgstr "Países específicos"
 
@@ -570,26 +610,64 @@ msgid "Learn how to generate a free license key"
 msgstr "Saiba como gerar uma chave de licença gratuita"
 
 #. translators: %s is a date
+#. translators: %s is a date and time of currency update
 #: classes/Multicurrency/UI/Hooks.php:313
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:69
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:70
 msgid "Set on %s"
 msgstr "Estabelecida em %s"
 
-#: classes/PaymentGateways/Hooks.php:86
+#: classes/PaymentGateways/Hooks.php:148
 msgid "Country availability"
 msgstr "Disponibilidade no país"
 
-#: classes/PaymentGateways/Hooks.php:88
+#: classes/PaymentGateways/Hooks.php:150
 msgid "All countries except"
 msgstr "Todos os países, exceto"
 
-#: classes/PaymentGateways/Hooks.php:91
+#: classes/PaymentGateways/Hooks.php:153
 msgid "Configure per country availability for this payment gateway"
 msgstr "Configurar a disponibilidade por país desse gateway de pagamento"
 
-#: classes/PaymentGateways/Hooks.php:159
+#: classes/PaymentGateways/Hooks.php:155
+#: inc/template-classes/class-wcml-settings-ui.php:120
+#: inc/template-classes/multi-currency/class-wcml-multi-currency-ui.php:106
+msgid "Save changes"
+msgstr "Salvar alterações"
+
+#: classes/PaymentGateways/Hooks.php:156
+msgid "Settings saved."
+msgstr "Configurações salvas."
+
+#: classes/PaymentGateways/Hooks.php:157
+msgid "Error saving settings."
+msgstr "Erro ao salvar configurações."
+
+#: classes/PaymentGateways/Hooks.php:250
 msgid "We noticed that you're using WooCommerce Gateways Country Limiter plugin which is now integrated into WooCommerce Multilingual & Multicurrency. Please remove it!"
 msgstr "Notamos que você está usando o plug-in WooCommerce Gateways Country Limiter, que agora é integrado ao WooCommerce Multilingual & Multicurrency. Remova-o, por favor!"
+
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: classes/PaymentGateways/Settings/TranslationControls.php:36
+msgid "To translate custom text for payment methods, go to the %1$sTranslation Dashboard%2$s."
+msgstr "Para traduzir texto personalizado para métodos de pagamento, vá para o %1$sPainel de Tradução%2$s."
+
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: classes/Permalinks/Settings/TranslationControls.php:63
+msgid "To translate permalinks for product taxonomies, go to %1$sWooCommerce Multilingual & Multicurrency → Store URLs%2$s."
+msgstr "Para traduzir permalinks para taxonomias de produtos, vá para %1$sWooCommerce Multilingual & Multicurrency → URLs da Loja%2$s."
+
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: classes/Permalinks/Settings/TranslationControls.php:71
+msgid "To translate product permalinks, go to %1$sWooCommerce Multilingual & Multicurrency → Store URLs%2$s."
+msgstr "Para traduzir permalinks de produtos, vá para %1$sWooCommerce Multilingual & Multicurrency → URLs da Loja%2$s."
+
+#: classes/Permalinks/Settings/TranslationControls.php:81
+msgid "How to translate permalinks for product taxonomies"
+msgstr "Como traduzir links permanentes para taxonomias de produtos"
+
+#: classes/Permalinks/Settings/TranslationControls.php:88
+msgid "How to translate product permalinks"
+msgstr "Como traduzir links permanentes de produtos"
 
 #: classes/pointers/class-wcml-pointers.php:42
 msgid "Translate WooCommerce products"
@@ -606,6 +684,11 @@ msgstr "Configure múltiplas moedas para sites multilíngues"
 #: classes/pointers/class-wcml-pointers.php:77
 msgid "Translate endpoints"
 msgstr "Traduzir endpoints"
+
+#: classes/PointerUi/Factory.php:17
+#: inc/template-classes/class-wcml-pointer-ui.php:20
+msgid "How to translate this?"
+msgstr "Como traduzir isto?"
 
 #: classes/privacy/class-wcml-privacy-content.php:20
 msgid "WooCommerce Multilingual & Multicurrency will use cookies to understand the basket info when using languages in domains and to transfer data between the domains."
@@ -636,36 +719,37 @@ msgid "Term not found: %d"
 msgstr "Termo não encontrado: %d"
 
 #: classes/Rest/Exceptions/MissingLanguage.php:12
-#: classes/Rest/Wrapper/Products/Products.php:114
+#: classes/Rest/Wrapper/Products/Products.php:122
 msgid "Using \"translation_of\" requires providing a \"lang\" parameter too"
 msgstr "Usar \"translation_of\" exige fornecer também um parâmetro \"lang\""
 
-#: classes/StandAlone/UI/AdminMenu.php:44
+#: classes/StandAlone/UI/AdminMenu.php:45
+#: inc/template-classes/class-wcml-menus-wrap.php:43
 msgid "Multilingual"
 msgstr "Multilingual"
 
-#: classes/StandAlone/UI/AdminMenu.php:49
-#: inc/template-classes/class-wcml-menus-wrap.php:151
+#: classes/StandAlone/UI/AdminMenu.php:50
+#: inc/template-classes/class-wcml-menus-wrap.php:53
 #: inc/template-classes/status/class-wcml-status-multi-currencies-ui.php:36
 msgid "Multicurrency"
 msgstr "Multicurrency"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: classes/StandAlone/UI/AdminMenu.php:73
+#: classes/StandAlone/UI/AdminMenu.php:74
 msgid "To run your store in multiple languages, you need to use the %1$sWPML plugin%2$s."
 msgstr "Para administrar sua loja em vários idiomas, você precisa usar o %1$sPlug-in WPML %2$s."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: classes/StandAlone/UI/AdminMenu.php:77
+#: classes/StandAlone/UI/AdminMenu.php:78
 msgid "If you have it already, install and activate it. Otherwise, %1$sbuy WPML%2$s."
 msgstr "Se você já possui o plug-in, instale e ative-o. Caso contrário, %1$scompre o WPML%2$s."
 
-#: classes/StandAlone/UI/AdminMenu.php:78
+#: classes/StandAlone/UI/AdminMenu.php:79
 msgid "You will need either the Multilingual CMS or Multilingual Agency package to use WPML with WooCommerce."
 msgstr "Você precisará do pacote Multilingual CMS ou Multilingual Agency para usar o WPML com o WooCommerce."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: classes/StandAlone/UI/AdminMenu.php:84
+#: classes/StandAlone/UI/AdminMenu.php:85
 msgid "You can still use the %1$smulticurrency features%2$s without buying anything."
 msgstr "Você ainda pode usar os %1$srecursos de múltiplas moedas%2$s sem comprar nada."
 
@@ -679,61 +763,48 @@ msgstr "tradução para %s"
 msgid "Translating %1$s? Use the %2$s table for easier translation."
 msgstr "Traduzindo %1$s? Use a tabela %2$s para facilitar a tradução."
 
-#: classes/wcml-setup/class-wcml-setup.php:49
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: classes/TMDashboard/Hooks.php:58
+msgid "To translate product details, including their taxonomy, use this dashboard. If you need to translate taxonomy independently or adjust store and currency settings, visit: %1$sWooCommerce Multilingual documentation%2$s."
+msgstr "Para traduzir detalhes do produto, incluindo sua taxonomia, use este painel. Se você precisar traduzir taxonomia independentemente ou ajustar configurações de loja e moeda, visite: %1$sdocumentação do WooCommerce Multilíngue%2$s."
+
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: classes/TranslationControls/Hooks.php:122
+msgid "To translate this content, go to the %1$sTranslation Dashboard%2$s."
+msgstr "Para traduzir este conteúdo, vá para o %1$sPainel de Tradução%2$s."
+
+#: classes/TranslationControls/Hooks.php:135
+msgid "To see how to translate this text, save your changes here first."
+msgstr "Para ver como traduzir este texto, primeiro salve suas alterações aqui."
+
+#: classes/wcml-setup/class-wcml-setup.php:46
 msgid "Introduction"
 msgstr "Introdução"
 
-#: classes/wcml-setup/class-wcml-setup.php:56
+#: classes/wcml-setup/class-wcml-setup.php:53
 msgid "Store Pages"
 msgstr "Páginas da loja"
 
-#: classes/wcml-setup/class-wcml-setup.php:66
+#: classes/wcml-setup/class-wcml-setup.php:63
 msgid "Global Attributes"
 msgstr "Atributos globais"
 
-#: classes/wcml-setup/class-wcml-setup.php:75
+#: classes/wcml-setup/class-wcml-setup.php:72
 msgid "Multiple Currencies"
 msgstr "Múltiplas moedas"
 
-#: classes/wcml-setup/class-wcml-setup.php:83
-#: classes/wcml-setup/class-wcml-setup.php:91
+#: classes/wcml-setup/class-wcml-setup.php:80
 msgid "Translation Options"
 msgstr "Opções de tradução"
-
-#: classes/wcml-setup/class-wcml-setup.php:267
-msgid "Action failed. Please refresh the page and retry."
-msgstr "A ação falhou. Atualize a página e tente novamente."
-
-#: classes/wcml-setup/class-wcml-setup.php:271
-msgid "Cheatin' huh?"
-msgstr "Está brincando, né?"
-
-#: classes/wcml-setup/class-wcml-setup.php:299
-msgid "WPML is translating your products"
-msgstr "O WPML está traduzindo seus produtos"
-
-#. translators: The placeholders are opening and closing bold HTML tags.
-#: classes/wcml-setup/class-wcml-setup.php:301
-msgid "You're all set and WPML is translating your products automatically. Go to %1$sWooCommerce » WooCommerce Multilingual & Multicurrency%2$s to translate your categories and shipping classes, check the store translation status, and more."
-msgstr "Está tudo pronto e o WPML está traduzindo seus produtos automaticamente. Acesse %1$sWooCommerce » WooCommerce Multilingual & Multicurrency%2$s para traduzir suas categorias e classes de envio, verificar o status da tradução da loja e muito mais."
-
-#: classes/wcml-setup/class-wcml-setup.php:305
-msgid "Your store is ready to be translated"
-msgstr "Sua loja está pronta para ser traduzida"
-
-#. translators: The placeholders are opening and closing bold HTML tags.
-#: classes/wcml-setup/class-wcml-setup.php:307
-msgid "You're all set and can start translating your store. Go to %1$sWooCommerce » WooCommerce Multilingual & Multicurrency%2$s to translate your products, categories, and shipping classes, check the store translation status, and more."
-msgstr "Você está pronto e pode começar a traduzir sua loja. Vá para %1$sWooCommerce » WooCommerce Multilingual & Multicurrency%2$s para traduzir seus produtos, categorias e classes de envio, verificar o status da tradução da loja e muito mais."
 
 #: compatibility/AdventureTours/class-wcml-adventure-tours.php:113
 msgid "Tour Data"
 msgstr "Dados da excursão"
 
 #: compatibility/AdventureTours/class-wcml-adventure-tours.php:120
-#: compatibility/WcBookings/class-wcml-bookings.php:703
-#: compatibility/WcTabManager/class-wcml-tab-manager.php:334
-#: compatibility/WcTabManager/class-wcml-tab-manager.php:341
+#: compatibility/WcBookings/class-wcml-bookings.php:619
+#: compatibility/WcTabManager/class-wcml-tab-manager.php:335
+#: compatibility/WcTabManager/class-wcml-tab-manager.php:342
 #: inc/translation-editor/class-wcml-editor-ui-product-job.php:128
 msgid "Title"
 msgstr "Título"
@@ -742,117 +813,121 @@ msgstr "Título"
 msgid "Content"
 msgstr "Conteúdo"
 
-#. translators: %1$s and %2$s are opening and closing HTML link tag
-#: compatibility/TableRateShipping/class-wcml-table-rate-shipping.php:146
-msgid "You can translate this method title on the %1$sWPML String Translation page%2$s. Use the search on the top of that page to find the method title string."
-msgstr "Você pode traduzir o título deste método na %1$spágina do WPML String Translation%2$s. Use a pesquisa no topo dessa página para encontrar a string do título do método."
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: compatibility/TableRateShipping/class-wcml-table-rate-shipping.php:178
+msgid "To translate the Method Title, go to the %1$sTranslation Dashboard%2$s."
+msgstr "Para traduzir o Título do Método, vá para o %1$sPainel de Tradução%2$s."
 
-#. translators: %1$s and %2$s are opening and closing HTML link tag
-#: compatibility/TableRateShipping/class-wcml-table-rate-shipping.php:155
-msgid "You can translate the labels of your table rates on the %1$sWPML String Translation page%2$s. Use the search on the top of that page to find the labels strings."
-msgstr "Você pode traduzir os rótulos de suas taxas tabeladas na %1$spágina do WPML String Translation%2$s. Use a pesquisa no topo dessa página para encontrar as strings dos rótulos."
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: compatibility/TableRateShipping/class-wcml-table-rate-shipping.php:191
+msgid "To translate Labels, go to the %1$sTranslation Dashboard%2$s."
+msgstr "Para traduzir Rótulos, vá para o %1$sPainel de Tradução%2$s."
 
-#. translators: %1$s is a dynamic text and %2$s is a URL
-#: compatibility/TmExtraProductOptions/class-wcml-extra-product-options.php:23
-msgid "To translate Extra Options strings please save %1$s and go to the <b><a href=\"%2$s\">String Translation interface</a></b>"
-msgstr "Para traduzir strings de opções extras, salve %1$s e acesse a <b><a href=\"%2$s\">interface do String Translation</a></b>"
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: compatibility/TmExtraProductOptions/class-wcml-extra-product-options.php:31
+msgid "To translate custom product fields, save your changes here first, then go to the %2$sTranslation Dashboard%3$s."
+msgstr "Para traduzir campos de produto personalizados, primeiro salve suas alterações aqui, depois vá para o %2$sPainel de Tradução%3$s."
 
-#: compatibility/WcBookings/class-wcml-accommodation-bookings.php:53
-#: compatibility/WcBookings/MulticurrencyHooks.php:330
+#: compatibility/WcBookings/class-wcml-accommodation-bookings.php:54
+#: compatibility/WcBookings/MulticurrencyHooks.php:332
 msgid "Calculate costs in other currencies automatically"
 msgstr "Calcular custos em outras moedas automaticamente"
 
-#: compatibility/WcBookings/class-wcml-accommodation-bookings.php:58
-#: compatibility/WcBookings/MulticurrencyHooks.php:335
+#: compatibility/WcBookings/class-wcml-accommodation-bookings.php:59
+#: compatibility/WcBookings/MulticurrencyHooks.php:337
 msgid "Set costs in other currencies manually"
 msgstr "Definir custos em outras moedas manualmente"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:680
+#: compatibility/WcBookings/class-wcml-bookings.php:596
 msgid "Bookings"
 msgstr "Reservas"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:684
+#: compatibility/WcBookings/class-wcml-bookings.php:600
 msgid "Resources Label"
 msgstr "Rótulo de recursos"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:692
-#: compatibility/WcBookings/class-wcml-bookings.php:693
+#: compatibility/WcBookings/class-wcml-bookings.php:608
+#: compatibility/WcBookings/class-wcml-bookings.php:609
 msgid "Resources"
 msgstr "Recursos"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:713
+#: compatibility/WcBookings/class-wcml-bookings.php:629
 msgid "Person Types"
 msgstr "Tipos de pessoas"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:721
+#: compatibility/WcBookings/class-wcml-bookings.php:637
 msgid "Person Type Name"
 msgstr "Nome do tipo de pessoa"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:723
-#: compatibility/WcCompositeProducts/class-wcml-composite-products.php:187
-#: compatibility/WcCompositeProducts/class-wcml-composite-products.php:211
-#: compatibility/WcProductAddons/class-wcml-product-addons.php:259
-#: compatibility/WcProductBundles/class-wcml-product-bundles.php:395
+#: compatibility/WcBookings/class-wcml-bookings.php:639
+#: compatibility/WcCompositeProducts/class-wcml-composite-products.php:185
+#: compatibility/WcCompositeProducts/class-wcml-composite-products.php:209
+#: compatibility/WcProductAddons/class-wcml-product-addons.php:279
+#: compatibility/WcProductBundles/class-wcml-product-bundles.php:389
 msgid "Description"
 msgstr "Descrição"
 
-#: compatibility/WcBookings/class-wcml-bookings.php:816
+#: compatibility/WcBookings/class-wcml-bookings.php:731
 msgid "Resources label"
 msgstr "Rótulo de recursos"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/WcBookings/class-wcml-bookings.php:1450
-msgid "You can translate the titles of your custom Resources on the %1$sWooCommerce product translation page%2$s"
-msgstr "Você pode traduzir os títulos de seus recursos personalizados na %1$spágina de tradução de produtos do WooCommerce%2$s"
+#: compatibility/WcBookings/class-wcml-bookings.php:1323
+msgid "To translate Resources, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation."
+msgstr "Para traduzir Recursos, vá para o %1$sPainel de Tradução%2$s e envie o produto associado para tradução."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/WcBookings/class-wcml-bookings.php:1459
-msgid "You can translate the Person Type Name and Description on the  %1$sWooCommerce product translation page%2$s"
-msgstr "Você pode traduzir o nome e descrição de tipo de pessoa na %1$spágina de tradução de produtos do WooCommerce%2$s"
+#: compatibility/WcBookings/class-wcml-bookings.php:1336
+msgid "To translate Person Types, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation."
+msgstr "Para traduzir Tipos de Pessoa, vá para o %1$sPainel de Tradução%2$s e envie o produto associado para tradução."
 
-#: compatibility/WcBookings/MulticurrencyHooks.php:691
+#: compatibility/WcBookings/MulticurrencyHooks.php:693
 msgid "Booking currency"
 msgstr "Moeda de reservas"
 
-#: compatibility/WcCompositeProducts/class-wcml-composite-products.php:176
+#: compatibility/WcCompositeProducts/class-wcml-composite-products.php:174
 msgid "Composite Products ( Components )"
 msgstr "Composite Products ( Components )"
 
-#: compatibility/WcCompositeProducts/class-wcml-composite-products.php:185
-#: compatibility/WcCompositeProducts/class-wcml-composite-products.php:209
-#: compatibility/WcProductAddons/class-wcml-product-addons.php:257
-#: compatibility/WcProductBundles/class-wcml-product-bundles.php:384
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:169
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:268
+#: compatibility/WcCompositeProducts/class-wcml-composite-products.php:183
+#: compatibility/WcCompositeProducts/class-wcml-composite-products.php:207
+#: compatibility/WcProductAddons/class-wcml-product-addons.php:277
+#: compatibility/WcProductBundles/class-wcml-product-bundles.php:378
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:171
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:270
 msgid "Name"
 msgstr "Nome"
 
-#: compatibility/WcCompositeProducts/class-wcml-composite-products.php:200
+#: compatibility/WcCompositeProducts/class-wcml-composite-products.php:198
 msgid "Composite Products ( Scenarios )"
 msgstr "Composite Products ( Scenarios )"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/WcProductAddons/class-wcml-product-addons.php:154
-msgid "You can translate strings related to global add-ons on the %1$sWPML String Translation page%2$s. Use the search on the top of that page to find the strings."
-msgstr "Você pode traduzir strings relacionadas a add-ons globais na %1$spágina do WPML String Translation%2$s. Use a pesquisa no topo dessa página para encontrar as strings."
+#: compatibility/WcProductAddons/class-wcml-product-addons.php:170
+msgid "To translate global add-ons, go to the %1$sTranslation Dashboard%2$s."
+msgstr "Para traduzir complementos globais, vá para o %1$sPainel de Tradução%2$s."
 
 #. translators: %s is a product addon name
-#: compatibility/WcProductAddons/class-wcml-product-addons.php:254
+#: compatibility/WcProductAddons/class-wcml-product-addons.php:274
 msgid "Product Add-ons Group \"%s\""
 msgstr "Grupo de add-ons de produto \"%s\""
 
-#: compatibility/WcProductAddons/class-wcml-product-addons.php:266
+#: compatibility/WcProductAddons/class-wcml-product-addons.php:282
+msgid "Placeholder"
+msgstr "Espaço reservado"
+
+#: compatibility/WcProductAddons/class-wcml-product-addons.php:289
 msgid "Options"
 msgstr "Opções"
 
-#: compatibility/WcProductAddons/class-wcml-product-addons.php:269
+#: compatibility/WcProductAddons/class-wcml-product-addons.php:292
 msgid "Label"
 msgstr "Rótulo"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/WcProductAddons/class-wcml-product-addons.php:357
-msgid "You can translate the Group Name, Group Description and every Option Label of your product add-on on the %1$sWooCommerce product translation page%2$s"
-msgstr "Você pode traduzir o nome e descrição de grupo, bem como todo rótulo de opção do seu add-on de produto na %1$spágina de tradução de produtos do WooCommerce%2$s"
+#: compatibility/WcProductAddons/class-wcml-product-addons.php:384
+msgid "To translate per-product add-ons, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation."
+msgstr "Para traduzir complementos por produto, vá para o %1$sPainel de Tradução%2$s e envie o produto associado para tradução."
 
 #: compatibility/WcProductAddons/MulticurrencyHooks.php:278
 #: compatibility/WcProductAddons/MulticurrencyHooks.php:301
@@ -874,35 +949,36 @@ msgstr "Definir preços em outras moedas manualmente"
 msgid "Here you can set different prices for the %s in multiple currencies:"
 msgstr "Aqui é possível definir preços diferentes para %s em várias moedas:"
 
-#: compatibility/WcProductBundles/class-wcml-product-bundles.php:360
+#: compatibility/WcProductBundles/class-wcml-product-bundles.php:354
 msgid "Product Bundles"
 msgstr "Product Bundles"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/WcSubscriptions/class-wcml-wc-subscriptions.php:93
-msgid "You can translate strings related to subscription products on the %1$sWPML String Translation page%2$s. Use the search on the top of that page to find the strings."
-msgstr "Você pode traduzir strings relacionadas a produtos de assinatura na %1$spágina do WPML String Translation%2$s. Use a pesquisa no topo dessa página para encontrar as strings."
+#: compatibility/WcSubscriptions/class-wcml-wc-subscriptions.php:105
+msgid "You can translate text for subscription products from the %1$sTranslation Dashboard%2$s."
+msgstr "Você pode traduzir texto para produtos de assinatura no %1$sPainel de Tradução%2$s."
 
-#: compatibility/WcSubscriptions/MulticurrencyHooks.php:148
+#: compatibility/WcSubscriptions/MulticurrencyHooks.php:149
 msgid "Subscription Price"
 msgstr "Preço de assinatura"
 
-#: compatibility/WcSubscriptions/MulticurrencyHooks.php:149
+#: compatibility/WcSubscriptions/MulticurrencyHooks.php:150
 msgid "Sign-up Fee"
 msgstr "Taxa de adesão"
 
-#: compatibility/WcTabManager/class-wcml-tab-manager.php:320
+#: compatibility/WcTabManager/class-wcml-tab-manager.php:321
 msgid "Product tabs"
 msgstr "Guias de produtos"
 
-#: compatibility/WcTabManager/class-wcml-tab-manager.php:336
+#: compatibility/WcTabManager/class-wcml-tab-manager.php:337
 msgid "Heading"
 msgstr "Cabeçalho"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: compatibility/WcTabManager/class-wcml-tab-manager.php:718
-msgid "You can translate your custom product tabs on the %1$sWooCommerce product translation page%2$s"
-msgstr "Você pode traduzir as guias de seus produtos personalizados na %1$spágina de tradução de produtos do WooCommerce%2$s"
+#: compatibility/YikesCustomProductTabs/class-wcml-yikes-custom-product-tabs.php:245
+msgid "To translate custom per-product tabs, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation."
+msgstr "Para traduzir abas personalizadas por produto, vá para o %1$sPainel de Tradução%2$s e envie o produto associado para tradução."
 
 #: compatibility/YikesCustomProductTabs/class-wcml-yikes-custom-product-tabs.php:64
 msgid "Custom Tabs"
@@ -912,50 +988,33 @@ msgstr "Guias personalizadas"
 msgid "Tab Title"
 msgstr "Título da guia"
 
-#. translators: %s is an HTML link pointing to WooCommerce product translation page
-#: compatibility/YikesCustomProductTabs/class-wcml-yikes-custom-product-tabs.php:242
-msgid "You can translate your custom product tabs on the %s"
-msgstr "Você pode traduzir suas guias personalizadas de produtos na %s"
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: inc/admin-menus/class-wcml-admin-menus.php:176
+msgid "Quick edit is disabled for product translations. Manage product translations from the %1$sTranslation Dashboard%2$s."
+msgstr "A edição rápida está desativada para traduções de produtos. Gerencie traduções de produtos no %1$sPainel de Tradução%2$s."
 
-#: compatibility/YikesCustomProductTabs/class-wcml-yikes-custom-product-tabs.php:243
-msgid "WooCommerce product translation page"
-msgstr "Página de tradução de produtos do WooCommerce"
-
-#. translators: 1: WooCommerce Multilingual products editor, 2: Edit this product translation
-#: inc/admin-menus/class-wcml-admin-menus.php:180
-msgid "Quick edit is disabled for product translations. It's recommended to use the %1$s for editing products translations. %2$s"
-msgstr "A edição rápida está desabilitada para traduções de produtos. É recomendado usar o %1$s para editar as traduções de produtos. %2$s"
-
-#: inc/admin-menus/class-wcml-admin-menus.php:181
-msgid "WooCommerce Multilingual & Multicurrency products editor"
-msgstr "Editor de produtos WooCommerce Multilingual & Multicurrency"
-
-#: inc/admin-menus/class-wcml-admin-menus.php:182
-msgid "Edit this product translation"
-msgstr "Editar esta tradução de produto"
-
-#: inc/admin-menus/class-wcml-admin-menus.php:220
+#: inc/admin-menus/class-wcml-admin-menus.php:210
 msgid "How to translate attributes"
 msgstr "Como traduzir atributos"
 
-#: inc/admin-menus/class-wcml-admin-menus.php:231
+#: inc/admin-menus/class-wcml-admin-menus.php:221
 msgid "How to translate product categories"
 msgstr "Como traduzir categorias de produtos"
 
-#: inc/admin-menus/class-wcml-admin-menus.php:313
+#: inc/admin-menus/class-wcml-admin-menus.php:304
 msgid "Multilingual Settings"
 msgstr "Configurações do Multilingual"
 
-#: inc/admin-menus/class-wcml-admin-menus.php:314
+#: inc/admin-menus/class-wcml-admin-menus.php:308
 msgid "Multicurrency Settings"
 msgstr "Configurações do Multicurrency"
 
 #. translators: 1: open <a> tag, 2: close <a> tag
-#: inc/admin-menus/class-wcml-admin-menus.php:328
-msgid "The recommended way to translate WooCommerce products is using the %1$sWooCommerce Multilingual & Multicurrency products translation%2$s page.\n\t\t\t\t\tPlease use this page only for translating elements that are not available in the WooCommerce Multilingual & Multicurrency products translation table."
-msgstr "O modo recomendado de traduzir produtos do WooCommerce é usar a página de %1$stradução de produtos do WooCommerce Multilingual & Multicurrency%2$s.\n \t\t\t\t\tUse esta página apenas para traduzir elementos que não estão disponíveis na tabela de tradução de produtos do WooCommerce Multilingual & Multicurrency."
+#: inc/admin-menus/class-wcml-admin-menus.php:324
+msgid "It’s recommended that you translate products from the %1$sTranslation Dashboard%2$s."
+msgstr "É recomendado que você traduza produtos no %1$sPainel de Tradução%2$s."
 
-#: inc/admin-menus/class-wcml-admin-menus.php:336
+#: inc/admin-menus/class-wcml-admin-menus.php:328
 #: inc/class-wcml-cart-sync-warnings.php:87
 msgid "Dismiss"
 msgstr "Fechar"
@@ -1016,7 +1075,6 @@ msgstr "Seu carrinho não está vazio! Após trocar de moeda, todos os itens do 
 
 #. translators: %s is a currency
 #: inc/class-wcml-cart.php:198
-#: tests/tests/inc/test-cart.php:268
 msgid "Keep using %s"
 msgstr "Continuar usando %s"
 
@@ -1025,16 +1083,16 @@ msgid "Proceed"
 msgstr "Prosseguir"
 
 #. translators: %s is the number of reviews
-#: inc/class-wcml-comments.php:260
+#: inc/class-wcml-comments.php:264
 msgid "Show reviews in all languages  (%s)"
 msgstr "Mostrar avaliações em todos os idiomas (%s)"
 
 #. translators: %1$s is a language name and %2$s is the number of reviews
-#: inc/class-wcml-comments.php:276
+#: inc/class-wcml-comments.php:280
 msgid "Show only reviews in %1$s (%2$s)"
 msgstr "Mostrar só as avaliações em %1$s (%2$s)"
 
-#: inc/class-wcml-comments.php:324
+#: inc/class-wcml-comments.php:328
 msgid "translated"
 msgstr "traduzido(a)"
 
@@ -1142,12 +1200,11 @@ msgid "Custom taxonomy %s configuration from wpml-config.xml file was altered!"
 msgstr "A configuração da taxonomia personalizada %s do arquivo wpml-config.xml foi alterada!"
 
 #. translators: %1$s and %2$s are opening and closing HTML italic tags and %3$s and %4$s are opening and closing HTML link tags
-#: inc/class-wcml-install.php:274
+#: inc/class-wcml-install.php:275
 msgid "We detected a problem in your WPML configuration: the %1$sproduct_type%2$s taxonomy is set as translatable and this would cause problems with translated products. You can fix this in the %3$sMultilingual Content Setup page%4$s."
 msgstr "Detectamos um problema na sua configuração do WPML: a taxonomia %1$sproduct_type%2$s está definida como traduzível, e isso causaria problemas com produtos traduzidos. Você pode corrigir isso na %3$spágina de Configuração de conteúdo multilíngue%4$s."
 
-#. translators: %1$s and %2$s are opening and closing HTML italic tags and %3$s and %4$s are opening and closing HTML link tags
-#: inc/class-wcml-install.php:289
+#: inc/class-wcml-install.php:291
 msgid "We detected that the %1$sproduct_type%2$s field was set incorrectly for some product translations. This happened because the product_type taxonomy was translated. You can fix this in the WooCommerce Multilingual & Multicurrency %3$stroubleshooting page%4$s."
 msgstr "Detectamos que o campo %1$sproduct_type%2$s não foi definido corretamente para algumas traduções de produtos. Isso ocorreu porque a taxonomia product_type foi traduzida. Você pode corrigir isso na página de %3$ssolução de problemas%4$s do WooCommerce Multilingual & Multicurrency."
 
@@ -1155,7 +1212,7 @@ msgstr "Detectamos que o campo %1$sproduct_type%2$s não foi definido corretamen
 msgid "Downloading translations... Please don't close this page."
 msgstr "Baixando traduções… Não feche esta página."
 
-#: inc/class-wcml-orders.php:416
+#: inc/class-wcml-orders.php:242
 msgid "All the products will be removed from the current order in order to change the language"
 msgstr "Todos os produtos serão removidos do pedido atual a fim de alterar o idioma"
 
@@ -1165,7 +1222,6 @@ msgid "Original language"
 msgstr "Idioma original"
 
 #: inc/class-wcml-products.php:229
-#: inc/template-classes/class-wcml-products-ui.php:88
 msgid "Translation in progress"
 msgstr "Tradução em andamento"
 
@@ -1173,11 +1229,12 @@ msgstr "Tradução em andamento"
 msgid "Take this and edit"
 msgstr "Aceitar e começar a tradução"
 
-#: inc/class-wcml-products.php:305
-msgid "Edit this item inline"
-msgstr "Editar este item “em linha”"
+#. translators: %s is the post title
+#: inc/class-wcml-products.php:308
+msgid "Quick edit \"%s\" inline"
+msgstr "Edição rápida “%s” inline"
 
-#: inc/class-wcml-products.php:306
+#: inc/class-wcml-products.php:312
 msgid "Quick Edit"
 msgstr "Edição rápida"
 
@@ -1186,211 +1243,205 @@ msgstr "Edição rápida"
 msgid "Your settings have been saved."
 msgstr "Suas configurações foram salvas."
 
-#: inc/class-wcml-resources.php:197
+#: inc/class-wcml-resources.php:188
 msgid "Choose a file"
 msgstr "Escolha um arquivo"
 
-#: inc/class-wcml-resources.php:198
+#: inc/class-wcml-resources.php:189
 msgid "At least one of these fields is required: title, content or excerpt"
 msgstr "Pelo menos um desses campos é obrigatório: título, conteúdo ou excerto"
 
-#: inc/class-wcml-resources.php:199
+#: inc/class-wcml-resources.php:190
 msgid "This translation job will no longer be assigned to you. Other translators will be able take it and continue the translation."
 msgstr "Esse trabalho de tradução não estará mais designado a você. Outros tradutores poderão assumi-lo e continuar a tradução."
 
-#: inc/class-wcml-resources.php:312
-#: inc/class-wcml-resources.php:313
+#: inc/class-wcml-resources.php:287
+#: inc/class-wcml-resources.php:288
 msgid "This field is locked for editing because WPML will copy its value from the original language."
 msgstr "Este campo está bloqueado para edição porque o WPML irá copiar seu valor do idioma original."
 
-#. translators: %1$s and %2$s are HTML links pointing to post edit screen and translation edit screen
-#: inc/class-wcml-resources.php:331
-msgid "This is a translation of %1$s. Some of the fields are not editable. It's recommended to use the %2$s for translating products."
-msgstr "Esta é uma tradução de %1$s. Alguns campos não são editáveis. É recomendado usar o %2$s para traduzir produtos."
+#. translators: %1$s is the post title inside a HTML link pointing to the post edit screen, %2$s and %3$s are opening and closing HTML link tags
+#: inc/class-wcml-resources.php:306
+msgid "This is a translation of %1$s. Some of the fields are not editable. It's recommended that you translate products from the %2$sTranslation Dashboard%3$s."
+msgstr "Esta é uma tradução de %1$s. Alguns dos campos não são editáveis. É recomendado que você traduza produtos no %2$sPainel de Tradução%3$s."
 
-#: inc/class-wcml-resources.php:337
-msgid "WooCommerce Multilingual & Multicurrency products translator"
-msgstr "Tradutor de produtos WooCommerce Multilingual & Multicurrency"
-
-#: inc/class-wcml-store-pages.php:355
-#: inc/class-wcml-store-pages.php:396
+#: inc/class-wcml-store-pages.php:356
+#: inc/class-wcml-store-pages.php:397
 #: inc/template-classes/class-wcml-settings-ui.php:85
 msgid "Cart"
 msgstr "Carrinho"
 
-#: inc/class-wcml-store-pages.php:356
-#: inc/class-wcml-store-pages.php:399
+#: inc/class-wcml-store-pages.php:357
+#: inc/class-wcml-store-pages.php:400
 msgid "Checkout"
 msgstr "Concluir"
 
-#: inc/class-wcml-store-pages.php:357
+#: inc/class-wcml-store-pages.php:358
 msgid "Checkout &rarr; Pay"
 msgstr "Concluir &rarr; Pagar"
 
-#: inc/class-wcml-store-pages.php:358
+#: inc/class-wcml-store-pages.php:359
 msgid "Order Received"
 msgstr "Pedido Recebido"
 
-#: inc/class-wcml-store-pages.php:359
-#: inc/class-wcml-store-pages.php:402
+#: inc/class-wcml-store-pages.php:360
+#: inc/class-wcml-store-pages.php:403
 msgid "My Account"
 msgstr "Minha Conta"
 
-#: inc/class-wcml-store-pages.php:360
+#: inc/class-wcml-store-pages.php:361
 msgid "Change Password"
 msgstr "Modificar Senha"
 
-#: inc/class-wcml-store-pages.php:361
+#: inc/class-wcml-store-pages.php:362
 msgid "Edit My Address"
 msgstr "Editar Meu Endereço"
 
-#: inc/class-wcml-store-pages.php:362
+#: inc/class-wcml-store-pages.php:363
 msgid "Logout"
 msgstr "Sair"
 
-#: inc/class-wcml-store-pages.php:363
+#: inc/class-wcml-store-pages.php:364
 msgid "Lost Password"
 msgstr "Esqueci Minha Senha"
 
-#: inc/class-wcml-store-pages.php:364
+#: inc/class-wcml-store-pages.php:365
 msgid "View Order"
 msgstr "Ver Pedido"
 
-#: inc/class-wcml-store-pages.php:365
-#: inc/class-wcml-store-pages.php:393
-#: tests/tests/inc/test-locale.php:20
+#: inc/class-wcml-store-pages.php:366
+#: inc/class-wcml-store-pages.php:394
 msgid "Shop"
 msgstr "Loja"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: inc/class-wcml-store-pages.php:668
+#: inc/class-wcml-store-pages.php:662
 msgid "To quickly translate this and other WooCommerce store pages, please run the %1$ssetup wizard%2$s."
 msgstr "Para traduzir rapidamente esta e outras páginas de loja do WooCommerce, execute o %1$sassistente de instalação%2$s."
 
 #. translators: %1$s/%2$s and %3$s/%4$s are opening and closing HTML link tags
-#: inc/class-wcml-terms.php:103
+#: inc/class-wcml-terms.php:96
 msgid "To translate %1$s please use the %2$s translation%3$s page, inside the %4$sWooCommerce Multilingual & Multicurrency admin%5$s."
 msgstr "Para traduzir, %1$s use a página de %2$s tradução%3$s dentro da administração do %4$sWooCommerce Multilingual & Multicurrency%5$s."
 
 #. translators: %d is a number of products
-#: inc/class-wcml-terms.php:510
+#: inc/class-wcml-terms.php:461
 msgid "%d products left"
 msgstr "%d produtos restantes"
 
-#. translators: %d is a number of products
-#: inc/class-wcml-terms.php:510
+#: inc/class-wcml-terms.php:464
 msgid "Synchronization complete!"
 msgstr "Sincronização completa!"
 
 #. translators: %s is a taxonomy name
-#: inc/class-wcml-terms.php:547
-#: inc/class-wcml-terms.php:575
+#: inc/class-wcml-terms.php:502
+#: inc/class-wcml-terms.php:533
 msgid "Invalid taxonomy %s"
 msgstr "Taxonomia inválida %s"
 
 #. translators: %%1$s is a post type name and %2$s is a taxonomy name
-#: inc/class-wcml-terms.php:703
+#: inc/class-wcml-terms.php:663
 msgid "Some translated %1$s have different %2$s assignments."
 msgstr "Alguns(mas) %1$s traduzidos(as) têm diferentes atribuições de %2$s."
 
 #. translators: %%1$s is a taxonomy name and %2$s is a post type name
-#: inc/class-wcml-terms.php:709
+#: inc/class-wcml-terms.php:669
 msgid "Update %1$s for all translated %2$s"
 msgstr "Atualizar %1$s para todo(as) os(as) %2$s traduzidos(as)"
 
-#. translators: %%1$s is a taxonomy name and %2$s is a post type name
-#: inc/class-wcml-terms.php:718
+#. translators: %1$s is a taxonomy name and %2$s is a post type name
+#: inc/class-wcml-terms.php:678
 msgid "All %1$s have the same %2$s assignments."
 msgstr "Todos(as) os(as) %1$s têm as mesmas atribuições de %2$s."
 
-#. translators: %%1$s is a taxonomy name and %2$s is a post type name
-#: inc/class-wcml-terms.php:727
+#. translators: %1$s is a taxonomy name and %2$s is a post type name
+#: inc/class-wcml-terms.php:688
 msgid "Successfully updated %1$s for all translated %2$s."
 msgstr "Atualização bem sucedida de %1$s para todos(as) os(as) %2$s traduzidos(as)."
 
-#: inc/class-wcml-upgrade.php:65
+#: inc/class-wcml-upgrade.php:67
 msgid "Looks like you are upgrading from a previous version of WooCommerce Multilingual & Multicurrency. Would you like to automatically create translated variations and images?"
 msgstr "Parece que você está atualizando uma versão anterior do WooCommerce Multilingual & Multicurrency. Gostaria de criar automaticamente variações traduzidas e imagens?"
 
-#: inc/class-wcml-upgrade.php:67
+#: inc/class-wcml-upgrade.php:69
 msgid "Yes, go to the troubleshooting page"
 msgstr "Sim, vá para a página de resolução de problemas"
 
-#: inc/class-wcml-upgrade.php:68
+#: inc/class-wcml-upgrade.php:70
 msgid "No - dismiss"
 msgstr "Não - fechar"
 
-#: inc/class-wcml-upgrade.php:690
+#: inc/class-wcml-upgrade.php:692
 msgid "important change about this service"
 msgstr "mudança importante nesse serviço"
 
-#: inc/class-wcml-upgrade.php:691
+#: inc/class-wcml-upgrade.php:693
 msgid "Fixer.io API key"
 msgstr "Chave da API do Fixer.io"
 
-#: inc/class-wcml-upgrade.php:693
+#: inc/class-wcml-upgrade.php:695
 msgid "multicurrency settings page"
 msgstr "página de configurações do multicurrency"
 
 #. translators: 1: Fixer.io, 2: Announcement link.
-#: inc/class-wcml-upgrade.php:696
+#: inc/class-wcml-upgrade.php:698
 msgid "Your site uses %1$s to automatically calculate prices in the secondary currency. There is an %2$s effective June 1st, 2018."
 msgstr "Seu site usa %1$s para calcular automaticamente os preços na moeda secundária. Há um %2$s em vigor desde 1º de junho de 2018."
 
 #. translators: 1: Mulicurrency tab link, 2: Fixer.io API key.
-#: inc/class-wcml-upgrade.php:700
+#: inc/class-wcml-upgrade.php:702
 msgid "Please go to the %1$s and fill in your %2$s."
 msgstr "Acesse a %1$s e preencha sua %2$s."
 
-#: inc/class-wcml-url-translation.php:745
+#: inc/class-wcml-url-translation.php:766
 msgid "Product Base"
 msgstr "Base de produto"
 
-#: inc/class-wcml-url-translation.php:750
+#: inc/class-wcml-url-translation.php:771
 msgid "Product Tag Base"
 msgstr "Base de tag de produto"
 
-#: inc/class-wcml-url-translation.php:755
+#: inc/class-wcml-url-translation.php:776
 msgid "Product Category Base"
 msgstr "Base de categoria de produto"
 
-#: inc/class-wcml-url-translation.php:760
+#: inc/class-wcml-url-translation.php:781
 msgid "Product Attribute Base"
 msgstr "Base de atributo de produto"
 
-#: inc/class-wcml-url-translation.php:765
+#: inc/class-wcml-url-translation.php:786
 msgid "Attribute Slug"
 msgstr "Slug de atributo"
 
 #. translators: %s is a slug
-#: inc/class-wcml-url-translation.php:778
+#: inc/class-wcml-url-translation.php:799
 #: inc/template-classes/store-urls/class-wcml-store-urls-ui.php:82
 msgid "Endpoint: %s"
 msgstr "Ponto de extremidade: %s"
 
-#: inc/class-wcml-wc-strings.php:223
+#: inc/class-wcml-wc-strings.php:258
 msgid "You are using the same value as for the regular category base. This is known to create conflicts resulting in urls not working properly."
 msgstr "Você está usando o mesmo valor que o para a base de categoria comum. Sabe-se que isso gera conflitos que resultam no mau funcionamento de URLs."
 
-#. translators: %s is a URL
-#: inc/class-wcml-wc-strings.php:463
-msgid "In order to edit custom attributes you need to use the <a href=\"%s\">custom product translation editor</a>"
-msgstr "Para editar atributos personalizados, você precisa usar o <a href=\"%s\">editor de tradução de produtos personalizados</a>"
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: inc/class-wcml-wc-strings.php:423
+msgid "To translate attributes, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation."
+msgstr "Para traduzir atributos, vá para o %1$sPainel de Tradução%2$s e envie o produto associado para tradução."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: inc/currencies/class-wcml-multi-currency-configuration.php:260
+#: inc/currencies/class-wcml-multi-currency-configuration.php:264
 msgid "The default currency was changed. In order to show accurate prices in all currencies, you need to update the exchange rates under the %1$sMulti-currency%2$s configuration."
 msgstr "A moeda padrão foi alterada. Para mostrar preços exatos em todos os idiomas, você precisa atualizar as taxas de câmbio na configuração %1$sMúltiplas moedas%2$s."
 
-#: inc/currencies/class-wcml-multi-currency-orders.php:72
+#: inc/currencies/class-wcml-multi-currency-orders.php:78
 msgid "Show all currencies"
 msgstr "Mostrar todas as moedas"
 
-#: inc/currencies/class-wcml-multi-currency-orders.php:188
+#: inc/currencies/class-wcml-multi-currency-orders.php:169
 msgid "Order currency:"
 msgstr "Moeda para compra:"
 
-#: inc/currencies/class-wcml-multi-currency-orders.php:208
+#: inc/currencies/class-wcml-multi-currency-orders.php:189
 msgid "All the products will be removed from the current order in order to change the currency"
 msgstr "Todos os produtos serão removidos do pedido atual a fim de alterar a moeda"
 
@@ -1416,24 +1467,6 @@ msgstr "Personalizar o seletor de moeda"
 msgid "You haven't added any secondary currencies."
 msgstr "Você não adicionou nenhuma moeda secundária."
 
-#: inc/template-classes/class-wcml-attribute-translation-ui.php:52
-msgid "--Attribute--"
-msgstr "--Atributo--"
-
-#: inc/template-classes/class-wcml-attribute-translation-ui.php:76
-msgid "There are no translatable product attributes defined"
-msgstr "Não há atributos de produtos traduzíveis definidos"
-
-#: inc/template-classes/class-wcml-attribute-translation-ui.php:77
-msgid "Select the attribute to translate: "
-msgstr "Selecione o atributo a traduzir: "
-
-#: inc/template-classes/class-wcml-attribute-translation-ui.php:78
-#: inc/template-classes/class-wcml-custom-taxonomy-translation-ui.php:99
-#: inc/template-classes/class-wcml-menus-wrap.php:257
-msgid "Loading ..."
-msgstr "Carregando ..."
-
 #: inc/template-classes/class-wcml-custom-files-ui.php:36
 msgid "Use custom settings for translations download files"
 msgstr "Usar configurações personalizadas para arquivos de download de traduções"
@@ -1446,18 +1479,6 @@ msgstr "Usar os mesmos arquivos para traduções"
 #: inc/template-classes/class-wcml-custom-files-ui.php:38
 msgid "Add separate download files for translations when you translate this product"
 msgstr "Adicionar arquivos de download separados para traduções quando você traduzir este produto\r\n"
-
-#: inc/template-classes/class-wcml-custom-taxonomy-translation-ui.php:72
-msgid "--Taxonomy--"
-msgstr "--Taxonomia--"
-
-#: inc/template-classes/class-wcml-custom-taxonomy-translation-ui.php:97
-msgid "There are no translatable product custom taxonomies defined"
-msgstr "Não há taxonomias personalizadas de produtos traduzíveis definidas"
-
-#: inc/template-classes/class-wcml-custom-taxonomy-translation-ui.php:98
-msgid "Select the taxonomy to translate: "
-msgstr "Selecione a taxonomia a traduzir: "
 
 #: inc/template-classes/class-wcml-languages-upgrade-notice.php:19
 msgid "Update Translation"
@@ -1472,63 +1493,58 @@ msgstr "Ocultar esta mensagem"
 msgid "<strong>WooCommerce Translation Available</strong> &#8211; Install or update your <code>%1$s</code> translations to version <code>%2$s</code>."
 msgstr "<strong>Tradução do WooCommerce disponível</strong> &#8211; Instale ou atualize suas traduções de <code>%1$s</code> para a versão <code>%2$s</code>."
 
-#. translators: %1$s and %3$s are wrappers for html link, and %2$s will be replaced with 5 stars in ASCII.
-#: inc/template-classes/class-wcml-menus-wrap-base.php:27
-msgid "You can express your love and support by %1$srating our plugin %2$s%3$s and saying that it works for you."
-msgstr "Você pode expressar seu apoio eo quanto gosta do nosso plugin %1$savaliando-o %2$s%3$s e indicando que ele funciona para você."
-
-#: inc/template-classes/class-wcml-menus-wrap-base.php:32
-#: inc/template-classes/multi-currency/class-wcml-custom-prices-ui.php:69
-msgid "Hide"
-msgstr "Ocultar"
-
-#: inc/template-classes/class-wcml-menus-wrap.php:98
-#: inc/template-classes/class-wcml-menus-wrap.php:109
-#: inc/template-classes/class-wcml-menus-wrap.php:117
-#: inc/template-classes/class-wcml-menus-wrap.php:139
+#: inc/template-classes/class-wcml-menus-wrap.php:39
 #: inc/template-classes/class-wcml-sync-taxonomy.php:51
 msgid "You have untranslated terms!"
 msgstr "Você tem termos não traduzidos!"
 
-#: inc/template-classes/class-wcml-menus-wrap.php:102
-msgid "Products"
-msgstr "Produtos"
-
-#: inc/template-classes/class-wcml-menus-wrap.php:108
-#: inc/template-classes/class-wcml-products-ui.php:47
-msgid "Categories"
-msgstr "Categorias"
-
-#: inc/template-classes/class-wcml-menus-wrap.php:116
-msgid "Tags"
-msgstr "Tags"
-
-#: inc/template-classes/class-wcml-menus-wrap.php:125
-msgid "Custom Taxonomies"
-msgstr "Taxonomias Personalizadas"
-
-#: inc/template-classes/class-wcml-menus-wrap.php:132
-msgid "Attributes"
-msgstr "Atributos"
-
-#: inc/template-classes/class-wcml-menus-wrap.php:138
-msgid "Shipping Classes"
-msgstr "Classes de entrega"
-
-#: inc/template-classes/class-wcml-menus-wrap.php:156
+#: inc/template-classes/class-wcml-menus-wrap.php:58
 msgid "Store URLs"
 msgstr "Armazenar URLs"
 
-#: inc/template-classes/class-wcml-menus-wrap.php:161
+#: inc/template-classes/class-wcml-menus-wrap.php:63
 msgid "Status"
 msgstr "Status"
 
-#: inc/template-classes/class-wcml-menus-wrap.php:166
+#: inc/template-classes/class-wcml-menus-wrap.php:68
 #: inc/template-classes/class-wcml-settings-ui.php:132
 #: inc/template-classes/class-wcml-troubleshooting-ui.php:42
 #: inc/template-classes/status/class-wcml-status-ui.php:46
 msgid "Troubleshooting"
 msgstr "Solução de Problemas"
+
+#: inc/template-classes/class-wcml-multilingual-ui.php:28
+#: inc/template-classes/class-wcml-multilingual-ui.php:33
+#: inc/template-classes/status/class-wcml-status-products-ui.php:32
+msgid "Translate Products"
+msgstr "Traduzir produtos"
+
+#: inc/template-classes/class-wcml-multilingual-ui.php:29
+msgid "Go to WPML &rarr; Translation Management to translate Products"
+msgstr "Vá para WPML &rarr; Gerenciamento de Tradução para traduzir Produtos"
+
+#: inc/template-classes/class-wcml-multilingual-ui.php:37
+#: inc/template-classes/class-wcml-multilingual-ui.php:42
+msgid "Translate Taxonomy"
+msgstr "Traduzir Taxonomia"
+
+#: inc/template-classes/class-wcml-multilingual-ui.php:38
+msgid "Go to WPML &rarr; Taxonomy Translation to translate Taxonomy terms manually"
+msgstr "Vá para WPML &rarr; Tradução de Taxonomia para traduzir termos de Taxonomia manualmente"
+
+#: inc/template-classes/class-wcml-multilingual-ui.php:47
+msgid "Prefer to translate manually?"
+msgstr "Prefere traduzir manualmente?"
+
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: inc/template-classes/class-wcml-multilingual-ui.php:50
+msgid "To manually translate products, go to %1$sProducts%2$s and click on the \"plus\" icon."
+msgstr "Para traduzir produtos manualmente, vá para %1$sProdutos%2$s e clique no ícone “mais”."
+
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: inc/template-classes/class-wcml-multilingual-ui.php:56
+msgid "To manually translate product categories, tags and attributes, go to %1$sWPML &rarr; Taxonomy Translation%2$s."
+msgstr "Para traduzir manualmente categorias de produtos, tags e atributos, vá para %1$sWPML &rarr; Tradução de Taxonomia%2$s."
 
 #: inc/template-classes/class-wcml-not-translatable-attributes.php:31
 msgid "Translatable?"
@@ -1542,152 +1558,12 @@ msgstr "Habilite isto se deseja traduzir valores de atributos com o WooCommerce 
 msgid "Existing translations and variations associated will be deleted."
 msgstr "Traduções existentes e variações associadas serão excluídas."
 
-#: inc/template-classes/class-wcml-pointer-ui.php:26
-msgid "How to translate this?"
-msgstr "Como traduzir isto?"
-
-#: inc/template-classes/class-wcml-products-ui.php:44
-msgid "Image"
-msgstr "Imagem"
-
-#: inc/template-classes/class-wcml-products-ui.php:45
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:75
-msgid "Product"
-msgstr "Produto"
-
-#: inc/template-classes/class-wcml-products-ui.php:46
-msgid "Date"
-msgstr "Data"
-
-#: inc/template-classes/class-wcml-products-ui.php:48
-msgid "No products found"
-msgstr "Nenhum produto encontrado"
-
-#: inc/template-classes/class-wcml-products-ui.php:49
-msgid "Draft"
-msgstr "Rascunho"
-
-#: inc/template-classes/class-wcml-products-ui.php:50
-msgid "Private"
-msgstr "Privado"
-
-#: inc/template-classes/class-wcml-products-ui.php:51
-msgid "Pending"
-msgstr "Pendente"
-
-#: inc/template-classes/class-wcml-products-ui.php:52
-msgid "Scheduled"
-msgstr "Agendado"
-
-#. translators: %s is a product name
-#: inc/template-classes/class-wcml-products-ui.php:54
-msgid "Parent product: %s"
-msgstr "Produto pai: %s"
-
-#: inc/template-classes/class-wcml-products-ui.php:55
-msgid "Edit this item"
-msgstr "Editar este item"
-
-#. translators: %s is a product name
-#: inc/template-classes/class-wcml-products-ui.php:58
-msgid "View \"%s\""
-msgstr "Ver \"%s\""
-
-#: inc/template-classes/class-wcml-products-ui.php:59
-msgid "View"
-msgstr "Visualizar"
-
-#: inc/template-classes/class-wcml-products-ui.php:60
-msgid "Published"
-msgstr "Publicado"
-
-#: inc/template-classes/class-wcml-products-ui.php:61
-msgid "Last Modified"
-msgstr "Modificado pela última vez"
-
-#: inc/template-classes/class-wcml-products-ui.php:83
-msgid "All languages"
-msgstr "Todos os idiomas"
-
-#: inc/template-classes/class-wcml-products-ui.php:84
-msgid "All categories"
-msgstr "Todas as categorias"
-
-#: inc/template-classes/class-wcml-products-ui.php:85
-msgid "All translation statuses"
-msgstr "Todos os status de tradução"
-
-#: inc/template-classes/class-wcml-products-ui.php:86
-msgid "Not translated or needs updating"
-msgstr "Não traduzido ou precisa ser atualizado"
-
-#: inc/template-classes/class-wcml-products-ui.php:87
-msgid "Needs updating"
-msgstr "Precisa de atualização"
-
-#: inc/template-classes/class-wcml-products-ui.php:89
-msgid "Translation complete"
-msgstr "Tradução completa"
-
-#: inc/template-classes/class-wcml-products-ui.php:90
-msgid "All statuses"
-msgstr "Todos os status"
-
-#: inc/template-classes/class-wcml-products-ui.php:91
-msgid "Filter"
-msgstr "Filtro"
-
-#: inc/template-classes/class-wcml-products-ui.php:92
-msgid "Reset"
-msgstr "Redefinir"
-
-#: inc/template-classes/class-wcml-products-ui.php:93
-msgid "Search"
-msgstr "Pesquisar"
-
-#. translators: %d is a number of items
-#: inc/template-classes/class-wcml-products-ui.php:115
-msgid "%d items"
-msgstr "%d items"
-
-#: inc/template-classes/class-wcml-products-ui.php:116
-msgid "Go to the first page"
-msgstr "Vá para a primeira página"
-
-#: inc/template-classes/class-wcml-products-ui.php:117
-msgid "Go to the previous page"
-msgstr "Vá para a página anterior"
-
-#: inc/template-classes/class-wcml-products-ui.php:118
-msgid "Select Page"
-msgstr "Selecionar página"
-
-#: inc/template-classes/class-wcml-products-ui.php:119
-msgid "Current page"
-msgstr "Página atual"
-
-#: inc/template-classes/class-wcml-products-ui.php:120
-msgid "of"
-msgstr "de"
-
-#: inc/template-classes/class-wcml-products-ui.php:121
-msgid "Go to the next page"
-msgstr "Vá para a próxima página"
-
-#: inc/template-classes/class-wcml-products-ui.php:122
-msgid "Go to the last page"
-msgstr "Vá para a última página"
-
-#: inc/template-classes/class-wcml-products-ui.php:132
-msgid "Type"
-msgstr "Tipo"
-
-#. translators: %ds is a currency or language name
-#: inc/template-classes/class-wcml-removed-cart-items-ui.php:49
+#. translators: %s is a currency or language name
+#: inc/template-classes/class-wcml-removed-cart-items-ui.php:50
 msgid "Products removed after switching to %s:"
 msgstr "Produtos removidos após trocar para %s:"
 
-#: inc/template-classes/class-wcml-removed-cart-items-ui.php:50
+#: inc/template-classes/class-wcml-removed-cart-items-ui.php:53
 msgid "Clear list"
 msgstr "Limpar lista"
 
@@ -1724,8 +1600,10 @@ msgid "Products Download Files"
 msgstr "Arquivos de download de produtos"
 
 #: inc/template-classes/class-wcml-settings-ui.php:64
-msgid "If you are using downloadable products, you can choose to have their paths\n                                            synchronized, or seperate for each language."
-msgstr "Se está vendendo produtos para download, você pode optar por ter seus caminhos\n sincronizados, ou separados para cada idioma."
+msgid ""
+"If you are using downloadable products, you can choose to have their paths\n"
+"                                            synchronized, or seperate for each language."
+msgstr "Se estiver usando produtos para download, você poderá optar por ter os caminhos\n sincronizados ou separados para cada idioma."
 
 #: inc/template-classes/class-wcml-settings-ui.php:71
 msgid "Add separate download files for translations when translating products"
@@ -1777,11 +1655,6 @@ msgstr "Esse recurso foi desabilitado. Habilite os %1$scookies do WPML%2$s para 
 #: inc/template-classes/class-wcml-settings-ui.php:110
 msgid "Not sure which option to choose? Read about %1$spotential issues when switching languages and currencies while the cart has items%2$s."
 msgstr "Não tem certeza de qual opção escolher? Leia sobre %1$spossíveis problemas ao trocar de idiomas e moedas quando há itens no carrinho%2$s."
-
-#: inc/template-classes/class-wcml-settings-ui.php:120
-#: inc/template-classes/multi-currency/class-wcml-multi-currency-ui.php:106
-msgid "Save changes"
-msgstr "Salvar alterações"
 
 #: inc/template-classes/class-wcml-settings-ui.php:138
 msgid "Product Translation Interface"
@@ -2015,7 +1888,7 @@ msgid "Preview"
 msgstr "Visualizar"
 
 #. translators: %s is an exchange rates service
-#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:129
+#: inc/template-classes/multi-currency/class-wcml-custom-currency-options.php:146
 msgid "Exchange rate updated automatically from %s"
 msgstr "Taxa de câmbio atualizada automaticamente de %s"
 
@@ -2041,6 +1914,10 @@ msgstr "Clique para ver os preços nas outras moedas, visto que elas estão send
 #: inc/template-classes/multi-currency/class-wcml-custom-prices-ui.php:68
 msgid "Show"
 msgstr "Exibir"
+
+#: inc/template-classes/multi-currency/class-wcml-custom-prices-ui.php:69
+msgid "Hide"
+msgstr "Ocultar"
 
 #: inc/template-classes/multi-currency/class-wcml-custom-prices-ui.php:71
 msgid "Enter prices in other currencies"
@@ -2285,30 +2162,28 @@ msgstr "Editar seletor de moeda %s\r\n"
 msgid "Which product attributes should be translatable?"
 msgstr "Quais atributos do produto devem ser traduzíveis?"
 
-#: inc/template-classes/setup/class-wcml-setup-attributes-ui.php:46
+#. translators: %1$s and %2$s are opening and closing HTML link tags
+#: inc/template-classes/setup/class-wcml-setup-attributes-ui.php:47
 msgid "WPML allows you to %1$stranslate your product attributes%2$s. Some attributes, like the ones based on numbers and codes, can be universal and might not need to be translated."
 msgstr "O WPML permite %1$straduzir os atributos do seu produto%2$s. Alguns atributos, como os baseados em números e códigos, podem ser universais e podem não precisar ser traduzidos."
 
-#: inc/template-classes/setup/class-wcml-setup-attributes-ui.php:50
+#: inc/template-classes/setup/class-wcml-setup-attributes-ui.php:51
 msgid "Select which attributes in your store should be translatable:"
 msgstr "Selecione quais atributos da sua loja devem ser traduzíveis:"
 
-#: inc/template-classes/setup/class-wcml-setup-attributes-ui.php:51
+#: inc/template-classes/setup/class-wcml-setup-attributes-ui.php:52
 msgid "There are no attributes defined"
 msgstr "Não há atributos definidos"
 
-#: inc/template-classes/setup/class-wcml-setup-attributes-ui.php:52
-#: inc/template-classes/setup/class-wcml-setup-display-as-translated-ui.php:34
+#: inc/template-classes/setup/class-wcml-setup-attributes-ui.php:53
 #: inc/template-classes/setup/class-wcml-setup-store-pages-ui.php:73
-#: inc/template-classes/setup/class-wcml-setup-translation-options-ui.php:29
 msgid "Continue"
 msgstr "Continuar"
 
-#: inc/template-classes/setup/class-wcml-setup-attributes-ui.php:53
+#: inc/template-classes/setup/class-wcml-setup-attributes-ui.php:54
 #: inc/template-classes/setup/class-wcml-setup-display-as-translated-ui.php:35
 #: inc/template-classes/setup/class-wcml-setup-multi-currency-ui.php:19
 #: inc/template-classes/setup/class-wcml-setup-store-pages-ui.php:74
-#: inc/template-classes/setup/class-wcml-setup-translation-options-ui.php:30
 msgid "Go back"
 msgstr "Voltar"
 
@@ -2327,9 +2202,12 @@ msgstr "Não permitir a visualização de produtos em idiomas para os quais não
 
 #. translators: %1$s and %2$s are opening and closing HTML strong tags
 #: inc/template-classes/setup/class-wcml-setup-display-as-translated-ui.php:33
-#: inc/template-classes/setup/class-wcml-setup-translation-options-ui.php:27
 msgid "You can change these settings later by going to %1$sWPML &raquo; Settings.%2$s"
 msgstr "Você pode alterar essas configurações posteriormente acessando %1$sWPML &raquo; Configurações.%2$s"
+
+#: inc/template-classes/setup/class-wcml-setup-display-as-translated-ui.php:34
+msgid "Finish"
+msgstr "finalizar"
 
 #: inc/template-classes/setup/class-wcml-setup-header.php:38
 msgid "WooCommerce Multilingual & Multicurrency › Setup Wizard"
@@ -2425,30 +2303,6 @@ msgstr "Clique em continuar para traduzir as páginas da sua loja para os seguin
 msgid "WPML automatically generates translated versions of default WooCommerce pages, such as Shop, Account, Checkout, and Cart."
 msgstr "O WPML gera automaticamente versões traduzidas de páginas padrão do WooCommerce, como Loja, Conta, Finalizar Compra e Carrinho."
 
-#: inc/template-classes/setup/class-wcml-setup-translation-options-ui.php:21
-msgid "How do you want to translate your products?"
-msgstr "Como deseja traduzir seus produtos?"
-
-#: inc/template-classes/setup/class-wcml-setup-translation-options-ui.php:22
-msgid "Translate all products automatically"
-msgstr "Traduzir todos os produtos automaticamente"
-
-#: inc/template-classes/setup/class-wcml-setup-translation-options-ui.php:23
-msgid "WPML will start translating all your products for you right away."
-msgstr "O WPML começará a traduzir todos os seus produtos imediatamente."
-
-#: inc/template-classes/setup/class-wcml-setup-translation-options-ui.php:24
-msgid "Choose which products to translate"
-msgstr "Escolha quais produtos traduzir"
-
-#: inc/template-classes/setup/class-wcml-setup-translation-options-ui.php:25
-msgid "You can still use automatic translation, but you decide what gets translated and how."
-msgstr "Você ainda pode usar a tradução automática, mas é você quem decide o que será traduzido e como."
-
-#: inc/template-classes/setup/class-wcml-setup-translation-options-ui.php:28
-msgid "Choose"
-msgstr "Escolher"
-
 #: inc/template-classes/status/class-wcml-status-config-warnings-ui.php:48
 msgid "Configuration Warnings"
 msgstr "Avisos de configuração"
@@ -2506,7 +2360,7 @@ msgstr "%s não é necessário para o WooCommerce Multilingual & Multicurrency f
 
 #. translators: %s is a plugin name
 #: inc/template-classes/status/class-wcml-status-media-ui.php:33
-#: inc/template-classes/status/class-wcml-status-status-ui.php:30
+#: inc/template-classes/status/class-wcml-status-status-ui.php:29
 msgid "%s is installed and active."
 msgstr "%s está instalado e ativo."
 
@@ -2523,52 +2377,39 @@ msgstr "A opção múltiplas moedas não está ativada."
 msgid "Add Currencies"
 msgstr "Adicionar moedas"
 
-#: inc/template-classes/status/class-wcml-status-products-ui.php:33
+#: inc/template-classes/status/class-wcml-status-products-ui.php:27
 msgid "Products Missing Translations"
 msgstr "Produtos sem traduções"
 
 #. translators: %1$s is a number of products and %2$s is a product name
-#: inc/template-classes/status/class-wcml-status-products-ui.php:35
+#: inc/template-classes/status/class-wcml-status-products-ui.php:29
 msgid "%1$d %2$s translation missing."
 msgstr "Tradução de %1$d %2$s faltando."
 
 #. translators: %1$s is a number of products and %2$s is a product name
-#: inc/template-classes/status/class-wcml-status-products-ui.php:37
+#: inc/template-classes/status/class-wcml-status-products-ui.php:31
 msgid "%1$d %2$s translations missing."
 msgstr "Traduções de %1$d %2$s faltando."
 
-#: inc/template-classes/status/class-wcml-status-products-ui.php:38
-msgid "Translate Products"
-msgstr "Traduzir produtos"
-
-#: inc/template-classes/status/class-wcml-status-products-ui.php:39
+#: inc/template-classes/status/class-wcml-status-products-ui.php:33
 msgid "Right now, there are no products needing translation."
 msgstr "No momento, não há produtos que precisam de tradução."
 
-#. translators: %s is a link to Translate Everything mode
-#: inc/template-classes/status/class-wcml-status-products-ui.php:42
-msgid "%s is currently translating all your products automatically."
-msgstr "No momento, %s está traduzindo todos os seus produtos automaticamente."
-
-#: inc/template-classes/status/class-wcml-status-products-ui.php:44
-msgid "Translate Everything mode"
-msgstr "Modo traduzir tudo"
-
-#: inc/template-classes/status/class-wcml-status-status-ui.php:28
+#: inc/template-classes/status/class-wcml-status-status-ui.php:27
 msgid "Plugins Status"
 msgstr "Status de Plugins"
 
 #. translators: %s is a plugin name
-#: inc/template-classes/status/class-wcml-status-status-ui.php:32
+#: inc/template-classes/status/class-wcml-status-status-ui.php:31
 msgid "%s is set up."
 msgstr "%s está configurado(a)."
 
 #. translators: %s is a plugin name
-#: inc/template-classes/status/class-wcml-status-status-ui.php:34
+#: inc/template-classes/status/class-wcml-status-status-ui.php:33
 msgid "%s is not set up."
 msgstr "%s não está configurado(a)."
 
-#: inc/template-classes/status/class-wcml-status-status-ui.php:39
+#: inc/template-classes/status/class-wcml-status-status-ui.php:37
 msgid "WooCommerce Multilingual & Multicurrency depends on several plugins to work. If any required plugin is missing, you should install and activate it."
 msgstr "O WooCommerce Multilingual & Multicurrency depende de vários plugins para funcionar. Se algum deles estiver faltando, você deve fazer sua instalação e ativá-lo."
 
@@ -2728,67 +2569,71 @@ msgstr "Base de atributo de produto"
 msgid "Attribute slug: %s"
 msgstr "Slug de atributo: %s"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:129
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:75
+msgid "Product"
+msgstr "Produto"
+
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:130
 msgid "Slug"
 msgstr "Slug"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:138
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:140
 msgid "Content / Description"
 msgstr "Conteúdo / Descrição"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:141
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:143
 msgid "Excerpt"
 msgstr "Extrato"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:145
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:147
 msgid "Purchase note"
 msgstr "Nota de compra"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:156
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:158
 msgid "Images"
 msgstr "Imagens"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:166
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:168
 msgid "Custom Product attributes"
 msgstr "Atributos de produto personalizado"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:171
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:173
 msgid "Value(s)"
 msgstr "Valor(es)"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:186
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:188
 msgid "Custom Fields"
 msgstr "Campos Personalizados"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:235
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:237
 msgid "Variations data"
 msgstr "Dados de variações"
 
 #. translators: %s is a product ID
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:261
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:263
 msgid "Download Files for Variation #%s"
 msgstr "Baixar arquivos para variação #%s"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:263
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:265
 msgid "Download Files"
 msgstr "Baixar arquivos"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:270
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:272
 msgid "File URL"
 msgstr "URL de arquivo"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:290
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:292
 msgid "External Product"
 msgstr "Produto externo"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:291
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:293
 msgid "Product url"
 msgstr "URL de produto"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:292
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:294
 msgid "Button text"
 msgstr "Texto do botão"
 
-#: inc/translation-editor/class-wcml-editor-ui-product-job.php:307
+#: inc/translation-editor/class-wcml-editor-ui-product-job.php:309
 msgid "Changes in these translations will affect terms in general! ( Not only for this product )"
 msgstr "Alterações nessas traduções afetarão os termos em geral! (Não só para este produto)\r\n"

@@ -287,7 +287,13 @@ class WCML_Install {
 			<p>
 				<?php
 				/* translators: %1$s and %2$s are opening and closing HTML italic tags and %3$s and %4$s are opening and closing HTML link tags */
-				printf( esc_html__( 'We detected that the %1$sproduct_type%2$s field was set incorrectly for some product translations. This happened because the product_type taxonomy was translated. You can fix this in the WooCommerce Multilingual & Multicurrency %3$stroubleshooting page%4$s.', 'woocommerce-multilingual' ), '<i>', '</i>', '<a href="' . esc_url( admin_url( 'admin.php?page=wpml-wcml&tab=troubleshooting' ) ) . '">', '</a>' );
+				printf(
+					esc_html__( 'We detected that the %1$sproduct_type%2$s field was set incorrectly for some product translations. This happened because the product_type taxonomy was translated. You can fix this in the WooCommerce Multilingual & Multicurrency %3$stroubleshooting page%4$s.', 'woocommerce-multilingual' ),
+					'<i>',
+					'</i>',
+					'<a href="' . esc_url( \WCML\Utilities\AdminUrl::getTroubleshootingTab() ) . '">',
+					'</a>'
+				);
 				?>
 			</p>
 		</div>

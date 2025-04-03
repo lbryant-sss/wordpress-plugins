@@ -46,7 +46,7 @@ class FieldAdapterWpf {
 			$field->htmlParams['OptionsWpf'][] = array(
 				'id' => $d,
 				'text' => $d,
-				'checked' => in_array($d, $field->value)
+				'checked' => in_array($d, $field->value),
 			);
 		}
 	}

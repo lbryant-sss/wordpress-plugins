@@ -47,7 +47,7 @@ abstract class TableWpf {
 	public static function getInstance( $table = '' ) {
 		static $instances = array();
 		if (!$table) {
-			throw new Exception('Unknown table [' . $table . ']');
+			throw new Exception('Unknown table [' . esc_html($table) . ']');
 		}
 		if (!isset($instances[$table])) {
 			$class = 'table' . strFirstUpWpf($table) . strFirstUpWpf(WPF_CODE);
@@ -113,14 +113,14 @@ abstract class TableWpf {
 					foreach ($field as $k => $v) {
 						if (isset($this->_fields[$k])) {
 							$row[$k] = toeCreateObjWpf('FieldWpf', array(
-									$this->_fields[$k]->name,
-									$this->_fields[$k]->html,
-									$this->_fields[$k]->type,
-									$this->_fields[$k]->default,
-									$this->_fields[$k]->label,
-									$this->_fields[$k]->maxlen,
-									$this->_fields[$k]->description
-									));
+								$this->_fields[$k]->name,
+								$this->_fields[$k]->html,
+								$this->_fields[$k]->type,
+								$this->_fields[$k]->default,
+								$this->_fields[$k]->label,
+								$this->_fields[$k]->maxlen,
+								$this->_fields[$k]->description,
+							));
 							$row[$k]->setValue($v, true);
 						}
 					}
@@ -394,7 +394,7 @@ abstract class TableWpf {
 								$res .= $k . ' = \'' . $val . '\' ' . $delim . ' ';
 								break;
 						}
-					} else {					
+					} else {
 						$res .= $k . ' = \'' . $val . '\' ' . $delim . ' ';
 					}
 				} elseif ('additionalCondition' == $k) {    //just add some string to query
@@ -480,7 +480,7 @@ abstract class TableWpf {
 	/**
 	 * Prepare data after extracting it from database
 	 */
-	public function prepareOutput( $d = array()) {
+	public function prepareOutput( $d = array() ) {
 		$ignore = isset($d['ignore']) ? $d['ignore'] : array();
 		foreach ($this->_fields as $key => $f) {
 			switch ($f->type) {
@@ -507,13 +507,10 @@ abstract class TableWpf {
 		return $d;
 	}
 	public function install( $d = array() ) {
-		
 	}
 	public function uninstall( $d = array() ) {
-		
 	}
 	public function activate() {
-		
 	}
 	public function getLastInsertID() {
 		return DbWpf::get('SELECT MAX(' . $this->_id . ') FROM ' . $this->_table, 'one');

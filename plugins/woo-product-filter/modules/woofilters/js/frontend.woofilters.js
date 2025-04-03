@@ -45,7 +45,7 @@
 			setTimeout(function () {
 				_thisObj.hideFiltersLoader();
 			}, 100);
-		}
+        }
 	});
 	WpfFrontendPage.prototype.moveFloatingElements = (function () {
 		var _thisObj = this.$obj;
@@ -1977,10 +1977,33 @@
 		jQuery.sendFormWpf({
 			data: requestData,
 			onSuccess: function(res) {
-				if (!res.error) {
+                if (!res.error) {                    
 					if ('fid' in res.data && toeInArray(res.data['fid'], _thisObj.lastFids) == -1) {
 						return false;
 					}
+					if ('optionsHtml' in res.data) {                        
+                        var optionsHtml = res.data['optionsHtml'];            
+                        
+                        jQuery('.wpfMainWrapper .wpfFilterWrapper[data-order-key]').each(function() {
+                            var $filter = jQuery(this),
+                                orderKey = $filter.attr('data-order-key'),
+                                $select = $filter.find('select');
+                            
+                            if (typeof optionsHtml[orderKey] !== 'undefined' && $select.length){                    
+                                var selectedValues = [];
+                                $select.find('option:selected').each(function() {
+                                    selectedValues.push(jQuery(this).val());
+                                });                    
+                                
+                                $select.html(optionsHtml[orderKey]);
+                                                    
+                                if (selectedValues.length) {
+                                    $select.val(selectedValues);
+                                }                   
+                                
+                            }
+                        });
+                    }
 					if ('jscript' in res.data) {
 						_thisObj.setAjaxJScript(res.data['jscript']);
 					}
@@ -2085,7 +2108,8 @@
 							loopContainer.addClass('wpfCurrentProductBlock');
 							_thisObj.currentProductBlock = '.wpfCurrentProductBlock';
 						}
-					}
+                    }
+                    
 					_thisObj.afterAjaxFiltering($wrapperSettings);
 					jQuery('.wpfLoaderLayout').hide();
 				}
@@ -2199,7 +2223,7 @@
 				if ($wrapperSettings.recalculate_filters === '1') {
 					var existsTermsJS = jQuery(data).find('.wpfExistsTermsJS').html();
 					_thisObj.setAjaxJScript(existsTermsJS);
-				}
+                }               
 
     		}
 		});
@@ -2262,9 +2286,9 @@
 
 		_thisObj.disableFiltersLoader();
 		_thisObj.removeOverlay();
-		toggleClear();
+		toggleClear();		
 
-		// fix for OceanWP theme
+        // fix for OceanWP theme
 		if ( jQuery('body').find('.products').hasClass('oceanwp-row') ) {
 			var products = jQuery('body').find('.products'),
 				aligns = ['center', 'left', 'right'];
@@ -2337,26 +2361,30 @@
 						}
 					}
 				}
-			});
+            });
 		}
 		jQuery(window).trigger("fusion-element-render-fusion_woo_product_grid");
 		var fusionPrInfinite = jQuery(".fusion-products-container-infinite");
 		if (fusionPrInfinite.length && typeof(fusionPrInfinite.infinitescroll) == 'function') {
 			fusionPrInfinite.infinitescroll('unbind');
 			fusionPrInfinite.infinitescroll('bind');
-		}
-		
-		var $eaPagination = jQuery('.elementor-widget-eicon-woocommerce');
-		if ($eaPagination.length && window.elementorFrontend && window.elementorFrontend.hooks) {
-			window.elementorFrontend.hooks.doAction('frontend/element_ready/eicon-woocommerce.default', $eaPagination, jQuery);
-		}
+		}		
+        
+        if (typeof elementorFrontend !== 'undefined') {
+            jQuery(window).trigger('resize');
+            
+            var $eaPagination = jQuery('.elementor-widget-eicon-woocommerce');
+            if ($eaPagination.length && window.elementorFrontend && window.elementorFrontend.hooks) {
+                window.elementorFrontend.hooks.doAction('frontend/element_ready/eicon-woocommerce.default', $eaPagination, jQuery);
+            }
+        }    
 		
 		// AVADA infinitescroll
 		if (jQuery('.fusion-grid-container-infinite').length == 1) {
 			jQuery(document).trigger('fusion-element-render-fusion_post_cards');
 			jQuery('.fusion-grid-container-infinite').infinitescroll('unbind');
 			jQuery('.fusion-grid-container-infinite').infinitescroll('bind');
-		}
+        }                          
 	});
 
 	/*WpfFrontendPage.prototype.runReadyList = (function(){

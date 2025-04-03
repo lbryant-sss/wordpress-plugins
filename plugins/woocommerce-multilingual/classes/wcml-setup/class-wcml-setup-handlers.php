@@ -1,13 +1,11 @@
 <?php
 
 use WCML\Options\WPML;
-use WPML\FP\Fns;
 use WPML\FP\Obj;
 use WPML\FP\Relation;
 
 class WCML_Setup_Handlers {
 
-	const KEY_TRANSLATION_OPTION    = 'translation-option';
 	const KEY_DISPLAY_AS_TRANSLATED = 'display-as-translated';
 
 	/** @var  woocommerce_wpml */
@@ -50,16 +48,6 @@ class WCML_Setup_Handlers {
 	}
 
 	/**
-	 * @param array $data
-	 */
-	public function save_translation_options( $data ) {
-		$isTranslateEverythingOption = Obj::prop( self::KEY_TRANSLATION_OPTION, $data ) === 'translate_everything';
-
-		$this->set_product_translatable();
-		$this->set_product_automatically_translated( $isTranslateEverythingOption );
-	}
-
-	/**
 	 * This handler might shortcut the previous one,
 	 * so we are re-saving the translation preference
 	 * for the product and product_cat.
@@ -69,8 +57,6 @@ class WCML_Setup_Handlers {
 	public function save_display_as_translated( $data ) {
 		$isDisplayAsTranslated = Relation::propEq( self::KEY_DISPLAY_AS_TRANSLATED, 'yes', $data );
 		$settings_helper       = wpml_load_settings_helper();
-
-		$this->set_product_automatically_translated( false );
 
 		if ( $isDisplayAsTranslated ) {
 			$settings_helper->set_post_type_display_as_translated( 'product' );
@@ -91,14 +77,5 @@ class WCML_Setup_Handlers {
 		$settings_helper->set_post_type_translation_unlocked_option( 'product', false );
 		$settings_helper->set_taxonomy_translatable( 'product_cat' );
 		$settings_helper->set_taxonomy_translation_unlocked_option( 'product_cat', false );
-	}
-
-	/**
-	 * @param bool $isAutomatic
-	 *
-	 * @return void
-	 */
-	private function set_product_automatically_translated( $isAutomatic ) {
-		WPML::setAutomatic( 'product', $isAutomatic );
 	}
 }

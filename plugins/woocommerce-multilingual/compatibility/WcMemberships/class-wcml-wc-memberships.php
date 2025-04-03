@@ -26,6 +26,8 @@ class WCML_WC_Memberships implements \IWPML_Action {
 		add_filter( 'wpml_post_parse_query', [ $this, 'restore_post_parent' ] );
 		add_filter( 'wc_memberships_rule_object_ids', [ $this, 'add_translated_object_ids' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'load_assets' ] );
+
+		add_filter( 'woocommerce_order_get__wc_memberships_access_granted', [ $this, 'orderMemberships' ] );
 	}
 
 	/**
@@ -127,9 +129,9 @@ class WCML_WC_Memberships implements \IWPML_Action {
 	}
 
 	/**
-	 * @param array $object_ids
+	 * @param int[] $object_ids
 	 *
-	 * @return array
+	 * @return int[]
 	 */
 	public function add_translated_object_ids( $object_ids ) {
 		$result = [];
@@ -141,10 +143,10 @@ class WCML_WC_Memberships implements \IWPML_Action {
 				'element_id'
 			) );
 
-			$result = array_merge( $result, $translations );
+			$result = array_merge( $result, [ $object_id ], $translations );
 		}
 
-		return $result;
+		return array_values( array_unique( array_map( 'intval', $result ) ) );
 	}
 
 	public function load_assets() {
@@ -169,6 +171,42 @@ class WCML_WC_Memberships implements \IWPML_Action {
 			'original'   => $endpoint,
 			'translated' => $translated_endpoint,
 		];
+	}
+
+	/**
+	 * @param array $memberships
+	 *
+	 * @return array
+	 */
+	public function orderMemberships( $memberships ) {
+		if ( ! doing_action( 'woocommerce_thankyou' ) ) {
+			return $memberships;
+		}
+
+		$relevantMemberships = [];
+		$wpmlCurrentLanguage = apply_filters( 'wpml_current_language', null );
+		foreach ( $memberships as $membershipId => $membershipData ) {
+			$userMembership = wc_memberships_get_user_membership( (int) $membershipId );
+			$membershipPlan = $userMembership ? $userMembership->get_plan() : null;
+
+			if ( null === $membershipPlan ) {
+				continue;
+			}
+
+			$membershipPlanLanguageDetails = apply_filters( 'wpml_element_language_details', null, [
+				'element_id'   => $membershipPlan->id,
+				'element_type' => 'wc_membership_plan',
+			] );
+
+			if (
+				null === $membershipPlanLanguageDetails
+				|| $wpmlCurrentLanguage === $membershipPlanLanguageDetails->language_code
+			) {
+				$relevantMemberships[ $membershipId ] = $membershipData;
+			}
+		}
+
+		return $relevantMemberships;
 	}
 
 }

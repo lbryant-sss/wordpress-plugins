@@ -1,6 +1,7 @@
 <?php
 
 use WCML\Utilities\DB;
+use WCML\Utilities\SyncHash;
 
 use function WCML\functions\getSetting;
 
@@ -10,13 +11,16 @@ class WCML_Translation_Editor {
 	private $woocommerce_wpml;
 	/** @var SitePress */
 	private $sitepress;
-	/** @var  wpdb */
+	/** @var wpdb */
 	private $wpdb;
+	/** @var SyncHash */
+	private $syncHashManager;
 
-	public function __construct( woocommerce_wpml $woocommerce_wpml, $sitepress, wpdb $wpdb ) {
+	public function __construct( woocommerce_wpml $woocommerce_wpml, $sitepress, wpdb $wpdb, SyncHash $syncHashManager ) {
 		$this->woocommerce_wpml = $woocommerce_wpml;
 		$this->sitepress        = $sitepress;
 		$this->wpdb             = $wpdb;
+		$this->syncHashManager  = $syncHashManager;
 	}
 
 	public function add_hooks() {
@@ -53,8 +57,8 @@ class WCML_Translation_Editor {
 
 	public function fetch_translation_job_for_editor( $job, $job_details ) {
 
-		if ( $job_details['job_type'] === 'post_product' ) {
-			$job = new WCML_Editor_UI_Product_Job( $job_details, $this->woocommerce_wpml, $this->sitepress, $this->wpdb );
+		if ( 'post_product' === $job_details['job_type'] ) {
+			$job = new WCML_Editor_UI_Product_Job( $job_details, $this->woocommerce_wpml, $this->sitepress, $this->wpdb, $this->syncHashManager );
 		}
 
 		return $job;
@@ -66,7 +70,7 @@ class WCML_Translation_Editor {
 
 		// See if it's a WooCommerce product.
 		$job = $iclTranslationManagement->get_translation_job( $job_data['job_id'] );
-		if ( $job && $job->original_post_type === 'post_product' ) {
+		if ( $job && 'post_product' === $job->original_post_type ) {
 			$job_data['job_type'] = 'wc_product';
 			$job_data['job_id']   = $job->original_doc_id;
 		}

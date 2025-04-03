@@ -15,13 +15,62 @@ class WCML_Locale {
 		$this->woocommerce_wpml = $woocommerce_wpml;
 		$this->sitepress        = $sitepress;
 
-		$this->load_locale();
-
 		add_filter( 'locale', [ $this, 'update_product_action_locale_check' ] );
 	}
 
+	/**
+	 * Loading the plugin's textdomain will register it, but not load (since WP 6.6).
+	 * It will be loaded "just in time" when the first string of the domain is translated.
+	 *
+	 * @return bool
+	 */
 	public static function load_locale() {
+		add_filter( 'lang_dir_for_domain', [ __CLASS__, 'force_path_for_embedded_translation_files' ], 10, 3 );
 		return load_plugin_textdomain( 'woocommerce-multilingual', false, WCML_PLUGIN_FOLDER . '/locale' );
+	}
+
+	/**
+	 * As WCML is also published on wordpress.org, it can have translation files from there.
+	 * And the translations from `wp-content/languages/plugins` are taking precedence by default.
+	 * We need to force the path for the translation files we are shipping with WCML.
+	 *
+	 * @param string $path
+	 * @param string $domain
+	 * @param string $locale
+	 *
+	 * @return string
+	 */
+	public static function force_path_for_embedded_translation_files( $path, $domain, $locale ) {
+		if ( 'woocommerce-multilingual' !== $domain ) {
+			return $path;
+		}
+
+		$isEmbeddedTranslationFile = function( $locale ) {
+			return in_array(
+				$locale,
+				[
+					'de_DE',
+					'el',
+					'es_ES',
+					'fr_FR',
+					'he_IL',
+					'it_IT',
+					'ja',
+					'nl_NL',
+					'pl_PL',
+					'pt_BR',
+					'sv_SE',
+					'zn_CN',
+				],
+				true
+			);
+		};
+
+		if ( $isEmbeddedTranslationFile( $locale ) ) {
+			return trailingslashit( WCML_LOCALE_PATH );
+		}
+
+		return $path;
 	}
 
 	/**

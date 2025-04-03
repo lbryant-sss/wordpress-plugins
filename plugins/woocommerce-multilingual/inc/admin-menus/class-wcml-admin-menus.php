@@ -1,13 +1,14 @@
 <?php
 
-use WCML\StandAlone\UI\AdminMenu;
-use WCML\AdminNotices\WizardNotice;
-use WCML\Utilities\AdminPages;
-use WPML\FP\Fns;
-use WPML\FP\Str;
-
 use function WCML\functions\getSetting;
 use function WCML\functions\isStandAlone;
+use WCML\AdminNotices\WizardNotice;
+use WCML\StandAlone\UI\AdminMenu;
+use WCML\Utilities\AdminPages;
+use WCML\Utilities\AdminUrl;
+
+use WPML\FP\Fns;
+use WPML\FP\Str;
 
 /**
  * Class WCML_Admin_Menus
@@ -76,7 +77,7 @@ class WCML_Admin_Menus {
 	 * @return bool
 	 */
 	private static function is_page_without_admin_language_switcher() {
-		$get_page = isset( $_GET['page'] ) ? $_GET['page'] : false;
+		$get_page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : false;
 
 		$is_page_wpml_wcml        = self::SLUG === $get_page;
 		$is_shipping_zones        = 'shipping_zones' === $get_page;
@@ -136,12 +137,14 @@ class WCML_Admin_Menus {
 	}
 
 	public static function render_menus() {
+		global $sitepress_settings;
+
 		if ( self::$woocommerce_wpml->dependencies_are_ok ) {
 			if ( isStandAlone() ) {
 				$plugins_wrap = new AdminMenu( self::$sitepress, self::$woocommerce_wpml );
 				$plugins_wrap->show();
 			} elseif ( getSetting( 'set_up_wizard_run' ) ) {
-				$menus_wrap = new WCML_Menus_Wrap( self::$woocommerce_wpml );
+				$menus_wrap = new WCML_Menus_Wrap( self::$woocommerce_wpml, self::$sitepress, $sitepress_settings );
 				$menus_wrap->show();
 			} else {
 				$wizard_wrap = new WizardNotice( self::$woocommerce_wpml );
@@ -169,22 +172,16 @@ class WCML_Admin_Menus {
 			$quick_edit_notice = '<p>';
 
 			$quick_edit_notice .= sprintf(
-				/* translators: 1: WooCommerce Multilingual products editor, 2: Edit this product translation */
-				__( 'Quick edit is disabled for product translations. It\'s recommended to use the %1$s for editing products translations. %2$s', 'woocommerce-multilingual' ),
-				'<a href="' . admin_url( 'admin.php?page=wpml-wcml&tab=products' ) . '" >' . __( 'WooCommerce Multilingual & Multicurrency products editor', 'woocommerce-multilingual' ) . '</a>',
-				'<a href="" class="quick_product_trnsl_link" >' . __( 'Edit this product translation', 'woocommerce-multilingual' ) . '</a>'
+				/* translators: %1$s and %2$s are opening and closing HTML link tags */
+				esc_html__( 'Quick edit is disabled for product translations. Manage product translations from the %1$sTranslation Dashboard%2$s.', 'woocommerce-multilingual' ),
+				'<a href="' . esc_url( AdminUrl::getWPMLTMDashboardProducts() ) . '">',
+				'</a>'
 			);
 			$quick_edit_notice .= '</p>';
 
-			$quick_edit_notice_prod_link = '<input type="hidden" id="wcml_product_trnsl_link" value="' . esc_url( admin_url( 'admin.php?page=wpml-wcml&tab=products&prid=' ) ) . '">';
-			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 			?>
 			<script type="text/javascript">
 				jQuery( '.subsubsub' ).append( '<div id="quick_edit_notice" style="display:none;"><?php echo wp_filter_post_kses( $quick_edit_notice ); ?></div>' );
-				jQuery( '.subsubsub' ).append( ' <?php echo $quick_edit_notice_prod_link; ?> ' );
-				jQuery( '.quick_hide a' ).on( 'click', function() {
-					jQuery( '.quick_product_trnsl_link' ).attr( 'href', jQuery( '#wcml_product_trnsl_link' ).val() + jQuery( this ).closest( 'tr' ).attr( 'id' ).replace( /post-/, '' ) );
-				} );
 
 				//lock feature for translations
 				jQuery( document ).on( 'click', '.featured a', function() {
@@ -250,10 +247,10 @@ class WCML_Admin_Menus {
 			) {
 				$prid = (int) $_GET['post'];
 				if ( 'auto-draft' !== get_post_status( $prid ) ) {
-					wcml_safe_redirect( admin_url( 'admin.php?page=wpml-wcml&tab=products&prid=' . $prid ) );
+					wcml_safe_redirect( AdminUrl::getWPMLTMDashboardProducts().'&prid=' . $prid );
 				}
 			} elseif ( self::is_admin_duplicate_page_action( $pagenow ) && self::is_post_product_translation_screen() ) {
-				wcml_safe_redirect( admin_url( 'admin.php?page=wpml-wcml&tab=products' ) );
+				wcml_safe_redirect( AdminUrl::getWPMLTMDashboardProducts() );
 			}
 		} elseif ( 'post.php' === $pagenow && self::is_post_product_translation_screen() ) {
 			add_action( 'admin_notices', [ __CLASS__, 'inf_editing_product_in_non_default_lang' ] );
@@ -272,13 +269,13 @@ class WCML_Admin_Menus {
 	 */
 	private static function is_post_action_needs_redirect() {
 		return ! isset( $_GET['action'] ) ||
-			   ( isset( $_GET['action'] ) &&
-				! in_array(
+			( isset( $_GET['action'] ) &&
+				! in_array (
 					$_GET['action'],
 					[ 'trash', 'delete', 'untrash' ],
 					true
 				)
-			   );
+			);
 	}
 
 	/**
@@ -297,14 +294,20 @@ class WCML_Admin_Menus {
 	 */
 	public static function add_settings_links_to_plugin_actions( $actions ) {
 		// $getLink :: (string, string) -> string
-		$getLink = function( $label, $urlQuerySuffix ) {
-			return '<a href="' . admin_url( 'admin.php?page=' . self::SLUG . $urlQuerySuffix ) . '">' . $label . '</a>';
+		$getLink = function( $label, $url ) {
+			return '<a href="' . esc_url( $url ) . '">' . $label . '</a>';
 		};
 
 		return array_merge(
 			[
-				'settings-ml' => $getLink( esc_html__( 'Multilingual Settings', 'woocommerce-multilingual' ), isStandAlone() ? '&tab=multilingual' : '' ),
-				'settings-mc' => $getLink( esc_html__( 'Multicurrency Settings', 'woocommerce-multilingual' ), '&tab=multi-currency' ),
+				'settings-ml' => $getLink(
+					esc_html__( 'Multilingual Settings', 'woocommerce-multilingual' ),
+					AdminUrl::getMultilingualTab()
+				),
+				'settings-mc' => $getLink(
+					esc_html__( 'Multicurrency Settings', 'woocommerce-multilingual' ),
+					AdminUrl::getMultiCurrencyTab()
+				),
 			],
 			$actions
 		);
@@ -318,15 +321,11 @@ class WCML_Admin_Menus {
 
 			$message .= sprintf(
 				/* translators: 1: open <a> tag, 2: close <a> tag */
-				__(
-					'The recommended way to translate WooCommerce products is using the %1$sWooCommerce Multilingual & Multicurrency products translation%2$s page.
-					Please use this page only for translating elements that are not available in the WooCommerce Multilingual & Multicurrency products translation table.',
-					'woocommerce-multilingual'
-				),
-				'<strong><a href="' . admin_url( 'admin.php?page=wpml-wcml&tab=products' ) . '">',
-				'</a></strong>'
+				esc_html__( 'It’s recommended that you translate products from the %1$sTranslation Dashboard%2$s.', 'woocommerce-multilingual' ),
+				'<a href="' . esc_url( AdminUrl::getWPMLTMDashboardProducts() ) . '">',
+				'</a>'
 			);
-			$message .= '</p><a class="notice-dismiss" href="' . $url . '&wcml_action=dismiss_tm_warning"><span class="screen-reader-text">' . __( 'Dismiss', 'woocommerce-multilingual' ) . '</a>';
+			$message .= '</p><a class="notice-dismiss" href="' . esc_url( add_query_arg( 'wcml_action', 'dismiss_tm_warning', $url ) ) . '"><span class="screen-reader-text">' . __( 'Dismiss', 'woocommerce-multilingual' ) . '</a>';
 			$message .= '</div>';
 
 			echo wp_kses_post( $message );

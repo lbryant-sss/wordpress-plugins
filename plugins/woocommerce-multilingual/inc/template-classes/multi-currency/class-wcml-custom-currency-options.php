@@ -66,11 +66,16 @@ class WCML_Custom_Currency_Options extends WCML_Templates_Factory {
 					'step'         => '0.01',
 					'set_on'       => empty( $this->args['currency']['updated'] ) ? '' :
 										sprintf(
+											/* translators: %s is a date and time of currency update */
 											__( 'Set on %s', 'woocommerce-multilingual' ),
 											date( 'F j, Y g:i a', strtotime( $this->args['currency']['updated'] ) )
 										),
 					'previous'     => empty( $this->args['currency']['previous_rate'] ) ? '' :
-										' ' . sprintf( __( '(previous value: %s)', 'woocommerce-multilingual' ), $this->args['currency']['previous_rate'] ),
+										' ' . sprintf(
+											/* translators: %s is a currency previous rate */
+											__( '(previous value: %s)', 'woocommerce-multilingual' ),
+											$this->args['currency']['previous_rate']
+										),
 				],
 				'preview'          => [
 					'label' => __( 'Currency Preview', 'woocommerce-multilingual' ),
@@ -100,9 +105,16 @@ class WCML_Custom_Currency_Options extends WCML_Templates_Factory {
 					'down'                 => __( 'Down', 'woocommerce-multilingual' ),
 					'nearest'              => __( 'Nearest', 'woocommerce-multilingual' ),
 					'increment'            => __( 'Increment for nearest integer', 'woocommerce-multilingual' ),
+					'rounding_tooltip'     => sprintf(
+						/* translators: %s is HTML tag <br> (new line) */
+						__( 'Round the converted price to the closest integer. %se.g. 15.78 becomes 16.00', 'woocommerce-multilingual' ), '<br />'
+					),
 
-					'rounding_tooltip'     => sprintf( __( 'Round the converted price to the closest integer. %se.g. 15.78 becomes 16.00', 'woocommerce-multilingual' ), '<br />' ),
-					'increment_tooltip'    => sprintf( __( 'The resulting price will be an increment of this value after initial rounding.%se.g.:', 'woocommerce-multilingual' ), '<br>' ) . '<br />' .
+					'increment_tooltip'    => sprintf(
+												/* translators: %s is HTML tag <br> (new line) */
+												__( 'The resulting price will be an increment of this value after initial rounding.%se.g.:', 'woocommerce-multilingual' ),
+												'<br>'
+					                          ) . '<br />' .
 											 __( '1454.07 &raquo; 1454 when set to 1', 'woocommerce-multilingual' ) . '<br />' .
 											 __( '1454.07 &raquo; 1450 when set to 10', 'woocommerce-multilingual' ) . '<br />' .
 											 __( '1454.07 &raquo; 1500 when set to 100', 'woocommerce-multilingual' ) . '<br />',
@@ -115,7 +127,11 @@ class WCML_Custom_Currency_Options extends WCML_Templates_Factory {
 				],
 				'payment_gateways' => [
 					'label'          => __( 'Payment Gateways', 'woocommerce-multilingual' ),
-					'settings_label' => sprintf( __( 'Custom settings for %s', 'woocommerce-multilingual' ), $current_currency ),
+					'settings_label' => sprintf(
+						/* translators: %s is current currency */
+						__( 'Custom settings for %s', 'woocommerce-multilingual' ),
+						$current_currency
+					),
 					'learn_url'      => $tracking_link->getWcmlMultiCurrencyDoc( '#payment-gateways-settings' ),
 					'learn_txt'      => __( 'Learn more', 'woocommerce-multilingual' ),
 				],
@@ -125,8 +141,11 @@ class WCML_Custom_Currency_Options extends WCML_Templates_Factory {
 			],
 
 			'automatic_rates'          => $exchange_rates_automatic,
-			/* translators: %s is an exchange rates service */
-			'automatic_rates_tip'      => sprintf( __( 'Exchange rate updated automatically from %s', 'woocommerce-multilingual' ), $exchange_rates_service ),
+			'automatic_rates_tip'      => sprintf(
+				/* translators: %s is an exchange rates service */
+				__( 'Exchange rate updated automatically from %s', 'woocommerce-multilingual' ),
+				$exchange_rates_service
+			),
 			'current_currency'         => $current_currency,
 			'active_currencies'        => $this->woocommerce_wpml->multi_currency->get_currencies( true ),
 			'payment_gateways_enabled' => $this->woocommerce_wpml->multi_currency->currencies_payment_gateways->is_enabled( $current_currency ),

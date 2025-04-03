@@ -35,15 +35,42 @@ class ProductSaveActions extends \WPML_Post_Translation {
 	 * @param int|null                           $trid
 	 * @param string                             $langCode
 	 * @param int|null                           $translationOf
+	 * @param ?\WP_REST_Request                  $wpRestRequest
 	 */
-	public function run( $product, $trid, $langCode, $translationOf ) {
+	public function run( $product, $trid, $langCode, $translationOf, $wpRestRequest = null ) {
 		$productId      = getId( $product );
 		$trid           = $trid ? $trid : $this->get_save_post_trid( $productId, null );
 		$langCode       = $langCode ? $langCode : parent::get_save_post_lang( $productId, $this->sitepress );
 		$sourceLangCode = $this->get_element_lang_code( $translationOf );
 
-		$this->after_save_post( $trid, get_post( $productId, ARRAY_A ), $langCode, $sourceLangCode );
-		$this->productDataSync->synchronize_products( $productId, get_post( $productId ), true );
+		if ( ! $this->synchronize_product_stock_only( $wpRestRequest ) ) {
+			$this->after_save_post( $trid, get_post( $productId, ARRAY_A ), $langCode, $sourceLangCode );
+		}
+		$this->productDataSync->synchronize_products( $productId, get_post( $productId ), true, $wpRestRequest );
+	}
+
+	/**
+	 * @param ?\WP_REST_Request $wpRestRequest
+	 *
+	 * @return bool
+	 */
+	private function synchronize_product_stock_only( $wpRestRequest ) {
+		if ( $wpRestRequest instanceof \WP_REST_Request ) {
+			$stockSyncFields = [
+				'id',
+				'manage_stock',
+				'stock_quantity',
+			];
+
+			$requestParamsArray = $wpRestRequest->get_params();
+			$requestFields      = array_keys( $requestParamsArray );
+
+			$nonStockFields = array_diff( $requestFields, $stockSyncFields );
+
+			return empty( $nonStockFields );
+		}
+
+		return false;
 	}
 
 	public function save_post_actions( $postId, $post ) {

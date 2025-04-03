@@ -52,6 +52,7 @@ class ResponseWpf {
 		if (is_array($error)) {
 			$this->errors = array_merge($this->errors, $error);
 		} else {
+			$m = '';
 			if (empty($key)) {
 				$this->errors[] = $error;
 			} else {
@@ -93,6 +94,7 @@ class ResponseWpf {
 				$this->{$key} = $val;
 			}
 		} else {
+			$m = '';
 			if (is_array($data)) {
 				$this->data = array_merge($this->data, $data);
 			} else {

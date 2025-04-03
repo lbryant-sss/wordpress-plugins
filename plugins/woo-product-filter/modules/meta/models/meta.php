@@ -207,7 +207,7 @@ class MetaModelWpf extends ModelWpf {
 					}
 				}
 				//$keyMode = $key['meta_mode'];
-				$keyType = DispatcherWpf::applyFilters('getMetaFieldType', $key['meta_type'], $keyName);
+				$keyType = $this->controlMetaFieldType($key['meta_type'], $keyName);
 				if (false === $keyType) {
 					continue;
 				}
@@ -883,5 +883,29 @@ class MetaModelWpf extends ModelWpf {
 		$emojis_regex = '/[\x{1F600}-\x{1F64F}\x{2700}-\x{27BF}\x{1F680}-\x{1F6FF}\x{24C2}-\x{1F251}\x{1F30D}-\x{1F567}\x{1F900}-\x{1F9FF}\x{1F300}-\x{1F5FF}\x{1FA70}-\x{1FAF6}]/u';
 		preg_match($emojis_regex, $string, $matches);
 		return ( empty($matches) ? false : true );
+	}
+	public function controlMetaFieldType( $metaType, $keyName ) {
+		if ( 'wcb2b_product_group_prices' == $keyName ) {
+			$metaType = 8;
+		}
+		
+		return DispatcherWpf::applyFilters('getMetaFieldType', $metaType, $keyName);
+	}
+	public function saveMetaArraywcb2b_product_group_prices( $keyId, $productId, $isVar, $data ) {
+		$insert     = '';
+		$queryValue = '(' . $productId . ',' . $isVar . ',' . $keyId . ',';
+		$keys       = $this->keysArray;
+		$valsModel  = $this->valsModel;
+		foreach ($data as $k2 => $v2) {
+			$keys['key2'] = $this->getCutKeyValue($k2);
+			if (is_array($v2)) {
+				$v = !empty($v2['sale_price']) ? $v2['sale_price'] : ( empty($v2['regular_price']) ? '0' : $v2['regular_price'] );
+				$id = $valsModel->insertValueId($keyId, $keys, round($v, 2));
+				if ($id) {
+					$insert .= $queryValue . $id . '),';
+				}
+			}
+		}
+		return $insert;
 	}
 }

@@ -18,7 +18,7 @@ abstract class ModuleWpf extends BaseObjectWpf {
 	protected $_externalPath = '';
 	protected $_isExternal = false;
 
-	public function __construct( $d) {
+	public function __construct( $d ) {
 		$this->setTypeID($d['type_id']);
 		$this->setCode($d['code']);
 		$this->setLabel($d['label']);
@@ -99,7 +99,6 @@ abstract class ModuleWpf extends BaseObjectWpf {
 		$this->_label = $label;
 	}
 	public function init() {
-
 	}
 	public function exec( $task = '' ) {
 		if ($task) {
@@ -118,7 +117,7 @@ abstract class ModuleWpf extends BaseObjectWpf {
 	}
 	protected function _createController() {
 		if (!file_exists($this->getModDir() . 'controller.php')) {
-			return false;	// EXCEPTION!!!
+			return false; // EXCEPTION!!!
 		}
 		if ($this->_controller) {
 			return true;
@@ -126,7 +125,7 @@ abstract class ModuleWpf extends BaseObjectWpf {
 		if (file_exists($this->getModDir() . 'controller.php')) {
 			$className = '';
 			require $this->getModDir() . 'controller.php';
-				//if (importWpf($this->getModDir() . 'controller.php')) {
+			//if (importWpf($this->getModDir() . 'controller.php')) {
 			$className = toeGetClassNameWpf($this->getCode() . 'Controller');
 			if (!empty($className)) {
 				$this->_controller = new $className($this->getCode());
@@ -188,13 +187,10 @@ abstract class ModuleWpf extends BaseObjectWpf {
 		return $this->getController()->getView($viewName);
 	}
 	public function install() {
-
 	}
 	public function uninstall() {
-
 	}
 	public function activate() {
-		
 	}
 	/**
 	 * Returns the available tabs

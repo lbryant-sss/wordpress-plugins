@@ -37,6 +37,7 @@ class WCML_YIKES_Custom_Product_Tabs implements \IWPML_Action {
 
 	public function add_hooks() {
 
+		add_filter( 'wpml_tm_translation_job_data', [ $this, 'append_custom_tabs_to_translation_package' ], 10, 2 );
 		add_action( 'wpml_translation_job_saved', [ $this, 'save_custom_tabs_translation' ], 10, 3 );
 
 		if ( is_admin() ) {
@@ -45,7 +46,6 @@ class WCML_YIKES_Custom_Product_Tabs implements \IWPML_Action {
 			add_action( 'wcml_update_extra_fields', [ $this, 'sync_tabs' ], 10, 4 );
 			add_filter( 'wpml_duplicate_custom_fields_exceptions', [ $this, 'custom_fields_exceptions' ] );
 			add_filter( 'wcml_do_not_display_custom_fields_for_product', [ $this, 'custom_fields_exceptions' ] );
-			add_filter( 'wpml_tm_translation_job_data', [ $this, 'append_custom_tabs_to_translation_package' ], 10, 2 );
 			add_action( 'woocommerce_product_data_panels', [ $this, 'show_pointer_info' ] );
 			add_action( 'init', [ $this, 'maybe_remove_admin_language_switcher' ] );
 		}
@@ -237,20 +237,19 @@ class WCML_YIKES_Custom_Product_Tabs implements \IWPML_Action {
 	}
 
 	public function show_pointer_info() {
-
-		/* translators: %s is an HTML link pointing to WooCommerce product translation page */
-		$a    = __( 'You can translate your custom product tabs on the %s', 'woocommerce-multilingual' );
-		$b    = __( 'WooCommerce product translation page', 'woocommerce-multilingual' );
-		$link = '<a href="' . admin_url( 'admin.php?page=wpml-wcml' ) . '">' . $b . '</a>';
-
-		$pointer_ui = new WCML_Pointer_UI(
-			sprintf( $a, $link ),
-			WCML_Tracking_Link::getWcmlCustomProductTabs(),
-			'yikes_woocommerce_custom_product_tabs',
-			'prepend'
-		);
-
-		$pointer_ui->show();
+		$pointerFactory = new WCML\PointerUi\Factory();
+		$pointerFactory
+			->create( [
+				'content'    => sprintf(
+					/* translators: %1$s and %2$s are opening and closing HTML link tags */
+					esc_html__( 'To translate custom per-product tabs, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation.', 'woocommerce-multilingual' ),
+					'<a href="' . esc_url( \WCML\Utilities\AdminUrl::getWPMLTMDashboardProducts() ) . '">',
+					'</a>'
+				),
+				'selectorId' => 'yikes_woocommerce_custom_product_tabs',
+				'method'     => 'prepend',
+			] )
+			->show();
 	}
 
 	public function maybe_remove_admin_language_switcher() {

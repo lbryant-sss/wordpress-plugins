@@ -41,7 +41,7 @@ class WCML_Status_Config_Warnings_UI extends WCML_Templates_Factory {
 			'prod_slug'           => $this->woocommerce_wpml->strings->product_permalink_slug(),
 			'dismiss_non_default' => isset( $this->woocommerce_wpml->settings['dismiss_non_default_language_warning'] ) ? true : false,
 			'xml_config_errors'   => ! empty( $this->woocommerce_wpml->dependencies->xml_config_errors ) ? $this->woocommerce_wpml->dependencies->xml_config_errors : false,
-			'slugs_tab'           => admin_url( 'admin.php?page=wpml-wcml&tab=slugs' ),
+			'slugs_tab'           => \WCML\Utilities\AdminUrl::getStoreURLTab(),
 			'st_lang'             => $this->sitepress_settings['st']['strings_language'],
 			'not_en_doc_page'     => 'https://wpml.org/?page_id=355545',
 			'strings'             => [

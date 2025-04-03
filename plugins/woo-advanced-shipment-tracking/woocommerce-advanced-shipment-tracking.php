@@ -4,13 +4,13 @@
  * Plugin Name: Advanced Shipment Tracking for WooCommerce 
  * Plugin URI: https://www.zorem.com/products/woocommerce-advanced-shipment-tracking/ 
  * Description: Add shipment tracking information to your WooCommerce orders and provide customers with an easy way to track their orders. Shipment tracking Info will appear in customers accounts (in the order panel) and in WooCommerce order complete email. 
- * Version: 3.7.7
+ * Version: 3.7.8
  * Author: zorem
  * Author URI: https://www.zorem.com 
  * License: GPL-2.0+
  * License URI: 
  * Text Domain: woo-advanced-shipment-tracking 
- * WC tested up to: 9.6.2
+ * WC tested up to: 9.7.1
  * Requires Plugins: woocommerce
 */
 
@@ -21,7 +21,7 @@ class Zorem_Woocommerce_Advanced_Shipment_Tracking {
 	 *
 	 * @var string
 	 */
-	public $version = '3.7.7';
+	public $version = '3.7.8';
 	public $plugin_file;
 	public $plugin_path;
 	public $table;
@@ -377,13 +377,7 @@ class Zorem_Woocommerce_Advanced_Shipment_Tracking {
 		require_once $this->get_plugin_path() . '/includes/customizer/ast-customizer.php';	
 		$this->customizer = Ast_Customizer::get_instance();
 		
-		require_once $this->get_plugin_path() . '/includes/email-manager.php';
-		
-		//require_once $this->get_plugin_path() . '/includes/customizer/class-wcast-customizer.php';
-	
-		//require_once $this->get_plugin_path() . '/includes/customizer/class-wc-tracking-info-customizer.php';					
-	
-		//require_once $this->get_plugin_path() . '/includes/customizer/class-wc-partial-shipped-email-customizer.php';						
+		require_once $this->get_plugin_path() . '/includes/email-manager.php';						
 
 		require_once $this->get_plugin_path() . '/includes/tracking-info.php';
 

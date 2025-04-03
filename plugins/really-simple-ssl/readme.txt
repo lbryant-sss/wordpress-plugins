@@ -6,7 +6,7 @@ Requires at least: 5.9
 License: GPL2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 9.3.2.1
+Stable tag: 9.3.3
 
 Easily improve site security with WordPress Hardening, Two-Factor Authentication (2FA), Login Protection, Vulnerability Detection and SSL certificate.
 
@@ -152,7 +152,7 @@ If you can't deactivate, do not just remove the plugin folder to uninstall! Foll
 
 == Changelog ==
 = 9.3.3 =
-* April 1st, 2025
+* April 2nd, 2025
 * Improvement: Added multiple WP-CLI commands to better align with recent plugin features
 * Improvement: Added support for custom/multiple roles in Two Factor Authentication
 

@@ -11,6 +11,8 @@ class WCML_Product_Bundles implements \IWPML_Action {
 	const META_SELLS_TITLE    = '_wc_pb_bundle_sells_title';
 	const META_SELLS_DISCOUNT = '_wc_pb_bundle_sells_discount';
 
+	const BUNDLE_FIELD_PREFIX = 'product_bundles:';
+
 	/**
 	 * @var WPML_Element_Translation_Package
 	 */
@@ -50,6 +52,9 @@ class WCML_Product_Bundles implements \IWPML_Action {
 		add_action( 'woocommerce_get_cart_item_from_session', [ $this, 'resync_bundle' ], 5, 3 );
 		add_filter( 'woocommerce_cart_loaded_from_session', [ $this, 'resync_bundle_clean' ], 10 );
 
+		$this->tp = new WPML_Element_Translation_Package();
+		add_filter( 'wpml_tm_translation_job_data', [ $this, 'append_bundle_data_translation_package' ], 10, 2 );
+
 		if ( WPML::useAte() ) {
 			add_action( 'wpml_pro_translation_completed', [ $this, 'save_product_bundles_to_translation' ], 10, 3 );
 		} else { // Legacy action for CTE
@@ -57,17 +62,6 @@ class WCML_Product_Bundles implements \IWPML_Action {
 		}
 
 		if ( is_admin() ) {
-			$this->tp = new WPML_Element_Translation_Package();
-
-			add_filter(
-				'wpml_tm_translation_job_data',
-				[
-					$this,
-					'append_bundle_data_translation_package',
-				],
-				10,
-				2
-			);
 
 			if ( ! WPML::useAte() ) {  // Legacy actions/filters for CTE
 				add_action( 'wcml_gui_additional_box_html', [ $this, 'custom_box_html' ], 10, 3 );
@@ -477,7 +471,7 @@ class WCML_Product_Bundles implements \IWPML_Action {
 	 * @return string
 	 */
 	private static function get_job_field_name( $product_id, $item_id, $field ) {
-		return 'product_bundles:' . $product_id . ':' . $item_id . ':' . $field;
+		return self::BUNDLE_FIELD_PREFIX . $product_id . ':' . $item_id . ':' . $field;
 	}
 
 	public function append_bundle_data_translation_package( $package, $post ) {
@@ -791,9 +785,13 @@ class WCML_Product_Bundles implements \IWPML_Action {
 		return null;
 	}
 
+	/**
+	 * @param array{data:WC_Product} $cart_item
+	 * @param array                   $session_values
+	 * @param string                  $cart_item_key
+	 */
 	public function resync_bundle( $cart_item, $session_values, $cart_item_key ) {
-
-		if ( isset( $cart_item['bundled_items'] ) && $cart_item['data']->product_type === 'bundle' ) {
+		if ( isset( $cart_item['bundled_items'] ) && $cart_item['data']->get_type() === 'bundle' ) {
 			$current_bundle_id = apply_filters( 'translate_object_id', $cart_item['product_id'], 'product', true );
 			if ( $cart_item['product_id'] != $current_bundle_id ) {
 				if ( isset( $cart_item['data']->bundle_data ) && is_array( $cart_item['data']->bundle_data ) ) {

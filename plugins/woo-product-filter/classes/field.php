@@ -62,6 +62,7 @@ class FieldWpf {
 		if (is_array($validate)) {
 			$this->validate = $validate;
 		} else {
+			$m = '';
 			if (strpos($validate, ',')) {
 				$this->validate = array_map('trim', explode(',', $validate));
 			} else {
@@ -147,6 +148,7 @@ class FieldWpf {
 				if ('' == $this->value) {
 					$value = esc_html__('N/A', 'woo-product-filter');
 				} else {
+					$m = '';
 					if (is_array($this->value)) {
 						$options = $this->getHtmlParam('OptionsWpf');
 						if (!empty($options) && is_array($options)) {

@@ -13,10 +13,8 @@ abstract class ControllerWpf {
 		/*load model and other preload data goes here*/
 	}
 	protected function _onBeforeInit() {
-
 	}
 	protected function _onAfterInit() {
-
 	}
 	public function setCode( $code ) {
 		$this->_code = $code;
@@ -57,7 +55,7 @@ abstract class ControllerWpf {
 		$className = '';
 		if (file_exists($parentModule->getModDir() . 'models' . DS . $name . '.php')) {
 			require $parentModule->getModDir() . 'models' . DS . $name . '.php';
-		//if (importWpf($parentModule->getModDir() . 'models' . DS . $name . '.php')) {
+			//if (importWpf($parentModule->getModDir() . 'models' . DS . $name . '.php')) {
 			$className = toeGetClassNameWpf($name . 'Model');
 		}
 		
@@ -127,7 +125,7 @@ abstract class ControllerWpf {
 		return FrameWpf::_()->getModule( $this->getCode() );
 	}
 	protected function _prepareTextLikeSearch( $val ) {
-		return '';	 // Should be re-defined for each type
+		return ''; // Should be re-defined for each type
 	}
 	protected function _prepareModelBeforeListSelect( $model ) {
 		return $model;
@@ -174,9 +172,7 @@ abstract class ControllerWpf {
 			$searchString = trim(ReqWpf::getVar('searchString', 'all', ''));
 			if (!empty($searchField) && !empty($searchString)) {
 				// For some cases - we will need to modify search keys and/or values before put it to the model
-				$model->addWhere(array(
-					$this->_prepareSearchField($searchField) => $this->_prepareSearchString($searchString)
-				));
+				$model->addWhere(array($this->_prepareSearchField($searchField) => $this->_prepareSearchString($searchString)));
 			}
 		}
 		$model = $this->_prepareModelBeforeListSelect($model);
@@ -214,7 +210,6 @@ abstract class ControllerWpf {
 		$res->addData('records', $model->getLastGetCount());
 		$res = DispatcherWpf::applyFilters($this->getCode() . '_getListForTblResults', $res);
 		$res->ajaxExec();
-
 	}
 	public function removeGroup() {
 		check_ajax_referer('wpf-save-nonce', 'wpfNonce');

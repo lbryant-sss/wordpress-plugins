@@ -45,6 +45,17 @@ class New_Admin_Menu {
 			QLWAPP_PLUGIN_VERSION
 		);
 
+		wp_register_style(
+			'qlwapp-preview',
+			plugins_url( '/build/preview/css/style.css', QLWAPP_PLUGIN_FILE ),
+			array(
+				'qlwapp-components',
+				'media-views',
+				'wp-components',
+			),
+			QLWAPP_PLUGIN_VERSION
+		);
+
 		wp_localize_script(
 			'qlwapp-new-admin-menu',
 			'qlwappApiAdminMenu',
@@ -91,6 +102,7 @@ class New_Admin_Menu {
 		wp_enqueue_media();
 		wp_enqueue_script( 'qlwapp-new-admin-menu' );
 		wp_enqueue_style( 'qlwapp-new-admin-menu' );
+		wp_enqueue_style( 'qlwapp-preview' );
 	}
 
 	public function add_menu() {

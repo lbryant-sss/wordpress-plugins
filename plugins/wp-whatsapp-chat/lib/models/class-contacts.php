@@ -133,8 +133,6 @@ class Contacts {
 		// return $defaults_contacts;
 		// }
 
-		// error_log( 'entities: ' . json_encode( $entities, JSON_PRETTY_PRINT ) );
-
 		$contacts = array();
 
 		foreach ( $entities as $entity ) {

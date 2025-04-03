@@ -52,7 +52,7 @@ define('WPF_CURRENT', 'current');
 define('WPF_EOL', "\n");
 
 define('WPF_PLUGIN_INSTALLED', true);
-define('WPF_VERSION', '2.8.0');
+define('WPF_VERSION', '2.8.1');
 define('WPF_PRO_REQUIRES', '2.0.0');
 define('WPF_USER', 'user');
 
@@ -64,9 +64,9 @@ define('WPF_SUCCESS', 'Success');
 define('WPF_FAILED', 'Failed');
 define('WPF_ERRORS', 'wpfErrors');
 
-define('WPF_ADMIN',	'admin');
+define('WPF_ADMIN', 'admin');
 define('WPF_LOGGED', 'logged');
-define('WPF_GUEST',	'guest');
+define('WPF_GUEST', 'guest');
 
 define('WPF_ALL', 'all');
 

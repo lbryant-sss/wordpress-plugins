@@ -66,11 +66,11 @@ class WCML_Store_URLs_UI extends WCML_Templates_Factory {
 					),
 					'<a href="' . admin_url( 'options-permalink.php' ) . '">',
 					'</a>',
-					'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=advanced' ) . '">',
+					'<a href="' . \WCML\Utilities\AdminUrl::getWooSettings( 'advanced' ) . '">',
 					'</a>'
 				),
 				'perm_settings'    => '<a href="' . admin_url( 'options-permalink.php' ) . '" >' . __( 'permalinks settings', 'woocommerce-multilingual' ) . '</a>',
-				'account_settings' => '<a href="admin.php?page=wc-settings&tab=account" >' . __( 'Account settings', 'woocommerce-multilingual' ) . '</a>',
+				'account_settings' => '<a href="' . \WCML\Utilities\AdminUrl::getWooSettings( 'account' ) . '" >' . __( 'Account settings', 'woocommerce-multilingual' ) . '</a>',
 				'slug_type'        => __( 'Slug type', 'woocommerce-multilingual' ),
 				'orig_slug'        => __( 'Original Slug', 'woocommerce-multilingual' ),
 				'shop'             => __( 'Shop page', 'woocommerce-multilingual' ),

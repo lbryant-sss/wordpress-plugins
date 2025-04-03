@@ -179,6 +179,7 @@ class ModInstallerWpf {
 					self::activate($modDataArr);
 					//  if not - install it
 				} else {
+					$m = '';
 					if (!self::install($modDataArr, $locations['plugDir'])) {
 						/* translators: %s: module name */
 						ErrorsWpf::push(esc_html(sprintf(__('Install %s failed'), $modDataArr['code'])), ErrorsWpf::MOD_INSTALL);
@@ -199,7 +200,6 @@ class ModInstallerWpf {
 	 * We will run this each time plugin start to check modules activation messages
 	 */
 	public static function checkActivationMessages() {
-
 	}
 	/**
 	 * Deactivate module after deactivating external plugin

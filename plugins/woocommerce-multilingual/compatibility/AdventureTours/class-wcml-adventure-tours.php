@@ -1,6 +1,6 @@
 <?php
 
-class WCML_Adventure_tours implements \IWPML_Action {
+class WCML_Adventure_Tours implements \IWPML_Action {
 
 	/**
 	 * @var woocommerce_wpml
@@ -17,7 +17,7 @@ class WCML_Adventure_tours implements \IWPML_Action {
 	private $tp;
 
 	/**
-	 * WCML_Adventure_tours constructor.
+	 * WCML_Adventure_Tours constructor.
 	 *
 	 * @param woocommerce_wpml                 $woocommerce_wpml
 	 * @param SitePress                        $sitepress
@@ -32,23 +32,22 @@ class WCML_Adventure_tours implements \IWPML_Action {
 	public function add_hooks() {
 		add_action( 'updated_post_meta', [ $this, 'sync_tour_data_across_translations' ], 10, 4 );
 		add_filter( 'get_post_metadata', [ $this, 'product_price_filter' ], 9, 4 );
+
+		add_filter( 'wpml_tm_translation_job_data', [ $this, 'append_tour_data_translation_package' ], 10, 2 );
 		add_action( 'wpml_translation_job_saved', [ $this, 'save_tour_data_translation' ], 10, 3 );
 
-		if ( is_admin() ) {
+		add_filter( 'wcml_is_variable_product', [ $this, 'is_variable_tour' ], 10, 2 );
+		add_filter( 'wcml_variation_term_taxonomy_ids', [ $this, 'add_tour_tax_id' ] );
 
+		if ( is_admin() ) {
 			add_action( 'wcml_gui_additional_box_html', [ $this, 'custom_box_html' ], 10, 3 );
 			add_filter( 'wcml_gui_additional_box_data', [ $this, 'custom_box_html_data' ], 10, 4 );
 			add_action( 'wcml_update_extra_fields', [ $this, 'tour_data_update' ], 10, 3 );
-
-			add_filter( 'wpml_tm_translation_job_data', [ $this, 'append_tour_data_translation_package' ], 10, 2 );
 
 			add_action( 'admin_footer', [ $this, 'load_assets' ] );
 			add_action( 'wcml_after_custom_prices_block', [ $this, 'add_custom_prices_block' ] );
 			add_action( 'wcml_after_save_custom_prices', [ $this, 'save_custom_costs' ] );
 
-			add_filter( 'wcml_is_variable_product', [ $this, 'is_variable_tour' ], 10, 2 );
-			add_filter( 'wcml_variation_term_taxonomy_ids', [ $this, 'add_tour_tax_id' ] );
-			add_filter( 'wcml_is_attributes_page', [ $this, 'is_attributes_page' ] );
 			add_filter( 'wcml_is_attributes_page', [ $this, 'is_attributes_page' ] );
 
 			add_filter(
@@ -70,6 +69,7 @@ class WCML_Adventure_tours implements \IWPML_Action {
 		$post = get_post( $post_id );
 
 		// Skip auto-drafts // skip autosave.
+		/* phpcs:ignore WordPress.VIP.SuperGlobalInputUsage.AccessDetected */
 		if ( 'auto-draft' === $post->post_status || isset( $_POST['autosave'] ) ) {
 			return false;
 		}

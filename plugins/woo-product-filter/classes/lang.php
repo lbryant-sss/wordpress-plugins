@@ -96,11 +96,11 @@ class LangWpf {
 			'(' => '%opening_parenthesis%',
 			')' => '%closing_parenthesis%',
 			'^' => '%caret%',
-			'Yes'	=> '%Yes%',
-			'yes'	=> '%yes%',
-			'No'	=> '%No%',
-			'no'	=> '%no%',
-			'none'	=> '%none%',
+			'Yes' => '%Yes%',
+			'yes' => '%yes%',
+			'No' => '%No%',
+			'no' => '%no%',
+			'none' => '%none%',
 		);
 	}
 }

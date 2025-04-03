@@ -1,10 +1,10 @@
 <?php
 
+use function WCML\functions\isStandAlone;
 use WCML\Utilities\AdminPages;
+use WCML\Utilities\AdminUrl;
 use WPML\API\Sanitize;
 use WPML\FP\Relation;
-
-use function WCML\functions\isStandAlone;
 
 class WCML_Resources {
 
@@ -72,17 +72,12 @@ class WCML_Resources {
 
 			self::load_management_css();
 
-			if ( AdminPages::isMultiCurrency() || AdminPages::isTab( 'slugs' ) ) {
+			if ( AdminPages::isMultiCurrency() || AdminPages::isTab( AdminUrl::TAB_STORE_URL ) ) {
 				wp_register_style( 'wcml-dialogs', WCML_PLUGIN_URL . '/res/css/dialogs.css', [ 'wpml-dialog' ], WCML_VERSION );
 				wp_enqueue_style( 'wcml-dialogs' );
 			}
 
 			wp_enqueue_style( 'wp-color-picker' );
-		}
-
-		if ( self::$pagenow == 'options-permalink.php' ) {
-			wp_register_style( 'wcml_op', WCML_PLUGIN_URL . '/res/css/options-permalink.css', null, WCML_VERSION );
-			wp_enqueue_style( 'wcml_op' );
 		}
 
 		if ( is_admin() ) {
@@ -159,16 +154,6 @@ class WCML_Resources {
 
 			wp_register_script( 'exchange-rates', WCML_PLUGIN_URL . '/res/js/exchange-rates' . WCML_JS_MIN . '.js', [ 'jquery' ], WCML_VERSION, true );
 			wp_enqueue_script( 'exchange-rates' );
-		}
-
-		if ( AdminPages::isWcmlSettings() && AdminPages::isTab( 'product-attributes' ) ) {
-			wp_register_script( 'product-attributes', WCML_PLUGIN_URL . '/res/js/product-attributes' . WCML_JS_MIN . '.js', [ 'jquery' ], WCML_VERSION, true );
-			wp_enqueue_script( 'product-attributes' );
-		}
-
-		if ( AdminPages::isWcmlSettings() && AdminPages::isTab( 'custom-taxonomies' ) ) {
-			wp_register_script( 'custom-taxonomies', WCML_PLUGIN_URL . '/res/js/product-custom-taxonomies' . WCML_JS_MIN . '.js', [ 'jquery' ], WCML_VERSION, true );
-			wp_enqueue_script( 'custom-taxonomies' );
 		}
 
 		wp_enqueue_script(
@@ -294,19 +279,6 @@ class WCML_Resources {
 		do_action( 'wcml_after_load_lock_fields_js' );
 
 	}
-	/**
-	 * @param int    $original_id
-	 * @param string $language
-	 *
-	 * @return string
-	 */
-	private static function linkToTranslation( $original_id, $language ) {
-		$status_display_factory = new WPML_Post_Status_Display_Factory( self::$sitepress );
-		$status_display         = $status_display_factory->create();
-		list( $text, $link, $trid, $css_class ) = $status_display->get_status_data( $original_id, $language );
-
-		return apply_filters( 'wpml_link_to_translation', $link, $original_id, $language, $trid, $css_class );
-	}
 
 	public static function hidden_label() {
 		global $sitepress;
@@ -330,14 +302,14 @@ class WCML_Resources {
 
 		echo '<h3 class="wcml_prod_hidden_notice">' .
 			sprintf(
-				/* translators: %1$s and %2$s are HTML links pointing to post edit screen and translation edit screen */
-				__(
-					"This is a translation of %1\$s. Some of the fields are not editable. It's recommended to use the %2\$s for translating products.",
+				/* translators: %1$s is the post title inside a HTML link pointing to the post edit screen, %2$s and %3$s are opening and closing HTML link tags */
+				esc_html__(
+					"This is a translation of %1\$s. Some of the fields are not editable. It's recommended that you translate products from the %2\$sTranslation Dashboard%3\$s.",
 					'woocommerce-multilingual'
 				),
 				'<a href="' . esc_url( get_edit_post_link( $original_id ) ) . '" >' . get_the_title( $original_id ) . '</a>',
-				'<a href="' . esc_url( self::linkToTranslation( $original_id, $language ) ) . '" >' .
-				__( 'WooCommerce Multilingual & Multicurrency products translator', 'woocommerce-multilingual' ) . '</a>'
+				'<a href="' . esc_url( AdminUrl::getWPMLTMDashboardProducts() ) . '">',
+				'</a>'
 			) . '</h3>';
 	}
 }

@@ -76,6 +76,14 @@ class WCML_Emails {
 				],
 				self::PRIORITY_BEFORE_EMAIL_SET_LANGUAGE
 			);
+			add_action(
+				'woocommerce_order_status_failed',
+				[
+					$this,
+					'refresh_email_lang',
+				],
+				self::PRIORITY_BEFORE_EMAIL_SET_LANGUAGE
+			);
 		}
 
 		foreach ( [ 'pending', 'failed', 'cancelled' ] as $state ) {
@@ -326,8 +334,8 @@ class WCML_Emails {
 
 			$email->heading              = $translate( 'heading' );
 			$email->subject              = $translate( 'subject' );
-			$email->heading_downloadable = $translate( 'heading_downloadable' );
-			$email->subject_downloadable = $translate( 'subject_downloadable' );
+			@$email->heading_downloadable = $translate( 'heading_downloadable' );
+			@$email->subject_downloadable = $translate( 'subject_downloadable' );
 			$original_enabled_state      = $email->enabled;
 			$email->enabled              = 'no';
 			$email->trigger( $order_id );
@@ -723,9 +731,9 @@ class WCML_Emails {
 			$order_id = $this->order_id;
 		} elseif ( isset( $_POST['action'] ) && 'woocommerce_refund_line_items' === $_POST['action'] ) {
 			$order_id = filter_input( INPUT_POST, 'order_id', FILTER_SANITIZE_NUMBER_INT );
-		} elseif ( empty( $_POST ) && isset( $_GET['page'] ) && 'wc-settings' === $_GET['page'] && isset( $_GET['tab'] ) && 'email' === $_GET['tab'] && '[woocommerce' === substr( $name, 0, 12 ) ) {
+		} elseif ( empty( $_POST ) && isset( $_GET['page'] ) && \WCML\Utilities\AdminUrl::PAGE_WOO_SETTINGS === $_GET['page'] && isset( $_GET['tab'] ) && 'email' === $_GET['tab'] && '[woocommerce' === substr( $name, 0, 12 ) ) {
 			$email_string = explode( ']', str_replace( '[', '', $name ) );
-			$email_option = get_option( $email_string[0], true );
+			$email_option = get_option( $email_string[0], [] );
 			$context      = 'admin_texts_' . $email_string[0];
 
 			$current_language = $this->wcmlStrings->get_string_language( $email_option[ $email_string[1] ], $context, $name );

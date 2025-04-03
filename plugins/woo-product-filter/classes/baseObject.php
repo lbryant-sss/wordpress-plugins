@@ -58,5 +58,4 @@ abstract class BaseObjectWpf {
 
 		return $value;
 	}
-
 }

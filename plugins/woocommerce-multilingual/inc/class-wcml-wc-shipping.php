@@ -5,6 +5,7 @@ use WPML\FP\Fns;
 class WCML_WC_Shipping {
 
 	const STRINGS_CONTEXT = 'admin_texts_woocommerce_shipping';
+	const NAME_SUFFIX     = '_shipping_method_title';
 
 	private $current_language;
 	/** @var SitePress */
@@ -112,7 +113,7 @@ class WCML_WC_Shipping {
 	}
 
 	public function register_shipping_title( $shipping_method_id, $title ) {
-		do_action( 'wpml_register_single_string', self::STRINGS_CONTEXT, $shipping_method_id . '_shipping_method_title', $title );
+		do_action( 'wpml_register_single_string', self::STRINGS_CONTEXT, $shipping_method_id . self::NAME_SUFFIX, $title );
 	}
 
 	public function translate_shipping_strings( $value, $option = false ) {
@@ -175,7 +176,7 @@ class WCML_WC_Shipping {
 				'wpml_translate_single_string',
 				$title,
 				self::STRINGS_CONTEXT,
-				$shipping_id . '_shipping_method_title',
+				$shipping_id . self::NAME_SUFFIX,
 				$language ?: $this->current_language
 			);
 

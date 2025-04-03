@@ -60,7 +60,7 @@ class WCML_Custom_Prices_UI extends WCML_Templates_Factory {
 							'Multi-currency is enabled, but no secondary currencies have been set. %1$sAdd secondary currency%2$s.',
 							'woocommerce-multilingual'
 						),
-						'<a href="' . admin_url( 'admin.php?page=wpml-wcml&tab=multi-currency' ) . '">',
+						'<a href="' . \WCML\Utilities\AdminUrl::getMultiCurrencyTab() . '">',
 						'</a>'
 					),
 					'calc_auto'      => __( 'Calculate prices in other currencies automatically', 'woocommerce-multilingual' ),

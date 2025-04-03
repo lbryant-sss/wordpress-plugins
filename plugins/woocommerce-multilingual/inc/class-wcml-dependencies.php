@@ -281,7 +281,7 @@ class WCML_Dependencies {
 			$compatible = false;
 		}
 
-		if ( ! $compatible && ( $pagenow == 'options-permalink.php' || ( isset( $_GET['page'] ) && $_GET['page'] == 'wpml-wcml' ) ) ) {
+		if ( ! $compatible && ( $pagenow == 'options-permalink.php' || ( isset( $_GET['page'] ) && \WCML\Utilities\AdminUrl::PAGE_WPML_WCML == $_GET['page'] ) ) ) {
 			$this->err_message = '<div class="message error"><p>' . $message . '    </p></div>';
 			add_action( 'admin_notices', [ $this, 'plugin_notice_message' ] );
 		}

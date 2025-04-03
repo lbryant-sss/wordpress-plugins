@@ -117,8 +117,9 @@ trait VariableCost {
 	}
 
 	private function getCostValueForName( $rate, $currency, $costName, $rateField ) {
+		/** @var $rate \WC_Shipping_Flat_Rate */
 		if ( ! isset( $rate->$rateField ) ) {
-			$rate->$rateField = 0;
+			@$rate->$rateField = 0;
 		}
 		if ( isset( $rate->instance_id ) ) {
 			if ( $this->isManualPricingEnabled( $rate ) ) {

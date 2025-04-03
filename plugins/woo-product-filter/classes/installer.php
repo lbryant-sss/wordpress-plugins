@@ -5,7 +5,7 @@ class InstallerWpf {
 	public static function init( $isUpdate = false ) {
 		global $wpdb;
 		$wpPrefix = $wpdb->prefix; /* add to 0.0.3 Versiom */
-		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 		$current_version = get_option($wpPrefix . WPF_DB_PREF . 'db_version', 0);
 		if (!$current_version) {
 			self::$_firstTimeActivated = true;
@@ -166,7 +166,7 @@ class InstallerWpf {
 		add_option($wpPrefix . WPF_DB_PREF . 'db_installed', 1);
 		if ( !wp_next_scheduled( 'wpf_calc_meta_indexing' ) ) {
 			wp_schedule_single_event( time() + 5, 'wpf_calc_meta_indexing' );
-		}		
+		}
 	}
 	public static function setUsed() {
 		update_option(WPF_DB_PREF . 'plug_was_used', 1);

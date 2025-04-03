@@ -19,7 +19,6 @@ abstract class HelperWpf {
 	 * Init function
 	 */
 	public function init() {
-
 	}
 	/**
 	 * Set the helper name

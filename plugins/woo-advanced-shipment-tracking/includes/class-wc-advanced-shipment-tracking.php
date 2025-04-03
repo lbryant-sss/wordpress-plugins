@@ -205,7 +205,6 @@ class WC_Advanced_Shipment_Tracking_Actions {
 						esc_attr( $tracking_id ),
 						esc_html( $provider_name ),
 						esc_url( $tracking_item['ast_tracking_link'] ),
-						esc_html( $tracking_item['tracking_number'] ),
 						esc_html( isset( $tracking_item['tracking_number'] ) ? $tracking_item['tracking_number'] : '' ),
 						esc_attr( $tracking_id ),
 						esc_attr( $order_id )

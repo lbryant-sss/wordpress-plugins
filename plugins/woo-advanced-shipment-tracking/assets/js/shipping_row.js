@@ -685,7 +685,10 @@ jQuery(document).on("click", ".reset_providers.deselect", function(){
 jQuery(document).on("click", ".remove_selected_shipping_carrier", function(){
     jQuery('#delete_provider_bulk').attr('data-remove', 'selected-page');
 	jQuery('div.all-shipping-carriers-selected').hide();
-	jQuery('div.shipping-carriers-selected-provider-message').show();
+	
+	// Uncheck all checkboxes
+	jQuery('input[name="bulk_select_provider[]"]').prop('checked', false);
+	jQuery('div.shipping-carriers-selected-provider-message').hide();
 	var length_get = jQuery('input[name="bulk_select_provider[]"]:checked').length;
 	jQuery('#selected_provider_total').text(length_get);
 });

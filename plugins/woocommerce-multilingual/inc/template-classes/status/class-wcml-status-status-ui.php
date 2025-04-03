@@ -20,7 +20,6 @@ class WCML_Status_Status_UI extends WCML_Templates_Factory {
 
 		$model = [
 			'icl_version' => defined( 'ICL_SITEPRESS_VERSION' ),
-			'tm_version'  => defined( 'WPML_TM_VERSION' ),
 			'st_version'  => defined( 'WPML_ST_VERSION' ),
 			'wc'          => class_exists( 'WooCommerce' ),
 			'icl_setup'   => $this->sitepress->setup(),
@@ -33,7 +32,6 @@ class WCML_Status_Status_UI extends WCML_Templates_Factory {
 				/* translators: %s is a plugin name */
 				'not_setup'   => __( '%s is not set up.', 'woocommerce-multilingual' ),
 				'wpml'        => '<strong>WPML</strong>',
-				'tm'          => '<strong>WPML Translation Management</strong>',
 				'st'          => '<strong>WPML String Translation</strong>',
 				'wc'          => '<strong>WooCommerce</strong>',
 				'depends'     => __( 'WooCommerce Multilingual & Multicurrency depends on several plugins to work. If any required plugin is missing, you should install and activate it.', 'woocommerce-multilingual' ),

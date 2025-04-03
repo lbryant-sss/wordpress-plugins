@@ -159,9 +159,9 @@ class Sitemap_Plugin extends Sitemap {
 				// Prepare priority calculation.
 				if ( ! empty( $this->post_type_settings[ $feed[2] ] ) && ! empty( $this->post_type_settings[ $feed[2] ]['priority'] ) && ! empty( $this->post_type_settings[ $feed[2] ]['dynamic_priority'] ) ) {
 					// Last of this post type modified date in Unix seconds.
-					\xmlsf()->lastmodified = \get_date_from_gmt( \get_lastpostmodified( 'GMT', $feed[2] ), DATE_W3C );
+					\xmlsf()->lastmodified = \get_date_from_gmt( \get_lastpostmodified( 'GMT', $feed[2] ), 'U' );
 					// Calculate time span, uses get_firstpostdate() function defined in xml-sitemap/inc/functions.php!
-					\xmlsf()->timespan = \xmlsf()->lastmodified - \get_date_from_gmt( get_firstpostdate( 'GMT', $feed[2] ), DATE_W3C );
+					\xmlsf()->timespan = \xmlsf()->lastmodified - \get_date_from_gmt( get_firstpostdate( 'GMT', $feed[2] ), 'U' );
 					// Total post type comment count.
 					\xmlsf()->comment_count = \wp_count_comments()->approved;
 					// TODO count comments per post type https://wordpress.stackexchange.com/questions/134338/count-all-comments-of-a-custom-post-type
@@ -266,13 +266,12 @@ class Sitemap_Plugin extends Sitemap {
 	 */
 	public function set_terms_args( $args ) {
 		// Read more on https://developer.wordpress.org/reference/classes/wp_term_query/__construct/.
-		$options  = \get_option( 'xmlsf_taxonomy_settings' );
-		$defaults = get_default_settings( 'taxonomy_settings' );
+		$options = \get_option( 'xmlsf_taxonomy_settings', get_default_settings( 'taxonomy_settings' ) );
 
-		$args['number'] = isset( $options['limit'] ) && \is_numeric( $options['limit'] ) ? \intval( $options['limit'] ) : $defaults['limit'];
+		$args['number'] = isset( $options['limit'] ) && \is_numeric( $options['limit'] ) && $options['limit'] > 0 ? \intval( $options['limit'] ) : 2000;
 
-		if ( $args['number'] < 1 || $args['number'] > 50000 ) {
-			$args['number'] = $defaults['limit'];
+		if ( $args['number'] > 50000 ) {
+			$args['number'] = 50000;
 		}
 
 		$args['order']                  = 'DESC';
@@ -314,14 +313,13 @@ class Sitemap_Plugin extends Sitemap {
 		 */
 		$post_types = \apply_filters( 'xmlsf_author_has_published_posts', $post_types );
 
-		$author_settings = \get_option( 'xmlsf_author_settings' );
-		$defaults        = get_default_settings( 'author_settings' );
+		$options = \get_option( 'xmlsf_author_settings', get_default_settings( 'author_settings' ) );
 
 		$args['has_published_posts'] = $post_types;
-		$args['number']              = ! empty( $author_settings['limit'] ) && \is_numeric( $author_settings['limit'] ) ? \intval( $author_settings['limit'] ) : $defaults['limit'];
+		$args['number']              = ! empty( $options['limit'] ) && \is_numeric( $options['limit'] ) && $options['limit'] > 0 ? \intval( $options['limit'] ) : 2000;
 
-		if ( $args['number'] < 1 || $args['number'] > 50000 ) {
-			$args['number'] = $defaults['limit'];
+		if ( $args['number'] > 50000 ) {
+			$args['number'] = 50000;
 		}
 
 		$include = \get_option( 'xmlsf_authors' );

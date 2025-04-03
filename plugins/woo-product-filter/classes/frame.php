@@ -27,7 +27,6 @@ class FrameWpf {
 
 	public function __construct() {
 		$this->_res = toeCreateObjWpf('response', array());
-
 	}
 	public static function getInstance() {
 		static $instance;
@@ -67,7 +66,7 @@ class FrameWpf {
 	}
 	private function _checkPromoModName( $activeModules ) {
 		foreach ($activeModules as $i => $m) {
-			if ('supsystic_promo' == $m['code']) {	// Well, rename it ;)
+			if ('supsystic_promo' == $m['code']) { // Well, rename it ;)
 				$activeModules[$i]['code'] = 'promo';
 				$activeModules[$i]['label'] = 'promo';
 				DbWpf::query("UPDATE `@__modules` SET code = 'promo', label = 'promo' WHERE code = 'supsystic_promo'");
@@ -179,7 +178,7 @@ class FrameWpf {
 					</div>
 				</td>
 			</tr>
-		<?php
+			<?php
 		}
 	}
 
@@ -228,7 +227,7 @@ class FrameWpf {
 						}
 					}
 				}
-				if (isset($permissions[WPF_USERLEVELS])	&& !empty($permissions[WPF_USERLEVELS])) {
+				if (isset($permissions[WPF_USERLEVELS]) && !empty($permissions[WPF_USERLEVELS])) {
 					$currentUserPosition = self::_()->getModule('user')->getCurrentUserPosition();
 					// For multi-sites network admin role is undefined, let's do this here
 					if (is_multisite() && is_admin() && is_super_admin()) {
@@ -255,7 +254,7 @@ class FrameWpf {
 					}
 				}
 			}
-			if ($res) {	// Additional check for nonces
+			if ($res) { // Additional check for nonces
 				$noncedMethods = $mod->getController()->getNoncedMethods();
 				if (!empty($noncedMethods)) {
 					$noncedMethods = array_map('strtolower', $noncedMethods);
@@ -294,7 +293,7 @@ class FrameWpf {
 						$res = true;
 					}
 				}
-				if (isset($permissions[WPF_USERLEVELS])	&& !empty($permissions[WPF_USERLEVELS])) {
+				if (isset($permissions[WPF_USERLEVELS]) && !empty($permissions[WPF_USERLEVELS])) {
 					$res = true;
 				}
 			}
@@ -358,7 +357,7 @@ class FrameWpf {
 	public function exec() {
 		//deprecated
 	}
-	public function getTables () {
+	public function getTables() {
 		return $this->_tables;
 	}
 	/**
@@ -423,7 +422,7 @@ class FrameWpf {
 				'deps' => $deps,
 				'ver' => $ver,
 				'in_footer' => $in_footer,
-				'vars' => $vars
+				'vars' => $vars,
 			);
 		}
 	}
@@ -498,7 +497,7 @@ class FrameWpf {
 				'src' => $src,
 				'deps' => $deps,
 				'ver' => $ver,
-				'media' => $media
+				'media' => $media,
 			);
 		}
 	}
@@ -512,13 +511,13 @@ class FrameWpf {
 	}
 	//Very interesting thing going here.............
 	public function loadPlugins() {
-		require_once(ABSPATH . 'wp-includes/pluggable.php');
+		require_once ABSPATH . 'wp-includes/pluggable.php';
 	}
 	public function loadWPSettings() {
-		require_once(ABSPATH . 'wp-settings.php');
+		require_once ABSPATH . 'wp-settings.php';
 	}
 	public function loadLocale() {
-		require_once(ABSPATH . 'wp-includes/locale.php');
+		require_once ABSPATH . 'wp-includes/locale.php';
 	}
 	public function moduleActive( $code ) {
 		return isset($this->_modules[$code]);
@@ -566,7 +565,7 @@ class FrameWpf {
 		if ( is_null( $this->_proVersion ) ) {
 			if ( $this->isPro() && function_exists( 'getProPlugFullPathWpf' ) ) {
 				if ( ! function_exists( 'get_plugin_data' ) ) {
-					require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+					require_once ABSPATH . 'wp-admin/includes/plugin.php' ;
 				}
 				$plugin_data       = get_file_data( getProPlugFullPathWpf(), array( 'Version' => 'Version' ) );
 				$this->_proVersion = $plugin_data['Version'];

@@ -45,8 +45,11 @@ class WCML_Removed_Cart_Items_UI extends WCML_Templates_Factory {
 
         $model = array(
             'products' => $this->get_removed_products(),
-            /* translators: %ds is a currency or language name */
-            'title' => sprintf( __( 'Products removed after switching to %s:', 'woocommerce-multilingual'), $switched_to ),
+            'title' => sprintf(
+                /* translators: %s is a currency or language name */
+				__( 'Products removed after switching to %s:', 'woocommerce-multilingual'),
+				$switched_to
+            ),
             'clear' => __( 'Clear list', 'woocommerce-multilingual'),
             'nonce' => wp_create_nonce( 'wcml_clear_removed_items' ),
         );

@@ -35,7 +35,7 @@ if (!function_exists('getRandNameWpf')) {
 		$len = mt_rand($lenFrom, $lenTo);
 		if ($len) {
 			for ($i = 0; $i < $len; $i++) {
-				$res .= chr(mt_rand(97, 122));	/*rand symbol from a to z*/
+				$res .= chr(mt_rand(97, 122)); /*rand symbol from a to z*/
 			}
 		}
 		return $res;
@@ -101,7 +101,7 @@ if (!function_exists('toeCreateObjWpf')) {
 			$reflection = new ReflectionClass($className);
 			try {
 				$obj = $reflection->newInstanceArgs($params);
-			} catch (ReflectionException $e) {	// If class have no constructor
+			} catch (ReflectionException $e) { // If class have no constructor
 				$obj = $reflection->newInstanceArgs();
 			}
 		} else {

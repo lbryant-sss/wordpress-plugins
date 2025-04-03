@@ -539,14 +539,11 @@ class UtilsWpf {
 			'name'      => $bname,
 			'version'   => $version,
 			'platform'  => $platform,
-			'pattern'    => $pattern
+			'pattern'    => $pattern,
 		);
 	}
 	public static function getBrowsersList() {
-		return array(
-			'Unknown', 'Internet Explorer', 'Mozilla Firefox', 'Google Chrome', 'Apple Safari', 
-			'Opera', 'Netscape',
-		);
+		return array('Unknown', 'Internet Explorer', 'Mozilla Firefox', 'Google Chrome', 'Apple Safari', 'Opera', 'Netscape');
 	}
 	public static function getLangCode2Letter() {
 		$langCode = self::getLangCode();
@@ -656,7 +653,7 @@ class UtilsWpf {
 		return $rgb;
 	}
 	public static function hexToRgb( $hex ) {
-		if (strpos($hex, 'rgb') !== false) {	// Maybe it's already in rgb format - just return it as array
+		if (strpos($hex, 'rgb') !== false) { // Maybe it's already in rgb format - just return it as array
 			return self::rgbToArray($hex);
 		}
 		$hex = str_replace('#', '', $hex);

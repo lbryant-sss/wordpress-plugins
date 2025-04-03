@@ -4,6 +4,14 @@
  * Class WCML_Tab_Manager
  */
 class WCML_Tab_Manager implements \IWPML_Action {
+
+	const POST_TYPE    = 'wc_product_tab';
+	const ELEMENT_TYPE = 'post_wc_product_tab';
+
+	const TAB_FIELD_PREFIX           = 'product_tabs:';
+	const TAB_FIELD_CORE_INTERFIX    = 'core_tab_';
+	const TAB_FIELD_PRODUCT_INTERFIX = 'product_tab:';
+
 	/**
 	 * @var WPML_Element_Translation_Package
 	 */
@@ -56,7 +64,8 @@ class WCML_Tab_Manager implements \IWPML_Action {
 		add_filter( 'wc_tab_manager_tab_id', [ $this, 'wc_tab_manager_tab_id' ], 10, 1 );
 		add_filter( 'option_wpml_config_files_arr', [ $this, 'make__product_tabs_not_translatable_by_default' ], 0 );
 
-		add_action( 'wpml_translation_job_saved',   [ $this, 'save_custom_tabs_translation' ], 10, 3 );
+		add_action( 'wpml_translation_job_saved', [ $this, 'save_custom_tabs_translation' ], 10, 3 );
+		add_filter( 'wpml_tm_post_md5_content', [ $this, 'adjust_tab_manager_product_signature' ], 10, 2 );
 
 		if ( is_admin() ) {
 
@@ -64,17 +73,16 @@ class WCML_Tab_Manager implements \IWPML_Action {
 			add_action( 'save_post', [ $this, 'sync_product_tabs' ], 10, 2 );
 
 			add_filter( 'wpml_tm_translation_job_data', [ $this, 'append_custom_tabs_to_translation_package' ], 10, 2 );
-			add_action( 'woocommerce_product_data_panels', [ $this, 'show_pointer_info' ] );
 
 			add_filter( 'wcml_do_not_display_custom_fields_for_product', [ $this, 'replace_tm_editor_custom_fields_with_own_sections' ] );
 
 			add_filter( 'wpml_duplicate_custom_fields_exceptions', [ $this, 'duplicate_categories_exception' ] );
 			add_action( 'wpml_after_copy_custom_field', [ $this, 'translate_categories' ], 10, 3 );
 
+			add_action( 'woocommerce_product_data_panels', [ $this, 'show_pointer_info' ] );
 		} else {
 			add_filter( 'option_wc_tab_manager_default_layout', [ $this, 'filter_default_layout' ] );
 		}
-
 	}
 
 	/**
@@ -103,8 +111,9 @@ class WCML_Tab_Manager implements \IWPML_Action {
 	 * @param string $lang
 	 */
 	public function sync_tabs( $original_product_id, $trnsl_product_id, $data, $lang ) {
-		// check if "duplicate" product
-		if ( ( isset( $_POST['icl_ajx_action'] ) && ( 'make_duplicates' === $_POST['icl_ajx_action'] ) ) || ( get_post_meta( $trnsl_product_id, '_icl_lang_duplicate_of', true ) ) ) {
+		// Check if "duplicate" product.
+		// phpcs:disable WordPress.VIP.SuperGlobalInputUsage.AccessDetected
+		if ( ( isset( $_POST['icl_ajx_action'] ) && ( 'make_duplicates' === sanitize_text_field( $_POST['icl_ajx_action'] ) ) ) || ( get_post_meta( $trnsl_product_id, '_icl_lang_duplicate_of', true ) ) ) {
 			$this->duplicate_tabs( $original_product_id, $trnsl_product_id, $lang );
 		}
 
@@ -210,7 +219,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 	 * @return array
 	 */
 	public function set_global_tab( $orig_prod_tab, $trnsl_product_tabs, $lang ) {
-		$tr_tab_id = apply_filters( 'translate_object_id', $orig_prod_tab['id'], 'wc_product_tab', true, $lang );
+		$tr_tab_id = apply_filters( 'translate_object_id', $orig_prod_tab['id'], self::POST_TYPE, true, $lang );
 		$trnsl_product_tabs[ $orig_prod_tab['type'] . '_tab_' . $tr_tab_id ] = [
 			'position' => $orig_prod_tab['position'],
 			'type'     => $orig_prod_tab['type'],
@@ -233,7 +242,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 	 */
 	public function set_product_tab( $orig_prod_tab, $trnsl_product_tabs, $lang, $trnsl_product_id, $tab_id, $title, $content ) {
 		if ( ! $tab_id ) {
-			$tr_tab_id = apply_filters( 'translate_object_id', $orig_prod_tab['id'], 'wc_product_tab', false, $lang );
+			$tr_tab_id = apply_filters( 'translate_object_id', $orig_prod_tab['id'], self::POST_TYPE, false, $lang );
 
 			if ( ! is_null( $tr_tab_id ) ) {
 				$tab_id = $tr_tab_id;
@@ -253,18 +262,18 @@ class WCML_Tab_Manager implements \IWPML_Action {
 			$args['post_content'] = $content;
 			$args['post_author']  = get_current_user_id();
 			$args['post_name']    = sanitize_title( $title );
-			$args['post_type']    = 'wc_product_tab';
+			$args['post_type']    = self::POST_TYPE;
 			$args['post_parent']  = $trnsl_product_id;
 			$args['post_status']  = 'publish';
 			$this->wpdb->insert( $this->wpdb->posts, $args );
 
 			$tab_id   = $this->wpdb->insert_id;
-			$tab_trid = $this->sitepress->get_element_trid( $orig_prod_tab['id'], 'post_wc_product_tab' );
+			$tab_trid = $this->sitepress->get_element_trid( $orig_prod_tab['id'], self::ELEMENT_TYPE );
 			if ( ! $tab_trid ) {
-				$this->sitepress->set_element_language_details( $orig_prod_tab['id'], 'post_wc_product_tab', false, $this->sitepress->get_default_language() );
-				$tab_trid = $this->sitepress->get_element_trid( $orig_prod_tab['id'], 'post_wc_product_tab' );
+				$this->sitepress->set_element_language_details( $orig_prod_tab['id'], self::ELEMENT_TYPE, false, $this->sitepress->get_default_language() );
+				$tab_trid = $this->sitepress->get_element_trid( $orig_prod_tab['id'], self::ELEMENT_TYPE );
 			}
-			$this->sitepress->set_element_language_details( $tab_id, 'post_wc_product_tab', $tab_trid, $lang );
+			$this->sitepress->set_element_language_details( $tab_id, self::ELEMENT_TYPE, $tab_trid, $lang );
 		}
 
 		if ( empty( $title ) || strlen( $title ) != strlen( utf8_encode( $title ) ) ) {
@@ -412,7 +421,6 @@ class WCML_Tab_Manager implements \IWPML_Action {
 		}
 
 		return $data;
-
 	}
 
 	/**
@@ -430,17 +438,16 @@ class WCML_Tab_Manager implements \IWPML_Action {
 	 * @param WP_Post $post
 	 */
 	public function force_set_language_information_on_product_tabs( $post_id, $post ) {
-		if ( 'wc_product_tab' === $post->post_type ) {
+		if ( self::POST_TYPE === $post->post_type ) {
 
-			$language = $this->sitepress->get_language_for_element( $post_id, 'post_wc_product_tab' );
+			$language = $this->sitepress->get_language_for_element( $post_id, self::ELEMENT_TYPE );
 			if ( empty( $language ) && $post->post_parent ) {
 				$parent_language = $this->sitepress->get_language_for_element( $post->post_parent, 'post_product' );
 				if ( $parent_language ) {
-					$this->sitepress->set_element_language_details( $post_id, 'post_wc_product_tab', null, $parent_language );
+					$this->sitepress->set_element_language_details( $post_id, self::ELEMENT_TYPE, null, $parent_language );
 				}
 			}
 		}
-
 	}
 
 	/**
@@ -466,28 +473,28 @@ class WCML_Tab_Manager implements \IWPML_Action {
 						$wc_product_tab_id = $matches[1];
 						$wc_product_tab    = get_post( $wc_product_tab_id );
 
-						$package['contents'][ 'product_tabs:product_tab:' . $wc_product_tab_id . ':title' ] = [
+						$package['contents'][ self::TAB_FIELD_PREFIX . self::TAB_FIELD_PRODUCT_INTERFIX . $wc_product_tab_id . ':title' ] = [
 							'translate' => 1,
 							'data'      => $this->tp->encode_field_data( $wc_product_tab->post_title ),
 							'format'    => 'base64',
 						];
 
-						$package['contents'][ 'product_tabs:product_tab:' . $wc_product_tab_id . ':description' ] = [
+						$package['contents'][ self::TAB_FIELD_PREFIX . self::TAB_FIELD_PRODUCT_INTERFIX . $wc_product_tab_id . ':description' ] = [
 							'translate' => 1,
 							'data'      => $this->tp->encode_field_data( $wc_product_tab->post_content ),
 							'format'    => 'base64',
 						];
 
-					} elseif ( preg_match( '/^core_tab_(.+)$/', $key, $matches ) ) {
+					} elseif ( preg_match( '/^' . self::TAB_FIELD_CORE_INTERFIX . '(.+)$/', $key, $matches ) ) {
 
-						$package['contents'][ 'product_tabs:core_tab_title:' . $matches[1] ] = [
+						$package['contents'][ self::TAB_FIELD_PREFIX . self::TAB_FIELD_CORE_INTERFIX . 'title:' . $matches[1] ] = [
 							'translate' => 1,
 							'data'      => $this->tp->encode_field_data( $value['title'] ),
 							'format'    => 'base64',
 						];
 
 						if ( isset( $value['heading'] ) ) {
-							$package['contents'][ 'product_tabs:core_tab_heading:' . $matches[1] ] = [
+							$package['contents'][ self::TAB_FIELD_PREFIX . self::TAB_FIELD_CORE_INTERFIX . 'heading:' . $matches[1] ] = [
 								'translate' => 1,
 								'data'      => $this->tp->encode_field_data( $value['heading'] ),
 								'format'    => 'base64',
@@ -518,7 +525,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 
 			foreach ( $data as $value ) {
 
-				if ( preg_match( '/product_tabs:product_tab:([0-9]+):(.+)/', $value['field_type'], $matches ) ) {
+				if ( preg_match( '/' . self::TAB_FIELD_PREFIX . self::TAB_FIELD_PRODUCT_INTERFIX . '([0-9]+):(.+)/', $value['field_type'], $matches ) ) {
 
 					$wc_product_tab_id = $matches[1];
 					$field             = $matches[2];
@@ -534,19 +541,21 @@ class WCML_Tab_Manager implements \IWPML_Action {
 
 				foreach ( $product_tab_translations as $wc_product_tab_id => $value ) {
 
-					$new_wc_product_tab = [
-						'post_type'    => 'wp_product_tab',
+					$translated_wc_product_tab = [
+						'ID'           => apply_filters( 'wpml_object_id', $wc_product_tab_id, self::POST_TYPE, false, $job->language_code ),
+						'post_type'    => self::POST_TYPE,
 						'post_title'   => $value['title'],
 						'post_content' => isset( $value['description'] ) ? $value['description'] : '',
 						'post_status'  => 'publish',
+						'post_parent'  => $post_id,
 					];
 
-					$wc_product_tab_id_translated = wp_insert_post( $new_wc_product_tab );
+					$wc_product_tab_id_translated = wp_insert_post( $translated_wc_product_tab );
 
 					if ( $wc_product_tab_id_translated ) {
 
-						$wc_product_tab_trid = $this->sitepress->get_element_trid( $wc_product_tab_id, 'post_wc_product_tab' );
-						$this->sitepress->set_element_language_details( $wc_product_tab_id_translated, 'post_wc_product_tab', $wc_product_tab_trid, $job->language_code );
+						$wc_product_tab_trid = $this->sitepress->get_element_trid( $wc_product_tab_id, self::ELEMENT_TYPE );
+						$this->sitepress->set_element_language_details( $wc_product_tab_id_translated, self::ELEMENT_TYPE, $wc_product_tab_trid, $job->language_code );
 
 						$wc_product_tab_translated = get_post( $wc_product_tab_id_translated );
 
@@ -568,7 +577,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 
 			foreach ( $data as $value ) {
 
-				if ( preg_match( '/product_tabs:core_tab_(.+):(.+)/', $value['field_type'], $matches ) ) {
+				if ( preg_match( '/' . self::TAB_FIELD_PREFIX . self::TAB_FIELD_CORE_INTERFIX . '(.+):(.+)/', $value['field_type'], $matches ) ) {
 
 					$tab_field = $matches[1];
 					$tab_id    = $matches[2];
@@ -580,14 +589,14 @@ class WCML_Tab_Manager implements \IWPML_Action {
 			if ( $product_tab_translations ) {
 				foreach ( $product_tab_translations as $id => $tab ) {
 
-					$translated_product_tabs[ 'core_tab_' . $id ] = [
+					$translated_product_tabs[ self::TAB_FIELD_CORE_INTERFIX . $id ] = [
 						'type'     => 'core',
-						'position' => $original_product_tabs[ 'core_tab_' . $id ]['position'],
+						'position' => $original_product_tabs[ self::TAB_FIELD_CORE_INTERFIX . $id ]['position'],
 						'id'       => $id,
 						'title'    => $tab['title'],
 					];
 
-					$translated_product_tabs[ 'core_tab_' . $id ]['heading'] = isset( $tab['heading'] ) ? $tab['heading'] : '';
+					$translated_product_tabs[ self::TAB_FIELD_CORE_INTERFIX . $id ]['heading'] = isset( $tab['heading'] ) ? $tab['heading'] : '';
 				}
 
 				$translated_product_tabs_updated = true;
@@ -617,13 +626,13 @@ class WCML_Tab_Manager implements \IWPML_Action {
 
 		if ( 'yes' == $override_tab_layout ) {
 			// product defines its own tab layout?
-			$product_tabs = (array) get_post_meta( $product_id, '_product_tabs', true );
+			$product_tabs = get_post_meta( $product_id, '_product_tabs', true );
 		} else {
 			// otherwise, get the default layout if any
-			$product_tabs = (array) get_option( 'wc_tab_manager_default_layout', false );
+			$product_tabs = get_option( 'wc_tab_manager_default_layout', false );
 		}
 
-		return $product_tabs;
+		return is_array( $product_tabs ) ? $product_tabs : [];
 	}
 
 	public function sync_product_tabs( $post_id, $post ) {
@@ -646,7 +655,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 					// sync tab positions for product tabs
 					foreach ( $original_product_tabs as $tab ) {
 						if ( $tab['type'] == 'product' ) {
-							$translated_tab_product_id = apply_filters( 'translate_object_id', $tab['id'], 'wc_product_tab', false, $language );
+							$translated_tab_product_id = apply_filters( 'translate_object_id', $tab['id'], self::POST_TYPE, false, $language );
 							if ( $translated_tab_product_id && is_array( $translated_product_tabs[ 'product_tab_' . $translated_tab_product_id ] ) ) {
 								$translated_product_tabs[ 'product_tab_' . $translated_tab_product_id ]['position'] = $tab['position'];
 							}
@@ -665,7 +674,6 @@ class WCML_Tab_Manager implements \IWPML_Action {
 				}
 			}
 		}
-
 	}
 
 	/**
@@ -675,7 +683,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 	 */
 	public function wc_tab_manager_tab_id( $tab_id ) {
 		if ( is_int( $tab_id ) ) {
-			return apply_filters( 'wpml_object_id', $tab_id, 'wc_product_tab', true );
+			return apply_filters( 'wpml_object_id', $tab_id, self::POST_TYPE, true );
 		} else {
 			return $tab_id;
 		}
@@ -686,7 +694,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 		if ( is_array( $default_tabs ) ) {
 			foreach ( $default_tabs as $tab_key => $default_tab ) {
 				if ( substr( $tab_key, 0, 10 ) == 'global_tab' ) {
-					$trnsl_tab_id = apply_filters( 'translate_object_id', $default_tab['id'], 'wc_product_tab', true, $this->sitepress->get_current_language() );
+					$trnsl_tab_id = apply_filters( 'translate_object_id', $default_tab['id'], self::POST_TYPE, true, $this->sitepress->get_current_language() );
 
 					if ( $trnsl_tab_id != $default_tab['id'] ) {
 						$default_tabs[ 'global_tab_' . $trnsl_tab_id ]         = $default_tab;
@@ -702,16 +710,19 @@ class WCML_Tab_Manager implements \IWPML_Action {
 	}
 
 	public function show_pointer_info() {
-
-		$pointer_ui = new WCML_Pointer_UI(
-			/* translators: %1$s and %2$s are opening and closing HTML link tags */
-			sprintf( __( 'You can translate your custom product tabs on the %1$sWooCommerce product translation page%2$s', 'woocommerce-multilingual' ), '<a href="' . admin_url( 'admin.php?page=wpml-wcml' ) . '">', '</a>' ),
-			WCML_Tracking_Link::getWcmlTabManagerDoc(),
-			'woocommerce_product_tabs>p'
-		);
-
-		$pointer_ui->show();
-
+		$pointerFactory = new WCML\PointerUi\Factory();
+		$pointerFactory
+			->create( [
+				'content'    => sprintf(
+					/* translators: %1$s and %2$s are opening and closing HTML link tags */
+					esc_html__( 'To translate custom per-product tabs, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation.', 'woocommerce-multilingual' ),
+					'<a href="' . esc_url( \WCML\Utilities\AdminUrl::getWPMLTMDashboardProducts() ) . '">',
+					'</a>'
+				),
+				'selectorId' => 'woocommerce_product_tabs>p',
+				'docLink'    => WCML_Tracking_Link::getWcmlTabManagerDoc(),
+			] )
+			->show();
 	}
 
 	public function replace_tm_editor_custom_fields_with_own_sections( $fields ) {
@@ -734,7 +745,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 
 			$args     = [
 				'element_id'   => $post_id_to,
-				'element_type' => 'wc_product_tab',
+				'element_type' => self::POST_TYPE,
 			];
 			$language = apply_filters( 'wpml_element_language_code', false, $args );
 
@@ -748,4 +759,27 @@ class WCML_Tab_Manager implements \IWPML_Action {
 		}
 	}
 
+	/**
+	 * @param string        $content
+	 * @param \WP_Post|null $post
+	 *
+	 * @return string
+	 */
+	public function adjust_tab_manager_product_signature( $content, $post = null ) {
+		if ( ! is_a( $post, 'WP_Post') ) {
+			return $content;
+		}
+		$tabs = get_posts( [
+			'post_parent' => $post->ID,
+			'post_type'   => self::POST_TYPE,
+			'post_status' => 'publish',
+			'numberposts' => -1,
+		] );
+
+		foreach ( $tabs as $tab ) {
+			$content .= $tab->post_title . ';' . $tab->post_content . ';';
+		}
+
+		return $content;
+	}
 }

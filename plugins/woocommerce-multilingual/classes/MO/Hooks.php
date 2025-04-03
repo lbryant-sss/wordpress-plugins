@@ -37,7 +37,6 @@ class Hooks implements \IWPML_Backend_Action, \IWPML_Frontend_Action {
 	public function forceUnloadWCTextdomainWithReloadableArg( $override, $domain, $reloadable ) {
 		if ( self::WC_DOMAIN === $domain && ! $reloadable ) {
 			unload_textdomain( self::WC_DOMAIN, true );
-			// @phpstan-ignore-next-line
 			\WP_Translation_Controller::get_instance()->unload_textdomain( self::WC_DOMAIN );
 			return true;
 		}
@@ -83,7 +82,6 @@ class Hooks implements \IWPML_Backend_Action, \IWPML_Frontend_Action {
 		$fileLocale     = make( \WPML_ST_Translations_File_Locale::class );
 		$localeFromFile = $fileLocale ? $fileLocale->get( $mofile, $domain ) : null;
 
-		// @phpstan-ignore-next-line
 		if ( $localeFromFile && $localeFromFile !== \WP_Translation_Controller::get_instance()->get_locale() ) {
 			$this->isLoading = true;
 			$loaded = load_textdomain( $domain, $mofile, $localeFromFile );

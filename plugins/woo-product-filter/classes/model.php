@@ -180,7 +180,7 @@ abstract class ModelWpf extends BaseObjectWpf {
 		return false;
 	}
 	public function clear() {
-		return $this->delete();	// Just delete all
+		return $this->delete(); // Just delete all
 	}
 	public function delete( $params = array() ) {
 		if (FrameWpf::_()->getTable( $this->_tbl )->delete( $params )) {

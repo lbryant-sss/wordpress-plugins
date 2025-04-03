@@ -48,7 +48,7 @@ class WCML_Currency_Switcher_Widget extends WP_Widget {
 			$instance['id'] = '';
 		}
 
-		$url_to_currency_switcher = esc_url( admin_url( 'admin.php?page=wpml-wcml&tab=multi-currency#currency-switcher/' . (int) $instance['id'] ) );
+		$url_to_currency_switcher = esc_url( \WCML\Utilities\AdminUrl::getMultiCurrencyTab( 'currency-switcher/' . (int) $instance['id'] ) );
 		$button_text              = esc_html__( 'Customize the currency switcher', 'woocommerce-multilingual' );
 		printf( '<p><a class="button button-secondary wcml-cs-widgets-edit-link" href="%s"><span class="otgs-ico-edit"></span> %s</a></p>', $url_to_currency_switcher, $button_text );
 	}

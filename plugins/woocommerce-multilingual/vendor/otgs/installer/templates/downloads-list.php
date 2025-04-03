@@ -40,16 +40,11 @@
                 <table class="widefat installer-plugins">
                     <thead>
                     <tr>
-                        <th colspan="9"><strong><?php echo $section['name'] ?></strong></th>
-                    </tr>
-                    <tr>
                         <th>&nbsp;</th>
                         <th><?php _e( 'Plugin', 'installer' ) ?></th>
                         <th><?php _e( 'Installed', 'installer' ) ?></th>
                         <th><?php _e( 'Current', 'installer' ) ?></th>
                         <th><?php _e( 'Released', 'installer' ) ?></th>
-                        <th>&nbsp;</th>
-                        <th>&nbsp;</th>
                         <th>&nbsp;</th>
                         <th>&nbsp;</th>
                     </tr>
@@ -83,7 +78,7 @@
     <input type="submit" class="button-secondary" value="<?php esc_attr_e( 'Download', 'installer' ) ?>"
            disabled="disabled"/>
     &nbsp;
-    <label><input name="activate" type="checkbox" value="1"
+    <label class="activate-label"><input name="activate" type="checkbox" value="1"
                   disabled="disabled"/>&nbsp;<?php _e( 'Activate after download', 'installer' ) ?></label>
 
     <div class="installer-download-progress-status"></div>

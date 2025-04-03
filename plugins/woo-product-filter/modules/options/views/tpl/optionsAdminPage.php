@@ -77,7 +77,7 @@
 				</div>
 			</div>
 		</div>
-        <div id="wpfwpfDuplicateDialog" class="woobewoo-plugin woobewoo-hidden" title="<?php echo esc_attr__('Duplicate product filter', 'woo-product-filter'); ?>" data-button="<?php echo esc_attr__('Duplicate', 'woo-product-filter'); ?>">
+        <div id="wpfDuplicateDialog" class="woobewoo-plugin woobewoo-hidden" title="<?php echo esc_attr__('Duplicate product filter', 'woo-product-filter'); ?>" data-button="<?php echo esc_attr__('Duplicate', 'woo-product-filter'); ?>">
 			<div>
 				<form id="tableForm">
 					<div class="wpfPopupBlock">

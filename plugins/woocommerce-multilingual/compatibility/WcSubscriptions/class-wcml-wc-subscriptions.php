@@ -2,6 +2,8 @@
 
 class WCML_WC_Subscriptions implements \IWPML_Action {
 
+	const TRANSLATION_DOMAIN = 'woocommerce_subscriptions';
+
 	/** @var woocommerce_wpml */
 	private $woocommerce_wpml;
 
@@ -26,23 +28,24 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 
 		add_filter( 'wcml_xliff_allowed_variations_types', [ $this, 'set_allowed_variations_types_in_xliff' ] );
 
-		// Add language links to email settings
+		// Add language links to email settings.
 		add_filter( 'wcml_emails_options_to_translate', [ $this, 'translate_email_options' ] );
 		add_filter( 'wcml_emails_section_name_prefix', [ $this, 'email_option_section_prefix' ], 10, 2 );
 	}
 
 	public function init() {
 		if ( ! is_admin() ) {
-			add_filter( 'wcs_get_subscription', [ $this, 'filter_subscription_items' ] );
+			add_filter( 'wcml_should_translate_order_items', [ $this, 'translateSubscriptionProductItems' ], 10, 3 );
 		}
 
-		// Translate emails
+		// Translate emails.
 		add_filter( 'woocommerce_generated_manual_renewal_order_renewal_notification', [ $this, 'translate_renewal_notification' ], 9 );
 		add_filter( 'woocommerce_order_status_failed_renewal_notification', [ $this, 'translate_renewal_notification' ], 9 );
 	}
 
 	public function wcml_variation_term_taxonomy_ids( $get_variation_term_taxonomy_ids ) {
 
+		// phpcs:ignore WordPress.WP.PreparedSQL.NotPrepared
 		$get_variation_term_taxonomy_id = $this->wpdb->get_var( "SELECT tt.term_taxonomy_id FROM {$this->wpdb->terms} AS t LEFT JOIN {$this->wpdb->term_taxonomy} AS tt ON t.term_id = tt.term_id WHERE t.slug = 'variable-subscription'" );
 
 		if ( ! empty( $get_variation_term_taxonomy_id ) ) {
@@ -58,7 +61,7 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 			foreach ( $subscription_ranges as $period => $ranges ) {
 				if ( is_array( $ranges ) ) {
 					foreach ( $ranges as $range ) {
-						if ( $range == '9 months' ) {
+						if ( '9 months' === $range ) {
 							$breakpoint = true;
 						}
 						$new_subscription_ranges[ $period ][] = apply_filters( 'wpml_translate_single_string', $range, 'wc_subscription_ranges', $range );
@@ -86,7 +89,7 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 
 	public function endpoint_permalink_filter( $endpoint, $key ) {
 
-		if ( $key == 'view-subscription' ) {
+		if ( 'view-subscription' === $key ) {
 			return 'view-subscription';
 		}
 
@@ -94,16 +97,20 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 	}
 
 	public function show_pointer_info() {
-
-		$pointer_ui = new WCML_Pointer_UI(
-		    /* translators: %1$s and %2$s are opening and closing HTML link tags */
-			sprintf( __( 'You can translate strings related to subscription products on the %1$sWPML String Translation page%2$s. Use the search on the top of that page to find the strings.', 'woocommerce-multilingual' ), '<a href="' . admin_url( 'admin.php?page=' . WPML_ST_FOLDER . '/menu/string-translation.php&context=woocommerce_subscriptions' ) . '">', '</a>' ),
-			WCML_Tracking_Link::getWcmlSubscriptionsDoc(),
-			'general_product_data .subscription_pricing',
-			'prepend'
-		);
-
-		$pointer_ui->show();
+		$pointerFactory = new WCML\PointerUi\Factory();
+		$pointerFactory
+			->create( [
+				'content'    => sprintf(
+					/* translators: %1$s and %2$s are opening and closing HTML link tags */
+					esc_html__( 'You can translate text for subscription products from the %1$sTranslation Dashboard%2$s.', 'woocommerce-multilingual' ),
+					'<a href="' . esc_url( \WCML\Utilities\AdminUrl::getWPMLTMDashboardProducts() ) . '">',
+					'</a>'
+				),
+				'selectorId' => 'general_product_data .subscription_pricing',
+				'method'     => 'prepend',
+				'docLink'    => WCML_Tracking_Link::getWcmlSubscriptionsDoc(),
+			] )
+			->show();
 	}
 
 	/**
@@ -122,16 +129,18 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 	/**
 	 * Translate strings of renewal notifications
 	 *
-	 * @param integer $order_id Order ID
+	 * @param integer $order_id Order ID.
 	 */
 	public function translate_renewal_notification( $order_id ) {
 
-	    if ( isset( WC()->mailer()->emails['WCS_Email_Customer_Renewal_Invoice'] ) ) {
-		$this->woocommerce_wpml->emails->refresh_email_lang( $order_id );
+		if ( isset( WC()->mailer()->emails['WCS_Email_Customer_Renewal_Invoice'] ) ) {
+			$this->woocommerce_wpml->emails->refresh_email_lang( $order_id );
 
-		$WCS_Email_Customer_Renewal_Invoice = WC()->mailer()->emails['WCS_Email_Customer_Renewal_Invoice'];
-		$WCS_Email_Customer_Renewal_Invoice->heading = __( $WCS_Email_Customer_Renewal_Invoice->heading, 'woocommerce-subscriptions' );
-		$WCS_Email_Customer_Renewal_Invoice->subject = __( $WCS_Email_Customer_Renewal_Invoice->subject, 'woocommerce-subscriptions' );
+			$WCS_Email_Customer_Renewal_Invoice = WC()->mailer()->emails['WCS_Email_Customer_Renewal_Invoice'];
+			// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
+			$WCS_Email_Customer_Renewal_Invoice->heading = __( $WCS_Email_Customer_Renewal_Invoice->heading, 'woocommerce-subscriptions' );
+			// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
+			$WCS_Email_Customer_Renewal_Invoice->subject = __( $WCS_Email_Customer_Renewal_Invoice->subject, 'woocommerce-subscriptions' );
 
 			add_filter( 'woocommerce_email_get_option', [ $this, 'translate_heading_subject' ], 10, 4 );
 		}
@@ -140,16 +149,16 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 	/**
 	 * Translate custom heading and subject for renewal notification
 	 *
-	 * @param string                             $return_value original string
-	 * @param WCS_Email_Customer_Renewal_Invoice $obj Object of email class
-	 * @param string                             $value Original value from setting
-	 * @param string                             $key Name of the key
+	 * @param string                             $return_value original string.
+	 * @param WCS_Email_Customer_Renewal_Invoice $obj Object of email class.
+	 * @param string                             $value Original value from setting.
+	 * @param string                             $key Name of the key.
 	 * @return string Translated value or original value incase of not translated
 	 */
 	public function translate_heading_subject( $return_value, $obj, $value, $key ) {
 
 		if ( $obj instanceof WCS_Email_Customer_Renewal_Invoice ) {
-			if ( $key == 'subject' || $key == 'heading' ) {
+			if ( 'subject' === $key || 'heading' === $key ) {
 				$translated_admin_string = $this->woocommerce_wpml->emails->getStringTranslation( 'admin_texts_woocommerce_customer_renewal_invoice_settings', '[woocommerce_customer_renewal_invoice_settings]' . $key );
 				return empty( $translated_admin_string ) ? $return_value : $translated_admin_string;
 			}
@@ -161,7 +170,7 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 	/**
 	 * Add customer renewal invoice option to translate
 	 *
-	 * @param array $emails_options list of option to translate
+	 * @param array $emails_options list of option to translate.
 	 * @return array $emails_options
 	 */
 	public function translate_email_options( $emails_options ) {
@@ -176,13 +185,13 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 	/**
 	 * Change section name prefix to add language links
 	 *
-	 * @param string $section_prefix section prefix
-	 * @param string $emails_option current option name
+	 * @param string $section_prefix section prefix.
+	 * @param string $emails_option current option name.
 	 * @return string $section_prefix
 	 */
 	public function email_option_section_prefix( $section_prefix, $emails_option ) {
 
-		if ( $emails_option === 'woocommerce_customer_renewal_invoice_settings' ) {
+		if ( 'woocommerce_customer_renewal_invoice_settings' === $emails_option ) {
 			return 'wcs_email_';
 		}
 
@@ -190,16 +199,21 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 	}
 
 	/**
-	 * @param mixed $subscription
+	 * We should translate all frontend subscription order items,
+	 * so we compare the current subscription product to the purchased one,
+	 * so we can decide whether a subscription was already purchased.
 	 *
-	 * @return mixed
+	 * @param bool             $translateOrderItems True if we should to translate order items.
+	 * @param \WC_Order_Item[] $items               Order items.
+	 * @param \WC_Order        $order               WC Order.
+	 *
+	 * @return bool
 	 */
-	public function filter_subscription_items( $subscription ) {
-
-		if ( $subscription instanceof WC_Subscription ) {
-			$this->woocommerce_wpml->orders->adjust_order_item_in_language( $subscription->get_items() );
+	public function translateSubscriptionProductItems( $translateOrderItems, $items, $order ) {
+		if ( $order instanceof WC_Subscription ) {
+			return true;
 		}
-
-		return $subscription;
+		return $translateOrderItems;
 	}
+
 }

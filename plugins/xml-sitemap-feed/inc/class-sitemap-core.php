@@ -175,9 +175,9 @@ class Sitemap_Core extends Sitemap {
 					// Prepare dynamic priority calculation.
 					if ( $subtype && ! empty( $this->post_type_settings[ $subtype ]['priority'] ) && ! empty( $this->post_type_settings[ $subtype ]['dynamic_priority'] ) ) {
 						// Last of this post type modified date in Unix seconds.
-						\xmlsf()->lastmodified = \get_date_from_gmt( \get_lastpostmodified( 'GMT', $subtype ), DATE_W3C );
+						\xmlsf()->lastmodified = \get_date_from_gmt( \get_lastpostmodified( 'GMT', $subtype ), 'U' );
 						// Calculate time span, uses get_firstpostdate() function defined in xml-sitemap/inc/functions.php!
-						\xmlsf()->timespan = \xmlsf()->lastmodified - \get_date_from_gmt( \get_firstpostdate( 'GMT', $subtype ), DATE_W3C );
+						\xmlsf()->timespan = \xmlsf()->lastmodified - \get_date_from_gmt( \get_firstpostdate( 'GMT', $subtype ), 'U' );
 						// Total post type comment count.
 						\xmlsf()->comment_count = \wp_count_comments()->approved;
 						// TODO count comments per post type https://wordpress.stackexchange.com/questions/134338/count-all-comments-of-a-custom-post-type
@@ -455,24 +455,23 @@ class Sitemap_Core extends Sitemap {
 	 * @return int
 	 */
 	public function max_urls( $max_urls, $object_type ) {
+		$defaults = get_default_settings();
+
 		switch ( $object_type ) {
 			case 'user':
 				$settings = (array) \get_option( 'xmlsf_author_settings' );
-				$defaults = get_default_settings( 'author_settings' );
-				$limit    = ! empty( $settings['limit'] ) ? $settings['limit'] : $defaults['limit'];
+				$limit    = ! empty( $settings['limit'] ) ? $settings['limit'] : $defaults['author_settings']['limit'];
 				break;
 
 			case 'term':
 				$settings = (array) \get_option( 'xmlsf_taxonomy_settings' );
-				$defaults = get_default_settings( 'taxonomy_settings' );
-				$limit    = ! empty( $settings['limit'] ) ? $settings['limit'] : $defaults['limit'];
+				$limit    = ! empty( $settings['limit'] ) ? $settings['limit'] : $defaults['taxonomy_settings']['limit'];
 				break;
 
 			case 'post':
 			default:
 				$settings = (array) \get_option( 'xmlsf_post_type_settings' );
-				$defaults = get_default_settings( 'post_types' );
-				$limit    = ! empty( $settings['limit'] ) ? $settings['limit'] : $defaults['limit'];
+				$limit    = ! empty( $settings['limit'] ) ? $settings['limit'] : $defaults['post_type_settings']['limit'];
 		}
 
 		$max_urls = \is_numeric( $limit ) ? \absint( $limit ) : $max_urls;

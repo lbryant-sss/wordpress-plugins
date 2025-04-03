@@ -32,7 +32,7 @@ Use Folders plugin to organize your WordPress content:
 
 <strong>Note:</strong> adding a page/post/image into a folder will not change its URL. The folders plugin creates virtual folders, it doesn't create actual folders in your server or WordPress installation.
 
-= ▶️ Live Demo =
+= ▶️ Folders Plugin Live Demo =
 A live demo for the Folders plugin is available at <a href="https://folders-demo.premio.io/wp-admin/" target="_blank" title="Premio.io demo site">Premio's demo site</a>.
 
 = 🛠️ So How Does the Folders plugin Work? =

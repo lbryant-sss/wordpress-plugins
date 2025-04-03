@@ -130,33 +130,34 @@ class Mobile_Detect {
 	 * @var array
 	 */
 	protected static $mobileHeaders = array(
-
-			'HTTP_ACCEPT'                  => array('matches' => array(
-																		// Opera Mini; @reference: http://dev.opera.com/articles/view/opera-binary-markup-language/
-																		'application/x-obml2d',
-																		// BlackBerry devices.
-																		'application/vnd.rim.html',
-																		'text/vnd.wap.wml',
-																		'application/vnd.wap.xhtml+xml'
-											)),
-			'HTTP_X_WAP_PROFILE'           => null,
-			'HTTP_X_WAP_CLIENTID'          => null,
-			'HTTP_WAP_CONNECTION'          => null,
-			'HTTP_PROFILE'                 => null,
-			// Reported by Opera on Nokia devices (eg. C3).
-			'HTTP_X_OPERAMINI_PHONE_UA'    => null,
-			'HTTP_X_NOKIA_GATEWAY_ID'      => null,
-			'HTTP_X_ORANGE_ID'             => null,
-			'HTTP_X_VODAFONE_3GPDPCONTEXT' => null,
-			'HTTP_X_HUAWEI_USERID'         => null,
-			// Reported by Windows Smartphones.
-			'HTTP_UA_OS'                   => null,
-			// Reported by Verizon, Vodafone proxy system.
-			'HTTP_X_MOBILE_GATEWAY'        => null,
-			// Seen this on HTC Sensation. SensationXE_Beats_Z715e.
-			'HTTP_X_ATT_DEVICEID'          => null,
-			// Seen this on a HTC.
-			'HTTP_UA_CPU'                  => array('matches' => array('ARM')),
+		'HTTP_ACCEPT' => array(
+			'matches' => array(
+				// Opera Mini; @reference: http://dev.opera.com/articles/view/opera-binary-markup-language/
+				'application/x-obml2d',
+				// BlackBerry devices.
+				'application/vnd.rim.html',
+				'text/vnd.wap.wml',
+				'application/vnd.wap.xhtml+xml',
+			),
+		),
+		'HTTP_X_WAP_PROFILE'           => null,
+		'HTTP_X_WAP_CLIENTID'          => null,
+		'HTTP_WAP_CONNECTION'          => null,
+		'HTTP_PROFILE'                 => null,
+		// Reported by Opera on Nokia devices (eg. C3).
+		'HTTP_X_OPERAMINI_PHONE_UA'    => null,
+		'HTTP_X_NOKIA_GATEWAY_ID'      => null,
+		'HTTP_X_ORANGE_ID'             => null,
+		'HTTP_X_VODAFONE_3GPDPCONTEXT' => null,
+		'HTTP_X_HUAWEI_USERID'         => null,
+		// Reported by Windows Smartphones.
+		'HTTP_UA_OS'                   => null,
+		// Reported by Verizon, Vodafone proxy system.
+		'HTTP_X_MOBILE_GATEWAY'        => null,
+		// Seen this on HTC Sensation. SensationXE_Beats_Z715e.
+		'HTTP_X_ATT_DEVICEID'          => null,
+		// Seen this on a HTC.
+		'HTTP_UA_CPU'                  => array('matches' => array('ARM')),
 	);
 
 	/**
@@ -194,8 +195,8 @@ class Mobile_Detect {
 		// Added simvalley mobile just for fun. They have some interesting devices.
 		// http://www.simvalley.fr/telephonie---gps-_22_telephonie-mobile_telephones_.html
 		'SimValley'     => '\b(SP-80|XT-930|SX-340|XT-930|SX-310|SP-360|SP60|SPT-800|SP-120|SPT-800|SP-140|SPX-5|SPX-8|SP-100|SPX-8|SPX-12)\b',
-		 // Wolfgang - a brand that is sold by Aldi supermarkets.
-		 // http://www.wolfgangmobile.com/
+		// Wolfgang - a brand that is sold by Aldi supermarkets.
+		// http://www.wolfgangmobile.com/
 		'Wolfgang'      => 'AT-B24D|AT-AS50HD|AT-AS40W|AT-AS55HD|AT-AS45q2|AT-B26D|AT-AS50Q',
 		'Alcatel'       => 'Alcatel',
 		'Nintendo' => 'Nintendo 3DS',
@@ -288,9 +289,9 @@ class Mobile_Detect {
 		// @todo Research the Windows Tablets.
 		'MSITablet' => 'MSI \b(Primo 73K|Primo 73L|Primo 81L|Primo 77|Primo 93|Primo 75|Primo 76|Primo 73|Primo 81|Primo 91|Primo 90|Enjoy 71|Enjoy 7|Enjoy 10)\b',
 		// @todo http://www.kyoceramobile.com/support/drivers/
-	//    'KyoceraTablet' => null,
+		// 'KyoceraTablet' => null,
 		// @todo http://intexuae.com/index.php/category/mobile-devices/tablets-products/
-	//    'IntextTablet' => null,
+		// 'IntextTablet' => null,
 		// http://pdadb.net/index.php?m=pdalist&list=SMiT (NoName Chinese Tablets)
 		// http://www.imp3.net/14/show.php?itemid=20454
 		'SMiTTablet'        => 'Android.*(\bMID\b|MID-560|MTV-T1200|MTV-PND531|MTV-P1101|MTV-PND530)',
@@ -464,7 +465,7 @@ class Mobile_Detect {
 		'Hudl'              => 'Hudl HT7S3|Hudl 2',
 		// http://www.telstra.com.au/home-phone/thub-2/
 		'TelstraTablet'     => 'T-Hub2',
-		'GenericTablet'     => 'Android.*\b97D\b|Tablet(?!.*PC)|BNTV250A|MID-WCDMA|LogicPD Zoom2|\bA7EB\b|CatNova8|A1_07|CT704|CT1002|\bM721\b|rk30sdk|\bEVOTAB\b|M758A|ET904|ALUMIUM10|Smartfren Tab|Endeavour 1010|Tablet-PC-4|Tagi Tab|\bM6pro\b|CT1020W|arc 10HD|\bTP750\b'
+		'GenericTablet'     => 'Android.*\b97D\b|Tablet(?!.*PC)|BNTV250A|MID-WCDMA|LogicPD Zoom2|\bA7EB\b|CatNova8|A1_07|CT704|CT1002|\bM721\b|rk30sdk|\bEVOTAB\b|M758A|ET904|ALUMIUM10|Smartfren Tab|Endeavour 1010|Tablet-PC-4|Tagi Tab|\bM6pro\b|CT1020W|arc 10HD|\bTP750\b',
 	);
 
 	/**
@@ -583,7 +584,7 @@ class Mobile_Detect {
 		'HTTP_X_SKYFIRE_PHONE',
 		'HTTP_X_BOLT_PHONE_UA',
 		'HTTP_DEVICE_STOCK_UA',
-		'HTTP_X_UCBROWSER_DEVICE_UA'
+		'HTTP_X_UCBROWSER_DEVICE_UA',
 	);
 
 	/**
@@ -945,7 +946,6 @@ class Mobile_Detect {
 		}
 
 		return $rules;
-
 	}
 
 	/**
@@ -1023,7 +1023,6 @@ class Mobile_Detect {
 		}
 
 		return false;
-
 	}
 
 	/**
@@ -1038,7 +1037,7 @@ class Mobile_Detect {
 	public function __call( $name, $arguments ) {
 		// make sure the name starts with 'is', otherwise
 		if (substr($name, 0, 2) !== 'is') {
-			throw new BadMethodCallException("No such method exists: $name");
+			throw new BadMethodCallException('No such method exists: ' . esc_html($name));
 		}
 
 		$this->setDetectionType(self::DETECTION_TYPE_MOBILE);
@@ -1130,7 +1129,6 @@ class Mobile_Detect {
 		} else {
 			return $this->matchDetectionRulesAgainstUA();
 		}
-
 	}
 
 	/**

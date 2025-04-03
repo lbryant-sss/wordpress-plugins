@@ -29,10 +29,10 @@ class HtmlWpf {
 		$params['rows'] = isset($params['rows']) ? $params['rows'] : 3;
 		$params['cols'] = isset($params['cols']) ? $params['cols'] : 50;
 		if (isset($params['required']) && $params['required']) {
-			$params['attrs'] .= ' required ';	// HTML5 "required" validation attr
+			$params['attrs'] .= ' required '; // HTML5 "required" validation attr
 		}
 		if (isset($params['placeholder']) && $params['placeholder']) {
-			$params['attrs'] .= ' placeholder="' . esc_attr($params['placeholder']) . '"';	// HTML5 "required" validation attr
+			$params['attrs'] .= ' placeholder="' . esc_attr($params['placeholder']) . '"'; // HTML5 "required" validation attr
 		}
 		if (isset($params['disabled']) && $params['disabled']) {
 			$params['attrs'] .= ' disabled ';
@@ -57,10 +57,10 @@ class HtmlWpf {
 		$params['attrs'] = isset($params['attrs']) ? $params['attrs'] : '';
 		$params['attrs'] .= self::_dataToAttrs($params);
 		if (isset($params['required']) && $params['required']) {
-			$params['attrs'] .= ' required ';	// HTML5 "required" validation attr
+			$params['attrs'] .= ' required '; // HTML5 "required" validation attr
 		}
 		if (isset($params['placeholder']) && $params['placeholder']) {
-			$params['attrs'] .= ' placeholder="' . esc_attr($params['placeholder']) . '"';	// HTML5 "required" validation attr
+			$params['attrs'] .= ' placeholder="' . esc_attr($params['placeholder']) . '"'; // HTML5 "required" validation attr
 		}
 		if (isset($params['disabled']) && $params['disabled']) {
 			$params['attrs'] .= ' disabled ';
@@ -196,7 +196,7 @@ class HtmlWpf {
 		$params['attrs'] = isset($params['attrs']) ? $params['attrs'] : '';
 		$params['attrs'] .= self::_dataToAttrs($params);
 		if (isset($params['required']) && $params['required']) {
-			$params['attrs'] .= ' required ';	// HTML5 "required" validation attr
+			$params['attrs'] .= ' required '; // HTML5 "required" validation attr
 		}
 		echo '<select name="' . esc_attr($name) . '" ';
 		if (!empty($params['attrs'])) {

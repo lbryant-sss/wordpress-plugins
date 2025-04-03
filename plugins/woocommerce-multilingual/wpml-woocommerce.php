@@ -6,10 +6,10 @@
  * Author: OnTheGoSystems
  * Author URI: http://www.onthegosystems.com/
  * Text Domain: woocommerce-multilingual
- * Version: 5.3.9
+ * Version: 5.4.3
  * Plugin Slug: woocommerce-multilingual
  * WC requires at least: 3.9
- * WC tested up to: 9.3
+ * WC tested up to: 9.7
  *
  * @package WCML
  * @author  OnTheGoSystems
@@ -35,7 +35,7 @@ if ( ! $wpml_php_version_check->is_ok() ) {
 	return;
 }
 
-define( 'WCML_VERSION', '5.3.9' );
+define( 'WCML_VERSION', '5.4.3' );
 define( 'WCML_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WCML_PLUGIN_FOLDER', basename( WCML_PLUGIN_PATH ) );
 define( 'WCML_LOCALE_PATH', WCML_PLUGIN_PATH . '/locale' );
@@ -55,6 +55,8 @@ otgs_ui_initialize( WCML_PLUGIN_PATH . '/vendor/otgs/ui', WCML_PLUGIN_URL . '/ve
 
 $vendor_root_url = WCML_PLUGIN_URL . '/vendor';
 require_once WCML_PLUGIN_PATH . '/vendor/otgs/icons/loader.php';
+
+WCML_Locale::load_locale();
 
 if ( WPML_Core_Version_Check::is_ok( WCML_PLUGIN_PATH . '/wpml-dependencies.json' ) ) {
 	global $woocommerce_wpml;
@@ -91,8 +93,10 @@ function wcml_loader() {
 		'WCML_Privacy_Content_Factory',
 		'WCML_ATE_Activate_Synchronization',
 		\WCML\RewriteRules\Hooks::class,
-		\WCML\Email\Settings\Hooks::class,
+		\WCML\RewriteRules\ChildMyAccountHooks::class,
+		\WCML\Email\Factory::class,
 		\WCML\Block\Convert\Hooks::class,
+		\WCML\CacheInvalidate\Hooks::class,
 		\WCML\MO\Hooks::class,
 		\WCML\Multicurrency\Shipping\ShippingHooksFactory::class,
 		\WCML\Reviews\Backend\Hooks::class,
@@ -101,8 +105,9 @@ function wcml_loader() {
 		\WCML\AdminDashboard\Hooks::class,
 		\WCML\AdminNotices\Review::class,
 		\WCML\Multicurrency\UI\Factory::class,
-		\WCML\PaymentGateways\Hooks::class,
 		\WCML\PaymentGateways\BlockHooksFactory::class,
+		\WCML\PaymentGateways\Factory::class,
+		\WCML\Permalinks\Factory::class,
 		\WCML\CLI\Hooks::class,
 		\WCML\Reports\Hooks::class,
 		\WCML\Reports\Products\Query::class,
@@ -113,6 +118,7 @@ function wcml_loader() {
 		\WCML\Multicurrency\Analytics\Factory::class,
 		\WCML\Setup\BeforeHooks::class,
 		\WCML\AdminNotices\MultiCurrencyMissing::class,
+		\WCML\AdminNotices\TranslationControlMovedNotice::class,
 		\WCML\Products\Hooks::class,
 		\WCML\API\VendorAddon\Hooks::class,
 		\WCML\Attributes\LookupTableFactory::class,
@@ -127,14 +133,17 @@ function wcml_loader() {
 		\WCML\Exporter\AllLanguagesHooks::class,
 		\WCML\Exporter\AttributeHeadersHooks::class,
 		\WCML\AdminNotices\ExportImport::class,
+		\WCML\TranslationJob\Hooks::class,
+		\WCML\TMDashboard\Hooks::class,
+		\WCML\OrderItems\Hooks::class,
 	];
 
 	if (
 		( defined( 'ICL_SITEPRESS_VERSION' ) && defined( 'WPML_MEDIA_VERSION' ) )
 		|| ( defined( 'ICL_SITEPRESS_VERSION' )
-			 && version_compare( ICL_SITEPRESS_VERSION, '4.0.0', '>=' )
-			 && version_compare( ICL_SITEPRESS_VERSION, '4.0.4', '<' )
-			 && ! defined( 'WPML_MEDIA_VERSION' )
+			&& version_compare( ICL_SITEPRESS_VERSION, '4.0.0', '>=' )
+			&& version_compare( ICL_SITEPRESS_VERSION, '4.0.4', '<' )
+			&& ! defined( 'WPML_MEDIA_VERSION' )
 		)
 	) {
 		$loaders[] = 'WCML_Product_Image_Filter_Factory';

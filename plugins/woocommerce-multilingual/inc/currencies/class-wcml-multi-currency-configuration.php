@@ -265,7 +265,7 @@ class WCML_Multi_Currency_Configuration {
 					'The default currency was changed. In order to show accurate prices in all currencies, you need to update the exchange rates under the %1$sMulti-currency%2$s configuration.',
 					'woocommerce-multilingual'
 				),
-				'<a href="' . admin_url( 'admin.php?page=wpml-wcml&tab=multi-currency' ) . '">',
+				'<a href="' . \WCML\Utilities\AdminUrl::getMultiCurrencyTab() . '">',
 				'</a>'
 			),
 			'type'         => 'warning',

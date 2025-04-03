@@ -73,7 +73,8 @@ class NinjaFirewall_mail {
 			return;
 		}
 
-		$subject = vsprintf( self::$template[$tpl]['subject'], $s_values );
+		$subject = self::$template['subject_line_tag'] .' '.
+					vsprintf( self::$template[$tpl]['subject'], $s_values );
 		$message = vsprintf( self::$template[$tpl]['content'], $c_values ) .
 					"\n\n". self::$template['signature'];
 
@@ -168,7 +169,8 @@ class NinjaFirewall_mail {
 		 */
 		self::initialize('firewall', $logdir);
 
-		$subject = vsprintf( self::$template[$tpl]['subject'], $s_values );
+		$subject = self::$template['subject_line_tag'] .' '.
+					vsprintf( self::$template[$tpl]['subject'], $s_values );
 		$message = vsprintf( self::$template[$tpl]['content'], $c_values ) .
 					"\n\n". self::$template['signature'];
 

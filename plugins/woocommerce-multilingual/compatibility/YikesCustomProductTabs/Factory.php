@@ -12,6 +12,9 @@ class Factory extends ComponentFactory {
 	 * @inheritDoc
 	 */
 	public function create() {
-		return new \WCML_YIKES_Custom_Product_Tabs( getWooCommerceWpml(), getSitePress(), self::getElementTranslationPackage() );
+		return [
+			new \WCML_YIKES_Custom_Product_Tabs( getWooCommerceWpml(), getSitePress(), self::getElementTranslationPackage() ),
+			new JobHooks(),
+		];
 	}
 }

@@ -128,8 +128,8 @@ class WCML_Custom_Prices {
 
 				// $extractPricesByType :: array, string => array
 				$extractPricesByType = function( $rows, $key ) use ( $currency, $variation_ids ) {
-					$prices   = wp_list_pluck( wp_list_filter( $rows, [ 'meta_key' => $key . '_' . $currency ] ), $key . '_' . $currency, 'post_id' );
-					$defaults = wp_list_pluck( wp_list_filter( $rows, [ 'meta_key' => $key ] ), $key, 'post_id' );
+					$prices   = wp_list_pluck( wp_list_filter( $rows, [ 'meta_key' => $key . '_' . $currency ] ), 'meta_value', 'post_id' );
+					$defaults = wp_list_pluck( wp_list_filter( $rows, [ 'meta_key' => $key ] ), 'meta_value', 'post_id' );
 
 					// calculate missing prices automatically.
 					foreach ( $variation_ids as $id ) {
@@ -370,23 +370,79 @@ class WCML_Custom_Prices {
 	public function save_custom_prices( $post_id ) {
 		$nonce = filter_input( INPUT_POST, '_wcml_custom_prices_nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 
-		if ( isset( $_POST['_wcml_custom_prices'] ) && isset( $nonce ) && wp_verify_nonce( $nonce, 'wcml_save_custom_prices' ) && ! $this->woocommerce_wpml->products->is_variable_product( $post_id ) ) {
-			if ( isset( $_POST['_wcml_custom_prices'][ $post_id ] ) || isset( $_POST['_wcml_custom_prices']['new'] ) ) {
-				$wcml_custom_prices_option = isset( $_POST['_wcml_custom_prices'][ $post_id ] ) ? $_POST['_wcml_custom_prices'][ $post_id ] : $_POST['_wcml_custom_prices']['new'];
+		if ( isset( $_POST['_wcml_custom_prices'] ) && isset( $nonce ) && wp_verify_nonce( $nonce, 'wcml_save_custom_prices' ) ) {
+			$this->save_custom_prices_without_post_form( $post_id, $_POST );
+		}
+	}
+
+	/**
+	 * @param $post_id
+	 * @param \WP_REST_Request $wpRestRequest
+	 *
+	 * @return void
+	 */
+	public function save_custom_prices_ajax( $post_id, $wpRestRequest ) {
+		$rest2post = [];
+
+		$rest2post['_wcml_custom_prices'] = [
+			$post_id => null, // update product - Not implemented in REST API
+			'new'    => null // create new product - Not implemented in REST API
+		];
+
+		$rest2post['_custom_sale_price']            = [];
+		$rest2post['_custom_regular_price']         = [];
+		$rest2post['_wcml_schedule']                = [];
+		$rest2post['_custom_sale_price_dates_from'] = [];
+		$rest2post['_custom_sale_price_dates_to']   = [];
+		if( isset( $wpRestRequest['custom_prices'] ) && is_array( $wpRestRequest['custom_prices'] ) ) {
+			foreach ( $wpRestRequest['custom_prices'] as $code => $currency ) {
+				// REST API does not have the option to pass this parameter at the moment,
+				// so I assume that when I pass prices in currencies, I want to use them
+				$rest2post['_wcml_custom_prices']['new'] = (int) true;
+
+				$rest2post['_custom_regular_price'][ $code ]         = $currency['regular_price'] ?? null;
+				$rest2post['_custom_sale_price'][ $code ]            = $currency['sale_price'] ?? null;
+				$rest2post['_wcml_schedule'][ $code ]                = null; // Not implemented in REST API
+				$rest2post['_custom_sale_price_dates_from'][ $code ] = null; // Not implemented in REST API
+				$rest2post['_custom_sale_price_dates_to'][ $code ]   = null; // Not implemented in REST API
+			}
+		}
+
+		$this->save_custom_prices_without_post_form( $post_id, $rest2post );
+	}
+
+	/**
+	 * the method was separated from a larger method
+	 * that ran the logic based on data obtained from
+	 * the form submitted $_POST - we need REST to behave in the same way
+	 *
+	 * @param $post_id
+	 * @param array $formPostData
+	 *
+	 * @return void
+	 */
+	private function save_custom_prices_without_post_form( $post_id, array $formPostData ) {
+		if ( ! $this->woocommerce_wpml->products->is_variable_product( $post_id ) ) {
+			if ( isset( $formPostData['_wcml_custom_prices'][ $post_id ] ) || isset( $formPostData['_wcml_custom_prices']['new'] ) ) {
+				$wcml_custom_prices_option = $formPostData['_wcml_custom_prices'][ $post_id ] ?? $formPostData['_wcml_custom_prices']['new'];
 			} else {
 				$current_option            = get_post_meta( $post_id, '_wcml_custom_prices_status', true );
-				$wcml_custom_prices_option = $current_option ? $current_option : 0;
+				$wcml_custom_prices_option = $current_option ?: 0;
 			}
 			update_post_meta( $post_id, '_wcml_custom_prices_status', $wcml_custom_prices_option );
 
 			if ( $wcml_custom_prices_option == 1 ) {
 				$currencies = $this->woocommerce_wpml->multi_currency->get_currencies();
 				foreach ( $currencies as $code => $currency ) {
-					$sale_price    = wc_format_decimal( $_POST['_custom_sale_price'][ $code ] );
-					$regular_price = wc_format_decimal( $_POST['_custom_regular_price'][ $code ] );
-					$schedule      = $_POST['_wcml_schedule'][ $code ];
-					$date_from     = $schedule && isset( $_POST['_custom_sale_price_dates_from'][ $code ] ) ? strtotime( $_POST['_custom_sale_price_dates_from'][ $code ] ) : '';
-					$date_to       = $schedule && isset( $_POST['_custom_sale_price_dates_to'][ $code ] ) ? strtotime( $_POST['_custom_sale_price_dates_to'][ $code ] ) : '';
+					if( !isset( $formPostData['_custom_regular_price'][ $code ] ) ) {
+						continue;
+					}
+
+					$sale_price    = wc_format_decimal( $formPostData['_custom_sale_price'][ $code ] ?? null );
+					$regular_price = wc_format_decimal( $formPostData['_custom_regular_price'][ $code ] );
+					$schedule      = $formPostData['_wcml_schedule'][ $code ];
+					$date_from     = $schedule && isset( $formPostData['_custom_sale_price_dates_from'][ $code ] ) ? strtotime( $formPostData['_custom_sale_price_dates_from'][ $code ] ) : '';
+					$date_to       = $schedule && isset( $formPostData['_custom_sale_price_dates_to'][ $code ] ) ? strtotime( $formPostData['_custom_sale_price_dates_to'][ $code ] ) : '';
 
 					$custom_prices = apply_filters(
 						'wcml_update_custom_prices_values',

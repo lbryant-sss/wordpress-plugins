@@ -62,7 +62,6 @@ abstract class ViewWpf extends BaseObjectWpf {
 		return $this->_tpl;
 	}
 	public function init() {
-
 	}
 	public function assign( $name, $value ) {
 		$this->$name = $value;

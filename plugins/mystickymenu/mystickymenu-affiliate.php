@@ -10,8 +10,8 @@ class MyStickyMenu_affiliate_program {
     }
 
     public function mystickymenu_affiliate_program() {
-        $nonce = filter_input(INPUT_POST, 'nonce', FILTER_SANITIZE_STRING);
-        $days = filter_input(INPUT_POST, 'days', FILTER_SANITIZE_STRING);
+        $nonce = sanitize_text_field(filter_input(INPUT_POST, 'nonce'));
+        $days = sanitize_text_field(filter_input(INPUT_POST, 'days'));
         if(!empty($nonce) && wp_verify_nonce($nonce, $this->plugin."_affiliate_program")) {
             if($days == -1) {
                 add_option($this->plugin."_hide_affiliate_box", "1");

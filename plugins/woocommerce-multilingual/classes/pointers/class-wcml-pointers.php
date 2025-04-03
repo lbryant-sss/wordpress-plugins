@@ -10,11 +10,11 @@ class WCML_Pointers{
 
 	public function setup() {
 		$current_screen = get_current_screen();
-		
+
 		if ( empty( $current_screen ) ) {
 			return;
 		}
-		
+
 		if ( ! WCML_Capabilities::canManageWcml() ) {
 			return;
 		}
@@ -38,7 +38,7 @@ class WCML_Pointers{
 	}
 
 	public function add_products_translation_link() {
-		$link   = admin_url( 'admin.php?page=wpml-wcml' );
+		$link   = \WCML\Utilities\AdminUrl::getWPMLTMDashboardProducts();
 		$name   = __( 'Translate WooCommerce products', 'woocommerce-multilingual' );
 		$anchor = '<a class="button button-small button-wpml wcml-pointer-products_translation" href="{{ url }}">{{ text }}</a>';
 
@@ -46,7 +46,7 @@ class WCML_Pointers{
 	}
 
 	public function add_shipping_classes_translation_link() {
-		$link   = admin_url( 'admin.php?page=wpml-wcml&tab=product_shipping_class' );
+		$link   = \WCML\Utilities\AdminUrl::getWPMLTaxonomyTranslation( 'product_shipping_class' );
 		$name   = __( 'Translate shipping classes', 'woocommerce-multilingual' );
 		$anchor = '<a class="button button-small button-wpml wcml-pointer-shipping_classes_translation" href="{{ url }}">{{ text }}</a>';
 
@@ -59,7 +59,7 @@ class WCML_Pointers{
 	 * @return array
 	 */
 	public function add_multi_currency_link( array $settings ) {
-		$link = admin_url( 'admin.php?page=wpml-wcml&tab=multi-currency' );
+		$link = \WCML\Utilities\AdminUrl::getMultiCurrencyTab();
 		$name = __( 'Configure multicurrency for multilingual sites', 'woocommerce-multilingual' );
 
 		$anchor = '<a class="button button-small button-wpml wcml-pointer-multi_currency" href="{{ url }}">{{ text }}</a>';
@@ -73,7 +73,7 @@ class WCML_Pointers{
 	 * @return array
 	 */
 	public function add_endpoints_translation_link( array $settings ) {
-		$link = admin_url( 'admin.php?page=wpml-wcml&tab=slugs' );
+		$link = \WCML\Utilities\AdminUrl::getStoreURLTab();
 		$name = __( 'Translate endpoints', 'woocommerce-multilingual' );
 
 		$anchor = '<a class="button button-small button-wpml wcml-pointer-endpoints_translation" href="{{ url }}">{{ text }}</a>';

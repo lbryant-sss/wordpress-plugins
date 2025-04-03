@@ -1,9 +1,11 @@
 <?php
 
+use WPML\FP\Obj;
+
 class WCML_Attributes {
 
 	const PRIORITY_AFTER_WC_INIT = 100;
-	const CACHE_GROUP_VARIATION = 'wpml-all-meta-product-variation' ;
+	const CACHE_GROUP_VARIATION  = 'wpml-all-meta-product-variation';
 
 	/** @var woocommerce_wpml */
 	private $woocommerce_wpml;
@@ -104,11 +106,11 @@ class WCML_Attributes {
 	}
 
 	public function init() {
-
+		// phpcs:disable WordPress.VIP.SuperGlobalInputUsage.AccessDetected
 		$is_attr_page = isset( $_GET['page'], $_GET['post_type'] )
 						&& 'product_attributes' === $_GET['page']
 						&& 'product' === $_GET['post_type'];
-
+		// phpcs:enable
 		if ( apply_filters( 'wcml_is_attributes_page', $is_attr_page ) ) {
 			add_action( 'admin_init', [ $this, 'not_translatable_html' ] );
 			add_action(
@@ -321,39 +323,55 @@ class WCML_Attributes {
 		}
 	}
 
+	/**
+	 * When called from CTE, $data holds the translation data.
+	 *
+	 * @param int          $original_product_id
+	 * @param int          $tr_product_id
+	 * @param string|false $language
+	 * @param array|false  $data
+	 */
 	public function sync_product_attr( $original_product_id, $tr_product_id, $language = false, $data = false ) {
-
-		// get "_product_attributes" from original product.
 		$orig_product_attrs  = $this->get_product_attributes( $original_product_id );
-		$trnsl_product_attrs = $this->get_product_attributes( $tr_product_id );
+		$translated_labels   = $data ? $this->get_attr_label_translations( $tr_product_id ) : [];
+		$trnsl_product_attrs = $data ? [] : $this->get_product_attributes( $tr_product_id );
 
-		$translated_labels = $this->get_attr_label_translations( $tr_product_id );
+		$update_translated_labels = false;
 
 		foreach ( $orig_product_attrs as $key => $orig_product_attr ) {
+			$key_to_save   = $key;
 			$sanitized_key = $this->filter_attribute_name( $orig_product_attr['name'], $original_product_id, true );
-			if ( $sanitized_key != $key ) {
+
+			if ( $sanitized_key !== $key ) {
 				$orig_product_attrs_buff = $orig_product_attrs[ $key ];
 				unset( $orig_product_attrs[ $key ] );
 				$orig_product_attrs[ $sanitized_key ] = $orig_product_attrs_buff;
 				$key_to_save                          = $sanitized_key;
-			} else {
-				$key_to_save = $key;
 			}
+
 			if ( $data ) {
-				if ( isset( $data[ md5( $key ) ] ) && ! empty( $data[ md5( $key ) ] ) && ! is_array( $data[ md5( $key ) ] ) ) {
-					// get translation values from $data.
-					$orig_product_attrs[ $key_to_save ]['value'] = $data[ md5( $key ) ];
-				} else {
-					$orig_product_attrs[ $key_to_save ]['value'] = '';
+				$translated_attribute_in_data = Obj::prop( md5( $key ), $data );
+				if (
+					null !== $translated_attribute_in_data &&
+					! is_array( $translated_attribute_in_data ) &&
+					Obj::pathOr( null, [ $key_to_save, 'value' ], $orig_product_attrs ) !== $translated_attribute_in_data
+				) {
+					$orig_product_attrs[ $key_to_save ]['value'] = $translated_attribute_in_data;
 				}
 
-				if ( isset( $data[ md5( $key . '_name' ) ] ) && ! empty( $data[ md5( $key . '_name' ) ] ) && ! is_array( $data[ md5( $key . '_name' ) ] ) ) {
-					// get translation values from $data.
-					$translated_labels[ $language ][ $key_to_save ] = stripslashes( $data[ md5( $key . '_name' ) ] );
+				// get translation values from $data.
+				$translated_labels_in_data = Obj::prop( md5( $key . '_name' ), $data );
+				if (
+					$language &&
+					null !== $translated_labels_in_data &&
+					! is_array( $translated_labels_in_data ) &&
+					Obj::pathOr( null, [ $language, $key_to_save ], $translated_labels ) !== stripslashes( $translated_labels_in_data )
+				) {
+					$update_translated_labels                       = true;
+					$translated_labels[ $language ][ $key_to_save ] = stripslashes( $translated_labels_in_data );
 				}
 			} elseif ( ! $orig_product_attr['is_taxonomy'] ) {
 				$duplicate_of = get_post_meta( $tr_product_id, '_icl_lang_duplicate_of', true );
-
 				if ( ! $duplicate_of ) {
 					if ( isset( $trnsl_product_attrs[ $key ] ) ) {
 						$orig_product_attrs[ $key_to_save ]['value'] = $trnsl_product_attrs[ $key ]['value'];
@@ -364,8 +382,9 @@ class WCML_Attributes {
 			}
 		}
 
-		update_post_meta( $tr_product_id, 'attr_label_translations', $translated_labels );
-		// update "_product_attributes".
+		if ( $update_translated_labels ) {
+			update_post_meta( $tr_product_id, 'attr_label_translations', $translated_labels );
+		}
 		update_post_meta( $tr_product_id, '_product_attributes', $orig_product_attrs );
 	}
 

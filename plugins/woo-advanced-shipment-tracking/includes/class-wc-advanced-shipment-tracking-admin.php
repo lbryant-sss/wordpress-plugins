@@ -148,8 +148,8 @@ class WC_Advanced_Shipment_Tracking_Admin {
 		wp_enqueue_style( 'ast_styles', wc_advanced_shipment_tracking()->plugin_dir_url() . 'assets/css/admin.css', array(), time() );
 		
 		wp_enqueue_style( 'ast_slideout_styles', wc_advanced_shipment_tracking()->plugin_dir_url() . 'assets/css/slideout.css', array(), time() );
-		
 		wp_enqueue_script( 'woocommerce-advanced-shipment-tracking-js', wc_advanced_shipment_tracking()->plugin_dir_url() . 'assets/js/admin.js', array(), time() );
+		wp_enqueue_script('jquery-ui-datepicker');
 		
 		wp_register_script( 'selectWoo', WC()->plugin_url() . '/assets/js/selectWoo/selectWoo.full' . $suffix . '.js', array( 'jquery' ), '1.0.4' );
 		wp_register_script( 'wc-enhanced-select', WC()->plugin_url() . '/assets/js/admin/wc-enhanced-select' . $suffix . '.js', array( 'jquery', 'selectWoo' ), WC_VERSION );
@@ -237,7 +237,7 @@ class WC_Advanced_Shipment_Tracking_Admin {
 					<a href="javascript:void(0)"><?php esc_html_e( 'Shipment Tracking', 'woo-advanced-shipment-tracking' ); ?></a> <span class="dashicons dashicons-arrow-right-alt2"></span> <span class="breadcums_page_heading"><?php esc_html_e( 'Settings', 'woo-advanced-shipment-tracking' ); ?></span>
 				</h1>
 				<a href="https://www.zorem.com/product/woocommerce-advanced-shipment-tracking/?utm_source=wp-admin&utm_medium=plugin-setting&utm_campaign=upgrad-to-pro" target="_blank"><span class="button-primary btn_ast2">UPGRADE TO PRO</span></a>
-				<img class="zorem-layout__header-logo" src="<?php echo esc_url( wc_advanced_shipment_tracking()->plugin_dir_url() ); ?>assets/images/ast-logo.png">
+				<img class="zorem-layout__header-logo" src="<?php echo esc_url( wc_advanced_shipment_tracking()->plugin_dir_url() ); ?>assets/images/zorem-logo.png">
 			</div>
 			
 			<div class="woocommerce zorem_admin_layout">
@@ -1855,15 +1855,15 @@ class WC_Advanced_Shipment_Tracking_Admin {
 		$start = ( $page - 1 ) * $items_per_page;
 
 		$shippment_provider_pagination = $wpdb->get_results( 
-			$wpdb->prepare('SELECT * FROM %1s WHERE display_in_order = 0 AND ( provider_name LIKE %s OR shipping_country_name LIKE %s) ORDER BY id ASC LIMIT %d,%d',
-			$this->table, '%%' . $search . '%%', '%' . $search . '%' , $start, $items_per_page )
+			$wpdb->prepare("SELECT * FROM {$wpdb->prefix}woo_shippment_provider WHERE display_in_order = 0 AND ( provider_name LIKE %s OR shipping_country_name LIKE %s) ORDER BY id ASC LIMIT %d,%d",
+			'%%' . $search . '%%', '%' . $search . '%' , $start, $items_per_page )
 		);
 		$total_shipping_providers = $wpdb->get_row( 
-			$wpdb->prepare('SELECT COUNT(*) as total_providers FROM %1s WHERE display_in_order = 0 AND ( provider_name LIKE %s OR shipping_country_name LIKE %s) ORDER BY id ASC',
-			$this->table, '%%' . $search . '%%', '%' . $search . '%' , $start, $items_per_page )
+			$wpdb->prepare("SELECT COUNT(*) as total_providers FROM {$wpdb->prefix}woo_shippment_provider WHERE display_in_order = 0 AND ( provider_name LIKE %s OR shipping_country_name LIKE %s) ORDER BY id ASC",
+			'%%' . $search . '%%', '%' . $search . '%' )
 		);
 
-		$added_provider = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM %1s WHERE provider_name LIKE %s AND ( display_in_order = 1 ) AND ( shipping_default = 1 ) ORDER BY shipping_default ASC, trackship_supported DESC, id ASC', $this->table, '%%' . $search . '%%', '%' . $search . '%' ) );
+		$added_provider = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}woo_shippment_provider WHERE provider_name LIKE %s AND ( display_in_order = 1 ) AND ( shipping_default = 1 ) ORDER BY shipping_default ASC, trackship_supported DESC, id ASC", '%%' . $search . '%%' ) );
 
 		$total_provders = $total_shipping_providers->total_providers;
 		$total_pages = ceil($total_provders / $items_per_page);

@@ -64,7 +64,7 @@ class WCML_Cart_Sync_Warnings {
 		$list_of_extensions = $this->get_list_of_active_extensions();
 		$request_url        = esc_url( $_SERVER['REQUEST_URI'] );
 
-		$admin_settings_url = esc_url( admin_url( 'admin.php?page=wpml-wcml&tab=settings#cart' ) );
+		$admin_settings_url = esc_url( \WCML\Utilities\AdminUrl::getSettingsTab() . '#cart' );
 		$documentation_link = esc_url( WCML_Tracking_Link::getWcmlClearCartDoc() );
 
 		$reset_cart_strings[] = esc_html_x( 'Because of some elements in your site configuration, when the users switch the currency or the language on the front end, the cart content might not be synchronized correctly.', 'Reset cart option warning 1', 'woocommerce-multilingual' );
@@ -84,7 +84,7 @@ class WCML_Cart_Sync_Warnings {
 		$message .= '<p>';
 		$message .= sprintf( $reset_cart_message, $reset_cart_configure_link );
 		$message .= '</p>';
-		$message .= '<a class="notice-dismiss" href="' . $request_url . '&wcml_action=dismiss_cart_warning"><span class="screen-reader-text">' . esc_html__( 'Dismiss', 'woocommerce-multilingual' ) . '</a>';
+		$message .= '<a class="notice-dismiss" href="' . esc_url( add_query_arg( 'wcml_action', 'dismiss_cart_warning', $request_url ) ) . '"><span class="screen-reader-text">' . esc_html__( 'Dismiss', 'woocommerce-multilingual' ) . '</a>';
 		$message .= '</div>';
 
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

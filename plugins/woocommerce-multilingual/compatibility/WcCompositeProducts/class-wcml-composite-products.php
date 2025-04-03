@@ -9,6 +9,7 @@ class WCML_Composite_Products extends WCML_Compatibility_Helper implements \IWPM
 
 	const META_KEY_DATA     = '_bto_data';
 	const META_KEY_SCENARIO = '_bto_scenario_data';
+	const FIELD_TYPE_PREFIX = 'wc_composite';
 
 	/**
 	 * @var SitePress
@@ -26,9 +27,9 @@ class WCML_Composite_Products extends WCML_Compatibility_Helper implements \IWPM
 		add_filter( 'woocommerce_composite_component_options_query_args', array($this, 'wpml_composites_transients_cache_per_language'), 10, 3 );
 		add_action( 'wcml_before_sync_product_data', array( $this, 'sync_composite_data_across_translations' ), 10, 2 );
 		add_action( 'wpml_translation_job_saved',   array( $this, 'save_composite_data_translation' ), 10, 3 );
+		add_filter( 'wpml_tm_translation_job_data', array( $this, 'append_composite_data_translation_package' ), 10, 2 );
 
 		if( is_admin() ){
-
 			if ( ! WPML::useAte() ) {  // Legacy actions/filters for CTE
 				add_action( 'wcml_gui_additional_box_html', [ $this, 'custom_box_html' ], 10, 3 );
 				add_filter( 'wcml_gui_additional_box_data', [ $this, 'custom_box_html_data' ], 10, 4 );
@@ -36,8 +37,6 @@ class WCML_Composite_Products extends WCML_Compatibility_Helper implements \IWPM
 			}
 
 			add_filter( 'woocommerce_json_search_found_products', array( $this, 'woocommerce_json_search_found_products' ) );
-
-			add_filter( 'wpml_tm_translation_job_data', array( $this, 'append_composite_data_translation_package' ), 10, 2 );
 
 			//lock fields on translations pages
 			add_filter( 'wcml_js_lock_fields_input_names', array( $this, 'wcml_js_lock_fields_input_names' ) );
@@ -47,7 +46,6 @@ class WCML_Composite_Products extends WCML_Compatibility_Helper implements \IWPM
 
 			add_filter( 'wcml_do_not_display_custom_fields_for_product', array( $this, 'replace_tm_editor_custom_fields_with_own_sections' ) );
 		}
-
 	}
 
 	public function woocommerce_composite_component_default_option($selected_value, $component_id, $object) {
@@ -377,7 +375,7 @@ class WCML_Composite_Products extends WCML_Compatibility_Helper implements \IWPM
 	 */
 	private static function get_field_name( $component_id, $field, $subtype ) {
 		$subtype = $subtype ? $subtype . ':' : $subtype;
-		return 'wc_composite:' . $subtype . $component_id . ':' . $field;
+		return self::FIELD_TYPE_PREFIX . ':' . $subtype . $component_id . ':' . $field;
 	}
 
 	/**

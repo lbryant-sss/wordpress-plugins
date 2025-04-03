@@ -208,6 +208,14 @@ class OptionsWpf extends ModuleWpf {
 					),
 				),
 			));
+			if (class_exists('WooCommerceB2B')) {
+				$this->_options['general']['opts']['use_wcb2b_prices'] = array(
+					'label' => esc_html__( 'Use WooCommerce B2B prices', 'woo-product-filter' ),
+					'desc'  => esc_html__( 'If you are using the WooCommerce B2B plugin and want the WBW Filter plugin to work with price lists created by this plugin, enable this option and resave the filter with the price block and then start indexing.', 'woo-product-filter' ),
+					'def'   => '0',
+					'html'  => 'checkboxHiddenVal',
+				);
+			}
 			$isPro = FrameWpf::_()->getModule('promo')->isPro();
 			foreach ($this->_options as $catKey => $cData) {
 				foreach ($cData['opts'] as $optKey => $opt) {

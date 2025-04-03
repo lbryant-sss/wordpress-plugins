@@ -34,16 +34,8 @@ class WCML_Terms {
 			add_action( 'update_term_meta', [ $this, 'sync_term_order' ], 100, 4 );
 		}
 
-		add_filter( 'wp_get_object_terms', [ $this->sitepress, 'get_terms_filter' ] );
 		add_action( 'created_term', [ $this, 'translated_terms_status_update' ], 10, 3 );
 		add_action( 'edit_term', [ $this, 'translated_terms_status_update' ], 10, 3 );
-		add_action(
-			'wp_ajax_wcml_update_term_translated_warnings',
-			[
-				$this,
-				'wcml_update_term_translated_warnings',
-			]
-		);
 
 		add_action( 'created_term', [ $this, 'set_flag_for_variation_on_attribute_update' ], 10, 3 );
 
@@ -102,9 +94,9 @@ class WCML_Terms {
 				/* translators: %1$s/%2$s and %3$s/%4$s are opening and closing HTML link tags */
 				__( 'To translate %1$s please use the %2$s translation%3$s page, inside the %4$sWooCommerce Multilingual & Multicurrency admin%5$s.', 'woocommerce-multilingual' ),
 				$taxonomy_obj->labels->name,
-				'<strong><a href="' . admin_url( 'admin.php?page=wpml-wcml&tab=' . $taxonomy ) . '">' . $taxonomy_obj->labels->singular_name,
+				'<strong><a href="' . \WCML\Utilities\AdminUrl::getTab( $taxonomy ) . '">' . $taxonomy_obj->labels->singular_name,
 				'</a></strong>',
-				'<strong><a href="' . admin_url( 'admin.php?page=wpml-wcml">' ),
+				'<strong><a href="' . \WCML\Utilities\AdminUrl::getMultilingualTab() .'">',
 				'</a></strong>'
 			);
 
@@ -247,50 +239,6 @@ class WCML_Terms {
 		return $is_original ? true : false;
 	}
 
-	public function wcml_update_term_translated_warnings() {
-		$ret = [];
-
-		$taxonomy = filter_input( INPUT_POST, 'taxonomy', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
-
-		$wcml_settings = $this->woocommerce_wpml->get_settings();
-
-		$attribute_taxonomies = $this->woocommerce_wpml->attributes->get_translatable_attributes();
-
-		$attribute_taxonomies_arr = [];
-		foreach ( $attribute_taxonomies as $a ) {
-			$attribute_taxonomies_arr[] = 'pa_' . $a->attribute_name;
-		}
-
-		$ret['is_attribute'] = intval( in_array( $taxonomy, $attribute_taxonomies_arr ) );
-
-		if ( isset( $wcml_settings['untranstaled_terms'][ $taxonomy ] ) &&
-			(
-				$wcml_settings['untranstaled_terms'][ $taxonomy ]['status'] == $this->ALL_TAXONOMY_TERMS_TRANSLATED ||
-				$wcml_settings['untranstaled_terms'][ $taxonomy ]['status'] == $this->NEW_TAXONOMY_IGNORED
-			)
-		) {
-
-			$ret['hide'] = 1;
-		} else {
-
-			$ret['hide'] = 0;
-
-			if ( isset( $wcml_settings[ 'sync_' . $taxonomy ] ) ) {
-				$ret['show_button'] = $wcml_settings[ 'sync_' . $taxonomy ];
-			} elseif ( in_array( $taxonomy, $attribute_taxonomies_arr ) ) {
-				$ret['show_button'] = $wcml_settings['sync_variations'];
-			}
-		}
-
-		if ( $ret['is_attribute'] ) {
-			$ret['hide'] = $this->woocommerce_wpml->attributes->is_attributes_fully_translated();
-		}
-
-		echo json_encode( $ret );
-		exit;
-
-	}
-
 	public function update_terms_translated_status( $taxonomy ) {
 
 		$wcml_settings        = $this->woocommerce_wpml->get_settings();
@@ -408,7 +356,7 @@ class WCML_Terms {
 
 	public function sync_taxonomy_translations( $html, $taxonomy, $taxonomy_obj ) {
 
-		$is_wcml = is_admin() && $taxonomy && isset( $_GET['page'] ) && $_GET['page'] == 'wpml-wcml' && isset( $_GET['tab'] );
+		$is_wcml = is_admin() && $taxonomy && isset( $_GET['page'] ) && \WCML\Utilities\AdminUrl::PAGE_WPML_WCML == $_GET['page'] && isset( $_GET['tab'] );
 		$is_ajax = wp_doing_ajax() && $taxonomy && isset( $_POST['action'] ) && $_POST['action'] === 'wpml_get_terms_and_labels_for_taxonomy_table';
 
 		if ( $is_wcml || $is_ajax ) {
@@ -506,8 +454,13 @@ class WCML_Terms {
 
 		}
 
-		/* translators: %d is a number of products */
-		$response['progress'] = $response['go'] ? sprintf( __( '%d products left', 'woocommerce-multilingual' ), count( $post_ids ) - $posts_processed ) : __( 'Synchronization complete!', 'woocommerce-multilingual' );
+
+		$response['progress'] = $response['go'] ? sprintf(
+				/* translators: %d is a number of products */
+				__( '%d products left', 'woocommerce-multilingual' ),
+				count( $post_ids ) - $posts_processed
+			)
+			: __( 'Synchronization complete!', 'woocommerce-multilingual' );
 
 		if ( $response['go'] && isset( $wcml_settings['variations_needed'][ $taxonomy ] ) && ! empty( $variations_processed ) ) {
 			$wcml_settings['variations_needed'][ $taxonomy ] = max( $wcml_settings['variations_needed'][ $taxonomy ] - $variations_processed, 0 );
@@ -543,8 +496,11 @@ class WCML_Terms {
 
 			}
 		} else {
-			/* translators: %s is a taxonomy name */
-			$errors = sprintf( __( 'Invalid taxonomy %s', 'woocommerce-multilingual' ), $_POST['taxonomy'] );
+			$errors = sprintf(
+				/* translators: %s is a taxonomy name */
+				__( 'Invalid taxonomy %s', 'woocommerce-multilingual' ),
+				$_POST['taxonomy']
+			);
 		}
 
 		echo json_encode(
@@ -571,8 +527,11 @@ class WCML_Terms {
 			$html .= $this->render_assignment_status( $_POST['post'], $_POST['taxonomy'], $preview = false );
 
 		} else {
-			/* translators: %s is a taxonomy name */
-			$errors .= sprintf( __( 'Invalid taxonomy %s', 'woocommerce-multilingual' ), $_POST['taxonomy'] );
+			$errors .= sprintf(
+				/* translators: %s is a taxonomy name */
+				__( 'Invalid taxonomy %s', 'woocommerce-multilingual' ),
+				$_POST['taxonomy']
+			);
 		}
 
 		echo json_encode(
@@ -714,7 +673,7 @@ class WCML_Terms {
 				$out .= '</form>';
 			} else {
 				$out .= sprintf(
-					/* translators: %%1$s is a taxonomy name and %2$s is a post type name */
+					/* translators: %1$s is a taxonomy name and %2$s is a post type name */
 					__( 'All %1$s have the same %2$s assignments.', 'woocommerce-multilingual' ),
 					'<strong>' . mb_strtolower( $wp_taxonomies[ $taxonomy ]->labels->name ) . '</strong>',
 					'<strong>' . mb_strtolower( $wp_post_types[ $object_type ]->labels->name ) . '</strong>'
@@ -723,8 +682,12 @@ class WCML_Terms {
 			$out .= '</div>';
 
 		} else {
-			/* translators: %%1$s is a taxonomy name and %2$s is a post type name */
-			$out .= sprintf( __( 'Successfully updated %1$s for all translated %2$s.', 'woocommerce-multilingual' ), $wp_taxonomies[ $taxonomy ]->labels->name, $wp_post_types[ $object_type ]->labels->name );
+			$out .= sprintf(
+				/* translators: %1$s is a taxonomy name and %2$s is a post type name */
+				__( 'Successfully updated %1$s for all translated %2$s.', 'woocommerce-multilingual' ),
+				$wp_taxonomies[ $taxonomy ]->labels->name,
+				$wp_post_types[ $object_type ]->labels->name
+			);
 
 		}
 
@@ -775,16 +738,14 @@ class WCML_Terms {
 	public function filter_shipping_classes_terms( $terms, $taxonomies, $args ) {
 
 		if ( $taxonomies && is_admin() && in_array( self::PRODUCT_SHIPPING_CLASS, $taxonomies ) ) {
-			$on_wc_settings_page = isset( $_GET['page'] ) && $_GET['page'] === 'wc-settings';
+			$on_wc_settings_page = isset( $_GET['page'] ) && \WCML\Utilities\AdminUrl::PAGE_WOO_SETTINGS === $_GET['page'];
 			$on_shipping_tab     = isset( $_GET['tab'] ) && $_GET['tab'] === 'shipping';
 			$on_classes_section  = isset( $_GET['section'] ) && $_GET['section'] === 'classes';
 
 			if ( $on_wc_settings_page && $on_shipping_tab && ! $on_classes_section ) {
 				remove_filter( 'get_terms', [ $this, 'filter_shipping_classes_terms' ] );
-				remove_filter( 'get_terms', [ 'WPML_Terms_Translations', 'get_terms_filter' ], 10 );
 				$this->sitepress->switch_lang( $this->sitepress->get_default_language() );
 				$terms = get_terms( $args );
-				add_filter( 'get_terms', [ 'WPML_Terms_Translations', 'get_terms_filter' ], 10, 2 );
 				add_filter( 'get_terms', [ $this, 'filter_shipping_classes_terms' ], 10, 3 );
 				$this->sitepress->switch_lang();
 			}

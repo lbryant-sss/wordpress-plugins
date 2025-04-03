@@ -81,7 +81,7 @@ class WCML_Multi_Currency_UI extends WCML_Templates_Factory {
 					'The multi-currency mode cannot be enabled as a specific currency was not set. Go to the %1$sWooCommerce settings%2$s page and select the default currency for your store.',
 					'woocommerce-multilingual'
 				),
-				'<a href="' . admin_url( 'admin.php?page=wc-settings' ) . '">',
+				'<a href="' . \WCML\Utilities\AdminUrl::getWooSettings() . '">',
 				'</a>'
 			),
 			'wcml_settings'          => $this->woocommerce_wpml->settings,

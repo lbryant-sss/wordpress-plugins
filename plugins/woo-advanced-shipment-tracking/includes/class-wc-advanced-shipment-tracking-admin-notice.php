@@ -68,6 +68,9 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 			
 			// Trackship Notice
 			add_action( 'admin_notices', array( $this, 'ast_pro_trackship_notice' ) );
+
+			// AST free Review Notice
+			add_action( 'admin_notices', array( $this, 'ast_review_notice' ) );
 		}
 
 		// AST PRO Notice
@@ -197,6 +200,15 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 				$nonce = sanitize_text_field($_GET['nonce']);
 				if (wp_verify_nonce($nonce, 'ast_pro_dismiss_notice')) {
 					update_option('integration_notice_ignore_377', 'true');
+				}
+			}
+		}
+
+		if ( isset( $_GET['ast-review-ignore'] ) ) {
+			if (isset($_GET['nonce'])) {
+				$nonce = sanitize_text_field($_GET['nonce']);
+				if (wp_verify_nonce($nonce, 'ast_pro_dismiss_notice')) {
+					update_option('ast_review_notice_ignore_378', 'true');
 				}
 			}
 		}
@@ -340,6 +352,60 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 			<p>⏳ Hurry! Offer valid until <strong>April 15, 2025.</strong></p>
 			<a href="https://www.zorem.com/product/woocommerce-advanced-shipment-tracking/" class="button button-primary ast_intigration_btn">👉 Upgrade Now</a>
 			<a class="button-primary ast_intigration_btn" href="<?php esc_html_e($dismissable_url); ?>">Not interested</a>
+		</div>
+		<?php
+	}
+
+	/*
+	* Display admin notice on plugin install or update
+	*/
+	public function ast_review_notice() {
+		if ( get_option('ast_review_notice_ignore_378') ) {
+			return;
+		}
+		
+		$nonce = wp_create_nonce('ast_pro_dismiss_notice');
+		$dismissable_url = esc_url(add_query_arg(['ast-review-ignore' => 'true', 'nonce' => $nonce]));
+
+		?>
+		<style>		
+		.wp-core-ui .notice.ast-review-dismissable-notice{
+			position: relative;
+			padding-right: 38px;
+			border-left-color: #005B9A;
+			padding-bottom: 10px;
+			margin-bottom: 5px;
+		}
+		.wp-core-ui .notice.ast-review-dismissable-notice h3{
+			margin-bottom: 5px;
+		} 
+		.wp-core-ui .notice.ast-review-dismissable-notice a.notice-dismiss{
+			padding: 9px;
+			text-decoration: none;
+		} 
+		.wp-core-ui .button-primary.ast_review_notice_btn {
+			background: #005B9A;
+			color: #fff;
+			border-color: #005B9A;
+			text-transform: uppercase;
+			padding: 0 11px;
+			font-size: 12px;
+			height: 30px;
+			line-height: 28px;
+			margin: 5px 0 0px;
+		}
+		.ast-review-dismissable-notice strong{
+			font-weight:bold;
+		}
+		</style>
+		<div class="notice updated notice-success ast-review-dismissable-notice">
+			<a href="<?php esc_html_e( $dismissable_url ); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
+			<h2>⭐ Enjoying AST? Leave Us a Review!</h2>
+			<p>We hope <strong>Advanced Shipment Tracking</strong> has improved your order fulfillment workflow! Your feedback helps us grow and continue improving the plugin.</p>
+			<p>If you love using AST, we’d really appreciate it if you could take a moment to leave us a <strong>5-star review.</strong> It helps us keep improving and providing the best experience for you!</p>
+			<p><strong>👍 Support AST & Share Your Experience!</strong></p>
+			<a class="button-primary ast_review_notice_btn" target="blank" href="https://wordpress.org/support/plugin/woo-advanced-shipment-tracking/reviews/#new-post">LEAVE A REVIEW</a>
+			<a class="button-primary ast_review_notice_btn" href="<?php esc_html_e( $dismissable_url ); ?>">Dismiss</a>
 		</div>
 		<?php
 	}

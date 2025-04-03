@@ -30,7 +30,7 @@ Chaty is the perfect chat plugin to display a call widget, WhatsApp button, emai
 
 = 💪 What can you do with Chaty =
 
-* Chaty VS live chat - using live chat alternatives, your visitors must stay on your website & wait for your response. When you let your visitors chat with you using chat apps like Facebook Messenger, WhatsApp, Viber, Telegram, etc, you give them the freedom to chat with you wherever they go.
+* Chaty VS live chat - using live chat alternatives, your visitors must stay on your website & wait for your response. When you let your visitors chat with you using chat apps like Facebook Messenger, WhatsApp, Viber, Telegram, etc, you give them the freedom to chat with you wherever they go. If you still interested in using live chat plugin, you can integrate Chatway live chat with your Chaty chat widget.
 * Show your visitors the chat channels you're available on & let them choose the chat app they prefer.
 * WhatsApp Business - chat with your visitors on WhatsApp Business.
 * Help your visitors navigate to your address.

@@ -104,6 +104,24 @@ class WCML_Products {
 		return $original_product_id ?: $product_id;
 	}
 
+	/**
+	 * @param \WC_Product $product
+	 *
+	 * @return bool
+	 */
+	public function isVariableProductObject( $product ) {
+		if ( $product instanceOf WC_Product_Variable ) {
+			return true;
+		}
+		$productId = $product->get_id();
+		return $this->is_variable_product( $productId );
+	}
+
+	/**
+	 * @param int|string $product_id
+	 *
+	 * @return bool
+	 */
 	public function is_variable_product( $product_id ) {
 		$cache_key        = $product_id;
 		$cache_group      = 'is_variable_product';
@@ -123,28 +141,15 @@ class WCML_Products {
 		return $is_variable_product;
 	}
 
+	/**
+	 * @param \WC_Product $product
+	 *
+	 * @return bool
+	 *
+	 * @deprecated Use \WCML_Downloadable_Products::isDownloadableProduct
+	 */
 	public function is_downloadable_product( $product ) {
-
-		$product_id = $product->get_id();
-		$cache_key  = 'is_downloadable_product_' . $product_id;
-
-		$found           = false;
-		$is_downloadable = $this->wpml_cache->get( $cache_key, $found );
-		if ( ! $found ) {
-			if ( $product->is_downloadable() ) {
-				$is_downloadable = true;
-			} elseif ( $this->is_variable_product( $product_id ) ) {
-				foreach ( $product->get_available_variations() as $variation ) {
-					if ( $variation['is_downloadable'] ) {
-						$is_downloadable = true;
-						break;
-					}
-				}
-			}
-			$this->wpml_cache->set( $cache_key, $is_downloadable );
-		}
-
-		return $is_downloadable;
+		return $this->woocommerce_wpml->downloadable->isDownloadableProduct( $product );
 	}
 
 	public function is_grouped_product( $product_id ) {
@@ -302,8 +307,14 @@ class WCML_Products {
 			foreach ( $actions as $key => $action ) {
 				if ( $key == 'inline hide-if-no-js' ) {
 					$new_actions['quick_hide'] = '<a href="#TB_inline?width=200&height=150&inlineId=quick_edit_notice" class="thickbox" title="' .
-													__( 'Edit this item inline', 'woocommerce-multilingual' ) . '">' .
-													__( 'Quick Edit', 'woocommerce-multilingual' ) . '</a>';
+													esc_attr(
+														sprintf(
+															/* translators: %s is the post title */
+															__( 'Quick edit "%s" inline', 'woocommerce-multilingual' ),
+															$post->post_title
+														)
+													) . '">' .
+													esc_html__( 'Quick Edit', 'woocommerce-multilingual' ) . '</a>';
 				} else {
 					$new_actions[ $key ] = $action;
 				}

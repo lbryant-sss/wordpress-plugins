@@ -4,7 +4,7 @@ use WCML\Options\WPML;
 
 class WCML_Setup_Display_As_Translated_UI extends WCML_Setup_Step {
 
-	const SLUG = 'translation-options-2';
+	const SLUG = 'translation-options';
 
 	public function get_model() {
 
@@ -31,7 +31,7 @@ class WCML_Setup_Display_As_Translated_UI extends WCML_Setup_Step {
 				'label_dont_display_as_translated' => __( 'Do not allow viewing products in languages they are not translated to', 'woocommerce-multilingual' ),
 				/* translators: %1$s and %2$s are opening and closing HTML strong tags */
 				'description_footer'               => esc_html__( 'You can change these settings later by going to %1$sWPML &raquo; Settings.%2$s', 'woocommerce-multilingual' ),
-				'continue'                         => __( 'Continue', 'woocommerce-multilingual' ),
+				'continue'                         => __( 'Finish', 'woocommerce-multilingual' ),
 				'go_back'                          => __( 'Go back', 'woocommerce-multilingual' ),
 			],
 			'is_display_as_translated_checked' => $is_display_as_translated_checked,

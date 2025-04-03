@@ -18,7 +18,7 @@ class WCML_Setup_Notice_UI extends WCML_Templates_Factory {
 				),
 				'start'   => __( 'Start the Setup Wizard', 'woocommerce-multilingual' ),
 			],
-			'setup_url' => esc_url( admin_url( 'admin.php?page=wcml-setup' ) ),
+			'setup_url' => esc_url( \WCML\Utilities\AdminUrl::getSetup() ),
 		];
 
 		return $model;

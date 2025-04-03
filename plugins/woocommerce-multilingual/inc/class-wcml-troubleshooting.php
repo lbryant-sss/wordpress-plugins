@@ -135,7 +135,7 @@ class WCML_Troubleshooting {
 		$all_products = $this->get_products_needs_gallery_sync( true );
 
 		foreach ( $all_products as $product ) {
-			$this->woocommerce_wpml->media->sync_product_gallery( $product->ID );
+			$this->woocommerce_wpml->media->sync_product_gallery_to_all_languages( $product->ID );
 			add_post_meta( $product->ID, 'gallery_sync', true );
 		}
 

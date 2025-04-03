@@ -14,18 +14,15 @@ class ReqWpf {
 			if (version_compare(phpversion(), '5.7.0', '<')) {
 				session_start();
 			} else {
-				session_start(['read_and_close' => true]);
+				session_start(array('read_and_close' => true));
 			}
 		}
-
 	}
 
 	public static function endSession() {
-
 		if ( UtilsWpf::isSessionStarted() ) {
 			session_write_close();
 		}
-
 	}
 
 	/**
@@ -114,7 +111,7 @@ class ReqWpf {
 	 * @return string
 	 */
 	public static function getFilterRedirect( $part ) {
-		$params = [];
+		$params = array();
 		if (self::$_requestWithNonce) {
 			$nonce = empty($_REQUEST['_wpnonce']) ? '' : sanitize_text_field($_REQUEST['_wpnonce']);
 			if (!wp_verify_nonce($nonce, 'my-nonce')) {

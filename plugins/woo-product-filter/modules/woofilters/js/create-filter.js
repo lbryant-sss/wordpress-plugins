@@ -122,7 +122,7 @@
 									mod: 'woofilters',
 									action: 'save',
 									title: $input.val(),
-									duplicateId: $inputDuplicateId.val(),
+									duplicateId: jQuery('#addDialog_duplicateid').val(),
 									settings: settings,
 									wpfNonce: window.wpfNonce
 								},

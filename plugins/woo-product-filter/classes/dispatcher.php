@@ -21,6 +21,11 @@ class DispatcherWpf {
 			}
 			return call_user_func_array('do_action', $args);
 		}
+		/**
+		 * Do custom action
+		 * 
+		 * @since 1.0
+		*/
 		return do_action($t);
 	}
 	public static function addFilter( $tag, $function_to_add, $priority = 10, $accepted_args = 1 ) {
@@ -42,6 +47,11 @@ class DispatcherWpf {
 			}
 			return call_user_func_array('apply_filters', $args);
 		} else {
+			/**
+			 * Do custom action
+			 * 
+			 * @since 1.0
+			*/
 			return apply_filters( $t, $value );
 		}
 	}

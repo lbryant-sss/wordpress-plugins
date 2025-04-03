@@ -267,7 +267,7 @@ class Hooks implements \IWPML_Action, IStandAloneAction {
 			'labelLocationBased'             => __( 'Location based', 'woocommerce-multilingual' ),
 			'maxMindDescription'             => __( 'WooCommerce integrates with MaxMind Geolocation to reliably determine the location of your customers.', 'woocommerce-multilingual' ),
 			'maxMindSuccess'                 => __( 'Great! Now you can use Geolocation to determine default currency for chosen languages. You can edit that key in ', 'woocommerce-multilingual' ),
-			'maxMindSettingLink'             => admin_url( 'admin.php?page=wc-settings&tab=integration' ),
+			'maxMindSettingLink'             => \WCML\Utilities\AdminUrl::getWooSettings( 'integration' ),
 			'maxMindSettingLinkText'         => __( 'WooCommerce settings page.', 'woocommerce-multilingual' ),
 			'maxMindLabel'                   => __( 'MaxMind Licence Key', 'woocommerce-multilingual' ),
 			'apply'                          => __( 'Apply', 'woocommerce-multilingual' ),

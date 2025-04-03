@@ -1,6 +1,10 @@
 <?php
 
+use WCML\COT\Helper as COTHelper;
+
 class WCML_Multi_Currency_Reports {
+
+	const TOP_SELLER_QUERY_USE_SELECT_ORDERS_FROM = '8.8.0';
 
 	/** @var woocommerce_wpml */
 	private $woocommerce_wpml;
@@ -51,14 +55,9 @@ class WCML_Multi_Currency_Reports {
 			     current_user_can( 'manage_woocommerce' ) ||
 			     current_user_can( 'publish_shop_orders' )
 			) {
-
-				add_filter( 'woocommerce_dashboard_status_widget_sales_query', array(
-					$this,
-					'filter_dashboard_status_widget_sales_query'
-				) );
 				add_filter( 'woocommerce_dashboard_status_widget_top_seller_query', array(
 					$this,
-					'filter_dashboard_status_widget_sales_query'
+					'filterDashboardstatusWidgetTopSellerQuery'
 				) );
 			}
 
@@ -69,10 +68,12 @@ class WCML_Multi_Currency_Reports {
 	public function admin_screen_loaded( $screen ) {
 
 		if ( $screen->id === 'dashboard' ) {
+			// Note that this filter only runs when the WooCommerce Admin is disabled.
+			// See https://developer.woocommerce.com/2021/05/18/request-for-comments-removing-the-filter-to-turn-off-woocommerce-admin/
 			add_filter( 'woocommerce_reports_get_order_report_query', array(
 				$this,
-				'filter_dashboard_status_widget_sales_query'
-			) ); // woocommerce 2.6
+				'filterOrdersAsPostsByCurrencyPostmeta'
+			) );
 		}
 
 	}
@@ -188,19 +189,48 @@ class WCML_Multi_Currency_Reports {
 		add_filter( 'woocommerce_currency_symbol', array( $this, '_set_reports_currency_symbol' ) );
 	}
 
-	/*
-	* Filter WC dashboard status query
-	*
-	* @param string $query Query to filter
-	*
-	* @return string
-	*/
-	public function filter_dashboard_status_widget_sales_query( $query ) {
+	/**
+	 * Filter some WC dashboard status queries by currency when products are stored in the posts table.
+	 *
+	 * @param array  $query
+	 * @param string $tableAlias
+	 *
+	 * @return array
+	 */
+	public function filterOrdersAsPostsByCurrencyPostmeta( $query, $tableAlias = 'posts' ) {
 
 		$currency = $this->woocommerce_wpml->multi_currency->admin_currency_selector->get_cookie_dashboard_currency();
 
-		$query['join'] .= " INNER JOIN {$this->wpdb->postmeta} AS currency_postmeta ON posts.ID = currency_postmeta.post_id";
+		$query['join']  .= " INNER JOIN {$this->wpdb->postmeta} AS currency_postmeta ON {$tableAlias}.ID = currency_postmeta.post_id";
 		$query['where'] .= $this->wpdb->prepare( " AND currency_postmeta.meta_key = '_order_currency' AND currency_postmeta.meta_value = %s", $currency );
+
+		return $query;
+	}
+
+	/**
+	 * Filter WC dashboard top seller query.
+	 *
+	 * @param array $query Query to filter
+	 *
+	 * @return array
+	 *
+	 * @see https://onthegosystems.myjetbrains.com/youtrack/issue/wcml-4789
+	 * @see https://github.com/woocommerce/woocommerce/commit/c83b030834b52e3f8dbd4e42f0751a4b911479a2
+	 */
+	public function filterDashboardstatusWidgetTopSellerQuery( $query ) {
+		// Before WooCommerce 8.8.0, the table alias was posts.
+		if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, self::TOP_SELLER_QUERY_USE_SELECT_ORDERS_FROM, '<' ) ) {
+			return $this->filterOrdersAsPostsByCurrencyPostmeta( $query );
+		}
+
+		// After WooCommerce 8.8.0, the table alias was orders.
+		// If HPOS is disabled, it still matches the posts table.
+		if ( false === COTHelper::isUsageEnabled() ) {
+			return $this->filterOrdersAsPostsByCurrencyPostmeta( $query, 'orders' );
+		}
+
+		// If HPOS is enabled after WooCommerce 8.8.0, the orders alias matches the orders table, which has a currency column.
+		$query['where'] .= $this->wpdb->prepare( " AND orders.currency = %s", $this->woocommerce_wpml->multi_currency->admin_currency_selector->get_cookie_dashboard_currency() );
 
 		return $query;
 	}
