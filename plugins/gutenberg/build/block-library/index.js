@@ -6591,7 +6591,7 @@ function CategoriesEdit({
       children: [showLabel ? /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_blockEditor_namespaceObject.RichText, {
         className: "wp-block-categories__label",
         "aria-label": (0,external_wp_i18n_namespaceObject.__)('Label text'),
-        placeholder: taxonomy.name,
+        placeholder: taxonomy?.name,
         withoutInteractiveFormatting: true,
         value: label,
         onChange: html => setAttributes({
@@ -6600,12 +6600,12 @@ function CategoriesEdit({
       }) : /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.VisuallyHidden, {
         as: "label",
         htmlFor: selectId,
-        children: label ? label : taxonomy.name
+        children: label ? label : taxonomy?.name
       }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)("select", {
         id: selectId,
         children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("option", {
           children: (0,external_wp_i18n_namespaceObject.sprintf)(/* translators: %s: taxonomy's singular name */
-          (0,external_wp_i18n_namespaceObject.__)('Select %s'), taxonomy.labels.singular_name)
+          (0,external_wp_i18n_namespaceObject.__)('Select %s'), taxonomy?.labels?.singular_name)
         }), categoriesList.map(category => renderCategoryDropdownItem(category, 0))]
       })]
     });
@@ -17487,7 +17487,10 @@ const EmbedEdit = props => {
       // When obtaining an incoming preview,
       // we set the attributes derived from the preview data.
       const mergedAttributes = getMergedAttributes();
-      setAttributes(mergedAttributes);
+      const hasChanges = Object.keys(mergedAttributes).some(key => mergedAttributes[key] !== attributes[key]);
+      if (hasChanges) {
+        setAttributes(mergedAttributes);
+      }
       if (onReplace) {
         const upgradedBlock = createUpgradedEmbedBlock(props, mergedAttributes);
         if (upgradedBlock) {
@@ -26852,10 +26855,6 @@ function image_Image({
   const {
     allowResize = true
   } = context;
-  const {
-    getBlock,
-    getSettings
-  } = (0,external_wp_data_namespaceObject.useSelect)(external_wp_blockEditor_namespaceObject.store);
   const image = (0,external_wp_data_namespaceObject.useSelect)(select => id && isSingleSelected ? select(external_wp_coreData_namespaceObject.store).getMedia(id, {
     context: 'view'
   }) : null, [id, isSingleSelected]);
@@ -26867,7 +26866,8 @@ function image_Image({
   } = (0,external_wp_data_namespaceObject.useSelect)(select => {
     const {
       getBlockRootClientId,
-      canInsertBlockType
+      canInsertBlockType,
+      getSettings
     } = select(external_wp_blockEditor_namespaceObject.store);
     const rootClientId = getBlockRootClientId(clientId);
     const settings = getSettings();
@@ -26879,6 +26879,10 @@ function image_Image({
     };
   }, [clientId]);
   const {
+    getBlock,
+    getSettings
+  } = (0,external_wp_data_namespaceObject.useSelect)(external_wp_blockEditor_namespaceObject.store);
+  const {
     replaceBlocks,
     toggleSelection
   } = (0,external_wp_data_namespaceObject.useDispatch)(external_wp_blockEditor_namespaceObject.store);
@@ -26886,6 +26890,9 @@ function image_Image({
     createErrorNotice,
     createSuccessNotice
   } = (0,external_wp_data_namespaceObject.useDispatch)(external_wp_notices_namespaceObject.store);
+  const {
+    editEntityRecord
+  } = (0,external_wp_data_namespaceObject.useDispatch)(external_wp_coreData_namespaceObject.store);
   const isLargeViewport = (0,external_wp_compose_namespaceObject.useViewportMatch)('medium');
   const isWideAligned = ['wide', 'full'].includes(align);
   const [{
@@ -26924,7 +26931,7 @@ function image_Image({
     .fetch(url.includes('?') ? url : url + '?').then(response => response.blob()).then(blob => setExternalBlob(blob))
     // Do nothing, cannot upload.
     .catch(() => {});
-  }, [id, url, isSingleSelected, externalBlob]);
+  }, [id, url, isSingleSelected, externalBlob, getSettings]);
 
   // Get naturalWidth and naturalHeight from image, and fall back to loaded natural
   // width and height. This resolves an issue in Safari where the loaded natural
@@ -27330,7 +27337,6 @@ function image_Image({
     queryId
   } = context;
   const isDescendentOfQueryLoop = Number.isFinite(queryId);
-  const [, setFeaturedImage] = (0,external_wp_coreData_namespaceObject.useEntityProp)('postType', postType, 'featured_media', postId);
   let img = temporaryURL && hasImageErrored ?
   /*#__PURE__*/
   // Show a placeholder during upload when the blob URL can't be loaded. This can
@@ -27510,7 +27516,9 @@ function image_Image({
    * Set the post's featured image with the current image.
    */
   const setPostFeatureImage = () => {
-    setFeaturedImage(id);
+    editEntityRecord('postType', postType, postId, {
+      featured_media: id
+    });
     createSuccessNotice((0,external_wp_i18n_namespaceObject.__)('Post featured image updated.'), {
       type: 'snackbar'
     });
@@ -27658,7 +27666,8 @@ function ImageEdit({
   // Only observe the max width from the parent container when the parent layout is not flex nor grid.
   // This won't work for them because the container width changes with the image.
   // TODO: Find a way to observe the container width for flex and grid layouts.
-  const isMaxWidthContainerWidth = !parentLayout || parentLayout.type !== 'flex' && parentLayout.type !== 'grid';
+  const layoutType = parentLayout?.type || parentLayout?.default?.type;
+  const isMaxWidthContainerWidth = !layoutType || layoutType !== 'flex' && layoutType !== 'grid';
   const [maxWidthObserver, maxContentWidth] = useMaxWidthObserver();
   const [placeholderResizeListener, {
     width: placeholderWidth
@@ -27926,7 +27935,7 @@ function ImageEdit({
         context: context,
         clientId: clientId,
         blockEditingMode: blockEditingMode,
-        parentLayoutType: parentLayout?.type,
+        parentLayoutType: layoutType,
         maxContentWidth: maxContentWidth
       }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_blockEditor_namespaceObject.MediaPlaceholder, {
         icon: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_blockEditor_namespaceObject.BlockIcon, {
@@ -36801,25 +36810,29 @@ function ColorTools({
         label: (0,external_wp_i18n_namespaceObject.__)('Text'),
         onColorChange: setTextColor,
         resetAllFilter: () => setTextColor(),
-        clearable: true
+        clearable: true,
+        enableAlpha: true
       }, {
         colorValue: backgroundColor.color,
         label: (0,external_wp_i18n_namespaceObject.__)('Background'),
         onColorChange: setBackgroundColor,
         resetAllFilter: () => setBackgroundColor(),
-        clearable: true
+        clearable: true,
+        enableAlpha: true
       }, {
         colorValue: overlayTextColor.color,
         label: (0,external_wp_i18n_namespaceObject.__)('Submenu & overlay text'),
         onColorChange: setOverlayTextColor,
         resetAllFilter: () => setOverlayTextColor(),
-        clearable: true
+        clearable: true,
+        enableAlpha: true
       }, {
         colorValue: overlayBackgroundColor.color,
         label: (0,external_wp_i18n_namespaceObject.__)('Submenu & overlay background'),
         onColorChange: setOverlayBackgroundColor,
         resetAllFilter: () => setOverlayBackgroundColor(),
-        clearable: true
+        clearable: true,
+        enableAlpha: true
       }],
       panelId: clientId,
       ...colorGradientSettings,
@@ -38164,6 +38177,7 @@ const navigation_init = () => initBlock({
 const navigation_link_edit_DEFAULT_BLOCK = {
   name: 'core/navigation-link'
 };
+const NESTING_BLOCK_NAMES = ['core/navigation-link', 'core/navigation-submenu'];
 
 /**
  * A React hook to determine if it's dragging within the target element.
@@ -38212,18 +38226,26 @@ const useIsDraggingWithin = elementRef => {
   }, [elementRef]);
   return isDraggingWithin;
 };
-const useIsInvalidLink = (kind, type, id) => {
+const useIsInvalidLink = (kind, type, id, enabled) => {
   const isPostType = kind === 'post-type' || type === 'post' || type === 'page';
   const hasId = Number.isInteger(id);
+  const blockEditingMode = (0,external_wp_blockEditor_namespaceObject.useBlockEditingMode)();
   const postStatus = (0,external_wp_data_namespaceObject.useSelect)(select => {
     if (!isPostType) {
+      return null;
+    }
+
+    // Fetching the posts status is an "expensive" operation. Especially for sites with large navigations.
+    // When the block is rendered in a template or other disabled contexts we can skip this check in order
+    // to avoid all these additional requests that don't really add any value in that mode.
+    if (blockEditingMode === 'disabled' || !enabled) {
       return null;
     }
     const {
       getEntityRecord
     } = select(external_wp_coreData_namespaceObject.store);
     return getEntityRecord('postType', type, id)?.status;
-  }, [isPostType, type, id]);
+  }, [isPostType, blockEditingMode, enabled, type, id]);
 
   // Check Navigation Link validity if:
   // 1. Link is 'post-type'.
@@ -38402,7 +38424,6 @@ function NavigationLinkEdit({
     description,
     kind
   } = attributes;
-  const [isInvalid, isDraft] = useIsInvalidLink(kind, type, id);
   const {
     maxNestingLevel
   } = context;
@@ -38433,25 +38454,36 @@ function NavigationLinkEdit({
     isAtMaxNesting,
     isTopLevelLink,
     isParentOfSelectedBlock,
-    hasChildren
+    hasChildren,
+    validateLinkStatus
   } = (0,external_wp_data_namespaceObject.useSelect)(select => {
     const {
       getBlockCount,
       getBlockName,
       getBlockRootClientId,
       hasSelectedInnerBlock,
-      getBlockParentsByBlockName
+      getBlockParentsByBlockName,
+      getSelectedBlockClientId
     } = select(external_wp_blockEditor_namespaceObject.store);
+    const rootClientId = getBlockRootClientId(clientId);
+    const isTopLevel = getBlockName(rootClientId) === 'core/navigation';
+    const selectedBlockClientId = getSelectedBlockClientId();
+    const rootNavigationClientId = isTopLevel ? rootClientId : getBlockParentsByBlockName(clientId, 'core/navigation')[0];
+
+    // Enable when the root Navigation block is selected or any of its inner blocks.
+    const enableLinkStatusValidation = selectedBlockClientId === rootNavigationClientId || hasSelectedInnerBlock(rootNavigationClientId, true);
     return {
-      isAtMaxNesting: getBlockParentsByBlockName(clientId, ['core/navigation-link', 'core/navigation-submenu']).length >= maxNestingLevel,
-      isTopLevelLink: getBlockName(getBlockRootClientId(clientId)) === 'core/navigation',
+      isAtMaxNesting: getBlockParentsByBlockName(clientId, NESTING_BLOCK_NAMES).length >= maxNestingLevel,
+      isTopLevelLink: isTopLevel,
       isParentOfSelectedBlock: hasSelectedInnerBlock(clientId, true),
-      hasChildren: !!getBlockCount(clientId)
+      hasChildren: !!getBlockCount(clientId),
+      validateLinkStatus: enableLinkStatusValidation
     };
   }, [clientId, maxNestingLevel]);
   const {
     getBlocks
   } = (0,external_wp_data_namespaceObject.useSelect)(external_wp_blockEditor_namespaceObject.store);
+  const [isInvalid, isDraft] = useIsInvalidLink(kind, type, id, validateLinkStatus);
 
   /**
    * Transform to submenu block.
@@ -44979,7 +45011,8 @@ function PostFeaturedImageEdit({
           label: label,
           showTooltip: true,
           tooltipPosition: "top center",
-          onClick: () => {
+          onClick: e => {
+            e.preventDefault();
             open();
           }
         });
@@ -52226,6 +52259,9 @@ const query_total_metadata = {
         width: true,
         style: true
       }
+    },
+    interactivity: {
+      clientNavigation: true
     }
   },
   style: "wp-block-query-total"
@@ -53697,7 +53733,9 @@ function RSSEdit({
     displayExcerpt,
     excerptLength,
     feedURL,
-    itemsToShow
+    itemsToShow,
+    openInNewTab,
+    rel
   } = attributes;
   function toggleAttribute(propName) {
     return () => {
@@ -53838,7 +53876,25 @@ function RSSEdit({
           min: 2,
           max: 6,
           required: true
+        }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.ToggleControl, {
+          __nextHasNoMarginBottom: true,
+          label: (0,external_wp_i18n_namespaceObject.__)('Open links in new tab'),
+          checked: openInNewTab,
+          onChange: value => setAttributes({
+            openInNewTab: value
+          })
         })]
+      })
+    }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_blockEditor_namespaceObject.InspectorControls, {
+      group: "advanced",
+      children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.TextControl, {
+        __next40pxDefaultSize: true,
+        __nextHasNoMarginBottom: true,
+        label: (0,external_wp_i18n_namespaceObject.__)('Link rel'),
+        value: rel || '',
+        onChange: value => setAttributes({
+          rel: value
+        })
       })
     }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("div", {
       ...blockProps,
@@ -53903,6 +53959,13 @@ const rss_metadata = {
     excerptLength: {
       type: "number",
       "default": 55
+    },
+    openInNewTab: {
+      type: "boolean",
+      "default": false
+    },
+    rel: {
+      type: "string"
     }
   },
   supports: {
@@ -56285,7 +56348,7 @@ function SiteTitleEdit({
   const dropdownMenuProps = useToolsPanelDropdownMenuProps();
   function setTitle(newTitle) {
     editEntityRecord('root', 'site', undefined, {
-      title: newTitle
+      title: newTitle.trim()
     });
   }
   const TagName = level === 0 ? 'p' : `h${level}`;
@@ -61667,7 +61730,8 @@ function getLatestHeadings(select, clientId) {
   const permalink = (_select$getPermalink = select('core/editor').getPermalink()) !== null && _select$getPermalink !== void 0 ? _select$getPermalink : null;
   const isPaginated = getBlocksByName('core/nextpage').length !== 0;
   const {
-    onlyIncludeCurrentPage
+    onlyIncludeCurrentPage,
+    maxLevel
   } = (_getBlockAttributes = getBlockAttributes(clientId)) !== null && _getBlockAttributes !== void 0 ? _getBlockAttributes : {};
 
   // Get post-content block client ID.
@@ -61729,6 +61793,11 @@ function getLatestHeadings(select, clientId) {
     else if (!onlyIncludeCurrentPage || headingPage === tocPage) {
       if (blockName === 'core/heading') {
         const headingAttributes = getBlockAttributes(blockClientId);
+
+        // Skip headings that are deeper than maxLevel
+        if (maxLevel && headingAttributes.level > maxLevel) {
+          continue;
+        }
         const canBeLinked = typeof headingPageLink === 'string' && typeof headingAttributes.anchor === 'string' && headingAttributes.anchor !== '';
         latestHeadings.push({
           // Convert line breaks to spaces, and get rid of HTML tags in the headings.
@@ -61805,10 +61874,11 @@ function useObserveHeadings(clientId) {
  *
  * @param {Object}                       props                                   The props.
  * @param {Object}                       props.attributes                        The block attributes.
- * @param {HeadingData[]}                props.attributes.headings               A list of data for each heading in the post.
+ * @param {HeadingData[]}                props.attributes.headings               The list of data for each heading in the post.
  * @param {boolean}                      props.attributes.onlyIncludeCurrentPage Whether to only include headings from the current page (if the post is paginated).
- * @param {string}                       props.clientId
- * @param {(attributes: Object) => void} props.setAttributes
+ * @param {number|undefined}             props.attributes.maxLevel               The maximum heading level to include, or null to include all levels.
+ * @param {string}                       props.clientId                          The client id.
+ * @param {(attributes: Object) => void} props.setAttributes                     The set attributes function.
  *
  * @return {Component} The component.
  */
@@ -61816,7 +61886,8 @@ function useObserveHeadings(clientId) {
 function TableOfContentsEdit({
   attributes: {
     headings = [],
-    onlyIncludeCurrentPage
+    onlyIncludeCurrentPage,
+    maxLevel
   },
   clientId,
   setAttributes
@@ -61863,15 +61934,16 @@ function TableOfContentsEdit({
     })
   });
   const inspectorControls = /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_blockEditor_namespaceObject.InspectorControls, {
-    children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalToolsPanel, {
+    children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_wp_components_namespaceObject.__experimentalToolsPanel, {
       label: (0,external_wp_i18n_namespaceObject.__)('Settings'),
       resetAll: () => {
         setAttributes({
-          onlyIncludeCurrentPage: false
+          onlyIncludeCurrentPage: false,
+          maxLevel: undefined
         });
       },
       dropdownMenuProps: dropdownMenuProps,
-      children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalToolsPanelItem, {
+      children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalToolsPanelItem, {
         hasValue: () => !!onlyIncludeCurrentPage,
         label: (0,external_wp_i18n_namespaceObject.__)('Only include current page'),
         onDeselect: () => setAttributes({
@@ -61887,7 +61959,46 @@ function TableOfContentsEdit({
           }),
           help: onlyIncludeCurrentPage ? (0,external_wp_i18n_namespaceObject.__)('Only including headings from the current page (if the post is paginated).') : (0,external_wp_i18n_namespaceObject.__)('Include headings from all pages (if the post is paginated).')
         })
-      })
+      }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalToolsPanelItem, {
+        hasValue: () => !!maxLevel,
+        label: (0,external_wp_i18n_namespaceObject.__)('Limit heading levels'),
+        onDeselect: () => setAttributes({
+          maxLevel: undefined
+        }),
+        isShownByDefault: true,
+        children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.SelectControl, {
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          label: (0,external_wp_i18n_namespaceObject.__)('Include headings down to level'),
+          value: maxLevel || '',
+          options: [{
+            value: '',
+            label: (0,external_wp_i18n_namespaceObject.__)('All levels')
+          }, {
+            value: '1',
+            label: (0,external_wp_i18n_namespaceObject.__)('Heading 1')
+          }, {
+            value: '2',
+            label: (0,external_wp_i18n_namespaceObject.__)('Heading 2')
+          }, {
+            value: '3',
+            label: (0,external_wp_i18n_namespaceObject.__)('Heading 3')
+          }, {
+            value: '4',
+            label: (0,external_wp_i18n_namespaceObject.__)('Heading 4')
+          }, {
+            value: '5',
+            label: (0,external_wp_i18n_namespaceObject.__)('Heading 5')
+          }, {
+            value: '6',
+            label: (0,external_wp_i18n_namespaceObject.__)('Heading 6')
+          }],
+          onChange: value => setAttributes({
+            maxLevel: value ? parseInt(value) : undefined
+          }),
+          help: maxLevel ? (0,external_wp_i18n_namespaceObject.__)('Including all heading levels in the table of contents.') : (0,external_wp_i18n_namespaceObject.__)('Only include headings up to and including this level.')
+        })
+      })]
     })
   });
 
@@ -61984,6 +62095,9 @@ const table_of_contents_metadata = {
     onlyIncludeCurrentPage: {
       type: "boolean",
       "default": false
+    },
+    maxLevel: {
+      type: "number"
     }
   },
   supports: {

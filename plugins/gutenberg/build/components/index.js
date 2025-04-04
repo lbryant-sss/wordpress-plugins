@@ -32234,9 +32234,9 @@ function getPrecision(value) {
 /**
  * Clamps a value based on a min/max range.
  *
- * @param {number} value The value.
- * @param {number} min   The minimum range.
- * @param {number} max   The maximum range.
+ * @param {number|string} value The value.
+ * @param {number}        min   The minimum range.
+ * @param {number}        max   The maximum range.
  *
  * @return {number} The clamped value.
  */
@@ -32246,22 +32246,25 @@ function math_clamp(value, min, max) {
 }
 
 /**
- * Clamps a value based on a min/max range with rounding
+ * Rounds a value to the nearest step offset by a minimum.
  *
- * @param {number | string} value The value.
- * @param {number}          min   The minimum range.
- * @param {number}          max   The maximum range.
- * @param {number}          step  A multiplier for the value.
+ * @param {number|string} value The value.
+ * @param {number}        min   The minimum range.
+ * @param {number}        step  The increment for the value.
  *
- * @return {number} The rounded and clamped value.
+ * @return {number} The value as a valid step.
  */
-function roundClamp(value = 0, min = Infinity, max = Infinity, step = 1) {
+function ensureValidStep(value, min, step) {
   const baseValue = getNumber(value);
   const stepValue = getNumber(step);
-  const precision = getPrecision(step);
-  const rounded = Math.round(baseValue / stepValue) * stepValue;
-  const clampedValue = math_clamp(rounded, min, max);
-  return precision ? getNumber(clampedValue.toFixed(precision)) : clampedValue;
+  const precision = Math.max(getPrecision(step), getPrecision(min));
+  const realMin = Math.abs(min) === Infinity ? 0 : min;
+  // If the step is not a factor of the minimum then the step must be
+  // offset by the minimum.
+  const tare = realMin % stepValue ? realMin : 0;
+  const rounded = Math.round((baseValue - tare) / stepValue) * stepValue;
+  const fromMin = rounded + tare;
+  return precision ? getNumber(fromMin.toFixed(precision)) : fromMin;
 }
 
 ;// ./packages/components/build-module/h-stack/utils.js
@@ -32565,12 +32568,14 @@ function UnforwardedNumberControl(props, forwardedRef) {
   const isStepAny = step === 'any';
   const baseStep = isStepAny ? 1 : ensureNumber(step);
   const baseSpin = ensureNumber(spinFactor) * baseStep;
-  const baseValue = roundClamp(0, min, max, baseStep);
   const constrainValue = (value, stepOverride) => {
-    // When step is "any" clamp the value, otherwise round and clamp it.
-    // Use '' + to convert to string for use in input value attribute.
-    return isStepAny ? '' + Math.min(max, Math.max(min, ensureNumber(value))) : '' + roundClamp(value, min, max, stepOverride !== null && stepOverride !== void 0 ? stepOverride : baseStep);
+    // When step is not "any" the value must be a valid step.
+    if (!isStepAny) {
+      value = ensureValidStep(value, min, stepOverride !== null && stepOverride !== void 0 ? stepOverride : baseStep);
+    }
+    return `${math_clamp(value, min, max)}`;
   };
+  const baseValue = constrainValue(0);
   const autoComplete = typeProp === 'number' ? 'off' : undefined;
   const classes = dist_clsx('components-number-control', className);
   const cx = useCx();
@@ -32941,7 +32946,7 @@ function UnforwardedAnglePickerControl(props, ref) {
  *     <AnglePickerControl
  *       value={ angle }
  *       onChange={ setAngle }
- *     </>
+ *     />
  *   );
  * }
  * ```
@@ -34718,6 +34723,31 @@ function useOnClickOutside(ref, handler) {
   }, [handler, ref]);
 }
 
+;// ./packages/components/build-module/utils/get-node-text.js
+const getNodeText = node => {
+  if (node === null) {
+    return '';
+  }
+  switch (typeof node) {
+    case 'string':
+    case 'number':
+      return node.toString();
+    case 'object':
+      {
+        if (node instanceof Array) {
+          return node.map(getNodeText).join('');
+        }
+        if ('props' in node) {
+          return getNodeText(node.props.children);
+        }
+        return '';
+      }
+    default:
+      return '';
+  }
+};
+/* harmony default export */ const get_node_text = (getNodeText);
+
 ;// ./packages/components/build-module/autocomplete/index.js
 /**
  * External dependencies
@@ -34740,33 +34770,7 @@ function useOnClickOutside(ref, handler) {
 
 
 
-const getNodeText = node => {
-  if (node === null) {
-    return '';
-  }
-  switch (typeof node) {
-    case 'string':
-    case 'number':
-      return node.toString();
-      break;
-    case 'boolean':
-      return '';
-      break;
-    case 'object':
-      {
-        if (node instanceof Array) {
-          return node.map(getNodeText).join('');
-        }
-        if ('props' in node) {
-          return getNodeText(node.props.children);
-        }
-        break;
-      }
-    default:
-      return '';
-  }
-  return '';
-};
+
 const EMPTY_FILTERED_OPTIONS = [];
 
 // Used for generating the instance ID
@@ -34861,7 +34865,7 @@ function useAutocomplete({
           setSelectedIndex(newIndex);
           // See the related PR as to why this is necessary: https://github.com/WordPress/gutenberg/pull/54902.
           if ((0,external_wp_keycodes_namespaceObject.isAppleOS)()) {
-            (0,external_wp_a11y_namespaceObject.speak)(getNodeText(filteredOptions[newIndex].label), 'assertive');
+            (0,external_wp_a11y_namespaceObject.speak)(get_node_text(filteredOptions[newIndex].label), 'assertive');
           }
           break;
         }
@@ -34870,7 +34874,7 @@ function useAutocomplete({
           const newIndex = (selectedIndex + 1) % filteredOptions.length;
           setSelectedIndex(newIndex);
           if ((0,external_wp_keycodes_namespaceObject.isAppleOS)()) {
-            (0,external_wp_a11y_namespaceObject.speak)(getNodeText(filteredOptions[newIndex].label), 'assertive');
+            (0,external_wp_a11y_namespaceObject.speak)(get_node_text(filteredOptions[newIndex].label), 'assertive');
           }
           break;
         }
@@ -35005,11 +35009,12 @@ function useAutocomplete({
   const listBoxId = isExpanded ? `components-autocomplete-listbox-${instanceId}` : undefined;
   const activeId = isExpanded ? `components-autocomplete-item-${instanceId}-${selectedKey}` : null;
   const hasSelection = record.start !== undefined;
+  const showPopover = !!textContent && hasSelection && !!AutocompleterUI;
   return {
     listBoxId,
     activeId,
     onKeyDown: withIgnoreIMEEvents(handleKeyDown),
-    popover: hasSelection && AutocompleterUI && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(AutocompleterUI, {
+    popover: showPopover && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(AutocompleterUI, {
       className: className,
       filterValue: filterValue,
       instanceId: instanceId,
@@ -38105,17 +38110,18 @@ function UnforwardedRangeControl(props, forwardedRef) {
  * import { useState } from '@wordpress/element';
  *
  * const MyRangeControl = () => {
- *   const [ isChecked, setChecked ] = useState( true );
+ *   const [ value, setValue ] = useState();
  *   return (
  *     <RangeControl
  *       __nextHasNoMarginBottom
  *       __next40pxDefaultSize
  *       help="Please select how transparent you would like this."
- *       initialPosition={50}
+ *       initialPosition={ 50 }
  *       label="Opacity"
- *       max={100}
- *       min={0}
- *       onChange={() => {}}
+ *       max={ 100 }
+ *       min={ 0 }
+ *       value={ value }
+ *       onChange={ setValue }
  *     />
  *   );
  * };
@@ -49603,7 +49609,7 @@ const WithHintItemHint = /*#__PURE__*/emotion_styled_base_browser_esm("span",  t
 } : 0)("color:", COLORS.theme.gray[600], ";text-align:initial;line-height:", config_values.fontLineHeightBase, ";padding-inline-end:", space(1), ";margin-block:", space(1), ";" + ( true ? "" : 0));
 const SelectedItemCheck = /*#__PURE__*/emotion_styled_base_browser_esm(SelectItemCheck,  true ? {
   target: "e1p3eej70"
-} : 0)("display:flex;align-items:center;margin-inline-start:", space(2), ";align-self:start;margin-block-start:2px;font-size:0;", WithHintItemWrapper, "~&,&:not(:empty){font-size:24px;}" + ( true ? "" : 0));
+} : 0)("display:flex;align-items:center;margin-inline-start:", space(2), ";fill:currentColor;align-self:start;margin-block-start:2px;font-size:0;", WithHintItemWrapper, "~&,&:not(:empty){font-size:24px;}" + ( true ? "" : 0));
 
 ;// ./packages/components/build-module/custom-select-control-v2/custom-select.js
 /**
@@ -66329,7 +66335,7 @@ const ToolbarContext = (0,external_wp_element_namespaceObject.createContext)(und
  */
 
 
-function toolbar_item_ToolbarItem({
+function UnforwardedToolbarItem({
   children,
   as: Component,
   ...props
@@ -66367,7 +66373,8 @@ function toolbar_item_ToolbarItem({
     render: render
   });
 }
-/* harmony default export */ const toolbar_item = ((0,external_wp_element_namespaceObject.forwardRef)(toolbar_item_ToolbarItem));
+const toolbar_item_ToolbarItem = (0,external_wp_element_namespaceObject.forwardRef)(UnforwardedToolbarItem);
+/* harmony default export */ const toolbar_item = (toolbar_item_ToolbarItem);
 
 ;// ./packages/components/build-module/toolbar/toolbar-button/toolbar-button-container.js
 
@@ -66908,7 +66915,7 @@ const toolbar_Toolbar = (0,external_wp_element_namespaceObject.forwardRef)(Unfor
 
 
 
-function ToolbarDropdownMenu(props, ref) {
+function UnforwardedToolbarDropdownMenu(props, ref) {
   const accessibleToolbarState = (0,external_wp_element_namespaceObject.useContext)(toolbar_context);
   if (!accessibleToolbarState) {
     return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(dropdown_menu, {
@@ -66931,7 +66938,8 @@ function ToolbarDropdownMenu(props, ref) {
     })
   });
 }
-/* harmony default export */ const toolbar_dropdown_menu = ((0,external_wp_element_namespaceObject.forwardRef)(ToolbarDropdownMenu));
+const ToolbarDropdownMenu = (0,external_wp_element_namespaceObject.forwardRef)(UnforwardedToolbarDropdownMenu);
+/* harmony default export */ const toolbar_dropdown_menu = (ToolbarDropdownMenu);
 
 ;// ./packages/components/build-module/tools-panel/styles.js
 

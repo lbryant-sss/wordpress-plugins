@@ -23476,17 +23476,16 @@ const LinkControlSearchInput = (0,external_wp_element_namespaceObject.forwardRef
       }, suggestion);
     }
   };
-  const inputLabel = placeholder !== null && placeholder !== void 0 ? placeholder : (0,external_wp_i18n_namespaceObject.__)('Search or type URL');
   return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)("div", {
     className: "block-editor-link-control__search-input-container",
     children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(url_input, {
       disableSuggestions: currentLink?.url === value,
-      label: inputLabel,
+      label: (0,external_wp_i18n_namespaceObject.__)('Link'),
       hideLabelFromVision: hideLabelFromVision,
       className: className,
       value: value,
       onChange: onInputChange,
-      placeholder: inputLabel,
+      placeholder: placeholder !== null && placeholder !== void 0 ? placeholder : (0,external_wp_i18n_namespaceObject.__)('Search or type URL'),
       __experimentalRenderSuggestions: showSuggestions ? handleRenderSuggestions : null,
       __experimentalFetchLinkSuggestions: searchHandler,
       __experimentalHandleURLSuggestions: true,
@@ -26937,14 +26936,10 @@ function BorderPanel({
       children: [hasBorderControl ? /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.BaseControl.VisualLabel, {
         as: "legend",
         children: (0,external_wp_i18n_namespaceObject.__)('Shadow')
-      }) : null, /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalItemGroup, {
-        isBordered: true,
-        isSeparated: true,
-        children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(ShadowPopover, {
-          shadow: shadow,
-          onShadowChange: setShadow,
-          settings: settings
-        })
+      }) : null, /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(ShadowPopover, {
+        shadow: shadow,
+        onShadowChange: setShadow,
+        settings: settings
       })]
     })]
   });
@@ -38849,6 +38844,15 @@ function KeyboardShortcutsRegister() {
       }
     });
     registerShortcut({
+      name: 'core/block-editor/paste-styles',
+      category: 'block',
+      description: (0,external_wp_i18n_namespaceObject.__)('Paste the copied style to the selected block(s).'),
+      keyCombination: {
+        modifier: 'primaryAlt',
+        character: 'v'
+      }
+    });
+    registerShortcut({
       name: 'core/block-editor/insert-before',
       category: 'block',
       description: (0,external_wp_i18n_namespaceObject.__)('Insert a new block before the selected block(s).'),
@@ -48922,7 +48926,7 @@ function useMultiSelection() {
 
 
 function useTabNav() {
-  const container = (0,external_wp_element_namespaceObject.useRef)();
+  const containerRef = /** @type {typeof useRef<HTMLElement>} */(0,external_wp_element_namespaceObject.useRef)();
   const focusCaptureBeforeRef = (0,external_wp_element_namespaceObject.useRef)();
   const focusCaptureAfterRef = (0,external_wp_element_namespaceObject.useRef)();
   const {
@@ -48942,19 +48946,19 @@ function useTabNav() {
   // capturing on the focus capture elements.
   const noCaptureRef = (0,external_wp_element_namespaceObject.useRef)();
   function onFocusCapture(event) {
-    const canvasElement = container.current.ownerDocument === event.target.ownerDocument ? container.current : container.current.ownerDocument.defaultView.frameElement;
+    const canvasElement = containerRef.current.ownerDocument === event.target.ownerDocument ? containerRef.current : containerRef.current.ownerDocument.defaultView.frameElement;
 
     // Do not capture incoming focus if set by us in WritingFlow.
     if (noCaptureRef.current) {
       noCaptureRef.current = null;
     } else if (hasMultiSelection()) {
-      container.current.focus();
+      containerRef.current.focus();
     } else if (getSelectedBlockClientId()) {
       if (getLastFocus()?.current) {
         getLastFocus().current.focus();
       } else {
         // Handles when the last focus has not been set yet, or has been cleared by new blocks being added via the inserter.
-        container.current.querySelector(`[data-block="${getSelectedBlockClientId()}"]`).focus();
+        containerRef.current.querySelector(`[data-block="${getSelectedBlockClientId()}"]`).focus();
       }
     }
     // In "compose" mode without a selected ID, we want to place focus on the section root when tabbing to the canvas.
@@ -48964,11 +48968,11 @@ function useTabNav() {
 
       // If we have section within the section root, focus the first one.
       if (sectionBlocks.length) {
-        container.current.querySelector(`[data-block="${sectionBlocks[0]}"]`).focus();
+        containerRef.current.querySelector(`[data-block="${sectionBlocks[0]}"]`).focus();
       }
       // If we don't have any section blocks, focus the section root.
       else if (sectionRootClientId) {
-        container.current.querySelector(`[data-block="${sectionRootClientId}"]`).focus();
+        containerRef.current.querySelector(`[data-block="${sectionRootClientId}"]`).focus();
       } else {
         // If we don't have any section root, focus the canvas.
         canvasElement.focus();
@@ -48977,7 +48981,7 @@ function useTabNav() {
       const isBefore =
       // eslint-disable-next-line no-bitwise
       event.target.compareDocumentPosition(canvasElement) & event.target.DOCUMENT_POSITION_FOLLOWING;
-      const tabbables = external_wp_dom_namespaceObject.focus.tabbable.find(container.current);
+      const tabbables = external_wp_dom_namespaceObject.focus.tabbable.find(containerRef.current);
       if (tabbables.length) {
         const next = isBefore ? tabbables[0] : tabbables[tabbables.length - 1];
         next.focus();
@@ -49009,19 +49013,26 @@ function useTabNav() {
       if (event.keyCode !== external_wp_keycodes_namespaceObject.TAB) {
         return;
       }
-      if (!hasMultiSelection() && !getSelectedBlockClientId()) {
+      if (
+      // Bails in case the focus capture elements aren’t present. They
+      // may be omitted to avoid silent tab stops in preview mode.
+      // See: https://github.com/WordPress/gutenberg/pull/59317
+      !focusCaptureAfterRef.current || !focusCaptureBeforeRef.current) {
         return;
       }
-      const isShift = event.shiftKey;
+      const {
+        target,
+        shiftKey: isShift
+      } = event;
       const direction = isShift ? 'findPrevious' : 'findNext';
-      const nextTabbable = external_wp_dom_namespaceObject.focus.tabbable[direction](event.target);
+      const nextTabbable = external_wp_dom_namespaceObject.focus.tabbable[direction](target);
 
       // We want to constrain the tabbing to the block and its child blocks.
       // If the preceding form element is within a different block,
       // such as two sibling image blocks in the placeholder state,
       // we want shift + tab from the first form element to move to the image
       // block toolbar and not the previous image block's form element.
-      const currentBlock = event.target.closest('[data-block]');
+      const currentBlock = target.closest('[data-block]');
       const isElementPartOfSelectedBlock = currentBlock && nextTabbable && (isInSameBlock(currentBlock, nextTabbable) || isInsideRootBlock(currentBlock, nextTabbable));
 
       // Allow tabbing from the block wrapper to a form element,
@@ -49058,7 +49069,7 @@ function useTabNav() {
 
       // If focus disappears due to there being no blocks, move focus to
       // the writing flow wrapper.
-      if (!event.relatedTarget && ownerDocument.activeElement === ownerDocument.body && getBlockCount() === 0) {
+      if (!event.relatedTarget && event.target.hasAttribute('data-block') && ownerDocument.activeElement === ownerDocument.body && getBlockCount() === 0) {
         node.focus();
       }
     }
@@ -49078,7 +49089,7 @@ function useTabNav() {
       if (event.target?.getAttribute('role') === 'region') {
         return;
       }
-      if (container.current === event.target) {
+      if (containerRef.current === event.target) {
         return;
       }
       const isShift = event.shiftKey;
@@ -49107,7 +49118,7 @@ function useTabNav() {
       node.removeEventListener('focusout', onFocusOut);
     };
   }, []);
-  const mergedRefs = (0,external_wp_compose_namespaceObject.useMergeRefs)([container, ref]);
+  const mergedRefs = (0,external_wp_compose_namespaceObject.useMergeRefs)([containerRef, ref]);
   return [before, mergedRefs, after];
 }
 
@@ -54081,6 +54092,9 @@ function PatternList({
         return true;
       }
       if (selectedCategory === myPatternsCategory.name && pattern.type === INSERTER_PATTERN_TYPES.user) {
+        return true;
+      }
+      if (selectedCategory === starterPatternsCategory.name && pattern.blockTypes?.includes('core/post-content')) {
         return true;
       }
       if (selectedCategory === 'uncategorized') {
@@ -59617,7 +59631,9 @@ function BlockBreadcrumb({
           getEditorRegion(blockEditor)?.focus();
         },
         children: rootLabel
-      }), !hasSelection && rootLabel, !!clientId && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(build_module_icon, {
+      }), !hasSelection && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("span", {
+        children: rootLabel
+      }), !!clientId && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(build_module_icon, {
         icon: chevron_right_small,
         className: "block-editor-block-breadcrumb__separator"
       })]
@@ -60940,7 +60956,7 @@ function PreviewBlockPopover({
           className: "block-editor-block-switcher__preview-title",
           children: (0,external_wp_i18n_namespaceObject.__)('Preview')
         }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(block_preview, {
-          viewportWidth: 500,
+          viewportWidth: 601,
           blocks: blocks
         })]
       })
@@ -65056,6 +65072,7 @@ function useShowBlockTools() {
 
 
 
+
 function block_tools_selector(select) {
   const {
     getSelectedBlockClientId,
@@ -65110,6 +65127,7 @@ function BlockTools({
     showEmptyBlockSideInserter,
     showBlockToolbarPopover
   } = useShowBlockTools();
+  const pasteStyles = usePasteStyles();
   const {
     duplicateBlocks,
     removeBlocks,
@@ -65153,6 +65171,13 @@ function BlockTools({
       if (clientIds.length) {
         event.preventDefault();
         removeBlocks(clientIds);
+      }
+    } else if (isMatch('core/block-editor/paste-styles', event)) {
+      const clientIds = getSelectedBlockClientIds();
+      if (clientIds.length) {
+        event.preventDefault();
+        const blocks = getBlocksByClientId(clientIds);
+        pasteStyles(blocks);
       }
     } else if (isMatch('core/block-editor/insert-after', event)) {
       const clientIds = getSelectedBlockClientIds();
@@ -66579,6 +66604,7 @@ function getDragDisplacementValues({
 
 
 
+
 function ListViewBlock({
   block: {
     clientId
@@ -66637,6 +66663,7 @@ function ListViewBlock({
     getGroupingBlockName
   } = (0,external_wp_data_namespaceObject.useSelect)(external_wp_blocks_namespaceObject.store);
   const blockInformation = useBlockDisplayInformation(clientId);
+  const pasteStyles = usePasteStyles();
   const {
     block,
     blockName,
@@ -66738,6 +66765,13 @@ function ListViewBlock({
         blockToFocus = getBlockOrder()[0];
       }
       updateFocusAndSelection(blockToFocus, shouldUpdateSelection);
+    } else if (isMatch('core/block-editor/paste-styles', event)) {
+      event.preventDefault();
+      const {
+        blocksToUpdate
+      } = getBlocksToUpdate();
+      const blocks = getBlocksByClientId(blocksToUpdate);
+      pasteStyles(blocks);
     } else if (isMatch('core/block-editor/duplicate', event)) {
       event.preventDefault();
       const {

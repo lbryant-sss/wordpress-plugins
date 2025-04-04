@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, page builder, editor, gutenberg blocks
 Donate link: https://www.kadencewp.com/about-us/
 Requires at least: 6.4
 Tested up to: 6.7.2
-Stable tag: 3.5.0
+Stable tag: 3.5.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -173,6 +173,18 @@ Please report security bugs found in the source code of the Kadence Blocks plugi
 Please report security bugs found in the Kadence Blocks plugin's source code through the Patchstack Vulnerability Disclosure Program https://patchstack.com/database/vdp/kadence-blocks. The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
 == Changelog ==
+
+= 3.5.1 =
+Release Date: 3rd April 2025
+* Add: Preset options for box shadow.
+* Add: Indicator on blocks in the editor that have custom CSS applied.
+* Fix: Focus in Text (Adv) input when is selected or inserted.
+* Fix: Captions in gallery lightbox when caption text contains a link.
+* Fix: Advanced navigation in footer not inheriting styles from settings.
+* Fix: Add aria-required to required fields in classic form block.
+* Fix: FAQ schema on accordions containing CSS.
+* Fix: Add aria-label to Gallery carousels.
+* Fix: Updating text shadow opacity in advanced text block.
 
 = 3.5.0 =
 Release Date: 18th March 2025

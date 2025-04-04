@@ -1,10 +1,10 @@
-=== 3CX Free Live Chat, Calls & WhatsApp ===
+=== 3CX Free Live Chat, Calls & Messaging ===
 Contributors: WP-LiveChat, wordpress3cx, wp3cx
 Tags: live chat, free live chat, live help, live support, wordpress live chat
 Requires at least: 5.3
 Tested up to: 6.7
 Requires PHP: 5.4
-Stable tag: 10.0.15
+Stable tag: 10.0.16
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: wp-live-chat-support
@@ -44,7 +44,7 @@ Simply create an account on the 3CX.com website, receive your account details, l
 * Ring Group
 * Auto Attendant
 
-= Video: 3CX Free Live Chat, Calls & WhatsApp =
+= Video: 3CX Free Live Chat, Calls & Messaging =
 [youtube https://www.youtube.com/watch?v=mtqHP_ef-2c]
 
 = Video: How to Set Up 3CX Free and Live Chat =
@@ -93,9 +93,12 @@ Huge update with over 300 changes that include: Bugfixes, Vulnerability Fixes & 
 
 == Changelog ==
 
+= 10.0.16 - 2025-04-03 =
+* Plugin title update
+
 = 10.0.15 - 2025-02-27 =
 * callus.js update
-* tested with WordPress 6.7
+* Tested with WordPress 6.7
 
 = 10.0.14 - 2024-07-04 =
 * Limit incomplete installation warnings to 1

@@ -1,3 +1,6 @@
+= 10.0.16 - 2025-04-03 =
+* Plugin title update
+
 = 10.0.15 - 2025-02-27 =
 * callus.js update
 * tested with WordPress 6.7

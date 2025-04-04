@@ -850,17 +850,17 @@
         },
         {
             "name": "vendidero/shiptastic-for-woocommerce",
-            "version": "4.3.6",
-            "version_normalized": "4.3.6.0",
+            "version": "4.3.7",
+            "version_normalized": "4.3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vendidero/shiptastic-for-woocommerce.git",
-                "reference": "9edc6edc6dc2b325a9218572689a4b62af96089f"
+                "reference": "47ab8b75c35640d62ee4485b13c9a8954dba0211"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vendidero/shiptastic-for-woocommerce/zipball/9edc6edc6dc2b325a9218572689a4b62af96089f",
-                "reference": "9edc6edc6dc2b325a9218572689a4b62af96089f",
+                "url": "https://api.github.com/repos/vendidero/shiptastic-for-woocommerce/zipball/47ab8b75c35640d62ee4485b13c9a8954dba0211",
+                "reference": "47ab8b75c35640d62ee4485b13c9a8954dba0211",
                 "shasum": ""
             },
             "require": {
@@ -874,7 +874,7 @@
                 "woocommerce/woocommerce-sniffs": "^1.0.0",
                 "yoast/phpunit-polyfills": "^3.0"
             },
-            "time": "2025-04-01T13:49:33+00:00",
+            "time": "2025-04-03T13:57:29+00:00",
             "type": "wordpress-plugin",
             "installation-source": "dist",
             "autoload": {
@@ -905,7 +905,7 @@
             "description": "Shiptastic for WooCommerce",
             "homepage": "https://vendidero.de",
             "support": {
-                "source": "https://github.com/vendidero/shiptastic-for-woocommerce/tree/v4.3.6"
+                "source": "https://github.com/vendidero/shiptastic-for-woocommerce/tree/v4.3.7"
             },
             "install-path": "../../packages/shiptastic-for-woocommerce"
         },

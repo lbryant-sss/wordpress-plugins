@@ -233,7 +233,7 @@ class Editor_Assets {
 			$userrole = 'contributor';
 		}
 		$access_levels = [];
-		$level_ids     = false;
+		$level_ids     = [];
 		if ( function_exists( 'rcp_get_access_levels' ) ) {
 			foreach ( rcp_get_access_levels() as $key => $access_level_label ) {
 				$access_levels[] = [
@@ -248,6 +248,9 @@ class Editor_Assets {
 					'label' => esc_attr( $level->get_name() ),
 				];
 			}
+		}
+		if ( empty( $level_ids ) ) {
+			$level_ids = false;
 		}
 		if ( ! class_exists( 'Kadence\Theme' ) ) {
 			$global_colors = [
@@ -389,6 +392,7 @@ class Editor_Assets {
 				'hasKadencePro'          => ( is_plugin_active( 'kadence-pro/kadence-pro.php' ) ? true : false ),
 				'adminUrl'               => get_admin_url(),
 				'aiLang'                 => ( ! empty( $prophecy_data['lang'] ) ? $prophecy_data['lang'] : '' ),
+				'env'                    => ( ! empty( $pro_data['env'] ) ? $pro_data['env'] : '' ),
 				'kadenceBlocksUrl'       => KADENCE_BLOCKS_URL,
 			]
 		);

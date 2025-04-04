@@ -1436,7 +1436,7 @@ class WoofiltersWpf extends ModuleWpf {
 				$categoryPageId = get_queried_object_id();
 			}
 			if ( ! is_null($categoryPageId) && $this->isFiltered( false ) ) {
-				if ( woocommerce_get_product_subcategories($categoryPageId) ) {
+				if (  $this->needSubcategoriesDisplay($categoryPageId) ) {
 					wc_set_loop_prop('is_filtered', false);
 				}
 				add_filter('woocommerce_product_loop_start', function ( $args ) use ( $categoryPageId ) {
@@ -1444,6 +1444,15 @@ class WoofiltersWpf extends ModuleWpf {
 				});
 			}     
 		}
+	}
+	public function needSubcategoriesDisplay( $categoryPageId ) {
+		$displayType = get_term_meta($categoryPageId, 'display_type', true);
+		$displayType = '' === $displayType ? get_option('woocommerce_category_archive_display', '') : $displayType;
+		if (in_array($displayType, array('subcategories', 'both'), true)) {
+			$subcategories = woocommerce_get_product_subcategories($categoryPageId);
+			return !empty($subcategories);
+		}
+		return false;
 	}
 	public function setSubcategoriesLink( $link ) {
 		$curUrl = isset($_SERVER['REQUEST_URI']) ? parse_url( esc_url_raw( $_SERVER['REQUEST_URI'] ) ) : array();

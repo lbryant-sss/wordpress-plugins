@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin name: Discount Rules Core
+ * Plugin name: Discount Rules for WooCommerce
  * Plugin URI: https://www.flycart.org
  * Description: Simple to complex discount rules for your WooCommerce store. Core package.
  * Author: Flycart

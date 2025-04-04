@@ -18788,6 +18788,7 @@ function CreateNewTemplateModal({
     onRequestClose: cancel,
     focusOnMount: "firstContentElement",
     size: "small",
+    overlayClassName: "editor-post-template__create-template-modal",
     children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("form", {
       className: "editor-post-template__create-form",
       onSubmit: submit,
@@ -19650,7 +19651,7 @@ const {
  *                                                                      When no title is provided it is always opened.
  * @param {WPBlockTypeIconRender} [props.icon=inherits from the plugin] The [Dashicon](https://developer.wordpress.org/resource/dashicons/)
  *                                                                      icon slug string, or an SVG WP element, to be rendered when
- *                                                                      the sidebar is pinned to toolbar.
+ *                                                                      the sidebar is pinned to toolbar. If `false` is passed, no icon will be rendered.
  * @param {React.ReactNode}       props.children                        Children to be rendered
  *
  * @example
@@ -20039,9 +20040,7 @@ function ResetDefaultTemplate({
 
 
 
-function CreateNewTemplate({
-  onClick
-}) {
+function CreateNewTemplate() {
   const {
     canCreateTemplates
   } = (0,external_wp_data_namespaceObject.useSelect)(select => {
@@ -20071,7 +20070,6 @@ function CreateNewTemplate({
     }), isCreateModalOpen && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(CreateNewTemplateModal, {
       onClose: () => {
         setIsCreateModalOpen(false);
-        onClick();
       }
     })]
   });
@@ -20205,9 +20203,7 @@ function BlockThemeControl({
             onClick: onClose
           }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(ResetDefaultTemplate, {
             onClick: onClose
-          }), canCreateTemplate && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(CreateNewTemplate, {
-            onClick: onClose
-          })]
+          }), canCreateTemplate && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(CreateNewTemplate, {})]
         }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.MenuGroup, {
           children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.MenuItem, {
             icon: !isTemplateHidden ? library_check : undefined,
@@ -25832,6 +25828,10 @@ function PostStatus() {
           title: (0,external_wp_i18n_namespaceObject.__)('Status & visibility'),
           onClose: onClose
         }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("form", {
+          onSubmit: event => {
+            event.preventDefault();
+            onClose();
+          },
           children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_wp_components_namespaceObject.__experimentalVStack, {
             spacing: 4,
             children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.RadioControl, {
@@ -30028,11 +30028,9 @@ function PreviewDropdown({
     const {
       getDeviceType,
       getCurrentPostType,
-      getCurrentTemplateId
-    } = select(store_store);
-    const {
+      getCurrentTemplateId,
       getRenderingMode
-    } = unlock(select(store_store));
+    } = select(store_store);
     const {
       getEntityRecord,
       getPostType
