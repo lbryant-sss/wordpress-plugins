@@ -85,8 +85,6 @@ class Fields {
 				'scrollHeight'        => 500,
 				'isShowScroll'        => 'OFF',
 				'isShowResponseText'  => 'ON',
-				'isShowPoweredBy'     => 'ON',
-
 				'btnLabel'            => __( 'Need Help? <strong>Chat with us</strong>', 'wp-whatsapp' ),
 				'btnLabelWidth'       => 156,
 				'btnPosition'         => 'right',
@@ -113,14 +111,10 @@ class Fields {
 	}
 
 	public static function getAnalyticsSetting() {
-		$option = get_option( 'nta_wa_analytics', array() );
-		return wp_parse_args(
-			$option,
-			array(
-				'enabledGoogle'    => 'OFF',
-				'enabledFacebook'  => 'OFF',
-				'enabledGoogleGA4' => 'OFF',
-			)
+		return array(
+			'enabledGoogle'    => 'OFF',
+			'enabledFacebook'  => 'OFF',
+			'enabledGoogleGA4' => 'OFF',
 		);
 	}
 

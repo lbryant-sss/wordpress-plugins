@@ -66,7 +66,7 @@ if (!class_exists('\\Wtierproduct\\Banners\\Wtier_Coupon_Cta_Banner')) {
          * Render the banner HTML.
          */
         public function render_banner() {
-            $plugin_url = 'https://www.webtoffee.com/product/smart-coupons-for-woocommerce/?utm_source=cross_promotion&utm_medium=marketing_coupons_tab&utm_campaign=Smart_coupons';
+            $plugin_url = 'https://www.webtoffee.com/product/smart-coupons-for-woocommerce/?utm_source=free_plugin_cross_promotion&utm_medium=marketing_coupons_tab&utm_campaign=Smart_coupons';
             $wt_admin_img_path = WT_P_IEW_PLUGIN_URL . 'assets/images/other_solutions';
             ?>
             <div class="wtier-cta-banner">

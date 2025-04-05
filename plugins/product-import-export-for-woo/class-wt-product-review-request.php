@@ -666,7 +666,7 @@ class Product_Import_Export_Review_Request
             'woocommerce_page_wc-orders' => array(
                 'cookie_name' => 'hide_cta_wc_orders',
                 'content' => '<span style="color: #212121;">' . esc_html__('You can now bulk import or export WooCommerce orders, coupons, and subscriptions using CSV, XML, or Excel files.', 'product-import-export-for-woo') . '</span>',
-                'plugin_url' => 'https://www.webtoffee.com/product/order-import-export-plugin-for-woocommerce/?utm_source=cross_promotion&utm_medium=woocommerce_orders&utm_campaign=Order_import_export',
+                'plugin_url' => 'https://www.webtoffee.com/product/order-import-export-plugin-for-woocommerce/?utm_source=free_plugin_cross_promotion&utm_medium=woocommerce_orders&utm_campaign=Order_import_export',
                 'plugin_check' => 'order-import-export-for-woocommerce/order-import-export-for-woocommerce.php',
                 'banner_color' => '#4750CB',
                 'banner_image' => 'assets/images/idea_bulb_blue.svg',
@@ -675,7 +675,7 @@ class Product_Import_Export_Review_Request
             'edit-product' => array(
                 'cookie_name' => 'hide_cta_wc_products',
                 'content' => '<span style="color: #212121;">' . esc_html__('You can now easily import and export WooCommerce products with images using CSV, XML, or Excel files.', 'product-import-export-for-woo') . '</span>' ,
-                'plugin_url' => 'https://www.webtoffee.com/product/product-import-export-woocommerce/?utm_source=cross_promotion&utm_medium=all_products_tab&utm_campaign=Product_import_export',
+                'plugin_url' => 'https://www.webtoffee.com/product/product-import-export-woocommerce/?utm_source=free_plugin_cross_promotion&utm_medium=all_products_tab&utm_campaign=Product_import_export',
                 'plugin_check' => 'product-import-export-for-woo/product-import-export-for-woo.php',
                 'banner_color' => '#7B54E0',
                 'banner_image' => 'assets/images/idea_bulb_gloomy_purple.svg',
@@ -684,7 +684,7 @@ class Product_Import_Export_Review_Request
             'users' => array(
                 'cookie_name' => 'hide_cta_wc_customers',
                 'content' => '<span style="color: #212121;">' . esc_html__('Easily import and export WordPress users & WooCommerce customers to CSV, XML, or Excel for seamless data management.', 'product-import-export-for-woo') . '</span>',
-                'plugin_url' => 'https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/?utm_source=cross_promotion&utm_medium=woocommerce_customers&utm_campaign=User_import_export',
+                'plugin_url' => 'https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/?utm_source=free_plugin_cross_promotion&utm_medium=woocommerce_customers&utm_campaign=User_import_export',
                 'plugin_check' => 'users-customers-import-export-for-wp-woocommerce/users-customers-import-export-for-wp-woocommerce.php',
                 'banner_color' => '#9D47CB',
                 'banner_image' => 'assets/images/idea_bulb_morado_purple.svg',

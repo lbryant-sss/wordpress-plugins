@@ -60,7 +60,8 @@
     #{$wrap} #{$menu} li.mega-menu-column,
     #{$wrap} #{$menu} a.mega-menu-link,
     #{$wrap} #{$menu} span.mega-menu-badge,
-    #{$wrap} button.mega-close {
+    #{$wrap} button.mega-close,
+    #{$wrap} button.mega-toggle-standard {
         transition: none;
         @include border-radius(0, 0, 0, 0);
         @include box-shadow(none);

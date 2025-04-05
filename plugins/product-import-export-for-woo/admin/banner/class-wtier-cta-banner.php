@@ -65,7 +65,7 @@ if (!class_exists('\\Wtierproduct\\Banners\\Wtier_Cta_Banner')) {
          * Render the banner HTML.
          */
         public function render_banner() {
-            $plugin_url = 'https://www.webtoffee.com/product/product-import-export-woocommerce/?utm_source=cross_promotion&utm_medium=add_new_product_tab&utm_campaign=Product_import_export';
+            $plugin_url = 'https://www.webtoffee.com/product/product-import-export-woocommerce/?utm_source=free_plugin_cross_promotion&utm_medium=add_new_product_tab&utm_campaign=Product_import_export';
             $wt_admin_img_path = WT_P_IEW_PLUGIN_URL . 'assets/images/other_solutions';
             ?>
             <div class="wtier-cta-banner">

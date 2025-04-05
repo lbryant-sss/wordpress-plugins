@@ -4,7 +4,7 @@ Tags: product export, product import, CSV import export, woocommerce product imp
 Requires at least: 3.0.1
 Tested up to: 6.7.2
 Requires PHP: 5.6
-Stable tag: 2.5.1
+Stable tag: 2.5.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -61,7 +61,7 @@ With this plugin, you can export and import WooCommerce products to and from a C
 * <strong>Save frequently used import/export configurations</strong> as templates and use the template for future imports and exports.
 * The plugin <strong>stores all the past imports and exports</strong> and <strong>lets you re-run</strong> them when needed.
 * <strong>Easy debugging:</strong> View and download import log for debugging purpose.
-&#9989; Tested OK with WooCommerce 9.7.0
+&#9989; Tested OK with WooCommerce 9.7.1
 
 ###COMPATIBLE PLUGINS###
 
@@ -235,6 +235,11 @@ Yes, you can import grouped, affiliate/external products in addition to simple p
 
 
 == CHANGELOG ==
+= 2.5.3 2025-04-04 =
+* [Fix] - Issues with exporting the gallery images.
+= 2.5.2 2025-04-04 =
+* [Fix] - Missing gallery images while product export.
+* [Compatibility] - Tested OK with WooCommerce 9.7.1
 = 2.5.1 2025-03-25 =
 * [Fix] - Vulnerable to Server-Side Request Forgery.
 * [Fix] - Vulnerable to Arbitrary File Deletion.
@@ -711,9 +716,5 @@ Yes, you can import grouped, affiliate/external products in addition to simple p
 
 == Upgrade Notice ==
 
-= 2.5.1 =
-* [Fix] - Vulnerable to Server-Side Request Forgery.
-* [Fix] - Vulnerable to Arbitrary File Deletion.
-* [Fix] - Vulnerable to PHP Object Injection.
-* [Fix] - Vulnerable to Directory Traversal.
-* [Fix] - CTA Banners.
+= 2.5.3 =
+* [Fix] - Issues with exporting the gallery images.

@@ -306,7 +306,16 @@ class Wt_Import_Export_For_Woo_Basic_Product_Bulk_Export {
                             }
 
                             // Images
-                            $images = isset($meta_data['_product_image_gallery'][0]) ? explode(',', Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_unserialize_safe($meta_data['_product_image_gallery'][0])) : false;
+                            $product_image_gallery = isset($meta_data['_product_image_gallery'][0]) ? $meta_data['_product_image_gallery'][0] : '';
+                            $images = array(); // Ensure $images is always an array
+                            if (is_serialized($product_image_gallery)) { 
+                                $images = Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_unserialize_safe($product_image_gallery);
+                                if( ! is_array( $images ) ) { 
+                                    $images = explode(',', $product_image_gallery); 
+                                } 
+                            } else {
+                                $images = is_string($product_image_gallery) ? explode(',', $product_image_gallery) : array();
+                            }                           
                             $results = array();
                             if ($images) {
                                 foreach ($images as $image_id) {

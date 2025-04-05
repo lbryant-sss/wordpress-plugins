@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Facebook for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Facebook for WooCommerce 3.4.5\n"
+"Project-Id-Version: Facebook for WooCommerce 3.4.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/facebook-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-03T10:55:31+00:00\n"
+"POT-Creation-Date: 2025-04-04T15:30:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: facebook-for-woocommerce\n"
@@ -507,7 +507,7 @@ msgstr ""
 msgid "Learn more about %s"
 msgstr ""
 
-#: includes/Admin/Enhanced_Catalog_Attribute_Fields.php:168
+#: includes/Admin/Enhanced_Catalog_Attribute_Fields.php:172
 msgid "Show more attributes"
 msgstr ""
 
@@ -1092,43 +1092,43 @@ msgstr ""
 msgid "Product is not published."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:279
+#: includes/ProductSync/ProductValidator.php:302
 msgid "This product cannot be synced to Facebook because it is hidden from your store catalog."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:294
+#: includes/ProductSync/ProductValidator.php:317
 msgid "Product excluded because of categories."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:301
+#: includes/ProductSync/ProductValidator.php:324
 msgid "Product excluded because of tags."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:312
+#: includes/ProductSync/ProductValidator.php:335
 msgid "Sync disabled in product field."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:322
+#: includes/ProductSync/ProductValidator.php:345
 msgid "Product excluded by wc_facebook_should_sync_product filter."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:356
+#: includes/ProductSync/ProductValidator.php:379
 msgid "If product is not simple, variable or variation it must have a price."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:382
+#: includes/ProductSync/ProductValidator.php:405
 msgid "Product description is all capital letters. Please change the description to sentence case in order to allow synchronization of your product."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:385
+#: includes/ProductSync/ProductValidator.php:408
 msgid "Product description is too long. Maximum allowed length is 5000 characters."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:403
+#: includes/ProductSync/ProductValidator.php:426
 msgid "Product title is too long. Maximum allowed length is 150 characters."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:427
+#: includes/ProductSync/ProductValidator.php:450
 msgid "Too many attributes selected for product. Use 4 or less."
 msgstr ""
 

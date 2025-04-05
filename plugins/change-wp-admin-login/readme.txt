@@ -91,6 +91,13 @@ If you only want to allow login access to trusted IPs, then AIO Login Pro is for
 By allowing only trusted IP addresses to access your login page, you can prevent unauthorized users from even attempting to log in. This adds an additional layer of security to your WordPress Admin Login, making sure that only users from approved IP addresses can gain entry.
 
 
+**✔️ Social Login [Pro]**
+
+Enhance user experience with seamless Social Login. Allow users to log in quickly and securely using their Google, Microsoft, or Facebook accounts—eliminating the need for manual registrations and improving accessibility.
+
+**Get ✨[All In One Login Pro](https://aiologin.com/pricing/?utm_source=wp_org&utm_medium=aiologin_product_page)✨ Now!**
+
+
 ### 7 Key Reasons to Choose All In One Login for Better WP-Admin Protection😎
 
 ⚡ **Reason #1: Greater Security for Your WP-Admin**
@@ -265,7 +272,7 @@ Even though it is not mandatory, using AIO Login can significantly enhance the s
 = 2.0.4 - Dec 05, 2024 =
 * Fixed - Backward compatibility with PHP < 8.0
 
-= 2.0.3 - Dec 03, 2024 =
+= 2.0.3 Dec 02, 2024 =
 * Updated backend with VueJS to improve UX
 
 = 2.0.2 Nov 21, 2024 =

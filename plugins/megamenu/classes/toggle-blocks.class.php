@@ -59,7 +59,14 @@ if ( ! class_exists( 'Mega_Menu_Toggle_Blocks' ) ) :
 			$closed_text = isset( $settings['closed_text'] ) ? do_shortcode( stripslashes( $settings['closed_text'] ) ) : 'MENU';
 			$open_text   = isset( $settings['open_text'] ) ? do_shortcode( stripslashes( $settings['open_text'] ) ) : 'MENU';
 
-			$html = "<span class='mega-toggle-label' role='button' aria-expanded='false'><span class='mega-toggle-label-closed'>{$closed_text}</span><span class='mega-toggle-label-open'>{$open_text}</span></span>";
+		    // Retrieve CSS version
+		    $css_version = Mega_Menu_Style_Manager::get_css_version();
+		    // Only use button HTML if CSS version is >= 3.5.1
+		    if ( version_compare( $css_version, '3.5.1', '>=' ) ) {
+		    	$html = "<button class='mega-toggle-standard mega-toggle-label' aria-expanded='false'><span class='mega-toggle-label-closed'>{$closed_text}</span><span class='mega-toggle-label-open'>{$open_text}</span></button>";
+		    } else {
+		    	$html = "<span class='mega-toggle-label' role='button' aria-expanded='false'><span class='mega-toggle-label-closed'>{$closed_text}</span><span class='mega-toggle-label-open'>{$open_text}</span></span>";
+		    }
 
 			return apply_filters( 'megamenu_toggle_menu_toggle_html', $html );
 		}
@@ -245,7 +252,7 @@ if ( ! class_exists( 'Mega_Menu_Toggle_Blocks' ) ) :
 
 			return $block_html;
 		}
-		
+
 
 		/**
 		 * Save the toggle blocks when the theme is saved

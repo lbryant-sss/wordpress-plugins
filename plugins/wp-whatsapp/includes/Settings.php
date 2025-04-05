@@ -111,7 +111,7 @@ class Settings {
 		}
 	}
 
-	function admin_footer() {
+	public function admin_footer() {
 		?>
 		<style>
 		body.admin-color-fresh #adminmenu #toplevel_page_nta_whatsapp a[href="admin.php?page=go_whatsapp_pro"] {
@@ -143,12 +143,12 @@ class Settings {
 		if ( $screen->base !== $this->floatingWidgetSlug ) {
 			return;
 		}
-		require NTA_WHATSAPP_PLUGIN_DIR . 'views/design-preview.php';
+		require_once NTA_WHATSAPP_PLUGIN_DIR . 'views/design-preview.php';
 	}
 
 	public function admin_enqueue_scripts( $hook_suffix ) {
-		if ( $hook_suffix === 'edit.php' || $hook_suffix === 'post-new.php' || $hook_suffix === 'post.php' ) {
-			if ( get_post_type() !== 'whatsapp-accounts' ) {
+		if ( 'edit.php' === $hook_suffix || 'post-new.php' === $hook_suffix || 'post.php' === $hook_suffix ) {
+			if ( 'whatsapp-accounts' !== get_post_type() ) {
 				return;
 			}
 		} elseif ( ! in_array( $hook_suffix, array( $this->settingSlug, $this->floatingWidgetSlug ) ) ) {
@@ -210,11 +210,17 @@ class Settings {
 	}
 
 	public function page_display_settings_section_callback() {
-		global $wpdb;
 		$option                 = Fields::getWidgetDisplay();
 		$option['time_symbols'] = explode( ':', $option['time_symbols'] );
-		$pages                  = $wpdb->get_results( "Select ID, post_title from {$wpdb->posts} where post_type = 'page' and post_status = 'publish'" );
-		require NTA_WHATSAPP_PLUGIN_DIR . 'views/display-settings.php';
+
+		$args  = array(
+			'post_type'      => 'page',
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+		);
+		$pages = get_posts( $args );
+
+			require_once NTA_WHATSAPP_PLUGIN_DIR . 'views/display-settings.php';
 	}
 
 	public function page_design_settings_section_callback() {
@@ -231,21 +237,21 @@ class Settings {
 			'quicktags'     => true,
 			'teeny'         => true,
 		);
-		require NTA_WHATSAPP_PLUGIN_DIR . 'views/design-settings.php';
+		require_once NTA_WHATSAPP_PLUGIN_DIR . 'views/design-settings.php';
 	}
 
 	public function page_selected_accounts_section_callback() {
-		require NTA_WHATSAPP_PLUGIN_DIR . 'views/selected-accounts.php';
+		require_once NTA_WHATSAPP_PLUGIN_DIR . 'views/selected-accounts.php';
 	}
 
 	public function woocommerce_button_callback() {
 		$option = Fields::getWoocommerceSetting();
-		require NTA_WHATSAPP_PLUGIN_DIR . 'views/woocommerce-button.php';
+		require_once NTA_WHATSAPP_PLUGIN_DIR . 'views/woocommerce-button.php';
 	}
 
 	public function analytics_callback() {
 		$option = Fields::getAnalyticsSetting();
-		require NTA_WHATSAPP_PLUGIN_DIR . 'views/analytics.php';
+		require_once NTA_WHATSAPP_PLUGIN_DIR . 'views/analytics.php';
 	}
 
 	public function url_callback() {
@@ -255,15 +261,15 @@ class Settings {
 
 	public function user_role_callback() {
 		$option = Fields::getUserRoleSettings();
-		require NTA_WHATSAPP_PLUGIN_DIR . 'views/user-role-settings.php';
+		require_once NTA_WHATSAPP_PLUGIN_DIR . 'views/user-role-settings.php';
 	}
 
 	public function create_page_setting_widget() {
-		require NTA_WHATSAPP_PLUGIN_DIR . 'views/settings.php';
+		require_once NTA_WHATSAPP_PLUGIN_DIR . 'views/settings.php';
 	}
 
 	public function floating_widget_view() {
-		require NTA_WHATSAPP_PLUGIN_DIR . 'views/floating-widget-settings.php';
+		require_once NTA_WHATSAPP_PLUGIN_DIR . 'views/floating-widget-settings.php';
 	}
 
 	public function register_setting() {
@@ -284,7 +290,7 @@ class Settings {
 	public function save_woobutton_setting() {
 		$new_input = array();
 
-		$new_input['nta_woo_button_position'] = sanitize_text_field( $_POST['nta_woo_button_position'] );
+		$new_input['nta_woo_button_position'] = isset( $_POST['nta_woo_button_position'] ) ? sanitize_text_field( $_POST['nta_woo_button_position'] ) : 'after_atc';
 		$new_input['nta_woo_button_status']   = isset( $_POST['nta_woo_button_status'] ) ? 'ON' : 'OFF';
 		return $new_input;
 	}
@@ -337,15 +343,13 @@ class Settings {
 		$new_input['scrollHeight']        = sanitize_text_field( $_POST['scrollHeight'] );
 		$new_input['isShowScroll']        = isset( $_POST['isShowScroll'] ) ? 'ON' : 'OFF';
 		$new_input['isShowResponseText']  = isset( $_POST['isShowResponseText'] ) ? 'ON' : 'OFF';
-		$new_input['isShowPoweredBy']     = isset( $_POST['isShowPoweredBy'] ) ? 'ON' : 'OFF';
-
-		$new_input['btnLabel']          = wp_kses_post( wp_unslash( $_POST['btnLabel'] ) ); // It can be an html tag
-		$new_input['btnPosition']       = sanitize_text_field( $_POST['btnPosition'] );
-		$new_input['btnLabelWidth']     = sanitize_text_field( $_POST['btnLabelWidth'] );
-		$new_input['btnLeftDistance']   = sanitize_text_field( $_POST['btnLeftDistance'] );
-		$new_input['btnRightDistance']  = sanitize_text_field( $_POST['btnRightDistance'] );
-		$new_input['btnBottomDistance'] = sanitize_text_field( $_POST['btnBottomDistance'] );
-		$new_input['isShowBtnLabel']    = isset( $_POST['isShowBtnLabel'] ) ? 'ON' : 'OFF';
+		$new_input['btnLabel']            = wp_kses_post( wp_unslash( $_POST['btnLabel'] ) ); // It can be an html tag
+		$new_input['btnPosition']         = sanitize_text_field( $_POST['btnPosition'] );
+		$new_input['btnLabelWidth']       = sanitize_text_field( $_POST['btnLabelWidth'] );
+		$new_input['btnLeftDistance']     = sanitize_text_field( $_POST['btnLeftDistance'] );
+		$new_input['btnRightDistance']    = sanitize_text_field( $_POST['btnRightDistance'] );
+		$new_input['btnBottomDistance']   = sanitize_text_field( $_POST['btnBottomDistance'] );
+		$new_input['isShowBtnLabel']      = isset( $_POST['isShowBtnLabel'] ) ? 'ON' : 'OFF';
 
 		$new_input['isShowGDPR']  = isset( $_POST['isShowGDPR'] ) ? 'ON' : 'OFF';
 		$new_input['gdprContent'] = wp_kses_post( wp_unslash( $_POST['gdprContent'] ) );
@@ -451,7 +455,7 @@ class Settings {
 						'accountId'       => $account->ID,
 						'accountName'     => $account->post_title,
 						'edit_link'       => get_edit_post_link( $account->ID ),
-						'avatar'          => $avatar !== false ? $avatar : '',
+						'avatar'          => false !== $avatar ? $avatar : '',
 						'widget_show'     => empty( $wg_show ) ? 'OFF' : $wg_show,
 						'widget_position' => $wg_position,
 						'wc_show'         => empty( $wc_show ) ? 'OFF' : $wc_show,
