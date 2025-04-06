@@ -3,10 +3,11 @@
 namespace BitCode\BitForm\Core\Util;
 
 use BitCode\BitForm\Admin\Form\Helpers;
+use BitCode\BitForm\Core\Form\FormManager;
 
 final class FieldValueHandler
 {
-  public static function replaceFieldWithValue($stringToReplaceField, $fieldValues)
+  public static function replaceFieldWithValue($stringToReplaceField, $fieldValues, $formID = null)
   {
     if (empty($stringToReplaceField)) {
       return $stringToReplaceField;
@@ -14,7 +15,14 @@ final class FieldValueHandler
     if (!is_string($stringToReplaceField)) {
       $stringToReplaceField = wp_json_encode($stringToReplaceField);
     }
+
+    if ($formID) {
+      $stringToReplaceField = self::replaceValueAllFields($stringToReplaceField, $fieldValues, $formID);
+      $stringToReplaceField = self::replaceRepeaterFieldValue($stringToReplaceField, $fieldValues, $formID);
+    }
+
     $stringToReplaceField = self::replaceSmartTagWithValue($stringToReplaceField);
+
     $fieldPattern = '/\${\w[^ ${}]*}/';
     preg_match_all($fieldPattern, $stringToReplaceField, $matchedField);
     if (empty($matchedField)) {
@@ -174,7 +182,6 @@ final class FieldValueHandler
   public static function formatFieldValueForMail($fields, $fieldValues)
   {
     $formattedFldValues = $fieldValues;
-    $repeaterFieldKey = [];
     $file_upload_types = Helpers::$file_upload_types;
     $repeated_array_type_data_fields = Helpers::$repeated_array_type_data_fields;
     foreach ($fields as $fldKey => $fldData) {
@@ -189,39 +196,41 @@ final class FieldValueHandler
         //   $formattedFldValues[$fldKey] = htmlspecialchars($value);
         // }
 
-        if (is_array($value)) {
-          $arrValue = '';
-          foreach ($value as $v) {
-            if (is_array($v)) {
-              foreach ($v as $k1 => $v1) {
-                if (array_key_exists($k1, $repeaterFieldKey)) {
-                  $oldValue = $repeaterFieldKey[$k1];
-                  if (is_array($v1) && in_array($fields->{$k1}->typ, $repeated_array_type_data_fields)) {
-                    $newValues = '[' . implode(', ', $v1) . '] ';
-                    if (!preg_match('/\[.*\]/', $oldValue)) {
-                      $oldValue = '[' . $oldValue . '] ';
-                    }
-                  } else {
-                    $newValues = $v1;
-                  }
-                  $repeaterFieldKey[$k1] = $oldValue . ', ' . $newValues;
-                } else {
-                  if (!empty($v1) && is_array($v1)) {
-                    $repeaterFieldKey[$k1] = htmlspecialchars(implode(', ', $v1));
-                  } else {
-                    $repeaterFieldKey[$k1] = htmlspecialchars($v1);
-                  }
-                }
-              }
-            } else {
-              $arrValue .= $v . ', ';
-            }
-          }
-          $formattedFldValues[$fldKey] = htmlspecialchars(rtrim($arrValue, ', '));
-          $arrValue = '';
-        } else {
-          $formattedFldValues[$fldKey] = htmlspecialchars($value);
-        }
+        // TODO: this code are temporary commented, need to change and remove the comment
+
+        // if (is_array($value)) {
+        //   $arrValue = '';
+        //   foreach ($value as $v) {
+        //     if (is_array($v)) {
+        //       foreach ($v as $k1 => $v1) {
+        //         if (array_key_exists($k1, $repeaterFieldKey)) {
+        //           $oldValue = $repeaterFieldKey[$k1];
+        //           if (is_array($v1) && in_array($fields->{$k1}->typ, $repeated_array_type_data_fields)) {
+        //             $newValues = '[' . implode(', ', $v1) . '] ';
+        //             if (!preg_match('/\[.*\]/', $oldValue)) {
+        //               $oldValue = '[' . $oldValue . '] ';
+        //             }
+        //           } else {
+        //             $newValues = $v1;
+        //           }
+        //           $repeaterFieldKey[$k1] = $oldValue . ', ' . $newValues;
+        //         } else {
+        //           if (!empty($v1) && is_array($v1)) {
+        //             $repeaterFieldKey[$k1] = htmlspecialchars(implode(', ', $v1));
+        //           } else {
+        //             $repeaterFieldKey[$k1] = htmlspecialchars($v1);
+        //           }
+        //         }
+        //       }
+        //     } else {
+        //       $arrValue .= $v . ', ';
+        //     }
+        //   }
+        //   $formattedFldValues[$fldKey] = htmlspecialchars(rtrim($arrValue, ', '));
+        //   $arrValue = '';
+        // } else {
+        //   $formattedFldValues[$fldKey] = htmlspecialchars($value);
+        // }
         if ('textarea' === $fldData->typ) {
           $formattedFldValues[$fldKey] = nl2br(htmlspecialchars($value));
         }
@@ -232,26 +241,10 @@ final class FieldValueHandler
     }
 
     $merge_values = array_merge($fieldValues, $formattedFldValues);
-    $merge_values = array_merge($merge_values, $repeaterFieldKey);
+    // $merge_values = array_merge($merge_values, $repeaterFieldKey);
+
     return $merge_values;
   }
-
-  // public static function changeImagePathInHTMLString($html_body, $path)
-  // {
-  //   $html_body = preg_replace_callback(
-  //     '/<img\s+src="([^"]+)"/i',
-  //     function ($matches) use ($path) {
-  //       $src = $matches[1];
-  //       if (null === parse_url($src, PHP_URL_SCHEME)) {
-  //         $src = $path . ltrim($src, '/');
-  //       }
-  //       return '<img src="' . htmlspecialchars($src, ENT_QUOTES) . '"';
-  //     },
-  //     $html_body
-  //   );
-
-  //   return $html_body;
-  // }
 
   public static function changeImagePathInHTMLString($html_body, $path)
   {
@@ -279,18 +272,216 @@ final class FieldValueHandler
         $fullPath = rtrim($path, '/') . '/' . ltrim($src, '/');
 
         $extension = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
-        if (!file_exists($fullPath) || !isset($allowedMimeTypes[$extension])) {
-          return '';
-        }
 
-        $mimeType = mime_content_type($fullPath);
-        if (!in_array($mimeType, $allowedMimeTypes[$extension], true)) {
-          return '';
+        if (!preg_match('/^(http|https):\/\//', $fullPath)) {
+          if (!file_exists($fullPath) || !isset($allowedMimeTypes[$extension])) {
+            return '';
+          }
+          $mimeType = mime_content_type($fullPath);
+          if (!in_array($mimeType, $allowedMimeTypes[$extension], true)) {
+            return '';
+          }
         }
 
         return str_replace($src, htmlspecialchars($fullPath, ENT_QUOTES), $matches[0]);
       },
       $html_body
     );
+  }
+
+  public static function replaceValueAllFields($stringToReplaceField, $fieldValues, $formId)
+  {
+    // ${bf_all_fields.1}
+    $pattern = '/\$\{bf_all_data\}/'; // Corrected escaping
+
+    preg_match_all($pattern, $stringToReplaceField, $matches);
+
+    if (count($matches[0]) > 0) {
+      $formManager = new FormManager($formId);
+      $formFields = $formManager->getFields();
+      $fields = self::bindFormData($formFields, $fieldValues, $formId);
+      $table = self::generateTable($fields, $formFields);
+      $stringToReplaceField = str_replace('${bf_all_data}', $table, $stringToReplaceField);
+    }
+
+    return $stringToReplaceField;
+  }
+
+  private static function bindFormData($formFields, $formData, $formId)
+  {
+    $entryID = $formData['entry_id'];
+    $encryptDirectory = Helpers::getEncryptedEntryId($entryID);
+
+    $uploadPath = $formId . DIRECTORY_SEPARATOR . $encryptDirectory;
+
+    return array_reduce(array_keys($formFields), function ($filteredData, $key) use ($formFields, $formData, $uploadPath) {
+      $field = $formFields[$key];
+
+      $ignoreFields = ['button', 'recaptcha', 'html', 'divider', 'section', 'file-up', 'turnstile', 'advanced-file-up', 'image'];
+
+      $arrayValueFldType = ['check', 'select', 'image-select'];
+
+      if (in_array($field['type'], $ignoreFields)) {
+        return $filteredData;
+      }
+
+      if (isset($formData[$key])) {
+        if ('repeater' === $field['type']) {
+          $filteredData[$key] = is_string($formData[$key]) ? json_decode($formData[$key], true) : $formData[$key];
+        } elseif ('signature' === $field['type']) {
+          $file_path = strpos($formData[$key], '/') ? $formData[$key] : $uploadPath . DIRECTORY_SEPARATOR . $formData[$key];
+          $filteredData[$key] = '<img src="' . $file_path . '" style="max-width: 100%; height: auto;" />';
+        } elseif (in_array($field['type'], $arrayValueFldType)) {
+          $filteredData[$key] = is_array($formData[$key]) ? implode(', ', $formData[$key]) : $formData[$key];
+        } else {
+          $filteredData[$key] = $formData[$key];
+        }
+      }
+
+      return $filteredData;
+    }, []);
+  }
+
+  private static function generateTable($fields, $formFields)
+  {
+    if (empty($fields)) {
+      return '<p>No data available.</p>';
+    }
+
+    $table = "<table style='font-family: arial, sans-serif; border-collapse: collapse; width: 100%;'>";
+
+    foreach ($fields as $fk => $value) {
+      $fieldName = $formFields[$fk]['label'] ?? $fk;
+      $table .= "<tr>
+              <td style='border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;'>{$fieldName}</td>
+              <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>";
+
+      if (is_array($value) && isset($formFields[array_keys($value[0])[0]])) {
+        $table .= "<table style='width: 100%; border-collapse: collapse;'>";
+
+        $table .= '<tr>';
+        foreach (array_keys($value[0]) as $subKey) {
+          $subLabel = $formFields[$subKey]['label'] ?? $subKey;
+          $table .= "<th style='border: 1px solid #dddddd; padding: 8px; background-color: #f2f2f2;'>" . $subLabel . '</th>';
+        }
+        $table .= '</tr>';
+
+        foreach ($value as $row) {
+          $table .= '<tr>';
+          foreach ($row as $subKey => $subValue) {
+            $subValue = is_array($subValue) ? implode(', ', $subValue) : $subValue;
+            $table .= "<td style='border: 1px solid #dddddd; padding: 8px;'>" . $subValue . '</td>';
+          }
+          $table .= '</tr>';
+        }
+        $table .= '</table>';
+      } else {
+        $table .= $value;
+      }
+
+      $table .= '</td></tr>';
+    }
+
+    $table .= '</table>';
+
+    return $table;
+  }
+
+  public static function replaceRepeaterFieldValue($stringToReplaceField, $fieldValues, $formID)
+  {
+    $formManager = new FormManager($formID);
+    $formFields = $formManager->getFields();
+
+    preg_match_all('/\$\{(.*?)\}/', $stringToReplaceField, $matches);
+
+    if (empty($matches[1])) {
+      return $stringToReplaceField;
+    }
+
+    // generate table for repeater fields
+    foreach ($matches[1] as $fk) {
+      $repeaterFieldKey = $fk;
+      $dataCleaning = self::removeEmptyValues($fieldValues);
+      $repeaterFieldData = self::getRepeaterFieldData($dataCleaning, $repeaterFieldKey);
+
+      if ('repeater' === $formFields[$repeaterFieldKey]['type']) {
+        $repeaterMarkup = self::repeaterFieldTable($repeaterFieldData, $formFields, $repeaterFieldKey);
+        $stringToReplaceField = str_replace('${' . $fk . '}', $repeaterMarkup, $stringToReplaceField);
+      } else {
+        $repeaterFieldData = is_array($repeaterFieldData) ? implode(', ', $repeaterFieldData) : $repeaterFieldData;
+        $stringToReplaceField = str_replace('${' . $fk . '}', $repeaterFieldData, $stringToReplaceField);
+      }
+    }
+    return $stringToReplaceField;
+  }
+
+  private static function getRepeaterFieldData($repeaterFieldData, $key)
+  {
+    $values = [];
+
+    // Decode any JSON strings in the array
+    foreach ($repeaterFieldData as $k => $v) {
+      if (is_string($v) && null !== json_decode($v, true)) {
+        $repeaterFieldData[$k] = json_decode($v, true);
+      }
+    }
+
+    // If the key exists in the main array
+    if (isset($repeaterFieldData[$key])) {
+      return $repeaterFieldData[$key];
+    }
+
+    // Search recursively
+    $iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($repeaterFieldData));
+    foreach ($iterator as $k => $v) {
+      if ($k === $key) {
+        $values[] = $v;
+      }
+    }
+
+    return count($values) > 1 ? implode(', ', $values) : (1 === count($values) ? $values[0] : null);
+  }
+
+  private static function removeEmptyValues($fieldData)
+  {
+    return array_filter($fieldData, function ($value) {
+      return !empty($value);
+    });
+  }
+
+  private static function repeaterFieldTable($repeaterFieldData, $formFields, $repeaterFieldKey)
+  {
+    $table = "<table style='font-family: arial, sans-serif; border-collapse: collapse; width: 100%;'>";
+    $table .= '<tr>';
+    $table .= '<th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">' . self::getLabel($formFields, $repeaterFieldKey) . '</th>';
+    $table .= '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">';
+    $table .= '<table style="width: 100%; border-collapse: collapse;">';
+
+    $table .= '<tr>';
+    foreach (array_keys($repeaterFieldData[0]) as $fk) {
+      $table .= '<th style="border: 1px solid #dddddd; padding: 8px; background-color: #f2f2f2;">' . self::getLabel($formFields, $fk) . '</th>';
+    }
+    $table .= '</tr>';
+
+    foreach ($repeaterFieldData as $row) {
+      $table .= '<tr>';
+      foreach ($row as $value) {
+        $newValue = is_array($value) ? implode(', ', $value) : $value;
+        $table .= '<td style="border: 1px solid #dddddd; padding: 8px;">' . $newValue . '</td>';
+      }
+      $table .= '</tr>';
+    }
+    $table .= '</table>';
+
+    $table .= '</td>';
+    $table .= '</tr>';
+    $table .= '</table>';
+
+    return $table;
+  }
+
+  private static function getLabel($formFields, $key)
+  {
+    return $formFields[$key]['label'] ?? $key;
   }
 }

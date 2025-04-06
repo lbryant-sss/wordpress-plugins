@@ -362,25 +362,26 @@ class ScriptFilePriorityManager
   public static function validationAndOtherScriptFile()
   {
     return [
-      'checkFldValidation'             => ['priority' => 701, 'filename' => 'checkFldValidation.min.js'],
-      'checkMinMaxOptions'             => ['priority' => 702, 'filename' => 'checkMinMaxOptions.min.js'],
-      'checkMinMaxValue'               => ['priority' => 702, 'filename' => 'checkMinMaxValue.min.js'],
-      'customOptionValidation'         => ['priority' => 702, 'filename' => 'customOptionValidation.min.js'],
-      'dcsnbxFldValidation'            => ['priority' => 702, 'filename' => 'dcsnbxFldValidation.min.js'],
-      'emailFldValidation'             => ['priority' => 702, 'filename' => 'emailFldValidation.min.js'],
-      'fileupFldValidation'            => ['priority' => 702, 'filename' => 'fileupFldValidation.min.js'],
-      'advanceFileupFldValidation'     => ['priority' => 702, 'filename' => 'advanceFileUpFldValidation.min.js'],
-      'phoneNumberFldValidation'       => ['priority' => 702, 'filename' => 'phoneNumberFldValidation.min.js'],
-      'currencyFldValidation'          => ['priority' => 702, 'filename' => 'currencyFldValidation.min.js'],
-      'generateBackslashPattern'       => ['priority' => 700, 'filename' => 'generateBackslashPattern.min.js'],
-      'nmbrFldValidation'              => ['priority' => 702, 'filename' => 'nmbrFldValidation.min.js'],
-      'regexPatternValidation'         => ['priority' => 701, 'filename' => 'regexPatternValidation.min.js'], // load before generateBackslashPattern file, then load  regexPatternValidation
-      'requiredFldValidation'          => ['priority' => 700, 'filename' => 'requiredFldValidation.min.js'],
-      'urlFldValidation'               => ['priority' => 702, 'filename' => 'urlFldValidation.min.js'],
-      'validation'                     => ['priority' => 705, 'filename' => 'validateForm.min.js'], // last priority for validation script
-      'conditionalLogic'               => ['priority' => 705, 'filename' => 'bit-conditionals.min.js'], // last priority for validation script
-      'resetPlaceholders'              => ['priority' => 201, 'filename' => 'resetPlaceholders.min.js'],
-      'validateFocusLost'              => ['priority' => 706, 'filename' => 'validate-focus.min.js'], // last priority for validation script
+      'checkFldValidation'               => ['priority' => 701, 'filename' => 'checkFldValidation.min.js'],
+      'checkMinMaxOptions'               => ['priority' => 702, 'filename' => 'checkMinMaxOptions.min.js'],
+      'checkMinMaxValue'                 => ['priority' => 702, 'filename' => 'checkMinMaxValue.min.js'],
+      'customOptionValidation'           => ['priority' => 702, 'filename' => 'customOptionValidation.min.js'],
+      'dcsnbxFldValidation'              => ['priority' => 702, 'filename' => 'dcsnbxFldValidation.min.js'],
+      'emailFldValidation'               => ['priority' => 702, 'filename' => 'emailFldValidation.min.js'],
+      'fileupFldValidation'              => ['priority' => 702, 'filename' => 'fileupFldValidation.min.js'],
+      'advanceFileupFldValidation'       => ['priority' => 702, 'filename' => 'advanceFileUpFldValidation.min.js'],
+      'phoneNumberFldValidation'         => ['priority' => 702, 'filename' => 'phoneNumberFldValidation.min.js'],
+      'currencyFldValidation'            => ['priority' => 702, 'filename' => 'currencyFldValidation.min.js'],
+      'generateBackslashPattern'         => ['priority' => 700, 'filename' => 'generateBackslashPattern.min.js'],
+      'nmbrFldValidation'                => ['priority' => 702, 'filename' => 'nmbrFldValidation.min.js'],
+      'regexPatternValidation'           => ['priority' => 701, 'filename' => 'regexPatternValidation.min.js'], // load before generateBackslashPattern file, then load  regexPatternValidation
+      'requiredFldValidation'            => ['priority' => 700, 'filename' => 'requiredFldValidation.min.js'],
+      'urlFldValidation'                 => ['priority' => 702, 'filename' => 'urlFldValidation.min.js'],
+      'validation'                       => ['priority' => 705, 'filename' => 'validateForm.min.js'], // last priority for validation script
+      'conditionalLogic'                 => ['priority' => 705, 'filename' => 'bit-conditionals.min.js'], // last priority for validation script
+      'resetPlaceholders'                => ['priority' => 201, 'filename' => 'resetPlaceholders.min.js'],
+      'bfResetDefaultValue'              => ['priority' => 201, 'filename' => 'bfResetDefaultValue.min.js'],
+      'validateFocusLost'                => ['priority' => 706, 'filename' => 'validate-focus.min.js'], // last priority for validation script
     ];
   }
 

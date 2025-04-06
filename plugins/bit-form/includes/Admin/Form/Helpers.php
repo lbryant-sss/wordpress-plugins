@@ -259,7 +259,7 @@ LOAD_SECRIPT;
   public static function validateFormEntryEditPermission($formId, $entryId)
   {
     if (is_user_logged_in()) {
-      if (current_user_can('manage_bitform') || current_user_can('bitform_entry_edit') || current_user_can('edit_posts')) {
+      if (current_user_can('manage_bitform') || current_user_can('bitform_entry_edit') || current_user_can('edit_post')) {
         return true;
       }
     }

@@ -613,6 +613,8 @@ FIELDCONFIGJS;
         $this->addScriptInLoadedScriptsList($fileArr);
         $fileArr = ScriptFilePriorityManager::validationAndOtherScriptFile()['resetPlaceholders'];
         $this->addScriptInLoadedScriptsList($fileArr);
+        $fileArr = ScriptFilePriorityManager::validationAndOtherScriptFile()['bfResetDefaultValue'];
+        $this->addScriptInLoadedScriptsList($fileArr);
         $fileArr = ScriptFilePriorityManager::validationAndOtherScriptFile()['validateFocusLost'];
         $this->addScriptInLoadedScriptsList($fileArr);
         $fileArr = ScriptFilePriorityManager::frontendScriptFile()['observeElm'];

@@ -8,7 +8,7 @@ class MollieField
   {
     $inputWrapper = new ClassicInputWrapper($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
     $input = self::field($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
-    return $inputWrapper->wrapper($input);
+    return $inputWrapper->wrapper($input, true);
   }
 
   private static function field($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error = null, $value = null)

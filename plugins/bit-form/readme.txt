@@ -1,13 +1,13 @@
 === Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder ===
 Plugin Name: Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder
-Version: 2.18.1
-Stable tag: 2.18.1
+Version: 2.18.3
+Stable tag: 2.18.3
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin 
 Tags: contact form, form, contact forms, forms, form builder
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.7.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -155,9 +155,10 @@ Quickly personalize your WordPress forms using Bit Form's built-in style editor.
 
 ### Bit Contact Form Blogs writen by Popular Bloggers
 
-1. [Fluent Forms vs Bit Form: Performance and Other Considerations](https://www.webtng.com/fluent-forms-vs-bit-form-performance-and-other-considerations/) | by **David McCan**
-2. [Bit Forms: A Powerful And Easy-To-Use WordPress Form Builder](https://lytboxacademy.com/bitforms-a-powerful-form-builder/)
-3. [The Most Advanced Contact Form Builder For WordPress: Bit Form](https://bitapps.pro/advanced-contact-form-builder-for-wordpress/)
+1. [17 Best Contact Form Plugins (#8- Bit Form) ](https://kinsta.com/blog/wordpress-contact-form-plugins/#8-bit-form) | by **Kinsta**
+2. [Fluent Forms vs Bit Form: Performance and Other Considerations](https://www.webtng.com/fluent-forms-vs-bit-form-performance-and-other-considerations/) | by **David McCan**
+3. [Bit Forms: A Powerful And Easy-To-Use WordPress Form Builder](https://lytboxacademy.com/bitforms-a-powerful-form-builder/)
+4. [The Most Advanced Contact Form Builder For WordPress: Bit Form](https://bitapps.pro/advanced-contact-form-builder-for-wordpress/)
 
 ==🔹 43 Form Field Types : ==
 
@@ -381,7 +382,7 @@ Bit Form uniquely integrates with third-party apps without extra costs, Easily a
 
 [**Bit Social:**](https://bit-social.com/) – Auto Post, Schedule & Share WordPress post to Facebook, LinkedIn, Twitter with Bit Social Auto Poster. Scheduling & Share post on social media easily.
 
-[**Bit Flow**] - Zapier, Integromat (Make.com), Integrately & Pabbly alternative in WordPress. [Coming Soon]
+[**Bit Flows**](https://bit-flows.com/) - Zapier, Integromat (Make.com), Integrately & Pabbly alternative in WordPress.
 
 ## Telemetry Data
 
@@ -543,6 +544,17 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
+= 2.18.2 =
+*Release Date: 24 March, 2025*
+*New:
+    1. Hidden Field: Added a new hidden field type.
+    2. Smart Tag: Introduced ${bf_all_data} smart tag to retrieve all field data in one tag.
+
+*Improvements:
+    1. UI/UX: Moved integration application authorization to a global setting.
+    2. Enhanced accuracy of "Number" function in conditional logic.
+    3. Improved the "Always" action effect in conditional logic.
+
 = 2.18.1 =
 *Release Date: 02 March, 2025*
  *New:

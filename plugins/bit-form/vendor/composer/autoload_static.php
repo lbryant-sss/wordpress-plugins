@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit50a4140f04244e842ca67747a7b79aba
+class ComposerStaticInitd9e0233255f82de3026744d6f2fe1094
 {
     public static $prefixLengthsPsr4 = array (
         'e' => 
@@ -283,6 +283,7 @@ class ComposerStaticInit50a4140f04244e842ca67747a7b79aba
         'BitCode\\BitForm\\Frontend\\Form\\View\\Conversational\\Fields\\DropdownField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Conversational/Fields/DropdownField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Conversational\\Fields\\FileUploadField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Conversational/Fields/FileUploadField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Conversational\\Fields\\GDPRAgreementField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Conversational/Fields/GDPRAgreementField.php',
+        'BitCode\\BitForm\\Frontend\\Form\\View\\Conversational\\Fields\\HiddenField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Conversational/Fields/HiddenField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Conversational\\Fields\\HtmlSelectField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Conversational/Fields/HtmlSelectField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Conversational\\Fields\\ImageSelectField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Conversational/Fields/ImageSelectField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Conversational\\Fields\\PayPalField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Conversational/Fields/PayPalField.php',
@@ -315,6 +316,7 @@ class ComposerStaticInit50a4140f04244e842ca67747a7b79aba
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\FileUploadField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/FileUploadField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\GDPRAgreementField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/GDPRAgreementField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\HTMLField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/HTMLField.php',
+        'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\HiddenField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/HiddenField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\HtmlSelectField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/HtmlSelectField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\ImageField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/ImageField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\ImageSelectField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/ImageSelectField.php',
@@ -353,6 +355,7 @@ class ComposerStaticInit50a4140f04244e842ca67747a7b79aba
         'BitCode\\BitForm\\enshrined\\svgSanitize\\data\\AttributeInterface' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/AttributeInterface.php',
         'BitCode\\BitForm\\enshrined\\svgSanitize\\data\\TagInterface' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/TagInterface.php',
         'BitCode\\BitForm\\enshrined\\svgSanitize\\data\\XPath' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/XPath.php',
+        'Bitcode\\BitForm\\Core\\Cryptography\\SodiumCompat' => __DIR__ . '/../..' . '/includes/Core/Cryptography/SodiumCompat.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'TypistTech\\Imposter\\ArrayUtil' => __DIR__ . '/..' . '/typisttech/imposter/src/ArrayUtil.php',
         'TypistTech\\Imposter\\Config' => __DIR__ . '/..' . '/typisttech/imposter/src/Config.php',
@@ -379,9 +382,9 @@ class ComposerStaticInit50a4140f04244e842ca67747a7b79aba
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit50a4140f04244e842ca67747a7b79aba::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit50a4140f04244e842ca67747a7b79aba::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit50a4140f04244e842ca67747a7b79aba::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd9e0233255f82de3026744d6f2fe1094::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd9e0233255f82de3026744d6f2fe1094::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd9e0233255f82de3026744d6f2fe1094::$classMap;
 
         }, null, ClassLoader::class);
     }

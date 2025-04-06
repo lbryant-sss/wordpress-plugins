@@ -117,6 +117,8 @@ $i18n_strings = array(
 
     'Custom Value' => __('Custom Value', 'bit-form'),
 
+    'Connect New Active Campaing API' => __('Connect New Active Campaing API', 'bit-form'),
+
     'Update ActiveCampaign' => __('Update ActiveCampaign', 'bit-form'),
 
     'Update Responses with ActiveCampaign existing email?' => __('Update Responses with ActiveCampaign existing email?', 'bit-form'),
@@ -157,6 +159,10 @@ $i18n_strings = array(
 
     'ActiveCampaign fields refresh failed. please try again' => __('ActiveCampaign fields refresh failed. please try again', 'bit-form'),
 
+    'Connected API:' => __('Connected API:', 'bit-form'),
+
+    'Select an App' => __('Select an App', 'bit-form'),
+
     'List:' => __('List:', 'bit-form'),
 
     'Select List' => __('Select List', 'bit-form'),
@@ -194,6 +200,10 @@ $i18n_strings = array(
     'Authorized successfully' => __('Authorized successfully', 'bit-form'),
 
     'Authorized failed' => __('Authorized failed', 'bit-form'),
+
+    'Connected API List:' => __('Connected API List:', 'bit-form'),
+
+    'Select API' => __('Select API', 'bit-form'),
 
     'Actions:' => __('Actions:', 'bit-form'),
 
@@ -244,6 +254,14 @@ $i18n_strings = array(
     'Refresh Autonami Fields' => __('Refresh Autonami Fields', 'bit-form'),
 
     'Autonami Fields' => __('Autonami Fields', 'bit-form'),
+
+    'Integration Info' => __('Integration Info', 'bit-form'),
+
+    'Add New' => __('Add New', 'bit-form'),
+
+    'App' => __('App', 'bit-form'),
+
+    'Authorize New Dropbox App' => __('Authorize New Dropbox App', 'bit-form'),
 
     'Delete File From Wordpress' => __('Delete File From Wordpress', 'bit-form'),
 
@@ -379,6 +397,8 @@ $i18n_strings = array(
 
     'Gist Fields' => __('Gist Fields', 'bit-form'),
 
+    'Authorize New Google App' => __('Authorize New Google App', 'bit-form'),
+
     'Update Row' => __('Update Row', 'bit-form'),
 
     'Control how the row gets updated.' => __('Control how the row gets updated.', 'bit-form'),
@@ -438,6 +458,8 @@ $i18n_strings = array(
     'Secret key cann\'t be empty' => __('Secret key cann\'t be empty', 'bit-form'),
 
     'Authorization failed' => __('Authorization failed', 'bit-form'),
+
+    'Authorize App:' => __('Authorize App:', 'bit-form'),
 
     'Spreadsheets:' => __('Spreadsheets:', 'bit-form'),
 
@@ -553,8 +575,6 @@ $i18n_strings = array(
 
     'Hubspot Fields' => __('Hubspot Fields', 'bit-form'),
 
-    'Integration Info' => __('Integration Info', 'bit-form'),
-
     'Data center cann\'t be empty' => __('Data center cann\'t be empty', 'bit-form'),
 
     'Data Center:' => __('Data Center:', 'bit-form'),
@@ -589,6 +609,8 @@ $i18n_strings = array(
 
     'Try our free webhook test website:' => __('Try our free webhook test website:', 'bit-form'),
 
+    'Authorize New Mailchimp App' => __('Authorize New Mailchimp App', 'bit-form'),
+
     'Add Address Field' => __('Add Address Field', 'bit-form'),
 
     'Add Double Opt-in' => __('Add Double Opt-in', 'bit-form'),
@@ -596,6 +618,10 @@ $i18n_strings = array(
     'Update Mail Chimp' => __('Update Mail Chimp', 'bit-form'),
 
     'Update Responses with MailChimp exist Aduience?' => __('Update Responses with MailChimp exist Aduience?', 'bit-form'),
+
+    'Authorize App Name:' => __('Authorize App Name:', 'bit-form'),
+
+    'Authorize App Name...' => __('Authorize App Name...', 'bit-form'),
 
     'Mail Chimp API Console' => __('Mail Chimp API Console', 'bit-form'),
 
@@ -614,6 +640,8 @@ $i18n_strings = array(
     'Fields refreshed' => __('Fields refreshed', 'bit-form'),
 
     'Fields refresh failed. please try again' => __('Fields refresh failed. please try again', 'bit-form'),
+
+    'Authorized App:' => __('Authorized App:', 'bit-form'),
 
     'Audience List:' => __('Audience List:', 'bit-form'),
 
@@ -699,6 +727,8 @@ $i18n_strings = array(
 
     'Loading MetaBox Fields...' => __('Loading MetaBox Fields...', 'bit-form'),
 
+    'Authorize New One Drive App' => __('Authorize New One Drive App', 'bit-form'),
+
     'Upload Files' => __('Upload Files', 'bit-form'),
 
     'Add attachments from Bit-integration-pro to OneDrive folder.' => __('Add attachments from Bit-integration-pro to OneDrive folder.', 'bit-form'),
@@ -744,6 +774,8 @@ $i18n_strings = array(
     'Pod cann\'t be empty' => __('Pod cann\'t be empty', 'bit-form'),
 
     'Pod' => __('Pod', 'bit-form'),
+
+    'Authorize New Rapidmail Account' => __('Authorize New Rapidmail Account', 'bit-form'),
 
     'Send Activation Email' => __('Send Activation Email', 'bit-form'),
 
@@ -907,6 +939,8 @@ $i18n_strings = array(
 
     'Select Fields' => __('Select Fields', 'bit-form'),
 
+    'Authorize New Zoho Analytics App' => __('Authorize New Zoho Analytics App', 'bit-form'),
+
     'Share Table' => __('Share Table', 'bit-form'),
 
     'Share Table with users pushed to Zoho Analytics.' => __('Share Table with users pushed to Zoho Analytics.', 'bit-form'),
@@ -923,11 +957,11 @@ $i18n_strings = array(
 
     'Permissions Settings' => __('Permissions Settings', 'bit-form'),
 
-    'Email is invalid' => __('Email is invalid', 'bit-form'),
-
     'Zoho Analytics Owner Email:' => __('Zoho Analytics Owner Email:', 'bit-form'),
 
     'Owner Email' => __('Owner Email', 'bit-form'),
+
+    'Email is invalid' => __('Email is invalid', 'bit-form'),
 
     'Workspaces refreshed' => __('Workspaces refreshed', 'bit-form'),
 
@@ -966,6 +1000,8 @@ $i18n_strings = array(
     'Refresh Analytics Table Headers' => __('Refresh Analytics Table Headers', 'bit-form'),
 
     'Zoho Fields' => __('Zoho Fields', 'bit-form'),
+
+    'Authorize New Zoho Bigin App' => __('Authorize New Zoho Bigin App', 'bit-form'),
 
     'Workflow' => __('Workflow', 'bit-form'),
 
@@ -1027,6 +1063,8 @@ $i18n_strings = array(
 
     'Refresh Bigin Related Lists' => __('Refresh Bigin Related Lists', 'bit-form'),
 
+    'Authorize New Zoho Campaigns App' => __('Authorize New Zoho Campaigns App', 'bit-form'),
+
     'Lists refreshed' => __('Lists refreshed', 'bit-form'),
 
     'Lists refresh failed Cause:' => __('Lists refresh failed Cause:', 'bit-form'),
@@ -1045,6 +1083,8 @@ $i18n_strings = array(
 
     'Refresh Campaigns Contact Fields' => __('Refresh Campaigns Contact Fields', 'bit-form'),
 
+    'Authorize New Zoho Creator App' => __('Authorize New Zoho Creator App', 'bit-form'),
+
     'Update Record' => __('Update Record', 'bit-form'),
 
     'Control how the record gets updated.' => __('Control how the record gets updated.', 'bit-form'),
@@ -1058,8 +1098,6 @@ $i18n_strings = array(
     'Zoho Creator Criteria Guide' => __('Zoho Creator Criteria Guide', 'bit-form'),
 
     'insert new record if the above criteria doesn&apos;t met?' => __('insert new record if the above criteria doesn&apos;t met?', 'bit-form'),
-
-    'Account Owner Name is mandatory!' => __('Account Owner Name is mandatory!', 'bit-form'),
 
     'Owner Name (Your Zoho Creator screen name):' => __('Owner Name (Your Zoho Creator screen name):', 'bit-form'),
 
@@ -1088,6 +1126,8 @@ $i18n_strings = array(
     'Select Form' => __('Select Form', 'bit-form'),
 
     'Refresh Creator Fields' => __('Refresh Creator Fields', 'bit-form'),
+
+    'Authorize New Zoho CRM App' => __('Authorize New Zoho CRM App', 'bit-form'),
 
     'Trigger CRM workflows' => __('Trigger CRM workflows', 'bit-form'),
 
@@ -1174,6 +1214,8 @@ $i18n_strings = array(
     'File Upload Field Map' => __('File Upload Field Map', 'bit-form'),
 
     'Please select a ticket owner' => __('Please select a ticket owner', 'bit-form'),
+
+    'Authorize New Zoho Desk App' => __('Authorize New Zoho Desk App', 'bit-form'),
 
     'Ticket Owner' => __('Ticket Owner', 'bit-form'),
 
@@ -1931,6 +1973,8 @@ $i18n_strings = array(
 
     'Edit verification messages' => __('Edit verification messages', 'bit-form'),
 
+    'Active Options' => __('Active Options', 'bit-form'),
+
     'Show Selected Option Image' => __('Show Selected Option Image', 'bit-form'),
 
     'Selected Option Clearable:' => __('Selected Option Clearable:', 'bit-form'),
@@ -1982,6 +2026,10 @@ $i18n_strings = array(
     'Edit GDPR Concent label by clicking on edit icon' => __('Edit GDPR Concent label by clicking on edit icon', 'bit-form'),
 
     'Edit GDPR Concent Label' => __('Edit GDPR Concent Label', 'bit-form'),
+
+    'Default value' => __('Default value', 'bit-form'),
+
+    'Suggestion' => __('Suggestion', 'bit-form'),
 
     'Edit the HTML field content by clicking on edit icon' => __('Edit the HTML field content by clicking on edit icon', 'bit-form'),
 
@@ -2224,10 +2272,6 @@ $i18n_strings = array(
     'Undo' => __('Undo', 'bit-form'),
 
     'Undo Button' => __('Undo Button', 'bit-form'),
-
-    'Default value' => __('Default value', 'bit-form'),
-
-    'Suggestion' => __('Suggestion', 'bit-form'),
 
     'Add/Edit Suggestions' => __('Add/Edit Suggestions', 'bit-form'),
 
@@ -2845,6 +2889,20 @@ $i18n_strings = array(
 
     'Usage Reporting Opt In.' => __('Usage Reporting Opt In.', 'bit-form'),
 
+    'App delete successfully.' => __('App delete successfully.', 'bit-form'),
+
+    'App deletion failed Cause' => __('App deletion failed Cause', 'bit-form'),
+
+    'App deletion failed. please try again' => __('App deletion failed. please try again', 'bit-form'),
+
+    'Are you sure to delete this App configuration?' => __('Are you sure to delete this App configuration?', 'bit-form'),
+
+    'Integrations' => __('Integrations', 'bit-form'),
+
+    'Connected/Authorized Platforms' => __('Connected/Authorized Platforms', 'bit-form'),
+
+    'Available Integrations' => __('Available Integrations', 'bit-form'),
+
     'Submit button cannot be removed' => __('Submit button cannot be removed', 'bit-form'),
 
     'Integration deletion failed Cause' => __('Integration deletion failed Cause', 'bit-form'),
@@ -2859,9 +2917,7 @@ $i18n_strings = array(
 
     'Integration clone failed.' => __('Integration clone failed.', 'bit-form'),
 
-    'Integrations' => __('Integrations', 'bit-form'),
-
-    'Available Integrations' => __('Available Integrations', 'bit-form'),
+    'Integrate your form with your favorite apps and services.' => __('Integrate your form with your favorite apps and services.', 'bit-form'),
 
     'First Name' => __('First Name', 'bit-form'),
 
@@ -2957,8 +3013,6 @@ $i18n_strings = array(
 
     'Repeater' => __('Repeater', 'bit-form'),
 
-    'Add New' => __('Add New', 'bit-form'),
-
     'Signature' => __('Signature', 'bit-form'),
 
     'Rating' => __('Rating', 'bit-form'),
@@ -2976,6 +3030,10 @@ $i18n_strings = array(
     'Image Select' => __('Image Select', 'bit-form'),
 
     'Option 4' => __('Option 4', 'bit-form'),
+
+    'Hidden Field' => __('Hidden Field', 'bit-form'),
+
+    'Set Default Value' => __('Set Default Value', 'bit-form'),
 
     'Pay with Stripe' => __('Pay with Stripe', 'bit-form'),
 
@@ -3028,6 +3086,8 @@ $i18n_strings = array(
     'Multi step settings' => __('Multi step settings', 'bit-form'),
 
     'All fields are required' => __('All fields are required', 'bit-form'),
+
+    'Saving Payment Setting...' => __('Saving Payment Setting...', 'bit-form'),
 
     'Available Payment Gateways' => __('Available Payment Gateways', 'bit-form'),
 
@@ -3659,6 +3719,8 @@ $i18n_strings = array(
 
     'reCAPTCHA' => __('reCAPTCHA', 'bit-form'),
 
+    'Payments' => __('Payments', 'bit-form'),
+
     'SMTP' => __('SMTP', 'bit-form'),
 
     'PDF' => __('PDF', 'bit-form'),
@@ -3666,8 +3728,6 @@ $i18n_strings = array(
     'CPT' => __('CPT', 'bit-form'),
 
     'API' => __('API', 'bit-form'),
-
-    'Payments' => __('Payments', 'bit-form'),
 
     'General' => __('General', 'bit-form'),
 

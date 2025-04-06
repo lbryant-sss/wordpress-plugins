@@ -22,6 +22,9 @@ class AdminAjax
   {
     add_action('wp_ajax_bitforms_integrations', [$this, 'integrations']);
     add_action('wp_ajax_integration', [$this, 'integration']);
+    add_action('wp_ajax_bitforms_save_connected_integration_apps', [$this, 'saveConnectedIntegrationApps']);
+    add_action('wp_ajax_bitforms_get_connected_integration_apps', [$this, 'getConnectedIntegrationApps']);
+    add_action('wp_ajax_bitforms_delete_connected_app', [$this, 'deleteConnectedApp']);
     add_action('wp_ajax_bitforms_update_form', [$this, 'updateForm']);
     add_action('wp_ajax_bitforms_templates', [$this, 'templates']);
     add_action('wp_ajax_bitforms_create_new_form', [$this, 'createNewForm']);
@@ -138,7 +141,7 @@ class AdminAjax
   public function integrations()
   {
     if (wp_verify_nonce(sanitize_text_field($_REQUEST['_ajax_nonce']), 'bitforms_save')) {
-      $testIntegration = new Integrations();
+      $testIntegration = Integrations::getInstance();
       $allIntegrations = $testIntegration->getAllintegrations();
       if ($allIntegrations) {
         wp_send_json_success($allIntegrations, 200);
@@ -147,6 +150,96 @@ class AdminAjax
           __('No Integration Found', 'bit-form'),
           404
         );
+      }
+    } else {
+      wp_send_json_error(
+        __(
+          'Token expired',
+          'bit-form'
+        ),
+        401
+      );
+    }
+  }
+
+  /**
+   * Undocumented function
+   *
+   * @return void
+   */
+  public function saveConnectedIntegrationApps()
+  {
+    if (wp_verify_nonce(sanitize_text_field($_REQUEST['_ajax_nonce']), 'bitforms_save')) {
+      $inputJSON = file_get_contents('php://input');
+      $input = json_decode($inputJSON);
+      // wp_send_json_success($input, 200);
+      $integrations = Integrations::getInstance();
+      $status = $integrations->saveConnectedIntegrationApp($input);
+
+      // if (isset($input->customCodes)) {
+      //   FrontEndScriptGenerator::customCodeFile($formId, $input->customCodes);
+      // }
+      if (is_wp_error($status)) {
+        wp_send_json_error($status->get_error_message(), 411);
+      } else {
+        wp_send_json_success($status, 200);
+      }
+    } else {
+      wp_send_json_error(
+        __(
+          'Token expired',
+          'bit-form'
+        ),
+        401
+      );
+    }
+  }
+
+  /**
+   * Undocumented function
+   *
+   * @return void
+   */
+  public function getConnectedIntegrationApps()
+  {
+    if (wp_verify_nonce(sanitize_text_field($_REQUEST['_ajax_nonce']), 'bitforms_save')) {
+      $testIntegration = Integrations::getInstance();
+      $allIntegrations = $testIntegration->getConnectedIntegrationApp();
+      if ($allIntegrations) {
+        wp_send_json_success($allIntegrations, 200);
+      } else {
+        wp_send_json_error(
+          __('No Connected App Found', 'bit-form'),
+          404
+        );
+      }
+    } else {
+      wp_send_json_error(
+        __(
+          'Token expired',
+          'bit-form'
+        ),
+        401
+      );
+    }
+  }
+
+  public function deleteConnectedApp()
+  {
+    if (wp_verify_nonce(sanitize_text_field($_REQUEST['_ajax_nonce']), 'bitforms_save')) {
+      $inputJSON = file_get_contents('php://input');
+      $input = json_decode($inputJSON);
+      if ($_REQUEST['appId']) {
+        $appId = wp_unslash($_REQUEST['appId']);
+      } else {
+        $appId = wp_unslash($input->appId);
+      }
+      $integrationHandler = Integrations::getInstance();
+      $status = $integrationHandler->deleteConnectedApp($appId);
+      if (is_wp_error($status)) {
+        wp_send_json_error($status->get_error_message(), 411);
+      } else {
+        wp_send_json_success($status, 200);
       }
     } else {
       wp_send_json_error(

@@ -47,6 +47,6 @@ class AjaxService
    */
   public function loadIntegrationsAjax()
   {
-    (new Integrations())->registerAjax();
+    (Integrations::getInstance())->registerAjax();
   }
 }

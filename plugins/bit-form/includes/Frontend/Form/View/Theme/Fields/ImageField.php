@@ -12,7 +12,7 @@ class ImageField
     $imgHeight = intval(Helpers::property_exists_nested($field, 'height', '', 1) ? $field->height : 100);
     $imgWidth = intval(Helpers::property_exists_nested($field, 'width', '', 1) ? $field->width : 40);
 
-    $imgSrc = Helpers::property_exists_nested($field, 'bg_img', '', 1) ? $field->bg_img : "https://via.placeholder.com/{$imgWidth}x{$imgHeight}";
+    $imgSrc = Helpers::property_exists_nested($field, 'bg_img', '', 1) ? $field->bg_img : "https://fakeimg.pl/{$imgWidth}x{$imgHeight}";
     $alt = Helpers::property_exists_nested($field, 'alt', '', 1) ? $field->alt : '';
     $img = <<<IMG
       <img

@@ -14,9 +14,10 @@ final class Helper
     $fieldData = [];
 
     foreach ($fields as $fieldKey => $fieldDetail) {
+      $value = isset($fieldDetail->val) ? $fieldDetail->val : (isset($fieldDetail->defaultValue) ? $fieldDetail->defaultValue : '');
       $fieldData[$fieldKey] = [
         'key'   => $fieldKey,
-        'value' => empty($fieldDetail->val) ? '' : $fieldDetail->val,
+        'value' => $value,
         'type'  => $fieldDetail->typ,
       ];
       if (isset($fieldDetail->mul)) {

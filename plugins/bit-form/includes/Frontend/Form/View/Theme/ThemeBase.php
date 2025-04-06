@@ -12,6 +12,7 @@ use BitCode\BitForm\Frontend\Form\View\Theme\Fields\DividerField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\DropdownField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\FileUploadField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\GDPRAgreementField;
+use BitCode\BitForm\Frontend\Form\View\Theme\Fields\HiddenField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\HTMLField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\HtmlSelectField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\ImageField;
@@ -137,6 +138,8 @@ INPUTWRAPPER;
         return HTMLField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
       case 'shortcode':
         return ShortcodeField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
+      case 'hidden':
+        return HiddenField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
       case 'paypal':
         return  PayPalField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
       case 'stripe':

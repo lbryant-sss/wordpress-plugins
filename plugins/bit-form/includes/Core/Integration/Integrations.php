@@ -22,6 +22,18 @@ use FilesystemIterator;
 final class Integrations
 {
   public $integrations = [];
+  private static $_instance = null;
+
+  /**
+   * Undocumented function
+   */
+  public static function getInstance()
+  {
+    if (null === self::$_instance) {
+      self::$_instance = new Integrations();
+    }
+    return self::$_instance;
+  }
 
   /**
    * Undocumented function
@@ -232,5 +244,67 @@ final class Integrations
       self::executeIntegrations($value, $fieldValue, $formID, $logID, $entryID);
     }
     self::entryDeleted($formID, $entryID);
+  }
+
+  /**
+   * This function helps to save connected integration app
+   *
+   * @return wp_error | mixed
+   */
+  public function saveConnectedIntegrationApp($appConfig)
+  {
+    // error_log('[+] saveConnectedIntegrationApp: ' . print_r($appConfig, true));
+    $connectionName = $appConfig->name;
+    $connectionType = $appConfig->type;
+    // $connectionDetails = wp_json_encode($appConfig);
+
+    if (empty($appConfig->details)) {
+      unset($appConfig->name, $appConfig->id);
+
+      $connectionDetails = !is_string($appConfig) ?
+        wp_json_encode($appConfig) : $appConfig;
+    } else {
+      $connectionDetails = !is_string($appConfig->details) ?
+        wp_json_encode($appConfig->details) : $appConfig->details;
+    }
+    $connectionCategory = 'connected_integration_apps';
+
+    $integrationHandler = new IntegrationHandler(0);
+
+    return $integrationHandler->saveIntegration($connectionName, $connectionType, $connectionDetails, $connectionCategory);
+  }
+
+  // get connectd integration app
+  public function getConnectedIntegrationApp()
+  {
+    $connectionCategory = 'connected_integration_apps';
+
+    $integrationHandler = new IntegrationHandler(0);
+
+    $allConnectedIntegApps = $integrationHandler->getAllIntegration($connectionCategory);
+
+    if (!is_wp_error($allConnectedIntegApps)) {
+      foreach ($allConnectedIntegApps as $integrationkey => $integrationValue) {
+        $integrationData = [
+          'id'   => $integrationValue->id,
+          'name' => $integrationValue->integration_name,
+          'type' => $integrationValue->integration_type,
+        ];
+        $allConnectedIntegApps[$integrationkey]->integration_details = wp_json_encode(array_merge(
+          $integrationData,
+          is_string($integrationValue->integration_details) ?
+          (array) json_decode($integrationValue->integration_details) :
+          $integrationValue->integration_details
+        ));
+      }
+    }
+    return $allConnectedIntegApps;
+  }
+
+  public function deleteConnectedApp($appId)
+  {
+    $integrationHandler = new IntegrationHandler(0);
+
+    return $integrationHandler->deleteIntegration($appId);
   }
 }

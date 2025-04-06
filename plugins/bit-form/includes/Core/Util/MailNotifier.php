@@ -49,7 +49,10 @@ final class MailNotifier
         if (isset($pdfSetting->pdfFileName)) {
           $pdfSetting->pdfFileName = FieldValueHandler::replaceFieldWithValue($pdfSetting->pdfFileName, $fieldValue);
         }
-        $pdfBody = FieldValueHandler::replaceFieldWithValue($pdfTemplate[0]->body, $fieldValue);
+
+        $fieldValue['entry_id'] = $entryID;
+
+        $pdfBody = FieldValueHandler::replaceFieldWithValue($pdfTemplate[0]->body, $fieldValue, $formID);
         $pdfBody = FieldValueHandler::changeImagePathInHTMLString($pdfBody, $serverPath);
 
         $generatedPdf = Pdf::getInstance()->generator($pdfSetting, $pdfBody, $path, $entryID, 'F');
@@ -96,7 +99,7 @@ final class MailNotifier
             $mailBody = $downloadFile->replaceShortCodeToPdfPassword($mailBody, $formID, $entryID);
           }
 
-          $mailBody = FieldValueHandler::replaceFieldWithValue($mailBody, $fieldValue);
+          $mailBody = FieldValueHandler::replaceFieldWithValue($mailBody, $fieldValue, $formID);
           $webUrl = BITFORMS_UPLOAD_BASE_URL . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
           $mailBody = FieldValueHandler::changeImagePathInHTMLString($mailBody, $webUrl);
 

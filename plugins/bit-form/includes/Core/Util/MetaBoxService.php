@@ -20,6 +20,13 @@ class MetaBoxService
       'taxonomy_advanced',
     ];
 
+    $supportedFieldType = [
+      'select',
+      'select_advanced',
+      'checkbox_list',
+      'radio_list'
+    ];
+
     $fileTypes = [
       'image',
       'image_upload',
@@ -38,7 +45,7 @@ class MetaBoxService
     $metaBoxFields = rwmb_get_object_fields($postType);
 
     foreach ($metaBoxFields as $index => $field) {
-      if (in_array($field['type'], $unsupportedTypes)) {
+      if (in_array($field['type'], $unsupportedTypes) && !in_array($field['field_type'], $supportedFieldType)) {
         continue;
       }
 

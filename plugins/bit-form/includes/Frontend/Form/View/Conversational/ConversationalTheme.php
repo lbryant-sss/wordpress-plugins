@@ -10,6 +10,7 @@ use BitCode\BitForm\Frontend\Form\View\Conversational\Fields\DecisionBoxField;
 use BitCode\BitForm\Frontend\Form\View\Conversational\Fields\DropdownField;
 use BitCode\BitForm\Frontend\Form\View\Conversational\Fields\FileUploadField;
 use BitCode\BitForm\Frontend\Form\View\Conversational\Fields\GDPRAgreementField;
+use BitCode\BitForm\Frontend\Form\View\Conversational\Fields\HiddenField;
 use BitCode\BitForm\Frontend\Form\View\Conversational\Fields\HtmlSelectField;
 use BitCode\BitForm\Frontend\Form\View\Conversational\Fields\ImageSelectField;
 use BitCode\BitForm\Frontend\Form\View\Conversational\Fields\PayPalField;
@@ -112,6 +113,8 @@ FIELDCONTENT;
         return DecisionBoxField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
       case 'gdpr':
         return GDPRAgreementField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
+      case 'hidden':
+        return HiddenField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
       case 'paypal':
         return  PayPalField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
       case 'stripe':

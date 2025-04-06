@@ -347,6 +347,8 @@ final class FrontendFormManager extends FormManager
         return $updateResponse;
       }
 
+      //TO DO:: submit success action temporarily added for solution of a issue
+      do_action('bitform_submit_success', $this->_form_id, $entryID, $_POST, $_FILES);
       do_action('bitform_update_success', $this->_form_id, $entryID, $_POST, $_FILES);
 
       $captchaV3Settings = $this->getCaptchaV3Settings();

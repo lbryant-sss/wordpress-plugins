@@ -85,6 +85,7 @@ final class WorkFlow
     if (empty($workFlows) || is_wp_error($workFlows)) {
       return [];
     }
+    $workFlows = array_reverse($workFlows);
     $fieldData = Helper::getFieldData($fields);
     foreach ($workFlows as $workFlow) {
       $conditions = json_decode($workFlow->workflow_condition);
@@ -104,6 +105,7 @@ final class WorkFlow
             if (($conditionStatus && in_array($type, ['if', 'else-if']) || 'else' === $type)) {
               $data = $this->_actions->setFieldProperty($condition->actions->fields, $fieldData, $fields);
               $fields = $data[0];
+              $fieldData = $data[1];
               break;
             }
           }

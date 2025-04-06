@@ -8,6 +8,7 @@ namespace BitCode\BitForm\Admin;
 
 use BitCode\BitForm\Core\Form\FormHandler;
 use BitCode\BitForm\Core\Integration\IntegrationHandler;
+use BitCode\BitForm\Core\Integration\Integrations;
 use BitCode\BitForm\Core\Util\DateTimeHelper;
 use BitCode\BitForm\Core\Util\FileDownloadProvider;
 use BitCode\BitForm\Core\Util\IpTool;
@@ -61,6 +62,7 @@ class Admin_Bar
       $submenu['bitform'][] = [__('All Forms' . $entriesCount, 'bit-form'), $capability, 'admin.php?page=bitform#/'];
       $submenu['bitform'][] = [__('Form Templates <span class="bf-template-new-badge">New</span>', 'bit-form'), $capability, 'admin.php?page=bitform#/form-templates'];
       $submenu['bitform'][] = [__('App Settings', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/recaptcha'];
+      $submenu['bitform'][] = [__('Integrations', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/integrations'];
       $submenu['bitform'][] = [__('SMTP', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/smtp'];
       $submenu['bitform'][] = [__('PDF Setting', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/pdf'];
       $submenu['bitform'][] = [__('CPT', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/cpt'];
@@ -256,6 +258,10 @@ class Admin_Bar
     $user_details = $ipTool->getUserDetail();
     $integrationHandler = new IntegrationHandler(0, $user_details);
     $allFormIntegrations = $integrationHandler->getAllIntegration('app');
+
+    $integraions = Integrations::getInstance();
+    $connectedIntegrationApps = $integraions->getConnectedIntegrationApp();
+
     $allFormSettings = [];
     if (!is_wp_error($allFormIntegrations)) {
       $integCount = [];
@@ -284,6 +290,10 @@ class Admin_Bar
           }
         }
       }
+    }
+
+    if (!is_wp_error($connectedIntegrationApps)) {
+      $allFormSettings['connectedIntegrationApps'] = $connectedIntegrationApps;
     }
 
     $users = get_users(['fields' => ['ID', 'user_nicename', 'user_email', 'display_name']]);

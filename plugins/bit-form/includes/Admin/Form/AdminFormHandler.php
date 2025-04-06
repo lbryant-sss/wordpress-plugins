@@ -1170,6 +1170,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
           'enabled' => [
             'blocked_ip'    => false,
             'restrict_form' => false,
+            'onePerIp'      => false,
           ],
           'settings' => [
             'restrict_form' => [
@@ -1186,7 +1187,6 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
             'entry_limit' => null,
             'blocked_ip'  => [],
           ],
-          'onePerIp' => false,
         ] : $form_content->additional,
         'created_at' => $formManager->getFormMetaData()['created_at'],
         'views'      => $formManager->getFormMetaData()['views'],
@@ -1387,6 +1387,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
           'enabled' => [
             'blocked_ip'    => false,
             'restrict_form' => false,
+            'onePerIp'      => false,
           ],
           'settings' => [
             'restrict_form' => [
@@ -1403,7 +1404,6 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
             'entry_limit' => null,
             'blocked_ip'  => [],
           ],
-          'onePerIp' => false,
         ] : $form_content->additional,
         'created_at' => $formManager->getFormMetaData()['created_at'],
         'views'      => $formManager->getFormMetaData()['views'],
@@ -2345,8 +2345,12 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
     $pages = get_pages(['post_status' => 'publish', 'sort_column' => 'post_date', 'sort_order' => 'desc']);
     $allPages = [];
     foreach ($pages as $pageKey => $pageDetails) {
-      $allPages[$pageKey]['title'] = $pageDetails->post_title;
-      $allPages[$pageKey]['url'] = get_page_link($pageDetails->ID);
+      // $allPages[$pageKey]['title'] = $pageDetails->post_title;
+      // $allPages[$pageKey]['url'] = get_page_link($pageDetails->ID);
+      $allPages[] = (object) [
+        'title' => $pageDetails->post_title,
+        'url'   => get_page_link($pageDetails->ID)
+      ];
     }
     return $allPages;
   }
