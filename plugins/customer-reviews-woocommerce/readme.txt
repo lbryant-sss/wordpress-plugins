@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 5.73.1
+Stable tag: 5.74.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -233,6 +233,10 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.74.0 =
+* Improvement: lazy load attribute for a product image on a product review form
+* Improvement: custom taxonomies for WooCommerce products are available in fields mappings for XML feeds
+* Bug fix: undefined variable in [cusrev_reviews_grid] shortcode
 = 5.73.1 =
 * Reorganization of language files
 = 5.73.0 =

@@ -82,7 +82,7 @@ if( $cr_current_user instanceof WP_User ) {
 	<?php else : ?>
 
 		<div class="cr-review-form-item">
-			<img src="<?php echo esc_url( $cr_item_pic ); ?>" alt="<?php echo esc_attr( $cr_item_name ); ?>"/>
+			<img src="<?php echo esc_url( $cr_item_pic ); ?>" alt="<?php echo esc_attr( $cr_item_name ); ?>" loading="lazy" />
 			<span><?php echo esc_html( $cr_item_name ); ?></span>
 			<input type="hidden" value="<?php echo esc_attr( $cr_item_id ); ?>" class="cr-review-form-item-id" />
 		</div>

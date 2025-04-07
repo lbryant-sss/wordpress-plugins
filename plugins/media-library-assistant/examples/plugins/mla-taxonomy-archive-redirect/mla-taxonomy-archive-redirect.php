@@ -11,7 +11,7 @@
  * https://wordpress.org/support/topic/archive-templates-and-dynamic-galleries/
  * 
  * @package MLA Taxonomy Archive Redirect
- * @version 1.01
+ * @version 1.02
  */
 
 /*
@@ -19,7 +19,7 @@ Plugin Name: MLA Taxonomy Archive Redirect
 Plugin URI: http://davidlingren.com/
 Description: Detect a "Taxonomy Archive Page" URL and redirect to a specified page with [mla_gallery] parameters
 Author: David Lingren
-Version: 1.01
+Version: 1.02
 Author URI: http://davidlingren.com/
 
 Copyright 2025 David Lingren
@@ -52,7 +52,7 @@ class MLATaxonomyArchiveRedirect {
 	 *
 	 * @var	string
 	 */
-	const PLUGIN_VERSION = '1.01';
+	const PLUGIN_VERSION = '1.02';
 
 	/**
 	 * Slug prefix for registering and enqueueing submenu pages, style sheets, scripts and settings
@@ -249,6 +249,7 @@ class MLATaxonomyArchiveRedirect {
 		foreach ( $supported_taxonomies as $taxonomy ) {
 			$row_values['taxonomy'] = $taxonomy;
 			$row_values['archive_page'] = $current_values[ $taxonomy ];
+			$taxonomy_rows .= MLAData::mla_parse_template( $page_template_array['taxonomy-specific-row'], $row_values );
 		}
 
 		$general_tab_values['taxonomy_rows'] = $taxonomy_rows;

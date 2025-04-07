@@ -200,7 +200,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 == Changelog ==
 
 = 3.27 =
-*Fix: For the "MLA Taxonomy Archive Redirect" example plugin (v1.01), correct defect preventing AJAX operations from running to completion.
+* Fix: When Polylang is active, correct a defect in preserving terms for untranslated taxonomies during the Bulk "Map IPTC/EXIF/WP metadata" action.
+* Fix: For the "MLA Taxonomy Archive Redirect" example plugin (v1.01), correct defect preventing AJAX operations from running to completion.
 
 = 3.26 =
 * Fix: **IMPORTANT: For the Polylang plugin, a defect that caused the famous "There Has Been a Critical Error on This Website" error has been corrected.**

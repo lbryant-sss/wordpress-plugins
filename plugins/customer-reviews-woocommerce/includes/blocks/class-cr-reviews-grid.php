@@ -269,6 +269,7 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 			}
 
 			$shop_page_ids = CR_Reviews_List_Table::get_shop_page();
+			$args_s = null;
 			if( true === $attributes['shop_reviews'] ) {
 				$max_shop_reviews = $attributes['count_shop_reviews'];
 				if ( 0 < count( $shop_page_ids ) && 0 < $max_shop_reviews ) {
@@ -1099,7 +1100,7 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 				$count_shop = get_comments($args_shop);
 				$count = $count + $count_shop;
 			}
-			
+
 			remove_filter( 'comments_clauses', array( $this, 'min_chars_comments_clauses' ) );
 
 			return $count;
