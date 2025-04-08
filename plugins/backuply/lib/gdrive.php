@@ -759,6 +759,7 @@ class gdrive{
 	
 	//Download Backup File from Google Drive to local server
 	function download_file_loop($source, $dest, $startpos = 0){
+		global $error;
 		// backuply_log(' inside download_file_loop ');
 		// backuply_log('source : '.$source);
 		// backuply_log(' dest : '.$dest);
@@ -778,8 +779,11 @@ class gdrive{
 		$pathinfo = pathinfo($stream['path']);
 		$src_file = $pathinfo['basename'];
 		
-		$this->get_gdrive_fileid($src_file);
-		
+		if(empty($this->get_gdrive_fileid($src_file))){
+		    $error[] = 'Backup file not found';
+		    return;
+		}
+
 		$file_stats = $this->url_stat($source);
 		$this->filesize = !empty($file_stats) ? $file_stats['size'] : 0;
 

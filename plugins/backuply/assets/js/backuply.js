@@ -631,7 +631,7 @@ function backuply_create_backup(jEle) {
 		bak_name = modal.find('.backuply-loc-bak-name');
 
 	proto_name = proto_name.match(/^(.+?)(?=\()/);
-	bak_name.text('Backing Up To: ' + proto_name[0]);
+	bak_name.text('Backup Location: ' + proto_name[0]);
 	image.prop('src', backuply_obj.images + (protocol ? protocol : 'local') + '.svg');
 	
 	modal.find('.backuply-backup-status').empty();
@@ -1118,7 +1118,15 @@ function backuply_backup_progress() {
 						stop.off('click').prop('disabled', false).addClass('backuply-disabled');
 						stop.parent().prev().find('button').addClass('backuply-disabled').off('click');
 						stop_modal.off('click').prop('disabled', false).addClass('backuply-disabled');
+					} else {
+						let modal = finish_btn.closest('.backuply-modal'),
+						modal_header = modal.find('.backuply-title-backup'),
+						modal_extra = modal.find('.backuply-progress-extra-backup');
 						
+						if(status == 'success'){
+							modal_header.text('Backup Completed successfully 🎉');
+							modal_extra.slideUp();
+						}
 					}
 					
 					finish_btn.click( function() {
@@ -1836,7 +1844,7 @@ function backuply_upload_backup(ev){
 	progress_bar = document.querySelector('#backuply-upload-bar-progress'),
 	progress_percentage = document.querySelector('.backuply-upload-percentage');
 
-	const chunk_size = 1024 * 1024;
+	const chunk_size = 2 * 1024 * 1024; // 2MB
 	const total_chunks = Math.ceil(dropped_file.size / chunk_size);
 	const reader = new FileReader();
 	let chunk_number = 0;

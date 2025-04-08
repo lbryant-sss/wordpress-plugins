@@ -338,6 +338,7 @@ class Call_To_Action extends Base_Widget {
 			[
 				'label' => esc_html__( 'Position', 'jupiterx-core' ),
 				'type' => 'choose',
+				'default' => 'left',
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'jupiterx-core' ),
@@ -1508,13 +1509,16 @@ class Call_To_Action extends Base_Widget {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-		$wrapper_tag       = 'div';
-		$button_tag        = 'a';
-		$bg_image          = '';
-		$content_animation = $settings['content_animation'];
-		$animation_class   = '';
-		$print_bg          = true;
-		$print_content     = true;
+		$wrapper_tag                     = 'div';
+		$button_tag                      = 'a';
+		$bg_image                        = '';
+		$content_animation               = $settings['content_animation'];
+		$animation_class                 = '';
+		$print_bg                        = true;
+		$print_content                   = true;
+		$is_match_layout_ribbon_position = $settings['layout'] === $settings['ribbon_horizontal_position'];
+		$ribbon                          = '';
+		$is_classic_above_layout         = '' === $settings['layout'] || 'above' === $settings['layout'];
 
 		if ( ! empty( $settings['bg_image']['id'] ) ) {
 			// WPML compatibility.
@@ -1609,16 +1613,19 @@ class Call_To_Action extends Base_Widget {
 		$this->add_inline_editing_attributes( 'description' );
 		$this->add_inline_editing_attributes( 'button' );
 		echo sprintf( '<%1$s  %2$s>', Utils::validate_html_tag( $wrapper_tag ), $this->get_render_attribute_string( 'wrapper' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		?>
 
-		<?php
-			if ( ! empty( $settings['ribbon_title'] ) ) {
-				$this->add_render_attribute( 'ribbon-wrapper', 'class', 'raven-ribbon' );
-
-				if ( ! empty( $settings['ribbon_horizontal_position'] ) ) {
-					$this->add_render_attribute( 'ribbon-wrapper', 'class', 'raven-ribbon-' . $settings['ribbon_horizontal_position'] );
-				}
+		if ( ! empty( $settings['ribbon_title'] ) ) {
+			ob_start();
+			if ( empty( $settings['ribbon_horizontal_position'] ) ) {
+				echo '<div class="raven-ribbon">';
+			} else {
+				echo '<div class="raven-ribbon raven-ribbon-' . $settings['ribbon_horizontal_position'] . '">';
+				echo '<div class="raven-ribbon-inner">' . $settings['ribbon_title'] . '</div>';
 			}
+			echo '</div>';
+
+			$ribbon = ob_get_clean();
+		}
 		?>
 
 		<?php if ( $print_bg ) : ?>
@@ -1626,21 +1633,11 @@ class Call_To_Action extends Base_Widget {
 				<div class="raven-cta__bg raven-bg" <?php $this->print_render_attribute_string( 'background_image' ); ?>></div>
 				<div class="raven-cta__bg-overlay"></div>
 			</div>
-		<?php endif; ?>
-		<?php if ( $print_bg && 'cover' !== $settings['skin'] ) : ?>
-			<div 
-				<?php $this->print_render_attribute_string( 'ribbon-wrapper' ); ?>>
-				<div class="raven-ribbon-inner"><?php $this->print_unescaped_setting( 'ribbon_title' ); ?></div>
-			</div>
-			<?php if ( 'box' !== $settings['link_click'] ) : ?>
-				</<?php Utils::print_validated_html_tag( $wrapper_tag ); ?>>
-			<?php endif; ?>
-		<?php endif; ?>
-		<?php if ( $print_bg && 'cover' === $settings['skin'] && 'box' === $settings['link_click'] ) : ?>
-			<div 
-					<?php $this->print_render_attribute_string( 'ribbon-wrapper' ); ?>>
-					<div class="raven-ribbon-inner"><?php $this->print_unescaped_setting( 'ribbon_title' ); ?></div>
-			</div>
+			<?php
+				if ( 'classic' === $settings['skin'] && ( $is_classic_above_layout || $is_match_layout_ribbon_position ) ) {
+					Utils::print_unescaped_internal_string( $ribbon );
+				}
+			?>
 		<?php endif; ?>
 		<?php if ( $print_content ) : ?>
 			<div class="raven-cta__content">
@@ -1677,22 +1674,15 @@ class Call_To_Action extends Base_Widget {
 					</<?php Utils::print_unescaped_internal_string( $button_tag ); ?>>
 					</div>
 				<?php endif; ?>
-				<?php if ( ! $print_bg || ( 'cover' === $settings['skin'] && 'box' !== $settings['link_click'] ) ) : ?>
-					<div <?php $this->print_render_attribute_string( 'ribbon-wrapper' ); ?>>
-						<div class="raven-ribbon-inner"><?php $this->print_unescaped_setting( 'ribbon_title' ); ?></div>
-					</div>
-					<?php if ( 'box' !== $settings['link_click'] ) : ?>
-					</<?php Utils::print_validated_html_tag( $wrapper_tag ); ?>>
-					<?php endif; ?>
-				<?php endif; ?>
+
+				<?php
+					if ( ! $print_bg || 'cover' === $settings['skin'] || ( ! $is_classic_above_layout && ! $is_match_layout_ribbon_position ) ) {
+						Utils::print_unescaped_internal_string( $ribbon );
+					}
+				?>
 			</div>
-			<?php if ( $print_bg && 'box' === $settings['link_click'] ) : ?>
-				</<?php Utils::print_validated_html_tag( $wrapper_tag ); ?>>
-			<?php endif; ?>
-			<?php if ( ! $print_bg && 'classic' === $settings['skin'] && 'box' === $settings['link_click'] ) : ?>
-				</<?php Utils::print_validated_html_tag( $wrapper_tag ); ?>>
-			<?php endif; ?>
-		<?php endif; ?>	
+		<?php endif; ?>
+		</<?php Utils::print_validated_html_tag( $wrapper_tag ); ?>>
 		<?php
 	}
 }

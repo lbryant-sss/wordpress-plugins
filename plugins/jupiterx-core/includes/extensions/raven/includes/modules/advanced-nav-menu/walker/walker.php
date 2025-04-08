@@ -181,15 +181,16 @@ class Walker {
 					continue;
 				}
 
-				$template_id = 'section' === $content_type ? $subitem_data['section_template'] : $subitem_data['widget_template'];
+				$template_id   = 'section' === $content_type ? $subitem_data['section_template'] : $subitem_data['widget_template'];
+				$translated_id = apply_filters( 'wpml_object_id', $template_id, 'post', true );
 
-				if ( empty( $template_id ) ) {
+				if ( empty( $translated_id ) ) {
 					continue;
 				}
 
 				?>
 				<li class="submenu submenu-template">
-					<?php echo do_shortcode( "[elementor-template id=\"{$template_id}\"]" ); ?>
+					<?php echo do_shortcode( "[elementor-template id=\"{$translated_id}\"]" ); ?>
 				</li>
 				<?php
 			}

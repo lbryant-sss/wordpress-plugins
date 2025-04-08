@@ -11,6 +11,11 @@ use luckywp\tableOfContents\plugin\contentHandling\ContentHandling;
 use luckywp\tableOfContents\plugin\contentHandling\ContentHandlingDto;
 use WP_Post;
 
+use function array_key_exists;
+use function count;
+use function is_bool;
+use function is_string;
+
 class Shortcode extends BaseObject
 {
 
@@ -280,7 +285,16 @@ class Shortcode extends BaseObject
         foreach ($attrs as $k => $v) {
             if ($v !== null) {
                 if (is_string($v)) {
-                    $v = wp_slash(str_replace('"', '&quot;', $v));
+                    $v = wp_slash(
+                        strtr(
+                            $v,
+                            [
+                                '"' => '&quot;',
+                                '[' => '&#91;',
+                                ']' => '&#93;',
+                            ]
+                        )
+                    );
                 } elseif (is_bool($v)) {
                     $v = $v ? 1 : 0;
                 }

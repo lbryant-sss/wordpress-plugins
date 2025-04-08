@@ -459,7 +459,7 @@ class Utils {
 			wp_die( '<script>window.close();</script>' );
 		}
 
-		$file       = base64_decode( $file ); // phpcs:ignore
+		$file       = str_replace( ['phar://', 'zip://', 'ftp://', 'data://'], '', base64_decode( $file ) ); // phpcs:ignore
 		$upload_dir = wp_get_upload_dir();
 
 		// Make sure file exists.

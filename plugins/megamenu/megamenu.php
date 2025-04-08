@@ -3,7 +3,7 @@
  * Plugin Name: Max Mega Menu
  * Plugin URI:  https://www.megamenu.com
  * Description: An easy to use mega menu plugin. Written the WordPress way.
- * Version:     3.5.1
+ * Version:     3.5.1.1
  * Author:      megamenu.com
  * Author URI:  https://www.megamenu.com
  * License:     GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 		 *
 		 * @var string
 		 */
-		public $version = '3.5.1';
+		public $version = '3.5.1.1';
 
 
 		/**
@@ -1065,7 +1065,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 					if ( 'true' === $item->megamenu_settings['disable_link'] ) {
 						$item->classes[] = 'disable-link';
 					}
-					
+
 					if ( 'true' === $item->megamenu_settings['collapse_children'] && $item->parent_submenu_type !== 'tabbed' ) {
 						$item->classes[] = 'collapse-children';
 					}

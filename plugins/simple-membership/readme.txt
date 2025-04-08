@@ -4,8 +4,8 @@ Donate link: https://simple-membership-plugin.com/
 Tags: member, members, members only, membership, memberships, register, WordPress membership plugin, content, content protection, paypal, restrict, restrict access, Restrict content, admin, access control, subscription, teaser, protection, profile, login, bbpress, stripe
 Requires at least: 6.0
 Requires PHP: 7.4
-Tested up to: 6.7
-Stable tag: 4.6.2
+Tested up to: 6.8
+Stable tag: 4.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,6 +109,7 @@ You can create a free forum user account and ask your questions.
 * Option to configure whitelisting for user email addresses to allow registration only from specific email addresses or email domains.
 * Option to configure blacklisting for user email addresses to block registration from certain email addresses or email domains.
 * Allows you to set an active login limit for members, helping to prevent account sharing.
+* Option to enable login event tracking, allowing you to view the history of member logins.
 * Option to reset the settings and data of the plugin to start fresh.
 * Option to configure PayPal payment buttons for memberships (one-time and recurring payments).
 * Option to configure Stripe payment buttons for memberships (one-time and recurring payments).
@@ -176,6 +177,14 @@ https://simple-membership-plugin.com/
 
 == Changelog ==
 
+= 4.6.3 =
+- WordPress 6.8 compatibility related changes.
+- Added a new feature to set 'default content protection' settings.
+- Password reset processing code refactored to be in 'wp' hook.
+- Modified the 'Tools -> System Info' menu to accurately display the language translation directory path: /wp-content/languages/plugins/
+- Updated the Hungarian language translation file.
+- WordPress 6.8 uses new password hashing. We have updated the function that is used to check the password so it is compatible with WP 6.8.
+
 = 4.6.2 =
 - Added a new Reports menu to display various membership-related statistics and reports.
 - Added a new DB table for storing the member's login history.
@@ -186,7 +195,7 @@ https://simple-membership-plugin.com/
 - Updated the admin menu page title to maintain consistency with other menu items.
 - New option added for Stripe webhook event verification.
 - Added support for Stripe's 100% discount code feature.
-- Stripe API version updated to the latest version. 
+- Stripe API version updated to the latest version.
 
 = 4.6.1 =
 - This release primarily includes optimizations and enhancements for the user login process with the 'Remember Me' option.

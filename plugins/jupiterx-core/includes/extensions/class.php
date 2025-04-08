@@ -64,7 +64,7 @@ class JupiterX_Core_Extensions {
 	/**
 	 * Check and remove the deprecated raven plugin.
 	 *
-	 * @since NEXT
+	 * @since 4.8.11
 	 * @access public
 	 *
 	 * @return void

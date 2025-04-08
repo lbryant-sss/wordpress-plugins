@@ -3,7 +3,7 @@ Contributors: artbees
 Tags: jupiter, jupiterx
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 4.8.10
+Stable tag: 4.8.11
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,6 +29,16 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+= 4.8.11 =
+* Added Brands option to categories & tags filter in product carousel & Products widgets.
+* Added Search Result filter to Products Widget.
+* Integrated Product meta with WooCommerce Brand Option.
+* Compatible Advanced menu and Advanced Tab with WPML.
+* Removed Mask Image option on Team member widget.
+* Fixed Security issue in JupiterX related to download form.
+* Fixed Content position on Classic Call To Action Widget.
+* Fixed displaying arrow on Photo Album widget.
+
 = 4.8.10 =
 * Compatible JupiterX with Elementor 3.28.0.
 * Compatible JupiterX Popup with WPML.

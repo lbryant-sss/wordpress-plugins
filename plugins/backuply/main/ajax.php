@@ -358,7 +358,7 @@ function backuply_restore_response($is_last = false) {
 	// Was there an error ?
 	if(backuply_optget('error')){
 	
-		$error_string = html_entity_decode(backuply_optget('error_string'));
+		$error_string = urldecode(backuply_optget('error_string'));
 		// Send mail
 		$mail = array();
 		$mail['to'] = $email;   
@@ -366,7 +366,7 @@ function backuply_restore_response($is_last = false) {
 		$mail['headers'] = "Content-Type: text/html; charset=UTF-8\r\n";
 		$mail['message'] = 'Hi, <br><br>
 
-The last restore operation of your WordPress installation was failed. <br>
+The most recent restore attempt for your WordPress site has failed. <br>
 Installation URL : '.$site_url.' <br>
 '.$error_string.' <br><br>
 
@@ -1086,7 +1086,7 @@ function backuply_backup_upload(){
 	$total_chunks = (int) sanitize_text_field($_POST['total_chunks']);
 	$chunk_data = file_get_contents($_FILES['file']['tmp_name']);
 
-	$chunk_size = 1024 * 1024;
+	$chunk_size = 2 * 1024 * 1024; // 2MB
 	$chunk_data_size = strlen($chunk_data);
 	
 	if(file_exists($backup_dir . '/' . $file_name)){

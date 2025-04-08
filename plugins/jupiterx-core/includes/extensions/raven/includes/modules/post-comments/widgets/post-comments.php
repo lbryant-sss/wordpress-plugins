@@ -560,6 +560,7 @@ class Post_Comments extends Base_Widget {
 				'selectors' => [
 					'{{WRAPPER}} .jupiterx-comment' => 'align-items: {{VALUE}} !important;',
 				],
+				'frontend_available' => true,
 			]
 		);
 

@@ -10,8 +10,10 @@ defined( 'ABSPATH' ) or die();
  */
 function cmplz_add_data_per_purpose( array $fields ): array {
 
+	$details_per_purpose_us = COMPLIANZ::$config->details_per_purpose_us;
+
 	$index = 10;
-	if ( ! empty( COMPLIANZ::$config->details_per_purpose_us ) ) {
+	if ( ! empty( $details_per_purpose_us ) ) {
 		foreach ( COMPLIANZ::$config->purposes as $key => $label ) {
 			$index += 10;
 			$fields[] = [
@@ -24,7 +26,7 @@ function cmplz_add_data_per_purpose( array $fields ): array {
 				'default'          => '',
 				'required'         => true,
 				'label'              => __( "Specify the types of data you collect", 'complianz-gdpr' ),
-				'options'            => COMPLIANZ::$config->details_per_purpose_us,
+				'options'            => $details_per_purpose_us,
 				'react_conditions' => [
 					'relation' => 'AND',
 					[

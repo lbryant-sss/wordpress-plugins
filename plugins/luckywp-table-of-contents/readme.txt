@@ -4,7 +4,7 @@ Donate link: https://theluckywp.com/product/table-of-contents/
 Tags: table of contents, toc, navigation, links, seo
 Requires at least: 4.7
 Tested up to: 6.7
-Stable tag: 2.1.11
+Stable tag: 2.1.13
 Requires PHP: 5.6.20
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -159,6 +159,12 @@ For non-English websites it is recommended to enable the `Intl` PHP extension.
 11. Miscellaneous Settings
 
 == Changelog ==
+
+= 2.1.13 — 2025-04-07 =
+* Minor performance improvements.
+
+= 2.1.12 — 2025-04-07 =
+* Fix problems with square brackets usage in widget options.
 
 = 2.1.11 — 2025-04-01 =
 * Fix non-critical vulnerability.

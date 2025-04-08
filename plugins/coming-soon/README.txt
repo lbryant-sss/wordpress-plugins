@@ -1,7 +1,7 @@
 === Website Builder by SeedProd — Theme Builder, Landing Page Builder, Coming Soon Page, Maintenance Mode ===
 Contributors: seedprod, smub
 Donate link: http://www.seedprod.com
-Tags: page builder, maintenance mode, coming soon, landing page, website builder
+Tags: maintenance mode, coming soon page, landing page, website builder, page builder
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 5.6
@@ -10,7 +10,7 @@ Text Domain: coming-soon
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Page Builder & AI Website Builder. A complete solution to create a WordPress Website, Custom Themes, Landing Pages, Coming Soon & Maintenance Mode Pages.
+Easy Drag & Drop Page Builder. A complete solution to create a WordPress Website, Custom Themes, Landing Pages, Coming Soon & Maintenance Mode Pages.
 
 == Description ==
 

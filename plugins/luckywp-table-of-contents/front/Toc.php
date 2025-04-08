@@ -7,6 +7,8 @@ use luckywp\tableOfContents\core\helpers\ArrayHelper;
 use luckywp\tableOfContents\core\helpers\ValueHelper;
 use luckywp\tableOfContents\plugin\Settings;
 
+use function count;
+
 class Toc
 {
 

@@ -2,6 +2,9 @@
 
 namespace luckywp\tableOfContents\core\base;
 
+use function count;
+use function is_array;
+
 class View extends BaseObject
 {
 

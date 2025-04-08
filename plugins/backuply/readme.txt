@@ -4,7 +4,7 @@ Tags: backup, restore, database backup, cloud backup, wordpress backup, migratio
 Requires at least: 4.7
 Tested up to: 6.7
 Requires PHP: 5.5
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: LGPL v2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -84,6 +84,13 @@ Go To your WordPress install -> Plugins -> Add New Button -> In Search Box searc
 7. **Backup Process** easy to understand backup progress.
 
 == Changelog ==
+
+= 1.4.4 (April 7th 2025) =
+* [Improvement] Backup upload speed has been improved, so now uploads will be faster.
+* [Improvement] Cleanup after restore has been made better.
+* [Security Improvements] Made some files at restore more random.
+* [Bug-Fix] On restore failure, email notification was not getting sent, this has been fixed.
+* [Bug-Fix] If the backup file tar.gz was not there on the remote storage and a attempt to restore was made then the restore was stuck in download loop, this has been fixed.
 
 = 1.4.3 (February 10th 2025) =
 * [Bug-Fix] There was an issue which was causing downloaded file to be of size 0, this has been fixed.

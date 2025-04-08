@@ -9,6 +9,8 @@ use luckywp\tableOfContents\core\helpers\ArrayHelper;
 use luckywp\tableOfContents\core\helpers\Html;
 use luckywp\tableOfContents\core\helpers\Json;
 
+use function count;
+
 class Settings extends BaseObject
 {
 

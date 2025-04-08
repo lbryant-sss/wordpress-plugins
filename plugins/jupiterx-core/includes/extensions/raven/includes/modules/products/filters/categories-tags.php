@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || die();
 class Categories_Tags extends Filter_Base {
 
 	public static function get_title() {
-		return esc_html__( 'Categories & Tags', 'jupiterx-core' );
+		return esc_html__( 'Categories & Tags & Brands', 'jupiterx-core' );
 	}
 
 	public static function get_name() {
@@ -21,8 +21,10 @@ class Categories_Tags extends Filter_Base {
 	}
 
 	public static function get_filter_attributes() {
-		$query_tags = (array) self::$settings['query_filter_tags'];
-		$tags       = [];
+		$query_tags   = (array) self::$settings['query_filter_tags'];
+		$tags         = [];
+		$query_brands = (array) self::$settings['query_filter_brands'];
+		$brands       = [];
 
 		foreach ( $query_tags as $query_tag ) {
 			$term = get_term_by( 'id', $query_tag, 'product_tag' );
@@ -34,9 +36,22 @@ class Categories_Tags extends Filter_Base {
 			$tags[] = $term->slug;
 		}
 
+		if ( ! empty( $query_brands ) ) {
+			foreach ( $query_brands as $query_brand ) {
+				$term = get_term_by( 'id', $query_brand, 'product_brand' );
+
+				if ( empty( $term ) ) {
+					continue;
+				}
+
+				$brands[] = $term->slug;
+			}
+		}
+
 		return [
 			'category' => implode( ',', (array) self::$settings['query_filter_categories'] ),
 			'tag' => implode( ',', $tags ),
+			'brand' => implode( ',', $brands ),
 		];
 	}
 }

@@ -235,6 +235,8 @@ class Products_Carousel extends Base_Widget {
 			]
 		);
 
+		$this->add_brand_control_options();
+
 		$this->add_control(
 			'query_filter_by',
 			[
@@ -1396,6 +1398,38 @@ class Products_Carousel extends Base_Widget {
 		);
 
 		$this->end_controls_section();
+	}
+
+	protected function add_brand_control_options() {
+		$this->add_control(
+			'query_filter_brands',
+			[
+				'label' => esc_html__( 'Search & Select Product Brands', 'jupiterx-core' ),
+				'type' => 'raven_query',
+				'options' => [],
+				'label_block' => true,
+				'multiple' => true,
+				'conditions' => [
+					'relation' => 'or',
+					'terms' => [
+						[
+							'name' => 'query_filter',
+							'operator' => '==',
+							'value' => 'categories_tags',
+						],
+						[
+							'name' => 'query_fallback_filter',
+							'operator' => '==',
+							'value' => 'categories_tags',
+						],
+					],
+				],
+				'query' => [
+					'source'   => Control_Query::QUERY_SOURCE_TAX,
+					'taxonomy' => 'product_brand',
+				],
+			]
+		);
 	}
 
 	/**

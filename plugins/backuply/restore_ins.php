@@ -1548,7 +1548,7 @@ class softtar{
 						return false;
 					}
 					if(!is_writeable($v_header['filename'])){
-						//We cannot use $globals['ofc'] here and after restoring the files we are anyways changing the file's permissions according to the perms file. Therefore, using 0644/0755 directly here shouldn't be an issue.
+						// We cannot use $globals['ofc'] here and after restoring the files we are anyways changing the file's permissions according to the perms file. Therefore, using 0644/0755 directly here shouldn't be an issue.
 
 						if(!empty($can_write)){
 							if(is_dir($v_header['filename'])){
@@ -1557,7 +1557,7 @@ class softtar{
 								$chmod = chmod($v_header['filename'], 0644);
 							}
 
-							//The is_writable function always returns false for non-suphp servers and we are passing the FTP stream path which gives us writable permission
+							// The is_writable function always returns false for non-suphp servers and we are passing the FTP stream path which gives us writable permission
 							if(!is_writeable($v_header['filename'])){
 								$this->_error('File '.$v_header['filename'] .' already exists and is write protected');
 								backuply_status_log('Warning: File '.$v_header['filename'] .' already exists and is write protected', 'warning');
@@ -1609,7 +1609,7 @@ class softtar{
 						return false;
 						}*/
 					} else {
-						
+
 						if(empty($can_write) && preg_match('/^(ftp:\/\/)/is', $v_header['filename'])){
 							// Allows overwriting of existing files on the remote FTP server
 							$stream_options = array('ftp' => array('overwrite' => true));
@@ -1624,6 +1624,17 @@ class softtar{
 							// We will not restore the root htaccess file if the user is migrating to prevent issues related to difference in environment on the new server.
 							if(!empty($data['is_migrating']) && $v_header['filename'] == $data['softpath'] .'/'. '.htaccess'){
 								$v_header['filename'] .=  '.backuply';
+							}
+
+							// Extracting the files inside restoration folder for easy cleanup.
+							if(preg_match('/(softsql\.sql|softperms\.txt|softver\.txt)$/', $v_header['filename'], $imp_file)){
+								if($imp_file[0] == 'softsql.sql'){
+									$imp_file[0] = $data['dbexist'];
+								} else if($imp_file[0] == 'softperms.txt'){
+									$imp_file[0] = str_replace('.txt', $data['file_randomness'].'.txt', $imp_file[0]);
+								}
+								
+								$v_header['filename'] = $data['backuly_backup_dir'] . '/restoration/'. $imp_file[0];
 							}
 
 							touch($v_header['filename']);
@@ -1972,7 +1983,7 @@ function backuply_import($import_file, $conn){
 	$big_value = 2147483647;
 	$delimiter_keyword = 'DELIMITER '; // include the space because it's mandatory
 	$sql_delimiter = ';';
-	
+
 	$import_handle = @fopen($import_file, 'r');	
 	@fseek($import_handle, $offset);
 
@@ -2480,7 +2491,7 @@ function backuply_die($txt, $l_file = '', $backuly_backup_dir = ''){
 	$array['result'] = $txt;
 	$array['data'] = $GLOBALS['data'];
 	
-	$globals = ['l_readbytes', 'import_i', 'import_len', 'import_offset', 'status', 'current_status', 'import_spos', 'part_no', 'backuply_version', 'remote_data'];
+	$globals = ['l_readbytes', 'import_i', 'import_len', 'import_offset', 'status', 'current_status', 'import_spos', 'part_no', 'backuply_version', 'remote_data', 'file_randomness'];
 	
 	// Updating data with $GLOBALS
 	foreach($globals as $global){
@@ -2519,6 +2530,7 @@ function backuply_die($txt, $l_file = '', $backuly_backup_dir = ''){
 		$array['dbexist'] = $data['dbexist'];
 		$array['is_migrating'] = $data['is_migrating'];
 		$array['not_writable'] = isset($data['not_writable']) ? $data['not_writable'] : false;
+		$array['file_randomness'] = $data['file_randomness'];
 		$data = $array;
 
 		restore_clean(1);
@@ -2815,11 +2827,15 @@ function restore_clean($force = 0){
 	if($GLOBALS['current_status'] >= 4 || !empty($force)){
 		@unlink($data['local_tar']);
 	}
-	
+
 	// Delete these always, we will unzip these files everytime
-	@unlink($data['softpath'].'/softperms.txt');
-	@unlink($data['softpath'].'/softver.txt');
-	
+	$soft_perms = $data['backuly_backup_dir'].'/restoration/softperms'.$data['file_randomness'].'.txt';
+	if(file_exists($soft_perms)){
+		unlink($soft_perms);
+	}
+
+	@unlink($data['backuly_backup_dir'].'/restoration/softver.txt');
+
 	$info_file = str_replace('.tar.gz', '.php', $data['fname']);
 	
 	// To delete the info file which gets extracted too.
@@ -2828,12 +2844,13 @@ function restore_clean($force = 0){
 	}
 	
 	//Delete the softsql.sql file
-	if((file_exists($data['softpath'].'/'.$data['dbexist']) && $GLOBALS['current_status'] >= 2) || !empty($force)){
+	if((file_exists($data['backuly_backup_dir'].'/restoration/'.$data['dbexist']) && $GLOBALS['current_status'] >= 2) || !empty($force)){
 		
-		if(file_exists($data['softpath'].'/'.$data['dbexist']) && !is_dir($data['softpath'].'/'.$data['dbexist'])){
-			@unlink($data['softpath'].'/'.$data['dbexist']);
+		if(file_exists($data['backuly_backup_dir'].'/restoration/'.$data['dbexist']) && !is_dir($data['backuly_backup_dir'].'/restoration/'.$data['dbexist'])){
+			@unlink($data['backuly_backup_dir'].'/restoration/'.$data['dbexist']);
 		}
-		
+
+		// TODO:: We might not need this, as this is deleting the .tar.gz file which we dont have at the root of the installation.
 		if(file_exists($data['softpath'].'/'.$data['fname']) && !is_dir($data['softpath'].'/'.$data['fname'])){
 			@unlink($data['softpath'].'/'.$data['fname']);
 		}
@@ -2892,7 +2909,7 @@ function final_restore_response($output, $error_str = '') {
 	}
 
 	if(!empty($error_str)) {
-		$url .= '&error=1&error_string=' . htmlentities($error_str);
+		$url .= '&error=1&error_string=' . urlencode($error_str);
 	}
 	
 	$curl = new Curl();
@@ -2946,7 +2963,7 @@ function restore_curl($data) {
 
 // Download the remote archive
 function remote_archive_download_loop(){
-	global $data;
+	global $data, $error;
 
 	// Do we have a remote file ?
 	if(empty($data['remote_tar'])){
@@ -3004,6 +3021,9 @@ function remote_archive_download_loop(){
 		//backuply_log('invoked download function, org_tar : '.$this->_orig_tar.' , local : '.$this->_local_tar);
 		$obj->download_file_loop($data['remote_tar'], $data['local_tar'], $data['l_readbytes']);
 		
+		if(!empty($error)){
+			backuply_die('download_error');
+		}
 	}else{
 		
 		// Open the file pointer if not opened
@@ -3242,7 +3262,13 @@ $data['debug_mode'] = backuply_optPOST('debug_mode');
 $data['sess_key'] = backuply_optPOST('sess_key');
 $data['user_id'] = backuply_optPOST('user_id');
 $data['part_no'] = backuply_optPOST('part_no');
+$data['file_randomness'] = !empty(backuply_optPOST('file_randomness')) ? backuply_optPOST('file_randomness') : bin2hex(random_bytes(12));
 $GLOBALS['backuply_version'] = backuply_optPOST('backuply_version');
+
+// Adding randomness to sql file name.
+if(!empty($data['dbexist']) && strpos($data['dbexist'], $data['file_randomness']) === FALSE){
+	$data['dbexist'] = 'softsql'.$data['file_randomness'].'.sql';
+}
 
 // For DB restore loop
 if(!empty($data['restore_db'])){
@@ -3335,7 +3361,8 @@ if(!empty($data['restore_dir']) && empty($GLOBALS['current_status'])){
 	}
 
 	// See if a permission list is there ?
-	$perms = @file($data['softpath'].'/softperms.txt');
+	$perms_file_name = 'softperms' . $data['file_randomness'] .'.txt';
+	$perms = @file($data['backuly_backup_dir'].'/restoration/'.$perms_file_name);
 	if(is_array($perms)){
 		foreach($perms as $k => $v){
 			$link = $target = $dest_file = '';
@@ -3410,9 +3437,10 @@ if(!empty($data['restore_db']) && $GLOBALS['current_status'] < 2){
 	}
 	
 	// Untaring the backup file
-	if(!file_exists($data['softpath'].'/'.$data['dbexist'])){
+	if(!file_exists($data['backuly_backup_dir'].'/restoration/'.$data['dbexist'])){
 		backuply_status_log('Untaring the backup file', 'working', !empty($data['restore_dir']) ? 67 : 24);
-		if(!untar_archive($local_file, $data['softpath'], array($data['dbexist'], 'softver.txt'), true)){
+		
+		if(!untar_archive($local_file, $data['softpath'], array('softsql.sql', 'softver.txt'), true)){
 			$error[] = 'There was some error while unzipping the backup files';
 			//backuply_log('There was some error while unzipping the backup files');
 			backuply_die('restoreerror');
@@ -3496,7 +3524,7 @@ if(!empty($data['restore_db']) && $GLOBALS['current_status'] < 2){
 		backuply_status_log('Starting to import database', 'working', !empty($data['restore_dir']) ? 69 : 26);
 	}
 	
-	backuply_import($data['softpath'].'/'.$data['dbexist'], $__conn);
+	backuply_import($data['backuly_backup_dir'].'/restoration/'.$data['dbexist'], $__conn);
 	
 	//backuply_log('restore db complete');
 	if(!empty($error)){
@@ -3511,7 +3539,7 @@ if(!empty($data['restore_db']) && $GLOBALS['current_status'] < 2){
 		backuply_status_log('Maintainance mode disabled', 'info', !empty($data['restore_dir']) ? 72 : 29);
 	}
 
-	@unlink($data['softpath'].'/'.$data['dbexist']);
+	@unlink($data['backuly_backup_dir'].'/restoration/'.$data['dbexist']);
 	if(file_exists($data['softpath'].'/'.$data['fname'])){
 		@unlink($data['softpath'].'/'.$data['fname']);
 	}

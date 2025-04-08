@@ -7,6 +7,7 @@ include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'classes/class.swpm-utils-membership-l
 include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'classes/class.swpm-utils-template.php');
 include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'classes/class.swpm-init-time-tasks.php');
 include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'classes/class.swpm-wp-loaded-tasks.php');
+include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'classes/class.swpm-wp-tasks.php');
 include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'classes/class.swpm-self-action-handler.php');
 include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'classes/class.swpm-comment-form-related.php');
 include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'classes/class.swpm-settings.php');
@@ -56,6 +57,7 @@ class SimpleWpMembership {
         //The init and wp_loaded hooks.
         add_action('init', array(&$this, 'init_hook'));
         add_action('wp_loaded', array(&$this, 'handle_wp_loaded_tasks'));
+        add_action('wp', array(&$this, 'handle_wp_tasks'));
 
         //Admin menu hook.
         add_action('admin_menu', array(&$this, 'menu'));
@@ -715,20 +717,37 @@ class SimpleWpMembership {
         $protection_obj = SwpmProtection::get_instance();
         $is_protected = $protection_obj->is_protected($id);
 
-        //Nonce input
+		$settings = SwpmSettings::get_instance();
+
+		$is_add_new_post_screen = get_current_screen()->action == 'add';
+	    $default_membership_level = array();
+	    $enable_default_content_protection = !empty( $settings->get_value('enable_default_content_protection', '') );
+        if ( $is_add_new_post_screen && $enable_default_content_protection){
+	        $is_protected = $settings->get_value('default_protect_this_content', false);
+	        $default_membership_level = $settings->get_value('default_protection_membership_levels', array());
+        }
+
+		//Nonce input
         echo '<input type="hidden" name="swpm_post_protection_box_nonce" value="' . wp_create_nonce('swpm_post_protection_box_nonce_action') . '" />';
 
         // The actual fields for data entry
         echo '<h4>' . __("Do you want to protect this content?", 'simple-membership') . '</h4>';
-        echo '<input type="radio" ' . ((!$is_protected) ? 'checked' : "") . '  name="swpm_protect_post" value="1" /> ' . SwpmUtils::_('No, Do not protect this content.') . '<br/>';
-        echo '<input type="radio" ' . (($is_protected) ? 'checked' : "") . '  name="swpm_protect_post" value="2" /> ' . SwpmUtils::_('Yes, Protect this content.') . '<br/>';
+        echo '<input type="radio" ' . ((!$is_protected) ? 'checked' : "") . '  name="swpm_protect_post" value="1" /> ' . __('No, Do not protect this content.', 'simple-membership') . '<br/>';
+        echo '<input type="radio" ' . (($is_protected) ? 'checked' : "") . '  name="swpm_protect_post" value="2" /> ' . __('Yes, Protect this content.', 'simple-membership') . '<br/>';
         echo $protection_obj->get_last_message();
 
         echo '<h4>' . __("Select the membership level that can access this content:", 'simple-membership') . "</h4>";
         $query = "SELECT * FROM " . $wpdb->prefix . "swpm_membership_tbl WHERE  id !=1 ";
         $levels = $wpdb->get_results($query, ARRAY_A);
         foreach ($levels as $level) {
-            echo '<input type="checkbox" ' . (SwpmPermission::get_instance($level['id'])->is_permitted($id) ? "checked='checked'" : "") .
+			$is_checked = SwpmPermission::get_instance( $level['id'] )->is_permitted($id);
+
+			// Check if default protection membership level configured.
+			if ($is_add_new_post_screen && in_array($level['id'], $default_membership_level)){
+				$is_checked = true;
+			}
+
+            echo '<input type="checkbox" ' . ($is_checked ? "checked='checked'" : "") .
             ' name="swpm_protection_level[' . $level['id'] . ']" value="' . $level['id'] . '" /> ' . $level['alias'] . "<br/>";
         }
     }
@@ -830,6 +849,12 @@ class SimpleWpMembership {
     public function handle_wp_loaded_tasks() {
         $wp_loaded_tasks = new SwpmWpLoadedTasks();
         $wp_loaded_tasks->do_wp_loaded_tasks();
+    }
+
+    public function handle_wp_tasks() {
+	    $wp_tasks = new SwpmWpTasks();
+	    $wp_tasks->do_wp_tasks();
+
     }
 
     public function admin_library() {

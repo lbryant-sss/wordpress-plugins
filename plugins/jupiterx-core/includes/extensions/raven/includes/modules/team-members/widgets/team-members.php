@@ -137,15 +137,6 @@ class Team_Members extends Base_Widget {
 			]
 		);
 
-		$repeater->add_group_control(
-			Group_Control_Css_Filter::get_type(),
-			[
-				'name' => 'mask_image',
-				'label' => esc_html__( 'Mask Image', 'jupiterx-core' ),
-				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}} img',
-			]
-		);
-
 		$repeater->add_control(
 			'link_type',
 			[

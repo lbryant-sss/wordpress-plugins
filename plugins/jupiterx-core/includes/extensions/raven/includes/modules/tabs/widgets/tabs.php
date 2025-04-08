@@ -1105,6 +1105,7 @@ class Tabs extends Base_Widget {
 			$migrated            = isset( $item['__fa4_migrated']['tab_icon_new'] );
 			$is_new              = empty( $item['tab_icon'] ) && $migration_allowed;
 			$template_id         = $item['tab_custom_template'];
+			$translated_id       = apply_filters( 'wpml_object_id', $template_id, 'post', true );
 			$tabs_css_id         = $item['tab_css_id'];
 			$is_tempalte_content = ' is-simple-content';
 
@@ -1168,13 +1169,13 @@ class Tabs extends Base_Widget {
 					echo $this->parse_text_editor( $item['tab_content'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
 
-				if ( empty( $item['tab_content'] ) && ! empty( $template_id ) && empty( $use_ajax_loading ) ) {
-					echo do_shortcode( sprintf( '[elementor-template id="%s"]', $template_id ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				if ( empty( $item['tab_content'] ) && ! empty( $translated_id ) && empty( $use_ajax_loading ) ) {
+					echo do_shortcode( sprintf( '[elementor-template id="%s"]', $translated_id ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 				}
 
-				if ( empty( $item['tab_content'] ) && ! empty( $template_id ) && 'yes' === $use_ajax_loading ) {
-					$template_content = do_shortcode( sprintf( '[elementor-template id="%s"]', $template_id ) );
+				if ( empty( $item['tab_content'] ) && ! empty( $translated_id ) && 'yes' === $use_ajax_loading ) {
+					$template_content = do_shortcode( sprintf( '[elementor-template id="%s"]', $translated_id ) );
 
 					if ( 1 < $tab_count ) {
 						$template_content = '<div class="raven-ajax-content-template" data-id="' . $template_id . '"></div>';

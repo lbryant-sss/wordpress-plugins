@@ -3,10 +3,10 @@ Contributors: userwayorg
 Tags: ada, wcag, EAA compliance, section 508, accessibility
 Requires at least: 4.7
 Tested up to: 6.7.2
-Stable tag: 2.5.6
+Stable tag: 2.5.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
-
+ 
 UserWay’s Accessibility Widget creates a simpler and more accessible browsing experience for your users.
 
 == Description ==

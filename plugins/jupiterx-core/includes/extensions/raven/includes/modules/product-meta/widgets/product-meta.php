@@ -393,6 +393,33 @@ class Product_Meta extends Base_Widget {
 			]
 		);
 
+		$this->add_control(
+			'heading_brand_caption',
+			[
+				'label'     => esc_html__( 'Brand', 'jupiterx-core' ),
+				'type'      => 'heading',
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'brand_caption_single',
+			[
+				'label'       => esc_html__( 'Singular', 'jupiterx-core' ),
+				'type'        => 'text',
+				'placeholder' => esc_html__( 'Brand', 'jupiterx-core' ),
+			]
+		);
+
+		$this->add_control(
+			'brand_caption_plural',
+			[
+				'label'       => esc_html__( 'Plural', 'jupiterx-core' ),
+				'type'        => 'text',
+				'placeholder' => esc_html__( 'Brands', 'jupiterx-core' ),
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -418,11 +445,11 @@ class Product_Meta extends Base_Widget {
 
 			<?php $this->sku_to_display( $settings, $product ); ?>
 
+			<?php $this->brands_to_display( $settings, $product ); ?>
+
 			<?php $this->categories_to_display( $settings, $product ); ?>
 
 			<?php $this->tags_to_display( $settings, $product ); ?>
-
-			<?php do_action( 'woocommerce_product_meta_end' ); ?>
 
 		</div>
 
@@ -437,7 +464,7 @@ class Product_Meta extends Base_Widget {
 		if ( wc_product_sku_enabled() && ( $sku || $product->is_type( 'variable' ) ) ) : ?>
 			<span class="sku_wrapper detail-container">
 				<span class="detail-label"><?php echo esc_html( $sku_caption ); ?></span>
-				<span class="sku detail-content"><?php echo esc_html( $sku ) ?: esc_html( $sku_missing ); ?></span>
+				<span class="sku detail-content"><?php echo esc_html( $sku ) ? esc_html( $sku ) : esc_html( $sku_missing ); ?></span>
 			</span>
 		<?php endif;
 	}
@@ -464,6 +491,21 @@ class Product_Meta extends Base_Widget {
 				<span class="detail-content"><?php echo get_the_term_list( $product->get_id(), 'product_tag', '', '<span class="product-meta-separator">,&nbsp;</span>' ); ?></span>
 			</span>
 		<?php endif;
+	}
+
+	private function brands_to_display( $settings, $product ) {
+		$tag_caption_single = ! empty( $settings['brand_caption_single'] ) ? esc_html( $settings['brand_caption_single'] ) : esc_html__( 'Brand', 'jupiterx-core' );
+		$tag_caption_plural = ! empty( $settings['brand_caption_plural'] ) ? esc_html( $settings['brand_caption_plural'] ) : esc_html__( 'Brands', 'jupiterx-core' );
+
+		$brands      = wp_get_post_terms( $product->get_id(), 'product_brand', [ 'fields' => 'names' ] );
+		$brand_count = count( $brands );
+		if ( $brand_count ) : ?>
+			<span class="branded_as brands detail-container">
+				<span class="detail-label"><?php echo esc_html( $this->get_plural_or_single( $tag_caption_single, $tag_caption_plural, $brand_count ) ); ?></span>
+				<span class="detail-content"><?php echo get_the_term_list( $product->get_id(), 'product_brand', '', '<span class="product-meta-separator">,&nbsp;</span>' ); ?></span>
+			</span>
+		<?php endif;
+
 	}
 
 	/**

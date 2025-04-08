@@ -27598,8 +27598,8 @@ a.jx-knightlab:focus span.juxtapose-name {
 }
 
 .hamburger--spin .hamburger-inner::before {
-  -webkit-transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
-  transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+  -webkit-transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+  transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
 }
 
 .hamburger--spin .hamburger-inner::after {
@@ -27646,8 +27646,8 @@ a.jx-knightlab:focus span.juxtapose-name {
 }
 
 .hamburger--squeeze .hamburger-inner::before {
-  -webkit-transition: top 0.075s 0.12s ease, opacity 0.075s ease;
-  transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+  -webkit-transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+  transition: top 0.075s 0.12s ease, opacity 0.075s ease;
 }
 
 .hamburger--squeeze .hamburger-inner::after {
@@ -27668,8 +27668,8 @@ a.jx-knightlab:focus span.juxtapose-name {
 
 .hamburger--squeeze.is-active .hamburger-inner::before {
   top: 0;
-  -webkit-transition: top 0.075s ease, opacity 0.075s 0.12s ease;
-  transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+  -webkit-transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+  transition: top 0.075s ease, opacity 0.075s 0.12s ease;
   opacity: 0;
 }
 

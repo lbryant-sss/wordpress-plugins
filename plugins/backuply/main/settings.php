@@ -2110,7 +2110,7 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 			</div>
 		</div>
 		<div class="backuply-modal__content">
-			<p class="backuply-loc-bak-name" align="center">Backing Up To: <?php echo esc_html($active_proto); ?></p>
+			<p class="backuply-loc-bak-name" align="center"><?php echo esc_html__('Backup Location', 'backuply').':'.esc_html($active_proto); ?></p>
 			<p class="backuply-loc-restore-name" style="display:none" align="center">Restoring From: <?php echo esc_attr($active_proto); ?></p>
 			<p class="backuply-progress-extra-backup" align="center"><?php esc_html_e('We are backing up your site it may take some time.', 'backuply'); ?></p>
 			<p class="backuply-progress-extra-restore" align="center" style="display:none;"><?php esc_html_e('We are restoring your site it may take some time.', 'backuply'); ?></p>

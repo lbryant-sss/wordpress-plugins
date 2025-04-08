@@ -31,6 +31,10 @@ class Photo_Album extends Base_Widget {
 		];
 	}
 
+	public function get_style_depends() {
+		return [ 'swiper', 'e-swiper' ];
+	}
+
 	protected function register_skins() {
 		$this->add_skin( new Skins\Skin_Cover( $this ) );
 		$this->add_skin( new Skins\Skin_Stack( $this ) );

@@ -1757,6 +1757,7 @@ function backuply_schedule_quota_updation($location){
 
 // Checks every day if there is any file inside tmp or a backup with dot(.) at start
 // and have not been updated since last 24 hours, then delete them.
+// And also deletes any softperms, softsql residue left
 function backuply_delete_tmp(){
 
 	$backup_folder = backuply_glob('backups');
@@ -1803,6 +1804,21 @@ function backuply_delete_tmp(){
 					backuply_log('Deletion Error: '. $e->getMessage());
 				}
 			}
+		}
+	}
+	
+	// Deletes any restore residue
+	if(!file_exists(BACKUPLY_BACKUP_DIR .'/restoration/restoration.php')){
+		if(file_exists(ABSPATH .'/softperms.txt')){
+			unlink(ABSPATH .'/softperms.txt');
+		}
+
+		if(file_exists(ABSPATH .'/softsql.sql')){
+			unlink(ABSPATH .'/softsql.sql');
+		}
+
+		if(file_exists(ABSPATH .'/softver.txt')){
+			unlink(ABSPATH .'/softver.txt');
 		}
 	}
 }
