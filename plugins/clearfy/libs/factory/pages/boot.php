@@ -25,7 +25,7 @@ if ( defined( 'FACTORY_PAGES_480_LOADED' ) ) {
 
 define( 'FACTORY_PAGES_480_LOADED', true );
 
-define( 'FACTORY_PAGES_480_VERSION', '4.8.0' );
+define( 'FACTORY_PAGES_480_VERSION', '4.8.3' );
 
 define( 'FACTORY_PAGES_480_DIR', dirname( __FILE__ ) );
 define( 'FACTORY_PAGES_480_URL', plugins_url( '', __FILE__ ) );

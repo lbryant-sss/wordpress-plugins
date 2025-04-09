@@ -3,7 +3,7 @@
 Plugin Name: tarteaucitron.io
 Plugin URI: https://tarteaucitron.io/
 Description: Compliant and accessible cookie banner
-Version: 1.9.3
+Version: 1.9.4
 Text Domain: tarteaucitronjs
 Domain Path: /languages/
 Author: Amauri
@@ -113,6 +113,7 @@ function tarteaucitronForceLocale() {
 
     $domain = $_SERVER['SERVER_NAME'];
     
+    echo '<!--cloudflare-no-transform-->';
     echo '<script type="text/javascript" src="https://tarteaucitron.io/load.js?domain='.$domain.'&uuid='.tac_sanitize(get_option('tarteaucitronUUID'), 'uuid').'"></script>';
 }
 
@@ -183,3 +184,31 @@ function tarteaucitronNeedSubscription() {
     $currentDate = time();
     return $currentDate >= $deadline;
 }
+
+// Autoptimize minification
+function tarteaucitron_ao_exclude($excluded_js) {
+    if(is_string($excluded_js)) {
+        $excluded_js .= ', tarteaucitron.io';
+    }
+    return $excluded_js;
+}
+add_filter('autoptimize_filter_js_exclude', 'tarteaucitron_ao_exclude');
+
+// WPRocket & Litespeed & WPOptimize & Perfmatters & SGO
+function tarteaucitron_js_exclude($excluded_js) {
+    if (is_array($excluded_js)) {
+        $excluded_js[] = 'tarteaucitron.io';
+    } elseif (empty($excluded_js)) {
+        $excluded_js = ['tarteaucitron.io'];
+    }
+    return $excluded_js;
+}
+add_filter('litespeed_optimize_js_excludes', 'tarteaucitron_js_exclude');
+add_filter('rocket_exclude_js', 'tarteaucitron_js_exclude');
+add_filter('rocket_minify_excluded_external_js', 'tarteaucitron_js_exclude');
+add_filter('wp-optimize-minify-default-exclusions', 'tarteaucitron_js_exclude');
+add_filter('perfmatters_delayed_scripts', 'tarteaucitron_js_exclude');
+add_filter('sgo_js_minify_exclude', 'tarteaucitron_js_exclude');
+add_filter('flying_press_exclude_from_minify:js', 'tarteaucitron_js_exclude');
+add_filter('flying_press_exclude_from_defer:js', 'tarteaucitron_js_exclude');
+add_filter('wpassetcleanup_exclude_loaded_js', 'tarteaucitron_js_exclude');

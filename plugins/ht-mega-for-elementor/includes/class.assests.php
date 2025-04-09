@@ -441,6 +441,9 @@ if ( !class_exists( 'HTMega_Elementor_Addons_Assests' ) ) {
                     'close'     => esc_html__( 'Close', 'htmega-addons' ),
                     'allTypes'  => esc_html__( 'All Types', 'htmega-addons' ),
                     'upgradeToPro'  => esc_html__( 'Upgrade To PRO', 'htmega-addons' ),
+                    'previewAll'  => esc_html__( 'Preview All', 'htmega-addons' ),
+                    'backToHomepages'  => esc_html__( 'Back to Homepages', 'htmega-addons' ),
+                    'allPages'  => esc_html__( 'All Pages', 'htmega-addons' ),
                 ],
                 'user'           => [
                     'email' => $current_user->user_email,

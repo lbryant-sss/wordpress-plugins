@@ -2,7 +2,7 @@
 Contributors: amauric
 Tags: tarteaucitron, cookie, rgpd, gdpr
 Requires at least: 2.8
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -31,6 +31,10 @@ Free for 7 days, licence required after the trial.
 3. Find the settings page through `Settings > tarteaucitron.io`
 
 == Changelog ==
+
+= 1.9.4 =
+* Exclude the file from optimization plugins
+* Bump supported version
 
 = 1.9.3 =
 * Add a notice if the licence is invalid

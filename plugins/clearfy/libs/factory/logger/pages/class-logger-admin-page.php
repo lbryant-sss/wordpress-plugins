@@ -6,11 +6,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Класс отвечает за работу страницы логов.
+ * Class Wbcr_FactoryLogger149_AdminPage
  *
- * @author        Artem Prihodko <webtemyk@yandex.ru>
- * @copyright (c) 2020, Webcraftic
- * @version       1.0
+ * Represents the admin page for the factory logger functionality.
+ * This page provides tools such as viewing logs, cleaning logs, and exporting logs as a ZIP archive.
+ * Extends the Wbcr_FactoryPages480_AdminPage class, inheriting its functionalities and structure.
+ *
+ * @author  Alex Kovalev <alex.kovalevv@gmail.com> <Telegram:@alex_kovalevv>
  */
 class Wbcr_FactoryLogger149_AdminPage extends Wbcr_FactoryPages480_AdminPage {
 
@@ -39,7 +41,10 @@ class Wbcr_FactoryLogger149_AdminPage extends Wbcr_FactoryPages480_AdminPage {
 		$this->page_title  = __( 'Plugin log', 'wbcr_factory_logger_149' );
 		$this->capabilitiy = "manage_options";
 
-		add_action( 'wp_ajax_wbcr_factory_logger_149_'.$plugin->getPrefix().'logs_cleanup', [ $this, 'ajax_cleanup' ] );
+		add_action( 'wp_ajax_wbcr_factory_logger_149_' . $plugin->getPrefix() . 'logs_cleanup', [
+			$this,
+			'ajax_cleanup'
+		] );
 
 		parent::__construct( $plugin );
 	}
@@ -57,7 +62,7 @@ class Wbcr_FactoryLogger149_AdminPage extends Wbcr_FactoryPages480_AdminPage {
 		$this->scripts->add( FACTORY_LOGGER_149_URL . '/assets/js/logger.js', [ 'jquery' ], 'wbcr_factory_logger_149', FACTORY_LOGGER_149_VERSION );
 		wp_localize_script( 'wbcr_factory_logger_149', 'wbcr_factory_logger_149', [
 			'clean_logs_nonce' => wp_create_nonce( 'wbcr_factory_logger_149_clean_logs' ),
-			'plugin_prefix' => $this->plugin->getPrefix(),
+			'plugin_prefix'    => $this->plugin->getPrefix(),
 		] );
 	}
 
@@ -92,20 +97,20 @@ class Wbcr_FactoryLogger149_AdminPage extends Wbcr_FactoryPages480_AdminPage {
             </div>";
 
 		?>
-        <div class="wbcr_factory_logger_container">
-            <div class="wbcr_factory_logger_page_title">
-                <h1><?php _e( 'Logs of the', 'wbcr_factory_logger_149' ) ?>
-                    &nbsp;<?php echo $this->plugin->getPluginTitle() . " " . $this->plugin->getPluginVersion(); ?></h1>
-                <p>
+		<div class="wbcr_factory_logger_container">
+			<div class="wbcr_factory_logger_page_title">
+				<h1><?php _e( 'Logs of the', 'wbcr_factory_logger_149' ) ?>
+					&nbsp;<?php echo $this->plugin->getPluginTitle() . " " . $this->plugin->getPluginVersion(); ?></h1>
+				<p>
 					<?php _e( 'In this section, you can track how the plugin works. Sending this log to the developer will help you resolve possible issues.', 'wbcr_factory_logger_149' ) ?>
-                </p>
-            </div>
+				</p>
+			</div>
 			<?php echo $buttons; ?>
-            <div class="wbcr-log-viewer" id="wbcr-log-viewer">
+			<div class="wbcr-log-viewer" id="wbcr-log-viewer">
 				<?php echo $this->plugin->logger->prettify() ?>
-            </div>
+			</div>
 			<?php echo $buttons; ?>
-        </div>
+		</div>
 		<?php
 	}
 
@@ -133,10 +138,10 @@ class Wbcr_FactoryLogger149_AdminPage extends Wbcr_FactoryPages480_AdminPage {
 	 * Processing log export action in form of ZIP archive.
 	 */
 	public function exportAction() {
-        if( !(isset( $_GET[ '_wpnonce' ] ) && wp_verify_nonce( $_GET[ '_wpnonce' ], 'export-' . $this->plugin->getPluginName() ))
-            || !$this->plugin->currentUserCan() ) {
-	        wp_die(__('You do not have sufficient permissions to perform this action!', 'wbcr_factory_logger_149'));
-        }
+		if ( ! ( isset( $_GET['_wpnonce'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'export-' . $this->plugin->getPluginName() ) )
+		     || ! $this->plugin->current_user_can() ) {
+			wp_die( __( 'You do not have sufficient permissions to perform this action!', 'wbcr_factory_logger_149' ) );
+		}
 
 		$export = new WBCR\Factory_Logger_149\Log_Export( $this->plugin->logger );
 

@@ -50,6 +50,15 @@ class PaymentHelper
         return $amount;
     }
 
+    /**
+     * Check payment settings available or not
+     * @return bool
+     */
+    public static function hasPaymentSettings()
+    {
+        return !!get_option('__fluentform_payment_module_settings');
+    }
+
     public static function getFormSettings($formId, $scope = 'public')
     {
         static $cachedSettings = [];

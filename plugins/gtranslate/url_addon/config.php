@@ -1,11 +1,4 @@
 <?php
-$gt_override_config = dirname(__FILE__, 5) . '/gt-config.php';
-if(file_exists($gt_override_config)) {
-    include $gt_override_config;
-    if(isset($main_lang) and isset($servers))
-        return;
-}
-
 // Specify the original language code of your website
 $main_lang = 'en';
 

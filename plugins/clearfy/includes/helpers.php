@@ -298,41 +298,46 @@ class WCL_Helper extends WBCR\Factory_Templates_134\Helpers {
 	 * Componate content for robot.txt
 	 * @return string
 	 */
-	public static function getRightRobotTxt()
-	{
-		$cache_output = WCL_Plugin::app()->getPopulateOption('robots_txt_text_cache');
+    public static function getRightRobotTxt()
+    {
+        $cache_output = WCL_Plugin::app()->getPopulateOption('robots_txt_text_cache');
+        if ($cache_output !== false && $cache_output) {
+            return $cache_output;
+        }
 
-		if( $cache_output ) {
-			return $cache_output;
-		}
+        $site_url = get_home_url();
+        $dir_host = preg_replace("(^https?://)", "", $site_url);
 
-		$site_url = get_home_url();
-		$dir_host = preg_replace("(^https?://)", "", $site_url);
+        if (is_ssl()) {
+            $dir_host = 'https://' . $dir_host;
+        }
 
-		if( is_ssl() ) {
-			$dir_host = 'https://' . $dir_host;
-		}
+        $file_path = WCL_PLUGIN_DIR . '/templates/robots.txt';
 
-		$file_path = WCL_PLUGIN_DIR . '/templates/robots.txt';
-		$file = fopen($file_path, 'r');
-		$robot_default_content = fread($file, filesize($file_path));
-		fclose($file);
+        if (file_exists($file_path) && is_readable($file_path)) {
+            $file = fopen($file_path, 'r');
+            $robot_default_content = fread($file, filesize($file_path));
+            fclose($file);
+        } else {
+            $robot_default_content = '';
+        }
 
-		$output = $robot_default_content;
-		$output .= 'Host: ' . $dir_host . PHP_EOL;
+        $output = $robot_default_content;
+        $output .= 'Host: ' . $dir_host . PHP_EOL;
 
-		$headers = @get_headers($site_url . '/sitemap.xml', 1);
+        $headers = @get_headers($site_url . '/sitemap.xml', 1);
+        if ($headers && is_array($headers)) {
+            if (isset($headers[0]) && strpos($headers[0], '200 OK') !== false) {
+                $output .= 'Sitemap: ' . $site_url . '/sitemap.xml' . PHP_EOL;
+            } else if (isset($headers['Location']) && !empty($headers['Location'])) {
+                $output .= 'Sitemap: ' . $headers['Location'] . PHP_EOL;
+            }
+        }
 
-		if( strpos($headers[0], '200 OK') !== false ) {
-			$output .= 'Sitemap: ' . $site_url . '/sitemap.xml' . PHP_EOL;
-		} else if( isset($headers['Location']) && !empty($headers['Location']) ) {
-			$output .= 'Sitemap: ' . $headers['Location'] . PHP_EOL;
-		}
+        WCL_Plugin::app()->updatePopulateOption('robots_txt_text_cache', $output);
 
-		WCL_Plugin::app()->updatePopulateOption('robots_txt_text_cache', $output);
-
-		return $output;
-	}
+        return $output;
+    }
 
 	public static function fetch_google_page_speed_audit()
 	{

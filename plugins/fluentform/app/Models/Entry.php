@@ -3,6 +3,7 @@
 namespace FluentForm\App\Models;
 
 use Exception;
+use FluentForm\App\Modules\Payments\PaymentHelper;
 use FluentForm\Framework\Support\Arr;
 
 class Entry extends Model
@@ -183,20 +184,21 @@ class Entry extends Model
         EntryDetails::whereIn('submission_id', $entryIds)->delete();
 
         //delete the pro models this way for now
-        // todo: handle these pro models deletion
-        // todo: delete files
+        // todo: update wpFluent to the framework model
         try {
-            wpFluent()->table('fluentform_order_items')
-                ->whereIn('submission_id', $entryIds)
-                ->delete();
+            if (PaymentHelper::hasPaymentSettings()) {
+                wpFluent()->table('fluentform_order_items')
+                    ->whereIn('submission_id', $entryIds)
+                    ->delete();
 
-            wpFluent()->table('fluentform_transactions')
-                ->whereIn('submission_id', $entryIds)
-                ->delete();
+                wpFluent()->table('fluentform_transactions')
+                    ->whereIn('submission_id', $entryIds)
+                    ->delete();
 
-            wpFluent()->table('fluentform_subscriptions')
-                ->whereIn('submission_id', $entryIds)
-                ->delete();
+                wpFluent()->table('fluentform_subscriptions')
+                    ->whereIn('submission_id', $entryIds)
+                    ->delete();
+            }
 
             wpFluent()->table('ff_scheduled_actions')
                 ->whereIn('origin_id', $entryIds)

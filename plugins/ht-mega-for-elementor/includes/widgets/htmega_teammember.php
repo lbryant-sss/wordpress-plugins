@@ -1003,7 +1003,6 @@ class HTMega_Elementor_Widget_TeamMember extends Widget_Base {
                 'tab'       => Controls_Manager::TAB_STYLE,
             ]
         );
-
             $this->add_responsive_control(
                 'team_socialmedia_margin',
                 [
@@ -1136,7 +1135,28 @@ class HTMega_Elementor_Widget_TeamMember extends Widget_Base {
                     ],
                 ]
             );
-            
+            $this->add_control(
+                'social_border_top_heading',
+                [
+                    'label' => __( 'Social container Border', 'htmega-addons' ),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                    'condition' => [
+                        'htmega_team_style' =>['6'],
+                    ],
+                ]
+            );
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'team_social_box_border',
+                    'label' => esc_html__( 'Social container Border', 'htmega-addons' ),
+                    'selector' => '{{WRAPPER}} .htmega-team-style-6 .htmega-team-info .htmega-social-network',
+                    'condition' => [
+                        'htmega_team_style' =>['6'],
+                    ],
+                ]
+            );
         $this->end_controls_section(); // Team Member Designation style tab end
 
     }

@@ -8,10 +8,15 @@
  */
 
 add_filter('wbcr/clearfy/adminbar_menu_items', function ($menu_items) {
+	$nonce = wp_create_nonce('wclearfy_cache_delete');
+
 	$menu_items['clearfy-clear-all-cache'] = [
 		'id' => 'clearfy-clear-all-cache',
 		'title' => '<span class="dashicons dashicons-update"></span> ' . __('Clear all cache', 'clearfy'),
-		'href' => add_query_arg('wclearfy_cache_delete', '1')
+		'href' => esc_url(add_query_arg([
+			'wclearfy_cache_delete' => '1',
+			'_wpnonce' => $nonce
+		]))
 	];
 
 	return $menu_items;

@@ -4,6 +4,7 @@ namespace FluentForm\App\Modules\Form;
 
 use FluentForm\App\Helpers\Helper;
 use FluentForm\App\Modules\Acl\Acl;
+use FluentForm\App\Modules\Payments\PaymentHelper;
 use FluentForm\Framework\Foundation\Application;
 use FluentForm\Framework\Helpers\ArrayHelper;
 
@@ -544,7 +545,7 @@ class Form
             ->delete();
 
         ob_start();
-        if (defined('FLUENTFORMPRO')) {
+        if (PaymentHelper::hasPaymentSettings()) {
             try {
                 wpFluent()->table('fluentform_order_items')
                     ->where('form_id', $formId)

@@ -8,8 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The class is responsible for the operation of the logs page for a lite interface
  *
- * @author        Artem Prihodko <webtemyk@yandex.ru>
- * @copyright (c) 2020, Webcraftic
+ * @author  Alex Kovalev <alex.kovalevv@gmail.com> <Telegram:@alex_kovalevv>
+ * @copyright (c) 18.01.2025, CreativeMotion
  * @version       1.0
  */
 class Wbcr_FactoryLogger149_Lite extends \WBCR\Factory_Templates_134\ImpressiveLite {
@@ -30,6 +30,16 @@ class Wbcr_FactoryLogger149_Lite extends \WBCR\Factory_Templates_134\ImpressiveL
 	public $type = 'page';
 
 	/**
+	 * Represents the plugin instance.
+	 *
+	 * This variable may hold the main plugin functionality, configurations, or settings
+	 * required across different parts of the system where the plugin is used.
+	 *
+	 * @author  Alex Kovalev <alex.kovalevv@gmail.com> <Telegram:@alex_kovalevv>
+	 */
+	public $plugin;
+
+	/**
 	 * @param Wbcr_Factory480_Plugin $plugin
 	 */
 	public function __construct( $plugin ) {
@@ -43,6 +53,8 @@ class Wbcr_FactoryLogger149_Lite extends \WBCR\Factory_Templates_134\ImpressiveL
 		] );
 
 		parent::__construct( $plugin );
+
+		$this->plugin = $plugin;
 	}
 
 	/**
@@ -84,19 +96,19 @@ class Wbcr_FactoryLogger149_Lite extends \WBCR\Factory_Templates_134\ImpressiveL
                    </a>
             </div>";
 		?>
-        <div class="wbcr-factory-page-group-header" style="margin-top:0;">
-            <strong><?php _e( 'Plugin Log', 'wbcr_factory_logger_149' ) ?></strong>
-            <p>
+		<div class="wbcr-factory-page-group-header" style="margin-top:0;">
+			<strong><?php _e( 'Plugin Log', 'wbcr_factory_logger_149' ) ?></strong>
+			<p>
 				<?php _e( 'In this section, you can track how the plugin works. Sending this log to the developer will help you resolve possible issues.', 'wbcr_factory_logger_149' ) ?>
-            </p>
-        </div>
-        <div class="wbcr-factory-page-group-body" style="padding: 0 20px">
+			</p>
+		</div>
+		<div class="wbcr-factory-page-group-body" style="padding: 0 20px">
 			<?php echo $buttons; ?>
-            <div class="wbcr-log-viewer" id="wbcr-log-viewer">
+			<div class="wbcr-log-viewer" id="wbcr-log-viewer">
 				<?php echo $this->plugin->logger->prettify() ?>
-            </div>
+			</div>
 			<?php echo $buttons; ?>
-        </div>
+		</div>
 		<?php
 	}
 
@@ -125,7 +137,7 @@ class Wbcr_FactoryLogger149_Lite extends \WBCR\Factory_Templates_134\ImpressiveL
 	 */
 	public function exportAction() {
 		if ( ! ( isset( $_GET['_wpnonce'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'export-' . $this->plugin->getPluginName() ) )
-		     || ! $this->plugin->currentUserCan() ) {
+		     || ! $this->plugin->current_user_can() ) {
 			wp_die( __( 'You do not have sufficient permissions to perform this action!', 'wbcr_factory_logger_149' ) );
 		}
 

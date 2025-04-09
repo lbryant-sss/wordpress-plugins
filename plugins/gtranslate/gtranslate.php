@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
 Description: Translate your website and make it multilingual. For support visit <a href="https://wordpress.org/support/plugin/gtranslate">GTranslate Support Forum</a>.
-Version: 3.0.7
+Version: 3.0.8
 Author: Translate AI Multilingual Solutions
 Author URI: https://gtranslate.io
 Text Domain: gtranslate
@@ -1435,7 +1435,7 @@ EOT;
                                         <li><a href="https://gtranslate.io/?xyz=998#pricing" target="_blank" rel="noreferrer"><?php _e('Compare plans', 'gtranslate'); ?></a></li>
                                         <li><a href="https://gtranslate.io/website-translation-quote" target="_blank" rel="noreferrer"><?php _e('Website Translation Quote', 'gtranslate'); ?></a></li>
                                         <li><a href="https://gtranslate.io/detect-browser-language" target="_blank" rel="noreferrer"><?php _e('Detect browser language', 'gtranslate'); ?></a></li>
-                                        <li><a href="https://wordpress.org/support/plugin/gtranslate/reviews/" target="_blank" rel="noreferrer"><?php _e('Reviews', 'gtranslate'); ?></a></li>
+                                        <li><a href="https://translatex.com" target="_blank" rel="noreferrer"><?php _e('TranslateX - Translation API', 'gtranslate'); ?></a></li>
                                     </ul>
                                 </td>
                             </tr>

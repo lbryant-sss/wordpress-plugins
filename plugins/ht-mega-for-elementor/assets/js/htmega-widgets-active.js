@@ -38,7 +38,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                 var carousel_elem_nav = $scope.find('.htmega-testimonial-activation .htmega-testimonal-nav').eq(0);
                 if( carousel_elem_nav.length > 0 ){ carousel_elem_nav[0].style.display='block'; }
 
-                carousel_elem_for.slick({
+                carousel_elem_for.not('.slick-initialized').slick({
                     slidesToShow: 1,
                     slidesToScroll: scroll_columns,
                     arrows: arrows,
@@ -49,7 +49,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                     asNavFor: '.htmega-testimonal-nav'
                 });
 
-                carousel_elem_nav.slick({
+                carousel_elem_nav.not('.slick-initialized').slick({
                     slidesToShow: display_columns,
                     slidesToScroll: scroll_columns,
                     asNavFor: '.htmega-testimonial-for',
@@ -61,7 +61,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                 });
 
             }else{
-                carousel_elem.slick({
+                carousel_elem.not('.slick-initialized').slick({
                     arrows: arrows,
                     prevArrow: '<button aria-label="'+areaBtnPrev+'" type="button" class="slick-prev">'+arrow_prev_txt+'</button>',
                     nextArrow: '<button aria-label="'+areaBtnNext+'" type="button" class="slick-next">'+arrow_next_txt+'</button>',
@@ -101,7 +101,11 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
     var WidgetHtmegaCarouselHandler = function ($scope, $) {
 
         var carousel_elem = $scope.find( '.htmega-carousel-activation' ).eq(0);
-        if( carousel_elem.length > 0){ carousel_elem[0].style.display='block'; }
+        if (carousel_elem.length > 0 && carousel_elem[0]) { 
+            
+            carousel_elem[0].style.display='block';
+        
+        }
         if ( carousel_elem.length > 0 ) {
 
             var settings = carousel_elem.data('settings');
@@ -129,7 +133,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
             var mobile_scroll_columns = parseInt(settings['mobile_scroll_columns']) || 1;
             var carousel_style_ck = parseInt( settings['carousel_style_ck'] ) || 1;
             if( carousel_style_ck == 4 ){
-                carousel_elem.slick({
+                carousel_elem.not('.slick-initialized').slick({
                     arrows: arrows,
                     prevArrow: '<button class="htmega-carosul-prev">'+arrow_prev_txt+'</button>',
                     nextArrow: '<button class="htmega-carosul-next">'+arrow_next_txt+'</button>',
@@ -174,7 +178,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                     ]
                 });
             }else{
-                carousel_elem.slick({
+                carousel_elem.not('.slick-initialized').slick({
                     arrows: arrows,
                     prevArrow: '<button aria-label="'+areaBtnPrev+'" class="htmega-carosul-prev">'+arrow_prev_txt+'</button>',
                     nextArrow: '<button aria-label="'+areaBtnNext+'" class="htmega-carosul-next">'+arrow_next_txt+'</button>',
@@ -285,7 +289,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
             var navmobile_display_columns = parseInt(navsettings['navmobile_display_columns']) || 1;
             var navmobile_scroll_columns = parseInt(navsettings['navmobile_scroll_columns']) || 1;
 
-            thumbnailscarousel_elem_for.slick({
+            thumbnailscarousel_elem_for.not('.slick-initialized').slick({
                 arrows: arrows,
                 prevArrow: '<button aria-label="'+areaBtnPrev+'" class="htmega-carosul-prev">'+arrow_prev_txt+'</button>',
                 nextArrow: '<button aria-label="'+areaBtnNext+'" class="htmega-carosul-next">'+arrow_next_txt+'</button>',
@@ -320,7 +324,7 @@ let areaBtnPrev = HTMEGAF['buttion_area_text_prev'];
                 ]
             });
 
-            thumbnailscarousel_elem_nav.slick({
+            thumbnailscarousel_elem_nav.not('.slick-initialized').slick({
                 slidesToShow: navdisplay_columns,
                 slidesToScroll: navscroll_columns,
                 asNavFor: thumbnailscarousel_elem_for,

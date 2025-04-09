@@ -2,6 +2,7 @@
 
 namespace FluentForm\App\Models;
 
+use FluentForm\App\Modules\Payments\PaymentHelper;
 use FluentForm\Framework\Support\Arr;
 use FluentForm\App\Models\Traits\PredefinedForms;
 
@@ -261,16 +262,21 @@ class Form extends Model
             ])
             ->delete();
 
-        wpFluent()->table('fluentform_order_items')
-            ->where('form_id', $formId)
-            ->delete();
+        if (PaymentHelper::hasPaymentSettings()) {
+            try {
+                wpFluent()->table('fluentform_order_items')
+                    ->where('form_id', $formId)
+                    ->delete();
 
-        wpFluent()->table('fluentform_transactions')
-            ->where('form_id', $formId)
-            ->delete();
+                wpFluent()->table('fluentform_transactions')
+                    ->where('form_id', $formId)
+                    ->delete();
 
-        wpFluent()->table('fluentform_subscriptions')
-            ->where('form_id', $formId)
-            ->delete();
+                wpFluent()->table('fluentform_subscriptions')
+                    ->where('form_id', $formId)
+                    ->delete();
+            } catch (\Exception $e) {
+            }
+        }
     }
 }

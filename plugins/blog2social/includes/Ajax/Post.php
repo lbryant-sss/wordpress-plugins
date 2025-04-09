@@ -88,16 +88,18 @@ class Ajax_Post {
 
         if (current_user_can('read') && isset($_POST['b2s_security_nonce']) && (int) wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['b2s_security_nonce'])), 'b2s_security_nonce') > 0) {  //0-24hours lifetime
             try {
-                //get public client ip
-                $clientIp = file_get_contents('https://ipinfo.io/ip');
-                if (filter_var($clientIp, FILTER_VALIDATE_IP)) {
-                    $com = "ping -c 4 " . escapeshellarg('178.77.85.168');
-                    $resPing = shell_exec($com);
-                    $resPing = "Server IP:" . $clientIp . "<br><br>" . utf8_encode($resPing)."<br><br>";
-                    $output = wp_kses($resPing, array('br' => array()));
+                 $hostname = gethostname();
+                $serverIp = gethostbyname($hostname);
+                $publicServerIp = file_get_contents('https://ipinfo.io/ip');
+                if (filter_var($serverIp, FILTER_VALIDATE_IP)) {
+                    $comTrace = (PHP_OS_FAMILY === 'Windows') ? 'tracert' : 'traceroute';
+                    $com = $comTrace . " " . escapeshellarg('178.77.85.168');
+                    $resTrace = shell_exec($com);
+                    $resTrace = "Server IP:" . $publicServerIp . " (Intern: ".$serverIp.")<br><br>" . utf8_encode(nl2br($resTrace)) . "<br><br>---";
+                    $output = wp_kses($resTrace, array('br' => array()));
                     echo json_encode(array('result' => true, 'output' => $output));
                     wp_die();
-                }
+               }
                 echo json_encode(array('result' => false, 'error' => 'default'));
                 wp_die();
             } catch (Exception $ex) {

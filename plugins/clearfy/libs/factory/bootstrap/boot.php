@@ -23,7 +23,7 @@ if( defined('FACTORY_BOOTSTRAP_482_LOADED') ) {
 	return;
 }
 
-define('FACTORY_BOOTSTRAP_482_VERSION', '4.8.2');
+define('FACTORY_BOOTSTRAP_482_VERSION', '4.8.5');
 
 define('FACTORY_BOOTSTRAP_482_LOADED', true);
 

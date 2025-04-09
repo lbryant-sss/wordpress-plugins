@@ -9,12 +9,15 @@ class WCL_Cache {
 		add_action('transition_post_status', array($this, 'on_all_status_transitions'), 10, 3);
 
 		add_action('init', function () {
-			if( current_user_can('manage_options') && isset($_GET['wclearfy_cache_delete']) ) {
+			if (current_user_can('manage_options') && isset($_GET['wclearfy_cache_delete'])) {
+				check_admin_referer('wclearfy_cache_delete_action');
+
 				WCL_Cache_Helpers::deleteCache();
-				wp_redirect(esc_url_raw(remove_query_arg('wclearfy_cache_delete')));
+				wp_redirect(esc_url_raw(remove_query_arg(['wclearfy_cache_delete', '_wpnonce'])));
 				die();
 			}
 		});
+
 
 		if( !is_admin() ) {
 			if( isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] ) {

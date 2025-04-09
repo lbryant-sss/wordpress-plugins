@@ -415,16 +415,16 @@ class SubmissionHandlerService
         );
     }
 
-    private function isSpamAndSkipProcessing($insertData)
+    private function isSpamAndSkipProcessing(&$insertData)
     {
-        if (Arr::get($insertData, 'status') !== 'spam') {
-            return false;
-        }
-
         $spamSources = Arr::get($insertData, 'spam_from', []);
-        
+
         if ($spamSources) {
             unset($insertData['spam_from']);
+        }
+        
+        if (Arr::get($insertData, 'status') !== 'spam') {
+            return false;
         }
 
         $insertId = Submission::insertGetId($insertData);
@@ -441,11 +441,11 @@ class SubmissionHandlerService
                 $shouldSkip = true;
             }
         }
-        
+    
         if ($shouldSkip) {
             return [
                 'insert_id' => $insertId,
-                'result' => $this->getReturnData($insertId, $this->form, $this->formData),
+                'result'    => $this->getReturnData($insertId, $this->form, $this->formData),
             ];
         }
 
@@ -570,12 +570,12 @@ class SubmissionHandlerService
         Helper::setSubmissionMeta($insertId, 'is_form_action_fired', 'yes');
         do_action('fluentform/log_data', [
             'parent_source_id' => $this->form->id,
-            'source_type' => 'submission_item',
-            'source_id' => $insertId,
-            'component' => $type . ' Integration',
-            'status' => 'info',
-            'title' => __('Skip Submission Processing', 'fluentform'),
-            'description' => __('Submission marked as spammed. And skip all actions processing', 'fluentform')
+            'source_type'      => 'submission_item',
+            'source_id'        => $insertId,
+            'component'        => $type . ' Integration',
+            'status'           => 'info',
+            'title'            => __('Skip Submission Processing', 'fluentform'),
+            'description'      => __('Submission marked as spammed. And skip all actions processing', 'fluentform')
         ]);
     }
 }

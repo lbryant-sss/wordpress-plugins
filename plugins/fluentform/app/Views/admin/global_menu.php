@@ -52,7 +52,7 @@ $page = sanitize_text_field($_GET['page']);
         <?php endif; ?>
         <li>
             <?php if ($show_payment && Acl::hasPermission('fluentform_view_payments')): ?>
-                <a href="<?php echo esc_url(admin_url('admin.php?page=fluent_forms_settings&component=payment_settings')); ?>" class="ff_menu_link">
+                <a href="<?php echo esc_url(admin_url('admin.php?page=fluent_forms_settings#payments/general_settings')); ?>" class="ff_menu_link">
                     <?php _e('Payments', 'fluentform'); ?><span class="ff_new_badge">new</span>
                 </a>
             <?php endif; ?>

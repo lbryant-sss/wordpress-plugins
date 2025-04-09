@@ -4451,7 +4451,6 @@ ul.htmega-testimonial-rating * {
   
   .htmega-form-wrapper .wpcf7-form-control .wpcf7-list-item{
     margin: 0 1em 0 0;
-
   }
   /*
    * LogIn Style
@@ -4861,6 +4860,7 @@ ul.htmega-testimonial-rating * {
   }
   .htmega-service .service-title a{
     text-decoration: none;
+    transition: all .3s ease 0s;
   }
   .htmega-service .thumb{
     display: inline-block;
@@ -11955,7 +11955,6 @@ justify-content: center;
   }
   
   .htmega-single-post-slide .content ul.post-category li {
-    background: #f05555 none repeat scroll 0 0;
     margin-right: 10px;
     transition: all 0.4s ease-in-out 0s;
     line-height: inherit;
@@ -11973,6 +11972,7 @@ justify-content: center;
     display: block;
     text-decoration: none;
     line-height: 1;
+    background: #f05555 none repeat scroll 0 0;
   }
   .htmega-single-post-slide .content ul.post-category li a:hover{
     background: #18012c none repeat scroll 0 0;

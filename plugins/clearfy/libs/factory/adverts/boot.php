@@ -28,7 +28,7 @@ if ( defined( 'FACTORY_ADVERTS_159_LOADED' ) || ( defined( 'FACTORY_ADVERTS_BLOC
 define( 'FACTORY_ADVERTS_159_LOADED', true );
 
 # Устанавливаем версию модуля
-define( 'FACTORY_ADVERTS_159_VERSION', '1.5.9' );
+define( 'FACTORY_ADVERTS_159_VERSION', '1.6.2' );
 
 add_action( 'init', function () {
 	# Регистрируем тектовый домен, для интернализации интерфейса модуля

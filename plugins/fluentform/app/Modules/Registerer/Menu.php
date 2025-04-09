@@ -7,6 +7,7 @@ use FluentForm\App\Hooks\Handlers\ActivationHandler;
 use FluentForm\App\Modules\Acl\Acl;
 use FluentForm\App\Modules\AddOnModule;
 use FluentForm\App\Modules\DocumentationModule;
+use FluentForm\App\Modules\Payments\PaymentHelper;
 use FluentForm\App\Services\FluentConversational\Classes\Converter\Converter;
 use FluentForm\App\Services\Manager\FormManagerService;
 use FluentForm\Framework\Foundation\Application;
@@ -1166,14 +1167,11 @@ class Menu
 
     public function renderGlobalMenu()
     {
-        $showPayment = false;
-        if (defined('FLUENTFORMPRO')) {
-            $showPayment = !get_option('__fluentform_payment_module_settings');
-            if ($showPayment) {
-                $formCount = wpFluent()->table('fluentform_forms')
-                                ->count();
-                $showPayment = $formCount > 2;
-            }
+        $showPayment = !PaymentHelper::hasPaymentSettings();
+        if ($showPayment) {
+            $formCount = wpFluent()->table('fluentform_forms')
+                ->count();
+            $showPayment = $formCount > 2;
         }
         $showPaymentEntry = apply_filters_deprecated('fluentform_show_payment_entries', [
                 false

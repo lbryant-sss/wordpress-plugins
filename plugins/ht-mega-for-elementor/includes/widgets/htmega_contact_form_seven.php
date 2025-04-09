@@ -390,6 +390,87 @@ class HTMega_Elementor_Widget_Contact_Form_Seven extends Widget_Base {
                         ]
                     );
 
+                    $this->add_control(
+                        'input_select_field_appearance',
+                        [
+                            'label' => esc_html__( 'Customize Select Field Arrow Icon', 'htmega-addons' ),
+                            'type' => Controls_Manager::SWITCHER,
+                            'return_value' => 'yes',
+                            'default' => 'no',
+                            'separator' => 'before',
+                        ]
+                    );
+                    $this->add_responsive_control(
+                        'select_appearance_position',
+                        [
+                            'label' => esc_html__( 'Icon Position', 'htmega-addons' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%','custom' ],
+                            'range' => [
+                                'px' => [
+                                    'min' => -100,
+                                    'max' => 100,
+                                    'step' => 1,
+                                ],
+                                '%' => [
+                                    'min' => 0,
+                                    'max' => 100,
+                                ],
+                            ],
+                            'default' => [
+                                'unit' => '%',
+                                'size' => 95,
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}} .wpcf7-select' => 'background-position: {{SIZE}}{{UNIT}} 50%;',
+                            ],
+                            'condition' =>[
+                                'input_select_field_appearance' => 'yes',
+                            ]
+                        ]
+                    );
+                    $this->add_responsive_control(
+                        'select_appearance_size',
+                        [
+                            'label' => esc_html__( 'Icon Size', 'htmega-addons' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                'px' => [
+                                    'min' => 0,
+                                    'max' => 100,
+                                    'step' => 1,
+                                ],
+                                '%' => [
+                                    'min' => 0,
+                                    'max' => 100,
+                                ],
+                            ],
+                            'default' => [
+                                'unit' => 'px',
+                                'size' => 15,
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}}  .wpcf7-select' => 'background-size: {{SIZE}}{{UNIT}};',
+                            ],
+                            'condition' =>[
+                                'input_select_field_appearance' => 'yes',
+                            ]
+                        ]
+                    ); 
+                    $this->add_control(
+                        'select_appearance_background', 
+                        [
+                             'label'      => esc_html__( 'Icon Image', 'htmega-addons' ),
+                            'type'        => Controls_Manager::MEDIA,
+                            'default'     => [
+                                'url'     => HTMEGA_ADDONS_PL_URL .'assets/images/icons/select-arrow-icon.svg'
+                            ],
+                            'condition' =>[
+                                'input_select_field_appearance' => 'yes',
+                            ]
+                        ]
+                    );
                     $this->end_controls_tab();
 
                     // Hover Style Tab
@@ -1156,11 +1237,13 @@ class HTMega_Elementor_Widget_Contact_Form_Seven extends Widget_Base {
     protected function render( $instance = [] ) {
 
         $settings   = $this->get_settings_for_display();
+        $section_id =  'sid' . $this-> get_id();
+
         if ( ! is_plugin_active('contact-form-7/wp-contact-form-7.php') ) {
             htmega_plugin_missing_alert( __('Contact Form 7', 'htmega-addons') );
             return;
         }
-        $this->add_render_attribute( 'htmega_form_area_attr', 'class', 'htmega-form-wrapper' );
+        $this->add_render_attribute( 'htmega_form_area_attr', 'class', 'htmega-form-wrapper ' . esc_attr( $section_id ) );
         $this->add_render_attribute( 'htmega_form_area_attr', 'class', 'htmega-form-style-'. esc_attr( $settings['htmega_form_layout_style'] ) );
         ?>
             <div <?php echo $this->get_render_attribute_string( 'htmega_form_area_attr' ); ?> >
@@ -1170,8 +1253,24 @@ class HTMega_Elementor_Widget_Contact_Form_Seven extends Widget_Base {
                     }else{
                         echo '<div class="form_no_select">' .esc_html__('Please Select contact form.','htmega-addons'). '</div>';
                     }
+                    
+                    if ( $settings['input_select_field_appearance'] == 'yes' ) {
+                        $background_image_url = !empty( $settings['select_appearance_background']['url'] ) 
+                        ? $settings['select_appearance_background']['url'] 
+                        : ( defined('HTMEGA_ADDONS_PL_URL') ? HTMEGA_ADDONS_PL_URL . 'assets/images/icons/select-arrow-icon.svg' : '' );
+                    ?>
+                    <style>
+                        .htmega-form-wrapper.<?php echo esc_attr( $section_id ); ?> .wpcf7-select {
+                                appearance: none;
+                                background-image: url('<?php echo esc_url( $background_image_url ); ?>');
+                                background-repeat: no-repeat;
+                            }
+                    </style>
+                <?php
+                    }
                 ?>
             </div>
+
 
         <?php
     }

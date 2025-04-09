@@ -3,16 +3,16 @@
  * Plugin Name: Simple Banner
  * Plugin URI: https://github.com/rpetersen29/simple-banner
  * Description: Display a simple banner at the top or bottom of your website. Now with multi-banner support
- * Version: 3.0.5
+ * Version: 3.0.6
  * Author: Ryan Petersen
  * Author URI: http://rpetersen29.github.io/
  * License: GPLv3
  *
  * @package Simple Banner
- * @version 3.0.5
+ * @version 3.0.6
  * @author Ryan Petersen <rpetersen.dev@gmail.com>
  */
-define ('SB_VERSION', '3.0.5');
+define ('SB_VERSION', '3.0.6');
 
 register_activation_hook( __FILE__, 'simple_banner_activate' );
 function simple_banner_activate() {
@@ -357,6 +357,11 @@ function simple_banner_settings() {
 	    	'sanitize_callback' => 'wp_filter_nohtml_kses'
 		)
     );
+	register_setting( 'simple-banner-settings-group', 'simple_banner_clear_cache',
+		array(
+	    	'sanitize_callback' => 'wp_filter_nohtml_kses'
+		)
+    );
 
     for ($i = 1; $i <= get_num_banners(); $i++) {
     	/** 
@@ -669,6 +674,11 @@ function simple_banner_settings_page() {
 
            	<?php include 'pro_features_general_settings.php' ?>
 
+            <?php
+                // Flip value to ensure changed value on every save
+                $value = get_option('simple_banner_clear_cache') ? '' : '1';
+                echo '<input hidden type="text" value="'. $value . '" name="simple_banner_clear_cache" />';
+            ?>
 			<!-- Save Changes Button -->
 			<?php submit_button(); ?>
 		</form>
@@ -981,17 +991,23 @@ function simple_banner_settings_page() {
 	<?php
 }
 
-// Clear cache on save
-function clear_all_caches() {
+/**
+ * Clear 3rd party cache on save
+ */
+// Hack: Set hidden variable to always change on save
+// TODO: Find better way of making sure cache is cleared on save
+add_action( 'update_option_simple_banner_clear_cache', 'clear_all_caches', 10, 3 );
+
+function clear_all_caches($old_value, $value, $option) {
     try {
-        $this->clearW3TotalCache();
-        $this->clearWPSuperCache();
-        $this->clearWPEngineCache();
-        $this->clearWPFastestCache();
-        $this->clearWPRocket();
-        $this->clearAutoOptimizeCache();
-        $this->clearLiteSpeedCache();
-        $this->clearHummingbirdCache();
+        clearW3TotalCache();
+        clearWPSuperCache();
+        clearWPEngineCache();
+        clearWPFastestCache();
+        clearWPRocket();
+        clearAutoOptimizeCache();
+        clearLiteSpeedCache();
+        clearHummingbirdCache();
         
         return true;
     } catch (Exception $e) {
@@ -1028,7 +1044,7 @@ function clearWPEngineCache() {
 
     foreach ($methods as $method) {
         if (method_exists('WpeCommon', $method)) {
-            // WpeCommon::$method();  // Currently commented out in original code
+            // WpeCommon::$method();
         }
     }
 }

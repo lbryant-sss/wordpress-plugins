@@ -21,7 +21,7 @@ if ( defined( 'FACTORY_FORMS_480_LOADED' ) ) {
 }
 
 define( 'FACTORY_FORMS_480_LOADED', true );
-define( 'FACTORY_FORMS_480_VERSION', '4.8.0' );
+define( 'FACTORY_FORMS_480_VERSION', '4.8.3' );
 
 // absolute path and URL to the files and resources of the module.
 define( 'FACTORY_FORMS_480_DIR', dirname( __FILE__ ) );

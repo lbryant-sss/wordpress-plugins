@@ -18,7 +18,7 @@ if( defined('FACTORY_FREEMIUS_170_LOADED') ) {
 	return;
 }
 
-define('FACTORY_FREEMIUS_170_VERSION', '1.7.0');
+define('FACTORY_FREEMIUS_170_VERSION', '1.7.3');
 
 define('FACTORY_FREEMIUS_170_LOADED', true);
 define('FACTORY_FREEMIUS_170_DIR', dirname(__FILE__));

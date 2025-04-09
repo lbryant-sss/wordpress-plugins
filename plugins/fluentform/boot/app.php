@@ -46,9 +46,6 @@ return function ($file) {
     });
 
     add_action('plugins_loaded', function () use ($app) {
-        if (Helper::isPaymentCompatible()) {
-            (new FluentForm\App\Modules\Payments\PaymentHandler())->init();
-        }
         do_action_deprecated(
             'fluentform_loaded',
             [

@@ -4,7 +4,7 @@ Tags: post thumbnails, featured image, elementor, thumbnails, featured image fro
 Requires at least: 5.6
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 4.1.6
+Stable tag: 4.1.7
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 

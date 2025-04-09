@@ -19,7 +19,7 @@ if ( defined( 'FACTORY_TEMPLATES_134_LOADED' ) ) {
 }
 
 define( 'FACTORY_TEMPLATES_134_LOADED', true );
-define( 'FACTORY_TEMPLATES_134', '1.3.4' );
+define( 'FACTORY_TEMPLATES_134', '1.3.7' );
 
 define( 'FACTORY_TEMPLATES_134_DIR', dirname( __FILE__ ) );
 define( 'FACTORY_TEMPLATES_134_URL', plugins_url( '', __FILE__ ) );

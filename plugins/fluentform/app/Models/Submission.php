@@ -3,6 +3,7 @@
 namespace FluentForm\App\Models;
 
 use Exception;
+use FluentForm\App\Modules\Payments\PaymentHelper;
 use FluentForm\App\Services\Manager\FormManagerService;
 use FluentForm\Framework\Support\Arr;
 
@@ -265,17 +266,19 @@ class Submission extends Model
         //delete  models this way for now
         // todo: update wpFluent to the framework model
         try {
-            wpFluent()->table('fluentform_order_items')
-                ->whereIn('submission_id', $submissionIds)
-                ->delete();
+            if (PaymentHelper::hasPaymentSettings()) {
+                wpFluent()->table('fluentform_order_items')
+                    ->whereIn('submission_id', $submissionIds)
+                    ->delete();
 
-            wpFluent()->table('fluentform_transactions')
-                ->whereIn('submission_id', $submissionIds)
-                ->delete();
+                wpFluent()->table('fluentform_transactions')
+                    ->whereIn('submission_id', $submissionIds)
+                    ->delete();
 
-            wpFluent()->table('fluentform_subscriptions')
-                ->whereIn('submission_id', $submissionIds)
-                ->delete();
+                wpFluent()->table('fluentform_subscriptions')
+                    ->whereIn('submission_id', $submissionIds)
+                    ->delete();
+            }
 
             wpFluent()->table('ff_scheduled_actions')
                 ->whereIn('origin_id', $submissionIds)

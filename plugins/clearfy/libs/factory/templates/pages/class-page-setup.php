@@ -80,12 +80,12 @@ class Setup extends \WBCR\Factory_Templates_134\Impressive {
 	}
 
 	public function getPageTitle()
-	{
+    {
 		return __('Setup', 'wbcr_factory_templates_134');
 	}
 
 	public function get_close_wizard_url()
-	{
+    {
 		return $this->plugin->getPluginPageUrl('quick_start');
 	}
 
@@ -97,7 +97,7 @@ class Setup extends \WBCR\Factory_Templates_134\Impressive {
 	 * @throws \Exception
 	 */
 	public function executeByName($action)
-	{
+    {
 		$step = self::DEFAULT_STEP;
 
 		if( false !== strpos($action, 'step') && isset($this->steps[$action]) ) {
@@ -182,3 +182,4 @@ class Setup extends \WBCR\Factory_Templates_134\Impressive {
 		<?php
 	}
 }
+/*@mix:place*/
