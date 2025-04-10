@@ -1,5 +1,7 @@
 <?php
 
+use function WCML\functions\isStandAlone;
+
 /**
  * Created by OnTheGo Systems
  */
@@ -47,7 +49,10 @@ class WCML_Status_UI extends WCML_Templates_Factory {
 			],
 		];
 
-		if ( ! $this->woocommerce_wpml->products->is_product_display_as_translated_post_type() ) {
+		if (
+			! isStandAlone()
+			&& ! $this->woocommerce_wpml->products->is_product_display_as_translated_post_type()
+		) {
 			$WCML_Status_Products_UI = new WCML_Status_Products_UI( $this->woocommerce_wpml, $this->sitepress );
 			$model['products']       = $WCML_Status_Products_UI->get_view();
 		}

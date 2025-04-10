@@ -47,6 +47,7 @@ class WCML_Upgrade {
 		'5.0.0',
 		'5.3.0',
 		'5.4.1',
+		'5.4.4',
 	];
 
 	public function __construct() {
@@ -927,5 +928,9 @@ class WCML_Upgrade {
 				}
 			}
 		}
+	}
+
+	private function upgrade_5_4_4() {
+		\WCML_Capabilities::set_up_capabilities();
 	}
 }

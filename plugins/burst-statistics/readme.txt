@@ -5,7 +5,7 @@ Tags: statistics, analytics, stats, analytics alternative
 Requires at least: 6.0
 License: GPL2
 Requires PHP: 7.2
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 1.8.0
 
 Self-hosted, privacy-friendly stats for WordPress. Simple interface, no setup. Get detailed analytics with Burst Statistics.
@@ -94,6 +94,10 @@ Performance is almost not affected. We have built Burst to be very performant fo
 We value your feedback. You can [submit a support request on the WordPress forums](https://wordpress.org/support/plugin/burst-statistics/), and we will respond promptly.
 
 == Change log ==
+= 1.8.0.1 =
+* Fix: Goals block details not showing correct data.
+* Fix: Click goals not always tracking correctly.
+
 = 1.8.0 =
 * Improvement: add a fallback to allow for servers with a very small bytes limit on indexes.
 * Improvement: restructured the way tasks are stored.

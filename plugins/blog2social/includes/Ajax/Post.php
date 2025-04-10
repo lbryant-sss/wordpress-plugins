@@ -92,7 +92,7 @@ class Ajax_Post {
                 $serverIp = gethostbyname($hostname);
                 $publicServerIp = file_get_contents('https://ipinfo.io/ip');
                 if (filter_var($serverIp, FILTER_VALIDATE_IP)) {
-                    $comTrace = (PHP_OS_FAMILY === 'Windows') ? 'tracert' : 'traceroute';
+                    $comTrace = (PHP_OS_FAMILY === 'Windows') ? 'tracert' : 'traceroute -T';
                     $com = $comTrace . " " . escapeshellarg('178.77.85.168');
                     $resTrace = shell_exec($com);
                     $resTrace = "Server IP:" . $publicServerIp . " (Intern: ".$serverIp.")<br><br>" . utf8_encode(nl2br($resTrace)) . "<br><br>---";

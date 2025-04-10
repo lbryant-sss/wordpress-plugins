@@ -361,7 +361,7 @@ if ( ! class_exists( 'burst_admin' ) ) {
 			$cookieless_text = $cookieless == '1' ? '-cookieless' : '';
 			$localize_args = apply_filters(
 				'burst_tracking_options',
-				burst_get_tracking_options()
+				BURST()->frontend->get_tracking_options()
 			);
 
 			$js = '';
@@ -961,7 +961,7 @@ if ( ! class_exists( 'burst_admin' ) ) {
 					'burst_platforms',
 					'burst_devices',
 					'burst_summary',
-				],
+				]
 			);
 
 			// delete tables
@@ -982,7 +982,7 @@ if ( ! class_exists( 'burst_admin' ) ) {
 					'burst_goal_stats_db_version',
 					'burst_archive_db_version',
                     'burst_tasks'
-				],
+				]
 			);
 
 			// delete options

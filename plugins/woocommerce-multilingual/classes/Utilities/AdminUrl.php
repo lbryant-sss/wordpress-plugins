@@ -2,7 +2,6 @@
 
 namespace WCML\Utilities;
 
-use WPML\UIPage;
 use function WCML\functions\isStandAlone;
 
 class AdminUrl {
@@ -113,9 +112,11 @@ class AdminUrl {
 	 * @param string   $stringDomain
 	 *
 	 * @return string
+	 *
+	 * @throws \Error if WPML is not active, since \WPML\UIPage depends on it.
 	 */
 	public static function getWPMLTMDashboard( array $sections = [], string $stringDomain = '' ) : string {
-		$dashboardUrl = admin_url( UIPage::getTMDashboard() );
+		$dashboardUrl = admin_url( \WPML\UIPage::getTMDashboard() );
 		if ( empty( $sections ) ) {
 			return $dashboardUrl;
 		}
@@ -139,6 +140,8 @@ class AdminUrl {
 	 * @param string $domain
 	 *
 	 * @return string
+	 *
+	 * @throws \Error if WPML is not active, since \WPML\UIPage depends on it.
 	 */
 	public static function getWPMLTMDashboardStringDomain( string $domain ) : string {
 		return self::getWPMLTMDashboard(
@@ -147,12 +150,21 @@ class AdminUrl {
 		);
 	}
 
+	/**
+	 * @return string
+	 *
+	 * @throws \Error if WPML is not active, since \WPML\UIPage depends on it.
+	 */
 	public static function getWPMLTMDashboardProducts() : string {
 		return self::getWPMLTMDashboard( [ self::DASHBOARD_SECTION_PRODUCT ] );
 	}
 
 	/**
 	 * @param ?string $taxonomy
+	 *
+	 * @return string
+	 *
+	 * @throws \Error if WPML is not active, since WPML_PLUGIN_FOLDER depends on it.
 	 */
 	public static function getWPMLTaxonomyTranslation( $taxonomy = null ) : string {
 		$args = [
@@ -163,6 +175,13 @@ class AdminUrl {
 		return self::getAdminUrl( $args );
 	}
 
+	/**
+	 * @param array $args
+	 *
+	 * @return string
+	 *
+	 * @throws \Error if WPML is not active, since WPML_ST_FOLDER depends on it.
+	 */
 	public static function getWPMLStringTranslation( array $args = [] ) : string {
 		$args = array_merge(
 			[

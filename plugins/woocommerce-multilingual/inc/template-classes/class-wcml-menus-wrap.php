@@ -3,7 +3,6 @@
 use WCML\Utilities\AdminPages;
 
 use function WCML\functions\getSetting;
-use WPML\UIPage;
 
 class WCML_Menus_Wrap extends WCML_Menu_Wrap_Base {
 	/**

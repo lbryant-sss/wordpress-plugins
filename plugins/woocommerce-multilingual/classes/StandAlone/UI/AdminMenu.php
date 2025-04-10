@@ -48,7 +48,7 @@ class AdminMenu extends \WCML_Menu_Wrap_Base {
 				],
 				'multi_currency'           => [
 					'name'   => __( 'Multicurrency', 'woocommerce-multilingual' ),
-					'active' => AdminUrl::TAB_MULTICURRENCY === $current_tab ? 'nav-tab-active' : '',
+					'active' => AdminUrl::TAB_MULTILINGUAL_STANDALONE !== $current_tab ? 'nav-tab-active' : '',
 					'url'    => \WCML\Utilities\AdminUrl::getMultiCurrencyTab(),
 				],
 			],

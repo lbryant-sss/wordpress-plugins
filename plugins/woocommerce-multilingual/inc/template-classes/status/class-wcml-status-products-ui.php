@@ -19,6 +19,11 @@ class WCML_Status_Products_UI extends WCML_Templates_Factory {
 		$this->sitepress        = $sitepress;
 	}
 
+	/**
+	 * @return array
+	 *
+	 * @throws \Error if WPML is not active, since \WPML\UIPage depends on it.
+	 */
 	public function get_model() {
 		$model = [
 			'products'   => $this->get_untranslated_products(),

@@ -58,9 +58,9 @@ class WCML_Admin_Menus {
 		}
 
 		if ( is_admin() && ! is_null( $sitepress ) && self::$woocommerce_wpml->dependencies_are_ok && WCML_Capabilities::canManageWcml() ) {
-			add_action( 'admin_footer', [ __CLASS__, 'documentation_links' ] );
 			add_action( 'admin_head', [ __CLASS__, 'hide_multilingual_content_setup_box' ] );
 			if ( ! isStandAlone() ) {
+				add_action( 'admin_footer', [ __CLASS__, 'documentation_links' ] );
 				add_action( 'admin_init', [ __CLASS__, 'restrict_admin_with_redirect' ] );
 			}
 			add_filter( 'plugin_action_links_woocommerce-multilingual/wpml-woocommerce.php', [ __CLASS__, 'add_settings_links_to_plugin_actions' ] );
@@ -193,37 +193,6 @@ class WCML_Admin_Menus {
 			</script>
 			<?php
 			// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
-		}
-
-		$template = '
-            <span class="button" style="padding:4px;margin-top:0px; float: left;">
-                <img align="baseline" src="' . \WCML\functions\assetLink( '/res/img/icon16.png' ) . '" width="16" height="16" style="margin-bottom:-4px" /> 
-                <a href="%1$s" target="_blank" style="text-decoration: none;">%2$s</a>
-            </span><br /><br />
-        ';
-
-		if ( isset( $_GET['taxonomy'] ) ) {
-			$pos = strpos( $_GET['taxonomy'], 'pa_' );
-
-			if ( $pos !== false && $pagenow === 'edit-tags.php' ) {
-				$href      = $tracking_link->getWcmlMainDoc( '#3' );
-				$prot_link = sprintf( $template, $href, __( 'How to translate attributes', 'woocommerce-multilingual' ) );
-				?>
-				<script type="text/javascript">
-					jQuery( 'table.widefat' ).before( '<?php echo wp_kses_post( $prot_link ); ?>' );
-				</script>
-				<?php
-			}
-		}
-
-		if ( isset( $_GET['taxonomy'] ) && 'product_cat' === $_GET['taxonomy'] ) {
-			$href      = $tracking_link->getWcmlMainDoc( '#3' );
-			$prot_link = sprintf( $template, $href, __( 'How to translate product categories', 'woocommerce-multilingual' ) );
-			?>
-			<script type="text/javascript">
-				jQuery( 'table.widefat' ).before( '<?php echo wp_kses_post( $prot_link ); ?>' );
-			</script>
-			<?php
 		}
 	}
 
