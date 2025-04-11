@@ -112,7 +112,13 @@ const optimizedTemplate = ( data ) => {
 			</span>
 
 			<span class="image-optimization-control__property-value">
-				${ data?.sizesOptimized }
+				${ data?.sizesOptimized }/${ data?.sizesTotal }
+
+				<button type="button"
+								class="image-optimization-control__details-button"
+								aria-label="${ __( 'Open optimization details', 'image-optimization' ) }">
+					(+)
+				</button>
 			</span>
 		</span>
 

@@ -12,6 +12,7 @@ class Image_Meta {
 		'status' => Image_Status::NOT_OPTIMIZED,
 		'error_type' => null,
 		'compression_level' => null,
+		'retry_count' => null,
 		'sizes_optimized' => [],
 		'backups' => [],
 		'original_data' => [
@@ -48,6 +49,16 @@ class Image_Meta {
 
 	public function set_compression_level( string $compression_level ): Image_Meta {
 		$this->image_meta['compression_level'] = $compression_level;
+
+		return $this;
+	}
+
+	public function get_retry_count(): ?int {
+		return $this->image_meta['retry_count'];
+	}
+
+	public function set_retry_count( ?int $retry_count ): Image_Meta {
+		$this->image_meta['retry_count'] = $retry_count;
 
 		return $this;
 	}

@@ -102,7 +102,7 @@ class Optimize_Image {
 					"Can't access file for size `$size_exist`"
 				);
 
-				throw new Image_Optimization_Error( esc_html__( 'File is missing. Verify the upload', 'image-optimization' ) );
+				continue;
 			}
 
 			$this->current_image_size = $size_exist;

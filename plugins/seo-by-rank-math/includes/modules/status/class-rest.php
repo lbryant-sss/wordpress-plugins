@@ -148,7 +148,10 @@ class Rest extends WP_REST_Controller {
 			return [];
 		}
 
-		return $hash[ $view ]::get_json_data();
+		return apply_filters(
+			"rank_math/status/$view/json_data",
+			$hash[ $view ]::get_json_data()
+		);
 	}
 
 	/**

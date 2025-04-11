@@ -2,6 +2,7 @@
 namespace ImageOptimization\Modules\Core;
 
 use ImageOptimization\Modules\Optimization\{
+	Classes\Validate_Image,
 	Rest\Cancel_Bulk_Optimization,
 	Rest\Optimize_Bulk,
 };
@@ -10,9 +11,15 @@ use ImageOptimization\Modules\Backups\Rest\{
 	Remove_Backups,
 };
 use ImageOptimization\Classes\{
+	Async_Operation\Async_Operation,
+	Async_Operation\Async_Operation_Queue,
+	Async_Operation\Queries\Operation_Query,
+	Image\Image_Meta,
+	Image\Image_Optimization_Error_Type,
+	Image\Image_Status,
 	Migration\Migration_Manager,
 	Module_Base,
-	Utils
+	Utils,
 };
 
 use ImageOptimization\Plugin;
@@ -182,6 +189,8 @@ class Module extends Module_Base {
 			wp_enqueue_style( $style );
 		}
 
+		wp_enqueue_style( 'thickbox' );
+
 		wp_enqueue_script(
 			'image-optimization-admin',
 			$this->get_js_assets_url( 'admin' ),
@@ -223,6 +232,7 @@ class Module extends Module_Base {
 				'isOwner' => $module->connect_instance->is_connected() ? $module->connect_instance->user_is_subscription_owner() : null,
 				'subscriptionEmail' => $connect_email ? $connect_email : null,
 				'showResetButton' => $show_reset,
+				'maxFileSize' => Validate_Image::get_max_file_size(),
 
 				'wpRestNonce' => wp_create_nonce( 'wp_rest' ),
 				'disconnect' => wp_create_nonce( 'wp_rest' ),
@@ -244,6 +254,59 @@ class Module extends Module_Base {
 
 	private function should_render(): bool {
 		return ( Utils::is_media_page() || Utils::is_plugin_page() ) && Utils::user_is_admin();
+	}
+
+	public static function on_deactivation(): void {
+		$optimization_query = ( new Operation_Query() )
+			->set_queue( Async_Operation_Queue::OPTIMIZE )
+			->set_status( [ Async_Operation::OPERATION_STATUS_PENDING, Async_Operation::OPERATION_STATUS_RUNNING ] )
+			->set_limit( -1 );
+
+		$restoring_query = ( new Operation_Query() )
+			->set_queue( Async_Operation_Queue::RESTORE )
+			->set_status( [ Async_Operation::OPERATION_STATUS_PENDING, Async_Operation::OPERATION_STATUS_RUNNING ] )
+			->set_limit( -1 );
+
+		$optimization_operations = Async_Operation::get( $optimization_query );
+		$restoring_operations = Async_Operation::get( $restoring_query );
+
+		foreach ( $optimization_operations as $operation ) {
+			$image_id = $operation->get_args()['attachment_id'];
+
+			if ( ! $image_id ) {
+				continue;
+			}
+
+			Async_Operation::remove( [ $operation->get_id() ] );
+
+			$image_meta = new Image_Meta( $image_id );
+
+			if ( empty( $image_meta->get_optimized_sizes() ) ) {
+				$image_meta->delete();
+			} else {
+				$image_meta
+					->set_status( Image_Status::OPTIMIZATION_FAILED )
+					->set_error_type( Image_Optimization_Error_Type::PLUGIN_DEACTIVATION )
+					->save();
+			}
+		}
+
+		foreach ( $restoring_operations as $operation ) {
+			$image_id = $operation->get_args()['attachment_id'];
+
+			if ( ! $image_id ) {
+				continue;
+			}
+
+			Async_Operation::remove( [ $operation->get_id() ] );
+
+			$image_meta = new Image_Meta( $image_id );
+
+			$image_meta
+				->set_status( Image_Status::RESTORING_FAILED )
+				->set_error_type( Image_Optimization_Error_Type::PLUGIN_DEACTIVATION )
+				->save();
+		}
 	}
 
 	/**

@@ -1,4 +1,6 @@
 import apiFetch from '@wordpress/api-fetch';
+import { addQueryArgs } from '@wordpress/url';
+
 import APIError from './exceptions/APIError';
 
 const v1Prefix = '/image-optimizer/v1';
@@ -52,6 +54,17 @@ class API {
 			data: {
 				image_ids: imageIds,
 			},
+		} );
+	}
+
+	static async getOptimizationDetails( imageId ) {
+		const queryParams = {
+			image_id: imageId,
+		};
+
+		return API.request( {
+			method: 'GET',
+			path: addQueryArgs( `${ v1Prefix }/stats/optimization-details`, queryParams ),
 		} );
 	}
 }

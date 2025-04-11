@@ -785,10 +785,10 @@ abstract class Field implements FieldInterface {
             $parentIndex = false;
             foreach ($parents as $key => $parent) {
                 if ($parentIndex !== false){
-                    $value = $value[$parentIndex];
+                    $value = ($value[$parentIndex] ?? '');
                 }
                 if ($parent['delimiter'] !== FALSE) {
-                    $value = explode($parent['delimiter'], $value);
+                    $value = is_null($value) ? null : explode($parent['delimiter'], $value);
                     $parentIndex = $parent['index'];
                 }
             }

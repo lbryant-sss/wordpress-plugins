@@ -332,7 +332,7 @@ class UPI_WC_Payment_Gateway extends \WC_Payment_Gateway {
 				'title'       => __( 'Payment Buttons:', 'upi-qr-code-payment-for-woocommerce' ),
 				'type'        => 'checkbox',
 				'label'       => __( 'Show / Hide Payment Buttons', 'upi-qr-code-payment-for-woocommerce' ),
-				'description' => sprintf( '%s <span style="color: #ff0000;font-weight: 600;">%s</span>', __( 'Enable this if you want to show direct pay now option.', 'upi-qr-code-payment-for-woocommerce' ), __( 'Only Merchent UPI IDs will work.', 'upi-qr-code-payment-for-woocommerce' ) ),
+				'description' => sprintf( '%s <span style="color: #ff0000;font-weight: 600;">%s</span>', __( 'Enable this if you want to show direct pay now option.', 'upi-qr-code-payment-for-woocommerce' ), __( 'The payment Button will work only if the UPI Intent feature is enabled on your UPI ID.', 'upi-qr-code-payment-for-woocommerce' ) ),
 				'default'     => 'no',
 				'desc_tip'    => false,
 			],
@@ -513,7 +513,7 @@ class UPI_WC_Payment_Gateway extends \WC_Payment_Gateway {
 		if ( $this->upi_address === 'show_handle' ) {
 			$regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*$/i';
 		}
-		if ( ! preg_match( $regex, sanitize_text_field( $_POST['customer_upiwc_address'] ) ) && in_array( $this->upi_address, [ 'show', 'show_handle' ] ) && $this->require_upi === 'yes' ) {
+		if ( in_array( $this->upi_address, [ 'show', 'show_handle' ] ) && $this->require_upi === 'yes' && ! preg_match( $regex, sanitize_text_field( $_POST['customer_upiwc_address'] ) ) ) {
 			wc_add_notice( __( 'Please enter a <strong>valid UPI Address</strong>!', 'upi-qr-code-payment-for-woocommerce' ), 'error' );
 			return false;
 		}

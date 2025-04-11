@@ -74,8 +74,6 @@ final class ACFService {
 	 * @param $value
 	 */
 	public static function update_post_meta( Field $field, $pid, $name, $value ) {
-
-		// Prepare field data for acf/update_value filter.
 		$fieldData = [
 			'key'               => $field->getFieldKey(),
 			'name'              => $field->getFieldName(),
@@ -86,22 +84,48 @@ final class ACFService {
 			'return_format'     => 'value',
 			'save_terms'        => 0
 		];
-		// Apply filters to field value.
-		// acf/update_value is provided by the Advanced Custom Fields plugin.
+		
+		// Apply filters to field value
+		// acf/update_value is provided by the Advanced Custom Fields plugin
 		$value = apply_filters( "acf/update_value", $value, $pid, $fieldData, $value );
-		// pmxi_acf_custom_field references the WP All Import plugin.
+		// pmxi_acf_custom_field references the WP All Import plugin
 		$cf_value = apply_filters( 'pmxi_acf_custom_field', $value, $pid, $name );
 
-		switch ( $field->getImportType() ) {
+		// First, check if this is an empty select field that needs special handling
+		$is_empty_select = false;
+
+		if ($field->getType() === 'select') {
+			// Check if it's an empty value
+			if ($cf_value === '' || (is_array($cf_value) && count($cf_value) === 1 && isset($cf_value[0]) && $cf_value[0] === '')) {
+				$is_empty_select = true;
+			}
+		}
+		
+		// For all other cases, use the standard meta update functions
+		switch ($field->getImportType()) {
 			case 'import_users':
 			case 'shop_customer':
-				update_user_meta( $pid, $name, $cf_value );
+				if ( $is_empty_select ) {
+					update_user_meta($pid, $name, '');
+				} else {
+					update_user_meta($pid, $name, $cf_value);
+				}
 				break;
+				
 			case 'taxonomies':
-				update_term_meta( $pid, $name, $cf_value );
+				if ( $is_empty_select ) {
+					update_term_meta($pid, $name, '');
+				} else {
+					update_term_meta($pid, $name, $cf_value);
+				}
 				break;
+				
 			default:
-				update_post_meta( $pid, $name, $cf_value );
+				if ( $is_empty_select ) {
+					update_post_meta($pid, $name, '');
+				} else {
+					update_post_meta($pid, $name, $cf_value);
+				}
 				break;
 		}
 	}
@@ -322,6 +346,8 @@ final class ACFService {
 		if ( ! empty( $values ) ) {
 			if ( ! empty( $post_types ) && ! is_array( $post_types ) ) {
 				$post_types = [ $post_types ];
+			}else if ( empty( $post_types ) ) {
+				$post_types = [];
 			}
 
 			$placeholders = array_fill( 0, count( $post_types ), '%s' );

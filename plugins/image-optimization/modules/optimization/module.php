@@ -35,6 +35,8 @@ class Module extends Module_Base {
 			'List_View_Pointer',
 			'Admin_Bulk_Actions',
 			'Admin_Filter',
+			'Retry',
+			'Actions_Cleanup',
 		];
 	}
 

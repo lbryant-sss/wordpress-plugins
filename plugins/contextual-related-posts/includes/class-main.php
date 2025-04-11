@@ -23,61 +23,52 @@ final class Main {
 	 *
 	 * @var Main
 	 */
-	private static $instance;
+	private static ?self $instance = null;
 
 	/**
 	 * Admin.
 	 *
 	 * @since 3.5.0
 	 *
-	 * @var object Admin.
+	 * @var Admin\Admin
 	 */
-	public $admin;
+	public ?Admin\Admin $admin = null;
 
 	/**
 	 * Shortcodes.
 	 *
 	 * @since 3.5.0
 	 *
-	 * @var object Shortcodes.
+	 * @var Frontend\Shortcodes
 	 */
-	public $shortcodes;
+	public Frontend\Shortcodes $shortcodes;
 
 	/**
 	 * Blocks.
 	 *
 	 * @since 3.5.0
 	 *
-	 * @var object Blocks.
+	 * @var Frontend\Blocks\Blocks
 	 */
-	public $blocks;
+	public Frontend\Blocks\Blocks $blocks;
 
 	/**
 	 * Styles.
 	 *
 	 * @since 3.5.0
 	 *
-	 * @var object Styles.
+	 * @var Frontend\Styles_Handler
 	 */
-	public $styles;
+	public Frontend\Styles_Handler $styles;
 
 	/**
 	 * Language Handler.
 	 *
 	 * @since 3.5.0
 	 *
-	 * @var object Language Handler.
+	 * @var Frontend\Language_Handler
 	 */
-	public $language;
-
-	/**
-	 * Pro modules.
-	 *
-	 * @since 3.5.0
-	 *
-	 * @var object Pro
-	 */
-	public $pro;
+	public Frontend\Language_Handler $language;
 
 	/**
 	 * Gets the instance of the class.
@@ -86,7 +77,7 @@ final class Main {
 	 *
 	 * @return Main
 	 */
-	public static function get_instance() {
+	public static function get_instance(): self {
 		if ( null === self::$instance ) {
 			self::$instance = new self();
 			self::$instance->init();
@@ -108,7 +99,7 @@ final class Main {
 	 *
 	 * @since 3.5.0
 	 */
-	private function init() {
+	private function init(): void {
 		$this->language   = new Frontend\Language_Handler();
 		$this->styles     = new Frontend\Styles_Handler();
 		$this->shortcodes = new Frontend\Shortcodes();
@@ -116,6 +107,9 @@ final class Main {
 		$this->hooks();
 		if ( is_admin() ) {
 			$this->admin = new Admin\Admin();
+			if ( is_multisite() ) {
+				new Admin\Network\Admin();
+			}
 		}
 	}
 
@@ -124,7 +118,7 @@ final class Main {
 	 *
 	 * @since 3.5.0
 	 */
-	public function hooks() {
+	public function hooks(): void {
 		add_action( 'init', array( $this, 'initiate_plugin' ) );
 		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 		add_action( 'rest_api_init', array( $this, 'register_rest_routes' ) );
@@ -146,7 +140,7 @@ final class Main {
 	 *
 	 * @since 3.5.0
 	 */
-	public function initiate_plugin() {
+	public function initiate_plugin(): void {
 		Frontend\Media_Handler::add_image_sizes();
 	}
 
@@ -155,7 +149,7 @@ final class Main {
 	 *
 	 * @since 3.5.0
 	 */
-	public function register_widgets() {
+	public function register_widgets(): void {
 		register_widget( '\\WebberZone\\Contextual_Related_Posts\\Frontend\\Widgets\\Related_Posts_Widget' );
 	}
 
@@ -164,7 +158,7 @@ final class Main {
 	 *
 	 * @since 3.5.0
 	 */
-	public function register_rest_routes() {
+	public function register_rest_routes(): void {
 		$controller = new Frontend\REST_API();
 		$controller->register_routes();
 	}
@@ -177,7 +171,7 @@ final class Main {
 	 * @param string $content Post content.
 	 * @return string Post content with related posts appended.
 	 */
-	public function content_filter( $content ) {
+	public function content_filter( string $content ): string {
 		return Display::content_filter( $content );
 	}
 
@@ -188,9 +182,9 @@ final class Main {
 	 *
 	 * @param \WP_Query $query The WP_Query object.
 	 */
-	public function parse_query( $query ) {
+	public function parse_query( \WP_Query $query ): void {
 		if ( true === $query->get( 'crp_query' ) ) {
-			new CRP( $query->query_vars );
+			new CRP_Core_Query( $query->query_vars );
 		}
 	}
 
@@ -203,7 +197,7 @@ final class Main {
 	 * @param string $plugin        The plugin being activated.
 	 * @param bool   $network_wide  Whether the plugin is being activated network-wide.
 	 */
-	public function activated_plugin( $plugin, $network_wide ) {
+	public function activated_plugin( string $plugin, bool $network_wide ): void {
 		if ( ! in_array( $plugin, array( 'contextual-related-posts/contextual-related-posts.php', 'contextual-related-posts-pro/contextual-related-posts.php' ), true ) ) {
 			return;
 		}
@@ -235,7 +229,7 @@ final class Main {
 	 *
 	 * @since 3.5.0
 	 */
-	public function plugin_deactivated_notice() {
+	public function plugin_deactivated_notice(): void {
 		$deactivated_notice_id = (int) get_transient( 'crp_deactivated_notice_id' );
 		if ( ! in_array( $deactivated_notice_id, array( 1, 2 ), true ) ) {
 			return;
@@ -247,10 +241,10 @@ final class Main {
 		?>
 			<div class="updated" style="border-left: 4px solid #ffba00;">
 				<p>
-				<?php
-				echo esc_html( $message );
-				?>
-		</p>
+					<?php
+					echo esc_html( $message );
+					?>
+				</p>
 			</div>
 			<?php
 			delete_transient( 'crp_deactivated_notice_id' );

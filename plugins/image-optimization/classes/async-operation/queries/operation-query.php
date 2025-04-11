@@ -3,6 +3,7 @@
 namespace ImageOptimization\Classes\Async_Operation\Queries;
 
 use ImageOptimization\Classes\Async_Operation\Async_Operation_Hook;
+use ImageOptimization\Classes\Async_Operation\Async_Operation_Queue;
 use ImageOptimization\Classes\Async_Operation\Interfaces\Operation_Query_Interface;
 use TypeError;
 
@@ -19,6 +20,16 @@ class Operation_Query implements Operation_Query_Interface {
 		}
 
 		$this->query['hook'] = $hook;
+
+		return $this;
+	}
+
+	public function set_queue( string $queue ): self {
+		if ( ! in_array( $queue, Async_Operation_Queue::get_values(), true ) ) {
+			throw new TypeError( "Queue $queue is not a part of Async_Operation_Queue values" );
+		}
+
+		$this->query['group'] = $queue;
 
 		return $this;
 	}

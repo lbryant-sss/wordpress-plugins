@@ -4,8 +4,11 @@ namespace ImageOptimization\Modules\Settings;
 
 use ImageOptimization\Classes\Image\Image_Conversion_Option;
 use ImageOptimization\Classes\Module_Base;
-use ImageOptimization\Modules\Settings\Banners\Sale_Banner;
-use ImageOptimization\Modules\Settings\Classes\Settings;
+use ImageOptimization\Modules\Settings\{
+	Banners\One_Million_Installs_Banner,
+	Banners\Sale_Banner,
+	Classes\Settings,
+};
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -83,6 +86,7 @@ class Module extends Module_Base {
 	public function render_app() {
 		?>
 		<?php Sale_Banner::get_banner( 'https://go.elementor.com/io-bf-banner/' ); ?>
+		<?php One_Million_Installs_Banner::get_banner( 'https://go.elementor.com/io-1m-banner-upgrade/' ); ?>
 
 		<!-- The hack required to wrap WP notifications -->
 		<div class="wrap">

@@ -6,6 +6,7 @@ use ImageOptimization\Classes\Image\{
 	Image,
 	Image_Meta,
 	Image_Query_Builder,
+	Image_Status,
 	WP_Image_Meta,
 	Exceptions\Invalid_Image_Exception
 };
@@ -118,6 +119,8 @@ class Optimization_Stats {
 		foreach ( $query->posts as $attachment_id ) {
 			try {
 				Validate_Image::is_valid( $attachment_id );
+
+				$image = new Image( $attachment_id );
 				$wp_meta = new WP_Image_Meta( $attachment_id );
 			} catch ( Invalid_Image_Exception | Image_Validation_Error $ie ) {
 				continue;
@@ -126,19 +129,104 @@ class Optimization_Stats {
 			$meta = new Image_Meta( $attachment_id );
 			$image_sizes = $wp_meta->get_size_keys();
 
-			$current_sizes = self::filter_only_enabled_sizes( $image_sizes );
-			$optimized_sizes = self::filter_only_enabled_sizes( $meta->get_optimized_sizes() );
-
-			$output['total_image_count'] += count( $current_sizes );
-			$output['optimized_image_count'] += count( $optimized_sizes );
-
 			foreach ( $image_sizes as $image_size ) {
+				if ( ! $image->file_exists( $image_size ) ) {
+					continue;
+				}
+
+				$output['total_image_count']++;
+
 				$output['current_image_size'] += self::calculate_current_image_file_size( $attachment_id, $wp_meta, $image_size );
 				$output['initial_image_size'] += self::calculate_initial_image_file_size( $attachment_id, $meta, $wp_meta, $image_size );
 			}
+
+			$optimized_sizes = self::filter_only_enabled_sizes( $meta->get_optimized_sizes() );
+			$output['optimized_image_count'] += count( $optimized_sizes );
 		}
 
 		return $output;
+	}
+
+	public static function get_optimization_details( int $attachment_id ): array {
+		try {
+			$wp_meta = new WP_Image_Meta( $attachment_id );
+		} catch ( Invalid_Image_Exception $iie ) {
+			Logger::log( Logger::LEVEL_ERROR, "No metadata found for image ID: {$attachment_id}" );
+
+			throw $iie;
+		}
+
+		$output = [
+			'total' => 0,
+			'sizes' => [],
+		];
+
+		$meta = new Image_Meta( $attachment_id );
+		$image_sizes = $wp_meta->get_size_keys();
+		$sizes_enabled = Settings::get( Settings::CUSTOM_SIZES_OPTION_NAME );
+
+		foreach ( $image_sizes as $image_size ) {
+			if (
+				'all' !== $sizes_enabled &&
+				Image::SIZE_FULL !== $image_size &&
+				! in_array( $image_size, $sizes_enabled, true )
+			) {
+				continue;
+			}
+
+			$current_image_size = self::calculate_current_image_file_size( $attachment_id, $wp_meta, $image_size );
+			$output['total'] += $current_image_size;
+
+			$status = self::get_image_size_optimization_status( $attachment_id, $image_size );
+
+			if ( Image_Status::OPTIMIZED === $status ) {
+				$dimensions_updated = $wp_meta->get_width( $image_size ) !== (int) $meta->get_original_width( $image_size ) ||
+					$wp_meta->get_height( $image_size ) !== (int) $meta->get_original_height( $image_size );
+
+				$new_dimensions = $dimensions_updated ? [
+					'width'  => $wp_meta->get_width( $image_size ),
+					'height' => $wp_meta->get_height( $image_size ),
+				] : null;
+
+				$initial_image_size = self::calculate_initial_image_file_size( $attachment_id, $meta, $wp_meta, $image_size );
+
+				$saved = [
+					'relative' => max( 100 - round( $current_image_size / $initial_image_size * 100 ), 0 ),
+					'absolute' => $initial_image_size - $current_image_size,
+				];
+			}
+
+			$output['sizes'][] = [
+				'size_name'   => $image_size,
+				'file_size'   => $current_image_size,
+				'status'      => self::get_image_size_optimization_status( $attachment_id, $image_size ),
+				'saved'       => $saved ?? null,
+				'new_dimensions' => $new_dimensions ?? null,
+			];
+		}
+
+		return $output;
+	}
+
+	private static function get_image_size_optimization_status( int $attachment_id, string $size_name ): string {
+		$image = new Image( $attachment_id );
+		$meta = new Image_Meta( $attachment_id );
+
+		if ( in_array( $size_name, $meta->get_optimized_sizes(), true ) ) {
+			return Image_Status::OPTIMIZED;
+		}
+
+		if ( ! $image->file_exists( $size_name ) ) {
+			return 'file-not-found';
+		}
+
+		try {
+			Validate_Image::validate_file_size( $attachment_id, $size_name );
+		} catch ( Image_Validation_Error $ive ) {
+			return 'file-too-large';
+		}
+
+		return Image_Status::NOT_OPTIMIZED;
 	}
 
 	private static function calculate_current_image_file_size( int $image_id, WP_Image_Meta $wp_meta, string $image_size ): int {

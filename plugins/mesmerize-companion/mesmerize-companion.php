@@ -6,7 +6,7 @@
  *
  * License: GPLv3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
- * Version: 1.6.157
+ * Version: 1.6.158
  * Text Domain: mesmerize-companion
  */
 
@@ -21,7 +21,7 @@ if ( ! defined( 'MESMERIZE_COMPANION_PHP_VERSION' ) ) {
 }
 
 if ( ! defined( 'MESMERIZE_COMPANION_VERSION' ) ) {
-	define( 'MESMERIZE_COMPANION_VERSION', '1.6.157' );
+	define( 'MESMERIZE_COMPANION_VERSION', '1.6.158' );
 }
 
 function mesmerize_companion_php_version_notice() {     ?>

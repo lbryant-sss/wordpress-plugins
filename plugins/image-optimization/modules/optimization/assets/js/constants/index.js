@@ -18,4 +18,8 @@ export const SELECTORS = Object.freeze( {
 	},
 	restoreButtonSelector: '.image-optimization-control__button--restore-original',
 	loadingControlsSelector: '[data-image-optimization-status="loading"]',
+	optimizationDetailsButtonSelector: '.image-optimization-control__details-button',
+	optimizationDetailsOptimizeButtonSelector: '.image-optimization-details-table__optimization-button',
+	optimizationDetailsWrapperId: 'image-optimization-optimization-details-wrapper',
+	optimizationDetailsModalId: 'image-optimization-optimization-details-modal',
 } );

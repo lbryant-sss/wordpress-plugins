@@ -71,6 +71,16 @@ class Image {
 		);
 	}
 
+	public function file_exists( string $image_size ): bool {
+		$path = $this->get_file_path( $image_size );
+
+		if ( ! $path ) {
+			return false;
+		}
+
+		return file_exists( $path );
+	}
+
 	/**
 	 * Returns true if an image marked as optimized.
 	 *

@@ -20,9 +20,8 @@ function crp_freemius() {
 		if ( ! defined( 'WP_FS__PRODUCT_15040_MULTISITE' ) ) {
 			define( 'WP_FS__PRODUCT_15040_MULTISITE', true );
 		}
-
 		// Include Freemius SDK.
-		require_once CRP_PLUGIN_DIR . 'freemius/start.php';
+		require_once dirname( __DIR__ ) . '/vendor/freemius/start.php';
 		$crp_freemius = \fs_dynamic_init(
 			array(
 				'id'             => '15040',
@@ -38,8 +37,9 @@ function crp_freemius() {
 					'slug'    => 'crp_options_page',
 					'contact' => false,
 					'support' => false,
+					'network' => true,
 					'parent'  => array(
-						'slug' => is_multisite() ? 'admin.php' : 'options-general.php',
+						'slug' => ( is_multisite() ? 'crp_options_page' : 'options-general.php' ),
 					),
 				),
 				'is_live'        => true,

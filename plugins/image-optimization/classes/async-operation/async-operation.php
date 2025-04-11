@@ -50,6 +50,32 @@ class Async_Operation {
 		);
 	}
 
+	public static function create_recurring( int $timestamp, int $interval_in_seconds, string $hook, array $args, string $queue, int $priority = 10, $unique = false ): int {
+		self::check_library_is_registered();
+
+		if ( ! in_array( $hook, Async_Operation_Hook::get_values(), true ) ) {
+			Logger::log( Logger::LEVEL_ERROR, "Hook $hook is not a part of Async_Operation_Hook values" );
+
+			throw new TypeError( "Hook $hook is not a part of Async_Operation_Hook values" );
+		}
+
+		if ( ! in_array( $queue, Async_Operation_Queue::get_values(), true ) ) {
+			Logger::log( Logger::LEVEL_ERROR, "Queue $queue is not a part of Async_Operation_Queue values" );
+
+			throw new TypeError( "Queue $queue is not a part of Async_Operation_Queue values" );
+		}
+
+		return as_schedule_recurring_action(
+			$timestamp,
+			$interval_in_seconds,
+			$hook,
+			$args,
+			$queue,
+			$unique,
+			$priority
+		);
+	}
+
 	/**
 	 * @param Operation_Query_Interface $query
 	 *
@@ -103,6 +129,42 @@ class Async_Operation {
 		}
 
 		return $actions;
+	}
+
+	public static function get_by_id( int $action_id ): ?Async_Operation_Item {
+		self::check_library_is_registered();
+
+		$store = ActionScheduler::store();
+		$logger = ActionScheduler::logger();
+
+		try {
+			$action = $store->fetch_action( $action_id );
+		} catch ( Throwable $t ) {
+			Logger::log(
+				Logger::LEVEL_ERROR,
+				"Unable to fetch an action `$action_id`. Reason: " . $t->getMessage()
+			);
+
+			return null;
+		}
+
+		if ( is_a( $action, 'ActionScheduler_NullAction' ) ) {
+			Logger::log(
+				Logger::LEVEL_WARN,
+				'ActionScheduler_NullAction found'
+			);
+
+			return null;
+		}
+
+		return ( new Async_Operation_Item() )
+				->set_id( $action_id )
+				->set_hook( $action->get_hook() )
+				->set_status( $store->get_status( $action_id ) )
+				->set_args( $action->get_args() )
+				->set_queue( $action->get_group() )
+				->set_date( $store->get_date( $action_id ) )
+				->set_logs( $logger->get_logs( $action_id ) );
 	}
 
 	/**
