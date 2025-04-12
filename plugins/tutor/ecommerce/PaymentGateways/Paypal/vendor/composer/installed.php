@@ -3,7 +3,7 @@
         'name' => 'themeum/tutor',
         'pretty_version' => '1.0.0',
         'version' => '1.0.0.0',
-        'reference' => null,
+        'reference' => NULL,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -121,7 +121,7 @@
         'themeum/tutor' => array(
             'pretty_version' => '1.0.0',
             'version' => '1.0.0.0',
-            'reference' => null,
+            'reference' => NULL,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

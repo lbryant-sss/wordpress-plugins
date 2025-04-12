@@ -11,6 +11,8 @@ final class Plugin {
 	private function __construct() {
 		global $wp_version;
 
+		add_action( 'init', array( $this, 'load_textdomain' ) );
+
 		load_plugin_textdomain( 'wp-whatsapp-chat', false, QLWAPP_PLUGIN_DIR . '/languages/' );
 		Admin_Menu_Routes_Library::instance();
 		Controllers\Helpers::instance();
@@ -25,6 +27,10 @@ final class Plugin {
 		WooCommerce::instance();
 		add_action( 'admin_footer', array( __CLASS__, 'add_premium_css' ) );
 		do_action( 'qlwapp_init' );
+	}
+
+	public function load_textdomain() {
+		load_plugin_textdomain( 'wp-whatsapp-chat', false, QLWAPP_PLUGIN_DIR . '/languages/' );
 	}
 
 	public static function add_premium_css() {

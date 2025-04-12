@@ -265,7 +265,7 @@ function userfeedback_screen_is_heatmap()
 function userfeedback_heatmap_preview()
 {
 	$heatmaps_basename = userfeedback_get_plugin_basename_from_slug( 'userfeedback-heatmaps' );
-	return ( ! is_plugin_active( $heatmaps_basename ) );
+	return ! userfeedback_is_pro_version() || ( ! is_plugin_active( $heatmaps_basename ) );
 }
 
 function userfeedback_screen_is_settings()

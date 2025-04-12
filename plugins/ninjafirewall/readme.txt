@@ -2,7 +2,7 @@
 Contributors: nintechnet, bruandet
 Tags: security, firewall, malware, virus, protection
 Requires at least: 4.9
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 4.7.3
 Requires PHP: 7.1
 License: GPLv3 or later

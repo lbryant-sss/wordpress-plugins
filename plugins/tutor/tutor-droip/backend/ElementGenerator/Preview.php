@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Preview script for html markup generator
  *
@@ -7,7 +8,7 @@
 
 namespace TutorLMSDroip\ElementGenerator;
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
@@ -15,7 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Preview
  * This class is used to define all preview functions.
  */
-class Preview {
+class Preview
+{
 	use LessonGenerator;
 	use InstructorGenerator;
 	use ShareGenerator;
@@ -65,13 +67,13 @@ class Preview {
 	 *
 	 * @var callable $generate_child_element | function.
 	 */
-	private $generate_child_element = null;// function.
+	private $generate_child_element = null; // function.
 	/**
 	 * Droip generate child element with new id function
 	 *
 	 * @var callable $generate_child_element_with_new_id | function.
 	 */
-	private $generate_child_element_with_new_id = null;// function.
+	private $generate_child_element_with_new_id = null; // function.
 	/**
 	 * Droip element properties
 	 *
@@ -92,7 +94,8 @@ class Preview {
 	 *
 	 * @since 1.0.0
 	 */
-	public function __construct( $props ) {
+	public function __construct($props)
+	{
 		$this->element                            = $props['element'];
 		$this->elements                           = $props['elements'];
 		$this->style_blocks                       = $props['style_blocks'];
@@ -114,9 +117,10 @@ class Preview {
 	 *
 	 * @return string html markup;
 	 */
-	public function generate_elements() {
+	public function generate_elements()
+	{
 
-		switch ( $this->element['name'] ) {
+		switch ($this->element['name']) {
 			case TDE_APP_PREFIX . '-wish-list':
 			case TDE_APP_PREFIX . '-wish-list-normal':
 			case TDE_APP_PREFIX . '-wish-list-loading':
@@ -124,11 +128,11 @@ class Preview {
 			case TDE_APP_PREFIX . '-wish-list-unauthinticate':
 				return $this->generate_wish_list_elements();
 
-			// Share Course.
+				// Share Course.
 			case TDE_APP_PREFIX . '-share-course':
 				return $this->generate_course_share_markup();
 
-			// Course meta.
+				// Course meta.
 			case TDE_APP_PREFIX . '-course-meta':
 			case TDE_APP_PREFIX . '-course-level':
 			case TDE_APP_PREFIX . '-course-level-text':
@@ -147,7 +151,7 @@ class Preview {
 			case TDE_APP_PREFIX . '-course-thumbnail-video':
 				return $this->generate_course_thumbnail_elements();
 
-			// Action box.
+				// Action box.
 			case TDE_APP_PREFIX . '-course-enroll-buttons':
 			case TDE_APP_PREFIX . '-free-action-box':
 			case TDE_APP_PREFIX . '-enroll-button':
@@ -167,6 +171,7 @@ class Preview {
 			case TDE_APP_PREFIX . '-enroll-info':
 			case TDE_APP_PREFIX . '-enroll-date':
 			case TDE_APP_PREFIX . '-lesson-counter':
+			case TDE_APP_PREFIX . '-course-progress':
 			case TDE_APP_PREFIX . '-progress-percent':
 			case TDE_APP_PREFIX . '-progress-bar-inner':
 				return $this->generate_actionbox_markup();
@@ -203,6 +208,8 @@ class Preview {
 			case TDE_APP_PREFIX . '-instructor-list-item':
 			case TDE_APP_PREFIX . '-instructor-avatar':
 			case TDE_APP_PREFIX . '-instructor-name':
+			case TDE_APP_PREFIX . '-instructor-bio':
+			case TDE_APP_PREFIX . '-instructor-job-title':
 				return $this->generate_instructor_all_markup();
 
 			case TDE_APP_PREFIX . '-announcements':
@@ -224,7 +231,7 @@ class Preview {
 			case TDE_APP_PREFIX . '-reply-button':
 				return $this->generate_qna_reply_button();
 
-			// Resources.
+				// Resources.
 			case TDE_APP_PREFIX . '-resources':
 			case TDE_APP_PREFIX . '-has-resources':
 			case TDE_APP_PREFIX . '-resource-download':
@@ -232,7 +239,7 @@ class Preview {
 			case TDE_APP_PREFIX . '-resource-size':
 				return $this->generate_resources_markup();
 
-			// Gradebook.
+				// Gradebook.
 			case TDE_APP_PREFIX . '-gradebook':
 			case TDE_APP_PREFIX . '-has-gradebook':
 			case TDE_APP_PREFIX . '-no-gradebook':
@@ -240,7 +247,6 @@ class Preview {
 
 			default:
 				return $this->generate_common_element();
-
 		}
 	}
 
@@ -251,16 +257,17 @@ class Preview {
 	 * @param bool $children_html | false | true. | Hide children.
 	 * @return string
 	 */
-	private function generate_common_element( $hide = false, $children_html = false ) {
+	private function generate_common_element($hide = false, $children_html = false)
+	{
 		$extra_attributes = '';
-		if ( $hide ) {
+		if ($hide) {
 			$extra_attributes .= ' data-element_hide="true"';
 		}
 
 		$html = '';
-		$tag  = isset( $this->properties['tag'] ) ? $this->properties['tag'] : 'div';
+		$tag  = isset($this->properties['tag']) ? $this->properties['tag'] : 'div';
 		$name = $this->element['name'];
-		if ( ! $children_html ) {
+		if (! $children_html) {
 			$children_html = $this->generate_child_elements();
 		}
 		$html = "<$tag $this->attributes data-ele_name='$name' $extra_attributes>$children_html</$tag>";
@@ -272,11 +279,12 @@ class Preview {
 	 *
 	 * @return string
 	 */
-	private function generate_child_elements() {
+	private function generate_child_elements()
+	{
 		$html        = '';
-		$child_count = isset( $this->element['children'] ) ? count( $this->element['children'] ) : 0;
-		for ( $i = 0; $i < $child_count; $i++ ) {
-			$html .= call_user_func( $this->generate_child_element, $this->element['children'][ $i ], $this->options );
+		$child_count = isset($this->element['children']) ? count($this->element['children']) : 0;
+		for ($i = 0; $i < $child_count; $i++) {
+			$html .= call_user_func($this->generate_child_element, $this->element['children'][$i], $this->options);
 		}
 		return $html;
 	}
@@ -286,12 +294,13 @@ class Preview {
 	 *
 	 * @return array $element | Element array.
 	 */
-	private function group_elements_by_element_name() {
+	private function group_elements_by_element_name()
+	{
 		return array_reduce(
 			$this->element['children'],
-			function ( $carry, $item ) {
-				if ( isset( $this->elements[ $item ], $this->elements[ $item ]['name'] ) ) {
-					$carry[ $this->elements[ $item ]['name'] ] = $this->elements[ $item ];
+			function ($carry, $item) {
+				if (isset($this->elements[$item], $this->elements[$item]['name'])) {
+					$carry[$this->elements[$item]['name']] = $this->elements[$item];
 				}
 
 				return $carry;

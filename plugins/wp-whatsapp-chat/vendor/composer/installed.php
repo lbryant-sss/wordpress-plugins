@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'quadlayers/wp-whatsapp-chat',
-        'pretty_version' => 'v7.6.4',
-        'version' => '7.6.4.0',
-        'reference' => '66ad56e91da7c21f9572dff499e9580fb9746116',
+        'pretty_version' => 'v7.6.5',
+        'version' => '7.6.5.0',
+        'reference' => 'aa4e23d6f6905c43bac90e2bbb378d5531d03f4c',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'automattic/jetpack-assets' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => 'cf70a8b2698b771b9f7847a71573da3652a69291',
+            'reference' => '2955d0332cec94d4388c7f7b9f14c66bdfc1194b',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../jetpack_vendor/automattic/jetpack-assets',
             'aliases' => array(
@@ -121,9 +121,9 @@
             'dev_requirement' => false,
         ),
         'quadlayers/wp-whatsapp-chat' => array(
-            'pretty_version' => 'v7.6.4',
-            'version' => '7.6.4.0',
-            'reference' => '66ad56e91da7c21f9572dff499e9580fb9746116',
+            'pretty_version' => 'v7.6.5',
+            'version' => '7.6.5.0',
+            'reference' => 'aa4e23d6f6905c43bac90e2bbb378d5531d03f4c',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

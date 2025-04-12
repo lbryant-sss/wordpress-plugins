@@ -1,11 +1,11 @@
 ﻿=== Social Chat - Click To Chat App Button ===
 Contributors: quadlayers
 Donate link: https://quadlayers.com/products/whatsapp-chat/
-Tags: whatsapp, whatsapp business, chat, whatsapp chat, woocommerce whatsapp
+Tags: whatsapp, whatsapp business, whatsapp chat, woocommerce whatsapp, click to chat
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.8
-Stable tag: 7.6.4
+Stable tag: 7.6.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -137,20 +137,26 @@ Don't use: +001-(555)1234567
 
 == Changelog ==
 
-= 7.6.4 =
+= 7.6.5 =
 * WordPress compatibility
 
-= 7.6.3 =
-* New WhatsApp Chat UI preview
+= 7.6.4 =
+* WordPress compatibility
 
 = 7.6.2 =
 * New WhatsApp Chat UI
 
 = 7.6.1 =
-* Revert 7.6.0
+* Revert changes in 7.6.0
 
 = 7.6.0 =
 * New WhatsApp Chat UI
+
+= 7.5.2 =
+* Fix load textdomain alert
+
+= 7.5.1 =
+* Update readme.txt
 
 = 7.5.0 =
 * WordPress compatibility

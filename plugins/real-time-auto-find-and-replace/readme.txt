@@ -1,6 +1,6 @@
 === Better Find and Replace ===
 Contributors: codesolz, m.tuhin
-Tags: database, search replace, search, replace, search and replace, real-time replace, find, find and replace 
+Tags: database, search replace, media, migration, find and replace 
 Donate link: https://codesolz.net/our-products/wordpress-plugin/real-time-auto-find-and-replace/?utm_source=wordpress.org&utm_medium=README_DONATE_BTN
 Requires at least: 4.0
 Tested up to: 6.7
@@ -8,7 +8,7 @@ Stable tag: 1.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Search and replace text, code blocks, URLs, media, images, footer credits, jQuery/Ajax content or anything in real-time & database with advanced filters & a clean UI.
+Search and replace text, code blocks, URLs, media, images, jQuery/Ajax content or anything using advanced filters from a user-friendly interface
 
 == Description ==
 The plugin provides an optimized search and replace function, providing an effective solution for efficient database management. Additionally, it incorporates a dynamic real-time word / text replacing feature.
@@ -29,36 +29,36 @@ When replacing an image, you can easily update its alt text, caption, and descri
 
 == Key Features ==
 
-* Easy to use and user-friendly options
-* Search and replace any text
-* Search and replace text loaded by **Ajax / jQuery**
-* Find and **replace URLs**
-* Search and **replace images, attachment URLs etc..**
-* Create word masking with find-replace over the whole website
-* Create find-replace temp rules without touching database.
-* Remove or change footer credit without touching database or HTML code
-* Replace anything in HTML code
-* **Replace images** in real-time rendering
-* Mask bad words posted in comments 
-* Change different language's content to your own language
-* **RegEx** supported
-* Replace any HTML tag or attribute
-* Lighting first find-replacement in Database table's ( posts, postmeta, options )
-* Select a specific database table to replace content
-* **Dry Run** to see what will be change on Database
-* Search and replace **Whole Words Only** in Database
-* Ultimate powerful options for Search and replace **Serialized Data** in Database
-* Remove any item from **Serialized Data** in Database 
-* Assign a specific role to manage this plugin for lower level of users
-* Real-time find and replace compatible with Gutenberg and other block / page builders
-* Refine your search results for database replacements by targeting post or page titles, content, or excerpts.
+* **Easy to Use** – Clean, user-friendly interface designed for effortless navigation and configuration.
+* **Search and Replace Text** – Find and replace any text across your site, whether in static or dynamic content.
+* **Search and Replace Ajax/jQuery Content** – Works seamlessly with content loaded via Ajax or jQuery on the frontend.
+* **Find and Replace URLs** – Quickly search and replace outdated or incorrect URLs throughout your website.
+* **Replace Images and Attachment URLs** – Swap out image links and attachment URLs site-wide with precision.
+* **Word Masking** – Mask specific words site-wide using flexible find and replace rules.
+* **Temporary Find-Replace Rules** – Create live, non-permanent replacements without altering your database.
+* **Edit Footer Credit** – Remove or update footer text without modifying HTML or database content.
+* **HTML Code Replacement** – Replace anything within HTML code blocks, tags, or content.
+* **Real-Time Image Replacement** – Replace images instantly during page rendering for dynamic updates.
+* **Comment Word Filtering** – Automatically find and replace inappropriate words in user-submitted comments.
+* **Language Replacement** – Change words or phrases from one language to another across your site.
+* **RegEx Supported** – Use regular expressions for complex and pattern-based search and replace operations.
+* **HTML Tag & Attribute Replacement** – Locate and replace specific HTML tags or attributes throughout your content.
+* **Lightning Fast Database Replace** – High-speed search and replace operations in posts, postmeta, options, and more.
+* **Table Selection** – Choose specific database tables for targeted replacements.
+* **Dry Run Preview** – See a preview of all replacements before applying them to the database.
+* **Whole Word Match** – Replace only exact word matches in the database to avoid partial replacements.
+* **Serialized Data Support** – Safely search and replace serialized data without breaking structure or integrity.
+* **Remove Serialized Items** – Delete specific items from serialized arrays in the database.
+* **Role-Based Access** – Assign plugin management to specific user roles for better control.
+* **Gutenberg and Page Builder Compatible** – Fully supports real-time replacements inside block editors and builders.
+* **Targeted DB Replacement** – Refine search by limiting database replacements to post titles, content, or excerpts.
 
 == How to replace in DB? ==
-* First create a report by selecting *dry run* from bottom of the setting section 
-* Report will appear in a modal window. You can check there which row / data is going to be replaced.
-* On the report's, if you think the replacement is perfect which you want, then close the report window and un-check the dry run and click the Find & Replace button.
-* **Attention:** Please check the report and make sure which data you are going to replace. It's very important because once you replace it in the Database you can't un-done it. 
-* **important:** So, before replacing in the database create a dry run report and see if it's perfect or not. If it's wrong change the find keyword then try again the same procedure until you see it's perfect on the report. 
+* **Start by generating a report**: Select the **Dry Run** option located at the bottom of the settings section.
+* **Review the report**: A modal window will appear, showing the specific rows and data that will be affected by the replacement.
+* **Proceed if satisfied**: If the preview looks accurate and matches what you intend to replace, simply close the report window, uncheck **Dry Run**, and click the **Find & Replace** button.
+* **⚠️ Attention:** Please carefully review the dry run report before making any changes. Once replacements are applied to the database, they **cannot be undone**. The PRO version includes an undo feature, but it must be installed before performing the replacement.
+* **✅ Important Tip:** Always run a dry report first to ensure your search term and replacement are correct. If anything looks off, adjust the keyword and repeat the process until the preview shows the desired results.
 
 == Pro Features ==
 * **Database Replacement Features:**

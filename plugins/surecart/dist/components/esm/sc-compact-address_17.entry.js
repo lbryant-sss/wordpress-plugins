@@ -281,14 +281,7 @@ const ScLineItemTax = class {
         if (((_b = this === null || this === void 0 ? void 0 : this.order) === null || _b === void 0 ? void 0 : _b.tax_status) === 'calculated') {
             label = ((_c = this.order) === null || _c === void 0 ? void 0 : _c.tax_label) || '';
         }
-        return (h(Fragment, null, `${wp.i18n.__('Tax:', 'surecart')} ${label}`, this.renderPercent()));
-    }
-    renderPercent() {
-        var _a;
-        if ((_a = this.order) === null || _a === void 0 ? void 0 : _a.tax_percent) {
-            return (h(Fragment, null, '(', this.order.tax_percent, "%", ')'));
-        }
-        return '';
+        return (h(Fragment, null, `${wp.i18n.__('Tax', 'surecart')} ${label}`));
     }
     render() {
         var _a, _b, _c, _d, _e;

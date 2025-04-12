@@ -7,12 +7,98 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-21T15:40:30+00:00\n"
+"POT-Creation-Date: 2025-04-11T21:09:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 
 #: helpers/template-helpers.php:18
 msgid "No matching template found"
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:45
+msgid "If you have a moment, please share why you are deactivating the plugin."
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:50
+msgid "Quick Feedback"
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:60
+#: src/Integrations/Bricks/Elements/BuyButton.php:113
+#: src/Integrations/Bricks/Elements/BuyButton.php:118
+#: src/Integrations/Bricks/Elements/CartMenuIcon.php:68
+#: settings/brand/components/CartSettings.js:219
+#: Blocks/CartMenuButton/edit.js:41
+#: src/blocks/cart-menu-button/edit.js:36
+#: src/blocks/product-list-sidebar-toggle/edit.js:56
+msgid "Icon"
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:85
+#: src/Activation/DeactivationSurveyForm.php:241
+msgid "Please tell us more details."
+msgstr ""
+
+#. translators: %1$s: link html start, %2$s: link html end
+#: src/Activation/DeactivationSurveyForm.php:94
+msgid "Need help from our experts? %1$sClick here to contact us.%2$s"
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:105
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:106
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:164
+msgid "Nonce validation failed"
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:171
+msgid "Sorry, you are not allowed to do this operation."
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:216
+msgid "This is a temporary deactivation for testing."
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:217
+msgid "How can we assist you?"
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:222
+msgid "Something isn't working properly."
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:223
+msgid "Please tell us more about what went wrong?"
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:228
+msgid "I found a better alternative."
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:229
+msgid "Could you please specify which solution?"
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:234
+msgid "It's missing a specific feature."
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:235
+msgid "Please tell us more about the feature."
+msgstr ""
+
+#: src/Activation/DeactivationSurveyForm.php:240
+#: orders/modules/TaxInfo/index.js:39
+#: Blocks/Donation/edit.js:210
+#: Blocks/Donation/save.js:17
+#: Blocks/TaxIdInput/edit.js:34
+#: tax.js:20
+msgid "Other"
 msgstr ""
 
 #: src/Background/BackgroundProcess.php:681
@@ -326,7 +412,7 @@ msgstr ""
 #: Blocks/Form/components/Mode.js:12
 #: Blocks/Form/components/Mode.js:32
 #: sc-customer-details2.js:431
-#: sc-customer-edit.js:99
+#: sc-customer-edit.js:100
 #: sc-payment-methods-list.js:168
 #: sc-subscription-payment-method.js:176
 msgid "Test"
@@ -527,7 +613,7 @@ msgstr ""
 #: Blocks/AddToCartButton/Block.php:137
 #: Blocks/Donation/edit.js:258
 #: Blocks/DonationAmount/edit.js:34
-#: Blocks/ProductDonationAmount/edit.js:49
+#: Blocks/ProductDonationAmount/edit.js:51
 #: src/blocks/product-selected-price-ad-hoc-amount/view.php:14
 msgid "Amount"
 msgstr ""
@@ -2612,16 +2698,6 @@ msgstr ""
 
 #: src/Integrations/Bricks/Elements/BuyButton.php:106
 msgid "Outline"
-msgstr ""
-
-#: src/Integrations/Bricks/Elements/BuyButton.php:113
-#: src/Integrations/Bricks/Elements/BuyButton.php:118
-#: src/Integrations/Bricks/Elements/CartMenuIcon.php:68
-#: settings/brand/components/CartSettings.js:219
-#: Blocks/CartMenuButton/edit.js:41
-#: src/blocks/cart-menu-button/edit.js:36
-#: src/blocks/product-list-sidebar-toggle/edit.js:56
-msgid "Icon"
 msgstr ""
 
 #: src/Integrations/Bricks/Elements/BuyButton.php:123
@@ -7421,7 +7497,7 @@ msgstr ""
 #: settings/SettingsTemplate.js:78
 #: settings/shipping/zone/ShippingZoneForm.js:181
 #: settings/tax-override/TaxOverrideModal.js:272
-#: sc-customer-edit.js:124
+#: sc-customer-edit.js:125
 #: sc-wordpress-user-edit.js:62
 msgid "Save"
 msgstr ""
@@ -7911,23 +7987,6 @@ msgstr ""
 msgid "Currencies"
 msgstr ""
 
-#: layouts/partials/admin-settings-sidebar.php:84
-#: Blocks/Checkbox/components/Inspector.js:39
-#: Blocks/Email/components/Inspector.js:32
-#: Blocks/FirstName/edit.js:52
-#: Blocks/Input/components/Inspector.js:39
-#: Blocks/Input/edit.js:58
-#: Blocks/LastName/edit.js:52
-#: Blocks/Name/edit.js:52
-#: Blocks/NameYourPrice/edit.js:65
-#: Blocks/Password/components/Inspector.js:39
-#: Blocks/Password/edit.js:79
-#: Blocks/Phone/edit.js:42
-#: Blocks/Switch/components/Inspector.js:39
-#: Blocks/Textarea/edit.js:58
-msgid "Help"
-msgstr ""
-
 #: layouts/partials/customer-dashboard/dashboard-navigation.php:53
 #: pages/template-surecart-dashboard.php:119
 msgid "Log Out"
@@ -8185,7 +8244,7 @@ msgstr ""
 #: upsell-funnels/modules/Upsell/Product.js:54
 #: sc-cart-form.js:73
 #: sc-charges-list.js:73
-#: sc-customer-edit.js:93
+#: sc-customer-edit.js:94
 #: sc-dashboard-customer-details.js:55
 #: sc-dashboard-downloads-list.js:64
 #: sc-dashboard-downloads-list.js:80
@@ -8271,7 +8330,7 @@ msgstr ""
 #: invoices/modules/Address.js:237
 #: Blocks/Dashboard/CustomerBillingDetails/edit.js:71
 #: sc-customer-details2.js:397
-#: sc-customer-edit.js:114
+#: sc-customer-edit.js:115
 #: sc-form-components-validator2.js:162
 #: sc-order-billing-address2.js:100
 msgid "Billing Address"
@@ -8678,7 +8737,7 @@ msgstr ""
 #: invoices/modules/SelectCustomer/CreateCustomer.js:92
 #: orders/modules/ContactInfo/EditContactInfo.js:109
 #: Blocks/Dashboard/WordPressAccount/edit.js:60
-#: sc-customer-edit.js:99
+#: sc-customer-edit.js:100
 #: sc-wordpress-user-edit.js:62
 #: sc-wordpress-user.js:28
 msgid "First Name"
@@ -8696,7 +8755,7 @@ msgstr ""
 #: invoices/modules/SelectCustomer/CreateCustomer.js:103
 #: orders/modules/ContactInfo/EditContactInfo.js:122
 #: Blocks/Dashboard/WordPressAccount/edit.js:65
-#: sc-customer-edit.js:99
+#: sc-customer-edit.js:100
 #: sc-wordpress-user-edit.js:62
 #: sc-wordpress-user.js:28
 msgid "Last Name"
@@ -9419,6 +9478,7 @@ msgstr ""
 #: subscriptions/show/modules/Tax.js:55
 #: util/tax.js:6
 #: Blocks/Upsell/UpsellTotals/edit.js:31
+#: sc-line-item-tax2.js:22
 #: sc-upsell-totals.js:53
 #: tax.js:24
 msgid "Tax"
@@ -9472,7 +9532,7 @@ msgstr ""
 #: orders/modules/Fulfillment/CreateFulfillment.js:258
 #: Blocks/Dashboard/CustomerBillingDetails/edit.js:60
 #: sc-customer-details2.js:397
-#: sc-customer-edit.js:99
+#: sc-customer-edit.js:100
 #: sc-order-shipping-address2.js:102
 msgid "Shipping Address"
 msgstr ""
@@ -10544,7 +10604,7 @@ msgstr ""
 #: settings/account/AccountSettings.js:360
 #: Blocks/Dashboard/CustomerBillingDetails/edit.js:82
 #: sc-customer-details2.js:397
-#: sc-customer-edit.js:99
+#: sc-customer-edit.js:100
 msgid "Phone"
 msgstr ""
 
@@ -11008,7 +11068,7 @@ msgstr ""
 
 #: invoices/modules/Payment.js:179
 #: orders/modules/LineItems/index.js:348
-#: sc-line-item-tax2.js:38
+#: sc-line-item-tax2.js:31
 #: sc-order.js:155
 msgid "included"
 msgstr ""
@@ -11805,14 +11865,6 @@ msgstr ""
 #: sc-tax-id-input2.js:37
 #: tax.js:16
 msgid "EU VAT"
-msgstr ""
-
-#: orders/modules/TaxInfo/index.js:39
-#: Blocks/Donation/edit.js:210
-#: Blocks/Donation/save.js:17
-#: Blocks/TaxIdInput/edit.js:34
-#: tax.js:20
-msgid "Other"
 msgstr ""
 
 #: orders/modules/TaxInfo/index.js:62
@@ -14550,15 +14602,15 @@ msgid "View Integrations"
 msgstr ""
 
 #: settings/integrations/Suretriggers.js:146
-msgid "Integrations via SureTriggers"
+msgid "Integrations via Ottokit"
 msgstr ""
 
 #: settings/integrations/Suretriggers.js:147
-msgid "Boost your sales by automating customer actions & streamlining workflows with seamless SureCart and SureTriggers integration."
+msgid "Boost your sales by automating customer actions & streamlining workflows with seamless SureCart and Ottokit integration."
 msgstr ""
 
 #: settings/integrations/Suretriggers.js:164
-msgid "SureTriggers lets you connect SureCart to hundreds of apps, CRMs and tools such as Slack, Mailchimp, etc. With this you have have various automations setup between SureCart events & other apps. Whatever you want SureCart & SureTriggers has got you covered."
+msgid "Ottokit lets you connect SureCart to hundreds of apps, CRMs and tools such as Slack, Mailchimp, etc. With this you have have various automations setup between SureCart events & other apps. Whatever you want SureCart & Ottokit has got you covered."
 msgstr ""
 
 #: settings/order/OrderProtocol.js:52
@@ -16729,7 +16781,7 @@ msgid "Billing Details"
 msgstr ""
 
 #: Controllers/CustomerController.php:123
-#: sc-customer-edit.js:99
+#: sc-customer-edit.js:100
 msgid "Update Billing Details"
 msgstr ""
 
@@ -16883,7 +16935,7 @@ msgstr ""
 #: Blocks/Product/Media/edit.js:44
 #: Blocks/Product/Quantity/edit.js:32
 #: Blocks/ProductCollection/edit.js:194
-#: Blocks/ProductDonationAmount/edit.js:34
+#: Blocks/ProductDonationAmount/edit.js:36
 #: Blocks/ProductDonationAmounts/edit.js:109
 #: Blocks/ProductDonationPrices/edit.js:80
 #: Blocks/ProductDonationRecurringPrices/edit.js:34
@@ -17223,6 +17275,22 @@ msgstr ""
 #: src/blocks/cart-submit/edit.js:76
 #: src/components/CartInspectorControls.js:49
 msgid "Bottom Border"
+msgstr ""
+
+#: Blocks/Checkbox/components/Inspector.js:39
+#: Blocks/Email/components/Inspector.js:32
+#: Blocks/FirstName/edit.js:52
+#: Blocks/Input/components/Inspector.js:39
+#: Blocks/Input/edit.js:58
+#: Blocks/LastName/edit.js:52
+#: Blocks/Name/edit.js:52
+#: Blocks/NameYourPrice/edit.js:65
+#: Blocks/Password/components/Inspector.js:39
+#: Blocks/Password/edit.js:79
+#: Blocks/Phone/edit.js:42
+#: Blocks/Switch/components/Inspector.js:39
+#: Blocks/Textarea/edit.js:58
+msgid "Help"
 msgstr ""
 
 #: Blocks/Checkbox/edit.js:45
@@ -17773,12 +17841,12 @@ msgid "Add  Amount"
 msgstr ""
 
 #: Blocks/DonationAmount/edit.js:22
-#: Blocks/ProductDonationAmount/edit.js:37
+#: Blocks/ProductDonationAmount/edit.js:39
 msgid "Label for donation"
 msgstr ""
 
 #: Blocks/DonationAmount/edit.js:23
-#: Blocks/ProductDonationAmount/edit.js:38
+#: Blocks/ProductDonationAmount/edit.js:40
 msgid "Buy me coffee!"
 msgstr ""
 
@@ -18383,7 +18451,7 @@ msgstr ""
 msgid "Select a product to display donation choices according to the prices of the product."
 msgstr ""
 
-#: Blocks/ProductDonationAmount/edit.js:73
+#: Blocks/ProductDonationAmount/edit.js:75
 msgid "Donation Amount text"
 msgstr ""
 
@@ -23126,7 +23194,7 @@ msgstr ""
 msgid "You don't have any billing information."
 msgstr ""
 
-#: sc-customer-edit.js:114
+#: sc-customer-edit.js:115
 #: sc-order-billing-address2.js:32
 msgid "Billing address is same as shipping"
 msgstr ""
@@ -23225,10 +23293,6 @@ msgstr ""
 
 #: sc-line-item-tax2.js:18
 msgid "Estimated %s"
-msgstr ""
-
-#: sc-line-item-tax2.js:22
-msgid "Tax:"
 msgstr ""
 
 #: sc-line-item-total2.js:68

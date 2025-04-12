@@ -28,6 +28,7 @@ class Pages {
 		 */
 		add_action( 'wp_ajax_nopriv_tde_get_apis', array( $this, 'tde_get_apis' ) );
 		add_action( 'wp_ajax_tde_get_apis', array( $this, 'tde_get_apis' ) );
+
 		add_action( 'template_redirect', array( $this, 'control_pages_content' ) );
 
 		add_filter( 'droip_assets_should_load', array( $this, 'load_droip_assets' ) );
@@ -68,7 +69,9 @@ class Pages {
 	 * @since 1.0.0
 	 */
 	public function control_pages_content() {
-		if ( $this->is_course_page() ) {
+		$action = sanitize_text_field( wp_unslash( isset( $_GET['action'] ) ? $_GET['action'] : '' ) );
+		$load_for = sanitize_text_field( wp_unslash( isset( $_GET['load_for'] ) ? $_GET['load_for'] : '' ) );
+		if ( $this->is_course_page() && ( $action !== 'droip' || $load_for === 'droip-iframe' )) {
 				$this->generate_course_page();
 		}
 	}
