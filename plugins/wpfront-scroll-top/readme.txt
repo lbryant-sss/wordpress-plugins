@@ -3,7 +3,7 @@ Contributors: syammohanm
 Donate link: http://wpfront.com/donate/
 Tags: scroll to top, back to top, scroll top, scroll up, wordpress scroll top
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.3
 Stable tag: 2.2
 License: GPLv3

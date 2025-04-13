@@ -364,6 +364,11 @@ If you are not happy to reveal this information and you have opted in, simply di
 
 == Changelog ==
 
+= 2.8.2 =
+- Fix for ad blocking detection with AdBlock
+- Added support for any post tag list check
+- Few minor bug fixes, cosmetic changes and code improvements
+
 = 2.8.1 =
 - Updated depercated backend jQuery code
 - Fix for reflected cross-site scripting (XSS)
@@ -434,6 +439,11 @@ If you are not happy to reveal this information and you have opted in, simply di
 For the changelog of earlier versions, please refer to the separate changelog.txt file.
 
 == Upgrade Notice ==
+
+= 2.8.2 =
+Fix for ad blocking detection with AdBlock;
+Added support for any post tag list check;
+Few minor bug fixes, cosmetic changes and code improvements;
 
 = 2.8.1 =
 Updated depercated backend jQuery code;

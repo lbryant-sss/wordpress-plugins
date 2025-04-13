@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd9e0233255f82de3026744d6f2fe1094
+class ComposerStaticInitec757d23a0d5df472e7296523b5f8d70
 {
     public static $prefixLengthsPsr4 = array (
         'e' => 
@@ -355,7 +355,6 @@ class ComposerStaticInitd9e0233255f82de3026744d6f2fe1094
         'BitCode\\BitForm\\enshrined\\svgSanitize\\data\\AttributeInterface' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/AttributeInterface.php',
         'BitCode\\BitForm\\enshrined\\svgSanitize\\data\\TagInterface' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/TagInterface.php',
         'BitCode\\BitForm\\enshrined\\svgSanitize\\data\\XPath' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/XPath.php',
-        'Bitcode\\BitForm\\Core\\Cryptography\\SodiumCompat' => __DIR__ . '/../..' . '/includes/Core/Cryptography/SodiumCompat.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'TypistTech\\Imposter\\ArrayUtil' => __DIR__ . '/..' . '/typisttech/imposter/src/ArrayUtil.php',
         'TypistTech\\Imposter\\Config' => __DIR__ . '/..' . '/typisttech/imposter/src/Config.php',
@@ -382,9 +381,9 @@ class ComposerStaticInitd9e0233255f82de3026744d6f2fe1094
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd9e0233255f82de3026744d6f2fe1094::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd9e0233255f82de3026744d6f2fe1094::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitd9e0233255f82de3026744d6f2fe1094::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitec757d23a0d5df472e7296523b5f8d70::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitec757d23a0d5df472e7296523b5f8d70::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitec757d23a0d5df472e7296523b5f8d70::$classMap;
 
         }, null, ClassLoader::class);
     }

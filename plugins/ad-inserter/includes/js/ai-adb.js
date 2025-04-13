@@ -368,7 +368,7 @@ ai_adb_detection_type = function (n) {
         return "7 adsense";
         break;
       case 8:
-        return "8 doubleclick.net";      // disabled
+        return "8 doubleclick.net";
         break;
       case 9:
         return "9 fun adblock 3";
@@ -383,7 +383,7 @@ ai_adb_detection_type = function (n) {
         return "12 300x250 js";
         break;
       case 13:
-        return "13 amazon-adsystem";   // disabled
+        return "12 300x250 img";       // not used
         break;
       case 14:
         return "14 quantserve.com";
@@ -393,6 +393,9 @@ ai_adb_detection_type = function (n) {
         break;
       case 16:
         return "16 googletagmanager.com";
+        break;
+      case 17:
+        return "17 dummyimage.com";
         break;
       default:
         return n;
@@ -865,15 +868,6 @@ window.addEventListener ('load', (event) => {
         }
     }
 
-    var element = document.querySelector (b64d ("I2FpLWFkYi1hbQ=="));
-    if (element != null) {
-      if (!!(element.clientWidth * element.clientHeight)) {
-        ai_adb_undetected (13);
-      } else {
-          if (!ai_adb_active || ai_debugging_active) ai_adb_detected (13);
-        }
-    }
-
     var element = document.querySelector (b64d ("I2FpLWFkYi1xdQ=="));
     if (element != null) {
       if (!!(element.clientWidth * element.clientHeight)) {
@@ -898,6 +892,15 @@ window.addEventListener ('load', (event) => {
         ai_adb_undetected (16);
       } else {
           if (!ai_adb_active || ai_debugging_active) ai_adb_detected (16);
+        }
+    }
+
+    var element = document.querySelector (b64d ("I2FpLWFkYi1kaQ=="));
+    if (element != null) {
+      if (!!(element.clientWidth * element.clientHeight)) {
+        ai_adb_undetected (17);
+      } else {
+          if (!ai_adb_active || ai_debugging_active) ai_adb_detected (17);
         }
     }
   }

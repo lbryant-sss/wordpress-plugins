@@ -1,7 +1,7 @@
 === Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder ===
 Plugin Name: Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder
-Version: 2.18.3
-Stable tag: 2.18.3
+Version: 2.18.4
+Stable tag: 2.18.4
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin 
@@ -370,7 +370,7 @@ Bit Form uniquely integrates with third-party apps without extra costs, Easily a
 
 ### 🎉 Overview of other products we are offering :
 
-[**Bit Integrations:**](https://wordpress.org/plugins/bit-integrations/) – Automate 200+ platforms and Contact form 7, Elementor Form, WooCommerce, Google Sheet, wpforms, Forminator, BuddyBoss, LearnDash, Hubspot, Mail poet, MailChimp, Webhook, ACF, Zapier, Fluent CRM, Forms, CRM, LMS, Membership & many more.
+[**Bit Integrations:**](https://wordpress.org/plugins/bit-integrations/) – Automate 280+ platforms and Contact form 7, Elementor Form, WooCommerce, Google Sheet, wpforms, Forminator, BuddyBoss, LearnDash, Hubspot, Mail poet, MailChimp, Webhook, ACF, Zapier, Fluent CRM, Forms, CRM, LMS, Membership & many more.
 
 [**Bit Assist:**](https://wordpress.org/plugins/bit-assist/) – Connect your all support assistant in a single button. Floating Chat Widget, Contact Chat Icons, Telegram Chat, Line Messenger, WeChat, WhatsApp, Email, SMS, Call Button & more.
 
@@ -544,6 +544,11 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
+= 2.18.3 =
+*Release Date: 12 April, 2025*
+*Improvement:
+    1. Security: Removed default support for SVG file uploads to enhance security.
+
 = 2.18.2 =
 *Release Date: 24 March, 2025*
 *New:

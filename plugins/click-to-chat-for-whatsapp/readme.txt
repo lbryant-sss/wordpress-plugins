@@ -1,6 +1,6 @@
 === Click to Chat - HoliThemes ===
 Requires at least: 4.7
-Tested up to: 6.7.2
+Tested up to: 6.8
 Requires PHP: 5.6
 Contributors: holithemes
 Stable tag: 4.20

@@ -18,8 +18,10 @@ License: GPLv3
 
 Change Log
 
-Ad Inserter 2.8.2 - 2025-03-24
+Ad Inserter 2.8.2 - 2025-04-12
+- Fix for ad blocking detection with AdBlock
 - Added support for any post tag list check
+- Few minor bug fixes, cosmetic changes and code improvements
 
 Ad Inserter 2.8.1 - 2025-02-12
 - Updated depercated backend jQuery code
@@ -3112,6 +3114,9 @@ function ai_adb_external_scripts () {
   }
   if (!defined ('AI_ADB_NO_QUANT')) {
     $code .= '<object id="ai-adb-qu" data="https://secure.quantserve.com/quant.js" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";
+  }
+  if (!defined ('AI_ADB_NO_DUMMYIMAGE')) {
+    $code .= '<object id="ai-adb-di" data="https://dummyimage.com/468x60/0044FF/969697.png?text=banner-ads" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";
   }
 
   return $code;

@@ -2333,6 +2333,7 @@ jQuery(document).ready (function($) {
       var params = {'action': 'ai_ajax_backend', 'export': 0, 'file': 1, 'ai_check': ai_nonce};
 
       var form = document.createElement("form");
+
       form.setAttribute("method", "get");
       form.setAttribute("action", ajaxurl);
       for (var i in params) {
@@ -2345,8 +2346,7 @@ jQuery(document).ready (function($) {
         }
       }
       document.body.appendChild (form);
-//      form.submit ();
-      form.trigger ("submit" );
+      form.submit ();
       document.body.removeChild (form);
     });
 

@@ -2,36 +2,41 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bit Form 2.18.3\n"
+"Project-Id-Version: Bit Form 2.18.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bit-form\n"
 "Last-Translator: developer@bitcode.pro\n"
 "Language-Team: support@bitcode.pro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-05T07:01:13+00:00\n"
+"POT-Creation-Date: 2025-04-12T08:14:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: bit-form\n"
 
 #. Plugin Name of the plugin
+#: bitforms.php
 #: languages/generatedString.php:6
 msgid "Bit Form"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: bitforms.php
 msgid "https://www.bitapps.pro/bit-form"
 msgstr ""
 
 #. Description of the plugin
+#: bitforms.php
 msgid "Contact Form Builder Plugin: Multi Step Contact Form, Payment Form, Custom Contact Form Plugin by Bit Form"
 msgstr ""
 
 #. Author of the plugin
+#: bitforms.php
 msgid "Contact Form Builder - Bit Form"
 msgstr ""
 
 #. Author URI of the plugin
+#: bitforms.php
 msgid "https://www.bitapps.pro"
 msgstr ""
 
