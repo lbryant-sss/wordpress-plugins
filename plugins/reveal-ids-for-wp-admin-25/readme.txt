@@ -1,9 +1,9 @@
 ﻿=== Reveal IDs ===
 Contributors: Alphawolf
 Donate link: https://www.schloebe.de/donate/
-Tags: reveal, id, wp-admin, hidden, category, post, page, media, links, capability, user, restore, comments, taxonomy, custom posts, post type, multisite, ms
+Tags: wp-admin, post, page, media, id
 Requires at least: 3.0
-Tested up to: 6.4.99
+Tested up to: 6.8.99
 Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

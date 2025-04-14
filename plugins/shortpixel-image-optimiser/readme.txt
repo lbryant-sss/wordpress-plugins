@@ -2,7 +2,7 @@
 Contributors: ShortPixel
 Tags: convert webp, optimize images, image optimization, resize, compress images
 Requires at least: 4.8.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.4
 Stable tag: 6.1.4
 License: GPLv2 or later
@@ -428,21 +428,33 @@ Add HTTP basic authentication credentials by defining these constants in wp-conf
 
 == Screenshots ==
 
-1. Bulk optimization running. (Media>Bulk ShortPixel)
+1. Select bulk optimization options. (Media -> Bulk ShortPixel)
 
-2. Activate your API key in the plugin Settings. (Settings>ShortPixel)
+2. Bulk optimization running. (Media -> Bulk ShortPixel)
 
-3. Check out the main settings after the API key is activated. (Settings>ShortPixel)
+3. Activate your API key in the plugin Settings. (Settings -> ShortPixel)
 
-4. Tweak it using Advanced settings. (Settings>ShortPixel)
+4. Plugin dashboard after entering the API key. (Settings -> ShortPixel)
 
-5. Compress all your past images with one click. (Media>Bulk ShortPixel)
+5. Image Optimization settings. (Settings -> ShortPixel -> Image Optimization)
 
-6. Check image optimization status, and restore or reoptimize the image. (Media>Library)
+6. Exclusion settings. (Settings -> ShortPixel -> Exclusions)
 
-7. Check image optimisation details. (Media>Library->Edit)
+7. Processing settings. (Settings -> ShortPixel -> Processing)
 
-8. Check other optimized images' status - themes or other plugins' images. (Media>Other Media)
+8. Next generation and delivery settings. (Settings -> ShortPixel -> WebP/AVIF and CDN)
+
+9. Integrations. (Settings -> ShortPixel -> Integrations)
+
+10. Tools. (Settings -> ShortPixel -> Tools)
+
+11. Help Center. (Settings -> ShortPixel -> Help Center)
+
+12. Check image optimization status, and restore or reoptimize the image. (Media -> Library)
+
+13. Check image optimisation details. (Media -> Library -> Edit)
+
+14. Check other optimized images' status - themes or other plugins' images. (Media>Other Media)
 
 == Changelog ==
 
