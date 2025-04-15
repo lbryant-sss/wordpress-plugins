@@ -48,7 +48,7 @@ import { computed, ref } from "vue";
  */
 const props = defineProps({
   id: {
-    type: Number,
+    type: [Number, String],
     default: 0
   },
   modelValue: {

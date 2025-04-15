@@ -88,15 +88,19 @@ export default {
 .amelia-v2-booking #amelia-container {
   // am - amelia
   // evl - event list
-  .am-skeleton-evl {
-    &__wrapper {
-      max-width: 760px;
-      margin: 0 auto;
-    }
+  .am-els {
+    .am-skeleton-evl {
+      padding: 0 0 0 0;
 
-    &__item {
-      &-inner {
-        height: 112px;
+      &__wrapper {
+        max-width: 792px;
+        margin: 0 auto;
+      }
+
+      &__item {
+        &-inner {
+          height: 89px;
+        }
       }
     }
   }

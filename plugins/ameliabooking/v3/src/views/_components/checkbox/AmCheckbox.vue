@@ -127,6 +127,7 @@ let cssVars = computed(() => {
     white-space: pre-line;
     min-height: 32px;
     height: auto;
+    gap: 8px;
 
     &__default {
       --am-w-checkbox-inp: 16px;
@@ -173,7 +174,7 @@ let cssVars = computed(() => {
         }
 
         &__label {
-          margin-left: 8px;
+          //margin-left: 8px;
           font-weight: 500;
           color: var(--am-c-checkbox-text);
           align-self: flex-start;

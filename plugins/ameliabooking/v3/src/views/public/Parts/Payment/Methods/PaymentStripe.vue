@@ -1,5 +1,13 @@
 <template>
   <div class="am-fs__payment-stripe" :style="cssVars">
+    <div v-if="supportsExpressCheckout" class="am-fs__payment-stripe__express-checkout">
+      <div :id="'am-stripe-prb-' + shortcodeData.counter" class="am-stripe-prb"></div>
+    </div>
+
+    <div v-if="paymentRequestAvailable" class="am-fs__payment-divider">
+      <span class="am-divider-text">{{ amLabels.payment_or_pay_with_card }}</span>
+    </div>
+
     <div v-if="amSettings.payments.stripe.address" class="am-fs__payment-stripe__card">
       <div :id="'am-stripe-address-' + shortcodeData.counter" class="am-stripe-address"></div>
     </div>
@@ -70,6 +78,7 @@ import { useColorTransparency } from '../../../../../assets/js/common/colorManip
 import { useStore } from 'vuex'
 import {useScrollTo} from "../../../../../assets/js/common/scrollElements";
 import { VueRecaptcha } from "vue-recaptcha";
+import httpClient from "../../../../../plugins/axios"
 
 const store = useStore()
 
@@ -112,6 +121,115 @@ let recaptchaRef = ref(null)
 let recaptchaValid = ref(false)
 
 let recaptchaResponse = ref(null)
+
+// * Express Checkout
+let paymentRequest = null
+let paymentRequestButton = null
+let supportsExpressCheckout = ref(false)
+let paymentRequestAvailable = ref(false)
+
+async function initializeExpressCheckout() {
+  if (!stripeObject) return
+
+  supportsExpressCheckout.value = true
+
+  let checkoutPaymentData = null
+
+  await httpClient.post(
+      '/payments/amount',
+      useBookingData(
+          store,
+          null,
+          true,
+          {},
+          null
+      )['data']
+  ).then((response) => {
+    checkoutPaymentData = response.data.data
+  }).catch(e => {
+    emits('payment-error', e.message)
+  })
+
+  const totalPriceParts = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: checkoutPaymentData.currency,
+  }).formatToParts(checkoutPaymentData.amount)
+
+  const IntegerPart = totalPriceParts.find((part) => part.type === 'integer')?.value || ''
+  const fractionPart = totalPriceParts.find((part) => part.type === 'fraction')?.value || ''
+  const totalPriceInMinorUnits = Number.parseInt(`${IntegerPart}${fractionPart}`)
+
+  paymentRequest = stripeObject.paymentRequest({
+    country: 'US',
+    currency: checkoutPaymentData.currency.toLowerCase(),
+    total: {
+      label: 'total',
+      amount: totalPriceInMinorUnits
+    },
+    requestPayerName: true,
+    requestPayerEmail: true,
+  })
+
+  paymentRequest.canMakePayment().then(function (result) {
+    if (result) {
+      paymentRequestAvailable.value = true
+
+      paymentRequestButton = stripeObject.elements().create('paymentRequestButton', {
+        paymentRequest: paymentRequest,
+        style: {
+          paymentRequestButton: {
+            type: 'default',
+            theme: 'dark',
+            height: '40px',
+          },
+        },
+      })
+
+      paymentRequestButton.mount('#am-stripe-prb-' + shortcodeData.value.counter)
+
+      paymentRequest.on('paymentmethod', handleExpressCheckout)
+    } else {
+      paymentRequestAvailable.value = false
+    }
+  })
+}
+
+async function handleExpressCheckout(event) {
+  try {
+    const { paymentMethod } = event
+    const addressResult = amSettings.payments.stripe.address
+        ? await address.getValue()
+        : null
+
+    useCreateBooking(
+        store,
+        useBookingData(
+            store,
+            null,
+            false,
+            {
+              paymentMethodId: paymentMethod.id,
+              address: addressResult ? addressResult.value : null,
+            },
+            recaptchaResponse.value
+        ),
+        function (response) {
+          if (response.data.data.requiresAction) {
+            stripePaymentActionRequired(response.data.data)
+            return
+          }
+          event.complete('success')
+          successBooking(response)
+        },
+        (response) => {
+          errorBooking(response)
+        }
+    )
+  } catch (error) {
+    event.complete('fail')
+    emits('payment-error', error.message)
+  }
+}
 
 function onRecaptchaExpired () {
   recaptchaValid.value = false
@@ -353,6 +471,7 @@ watchEffect(() => {
 
 onMounted(() => {
   stripePaymentInit()
+  initializeExpressCheckout()
 })
 
 // * Css variables
@@ -452,6 +571,45 @@ export default {
         & > div > div {
           position: absolute !important;
         }
+      }
+
+      .am-fs__payment-stripe__express-checkout {
+        margin-bottom: 20px;
+
+        .am-stripe-prb {
+          margin-bottom: 10px;
+        }
+
+        p {
+          color: var(--am-c-pay-text-op60);
+          font-size: 14px;
+        }
+      }
+
+      .am-fs__payment-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 16px 0;
+        text-align: center;
+      }
+
+      .am-fs__payment-divider::before,
+      .am-fs__payment-divider::after {
+        content: "";
+        flex-grow: 1;
+        height: 1px;
+        background-color: var(--am-c-pay-text-op60);
+        margin: 0 8px;
+      }
+
+      .am-divider-text {
+        font-size: 14px;
+        color: var(--am-c-pay-text-op60);
+        text-transform: uppercase;
+        line-height: 1.33333;
+        font-weight: 500;
       }
     }
   }

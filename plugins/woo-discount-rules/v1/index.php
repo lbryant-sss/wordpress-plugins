@@ -70,18 +70,19 @@ Class WDRV1Deprecated {
      */
     public static function validateRequest($method, $wdr_nonce = null){
         if($wdr_nonce === null){
-            if(isset($_REQUEST['wdr_nonce']) && !empty($_REQUEST['wdr_nonce'])){
-                if(self::verifyNonce(wp_unslash($_REQUEST['wdr_nonce']), $method)){
+			$wdr_nonce = isset($_REQUEST['wdr_nonce']) && !empty($_REQUEST['wdr_nonce']) ? sanitize_text_field(wp_unslash($_REQUEST['wdr_nonce'])) : null; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            if(!empty($wdr_nonce)){
+                if(self::verifyNonce($wdr_nonce, $method)){
                     return true;
                 }
             }
         } else {
-            if(self::verifyNonce(wp_unslash($wdr_nonce), $method)){
+            if(self::verifyNonce(sanitize_text_field(wp_unslash($wdr_nonce)), $method)){
                 return true;
             }
         }
 
-        die(__('Invalid token', 'woo-discount-rules'));
+        die(esc_html__('Invalid token', 'woo-discount-rules'));
     }
 }
 

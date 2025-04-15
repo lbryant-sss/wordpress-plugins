@@ -31,6 +31,11 @@ export default {
 
         },
         {
+          value: 'pending',
+          label: this.$root.labels.pending
+
+        },
+        {
           value: 'canceled',
           label: this.$root.labels.canceled
 
@@ -64,6 +69,10 @@ export default {
       ],
 
       orderStatuses: [
+        {
+          value: 'checkout-draft',
+          label: this.$root.labels.wc_status_draft
+        },
         {
           value: 'pending',
           label: this.$root.labels.wc_status_pending

@@ -7,6 +7,29 @@
         font-size: var(--am-fs-label);
         margin-bottom: 18px;
 
+        &.am-rtl {
+          .el-form-item {
+            &__label {
+              text-align: right;
+            }
+
+            &__error {
+              left: unset;
+              right: 0;
+            }
+          }
+
+          &.is-required {
+            .el-form-item__label {
+              padding-left: 0;
+              padding-right: 10px;
+              &:before {
+                right: 0;
+              }
+            }
+          }
+        }
+
         &__label {
           flex: 0 0 auto;
           text-align: left;

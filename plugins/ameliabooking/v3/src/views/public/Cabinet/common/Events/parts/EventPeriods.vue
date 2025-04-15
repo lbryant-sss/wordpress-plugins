@@ -112,7 +112,7 @@
           <AmButton
             :size="'default'"
             category="danger"
-            @click="() => periodsFormData.periods.splice(index, 1)"
+            @click="removePeriod(index)"
           >
             {{ amLabels.delete_period }}
           </AmButton>
@@ -346,6 +346,24 @@ function addPeriod() {
     startTime: null,
     endTime: null,
   })
+}
+
+function removePeriod (index) {
+  if (store.getters['event/getId'] && periodsFormData.value.periods[index]?.id && periodsFormData.value.periods[index].id) {
+    periodsFormData.value.periods.forEach((period, periodIndex) => {
+      if (periodIndex !== index && !period?.id) {
+        periodsFormData.value.periods[periodIndex].id = periodsFormData.value.periods[index].id
+        periodsFormData.value.periods[periodIndex].eventId = periodsFormData.value.periods[index].eventId
+        periodsFormData.value.periods[periodIndex].appleCalendarEventId = periodsFormData.value.periods[index].appleCalendarEventId
+        periodsFormData.value.periods[periodIndex].googleCalendarEventId = periodsFormData.value.periods[index].googleCalendarEventId
+        periodsFormData.value.periods[periodIndex].googleMeetUrl = periodsFormData.value.periods[index].googleMeetUrl
+        periodsFormData.value.periods[periodIndex].outlookCalendarEventId = periodsFormData.value.periods[index].outlookCalendarEventId
+        periodsFormData.value.periods[periodIndex].microsoftTeamsUrl = periodsFormData.value.periods[index].microsoftTeamsUrl
+      }
+    })
+  }
+
+  periodsFormData.value.periods.splice(index, 1)
 }
 
 let recurringEnabled = computed(() => {

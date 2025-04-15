@@ -710,6 +710,38 @@ const AmeActorFeatureStrategyDefaults = {
     noValueDefault: false,
     autoResetAll: true,
 };
+function ameUnserializeFeatureStrategySettings(input) {
+    const unserialized = {};
+    if (typeof input.superAdminDefault !== 'undefined') {
+        unserialized.superAdminDefault = input.superAdminDefault;
+    }
+    if (typeof input.noValueDefault !== 'undefined') {
+        unserialized.noValueDefault = input.noValueDefault;
+    }
+    if (typeof input.roleDefault !== 'undefined') {
+        if ((input.roleDefault === null) || (typeof input.roleDefault === 'boolean')) {
+            unserialized.roleDefault = input.roleDefault;
+        }
+        else {
+            const copy = Object.assign({}, input.roleDefault);
+            unserialized.roleDefault = (roleName) => copy[roleName] || null;
+        }
+    }
+    if (typeof input.roleCombinationMode === 'string') {
+        switch (input.roleCombinationMode) {
+            case 'Every':
+                unserialized.roleCombinationMode = AmeRoleCombinationMode.Every;
+                break;
+            case 'Some':
+                unserialized.roleCombinationMode = AmeRoleCombinationMode.Some;
+                break;
+            case 'CustomOrSome':
+                unserialized.roleCombinationMode = AmeRoleCombinationMode.CustomOrSome;
+                break;
+        }
+    }
+    return unserialized;
+}
 class AmeActorFeatureStrategy {
     constructor(settings) {
         this.settings = Object.assign({}, AmeActorFeatureStrategyDefaults, settings);

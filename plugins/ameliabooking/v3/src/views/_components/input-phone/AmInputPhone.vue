@@ -4,6 +4,7 @@
       ref="amPhoneInput"
       v-model="model"
       class="am-input-phone"
+      :class="{'am-rtl': isRtl}"
       show-code-on-list
       :default-country-code="props.defaultCode ? props.defaultCode.toUpperCase() : null"
       :countries-height="40"
@@ -55,6 +56,13 @@ const props = defineProps({
  * */
 const emits = defineEmits(['update:modelValue', 'countryPhoneIsoUpdated'])
 
+let isRtl = computed(() => {
+  if (document) {
+    return document.documentElement.dir === 'rtl'
+  }
+  return false
+})
+
 /**
  * Component model
  */
@@ -101,6 +109,45 @@ let cssVars = computed(() => {
 
     &-wrapper {
       width: 100%;
+    }
+
+    &.am-rtl {
+      .m-phone-number-input {
+        &__select {
+          &.m-select {
+            .m-input {
+              &-wrapper {
+                &-right {
+                  border-radius: 0 6px 6px 0;
+                  border-right: none;
+                  border-left: 1px solid var(--am-c-ph-inp-border);
+                  padding-right: 0;
+                  padding-left: 7px;
+                }
+              }
+            }
+          }
+        }
+
+        &__input {
+          direction: rtl;
+          border-radius: 6px 0 0 6px;
+
+          .m-input-wrapper {
+            &-input {
+              label {
+                left: auto;
+                right: 8px;
+              }
+            }
+          }
+        }
+
+        &__country-flag {
+          left: auto;
+          right: 9px;
+        }
+      }
     }
   }
 

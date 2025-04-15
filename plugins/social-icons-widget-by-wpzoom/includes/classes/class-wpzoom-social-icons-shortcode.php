@@ -24,7 +24,7 @@ class WPZOOM_Social_Icons_Free_Shortcode {
 	 * @since 1.1.0
 	 * @var string
 	 */
-	public static $post_type_name = 'Social Icon Sets';
+	public static $post_type_name = 'Icons & Sharing';
 
 	/**
 	 * Constructor
@@ -46,13 +46,13 @@ class WPZOOM_Social_Icons_Free_Shortcode {
 	 */
 	public function register_custom_post_type() {
 		$labels = array(
-			'name'               => _x( 'Social Icons Sets', 'post type general name', 'social-icons-widget-by-wpzoom' ),
+			'name'               => _x( 'Social Icon Sets', 'post type general name', 'social-icons-widget-by-wpzoom' ),
 			'singular_name'      => _x( 'Social Icon Sets', 'post type singular name', 'social-icons-widget-by-wpzoom' ),
 			'add_new'            => _x( 'Add New', 'shortcode', 'social-icons-widget-by-wpzoom' ),
 			'add_new_item'       => __( 'Add New Shortcode', 'social-icons-widget-by-wpzoom' ),
 			'edit_item'          => __( 'Edit Social Icon Shortcode', 'social-icons-widget-by-wpzoom' ),
 			'new_item'           => __( 'New Social Icon Shortcodes Memeber', 'social-icons-widget-by-wpzoom' ),
-			'all_items'          => __( 'All Icon Sets', 'social-icons-widget-by-wpzoom' ),
+			'all_items'          => __( 'Icon Sets', 'social-icons-widget-by-wpzoom' ),
 			'view_item'          => __( 'View Shortcodes', 'social-icons-widget-by-wpzoom' ),
 			'search_items'       => __( 'Search Social Icon Shortcodes', 'social-icons-widget-by-wpzoom' ),
 			'not_found'          => __( 'No shortcode found', 'social-icons-widget-by-wpzoom' ),

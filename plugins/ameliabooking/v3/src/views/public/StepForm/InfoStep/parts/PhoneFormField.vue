@@ -20,7 +20,7 @@
       :default-code="settings.general.phoneDefaultCountryCode === 'auto' ? '' : settings.general.phoneDefaultCountryCode.toLowerCase()"
       name="phone"
       style="position: relative"
-      @country-phone-iso-updated="countryPhoneIsoUpdated"
+      @country-phone-iso-updated="(val) => {emits('countryPhoneIsoUpdated', val)}"
     />
     <div v-if="whatsAppSetUp() && !props.phoneError" class="am-whatsapp-opt-in-text">
       {{ amLabels.whatsapp_opt_in_text }}
@@ -31,15 +31,27 @@
 
 <script setup>
 import AmInputPhone from '../../../../_components/input-phone/AmInputPhone.vue'
-import {settings} from "../../../../../plugins/settings";
+import { settings } from "../../../../../plugins/settings";
 
-import {computed, inject, ref} from "vue";
-import {useStore} from "vuex";
-import {useColorTransparency} from "../../../../../assets/js/common/colorManipulation";
+// * Vue
+import {
+  computed,
+  inject,
+  ref,
+  onMounted,
+} from "vue";
 
-let store = useStore()
+// * Composables
+import {
+  useColorTransparency
+} from "../../../../../assets/js/common/colorManipulation";
 
+// * Emits
+const emits = defineEmits([
+  'countryPhoneIsoUpdated',
+])
 
+// * Props
 let props = defineProps({
   phoneError: {
     type: Boolean,
@@ -57,10 +69,6 @@ let cssVars = computed(() => {
   }
 })
 
-defineEmits([
-  'countryPhoneIsoUpdated',
-])
-
 let primeFieldRef = ref(null)
 
 // * Labels
@@ -72,13 +80,15 @@ let amCustomize = inject('amCustomize')
 // * Form field data
 let infoFormData = inject('infoFormData')
 
-function countryPhoneIsoUpdated (val) {
-  store.commit('booking/setCustomerCountryPhoneIso', val ? val.toLowerCase() : '')
-}
-
 function whatsAppSetUp () {
   return settings.notifications.whatsAppEnabled && settings.notifications.whatsAppAccessToken && settings.notifications.whatsAppBusinessID && settings.notifications.whatsAppPhoneID
 }
+
+onMounted(() => {
+  if (settings.general.phoneDefaultCountryCode && settings.general.phoneDefaultCountryCode !== 'auto') {
+    emits('countryPhoneIsoUpdated', settings.general.phoneDefaultCountryCode.toLowerCase())
+  }
+})
 
 defineExpose({
   primeFieldRef

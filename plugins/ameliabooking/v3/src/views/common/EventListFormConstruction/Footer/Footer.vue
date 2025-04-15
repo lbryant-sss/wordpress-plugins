@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="!loading"
+    v-if="props.ready && !props.loading && !props.loadingUpcoming"
     class="am-elf__footer"
     :class="{'am-congrats' : isCongratzStep}"
   >
@@ -53,7 +53,15 @@ import {
 } from 'vue'
 
 let props = defineProps({
+  ready: {
+    type: Boolean,
+    default: true
+  },
   loading: {
+    type: Boolean,
+    default: false
+  },
+  loadingUpcoming: {
     type: Boolean,
     default: false
   },

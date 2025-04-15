@@ -513,7 +513,7 @@ class OnSaleShortCode extends ManageDiscount
         if($query_type == 'include'){
             $query_arguments['post__in'] = $values;
         } else {
-            $query_arguments['post__not_in'] = $values;
+            $query_arguments['post__not_in'] = $values; // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
         }
     }
 

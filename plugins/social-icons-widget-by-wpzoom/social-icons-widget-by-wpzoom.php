@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:         Social Icons Widget & Block by WPZOOM
+ * Plugin Name:         Social Icons & Sharing Buttons by WPZOOM
  * Plugin URI:          https://www.wpzoom.com/plugins/social-widget/
- * Description:         Social Icons Widget & Block to display links to social media networks websites. Supports most of the known social networks and includes more than 400 icons. Sort icons by Drag & Drop and change their color easily.
- * Version:             4.4.0
+ * Description:         Add Social Icons and Share Buttons to your website easily. Link to your social media profiles or let visitors share your content on popular networks. Supports over 400 social media icons, customizable colors, and drag-and-drop sorting.
+ * Version:             4.5.0
  * Author:              WPZOOM
  * Author URI:          https://www.wpzoom.com/
  * Text Domain:         social-icons-widget-by-wpzoom
@@ -30,6 +30,7 @@ if ( ! defined( 'WPZOOM_SOCIAL_ICONS_PLUGIN_PATH' ) ) {
 if ( ! defined( 'WPZOOM_SOCIAL_ICONS_PLUGIN_BASE' ) ) {
 	define( 'WPZOOM_SOCIAL_ICONS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
 }
+require_once plugin_dir_path( __FILE__ ) . 'includes/classes/class-wpzoom-social-sharing-buttons.php';
 
 require_once plugin_dir_path( __FILE__ ) . 'includes/classes/class-wpzoom-social-icons-settings.php';
 

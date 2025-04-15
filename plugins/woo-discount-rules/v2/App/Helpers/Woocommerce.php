@@ -885,7 +885,7 @@ class Woocommerce
                     }, 10, 3);
                 }
                 $fee = apply_filters('advanced_discount_rules_discount_fee_amount', $fee, $name, $cart);
-                $name = __($name, 'woo-discount-rules');
+                $name = __($name, 'woo-discount-rules');//phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
                 return $cart->add_fee($name, $fee);
             }
         }
@@ -1796,7 +1796,7 @@ class Woocommerce
         if (function_exists('wp_strip_all_tags')) {
             $html = wp_strip_all_tags($html);
         }else{
-            $html = strip_tags($html);
+            $html = strip_tags($html);//phpcs:ignore WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
         }
         return $html;
     }

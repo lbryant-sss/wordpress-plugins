@@ -68,7 +68,7 @@ if ( ! class_exists( 'CR_Reviews_Media_Meta_Box' ) ) :
 					echo '"></video>';
 					echo '<img class="cr-comment-videoicon" src="' . plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'img/video.svg" ';
 					echo 'alt="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $k_video, $comment->comment_author ) . '">';
-					echo '<button class="cr-comment-video-close">' . CR_Reviews::get_close_button_svg() . '</button>';
+					echo '<button class="cr-comment-video-close" aria-label="' . esc_attr__( 'Close', 'customer-reviews-woocommerce' ) . '">' . CR_Reviews::get_close_button_svg() . '</button>';
 					echo '</div></div>';
 					$k_video++;
 				}
@@ -127,7 +127,7 @@ if ( ! class_exists( 'CR_Reviews_Media_Meta_Box' ) ) :
 						$temp_comment_content .= '"></video>';
 						$temp_comment_content .= '<img class="cr-comment-videoicon" src="' . plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'img/video.svg" ';
 						$temp_comment_content .= 'alt="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $k_video, $comment->comment_author ) . '">';
-						$temp_comment_content .= '<button class="cr-comment-video-close">' . CR_Reviews::get_close_button_svg() . '</button>';
+						$temp_comment_content .= '<button class="cr-comment-video-close" aria-label="' . esc_attr__( 'Close', 'customer-reviews-woocommerce' ) . '">' . CR_Reviews::get_close_button_svg() . '</button>';
 						$temp_comment_content .= '</div></div>';
 						$temp_comment_content .= $button_remove;
 						$temp_comment_content .= '</div>';

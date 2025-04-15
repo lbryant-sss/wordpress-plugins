@@ -347,7 +347,19 @@ export default {
       this.getEvent(id)
     },
 
-    searchEvents (query, groupEvents = false) {
+    searchEvents (query, groupEvents = false, events = []) {
+      if (!query || events.length < this.$root.settings.general.eventsFilterLimit) {
+        this.loadingEvents = true
+
+        this.searchedEvents = events
+
+        setTimeout(() => {
+          this.loadingEvents = false
+        }, 500)
+
+        return
+      }
+
       this.searchEventsQuery = query
       clearTimeout(this.searchEventsTimer)
 
@@ -358,7 +370,7 @@ export default {
         let lastSearchCounter = this.searchCounter
 
         this.$http.get(`${this.$root.getAjaxUrl}/events`, {
-          params: {search: query, page: 1, limit: 10000, skipCount: 1, dates: [moment().format('YYYY-MM-DD')]}
+          params: {search: query, page: 1, limit: this.$root.settings.general.eventsFilterLimit, skipCount: 1, dates: [moment().format('YYYY-MM-DD')]}
         })
         .then(response => {
           if (lastSearchCounter >= this.searchCounter) {
@@ -371,6 +383,18 @@ export default {
           this.loadingEvents = false
         })
       }, 500)
+    },
+
+    getNotRetrievedEvents (events, entities, field) {
+      let eventsIds = events.map(event => event.id)
+
+      let resultEvents = []
+
+      entities.forEach(entity => {
+        resultEvents = resultEvents.concat(entity[field].filter(event => eventsIds.indexOf(event.id) === -1))
+      })
+
+      return resultEvents
     },
 
     groupRecurringEvents (originalEvents) {

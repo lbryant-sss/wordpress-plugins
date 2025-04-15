@@ -4,18 +4,20 @@
     :style="cssVars"
   >
     <div
-      v-if="customizedOptions.header.visibility && !onlyOneEvent"
+      v-if="ready && !loading ? customizedOptions.header.visibility && !onlyOneEvent : false"
       class="am-els__available"
     >
       {{`${total} ${total === 1 ? amLabels.event_available : amLabels.events_available }`}}
     </div>
+
+    <EventListHeaderSkeleton v-if="!ready || loading"></EventListHeaderSkeleton>
 
     <!-- Events Filters -->
     <div
       v-if="customizedOptions.filters.visibility && !onlyOneEvent"
       class="am-els__filters"
     >
-      <div class="am-els__filters-top">
+      <div v-if="ready" class="am-els__filters-top">
         <div class="am-els__filters-search">
           <AmInput
             v-model="eventSearch"
@@ -37,6 +39,7 @@
           </AmButton>
         </div>
       </div>
+      <EventListFiltersSkeleton v-else></EventListFiltersSkeleton>
 
       <Transition name="am-slide-fade">
         <div
@@ -147,7 +150,7 @@
       <!-- /Events Pagination -->
     </template>
 
-    <EmptyState v-if="empty" />
+    <EmptyState v-if="ready && !loading && empty" />
 
   </div>
 </template>
@@ -165,6 +168,8 @@ import AmPagination from '../../../../_components/pagination/AmPagination.vue'
 // * Dedicated Components
 import EventCard from '../../Common/Parts/EventCard.vue'
 import EventListSkeleton from '../Parts/EventListSkeleton.vue'
+import EventListFiltersSkeleton from '../Parts/EventListFiltersSkeleton.vue'
+import EventListHeaderSkeleton from '../Parts/EventListHeaderSkeleton.vue'
 import EmptyState from "../../Common/Parts/EmptyState.vue";
 
 // * Import from Vue
@@ -210,8 +215,11 @@ onMounted(() => {
   }
 })
 
+// * Ready state
+let ready = computed(() => store.getters['getReady'])
+
 // * Load state
-let loading = computed(() => store.getters["getLoading"])
+let loading = computed(() => store.getters['getLoading'])
 
 // * Container width
 let cWidth = inject('containerWidth')
@@ -256,7 +264,7 @@ let amLabels = computed(() => {
 let events = computed(() => store.getters['eventEntities/getEvents'])
 
 // * Empty state
-let empty = computed(() => events.value.length === 0)
+let empty = computed(() => store.getters['getReady'] && !store.getters['getLoading'] ? events.value.length === 0 : false)
 
 // * Events Pagination
 let currentPage = computed({
@@ -376,6 +384,12 @@ let dateFilter = computed(() => {
 
 let typingInSearch = ref(null)
 watch([eventSearch, tagFilter, locationFilter, dateFilter], () => {
+  if (store.getters['getRestoring'] && !store.getters['getRestored']) {
+    store.commit('setRestored', true)
+
+    return
+  }
+
   store.commit('setLoading', true)
   // * Need to set events api for search param
   clearTimeout(typingInSearch.value)

@@ -230,6 +230,10 @@ function useFrontendEmployee (store, employee) {
         googleCalendar: employee.googleCalendar,
         outlookCalendar: employee.outlookCalendar,
         appleCalendarId: employee.appleCalendarId,
+        employeeAppleCalendar: employee.employeeAppleCalendar ? employee.employeeAppleCalendar : {
+            iCloudId: null,
+            appSpecificPassword: null
+        },
         stripeConnect: employee.stripeConnect,
         zoomUserId: employee.zoomUserId,
         locationId: employee.locationId ? employee.locationId : '',

@@ -183,7 +183,7 @@ class DiscountCalculator extends Base
             'discount_value' => $discount_value,
             'discount_price' => $discount_price,
             'discounted_price' => $discounted_price,
-            'rule_title' => __($rule_title, 'woo-discount-rules')
+            'rule_title' => __($rule_title, 'woo-discount-rules') // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
         );
     }
 

@@ -178,6 +178,13 @@ class UpdateEventBookingCommandHandler extends CommandHandler
                     } else if ($ticketBooking['id'] && !$ticketBooking['persons']) {
                         $bookingEventTicketRepository->delete($ticketBooking['id']);
 
+                        foreach ($customerBooking->getTicketsBooking()->getItems() as $key => $item) {
+                            if ($item->getId()->getValue() === $ticketBooking['id']) {
+                                $customerBooking->getTicketsBooking()->deleteItem($key);
+                                break;
+                            }
+                        }
+
                         if ($customerBooking->getStatus()->getValue() === BookingStatus::APPROVED) {
                             $isBookingStatusChanged = true;
                         }

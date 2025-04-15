@@ -2,7 +2,7 @@
 Contributors: wpexpertsio, saadiqbal
 Tags: file manager, wordpress file manager, wp file manager, file manager pro, document management,file-manager, wp-filemanager, elfinder, wp-file-manager, ftp, filemanager
 Requires at least: 4.0
-Tested up to: 6.7.1
+Tested up to: 6.8
 Requires PHP: 7.0
 Stable tag: 5.3.0
 License: GPLv2 or later

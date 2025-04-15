@@ -24,7 +24,7 @@ function cmplz_add_data_per_purpose( array $fields ): array {
 				'loadmore'         => 13,
 				'type'             => 'multicheckbox',
 				'default'          => '',
-				'required'         => true,
+				'required'         => false,
 				'label'              => __( "Specify the types of data you collect", 'complianz-gdpr' ),
 				'options'            => $details_per_purpose_us,
 				'react_conditions' => [

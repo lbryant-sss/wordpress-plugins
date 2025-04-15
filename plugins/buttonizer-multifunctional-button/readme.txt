@@ -3,7 +3,7 @@ Contributors: Buttonizer, freemius
 Buy plugin: https://buttonizer.io
 Tags: Conversion, action button, call, marketing, Social Sharing
 Requires at least: 4.7
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 3.4.8
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -49,6 +49,7 @@ Watch the video below to learn more on adding a Facebook Messenger Chat widget t
  * WhatsApp Chat Widget (with popup)
  * X (Twitter) Direct Message
  * Slack
+ * Microsoft Teams
  * Snapchat
  * Skype
  * Signal

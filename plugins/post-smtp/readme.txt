@@ -3,7 +3,7 @@ Plugin URI: https://postmansmtp.com/
 Contributors: wpexpertsio
 Tags: smtp, gmail smtp, email,  email logs, office 365
 Requires at least: 5.6.0
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 3.1.4
 Requires PHP: 7.0
 License: GPLv2 or later

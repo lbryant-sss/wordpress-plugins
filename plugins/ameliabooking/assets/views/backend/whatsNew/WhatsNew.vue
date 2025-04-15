@@ -202,7 +202,7 @@ export default {
        isValidEmail: true,
        blogPosts: [],
        changelog: {
-         version: '8.1.1',
+         version: '8.2',
          starter: {
            feature: [
            ],
@@ -211,13 +211,13 @@ export default {
            translations: [
            ],
            bugfix: [
-             'Fixed issue with selection fields when booking on the back-end on iOS',
-             'Fixed issue with appointment and payment dates on the Finance page',
-             'Fixed issue with placeholder images on front-end',
-             'Fixed issue with Status filter on the Appointments page',
-             'Fixed issue with hidden buttons of SBS form on Iphone SE',
-             'Fixed issue with services "Show service onsite" option',
-             'Fixed issue with preselected parameters in shortcode'
+             'Fixed issue with daylight savings time change and rescheduling appointments',
+             'Fixed issue with background color on customer and employee panel on Customize page',
+             'Fixed issue with group appointment status in the customer panel',
+             'Fixed issue with large number of events and coupons',
+             'Fixed issue with locations info on the catalog form',
+             'Fixed issues with RTL on the Step by step form',
+             'Fixed issue with phone number in the customer panel'
            ],
            other: [
              'Other small bug fixes and stability improvements'
@@ -225,13 +225,24 @@ export default {
          },
          basic: {
            feature: [
+             'Google Pay & Apple Pay via Stripe - Expanded payment options through Stripe integration for greater flexibility',
+             'Apple Calendar Sync per Employee - Employees can now connect their personal Apple Calendar accounts for seamless scheduling'
            ],
            improvement: [
            ],
            translations: [
+             'Updated Dutch and Italian translations'
            ],
            bugfix: [
-             'Fixed issue with WooCommerce availability as payment method even though disabled in service'
+             'Fixed issue with Mollie and cache data length',
+             'Fixed issue with changing events pricing/tickets, deposit and WooCommerce',
+             'Fixed issue with WooCommerce add-on and appointment status',
+             'Fixed issue with custom notifications and HTML mode',
+             'Fixed issue with editing recurring events (time change)',
+             'Fixed issue with large number of events and taxes/custom fields',
+             'Fixed issue with the Step by step form when Google is connected and different timezones are set',
+             'Fixed issue with deposit enabled and its value 0',
+             'Fixed issue with changing tickets and price info in notifications'
            ],
            other: [
            ]
@@ -244,9 +255,8 @@ export default {
            translations: [
            ],
            bugfix: [
-             'Fixed issue with Packages payments step and Show service onsite option',
-             'Fixed issue with invoices in Cart notifications',
-             'Fixed issue with Waiting list and invoices'
+             'Fixed issue with payment links and waiting list',
+             'Fixed issue with overbooking events when Waiting list is enabled'
            ],
            other: [
            ]

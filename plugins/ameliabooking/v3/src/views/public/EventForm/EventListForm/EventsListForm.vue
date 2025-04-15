@@ -10,8 +10,6 @@
     class="am-elf"
     :style="cssVars"
   >
-
-    <template v-if="ready">
       <!-- Events List -->
       <EventsList />
       <!-- /Events List -->
@@ -24,6 +22,7 @@
         :align-center="true"
         :close-on-click-modal="false"
         :close-on-press-escape="false"
+        :show-close="ready && !loading"
         modal-class="amelia-v2-booking am-dialog-el"
         :custom-styles="cssVars"
         @close="onCloseEventDialog"
@@ -39,6 +38,7 @@
               <EventListHeader
                 :ready="ready"
                 :loading="loading"
+                :loading-upcoming="false"
                 :customized-labels="customizedStepLabels"
               />
             </div>
@@ -48,7 +48,9 @@
               global-class="am-dialog-el__main-container"
             ></component>
             <EventListFooter
+              :ready="ready"
               :loading="loading"
+              :loading-upcoming="false"
               :second-button-show="secondBtnVisibility && secBtnShow && amSettings.roles.customerCabinet.enabled && amSettings.roles.customerCabinet.pageUrl !== null"
               :payment-gateway="store.getters['payment/getPaymentGateway']"
               :customized-labels="customizedStepLabels"
@@ -59,11 +61,6 @@
           </div>
         </template>
       </AmDialog>
-    </template>
-    <EventListSkeleton
-      v-else
-      :display-number="amSettings.general.itemsPerPage"
-    ></EventListSkeleton>
   </div>
   <BackLink/>
 </template>
@@ -95,7 +92,6 @@ import { useScrollTo } from "../../../../assets/js/common/scrollElements";
 import { useWaitingListAvailability } from "../../../../assets/js/public/events";
 
 // * Parts
-import EventListSkeleton from './Parts/EventListSkeleton.vue'
 import BackLink from '../../Parts/BackLink'
 
 // * Structure Components
@@ -351,10 +347,20 @@ store.dispatch(
       'customFields',
       'taxes',
     ],
-    loadEntities: !shortcodeData.value.trigger ? (window.ameliaShortcodeData.filter(i => !i.hasApiCall).length === window.ameliaShortcodeData.length
-      ? true : shortcodeData.value.hasApiCall) : true
+    loadEvents: !shortcodeData.value.in_dialog && !store.getters['getRestoring'],
+    loadEntities: shortcodeData.value.hasApiCall
   }
 )
+
+const loadDialogCounter = inject('loadDialogCounter', ref(null))
+
+watch(loadDialogCounter, () => {
+  if (shortcodeData.value.in_dialog && store.getters['eventEntities/getEventsDisplay']) {
+    store.dispatch('eventEntities/requestEvents', store.getters['eventEntities/getEventsDisplay'])
+  } else if (shortcodeData.value.in_dialog) {
+    store.dispatch('eventEntities/requestEvents')
+  }
+})
 
 onMounted(() => {
   document.getElementById(
@@ -386,7 +392,6 @@ onMounted(() => {
 
 function onCloseEventDialog () {
   if (stepsArray.value[stepIndex.value].name === 'CongratulationsStep') {
-    store.commit('setReady', false)
     window.location.reload()
   }
 
@@ -412,8 +417,7 @@ function onOpenedEventDialog () {
   })
 }
 
-watch(ready, (current) => {
-  if (current) {
+onMounted(() => {
     let restore = useRestore(store, shortcodeData.value)
 
     if (restore) {
@@ -452,8 +456,6 @@ watch(ready, (current) => {
         stepIndex.value++
       })
 
-      store.commit('setLoading', false)
-
       let index = -1
 
       if (restore.result === 'success') {
@@ -467,7 +469,6 @@ watch(ready, (current) => {
 
       emits('isRestored', true)
     }
-  }
 })
 
 // * Customized data form
@@ -717,6 +718,11 @@ export default {
   }
 
   #amelia-container {
+    .el-skeleton {
+      width: 100%;
+      padding: 16px 32px;
+    }
+
     // am - amelia
     // elf - events list form
     &.am-elf {

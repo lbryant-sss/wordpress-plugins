@@ -172,6 +172,14 @@
                     v-if="this.$root.settings.role === 'admin' || this.$root.settings.role === 'manager'"
                     :label="$root.labels.employee_panel_password + ':'" prop="password"
                 >
+                  <!-- Hidden input to intercept autofill attempts -->
+                  <input
+                      type="password"
+                      name="fakePassword"
+                      autocomplete="new-password"
+                      style="display: none;"
+                      aria-hidden="true"
+                  />
                   <el-input
                       v-model="employee.password"
                       auto-complete="off"
@@ -374,24 +382,40 @@
 
                 <el-col :sm="15" :xs="24" style="padding: 0 8px;">
                   <el-select
+                      ref="appleCalendarSelect"
+                      v-if="!employee.employeeAppleCalendar.iCloudId"
                       v-model="employee.appleCalendarId"
                       placeholder=""
                       :disabled="!$root.settings.appleCalendar || appleLoading"
                       @change="clearValidation()"
                   >
-                    <el-option
-                        v-for="calendar in appleCalendarList"
-                        :key="calendar.id"
-                        :label="calendar.name"
-                        :value="calendar.id"
-                    >
-                    </el-option>
+                    <div class="am-drop">
+                      <div class="am-drop-create-item" @click="connectPersonalAppleCalendar">
+                        {{ $root.labels.apple_connect_employee_calendar }}
+                      </div>
+                      <el-option
+                          v-for="calendar in appleCalendarList"
+                          :key="calendar.id"
+                          :label="calendar.name"
+                          :value="calendar.id"
+                      >
+                      </el-option>
+                    </div>
                   </el-select>
+                  <el-alert
+                      v-else
+                      :title="$root.labels.apple_calendar_overridden_by_employee"
+                      type="warning"
+                      :closable="false"
+                      show-icon
+                      style="height: 40px"
+                  >
+                  </el-alert>
                 </el-col>
                 <!-- /Apple Calendar List -->
 
                 <!-- Apple Calendar Disconnect Button -->
-                <el-col v-if="employee.appleCalendarId" :sm="9" :xs="24" style="padding: 0 8px;">
+                <el-col v-if="employee.appleCalendarId && !isEmployeeConnectedToPersonalAppleCalendar" :sm="9" :xs="24" style="padding: 0 8px;">
                   <el-button
                       class="am-google-calendar-button"
                       type="primary"
@@ -405,6 +429,21 @@
                     </span>
                   </el-button>
                 </el-col>
+                <el-col v-if="isEmployeeConnectedToPersonalAppleCalendar" :sm="9" :xs="24" style="padding: 0 8px;">
+                  <el-button
+                      class="am-google-calendar-button"
+                      type="primary"
+                      @click="disconnectEmployeeFromAppleAccount()"
+                  >
+                    <div class="am-google-calendar-button-image">
+                      <img class="" :src="$root.getUrl + 'public/img/apple-button.svg'"/>
+                    </div>
+                    <span class="am-google-calendar-button-text">
+                      {{ $root.labels.apple_calendar_disconnect_employee }}
+                    </span>
+                  </el-button>
+                </el-col>
+
                 <!-- /Apple Calendar Disconnect Button -->
 
               </el-form-item>
@@ -679,6 +718,90 @@
             </div>
           </el-tab-pane>
 
+          <!-- Employee Personal Apple Calendar -->
+          <el-tab-pane
+            v-if="$root.settings.appleCalendar && employee.id !== 0 && !$root.licence.isLite && !$root.licence.isStarter"
+            :label="$root.labels.apple_calendar"
+            name="apple"
+          >
+
+            <!-- Apple Calendar -->
+            <el-row
+              :gutter="16"
+            >
+              <!-- Apple Calendar List -->
+              <el-form-item>
+                <el-col :sm="15" :xs="24" style="padding: 0 8px;">
+                  <el-form-item :label="$root.labels.apple_client_id + ':'">
+                    <el-input
+                      v-model="employee.employeeAppleCalendar.iCloudId"
+                      :disabled="isEmployeeConnectedToPersonalAppleCalendar"
+                      auto-complete="off"
+                      :placeholder="$root.labels.enter_employee_icloud_id"
+                      @input="clearValidation()"
+                    >
+                    </el-input>
+                  </el-form-item>
+
+                  <el-form-item :label="$root.labels.apple_app_specific_password + ':'">
+                    <el-input
+                      v-model="employee.employeeAppleCalendar.appSpecificPassword"
+                      :disabled="isEmployeeConnectedToPersonalAppleCalendar"
+                      auto-complete="off"
+                      :placeholder="$root.labels.enter_employee_app_specific_pass"
+                      @input="clearValidation()"
+                    >
+                    </el-input>
+                  </el-form-item>
+
+                  <el-button
+                      class="am-apple-calendar-button"
+                      :class="{ 'connected': isEmployeeConnectedToPersonalAppleCalendar }"
+                      style="margin-bottom: 16px;"
+                      type="primary"
+                      @click="!isEmployeeConnectedToPersonalAppleCalendar ? connectEmployeeToAppleAccount() : disconnectEmployeeFromAppleAccount()"
+                  >
+                    <div class="am-apple-calendar-button-image">
+                      <img class="" :src="$root.getUrl + 'public/img/apple-button.svg'"/>
+                    </div>
+                    <span
+                        class="am-apple-calendar-button-text"
+                        :class="{ 'connected': isEmployeeConnectedToPersonalAppleCalendar }"
+                    >
+                    {{ !isEmployeeConnectedToPersonalAppleCalendar ? $root.labels.apple_connect : $root.labels.apple_disconnect }}
+                  </span>
+                  </el-button>
+                </el-col>
+
+                <el-col :sm="15" :xs="24" style="padding: 0 8px;">
+                  <el-form-item :label="$root.labels.apple_calendar_select + ':'">
+                    <el-select
+                        v-model="employee.appleCalendarId"
+                        placeholder=""
+                        :disabled="!isEmployeeConnectedToPersonalAppleCalendar || appleLoading"
+                        @change="clearValidation()"
+                    >
+                      <div class="am-drop">
+                        <el-option
+                            v-for="calendar in appleCalendarList"
+                            :key="calendar.id"
+                            :label="calendar.name"
+                            :value="calendar.id"
+                        >
+                        </el-option>
+                      </div>
+                    </el-select>
+                  </el-form-item>
+                </el-col>
+                <!-- /Apple Calendar List -->
+
+              </el-form-item>
+            </el-row>
+            <!-- /Apple Calendar -->
+
+          </el-tab-pane>
+          <!-- /Employee Personal Apple Calendar -->
+
         </el-tabs>
 
       </el-form>
@@ -808,6 +931,7 @@
         stripeProvider: null,
         stripeProviders: null,
         isStripeConnectAmountDefault: false,
+        isEmployeeConnectedToPersonalAppleCalendar: false,
         rules: {
           firstName: [
             {required: true, message: this.$root.labels.enter_first_name_warning, trigger: 'submit'}
@@ -829,7 +953,7 @@
           password: [
             {min: 4, max: 128, message: this.$root.labels.new_password_length, trigger: 'submit'}
           ]
-        }
+        },
       }
     },
 
@@ -892,6 +1016,16 @@
             this.employee.stripeConnect = {
               id: null,
               amount: null
+            }
+          }
+
+          this.isEmployeeConnectedToPersonalAppleCalendar = true
+
+          if (!this.employee.employeeAppleCalendar || this.employee.employeeAppleCalendar.iCloudId === null || this.employee.employeeAppleCalendar.appSpecificPassword === null) {
+            this.isEmployeeConnectedToPersonalAppleCalendar = false
+            this.employee.employeeAppleCalendar = {
+              iCloudId: null,
+              appSpecificPassword: null
             }
           }
 
@@ -971,6 +1105,10 @@
         employee.serviceList.forEach((item) => {
           item.customPricing = this.getJsonCustomPricing(item.customPricing)
         })
+
+        if (this.employee.employeeAppleCalendar.iCloudId === null && this.employee.employeeAppleCalendar.appSpecificPassword === null) {
+          employee.employeeAppleCalendar = null
+        }
 
         if (this.employee.stripeConnect.id === '' || this.employee.stripeConnect.id === null) {
           employee.stripeConnect = null
@@ -1217,6 +1355,9 @@
           if (!found) {
             this.$set(this.employee, 'appleCalendarId', null)
           }
+          this.isEmployeeConnectedToPersonalAppleCalendar = response.data.data.isEmployeeConnectedToPersonalAppleCalendar
+
+          this.employee.appleCalendarId = response.data.data.appleCalendarId
           this.appleLoading = false
         }).catch(e => {
           this.notify(this.$root.labels.error, e.message, 'error')
@@ -1230,6 +1371,52 @@
             `${this.$root.getAjaxUrl}/apple/disconnect/` + this.employee.id
         ).then(() => {
           this.$set(this.employee, 'appleCalendarId', null)
+          this.appleLoading = false
+        }).catch(e => {
+          this.notify(this.$root.labels.error, e.message, 'error')
+          this.appleLoading = false
+        })
+      },
+
+      connectPersonalAppleCalendar () {
+        this.employeeTabs = 'apple'
+        this.$refs.appleCalendarSelect.blur()
+      },
+
+      connectEmployeeToAppleAccount () {
+        this.appleLoading = true
+        this.$http.post(
+            `${this.$root.getAjaxUrl}/apple/connect/` + this.employee.id, {
+              employeeAppleCalendar: this.employee.employeeAppleCalendar
+            }
+        ).then((response) => {
+          this.appleLoading = false
+          this.isEmployeeConnectedToPersonalAppleCalendar = response.data.data.isEmployeeConnectedToPersonalAppleCalendar
+          this.getAppleCalendarList()
+          this.notify(this.$root.labels.success, response.data.message, 'success')
+        }).catch(e => {
+          if(e.response.data.message) {
+            this.notify(this.$root.labels.error, e.response.data.message, 'error')
+          } else {
+            this.notify(this.$root.labels.error, e.message, 'error')
+          }
+        })
+      },
+
+      disconnectEmployeeFromAppleAccount () {
+        this.appleLoading = true
+        this.$http.post(
+            `${this.$root.getAjaxUrl}/apple/disconnect-employee/` + this.employee.id
+        ).then((response) => {
+          this.$set(this.employee, 'appleCalendarId', null)
+          this.$set(this.employee, 'employeeAppleCalendar', null)
+          this.employee.employeeAppleCalendar = {
+            iCloudId: null,
+            appSpecificPassword: null
+          }
+          this.isEmployeeConnectedToPersonalAppleCalendar = response.data.data.isEmployeeConnectedToPersonalAppleCalendar
+          this.getAppleCalendarList()
+          this.notify(this.$root.labels.success, response.data.message, 'success')
           this.appleLoading = false
         }).catch(e => {
           this.notify(this.$root.labels.error, e.message, 'error')

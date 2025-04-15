@@ -6,7 +6,7 @@ Version: 2.7.3
 Author: a3rev Software
 Author URI: https://a3rev.com/
 Requires at least: 6.0
-Tested up to: 6.7
+Tested up to: 6.8
 Text Domain: a3-lazy-load
 Domain Path: /languages
 License: GPLv2 or later

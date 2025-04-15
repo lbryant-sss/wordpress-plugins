@@ -98,9 +98,6 @@ if (window.ameliaShortcodeDataTriggered !== undefined) {
 
     // * Shortcodes that are rendered in Amelia Popup
     if (shortCodeData.in_dialog) {
-      // * vue creation
-      createAmelia(shortCodeData)
-
       // * Collection of all external buttons that are connected to "Amelia popup"
       let externalButtonsLoading = setInterval(() => {
         let externalButtons = shortCodeData.trigger_type && shortCodeData.trigger_type === 'class' ? [...document.getElementsByClassName(shortCodeData.trigger)]
@@ -108,9 +105,13 @@ if (window.ameliaShortcodeDataTriggered !== undefined) {
 
         if (externalButtons.length > 0 && externalButtons[0] !== null && typeof externalButtons[0] !== 'undefined') {
           clearInterval(externalButtonsLoading)
+
+          // * vue creation
+          createAmelia(shortCodeData)
+
           // * Made the buttons invisible because amelia components are not fully loaded
           externalButtons.forEach(btn => {
-            btn.style.display = 'none'
+            btn.style.pointerEvents = 'none'
           })
 
           let componentsLoaded = setInterval(() => {
@@ -118,7 +119,7 @@ if (window.ameliaShortcodeDataTriggered !== undefined) {
               clearInterval(componentsLoaded)
               // * Made the buttons visible because amelia components are fully loaded
               externalButtons.forEach(btn => {
-                btn.style.removeProperty('display')
+                btn.style.removeProperty('pointer-events')
               })
             }
           }, 250)
@@ -240,6 +241,34 @@ function createAmelia(shortcodeData) {
     init(window.wpAmeliaSettings.facebookPixel.id)
   }
 
+  let data = 'ameliaCache' in window && window.ameliaCache.length && window.ameliaCache[0]
+    ? JSON.parse(window.ameliaCache[0])
+    : null
+
+  if (!shortcodeData.hasApiCall &&
+    (shortcodeData.triggered_form === 'sbsNew' || shortcodeData.triggered_form === 'cbf') &&
+    window.ameliaShortcodeData.filter(i => i.triggered_form === 'sbsNew' || i.triggered_form === 'cbf').length === 0 &&
+    window.ameliaShortcodeDataTriggered.filter(
+      i => i.trigger && !i.in_dialog && (i.triggered_form === 'sbsNew' || i.triggered_form === 'cbf')
+    ).length === window.ameliaShortcodeDataTriggered.filter(
+      i => i.triggered_form === 'sbsNew' || i.triggered_form === 'cbf'
+    ).length
+  ) {
+    shortcodeData.hasApiCall = true
+  } else if (!shortcodeData.hasApiCall &&
+    (shortcodeData.triggered_form === 'elf' || shortcodeData.triggered_form === 'ecf') &&
+    window.ameliaShortcodeData.filter(i => i.triggered_form === 'elf' || i.triggered_form === 'ecf').length === 0 &&
+    window.ameliaShortcodeDataTriggered.filter(
+      i => i.trigger && !i.in_dialog && (i.triggered_form === 'elf' || i.triggered_form === 'ecf')
+    ).length === window.ameliaShortcodeDataTriggered.filter(
+      i => i.triggered_form === 'elf' || i.triggered_form === 'ecf'
+    ).length
+  ) {
+    shortcodeData.hasApiCall = true
+  } else if (['sbsNew', 'cbf', 'elf', 'ecf'].indexOf(shortcodeData.triggered_form) === -1) {
+    shortcodeData.hasApiCall = true
+  }
+
   app
     .component('StepFormWrapper', StepFormWrapper)
     .component('CatalogFormWrapper', CatalogFormWrapper)
@@ -258,9 +287,14 @@ function createAmelia(shortcodeData) {
           baseUrls: reactive(window.wpAmeliaUrls),
           timeZones: reactive(wpAmeliaTimeZones),
           timeZone: ref('wpAmeliaTimeZone' in window ? window.wpAmeliaTimeZone[0] : ''),
+          isRtl: ref(document.documentElement.dir === 'rtl'),
           ready: false,
           loading: true,
           formKey: '',
+          restoring: data &&
+            data?.request?.form?.shortcode?.counter &&
+            parseInt(data.request.form.shortcode.counter) === parseInt(shortcodeData.counter),
+          restored: false,
         }),
 
         getters: {
@@ -280,6 +314,14 @@ function createAmelia(shortcodeData) {
             return state.baseUrls
           },
 
+          getRestoring (state) {
+            return state.restoring
+          },
+
+          getRestored (state) {
+            return state.restored
+          },
+
           getReady (state) {
             return state.ready
           },
@@ -290,10 +332,22 @@ function createAmelia(shortcodeData) {
 
           getFormKey (state) {
             return state.formKey
+          },
+
+          getIsRtl (state) {
+            return state.isRtl
           }
         },
 
         mutations: {
+          setRestoring (state, payload) {
+            state.restoring = payload
+          },
+
+          setRestored (state, payload) {
+            state.restored = payload
+          },
+
           setReady (state, payload) {
             state.ready = payload
           },

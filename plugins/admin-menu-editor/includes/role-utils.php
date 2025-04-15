@@ -253,6 +253,20 @@ abstract class ameAccessEvaluatorConfigFields {
 	 * @var bool
 	 */
 	protected $defaultEvaluationResult = false;
+
+	public function configToJs() {
+		$roleDefault = $this->roleDefaultAccess;
+		if ( ($roleDefault === null) && !empty($this->perRoleDefaultAccess) ) {
+			$roleDefault = $this->perRoleDefaultAccess;
+		}
+
+		return [
+			'noValueDefault'      => $this->defaultEvaluationResult,
+			'roleDefault'         => $roleDefault,
+			'superAdminDefault'   => $this->superAdminDefaultAccess,
+			'roleCombinationMode' => 'Some',
+		];
+	}
 }
 
 class ameAccessEvaluatorBuilder extends ameAccessEvaluatorConfigFields {

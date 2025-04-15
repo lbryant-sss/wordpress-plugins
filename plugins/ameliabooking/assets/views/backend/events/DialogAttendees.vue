@@ -529,12 +529,16 @@
 
       updateBookingStatus (booking, newStatus) {
         let exceededCapacityWarning = false
+        let createPaymentLinks = false
+
         if (booking.status === 'waiting' && newStatus === 'approved') {
           exceededCapacityWarning = !this.hasCapacity(booking)
+          createPaymentLinks = true
         }
         this.$http.post(`${this.$root.getAjaxUrl}/events/bookings/` + booking.id, {
           status: newStatus,
-          bookings: [{status: newStatus}]
+          bookings: [{status: newStatus}],
+          createPaymentLinks
         }).then(() => {
           if (exceededCapacityWarning) {
             this.notify(

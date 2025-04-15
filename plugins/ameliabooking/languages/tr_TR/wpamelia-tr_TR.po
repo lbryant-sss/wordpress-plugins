@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Amelia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-31 09:35+0200\n"
-"PO-Revision-Date: 2025-02-25 08:51+0100\n"
+"POT-Creation-Date: 2025-04-09 17:52+0200\n"
+"PO-Revision-Date: 2025-04-07 10:58+0200\n"
 "Last-Translator: TOLGA ALTAŞ\n"
 "Language-Team: Türkçe\n"
 "Language: tr_TR\n"
@@ -869,9 +869,8 @@ msgid "Manage their events"
 msgstr "Etkinliklerini yönet"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:215
-#, fuzzy
 msgid "Manage customers"
-msgstr "müşteriler"
+msgstr "Müşterileri Yönet"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:216
 msgid "Amelia API Documentation"
@@ -8533,14 +8532,6 @@ msgstr "Müşteri Seç"
 #~ "Burada çalışanı Outlook Takvim'e bağlayabilirsiniz,<br/>böylece randevu "
 #~ "planlandıktan sonra<br/>otomatik olarak çalışanın takvimine eklenecektir."
 
-#~ msgid ""
-#~ "Here you can connect employee with Apple Calendar,<br/>so once the "
-#~ "appointment is scheduled it will be<br/>automatically added to employee's "
-#~ "calendar."
-#~ msgstr ""
-#~ "Burada çalışanı, Apple Takvime bağlayabilirsiniz,<br/>böylece randevu "
-#~ "planlandığında otomatik olarak<br/>çalışanın takvimine eklenir."
-
 #~ msgid "Connect Account"
 #~ msgstr "Hesabı Bağla"
 
@@ -10476,15 +10467,11 @@ msgstr "Müşteri Seç"
 #~ msgid "Event Customer"
 #~ msgstr "Etkinlik Müşterisi"
 
-#, fuzzy
-#~| msgid "Customer Phone"
 #~ msgid "Event Customer Phone"
-#~ msgstr "Müşteri Telefonu"
+#~ msgstr "Etkinlik Müşteri Telefonu"
 
-#, fuzzy
-#~| msgid "Customer Email"
 #~ msgid "Event Customer Email"
-#~ msgstr "Müşteri E-postası"
+#~ msgstr "Etkinlik Müşteri E-Postası"
 
 #~ msgid "Set up button type and labels"
 #~ msgstr "Düğme türünü ve etiketlerini ayarla"
@@ -11069,10 +11056,8 @@ msgstr "Müşteri Seç"
 #~ msgid "This is recurring event"
 #~ msgstr "Bu tekrarlayan bir etkinlik"
 
-#, fuzzy
-#~| msgid "Show recurring events"
 #~ msgid "Enable recurring event"
-#~ msgstr "Tekrarlayan etkinlikleri göster"
+#~ msgstr "Yinelenen etkinliği etkinleştir"
 
 #~ msgid ""
 #~ "Connect your Google Calendar here so once<br/>the appointment is "
@@ -11105,15 +11090,11 @@ msgstr "Müşteri Seç"
 #~ msgid "Min. Capacity"
 #~ msgstr "Min. Kapasite"
 
-#, fuzzy
-#~| msgid "There are no attendees yet..."
 #~ msgid "There are no special days yet..."
-#~ msgstr "Henüz katılımcı yok..."
+#~ msgstr "Henüz özel gün yok..."
 
-#, fuzzy
-#~| msgid "There are no attendees yet..."
 #~ msgid "There are no days off yet..."
-#~ msgstr "Henüz katılımcı yok..."
+#~ msgstr "Henüz izin günü yok..."
 
 #~ msgid ""
 #~ "Check this checkbox if you want your customer to<br/>receive an email "
@@ -11208,3 +11189,11 @@ msgstr "Müşteri Seç"
 
 #~ msgid "Delete Period"
 #~ msgstr "Periyotları Sil"
+
+#~ msgid ""
+#~ "Here you can connect employee with Apple Calendar,<br/>so once the "
+#~ "appointment is scheduled it will be<br/>automatically added to employee's "
+#~ "calendar."
+#~ msgstr ""
+#~ "Burada çalışanı, Apple Takvime bağlayabilirsiniz,<br/>böylece randevu "
+#~ "planlandığında otomatik olarak<br/>çalışanın takvimine eklenir."

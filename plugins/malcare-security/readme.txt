@@ -4,7 +4,7 @@ Tags: wordpress security, firewall, malware scanner, malware removal, vulnerabil
 Plugin URI: https://www.malcare.com
 Donate link: https://www.malcare.com
 Requires at least: 4.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.6.0
 Stable tag: 5.93
 License: GPLv2 or later

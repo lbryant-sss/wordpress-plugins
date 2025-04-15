@@ -4,7 +4,10 @@
       <AmButton
         v-if="stepIndex > 0"
         class="am-heading-prev"
-        :icon="IconArrowLeft"
+        :icon="{
+          components: {IconComponent},
+          template: `<IconComponent icon=${isRtl  ? 'arrow-right' : 'arrow-left'} />`
+        }"
         :icon-only="true"
         size="micro"
         type="plain"
@@ -41,7 +44,7 @@
 
 <script setup>
 import AmButton from '../../../../_components/button/AmButton.vue';
-import IconArrowLeft from "../../../../_components/icons/IconArrowLeft";
+import IconComponent from "../../../../_components/icons/IconComponent.vue";
 
 import { useColorTransparency } from '../../../../../assets/js/common/colorManipulation'
 import { ref, computed, inject } from 'vue'
@@ -61,6 +64,8 @@ defineProps({
 })
 
 let loading = computed(() => store.getters['booking/getLoading'])
+
+let isRtl = computed(() => store.getters['getIsRtl'])
 
 // * Step Index
 const stepIndex = inject('stepIndex', 0);
@@ -134,6 +139,7 @@ let cssVars = computed(() => {
         &-inner {
           display: flex;
           align-items: center;
+          gap: 0 12px;
 
           &-title {
             font-family: var(--am-font-family);
@@ -153,13 +159,7 @@ let cssVars = computed(() => {
           }
 
           .am-heading {
-            &-prev {
-              margin-right: 12px;
-              box-shadow: none;
-            }
-
-            &-next {
-              margin-left: 12px;
+            &-prev, &-next  {
               box-shadow: none;
             }
           }

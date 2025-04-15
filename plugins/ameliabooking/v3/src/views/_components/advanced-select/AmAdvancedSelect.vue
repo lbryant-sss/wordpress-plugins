@@ -6,8 +6,9 @@
       class="am-adv-select"
       :class="[
         `am-adv-select--${size}`,
-         {'am-adv-select--disabled': disabled}
-       ]"
+        {'am-adv-select--disabled': disabled},
+        {'am-rtl': isRtl}
+      ]"
       v-bind="$attrs"
       :options="options"
       :props="propsData"
@@ -246,6 +247,15 @@ let checkScreen = computed(() => cWidth.value < 560 || (cWidth.value > 560 && cW
 
 // * Component reference
 const advSelect = ref(null)
+
+// * Component text orientation
+let isRtl = computed(() => {
+  if (document) {
+    return document.documentElement.dir === 'rtl'
+  }
+
+  return false
+})
 
 /**
  * Dropdown (Popper) ID
@@ -514,6 +524,15 @@ onMounted(() => {
       &__suffix {
         .el-input__validateIcon {
           display: none;
+        }
+      }
+    }
+
+    &.am-rtl {
+      .el-input {
+        &__suffix {
+          right: unset;
+          left: 12px;
         }
       }
     }

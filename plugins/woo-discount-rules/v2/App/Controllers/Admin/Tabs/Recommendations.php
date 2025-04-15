@@ -51,7 +51,7 @@ class Recommendations extends Base
 			$response = wp_remote_get($recommendation_list_url);
 			if (!is_wp_error($response)) {
 				$recommendations_list = (array)json_decode(wp_remote_retrieve_body($response), true);
-				$site_name = $_SERVER['HTTP_HOST'];
+				$site_name = isset($_SERVER['HTTP_HOST']) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
 				foreach ($recommendations_list as &$recommendation) {
 					$recommendation['plugin_url'] = str_replace('{site-name}', $site_name, $recommendation['plugin_url']);
 				}

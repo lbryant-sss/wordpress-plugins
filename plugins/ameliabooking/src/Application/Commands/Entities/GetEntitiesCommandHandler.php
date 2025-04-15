@@ -123,6 +123,10 @@ class GetEntitiesCommandHandler extends CommandHandler
 
         $resultData = [];
 
+        /** @var SettingsService $settingsDS */
+        $settingsDS = $this->container->get('domain.settings.service');
+
+
         /** Events */
         if (in_array(Entities::EVENTS, $params['types'], true)) {
             /** @var EventApplicationService $eventAS */
@@ -137,7 +141,7 @@ class GetEntitiesCommandHandler extends CommandHandler
                 [
                     'fetchEventsPeriods' => true,
                 ],
-                1000
+                $settingsDS->getSetting('general', 'eventsFilterLimit') ?: 1000
             );
 
             $resultData['events'] = $eventDS->getShortcodeForEventList($this->container, $events->toArray());
@@ -203,8 +207,6 @@ class GetEntitiesCommandHandler extends CommandHandler
             $resultData['categories'] = $categories->toArray();
         }
 
-        /** @var SettingsService $settingsDS */
-        $settingsDS = $this->container->get('domain.settings.service');
 
         $resultData['customers'] = [];
 
@@ -313,7 +315,8 @@ class GetEntitiesCommandHandler extends CommandHandler
                         $employee['email'],
                         $employee['externalId'],
                         $employee['phone'],
-                        $employee['note']
+                        $employee['note'],
+                        $employee['employeeAppleCalendar'],
                     );
 
                     if (isset($params['page']) && $params['page'] !== Entities::CALENDAR) {

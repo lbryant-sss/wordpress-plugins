@@ -251,8 +251,6 @@ const advCalendarRef = ref(null);
 
 let isDateSelected = ref(false)
 
-// const baseUrls = inject('baseUrls')
-
 // * Duration
 let calendarServiceDurations = inject('calendarServiceDurations', [])
 
@@ -1092,14 +1090,7 @@ $amCalClass: am-advsc;
 
     &__header {
       display: flex;
-
-      & > div {
-        margin-right: 24px;
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
+      gap: 24px;
 
       .am-button {
         font-size: 18px;
@@ -1107,18 +1098,13 @@ $amCalClass: am-advsc;
       }
 
       &-mobile {
-        & > div {
-          margin-right: 8px;
-        }
+        gap: 8px;
       }
 
       &-mobile-s {
         flex-direction: column;
         align-items: center;
         gap: 8px;
-        & > div {
-          margin-right: 0px;
-        }
       }
     }
 
@@ -1128,8 +1114,6 @@ $amCalClass: am-advsc;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-
-      &-wrapper {}
 
       &-heading {
         font-size: var(--am-fs-advsc);

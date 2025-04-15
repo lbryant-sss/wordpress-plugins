@@ -2,7 +2,7 @@
 Contributors: wpexpertsio
 Tags: password, maintenance mode, password protect page, password protect, restrict content
 Requires at least: 4.6
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.6
 Stable tag: 2.7.7
 License: GPLv2 or later

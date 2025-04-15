@@ -1,7 +1,7 @@
 <template>
   <!-- :class="{'am-elf__main-heading-mobile': mobile}" -->
   <div
-    v-if="props.ready && !props.loading"
+    v-if="props.ready && !props.loading && !props.loadingUpcoming"
     class="am-el__header-inner"
     :style="cssVars"
   >
@@ -59,6 +59,10 @@ let props = defineProps({
     default: false
   },
   loading: {
+    type: Boolean,
+    default: false
+  },
+  loadingUpcoming: {
     type: Boolean,
     default: false
   }

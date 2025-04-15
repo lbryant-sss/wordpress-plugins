@@ -6,9 +6,16 @@
       ref="amSelect"
       v-model="model"
       class="am-select"
-      :class="[`am-select--${size}`, {'am-select--disabled': disabled}, props.customClass]"
-      :popper-class="`am-select-popper${popperClass ? ' ' + popperClass : popperClass}`"
-      :popper-options="{showArrow: false}"
+      :class="[
+        `am-select--${size}`,
+        { 'am-select--disabled': disabled },
+        { 'am-rtl': isRtl },
+        props.customClass,
+      ]"
+      :popper-class="`am-select-popper${
+        popperClass ? ' ' + popperClass : popperClass
+      }`"
+      :popper-options="{ showArrow: false }"
       :multiple="props.multiple"
       :disabled="props.disabled"
       :value-key="props.valueKey"
@@ -37,7 +44,7 @@
       :tag-type="props.tagType"
       :prefix-icon="props.prefixIcon"
       :dropdown-arrow-visibility="props.dropdownArrowVisibility"
-      :style="{...cssVars}"
+      :style="{ ...cssVars }"
       @change="(val) => $emit('change', val)"
       @visible-change="visibleChange"
       @remove-tag="(eventValue) => $emit('remove-tag', eventValue)"
@@ -46,50 +53,50 @@
       @focus="(e) => $emit('focus', e)"
     >
       <template v-if="prefixIcon || Object.keys(prefixIcon).length" #prefix>
-        <component
-          :is="prefixIcon"
-          v-if="typeof prefixIcon === 'object'"
+        <component :is="prefixIcon" v-if="typeof prefixIcon === 'object'" />
+        <span
+          v-if="typeof prefixIcon === 'string'"
+          :class="`am-icon-${prefixIcon}`"
+          :style="`color: ${prefixIconColor}`"
         />
-        <span v-if="typeof prefixIcon === 'string'" :class="`am-icon-${prefixIcon}`" :style="`color: ${prefixIconColor}`"/>
       </template>
-      <slot/>
+      <slot />
     </el-select>
   </div>
   <!-- /Select -->
-
 </template>
 
 <script setup>
 // icon components
-import AmeliaIconClose from '../icons/IconClose.vue';
-import AmeliaIconArrowUp from '../icons/IconArrowUp.vue';
+import AmeliaIconClose from '../icons/IconClose.vue'
+import AmeliaIconArrowUp from '../icons/IconArrowUp.vue'
 
 // color composable
-import { useColorTransparency } from '../../../assets/js/common/colorManipulation';
+import { useColorTransparency } from '../../../assets/js/common/colorManipulation'
 
-import {ref, toRefs, computed, onMounted, inject} from 'vue'
+import { ref, toRefs, computed, onMounted, inject } from 'vue'
 
 /**
  * Component Props
  */
 const props = defineProps({
   id: {
-    type: String
+    type: String,
   },
   modelValue: {
     type: [String, Array, Object, Number],
   },
   multiple: {
     type: Boolean,
-    default: false
+    default: false,
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   valueKey: {
     type: String,
-    default: 'value'
+    default: 'value',
   },
   size: {
     // default / medium / small / mini / micro
@@ -97,128 +104,136 @@ const props = defineProps({
     default: 'default',
     validator(value) {
       return ['default', 'medium', 'small', 'mini', 'micro'].includes(value)
-    }
+    },
   },
   clearable: {
     type: Boolean,
-    default: false
+    default: false,
   },
   collapseTags: {
     type: Boolean,
-    default: false
+    default: false,
   },
   multipleLimit: {
     type: Number,
-    default: 0
+    default: 0,
   },
   name: {
     type: String,
-    default: ''
+    default: '',
   },
   autocomplete: {
     type: String,
-    default: 'off'
+    default: 'off',
   },
   placeholder: {
     type: String,
-    default: 'Select'
+    default: 'Select',
   },
   filterable: {
     type: Boolean,
-    default: false
+    default: false,
   },
   allowCreate: {
     type: Boolean,
-    default: false
+    default: false,
   },
   filterMethod: {
-    type: Function
+    type: Function,
   },
   remote: {
     type: Boolean,
-    default: false
+    default: false,
   },
   remoteMethod: {
-    type: Function
+    type: Function,
   },
   loading: {
     type: Boolean,
-    default: false
+    default: false,
   },
   loadingText: {
     type: String,
-    default: 'Loading'
+    default: 'Loading',
   },
   noMatchText: {
     type: String,
-    default: 'No matching data'
+    default: 'No matching data',
   },
   noDataText: {
     type: String,
-    default: 'No data'
+    default: 'No data',
   },
   customClass: {
     type: String,
-    default: ''
+    default: '',
   },
   parentClass: {
     type: String,
-    default: ''
+    default: '',
   },
   popperClass: {
     type: String,
-    default: ''
+    default: '',
   },
   reserveKeyword: {
     type: Boolean,
-    default: false
+    default: false,
   },
   defaultFirstOption: {
     type: Boolean,
-    default: false
+    default: false,
   },
   teleported: {
     type: Boolean,
-    default: true
+    default: true,
   },
   automaticDropdown: {
     type: Boolean,
-    default: false
+    default: false,
   },
   clearIcon: {
     type: [String, Object],
-    default: AmeliaIconClose
+    default: AmeliaIconClose,
   },
   fitInputWidth: {
     type: Boolean,
-    default: false
+    default: false,
   },
   suffixIcon: {
     type: [String, Object],
-    default: AmeliaIconArrowUp
+    default: AmeliaIconArrowUp,
   },
   tagType: {
     type: String,
-    default: 'info'
+    default: 'info',
   },
   prefixIcon: {
     type: [String, Object, Function],
-    default: ''
+    default: '',
   },
   prefixIconColor: {
     type: [String, Object, Function],
-    default: ''
+    default: '',
   },
   dropdownArrowVisibility: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 
 /**
  * Component Emits
  * */
-const emits = defineEmits(['change', 'visible-change', 'remove-tag', 'clear', 'blur', 'focus', 'update:modelValue'])
+const emits = defineEmits([
+  'change',
+  'visible-change',
+  'remove-tag',
+  'clear',
+  'blur',
+  'focus',
+  'update:modelValue',
+])
 
 /**
  * Component model
@@ -228,7 +243,7 @@ let model = computed({
   get: () => modelValue.value,
   set: (val) => {
     emits('update:modelValue', val)
-  }
+  },
 })
 
 /**
@@ -236,38 +251,53 @@ let model = computed({
  */
 const amSelect = ref(null)
 
+// * Component text orientation
+let isRtl = computed(() => {
+  if (document) {
+    return document.documentElement.dir === 'rtl'
+  }
+
+  return false
+})
+
 // * Font Vars
-let amFonts = inject('amFonts', ref({
-  fontFamily: 'Amelia Roboto, sans-serif',
-  fontUrl: '',
-  customFontFamily: '',
-  fontFormat: '',
-  customFontSelected: false
-}))
+let amFonts = inject(
+  'amFonts',
+  ref({
+    fontFamily: 'Amelia Roboto, sans-serif',
+    fontUrl: '',
+    customFontFamily: '',
+    fontFormat: '',
+    customFontSelected: false,
+  })
+)
 
 // * Color Vars
-let amColors = inject('amColors', ref({
-  colorPrimary: '#1246D6',
-  colorSuccess: '#019719',
-  colorError: '#B4190F',
-  colorWarning: '#CCA20C',
-  colorMainBgr: '#FFFFFF',
-  colorMainHeadingText: '#33434C',
-  colorMainText: '#1A2C37',
-  colorSbBgr: '#17295A',
-  colorSbText: '#FFFFFF',
-  colorInpBgr: '#FFFFFF',
-  colorInpBorder: '#D1D5D7',
-  colorInpText: '#1A2C37',
-  colorInpPlaceHolder: '#808A90',
-  colorDropBgr: '#FFFFFF',
-  colorDropBorder: '#D1D5D7',
-  colorDropText: '#0E1920',
-  colorBtnPrim: '#265CF2',
-  colorBtnPrimText: '#FFFFFF',
-  colorBtnSec: '#1A2C37',
-  colorBtnSecText: '#FFFFFF',
-}))
+let amColors = inject(
+  'amColors',
+  ref({
+    colorPrimary: '#1246D6',
+    colorSuccess: '#019719',
+    colorError: '#B4190F',
+    colorWarning: '#CCA20C',
+    colorMainBgr: '#FFFFFF',
+    colorMainHeadingText: '#33434C',
+    colorMainText: '#1A2C37',
+    colorSbBgr: '#17295A',
+    colorSbText: '#FFFFFF',
+    colorInpBgr: '#FFFFFF',
+    colorInpBorder: '#D1D5D7',
+    colorInpText: '#1A2C37',
+    colorInpPlaceHolder: '#808A90',
+    colorDropBgr: '#FFFFFF',
+    colorDropBorder: '#D1D5D7',
+    colorDropText: '#0E1920',
+    colorBtnPrim: '#265CF2',
+    colorBtnPrimText: '#FFFFFF',
+    colorBtnSec: '#1A2C37',
+    colorBtnSecText: '#FFFFFF',
+  })
+)
 
 // * Css Variables
 let cssVars = computed(() => {
@@ -276,12 +306,30 @@ let cssVars = computed(() => {
     '--am-c-select-border': amColors.value.colorInpBorder,
     '--am-c-select-text': amColors.value.colorInpText,
     '--am-c-select-placeholder': amColors.value.colorInpPlaceHolder,
-    '--am-c-select-shadow': useColorTransparency(amColors.value.colorInpText, 0.05),
-    '--am-c-select-text-op60': useColorTransparency(amColors.value.colorInpText, 0.6),
-    '--am-c-select-text-op50': useColorTransparency(amColors.value.colorInpText, 0.5),
-    '--am-c-select-text-op40': useColorTransparency(amColors.value.colorInpText, 0.4),
-    '--am-c-select-text-op03': useColorTransparency(amColors.value.colorInpText, 0.03),
-    '--am-c-select-text-op06': useColorTransparency(amColors.value.colorInpText, 0.06),
+    '--am-c-select-shadow': useColorTransparency(
+      amColors.value.colorInpText,
+      0.05
+    ),
+    '--am-c-select-text-op60': useColorTransparency(
+      amColors.value.colorInpText,
+      0.6
+    ),
+    '--am-c-select-text-op50': useColorTransparency(
+      amColors.value.colorInpText,
+      0.5
+    ),
+    '--am-c-select-text-op40': useColorTransparency(
+      amColors.value.colorInpText,
+      0.4
+    ),
+    '--am-c-select-text-op03': useColorTransparency(
+      amColors.value.colorInpText,
+      0.03
+    ),
+    '--am-c-select-text-op06': useColorTransparency(
+      amColors.value.colorInpText,
+      0.06
+    ),
     '--am-font-family': amFonts.value.fontFamily,
   }
 })
@@ -291,27 +339,71 @@ let cssVars = computed(() => {
  */
 onMounted(() => {
   if (!props.dropdownArrowVisibility) {
-    amSelect.value.tooltipRef.popperRef.popperInstanceRef.state.styles.arrow.display = 'none'
+    amSelect.value.tooltipRef.popperRef.popperInstanceRef.state.styles.arrow.display =
+      'none'
   } else {
-    delete amSelect.value.tooltipRef.popperRef.popperInstanceRef.state.styles.arrow.display
+    delete amSelect.value.tooltipRef.popperRef.popperInstanceRef.state.styles
+      .arrow.display
   }
 })
 
-function visibleChange (eventValue) {
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-success', amColors.value.colorSuccess)
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-error', amColors.value.colorError)
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-warning', amColors.value.colorWarning)
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-bgr', amColors.value.colorDropBgr)
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-border', amColors.value.colorDropBorder)
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-text', amColors.value.colorDropText)
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-text-op65', useColorTransparency(amColors.value.colorDropText, 0.65))
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-text-op15', useColorTransparency(amColors.value.colorDropText, 0.15))
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-hover', useColorTransparency(amColors.value.colorDropText, 0.1))
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-selected', amColors.value.colorPrimary)
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-selected-op10', useColorTransparency(amColors.value.colorPrimary, 0.1))
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-img-bgr', amColors.value.colorSuccess)
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-c-option-img-text', amColors.value.colorMainBgr)
-  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty('--am-font-family', amFonts.value.fontFamily)
+function visibleChange(eventValue) {
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-success',
+    amColors.value.colorSuccess
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-error',
+    amColors.value.colorError
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-warning',
+    amColors.value.colorWarning
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-option-bgr',
+    amColors.value.colorDropBgr
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-option-border',
+    amColors.value.colorDropBorder
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-option-text',
+    amColors.value.colorDropText
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-option-text-op65',
+    useColorTransparency(amColors.value.colorDropText, 0.65)
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-option-text-op15',
+    useColorTransparency(amColors.value.colorDropText, 0.15)
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-option-hover',
+    useColorTransparency(amColors.value.colorDropText, 0.1)
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-option-selected',
+    amColors.value.colorPrimary
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-option-selected-op10',
+    useColorTransparency(amColors.value.colorPrimary, 0.1)
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-option-img-bgr',
+    amColors.value.colorSuccess
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-c-option-img-text',
+    amColors.value.colorMainBgr
+  )
+  amSelect.value.tooltipRef.popperRef.contentRef.style.setProperty(
+    '--am-font-family',
+    amFonts.value.fontFamily
+  )
   emits('visible-change', eventValue)
 }
 </script>
@@ -435,16 +527,20 @@ export default {
         padding: var(--am-padd-select);
         box-shadow: 0 2px 2px var(--am-c-select-shadow);
 
-        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        &::-webkit-input-placeholder {
+          /* Chrome/Opera/Safari */
           color: var(--am-c-select-placeholder);
         }
-        &::-moz-placeholder { /* Firefox 19+ */
+        &::-moz-placeholder {
+          /* Firefox 19+ */
           color: var(--am-c-select-placeholder);
         }
-        &:-ms-input-placeholder { /* IE 10+ */
+        &:-ms-input-placeholder {
+          /* IE 10+ */
           color: var(--am-c-select-placeholder);
         }
-        &:-moz-placeholder { /* Firefox 18- */
+        &:-moz-placeholder {
+          /* Firefox 18- */
           color: var(--am-c-select-placeholder);
         }
 
@@ -452,7 +548,8 @@ export default {
           --am-c-select-border: var(--am-c-select-text-op40);
         }
 
-        &:focus, &:active {
+        &:focus,
+        &:active {
           --am-c-select-border: var(--am-c-primary);
           border-color: var(--am-c-select-border) !important;
         }
@@ -462,6 +559,15 @@ export default {
       &__suffix {
         .el-input__validateIcon {
           display: none;
+        }
+      }
+    }
+
+    &.am-rtl {
+      .el-input {
+        &__suffix {
+          right: unset;
+          left: 12px;
         }
       }
     }
@@ -482,7 +588,6 @@ export default {
 .am-select-popper {
   z-index: 9999999999 !important;
 }
-
 
 // public
 .amelia-v2-booking #amelia-container {

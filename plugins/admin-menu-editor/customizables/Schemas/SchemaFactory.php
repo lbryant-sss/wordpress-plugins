@@ -30,6 +30,23 @@ class SchemaFactory {
 		return new Struct($fieldSchemas, $label);
 	}
 
+	public function record(Schema $keySchema, Schema $itemSchema, $label = null) {
+		return new Record($keySchema, $itemSchema, $label);
+	}
+
+	/**
+	 * Indexed array schema.
+	 *
+	 * "array" is a reserved keyword in PHP, so we can't use it as a method name.
+	 *
+	 * @param Schema $itemSchema
+	 * @param string|null $label
+	 * @return IndexedArray
+	 */
+	public function arr(Schema $itemSchema, $label = null) {
+		return new IndexedArray($itemSchema, $label);
+	}
+
 	public function cssColor($label = null) {
 		return (new Color($label))->orTransparent()->settingClassHint(CssPropertySetting::class);
 	}

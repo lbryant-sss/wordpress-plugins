@@ -62,7 +62,8 @@ defineExpose({
   continueWithBooking
 })
 
-let amLabels = inject('amLabels')
+// * Labels
+const amLabels = inject('labels')
 
 watchEffect(() => {
   if (footerButtonClicked.value && !props.instantBooking) {

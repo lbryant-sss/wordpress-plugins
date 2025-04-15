@@ -39,6 +39,10 @@ class Router
      */
     function init()
     {
+	    add_filter( 'safe_style_css', function( $styles ) {
+		    $styles[] = 'display';
+		    return $styles;
+	    } );
         $compatibility = Tabs\Compatible::getInstance();
         $compatibility->runCompatibilityScripts();
         //admin ajax requests
@@ -59,7 +63,6 @@ class Router
                 return $screen_ids;
             });
         }
-        add_action('admin_init', array(self::$admin, 'setupSurveyForm'), 10);
         /**
          * All hooks needed for both admin and site
          */

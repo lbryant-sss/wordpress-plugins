@@ -113,7 +113,7 @@
           >
             <span class="am-icon-locations"></span>
             <span>
-              {{ packLocations.length === 1 ? (packLocations[0].address ? packLocations[0].address : packLocations[0].name) : amLabels.multiple_locations }}
+              {{ displayPackageLocationLabel(packLocations) }}
             </span>
           </div>
         </div>
@@ -623,6 +623,13 @@ let amLabels = computed(() => {
   }
   return computedLabels
 })
+
+function displayPackageLocationLabel(locations) {
+  if (locations.length === 1 || (locations.length && locations.every(location => location.id === locations[0].id))) {
+    return locations[0].address ? locations[0].address : locations[0].name
+  }
+  return amLabels.value.multiple_locations
+}
 
 function packageDurationLabel(duration, type) {
   let string = ''

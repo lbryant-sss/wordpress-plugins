@@ -20,6 +20,10 @@ export default {
       token: null,
     },
     appleCalendarId: '',
+    employeeAppleCalendar: {
+      iCloudId: null,
+      appSpecificPassword: null
+    },
     stripeConnect: null,
     zoomUserId: '',
     note: '',
@@ -85,6 +89,14 @@ export default {
 
     getAppleCalendarId (state) {
       return state.appleCalendarId
+    },
+
+    getEmployeeAppleCalendarICloudId (state) {
+      return state.employeeAppleCalendar.iCloudId
+    },
+
+    getEmployeeAppleCalendarAppSpecificPassword (state) {
+      return state.employeeAppleCalendar.appSpecificPassword
     },
 
     getStripeConnect (state) {
@@ -167,6 +179,14 @@ export default {
 
     setAppleCalendarId (state, payload) {
       state.appleCalendarId = payload
+    },
+
+    setEmployeeAppleCalendarICloudId (state, payload) {
+      state.employeeAppleCalendar.iCloudId = payload
+    },
+
+    setEmployeeAppleCalendarAppSpecificPassword (state, payload) {
+      state.employeeAppleCalendar.appSpecificPassword = payload
     },
 
     setStripeConnect (state, payload) {

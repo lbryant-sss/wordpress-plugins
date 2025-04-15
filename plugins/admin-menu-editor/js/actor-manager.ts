@@ -1032,6 +1032,50 @@ const AmeActorFeatureStrategyDefaults: Omit<AmeActorFeatureStrategySettings, Ame
 	autoResetAll: true,
 }
 
+type AmeFeatureStrategySerializableInputs = Partial<
+	Pick<AmeActorFeatureStrategySettings, 'superAdminDefault' | 'noValueDefault'>
+	& {
+	roleDefault: boolean | null | Record<string, boolean | null>;
+	roleCombinationMode: 'Every' | 'Some' | 'CustomOrSome';
+}>;
+
+function ameUnserializeFeatureStrategySettings(input: AmeFeatureStrategySerializableInputs): Partial<AmeActorFeatureStrategySettings> {
+	const unserialized: Partial<AmeActorFeatureStrategySettings> = {};
+
+	if (typeof input.superAdminDefault !== 'undefined') {
+		unserialized.superAdminDefault = input.superAdminDefault;
+	}
+
+	if (typeof input.noValueDefault !== 'undefined') {
+		unserialized.noValueDefault = input.noValueDefault;
+	}
+
+	if (typeof input.roleDefault !== 'undefined') {
+		if ((input.roleDefault === null) || (typeof input.roleDefault === 'boolean')) {
+			unserialized.roleDefault = input.roleDefault;
+		} else {
+			const copy = Object.assign({}, input.roleDefault);
+			unserialized.roleDefault = (roleName: string) => copy[roleName] || null;
+		}
+	}
+
+	if (typeof input.roleCombinationMode === 'string') {
+		switch (input.roleCombinationMode) {
+			case 'Every':
+				unserialized.roleCombinationMode = AmeRoleCombinationMode.Every;
+				break;
+			case 'Some':
+				unserialized.roleCombinationMode = AmeRoleCombinationMode.Some;
+				break;
+			case 'CustomOrSome':
+				unserialized.roleCombinationMode = AmeRoleCombinationMode.CustomOrSome;
+				break;
+		}
+	}
+
+	return unserialized;
+}
+
 class AmeActorFeatureStrategy {
 	private readonly settings: AmeActorFeatureStrategySettings;
 

@@ -167,6 +167,7 @@ export default {
         'translations': this.notification.translations,
         'subject': this.notification.subject,
         'content': this.notification.content,
+        'textMode': this.notification.textMode,
         'whatsAppTemplate': this.notification.whatsAppTemplate,
         'minimumTimeBeforeBooking': this.notification.minimumTimeBeforeBooking
       }

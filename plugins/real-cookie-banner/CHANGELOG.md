@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.1.2 (2025-04-14)
+
+
+### Bug Fixes
+
+* login pages could not be scanned due to Loopback request could not be started (CU-8698qcr7p)
+
+
+### Maintenance
+
+* compatibility with WordPress 6.8 (CU-8698n6jp7)
+
+
+<details><summary>Dependency updates @devowl-wp/headless-content-blocker 1.2.9</summary>
+
+
+**_Purpose of dependency:_** _Block HTML content by URLs and selector syntax_
+##### Bug Fixes
+
+* calendly was found as external URL and service when it has a style attribute (CU-8698mqkuy)</details>
+
+<details><summary>Dependency updates @devowl-wp/headless-content-unblocker 1.1.8</summary>
+
+
+**_Purpose of dependency:_** _Unblock mechanism for @devowl-wp/headless-content-blocker with visual capabilities._
+##### Bug Fixes
+
+* a deduplicated visual content blocker for Elementor videos autoplays all videos after unblock (CU-8698pajgj)</details>
+
+
+
+
+
+## 5.1.1 (2025-04-08) (not released)
+
+**Note:** This version of the package has not (yet) been released publicly. This happens if changes have been made in dependencies that do not affect this package (e.g. changes for the development of the package). The changes will be rolled out with the next official update.
+
+
+### Maintenance
+
+* migrate to docker swarm for multi-instance capability (CU-8697hja46)
+
+
+<details><summary>Dependency updates @devowl-wp/headless-content-blocker 1.2.8</summary>
+
+
+**_Purpose of dependency:_** _Block HTML content by URLs and selector syntax_
+##### Maintenance
+
+* migrate to docker swarm for multi-instance capability (CU-8697hja46)</details>
+
+<details><summary>Development dependency update @devowl-wp/continuous-integration 0.7.2</summary>
+
+
+**_Purpose of dependency:_** _DevOps macros, job templates and jobs for Gitlab CI and @devowl-wp/node-gitlab-ci._
+##### Maintenance
+
+* create owlreview.de certificates instead of swarm.owlreview.de (CU-8697hja46)
+* migrate to docker swarm for multi-instance capability (CU-8697hja46)</details>
+
+<details><summary>Development dependency update @devowl-wp/node-gitlab-ci 0.8.4</summary>
+
+
+**_Purpose of dependency:_** _Create dynamic GitLab CI pipelines in JavaScript or TypeScript for each project. Reuse and inherit instructions and avoid duplicate code!_
+##### Maintenance
+
+* migrate to docker swarm for multi-instance capability (CU-8697hja46)</details>
+
+
+
+
+
 # 5.1.0 (2025-04-02)
 
 

@@ -92,7 +92,7 @@ class DiscountRules extends Base
     }
 
 	public function getRecommendedAddon(){
-		$site_name = $_SERVER['HTTP_HOST'];
+		$site_name = isset($_SERVER['HTTP_HOST']) ? sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST'])) : '';
 		return  [
 			"wployalty" => [
 				"name" => "WPLoyalty - Loyalty Points, Rewards & Referrals",

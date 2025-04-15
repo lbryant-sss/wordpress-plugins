@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "codeinwp/optimole-sdk",
-            "version": "v1.2.1",
-            "version_normalized": "1.2.1.0",
+            "version": "v1.2.2",
+            "version_normalized": "1.2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/optimole-php-sdk.git",
-                "reference": "72d96fe1fa89904ff83383e83efe641035346694"
+                "reference": "567557f1067c934a564154dd292a3f343749b538"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/optimole-php-sdk/zipball/72d96fe1fa89904ff83383e83efe641035346694",
-                "reference": "72d96fe1fa89904ff83383e83efe641035346694",
+                "url": "https://api.github.com/repos/Codeinwp/optimole-php-sdk/zipball/567557f1067c934a564154dd292a3f343749b538",
+                "reference": "567557f1067c934a564154dd292a3f343749b538",
                 "shasum": ""
             },
             "require": {
@@ -32,7 +32,7 @@
             "suggest": {
                 "guzzlehttp/guzzle": "Use the Guzzle HTTP client to make requests to the API"
             },
-            "time": "2024-08-06T12:32:29+00:00",
+            "time": "2025-03-28T18:31:54+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -61,24 +61,24 @@
         },
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.3.40",
-            "version_normalized": "3.3.40.0",
+            "version": "3.3.44",
+            "version_normalized": "3.3.44.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "eca8d5224a9d87bf1b645ef3fd733d1a07962c3a"
+                "reference": "fed444b52ebf1f689ec2434df177926bf8f238c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/eca8d5224a9d87bf1b645ef3fd733d1a07962c3a",
-                "reference": "eca8d5224a9d87bf1b645ef3fd733d1a07962c3a",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/fed444b52ebf1f689ec2434df177926bf8f238c4",
+                "reference": "fed444b52ebf1f689ec2434df177926bf8f238c4",
                 "shasum": ""
             },
             "require-dev": {
                 "codeinwp/phpcs-ruleset": "dev-main",
                 "yoast/phpunit-polyfills": "^2.0"
             },
-            "time": "2024-12-29T09:32:58+00:00",
+            "time": "2025-02-18T21:31:30+00:00",
             "type": "library",
             "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
@@ -99,23 +99,23 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeinwp/themeisle-sdk/issues",
-                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/v3.3.40"
+                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/v3.3.44"
             },
             "install-path": "../codeinwp/themeisle-sdk"
         },
         {
             "name": "enshrined/svg-sanitize",
-            "version": "0.20.0",
-            "version_normalized": "0.20.0.0",
+            "version": "0.21.0",
+            "version_normalized": "0.21.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/darylldoyle/svg-sanitizer.git",
-                "reference": "068d9fcf912c88a0471d101d95a2caa87c50aee7"
+                "reference": "5e477468fac5c5ce933dce53af3e8e4e58dcccc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/darylldoyle/svg-sanitizer/zipball/068d9fcf912c88a0471d101d95a2caa87c50aee7",
-                "reference": "068d9fcf912c88a0471d101d95a2caa87c50aee7",
+                "url": "https://api.github.com/repos/darylldoyle/svg-sanitizer/zipball/5e477468fac5c5ce933dce53af3e8e4e58dcccc9",
+                "reference": "5e477468fac5c5ce933dce53af3e8e4e58dcccc9",
                 "shasum": ""
             },
             "require": {
@@ -126,7 +126,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^6.5 || ^8.5"
             },
-            "time": "2024-09-05T10:18:12+00:00",
+            "time": "2025-01-13T09:32:25+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -147,7 +147,7 @@
             "description": "An SVG sanitizer for PHP",
             "support": {
                 "issues": "https://github.com/darylldoyle/svg-sanitizer/issues",
-                "source": "https://github.com/darylldoyle/svg-sanitizer/tree/0.20.0"
+                "source": "https://github.com/darylldoyle/svg-sanitizer/tree/0.21.0"
             },
             "install-path": "../enshrined/svg-sanitize"
         },

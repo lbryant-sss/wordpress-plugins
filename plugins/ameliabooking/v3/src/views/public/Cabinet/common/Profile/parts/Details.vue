@@ -309,6 +309,7 @@ defineExpose({
       gap: 24px 16px;
       flex-wrap: wrap;
       box-sizing: border-box;
+      margin-bottom: 8px;
 
       &.am-rw- {
         &620 {

@@ -80,6 +80,10 @@ export default {
       padding: 16px 8px 16px;
       transition: width .3s ease-in-out;
 
+      &.am-rtl {
+        border-radius: 0 0.5rem 0.5rem 0;
+      }
+
       &.am-collapsed {
         transition-delay: 1s;
       }
@@ -174,6 +178,11 @@ export default {
               height: 16px;
               font-size: 10px;
             }
+
+            &.am-rtl {
+              left: auto;
+              right: -16px;
+            }
           }
         }
 
@@ -208,6 +217,11 @@ export default {
           border: 1px solid var(--am-c-sb-checker-border);
           transition: border 0.3s ease-in-out;
           margin-left: auto;
+
+          &.am-rtl {
+            margin-right: auto;
+            margin-left: 0;
+          }
 
           // Selected
           &-selected {
@@ -398,6 +412,10 @@ export default {
           line-height: 1.43;
           margin: 0 auto 0 6px;
 
+          &.am-rtl {
+            margin: 0 6px 0 auto;
+          }
+
           &.fade-enter-active {
             animation: sidebar-step-selection 1s;
           }
@@ -408,12 +426,16 @@ export default {
         }
 
         &-indicator {
-          //display: flex;
           display: none;
           align-items: center;
           justify-content: center;
           font-size: 24px;
           margin-left: auto;
+
+          &.am-rtl {
+            margin-right: auto;
+            margin-left: 0;
+          }
 
           &.fade-enter-active {
             animation: sidebar-step-selection 1s;

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit982ac96f42d820de9ee152e7cd9a9062
+class ComposerStaticInit3013873b56733fb84f9e534c2d8a9ac1
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -23,6 +23,7 @@ class ComposerStaticInit982ac96f42d820de9ee152e7cd9a9062
         'O' => 
         array (
             'Optimole\\Sdk\\' => 13,
+            'OptimoleWP\\' => 11,
         ),
     );
 
@@ -39,11 +40,23 @@ class ComposerStaticInit982ac96f42d820de9ee152e7cd9a9062
         array (
             0 => __DIR__ . '/..' . '/codeinwp/optimole-sdk/src',
         ),
+        'OptimoleWP\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/inc/v2',
+        ),
     );
 
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'OptimoleWP\\BgOptimizer\\Lazyload' => __DIR__ . '/../..' . '/inc/v2/BgOptimizer/Lazyload.php',
+        'OptimoleWP\\Offload\\ImageEditor' => __DIR__ . '/../..' . '/inc/v2/Offload/ImageEditor.php',
+        'OptimoleWP\\Offload\\Loader' => __DIR__ . '/../..' . '/inc/v2/Offload/Loader.php',
+        'OptimoleWP\\PageProfiler\\Profile' => __DIR__ . '/../..' . '/inc/v2/PageProfiler/Profile.php',
+        'OptimoleWP\\PageProfiler\\Storage\\Base' => __DIR__ . '/../..' . '/inc/v2/PageProfiler/Storage/Base.php',
+        'OptimoleWP\\PageProfiler\\Storage\\ObjectCache' => __DIR__ . '/../..' . '/inc/v2/PageProfiler/Storage/ObjectCache.php',
+        'OptimoleWP\\PageProfiler\\Storage\\Transients' => __DIR__ . '/../..' . '/inc/v2/PageProfiler/Storage/Transients.php',
+        'OptimoleWP\\Preload\\Links' => __DIR__ . '/../..' . '/inc/v2/Preload/Links.php',
         'Optimole\\Sdk\\Exception\\BadMethodCallException' => __DIR__ . '/..' . '/codeinwp/optimole-sdk/src/Exception/BadMethodCallException.php',
         'Optimole\\Sdk\\Exception\\BadResponseException' => __DIR__ . '/..' . '/codeinwp/optimole-sdk/src/Exception/BadResponseException.php',
         'Optimole\\Sdk\\Exception\\DashboardApiException' => __DIR__ . '/..' . '/codeinwp/optimole-sdk/src/Exception/DashboardApiException.php',
@@ -66,6 +79,7 @@ class ComposerStaticInit982ac96f42d820de9ee152e7cd9a9062
         'Optimole\\Sdk\\Resource\\AssetProperty\\TypeProperty' => __DIR__ . '/..' . '/codeinwp/optimole-sdk/src/Resource/AssetProperty/TypeProperty.php',
         'Optimole\\Sdk\\Resource\\CacheBusterProperty' => __DIR__ . '/..' . '/codeinwp/optimole-sdk/src/Resource/CacheBusterProperty.php',
         'Optimole\\Sdk\\Resource\\Image' => __DIR__ . '/..' . '/codeinwp/optimole-sdk/src/Resource/Image.php',
+        'Optimole\\Sdk\\Resource\\ImageProperty\\DprProperty' => __DIR__ . '/..' . '/codeinwp/optimole-sdk/src/Resource/ImageProperty/DprProperty.php',
         'Optimole\\Sdk\\Resource\\ImageProperty\\EnlargeProperty' => __DIR__ . '/..' . '/codeinwp/optimole-sdk/src/Resource/ImageProperty/EnlargeProperty.php',
         'Optimole\\Sdk\\Resource\\ImageProperty\\FormatProperty' => __DIR__ . '/..' . '/codeinwp/optimole-sdk/src/Resource/ImageProperty/FormatProperty.php',
         'Optimole\\Sdk\\Resource\\ImageProperty\\GravityProperty' => __DIR__ . '/..' . '/codeinwp/optimole-sdk/src/Resource/ImageProperty/GravityProperty.php',
@@ -102,9 +116,9 @@ class ComposerStaticInit982ac96f42d820de9ee152e7cd9a9062
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit982ac96f42d820de9ee152e7cd9a9062::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit982ac96f42d820de9ee152e7cd9a9062::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit982ac96f42d820de9ee152e7cd9a9062::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3013873b56733fb84f9e534c2d8a9ac1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3013873b56733fb84f9e534c2d8a9ac1::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3013873b56733fb84f9e534c2d8a9ac1::$classMap;
 
         }, null, ClassLoader::class);
     }

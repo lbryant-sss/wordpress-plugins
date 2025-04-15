@@ -564,7 +564,7 @@
                 v-if="appointment.providerId && appointment.serviceId && appointment.extrasCount > 0 && appointment.bookings.length > 0"
               >
                 <div
-                  v-if="['approved', 'pending'].includes(booking.status)"
+                  v-if="['approved', 'pending', 'rejected'].includes(booking.status)"
                   v-for="(booking, index) in appointment.bookings" :key="index" class="am-customer-extras"
                 >
                   <el-row class="am-customer-extras-data">

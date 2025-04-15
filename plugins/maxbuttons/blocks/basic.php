@@ -196,6 +196,7 @@ class basicBlock extends maxBlock
 			{
 					$url = wp_strip_all_tags($url);
 					$url = str_replace('javascript:', '', $url);
+				//	$url = esc_url($url);
 			}
 
 

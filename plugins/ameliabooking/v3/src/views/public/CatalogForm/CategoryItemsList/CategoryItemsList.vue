@@ -257,7 +257,7 @@
                 >
                   <span class="am-icon-locations"></span>
                   <span>
-                    {{ usePackageLocations(amEntities, item, shortcodeData).length === 1 ? (usePackageLocations(amEntities, item, shortcodeData)[0].address ? usePackageLocations(amEntities, item, shortcodeData)[0].address : usePackageLocations(amEntities, item, shortcodeData)[0].name) : amLabels.multiple_locations }}
+                    {{ displayPackageLocationLabel(amEntities, item) }}
                   </span>
                 </div>
               </div>
@@ -1105,9 +1105,18 @@ function packageDurationLabel(duration, type) {
   return string
 }
 
+function displayPackageLocationLabel (entities, item) {
+  let locations = usePackageLocations(entities, item)
+  if (locations.length === 1 || (locations.length && locations.every(location => location.id === locations[0].id))) {
+    return locations[0].address ? locations[0].address : locations[0].name
+  }
+  return amLabels.value.multiple_locations
+}
+
 function displayServiceLocationLabel (entities, id) {
-  if (useServiceLocation(entities, id).length === 1) {
-    return useServiceLocation(entities, id)[0].address ? useServiceLocation(entities, id)[0].address : useServiceLocation(entities, id)[0].name
+  let locations = useServiceLocation(entities, id)
+  if (locations.length === 1 || (locations.length && locations.every(location => location.id === locations[0].id))) {
+    return locations[0].address ? locations[0].address : locations[0].name
   }
   return amLabels.value.multiple_locations
 }

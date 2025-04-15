@@ -3,7 +3,7 @@ Contributors: userwayorg
 Tags: ada, wcag, EAA compliance, section 508, accessibility
 Requires at least: 4.7
 Tested up to: 6.7.2
-Stable tag: 2.5.8
+Stable tag: 2.6.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
  
@@ -121,4 +121,4 @@ Minor bug fixes
 *Chinese [zh];
 
 = 1.0 =
-*Release Date - January 2017
+*Release Date - January 2017.

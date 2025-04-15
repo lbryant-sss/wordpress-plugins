@@ -25,10 +25,14 @@
       :visibility="bringingAnyoneVisibility"
       class="am-fs__init__bringing"
     >
-      <p class="am-fs__popup-x" @click="closeBringingPopup">
+      <p
+        class="am-fs__popup-x"
+        :class="{'am-rtl': isRtl}"
+        @click="closeBringingPopup"
+      >
         <AmeliaIconClose></AmeliaIconClose>
       </p>
-      <BringingAnyone :in-popup="true"></BringingAnyone>
+      <BringingAnyone :in-popup="true" />
       <template #footer>
         <AmButton
           v-if="(bringingAnyoneOptions.min !== bringingAnyoneOptions.max) &&  bringingAnyoneOptions.min <= 0"
@@ -57,7 +61,10 @@
     <!--/ Bringing Anyone with you -->
 
     <!-- Packages Popup -->
-    <PackagesPopup class="am-fs__init__package" @continue-with-service="continueWithService()"></PackagesPopup>
+    <PackagesPopup
+      class="am-fs__init__package"
+      @continue-with-service="continueWithService()"
+    />
     <!--/ Packages Popup -->
   </div>
 
@@ -105,6 +112,12 @@ let amCustomize = inject('amCustomize')
 // * Amelia Settings
 const amSettings = inject('settings')
 
+// * Store
+let store = useStore();
+
+// * Document text orientation
+let isRtl = computed(() => store.getters['getIsRtl'])
+
 function isFieldFilterable(key) {
   return  (amCustomize.initStep.options[key] &&
     'filterable' in amCustomize.initStep.options[key]) ?
@@ -115,6 +128,7 @@ let amFields = reactive({
   service: {
     template: markRaw(ServiceFormField),
     props: {
+      class: isRtl.value ? 'am-rtl' : '',
       filterable: isFieldFilterable('service'),
       taxVisible: amCustomize.initStep.options.tax?.visibility ?? true
     }
@@ -122,6 +136,7 @@ let amFields = reactive({
   location: {
     template: markRaw(LocationFormField),
     props: {
+      class: isRtl.value ? 'am-rtl' : '',
       visibility: amCustomize.initStep.options.location.visibility,
       filterable: isFieldFilterable('location')
     }
@@ -129,14 +144,12 @@ let amFields = reactive({
   employee: {
     template: markRaw(EmployeeFormField),
     props: {
+      class: isRtl.value ? 'am-rtl' : '',
       visibility: amCustomize.initStep.options.employee.visibility,
       filterable: isFieldFilterable('employee')
     }
   }
 })
-
-// * Store
-let store = useStore();
 
 let loaded = computed(() => {
   return store.getters['entities/getReady']
@@ -448,6 +461,11 @@ export default {
       cursor: pointer;
       color: var(--am-c-main-text);
       margin: 0;
+
+      &.am-rtl {
+        right: auto;
+        left: 16px;
+      }
     }
 
     &__ps {

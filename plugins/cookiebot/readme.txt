@@ -7,7 +7,7 @@
 * Requires PHP: 5.6
 * License: GPLv2 or later
 
-Install your cookie banner in minutes. Automatic cookie scanning and blocking to comply with the GDPR, CCPA, and Google Consent Mode v2. Free plan option.
+Install your cookie banner in minutes. Automatically scan and block cookies to comply with the GDPR, CCPA, Google Consent Mode v2. Free plan option.
 
 ## Description ##
 
@@ -89,7 +89,7 @@ Watch the video to learn how to install the Cookiebot CMP WordPress plugin. It�
 
 [youtube https://www.youtube.com/watch?v=1-lvuJa42P0]
 
-Need assistance? Visit our [Help Center](https://support.cookiebot.com/hc/en-us) or [contact us](https://support.cookiebot.com/hc/en-us/requests/new).
+Need assistance? Visit our [Help Center](https://support.cookiebot.com/hc/en-us) or [contact us](https://usercentricsforwordpress.zendesk.com/hc/en-us/requests/new).
 
 ## Support and updates ##
 
@@ -99,22 +99,7 @@ With industry-leading scanning technology, the platform detects and controls all
 
 Usercentrics Cookiebot CMP and the WordPress Plugin are designed to be used by both technical and non-technical teams that value plug-and-play solutions and reliable scalability. Transform data privacy compliance into a competitive advantage with Usercentrics Cookiebot.
 
-If you have questions or need cookie banner support, visit our [Help Center](https://support.cookiebot.com/hc/en-us) or [contact us](https://support.cookiebot.com/hc/en-us/requests/new).
-
-## Copyright and Trademarks ##
-
-Cookiebot CMP by Usercentrics is a registered trademark of Usercentrics A/S.
-
-## About Cookiebot™ and Usercentrics ##
-
-In September 2021, Cybot (primary owner of the Cookiebot CMP) and Usercentrics unified their operations to create a powerful global force to provide solutions to help businesses comply with privacy regulations, protect their users’ data privacy, and continue to get the data they need for marketing operations. Our unified company is now known as Usercentrics.
-
-Usercentrics is a global market leader in the field of consent management and preference management solutions. We enable businesses to collect, manage and document user consent on websites, apps and connected platforms in order to achieve full compliance with global privacy regulations while facilitating high consent rates and building trust with their customers.
-
-Our consent technology is trusted by public and private organizations in over 180 countries, in use on over 1.4 million websites.
-
-[Learn more about Cookiebot CMP](https://www.cookiebot.com/en/about/?utm_source=wordpress&utm_medium=referral&utm_campaign=banner)
-[Learn more about Usercentrics](https://usercentrics.com/about-us/?utm_source=wordpress&utm_medium=referral&utm_campaign=banner)
+If you have questions or need cookie banner support, visit our [Help Center](https://support.cookiebot.com/hc/en-us) or [contact us](https://usercentricsforwordpress.zendesk.com/hc/en-us/requests/new).
 
 ## Screenshots ##
 
@@ -145,7 +130,9 @@ Click on your company and select your GDPR configuration.
 In the left-hand menu, click on Service Settings.
 Click the Start Scan button to initiate a new scan.
 
-### Domain Issue? ###
+&nbsp;
+
+* Domain Issue?
 If the scan fails due to an invalid domain:
 Click on Configuration in the left-hand menu.
 Remove the incorrect domain and add a new one.
@@ -857,8 +844,3 @@ Cookiebot CMP version 4.2.10 is out! Now our plugin supports the Virginia Consum
 
 ### 1.0.0 ###
 * Initial release of the plugin.
-
-
-## Copyright and Trademarks ##
-
-The Cookiebot CMP by Usercentrics is a registered trademark of Usercentrics A/S.

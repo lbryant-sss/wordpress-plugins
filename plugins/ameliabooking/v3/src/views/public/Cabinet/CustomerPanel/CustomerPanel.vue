@@ -24,7 +24,10 @@
       <SideBar
         v-if="sidebarVisibility"
         class="am-fs-sb"
-        :class="{ 'am-collapsed': sidebarCollapsed }"
+        :class="[
+          { 'am-collapsed': sidebarCollapsed },
+          { 'am-rtl': isRtl }
+        ]"
         :style="{
           width: !sidebarCollapsed ? '240px' : '72px',
           paddingBottom: `${sidebarFooterHeight + 16}px`,
@@ -54,7 +57,7 @@
                     <p
                       v-if="!sidebarCollapsed"
                       class="am-fs-sb__page-heading"
-                      :class="sidebarCollapseItemsClass"
+                      :class="[sidebarCollapseItemsClass, {'am-rtl': isRtl}]"
                     >
                       {{ step.label }}
                     </p>
@@ -63,9 +66,9 @@
                     <div
                       v-if="!sidebarCollapsed"
                       class="am-fs-sb__page-indicator"
-                      :class="sidebarCollapseItemsClass"
+                      :class="[sidebarCollapseItemsClass, {'am-rtl': isRtl}]"
                     >
-                      <span class="am-icon-arrow-big-right"></span>
+                      <span :class="isRtl ? 'am-icon-arrow-big-left' : 'am-icon-arrow-big-right'"></span>
                     </div>
                   </transition>
                 </div>
@@ -216,6 +219,9 @@ import { useInitAttendee } from '../../../../assets/js/common/attendees'
 const vueCookies = useCookies()['cookies']
 
 const store = useStore()
+
+// * RTL - right to left
+let isRtl = computed(() => store.getters['getIsRtl'])
 
 // * Data in shortcode
 const shortcodeData = inject('shortcodeData')

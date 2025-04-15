@@ -96,13 +96,13 @@ $recommendations_list = !empty($wdr_recommendations_list) ? $wdr_recommendations
 <div class="awdr-addons">
 	<?php foreach ($recommendations_list as $slug => $recommendation) { ?>
 		<div class="awdr-addon">
-			<img class="banner" src="<?php echo esc_url($recommendation['banner_image']); ?>"
+			<img class="banner" src="<?php echo esc_url($recommendation['banner_image']); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>"
 			     alt="<?php echo esc_attr($recommendation['name'], 'woo-discount-rules'); ?>">
 
 			<div class="addon-content">
 				<div class="awdr-addon-header">
 					<div class="awdr-addon-icon">
-						<img src="<?php echo esc_url($recommendation['icon_url']); ?>"
+						<img src="<?php echo esc_url($recommendation['icon_url']); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>"
 						     alt="<?php echo esc_attr($recommendation['name'], 'woo-discount-rules'); ?>" width="48" height="48">
 					</div>
 					<h2><?php echo esc_html($recommendation['name']); ?></h2>
@@ -113,7 +113,7 @@ $recommendations_list = !empty($wdr_recommendations_list) ? $wdr_recommendations
 			</div>
 
 			<div class="addon-actions">
-				<?php if (!empty($recommendation['plugin_url'])): ?>
+				<?php if (!empty($recommendation['plugin_url'])):  ?>
 					<a href="<?php echo esc_url($recommendation['plugin_url']); ?>" target="_blank">
 						<?php echo esc_html('Get Plugin', 'woo-discount-rules'); ?>
 					</a>

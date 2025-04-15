@@ -469,6 +469,13 @@ class AppointmentApplicationService
                     $paymentAmount = $paymentDeposit;
                 }
 
+                if ($customerBooking->getCustomerId() &&
+                    !empty($paymentData['customerPaymentParentId'][$customerBooking->getCustomerId()->getValue()])
+                ) {
+                    $paymentData['parentId'] =
+                        $paymentData['customerPaymentParentId'][$customerBooking->getCustomerId()->getValue()];
+                }
+
                 /** @var Payment $payment */
                 $payment = $reservationService->addPayment(
                     !$customerBooking->getPackageCustomerService() ?
@@ -579,6 +586,13 @@ class AppointmentApplicationService
                         $paymentData['deposit'] = $paymentAmount !== $paymentDeposit;
 
                         $paymentAmount = $paymentDeposit;
+                    }
+
+                    if ($newBooking->getCustomerId() &&
+                        !empty($paymentData['customerPaymentParentId'][$newBooking->getCustomerId()->getValue()])
+                    ) {
+                        $paymentData['parentId'] =
+                            $paymentData['customerPaymentParentId'][$newBooking->getCustomerId()->getValue()];
                     }
 
                     /** @var Payment $payment */

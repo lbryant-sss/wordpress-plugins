@@ -32,13 +32,74 @@
         </component>
       </template>
     </div>
+
+    <AmAlert
+        v-if="alertVisibility"
+        type="error"
+        :show-border="true"
+        :close-after="5000"
+        @close="closeAlert"
+        @trigger-close="closeAlert"
+    >
+      {{ message }}
+    </AmAlert>
+
+    <!-- Apple Calendar -->
+    <div v-if="amSettings.appleCalendar" class="am-caedo__apple">
+      <AmCollapse>
+        <AmCollapseItem :side="true" :delay="500" ref="appleVisibility">
+          <template #heading>
+            {{ amLabels.apple_calendar_personal }}
+          </template>
+          <template #default>
+            <div class="am-caedo__apple__connect">
+              <el-form-item
+                  :label="amLabels.apple_icloud_id"
+                  class="am-caedo__apple__connect__item"
+              >
+                <AmInput
+                    v-model="appleCalendarPersonal.iCloudId"
+                    :disabled="isEmployeeConnectedToPersonalAppleCalendar"
+                    :placeholder="amLabels.apple_icloud_id"
+                />
+              </el-form-item>
+              <el-form-item
+                  :label="amLabels.apple_app_specific_password"
+                  class="am-caedo__apple__connect__item"
+              >
+                <AmInput
+                  v-model="appleCalendarPersonal.appSpecificPassword"
+                  type="password"
+                  :showPassword="true"
+                  :disabled="isEmployeeConnectedToPersonalAppleCalendar"
+                  :placeholder="amLabels.apple_app_specific_password"
+                />
+              </el-form-item>
+
+              <AmButton
+                @click="isEmployeeConnectedToPersonalAppleCalendar ?
+                useEmployeeAppleDisconnect(store) :
+                useEmployeeAppleConnect(store)"
+              >
+                {{ isEmployeeConnectedToPersonalAppleCalendar ?
+                  amLabels.apple_disconnect :
+                  amLabels.apple_connect
+                }}
+              </AmButton>
+            </div>
+          </template>
+        </AmCollapseItem>
+      </AmCollapse>
+    </div>
+    <!-- /Apple Calendar -->
+
   </el-form>
   <Skeleton v-else></Skeleton>
 </template>
 
 <script setup>
 // * Import from Vue
-import { computed, ref, inject, onBeforeMount, markRaw } from 'vue'
+import {computed, ref, inject, onBeforeMount, markRaw, onMounted} from 'vue'
 
 // * Import from Vuex
 import { useStore } from 'vuex'
@@ -58,6 +119,24 @@ import {
   useOutlookDisconnect,
 } from '../../../../../../assets/js/common/integrationOutlook'
 import Skeleton from '../../Authentication/parts/Skeleton.vue'
+import AmInput from "../../../../../_components/input/AmInput.vue";
+import AmCollapse from "../../../../../_components/collapse/AmCollapse.vue";
+import AmCollapseItem from "../../../../../_components/collapse/AmCollapseItem.vue";
+import {
+  isEmployeeConnectedToPersonalAppleCalendar, useAppleSync
+} from "../../../../../../assets/js/common/integrationApple";
+import httpClient from "../../../../../../plugins/axios";
+import AmAlert from "../../../../../_components/alert/AmAlert.vue";
+
+// * Alert block
+let message = ref('')
+let messageType = ref('error')
+let alertVisibility = ref(false)
+
+function closeAlert () {
+  alertVisibility.value = false
+  message.value = ''
+}
 
 // * Props
 const props = defineProps({
@@ -139,7 +218,6 @@ let outlookCalendarOptions = computed(() => {
 // * Apple Calendar Options
 let appleCalendarOptions = computed(() => {
   let calendars = store.getters['auth/getAppleCalendars']
-
   if (calendars.length) {
     return calendars.map((calendar) => {
       return {
@@ -148,8 +226,25 @@ let appleCalendarOptions = computed(() => {
       }
     })
   }
-
   return []
+})
+
+let appleVisibility = ref(null)
+
+// * Apple Calendar iCloudId and App-specific Password
+let appleCalendarPersonal = ref({
+  iCloudId: computed({
+    get: () => store.getters['employee/getEmployeeAppleCalendarICloudId'],
+    set: (val) => {
+      store.commit('employee/setEmployeeAppleCalendarICloudId', val ? val : '')
+    }
+  }),
+  appSpecificPassword: computed({
+    get: () => store.getters['employee/getEmployeeAppleCalendarAppSpecificPassword'],
+    set: (val) => {
+      store.commit('employee/setEmployeeAppleCalendarAppSpecificPassword', val ? val : null)
+    }
+  })
 })
 
 // * Google Button Text
@@ -182,16 +277,16 @@ let employeeFormData = ref({
     },
   }),
   outlookBtn: '',
-  appleId: computed({
-    get: () => store.getters['employee/getAppleCalendarId'],
-    set: (val) => {
-      store.commit('employee/setAppleCalendarId', val ? val : '')
-    },
-  }),
   zoomUserId: computed({
     get: () => store.getters['employee/getZoomUserId'],
     set: (val) => {
       store.commit('employee/setZoomUserId', val ? val : '')
+    },
+  }),
+  appleId: computed({
+    get: () => store.getters['employee/getAppleCalendarId'],
+    set: (val) => {
+      store.commit('employee/setAppleCalendarId', val ? val : '')
     },
   }),
 })
@@ -267,20 +362,6 @@ let employeeDataFormConstruction = ref({
       },
     },
   },
-  appleId: {
-    template: formFieldsTemplates.select,
-    props: {
-      itemName: 'appleId',
-      label: amLabels.apple_calendar,
-      placeholder: '',
-      class: computed(() => `am-caepif__item ${props.responsiveClass}`),
-      disabled: false,
-      clearable: true,
-      options: appleCalendarOptions.value,
-      loading: computed(() => store.getters['auth/getAppleLoading']),
-      loadingIcon: 'loading',
-    },
-  },
   zoomUserId: {
     template: formFieldsTemplates.select,
     props: {
@@ -291,6 +372,24 @@ let employeeDataFormConstruction = ref({
       options: zoomOptions.value,
     },
   },
+  appleId: {
+    template: formFieldsTemplates.select,
+    props: {
+      itemName: 'appleId',
+      label: amLabels.apple_calendar,
+      placeholder: '',
+      class: computed(() => `am-caepif__item ${props.responsiveClass}`),
+      disabled: false,
+      clearable: computed(() => !isEmployeeConnectedToPersonalAppleCalendar.value),
+      options: computed(() => appleCalendarOptions.value),
+      loading: computed(() => store.getters['auth/getAppleLoading']),
+      loadingIcon: 'loading',
+    },
+  },
+})
+
+onMounted(() => {
+  appleVisibility.value.contentVisibility = isEmployeeConnectedToPersonalAppleCalendar.value
 })
 
 onBeforeMount(() => {
@@ -312,11 +411,73 @@ onBeforeMount(() => {
     delete employeeDataFormConstruction.value.appleId
   }
 })
+
+function useEmployeeAppleConnect (store) {
+  const data = {
+    iCloudId: store.getters['employee/getEmployeeAppleCalendarICloudId'],
+    appSpecificPassword: store.getters['employee/getEmployeeAppleCalendarAppSpecificPassword']
+  }
+
+  httpClient.post(
+      '/apple/connect/' + store.getters['employee/getId'],
+      {
+        employeeAppleCalendar: data
+      }
+  ).then(() => {
+    store.commit('employee/setEmployeeAppleCalendarICloudId', data.iCloudId)
+    store.commit('employee/setEmployeeAppleCalendarAppSpecificPassword', data.appSpecificPassword)
+    useAppleSync(store)
+  }).catch((error) => {
+    alertVisibility.value = true
+    message.value = error.response.data.message
+    messageType.value = 'error'
+  }).finally(() => {
+    alertVisibility.value = true
+  })
+}
+
+function useEmployeeAppleDisconnect (store) {
+  store.commit('auth/setAppleLoading', true)
+  httpClient.post(
+      '/apple/disconnect-employee/' + store.getters['employee/getId']
+  ).then(() => {
+    store.commit('employee/setEmployeeAppleCalendarICloudId', null)
+    store.commit('employee/setEmployeeAppleCalendarAppSpecificPassword', null)
+     isEmployeeConnectedToPersonalAppleCalendar.value = false
+    useAppleSync(store)
+    appleCalendarOptions.value = store.getters['auth/getAppleCalendars']
+  }).catch((error) => {
+    console.log(error)
+  }).finally(() => {
+    store.commit('auth/setAppleLoading', false)
+  })
+}
 </script>
 
 <style lang="scss">
 @mixin am-cabinet-profile {
   .am-caedo {
+
+    &__apple {
+      &__connect {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 16px;
+        border-radius: 8px;
+        background-color: rgba(26, 44, 55, 0.03);
+
+        &__item {
+          .el-form-item__label {
+            padding-bottom: 4px;
+          }
+        }
+      }
+      .am-collapse-item__heading {
+        height: 44px;
+      }
+    }
+
     .am-google-calendar-button {
       padding: 0;
       height: 40px;

@@ -69,6 +69,8 @@ export default {
     calendarEvents: [],
     upcomingEvents: [],
     upcomingLoading: true,
+    loadingCounter: 0,
+    loadingUpcomingCounter: 0,
     eventsDisplay: ''
   }),
 
@@ -133,6 +135,14 @@ export default {
       return state.upcomingLoading
     },
 
+    getLoadingCounter (state) {
+      return state.loadingCounter
+    },
+
+    getLoadingUpcomingCounter (state) {
+      return state.loadingUpcomingCounter
+    },
+
     getEventsDisplay (state) {
       return state.eventsDisplay
     }
@@ -182,6 +192,14 @@ export default {
       state.upcomingLoading = payload
     },
 
+    setLoadingCounter (state, payload) {
+      state.loadingCounter = payload
+    },
+
+    setLoadingUpcomingCounter (state, payload) {
+      state.loadingUpcomingCounter = payload
+    },
+
     setEventsDisplay (state, payload) {
       state.eventsDisplay = payload
     }
@@ -193,6 +211,7 @@ export default {
       commit('params/setParams', rootGetters['shortcodeParams/getShortcodeParams'], {root: true})
 
       let serverData = {
+        loadEvents: payload.loadEvents,
         types: payload.types
       }
 
@@ -255,14 +274,18 @@ export default {
         )
       })
 
-      if (getters['getEventsDisplay']) {
-        dispatch('requestEvents', getters['getEventsDisplay'])
-      } else {
-        dispatch('requestEvents')
+      commit('setReady', true, { root: true })
+
+      if (payload.loadEvents) {
+        if (getters['getEventsDisplay']) {
+          dispatch('requestEvents', getters['getEventsDisplay'])
+        } else {
+          dispatch('requestEvents')
+        }
       }
     },
 
-    requestEvents ({ commit, rootState, rootGetters }, payload) {
+    requestEvents ({ commit, rootState, rootGetters, getters }, payload) {
       let eventParams = {...rootGetters['params/getEventParams'], page: rootGetters['pagination/getPage']}
 
       if (payload === 'upcoming') {
@@ -285,10 +308,17 @@ export default {
         rootState.settings.appointments.pastDaysEvents = 0
       }
 
+      let loadingCounter = payload === 'upcoming' ? getters['getLoadingUpcomingCounter'] : getters['getLoadingCounter']
+
+      commit(payload === 'upcoming' ? 'setLoadingUpcomingCounter' : 'setLoadingCounter', ++loadingCounter)
+
       httpClient.get(
         '/events',
         { params: useUrlParams(eventParams)}
       ).then(response => {
+        if (loadingCounter !== getters[payload === 'upcoming' ? 'getLoadingUpcomingCounter' : 'getLoadingCounter']) {
+          return
+        }
 
         commit('pagination/setCount', response.data.data.count , {root: true})
         commit('pagination/setShow', rootState.settings.general.itemsPerPage , {root: true})
@@ -352,7 +382,6 @@ export default {
           commit('setEvents', events)
         }
 
-        commit('setReady', true, { root: true })
         if (payload === 'upcoming') {
           commit('setUpcomingLoading', false)
         } else {

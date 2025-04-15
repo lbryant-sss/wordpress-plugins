@@ -216,7 +216,7 @@
   import PageHeader from '../parts/PageHeader.vue'
   import paymentMixin from '../../../js/backend/mixins/paymentMixin'
   import { FullCalendar } from 'vue-full-calendar'
-  //import DialogNewCustomize from '../parts/DialogNewCustomize.vue'
+  // import DialogNewCustomize from '../parts/DialogNewCustomize.vue'
   import GetPremiumBanner from '../parts/GetPremiumBanner.vue'
 
   export default {
@@ -1416,6 +1416,7 @@
 
         // Go through all employees
         for (let i = 0; i < employees.length; i++) {
+          let breakCounter = 8
           // Go through all employee's working hours
           for (let j = 0; j < employees[i].weekDayList.length; j++) {
             let day = employees[i].weekDayList[j]
@@ -1449,6 +1450,31 @@
 
             if (typeof businessHours[day.dayIndex].end === 'undefined' || moment.duration(day.endTime) > businessHours[day.dayIndex].end) {
               businessHours[day.dayIndex].end = moment.duration(day.endTime)
+            }
+
+            if (day.timeOutList.length) {
+              let sortedBreaks = day.timeOutList.sort((a, b) => {
+                return moment.duration(a.startTime).asMilliseconds() - moment.duration(b.startTime).asMilliseconds()
+              })
+
+              businessHours[day.dayIndex] = {
+                start: moment.duration(day.startTime),
+                end: moment.duration(sortedBreaks[0].startTime),
+                dow: [day.dayIndex === 7 ? 0 : day.dayIndex]
+              }
+
+              for (let breakIndex = 0; breakIndex < day.timeOutList.length; breakIndex++) {
+                let breakEndTime = sortedBreaks[breakIndex].endTime
+                let nextStartTime = breakIndex === day.timeOutList.length - 1
+                  ? day.endTime : sortedBreaks[breakIndex + 1].startTime
+
+                businessHours[breakCounter] = {
+                  start: moment.duration(breakEndTime),
+                  end: moment.duration(nextStartTime),
+                  dow: [day.dayIndex === 7 ? 0 : day.dayIndex]
+                }
+                breakCounter++
+              }
             }
 
             businessHours[day.dayIndex].dow = day.dayIndex === 7 ? [0] : [day.dayIndex]

@@ -1,6 +1,6 @@
 <div class="notice notice-info is-dismissible">
     <div>
-        <img style="max-width: 85px; margin-top: 13px" src="https://ps.w.org/woo-discount-rules/assets/icon-256x256.png">
+        <img style="max-width: 85px; margin-top: 13px" src="https://ps.w.org/woo-discount-rules/assets/icon-256x256.png" <?php //phpcs:ignore PluginCheck.CodeAnalysis.Offloading.OffloadedContent,PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  ?>>
     </div>
     <div style="padding-bottom : 30px; margin-left: 115px; margin-top: -78px;">
         <?php esc_html_e('Fantastic! You have got 100+ sales with the Discount Rules plugin!', 'woo-discount-rules'); ?>

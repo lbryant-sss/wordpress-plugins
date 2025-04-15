@@ -38,7 +38,8 @@ import {
   computed,
   inject,
   ref,
-  toRefs
+  toRefs,
+  onMounted
 } from "vue";
 
 // * Composables
@@ -108,6 +109,12 @@ let model = computed({
 function countryPhoneIsoUpdated (val) {
   emits('update:countryPhoneIso', val)
 }
+
+onMounted(() => {
+  if (props.defaultCode) {
+    emits('update:countryPhoneIso', props.defaultCode.toLowerCase())
+  }
+})
 
 // * Colors
 let amColors = inject('amColors')

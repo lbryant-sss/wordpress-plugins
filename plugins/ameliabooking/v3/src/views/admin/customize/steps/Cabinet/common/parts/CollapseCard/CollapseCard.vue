@@ -841,7 +841,7 @@ export default {
   @include collapse-card
 }
 
-.el-popper {
+.el-popper.el-popover {
   @include collapse-card-popper
 }
 </style>

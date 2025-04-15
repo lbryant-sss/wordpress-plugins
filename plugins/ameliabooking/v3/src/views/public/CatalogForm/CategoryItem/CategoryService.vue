@@ -621,8 +621,9 @@ let service = computed(() => {
 })
 
 function displayServiceLocationLabel (entities, id) {
-  if (useServiceLocation(entities, id).length === 1) {
-    return useServiceLocation(entities, id)[0].address ? useServiceLocation(entities, id)[0].address : useServiceLocation(entities, id)[0].name
+  let locations = useServiceLocation(entities, id)
+  if (locations.length === 1 || (locations.length && locations.every(location => location.id === locations[0].id))) {
+    return locations[0].address ? locations[0].address : locations[0].name
   }
   return amLabels.value.multiple_locations
 }

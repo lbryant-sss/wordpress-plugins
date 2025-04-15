@@ -26,7 +26,12 @@
       ]"
     >
       <template v-for="item in amCustomize.infoStep.order" :key="item.id">
-        <component :is="formFields[item.id]" ref="primeCollectorRef" :phone-error="phoneError" :logged-in-user="!!loggedInUser"></component>
+        <component
+          :is="formFields[item.id].template"
+          ref="primeCollectorRef"
+          v-bind="formFields[item.id].props"
+          v-on="'handlers' in formFields[item.id] ? formFields[item.id].handlers : {}"
+        ></component>
       </template>
 
       <!-- Custom Fields TODO - validation for custom fields isn't set-->
@@ -38,19 +43,38 @@
           :ref="el => customFieldsRefs[index] = el"
           :key="index"
           class="am-fs__info-form__item"
-          :class="[{'is-required': cf.type === 'file' && cf.required}, `am-cf-width-${cf.width}`]"
+          :class="[
+            { 'is-required': cf.type === 'file' && cf.required },
+            `am-cf-width-${cf.width}`,
+            {'am-rtl': isRtl}
+          ]"
           label-position="top"
           :prop="cf.required && cf.type !== 'content' ? 'cf' + cf.id : 'inputFile'"
         >
           <!-- ####### LABEL ####### -->
           <template v-if="cf.type !== 'content'" #label>
-          <span
-            v-if="(cf.type === 'checkbox' || cf.type === 'radio') && cf.label" :class="(cf.type === 'checkbox' || cf.type === 'radio') && cf.required ? 'am-custom-required-as-html' : ''"
-            v-html="cf.label ? '<label class=' + '\'am-fs__info-form__label\'>' + cf.label + '</label>' : ''">
-          </span>
+            <span
+              v-if="
+                (cf.type === 'checkbox' || cf.type === 'radio') && cf.label
+              "
+              :class="
+                (cf.type === 'checkbox' || cf.type === 'radio') && cf.required
+                  ? 'am-custom-required-as-html'
+                  : ''
+              "
+              v-html="
+                cf.label
+                  ? '<label class=' +
+                    '\'am-fs__info-form__label\'>' +
+                    cf.label +
+                    '</label>'
+                  : ''
+              "
+            >
+            </span>
             <span v-else class="am-fs__info-form__label">
-            {{cf.label}}
-          </span>
+              {{cf.label}}
+            </span>
           </template>
           <!-- ####### /LABEL ####### -->
 
@@ -319,6 +343,12 @@ let paymentError = computed(() => store.getters['booking/getError'])
 // * Form reference
 let infoFormRef = ref(null)
 
+let isRtl = computed(() => store.getters['getIsRtl'])
+
+let phoneError = ref(false)
+let loggedInUser = computed(() => (store.getters['booking/getCustomerId'] && store.getters['booking/getCustomerEmail'])
+  || (!!window.ameliaUser && window.ameliaUser.type == 'admin'))
+
 // * Form data
 let infoFormData = ref({
   firstName: computed({
@@ -350,10 +380,40 @@ provide('infoFormData', infoFormData)
 
 // * Form Fields Object
 let formFields = ref({
-  firstName: markRaw(FirstNameFormField),
-  lastName: markRaw(LastNameFormField),
-  email: markRaw(EmailFormField),
-  phone: markRaw(PhoneFormField)
+  firstName: {
+    template: markRaw(FirstNameFormField),
+    props: {
+      class: computed(() => isRtl.value ? 'am-rtl' : ''),
+      loggedInUser: computed(() => !!loggedInUser.value)
+    }
+  },
+  lastName: {
+    template: markRaw(LastNameFormField),
+    props: {
+      class: computed(() => isRtl.value ? 'am-rtl' : ''),
+      loggedInUser: computed(() => !!loggedInUser.value)
+    }
+  },
+  email: {
+    template: markRaw(EmailFormField),
+    props: {
+      class: computed(() => isRtl.value ? 'am-rtl' : ''),
+      loggedInUser: computed(() => !!loggedInUser.value)
+    }
+  },
+  phone: {
+    template: markRaw(PhoneFormField),
+    props: {
+      class: computed(() => isRtl.value ? 'am-rtl' : ''),
+      phoneError: computed(() => phoneError.value),
+      loggedInUser: computed(() => !!loggedInUser.value)
+    },
+    handlers: {
+      countryPhoneIsoUpdated: (val) => {
+        store.commit('booking/setCustomerCountryPhoneIso', val ? val.toLowerCase() : "")
+      }
+    }
+  }
 })
 
 // * Form validation rules
@@ -439,12 +499,8 @@ function onRemoveFile (a) {
   infoFormData.value['cf' + a.id] = a.raw
 }
 
-let phoneError = ref(false)
-
 let customFieldsAllowedExtensions = ref('')
 
-let loggedInUser = computed(() => (store.getters['booking/getCustomerId'] && store.getters['booking/getCustomerEmail'])
-    || (!!window.ameliaUser && window.ameliaUser.type == 'admin'))
 /**
  * Submit Form Function
  */
@@ -610,7 +666,7 @@ export default {
     stepSelectedData: [],
     finished: false,
     selected: false,
-  }
+  },
 }
 </script>
 
@@ -629,7 +685,8 @@ export default {
 
     &__info {
       &-error {
-        animation: 600ms cubic-bezier(.45,1,.4,1.2) #{100}ms am-animation-slide-up;
+        animation: 600ms cubic-bezier(0.45, 1, 0.4, 1.2) #{100}ms
+          am-animation-slide-up;
         animation-fill-mode: both;
         margin-bottom: 10px;
       }
@@ -643,7 +700,11 @@ export default {
           $count: 100;
           @for $i from 0 through $count {
             &:nth-child(#{$i + 1}) {
-              animation: 600ms cubic-bezier(.45,1,.4,1.2) #{$i*100}ms am-animation-slide-up;
+              animation: 600ms
+                cubic-bezier(0.45, 1, 0.4, 1.2)
+                #{$i *
+                100}ms
+                am-animation-slide-up;
               animation-fill-mode: both;
             }
           }
@@ -667,7 +728,7 @@ export default {
             width: 100%;
           }
           &-s {
-            gap: 0px
+            gap: 0px;
           }
         }
 

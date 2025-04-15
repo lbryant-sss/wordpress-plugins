@@ -185,6 +185,7 @@ export default {
       align-items: center;
       justify-content: flex-end;
       padding: 16px 24px;
+      gap: 16px;
     }
   }
 }

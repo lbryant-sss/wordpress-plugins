@@ -4,8 +4,8 @@ Donate link: https://flycart.org/
 Tags: woocommerce, coupons, discounts, dynamic pricing, bulk discount
 Requires at least: 4.6.1
 Tested up to: 6.7
-Stable tag: 2.6.8
-License: GPLv3 or later
+Stable tag: 2.6.9
+License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 The discount plugin for WooCommerce helps you create bulk discount, quantity discount, storewide sale, dynamic pricing discount offers easily.
@@ -206,6 +206,10 @@ Quick Links:
 * [Documentation](https://docs.flycart.org/en/collections/806883-discount-rules-for-woocommerce)
 * [Helpdesk & Support](https://www.flycart.org/support)
 
+== External services ==
+Flycart CDN & documentation: The CDN is used to fetch static assets including images and contentand hosted at static.flycart.net, while the documentation for the plugin is hosted at docs.flycart.org and linked at various sections in the plugin to help merchants. [Terms](https://www.flycart.org/terms-conditions), [privacy policy](https://www.flycart.org/privacy-policy)
+Google Charts: The library is used to display discount reports in a chart format. The service is provided by Google. [Terms](https://developers.google.com/chart/terms), [privacy policy](https://developers.google.com/chart/interactive/docs/security_privacy)
+
 == Installation ==
 
 Just use the WordPress installer or upload to the /wp-content/plugins folder. Then Activate the Discount Rules plugin.
@@ -287,6 +291,10 @@ In that case, the rule with the higher priority will be applied.
 * Dutch Translation - [@mvdburg1971](https://profiles.wordpress.org/mvdburg1971) - Michael van der Burg
 
 == Changelog ==
+= 2.6.9 - 11/04/25 =
+* Updated readme.txt file.
+* Fix: Plugin check listed issue.
+
 = 2.6.8 - 24/03/25 =
 * Added: Recommendation tab [Core].
 * Fix: Same price strikeout [Core].

@@ -144,10 +144,7 @@ let cssVars = computed(() => {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-
-      .am-button--secondary {
-        margin: 0 8px 0 0;
-      }
+      gap: 0 8px;
 
       .am-fs__ps-popup__btn-mobile {
         width: 100%;

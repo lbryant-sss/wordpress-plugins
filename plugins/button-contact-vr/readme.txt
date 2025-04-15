@@ -3,7 +3,7 @@ Contributors: buttonizer
 Buy plugin: https://buttonizer.io
 Tags: contact button, whatsapp, live chat, chat, chatbot
 Requires at least: 4.7
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 5.0.1
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -50,6 +50,7 @@ Buttonizer is specially designed in creating easy, smart floating chat buttons. 
  * WhatsApp Chat Widget (with popup)
  * X (Twitter) Direct Message
  * Slack
+ * Microsoft Teams
  * Snapchat
  * Skype
  * Signal

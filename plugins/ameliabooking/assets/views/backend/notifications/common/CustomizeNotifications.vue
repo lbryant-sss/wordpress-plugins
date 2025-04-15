@@ -376,9 +376,9 @@
                     <el-select
                         v-model="selectedEvents"
                         :placeholder="$root.labels.all_events"
-                        :remote-method="query => searchEvents(query, true)"
+                        :remote-method="query => searchEvents(query, true, events)"
                         :loading="loadingEvents"
-                        remote
+                        :remote="events.length === $root.settings.general.eventsFilterLimit"
                         multiple
                         filterable
                         collapse-tags
@@ -1433,6 +1433,9 @@
       duplicateNotification (event) {
         if (this.notification.customName) {
           this.notification = this.getNotificationEntity()
+
+          this.textMode = this.notification.textMode
+
           if (event === 'employee') {
             this.notification.name = this.notification.name.replace('customer', 'provider')
             this.notification.sendTo = 'provider'
@@ -1872,6 +1875,9 @@
             this.notification = this.notifications.find(
               notification => notification.type === this.type && notification.sendTo === tab.name && notification.entity === this.entity
             )
+
+            this.textMode = this.notification.textMode
+
             this.sendTo = this.notification.sendTo
             this.minimumTimeEnabled = this.notification.minimumTimeBeforeBooking !== null
             if (this.notification.customName) {

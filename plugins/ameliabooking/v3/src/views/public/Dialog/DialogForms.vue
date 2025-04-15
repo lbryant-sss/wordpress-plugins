@@ -55,11 +55,18 @@ function isDataRestored (res) {
 
 let resizeAfter = ref(100)
 
+let loadDialogCounter = ref(0)
+provide('loadDialogCounter', loadDialogCounter)
+
 externalButtons.forEach(btn => {
   btn.addEventListener('click', (a) => {
     a.preventDefault()
     a.stopPropagation()
     dialogVisibility.value = true
+
+    if (!isRestored.value) {
+      loadDialogCounter.value++
+    }
 
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'));

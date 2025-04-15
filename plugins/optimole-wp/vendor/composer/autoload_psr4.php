@@ -9,4 +9,5 @@ return array(
     'enshrined\\svgSanitize\\' => array($vendorDir . '/enshrined/svg-sanitize/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Optimole\\Sdk\\' => array($vendorDir . '/codeinwp/optimole-sdk/src'),
+    'OptimoleWP\\' => array($baseDir . '/inc/v2'),
 );

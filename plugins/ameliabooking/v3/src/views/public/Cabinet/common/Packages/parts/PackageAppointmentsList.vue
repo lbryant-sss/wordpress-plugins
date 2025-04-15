@@ -640,10 +640,7 @@ export default {
       display: flex;
       align-items: center;
       padding-bottom: 16px;
-
-      &-btn.am-button {
-        margin-right: 12px;
-      }
+      gap: 12px;
 
       & > span {
         display: inline-flex;

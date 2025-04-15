@@ -14,7 +14,10 @@
       >
         <div class="am-msd__item-inner">
           <transition name="fade">
-            <p class="am-msd__item-heading">
+            <p
+              class="am-msd__item-heading"
+              :class="{'am-rtl': isRtl}"
+            >
               {{displayLabels('menu_title')}}
             </p>
           </transition>
@@ -40,13 +43,19 @@
               <span :class="`am-icon-${step.icon}`"></span>
             </div>
             <transition name="fade">
-              <p class="am-msd__item-heading">
+              <p
+                class="am-msd__item-heading"
+                :class="{'am-rtl': isRtl}"
+              >
                 {{ step.label }}
               </p>
             </transition>
             <transition name="fade">
-              <div class="am-msd__item-indicator">
-                <span class="am-icon-arrow-big-right"></span>
+              <div
+                class="am-msd__item-indicator"
+                :class="{'am-rtl': isRtl}"
+              >
+                <span :class="isRtl ? 'am-icon-arrow-big-left' : 'am-icon-arrow-big-right'"></span>
               </div>
             </transition>
           </div>
@@ -131,6 +140,15 @@ let emits = defineEmits(['click', 'update:visibility', 'logout'])
 let amLabels = inject('labels')
 
 const store = useStore()
+
+// * Component text orientation
+let isRtl = computed(() => {
+  if (document) {
+    return document.documentElement.dir === 'rtl'
+  }
+
+  return false
+})
 
 function menuSelection (step, index) {
   let obj = {step, index}
@@ -284,6 +302,10 @@ let cssVars = computed(() => {
         line-height: 1.43;
         margin: 0 auto 0 6px;
 
+        &.am-rtl {
+          margin: 0 6px 0 auto;
+        }
+
         &.fade-enter-active {
           animation: sidebar-step-selection 1s;
         }
@@ -300,6 +322,11 @@ let cssVars = computed(() => {
         justify-content: center;
         font-size: 24px;
         margin-left: auto;
+
+        &.am-rtl {
+          margin-left: 0;
+          margin-right: auto;
+        }
       }
 
       // Sidebar Item Divider

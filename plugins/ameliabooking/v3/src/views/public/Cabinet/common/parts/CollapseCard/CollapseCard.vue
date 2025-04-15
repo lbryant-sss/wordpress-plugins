@@ -627,8 +627,14 @@ let places = computed(() => {
 let status = computed(() => {
   if (props.reservation.type === 'appointment') {
     return {
-      label: amLabels.value[shortcodeData.value.cabinetType === 'employee' ? props.reservation.status : props.booking.status],
-      class: shortcodeData.value.cabinetType === 'employee' ? props.reservation.status : props.booking.status,
+      label: amLabels.value[
+        shortcodeData.value.cabinetType === 'employee'
+          ? props.reservation.status
+          : (props.booking.status === 'approved' ? props.reservation.status : props.booking.status)
+        ],
+      class: shortcodeData.value.cabinetType === 'employee'
+        ? props.reservation.status
+        : (props.booking.status === 'approved' ? props.reservation.status : props.booking.status)
     }
   } else if (props.reservation.type === 'event') {
     if (shortcodeData.value.cabinetType === 'customer') {
@@ -1072,7 +1078,7 @@ export default {
   @include collapse-card
 }
 
-.el-popper {
+.el-popper.el-popover {
   @include collapse-card-popper
 }
 </style>

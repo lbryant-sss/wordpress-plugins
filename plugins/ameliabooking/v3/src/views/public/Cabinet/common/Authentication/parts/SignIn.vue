@@ -326,6 +326,7 @@ function useAuthenticate (tokenValue, isUrlToken, checkIfWpUser, changePass) {
           token: 'token' in response.data.data.user.outlookCalendar ? response.data.data.user.outlookCalendar.token : null,
         },
         appleCalendarId: response.data.data.user.appleCalendarId ? response.data.data.user.appleCalendarId : '',
+        employeeAppleCalendar: response.data.data.user.employeeAppleCalendar ? response.data.data.user.employeeAppleCalendar : null,
         stripeConnect: response.data.data.user.stripeConnect,
         zoomUserId: response.data.data.user.zoomUserId ? response.data.data.user.zoomUserId : '',
         locationId: response.data.data.user.locationId,

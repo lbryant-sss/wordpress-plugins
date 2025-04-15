@@ -1009,6 +1009,14 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 					'jquery-ui-draggable', 'jquery-ui-droppable'
 				),
 
+			//Miscellaneous Knockout extensions.
+			ScriptDependency::create(
+				plugins_url('js/free-ko-extensions.js', $this->plugin_file),
+				'ame-free-ko-extensions',
+				AME_ROOT_DIR . '/js/free-ko-extensions.js'
+			)
+				->addDependencies($knockout),
+
 			//Mini utilities for more functional programming.
 			ScriptDependency::create(
 				plugins_url('js/mini-func.js', $this->plugin_file),
@@ -3814,7 +3822,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	 * @uses self::$reverse_item_lookup
 	 * @return array|null Menu item in the internal format, or NULL if no matching item can be found.
 	 */
-	private function get_current_menu_item() {
+	public function get_current_menu_item() {
 		if ( !is_admin() || empty($this->reverse_item_lookup)) {
 			if ( !is_admin() ) {
 				$this->log_security_note('This is not an admin page. is_admin() returns false.');
@@ -4093,6 +4101,13 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			return false;
 		}
 		return substr_compare($string, $suffix, $inputLen - $len) === 0;
+	}
+
+	public function get_menu_item_by_url($url) {
+		if ( isset($this->reverse_item_lookup[$url]) ) {
+			return $this->reverse_item_lookup[$url];
+		}
+		return null;
 	}
 
 	public function castValuesToBool($capabilities) {

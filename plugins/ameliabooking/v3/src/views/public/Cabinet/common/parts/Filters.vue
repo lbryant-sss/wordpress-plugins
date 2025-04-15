@@ -582,6 +582,7 @@ export default {
         display: flex;
         flex-wrap: nowrap;
         justify-content: right;
+        gap: 0 16px;
 
         &-datepicker {
           &.am-rw- {
@@ -640,10 +641,6 @@ export default {
         &-btn {
           border-radius: 6px;
           box-shadow: 0 5px 5px var(--am-c-capf-text-op10);
-
-          &.am-button {
-            margin-left: 16px;
-          }
 
           .am-icon-filter {
             font-size: 24px;

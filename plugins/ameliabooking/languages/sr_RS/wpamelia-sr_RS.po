@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Amelia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-31 09:35+0200\n"
-"PO-Revision-Date: 2025-02-25 08:51+0100\n"
+"POT-Creation-Date: 2025-04-09 17:52+0200\n"
+"PO-Revision-Date: 2025-04-02 16:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: Amelia\n"
 "Language: sr\n"
@@ -311,23 +311,27 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:87
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:120
+#, fuzzy
 msgid "Available from Starter license"
-msgstr "Dostupno od Starter licence"
+msgstr "Dostupne Slike"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:88
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:121
+#, fuzzy
 msgid "Available from Standard license"
-msgstr "Dostupno od Standard licence"
+msgstr "Dostupne Slike"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:89
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:122
+#, fuzzy
 msgid "Available from Pro license"
-msgstr "Dostupno od Pro licence"
+msgstr "Dostupne Slike"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:90
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:123
+#, fuzzy
 msgid "Available in Elite licence"
-msgstr "Dostupno od Elite licence"
+msgstr "Dostupno u paketu"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:91
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:124
@@ -8471,19 +8475,6 @@ msgstr "Izaberi Mušteriju"
 #~ "rezervisani termin automatski<br/>dodao u kalendar zaposlenog."
 
 #, fuzzy
-#~| msgid ""
-#~| "Here you can connect employee with Google Calendar,<br/>so once the "
-#~| "appointment is scheduled it will be<br/>automatically added to "
-#~| "employee's calendar."
-#~ msgid ""
-#~ "Here you can connect employee with Apple Calendar,<br/>so once the "
-#~ "appointment is scheduled it will be<br/>automatically added to employee's "
-#~ "calendar."
-#~ msgstr ""
-#~ "Ovde možete povezati zaposlenog sa Google Kalendarom,<br/>da bi se "
-#~ "rezervisani termin automatski<br/>dodao u kalendar zaposlenog."
-
-#, fuzzy
 #~| msgid "Connect"
 #~ msgid "Connect Account"
 #~ msgstr "Poveži"
@@ -11100,6 +11091,19 @@ msgstr "Izaberi Mušteriju"
 #~| msgid "Select Repeat Period"
 #~ msgid "Delete Period"
 #~ msgstr "Izaberi Period Ponavljanja"
+
+#, fuzzy
+#~| msgid ""
+#~| "Here you can connect employee with Google Calendar,<br/>so once the "
+#~| "appointment is scheduled it will be<br/>automatically added to "
+#~| "employee's calendar."
+#~ msgid ""
+#~ "Here you can connect employee with Apple Calendar,<br/>so once the "
+#~ "appointment is scheduled it will be<br/>automatically added to employee's "
+#~ "calendar."
+#~ msgstr ""
+#~ "Ovde možete povezati zaposlenog sa Google Kalendarom,<br/>da bi se "
+#~ "rezervisani termin automatski<br/>dodao u kalendar zaposlenog."
 
 #~ msgid "View Appointments Settings"
 #~ msgstr "Pristupite Podešavanjima za Termine"

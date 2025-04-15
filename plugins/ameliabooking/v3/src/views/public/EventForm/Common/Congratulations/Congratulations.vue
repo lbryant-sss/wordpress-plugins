@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="ready && booked && !loading"
+    v-if="ready && booked && !loading && !loadingUpcoming"
     :style="cssVars"
     class="am-elf__main-content am-elf__congrats"
     :class="props.globalClass"
@@ -74,9 +74,15 @@ const baseUrls = computed(() => store.getters['getBaseUrls'])
  * Computed *
  *************/
 
+// * Ready state
 let ready = computed(() => store.getters['getReady'])
 
+// * Loading state
 let loading = computed(() => store.getters['getLoading'])
+
+let loadingUpcoming = computed(
+  () => store.getters['getFormKey'] === 'ecf' ? store.getters['eventEntities/getUpcomingLoading'] : false
+)
 
 let booked = computed(() => store.getters['eventBooking/getBooked'])
 
@@ -118,7 +124,9 @@ watchEffect(() => {
 })
 
 onMounted(() => {
-  store.commit('setLoading', false)
+  if (!store.getters['getRestoring']) {
+    store.commit('setLoading', false)
+  }
 })
 
 let stepsArray = inject('stepsArray')

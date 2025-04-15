@@ -165,7 +165,7 @@ class WDRAjax extends Base
         $ids = $data_store->search_products($query, '', true, false, $this->search_result_limit);
         return array_values(array_map( function ( $post_id ) {
             $product = Woocommerce::getProduct($post_id);
-            $product_title = Woocommerce::getTitleOfProduct($product);
+            $product_title = html_entity_decode(Woocommerce::getTitleOfProduct($product));
 
             return array(
                 'id'   => (string) $post_id,
@@ -279,11 +279,8 @@ class WDRAjax extends Base
         global $wpdb;
         $query = $this->input->post('query', '');
         $query = Helper::filterSelect2SearchQuery($query);
-        $results = $wpdb->get_results("
-			SELECT DISTINCT meta_value
-			FROM $wpdb->postmeta
-			WHERE meta_key = '_sku' AND meta_value  like '%$query%'
-		");
+		//phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.DirectQuery
+        $results = $wpdb->get_results($wpdb->prepare("SELECT DISTINCT meta_value FROM $wpdb->postmeta WHERE meta_key = %s AND meta_value  like %s",['_sku', esc_sql('%'.$query.'%')]));
 
         return array_map(function ($result) {
             $p_title = '';
@@ -319,16 +316,14 @@ class WDRAjax extends Base
         //return $wc_product_attributes;
         $query = $this->input->post('query', '');
         $query = Helper::filterSelect2SearchQuery($query);
-        $taxonomies = array_map(function ($item) {
+        /*$taxonomies = array_map(function ($item) {
             return "'$item'";
         }, array_keys($wc_product_attributes));
-        $taxonomies = implode(', ', $taxonomies);
-        $items = $wpdb->get_results("
-			SELECT $wpdb->terms.term_id, $wpdb->terms.name, taxonomy
-			FROM $wpdb->term_taxonomy INNER JOIN $wpdb->terms USING (term_id)
-			WHERE taxonomy in ($taxonomies)
-			AND $wpdb->terms.name  like '%$query%' 
-		");
+        $taxonomies = implode(', ', $taxonomies);*/
+	    $taxonomies = array_keys($wc_product_attributes);
+	    $taxonomies_placeholder = implode(', ',array_fill(0, count($taxonomies), '%s'));
+		//phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
+        $items = $wpdb->get_results($wpdb->prepare("SELECT $wpdb->terms.term_id, $wpdb->terms.name, taxonomy FROM $wpdb->term_taxonomy INNER JOIN $wpdb->terms USING (term_id) WHERE taxonomy in ($taxonomies_placeholder) AND $wpdb->terms.name  like %s",array_merge($taxonomies,[esc_sql('%'.$query.'%')])));
         return array_map(function ($term) use ($wc_product_attributes) {
             $attribute = $wc_product_attributes[$term->taxonomy]->attribute_label;
             return array(
@@ -395,6 +390,7 @@ class WDRAjax extends Base
         } else {
             $save_alert = "alert_in_normal";
         }
+		//phpcs:ignore WordPress.Security.NonceVerification.Missing
         if(!Validation::validateSettingsTabFields($_POST)){
             return array('result' => false, 'save_popup' => $save_alert, 'security_pass' => 'fails' );
         }
@@ -409,10 +405,8 @@ class WDRAjax extends Base
         $save_config['table_discount_column'] = $this->input->post('table_discount_column', 0);
         $save_config['table_range_column'] = $this->input->post('table_range_column', 0);
         $save_config['licence_key'] = $this->input->post('licence_key', '');
-        $save_config['on_sale_badge_html'] = (isset($_POST['on_sale_badge_html'])) ? stripslashes($_POST['on_sale_badge_html']) : '';
-        $save_config['on_sale_badge_html'] = Rule::validateHtmlBeforeSave($_POST['on_sale_badge_html']);
-        $save_config['on_sale_badge_percentage_html'] = (isset($_POST['on_sale_badge_percentage_html'])) ? stripslashes($_POST['on_sale_badge_percentage_html']) : '';
-        $save_config['on_sale_badge_percentage_html'] = Rule::validateHtmlBeforeSave($_POST['on_sale_badge_percentage_html']);
+        $save_config['on_sale_badge_html'] = isset($_POST['on_sale_badge_html']) ? Rule::validateHtmlBeforeSave($_POST['on_sale_badge_html']) : '';//phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+        $save_config['on_sale_badge_percentage_html'] = isset($_POST['on_sale_badge_percentage_html']) ? Rule::validateHtmlBeforeSave($_POST['on_sale_badge_percentage_html']): '';//phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash
         $save_config['you_saved_text'] = Rule::validateHtmlBeforeSave($this->input->post('you_saved_text'));
         $save_config['applied_rule_message'] = Rule::validateHtmlBeforeSave($this->input->post('applied_rule_message'));
         $save_config['discount_label_for_combined_discounts'] = Rule::validateHtmlBeforeSave($this->input->post('discount_label_for_combined_discounts'));
@@ -434,6 +428,7 @@ class WDRAjax extends Base
     public function wdr_ajax_save_advanced_option()
     {
         Helper::validateRequest('wdr_ajax_save_advanced_option_config');
+		//phpcs:ignore WordPress.Security.NonceVerification.Missing
         if(!Validation::validateAdvancedOptionKey($_POST)){
             return array('result' => false, 'security_pass' => 'fails' );
         }
@@ -447,14 +442,15 @@ class WDRAjax extends Base
     public function wdr_ajax_save_rule()
     {
         Helper::validateRequest('wdr_ajax_save_rule');
+		//phpcs:ignore WordPress.Security.NonceVerification.Missing
         $validation_result = Validation::validateRules($_POST);
         if ($validation_result === true) {
             $post = $this->input->post();
             $rule_helper = new Rule();
-            $post['title'] = (isset($_POST['title'])) ? stripslashes(sanitize_text_field($_POST['title'])) : '';
-            $post['product_adjustments']['cart_label'] = (isset($_POST['product_adjustments']) && isset($_POST['product_adjustments']['cart_label'])) ? stripslashes(sanitize_text_field($_POST['product_adjustments']['cart_label'])) : '';
-            $post['bulk_adjustments']['cart_label'] = (isset($_POST['bulk_adjustments']) && isset($_POST['bulk_adjustments']['cart_label'])) ? stripslashes(sanitize_text_field($_POST['bulk_adjustments']['cart_label'])) : '';
-            $post['set_adjustments']['cart_label'] = (isset($_POST['set_adjustments']) && isset($_POST['set_adjustments']['cart_label'])) ? stripslashes(sanitize_text_field($_POST['set_adjustments']['cart_label'])) : '';
+            $post['title'] = (isset($_POST['title'])) ? stripslashes(sanitize_text_field(wp_unslash($_POST['title']))) : '';//phpcs:ignore WordPress.Security.NonceVerification.Missing
+            $post['product_adjustments']['cart_label'] = (isset($_POST['product_adjustments']) && isset($_POST['product_adjustments']['cart_label'])) ? stripslashes(sanitize_text_field(wp_unslash($_POST['product_adjustments']['cart_label']))) : '';//phpcs:ignore WordPress.Security.NonceVerification.Missing
+            $post['bulk_adjustments']['cart_label'] = (isset($_POST['bulk_adjustments']) && isset($_POST['bulk_adjustments']['cart_label'])) ? stripslashes(sanitize_text_field(wp_unslash($_POST['bulk_adjustments']['cart_label']))) : '';//phpcs:ignore WordPress.Security.NonceVerification.Missing
+            $post['set_adjustments']['cart_label'] = (isset($_POST['set_adjustments']) && isset($_POST['set_adjustments']['cart_label'])) ? stripslashes(sanitize_text_field(wp_unslash($_POST['set_adjustments']['cart_label']))) : '';//phpcs:ignore WordPress.Security.NonceVerification.Missing
             $rule_id = $rule_helper->save($post);
             if (isset($rule_id['coupon_exists'])) {
                 $coupon_message = $rule_id['coupon_exists'];
@@ -488,6 +484,7 @@ class WDRAjax extends Base
         $row_id = intval($row_id);
         if (!empty($row_id)) {
             Helper::validateRequest('wdr_ajax_delete_rule'.$row_id);
+			//phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
             $deleted = $wpdb->update($wpdb->prefix . self::$wdr_rules_table,
                 array(
                     'deleted' => 1
@@ -536,24 +533,26 @@ class WDRAjax extends Base
         $current_date_time = '';
         if (function_exists('current_time')) {
             $current_time = current_time('timestamp');
-            $current_date_time = date('Y-m-d H:i:s', $current_time);
+            $current_date_time = gmdate('Y-m-d H:i:s', $current_time);
         }
         $created_on = esc_sql($current_date_time);
         if (!empty($row_id)) {
             Helper::validateRequest('wdr_ajax_duplicate_rule'.$row_id);
-            $rule_title = $wpdb->get_row("SELECT title FROM " . $wpdb->prefix . self::$wdr_rules_table . " WHERE id=" . $row_id);
-            $rule_priority = $wpdb->get_row("SELECT max(priority) as priority FROM " . $wpdb->prefix . self::$wdr_rules_table);
+	        //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
+            $rule_title = $wpdb->get_row($wpdb->prepare("SELECT title FROM {$wpdb->prefix}wdr_rules WHERE id= %d",  $row_id));
+	        //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
+            $rule_priority = $wpdb->get_row("SELECT max(priority) as priority FROM {$wpdb->prefix}wdr_rules");
             $priority = 1;
             if (!empty($rule_priority) && $rule_priority->priority) {
                 $priority = intval($rule_priority->priority) + 1;
             }
             $rule_title = !empty($rule_title) && isset($rule_title->title) ? $rule_title->title : '';
             $rule_title = addslashes($rule_title);
-            $sql = "INSERT INTO " . $wpdb->prefix . self::$wdr_rules_table . " (enabled, exclusive, title, priority, filters, conditions, product_adjustments, cart_adjustments, buy_x_get_x_adjustments, buy_x_get_y_adjustments, bulk_adjustments, set_adjustments, other_discounts, date_from, date_to, usage_limits, rule_language, additional, max_discount_sum, advanced_discount_message, discount_type, used_coupons, created_by, created_on ) 
-                    SELECT 0, exclusive, '" . $rule_title . " - copy'," . $priority . ", filters, conditions, product_adjustments, cart_adjustments, buy_x_get_x_adjustments, buy_x_get_y_adjustments, bulk_adjustments, set_adjustments, other_discounts, date_from, date_to, usage_limits, rule_language,  additional, max_discount_sum, advanced_discount_message, discount_type, used_coupons, ".$current_user_id.", '".$created_on."'   
-                    FROM " . $wpdb->prefix . self::$wdr_rules_table . " 
-                    WHERE id = " . $row_id;
-            $wpdb->query($sql);
+	        //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
+            $wpdb->query($wpdb->prepare("INSERT INTO {$wpdb->prefix}wdr_rules (enabled, exclusive, title, priority, filters, conditions, product_adjustments, cart_adjustments, buy_x_get_x_adjustments, buy_x_get_y_adjustments, bulk_adjustments, set_adjustments, other_discounts, date_from, date_to, usage_limits, rule_language, additional, max_discount_sum, advanced_discount_message, discount_type, used_coupons, created_by, created_on ) 
+                    SELECT 0, exclusive, %s,%s, filters, conditions, product_adjustments, cart_adjustments, buy_x_get_x_adjustments, buy_x_get_y_adjustments, bulk_adjustments, set_adjustments, other_discounts, date_from, date_to, usage_limits, rule_language,  additional, max_discount_sum, advanced_discount_message, discount_type, used_coupons, %d, %s   
+                    FROM {$wpdb->prefix}wdr_rules WHERE id = %d", [$rule_title." - copy",$priority,$current_user_id,$created_on,$row_id]));
+
             $duplicated_id = $wpdb->insert_id;
         }
         wp_send_json($duplicated_id);
@@ -572,6 +571,7 @@ class WDRAjax extends Base
         $status = intval($status);
         if (!empty($row_id) && ($status == 1 || $status == 0)) {
             Helper::validateRequest('wdr_ajax_manage_status'.$row_id);
+	        //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
             $rule_status = $wpdb->update($wpdb->prefix . self::$wdr_rules_table,
                 array(
                     'enabled' => $status
@@ -616,6 +616,7 @@ class WDRAjax extends Base
         if ($action_type == 'enable') {
             if (!empty($saved_rules) && is_array($saved_rules)) {
                 foreach ($saved_rules as $saved_rule_id) {
+	                //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
                     $wpdb->update($wpdb->prefix . self::$wdr_rules_table,
                         array(
                             'enabled' => 1
@@ -642,6 +643,7 @@ class WDRAjax extends Base
         } elseif ($action_type == 'disable') {
             if (!empty($saved_rules) && is_array($saved_rules)) {
                 foreach ($saved_rules as $saved_rule_id) {
+	                //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
                     $wpdb->update($wpdb->prefix . self::$wdr_rules_table,
                         array(
                             'enabled' => 0
@@ -668,6 +670,7 @@ class WDRAjax extends Base
         } elseif ($action_type == 'delete') {
             if (!empty($saved_rules) && is_array($saved_rules)) {
                 foreach ($saved_rules as $saved_rule_id) {
+					//phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
                     $wpdb->update($wpdb->prefix . self::$wdr_rules_table,
                         array(
                             'deleted' => 1
@@ -817,6 +820,7 @@ class WDRAjax extends Base
      */
     public function wdr_ajax_get_state_details(){
         Helper::validateRequest('wdr_ajax_select2');
+		//phpcs:ignore WordPress.Security.NonceVerification.Missing
         $validation_result = Validation::validateStateCountryCondition($_POST);
         if (!$validation_result) {
             wp_send_json_error();
@@ -856,7 +860,8 @@ class WDRAjax extends Base
         Helper::validateRequest('common_recipe_nonce');
         $recipes_object = new Recipes();
         $recipes_data = $recipes_object->recipeDetails();
-        $awdr_recipe_type = isset($_POST['awdr_recipe_type']) ? $_POST['awdr_recipe_type'] : array();
+	    //phpcs:ignore WordPress.Security.NonceVerification.Missing
+        $awdr_recipe_type = isset($_POST['awdr_recipe_type']) ? sanitize_text_field(wp_unslash($_POST['awdr_recipe_type'])) : '';
         $recipes_data_keys = array_keys($recipes_data);
         if(in_array($awdr_recipe_type, $recipes_data_keys)){
             $rule_data = $recipes_data[$awdr_recipe_type];

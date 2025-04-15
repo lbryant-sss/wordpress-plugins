@@ -564,10 +564,7 @@ export default {
       display: flex;
       align-items: center;
       padding-bottom: 16px;
-
-      &-btn {
-        margin-right: 12px;
-      }
+      gap: 12px;
 
       & > span {
         display: inline-flex;

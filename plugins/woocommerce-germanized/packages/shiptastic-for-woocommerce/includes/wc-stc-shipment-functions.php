@@ -32,13 +32,31 @@ function wc_stc_get_formatted_state( $country = '', $state = '' ) {
 }
 
 function wc_stc_parse_pickup_location_code( $location_code ) {
+	$parts = wc_stc_get_pickup_location_code_parts( $location_code );
+
+	return $parts['code'];
+}
+
+function wc_stc_get_pickup_location_code_parts( $location_code ) {
+	$parts      = array(
+		'code'              => $location_code,
+		'postcode'          => '',
+		'country'           => '',
+		'shipping_provider' => '',
+	);
 	$code_parts = explode( '_', $location_code );
 
-	if ( count( $code_parts ) === 3 ) {
-		$location_code = $code_parts[0];
+	if ( count( $code_parts ) >= 3 ) {
+		$parts['code']     = $code_parts[0];
+		$parts['country']  = strtoupper( $code_parts[1] );
+		$parts['postcode'] = $code_parts[2];
+
+		if ( count( $code_parts ) >= 4 ) {
+			$parts['shipping_provider'] = str_replace( '#', '_', $code_parts[3] );
+		}
 	}
 
-	return $location_code;
+	return $parts;
 }
 
 function wc_stc_country_to_alpha3( $country ) {
@@ -616,6 +634,29 @@ function wc_stc_get_shipment_address_addition( $shipment ) {
 	}
 
 	return trim( $addition );
+}
+
+function wc_stc_get_address_from_street_and_number( $street, $number, $country ) {
+	$pad_to         = 'right';
+	$countries_left = array(
+		'CA',
+		'US',
+		'GB',
+		'FR',
+		'AU',
+	);
+
+	if ( in_array( $country, $countries_left, true ) ) {
+		$pad_to = 'left';
+	}
+
+	if ( 'left' === $pad_to ) {
+		$address = ( ! empty( $number ) ? $number . ' ' : '' ) . $street;
+	} else {
+		$address = $street . ( ! empty( $number ) ? ' ' . $number : '' );
+	}
+
+	return $address;
 }
 
 function wc_stc_split_shipment_street( $street_str ) {

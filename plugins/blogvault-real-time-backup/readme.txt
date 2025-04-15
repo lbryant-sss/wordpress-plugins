@@ -4,7 +4,7 @@ Tags: backup, staging, migration, cloud backup, clone
 Plugin URI: https://blogvault.net/
 Donate link: https://app.blogvault.net/home/signup
 Requires at least: 4.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.6.0
 Stable tag: 5.93
 License: GPLv2 or later

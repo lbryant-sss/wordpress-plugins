@@ -143,9 +143,9 @@
                               multiple
                               clearable
                               filterable
-                              :remote-method="searchEvents"
+                              :remote-method="query => searchEvents(query, false, options.entities.events)"
                               :loading="loadingEvents"
-                              remote
+                              :remote="options.entities.events.length === $root.settings.general.eventsFilterLimit"
                               :placeholder="$root.labels.events"
                               @change="filterPayments"
                           >
@@ -2501,10 +2501,6 @@ export default {
 
             tax.extraList = tax.extraList.filter(extra => extrasIds.indexOf(extra.id) !== -1)
 
-            let eventsIds = this.options.entities.events.map(event => event.id)
-
-            tax.eventList = tax.eventList.filter(event => eventsIds.indexOf(event.id) !== -1)
-
             let packagesIds = this.options.entities.packages.map(pack => pack.id)
 
             tax.packageList = tax.packageList.filter(pack => packagesIds.indexOf(pack.id) !== -1)
@@ -2523,10 +2519,6 @@ export default {
             let coupon = response.data.data.coupon
 
             coupon.expirationDate = coupon.expirationDate ? this.getDate(coupon.expirationDate) : null
-
-            let eventsIds = this.options.entities.events.map(event => event.id)
-
-            coupon.eventList = coupon.eventList.filter(event => eventsIds.indexOf(event.id) !== -1)
 
             let packagesIds = this.options.entities.packages.map(pack => pack.id)
 
