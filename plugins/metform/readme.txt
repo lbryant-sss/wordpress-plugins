@@ -3,7 +3,7 @@ Contributors: xpeedstudio, ataurr, emranio
 Tags: form builder, Elementor contact form, contact form builder, Elementor forms builder, custom form
 Requires at least: 5.0
 Tested up to: 6.7.2
-Stable tag: 3.9.7
+Stable tag: 3.9.8
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -18,7 +18,7 @@ It enables the fastest and most secure experience for managing and customizing m
 
 ## The Best Elementor Form Builder Plugin for WordPress Website - Empowering 500,000+ Active Users.
 
-Metform reinforces the Elementor page builder and assists you in making volunteer applications, event forms, loan applications, restaurant reservations, admission forms, newsletter signups, data erasure requests, product order forms, WooCoomerce checkout, subscribe forms, patient forms, suggestion forms, survey forms, post survey forms, and so many custom forms.
+MetForm extends Elementor's power to help you create a wide range of custom forms, such as volunteer applications, event forms, loan applications, restaurant reservations, calculation forms, admission forms, newsletter signups, data erasure requests, product orders, WooCommerce checkouts, subscription forms, patient forms, suggestion forms, and survey or post-survey forms.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8R4-Q14cu-w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -28,11 +28,12 @@ Metform reinforces the Elementor page builder and assists you in making voluntee
 
 ## Flexibility
 
-This WordPress form plugin is built with Elementor. Every field is an Elementor widget that can be rearranged by dragging and dropping. If you want to use an image or video under a form and want to show users, you can do so. This free contact form builder ships with various field input styles to create your brand-matched forms.
 
-Here, the exceptional thing is that you can create groups of your personalized fields and add them in any form with just one click. MetForm lite version is sufficient to create any form. For example, creating referral forms to get referral feedback, collecting testimonials through WordPress testimonial forms, and making client feedback forms to collect feedback scores on your products or services.
+This WordPress form plugin is built with Elementor, where each field is an Elementor widget you can arrange using drag and drop facility. You can also add images or videos below your form to engage users. Our free contact form builder offers various field input styles to match your brand.
 
-Moreover, you will find lots of demos of multi-step, conditional, feedback, event, job application, booking, custom social signup, product registration, etc. forms in this WordPress beginner-friendly WordPress contact form builder.
+A standout feature of MetFom is the option to create custom field groups and reuse them in any form with one click. The lite version is enough to build forms like referral forms, testimonial forms, and client feedback forms.
+
+You’ll also get demos for multi-step, conditional, feedback, event, job application, booking, custom social signup, and product registration forms—making it ideal for beginners.
 
 ## Mobile-Friendly and Responsive
 
@@ -44,7 +45,7 @@ You can use Metform anywhere to create an Elementor contact form. Also, you can 
 
 ## Manage Submissions
 
-Your online form submission data can be saved in admin. So, it will send data to the form admin and also send a Confirmation Email to form users.
+Your online form submission data can be saved in admin. So, it will send data to the form admin and also send a confirmation email to form users.
 
 ## File Upload
 
@@ -155,8 +156,6 @@ So, beginners can easily create a query form to collect reporting and other form
 
 - **Webhook**: [ **Webhook video** ](https://www.youtube.com/watch?v=2NpbK_dybWg)
 
-**Migrations are coming soon in these forms. Contact Form 7, Caldera Forms, Ninja Forms, Gravity Forms, fluent forms, wp forms, Forminator & Formidable Form Builder, Everest Forms**
-
 ## **✨** MetForm Integrations
 
 **🔷** [MailChimp Integration](https://wpmet.com/doc/integration/): Easily integrates MailChimp to create and manage a mailing list, automated mailing, newsletter, send leads, and many other options.
@@ -165,7 +164,7 @@ So, beginners can easily create a query form to collect reporting and other form
 
 **🔷** [HubSpot Integration](https://wpmet.com/doc/hubspot-integration/): Store all the contacts inside your HubSpot account without having fear of losing them. As a result, you can easily manage your visitors’ or clients’ information.
 
-**🔷** [FluentCRM Integration](https://wpmet.com/doc/integrate-fluentcrm-with-metform/): View all the embedding web form submission data inside FluentCRM and manage them for successful email marketing and growth hacking. 
+**🔷** [FluentCRM Integration](https://wpmet.com/doc/integrate-fluentcrm-with-metform/): View all the embedding web form submission data inside FluentCRM and manage them for successful email marketing and growth hacking.
 
 **🔷** [HelpScout Integration](https://wpmet.com/doc/helpscout-integration/): Build a successful bond and manage the relationship with the customers better than ever with the HelpScout form. This contact form's dynamic CRM integration lets you sort all contacts without any ticket or case number to save you time.
 
@@ -238,6 +237,9 @@ If you like using the MetForm form builder, then consider checking out our other
 **Check out** [Tutorials, Tips & Tricks](https://wpmet.com/blog)! 👌
 
 == Changelog ==
+Version: 3.9.8 // 2025-04-15
+Improved: Admin UI.
+
 Version: 3.9.7 // 2025-03-25
 Improved: Form creation process.
 Fixed: Form settings notification issue on the admin area.

@@ -77,6 +77,7 @@ class Typography extends PropertyBase {
 				$state_selector  = LodashBasic::get( $statesById, array( $stateName, 'selector' ), '' );
 				$selector        = $this->getSelector( $name );
 
+
 				if ( $selector === 'a' && $is_global_style ) {
 					$selector = 'a:not([class*=wp-block-button])';
 				}
@@ -96,10 +97,11 @@ class Typography extends PropertyBase {
 					);
 				} else {
 					$selector_parts = array(
-						$selector === 'p' ? '&' : false,
-						$selector === 'p' ? '& [data-kubio]:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)' : false,
-						"& {$selector}",
-						"& {$selector}[data-kubio]",
+						$selector === 'p' ? '@body &' : false,
+						$selector === 'p' ? '@body & [data-kubio]:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)' : false,
+						"@body & {$selector}",
+						"@body & {$selector}[data-kubio]",
+
 					);
 				}
 

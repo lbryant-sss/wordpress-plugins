@@ -10,6 +10,7 @@ use WP_Query;
 
 class Importer {
 
+	const IMPORT_REMOTE_FILE_TRANSIENT_KEY = 'kubioImporterImportRemoteFileMap';
 	/**
 	 * Undocumented function
 	 *
@@ -401,10 +402,40 @@ class Importer {
 		return $files;
 	}
 
+	public static function getCachedImportRemoteFileByUrl($source_url) {
+
+		$files_maps = get_transient(static::IMPORT_REMOTE_FILE_TRANSIENT_KEY);
+		if(empty($files_maps) || !is_array($files_maps)) {
+			return null;
+		}
+		$result = isset($files_maps[$source_url]) ? $files_maps[$source_url] : null;
+		return $result;
+	}
+
+	//used for this 	0057827: Images from pexels are duplicated in media library every time you save some changes
+	public static function storeInCacheImportRemoteFileByUrl($source_url, $file) {
+		if(empty($file)) {
+			return;
+		}
+		$files_map = static::getCachedImportRemoteFileByUrl($source_url);
+		if(empty($files_map)) {
+			$files_map = [];
+		}
+		$files_map[$source_url] = $file;
+
+		//30 minutes in seconds.
+		$time = 30 * 60;
+		set_transient(static::IMPORT_REMOTE_FILE_TRANSIENT_KEY, $files_map, $time);
+	}
 	public static function importRemoteFile( $source_url ) {
 		require_once ABSPATH . 'wp-admin/includes/media.php';
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 
+
+		$cached_result = static::getCachedImportRemoteFileByUrl($source_url);
+		if(!empty($cached_result)) {
+			return $cached_result;
+		}
 		if ( apply_filters( 'kubio/importer/disabled-import-remote-file', false ) ) {
 			return array(
 				'url' => $source_url,
@@ -424,6 +455,7 @@ class Importer {
 		$source_url = apply_filters( 'kubio/importer/kubio-source-url', $source_url );
 
 		if ( apply_filters( 'kubio/importer/skip-remote-file-import', false ) ) {
+
 			return array(
 				'url' => $source_url,
 				'id'  => 0,
@@ -522,7 +554,7 @@ class Importer {
 				'id'  => intval( $post_id ),
 				'url' => $upload['url'],
 			);
-
+			static::storeInCacheImportRemoteFileByUrl($source_url, $result);
 			$imported_files[ $source_url ] = $result;
 
 			return $result;

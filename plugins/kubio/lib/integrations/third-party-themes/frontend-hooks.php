@@ -53,6 +53,7 @@ function kubio_3rd_party_theme_is_previewing_theme_template() {
 
 function kubio_dequeue_theme_styles() {
 
+
 	if ( kubio_theme_has_kubio_block_support() ) {
 		return;
 	}
@@ -97,6 +98,15 @@ function kubio_maybe_dequeue_theme_styles() {
 	}
 
 	global $kubio_located_template_data;
+	global $_wp_current_template_content;
+
+
+	//If current template is non fse template we skip the logic bellow as it will only work if the list of templates contains
+	//some fse templates. resolve_block_template can't detect non fse templates;
+	$is_fse_template = !empty($_wp_current_template_content);
+	if(!$is_fse_template) {
+		return;
+	}
 
 	if ( is_array( $kubio_located_template_data ) ) {
 		$template  = Arr::get( $kubio_located_template_data, 'template', null );

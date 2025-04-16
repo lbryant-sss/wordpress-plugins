@@ -25,7 +25,7 @@ final class Plugin {
 
     public function version()
     {
-        return '3.9.7';
+        return '3.9.8';
     }
 
     public function package_type()
@@ -118,6 +118,13 @@ final class Plugin {
             if(isset($_GET['met-onboard-steps']) && isset($_GET['met-onboard-steps-nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['met-onboard-steps-nonce'])),'met-onboard-steps-action')) {
                 Attr::instance();
             }
+        }
+
+        if( get_option('rewrite_rules') == '' && isset($_GET['redirect_from']) && $_GET['redirect_from'] == 'mf_promo_banner'){
+            
+            add_action('init', function() {
+                Utils\Util::change_permalink();
+            });
         }
 
         //  Load Text Domain Just In Time error Notice issue fix

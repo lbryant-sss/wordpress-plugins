@@ -405,6 +405,7 @@ add_action(
 						'frontPageRevertBackupData'		 => KubioFrontPageRevertNotice::getInstance()->getFrontPageBackupData(),
 						'frontPageRevertNoticeNonce' 	 =>  wp_create_nonce(KubioFrontPageRevertNotice::$nonceKey),
 						'allow3rdPartyBlogOverride'      => apply_filters( 'kubio/allow_3rd_party_blog_override', true ),
+
 						'multilanguage'                  => array(
 							'hasTranslator'    => $is_wpml_active || $is_polylang_active,
 							'isWpmlActive'     => $is_wpml_active,

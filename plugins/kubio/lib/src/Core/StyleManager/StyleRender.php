@@ -5,6 +5,7 @@ namespace Kubio\Core\StyleManager;
 use Kubio\Config;
 use Kubio\Core\LodashBasic;
 use Kubio\Core\Utils as CoreUtils;
+use Kubio\Flags;
 
 use function _\concat;
 use function _\uniq;
@@ -800,6 +801,21 @@ class StyleRender {
 				}
 			}
 		}
+		$selector_parts = array_map(function($part) {
+			$bodySelector = '@body';
+			if(!str_contains($part, $bodySelector)) {
+				return $part;
+			}
+			$newRootSelector = 'body:not(.extra-1)';
+			$part = str_replace($bodySelector, "", $part);
+
+			//only apply the body changes to the new users to not have issues with backward compatability
+			if(Flags::getSetting( 'enableTypographyBodySelector')) {
+				$part = str_replace("#kubio", $newRootSelector, $part);
+			}
+
+			return $part;
+		}, $selector_parts);
 
 		return join( ',', LodashBasic::uniq( $selector_parts ) );
 	}

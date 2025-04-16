@@ -628,7 +628,7 @@ class OptimizerImages
             $imgUrl = $image->attr('src');
             $url = isset($imgUrl) ? $image->attr('src') : $image->attr('data-src');
 
-            if (0 === strpos($url, $dir['baseurl'])) {
+            if ($url && 0 === strpos($url, $dir['baseurl'])) {
                 $url = substr($url, strlen($dir[ 'baseurl' ] . '/'));
                 // If the URL is auto-generated thumbnail, remove the sizes and get the URL of the original image
                 $url = preg_replace('/-\d+x\d+(?=\.(jpg|jpeg|png|gif)$)/i', '', $url);
@@ -647,7 +647,7 @@ class OptimizerImages
             $imgUrl = $image->attr('src');
             $url = isset($imgUrl) ? $image->attr('src') : $image->attr('data-src');
 
-            if (0 === strpos($url, $dir['baseurl'])) {
+            if ($url && 0 === strpos($url, $dir['baseurl'])) {
                 $url_original = substr($url, strlen($dir[ 'baseurl' ] . '/'));
                 // If the URL is auto-generated thumbnail, remove the sizes and get the URL of the original image
                 $url = preg_replace('/-\d+x\d+(?=\.(jpg|jpeg|png|gif)$)/i', '', $url_original);

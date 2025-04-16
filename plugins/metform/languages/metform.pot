@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: MetForm 3.9.7\n"
+"Project-Id-Version: MetForm 3.9.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/metform\n"
-"POT-Creation-Date: 2025-03-25 09:05:39+00:00\n"
+"POT-Creation-Date: 2025-04-15 07:17:14+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2528,150 +2528,150 @@ msgstr ""
 msgid "Your data inserted on slack."
 msgstr ""
 
-#: plugin.php:245
+#: plugin.php:252
 msgid "ElementsKit"
 msgstr ""
 
-#: plugin.php:248
+#: plugin.php:255
 msgid ""
 "All-in-one Elementor addon trusted by 1 Million+ users, makes your website "
 "builder process easier with ultimate freedom."
 msgstr ""
 
-#: plugin.php:252
+#: plugin.php:259
 msgid "GetGenie"
 msgstr ""
 
-#: plugin.php:255
+#: plugin.php:262
 msgid ""
 "Your personal AI assistant for content and SEO. Write content that ranks on "
 "Google with NLP keywords and SERP analysis data."
 msgstr ""
 
-#: plugin.php:259
+#: plugin.php:266
 msgid "GutenKit"
 msgstr ""
 
-#: plugin.php:262
+#: plugin.php:269
 msgid ""
 "Gutenberg blocks, patterns, and templates that extend the page-building "
 "experience using the WordPress block editor."
 msgstr ""
 
-#: plugin.php:266
+#: plugin.php:273
 msgid "ShopEngine"
 msgstr ""
 
-#: plugin.php:269
+#: plugin.php:276
 msgid ""
 "Complete WooCommerce solution for Elementor to fully customize any pages "
 "including cart, checkout, shop page, and so on.\n"
 "                "
 msgstr ""
 
-#: plugin.php:274
+#: plugin.php:281
 msgid "EmailKit"
 msgstr ""
 
-#: plugin.php:277
+#: plugin.php:284
 msgid ""
 "Advanced email customizer for WooCommerce and WordPress. Build, customize, "
 "and send emails from WordPress to boost your sales!"
 msgstr ""
 
-#: plugin.php:281
+#: plugin.php:288
 msgid "Wp Social"
 msgstr ""
 
-#: plugin.php:284
+#: plugin.php:291
 msgid ""
 "Add social share, login, and engagement counter — unified solution for all "
 "social media with tons of different styles for your website."
 msgstr ""
 
-#: plugin.php:288
+#: plugin.php:295
 msgid "WP Ultimate Review"
 msgstr ""
 
-#: plugin.php:291
+#: plugin.php:298
 msgid ""
 "Collect and showcase reviews on your website to build brand credibility and "
 "social proof with the easiest solution."
 msgstr ""
 
-#: plugin.php:295
+#: plugin.php:302
 msgid "FundEngine"
 msgstr ""
 
-#: plugin.php:298
+#: plugin.php:305
 msgid ""
 "Create fundraising, crowdfunding, and donation websites with PayPal and "
 "Stripe payment gateway integration."
 msgstr ""
 
-#: plugin.php:302
+#: plugin.php:309
 msgid "Blocks for ShopEngine"
 msgstr ""
 
-#: plugin.php:305
+#: plugin.php:312
 msgid ""
 "All in one WooCommerce solution for Gutenberg! Build your WooCommerce pages "
 "in a block editor with full customization."
 msgstr ""
 
-#: plugin.php:309
+#: plugin.php:316
 msgid "Genie Image"
 msgstr ""
 
-#: plugin.php:312
+#: plugin.php:319
 msgid ""
 "AI-powered text-to-image generator for WordPress with OpenAI’s DALL-E 2 "
 "technology to generate high-quality images in one click."
 msgstr ""
 
-#: plugin.php:398
+#: plugin.php:405
 msgid "Minimum length should be "
 msgstr ""
 
-#: plugin.php:399
+#: plugin.php:406
 msgid " character long."
 msgstr ""
 
-#: plugin.php:400
+#: plugin.php:407
 msgid "Maximum length should be "
 msgstr ""
 
-#: plugin.php:401
+#: plugin.php:408
 msgid "Maximum number should be "
 msgstr ""
 
-#: plugin.php:402
+#: plugin.php:409
 msgid "Minimum number should be "
 msgstr ""
 
-#: plugin.php:578
+#: plugin.php:585
 msgid "Activate Elementor"
 msgstr ""
 
-#: plugin.php:585
+#: plugin.php:592
 msgid "Install Elementor"
 msgstr ""
 
-#: plugin.php:589 plugin.php:623
+#: plugin.php:596 plugin.php:630
 #. translators: MetForm plugin version requirement. %s is the required
 #. Elementor version.
 msgid "MetForm requires Elementor version %1$s+, which is currently NOT RUNNING."
 msgstr ""
 
-#: plugin.php:605
+#: plugin.php:612
 msgid "MetForm Pro"
 msgstr ""
 
-#: plugin.php:609 plugin.php:626
+#: plugin.php:616 plugin.php:633
 msgid "We have MetForm Pro version. Check out our pro feature."
 msgstr ""
 
-#: plugin.php:621
+#: plugin.php:628
 msgid "Update Elementor"
 msgstr ""
 

@@ -2229,9 +2229,13 @@ class OptimizerUtils
                         }
                     }
                 }
-            } elseif (is_wp_error($response) || !isset($response['body'], $response['response']['code']) || $response['response']['code'] !== 429) {
+            } elseif (is_wp_error($response) || !isset($response['body'], $response['response']['code']) || (string) $response['response']['code'] !== '429') {
                 \TenWebWpTransients\OptimizerTransients::set(TENWEB_PREFIX . '_subscription_id', '0', HOUR_IN_SECONDS);
                 \TenWebWpTransients\OptimizerTransients::set(TENWEB_PREFIX . '_plan_title', '', HOUR_IN_SECONDS);
+            }
+
+            if (isset($response['response']['code'])) {
+                \TenWebWpTransients\OptimizerTransients::set(TENWEB_PREFIX . '_subscription_response_code', (string) $response['response']['code'], HOUR_IN_SECONDS);
             }
         }
 

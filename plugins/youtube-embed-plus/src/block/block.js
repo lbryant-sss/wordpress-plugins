@@ -193,34 +193,32 @@ registerBlockType("epyt/youtube", {
 						</svg>
 						EmbedPlus for YouTube Wizard
 					</div>
-					<div className={this.props.isSelected ? "" : "epytblock__faded--off"}>
-						<div className="components-placeholder__instructions">
-							Click the button below to easily embed a video, playlist, channel,
-							gallery, or live stream.
-						</div>
-						<div className="components-placeholder__fieldset">
-							<div>
-								<Button isPrimary onClick={ this.showModal }>
-									Open Wizard
-								</Button>
-								{this.state.show ? (
-									<Modal
+					<div className="components-placeholder__instructions">
+						Click the button below to easily embed a video, playlist, channel,
+						gallery, or live stream.
+					</div>
+					<div className="components-placeholder__fieldset">
+						<div>
+							<Button isPrimary onClick={this.showModal}>
+								Open Wizard
+							</Button>
+							{this.state.show ? (
+								<Modal
+									title="EmbedPlus for YouTube Wizard"
+									className="epytblock epytblock__modal"
+									onRequestClose={this.hideModal}
+									shouldCloseOnClickOutside={false}
+								>
+									<iframe
 										title="EmbedPlus for YouTube Wizard"
-										className="epytblock epytblock__modal"
-										onRequestClose={ this.hideModal }
-										shouldCloseOnClickOutside={false}
-									>
-										<iframe
-											title="EmbedPlus for YouTube Wizard"
-											src={
-												window._EPYTA_.wizhref +
-												"&clientId=" +
-												this.props.clientId
-											}
-										/>
-									</Modal>
-								) : null}
-							</div>
+										src={
+											window._EPYTA_.wizhref +
+											"&clientId=" +
+											this.props.clientId
+										}
+									/>
+								</Modal>
+							) : null}
 						</div>
 					</div>
 				</div>

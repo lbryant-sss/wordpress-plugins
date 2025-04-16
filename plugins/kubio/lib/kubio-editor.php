@@ -343,6 +343,7 @@ function kubio_get_editor_scripts( $skiped_handlers = array() ) {
 function kubio_enqueue_editor_page_assets() {
 		// Editor default styles
 		wp_enqueue_media();
+		wp_enqueue_style( 'wp-block-editor' );
 		wp_enqueue_style( 'wp-format-library' );
 		wp_enqueue_style( 'kubio-format-library' );
 		wp_enqueue_script( 'kubio-editor' );
@@ -570,7 +571,7 @@ function kubio_load_gutenberg_assets() {
 	AssetsDependencyInjector::injectKubioScriptDependencies( 'jquery-masonry', false );
 
 	do_action( 'kubio/editor/load_gutenberg_assets' );
-	
+
 	wp_enqueue_style( 'kubio-pro' );
 	wp_enqueue_script( 'kubio-block-patterns' );
 	wp_enqueue_script( 'kubio-third-party-blocks' );
@@ -1335,3 +1336,81 @@ function kubio_register_kubio_favorites_post_type() {
 }
 
 add_action( 'init', 'kubio_register_kubio_favorites_post_type', 9 );
+
+//From gutenberg_bootstrap_server_block_bindings_sources
+function kubio_load_block_bindings_sources() {
+	if(!kubio_is_kubio_editor_page()) {
+		return;
+	}
+	$registered_sources = get_all_registered_block_bindings_sources();
+	if ( ! empty( $registered_sources ) ) {
+		$filtered_sources = array();
+		foreach ( $registered_sources as $source ) {
+			$filtered_sources[] = array(
+				'name'        => $source->name,
+				'label'       => $source->label,
+				'usesContext' => $source->uses_context,
+			);
+		}
+		$encoded_data = wp_json_encode( $filtered_sources );
+		ob_start();
+		?>
+		<script>
+			(function() {
+				var kubioBindingSources = JSON.parse('<?php echo $encoded_data; ?>');
+
+				let bindingSourcesAreSupported = wp.blocks && wp.blocks.getBlockBindingsSource && wp.blocks.registerBlockBindingsSource;
+				if (!bindingSourcesAreSupported) {
+					return
+				}
+				for (const source of kubioBindingSources) {
+					!wp.blocks.getBlockBindingsSource(source.name) && wp.blocks.registerBlockBindingsSource(source);
+				}
+			})()
+		</script>
+		<?php
+		$script = strip_tags(ob_get_clean());
+		wp_add_inline_script(
+			'wp-blocks',
+			$script
+		);
+	}
+}
+
+add_action( 'enqueue_block_editor_assets', 'kubio_load_block_bindings_sources', 5 );
+
+//0057618: Button styles do not work in kubio editor
+//Make the classic theme as a depedency for the block style variations to load the styles in the correct order so the classic
+//theme css does not override the variation styles
+add_action('wp_enqueue_scripts',function() {
+	$variation_handle = 'block-style-variation-styles';
+	$classic_handle = 'classic-theme-styles';
+	// Ensure both styles are registered before modifying them
+	if (wp_style_is($classic_handle, 'registered') && wp_style_is($variation_handle, 'registered')) {
+
+		$style = wp_styles()->registered[$variation_handle];
+		$handle = $style->handle;
+		$src = $style->src;
+		$deps = $style->deps;
+		$ver = $style->ver;
+		$media = $style->args;
+		$extra= $style->extra;
+
+		if (!in_array($classic_handle, $deps)) {
+			$deps[] = $classic_handle;
+		}
+
+		$inline_styles = LodashBasic::get($extra, 'after', []);
+
+
+		// Deregister and re-register the style with updated dependencies
+		wp_deregister_style($handle);
+		wp_register_style($handle, $src, $deps, $ver, $media);
+		wp_enqueue_style($handle);
+
+		// Reapply the captured inline styles
+		foreach ($inline_styles as $inline_style) {
+			wp_add_inline_style($handle, $inline_style);
+		}
+	}
+}, 100);

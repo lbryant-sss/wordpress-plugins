@@ -3,7 +3,7 @@ Contributors: bingwebmastertools
 Plugin link: https://bing.com/indexnow
 Tags: seo, crawling
 Requires at least: 5.3
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.txt

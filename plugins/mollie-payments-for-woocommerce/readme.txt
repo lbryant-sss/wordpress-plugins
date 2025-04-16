@@ -14,10 +14,6 @@ Accept all major payment methods in WooCommerce today. Credit cards, iDEAL and m
 
 https://www.youtube.com/watch?v=33sQNKelKW4
 
-> **Special limited time offer:** Pay ZERO processing fees for your first month.* [Sign-up to Mollie today](https://my.mollie.com/campaigns/signup/molliewoocommerce2024?utm_campaign=GLO_Q4_2024_Woo-Campaign&utm_medium=company_profile&utm_source=partner&utm_content=pagebannerwordpress&utm_partner=woocommerce&campaign_name=GLO_Q4_2024_Woo-Campaign)
-
-\***To qualify for this offer, you must sign up through the specific link above. Offer subject to terms and conditions**
-
 Quickly integrate all major payment methods in WooCommerce, wherever you need them. Mollie Payments for WooCommerce adds the critical success factor: an easy-to-install, easy-to-use, customizable payments gateway that is as flexible as WooCommerce itself.
 
 > **Effortless payments for your customers, designed for growth**
@@ -73,7 +69,7 @@ Pay after delivery payment methods:
 
 = Get started with Mollie =
 
-1. [Create a Mollie account](https://my.mollie.com/campaigns/signup/molliewoocommerce2024?utm_campaign=GLO_Q4_2024_Woo-Campaign&utm_medium=company_profile&utm_source=partner&utm_content=pagebannerwordpress&utm_partner=woocommerce&campaign_name=GLO_Q4_2024_Woo-Campaign)
+1. [Create a Mollie account](https://my.mollie.com/dashboard/signup?utm_campaign=GLO_AO_Woo-Channels-Signup&utm_medium=marketplacelisting&utm_source=partner&utm_content=Wordpress&sf_campaign_id=701QD00000a4oHjYAI&campaign_name=GLO_AO_Woo-Channels-Signup)
 2. Install **Mollie Payments for WooCommerce** on your WordPress website
 3. Activate Mollie in your WooCommerce webshop and enter your Mollie API key
 4. In your Mollie Dashboard, go to Settings > Website profiles and select the payment methods you want to offer
@@ -104,7 +100,7 @@ Become part of Mollie's growing community and gain access to our comprehensive s
 
 > **Your success is our mission. With Mollie, simplify your payments and focus on growing your business.**
 
-[Sign up today](https://my.mollie.com/campaigns/signup/molliewoocommerce2024?utm_campaign=GLO_Q4_2024_Woo-Campaign&utm_medium=company_profile&utm_source=partner&utm_content=pagebannerwordpress&utm_partner=woocommerce&campaign_name=GLO_Q4_2024_Woo-Campaign) and start enhancing your WooCommerce store with Mollie's advanced payment solutions.
+[Sign up today](https://my.mollie.com/dashboard/signup?utm_campaign=GLO_AO_Woo-Channels-Signup&utm_medium=marketplacelisting&utm_source=partner&utm_content=Wordpress&sf_campaign_id=701QD00000a4oHjYAI&campaign_name=GLO_AO_Woo-Channels-Signup) and start enhancing your WooCommerce store with Mollie's advanced payment solutions.
 
 Feel free to contact info@mollie.com if you have any questions or comments about this plugin.
 

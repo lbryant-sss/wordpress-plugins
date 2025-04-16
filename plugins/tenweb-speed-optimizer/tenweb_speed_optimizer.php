@@ -4,7 +4,7 @@
  * Plugin Name: 10Web Booster
  * Plugin URI: https://10web.io/page-speed-booster/
  * Description: Optimize your website speed and performance with 10Web Booster by compressing CSS and JavaScript.
- * Version: 2.30.18
+ * Version: 2.31.8
  * Author: 10Web - Website speed optimization team
  * Author URI: https://10web.io/
  * Text Domain: tenweb-speed-optimizer
@@ -108,8 +108,9 @@ if (defined('TWO_INCOMPATIBLE_ERROR') && TWO_INCOMPATIBLE_ERROR) {
     global $tenweb_plan_title;
     $tenweb_plan_title = \TenWebWpTransients\OptimizerTransients::get(TENWEB_PREFIX . '_plan_title');
     $tenweb_subscription_id = \TenWebWpTransients\OptimizerTransients::get(TENWEB_PREFIX . '_subscription_id');
+    $tenweb_subscription_response_code = \TenWebWpTransients\OptimizerTransients::get(TENWEB_PREFIX . '_subscription_response_code');
 
-    if (empty($tenweb_subscription_id) && $tenweb_subscription_id !== '0') {
+    if (empty($tenweb_subscription_id) && $tenweb_subscription_id !== '0' && ((string) $tenweb_subscription_response_code === '200' || $tenweb_subscription_response_code === false)) {
         $tenweb_subscription_array = \TenWebOptimizer\OptimizerUtils::two_update_subscription();
 
         if ($tenweb_subscription_array['tenweb_subscription_id'] !== false) {
@@ -130,6 +131,8 @@ if (defined('TWO_INCOMPATIBLE_ERROR') && TWO_INCOMPATIBLE_ERROR) {
 
     global $TwoSettings;
     $TwoSettings = \TenWebOptimizer\OptimizerSettings::get_instance();
+
+    OptimizerOnInit::maybe_update_excluded_css_list();
 
     if (!isset($_GET['action']) || $_GET['action'] != 'deactivate') { // phpcs:ignore
         register_activation_hook(__FILE__, ['\TenWebOptimizer\OptimizerAdmin', 'two_activate']);

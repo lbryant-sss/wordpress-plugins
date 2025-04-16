@@ -47,13 +47,12 @@ class PageTitleBlock extends BlockBase {
 			$title      = get_search_query();
 			$title_type = 'normalResultsPage';
 		} elseif ( is_home() ) {
-			if ( is_front_page() ) {
-				$title = get_bloginfo( 'name' );
-			} else {
-				$title = get_the_title( get_option( 'page_for_posts', true ) );
-			}
+			$title = __('Blog', 'kubio');
 			$title_type = 'normalPage';
 
+		} elseif(is_front_page()) {
+			$title = get_bloginfo( 'name' );
+			$title_type = 'normalPage';
 		} elseif ( is_archive() ) {
 			if ( is_post_type_archive() ) {
 				$title = post_type_archive_title( '', false );

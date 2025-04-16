@@ -235,7 +235,7 @@ class OptimizerSettings
         ],
         'two_exclude_css' => [
             'type' => 'textarea',
-            'default' => 'wp-content/cache/, admin-bar.min.css',
+            'default' => 'wp-content/cache/, admin-bar.min.css, ds-gravity-forms-for-divi',
             'tab' => 'css',
             'title' => 'Excluded CSS files',
             'description' => 'Specify the CSS files that should be excluded from the optimization.',
@@ -749,7 +749,7 @@ class OptimizerSettings
         'two_load_excluded_js_via_worker' => '',
         'two_load_excluded_js_normally' => '',
         'two_events_after_load' => ['DOMContentLoaded', 'Load', 'Click'],
-        'two_exclude_css' => 'wp-content/cache/, admin-bar.min.css',
+        'two_exclude_css' => 'wp-content/cache/, admin-bar.min.css, ds-gravity-forms-for-divi',
         'two_lazyload' => 'on',
         'two_bg_lazyload' => 'on',
         'two_add_noscript' => 'on',

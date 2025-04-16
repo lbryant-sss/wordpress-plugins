@@ -129,7 +129,7 @@ When you’re ready, you can edit your translations directly in [your account](h
 
 - Weglot Translate is free for small websites (under 2,000 words) with one translation language.
 - Our WordPress multilingual plugin is cost-effective like no other, with custom paid plans to suit your translation needs. [Check our pricing](https://weglot.com/pricing) for more information.
-- Weglot Translate also offers a [10-day free trial version](https://dashboard.weglot.com/register); try our multilingual website solution today!
+- Weglot Translate also offers a [14-day free trial version](https://dashboard.weglot.com/register); try our multilingual website solution today!
 
 = Is Weglot compatible with SEO? =
 
@@ -137,7 +137,7 @@ Weglot Translate is 100% optimized for multilingual SEO. It creates a dedicated 
 
 = Can I try Weglot before buying a plan? =
 
-Yes, we have a 10-day free trial—no commitment, no credit card required—that everyone can use to test Weglot on your site. After the trial, you can choose to stay on the free plan and keep your translations (if your word count is below 2,000).
+Yes, we have a 14-day free trial—no commitment, no credit card required—that everyone can use to test Weglot on your site. After the trial, you can choose to stay on the free plan and keep your translations (if your word count is below 2,000).
 
 = How many languages are supported? =
 

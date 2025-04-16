@@ -806,8 +806,10 @@ class CustomizerImporter {
 		Arr::set( $data, 'style.descendants.outer.background.overlay.shape.isTile', in_array( $overlay_shape, $titled_shapes, true ) );
 
 		$padding_style_path  = 'style.descendants.outer.padding';
-		$hero_padding_top    = Arr::get( $item_data, 'style.padding.top.value' );
-		$hero_padding_bottom = Arr::get( $item_data, 'style.padding.bottom.value' );
+		$hero_padding_top    = Arr::get( $item_data, 'style.descendants.outer.padding.top.value' );
+		$hero_padding_bottom = Arr::get( $item_data, 'style.descendants.outer.padding.bottom.value' );
+		$hero_padding_left   = Arr::get( $item_data, 'style.descendants.outer.padding.left', array( 'value' => 0, 'unit' => 'px' ) );
+		$hero_padding_right  = Arr::get( $item_data, 'style.descendants.outer.padding.right', array( 'value' => 0, 'unit' => 'px' ) );
 		$full_height         = Arr::get( $item_data, 'full_height' );
 
 		if (
@@ -879,14 +881,8 @@ class CustomizerImporter {
 					'value' => $hero_padding_bottom,
 					'unit'  => 'px',
 				),
-				'left'   => array(
-					'value' => 0,
-					'unit'  => 'px',
-				),
-				'right'  => array(
-					'value' => 0,
-					'unit'  => 'px',
-				),
+				'left'   => $hero_padding_left,
+				'right'  => $hero_padding_right,
 			);
 
 			//Update hero text column width

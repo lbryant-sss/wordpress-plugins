@@ -116,10 +116,6 @@ input.ui-widget[type=text] {
     line-height: 2em;
 }
 
-.wrap-ytprefs-onboarding .box-vi-not-interested {
-    display: none;
-}
-
 .ytprefs-ob-step {
     position: absolute;
     visibility: hidden;

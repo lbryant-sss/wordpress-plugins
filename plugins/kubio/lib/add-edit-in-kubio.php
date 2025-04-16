@@ -358,6 +358,18 @@ function kubio_frontend_adminbar_items( $wp_admin_bar ) {
 	$url = kubio_frontend_get_editor_url();
 
 	if ( $url ) {
+
+		global $post;
+		if ( gettype( $post ) === 'integer' ) {
+			$post = get_post( $post );
+		}
+		if(empty($post)) {
+			return;
+		}
+		//for now only disable on product as maybe some users update custom post types. Disable what we know it does not work
+		if($post->post_type === 'product') {
+			return;
+		}
 		$wp_admin_bar->add_menu(
 			array(
 				'id'    => 'kubio-site-editor',

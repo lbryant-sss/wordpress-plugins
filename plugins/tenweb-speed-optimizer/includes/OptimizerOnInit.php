@@ -61,6 +61,25 @@ class OptimizerOnInit
         add_action('et_epanel_update_option', [ $this, 'maybeRegenerateCCSS' ], 10, 2);
     }
 
+    public static function maybe_update_excluded_css_list()
+    {
+        global $TwoSettings;
+
+        if ($TwoSettings && ! get_option('two_update_default_excluded_css_list')) {
+            $newValue = 'ds-gravity-forms-for-divi';
+            $old_value = $TwoSettings->get_settings('two_exclude_css');
+
+            if ($old_value && ! str_contains($old_value, $newValue)) {
+                $old_value .= ',' . $newValue;
+            }
+            $TwoSettings->update_setting(
+                'two_exclude_css',
+                $old_value
+            );
+            update_option('two_update_default_excluded_css_list', '1');
+        }
+    }
+
     public function two_register_meta()
     {
         $allowed_post_types = ['post', 'page'];
@@ -224,7 +243,7 @@ class OptimizerOnInit
         }
         \TenWebWpTransients\OptimizerTransients::delete('two_optimize_inprogress_' . $post_id);
         /* Keeping all posts statuses which is optimized and notif popup view is not shown yet */
-        $two_optimization_notif_status = get_option('two_optimization_notif_status');
+        $two_optimization_notif_status = get_option('two_optimization_notif_status', []);
         $two_optimization_notif_status[$post_id] = 'optimized_not_closed';
         update_option('two_optimization_notif_status', $two_optimization_notif_status, 1);
     }

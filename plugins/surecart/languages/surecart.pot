@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-11T21:09:19+00:00\n"
+"POT-Creation-Date: 2025-04-15T17:16:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 
@@ -1068,7 +1068,7 @@ msgstr ""
 #: src/Controllers/Admin/Upsells/UpsellsListTable.php:53
 #: coupons/modules/Code.js:119
 #: product-groups/EditProductGroup.js:164
-#: products/EditProduct.js:234
+#: products/EditProduct.js:235
 #: products/modules/Prices/Price/Header.js:241
 #: products/modules/SingleDownload.js:259
 #: upsell-funnels/EditFunnel.js:262
@@ -1567,9 +1567,9 @@ msgstr ""
 #: src/Controllers/Admin/Licenses/LicensesListTable.php:155
 #: src/Controllers/Admin/Products/ProductsListTable.php:449
 #: src/Controllers/Web/BuyPageController.php:56
-#: src/WordPress/PostTypes/ProductPostTypeService.php:350
-#: src/WordPress/PostTypes/ProductPostTypeService.php:947
-#: products/EditProduct.js:274
+#: src/WordPress/PostTypes/ProductPostTypeService.php:406
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1017
+#: products/EditProduct.js:303
 #: components/PriceInfo.js:103
 msgid "Edit Product"
 msgstr ""
@@ -1637,7 +1637,7 @@ msgstr ""
 #: src/Controllers/Admin/Settings/BaseSettings.php:56
 #: src/Controllers/Admin/Subscriptions/SubscriptionsListTable.php:113
 #: layouts/partials/admin-settings-sidebar.php:75
-#: products/modules/integrations/Integrations.js:76
+#: products/modules/integrations/Integrations.js:78
 #: settings/integrations/Integration.js:133
 #: settings/integrations/IntegrationsList.js:51
 msgid "Integrations"
@@ -1746,7 +1746,7 @@ msgstr ""
 #: invoices/modules/Prices.js:108
 #: product-collections/components/Products.js:28
 #: product-groups/modules/Products.js:45
-#: products/EditProduct.js:270
+#: products/EditProduct.js:299
 #: settings/advanced/AdvancedSettings.js:462
 #: settings/shipping/profile/Products.js:250
 #: upsell-funnels/modules/Conditions.js:132
@@ -1828,7 +1828,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/Controllers/Admin/Products/ProductsController.php:241
-#: src/WordPress/PostTypes/ProductPostTypeService.php:948
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1018
 #: licenses/modules/Purchase.js:56
 #: products/components/Url/form.js:68
 msgid "View Product"
@@ -2400,7 +2400,7 @@ msgstr ""
 #: src/Integrations/Beaver/BeaverFormModule.php:20
 #: src/Integrations/Beaver/BeaverFormModule.php:21
 #: src/Integrations/Elementor/Conditions/Conditions.php:38
-#: src/Integrations/Elementor/ElementorServiceProvider.php:133
+#: src/Integrations/Elementor/ElementorServiceProvider.php:160
 #: src/Integrations/ThriveAutomator/ThriveAutomatorApp.php:25
 #: src/WordPress/Admin/Menus/AdminMenuPageService.php:178
 #: src/WordPress/Admin/Notices/AdminNoticesService.php:115
@@ -2616,11 +2616,11 @@ msgstr ""
 msgid "$12 Signup Fee"
 msgstr ""
 
-#: src/Integrations/Bricks/BricksElementsService.php:160
+#: src/Integrations/Bricks/BricksElementsService.php:154
 msgid "SureCart - Single Product"
 msgstr ""
 
-#: src/Integrations/Bricks/BricksElementsService.php:161
+#: src/Integrations/Bricks/BricksElementsService.php:155
 msgid "SureCart - Collection Archive"
 msgstr ""
 
@@ -3035,7 +3035,7 @@ msgstr ""
 
 #: src/Integrations/Elementor/Conditions/Conditions.php:47
 #: src/Integrations/Elementor/Conditions/ProductCondition.php:46
-#: src/WordPress/PostTypes/ProductPostTypeService.php:949
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1020
 #: Blocks/ProductItemList/edit.js:388
 #: Blocks/ProductItemList/edit.js:501
 #: src/blocks/product-list/inspector-controls/index.js:106
@@ -7047,21 +7047,21 @@ msgstr ""
 
 #: src/WordPress/PostTypes/CartPostTypeService.php:251
 #: src/WordPress/PostTypes/FormPostTypeService.php:235
-#: src/WordPress/PostTypes/ProductPostTypeService.php:951
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1022
 #: src/WordPress/PostTypes/ProductUpsellPagePostTypeService.php:44
 msgid "No checkout forms found."
 msgstr ""
 
 #: src/WordPress/PostTypes/CartPostTypeService.php:252
 #: src/WordPress/PostTypes/FormPostTypeService.php:236
-#: src/WordPress/PostTypes/ProductPostTypeService.php:952
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1023
 #: src/WordPress/PostTypes/ProductUpsellPagePostTypeService.php:45
 msgid "No checkout forms found in Trash."
 msgstr ""
 
 #: src/WordPress/PostTypes/CartPostTypeService.php:253
 #: src/WordPress/PostTypes/FormPostTypeService.php:237
-#: src/WordPress/PostTypes/ProductPostTypeService.php:953
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1024
 #: src/WordPress/PostTypes/ProductUpsellPagePostTypeService.php:46
 msgid "Filter checkout forms list"
 msgstr ""
@@ -7178,90 +7178,94 @@ msgstr ""
 msgid "(no title)"
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:272
+#: src/WordPress/PostTypes/ProductPostTypeService.php:328
 #: products/modules/Prices/Price/BuyLink.js:30
 #: products/modules/Variations/Variants.js:116
 #: store/add-entities.js:461
 msgid "Variant"
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:276
+#: src/WordPress/PostTypes/ProductPostTypeService.php:332
 msgid "Enter the variant name as it appears in Option Values (e.g., Black, White, Light Green)."
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:276
+#: src/WordPress/PostTypes/ProductPostTypeService.php:332
 msgid "Learn More."
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:855
+#: src/WordPress/PostTypes/ProductPostTypeService.php:925
 msgid "Product gallery"
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:942
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1012
 msgctxt "post type general name"
 msgid "SureCart Product"
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:943
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1013
 msgctxt "post type singular name"
 msgid "SureCart Product"
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:944
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1014
 msgctxt "Product"
 msgid "Add New"
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:945
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1015
 msgid "Add new Product"
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:946
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1016
 msgid "New Product"
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:950
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1019
+msgid "View Products"
+msgstr ""
+
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1021
 #: admin/products/index.php:77
 msgid "Search Products"
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:954
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1025
 msgid "Products list navigation"
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:955
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1026
 msgid "Products list"
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:956
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1027
 msgid "Product published."
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:957
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1028
 msgid "Product published privately."
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:958
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1029
 msgid "Product reverted to draft."
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:959
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1030
 msgid "Product scheduled."
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:960
-#: products/EditProduct.js:187
-#: products/modules/integrations/Integrations.js:41
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1031
+#: products/EditProduct.js:188
+#: products/modules/integrations/Integrations.js:43
 msgid "Product updated."
 msgstr ""
 
-#: src/WordPress/PostTypes/ProductPostTypeService.php:996
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1067
 msgctxt "post"
 msgid "Archived"
 msgstr ""
 
 #. translators: %s: number of posts.
-#: src/WordPress/PostTypes/ProductPostTypeService.php:1005
+#: src/WordPress/PostTypes/ProductPostTypeService.php:1076
 msgid "Archived <span class=\"count\">(%s)</span>"
 msgid_plural "Archived <span class=\"count\">(%s)</span>"
 msgstr[0] ""
@@ -7717,6 +7721,9 @@ msgstr ""
 
 #: admin/notices/webhook-change.php:28
 #: components/data-tables/charges-data-table/ChargeDetails.js:128
+#: products/components/Editor/index.js:147
+#: products/components/Editor/index.js:368
+#: products/modules/integrations/Integrations.js:91
 msgid "Learn More"
 msgstr ""
 
@@ -7887,6 +7894,7 @@ msgstr[1] ""
 #: product-collections/modules/DeleteModal.js:76
 #: product-groups/CreateProductGroup.js:80
 #: product-groups/modules/NewProduct.js:78
+#: products/components/Editor/index.js:217
 #: products/components/SelectTemplate/create-modal.js:89
 #: products/components/SelectTemplatePart/create-modal.js:90
 #: products/CreateProduct.js:87
@@ -9670,6 +9678,10 @@ msgstr ""
 msgid "Update Commission Expiration"
 msgstr ""
 
+#: components/block-editor/PreviewBlocks.js:26
+msgid "Click to edit"
+msgstr ""
+
 #: components/ClaimNoticeModal.js:40
 #: dashboard/components/GetStarted.js:104
 #: sc-provisional-banner.js:15
@@ -10042,6 +10054,7 @@ msgid "Permalink"
 msgstr ""
 
 #: components/Permalink.js:99
+#: products/components/Editor/index.js:240
 msgid "Ok"
 msgstr ""
 
@@ -12250,6 +12263,39 @@ msgstr ""
 msgid "Now"
 msgstr ""
 
+#: products/components/Editor/index.js:133
+#: Blocks/Column/Inspector/Spacing.js:96
+msgid "Content"
+msgstr ""
+
+#: products/components/Editor/index.js:163
+msgid "Open Content Designer"
+msgstr ""
+
+#: products/components/Editor/index.js:216
+msgid "Save and go to editor"
+msgstr ""
+
+#: products/components/Editor/index.js:225
+msgid "Save your changes before going to the editor?"
+msgstr ""
+
+#: products/components/Editor/index.js:358
+msgid "Product Content"
+msgstr ""
+
+#: products/components/Editor/index.js:361
+msgid "Product content appears on product pages, usually below the form. You can reposition it by editing the product template and moving the \"Post Content\" or \"WordPress Content\" blocks."
+msgstr ""
+
+#: products/components/Editor/PreviewBricks.js:40
+msgid "Edit with Bricks"
+msgstr ""
+
+#: products/components/Editor/PreviewElementor.js:29
+msgid "Edit with Elementor"
+msgstr ""
+
 #: products/components/price/Multiple.js:20
 msgid "Number of Payments"
 msgstr ""
@@ -12455,19 +12501,19 @@ msgstr ""
 msgid "A name for your product."
 msgstr ""
 
-#: products/EditProduct.js:206
+#: products/EditProduct.js:207
 msgid "Product deleted."
 msgstr ""
 
-#: products/EditProduct.js:298
+#: products/EditProduct.js:327
 msgid "View Product Page"
 msgstr ""
 
-#: products/EditProduct.js:322
+#: products/EditProduct.js:351
 msgid "Save & Publish"
 msgstr ""
 
-#: products/EditProduct.js:323
+#: products/EditProduct.js:352
 msgid "Save Product"
 msgstr ""
 
@@ -12706,20 +12752,16 @@ msgstr ""
 msgid "Since SureCart's integrations are native, there's no need to worry about the complexity of growing your store."
 msgstr ""
 
-#: products/modules/integrations/Integrations.js:31
+#: products/modules/integrations/Integrations.js:33
 msgid "You have unsaved changes that need to be saved before adding a new integration. Do you want to save your product now?"
 msgstr ""
 
-#: products/modules/integrations/Integrations.js:46
+#: products/modules/integrations/Integrations.js:48
 msgid "Product update failed."
 msgstr ""
 
-#: products/modules/integrations/Integrations.js:93
+#: products/modules/integrations/Integrations.js:98
 msgid "Add New Integration"
-msgstr ""
-
-#: products/modules/integrations/Integrations.js:116
-msgid "To sync purchases of this product, add an integration."
 msgstr ""
 
 #: products/modules/integrations/NewIntegration.js:54
@@ -17446,10 +17488,6 @@ msgstr ""
 
 #: Blocks/Column/Inspector/Spacing.js:84
 msgid "Nested blocks will fill the width of this container. Toggle to constrain."
-msgstr ""
-
-#: Blocks/Column/Inspector/Spacing.js:96
-msgid "Content"
 msgstr ""
 
 #: Blocks/Column/Inspector/Spacing.js:116

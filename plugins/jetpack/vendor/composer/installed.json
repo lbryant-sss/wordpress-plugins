@@ -1290,17 +1290,17 @@
         },
         {
             "name": "automattic/jetpack-forms",
-            "version": "v0.47.0",
-            "version_normalized": "0.47.0.0",
+            "version": "v0.48.0",
+            "version_normalized": "0.48.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-forms.git",
-                "reference": "85bc599719fe11161568cf0352fba95ddb3d2ce2"
+                "reference": "0fdea5f15ec7e5ead53a64aab2f30e08452c3b61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-forms/zipball/85bc599719fe11161568cf0352fba95ddb3d2ce2",
-                "reference": "85bc599719fe11161568cf0352fba95ddb3d2ce2",
+                "url": "https://api.github.com/repos/Automattic/jetpack-forms/zipball/0fdea5f15ec7e5ead53a64aab2f30e08452c3b61",
+                "reference": "0fdea5f15ec7e5ead53a64aab2f30e08452c3b61",
                 "shasum": ""
             },
             "require": {
@@ -1322,14 +1322,14 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2025-04-14T14:17:56+00:00",
+            "time": "2025-04-15T14:45:59+00:00",
             "type": "jetpack-library",
             "extra": {
                 "autotagger": true,
                 "textdomain": "jetpack-forms",
                 "mirror-repo": "Automattic/jetpack-forms",
                 "branch-alias": {
-                    "dev-trunk": "0.47.x-dev"
+                    "dev-trunk": "0.48.x-dev"
                 },
                 "changelogger": {
                     "link-template": "https://github.com/automattic/jetpack-forms/compare/v${old}...v${new}"
@@ -1350,7 +1350,7 @@
             ],
             "description": "Jetpack Forms",
             "support": {
-                "source": "https://github.com/Automattic/jetpack-forms/tree/v0.47.0"
+                "source": "https://github.com/Automattic/jetpack-forms/tree/v0.48.0"
             },
             "install-path": "../../jetpack_vendor/automattic/jetpack-forms"
         },
@@ -2463,17 +2463,17 @@
         },
         {
             "name": "automattic/jetpack-stats",
-            "version": "v0.16.0",
-            "version_normalized": "0.16.0.0",
+            "version": "v0.16.1",
+            "version_normalized": "0.16.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-stats.git",
-                "reference": "dc3097451c71453f78ffe1f3e78e4c09687ed052"
+                "reference": "c8cf94fc46db15438c4205a0b3f3410289d453d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-stats/zipball/dc3097451c71453f78ffe1f3e78e4c09687ed052",
-                "reference": "dc3097451c71453f78ffe1f3e78e4c09687ed052",
+                "url": "https://api.github.com/repos/Automattic/jetpack-stats/zipball/c8cf94fc46db15438c4205a0b3f3410289d453d6",
+                "reference": "c8cf94fc46db15438c4205a0b3f3410289d453d6",
                 "shasum": ""
             },
             "require": {
@@ -2491,7 +2491,7 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2025-04-14T14:17:16+00:00",
+            "time": "2025-04-15T14:45:33+00:00",
             "type": "jetpack-library",
             "extra": {
                 "autotagger": true,
@@ -2519,7 +2519,7 @@
             ],
             "description": "Collect valuable traffic stats and insights.",
             "support": {
-                "source": "https://github.com/Automattic/jetpack-stats/tree/v0.16.0"
+                "source": "https://github.com/Automattic/jetpack-stats/tree/v0.16.1"
             },
             "install-path": "../../jetpack_vendor/automattic/jetpack-stats"
         },

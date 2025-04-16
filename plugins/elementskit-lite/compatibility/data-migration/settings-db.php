@@ -54,9 +54,8 @@ class Settings_Db {
 						delete_transient('team_widget_css_was_updated');
 					}
 
-					if ( !get_transient('clear_cache')) {
-						set_transient('clear_cache', \ElementsKit_Lite::version());
-						\Elementor\Plugin::$instance->files_manager->clear_cache();
+					if (get_transient('clear_cache')) {
+						delete_transient('clear_cache');
 					}
 				}
 			}

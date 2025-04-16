@@ -178,7 +178,7 @@ class OptimizerLogger
     public function two_daily_cron_hook_function()
     {
         foreach (array_values(self::$log_options) as $option_name) {
-            $logs = get_option($option_name);
+            $logs = get_option($option_name, []);
             $filtered_logs = [];
             $three_days_in_seconds = 3 * 24 * 60 * 60;
 

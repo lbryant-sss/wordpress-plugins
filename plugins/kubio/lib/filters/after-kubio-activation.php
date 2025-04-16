@@ -9,7 +9,15 @@ function kubio_set_editor_ui_version() {
 	Flags::setSetting( 'aiStage2', apply_filters( 'kubio/ai_stage_2', false ) || ( defined( 'KUBIO_AI_STAGE_2' ) && KUBIO_AI_STAGE_2 ) );
 	Flags::setSetting( 'advancedMode', apply_filters( 'kubio/advanced_mode_enabled', false ) );
 	Flags::setSetting( 'featuresVersion', apply_filters( 'kubio/featuresVersion', 2 ) );
+
+	//enable the fix for wordpress setting for blog as frontpage only for new users to not cause issues for current users
 	Flags::setSetting( 'enableBlogAsFrontPageFromGeneralSettings', true );
+
+	//Enable the fix for "0057672: [ Business pro template ] - When hovering the buttons the text is not visible anymore"
+	//only for new users to not break frontend websites for old users. This happens only for users who use template gallery ->
+	//page content. The logic is that old users either found a solution or did not like them and we care only for new users
+	//who may encounter the issue
+	Flags::setSetting( 'enableTypographyBodySelector', true );
 }
 
 

@@ -751,6 +751,7 @@ class ComposerStaticInitde6168bc7e17873548173e515fd8b9ef
         'SureCart\\Integrations\\Elementor\\Conditions\\ProductCondition' => __DIR__ . '/../..' . '/app/src/Integrations/Elementor/Conditions/ProductCondition.php',
         'SureCart\\Integrations\\Elementor\\Conditions\\ProductSingle' => __DIR__ . '/../..' . '/app/src/Integrations/Elementor/Conditions/ProductSingle.php',
         'SureCart\\Integrations\\Elementor\\Documents\\ProductDocument' => __DIR__ . '/../..' . '/app/src/Integrations/Elementor/Documents/ProductDocument.php',
+        'SureCart\\Integrations\\Elementor\\ElementorCoreBlockStylesService' => __DIR__ . '/../..' . '/app/src/Integrations/Elementor/ElementorCoreBlockStylesService.php',
         'SureCart\\Integrations\\Elementor\\ElementorServiceProvider' => __DIR__ . '/../..' . '/app/src/Integrations/Elementor/ElementorServiceProvider.php',
         'SureCart\\Integrations\\Elementor\\ReusableFormWidget' => __DIR__ . '/../..' . '/app/src/Integrations/Elementor/ReusableFormWidget.php',
         'SureCart\\Integrations\\HelpWidget\\HelpWidget' => __DIR__ . '/../..' . '/app/src/Integrations/HelpWidget/HelpWidget.php',

@@ -7,6 +7,7 @@ use Kubio\Core\StyleManager\StyleManager;
 use Kubio\Core\Utils;
 use Kubio\Flags;
 use Kubio\GoogleFontsLocalLoader;
+use Kubio\Core\LodashBasic;
 
 function kubio_global_data_post_type() {
 	return 'kubio-globals';
@@ -450,12 +451,29 @@ add_action(
 	function () {
 
 		$current_supported_colors = get_theme_support( 'editor-color-palette' );
-		$colors                   = kubio_get_editor_colors( true );
+		$kubio_colors                   = kubio_get_editor_colors( true );
 
 		if ( ! $current_supported_colors ) {
-			add_theme_support( 'editor-color-palette', $colors );
+			add_theme_support( 'editor-color-palette', $kubio_colors );
 		} else {
-			$colors = array_merge( $current_supported_colors[0], $colors );
+			$is_kubio_theme = false;
+			$theme_colors = $current_supported_colors[0];
+			$theme_colors_not_in_kubio = array_filter($theme_colors, function($theme_color) use($kubio_colors, & $is_kubio_theme ) {
+				$in_array = false;
+				foreach ($kubio_colors as $kubio_color) {
+					if(LodashBasic::get($kubio_color, 'slug') === LodashBasic::get($theme_color, 'slug') ) {
+						$in_array = true;
+						$is_kubio_theme = true;
+					}
+				}
+				return !$in_array;
+			});
+			if($is_kubio_theme) {
+				$colors = array_merge( $kubio_colors, $theme_colors_not_in_kubio );
+			} else {
+				$colors = array_merge( $theme_colors_not_in_kubio, $kubio_colors );
+			}
+
 			add_theme_support( 'editor-color-palette', $colors );
 		}
 	},

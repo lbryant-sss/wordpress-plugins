@@ -7,7 +7,6 @@
 * Author URI: https://weglot.com/
 * Text Domain: weglot
 * Domain Path: /languages/
-* Woo: 18734003994087:a9b22cd146b2b968b88bba3360c23eed
 * WC requires at least: 4.0
 * WC tested up to: 9.5
 * Version: 4.3.2

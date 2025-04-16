@@ -481,9 +481,3 @@ body .epyt-gallery-img-gdpr {
     bottom: unset;
     left: unset;
 }
-
-/********* YTVI */
-.ytvi-story-container {
-    display: block;
-    max-width: 100%;
-}

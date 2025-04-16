@@ -27,6 +27,8 @@ if ( kubio_is_hybdrid_theme_iframe_preview() ) {
 	add_action( 'wp_head', 'kubio_hybrid_theme_assets_holder', 0 );
 	add_action( 'after_setup_theme', 'kubio_hybrid_theme_iframe_hide_admin_bar' );
 	add_action( 'template_include', 'kubio_hybrid_theme_load_template' );
+	add_action( 'page_template', 'kubio_hybrid_theme_load_template', PHP_INT_MAX, 1 );
+
 }
 
 function kubio_hybrid_theme_load_template( $template ) {
