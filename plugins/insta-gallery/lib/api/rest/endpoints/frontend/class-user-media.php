@@ -1,7 +1,6 @@
 <?php
 namespace QuadLayers\IGG\Api\Rest\Endpoints\Frontend;
 
-use QLIGG;
 use QuadLayers\IGG\Api\Rest\Endpoints\Base;
 use QuadLayers\IGG\Models\Accounts as Models_Accounts;
 use QuadLayers\IGG\Api\Fetch\Personal\User_Media\Get as Api_Fetch_Personal_User_Media;

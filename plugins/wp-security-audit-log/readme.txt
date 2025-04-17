@@ -5,7 +5,7 @@ License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
 Tags: activity log, event log, user tracking, logger, history 
 Requires at least: 5.5
-Tested up to: 6.7.2
+Tested up to: 6.8
 Stable tag: 5.3.4.1
 Requires PHP: 7.4
 

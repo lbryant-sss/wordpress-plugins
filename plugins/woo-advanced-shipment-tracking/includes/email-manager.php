@@ -49,7 +49,11 @@ class WC_Advanced_Shipment_Tracking_Email_Manager {
 	/**
 	 * Code for format email content
 	 */
-	public function email_content( $email_content, $order_id, $order ) {	
+	public function email_content( $email_content, $order_id, $order ) {
+
+		if ( ! $order ) {
+			return $email_content;
+		}
 	
 		$order_number = $order->get_order_number();
 		
@@ -140,6 +144,11 @@ class WC_Advanced_Shipment_Tracking_Email_Manager {
 	}	
 
 	public function completed_email_heading( $email_heading, $order ) {
+
+		if ( ! $order ) {
+			return $email_heading;
+		}
+
 		$first_name = $order->get_billing_first_name();
 		$last_name = $order->get_billing_last_name();
 
@@ -150,6 +159,11 @@ class WC_Advanced_Shipment_Tracking_Email_Manager {
 	}
 
 	public function completed_email_subject( $email_subject, $order ) {
+
+		if ( ! $order ) {
+			return $email_subject;
+		}
+		
 		$first_name = $order->get_billing_first_name();
 		$last_name = $order->get_billing_last_name();
 

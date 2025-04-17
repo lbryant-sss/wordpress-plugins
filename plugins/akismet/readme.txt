@@ -36,6 +36,7 @@ Upload the Akismet plugin to your blog, activate it, and then enter your Akismet
 *Release Date - TBD*
 
 * The stats pages now use the user's locale instead of the site's locale if they're different.
+* Adds a 'Compatible plugins' section that will show installed and active plugins that are compatible with Akismet.
 
 = 5.3.7 =
 *Release Date - 14 February 2025*

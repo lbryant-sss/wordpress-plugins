@@ -524,11 +524,17 @@ input.inner_tab_input:checked + label.ts_tabs_label{
 	font-size: 11px;
 }
 .wcast-tracking-number-list li, .wcast-shipment-status-list li {
-	position: relative;
+	/* position: relative;
 	padding: 5px;
 	min-height: 50px;
 	box-sizing: border-box;
-	margin-bottom: 0;    
+	margin-bottom: 0;     */
+	position: relative;
+    padding: 5px;
+    min-height: 50px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    border: 1px solid #e0e0e0;
 }
 a.inline_tracking_delete{
 	display:none;
@@ -1079,6 +1085,20 @@ span.multiple_checkbox {
 	display: block;
 	margin-bottom: 5px;
 	color: #333333;
+}
+.settings_ul .settings_radio_li{
+	padding-bottom: 10px;
+	border-bottom: 1px solid #e0e0e0;
+}
+.ast_log_setting{
+	display: block;
+	margin: 10px 0 0;
+}
+p.tracking_meta_date{
+	font-size: 11px !important;
+    color: #999 !important;
+    padding: 0;
+    font-style: italic;
 }
 .settings_ul .settings_radio_li .radio_section{
 	display: inline-block;

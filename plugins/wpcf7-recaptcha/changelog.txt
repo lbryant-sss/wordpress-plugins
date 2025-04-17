@@ -2,6 +2,20 @@
 
 This is to keep track of all changes the plugin undertakes. The readme.txt should only contain the most recent 3.
 
+= 1.4.9 =
+
+Release Date: April 15, 2025
+
+* Overview
+	* Updated the "Tested up to" value to support 6.7+
+	* Fixes the [recaptcha] tag generator (previously broken).
+
+* Code Changes
+	* Changes the iqfix_wpcf7_add_tag_generator_recaptcha() WPCF7_TagGenerator callback to better support WPCF7_TagGenerator v2.
+		* Now the version => 2 makes sense!
+	* This redevelops the tag generator HTML with better attributes such as `data-tag-part` and `data-tag-option`
+		* Doing so has now fixed the previously broken tag generation screen.
+
 = 1.4.8 =
 
 Release Date: November 13, 2024

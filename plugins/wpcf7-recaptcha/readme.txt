@@ -3,7 +3,7 @@ Contributors: iqcomputing
 Tags: contact-form-7, contact-form-7-recaptcha, recaptcha, spam
 Requires at least: 4.9
 Tested up to: 6.7
-Stable tag: 1.4.8
+Stable tag: 1.4.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,10 @@ Should the above be correct, at this point it's time to open a support thread fo
 1. Settings page
 
 == Changelog ==
+
+= 1.4.9 (2025-04-15) =
+* Updated the "Tested up to" value to support 6.8+
+* Fixes to the [recaptcha] tag generator
 
 = 1.4.8 (2024-11-13) =
 * Updated the "Tested up to" value to support 6.7+

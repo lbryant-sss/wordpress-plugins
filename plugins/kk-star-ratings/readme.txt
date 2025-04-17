@@ -5,7 +5,7 @@ Donate link: https://feedbackwp.com/
 Tags: star ratings, voting, rate post, ajax ratings, feedback
 Requires at least: 5.0
 Requires PHP: 7.4
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 5.4.10.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

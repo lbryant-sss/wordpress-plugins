@@ -1,7 +1,7 @@
 === Broken Link Checker by AIOSEO – Easily Fix/Monitor Internal and External links ===
 Contributors: aioseo, smub, benjaminprojas
 Tags: broken links, internal link, external link, check links, seo
-Tested up to: 6.7.2
+Tested up to: 6.8
 Requires at least: 5.3
 Requires PHP: 5.6
 Stable tag: 1.2.4

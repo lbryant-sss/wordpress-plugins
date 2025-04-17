@@ -33,7 +33,9 @@ class ReportHelper
         if (!$formReportableInputs && !$formSubFieldInputs) {
             return [
                 'report_items'  => (object)[],
-                'total_entries' => 0,
+                'total_entries' => static::getEntryCounts($form->id, $statuses),
+                'browsers'      => static::getbrowserCounts($form->id, $statuses),
+                'devices'       => static::getDeviceCounts($form->id, $statuses),
             ];
         }
     

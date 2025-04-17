@@ -54,11 +54,19 @@
 					<?php $this->get_html_ul( $this->get_shipment_tracking_api_options() ); ?>
 				</div>
 			</div>
-			
 			<div class="accordion_set">
 				<div class="accordion heading ast_premium">
 					<label>
 						<?php esc_html_e( 'PayPal Tracking', 'woo-advanced-shipment-tracking' ); ?>
+						<span class="ast_premium_badge">PRO</span>
+						<span class="dashicons dashicons-arrow-right-alt2"></span>
+					</label>
+				</div>
+			</div>
+			<div class="accordion_set">
+				<div class="accordion heading ast_premium">
+					<label>
+						<?php esc_html_e( 'Stripe Tracking', 'woo-advanced-shipment-tracking' ); ?>
 						<span class="ast_premium_badge">PRO</span>
 						<span class="dashicons dashicons-arrow-right-alt2"></span>
 					</label>

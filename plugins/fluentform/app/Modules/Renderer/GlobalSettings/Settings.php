@@ -4,6 +4,7 @@ namespace FluentForm\App\Modules\Renderer\GlobalSettings;
 
 use FluentForm\App\Helpers\Helper;
 use FluentForm\App\Modules\Form\AkismetHandler;
+use FluentForm\App\Modules\Form\CleanTalkHandler;
 use FluentForm\App\Modules\Registerer\TranslationString;
 use FluentForm\Framework\Foundation\Application;
 
@@ -46,13 +47,14 @@ class Settings
     public function enqueue()
     {
         wp_enqueue_script('fluentform-global-settings-js');
-
+        
         $globalSettingAppData = [
-            'plugin' => $this->app->config->get('app.slug'),
-            'akismet_activated' => AkismetHandler::isPluginEnabled(),
-            'has_pro' =>  Helper::hasPro(),
-            'is_payment_compatible' =>  Helper::isPaymentCompatible(),
-            'form_settings_str' => TranslationString::getGlobalSettingsI18n()
+            'plugin'                => $this->app->config->get('app.slug'),
+            'akismet_activated'     => AkismetHandler::isPluginEnabled(),
+            'cleantalk_activated'   => CleanTalkHandler::isPluginEnabled(),
+            'has_pro'               => Helper::hasPro(),
+            'is_payment_compatible' => Helper::isPaymentCompatible(),
+            'form_settings_str'     => TranslationString::getGlobalSettingsI18n()
         ];
         if (Helper::isPaymentCompatible()) {
             $globalSettingAppData = apply_filters('fluentform/global_settings_component_settings_data', $globalSettingAppData);

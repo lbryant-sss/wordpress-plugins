@@ -13,7 +13,6 @@ final class Plugin {
 
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 
-		load_plugin_textdomain( 'wp-whatsapp-chat', false, QLWAPP_PLUGIN_DIR . '/languages/' );
 		Admin_Menu_Routes_Library::instance();
 		Controllers\Helpers::instance();
 		Controllers\Components::instance();

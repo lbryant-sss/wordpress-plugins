@@ -5,7 +5,7 @@ License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
 Tags: captcha, recaptcha, hcaptcha, cloudflare turnstile, antispam protection
 Requires at least: 5.0
-Tested up to: 6.7.0
+Tested up to: 6.8
 Stable tag: 7.5.0
 Requires PHP: 7.4.0
 

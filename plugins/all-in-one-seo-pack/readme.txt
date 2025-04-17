@@ -1,7 +1,7 @@
 === All in One SEO – Powerful SEO Plugin to Boost SEO Rankings & Increase Traffic ===
 Contributors: aioseo, smub, benjaminprojas
 Tags: SEO, Google Search Console, XML Sitemap, meta description, schema
-Tested up to: 6.7.2
+Tested up to: 6.8
 Requires at least: 5.3
 Requires PHP: 7.0
 Stable tag: 4.8.1.1

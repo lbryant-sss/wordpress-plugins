@@ -14,6 +14,7 @@ use WP_Post;
 use function array_key_exists;
 use function count;
 use function is_bool;
+use function is_scalar;
 use function is_string;
 
 class Shortcode extends BaseObject
@@ -283,7 +284,7 @@ class Shortcode extends BaseObject
     {
         $shortcode = '[' . $this->getTag();
         foreach ($attrs as $k => $v) {
-            if ($v !== null) {
+            if (is_scalar($v)) {
                 if (is_string($v)) {
                     $v = wp_slash(
                         strtr(

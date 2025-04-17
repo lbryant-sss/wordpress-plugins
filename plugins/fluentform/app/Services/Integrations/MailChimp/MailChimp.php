@@ -201,6 +201,8 @@ class MailChimp
      */
     private function makeRequest($http_verb, $method, $args = [], $timeout = self::TIMEOUT)
     {
+        $timeout = apply_filters('fluentform/mailchimp_api_timeout', $timeout);
+        
         if (! function_exists('curl_init') || ! function_exists('curl_setopt')) {
             throw new \Exception("cURL support is required, but can't be found.");
         }

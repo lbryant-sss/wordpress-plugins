@@ -154,23 +154,6 @@ class PaymentAction
 
         $items = $this->getOrderItems();
 
-        /*
-         * Some Payment Gateway like Stripe may add signup fee based on the $subscriptionItems.
-         * So we are providing filter hook to do the much needed calculations.
-         */
-
-//        if ($subscriptionItems) {
-//            $items = apply_filters(
-//                'fluentform/submitted_payment_items_' . $this->selectedPaymentMethod,
-//                $items,
-//                $this->form,
-//                $this->data,
-//                $subscriptionItems
-//            );
-//
-//            $this->orderItems = $items;
-//        }
-
         $existingSubmission = $this->checkForExistingSubmission();
 
         $formSettings = PaymentHelper::getFormSettings($this->form->id, 'public');
@@ -219,7 +202,11 @@ class PaymentAction
         $paymentTotal = 0;
         if ($items) {
             foreach ($items as $index => $item) {
-                $paymentTotal += $item['line_total'];
+                if ($item['type'] == 'discount') {
+                    $paymentTotal -= $item['line_total'];
+                } else {
+                    $paymentTotal += $item['line_total'];
+                }
                 $items[$index]['submission_id'] = $insertId;
                 $items[$index]['form_id'] = $submission['form_id'];
             }

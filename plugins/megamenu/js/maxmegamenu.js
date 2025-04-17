@@ -68,9 +68,9 @@
             if (plugin.settings.mobile_direction !== 'vertical') {
                 return;
             }
-
+            
             $(".mega-menu-item-has-children.mega-expand-on-mobile > a.mega-menu-link", $menu).each(function() {
-                plugin.showPanel($(this));
+                plugin.showPanel($(this), true);
             });
 
             if ( plugin.settings.mobile_state == 'expand_all' ) {
@@ -89,7 +89,7 @@
                 ];
 
                 $menu.find(activeItemSelectors.join(', ')).each(function() {
-                    plugin.showPanel($(this));
+                    plugin.showPanel($(this), true);
                 });
             }
         }
@@ -609,7 +609,7 @@
         };
 
         plugin.unbindAllEvents = function() {
-            $("ul.mega-sub-menu, li.mega-menu-item, li.mega-menu-row, li.mega-menu-column, a.mega-menu-link, .mega-indicator", $menu).off();
+            $("ul.mega-sub-menu, li.mega-menu-item, li.mega-menu-row, li.mega-menu-column, a.mega-menu-link, .mega-indicator", $menu).off().unbind();
         };
 
         plugin.unbindClickEvents = function() {

@@ -2,7 +2,7 @@
 Contributors: publishpress, kevinB, stevejburge, andergmartins, olatechpro, ojopaul
 Tags: category, tag, taxonomy, categories, tag cloud
 Requires at least: 3.3
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 3.33.0
 Requires PHP: 7.2.5
 License: GPLv2 or later
@@ -12,7 +12,7 @@ Tags, Categories and WordPress terms are easy with TaxoPress. Add a Tag or Categ
 
 == Description ==
 
-TaxoPress allows you to create and manage Tags, Categories, and all your WordPress taxonomy terms. TaxoPress can help with all your WordPress content, from adding Tags and Categories to Pages, to managing WooCommerce Product Categories and bbPress Topic Tags. 
+TaxoPress allows you to create and manage Tags, Categories, and all your WordPress taxonomy terms. TaxoPress can help with all your WordPress content, from adding Tags and Categories to Pages, to managing WooCommerce Product Categories and bbPress Topic Tags.
 
 TaxoPress has integrations with AI tools including OpenAI, IBM Watson, Dandelion, LSEG / Refinitiv and more. You can use these services to find the best taxonomy terms for your content.
 
@@ -34,7 +34,7 @@ With TaxoPress, you can organize, optimize, and showcase all your WordPress cont
 3. **Terms for Current Post**: This enables you to create a customizable display of all the terms assigned to the current post.
 4. **Related Posts**: Shows lists of posts with similar tags and categories.
 5. **Auto Links**: If you have a term called “WordPress”, the Auto Links feature will find any instances of “WordPress” in your content and add links to the archive page for that tag.
-6. **Auto Terms**: If you have a term called "WordPress", Auto Terms can analyze your posts, and when it finds the word "WordPress", it can add that term to your post. 
+6. **Auto Terms**: If you have a term called "WordPress", Auto Terms can analyze your posts, and when it finds the word "WordPress", it can add that term to your post.
 7. **TaxoPress and AI**: The Pro version of TaxoPress has AI integrations with OpenAI, IBM Watson, and more. This makes it easier for you to find or create the best taxonomy terms for your content.
 8. **Term Synonyms**: This feature allows you to have multiple words associated with a single term.
 9. **Linked Terms**: You can connect terms. When the main term is added to a post, the linked terms will be added also.
@@ -87,7 +87,7 @@ This feature allows WordPress to examine your post content and title for specifi
 
 ## Feature 7. TaxoPress and AI (Pro version) ##
 
-This feature makes it easier for you to find or create the best taxonomy terms for your content. TaxoPress AI can show a metabox on your post editing screen with all these options:. 
+This feature makes it easier for you to find or create the best taxonomy terms for your content. TaxoPress AI can show a metabox on your post editing screen with all these options:.
 
 * **Manage Post Terms**: This feature allows you to manage all the terms that are currently attached to a post.
 * **Suggest Existing Terms**: This feature uses a tool in the TaxoPress plugin that can scan your posts and suggest relevant terms that already exist on your site.
@@ -171,7 +171,7 @@ Yes, you can. Both Categories and Tags are “taxonomies” and they can help yo
 
 = How Many Levels of Sub-Categories Does WordPress Support? =
 
-There is no technical limit to how deep your nested categories can go. In an image you can see by clicking the link below, I’ve created 10 levels of categories. You can keep adding sub-category levels as deep as you wish. 
+There is no technical limit to how deep your nested categories can go. In an image you can see by clicking the link below, I’ve created 10 levels of categories. You can keep adding sub-category levels as deep as you wish.
 
 The main limitation to consider will be the WordPress admin area which will start to look strained. In another you can see by clicking, I’ve added twenty levels. When I go to add “Level 21”, the “Parent Category” dropdown appears to be broken. Those extra levels appear on the main “Categories” screen, but each one is only displayed after a long row of hyphens. And when you try to add a category to a post, you may find that the lower levels are not easily visible inside the metabox. The reason that WordPress allows you to have an unlimited number of sub-categories is that these are simple database entries. The sub-categories are controlled by the parent column in the wp_term_taxonomy table. Adding more sub-categories will not slow your site down at all.
 
@@ -236,7 +236,7 @@ If you have a busy WooCommerce site, it can be difficult to organize all your pr
 
 [Click here to see more about automatically adding WooCoomerce Product Tags](https://taxopress.com/automatically-add-woocommerce-product-tags-and-categories/).
 
-= What’s the Difference Between WordPress Categories and Tags? = 
+= What’s the Difference Between WordPress Categories and Tags? =
 
 The main difference between Categories and Tags is the ability to create levels of Categories. Categories are hierarchical, which means terms can be organized into a parent-child relationship. For example, you could have a Category called “Fruit”, and under this Category you could have categories called “Apples”, “Bananas”, “Grapes”, and “Peaches”. Tags are not hierarchical, which means there’s no relationship between them. You can still add the same words as Tags, but by default they can not have relationships. You can modify this using [the Taxonomies screen in TaxoPress](https://taxopress.com/docs/introduction-taxonomies-screen/).
 
@@ -260,7 +260,7 @@ IBW Watson is one of the most powerful AI tools available today. The TaxoPress A
 == Screenshots ==
 
 1. You can create new taxonomies and edit all the settings for each taxonomy.
-2. With TaxoPress you can show all the terms in one taxonomy. You can build dynamic tag clouds and lists with many configuration options. 
+2. With TaxoPress you can show all the terms in one taxonomy. You can build dynamic tag clouds and lists with many configuration options.
 3. TaxoPress has tools to help you manage terms on a busy site. You can quickly add, rename, remove, delete and even merge terms.
 4. TaxoPress can analyze your posts and automatically create relevant Tags and Categories.
 5. TaxoPress can use the Dandelion API and OpenCalais APIs to analyze your WordPress content and suggest terms that you can add to your post.

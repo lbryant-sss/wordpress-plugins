@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ReCaptcha v2 for Contact Form 7
  * Description: ReCaptcha v2 Fix for Contact Form 7 5.1 and later.
- * Version: 1.4.8
+ * Version: 1.4.9
  * Author: IQComputing
  * Author URI: http://www.iqcomputing.com/
  * License: GPL2
@@ -24,7 +24,7 @@ Class IQFix_WPCF7_Deity {
 	 *
 	 * @var String
 	 */
-	public static $version = '1.4.8';
+	public static $version = '1.4.9';
 
 
 	/**
@@ -68,20 +68,20 @@ Class IQFix_WPCF7_Deity {
 	 */
 	private function include_files() {
 
-		$selection 		= WPCF7::get_option( 'iqfix_recaptcha' );
-		$cf7_version 	= ( defined( 'WPCF7_VERSION' ) ) ? WPCF7_VERSION : WPCF7::get_option( 'version', '0' );
+		$selection 		= \WPCF7::get_option( 'iqfix_recaptcha' );
+		$cf7_version 	= ( defined( 'WPCF7_VERSION' ) ) ? WPCF7_VERSION : \WPCF7::get_option( 'version', '0' );
 
 		// Prevent update from v2 to v3 notice.
-		WPCF7::update_option( 'recaptcha_v2_v3_warning', false );
+		\WPCF7::update_option( 'recaptcha_v2_v3_warning', false );
 
 		if( empty( $selection ) || version_compare( $cf7_version, '5.1', '<' ) ) {
 			return;
 		}
 
-		include_once( plugin_dir_path( __FILE__ ) . 'recaptcha-v2.php' );
+		include_once plugin_dir_path( __FILE__ ) . 'recaptcha-v2.php';
 
 		if( class_exists( 'Flamingo_Contact' ) ) {
-			include_once( plugin_dir_path( __FILE__ ) . 'flamingo.php' );	// Flamingo updates
+			include_once plugin_dir_path( __FILE__ ) . 'flamingo.php';	// Flamingo updates
 		}
 
 	}
@@ -125,8 +125,8 @@ Class IQFix_WPCF7_Deity {
 		// Save Regular WPCF7 Settings
 		} else {
 
-			WPCF7::update_option( 'iqfix_recaptcha', 		$selection 	);
-			WPCF7::update_option( 'iqfix_recaptcha_source', $source 	);
+			\WPCF7::update_option( 'iqfix_recaptcha', 		$selection 	);
+			\WPCF7::update_option( 'iqfix_recaptcha_source', $source 	);
 
 		}
 
@@ -208,7 +208,7 @@ Class IQFix_WPCF7_Deity {
 	public function display_recaptcha_version_subpage() {
 
 		$updated 		= $this->save_recaptcha_settings();
-		$cf7_version 	= ( defined( 'WPCF7_VERSION' ) ) ? WPCF7_VERSION : WPCF7::get_option( 'version', '0' );
+		$cf7_version 	= ( defined( 'WPCF7_VERSION' ) ) ? WPCF7_VERSION : \WPCF7::get_option( 'version', '0' );
 
 		// Grab Network Settings
 		if( is_network_admin() ) {
@@ -222,8 +222,8 @@ Class IQFix_WPCF7_Deity {
 		// Grab Site Settings
 		} else {
 
-			$selection 	= WPCF7::get_option( 'iqfix_recaptcha' );
-			$source 	= WPCF7::get_option( 'iqfix_recaptcha_source' );
+			$selection 	= \WPCF7::get_option( 'iqfix_recaptcha' );
+			$source 	= \WPCF7::get_option( 'iqfix_recaptcha_source' );
 
 		}
 

@@ -152,8 +152,9 @@ $elements = [
 
 foreach ($elements as $element) {
     $event = 'fluentform/response_render_' . $element;
-    $app->addFilter($event, function ($response, $field, $form_id, $isLabel = false) {
+    $app->addFilter($event, function ($response, $field, $form_id, $isHtml = false) {
         $element = $field['element'];
+        $isHtml = apply_filters("fluentform/format_{$element}_response_as_html", $isHtml, $response, $field);
 
         if ('dynamic_field' == $element) {
             $dynamicFetchValue = 'yes' == \FluentForm\Framework\Helpers\ArrayHelper::get($field, 'raw.settings.dynamic_fetch');
@@ -196,7 +197,7 @@ foreach ($elements as $element) {
             }
         }
 
-        if ($response && $isLabel && in_array($element, ['select', 'input_radio']) && !is_array($response)) {
+        if ($response && $isHtml && in_array($element, ['select', 'input_radio']) && !is_array($response)) {
             if (!isset($field['options'])) {
                 $field['options'] = [];
                 foreach (\FluentForm\Framework\Helpers\ArrayHelper::get($field, 'raw.settings.advanced_options', []) as $option) {
@@ -209,7 +210,7 @@ foreach ($elements as $element) {
         }
 
         if (in_array($element, ['select', 'input_checkbox', 'multi_payment_component']) && is_array($response)) {
-            return \FluentForm\App\Modules\Form\FormDataParser::formatCheckBoxValues($response, $field, $isLabel);
+            return \FluentForm\App\Modules\Form\FormDataParser::formatCheckBoxValues($response, $field, $isHtml);
         }
 
         return \FluentForm\App\Modules\Form\FormDataParser::formatValue($response);

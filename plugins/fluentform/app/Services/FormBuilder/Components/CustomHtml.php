@@ -37,7 +37,7 @@ class CustomHtml extends BaseComponent
         $atts = $this->buildAttributes(
             ArrayHelper::except($data['attributes'], 'name')
         );
-        $html = "<div class='" . esc_attr($cls) . "' {$atts}>" . fluentform_sanitize_html($data['settings']['html_codes']) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $atts is escaped before being passed in.
+        $html = "<div class='" . esc_attr($cls) . "' tabindex='-1' {$atts}>" . fluentform_sanitize_html($data['settings']['html_codes']) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $atts is escaped before being passed in.
     
         $html = apply_filters_deprecated(
             'fluentform_rendering_field_html_' . $elementName,

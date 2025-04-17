@@ -76,7 +76,7 @@ class Ast_Customizer {
 		add_action( 'wp_ajax_ast_email_preview', array( $this, 'get_preview_email' ) );
 		
 		//load javascript in admin
-		add_action('admin_enqueue_scripts', array( $this, 'customizer_enqueue_scripts' ) );
+		add_action('admin_enqueue_scripts', array( $this, 'customizer_enqueue_scripts' ), 20 );
 		
 		//load CSS/javascript in admin
 		add_action('admin_footer', array( $this, 'admin_footer_enqueue_scripts' ) );
@@ -217,7 +217,7 @@ class Ast_Customizer {
 	*
 	* @since 1.0
 	*/	
-	public function customizer_enqueue_scripts() {
+	public function customizer_enqueue_scripts( $hook ) {
 		
 		$page = isset( $_GET['page'] ) ? wc_clean( $_GET['page'] ) : '' ;
 		

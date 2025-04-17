@@ -212,13 +212,23 @@ class MC4WP_Procaptcha
             /** @var MC4WP_Debug_Log */
             $logger = mc4wp('log');
             $logger->error(sprintf('ProCaptcha request error: %d %s - %s', wp_remote_retrieve_response_code($response), wp_remote_retrieve_response_message($response), wp_remote_retrieve_body($response)));
-            return false;
+
+            // the check failed, but we don't want to break the form in case of Prosopo having server issues
+            // so we write to log and act as if this user is human...
+            return true;
         }
 
         $body        = wp_remote_retrieve_body($response);
-        $body        = json_decode($body, true);
-        $is_verified = is_array($body) && isset($body['verified']) && $body['verified'];
+        $data        = json_decode($body, true);
 
+        // check if Prosopo API returned a correct JSON response
+        if ($data === null || !is_array($data)) {
+            $logger = mc4wp('log');
+            $logger->error(sprintf('ProCaptcha returned a non-JSON response: %s', $body));
+            return true;
+        }
+
+        $is_verified = isset($data['verified']) && $data['verified'];
         return true === $is_verified;
     }
 

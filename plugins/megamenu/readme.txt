@@ -2,7 +2,7 @@
 Contributors: megamenu
 Tags: menu, responsive menu, mega menu, navigation, mobile menu
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 3.5
 Requires PHP: 5.6
 License: GPLv2 or later

@@ -7,8 +7,8 @@ License:           GNU General Public License v2 or later
 Tags:              forum, forums, discussion, support
 Requires PHP:      5.6.20
 Requires at least: 6.0
-Tested up to:      6.5
-Stable tag:        2.6.12
+Tested up to:      6.9
+Stable tag:        2.6.13
 
 bbPress is forum software for WordPress.
 

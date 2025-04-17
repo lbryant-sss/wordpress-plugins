@@ -62,7 +62,7 @@ function iqfix_wpcf7_recaptcha_enqueue_scripts() {
 		return;
 	}
 
-	$source = WPCF7::get_option( 'iqfix_recaptcha_source' );
+	$source = \WPCF7::get_option( 'iqfix_recaptcha_source' );
 	$source = IQFix_WPCF7_Deity::verify_recaptcha_source( $source );
 
 	$url = sprintf( 'https://www.%s/recaptcha/api.js', $source );
@@ -111,7 +111,7 @@ function iqfix_wpcf7_recaptcha_form_tag_handler( $tag ) {
 		wp_enqueue_script( 'google-recaptcha' );
 	}
 
-	$recaptcha = WPCF7_RECAPTCHA::get_instance();
+	$recaptcha = \WPCF7_RECAPTCHA::get_instance();
 	$atts['data-sitekey'] = $recaptcha->get_sitekey();
 	$atts['data-type'] = $tag->get_option( 'type', '(audio|image)', true );
 	$atts['data-size'] = $tag->get_option(
@@ -161,7 +161,7 @@ function iqfix_wpcf7_recaptcha_noscript( $args = '' ) {
 		return;
 	}
 
-	$source = WPCF7::get_option( 'iqfix_recaptcha_source' );
+	$source = \WPCF7::get_option( 'iqfix_recaptcha_source' );
 	$source = IQFix_WPCF7_Deity::verify_recaptcha_source( $source );
 	$url 	= add_query_arg( 'k', $args['sitekey'],
 		sprintf( 'https://www.%s/recaptcha/api/fallback', $source )
@@ -259,7 +259,7 @@ function wpcf7_recaptcha_response() {
  */
 function iqfix_wpcf7_add_tag_generator_recaptcha() {
 
-	$tag_generator = WPCF7_TagGenerator::get_instance();
+	$tag_generator = \WPCF7_TagGenerator::get_instance();
 	$tag_generator->add(
 		'recaptcha',
 		esc_html__( 'reCaptcha', 'wpcf7-recaptcha' ),
@@ -279,129 +279,110 @@ add_action( 'wpcf7_admin_init', 'iqfix_wpcf7_add_tag_generator_recaptcha', 45 );
  * contact-form-7\modules\recaptcha.php LN432
  *
  * @param WPCF7_ContactForm $contact_form
- * @param Array $args
+ * @param Array $options
  *
  * @return void
  */
-function iqfix_wpcf7_tag_generator_recaptcha( $contact_form, $args = '' ) {
+function iqfix_wpcf7_tag_generator_recaptcha( $contact_form, $options = array() ) {
 
-	$args 		= wp_parse_args( $args, array() );
+	$options 	= wp_parse_args( $options, array() );
 	$recaptcha 	= IQFix_ReCaptcha::get_instance();
-
-	if ( ! $recaptcha->is_active() ) {
+	$tgg		= new \WPCF7_TagGeneratorGenerator( $options['content'] );
 
 ?>
-<div class="control-box">
-<fieldset>
-<legend><?php
-	/* translators: %s is a link to the Contact Form 7 blog post regarding reCaptcha v3 */
-	echo sprintf( esc_html__( "To use reCaptcha, first you need to install an API key pair. For more details, see %s.", 'wpcf7-recaptcha' ), wpcf7_link( 'https://contactform7.com/recaptcha/', esc_html__( 'reCaptcha', 'wpcf7-recaptcha' ) ) );
-?></legend>
-</fieldset>
-</div>
+<header class="description-box">
+	<h3><?php esc_html_e( 'ReCaptcha form-tag generator', 'wpcf7-recaptcha' ); ?></h3>
+
+	<p><?php
+		if ( ! $recaptcha->is_active() ) {
+			/* translators: %s is a link to the Contact Form 7 blog post regarding reCaptcha v3 */
+			echo sprintf( esc_html__( "To use reCaptcha, first you need to install an API key pair. For more details, see %s.", 'wpcf7-recaptcha' ), wpcf7_link( 'https://contactform7.com/recaptcha/', esc_html__( 'reCaptcha', 'wpcf7-recaptcha' ) ) );
+		} else {
+			/* translators: %s is a link to the Contact Form 7 blog post regarding reCaptcha v3 */
+			$description 	= esc_html__( "Generate a form-tag for a reCaptcha widget. For more details, see %s.", 'wpcf7-recaptcha' );
+			$desc_link 		= wpcf7_link( 'https://www.iqcomputing.com/support/articles/generate-google-recaptcha-v2-keys/', esc_html__( 'reCaptcha', 'wpcf7-recaptcha' ), array( 'target' => '_blank' ) );
+			echo sprintf( $description, $desc_link );
+		}
+	?></p>
+</header>
+
+<div class="control-box"><?php
+
+	$tgg->print( 'field_type', array(
+		'with_required'		=> false,
+		'select_options'	=> array(
+			$options['id'] => esc_html__( 'ReCaptcha v2', 'wpcf7-recaptcha' ),
+		),
+	) );
+?>
+
+	<fieldset>
+		<legend><?php esc_html_e( 'Size', 'wpcf7-recaptcha' ); ?></legend>
+
+		<label for="<?php echo esc_attr( $options['content'] . '-size-normal' ); ?>">
+			<input type="radio" name="size" class="option default" id="<?php echo esc_attr( $options['content'] . '-size-normal' ); ?>" value="normal" checked="checked" data-tag-part="option" data-tag-option="" /> <?php
+			/* translators: ReCaptcha size: normal */
+			esc_html_e( 'Normal', 'wpcf7-recaptcha' );
+		?></label>
+		<br />
+		<label for="<?php echo esc_attr( $options['content'] . '-size-compact' ); ?>">
+			<input type="radio" name="size" class="option" id="<?php echo esc_attr( $options['content'] . '-size-compact' ); ?>" value="compact" data-tag-part="option" data-tag-option="size:compact" /> <?php
+			/* translators: ReCaptcha size: compact */
+			esc_html_e( 'Compact', 'wpcf7-recaptcha' );
+		?></label>
+	</fieldset>
+
+	<fieldset>
+		<legend><?php esc_html_e( 'Theme', 'wpcf7-recaptcha' ); ?></legend>
+
+		<label for="<?php echo esc_attr( $options['content'] . '-theme-light' ); ?>">
+			<input type="radio" name="theme" class="option default" id="<?php echo esc_attr( $options['content'] . '-theme-light' ); ?>" value="light" checked="checked" data-tag-part="option" data-tag-option="" /> <?php
+			/* translators: ReCaptcha theme: light */
+			esc_html_e( 'Light', 'wpcf7-recaptcha' );
+		?></label>
+		<br />
+		<label for="<?php echo esc_attr( $options['content'] . '-theme-dark' ); ?>">
+			<input type="radio" name="theme" class="option" id="<?php echo esc_attr( $options['content'] . '-theme-dark' ); ?>" value="dark" data-tag-part="option" data-tag-option="theme:dark" /> <?php
+			/* translators: ReCaptcha theme: dark */
+			esc_html_e( 'Dark', 'wpcf7-recaptcha' );
+		?></label>
+	</fieldset>
+
+
+	<fieldset>
+		<legend><?php esc_html_e( 'Alignment', 'wpcf7-recaptcha' ); ?></legend>
+
+		<label for="<?php echo esc_attr( $options['content'] . '-align-left' ); ?>">
+			<input type="radio" name="align" class="option default" id="<?php echo esc_attr( $options['content'] . '-align-left' ); ?>" value="left" checked="checked" data-tag-part="option" data-tag-option="" /> <?php
+			/* translators: ReCaptcha alignment: left */
+			esc_html_e( 'Left', 'wpcf7-recaptcha' );
+		?></label>
+		<br />
+		<label for="<?php echo esc_attr( $options['content'] . '-align-center' ); ?>">
+			<input type="radio" name="align" class="option" id="<?php echo esc_attr( $options['content'] . '-align-center' ); ?>" value="center" data-tag-part="option" data-tag-option="align:center" /> <?php
+			/* translators: ReCaptcha alignment: center */
+			esc_html_e( 'Center', 'wpcf7-recaptcha' );
+		?></label>
+		<br />
+		<label for="<?php echo esc_attr( $options['content'] . '-align-right' ); ?>">
+			<input type="radio" name="align" class="option" id="<?php echo esc_attr( $options['content'] . '-align-right' ); ?>" value="right" data-tag-part="option" data-tag-option="align:right" /> <?php
+			/* translators: ReCaptcha alignment: right */
+			esc_html_e( 'Right', 'wpcf7-recaptcha' );
+		?></label>
+	</fieldset>
+
 <?php
 
-		return;
-	}
+	$tgg->print( 'id_attr' );
 
-	/* translators: %s is a link to the Contact Form 7 blog post regarding reCaptcha v3 */
-	$description 	= esc_html__( "Generate a form-tag for a reCaptcha widget. For more details, see %s.", 'wpcf7-recaptcha' );
-	$desc_link 		= wpcf7_link( 'https://contactform7.com/recaptcha/', esc_html__( 'reCaptcha', 'wpcf7-recaptcha' ) );
+	$tgg->print( 'class_attr' );
 
-?>
-<div class="control-box">
-<fieldset>
-<legend><?php echo sprintf( $description, $desc_link ); ?></legend>
 
-<table class="form-table">
-<tbody>
-	<tr>
-	<th scope="row"><?php
-		/* translators: ReCaptcha size (normal or compact) */
-		esc_html_e( 'Size', 'wpcf7-recaptcha' );
-	?></th>
-	<td>
-		<fieldset>
-		<legend class="screen-reader-text"><?php
-			/* translators: Screen reader text, reCaptcha size (normal or compact) */
-			esc_html_e( 'Size', 'wpcf7-recaptcha' );
-		?></legend>
-		<label for="<?php echo esc_attr( $args['content'] . '-size-normal' ); ?>"><input type="radio" name="size" class="option default" id="<?php echo esc_attr( $args['content'] . '-size-normal' ); ?>" value="normal" checked="checked" /> <?php /* translators: ReCaptcha size: normal */ esc_html_e( 'Normal', 'wpcf7-recaptcha' ); ?></label>
-		<br />
-		<label for="<?php echo esc_attr( $args['content'] . '-size-compact' ); ?>"><input type="radio" name="size" class="option" id="<?php echo esc_attr( $args['content'] . '-size-compact' ); ?>" value="compact" /> <?php /* translators: ReCaptcha size: compact */ esc_html_e( 'Compact', 'wpcf7-recaptcha' ); ?></label>
-		</fieldset>
-	</td>
-	</tr>
+?></div>
 
-	<tr>
-	<th scope="row"><?php
-		/* translators: ReCaptcha theme (light or dark) */
-		esc_html_e( 'Theme', 'wpcf7-recaptcha' );
-	?></th>
-	<td>
-		<fieldset>
-		<legend class="screen-reader-text"><?php
-			/* translators: Screen reader text, reCaptcha theme (light or dark) */
-			esc_html_e( 'Theme', 'wpcf7-recaptcha' );
-		?></legend>
-		<label for="<?php echo esc_attr( $args['content'] . '-theme-light' ); ?>"><input type="radio" name="theme" class="option default" id="<?php echo esc_attr( $args['content'] . '-theme-light' ); ?>" value="light" checked="checked" /> <?php /* translators: ReCaptcha theme: light */ esc_html_e( 'Light', 'wpcf7-recaptcha' ); ?></label>
-		<br />
-		<label for="<?php echo esc_attr( $args['content'] . '-theme-dark' ); ?>"><input type="radio" name="theme" class="option" id="<?php echo esc_attr( $args['content'] . '-theme-dark' ); ?>" value="dark" /> <?php /* translators: ReCaptcha theme: dark */ esc_html_e( 'Dark', 'wpcf7-recaptcha' ); ?></label>
-		</fieldset>
-	</td>
-	</tr>
-
-	<tr>
-	<th scope="row"><?php
-		/* translators: ReCaptcha theme (light or dark) */
-		esc_html_e( 'Alignment', 'wpcf7-recaptcha' );
-	?></th>
-	<td>
-		<fieldset>
-		<legend class="screen-reader-text"><?php
-			/* translators: Alignment of the reCaptcha box (left, center, right) */
-			esc_html_e( 'Alignment', 'wpcf7-recaptcha' );
-		?></legend>
-		<label for="<?php echo esc_attr( $args['content'] . '-align-left' ); ?>"><input type="radio" name="align" class="option default" id="<?php echo esc_attr( $args['content'] . '-align-left' ); ?>" value="left" checked="checked" /> <?php /* translators: ReCaptcha alignment: left */ esc_html_e( 'Left', 'wpcf7-recaptcha' ); ?></label>
-		<br />
-		<label for="<?php echo esc_attr( $args['content'] . '-align-center' ); ?>"><input type="radio" name="align" class="option" id="<?php echo esc_attr( $args['content'] . '-align-center' ); ?>" value="center" /> <?php /* translators: ReCaptcha alignment: center */ esc_html_e( 'Center', 'wpcf7-recaptcha' ); ?></label>
-		<br />
-		<label for="<?php echo esc_attr( $args['content'] . '-align-right' ); ?>"><input type="radio" name="align" class="option" id="<?php echo esc_attr( $args['content'] . '-align-right' ); ?>" value="right" /> <?php /* translators: ReCaptcha alignment: right */ esc_html_e( 'Right', 'wpcf7-recaptcha' ); ?></label>
-		</fieldset>
-	</td>
-	</tr>
-
-	<tr>
-	<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-id' ); ?>"><?php
-		/* translators: HTML Attribute ID for reCaptcha box */
-		esc_html_e( 'Id attribute', 'wpcf7-recaptcha' );
-	?></label></th>
-	<td><input type="text" name="id" class="idvalue oneline option" id="<?php echo esc_attr( $args['content'] . '-id' ); ?>" /></td>
-	</tr>
-
-	<tr>
-	<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-class' ); ?>"><?php
-		/* translators: HTML Attribute class for reCaptcha box */
-		esc_html_e( 'Class attribute', 'wpcf7-recaptcha' );
-	?></label></th>
-	<td><input type="text" name="class" class="classvalue oneline option" id="<?php echo esc_attr( $args['content'] . '-class' ); ?>" /></td>
-	</tr>
-
-</tbody>
-</table>
-</fieldset>
-</div>
-
-<div class="insert-box">
-	<input type="text" name="recaptcha" class="tag code" readonly="readonly" onfocus="this.select()" />
-
-	<div class="submitbox">
-	<input type="button" class="button button-primary insert-tag" value="<?php
-		/* translators: Insert shortcode tag into the page content */
-		esc_attr_e( 'Insert Tag', 'wpcf7-recaptcha' );
-	?>" />
-	</div>
-</div>
+<footer class="insert-box">
+	<?php $tgg->print( 'insert_box_content' ); ?>
+</footer>
 <?php
 
 }
@@ -420,7 +401,7 @@ function iqfix_recaptcha_class_init() {
 		return false;
 	}
 
-	Class IQFix_ReCaptcha extends WPCF7_RECAPTCHA {
+	Class IQFix_ReCaptcha extends \WPCF7_RECAPTCHA {
 
 		private static $instance;
 		private $sitekeys;
@@ -440,7 +421,7 @@ function iqfix_recaptcha_class_init() {
 			if( defined( 'WPCF7_RECAPTCHA_SITEKEY' ) && defined( 'WPCF7_RECAPTCHA_SECRET' ) ) {
 				$this->sitekeys = array( WPCF7_RECAPTCHA_SITEKEY => WPCF7_RECAPTCHA_SECRET );
 			} else {
-				$this->sitekeys = WPCF7::get_option( 'recaptcha' );
+				$this->sitekeys = \WPCF7::get_option( 'recaptcha' );
 			}
 
 		}
@@ -540,7 +521,7 @@ function iqfix_recaptcha_class_init() {
 				return $is_human;
 			}
 
-			$source		= WPCF7::get_option( 'iqfix_recaptcha_source' );
+			$source		= \WPCF7::get_option( 'iqfix_recaptcha_source' );
 			$source		= IQFix_WPCF7_Deity::verify_recaptcha_source( $source );
 			$endpoint	= sprintf( 'https://www.%s/recaptcha/api/siteverify', $source );
 			$sitekey	= $this->get_sitekey();

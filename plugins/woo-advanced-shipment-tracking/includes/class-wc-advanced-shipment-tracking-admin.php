@@ -413,6 +413,9 @@ class WC_Advanced_Shipment_Tracking_Admin {
 				} else if ( 'tgl_checkbox' == $array['type'] ) {
 					$default = isset( $array['default'] ) ? $array['default'] : '';
 					$checked = get_option( $id, $default ) ? 'checked' : '' ;
+					if ( 'wc_ast_enable_log' == $id ) {
+						$checked = ( get_ast_settings( $array['option_name'], $id, $default ) ) ? 'checked' : '' ;
+					} 
 					$tgl_class = isset( $array['tgl_color'] ) ? 'ast-tgl-btn-green' : '';
 					$disabled = isset( $array['disabled'] ) && true == $array['disabled'] ? 'disabled' : '';
 					?>
@@ -437,6 +440,20 @@ class WC_Advanced_Shipment_Tracking_Admin {
 								<?php esc_html_e( 'Customize', 'woo-advanced-shipment-tracking' ); ?>
 							</a>
 						<?php } ?>
+						<?php						
+						if ( isset( $array['input_desc'] ) ) {
+							if ( isset( $array['desc_url'] ) ) { 
+								?>
+								<span class="ast_log_setting"><?php esc_html_e( $array['input_desc'] ); ?>
+								<a target="_blank" class='' href="<?php esc_html_e( $array['desc_url'] ); ?>">Logs</a></span>
+							<?php 
+							} else {
+								?>
+								<span><?php esc_html_e( $array['input_desc'] ); ?></span>
+							<?php 
+							}
+						}
+						?>
 					</li>
 				<?php
 				} else if ( 'radio' == $array['type'] ) {
@@ -738,6 +755,17 @@ class WC_Advanced_Shipment_Tracking_Admin {
 				'show'		=> true,
 				'option_name' => 'ast_general_settings',
 				'class'     => '',
+			),
+			'wc_ast_enable_log' => array(
+				'title'		=> __( 'Enable log', 'woo-advanced-shipment-tracking' ),
+				'tooltip'   => __( 'Enable this to log all incoming API requests and responses for the Shipment Tracking API in WooCommerce logs. Logs can be found under WooCommerce > Status > Logs.', 'woo-advanced-shipment-tracking' ),
+				'type'		=> 'tgl_checkbox',
+				'default'	=> 0,
+				'show'		=> true,
+				'option_name' => 'ast_general_settings',
+				'class'		=> '',
+				'input_desc' => __( 'Log will be added to WooCommerce > Status > ', 'woo-advanced-shipment-tracking' ),
+				'desc_url'	=>  admin_url( 'admin.php?page=wc-status&tab=logs', 'https' ),
 			),
 		);
 		return $form_data;
@@ -1143,10 +1171,6 @@ class WC_Advanced_Shipment_Tracking_Admin {
 		$status_shipped = ( isset( $_POST['status_shipped'] ) ? wc_clean( $_POST['status_shipped'] ) : '' );
 		$date_shipped = ( isset( $_POST['date_shipped'] ) ? wc_clean( $_POST['date_shipped'] ) : '' );
 		$date_shipped = str_replace( '/', '-', $date_shipped );
-		$trackings = ( isset( $_POST['trackings'] ) ? wc_clean( $_POST['trackings'] ) : '' );		
-		
-		$sku = isset( $_POST['sku'] ) ? wc_clean( $_POST['sku'] ) : '';
-		$qty = isset( $_POST['qty'] ) ? wc_clean( $_POST['qty'] ) : '';	
 		$date_shipped = empty( $date_shipped ) ? gmdate('d-m-Y') : $date_shipped ;	
 
 		global $wpdb;					
@@ -1155,13 +1179,6 @@ class WC_Advanced_Shipment_Tracking_Admin {
 		
 		if ( 0 == $shippment_provider ) {
 			$shippment_provider = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM %1s WHERE JSON_CONTAINS(api_provider_name, '[" . '"' . $tracking_provider . '"' . "]')", $this->table ) );
-			/*$shippment_provider = $wpdb->get_var(
-				$wpdb->prepare(
-					'SELECT COUNT(*) FROM %s WHERE JSON_CONTAINS(api_provider_name, %s)',
-					$this->table,
-					json_encode([$tracking_provider])
-				)
-			);*/
 		}	
 		
 		if ( 0 == $shippment_provider ) {
@@ -1238,185 +1255,30 @@ class WC_Advanced_Shipment_Tracking_Admin {
 				'date_shipped'      => $date_shipped,
 				'status_shipped'	=> $status_shipped,
 			);
-				
-			if ( '' != $sku ) {				
-				
-				$products_list = array();
-				
-				if ( $qty > 0 ) {
-					
-					$product_id = ast_get_product_id_by_sku( $sku );
-					
-					if ( $product_id ) {
-						
-						$product_data =  (object) array (							
-							'product' => $product_id,
-							'qty' => $qty,
-						);
-						
-						array_push( $products_list, $product_data );
-						
-						$product_data_array = array();
-						$product_data_array[ $product_id ] = $qty;
-						
-						$status_shipped = ( isset( $_POST['status_shipped'] ) ? wc_clean( $_POST['status_shipped'] ) : '' );
-						
-						$autocomplete_order_tpi = get_ast_settings( 'ast_general_settings', 'autocomplete_order_tpi', 0 );
-						if ( 1 == $autocomplete_order_tpi ) {
-							$status_shipped = $this->autocomplete_order_after_adding_all_products( $order_id, $status_shipped, $products_list );
-							$args['status_shipped'] = $status_shipped;
-						}						
-						
-						if ( count( $tracking_items ) > 0 ) {								
-							foreach ( $tracking_items as $key => $item ) {						
-								if ( $item['tracking_number'] == $tracking_number ) {
-									
-									if ( isset( $item['products_list'] ) && !empty( $item['products_list'] ) ) {
-										
-										$product_list_array = array();
-										foreach ( $item['products_list'] as $item_product_list ) {														
-											$product_list_array[ $item_product_list->product ] = $item_product_list->qty;
-										}																							
-										
-										$mearge_array = array();										
-										foreach ( array_keys( $product_data_array + $product_list_array ) as $product) {										
-											$mearge_array[ $product ] = (int) ( isset( $product_data_array[ $product ] ) ? $product_data_array[ $product ] : 0 ) + (int) ( isset( $product_list_array[$product] ) ? $product_list_array[ $product ] : 0 );
-										}																								
-										
-										foreach ( $mearge_array as $productid => $product_qty ) {
-											$merge_product_data[] =  (object) array (							
-												'product' => $productid,
-												'qty' => $product_qty,
-											);
-										}
-											
-										if ( !empty( $merge_product_data ) ) {
-											$tracking_items[ $key ]['products_list'] = $merge_product_data;	
-											$wast->save_tracking_items( $order_id, $tracking_items );
-
-											$order = new WC_Order( $order_id );
-											
-											do_action( 'update_order_status_after_adding_tracking', $status_shipped, $order );
-		
-											echo '<li class="success">Success - added tracking info to Order ' . esc_html( $order_number ) . '</li>';
-											exit;
-										}		
-									}											
-								}	 
-							}																		
-						} 
-						
-						$product_args = array(
-							'products_list' => $products_list,				
-						);							
-					}
-				}																																	
-				$args = array_merge( $args, $product_args );				
-			}																												
-			 
-			$wast->add_tracking_item( $order_id, $args );
 			
+			$args['source'] = 'csv';
+
+			$tracking_item = $wast->add_tracking_item( $order_id, $args );
+
+			$wc_ast_enable_log = get_ast_settings( 'ast_general_settings', 'wc_ast_enable_log', 0 );
+			 
+			if ( 1 == $wc_ast_enable_log ) {
+				$log_content = array(
+					'url'		=> isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : 'unknown',
+					'request'	=> $_POST,
+					'response'	=> array( 'tracking_item' => $tracking_item ),
+				);
+
+				$ast = WC_AST_Logger::get_instance();
+				$ast->log_event( 'ast_create_csv_import_log', $log_content );
+			}
+
 			echo '<li class="success">Success - added tracking info to Order ' . esc_html( $order_number ) . '</li>';
 			exit;				
 		} else {
 			echo '<li class="invalid_tracking_data_error">Failed - Invalid Tracking Data</li>';
 			exit;
 		}		
-	}
-	
-	/*
-	* Function for autocompleted order after adding all product through TPI 
-	*/
-	public function autocomplete_order_after_adding_all_products( $order_id, $status_shipped, $products_list ) {
-	
-		$order = wc_get_order( $order_id );
-		$items = $order->get_items();
-		$items_count = count( $items );
-		
-		$added_products = $this->get_all_added_product_list_with_qty( $order_id );
-		
-		$new_products = array();
-			
-		foreach ( $products_list as $in_list ) {
-			
-			if ( isset( $new_products[ $in_list->product ] ) ) {
-				$new_products[ $in_list->product ] = (int) $new_products[ $in_list->product ] + (int) $in_list->qty;							
-			} else {
-				$new_products[ $in_list->product ] = $in_list->qty;	
-			}			
-		}
-		
-		$total_products_data = array();
-	
-		foreach ( array_keys( $new_products + $added_products ) as $products ) {
-			$total_products_data[ $products ] = ( isset( $new_products[ $products ] ) ? $new_products[ $products ] : 0 ) + ( isset( $added_products[ $products ] ) ? $added_products[ $products ] : 0 );
-		}			
-		
-		$orders_products_data = array();
-		foreach ( $items as $item ) {																
-			$checked = 0;
-			$qty = $item->get_quantity();
-			
-			$variation_id = $item->get_variation_id();
-			$product_id = $item->get_product_id();					
-			
-			if ( 0 != $variation_id ) {
-				$product_id = $variation_id;
-			}
-			
-			$orders_products_data[ $product_id ] = $qty;
-		}				
-		
-		$change_status = 0;
-		$autocomplete_order = true;				
-		
-		foreach ( $orders_products_data as $product_id => $qty ) {		
-			if (isset( $total_products_data[ $product_id ] ) ) {
-				if ( $qty > $total_products_data[ $product_id ] ) {
-					$autocomplete_order = false;
-					$change_status = 1;
-				} else {
-					$change_status = 1;
-				}
-			} else {
-				$autocomplete_order = false;
-			}
-		}
-		
-		if ( $autocomplete_order && 1 == $change_status ) {
-			$status_shipped = 1;
-		}
-		return $status_shipped;
-	}
-	
-	/*
-	* Function for get already added product in TPI
-	*/
-	public function get_all_added_product_list_with_qty( $order_id ) {
-		
-		$ast = WC_Advanced_Shipment_Tracking_Actions::get_instance();
-		$tracking_items = ast_get_tracking_items( $order_id );
-		
-		$product_list = array();			
-		
-		foreach ( $tracking_items as $tracking_item ) {			
-			if ( isset( $tracking_item[ 'products_list' ] ) ) {
-				$product_list[] = $tracking_item[ 'products_list' ];				
-			}
-		}
-		
-		$all_list = array();
-		foreach ( $product_list as $list ) {			
-			foreach ( $list as $in_list ) {
-				if ( isset( $all_list[ $in_list->product ] ) ) {
-					$all_list[ $in_list->product ] = (int) $all_list[ $in_list->product ] + (int) $in_list->qty;
-				} else {
-					$all_list[ $in_list->product ] = $in_list->qty;	
-				}
-			}				
-		}
-		
-		return $all_list;
 	}
 	
 	/*

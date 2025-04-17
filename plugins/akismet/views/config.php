@@ -72,10 +72,8 @@ $kses_allow_link_href = array(
 			</div> <!-- close akismet-card -->
 		<?php endif; ?>
 
-		<?php if ( isset( $_GET['show_compatible_plugins'] ) && (int) $_GET['show_compatible_plugins'] === 1 ) : ?>
-			<?php if ( apply_filters( 'akismet_show_compatible_plugins', true ) ) : ?>
-				<?php Akismet::view( 'compatible-plugins' ); ?>
-			<?php endif; ?>
+		<?php if ( apply_filters( 'akismet_show_compatible_plugins', true ) ) : ?>
+			<?php Akismet::view( 'compatible-plugins' ); ?>
 		<?php endif; ?>
 
 		<?php if ( $akismet_user ) : ?>

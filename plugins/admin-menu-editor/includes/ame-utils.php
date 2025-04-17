@@ -183,9 +183,9 @@ class ameUtils {
 	 * Also, if an error has a data item that's an array with a 'title' key,
 	 * this escapes HTML in the title.
 	 *
-	 * @param \WP_Error $error
+	 * @param WP_Error $error
 	 * @param callable $callback
-	 * @return \WP_Error
+	 * @return WP_Error
 	 */
 	protected static function copyErrorWithFilter($error, $callback) {
 		$result = new WP_Error();
@@ -325,7 +325,7 @@ class ameUtils {
 			);
 
 		if ( $isValid ) {
-			$outputQueryParams['selected_actor'] = $selectedActor;
+			$outputQueryParams[$queryParameterName] = $selectedActor;
 		}
 
 		return $outputQueryParams;
@@ -419,13 +419,12 @@ class ameUtils {
 }
 
 /**
- * @see ameUtils::escapeWpError
- *
  * This function exists because the "EscapeOutput" sniff in the WordPress coding standards
  * doesn't understand class methods.
  *
- * @param \WP_Error $error
- * @return \WP_Error
+ * @param WP_Error $error
+ * @return WP_Error
+ * @see ameUtils::escapeWpError
  */
 function wsAmeEscapeWpError($error) {
 	return ameUtils::escapeWpError($error);
@@ -981,5 +980,98 @@ class ameCustomizationFeatureToggle {
 				!empty($additionalText) ? esc_html(' ' . $additionalText) : ''
 			);
 		}
+	}
+}
+
+class ameKnockoutSaveForm {
+	private $action;
+	private $submitUrl;
+	private $saveButtonText;
+
+	public function __construct($action, $submitUrl, $saveButtonText = '') {
+		$this->action = $action;
+		$this->submitUrl = $submitUrl;
+		$this->saveButtonText = $saveButtonText;
+	}
+
+	public function getSaveFormConfig() {
+		$config = [
+			'action'      => $this->action,
+			'actionNonce' => wp_create_nonce($this->action),
+			'submitUrl'   => $this->submitUrl,
+			'referer'     => remove_query_arg('_wp_http_referer'),
+		];
+		if ( !empty($this->saveButtonText) ) {
+			$config['saveButtonText'] = $this->saveButtonText;
+		}
+		return $config;
+	}
+
+	public function processSubmission(array $post) {
+		check_admin_referer($this->action);
+
+		if ( empty($post['settings']) ) {
+			wp_die('The "settings" field is missing or empty.');
+		}
+
+		if ( !is_string($post['settings']) ) {
+			wp_die('Invalid settings data: expected a JSON string.');
+		}
+
+		$newSettings = json_decode($post['settings'], true);
+		if ( !is_array($newSettings) ) {
+			wp_die('Invalid settings data: expected a valid JSON object.');
+		}
+
+		return new ameParsedKnockoutFormSubmission($newSettings, $post);
+	}
+}
+
+class ameParsedKnockoutFormSubmission {
+	const SELECTED_ACTOR_FIELD = 'selectedActor';
+
+	private $settings;
+	private $fields;
+
+	public function __construct(array $settings, array $fields) {
+		$this->settings = $settings;
+		$this->fields = $fields;
+	}
+
+	public function getSettings() {
+		return $this->settings;
+	}
+
+	public function getField($name, $defaultValue = null) {
+		if ( isset($this->fields[$name]) ) {
+			return $this->fields[$name];
+		}
+		return $defaultValue;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSelectedActorId() {
+		$defaultValue = '';
+		$result = $this->getField('selectedActor', $defaultValue);
+		if ( is_string($result) ) {
+			return $result;
+		}
+		return $defaultValue;
+	}
+
+	/**
+	 * Add the selected actor submitted via the form to the provided query parameters.
+	 *
+	 * @param array $queryParams
+	 * @return array
+	 */
+	public function withSelectedActor(array $queryParams) {
+		return ameUtils::withSelectedActor(
+			$queryParams,
+			$this->fields,
+			self::SELECTED_ACTOR_FIELD
+		);
 	}
 }
