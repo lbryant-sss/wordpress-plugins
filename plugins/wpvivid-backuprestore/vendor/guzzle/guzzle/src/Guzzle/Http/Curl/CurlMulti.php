@@ -118,6 +118,7 @@ class CurlMulti extends AbstractHasDispatcher implements CurlMultiInterface
         }
     }
 
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->requests);

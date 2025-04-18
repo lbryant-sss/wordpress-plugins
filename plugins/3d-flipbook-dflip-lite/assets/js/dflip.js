@@ -437,8 +437,9 @@ function _instanceof(left, right) {
 ;// CONCATENATED MODULE: ./src/js/dearviewer/defaults.js
 /* globals jQuery */ var defaults_DEARVIEWER = {
     jQuery: jQuery,
-    version: '2.3.57',
+    version: '2.3.65',
     autoDetectLocation: true,
+    _isHashTriggered: false,
     slug: undefined,
     locationVar: "dearViewerLocation",
     locationFile: undefined,
@@ -671,7 +672,7 @@ defaults_DEARVIEWER._defaults = {
         'facebook': 'https://www.facebook.com/sharer/sharer.php?u={{url}}&t={{mailsubject}}',
         'twitter': 'https://twitter.com/share?url={{url}}&text={{mailsubject}}',
         'mail': undefined,
-        'whatsapp': 'https://api.whatsapp.com/send/?text={{mailsubject}}+{{url}}&type=custom_url&app_absent=0',
+        'whatsapp': 'https://api.whatsapp.com/send/?text={{mailsubject}}+{{url}}&app_absent=0',
         'linkedin': 'https://www.linkedin.com/shareArticle?url={{url}}&title={{mailsubject}}',
         'pinterest': 'https://www.pinterest.com/pin/create/button/?url={{url}}&media=&description={{mailsubject}}'
     },
@@ -1281,9 +1282,10 @@ utils.detectHash = function() {
     if (prefixes.indexOf("") == -1) prefixes.push("");
     Array.prototype.forEach.call(prefixes, function(prefix) {
         var hash = defaults_DEARVIEWER.preParseHash;
-        if (hash && hash.indexOf(prefix) >= 0 && defaults_DEARVIEWER.hashFocusBookFound === false) {
-            if (prefix.length > 0) {
-                hash = hash.split(prefix)[1];
+        var hashedPrefix = "#" + prefix;
+        if (hash && hash.indexOf(hashedPrefix) >= 0 && defaults_DEARVIEWER.hashFocusBookFound === false) {
+            if (hashedPrefix.length > 1) {
+                hash = hash.split(hashedPrefix)[1];
             }
             var id = hash.split('/')[0].replace("#", "");
             if (id.length > 0) {
@@ -1309,7 +1311,7 @@ utils.detectHash = function() {
                     var app = defaults_DEARVIEWER.activeLightBox && defaults_DEARVIEWER.activeLightBox.app || book.data("df-app");
                     if (app != null) {
                         app.gotoPage(page);
-                        app.hashNavigationEnabled = true;
+                        // app.hashNavigationEnabled = true;
                         utils.focusHash(app.element);
                         return false;
                     } else if (page != null) {
@@ -1319,7 +1321,9 @@ utils.detectHash = function() {
                     }
                     book.addClass("df-hash-focused", true);
                     if (book.data('lightbox') != null || book.data('df-lightbox') != null) {
+                        defaults_DEARVIEWER._isHashTriggered = true;
                         book.trigger("click");
+                        defaults_DEARVIEWER._isHashTriggered = false;
                     } else if (book.attr("href") != null && book.attr("href").indexOf(".pdf") > -1) {
                         book.trigger("click");
                     }
@@ -10408,11 +10412,13 @@ defaults_DEARVIEWER.openLightBox = function openLightBox(app) {
                 defaults_DEARVIEWER.activeLightBox.app = controls_jQuery(defaults_DEARVIEWER.activeLightBox.element).dearviewer({
                     transparent: false,
                     isLightBox: true,
-                    hashNavigationEnabled: true,
+                    // hashNavigationEnabled: true,
                     height: "100%",
                     dataElement: app
                 });
-                history.pushState({}, null, "#");
+                if (defaults_DEARVIEWER._isHashTriggered !== true) {
+                    history.pushState(null, null, "#");
+                }
                 defaults_DEARVIEWER.activeLightBox.lightboxWrapper.toggleClass("df-lightbox-padded", defaults_DEARVIEWER.activeLightBox.app.options.popupFullsize === false);
                 defaults_DEARVIEWER.activeLightBox.lightboxWrapper.toggleClass("df-rtl", defaults_DEARVIEWER.activeLightBox.app.options.readDirection === defaults_DEARVIEWER.READ_DIRECTION.RTL);
                 defaults_DEARVIEWER.activeLightBox.backGround.css({

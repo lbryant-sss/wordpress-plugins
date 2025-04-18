@@ -177,11 +177,12 @@ class DFlip_ShortCode {
     $thumb_url = '';
     $thumb_tag_type = $base->get_config( 'thumb_tag_type' );
     $share_slug = $base->get_config( 'share_slug' );
-
+	  
+	  $post = trim( $post_id ) === '' ? null : get_post( $post_id );
     $post_data = array();
 		
     //pull post data if available for the script part only
-    if ( !empty( $post_id ) && is_numeric( $post_id ) ) {
+    if ( $post != null && !empty( $post_id ) && is_numeric( $post_id ) ) {
 
       $id = 'df_' . $post_id;
 

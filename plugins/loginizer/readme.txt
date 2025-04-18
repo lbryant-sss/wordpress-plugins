@@ -2,9 +2,9 @@
 Contributors: softaculous, loginizer, pagelayer
 Tags: security, access, admin, Loginizer, login, logs, ban ip, failed login, ip, whitelist ip, blacklist ip, failed attempts, lockouts, hack, authentication, login, security, rename login url, rename login, rename wp-admin, secure wp-admin, rename admin url, secure admin, brute force protection
 Requires at least: 3.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 1.9.9
+Stable tag: 2.0.0
 License: LGPLv2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -84,6 +84,10 @@ That's it. You're done!
 3. Loginizer Brute Force Settings page
 
 == Changelog ==
+
+= 2.0.0 =
+* [Task] Tested with WordPress 6.8.
+* [Bug-Fix] A minor issue has been fixed which was reported by HedgeByte Security.
 
 = 1.9.9 =
 * [Task] There was a warning on PHP 8.2, that has been fixed.

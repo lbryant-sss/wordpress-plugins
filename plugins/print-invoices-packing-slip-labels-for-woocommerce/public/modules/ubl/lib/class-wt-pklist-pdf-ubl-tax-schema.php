@@ -11,6 +11,11 @@ Class Schema {
     public $tax_schemas = array();
 
     public function __construct() {
+        add_action('init', array($this, 'initialize_tax_schemas'));
+
+    }
+    public function initialize_tax_schemas() {
+        // This method is called on init.
         $this->tax_schemas = $this->get_tax_schemas();
     }
 

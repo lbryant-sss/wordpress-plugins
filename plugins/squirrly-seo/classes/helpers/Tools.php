@@ -22,7 +22,7 @@ class SQ_Classes_Helpers_Tools
         self::$options = $this->getOptions();
 
 	    //Load the languages pack
-	    add_action("init", array($this, 'loadMultilanguage'), PHP_INT_MAX);
+	    add_action( "init", array($this, 'loadMultilanguage'), PHP_INT_MAX);
 
 	    SQ_Classes_ObjController::getClass('SQ_Classes_HookController')->setHooks($this);
     }
@@ -1275,6 +1275,10 @@ class SQ_Classes_Helpers_Tools
 
         $locale = get_user_locale();
         $locale = apply_filters( 'plugin_locale', $locale, _SQ_PLUGIN_NAME_ );
+
+		if( strpos( $locale , 'en_' ) !== false ) {
+			return;
+		}
 
         unload_textdomain( _SQ_PLUGIN_NAME_ );
 

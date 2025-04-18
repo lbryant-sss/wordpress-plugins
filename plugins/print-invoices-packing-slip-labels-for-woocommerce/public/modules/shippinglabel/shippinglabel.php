@@ -22,7 +22,7 @@ class Wf_Woocommerce_Packing_List_Shippinglabel
 	{
 		$this->module_id=Wf_Woocommerce_Packing_List::get_module_id($this->module_base);
 		self::$module_id_static=$this->module_id;
-		$this->module_title=__("Shipping label","print-invoices-packing-slip-labels-for-woocommerce");
+		add_action( 'init', array( $this, 'load_translations_and_strings' ) );
 
 		add_filter('wf_module_default_settings',array($this,'default_settings'),10,2);
 
@@ -60,6 +60,11 @@ class Wf_Woocommerce_Packing_List_Shippinglabel
 
 		add_filter( 'wt_pklist_hide_shipping_address_for_local_pickup', array( $this, 'hide_shipping_address_for_local_pickup' ),10,3);
         add_filter( 'wt_pklist_use_billing_address_as_shipping_address', array($this, 'use_billing_address_as_shipping_address'), 10, 3);
+	}
+
+	public function load_translations_and_strings()
+	{
+		$this->module_title=__("Shipping label","print-invoices-packing-slip-labels-for-woocommerce");
 	}
 
 	/**

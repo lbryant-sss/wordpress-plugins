@@ -58,7 +58,7 @@ class DFlip_Meta_boxes {
     add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 100 );
 
     // Add action to save metabox config options.
-    add_action( 'save_post', array( $this, 'save_meta_boxes' ), 10, 2 );
+    add_action( 'save_post_dflip', array( $this, 'save_meta_boxes' ), 10, 2 );
   }
 
   /**

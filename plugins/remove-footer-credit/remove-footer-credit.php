@@ -2,7 +2,7 @@
 /**
  * Plugin Name:             Remove Footer Credit
  * Description:             A simple plugin to remove footer credits
- * Version:                 1.0.14
+ * Version:                 1.0.15
  * Author:                  WPChill
  * Author URI:              https://wpchill.com
  * Requires:                5.2 or higher
@@ -10,7 +10,7 @@
  * License URI:             http://www.gnu.org/licenses/gpl-3.0.html
  * Requires PHP:            7.1
  * Text Domain:             remove-footer-credit
- * Tested up to:            6.7
+ * Tested up to:            6.8
  *
  * Copyright 2016-2017      Joe Bill            joe@upwerd.com
  * Copyright 2017-2020      MachoThemes         office@machothemes.com
@@ -52,32 +52,36 @@ class RFC_Plugin {
 	private $assets_path;
 
 	public function __construct() {
-		$this->tabs        = [
-			'settings' => [
+		add_action( 'init', array( $this, 'init' ) );
+		$this->public_hooks();
+		$this->admin_hooks();
+	}
+
+	public function init() {
+		$this->tabs       = array(
+			'settings' => array(
 				'label' => esc_html__( 'Settings', 'remove-footer-credit' ),
 				'path'  => 'settings.php',
-			],
-			'plugins'  => [
+			),
+			'plugins'  => array(
 				'label' => esc_html__( 'Other Great Plugins', 'remove-footer-credit' ),
 				'path'  => 'plugins.php',
-			],
-			'help'     => [
+			),
+			'help'     => array(
 				'label' => esc_html__( 'Get Help', 'remove-footer-credit' ),
 				'path'  => 'plugin-info.php',
-			],
-		];
-		$options_defaults  = [
-			'replace'        => [],
+			),
+		);
+		$options_defaults = array(
+			'replace'        => array(),
 			'willLinkback'   => 'no',
 			'linkbackPostId' => 'no',
-			'find'           => [],
-		];
+			'find'           => array(),
+		);
+
 		$this->options     = get_option( 'jabrfc_text' );
 		$this->options     = wp_parse_args( $this->options, $options_defaults );
 		$this->assets_path = plugin_dir_url( __FILE__ ) . 'assets/';
-
-		$this->public_hooks();
-		$this->admin_hooks();
 	}
 
 	/**
@@ -99,10 +103,17 @@ class RFC_Plugin {
 
 	// Add a submenu under Tools
 	public function jabrfc_admin_menu() {
-		add_submenu_page( 'tools.php', esc_html__( 'Remove Footer Credit', 'remove-footer-credit' ), esc_html__( 'Remove Footer Credit', 'remove-footer-credit' ), 'activate_plugins', 'remove-footer-credit', [
-			$this,
-			'jabrfc_options_page',
-		] );
+		add_submenu_page(
+			'tools.php',
+			esc_html__( 'Remove Footer Credit', 'remove-footer-credit' ),
+			esc_html__( 'Remove Footer Credit', 'remove-footer-credit' ),
+			'activate_plugins',
+			'remove-footer-credit',
+			array(
+				$this,
+				'jabrfc_options_page',
+			)
+		);
 	}
 
 	public function jabrfc_admin_enqueue_scripts( $hook ) {
@@ -111,10 +122,16 @@ class RFC_Plugin {
 		}
 
 		wp_enqueue_style( 'jabrfc-styles', $this->assets_path . 'css/admin.css' );
-		wp_enqueue_script( 'jabrfc-plugin-install', $this->assets_path . 'js/plugin-install.js', [
-			'jquery',
-			'updates',
-		], '1.0.0', 'all' );
+		wp_enqueue_script(
+			'jabrfc-plugin-install',
+			$this->assets_path . 'js/plugin-install.js',
+			array(
+				'jquery',
+				'updates',
+			),
+			'1.0.0',
+			'all'
+		);
 	}
 
 	public function jabrfc_template_redirect() {
@@ -136,12 +153,12 @@ class RFC_Plugin {
 			// Sanitization done inside function jabrfc_kses.
 			$replace = jabrfc_kses( ( isset( $_POST['replace'] ) ) ? $_POST['replace'] : '' ); // phpcs:ignore
 
-			$data = [
+			$data = array(
 				'find'           => explode( "\n", str_replace( "\r", '', $find ) ),
 				'replace'        => explode( "\n", str_replace( "\r", '', $replace ) ),
 				'willLinkback'   => ( isset( $_POST['willLinkback'] ) ) ? sanitize_text_field( wp_unslash( $_POST['willLinkback'] ) ) : '',
 				'linkbackPostId' => ( isset( $_POST['linkbackPostId'] ) ) ? sanitize_text_field( wp_unslash( $_POST['linkbackPostId'] ) ) : '',
-			];
+			);
 
 			update_option( 'jabrfc_text', $data );
 			$this->options = $data;
@@ -174,10 +191,12 @@ class RFC_Plugin {
 	}
 
 	private function public_hooks() {
-		add_filter( 'the_content', [ $this, 'jabrfc_the_content' ] );
+		add_filter( 'the_content', array( $this, 'jabrfc_the_content' ) );
 
 		// Handles find and replace for public pages.
-		add_action( 'template_redirect', [ $this, 'jabrfc_template_redirect' ] );
+		add_action( 'template_redirect', array( $this, 'jabrfc_template_redirect' ) );
+
+		add_action( 'init', array( $this, 'load_textdomain' ) );
 	}
 
 	private function admin_hooks() {
@@ -186,12 +205,10 @@ class RFC_Plugin {
 		}
 
 		// Add style.
-		add_action( 'admin_enqueue_scripts', [ $this, 'jabrfc_admin_enqueue_scripts' ] );
+		add_action( 'admin_enqueue_scripts', array( $this, 'jabrfc_admin_enqueue_scripts' ) );
 
 		// Add left menu item in admin.
-		add_action( 'admin_menu', [ $this, 'jabrfc_admin_menu' ] );
-
-		add_action( 'plugins_loaded', [ $this, 'load_textdomain' ] );
+		add_action( 'admin_menu', array( $this, 'jabrfc_admin_menu' ) );
 	}
 
 	private function generate_url( $tab = 'settings' ) {
@@ -202,8 +219,8 @@ class RFC_Plugin {
 new RFC_Plugin();
 
 // Apply find and replace rules
-function jabrfc_ob_call( $buffer ) // $buffer contains entire page.
-{
+function jabrfc_ob_call( $buffer ) {
+	// $buffer contains entire page.
 	$data = get_option( 'jabrfc_text' );
 
 	if ( is_array( $data['find'] ) ) {
@@ -230,7 +247,7 @@ function jabrfc_kses( $string ): string {
 	$allowed_protocols = wp_allowed_protocols();
 	$allowed_html      = wp_kses_allowed_html( 'post' );
 
-	$string = wp_kses_no_null( $string, [ 'slash_zero' => 'keep' ] );
+	$string = wp_kses_no_null( $string, array( 'slash_zero' => 'keep' ) );
 	$string = wp_kses_normalize_entities( $string );
 
 	return wp_kses_hook( $string, $allowed_html, $allowed_protocols );

@@ -61,13 +61,15 @@ class Wf_Woocommerce_Packing_List_i18n {
 		$custom_mo_file = apply_filters( 'wt_pklist_alter_language_file_location', $custom_mo_file, $locale, $text_domain );
 		load_textdomain( $text_domain, $custom_mo_file ); // Custom mo file location
 		
+		// load mo files from default location
+		load_plugin_textdomain($text_domain, FALSE, dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/');
+
 		// load mo files from the Wordpress language file locations
 		load_textdomain( $text_domain, $dir . $text_domain . '/' . $text_domain .'-'. $locale .'.mo' ); 
 		load_textdomain( $text_domain, $dir . 'plugins/' . $text_domain . '/' . $text_domain .'-'. $locale .'.mo' );
 		load_textdomain( $text_domain, $dir . 'plugins/' . $text_domain .'-'. $locale .'.mo' );
 		load_textdomain( $text_domain, $dir . $text_domain .'-'. $locale .'.mo' );
 		
-		// load mo files from default location
-		load_plugin_textdomain($text_domain, FALSE, dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/');
+	
 	}
 }

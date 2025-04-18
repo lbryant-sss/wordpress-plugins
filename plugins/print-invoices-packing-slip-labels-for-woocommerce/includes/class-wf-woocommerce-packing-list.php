@@ -116,8 +116,8 @@ class Wf_Woocommerce_Packing_List {
 			self::$base_version = WF_PKLIST_VERSION;
 		}else 
 		{
-			$this->version = '4.7.5';
-			self::$base_version = '4.7.5';
+			$this->version = '4.7.6';
+			self::$base_version = '4.7.6';
 		}
 		if(defined('WF_PKLIST_PLUGIN_NAME'))
 		{
@@ -371,7 +371,7 @@ class Wf_Woocommerce_Packing_List {
 		$this->plugin_public->common_modules();
 		
 		
-		$this->loader->add_action('plugins_loaded', $this->plugin_admin, 'register_tooltips', 11);
+		$this->loader->add_action('init', $this->plugin_admin, 'register_tooltips', 11);
 
 		/*Compatible function and filter with multicurrency and currency switcher plugin*/
 		$this->loader->add_filter('wt_pklist_change_price_format',$this->plugin_admin,'wf_display_price',10,3);

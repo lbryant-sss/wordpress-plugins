@@ -5,9 +5,9 @@ Description: A collection of blocks for the Gutenberg block editor, developed by
 Author: Qode Interactive
 Author URI: https://qodeinteractive.com/
 Plugin URI: https://qodeinteractive.com/qi-blocks-for-gutenberg/
-Version: 1.3.5
+Version: 1.3.6
 Requires at least: 5.8
-Requires PHP: 7.2
+Requires PHP: 7.4
 Text Domain: qi-blocks
 */
 
@@ -33,7 +33,7 @@ if ( ! class_exists( 'Qi_Blocks' ) ) {
 				require_once QI_BLOCKS_ABS_PATH . '/helpers/helper.php';
 
 				// Make plugin available for translation.
-				add_action( 'plugins_loaded', array( $this, 'load_plugin_text_domain' ) );
+				add_action( 'init', array( $this, 'load_plugin_text_domain' ) );
 
 				// Add plugin's body classes.
 				add_filter( 'body_class', array( $this, 'add_body_classes' ) );
@@ -58,7 +58,7 @@ if ( ! class_exists( 'Qi_Blocks' ) ) {
 				add_filter( 'qi_blocks_filter_block_style_dependency', array( $this, 'set_block_style_dependency' ) );
 
 				// Include plugin's modules.
-				$this->include_modules();
+				add_action( 'after_setup_theme', array( $this, 'include_modules' ), 5 );
 			}
 		}
 

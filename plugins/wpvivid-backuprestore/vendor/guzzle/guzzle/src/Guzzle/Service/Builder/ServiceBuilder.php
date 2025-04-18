@@ -166,22 +166,26 @@ class ServiceBuilder extends AbstractHasDispatcher implements ServiceBuilderInte
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         $this->set($offset, $value);
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->builderConfig[$offset]);
         unset($this->clients[$offset]);
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->builderConfig[$offset]) || isset($this->clients[$offset]);
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->get($offset);

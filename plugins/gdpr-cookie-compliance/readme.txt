@@ -4,7 +4,7 @@ Donate link: https://www.mooveagency.com/wordpress-plugins/gdpr-cookie-complianc
 Tags: GDPR, CCPA, DSGVO, CPRA, RGPD
 Stable tag: 4.16.1
 Requires at least: 4.5
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.6
 License: GPLv3
 

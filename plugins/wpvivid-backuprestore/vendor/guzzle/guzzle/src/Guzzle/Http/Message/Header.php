@@ -113,11 +113,13 @@ class Header implements HeaderInterface
         return $this->values;
     }
 
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->toArray());
     }
 
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new \ArrayIterator($this->toArray());

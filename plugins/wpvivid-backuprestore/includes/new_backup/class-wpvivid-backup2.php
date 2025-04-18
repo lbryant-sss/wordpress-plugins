@@ -586,6 +586,14 @@ class WPvivid_Backup_2
         $files=$this->task->get_backup_files();
         $wpvivid_plugin->wpvivid_log->WriteLog('files: '.wp_json_encode($files),'notice');
         $remote_options=$this->task->get_remote_options();
+        foreach ($remote_options as $remote_key => $remote_value)
+        {
+            if(!isset($remote_value['id']))
+            {
+                $remote_value['id'] = $remote_key;
+                $remote_options[$remote_key]=$remote_value;
+            }
+        }
 
         $remote_option=array_shift($remote_options);
 

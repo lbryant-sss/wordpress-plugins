@@ -1,10 +1,10 @@
 === WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels ===
 Contributors: WebToffee
-Version: 4.7.5
+Version: 4.7.6
 Tags: WooCommerce PDF invoices, WooCommerce invoice, packing slips, shipping label, print invoice
 Requires at least: 3.0.1
-Tested up to: 6.7
-Stable tag: 4.7.5
+Tested up to: 6.8
+Stable tag: 4.7.6
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -60,7 +60,7 @@ For international sales, many countries require invoices as part of their standa
 Beyond compliance, these documents enhance customer experience by adding a human touch and serving as an additional communication channel between you and your buyer.
 
 
-&#9989; Tested OK with WooCommerce 9.4.3
+&#9989; Tested OK with WooCommerce 9.8.1
 &#9989; Tested OK up to PHP 8.2
 
 
@@ -283,6 +283,11 @@ Yes. The plugin addresses the needs of a multilingual website and is compatible 
 18. Ubl Invoice settings
 
 == Changelog ==
+
+= 4.7.6 2025-04-17 =
+* [Compatibility] - Tested OK with WordPress 6.8
+* [Compatibility] - Tested OK with WooCommerce 9.8.1
+* [Fix] - Translation loading was triggered too early.
 
 = 4.7.5 2025-03-13 =
 [Fix] - Ensured manual serialization of non-string meta data when storing it in the HPOS wc_orders_meta table, preventing warning messages.
@@ -1054,10 +1059,7 @@ Yes. The plugin addresses the needs of a multilingual website and is compatible 
  
 == Upgrade Notice ==
 
-= 4.7.5 =
-[Fix] - Ensured manual serialization of non-string meta data when storing it in the HPOS wc_orders_meta table, preventing warning messages.
-[Enhancement] - Improved RTL Support: Adjusted product table text alignment for better compatibility with right-to-left (RTL) languages.
-[Enhancement]  - Improved WPML Compatibility: Added dynamic translation support for packing list and proforma invoice footers.
-[Enhancement]  - Added new Marketing CTA
-[Compatibility] - Tested OK with WordPress 6.7.
-[Compatibility] - Tested OK with WooCommerce 9.7.1.
+= 4.7.6 =
+* [Compatibility] - Tested OK with WordPress 6.8
+* [Compatibility] - Tested OK with WooCommerce 9.8.1
+* [Fix] -Translation loading was triggered too early.

@@ -2,7 +2,7 @@
 Contributors: auctollo
 Tags: SEO, xml sitemap, video sitemap, news sitemap, html sitemap
 Requires at least: 4.7
-Tested up to: 6.6
+Tested up to: 6.8
 Stable tag: 4.1.21
 Requires PHP: 5.0
 License: GPLv2 or later

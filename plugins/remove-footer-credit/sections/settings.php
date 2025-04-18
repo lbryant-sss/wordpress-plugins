@@ -57,7 +57,7 @@
 	</div>
 	<div style="margin-top: 20px;">
 		<?php wp_nonce_field( 'remove_footer_credit_options', 'remove_footer_credit_nonce' ); ?>
-		<input type="submit" class="button" value="Save" />
+		<input type="submit" class="button" value="<?php esc_attr_e( 'Save', 'remove-footer-credit' ); ?>" />
 	</div>
 </form>
 <script>

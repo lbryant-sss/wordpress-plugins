@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-04-15T17:12:34",
+  "timestamp": "2025-04-17T19:03:09",
   "compiler": {
     "name": "node",
     "version": "16.20.2"
@@ -3400,6 +3400,8 @@
           "./dist/surecart/p-6168143f.entry.js.map",
           "./dist/surecart/p-61ba97ac.entry.js",
           "./dist/surecart/p-61ba97ac.entry.js.map",
+          "./dist/surecart/p-61d6f07f.entry.js",
+          "./dist/surecart/p-61d6f07f.entry.js.map",
           "./dist/surecart/p-6495d30f.entry.js",
           "./dist/surecart/p-6495d30f.entry.js.map",
           "./dist/surecart/p-64f502e6.entry.js",
@@ -3616,8 +3618,6 @@
           "./dist/surecart/p-e3bd9beb.entry.js.map",
           "./dist/surecart/p-e4b6bdf7.entry.js",
           "./dist/surecart/p-e4b6bdf7.entry.js.map",
-          "./dist/surecart/p-e5f19235.entry.js",
-          "./dist/surecart/p-e5f19235.entry.js.map",
           "./dist/surecart/p-e677365e.js",
           "./dist/surecart/p-e677365e.js.map",
           "./dist/surecart/p-e885ba5f.js",
@@ -3836,6 +3836,8 @@
           "./www/build/p-6168143f.entry.js.map",
           "./www/build/p-61ba97ac.entry.js",
           "./www/build/p-61ba97ac.entry.js.map",
+          "./www/build/p-61d6f07f.entry.js",
+          "./www/build/p-61d6f07f.entry.js.map",
           "./www/build/p-6495d30f.entry.js",
           "./www/build/p-6495d30f.entry.js.map",
           "./www/build/p-64f502e6.entry.js",
@@ -4052,8 +4054,6 @@
           "./www/build/p-e3bd9beb.entry.js.map",
           "./www/build/p-e4b6bdf7.entry.js",
           "./www/build/p-e4b6bdf7.entry.js.map",
-          "./www/build/p-e5f19235.entry.js",
-          "./www/build/p-e5f19235.entry.js.map",
           "./www/build/p-e677365e.js",
           "./www/build/p-e677365e.js.map",
           "./www/build/p-e885ba5f.js",
@@ -6522,8 +6522,8 @@
           "sc-radio-group",
           "sc-shipping-choices"
         ],
-        "bundleId": "p-e5f19235",
-        "fileName": "p-e5f19235.entry.js",
+        "bundleId": "p-61d6f07f",
+        "fileName": "p-61d6f07f.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-07b1b1ed.js",
@@ -6547,7 +6547,7 @@
           "p-3f6362a4.js",
           "p-d9fa04f9.js"
         ],
-        "originalByteSize": 61667
+        "originalByteSize": 61609
       },
       {
         "key": "sc-line-item-total.entry",
@@ -7013,18 +7013,6 @@
         "originalByteSize": 5756
       },
       {
-        "key": "sc-divider.entry",
-        "components": [
-          "sc-divider"
-        ],
-        "bundleId": "p-937ecbc0",
-        "fileName": "p-937ecbc0.entry.js",
-        "imports": [
-          "p-e97fde0a.js"
-        ],
-        "originalByteSize": 1466
-      },
-      {
         "key": "sc-format-number.entry",
         "components": [
           "sc-format-number"
@@ -7036,6 +7024,18 @@
           "p-3f6362a4.js"
         ],
         "originalByteSize": 2104
+      },
+      {
+        "key": "sc-divider.entry",
+        "components": [
+          "sc-divider"
+        ],
+        "bundleId": "p-937ecbc0",
+        "fileName": "p-937ecbc0.entry.js",
+        "imports": [
+          "p-e97fde0a.js"
+        ],
+        "originalByteSize": 1466
       },
       {
         "key": "sc-form-control.sc-input.entry",
@@ -9507,7 +9507,7 @@
           "currency-a0c9bff4.js",
           "fetch-8ecbbe53.js"
         ],
-        "originalByteSize": 61814
+        "originalByteSize": 61756
       },
       {
         "key": "sc-line-item-total.entry",
@@ -9973,18 +9973,6 @@
         "originalByteSize": 5769
       },
       {
-        "key": "sc-divider.entry",
-        "components": [
-          "sc-divider"
-        ],
-        "bundleId": "sc-divider",
-        "fileName": "sc-divider.entry.js",
-        "imports": [
-          "index-745b6bec.js"
-        ],
-        "originalByteSize": 1470
-      },
-      {
         "key": "sc-format-number.entry",
         "components": [
           "sc-format-number"
@@ -9996,6 +9984,18 @@
           "currency-a0c9bff4.js"
         ],
         "originalByteSize": 2115
+      },
+      {
+        "key": "sc-divider.entry",
+        "components": [
+          "sc-divider"
+        ],
+        "bundleId": "sc-divider",
+        "fileName": "sc-divider.entry.js",
+        "imports": [
+          "index-745b6bec.js"
+        ],
+        "originalByteSize": 1470
       },
       {
         "key": "sc-form-control.sc-input.entry",
@@ -12469,7 +12469,7 @@
           "currency-71fce0f0.js",
           "fetch-d644cebd.js"
         ],
-        "originalByteSize": 63646
+        "originalByteSize": 63582
       },
       {
         "key": "sc-line-item-total.entry",
@@ -12935,18 +12935,6 @@
         "originalByteSize": 5927
       },
       {
-        "key": "sc-divider.entry",
-        "components": [
-          "sc-divider"
-        ],
-        "bundleId": "sc-divider.cjs",
-        "fileName": "sc-divider.cjs.entry.js",
-        "imports": [
-          "index-8acc3c89.js"
-        ],
-        "originalByteSize": 1569
-      },
-      {
         "key": "sc-format-number.entry",
         "components": [
           "sc-format-number"
@@ -12958,6 +12946,18 @@
           "currency-71fce0f0.js"
         ],
         "originalByteSize": 2176
+      },
+      {
+        "key": "sc-divider.entry",
+        "components": [
+          "sc-divider"
+        ],
+        "bundleId": "sc-divider.cjs",
+        "fileName": "sc-divider.cjs.entry.js",
+        "imports": [
+          "index-8acc3c89.js"
+        ],
+        "originalByteSize": 1569
       },
       {
         "key": "sc-form-control.sc-input.entry",
@@ -17305,7 +17305,6 @@
         "sc-form-control",
         "sc-form-error-provider",
         "sc-form-state-provider",
-        "sc-format-number",
         "sc-icon",
         "sc-input",
         "sc-invoice-details",
@@ -26204,7 +26203,6 @@
         "sc-divider",
         "sc-dropdown",
         "sc-form-control",
-        "sc-format-number",
         "sc-icon",
         "sc-input",
         "sc-invoice-details",
@@ -27042,9 +27040,7 @@
       "assetsDirs": [],
       "dependencies": [],
       "dependents": [
-        "sc-checkout",
         "sc-coupon-form",
-        "sc-form-components-validator",
         "sc-fulfillments",
         "sc-line-items",
         "sc-order",
@@ -27063,7 +27059,6 @@
         "sc-product-price",
         "sc-product-price-choices",
         "sc-recurring-price-choice-container",
-        "sc-shipping-choices",
         "sc-subscription",
         "sc-subscription-details",
         "sc-subscription-next-payment",
@@ -27083,7 +27078,6 @@
         "sc-product-line-item",
         "sc-product-price-choices",
         "sc-recurring-price-choice-container",
-        "sc-shipping-choices",
         "sc-subscription-details",
         "sc-subscription-switch"
       ],
@@ -45562,7 +45556,6 @@
       "dependencies": [
         "sc-block-ui",
         "sc-form-control",
-        "sc-format-number",
         "sc-radio",
         "sc-radio-group",
         "sc-spinner",
@@ -45576,7 +45569,6 @@
         "sc-form-control",
         "sc-radio-group",
         "sc-radio",
-        "sc-format-number",
         "sc-block-ui"
       ],
       "directDependents": [
@@ -45625,7 +45617,6 @@
         "sc-form-control",
         "sc-radio-group",
         "sc-radio",
-        "sc-format-number",
         "sc-block-ui"
       ],
       "properties": [
@@ -60374,7 +60365,6 @@
             "sc-form-control",
             "sc-form-error-provider",
             "sc-form-state-provider",
-            "sc-format-number",
             "sc-icon",
             "sc-input",
             "sc-invoice-details",
@@ -85818,7 +85808,6 @@
             "sc-divider",
             "sc-dropdown",
             "sc-form-control",
-            "sc-format-number",
             "sc-icon",
             "sc-input",
             "sc-invoice-details",
@@ -97553,16 +97542,13 @@
             "key",
             "checked",
             "exportparts",
-            "value",
-            "type",
-            "currency"
+            "value"
           ],
           "htmlTagNames": [
             "sc-form-control",
             "div",
             "sc-radio-group",
             "sc-radio",
-            "sc-format-number",
             "sc-block-ui"
           ],
           "htmlParts": [
@@ -97574,7 +97560,6 @@
             "sc-form-control",
             "sc-radio-group",
             "sc-radio",
-            "sc-format-number",
             "sc-block-ui"
           ],
           "dependents": [
@@ -97584,7 +97569,6 @@
           "dependencies": [
             "sc-block-ui",
             "sc-form-control",
-            "sc-format-number",
             "sc-radio",
             "sc-radio-group",
             "sc-spinner",
@@ -97597,7 +97581,6 @@
             "sc-form-control",
             "sc-radio-group",
             "sc-radio",
-            "sc-format-number",
             "sc-block-ui"
           ]
         }
@@ -112776,194 +112759,6 @@
         {
           "attachInternalsMemberName": null,
           "formAssociated": false,
-          "tagName": "sc-divider",
-          "excludeFromCollection": false,
-          "isCollectionDependency": false,
-          "componentClassName": "ScDivider",
-          "elementRef": null,
-          "encapsulation": "shadow",
-          "shadowDelegatesFocus": false,
-          "properties": [],
-          "virtualProperties": [],
-          "states": [],
-          "methods": [],
-          "listeners": [],
-          "events": [],
-          "watchers": [],
-          "styles": [
-            {
-              "modeName": "$",
-              "styleId": "SC-DIVIDER",
-              "styleStr": null,
-              "styleIdentifier": "ScDividerStyle",
-              "externalStyles": [
-                {
-                  "absolutePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/divider/sc-divider.scss",
-                  "relativePath": "sc-divider.scss",
-                  "originalComponentPath": "sc-divider.scss"
-                }
-              ]
-            }
-          ],
-          "internal": false,
-          "assetsDirs": [],
-          "styleDocs": [],
-          "docs": {
-            "tags": [
-              {
-                "name": "part",
-                "text": "base - The elements base wrapper."
-              },
-              {
-                "name": "part",
-                "text": "line-container - The line container."
-              },
-              {
-                "name": "part",
-                "text": "line - The line."
-              },
-              {
-                "name": "part",
-                "text": "text-container - The text container."
-              },
-              {
-                "name": "part",
-                "text": "text - The text."
-              }
-            ],
-            "text": ""
-          },
-          "jsFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/divider/sc-divider.js",
-          "sourceFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/divider/sc-divider.tsx",
-          "sourceMapPath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/divider/sc-divider.js.map",
-          "hasAttributeChangedCallbackFn": false,
-          "hasComponentWillLoadFn": false,
-          "hasComponentDidLoadFn": false,
-          "hasComponentShouldUpdateFn": false,
-          "hasComponentWillUpdateFn": false,
-          "hasComponentDidUpdateFn": false,
-          "hasComponentWillRenderFn": false,
-          "hasComponentDidRenderFn": false,
-          "hasComponentDidUnloadFn": false,
-          "hasConnectedCallbackFn": false,
-          "hasDisconnectedCallbackFn": false,
-          "hasElement": false,
-          "hasEvent": false,
-          "hasLifecycle": false,
-          "hasListener": false,
-          "hasListenerTarget": false,
-          "hasListenerTargetWindow": false,
-          "hasListenerTargetDocument": false,
-          "hasListenerTargetBody": false,
-          "hasListenerTargetParent": false,
-          "hasMember": false,
-          "hasMethod": false,
-          "hasMode": false,
-          "hasAttribute": false,
-          "hasProp": false,
-          "hasPropNumber": false,
-          "hasPropBoolean": false,
-          "hasPropString": false,
-          "hasPropMutable": false,
-          "hasReflect": false,
-          "hasRenderFn": true,
-          "hasState": false,
-          "hasStyle": true,
-          "hasVdomAttribute": true,
-          "hasVdomXlink": false,
-          "hasVdomClass": true,
-          "hasVdomFunctional": false,
-          "hasVdomKey": true,
-          "hasVdomListener": false,
-          "hasVdomPropOrAttr": true,
-          "hasVdomRef": false,
-          "hasVdomRender": true,
-          "hasVdomStyle": false,
-          "hasVdomText": false,
-          "hasWatchCallback": false,
-          "isPlain": false,
-          "htmlAttrNames": [
-            "key",
-            "class",
-            "part",
-            "aria-hidden"
-          ],
-          "htmlTagNames": [
-            "div",
-            "span",
-            "slot"
-          ],
-          "htmlParts": [
-            "base",
-            "line-container",
-            "line",
-            "text-container",
-            "text"
-          ],
-          "isUpdateable": false,
-          "potentialCmpRefs": [],
-          "dependents": [
-            "sc-checkout",
-            "sc-checkout-mollie-payment",
-            "sc-customer-details",
-            "sc-dashboard-customer-details",
-            "sc-dashboard-downloads-list",
-            "sc-express-payment",
-            "sc-form-components-validator",
-            "sc-invoices-list",
-            "sc-licenses-list",
-            "sc-line-item-total",
-            "sc-login-form",
-            "sc-mollie-add-method",
-            "sc-order",
-            "sc-order-bump",
-            "sc-order-bumps",
-            "sc-order-confirmation-customer",
-            "sc-order-confirmation-details",
-            "sc-order-confirmation-totals",
-            "sc-orders-list",
-            "sc-payment",
-            "sc-payment-methods-list",
-            "sc-payment-selected",
-            "sc-purchase-downloads-list",
-            "sc-subscription",
-            "sc-subscription-next-payment",
-            "sc-subscriptions-list",
-            "sc-upcoming-invoice",
-            "sc-upsell-totals"
-          ],
-          "dependencies": [],
-          "directDependents": [
-            "sc-customer-details",
-            "sc-express-payment",
-            "sc-form-components-validator",
-            "sc-invoices-list",
-            "sc-licenses-list",
-            "sc-line-item-total",
-            "sc-login-form",
-            "sc-order",
-            "sc-order-bump",
-            "sc-order-confirmation-details",
-            "sc-order-confirmation-totals",
-            "sc-orders-list",
-            "sc-payment-methods-list",
-            "sc-payment-selected",
-            "sc-purchase-downloads-list",
-            "sc-subscription-next-payment",
-            "sc-subscriptions-list",
-            "sc-upcoming-invoice",
-            "sc-upsell-totals"
-          ],
-          "directDependencies": []
-        }
-      ],
-      "entryKey": "sc-divider.entry"
-    },
-    {
-      "cmps": [
-        {
-          "attachInternalsMemberName": null,
-          "formAssociated": false,
           "tagName": "sc-format-number",
           "excludeFromCollection": false,
           "isCollectionDependency": false,
@@ -113296,9 +113091,7 @@
           "isUpdateable": true,
           "potentialCmpRefs": [],
           "dependents": [
-            "sc-checkout",
             "sc-coupon-form",
-            "sc-form-components-validator",
             "sc-fulfillments",
             "sc-line-items",
             "sc-order",
@@ -113317,7 +113110,6 @@
             "sc-product-price",
             "sc-product-price-choices",
             "sc-recurring-price-choice-container",
-            "sc-shipping-choices",
             "sc-subscription",
             "sc-subscription-details",
             "sc-subscription-next-payment",
@@ -113337,7 +113129,6 @@
             "sc-product-line-item",
             "sc-product-price-choices",
             "sc-recurring-price-choice-container",
-            "sc-shipping-choices",
             "sc-subscription-details",
             "sc-subscription-switch"
           ],
@@ -113345,6 +113136,194 @@
         }
       ],
       "entryKey": "sc-format-number.entry"
+    },
+    {
+      "cmps": [
+        {
+          "attachInternalsMemberName": null,
+          "formAssociated": false,
+          "tagName": "sc-divider",
+          "excludeFromCollection": false,
+          "isCollectionDependency": false,
+          "componentClassName": "ScDivider",
+          "elementRef": null,
+          "encapsulation": "shadow",
+          "shadowDelegatesFocus": false,
+          "properties": [],
+          "virtualProperties": [],
+          "states": [],
+          "methods": [],
+          "listeners": [],
+          "events": [],
+          "watchers": [],
+          "styles": [
+            {
+              "modeName": "$",
+              "styleId": "SC-DIVIDER",
+              "styleStr": null,
+              "styleIdentifier": "ScDividerStyle",
+              "externalStyles": [
+                {
+                  "absolutePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/divider/sc-divider.scss",
+                  "relativePath": "sc-divider.scss",
+                  "originalComponentPath": "sc-divider.scss"
+                }
+              ]
+            }
+          ],
+          "internal": false,
+          "assetsDirs": [],
+          "styleDocs": [],
+          "docs": {
+            "tags": [
+              {
+                "name": "part",
+                "text": "base - The elements base wrapper."
+              },
+              {
+                "name": "part",
+                "text": "line-container - The line container."
+              },
+              {
+                "name": "part",
+                "text": "line - The line."
+              },
+              {
+                "name": "part",
+                "text": "text-container - The text container."
+              },
+              {
+                "name": "part",
+                "text": "text - The text."
+              }
+            ],
+            "text": ""
+          },
+          "jsFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/divider/sc-divider.js",
+          "sourceFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/divider/sc-divider.tsx",
+          "sourceMapPath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/divider/sc-divider.js.map",
+          "hasAttributeChangedCallbackFn": false,
+          "hasComponentWillLoadFn": false,
+          "hasComponentDidLoadFn": false,
+          "hasComponentShouldUpdateFn": false,
+          "hasComponentWillUpdateFn": false,
+          "hasComponentDidUpdateFn": false,
+          "hasComponentWillRenderFn": false,
+          "hasComponentDidRenderFn": false,
+          "hasComponentDidUnloadFn": false,
+          "hasConnectedCallbackFn": false,
+          "hasDisconnectedCallbackFn": false,
+          "hasElement": false,
+          "hasEvent": false,
+          "hasLifecycle": false,
+          "hasListener": false,
+          "hasListenerTarget": false,
+          "hasListenerTargetWindow": false,
+          "hasListenerTargetDocument": false,
+          "hasListenerTargetBody": false,
+          "hasListenerTargetParent": false,
+          "hasMember": false,
+          "hasMethod": false,
+          "hasMode": false,
+          "hasAttribute": false,
+          "hasProp": false,
+          "hasPropNumber": false,
+          "hasPropBoolean": false,
+          "hasPropString": false,
+          "hasPropMutable": false,
+          "hasReflect": false,
+          "hasRenderFn": true,
+          "hasState": false,
+          "hasStyle": true,
+          "hasVdomAttribute": true,
+          "hasVdomXlink": false,
+          "hasVdomClass": true,
+          "hasVdomFunctional": false,
+          "hasVdomKey": true,
+          "hasVdomListener": false,
+          "hasVdomPropOrAttr": true,
+          "hasVdomRef": false,
+          "hasVdomRender": true,
+          "hasVdomStyle": false,
+          "hasVdomText": false,
+          "hasWatchCallback": false,
+          "isPlain": false,
+          "htmlAttrNames": [
+            "key",
+            "class",
+            "part",
+            "aria-hidden"
+          ],
+          "htmlTagNames": [
+            "div",
+            "span",
+            "slot"
+          ],
+          "htmlParts": [
+            "base",
+            "line-container",
+            "line",
+            "text-container",
+            "text"
+          ],
+          "isUpdateable": false,
+          "potentialCmpRefs": [],
+          "dependents": [
+            "sc-checkout",
+            "sc-checkout-mollie-payment",
+            "sc-customer-details",
+            "sc-dashboard-customer-details",
+            "sc-dashboard-downloads-list",
+            "sc-express-payment",
+            "sc-form-components-validator",
+            "sc-invoices-list",
+            "sc-licenses-list",
+            "sc-line-item-total",
+            "sc-login-form",
+            "sc-mollie-add-method",
+            "sc-order",
+            "sc-order-bump",
+            "sc-order-bumps",
+            "sc-order-confirmation-customer",
+            "sc-order-confirmation-details",
+            "sc-order-confirmation-totals",
+            "sc-orders-list",
+            "sc-payment",
+            "sc-payment-methods-list",
+            "sc-payment-selected",
+            "sc-purchase-downloads-list",
+            "sc-subscription",
+            "sc-subscription-next-payment",
+            "sc-subscriptions-list",
+            "sc-upcoming-invoice",
+            "sc-upsell-totals"
+          ],
+          "dependencies": [],
+          "directDependents": [
+            "sc-customer-details",
+            "sc-express-payment",
+            "sc-form-components-validator",
+            "sc-invoices-list",
+            "sc-licenses-list",
+            "sc-line-item-total",
+            "sc-login-form",
+            "sc-order",
+            "sc-order-bump",
+            "sc-order-confirmation-details",
+            "sc-order-confirmation-totals",
+            "sc-orders-list",
+            "sc-payment-methods-list",
+            "sc-payment-selected",
+            "sc-purchase-downloads-list",
+            "sc-subscription-next-payment",
+            "sc-subscriptions-list",
+            "sc-upcoming-invoice",
+            "sc-upsell-totals"
+          ],
+          "directDependencies": []
+        }
+      ],
+      "entryKey": "sc-divider.entry"
     },
     {
       "cmps": [

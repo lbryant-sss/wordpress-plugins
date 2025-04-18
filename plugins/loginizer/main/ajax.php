@@ -106,7 +106,7 @@ function loginizer_failed_login_export(){
 	
 	foreach($csv_array as $failed_attempts){
 		
-		$row = array($failed_attempts['ip'], $failed_attempts['username'], date('d/M/Y H:i:s P', $failed_attempts['time']), $failed_attempts['count'], $failed_attempts['lockout'], $failed_attempts['url']);
+		$row = array($failed_attempts['ip'], sanitize_user($failed_attempts['username'], true), date('d/M/Y H:i:s P', $failed_attempts['time']), $failed_attempts['count'], $failed_attempts['lockout'], $failed_attempts['url']);
 		fputcsv($file, $row);
 	}
 

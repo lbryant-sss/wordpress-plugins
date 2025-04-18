@@ -142,11 +142,13 @@ class CompositeFactory implements \IteratorAggregate, \Countable, FactoryInterfa
         }
     }
 
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->factories);
     }
 
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new \ArrayIterator($this->factories);

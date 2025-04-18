@@ -2,9 +2,9 @@
 Contributors: qodeinteractive
 Tags: gutenberg block, blocks, patterns, wireframes, gutenberg templates
 Requires at least: 5.8
-Tested up to: 6.7
-Requires PHP: 7.2
-Stable tag: 1.3.5
+Tested up to: 6.8
+Requires PHP: 7.4
+Stable tag: 1.3.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -243,7 +243,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = We recommend your host supports: =
 
-* PHP version 7.2 or greater
+* PHP version 7.4 or greater
 * MySQL version 5.6 or greater
 * WordPress Memory limit of 128 MB or greater
 
@@ -291,6 +291,10 @@ Feel free to try out some of our other products:
 12.	Device Frame Slider Block.
 
 == Changelog ==
+
+= 1.3.6 - 17-04-2025 =
+- Improved WordPress 6.8 compatibility
+- Fixed minor bugs
 
 = 1.3.5 - 06-02-2025 =
 - Fixed potential Cross Site Scripting (XSS) vulnerability for Counter and Countdown blocks
