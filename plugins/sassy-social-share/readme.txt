@@ -3,8 +3,8 @@ Contributors: Heateor, kamirkhan, the_champ
 Donate link: https://www.heateor.com/donate/?action=Sassy+Social+Share
 Tags: social share, social sharing, social media, wordpress social share, share buttons, facebook share, facebook like, social share buttons, twitter tweet, whatsapp share, line share, gab share, gab social share, gab, parler share, parler social share, gettr, gettr share, gettr social share, mewe share, mewe social share, mewe, mastodon share, mastodon social share, mastodon, rutube share, rutube social share, rutube, google news, google news share, google news icon, RSS, RSS Feed, x, x share, yelp, google translate, Google maps, tiktok, Teams, flickr, threads, Gab, Gab share, Line, bluesky
 Requires at least: 2.5.0
-Tested up to: 6.7.2
-Stable tag: 3.3.73
+Tested up to: 6.8
+Stable tag: 3.3.74
 License: GPLv2 or later
 
 Slickest, Simplest and Optimized Share buttons. Facebook, X, Reddit, Pinterest, Whatsapp, Gab, Gettr and over 100 more.
@@ -123,8 +123,11 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 4. **Social Share Services**: Over 100 Social Share and Bookmarking services
 
 == Changelog ==
-= 3.3.73 [2 April 2025] =
+= 3.3.74 [18 April 2025] =
 * [Security] Fixed an Open Redirect Vulnerability exposed in the Mastodon share in AMP
+* [Improvement] Compatible with WordPress 6.8
+
+= 3.3.73 [2 April 2025] =
 * [Improvement] Minor improvements
 
 = 3.3.72 [25 March 2025] =
@@ -1517,5 +1520,8 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 * [Improvement] Admin UI improvements
 
 = 3.3.73 [2 April 2025] =
-* [Security] Fixed an Open Redirect Vulnerability exposed in the Mastodon share in AMP
 * [Improvement] Minor improvements
+
+= 3.3.74 [18 April 2025] =
+* [Security] Fixed an Open Redirect Vulnerability exposed in the Mastodon share in AMP
+* [Improvement] Compatible with WordPress 6.8

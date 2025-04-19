@@ -6,7 +6,7 @@ msgstr ""
 "(latest release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/customer-reviews-"
 "woocommerce\n"
-"POT-Creation-Date: 2025-04-14T23:03:50+00:00\n"
+"POT-Creation-Date: 2025-04-19T00:03:47+00:00\n"
 "PO-Revision-Date: 2018-10-07 17:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -127,7 +127,7 @@ msgstr "いいえ"
 #: includes/analytics/class-cr-reminders-log.php:397
 #: includes/reminders/class-cr-manual.php:370
 #: includes/settings/class-cr-settings-emails.php:113
-#: includes/settings/class-cr-settings-review-reminder.php:1179
+#: includes/settings/class-cr-settings-review-reminder.php:1199
 #: templates/cr-review-form.php:114 templates/cr-review-form.php:116
 #: templates/qna-list.php:167 templates/qna-tab.php:81
 msgid "Email"
@@ -244,7 +244,7 @@ msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:485
 #: includes/blocks/class-cr-all-reviews.php:525
-#: templates/cr-ajax-product-reviews.php:119 templates/reviews-grid.php:222
+#: templates/cr-ajax-product-reviews.php:123 templates/reviews-grid.php:222
 msgid "Sorry, no reviews match your current selections"
 msgstr ""
 
@@ -253,7 +253,7 @@ msgstr ""
 #: includes/reviews/class-cr-ajax-reviews.php:315
 #: includes/reviews/class-cr-ajax-reviews.php:394
 #: includes/reviews/class-cr-ajax-reviews.php:466
-#: templates/cr-ajax-product-reviews.php:105 templates/reviews-grid.php:211
+#: templates/cr-ajax-product-reviews.php:109 templates/reviews-grid.php:211
 msgid "Show more reviews (%d)"
 msgstr ""
 
@@ -363,7 +363,7 @@ msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:1150
 #: includes/reminders/class-cr-local-forms.php:209
-#: templates/cr-ajax-product-reviews.php:140
+#: templates/cr-ajax-product-reviews.php:144
 msgid "Add photos or video to your review"
 msgstr ""
 
@@ -2673,7 +2673,7 @@ msgstr ""
 #: includes/reminders/class-cr-manual.php:262
 #: includes/settings/class-cr-settings-email-template.php:29
 #: includes/settings/class-cr-settings-review-reminder.php:54
-#: includes/settings/class-cr-settings-review-reminder.php:1047
+#: includes/settings/class-cr-settings-review-reminder.php:1067
 msgid "Review Reminder"
 msgstr ""
 
@@ -2840,7 +2840,7 @@ msgstr ""
 #: includes/reminders/class-cr-reminders-log-table.php:92
 #: includes/settings/class-cr-settings-forms.php:514
 #: includes/settings/class-cr-settings-forms.php:628
-#: includes/settings/class-cr-settings-review-reminder.php:1137
+#: includes/settings/class-cr-settings-review-reminder.php:1157
 #: templates/reminder-details-admin-page.php:162
 msgid "Type"
 msgstr ""
@@ -3421,7 +3421,7 @@ msgid "DNS record copied"
 msgstr ""
 
 #: includes/settings/class-cr-admin-menu-settings.php:159
-#: includes/settings/class-cr-settings-review-reminder.php:1004
+#: includes/settings/class-cr-settings-review-reminder.php:1024
 msgid "Enabled"
 msgstr ""
 
@@ -4810,7 +4810,7 @@ msgid "Enable"
 msgstr ""
 
 #: includes/settings/class-cr-settings-review-discount.php:621
-#: includes/settings/class-cr-settings-review-reminder.php:1012
+#: includes/settings/class-cr-settings-review-reminder.php:1032
 #: templates/reminder-details-admin-page.php:151 admin/build/index.js:1
 #: admin/src/Reminders.jsx:35
 msgid "Channel"
@@ -5505,6 +5505,10 @@ msgid ""
 "locally without third-party verification."
 msgstr ""
 
+#: includes/settings/class-cr-settings-review-reminder.php:749
+msgid "No verification"
+msgstr ""
+
 #: includes/settings/class-cr-settings-review-reminder.php:755
 msgid "Collect reviews locally without third-party verification"
 msgstr ""
@@ -5528,6 +5532,7 @@ msgid "Aggregated review forms will be hosted locally on your server"
 msgstr ""
 
 #: includes/settings/class-cr-settings-review-reminder.php:773
+#: includes/settings/class-cr-settings-review-reminder.php:835
 msgid ""
 "An aggregated review form is a review form that supports collection of "
 "reviews for multiple products at the same time."
@@ -5550,52 +5555,75 @@ msgid ""
 "reviews to be biased or fake"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-reminder.php:819
-msgid "Review invitations will be sent by CusRev on behalf of your store"
+#: includes/settings/class-cr-settings-review-reminder.php:811
+#: includes/trust-badge/class-cr-trust-badge.php:170
+msgid "Independently verified"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-reminder.php:822
-msgid "Aggregated review forms will be hosted on AWS S3 by CusRev"
+#: includes/settings/class-cr-settings-review-reminder.php:819
+msgid ""
+"CusRev (Customer Reviews) is a service for businesses that offers a "
+"voluntary scheme for verification of reviews submitted by customers."
 msgstr ""
 
 #: includes/settings/class-cr-settings-review-reminder.php:825
+msgid "Review invitations will be sent by CusRev on behalf of your store"
+msgstr ""
+
+#: includes/settings/class-cr-settings-review-reminder.php:827
+msgid ""
+"CusRev uses AWS SES (Simple Email Service) for sending emails to ensure "
+"their excellent deliverability"
+msgstr ""
+
+#: includes/settings/class-cr-settings-review-reminder.php:833
+msgid "Aggregated review forms will be hosted on AWS S3 by CusRev"
+msgstr ""
+
+#: includes/settings/class-cr-settings-review-reminder.php:841
 msgid "CusRev is unable to collect and verify reviews for certain products"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-reminder.php:924
+#: includes/settings/class-cr-settings-review-reminder.php:843
+msgid ""
+"Due to regulatory restrictions, CusRev is unable to collect and verify "
+"reviews for prohibited categories of products (e.g., CBD or Kratom)"
+msgstr ""
+
+#: includes/settings/class-cr-settings-review-reminder.php:944
 msgid ""
 "<strong>CR Cron could not be enabled because no license key was entered. A "
 "license key (free or pro) is required to use CR Cron.</strong>"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-reminder.php:1005
+#: includes/settings/class-cr-settings-review-reminder.php:1025
 msgid ""
 "Enable automatic follow-up emails with an invitation to submit a review."
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-reminder.php:1008
+#: includes/settings/class-cr-settings-review-reminder.php:1028
 msgid "Delay (Days)"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-reminder.php:1009
+#: includes/settings/class-cr-settings-review-reminder.php:1029
 msgid ""
 "If automatic review reminders are enabled, review invitations will be sent N "
 "days after order status is changed to the value specified in the field "
 "below. N is a sending delay (in days) that needs to be defined here."
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-reminder.php:1013
+#: includes/settings/class-cr-settings-review-reminder.php:1033
 msgid ""
 "A channel for sending review invitations to customers. For example, by email."
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-reminder.php:1140
+#: includes/settings/class-cr-settings-review-reminder.php:1160
 #: templates/cr-review-form.php:105 templates/cr-review-form.php:107
 #: templates/qna-list.php:158 templates/qna-tab.php:72
 msgid "Name"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-reminder.php:1143
+#: includes/settings/class-cr-settings-review-reminder.php:1163
 msgid "Value"
 msgstr ""
 
@@ -6260,10 +6288,6 @@ msgstr ""
 msgid "Tags for Reviews"
 msgstr ""
 
-#: includes/trust-badge/class-cr-trust-badge.php:170
-msgid "Independently verified"
-msgstr ""
-
 #: includes/trust-badge/class-cr-trust-badge.php:171
 msgid "independently verified"
 msgstr ""
@@ -6408,7 +6432,7 @@ msgstr ""
 msgid "Search reviews"
 msgstr ""
 
-#: templates/cr-ajax-product-reviews.php:121
+#: templates/cr-ajax-product-reviews.php:125
 #: templates/cr-shortcode-rating.php:49
 #: templates/cr-single-product-reviews.php:74
 msgid "There are no reviews yet"

@@ -563,6 +563,7 @@ if ( ! class_exists( 'LoginPress_Settings' ) ) :
 				include LOGINPRESS_DIR_PATH . 'classes/class-loginpress-addons.php';
 			}
 			$obj_loginpress_addons = new LoginPress_Addons();
+			$obj_loginpress_addons->addons_array_construct();
 			$obj_loginpress_addons->_addon_html();
 		}
 

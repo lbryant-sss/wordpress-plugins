@@ -1291,11 +1291,11 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 
 		$this->register_base_dependencies();
 
-		//Tab utilities and fixes.
+		//Settings page utilities and fixes.
 		//This is a separate script because some of it has to run after common.js, which is loaded in the page footer.
 		wp_enqueue_auto_versioned_script(
-			'ame-settings-tab-utils',
-			plugins_url('js/tab-utils.js', $this->plugin_file),
+			'ame-settings-page-utils',
+			plugins_url('js/settings-page-utils.js', $this->plugin_file),
 			array('jquery', 'ame-lodash', 'common'),
 			true
 		);

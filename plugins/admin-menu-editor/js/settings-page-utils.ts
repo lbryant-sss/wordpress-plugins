@@ -1,11 +1,19 @@
-jQuery(function ($) {
-	var menuEditorHeading = $('#ws_ame_editor_heading').first();
-	var pageWrapper = menuEditorHeading.closest('.wrap');
-	var tabList = pageWrapper.find('.nav-tab-wrapper').first();
+jQuery(function (_alias) {
+	if (typeof _alias === 'undefined') {
+		//Should never happen, but is necessary because the TS definition for jQuery() says
+		//the argument is optional (implies it can be undefined).
+		return;
+	}
+	const $: JQueryStatic = _alias;
+
+	//region Tab utilities
+	const menuEditorHeading = $('#ws_ame_editor_heading').first();
+	const pageWrapper = menuEditorHeading.closest('.wrap');
+	const tabList = pageWrapper.find('.nav-tab-wrapper').first();
 
 	//On AME pages, move settings tabs after the heading. This is necessary to make them appear on the right side,
 	//and WordPress breaks that by moving notices like "Settings saved" after the first H1 (see common.js).
-	var menuEditorTabs = tabList.add(tabList.next('.clear'));
+	const menuEditorTabs = tabList.add(tabList.next('.clear'));
 	if ((menuEditorHeading.length > 0) && (menuEditorTabs.length > 0)) {
 		menuEditorTabs.insertAfter(menuEditorHeading);
 	}
@@ -15,7 +23,7 @@ jQuery(function ($) {
 	const tabCondensedHorizontalPadding = parseInt((tabList.css('--ame-tab-cnd-horizontal-padding') || '8px').replace('px', ''), 10);
 	const tabCondensedGap = parseInt((tabList.css('--ame-tab-cnd-gap') || '5px').replace('px', ''), 10);
 
-	function calculateColumns(contentWidth, condensedPadding) {
+	function calculateColumns(contentWidth: number, condensedPadding?:number) {
 		if (typeof condensedPadding === 'undefined') {
 			condensedPadding = tabCondensedHorizontalPadding;
 		}
@@ -27,8 +35,8 @@ jQuery(function ($) {
 		), 12);
 	}
 
-	tabList.children('.nav-tab').each(function () {
-		const $this = $(this);
+	tabList.children('.nav-tab').each(function (_, element) {
+		const $this = $(element);
 		const columnCount = calculateColumns($this.width());
 		$this.addClass('ame-nav-tab-col-' + columnCount);
 	});
@@ -42,22 +50,22 @@ jQuery(function ($) {
 	}
 
 	//Switch tab styles when there are too many tabs and they don't fit on one row.
-	var $firstTab = null,
-		$lastTab = null,
+	let $firstTab:JQuery|null = null,
+		$lastTab:JQuery|null = null,
 		knownTabWrapThreshold = -1;
 
 	function updateTabStyles() {
 		if (($firstTab === null) || ($lastTab === null)) {
-			var $tabItems = tabList.children('.nav-tab');
+			const $tabItems = tabList.children('.nav-tab');
 			$firstTab = $tabItems.first();
 			$lastTab = $tabItems.last();
 		}
 
 		//To detect if any tabs are wrapped to the next row, check if the top of the last tab
 		//is below the bottom of the first tab.
-		var firstPosition = $firstTab.position();
-		var lastPosition = $lastTab.position();
-		var windowWidth = $(window).width();
+		const firstPosition = $firstTab.position();
+		const lastPosition = $lastTab.position();
+		const windowWidth = $(window).width();
 		//Sanity check.
 		if (
 			!firstPosition || !lastPosition || !windowWidth
@@ -66,17 +74,17 @@ jQuery(function ($) {
 		) {
 			return;
 		}
-		var firstTabBottom = firstPosition.top + $firstTab.outerHeight();
+		const firstTabBottom = firstPosition.top + $firstTab.outerHeight();
 		//Note: The -1 below is due to the active tab having a negative bottom margin.
-		var areTabsWrapped = (lastPosition.top >= (firstTabBottom - 1));
+		const areTabsWrapped = (lastPosition.top >= (firstTabBottom - 1));
 
 		//Tab positions may change when we apply different styles, which could lead to the tab bar
 		//rapidly cycling between one and two rows when the browser width is just right.
 		//To prevent that, remember what the width was when we detected wrapping, and always apply
 		//the alternative styles if the width is lower than that.
-		var wouldWrapByDefault = (windowWidth <= knownTabWrapThreshold);
+		const wouldWrapByDefault = (windowWidth <= knownTabWrapThreshold);
 
-		var tooManyTabs = areTabsWrapped || wouldWrapByDefault;
+		const tooManyTabs = areTabsWrapped || wouldWrapByDefault;
 		if (tooManyTabs && (windowWidth > knownTabWrapThreshold)) {
 			knownTabWrapThreshold = windowWidth;
 		}
@@ -95,5 +103,6 @@ jQuery(function ($) {
 		},
 		300
 	));
+	//endregion
 });
 

@@ -3,7 +3,7 @@ Contributors: DesignsAndCode, codeamp
 Donate link:
 Tags: category, filter, taxonomy, search, wordpress, post type, post date
 Requires at least: 3.5
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 1.2.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

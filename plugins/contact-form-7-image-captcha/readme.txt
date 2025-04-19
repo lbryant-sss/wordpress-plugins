@@ -3,8 +3,8 @@ Contributors: hookandhook
 Tags: Contact Form 7, Spam, CAPTCHA, GDPR, WPForms
 Requires at least: 4.7
 Requires PHP: 7.0
-Tested up to: 6.7
-Stable tag: 3.3.22
+Tested up to: 6.8
+Stable tag: 3.3.23
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -148,6 +148,9 @@ If the styling does not look right, you may need to clear your browser cache. If
 3. PRO plugin
 
 == Changelog ==
+
+= 3.3.23 [04/18/2025] =
+* Tested up to 6.8
 
 = 3.3.22 [11/14/2024] =
 * Tested up to 6.7

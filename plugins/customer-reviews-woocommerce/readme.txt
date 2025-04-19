@@ -2,9 +2,9 @@
 Contributors: ivole
 Tags: woocommerce, review plugin, review reminder, customer reviews, review for discount
 Requires at least: 4.5
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 5.75.0
+Stable tag: 5.75.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -233,6 +233,9 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.75.1 =
+* Improvement: an additional WPML compatibility check
+* Improvement: a new action hook for developers to enhance the XML Product Feed with additional fields
 = 5.75.0 =
 * Improvement: import and export reviews utilities support a product SKU field
 * Improvement: accessibility improvements
