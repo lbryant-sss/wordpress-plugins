@@ -3,7 +3,7 @@ Contributors: XootiX
 Donate link: https://www.paypal.me/xootix
 Tags: woocommerce cart, floating cart, cart popup, woocommerce, slider
 Requires at least: 3.0.1
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 2.6.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

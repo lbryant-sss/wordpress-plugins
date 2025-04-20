@@ -296,7 +296,7 @@ If you want to contribute, go to our [DFlip Lite WordPress Repository](https://g
 This lite version is available in WordPress plugin directory since version 1.2.8
 
 = 2.3.65: =
-* Add: WordPress 5.8 tested
+* Add: WordPress 6.8 tested
 * Improve/Fix: Whatsapp IOS fix
 * Fix: Warnings when displaying deleted flipbooks
 

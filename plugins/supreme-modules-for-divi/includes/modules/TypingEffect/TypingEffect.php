@@ -34,20 +34,20 @@ class DSM_TypingEffect extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
 	public function init() {
-		$this->name      = esc_html__( 'Supreme Typing', 'dsm-supreme-modules-for-divi' );
+		$this->name      = esc_html__( 'Supreme Typing', 'supreme-modules-for-divi' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content'  => esc_html__( 'Text', 'dsm-supreme-modules-for-divi' ),
-					'typing_option' => esc_html__( 'Typing Options', 'dsm-supreme-modules-for-divi' ),
+					'main_content'  => esc_html__( 'Text', 'supreme-modules-for-divi' ),
+					'typing_option' => esc_html__( 'Typing Options', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'typing_styles' => array(
-						'title'    => esc_html__( 'Typing Styles', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Typing Styles', 'supreme-modules-for-divi' ),
 						'priority' => 56,
 					),
 				),
@@ -66,7 +66,7 @@ class DSM_TypingEffect extends ET_Builder_Module {
 		return array(
 			'fonts'          => array(
 				'header' => array(
-					'label'          => esc_html__( 'Main', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Main', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main'       => '%%order_class%% h1.et_pb_module_header, %%order_class%% h2.et_pb_module_header, %%order_class%% h3.et_pb_module_header, %%order_class%% h4.et_pb_module_header, %%order_class%% h5.et_pb_module_header, %%order_class%% h6.et_pb_module_header',
 						'text_align' => '%%order_class%%',
@@ -85,7 +85,7 @@ class DSM_TypingEffect extends ET_Builder_Module {
 					),
 				),
 				'before' => array(
-					'label'          => esc_html__( 'Before', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Before', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .dsm-before-typing-effect',
 					),
@@ -101,7 +101,7 @@ class DSM_TypingEffect extends ET_Builder_Module {
 
 				),
 				'typing' => array(
-					'label'          => esc_html__( 'Typing', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Typing', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .dsm-typing-effect .dsm-typing-wrapper',
 					),
@@ -117,7 +117,7 @@ class DSM_TypingEffect extends ET_Builder_Module {
 					'toggle_slug'    => 'typing_styles',
 				),
 				'after'  => array(
-					'label'          => esc_html__( 'After', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'After', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .dsm-after-typing-effect',
 					),
@@ -171,7 +171,7 @@ class DSM_TypingEffect extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .dsm-typing-effect .dsm-before-typing-effect',
 						),
 					),
-					'label_prefix'    => esc_html__( 'Typing', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Typing', 'supreme-modules-for-divi' ),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'before',
 					'depends_show_if' => 'off',
@@ -183,7 +183,7 @@ class DSM_TypingEffect extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .dsm-typing-effect .dsm-typing-wrapper',
 						),
 					),
-					'label_prefix'    => esc_html__( 'Typing', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Typing', 'supreme-modules-for-divi' ),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'typing_styles',
 					'depends_show_if' => 'off',
@@ -195,7 +195,7 @@ class DSM_TypingEffect extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .dsm-typing-effect .dsm-after-typing-effect',
 						),
 					),
-					'label_prefix'    => esc_html__( 'Typing', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Typing', 'supreme-modules-for-divi' ),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'after',
 					'depends_show_if' => 'off',
@@ -232,71 +232,71 @@ class DSM_TypingEffect extends ET_Builder_Module {
 	public function get_fields() {
 		return array(
 			'before_typing_effect'           => array(
-				'label'           => esc_html__( 'Before Text', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Before Text', 'supreme-modules-for-divi' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 				'dynamic_content' => 'text',
 			),
 			'typing_effect'                  => array(
-				'label'            => esc_html__( 'Typing Effect Text', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Typing Effect Text', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
-				'description'      => esc_html__( 'The title of your Typing Effect Text. Use "|" as a separator. eg Word One|Text Two|Divi 3', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'The title of your Typing Effect Text. Use "|" as a separator. eg Word One|Text Two|Divi 3', 'supreme-modules-for-divi' ),
 				'default_on_front' => 'Design Divi sites with|Divi|Supreme',
 				'toggle_slug'      => 'main_content',
 				'dynamic_content'  => 'text',
 			),
 			'before_new_line'                => array(
-				'label'           => esc_html__( 'Typing Text On a New line', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Typing Text On a New line', 'supreme-modules-for-divi' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'configuration',
 				'options'         => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
-				'description'     => esc_html__( 'If enabled, your shuffle text will appear on the next line after the before text.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'If enabled, your shuffle text will appear on the next line after the before text.', 'supreme-modules-for-divi' ),
 				'toggle_slug'     => 'main_content',
 			),
 			'after_typing_effect'            => array(
-				'label'           => esc_html__( 'After Text', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'After Text', 'supreme-modules-for-divi' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 				'dynamic_content' => 'text',
 			),
 			'after_new_line'                 => array(
-				'label'           => esc_html__( 'After Text On a New line', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'After Text On a New line', 'supreme-modules-for-divi' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'configuration',
 				'options'         => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
-				'description'     => esc_html__( 'If enabled, your after text will appear on the next line after the Shuffle text.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'If enabled, your after text will appear on the next line after the Shuffle text.', 'supreme-modules-for-divi' ),
 				'toggle_slug'     => 'main_content',
 			),
 			'typing_loop'                    => array(
-				'label'            => esc_html__( 'Use Loop', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Use Loop', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'default'          => 'on',
 				'default_on_front' => 'on',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
-				'description'      => esc_html__( 'If enabled, typing effect will loop infinite.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'If enabled, typing effect will loop infinite.', 'supreme-modules-for-divi' ),
 				'toggle_slug'      => 'typing_option',
 			),
 			'typing_remove_cursor'           => array(
-				'label'            => esc_html__( 'Remove Cursor After Completed', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Remove Cursor After Completed', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'basic_option',
 				'default_on_front' => 'off',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'toggle_slug'      => 'typing_option',
 				'show_if'          => array(
@@ -304,7 +304,7 @@ class DSM_TypingEffect extends ET_Builder_Module {
 				),
 			),
 			'typing_speed'                   => array(
-				'label'            => esc_html__( 'Typing Speed (in ms)', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Typing Speed (in ms)', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default'          => '100ms',
@@ -318,7 +318,7 @@ class DSM_TypingEffect extends ET_Builder_Module {
 				'toggle_slug'      => 'typing_option',
 			),
 			'typing_backspeed'               => array(
-				'label'            => esc_html__( 'Typing Backspeed (in ms)', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Typing Backspeed (in ms)', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default'          => '50ms',
@@ -332,7 +332,7 @@ class DSM_TypingEffect extends ET_Builder_Module {
 				'toggle_slug'      => 'typing_option',
 			),
 			'typing_backdelay'               => array(
-				'label'            => esc_html__( 'Back delay (in ms)', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Back delay (in ms)', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default'          => '700ms',
@@ -342,42 +342,42 @@ class DSM_TypingEffect extends ET_Builder_Module {
 					'max'  => '2000',
 					'step' => '100',
 				),
-				'description'      => esc_html__( 'Time before backspacing', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Time before backspacing', 'supreme-modules-for-divi' ),
 				'toggle_slug'      => 'typing_option',
 			),
 			'typing_fadeout'                 => array(
-				'label'            => esc_html__( 'Use Fade Out', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Use Fade Out', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'basic_option',
 				'default_on_front' => 'off',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'toggle_slug'      => 'typing_option',
 			),
 			'typing_shuffle'                 => array(
-				'label'            => esc_html__( 'Use Shuffle', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Use Shuffle', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'basic_option',
 				'default_on_front' => 'off',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'toggle_slug'      => 'typing_option',
 			),
 			'typing_cursor'                  => array(
-				'label'            => esc_html__( 'Cursor Character', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Cursor Character', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
 				'default_on_front' => '|',
 				'toggle_slug'      => 'typing_option',
-				'description'      => esc_html__( 'Character for cursor.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Character for cursor.', 'supreme-modules-for-divi' ),
 			),
 			'typing_viewport'                => array(
-				'label'            => esc_html__( 'Animate in Viewport', 'dsm-supreme-modules-for-divi' ),
-				'description'      => esc_html__( 'Animation when the div comes in viewport.', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Animate in Viewport', 'supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Animation when the div comes in viewport.', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'layout',
 				'toggle_slug'      => 'typing_option',
@@ -394,26 +394,26 @@ class DSM_TypingEffect extends ET_Builder_Module {
 				'mobile_options'   => false,
 			),
 			'typing_viewport_repeat'         => array(
-				'label'            => esc_html__( 'Repeat Animation in Viewport', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Repeat Animation in Viewport', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'basic_option',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'default'          => 'on',
 				'default_on_front' => 'on',
 				'toggle_slug'      => 'typing_option',
 			),
 			'typing_cursor_color'            => array(
-				'label'        => esc_html__( 'Cursor Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Cursor Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
 				'toggle_slug'  => 'typing_styles',
 			),
 			'typing_background_color'        => array(
-				'label'        => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
@@ -421,17 +421,17 @@ class DSM_TypingEffect extends ET_Builder_Module {
 				'toggle_slug'  => 'typing_styles',
 			),
 			'typing_padding'                 => array(
-				'label'           => esc_html__( 'Padding', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Padding', 'supreme-modules-for-divi' ),
 				'type'            => 'custom_padding',
 				'mobile_options'  => true,
 				'option_category' => 'layout',
-				'description'     => esc_html__( 'Adjust padding to specific values, or leave blank to use the default padding.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Adjust padding to specific values, or leave blank to use the default padding.', 'supreme-modules-for-divi' ),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'typing_styles',
 				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 			),
 			'before_typing_background_color' => array(
-				'label'        => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
@@ -439,17 +439,17 @@ class DSM_TypingEffect extends ET_Builder_Module {
 				'toggle_slug'  => 'before',
 			),
 			'before_typing_padding'          => array(
-				'label'           => esc_html__( 'Padding', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Padding', 'supreme-modules-for-divi' ),
 				'type'            => 'custom_padding',
 				'mobile_options'  => true,
 				'option_category' => 'layout',
-				'description'     => esc_html__( 'Adjust padding to specific values, or leave blank to use the default padding.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Adjust padding to specific values, or leave blank to use the default padding.', 'supreme-modules-for-divi' ),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'before',
 				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 			),
 			'after_typing_background_color'  => array(
-				'label'        => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
@@ -457,24 +457,24 @@ class DSM_TypingEffect extends ET_Builder_Module {
 				'toggle_slug'  => 'after',
 			),
 			'after_typing_padding'           => array(
-				'label'           => esc_html__( 'Padding', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Padding', 'supreme-modules-for-divi' ),
 				'type'            => 'custom_padding',
 				'mobile_options'  => true,
 				'option_category' => 'layout',
-				'description'     => esc_html__( 'Adjust padding to specific values, or leave blank to use the default padding.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Adjust padding to specific values, or leave blank to use the default padding.', 'supreme-modules-for-divi' ),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'after',
 				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 			),
 			'before_display_type'            => array(
-				'label'           => esc_html__( 'Display', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Display', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => array(
-					'inline-block' => __( 'Inline Block', 'dsm-supreme-modules-for-divi' ),
-					'block'        => __( 'Block', 'dsm-supreme-modules-for-divi' ),
-					'inline'       => __( 'Inline', 'dsm-supreme-modules-for-divi' ),
-					'inline-flex'  => __( 'Inline Flex', 'dsm-supreme-modules-for-divi' ),
+					'inline-block' => __( 'Inline Block', 'supreme-modules-for-divi' ),
+					'block'        => __( 'Block', 'supreme-modules-for-divi' ),
+					'inline'       => __( 'Inline', 'supreme-modules-for-divi' ),
+					'inline-flex'  => __( 'Inline Flex', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'inline-block',
 				'mobile_options'  => true,
@@ -482,14 +482,14 @@ class DSM_TypingEffect extends ET_Builder_Module {
 				'toggle_slug'     => 'before',
 			),
 			'typing_display_type'            => array(
-				'label'           => esc_html__( 'Display', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Display', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => array(
-					'inline-block' => __( 'Inline Block', 'dsm-supreme-modules-for-divi' ),
-					'block'        => __( 'Block', 'dsm-supreme-modules-for-divi' ),
-					'inline'       => __( 'Inline', 'dsm-supreme-modules-for-divi' ),
-					'inline-flex'  => __( 'Inline Flex', 'dsm-supreme-modules-for-divi' ),
+					'inline-block' => __( 'Inline Block', 'supreme-modules-for-divi' ),
+					'block'        => __( 'Block', 'supreme-modules-for-divi' ),
+					'inline'       => __( 'Inline', 'supreme-modules-for-divi' ),
+					'inline-flex'  => __( 'Inline Flex', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'inline-block',
 				'mobile_options'  => true,
@@ -497,14 +497,14 @@ class DSM_TypingEffect extends ET_Builder_Module {
 				'toggle_slug'     => 'typing_styles',
 			),
 			'after_display_type'             => array(
-				'label'           => esc_html__( 'Display', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Display', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => array(
-					'inline-block' => __( 'Inline Block', 'dsm-supreme-modules-for-divi' ),
-					'block'        => __( 'Block', 'dsm-supreme-modules-for-divi' ),
-					'inline'       => __( 'Inline', 'dsm-supreme-modules-for-divi' ),
-					'inline-flex'  => __( 'Inline Flex', 'dsm-supreme-modules-for-divi' ),
+					'inline-block' => __( 'Inline Block', 'supreme-modules-for-divi' ),
+					'block'        => __( 'Block', 'supreme-modules-for-divi' ),
+					'inline'       => __( 'Inline', 'supreme-modules-for-divi' ),
+					'inline-flex'  => __( 'Inline Flex', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'inline-block',
 				'mobile_options'  => true,

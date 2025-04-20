@@ -1,0 +1,45 @@
+@import "wp-admin-colors";
+@import "ui-constants";
+
+$ameStickyBarZIndex: 5;
+
+/*
+ * The minimum screen width at which the sticky bar will be sticky.
+ * The Admin Bar stops sticking to the top of the window at 600px. Let's do the same for our top bar.
+ */
+$ameStickyBarMinScreenWidth: 601px;
+
+@media screen and (min-width: $ameStickyBarMinScreenWidth) {
+	.ame-sticky-top-bar {
+		position: sticky;
+		//Stick below the admin bar.
+		top: var(--wp-admin--admin-bar--height, 32px);
+		z-index: $ameStickyBarZIndex;
+	}
+
+	.ame-is-pinned-top-bar {
+		background-color: wpColor(gray-0);
+		border-bottom: 1px solid wpColor(gray-10);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	//When the bar is pinned, expand it horizontally to fill the content area.
+	.ame-is-pinned-top-bar {
+		margin-left: calc(-1 * var(--ame-sticky-bar-left-offset, 0));
+		padding-left: var(--ame-sticky-bar-left-offset, 0);
+
+		margin-right: calc(-1 * var(--ame-sticky-bar-right-offset, 0));
+		padding-right: var(--ame-sticky-bar-right-offset, 0);
+	}
+}
+
+.ame-sticky-top-bar {
+	padding-top: $defaultActorSelectorTopMargin;
+	padding-bottom: $largeActorSelectorToUiGap - 1px; //-1 for the border.
+	border-bottom: 1px solid transparent;
+}
+
+.ame-sticky-top-bar #ws_actor_selector {
+	//When inside the sticky bar, the top spacing is handled by the bar itself.
+	margin-top: 0;
+}

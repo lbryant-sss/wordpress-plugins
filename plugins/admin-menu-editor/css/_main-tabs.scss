@@ -1,3 +1,5 @@
+@import "ui-constants";
+
 /***************************************
 		Tabs on the settings page
  ***************************************/
@@ -97,7 +99,7 @@ $condensedTabBorderRadius: 0px;
 			flex-wrap: wrap;
 			gap: $condensedTabGap;
 
-			margin-bottom: 6px; //Same as the default top margin for the actor selector.
+			margin-bottom: $tabsToActorSelectorGap; //Same as the default top margin for the actor selector.
 
 			.nav-tab {
 				box-sizing: border-box;

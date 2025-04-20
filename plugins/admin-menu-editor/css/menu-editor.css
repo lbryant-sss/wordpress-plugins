@@ -15,6 +15,49 @@
   border-bottom-right-radius: 0;
 }
 
+/*
+Standard WordPress admin colors.
+
+Announcement post:
+https://make.wordpress.org/core/2021/02/23/standardization-of-wp-admin-colors-in-wordpress-5-7/
+
+Source:
+https://codepen.io/ryelle/pen/WNGVEjw
+
+A "wp" prefix has been added to avoid name conflicts with other code in this plugin.
+ */
+/*
+ * The minimum screen width at which the sticky bar will be sticky.
+ * The Admin Bar stops sticking to the top of the window at 600px. Let's do the same for our top bar.
+ */
+@media screen and (min-width: 601px) {
+  .ame-sticky-top-bar {
+    position: sticky;
+    top: var(--wp-admin--admin-bar--height, 32px);
+    z-index: 5;
+  }
+  .ame-is-pinned-top-bar {
+    background-color: #f6f7f7;
+    border-bottom: 1px solid #c3c4c7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .ame-is-pinned-top-bar {
+    margin-left: calc(-1 * var(--ame-sticky-bar-left-offset, 0));
+    padding-left: var(--ame-sticky-bar-left-offset, 0);
+    margin-right: calc(-1 * var(--ame-sticky-bar-right-offset, 0));
+    padding-right: var(--ame-sticky-bar-right-offset, 0);
+  }
+}
+.ame-sticky-top-bar {
+  padding-top: 6px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid transparent;
+}
+
+.ame-sticky-top-bar #ws_actor_selector {
+  margin-top: 0;
+}
+
 #ws_menu_editor {
   min-width: 780px;
 }

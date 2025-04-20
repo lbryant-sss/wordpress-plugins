@@ -13,29 +13,29 @@ class DSM_PriceList_Child extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name                        = esc_html__( 'Price List Item', 'dsm-supreme-modules-for-divi' );
-		$this->advanced_setting_title_text = esc_html__( 'Price List Item', 'dsm-supreme-modules-for-divi' );
-		$this->settings_text               = esc_html__( 'Price List Item Settings', 'dsm-supreme-modules-for-divi' );
+		$this->name                        = esc_html__( 'Price List Item', 'supreme-modules-for-divi' );
+		$this->advanced_setting_title_text = esc_html__( 'Price List Item', 'supreme-modules-for-divi' );
+		$this->settings_text               = esc_html__( 'Price List Item Settings', 'supreme-modules-for-divi' );
 		$this->child_title_var             = 'admin_title';
 		$this->child_title_fallback_var    = 'title';
 
 		$this->settings_modal_toggles = array(
 			'general'    => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'dsm-supreme-modules-for-divi' ),
-					'link'         => esc_html__( 'Link', 'dsm-supreme-modules-for-divi' ),
-					'image'        => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Text', 'supreme-modules-for-divi' ),
+					'link'         => esc_html__( 'Link', 'supreme-modules-for-divi' ),
+					'image'        => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced'   => array(
 				'toggles' => array(
-					'icon_settings' => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+					'icon_settings' => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 					'text'          => array(
-						'title'    => esc_html__( 'Text', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Text', 'supreme-modules-for-divi' ),
 						'priority' => 49,
 					),
 					'width'         => array(
-						'title'    => esc_html__( 'Sizing', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Sizing', 'supreme-modules-for-divi' ),
 						'priority' => 65,
 					),
 				),
@@ -43,7 +43,7 @@ class DSM_PriceList_Child extends ET_Builder_Module {
 			'custom_css' => array(
 				'toggles' => array(
 					'attributes' => array(
-						'title'    => esc_html__( 'Attributes', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Attributes', 'supreme-modules-for-divi' ),
 						'priority' => 95,
 					),
 				),
@@ -70,7 +70,7 @@ class DSM_PriceList_Child extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .dsm-pricelist-image img',
 						),
 					),
-					'label_prefix' => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix' => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'icon_settings',
 				),
@@ -78,7 +78,7 @@ class DSM_PriceList_Child extends ET_Builder_Module {
 			'box_shadow'      => array(
 				'default' => array(),
 				'image'   => array(
-					'label'             => esc_html__( 'Image Box Shadow', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( 'Image Box Shadow', 'supreme-modules-for-divi' ),
 					'option_category'   => 'layout',
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'icon_settings',
@@ -118,34 +118,34 @@ class DSM_PriceList_Child extends ET_Builder_Module {
 
 		return array(
 			'module_id'       => array(
-				'label'           => esc_html__( 'CSS ID', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'CSS ID', 'supreme-modules-for-divi' ),
 				'type'            => 'text',
 				'option_category' => 'configuration',
-				'description'     => esc_html__( "Assign a unique CSS ID to the element which can be used to assign custom CSS styles from within your child theme or from within Divi's custom CSS inputs.", 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( "Assign a unique CSS ID to the element which can be used to assign custom CSS styles from within your child theme or from within Divi's custom CSS inputs.", 'supreme-modules-for-divi' ),
 				'tab_slug'        => 'custom_css',
 				'toggle_slug'     => 'classes',
 				'option_class'    => 'et_pb_custom_css_regular',
 			),
 			'module_class'    => array(
-				'label'           => esc_html__( 'CSS Class', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'CSS Class', 'supreme-modules-for-divi' ),
 				'type'            => 'text',
 				'option_category' => 'configuration',
-				'description'     => esc_html__( "Assign any number of CSS Classes to the element, separated by spaces, which can be used to assign custom CSS styles from within your child theme or from within Divi's custom CSS inputs.", 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( "Assign any number of CSS Classes to the element, separated by spaces, which can be used to assign custom CSS styles from within your child theme or from within Divi's custom CSS inputs.", 'supreme-modules-for-divi' ),
 				'tab_slug'        => 'custom_css',
 				'toggle_slug'     => 'classes',
 				'option_class'    => 'et_pb_custom_css_regular',
 			),
 			'admin_title'     => array(
-				'label'       => esc_html__( 'Admin Label', 'dsm-supreme-modules-for-divi' ),
+				'label'       => esc_html__( 'Admin Label', 'supreme-modules-for-divi' ),
 				'type'        => 'text',
-				'description' => esc_html__( 'This will change the label of the business hours item in the builder for easy identification.', 'dsm-supreme-modules-for-divi' ),
+				'description' => esc_html__( 'This will change the label of the business hours item in the builder for easy identification.', 'supreme-modules-for-divi' ),
 				'toggle_slug' => 'admin_label',
 			),
 			'price'           => array(
-				'label'            => esc_html__( 'Price', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Price', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
-				'description'      => esc_html__( 'Add the price of the item', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Add the price of the item', 'supreme-modules-for-divi' ),
 				'toggle_slug'      => 'main_content',
 				'default'          => '$8',
 				'default_on_front' => '$8',
@@ -154,10 +154,10 @@ class DSM_PriceList_Child extends ET_Builder_Module {
 
 			),
 			'title'           => array(
-				'label'            => esc_html__( 'Title', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Title', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
-				'description'      => esc_html__( 'Text entered here will appear as title.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Text entered here will appear as title.', 'supreme-modules-for-divi' ),
 				'toggle_slug'      => 'main_content',
 				'default_on_front' => 'The title of the first pricing item',
 				'dynamic_content'  => 'text',
@@ -165,39 +165,39 @@ class DSM_PriceList_Child extends ET_Builder_Module {
 
 			),
 			'image'           => array(
-				'label'              => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+				'label'              => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 				'type'               => 'upload',
 				'option_category'    => 'basic_option',
-				'upload_button_text' => esc_attr__( 'Upload an image', 'dsm-supreme-modules-for-divi' ),
-				'choose_text'        => esc_attr__( 'Choose an Image', 'dsm-supreme-modules-for-divi' ),
-				'update_text'        => esc_attr__( 'Set As Image', 'dsm-supreme-modules-for-divi' ),
+				'upload_button_text' => esc_attr__( 'Upload an image', 'supreme-modules-for-divi' ),
+				'choose_text'        => esc_attr__( 'Choose an Image', 'supreme-modules-for-divi' ),
+				'update_text'        => esc_attr__( 'Set As Image', 'supreme-modules-for-divi' ),
 				'depends_show_if'    => 'off',
-				'description'        => esc_html__( 'Upload an image to display at the top of your blurb.', 'dsm-supreme-modules-for-divi' ),
+				'description'        => esc_html__( 'Upload an image to display at the top of your blurb.', 'supreme-modules-for-divi' ),
 				'toggle_slug'        => 'image',
 				'dynamic_content'    => 'image',
 			),
 			'alt'             => array(
-				'label'           => esc_html__( 'Image Alt Text', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Image Alt Text', 'supreme-modules-for-divi' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Define the HTML ALT text for your image here.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Define the HTML ALT text for your image here.', 'supreme-modules-for-divi' ),
 				'depends_show_if' => 'off',
 				'tab_slug'        => 'custom_css',
 				'toggle_slug'     => 'attributes',
 				'dynamic_content' => 'text',
 			),
 			'content'         => array(
-				'label'           => esc_html__( 'Content', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Content', 'supreme-modules-for-divi' ),
 				'type'            => 'tiny_mce',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Content entered here will appear inside the module.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Content entered here will appear inside the module.', 'supreme-modules-for-divi' ),
 				'toggle_slug'     => 'main_content',
 				'dynamic_content' => 'text',
 				'mobile_options'  => true,
 
 			),
 			'image_max_width' => array(
-				'label'            => esc_html__( 'Image Width', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Image Width', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'layout',
 				'tab_slug'         => 'advanced',
@@ -218,7 +218,7 @@ class DSM_PriceList_Child extends ET_Builder_Module {
 				'hover'            => 'tabs',
 			),
 			'image_spacing'   => array(
-				'label'            => esc_html__( 'Image Gap Spacing', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Image Gap Spacing', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'layout',
 				'tab_slug'         => 'advanced',

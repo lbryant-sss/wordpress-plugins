@@ -16,9 +16,9 @@ if ( $field_required !== null ) {
 
 }
 if ( empty( $field['config']['multi_upload_text'] ) ) {
-	$field['config']['multi_upload_text'] = __( 'Add File', 'caldera-forms' );
+	$field['config']['multi_upload_text'] = __( 'Add File', 'supreme-modules-for-divi' );
 	if ( ! empty( $field['config']['multi_upload'] ) ) {
-		$field['config']['multi_upload_text'] = __( 'Add Files', 'caldera-forms' );
+		$field['config']['multi_upload_text'] = __( 'Add Files', 'supreme-modules-for-divi' );
 	}
 }
 
@@ -60,9 +60,9 @@ if ( ! empty( $accept_tag ) ) {
 	$field['config']['max_size'] = wp_max_upload_size();
 
 	$field['config']['notices'] = array(
-		'file_exceeds_size_limit' => esc_html__( 'File exceeds the maximum upload size for this site.', 'caldera-forms' ),
-		'zero_byte_file'          => esc_html__( 'This file is empty. Please try another.', 'caldera-forms' ),
-		'invalid_filetype'        => esc_html__( 'This file type is not allowed. Please try another.', 'caldera-forms' ),
+		'file_exceeds_size_limit' => esc_html__( 'File exceeds the maximum upload size for this site.', 'supreme-modules-for-divi' ),
+		'zero_byte_file'          => esc_html__( 'This file is empty. Please try another.', 'supreme-modules-for-divi' ),
+		'invalid_filetype'        => esc_html__( 'This file type is not allowed. Please try another.', 'supreme-modules-for-divi' ),
 	);
 
 	?><?php echo et_core_intentionally_unescaped( $wrapper_before, 'html' ); ?>
@@ -109,6 +109,9 @@ endif;
 					name="<?php echo esc_attr( $field_name ); ?>"
 					value="<?php echo esc_attr( $uniqu_code ); ?>"
 			>
-			<?php echo et_core_intentionally_unescaped( $field_caption, 'html' ); ?>
-	<?php echo et_core_intentionally_unescaped( $field_after, 'html' ); ?>
-<?php echo et_core_intentionally_unescaped( $wrapper_after, 'html' ); ?>
+			<?php //phpcs:ignore
+			echo et_core_intentionally_unescaped( $field_caption, 'html' ); ?>
+	<?php //phpcs:ignore
+echo et_core_intentionally_unescaped( $field_after, 'html' ); ?>
+<?php //phpcs:ignore
+echo et_core_intentionally_unescaped( $wrapper_after, 'html' ); ?>

@@ -76,7 +76,7 @@ class Dsm_Supreme_Modules_For_Divi {
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'dsm-supreme-modules-for-divi';
+		$this->plugin_name = 'supreme-modules-for-divi';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -150,11 +150,9 @@ class Dsm_Supreme_Modules_For_Divi {
 	 * @access   private
 	 */
 	private function set_locale() {
-
 		$plugin_i18n = new Dsm_Supreme_Modules_For_Divi_i18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+		$this->loader->add_action( 'init', $plugin_i18n, 'load_plugin_textdomain' );
 	}
 
 	/**
@@ -178,13 +176,7 @@ class Dsm_Supreme_Modules_For_Divi {
 		// Plugin Admin.
 		add_filter( 'admin_footer_text', array( $this, 'dsm_admin_footer_text' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'dsm_admin_load_enqueue' ) );
-		new Dsm_Supreme_Modules_For_Divi_Review(
-			array(
-				'slug'       => $this->get_plugin_name(),
-				'name'       => __( 'Divi Supreme', 'dsm-supreme-modules-for-divi' ),
-				'time_limit' => intval( '864000' ),
-			)
-		);
+
 
 		// JSON Handler.
 		if ( $this->settings_api->get_option( 'dsm_allow_mime_json_upload', 'dsm_settings_misc' ) === 'on' || $this->settings_api->get_option( 'dsm_allow_mime_json_upload', 'dsm_settings_misc' ) === '' ) {
@@ -197,6 +189,10 @@ class Dsm_Supreme_Modules_For_Divi {
 
 		// Divi Template
 		add_action( 'init', array( $this, 'dsm_flush_rewrite_rules' ), 20 );
+
+		// Load review notice.
+		add_action( 'init', array( $this, 'dsm_load_review' ), 20 );
+
 		if ( null !== $this->settings_api->get_option( 'dsm_use_header_footer', 'dsm_general' ) && $this->settings_api->get_option( 'dsm_use_header_footer', 'dsm_general' ) === 'on' ) {
 			/*
 			add_action( 'init', array( $this, 'dsm_header_footer_posttypes' ), 0 );
@@ -362,14 +358,30 @@ class Dsm_Supreme_Modules_For_Divi {
 	}
 
 	/**
+	 * Force load required module styles.
+	 *
+	 * @return array
+	 */
+	public function dsm_load_review() {
+		new Dsm_Supreme_Modules_For_Divi_Review(
+			array(
+				'slug'       => $this->get_plugin_name(),
+				'name'       => __( 'Divi Supreme', 'supreme-modules-for-divi' ),
+				'time_limit' => intval( '864000' ),
+			)
+		);
+	}
+
+	/**
 	 * Creates the plugin action links.
 	 *
 	 * @since 1.0.0
 	 */
 	public function dsm_plugin_action_links( $links ) {
 		$dsm_go_pro = sprintf(
-			__( '<a href="%2$s" target="_blank" class="dsm-plugin-gopro">%1$s</a>', 'dsm-supreme-modules-for-divi' ),
-			sprintf( '%s', esc_html__( 'Go Pro', 'dsm-supreme-modules-for-divi' ) ),
+			/* translators: 1: Go Pro Text, 2: Divi Supreme Pro Features URL Link. */
+			__( '<a href="%2$s" target="_blank" class="dsm-plugin-gopro">%1$s</a>', 'supreme-modules-for-divi' ),
+			sprintf( '%s', esc_html__( 'Go Pro', 'supreme-modules-for-divi' ) ),
 			esc_url( 'https://divisupreme.com/features/' )
 		);
 
@@ -389,7 +401,7 @@ class Dsm_Supreme_Modules_For_Divi {
 		}
 
 		if ( $plugin == $plugin_file ) {
-			$settings = array( 'settings' => '<a href="' . esc_url( get_admin_url( null, 'options-general.php?page=divi_supreme_settings' ) ) . '">' . __( 'Settings', 'dsm-supreme-modules-for-divi' ) . '</a>' );
+			$settings = array( 'settings' => '<a href="' . esc_url( get_admin_url( null, 'options-general.php?page=divi_supreme_settings' ) ) . '">' . __( 'Settings', 'supreme-modules-for-divi' ) . '</a>' );
 
 			$actions = array_merge( $settings, $actions );
 
@@ -405,8 +417,8 @@ class Dsm_Supreme_Modules_For_Divi {
 	public function dsm_plugin_row_meta( $links, $file ) {
 		if ( 'supreme-modules-for-divi/supreme-modules-for-divi.php' == $file ) {
 			$row_meta = array(
-				'docs'    => '<a href="' . esc_url( 'https://docs.divisupreme.com/' ) . '" target="_blank" aria-label="' . esc_attr__( 'Divi Supreme Documentation', 'dsm-supreme-modules-for-divi' ) . '">' . esc_html__( 'Documentation', 'dsm-supreme-modules-for-divi' ) . '</a>',
-				'support' => '<a href="' . esc_url( 'https://divisupreme.com/contact/' ) . '" target="_blank" aria-label="' . esc_attr__( 'Get Support', 'dsm-supreme-modules-for-divi' ) . '">' . esc_html__( 'Get Support', 'dsm-supreme-modules-for-divi' ) . '</a>',
+				'docs'    => '<a href="' . esc_url( 'https://docs.divisupreme.com/' ) . '" target="_blank" aria-label="' . esc_attr__( 'Divi Supreme Documentation', 'supreme-modules-for-divi' ) . '">' . esc_html__( 'Documentation', 'supreme-modules-for-divi' ) . '</a>',
+				'support' => '<a href="' . esc_url( 'https://divisupreme.com/contact/' ) . '" target="_blank" aria-label="' . esc_attr__( 'Get Support', 'supreme-modules-for-divi' ) . '">' . esc_html__( 'Get Support', 'supreme-modules-for-divi' ) . '</a>',
 			);
 
 			return array_merge( $links, $row_meta );
@@ -423,9 +435,9 @@ class Dsm_Supreme_Modules_For_Divi {
 		if ( $is_divi_supreme_screen || $is_divi_supreme_screen_footer ) {
 			$footer_text = sprintf(
 				/* translators: 1: DiviSupreme 2:: five stars */
-				__( 'If you like %1$s please leave us a %2$s rating. A huge thanks in advance!', 'dsm-supreme-modules-for-divi' ),
-				sprintf( '<strong>%s</strong>', esc_html__( 'Divi Supreme', 'dsm-supreme-modules-for-divi' ) ),
-				'<a href="https://wordpress.org/support/plugin/supreme-modules-for-divi/reviews/?rate=5#new-post" target="_blank" class="dsm-rating-link" data-rated="' . esc_attr__( 'Thanks :)', 'dsm-supreme-modules-for-divi' ) . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+				__( 'If you like %1$s please leave us a %2$s rating. A huge thanks in advance!', 'supreme-modules-for-divi' ),
+				sprintf( '<strong>%s</strong>', esc_html__( 'Divi Supreme', 'supreme-modules-for-divi' ) ),
+				'<a href="https://wordpress.org/support/plugin/supreme-modules-for-divi/reviews/?rate=5#new-post" target="_blank" class="dsm-rating-link" data-rated="' . esc_attr__( 'Thanks :)', 'supreme-modules-for-divi' ) . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
 			);
 		}
 
@@ -461,17 +473,17 @@ class Dsm_Supreme_Modules_For_Divi {
 	 */
 	public function dsm_header_footer_posttypes() {
 		$labels = array(
-			'name'               => esc_html__( 'Divi Templates', 'dsm-supreme-modules-for-divi' ),
-			'singular_name'      => esc_html__( 'Divi Template', 'dsm-supreme-modules-for-divi' ),
-			'add_new'            => esc_html__( 'Add New', 'dsm-supreme-modules-for-divi' ),
-			'add_new_item'       => esc_html__( 'Add New Template', 'dsm-supreme-modules-for-divi' ),
-			'edit_item'          => esc_html__( 'Edit Template', 'dsm-supreme-modules-for-divi' ),
-			'new_item'           => esc_html__( 'New Template', 'dsm-supreme-modules-for-divi' ),
-			'all_items'          => esc_html__( 'All Templates', 'dsm-supreme-modules-for-divi' ),
-			'view_item'          => esc_html__( 'View Template', 'dsm-supreme-modules-for-divi' ),
-			'search_items'       => esc_html__( 'Search Templates', 'dsm-supreme-modules-for-divi' ),
-			'not_found'          => esc_html__( 'Nothing found', 'dsm-supreme-modules-for-divi' ),
-			'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'dsm-supreme-modules-for-divi' ),
+			'name'               => esc_html__( 'Divi Templates', 'supreme-modules-for-divi' ),
+			'singular_name'      => esc_html__( 'Divi Template', 'supreme-modules-for-divi' ),
+			'add_new'            => esc_html__( 'Add New', 'supreme-modules-for-divi' ),
+			'add_new_item'       => esc_html__( 'Add New Template', 'supreme-modules-for-divi' ),
+			'edit_item'          => esc_html__( 'Edit Template', 'supreme-modules-for-divi' ),
+			'new_item'           => esc_html__( 'New Template', 'supreme-modules-for-divi' ),
+			'all_items'          => esc_html__( 'All Templates', 'supreme-modules-for-divi' ),
+			'view_item'          => esc_html__( 'View Template', 'supreme-modules-for-divi' ),
+			'search_items'       => esc_html__( 'Search Templates', 'supreme-modules-for-divi' ),
+			'not_found'          => esc_html__( 'Nothing found', 'supreme-modules-for-divi' ),
+			'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'supreme-modules-for-divi' ),
 			'parent_item_colon'  => '',
 		);
 
@@ -521,9 +533,9 @@ class Dsm_Supreme_Modules_For_Divi {
 				<select name="dsm-header-footer-meta-box-options">
 					<?php
 						$option_values = array(
-							'footer'           => __( 'Footer', 'dsm-supreme-modules-for-divi' ),
-							'404'              => __( '404', 'dsm-supreme-modules-for-divi' ),
-							'search_no_result' => __( 'Search No Result', 'dsm-supreme-modules-for-divi' ),
+							'footer'           => __( 'Footer', 'supreme-modules-for-divi' ),
+							'404'              => __( '404', 'supreme-modules-for-divi' ),
+							'search_no_result' => __( 'Search No Result', 'supreme-modules-for-divi' ),
 						);
 
 						foreach ( $option_values as $key => $value ) {
@@ -571,7 +583,7 @@ class Dsm_Supreme_Modules_For_Divi {
 				/>
 				<label for="dsm-footer-show-on-404-template">Show on 404 Page</label>
 			</p>
-			<p><?php _e( 'Note: Footer Template will only show up on the frontend.', 'dsm-supreme-modules-for-divi' ); ?></p>
+			<p><?php _e( 'Note: Footer Template will only show up on the frontend.', 'supreme-modules-for-divi' ); ?></p>
 		</div>
 		<?php
 	}
@@ -745,7 +757,14 @@ class Dsm_Supreme_Modules_For_Divi {
 		if ( $current_screen->post_type === 'dsm_header_footer' ) {
 			?>
 			<div class="notice notice-info">
-				<p><?php _e( 'Notice: For first time user, please re-save your <a href="' . get_admin_url() . 'options-permalink.php"  target="_blank">Permalinks</a> again to flush the rewrite rules in order view them in Visual Builder. This will only work for the Divi Theme. Once ElegantThemes updated their Template Hook on Extra Theme, this feature will also be available. Currently only the footer and 404 template is available you. Please create one template and assign to the footer or 404. If you do not see Divi Builder here, remember to <a href="' . get_admin_url() . 'admin.php?page=et_divi_options#wrap-builder" target="_blank">Enable Divi Builder On Post Types</a> in the Divi Options.', 'dsm-supreme-modules-for-divi' ); ?></p>
+				
+				<p><?php /* Translators: %1$s: Permalink settings URL, %2$s: Divi options URL */
+			_e( sprintf(
+        'Notice: For first time user, please re-save your <a href="%1$s" target="_blank">Permalinks</a> again to flush the rewrite rules in order to view them in Visual Builder. This will only work for the Divi Theme. Once ElegantThemes updates their Template Hook on Extra Theme, this feature will also be available. Currently, only the footer and 404 template is available to you. Please create one template and assign it to the footer or 404. If you do not see Divi Builder here, remember to <a href="%2$s" target="_blank">Enable Divi Builder On Post Types</a> in the Divi Options.',
+        esc_url( get_admin_url() . 'options-permalink.php' ),
+        esc_url( get_admin_url() . 'admin.php?page=et_divi_options#wrap-builder' )
+    ),
+    'supreme-modules-for-divi'); ?></p>
 			</div>
 			<?php
 		}
@@ -759,25 +778,25 @@ class Dsm_Supreme_Modules_For_Divi {
 	public function dsm_add_section_setting( $fields_unprocessed ) {
 		$fields                                        = array();
 		$fields['dsm_section_schedule_visibility']     = array(
-			'label'            => esc_html__( 'Use Scheduled Element', 'dsm-supreme-modules-for-divi' ),
+			'label'            => esc_html__( 'Use Scheduled Element', 'supreme-modules-for-divi' ),
 			'type'             => 'yes_no_button',
 			'option_category'  => 'configuration',
 			'options'          => array(
-				'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-				'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+				'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+				'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 			),
 			'default_on_front' => 'off',
 			'tab_slug'         => 'custom_css',
 			'toggle_slug'      => 'visibility',
-			'description'      => esc_html__( 'Here you can choose whether your Section will show or hide depending on the given date/time.', 'dsm-supreme-modules-for-divi' ),
+			'description'      => esc_html__( 'Here you can choose whether your Section will show or hide depending on the given date/time.', 'supreme-modules-for-divi' ),
 		);
 		$fields['dsm_section_schedule_show_hide']      = array(
-			'label'            => esc_html__( 'Show or Hide Section', 'dsm-supreme-modules-for-divi' ),
+			'label'            => esc_html__( 'Show or Hide Section', 'supreme-modules-for-divi' ),
 			'type'             => 'select',
 			'option_category'  => 'configuration',
 			'options'          => array(
-				'start' => esc_html__( 'Show', 'dsm-supreme-modules-for-divi' ),
-				'end'   => esc_html__( 'Hide', 'dsm-supreme-modules-for-divi' ),
+				'start' => esc_html__( 'Show', 'supreme-modules-for-divi' ),
+				'end'   => esc_html__( 'Hide', 'supreme-modules-for-divi' ),
 			),
 			'default_on_front' => 'start',
 			'tab_slug'         => 'custom_css',
@@ -788,7 +807,7 @@ class Dsm_Supreme_Modules_For_Divi {
 		);
 		$fields['dsm_section_schedule_after_datetime'] = array(
 			'default'     => '',
-			'label'       => esc_html__( 'Schedule a Date/Time', 'dsm-supreme-modules-for-divi' ),
+			'label'       => esc_html__( 'Schedule a Date/Time', 'supreme-modules-for-divi' ),
 			'type'        => 'date_picker',
 			'tab_slug'    => 'custom_css',
 			'toggle_slug' => 'visibility',
@@ -834,25 +853,25 @@ class Dsm_Supreme_Modules_For_Divi {
 	public function dsm_add_row_setting( $fields_unprocessed ) {
 		$fields                                    = array();
 		$fields['dsm_row_schedule_visibility']     = array(
-			'label'            => esc_html__( 'Use Scheduled Element', 'dsm-supreme-modules-for-divi' ),
+			'label'            => esc_html__( 'Use Scheduled Element', 'supreme-modules-for-divi' ),
 			'type'             => 'yes_no_button',
 			'option_category'  => 'configuration',
 			'options'          => array(
-				'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-				'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+				'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+				'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 			),
 			'default_on_front' => 'off',
 			'tab_slug'         => 'custom_css',
 			'toggle_slug'      => 'visibility',
-			'description'      => esc_html__( 'Here you can choose whether your Row will show/hide depending on the given date/time.', 'dsm-supreme-modules-for-divi' ),
+			'description'      => esc_html__( 'Here you can choose whether your Row will show/hide depending on the given date/time.', 'supreme-modules-for-divi' ),
 		);
 		$fields['dsm_row_schedule_show_hide']      = array(
-			'label'            => esc_html__( 'Show or Hide Row', 'dsm-supreme-modules-for-divi' ),
+			'label'            => esc_html__( 'Show or Hide Row', 'supreme-modules-for-divi' ),
 			'type'             => 'select',
 			'option_category'  => 'configuration',
 			'options'          => array(
-				'start' => esc_html__( 'Show', 'dsm-supreme-modules-for-divi' ),
-				'end'   => esc_html__( 'Hide', 'dsm-supreme-modules-for-divi' ),
+				'start' => esc_html__( 'Show', 'supreme-modules-for-divi' ),
+				'end'   => esc_html__( 'Hide', 'supreme-modules-for-divi' ),
 			),
 			'default_on_front' => 'start',
 			'tab_slug'         => 'custom_css',
@@ -863,7 +882,7 @@ class Dsm_Supreme_Modules_For_Divi {
 		);
 		$fields['dsm_row_schedule_after_datetime'] = array(
 			'default'     => '',
-			'label'       => esc_html__( 'Schedule a Date/Time', 'dsm-supreme-modules-for-divi' ),
+			'label'       => esc_html__( 'Schedule a Date/Time', 'supreme-modules-for-divi' ),
 			'type'        => 'date_picker',
 			'tab_slug'    => 'custom_css',
 			'toggle_slug' => 'visibility',
@@ -918,7 +937,7 @@ class Dsm_Supreme_Modules_For_Divi {
 		return do_shortcode( '[et_pb_section global_module="' . $divi_shortcode['id'] . '"][/et_pb_section]' );
 	}
 	public function dsm_divi_shortcode_post_columns_header( $columns ) {
-		$columns['shortcode'] = __( 'Shortcode', 'dsm-supreme-modules-for-divi' );
+		$columns['shortcode'] = __( 'Shortcode', 'supreme-modules-for-divi' );
 		return $columns;
 	}
 	public function dsm_divi_shortcode_post_columns_content( $column_name ) {
@@ -970,7 +989,7 @@ class Dsm_Supreme_Modules_For_Divi {
 			echo do_shortcode( '[contact-form-7 id="' . sanitize_text_field( wp_unslash( $_POST['cf7_library'] ) ) . '"]' );
 			wp_die();
 		} else {
-			esc_html_e( 'No Contact Form 7 selected.', 'dsm-supreme-modules-pro-for-divi' );
+			esc_html_e( 'No Contact Form 7 selected.', 'supreme-modules-for-divi' );
 			wp_die();
 		}
 	}
@@ -989,7 +1008,7 @@ class Dsm_Supreme_Modules_For_Divi {
 		$value = isset( $tag->values[0] ) ? $tag->values[0] : '';
 
 		if ( empty( $value ) ) {
-			$value = __( 'Send', 'contact-form-7' );
+			$value = __( 'Send', 'supreme-modules-for-divi' );
 		}
 
 		$atts['type']  = 'submit';
@@ -1088,7 +1107,7 @@ class Dsm_Supreme_Modules_For_Divi {
 		|| empty( $values ) ) {
 			array_unshift(
 				$labels,
-				__( '&#8212;Please choose an option&#8212;', 'contact-form-7' )
+				__( '&#8212;Please choose an option&#8212;', 'supreme-modules-for-divi' )
 			);
 			array_unshift( $values, '' );
 		} elseif ( $first_as_label ) {
@@ -1273,7 +1292,7 @@ class Dsm_Supreme_Modules_For_Divi {
 				echo do_shortcode( '[caldera_form id="' . sanitize_text_field( wp_unslash( $_POST['cf_library'] ) ) . '"]' );
 				wp_die();
 			} else {
-				esc_html_e( 'No Caldera forms selected.', 'dsm-supreme-modules-for-divi' );
+				esc_html_e( 'No Caldera forms selected.', 'supreme-modules-for-divi' );
 				wp_die();
 			}
 		}

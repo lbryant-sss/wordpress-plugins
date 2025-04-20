@@ -13,20 +13,20 @@ class DSM_CalderaForms extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name             = esc_html__( 'Supreme Caldera Forms', 'dsm-supreme-modules-for-divi' );
+		$this->name             = esc_html__( 'Supreme Caldera Forms', 'supreme-modules-for-divi' );
 		$this->icon_path        = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		$this->main_css_element = '%%order_class%%';
 		// Toggle settings
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Caldera Forms', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Caldera Forms', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'header'                => array(
-						'title'             => esc_html__( 'Header Text', 'dsm-supreme-modules-for-divi' ),
+						'title'             => esc_html__( 'Header Text', 'supreme-modules-for-divi' ),
 						'priority'          => 5,
 						'tabbed_subtoggles' => true,
 						'sub_toggles'       => array(
@@ -57,21 +57,21 @@ class DSM_CalderaForms extends ET_Builder_Module {
 						),
 					),
 					'body'                  => array(
-						'title'    => esc_html__( 'Body', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Body', 'supreme-modules-for-divi' ),
 						'priority' => 5,
 					),
-					'cf_hr'                 => esc_html__( 'Horizontal Ruler (HR Tag)', 'dsm-supreme-modules-for-divi' ),
-					'cf_labels'             => esc_html__( 'Labels', 'dsm-supreme-modules-for-divi' ),
-					'cf_description'        => esc_html__( 'Field Description', 'dsm-supreme-modules-for-divi' ),
+					'cf_hr'                 => esc_html__( 'Horizontal Ruler (HR Tag)', 'supreme-modules-for-divi' ),
+					'cf_labels'             => esc_html__( 'Labels', 'supreme-modules-for-divi' ),
+					'cf_description'        => esc_html__( 'Field Description', 'supreme-modules-for-divi' ),
 					'cf_field'              => array(
-						'title' => esc_html__( 'Input, Textarea & Select', 'dsm-supreme-modules-for-divi' ),
+						'title' => esc_html__( 'Input, Textarea & Select', 'supreme-modules-for-divi' ),
 					),
 					'cf_field_focus'        => array(
-						'title' => esc_html__( 'Input, Textarea & Select Focus', 'dsm-supreme-modules-for-divi' ),
+						'title' => esc_html__( 'Input, Textarea & Select Focus', 'supreme-modules-for-divi' ),
 					),
-					'cf_placeholder'        => esc_html__( 'Placeholder', 'dsm-supreme-modules-for-divi' ),
+					'cf_placeholder'        => esc_html__( 'Placeholder', 'supreme-modules-for-divi' ),
 					'cf_radio_checkbox'     => array(
-						'title'             => esc_html__( 'Radio & Checkbox', 'dsm-supreme-modules-for-divi' ),
+						'title'             => esc_html__( 'Radio & Checkbox', 'supreme-modules-for-divi' ),
 						'tabbed_subtoggles' => true,
 						'sub_toggles'       => array(
 							'radio'    => array(
@@ -82,9 +82,9 @@ class DSM_CalderaForms extends ET_Builder_Module {
 							),
 						),
 					),
-					'cf_basic_file'         => esc_html__( 'Basic File', 'dsm-supreme-modules-for-divi' ),
-					'cf_error'              => esc_html__( 'Error Messages', 'dsm-supreme-modules-for-divi' ),
-					'cf_validation_success' => esc_html__( 'Success Message', 'dsm-supreme-modules-for-divi' ),
+					'cf_basic_file'         => esc_html__( 'Basic File', 'supreme-modules-for-divi' ),
+					'cf_error'              => esc_html__( 'Error Messages', 'supreme-modules-for-divi' ),
+					'cf_validation_success' => esc_html__( 'Success Message', 'supreme-modules-for-divi' ),
 				),
 			),
 		);
@@ -94,7 +94,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 			'text'       => false,
 			'fonts'      => array(
 				'header'                      => array(
-					'label'       => esc_html__( 'Heading', 'dsm-supreme-modules-for-divi' ),
+					'label'       => esc_html__( 'Heading', 'supreme-modules-for-divi' ),
 					'css'         => array(
 						'main' => "{$this->main_css_element} .dsm-cf-html h1",
 					),
@@ -105,7 +105,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'sub_toggle'  => 'h1',
 				),
 				'header_2'                    => array(
-					'label'       => esc_html__( 'Heading 2', 'dsm-supreme-modules-for-divi' ),
+					'label'       => esc_html__( 'Heading 2', 'supreme-modules-for-divi' ),
 					'css'         => array(
 						'main' => "{$this->main_css_element} .dsm-cf-html h2",
 					),
@@ -119,7 +119,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'sub_toggle'  => 'h2',
 				),
 				'header_3'                    => array(
-					'label'       => esc_html__( 'Heading 3', 'dsm-supreme-modules-for-divi' ),
+					'label'       => esc_html__( 'Heading 3', 'supreme-modules-for-divi' ),
 					'css'         => array(
 						'main' => "{$this->main_css_element} .dsm-cf-html h3",
 					),
@@ -133,7 +133,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'sub_toggle'  => 'h3',
 				),
 				'header_4'                    => array(
-					'label'       => esc_html__( 'Heading 4', 'dsm-supreme-modules-for-divi' ),
+					'label'       => esc_html__( 'Heading 4', 'supreme-modules-for-divi' ),
 					'css'         => array(
 						'main' => "{$this->main_css_element} .dsm-cf-html h4",
 					),
@@ -147,7 +147,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'sub_toggle'  => 'h4',
 				),
 				'header_5'                    => array(
-					'label'       => esc_html__( 'Heading 5', 'dsm-supreme-modules-for-divi' ),
+					'label'       => esc_html__( 'Heading 5', 'supreme-modules-for-divi' ),
 					'css'         => array(
 						'main' => "{$this->main_css_element} .dsm-cf-html h5",
 					),
@@ -161,7 +161,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'sub_toggle'  => 'h5',
 				),
 				'header_6'                    => array(
-					'label'       => esc_html__( 'Heading 6', 'dsm-supreme-modules-for-divi' ),
+					'label'       => esc_html__( 'Heading 6', 'supreme-modules-for-divi' ),
 					'css'         => array(
 						'main' => "{$this->main_css_element} .dsm-cf-html h6",
 					),
@@ -175,7 +175,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'sub_toggle'  => 'h6',
 				),
 				'body'                        => array(
-					'label'       => esc_html__( 'Body', 'dsm-supreme-modules-for-divi' ),
+					'label'       => esc_html__( 'Body', 'supreme-modules-for-divi' ),
 					'font_size'   => array(
 						'default' => '14px',
 					),
@@ -190,7 +190,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					),
 				),
 				'labels'                      => array(
-					'label'          => esc_html__( 'Labels', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Labels', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .form-group label.control-label',
 					),
@@ -207,7 +207,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'toggle_slug'    => 'cf_labels',
 				),
 				'description'                 => array(
-					'label'          => esc_html__( 'Description', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Description', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .form-group>div span.help-block',
 					),
@@ -224,7 +224,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'toggle_slug'    => 'cf_description',
 				),
 				'input_textarea_select'       => array(
-					'label'          => esc_html__( 'Input, Textarea & Select', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Input, Textarea & Select', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]), %%order_class%% .form-group textarea, %%order_class%% .form-group select',
 					),
@@ -241,7 +241,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'toggle_slug'    => 'cf_field',
 				),
 				'input_textarea_select_focus' => array(
-					'label'          => esc_html__( 'Input, Textarea & Select Focus', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Input, Textarea & Select Focus', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]):focus, %%order_class%% .form-group textarea:focus',
 					),
@@ -258,7 +258,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'toggle_slug'    => 'cf_field_focus',
 				),
 				'placeholder'                 => array(
-					'label'          => esc_html__( 'Placeholder', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Placeholder', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .form-group input::placeholder, %%order_class%% .form-group textarea::placeholder, %%order_class%% .form-group input::-webkit-input-placeholder, %%order_class%% .form-group textarea::-webkit-input-placeholder',
 					),
@@ -275,7 +275,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'toggle_slug'    => 'cf_placeholder',
 				),
 				'radio'                       => array(
-					'label'              => esc_html__( 'Radio', 'dsm-supreme-modules-for-divi' ),
+					'label'              => esc_html__( 'Radio', 'supreme-modules-for-divi' ),
 					'css'                => array(
 						'main' => '%%order_class%% .radio [data-label]',
 					),
@@ -294,7 +294,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'use_text_alignment' => false,
 				),
 				'checkbox'                    => array(
-					'label'              => esc_html__( 'Checkbox', 'dsm-supreme-modules-for-divi' ),
+					'label'              => esc_html__( 'Checkbox', 'supreme-modules-for-divi' ),
 					'css'                => array(
 						'main' => '%%order_class%% .checkbox [data-label]',
 					),
@@ -313,7 +313,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'use_text_alignment' => false,
 				),
 				'file'                        => array(
-					'label'            => esc_html__( 'File', 'dsm-supreme-modules-for-divi' ),
+					'label'            => esc_html__( 'File', 'supreme-modules-for-divi' ),
 					'css'              => array(
 						'main' => '%%order_class%% .file-prevent-overflow',
 					),
@@ -328,7 +328,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'toggle_slug'      => 'cf_basic_file',
 				),
 				'error_msg'                   => array(
-					'label'          => esc_html__( 'Error Messages', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Error Messages', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .has-error .help-block.caldera_ajax_error_block',
 					),
@@ -345,7 +345,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					'toggle_slug'    => 'cf_error',
 				),
 				'success_validation'          => array(
-					'label'          => esc_html__( 'Success Message', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Success Message', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .alert.alert-success',
 					),
@@ -386,7 +386,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]), %%order_class%% .form-group textarea, %%order_class%% .form-group select',
 						),
 					),
-					'label_prefix'    => esc_html__( 'Field', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Field', 'supreme-modules-for-divi' ),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'cf_field',
 					'depends_show_if' => 'off',
@@ -398,7 +398,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .has-error .help-block.caldera_ajax_error_block',
 						),
 					),
-					'label_prefix'    => esc_html__( 'Error Messages', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Error Messages', 'supreme-modules-for-divi' ),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'cf_error',
 					'depends_show_if' => 'off',
@@ -410,7 +410,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .alert.alert-success',
 						),
 					),
-					'label_prefix'    => esc_html__( 'Validation Success', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Validation Success', 'supreme-modules-for-divi' ),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'cf_validation_success',
 					'depends_show_if' => 'off',
@@ -419,7 +419,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 			'box_shadow' => array(
 				'default'     => array(),
 				'input_field' => array(
-					'label'             => esc_html__( 'Box Shadow', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( 'Box Shadow', 'supreme-modules-for-divi' ),
 					'option_category'   => 'layout',
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'cf_field',
@@ -436,7 +436,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 			'filters'    => false,
 			'button'     => array(
 				'button_one'           => array(
-					'label'      => esc_html__( 'Submit Button', 'dsm-supreme-modules-for-divi' ),
+					'label'      => esc_html__( 'Submit Button', 'supreme-modules-for-divi' ),
 					'css'        => array(
 						'main' => '%%order_class%% .et_pb_button_module_wrapper .et_pb_button',
 					),
@@ -447,7 +447,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 					),
 				),
 				'button_advanced_file' => array(
-					'label'      => esc_html__( 'Advanced File Button (1.0)', 'dsm-supreme-modules-for-divi' ),
+					'label'      => esc_html__( 'Advanced File Button (1.0)', 'supreme-modules-for-divi' ),
 					'css'        => array(
 						'main' => '%%order_class%% .cf-uploader-trigger',
 					),
@@ -467,33 +467,33 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				'type'       => 'warning',
 				'value'      => true,
 				'display_if' => true,
-				'message'    => esc_html__(
+				'message'    => 
 					sprintf(
+						/* translators: Caldera Plugin Link */
 						'Note: This module will automatically disable Alert Style, Form Styles and Grid Structure on the frontend even your <a href="%s" target="_blank">Caldera Forms General Settings</a> is enabled. This module will not function and render properly without disabling the above.',
 						admin_url( 'admin.php?page=caldera-forms' )
 					),
-					'dsm-supreme-modules-for-divi'
+					'supreme-modules-for-divi'
 				),
-			),
 			'cf_library'                          => array(
-				'label'           => esc_html__( 'Caldera Form', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Caldera Form', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => dsm_get_caldera_forms(),
 			),
 			'show_validation'                     => array(
-				'label'           => esc_html__( 'Show Error & Validation Messages', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Show Error & Validation Messages', 'supreme-modules-for-divi' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
 				'options'         => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'off',
-				'description'     => esc_html__( 'This will show the error and validation messages on the Visual Builder for styling purposes.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'This will show the error and validation messages on the Visual Builder for styling purposes.', 'supreme-modules-for-divi' ),
 			),
 			'hr_color'                            => array(
-				'label'        => esc_html__( 'Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'default'      => '#666666',
@@ -501,7 +501,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				'toggle_slug'  => 'cf_hr',
 			),
 			'hr_gap'                              => array(
-				'label'           => esc_html__( 'Gap', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Gap', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'tab_slug'        => 'advanced',
@@ -518,7 +518,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				),
 			),
 			'label_bottom_spacing'                => array(
-				'label'           => esc_html__( 'Bottom Spacing', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Bottom Spacing', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'tab_slug'        => 'advanced',
@@ -527,7 +527,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				'default'         => '5px',
 			),
 			'label_required_asterisk_color'       => array(
-				'label'        => esc_html__( 'Required Asterisk Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Required Asterisk Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
@@ -535,14 +535,14 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				'default'      => '#ee0000',
 			),
 			'description_background_color'        => array(
-				'label'        => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
 				'toggle_slug'  => 'cf_description',
 			),
 			'input_textarea_select_margin_bottom' => array(
-				'label'           => esc_html__( 'Margin Bottom', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Margin Bottom', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'tab_slug'        => 'advanced',
@@ -554,17 +554,17 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				'default'         => '15px',
 			),
 			'button_alignment'                    => array(
-				'label'           => esc_html__( 'Button Alignment', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Button Alignment', 'supreme-modules-for-divi' ),
 				'type'            => 'text_align',
 				'option_category' => 'configuration',
 				'options'         => et_builder_get_text_orientation_options( array( 'justified' ) ),
 				'default'         => 'left',
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'button_one',
-				'description'     => esc_html__( 'Here you can define the alignment of Button', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Here you can define the alignment of Button', 'supreme-modules-for-divi' ),
 			),
 			'button_margin_top'                   => array(
-				'label'           => esc_html__( 'Margin Top', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Margin Top', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'tab_slug'        => 'advanced',
@@ -576,14 +576,14 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				'default'         => '20px',
 			),
 			'input_background_color'              => array(
-				'label'        => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
 				'toggle_slug'  => 'cf_field',
 			),
 			'file_padding'                        => array(
-				'label'            => esc_html__( 'Padding', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Padding', 'supreme-modules-for-divi' ),
 				'type'             => 'custom_padding',
 				'option_category'  => 'layout',
 				'tab_slug'         => 'advanced',
@@ -596,43 +596,43 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				'hover'            => 'tabs',
 			),
 			'file_background_color'               => array(
-				'label'        => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
 				'toggle_slug'  => 'cf_basic_file',
 			),
 			'error_msg_background_color'          => array(
-				'label'        => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
 				'toggle_slug'  => 'cf_error',
 			),
 			'validation_success_background_color' => array(
-				'label'        => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
 				'toggle_slug'  => 'cf_validation_success',
 			),
 			'radio_style'                         => array(
-				'label'            => esc_html__( 'Custom Radio Styles', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Custom Radio Styles', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'basic_option',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'default_'         => 'on',
 				'default_on_front' => 'on',
 				'tab_slug'         => 'advanced',
 				'toggle_slug'      => 'cf_radio_checkbox',
 				'sub_toggle'       => 'radio',
-				'description'      => esc_html__( 'Here you can choose to have custom Radio Style.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Here you can choose to have custom Radio Style.', 'supreme-modules-for-divi' ),
 			),
 			'radio_checked_color'                 => array(
-				'label'        => esc_html__( 'Checked Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Checked Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'default'      => '#2ea3f2',
@@ -644,7 +644,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				),
 			),
 			'radio_checked_background_color'      => array(
-				'label'        => esc_html__( 'Checked Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Checked Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'default'      => '#eeeeee',
@@ -656,7 +656,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				),
 			),
 			'radio_background_color'              => array(
-				'label'        => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'default'      => '#eeeeee',
@@ -668,22 +668,22 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				),
 			),
 			'checkbox_style'                      => array(
-				'label'            => esc_html__( 'Custom Checbox Styles', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Custom Checbox Styles', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'basic_option',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'default_'         => 'on',
 				'default_on_front' => 'on',
 				'tab_slug'         => 'advanced',
 				'toggle_slug'      => 'cf_radio_checkbox',
 				'sub_toggle'       => 'checkbox',
-				'description'      => esc_html__( 'Here you can choose to have custom Checkbox Style.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Here you can choose to have custom Checkbox Style.', 'supreme-modules-for-divi' ),
 			),
 			'checkbox_checked_color'              => array(
-				'label'        => esc_html__( 'Checked Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Checked Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'default'      => '#2ea3f2',
@@ -695,7 +695,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				),
 			),
 			'checkbox_checked_background_color'   => array(
-				'label'        => esc_html__( 'Checked Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Checked Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'default'      => '#eeeeee',
@@ -707,7 +707,7 @@ class DSM_CalderaForms extends ET_Builder_Module {
 				),
 			),
 			'checkbox_background_color'           => array(
-				'label'        => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'default'      => '#eeeeee',
@@ -1213,13 +1213,13 @@ function dsm_get_caldera_forms() {
 		$dsm_caldera_library_list = Caldera_Forms_Forms::get_forms( true, true );
 
 		if ( ! empty( $dsm_caldera_library_list ) && ! is_wp_error( $dsm_caldera_library_list ) ) {
-			$options[0] = esc_html__( 'Select Caldera Form', 'dsm-supreme-modules-for-divi' );
+			$options[0] = esc_html__( 'Select Caldera Form', 'supreme-modules-for-divi' );
 			foreach ( $dsm_caldera_library_list as $form ) {
 				$options[ $form['ID'] ] = $form['name'];
 			}
 		}
 	} else {
-		$options[0] = esc_html__( 'Please create a Caldera Form', 'dsm-supreme-modules-for-divi' );
+		$options[0] = esc_html__( 'Please create a Caldera Form', 'supreme-modules-for-divi' );
 	}
 
 	return $options;

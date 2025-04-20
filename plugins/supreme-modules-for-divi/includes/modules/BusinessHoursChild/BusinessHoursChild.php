@@ -13,29 +13,29 @@ class DSM_Business_Hours_Child extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name                        = esc_html__( 'Business Hours Item', 'dsm-supreme-modules-for-divi' );
-		$this->advanced_setting_title_text = esc_html__( 'Business Hours Item', 'dsm-supreme-modules-for-divi' );
-		$this->settings_text               = esc_html__( 'Business Hours Item Settings', 'dsm-supreme-modules-for-divi' );
+		$this->name                        = esc_html__( 'Business Hours Item', 'supreme-modules-for-divi' );
+		$this->advanced_setting_title_text = esc_html__( 'Business Hours Item', 'supreme-modules-for-divi' );
+		$this->settings_text               = esc_html__( 'Business Hours Item Settings', 'supreme-modules-for-divi' );
 		$this->child_title_var             = 'admin_title';
 		$this->child_title_fallback_var    = 'title';
 
 		$this->settings_modal_toggles = array(
 			'general'    => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'dsm-supreme-modules-for-divi' ),
-					'link'         => esc_html__( 'Link', 'dsm-supreme-modules-for-divi' ),
-					'image'        => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Text', 'supreme-modules-for-divi' ),
+					'link'         => esc_html__( 'Link', 'supreme-modules-for-divi' ),
+					'image'        => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced'   => array(
 				'toggles' => array(
-					'icon_settings' => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+					'icon_settings' => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 					'text'          => array(
-						'title'    => esc_html__( 'Text', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Text', 'supreme-modules-for-divi' ),
 						'priority' => 49,
 					),
 					'width'         => array(
-						'title'    => esc_html__( 'Sizing', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Sizing', 'supreme-modules-for-divi' ),
 						'priority' => 65,
 					),
 				),
@@ -43,7 +43,7 @@ class DSM_Business_Hours_Child extends ET_Builder_Module {
 			'custom_css' => array(
 				'toggles' => array(
 					'attributes' => array(
-						'title'    => esc_html__( 'Attributes', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Attributes', 'supreme-modules-for-divi' ),
 						'priority' => 95,
 					),
 				),
@@ -55,7 +55,7 @@ class DSM_Business_Hours_Child extends ET_Builder_Module {
 		return array(
 			'fonts'           => array(
 				'text'   => array(
-					'label'             => esc_html__( '', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( '', 'supreme-modules-for-divi' ),
 					'css'               => array(
 						'main' => '%%order_class%% .dsm-business-hours-header',
 					),
@@ -75,7 +75,7 @@ class DSM_Business_Hours_Child extends ET_Builder_Module {
 					'toggle_slug'       => 'text',
 				),
 				'header' => array(
-					'label'             => esc_html__( 'Day', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( 'Day', 'supreme-modules-for-divi' ),
 					'css'               => array(
 						'main' => '%%order_class%% .dsm-business-hours-day',
 					),
@@ -92,7 +92,7 @@ class DSM_Business_Hours_Child extends ET_Builder_Module {
 					'hide_text_align'   => true,
 				),
 				'time'   => array(
-					'label'           => esc_html__( 'Time', 'dsm-supreme-modules-for-divi' ),
+					'label'           => esc_html__( 'Time', 'supreme-modules-for-divi' ),
 					'css'             => array(
 						'main' => '%%order_class%% .dsm-business-hours-time',
 					),
@@ -138,7 +138,7 @@ class DSM_Business_Hours_Child extends ET_Builder_Module {
 							'border_styles' => "%%order_class%% .dsm-business-hours-image img",
 						)
 					),
-					'label_prefix'    => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'icon_settings',
 				),*/
@@ -147,7 +147,7 @@ class DSM_Business_Hours_Child extends ET_Builder_Module {
 				'default' => array(),
 				/*
 				'image'   => array(
-					'label'               => esc_html__( 'Image Box Shadow', 'dsm-supreme-modules-for-divi' ),
+					'label'               => esc_html__( 'Image Box Shadow', 'supreme-modules-for-divi' ),
 					'option_category'     => 'layout',
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'icon_settings',
@@ -182,52 +182,52 @@ class DSM_Business_Hours_Child extends ET_Builder_Module {
 
 		return array(
 			'admin_title' => array(
-				'label'       => esc_html__( 'Admin Label', 'dsm-supreme-modules-for-divi' ),
+				'label'       => esc_html__( 'Admin Label', 'supreme-modules-for-divi' ),
 				'type'        => 'text',
-				'description' => esc_html__( 'This will change the label of the business hours item in the builder for easy identification.', 'dsm-supreme-modules-for-divi' ),
+				'description' => esc_html__( 'This will change the label of the business hours item in the builder for easy identification.', 'supreme-modules-for-divi' ),
 				'toggle_slug' => 'admin_label',
 			),
 			'time'        => array(
-				'label'            => esc_html__( 'Time', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Time', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
-				'description'      => esc_html__( 'The time of the day', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'The time of the day', 'supreme-modules-for-divi' ),
 				'toggle_slug'      => 'main_content',
 				'default_on_front' => '9:00 AM - 6:00 PM',
 				'dynamic_content'  => 'text',
 			),
 			'title'       => array(
-				'label'            => esc_html__( 'Day', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Day', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
-				'description'      => esc_html__( 'The day', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'The day', 'supreme-modules-for-divi' ),
 				'toggle_slug'      => 'main_content',
 				'default_on_front' => 'Monday',
 				'dynamic_content'  => 'text',
 			),
 			/*
 			'image' => array(
-				'label'              => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+				'label'              => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 				'type'               => 'upload',
 				'option_category'    => 'basic_option',
-				'upload_button_text' => esc_attr__( 'Upload an image', 'dsm-supreme-modules-for-divi' ),
-				'choose_text'        => esc_attr__( 'Choose an Image', 'dsm-supreme-modules-for-divi' ),
-				'update_text'        => esc_attr__( 'Set As Image', 'dsm-supreme-modules-for-divi' ),
+				'upload_button_text' => esc_attr__( 'Upload an image', 'supreme-modules-for-divi' ),
+				'choose_text'        => esc_attr__( 'Choose an Image', 'supreme-modules-for-divi' ),
+				'update_text'        => esc_attr__( 'Set As Image', 'supreme-modules-for-divi' ),
 				'depends_show_if'    => 'off',
-				'description'        => esc_html__( 'Upload an image to display at the top of your blurb.', 'dsm-supreme-modules-for-divi' ),
+				'description'        => esc_html__( 'Upload an image to display at the top of your blurb.', 'supreme-modules-for-divi' ),
 				'toggle_slug'        => 'image',
 			),
 			'alt' => array(
-				'label'           => esc_html__( 'Image Alt Text', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Image Alt Text', 'supreme-modules-for-divi' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Define the HTML ALT text for your image here.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Define the HTML ALT text for your image here.', 'supreme-modules-for-divi' ),
 				'depends_show_if' => 'off',
 				'tab_slug'        => 'custom_css',
 				'toggle_slug'     => 'attributes',
 			),
 			'image_max_width' => array(
-				'label'           => esc_html__( 'Image Width', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Image Width', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'tab_slug'        => 'advanced',
@@ -247,7 +247,7 @@ class DSM_Business_Hours_Child extends ET_Builder_Module {
 				'responsive'      => true,
 			),
 			'image_spacing' => array(
-				'label'           => esc_html__( 'Image Gap Spacing', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Image Gap Spacing', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'tab_slug'        => 'advanced',

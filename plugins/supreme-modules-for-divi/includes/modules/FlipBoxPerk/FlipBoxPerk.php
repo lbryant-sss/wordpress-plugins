@@ -14,14 +14,14 @@ class DSM_FlipBox_Perk extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name      = esc_html__( 'Supreme Flipbox', 'dsm-supreme-modules-for-divi' );
+		$this->name      = esc_html__( 'Supreme Flipbox', 'supreme-modules-for-divi' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
 		$this->settings_modal_toggles = array(
 			'general' => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Text', 'supreme-modules-for-divi' ),
 				),
 			),
 		);
@@ -31,7 +31,7 @@ class DSM_FlipBox_Perk extends ET_Builder_Module {
 		return array(
 			'fonts'       => array(
 				'header'  => array(
-					'label'          => esc_html__( 'Title', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Title', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% h1.et_pb_module_header, %%order_class%% h2.et_pb_module_header, %%order_class%% h3.et_pb_module_header, %%order_class%% h4.et_pb_module_header, %%order_class%% h5.et_pb_module_header, %%order_class%% h6.et_pb_module_header',
 					),
@@ -49,7 +49,7 @@ class DSM_FlipBox_Perk extends ET_Builder_Module {
 					),
 				),
 				'content' => array(
-					'label'          => esc_html__( 'Body', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Body', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .dsm-content',
 					),
@@ -71,7 +71,7 @@ class DSM_FlipBox_Perk extends ET_Builder_Module {
 					),
 				),
 				'subhead' => array(
-					'label'          => esc_html__( 'Subhead', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Subhead', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .dsm-subtitle',
 					),
@@ -125,26 +125,26 @@ class DSM_FlipBox_Perk extends ET_Builder_Module {
 	public function get_fields() {
 		return array(
 			'flipbox_trigger'         => array(
-				'label'           => esc_html__( 'Trigger Animation On', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Trigger Animation On', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'configuration',
 				'default'         => 'hover',
 				'options'         => array(
-					'hover' => esc_html__( 'Hover', 'dsm-supreme-modules-for-divi' ),
-					'click' => esc_html__( 'Click', 'dsm-supreme-modules-for-divi' ),
+					'hover' => esc_html__( 'Hover', 'supreme-modules-for-divi' ),
+					'click' => esc_html__( 'Click', 'supreme-modules-for-divi' ),
 				),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'animation',
-				'description'     => esc_html__( 'This will only work on the frontend as Visual Builder Clicking feature is not recommended.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'This will only work on the frontend as Visual Builder Clicking feature is not recommended.', 'supreme-modules-for-divi' ),
 			),
 			'flipbox_click'           => array(
-				'label'           => esc_html__( 'Click on', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Click on', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'configuration',
 				'default'         => 'whole',
 				'options'         => array(
-					'whole'  => esc_html__( 'As Whole', 'dsm-supreme-modules-for-divi' ),
-					'button' => esc_html__( 'Button', 'dsm-supreme-modules-for-divi' ),
+					'whole'  => esc_html__( 'As Whole', 'supreme-modules-for-divi' ),
+					'button' => esc_html__( 'Button', 'supreme-modules-for-divi' ),
 				),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'animation',
@@ -153,30 +153,30 @@ class DSM_FlipBox_Perk extends ET_Builder_Module {
 				),
 			),
 			'flipbox_type'            => array(
-				'label'           => esc_html__( 'Flipbox Type', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Flipbox Type', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'configuration',
 				'default'         => 'flip',
 				'options'         => array(
-					'flip'     => esc_html__( 'Flip', 'dsm-supreme-modules-for-divi' ),
-					'slide'    => esc_html__( 'Slide', 'dsm-supreme-modules-for-divi' ),
-					'zoom-in'  => esc_html__( 'Zoom In', 'dsm-supreme-modules-for-divi' ),
-					'zoom-out' => esc_html__( 'Zoom Out', 'dsm-supreme-modules-for-divi' ),
-					'fade'     => esc_html__( 'Fade', 'dsm-supreme-modules-for-divi' ),
+					'flip'     => esc_html__( 'Flip', 'supreme-modules-for-divi' ),
+					'slide'    => esc_html__( 'Slide', 'supreme-modules-for-divi' ),
+					'zoom-in'  => esc_html__( 'Zoom In', 'supreme-modules-for-divi' ),
+					'zoom-out' => esc_html__( 'Zoom Out', 'supreme-modules-for-divi' ),
+					'fade'     => esc_html__( 'Fade', 'supreme-modules-for-divi' ),
 				),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'animation',
 			),
 			'flipbox_effect'          => array(
-				'label'           => esc_html__( 'Flipbox Effect', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Flipbox Effect', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'configuration',
 				'default'         => 'right',
 				'options'         => array(
-					'left'  => esc_html__( 'Flip Left', 'dsm-supreme-modules-for-divi' ),
-					'right' => esc_html__( 'Flip Right', 'dsm-supreme-modules-for-divi' ),
-					'up'    => esc_html__( 'Flip Up', 'dsm-supreme-modules-for-divi' ),
-					'down'  => esc_html__( 'Flip Down', 'dsm-supreme-modules-for-divi' ),
+					'left'  => esc_html__( 'Flip Left', 'supreme-modules-for-divi' ),
+					'right' => esc_html__( 'Flip Right', 'supreme-modules-for-divi' ),
+					'up'    => esc_html__( 'Flip Up', 'supreme-modules-for-divi' ),
+					'down'  => esc_html__( 'Flip Down', 'supreme-modules-for-divi' ),
 				),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'animation',
@@ -185,12 +185,12 @@ class DSM_FlipBox_Perk extends ET_Builder_Module {
 				),
 			),
 			'flipbox_3d'              => array(
-				'label'           => esc_html__( '3D Effect', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( '3D Effect', 'supreme-modules-for-divi' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
 				'options'         => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'off',
 				'tab_slug'        => 'advanced',
@@ -200,15 +200,15 @@ class DSM_FlipBox_Perk extends ET_Builder_Module {
 				),
 			),
 			'flipbox_slide_effect'    => array(
-				'label'           => esc_html__( 'Flipbox Slide Effect', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Flipbox Slide Effect', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'configuration',
 				'default'         => 'slide-up',
 				'options'         => array(
-					'slide-up'    => esc_html__( 'Slide Up', 'dsm-supreme-modules-for-divi' ),
-					'slide-down'  => esc_html__( 'Slide Down', 'dsm-supreme-modules-for-divi' ),
-					'slide-left'  => esc_html__( 'Slide Left', 'dsm-supreme-modules-for-divi' ),
-					'slide-right' => esc_html__( 'Slide Right', 'dsm-supreme-modules-for-divi' ),
+					'slide-up'    => esc_html__( 'Slide Up', 'supreme-modules-for-divi' ),
+					'slide-down'  => esc_html__( 'Slide Down', 'supreme-modules-for-divi' ),
+					'slide-left'  => esc_html__( 'Slide Left', 'supreme-modules-for-divi' ),
+					'slide-right' => esc_html__( 'Slide Right', 'supreme-modules-for-divi' ),
 				),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'animation',
@@ -217,16 +217,16 @@ class DSM_FlipBox_Perk extends ET_Builder_Module {
 				),
 			),
 			'flipbox_zoom_out_effect' => array(
-				'label'           => esc_html__( 'Flipbox Zoom Out Effect', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Flipbox Zoom Out Effect', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'configuration',
 				'default'         => 'zoom-out',
 				'options'         => array(
-					'zoom-out'       => esc_html__( 'Zoom Out', 'dsm-supreme-modules-for-divi' ),
-					'zoom-out-up'    => esc_html__( 'Zoom Out Up', 'dsm-supreme-modules-for-divi' ),
-					'zoom-out-down'  => esc_html__( 'Zoom Out Down', 'dsm-supreme-modules-for-divi' ),
-					'zoom-out-left'  => esc_html__( 'Zoom Out Left', 'dsm-supreme-modules-for-divi' ),
-					'zoom-out-right' => esc_html__( 'Zoom Out Right', 'dsm-supreme-modules-for-divi' ),
+					'zoom-out'       => esc_html__( 'Zoom Out', 'supreme-modules-for-divi' ),
+					'zoom-out-up'    => esc_html__( 'Zoom Out Up', 'supreme-modules-for-divi' ),
+					'zoom-out-down'  => esc_html__( 'Zoom Out Down', 'supreme-modules-for-divi' ),
+					'zoom-out-left'  => esc_html__( 'Zoom Out Left', 'supreme-modules-for-divi' ),
+					'zoom-out-right' => esc_html__( 'Zoom Out Right', 'supreme-modules-for-divi' ),
 				),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'animation',
@@ -235,7 +235,7 @@ class DSM_FlipBox_Perk extends ET_Builder_Module {
 				),
 			),
 			'flipbox_speed'           => array(
-				'label'            => esc_html__( 'Animation Speed (in s)', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Animation Speed (in s)', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default'          => '0.6s',
@@ -252,7 +252,7 @@ class DSM_FlipBox_Perk extends ET_Builder_Module {
 				'toggle_slug'      => 'animation',
 			),
 			'flipbox_height'          => array(
-				'label'            => esc_html__( 'Height', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Height', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'layout',
 				'tab_slug'         => 'advanced',

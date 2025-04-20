@@ -3,12 +3,12 @@
  * Plugin Name: Supreme Modules Lite - Divi Theme, Extra Theme and Divi Builder
  * Plugin URI:  https://divisupreme.com/supreme-modules-lite-for-divi/
  * Description: Divi Supreme enhances the experience and features found on Divi and extend with custom creative modules to help you build amazing websites.
- * Version:     2.5.61
+ * Version:     2.5.62
  * Author:      Supreme Modules
  * Author URI:  https://divisupreme.com/about/
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: dsm-supreme-modules-for-divi
+ * Text Domain: supreme-modules-for-divi
  * Domain Path: /languages
  *
  * Divi Supreme Pro is free software: you can redistribute it and/or modify
@@ -26,7 +26,7 @@
  *
  * @link              https://divisupreme.com
  * @since             1.0.0
- * @package           dsm-supreme-modules-for-divi
+ * @package           supreme-modules-for-divi
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'DSM_VERSION' ) ) {
-	define( 'DSM_VERSION', '2.5.61' );
+	define( 'DSM_VERSION', '2.5.62' );
 }
 
 if ( ! defined( 'DSM_SHORTCODE' ) ) {

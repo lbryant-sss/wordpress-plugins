@@ -1,7 +1,7 @@
 === Redirect 404 to Homepage ===
 Contributors: pipdig
 Requires at least: 4.8
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -22,7 +22,7 @@ We designed this plugin to be **very lightweight**. There are no options or sett
 - Super lightweight (will not slow down your site).
 - No logs (fully GDPR compliant).
 - Helps with SEO.
-- 100% free with nothing locked behind a "pro" version.
+- **100% free** with nothing locked behind a "pro" version.
 
 This free plugin is brought to you by [pipdig](https://www.pipdig.co)
 

@@ -14,28 +14,28 @@ class DSM_Business_Hours extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name      = esc_html__( 'Supreme Business Hours', 'dsm-supreme-modules-for-divi' );
+		$this->name      = esc_html__( 'Supreme Business Hours', 'supreme-modules-for-divi' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		// Toggle settings
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Business Days & Timings', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Business Days & Timings', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'separator' => array(
-						'title'    => esc_html__( 'Separator', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Separator', 'supreme-modules-for-divi' ),
 						'priority' => 70,
 					),
 					'divider'   => array(
-						'title'    => esc_html__( 'Divider', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Divider', 'supreme-modules-for-divi' ),
 						'priority' => 70,
 					),
 					/*
 					'image'          => array(
-						'title'    => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 						'priority' => 69,
 					),*/
 				),
@@ -47,7 +47,7 @@ class DSM_Business_Hours extends ET_Builder_Module {
 		return array(
 			'fonts'          => array(
 				'text'   => array(
-					'label'             => esc_html__( '', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( '', 'supreme-modules-for-divi' ),
 					'css'               => array(
 						'main' => '%%order_class%% .dsm_business_hours_child',
 					),
@@ -67,7 +67,7 @@ class DSM_Business_Hours extends ET_Builder_Module {
 					'toggle_slug'       => 'text',
 				),
 				'header' => array(
-					'label'             => esc_html__( 'Day', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( 'Day', 'supreme-modules-for-divi' ),
 					'css'               => array(
 						'main' => '%%order_class%% .dsm-business-hours-day',
 					),
@@ -84,7 +84,7 @@ class DSM_Business_Hours extends ET_Builder_Module {
 					'hide_text_align'   => true,
 				),
 				'time'   => array(
-					'label'           => esc_html__( 'Time', 'dsm-supreme-modules-for-divi' ),
+					'label'           => esc_html__( 'Time', 'supreme-modules-for-divi' ),
 					'css'             => array(
 						'main' => '%%order_class%% .dsm-business-hours-time',
 					),
@@ -129,7 +129,7 @@ class DSM_Business_Hours extends ET_Builder_Module {
 							'border_styles' => "%%order_class%% .dsm-business-hours-image img",
 						)
 					),
-					'label_prefix'    => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'image',
 				),*/
@@ -142,7 +142,7 @@ class DSM_Business_Hours extends ET_Builder_Module {
 				),
 				/*
 				'image'   => array(
-					'label'               => esc_html__( 'Image Box Shadow', 'dsm-supreme-modules-for-divi' ),
+					'label'               => esc_html__( 'Image Box Shadow', 'supreme-modules-for-divi' ),
 					'option_category'     => 'layout',
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'image',
@@ -161,40 +161,40 @@ class DSM_Business_Hours extends ET_Builder_Module {
 	public function get_fields() {
 		return array(
 			'content_orientation'               => array(
-				'label'           => esc_html__( 'Vertical Alignment', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Vertical Alignment', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => array(
-					'flex-start' => esc_html__( 'Top', 'dsm-supreme-modules-for-divi' ),
-					'center'     => esc_html__( 'Center', 'dsm-supreme-modules-for-divi' ),
-					'flex-end'   => esc_html__( 'Bottom', 'dsm-supreme-modules-for-divi' ),
+					'flex-start' => esc_html__( 'Top', 'supreme-modules-for-divi' ),
+					'center'     => esc_html__( 'Center', 'supreme-modules-for-divi' ),
+					'flex-end'   => esc_html__( 'Bottom', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'center',
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'text',
-				'description'     => esc_html__( 'This setting determines the vertical alignment of your content. Your content can either be align to the top, vertically centered, or aligned to the bottom.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'This setting determines the vertical alignment of your content. Your content can either be align to the top, vertically centered, or aligned to the bottom.', 'supreme-modules-for-divi' ),
 			),
 			'separator_style'                   => array(
-				'label'           => esc_html__( 'Style', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Style', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'configuration',
 				'options'         => array(
-					'none'   => esc_html__( 'None', 'dsm-supreme-modules-for-divi' ),
-					'solid'  => esc_html__( 'Solid', 'dsm-supreme-modules-for-divi' ),
-					'dotted' => esc_html__( 'Dotted', 'dsm-supreme-modules-for-divi' ),
-					'dashed' => esc_html__( 'Dashed', 'dsm-supreme-modules-for-divi' ),
-					'double' => esc_html__( 'Double', 'dsm-supreme-modules-for-divi' ),
-					'groove' => esc_html__( 'Groove', 'dsm-supreme-modules-for-divi' ),
-					'ridge'  => esc_html__( 'Ridge', 'dsm-supreme-modules-for-divi' ),
-					'inset'  => esc_html__( 'Inset', 'dsm-supreme-modules-for-divi' ),
-					'outset' => esc_html__( 'Outset', 'dsm-supreme-modules-for-divi' ),
+					'none'   => esc_html__( 'None', 'supreme-modules-for-divi' ),
+					'solid'  => esc_html__( 'Solid', 'supreme-modules-for-divi' ),
+					'dotted' => esc_html__( 'Dotted', 'supreme-modules-for-divi' ),
+					'dashed' => esc_html__( 'Dashed', 'supreme-modules-for-divi' ),
+					'double' => esc_html__( 'Double', 'supreme-modules-for-divi' ),
+					'groove' => esc_html__( 'Groove', 'supreme-modules-for-divi' ),
+					'ridge'  => esc_html__( 'Ridge', 'supreme-modules-for-divi' ),
+					'inset'  => esc_html__( 'Inset', 'supreme-modules-for-divi' ),
+					'outset' => esc_html__( 'Outset', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'none',
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'separator',
 			),
 			'separator_weight'                  => array(
-				'label'            => esc_html__( 'Weight', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Weight', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default'          => '2px',
@@ -213,9 +213,9 @@ class DSM_Business_Hours extends ET_Builder_Module {
 			),
 			'separator_color'                   => array(
 				'default'     => '#333',
-				'label'       => esc_html__( 'Color', 'dsm-supreme-modules-for-divi' ),
+				'label'       => esc_html__( 'Color', 'supreme-modules-for-divi' ),
 				'type'        => 'color-alpha',
-				'description' => esc_html__( 'Here you can define a custom color for your separator.', 'dsm-supreme-modules-for-divi' ),
+				'description' => esc_html__( 'Here you can define a custom color for your separator.', 'supreme-modules-for-divi' ),
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'separator',
 				'show_if_not' => array(
@@ -223,7 +223,7 @@ class DSM_Business_Hours extends ET_Builder_Module {
 				),
 			),
 			'separator_gap'                     => array(
-				'label'            => esc_html__( 'Gap Spacing', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Gap Spacing', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default'          => '10px',
@@ -238,26 +238,26 @@ class DSM_Business_Hours extends ET_Builder_Module {
 				'toggle_slug'      => 'separator',
 			),
 			'divider_style'                     => array(
-				'label'           => esc_html__( 'Style', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Style', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'configuration',
 				'options'         => array(
-					'none'   => esc_html__( 'None', 'dsm-supreme-modules-for-divi' ),
-					'solid'  => esc_html__( 'Solid', 'dsm-supreme-modules-for-divi' ),
-					'dotted' => esc_html__( 'Dotted', 'dsm-supreme-modules-for-divi' ),
-					'dashed' => esc_html__( 'Dashed', 'dsm-supreme-modules-for-divi' ),
-					'double' => esc_html__( 'Double', 'dsm-supreme-modules-for-divi' ),
-					'groove' => esc_html__( 'Groove', 'dsm-supreme-modules-for-divi' ),
-					'ridge'  => esc_html__( 'Ridge', 'dsm-supreme-modules-for-divi' ),
-					'inset'  => esc_html__( 'Inset', 'dsm-supreme-modules-for-divi' ),
-					'outset' => esc_html__( 'Outset', 'dsm-supreme-modules-for-divi' ),
+					'none'   => esc_html__( 'None', 'supreme-modules-for-divi' ),
+					'solid'  => esc_html__( 'Solid', 'supreme-modules-for-divi' ),
+					'dotted' => esc_html__( 'Dotted', 'supreme-modules-for-divi' ),
+					'dashed' => esc_html__( 'Dashed', 'supreme-modules-for-divi' ),
+					'double' => esc_html__( 'Double', 'supreme-modules-for-divi' ),
+					'groove' => esc_html__( 'Groove', 'supreme-modules-for-divi' ),
+					'ridge'  => esc_html__( 'Ridge', 'supreme-modules-for-divi' ),
+					'inset'  => esc_html__( 'Inset', 'supreme-modules-for-divi' ),
+					'outset' => esc_html__( 'Outset', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'none',
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'divider',
 			),
 			'divider_weight'                    => array(
-				'label'            => esc_html__( 'Weight', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Weight', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default'          => '1px',
@@ -276,9 +276,9 @@ class DSM_Business_Hours extends ET_Builder_Module {
 			),
 			'divider_color'                     => array(
 				'default'     => 'rgba(0,0,0,0.12)',
-				'label'       => esc_html__( 'Color', 'dsm-supreme-modules-for-divi' ),
+				'label'       => esc_html__( 'Color', 'supreme-modules-for-divi' ),
 				'type'        => 'color-alpha',
-				'description' => esc_html__( 'Here you can define a custom color for your divider.', 'dsm-supreme-modules-for-divi' ),
+				'description' => esc_html__( 'Here you can define a custom color for your divider.', 'supreme-modules-for-divi' ),
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'divider',
 				'show_if_not' => array(
@@ -286,33 +286,33 @@ class DSM_Business_Hours extends ET_Builder_Module {
 				),
 			),
 			'item_padding'                      => array(
-				'label'           => esc_html__( 'Item Padding', 'et_builder' ),
+				'label'           => esc_html__( 'Item Padding', 'supreme-modules-for-divi' ),
 				'type'            => 'custom_padding',
 				'mobile_options'  => true,
 				'option_category' => 'layout',
-				'description'     => esc_html__( 'Adjust padding to specific values, or leave blank to use the default padding.', 'et_builder' ),
+				'description'     => esc_html__( 'Adjust padding to specific values, or leave blank to use the default padding.', 'supreme-modules-for-divi' ),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'margin_padding',
 				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 			),
 			'background_striped'                => array(
-				'label'            => esc_html__( 'Use Striped Background', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Use Striped Background', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'default'          => 'off',
 				'default_on_front' => 'off',
 				'toggle_slug'      => 'background',
-				'description'      => esc_html__( 'Here you can choose whether or not the background of each row should be in zebra-striping.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Here you can choose whether or not the background of each row should be in zebra-striping.', 'supreme-modules-for-divi' ),
 			),
 			'background_striped_odd_row_color'  => array(
 				'default'     => '#f9f9f9',
-				'label'       => esc_html__( 'Striped Odd Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'       => esc_html__( 'Striped Odd Background Color', 'supreme-modules-for-divi' ),
 				'type'        => 'color-alpha',
-				'description' => esc_html__( 'Here you can define a custom color for your odd row.', 'dsm-supreme-modules-for-divi' ),
+				'description' => esc_html__( 'Here you can define a custom color for your odd row.', 'supreme-modules-for-divi' ),
 				'toggle_slug' => 'background',
 				'show_if'     => array(
 					'background_striped' => 'on',
@@ -320,9 +320,9 @@ class DSM_Business_Hours extends ET_Builder_Module {
 			),
 			'background_striped_even_row_color' => array(
 				'default'     => '#fff',
-				'label'       => esc_html__( 'Striped Even Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'       => esc_html__( 'Striped Even Background Color', 'supreme-modules-for-divi' ),
 				'type'        => 'color-alpha',
-				'description' => esc_html__( 'Here you can define a custom color for your even row.', 'dsm-supreme-modules-for-divi' ),
+				'description' => esc_html__( 'Here you can define a custom color for your even row.', 'supreme-modules-for-divi' ),
 				'toggle_slug' => 'background',
 				'show_if'     => array(
 					'background_striped' => 'on',
@@ -330,7 +330,7 @@ class DSM_Business_Hours extends ET_Builder_Module {
 			),
 			/*
 			'image_max_width' => array(
-				'label'           => esc_html__( 'Image Width', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Image Width', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'tab_slug'        => 'advanced',
@@ -350,7 +350,7 @@ class DSM_Business_Hours extends ET_Builder_Module {
 				'responsive'      => true,
 			),
 			'image_spacing' => array(
-				'label'           => esc_html__( 'Image Gap Spacing', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Image Gap Spacing', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'tab_slug'        => 'advanced',

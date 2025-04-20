@@ -13,21 +13,21 @@ class DSM_Text_Divider extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name             = esc_html__( 'Supreme Text Divider', 'dsm-supreme-modules-for-divi' );
+		$this->name             = esc_html__( 'Supreme Text Divider', 'supreme-modules-for-divi' );
 		$this->icon_path        = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		$this->main_css_element = '%%order_class%%.dsm_text_divider';
 
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'dsm-supreme-modules-for-divi' ),
-					'visibility'   => esc_html__( 'Visibility', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Text', 'supreme-modules-for-divi' ),
+					'visibility'   => esc_html__( 'Visibility', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'color'  => esc_html__( 'Color', 'dsm-supreme-modules-for-divi' ),
-					'styles' => esc_html__( 'Styles', 'dsm-supreme-modules-for-divi' ),
+					'color'  => esc_html__( 'Color', 'supreme-modules-for-divi' ),
+					'styles' => esc_html__( 'Styles', 'supreme-modules-for-divi' ),
 				),
 			),
 		);
@@ -45,7 +45,7 @@ class DSM_Text_Divider extends ET_Builder_Module {
 		return array(
 			'fonts'          => array(
 				'header' => array(
-					'label'          => esc_html__( 'Divider', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Divider', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => "{$this->main_css_element} .dsm-text-divider-header, {$this->main_css_element} .dsm-text-divider-header a",
 					),
@@ -90,22 +90,22 @@ class DSM_Text_Divider extends ET_Builder_Module {
 	public function get_fields() {
 		return array(
 			'header'           => array(
-				'label'            => esc_html__( 'Divider Text', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Divider Text', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
-				'description'      => esc_html__( 'The text of divider will appear in between the divider.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'The text of divider will appear in between the divider.', 'supreme-modules-for-divi' ),
 				'toggle_slug'      => 'main_content',
 				'default_on_front' => 'Divider Text',
 				'dynamic_content'  => 'text',
 			),
 			'text_alignment'   => array(
-				'label'           => esc_html__( 'Text Alignment', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Text Alignment', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => array(
-					'left'   => esc_html__( 'Left', 'dsm-supreme-modules-for-divi' ),
-					'center' => esc_html__( 'Center', 'dsm-supreme-modules-for-divi' ),
-					'right'  => esc_html__( 'Right', 'dsm-supreme-modules-for-divi' ),
+					'left'   => esc_html__( 'Left', 'supreme-modules-for-divi' ),
+					'center' => esc_html__( 'Center', 'supreme-modules-for-divi' ),
+					'right'  => esc_html__( 'Right', 'supreme-modules-for-divi' ),
 				),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'text',
@@ -113,14 +113,14 @@ class DSM_Text_Divider extends ET_Builder_Module {
 			),
 			'color'            => array(
 				'default'     => et_builder_accent_color(),
-				'label'       => esc_html__( 'Color', 'dsm-supreme-modules-for-divi' ),
+				'label'       => esc_html__( 'Color', 'supreme-modules-for-divi' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
-				'description' => esc_html__( 'This will adjust the color of the 1px divider line.', 'dsm-supreme-modules-for-divi' ),
+				'description' => esc_html__( 'This will adjust the color of the 1px divider line.', 'supreme-modules-for-divi' ),
 				'toggle_slug' => 'color',
 			),
 			'divider_style'    => array(
-				'label'           => esc_html__( 'Divider Style', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Divider Style', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => et_builder_get_border_styles(),
@@ -129,20 +129,20 @@ class DSM_Text_Divider extends ET_Builder_Module {
 				'default'         => $this->defaults['divider_style'],
 			),
 			'divider_position' => array(
-				'label'           => esc_html__( 'Divider Position', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Divider Position', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => array(
-					'flex-start' => esc_html__( 'Top', 'dsm-supreme-modules-for-divi' ),
-					'center'     => esc_html__( 'Vertically Centered', 'dsm-supreme-modules-for-divi' ),
-					'flex-end'   => esc_html__( 'Bottom', 'dsm-supreme-modules-for-divi' ),
+					'flex-start' => esc_html__( 'Top', 'supreme-modules-for-divi' ),
+					'center'     => esc_html__( 'Vertically Centered', 'supreme-modules-for-divi' ),
+					'flex-end'   => esc_html__( 'Bottom', 'supreme-modules-for-divi' ),
 				),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'styles',
 				'default'         => 'center',
 			),
 			'divider_weight'   => array(
-				'label'           => esc_html__( 'Divider Weight', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Divider Weight', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'depends_show_if' => 'on',
@@ -152,7 +152,7 @@ class DSM_Text_Divider extends ET_Builder_Module {
 				'default'         => '1px',
 			),
 			'text_gap'         => array(
-				'label'           => esc_html__( 'Text Gap', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Text Gap', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'depends_show_if' => 'on',
@@ -162,12 +162,12 @@ class DSM_Text_Divider extends ET_Builder_Module {
 				'default'         => '10px',
 			),
 			'height'           => array(
-				'label'            => esc_html__( 'Height', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Height', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'layout',
 				'tab_slug'         => 'advanced',
 				'toggle_slug'      => 'width',
-				'description'      => esc_html__( 'Define how much space should be added below the divider.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Define how much space should be added below the divider.', 'supreme-modules-for-divi' ),
 				'default'          => '23px',
 				'default_unit'     => 'px',
 				'default_on_front' => '23px',

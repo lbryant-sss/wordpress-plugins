@@ -13,37 +13,37 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name      = esc_html__( 'Supreme Contact Form 7', 'dsm-supreme-modules-for-divi' );
+		$this->name      = esc_html__( 'Supreme Contact Form 7', 'supreme-modules-for-divi' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		// Toggle settings
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Contact Form 7', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Contact Form 7', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'cf7_labels'             => esc_html__( 'Labels', 'dsm-supreme-modules-for-divi' ),
-					'cf7_field'              => esc_html__( 'Input, Textarea & Select', 'dsm-supreme-modules-for-divi' ),
-					'cf7_placeholder'        => esc_html__( 'Placeholder', 'dsm-supreme-modules-for-divi' ),
+					'cf7_labels'             => esc_html__( 'Labels', 'supreme-modules-for-divi' ),
+					'cf7_field'              => esc_html__( 'Input, Textarea & Select', 'supreme-modules-for-divi' ),
+					'cf7_placeholder'        => esc_html__( 'Placeholder', 'supreme-modules-for-divi' ),
 					'cf7_date'               => array(
-						'title'             => esc_html__( 'Date', 'dsm-supreme-modules-for-divi' ),
+						'title'             => esc_html__( 'Date', 'supreme-modules-for-divi' ),
 						'tabbed_subtoggles' => true,
 						'sub_toggles'       => array(
 							'text' => array(
-								'name' => esc_html__( 'Typography', 'dsm-supreme-modules-for-divi' ),
+								'name' => esc_html__( 'Typography', 'supreme-modules-for-divi' ),
 							),
 							'icon' => array(
-								'name' => esc_html__( 'Icon', 'dsm-supreme-modules-for-divi' ),
+								'name' => esc_html__( 'Icon', 'supreme-modules-for-divi' ),
 							),
 						),
 					),
-					'cf7_radio_checkbox'     => esc_html__( 'Radio & Checkbox', 'dsm-supreme-modules-for-divi' ),
-					'cf7_file'               => esc_html__( 'File', 'dsm-supreme-modules-for-divi' ),
-					'cf7_error'              => esc_html__( 'Error Messages', 'dsm-supreme-modules-for-divi' ),
-					'cf7_validation_errors'  => esc_html__( 'Validation Error', 'dsm-supreme-modules-for-divi' ),
-					'cf7_validation_success' => esc_html__( 'Validation Success', 'dsm-supreme-modules-for-divi' ),
+					'cf7_radio_checkbox'     => esc_html__( 'Radio & Checkbox', 'supreme-modules-for-divi' ),
+					'cf7_file'               => esc_html__( 'File', 'supreme-modules-for-divi' ),
+					'cf7_error'              => esc_html__( 'Error Messages', 'supreme-modules-for-divi' ),
+					'cf7_validation_errors'  => esc_html__( 'Validation Error', 'supreme-modules-for-divi' ),
+					'cf7_validation_success' => esc_html__( 'Validation Success', 'supreme-modules-for-divi' ),
 				),
 			),
 		);
@@ -53,7 +53,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 			'text'       => false,
 			'fonts'      => array(
 				'labels'                => array(
-					'label'          => esc_html__( 'Labels', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Labels', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .wpcf7-form label',
 					),
@@ -70,7 +70,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 					'toggle_slug'    => 'cf7_labels',
 				),
 				'input_textarea_select' => array(
-					'label'          => esc_html__( 'Input, Textarea & Select', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Input, Textarea & Select', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-text, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-tel, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-url, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-quiz, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-number, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-textarea, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-select',
 					),
@@ -87,7 +87,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 					'toggle_slug'    => 'cf7_field',
 				),
 				'date_field'            => array(
-					'label'          => esc_html__( 'Date', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Date', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .wpcf7-form-control.wpcf7-date',
 					),
@@ -105,7 +105,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 					'sub_toggle'     => 'text',
 				),
 				'date_icon'             => array(
-					'label'               => esc_html__( 'Date Icon', 'dsm-supreme-modules-for-divi' ),
+					'label'               => esc_html__( 'Date Icon', 'supreme-modules-for-divi' ),
 					'css'                 => array(
 						'main'      => '%%order_class%% .wpcf7-form-control.wpcf7-date::-webkit-calendar-picker-indicator',
 						'important' => 'all',
@@ -125,7 +125,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 					'sub_toggle'          => 'icon',
 				),
 				'placeholder'           => array(
-					'label'          => esc_html__( 'Placeholder', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Placeholder', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .wpcf7-form-control.wpcf7-text::placeholder, %%order_class%% .wpcf7-form-control.wpcf7-textarea::placeholder',
 					),
@@ -142,7 +142,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 					'toggle_slug'    => 'cf7_placeholder',
 				),
 				'radio_checkbox'        => array(
-					'label'          => esc_html__( 'Radio & Checkbox', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Radio & Checkbox', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .wpcf7-list-item-label',
 					),
@@ -159,7 +159,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 					'toggle_slug'    => 'cf7_radio_checkbox',
 				),
 				'file'                  => array(
-					'label'            => esc_html__( 'File', 'dsm-supreme-modules-for-divi' ),
+					'label'            => esc_html__( 'File', 'supreme-modules-for-divi' ),
 					'css'              => array(
 						'main' => '%%order_class%% .wpcf7-form-control.wpcf7-file',
 					),
@@ -174,7 +174,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 					'toggle_slug'      => 'cf7_file',
 				),
 				'error_msg'             => array(
-					'label'          => esc_html__( 'Error Messages', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Error Messages', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .wpcf7-not-valid-tip',
 					),
@@ -191,7 +191,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 					'toggle_slug'    => 'cf7_error',
 				),
 				'error_validation'      => array(
-					'label'          => esc_html__( 'Validation Error', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Validation Error', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .wpcf7 form.invalid .wpcf7-response-output, %%order_class%% .wpcf7 form.unaccepted .wpcf7-response-output',
 					),
@@ -208,7 +208,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 					'toggle_slug'    => 'cf7_validation_errors',
 				),
 				'success_validation'    => array(
-					'label'          => esc_html__( 'Validation Success', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Validation Success', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% .wpcf7 form.sent .wpcf7-response-output',
 					),
@@ -249,7 +249,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 							'border_styles' => '%%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-text, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-tel, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-url, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-quiz, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-number, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-textarea, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-select, %%order_class%%.dsm_contact_form_7 .wpcf7-form-control.wpcf7-date',
 						),
 					),
-					'label_prefix'    => esc_html__( 'Field', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Field', 'supreme-modules-for-divi' ),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'cf7_field',
 					'depends_show_if' => 'off',
@@ -261,7 +261,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .wpcf7-not-valid-tip',
 						),
 					),
-					'label_prefix'    => esc_html__( 'Validation Errors', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Validation Errors', 'supreme-modules-for-divi' ),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'cf7_error',
 					'depends_show_if' => 'off',
@@ -280,7 +280,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 							'style' => 'solid',
 						),
 					),
-					'label_prefix'    => esc_html__( 'Validation Errors', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Validation Errors', 'supreme-modules-for-divi' ),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'cf7_validation_errors',
 					'depends_show_if' => 'off',
@@ -299,7 +299,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 							'style' => 'solid',
 						),
 					),
-					'label_prefix'    => esc_html__( 'Validation Success', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Validation Success', 'supreme-modules-for-divi' ),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'cf7_validation_success',
 					'depends_show_if' => 'off',
@@ -308,7 +308,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 			'box_shadow' => array(
 				'default'     => array(),
 				'input_field' => array(
-					'label'             => esc_html__( 'Box Shadow', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( 'Box Shadow', 'supreme-modules-for-divi' ),
 					'option_category'   => 'layout',
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'cf7_field',
@@ -325,7 +325,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 			'filters'    => false,
 			'button'     => array(
 				'button_one' => array(
-					'label'          => esc_html__( 'Button', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Button', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main'      => '%%order_class%% .wpcf7-form-control.wpcf7-submit',
 						'important' => 'all',
@@ -353,28 +353,28 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 				'type'              => 'warning',
 				'value' => true,
 				'display_if' => true,
-				'message'           => esc_html__( 'Note: Contact Form 7 will not function in the Divi Visual Builder at all, just like the Divi Contact Form module. It will only work on the frontend as usual. The purpose is to style and design your Contact Form 7 with the Divi Visual Builder without having to code. So go ahead and load your Contact Form 7 Library from the select list below to get started.', 'dsm-supreme-modules-for-divi' ),
+				'message'           => esc_html__( 'Note: Contact Form 7 will not function in the Divi Visual Builder at all, just like the Divi Contact Form module. It will only work on the frontend as usual. The purpose is to style and design your Contact Form 7 with the Divi Visual Builder without having to code. So go ahead and load your Contact Form 7 Library from the select list below to get started.', 'supreme-modules-for-divi' ),
 			),
 			*/
 			'cf7_library'                         => array(
-				'label'           => esc_html__( 'Contact Form 7', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Contact Form 7', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => $this->dsm_get_contact_form_7(),
 			),
 			'show_validation'                     => array(
-				'label'           => esc_html__( 'Show Error & Validation Messages', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Show Error & Validation Messages', 'supreme-modules-for-divi' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
 				'options'         => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'off',
-				'description'     => esc_html__( 'This will show the error and validation messages on the Visual Builder for styling purposes.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'This will show the error and validation messages on the Visual Builder for styling purposes.', 'supreme-modules-for-divi' ),
 			),
 			'label_bottom_spacing'                => array(
-				'label'           => esc_html__( 'Bottom Spacing', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Bottom Spacing', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'tab_slug'        => 'advanced',
@@ -382,16 +382,16 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 				'default_unit'    => 'px',
 			),
 			'button_alignment'                    => array(
-				'label'           => esc_html__( 'Button Alignment', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Button Alignment', 'supreme-modules-for-divi' ),
 				'type'            => 'text_align',
 				'option_category' => 'configuration',
 				'options'         => et_builder_get_text_orientation_options( array( 'justified' ) ),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'button_one',
-				'description'     => esc_html__( 'Here you can define the alignment of Button. Wrap (<p>) element to the button in your contact form button.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Here you can define the alignment of Button. Wrap (<p>) element to the button in your contact form button.', 'supreme-modules-for-divi' ),
 			),
 			'input_background_color'              => array(
-				'label'           => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'            => 'color-alpha',
 				'option_category' => 'button',
 				'custom_color'    => true,
@@ -399,7 +399,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 				'toggle_slug'     => 'cf7_field',
 			),
 			'file_padding'                        => array(
-				'label'            => esc_html__( 'Padding', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Padding', 'supreme-modules-for-divi' ),
 				'type'             => 'custom_padding',
 				'option_category'  => 'layout',
 				'tab_slug'         => 'advanced',
@@ -412,7 +412,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 				'responsive'       => true,
 			),
 			'file_background_color'               => array(
-				'label'           => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'            => 'color-alpha',
 				'option_category' => 'button',
 				'custom_color'    => true,
@@ -420,7 +420,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 				'toggle_slug'     => 'cf7_file',
 			),
 			'error_msg_background_color'          => array(
-				'label'           => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'            => 'color-alpha',
 				'option_category' => 'button',
 				'custom_color'    => true,
@@ -428,7 +428,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 				'toggle_slug'     => 'cf7_error',
 			),
 			'validation_error_background_color'   => array(
-				'label'           => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'            => 'color-alpha',
 				'option_category' => 'button',
 				'custom_color'    => true,
@@ -436,7 +436,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 				'toggle_slug'     => 'cf7_validation_errors',
 			),
 			'validation_success_background_color' => array(
-				'label'           => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'            => 'color-alpha',
 				'option_category' => 'button',
 				'custom_color'    => true,
@@ -595,11 +595,11 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 
 	public static function dsm_get_contact_form_7() {
 		$dsm_cf7_library_list = array(
-			'0' => esc_html__( '-- Select Contact Form 7 --', 'dsm-supreme-modules-for-divi' ),
+			'0' => esc_html__( '-- Select Contact Form 7 --', 'supreme-modules-for-divi' ),
 		);
 
 		if ( ! class_exists( 'WPCF7' ) ) {
-			$dsm_cf7_library_list['0'] = esc_html__( 'Contact Form 7 Not Installed', 'dsm-supreme-modules-for-divi' );
+			$dsm_cf7_library_list['0'] = esc_html__( 'Contact Form 7 Not Installed', 'supreme-modules-for-divi' );
 			return $dsm_cf7_library_list;
 		}
 
@@ -613,7 +613,7 @@ class DSM_ContactForm7 extends ET_Builder_Module {
 				(int) $dsm_cf7_library_list[ $category->ID ] = $category->post_title;
 			}
 		} else {
-			(int) $dsm_cf7_library_list['0'] = esc_html__( 'No Contact Form 7 form found', 'dsm-supreme-modules-for-divi' );
+			(int) $dsm_cf7_library_list['0'] = esc_html__( 'No Contact Form 7 form found', 'supreme-modules-for-divi' );
 		}
 
 		return $dsm_cf7_library_list;

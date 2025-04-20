@@ -13,13 +13,13 @@ class DSM_FacebookSimpleFeed extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name      = esc_html__( 'Supreme Facebook Feed', 'dsm-supreme-modules-for-divi' );
+		$this->name      = esc_html__( 'Supreme Facebook Feed', 'supreme-modules-for-divi' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		// Toggle settings
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Facebook Feed Settings', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Facebook Feed Settings', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
@@ -79,80 +79,80 @@ class DSM_FacebookSimpleFeed extends ET_Builder_Module {
 						'The Facebook APP ID is currently empty in the <a href="%s" target="_blank">Divi Supreme Plugin Page</a>. This module might not function properly without the Facebook APP ID.',
 						admin_url( 'admin.php?page=divi_supreme_settings#dsm_settings_social_media' )
 					),
-					'dsm-supreme-modules-for-divi'
+					'supreme-modules-for-divi'
 				),
 				'toggle_slug' => 'main_content',
 			),
 			'fb_app_id'        => array(
-				'label'            => esc_html__( 'Facebook APP ID', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Facebook APP ID', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
 				'attributes'       => 'readonly',
 				'default_on_front' => isset( get_option( 'dsm_settings_social_media' )['dsm_facebook_app_id'] ) && '' !== get_option( 'dsm_settings_social_media' )['dsm_facebook_app_id'] ? get_option( 'dsm_settings_social_media' )['dsm_facebook_app_id'] : '',
-				'description'      => et_get_safe_localization( sprintf( __( 'The Facebook module uses the Facebook APP ID and requires a Facebook APP ID to function. Before using all Facebook module, please make sure you have added your Facebook APP ID inside the Divi Supreme Plugin Page. You can go to <a href="%1$s">Facebook Developer</a> and click on Create New App to get one.', 'dsm-supreme-modules-for-divi' ), esc_url( 'https://developers.facebook.com/apps/' ) ) ),
+				'description'      => et_get_safe_localization( sprintf( __( 'The Facebook module uses the Facebook APP ID and requires a Facebook APP ID to function. Before using all Facebook module, please make sure you have added your Facebook APP ID inside the Divi Supreme Plugin Page. You can go to <a href="%1$s">Facebook Developer</a> and click on Create New App to get one.', 'supreme-modules-for-divi' ), esc_url( 'https://developers.facebook.com/apps/' ) ) ),
 				'toggle_slug'      => 'main_content',
 			),
 			'fb_page_url'      => array(
-				'label'            => esc_html__( 'Facebook Page URL', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Facebook Page URL', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
-				'description'      => esc_html__( 'Enter the Facebook Page URL.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Enter the Facebook Page URL.', 'supreme-modules-for-divi' ),
 				'toggle_slug'      => 'main_content',
 				'default_on_front' => 'https://www.facebook.com/divisupreme/',
 				'dynamic_content'  => 'url',
 			),
 			'fb_tabs'          => array(
-				'label'           => esc_html__( 'Tabs', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Tabs', 'supreme-modules-for-divi' ),
 				'type'            => 'multiple_checkboxes',
 				'option_category' => 'configuration',
 				'options'         => array(
-					'timeline' => esc_html__( 'Timeline', 'dsm-supreme-modules-for-divi' ),
-					'events'   => esc_html__( 'Events', 'dsm-supreme-modules-for-divi' ),
-					'messages' => esc_html__( 'Messages', 'dsm-supreme-modules-for-divi' ),
+					'timeline' => esc_html__( 'Timeline', 'supreme-modules-for-divi' ),
+					'events'   => esc_html__( 'Events', 'supreme-modules-for-divi' ),
+					'messages' => esc_html__( 'Messages', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'on|off|off',
 				'toggle_slug'     => 'main_content',
-				'description'     => esc_html__( 'Here you can choose to show tabs on your facebook page.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Here you can choose to show tabs on your facebook page.', 'supreme-modules-for-divi' ),
 
 			),
 			'fb_hide_cover'    => array(
-				'label'            => esc_html__( 'Hide Cover Photo', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Hide Cover Photo', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'false' => esc_html__( 'Show', 'dsm-supreme-modules-for-divi' ),
-					'true'  => esc_html__( 'Hide', 'dsm-supreme-modules-for-divi' ),
+					'false' => esc_html__( 'Show', 'supreme-modules-for-divi' ),
+					'true'  => esc_html__( 'Hide', 'supreme-modules-for-divi' ),
 				),
 				'toggle_slug'      => 'main_content',
-				'description'      => esc_html__( 'Hide cover photo in the header.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Hide cover photo in the header.', 'supreme-modules-for-divi' ),
 				'default_on_front' => 'false',
 			),
 			'fb_small_header'  => array(
-				'label'            => esc_html__( 'Use Small Header?', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Use Small Header?', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'false' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'true'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'false' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'true'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'toggle_slug'      => 'main_content',
-				'description'      => esc_html__( 'Use the small header instead.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Use the small header instead.', 'supreme-modules-for-divi' ),
 				'default_on_front' => 'false',
 			),
 			'fb_show_facepile' => array(
-				'label'            => esc_html__( 'Show Face Pile', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Show Face Pile', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'false' => esc_html__( 'Hide', 'dsm-supreme-modules-for-divi' ),
-					'true'  => esc_html__( 'Show', 'dsm-supreme-modules-for-divi' ),
+					'false' => esc_html__( 'Hide', 'supreme-modules-for-divi' ),
+					'true'  => esc_html__( 'Show', 'supreme-modules-for-divi' ),
 				),
 				'toggle_slug'      => 'main_content',
-				'description'      => esc_html__( 'Show profile photos when friends like this.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Show profile photos when friends like this.', 'supreme-modules-for-divi' ),
 				'default_on_front' => 'true',
 			),
 			'fb_width'         => array(
-				'label'            => esc_html__( 'Width', 'et_builder' ),
+				'label'            => esc_html__( 'Width', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'layout',
 				'toggle_slug'      => 'main_content',
@@ -166,10 +166,10 @@ class DSM_FacebookSimpleFeed extends ET_Builder_Module {
 					'max'  => '500',
 					'step' => '1',
 				),
-				'description'      => esc_html__( 'The pixel width of the Facebook Feed. Min. is 180 & Max. is 500.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'The pixel width of the Facebook Feed. Min. is 180 & Max. is 500.', 'supreme-modules-for-divi' ),
 			),
 			'fb_height'        => array(
-				'label'           => esc_html__( 'Height', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Height', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'tab_slug'        => 'advanced',
@@ -183,13 +183,13 @@ class DSM_FacebookSimpleFeed extends ET_Builder_Module {
 				),
 			),
 			'fb_alignment'     => array(
-				'label'           => esc_html__( 'Alignment', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Alignment', 'supreme-modules-for-divi' ),
 				'type'            => 'text_align',
 				'option_category' => 'configuration',
 				'options'         => et_builder_get_text_orientation_options( array( 'justified' ) ),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'alignment',
-				'description'     => esc_html__( 'Here you can define the alignment of Facebook Feed', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Here you can define the alignment of Facebook Feed', 'supreme-modules-for-divi' ),
 				'default'         => 'center',
 			),
 		);

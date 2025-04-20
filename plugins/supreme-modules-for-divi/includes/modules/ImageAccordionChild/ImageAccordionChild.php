@@ -3,7 +3,7 @@
 class DSM_ImageAccordionChild extends ET_Builder_Module {
 
 	public function init() {
-		$this->name                     = esc_html__( 'Image Accordion Child', 'dsm-supreme-modules-for-divi' );
+		$this->name                     = esc_html__( 'Image Accordion Child', 'supreme-modules-for-divi' );
 		$this->slug                     = 'dsm_image_accordion_child';
 		$this->vb_support               = 'on';
 		$this->type                     = 'child';
@@ -13,16 +13,16 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'content' => esc_html__( 'Content', 'dsm-supreme-modules-for-divi' ),
+					'content' => esc_html__( 'Content', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'overlay'  => esc_html__( 'Overlay', 'dsm-supreme-modules-for-divi' ),
-					'ia_icon'  => esc_html__( 'Icon', 'dsm-supreme-modules-for-divi' ),
-					'ia_image' => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
-					'ia_title' => esc_html__( 'Title', 'dsm-supreme-modules-for-divi' ),
-					'ia_desc'  => esc_html__( 'Description', 'dsm-supreme-modules-for-divi' ),
+					'overlay'  => esc_html__( 'Overlay', 'supreme-modules-for-divi' ),
+					'ia_icon'  => esc_html__( 'Icon', 'supreme-modules-for-divi' ),
+					'ia_image' => esc_html__( 'Image', 'supreme-modules-for-divi' ),
+					'ia_title' => esc_html__( 'Title', 'supreme-modules-for-divi' ),
+					'ia_desc'  => esc_html__( 'Description', 'supreme-modules-for-divi' ),
 				),
 			),
 		);
@@ -33,19 +33,19 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		$fields = array();
 
 		$fields['admin_title'] = array(
-			'label'       => esc_html__( 'Admin Label', 'dsm-supreme-modules-for-divi' ),
+			'label'       => esc_html__( 'Admin Label', 'supreme-modules-for-divi' ),
 			'type'        => 'text',
-			'description' => esc_html__( 'This will change the label of the Image Accordion Item in the builder for easy identification.', 'dsm-supreme-modules-for-divi' ),
+			'description' => esc_html__( 'This will change the label of the Image Accordion Item in the builder for easy identification.', 'supreme-modules-for-divi' ),
 			'toggle_slug' => 'admin_label',
 		);
 
 		$fields['expanded_item'] = array(
-			'label'       => esc_html__( 'Make Item Expanded', 'dsm-supreme-modules-for-divi' ),
+			'label'       => esc_html__( 'Make Item Expanded', 'supreme-modules-for-divi' ),
 			'type'        => 'yes_no_button',
 			'default'     => 'off',
 			'options'     => array(
-				'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-				'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+				'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+				'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 			),
 			'toggle_slug' => 'content',
 		);
@@ -53,25 +53,25 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		$fields['image_accordion_src'] = array(
 			'type'               => 'upload',
 			'hide_metadata'      => true,
-			'choose_text'        => esc_attr__( 'Choose an Image', 'dsm-supreme-modules-for-divi' ),
-			'update_text'        => esc_attr__( 'Set As Image', 'dsm-supreme-modules-for-divi' ),
-			'upload_button_text' => esc_attr__( 'Upload an image', 'dsm-supreme-modules-for-divi' ),
+			'choose_text'        => esc_attr__( 'Choose an Image', 'supreme-modules-for-divi' ),
+			'update_text'        => esc_attr__( 'Set As Image', 'supreme-modules-for-divi' ),
+			'upload_button_text' => esc_attr__( 'Upload an image', 'supreme-modules-for-divi' ),
 			'toggle_slug'        => 'content',
 			'dynamic_content'    => 'image',
 		);
 
 		$fields['use_accordion_icon'] = array(
-			'label'       => esc_html__( 'Use Icon', 'dsm-supreme-modules-for-divi' ),
+			'label'       => esc_html__( 'Use Icon', 'supreme-modules-for-divi' ),
 			'type'        => 'yes_no_button',
 			'options'     => array(
-				'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-				'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+				'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+				'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 			),
 			'toggle_slug' => 'content',
 		);
 
 		$fields['image_accordion_icon'] = array(
-			'label'       => esc_html__( 'Icon', 'dsm-supreme-modules-for-divi' ),
+			'label'       => esc_html__( 'Icon', 'supreme-modules-for-divi' ),
 			'type'        => 'select_icon',
 			'class'       => array( 'et-pb-font-icon' ),
 			'default'     => '1',
@@ -84,9 +84,9 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		$fields['image_accordion_icon_image'] = array(
 			'type'               => 'upload',
 			'hide_metadata'      => true,
-			'choose_text'        => esc_attr__( 'Choose an Image', 'dsm-supreme-modules-for-divi' ),
-			'update_text'        => esc_attr__( 'Set As Image', 'dsm-supreme-modules-for-divi' ),
-			'upload_button_text' => esc_attr__( 'Upload an image', 'dsm-supreme-modules-for-divi' ),
+			'choose_text'        => esc_attr__( 'Choose an Image', 'supreme-modules-for-divi' ),
+			'update_text'        => esc_attr__( 'Set As Image', 'supreme-modules-for-divi' ),
+			'upload_button_text' => esc_attr__( 'Upload an image', 'supreme-modules-for-divi' ),
 			'show_if'            => array(
 				'use_accordion_icon' => 'off',
 			),
@@ -95,7 +95,7 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$fields['image_width'] = array(
-			'label'            => esc_html__( 'Image Width', 'dsm-supreme-modules-for-divi' ),
+			'label'            => esc_html__( 'Image Width', 'supreme-modules-for-divi' ),
 			'type'             => 'range',
 			'default'          => '100px',
 			'default_unit'     => 'px',
@@ -116,7 +116,7 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$fields['image_accordion_title'] = array(
-			'label'           => esc_html__( 'Title', 'dsm-supreme-modules-for-divi' ),
+			'label'           => esc_html__( 'Title', 'supreme-modules-for-divi' ),
 			'type'            => 'text',
 			'toggle_slug'     => 'content',
 			'mobile_options'  => true,
@@ -124,7 +124,7 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$fields['image_accordion_desc'] = array(
-			'label'           => esc_html__( 'Description', 'dsm-supreme-modules-for-divi' ),
+			'label'           => esc_html__( 'Description', 'supreme-modules-for-divi' ),
 			'type'            => 'textarea',
 			'dynamic_content' => 'text',
 			'mobile_options'  => true,
@@ -133,17 +133,17 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 
 		$fields['show_ia_button'] = array(
 			'default'     => 'off',
-			'label'       => esc_html__( 'Show Button', 'dsm-supreme-modules-for-divi' ),
+			'label'       => esc_html__( 'Show Button', 'supreme-modules-for-divi' ),
 			'type'        => 'yes_no_button',
 			'options'     => array(
-				'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
-				'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
+				'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
+				'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
 			),
 			'toggle_slug' => 'content',
 		);
 
 		$fields['ia_button_text'] = array(
-			'label'           => esc_html__( 'Button Text', 'dsm-supreme-modules-for-divi' ),
+			'label'           => esc_html__( 'Button Text', 'supreme-modules-for-divi' ),
 			'type'            => 'text',
 			'show_if'         => array(
 				'show_ia_button' => 'on',
@@ -154,7 +154,7 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$fields['ia_button_link'] = array(
-			'label'           => esc_html__( 'Button Link', 'dsm-supreme-modules-for-divi' ),
+			'label'           => esc_html__( 'Button Link', 'supreme-modules-for-divi' ),
 			'type'            => 'text',
 			'show_if'         => array(
 				'show_ia_button' => 'on',
@@ -166,48 +166,48 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		$fields['ia_button_link_target'] = array(
 			'default'          => 'off',
 			'default_on_front' => true,
-			'label'            => esc_html__( 'Url Opens', 'dsm-supreme-modules-for-divi' ),
+			'label'            => esc_html__( 'Url Opens', 'supreme-modules-for-divi' ),
 			'type'             => 'select',
 			'option_category'  => 'configuration',
 			'options'          => array(
-				'off' => esc_html__( 'In The Same Window', 'dsm-supreme-modules-for-divi' ),
-				'on'  => esc_html__( 'In The New Tab', 'dsm-supreme-modules-for-divi' ),
+				'off' => esc_html__( 'In The Same Window', 'supreme-modules-for-divi' ),
+				'on'  => esc_html__( 'In The New Tab', 'supreme-modules-for-divi' ),
 			),
 			'show_if'          => array(
 				'show_ia_button' => 'on',
 			),
 			'toggle_slug'      => 'content',
-			'description'      => esc_html__( 'Choose whether your link opens in a new window or not', 'dsm-supreme-modules-for-divi' ),
+			'description'      => esc_html__( 'Choose whether your link opens in a new window or not', 'supreme-modules-for-divi' ),
 		);
 
 		$fields['ia_align_horizontal'] = array(
-			'label'          => esc_html__( 'Horizontal Align', 'dsm-supreme-modules-for-divi' ),
+			'label'          => esc_html__( 'Horizontal Align', 'supreme-modules-for-divi' ),
 			'type'           => 'select',
 			'default'        => 'center',
 			'mobile_options' => true,
 			'options'        => array(
-				'left'   => esc_html__( 'Left', 'dsm-supreme-modules-for-divi' ),
-				'center' => esc_html__( 'Center', 'dsm-supreme-modules-for-divi' ),
-				'right'  => esc_html__( 'Right', 'dsm-supreme-modules-for-divi' ),
+				'left'   => esc_html__( 'Left', 'supreme-modules-for-divi' ),
+				'center' => esc_html__( 'Center', 'supreme-modules-for-divi' ),
+				'right'  => esc_html__( 'Right', 'supreme-modules-for-divi' ),
 			),
 			'toggle_slug'    => 'content',
 		);
 
 		$fields['ia_align_vertical'] = array(
-			'label'          => esc_html__( 'Vertical Align', 'dsm-supreme-modules-for-divi' ),
+			'label'          => esc_html__( 'Vertical Align', 'supreme-modules-for-divi' ),
 			'type'           => 'select',
 			'default'        => 'center',
 			'mobile_options' => true,
 			'options'        => array(
-				'top'    => esc_html__( 'Top', 'dsm-supreme-modules-for-divi' ),
-				'center' => esc_html__( 'Center', 'dsm-supreme-modules-for-divi' ),
-				'bottom' => esc_html__( 'Bottom', 'dsm-supreme-modules-for-divi' ),
+				'top'    => esc_html__( 'Top', 'supreme-modules-for-divi' ),
+				'center' => esc_html__( 'Center', 'supreme-modules-for-divi' ),
+				'bottom' => esc_html__( 'Bottom', 'supreme-modules-for-divi' ),
 			),
 			'toggle_slug'    => 'content',
 		);
 
 		$fields['ia_icon_color'] = array(
-			'label'          => esc_html__( 'Icon Color', 'dsm-supreme-modules-for-divi' ),
+			'label'          => esc_html__( 'Icon Color', 'supreme-modules-for-divi' ),
 			'type'           => 'color-alpha',
 			'tab_slug'       => 'advanced',
 			'default'        => '#fff',
@@ -219,11 +219,11 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$fields['use_ia_icon_font_size'] = array(
-			'label'       => esc_html__( 'Use Icon Font Size', 'dsm-supreme-modules-for-divi' ),
+			'label'       => esc_html__( 'Use Icon Font Size', 'supreme-modules-for-divi' ),
 			'type'        => 'yes_no_button',
 			'options'     => array(
-				'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-				'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+				'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+				'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 			),
 			'show_if'     => array(
 				'use_accordion_icon' => 'on',
@@ -233,7 +233,7 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$fields['ia_icon_font_size'] = array(
-			'label'            => esc_html__( 'Icon Font Size', 'dsm-supreme-modules-for-divi' ),
+			'label'            => esc_html__( 'Icon Font Size', 'supreme-modules-for-divi' ),
 			'type'             => 'range',
 			'default'          => '40px',
 			'default_unit'     => 'px',
@@ -255,7 +255,7 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$fields['content_width'] = array(
-			'label'          => esc_html__( 'Content Width', 'dsm-supreme-modules-for-divi' ),
+			'label'          => esc_html__( 'Content Width', 'supreme-modules-for-divi' ),
 			'type'           => 'range',
 			'default'        => '100%',
 			'default_unit'   => '%',
@@ -271,7 +271,7 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$fields['overlay_color'] = array(
-			'label'          => esc_html__( 'Overlay Color', 'dsm-supreme-modules-for-divi' ),
+			'label'          => esc_html__( 'Overlay Color', 'supreme-modules-for-divi' ),
 			'type'           => 'color-alpha',
 			'mobile_options' => true,
 			'tab_slug'       => 'advanced',
@@ -313,7 +313,7 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$advanced_fields['fonts']['title'] = array(
-			'label'           => esc_html__( 'Title', 'dsm-supreme-modules-for-divi' ),
+			'label'           => esc_html__( 'Title', 'supreme-modules-for-divi' ),
 			'css'             => array(
 				'main' => '%%order_class%% .dsm_image_accordion_title',
 			),
@@ -334,7 +334,7 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$advanced_fields['fonts']['desc'] = array(
-			'label'           => esc_html__( 'Description', 'dsm-supreme-modules-for-divi' ),
+			'label'           => esc_html__( 'Description', 'supreme-modules-for-divi' ),
 			'css'             => array(
 				'main' => '%%order_class%% .dsm_image_accordion_description',
 			),
@@ -351,7 +351,7 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$advanced_fields['borders']['image'] = array(
-			'label_prefix'    => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+			'label_prefix'    => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 			'css'             => array(
 				'main' => array(
 					'border_radii'  => '%%order_class%% .dsm_image_accordion_img',
@@ -365,7 +365,7 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$advanced_fields['box_shadow']['image'] = array(
-			'label'       => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+			'label'       => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 			'css'         => array(
 				'main' => '%%order_class%% .dsm_image_accordion_img',
 				''     => 'inset',
@@ -378,7 +378,7 @@ class DSM_ImageAccordionChild extends ET_Builder_Module {
 		);
 
 		$advanced_fields['button']['button'] = array(
-			'label'          => esc_html__( 'Button', 'dsm-supreme-modules-for-divi' ),
+			'label'          => esc_html__( 'Button', 'supreme-modules-for-divi' ),
 			'use_alignment'  => true,
 			'css'            => array(
 				'main'      => '%%order_class%% .dsm_ia_button.et_pb_button',

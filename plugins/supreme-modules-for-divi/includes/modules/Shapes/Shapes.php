@@ -13,27 +13,27 @@ class DSM_Shapes extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name             = esc_html__( 'Supreme Shapes', 'dsm-supreme-modules-for-divi' );
+		$this->name             = esc_html__( 'Supreme Shapes', 'supreme-modules-for-divi' );
 		$this->icon_path        = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		$this->main_css_element = '%%order_class%%.dsm_shapes';
 
 		$this->settings_modal_toggles = array(
 			'general'    => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Shapes', 'dsm-supreme-modules-for-divi' ),
-					'link'         => esc_html__( 'Link', 'dsm-supreme-modules-for-divi' ),
-					'image'        => esc_html__( 'Image & Badge', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Shapes', 'supreme-modules-for-divi' ),
+					'link'         => esc_html__( 'Link', 'supreme-modules-for-divi' ),
+					'image'        => esc_html__( 'Image & Badge', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced'   => array(
 				'toggles' => array(
-					'shapes_settings' => esc_html__( 'Shapes', 'dsm-supreme-modules-for-divi' ),
+					'shapes_settings' => esc_html__( 'Shapes', 'supreme-modules-for-divi' ),
 					'text'            => array(
-						'title'    => esc_html__( 'Text', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Text', 'supreme-modules-for-divi' ),
 						'priority' => 49,
 					),
 					'width'           => array(
-						'title'    => esc_html__( 'Sizing', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Sizing', 'supreme-modules-for-divi' ),
 						'priority' => 65,
 					),
 				),
@@ -41,7 +41,7 @@ class DSM_Shapes extends ET_Builder_Module {
 			'custom_css' => array(
 				'toggles' => array(
 					'attributes' => array(
-						'title'    => esc_html__( 'Attributes', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Attributes', 'supreme-modules-for-divi' ),
 						'priority' => 95,
 					),
 				),
@@ -74,7 +74,7 @@ class DSM_Shapes extends ET_Builder_Module {
 							'border_styles' => "{$this->main_css_element} .dsm_shapes_wrapper",
 						),
 					),
-					'label_prefix'    => esc_html__( 'Shapes', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix'    => esc_html__( 'Shapes', 'supreme-modules-for-divi' ),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'shapes_settings',
 					'depends_on'      => array( 'use_shape_border' ),
@@ -88,7 +88,7 @@ class DSM_Shapes extends ET_Builder_Module {
 					),
 				),
 				'shapes'  => array(
-					'label'             => esc_html__( 'Shapes Shadow', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( 'Shapes Shadow', 'supreme-modules-for-divi' ),
 					'option_category'   => 'layout',
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'shapes_settings',
@@ -135,34 +135,34 @@ class DSM_Shapes extends ET_Builder_Module {
 			'shapes_type'        => array(
 				'default'          => 'square',
 				'default_on_front' => 'square',
-				'label'            => esc_html__( 'Type', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Type', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'square'         => esc_html__( 'Square', 'dsm-supreme-modules-for-divi' ),
-					'circle'         => esc_html__( 'Circle', 'dsm-supreme-modules-for-divi' ),
-					'rectangle'      => esc_html__( 'Rectangle', 'dsm-supreme-modules-for-divi' ),
-					'triangle'       => esc_html__( 'Triangle', 'dsm-supreme-modules-for-divi' ),
-					'oval'           => esc_html__( 'Oval', 'dsm-supreme-modules-for-divi' ),
-					'trapezoid'      => esc_html__( 'Trapezoid', 'dsm-supreme-modules-for-divi' ),
-					'parallelogram'  => esc_html__( 'Parallelogram', 'dsm-supreme-modules-for-divi' ),
-					'diamond_square' => esc_html__( 'Diamond Square', 'dsm-supreme-modules-for-divi' ),
-					'hexagon'        => esc_html__( 'Hexagon', 'dsm-supreme-modules-for-divi' ),
-					'blob_one'       => esc_html__( 'Blob #1', 'dsm-supreme-modules-for-divi' ),
-					'blob_two'       => esc_html__( 'Blob #2', 'dsm-supreme-modules-for-divi' ),
-					'blob_three'     => esc_html__( 'Blob #3', 'dsm-supreme-modules-for-divi' ),
-					'blob_four'      => esc_html__( 'Blob #4', 'dsm-supreme-modules-for-divi' ),
-					'blob_five'      => esc_html__( 'Blob #5', 'dsm-supreme-modules-for-divi' ),
-					'blob_six'       => esc_html__( 'Blob #6', 'dsm-supreme-modules-for-divi' ),
-					'blob_seven'     => esc_html__( 'Blob #7', 'dsm-supreme-modules-for-divi' ),
-					'blob_eight'     => esc_html__( 'Blob #8', 'dsm-supreme-modules-for-divi' ),
+					'square'         => esc_html__( 'Square', 'supreme-modules-for-divi' ),
+					'circle'         => esc_html__( 'Circle', 'supreme-modules-for-divi' ),
+					'rectangle'      => esc_html__( 'Rectangle', 'supreme-modules-for-divi' ),
+					'triangle'       => esc_html__( 'Triangle', 'supreme-modules-for-divi' ),
+					'oval'           => esc_html__( 'Oval', 'supreme-modules-for-divi' ),
+					'trapezoid'      => esc_html__( 'Trapezoid', 'supreme-modules-for-divi' ),
+					'parallelogram'  => esc_html__( 'Parallelogram', 'supreme-modules-for-divi' ),
+					'diamond_square' => esc_html__( 'Diamond Square', 'supreme-modules-for-divi' ),
+					'hexagon'        => esc_html__( 'Hexagon', 'supreme-modules-for-divi' ),
+					'blob_one'       => esc_html__( 'Blob #1', 'supreme-modules-for-divi' ),
+					'blob_two'       => esc_html__( 'Blob #2', 'supreme-modules-for-divi' ),
+					'blob_three'     => esc_html__( 'Blob #3', 'supreme-modules-for-divi' ),
+					'blob_four'      => esc_html__( 'Blob #4', 'supreme-modules-for-divi' ),
+					'blob_five'      => esc_html__( 'Blob #5', 'supreme-modules-for-divi' ),
+					'blob_six'       => esc_html__( 'Blob #6', 'supreme-modules-for-divi' ),
+					'blob_seven'     => esc_html__( 'Blob #7', 'supreme-modules-for-divi' ),
+					'blob_eight'     => esc_html__( 'Blob #8', 'supreme-modules-for-divi' ),
 				),
 				'toggle_slug'      => 'main_content',
-				'description'      => esc_html__( '', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( '', 'supreme-modules-for-divi' ),
 			),
 			'shapes_square_size' => array(
-				'label'            => esc_html__( 'Size', 'dsm-supreme-modules-for-divi' ),
-				'description'      => esc_html__( 'Adjust size of the Shape.', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Size', 'supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Adjust size of the Shape.', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'layout',
 				'toggle_slug'      => 'main_content',
@@ -182,22 +182,22 @@ class DSM_Shapes extends ET_Builder_Module {
 				'responsive'       => true,
 			),
 			'shape_color'        => array(
-				'label'            => esc_html__( 'Shape Color', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Shape Color', 'supreme-modules-for-divi' ),
 				'type'             => 'color-alpha',
 				'custom_color'     => true,
 				'default'          => $et_accent_color,
 				'default_on_front' => $et_accent_color,
 				'tab_slug'         => 'advanced',
 				'toggle_slug'      => 'shapes_settings',
-				'description'      => esc_html__( 'Here you can define a custom color for the shapes', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Here you can define a custom color for the shapes', 'supreme-modules-for-divi' ),
 			),
 			'use_shape_border'   => array(
-				'label'            => esc_html__( 'Use Border', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Use Border', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'basic_option',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'tab_slug'         => 'advanced',
 				'toggle_slug'      => 'shapes_settings',
@@ -215,27 +215,27 @@ class DSM_Shapes extends ET_Builder_Module {
 			),
 			/*
 			'title' => array(
-				'label'           => esc_html__( 'Title', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Title', 'supreme-modules-for-divi' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Text entered here will appear as title.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Text entered here will appear as title.', 'supreme-modules-for-divi' ),
 				//'default' => 'Your Title Goes Here',
 				'toggle_slug'     => 'main_content',
 			),
 			'subtitle' => array(
-				'label'           => esc_html__( 'Sub Title', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Sub Title', 'supreme-modules-for-divi' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Text entered here will appear as subtitle.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Text entered here will appear as subtitle.', 'supreme-modules-for-divi' ),
 				//'default' => 'Sub Title',
 				'toggle_slug'     => 'main_content',
 			),
 
 			'content' => array(
-				'label'           => esc_html__( 'Content', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Content', 'supreme-modules-for-divi' ),
 				'type'            => 'tiny_mce',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Content entered here will appear inside the module.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Content entered here will appear inside the module.', 'supreme-modules-for-divi' ),
 				'toggle_slug'     => 'main_content',
 			),
 			*/

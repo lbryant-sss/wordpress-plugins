@@ -3,9 +3,9 @@ Contributors: divisupreme, kenng87
 Tags: Divi, Divi Module, Divi Page Builder, divi theme, divi builder, Divi Extensions
 Donate link: https://divisupreme.com/supreme-modules-lite-for-divi/
 Requires at least: 4.5
-Tested up to: 6.7.1
+Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.5.61
+Stable tag: 2.5.62
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,6 +111,10 @@ This is a common question that we get asked here every now and then which is why
 
 
 == Changelog ==
+= 2.5.62 – 18.04.2025 =
+* Fixed: Wrong Text Domain overall. 
+* Fixed: _load_textdomain_just_in_time was called incorrectly. 
+
 = 2.5.61 – 22.10.2024 =
 * Fixed: Animation issue in the Divi Flipbox Module when using a video background in Safari Browser. 
 

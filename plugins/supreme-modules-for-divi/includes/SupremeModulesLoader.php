@@ -15,14 +15,14 @@ if ( ! function_exists( 'et_divi_divider_style_choices' ) ) :
 		return apply_filters(
 			'et_divi_divider_style_choices',
 			array(
-				'solid'  => esc_html__( 'Solid', 'Divi' ),
-				'dotted' => esc_html__( 'Dotted', 'Divi' ),
-				'dashed' => esc_html__( 'Dashed', 'Divi' ),
-				'double' => esc_html__( 'Double', 'Divi' ),
-				'groove' => esc_html__( 'Groove', 'Divi' ),
-				'ridge'  => esc_html__( 'Ridge', 'Divi' ),
-				'inset'  => esc_html__( 'Inset', 'Divi' ),
-				'outset' => esc_html__( 'Outset', 'Divi' ),
+				'solid'  => esc_html__( 'Solid', 'supreme-modules-for-divi' ),
+				'dotted' => esc_html__( 'Dotted', 'supreme-modules-for-divi' ),
+				'dashed' => esc_html__( 'Dashed', 'supreme-modules-for-divi' ),
+				'double' => esc_html__( 'Double', 'supreme-modules-for-divi' ),
+				'groove' => esc_html__( 'Groove', 'supreme-modules-for-divi' ),
+				'ridge'  => esc_html__( 'Ridge', 'supreme-modules-for-divi' ),
+				'inset'  => esc_html__( 'Inset', 'supreme-modules-for-divi' ),
+				'outset' => esc_html__( 'Outset', 'supreme-modules-for-divi' ),
 			)
 		);
 	}

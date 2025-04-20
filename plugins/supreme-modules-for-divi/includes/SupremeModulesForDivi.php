@@ -8,7 +8,7 @@ class DSM_SupremeModulesForDivi extends DiviExtension {
 	 *
 	 * @var string
 	 */
-	public $gettext_domain = 'dsm-supreme-modules-for-divi';
+	public $gettext_domain = 'supreme-modules-for-divi';
 
 	/**
 	 * The extension's WP Plugin name.

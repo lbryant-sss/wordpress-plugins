@@ -13,35 +13,35 @@ class DSM_NavMenu extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name      = esc_html__( 'Supreme Menu', 'dsm-supreme-modules-for-divi' );
+		$this->name      = esc_html__( 'Supreme Menu', 'supreme-modules-for-divi' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		// Toggle settings.
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Menu', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Menu', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'layout'                 => array(
-						'title'    => esc_html__( 'Layout', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Layout', 'supreme-modules-for-divi' ),
 						'priority' => 19,
 					),
 					'header'                 => array(
-						'title'    => esc_html__( 'Title', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Title', 'supreme-modules-for-divi' ),
 						'priority' => 25,
 					),
 					'menu_style'             => array(
-						'title'    => esc_html__( 'Menu', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Menu', 'supreme-modules-for-divi' ),
 						'priority' => 29,
 					),
 					'submenu_style'          => array(
-						'title'    => esc_html__( 'Sub Menu', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Sub Menu', 'supreme-modules-for-divi' ),
 						'priority' => 39,
 					),
 					'submenu_collapse_style' => array(
-						'title'    => esc_html__( 'Sub Menu Collapse', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Sub Menu Collapse', 'supreme-modules-for-divi' ),
 						'priority' => 39,
 					),
 				),
@@ -53,7 +53,7 @@ class DSM_NavMenu extends ET_Builder_Module {
 		return array(
 			'fonts'          => array(
 				'header'   => array(
-					'label'          => esc_html__( 'Title', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Title', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main'      => '%%order_class%% h1.dsm-menu-title, %%order_class%% h2.dsm-menu-title, %%order_class%% h3.dsm-menu-title, %%order_class%% h4.dsm-menu-title, %%order_class%% h5.dsm-menu-title, %%order_class%% h6.dsm-menu-title',
 						'important' => 'all',
@@ -73,7 +73,7 @@ class DSM_NavMenu extends ET_Builder_Module {
 
 				),
 				'menu'     => array(
-					'label'           => esc_html__( 'Menu', 'dsm-supreme-modules-for-divi' ),
+					'label'           => esc_html__( 'Menu', 'supreme-modules-for-divi' ),
 					'css'             => array(
 						'main'        => '%%order_class%% ul.dsm-menu li a',
 						'plugin_main' => '%%order_class%% ul.dsm-menu li a',
@@ -103,7 +103,7 @@ class DSM_NavMenu extends ET_Builder_Module {
 					'toggle_slug'     => 'menu_style',
 				),
 				'sub_menu' => array(
-					'label'           => esc_html__( 'Sub Menu', 'dsm-supreme-modules-for-divi' ),
+					'label'           => esc_html__( 'Sub Menu', 'supreme-modules-for-divi' ),
 					'css'             => array(
 						'main'        => '%%order_class%% ul.dsm-menu .menu-item-has-children .sub-menu li a',
 						'plugin_main' => '%%order_class%% ul.dsm-menu .menu-item-has-children .sub-menu li a',
@@ -153,7 +153,7 @@ class DSM_NavMenu extends ET_Builder_Module {
 			'borders'        => array(
 				'default'          => array(),
 				'submenu_collapse' => array(
-					'label'       => esc_html__( 'Arrow Box Border', 'et_builder' ),
+					'label'       => esc_html__( 'Arrow Box Border', 'supreme-modules-for-divi' ),
 					'css'         => array(
 						'main' => array(
 							'border_radii'        => '%%order_class%% ul.dsm-menu-submenu-collapse .et-pb-icon',
@@ -172,7 +172,7 @@ class DSM_NavMenu extends ET_Builder_Module {
 			'box_shadow'     => array(
 				'default'          => array(),
 				'submenu_collapse' => array(
-					'label'             => esc_html__( 'Arrow Box Shadow', 'et_builder' ),
+					'label'             => esc_html__( 'Arrow Box Shadow', 'supreme-modules-for-divi' ),
 					'option_category'   => 'layout',
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'submenu_collapse_style',
@@ -199,14 +199,14 @@ class DSM_NavMenu extends ET_Builder_Module {
 		$et_accent_color = et_builder_accent_color();
 		return array(
 			'title'                          => array(
-				'label'           => esc_html__( 'Menu Title', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Menu Title', 'supreme-modules-for-divi' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'The title will appear above the menu.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'The title will appear above the menu.', 'supreme-modules-for-divi' ),
 				'toggle_slug'     => 'main_content',
 			),
 			'title_bottom_gap'               => array(
-				'label'           => esc_html__( 'Bottom Gap', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Bottom Gap', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'mobile_options'  => true,
@@ -218,15 +218,15 @@ class DSM_NavMenu extends ET_Builder_Module {
 				'default'         => '10px',
 			),
 			'menu_id'                        => array(
-				'label'            => esc_html__( 'Menu', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Menu', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'basic_option',
 				'options'          => et_builder_get_nav_menus_options(),
 				'description'      => sprintf(
 					'<p class="description">%2$s. <a href="%1$s" target="_blank">%3$s</a>.</p>',
 					esc_url( admin_url( 'nav-menus.php' ) ),
-					esc_html__( 'Select a menu that should be used in the module', 'dsm-supreme-modules-for-divi' ),
-					esc_html__( 'Click here to create new menu', 'dsm-supreme-modules-for-divi' )
+					esc_html__( 'Select a menu that should be used in the module', 'supreme-modules-for-divi' ),
+					esc_html__( 'Click here to create new menu', 'supreme-modules-for-divi' )
 				),
 				'toggle_slug'      => 'main_content',
 				'computed_affects' => array(
@@ -234,15 +234,15 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'submenu_collapse'               => array(
-				'label'            => esc_html__( 'Collapse Sub Menu', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Collapse Sub Menu', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'toggle_slug'      => 'main_content',
-				'description'      => esc_html__( 'Here you can choose whether your submenu should be collapsed.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Here you can choose whether your submenu should be collapsed.', 'supreme-modules-for-divi' ),
 				'default_on_front' => 'off',
 				'default'          => 'off',
 				'computed_affects' => array(
@@ -250,15 +250,15 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'use_schema_markup'              => array(
-				'label'            => esc_html__( 'Use Schema Markup', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Use Schema Markup', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'toggle_slug'      => 'main_content',
-				'description'      => esc_html__( 'Here you can choose whether your menu should use Schema Markup structured data.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Here you can choose whether your menu should use Schema Markup structured data.', 'supreme-modules-for-divi' ),
 				'default_on_front' => 'on',
 				'default'          => 'on',
 				'computed_affects' => array(
@@ -266,7 +266,7 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'menu_link_text_color'           => array(
-				'label'        => esc_html__( 'Menu Link Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Menu Link Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
@@ -274,8 +274,8 @@ class DSM_NavMenu extends ET_Builder_Module {
 				'hover'        => 'tabs',
 			),
 			'active_link_color'              => array(
-				'label'        => esc_html__( 'Active Link Color', 'dsm-supreme-modules-for-divi' ),
-				'description'  => esc_html__( 'An active link is the page currently being visited. You can pick a color to be applied to active links to differentiate them from other links.', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Active Link Color', 'supreme-modules-for-divi' ),
+				'description'  => esc_html__( 'An active link is the page currently being visited. You can pick a color to be applied to active links to differentiate them from other links.', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
@@ -283,23 +283,23 @@ class DSM_NavMenu extends ET_Builder_Module {
 				'hover'        => 'tabs',
 			),
 			'menu_link_text_active_color'    => array(
-				'label'        => esc_html__( 'Menu Link Active Color (:active pseudo)', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Menu Link Active Color (:active pseudo)', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
 				'toggle_slug'  => 'menu_style',
-				'description'  => esc_html__( 'The :active pseudo selector changes the appearance of a link while it is being activated (being clicked on or otherwise activated).', 'dsm-supreme-modules-for-divi' ),
+				'description'  => esc_html__( 'The :active pseudo selector changes the appearance of a link while it is being activated (being clicked on or otherwise activated).', 'supreme-modules-for-divi' ),
 
 			),
 			'menu_link_text_visited_color'   => array(
-				'label'        => esc_html__( 'Menu Link Visited Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Menu Link Visited Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'tab_slug'     => 'advanced',
 				'toggle_slug'  => 'menu_style',
 			),
 			'menu_space_between'             => array(
-				'label'           => esc_html__( 'Space Between', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Space Between', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'hover'           => 'tabs',
@@ -310,18 +310,18 @@ class DSM_NavMenu extends ET_Builder_Module {
 				'toggle_slug'     => 'menu_style',
 			),
 			'menu_layout'                    => array(
-				'label'            => esc_html__( 'Menu Layout', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Menu Layout', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'layout',
 				'options'          => array(
-					'vertical' => esc_html__( 'Vertical', 'dsm-supreme-modules-for-divi' ),
+					'vertical' => esc_html__( 'Vertical', 'supreme-modules-for-divi' ),
 				),
 				'default_on_front' => 'vertical',
 				'tab_slug'         => 'advanced',
 				'toggle_slug'      => 'layout',
 			),
 			'menu_left_space'                => array(
-				'label'           => esc_html__( 'Left Spacing', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Left Spacing', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'hover'           => 'tabs',
@@ -335,15 +335,15 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'list_style_type'                => array(
-				'label'            => esc_html__( 'List Style Type', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'List Style Type', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'layout',
 				'options'          => array(
-					'none'    => esc_html__( 'None', 'dsm-supreme-modules-for-divi' ),
-					'disc'    => esc_html__( 'Disc', 'dsm-supreme-modules-for-divi' ),
-					'circle'  => esc_html__( 'Circle', 'dsm-supreme-modules-for-divi' ),
-					'decimal' => esc_html__( 'Decimal', 'dsm-supreme-modules-for-divi' ),
-					'square'  => esc_html__( 'Square', 'dsm-supreme-modules-for-divi' ),
+					'none'    => esc_html__( 'None', 'supreme-modules-for-divi' ),
+					'disc'    => esc_html__( 'Disc', 'supreme-modules-for-divi' ),
+					'circle'  => esc_html__( 'Circle', 'supreme-modules-for-divi' ),
+					'decimal' => esc_html__( 'Decimal', 'supreme-modules-for-divi' ),
+					'square'  => esc_html__( 'Square', 'supreme-modules-for-divi' ),
 				),
 				'default_on_front' => 'disc',
 				'tab_slug'         => 'advanced',
@@ -353,12 +353,12 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'list_style_position'            => array(
-				'label'            => esc_html__( 'List Style Position', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'List Style Position', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'layout',
 				'options'          => array(
-					'inside'  => esc_html__( 'Inside', 'dsm-supreme-modules-for-divi' ),
-					'outside' => esc_html__( 'Outside', 'dsm-supreme-modules-for-divi' ),
+					'inside'  => esc_html__( 'Inside', 'supreme-modules-for-divi' ),
+					'outside' => esc_html__( 'Outside', 'supreme-modules-for-divi' ),
 				),
 				'default_on_front' => 'inside',
 				'tab_slug'         => 'advanced',
@@ -368,7 +368,7 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'list_style_color'               => array(
-				'label'          => esc_html__( 'List Style Color', 'dsm-supreme-modules-for-divi' ),
+				'label'          => esc_html__( 'List Style Color', 'supreme-modules-for-divi' ),
 				'type'           => 'color-alpha',
 				'custom_color'   => true,
 				'tab_slug'       => 'advanced',
@@ -383,7 +383,7 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'submenu_left_space'             => array(
-				'label'           => esc_html__( 'Left Spacing', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Left Spacing', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'hover'           => 'tabs',
@@ -397,25 +397,25 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'menu_animation'                 => array(
-				'label'            => esc_html__( 'Use Link Hover Animation', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Use Link Hover Animation', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'tab_slug'         => 'advanced',
 				'toggle_slug'      => 'animation',
-				'description'      => esc_html__( 'Here you can choose whether or not to have hover animation on your menu links.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Here you can choose whether or not to have hover animation on your menu links.', 'supreme-modules-for-divi' ),
 				'default_on_front' => 'off',
 				'default'          => 'off',
 			),
 			'menu_animation_type'            => array(
-				'label'            => esc_html__( 'Animation Type', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Animation Type', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'layout',
 				'options'          => array(
-					'underline' => esc_html__( 'Underline', 'dsm-supreme-modules-for-divi' ),
+					'underline' => esc_html__( 'Underline', 'supreme-modules-for-divi' ),
 				),
 				'default_on_front' => 'underline',
 				'default'          => 'underline',
@@ -426,13 +426,13 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'underline_animation'            => array(
-				'label'            => esc_html__( 'Underline Animation', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Underline Animation', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'layout',
 				'options'          => array(
-					'left-right' => esc_html__( 'Left to Right', 'dsm-supreme-modules-for-divi' ),
-					'right-left' => esc_html__( 'Right to Left', 'dsm-supreme-modules-for-divi' ),
-					'center-out' => esc_html__( 'Center Out', 'dsm-supreme-modules-for-divi' ),
+					'left-right' => esc_html__( 'Left to Right', 'supreme-modules-for-divi' ),
+					'right-left' => esc_html__( 'Right to Left', 'supreme-modules-for-divi' ),
+					'center-out' => esc_html__( 'Center Out', 'supreme-modules-for-divi' ),
 				),
 				'default_on_front' => 'left-right',
 				'default'          => 'left-right',
@@ -444,7 +444,7 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'underline_animation_color'      => array(
-				'label'            => esc_html__( 'Link Color', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Link Color', 'supreme-modules-for-divi' ),
 				'type'             => 'color-alpha',
 				'custom_color'     => true,
 				'tab_slug'         => 'advanced',
@@ -457,9 +457,9 @@ class DSM_NavMenu extends ET_Builder_Module {
 			),
 			'submenu_arrow_color'            => array(
 				'default'        => $et_accent_color,
-				'label'          => esc_html__( 'Arrow Color', 'dsm-supreme-modules-for-divi' ),
+				'label'          => esc_html__( 'Arrow Color', 'supreme-modules-for-divi' ),
 				'type'           => 'color-alpha',
-				'description'    => esc_html__( 'Here you can define a custom color for your arrow.', 'dsm-supreme-modules-for-divi' ),
+				'description'    => esc_html__( 'Here you can define a custom color for your arrow.', 'supreme-modules-for-divi' ),
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'submenu_collapse_style',
 				'hover'          => 'tabs',
@@ -469,9 +469,9 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'submenu_arrow_background_color' => array(
-				'label'          => esc_html__( 'Arrow Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'          => esc_html__( 'Arrow Background Color', 'supreme-modules-for-divi' ),
 				'type'           => 'color-alpha',
-				'description'    => esc_html__( 'Here you can define a custom background color for your icon.', 'dsm-supreme-modules-for-divi' ),
+				'description'    => esc_html__( 'Here you can define a custom background color for your icon.', 'supreme-modules-for-divi' ),
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'submenu_collapse_style',
 				'hover'          => 'tabs',
@@ -481,7 +481,7 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'submenu_arrow_gap'              => array(
-				'label'           => esc_html__( 'Arrow Gap', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Arrow Gap', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'hover'           => 'tabs',
@@ -495,8 +495,8 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'submenu_arrow_padding'          => array(
-				'label'           => esc_html__( 'Arrow Padding', 'dsm-supreme-modules-for-divi' ),
-				'description'     => esc_html__( 'Here you can define a custom padding size for the icon.', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Arrow Padding', 'supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Here you can define a custom padding size for the icon.', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'font_option',
 				'tab_slug'        => 'advanced',
@@ -516,8 +516,8 @@ class DSM_NavMenu extends ET_Builder_Module {
 				),
 			),
 			'submenu_arrow_font_size'        => array(
-				'label'            => esc_html__( 'Arrow Font Size', 'dsm-supreme-modules-for-divi' ),
-				'description'      => esc_html__( 'Control the size of the icon by increasing or decreasing the font size.', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Arrow Font Size', 'supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Control the size of the icon by increasing or decreasing the font size.', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'font_option',
 				'tab_slug'         => 'advanced',
@@ -652,7 +652,7 @@ class DSM_NavMenu extends ET_Builder_Module {
 						'<li%1$s><a href="%2$s"%4$s><span%5$s>%3$s</span></a></li>',
 						( is_home() ? ' class="current_page_item"' : '' ),
 						esc_url( home_url( '/' ) ),
-						esc_html__( 'Home', 'dsm-supreme-modules-for-divi' ),
+						esc_html__( 'Home', 'supreme-modules-for-divi' ),
 						'on' === $args['use_schema_markup'] ? esc_attr( ' itemprop=url' ) : '',
 						'on' === $args['use_schema_markup'] ? esc_attr( ' itemprop=name' ) : ''
 					)

@@ -13,13 +13,13 @@ class DSM_Lottie extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name      = esc_html__( 'Supreme Lottie', 'dsm-supreme-modules-for-divi' );
+		$this->name      = esc_html__( 'Supreme Lottie', 'supreme-modules-for-divi' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		// Toggle settings
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Lottie', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Lottie', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
@@ -71,27 +71,27 @@ class DSM_Lottie extends ET_Builder_Module {
 	public function get_fields() {
 		return array(
 			'lottie_url'                => array(
-				'label'              => esc_html__( 'Lottie JSON File', 'dsm-supreme-modules-for-divi' ),
+				'label'              => esc_html__( 'Lottie JSON File', 'supreme-modules-for-divi' ),
 				'type'               => 'upload',
 				'option_category'    => 'basic_option',
 				'data_type'          => 'json',
-				'upload_button_text' => esc_attr__( 'Upload a json file', 'dsm-supreme-modules-for-divi' ),
-				'choose_text'        => esc_attr__( 'Choose a JSON file', 'dsm-supreme-modules-for-divi' ),
-				'update_text'        => esc_attr__( 'Set As JSON for the module', 'dsm-supreme-modules-for-divi' ),
+				'upload_button_text' => esc_attr__( 'Upload a json file', 'supreme-modules-for-divi' ),
+				'choose_text'        => esc_attr__( 'Choose a JSON file', 'supreme-modules-for-divi' ),
+				'update_text'        => esc_attr__( 'Set As JSON for the module', 'supreme-modules-for-divi' ),
 				'computed_affects'   => array(
 					'__lottie',
 				),
 			),
 			'lottie_loop'               => array(
-				'label'            => esc_html__( 'Loop', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Loop', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'default_on_front' => 'on',
-				'description'      => esc_html__( 'Here you can choose whether or not your Lottie will animate in loop.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Here you can choose whether or not your Lottie will animate in loop.', 'supreme-modules-for-divi' ),
 				'computed_affects' => array(
 					'__lottie',
 				),
@@ -101,12 +101,12 @@ class DSM_Lottie extends ET_Builder_Module {
 
 			),
 			'loop_no_times'             => array(
-				'label'            => esc_html__( 'Number of times', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Number of times', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'validate_unit'    => false,
 				'unitless'         => true,
-				'description'      => esc_html__( 'This option is only available if Yes is selected for Loop. Enter the number of times you wish to have the animation loop before stopping.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'This option is only available if Yes is selected for Loop. Enter the number of times you wish to have the animation loop before stopping.', 'supreme-modules-for-divi' ),
 				'range_settings'   => array(
 					'min'  => '0',
 					'max'  => '10',
@@ -124,27 +124,27 @@ class DSM_Lottie extends ET_Builder_Module {
 			),
 			/*
 			'lottie_autoplay'           => array(
-				'label'            => esc_html__( 'Autoplay', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Autoplay', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'default_on_front' => 'on',
-				'description'      => esc_html__( 'Here you can choose whether or not your Lottie will autoplay on load.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Here you can choose whether or not your Lottie will autoplay on load.', 'supreme-modules-for-divi' ),
 				'computed_affects' => array(
 					'__lottie',
 				),
 			),*/
 			'lottie_delay'              => array(
-				'label'            => esc_html__( 'Delay', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Delay', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default_on_front' => '0ms',
 				'validate_unit'    => true,
 				'allowed_units'    => array( 'ms' ),
-				'description'      => esc_html__( 'Delay the lottie animation (in ms).', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Delay the lottie animation (in ms).', 'supreme-modules-for-divi' ),
 				'range_settings'   => array(
 					'min'  => '0',
 					'max'  => '8000',
@@ -155,12 +155,12 @@ class DSM_Lottie extends ET_Builder_Module {
 				),
 			),
 			'lottie_direction'          => array(
-				'label'            => esc_html__( 'Direction', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Direction', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'layout',
 				'options'          => array(
-					'1'  => esc_html__( 'Normal', 'dsm-supreme-modules-for-divi' ),
-					'-1' => esc_html__( 'Reverse', 'dsm-supreme-modules-for-divi' ),
+					'1'  => esc_html__( 'Normal', 'supreme-modules-for-divi' ),
+					'-1' => esc_html__( 'Reverse', 'supreme-modules-for-divi' ),
 				),
 				'default_on_front' => '1',
 				'computed_affects' => array(
@@ -168,13 +168,13 @@ class DSM_Lottie extends ET_Builder_Module {
 				),
 			),
 			'lottie_speed'              => array(
-				'label'            => esc_html__( 'Speed (More is faster)', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Speed (More is faster)', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default_on_front' => '1',
 				'validate_unit'    => false,
 				'unitless'         => true,
-				'description'      => esc_html__( 'The speed of the animation.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'The speed of the animation.', 'supreme-modules-for-divi' ),
 				'range_settings'   => array(
 					'min'  => '0.1',
 					'max'  => '2.5',
@@ -185,27 +185,27 @@ class DSM_Lottie extends ET_Builder_Module {
 				),
 			),
 			'lottie_play_on_hover'      => array(
-				'label'            => esc_html__( 'Trigger', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Trigger', 'supreme-modules-for-divi' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'off' => esc_html__( 'No', 'dsm-supreme-modules-for-divi' ),
-					'on'  => esc_html__( 'Yes', 'dsm-supreme-modules-for-divi' ),
+					'off' => esc_html__( 'No', 'supreme-modules-for-divi' ),
+					'on'  => esc_html__( 'Yes', 'supreme-modules-for-divi' ),
 				),
 				'default_on_front' => 'off',
-				'description'      => esc_html__( 'Here you can choose whether or not your Lottie will animate on hover.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Here you can choose whether or not your Lottie will animate on hover.', 'supreme-modules-for-divi' ),
 				'computed_affects' => array(
 					'__lottie',
 				),
 			),
 			'lottie_trigger_method'     => array(
-				'label'            => esc_html__( 'Trigger Method', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Trigger Method', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'layout',
 				'options'          => array(
-					'on_hover'  => esc_html__( 'Play Animation  On Hover/Mouse Over', 'dsm-supreme-modules-for-divi' ),
-					'on_click'  => esc_html__( 'Play Animation On Click', 'dsm-supreme-modules-for-divi' ),
-					'on_scroll' => esc_html__( 'Play Animation On Scroll', 'dsm-supreme-modules-for-divi' ),
+					'on_hover'  => esc_html__( 'Play Animation  On Hover/Mouse Over', 'supreme-modules-for-divi' ),
+					'on_click'  => esc_html__( 'Play Animation On Click', 'supreme-modules-for-divi' ),
+					'on_scroll' => esc_html__( 'Play Animation On Scroll', 'supreme-modules-for-divi' ),
 				),
 				'default_on_front' => 'on_hover',
 				'show_if'          => array(
@@ -216,12 +216,12 @@ class DSM_Lottie extends ET_Builder_Module {
 				),
 			),
 			'lottie_scroll'             => array(
-				'label'            => esc_html__( 'Relative To', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Relative To', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'layout',
 				'options'          => array(
-					'page' => esc_html__( 'Entire Page', 'dsm-supreme-modules-for-divi' ),
-					'row'  => esc_html__( 'Within This Section/Row', 'dsm-supreme-modules-for-divi' ),
+					'page' => esc_html__( 'Entire Page', 'supreme-modules-for-divi' ),
+					'row'  => esc_html__( 'Within This Section/Row', 'supreme-modules-for-divi' ),
 				),
 				'default_on_front' => 'on_hover',
 				'show_if'          => array(
@@ -233,14 +233,14 @@ class DSM_Lottie extends ET_Builder_Module {
 				),
 			),
 			'lottie_mouseout_action'    => array(
-				'label'            => esc_html__( 'On Mouseout Action', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'On Mouseout Action', 'supreme-modules-for-divi' ),
 				'type'             => 'select',
 				'option_category'  => 'layout',
 				'options'          => array(
-					'no_action' => esc_html__( 'No Action', 'dsm-supreme-modules-for-divi' ),
-					'stop'      => esc_html__( 'Stop', 'dsm-supreme-modules-for-divi' ),
-					'pause'     => esc_html__( 'Pause', 'dsm-supreme-modules-for-divi' ),
-					'reverse'   => esc_html__( 'Reverse', 'dsm-supreme-modules-for-divi' ),
+					'no_action' => esc_html__( 'No Action', 'supreme-modules-for-divi' ),
+					'stop'      => esc_html__( 'Stop', 'supreme-modules-for-divi' ),
+					'pause'     => esc_html__( 'Pause', 'supreme-modules-for-divi' ),
+					'reverse'   => esc_html__( 'Reverse', 'supreme-modules-for-divi' ),
 				),
 				'default_on_front' => 'no_action',
 				'show_if'          => array(
@@ -252,8 +252,8 @@ class DSM_Lottie extends ET_Builder_Module {
 				),
 			),
 			'lottie_animation_viewport' => array(
-				'label'            => esc_html__( 'Animate in Viewport', 'dsm-supreme-modules-for-divi' ),
-				'description'      => esc_html__( 'Animation when the element is in viewport.', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Animate in Viewport', 'supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Animation when the element is in viewport.', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'layout',
 				'default'          => '80%',

@@ -151,15 +151,15 @@ if ( ! class_exists( 'Dsm_Supreme_Modules_For_Divi_Review' ) ) :
 
 				$no_bug_url = wp_nonce_url( admin_url( '?' . $this->nobug_option . '=true' ), 'review-nonce' );
 				$time       = $this->seconds_to_words( time() - get_site_option( $this->slug . '-activation-date' ) );
-
+				
+				/* Translators: %1$s: Plugin name, %2$s: Time duration, %3$s: Review URL, %4$s: Pro version URL, %5$s: No thanks URL */
 				echo '
-			<div class="updated">
-				<p>' . sprintf( __( 'You have been using the %s Lite plugin for %s now, do you like it? If so, please do us a favor by leaving us a 5-stars rating with your feedback on WordPress.org.<br />A huge thanks in advance! Divi Supreme Lite will remain free as always in WordPress plugin repo. <div class="dsm-admin-go-pro" style="display: flex; align-items: center; padding-top: 10px;"><a onclick="location.href=\'' . esc_url( $no_bug_url ) . '\';" class="button button-primary" href="' . esc_url( 'https://wordpress.org/support/plugin/supreme-modules-for-divi/reviews/?rate=5#new-post' ) . '" target="_blank">' . __( 'Leave A Review', 'dsm-supreme-modules-for-divi' ) . '</a><span style="padding-left: 7px;">or</span><span class="dashicons dashicons-cart" style="font-size: 1.4em;padding-left: 7px; padding-right: 3px;"></span><a href="https://divisupreme.com/?coupon=SUPREMEJOURNEYTOPRO10" target="_blank">Get Divi Supreme Pro</a>&nbsp;with 10%% off applied automatically to your cart if you wish to support our developement. - Note: This promotion will only show up once.</div>', 'dsm-supreme-modules-for-divi' ), $this->name, $time ) . '
-					<br />
-					<a href="' . esc_url( $no_bug_url ) . '">' . __( 'No thanks.', 'dsm-supreme-modules-for-divi' ) . '</a>
-				</p>
-			</div>';
-
+				<div class="updated">
+					<p>' . sprintf( __( 'You have been using the %s Lite plugin for %s now, do you like it? If so, please do us a favor by leaving us a 5-stars rating with your feedback on WordPress.org.<br />A huge thanks in advance! Divi Supreme Lite will remain free as always in WordPress plugin repo. <div class="dsm-admin-go-pro" style="display: flex; align-items: center; padding-top: 10px;"><a onclick="location.href=\'' . esc_url( $no_bug_url ) . '\';" class="button button-primary" href="' . esc_url( 'https://wordpress.org/support/plugin/supreme-modules-for-divi/reviews/?rate=5#new-post' ) . '" target="_blank">' . __( 'Leave A Review', 'supreme-modules-for-divi' ) . '</a><span style="padding-left: 7px;">or</span><span class="dashicons dashicons-cart" style="font-size: 1.4em;padding-left: 7px; padding-right: 3px;"></span><a href="https://divisupreme.com/?coupon=SUPREMEJOURNEYTOPRO10" target="_blank">Get Divi Supreme Pro</a>&nbsp;with 10%% off applied automatically to your cart if you wish to support our developement. - Note: This promotion will only show up once.</div>', 'supreme-modules-for-divi' ), $this->name, $time ) . '
+						<br />
+						<a href="' . esc_url( $no_bug_url ) . '">' . __( 'No thanks.', 'supreme-modules-for-divi' ) . '</a>
+					</p>
+				</div>';
 			}
 		}
 
@@ -173,7 +173,7 @@ if ( ! class_exists( 'Dsm_Supreme_Modules_For_Divi_Review' ) ) :
 			! isset( $_GET['_wpnonce'] )
 			||
 			(
-				! wp_verify_nonce( $_GET['_wpnonce'], 'review-nonce' )
+            	! wp_verify_nonce( wp_unslash( $_GET['_wpnonce'] ), 'review-nonce' )
 				||
 				! is_admin()
 				||

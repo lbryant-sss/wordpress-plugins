@@ -14,23 +14,23 @@ class DSM_PriceList extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name      = esc_html__( 'Supreme Price List', 'dsm-supreme-modules-for-divi' );
+		$this->name      = esc_html__( 'Supreme Price List', 'supreme-modules-for-divi' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		// Toggle settings
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Text', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'separator' => array(
-						'title'    => esc_html__( 'Separator', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Separator', 'supreme-modules-for-divi' ),
 						'priority' => 70,
 					),
 					'image'     => array(
-						'title'    => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 						'priority' => 69,
 					),
 				),
@@ -42,7 +42,7 @@ class DSM_PriceList extends ET_Builder_Module {
 		return array(
 			'fonts'      => array(
 				'header'  => array(
-					'label'             => esc_html__( 'Title', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( 'Title', 'supreme-modules-for-divi' ),
 					'css'               => array(
 						'main' => '%%order_class%% .dsm-pricelist-title',
 					),
@@ -59,7 +59,7 @@ class DSM_PriceList extends ET_Builder_Module {
 					'hide_text_align'   => true,
 				),
 				'content' => array(
-					'label'           => esc_html__( 'Description', 'dsm-supreme-modules-for-divi' ),
+					'label'           => esc_html__( 'Description', 'supreme-modules-for-divi' ),
 					'css'             => array(
 						'main' => '%%order_class%% .dsm-pricelist-description',
 					),
@@ -75,7 +75,7 @@ class DSM_PriceList extends ET_Builder_Module {
 					'hide_text_align' => true,
 				),
 				'price'   => array(
-					'label'           => esc_html__( 'Price', 'dsm-supreme-modules-for-divi' ),
+					'label'           => esc_html__( 'Price', 'supreme-modules-for-divi' ),
 					'css'             => array(
 						'main' => '%%order_class%% .dsm-pricelist-price',
 					),
@@ -114,7 +114,7 @@ class DSM_PriceList extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .dsm-pricelist-image img',
 						),
 					),
-					'label_prefix' => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix' => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'image',
 				),
@@ -125,7 +125,7 @@ class DSM_PriceList extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .dsm-pricelist-price',
 						),
 					),
-					'label_prefix' => esc_html__( 'Price', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix' => esc_html__( 'Price', 'supreme-modules-for-divi' ),
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'price',
 				),
@@ -137,7 +137,7 @@ class DSM_PriceList extends ET_Builder_Module {
 					),
 				),
 				'image'       => array(
-					'label'             => esc_html__( 'Image Box Shadow', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( 'Image Box Shadow', 'supreme-modules-for-divi' ),
 					'option_category'   => 'layout',
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'image',
@@ -150,7 +150,7 @@ class DSM_PriceList extends ET_Builder_Module {
 					),
 				),
 				'image_price' => array(
-					'label'             => esc_html__( 'Price Box Shadow', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( 'Price Box Shadow', 'supreme-modules-for-divi' ),
 					'option_category'   => 'layout',
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'price',
@@ -169,21 +169,21 @@ class DSM_PriceList extends ET_Builder_Module {
 	public function get_fields() {
 		return array(
 			'content_orientation'    => array(
-				'label'           => esc_html__( 'Vertical Alignment', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Vertical Alignment', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => array(
-					'flex-start' => esc_html__( 'Top', 'dsm-supreme-modules-for-divi' ),
-					'center'     => esc_html__( 'Center', 'dsm-supreme-modules-for-divi' ),
-					'flex-end'   => esc_html__( 'Bottom', 'dsm-supreme-modules-for-divi' ),
+					'flex-start' => esc_html__( 'Top', 'supreme-modules-for-divi' ),
+					'center'     => esc_html__( 'Center', 'supreme-modules-for-divi' ),
+					'flex-end'   => esc_html__( 'Bottom', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'flex-start',
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'text',
-				'description'     => esc_html__( 'This setting determines the vertical alignment of your content. Your content can either be align to the top, vertically centered, or aligned to the bottom.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'This setting determines the vertical alignment of your content. Your content can either be align to the top, vertically centered, or aligned to the bottom.', 'supreme-modules-for-divi' ),
 			),
 			'item_bottom_gap'        => array(
-				'label'            => esc_html__( 'Item Bottom Spacing', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Item Bottom Spacing', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default'          => '25px',
@@ -202,7 +202,7 @@ class DSM_PriceList extends ET_Builder_Module {
 				'hover'            => 'tabs',
 			),
 			'separator_style'        => array(
-				'label'           => esc_html__( 'Style', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Style', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'configuration',
 				'default'         => 'dotted',
@@ -211,7 +211,7 @@ class DSM_PriceList extends ET_Builder_Module {
 				'toggle_slug'     => 'separator',
 			),
 			'separator_weight'       => array(
-				'label'            => esc_html__( 'Weight', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Weight', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default'          => '2px',
@@ -227,14 +227,14 @@ class DSM_PriceList extends ET_Builder_Module {
 			),
 			'separator_color'        => array(
 				'default'     => '#333',
-				'label'       => esc_html__( 'Color', 'dsm-supreme-modules-for-divi' ),
+				'label'       => esc_html__( 'Color', 'supreme-modules-for-divi' ),
 				'type'        => 'color-alpha',
-				'description' => esc_html__( 'Here you can define a custom color for your separator.', 'dsm-supreme-modules-for-divi' ),
+				'description' => esc_html__( 'Here you can define a custom color for your separator.', 'supreme-modules-for-divi' ),
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'separator',
 			),
 			'separator_gap'          => array(
-				'label'            => esc_html__( 'Gap Spacing', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Gap Spacing', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default'          => '10px',
@@ -252,7 +252,7 @@ class DSM_PriceList extends ET_Builder_Module {
 				'hover'            => 'tabs',
 			),
 			'image_max_width'        => array(
-				'label'            => esc_html__( 'Image Width', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Image Width', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'layout',
 				'tab_slug'         => 'advanced',
@@ -273,7 +273,7 @@ class DSM_PriceList extends ET_Builder_Module {
 				'hover'            => 'tabs',
 			),
 			'image_spacing'          => array(
-				'label'            => esc_html__( 'Image Gap Spacing', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Image Gap Spacing', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'layout',
 				'tab_slug'         => 'advanced',
@@ -293,9 +293,9 @@ class DSM_PriceList extends ET_Builder_Module {
 				'hover'            => 'tabs',
 			),
 			'price_background_color' => array(
-				'label'          => esc_html__( 'Price Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'          => esc_html__( 'Price Background Color', 'supreme-modules-for-divi' ),
 				'type'           => 'color-alpha',
-				'description'    => esc_html__( 'Here you can define a custom background color for your price.', 'dsm-supreme-modules-for-divi' ),
+				'description'    => esc_html__( 'Here you can define a custom background color for your price.', 'supreme-modules-for-divi' ),
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'price',
 				'mobile_options' => true,
@@ -303,7 +303,7 @@ class DSM_PriceList extends ET_Builder_Module {
 				'hover'          => 'tabs',
 			),
 			'price_padding'          => array(
-				'label'            => esc_html__( 'Padding', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Padding', 'supreme-modules-for-divi' ),
 				'type'             => 'custom_padding',
 				'option_category'  => 'layout',
 				'tab_slug'         => 'advanced',

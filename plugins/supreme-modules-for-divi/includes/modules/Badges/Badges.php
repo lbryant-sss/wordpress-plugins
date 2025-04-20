@@ -13,12 +13,12 @@ class DSM_Text_Badges extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name                   = esc_html__( 'Supreme Text Badges', 'dsm-supreme-modules-for-divi' );
+		$this->name                   = esc_html__( 'Supreme Text Badges', 'supreme-modules-for-divi' );
 		$this->icon_path              = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Text', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
@@ -31,7 +31,7 @@ class DSM_Text_Badges extends ET_Builder_Module {
 		return array(
 			'fonts'          => array(
 				'header' => array(
-					'label'           => esc_html__( 'Main', 'dsm-supreme-modules-for-divi' ),
+					'label'           => esc_html__( 'Main', 'supreme-modules-for-divi' ),
 					'css'             => array(
 						'main' => '%%order_class%% h1.et_pb_module_header, %%order_class%% h2.et_pb_module_header, %%order_class%% h3.et_pb_module_header, %%order_class%% h4.et_pb_module_header, %%order_class%% h5.et_pb_module_header, %%order_class%% h6.et_pb_module_header',
 					),
@@ -50,7 +50,7 @@ class DSM_Text_Badges extends ET_Builder_Module {
 					'hide_text_align' => true,
 				),
 				'badges' => array(
-					'label'            => esc_html__( 'Badges', 'dsm-supreme-modules-for-divi' ),
+					'label'            => esc_html__( 'Badges', 'supreme-modules-for-divi' ),
 					'css'              => array(
 						'main' => '%%order_class%% .dsm-badges',
 					),
@@ -108,7 +108,7 @@ class DSM_Text_Badges extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .dsm-badges',
 						),
 					),
-					'label_prefix' => esc_html__( 'Badge', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix' => esc_html__( 'Badge', 'supreme-modules-for-divi' ),
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'badges',
 				),
@@ -127,7 +127,7 @@ class DSM_Text_Badges extends ET_Builder_Module {
 		$et_accent_color = et_builder_accent_color();
 		return array(
 			'main_text'               => array(
-				'label'            => esc_html__( 'Main Text', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Main Text', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
 				'toggle_slug'      => 'main_content',
@@ -136,7 +136,7 @@ class DSM_Text_Badges extends ET_Builder_Module {
 				'dynamic_content'  => 'text',
 			),
 			'badges_text'             => array(
-				'label'            => esc_html__( 'Badges Text', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Badges Text', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
 				'toggle_slug'      => 'main_content',
@@ -145,28 +145,28 @@ class DSM_Text_Badges extends ET_Builder_Module {
 				'dynamic_content'  => 'text',
 			),
 			'badges_placement'        => array(
-				'label'           => esc_html__( 'Badges Placement', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Badges Placement', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'configuration',
 				'options'         => array(
-					'before' => esc_html__( 'Before', 'dsm-supreme-modules-for-divi' ),
-					'after'  => esc_html__( 'After', 'dsm-supreme-modules-for-divi' ),
+					'before' => esc_html__( 'Before', 'supreme-modules-for-divi' ),
+					'after'  => esc_html__( 'After', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'after',
-				'description'     => esc_html__( 'Here you can choose the placement of the badges to be before or after the Main Text.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Here you can choose the placement of the badges to be before or after the Main Text.', 'supreme-modules-for-divi' ),
 				'toggle_slug'     => 'main_content',
 			),
 			'badges_background_color' => array(
-				'label'        => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'        => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'         => 'color-alpha',
 				'custom_color' => true,
 				'default'      => $et_accent_color,
 				'tab_slug'     => 'advanced',
 				'toggle_slug'  => 'badges',
-				'description'  => esc_html__( 'Here you can define a custom background color for the badge', 'dsm-supreme-modules-for-divi' ),
+				'description'  => esc_html__( 'Here you can define a custom background color for the badge', 'supreme-modules-for-divi' ),
 			),
 			'badges_gap'              => array(
-				'label'            => esc_html__( 'Gap', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Gap', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'layout',
 				'tab_slug'         => 'advanced',
@@ -178,7 +178,7 @@ class DSM_Text_Badges extends ET_Builder_Module {
 				'default_on_front' => '',
 				'allow_empty'      => true,
 				'responsive'       => true,
-				'description'      => esc_html__( 'Here you can define a gap between the text and the badge', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Here you can define a gap between the text and the badge', 'supreme-modules-for-divi' ),
 			),
 		);
 	}

@@ -13,13 +13,13 @@ class DSM_GradientText extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name      = esc_html__( 'Supreme Gradient Text', 'dsm-supreme-modules-for-divi' );
+		$this->name      = esc_html__( 'Supreme Gradient Text', 'supreme-modules-for-divi' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		// Toggle settings
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Text', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
@@ -32,7 +32,7 @@ class DSM_GradientText extends ET_Builder_Module {
 		return array(
 			'fonts'          => array(
 				'header' => array(
-					'label'          => esc_html__( 'Title', 'dsm-supreme-modules-for-divi' ),
+					'label'          => esc_html__( 'Title', 'supreme-modules-for-divi' ),
 					'css'            => array(
 						'main' => '%%order_class%% h1.dsm-gradient-text, %%order_class%% h2.dsm-gradient-text, %%order_class%% h3.dsm-gradient-text, %%order_class%% h4.dsm-gradient-text, %%order_class%% h5.dsm-gradient-text, %%order_class%% h6.dsm-gradient-text',
 					),
@@ -116,7 +116,7 @@ class DSM_GradientText extends ET_Builder_Module {
 	public function get_fields() {
 		return array(
 			'gradient_text' => array(
-				'label'            => esc_html__( 'Gradient Text', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Gradient Text', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
 				'toggle_slug'      => 'main_content',

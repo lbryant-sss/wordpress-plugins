@@ -13,12 +13,12 @@ class DSM_EmbedGoogleMap extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name                   = esc_html__( 'Supreme Embed Google Map', 'dsm-supreme-modules-for-divi' );
+		$this->name                   = esc_html__( 'Supreme Embed Google Map', 'supreme-modules-for-divi' );
 		$this->icon_path              = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		$this->settings_modal_toggles = array(
 			'general' => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Embed Google Map', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Embed Google Map', 'supreme-modules-for-divi' ),
 				),
 			),
 		);
@@ -51,19 +51,19 @@ class DSM_EmbedGoogleMap extends ET_Builder_Module {
 				'type'        => 'warning',
 				'value'       => true,
 				'display_if'  => true,
-				'message'     => esc_html__( 'Google Embed Map API is not required. However, if you encounter any issues with the Embed Google Map, please consider using Google Embed Map API for stability in the future.', 'dsm-supreme-modules-for-divi' ),
+				'message'     => esc_html__( 'Google Embed Map API is not required. However, if you encounter any issues with the Embed Google Map, please consider using Google Embed Map API for stability in the future.', 'supreme-modules-for-divi' ),
 				'toggle_slug' => 'main_content',
 			),
 			'google_api_key'            => array(
-				'label'                  => esc_html__( 'Google API Key', 'dsm-supreme-modules-for-divi' ),
+				'label'                  => esc_html__( 'Google API Key', 'supreme-modules-for-divi' ),
 				'type'                   => 'text',
 				'option_category'        => 'basic_option',
 				'attributes'             => 'readonly',
 				'additional_button'      => sprintf(
 					' <a href="%2$s" target="_blank" class="et_pb_update_google_key button" data-empty_text="%3$s">%1$s</a>',
-					esc_html__( 'Change API Key', 'dsm-supreme-modules-for-divi' ),
+					esc_html__( 'Change API Key', 'supreme-modules-for-divi' ),
 					esc_url( et_pb_get_options_page_link() ),
-					esc_attr__( 'Add Your API Key', 'dsm-supreme-modules-for-divi' )
+					esc_attr__( 'Add Your API Key', 'supreme-modules-for-divi' )
 				),
 				'additional_button_type' => 'change_google_api_key',
 				'class'                  => array( 'et_pb_google_api_key', 'et-pb-helper-field' ),
@@ -74,16 +74,16 @@ class DSM_EmbedGoogleMap extends ET_Builder_Module {
 				'toggle_slug'            => 'main_content',
 			),
 			'address'                   => array(
-				'label'            => esc_html__( 'Address', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Address', 'supreme-modules-for-divi' ),
 				'type'             => 'text',
 				'option_category'  => 'basic_option',
-				'description'      => esc_html__( 'Enter the address for the embed Google Map.', 'dsm-supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Enter the address for the embed Google Map.', 'supreme-modules-for-divi' ),
 				'default_on_front' => '1233 Howard St Apt 3A San Francisco, CA 94103-2775',
 				'toggle_slug'      => 'main_content',
 				'dynamic_content'  => 'text',
 			),
 			'zoom'                      => array(
-				'label'           => esc_html__( 'Zoom', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Zoom', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'main_content',

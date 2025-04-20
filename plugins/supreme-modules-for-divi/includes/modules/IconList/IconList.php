@@ -14,27 +14,27 @@ class DSM_Icon_List extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name      = esc_html__( 'Supreme Icon List', 'dsm-supreme-modules-for-divi' );
+		$this->name      = esc_html__( 'Supreme Icon List', 'supreme-modules-for-divi' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 		// Toggle settings.
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Icon Lists', 'dsm-supreme-modules-for-divi' ),
+					'main_content' => esc_html__( 'Icon Lists', 'supreme-modules-for-divi' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'icon_settings'  => array(
-						'title'    => esc_html__( 'Icon', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Icon', 'supreme-modules-for-divi' ),
 						'priority' => 70,
 					),
 					'image_settings' => array(
-						'title'    => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 						'priority' => 70,
 					),
 					'list'           => array(
-						'title'    => esc_html__( 'List Items', 'dsm-supreme-modules-for-divi' ),
+						'title'    => esc_html__( 'List Items', 'supreme-modules-for-divi' ),
 						'priority' => 70,
 					),
 				),
@@ -46,7 +46,7 @@ class DSM_Icon_List extends ET_Builder_Module {
 		return array(
 			'fonts'          => array(
 				'text' => array(
-					'label'             => esc_html__( '', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( '', 'supreme-modules-for-divi' ),
 					'css'               => array(
 						'main'        => ' %%order_class%% .dsm_icon_list_child, %%order_class%% .dsm_icon_list_child a',
 						'line_height' => "{$this->main_css_element} .dsm_icon_list_text",
@@ -90,7 +90,7 @@ class DSM_Icon_List extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .dsm_icon_list_items .dsm_icon_list_icon',
 						),
 					),
-					'label_prefix' => esc_html__( 'Icon', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix' => esc_html__( 'Icon', 'supreme-modules-for-divi' ),
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'icon_settings',
 				),
@@ -101,7 +101,7 @@ class DSM_Icon_List extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .dsm_icon_list_items .dsm_icon_list_image',
 						),
 					),
-					'label_prefix' => esc_html__( 'Image', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix' => esc_html__( 'Image', 'supreme-modules-for-divi' ),
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'image_settings',
 				),
@@ -112,7 +112,7 @@ class DSM_Icon_List extends ET_Builder_Module {
 							'border_styles' => '%%order_class%% .dsm_icon_list_items .dsm_icon_list_child',
 						),
 					),
-					'label_prefix' => esc_html__( 'List Item', 'dsm-supreme-modules-for-divi' ),
+					'label_prefix' => esc_html__( 'List Item', 'supreme-modules-for-divi' ),
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'list',
 				),
@@ -124,7 +124,7 @@ class DSM_Icon_List extends ET_Builder_Module {
 					),
 				),
 				'icon'      => array(
-					'label'             => esc_html__( 'Icon Box Shadow', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( 'Icon Box Shadow', 'supreme-modules-for-divi' ),
 					'option_category'   => 'layout',
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'icon_settings',
@@ -137,7 +137,7 @@ class DSM_Icon_List extends ET_Builder_Module {
 					),
 				),
 				'image'     => array(
-					'label'             => esc_html__( 'Image Box Shadow', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( 'Image Box Shadow', 'supreme-modules-for-divi' ),
 					'option_category'   => 'layout',
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'image_settings',
@@ -150,7 +150,7 @@ class DSM_Icon_List extends ET_Builder_Module {
 					),
 				),
 				'list_item' => array(
-					'label'             => esc_html__( 'List Item Box Shadow', 'dsm-supreme-modules-for-divi' ),
+					'label'             => esc_html__( 'List Item Box Shadow', 'supreme-modules-for-divi' ),
 					'option_category'   => 'layout',
 					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'list',
@@ -178,26 +178,26 @@ class DSM_Icon_List extends ET_Builder_Module {
 		return array(
 			'icon_color'              => array(
 				'default'        => $et_accent_color,
-				'label'          => esc_html__( 'Icon Color', 'dsm-supreme-modules-for-divi' ),
+				'label'          => esc_html__( 'Icon Color', 'supreme-modules-for-divi' ),
 				'type'           => 'color-alpha',
-				'description'    => esc_html__( 'Here you can define a custom color for your icon.', 'dsm-supreme-modules-for-divi' ),
+				'description'    => esc_html__( 'Here you can define a custom color for your icon.', 'supreme-modules-for-divi' ),
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'icon_settings',
 				'hover'          => 'tabs',
 				'mobile_options' => true,
 			),
 			'icon_background_color'   => array(
-				'label'          => esc_html__( 'Icon Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'          => esc_html__( 'Icon Background Color', 'supreme-modules-for-divi' ),
 				'type'           => 'color-alpha',
-				'description'    => esc_html__( 'Here you can define a custom background color for your icon.', 'dsm-supreme-modules-for-divi' ),
+				'description'    => esc_html__( 'Here you can define a custom background color for your icon.', 'supreme-modules-for-divi' ),
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'icon_settings',
 				'hover'          => 'tabs',
 				'mobile_options' => true,
 			),
 			'icon_gap_width'          => array(
-				'label'           => esc_html__( 'Icon Gap Width', 'dsm-supreme-modules-for-divi' ),
-				'description'     => esc_html__( 'Here you can define a custom gap width for the icon.', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Icon Gap Width', 'supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Here you can define a custom gap width for the icon.', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'font_option',
 				'tab_slug'        => 'advanced',
@@ -214,8 +214,8 @@ class DSM_Icon_List extends ET_Builder_Module {
 				'hover'           => 'tabs',
 			),
 			'icon_padding'            => array(
-				'label'           => esc_html__( 'Icon Padding', 'dsm-supreme-modules-for-divi' ),
-				'description'     => esc_html__( 'Here you can define a custom padding size for the icon.', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Icon Padding', 'supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Here you can define a custom padding size for the icon.', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'font_option',
 				'tab_slug'        => 'advanced',
@@ -232,8 +232,8 @@ class DSM_Icon_List extends ET_Builder_Module {
 				'hover'           => 'tabs',
 			),
 			'icon_font_size'          => array(
-				'label'            => esc_html__( 'Icon Font Size', 'dsm-supreme-modules-for-divi' ),
-				'description'      => esc_html__( 'Control the size of the icon by increasing or decreasing the font size.', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Icon Font Size', 'supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Control the size of the icon by increasing or decreasing the font size.', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'font_option',
 				'tab_slug'         => 'advanced',
@@ -252,27 +252,27 @@ class DSM_Icon_List extends ET_Builder_Module {
 				'hover'            => 'tabs',
 			),
 			'list_layout'             => array(
-				'label'           => esc_html__( 'Layout', 'dsm-supreme-modules-for-divi' ),
-				'description'     => esc_html__( 'The list layout can be either vertical or horizontal.', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Layout', 'supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'The list layout can be either vertical or horizontal.', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => array(
-					'vertical'   => esc_html__( 'Vertical', 'dsm-supreme-modules-for-divi' ),
-					'horizontal' => esc_html__( 'Horizontal', 'dsm-supreme-modules-for-divi' ),
+					'vertical'   => esc_html__( 'Vertical', 'supreme-modules-for-divi' ),
+					'horizontal' => esc_html__( 'Horizontal', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'vertical',
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'list',
 			),
 			'list_alignment'          => array(
-				'label'           => esc_html__( 'Alignment', 'dsm-supreme-modules-for-divi' ),
-				'description'     => esc_html__( 'The List can be placed either above, below or in the center of the module.', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Alignment', 'supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'The List can be placed either above, below or in the center of the module.', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => array(
-					'flex-start' => esc_html__( 'Left', 'dsm-supreme-modules-for-divi' ),
-					'center'     => esc_html__( 'Center', 'dsm-supreme-modules-for-divi' ),
-					'flex-end'   => esc_html__( 'Right', 'dsm-supreme-modules-for-divi' ),
+					'flex-start' => esc_html__( 'Left', 'supreme-modules-for-divi' ),
+					'center'     => esc_html__( 'Center', 'supreme-modules-for-divi' ),
+					'flex-end'   => esc_html__( 'Right', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'flex-start',
 				'mobile_options'  => true,
@@ -281,14 +281,14 @@ class DSM_Icon_List extends ET_Builder_Module {
 				'toggle_slug'     => 'list',
 			),
 			'list_vertical_alignment' => array(
-				'label'           => esc_html__( 'Vertical Alignment', 'dsm-supreme-modules-for-divi' ),
-				'description'     => esc_html__( 'The List can be placed either above, below or in the center of the module.', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Vertical Alignment', 'supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'The List can be placed either above, below or in the center of the module.', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => array(
-					'flex-start' => esc_html__( 'Top', 'dsm-supreme-modules-for-divi' ),
-					'center'     => esc_html__( 'Vertically Centered', 'dsm-supreme-modules-for-divi' ),
-					'flex-end'   => esc_html__( 'Bottom', 'dsm-supreme-modules-for-divi' ),
+					'flex-start' => esc_html__( 'Top', 'supreme-modules-for-divi' ),
+					'center'     => esc_html__( 'Vertically Centered', 'supreme-modules-for-divi' ),
+					'flex-end'   => esc_html__( 'Bottom', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'center',
 				'mobile_options'  => true,
@@ -297,13 +297,13 @@ class DSM_Icon_List extends ET_Builder_Module {
 				'toggle_slug'     => 'list',
 			),
 			'list_direction'          => array(
-				'label'           => esc_html__( 'Direction', 'dsm-supreme-modules-for-divi' ),
-				'description'     => esc_html__( 'The list direction can be either left-to-right or right-to-left.', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Direction', 'supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'The list direction can be either left-to-right or right-to-left.', 'supreme-modules-for-divi' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
 				'options'         => array(
-					'ltr' => esc_html__( 'Left to Right', 'dsm-supreme-modules-for-divi' ),
-					'rtl' => esc_html__( 'Right to Left', 'dsm-supreme-modules-for-divi' ),
+					'ltr' => esc_html__( 'Left to Right', 'supreme-modules-for-divi' ),
+					'rtl' => esc_html__( 'Right to Left', 'supreme-modules-for-divi' ),
 				),
 				'default'         => 'ltr',
 				'mobile_options'  => true,
@@ -312,7 +312,7 @@ class DSM_Icon_List extends ET_Builder_Module {
 				'toggle_slug'     => 'list',
 			),
 			'list_space_between'      => array(
-				'label'            => esc_html__( 'Space Between', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Space Between', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'configuration',
 				'default'          => '0px',
@@ -330,28 +330,28 @@ class DSM_Icon_List extends ET_Builder_Module {
 				'toggle_slug'      => 'list',
 			),
 			'list_background'         => array(
-				'label'          => esc_html__( 'Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'          => esc_html__( 'Background Color', 'supreme-modules-for-divi' ),
 				'type'           => 'color-alpha',
-				'description'    => esc_html__( 'Here you can define a custom color for your list items.', 'dsm-supreme-modules-for-divi' ),
+				'description'    => esc_html__( 'Here you can define a custom color for your list items.', 'supreme-modules-for-divi' ),
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'list',
 				'hover'          => 'tabs',
 				'mobile_options' => true,
 			),
 			'list_padding'            => array(
-				'label'           => esc_html__( 'Padding', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Padding', 'supreme-modules-for-divi' ),
 				'type'            => 'custom_padding',
 				'mobile_options'  => true,
 				'hover'           => 'tabs',
 				'option_category' => 'layout',
-				'description'     => esc_html__( 'Adjust padding to specific values, or leave blank to use the default padding.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Adjust padding to specific values, or leave blank to use the default padding.', 'supreme-modules-for-divi' ),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'list',
 				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 			),
 			'text_indent'             => array(
-				'label'            => esc_html__( 'Text Indent', 'dsm-supreme-modules-for-divi' ),
-				'description'      => esc_html__( 'Here you can add padding between the icons and the text.', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Text Indent', 'supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Here you can add padding between the icons and the text.', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'font_option',
 				'tab_slug'         => 'advanced',
@@ -370,9 +370,9 @@ class DSM_Icon_List extends ET_Builder_Module {
 				'hover'            => 'tabs',
 			),
 			'image_background_color'  => array(
-				'label'           => esc_html__( 'Image Background Color', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Image Background Color', 'supreme-modules-for-divi' ),
 				'type'            => 'color-alpha',
-				'description'     => esc_html__( 'Here you can define a custom background color for your image.', 'dsm-supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Here you can define a custom background color for your image.', 'supreme-modules-for-divi' ),
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'image_settings',
 				'hover'           => 'tabs',
@@ -380,8 +380,8 @@ class DSM_Icon_List extends ET_Builder_Module {
 				'depends_show_if' => 'on',
 			),
 			'image_padding'           => array(
-				'label'           => esc_html__( 'Image Padding', 'dsm-supreme-modules-for-divi' ),
-				'description'     => esc_html__( 'Here you can define a custom padding size for the image.', 'dsm-supreme-modules-for-divi' ),
+				'label'           => esc_html__( 'Image Padding', 'supreme-modules-for-divi' ),
+				'description'     => esc_html__( 'Here you can define a custom padding size for the image.', 'supreme-modules-for-divi' ),
 				'type'            => 'range',
 				'option_category' => 'font_option',
 				'tab_slug'        => 'advanced',
@@ -399,8 +399,8 @@ class DSM_Icon_List extends ET_Builder_Module {
 				'depends_show_if' => 'on',
 			),
 			'image_max_width'         => array(
-				'label'            => esc_html__( 'Image Width', 'dsm-supreme-modules-for-divi' ),
-				'description'      => esc_html__( 'Adjust the width of the image.', 'dsm-supreme-modules-for-divi' ),
+				'label'            => esc_html__( 'Image Width', 'supreme-modules-for-divi' ),
+				'description'      => esc_html__( 'Adjust the width of the image.', 'supreme-modules-for-divi' ),
 				'type'             => 'range',
 				'option_category'  => 'layout',
 				'tab_slug'         => 'advanced',
