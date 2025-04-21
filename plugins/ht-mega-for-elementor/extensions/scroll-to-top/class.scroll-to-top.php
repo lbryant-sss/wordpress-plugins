@@ -52,7 +52,7 @@ class HTMegaScrollToTop_Elementor {
             'buton_icon'    => $buton_icon,
             'stt_button_text'     => htmega_get_elementor_option( 'stt_button_text', get_the_ID() ),
         ];
-
+        wp_enqueue_script( 'dompurify' );
         if( ( isset( $htmega_stt_enable ) &&  'yes' == $htmega_stt_enable ) ) {
             wp_enqueue_script( 'htmega-stt-script' );
             wp_enqueue_style( 'htmega-stt-css' );
@@ -61,6 +61,7 @@ class HTMegaScrollToTop_Elementor {
         if( ( isset( $htmega_stt_disable ) &&  'yes' == $htmega_stt_disable )  && 'on' == $stt_global ) {
             wp_dequeue_script( 'htmega-stt-script' );
             wp_dequeue_script( 'htmega-stt-css' );
+            wp_dequeue_script( 'dompurify' );
         }
 	}
 

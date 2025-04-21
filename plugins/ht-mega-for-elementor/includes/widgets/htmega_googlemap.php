@@ -25,6 +25,7 @@ class HTMega_Elementor_Widget_GoogleMap extends Widget_Base {
         return [
             'google-map-api',
             'mapmarker',
+            'dompurify'
         ];
     }
 

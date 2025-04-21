@@ -606,11 +606,6 @@ div#htmega-template-tabs-wrapper {
     border-color: #8c8f94;
 }
 
-.htmega-template-form .template-checkbox input[type="checkbox"]:checked {
-    background-color: #2271b1;
-    border-color: #2271b1;
-}
-
 .htmega-template-form .template-actions button {
     display: inline-flex;
     align-items: center;

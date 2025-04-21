@@ -24,19 +24,33 @@ class HTMega_Theme_Builder {
      * Constructor
      */
     public function __construct() {
-        $this->template_types = [
-            'header_page' => __('Header', 'htmega-addons'),
-            'footer_page' => __('Footer', 'htmega-addons'),
-            'single_blog_page' => __('Single', 'htmega-addons'),
-            'archive_blog_page' => __('Blog', 'htmega-addons'),
-            'search_page' => __('Search', 'htmega-addons'),
-            'error_page' => __('Error', 'htmega-addons'),
-            'coming_soon_page' => __('Coming Soon', 'htmega-addons')
-        ];
-
-        add_action('init', [$this, 'register_post_type']);
+        // Register core functionality without translations first
+        $this->register_post_type_args();
+        
+        // Initialize template types and other functionality on init
+        add_action('init', [$this, 'init_plugin'], 0);
+        
+        // Admin and AJAX handlers (these don't need early initialization)
         add_action('admin_menu', [$this, 'add_submenu'], 225);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts']);
+        
+        // AJAX handlers
+        add_action('wp_ajax_htmega_create_template', [$this, 'ajax_create_template']);
+        add_action('wp_ajax_htmega_manage_default_template', [$this, 'manage_template_status']);
+        add_action('wp_ajax_htmega_template_import', [$this, 'template_import']);
+        add_action('wp_ajax_htmega_trash_templates', [$this, 'ajax_trash_templates']);
+
+        // Row and bulk actions
+        add_filter('post_row_actions', [$this, 'filter_post_row_actions'], 10, 2);
+        add_filter('bulk_actions-edit-' . self::CPT, [$this, 'register_bulk_actions']);
+    }
+
+    /**
+     * Initialize all plugin functionality that requires translations
+     */
+    public function init_plugin() {
+        $this->initialize_template_types();
+        $this->register_post_type();
         
         // Template filters
         add_filter('query_vars', [$this, 'add_query_vars_filter']);
@@ -49,20 +63,28 @@ class HTMega_Theme_Builder {
 
         // Template creation
         add_action('admin_action_htmega_new_template', [$this, 'admin_action_new_template']);
-
-        // AJAX handlers
-        add_action('wp_ajax_htmega_create_template', [$this, 'ajax_create_template']);
-        add_action('wp_ajax_htmega_manage_default_template', [$this, 'manage_template_status']);
-        add_action('wp_ajax_htmega_template_import', [$this, 'template_import']); // Add template import AJAX handler
-        add_action('wp_ajax_htmega_trash_templates', [$this, 'ajax_trash_templates']); // Add AJAX handler for trash templates functionality
-        // Row and bulk actions
-        add_filter('post_row_actions', [$this, 'filter_post_row_actions'], 10, 2);
-        add_filter('bulk_actions-edit-' . self::CPT, [$this, 'register_bulk_actions']);
-        add_filter('handle_bulk_actions-edit-' . self::CPT, [$this, 'handle_bulk_actions'], 10, 3);
     }
 
     /**
-     * Register post type
+     * Register post type arguments without translations
+     */
+    private function register_post_type_args() {
+        register_post_type(self::CPT, [
+            'public' => true,
+            'show_in_menu' => false,
+            'rewrite' => false,
+            'show_in_nav_menus' => false,
+            'show_in_admin_bar' => false,
+            'exclude_from_search' => true,
+            'capability_type' => 'post',
+            'hierarchical' => false,
+            'supports' => ['title', 'editor', 'revisions'],
+            'menu_icon' => 'dashicons-admin-page',
+        ]);
+    }
+
+    /**
+     * Register post type with translations
      */
     public function register_post_type() {
         $labels = [
@@ -76,36 +98,40 @@ class HTMega_Theme_Builder {
             'view_item' => __('View Template', 'htmega-addons'),
             'search_items' => __('Search Templates', 'htmega-addons'),
             'not_found' => __('No templates found', 'htmega-addons'),
-            'not_found_in_trash' => __('No templates found in Trash', 'htmega-addons'),
-            'parent_item_colon' => '',
+            'not_found_in_trash' => __('No templates found in trash', 'htmega-addons'),
             'menu_name' => __('Templates', 'htmega-addons'),
         ];
 
         $args = [
             'labels' => $labels,
             'public' => true,
-            'show_ui' => true,
             'show_in_menu' => false,
+            'rewrite' => false,
             'show_in_nav_menus' => false,
+            'show_in_admin_bar' => false,
             'exclude_from_search' => true,
             'capability_type' => 'post',
-            'map_meta_cap' => true,
             'hierarchical' => false,
-            'supports' => ['title', 'editor', 'elementor', 'author', 'revisions', 'thumbnail'],
-            'capabilities' => [
-                'publish_posts' => 'publish_posts',
-                'edit_posts' => 'edit_posts',
-                'edit_others_posts' => 'edit_others_posts',
-                'delete_posts' => 'delete_posts',
-                'delete_others_posts' => 'delete_others_posts',
-                'read_private_posts' => 'read_private_posts',
-                'edit_post' => 'edit_post',
-                'delete_post' => 'delete_post',
-                'read_post' => 'read_post',
-            ],
+            'supports' => ['title', 'editor', 'revisions'],
+            'menu_icon' => 'dashicons-admin-page',
         ];
 
         register_post_type(self::CPT, $args);
+    }
+
+    /**
+     * Initialize template types
+     */
+    public function initialize_template_types() {
+        $this->template_types = [
+            'header_page' => __('Header', 'htmega-addons'),
+            'footer_page' => __('Footer', 'htmega-addons'),
+            'single_blog_page' => __('Single', 'htmega-addons'),
+            'archive_blog_page' => __('Blog', 'htmega-addons'),
+            'search_page' => __('Search', 'htmega-addons'),
+            'error_page' => __('Error', 'htmega-addons'),
+            'coming_soon_page' => __('Coming Soon', 'htmega-addons')
+        ];
     }
 
     /**

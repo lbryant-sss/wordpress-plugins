@@ -35,13 +35,20 @@ if ( ! class_exists( 'HtMegaBlocks' ) ) :
 		 */
 		public function __construct() {
 			$this->includes();
-			add_action( 'plugins_loaded', [ $this, 'init' ] );
+			add_action( 'init', [ $this, 'init_components' ], 20 );
 		}
 
+		// /**
+		//  * Initialize
+		//  */
+		// public function init(){
+		// 	add_action('init', [$this, 'init_components'], 5);
+		// }
+
 		/**
-		 * Initialize
+		 * Initialize components after translations are loaded
 		 */
-		public function init(){
+		public function init_components() {
 			$this->dependency_class_instance();
 		}
 

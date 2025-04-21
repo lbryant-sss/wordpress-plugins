@@ -30,16 +30,31 @@ A "wp" prefix has been added to avoid name conflicts with other code in this plu
  * The minimum screen width at which the sticky bar will be sticky.
  * The Admin Bar stops sticking to the top of the window at 600px. Let's do the same for our top bar.
  */
+.ame-sticky-top-bar {
+  padding-top: 6px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid transparent;
+}
+
 @media screen and (min-width: 601px) {
   .ame-sticky-top-bar {
     position: sticky;
-    top: var(--wp-admin--admin-bar--height, 32px);
+    top: calc(var(--wp-admin--admin-bar--height, 32px));
     z-index: 5;
+    padding-top: 16px;
+    margin-top: -10px;
+    pointer-events: none;
   }
-  .ame-is-pinned-top-bar {
+  .ame-sticky-top-bar > * {
+    pointer-events: auto;
+  }
+  .ame-sticky-top-bar.ame-is-pinned-top-bar {
     background-color: #f6f7f7;
     border-bottom: 1px solid #c3c4c7;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    pointer-events: auto;
+    padding-bottom: 16px;
+    margin-bottom: -9px;
   }
   .ame-is-pinned-top-bar {
     margin-left: calc(-1 * var(--ame-sticky-bar-left-offset, 0));
@@ -48,12 +63,6 @@ A "wp" prefix has been added to avoid name conflicts with other code in this plu
     padding-right: var(--ame-sticky-bar-right-offset, 0);
   }
 }
-.ame-sticky-top-bar {
-  padding-top: 6px;
-  padding-bottom: 7px;
-  border-bottom: 1px solid transparent;
-}
-
 .ame-sticky-top-bar #ws_actor_selector {
   margin-top: 0;
 }

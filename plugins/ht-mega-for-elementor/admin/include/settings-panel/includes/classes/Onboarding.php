@@ -38,12 +38,21 @@ class Onboarding {
             add_action('wp_ajax_htmega_onboarding_step', array($this, 'handle_step_ajax'));
             return; // Don't initialize other hooks for AJAX requests
         }
+        
+        // Initialize steps on init hook after translations are loaded
+        add_action('init', array($this, 'initialize_steps'), 15);
+    }
+
+    /**
+     * Initialize steps after translations are loaded
+     */
+    public function initialize_steps() {
         // Initialize steps
         $this->steps = $this->get_steps();
         // Set current step
         if (isset($_GET['step']) && array_key_exists($_GET['step'], $this->steps)) {
             $this->current_step = sanitize_text_field($_GET['step']);
-        };
+        }
     }
 
     /**

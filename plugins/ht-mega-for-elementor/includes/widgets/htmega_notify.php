@@ -31,7 +31,7 @@ class HTMega_Elementor_Widget_Notify extends Widget_Base {
 
     public function get_script_depends() {
         return [
-            'htmega-notify'
+            'htmega-notify','dompurify'
         ];
     }
     protected function is_dynamic_content():bool {

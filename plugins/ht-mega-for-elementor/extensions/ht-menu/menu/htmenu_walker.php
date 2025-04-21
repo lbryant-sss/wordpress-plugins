@@ -69,7 +69,7 @@ class HTMega_Menu_Nav_Walker extends Walker_Nav_Menu {
         $classes[] = 'htmega_mega_menu';
     }
 
-    $class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
+    $class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) ) );
 
     // Build HTML.
     $output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . '">';

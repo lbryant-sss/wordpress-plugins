@@ -2,8 +2,8 @@
 Contributors: hasthemes, htplugins, devitemsllc, tarekht, zenaulislam, aslamhasib, madhusudandev
 Tags: elementor, elementor addons, elementor widgets, elementor templates, addons, elementor slider, elementor page builder, mega menu, addons for elementor, post grid, elements, header footer builder
 Requires at least: 5.0
-Tested up to: 6.7
-Stable tag: 2.8.5
+Tested up to: 6.8
+Stable tag: 2.8.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -308,7 +308,7 @@ This simple twitter widget for WordPress is simple and easy to use, and it allow
 
 In HT Mega pro version, there are tons of extra widgets which will be of great help when designing your website.
 
-* 40 Categories / Template Sets
+* 43 Categories / Template Sets
 * 760+ Block Templates
 * 30+ Pro Widgets
 * Cross Domain Copy Paste
@@ -528,6 +528,14 @@ Visit [HasThemes](https://hasthemes.com/) for more details about HTML, Shopify a
 
 
 == Changelog ==
+
+= Version 2.8.6 - Date: 2025-04-20 =
+* Fixed: Audio Player not working issue in Audio Player Widget.
+* Fixed: Global visibility issue of the Scroll To Top Button in the Scroll To Top Module.
+* Fixed: Default false selection issue in the Select field on the Admin Dashboard.
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of WordPress.
+* Tested: Compatibility with the latest version of Elementor.
 
 = Version 2.8.5 - Date: 2025-04-8 =
 * Added: [Clenix Cleaning Service – Elementor Template Kit](https://library.wphtmega.com/clenix-cleaning-service-template/).

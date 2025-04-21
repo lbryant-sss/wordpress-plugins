@@ -20,91 +20,91 @@ class Blocks_List
     {
         $blockList = [
             'accordion' => [
-                'label' => __('Accordion', 'htmega-addons'),
+                'label' => 'Accordion',
                 'name' => 'htmega/accordion',
                 'server_side_render' => true,
                 'type' => 'common',
                 'active' => htmegaBlocks_get_option('accordion', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
             ],
             'accordion-card' => [
-                'label' => __('Accordion Card', 'htmega-addons'),
+                'label' => 'Accordion Card',
                 'name' => 'htmega/accordion-card',
                 'server_side_render' => true,
                 'type' => 'common',
                 'active' => htmegaBlocks_get_option('accordion', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
             ],
             'brand' => [
-                'label' => __('Brand Logo', 'htmega-addons'),
+                'label' => 'Brand Logo',
                 'name' => 'htmega/brand',
                 'server_side_render' => true,
                 'type' => 'common',
                 'active' => htmegaBlocks_get_option('brand', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
             ],
             'buttons' => [
-                'label' => __('Buttons', 'htmega-addons'),
+                'label' => 'Buttons',
                 'name' => 'htmega/buttons',
                 'server_side_render' => true,
                 'type' => 'common',
                 'active' => htmegaBlocks_get_option('buttons', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
             ],
             'button' => [
-                'label' => __('Button', 'htmega-addons'),
+                'label' => 'Button',
                 'name' => 'htmega/button',
                 'server_side_render' => true,
                 'type' => 'common',
-                'active' => htmegaBlocks_get_option('buttons', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
+                'active' => htmegaBlocks_get_option('button', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
             ],
             'cta' => [
-                'label' => __('Call To Action', 'htmega-addons'),
+                'label' => 'Call To Action',
                 'name' => 'htmega/cta',
                 'server_side_render' => true,
                 'type' => 'common',
                 'active' => htmegaBlocks_get_option('cta', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
             ],
             'image-grid' => [
-                'label' => __('Image Grid', 'htmega-addons'),
+                'label' => 'Image Grid',
                 'name' => 'htmega/image-grid',
                 'server_side_render' => true,
                 'type' => 'common',
                 'active' => htmegaBlocks_get_option('image-grid', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
             ],
             'info-box' => [
-                'label' => __('Info Box', 'htmega-addons'),
+                'label' => 'Info Box',
                 'name' => 'htmega/info-box',
                 'server_side_render' => true,
                 'type' => 'common',
                 'active' => htmegaBlocks_get_option('info-box', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
             ],
             'section-title' => [
-                'label' => __('Section Title', 'htmega-addons'),
+                'label' => 'Section Title',
                 'name' => 'htmega/section-title',
                 'server_side_render' => true,
                 'type' => 'common',
                 'active' => htmegaBlocks_get_option('section-title', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
             ],
             'tab' => [
-                'label' => __('Tab', 'htmega-addons'),
+                'label' => 'Tab',
                 'name' => 'htmega/tab',
                 'server_side_render' => true,
                 'type' => 'common',
                 'active' => htmegaBlocks_get_option('tab', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
             ],
             'tab-content' => [
-                'label' => __('Tab Content', 'htmega-addons'),
+                'label' => 'Tab Content',
                 'name' => 'htmega/tab-content',
                 'server_side_render' => true,
                 'type' => 'common',
                 'active' => htmegaBlocks_get_option('tab', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
             ],
             'team' => [
-                'label' => __('Team', 'htmega-addons'),
+                'label' => 'Team',
                 'name' => 'htmega/team',
                 'server_side_render' => true,
                 'type' => 'common',
                 'active' => htmegaBlocks_get_option('team', 'htmega_gutenberg_tabs', 'off') === 'on' ? true : false,
             ],
             'testimonial' => [
-                'label' => __('Testimonial', 'htmega-addons'),
+                'label' => 'Testimonial',
                 'name' => 'htmega/testimonial',
                 'server_side_render' => true,
                 'type' => 'common',
@@ -112,5 +112,22 @@ class Blocks_List
             ],
         ];
         return apply_filters('htmega_block_list', $blockList);
+    }
+
+    /**
+     * Get translated block list
+     * @return array
+     */
+    public static function get_translated_block_list()
+    {
+        $blocks = self::get_block_list();
+        
+        foreach ($blocks as $key => &$block) {
+            if (isset($block['label'])) {
+                $block['label'] = __($block['label'], 'htmega-addons');
+            }
+        }
+        
+        return $blocks;
     }
 }
