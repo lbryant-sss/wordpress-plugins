@@ -134,3 +134,13 @@ $condensedTabBorderRadius: 0px;
 }
 
 //endregion
+
+//region No bottom margin
+.ame-tab-list-bottom-margin-disabled {
+	&, &.ws-ame-too-many-tabs.ame-condensed-tabs-enabled {
+		.ws-ame-nav-tab-list {
+			margin-bottom: 0;
+		}
+	}
+}
+//endregion

@@ -477,6 +477,10 @@ class amePluginVisibility extends amePersistentModule {
 		return $result;
 	}
 
+	protected function getWrapClasses() {
+		return array_merge(parent::getWrapClasses(), ['ame-tab-list-bottom-margin-disabled']);
+	}
+
 	public function handleFormSubmission($action, $post = array()) {
 		//Note: We don't need to check user permissions here because plugin core already did.
 		if ( $action === 'save_plugin_visibility' ) {

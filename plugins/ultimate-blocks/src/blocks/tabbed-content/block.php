@@ -45,10 +45,10 @@ function ub_render_tabbed_content_block($attributes, $contents, $block){
 		'border-bottom-right-radius' => !empty( $block_attrs['tabContentsBorderRadius']['bottomRight'] ) ?  esc_attr($block_attrs['tabContentsBorderRadius']['bottomRight']) . ';': "",
 	);
 	if (isset($attributes['contentColor'])) {
-		$tab_contents_styles['--ub-tab-content-color'] = esc_attr($attributes['contentColor']);
+		$tab_contents_styles['color'] = esc_attr($attributes['contentColor']);
 	}
 	if (isset($attributes['contentBackground'])) {
-		$tab_contents_styles['--ub-tab-content-background'] = esc_attr($attributes['contentBackground']);
+		$tab_contents_styles['background-color'] = esc_attr($attributes['contentBackground']);
 	}
 
 	foreach ($contents as $key => $content) {
@@ -176,22 +176,13 @@ function ub_register_tabbed_content_block(){
 }
 
 function ub_tabbed_content_add_frontend_assets() {
-    require_once dirname(dirname(__DIR__)) . '/common.php';
-
-    $presentBlocks = ub_getPresentBlocks();
-
-    foreach( $presentBlocks as $block ){
-        if($block['blockName'] === 'ub/tabbed-content' || $block['blockName'] === 'ub/tabbed-content-block'){
-            wp_enqueue_script(
-                'ultimate_blocks-tabbed-content-front-script',
-                plugins_url( 'tabbed-content/front.build.js', dirname( __FILE__ ) ),
-                array(),
-                Ultimate_Blocks_Constants::plugin_version(),
-                true
-            );
-            break;
-        }
-    }
+     wp_register_script(
+		'ultimate_blocks-tabbed-content-front-script',
+		plugins_url( 'tabbed-content/front.build.js', dirname( __FILE__ ) ),
+		array(),
+		Ultimate_Blocks_Constants::plugin_version(),
+		true
+	);
 }
 
 add_action( 'wp_enqueue_scripts', 'ub_tabbed_content_add_frontend_assets' );

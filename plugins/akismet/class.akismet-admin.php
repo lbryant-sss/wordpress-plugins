@@ -100,7 +100,6 @@ class Akismet_Admin {
 			}
 		}
 
-		load_plugin_textdomain( 'akismet' );
 		add_meta_box( 'akismet-status', __( 'Comment History', 'akismet' ), array( 'Akismet_Admin', 'comment_status_meta_box' ), 'comment', 'normal' );
 
 		if ( function_exists( 'wp_add_privacy_policy_content' ) ) {

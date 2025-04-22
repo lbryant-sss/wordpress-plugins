@@ -171,7 +171,7 @@ class HMWP_Classes_Tools {
 			'hmwp_bruteforce_comments'       => 0,
 			'hmwp_bruteforce_woocommerce'    => 0,
 			'hmwp_bruteforce_username'       => 0,
-			'hmwp_brute_message'             => esc_html__( 'Your IP has been flagged for potential security violations. Please try again in a little while.', 'hide-my-wp' ),
+			'hmwp_brute_message'             => 'Your IP has been flagged for potential security violations. Please try again in a little while.',
 			'hmwp_hide_classes'              => json_encode( array() ),
 			'trusted_ip_header'              => '',
 
@@ -647,7 +647,15 @@ class HMWP_Classes_Tools {
 	 * @return void
 	 */
 	public static function loadMultilanguage() {
-		load_plugin_textdomain( dirname( HMWP_BASENAME ), false, dirname( HMWP_BASENAME ) . '/languages/' );
+
+		if ( function_exists('get_locale') ){
+			$locale = get_locale();
+
+			if ( $locale !== 'en_US' ) {
+				load_plugin_textdomain( dirname( HMWP_BASENAME ), false, dirname( HMWP_BASENAME ) . '/languages/' );
+			}
+		}
+
 	}
 
 	/**
@@ -2031,15 +2039,15 @@ class HMWP_Classes_Tools {
 	public static function checkAccountApi( $email = null, $redirect_to = '' ) {
 
 		$check   = array();
-		$monitor = HMWP_Classes_Tools::getValue( 'hmwp_monitor', 0 );
+		$howtolessons = HMWP_Classes_Tools::getValue( 'howtolessons', 1 );
 		$domain  = ( self::isMultisites() && defined( 'BLOG_ID_CURRENT_SITE' ) ) ? get_home_url( BLOG_ID_CURRENT_SITE ) : home_url();
 
 		if ( isset( $email ) && $email <> '' ) {
 			$args     = array(
 				'email'        => $email,
 				'url'          => $domain,
-				'howtolessons' => 1,
-				'monitor'      => (int) $monitor,
+				'howtolessons' => (int) $howtolessons,
+				'monitor'      => 0,
 				'source'       => 'hide-my-wp'
 			);
 			$response = HMWP_Classes_Tools::hmwp_remote_get( _HMWP_API_SITE_ . '/api/free/token', $args, array( 'timeout' => 10 ) );
@@ -2047,8 +2055,7 @@ class HMWP_Classes_Tools {
 			$args     = array(
 				'token'        => self::getOption( 'hmwp_token' ),
 				'url'          => $domain,
-				'howtolessons' => 1,
-				'monitor'      => (int) $monitor,
+				'howtolessons' => (int) $howtolessons,
 				'source'       => 'hide-my-wp'
 			);
 			$response = HMWP_Classes_Tools::hmwp_remote_get( _HMWP_API_SITE_ . '/api/free/token', $args, array( 'timeout' => 10 ) );

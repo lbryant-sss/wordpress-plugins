@@ -67,7 +67,7 @@ abstract class ameModule {
 	}
 
 	public function displaySettingsPage() {
-		$this->menuEditor->display_settings_page_header();
+		$this->menuEditor->display_settings_page_header($this->getWrapClasses());
 
 		if ( !$this->outputMainTemplate() ) {
 			printf(
@@ -111,6 +111,15 @@ abstract class ameModule {
 	protected function getTemplateVariables($templateName) {
 		//Override this method to pass variables to a template.
 		return array();
+	}
+
+	/**
+	 * Get extra CSS classes to add to the .wrap element in the module tab.
+	 *
+	 * @return string[]
+	 */
+	protected function getWrapClasses() {
+		return [];
 	}
 
 	public function registerScripts() {

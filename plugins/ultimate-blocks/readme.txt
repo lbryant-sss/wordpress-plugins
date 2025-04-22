@@ -2,8 +2,8 @@
 Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, alexius08
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
-Tested up to: 6.7.2
-Stable tag: 3.2.9
+Tested up to: 6.8
+Stable tag: 3.3.0
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -149,6 +149,16 @@ That's it. You're done!
 3. Tabbed Content Block.
 
 == Changelog ==
+
+= 3.3.0 =
+
+* PRO: FIX: Icon type warning in button block.
+* FIX: Frontend script is not working in fse in all blocks.
+* FIX: Expand block alignment issue.
+* FIX: Content background color not working in underline and pills type.
+* FIX: Review block star rating not working in 6.8.
+* FIX: XSS issue in content toggle panel block.
+* FIX: php warning on 6.8.
 
 = 3.2.9 =
 

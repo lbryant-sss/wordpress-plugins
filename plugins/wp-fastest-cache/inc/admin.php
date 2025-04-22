@@ -808,6 +808,9 @@
 				$trailing_slash_rule = "RewriteCond %{REQUEST_URI} ![^\/]+\/$"."\n";
 			}
 
+			$query_string = "RewriteCond %{QUERY_STRING} !.+ [OR]"."\n".
+							"RewriteCond %{QUERY_STRING} fbclid="."\n";
+
 			$data = "# BEGIN WpFastestCache"."\n".
 					"# Modified Time: ".date("d-m-y G:i:s", current_time('timestamp'))."\n".
 					"<IfModule mod_rewrite.c>"."\n".
@@ -825,7 +828,8 @@
 					"RewriteCond %{REQUEST_URI} !(\/){2,}"."\n".
 					"RewriteCond %{THE_REQUEST} !(\/){2,}"."\n".
 					$trailing_slash_rule.
-					"RewriteCond %{QUERY_STRING} !.+"."\n".$loggedInUser.
+					$query_string.
+					$loggedInUser.
 					$consent_cookie.
 					"RewriteCond %{HTTP:Cookie} !comment_author_"."\n".
 					//"RewriteCond %{HTTP:Cookie} !woocommerce_items_in_cart"."\n".

@@ -181,11 +181,12 @@ No! Hustle gives you all the same settings and options as Hustle Pro. The only d
 We take plugin security incredibly seriously; if you have a bug or vulnerability to report, you can do so through the Patchstack Vulnerability Disclosure Program. It’s fast, easy, and you will be notified when the issue is fixed. [Report a vulnerability](https://patchstack.com/database/vdp/wordpress-popup).
 == Screenshots ==
 
-1. Easily customize the look of your campaigns using the in-built appearance settings.
-2. Create amazing looking pop-ups, slide-ins, and embeds using our designer made templates.
-3. All the display conditions you need for targeted marketing.
-4. Quickly create and display a floating social sharing icon bar.
-5. Build beautiful pop-ups with any of the 4 included layouts.
+1. Create and Customize Popups
+2. Use Pre-designed Templates
+3. Customize Appearance
+4. Set Visibility Conditions & Triggers
+5. Integrate with 1000+ Apps & Tools
+6. Schema Type Builder
 
 == Changelog ==
 

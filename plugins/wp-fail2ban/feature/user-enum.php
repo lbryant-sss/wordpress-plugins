@@ -178,7 +178,7 @@ function oembed_response_data( array $data, \WP_Post $post, int $width, int $hei
  * @since  5.0.0
  *
  * @param  $null    null
- * @param  int          $page_num
+ * @param  int $page_num
  *
  * @return array    Empty array
  *

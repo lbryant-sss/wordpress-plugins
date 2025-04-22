@@ -34,6 +34,7 @@ A "wp" prefix has been added to avoid name conflicts with other code in this plu
   padding-top: 6px;
   padding-bottom: 7px;
   border-bottom: 1px solid transparent;
+  display: block;
 }
 
 @media screen and (min-width: 601px) {
@@ -63,6 +64,13 @@ A "wp" prefix has been added to avoid name conflicts with other code in this plu
     padding-right: var(--ame-sticky-bar-right-offset, 0);
   }
 }
+.ame-sticky-top-bar-flex-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
 .ame-sticky-top-bar #ws_actor_selector {
   margin-top: 0;
 }
@@ -2182,6 +2190,9 @@ the tabs will wrap to the next row).
   .ws-ame-too-many-tabs.ame-condensed-tabs-enabled .ame-nav-tab-col-12 {
     min-width: 439px;
   }
+}
+.ame-tab-list-bottom-margin-disabled .ws-ame-nav-tab-list, .ame-tab-list-bottom-margin-disabled.ws-ame-too-many-tabs.ame-condensed-tabs-enabled .ws-ame-nav-tab-list {
+  margin-bottom: 0;
 }
 
 /*# sourceMappingURL=menu-editor.css.map */

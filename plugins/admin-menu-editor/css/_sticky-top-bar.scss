@@ -16,6 +16,7 @@ $ameStickyBarMinScreenWidth: 601px;
 	padding-top: $ameStickyBarBaseTopPadding;
 	padding-bottom: $ameStickyBarBaseBottomPadding;
 	border-bottom: 1px solid transparent;
+	display: block;
 }
 
 @media screen and (min-width: $ameStickyBarMinScreenWidth) {
@@ -63,6 +64,13 @@ $ameStickyBarMinScreenWidth: 601px;
 		margin-right: calc(-1 * var(--ame-sticky-bar-right-offset, 0));
 		padding-right: var(--ame-sticky-bar-right-offset, 0);
 	}
+}
+
+.ame-sticky-top-bar-flex-content {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
 }
 
 .ame-sticky-top-bar #ws_actor_selector {

@@ -105,8 +105,19 @@ jQuery(function (_alias) {
                 }
                 lastAdminBarHeight = adminBarHeight;
                 const observer = new IntersectionObserver((entries) => {
+                    let lastPinnedBar = null;
                     for (const e of entries) {
-                        e.target.classList.toggle('ame-is-pinned-top-bar', e.intersectionRatio < 1);
+                        const isPinned = e.intersectionRatio < 1;
+                        e.target.classList.toggle('ame-is-pinned-top-bar', isPinned);
+                        if (isPinned) {
+                            lastPinnedBar = e.target;
+                        }
+                    }
+                    //Store the height of the bar in a CSS variable. This is useful if a module
+                    //wants to stack other sticky elements below the bar.
+                    //(We assume there will only be one bar in practice.)
+                    if (lastPinnedBar) {
+                        $wpContent.css('--ame-sticky-bar-last-pinned-height', Math.round($(lastPinnedBar).outerHeight()) + 'px');
                     }
                 }, {
                     threshold: [1],

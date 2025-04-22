@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Direct Checkout 3.4.6\n"
+"Project-Id-Version: WooCommerce Direct Checkout 3.4.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-direct-checkout\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-10T10:35:05+00:00\n"
+"POT-Creation-Date: 2025-04-21T17:03:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: woocommerce-direct-checkout\n"
@@ -429,7 +429,7 @@ msgstr ""
 
 #: lib/controller/class-premium.php:39
 #: lib/view/backend/pages/premium.php:18
-#: vendor_packages/wp-plugin-table-links.php:13
+#: vendor_packages/wp-plugin-table-links.php:14
 msgid "Premium"
 msgstr ""
 
@@ -513,7 +513,7 @@ msgstr ""
 #: lib/controller/class-products.php:172
 #: lib/controller/class-products.php:388
 #: lib/view/backend/pages/premium.php:28
-#: vendor_packages/wp-notice-plugin-promote.php:72
+#: vendor_packages/wp-notice-plugin-promote.php:73
 msgid "Purchase Now"
 msgstr ""
 
@@ -544,7 +544,7 @@ msgstr ""
 #: lib/controller/class-products.php:387
 #: lib/view/backend/pages/parts/header.php:17
 #: lib/view/backend/pages/parts/tabs.php:18
-#: vendor_packages/wp-plugin-table-links.php:23
+#: vendor_packages/wp-plugin-table-links.php:24
 msgid "Documentation"
 msgstr ""
 
@@ -623,40 +623,40 @@ msgstr ""
 msgid "The Quick purchase button allows you to include a direct button in the single products, variable, grouped and virtual products wich redirects user to the checkout page."
 msgstr ""
 
-#: vendor_packages/wp-notice-plugin-promote.php:20
-#: vendor_packages/wp-notice-plugin-promote.php:83
+#: vendor_packages/wp-notice-plugin-promote.php:21
+#: vendor_packages/wp-notice-plugin-promote.php:84
 msgid "Today we have a special gift for you. Use the coupon code %1$s within the next 48 hours to receive a %2$s discount on the premium version of the %3$s plugin."
 msgstr ""
 
-#: vendor_packages/wp-notice-plugin-promote.php:36
+#: vendor_packages/wp-notice-plugin-promote.php:37
 msgid "WooCommerce Checkout Manager allows you to add custom fields to the checkout page, related to billing, Shipping or Additional fields sections."
 msgstr ""
 
-#: vendor_packages/wp-notice-plugin-promote.php:45
+#: vendor_packages/wp-notice-plugin-promote.php:46
 msgid "Perfect WooCommerce Brands the perfect tool to improve customer experience on your site. It allows you to highlight product brands and organize them in lists, dropdowns, thumbnails, and as a widget."
 msgstr ""
 
-#: vendor_packages/wp-notice-plugin-promote.php:57
+#: vendor_packages/wp-notice-plugin-promote.php:58
 msgid "Hello! %2$s We've spent countless hours developing this free plugin for you and would really appreciate it if you could drop us a quick rating. Your feedback is extremely valuable to us. %3$s It helps us to get better. Thanks for using %1$s."
 msgstr ""
 
-#: vendor_packages/wp-notice-plugin-promote.php:64
+#: vendor_packages/wp-notice-plugin-promote.php:65
 msgid "Report a bug"
 msgstr ""
 
-#: vendor_packages/wp-notice-plugin-promote.php:78
+#: vendor_packages/wp-notice-plugin-promote.php:79
 msgid "Hello! We have a special gift!"
 msgstr ""
 
-#: vendor_packages/wp-notice-plugin-promote.php:98
-#: vendor_packages/wp-notice-plugin-promote.php:112
+#: vendor_packages/wp-notice-plugin-promote.php:99
+#: vendor_packages/wp-notice-plugin-promote.php:113
 msgid "Hello! We want to invite you to try our %s plugin!"
 msgstr ""
 
-#: vendor_packages/wp-plugin-table-links.php:8
+#: vendor_packages/wp-plugin-table-links.php:9
 msgid "Settings"
 msgstr ""
 
-#: vendor_packages/wp-plugin-table-links.php:18
+#: vendor_packages/wp-plugin-table-links.php:19
 msgid "Support"
 msgstr ""

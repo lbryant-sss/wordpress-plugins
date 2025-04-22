@@ -3284,8 +3284,10 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	/**
 	 * Display the header of the "Menu Editor" page.
 	 * This includes the page heading and tab list.
+	 * 
+	 * @param array $extra_wrap_classes Additional CSS classes to add to the page wrapper.
 	 */
-	public function display_settings_page_header() {
+	public function display_settings_page_header($extra_wrap_classes = []) {
 		$wrap_classes = array('wrap');
 		if ( $this->is_pro_version() ) {
 			$wrap_classes[] = 'ame-is-pro-version';
@@ -3296,6 +3298,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			$wrap_classes[] = 'ame-is-wp53-plus';
 		}
 		$wrap_classes[] = 'ame-condensed-tabs-enabled';
+		$wrap_classes = array_merge($wrap_classes, $extra_wrap_classes);
 
 		echo '<div class="', esc_attr(implode(' ', $wrap_classes)), '">';
 		printf(

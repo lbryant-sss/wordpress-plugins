@@ -11,32 +11,13 @@
  * @return void
  */
 function ub_content_toggle_add_frontend_assets() {
-	require_once dirname( dirname( __DIR__ ) ) . '/common.php';
-
-	$presentBlocks = ub_getPresentBlocks();
-
-	$firstInstanceDetected = false;
-
-	foreach ( $presentBlocks as $block ) {
-		if ( $block['blockName'] === 'ub/content-toggle' || $block['blockName'] === 'ub/content-toggle-panel'
-			|| $block['blockName'] === 'ub/content-toggle-block' || $block['blockName'] === 'ub/content-toggle-panel-block' ) {
-			if ( ! $firstInstanceDetected ) {
-				wp_enqueue_script(
-					'ultimate_blocks-content-toggle-front-script',
-					plugins_url( 'content-toggle/front.build.js', __DIR__ ),
-					array(),
-					Ultimate_Blocks_Constants::plugin_version(),
-					true
-				);
-				$firstInstanceDetected = true;
-			}
-
-			if ( is_singular() && isset( $block['attrs']['hasFAQSchema'] ) ) {
-				add_action( 'wp_footer', 'ub_merge_faqpages', 80 );
-				break;
-			}
-		}
-	}
+	wp_register_script(
+		'ultimate_blocks-content-toggle-front-script',
+		plugins_url( 'content-toggle/front.build.js', __DIR__ ),
+		array(),
+		Ultimate_Blocks_Constants::plugin_version(),
+		true
+	);
 }
 
 if ( ! class_exists( 'ub_simple_html_dom_node' ) ) {
@@ -46,7 +27,9 @@ if ( ! class_exists( 'ub_simple_html_dom_node' ) ) {
 function ub_render_content_toggle_block( $attributes, $content, $block ) {
 	extract( $attributes );
 	$block_attrs = $block->parsed_block['attrs'];
-
+	if ( is_singular() && isset( $block_attrs['hasFAQSchema'] ) ) {
+		add_action( 'wp_footer', 'ub_merge_faqpages', 80 );
+	}
 	$padding = Ultimate_Blocks\includes\get_spacing_css( isset($block_attrs['padding']) ? $block_attrs['padding'] : array() );
 	$margin  = Ultimate_Blocks\includes\get_spacing_css( isset($block_attrs['margin']) ? $block_attrs['margin'] : array() );
 	$styles  = array(
@@ -144,7 +127,7 @@ function ub_render_content_toggle_panel_block( $attributes, $content, $block_obj
 		$classNamePrefix . '-accordion-content-wrap' . ( $should_collapsed ? ' ub-hide' : '' ), // 7
 		'ub-content-toggle-panel-' . esc_attr($index) . '-' . esc_attr($parentID), // 8
 		$content, // 9
-		isset($className) ? ' ' . $className : '' // 10
+		isset($className) ? ' ' . esc_attr($className) : '' // 10
 	);
 }
 function ub_register_content_toggle_panel_block() {
