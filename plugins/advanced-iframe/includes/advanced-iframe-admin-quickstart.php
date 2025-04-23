@@ -41,6 +41,7 @@ function printDonation($devOptions, $evanto, $closedArray) {
   global $isFreemius, $isFreemiusMigration, $ai_fs, $showFreemiusMigration;
 
   $isRegistered = $isFreemiusMigration && $ai_fs->is_registered() && $ai_fs->is_tracking_allowed();
+  $isOnlyRegistered = $isFreemiusMigration && $ai_fs->is_registered();
   if ($evanto) {
     echo '<br/>
       <div>
@@ -65,7 +66,7 @@ function printDonation($devOptions, $evanto, $closedArray) {
         }
       }
 
-      $freeAdditional = $showFreemiusMigration ? __('<br><br><strong><u style="font-size: larger">Advanced iframe has migrated to freemius!</u></strong><br>Freemius is a selling platform like CodeCanyon, but better. <strong>New updates will only be available in the freemius version!</strong> You can migrate your CodeCanyon license and get all the benefits in a few minutes. If you migrate before the 31.12.2025 you get an extra 10€ coupon for updates!<br>Here are the reasons to migrate:<span>A lifetime license like before</span><span>Automatic updates like offered by WordPress!</span><span>Different plans for new licenses -> monthly, yearly, live time</span><span>Multi site support -> 1 (personal), 5 (business), 50 (agencies) site plans are available. Get a big discount for additional sites!</span><span>You can switch plans or add additional site licenses as needed.</span><span>Better support rules than CodeCanyon. With a subscription, you\'ll get ongoing support as long as your plan is active.</span><br>There\'s also a clear reason why advanced iframe migrated: The fees are significantly lower than on CodeCanyon and CodeCanyon does not offer auto updates or multi-site licenses, which many users have complained about.<br><br>Compare freemius and CodeCanyon for yourself: <a href="https://freemius.com/wordpress/features-comparison/" target="_blank">https://freemius.com/wordpress/features-comparison/</a><br> <br><a class="button-primary" target="_blank" href="https://www.tinywebgallery.com/blog/migrate-advanced-iframe-codecanyon-to-freemius-license">Migrate your CodeCanyon license</a>', 'advanced-iframe') : "";
+      $freeAdditional = $showFreemiusMigration ? __('<br><br><strong><u style="font-size: larger">Advanced iframe has migrated to Freemius!</u></strong><br>Freemius is a selling platform like CodeCanyon, but better. <strong>New updates will only be available in the Freemius version!</strong> You can migrate your CodeCanyon license and get all the benefits in a few minutes. If you migrate before the 31.12.2025 you get an extra 10€ coupon for updates!<br>Here are the reasons to migrate:<span>A lifetime license like before</span><span>Automatic updates like offered by WordPress!</span><span>Different plans for new licenses -> monthly, yearly, live time</span><span>Multi site support -> 1 (personal), 5 (business), 50 (agencies) site plans are available. Get a big discount for additional sites!</span><span>You can switch plans or add additional site licenses as needed.</span><span>Better support rules than CodeCanyon. With a subscription, you\'ll get ongoing support as long as your plan is active.</span><br>There\'s also a clear reason why advanced iframe migrated: The fees are significantly lower than on CodeCanyon and CodeCanyon does not offer auto updates or multi-site licenses, which many users have complained about.<br><br>Compare Freemius and CodeCanyon: <a href="https://freemius.com/wordpress/features-comparison/" target="_blank">https://freemius.com/wordpress/features-comparison/</a><br> <br><a class="button-primary" target="_blank" href="https://www.tinywebgallery.com/blog/migrate-advanced-iframe-codecanyon-to-freemius-license">Migrate your CodeCanyon license</a>', 'advanced-iframe') : "";
 
       printPurchaseCodeInput($devOptions, __('Purchase code', 'advanced-iframe'), 'purchase_code', __('Enter your purchase code here to finish the registration and unlock all features of advanced iframe pro. Your license key (purchase code) is located inside your digital purchase receipt on your <a href="https://codecanyon.net/downloads" target="_blank">CodeCanyon Downloads page</a>. To retrieve your license key, visit CodeCanyon.net/downloads and click "Download > License Certificate". Your purchase code will be validated and logged together with relevant data to detect fraud. For more information, see the privacy policy here: https://www.tinywebgallery.com/blog/privacy-policy for details. Do not share your purchase code as it will be blocked if misused.', 'advanced-iframe') . $status . $freeAdditional);
       echo '</table>';
@@ -182,7 +183,7 @@ function printDonation($devOptions, $evanto, $closedArray) {
     aiPostboxOpen("id-options-pro", "Upgrading to Advanced iFrame Pro", $closedArray);
     if ($isFreemiusMigration) {
       _e('<p>Advanced iframe is <strong>free for personal use</strong> and the Pro version a bargain for your business.</p>', 'advanced-iframe');
-	  _e('<p><span class="ai-red">Important:</span> if you upgrade to the new pro version you need to change the path of ai_external.js because of a different main directory. For more details see <a href="https://www.tinywebgallery.com/blog/advanced-iframe/update-advanced-iframe-free-to-advanced-iframe-pro" target="_blank">here</a>.</p>', 'advanced-iframe');
+	  _e('<p><span class="ai-red">Important:</span> if you upgrade to the pro version you need to change the path of ai_external.js because of a different main directory. For more details see <a href="https://www.tinywebgallery.com/blog/advanced-iframe/update-advanced-iframe-free-to-advanced-iframe-pro" target="_blank">here</a>.</p>', 'advanced-iframe');
 	} else {
       _e('<p>Advanced iframe is <strong>free for personal use</strong> and the Pro version a bargain for your business. It has a limit of 10.000 views a month without a notice text, which should normally not been hit by a personal website.</p>', 'advanced-iframe');
     }
@@ -204,7 +205,7 @@ function printDonation($devOptions, $evanto, $closedArray) {
     echo '</div>
         <div class="signup_inner_desc">';
     if ($isFreemiusMigration) {
-      _e('No OPT-IN: 10.000 views/month*<br>OPT-IN: Unlimited views**', 'advanced-iframe');
+      _e('No OPT-IN: 10.000 views/month*<br>OPT-IN: Additional benefits**', 'advanced-iframe');
     } else {
       _e('10.000 views/month without notice*', 'advanced-iframe');
     }
@@ -213,11 +214,14 @@ function printDonation($devOptions, $evanto, $closedArray) {
     if ($isFreemiusMigration) {
       if ($isRegistered) {
         echo '<a href="#" id="opt-in-button" class="signup_inner_button opt_in_done" title="">';
-        _e('Opt-In done<br><strong>unlimited</strong> views**', 'advanced-iframe');
+        _e('Opt-In done', 'advanced-iframe');
       } else {
         $optinUrl = $ai_fs->get_reconnect_url();
+		if ($isOnlyRegistered) {
+		  $optinUrl = get_admin_url() . "plugins.php";
+		}
         echo '<a href="' . $optinUrl . '" id="opt-in-button" class="signup_inner_button" title="">';
-        _e('Opt-In for <br><strong>Unlimited</strong> views**', 'advanced-iframe');
+        _e('Opt-In for <br>benefits**', 'advanced-iframe');
       }
       echo '</a>';
       echo '<br>';
@@ -267,7 +271,33 @@ function printDonation($devOptions, $evanto, $closedArray) {
     echo '</a>
       </div>
     </div>
-';
+   ';
+    if ($isFreemiusMigration) {
+    echo '
+       <div id="benefit" class="signup_account_container signup_account_container_active' . $freemius_css . '" style="cursor: default;">
+      <div class="signup_inner' . $freemius_inner_css . '">
+        <div class="signup_inner_plan">';
+    _e('OPT-IN  Benefits', 'advanced-iframe');
+    echo '</div>
+        <div class="signup_inner_desc">
+           <ul class="pro"><li>';  
+	_e('<strong>Unlimited views*</strong> already the free version', 'advanced-iframe');
+    echo '</li><li>';	
+    _e('Additional sections on the help tab.', 'advanced-iframe');
+     echo '</li><li>';	
+	_e('Monthly chance to win a pro license', 'advanced-iframe');
+	echo '</li><li>';	
+    _e('Exclusive coupons', 'advanced-iframe');
+	echo '</li><li>';	
+    _e('More benefits are planned for the next versions', 'advanced-iframe');
+	echo '</li></ul>';
+   
+	echo '
+        </div>
+      </div>
+    </div>
+	';
+    } 
     echo '
        <div id="last" class="signup_account_container signup_account_container_active' . $freemius_css . '" style="cursor: default;">
       <div class="signup_inner' . $freemius_inner_css . '">
@@ -295,7 +325,7 @@ function printDonation($devOptions, $evanto, $closedArray) {
 <div class="clear"></div><br />
 ';
     if ($isFreemiusMigration) {
-      _e('<p>* If you do not OPT-IN the iframe is still working, but after 10.000 views/month a message to OPT-IN will be shown over the iframe.<br>** If you OPT-IN you get unlimited views in the free version. Please note that you need to OPT-IN for "Communication" and "Diagnostic Info".', 'advanced-iframe');
+      _e('<p>* If you do not OPT-IN the iframe is still working 100%. After 10.000 views/month a message to OPT-IN will be shown over the iframe.<br>** If you OPT-IN you get unlimited views in the free version and the additional benefits described. Please note that you need to OPT-IN for the required options for this. For the monthly chance to win a pro license and exclusive coupons you need to allow marketing offers in your Freemius account!', 'advanced-iframe');
     } else {
       _e('<p>* After 10.000 views/month the iframe is still working but over all iframes a small "powered by" notice with a link to the pro version is shown. If you hit this limit, and you qualify for the free license please contact the <a href="//www.tinywebgallery.com/en/about.php" target="_blank">advanced iframe team</a> to get a version with a higher limit.<br/>If you use the Advanced iFrame on a non-personal website please first test the plugin carefully before buying. After that it is quick and painless to get Advanced iFrame Pro. Simply get <strong><a target="_blank" href="https://1.envato.market/OdoBZ">Advanced iFrame Pro on CodeCanyon</a></strong> and be pro in a few minutes!</p>', 'advanced-iframe');
     }

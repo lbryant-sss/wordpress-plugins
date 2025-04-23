@@ -3,6 +3,121 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.1.4 (2025-04-22)
+
+
+### Performance Improvements
+
+* race condition when downloading TCF GVL on Thursday (CU-8698gn11h)
+
+
+<details><summary>Dependency updates @devowl-wp/cookie-consent-management 1.0.16</summary>
+
+
+**_Purpose of dependency:_** _Provide cookie consent management with adapters to your environment_
+##### Performance Improvements
+
+* race condition when downloading TCF GVL on Thursday (CU-8698gn11h)</details>
+
+
+
+
+
+## 5.1.3 (2025-04-17) (not released)
+
+**Note:** This version of the package has not (yet) been released publicly. This happens if changes have been made in dependencies that do not affect this package (e.g. changes for the development of the package). The changes will be rolled out with the next official update.
+
+
+### Maintenance
+
+* update to Weblate 5.11 and use new automattic format (CU-31976hv)
+
+
+<details><summary>Dependency updates @devowl-wp/cache-invalidate 1.18.10</summary>
+
+
+**_Purpose of dependency:_** _Provide a single entry point to trigger cache invalidation of known caching plugins_
+##### Maintenance
+
+* update to Weblate 5.11 and use new automattic format (CU-31976hv)</details>
+
+<details><summary>Dependency updates @devowl-wp/customize 1.12.26</summary>
+
+
+**_Purpose of dependency:_** _Abstract utility for live preview (customize)_
+##### Maintenance
+
+* update to Weblate 5.11 and use new automattic format (CU-31976hv)</details>
+
+<details><summary>Dependency updates @devowl-wp/deliver-anonymous-asset 1.0.12</summary>
+
+
+**_Purpose of dependency:_** _Provide a functionality to deliver assets anonymous_
+##### Maintenance
+
+* update to Weblate 5.11 and use new automattic format (CU-31976hv)</details>
+
+<details><summary>Dependency updates @devowl-wp/freemium 1.3.104</summary>
+
+
+**_Purpose of dependency:_** _Make your plugin to a freemium plugin with predefined Envato support_
+##### Maintenance
+
+* update to Weblate 5.11 and use new automattic format (CU-31976hv)</details>
+
+<details><summary>Dependency updates @devowl-wp/multilingual 1.13.25</summary>
+
+
+**_Purpose of dependency:_** _Provide helper functionality for multilingual plugins like WPML and PolyLang_
+##### Maintenance
+
+* update to Weblate 5.11 and use new automattic format (CU-31976hv)</details>
+
+<details><summary>Dependency updates @devowl-wp/real-product-manager-wp-client 1.19.41</summary>
+
+
+**_Purpose of dependency:_** _A WordPress client for Real Product Manager_
+##### Maintenance
+
+* update to Weblate 5.11 and use new automattic format (CU-31976hv)</details>
+
+<details><summary>Dependency updates @devowl-wp/real-queue 1.0.13</summary>
+
+
+**_Purpose of dependency:_** _Provide a promise-based queue system working in frontend for client and server tasks_
+##### Maintenance
+
+* update to Weblate 5.11 and use new automattic format (CU-31976hv)</details>
+
+<details><summary>Dependency updates @devowl-wp/real-utils 1.13.25</summary>
+
+
+**_Purpose of dependency:_** _Create cross-selling ads, about page, rating and newsletter input for WP Real plugins._
+##### Maintenance
+
+* update to Weblate 5.11 and use new automattic format (CU-31976hv)</details>
+
+<details><summary>Dependency updates @devowl-wp/utils 1.19.25</summary>
+
+
+**_Purpose of dependency:_** _Utility functionality for all your WordPress plugins._
+##### Maintenance
+
+* update to Weblate 5.11 and use new automattic format (CU-31976hv)</details>
+
+<details><summary>Development dependency update @devowl-wp/continuous-localization 0.8.17</summary>
+
+
+**_Purpose of dependency:_** _Provide a CLI to push and pull localization files from different translation management systems._
+##### Bug Fixes
+
+* recreate FormData instance on every retry when uploading en file (CU-31976hv)
+* weblate 5.11 is not immediatly returning task_url when creating a component (CU-31976hv)</details>
+
+
+
+
+
 ## 5.1.2 (2025-04-14)
 
 

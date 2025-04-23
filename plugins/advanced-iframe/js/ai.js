@@ -1,5 +1,5 @@
 /**
- *  Advanced iframe functions v2025.2
+ *  Advanced iframe functions v2025.3
  */
 /* jslint devel: true, unused: false */
 /* globals ai_show_id_only:false, aiIsIe8: false, aiChangeUrl: false, aiResizeIframeHeightId: false, aiShowIframeId: false, findAndReplaceDOMText: false, aiShowDebug: false */
@@ -770,6 +770,14 @@ function aiInitAdminConfiguration(isPro, acc_type) {
     jQuery('#id-options-registration').removeClass('closed');
     location.hash = '#id-options-registration';
     aiShowHeader('id-options-registration', 'tr-demo');
+    return false;
+  });
+  
+  jQuery(document).on('click', 'a.enter-pro', function () {
+    jQuery('.options-tab').click();
+    jQuery('#id-options-pro').removeClass('closed');
+    location.hash = '#id-options-pro';
+    aiShowHeader('id-options-pro', 'first');
     return false;
   });
 

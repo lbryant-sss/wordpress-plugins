@@ -7,7 +7,7 @@ _e('Please use the forum for support. Make sure to enable the "Check shortcode" 
 echo "</p>";
 ?>
 <p>
-  <a href="https://www.tinywebgallery.com/en/forum.php" target="_blank" id="faq"
+  <a href="" target="_blank" id="https://www.tinywebgallery.com/blog/community"
      class="button-primary"><?php _e('Go to the forum', 'advanced-iframe'); ?></a>
 </p>
 <?php

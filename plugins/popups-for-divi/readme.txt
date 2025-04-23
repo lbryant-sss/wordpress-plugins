@@ -2,8 +2,8 @@
 Contributors: timstrifler, devjenndivilife, strackerphil-1
 Tags: popup, marketing, divi
 Requires at least: 4.0.0
-Tested up to: 6.7.2
-Stable tag: 3.0.8
+Tested up to: 6.8
+Stable tag: 3.0.9
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -163,7 +163,7 @@ If that does not help, then head over to the [**support forum**](https://wordpre
 
 You can also send us a private support request via the [**support form on divimode.com**](https://divimode.com/get-support//?utm_source=wporg&utm_medium=link&utm_campaign=popups-for-divi). Please note, that might need a while to answer your private support requests.
 
-When you need additional features, then please have a look at our the Premium plugin [**Divi Areas Pro**](https://diivimode.com/divi-areas-pro/?utm_source=wporg&utm_medium=link&utm_campaign=popups-for-divi) which comes with a lot of cool options!
+When you need additional features, then please have a look at our the Premium plugin [**Divi Areas Pro**](https://divimode.com/divi-areas-pro/?utm_source=wporg&utm_medium=link&utm_campaign=popups-for-divi) which comes with a lot of cool options!
 
 == Screenshots ==
 
@@ -174,6 +174,10 @@ When you need additional features, then please have a look at our the Premium pl
 5. Our free email course walks you through every aspect of the plugin - from the basics to advanced use-cases and techniques.
 
 == Changelog ==
+
+= Version 3.0.9 =
+- Support WordPress 6.8 & Divi 4.27.4 
+- Fix URL link on plugin description
 
 = Version 3.0.8 =
 - Update plugin description

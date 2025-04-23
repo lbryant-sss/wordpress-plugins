@@ -3,8 +3,8 @@ Contributors: mdempfle
 Donate link: http://www.tinywebgallery.com
 Tags: iframe, embed, resize, shortcode, modify css
 Requires at least: 3.3
-Tested up to: 6.7.2
-Stable tag: 2025.2
+Tested up to: 6.8
+Stable tag: 2025.3
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -167,6 +167,15 @@ Use the Wordpress installer to update or simply overwrite all files from your pr
 If you have some radio elements empty after the update simply select the one you like and save again.
 
 == Changelog ==
+= 2025.3 =
+- New: OPT-IN users now get additional benefits: Additional sections on the help tab, exclusive coupons, monthly chance to win a free license.   
+- New: Additional help is now also available for OPT-IN users.
+- New: All OPT-IN users have the chance to win a free license once a month. As long as you allow to receive marketing emails, you can win. You can only win once.
+- New: OPT-IN users will get exclusive coupons. No worries: Advanced iFrame will not spam you.   
+- Security Fix: CVE-2025-1437 - Authenticated (Contributor+) Stored Cross-Site Scripting) - using ononloadload was still executed. Now the filter method is checking recursively.
+- Fix: Removed old text about the Flash Uploader.  
+- Fix: Updated the link to the forum
+
 = 2025.2 =
 - Fix: The close icon of show iframe as layer was not shown because of an old path. Now the correct path in the pro version is used.  https://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo/show-the-iframe-as-layer 
 - Fix: Some links in the new pro version where still pointing to the old path. They are now working properly.

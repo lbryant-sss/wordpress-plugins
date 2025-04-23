@@ -230,10 +230,12 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 7. Squirrly SEO - SEO Briefcase
 
 == Changelog ==
-= 12.4.10 =
+= 12.4.11 =
 Update - Compatibility with WP 6.8
 Fixed - Main Keyword change in SLA
 Fixed - Briefcase rows and pagination when searching for a keyword
+Fixed Google Analytics 4 connection
+Fixed Function _load_textdomain_just_in_time was called incorrectly error.
 
 = 12.4.09 =
 Update - Correct the issue when multiple pages are selected in Innerlinks

@@ -5,7 +5,7 @@ Plugin URI: https://spotlightwp.com
 Tags: Instagram, Instagram feed, Instagram embed, Instagram widget, Instagram block
 Requires at least: 5.7
 Requires PHP: 7.1
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 1.7.2
 License: GPLv3
 

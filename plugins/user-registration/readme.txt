@@ -4,7 +4,7 @@ Tags: user registration, registration, user profile, registration form, login fo
 Requires at least: 5.5
 Requires PHP: 7.2
 Tested up to: 6.8
-Stable tag: 4.2.0
+Stable tag: 4.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -257,6 +257,16 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 21. User Account Page –  Vertical Layout
 
 == Changelog ==
+
+= 4.2.1    - 22/04/2025 =
+* Security - Checked user capability to edit user while cancelling subscription.
+* Enhance  - Move the scrollbar to top on category selection on form template page.
+* Tweak    - Design changes for toast message after email confirmation.
+* Dev      - Hook to modify lost passwords form placeholder.
+* Fix      - Smart tag not working for input boxes.
+* Fix      - Registration Form validation for elementor popup.
+* Fix      - Argument array expected in enabled features option.
+* Fix      - Removed Duplicate icons for validation error message.
 
 = 4.2.0    - 16/04/2025 =
 * Security - Unescaped form id query param vulnerability fixed.

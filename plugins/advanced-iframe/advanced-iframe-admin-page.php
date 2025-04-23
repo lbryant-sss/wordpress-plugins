@@ -383,14 +383,18 @@ if (is_user_logged_in() && is_admin()) {
 	  
       if ($evanto && $showRegMessage) {
         echo '<div id="show-registration-message" class="notice notice-success is-dismissible is-permanent-closable"><p><strong>';
-        echo __('<p><p>Thank you for installing advanced iframe pro.</p><p>Please enter your purchase code on the <a href="#" class="enter-registration">options tab</a>. It will unlock all the additional features you purchased.<br>Without a purchase code the 10.000 views/month of the free version is active.</p>', 'advanced-iframe');
+        echo __('<p><p>Thank you for installing advanced iframe pro.</p><p>Please enter your purchase code on the <a href="#" class="enter-registration">Options tab</a>. It will unlock all the additional features you purchased.<br>Without a purchase code the 10.000 views/month of the free version is active.</p>', 'advanced-iframe');
         echo '</strong></p></p></div>';
       }
       if (!$evanto && !$isRegistered && $viewsPercent > 100) {
         echo '<div id="show-registration-message" class="notice notice-success is-dismissible is-permanent-closable"><p><strong>';
-        echo __('The monthly view li', 'advanced-iframe') . __('mit of advanced iframe free is reached. A small no', 'advanced-iframe') . __('tice is shown bel', 'advanced-iframe') . __('ow all iframes.</>', 'advanced-iframe');
-        echo __('<p>Please update to the pro version. For more details go to the options tab.', 'advanced-iframe') . '</strong></p></div>';
-      }
+        echo __('The monthly view limit of advanced iframe free is reached. A small notice is shown below all iframes.</>', 'advanced-iframe');
+        echo __('<p>Please update to the pro version. For more details, go to the <a href="#" class="enter-registration">Options tab</a>.', 'advanced-iframe') . '</strong></p></div>';
+      } else if (!$evanto && !$isRegistered) {
+		echo '<div id="show-registration-message" class="notice notice-success"><p>';
+        echo __('<p>Please do not forget to OPT-IN to get additional benefits. For more details, go to the <a href="#" class="enter-pro">Options tab</a>.</p>', 'advanced-iframe');
+        echo '</p></div>';
+	  }
 
       if ($showTrailMessage) {
         echo '<div id="show-registration-message" class="notice notice-success is-dismissible is-permanent-closable"><p><strong>';

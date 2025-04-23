@@ -2,7 +2,10 @@
 defined('_VALID_AI') or die('Direct Access to this location is not allowed.');
 
 aiPostboxOpen("id-help-jquery", "Small jQuery help", $closedArray, "100%", " show-always");
-?>
+
+$showHelp = ($isFreemiusMigration && $ai_fs->is_registered() && $ai_fs->is_tracking_allowed()) || $ai_fs->can_use_premium_code__premium_only();
+
+if ($showHelp) { ?>
   <p>
     <?php _e('You can use jQuery selector patterns directly to identify the elements you want to modify at some of the settings. This plugin does use this selectors than at the right place. This is already an advanced topic if you are not familiar with jQuery.', 'advanced-iframe') ?>
   </p>
@@ -164,6 +167,11 @@ aiPostboxOpen("id-help-jquery", "Small jQuery help", $closedArray, "100%", " sho
        </ul>
       </div>
       ', 'advanced-iframe');
+} else {
+    echo '<p>';
+    _e('This help is available for PRO users or if you OPT-IN.', 'advanced-iframe');
+    echo '</p>';
+} 
 
 aiPostboxClose();
 ?>

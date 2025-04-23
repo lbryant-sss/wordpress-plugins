@@ -2,8 +2,8 @@
 Contributors: CopyDeletePosts, copydelete
 Tags: Duplicate post, Copy posts, Copy pages, Duplicate posts, Duplicate pages
 Requires at least: 4.6
-Tested up to: 6.6.2
-Stable tag: 1.4.9
+Tested up to: 6.8
+Stable tag: 1.5.0
 License: GPLv3
 Requires PHP: 5.6
 
@@ -177,6 +177,10 @@ Vietnamese: [Sao chép bài đăng, sao chép trang, sao chép bài đăng tùy 
 
 == Changelog ==
 
+= 1.5.0 =
+* Fixed issues with mailpoet
+* Tested with WP 6.8
+
 = 1.4.9 =
 * Removed optimization logs for users to prevent performance optimizations of the plugin in future
 * [PRO] Improved cross-site duplication of posts
@@ -301,7 +305,7 @@ Vietnamese: [Sao chép bài đăng, sao chép trang, sao chép bài đăng tùy 
 [AND MORE]
 
 == Upgrade Notice ==
-= 1.4.9 =
-What's new in 1.4.9?
-* Removed optimization logs for users to prevent performance optimizations of the plugin in future
-* [PRO] Improved cross-site duplication of posts
+= 1.5.0 =
+What's new in 1.5.0?
+* Fixed issues with mailpoet
+* Tested with WP 6.8

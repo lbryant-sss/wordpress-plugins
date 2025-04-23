@@ -93,13 +93,14 @@
     -webkit-border-radius: 3px;
     cursor: pointer;
     height: 260px;
+	background: #FFF;
 }
 
 #ai .signup_account_container_freemius {
     height: 320px;
 }
 
-#ai .signup_account_container#last {
+#ai .signup_account_container#last, #ai .signup_account_container#benefit {
     margin-right: 0;
     border: 2px solid #fefefe;
 }
@@ -125,7 +126,6 @@
     width: 183px;
     padding: 26px 28px;
     border: 1px solid #EEE;
-    background: #FFF;
     -moz-border-radius: 3px;
     border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -206,7 +206,7 @@ ul#browser-list {
     padding-left: 10px;
 }
 
-#ai #last .signup_inner_desc, #ai #last li {
+#ai #last .signup_inner_desc, #ai #last li,#ai #benefit li {
     margin-bottom: 0;
 }
 
@@ -787,4 +787,5 @@ ul#browser-list {
     background: green;
     cursor: default;
     pointer-events: none;
+	padding: 20px; 
 }

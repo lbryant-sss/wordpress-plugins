@@ -277,7 +277,7 @@ class WPTB_Listing extends WP_List_Table {
 		$server_request_url = remove_query_arg( '_wpnonce', $server_request_url );
 		$server_request_url = remove_query_arg( 'action', $server_request_url );
 		$server_request_url = remove_query_arg( 'table_id', $server_request_url );
-		$query              = parse_url( $server_request_url, PHP_URL_QUERY );
+		$query              = esc_url(parse_url( $server_request_url, PHP_URL_QUERY ));
 
 		if ( $this->is_status_trash() ) {
 			$actions = [
@@ -307,7 +307,7 @@ class WPTB_Listing extends WP_List_Table {
 	 * @return string action item HTML
 	 */
 	protected final function prepare_action_item( $target_href, $title, $target = '_self' ) {
-		return sprintf( '<a href="%1$s" target="%3$s">%2$s</a>', $target_href, $title, esc_attr( $target ) );
+		return sprintf( '<a href="%1$s" target="%3$s">%2$s</a>', esc_attr($target_href), $title, esc_attr( $target ) );
 	}
 
 	/**

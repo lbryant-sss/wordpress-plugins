@@ -2,7 +2,7 @@
 
 Contributors: Braekling
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.8
 Stable tag: 1.0.30
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6046779
 Tags: matomo, tracking, statistics, stats, analytics

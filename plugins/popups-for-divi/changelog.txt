@@ -1,3 +1,7 @@
+= Version 3.0.9 =
+- Support WordPress 6.8 & Divi 4.27.4 
+- Fix URL link on plugin description
+
 = Version 3.0.8 =
 - Update plugin description
 

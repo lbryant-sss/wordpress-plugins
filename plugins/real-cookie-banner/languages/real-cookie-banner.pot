@@ -1595,12 +1595,12 @@ msgid "The link to Real Cookie Banner is an affiliate link. If you buy the produ
 msgstr ""
 
 #: inc/overrides/pro/settings/CountryBypass.php:146
-#: inc/overrides/pro/settings/TCF.php:136
+#: inc/overrides/pro/settings/TCF.php:143
 msgid "This functionality is currently not available."
 msgstr ""
 
 #. translators:
-#: inc/overrides/pro/settings/TCF.php:114
+#: inc/overrides/pro/settings/TCF.php:121
 msgid "Downloading the GVL has failed. Please try again later! (%1$s: %2$s)"
 msgstr ""
 

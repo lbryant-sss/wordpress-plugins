@@ -4,7 +4,7 @@ Tags: login url, login, wp admin, wp login, custom login
 Requires at least: 4.6
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 License: GPLv2 or later
 
 Do you want to secure and customize WordPress login page (wp-admin)❓ Download All in One Login plugin for ultimate WordPress login security and customization.
@@ -89,13 +89,6 @@ AIO Login lets you limit failed login attempts. Lock out users after a specified
 If you only want to allow login access to trusted IPs, then AIO Login Pro is for you❗
 
 By allowing only trusted IP addresses to access your login page, you can prevent unauthorized users from even attempting to log in. This adds an additional layer of security to your WordPress Admin Login, making sure that only users from approved IP addresses can gain entry.
-
-
-**✔️ Social Login [Pro]**
-
-Enhance user experience with seamless Social Login. Allow users to log in quickly and securely using their Google, Microsoft, or Facebook accounts—eliminating the need for manual registrations and improving accessibility.
-
-**Get ✨[All In One Login Pro](https://aiologin.com/pricing/?utm_source=wp_org&utm_medium=aiologin_product_page)✨ Now!**
 
 
 ### 7 Key Reasons to Choose All In One Login for Better WP-Admin Protection😎
@@ -263,8 +256,12 @@ Even though it is not mandatory, using AIO Login can significantly enhance the s
 
 == Changelog ==
 
+= 2.0.7 Apr 22, 2025 =
+* Fixed translation notice.
+* Tested compatibility with latest WordPress (Version 6.8)
+
 = 2.0.6 Mar 13, 2025 =
-* TWEAK - UX Improvement.
+* Updated readme with a new feature.
 
 = 2.0.5 - Jan 27, 2025 =
 * Update feedback SDK

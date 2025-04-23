@@ -55,6 +55,25 @@ class Jwt_Auth_Admin {
 			'jwt_authentication',
 			[ $this, 'render_admin_page' ]
 		);
+
+        // Add Upgrade to PRO submenu item
+        $base_pro_url = 'https://jwtauth.pro';
+        $utm_params   = [
+            'utm_source'   => 'wpadmin',
+            'utm_medium'   => 'submenu',
+            'utm_campaign' => 'pro-submenu-link',
+            'utm_content'  => 'upgrade-to-pro',
+        ];
+        $pro_link_url = add_query_arg($utm_params, $base_pro_url);
+
+        add_submenu_page(
+            'options-general.php',
+            __('Upgrade to PRO', 'jwt-auth'),
+            '<span style="color: #00a32a; font-weight: 700;">' . __('&nbsp;&nbsp;&nbsp;↳ Upgrade to PRO', 'jwt-auth') . '</span>',
+            'manage_options',
+            esc_url($pro_link_url),
+            null // No callback function needed for external link
+        );
 	}
 
 	/**
@@ -69,17 +88,17 @@ class Jwt_Auth_Admin {
 			?>
             <div class="notice notice-info is-dismissible">
                 <p>
-					<?php esc_html_e( 'Exciting News! 🚀 Sign up now for the Early Beta of JWT Authentication Pro! Be among the first to experience advanced security and seamless API integration for your WordPress REST API.',
+					<?php esc_html_e( 'Exciting News! 🚀 Level Up Your API Authentication: JWT Authentication Pro is now available! Experience advanced features and seamless integration for your REST API.',
 						'jwt-auth' ); ?>
-                    <a href="https://jwtauth.pro?utm_source=wp-admin&utm_medium=notice&utm_campaign=early-beta" target="_blank"
+                    <a href="https://jwtauth.pro?utm_source=wp-admin&utm_medium=notice&utm_campaign=pro-upgrade-notice" target="_blank"
                        class="button button-primary"
                        style="margin-left: 10px;">
-						<?php esc_html_e( 'Join the Beta Now', 'jwt-auth' ); ?>
+						<?php esc_html_e( 'Upgrade to PRO Now', 'jwt-auth' ); ?>
                     </a>
                 </p>
             </div>
 			<?php
-			update_option( 'jwt_auth_beta_notice_01', true );
+			update_option( 'jwt_auth_pro_notice_01', true );
 		}
 	}
 
@@ -96,8 +115,8 @@ class Jwt_Auth_Admin {
 		if ( empty( $suffix ) ) {
 		    return; // Exit early to prevent further execution
 		}
-		
-		if ( $suffix !== 'settings_page_jwt_authentication' ) {
+
+        if ($suffix !== 'settings_page_jwt_authentication') {
 			return null;
 		}
 		// get full path to admin/ui/build/index.asset.php
@@ -185,10 +204,34 @@ class Jwt_Auth_Admin {
 	 */
 	public function add_action_link( array $links, string $file): array {
 
-		// Check if this is the target plugin
-		if ( $file === 'jwt-authentication-for-wp-rest-api/jwt-auth.php' ) {
-			$new_link = '<a href="https://jwtauth.pro?utm_source=wpadmin&utm_medium=plugin-link&utm_campaign=early-beta" target="_blank"><b>Get Early Beta Access</b></a>';
-            $links[]  = $new_link;
+        if ($file === 'jwt-authentication-for-wp-rest-api/jwt-auth.php') {
+            $cta_variations = [
+                0 => [
+                    'text'        => '<b>Get JWT Auth Pro</b>',
+                    'utm_content' => 'get-jwt-auth-pro-cta',
+                ],
+                1 => [
+                    'text'        => '<b>Unlock Pro Features</b>',
+                    'utm_content' => 'unlock-pro-features-cta',
+                ],
+            ];
+
+            $selected_variation_key = rand(0, 1);
+            $selected_variation     = $cta_variations[$selected_variation_key];
+
+            $base_pro_url = 'https://jwtauth.pro';
+            $utm_params   = [
+                'utm_source'   => 'wpadmin',
+                'utm_medium'   => 'plugin-link',
+                'utm_campaign' => 'pro-plugin-action-link',
+                'utm_content'  => $selected_variation['utm_content'],
+            ];
+
+            $pro_link_url = add_query_arg($utm_params, $base_pro_url);
+            $pro_link_style = 'style="color: #00a32a; font-weight: 700; text-decoration: none;" onmouseover="this.style.color=\'#008a20\';" onmouseout="this.style.color=\'#00a32a\';"';
+
+            $pro_link_text = $selected_variation['text'];
+            $links[]       = '<a href="' . esc_url($pro_link_url) . '" target="_blank" ' . $pro_link_style . ' rel="noopener noreferrer">' . $pro_link_text . '</a>';
 		}
 
 		return $links;

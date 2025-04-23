@@ -2,7 +2,7 @@
 /*
 Plugin Name: Advanced iFrame
 Plugin URI: https://wordpress.org/plugins/advanced-iframe/
-Version: 2025.2
+Version: 2025.3
 Text Domain: advanced-iframe
 Domain Path: /languages
 Author: Michael Dempfle
@@ -31,7 +31,7 @@ define('AIP_IMGURL', AIP_URL . 'img');
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-$aiVersion = '2025.2';
+$aiVersion = '2025.3';
 // check $aiJsSize
 
 $cons_advancediFrame = null; 
@@ -80,7 +80,7 @@ if (function_exists('ai_fs')) {
 
     function ai_fs_custom_connect_message_on_update($message, $user_first_name,
                                                     $product_title, $user_login, $site_link, $freemius_link) {
-      return sprintf(__('We have introduced this OPT-IN so you never miss an important update and help us make the plugin more compatible with your site and better at doing what you need it to.<br><br>OPT-IN to get email notifications for security & feature updates, educational content, and occasional offers, and to share some basic WordPress environment info. If you skip this, that\'s okay! %1$s will still shown just fine and after 10.000 views only a small notice is shown on the iframe.<br><br>If you OPT-IN you will get <strong>unlimited views</strong> in the free version.', 'advanced-iframe'), '<b>' . $product_title . '</b>');
+      return sprintf(__('We have introduced this OPT-IN so you never miss an important update and help us make the plugin more compatible with your site and better at doing what you need it to.<br><br>OPT-IN to get email notifications for security & feature updates, educational content, and occasional offers, and to share some basic WordPress environment info. If you skip this, that\'s okay! %1$s will still shown just fine and after 10.000 views only a small notice is shown on the iframe.<br><br>If you OPT-IN you will additionally get: <ul style="list-style: outside;font-size: 15px;padding-left: 30px;"><li><strong>Unlimited views</strong> already the free version</li><li>Additional sections on the help tab</li><li>Monthly chance to win a pro license</li><li>Exclusive coupons</li></ul>', 'advanced-iframe'), '<b>' . $product_title . '</b>');
     }
 
     ai_fs()->add_filter('connect_message_on_update', 'ai_fs_custom_connect_message_on_update', 10, 6);
@@ -963,7 +963,7 @@ if (function_exists('ai_fs')) {
 
       function createMinimizedAiJs($backend) {
         global $aiVersion;
-        $aiJsSize = 87303;
+        $aiJsSize = 87571;
         $newContent = file_get_contents(dirname(__FILE__) . '/js/ai.js');
         $oldFileName = dirname(__FILE__) . '/js/ai.min.js';
         if ((strlen($newContent) == $aiJsSize) && file_exists($oldFileName)) {
@@ -1248,8 +1248,8 @@ if (function_exists('ai_fs')) {
               'notice notice-error',$text1,$text2, admin_url('admin.php?page=advanced-iframe'),
               __('Advanced iFrame administration', 'advanced-iframe')
             );
-	    echo '</div>';
-	  }
+	      echo '</div>';
+	      }
         }
       }
 
@@ -1528,15 +1528,20 @@ if (function_exists('ai_fs')) {
         $pattern = get_shortcode_regex($tags);
         if (preg_match_all('/' . $pattern . '/s', $content, $matches)) {
           $oldContent = $content;
+		  $filteredContent = '';
+		  
           foreach ($matches[0] as $hit) {
             // check if the user has the capability unfiltered_html and is therefore allowed to use the custom and onload shortcode attribute.
             if (!current_user_can('unfiltered_html')) {
-            $content = $this->filterAttribute('onload', $hit, $content);
-            $content = $this->filterAttribute('custom', $hit, $content);
-            $content = $this->filterAttribute('include_html', $hit, $content);
-            $content = $this->filterAttribute('additional_js', $hit, $content);
-            $content = $this->filterAttribute('additional_js_file_iframe', $hit, $content);
-            $attsArray = shortcode_parse_atts($hit);
+              while ($content != $filterContent) {
+			    $filterContent = $content;
+			    $content = $this->filterAttribute('onload', $hit, $content);
+			    $content = $this->filterAttribute('custom', $hit, $content);
+			    $content = $this->filterAttribute('include_html', $hit, $content);
+			    $content = $this->filterAttribute('additional_js', $hit, $content);
+			    $content = $this->filterAttribute('additional_js_file_iframe', $hit, $content);
+			  }
+              $attsArray = shortcode_parse_atts($hit);
               $content = $this->filterXSSAttributes($attsArray, $content);
             }
           }
@@ -1591,10 +1596,10 @@ if (function_exists('ai_fs')) {
         return $content;
       }
 
-    function filterAttribute($attribute, $hit, $content) {
-      if (AdvancedIframeHelper::aiContains($hit, $attribute)) {
-	    $content = str_replace($attribute, '', $content);
-          }
+      function filterAttribute($attribute, $hit, $content) {
+        if (AdvancedIframeHelper::aiContains($hit, $attribute)) {
+	      $content = str_replace($attribute, '', $content);
+        }
         return $content;
       }
 
