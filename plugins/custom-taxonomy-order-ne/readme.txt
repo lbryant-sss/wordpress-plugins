@@ -2,7 +2,7 @@
 Contributors: mpol
 Tags: term order, category order, taxonomy order, order
 Requires at least: 4.1
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 4.0.2
 License: GPLv2 or later
 Requires PHP: 7.0

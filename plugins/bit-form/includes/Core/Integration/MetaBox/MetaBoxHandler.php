@@ -52,7 +52,7 @@ class MetaBoxHandler
   {
     $integrationDetails = is_string($integrationData->integration_details) ? json_decode($integrationData->integration_details) : $integrationData->integration_details;
 
-    $formManger = new FormManager($integrationData->form_id);
+    $formManger = FormManager::getInstance($integrationData->form_id);
 
     $formFields = $formManger->getFields();
 

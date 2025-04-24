@@ -15,7 +15,7 @@ $i18n_strings = array(
 
     'Unsplash Images' => __('Unsplash Images', 'bit-form'),
 
-    'reCaptcha Settings' => __('reCaptcha Settings', 'bit-form'),
+    'Captcha Settings' => __('Captcha Settings', 'bit-form'),
 
     'Edit' => __('Edit', 'bit-form'),
 
@@ -41,9 +41,17 @@ $i18n_strings = array(
 
     'Save' => __('Save', 'bit-form'),
 
-    'Cloudflare Turnstile CAPTCHA' => __('Cloudflare Turnstile CAPTCHA', 'bit-form'),
+    'hCaptcha' => __('hCaptcha', 'bit-form'),
+
+    'hCaptcha is a free service that protects your website from spam and abuse.' => __('hCaptcha is a free service that protects your website from spam and abuse.', 'bit-form'),
 
     'To get Site Key and Secret, Please Visit' => __('To get Site Key and Secret, Please Visit', 'bit-form'),
+
+    'hCaptcha Admin Dashboard' => __('hCaptcha Admin Dashboard', 'bit-form'),
+
+    'Cloudflare Turnstile CAPTCHA' => __('Cloudflare Turnstile CAPTCHA', 'bit-form'),
+
+    'Turnstile is a free service that protects your website from spam and abuse.' => __('Turnstile is a free service that protects your website from spam and abuse.', 'bit-form'),
 
     'Cloudflare Turnstile reCAPTCHA Admin' => __('Cloudflare Turnstile reCAPTCHA Admin', 'bit-form'),
 
@@ -1697,12 +1705,6 @@ $i18n_strings = array(
 
     'Enable' => __('Enable', 'bit-form'),
 
-    'reCaptcha' => __('reCaptcha', 'bit-form'),
-
-    'hCaptcha' => __('hCaptcha', 'bit-form'),
-
-    'Turnstile' => __('Turnstile', 'bit-form'),
-
     'Get $10 Cashback' => __('Get $10 Cashback', 'bit-form'),
 
     'Review us' => __('Review us', 'bit-form'),
@@ -2027,6 +2029,26 @@ $i18n_strings = array(
 
     'Edit GDPR Concent Label' => __('Edit GDPR Concent Label', 'bit-form'),
 
+    'Visibility Mode' => __('Visibility Mode', 'bit-form'),
+
+    'Visible' => __('Visible', 'bit-form'),
+
+    'Invisible' => __('Invisible', 'bit-form'),
+
+    'Passive' => __('Passive', 'bit-form'),
+
+    'Theme' => __('Theme', 'bit-form'),
+
+    'Dark' => __('Dark', 'bit-form'),
+
+    'Light' => __('Light', 'bit-form'),
+
+    'Size' => __('Size', 'bit-form'),
+
+    'Normal' => __('Normal', 'bit-form'),
+
+    'Compact' => __('Compact', 'bit-form'),
+
     'Default value' => __('Default value', 'bit-form'),
 
     'Suggestion' => __('Suggestion', 'bit-form'),
@@ -2212,18 +2234,6 @@ $i18n_strings = array(
     'Key :' => __('Key :', 'bit-form'),
 
     'Value :' => __('Value :', 'bit-form'),
-
-    'Theme' => __('Theme', 'bit-form'),
-
-    'Dark' => __('Dark', 'bit-form'),
-
-    'Light' => __('Light', 'bit-form'),
-
-    'Size' => __('Size', 'bit-form'),
-
-    'Normal' => __('Normal', 'bit-form'),
-
-    'Compact' => __('Compact', 'bit-form'),
 
     'Default Row:' => __('Default Row:', 'bit-form'),
 
@@ -3011,6 +3021,8 @@ $i18n_strings = array(
 
     'reCAPTCHA v2' => __('reCAPTCHA v2', 'bit-form'),
 
+    'Turnstile' => __('Turnstile', 'bit-form'),
+
     'Repeater' => __('Repeater', 'bit-form'),
 
     'Signature' => __('Signature', 'bit-form'),
@@ -3717,7 +3729,7 @@ $i18n_strings = array(
 
     'Create Form' => __('Create Form', 'bit-form'),
 
-    'reCAPTCHA' => __('reCAPTCHA', 'bit-form'),
+    'CAPTCHA' => __('CAPTCHA', 'bit-form'),
 
     'Payments' => __('Payments', 'bit-form'),
 
@@ -3741,9 +3753,17 @@ $i18n_strings = array(
 
     'Create View' => __('Create View', 'bit-form'),
 
+    'Prevent Public View of Entries' => __('Prevent Public View of Entries', 'bit-form'),
+
+    '(Allow only selected rules to View Entries)' => __('(Allow only selected rules to View Entries)', 'bit-form'),
+
+    'Allow Roles to view own entries' => __('Allow Roles to view own entries', 'bit-form'),
+
+    'Allow Roles to view Other\'s entries' => __('Allow Roles to view Other\'s entries', 'bit-form'),
+
     'Allow Users to Edit Form Entries' => __('Allow Users to Edit Form Entries', 'bit-form'),
 
-    'Allow Roles to edit won entries' => __('Allow Roles to edit won entries', 'bit-form'),
+    'Allow Roles to edit own entries' => __('Allow Roles to edit own entries', 'bit-form'),
 
     'Allow Roles to edit Other\'s entries' => __('Allow Roles to edit Other\'s entries', 'bit-form'),
 
@@ -3878,6 +3898,8 @@ $i18n_strings = array(
     '<p style="font-size: 16px">To use reCaptchav2, you must set Site Key and Secret Key from <a href="' => __('<p style="font-size: 16px">To use reCaptchav2, you must set Site Key and Secret Key from <a href="', 'bit-form'),
 
     '<p style="font-size: 16px">To use Turnstile, you must set Site Key and Secret Key from <a href="' => __('<p style="font-size: 16px">To use Turnstile, you must set Site Key and Secret Key from <a href="', 'bit-form'),
+
+    '<p style="font-size: 16px">To use hCaptcha, you must set Site Key and Secret Key from <a href="' => __('<p style="font-size: 16px">To use hCaptcha, you must set Site Key and Secret Key from <a href="', 'bit-form'),
 
     'You cannot add more than one' => __('You cannot add more than one', 'bit-form'),
 

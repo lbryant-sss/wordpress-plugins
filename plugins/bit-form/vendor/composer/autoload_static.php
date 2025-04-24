@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitec757d23a0d5df472e7296523b5f8d70
+class ComposerStaticInitd9e0233255f82de3026744d6f2fe1094
 {
     public static $prefixLengthsPsr4 = array (
         'e' => 
@@ -73,6 +73,7 @@ class ComposerStaticInitec757d23a0d5df472e7296523b5f8d70
         'BitCode\\BitForm\\Admin\\Form\\ExtraFieldJS\\SetSliderFieldValue' => __DIR__ . '/../..' . '/includes/Admin/Form/ExtraFieldJS/SetSliderFieldValue.php',
         'BitCode\\BitForm\\Admin\\Form\\FrontEndScriptGenerator' => __DIR__ . '/../..' . '/includes/Admin/Form/FrontEndScriptGenerator.php',
         'BitCode\\BitForm\\Admin\\Form\\Helpers' => __DIR__ . '/../..' . '/includes/Admin/Form/Helpers.php',
+        'BitCode\\BitForm\\Admin\\Form\\InitJs\\HCaptcha' => __DIR__ . '/../..' . '/includes/Admin/Form/InitJs/HCaptcha.php',
         'BitCode\\BitForm\\Admin\\Form\\InitJs\\Paypal' => __DIR__ . '/../..' . '/includes/Admin/Form/InitJs/Paypal.php',
         'BitCode\\BitForm\\Admin\\Form\\InitJs\\Razorpay' => __DIR__ . '/../..' . '/includes/Admin/Form/InitJs/Razorpay.php',
         'BitCode\\BitForm\\Admin\\Form\\InitJs\\Recaptcha' => __DIR__ . '/../..' . '/includes/Admin/Form/InitJs/Recaptcha.php',
@@ -315,6 +316,7 @@ class ComposerStaticInitec757d23a0d5df472e7296523b5f8d70
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\DropdownField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/DropdownField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\FileUploadField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/FileUploadField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\GDPRAgreementField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/GDPRAgreementField.php',
+        'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\HCaptchaField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/HCaptchaField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\HTMLField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/HTMLField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\HiddenField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/HiddenField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\HtmlSelectField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/HtmlSelectField.php',
@@ -339,11 +341,14 @@ class ComposerStaticInitec757d23a0d5df472e7296523b5f8d70
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\TurnstileField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/TurnstileField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\ThemeBase' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/ThemeBase.php',
         'BitCode\\BitForm\\Frontend\\StandaloneFormView' => __DIR__ . '/../..' . '/includes/Frontend/StandaloneFormView.php',
+        'BitCode\\BitForm\\GlobalHelper' => __DIR__ . '/../..' . '/includes/GlobalHelper.php',
         'BitCode\\BitForm\\Jcof\\Jcof' => __DIR__ . '/..' . '/arif-un/jcof/src/Jcof.php',
         'BitCode\\BitForm\\Jcof\\ParseErrors' => __DIR__ . '/..' . '/arif-un/jcof/src/ParseErrors.php',
         'BitCode\\BitForm\\Jcof\\StringReader' => __DIR__ . '/..' . '/arif-un/jcof/src/StringReader.php',
         'BitCode\\BitForm\\Jcof\\StringWriter' => __DIR__ . '/..' . '/arif-un/jcof/src/StringWriter.php',
         'BitCode\\BitForm\\Plugin' => __DIR__ . '/../..' . '/includes/Plugin.php',
+        'BitCode\\BitForm\\Widgets\\BitFormElementorWidget' => __DIR__ . '/../..' . '/includes/Widgets/BitFormElementorWidget.php',
+        'BitCode\\BitForm\\Widgets\\BitFormWidget' => __DIR__ . '/../..' . '/includes/Widgets/BitFormWidget.php',
         'BitCode\\BitForm\\enshrined\\svgSanitize\\ElementReference\\Resolver' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/ElementReference/Resolver.php',
         'BitCode\\BitForm\\enshrined\\svgSanitize\\ElementReference\\Subject' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/ElementReference/Subject.php',
         'BitCode\\BitForm\\enshrined\\svgSanitize\\ElementReference\\Usage' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/ElementReference/Usage.php',
@@ -355,6 +360,7 @@ class ComposerStaticInitec757d23a0d5df472e7296523b5f8d70
         'BitCode\\BitForm\\enshrined\\svgSanitize\\data\\AttributeInterface' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/AttributeInterface.php',
         'BitCode\\BitForm\\enshrined\\svgSanitize\\data\\TagInterface' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/TagInterface.php',
         'BitCode\\BitForm\\enshrined\\svgSanitize\\data\\XPath' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/XPath.php',
+        'Bitcode\\BitForm\\Core\\Cryptography\\SodiumCompat' => __DIR__ . '/../..' . '/includes/Core/Cryptography/SodiumCompat.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'TypistTech\\Imposter\\ArrayUtil' => __DIR__ . '/..' . '/typisttech/imposter/src/ArrayUtil.php',
         'TypistTech\\Imposter\\Config' => __DIR__ . '/..' . '/typisttech/imposter/src/Config.php',
@@ -381,9 +387,9 @@ class ComposerStaticInitec757d23a0d5df472e7296523b5f8d70
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitec757d23a0d5df472e7296523b5f8d70::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitec757d23a0d5df472e7296523b5f8d70::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitec757d23a0d5df472e7296523b5f8d70::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd9e0233255f82de3026744d6f2fe1094::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd9e0233255f82de3026744d6f2fe1094::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd9e0233255f82de3026744d6f2fe1094::$classMap;
 
         }, null, ClassLoader::class);
     }

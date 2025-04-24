@@ -2,7 +2,7 @@
 Contributors: smashballoon, craig-at-smash-balloon, am, smub
 Tags: Google reviews, reviews, testimonials, yelp, Google business
 Requires at least: 4.1
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 2.1.0
 Requires PHP: 7.4
 License: GPLv2 or later

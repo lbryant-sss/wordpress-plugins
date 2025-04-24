@@ -1355,8 +1355,9 @@ class AdminAjax
 
       $validation = wp_check_filetype($filename);
       $type = $validation['type'];
-
-      if ($type && 0 === strpos($type, 'image/')) {
+      $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+      $is_svg = 'svg' === $ext; // Check if the file is an SVG
+      if ($type && 0 === strpos($type, 'image/') || $is_svg) {
         $uploaded = file_put_contents($icnDir . '/' . $filename, $imageUrlData);
 
         if ($uploaded) {

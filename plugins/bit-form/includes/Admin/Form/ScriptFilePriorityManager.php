@@ -143,6 +143,9 @@ class ScriptFilePriorityManager
       'recaptcha' => [
         ['priority' => 301, 'filename' => 'bit-recaptcha-field.min.js'],
       ],
+      'hcaptcha' => [
+        ['priority' => 301, 'filename' => 'bit-hcaptcha-field.min.js'],
+      ],
       'decision-box' => [
         ['priority' => 101, 'filename' => 'decisionFldHandle.min.js'],
       ],
@@ -211,12 +214,14 @@ class ScriptFilePriorityManager
         'defaultValue'   => ['path' => ['val', 'config->defaultValue'], 'val'=> ''],
       ],
       'currency' => [
-        'fieldKey'       => ['var' => 'fieldKey'],
-        'options'        => ['path' => 'options'],
-        'assetsURL'      => ['val' => BITFORMS_ROOT_URI . '/static/currencies/'],
-        'classNames'     => ['path' => 'customClasses'],
-        'attributes'     => ['path' => 'customAttributes'],
-        'defaultValue'   => ['path' => ['val', 'config->defaultValue'], 'val'=> ''],
+        'fieldKey'           => ['var' => 'fieldKey'],
+        'options'            => ['path' => 'options'],
+        'assetsURL'          => ['val' => BITFORMS_ROOT_URI . '/static/currencies/'],
+        'classNames'         => ['path' => 'customClasses'],
+        'attributes'         => ['path' => 'customAttributes'],
+        'defaultValue'       => ['path' => ['val', 'config->defaultValue'], 'val'=> ''],
+        'inputFormatOptions' => ['path' => 'inputFormatOptions'],
+        'valueFormatOptions' => ['path' => 'valueFormatOptions'],
       ],
       'phone-number' => [
         'fieldKey'   => ['var' => 'fieldKey'],

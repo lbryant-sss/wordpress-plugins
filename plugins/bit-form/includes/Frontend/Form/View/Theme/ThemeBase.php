@@ -12,6 +12,7 @@ use BitCode\BitForm\Frontend\Form\View\Theme\Fields\DividerField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\DropdownField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\FileUploadField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\GDPRAgreementField;
+use BitCode\BitForm\Frontend\Form\View\Theme\Fields\HCaptchaField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\HiddenField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\HTMLField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\HtmlSelectField;
@@ -128,6 +129,8 @@ INPUTWRAPPER;
         return RecaptchaV2Field::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
       case 'turnstile':
         return TurnstileField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
+      case 'hcaptcha':
+        return HCaptchaField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
       case 'decision-box':
         // return $this->decisionBox($field, $rowID, $field_name, $formID, $error, $value);
         return DecisionBoxField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);

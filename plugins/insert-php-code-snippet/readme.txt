@@ -3,8 +3,8 @@ Contributors: f1logic
 Donate link: http://xyzscripts.com/donate/
 Tags: insert PHP, add PHP, insert PHP code, insert PHP tag, insert PHP snippet, insert PHP code snippet , insert PHP snippet, add PHP code, insert PHP tag, add PHP snippet, add PHP code snippet, integrate PHP codes, raw PHP, embed PHP, PHP inserter, PHP code inserter, PHP snippet inserter
 Requires at least: 5
-Tested up to: 6.7.2
-Stable tag: 1.4.1
+Tested up to: 6.8
+Stable tag: 1.4.2
 License: GPLv2 or later
 
 Add PHP code to your pages and posts easily using shortcodes.
@@ -65,6 +65,9 @@ More questions ? [Drop a mail](http://xyzscripts.com/members/support/ "XYZScript
 
 
 == Changelog ==
+
+= 1.4.2 =
+* Added version check to trigger DB updates and clear cache on updates
 
 = 1.4.1 =
 * Fixed image size issue reported 

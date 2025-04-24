@@ -430,13 +430,20 @@ final class FrontendFormManager extends FormManager
         }
         $formCurrentStep = isset($_POST['form-current-step']) ? $_POST['form-current-step'] : null;
 
-        if (is_wp_error($this->verifyGRecaptcha())) {
-          return $this->verifyGRecaptcha();
+        $verifyGRecaptchaResult = $this->verifyGRecaptcha();
+        if (is_wp_error($verifyGRecaptchaResult)) {
+          return $verifyGRecaptchaResult;
+        }
+
+        $verifyHCaptchaResult = $this->verifyHCaptcha();
+        if (is_wp_error($verifyHCaptchaResult)) {
+          return $verifyHCaptchaResult;
         }
 
         /* Implement Turnstile Captcha start */
-        if (is_wp_error($this->verifyTurnstileCaptcha())) {
-          return $this->verifyTurnstileCaptcha();
+        $verifyTurnstileCaptchaResult = $this->verifyTurnstileCaptcha();
+        if (is_wp_error($verifyTurnstileCaptchaResult)) {
+          return $verifyTurnstileCaptchaResult;
         }
         /* Implement Turnstile Captcha end */
 
@@ -555,6 +562,51 @@ final class FrontendFormManager extends FormManager
         }
         if (!$isgReCaptchaVerified) {
           return new WP_Error('spam_detection', __('Please verify reCAPTCHA', 'bit-form'));
+        }
+      }
+    }
+  }
+
+  private function verifyHCaptcha()
+  {
+    $hCaptchaExist = $this->isFieldTypeExist('hcaptcha'); // You can rename this to getHCaptchaSettings() if needed
+    if ($hCaptchaExist) {
+      if (!isset($_POST['h-captcha-response'])) {
+        return new WP_Error('spam_detection', __('Please verify hCaptcha', 'bit-form'));
+      }
+
+      $token = sanitize_text_field($_POST['h-captcha-response']);
+
+      $integrationHandler = new IntegrationHandler(0);
+      $allFormIntegrations = $integrationHandler->getAllIntegration('app', 'hcaptcha');
+
+      if (!is_wp_error($allFormIntegrations)) {
+        foreach ($allFormIntegrations as $integration) {
+          if (!is_null($integration->integration_type) && 'hcaptcha' === $integration->integration_type) {
+            $integrationDetails = json_decode($integration->integration_details);
+            $integrationDetails->id = $integration->id;
+            $hCaptcha = $integrationDetails;
+          }
+        }
+      }
+
+      if (!empty($hCaptcha->secretKey)) {
+        $hCaptchaResponse = HttpHelper::post(
+          'https://api.hcaptcha.com/siteverify',
+          [
+            'secret'   => $hCaptcha->secretKey,
+            'response' => $token,
+            'remoteip' => $_SERVER['REMOTE_ADDR'] ?? ''
+          ]
+        );
+
+        $isVerified = false;
+        if (!is_wp_error($hCaptchaResponse)) {
+          $isVerified = $hCaptchaResponse->success;
+        }
+
+        if (!$isVerified) {
+          return new WP_Error('spam_detection', __('hCaptcha verification failed', 'bit-form'));
         }
       }
     }

@@ -74,26 +74,26 @@ if(isset($_POST) && isset($_POST['addSubmit'])){
             }
             else{
 ?>
-<div class="xyz_system_notice_area_style0" id="xyz_system_notice_area">
+<div class="xyz_ips_system_notice_area_style0" id="xyz_ips_system_notice_area">
     PHP Snippet already exists. &nbsp;&nbsp;&nbsp;
-    <span id="xyz_system_notice_area_dismiss">Dismiss</span>
+    <span id="xyz_ips_system_notice_area_dismiss">Dismiss</span>
 </div>
 <?php
             }
         }
         else{
 ?>
-<div class="xyz_system_notice_area_style0" id="xyz_system_notice_area">
+<div class="xyz_ips_system_notice_area_style0" id="xyz_ips_system_notice_area">
     PHP Snippet title can have only alphabets,numbers or hyphen. &nbsp;&nbsp;&nbsp;
-    <span id="xyz_system_notice_area_dismiss">Dismiss</span>
+    <span id="xyz_ips_system_notice_area_dismiss">Dismiss</span>
 </div>
 <?php
         }
     }else{
 ?>
-<div class="xyz_system_notice_area_style0" id="xyz_system_notice_area">
+<div class="xyz_ips_system_notice_area_style0" id="xyz_ips_system_notice_area">
     Fill all mandatory fields. &nbsp;&nbsp;&nbsp;
-    <span id="xyz_system_notice_area_dismiss">Dismiss</span>
+    <span id="xyz_ips_system_notice_area_dismiss">Dismiss</span>
 </div>
 <?php
     }
@@ -168,7 +168,7 @@ if(isset($_POST) && isset($_POST['addSubmit'])){
     </div>
     <input type="hidden" id="xyz_ips_insertionLocation" name="xyz_ips_insertionLocation" value="<?php echo intval($xyz_ips_insertionLocation);?>">
     <ul id="xyz_ips_uniq_list" class="xyz_ips_uniq_list">
-    <div class="xyz_ips_left-column">
+    <div class="xyz_ips_left_column">
     
     <li class="xyz_ips_li_h2"><label>Admin</label></li>
     <li class="xyz_ips_li_option <?php echo ($xyz_ips_insertionLocation == XYZ_IPS_INSERTION_LOCATION['ADMIN_RUN_ON_HEADER']) ? 'selected' : ''; ?>" 
@@ -190,7 +190,7 @@ if(isset($_POST) && isset($_POST['addSubmit'])){
     </li>
     
     </div>
-    <div class="xyz_ips_right-column">
+    <div class="xyz_ips_right_column">
     
     </div>
 </ul>

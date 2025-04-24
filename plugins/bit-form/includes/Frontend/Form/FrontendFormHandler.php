@@ -200,7 +200,7 @@ final class FrontendFormHandler
     $regenerateScriptFlag = false;
     $formModel = new FormModel();
     foreach ($formsIds as $formId) {
-      $formInstance = new FormManager($formId);
+      $formInstance = FormManager::getInstance($formId);
       if (!$formInstance->isExist()) {
         continue;
       }
@@ -397,7 +397,7 @@ final class FrontendFormHandler
     $workFlowreturnedOnUserInput = $this->executeOnUserInput($formID, $shortCodeCounter, $fields);
 
     // test for form before remove
-    $noLabel = ['decision-box', 'gdpr', 'html', 'shortcode', 'button', 'paypal', 'razorpay', 'recaptcha'];
+    $noLabel = ['decision-box', 'gdpr', 'html', 'shortcode', 'button', 'paypal', 'razorpay', 'recaptcha', 'turnstile', 'hcaptcha', 'stripe'];
     foreach ($fields as $fldKey => $field) {
       if (!in_array($field->typ, $noLabel) && isset($field->lbl)) {
         $lblReplaceToBackslash = str_replace('$_bf_$', '\\', $field->lbl);
@@ -407,7 +407,7 @@ final class FrontendFormHandler
     $fieldsKey = $FrontendFormManager->getFieldsKey();
 
     $captchaV3Settings = $FrontendFormManager->getCaptchaV3Settings();
-    if ($FrontendFormManager->getCaptchaSettings() || $captchaV3Settings || $FrontendFormManager->getTurnstileSettings()) {
+    if ($FrontendFormManager->getCaptchaSettings() || $captchaV3Settings || $FrontendFormManager->getTurnstileSettings() || $FrontendFormManager->isFieldTypeExist('hcaptcha')) {
       $integrationHandler = new IntegrationHandler(0);
       $allFormIntegrations = $integrationHandler->getAllIntegration('app');
       if (!is_wp_error($allFormIntegrations)) {
@@ -430,6 +430,15 @@ final class FrontendFormHandler
           ) {
             $integrationDetails = json_decode($integration->integration_details);
             $turnstileSiteKey = $integrationDetails->siteKey;
+          }
+
+          if (
+            $FrontendFormManager->isFieldTypeExist('hcaptcha')
+            && !is_null($integration->integration_type)
+            && 'hcaptcha' === $integration->integration_type
+          ) {
+            $integrationDetails = json_decode($integration->integration_details);
+            $hCaptchaSiteKey = $integrationDetails->siteKey;
           }
 
           if ($captchaV3Settings) {
@@ -506,7 +515,8 @@ final class FrontendFormHandler
       'paymentCallbackUrl'             => get_rest_url() . 'bitform/v1/payments/razorpay',
       'gRecaptchaSiteKey'              => !empty($reCAPTCHA->siteKey) ? $reCAPTCHA->siteKey : null,
       'gRecaptchaVersion'              => !empty($reCAPTCHAVersion) ? $reCAPTCHAVersion : null,
-      'turnstileSiteKey'               => !empty($turnstileSiteKey) ? $turnstileSiteKey : null
+      'turnstileSiteKey'               => !empty($turnstileSiteKey) ? $turnstileSiteKey : null,
+      'hCaptchaSiteKey'                => !empty($hCaptchaSiteKey) ? $hCaptchaSiteKey : null,
     ];
 
     if ($entryId) {

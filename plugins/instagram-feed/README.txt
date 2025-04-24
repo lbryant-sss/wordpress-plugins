@@ -2,7 +2,7 @@
 Contributors: smashballoon, craig-at-smash-balloon, am, smub
 Tags: Instagram, Instagram feed, Instagram photos, Instagram widget, Instagram gallery
 Requires at least: 4.1
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 6.8.0
 Requires PHP: 5.6
 License: GPLv2 or later

@@ -8,6 +8,7 @@ use BitCode\BitForm\Core\Database\FormEntryLogModel;
 use BitCode\BitForm\Core\Database\FormEntryMetaModel;
 use BitCode\BitForm\Core\Database\FormEntryModel;
 use BitCode\BitForm\Core\Util\FieldValueHandler;
+use BitCode\BitForm\Core\Util\FrontendHelpers;
 use BitCode\BitForm\Core\Util\MailNotifier;
 use BitCode\BitForm\Core\WorkFlow\WorkFlow;
 use BitCode\BitForm\Frontend\Form\FrontendFormManager;
@@ -65,7 +66,7 @@ final class FrontendAjax
     $entryId = sanitize_text_field($_REQUEST['entryID']);
     $entryToken = sanitize_text_field($_REQUEST['entryToken']);
     $GLOBALS['bf_entry_id'] = $entryId;
-    if (Helpers::validateEntryTokenAndUser($entryToken, $entryId) || Helpers::validateFormEntryEditPermission($form_id, $entryId)) {
+    if (Helpers::validateEntryTokenAndUser($entryToken, $entryId) || FrontendHelpers::is_current_user_can_access($form_id, 'entryEditAccess')) {
       $FrontendFormManager = new FrontendFormManager($form_id);
       $updateStatus = $FrontendFormManager->handleUpdateEntry();
       if (is_wp_error($updateStatus)) {

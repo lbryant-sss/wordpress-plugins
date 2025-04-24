@@ -225,6 +225,29 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 				$args['lang'] = '';
 			} elseif ( has_filter( 'wpml_current_language' ) ) {
 				// WPML compatibility
+				// Check for the 'show reviews in all languages' setting of WPML
+				$is_filtered = apply_filters(
+					'wpml_is_comment_query_filtered',
+					true,
+					null,
+					(object) array( 'query_vars' => array( 'post_type' => 'product' ) )
+				);
+				if ( false === $is_filtered ) {
+					foreach ( $post_ids as $product_id ) {
+						$trid = apply_filters( 'wpml_element_trid', NULL, $product_id, 'post_product' );
+						if ( $trid ) {
+							$translations = apply_filters( 'wpml_get_element_translations', NULL, $trid, 'post_product' );
+							if ( $translations && is_array( $translations ) ) {
+								foreach ( $translations as $translation ) {
+									if ( isset( $translation->element_id ) ) {
+										$post_ids[] = intval( $translation->element_id );
+									}
+								}
+							}
+						}
+					}
+				}
+				//
 				global $sitepress;
 				if ( $sitepress ) {
 					remove_filter( 'comments_clauses', array( $sitepress, 'comments_clauses' ), 10, 2 );
@@ -342,14 +365,14 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 			$count_all_reviews = $count_all_product_reviews + $count_all_shop_reviews;
 
 			// make sure that we do not return more reviews than necessary
-			if( 0 < $attributes['count_total'] ) {
-				if( $num_reviews > $attributes['count_total'] ) {
+			if ( 0 < $attributes['count_total'] ) {
+				if ( $num_reviews > $attributes['count_total'] ) {
 					$reviews_temp = array();
 					while( count( $reviews_temp ) < $attributes['count_total'] ) {
 						$randomKey = mt_rand( 0, $num_reviews-1 );
-						$reviews_temp[] = $reviews[$randomKey];
+						$reviews_temp[$randomKey] = $reviews[$randomKey];
 					}
-					$reviews = $reviews_temp;
+					$reviews = array_values( $reviews_temp );
 				}
 			}
 

@@ -253,6 +253,7 @@ ICON;
       'shortcode',
       'recaptcha',
       'turnstile',
+      'hcaptcha',
       'image',
       'stripe',
       'paypal',

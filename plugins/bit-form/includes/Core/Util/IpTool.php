@@ -171,129 +171,130 @@ final class IpTool
    */
   private static function _getOS($user_agent)
   {
-    $ros[] = ['Windows XP', 'Windows XP'];
-    $ros[] = ['Windows NT 5.1|Windows NT5.1', 'Windows XP'];
-    $ros[] = ['Windows 2000', 'Windows 2000'];
-    $ros[] = ['Windows NT 5.0', 'Windows 2000'];
-    $ros[] = ['Windows NT 4.0|WinNT4.0', 'Windows NT'];
-    $ros[] = ['Windows NT 5.2', 'Windows Server 2003'];
-    $ros[] = ['Windows NT 6.0', 'Windows Vista'];
-    $ros[] = ['Windows NT 7.0', 'Windows 7'];
-    $ros[] = ['Windows CE', 'Windows CE'];
-    $ros[] = [
-      '(media center pc).([0-9]{1,2}\.[0-9]{1,2})',
-      'Windows Media Center',
-    ];
-    $ros[] = ['(win)([0-9]{1,2}\.[0-9x]{1,2})', 'Windows'];
-    $ros[] = ['(win)([0-9]{2})', 'Windows'];
-    $ros[] = ['(windows)([0-9x]{2})', 'Windows'];
+    $ros[] = ['Windows XP', 'Windows XP', false];
+    $ros[] = ['Windows NT 5.1|Windows NT5.1', 'Windows XP', true];
+    $ros[] = ['Windows 2000', 'Windows 2000', false];
+    $ros[] = ['Windows NT 5.0', 'Windows 2000', false];
+    $ros[] = ['Windows NT 4.0|WinNT4.0', 'Windows NT', true];
+    $ros[] = ['Windows NT 5.2', 'Windows Server 2003', false];
+    $ros[] = ['Windows NT 6.0', 'Windows Vista', false];
+    $ros[] = ['Windows NT 7.0', 'Windows 7', false];
+    $ros[] = ['Windows CE', 'Windows CE', false];
+    $ros[] = ['(media center pc).([0-9]{1,2}\.[0-9]{1,2})', 'Windows Media Center', true];
+    $ros[] = ['(win)([0-9]{1,2}\.[0-9x]{1,2})', 'Windows', true];
+    $ros[] = ['(win)([0-9]{2})', 'Windows', true];
+    $ros[] = ['(windows)([0-9x]{2})', 'Windows', true];
     // Doesn't seem like these are necessary...not totally sure though..
     //$ros[] = array('(winnt)([0-9]{1,2}\.[0-9]{1,2}){0,1}', 'Windows NT');
     //$ros[] = array('(windows nt)(([0-9]{1,2}\.[0-9]{1,2}){0,1})', 'Windows NT'); // fix by bg
-    $ros[] = ['Windows ME', 'Windows ME'];
-    $ros[] = ['Win 9x 4.90', 'Windows ME'];
-    $ros[] = ['Windows 98|Win98', 'Windows 98'];
-    $ros[] = ['Windows 95', 'Windows 95'];
-    $ros[] = ['(windows)([0-9]{1,2}\.[0-9]{1,2})', 'Windows'];
-    $ros[] = ['win32', 'Windows'];
-    $ros[] = ['(java)([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2})', 'Java'];
-    $ros[] = ['(Solaris)([0-9]{1,2}\.[0-9x]{1,2}){0,1}', 'Solaris'];
-    $ros[] = ['dos x86', 'DOS'];
-    $ros[] = ['unix', 'Unix'];
+    $ros[] = ['Windows ME', 'Windows ME', false];
+    $ros[] = ['Win 9x 4.90', 'Windows ME', false];
+    $ros[] = ['Windows 98|Win98', 'Windows 98', true];
+    $ros[] = ['Windows 95', 'Windows 95', false];
+    $ros[] = ['(windows)([0-9]{1,2}\.[0-9]{1,2})', 'Windows', true];
+    $ros[] = ['win32', 'Windows', false];
+    $ros[] = ['(java)([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2})', 'Java', true];
+    $ros[] = ['(Solaris)([0-9]{1,2}\.[0-9x]{1,2}){0,1}', 'Solaris', true];
+    $ros[] = ['dos x86', 'DOS', false];
+    $ros[] = ['unix', 'Unix', false];
     //Android
-    $ros[] = ['SM', 'Samsung'];
-    $ros[] = ['HTC', 'HTC'];
-    $ros[] = ['LG', 'LG'];
-    $ros[] = ['Microsoft', 'Microsoft'];
-    $ros[] = ['Pixel', 'Pixel'];
-    $ros[] = ['MI', 'Xiaomi'];
-    $ros[] = ['Xiaomi', 'Xiaomi'];
-    $ros[] = ['Android', 'Android'];
-    $ros[] = ['android', 'Android'];
+    $ros[] = ['SM', 'Samsung', false];
+    $ros[] = ['HTC', 'HTC', false];
+    $ros[] = ['LG', 'LG', false];
+    $ros[] = ['Microsoft', 'Microsoft', false];
+    $ros[] = ['Pixel', 'Pixel', false];
+    $ros[] = ['MI', 'Xiaomi', false];
+    $ros[] = ['Xiaomi', 'Xiaomi', false];
+    $ros[] = ['Android', 'Android', false];
+    $ros[] = ['android', 'Android', false];
 
     //iPhone
-    $ros[] = ['iPhone', 'iPhone'];
+    $ros[] = ['iPhone', 'iPhone', false];
 
-    $ros[] = ['Mac OS X', 'Mac OS X'];
-    $ros[] = ['Mac OS X Puma', 'Mac OS X 10.1[^0-9]'];
-    $ros[] = ['Mac_PowerPC', 'Macintosh PowerPC'];
-    $ros[] = ['(mac|Macintosh)', 'Mac OS'];
-    $ros[] = ['(sunos)([0-9]{1,2}\.[0-9]{1,2}){0,1}', 'SunOS'];
-    $ros[] = ['(beos)([0-9]{1,2}\.[0-9]{1,2}){0,1}', 'BeOS'];
-    $ros[] = ['(risc os)([0-9]{1,2}\.[0-9]{1,2})', 'RISC OS'];
-    $ros[] = ['os\/2', 'OS/2'];
-    $ros[] = ['freebsd', 'FreeBSD'];
-    $ros[] = ['openbsd', 'OpenBSD'];
-    $ros[] = ['netbsd', 'NetBSD'];
-    $ros[] = ['irix', 'IRIX'];
-    $ros[] = ['plan9', 'Plan9'];
-    $ros[] = ['osf', 'OSF'];
-    $ros[] = ['aix', 'AIX'];
-    $ros[] = ['GNU Hurd', 'GNU Hurd'];
-    $ros[] = ['(fedora)', 'Linux - Fedora'];
-    $ros[] = ['(kubuntu)', 'Linux - Kubuntu'];
-    $ros[] = ['(ubuntu)', 'Linux - Ubuntu'];
-    $ros[] = ['(debian)', 'Linux - Debian'];
-    $ros[] = ['(CentOS)', 'Linux - CentOS'];
-    $ros[] = [
-      '(Mandriva).([0-9]{1,3}(\.[0-9]{1,3})?(\.[0-9]{1,3})?)',
-      'Linux - Mandriva',
-    ];
-    $ros[] = [
-      '(SUSE).([0-9]{1,3}(\.[0-9]{1,3})?(\.[0-9]{1,3})?)',
-      'Linux - SUSE',
-    ];
-    $ros[] = ['(Dropline)', 'Linux - Slackware (Dropline GNOME)'];
-    $ros[] = ['(ASPLinux)', 'Linux - ASPLinux'];
-    $ros[] = ['(Red Hat)', 'Linux - Red Hat'];
+    $ros[] = ['Mac OS X', 'Mac OS X', false];
+    $ros[] = ['Mac OS X Puma', 'Mac OS X 10.1[^0-9]', true];
+    $ros[] = ['Mac_PowerPC', 'Macintosh PowerPC', false];
+    $ros[] = ['(mac|Macintosh)', 'Mac OS', true];
+    $ros[] = ['(sunos)([0-9]{1,2}\.[0-9]{1,2}){0,1}', 'SunOS', true];
+    $ros[] = ['(beos)([0-9]{1,2}\.[0-9]{1,2}){0,1}', 'BeOS', true];
+    $ros[] = ['(risc os)([0-9]{1,2}\.[0-9]{1,2})', 'RISC OS', true];
+    $ros[] = ['os\/2', 'OS/2', true];
+    $ros[] = ['freebsd', 'FreeBSD', false];
+    $ros[] = ['openbsd', 'OpenBSD', false];
+    $ros[] = ['netbsd', 'NetBSD', false];
+    $ros[] = ['irix', 'IRIX', false];
+    $ros[] = ['plan9', 'Plan9', false];
+    $ros[] = ['osf', 'OSF', false];
+    $ros[] = ['aix', 'AIX', false];
+    $ros[] = ['GNU Hurd', 'GNU Hurd', false];
+    $ros[] = ['(fedora)', 'Linux - Fedora', true];
+    $ros[] = ['(kubuntu)', 'Linux - Kubuntu', true];
+    $ros[] = ['(ubuntu)', 'Linux - Ubuntu', true];
+    $ros[] = ['(debian)', 'Linux - Debian', true];
+    $ros[] = ['(CentOS)', 'Linux - CentOS', true];
+    $ros[] = ['(Mandriva).([0-9]{1,3}(\.[0-9]{1,3})?(\.[0-9]{1,3})?)', 'Linux - Mandriva', true];
+    $ros[] = ['(SUSE).([0-9]{1,3}(\.[0-9]{1,3})?(\.[0-9]{1,3})?)', 'Linux - SUSE', true];
+    $ros[] = ['(Dropline)', 'Linux - Slackware (Dropline GNOME)', true];
+    $ros[] = ['(ASPLinux)', 'Linux - ASPLinux', true];
+    $ros[] = ['(Red Hat)', 'Linux - Red Hat', true];
     // Loads of Linux machines will be detected as unix.
     // Actually, all of the linux machines I've checked have the 'X11' in the User Agent.
     //$ros[] = array('X11', 'Unix');
-    $ros[] = ['(linux)', 'Linux'];
-    $ros[] = ['(amigaos)([0-9]{1,2}\.[0-9]{1,2})', 'AmigaOS'];
-    $ros[] = ['amiga-aweb', 'AmigaOS'];
-    $ros[] = ['amiga', 'Amiga'];
-    $ros[] = ['AvantGo', 'PalmOS'];
+    $ros[] = ['(linux)', 'Linux', true];
+    $ros[] = ['(amigaos)([0-9]{1,2}\.[0-9]{1,2})', 'AmigaOS', true];
+    $ros[] = ['amiga-aweb', 'AmigaOS', false];
+    $ros[] = ['amiga', 'Amiga', false];
+    $ros[] = ['AvantGo', 'PalmOS', false];
     //$ros[] = array('(Linux)([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,3}(rel\.[0-9]{1,2}){0,1}-([0-9]{1,2}) i([0-9]{1})86){1}', 'Linux');
     //$ros[] = array('(Linux)([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,3}(rel\.[0-9]{1,2}){0,1} i([0-9]{1}86)){1}', 'Linux');
     //$ros[] = array('(Linux)([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,3}(rel\.[0-9]{1,2}){0,1})', 'Linux');
-    $ros[] = ['[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,3}', 'Linux'];
-    $ros[] = ['(webtv)/([0-9]{1,2}\.[0-9]{1,2})', 'WebTV'];
-    $ros[] = ['Dreamcast', 'Dreamcast OS'];
-    $ros[] = ['GetRight', 'Windows'];
-    $ros[] = ['go!zilla', 'Windows'];
-    $ros[] = ['gozilla', 'Windows'];
-    $ros[] = ['gulliver', 'Windows'];
-    $ros[] = ['ia archiver', 'Windows'];
-    $ros[] = ['NetPositive', 'Windows'];
-    $ros[] = ['mass downloader', 'Windows'];
-    $ros[] = ['microsoft', 'Windows'];
-    $ros[] = ['offline explorer', 'Windows'];
-    $ros[] = ['teleport', 'Windows'];
-    $ros[] = ['web downloader', 'Windows'];
-    $ros[] = ['webcapture', 'Windows'];
-    $ros[] = ['webcollage', 'Windows'];
-    $ros[] = ['webcopier', 'Windows'];
-    $ros[] = ['webstripper', 'Windows'];
-    $ros[] = ['webzip', 'Windows'];
-    $ros[] = ['wget', 'Windows'];
-    $ros[] = ['Java', 'Unknown'];
-    $ros[] = ['flashget', 'Windows'];
+    $ros[] = ['[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,3}', 'Linux', true];
+    $ros[] = ['(webtv)/([0-9]{1,2}\.[0-9]{1,2})', 'WebTV', true];
+    $ros[] = ['Dreamcast', 'Dreamcast OS', false];
+    $ros[] = ['GetRight', 'Windows', false];
+    $ros[] = ['go!zilla', 'Windows', false];
+    $ros[] = ['gozilla', 'Windows', false];
+    $ros[] = ['gulliver', 'Windows', false];
+    $ros[] = ['ia archiver', 'Windows', false];
+    $ros[] = ['NetPositive', 'Windows', false];
+    $ros[] = ['mass downloader', 'Windows', false];
+    $ros[] = ['microsoft', 'Windows', false];
+    $ros[] = ['offline explorer', 'Windows', false];
+    $ros[] = ['teleport', 'Windows', false];
+    $ros[] = ['web downloader', 'Windows', false];
+    $ros[] = ['webcapture', 'Windows', false];
+    $ros[] = ['webcollage', 'Windows', false];
+    $ros[] = ['webcopier', 'Windows', false];
+    $ros[] = ['webstripper', 'Windows', false];
+    $ros[] = ['webzip', 'Windows', false];
+    $ros[] = ['wget', 'Windows', false];
+    $ros[] = ['Java', 'Unknown', false];
+    $ros[] = ['flashget', 'Windows', false];
     // delete next line if the script show not the right OS
     //$ros[] = array('(PHP)/([0-9]{1,2}.[0-9]{1,2})', 'PHP');
-    $ros[] = ['MS FrontPage', 'Windows'];
-    $ros[] = ['(msproxy)/([0-9]{1,2}.[0-9]{1,2})', 'Windows'];
-    $ros[] = ['(msie)([0-9]{1,2}.[0-9]{1,2})', 'Windows'];
-    $ros[] = ['libwww-perl', 'Unix'];
-    $ros[] = ['UP.Browser', 'Windows CE'];
-    $ros[] = ['NetAnts', 'Windows'];
-    $ros[] = ['Android', 'Android'];
+    $ros[] = ['MS FrontPage', 'Windows', false];
+    $ros[] = ['(msproxy)/([0-9]{1,2}\.[0-9]{1,2})', 'Windows', true];
+    $ros[] = ['(msie)([0-9]{1,2}\.[0-9]{1,2})', 'Windows', true];
+    $ros[] = ['libwww-perl', 'Unix', false];
+    $ros[] = ['UP.Browser', 'Windows CE', false];
+    $ros[] = ['NetAnts', 'Windows', false];
+    $ros[] = ['Android', 'Android', false];
     $file = count($ros);
     $os = '';
     for ($n = 0; $n < $file; $n++) {
-      if (@preg_match('/' . $ros[$n][0] . '/i', $user_agent)) {
-        $os = @$ros[$n][1];
-        break;
+      $isRegex = isset($ros[$n][2]) && true === $ros[$n][2];
+      $pattern = $ros[$n][0];
+
+      if ($isRegex) {
+        if (@preg_match('/' . $pattern . '/i', $user_agent)) {
+          $os = $ros[$n][1];
+          break;
+        }
+      } else {
+        if (false !== stripos($user_agent, $pattern)) {
+          $os = $ros[$n][1];
+          break;
+        }
       }
     }
     return trim($os);

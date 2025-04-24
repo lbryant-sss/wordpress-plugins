@@ -1143,6 +1143,17 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			}
 		);
 
+		//Settings page utilities and fixes.
+		//This is a separate script because some of it has to run after common.js, which is loaded in the page footer.
+		$settingsPageUtils = ScriptDependency::create(
+			plugins_url('js/settings-page-utils.js', $this->plugin_file),
+			'ame-settings-page-utils',
+			AME_ROOT_DIR . '/js/settings-page-utils.js'
+		)
+			->addDependencies('jquery', $deps['ame-lodash'], 'common')
+			->setInFooter();
+		$deps[$settingsPageUtils->getHandle()] = $settingsPageUtils;
+
 		$deps = apply_filters('admin_menu_editor-base_scripts', $deps);
 
 		return $deps;
@@ -1291,14 +1302,9 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 
 		$this->register_base_dependencies();
 
-		//Settings page utilities and fixes.
-		//This is a separate script because some of it has to run after common.js, which is loaded in the page footer.
-		wp_enqueue_auto_versioned_script(
-			'ame-settings-page-utils',
-			plugins_url('js/settings-page-utils.js', $this->plugin_file),
-			array('jquery', 'ame-lodash', 'common'),
-			true
-		);
+		//Settings page utilities.
+		//This is enqueued separately because some of it has to run in the footer, after common.js.
+		wp_enqueue_script('ame-settings-page-utils');
 
 		//Editor's scripts
 		$editor_dependencies = array(
@@ -3298,6 +3304,11 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			$wrap_classes[] = 'ame-is-wp53-plus';
 		}
 		$wrap_classes[] = 'ame-condensed-tabs-enabled';
+
+		//This method is also an action callback, and the default argument for actions is an empty string.
+		if ( !is_array($extra_wrap_classes) ) {
+			$extra_wrap_classes = [];
+		}
 		$wrap_classes = array_merge($wrap_classes, $extra_wrap_classes);
 
 		echo '<div class="', esc_attr(implode(' ', $wrap_classes)), '">';

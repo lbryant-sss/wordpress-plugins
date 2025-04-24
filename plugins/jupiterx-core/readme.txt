@@ -3,7 +3,7 @@ Contributors: artbees
 Tags: jupiter, jupiterx
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 4.8.11
+Stable tag: 4.8.12
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,13 +29,18 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+= 4.8.12 =
+* Fixed some security issues.
+* Fixed Author Box Widget in Simplicity Mode.
+* Fixed video position on media carousel lightbox.
+
 = 4.8.11 =
 * Added Brands option to categories & tags filter in product carousel & Products widgets.
 * Added Search Result filter to Products Widget.
 * Integrated Product meta with WooCommerce Brand Option.
 * Compatible Advanced menu and Advanced Tab with WPML.
 * Removed Mask Image option on Team member widget.
-* Fixed Security issue in JupiterX related to download form.
+* Fixed some security issues.
 * Fixed Content position on Classic Call To Action Widget.
 * Fixed displaying arrow on Photo Album widget.
 
@@ -60,13 +65,13 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 * Fixed typo in Post navigation widget.
 * Fixed Content loading of products widget when apply filters.
 * Fixed fatal error o product review widget.
-* Fixed security issue related to password fields on Form Widget.
+* Fixed some security issues.
 * Fixed displaying Sticky posts on Search Results regardless match search criteria.
 
 = 4.8.8 =
 * Fixed Stripe Button issues.
 * Fixed issue on Advanced post.
-* Fixed security issue on JupiterX Core.
+* Fixed some security issues.
 * Fixed issueof Advanced Posts Widget in search layout.
 * Fixed conflict between Raven plugin & JupiterX Core.
 
@@ -79,7 +84,7 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 
 = 4.8.6 =
 * Fixed issues of incompatibility with Elementor 3.26.0.
-* Fixed Security issue on Popup Template Export.
+* Fixed some security issues.
 * Fixed post excerpt issue on post & advanced posts widgets.
 * Fixed color parent item in navigation menu.
 
@@ -108,7 +113,7 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 * Fixed various issues in the Posts Carousel widget.
 * Fixed various issues in the Media Carousel widget.
 * Fixed various issues in the PayPal Button widget.
-* Fixed a security vulnerability in the Social Login widget.
+* Fixed some security issues.
 * Fixed PHP warning in the Testimonial Carousel widget.
 * Fixed PHP warnings and submit button animation issues in the Form widget.
 * Improved settings for the Testimonial Marquee widget.

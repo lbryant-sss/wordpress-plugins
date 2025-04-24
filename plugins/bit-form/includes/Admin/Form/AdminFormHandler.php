@@ -25,6 +25,7 @@ use BitCode\BitForm\Core\Messages\SuccessMessageHandler;
 use BitCode\BitForm\Core\Migration\MigrationHelper;
 use BitCode\BitForm\Core\Util\FileHandler;
 use BitCode\BitForm\Core\Util\FormDuplicateHelper;
+use BitCode\BitForm\Core\Util\FrontendHelpers;
 use BitCode\BitForm\Core\Util\HttpHelper;
 use BitCode\BitForm\Core\Util\IpTool;
 use BitCode\BitForm\Core\Util\Utilities;
@@ -1871,6 +1872,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
         wp_unslash($Request['offset']) : 0;
       $pageSize = isset($Request['pageSize']) ?
         wp_unslash($Request['pageSize']) : 10;
+      $queryCondition = isset($Request['queryCondition']) ? wp_unslash($Request['queryCondition']) : [];
     } else {
       $id = wp_unslash($post->id);
       $conditions = isset($post->conditions) ? wp_unslash($post->conditions) : [];
@@ -1881,6 +1883,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
       $globalFilter = isset($post->globalFilter) ? wp_unslash($post->globalFilter) : null;
       $pageSize = isset($post->pageSize) ?
         wp_unslash($post->pageSize) : 10;
+      $queryCondition = isset($post->queryCondition) ? wp_unslash($post->queryCondition) : [];
     }
     if (is_null($id)) {
       return new WP_Error('empty_form', __('Form id is empty.', 'bit-form'));
@@ -1889,13 +1892,15 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
     if (!$formManager->isExist()) {
       return new WP_Error('empty_form', __('Form does not exists', 'bit-form'));
     }
-
+    $queryCondition['form_id'] = $id;
+    $canViewOthers = FrontendHelpers::is_current_user_can_access($id, 'entryViewAccess', 'othersEntries');
+    if (!$canViewOthers) {
+      $queryCondition['user_id'] = get_current_user_id();
+    }
     $formEntry = new FormEntryModel();
     $entries = $formEntry->get(
       'id',
-      [
-        'form_id' => $id,
-      ],
+      $queryCondition,
       null,
       null,
       'created_at',

@@ -94,7 +94,7 @@ class ConversationalFormView
     $formID = intval($formID);
     $attr = ['type'=> $formType, 'form_id' => $formID, 'form_preview' => true];
 
-    $FormManager = new FormManager($formID);
+    $FormManager = FormManager::getInstance($formID);
     $formContent = $FormManager->getFormContent();
     if (empty($formContent->formInfo->conversationalSettings->enable)) {
       return;

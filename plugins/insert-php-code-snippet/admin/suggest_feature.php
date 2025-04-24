@@ -5,25 +5,25 @@ if(isset($_GET['xyz_ips_msg']))
 	$xyz_ips_message = $_GET['xyz_ips_msg'];
 	if($xyz_ips_message == 1){
 		?>
-	<div class="xyz_system_notice_area_style1" id="xyz_system_notice_area">
+	<div class="xyz_ips_system_notice_area_style1" id="xyz_ips_system_notice_area">
 	Thank you for the suggestion.&nbsp;&nbsp;&nbsp;<span
-	id="xyz_system_notice_area_dismiss">Dismiss</span>
+	id="xyz_ips_system_notice_area_dismiss">Dismiss</span>
 	</div>
 	<?php
 	}
 else if($xyz_ips_message == 2){
 		?>
-		<div class="xyz_system_notice_area_style0" id="xyz_system_notice_area">
+		<div class="xyz_ips_system_notice_area_style0" id="xyz_ips_system_notice_area">
 		wp_mail not able to process the request.&nbsp;&nbsp;&nbsp;<span
-		id="xyz_system_notice_area_dismiss">Dismiss</span>
+		id="xyz_ips_system_notice_area_dismiss">Dismiss</span>
 		</div>
 		<?php
 	}
 else if($xyz_ips_message == 3){
 	?>
-	<div class="xyz_system_notice_area_style0" id="xyz_system_notice_area">
+	<div class="xyz_ips_system_notice_area_style0" id="xyz_ips_system_notice_area">
 	Please suggest a feature.&nbsp;&nbsp;&nbsp;<span
-	id="xyz_system_notice_area_dismiss">Dismiss</span>
+	id="xyz_ips_system_notice_area_dismiss">Dismiss</span>
 	</div>
 	<?php
 }

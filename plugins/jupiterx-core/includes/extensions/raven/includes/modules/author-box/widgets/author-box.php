@@ -592,7 +592,7 @@ class Author_Box extends Base_Widget {
 	}
 
 	protected function render() {
-		$user_id = get_the_author_meta( 'ID' );
+		$user_id = get_post_field( 'post_author', get_the_ID() );
 
 		// Integrate with layout builder.
 		if ( empty( $user_id ) && ! empty( $post ) ) {

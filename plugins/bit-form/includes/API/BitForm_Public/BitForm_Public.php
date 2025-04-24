@@ -18,7 +18,7 @@ class BitForm_Public
     $db = new ApiModel();
     $formData = $db->getField($formId);
     if (!empty($formData)) {
-      $unset_types = ['paypal', 'razorpay', 'stripe', 'recaptcha'];
+      $unset_types = ['paypal', 'razorpay', 'stripe', 'recaptcha', 'hcaptcha'];
       $formContent = json_decode($formData[0]->form_content);
       foreach ($formContent->fields as $key => $field) {
         if (in_array($field->typ, $unset_types)) {

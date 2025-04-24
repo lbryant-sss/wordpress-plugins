@@ -95,7 +95,7 @@ class StandaloneFormView
     $formID = intval($formID);
     $attr = ['form_id' => $formID, 'form_preview' => true];
 
-    $FormManager = new FormManager($formID);
+    $FormManager = FormManager::getInstance($formID);
     $formContent = $FormManager->getFormContent();
     if (empty($formContent->formInfo->standaloneSettings->active)) {
       return;

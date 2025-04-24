@@ -390,7 +390,7 @@ class Heading extends Base_Widget {
 
 		$heading_html = sprintf(
 			'<%1$s %2$s>%3$s</%1$s>',
-			$settings['html_tag'],
+			ElementorUtils::validate_html_tag( $settings['html_tag'] ),
 			$this->get_render_attribute_string( 'heading' ),
 			$title_html
 		);

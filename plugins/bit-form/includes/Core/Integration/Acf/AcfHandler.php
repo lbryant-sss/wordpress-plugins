@@ -54,7 +54,7 @@ class AcfHandler
 
     $taxonomy = new WpFileHandler($integrationData->form_id);
 
-    $formManger = new FormManager($integrationData->form_id);
+    $formManger = FormManager::getInstance($integrationData->form_id);
 
     $formFields = $formManger->getFields();
 

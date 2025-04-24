@@ -297,7 +297,7 @@ final class FieldValueHandler
     preg_match_all($pattern, $stringToReplaceField, $matches);
 
     if (count($matches[0]) > 0) {
-      $formManager = new FormManager($formId);
+      $formManager = FormManager::getInstance($formId);
       $formFields = $formManager->getFields();
       $fields = self::bindFormData($formFields, $fieldValues, $formId);
       $table = self::generateTable($fields, $formFields);
@@ -317,7 +317,7 @@ final class FieldValueHandler
     return array_reduce(array_keys($formFields), function ($filteredData, $key) use ($formFields, $formData, $uploadPath) {
       $field = $formFields[$key];
 
-      $ignoreFields = ['button', 'recaptcha', 'html', 'divider', 'section', 'file-up', 'turnstile', 'advanced-file-up', 'image'];
+      $ignoreFields = ['button', 'recaptcha', 'html', 'divider', 'section', 'file-up', 'turnstile', 'hcaptcha', 'advanced-file-up', 'image'];
 
       $arrayValueFldType = ['check', 'select', 'image-select'];
 
@@ -389,7 +389,7 @@ final class FieldValueHandler
 
   public static function replaceRepeaterFieldValue($stringToReplaceField, $fieldValues, $formID)
   {
-    $formManager = new FormManager($formID);
+    $formManager = FormManager::getInstance($formID);
     $formFields = $formManager->getFields();
 
     preg_match_all('/\$\{(.*?)\}/', $stringToReplaceField, $matches);
@@ -404,12 +404,13 @@ final class FieldValueHandler
       $dataCleaning = self::removeEmptyValues($fieldValues);
       $repeaterFieldData = self::getRepeaterFieldData($dataCleaning, $repeaterFieldKey);
 
-      if ('repeater' === $formFields[$repeaterFieldKey]['type']) {
+      if (isset($formFields[$repeaterFieldKey]['type']) && !empty($formFields[$repeaterFieldKey]['type']) && 'repeater' === $formFields[$repeaterFieldKey]['type']) {
         $repeaterMarkup = self::repeaterFieldTable($repeaterFieldData, $formFields, $repeaterFieldKey);
         $stringToReplaceField = str_replace('${' . $fk . '}', $repeaterMarkup, $stringToReplaceField);
       } else {
-        $repeaterFieldData = is_array($repeaterFieldData) ? implode(', ', $repeaterFieldData) : $repeaterFieldData;
-        $stringToReplaceField = str_replace('${' . $fk . '}', $repeaterFieldData, $stringToReplaceField);
+        if (!empty($repeaterFieldData)) {
+          $stringToReplaceField = str_replace('${' . $fk . '}', $repeaterFieldData, $stringToReplaceField);
+        }
       }
     }
     return $stringToReplaceField;

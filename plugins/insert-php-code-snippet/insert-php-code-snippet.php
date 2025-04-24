@@ -3,7 +3,7 @@
 Plugin Name: Insert PHP Code Snippet
 Plugin URI: http://xyzscripts.com/wordpress-plugins/insert-php-code-snippet/
 Description: Insert and run PHP code in your pages and posts easily using shortcodes. This plugin lets you create a shortcode for any PHP code and use it in your posts, pages, or widgets. It also includes flexible snippet placement options: Automatic, Execute on Demand, and Manual Shortcode.        
-Version: 1.4.1
+Version: 1.4.2
 Author: xyzscripts.com
 Author URI: http://xyzscripts.com/
 Text Domain: insert-php-code-snippet
@@ -66,6 +66,18 @@ function xyz_ips_credit() {
 	$content = '<div style="width:100%;text-align:center; font-size:11px; clear:both"><a target="_blank" title="Insert PHP Snippet Wordpress Plugin" href="http://xyzscripts.com/wordpress-plugins/insert-php-code-snippet/">PHP Code Snippets</a> Powered By : <a target="_blank" title="PHP Scripts & Wordpress Plugins" href="http://www.xyzscripts.com" >XYZScripts.com</a></div>';
 	echo $content;
 }
+add_action('admin_init', 'xyz_ips_check_and_upgrade_plugin_version');
 
+function xyz_ips_check_and_upgrade_plugin_version() {
 
+	$current_version = xyz_ips_plugin_get_version();
+	$saved_version   = get_option('xyz_ips_free_version');
+	if ($saved_version === false) {
+		xyz_ips_run_upgrade_routines();
+		add_option('xyz_ips_free_version', $current_version);
+	} elseif (version_compare($current_version, $saved_version, '>')) {
+		xyz_ips_run_upgrade_routines();
+		update_option('xyz_ips_free_version', $current_version);
+	}
+}
 ?>

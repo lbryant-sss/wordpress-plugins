@@ -27,6 +27,8 @@ use WP_Error;
 
 class FormManager
 {
+  // Cache for instances of FormManager by form_id
+  private static $formManagerCache = [];
   protected static $form;
   protected $formModel;
   protected $form_id;
@@ -69,7 +71,23 @@ class FormManager
       } elseif (isset($this->_atomic_class_map->atomic_class_map)) {
         $this->_atomic_class_map = $this->_atomic_class_map->atomic_class_map;
       }
+    } else {
+      // Log the error if needed
+      error_log('Error fetching form: ' . "Form Id = ($form_id)" . static::$form->get_error_message());
     }
+  }
+
+  // Static method to get the instance of FormManager
+  public static function getInstance($form_id)
+  {
+    // Check if an instance of FormManager is already cached
+    if (!isset(self::$formManagerCache[$form_id])) {
+      // Create and cache the FormManager instance if not found
+      self::$formManagerCache[$form_id] = new self($form_id);
+    }
+
+    // Return the cached instance
+    return self::$formManagerCache[$form_id];
   }
 
   public function isExist()
@@ -218,6 +236,13 @@ class FormManager
     return $formInfo;
   }
 
+  public function getFormPermission()
+  {
+    $formContent = json_decode(static::$form[0]->form_content);
+    $formPermission = isset($formContent->formPermissions) ? $formContent->formPermissions : null;
+    return $formPermission;
+  }
+
   public function getFormHelperStates()
   {
     $formHelperStates = json_decode(static::$form[0]->builder_helper_state);
@@ -269,7 +294,7 @@ class FormManager
     $fields = $form_content->fields;
     $field_details = [];
     foreach ($fields as $key => $field) {
-      if ('recaptcha' === $field->typ) {
+      if ('recaptcha' === $field->typ || 'hcaptcha' === $field->typ) {
         continue;
       }
       // $field_name = empty($field->lbl) ? null : \preg_replace('/[\`\~\!\@\#\$\'\.\s\?\+\-\*\&\|\/\\\!]/', '_', $field->lbl);
@@ -331,7 +356,7 @@ class FormManager
     $fields = $form_content->fields;
     $field_details = [];
     foreach ($fields as $key => $field) {
-      if ('recaptcha' === $field->typ) {
+      if ('recaptcha' === $field->typ || 'hcaptcha' === $field->typ) {
         continue;
       }
       // $field_name = empty($field->lbl) ? null : \preg_replace('/[\`\~\!\@\#\$\'\.\s\?\+\-\*\&\|\/\\\!]/', '_', $field->lbl);
@@ -625,12 +650,14 @@ class FormManager
               $filePath = $fileHandler->moveUploadedFiles($repeateFileDetails, $this->form_id, $entry_id);
               if (!empty($filePath)) {
                 $submitted_data[$repeaterFldKey][$slNo - 1][$file_name] = $filePath;
+                $_FILES[$file_name]['new_name'][$slNo - 1] = $filePath;
               }
             }
           } else {
             $filePath = $fileHandler->moveUploadedFiles($file_details, $this->form_id, $entry_id);
             if (!empty($filePath)) {
               $submitted_data[$file_name] = $filePath;
+              $_FILES[$file_name]['new_name'] = $filePath;
             }
           }
         }
@@ -776,11 +803,13 @@ class FormManager
               $meta_value = $fileHandler->moveUploadedFiles($repeateFileDetails, $formID, $entryID, $index);
               if (!empty($meta_value)) {
                 $updatedValue[$repeaterFldKey][$index - 1][$field_name] = wp_json_encode($meta_value);
+                $_FILES[$field_name]['new_name'][$index - 1] = $meta_value;
               }
             }
           } else {
             $meta_value = $fileHandler->moveUploadedFiles($_FILES[$field_name], $formID, $entryID);
             if (!empty($meta_value)) {
+              $_FILES[$field_name]['new_name'] = $meta_value;
               if (isset($updatedValue[$field_name . '_old']) && !is_wp_error($file_exists) && count($file_exists) > 0) {
                 $meta_value = empty($files_old) ? $meta_value : array_merge($meta_value, $files_old);
                 $updatedValue[$field_name] = $meta_value;
@@ -986,6 +1015,15 @@ class FormManager
     $formContents = $this->getFormContent();
     $fieldStr = wp_json_encode($formContents->fields);
     if (false !== strpos($fieldStr, '"typ":"turnstile"')) {
+      return true;
+    }
+  }
+
+  public function isFieldTypeExist($fieldType)
+  {
+    $formContents = $this->getFormContent();
+    $fieldStr = wp_json_encode($formContents->fields);
+    if (false !== strpos($fieldStr, '"typ":"' . $fieldType . '"')) {
       return true;
     }
   }

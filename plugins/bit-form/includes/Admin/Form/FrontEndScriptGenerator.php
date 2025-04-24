@@ -2,6 +2,7 @@
 
 namespace BitCode\BitForm\Admin\Form;
 
+use BitCode\BitForm\Admin\Form\InitJs\HCaptcha;
 use BitCode\BitForm\Admin\Form\InitJs\Paypal;
 use BitCode\BitForm\Admin\Form\InitJs\Razorpay;
 use BitCode\BitForm\Admin\Form\InitJs\Recaptcha;
@@ -408,11 +409,12 @@ GLOBALOBJ;
     'repeater'         => '.__$fk__-rpt-fld-wrp',
     'signature'        => '.__$fk__-inp-fld-wrp',
     'rating'           => '.__$fk__-inp-fld-wrp',
+    'hcaptcha'         => '.__$fk__-h-captcha-wrp',
   ];
 
   private function generateFieldConfigsJs()
   {
-    $customFlds = ['select', 'country', 'currency', 'phone-number', 'file-up', 'advanced-file-up', 'paypal', 'razorpay', 'stripe', 'mollie', 'recaptcha', 'repeater', 'signature', 'rating', 'turnstile'];
+    $customFlds = ['select', 'country', 'currency', 'phone-number', 'file-up', 'advanced-file-up', 'paypal', 'razorpay', 'stripe', 'mollie', 'recaptcha', 'repeater', 'signature', 'rating', 'turnstile', 'hcaptcha'];
     $allFieldTypes = array_keys($this->_fields);
     $customFldsInForms = array_intersect($allFieldTypes, $customFlds);
     $formContents = $this->_formContents;
@@ -448,7 +450,7 @@ GLOBALOBJ;
     $customFldConfigPaths = wp_json_encode($customFldConfigPaths);
     $containers = wp_json_encode($containers);
 
-    $scriptLoaderFields = ['paypal', 'razorpay', 'stripe', 'recaptcha', 'turnstile'];
+    $scriptLoaderFields = ['paypal', 'razorpay', 'stripe', 'recaptcha', 'turnstile', 'hcaptcha'];
     $scriptLoadedNeeded = array_intersect($scriptLoaderFields, $customFldsInForms) || $recaptchaV3Enabled;
     if ($scriptLoadedNeeded) {
       $scriptLoaderJs = ScriptLoader::init();
@@ -492,6 +494,12 @@ GLOBALOBJ;
       $turnstileInitJs = '';
     }
 
+    if (in_array('hcaptcha', $customFldsInForms)) {
+      $hCaptchaInitJs = HCaptcha::init();
+    } else {
+      $hCaptchaInitJs = '';
+    }
+
     if ($recaptchaV3Enabled) {
       $recaptchaV3InitJs = RecaptchaV3::init();
     } else {
@@ -521,6 +529,8 @@ GLOBALOBJ;
             $recaptchaInitJs;
           } else if(fldType === 'turnstile') {
             $turnstileInitJs;
+          } else if(fldType === 'hcaptcha') {
+            $hCaptchaInitJs;
           } else if(fldType === 'stripe') {
             $stripeInitJs;
           } else if (customFldConfigPaths[fldType]) {

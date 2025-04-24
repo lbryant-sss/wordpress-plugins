@@ -17,6 +17,7 @@ use BitCode\BitForm\Core\Hooks\Hooks;
 use BitCode\BitForm\Core\Util\Activation;
 use BitCode\BitForm\Core\Util\Deactivation;
 use BitCode\BitForm\Core\Util\Uninstallation;
+use BitCode\BitForm\Widgets\BitFormElementorWidget;
 
 final class Plugin
 {
@@ -129,6 +130,7 @@ final class Plugin
     }
     Hooks::init_hooks();
     $this->update_tables();
+    $this->initWidgets();
     do_action('bitform_loaded');
   }
 
@@ -167,6 +169,13 @@ final class Plugin
     static::$instance = new static($main_file);
     static::$instance->register();
     return true;
+  }
+
+  private function initWidgets()
+  {
+    if (defined('ELEMENTOR_VERSION')) {
+      new BitFormElementorWidget();
+    }
   }
 
   private function initWpTelemetry()

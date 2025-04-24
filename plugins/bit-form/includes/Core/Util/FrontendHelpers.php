@@ -2,6 +2,7 @@
 
 namespace BitCode\BitForm\Core\Util;
 
+use BitCode\BitForm\Core\Form\FormManager;
 use WP_Rewrite;
 
 final class FrontendHelpers
@@ -11,6 +12,7 @@ final class FrontendHelpers
   public static $bfFrontendViewIds = [];
   public static $bfFormIdsFromPost = [];
   public static $bfViewIdsFromPost = [];
+  private static $formsPermissions = [];
 
   public static $pageBuilderQueryParamsList = [
     'et_pb_preview'                   => 'true', // divi
@@ -224,5 +226,65 @@ final class FrontendHelpers
     $isPageBuilder = self::$isPageBuilder;
     $bfMultipleFormsExists = $isPageBuilder ? true : count($bfUniqFormIds) > 1;
     return $bfMultipleFormsExists;
+  }
+
+  public static function getFormPermissions($formId)
+  {
+    if (!isset(self::$formsPermissions[$formId])) {
+      $formManager = FormManager::getInstance($formId);
+      self::$formsPermissions[$formId] = $formManager->getFormPermission();
+    }
+
+    return self::$formsPermissions[$formId];
+  }
+
+  public static function is_current_user_can_access($formId, $action = 'entryViewAccess', $scope = '')
+  {
+    $formPermissions = self::getFormPermissions($formId);
+    $accessPermission = isset($formPermissions->{$action}) ? $formPermissions->{$action} : null;
+    if (empty($accessPermission)) {
+      return false;
+    }
+    if ('entryViewAccess' === $action && (!isset($accessPermission->preventPublicAccess) || !$accessPermission->preventPublicAccess)) {
+      return true;
+    }
+    if (is_user_logged_in()) {
+      $user = wp_get_current_user();
+      if (in_array('administrator', $user->roles) || current_user_can('manage_bitform')) {
+        return true;
+      }
+      if (!empty($scope) && !empty($accessPermission->{$scope})) {
+        $accessRolesArray = explode(',', $accessPermission->{$scope});
+        if (self::has_access_for_roles($user, $accessRolesArray)) {
+          return true;
+        }
+      }
+
+      if (empty($scope) && isset($accessPermission->ownEntries) && !empty($accessPermission->ownEntries)) {
+        $accessRolesArray = explode(',', $accessPermission->ownEntries);
+        if (self::has_access_for_roles($user, $accessRolesArray)) {
+          return true;
+        }
+      }
+
+      if (empty($scope) && isset($accessPermission->othersEntries) && !empty($accessPermission->othersEntries)) {
+        $accessRolesArray = explode(',', $accessPermission->othersEntries);
+        if (self::has_access_for_roles($user, $accessRolesArray)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  private static function has_access_for_roles($user, $accessRoles)
+  {
+    // If "all_logged_in_users" is in the allowed roles, grant access
+    if (in_array('all_logged_in_users', $accessRoles)) {
+      return true;
+    }
+    // Check if any of the user's roles match the allowed roles
+    $userRoles = array_intersect($user->roles, $accessRoles);
+    return !empty($userRoles);
   }
 }

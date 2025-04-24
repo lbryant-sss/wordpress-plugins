@@ -3,7 +3,7 @@ Contributors: pxlite, msykes, netweblogic
 Tags: meta, tags, meta tags, open graph, seo
 Text Domain: meta-tag-manager
 Requires at least: 3.6
-Tested up to: 6.7.2
+Tested up to: 6.8
 Stable tag: 3.2
 License: GPLv2
 

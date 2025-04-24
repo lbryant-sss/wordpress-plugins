@@ -3,7 +3,7 @@
  * Plugin Name: YITH WooCommerce Ajax Product Filter
  * Plugin URI: https://wordpress.org/plugins/yith-woocommerce-ajax-navigation/
  * Description: <code><strong>YITH WooCommerce AJAX Product Filter</strong></code> allows your users to find the product they are looking for as quickly as possible. Thanks to the plugin you will be able to set up one or more search filters for your WooCommerce products and improve the user experience of your shop. <a href="https://yithemes.com/" target="_blank">Get more plugins for your e-commerce shop on <strong>YITH</strong></a>
- * Version: 5.9.0
+ * Version: 5.10.0
  * Author: YITH
  * Author URI: https://yithemes.com/
  * Text Domain: yith-woocommerce-ajax-navigation
@@ -14,7 +14,7 @@
  *
  * @author  YITH <plugins@yithemes.com>
  * @package YITH\AjaxProductFilter
- * @version 5.9.0
+ * @version 5.10.0
  */
 
 /**
@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ! defined( 'YITH_WCAN_DIR' ) && define( 'YITH_WCAN_DIR', plugin_dir_path( __FILE__ ) );
 ! defined( 'YITH_WCAN_INC' ) && define( 'YITH_WCAN_INC', YITH_WCAN_DIR . 'includes/' );
 ! defined( 'YITH_WCAN_ASSETS' ) && define( 'YITH_WCAN_ASSETS', YITH_WCAN_URL . 'assets/' );
-! defined( 'YITH_WCAN_VERSION' ) && define( 'YITH_WCAN_VERSION', '5.9.0' );
+! defined( 'YITH_WCAN_VERSION' ) && define( 'YITH_WCAN_VERSION', '5.10.0' );
 ! defined( 'YITH_WCAN_DB_VERSION' ) && define( 'YITH_WCAN_DB_VERSION', '5.1.0' );
 ! defined( 'YITH_WCAN_FILE' ) && define( 'YITH_WCAN_FILE', __FILE__ );
 ! defined( 'YITH_WCAN_SLUG' ) && define( 'YITH_WCAN_SLUG', 'yith-woocommerce-ajax-navigation' );

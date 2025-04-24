@@ -183,7 +183,7 @@ final class FileHandler
       require_once ABSPATH . 'wp-admin/includes/file.php';
     }
 
-    $formManager = new FormManager($form_id);
+    $formManager = FormManager::getInstance($form_id);
     $form_contents = $formManager->getFormContent();
     $field_content_details = $form_contents->fields;
     $fieldDetail = $field_content_details->{$field_key};
@@ -253,7 +253,7 @@ final class FileHandler
     ];
     if (is_array($file_details['name'])) {
       $totalSize = 0;
-      foreach ($file_details['name']  as $key => $file) {
+      foreach ($file_details['name'] as $key => $file) {
         if (!empty($file)) {
           $fileInfo = [
             'name'     => $file,
@@ -344,6 +344,19 @@ final class FileHandler
     }
     $encrypted_directory = Helpers::getEncryptedEntryId($entry_id);
     return $uploadDir . $encrypted_directory;
+  }
+
+  private static function replaceDocumentRoot($path)
+  {
+    $relativePath = str_replace(ABSPATH, '', $path); // Remove absolute server path
+    return site_url($relativePath); // Prepend with domain
+  }
+
+  public static function getEntriesFileUploadURL($form_id, $entry_id)
+  {
+    $documentRoot = self::getEntriesFileUploadDir($form_id, $entry_id);
+    $url = self::replaceDocumentRoot($documentRoot);
+    return $url;
   }
 
   public static function createIndexFile($directory)

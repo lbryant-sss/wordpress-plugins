@@ -459,27 +459,33 @@ class Utils {
 			wp_die( '<script>window.close();</script>' );
 		}
 
-		$file       = str_replace( ['phar://', 'zip://', 'ftp://', 'data://'], '', base64_decode( $file ) ); // phpcs:ignore
 		$upload_dir = wp_get_upload_dir();
+		$root_path  = wp_normalize_path( $upload_dir['basedir'] );
+
+		$file = base64_decode($file); // phpcs:ignore
+		$file = wp_normalize_path( $file );
+
+		if ( strpos( wp_normalize_path( $file ), $root_path ) !== 0 ) {
+			wp_die( '<script>window.close();</script>' );
+		}
 
 		// Make sure file exists.
 		if ( empty( $file ) || ! file_exists( $file ) ) {
 			wp_die( '<script>window.close();</script>' );
 		}
 
-		$file_name = pathinfo( $file, PATHINFO_BASENAME );
-		$file_info = wp_check_filetype_and_ext( $file, $file_name );
-
+		// Ensure the file is within the root path
 		$real_file_path = realpath( $file );
-
-		// Make sure the file exists and is inside the allowed directory.
 		if (
 			false === $real_file_path ||
-			! file_exists( $real_file_path ) ||
-			0 !== strpos( wp_normalize_path( $file ), wp_normalize_path( $upload_dir['basedir'] ) )
+			strpos( wp_normalize_path( $real_file_path ), $root_path ) !== 0
 		) {
 			wp_die( '<script>window.close();</script>' );
 		}
+
+		$file_name = pathinfo( $file, PATHINFO_BASENAME );
+		$file_name = sanitize_file_name( $file_name );
+		$file_info = wp_check_filetype_and_ext( $file, $file_name );
 
 		// Validate file extension and MIME type.
 		if ( empty( $file_info['ext'] ) || empty( $file_info['type'] ) ) {
@@ -496,8 +502,8 @@ class Utils {
 
 		// Restrict the download to WP upload directory.
 		if (
-			strpos( $file, $upload_dir['basedir'] ) === false ||
-			strpos( $file, $upload_dir['basedir'] ) !== 0
+			strpos( $file, $root_path ) === false ||
+			strpos( $file, $root_path ) !== 0
 		) {
 			wp_die( '<script>window.close();</script>' );
 		}

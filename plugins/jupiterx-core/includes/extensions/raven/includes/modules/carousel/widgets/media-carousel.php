@@ -110,12 +110,15 @@ class Media_Carousel extends Base {
 				'size_units' => [ '%', 'px' ],
 				'default' => [
 					'unit' => '%',
+					'size' => 85,
 				],
 				'tablet_default' => [
 					'unit' => '%',
+					'size' => 85,
 				],
 				'mobile_default' => [
 					'unit' => '%',
+					'size' => 85,
 				],
 				'range' => [
 					'%' => [

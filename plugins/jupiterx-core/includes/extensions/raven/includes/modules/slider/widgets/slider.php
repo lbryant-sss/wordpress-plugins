@@ -1412,7 +1412,7 @@ class Slider extends Base_Widget {
 
 			$slide_html = '<div style="' . $background . '" class="swiper-slide-bg' . $ken_class . '"></div>' . $slide_html;
 
-			$slides[] = '<div class="elementor-repeater-item-' . $slide['_id'] . ' swiper-slide">' . $slide_html . '</div>';
+			$slides[] = '<div class="elementor-repeater-item-' . esc_attr( $slide['_id'] ) . ' swiper-slide">' . $slide_html . '</div>';
 			$slide_count++;
 		}
 

@@ -2,8 +2,8 @@
 Tags: cf7 redirect, redirect cf7, contact form 7 MailChimp, redirect to URL, contact form 7 paypal
 Contributors: codeinwp, themeisle, yuvalsabar, regevlio
 Requires at least: 5.2.0
-Tested up to: 6.7
-Stable tag: 3.1.10
+Tested up to: 6.8
+Stable tag: 3.2.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,8 +31,6 @@ Simply go to your form settings, select the "Action" tab, and add additional Sub
 
 - **Open Page in a New Tab:** Configure forms to open the target URL in a new tab, keeping your site accessible to users post-submission.
 
-- **Run JavaScript After Form Submission:** Execute custom JavaScript code after a form is submitted, ideal for tracking conversions and integrating with analytics tools.
-
 - **Pass Fields from the Form as URL Query Parameters:** Seamlessly append submitted form data to the URL as query parameters, enabling personalized follow-up pages.
 
 - **Add Honeypot to Minimize Spam:** Integrate a honeypot technique in your forms to prevent spam without affecting user experience.
@@ -46,6 +44,8 @@ Simply go to your form settings, select the "Action" tab, and add additional Sub
 == 🤩 GET MORE FEATURES WITH REDIRECTION FOR CF7 PRO ==
 
 - **Add Conditional Logic:** Enhance your submission actions with the Conditional Logic of Actions Extension. Set If/Or rules based on user inputs to manage powerful conditional rules effectively.
+
+- **Run JavaScript After Form Submission:** Execute custom JavaScript code after a form is submitted, ideal for tracking conversions and integrating with analytics tools.
 
 - **Create and Send PDF:** Add the option to generate and send PDF using the submitted form fields. 
 
@@ -150,6 +150,29 @@ No. One of the reasons we developed this plugin, is because on_send_ok is now de
 5. Extensions tab
 
 == Changelog ==
+
+####   Version 3.2.0 (2025-04-23)
+
+- [Feat] Introduced a new dashboard
+- [Feat] Improved Add to action interface to showcase available actions better
+- [Feat] Improved layout for Actions list, with a toggle to update the status and new Edit/Delete/Duplicate buttons
+- [Feat] Open the action options by default when a new action is added
+- [Feat] Rename Leads to Entries and improved the layout of the Entries List
+- [Feat] Improved Conditional Logic layout
+- [Feat] Added a Learn about Pro button in the plugins listing page
+- [Feat] Moved Fire JavaScript action to a separate premium add-on for new users
+- [Feat] Rename API Request action to Webhook to better showcase its options
+- [Fix] Removed dashboard notice for rating
+- [Fix] Make Contact Form 7 required for plugin activation
+- [Fix] Enhance Twilio API key validation and improve field labels in settings
+- [Fix] HubSpot connection validation and AJAX handling
+- [Fix] Add utility functions to save the files in a custom upload folder, and added security similar to Contact Form 7.
+- [Fix] Delete the uploaded files when an entry is deleted.
+- [Fix] Added a preview feature for uploaded images.
+- [Fix] Fix various broken links and UI inconsistencies
+
+
+
 
 #####   Version 3.1.10 (2025-01-10)
 

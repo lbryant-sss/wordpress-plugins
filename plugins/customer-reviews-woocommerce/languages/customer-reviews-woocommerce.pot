@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Customer Reviews for WooCommerce 5.75.1\n"
+"Project-Id-Version: Customer Reviews for WooCommerce 5.76.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/customer-reviews-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-19T00:03:47+00:00\n"
+"POT-Creation-Date: 2025-04-24T00:08:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: customer-reviews-woocommerce\n"
@@ -232,7 +232,7 @@ msgid "Show more reviews (%d)"
 msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:857
-#: includes/blocks/class-cr-reviews-grid.php:958
+#: includes/blocks/class-cr-reviews-grid.php:981
 #: includes/reviews/class-cr-reviews.php:529
 msgid "Based on %s review"
 msgid_plural "Based on %s reviews"
@@ -241,8 +241,8 @@ msgstr[1] ""
 
 #: includes/blocks/class-cr-all-reviews.php:870
 #: includes/blocks/class-cr-all-reviews.php:874
-#: includes/blocks/class-cr-reviews-grid.php:971
-#: includes/blocks/class-cr-reviews-grid.php:975
+#: includes/blocks/class-cr-reviews-grid.php:994
+#: includes/blocks/class-cr-reviews-grid.php:998
 #: includes/reviews/class-cr-reviews.php:544
 #: includes/reviews/class-cr-reviews.php:548
 msgid "5 star"
@@ -250,8 +250,8 @@ msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:883
 #: includes/blocks/class-cr-all-reviews.php:887
-#: includes/blocks/class-cr-reviews-grid.php:984
-#: includes/blocks/class-cr-reviews-grid.php:988
+#: includes/blocks/class-cr-reviews-grid.php:1007
+#: includes/blocks/class-cr-reviews-grid.php:1011
 #: includes/reviews/class-cr-reviews.php:555
 #: includes/reviews/class-cr-reviews.php:559
 msgid "4 star"
@@ -259,8 +259,8 @@ msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:896
 #: includes/blocks/class-cr-all-reviews.php:900
-#: includes/blocks/class-cr-reviews-grid.php:997
-#: includes/blocks/class-cr-reviews-grid.php:1001
+#: includes/blocks/class-cr-reviews-grid.php:1020
+#: includes/blocks/class-cr-reviews-grid.php:1024
 #: includes/reviews/class-cr-reviews.php:566
 #: includes/reviews/class-cr-reviews.php:570
 msgid "3 star"
@@ -268,8 +268,8 @@ msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:909
 #: includes/blocks/class-cr-all-reviews.php:913
-#: includes/blocks/class-cr-reviews-grid.php:1010
-#: includes/blocks/class-cr-reviews-grid.php:1014
+#: includes/blocks/class-cr-reviews-grid.php:1033
+#: includes/blocks/class-cr-reviews-grid.php:1037
 #: includes/reviews/class-cr-reviews.php:577
 #: includes/reviews/class-cr-reviews.php:581
 msgid "2 star"
@@ -277,8 +277,8 @@ msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:922
 #: includes/blocks/class-cr-all-reviews.php:926
-#: includes/blocks/class-cr-reviews-grid.php:1023
-#: includes/blocks/class-cr-reviews-grid.php:1027
+#: includes/blocks/class-cr-reviews-grid.php:1046
+#: includes/blocks/class-cr-reviews-grid.php:1050
 #: includes/reviews/class-cr-reviews-list-table.php:484
 #: includes/reviews/class-cr-reviews.php:588
 #: includes/reviews/class-cr-reviews.php:592
@@ -286,7 +286,7 @@ msgid "1 star"
 msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:938
-#: includes/blocks/class-cr-reviews-grid.php:1040
+#: includes/blocks/class-cr-reviews-grid.php:1063
 #: includes/reviews/class-cr-reviews.php:1703
 #: templates/cr-review-form.php:31
 msgid "Add a review"
@@ -314,7 +314,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: includes/blocks/class-cr-all-reviews.php:1098
-#: includes/blocks/class-cr-reviews-grid.php:1049
+#: includes/blocks/class-cr-reviews-grid.php:1072
 #: includes/reviews/class-cr-reviews.php:604
 msgid "See all %d review"
 msgid_plural "See all %d reviews"
@@ -419,7 +419,7 @@ msgstr ""
 msgid "Error: accepted file types are PNG, JPG, JPEG, GIF, MP4, MPEG, OGG, WEBM, MOV, AVI"
 msgstr ""
 
-#: includes/blocks/class-cr-reviews-grid.php:366
+#: includes/blocks/class-cr-reviews-grid.php:389
 #: includes/blocks/class-cr-reviews-slider.php:257
 #: includes/reviews/class-cr-admin-menu-reviews.php:620
 #: includes/reviews/class-cr-reviews-list-table.php:1220
@@ -427,10 +427,10 @@ msgstr ""
 msgid "Verified owner"
 msgstr ""
 
-#: includes/blocks/class-cr-reviews-grid.php:370
-#: includes/blocks/class-cr-reviews-grid.php:372
-#: includes/blocks/class-cr-reviews-grid.php:377
-#: includes/blocks/class-cr-reviews-grid.php:379
+#: includes/blocks/class-cr-reviews-grid.php:393
+#: includes/blocks/class-cr-reviews-grid.php:395
+#: includes/blocks/class-cr-reviews-grid.php:400
+#: includes/blocks/class-cr-reviews-grid.php:402
 #: includes/blocks/class-cr-reviews-slider.php:261
 #: includes/blocks/class-cr-reviews-slider.php:263
 #: includes/blocks/class-cr-reviews-slider.php:268
@@ -443,8 +443,8 @@ msgstr ""
 msgid "Verified review"
 msgstr ""
 
-#: includes/blocks/class-cr-reviews-grid.php:373
-#: includes/blocks/class-cr-reviews-grid.php:380
+#: includes/blocks/class-cr-reviews-grid.php:396
+#: includes/blocks/class-cr-reviews-grid.php:403
 #: includes/blocks/class-cr-reviews-slider.php:264
 #: includes/blocks/class-cr-reviews-slider.php:271
 #: includes/reviews/class-cr-reviews.php:1149
@@ -452,7 +452,7 @@ msgstr ""
 msgid "view original"
 msgstr ""
 
-#: includes/blocks/class-cr-reviews-grid.php:1048
+#: includes/blocks/class-cr-reviews-grid.php:1071
 #: includes/reviews/class-cr-reviews.php:603
 msgid "Showing %1$d of %2$d review (%3$d star). "
 msgid_plural "Showing %1$d of %2$d reviews (%3$d star). "
@@ -531,7 +531,7 @@ msgstr ""
 msgid "CR: %1$s cannot be included in a review invitation because it is related to one of the prohibited categories of products. If you would like to send review invitations for this product, please set the 'Verified Reviews' option to 'No verification' in the <a href=\"%2$s\">settings</a>."
 msgstr ""
 
-#: includes/emails/class-cr-email-func.php:548
+#: includes/emails/class-cr-email-func.php:547
 #: includes/emails/class-cr-email.php:467
 #: includes/emails/class-cr-wtsap.php:420
 #: includes/emails/class-cr-wtsap.php:435
@@ -540,7 +540,7 @@ msgstr ""
 msgid "Item 1 Test"
 msgstr ""
 
-#: includes/emails/class-cr-email-func.php:553
+#: includes/emails/class-cr-email-func.php:552
 #: includes/emails/class-cr-email.php:469
 #: includes/emails/class-cr-wtsap.php:421
 #: includes/emails/class-cr-wtsap.php:440

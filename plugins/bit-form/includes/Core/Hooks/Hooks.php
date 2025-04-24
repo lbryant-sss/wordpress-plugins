@@ -38,19 +38,8 @@ class Hooks
     // modify data for telemetry
     add_filter(BITFORMS_PREFIX . 'telemetry_additional_data', [new BfAnalytics(), 'modifyTelemetryData'], 10, 1);
 
-    // Allow SVG file uploads in bit form
-    add_filter('upload_mimes', [Hooks::class, 'custom_mime_types']);
-
     // Add Bit Form menu to admin bar by "manage_bitform" capability
     add_filter('bitforms_form_access_capability', [Hooks::class, 'bitformMenuAccessCapability']);
-  }
-
-  // Allow SVG file uploads
-  public static function custom_mime_types($mimes)
-  {
-    // Add SVG to the list of allowed mime types
-    $mimes['svg'] = 'image/svg+xml';
-    return $mimes;
   }
 
   public static function updateBitFormVersion()
