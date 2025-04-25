@@ -250,6 +250,10 @@ class Swatches {
 		if ( empty( $settings ) ) {
 			return $select_html;
 		}
+
+		// Retrieve the product from the filter if not available then use the Global Product.
+		$product = ! empty( $args['product'] ) && is_a( $args['product'], 'WC_Product_Variable' ) ? $args['product'] : $product;
+		
 		$attribute     = $product->get_attributes();
 		$attr_id       = isset( $attribute[ strtolower( $args['attribute'] ) ] ) ? $attribute[ strtolower( $args['attribute'] ) ]->get_id() : 0;
 		$shape         = get_option( "cfvsw_product_attribute_shape-$attr_id", 'default' );
@@ -471,7 +475,7 @@ class Swatches {
 		}
 
 		$attribute_keys  = array_keys( $attributes );
-		$variations_json = wp_json_encode( $available_variations );
+		$variations_json = apply_filters( 'cfvsw_available_variations', wp_json_encode( $available_variations ) );
 		?>
 		<div class="cfvsw_variations_form variations_form cfvsw_shop_align_<?php echo esc_attr( $settings['alignment'] ); ?>" data-product_variations="<?php echo esc_attr( $variations_json ); ?>" data-product_id="<?php echo absint( $product_id ); ?>" <?php echo esc_attr( $count_attr_for_catalog ); ?>>
 			<?php if ( empty( $available_variations ) && false !== $available_variations ) { ?>

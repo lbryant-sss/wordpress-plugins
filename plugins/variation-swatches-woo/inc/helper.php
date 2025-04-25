@@ -154,4 +154,25 @@ class Helper {
 		$db_values = get_option( $option, [] );
 		return wp_parse_args( $db_values, $this->defaults[ $option ] );
 	}
+
+	/**
+	 * Get plugin status
+	 *
+	 * @since x.x.x
+	 *
+	 * @param  string $plugin_init_file Plguin init file.
+	 * @return mixed
+	 */
+	public function get_plugin_status( $plugin_init_file ) {
+
+		$installed_plugins = get_plugins();
+
+		if ( ! isset( $installed_plugins[ $plugin_init_file ] ) ) {
+			return 'not-installed';
+		} elseif ( is_plugin_active( $plugin_init_file ) ) {
+			return 'active';
+		} else {
+			return 'inactive';
+		}
+	}
 }

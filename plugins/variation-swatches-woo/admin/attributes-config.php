@@ -73,7 +73,7 @@ class Attributes_Config {
 
 		$current_screen = get_current_screen();
 
-		if ( isset( $current_screen->base ) && 'product_page_product_attributes' === $current_screen->base ) {
+		if ( apply_filters( 'cfvsw_is_required_screen_for_swatch_types', isset( $current_screen->base ) && 'product_page_product_attributes' === $current_screen->base ) ) {
 			$fields = wp_parse_args(
 				$fields,
 				[

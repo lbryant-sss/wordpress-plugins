@@ -3,7 +3,7 @@ Contributors: brainstormforce
 Tags: woocommerce variation swatches, woocommerce attributes, woocommerce product variation, variation product swatches, color variation swatch
 Requires at least: 5.4
 Tested up to: 6.8
-Stable tag: 1.0.12
+Stable tag: 1.0.13
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ Variation Swatches for WooCommerce works with most well coded WordPress themes &
 
 Learn more from our [knowledge base.](https://cartflows.com/docs/variation-swatches-for-woocommerce-plugin/)
 
-[Try it out on a free dummy site](https://bsf.io/variation-swatches-woo-demo)
+[Try the live demo of Variation Swatches for WooCommerce](https://bsf.io/variation-swatches-woo-demo)
 
 ## Variation Swatches Is Compatible With ##
 
@@ -112,21 +112,26 @@ Yes, this plugin enables variation swatches on shop / archieve page. User can se
 
 == Changelog ==
 
+= 1.0.13 – THURSDAY, 24th APRIL 2025 =
+* New - Introduced a CartFlows info page to help users discover checkout optimization features.
+* Improvement - Added filters cfvsw_is_required_screen_for_swatch_types and cfvsw_available_attributes for better customization.
+* Fix - Swatches were not displaying for variation products when included in a bundled product.
+
 = 1.0.12 – THURSDAY, 21st NOVEMBER  2024 =
-- Fix: Fixed the conflict with 'WooCommerce Load More Products' plugin & disabled attributes of variations products.
-- Fix: Fixed the conflict with Astra theme 'Swap image on hover" feature not working when swatches are disabled from shop/archive pages
+* Fix - Fixed the conflict with 'WooCommerce Load More Products' plugin & disabled attributes of variations products.
+* Fix - Fixed the conflict with Astra theme 'Swap image on hover" feature not working when swatches are disabled from shop/archive pages
 
 = 1.0.11 – MONDAY, 7th OCTOBER  2024 =
-- Fix: Resolved the issue where the variation swatch selection did not function properly when jQuery Migrate was disabled in Bricks Builder.
-- Fix: Resolved the issue where the "Out-of-Stock Disable" feature did not work correctly with pagination.
+* Fix - Resolved the issue where the variation swatch selection did not function properly when jQuery Migrate was disabled in Bricks Builder.
+* Fix - Resolved the issue where the "Out-of-Stock Disable" feature did not work correctly with pagination.
 
 = 1.0.10 – THURSDAY, 15th AUGUST 2024 =
-- Improvement: Updated the WooCommerce HPOS Compatibility.
+* Improvement: Updated the WooCommerce HPOS Compatibility.
 
 = 1.0.9 – WEDNESDAY, 14th AUGUST 2024 =
-- Fix: Resolved the issue of "Swipe images on hover" feature was not working when using the Astra theme.
-- Fix: Removed error messages related to undefined variables that were appearing on the frontend.
-- Fix: Updated the codebase to better handle both array and non-array values.
+* Fix - Resolved the issue of "Swipe images on hover" feature was not working when using the Astra theme.
+* Fix - Removed error messages related to undefined variables that were appearing on the frontend.
+* Fix - Updated the codebase to better handle both array and non-array values.
 
 = 1.0.8 – THURSDAY, 28th MARCH 2024 =
 * New: Introduced the border width option for the swatch. You can now set a custom border width to your swatches.

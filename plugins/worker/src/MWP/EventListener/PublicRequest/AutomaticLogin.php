@@ -48,7 +48,9 @@ class MWP_EventListener_PublicRequest_AutomaticLogin implements Symfony_EventDis
             return;
         }
 
-        $isServiceSigned = !empty($request->query['service_sign']) && !empty($request->query['service_key']) && !empty($request->query['site_id']);
+        $isServiceSigned = (!empty($request->query['service_sign']) || !empty($request->query['service_sign_v2']) )
+                           && !empty($request->query['service_key'])
+                           && !empty($request->query['site_id']);
 
         if (empty($request->query['auto_login']) || (empty($request->query['signature']) && !$isServiceSigned) || empty($request->query['message_id']) || !array_key_exists('mwp_goto', $request->query)) {
             return;
@@ -129,8 +131,9 @@ class MWP_EventListener_PublicRequest_AutomaticLogin implements Symfony_EventDis
         $publicKey = null;
         $message   = null;
         $signed    = null;
+		$signAlgorithm = 'SHA1';
 
-        if ($isServiceSigned && !empty($newComm)) {
+		if ($isServiceSigned && !empty($newComm)) {
             $communicationKey = mwp_get_communication_key($request->query['site_id']);
 
             if (empty($communicationKey)) {
@@ -140,8 +143,9 @@ class MWP_EventListener_PublicRequest_AutomaticLogin implements Symfony_EventDis
 
             $publicKey = $this->configuration->getLivePublicKey($request->query['service_key']);
             $message   = $communicationKey.$where.$messageId;
-            $signed    = base64_decode($request->query['service_sign']);
-        } else {
+            $signed    = base64_decode($request->query['service_sign_v2'] ? $request->query['service_sign_v2'] : $request->query['service_sign']);
+			$signAlgorithm = $request->query['service_sign_v2_algo'];
+		} else {
             $publicKey = $this->configuration->getPublicKey();
             $message   = $where.$messageId;
             $signed    = base64_decode($request->query['signature']);
@@ -151,7 +155,7 @@ class MWP_EventListener_PublicRequest_AutomaticLogin implements Symfony_EventDis
             $this->context->wpDie(esc_html__('The automatic login token isn\'t properly signed. Please contact our support for help.', 'worker'), '', 200);
         }
 
-        if (!$this->signer->verify($message, $signed, $publicKey)) {
+        if (!$this->signer->verify($message, $signed, $publicKey, $signAlgorithm)) {
             $this->context->wpDie(esc_html__('The automatic login token is invalid. Please check if this website is properly connected with your dashboard, or, if this keeps happening, contact support.', 'worker'), '', 200);
         }
 

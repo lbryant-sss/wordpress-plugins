@@ -135,12 +135,21 @@ $condensedTabBorderRadius: 0px;
 
 //endregion
 
-//region No bottom margin
+//region Spacing adjustments
 .ame-tab-list-bottom-margin-disabled {
 	&, &.ws-ame-too-many-tabs.ame-condensed-tabs-enabled {
 		.ws-ame-nav-tab-list {
 			margin-bottom: 0;
 		}
+	}
+
+	//Admin notices are typically shown below the tab list. When the tab list has no bottom margin,
+	//that usually means there's an element with a large top margin/padding (e.g. a sticky bar)
+	//immediately following it. When a notice is inserted between them, that creates an even larger
+	//gap. To fix that, let's reduce the bottom margin of notices in this case.
+	> .notice {
+		//Value somewhat arbitrary, chosen to visually match the "Admin Menu" tab.
+		margin-bottom: 9px;
 	}
 }
 //endregion

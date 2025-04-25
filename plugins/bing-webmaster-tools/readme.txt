@@ -12,10 +12,13 @@ Requires PHP: 5.6.20
 Bing URL Submission Plugin for WordPress enables site owners to instantly and automatically submit their new/updated
 pages to the Bing index.
 
-
 == Description ==
 
+**Boost your site's visibility with IndexNow! Submit URL updates instantly to Bing and other search engines for faster indexing. [Learn More about IndexNow](https://www.indexnow.org/)**
+
 Bing URL Submission Plugin for WordPress enables automated submission of URLs from Wordpress sites to the Bing index. Once installed and configured with an API key obtained from Bing Webmaster portal, the plugin detects page creation/update in WordPress and automatically submits the URL behind the scenes ensuring that the site pages are always fresh in the Bing index.
+
+Additionally, for an even faster and more efficient way to keep your site indexed, we recommend exploring [IndexNow](https://wordpress.org/plugins/indexnow/). By leveraging the power of this API, your WordPress site can instantly notify Bing and other search engines about new or updated content, accelerating the indexing process. It's an excellent way to enhance your site's visibility across multiple search engines in real-time, complementing the Bing URL Submission Plugin's functionality.
 
 Some other handy features included in the plugin:
 
@@ -72,6 +75,9 @@ See answer to '"Automatic URL Submission" and "Manual URL Submission" cards are 
 
 You can go to 'Plugins' page from your WordPress sidebar and click on Deactivate under Bing URL Submissions plugin. This will remove the API key integration as well as any locally stored data about submitted URLs. Reactivating the plugin will present you with a clean slate and ask for API key input.
 
+= Does this plugin support IndexNow? =
+
+While the Bing URL Submissions Plugin directly submits URLs to Bing, integrating IndexNow can further enhance your site's visibility by notifying not only Bing but other search engines about updates. Consider using both for optimal results!
 
 == Changelog ==
 

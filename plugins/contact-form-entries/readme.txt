@@ -2,7 +2,7 @@
 Contributors: crmperks, sbazzi
 Tags: contact form 7, contact form 7 database, Elementor forms database, contact form entries, wpforms database
 Requires at least: 3.8
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 1.4.0
 Version: 1.4.0
 Requires PHP: 5.3

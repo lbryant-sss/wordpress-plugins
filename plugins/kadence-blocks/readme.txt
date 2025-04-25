@@ -1,10 +1,10 @@
 === Gutenberg Blocks with AI by Kadence WP – Page Builder Features ===
-Contributors: britner, oakesjosh, woodardmc
+Contributors: britner, oakesjosh, woodardmc, ghernkadence
 Tags: gutenberg, blocks, page builder, editor, gutenberg blocks
 Donate link: https://www.kadencewp.com/about-us/
 Requires at least: 6.4
 Tested up to: 6.8.0
-Stable tag: 3.5.3
+Stable tag: 3.5.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -173,6 +173,13 @@ Please report security bugs found in the source code of the Kadence Blocks plugi
 Please report security bugs found in the Kadence Blocks plugin's source code through the Patchstack Vulnerability Disclosure Program https://patchstack.com/database/vdp/kadence-blocks. The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
 == Changelog ==
+
+= 3.5.4 =
+Release Date: April 25th
+* Fix: Button Block height when stacked vertically in section in some situations
+* Fix: Navigation (Adv) top left border radius for active state does not reflect
+* Fix: Video Popup padding for tablet and desktop is not reflecting the frontend
+* Update: Tooltips and Progress Bar (stars) Aria roles for accessibility
 
 = 3.5.3 =
 Release Date: 17th April 2025

@@ -36,6 +36,14 @@ const ScLicensesList = class {
             this.initialFetch();
         });
     }
+    nextPage() {
+        this.query.page = this.query.page + 1;
+        this.initialFetch();
+    }
+    prevPage() {
+        this.query.page = this.query.page - 1;
+        this.initialFetch();
+    }
     async initialFetch() {
         try {
             this.loading = true;
@@ -116,8 +124,8 @@ const ScLicensesList = class {
         }))));
     }
     render() {
-        var _a;
-        return (index.h("sc-dashboard-module", { key: 'fc989681ab3152e9ec3dc7606cb1cf0bd9dd1444', class: "purchase", part: "base", error: this.error }, index.h("span", { key: 'a5b82af04312192c00355eac1ac9f09122a657dd', slot: "heading" }, index.h("slot", { key: 'f723eb7bd5ca0a862e15576fa4923ad12ab241bd', name: "heading" }, this.heading || wp.i18n.__('License Keys', 'surecart'))), !!this.allLink && !!((_a = this.licenses) === null || _a === void 0 ? void 0 : _a.length) && (index.h("sc-button", { key: 'f2c77bbc3b501ac0949cb55ac6ca4211e7392e3b', type: "link", href: this.allLink, slot: "end" }, wp.i18n.__('View all', 'surecart'), index.h("sc-icon", { key: 'fd935365e1bb1ee04dce5053614cc1d3fd4992b5', name: "chevron-right", slot: "suffix" }))), this.renderContent()));
+        var _a, _b;
+        return (index.h("sc-dashboard-module", { key: '7564fddae99ca2d5e519a9a4121a5c803e954cce', class: "purchase", part: "base", error: this.error }, index.h("span", { key: '0259db43a4bdc21d396f760ab18a5424a81eac2e', slot: "heading" }, index.h("slot", { key: '7d354c8476559f2e4bb54e4b517441945603a974', name: "heading" }, this.heading || wp.i18n.__('License Keys', 'surecart'))), !!this.allLink && !!((_a = this.licenses) === null || _a === void 0 ? void 0 : _a.length) && (index.h("sc-button", { key: 'e5d8010b09f202a925dee9ca1d17cfc57dbf57ad', type: "link", href: this.allLink, slot: "end" }, wp.i18n.__('View all', 'surecart'), index.h("sc-icon", { key: '18ca407ab51ce1628119e6d8b8ef8bf098efa034', name: "chevron-right", slot: "suffix" }))), this.renderContent(), !this.allLink && (index.h("sc-pagination", { key: 'e79b138951df16c54d2be8f6c027b1563dd57bc8', page: this.query.page, perPage: this.query.per_page, total: this.pagination.total, totalPages: this.pagination.total_pages, totalShowing: (_b = this === null || this === void 0 ? void 0 : this.licenses) === null || _b === void 0 ? void 0 : _b.length, onScNextPage: () => this.nextPage(), onScPrevPage: () => this.prevPage() }))));
     }
     get el() { return index.getElement(this); }
 };

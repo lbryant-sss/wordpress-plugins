@@ -10,11 +10,11 @@ const ScPillOption = class {
         this.isUnavailable = undefined;
     }
     render() {
-        return (h("button", { key: '66df1bbba7ea3a9d47a43cffe8c528e5bc27bbc6', class: {
+        return (h("button", { key: '2540be21e17bf4a9f7932eee15222fc386fc5db4', class: {
                 'sc-pill-option__button': true,
                 'sc-pill-option__button--disabled': this.isUnavailable,
                 'sc-pill-option__button--selected': this.isSelected,
-            }, tabindex: "0", role: "radio", "aria-checked": this.isSelected ? 'true' : 'false', "aria-disabled": this.isUnavailable ? 'true' : 'false' }, h("slot", { key: 'c18c717dac7f84ab52784d871fcfcd4448062a53' })));
+            }, tabindex: "0", role: "radio", "aria-checked": this.isSelected ? 'true' : 'false', "aria-disabled": this.isUnavailable ? 'true' : 'false' }, h("slot", { key: 'dabb5d80cc1f4d33a53f5249e1f15639806805ea' })));
     }
 };
 ScPillOption.style = ScPillOptionStyle0;

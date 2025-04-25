@@ -2194,5 +2194,8 @@ the tabs will wrap to the next row).
 .ame-tab-list-bottom-margin-disabled .ws-ame-nav-tab-list, .ame-tab-list-bottom-margin-disabled.ws-ame-too-many-tabs.ame-condensed-tabs-enabled .ws-ame-nav-tab-list {
   margin-bottom: 0;
 }
+.ame-tab-list-bottom-margin-disabled > .notice {
+  margin-bottom: 9px;
+}
 
 /*# sourceMappingURL=menu-editor.css.map */

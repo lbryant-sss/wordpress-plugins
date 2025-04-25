@@ -42,12 +42,20 @@ class MWP_EventListener_MasterRequest_AuthenticateServiceRequest implements Symf
             return;
         }
 
-        $serviceSignature = $request->getServiceSignature();
-        $noHostSignature  = $request->getNoHostSignature();
-        $keyName          = $request->getKeyName();
+        $algorithm = $request->getSignatureAlgorithm();
+
+        if ($algorithm == 'SHA256') {
+            $serviceSignature = $request->getServiceSignatureV2();
+            $noHostSignature  = $request->getNoHostSignatureV2();
+        } else {
+            $serviceSignature = $request->getServiceSignature();
+            $noHostSignature  = $request->getNoHostSignature();
+        }
+
+        $keyName = $request->getKeyName();
 
         if (empty($serviceSignature) || empty($keyName)) {
-            $this->context->optionSet('mwp_last_communication_error', 'Unexpected: service signature or key name are empty. Key name: '.$keyName.', Signature: '.$serviceSignature);
+            $this->context->optionSet('mwp_last_communication_error', 'Unexpected: service signature or key name are empty. Key name: '.$keyName.', Signature: '.$serviceSignature.', Algorithm: '.($algorithm ? $algorithm : 'SHA1'));
             return;
         }
 
@@ -81,7 +89,7 @@ class MWP_EventListener_MasterRequest_AuthenticateServiceRequest implements Symf
             return;
         }
 
-        $verify = $this->signer->verify($messageToCheck, !empty($noHostSignature) ? $noHostSignature : $serviceSignature, $publicKey);
+        $verify = $this->signer->verify($messageToCheck, !empty($noHostSignature) ? $noHostSignature : $serviceSignature, $publicKey, $algorithm);
 
         if (!$verify) {
             // for now do not throw an exception, just do not authenticate the request

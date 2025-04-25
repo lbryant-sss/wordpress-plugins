@@ -38,11 +38,28 @@ const ScLicense = class {
         this.loading = false;
         this.error = '';
         this.license = undefined;
+        this.activations = [];
         this.copied = false;
         this.showConfirmDelete = false;
         this.selectedActivationId = '';
         this.deleteActivationError = '';
         this.busy = false;
+        this.pagination = {
+            total: 0,
+            total_pages: 0,
+        };
+        this.query = {
+            page: 1,
+            per_page: 10,
+        };
+    }
+    nextPage() {
+        this.query.page = this.query.page + 1;
+        this.fetchActivations();
+    }
+    prevPage() {
+        this.query.page = this.query.page - 1;
+        this.fetchActivations();
     }
     /** Only fetch if visible */
     componentWillLoad() {
@@ -50,10 +67,23 @@ const ScLicense = class {
             this.initialFetch();
         });
     }
+    async fetchActivations() {
+        try {
+            this.loading = true;
+            await this.getActivations();
+        }
+        catch (e) {
+            console.error(e);
+            this.error = (e === null || e === void 0 ? void 0 : e.message) || wp.i18n.__('Something went wrong', 'surecart');
+        }
+        finally {
+            this.loading = false;
+        }
+    }
     async initialFetch() {
         try {
             this.loading = true;
-            await this.getLicense();
+            await Promise.all([this.getLicense(), this.getActivations()]);
         }
         catch (e) {
             console.error(e);
@@ -64,11 +94,25 @@ const ScLicense = class {
         }
     }
     async getLicense() {
-        this.license = await apiFetch({
+        this.license = (await apiFetch({
             path: addQueryArgs(`surecart/v1/licenses/${this.licenseId}`, {
-                expand: ['activations', 'purchase', 'purchase.product'],
+                expand: ['purchase', 'purchase.product'],
             }),
-        });
+        }));
+    }
+    async getActivations() {
+        const response = (await apiFetch({
+            path: addQueryArgs('surecart/v1/activations', {
+                license_ids: [this.licenseId],
+                ...this.query,
+            }),
+            parse: false,
+        }));
+        this.pagination = {
+            total: parseInt(response.headers.get('X-WP-Total')),
+            total_pages: parseInt(response.headers.get('X-WP-TotalPages')),
+        };
+        this.activations = (await response.json());
     }
     async copyKey(key) {
         try {
@@ -110,7 +154,7 @@ const ScLicense = class {
             product.name, !this.loading && !purchase.live_mode && (h("sc-tag", { type: "warning", size: "small" }, wp.i18n.__('Test Mode', 'surecart')))))));
     }
     renderContent() {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j;
         if (this.loading && !((_a = this.license) === null || _a === void 0 ? void 0 : _a.id)) {
             return this.renderLoading();
         }
@@ -118,16 +162,16 @@ const ScLicense = class {
             return this.renderEmpty();
         }
         return (h(Fragment, null, h("sc-dashboard-module", { error: this.error }, this.renderLicenseHeader(), h("sc-card", { noPadding: true }, h("sc-stacked-list", null, h("sc-stacked-list-row", { style: { '--columns': '2', '--sc-stacked-list-row-align-items': 'center' } }, h("div", null, wp.i18n.__('License Status', 'surecart')), this.renderStatus()), h("sc-stacked-list-row", { style: { '--columns': '2' } }, h("div", null, wp.i18n.__('License Key', 'surecart')), h("div", { class: "license__key" }, h("sc-input", { value: (_c = this.license) === null || _c === void 0 ? void 0 : _c.key, readonly: true }, h("sc-button", { class: "license__copy", type: "default", size: "small", slot: "suffix", onClick: () => { var _a; return this.copyKey((_a = this.license) === null || _a === void 0 ? void 0 : _a.key); } }, this.copied ? wp.i18n.__('Copied!', 'surecart') : wp.i18n.__('Copy', 'surecart'))))), h("sc-stacked-list-row", { style: { '--columns': '2' } }, h("div", null, wp.i18n.__('Date', 'surecart')), h("span", null, (_d = this.license) === null || _d === void 0 ? void 0 : _d.created_at_date)), h("sc-stacked-list-row", { style: { '--columns': '2' } }, h("div", null, wp.i18n.__('Activations Count', 'surecart')), h("span", null, (_e = this.license) === null || _e === void 0 ? void 0 :
-            _e.activation_count, " / ", ((_f = this.license) === null || _f === void 0 ? void 0 : _f.activation_limit) || h("span", null, "\u221E")))))), h("sc-dashboard-module", null, h("span", { slot: "heading" }, h("slot", { name: "heading" }, wp.i18n.__('Activations', 'surecart'))), h("sc-card", { noPadding: true }, !!((_j = (_h = (_g = this.license) === null || _g === void 0 ? void 0 : _g.activations) === null || _h === void 0 ? void 0 : _h.data) === null || _j === void 0 ? void 0 : _j.length) ? (h("sc-stacked-list", null, (_k = this.license) === null || _k === void 0 ? void 0 : _k.activations.data.map(activation => (h("sc-stacked-list-row", { style: { '--columns': '4' } }, h("div", { class: "license__date" }, activation.created_at_date), h("div", null, activation.name), h("div", null, activation.fingerprint), h("div", null, h("sc-button", { size: "small", onClick: () => {
+            _e.activation_count, " / ", ((_f = this.license) === null || _f === void 0 ? void 0 : _f.activation_limit) || h("span", null, "\u221E")))))), h("sc-dashboard-module", null, h("span", { slot: "heading" }, h("slot", { name: "heading" }, wp.i18n.__('Activations', 'surecart'))), h("sc-card", { noPadding: true }, !!((_g = this.activations) === null || _g === void 0 ? void 0 : _g.length) ? (h("sc-stacked-list", null, this.activations.map(activation => (h("sc-stacked-list-row", { style: { '--columns': '4' } }, h("div", { class: "license__date" }, activation.created_at_date), h("div", null, activation.name), h("div", null, activation.fingerprint), h("div", null, h("sc-button", { size: "small", onClick: () => {
                 this.selectedActivationId = activation.id;
                 this.showConfirmDelete = true;
-            } }, "Delete"))))))) : (h("sc-empty", null, wp.i18n.__('No activations present.', 'surecart'))), this.loading && h("sc-block-ui", { style: { '--sc-block-ui-opacity': '0.75' }, spinner: true })))));
+            } }, wp.i18n.__('Delete', 'surecart')))))))) : (h("sc-empty", null, wp.i18n.__('No activations present.', 'surecart'))), this.loading && h("sc-block-ui", { style: { '--sc-block-ui-opacity': '0.75' }, spinner: true })), ((_h = this.pagination) === null || _h === void 0 ? void 0 : _h.total_pages) > 1 && (h("sc-pagination", { page: this.query.page, perPage: this.query.per_page, total: this.pagination.total, totalPages: this.pagination.total_pages, totalShowing: (_j = this === null || this === void 0 ? void 0 : this.activations) === null || _j === void 0 ? void 0 : _j.length, onScNextPage: () => this.nextPage(), onScPrevPage: () => this.prevPage() })))));
     }
     renderConfirmDelete() {
         return (h("sc-dialog", { open: this.showConfirmDelete, style: { '--body-spacing': 'var(--sc-spacing-x-large)' }, noHeader: true, onScRequestClose: this.onCloseDeleteModal }, h("sc-button", { class: "close__button", type: "text", circle: true, onClick: this.onCloseDeleteModal, disabled: this.loading }, h("sc-icon", { name: "x" })), h("sc-dashboard-module", { heading: wp.i18n.__('Delete Activation', 'surecart'), class: "license-cancel", error: this.error, style: { '--sc-dashboard-module-spacing': '1em' } }, h("span", { slot: "description" }, wp.i18n.__('Are you sure you want to delete activation?', 'surecart')), h("sc-flex", { justifyContent: "flex-start" }, h("sc-button", { type: "primary", disabled: this.loading || this.busy, onClick: this.deleteActivation }, wp.i18n.__('Delete Activation', 'surecart')), h("sc-button", { style: { color: 'var(--sc-color-gray-500' }, type: "text", onClick: this.onCloseDeleteModal, disabled: this.loading || this.busy }, wp.i18n.__('Cancel', 'surecart'))), this.busy && h("sc-block-ui", { style: { '--sc-block-ui-opacity': '0.75' }, spinner: true }))));
     }
     render() {
-        return (h("sc-spacing", { key: '34bfdaee4db7f2149d160210eb39a6a9706e7df0', style: { '--spacing': 'var(--sc-spacing-large)' } }, this.renderContent(), this.renderConfirmDelete()));
+        return (h("sc-spacing", { key: 'da57ed27b125dec776f28176d9527c3d020616d8', style: { '--spacing': 'var(--sc-spacing-large)' } }, this.renderContent(), this.renderConfirmDelete()));
     }
     get el() { return getElement(this); }
 };

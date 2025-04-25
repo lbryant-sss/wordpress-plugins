@@ -4,7 +4,7 @@ Tags: spam, antispam, anti-spam, comments, firewall
 Requires at least: 4.7
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 6.54
+Stable tag: 6.55
 License: GPLv2
 
 Spam protection, anti-spam, firewall, premium plugin. No spam comments & users, no spam contact form & WooCommerce anti-spam.
@@ -82,7 +82,7 @@ Plugin extends spam protection for Formidable Form Builder. It filters spam subm
 Plugin protects Leaky Paywall plugin (by ZEEN01) against spam subscriptions. It can be used with any other third-party spam filters.
 
 = HubSpot protection for embedded forms =
-Plugin protects HubSpot embedded forms against any spam submissions. Guide to start using embedded forms https://knowledge.hubspot.com/forms/how-can-i-share-a-hubspot-form-if-im-using-an-external-site 
+Plugin protects HubSpot embedded forms against any spam submissions. Guide to start using embedded forms https://knowledge.hubspot.com/forms/how-can-i-share-a-hubspot-form-if-im-using-an-external-site
 
 = Contact Form by WPForms spam filter =
 Plugin extends Contact Form by WPForms to provide spam protection. It filters spam submissions for each type of forms - simple contact form, marketing form, request a quote and etc.
@@ -447,6 +447,23 @@ Yes, it is. Please read this article,
 8. Prevent any other spamers, from any other forms, for example from WPForms.
 
 == Changelog ==
+
+= 6.55 24.04.2025 =
+* New. Contact data encoder. New encoder state form in settings.
+* New. Contact data encoder. Phone number encoding implemented.
+* New. Integration. Appointment Booking Calendar.
+* New. Settings. Added the footer.
+* Mod. Email Encoder. Added underline for replaced text in replace mode.
+* Mod. Email Encoder. Statuses of features are disabled if the encoder is fully turned off.
+* Mod. Settings. Updates for text the "Set cookies" option.
+* Mod. Settings: Changed API key field description and behavior.
+* Fix. SFW. The check now runs on `init` hook to fix "load_text_domain" error.
+* Fix. Enqueue. Added `allow_url_fopen` check before processing script paths.
+* Fix. Integrations. Improved email validation in Ninja Forms
+* Fix. Integrations. Enhanced Zoho spam check flow
+* Fix. Integrations. Added 'activehosted.com' support in form handling
+* Fix. Code. Enqueue. External bot detector script turned back to standard WP enqueuing way.
+* Upd. Anti-Crawler. Excluded feed requests.
 
 = 6.54 10.04.2025 =
 * New. Code. Enqueue scripts via specialized handler.

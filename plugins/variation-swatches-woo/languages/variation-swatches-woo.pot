@@ -1,34 +1,42 @@
-# Copyright (C) 2024 CartFlows
+# Copyright (C) 2025 CartFlows
 # This file is distributed under the GPL v2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Variation Swatches for WooCommerce 1.0.12\n"
+"Project-Id-Version: Variation Swatches for WooCommerce 1.0.13\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/variation-swatches-woo\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-21T07:27:26+00:00\n"
+"POT-Creation-Date: 2025-04-24T10:33:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: variation-swatches-woo\n"
 
 #. Plugin Name of the plugin
+#: variation-swatches-woo.php
 msgid "Variation Swatches for WooCommerce"
 msgstr ""
 
 #. Description of the plugin
+#: variation-swatches-woo.php
 #: admin-core/assets/build/settings.js:1
 #: admin-core/assets/src/components/path/Welcome.js:26
 msgid "Provides super easy shopping experience by displaying beautiful variation swatches on WooCommerce shop and product page."
 msgstr ""
 
 #. Author of the plugin
+#: variation-swatches-woo.php
+#: admin-core/assets/build/settings.js:1
+#: admin-core/assets/build/settings.js:8
+#: admin-core/assets/src/components/Header.js:22
+#: admin-core/assets/src/components/tabs/cartflows.js:106
 msgid "CartFlows"
 msgstr ""
 
 #. Author URI of the plugin
+#: variation-swatches-woo.php
 msgid "https://cartflows.com/"
 msgstr ""
 
@@ -43,26 +51,26 @@ msgstr ""
 #: admin-core/admin-menu.php:65
 #: admin/attributes-config.php:250
 #: admin-core/assets/build/settings.js:1
-#: admin-core/assets/src/components/Header.js:31
+#: admin-core/assets/src/components/Header.js:38
 msgid "Variation Swatches"
 msgstr ""
 
-#: admin-core/admin-menu.php:153
+#: admin-core/admin-menu.php:155
 #: admin/product-config.php:71
 #: admin/product-config.php:96
 #: admin/product-config.php:144
 msgid "Invalid user."
 msgstr ""
 
-#: admin-core/admin-menu.php:173
+#: admin-core/admin-menu.php:175
 msgid "No valid setting keys found."
 msgstr ""
 
-#: admin-core/admin-menu.php:184
+#: admin-core/admin-menu.php:186
 msgid "Settings saved successfully."
 msgstr ""
 
-#: admin-core/admin-menu.php:187
+#: admin-core/admin-menu.php:189
 msgid "Failed to save settings."
 msgstr ""
 
@@ -300,32 +308,32 @@ msgid "Choose an image"
 msgstr ""
 
 #. translators: %1$1s, %3$3s: Html Tag, %2$2s: Extra attribute count
-#: inc/swatches.php:380
+#: inc/swatches.php:384
 msgid "%1$1s %2$2s More %3$3s"
 msgstr ""
 
-#: inc/swatches.php:478
+#: inc/swatches.php:482
 msgid "This product is currently out of stock and unavailable."
 msgstr ""
 
-#: inc/swatches.php:501
+#: inc/swatches.php:505
 msgid "Clear"
 msgstr ""
 
-#: inc/swatches.php:539
+#: inc/swatches.php:543
 msgid "Selected variant is unavailable."
 msgstr ""
 
-#: inc/swatches.php:703
+#: inc/swatches.php:707
 msgid "Add to Cart"
 msgstr ""
 
 #. translators: %s: Product title
-#: inc/swatches.php:741
+#: inc/swatches.php:745
 msgid "\"%1$s\" has been added to your cart. %2$s"
 msgstr ""
 
-#: inc/swatches.php:743
+#: inc/swatches.php:747
 msgid "View Cart"
 msgstr ""
 
@@ -358,7 +366,7 @@ msgid "How To"
 msgstr ""
 
 #: admin-core/assets/build/settings.js:1
-#: admin-core/assets/src/components/Header.js:63
+#: admin-core/assets/src/components/Header.js:70
 msgid "Notification"
 msgstr ""
 
@@ -378,7 +386,8 @@ msgid "Enable for Shop page"
 msgstr ""
 
 #: admin-core/assets/build/settings.js:1
-msgid "Enable swatches for shop / archieve page."
+#: admin-core/assets/src/components/tabs/GeneralSettings.js:25
+msgid "Enable swatches for shop/archive page."
 msgstr ""
 
 #: admin-core/assets/build/settings.js:1
@@ -859,7 +868,6 @@ msgstr ""
 msgid "To Edit an existing attribute locate attribute in attributes table click on edit link below the name of attribute select desired parameter and click on %1$sUpdate%2$s button."
 msgstr ""
 
-#. translators: %1$s: bold tag start, %2$s: bold tag end.
 #: admin-core/assets/build/settings.js:3
 #: admin-core/assets/src/components/tabs/HowTo.js:69
 msgid "How to configure terms of an attribute"
@@ -877,7 +885,6 @@ msgstr ""
 msgid "Adding new term is similar to adding an attribute, On the basis attribute type field will appear to either select a image or to choose color for the term. Choose appropriate option and click on %1$sAdd new {attribute-name}%2$s button "
 msgstr ""
 
-#. translators: %1$s: bold tag start, %2$s: bold tag end.
 #: admin-core/assets/build/settings.js:5
 #: admin-core/assets/src/components/tabs/HowTo.js:106
 msgid "How to create variations from attributes"
@@ -889,7 +896,6 @@ msgstr ""
 msgid "Refer this %1$sWooCommerce documentation%2$s on how to create Variable product"
 msgstr ""
 
-#. translators: %1$s: anchor tag start, %2$s: anchor tag end.
 #: admin-core/assets/build/settings.js:6
 #: admin-core/assets/src/components/tabs/HowTo.js:130
 msgid "How to apply different swatch settings on shop page"
@@ -907,27 +913,95 @@ msgstr ""
 msgid "Under the %1$sMore Customizations%2$s tab enable %1$sOverride global settings%2$s option"
 msgstr ""
 
-#. translators: %1$s: anchor tag start, %2$s: anchor tag end.
 #: admin-core/assets/build/settings.js:8
 #: admin-core/assets/src/components/tabs/HowTo.js:164
 msgid "Select the appropriate value to get desired swatch style on shop page"
 msgstr ""
 
 #: admin-core/assets/build/settings.js:8
-#: admin-core/assets/src/components/Container.js:77
+#: admin-core/assets/src/components/tabs/cartflows.js:46
+msgid "Installing CartFlows…"
+msgstr ""
+
+#: admin-core/assets/build/settings.js:8
+#: admin-core/assets/src/components/tabs/cartflows.js:56
+msgid "Activating CartFlows…"
+msgstr ""
+
+#: admin-core/assets/build/settings.js:8
+#: admin-core/assets/src/components/tabs/cartflows.js:69
+msgid "Installation Failed"
+msgstr ""
+
+#: admin-core/assets/build/settings.js:8
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/tabs/cartflows.js:80
+#: admin-core/assets/src/components/tabs/cartflows.js:130
+msgid "Install CartFlows"
+msgstr ""
+
+#. translators: %s: line break
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/tabs/cartflows.js:112
+msgid "Boost Your Conversions & Revenue%swith CartFlows!"
+msgstr ""
+
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/tabs/cartflows.js:121
+msgid "Create easy sales funnels, increase conversions, and grow your business effortlessly."
+msgstr ""
+
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/tabs/cartflows.js:152
+msgid "Visit CartFlows Website"
+msgstr ""
+
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/tabs/cartflows.js:164
+msgid "See How CartFlows Helps You Get More Customers and Revenue"
+msgstr ""
+
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/tabs/cartflows.js:326
+msgid "These are just some examples. The possibilities are truly endless!"
+msgstr ""
+
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/tabs/cartflows.js:336
+msgid "Top brands trust CartFlows to create high-converting funnels!"
+msgstr ""
+
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/tabs/cartflows.js:347
+msgid "Brand logo"
+msgstr ""
+
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/tabs/cartflows.js:359
+msgid "Join Thousands of Customers Who Are Already Boosting Sales with CartFlows!"
+msgstr ""
+
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/tabs/cartflows.js:365
+msgid "Connect your store and boost your sales."
+msgstr ""
+
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/tabs/cartflows.js:375
+msgid "Install Now"
+msgstr ""
+
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/Container.js:78
 msgid "General Settings"
 msgstr ""
 
-#: admin-core/assets/build/settings.js:8
-#: admin-core/assets/src/components/Container.js:84
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/Container.js:85
 msgid "Global Styling"
 msgstr ""
 
-#: admin-core/assets/build/settings.js:8
-#: admin-core/assets/src/components/Container.js:91
+#: admin-core/assets/build/settings.js:10
+#: admin-core/assets/src/components/Container.js:92
 msgid "Shop Page Styling"
-msgstr ""
-
-#: admin-core/assets/src/components/tabs/GeneralSettings.js:25
-msgid "Enable swatches for shop/archive page."
 msgstr ""

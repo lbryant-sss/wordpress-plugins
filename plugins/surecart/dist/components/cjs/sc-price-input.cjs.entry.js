@@ -108,13 +108,13 @@ const ScPriceInput = class {
         return currency.maybeConvertAmount(parsedAmount, this.currencyCode).toString();
     }
     render() {
-        return (index.h("sc-input", { key: '19e78e4afd3dc79d02b3c74303ddc08d4bb471c0', exportparts: "base, input, form-control, label, help-text, prefix, suffix", size: this.size, label: this.label, showLabel: this.showLabel, help: this.help, ref: el => (this.input = el), type: "text" // we cannot use number because it's basically the worst. https://stackoverflow.blog/2022/12/26/why-the-number-input-is-the-worst-input/
+        return (index.h("sc-input", { key: 'bbe4319fbfa05d3a8d1a7d6a53ad68a891d5557d', exportparts: "base, input, form-control, label, help-text, prefix, suffix", size: this.size, label: this.label, showLabel: this.showLabel, help: this.help, ref: el => (this.input = el), type: "text" // we cannot use number because it's basically the worst. https://stackoverflow.blog/2022/12/26/why-the-number-input-is-the-worst-input/
             ,
             name: this.name, disabled: this.disabled, readonly: this.readonly, required: this.required, placeholder: this.placeholder, minlength: this.minlength, maxlength: this.maxlength, min: !!this.min ? this.min / 100 : 0.0, step: 0.01, max: !!this.max ? this.max / 100 : null,
             // TODO: Test These below
             autofocus: this.autofocus, inputmode: 'decimal', onScChange: () => this.handleChange(), onScInput: () => this.handleInput(), onScBlur: () => this.scBlur.emit(), onScFocus: () => this.scFocus.emit(), pattern: "^\\d*(\\.\\d{0,2})?$" // This prevents more than two decimal places
             ,
-            value: this.getFormattedValue() }, index.h("span", { key: 'a5d8d6cb4f044fb31b1bdcd051b0624ea8d77396', style: { opacity: '0.5' }, slot: "prefix" }, price.getCurrencySymbol(this.currencyCode)), index.h("span", { key: 'bffef10840c808e28f1093e9df2ac2f693df51df', slot: "suffix" }, index.h("slot", { key: '29a1511939ec42f49c1e62d0e4eb41b6d8281239', name: "suffix" }, this.showCode && (this === null || this === void 0 ? void 0 : this.currencyCode) && index.h("span", { key: 'f68c063c14975122d3c2a93331194d98b95e9ec3', style: { opacity: '0.5' } }, this.currencyCode.toUpperCase())))));
+            value: this.getFormattedValue() }, index.h("span", { key: '4f66f1d5e987430102f0f2f03a1f36dbf4a1cc1b', style: { opacity: '0.5' }, slot: "prefix" }, price.getCurrencySymbol(this.currencyCode)), index.h("span", { key: '08eaee1241c5b0f22b37831213faabd756396e73', slot: "suffix" }, index.h("slot", { key: '8228030e40ecb0333f857861db4976dede452471', name: "suffix" }, this.showCode && (this === null || this === void 0 ? void 0 : this.currencyCode) && index.h("span", { key: '018b85fb9dd944d168df6f58b2dd8177ecc2277f', style: { opacity: '0.5' } }, this.currencyCode.toUpperCase())))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

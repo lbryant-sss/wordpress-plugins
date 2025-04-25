@@ -22,6 +22,8 @@ export declare class ScLicensesList {
     };
     /** Only fetch if visible */
     componentWillLoad(): void;
+    nextPage(): void;
+    prevPage(): void;
     initialFetch(): Promise<void>;
     getLicenses(): Promise<License[]>;
     renderStatus(status: string): any;

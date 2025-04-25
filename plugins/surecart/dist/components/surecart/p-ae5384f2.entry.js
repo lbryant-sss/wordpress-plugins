@@ -1,0 +1,2 @@
+import{r as t,h as o}from"./p-e97fde0a.js";const i=":host(:not(:focus-within)){position:absolute !important;width:1px !important;height:1px !important;clip:rect(0 0 0 0) !important;clip-path:inset(50%) !important;border:none !important;overflow:hidden !important;white-space:nowrap !important;padding:0 !important}";const n=i;const r=class{constructor(o){t(this,o)}render(){return o("slot",{key:"34282fe398f4ca3b343aea401ebeadfe65493232"})}};r.style=n;export{r as sc_visually_hidden};
+//# sourceMappingURL=p-ae5384f2.entry.js.map

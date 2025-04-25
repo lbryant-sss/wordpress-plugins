@@ -2,9 +2,9 @@
 Contributors: mr.clayton
 Tags: stripe, klarna, credit card, apple pay, google pay
 Requires at least: 3.0.1
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 3.3.84
+Stable tag: 3.3.85
 Copyright: Payment Plugins
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -63,6 +63,9 @@ If your site is not loading over https, then Stripe won't render the Payment Req
 9. Stripe Link for high conversion
 
 == Changelog ==
+= 3.3.85 - 04/24/25 =
+* Added - Amazon Pay support for currencies USD, AUD, GBP, DKK, EUR, HKD, JPY, NZD, NOK, ZAR, SEK, CHF.
+* Added - WC Tested to 9.8
 = 3.3.84 - 03/18/25 =
 * Fixed - Pay for order error when order created manually by admin. [https://wordpress.org/support/topic/500-error-when-trying-to-pay-for-order-from-admin/](https://wordpress.org/support/topic/500-error-when-trying-to-pay-for-order-from-admin/)
 = 3.3.83 - 03/15/25 =

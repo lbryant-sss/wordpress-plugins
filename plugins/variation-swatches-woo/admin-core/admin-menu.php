@@ -101,7 +101,8 @@ class Admin_Menu {
 				'version'      => CFVSW_VER,
 			);
 
-		$script_dep = array_merge( $script_info['dependencies'], array( 'updates' ) );
+		$script_dep          = array_merge( $script_info['dependencies'], array( 'updates' ) );
+		$is_cartflows_active = 'active' === $this->helper->get_plugin_status( 'cartflows/cartflows.php' );
 
 		wp_register_script( 'cfvsw_settings', $this->tailwind_assets . 'settings.js', $script_dep, CFVSW_VER, true );
 		wp_enqueue_script( 'cfvsw_settings' );
@@ -115,6 +116,7 @@ class Admin_Menu {
 				CFVSW_SHOP          => $this->helper->get_option( CFVSW_SHOP ),
 				CFVSW_STYLE         => $this->helper->get_option( CFVSW_STYLE ),
 				'get_woo_attr_list' => $this->get_woo_attr_list(),
+				'cartflows_status'  => $is_cartflows_active,
 			]
 		);
 
