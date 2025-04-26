@@ -14,13 +14,16 @@ class MWP_EventListener_MasterRequest_AuthenticateServiceRequest implements Symf
 
     private $signer;
 
+    private $signer256;
+
     private $context;
 
-    function __construct(MWP_Worker_Configuration $configuration, MWP_Signer_Interface $signer, MWP_WordPress_Context $context)
+    function __construct(MWP_Worker_Configuration $configuration, MWP_Signer_Interface $signer, MWP_Signer_Interface $signer256, MWP_WordPress_Context $context)
     {
-        $this->configuration = $configuration;
-        $this->signer        = $signer;
-        $this->context       = $context;
+	    $this->configuration = $configuration;
+	    $this->signer        = $signer;
+	    $this->signer256     = $signer256;
+	    $this->context       = $context;
     }
 
     public static function getSubscribedEvents()
@@ -89,7 +92,11 @@ class MWP_EventListener_MasterRequest_AuthenticateServiceRequest implements Symf
             return;
         }
 
-        $verify = $this->signer->verify($messageToCheck, !empty($noHostSignature) ? $noHostSignature : $serviceSignature, $publicKey, $algorithm);
+	    if ($algorithm == 'SHA256') {
+		    $verify = $this->signer256->verify($messageToCheck, !empty($noHostSignature) ? $noHostSignature : $serviceSignature, $publicKey, $algorithm);
+	    } else {
+		    $verify = $this->signer->verify($messageToCheck, !empty($noHostSignature) ? $noHostSignature : $serviceSignature, $publicKey, $algorithm);
+	    }
 
         if (!$verify) {
             // for now do not throw an exception, just do not authenticate the request

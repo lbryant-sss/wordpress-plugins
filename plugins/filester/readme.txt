@@ -3,7 +3,7 @@ Contributors: ninjateam
 Donate link: https://codecanyon.net/item/media-folders-manager-for-wordpress/21715379
 Tags: file manager, wordpress file manager, wp file manager, files, download plugin
 Requires at least: 3.0
-Tested up to: 6.7.1
+Tested up to: 6.8
 Stable tag: 1.8.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

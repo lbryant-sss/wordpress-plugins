@@ -50,7 +50,7 @@ class Akismet_Compatible_Plugins {
 	 *
 	 * @var string
 	 */
-	protected const CACHE_KEY = 'akismet_active_installed_compatible_plugins';
+	protected const CACHE_KEY = 'akismet_compatible_plugin_list';
 
 	/**
 	 * The cache group for things cached in this class.
@@ -67,26 +67,6 @@ class Akismet_Compatible_Plugins {
 	public const DEFAULT_VISIBLE_PLUGIN_COUNT = 2;
 
 	/**
-	 * List of compatible plugins and their metadata.
-	 *
-	 * @var array {
-	 *     Plugin data keyed by plugin slug.
-	 *     @type string $name     The display name of the plugin
-	 *     @type string $help_url URL to the plugin's help documentation
-	 *     @type string $logo     URL or path to the plugin's logo
-	 *     @type string $path     The plugin's path relative to the plugins directory
-	 * }
-	 */
-	private static $compatible_plugins = array();
-
-	/**
-	 * Holds any errors that occurred during the last API request.
-	 *
-	 * @var WP_Error[]
-	 */
-	private static $errors = array();
-
-	/**
 	 * Get the list of active, installed compatible plugins.
 	 *
 	 * @return WP_Error|array {
@@ -97,31 +77,37 @@ class Akismet_Compatible_Plugins {
 	 * }
 	 */
 	public static function get_installed_compatible_plugins() {
-		$cached_plugins = static::get_cached_plugins();
+		// Retrieve and validate the full compatible plugins list.
+		$compatible_plugins = static::get_compatible_plugins();
 
-		if ( $cached_plugins ) {
-			return $cached_plugins;
-		}
-
-		$plugins = array();
-		static::get_compatible_plugins();
-
-		if ( ! empty( self::$errors ) ) {
+		if ( empty( $compatible_plugins ) ) {
 			return new WP_Error(
 				self::COMPATIBLE_PLUGIN_API_ERROR,
 				__( 'Error getting compatible plugins.', 'akismet' )
 			);
 		}
 
-		foreach ( self::$compatible_plugins as $plugin_slug => $plugin_data ) {
-			if ( self::is_installed( $plugin_slug )
-					&& self::is_active( $plugin_slug ) ) {
-				$plugins[ $plugin_slug ] = $plugin_data;
+		// Retrieve all installed plugins once.
+		$all_plugins = get_plugins();
+
+		// Build list of compatible plugins that are both installed and active.
+		$active_compatible_plugins = array();
+
+		foreach ( $compatible_plugins as $slug => $data ) {
+			$path = $data['path'];
+			// Skip if not installed.
+			if ( ! isset( $all_plugins[ $path ] ) ) {
+				continue;
+			}
+			// Check activation: per-site or network-wide (multisite).
+			$site_active    = is_plugin_active( $path );
+			$network_active = is_multisite() && is_plugin_active_for_network( $path );
+			if ( $site_active || $network_active ) {
+				$active_compatible_plugins[ $slug ] = $data;
 			}
 		}
 
-		static::set_cached_plugins( $plugins );
-		return $plugins;
+		return $active_compatible_plugins;
 	}
 
 	/**
@@ -130,8 +116,8 @@ class Akismet_Compatible_Plugins {
 	 * @return void
 	 */
 	public static function init(): void {
-		add_action( 'activated_plugin', array( static::class, 'handle_plugin_change' ) );
-		add_action( 'deactivated_plugin', array( static::class, 'handle_plugin_change' ) );
+		add_action( 'activated_plugin', array( static::class, 'handle_plugin_change' ), true );
+		add_action( 'deactivated_plugin', array( static::class, 'handle_plugin_change' ), true );
 	}
 
 	/**
@@ -161,41 +147,17 @@ class Akismet_Compatible_Plugins {
 	}
 
 	/**
-	 * Checks if a specific plugin is installed.
+	 * Gets plugins that are compatible with Akismet from the Akismet API.
 	 *
-	 * @param string $plugin_slug The slug of the plugin to check (e.g., 'jetpack').
-	 * @return bool True if the plugin is installed, false otherwise.
+	 * @return array
 	 */
-	private static function is_installed( string $plugin_slug ): bool {
-		if ( ! isset( self::$compatible_plugins[ $plugin_slug ] ) ) {
-			return false;
+	private static function get_compatible_plugins(): array {
+		// Return cached result if present (false => cache miss; empty array is valid).
+		$cached_plugins = static::get_cached_plugins();
+
+		if ( $cached_plugins ) {
+			return $cached_plugins;
 		}
-
-		return array_key_exists( self::$compatible_plugins[ $plugin_slug ]['path'], get_plugins() );
-	}
-
-	/**
-	 * Checks if a specific plugin is active.
-	 *
-	 * @param string $plugin_slug The slug of the plugin to check.
-	 * @return bool True if the plugin is active, false otherwise.
-	 */
-	private static function is_active( string $plugin_slug ): bool {
-		if ( ! isset( self::$compatible_plugins[ $plugin_slug ] ) ) {
-			return false;
-		}
-
-		return is_plugin_active( self::$compatible_plugins[ $plugin_slug ]['path'] );
-	}
-
-	/**
-	 * Gets plugins that are compatible with Akismet from the Akismet API and
-	 * assigns them to a local static associative array.
-	 *
-	 * @return void
-	 */
-	private static function get_compatible_plugins(): void {
-		self::$errors = array();
 
 		$response = wp_remote_get(
 			self::COMPATIBLE_PLUGIN_ENDPOINT
@@ -204,15 +166,21 @@ class Akismet_Compatible_Plugins {
 		$sanitized = static::validate_compatible_plugin_response( $response );
 
 		if ( false === $sanitized ) {
-			return;
+			return array();
 		}
 
 		/**
 		 * Sets local static associative array of plugin data keyed by plugin slug.
 		 */
+		$compatible_plugins = array();
+
 		foreach ( $sanitized as $plugin ) {
-			static::$compatible_plugins[ $plugin['slug'] ] = $plugin;
+			$compatible_plugins[ $plugin['slug'] ] = $plugin;
 		}
+
+		static::set_cached_plugins( $compatible_plugins );
+
+		return $compatible_plugins;
 	}
 
 	/**
@@ -226,7 +194,6 @@ class Akismet_Compatible_Plugins {
 		 * Terminates the function if the response is a WP_Error object.
 		 */
 		if ( is_wp_error( $response ) ) {
-			self::$errors[] = $response;
 			return false;
 		}
 
@@ -314,7 +281,8 @@ class Akismet_Compatible_Plugins {
 		return wp_cache_set(
 			static::CACHE_KEY . "_$_blog_id",
 			$plugins,
-			static::CACHE_GROUP . "_$_blog_id"
+			static::CACHE_GROUP . "_$_blog_id",
+			DAY_IN_SECONDS
 		);
 	}
 

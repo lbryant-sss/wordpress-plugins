@@ -7,14 +7,14 @@
   Author: realmag777
   Version: 1.4.2.3
   Requires at least: WP 4.9.0
-  Tested up to: WP 6.7
+  Tested up to: WP 6.8
   Requires PHP: 7.4
   Text Domain: woocommerce-currency-switcher
   Domain Path: /languages
   Forum URI: https://pluginus.net/support/forum/woocs-woocommerce-currency-switcher-multi-currency-and-multi-pay-for-woocommerce/
   Author URI: https://pluginus.net/
   WC requires at least: 6.0
-  WC tested up to: 9.6
+  WC tested up to: 9.8
  */
 
 if (!defined('ABSPATH')) {

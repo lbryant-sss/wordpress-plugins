@@ -4,7 +4,7 @@ Tags: pdf, pdf viewer, embed pdf, pdf document, block
 Requires at least: 6.1
 Requires PHP: 7.2
 Tested up to: 6.8
-Stable tag: 4.9.1
+Stable tag: 4.9.2
 License: GPL-2.0-or-later
 
 Seamlessly embed PDFs into your content, with customizations and intelligent responsive resizing, and no third-party services or iframes.
@@ -182,6 +182,10 @@ If you cannot install from the WordPress plugins directory for any reason, and n
 1. Click Activate on the "Plugins" screen.
 
 == Changelog ==
+
+= 4.9.2 =
+* Changed: When just installed, the plugin was not saving its settings into the database upon activation. This caused the plugin to not work properly until the settings were saved at least once.
+* Fixed: PDF Viewer Toolbar was displayed on the front-end even when disabled using block/shortcode attributes until the plugin settings were saved at least once.
 
 = 4.9.1 =
 * Fixed: The PDF Embedder block performance was improved slightly in the Block Editor.

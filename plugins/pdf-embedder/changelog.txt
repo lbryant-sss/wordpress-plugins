@@ -1,3 +1,7 @@
+= 4.9.2 =
+* Changed: When just installed, the plugin was not saving its settings into the database upon activation. This caused the plugin to not work properly until the settings were saved at least once.
+* Fixed: PDF Viewer Toolbar was displayed on the front-end even when disabled using block/shortcode attributes until the plugin settings were saved at least once.
+
 = 4.9.1 =
 * Fixed: The PDF Embedder block performance was improved slightly in the Block Editor.
 * Fixed: Toolbar was not visible when configured to be displayed on hover.

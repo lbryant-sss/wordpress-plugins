@@ -15,19 +15,22 @@ class MWP_EventListener_PublicRequest_AutomaticLogin implements Symfony_EventDis
 
     private $signer;
 
+    private $signer256;
+
     private $nonceManager;
 
     private $configuration;
 
     private $sessionStore;
 
-    public function __construct(MWP_WordPress_Context $context, MWP_Security_NonceManager $nonceManager, MWP_Signer_Interface $signer, MWP_Worker_Configuration $configuration, MWP_WordPress_SessionStore $sessionStore)
+    public function __construct(MWP_WordPress_Context $context, MWP_Security_NonceManager $nonceManager, MWP_Signer_Interface $signer, MWP_Signer_Interface $signer256, MWP_Worker_Configuration $configuration, MWP_WordPress_SessionStore $sessionStore)
     {
-        $this->context       = $context;
-        $this->nonceManager  = $nonceManager;
-        $this->signer        = $signer;
-        $this->configuration = $configuration;
-        $this->sessionStore  = $sessionStore;
+	    $this->context       = $context;
+	    $this->nonceManager  = $nonceManager;
+	    $this->signer        = $signer;
+	    $this->signer256     = $signer256;
+	    $this->configuration = $configuration;
+	    $this->sessionStore  = $sessionStore;
     }
 
     public static function getSubscribedEvents()
@@ -143,7 +146,7 @@ class MWP_EventListener_PublicRequest_AutomaticLogin implements Symfony_EventDis
 
             $publicKey = $this->configuration->getLivePublicKey($request->query['service_key']);
             $message   = $communicationKey.$where.$messageId;
-            $signed    = base64_decode($request->query['service_sign_v2'] ? $request->query['service_sign_v2'] : $request->query['service_sign']);
+            $signed    = base64_decode($request->query['service_sign_v2_algo'] ? $request->query['service_sign_v2'] : $request->query['service_sign']);
 			$signAlgorithm = $request->query['service_sign_v2_algo'];
 		} else {
             $publicKey = $this->configuration->getPublicKey();
@@ -154,8 +157,12 @@ class MWP_EventListener_PublicRequest_AutomaticLogin implements Symfony_EventDis
         if (empty($publicKey) || empty($message) || empty($signed)) {
             $this->context->wpDie(esc_html__('The automatic login token isn\'t properly signed. Please contact our support for help.', 'worker'), '', 200);
         }
-
-        if (!$this->signer->verify($message, $signed, $publicKey, $signAlgorithm)) {
+		if ($signAlgorithm == 'SHA256') {
+			$signer = $this->signer256;
+		} else {
+			$signer = $this->signer;
+		}
+        if (!$signer->verify($message, $signed, $publicKey, $signAlgorithm)) {
             $this->context->wpDie(esc_html__('The automatic login token is invalid. Please check if this website is properly connected with your dashboard, or, if this keeps happening, contact support.', 'worker'), '', 200);
         }
 

@@ -1,3 +1,6 @@
+= 1.8.14 =
+* Update Threads follow button to link to threads.com instead of threads.net
+
 = 1.8.13 =
 * Fix defaults in settings
 

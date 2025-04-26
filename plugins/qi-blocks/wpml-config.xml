@@ -1,0 +1,236 @@
+<wpml-config>
+	<gutenberg-blocks>
+		<gutenberg-block type="qi-blocks/accordion" translate="1">
+			<key name="accordionItemsRepeater">
+				<key name="itemTitle" />
+				<key name="itemText" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/advanced-text" translate="1">
+			<key name="text" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/author-info" translate="1">
+			<key name="image.*" />
+			<key name="imageTablet.*" />
+			<key name="imageMobile.*" />
+			<key name="title" />
+			<key name="text" />
+			<key name="email" />
+			<key name="signature.*" />
+			<key name="link" type="link" />
+			<key name="socialIconsRepeater">
+				<key name="itemLink" type="link" />
+				<key name="itemText" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/banner" translate="1">
+			<key name="image.*" />
+			<key name="title" />
+			<key name="subtitle" />
+			<key name="text" />
+			<key name="link" type="link" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/blog-list" translate="1">
+			<key name="buttonText" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/button" translate="1">
+			<key name="buttonText" />
+			<key name="link" type="link" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/call-to-action" translate="1">
+			<key name="title" />
+			<key name="text" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/cards-gallery" translate="1">
+			<key name="cardsGalleryRepeater">
+				<key name="itemLink" type="link" />
+				<key name="itemImage.*" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/clients-list" translate="1">
+			<key name="clientItemsRepeater">
+				<key name="clientImage.*" />
+				<key name="clientHoverImage.*" />
+				<key name="clientTitle" />
+				<key name="clientText" />
+				<key name="clientLink.*" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/countdown" translate="1">
+			<key name="monthSingularLabel" />
+			<key name="monthPluralLabel" />
+			<key name="daySingularLabel" />
+			<key name="dayPluralLabel" />
+			<key name="hourSingularLabel" />
+			<key name="hourPluralLabel" />
+			<key name="minuteSingularLabel" />
+			<key name="minutePluralLabel" />
+			<key name="secondSingularLabel" />
+			<key name="secondPluralLabel" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/counter" translate="1">
+			<key name="digitLabel" />
+			<key name="title" />
+			<key name="text" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/faq" translate="1">
+			<key name="faqItemsRepeater">
+				<key name="itemTitle" />
+				<key name="itemText" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/how-to" translate="1">
+			<key name="howToItemsRepeater">
+				<key name="stepTitle" />
+				<key name="stepText" />
+				<key name="stepImage.*" />
+			</key>
+			<key name="title" />
+			<key name="subtitle" />
+			<key name="text" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/icon-with-text" translate="1">
+			<key name="title" />
+			<key name="text" />
+			<key name="link" type="link" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/image-gallery" translate="1">
+			<key name="customLinks" />
+			<key name="gallery">
+				<key name="url" type="link" />
+				<key name="alt" />
+				<key name="caption" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/image-gallery-masonry" translate="1">
+			<key name="gallery">
+				<key name="itemImage.*" />
+				<key name="itemLink.*" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/image-gallery-pinterest" translate="1">
+			<key name="customLinks" />
+			<key name="gallery">
+				<key name="url" type="link" />
+				<key name="alt" />
+				<key name="caption" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/image-slider" translate="1">
+			<key name="customLinks" />
+			<key name="gallery">
+				<key name="url" type="link" />
+				<key name="alt" />
+				<key name="caption" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/info-box" translate="1">
+			<key name="subtitle" />
+			<key name="title" />
+			<key name="text" />
+			<key name="link" type="link" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/message-box" translate="1">
+			<key name="title" />
+			<key name="text" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/parallax-images" translate="1">
+			<key name="mainImage.*" />
+			<key name="mainImageTablet.*" />
+			<key name="mainImageMobile.*" />
+			<key name="items">
+				<key name="itemImage.*" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/pricing-table" translate="1">
+			<key name="title" />
+			<key name="price" />
+			<key name="currency" />
+			<key name="period" />
+			<key name="label" />
+			<key name="pricingTableItemsRepeater">
+				<key name="itemText" />
+			</key>
+			<key name="separatorBorderImage.*" />
+			<key name="verticalImage.*" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/process" translate="1">
+			<key name="processItemsRepeater">
+				<key name="itemTitle" />
+				<key name="itemText" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/progress-bar-circle" translate="1">
+			<key name="title" />
+			<key name="text" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/progress-bar-horizontal" translate="1">
+			<key name="title" />
+			<key name="text" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/progress-bar-vertical" translate="1">
+			<key name="title" />
+			<key name="text" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/search" translate="1">
+			<key name="widgetTitle" />
+			<key name="buttonText" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/section-title" translate="1">
+			<key name="title" />
+			<key name="subtitle" />
+			<key name="text" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/single-image" translate="1">
+			<key name="image.*" />
+			<key name="imageTablet.*" />
+			<key name="imageMobile.*" />
+			<key name="link" type="link" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/table-of-contents" translate="1">
+			<key name="title" />
+			<key name="subtitle" />
+			<key name="text" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/tabs-horizontal" translate="1">
+			<key name="tabsHorizontalItemsRepeater">
+				<key name="itemTitle" />
+				<key name="itemText" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/tabs-vertical" translate="1">
+			<key name="tabsVerticalItemsRepeater">
+				<key name="itemTitle" />
+				<key name="itemText" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/team-member" translate="1">
+			<key name="name" />
+			<key name="role" />
+			<key name="image.*" />
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/testimonials-list" translate="1">
+			<key name="testimonialsListItemsRepeater">
+				<key name="itemTitle" />
+				<key name="itemText" />
+				<key name="itemAuthor" />
+				<key name="itemAuthorImage.*" />
+				<key name="itemAuthorOccupation" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/text-marquee" translate="1">
+			<key name="items">
+				<key name="itemText" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="qi-blocks/timeline" translate="1">
+			<key name="timelineRepeater">
+				<key name="itemImage.*" />
+				<key name="itemTitle" />
+				<key name="itemDate" />
+				<key name="itemText" />
+				<key name="itemLink.*" />
+			</key>
+		</gutenberg-block>
+	</gutenberg-blocks>
+</wpml-config>

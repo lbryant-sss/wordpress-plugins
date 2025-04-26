@@ -96,6 +96,7 @@ class ComposerStaticInitda98371940d11703c56dee923bbb392f
         'Hustle_ConvertKit_Api' => __DIR__ . '/../..' . '/inc/providers/convertkit/hustle-convertkit-api.php',
         'Hustle_ConvertKit_Form_Hooks' => __DIR__ . '/../..' . '/inc/providers/convertkit/hustle-convertkit-form-hooks.php',
         'Hustle_ConvertKit_Form_Settings' => __DIR__ . '/../..' . '/inc/providers/convertkit/hustle-convertkit-form-settings.php',
+        'Hustle_Cross_Sell' => __DIR__ . '/../..' . '/inc/class-hustle-cross-sell.php',
         'Hustle_Custom_Fonts_Helper' => __DIR__ . '/../..' . '/inc/helpers/class-hustle-custom-fonts-helper.php',
         'Hustle_Dashboard_Admin' => __DIR__ . '/../..' . '/inc/class-hustle-dashboard-admin.php',
         'Hustle_Data' => __DIR__ . '/../..' . '/inc/class-hustle-data.php',

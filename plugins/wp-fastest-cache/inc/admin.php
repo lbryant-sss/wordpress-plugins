@@ -2375,15 +2375,30 @@
 					</style>
 				<div class="omni_admin_sidebar_section wpfc-sticky-notification" style="width: 100%;">
 		            <main role="main" class="">
-		                <div data-variant="7361" class="sticky-common-banner">
-		                    <div class="header">
-		                    	<img class="header-logo disable-lazy" src="<?php echo plugins_url("wp-fastest-cache/images/crown.png?v=1"); ?>" data-pin-no-hover="true" />
 
-		                        <h5 class="title">Make today the day you say goodbye to slowness.</h5>
-		                    </div>
-		                    <img class="visual disable-lazy" src="<?php echo plugins_url("wp-fastest-cache/images/price-mini-banner.jpg"); ?>" alt="Make today the day you say goodbye to slowness." data-pin-no-hover="true">
-		                    <a href="https://www.wpfastestcache.com/#buy" target="_blank" class="stickyFooterBannerCTA main-cta">Sign Up Now!</a>
-		                </div>
+
+
+		            	<?php if (get_locale() === 'tr_TR') { ?>
+		            		<a href="https://apps.apple.com/tr/app/i-ngilizce-kelimeler-%C3%B6%C4%9Fren/id1492827466?l=tr" target="_blank">
+		            			<img class="visual disable-lazy" src="<?php echo plugins_url("wp-fastest-cache/images/ads/" . rand(1, 6) . ".jpg"); ?>" alt="İngilizce Kelime Öğren!" data-pin-no-hover="true">
+		            		</a>
+		            	<?php }else{ ?>
+			                <div data-variant="7361" class="sticky-common-banner">
+			                    <div class="header">
+			                    	<img class="header-logo disable-lazy" src="<?php echo plugins_url("wp-fastest-cache/images/crown.png?v=1"); ?>" data-pin-no-hover="true" />
+
+			                        <h5 class="title">Make today the day you say goodbye to slowness.</h5>
+			                    </div>
+			                    <img class="visual disable-lazy" src="<?php echo plugins_url("wp-fastest-cache/images/price-mini-banner.jpg"); ?>" alt="Make today the day you say goodbye to slowness." data-pin-no-hover="true">
+			                    <a href="https://www.wpfastestcache.com/#buy" target="_blank" class="stickyFooterBannerCTA main-cta">Sign Up Now!</a>
+			                </div>
+		            	<?php } ?>
+
+
+
+
+
+
 		            </main>					
 				</div>
 				<?php } ?>

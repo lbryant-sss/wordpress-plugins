@@ -234,10 +234,11 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 
 == Screenshots ==
 
-1. Getting started couldn't be easier with the Smush setup wizard.
-2. Automatically detect and bulk optimize images.
-3. Watch as Smush optimizes your media library to reduce page load and save you storage space. 
-4. Automatically resize images on upload.
+1. Bulk Image Compression.
+2. Smush detects images that need compression.
+3. Compress unlimited images in the background.
+4. Compress images like a pro with single Smush settings.
+5. Make your page load faster with lazy loading.
 
 == Changelog ==
 

@@ -3,9 +3,9 @@ Contributors: micropat, addtoany
 Tags: share, social, share buttons, share icons, social media
 License: GPLv2 or later
 Requires at least: 4.5
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 1.8.13
+Stable tag: 1.8.14
 
 Share buttons for WordPress including the AddToAny button, Facebook, Mastodon, WhatsApp, Pinterest, Reddit, Threads, many more, and follow icons too.
 
@@ -335,7 +335,7 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 
 == Changelog ==
 
-= 1.8.13 =
-* Fix defaults in settings
+= 1.8.14 =
+* Update Threads follow button to link to threads.com instead of threads.net
 
 See `changelog.txt` in the plugin's directory for the full changelog.

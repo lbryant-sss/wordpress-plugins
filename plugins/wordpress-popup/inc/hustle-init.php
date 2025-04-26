@@ -60,7 +60,12 @@ if ( ! class_exists( 'Hustle_Init' ) ) {
 				if ( Opt_In_Utils::is_free() ) {
 					new Hustle_Upsell_Page();
 				}
+
 				new Hustle_General_Data_Protection();
+			}
+
+			if ( Opt_In_Utils::is_free() ) {
+				new Hustle_Cross_Sell();
 			}
 
 			// Front.

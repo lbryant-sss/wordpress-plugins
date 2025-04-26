@@ -3,16 +3,16 @@
  * Plugin Name: Simple Banner
  * Plugin URI: https://github.com/rpetersen29/simple-banner
  * Description: Display a simple banner at the top or bottom of your website. Now with multi-banner support
- * Version: 3.0.6
+ * Version: 3.0.7
  * Author: Ryan Petersen
  * Author URI: http://rpetersen29.github.io/
  * License: GPLv3
  *
  * @package Simple Banner
- * @version 3.0.6
+ * @version 3.0.7
  * @author Ryan Petersen <rpetersen.dev@gmail.com>
  */
-define ('SB_VERSION', '3.0.6');
+define ('SB_VERSION', '3.0.7');
 
 register_activation_hook( __FILE__, 'simple_banner_activate' );
 function simple_banner_activate() {
@@ -996,9 +996,14 @@ function simple_banner_settings_page() {
  */
 // Hack: Set hidden variable to always change on save
 // TODO: Find better way of making sure cache is cleared on save
+add_action( 'add_option_simple_banner_clear_cache', 'clear_all_caches', 10, 2 );
 add_action( 'update_option_simple_banner_clear_cache', 'clear_all_caches', 10, 3 );
 
-function clear_all_caches($old_value, $value, $option) {
+/**
+ * Arguments here aren't used currently. And $option value is optional due to
+ * "add_option_{$option}" only passing in two arguments.
+ */
+function clear_all_caches($old_value, $value, $option = 'simple_banner_clear_cache') {
     try {
         clearW3TotalCache();
         clearWPSuperCache();

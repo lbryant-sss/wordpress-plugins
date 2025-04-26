@@ -19,10 +19,13 @@ class MWP_EventListener_MasterRequest_VerifyConnectionInfo implements Symfony_Ev
 
     private $signer;
 
-    public function __construct(MWP_WordPress_Context $context, MWP_Signer_Interface $signer)
+    private $signer256;
+
+    public function __construct(MWP_WordPress_Context $context, MWP_Signer_Interface $signer, MWP_Signer_Interface $signer256)
     {
-        $this->context = $context;
-        $this->signer  = $signer;
+	    $this->context   = $context;
+	    $this->signer    = $signer;
+	    $this->signer256 = $signer256;
     }
 
     public static function getSubscribedEvents()
@@ -66,7 +69,7 @@ class MWP_EventListener_MasterRequest_VerifyConnectionInfo implements Symfony_Ev
         $message = json_encode(array('setting' => $request->getSetting(), 'params' => $request->getParams())).strtolower($request->getCommunicationKey());
 
         $verify = $this->signer->verify($message, $connectionSignature, $publicKey);
-        $verifyV2 = $this->signer->verify($message, $connectionSignatureV2, $publicKey, $connectionSignatureV2Algo);
+        $verifyV2 = $this->signer256->verify($message, $connectionSignatureV2, $publicKey, $connectionSignatureV2Algo);
 
         if (!$verify && !$verifyV2) {
             throw new MWP_Worker_Exception(MWP_Worker_Exception::CONNECTION_SIGNATURE_NOT_VALID, "Invalid message signature. Deactivate and activate the ManageWP Worker plugin on this site, then re-add it to your ManageWP account.");

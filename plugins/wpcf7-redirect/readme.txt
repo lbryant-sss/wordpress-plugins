@@ -11,7 +11,9 @@ Redirect to any page or URL, execute scripts after submission, save data to the 
 
 == Description ==
 
-Redirection for Contact Form 7 streamlines your form submissions by offering flexible redirection options. Redirect users to specific pages, execute post-submission JavaScript, and append form data to URLs for a personalized touch. PRO features expand your capabilities with API integration, PDF generation, and support for major services like Mailchimp, PayPal, Stripe, HubSpot, Salesforce, and Twilio.
+Redirection for Contact Form 7 enhances your forms with essential post-submission actions all in one plugin. Store form entries in your database, redirect users to any page or URL, send email notifications, block spam with honeypot protection, and help with GDPR compliance through data export/erase requests.
+
+Want more power? Our PRO version includes JavaScript execution after submission, webhook integration for third-party services, conditional logic based on user input, frontend post creation, PDF generation from form data, and seamless integrations with popular services like Mailchimp, PayPal, Stripe, HubSpot, Salesforce, and Twilio.
 
 == 🔗 HELPFUL LINKS: ==
 
@@ -51,7 +53,7 @@ Simply go to your form settings, select the "Action" tab, and add additional Sub
 
 - **Frontend Publishing:** Add the ability to allow your users to publish posts from your website front-end.
 
-- **API Integration:** Empower your forms with advanced API integration, supporting POST, GET, DELETE, PATCH methods and PARAMS, JSON, and XML formats for comprehensive connectivity.
+- **Webhook Integration:** Supercharge your forms with advanced Webhook support—seamlessly connect to third-party apps using POST, GET, DELETE, and PATCH methods, with full compatibility for PARAMS, JSON, and XML formats.Empower your forms with advanced Webhook integration, supporting POST, GET, DELETE, PATCH methods and PARAMS, JSON, and XML formats for comprehensive connectivity with third party apps.
 
 - **Add a Thank You Popup:** Add the ability to thank your users with a noticeably designed thank-you popup.
 
@@ -143,11 +145,11 @@ No. One of the reasons we developed this plugin, is because on_send_ok is now de
 
 == Screenshots ==
 
-1. Actions tab
-2. Redirect Action
-3. Fire JavaScript Action
-4. Save Lead Actions
-5. Extensions tab
+1. Dashboard
+2. Add Actions
+3. Actions tab
+4. Redirection Action
+5. Save Entries Action
 
 == Changelog ==
 

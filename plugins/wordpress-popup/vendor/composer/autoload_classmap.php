@@ -91,6 +91,7 @@ return array(
     'Hustle_ConvertKit_Api' => $baseDir . '/inc/providers/convertkit/hustle-convertkit-api.php',
     'Hustle_ConvertKit_Form_Hooks' => $baseDir . '/inc/providers/convertkit/hustle-convertkit-form-hooks.php',
     'Hustle_ConvertKit_Form_Settings' => $baseDir . '/inc/providers/convertkit/hustle-convertkit-form-settings.php',
+    'Hustle_Cross_Sell' => $baseDir . '/inc/class-hustle-cross-sell.php',
     'Hustle_Custom_Fonts_Helper' => $baseDir . '/inc/helpers/class-hustle-custom-fonts-helper.php',
     'Hustle_Dashboard_Admin' => $baseDir . '/inc/class-hustle-dashboard-admin.php',
     'Hustle_Data' => $baseDir . '/inc/class-hustle-data.php',

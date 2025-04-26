@@ -4,7 +4,7 @@
   Plugin URI: https://products-filter.com/
   Description: HUSKY - WooCommerce Products Filter Professional. Flexible, easy and robust products filter for WooCommerce store site!
   Requires at least: WP 6.0
-  Tested up to: WP 6.7
+  Tested up to: WP 6.8
   Author: realmag777
   Author URI: https://pluginus.net/
   Version: 1.3.6.6

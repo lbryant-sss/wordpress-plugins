@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'wpauth/pdf-embedder',
-        'pretty_version' => '4.9.0',
-        'version' => '4.9.0.0',
+        'pretty_version' => '4.9.2',
+        'version' => '4.9.2.0',
         'reference' => null,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
@@ -31,8 +31,8 @@
             'dev_requirement' => false,
         ),
         'wpauth/pdf-embedder' => array(
-            'pretty_version' => '4.9.0',
-            'version' => '4.9.0.0',
+            'pretty_version' => '4.9.2',
+            'version' => '4.9.2.0',
             'reference' => null,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
