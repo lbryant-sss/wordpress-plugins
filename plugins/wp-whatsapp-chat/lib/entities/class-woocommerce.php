@@ -12,7 +12,7 @@ class WooCommerce extends SingleEntity {
 	public $icon              = 'qlwapp-whatsapp-icon';
 	public $type              = 'phone';
 	public $phone             = QLWAPP_PHONE_NUMBER;
-	public $group             = '';
+	public $group             = QLWAPP_GROUP_LINK;
 	public $developer         = 'no';
 	public $rounded           = 'yes';
 	public $timefrom          = '00:00';
