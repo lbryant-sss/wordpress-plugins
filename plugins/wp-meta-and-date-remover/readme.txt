@@ -3,7 +3,7 @@ Contributors: prasadkirpekar
 Donate link: - https://paypal.me/prasadkirpekar
 Tags: date, author, remover, posts, metadata
 Requires at least: 3.0.1
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 2.3.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

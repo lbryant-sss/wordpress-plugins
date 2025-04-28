@@ -472,6 +472,7 @@ div.iv-comment-image img {
 .cr-reviews-grid .cr-review-form-rating .cr-review-form-rating-cont .cr-review-form-rating-inner {
 	height: 20px;
 	padding: 0 5px;
+	line-height: 0;
 }
 .cr-review-form-rating-overall .cr-review-form-rating .cr-review-form-rating-cont .cr-review-form-rating-inner {
 	height: 30px;

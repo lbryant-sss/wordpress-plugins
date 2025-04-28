@@ -246,6 +246,7 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 							}
 						}
 					}
+					$args['post__in'] = $post_ids;
 				}
 				//
 				global $sitepress;
@@ -745,7 +746,7 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 			wp_register_script(
 				'cr-frontend-js',
 				plugins_url('/js/frontend.js', dirname( dirname( __FILE__ ) ) ),
-				array(),
+				array('jquery'),
 				Ivole::CR_VERSION,
 				true
 			);

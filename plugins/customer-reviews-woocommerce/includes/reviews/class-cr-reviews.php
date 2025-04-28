@@ -276,7 +276,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 						$output .= '<div class="cr-comment-video cr-comment-video-ext cr-comment-video-' . $k . '" data-reviewid="' . $comment->comment_ID . '">';
 						$output .= '<div class="cr-video-cont">';
 						$output .= '<video preload="metadata" class="cr-video-a" ';
-						$output .= 'src="' . $pics_v[$i]['url'] . $cr_query;
+						$output .= 'src="' . $pics_v[$i]['url'] . $cr_query . '#t=0.1';
 						$output .= '"></video>';
 						$output .= '<img class="cr-comment-videoicon" src="' . plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'img/video.svg" ';
 						$output .= 'alt="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $k, $comment->comment_author ) . '">';
@@ -295,7 +295,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 							$temp_comment_content .= '<div class="cr-comment-video cr-comment-video-' . $k . '">';
 							$temp_comment_content .= '<div class="cr-video-cont">';
 							$temp_comment_content .= '<video preload="metadata" class="cr-video-a" ';
-							$temp_comment_content .= 'src="' . $attachmentUrl;
+							$temp_comment_content .= 'src="' . $attachmentUrl . '#t=0.1';
 							$temp_comment_content .= '"></video>';
 							$temp_comment_content .= '<img class="cr-comment-videoicon" src="' . plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'img/video.svg" ';
 							$temp_comment_content .= 'alt="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $k, $comment->comment_author ) . '">';

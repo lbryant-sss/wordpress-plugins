@@ -5151,6 +5151,12 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 				'className' => '\\YahnisElsts\\AdminMenuEditor\\NavMenuVisibility\\NavMenuModule',
 				'title' => 'Navigation Menu Visibility',
 			),
+			'table-columns' => [
+				'relativePath'       => 'extras/modules/table-columns/table-columns.php',
+				'className'          => '\\YahnisElsts\\AdminMenuEditor\\TableColumns\\TableColumnsModule',
+				'title'              => 'Table Columns',
+				'requiredPhpVersion' => '5.6',
+			],
 			'redirector' => array(
 				'relativePath' => 'modules/redirector/redirector.php',
 				'className'    => '\\YahnisElsts\\AdminMenuEditor\\Redirects\\Module',

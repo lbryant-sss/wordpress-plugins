@@ -1067,7 +1067,7 @@ class CR_Reviews_List_Table extends WP_List_Table {
 					echo '<div class="cr-comment-video cr-comment-video-' . $k . '">';
 					echo '<div class="cr-video-cont">';
 					echo '<video preload="metadata" class="cr-video-a" ';
-					echo 'src="' . $pics_v[$i]['url'] . $cr_query;
+					echo 'src="' . $pics_v[$i]['url'] . $cr_query . '#t=0.1';
 					echo '"></video>';
 					echo '<img class="cr-comment-videoicon" src="' . plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'img/video.svg" ';
 					echo 'alt="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $k, $comment->comment_author ) . '">';
@@ -1089,7 +1089,7 @@ class CR_Reviews_List_Table extends WP_List_Table {
 						$temp_comment_content .= '<div class="cr-comment-video cr-comment-video-' . $k . '">';
 						$temp_comment_content .= '<div class="cr-video-cont">';
 						$temp_comment_content .= '<video preload="metadata" class="cr-video-a" ';
-						$temp_comment_content .= 'src="' . $attachmentUrl;
+						$temp_comment_content .= 'src="' . $attachmentUrl . '#t=0.1';
 						$temp_comment_content .= '"></video>';
 						$temp_comment_content .= '<img class="cr-comment-videoicon" src="' . plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'img/video.svg" ';
 						$temp_comment_content .= 'alt="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $k, $comment->comment_author ) . '">';
