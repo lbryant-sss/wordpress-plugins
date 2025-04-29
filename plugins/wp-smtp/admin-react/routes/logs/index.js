@@ -1,18 +1,13 @@
 /**
- * External dependencies
- */
-import { useEffect } from '@wordpress/element';
-
-/**
  * WordPress dependencies
  */
-import { useDispatch, useSelect } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 /**
  * SolidWP dependencies
  */
-import { Notice, Surface, Root } from '@ithemes/ui';
+import { Notice, Root } from '@ithemes/ui';
 
 /**
  * Internal dependencies
@@ -23,7 +18,7 @@ import MainLayout from '../../components/layout/main';
 import { solidMailTheme } from '../../components/layout/theme';
 import LogsMain from '../logs/logs-main';
 import LogDetail from './log-detail';
-import { Container } from './styles';
+import { Container, StyledDetailContainer } from './styles';
 
 /**
  * Component for displaying and managing email logs.
@@ -56,9 +51,9 @@ function Logs() {
 						( logs.length === 0 && isSearching === true ) ) && (
 						<>
 							<LogsMain />
-							<Surface>
+							<StyledDetailContainer>
 								<LogDetail />
-							</Surface>
+							</StyledDetailContainer>
 						</>
 					) }
 				</Container>

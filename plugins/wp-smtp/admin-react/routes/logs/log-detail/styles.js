@@ -36,9 +36,8 @@ export const Empty = styled.div`
 `;
 
 export const StyledSurface = styled( Surface )`
-	padding: ${ ( { theme } ) => theme.spacing.section };
 	margin-bottom: ${ ( { theme } ) => theme.spacing.section };
-	max-height: 400px;
+	max-height: 800px;
 	overflow-y: scroll;
 `;
 export const StyledNotice = styled( Notice )`

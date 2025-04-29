@@ -7,7 +7,6 @@ import { useState } from '@wordpress/element';
  * WordPress dependencies
  */
 import { useDispatch, useSelect } from '@wordpress/data';
-import { SandBox } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -18,19 +17,11 @@ import { Button, Text, TextSize, TextVariant, TextWeight } from '@ithemes/ui';
 /**
  * Internal dependencies
  */
-import ConfirmationDialog from "../../../components/confirmation-dialog";
+import ConfirmationDialog from '../../../components/confirmation-dialog';
 import { STORE_NAME as LogsStore } from '../../../data/src/logs/constants';
 import { Logo } from '../../../components/icons';
+import Message from '../message';
 import { Body, Empty, Header, StyledNotice, StyledSurface } from './styles';
-
-// Fix for iframe height miscalculation.
-const sandBoxStyle = `
-	html,
-	body,
-	body > div {
-		height: auto !important;
-	}
-`;
 
 /**
  * Component for displaying the details of a log.
@@ -42,7 +33,7 @@ function LogDetail() {
 	} ), [] );
 	const { deleteLog } = useDispatch( LogsStore );
 	const [ isDialogOpen, setIsDialogOpen ] = useState( false );
-	const [ isDeleting, setIsDeleting ] = useState( false )
+	const [ isDeleting, setIsDeleting ] = useState( false );
 
 	// Handle delete confirmation
 	const handleDelete = () => {
@@ -51,15 +42,15 @@ function LogDetail() {
 
 	// Confirm deletion and proceed with log deletion
 	const handleConfirmDelete = async () => {
-		setIsDeleting( true )
+		setIsDeleting( true );
 		await deleteLog( [ selectedLog.mail_id ], currentPage );
 		setIsDialogOpen( false );
-		setIsDeleting( false )
+		setIsDeleting( false );
 	};
 
 	// Cancel deletion
 	const handleCancelDelete = () => {
-		setIsDialogOpen(false);
+		setIsDialogOpen( false );
 	};
 
 	if ( selectedLog === null || selectedLog === undefined ) {
@@ -75,7 +66,7 @@ function LogDetail() {
 				<StyledNotice text={ selectedLog.error } type={ 'danger' } />
 			) }
 			<Header>
-				<Text weight={ TextWeight.HEAVY }>{ selectedLog.to }</Text>
+				<Text weight={ TextWeight.HEAVY }>{ selectedLog.to.join( ', ' ) }</Text>
 				<Text weight={ TextWeight.HEAVY }>
 					{ selectedLog.timestamp }
 				</Text>
@@ -90,8 +81,8 @@ function LogDetail() {
 				<Text variant={ TextVariant.DARK } as={ 'p' }>
 					{ __( 'Body', 'LION' ) }
 				</Text>
-				<StyledSurface variant={ 'info' }>
-					<SandBox html={ selectedLog.message } styles={ [ sandBoxStyle ] } />
+				<StyledSurface>
+					<Message email={ selectedLog } key={ selectedLog.mail_id } />
 				</StyledSurface>
 				<Button
 					variant={ 'secondary' }

@@ -177,7 +177,7 @@ class AddAppointmentCommandHandler extends CommandHandler
                 $appointment,
                 $existingAppointment,
                 $service,
-                $appointmentData['bookings'],
+                $appointmentData,
                 $paymentData
             );
         } catch (CustomerBookedException $e) {
@@ -291,7 +291,7 @@ class AddAppointmentCommandHandler extends CommandHandler
                     $recurringAppointment,
                     $existingRecurringAppointment,
                     $service,
-                    $recurringAppointmentData['bookings'],
+                    $recurringAppointmentData,
                     $paymentData
                 );
             } catch (CustomerBookedException $e) {

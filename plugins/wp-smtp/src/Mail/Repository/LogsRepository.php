@@ -41,11 +41,11 @@ class LogsRepository {
 	 * @param array $params {
 	 *     Array of parameters for fetching email logs.
 	 *
-	 * @type int $page The page number for pagination (0-based index).
-	 * @type string $search_term The term to search for in email subjects, messages, and recipients.
-	 * @type string $orderby The column to order the results by. Default is 'timestamp'.
-	 * @type string $order The order direction ('ASC' or 'DESC'). Default is 'desc'.
-	 * @type int $per_page The number of items per page.
+	 *     @type int    $page        The page number for pagination (0-based index).
+	 *     @type string $search_term The term to search for in email subjects, messages, and recipients.
+	 *     @type string $orderby     The column to order the results by. Default is 'timestamp'.
+	 *     @type string $order       The order direction ('ASC' or 'DESC'). Default is 'desc'.
+	 *     @type int    $per_page    The number of items per page.
 	 * }
 	 *
 	 * @return array The array of email logs.
@@ -87,10 +87,9 @@ class LogsRepository {
 			),
 			ARRAY_A
 		);
-		// sometimes we need to serialize the array.
+
 		foreach ( $data as &$val ) {
-			$val['to'] = maybe_unserialize( $val['to'] );
-			$val['to'] = is_array( $val['to'] ) ? implode( ', ', $val['to'] ) : $val['to'];
+			$val = $this->parse_log( $val );
 		}
 
 		return $data;
@@ -123,10 +122,8 @@ class LogsRepository {
 			ARRAY_A
 		);
 
-		// Process each result to format the 'to' field properly.
 		foreach ( $data as &$val ) {
-			$val['to'] = maybe_unserialize( $val['to'] );
-			$val['to'] = is_array( $val['to'] ) ? implode( ', ', $val['to'] ) : $val['to'];
+			$val = $this->parse_log( $val );
 		}
 
 		return $data;
@@ -204,5 +201,17 @@ class LogsRepository {
 			)
 		);
 		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+	}
+
+	protected function parse_log( array $raw ) {
+		return [
+			'mail_id'   => $raw['mail_id'],
+			'timestamp' => $raw['timestamp'],
+			'to'        => json_decode( $raw['to'], true ) ?: [ $raw['to'] ],
+			'subject'   => $raw['subject'],
+			'message'   => $raw['message'],
+			'headers'   => json_decode( $raw['headers'], true ) ?: $raw['headers'],
+			'error'     => $raw['error'],
+		];
 	}
 }

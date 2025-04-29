@@ -3,7 +3,7 @@
  * Plugin Name: Headers Security Advanced & HSTS WP
  * Plugin URI: https://www.tentacleplugins.com/
  * Description: Headers Security Advanced & HSTS WP - Simple, Light and Fast. The plugin uses advanced security rules that provide huge levels of protection and it is important that your site uses it. This step is important to submit your website and/or domain to an approved HSTS list. Google officially compiles this list and it is used by Chrome, Firefox, Opera, Safari, IE11 and Edge. You can forward your site to the official HSTS preload directory. Cross Site Request Forgery (CSRF) is a common attack with the installation of Headers Security Advanced & HSTS WP will help you mitigate CSRF on your WordPress site.
- * Version: 5.0.41
+ * Version: 5.0.43
  * Text Domain: headers-security-advanced-hsts-wp
  * Domain Path: /languages
  * Author: 🐙 Andrea Ferro
@@ -23,7 +23,7 @@ if ( ! function_exists( 'add_action' ) ) {
     die( 'Don\'t try to be smart with us, only real ninjas can enter here!' );
 }
 
-const HSTS_PLUGIN_VERSION = '5.0.41';
+const HSTS_PLUGIN_VERSION = '5.0.43';
 const HSTS_STANDARD_VALUE_CSP = 'upgrade-insecure-requests;';
 const HSTS_STANDARD_VALUE_PERMISSIONS_POLICY = 'accelerometer=(), autoplay=(), camera=(), cross-origin-isolated=(), display-capture=(self), encrypted-media=(), fullscreen=*, geolocation=(self), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=*, picture-in-picture=*, publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=*, usb=(), xr-spatial-tracking=(), gamepad=(), serial=()';
 
@@ -225,18 +225,18 @@ function hsts_plugin_settings_page(): void {
                         </p>
                         <div class="HeaderSecurityAdvancedHSTSWPROSHUEbox333">
                             <p>
-                                <span class="HeaderSecurityAdvancedHSTSWPROSHUEtxexttextSize">
-                                    <?php
-                                    printf(
-                                        esc_html__(
-                                            'Enabling preload further helps prevent any potential man-in-the-middle attacks, thus improving connection security as far as it concerns HSTS. Please note that even if this flag is enabled, your website still needs to be manually submitted to the list. Please also note that inclusion in the preload list has spermanent consequences and is not easy to undo, so you should only enable this flag and submit your website after making sure that all of the resources and services within your domain (and its subdomains, if includeSubDomains is also enabled) are indeed accessible and functional via HTTPS.',
-                                            'headers-security-advanced-hsts-wp',
-                                        ),
-                                        '<a href="https://hstspreload.org/#removal/">',
-                                        '</a>',
-                                    );
-                                    ?>
-                                </span>
+                            <span class="HeaderSecurityAdvancedHSTSWPROSHUEtxexttextSize">
+                                <?php
+                                printf(
+                                    esc_html__(
+                                        'Enabling preload further helps prevent any potential man-in-the-middle attacks, thus improving connection security as far as it concerns HSTS. Please note that even if this flag is enabled, your website still needs to be manually submitted to the list. Please also note that inclusion in the preload list has permanent consequences and is not easy to undo, so you should only enable this flag and submit your website after making sure that all of the resources and services within your domain (and its subdomains, if includeSubDomains is also enabled) are indeed accessible and functional via HTTPS. %1$sLearn more%2$s.',
+                                        'headers-security-advanced-hsts-wp'
+                                    ),
+                                    '<a href="https://hstspreload.org/#removal/">',
+                                    '</a>'
+                                );
+                                ?>
+                            </span>
                             </p>
                         </div>
                     </th>
@@ -558,7 +558,7 @@ function hsts_plugin_flush_rewrite_rules(): void {
 }
 
 function hsts_plugin_delete_old_options(): void {
-    // Last referenced by plugin version 5.0.41.
+    // Last referenced by plugin version 5.0.43.
     delete_option( 'HEADERS_SECURITY_ADVANCED_HSTS_WP_PLUGIN_VERSION' );
 }
 

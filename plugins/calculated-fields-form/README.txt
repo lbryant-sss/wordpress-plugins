@@ -4,7 +4,7 @@ Donate link: http://cff.dwbooster.com
 Tags: form,quote form,contact form,form builder,calculator form
 Requires at least: 3.0.5
 Tested up to: 6.8
-Stable tag: 5.3.46
+Stable tag: 5.3.47
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -455,6 +455,13 @@ A: There are multiple alternatives, by using the [PDF generator add-on](https://
 
 == Changelog ==
 
+= 5.3.47 =
+
+* Modified the spinner components in number and currency fields so they become continuous, eliminating the need to click repeatedly to adjust control values.
+* Ensured that placeholders remain synchronized with third-party fields when used as default values.
+* Improved the WooCommerce add-on to resolve a conflict with third-party themes that alter the behavior of add-to-cart buttons on WooCommerce products (applies to Developer and Platinum plugin versions).
+* Implemented a new feature in the WebHooks add-on that allows the use of short labels instead of field names in the WebHook URL. This enhancement simplifies reusing the same WebHook URL for multiple forms (applies to Developer and Platinum plugin versions).
+
 = 5.3.46 =
 
 * Modifies the plugin interface by removing unnecessary sections. In the commercial plugin distributions, it unifies all payment methods—including those implemented via add-ons and complementary plugins—under the Payment Settings section.
@@ -473,9 +480,3 @@ A: There are multiple alternatives, by using the [PDF generator add-on](https://
 
 * Modifies the calculated fields: Now, when you check the currency option in the field settings, the plugin automatically enforces two decimal places for decimal results.
 * Adds a new, predefined form designed to evaluate password strength.
-
-= 5.3.42 =
-
-* Modifies the DIV control to give more control over the styles that affect the contained fields.
-* Fixes a minor issue in the fields list popup to enhance the user experience.
-* Adds a new predefined form and category of predefined forms for AI. This new form implements a texts translator using an AI model for translating texts directly in the browser.

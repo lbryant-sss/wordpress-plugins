@@ -2,8 +2,8 @@
 Contributors: Socialdude
 Tags: Redirect, Redirection, 301, 404, Redirects
 Requires at least: 4.6
-Tested up to: 6.7.2
-Stable tag: 1.2.6
+Tested up to: 6.8.1
+Stable tag: 1.2.7
 License: GPLv3
 Requires PHP: 5.6
 
@@ -95,8 +95,14 @@ Vietnamese: [Đặt 301, 307, 404, một chuyển hướng khác.](https://vi.wo
 
 == Changelog ==
 
+= 1.2.7 =
+* Enqueued tooltip CSS and JS files in IRRPSettings class for enhanced user experience.
+* Removed unnecessary comments regarding tooltips in single-redirection.php layout.
+* Ensured tooltip functionality is ready for input fields in redirection settings.
+* Increase the redirections per page to 30 instead of 10
+* Tested with WordPress 6.8.1
+
 = 1.2.6 =
-* Tested with WordPress 6.7.2
 * Increased URL field length from 255 to 1000 characters for more flexibility in “from” and “to” fields.
 * Ensure redirects settings are saved correctly.
 * Enhanced URL Parameters Matching.
@@ -205,12 +211,65 @@ Vietnamese: [Đặt 301, 307, 404, một chuyển hướng khác.](https://vi.wo
 = 1.1.1 =
 * Reverted change of template redirection priority
 
-Changelog truncated due to WordPress 5000-character limit.
+= 1.1.0 =
+* Tested up to WP v6.1-RC5
+* Added optional opt-in module
+* Updated try it option in readme
+* Fixed issue with logs clean-up - database errors PHP 8+
+* Removed unnecessary files from codebase
+* Adjusted redirection, it won't redirect twice before destination site
+
+= 1.0.9 =
+* Fixed issues with version 1.0.8 where template redirection support was required
+
+= 1.0.8 =
+* Fixed local redirect loops (e.g. homepage -> post)
+* Adjusted our URL validator
+* Changed hook of redirect execution
+* Removed unwanted error_logging
+* Tested with WordPress 6.0.1
+
+= 1.0.7 =
+* Tested with WordPress Beta 6.0
+* Improved database management
+* Added new notifications and notices
+* Allowed redirections inside wp-admin
+* Added all-urls rule for redirection
+* Added support for PHP 5.6 (older sites)
+* Added carrousel
+
+= 1.0.6 =
+* Added Redirection & 404 Logs feature; fixed an issue with redirection to another website and the issue with the set cookie
+* Tested with PHP 8.0 and 8.1
+* Tested with WordPress 5.9
+
+= 1.0.5 =
+* Added redirection by browser language
+* Fixed bugs with language detection
+
+= 1.0.4 =
+* Added redirection rule 404s to Random Similar Post
+
+= 1.0.3 =
+* Added redirection rule 404s to Specific URL
+
+= 1.0.2 =
+* Make plugin translatable ready
+* Tested up to WordPress 5.8
+
+= 1.0.1 =
+* Fixed mb functions on servers without mbstring extenstion
+* Added auto redirection on activation
+* Added screenshots
+
+= 1.0.0 =
+* Initial release
 
 == Upgrade Notice ==
 
-= 1.2.6 =
-* Tested with WordPress 6.7.2
-* Increased URL field length from 255 to 1000 characters for more flexibility in “from” and “to” fields.
-* Ensure redirects settings are saved correctly.
-* Enhanced URL Parameters Matching.
+= 1.2.7 =
+* Enqueued tooltip CSS and JS files in IRRPSettings class for enhanced user experience.
+* Removed unnecessary comments regarding tooltips in single-redirection.php layout.
+* Ensured tooltip functionality is ready for input fields in redirection settings.
+* Increase the redirections per page to 30 instead of 10
+* Tested with WordPress 6.8.1

@@ -35,6 +35,31 @@ $actions_categories = array(
 	),
 );
 
+/**
+ * Modify the action categories shown in the CF7 Redirect UI.
+ *
+ * @since 3.2.1
+ *
+ * @param array $actions_categories Array of category arrays:
+ *   - 'label'   => (string) Group name
+ *   - 'options' => (array)  action_slug => action_label
+ *   - 'badge'   => (string) Optional label (e.g. 'Premium')
+ * @return array Adjusted list of categories
+ *
+ * @example
+ * add_filter( 'wpcf7r_get_actions_categories', function( $categories ) {
+ *     $categories[] = [
+ *         'label'   => 'Custom Category',
+ *         'badge'   => 'Beta',
+ *         'options' => [
+ *             'custom_action' => 'Custom Action Label',
+ *         ],
+ *     ];
+ *     return $categories;
+ * } );
+ */
+$actions_categories = apply_filters( 'wpcf7r_get_actions_categories', $actions_categories );
+
 $active_plugins = array_keys( wpcf7r_get_available_actions() );
 
 // Reorder options within each category: active first, then inactive (locked).

@@ -389,7 +389,9 @@ let employeeDataFormConstruction = ref({
 })
 
 onMounted(() => {
-  appleVisibility.value.contentVisibility = isEmployeeConnectedToPersonalAppleCalendar.value
+  if (amSettings.appleCalendar && appleVisibility.value) {
+    appleVisibility.value.contentVisibility = isEmployeeConnectedToPersonalAppleCalendar.value
+  }
 })
 
 onBeforeMount(() => {

@@ -32,9 +32,16 @@ class Editor_V2_Loader extends Editor_Base_Loader {
 		'schema',
 		'store',
 		'session',
+		'twing',
 		'ui',
 		'utils',
 		'wp-media',
+	];
+
+	const EXTENSIONS = [
+		'editor-documents',
+		'editor-notifications',
+		'editor-panels',
 	];
 
 	/**
@@ -128,7 +135,7 @@ class Editor_V2_Loader extends Editor_Base_Loader {
 		if ( $env_config ) {
 			$client_env = apply_filters( 'elementor/editor/v2/scripts/env', [
 				'@elementor/http' => [
-					'base_url' => rest_url( 'elementor/v1' ),
+					'base_url' => rest_url(),
 					'headers' => [
 						'X-WP-Nonce' => wp_create_nonce( 'wp_rest' ),
 					],
@@ -210,7 +217,7 @@ class Editor_V2_Loader extends Editor_Base_Loader {
 	}
 
 	public static function get_packages_to_enqueue(): array {
-		return apply_filters( 'elementor/editor/v2/packages', [] );
+		return apply_filters( 'elementor/editor/v2/packages', self::EXTENSIONS );
 	}
 
 	private function get_styles(): array {

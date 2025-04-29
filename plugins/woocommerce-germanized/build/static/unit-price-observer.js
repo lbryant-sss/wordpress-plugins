@@ -207,11 +207,11 @@ var __webpack_exports__ = {};
           if (self.timeout) {
             clearTimeout(self.timeout);
           }
+          var $unitPrice = self.getUnitPriceNode(self, $priceNode),
+            hasRefreshed = false;
           if ($priceNode.length <= 0) {
             return false;
           }
-          var $unitPrice = self.getUnitPriceNode(self, $priceNode),
-            hasRefreshed = false;
           self.stopObserver(self, priceSelector);
           if ($unitPrice.length > 0) {
             self.setUnitPriceLoading(self, $unitPrice);
@@ -225,13 +225,11 @@ var __webpack_exports__ = {};
               var priceData = self.getCurrentPriceData(self, $priceNode, priceArgs['is_total_price'], isPrimary, priceArgs['quantity_selector']);
               var isVisible = $priceNode.is(':visible');
               if (priceData) {
-                /**
-                 * Do only fire AJAX requests in case no other requests (e.g. from other plugins) are currently running.
-                 */
-                if ($.active <= 0) {
-                  hasRefreshed = true;
-                  self.refreshUnitPrice(self, priceData, priceSelector, isPrimary);
+                if (self.isRefreshingUnitPrice(self.getCurrentProductId(self))) {
+                  self.abortRefreshUnitPrice(self.getCurrentProductId(self));
                 }
+                hasRefreshed = true;
+                self.refreshUnitPrice(self, priceData, priceSelector, isPrimary);
               }
               if (!hasRefreshed && $unitPrice.length > 0) {
                 self.unsetUnitPriceLoading(self, $unitPrice);
@@ -372,10 +370,8 @@ var __webpack_exports__ = {};
        */
       $unit_price.html('<span class="wc-gzd-placeholder-loading"><span class="wc-gzd-placeholder-row" style="height: ' + $unit_price.height() + 'px;"><span class="wc-gzd-placeholder-row-col-4" style="width: ' + textWidth + 'px; height: ' + textHeight + 'px;"></span></span></span>');
       $unit_price.addClass('wc-gzd-loading');
-      $unit_price.data('org-html', unitPriceOrg);
-    } else {
-      unitPriceOrg = $unit_price.data('org-html');
     }
+    $unit_price.data('org-html', unitPriceOrg);
     return unitPriceOrg;
   };
   GermanizedUnitPriceObserver.prototype.unsetUnitPriceLoading = function (self, $unit_price, newHtml) {
@@ -387,6 +383,12 @@ var __webpack_exports__ = {};
     if (typeof newHtml === "string" && newHtml.length > 0) {
       $unit_price.show();
     }
+  };
+  GermanizedUnitPriceObserver.prototype.isRefreshingUnitPrice = function (currentProductId) {
+    return germanized.unit_price_observer_queue.exists(currentProductId);
+  };
+  GermanizedUnitPriceObserver.prototype.abortRefreshUnitPrice = function (currentProductId) {
+    return germanized.unit_price_observer_queue.abort(currentProductId);
   };
   GermanizedUnitPriceObserver.prototype.refreshUnitPrice = function (self, priceData, priceSelector, isPrimary) {
     germanized.unit_price_observer_queue.add(self, self.getCurrentProductId(self), priceData, priceSelector, isPrimary);

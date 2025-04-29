@@ -163,7 +163,7 @@ class Logs extends \WP_REST_Controller {
 
 		// Add CSV rows
 		foreach ( $logs as $log ) {
-			fputcsv( $csv_output, [ $log['to'], $log['timestamp'], $log['subject'], $log['error'] ] );
+			fputcsv( $csv_output, [ implode( ' ', $log['to'] ), $log['timestamp'], $log['subject'], $log['error'] ] );
 		}
 
 		fclose( $csv_output );

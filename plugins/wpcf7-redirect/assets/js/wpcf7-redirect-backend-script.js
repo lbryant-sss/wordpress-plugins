@@ -1,3 +1,5 @@
+// @ts-check
+
 import '../css/wpcf-redirect-backend-style.scss';
 
 import './wpcf7-redirect-extensions.js';
@@ -383,6 +385,13 @@ let wpcf7_redirect_admin;
 		this.init_draggable = function () {
 			var _this = this;
 
+			const fixHelper = function (e, ui) {
+				ui.children().children().each(function () {
+					$(this).width($(this).width());
+				});
+				return ui;
+			};
+
 			$('#the_list').sortable({
 				'items': '.drag',
 				'axis': 'y',
@@ -400,12 +409,6 @@ let wpcf7_redirect_admin;
 				}
 			});
 
-			var fixHelper = function (e, ui) {
-				ui.children().children().each(function () {
-					$(this).width($(this).width());
-				});
-				return ui;
-			};
 		}
 
 		/**
@@ -620,7 +623,6 @@ let wpcf7_redirect_admin;
 		 * 
 		 * @param {Event} e - The click event object
 		 * @param {string} [list_name] - Optional list name for creating a new list
-		 * @return {boolean} - Returns false if validation fails
 		 */
 		this.mailchimp_get_lists_handler = function (e, list_name) {
 			const button = $(e.currentTarget);
@@ -1480,6 +1482,10 @@ let wpcf7_redirect_admin;
 		const actionItems = document.querySelectorAll('.rcf7-dropdown__action-item');
 		const searchInput = document.querySelector('.rcf7-dropdown__search-input');
 
+		if ( ! addActionBtn || ! actionDropdown ) {
+			return;
+		}
+
 		const contactFormId = addActionBtn.dataset.id;
 		const ruleId = addActionBtn.dataset.ruleid;
 		
@@ -1489,13 +1495,13 @@ let wpcf7_redirect_admin;
 		// Function to position the dropdown based on available space
 		const positionDropdown = () => {
 			// We need to temporarily show it to measure its dimensions
-			const isActive = actionDropdown.classList.contains('active');
+			const isActive = actionDropdown?.classList.contains('active');
 			if (!isActive) {
-				actionDropdown.classList.add('active');
+				actionDropdown?.classList.add('active');
 			}
 			
 			// Remove any existing position classes
-			actionDropdown.classList.remove('dropdown--top', 'dropdown--bottom');
+			actionDropdown?.classList.remove('dropdown--top', 'dropdown--bottom');
 			
 			const buttonRect = addActionBtn.getBoundingClientRect();
 			const dropdownHeight = actionDropdown.offsetHeight;
@@ -1533,7 +1539,7 @@ let wpcf7_redirect_admin;
 			} else {
 				actionDropdown.classList.add('active');
 				positionDropdown();
-				setTimeout(() => searchInput.focus(), 100);
+				setTimeout(() => searchInput?.focus(), 100);
 			}
 		});
 		
@@ -1545,7 +1551,11 @@ let wpcf7_redirect_admin;
 		
 		// Close dropdown when clicking outside
 		document.addEventListener('click', function(event) {
-			if (!actionDropdown.contains(event.target) && !addActionBtn.contains(event.target)) {
+			if ( ! event.target ) {
+				return;
+			}
+
+			if ( !actionDropdown.contains(event.target) && !addActionBtn.contains(event.target) ) {
 				actionDropdown.classList.remove('active');
 				addActionBtn.setAttribute('aria-expanded', 'false');
 			}
@@ -1558,14 +1568,14 @@ let wpcf7_redirect_admin;
 			}
 
 			item.addEventListener('click', function(event) {
-				const actionName = event.target.getAttribute('data-action');
+				const actionName = event.target?.getAttribute('data-action');
 				window.wpcf7_redirect_admin.add_new_action( contactFormId, ruleId, actionName );
 				actionDropdown.classList.remove('active');
 			});
 		});
 		
 		// Search functionality
-		searchInput.addEventListener('input', function() {
+		searchInput?.addEventListener('input', function() {
 			const searchTerm = this.value.toLowerCase().trim();
 			document.querySelectorAll('.rcf7-dropdown__category-section').forEach(function(category) {
 				let visibleInCategory = false;

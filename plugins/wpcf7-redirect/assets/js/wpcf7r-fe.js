@@ -1,3 +1,5 @@
+// @ts-check
+
 import '../css/wpcf7-redirect-frontend.scss';
 
 var wpcf7_redirect;
@@ -76,7 +78,7 @@ var wpcf7_redirect;
                 $(document.body).trigger('wpcf7r-invalid', [event]);
 
                 if (typeof event.detail.apiResponse != 'undefined' && event.detail.apiResponse) {
-                    response = event.detail.apiResponse;
+                    const response = event.detail.apiResponse;
                     if (response.invalidFields) {
                         //support for multistep by ninja
                         wpcf7_redirect.ninja_multistep_mov_to_invalid_tab(event, response);

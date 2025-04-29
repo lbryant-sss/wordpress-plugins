@@ -4,10 +4,9 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit82e9afd0ca1736620efcaaf9b9b681dc
+class ComposerStaticInitca0da9d6ec1eaccd1d96d21f5b6cf192
 {
     public static $files = array (
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '241d2bc730dc592f76425fee315639b6' => __DIR__ . '/..' . '/globalcitizen/php-iban/oophp-iban.php',
         'ac2da84b5f360a33c0c760ac23936bfb' => __DIR__ . '/..' . '/globalcitizen/php-iban/php-iban.php',
     );
@@ -16,10 +15,6 @@ class ComposerStaticInit82e9afd0ca1736620efcaaf9b9b681dc
         's' => 
         array (
             'setasign\\Fpdi\\' => 14,
-        ),
-        'b' => 
-        array (
-            'baltpeter\\Internetmarke\\' => 24,
         ),
         'V' => 
         array (
@@ -36,7 +31,6 @@ class ComposerStaticInit82e9afd0ca1736620efcaaf9b9b681dc
         array (
             'Digitick\\Sepa\\' => 14,
             'Defuse\\Crypto\\' => 14,
-            'DeepCopy\\' => 9,
             'DVDoug\\BoxPacker\\' => 17,
         ),
         'C' => 
@@ -53,10 +47,6 @@ class ComposerStaticInit82e9afd0ca1736620efcaaf9b9b681dc
         'setasign\\Fpdi\\' => 
         array (
             0 => __DIR__ . '/..' . '/setasign/fpdi/src',
-        ),
-        'baltpeter\\Internetmarke\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke',
         ),
         'Vendidero\\Shiptastic\\DHL\\' => 
         array (
@@ -85,10 +75,6 @@ class ComposerStaticInit82e9afd0ca1736620efcaaf9b9b681dc
         'Defuse\\Crypto\\' => 
         array (
             0 => __DIR__ . '/..' . '/defuse/php-encryption/src',
-        ),
-        'DeepCopy\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
         'DVDoug\\BoxPacker\\' => 
         array (
@@ -268,32 +254,6 @@ class ComposerStaticInit82e9afd0ca1736620efcaaf9b9b681dc
         'DVDoug\\BoxPacker\\WeightRedistributorTest' => __DIR__ . '/..' . '/dvdoug/boxpacker/tests/WeightRedistributorTest.php',
         'DVDoug\\BoxPacker\\WorkingVolume' => __DIR__ . '/..' . '/dvdoug/boxpacker/src/WorkingVolume.php',
         'DVDoug\\BoxPacker\\WorkingVolumeTest' => __DIR__ . '/..' . '/dvdoug/boxpacker/tests/WorkingVolumeTest.php',
-        'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
-        'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
-        'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
-        'DeepCopy\\Filter\\ChainableFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/ChainableFilter.php',
-        'DeepCopy\\Filter\\Doctrine\\DoctrineCollectionFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineCollectionFilter.php',
-        'DeepCopy\\Filter\\Doctrine\\DoctrineEmptyCollectionFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineEmptyCollectionFilter.php',
-        'DeepCopy\\Filter\\Doctrine\\DoctrineProxyFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineProxyFilter.php',
-        'DeepCopy\\Filter\\Filter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/Filter.php',
-        'DeepCopy\\Filter\\KeepFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/KeepFilter.php',
-        'DeepCopy\\Filter\\ReplaceFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/ReplaceFilter.php',
-        'DeepCopy\\Filter\\SetNullFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/SetNullFilter.php',
-        'DeepCopy\\Matcher\\Doctrine\\DoctrineProxyMatcher' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Matcher/Doctrine/DoctrineProxyMatcher.php',
-        'DeepCopy\\Matcher\\Matcher' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Matcher/Matcher.php',
-        'DeepCopy\\Matcher\\PropertyMatcher' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Matcher/PropertyMatcher.php',
-        'DeepCopy\\Matcher\\PropertyNameMatcher' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Matcher/PropertyNameMatcher.php',
-        'DeepCopy\\Matcher\\PropertyTypeMatcher' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Matcher/PropertyTypeMatcher.php',
-        'DeepCopy\\Reflection\\ReflectionHelper' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Reflection/ReflectionHelper.php',
-        'DeepCopy\\TypeFilter\\Date\\DateIntervalFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Date/DateIntervalFilter.php',
-        'DeepCopy\\TypeFilter\\Date\\DatePeriodFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Date/DatePeriodFilter.php',
-        'DeepCopy\\TypeFilter\\ReplaceFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/ReplaceFilter.php',
-        'DeepCopy\\TypeFilter\\ShallowCopyFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/ShallowCopyFilter.php',
-        'DeepCopy\\TypeFilter\\Spl\\ArrayObjectFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/ArrayObjectFilter.php',
-        'DeepCopy\\TypeFilter\\Spl\\SplDoublyLinkedList' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/SplDoublyLinkedList.php',
-        'DeepCopy\\TypeFilter\\Spl\\SplDoublyLinkedListFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/SplDoublyLinkedListFilter.php',
-        'DeepCopy\\TypeFilter\\TypeFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/TypeFilter.php',
-        'DeepCopy\\TypeMatcher\\TypeMatcher' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeMatcher/TypeMatcher.php',
         'Defuse\\Crypto\\Core' => __DIR__ . '/..' . '/defuse/php-encryption/src/Core.php',
         'Defuse\\Crypto\\Crypto' => __DIR__ . '/..' . '/defuse/php-encryption/src/Crypto.php',
         'Defuse\\Crypto\\DerivedKeys' => __DIR__ . '/..' . '/defuse/php-encryption/src/DerivedKeys.php',
@@ -494,11 +454,11 @@ class ComposerStaticInit82e9afd0ca1736620efcaaf9b9b681dc
         'Vendidero\\Shiptastic\\DHL\\Api\\AuthSoap' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/AuthSoap.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\BasicAuthPaket' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/BasicAuthPaket.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\BasicAuthParcelServices' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/BasicAuthParcelServices.php',
-        'Vendidero\\Shiptastic\\DHL\\Api\\ImPartnerInformation' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/ImPartnerInformation.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\ImProductList' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/ImProductList.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\ImProductsSoap' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/ImProductsSoap.php',
-        'Vendidero\\Shiptastic\\DHL\\Api\\ImRefundSoap' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/ImRefundSoap.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\Internetmarke' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/Internetmarke.php',
+        'Vendidero\\Shiptastic\\DHL\\Api\\InternetmarkeAuth' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/InternetmarkeAuth.php',
+        'Vendidero\\Shiptastic\\DHL\\Api\\InternetmarkeRest' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/InternetmarkeRest.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\LabelRest' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/LabelRest.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\LabelSoap' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/LabelSoap.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\LocationFinder' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/LocationFinder.php',
@@ -625,27 +585,6 @@ class ComposerStaticInit82e9afd0ca1736620efcaaf9b9b681dc
         'Vendidero\\Shiptastic\\Utilities\\NumberUtil' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Utilities/NumberUtil.php',
         'Vendidero\\Shiptastic\\Utilities\\VariableStreamHandler' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Utilities/VariableStreamHandler.php',
         'Vendidero\\Shiptastic\\Validation' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Validation.php',
-        'baltpeter\\Internetmarke\\Address' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/Address.php',
-        'baltpeter\\Internetmarke\\AddressBinding' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/AddressBinding.php',
-        'baltpeter\\Internetmarke\\ApiResult' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/ApiResult.php',
-        'baltpeter\\Internetmarke\\CompanyName' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/CompanyName.php',
-        'baltpeter\\Internetmarke\\LabelCount' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/LabelCount.php',
-        'baltpeter\\Internetmarke\\LabelSpacing' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/LabelSpacing.php',
-        'baltpeter\\Internetmarke\\Margin' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/Margin.php',
-        'baltpeter\\Internetmarke\\Name' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/Name.php',
-        'baltpeter\\Internetmarke\\NamedAddress' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/NamedAddress.php',
-        'baltpeter\\Internetmarke\\OrderItem' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/OrderItem.php',
-        'baltpeter\\Internetmarke\\PageFormat' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/PageFormat.php',
-        'baltpeter\\Internetmarke\\PageLayout' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/PageLayout.php',
-        'baltpeter\\Internetmarke\\PartnerInformation' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/PartnerInformation.php',
-        'baltpeter\\Internetmarke\\PersonName' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/PersonName.php',
-        'baltpeter\\Internetmarke\\PortokasseCharge' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/PortokasseCharge.php',
-        'baltpeter\\Internetmarke\\Position' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/Position.php',
-        'baltpeter\\Internetmarke\\PublicGalleryItem' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/PublicGalleryItem.php',
-        'baltpeter\\Internetmarke\\Service' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/Service.php',
-        'baltpeter\\Internetmarke\\Size' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/Size.php',
-        'baltpeter\\Internetmarke\\StampPngResult' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/StampPngResult.php',
-        'baltpeter\\Internetmarke\\User' => __DIR__ . '/..' . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke/User.php',
         'setasign\\Fpdi\\FpdfTpl' => __DIR__ . '/..' . '/setasign/fpdi/src/FpdfTpl.php',
         'setasign\\Fpdi\\FpdfTplTrait' => __DIR__ . '/..' . '/setasign/fpdi/src/FpdfTplTrait.php',
         'setasign\\Fpdi\\FpdfTrait' => __DIR__ . '/..' . '/setasign/fpdi/src/FpdfTrait.php',
@@ -702,9 +641,9 @@ class ComposerStaticInit82e9afd0ca1736620efcaaf9b9b681dc
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit82e9afd0ca1736620efcaaf9b9b681dc::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit82e9afd0ca1736620efcaaf9b9b681dc::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit82e9afd0ca1736620efcaaf9b9b681dc::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitca0da9d6ec1eaccd1d96d21f5b6cf192::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitca0da9d6ec1eaccd1d96d21f5b6cf192::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitca0da9d6ec1eaccd1d96d21f5b6cf192::$classMap;
 
         }, null, ClassLoader::class);
     }

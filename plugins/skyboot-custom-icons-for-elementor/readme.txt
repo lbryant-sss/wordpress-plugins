@@ -1,13 +1,17 @@
 === Skyboot Custom Icons for Elementor - Elementor Icons library - 14000+ Icons  ===
 Contributors: skybootstrap
-Tags: elementor, custom icons, elementor icons, icons, elementor addons
+Tags: elementor, custom icons, elementor icons, icons, icon fonts
+Author URI:  https://skybootstrap.com
+Plugin URI:  https://skybootstrap.com/custom-icons-for-elementor
+Donate Link: https://buymeacoffee.com/skybootstrap
 Requires at least: 5.9
 Requires PHP: 7.0
-Tested up to: 6.4
-Stable tag: 1.0.7
+Tested up to: 6.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+Skyboot Custom Icons for Elementor expands your Elementor icons library with custom icons, perfect for website owners and Elementor users.
 
 == Description ==
 Skyboot custom icons for Elementor is a fantastic custom Elementor icons plugin for the Elementor page builder. If you're looking to add custom icons to your site this is the perfect Elementor custom icons plugin for the website owners. Beautiful icons that can create a unique look for a website, the SkyBoot custom icons Elementor plugin is definitely worth the download. Increase Elementor icons library using the plugin. it's a perfect Elementor custom icons plugin for Elementor based website owners.
@@ -20,6 +24,7 @@ This plugin offers a large number of icons ( more than 14055+ ) that will deligh
 👉 Subscribe Our YouTube Channel: [Subscribe Now](https://skybootstrap.com/go/skybootstrap-youtube-channel)
 👉 Like Facebbok Page: [Like Now](https://www.facebook.com/Skybootstrap)
 👉 Our SaaS Product: [TLinky](https://tlinky.com/) - The #1 Link Management Platform. TLinky's Core Solutions: URL Shortener, QR Code Generator, & Link In Bio Builder.
+👉 Love this plugin? Support our work by [buying me a coffee](https://buymeacoffee.com/skybootstrap)! Your support keeps us motivated to create and improve. Thank you!
 
 Most of the popular brand icons are available in every icon package like Google icons, YouTube icons, Instagram icons, Whatsapp icons, Facebook icons, Twitter icons, Linkedin icons, tiktok icon, and much more. There are huge numbers of social media icons included in the plugin. All are free icons in the plugin like website icons, maps icons, camera icons, UI icons, and other icons in one place.
 
@@ -71,13 +76,13 @@ Just follow these 4 easy steps:
 👉 Now you will see a new admin menu for the setting panel.
 👉 You will get all icons in Elementor's built-in icon library
 
-== How do i use custom icons with Elementor? ==
+== How do i use custom Elementor icons? ==
 
 [youtube https://youtu.be/zh46PmvLGr0]
 
 == The benefit of using the Elementor icons list plugin? ==
 
-The Skyboot custom icons for the Elementor plugin are easy to use with any Elementor supported theme and plugin in the market. Custom icons are a great way to make your site stand out. If you already use the Elementor page builder, you can use the Skyboot custom Elementor icon plugin to make your site stand out. It is an essential Elementor plugin for any Elementor site builder. 
+The Skyboot custom icons for the Elementor plugin are easy to use with any Elementor supported theme and plugin in the market. Custom icons are a great way to make your site stand out. If you already use the Elementor page builder, you can use the Skyboot custom Elementor icon plugin. It is an essential Elementor plugin for any Elementor site builder. 
 
 The Skyboot custom icon can help to give your site a unique look. The plugin development team is constantly making improvements, and these improvements are free for all Elementor users.
 
@@ -142,8 +147,8 @@ This plugin comes with a wide variety of icons to enhance your website. You'll f
 No, we have checked more than 35+ popular Elementor Addons like ElementsKit Elementor addons, Essential Addons for Elementor, Royal Elementor Addons, Premium Addons, Happy Addons for Elementor, PowerPack Addons for Elementor, Unlimited Elements, Qi Addons For Elementor, Premium Addons for Elementor, Elementor Header & Footer Builder, Starter Templates, Elementor Addon Elements, Unlimited Elements For Elementor, OoohBoi Steroids for Elementor, Livemesh Addons for Elementor, Timeline Widget For Elementor,     
 Jeg Elementor Kit, Master Addons for Elementor, The Post Grid, The Plus Addons for Elementor, Element Pack Elementor Addons, AnyWhere Elementor, Portfolio for Elementor, WidgetKit, Exclusive Addons for Elementor, Templately, Rife Elementor Extensions, Primary Addon for Elementor, Post Grid Elementor Addon, JetWidgets For Elementor, Tutor LMS Elementor Addons, Booster Elementor Addons, WPZOOM Addons for Elementor, Magical Addons For Elementor, Piotnet Addons For Elementor, etc it does not conflict with these plugins.
 
-= How many icons are included in the Elementor Icon Set? =
-The Elementor Icon Set includes 14 icons pack. These icons cover a variety of categories, such as website elements, social media, communication, and more. With this selection, you have a range of options to choose from and enhance the visual aspects of your website.
+= How many icons are included in the custom Elementor Icon Set? =
+The Elementor Icon Set includes 14 icons pack. These icons cover a variety of categories, such as website elements, brand icon, social media, communication, and more. With this selection, you have a range of options to choose from and enhance the visual aspects of your website.
 
 == Screenshots ==
 
@@ -154,6 +159,15 @@ The Elementor Icon Set includes 14 icons pack. These icons cover a variety of ca
 
 == Changelog ==
 
+= 1.0.9 (Date: 28-04-2025) = 
+*   Compatible with WordPress 6.8
+*   Compatible with latest version of Elementor
+
+= 1.0.8 (Date: 02-03-2024) = 
+*   Compatible with WordPress 6.4
+*   Compatible with latest version of Elementor
+
+
 = 1.0.7 (Date: 25-08-2023) = 
 *   Compatible with WordPress 6.3
 *   Compatible with latest version of Elementor
@@ -161,7 +175,7 @@ The Elementor Icon Set includes 14 icons pack. These icons cover a variety of ca
 = 1.0.6 (Date: 23-05-2023) = 
 *   Compatible with WordPress 6.2.2
 *   Compatible with latest version of Elementor
-*   Improved dashboard css
+*   Improved dashboard CSS
 
 = 1.0.5 =
 *	Tested WordPress Version 6.0

@@ -90,6 +90,8 @@ class MethodHelper {
 
 				if ( ! is_a( $product, 'WC_Product' ) ) {
 					continue;
+				} elseif ( ! $product->needs_shipping() ) {
+					continue;
 				}
 
 				$s_product     = wc_shiptastic_get_product( $product );

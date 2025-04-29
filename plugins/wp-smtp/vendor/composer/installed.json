@@ -367,17 +367,17 @@
         },
         {
             "name": "stellarwp/telemetry",
-            "version": "2.3.3",
-            "version_normalized": "2.3.3.0",
+            "version": "2.3.4",
+            "version_normalized": "2.3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stellarwp/telemetry.git",
-                "reference": "cb302096350b047ab203367c8198bd0c5d1805cc"
+                "reference": "74c7b819d574aa5fc1392f982fb32cedc18d4c6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stellarwp/telemetry/zipball/cb302096350b047ab203367c8198bd0c5d1805cc",
-                "reference": "cb302096350b047ab203367c8198bd0c5d1805cc",
+                "url": "https://api.github.com/repos/stellarwp/telemetry/zipball/74c7b819d574aa5fc1392f982fb32cedc18d4c6f",
+                "reference": "74c7b819d574aa5fc1392f982fb32cedc18d4c6f",
                 "shasum": ""
             },
             "require": {
@@ -396,7 +396,7 @@
                 "the-events-calendar/coding-standards": "dev-master",
                 "wp-coding-standards/wpcs": "^3.0.0"
             },
-            "time": "2025-01-28T21:13:55+00:00",
+            "time": "2025-04-25T18:58:09+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -413,7 +413,7 @@
             "description": "Telemetry library for StellarWP plugins.",
             "support": {
                 "issues": "https://github.com/stellarwp/telemetry/issues",
-                "source": "https://github.com/stellarwp/telemetry/tree/2.3.3"
+                "source": "https://github.com/stellarwp/telemetry/tree/2.3.4"
             },
             "install-path": "../stellarwp/telemetry"
         },

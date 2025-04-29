@@ -36,8 +36,8 @@ $plans = [
             'mobile_title' => esc_html__("Updated and support for 1 year", "folders"),
         ],
         '2_years' => [
-            'price' => 89,
-            'month' => 3.7,
+            'price' => 99,
+            'month' => 4.1,
             'link' => $proURL."53",
             'title' => esc_html__("2 years", "folders"),
             'mobile_title' => esc_html__("Updated and support for 2 years", "folders"),

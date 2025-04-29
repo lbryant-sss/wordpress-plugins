@@ -4,9 +4,9 @@ Author URI: https://tmsproducts.io/
 Tags: appointments, booking, event booking system, booking system, scheduling
 Donate link: https://wpamelia.com/
 Requires at least: 4.5
-Tested up to: 6.7.2
+Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.2.22
+Stable tag: 1.2.23
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -289,6 +289,11 @@ Installing Amelia Lite WordPress Booking Plugin is as easy as 1-2-3!
 
 
 == Changelog ==
+V1.2.23
+* Updated French translation
+* BugFix: Fixed issue with time slots spanning two days, particularly around midnight
+* Other small bug fixes and stability improvements
+
 V1.2.22
 * Updated Dutch, Italian and Turkish translations
 * BugFix: Fixed issue with daylight savings time change and rescheduling appointments

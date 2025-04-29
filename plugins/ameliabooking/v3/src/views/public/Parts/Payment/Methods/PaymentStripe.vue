@@ -368,9 +368,9 @@ async function stripePaymentCreate () {
 }
 
 function stripePaymentActionRequired (response) {
-  stripeObject.handleCardAction(
-    response.paymentIntentClientSecret
-  ).then(
+  stripeObject.handleNextAction({
+    clientSecret: response.paymentIntentClientSecret
+  }).then(
     async function (result) {
       let addressResult = null
       if (amSettings.payments.stripe.address && address) {

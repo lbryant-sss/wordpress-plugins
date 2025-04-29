@@ -1,3 +1,5 @@
+// @ts-check
+
 import apiFetch from '@wordpress/api-fetch';
 
 import '../css/entries.scss';

@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'setasign\\Fpdi\\' => array($vendorDir . '/setasign/fpdi/src'),
-    'baltpeter\\Internetmarke\\' => array($vendorDir . '/baltpeter/internetmarke-php/src/baltpeter/Internetmarke'),
     'Vendidero\\Shiptastic\\DHL\\' => array($baseDir . '/packages/shiptastic-integration-for-dhl/src'),
     'Vendidero\\Shiptastic\\' => array($baseDir . '/packages/shiptastic-for-woocommerce/src'),
     'Vendidero\\Germanized\\' => array($baseDir . '/src'),
@@ -15,7 +14,6 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Digitick\\Sepa\\' => array($vendorDir . '/digitick/sepa-xml/src'),
     'Defuse\\Crypto\\' => array($vendorDir . '/defuse/php-encryption/src'),
-    'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'DVDoug\\BoxPacker\\' => array($vendorDir . '/dvdoug/boxpacker/src', $vendorDir . '/dvdoug/boxpacker/tests'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
     'Automattic\\Jetpack\\Autoloader\\' => array($vendorDir . '/automattic/jetpack-autoloader/src'),

@@ -252,6 +252,7 @@ class UpdateEventBookingCommandHandler extends CommandHandler
                 if (StarterWooCommerceService::isEnabled()) {
                     StarterWooCommerceService::updateItemMetaData(
                         $payment->getWcOrderId()->getValue(),
+                        $payment->getWcOrderItemId() ? $payment->getWcOrderItemId()->getValue() : null,
                         $eventArray
                     );
                 }

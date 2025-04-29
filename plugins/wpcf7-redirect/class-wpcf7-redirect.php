@@ -87,10 +87,10 @@ class Wpcf7_Redirect {
 			'nice_name'            => __( 'Redirect for Contact Form 7', 'wpcf7-redirect' ),
 			'logo'                 => esc_url_raw( WPCF7_PRO_REDIRECT_BUILD_PATH . 'images/wpcf7-help.png' ),
 			'primary_color'        => '#4580ff',
-			'pages'                => array( 'contact_page_wpcf7r-addons-upsell', 'contact_page_wpc7_redirect' ),
+			'pages'                => array( 'toplevel_page_wpcf7r-dashboard' ),
 			'has_upgrade_menu'     => false,
 			'premium_support_link' => $has_legacy ? 'https://users.freemius.com/login' : '',
-			'upgrade_link'         => tsdk_translate_link( tsdk_utmify( '', 'floatWidget' ) ),
+			'upgrade_link'         => tsdk_utmify( wpcf7_redirect_upgrade_url(), 'floatWidget' ),
 			'documentation_link'   => tsdk_utmify( 'https://docs.themeisle.com/collection/2014-redirection-for-contact-form-7', 'floatWidget' ),
 		);
 	}

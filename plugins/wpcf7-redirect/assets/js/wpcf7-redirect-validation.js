@@ -1,3 +1,5 @@
+// @ts-check
+
 /**
  * Handles validation for Contact Form 7 fields in the admin area
  * @param {Object} $ - jQuery instance

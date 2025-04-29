@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Amelia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-09 17:52+0200\n"
-"PO-Revision-Date: 2025-04-02 16:33+0200\n"
+"POT-Creation-Date: 2025-04-25 14:55+0200\n"
+"PO-Revision-Date: 2025-04-22 11:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: Français\n"
 "Language: fr_FR\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-KeywordsList: __;_e;gettext;gettext_noop;_\n"
 "X-Poedit-Basepath: ../../src/Infrastructure/WP/Translations\n"
 "X-Loco-Version: 2.4.0; wp-5.4.2\n"
@@ -85,7 +85,7 @@ msgstr ""
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1556
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:220
 msgid "Close"
-msgstr "Clôturer"
+msgstr "Fermer"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:38
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1173
@@ -108,7 +108,7 @@ msgstr "Continuer"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:42
 msgid "Coupon code"
-msgstr "Code promo"
+msgstr "Code de réduction"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:43
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:623
@@ -255,7 +255,7 @@ msgstr "Exporter"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:74
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:630
 msgid "Extra"
-msgstr "Supplémentaire"
+msgstr "Supplément"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:75
 msgid "Extras"
@@ -278,14 +278,12 @@ msgid "Outlook Calendar"
 msgstr "Calendrier Outlook"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:80
-#, fuzzy
 msgid "Join With Microsoft Teams"
-msgstr "S’inscrire avec Google Meet"
+msgstr "Participer avec Microsoft Teams"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:81
-#, fuzzy
 msgid "Apple Calendar"
-msgstr "Google Agenda"
+msgstr "Calendrier Apple"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:82
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:118
@@ -561,7 +559,7 @@ msgstr "Ressources"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:140
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1278
 msgid "Save"
-msgstr "Enregistrer"
+msgstr "Réduction de"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:141
 msgid "Select badge"
@@ -864,7 +862,7 @@ msgstr "Autoriser les clients à supprimer leur profil"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:212
 msgid "Allow customers to cancel packages"
-msgstr "Permettre aux clients d'annuler des colis"
+msgstr "Permettre aux clients d'annuler des forfaits"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:213
 msgid "Manage their appointments"
@@ -875,9 +873,8 @@ msgid "Manage their events"
 msgstr "Gérez leurs événements"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:215
-#, fuzzy
 msgid "Manage customers"
-msgstr "clients"
+msgstr "Gérer les clients"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:216
 msgid "Amelia API Documentation"
@@ -910,7 +907,8 @@ msgstr "Paramètres des rendez-vous et des événements"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:223
 msgid "Use these settings to manage frontend bookings"
-msgstr "Utilisez ces paramètres pour gérer les réservations frontales"
+msgstr ""
+"Utilisez ces paramètres pour gérer les réservations sur le site front-end"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:224
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:830
@@ -1126,7 +1124,7 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:263
 msgid "Cart"
-msgstr "CHARIOT"
+msgstr "Panier"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:264
 msgid ""
@@ -1138,7 +1136,7 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:265
 msgid "Coupons"
-msgstr "Coupons"
+msgstr "Codes de réduction"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:266
 msgid "Enable No-show tag"
@@ -1161,9 +1159,8 @@ msgstr "Activer Google Meet"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:270
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:97
-#, fuzzy
 msgid "Enable Microsoft Teams"
-msgstr "Activer la balise No-Show"
+msgstr "Activer Microsoft Teams"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:271
 msgid "Facebook Pixel"
@@ -1383,13 +1380,12 @@ msgid "Redirect URI"
 msgstr "URI de redirection"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:321
-#, fuzzy
 msgid "iCloud Email Address"
-msgstr "Adresse de courriel"
+msgstr "adresse de courriel iCloud"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:322
 msgid "iCloud App-specific Password"
-msgstr ""
+msgstr "mot de passe d'application iCloud"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:324
 msgid "Client Key"
@@ -1548,8 +1544,7 @@ msgstr "Paramètres des étiquettes"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:366
 msgid "Use these settings to change labels on frontend pages"
-msgstr ""
-"Utilisez ces paramètres pour modifier les étiquettes sur les pages frontales"
+msgstr "Utilisez ces paramètres pour modifier les étiquettes sur le front-end"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:367
 msgid "Mail Service"
@@ -1700,7 +1695,7 @@ msgid ""
 "be used in all bookings"
 msgstr ""
 "Utilisez ces paramètres pour définir le format des prix, le mode de paiement "
-"et les coupons qui seront utilisés pour toutes les réservations"
+"et les codes de réduction qui seront utilisés pour toutes les réservations"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:397
 msgid "Period available for booking in advance"
@@ -1767,16 +1762,15 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:411
 msgid "Remove Google Calendar Busy Slots"
-msgstr "Remove Google Calendar Busy Slots"
+msgstr "Retirer les créneaux occupés dans le calendrier Google"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:412
 msgid "Remove Outlook Calendar Busy Slots"
-msgstr "Remove Outlook Calendar Busy Slots"
+msgstr "Retirer les créneaux occupés dans le calendrier Outlook"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:413
-#, fuzzy
 msgid "Remove Apple Calendar Busy Slots"
-msgstr "Remove Google Calendar Busy Slots"
+msgstr "Retirer les créneaux occupés dans le calendrier Apple"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:414
 msgid "Include Buffer time in Google events"
@@ -1787,9 +1781,8 @@ msgid "Include Buffer time in Outlook events"
 msgstr "Inclure la durée tampon dans les événements Outlook"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:416
-#, fuzzy
 msgid "Include Buffer time in Apple events"
-msgstr "Inclure la durée tampon dans Google Events"
+msgstr "Inclure la durée tampon dans Apple Events"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:417
 msgid "Redirect URL for Successfully Rejected Booking"
@@ -1800,9 +1793,8 @@ msgid "Redirect URL for Unsuccessfully Rejected Booking"
 msgstr "URL de redirection pour une réservation refusée sans succès"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:419
-#, fuzzy
 msgid "Reply-to Email"
-msgstr "Email du destinataire"
+msgstr "Adresse de réponse"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:420
 msgid "Require password for login"
@@ -1841,18 +1833,16 @@ msgid "Send Event Invitation Email"
 msgstr "Envoyer un e-mail d'invitation à un événement"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:427
-#, fuzzy
 msgid "Send invoice to customer by default"
-msgstr "Avertir le(s) client(s) par défaut"
+msgstr "Envoyer la facture au client par défaut"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:428
-#, fuzzy
 msgid ""
 "Enable this option to make sure that the invoice will be sent to the "
 "customer after booking."
 msgstr ""
-"Activez cette option si vous souhaitez envoyer un fichier ICS par e-mail "
-"après les réservations en attente."
+"Activez cette option si vous souhaitez envoyer la facture au client après sa "
+"réservation."
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:429
 msgid "Send ics file for Approved bookings"
@@ -2271,9 +2261,8 @@ msgid "Cart Purchase"
 msgstr "Achat par panier"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:530
-#, fuzzy
 msgid "Booking Invoice"
-msgstr "Prix de réservation"
+msgstr "Facture de la réservation"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:531
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:638
@@ -2400,9 +2389,8 @@ msgid "Id of the appointment"
 msgstr "ID du rendez-vous"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:560
-#, fuzzy
 msgid "Payment due amount"
-msgstr "Montant de paiement"
+msgstr "Montant dû"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:561
 msgid "Appointment notes"
@@ -3100,11 +3088,11 @@ msgstr "Afficher"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:777
 msgid "Block"
-msgstr ""
+msgstr "Bloquer"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:778
 msgid "Unblock"
-msgstr ""
+msgstr "Débloquer"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:790
 msgid "Add Location"
@@ -3121,7 +3109,7 @@ msgstr "Ajouter une catégorie"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:804
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1268
 msgid "Add Extra"
-msgstr "AJOUTER UN SUPPLÉMENT"
+msgstr "Ajouter un supplément"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:805
 msgid "Add Image"
@@ -3508,14 +3496,12 @@ msgid "Are you sure you want to delete this customer?"
 msgstr "Êtes-vous sûr de vouloir supprimer ce client ?"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:933
-#, fuzzy
 msgid "Are you sure you want to block this customer?"
-msgstr "Êtes-vous sûr de vouloir supprimer ce client ?"
+msgstr "Êtes-vous sûr de vouloir bloquer ce client ?"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:934
-#, fuzzy
 msgid "Are you sure you want to unblock this customer?"
-msgstr "Êtes-vous sûr de vouloir supprimer ce client ?"
+msgstr "Êtes-vous sûr de vouloir débloquer ce client ?"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:935
 msgid "Customer Activity"
@@ -3526,14 +3512,12 @@ msgid "Customer has been deleted"
 msgstr "Le client a été supprimé"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:937
-#, fuzzy
 msgid "Customer has been blocked"
-msgstr "Le client a été supprimé"
+msgstr "Le client a été bloqué"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:938
-#, fuzzy
 msgid "Customer has been unblocked"
-msgstr "Le client a été supprimé"
+msgstr "Le client a été débloqué"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:940
 msgid "Customer has been saved"
@@ -3867,7 +3851,7 @@ msgstr "Êtes-vous sûr de vouloir supprimer ce paiement ?"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1069
 msgid "Discount"
-msgstr "Discount"
+msgstr "Réduction"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1070
 msgid "Due"
@@ -3972,7 +3956,7 @@ msgstr "Créer un client"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1106
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1284
 msgid "Custom Fields"
-msgstr "Les champs personnalisés"
+msgstr "Champs personnalisés"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1108
 msgid "Customer Phone"
@@ -4066,7 +4050,7 @@ msgstr "Le nombre maximum de places est de"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1125
 msgid "Select Extra"
-msgstr "Sélectionnez Extra"
+msgstr "Sélectionnez le supplément"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1126
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1299
@@ -4162,7 +4146,7 @@ msgstr "Veuillez d'abord annuler l'événement avant de le supprimer."
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1170
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1285
 msgid "Customize"
-msgstr "Personnalisez"
+msgstr "Personnalisation"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1171
 msgid "Customer is already added to this event"
@@ -4599,7 +4583,7 @@ msgstr "Couleur de l'image"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1317
 msgid "Repeat this appointment"
-msgstr "Répétez ce rendez-vous"
+msgstr "Répéter ce rendez-vous"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1320
 msgid "Last Name Input Field"
@@ -4617,7 +4601,7 @@ msgstr "Champ de saisie du téléphone"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1495
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:258
 msgid "Go Back"
-msgstr "Retournez"
+msgstr "Revenir en arrière"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1327
 msgid "Display Field:"
@@ -4663,7 +4647,7 @@ msgstr "Toutes nos félicitations !"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1342
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:79
 msgid "Add to Calendar"
-msgstr "AJOUTER À L'AGENDA"
+msgstr "Ajouter au calendrier"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1343
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:116
@@ -4686,7 +4670,7 @@ msgstr "Filtres"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1347
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:213
 msgid "Book event"
-msgstr "Réservez un événement"
+msgstr "Réserver un événement"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1349
 msgid "Form"
@@ -4712,7 +4696,7 @@ msgstr "Aucune donnée correspondante"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1358
 msgid "Bringing Anyone With You"
-msgstr "Emmener n'importe qui avec vous"
+msgstr "Venir avec quelqu'un"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1359
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:200
@@ -5115,7 +5099,7 @@ msgstr "Visibilité de la barre latérale"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1474
 msgid "Publish Form"
-msgstr "Formulaire de publication"
+msgstr "Publier le formulaire"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1476
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:253
@@ -5266,7 +5250,7 @@ msgstr "Aucun résultat"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1524
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:255
 msgid "Book Now"
-msgstr "Reserve maintenant"
+msgstr "Réserver maintenant"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1526
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:257
@@ -5733,8 +5717,8 @@ msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a catalog"
 msgstr ""
-"Le catalogue de réservation frontal est un shortcode lorsque vous souhaitez "
-"afficher votre service sous forme de catalogue"
+"Le catalogue de réservation Front-end est un shortcode lorsque vous "
+"souhaitez afficher votre service sous forme de catalogue"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1671
 msgid "Amelia - Catalog view"
@@ -5745,8 +5729,8 @@ msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a cataloge"
 msgstr ""
-"Le catalogue de réservation frontal est un shortcode lorsque vous souhaitez "
-"afficher votre service sous forme de catalogue"
+"Le catalogue de réservation front-end est un shortcode lorsque vous "
+"souhaitez afficher votre service sous forme de catalogue"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1675
 msgid "Amelia - Events"
@@ -5881,7 +5865,7 @@ msgstr "Sur place"
 
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:128
 msgid "Oops..."
-msgstr "Oops..."
+msgstr "Oups..."
 
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:132
 msgid "Phone already exists with different name. Please check your name."
@@ -5934,7 +5918,7 @@ msgstr "Montant total:"
 
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:214
 msgid "Book this event"
-msgstr "Réservez cet événement"
+msgstr "Réserver cet événement"
 
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:249
 msgid "Category:"
@@ -5985,7 +5969,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Type de montant"
 
 #~ msgid "Apply Coupon:"
-#~ msgstr "Appliquer le coupon :"
+#~ msgstr "Appliquer le code de réduction :"
 
 #~ msgid "Badge Color"
 #~ msgstr "Couleur du badge"
@@ -6008,16 +5992,16 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Annulé par le participant"
 
 #~ msgid "Create"
-#~ msgstr "CREATE"
+#~ msgstr "Créer"
 
 #~ msgid "Semicolon (;)"
 #~ msgstr "Point-virgule (;)"
 
 #~ msgid "Coupon"
-#~ msgstr "Coupon"
+#~ msgstr "Code de réduction"
 
 #~ msgid "The coupon you entered is not valid"
-#~ msgstr "Le coupon que vous avez saisi n'est pas valable"
+#~ msgstr "Le code de réduction que vous avez saisi n'est pas valable"
 
 #~ msgid "Create New Badge"
 #~ msgstr "Créer un nouveau badge"
@@ -6031,13 +6015,11 @@ msgstr "Sélectionnez un client"
 #~ msgid "Expired"
 #~ msgstr "Expiré"
 
-#, fuzzy
-#~| msgid "Expires at"
 #~ msgid "Expires on"
-#~ msgstr "Expire à"
+#~ msgstr "Expire le"
 
 #~ msgid "Discard"
-#~ msgstr "Jeter"
+#~ msgstr "Annuler"
 
 #~ msgid "Discount (%)"
 #~ msgstr "Réduction (%)"
@@ -6097,6 +6079,9 @@ msgstr "Sélectionnez un client"
 
 #~ msgid "Manage Employee Badges"
 #~ msgstr "Gérer les badges des employés"
+
+#~ msgid "Microsoft Teams Link"
+#~ msgstr "Lien Microsoft Teams"
 
 #~ msgid "You don't have any employees here yet..."
 #~ msgstr "Vous n'avez pas encore d'employés ici..."
@@ -6358,7 +6343,7 @@ msgstr "Sélectionnez un client"
 #~ "les données de leur profil (les réservations ne seront pas supprimées)."
 
 #~ msgid "Amelia Role"
-#~ msgstr "Amélie Role"
+#~ msgstr "Rôle Amelia"
 
 #~ msgid "Please enter email address"
 #~ msgstr "Veuillez saisir votre adresse e-mail"
@@ -6939,8 +6924,8 @@ msgstr "Sélectionnez un client"
 #~ "Paste here the Secret Key that you have got once you have signed up for "
 #~ "the API key pair on Google reCAPTCHA."
 #~ msgstr ""
-#~ "Paste here the Secret Key that you have got once you have signed up for "
-#~ "the API key pair on Google reCAPTCHA."
+#~ "Coller ici la clé secrète que vous avez obtenu après vous être sur Google "
+#~ "reCAPTCHA pour obtenir une nouvelle paire de clés API."
 
 #~ msgid "Please enter site key"
 #~ msgstr "Veuillez saisir la clé du site"
@@ -7247,13 +7232,16 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Page par défaut"
 
 #~ msgid "Checkout"
-#~ msgstr "Passage en caisse"
+#~ msgstr "Page de paiement"
 
 #~ msgid "Add Rule"
 #~ msgstr "Ajouter une règle"
 
 #~ msgid "Are you sure you want to delete this rule"
 #~ msgstr "Êtes-vous sûr de vouloir supprimer cette règle"
+
+#~ msgid "Draft"
+#~ msgstr "Brouillon"
 
 #~ msgid "Pending Payment"
 #~ msgstr "En attente de paiement"
@@ -7268,13 +7256,13 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Termin&#233;e"
 
 #~ msgid "Cancelled"
-#~ msgstr "Annulés"
+#~ msgstr "Annulé"
 
 #~ msgid "Failed"
 #~ msgstr "Failed"
 
 #~ msgid "Apply on"
-#~ msgstr "Postulez le"
+#~ msgstr "S'applique à"
 
 #~ msgid "Order update"
 #~ msgstr "Mise à jour de la commande"
@@ -7351,7 +7339,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Vous avez déjà un compte ?"
 
 #~ msgid "Amount:"
-#~ msgstr "Quantité :"
+#~ msgstr "Montant :"
 
 #~ msgid "This payment cannot be completed"
 #~ msgstr "Ce paiement ne peut pas être effectué"
@@ -7470,7 +7458,7 @@ msgstr "Sélectionnez un client"
 #~ "Avoid sending reminder notifications if a booking is created within the "
 #~ "set time before the appointment/event."
 #~ msgstr ""
-#~ "Évitez d'envoyer des notifications de rappel si une réservation est créée "
+#~ "Éviter d'envoyer des notifications de rappel si une réservation est créée "
 #~ "dans le délai imparti avant le rendez-vous/l'événement."
 
 #~ msgid "There are no SMS messages..."
@@ -7592,7 +7580,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Détails des rendez-vous du panier"
 
 #~ msgid "Used Coupon"
-#~ msgstr "Coupon utilisé"
+#~ msgstr "Code de réduction utilisé"
 
 #~ msgid "Customer Panel Access Link"
 #~ msgstr "Lien d'accès au panneau client"
@@ -7634,10 +7622,10 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Heure de fin initiale de l'événement"
 
 #~ msgid "Selected extras details"
-#~ msgstr "Détails des extras sélectionnés"
+#~ msgstr "Détails des suppléments sélectionnés"
 
 #~ msgid "Selected extras"
-#~ msgstr "Extras sélectionnés"
+#~ msgstr "Suppléments sélectionnés"
 
 #~ msgid "Cart appointments details placeholder set up"
 #~ msgstr ""
@@ -7767,23 +7755,19 @@ msgstr "Sélectionnez un client"
 #~ msgid "Google Meet Join Link"
 #~ msgstr "Lien de connexion à Google Meet"
 
-#, fuzzy
-#~| msgid "Google Meet Join Link"
 #~ msgid "Microsoft Teams Join Link"
-#~ msgstr "Lien de connexion à Google Meet"
+#~ msgstr "Lien de connexion à Microsoft Teams"
 
-#, fuzzy
-#~| msgid "Date periods of the event with Zoom join links"
 #~ msgid "Date periods of the event with Microsoft Teams join links"
-#~ msgstr "Dates et périodes de l'événement avec liens de connexion Zoom"
+#~ msgstr ""
+#~ "Dates et périodes de l'événement avec liens de connexion Microsoft Teams"
 
-#, fuzzy
-#~| msgid "Date & Time periods of the event with Zoom join links"
 #~ msgid "Date & Time periods of the event with Microsoft Teams join links"
-#~ msgstr "Date et heure de l'événement avec liens de connexion Zoom"
+#~ msgstr ""
+#~ "Date et heure de l'événement avec liens de connexion Microsoft Teams"
 
 #~ msgid "Custom fields"
-#~ msgstr "Les champs personnalisés"
+#~ msgstr "Champs personnalisés"
 
 #~ msgid ""
 #~ "Once set, this placeholder applies to all types of notifications where it "
@@ -8251,13 +8235,13 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Êtes-vous sûr de vouloir dupliquer ce package ?"
 
 #~ msgid "Are you sure you want to hide this package?"
-#~ msgstr "Êtes-vous sûr de vouloir masquer ce colis ?"
+#~ msgstr "Êtes-vous sûr de vouloir masquer ce forfait ?"
 
 #~ msgid "Are you sure you want to show this package?"
 #~ msgstr "Êtes-vous sûr de vouloir montrer ce package ?"
 
 #~ msgid "Are you sure you want to delete this extra"
-#~ msgstr "Êtes-vous sûr de vouloir supprimer cet extra"
+#~ msgstr "Êtes-vous sûr de vouloir supprimer ce supplément"
 
 #~ msgid "Custom Duration & Pricing"
 #~ msgstr "Durée et tarification personnalisées"
@@ -8269,10 +8253,10 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Modifier la ressource"
 
 #~ msgid "Please enter extra name"
-#~ msgstr "Veuillez saisir un nom supplémentaire"
+#~ msgstr "Veuillez saisir un nom pour le supplément"
 
 #~ msgid "Please enter extra price"
-#~ msgstr "Veuillez saisir un prix supplémentaire"
+#~ msgstr "Veuillez saisir le prix du supplément"
 
 #~ msgid "Price must be non-negative number"
 #~ msgstr "Le prix ne doit pas être un nombre négatif"
@@ -8386,10 +8370,8 @@ msgstr "Sélectionnez un client"
 #~ msgid "Manage Packages"
 #~ msgstr "Gérer les forfaits"
 
-#, fuzzy
-#~| msgid "This package has"
 #~ msgid "purchased packages"
-#~ msgstr "Ce forfait contient"
+#~ msgstr "ce forfait contient"
 
 #~ msgid "Enable Resource usage for a group booking"
 #~ msgstr "Activer l'utilisation des ressources pour une réservation de groupe"
@@ -8581,7 +8563,7 @@ msgstr "Sélectionnez un client"
 #~ "nombre total de rendez-vous par forfait."
 
 #~ msgid "Set extra as a mandatory field"
-#~ msgstr "Définissez un champ supplémentaire comme champ obligatoire"
+#~ msgstr "Définir le supplément comme champ obligatoire"
 
 #~ msgid "Minimum required extras"
 #~ msgstr "Suppléments minimaux requis"
@@ -8597,6 +8579,9 @@ msgstr "Sélectionnez un client"
 
 #~ msgid "Away"
 #~ msgstr "Indisponible"
+
+#~ msgid "Choose Apple Calendar"
+#~ msgstr "Choisir le calendrier Apple"
 
 #~ msgid "On Break"
 #~ msgstr "En pause"
@@ -8671,10 +8656,14 @@ msgstr "Sélectionnez un client"
 #~ msgid "Sign out from Outlook"
 #~ msgstr "Se déconnecter d’Outlook"
 
-#, fuzzy
-#~| msgid "Disconnect"
 #~ msgid "Disconnect from Apple"
-#~ msgstr "Déconnecter"
+#~ msgstr "Déconnecter d'Apple"
+
+#~ msgid "Connect to Apple Calendar"
+#~ msgstr "Se connect au calendrier Apple"
+
+#~ msgid "Connect to your personal Apple Calendar"
+#~ msgstr "Se connecter à votre calendrier personnel Apple"
 
 #~ msgid "Unable to connect to Google Calendar"
 #~ msgstr "Impossible de se connecter à Google Agenda"
@@ -8697,10 +8686,32 @@ msgstr "Sélectionnez un client"
 #~ "une fois le rendez-vous planifié, il sera <br/> automatiquement ajouté au "
 #~ "calendrier de l'employé."
 
-#, fuzzy
-#~| msgid "Connect"
+#~ msgid ""
+#~ "Here you can connect employee with Apple Calendar,<br/>so once the "
+#~ "booking is scheduled it will be<br/>automatically added to employee's "
+#~ "calendar."
+#~ msgstr ""
+#~ "Ici, vous pouvez connecter un employé à Agenda Apple. <br/> Ainsi, une "
+#~ "fois le rendez-vous planifié, il sera <br/> automatiquement ajouté au "
+#~ "calendrier de l'employé."
+
+#~ msgid ""
+#~ "Here, you can connect your personal Apple Calendar,<br/>so once the "
+#~ "booking is scheduled,<br/>it will be automatically added to your calendar "
+#~ "of choice."
+#~ msgstr ""
+#~ "Ici, vous pouvez connecter votre calendrier personnel Apple. <br/> Ainsi, "
+#~ "une fois le rendez-vous planifié, <br/> il sera automatiquement ajouté au "
+#~ "calendrier de votre choix."
+
+#~ msgid "Overridden by employee"
+#~ msgstr "Remplacer par l'employé"
+
+#~ msgid "Disconnect Employee"
+#~ msgstr "Déconnecter l'employé"
+
 #~ msgid "Connect Account"
-#~ msgstr "Connecter"
+#~ msgstr "Connecter le compte"
 
 #~ msgid "New Employee"
 #~ msgstr "Nouvel employé"
@@ -8725,6 +8736,12 @@ msgstr "Sélectionnez un client"
 
 #~ msgid "Enter to set or reset password"
 #~ msgstr "Entrez pour définir ou réinitialiser le mot de passe"
+
+#~ msgid "Enter Apple Calendar iCloud Id"
+#~ msgstr "Entrer l'ID Apple Calendar iCloud"
+
+#~ msgid "Enter Apple Calendar app specific password"
+#~ msgstr "Entrer le mot de passe spécifique pour l'application Apple Calendar"
 
 #~ msgid "Send Employee Panel Access Email"
 #~ msgstr "Envoyer un e-mail d’accès au panel"
@@ -8874,7 +8891,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Besoin d'aide ?"
 
 #~ msgid "Amelia Changelog"
-#~ msgstr "Amelia Changelog"
+#~ msgstr "Journal des modifications Amelia"
 
 #~ msgid "Included in Your Plan"
 #~ msgstr "Inclus dans votre forfait"
@@ -8906,10 +8923,8 @@ msgstr "Sélectionnez un client"
 #~ msgid "Are you sure you want to show this tax?"
 #~ msgstr "Êtes-vous sûr de vouloir faire apparaître cette taxe ?"
 
-#, fuzzy
-#~| msgid "Service Details"
 #~ msgid "Invoice details"
-#~ msgstr "Détails du service"
+#~ msgstr "Détails de la facture"
 
 #~ msgid "Tax has been deleted"
 #~ msgstr "La taxe a été supprimée"
@@ -8964,91 +8979,93 @@ msgstr "Sélectionnez un client"
 #~ "saisiront lors de leur réservation afin de bénéficier d'une réduction."
 
 #~ msgid "Are you sure you want to delete this coupon?"
-#~ msgstr "Êtes-vous sûr de vouloir supprimer ce coupon ?"
+#~ msgstr "Êtes-vous sûr de vouloir supprimer ce code de réduction ?"
 
 #~ msgid "Are you sure you want to duplicate this coupon?"
-#~ msgstr "Êtes-vous sûr de vouloir dupliquer ce coupon ?"
+#~ msgstr "Êtes-vous sûr de vouloir dupliquer ce code de réduction ?"
 
 #~ msgid "Are you sure you want to hide this coupon?"
-#~ msgstr "Êtes-vous sûr de vouloir masquer ce coupon ?"
+#~ msgstr "Êtes-vous sûr de vouloir masquer ce code de réduction ?"
 
 #~ msgid "Are you sure you want to show this coupon?"
-#~ msgstr "Êtes-vous sûr de vouloir montrer ce coupon ?"
+#~ msgstr "Êtes-vous sûr de vouloir montrer ce code de réduction ?"
 
 #~ msgid "Coupon has been deleted"
-#~ msgstr "Le coupon a été supprimé"
+#~ msgstr "Le code de réduction a été supprimé"
 
 #~ msgid "Your Coupon is hidden"
-#~ msgstr "Votre coupon est masqué"
+#~ msgstr "Votre code de réduction est masqué"
 
 #~ msgid "Coupon has not been deleted"
-#~ msgstr "Le coupon n'a pas été supprimé"
+#~ msgstr "Le code de réduction n'a pas été supprimé"
 
 #~ msgid "Coupon has been saved"
-#~ msgstr "Le coupon a été enregistré"
+#~ msgstr "Le code de réduction a été enregistré"
 
 #~ msgid "Coupon usage limit must be at least 1"
-#~ msgstr "La limite d'utilisation du coupon doit être d'au moins 1"
+#~ msgstr "La limite d'utilisation du code de réduction doit être d'au moins 1"
 
 #~ msgid "Your Coupon is active"
-#~ msgstr "Votre coupon est actif"
+#~ msgstr "Votre code de réduction est actif"
 
 #~ msgid "Coupons have been deleted"
-#~ msgstr "Les coupons ont été supprimés"
+#~ msgstr "Les codes de réduction ont été supprimés"
 
 #~ msgid "coupons"
-#~ msgstr "coupons"
+#~ msgstr "codes de réduction"
 
 #~ msgid "Coupons have not been deleted"
-#~ msgstr "Les coupons n'ont pas été supprimés"
+#~ msgstr "Les codes de réduction n'ont pas été supprimés"
 
 #~ msgid "Deduction"
 #~ msgstr "Déduction"
 
-#, fuzzy
-#~| msgid "Download .csv"
 #~ msgid "Download"
-#~ msgstr "Télécharger .csv"
+#~ msgstr "Télécharger"
 
 #~ msgid "Edit Coupon"
-#~ msgstr "Modifier le coupon"
+#~ msgstr "Modifier le code de réduction"
 
 #~ msgid "Please enter code"
 #~ msgstr "Veuillez saisir le code"
 
 #~ msgid "You can use this option to export coupons in CSV file."
 #~ msgstr ""
-#~ "Vous pouvez utiliser cette option pour exporter des coupons dans un "
-#~ "fichier CSV."
+#~ "Vous pouvez utiliser cette option pour exporter des codes de réduction "
+#~ "dans un fichier CSV."
 
 #~ msgid "Search Coupons"
-#~ msgstr "Rechercher des coupons"
+#~ msgstr "Rechercher des codes de réduction"
 
-#, fuzzy
-#~| msgid "Phone Number"
 #~ msgid "Invoice Number"
-#~ msgstr "Numéro de téléphone"
+#~ msgstr "Numéro de facture"
 
-#, fuzzy
-#~| msgid "Incl. VAT"
+#~ msgid "Invoice"
+#~ msgstr "Facture"
+
+#~ msgid "Item"
+#~ msgstr "Article"
+
 #~ msgid " (Incl. Tax)"
-#~ msgstr "TVA incluse"
+#~ msgstr " TVA incluse"
 
 #~ msgid "Left to pay"
 #~ msgstr "Reste à payer"
 
-#, fuzzy
-#~| msgid "Fixed amount"
+#~ msgid "PAYMENT METHOD"
+#~ msgstr "MOYEN DE PAIEMENT"
+
 #~ msgid "Tax amount"
-#~ msgstr "Montant fixe"
+#~ msgstr "Total des taxes"
+
+#~ msgid "Tax rate"
+#~ msgstr "Taux de TVA"
 
 #~ msgid "To"
 #~ msgstr "À"
 
-#, fuzzy
-#~| msgid "Service Subtotal"
 #~ msgid "Invoice total"
-#~ msgstr "Sous-total du service"
+#~ msgstr "Total de la facture"
 
 #, fuzzy
 #~| msgid "Total Price"
@@ -9063,29 +9080,45 @@ msgstr "Sélectionnez un client"
 #~ msgid "Qty"
 #~ msgstr "Qté"
 
-#, fuzzy
-#~| msgid "Services"
 #~ msgid "Invoices"
-#~ msgstr "Services"
+#~ msgstr "Factures"
+
+#~ msgid "Issue date"
+#~ msgstr "Date d'émission"
+
+#~ msgid "Issued"
+#~ msgstr "Emis"
 
 #~ msgid "Limit"
 #~ msgstr "Limite"
 
 #~ msgid "New Coupon"
-#~ msgstr "Nouveau coupon"
+#~ msgstr "Nouveau code de réduction"
 
 #~ msgid "You don't have any coupons here yet"
-#~ msgstr "Vous n'avez pas encore de coupons ici"
+#~ msgstr "Vous n'avez pas encore de code de réduction ici"
 
 #~ msgid "Coupon needs to have discount or deduction"
-#~ msgstr "Le coupon doit être assorti d'une réduction ou d'une déduction"
+#~ msgstr ""
+#~ "Le code de réduction doit être assorti d'une réduction ou d'une déduction"
 
 #~ msgid "Select at least one service or event"
 #~ msgstr "Sélectionnez au moins un service ou un événement"
 
 #~ msgid "Select the packages for which the coupon can be used."
 #~ msgstr ""
-#~ "Sélectionnez les forfaits pour lesquels le coupon peut être utilisé."
+#~ "Sélectionnez les forfaits pour lesquels le code de réduction peut être "
+#~ "utilisé."
+
+#~ msgid "Send Invoice"
+#~ msgstr "Envoyer la facture"
+
+#~ msgid ""
+#~ "The customer didn’t provide their email address so the invoice couldn’t "
+#~ "be sent."
+#~ msgstr ""
+#~ "Le client n'a pas fourni d'adresse email, la facture n'a pas pu être "
+#~ "envoyée."
 
 #~ msgid "Notification interval"
 #~ msgstr "Intervalle de notification"
@@ -9097,9 +9130,9 @@ msgstr "Sélectionnez un client"
 #~ "in order for this to work."
 #~ msgstr ""
 #~ "Vous pouvez définir ici le nombre de réservations approuvées après quoi "
-#~ "le client recevra automatiquement le coupon en guise de notification. <br/"
-#~ ">Veuillez noter que l'espace réservé au coupon doit être défini dans le "
-#~ "modèle de notification pour que cela fonctionne."
+#~ "le client recevra automatiquement le code de réduction en guise de "
+#~ "notification. <br/>Veuillez noter que l'espace réservé au coupon doit "
+#~ "être défini dans le modèle de notification pour que cela fonctionne."
 
 #~ msgid "Recurring notification"
 #~ msgstr "Notification récurrente"
@@ -9109,7 +9142,7 @@ msgstr "Sélectionnez un client"
 #~ "Vous pouvez définir ici si l'intervalle de notification doit se répéter."
 
 #~ msgid "Select All Extras"
-#~ msgstr "Sélectionnez tous les extras"
+#~ msgstr "Sélectionnez tous les suppléments"
 
 #~ msgid "Select All Service"
 #~ msgstr "Sélectionnez tous les services"
@@ -9119,14 +9152,16 @@ msgstr "Sélectionnez un client"
 
 #~ msgid "Select the services for which the coupon can be used."
 #~ msgstr ""
-#~ "Sélectionnez les services pour lesquels le coupon peut être utilisé."
+#~ "Sélectionnez les services pour lesquels le code de réduction peut être "
+#~ "utilisé."
 
 #~ msgid "Select All Events"
 #~ msgstr "Sélectionnez tous les événements"
 
 #~ msgid "Select the events for which the coupon can be used."
 #~ msgstr ""
-#~ "Sélectionnez les événements pour lesquels le coupon peut être utilisé."
+#~ "Sélectionnez les événements pour lesquels le code de réduction peut être "
+#~ "utilisé."
 
 #~ msgid "Times Used"
 #~ msgstr "Nombre de fois utilisé"
@@ -9138,8 +9173,9 @@ msgstr "Sélectionnez un client"
 #~ "Here you need to define the number of coupons for use. After the<br/"
 #~ ">limit is reached your coupon will become unavailable."
 #~ msgstr ""
-#~ "Vous devez définir ici le nombre de coupons à utiliser. Une fois la <br/> "
-#~ "limite atteinte, votre coupon ne sera plus disponible."
+#~ "Vous devez définir ici le nombre de codes de réduction à utiliser. Une "
+#~ "fois la <br/> limite atteinte, votre code de réduction ne sera plus "
+#~ "disponible."
 
 #~ msgid "Maximum Usage Per Customer"
 #~ msgstr "Utilisation maximale par client"
@@ -9149,9 +9185,9 @@ msgstr "Sélectionnez un client"
 #~ "customer. After the<br/>limit is reached for single customer, your coupon "
 #~ "will become unavailable for that customer."
 #~ msgstr ""
-#~ "Vous pouvez définir ici le nombre maximum de coupons à utiliser pour un "
-#~ "seul client. Une fois la <br/> limite atteinte pour un seul client, votre "
-#~ "coupon ne sera plus disponible pour ce client."
+#~ "Vous pouvez définir ici le nombre maximum de codes de réduction à "
+#~ "utiliser pour un seul client. Une fois la <br/> limite atteinte pour un "
+#~ "seul client, votre coupon ne sera plus disponible pour ce client."
 
 #~ msgid "Used"
 #~ msgstr "Utilisé"
@@ -9170,10 +9206,11 @@ msgstr "Sélectionnez un client"
 #~ msgid "Deposit"
 #~ msgstr "Dépôt"
 
-#, fuzzy
-#~| msgid "Import successful"
 #~ msgid "Invoice successfully sent"
-#~ msgstr "Importation réussie"
+#~ msgstr "La facture a bien été envoyée"
+
+#~ msgid "Invoice sending failed"
+#~ msgstr "L'envoi de la facture a échoué"
 
 #~ msgid "Online"
 #~ msgstr "En ligne"
@@ -9306,7 +9343,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Veuillez sélectionner un employé"
 
 #~ msgid "Select Coupon"
-#~ msgstr "Sélectionnez le coupon"
+#~ msgstr "Sélectionnez le code de réduction"
 
 #~ msgid "Choose how to export group appointments"
 #~ msgstr "Choisissez comment exporter les rendez-vous de groupe"
@@ -9384,7 +9421,7 @@ msgstr "Sélectionnez un client"
 #~ "Extras are not included in deposit amount."
 #~ msgstr ""
 #~ "Le solde du montant total sera payé sur place ou via un lien de paiement. "
-#~ "Les extras ne sont pas inclus dans le montant du dépôt."
+#~ "Les suppléments ne sont pas inclus dans le montant du dépôt."
 
 #~ msgid ""
 #~ "Remaining of total amount will be paid on site or through payment link. "
@@ -9545,16 +9582,16 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Non, juste celui-ci"
 
 #~ msgid "Update following"
-#~ msgstr "Mise à jour suivante"
+#~ msgstr "Mettre à jour les événements suivants"
 
 #~ msgid "Delete following"
-#~ msgstr "Supprimer ce qui suit"
+#~ msgstr "Supprimer les événements suivants"
 
 #~ msgid "Cancel following"
-#~ msgstr "Annuler le suivi"
+#~ msgstr "Annuler les événements suivants"
 
 #~ msgid "Open following"
-#~ msgstr "Ouvrir le suivi"
+#~ msgstr "Ouvrir le suivant"
 
 #~ msgid ""
 #~ "This change will lead to a price increase in this bookings. Do you want "
@@ -9667,7 +9704,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Couleurs et polices"
 
 #~ msgid "Coupon Input Field"
-#~ msgstr "Champ de saisie du coupon"
+#~ msgstr "Champ de saisie du code de réduction"
 
 #~ msgid "Custom Field"
 #~ msgstr "Champ personnalisé"
@@ -9722,7 +9759,7 @@ msgstr "Sélectionnez un client"
 #~ "paramètres sur la droite."
 
 #~ msgid "Repeat:"
-#~ msgstr "Répétez :"
+#~ msgstr "Répéter :"
 
 #~ msgid "On:"
 #~ msgstr "Sur :"
@@ -9791,10 +9828,10 @@ msgstr "Sélectionnez un client"
 #~ msgstr "À propos de cet événement"
 
 #~ msgid "Image Thumbs"
-#~ msgstr "Image Thumbs"
+#~ msgstr "Miniatures d'image"
 
 #~ msgid "Service employees list"
-#~ msgstr "Liste des employés de service"
+#~ msgstr "Liste des employés du service"
 
 #~ msgid "Package Badge"
 #~ msgstr "Badge de forfait"
@@ -9856,7 +9893,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Capacité des places"
 
 #~ msgid "Book now"
-#~ msgstr "Reserve maintenant"
+#~ msgstr "Réserver maintenant"
 
 #~ msgid "There are no upcoming events for this period"
 #~ msgstr "Il n'y a aucun événement à venir pour cette période"
@@ -9926,7 +9963,7 @@ msgstr "Sélectionnez un client"
 
 #~ msgid "Hey, there are special packages with this service, check them out!"
 #~ msgstr ""
-#~ "Hé, il existe des forfaits spéciaux avec ce service, jetez-y un coup "
+#~ "Hey, il existe des forfaits spéciaux avec ce service, jetez-y un coup "
 #~ "d'œil !"
 
 #~ msgid "Or"
@@ -9999,7 +10036,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Informations sur les rendez-vous"
 
 #~ msgid "Extras available"
-#~ msgstr "Extras disponibles"
+#~ msgstr "Suppléments disponibles"
 
 #~ msgid "Learn More"
 #~ msgstr "En savoir plus"
@@ -10020,7 +10057,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Choisissez l'heure à laquelle vous souhaitez répéter le rendez-vous"
 
 #~ msgid "Repeat every"
-#~ msgstr "Répétez chaque"
+#~ msgstr "Répéter chaque"
 
 #~ msgid "Repeat on"
 #~ msgstr "Répéter le"
@@ -10058,10 +10095,8 @@ msgstr "Sélectionnez un client"
 #~ msgid "On"
 #~ msgstr "Le"
 
-#, fuzzy
-#~| msgid "Each:"
 #~ msgid "Each"
-#~ msgstr "Chacun :"
+#~ msgstr "Chaque"
 
 #~ msgid "Select Date"
 #~ msgstr "Sélectionner une date"
@@ -10073,7 +10108,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Répétitions de rendez-vous"
 
 #~ msgid "Every"
-#~ msgstr "Chaque"
+#~ msgstr "Tous les"
 
 #~ msgid "on"
 #~ msgstr "sur"
@@ -10088,7 +10123,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Se termine le"
 
 #~ msgid "Recurring Summary"
-#~ msgstr "Résumé récurrent"
+#~ msgstr "Synthèse des rendez-vous récurrents"
 
 #~ msgid "Unavailable Time Slots"
 #~ msgstr "Créneaux horaires non disponibles"
@@ -10107,7 +10142,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Récurrences"
 
 #~ msgid "Extras Subtotal"
-#~ msgstr "Sous-total des extras"
+#~ msgstr "Sous-total des suppléments"
 
 #~ msgid "Paying now"
 #~ msgstr "Payer maintenant"
@@ -10129,6 +10164,9 @@ msgstr "Sélectionnez un client"
 
 #~ msgid "NEW"
 #~ msgstr "Nouveau"
+
+#~ msgid "BETA"
+#~ msgstr "BETA"
 
 #~ msgid "Primary"
 #~ msgstr "Principal"
@@ -10197,7 +10235,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Type de bouton"
 
 #~ msgid "Book another"
-#~ msgstr "RÉSERVEZ UN AUTRE"
+#~ msgstr "Réserver un autre créneau"
 
 #~ msgid "View Cart"
 #~ msgstr "Voir le panier"
@@ -10226,7 +10264,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Visibilité de la TVA"
 
 #~ msgid "Extras Selection"
-#~ msgstr "Sélection d'extras"
+#~ msgstr "Sélection de suppléments"
 
 #~ msgid "Set up visibility and labels"
 #~ msgstr "Configurer la visibilité et les étiquettes"
@@ -10295,7 +10333,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Description des suppléments"
 
 #~ msgid "Extras Duration"
-#~ msgstr "Durée des extras"
+#~ msgstr "Durée des suppléments"
 
 #~ msgid "Services and Packages Overview"
 #~ msgstr "Aperçu des services et des forfaits"
@@ -10319,19 +10357,19 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Type de bouton « Afficher l'employé »"
 
 #~ msgid "Book Option on Employee Dialog"
-#~ msgstr "Option de livre sur Employee Dialog"
+#~ msgstr "Option de réservation sur la boîte de dialogue de l'employé"
 
 #~ msgid "Employee Dialog"
-#~ msgstr "Dialogue avec les employés"
+#~ msgstr "Boîte de dialogue Employé"
 
 #~ msgid "Employee information"
 #~ msgstr "Informations sur les employés"
 
 #~ msgid "Book This Service"
-#~ msgstr "Réservez ce service"
+#~ msgstr "Réserver ce service"
 
 #~ msgid "Book This Package"
-#~ msgstr "Réservez ce forfait"
+#~ msgstr "Réserver ce forfait"
 
 #~ msgid "Package Category"
 #~ msgstr "Catégorie de forfait"
@@ -10352,7 +10390,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Emplacement du service"
 
 #~ msgid "About Package"
-#~ msgstr "À propos de Package"
+#~ msgstr "À propos du forfait"
 
 #~ msgid "Packages Block"
 #~ msgstr "Bloc de forfaits"
@@ -10425,16 +10463,16 @@ msgstr "Sélectionnez un client"
 #~ msgstr "tickets restant"
 
 #~ msgid "Coupon Limit Reached"
-#~ msgstr "Limite de coupons atteinte"
+#~ msgstr "Limite de code de réduction atteinte"
 
 #~ msgid "Number of appointments with applied coupon is"
-#~ msgstr "Le nombre de rendez-vous avec coupon appliqué est de"
+#~ msgstr "Le nombre de rendez-vous avec code de réduction appliqué est de"
 
 #~ msgid "Total Services Booked"
 #~ msgstr "Total des services réservés"
 
 #~ msgid "Toggle Sidebar"
-#~ msgstr "Basculer la barre latérale"
+#~ msgstr "Réduire la barre latérale"
 
 #~ msgid "Log out"
 #~ msgstr "Déconnexion"
@@ -10584,13 +10622,13 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Message d’étape"
 
 #~ msgid "Item Status"
-#~ msgstr "État de l'article"
+#~ msgstr "Statut des éléments"
 
 #~ msgid "Page Card"
-#~ msgstr "Page Card"
+#~ msgstr "Messages de paiement"
 
 #~ msgid "Page Messages"
-#~ msgstr "Page Messages"
+#~ msgstr "Messages de la page"
 
 #~ msgid "\"Go Back\" Button Type"
 #~ msgstr "Type de bouton « Revenir en arrière »"
@@ -10649,10 +10687,8 @@ msgstr "Sélectionnez un client"
 #~ msgid "Employee Filter"
 #~ msgstr "Filtre des employés"
 
-#, fuzzy
-#~| msgid "Customer note"
 #~ msgid "Customer Filter"
-#~ msgstr "Note pour le client"
+#~ msgstr "Filtre du client"
 
 #~ msgid "Location Filter"
 #~ msgstr "Filtre d’emplacement"
@@ -10666,10 +10702,8 @@ msgstr "Sélectionnez un client"
 #~ msgid "Appointment Employee"
 #~ msgstr "Employé chargé des rendez-vous"
 
-#, fuzzy
-#~| msgid "Appointment Date"
 #~ msgid "Appointment Customer"
-#~ msgstr "Date de rendez-vous"
+#~ msgstr "Client du rendez-vous"
 
 #, fuzzy
 #~| msgid "Customer Phone"
@@ -10681,10 +10715,8 @@ msgstr "Sélectionnez un client"
 #~ msgid "Appointment Customer Email"
 #~ msgstr "Email du client"
 
-#, fuzzy
-#~| msgid "Edit Customer"
 #~ msgid "Event Customer"
-#~ msgstr "Modifier le client"
+#~ msgstr "Client de l'événement"
 
 #, fuzzy
 #~| msgid "Customer Phone"
@@ -10735,7 +10767,7 @@ msgstr "Sélectionnez un client"
 #~ "de passe pour vous connecter."
 
 #~ msgid "Delete profile"
-#~ msgstr "Supprimer profil"
+#~ msgstr "Supprimer le profil"
 
 #~ msgid ""
 #~ "Are you sure you want to delete your profile? You will lose access to all "
@@ -10775,7 +10807,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Bouton du panneau client"
 
 #~ msgid "Coupon Segment"
-#~ msgstr "Segment de coupons"
+#~ msgstr "Segment de codes de réduction"
 
 #~ msgid "Waiting Button Background Color"
 #~ msgstr "Couleur d'arrière-plan du bouton d'attente"
@@ -10822,15 +10854,11 @@ msgstr "Sélectionnez un client"
 #~ "Nous vous informerons si une place se libère et que votre réservation est "
 #~ "approuvée."
 
-#, fuzzy
-#~| msgid "New Appointment"
 #~ msgid "New Appointment Button Type"
-#~ msgstr "Nouveau rendez-vous"
+#~ msgstr "Nouveau Bouton prise de rendez-vous"
 
-#, fuzzy
-#~| msgid "Delete Button Type"
 #~ msgid "New Event Button Type"
-#~ msgstr "Type de bouton Supprimer"
+#~ msgstr "Nouveau bouton Evenement"
 
 #~ msgid "Notice: Please select at least one panel."
 #~ msgstr "Remarque : veuillez sélectionner au moins un panneau."
@@ -10867,7 +10895,7 @@ msgstr "Sélectionnez un client"
 #~ "Front-end Customer Panel is a shortcode that gives your customers the "
 #~ "possibility to manage their bookings and profile information."
 #~ msgstr ""
-#~ "Le panneau client frontal est un shortcode qui donne à vos clients la "
+#~ "Le panneau client front-end est un shortcode qui donne à vos clients la "
 #~ "possibilité de gérer leurs réservations et les informations de leur "
 #~ "profil."
 
@@ -10879,10 +10907,10 @@ msgstr "Sélectionnez un client"
 #~ "possibility to manage their bookings, working hours, days off, assigned "
 #~ "services and profile information."
 #~ msgstr ""
-#~ "Le panneau frontal des employés est un shortcode qui donne à vos employés "
-#~ "la possibilité de gérer leurs réservations, leurs heures de travail, "
-#~ "leurs jours de congé, les services qui leur sont attribués et les "
-#~ "informations de leur profil."
+#~ "Le Tableau de bord des employés est un shortcode qui donne à vos employés "
+#~ "la possibilité de gérer sur le front-end leurs réservations, leurs heures "
+#~ "de travail, leurs jours de congé, les services qui leur sont attribués et "
+#~ "les informations de leur profil."
 
 #~ msgid "Choose panel version"
 #~ msgstr "Choisissez la version du panneau"
@@ -10994,7 +11022,13 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Le reste du montant total sera payé sur place."
 
 #~ msgid "Add Coupon"
-#~ msgstr "Ajouter un coupon"
+#~ msgstr "Ajouter un code de réduction"
+
+#~ msgid "Apple Calendar (Personal)"
+#~ msgstr "Calendrier Apple (personnel)"
+
+#~ msgid "Connect to Apple"
+#~ msgstr "Connecter à Apple"
 
 #~ msgid ""
 #~ "It seems like there are no available or visible services assigned to the "
@@ -11020,19 +11054,21 @@ msgstr "Sélectionnez un client"
 #~ "Impossible de désactiver le plug-in. Veuillez réessayer ultérieurement."
 
 #~ msgid "This coupon is not valid anymore"
-#~ msgstr "Ce coupon n'est plus valide"
+#~ msgstr "Ce code n'est plus valide"
 
 #~ msgid "This coupon has expired"
-#~ msgstr "Ce coupon a expiré"
+#~ msgstr "Ce code a expiré"
 
 #~ msgid "Please enter coupon"
-#~ msgstr "Veuillez saisir un coupon"
+#~ msgstr "Veuillez saisir un code de réduction"
 
 #~ msgid "You can use this coupon for next booking: "
-#~ msgstr "Vous pouvez utiliser ce coupon pour votre prochaine réservation : "
+#~ msgstr ""
+#~ "Vous pouvez utiliser ce code de réduction pour votre prochaine "
+#~ "réservation : "
 
 #~ msgid "Used coupon"
-#~ msgstr "Coupon utilisé"
+#~ msgstr "Code de réduction utilisé"
 
 #~ msgid "Unfortunately a server error occurred and your email was not sent."
 #~ msgstr ""
@@ -11150,13 +11186,13 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Sélectionnez l'heure du rendez-vous"
 
 #~ msgid "Select the Extras you'd like"
-#~ msgstr "Sélectionnez les extras que vous souhaitez"
+#~ msgstr "Sélectionnez les suppléments que vous souhaitez"
 
 #~ msgid "Time Range:"
 #~ msgstr "Plage horaire :"
 
 #~ msgid "Add extra"
-#~ msgstr "AJOUTER UN SUPPLÉMENT"
+#~ msgstr "Ajouter un supplément"
 
 #~ msgid "Any"
 #~ msgstr "N'importe lequel"
@@ -11170,7 +11206,7 @@ msgstr "Sélectionnez un client"
 #~ "contextuelles et ajouter ce site à votre liste d'exceptions."
 
 #~ msgid "Extra:"
-#~ msgstr "Suppléments:"
+#~ msgstr "Supplément :"
 
 #~ msgid "Please select the extra:"
 #~ msgstr "Veuillez sélectionner l'option supplémentaire :"
@@ -11196,6 +11232,9 @@ msgstr "Sélectionnez un client"
 #~ msgid "Next Service"
 #~ msgstr "Service suivant"
 
+#~ msgid "Or pay with card"
+#~ msgstr "Ou payer par carte"
+
 #~ msgid "Qty:"
 #~ msgstr "QTÉ :"
 
@@ -11212,7 +11251,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "Téléchargez le fichier ici"
 
 #~ msgid "The coupon field is mandatory"
-#~ msgstr "Le champ du coupon est obligatoire"
+#~ msgstr "Le champ du code de réduction est obligatoire"
 
 #~ msgid "Event Subtotal"
 #~ msgstr "Sous-total de l'événement"
@@ -11290,10 +11329,8 @@ msgstr "Sélectionnez un client"
 #~ msgid "This is recurring event"
 #~ msgstr "Il s'agit d'un événement récurrent"
 
-#, fuzzy
-#~| msgid "Show recurring events"
 #~ msgid "Enable recurring event"
-#~ msgstr "Afficher les événements récurrents"
+#~ msgstr "Activer les événements récurrents"
 
 #~ msgid ""
 #~ "Connect your Google Calendar here so once<br/>the appointment is "
@@ -11327,15 +11364,11 @@ msgstr "Sélectionnez un client"
 #~ msgid "Min. Capacity"
 #~ msgstr "Capacité min"
 
-#, fuzzy
-#~| msgid "There are no attendees yet..."
 #~ msgid "There are no special days yet..."
-#~ msgstr "Il n'y a pas encore de participants..."
+#~ msgstr "Il n'y a pas encore de jour spécial..."
 
-#, fuzzy
-#~| msgid "There are no attendees yet..."
 #~ msgid "There are no days off yet..."
-#~ msgstr "Il n'y a pas encore de participants..."
+#~ msgstr "Il n'y a pas encore de jour off..."
 
 #~ msgid ""
 #~ "Check this checkbox if you want your customer to<br/>receive an email "
@@ -11360,7 +11393,7 @@ msgstr "Sélectionnez un client"
 #~ msgstr "créneaux de rendez-vous restant à réserver"
 
 #~ msgid "Book next appointment"
-#~ msgstr "Réservez votre prochain rendez-vous"
+#~ msgstr "Réserver votre prochain rendez-vous"
 
 #~ msgid "Continue Booking"
 #~ msgstr "Poursuivre la réservation"
@@ -11401,15 +11434,11 @@ msgstr "Sélectionnez un client"
 #~ msgid "Email with access link has been sent"
 #~ msgstr "Un e-mail contenant un lien d'accès a été envoyé"
 
-#, fuzzy
-#~| msgid "Package Appointments List"
 #~ msgid "Create Appointments list"
-#~ msgstr "Liste des rendez-vous du forfait"
+#~ msgstr "Créer la liste des rendez-vous"
 
-#, fuzzy
-#~| msgid "Show recurring events"
 #~ msgid "Back to recurring settings"
-#~ msgstr "Afficher les événements récurrents"
+#~ msgstr "Revenir au paramètre récurrents"
 
 #~ msgid "You have appointments for this service"
 #~ msgstr "Vous avez des rendez-vous pour ce service"
@@ -11426,20 +11455,14 @@ msgstr "Sélectionnez un client"
 #~ msgid "Zoom Links"
 #~ msgstr "Liens Zoom"
 
-#, fuzzy
-#~| msgid "Start Time"
 #~ msgid "Start Date"
-#~ msgstr "Horaire de début"
+#~ msgstr "Date de début"
 
-#, fuzzy
-#~| msgid "Event Date"
 #~ msgid "End Date"
-#~ msgstr "Date de l'événement"
+#~ msgstr "Date de fin"
 
-#, fuzzy
-#~| msgid "Select Repeat Period"
 #~ msgid "Delete Period"
-#~ msgstr "Sélectionnez une période de répétition"
+#~ msgstr "Supprimer la période"
 
 #, fuzzy
 #~| msgid ""

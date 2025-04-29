@@ -30,3 +30,7 @@ export const SearchBox = styled.div`
 	grid-template-columns: 6fr 1fr;
 	gap: 10px;
 `;
+
+export const StyledDetailContainer = styled( Surface )`
+	overflow-x: hidden;
+`;

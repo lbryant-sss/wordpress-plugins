@@ -1,3 +1,5 @@
+// @ts-check
+
 /**
  * Document ready handler for extension management functionalities
  */

@@ -27,26 +27,16 @@ class Db {
 	}
 
 	public function insert( $data ) {
-
-		array_walk(
-			$data,
-			static function ( &$value ) {
-				if ( is_array( $value ) ) {
-					$value = maybe_serialize( $value );
-				}
-			}
-		);
-
+		$prepared   = $this->prepare_for_database( $data );
 		$result_set = $this->db->insert(
 			$this->table,
-			$data,
-			array_fill( 0, count( $data ), '%s' )
+			$prepared,
+			array_fill( 0, count( $prepared ), '%s' )
 		);
 
 		if ( ! $result_set ) {
 			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 			error_log( 'WP SMTP Log insert error: ' . $this->db->last_error );
-			// @TODO: do we have a better way to log errors?
 
 			return false;
 		}
@@ -55,21 +45,66 @@ class Db {
 	}
 
 	public function update( $data, $where = [] ): void {
-		array_walk(
-			$data,
-			static function ( &$value ) {
-				if ( is_array( $value ) ) {
-					$value = maybe_serialize( $value );
-				}
-			}
-		);
+		$prepared = $this->prepare_for_database( $data );
 
 		$this->db->update(
 			$this->table,
-			$data,
+			$prepared,
 			$where,
-			array_fill( 0, count( $data ), '%s' ),
+			array_fill( 0, count( $prepared ), '%s' ),
 			[ '%d' ]
 		);
+	}
+
+	/**
+	 * This function takes the raw values passed to {@see wp_mail()}
+	 * and applies similar normalization to what Core does.
+	 *
+	 * @param array $raw
+	 *
+	 * @return array
+	 */
+	protected function prepare_for_database( array $raw ) {
+		$to      = $raw['to'] ?? [];
+		$subject = (string) ( $raw['subject'] ?? '' );
+		$message = (string) ( $raw['message'] ?? '' );
+		$headers = $raw['headers'] ?? [];
+
+		if ( ! is_array( $to ) ) {
+			$to = explode( ',', $to );
+		}
+
+		if ( ! is_array( $headers ) ) {
+			$headers = explode( "\n", str_replace( "\r\n", "\n", $headers ) );
+		}
+
+		$headers = $this->parse_headers( $headers );
+
+		return [
+			'to'      => wp_json_encode( $to ),
+			'subject' => $subject,
+			'message' => $message,
+			'headers' => wp_json_encode( $headers ),
+			'error'   => isset( $raw['error'] ) ? sanitize_text_field( $raw['error'] ) : '',
+		];
+	}
+
+	protected function parse_headers( array $headers ) {
+		$parsed = [];
+
+		foreach ( $headers as $header ) {
+			if ( strpos( $header, ':' ) === false ) {
+				continue;
+			}
+
+			[ $name, $content ] = explode( ':', trim( $header ), 2 );
+
+			$name    = trim( $name );
+			$content = trim( $content );
+
+			$parsed[ strtolower( $name ) ] = $content;
+		}
+
+		return $parsed;
 	}
 }

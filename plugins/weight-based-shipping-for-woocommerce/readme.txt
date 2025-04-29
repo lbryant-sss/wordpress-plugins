@@ -3,7 +3,7 @@ Contributors: dangoodman
 Tags: woocommerce shipping, table rate shipping, woocommerce free shipping, weight-based shipping, rule-based shipping
 Requires PHP: 7.2
 Requires at least: 4.6
-Tested up to: 6.7
+Tested up to: 6.8
 WC requires at least: 5.0
 WC tested up to: 9.8
 
@@ -38,6 +38,9 @@ Like the plugin? Leave a [review](https://wordpress.org/support/plugin/weight-ba
 
 
 == Changelog ==
+
+= 6.6.2 =
+* Tested with WordPress 6.8.
 
 = 6.6.1 =
 * Better handle possible clipboard copy-paste issues.

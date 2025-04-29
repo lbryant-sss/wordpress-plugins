@@ -4,7 +4,7 @@ Donate link: https://solidwp.com/email
 Tags: wordpress smtp, email, email log, smtp
 Requires at least: 6.4
 Tested up to: 6.8
-Stable tag: 2.1.5
+Stable tag: 2.1.6
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -126,6 +126,12 @@ Now your website email deliverability is SOLID with Solid Mail!
 3. See a comprehensive log of all emails sent from your WordPress website at a glance
 
 == Changelog ==
+
+= [2.1.6] 2025-04-28 =
+
+* Security - Fix XSS vulnerability on the Logs screen. Thanks to zer0gh0st for responsibly disclosing this issue.
+* Security - Fix object injection vulnerability.
+* Security - Update StellarWP Telemetry library to improve authorization checks.
 
 = [2.1.5] 2025-03-27 =
 

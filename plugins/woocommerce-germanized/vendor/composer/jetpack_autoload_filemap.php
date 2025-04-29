@@ -6,10 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir   = dirname($vendorDir);
 
 return array(
-	'6124b4c8570aa390c21fafd04a26c69f' => array(
-		'version' => '1.13.0.0',
-		'path'    => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php'
-	),
 	'241d2bc730dc592f76425fee315639b6' => array(
 		'version' => '4.2.3.0',
 		'path'    => $vendorDir . '/globalcitizen/php-iban/oophp-iban.php'

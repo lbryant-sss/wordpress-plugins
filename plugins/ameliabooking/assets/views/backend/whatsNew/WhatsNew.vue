@@ -202,7 +202,7 @@ export default {
        isValidEmail: true,
        blogPosts: [],
        changelog: {
-         version: '8.2',
+         version: '8.2.1',
          starter: {
            feature: [
            ],
@@ -211,13 +211,8 @@ export default {
            translations: [
            ],
            bugfix: [
-             'Fixed issue with daylight savings time change and rescheduling appointments',
-             'Fixed issue with background color on customer and employee panel on Customize page',
-             'Fixed issue with group appointment status in the customer panel',
-             'Fixed issue with large number of events and coupons',
-             'Fixed issue with locations info on the catalog form',
-             'Fixed issues with RTL on the Step by step form',
-             'Fixed issue with phone number in the customer panel'
+             'Fixed issue with time slots that include buffer times spanning two days, particularly around midnight',
+             'Fixed issue with adding blocked customers to events'
            ],
            other: [
              'Other small bug fixes and stability improvements'
@@ -225,24 +220,17 @@ export default {
          },
          basic: {
            feature: [
-             'Google Pay & Apple Pay via Stripe - Expanded payment options through Stripe integration for greater flexibility',
-             'Apple Calendar Sync per Employee - Employees can now connect their personal Apple Calendar accounts for seamless scheduling'
            ],
            improvement: [
            ],
            translations: [
-             'Updated Dutch and Italian translations'
+             'Updated French translation'
            ],
            bugfix: [
-             'Fixed issue with Mollie and cache data length',
-             'Fixed issue with changing events pricing/tickets, deposit and WooCommerce',
-             'Fixed issue with WooCommerce add-on and appointment status',
-             'Fixed issue with custom notifications and HTML mode',
-             'Fixed issue with editing recurring events (time change)',
-             'Fixed issue with large number of events and taxes/custom fields',
-             'Fixed issue with the Step by step form when Google is connected and different timezones are set',
-             'Fixed issue with deposit enabled and its value 0',
-             'Fixed issue with changing tickets and price info in notifications'
+             'Fixed issue with the Step by step form when Google is connected and different timezones',
+             'Fixed issue with canceled appointments and booking new with different location',
+             'Fixed issue with Stripe 3D Secure payments',
+             'Fixed issue with deleting an employee added as Organizer to an event'
            ],
            other: [
            ]
@@ -255,8 +243,7 @@ export default {
            translations: [
            ],
            bugfix: [
-             'Fixed issue with payment links and waiting list',
-             'Fixed issue with overbooking events when Waiting list is enabled'
+             'Fixed issue with WooCommerce order details when recurring/cart appointments updated'
            ],
            other: [
            ]

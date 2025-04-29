@@ -46,7 +46,8 @@ class Assets extends Service_Provider {
 	 */
 	public function register_assets() {
 
-		Asset::add( 'solidwp-mail-admin-css', 'css/styles.css' )
+		Asset::add( 'solidwp-mail-admin-css', 'css/style.css' )
+			->prefix_asset_directory( false )
 			->set_condition(
 				static function () {
 				     //phpcs:ignore.
@@ -59,7 +60,7 @@ class Assets extends Service_Provider {
 							'solidwp-mail-logs',
 							'solidwp-mail-settings',
 						],
-						true 
+						true
 					);
 				}
 			)
@@ -75,7 +76,7 @@ class Assets extends Service_Provider {
 			->set_dependencies(
 				function () use ( $index_asset_data ) {
 					return $index_asset_data['dependencies'];
-				} 
+				}
 			)
 			->enqueue_on( 'admin_enqueue_scripts' )
 			->set_condition(
@@ -110,7 +111,7 @@ class Assets extends Service_Provider {
 			->set_dependencies(
 				function () use ( $logs_asset_data ) {
 					return $logs_asset_data['dependencies'];
-				} 
+				}
 			)
 			->enqueue_on( 'admin_enqueue_scripts' )
 			->set_condition(
@@ -139,7 +140,7 @@ class Assets extends Service_Provider {
 			->set_dependencies(
 				function () use ( $settings_asset_data ) {
 					return $settings_asset_data['dependencies'];
-				} 
+				}
 			)
 			->enqueue_on( 'admin_enqueue_scripts' )
 			->add_localize_script( 'solidMailSettings', $this->container->callback( SettingsScreen::class, 'get_settings' ) )
