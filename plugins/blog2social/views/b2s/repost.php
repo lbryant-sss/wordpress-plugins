@@ -33,6 +33,25 @@ $metaSettings = get_option('B2S_PLUGIN_GENERAL_OPTIONS');
                 </div>
             </div>
             <!--Navbar|End-->
+               
+            <!-- Info Repost -->
+            <div class="panel panel-group b2s-left-border-danger b2s-re-post-no-content" style="display: none;">
+                <div class="panel-body">
+                    <span class="glyphicon glyphicon-remove glyphicon-danger"></span> <?php esc_html_e('No posts found. Please try again with different filter options.', 'blog2social'); ?>
+                </div>
+            </div>
+            <div class="panel panel-group b2s-left-border-danger b2s-re-post-content-in-queue" style="display: none;">
+                <div class="panel-body">
+                    <span class="glyphicon glyphicon-remove glyphicon-danger"></span> <?php esc_html_e('The posts you tried to add are already in your sharing queue. If you want to re-schedule them, please delete the posts before adding them again.', 'blog2social'); ?>
+                </div>
+            </div>
+            <div class="panel panel-group b2s-left-border-danger b2s-re-post-limit-error" style="display: none;">
+                <div class="panel-body">
+                    <span class="glyphicon glyphicon-remove glyphicon-danger"></span> <?php esc_html_e('Your limit for your quota of posts in your queue has been reached. Please delete posts from your queue before you add more', 'blog2social') . ((B2S_PLUGIN_USER_VERSION < 3) ? esc_html__(' or upgade your Blog2Social license to extend your quota.', 'blog2social') : '.'); ?>
+                </div>
+            </div>
+
+
             <div class="clearfix"></div>
             <!--Content|Start-->
             <div class="panel panel-default">
@@ -102,6 +121,7 @@ $metaSettings = get_option('B2S_PLUGIN_GENERAL_OPTIONS');
                             )
                         )); ?>
                         </div>
+
                     </div>
                     <div class="col-md-12">
                         <div class="row b2s-repost-queue-area">
@@ -225,6 +245,7 @@ $metaSettings = get_option('B2S_PLUGIN_GENERAL_OPTIONS');
         </div>
     </div>
 </div>
+
 
 <div id="b2s-post-ship-item-post-format-modal" class="modal fade" role="dialog" aria-labelledby="b2s-post-ship-item-post-format-modal" aria-hidden="true" data-backdrop="false" style="display:none;z-index: 1070;">
     <div class="modal-dialog modal-lg">

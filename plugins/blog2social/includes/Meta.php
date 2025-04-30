@@ -270,7 +270,7 @@ class B2S_Meta {
         if (isset($this->post->post_author)) {
             if ($this->post->post_author > 0 && is_singular()) {
                 $author_meta = get_the_author_meta('display_name', $this->post->post_author);
-                echo '<meta name="author" content="' . trim(esc_attr($author_meta)) . '"/>' . "\n";
+                echo '<meta name="author" content="' . esc_attr(trim($author_meta)) . '"/>' . "\n";
             }
         }
     }

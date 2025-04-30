@@ -39,11 +39,11 @@
       "_vendor-b9834729.min.js"
     ]
   },
-  "_date-intervals-5a2b6478.min.js": {
-    "file": "js/chunks/date-intervals-5a2b6478.min.js",
+  "_date-intervals-d6e747a3.min.js": {
+    "file": "js/chunks/date-intervals-d6e747a3.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_index-11e10b96.min.js"
+      "_index-8706a631.min.js"
     ]
   },
   "_exactmetrics-icons-634e3a70.min.js": {
@@ -56,8 +56,8 @@
     ],
     "isDynamicEntry": true
   },
-  "_index-11e10b96.min.js": {
-    "file": "js/chunks/index-11e10b96.min.js",
+  "_index-8706a631.min.js": {
+    "file": "js/chunks/index-8706a631.min.js",
     "imports": [
       "_vendor-b9834729.min.js"
     ]
@@ -93,12 +93,12 @@
       "_ContentIconList-bbe6e6ed.min.js"
     ]
   },
-  "_report-table-helper-2f40625f.min.js": {
-    "file": "js/chunks/report-table-helper-2f40625f.min.js",
+  "_report-table-helper-f63a63c5.min.js": {
+    "file": "js/chunks/report-table-helper-f63a63c5.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
-      "_date-intervals-5a2b6478.min.js",
+      "_date-intervals-d6e747a3.min.js",
       "_exactmetrics-icons-634e3a70.min.js"
     ]
   },
@@ -1058,9 +1058,9 @@
     "file": "js/frontend.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_date-intervals-5a2b6478.min.js",
+      "_date-intervals-d6e747a3.min.js",
       "_WidgetReportError-1a54c6a5.min.js",
-      "_index-11e10b96.min.js"
+      "_index-8706a631.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/frontend/frontend.js"
@@ -1164,11 +1164,11 @@
     "file": "js/reports.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_date-intervals-5a2b6478.min.js",
-      "_report-table-helper-2f40625f.min.js",
+      "_date-intervals-d6e747a3.min.js",
+      "_report-table-helper-f63a63c5.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
       "_index-8bfee37d.min.js",
-      "_index-11e10b96.min.js",
+      "_index-8706a631.min.js",
       "_ContentIconList-bbe6e6ed.min.js",
       "_exactmetrics-icons-634e3a70.min.js"
     ],
@@ -1349,7 +1349,7 @@
     "file": "js/settings.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_index-11e10b96.min.js",
+      "_index-8706a631.min.js",
       "_ContentIconList-bbe6e6ed.min.js",
       "_AboutTestimonialsSlider-a497a870.min.js",
       "_index-8bfee37d.min.js",
@@ -1457,11 +1457,11 @@
     "file": "js/widget.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_date-intervals-5a2b6478.min.js",
-      "_report-table-helper-2f40625f.min.js",
+      "_date-intervals-d6e747a3.min.js",
+      "_report-table-helper-f63a63c5.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
       "_WidgetReportError-1a54c6a5.min.js",
-      "_index-11e10b96.min.js",
+      "_index-8706a631.min.js",
       "_exactmetrics-icons-634e3a70.min.js"
     ],
     "isEntry": true,
@@ -1542,7 +1542,7 @@
       "_vendor-b9834729.min.js",
       "_AboutTestimonialsSlider-a497a870.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
-      "_index-11e10b96.min.js",
+      "_index-8706a631.min.js",
       "_ContentIconList-bbe6e6ed.min.js"
     ],
     "isEntry": true,

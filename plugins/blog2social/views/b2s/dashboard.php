@@ -101,7 +101,7 @@ $b2sGeneralOptions = get_option('B2S_PLUGIN_GENERAL_OPTIONS');
                                     </div>
                                     <div class="panel-footer text-center">
                                         <?php if ((int) B2S_PLUGIN_USER_VERSION <= 1 || ((int) B2S_PLUGIN_USER_VERSION >= 3 && defined("B2S_PLUGIN_TRAIL_END") && strtotime(B2S_PLUGIN_TRAIL_END) > time())) { ?>
-                                            <a href="#" class="btn b2s-font-bold b2s-btn-dashboard-outline btn-block b2s-dashboard-addon-add-network-integration-btn"><?php esc_html_e("Buy now", "blog2social"); ?></a>
+                                            <a target="_blank" href="<?php echo B2S_Tools::getSupportLink('pricing'); ?>" class="btn b2s-font-bold btn-block b2s-btn-dashboard-outline"><?php esc_html_e("Buy now", "blog2social"); ?></a>                                
                                         <?php } else { ?>
                                             <a target="_blank" href="<?php echo B2S_Tools::getSupportLink('addon_network_integration'); ?>" class="btn b2s-font-bold btn-block b2s-btn-dashboard-outline"><?php esc_html_e("Buy now", "blog2social"); ?></a>                                
                                         <?php } ?>                        

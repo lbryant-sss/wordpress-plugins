@@ -117,7 +117,7 @@ class B2S_AutoPost_Item {
             $content .= '<br>';
             $content .= '<div class="row ' . (!empty($isPremium) ? 'b2s-btn-disabled' : '') . '">';
             $content .= "</div>";
-            $content .= '<div class=" col-md-12 b2s-auto-post-area">';
+            $content .= '<div class="b2s-auto-post-area">';
             $content .= '<br>';
 
             $content .= '<p class="b2s-bold">' . esc_html__('Select to auto-post immediately after publishing or with a delay', 'blog2social') . '</p>';

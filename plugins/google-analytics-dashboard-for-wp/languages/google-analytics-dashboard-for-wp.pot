@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Google Analytics Dashboard for WP (GADWP) plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google Analytics Dashboard for WP (GADWP) 8.4.1\n"
+"Project-Id-Version: Google Analytics Dashboard for WP (GADWP) 8.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-analytics-dashboard-for-wp-working-dir\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-26T19:34:57+00:00\n"
+"POT-Creation-Date: 2025-04-29T15:32:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0-alpha\n"
 "X-Domain: google-analytics-dashboard-for-wp\n"
@@ -240,6 +240,9 @@ msgstr ""
 msgid "10 AM"
 msgstr ""
 
+msgid "10 Best SEO Tools for WordPress"
+msgstr ""
+
 msgid "10 PM"
 msgstr ""
 
@@ -273,7 +276,13 @@ msgstr ""
 msgid "2,000,000+ use AIOSEO to Improve Their Website Search Rankings"
 msgstr ""
 
+msgid "20 Best WooCommerce Plugins (Updated)"
+msgstr ""
+
 msgid "20+ Advanced Tracking"
+msgstr ""
+
+msgid "27 Best WordPress Plugins (Free + Paid)"
 msgstr ""
 
 msgid "3 AM"
@@ -539,6 +548,9 @@ msgstr ""
 msgid "All Advanced Analytics Features"
 msgstr ""
 
+msgid "All Campaigns"
+msgstr ""
+
 msgid "All Categories"
 msgstr ""
 
@@ -560,7 +572,13 @@ msgstr ""
 msgid "All In One SEO Toolkit is already installed"
 msgstr ""
 
+msgid "All Mediums"
+msgstr ""
+
 msgid "All Roles"
+msgstr ""
+
+msgid "All Sources"
 msgstr ""
 
 msgid "All Time Stats"
@@ -737,6 +755,12 @@ msgid "Average Order Value"
 msgstr ""
 
 msgid "Average Results Position"
+msgstr ""
+
+msgid "Average revenue per session"
+msgstr ""
+
+msgid "Average revenue per user"
 msgstr ""
 
 #: includes/gutenberg/site-insights/templates/graph/class-graph-scrolldepth.php:35
@@ -1270,6 +1294,9 @@ msgstr ""
 msgid "Convert and monetize more of your website traffic with engaging pop-up and gamified tools. Great for all types of websites."
 msgstr ""
 
+msgid "Cookie Consent & Compliance"
+msgstr ""
+
 msgid "Copied to clipboard!"
 msgstr ""
 
@@ -1542,6 +1569,9 @@ msgstr ""
 msgid "Did you know that using internal links can give you huge SEO gains? Get the scoop on internal links and how to build them in our guide."
 msgstr ""
 
+msgid "Did you know there are over 55,000 WordPress Plugins? See our list of the top 27 plugins to help your website succeed and grow."
+msgstr ""
+
 msgid "Did you know you might have direct traffic that's getting counted wrong by Google Analytics? Learn how to track it correctly in our direct traffic guide."
 msgstr ""
 
@@ -1669,6 +1699,9 @@ msgstr ""
 msgid "Easily control how your content and thumbnails look on Facebook, Twitter, and other social media networks."
 msgstr ""
 
+msgid "Easily create customizable cookie banners, and record user consent. Works automatically with ExactMetrics."
+msgstr ""
+
 msgid "Easily measure the effectiveness of your marketing efforts."
 msgstr ""
 
@@ -1704,6 +1737,9 @@ msgid "eCommerce Funnel"
 msgstr ""
 
 msgid "eCommerce Funnel Report"
+msgstr ""
+
+msgid "ECommerce Purchases"
 msgstr ""
 
 msgid "eCommerce Report"
@@ -2255,6 +2291,9 @@ msgstr ""
 msgid "Google Analytics 4 tracking is set up"
 msgstr ""
 
+msgid "Google Analytics Custom Dimensions: Complete Beginners Guide"
+msgstr ""
+
 msgid "Google Analytics Help Guide: Collect Campaign Data with Custom URLs"
 msgstr ""
 
@@ -2567,6 +2606,9 @@ msgstr ""
 msgid "Installs UserFeedback"
 msgstr ""
 
+msgid "Installs WPConsent"
+msgstr ""
+
 msgid "Installs WPForms"
 msgstr ""
 
@@ -2764,6 +2806,9 @@ msgid "Learn how to insert the widget using Gutenberg blocks."
 msgstr ""
 
 msgid "Learn how to insert the widget using out Shortcode."
+msgstr ""
+
+msgid "Learn how to unlock powerful extra analytics data and insights with custom dimensions."
 msgstr ""
 
 msgid "Learn how visitors arrive to your website and which are the most engaged or profitable."
@@ -3082,6 +3127,9 @@ msgstr ""
 msgid "New vs. Returning Visitors"
 msgstr ""
 
+msgid "News"
+msgstr ""
+
 msgid "Next Page"
 msgstr ""
 
@@ -3137,6 +3185,9 @@ msgid "No data currently for the Traffic Technology report"
 msgstr ""
 
 msgid "No data for this time period."
+msgstr ""
+
+msgid "No data to show"
 msgstr ""
 
 msgid "No download link clicks detected for this time period."
@@ -3475,6 +3526,9 @@ msgstr ""
 msgid "Page Views / User"
 msgstr ""
 
+msgid "Page Views/User"
+msgstr ""
+
 msgid "Pages"
 msgstr ""
 
@@ -3793,6 +3847,9 @@ msgstr ""
 msgid "Read Documentation"
 msgstr ""
 
+msgid "Read our complete step-by-step guide on how to track SEO keywords inside Google Analytics."
+msgstr ""
+
 msgid "Read This Guide"
 msgstr ""
 
@@ -3965,6 +4022,9 @@ msgstr ""
 msgid "Revenue Tools"
 msgstr ""
 
+msgid "Revenue/Sales"
+msgstr ""
+
 msgid "Right"
 msgstr ""
 
@@ -4089,10 +4149,25 @@ msgstr ""
 msgid "See How"
 msgstr ""
 
+msgid "See how customers find your website."
+msgstr ""
+
 msgid "See How Many Sessions are Needed for a Purchase"
 msgstr ""
 
+msgid "See how visitors interact with your website."
+msgstr ""
+
+msgid "See how your store is performing."
+msgstr ""
+
 msgid "See how your website performed this year and find tips along the way to help grow even more in %s!"
+msgstr ""
+
+msgid "See our top recommended plugins and extensions to help you make more money from your eCommerce store."
+msgstr ""
+
+msgid "See our top tool recommendations for optimizing your website for search engines, so that you can rank higher to get more free traffic from Google."
 msgstr ""
 
 msgid "See Quick Links"
@@ -4279,6 +4354,9 @@ msgid "Sessions %s Percentage"
 msgstr ""
 
 msgid "Sessions <strong>%s</strong>"
+msgstr ""
+
+msgid "Sessions per user"
 msgstr ""
 
 msgid "Sessions to Purchase"
@@ -5104,6 +5182,9 @@ msgstr ""
 msgid "Track how your users interact with videos on your website. Upgrade to ExactMetrics Pro."
 msgstr ""
 
+msgid "Track Keywords in Google Analytics"
+msgstr ""
+
 msgid "Tracking Code Installed"
 msgstr ""
 
@@ -5204,6 +5285,9 @@ msgid "Unlock better search results for your website.  Perfect for any informati
 msgstr ""
 
 msgid "Unlock Form Tracking"
+msgstr ""
+
+msgid "Unlock powerful insights with the Dimensions addon!"
 msgstr ""
 
 msgid "Unlock PRO Features Now"
@@ -5748,6 +5832,9 @@ msgstr ""
 msgid "WPBeginner is the largest free WordPress resource site for beginners and non-techy users."
 msgstr ""
 
+msgid "WPConsent is already installed"
+msgstr ""
+
 msgid "WPForms"
 msgstr ""
 
@@ -5900,6 +5987,9 @@ msgstr ""
 msgid "Your <strong>%1$s</strong> visitors viewed a total of <strong>%2$s</strong> pages."
 msgstr ""
 
+msgid "Your license has expired."
+msgstr ""
+
 #: includes/admin/admin.php:547
 msgid "Your license key for ExactMetrics has been disabled. Please use a different key."
 msgstr ""
@@ -5986,13 +6076,13 @@ msgstr ""
 msgid "https://exactmetrics.com/lite/?utm_source=liteplugin&utm_medium=pluginheader&utm_campaign=authoruri&utm_content=7%2E0%2E0"
 msgstr ""
 
-#: gadwp.php:260
-#: gadwp.php:274
+#: gadwp.php:257
+#: gadwp.php:271
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
 #. Translators: Adds a link to the plugins page.
-#: gadwp.php:385
+#: gadwp.php:382
 msgid "Please %1$suninstall%2$s the ExactMetrics Lite Plugin. Your Pro version of ExactMetrics may not work as expected until the Lite version is uninstalled."
 msgstr ""
 
@@ -6867,42 +6957,38 @@ msgstr ""
 msgid "Future proof your WordPress customizations with the most popular code snippet management plugin for WordPress. Trusted by over 1,500,000+ websites for easily adding code to WordPress right from the admin area."
 msgstr ""
 
-#: includes/admin/routes.php:396
+#: includes/admin/routes.php:407
 #: includes/admin/routes.php:739
 msgid "Leading WordPress backup & site migration plugin. Over 1,500,000+ smart website owners use Duplicator to make reliable and secure WordPress backups to protect their websites. It also makes website migration really easy."
 msgstr ""
 
-#: includes/admin/routes.php:445
+#: includes/admin/routes.php:456
 msgid "The #1 affiliate management plugin for WordPress. Easily create an affiliate program for your eCommerce store or membership site within minutes and start growing your sales with the power of referral marketing."
 msgstr ""
 
-#: includes/admin/routes.php:458
+#: includes/admin/routes.php:469
 msgid "The #1 Stripe payments plugin for WordPress. Start accepting one-time and recurring payments on your WordPress site without setting up a shopping cart. No code required."
 msgstr ""
 
-#: includes/admin/routes.php:470
+#: includes/admin/routes.php:481
 #: includes/admin/routes.php:706
 msgid "A simple & powerful event calendar plugin for WordPress that comes with all the event management features including payments, scheduling, timezones, ticketing, recurring events, and more."
 msgstr ""
 
-#: includes/admin/routes.php:482
+#: includes/admin/routes.php:493
 msgid "The best drag & drop WordPress form builder. Easily create beautiful contact forms, surveys, payment forms, and more with our 1000+ form templates. Trusted by over 6 million websites as the best forms plugin."
 msgstr ""
 
-#: includes/admin/routes.php:494
+#: includes/admin/routes.php:505
 msgid "Ask visitors questions about how they use your website or what features can make you more money."
 msgstr ""
 
-#: includes/admin/routes.php:506
+#: includes/admin/routes.php:517
 msgid "The original WordPress SEO plugin and toolkit that improves your website’s search rankings. Comes with all the SEO features like Local SEO, WooCommerce SEO, sitemaps, SEO optimizer, schema, and more."
 msgstr ""
 
-#: includes/admin/routes.php:518
+#: includes/admin/routes.php:529
 msgid "Stripe Payment Gateway for WooCommerce is an integrated solution that lets you accept payments on your online store for web and mobile."
-msgstr ""
-
-#: includes/admin/routes.php:533
-msgid "Instantly get more subscribers, leads, and sales with the #1 conversion optimization toolkit. Create high converting popups, announcement bars, spin a wheel, and more with smart targeting and personalization."
 msgstr ""
 
 #: includes/admin/routes.php:544

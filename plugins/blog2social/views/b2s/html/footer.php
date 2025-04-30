@@ -2,7 +2,7 @@
 <div class="b2s-footer">
     <div class="pull-left hidden-xs <?php echo isset($noLegend) ? 'hide' : ''; ?>">
         <?php if (!B2S_System::isblockedArea('B2S_MENU_FOOTER', B2S_PLUGIN_ADMIN)) { ?>
-            <small> © <?php echo date('Y'); ?> <a target="_blank" href="https://www.adenion.de" rel="nofollow">Adenion GmbH</a> | <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('privacy_policy')); ?>" rel="nofollow"><?php esc_html_e("Privacy Policy", "blog2social") ?></a> | <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('term')); ?>" rel="nofollow"><?php esc_html_e("Terms", "blog2social") ?></a> | <?php esc_html_e("We never store your data from your social media profiles", "blog2social") ?></small>
+            <small> © <?php echo esc_html(date('Y')); ?> <a target="_blank" href="https://www.adenion.de" rel="nofollow">Adenion GmbH</a> | <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('privacy_policy')); ?>" rel="nofollow"><?php esc_html_e("Privacy Policy", "blog2social") ?></a> | <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('term')); ?>" rel="nofollow"><?php esc_html_e("Terms", "blog2social") ?></a> | <?php esc_html_e("We never store your data from your social media profiles", "blog2social") ?></small>
         <?php } ?>
     </div>
     <div class="pull-right hidden-xs <?php echo isset($noLegend) || isset($noLegendCalender) ? 'hide' : ''; ?>">

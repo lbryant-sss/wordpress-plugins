@@ -4,7 +4,7 @@ Tags: commerce, ecommerce, woocommerce, multilingual, multicurrency
 License: GPLv2
 Requires at least: 4.7
 Tested up to: 6.8
-Stable tag: 5.4.4
+Stable tag: 5.4.5
 Requires PHP: 7.2
 
 Make your store multilingual and enable multiple currencies.

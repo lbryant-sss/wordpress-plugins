@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: admin, dashboard, menu, security, wpmu
 License: GPLv3
 Requires at least: 5.4
-Tested up to: 6.7.2
-Stable tag: 1.12.4
+Tested up to: 6.8
+Stable tag: 1.13
 
 Lets you edit the WordPress admin menu. You can re-order, hide or rename menus, add custom menus and more. 
 
@@ -84,16 +84,17 @@ Plugins installed in the `mu-plugins` directory are treated as "always on", so y
 
 == Changelog ==
 
-= TBD =
+= 1.13 =
 * Added a way to control access to specific posts and pages. The new "Content Permissions" box in the post editor lets you choose which roles will be able to see a post. It also has an "Advanced" tab where you can enable or disable individual permissions like read/edit/delete for each role. Finally, you can control what happens when someone who doesn't have permission tries to view a post: you can replace the post content with something else, show a custom error, simulate a "404 Not Found" error, or redirect the user to a custom URL.
 * Added the "CSS classes" field to submenu items. Previously, only top level menus had this field.
 * Added an "Optimize menu configuration size" option to the "Settings" tab. It makes the plugin store the admin menu configuration in a more space-efficient format, which should reduce the size of the "ws_menu_editor" database entry. This option is enabled by default. Previously, this was controlled by the option "Compress menu configuration data that's stored in the database", but now the "Compress..." option only applies to actual compression.
 * Added a filter than can be used to turn off admin menu customizations. This can be useful if, for example, you want a a certain user to see the default admin menu. Basic code example: `add_filter('admin_menu_editor-disable_customizations-admin_menu_structure', '__return_true');`
+* Made the top bar in the "Plugins" tab (the part that has the "Save Changes" button) stick to the top while scrolling. This way the save button is accessible without needing to scroll back to the top.
 * Fixed a potential crash when the Zlib extension is enabled but the gzuncompress() function is disabled.
 * Fixed default redirects not being saved due to a bug in the "delete settings associated with missing roles" feature.
 * Fixed a minor conflict with Elementor that caused the hidden menu items "Elementor -> Connect" and "Elementor -> Note Proxy" to become visible.
 * Fixed a minor conflict with Post SMTP that caused the hidden menu items "Dashboard -> Welcome" and "Dashboard -> Credits" to become visible.
-* Tested with WP 6.7.2 and WP 6.8-alpha.
+* Tested with WP 6.8 and WP 6.9-alpha.
 * Increased minimum required WP version to 5.4.
 
 = 1.12.4 =

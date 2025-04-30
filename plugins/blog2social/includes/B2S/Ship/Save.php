@@ -699,7 +699,7 @@ class B2S_Ship_Save {
                 $html .= '</div>';
             }
         }
-        $approveLink = '<a href="#" class="btn btn-primary" onclick="wopApprove(\'' . esc_attr($data['network_auth_id']) . '\',\'' . esc_attr((($data['network_id'] == 10) ? $data['internal_post_id'] : 0)) . '\',\'' . B2S_PLUGIN_API_ENDPOINT . 'instant/share.php?data=' . B2S_Util::urlsafe_base64_encode(json_encode($data)) . '\', \'Blog2Social\'); return false;" target="_blank"><i class="glyphicon glyphicon-share"></i> ' . esc_html__('share', 'blog2social') . '</a>';
+        $approveLink = '<a href="#" class="btn btn-primary" onclick="wopApprove(\'' . esc_attr($data['network_auth_id']) . '\',\'' . esc_attr((($data['network_id'] == 10) ? $data['internal_post_id'] : 0)) . '\',\'' . B2S_PLUGIN_API_ENDPOINT_INSTANT_SHARE . '?data=' . B2S_Util::urlsafe_base64_encode(json_encode($data)) . '\', \'Blog2Social\'); return false;" target="_blank"><i class="glyphicon glyphicon-share"></i> ' . esc_html__('share', 'blog2social') . '</a>';
         $html .= '<span class="text-warning">' . $approveLink . ' (' . esc_html__('Please share your post now', 'blog2social') . ')</span><br>';
         return $html;
     }
@@ -719,11 +719,15 @@ class B2S_Ship_Save {
                         }
                     }
                 } else {
-                    if (!isset($schedDate) || empty($schedDate)) {
+                    if ($network_id == 36) { // mobile approvement
+                        $html .= '<br><div class="alert alert-warning"><b>' . esc_html__('Your image will be uploaded. If TikTok has successfully processed your image, you can unlock it in your TikTok app.', 'blog2social') . '</b> (<a href="' . esc_url(B2S_Tools::getSupportLink('video_sharing_tiktok')) . '" target="_blank">' . esc_html__('Learn how it works', 'blog2social') . '</a>)</div>';
+                    }
+                    else if (!isset($schedDate) || empty($schedDate)) {
                         $html .= '<br><span class="text-success"><i class="glyphicon glyphicon-ok-circle"></i> ' . esc_html__('published', 'blog2social');
                         $html .= !empty($link) ? ': <a href="' . esc_url($link) . '" target="_blank">' . esc_html__('view social media post', 'blog2social') . '</a>' : '';
+                        $html .= '</span>';
                     }
-                    $html .= '</span>';
+                   
                 }
             }
             if (is_array($schedDate) && !empty($schedDate)) {

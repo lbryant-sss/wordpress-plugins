@@ -3,9 +3,10 @@ Contributors: Blog2Social, pr-gateway
 Requires PHP: 5.5.3
 Tags: social media tool, social media automation, auto-post, social media plugin, auto repost
 Donate link: https://paypal.me/adenion
-Requires at least: 4.7.0
+Requires at least: 6.2
 Tested up to: 6.8
-Stable tag: 8.3.4
+Requires PHP: 7.4
+Stable tag: 8.4.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +19,7 @@ Blog2Social automatically creates social media posts for your content and auto-p
 
 _Compatible with WooCommerce, Gutenberg Editor, Hummingbird, Bitly, Rebrand.ly, Sniply, WP Automatic Plugin, Page Builder & RSS Importer._
 
-* New: Band.us – The App For Groups & AI-driven support assistant
+* New: TikTok Photo Intergation
 
 Download Blog2Social today to make your social media marketing easier than ever for your WordPress site or blog. Blog2Social is a freemium plugin, with a free comprehensive basic version and premium plans offering more advanced features. To ensure compliance with the high quality standards of the new networks’ API rules and community guidelines, some functions of the auto-poster are premium features and not part of the free version. 
 The Blog2Social free version offers you a wide range of features. ([See what’s included in the free version](https://wordpress.org/plugins/blog2social/#faq "Blog2Social Free Features")). 
@@ -48,7 +49,7 @@ To benefit from all the advanced features for automatic sharing and scheduling y
 * **Ravelry** - Post to your Ravelry account (from Smart)
 * **Youtube** - Publish your videos on your Youtube channel (add-on)
 * **Vimeo** - Publish your videos on your Vimeo channel (add-on)
-* **TikTok** - Share your videos on TikTok (add-on)
+* **TikTok** - Share your videos on TikTok (add-on) and photo posts or carousels with multiple images (from Smart)
 * **Mastodon** - Post to your Mastodon account (from Pro)
 * **Discord** - Post to your Discord servers (from Smart)
 * **HumHub** - Post to your profile and space (add-on)
@@ -122,7 +123,7 @@ Activate autoposting to **automatically share your new and updated posts** on so
 Schedule all your social media posts in one social media calendar. Manage and share all your social media posts right from your WordPress dashboard.
 
 
-**#6 Share and schedule video posts** -  Share your videos on YouTube, Vimeo, Instagram, Facebook, X, Pinterest, TikTok and LinkedIn. Share Reels on Facebook and Instagram. Share Stories on Instagram. Schedule your videos to post them at your convenience.
+**#6 Share and schedule video posts** -  Share your videos on YouTube, Vimeo, Instagram, Facebook, X, Pinterest, TikTok and LinkedIn. Share Reels on Facebook and Instagram. Share Stories on Facebook and Instagram. Schedule your videos to post them at your convenience.
 
 Save valuable time by managing your complete **social media content right from your WordPress dashboard.**
 
@@ -272,8 +273,10 @@ To get started with the basics of Blog2Social and maybe find some useful tips an
 
 
 == Changelog ==
-= 8.3.4 =
+= 8.4.1 =
 Usability Optimization
+= 8.4.0 =
+TikTok Photo Intergation
 = 8.3.3 =
 Usability Optimization
 = 8.3.2 =
@@ -350,8 +353,10 @@ Bugfix: Autoposting
 Publish and share videos
 
 == Upgrade Notice ==
-= 8.3.4 =
+= 8.4.1 =
 Usability Optimization
+= 8.4.0 =
+TikTok Photo Intergation
 = 8.3.3 =
 Usability Optimization
 = 8.3.2 =

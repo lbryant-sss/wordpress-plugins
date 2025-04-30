@@ -138,7 +138,7 @@ $metaSettings = get_option('B2S_PLUGIN_GENERAL_OPTIONS');
 <input type='hidden' id="user_timezone" name="user_timezone" value="<?php echo esc_attr($userTimeZoneOffset); ?>">
 <input type="hidden" id="user_version" name="user_version" value="<?php echo esc_attr(B2S_PLUGIN_USER_VERSION); ?>">
 <input type="hidden" id="b2sDefaultNoImage" value="<?php echo esc_url(plugins_url('/assets/images/no-image.png', B2S_PLUGIN_FILE)); ?>">
-<input type="hidden" id="b2sMaxSchedDateAddBtn" value="<?php echo date('Y-m-d', strtotime("+ 3 years")) ?>">
+<input type="hidden" id="b2sMaxSchedDateAddBtn" value="<?php echo esc_attr(date('Y-m-d', strtotime("+ 3 years"))); ?>">
 <input type="hidden" id="b2sPostId" value="">
 <input type="hidden" id="b2sInsertImageType" value="0">
 <input type="hidden" id="isOgMetaChecked" value="<?php echo (isset($metaSettings['og_active']) ? (int) $metaSettings['og_active'] : 0); ?>">

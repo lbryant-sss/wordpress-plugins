@@ -935,9 +935,16 @@ jQuery(document).on('click', '.b2s-post-item-details-url-image', function () {
 });
 
 jQuery(document).on('click', '.b2s-select-image-modal-open', function () {
+
+    //disable to pick no image or default image
+    if(!(jQuery(".b2s-image-choose-area").find(".b2s-image-item").length)){
+        jQuery(".b2s-image-change-apply").prop("disabled", true);
+    }  
+  
     jQuery('#b2s-network-select-image').modal('show');
     return false;
 });
+
 
 jQuery(document).on('click', '.b2s-network-info-modal-btn', function () {
     if (jQuery('#b2s-curation-post-format').val() == "2") {
@@ -965,6 +972,10 @@ jQuery(document).on('click', '.b2s-upload-image', function () {
             count = count + 1;
             jQuery('.b2s-choose-image-count').val(count);
             var attachment = wpMedia.state().get('selection').first().toJSON();
+            if(attachment.url!=undefined && attachment.url!=null && attachment.url!= ""){
+
+                jQuery('.b2s-image-change-apply').prop('disabled', false);
+            }
             var content = '<div class="b2s-image-item">' +
                     '<div class="b2s-image-item-thumb">' +
                     '<label for="b2s-image-count-' + count + '">' +

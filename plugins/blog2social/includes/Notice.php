@@ -38,7 +38,8 @@ class B2S_Notice {
     }
 
     public static function getBlogEntries($lang = 'en') {
-        return json_decode(B2S_Api_Post::post(B2S_PLUGIN_API_ENDPOINT, array('action' => 'getBlogEntries', 'lang' => $lang, 'token' => B2S_PLUGIN_TOKEN)));
+        $res = B2S_Api_Post::post(B2S_PLUGIN_API_ENDPOINT, array('action' => 'getBlogEntries', 'lang' => $lang, 'token' => B2S_PLUGIN_TOKEN));
+        return json_decode($res);
     }
 
     public static function getCalEvent($lang = 'en') {

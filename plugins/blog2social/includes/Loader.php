@@ -55,7 +55,7 @@ class B2S_Loader {
         define('B2S_PLUGIN_NETWORK_ALLOW_PAGE', serialize(array(1, 3, 6, 12, 17, 19, 42)));
         define('B2S_PLUGIN_NETWORK_ALLOW_GROUP', serialize(array(11, 17)));
         define('B2S_PLUGIN_NETWORK_SUPPORT_VIDEO', serialize(array(1, 2, 3, 6, 7, 12, 32, 35, 36, 38, 39, 44, 45)));
-        define('B2S_PLUGIN_NETWORK_SUPPORT_SOCIAL', serialize(array(1, 2, 3, 4, 6, 7, 9, 11, 12, 14, 15, 16, 17, 18, 19, 21, 24, 25, 26, 27, 37, 38, 39, 42, 43, 44, 45, 46)));
+        define('B2S_PLUGIN_NETWORK_SUPPORT_SOCIAL', serialize(array(1, 2, 3, 4, 6, 7, 9, 11, 12, 14, 15, 16, 17, 18, 19, 21, 24, 25, 26, 27,36, 37, 38, 39, 42, 43, 44, 45, 46)));
         define('B2S_PLUGIN_NETWORK_CROSSPOSTING_LIMIT', serialize(array(19 => array(2 => 3)))); //2=group
         define('B2S_PLUGIN_NETWORK_ALLOW_MODIFY_BOARD_AND_GROUP', serialize(array(6 => array('TYPE' => array(1), 'TITLE' => esc_html__('Modify pin board', 'blog2social')), 8 => array('TYPE' => array(2), 'TITLE' => esc_html__('Edit group settings', 'blog2social')), 15 => array('TYPE' => array(0), 'TITLE' => esc_html__('Modify subreddit', 'blog2social')))));
         define('B2S_PLUGIN_AUTO_POST_LIMIT', serialize(array(0 => 0, 1 => 25, 2 => 50, 3 => 100, 4 => 100)));
@@ -67,10 +67,10 @@ class B2S_Loader {
         define('B2S_PLUGIN_ALLOW_ADD_LINK', serialize(array(1, 2, 3, 12, 43, 44, 45, 46)));
         define('B2S_PLUGIN_REMOVE_PAGE_TITLE', serialize(array('blog2social', 'blog2social-video', 'blog2social-onboarding', 'blog2social-curation', 'blog2social-ship')));
         define('B2S_PLUGIN_CHANGELOG_CONTENT', serialize(array(
-            'version_info' => esc_html__('Blog2Social Version 8.3 (February 2025)', 'blog2social'),
-            'new' => array(esc_html__('New Network: Band.us', 'blog2social'), esc_html__('Smart Support Assistant under "Help & Support"', 'blog2social')),
-            'improvements' => array(esc_html__('Optimized Posting Times in the Best Time Manager', 'blog2social'), esc_html__('Better Overview of Your Subreddits and Flairs', 'blog2social')),
-            'fixed' => array(esc_html__('Automatic Adjustment to Instagrams new 4:5 Format', 'blog2social')),
+            'version_info' => esc_html__('Blog2Social Version 8.4 (April 2025)', 'blog2social'),
+            'new' => array(esc_html__('Post Facebook Stories – Share content directly to your Facebook pages with scheduled and automated Story posts.', 'blog2social'), esc_html__('TikTok Photo & Carousel Posts – With Blog2Social Pro, plan and auto-publish single-images or multi-image slideshows on TikTok.', 'blog2social')),
+            'improvements' => array(),
+            'fixed' => array(),
             'upcoming' => array()
         )));
 
@@ -103,6 +103,7 @@ class B2S_Loader {
             25 => array(0 => array('short_text' => array('active' => 0, 'range_min' => 1000, 'range_max' => 20000, 'excerpt_range_min' => 1000, 'excerpt_range_max' => 20000, 'limit' => 0), 'content' => '{CONTENT}', 'format' => false)),
             26 => array(0 => array('short_text' => array('active' => 0, 'range_min' => 1000, 'range_max' => 20000, 'excerpt_range_min' => 1000, 'excerpt_range_max' => 20000, 'limit' => 0), 'content' => '{CONTENT}', 'format' => false)),
             27 => array(0 => array('short_text' => array('active' => 0, 'range_min' => 1000, 'range_max' => 20000, 'excerpt_range_min' => 1000, 'excerpt_range_max' => 20000, 'limit' => 0), 'content' => '{CONTENT}', 'format' => false)),
+            36 => array(0 => array('short_text' => array('active' => 0, 'range_min' => 200, 'range_max' => 400, 'excerpt_range_min' => 240, 'excerpt_range_max' => 400, 'limit' => 4000), 'content' => "{CONTENT}", 'format' => false, 'disableKeywords' => true)),
             37 => array(0 => array('short_text' => array('active' => 0, 'range_min' => 1000, 'range_max' => 20000, 'excerpt_range_min' => 1000, 'excerpt_range_max' => 20000, 'limit' => 0), 'content' => '{CONTENT}', 'format' => 1, 'addLink' => true)),
             38 => array(0 => array('short_text' => array('active' => 0, 'range_min' => 400, 'range_max' => 500, 'excerpt_range_min' => 0, 'excerpt_range_max' => 500, 'limit' => 500), 'content' => '{CONTENT} {KEYWORDS}', 'format' => false, 'addLink' => true)),
             39 => array(0 => array('short_text' => array('active' => 0, 'range_min' => 0, 'range_max' => 2000, 'excerpt_range_min' => 0, 'excerpt_range_max' => 2000, 'limit' => 2000), 'content' => "{TITLE} {CONTENT}", 'format' => false, 'disableKeywords' => true)),
@@ -383,7 +384,7 @@ class B2S_Loader {
                                         $time = ($delay == 0) ? "-30 seconds" : "+" . $delay . " minutes";
                                         $sched_date = date('Y-m-d H:i:s', strtotime($time, strtotime($current_user_datetime)));
                                         $sched_date_utc = date('Y-m-d H:i:s', strtotime($time, strtotime($current_utc_datetime)));
-
+                                      
                                         $defaultPostData = array('default_titel' => $title,
                                             'image_url' => ($image_url !== false) ? trim(urldecode($image_url)) : '',
                                             'lang' => trim(strtolower(substr(B2S_LANGUAGE, 0, 2))),
@@ -722,7 +723,7 @@ class B2S_Loader {
                         $meta->setMeta('card_image', (($image_url !== false) ? trim(esc_url(urldecode($image_url))) : ''));
                         $meta->updateMeta((int) $_POST['post_ID']);
                     }
-
+                  
                     if (isset($_POST['post_ID']) && isset($_POST['user_ID']) && (int) $_POST['post_ID'] > 0 && (int) $_POST['user_ID'] > 0 && (int) $_POST['user_ID'] == B2S_PLUGIN_BLOG_USER_ID && !defined("B2S_SAVE_META_BOX_AUTO_SHARE") && !wp_is_post_autosave((int) $_POST['post_ID']) && isset($_POST['b2s-meta-box-nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['b2s-meta-box-nonce'])), 'b2s-meta-box-nonce-post-area') && isset($_POST['post_status'])) {
                         $ship = false;
                         if (isset($_POST['b2s-enable-auto-post'])) {
@@ -858,7 +859,7 @@ class B2S_Loader {
                                                 if (isset($_POST['b2s-user-last-selected-profile-id']) && (int) $_POST['b2s-user-last-selected-profile-id'] != (int) $_POST['b2s-post-meta-box-profil-dropdown'] && (int) $_POST['b2s-post-meta-box-profil-dropdown'] != 0) {
                                                     update_option('B2S_PLUGIN_SAVE_META_BOX_AUTO_SHARE_PROFILE_USER_' . B2S_PLUGIN_BLOG_USER_ID, (int) $_POST['b2s-post-meta-box-profil-dropdown'], false);
                                                 }
-
+                                            
                                                 $metaOg = false;
                                                 $metaCard = false;
                                                 $tosCrossPosting = unserialize(B2S_PLUGIN_NETWORK_CROSSPOSTING_LIMIT);
@@ -907,7 +908,9 @@ class B2S_Loader {
                                                         if (isset($tosCrossPosting[$value->networkId][$value->networkType])) {
                                                             continue;
                                                         }
+                                                       
                                                         $res = $autoShare->prepareShareData($value->networkAuthId, $value->networkId, $value->networkType, ((isset($value->networkKind) && (int) $value->networkKind >= 0) ? $value->networkKind : 0));
+                                                      
                                                         if ($res !== false && is_array($res)) {
                                                             $ship = true;
                                                             $res = array_merge($res, $defaultPostData);
@@ -916,6 +919,8 @@ class B2S_Loader {
                                                                     $res['url'] = '';
                                                                 }
                                                             }
+
+
                                                             $shareApprove = (isset($value->instant_sharing) && (int) $value->instant_sharing == 1) ? 1 : 0;
                                                             $insert = $autoShare->saveShareData($res, $value->networkId, $value->networkType, $value->networkAuthId, $shareApprove, strip_tags($value->networkUserName));
 
@@ -999,6 +1004,7 @@ class B2S_Loader {
                                 }
                             }
                         } else if (isset($_POST['post_status']) && strtolower(sanitize_text_field(wp_unslash($_POST['post_status']))) == "future") {
+                            
                             //update existing posts, if sched date before future date
                             $user_timezone = isset($_POST['b2s-user-timezone']) ? (int) $_POST['b2s-user-timezone'] : 0;
                             $current_utc_date = gmdate('Y-m-d H:i:s');
@@ -1073,9 +1079,9 @@ class B2S_Loader {
                 $b2sLink = get_option('siteurl') . ((substr(get_option('siteurl'), -1, 1) == '/') ? '' : '/') . 'wp-admin/admin.php?page=';
                 if (isset($_GET['b2s_update_publish_date']) && !empty($_GET['b2s_update_publish_date'])) {
                     $publishDate = htmlspecialchars(sanitize_text_field(wp_unslash($_GET['b2s_update_publish_date'])));
-                    echo '<div class="updated"><p>' . esc_html__('This post will be shared into your social media from', 'blog2social') . ' ' . $publishDate . ' <a target="_blank" href="' . $b2sLink . 'blog2social-sched">' . esc_html__('show details', 'blog2social') . '</a></p></div>';
+                    echo '<div class="updated"><p>' . esc_html__('This post will be shared into your social media from', 'blog2social') . ' ' . esc_html($publishDate) . ' <a target="_blank" href="' . esc_attr($b2sLink) . 'blog2social-sched">' . esc_html__('show details', 'blog2social') . '</a></p></div>';
                 } else {
-                    echo '<div class="updated"><p>' . esc_html__('This post will be shared on social media in 2-3 minutes!', 'blog2social') . ' <a target="_blank" href="' . $b2sLink . 'blog2social-publish">' . esc_html__('show details', 'blog2social') . '</a></p></div>';
+                    echo '<div class="updated"><p>' . esc_html__('This post will be shared on social media in 2-3 minutes!', 'blog2social') . ' <a target="_blank" href="' . esc_attr($b2sLink) . 'blog2social-publish">' . esc_html__('show details', 'blog2social') . '</a></p></div>';
                 }
             }
             if ((int) $b2sAction == 2) {
@@ -1196,7 +1202,7 @@ class B2S_Loader {
             'RATE_LIMIT' => esc_html__('Your daily limit for this network has been reached. Please try again later.', 'blog2social'),
             'INVALID_CONTENT' => sprintf(__('The network can not publish special characters such as Emoji. Please see the following <a target="_blank" href="%s">guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('share_error'))),
             'EXISTS_CONTENT' => esc_html__('Your post is a duplicate.', 'blog2social'),
-            'URL_CONTENT' => esc_html__('The network requires a public url.', 'blog2social'),
+            'URL_CONTENT' => esc_html__('The network requires a valid url and which complies with the network standards.', 'blog2social'),
             'VIDEO' => esc_html__('Your video could not be posted, because it is not available or the source does not allow publishing.', 'blog2social'),
             'VIDEO_FILE' => esc_html__('Your video file could not be found. Please check if it has been deleted or renamed.', 'blog2social'),
             'VIDEO_TOKEN' => esc_html__('Your session has expired. Please try again.', 'blog2social'),
@@ -1221,6 +1227,8 @@ class B2S_Loader {
             'NETWORK_12_SESSION_INVALID' => sprintf(__('Your authorization has expired. Please reconnect your Instagram account in the Blog2Social network settings. <a target="_blank" href="%s">Learn how to reconnect your account.</a>', 'blog2social'), esc_url(B2S_Tools::getSupportLink('NETWORK_12_SESSION_INVALID'))),
             'NETWORK_12_RESOURCE_DOSE_NOT_EXIST' => sprintf(__('Your Facebook profile does not have access to the Facebook page which is connected to your Instagram account. <a target="_blank" href="%s">Learn how to check and edit the Facebook page settings.</a>', 'blog2social'), esc_url(B2S_Tools::getSupportLink('NETWORK_12_RESOURCE_DOSE_NOT_EXIST'))),
             'NETWORK_12_NOT_BUSINESS' => sprintf(__('Please change your Instagram account type into a Business account type. Learn more about how to convert your account in the <a target="_blank" href="%s">Instagram guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('NETWORK_12_NOT_BUSINESS'))),
+            'NETWORK_18_LOCATION_NOT_PROVIDED' => esc_html__('Your Google Account does not have access to this provided location. You must ensure that the location is verified and available in Google.', 'blog2social'),
+            'NETWORK_18_ACCOUNT_INVALID' => esc_html__('Your Google Account does not have access to this provided location because your Google Account is not verified.', 'blog2social'),
             'SERVICE_LIMIT' => esc_html__("The post limit for your App has been reached. Please check the settings of your API app in your developer account and consider an upgrade if necessary.", "blog2social"),
             'NETWORK_APP_ACCOUNT_PERMISSON' => esc_html__('An issue with your API App has been detected. Please check the settings for your API App on your developer account of the respective social platform.', 'blog2social'),
             'NETWORK_APP_RIGHT' => esc_html__('Your network app does not have permission for this action. Please check your network app settings in your network developer portal.', 'blog2social'),
@@ -1233,7 +1241,7 @@ class B2S_Loader {
     }
 
     public function getToken() {
-        global $wpdb;
+     global $wpdb;
         $sql = $wpdb->prepare("SELECT token FROM `{$wpdb->prefix}b2s_user` WHERE `blog_user_id` = %d", $this->blogUserData->ID);
         $userExist = $wpdb->get_row($sql);
         if (empty($userExist) || !isset($userExist->token)) {

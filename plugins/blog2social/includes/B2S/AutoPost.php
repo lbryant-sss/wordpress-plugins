@@ -38,14 +38,15 @@ class B2S_AutoPost {
         $this->keywords = $keywords;
         $this->optionPostFormat = $optionPostFormat;
         $this->allowHashTag = $allowHashTag;
-        $this->setPreFillText = array(0 => array(6 => 300, 16 => 250, 17 => 442, 18 => 800, 21 => 65000, 38 => 500, 39 => 2000, 42 => 1000, 43 => 279, 46 => 500), 1 => array(6 => 300, 17 => 442, 19 => 5000, 42 => 1000), 2 => array(17 => 442, 19 => 239), 20 => 300);
-        $this->setPreFillTextLimit = array(0 => array(6 => 400, 18 => 1000, 16 => false, 21 => 65535, 38 => 500, 39 => 2000, 42 => 1000, 46 => 1000), 1 => array(6 => 400, 19 => 60000, 42 => 1000), 2 => array(19 => 9000));
+        $this->setPreFillText = array(0 => array(6 => 300, 16 => 250, 17 => 442, 18 => 800, 21 => 65000, 36 => 200, 38 => 500, 39 => 2000, 42 => 1000, 43 => 279, 46 => 500), 1 => array(6 => 300, 17 => 442, 19 => 5000, 42 => 1000), 2 => array(17 => 442, 19 => 239), 20 => 300);
+        $this->setPreFillTextLimit = array(0 => array(6 => 400, 18 => 1000, 16 => false, 21 => 65535, 38 => 500, 36 => 400, 39 => 2000, 42 => 1000, 46 => 1000), 1 => array(6 => 400, 19 => 60000, 42 => 1000), 2 => array(19 => 9000));
         $this->default_template = (defined('B2S_PLUGIN_NETWORK_SETTINGS_TEMPLATE_DEFAULT')) ? unserialize(B2S_PLUGIN_NETWORK_SETTINGS_TEMPLATE_DEFAULT) : false;
         $this->echo = $echo;
         $this->delay = $delay;
     }
 
     public function prepareShareData($networkAuthId = 0, $networkId = 0, $networkType = 0, $networkKind = 0) {
+
 
         if ((int) $networkId > 0 && (int) $networkAuthId > 0) {
             $postData = array('content' => '', 'custom_title' => '', 'tags' => array(), 'network_auth_id' => (int) $networkAuthId);
@@ -98,9 +99,11 @@ class B2S_AutoPost {
             }
             //Special
             if (array_key_exists($networkId, $tempOptionPostFormat)) {
+
                 if ($networkId == 12 && $this->imageUrl == false) {
                     return false;
                 }
+
                 $hook_filter = new B2S_Hook_Filter();
 
                 $postData['content'] = $tempOptionPostFormat[$networkId][$networkType]['content'];
@@ -167,7 +170,7 @@ class B2S_AutoPost {
                     if (!empty($this->url) && $networkId == 38) {
                         $limit = 500 - strlen($this->url);
                     }
-                    if (!empty($this->url) && $networkId == 44) {
+                    if (!empty($this->url) && ($networkId == 44 || $networkId == 36)) {
                         $limit = 500 - strlen($this->url);
                     }
                     if (!empty($this->url) && $networkId == 43 && $postData['post_format'] == 1) {
@@ -207,6 +210,16 @@ class B2S_AutoPost {
                         return false;
                     }
                 }
+
+                if ($networkId == 36) {
+                    if ($this->imageUrl !== false) {
+                        $postData['content'] = (isset($this->setPreFillText[$networkType][$networkId])) ? B2S_Util::getExcerpt($this->content, (int) $this->setPreFillText[$networkType][$networkId], (isset($this->setPreFillTextLimit[$networkType][$networkId]) ? (int) $this->setPreFillTextLimit[$networkType][$networkId] : false)) : $this->content;
+                        $postData['custom_title'] = strip_tags($this->title);
+                    } else {
+                        return false;
+                    }
+                }
+
                 if ($networkId == 8) {
                     $postData['content'] = (isset($this->setPreFillText[$networkType][$networkId])) ? B2S_Util::getExcerpt($this->content, (int) $this->setPreFillText[$networkType][$networkId], (int) $this->setPreFillTextLimit[$networkType][$networkId]) : $this->content;
                     $postData['custom_title'] = strip_tags($this->title);
@@ -343,7 +356,7 @@ class B2S_AutoPost {
             if (isset($this->myTimeSettings['times']['delay_day'][$network_auth_id]) && isset($this->myTimeSettings['times']['time'][$network_auth_id]) && !empty($this->myTimeSettings['times']['time'][$network_auth_id])) {
                 $tempSchedDate = date('Y-m-d', strtotime($sched_date));
                 $networkSchedDate = date('Y-m-d H:i:00', strtotime($tempSchedDate . ' ' . $this->myTimeSettings['times']['time'][$network_auth_id]));
-                if ((int)$this->myTimeSettings['times']['delay_day'][$network_auth_id] > 0) {
+                if ((int) $this->myTimeSettings['times']['delay_day'][$network_auth_id] > 0) {
                     $sched_date = date('Y-m-d H:i:s', strtotime('+' . $this->myTimeSettings['times']['delay_day'][$network_auth_id] . ' days', strtotime($networkSchedDate)));
                     $sched_date_utc = date('Y-m-d H:i:s', strtotime(B2S_Util::getUTCForDate($sched_date, $this->blogPostData['user_timezone'] * (-1))));
                 } else {

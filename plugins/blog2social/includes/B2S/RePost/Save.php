@@ -34,11 +34,11 @@ class B2S_RePost_Save {
         $this->allowHashTag = $allowHashTag;
         $this->b2sUserLang = $b2sUserLang;
         $this->bestTimes = (!empty($bestTimes)) ? $bestTimes : array();
-        $this->setPreFillText = array(0 => array(8 => 239, 10 => 442, 16 => 250, 17 => 442, 18 => 800, 20 => 300, 21 => 65000, 38 => 500, 39 => 2000, 42 => 1000, 43 => 279), 1 => array(8 => 1200, 10 => 442, 17 => 442, 19 => 5000, 42 => 1000), 2 => array(8 => 239, 10 => 442, 17 => 442, 19 => 239));
-        $this->setPreFillTextLimit = array(0 => array(8 => 400, 10 => 500, 18 => 1000, 20 => 400, 16 => false, 21 => 65535, 38 => 500, 39 => 2000, 42 => 1000, 43 => 279), 1 => array(8 => 1200, 10 => 500, 19 => 60000, 42 => 1000), 2 => array(8 => 400, 10 => 500, 19 => 9000));
-        $this->notAllowNetwork = array(4, 6, 11, 14, 16, 18);
+        $this->setPreFillText = array(0 => array(8 => 239, 10 => 442, 16 => 250, 17 => 442, 18 => 800, 20 => 300, 21 => 65000, 36 => 200, 38 => 500, 39 => 2000, 42 => 1000, 43 => 279), 1 => array(8 => 1200, 10 => 442, 17 => 442, 19 => 5000, 42 => 1000), 2 => array(8 => 239, 10 => 442, 17 => 442, 19 => 239));
+        $this->setPreFillTextLimit = array(0 => array(8 => 400, 10 => 500, 18 => 1000, 20 => 400, 16 => false, 21 => 65535, 36 => 400, 38 => 500, 39 => 2000, 42 => 1000, 43 => 279), 1 => array(8 => 1200, 10 => 500, 19 => 60000, 42 => 1000), 2 => array(8 => 400, 10 => 500, 19 => 9000));
+        $this->notAllowNetwork = array(4, 11, 14, 16);
         $this->allowHtml = array(4, 11, 14);
-        $this->allowNetworkOnlyImage = array(7, 12, 20, 21);
+        $this->allowNetworkOnlyImage = array(6, 7, 12, 20, 21, 36);
         $this->tosCrossPosting = unserialize(B2S_PLUGIN_NETWORK_CROSSPOSTING_LIMIT);
         $this->linkNoCache = B2S_Tools::getNoCacheData(B2S_PLUGIN_BLOG_USER_ID);
         $this->default_template = (defined('B2S_PLUGIN_NETWORK_SETTINGS_TEMPLATE_DEFAULT')) ? unserialize(B2S_PLUGIN_NETWORK_SETTINGS_TEMPLATE_DEFAULT) : false;
@@ -86,7 +86,7 @@ class B2S_RePost_Save {
                     continue;
                 }
                 $selectedTwitterProfile = (isset($twitter) && !empty($twitter)) ? (int) $twitter : '';
-                if (((int) $value->networkId != 2 && (int) $value->networkId != 45) || (((int) $value->networkId == 2  || (int) $value->networkId == 45) && (empty($selectedTwitterProfile) || ((int) $selectedTwitterProfile == (int) $value->networkAuthId)))) {
+                if (((int) $value->networkId != 2 && (int) $value->networkId != 45) || (((int) $value->networkId == 2 || (int) $value->networkId == 45) && (empty($selectedTwitterProfile) || ((int) $selectedTwitterProfile == (int) $value->networkAuthId)))) {
                     $schedDate = $this->getPostDateTime($startDate, $settings, $value->networkAuthId);
                     $schedDateUtc = date('Y-m-d H:i:s', strtotime(B2S_Util::getUTCForDate($schedDate, ($this->userTimezone * -1))));
                     $shareApprove = (isset($value->instant_sharing) && (int) $value->instant_sharing == 1) ? 1 : 0;
@@ -307,10 +307,22 @@ class B2S_RePost_Save {
                         return false;
                     }
                 }
+
+                if ($networkId == 36) {
+                    if ($this->imageUrl !== false) {
+                        $postData['content'] = (isset($this->setPreFillText[$networkType][$networkId])) ? B2S_Util::getExcerpt($this->content, (int) $this->setPreFillText[$networkType][$networkId], (isset($this->setPreFillTextLimit[$networkType][$networkId]) ? (int) $this->setPreFillTextLimit[$networkType][$networkId] : false)) : $this->content;
+                        $postData['custom_title'] = strip_tags($this->title);
+                    } else {
+                        return false;
+                    }
+                }
+
+
                 if ($networkId == 8) {
                     $postData['content'] = (isset($this->setPreFillText[$networkType][$networkId])) ? B2S_Util::getExcerpt($this->content, (int) $this->setPreFillText[$networkType][$networkId], (int) $this->setPreFillTextLimit[$networkType][$networkId]) : $this->content;
                     $postData['custom_title'] = strip_tags($this->title);
                 }
+
                 if ($networkId == 9 || $networkId == 16) {
                     $postData['custom_title'] = $this->title;
                     $postData['content'] = (isset($this->setPreFillText[$networkType][$networkId])) ? B2S_Util::getExcerpt($this->content, (int) $this->setPreFillText[$networkType][$networkId], (int) $this->setPreFillTextLimit[$networkType][$networkId]) : $this->content;
@@ -469,7 +481,7 @@ class B2S_RePost_Save {
                     'network_details_id' => $networkDetailsId,
                     'post_for_approve' => (int) $shareApprove,
                     'hook_action' => (((int) $shareApprove == 0) ? 1 : 0),
-                    'post_format' => (($shareData['post_format'] !== '') ? (((int) $shareData['post_format'] > 0) ? 1 : 0) : null)
+                    'post_format' => (isset($shareData['post_format']) && ($shareData['post_format'] !== '') ? (((int) $shareData['post_format'] > 0) ? 1 : 0) : null)
                         ), array('%d', '%d', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%d', '%d'));
                 B2S_Rating::trigger();
                 $schedPostCount++;
@@ -492,5 +504,4 @@ class B2S_RePost_Save {
             B2S_Heartbeat::getInstance()->deleteSchedPost();
         }
     }
-
 }

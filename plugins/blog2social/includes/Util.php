@@ -223,8 +223,8 @@ class B2S_Util {
     }
 
     private static function b2sGetMetaDescription($html) {
-//$res = get_meta_tags($url);
-//return (isset($res['description']) ? self::cleanContent(strip_shortcodes($res['description'])) : '');
+        //$res = get_meta_tags($url);
+        //return (isset($res['description']) ? self::cleanContent(strip_shortcodes($res['description'])) : '');
         $res = preg_match('#<meta +name *=[\"\']?description[\"\']?[^>]*content=[\"\']?(.*?)[\"\']? */?>#i', $html, $matches);
         return (isset($matches[1]) && !empty($matches[1])) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
     }
@@ -270,6 +270,31 @@ class B2S_Util {
                 if (($meta->getAttribute('property') == $type . ':image' || $meta->getAttribute('name') == $type . ':image') && !isset($list['image'])) {
                     $list['image'] = $meta->getAttribute('content');
                 }
+
+                //If twitter, get dara from og as backup if not set
+                if ($type == "twitter") {
+
+                    if ($meta->getAttribute("property") == 'og:image' && !isset($list['image'])) {
+                        $image = $meta->getAttribute('content');
+                        if (!empty($image)) {
+                            $list['image'] = $image;
+                        }
+                    }
+
+                    if ($meta->getAttribute("property") == 'og:title' && !isset($list['title'])) {
+                        $title = $meta->getAttribute('content');
+                        if (!empty($title)) {
+                            $list['title'] = $title;
+                        }
+                    }
+
+                    if ($meta->getAttribute("property") == 'og:description' && !isset($list['description'])) {
+                        $description = $meta->getAttribute('content');
+                        if (!empty($description)) {
+                            $list['description'] = $description;
+                        }
+                    }
+                }
             } else {
                 if ($meta->getAttribute('name') == 'description' && !isset($list['default_description'])) {
                     $list['default_description'] = (function_exists('mb_convert_encoding') ? htmlspecialchars($meta->getAttribute('content')) : $meta->getAttribute('content'));
@@ -284,17 +309,6 @@ class B2S_Util {
                 if ($meta->getAttribute($search) == 'og:image' && !isset($list['og_image'])) {
                     $list['og_image'] = $meta->getAttribute('content');
                 }
-//Further
-                /* if ($meta->getAttribute($search) == 'twitter:title' && !isset($list['twitter_title'])) {
-                  $list['twitter_title'] = (function_exists('mb_convert_encoding') ? htmlspecialchars($meta->getAttribute('content')) : $meta->getAttribute('content'));
-                  }
-                  if ($meta->getAttribute($search) == 'twitter:description' && !isset($list['twitter_description'])) {
-                  $desc = self::cleanContent(strip_shortcodes($meta->getAttribute('content')));
-                  $list['twitter_description'] = (function_exists('mb_convert_encoding') ? htmlspecialchars($desc) : $desc);
-                  }
-                  if ($meta->getAttribute($search) == 'twitter:image' && !isset($list['twitter_image'])) {
-                  $list['twitter_image'] = (function_exists('mb_convert_encoding') ? htmlspecialchars($meta->getAttribute('content')) : $meta->getAttribute('content'));
-                  } */
             }
         }
         return $list;
@@ -634,7 +648,6 @@ class B2S_Util {
 
 //Plugin qTranslate [:en]Content[:de]Text[:]
     public static function getTitleByLanguage($title, $postLang = 'en') {
-//$title = html_entity_decode($title, ENT_QUOTES | ENT_XML1);
         $postLang = ($postLang === false) ? 'en' : trim(strtolower($postLang));
         $regex = "#(<!--:[a-z]{2}-->|<!--:-->|\[:[a-z]{2}\]|\[:\]|\{:[a-z]{2}\}|\{:\})#ism";
         $blocks = preg_split($regex, $title, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);

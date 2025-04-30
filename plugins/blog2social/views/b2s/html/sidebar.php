@@ -119,11 +119,11 @@ $getPage = (isset($_GET['page']) && !empty($_GET['page'])) ? sanitize_text_field
 
                                         if (isset($licenceCond['open_daily_post_quota'])) {
                                             ?>                                       
-                                            <input type="hidden" id="current_licence_open_daily_post_quota" name="current_licence_open_daily_post_quota" value="<?php echo $licenceCond['open_daily_post_quota']; ?>" />
+                                            <input type="hidden" id="current_licence_open_daily_post_quota" name="current_licence_open_daily_post_quota" value="<?php echo esc_attr($licenceCond['open_daily_post_quota']); ?>" />
                                             <?php
                                             $dailyLimit = ((int) $licenceCond['open_daily_post_quota'] <= 0) ? '' : 'b2s-info-display-none';
                                             ?>
-                                            <h3 class="b2s-h3 b2s-current-licence-open-daily-post-quota-sidebar-info b2s-color-red b2s-margin-0 b2s-text-underline <?php echo $dailyLimit; ?> b2s-text-bold"><?php echo sprintf(__('Daily Limit of %d posts reached!', 'blog2social'), esc_html($licenceCond['total_daily_post_quota'])); ?></h3>
+                                            <h3 class="b2s-h3 b2s-current-licence-open-daily-post-quota-sidebar-info b2s-color-red b2s-margin-0 b2s-text-underline <?php echo esc_html($dailyLimit); ?> b2s-text-bold"><?php echo sprintf(__('Daily Limit of %d posts reached!', 'blog2social'), esc_html($licenceCond['total_daily_post_quota'])); ?></h3>
                                             <?php
                                         }
                                     }
@@ -162,11 +162,11 @@ $getPage = (isset($_GET['page']) && !empty($_GET['page'])) ? sanitize_text_field
                                         <?php
                                         if (isset($networkCond->open_daily_post_quota)) {
                                             ?>
-                                            <input type="hidden" id="current_network_open_daily_post_quota" name="current_network_open_daily_post_quota" value="<?php echo $networkCond->open_daily_post_quota; ?>" />
+                                            <input type="hidden" id="current_network_open_daily_post_quota" name="current_network_open_daily_post_quota" value="<?php echo esc_attr($networkCond->open_daily_post_quota); ?>" />
                                             <?php
                                             $dailyLimit = ((int) $networkCond->open_daily_post_quota <= 0) ? '' : 'b2s-info-display-none';
                                             ?>
-                                            <h3 class="b2s-h3 b2s-current-network-open-daily-post-quota-sidebar-info b2s-color-red b2s-margin-0 b2s-text-underline <?php echo $dailyLimit; ?> b2s-text-bold"><?php echo sprintf(__('Daily Limit of %d X posts reached!', 'blog2social'), esc_html($networkCond->total_daily_post_quota)); ?></h3>
+                                            <h3 class="b2s-h3 b2s-current-network-open-daily-post-quota-sidebar-info b2s-color-red b2s-margin-0 b2s-text-underline <?php echo esc_html($dailyLimit); ?> b2s-text-bold"><?php echo sprintf(__('Daily Limit of %d X posts reached!', 'blog2social'), esc_html($networkCond->total_daily_post_quota)); ?></h3>
                                             <?php
                                         }
                                     }

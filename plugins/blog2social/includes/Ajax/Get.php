@@ -688,14 +688,15 @@ class Ajax_Get {
     public function getMultiWidgetContent() {
         if (current_user_can('read') && isset($_GET['b2s_security_nonce']) && (int) wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['b2s_security_nonce'])), 'b2s_security_nonce') > 0) {
             $option = get_option("B2S_MULTI_WIDGET");
-            if ($option !== false) {
-                if (is_array($option) && isset($option['timestamp']) && isset($option['content']) && !empty($option['content']) && $option['timestamp'] > date('Y-m-d H:i:s', strtotime("-1 hours"))) {
-                    die($option['content']);
-                }
+            if ($option !== false && is_array($option) && isset($option['timestamp']) && isset($option['content']) && !empty($option['content']) && $option['timestamp'] > date('Y-m-d H:i:s', strtotime("-1 hours"))) {
+                $option = $option['content'];
+            } else {
+                $content = B2S_Api_Post::post(B2S_PLUGIN_API_ENDPOINT, array('action' => 'getNews', 'version' => B2S_PLUGIN_VERSION, 'lang' => strtolower(substr(get_locale(), 0, 2)), 'token' => B2S_PLUGIN_TOKEN));
+                update_option("B2S_MULTI_WIDGET", array("timestamp" => date("Y-m-d H:i:s"), "content" => $content), false);
+                $option = $content;
             }
-            $content = B2S_Api_Post::post(B2S_PLUGIN_API_ENDPOINT, array('action' => 'getNews', 'version' => B2S_PLUGIN_VERSION, 'lang' => strtolower(substr(get_locale(), 0, 2)), 'token' => B2S_PLUGIN_TOKEN));
-            update_option("B2S_MULTI_WIDGET", array("timestamp" => date("Y-m-d H:i:s"), "content" => $content), false);
-            echo B2S_Tools::esc_html_array($content, array(
+
+            echo B2S_Tools::esc_html_array($option, array(
                 'div' => array(
                     'class' => array(),
                     'style' => array()

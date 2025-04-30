@@ -3,7 +3,7 @@
 class B2S_Ship_Item {
 
     private static $minImageDimensions = array(18 => array(400, 300)); // array(breite, hoehe)
-    private $allowTitleProfile = array(6, 7, 9, 15, 16, 21, 25, 26, 37, 39);
+    private $allowTitleProfile = array(6, 7, 9, 15, 16, 21, 25, 26, 36, 37, 39);
     private $allowTitlePage = array(6);
     private $isInstantSharing = array(36);
     private $allowTitleGroup = array();
@@ -14,7 +14,7 @@ class B2S_Ship_Item {
     private $allowTag = array(4, 7, 9, 11, 16, 32, 37, 42);
     private $limitTag = array(11 => 5, 7 => 75); //networkId => Limit
     private $allowHtml = array(4, 11, 14, 25);
-    private $showTitleProfile = array(4, 6, 7, 9, 11, 14, 16, 21, 15, 25, 26, 27, 32, 35, 37, 39);
+    private $showTitleProfile = array(4, 6, 7, 9, 11, 14, 16, 21, 15, 25, 26, 27, 32, 35, 36, 37, 39);
     private $showTitlePage = array(6, 8, 19 => array(1), 37); //Xing Business Page
     private $showTitleGroup = array(8, 11, 19);
     private $onlyImage = array(6, 7, 12, 21);
@@ -22,26 +22,26 @@ class B2S_Ship_Item {
     private $allowNoCustomImageProfile = array();
     private $allowNoCustomImagePage = array();
     private $allowPrivacyStatus = array(32);
-    private $allowNoEmoji = array(9, 13, 14, 15, 16, 21, 35, 37, 42);
+    private $allowNoEmoji = array(9, 13, 14, 15, 16, 21, 35, 36, 37, 42);
     private $allowNoImagePage = array(8);
-    private $allowEditUrl = array(1, 2, 3, 4, 6, 7, 9, 11, 12, 14, 15, 16, 17, 18, 19, 21, 24, 25, 26, 27, 37, 38, 39, 42, 43, 44, 45, 46);
+    private $allowEditUrl = array(1, 2, 3, 4, 6, 7, 9, 11, 12, 14, 15, 16, 17, 18, 19, 21, 24, 25, 26, 27, 36, 37, 38, 39, 42, 43, 44, 45, 46);
     private $showBoards = array(6, 20);
     private $showRelay = array(2,45);
     private $showBoardsGroup = array(10);
     private $showGroups = array(15, 19);
     private $changeDisplayName = array(8);
-    private $allowImageEditor = array(1, 2, 3, 6, 7, 12, 15, 18, 17, 19, 24, 26, 42, 43, 44,45); // Cropper
+    private $allowImageEditor = array(1, 2, 3, 6, 7, 12, 15, 18, 17, 19, 24, 26, 36, 42, 43, 44,45); // Cropper
     private $setShortTextProfile = array(1 => 239, 2 => 255, 3 => 239, 6 => 300, 9 => 200, 12 => 240, 16 => 250, 17 => 442, 18 => 800, 19 => 239, 21 => 500, 42 => 1000, 43 => 280, 44 => 450, 45=> 255, 46 => 450);
     private $setShortTextProfileLimit = array(1 => 400, 2 => 254, 3 => 400, 6 => 400, 9 => 200, 12 => 400, 18 => 1000, 21 => 600, 42 => 2000, 43 => 279, 44 => 500, 45=>254, 46 => 500);
     private $setShortTextPage = array(1 => 500, 3 => 239, 6 => 300, 17 => 442, 42 => 1000, 19 => 5000);
     private $setShortTextPageLimit = array(1 => 1000, 3 => 400, 6 => 400, 42 => 2000, 19 => array(0 => 400, 1 => 2000,4=> 5000));
-    private $limitCharacterTitle = array(15 => array(0 => 300), 19 => array(1 => 150), 32 => array(0 => 100), 39 => array(0 => 256));
+    private $limitCharacterTitle = array(15 => array(0 => 300), 19 => array(1 => 150), 32 => array(0 => 100), 36 => array(0 => 90), 39 => array(0 => 256));
     private $setShortTextGroup = array(17 => 442, 19 => 239);
     private $setShortTextGroupLimit = array();
     private $allowHashTags = array(1, 2, 3, 6, 12, 17, 21, 37, 43, 45);
     private $limitHashTagCharacter = array(21 => 36);
-    private $limitCharacterProfile = array(1 => 500, 2 => 280, 3 => 3000, 6 => 495, 12 => 2000, 18 => 1500, 20 => 495, 21 => 65535, 38 => 500, 39 => 2000, 43 => 300, 44 => 500, 45 => 280);
-    private $showImageAreaProfile = array(6, 7, 12, 16, 18, 21, 26, 37, 38, 39, 42);
+    private $limitCharacterProfile = array(1 => 500, 2 => 280, 3 => 3000, 6 => 495, 12 => 2000, 18 => 1500, 20 => 495, 21 => 65535, 36=> 4000, 38 => 500, 39 => 2000, 43 => 300, 44 => 500, 45 => 280);
+    private $showImageAreaProfile = array(6, 7, 12, 16, 18, 21, 26, 36, 37, 38, 39, 42);
     private $showImageAreaPage = array(6, 12, 42);
     private $showImageAreaGroup = array();
     private $showMarketplace = array(19);
@@ -416,7 +416,7 @@ class B2S_Ship_Item {
             $content .= '<input type="hidden" class="b2s-post-item-details-post-format form-control" name="b2s[' . esc_attr($data->networkAuthId) . '][post_format]" data-network-auth-id="' . esc_attr($data->networkAuthId) . '" data-network-id="' . esc_attr($data->networkId) . '" data-network-type="' . esc_attr($data->networkType) . '" value="0" />';
         }
 
-        if (!in_array($data->networkId, $this->isInstantSharing)) {
+        if (!in_array($data->networkId, $this->isInstantSharing) || ($data->networkId==36 && !$this->isVideoMode)){
             $content .= '<span class="b2s-post-tool-area" data-network-auth-id="' . esc_attr($data->networkAuthId) . '">';
             $content .= (in_array($data->networkId, $this->setPostFormat) && !$this->isVideoMode) ? '  | ' : '';
             if (in_array($data->networkId, $this->getText)) {
@@ -472,15 +472,22 @@ class B2S_Ship_Item {
 
         $content .= '<div class="b2s-post-item-details-edit-area" data-network-auth-id="' . esc_attr($data->networkAuthId) . '">';
 
-        if (!in_array($data->networkId, $this->isInstantSharing)) {
+        if (!in_array($data->networkId, $this->isInstantSharing) || ($data->networkId==36 && !$this->isVideoMode)) {
+
+            if($data->networkId==36){
+                $content .= '<div class="clearfix"></div><div class="alert alert-info">' . esc_html__("Please note that image uploads need to be approved in the TikTok app.", "blog2social") . ' (<a href="' . esc_url(B2S_Tools::getSupportLink('video_sharing_tiktok')) . '" target="_blank">' . esc_html__('Learn how it works', 'blog2social') . '</a>)</div>';
+            }
+
             $content .= (in_array($data->networkId, $this->showBoards) || ($data->networkType == 2 && in_array($data->networkId, $this->showBoardsGroup))) ? $this->getBoardHtml($data->networkAuthId, $data->networkId, $data->networkType) : '';
             $content .= (in_array($data->networkId, $this->showGroups) && ($data->networkType == 2 || $data->networkId == 15)) ? $this->getGroupsHtml($data->networkAuthId, $data->networkId) : '';
             $content .= (in_array($data->networkId, $this->showMarketplace) && $data->networkType == 2) ? $this->getMarketplaceAreaHtml($data->networkAuthId, $data->networkId, $data->networkType, $data->networkKind) : '';
-
-            if ((in_array($data->networkId, $this->showTitleProfile) && $data->networkType == 0) || ((in_array($data->networkId, $this->showTitlePage) || (isset($this->showTitlePage[$data->networkId]) && is_array($this->showTitlePage[$data->networkId]) && in_array($data->networkKind, $this->showTitlePage[$data->networkId]))) && $data->networkType == 1) || (in_array($data->networkId, $this->showTitleGroup) && $data->networkType == 2)) {
+            if ((in_array($data->networkId, $this->showTitleProfile) && $data->networkType == 0) || ((in_array($data->networkId, $this->showTitlePage) || (isset($this->showTitlePage[$data->networkId]) && is_array($this->showTitlePage[$data->networkId]) && in_array($data->networkKind, $this->showTitlePage[$data->networkId]))) && $data->networkType == 1) || (in_array($data->networkId, $this->showTitleGroup) && $data->networkType == 2)  ) {
+                
                 $title_value = ((isset($title) && !empty($title)) ? $title : $this->postData->post_title);
                 $content .= $this->getTitleHtml($data->networkId, $data->networkAuthId, $data->networkKind, $data->networkType, $title_value);
+              
             }
+            
             $content .= $this->getCustomEditArea($data->networkId, $data->networkAuthId, $data->networkType, $message, $isRequiredTextarea, $textareaOnKeyUp, $limit, $limitValue, isset($data->image_url) ? $data->image_url : null, isset($data->multi_images) ? $data->multi_images : array(), isset($data->post_format) ? (int) $data->post_format : 0, null, isset($data->networkKind) ? (int) $data->networkKind : 0); //
             $content .= (in_array($data->networkId, $this->allowPrivacyStatus)) ? $this->getPrivacyStatusHtml($data->networkAuthId, $data->networkId) : '';
             $content .= (in_array($data->networkId, $this->allowTag) && ($data->networkType == 0 || $data->networkId == 11 || $data->networkId == 42)) ? $this->getTagsHtml($data->networkId, $data->networkAuthId) : '';
@@ -509,6 +516,7 @@ class B2S_Ship_Item {
                     $content .= $this->getShippingTimeHtml($data->networkAuthId, $data->networkType, $data->networkId, $data->networkType, $message, $isRequiredTextarea, $textareaOnKeyUp, $limit, $limitValue, isset($data->image_url) ? $data->image_url : null, isset($data->networkKind) ? (int) $data->networkKind : 0);
                 }
             }
+       
         } else {
             $content .= '<div class="clearfix"></div><div class="alert alert-info">' . esc_html__("Please note that video uploads need to be approved in the TikTok app.", "blog2social") . ' (<a href="' . esc_url(B2S_Tools::getSupportLink('video_sharing_tiktok')) . '" target="_blank">' . esc_html__('Learn how it works', 'blog2social') . '</a>)</div>';
         }
@@ -528,11 +536,12 @@ class B2S_Ship_Item {
         $content .= '<input type="hidden" data-network-auth-id="' . esc_attr($data->networkAuthId) . '" class="b2s-network-default-image" value="' . esc_url($this->defaultImage) . '">';
 
         $content .= '</div>';
-
+        
         return $content;
     }
 
     public function getCustomEditArea($networkId, $networkAuthId, $networkType, $message, $isRequiredTextarea, $textareaOnKeyUp, $limit, $limitValue, $imageUrl = null, $multi_images = array(), $postFormat = 0, $imageAltText = null, $networkKind = 0) {
+       
         $meta = array();
         $proBadge = '';
         if (B2S_PLUGIN_USER_VERSION <= 1) {
@@ -580,15 +589,34 @@ class B2S_Ship_Item {
 
                 $edit .= $this->getAssBtnHtml($networkAuthId, $networkId, $message);
 
+                //FB Page Story
+                if( !$this->isVideoMode && $networkType==1){
+               
+                    $edit .= '<div class="b2s-post-item-details-item-message-area b2s-share-as-story-fields b2s-margin-bottom-10" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '"  ' . ((isset($postFormat) && (int) $postFormat == 1) ? '' : 'style="display:none;"') . '>';
+                    $edit .= '<input type="checkbox" class="b2s-post-item-option-share-as-story b2s-post-item-option-share-type" name="b2s[' . esc_attr($networkAuthId) . '][share_as_story]" value="1" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-type="' . esc_attr($networkType) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '"> ';
+                    $edit .= '<label>' . esc_html__("Share as Story", "blog2social") . '</label> <a href="#" class="btn btn-link btn-sm b2s-info-share-as-story-modal-btn">'.esc_html__("Info", "blog2social").'</a>';
+                    $edit .= '<br>';
+                    $edit .= '</div>';
+                }
+                
+            
                 // NOTE Reel Checkbox name = share_as_reel
                 if ($this->isVideoMode === true || $this->isVideoMode === 1) {
                     $edit .= '<div class="b2s-post-item-details-item-message-area" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '">';
                     if (isset($this->canReel['result']) && $this->canReel['result'] === false && isset($this->canReel['content'])) {
-                        $edit .= '<div class="alert alert-warning warning-for-reel"><span class="b2s-bold">' . esc_html__('Notice for Share as Reel', 'blog2social') . '</span>: ' . $this->canReel['content'] . '</div>';
+                        $edit .= '<div class="alert alert-warning warning-for-reel"><span class="b2s-bold">' . esc_html__('Share as Reel/Story', 'blog2social') . '</span>: ' . $this->canReel['content'] . '</div>';
                     }
-                    $edit .= '<input type="checkbox" name="b2s[' . esc_attr($networkAuthId) . '][share_as_reel]" id="b2s[' . esc_attr($networkAuthId) . '][isReelCB]" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '" ' . ((isset($this->canReel['result']) && $this->canReel['result'] === false) ? 'disabled' : '') . ' value="1">';
+                    $edit .= '<input type="checkbox" class="b2s-post-item-share-as-reel" name="b2s[' . esc_attr($networkAuthId) . '][share_as_reel]" id="b2s[' . esc_attr($networkAuthId) . '][isReelCB]" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '" ' . ((isset($this->canReel['result']) && $this->canReel['result'] === false) ? 'disabled' : '') . ' value="1">';
                     $edit .= '<label ' . ((isset($this->canReel['result']) && $this->canReel['result'] === false) ? 'class="dis-reel-cb"' : 'for="b2s[' . esc_attr($networkAuthId) . '][isReelCB]"') . '> ' . esc_html__('Share as Reel', 'blog2social') . '</label>';
                     $edit .= '</div>';
+
+                    if($networkType==1){
+                        $edit .= '<div class="b2s-post-item-details-item-message-area b2s-share-as-story-fields b2s-margin-bottom-10" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '">';
+                        $edit .= '<input type="checkbox" class="b2s-post-item-option-share-as-story b2s-post-item-option-share-type" name="b2s[' . esc_attr($networkAuthId) . '][share_as_story]" value="1" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-type="' . esc_attr($networkType) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '" '.((isset($this->canReel['result']) && $this->canReel['result'] === false) ? 'disabled' : '').'> ';
+                        $edit .= '<label>' . esc_html__("Share as Story", "blog2social") . '</label> <a href="#" class="btn btn-link btn-sm b2s-info-share-as-story-modal-btn">'.esc_html__("Info", "blog2social").'</a>';
+                        $edit .= '<br>';
+                        $edit .= '</div>';
+                    }
                 }
 
                 if (!$this->isVideoMode) {
@@ -621,6 +649,7 @@ class B2S_Ship_Item {
                     $edit .= $this->getUrlHtml($networkId, $networkType, $networkAuthId, $limit, $limitValue, true, 'og-url-input', true, $imageUrl);
                     $edit .= '</div>';
                     $edit .= '</div>';
+
                     if ($networkType == 1 || $networkType == 2) {
                         $edit .= '<div class="col-sm-12 b2s-multi-image-area" data-network-auth-id="' . esc_attr($networkAuthId) . '" data-network-count="-1">';
                         $edit .= '<div class="row b2s-margin-top-20">';
@@ -1107,10 +1136,15 @@ class B2S_Ship_Item {
                     $edit .= '</div>';
                 }
             }
+
         } else {
+          
+           
             $edit = '<div class="b2s-post-item-details-item-message-area" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '">';
             $edit .= '<textarea class="form-control b2s-post-item-details-item-message-input ' . (in_array($networkId, $this->allowHtml) ? 'b2s-post-item-details-item-message-input-allow-html' : '') . '" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-text-limit="' . esc_attr($limitValue) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '" placeholder="' . esc_attr__('Write something about your post...', 'blog2social') . '"  name="b2s[' . esc_attr($networkAuthId) . '][content]" ' . $isRequiredTextarea . ' ' . $textareaOnKeyUp . ' ' . (($networkId == 12) ? 'unique="currency"' : '') . ' data-post-id="' . esc_attr($this->postId) . '" data-network-type="' . esc_attr($networkType) . '" data-network-kind="' . esc_attr($networkKind) . '">' . esc_html($message) . '</textarea>';
             $edit .= $this->getTextareaLoaderHtml($networkAuthId);
+            
+           
             if (!in_array($networkId, $this->allowNoEmoji)) {
                 $edit .= '<button type="button" class="btn btn-sm b2s-post-item-details-item-message-emoji-btn" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '"><img src="' . esc_url(plugins_url('/assets/images/b2s-emoji.png', B2S_PLUGIN_FILE)) . '"/></button>';
             }
@@ -1119,17 +1153,17 @@ class B2S_Ship_Item {
             $edit .= $this->getAssBtnHtml($networkAuthId, $networkId, $message);
 
             if ($networkId == 12) {
-                if (($this->isVideoMode === true || $this->isVideoMode === 1)) {
+                if (($this->isVideoMode === true || $this->isVideoMode === 1) ) {
                     $edit .= '<div class="b2s-post-item-details-item-message-area" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '">';
-                    if ($this->canReel['result'] === false) {
-                        $edit .= '<div class="alert alert-warning warning-for-reel"><span class="b2s-bold">' . esc_html__('Notice for Share as Reel', 'blog2social') . '</span>: ' . esc_html__($this->canReel['content'], 'blog2social') . '</div>';
+                    if (isset($this->canReel['result']) && $this->canReel['result'] === false && isset($this->canReel['content'])) {
+                        $edit .= '<div class="alert alert-warning warning-for-reel"><span class="b2s-bold">' . esc_html__('Share as Reel/Story', 'blog2social') . '</span>: ' . esc_html__($this->canReel['content'], 'blog2social') . '</div>';
                     }
-                    $edit .= '<input type="checkbox" class="b2s-post-item-option-share-type" name="b2s[' . esc_attr($networkAuthId) . '][share_as_reel]" id="b2s[' . esc_attr($networkAuthId) . '][isReelCB]" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '" ' . ($this->canReel['result'] === false ? 'disabled' : '') . ' value="1">';
-                    $edit .= '<label ' . ($this->canReel['result'] === false ? 'class="dis-reel-cb"' : 'for="b2s[' . esc_attr($networkAuthId) . '][isReelCB]"') . '> ' . esc_html__('Share as Reel', 'blog2social') . '</label>';
+                    $edit .= '<input type="checkbox" class="b2s-post-item-option-share-type b2s-post-item-share-as-reel" name="b2s[' . esc_attr($networkAuthId) . '][share_as_reel]" id="b2s[' . esc_attr($networkAuthId) . '][isReelCB]" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '" ' . ((isset($this->canReel['result']) && $this->canReel['result'] === false) ? 'disabled' : '') . ' value="1">';
+                    $edit .= '<label ' . (isset($this->canReel['result']) && $this->canReel['result'] === false ? 'class="dis-reel-cb"' : 'for="b2s[' . esc_attr($networkAuthId) . '][isReelCB]"') . '> ' . esc_html__('Share as Reel', 'blog2social') . '</label>';
                     $edit .= '</div>';
                 }
-                $edit .= '<div class="b2s-post-item-details-item-message-area b2s-margin-bottom-10" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '">';
-                $edit .= '<input type="checkbox" class="b2s-post-item-option-share-as-story b2s-post-item-option-share-type" name="b2s[' . esc_attr($networkAuthId) . '][share_as_story]" value="1" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-type="' . esc_attr($networkType) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '"> ';
+                $edit .= '<div class="b2s-post-item-details-item-message-area b2s-share-as-story-fields b2s-margin-bottom-10" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '">';
+                $edit .= '<input type="checkbox" class="b2s-post-item-option-share-as-story b2s-post-item-option-share-type" name="b2s[' . esc_attr($networkAuthId) . '][share_as_story]" value="1" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-type="' . esc_attr($networkType) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '" ' . ((isset($this->canReel['result']) && $this->canReel['result'] === false) ? 'disabled' : '') . '> ';
                 $edit .= '<label>' . esc_html__("Share as Story", "blog2social") . '</label> <a href="#" class="btn btn-link btn-sm b2s-info-share-as-story-modal-btn">'.esc_html__("Info", "blog2social").'</a>';
                 $edit .= '<br>';
                 $edit .= '</div>';
@@ -1148,12 +1182,16 @@ class B2S_Ship_Item {
                 $edit .= '<input type="hidden" class="b2s-image-url-hidden-field form-control" data-network-id="' . esc_attr($networkId) . '" data-network-count="-1" data-network-auth-id="' . esc_attr($networkAuthId) . '" value="' . esc_attr(($imageUrl ? $imageUrl : "")) . '" name="b2s[' . esc_attr($networkAuthId) . '][image_url]">';
                 $edit .= '<input type="hidden" class="b2s-image-alt-hidden-field form-control" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '" value="' . esc_attr(($imageAltText ? $imageAltText : "")) . '" name="b2s[' . esc_attr($networkAuthId) . '][image_alt_text]">';
             }
+   
             if (!$this->isVideoMode) {
-                if ($networkId == 12) {
+               
+                if ($networkId == 12 || $networkId ==36) {
+                 
                     $edit .= '<div class="col-sm-12 b2s-multi-image-area" data-network-auth-id="' . esc_attr($networkAuthId) . '" data-network-count="-1">';
                     $edit .= '<div class="row b2s-margin-top-20">';
-
+             
                     if (B2S_PLUGIN_USER_VERSION > 1) {
+                       
                         for ($i = 1; $i < 10; $i++) {
                             if (1 == $i) {
                                 $edit .= '<div class="col-sm-' . ((isset($this->viewMode) && $this->viewMode == 'modal') ? '2' : '1') . ' text-center">';
@@ -1201,7 +1239,7 @@ class B2S_Ship_Item {
         //     $edit .= '}';
         //     $edit .= '</script>';
         // }
-
+ 
         return $edit;
     }
 
@@ -1225,13 +1263,14 @@ class B2S_Ship_Item {
                 $edit .= '<div class="b2s-post-item-details-item-message-area-sched" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '">';
 
                 if (isset($this->canReel['result']) && $this->canReel['result'] === false && isset($this->canReel['content'])) {
-                    $edit .= '<div class="alert alert-warning warning-for-reel"><span class="b2s-bold">' . esc_html__('Notice for Share as Reel', 'blog2social') . '</span>: ' . $this->canReel['content'] . '</div>';
+                    $edit .= '<div class="alert alert-warning warning-for-reel"><span class="b2s-bold">' . esc_html__('Share as Reel/Story', 'blog2social') . '</span>: ' . $this->canReel['content'] . '</div>';
                 }
-                $edit .= '<input type="checkbox" class="b2s-post-item-option-share-type" name="b2s[' . esc_attr($networkAuthId) . '][sched_share_as_reel]" id="b2s[' . esc_attr($networkAuthId) . '][isReelCB]" data-network-count="-1" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '" ' . ((isset($this->canReel['result']) && $this->canReel['result'] === false) ? 'disabled' : '') . ' value="1">';
+          
+                $edit .= '<input type="checkbox" class="b2s-post-item-option-share-type b2s-post-item-share-as-reel" name="b2s[' . esc_attr($networkAuthId) . '][sched_share_as_reel]" id="b2s[' . esc_attr($networkAuthId) . '][isReelCB]" data-network-count="' . esc_attr($schedCount) . '" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '" ' . ((isset($this->canReel['result']) && $this->canReel['result'] === false) ? 'disabled' : '') . ' value="1">';
                 $edit .= '<label ' . ((isset($this->canReel['result']) && $this->canReel['result'] === false) ? 'class="dis-reel-cb"' : 'for="b2s[' . esc_attr($networkAuthId) . '][isReelCB]"') . '> ' . esc_html__('Share as Reel', 'blog2social') . '</label>';
                 $edit .= '<br>';
 
-                if ($networkId == 12) {
+                if ($networkId == 12 || $networkId== 1) {
                     $edit .= '<input type="checkbox" class="b2s-post-item-option-share-as-story b2s-post-item-option-share-type" name="b2s[' . esc_attr($networkAuthId) . '][share_as_story]" value="1" data-network-count="' . esc_attr($schedCount) . '" data-network-id="' . esc_attr($networkId) . '" data-network-type="' . esc_attr($networkType) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '"> ';
                     $edit .= '<label>' . esc_html__("Share as Story", "blog2social") . '</label> <a href="#" class="btn btn-link btn-sm b2s-info-share-as-story-modal-btn">'.esc_html__("Info", "blog2social").'</a>';
                     $edit .= '<br>';
@@ -1289,6 +1328,16 @@ class B2S_Ship_Item {
                 }
                 $edit .= '</div>';
                 $edit .= $this->getAssBtnHtml($networkAuthId, $networkId, $message, $schedCount);
+
+                if($networkType==1){
+
+                    $edit .= '<div class="b2s-post-item-details-option">';
+                    $edit .= '<input type="checkbox" class="b2s-post-item-option-share-as-story b2s-post-item-option-share-type" name="b2s[' . esc_attr($networkAuthId) . '][share_as_story]" value="1" data-network-count="' . esc_attr($schedCount) . '" data-network-id="' . esc_attr($networkId) . '" data-network-type="' . esc_attr($networkType) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '"> ';
+                    $edit .= '<label>' . esc_html__("Share as Story","blog2social") . '</label> <a href="#" class="btn btn-link btn-sm b2s-info-share-as-story-modal-btn">'.esc_html__("Info", "blog2social").'</a>';
+                    $edit .= '</div>';
+
+                }
+               
                 $edit .= '</div>';
                 $edit .= '</div>';
 
@@ -1660,6 +1709,7 @@ class B2S_Ship_Item {
             }
         } else {
             $edit = '<div class="row"><br>';
+          
             if ((in_array($networkId, $this->showImageAreaProfile) && $networkType == 0) || (in_array($networkId, $this->showImageAreaPage) && $networkType == 1) || (in_array($networkId, $this->showImageAreaGroup) && $networkType == 2)) {
                 $edit .= '<div class="col-xs-12 col-sm-5 col-lg-3">';
                 $edit .= '<button class="btn btn-primary btn-circle b2s-image-remove-btn" data-network-count="' . esc_attr($schedCount) . '" data-network-id="' . esc_attr($networkId) . '" data-network-auth-id="' . esc_attr($networkAuthId) . '" ' . ($imageUrl ? '' : 'style="display:none"') . '><i class="glyphicon glyphicon-trash"></i></button>';
@@ -1879,7 +1929,7 @@ class B2S_Ship_Item {
 
     private function getTitleHtml($networkId = 0, $networkdAutId = 0, $networkKind = 0, $networkType = 0, $title = '') {
         $title = in_array($networkId, $this->allowNoEmoji) ? B2S_Util::remove4byte(B2S_Util::getTitleByLanguage($title, $this->userLang)) : B2S_Util::getTitleByLanguage($title, $this->userLang);
-        $maxLength = ($networkType == 1 && isset($this->limitCharacterTitle[$networkId][$networkKind])) ? (int) $this->limitCharacterTitle[$networkId][$networkKind] : 254;
+        $maxLength = (isset($this->limitCharacterTitle[$networkId][$networkKind])) ? (int) $this->limitCharacterTitle[$networkId][$networkKind] : 254;
         return '<input type="text" name="b2s[' . esc_attr($networkdAutId) . '][custom_title]" class="form-control b2s-post-item-details-item-title-input" data-network-auth-id="' . esc_attr($networkdAutId) . '" placeholder="' . esc_attr__('The Headline...', 'blog2social') . '" required="required" maxlength="' . esc_attr($maxLength) . '" value="' . esc_attr($title) . '" />';
     }
 

@@ -88,18 +88,22 @@ class Ajax_Post {
 
         if (current_user_can('read') && isset($_POST['b2s_security_nonce']) && (int) wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['b2s_security_nonce'])), 'b2s_security_nonce') > 0) {  //0-24hours lifetime
             try {
-                 $hostname = gethostname();
+                $hostname = gethostname();
                 $serverIp = gethostbyname($hostname);
                 $publicServerIp = file_get_contents('https://ipinfo.io/ip');
                 if (filter_var($serverIp, FILTER_VALIDATE_IP)) {
                     $comTrace = (PHP_OS_FAMILY === 'Windows') ? 'tracert' : 'traceroute -T';
-                    $com = $comTrace . " " . escapeshellarg('178.77.85.168');
+                    $targetIp = '178.77.85.168';
+                    if (defined("B2S_DEBUG_MODE") && B2S_DEBUG_MODE == '1') {
+                        $targetIp = '82.165.82.185';
+                    }
+                    $com = $comTrace . " " . escapeshellarg($targetIp);
                     $resTrace = shell_exec($com);
-                    $resTrace = "Server IP:" . $publicServerIp . " (Intern: ".$serverIp.")<br><br>" . utf8_encode(nl2br($resTrace)) . "<br><br>---";
+                    $resTrace = "Server IP:" . $publicServerIp . " (Intern: " . $serverIp . ")<br><br>" . utf8_encode(nl2br($resTrace)) . "<br><br>---";
                     $output = wp_kses($resTrace, array('br' => array()));
                     echo json_encode(array('result' => true, 'output' => $output));
                     wp_die();
-               }
+                }
                 echo json_encode(array('result' => false, 'error' => 'default'));
                 wp_die();
             } catch (Exception $ex) {
@@ -275,7 +279,7 @@ class Ajax_Post {
                             if ($networkData !== false && is_array($networkData) && !empty($networkData)) {
                                 $notAllowNetwork = array(11);
                                 $tosCrossPosting = unserialize(B2S_PLUGIN_NETWORK_CROSSPOSTING_LIMIT);
-                                $allowNetworkOnlyImage = array(6, 7, 12, 21);
+                                $allowNetworkOnlyImage = array(6, 7, 12, 21, 36);
                                 $allowNetworkOnlyLink = array(9, 15);
                                 //TOS Twitter 032018 - none multiple Accounts - User select once
                                 $selectedTwitterProfile = (isset($_POST['twitter_select']) && !empty($_POST['twitter_select'])) ? (int) $_POST['twitter_select'] : '';
@@ -811,7 +815,7 @@ class Ajax_Post {
                 );
 
                 if (isset($post['is_video']) && (int) $post['is_video'] == 0) {
-                    if ((isset($data['post_format']) && (int) $data['post_format'] == 1) || (int) $data['network_id'] == 12) { //Case IG
+                    if ((isset($data['post_format']) && (int) $data['post_format'] == 1) || (int) $data['network_id'] == 12 || (int) $data['network_id'] == 36) { //Case IG
                         $multi_images = array();
                         if (isset($data['multi_image_1']) && !empty($data['multi_image_1'])) {
                             array_push($multi_images, $data['multi_image_1']);
@@ -1236,7 +1240,7 @@ class Ajax_Post {
             }
 
             $getProfileUserAuth = json_decode(B2S_Api_Post::post(B2S_PLUGIN_API_ENDPOINT, array('action' => 'getProfileUserAuth', 'token' => B2S_PLUGIN_TOKEN)));
-
+            
             foreach ($assignUser as $k => $userId) {
                 if (!isset($oldOptions['assignUser']) || !in_array($userId, $oldOptions['assignUser'])) {
                     //assign Networkollektion and Networks

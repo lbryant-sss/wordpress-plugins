@@ -539,6 +539,7 @@ class B2S_Post_Item {
                         $url = get_permalink($post);
                     }
                 }
+               
                 $this->postItem .= '<li class="list-group-item">
                                 <div class="media">
                                     ' . ((isset($var->favorites_blog_user_id) && $var->favorites_blog_user_id != NULL && $var->favorites_blog_user_id == B2S_PLUGIN_BLOG_USER_ID) ?
@@ -565,7 +566,7 @@ class B2S_Post_Item {
                         '<span class="pull-right b2s-publish-btn">
                                                     <a class="btn btn-default btn-sm loadDraftBtn" href="admin.php?page=blog2social-ship&postId=' . esc_attr($var->ID) . (!empty($selectSchedDate) ? '&schedDate=' . $selectSchedDate : '') . '&type=draft">' . esc_html__('load Draft', 'blog2social') . '</a>
                                                 </span>' : '')
-                        . '<div class="clearfix-all"></div><div class="info hidden-xs pull-left">#' . esc_html($var->ID . ' | ' . '<span class="b2s-publish-count" data-post-id="' . esc_attr($var->ID) . '">' . esc_html($countPublish) . '</span> ' . $sharedText . ' | ' . __('Author', 'blog2social')) . ' <a href="' . esc_url(get_author_posts_url($var->post_author)) . '">' . esc_html((!empty($userInfoName) ? $userInfoName : '-')) . '</a> | ' . esc_html($postStatus[trim(strtolower($var->post_status))] . ' ' . __('on blog', 'blog2social')) . ': ' . esc_html(B2S_Util::getCustomDateFormat($var->post_date, substr(B2S_LANGUAGE, 0, 2)) . $lastPublish) . '</div>
+                        . '<div class="clearfix-all"></div><div class="info hidden-xs pull-left">#' . esc_html($var->ID) . ' | ' . '<span class="b2s-publish-count" data-post-id="' . esc_attr($var->ID) . '">' . esc_html($countPublish) . '</span> ' . $sharedText . ' | ' . __('Author', 'blog2social') . ' <a href="' . esc_url(get_author_posts_url($var->post_author)) . '">' . esc_html((!empty($userInfoName) ? $userInfoName : '-')) . '</a> | ' . esc_html($postStatus[trim(strtolower($var->post_status))] . ' ' . __('on blog', 'blog2social')) . ': ' . esc_html(B2S_Util::getCustomDateFormat($var->post_date, substr(B2S_LANGUAGE, 0, 2)) . $lastPublish) . '</div>
                         <div class="b2s-post-details-area" data-post-id="' . esc_attr($var->ID) . '"></div>    
                         </div>                                 
                                 </li>';
@@ -601,7 +602,7 @@ class B2S_Post_Item {
                                                 <div class="media-body">
                                                     <div class="pull-left media-nav">
                                                             ' . $notice . '
-                                                            <strong><a target="_blank" href="' . esc_url($var->guid) . '">' . $var->post_title . '</a></strong>
+                                                            <strong><a target="_blank" href="' . esc_url($var->guid) . '">' . esc_html($postTitle) . '</a></strong>
                                                             <span class="info hidden-xs">(' . esc_html__('Format', 'blog2social') . ': ' . esc_html($var->post_mime_type) . ', ' . esc_html__('Size', 'blog2social') . ': ' . esc_html(size_format($videoMeta['filesize'], 2)) . ', ' . esc_html__('Length', 'blog2social') . ':' . esc_html($videoMeta['length']) . esc_html__('s', 'blog2social') . ')</span>    
                                                         <span class="pull-right">
                                                         ' . $shareVideoBtn . ' ' . $uploadDetails . '
@@ -865,7 +866,7 @@ class B2S_Post_Item {
                                     </li>';
             }
         }
-        return html_entity_decode($this->postItem, ENT_COMPAT, 'UTF-8');
+        return  $this->postItem;
     }
 
     private function getPostCount($post_id = 0) {
@@ -1205,7 +1206,7 @@ class B2S_Post_Item {
                         $postData = get_post($var->post_id);
                         $data['url'] = (get_permalink($postData->ID) !== false ? get_permalink($postData->ID) : $postData->guid);
                     }
-                    $content .= ' <a href="#" class="btn btn-primary btn-xs" onclick="wopApprove(\'' . esc_attr($post_id) . '\',\'' . (($var->network_id == 10) ? esc_attr($var->id) : 0) . '\',\'' . B2S_PLUGIN_API_ENDPOINT . 'instant/share.php?data=' . B2S_Util::urlsafe_base64_encode(json_encode($data)) . '\', \'Blog2Social\'); return false;" target="_blank">' . esc_html__('share', 'blog2social') . '</a>';
+                    $content .= ' <a href="#" class="btn btn-primary btn-xs" onclick="wopApprove(\'' . esc_attr($post_id) . '\',\'' . (($var->network_id == 10) ? esc_attr($var->id) : 0) . '\',\'' . B2S_PLUGIN_API_ENDPOINT_INSTANT_SHARE . '?data=' . B2S_Util::urlsafe_base64_encode(json_encode($data)) . '\', \'Blog2Social\'); return false;" target="_blank">' . esc_html__('share', 'blog2social') . '</a>';
 
                     $content . '</p>
                                         </div>

@@ -34,7 +34,7 @@
                 <?php } else if (defined("B2S_PLUGIN_NOTICE") && B2S_PLUGIN_NOTICE == "UPDATE") { ?> 
                     <h3><?php esc_html_e('Update...', 'blog2social') ?></h3>
                     <br> 
-                    <?php _e('<b> A new version of Blog2Social is available. </b> Update now <br> Blog2Social to continue to use the latest version of the plugin.', 'blog2social') ?>
+                    <?php esc_html_e('A new version of Blog2Social is available. Update now Blog2Social to continue to use the latest version of the plugin.', 'blog2social') ?>
                     <br>
                     <br>
                     <?php $updateUrl = get_option('home') . ((substr(get_option('home'), -1, 1) == '/') ? '' : '/') . 'wp-admin/plugins.php'; ?>

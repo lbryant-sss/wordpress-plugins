@@ -117,7 +117,7 @@ $isPremium = (B2S_PLUGIN_USER_VERSION > 0 && !defined("B2S_PLUGIN_TRAIL_END")) ?
         </div>
     </div>
 
-    <input type="hidden" id="b2s-user-license" value="<?php echo $isPremium ?>">
+    <input type="hidden" id="b2s-user-license" value="<?php echo esc_attr($isPremium); ?>">
 
 
     <div class="modal fade" id="b2sXViolationModal" tabindex="-1" role="dialog" aria-labelledby="b2sXViolationModal" aria-hidden="true" data-backdrop="false"  style="display:none;">

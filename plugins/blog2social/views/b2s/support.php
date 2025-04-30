@@ -34,7 +34,7 @@
                                     <div class="col-md-12">
                                         <div class="col-md-12">
                                             <br>   
-                                            <button id="chatbotBtn" data-url="https://service.blog2social.com/chat/?s=<?php echo time(); ?>" class="btn btn-primary"><i class="glyphicon glyphicon-modal-window"></i> <?php esc_html_e('Request Support', 'blog2social') ?></button>
+                                            <button id="chatbotBtn" data-url="https://service.blog2social.com/chat/?s=<?php echo esc_html(time()); ?>" class="btn btn-primary"><i class="glyphicon glyphicon-modal-window"></i> <?php esc_html_e('Request Support', 'blog2social') ?></button>
                                         </div>
                                         <div class="clearfix"></div>
                                         <br>

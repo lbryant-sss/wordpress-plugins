@@ -385,6 +385,20 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			//Post SMTP 3.1.3
 			'index.php?page=post-about'        => true,
 			'index.php?page=post-credits'      => true,
+			//Advanced Flat Rate Shipping For WooCommerce 4.4.0 (submitted by the developer)
+			'admin.php?page=afrsm-pro-get-started'       => true,
+			'admin.php?page=afrsm-pro-edit-shipping'     => true,
+			'admin.php?page=afrsm-wc-shipping-zones'     => true,
+			'admin.php?page=afrsm-pro-import-export'     => true,
+			'admin.php?page=afrsm-page-general-settings' => true,
+			'admin.php?page=afrsm-page-add-ons'          => true,
+			'admin.php?page=afrsm-pro-dashboard'         => true,
+		);
+
+		//Let other plugins add their own blacklisted URLs.
+		$this->menu_url_blacklist = apply_filters(
+			'admin_menu_editor-menu_url_blacklist',
+			$this->menu_url_blacklist
 		);
 
 		//AJAXify hints and warnings
@@ -3933,7 +3947,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 				}
 			}
 
-			//Special case: In WP 4.0+ the URL of the "Customize" menu changes often due to a "return" query parameter
+			//Special case: In WP 4.0+ the URL of the "Customize" menu often changes due to a "return" query parameter
 			//that contains the current page URL. To reliably recognize this item, we should ignore that parameter.
 			if ( $this->endsWith($item_url['path'], 'customize.php') ) {
 				unset($item_url['params']['return']);
@@ -3966,7 +3980,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		}
 
 		//Special case for CPTs: When the "Add New" menu is disabled by CPT settings (show_ui, etc), and someone goes
-		//to add a new item, WordPress highlights the "$CPT-Name" item as the current one. Lets do the same for
+		//to add a new item, WordPress highlights the "$CPT-Name" item as the current one. Let's do the same for
 		//consistency. See also: /wp-admin/post-new.php, lines #20 to #40.
 		if (
 			($best_item === null)

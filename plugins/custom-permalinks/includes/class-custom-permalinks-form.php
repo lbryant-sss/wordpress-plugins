@@ -79,9 +79,6 @@ class Custom_Permalinks_Form {
 	 * return bool false Whether to show Custom Permalink form or not.
 	 */
 	private function exclude_custom_permalinks( $post ) {
-		$args               = array(
-			'public' => true,
-		);
 		$exclude_post_types = apply_filters(
 			'custom_permalinks_exclude_post_type',
 			$post->post_type
@@ -96,7 +93,22 @@ class Custom_Permalinks_Form {
 			'custom_permalinks_exclude_posts',
 			$post
 		);
-		$public_post_types = get_post_types( $args, 'objects' );
+		$post_types        = get_post_types(
+			array(
+				'public' => true,
+			),
+			'objects'
+		);
+		$public_post_types = array();
+
+		foreach ( $post_types as $post_type_name => $single ) {
+			// Check conditions for accessible single post URLs.
+			if ( 'page' === $post_type_name || 'post' === $post_type_name ) {
+				$public_post_types[ $post_type_name ] = $single;
+			} elseif ( $single->publicly_queryable && $single->rewrite ) {
+				$public_post_types[ $post_type_name ] = $single;
+			}
+		}
 
 		if ( isset( $this->permalink_metabox ) && 1 === $this->permalink_metabox ) {
 			$check_availability = true;
@@ -474,18 +486,17 @@ class Custom_Permalinks_Form {
 
 		if ( 'trash' !== $post->post_status ) {
 			$home_url = trailingslashit( home_url() );
-			if ( defined( 'POLYLANG_VERSION' ) ) {
-				$home_url = trailingslashit( pll_home_url() );
-			}
-
 			if ( isset( $permalink ) && ! empty( $permalink ) ) {
+				if ( defined( 'POLYLANG_VERSION' ) ) {
+					$home_url = trailingslashit( pll_home_url() );
+				}
+
 				$view_post_link = $home_url . $permalink;
 			} elseif ( 'draft' === $post->post_status
-					|| 'pending' === $post->post_status
-				) {
-
-					$view_post      = 'Preview';
-					$view_post_link = $home_url . '?';
+				|| 'pending' === $post->post_status
+			) {
+				$view_post      = 'Preview';
+				$view_post_link = $home_url . '?';
 				if ( 'page' === $post->post_type ) {
 					$view_post_link .= 'page_id';
 				} elseif ( 'post' === $post->post_type ) {
@@ -493,7 +504,8 @@ class Custom_Permalinks_Form {
 				} else {
 					$view_post_link .= 'post_type=' . $post->post_type . '&p';
 				}
-					$view_post_link .= '=' . $post_id . '&preview=true';
+
+				$view_post_link .= '=' . $post_id . '&preview=true';
 			} else {
 				$view_post_link = $home_url . $original_permalink;
 			}
@@ -553,18 +565,17 @@ class Custom_Permalinks_Form {
 
 		if ( 'trash' !== $post->post_status ) {
 			$home_url = trailingslashit( home_url() );
-			if ( defined( 'POLYLANG_VERSION' ) ) {
-				$home_url = trailingslashit( pll_home_url() );
-			}
-
 			if ( isset( $permalink ) && ! empty( $permalink ) ) {
+				if ( defined( 'POLYLANG_VERSION' ) ) {
+					$home_url = trailingslashit( pll_home_url() );
+				}
+
 				$view_post_link = $home_url . $permalink;
 			} elseif ( 'draft' === $post->post_status
-					|| 'pending' === $post->post_status
-				) {
-
-					$view_post      = 'Preview';
-					$view_post_link = $home_url . '?';
+				|| 'pending' === $post->post_status
+			) {
+				$view_post      = 'Preview';
+				$view_post_link = $home_url . '?';
 				if ( 'page' === $post->post_type ) {
 					$view_post_link .= 'page_id';
 				} elseif ( 'post' === $post->post_type ) {
@@ -958,7 +969,7 @@ class Custom_Permalinks_Form {
 				 * Check if `hide_default` is `true` and the current language is not
 				 * the default. Otherwise remove the lang code from the URL.
 				 */
-				if ( 1 === $polylang_config['hide_default'] ) {
+				if ( true === $polylang_config['hide_default'] || 1 === $polylang_config['hide_default'] ) {
 					$current_language = '';
 					if ( function_exists( 'pll_current_language' ) ) {
 						// Get current language.

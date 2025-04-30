@@ -3,7 +3,7 @@ Contributors: mossifer
 Donate link: http://mosswebworks.com/donate/
 Tags: scheduled posts, missed schedule, missed scheduled posts, missed posts
 Requires at least: 4.2
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: trunk
 Requires PHP: 7.0
 License: GPLv2 or later

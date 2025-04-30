@@ -147,7 +147,7 @@ $isImagePro = (B2S_PLUGIN_USER_VERSION < 2) ? ' <span class="label label-success
                                     <input type="hidden" id="b2sJsTextPublish" value="<?php esc_attr_e('published', 'blog2social') ?>">
                                     <input type="hidden" id="b2sEmojiTranslation" value='<?php echo esc_attr(json_encode(B2S_Tools::getEmojiTranslationList())); ?>'>
                                     <input type="hidden" id="b2sDefaultNoImage" value="<?php echo esc_url(plugins_url('/assets/images/no-image.png', B2S_PLUGIN_FILE)); ?>">
-                                    <input type="hidden" id="b2sMaxSchedDate" value="<?php echo date('Y-m-d', strtotime("+ 3 years")) ?>">
+                                    <input type="hidden" id="b2sMaxSchedDate" value="<?php echo esc_attr(date('Y-m-d', strtotime("+ 3 years"))) ?>">
 
                                 </div>
                                 <div class="col-md-4 hidden-sm">

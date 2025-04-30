@@ -11,9 +11,10 @@ jQuery(window).on("load", function () {
         }
     }
 
-    if (jQuery('#b2s-metrics-banner-show').val() == '0' && jQuery('.b2s-metrics-starting-modal').length == 0) {
-        jQuery('#b2s-metrics-banner-modal').modal('show');
-    }
+    /* Temporarily closed since 8.4
+     * if (jQuery('#b2s-metrics-banner-show').val() == '0' && jQuery('.b2s-metrics-starting-modal').length == 0) {
+     jQuery('#b2s-metrics-banner-modal').modal('show');
+     }*/
 
     if (jQuery('#b2s-trial-seven-day-modal').length > 0) {
         jQuery('#b2s-trial-seven-day-modal').modal('show');
@@ -441,8 +442,8 @@ jQuery(document).on('click', '#b2s-debug-connection-btn', function () {
             return false;
         },
         success: function (data) {
-                jQuery('.b2s-loading-area').hide();
-            
+            jQuery('.b2s-loading-area').hide();
+
             if (data.result == false) {
                 if (data.error == 'nonce') {
                     jQuery('.b2s-nonce-check-fail').show();
@@ -453,10 +454,10 @@ jQuery(document).on('click', '#b2s-debug-connection-btn', function () {
                     jQuery('.b2s-debug-connection-result-error').show();
                 }
             } else {
-                    jQuery('.b2s-debug-connection-result-area').show();
-                    jQuery('.b2s-debug-connection-result-code').html(data.output);
-                    jQuery('.b2s-debug-connection-result-error').hide();
-         
+                jQuery('.b2s-debug-connection-result-area').show();
+                jQuery('.b2s-debug-connection-result-code').html(data.output);
+                jQuery('.b2s-debug-connection-result-error').hide();
+
             }
             return true;
         }

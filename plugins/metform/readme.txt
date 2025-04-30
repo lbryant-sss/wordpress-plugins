@@ -2,7 +2,7 @@
 Contributors: xpeedstudio, ataurr, emranio
 Tags: form builder, Elementor contact form, contact form builder, Elementor forms builder, custom form
 Requires at least: 5.0
-Tested up to: 6.7.2
+Tested up to: 6.8
 Stable tag: 3.9.8
 Requires PHP: 7.4
 License: GPLv3

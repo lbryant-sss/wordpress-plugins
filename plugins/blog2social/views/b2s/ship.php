@@ -118,7 +118,7 @@ $mandantData = $navbar->getData();
                         <?php if (!$isVideo) { ?>
                             <div class="info b2s-text-bold b2s-text-xl"><?php esc_html_e('Title', 'blog2social') ?>: <?php echo esc_html(B2S_Util::getTitleByLanguage($postData->post_title, $userLang)); ?></div>
                             <?php if (!isset($_GET['b2sPostType'])) { ?>
-                                <p class="info hidden-xs"># <?php echo esc_html($postData->ID); ?>  | <?php echo (isset($postStatus[trim(strtolower($postData->post_status))]) ? $postStatus[trim(strtolower($postData->post_status))] : '' ) . ' ' . esc_html__('on blog', 'blog2social') . ': ' . B2S_Util::getCustomDateFormat($postData->post_date, substr(B2S_LANGUAGE, 0, 2)); ?></p>
+                                <p class="info hidden-xs"># <?php echo esc_html($postData->ID); ?>  | <?php echo (isset($postStatus[trim(strtolower($postData->post_status))]) ? esc_html($postStatus[trim(strtolower($postData->post_status))]) : '' ) . ' ' . esc_html__('on blog', 'blog2social') . ': ' . B2S_Util::getCustomDateFormat($postData->post_date, substr(B2S_LANGUAGE, 0, 2)); ?></p>
                                 <?php
                             }
                         } else {
@@ -148,7 +148,7 @@ $mandantData = $navbar->getData();
                             <div class="clearfix"></div>
                             <br>
                             <div class="info">
-                                <?php echo sprintf(esc_html__('This is your saved draft from %s', 'blog2social'), $draftDate);
+                                <?php echo sprintf(esc_html__('This is your saved draft from %s', 'blog2social'), esc_html($draftDate));
                                 ?>
                                 <a class="btn-link b2s-text-underline deleteDraftBtn" data-b2s-draft-id="<?php echo esc_attr($draftId) ?>"><?php esc_html_e('delete', 'blog2social') ?></a>
                             </div>
@@ -290,7 +290,7 @@ $mandantData = $navbar->getData();
 
                                             $orderArray[] = $channelData->networkAuthId;
                                             //Relay HTML Data - since V4.8.0
-                                            if ($channelData->networkId == 2 && !in_array($channelData->networkTypeId, $relayAccountData) && isset($channelData->networkUserName)) {
+                                            if ($channelData->networkId == 45 && !in_array($channelData->networkTypeId, $relayAccountData) && isset($channelData->networkUserName)) {
                                                 $relayAccountDataHtml .= '<option data-user-type-id="' . $channelData->networkTypeId . '" value="' . $channelData->networkAuthId . '">' . $channelData->networkUserName . '</option>';
                                                 array_push($relayAccountData, $channelData->networkTypeId);
                                                 //check Client db b2s_posts_network_details
@@ -410,7 +410,7 @@ $mandantData = $navbar->getData();
                                             <input type="hidden" id="action" name="action" value="b2s_save_ship_data">
                                             <input type='hidden' id='post_id' name="post_id" value='<?php echo (int) esc_attr(sanitize_text_field($_GET['postId'])); ?>'>
                                             <input type='hidden' id='user_timezone' name="user_timezone" value="<?php echo esc_attr($userTimeZoneOffset); ?>">
-                                            <input type='hidden' id='user_timezone_text' name="user_timezone_text" value="<?php echo esc_attr('Time zone', 'blog2social') . ': (UTC ' . B2S_Util::humanReadableOffset($userTimeZoneOffset) . ') ' . $userTimeZone ?>">
+                                            <input type='hidden' id='user_timezone_text' name="user_timezone_text" value="<?php echo esc_attr('Time zone', 'blog2social') . ': (UTC ' . B2S_Util::humanReadableOffset($userTimeZoneOffset) . ') ' . esc_attr($userTimeZone) ?>">
                                             <input type='hidden' id="default_titel" name="default_titel" value="<?php echo esc_attr(addslashes(B2S_Util::getTitleByLanguage($postData->post_title, $userLang))); ?>">
                                             <input type="hidden" id="b2sChangeOgMeta" name="change_og_meta" value="0">
                                             <input type="hidden" id="b2sRelayAccountData" name="relay_account_data" value="<?php echo esc_attr(base64_encode($relayAccountDataHtml)); ?>">
@@ -803,13 +803,16 @@ $mandantData = $navbar->getData();
                                                         'br' => array(),
                                                         'a' => array(
                                                             'target' => array(),
-                                                            'href' => array()
+                                                            'href' => array(),
+                                                            'class' => array()
                                                         ),
                                                         'hr' => array(),
                                                         'span' => array(
                                                             'class' => array()
                                                         ),
-                                                        'label' => array(),
+                                                        'label' => array(
+                                                            'class' => array()
+                                                        ),
                                                         'input' => array(
                                                             'type' => array(),
                                                             'name' => array(),
@@ -821,15 +824,35 @@ $mandantData = $navbar->getData();
                                                             'data-network-id' => array(),
                                                             'data-post-format' => array(),
                                                             'data-network-count' => array(),
+                                                            'identifier'=>array()
                                                         ),
                                                         'img' => array(
                                                             'class' => array(),
-                                                            'src' => array()
+                                                            'src' => array(),
+                                                            'identifier'=>array(),
+                                                            'data-post-format' => array(),
+                                                            'data-post-wp-type' => array(),
+                                                            'data-post-format-type' => array(),
+                                                            'data-network-type' => array(),
+                                                            'data-network-id' => array(),
+                                                            'data-post-format' => array(),
+                                                        ),
+                                                        'button' => array(
+                                                            'type' => array(),
+                                                            'class' => array(),
+                                                            'data-post-wp-type' => array(),
+                                                            'data-post-format-type' => array(),
+                                                            'data-network-type' => array(),
+                                                            'data-network-id' => array(),
+                                                            'data-post-format' => array(),
+                                                            'data-network-count' => array(),
+                                                            'identifier'=>array()
                                                         )
                                                     ));
                                                     ?>
                                                 </div>
                                             </div>
+                                            <!--
                                             <div class="row">
                                                 <div class="col-xs-12">
                                                     <div class="text-center">
@@ -849,6 +872,7 @@ $mandantData = $navbar->getData();
                                                     </div>
                                                 </div>
                                             </div>
+                                            -->
                                         </div>
                                     </div>
                                 </div>
@@ -1137,7 +1161,7 @@ $mandantData = $navbar->getData();
                                             <h4 class="modal-title"><?php esc_html_e("Share as Story", "blog2social") ?></h4>
                                         </div>
                                         <div class="modal-body">
-                                            <p><?php esc_html_e('In an Instagram story, you can share photos and videos for a short time. The story can be accessed via the Instagram profile picture and disappears from the profile after 24 hours.', 'blog2social') ?></p>
+                                            <p><?php esc_html_e('In an Instagram or Facebook story, you can share photos and videos for a short time. The story can be accessed via the profile picture and disappears from the profile after 24 hours.', 'blog2social') ?></p>
                                         </div>
                                     </div>
                                 </div>

@@ -4,7 +4,7 @@ Tags: stripe, klarna, credit card, apple pay, google pay
 Requires at least: 3.0.1
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 3.3.85
+Stable tag: 3.3.86
 Copyright: Payment Plugins
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -63,6 +63,8 @@ If your site is not loading over https, then Stripe won't render the Payment Req
 9. Stripe Link for high conversion
 
 == Changelog ==
+= 3.3.86 - 04/29/25 =
+* Fixed - Error related to WC 9.8+ and the checkout block when express payment button like Apple Pay used. [https://wordpress.org/support/topic/applepay-on-checkout-block-broken-in-production-and-virgin-sandbox-test-mode/](https://wordpress.org/support/topic/applepay-on-checkout-block-broken-in-production-and-virgin-sandbox-test-mode/)
 = 3.3.85 - 04/24/25 =
 * Added - Amazon Pay support for currencies USD, AUD, GBP, DKK, EUR, HKD, JPY, NZD, NOK, ZAR, SEK, CHF.
 * Added - WC Tested to 9.8

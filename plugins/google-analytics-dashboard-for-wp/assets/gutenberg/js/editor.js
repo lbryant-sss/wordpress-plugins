@@ -4242,14 +4242,8 @@ const {
 } = wp.components;
 const {
   dispatch,
-  select,
-  subscribe
+  select
 } = wp.data;
-const {
-  isSavingPost
-} = select('core/editor');
-var checked = true; // Var to check if the post was saved. Start in a checked state.
-
 class SiteNotes extends _wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Component {
   constructor() {
     super();
@@ -4272,33 +4266,6 @@ class SiteNotes extends _wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Componen
     };
     this.categories = window.exactmetrics_gutenberg_tool_vars ? window.exactmetrics_gutenberg_tool_vars['site_notes_categories'] : [];
     this.onToggleControlChange = this.onToggleControlChange.bind(this);
-  }
-  componentDidMount() {
-    // Listener to trigger a function after the post is saved.
-    subscribe(() => {
-      if (isSavingPost()) {
-        checked = false;
-      } else {
-        if (!checked) {
-          checked = true;
-          this.setState({
-            addSiteNote: false,
-            siteNoteText: '',
-            customSiteNote: false,
-            ['_exactmetrics_sitenote_note']: '',
-            ['_exactmetrics_sitenote_category']: 0
-          });
-          dispatch('core/editor').editPost({
-            meta: {
-              _exactmetrics_sitenote_active: false,
-              _exactmetrics_sitenote_note: null,
-              _exactmetrics_sitenote_id: null,
-              _exactmetrics_sitenote_category: null
-            }
-          });
-        }
-      }
-    });
   }
   refreshNoteText(current_title = '') {
     if (!current_title) {

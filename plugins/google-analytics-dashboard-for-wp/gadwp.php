@@ -5,7 +5,7 @@
  * Plugin URI: https://exactmetrics.com
  * Description: Displays Google Analytics Reports and Real-Time Statistics in your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: ExactMetrics
- * Version: 8.4.1
+ * Version: 8.5.0
  * Requires at least: 5.6.0
  * Requires PHP: 7.2
  * Author URI: https://exactmetrics.com/lite/?utm_source=liteplugin&utm_medium=pluginheader&utm_campaign=authoruri&utm_content=7%2E0%2E0
@@ -46,7 +46,7 @@ final class ExactMetrics_Lite {
 	 * @access public
 	 * @var string $version Plugin version.
 	 */
-	public $version = '8.4.1';
+	public $version = '8.5.0';
 
 	/**
 	 * Plugin file.
@@ -237,9 +237,6 @@ final class ExactMetrics_Lite {
 			} else {
 				require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/load.php';
 			}
-
-			// Run hook to load ExactMetrics addons.
-			do_action( 'exactmetrics_load_plugins' ); // the updater class for each addon needs to be instantiated via `exactmetrics_updater`
 		}
 
 		return self::$instance;
