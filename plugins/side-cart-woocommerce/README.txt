@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/xootix
 Tags: woocommerce cart, floating cart, cart popup, woocommerce, slider
 Requires at least: 3.0.1
 Tested up to: 6.8
-Stable tag: 2.6.3
+Stable tag: 2.6.4
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,9 @@ You can use any third party plugin such as Loco Translate for hassle free transl
 8. Change Shipping Pro
 
 == Changelog ==
+
+= 2.6.4 =
+* Core files update
 
 = 2.6.3 =
 * Improv - Login popup/slider redirects to checkout page on login success.

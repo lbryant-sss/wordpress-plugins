@@ -2,9 +2,9 @@
 Contributors: softaculous, backuply
 Tags: backup, restore, database backup, cloud backup, wordpress backup, migration, cloning, backuply, local backup, amazon s3, database, google drive, gdrive, dropbox, FTP, SCP, SFTP, onedrive, WebDAV
 Requires at least: 4.7
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 1.4.4
+Stable tag: 1.4.5
 License: LGPL v2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -84,6 +84,11 @@ Go To your WordPress install -> Plugins -> Add New Button -> In Search Box searc
 7. **Backup Process** easy to understand backup progress.
 
 == Changelog ==
+
+= 1.4.5 (April 30th 2025) =
+* [Task] Tested with WordPress 6.8.
+* [Task] Added Environment info in the support tab for easier debugging.
+* [Task] Cleanup of WP Cron after uninstall.
 
 = 1.4.4 (April 7th 2025) =
 * [Improvement] Backup upload speed has been improved, so now uploads will be faster.

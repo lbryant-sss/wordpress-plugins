@@ -10,7 +10,7 @@ if(!function_exists('add_action')){
 	exit;
 }
 
-define('BACKUPLY_VERSION', '1.4.4');
+define('BACKUPLY_VERSION', '1.4.5');
 define('BACKUPLY_DIR', dirname(BACKUPLY_FILE));
 define('BACKUPLY_URL', plugins_url('', BACKUPLY_FILE));
 define('BACKUPLY_BACKUP_DIR', str_replace('\\' , '/', WP_CONTENT_DIR).'/backuply/');
@@ -561,4 +561,8 @@ function backuply_deactivation(){
 	delete_option('backuply_offer_time');	
 	delete_option('backuply_backup_nag');
 	delete_option('backuply_config_keys');
+	
+	// Cleaning all the cron events
+	wp_clear_scheduled_hook('backuply_clean_tmp');
+	wp_clear_scheduled_hook('backuply_timeout_check');
 }

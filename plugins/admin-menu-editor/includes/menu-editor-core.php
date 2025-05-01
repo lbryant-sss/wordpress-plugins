@@ -393,6 +393,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			'admin.php?page=afrsm-page-general-settings' => true,
 			'admin.php?page=afrsm-page-add-ons'          => true,
 			'admin.php?page=afrsm-pro-dashboard'         => true,
+			'admin.php?page=dots_store'                  => 'submenu',
 		);
 
 		//Let other plugins add their own blacklisted URLs.
@@ -3909,6 +3910,23 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			}
 		}
 
+		//Special case: Hook-based plugin pages should only match items that have the same "page" parameter.
+		//WP uses this parameter to construct the hook name, so an item without a matching value won't be
+		//the same admin page.
+		//This is particularly important for blacklisted hidden items since they often have a valid hook,
+		//but they're not included in the admin menu, so there's no true best match. If we treat the "page"
+		//parameter as optional, we might pick some unrelated item that just happens to have the same path.
+		$page_param_required = false;
+		//Is the "page" parameter set and being used by WordPress?
+		global $plugin_page;
+		if ( !empty($plugin_page) && !empty($current_url['params']['page']) ) {
+			//Does it have a hook attached?
+			$hook_name = get_plugin_page_hookname($plugin_page, get_admin_page_parent());
+			if ( $hook_name && (has_action($hook_name) !== false) ) {
+				$page_param_required = true;
+			}
+		}
+
 		foreach($this->reverse_item_lookup as $url => $item) {
 			$item_url = $url;
 			//Convert to absolute URL. Caution: directory traversal (../, etc) is not handled.
@@ -3944,6 +3962,16 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			if ( $this->endsWith($item_url['path'], '/wp-admin/edit.php') || $this->endsWith($item_url['path'], '/wp-admin/post-new.php') ) {
 				if ( !isset($item_url['params']['post_type']) ) {
 					$item_url['params']['post_type'] = 'post';
+				}
+			}
+
+			//Special case: Must match the "page" parameter if required.
+			if ( $is_close_match && $page_param_required ) {
+				if (
+					empty($item_url['params']['page'])
+					|| ($item_url['params']['page'] !== $current_url['params']['page'])
+				) {
+					$is_close_match = false;
 				}
 			}
 

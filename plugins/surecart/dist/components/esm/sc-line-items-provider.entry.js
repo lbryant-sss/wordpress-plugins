@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h } from './index-745b6bec.js';
-import { c as convertLineItemsToLineItemData } from './index-0202319f.js';
+import { c as convertLineItemsToLineItemData } from './index-1db2635f.js';
 
 const ScLineItemsProvider = class {
     constructor(hostRef) {

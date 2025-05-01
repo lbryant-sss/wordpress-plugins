@@ -39,5 +39,16 @@ export declare class ScProductCheckoutSelectVariantOption {
     disconnectedCallback(): void;
     lineItem(): import("../../../../types").LineItem;
     hasVariants(): boolean;
+    isProductInCheckout(): boolean;
+    renderDropdown({ name, values, index }: {
+        name: any;
+        values: any;
+        index: any;
+    }): any;
+    renderPills({ name, values, index }: {
+        name: any;
+        values: any;
+        index: any;
+    }): any;
     render(): any;
 }

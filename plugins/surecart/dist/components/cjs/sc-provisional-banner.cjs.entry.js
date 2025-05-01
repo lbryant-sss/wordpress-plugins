@@ -13,7 +13,7 @@ const ScProvisionalBanner = class {
         this.claimUrl = '';
     }
     render() {
-        return (index.h("div", { key: '616fd32b9e782380b72df3ffe0f8be85c0fac695', class: { 'sc-banner': true } }, index.h("p", { key: '1b7d14bb0596313a2868f6a470d584540e556c3b' }, wp.i18n.__('Complete your store setup to go live.', 'surecart'), index.h("a", { key: 'd4769f098e3ba2879ef1e1aca5ce23ab07849330', href: this.claimUrl }, wp.i18n.__('Complete Setup', 'surecart'), " ", index.h("sc-icon", { key: 'c3e7b2e226579bb63ab21a80454403d57fa8a414', name: "arrow-right" })))));
+        return (index.h("div", { key: '9c1a279d59eda1f71ff41b3e92d4b8eb62210a54', class: { 'sc-banner': true } }, index.h("p", { key: '1ed3981a9c5c94547d15ab8e917b77cd7f386858' }, wp.i18n.__('Complete your store setup to go live.', 'surecart'), index.h("a", { key: '60ca2ae0fd4eae83460eedba221466558ca03ec1', href: this.claimUrl }, wp.i18n.__('Complete Setup', 'surecart'), " ", index.h("sc-icon", { key: '9309ec418c5d65941577661dfd600a83e553dd4b', name: "arrow-right" })))));
     }
 };
 ScProvisionalBanner.style = ScProvisionalBannerStyle0;

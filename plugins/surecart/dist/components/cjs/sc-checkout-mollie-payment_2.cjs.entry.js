@@ -8,7 +8,7 @@ require('./watchers-91785fbe.js');
 const getters = require('./getters-82d9bfb6.js');
 const mutations = require('./mutations-747a9cc3.js');
 const getters$1 = require('./getters-24219863.js');
-const mutations$1 = require('./mutations-44b0ed06.js');
+const mutations$1 = require('./mutations-a756939e.js');
 const fetch = require('./fetch-d644cebd.js');
 const MockProcessor = require('./MockProcessor-48b83649.js');
 const mutations$2 = require('./mutations-11c8f9a8.js');
@@ -25,7 +25,7 @@ require('./google-59d23803.js');
 require('./currency-71fce0f0.js');
 require('./price-ca4a4318.js');
 require('./address-4c70d641.js');
-require('./index-4f958947.js');
+require('./index-433de3ad.js');
 
 const listenTo = (prop, propKey, callback) => mutations.on('set', (key, newValue, oldValue) => {
     // ignore non-keys

@@ -32,6 +32,8 @@ export declare class ScDrawer {
     noHeader: boolean;
     /** Sticky drawer header */
     stickyHeader: boolean;
+    /** Sticky drawer footer */
+    stickyFooter: boolean;
     componentDidLoad(): void;
     disconnectedCallback(): void;
     lockBodyScrolling(): void;

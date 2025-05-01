@@ -3,9 +3,9 @@ Contributors: onpointplugins, Mat Lipe
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=paypal%40onpointplugins%2ecom&lc=US&item_name=Go%20Live%20Update%20Urls&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest
 Tags: search and replace, database, urls, domain, update urls
 Requires at least: 6.2.0
-Tested up to: 6.8.0
+Tested up to: 6.8.1
 Requires PHP: 7.4.0
-Stable tag: 7.0.4
+Stable tag: 7.0.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Change the domain on your site with one click.
@@ -122,6 +122,11 @@ If you find you are running into issues with custom tables, you may want to chec
 3. Update prevented due to incomplete data entered.
 
 == Changelog ==
+
+= 7.0.5 =
+* Officially added support for PHP 8.4.
+* Improved `Skip_Rows` unit testing.
+* Tested to WordPress 6.8.1.
 
 = 7.0.4 =
 * Improve labels on tools page.

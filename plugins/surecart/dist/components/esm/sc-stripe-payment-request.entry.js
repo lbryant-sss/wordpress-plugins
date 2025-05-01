@@ -1,7 +1,7 @@
 import { r as registerInstance, c as createEvent, h, a as getElement } from './index-745b6bec.js';
 import { p as pure } from './pure-963214cb.js';
 import { s as state, o as onChange } from './mutations-6f9b9a86.js';
-import { c as createOrUpdateCheckout, f as finalizeCheckout } from './index-885ece77.js';
+import { c as createOrUpdateCheckout, f as finalizeCheckout } from './index-a8c5e1c9.js';
 import { c as createErrorNotice } from './mutations-ed6d0770.js';
 import { o as openWormhole } from './consumer-e06b16d3.js';
 import './index-06061d4e.js';
@@ -293,7 +293,7 @@ const ScStripePaymentRequest = class {
         this.removeCheckoutListener();
     }
     render() {
-        return (h("div", { key: '1aaeeb46fb384dcf3991ecc113d9657c445d5d9e', class: { 'request': true, 'request--loaded': this.loaded } }, this.debug && this.debugError && (h("div", { key: '9b6c50aadad026750f4e2843b569fd29179563f2' }, h("slot", { key: '1d8e293032a8a281edbb96dde32dfc6a3d9b6635', name: "debug-fallback" }), h("sc-alert", { key: '119ea0906777751e16330a63cc7d4a69d80bc453', type: "info", open: true }, h("span", { key: '56fdf02be4e487d331ae657aa6fdeee71b8334af', slot: "title" }, wp.i18n.__('Express Payment', 'surecart')), this.debugError))), h("div", { key: 'ae909f9255a7524a2f64170fa8cd8215774ca2c0', class: "sc-payment-request-button", part: "button", ref: el => (this.request = el) })));
+        return (h("div", { key: '94826b8463a3a060ceabe419d48d7c42f150051d', class: { 'request': true, 'request--loaded': this.loaded } }, this.debug && this.debugError && (h("div", { key: '9a3623957e335cb119eb7e7a55d0a5d5778b34e9' }, h("slot", { key: '2839c856be54c814234346b0ccbd5ca143ae60ba', name: "debug-fallback" }), h("sc-alert", { key: 'b531c6f8f023af34fa5f0116fa7b7470850bc8e0', type: "info", open: true }, h("span", { key: '0bf64c1385be3cc57ed789facb2157e739f59935', slot: "title" }, wp.i18n.__('Express Payment', 'surecart')), this.debugError))), h("div", { key: '06087c65a05d2487894da1999d49168a7ff38397', class: "sc-payment-request-button", part: "button", ref: el => (this.request = el) })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

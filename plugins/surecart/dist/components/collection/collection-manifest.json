@@ -52,6 +52,7 @@
     "components/controllers/checkout-form/sc-order-bump/sc-order-bump.js",
     "components/controllers/checkout-form/sc-order-bumps/sc-order-bumps.js",
     "components/controllers/checkout-form/sc-product-selected-price/sc-product-selected-price.js",
+    "components/controllers/checkout-form/sc-swap/sc-swap.js",
     "components/controllers/checkout-form/total/sc-total.js",
     "components/controllers/confirmation/manual-instructions/sc-order-manual-instructions.js",
     "components/controllers/confirmation/order-confirmation/sc-order-confirmation.js",

@@ -27,30 +27,26 @@ export declare class ScProductLineItem {
     image: ImageAttributes;
     /** Product name */
     name: string;
-    /** Price name */
-    priceName?: string;
-    /** Product variant label */
-    variantLabel: string;
-    /** Quantity */
-    quantity: number;
     /** Product monetary amount */
-    amount: number;
+    amount: string;
+    /** The line item scratch amount */
+    scratch: string;
     /** Product display amount */
     displayAmount: string;
     /** Product scratch display amount */
     scratchDisplayAmount: string;
     /** Product line item fees. */
     fees: Fee[];
-    /** Is the setup fee not included in the free trial? */
-    setupFeeTrialEnabled: boolean;
-    /** The line item scratch amount */
-    scratchAmount: number;
-    /** Currency for the product */
-    currency: string;
+    /** Price name */
+    price?: string;
+    /** Product variant label */
+    variant: string;
+    /** Quantity */
+    quantity: number;
     /** Recurring interval (i.e. monthly, once, etc.) */
     interval: string;
-    /** Trial duration days */
-    trialDurationDays: number;
+    /** Trial text */
+    trial: string;
     /** Is the line item removable */
     removable: boolean;
     /** Can we select the quantity */
@@ -60,13 +56,10 @@ export declare class ScProductLineItem {
     /** The SKU. */
     sku: string;
     /** The purchasable status display */
-    purchasableStatusDisplay: string;
+    purchasableStatus: string;
     /** Emitted when the quantity changes. */
     scUpdateQuantity: EventEmitter<number>;
     /** Emitted when the quantity changes. */
     scRemove: EventEmitter<void>;
-    renderAmount(): any;
-    renderPriceAndInterval(): any;
-    renderPurchasableStatus(): any;
     render(): any;
 }

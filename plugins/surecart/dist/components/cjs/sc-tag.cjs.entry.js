@@ -22,7 +22,7 @@ const ScTag = class {
     }
     render() {
         const Tag = this.clearable ? 'button' : 'span';
-        return (index.h(Tag, { key: '1b010cb74aa0ab4975d9bce221000ea77110451a', part: "base", onClick: () => this.handleClearClick(), class: {
+        return (index.h(Tag, { key: 'ab9ed057b873a5d58d24fee0056cf7bd2785fc25', part: "base", onClick: () => this.handleClearClick(), class: {
                 'tag': true,
                 // Types
                 'tag--primary': this.type === 'primary',
@@ -38,7 +38,7 @@ const ScTag = class {
                 // Modifers
                 'tag--pill': this.pill,
                 'tag--clearable': this.clearable,
-            }, "aria-label": this.ariaLabel }, index.h("span", { key: '423e3d77ff3e271e814e9e765d92237edbca9f32', part: "content", class: "tag__content" }, index.h("slot", { key: 'eff46f15ee9cfd944fc0a3664cdfa183cb37aa48' })), !!this.clearable && (index.h("svg", { key: '16072e97a0c3dcef350ff2228ff82f72f29ab93f', xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", fill: "currentColor", class: "bi bi-x", viewBox: "0 0 16 16" }, index.h("path", { key: '43a1d0b1ec0dc8fd0351c1c41a4cad2b8e702ee4', d: "M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" })))));
+            }, "aria-label": this.ariaLabel }, index.h("span", { key: '7f66b910e521dae9a6c461318f7017ff1d5ea41d', part: "content", class: "tag__content" }, index.h("slot", { key: '3e71085a37ee9e181426bb3d1258da4bf3855434' })), !!this.clearable && (index.h("svg", { key: '4a181af965c0275af928d67e6a3430de0d004fcd', xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", fill: "currentColor", class: "bi bi-x", viewBox: "0 0 16 16" }, index.h("path", { key: 'd02e32df626917112b01d2bf06350da74d110c97', d: "M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" })))));
     }
 };
 ScTag.style = ScTagStyle0;

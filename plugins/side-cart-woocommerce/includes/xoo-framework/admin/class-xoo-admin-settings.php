@@ -24,6 +24,8 @@ class Xoo_Admin{
 
 	public $capability = 'manage_options';
 
+	public $usageURL 	= 'https://xootix.com/wp-json/usage/v1/data';
+
 	public function __construct( $helper ){
 		$this->helper 			= $helper;
 		$this->settings_slug 	= $this->helper->slug . '-settings';
@@ -64,7 +66,117 @@ class Xoo_Admin{
 			add_action( 'xoo_tab_page_start', array( $this, 'shortcode_info' ), 20, 2 );
 			
 		}
+
+		add_action( 'admin_notices', array( $this, 'usage_data_notice' ) );
+		add_action( 'admin_init', array( $this, 'handle_usage_click_response' ) );
+		add_action( 'admin_init', array( $this, 'send_usage_data_timely' ) );
+
+		if( isset( $this->helper->helperArgs )  && $this->helper->helperArgs['pluginFile'] ){
+			register_deactivation_hook( $this->helper->helperArgs['pluginFile'] , array( $this, 'on_plugin_deactivate' ) );
+		}
+		
+
 	}
+
+
+	public function usage_data_notice(){
+
+		if( get_option( 'xoo_tracking_consent_'.$this->helper->slug ) !== false ) return;
+
+		$url = add_query_arg(array(
+			'xoo_usage_handle' 	=> 'yes', 
+			'xoo_slug' 			=> $this->helper->slug,
+			'_wpnonce' 			=> wp_create_nonce( 'xoo_usage_nonce' ), 
+		));
+
+		$pluginName = isset( $this->helper->helperArgs )  && $this->helper->helperArgs['pluginName'] ? $this->helper->helperArgs['pluginName'] : $this->helper->slug;
+
+		?>
+		<div class="notice notice-info" style="max-width: 1300px;">
+			<p><strong>[<?php echo $pluginName ?>] Help us improve!</strong> We'd love your permission to send anonymous, non-sensitive data (such as your WordPress version, plugin settings, etc.) to help us improve the plugin.<strong>. No personal information is collected ever</strong></p>
+				<a href="<?php echo esc_url( add_query_arg( 'xoo_allow', 'no', $url ) ); ?>" style="margin-right: 5px; text-decoration: none;">No, thanks</a>
+				<a href="<?php echo esc_url( add_query_arg( 'xoo_allow', 'yes', $url ) );  ?>" style="text-decoration: none;">Happy to help😄</a>
+			</p>
+		</div>
+		<?php
+
+	}
+
+	public function handle_usage_click_response(){
+
+		if( !isset( $_GET['xoo_usage_handle'] ) ) return;
+
+		$slug 		= sanitize_text_field( $_GET['xoo_slug'] );
+		$nonce 		= sanitize_text_field( $_GET['_wpnonce'] );
+		$response 	= sanitize_text_field( $_GET['xoo_allow'] );
+
+		if( $this->helper->slug !== $slug ) return;
+
+		if( !wp_verify_nonce( $_GET['_wpnonce'], 'xoo_usage_nonce' ) ) return;
+
+		update_option( 'xoo_tracking_consent_'.$this->helper->slug, $response );
+
+		wp_redirect( remove_query_arg( array( 'xoo_slug', '_wpnonce', 'xoo_allow', 'xoo_usage_handle' ) ) );
+
+		exit;
+
+	}
+
+
+	public function is_usage_allowed(){
+		return get_option( 'xoo_tracking_consent_'.$this->helper->slug, true ) === 'yes';
+	}
+
+
+	public function send_usage_data_timely(){
+
+		if( !$this->is_usage_allowed() ) return; //permission not given
+
+		if( get_transient( 'xoo_tracking_consent_last_sent_'.$this->helper->slug ) !== false ) return; //date not expired.
+
+		$response = $this->usage_data_http_request();
+
+		$fetchAgain = isset( $response['success'] ) ? DAY_IN_SECONDS * 15 : DAY_IN_SECONDS;
+
+		set_transient( 'xoo_tracking_consent_last_sent_'.$this->helper->slug, 'yes', $fetchAgain  );
+		
+	}
+
+
+	public function usage_data_http_request( $passed_data = array() ){
+
+		$helperdata = $this->helper->get_usage_data();
+
+		$defaults 	= array(
+			'slug' 			=> $this->helper->slug,
+			'site_url' 		=> get_site_url(),
+			'wp_version' 	=> wp_get_wp_version(),
+			'active' 		=> 1,
+		);
+
+		$data = array_merge( $defaults, $passed_data, $helperdata );
+
+		$httprequest = wp_remote_post(
+			$this->usageURL,
+			array(
+				'body' => $data
+			)
+		);
+
+		$response = json_decode(wp_remote_retrieve_body($httprequest), true);
+
+		return $response;
+	}
+
+
+	public function on_plugin_deactivate(){
+		if( !$this->is_usage_allowed() ) return;
+		$this->usage_data_http_request( array(
+			'active' => 0
+		) );
+		delete_transient( 'xoo_tracking_consent_last_sent_'.$this->helper->slug );
+	}
+
 
 	public function export_settings(){
 
@@ -384,7 +496,7 @@ class Xoo_Admin{
 
 		uasort( $data, function( $a, $b ){
 
-			if( $a['priority'] === $b['priority'] ){
+			if( !isset( $a['priority'] ) || !isset( $b['priority'] ) || $a['priority'] === $b['priority'] ){
 				return 0;
 			}
 			return $a['priority'] > $b['priority']  ? 1 : -1;

@@ -2006,6 +2006,41 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 		<div class="backuply-settings-block">
 			You can contact the Backuply Team via email. Our email address is <a href="mailto:support@backuply.com">support@backuply.com</a> or through Our <a href="https://softaculous.deskuss.com/open.php?topicId=17" target="_blank">Support Ticket System</a>
 			<p>You can also check the docs <a href="https://backuply.com/docs/" target="_blank">https://backuply.com/docs/</a> to review some common issues. You might find something helpful there.</p>
+			
+			<h3><?php esc_html_e('Environment Info', 'backuply');?></h3>
+			<table class="widefat striped">
+				<tbody>
+					<tr>
+						<td>WP_MEMORY_LIMIT</td>
+						<td><?php echo(defined('WP_MEMORY_LIMIT') ? WP_MEMORY_LIMIT : '-');?></td>
+					</tr>
+					
+					<tr>
+						<td>WP_MAX_MEMORY_LIMIT</td>
+						<td><?php echo(defined('WP_MAX_MEMORY_LIMIT') ? WP_MAX_MEMORY_LIMIT : '-');?></td>
+					</tr>
+					<?php
+					if(function_exists('ini_get')){ ?>
+					
+					<tr>
+						<td><?php esc_html_e('PHP memory limit', 'backuply');?></td>
+						<td><?php echo ini_get('memory_limit');?></td>
+					</tr>
+					
+					<tr>
+						<td><?php esc_html_e('PHP time limit', 'backuply');?></td>
+						<td><?php echo ini_get('max_execution_time');?></td>
+					</tr>
+					<tr>
+						<td><?php esc_html_e('PHP post max size', 'backuply');?></td>
+						<td><?php echo ini_get('post_max_size');?></td>
+					<?php } ?>
+					<tr>
+						<td>Server</td>
+						<td><?php echo(isset($_SERVER['SERVER_SOFTWARE']) ? esc_html($_SERVER['SERVER_SOFTWARE']) : __('Unknown server', 'backuply'));?></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 	<?php 

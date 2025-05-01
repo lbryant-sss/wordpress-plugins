@@ -18,7 +18,7 @@ const ScTabPanel = class {
     render() {
         // If the user didn't provide an ID, we'll set one so we can link tabs and tab panels with aria labels
         this.el.id = this.el.id || this.componentId;
-        return (index.h(index.Host, { key: '9bea43e75042f939545cfc017200efdb354cb891', style: { display: this.active ? 'block' : 'none' } }, index.h("div", { key: 'b9e286f8e109dd8dea718f04f2b6ae120d5a4d9e', part: "base", class: "tab-panel", role: "tabpanel", "aria-hidden": this.active ? 'false' : 'true' }, index.h("slot", { key: '14ffcb095fe7a5c91bcb0c30853aaabe1c5d80e7' }))));
+        return (index.h(index.Host, { key: 'ef1cab9a4d010f7686e35b0ef62a879865a0f2ad', style: { display: this.active ? 'block' : 'none' } }, index.h("div", { key: '10d72c33fc9301117fff40b2de48cd21b3b2899c', part: "base", class: "tab-panel", role: "tabpanel", "aria-hidden": this.active ? 'false' : 'true' }, index.h("slot", { key: '4014ee8afa37a8b1f93cfde87c7e9b96af4b9dad' }))));
     }
     get el() { return index.getElement(this); }
 };

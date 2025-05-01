@@ -78,3 +78,7 @@ export declare const updateLineItem: ({ id, data }: {
     id: any;
     data: any;
 }) => Promise<Checkout>;
+export declare const toggleSwap: ({ id, action }: {
+    id: any;
+    action?: string;
+}) => Promise<Checkout>;
