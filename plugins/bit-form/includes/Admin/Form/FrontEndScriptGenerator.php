@@ -360,7 +360,8 @@ GLOBALOBJ;
     // for js file
     $path = 'form-scripts';
     $fileName = "bitform-custom-$formId.js";
-    self::customCodeFileSaveOrDelete($customCodes->JavaScript, $path, $fileName);
+    $filteredJs = Helpers::removeJsSingleLineComments($customCodes->JavaScript);
+    self::customCodeFileSaveOrDelete($filteredJs, $path, $fileName);
 
     // for css file
     $path = 'form-styles';

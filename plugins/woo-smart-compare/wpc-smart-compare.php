@@ -3,23 +3,23 @@
 Plugin Name: WPC Smart Compare for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: Smart products compare for WooCommerce.
-Version: 6.4.4
+Version: 6.4.5
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: woo-smart-compare
 Domain Path: /languages/
 Requires Plugins: woocommerce
 Requires at least: 4.0
-Tested up to: 6.7
+Tested up to: 6.8
 WC requires at least: 3.0
-WC tested up to: 9.6
+WC tested up to: 9.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSC_VERSION' ) && define( 'WOOSC_VERSION', '6.4.4' );
+! defined( 'WOOSC_VERSION' ) && define( 'WOOSC_VERSION', '6.4.5' );
 ! defined( 'WOOSC_LITE' ) && define( 'WOOSC_LITE', __FILE__ );
 ! defined( 'WOOSC_FILE' ) && define( 'WOOSC_FILE', __FILE__ );
 ! defined( 'WOOSC_URI' ) && define( 'WOOSC_URI', plugin_dir_url( __FILE__ ) );
@@ -2393,11 +2393,7 @@ if ( ! function_exists( 'woosc_init' ) ) {
 
 							foreach ( $products_data as $product_id => $product_data ) {
 								if ( $product_data['name'] !== '' ) {
-									if ( isset( $product_data[ $field_key ] ) ) {
-										$field_value = $product_data[ $field_key ];
-									} else {
-										$field_value = '';
-									}
+									$field_value = $product_data[ $field_key ] ?? '';
 
 									$row .= '<td class="' . esc_attr( ! empty( $product_data['filter'] ) ? 'col col-' . implode( ' col-', $product_data['filter'] ) : 'col' ) . '">' . apply_filters( 'woosc_field_value', $field_value, $field_key, $product_id, $product_data ) . '</td>';
 								} else {
@@ -2622,6 +2618,7 @@ if ( ! function_exists( 'woosc_init' ) ) {
 
 					$attrs = shortcode_atts( [
 						'id'   => null,
+						'text' => null,
 						'type' => self::get_setting( 'button_type', 'button' )
 					], $attrs );
 
@@ -2656,7 +2653,7 @@ if ( ! function_exists( 'woosc_init' ) ) {
 						$class = 'woosc-btn woosc-btn-' . esc_attr( $attrs['id'] ) . ' ' . self::get_setting( 'button_class' );
 
 						// button text
-						$text = self::localization( 'button', esc_html__( 'Compare', 'woo-smart-compare' ) );
+						$text = $attrs['text'] ?: self::localization( 'button', esc_html__( 'Compare', 'woo-smart-compare' ) );
 
 						if ( ( $button_icon = self::get_setting( 'button_icon', 'no' ) ) !== 'no' ) {
 							$class .= ' woosc-btn-has-icon';

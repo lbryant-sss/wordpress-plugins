@@ -103,6 +103,10 @@ return;
      */
     private function checkWordPressVersion()
     {
+        if (!is_array($this->options)) {
+            $this->options = [];
+        }
+        
         if (!isset($this->options['wordPressVersion']) || !is_bool($this->options['wordPressVersion'])) {
             $this->options['wordPressVersion'] = null;
         }

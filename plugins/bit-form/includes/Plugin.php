@@ -37,6 +37,7 @@ final class Plugin
   public function register()
   {
     add_action('plugins_loaded', [$this, 'init_plugin']);
+    add_action('init', [$this, 'load_plugin_textdomain']);
     (new Activation())->activate();
     (new Deactivation())->register();
     (new Uninstallation())->register();
@@ -176,6 +177,11 @@ final class Plugin
     if (defined('ELEMENTOR_VERSION')) {
       new BitFormElementorWidget();
     }
+  }
+
+  public function load_plugin_textdomain()
+  {
+    load_plugin_textdomain('bit-form', false, dirname(BITFORMS_PLUGIN_BASENAME) . '/languages');
   }
 
   private function initWpTelemetry()

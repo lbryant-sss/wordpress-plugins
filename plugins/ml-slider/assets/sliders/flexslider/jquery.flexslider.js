@@ -239,12 +239,12 @@
               slide = slider.slides.eq(i);
               if ( undefined === slide.attr( 'data-thumb-alt' ) ) { slide.attr( 'data-thumb-alt', '' ); }
               var altText = ( '' !== slide.attr( 'data-thumb-alt' ) ) ? altText = ' alt="' + slide.attr( 'data-thumb-alt' ) + '"' : '';
-              item = (slider.vars.controlNav === "thumbnails") ? '<img src="' + slide.attr( 'data-thumb' ) + '"' + altText + '/>' : '<a href="#">' + j + '</a>';
+              item = (slider.vars.controlNav === "thumbnails") ? '<img src="' + slide.attr( 'data-thumb' ) + '"' + altText + '/>' : '<a href="#" aria-label="Show slide ' + j + ' of ' + slider.pagingCount + '" role="tab">' + j + '</a>';
               if ( 'thumbnails' === slider.vars.controlNav && true === slider.vars.thumbCaptions ) {
                 var captn = slide.attr( 'data-thumbcaption' );
                 if ( '' !== captn && undefined !== captn ) { item += '<span class="' + namespace + 'caption">' + captn + '</span>'; }
               }
-              slider.controlNavScaffold.append('<li aria-label="Show slide ' + j + ' of ' + slider.pagingCount + '">' + item + '</li>');
+              slider.controlNavScaffold.append('<li role="presentation">' + item + '</li>');
               j++;
             }
           }
@@ -1109,7 +1109,7 @@
           maxItems = slider.vars.maxItems;
 
       slider.w = (slider.viewport===undefined) ? slider.width() : slider.viewport.width();
-      if (slider.isFirefox) { slider.w = slider.width(); }
+      if (slider.isFirefox || slider.vars.useContainerWidth) { slider.w = slider.width(); }
       slider.h = slide.height();
       slider.boxPadding = slide.outerWidth() - slide.width();
 
@@ -1294,6 +1294,7 @@
 
     // Custom MetaSlider specific
     allowResize: true,            // {NEW} Boolean: Whether or not to allow slider.resize on resize event
+    useContainerWidth: false,      // {NEW} Boolean: Force to use slider.width() in doMath
 
     // Callback API
     start: function(){},            //Callback: function(slider) - Fires when the slider loads the first slide

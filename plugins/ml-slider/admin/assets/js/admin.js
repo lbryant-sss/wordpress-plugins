@@ -1300,6 +1300,52 @@ window.jQuery(function ($) {
         }, 1000);
     }
 
+    /**
+     * Fallback after imporing slides
+     * 
+     * @since 3.98
+     * 
+     * @param {object} data The added slide data 
+     * 
+     * @return void
+     */
+    var after_importing_slides_success = window.metaslider.after_importing_slides_success = function ( data ) {
+        if (!data) {
+            console.error('No data found!');
+            return;
+        }
+
+        var table = $(".metaslider table#metaslider-slides-list");
+        
+        data.forEach(function(slide) {
+            // Mount the slide to the beginning or end of the list
+            // Here we may follow an inverted approach due import 
+            window.metaslider.newSlideOrder === 'last' 
+                ? table.prepend(slide['html'])
+                : table.append(slide['html']);
+        });
+
+        // Hide loading box
+        $('#loading-add-sample-slides-notice').hide();
+
+        var APP = window.metaslider.app.MetaSlider;
+
+        // Add timeouts to give some breating room to the notice animations
+        setTimeout(function () {
+            if (APP) {
+                const message = data.length == 1 ? APP.__('1 slide added successfully', 'ml-slider') : APP.__('%s slides added successfully')
+                APP.notifySuccess(
+                    'metaslider/slides-created',
+                    APP.sprintf(message, data.length),
+                    true
+                )
+            }
+            setTimeout(function () {
+                APP && APP.triggerEvent('metaslider/save')
+            }, 1000);
+        }, 1000);
+    }
+
     /* Add mobile icon for slides with existing mobile setting */
     var show_mobile_icon = function (slide_id) {
         var mobile_label = APP && APP.__('Device options are enabled for this slide. Adjust using the Mobile tab.', 'ml-slider');
@@ -1347,20 +1393,6 @@ window.jQuery(function ($) {
             container.find(":nth-child(" + count + ")").fadeIn();
         }, 2000);
     });
-
-    /**
-     * Trigger slideshow save after a quickstart has been created
-     * 
-     * @since 3.90
-     */
-    var sampleSlidesWereAdded = function () {
-        if (window.location.href.indexOf('metaslider_add_sample_slides_after') !== -1) {
-            setTimeout(function () {
-                APP && APP.triggerEvent('metaslider/save')
-            }, 1000);
-        }
-    }
-    sampleSlidesWereAdded();
 
     /* Dashboard modal */
     $(".open-modal").on("click", function () {

@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Give - Donation Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Give - Donation Plugin 4.1.1\n"
+"Project-Id-Version: Give - Donation Plugin 4.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/givewp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-24T13:47:32+00:00\n"
+"POT-Creation-Date: 2025-05-01T11:50:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: give\n"
@@ -120,14 +120,14 @@ msgstr ""
 msgid "Campaign cover image"
 msgstr ""
 
-#: build/Campaigns/Blocks/CampaignStats/render.php:37
-#: src/Campaigns/Blocks/CampaignStats/render.php:37
+#: build/Campaigns/Blocks/CampaignStats/render.php:38
+#: src/Campaigns/Blocks/CampaignStats/render.php:38
 #: build/campaignBlocksLandingPage.js:1
 msgid "Top Donation"
 msgstr ""
 
-#: build/Campaigns/Blocks/CampaignStats/render.php:37
-#: src/Campaigns/Blocks/CampaignStats/render.php:37
+#: build/Campaigns/Blocks/CampaignStats/render.php:38
+#: src/Campaigns/Blocks/CampaignStats/render.php:38
 #: build/assets/dist/js/admin-reports.js:1
 #: build/campaignBlocksLandingPage.js:1
 msgid "Average Donation"
@@ -144,11 +144,11 @@ msgstr ""
 msgid "Donate"
 msgstr ""
 
-#: give.php:466
+#: give.php:467
 msgid "The Visual Form Builder Beta plugin is no longer needed, since the form builder is included in your current version of GiveWP. To prevent conflicts, the Beta plugin has been deactivated and can be safely deleted."
 msgstr ""
 
-#: give.php:493
+#: give.php:494
 msgid "<strong>Attention:</strong> GiveWP 2.5.0+ requires the latest version of the Recurring Donations add-on to process payments properly with Stripe. Please update to the latest version add-on to resolve compatibility issues. If your license is active, you should see the update available in WordPress. Otherwise, you can access the latest version by <a href=\"%1$s\" target=\"_blank\">logging into your account</a> and visiting <a href=\"%1$s\" target=\"_blank\">your downloads</a> page on the GiveWP website."
 msgstr ""
 
@@ -471,7 +471,7 @@ msgid "Successfully updated a address of donor"
 msgstr ""
 
 #: includes/admin/admin-actions.php:1208
-#: includes/admin/payments/view-payment-details.php:779
+#: includes/admin/payments/view-payment-details.php:776
 #: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:195
 #: src/Receipt/DonationReceipt.php:86
 #: build/formBuilderRegistrars.js:1
@@ -537,7 +537,7 @@ msgstr ""
 #: includes/admin/tools/import/class-give-import-donations.php:604
 #: src/API/Endpoints/Reports/Income.php:98
 #: src/API/Endpoints/Reports/IncomeBreakdown.php:83
-#: src/DonationForms/ViewModels/DonationFormViewModel.php:193
+#: src/DonationForms/ViewModels/DonationFormViewModel.php:188
 #: src/Donors/DonorsAdminPage.php:51
 #: src/Donors/DonorsAdminPage.php:52
 #: build/assets/dist/js/give-admin-donors.js:4
@@ -562,7 +562,7 @@ msgid "GiveWP Tools"
 msgstr ""
 
 #: includes/admin/admin-pages.php:92
-#: includes/admin/tools/class-settings-data.php:82
+#: includes/admin/tools/class-settings-data.php:96
 msgid "Tools"
 msgstr ""
 
@@ -969,7 +969,7 @@ msgstr ""
 #: src/API/Endpoints/Reports/IncomeBreakdown.php:84
 #: src/Campaigns/ListTable/Columns/DonationsCountColumn.php:29
 #: src/DonationForms/V2/ListTable/Columns/DonationCountColumn.php:37
-#: src/DonationForms/ViewModels/DonationFormViewModel.php:197
+#: src/DonationForms/ViewModels/DonationFormViewModel.php:192
 #: src/Donations/DonationsAdminPage.php:51
 #: src/Donations/DonationsAdminPage.php:52
 #: src/Donors/ListTable/Columns/DonationCountColumn.php:37
@@ -1041,7 +1041,7 @@ msgstr ""
 #: includes/admin/donors/donors.php:535
 #: includes/admin/donors/donors.php:774
 #: includes/admin/donors/donors.php:1192
-#: includes/admin/payments/view-payment-details.php:733
+#: includes/admin/payments/view-payment-details.php:730
 #: includes/class-give-scripts.php:252
 #: includes/class-give-scripts.php:303
 #: includes/forms/template.php:1671
@@ -1053,6 +1053,7 @@ msgstr ""
 #: build/assets/dist/js/give-admin-subscriptions.js:4
 #: build/assets/dist/js/give-log-list-table-app.js:1
 #: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
 #: build/donationFormRegistrars.js:1
@@ -1252,7 +1253,7 @@ msgstr ""
 #: includes/admin/donors/donors.php:77
 #: includes/admin/emails/class-email-notification-table.php:203
 #: includes/admin/emails/class-email-notification-table.php:237
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:382
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:377
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
@@ -1323,7 +1324,7 @@ msgid "Edit Donor"
 msgstr ""
 
 #: includes/admin/donors/donors.php:422
-#: includes/admin/payments/view-payment-details.php:608
+#: includes/admin/payments/view-payment-details.php:605
 msgid "Donor ID:"
 msgstr ""
 
@@ -1356,7 +1357,7 @@ msgid "Phone:"
 msgstr ""
 
 #: includes/admin/donors/donors.php:511
-#: includes/admin/payments/view-payment-details.php:701
+#: includes/admin/payments/view-payment-details.php:698
 #: includes/admin/shortcodes/shortcode-give-receipt.php:94
 msgid "Company Name:"
 msgstr ""
@@ -1389,42 +1390,42 @@ msgid "Add Address"
 msgstr ""
 
 #: includes/admin/donors/donors.php:662
-#: includes/admin/payments/view-payment-details.php:799
+#: includes/admin/payments/view-payment-details.php:796
 msgid "Country:"
 msgstr ""
 
 #: includes/admin/donors/donors.php:674
-#: includes/admin/payments/view-payment-details.php:809
+#: includes/admin/payments/view-payment-details.php:806
 msgid "Select a country"
 msgstr ""
 
 #: includes/admin/donors/donors.php:684
-#: includes/admin/payments/view-payment-details.php:820
+#: includes/admin/payments/view-payment-details.php:817
 msgid "Address 1:"
 msgstr ""
 
 #: includes/admin/donors/donors.php:692
-#: includes/admin/payments/view-payment-details.php:827
+#: includes/admin/payments/view-payment-details.php:824
 msgid "Address 2:"
 msgstr ""
 
 #: includes/admin/donors/donors.php:701
-#: includes/admin/payments/view-payment-details.php:834
+#: includes/admin/payments/view-payment-details.php:831
 msgid "City:"
 msgstr ""
 
 #: includes/admin/donors/donors.php:715
-#: includes/admin/payments/view-payment-details.php:845
+#: includes/admin/payments/view-payment-details.php:842
 msgid "State / Province / County:"
 msgstr ""
 
 #: includes/admin/donors/donors.php:747
-#: includes/admin/payments/view-payment-details.php:857
+#: includes/admin/payments/view-payment-details.php:854
 msgid "Select a state"
 msgstr ""
 
 #: includes/admin/donors/donors.php:761
-#: includes/admin/payments/view-payment-details.php:873
+#: includes/admin/payments/view-payment-details.php:870
 msgid "Zip / Postal Code:"
 msgstr ""
 
@@ -1475,7 +1476,7 @@ msgstr ""
 
 #: includes/admin/donors/donors.php:874
 #: includes/admin/emails/class-email-setting-field.php:335
-#: includes/admin/settings/class-settings-advanced.php:295
+#: includes/admin/settings/class-settings-advanced.php:306
 #: build/assets/dist/js/donor-dashboards-app.js:1
 msgid "Add Email"
 msgstr ""
@@ -1873,8 +1874,9 @@ msgstr ""
 #: includes/admin/settings/class-settings-advanced.php:139
 #: includes/admin/settings/class-settings-advanced.php:182
 #: includes/admin/settings/class-settings-advanced.php:207
-#: includes/admin/settings/class-settings-advanced.php:273
-#: includes/admin/settings/class-settings-advanced.php:324
+#: includes/admin/settings/class-settings-advanced.php:218
+#: includes/admin/settings/class-settings-advanced.php:284
+#: includes/admin/settings/class-settings-advanced.php:335
 #: includes/admin/settings/class-settings-display.php:108
 #: includes/admin/settings/class-settings-display.php:119
 #: includes/admin/settings/class-settings-display.php:150
@@ -1885,8 +1887,8 @@ msgstr ""
 #: includes/admin/settings/class-settings-display.php:244
 #: includes/admin/settings/class-settings-display.php:255
 #: includes/admin/settings/class-settings-display.php:286
-#: includes/admin/settings/class-settings-gateways.php:75
-#: includes/admin/settings/class-settings-gateways.php:124
+#: includes/admin/settings/class-settings-gateways.php:74
+#: includes/admin/settings/class-settings-gateways.php:123
 #: includes/admin/settings/class-settings-gateways.php:492
 #: includes/admin/settings/class-settings-general.php:117
 #: includes/admin/settings/class-settings-general.php:131
@@ -1939,8 +1941,9 @@ msgstr ""
 #: includes/admin/settings/class-settings-advanced.php:140
 #: includes/admin/settings/class-settings-advanced.php:183
 #: includes/admin/settings/class-settings-advanced.php:208
-#: includes/admin/settings/class-settings-advanced.php:274
-#: includes/admin/settings/class-settings-advanced.php:325
+#: includes/admin/settings/class-settings-advanced.php:219
+#: includes/admin/settings/class-settings-advanced.php:285
+#: includes/admin/settings/class-settings-advanced.php:336
 #: includes/admin/settings/class-settings-display.php:62
 #: includes/admin/settings/class-settings-display.php:85
 #: includes/admin/settings/class-settings-display.php:109
@@ -1953,8 +1956,8 @@ msgstr ""
 #: includes/admin/settings/class-settings-display.php:245
 #: includes/admin/settings/class-settings-display.php:256
 #: includes/admin/settings/class-settings-display.php:287
-#: includes/admin/settings/class-settings-gateways.php:76
-#: includes/admin/settings/class-settings-gateways.php:125
+#: includes/admin/settings/class-settings-gateways.php:75
+#: includes/admin/settings/class-settings-gateways.php:124
 #: includes/admin/settings/class-settings-general.php:118
 #: includes/admin/settings/class-settings-general.php:132
 #: includes/admin/settings/class-settings-general.php:463
@@ -2185,7 +2188,7 @@ msgstr ""
 
 #: includes/admin/emails/class-offline-donation-instruction-email.php:44
 #: includes/admin/emails/class-offline-donation-instruction-email.php:54
-#: includes/admin/settings/class-settings-gateways.php:80
+#: includes/admin/settings/class-settings-gateways.php:79
 msgid "Offline Donation Instructions"
 msgstr ""
 
@@ -2313,8 +2316,8 @@ msgid "Form Fields"
 msgstr ""
 
 #: includes/admin/forms/class-metabox-form-data.php:326
-#: includes/admin/settings/class-settings-gateways.php:167
-#: includes/admin/settings/class-settings-gateways.php:173
+#: includes/admin/settings/class-settings-gateways.php:166
+#: includes/admin/settings/class-settings-gateways.php:172
 msgid "Default Gateway"
 msgstr ""
 
@@ -2644,7 +2647,7 @@ msgid "Goal Statistics"
 msgstr ""
 
 #: includes/admin/forms/class-metabox-form-data.php:1416
-#: includes/admin/settings/class-settings-gateways.php:230
+#: includes/admin/settings/class-settings-gateways.php:229
 #: includes/gateways/offline-donations.php:41
 #: includes/gateways/offline-donations.php:82
 #: build/assets/dist/js/admin-onboarding-wizard.js:1
@@ -2669,7 +2672,7 @@ msgstr ""
 #: includes/admin/forms/dashboard-columns.php:39
 #: includes/admin/forms/dashboard-columns.php:540
 #: src/Campaigns/ListTable/Columns/GoalColumn.php:30
-#: src/DonationForms/V2/ListTable/Columns/GoalColumn.php:34
+#: src/DonationForms/V2/ListTable/Columns/GoalColumn.php:35
 #: src/Views/Form/Templates/Classic/resources/views/header.php:41
 #: build/adminBlocks.js:1
 #: build/campaignDetails.js:10
@@ -2699,7 +2702,7 @@ msgstr ""
 
 #: includes/admin/forms/dashboard-columns.php:95
 #: src/Campaigns/ListTable/Columns/GoalColumn.php:48
-#: src/DonationForms/V2/ListTable/Columns/GoalColumn.php:49
+#: src/DonationForms/V2/ListTable/Columns/GoalColumn.php:53
 msgid "No Goal Set"
 msgstr ""
 
@@ -3081,7 +3084,7 @@ msgid "Mode"
 msgstr ""
 
 #: includes/admin/import-functions.php:492
-#: includes/admin/settings/class-settings-gateways.php:115
+#: includes/admin/settings/class-settings-gateways.php:114
 #: includes/admin/tools/views/html-admin-page-system-info.php:618
 msgid "Test Mode"
 msgstr ""
@@ -3125,9 +3128,11 @@ msgstr ""
 #: src/DonationForms/Properties/FormSettings.php:305
 #: src/Donations/ListTable/Columns/FormColumn.php:37
 #: build/adminBlocks.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
 #: build/donationFormBlock.js:1
 #: build/donationFormBlockApp.js:1
 #: build/formBuilderApp.js:13
+#: build/formEntity.js:1
 msgid "Donation Form"
 msgstr ""
 
@@ -3552,101 +3557,101 @@ msgstr ""
 msgid "n/a"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:505
+#: includes/admin/payments/view-payment-details.php:503
 msgid "Anonymous Donation:"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:514
+#: includes/admin/payments/view-payment-details.php:512
 #: includes/admin/tools/views/html-admin-page-system-info.php:1020
 #: includes/class-give-cli-commands.php:138
 #: includes/forms/template.php:919
 msgid "Yes"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:524
+#: includes/admin/payments/view-payment-details.php:522
 #: includes/admin/tools/views/html-admin-page-system-info.php:1020
 #: includes/class-give-cli-commands.php:138
 #: includes/forms/template.php:902
 msgid "No"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:599
+#: includes/admin/payments/view-payment-details.php:596
 #: src/Receipt/DonationReceipt.php:66
 #: build/donationFormRegistrars.js:1
 msgid "Donor Details"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:618
+#: includes/admin/payments/view-payment-details.php:615
 msgid "Create New Donor"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:621
+#: includes/admin/payments/view-payment-details.php:618
 msgid "Donor Since:"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:627
+#: includes/admin/payments/view-payment-details.php:624
 #: includes/admin/shortcodes/shortcode-give-donor-wall.php:144
 msgid "Donor Name:"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:651
+#: includes/admin/payments/view-payment-details.php:648
 msgid "Donor Email:"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:669
+#: includes/admin/payments/view-payment-details.php:666
 msgid "Donor Phone:"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:687
+#: includes/admin/payments/view-payment-details.php:684
 msgid "Change Donor:"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:713
+#: includes/admin/payments/view-payment-details.php:710
 msgid "New Donor First Name:"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:719
+#: includes/admin/payments/view-payment-details.php:716
 msgid "New Donor Last Name:"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:725
+#: includes/admin/payments/view-payment-details.php:722
 msgid "New Donor Email:"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:735
+#: includes/admin/payments/view-payment-details.php:732
 msgid "Click \"Save Donation\" to create new donor."
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:913
+#: includes/admin/payments/view-payment-details.php:910
 msgid "Donation Notes"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:930
+#: includes/admin/payments/view-payment-details.php:927
 msgid "No donation notes."
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:937
+#: includes/admin/payments/view-payment-details.php:934
 msgid "Note type"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:939
+#: includes/admin/payments/view-payment-details.php:936
 msgid "Private note"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:940
+#: includes/admin/payments/view-payment-details.php:937
 msgid "Note to donor"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:942
+#: includes/admin/payments/view-payment-details.php:939
 msgid "Add Note"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:965
+#: includes/admin/payments/view-payment-details.php:962
 #: includes/admin/tools/export/give-export-donations-exporter.php:207
 msgid "Donor Comment"
 msgstr ""
 
-#: includes/admin/payments/view-payment-details.php:973
+#: includes/admin/payments/view-payment-details.php:970
 msgid "Add a comment"
 msgstr ""
 
@@ -3770,7 +3775,7 @@ msgid "Donation Methods"
 msgstr ""
 
 #: includes/admin/reports/class-gateways-report.php:87
-#: includes/admin/settings/class-settings-gateways.php:226
+#: includes/admin/settings/class-settings-gateways.php:225
 msgid "Gateways"
 msgstr ""
 
@@ -4047,70 +4052,78 @@ msgid "This option is only for advanced users and/or those directed by GiveWP su
 msgstr ""
 
 #: includes/admin/settings/class-settings-advanced.php:212
+msgid "Orphaned Donation Forms"
+msgstr ""
+
+#: includes/admin/settings/class-settings-advanced.php:213
+msgid "Show orphaned donation forms list-table. Tools > Data > Orphaned forms"
+msgstr ""
+
+#: includes/admin/settings/class-settings-advanced.php:223
 #: includes/admin/tools/views/html-admin-page-system-info.php:477
 #: includes/admin/tools/views/html-admin-page-system-info.php:581
 msgid "GiveWP Cache"
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:214
+#: includes/admin/settings/class-settings-advanced.php:225
 msgid "Clear Cache"
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:215
+#: includes/admin/settings/class-settings-advanced.php:226
 msgid "Click this button if you want to clear GiveWP's cache. The plugin stores common settings and queries in cache to optimize performance. Clearing cache will remove and begin rebuilding these saved queries."
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:220
+#: includes/admin/settings/class-settings-advanced.php:231
 msgid "Advanced Settings Docs Link"
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:223
+#: includes/admin/settings/class-settings-advanced.php:234
 msgid "Advanced Settings"
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:240
+#: includes/admin/settings/class-settings-advanced.php:251
 #: build/formBuilderApp.js:13
 msgid "Custom Styles"
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:241
+#: includes/admin/settings/class-settings-advanced.php:252
 msgid "Add your own custom CSS styles here to customize the appearance of all donation forms across your site. These styles will be applied globally, allowing you to maintain consistent design without editing each form individually."
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:266
-#: includes/admin/settings/class-settings-advanced.php:363
+#: includes/admin/settings/class-settings-advanced.php:277
+#: includes/admin/settings/class-settings-advanced.php:374
 msgid "Akismet SPAM Protection"
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:267
+#: includes/admin/settings/class-settings-advanced.php:278
 msgid "Add a layer of SPAM protection to your donation submissions with Akismet. When enabled, donation submissions will be first sent through Akismet's SPAM check API if you have the plugin activated and configured."
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:278
+#: includes/admin/settings/class-settings-advanced.php:289
 msgid "Whitelist by Email"
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:281
+#: includes/admin/settings/class-settings-advanced.php:292
 msgid "Add emails one at a time to ensure that donations using that email bypass GiveWP's Akismet SPAM filtering. Emails added to the list here are always allowed to donate, even if they've been flagged by Akismet."
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:284
+#: includes/admin/settings/class-settings-advanced.php:295
 msgid "To permanently prevent emails from being flagged as SPAM by Akismet <a href=\"%1$s\" target=\"_blank\">contact their team here</a>."
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:317
+#: includes/admin/settings/class-settings-advanced.php:328
 msgid "Cache"
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:318
+#: includes/admin/settings/class-settings-advanced.php:329
 msgid "If caching is enabled the plugin will start caching custom post type related queries and reduce the overall load time."
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:361
+#: includes/admin/settings/class-settings-advanced.php:372
 msgid "Advanced Options"
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:362
+#: includes/admin/settings/class-settings-advanced.php:373
 #: includes/misc-functions.php:537
 #: includes/post-types.php:58
 #: src/DonationForms/V2/DonationFormsAdminPage.php:69
@@ -4120,11 +4133,11 @@ msgstr ""
 msgid "Donation Forms"
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:428
+#: includes/admin/settings/class-settings-advanced.php:439
 msgid "Please properly configure Akismet to enable SPAM protection."
 msgstr ""
 
-#: includes/admin/settings/class-settings-advanced.php:470
+#: includes/admin/settings/class-settings-advanced.php:481
 msgid "We recommend moving away from Legacy settings and the Option-Based Editor as they are not compatible with newer features and will eventually be removed."
 msgstr ""
 
@@ -4365,63 +4378,63 @@ msgstr ""
 msgid "Contact Information"
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:36
+#: includes/admin/settings/class-settings-gateways.php:35
 #: build/formBuilderRegistrars.js:1
 msgid "Payment Gateways"
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:69
+#: includes/admin/settings/class-settings-gateways.php:68
 #: includes/gateways/stripe/includes/admin/class-give-stripe-admin-settings.php:197
 #: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:249
 msgid "Collect Billing Details"
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:70
+#: includes/admin/settings/class-settings-gateways.php:69
 msgid "If enabled, required billing address fields are added to Offline Donation forms. These fields are not required to process the transaction, but you may have a need to collect the data. Billing address details are added to both the donation and donor record in GiveWP. "
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:81
+#: includes/admin/settings/class-settings-gateways.php:80
 msgid "The Offline Donation Instructions are a chance for you to educate the donor on how to best submit offline donations. These instructions appear directly on the form, and after submission of the form. Note: You may also customize the instructions on individual forms as needed."
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:90
+#: includes/admin/settings/class-settings-gateways.php:89
 msgid "Offline Donations Settings Docs Link"
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:93
+#: includes/admin/settings/class-settings-gateways.php:92
 msgid "Offline Gateway Settings"
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:116
+#: includes/admin/settings/class-settings-gateways.php:115
 msgid "If enabled, donations are processed through the sandbox/test accounts configured in each gateway's settings. This prevents having to use real money for tests. See the payment gateway documentation for instructions on configuring sandbox accounts."
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:129
-#: includes/admin/settings/class-settings-gateways.php:135
+#: includes/admin/settings/class-settings-gateways.php:128
+#: includes/admin/settings/class-settings-gateways.php:134
 #: includes/admin/settings/class-settings-gateways.php:423
 msgid "Enabled Gateways"
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:130
-#: includes/admin/settings/class-settings-gateways.php:136
+#: includes/admin/settings/class-settings-gateways.php:129
+#: includes/admin/settings/class-settings-gateways.php:135
 msgid "Enable your payment gateway. Can be ordered by dragging."
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:148
-#: includes/admin/settings/class-settings-gateways.php:154
+#: includes/admin/settings/class-settings-gateways.php:147
+#: includes/admin/settings/class-settings-gateways.php:153
 msgid "Gateways Label"
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:168
-#: includes/admin/settings/class-settings-gateways.php:174
+#: includes/admin/settings/class-settings-gateways.php:167
+#: includes/admin/settings/class-settings-gateways.php:173
 msgid "The gateway that will be selected by default."
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:180
+#: includes/admin/settings/class-settings-gateways.php:179
 msgid "Gateways Docs Link"
 msgstr ""
 
-#: includes/admin/settings/class-settings-gateways.php:183
+#: includes/admin/settings/class-settings-gateways.php:182
 msgid "Gateway Settings"
 msgstr ""
 
@@ -4430,11 +4443,11 @@ msgid "Want to accept credit card donations directly on your website?"
 msgstr ""
 
 #: includes/admin/settings/class-settings-gateways.php:302
-msgid "Activate the free Stripe payment gateway %1$s, <a href=\"%2$s\" target=\"_blank\">PayPal Donations</a>, or a premium gateway like <a href=\"%3$s\" target=\"_blank\">Authorize.net</a>, or <a href=\"%4$s\" target=\"_blank\">Stripe Premium</a> for no added fees and priority support."
+msgid "Activate the free Stripe payment gateway %1$s, <a href=\"%2$s\" target=\"_blank\">PayPal Donations</a>, or a premium gateway like <a href=\"%3$s\" target=\"_blank\">2checkout</a>, or <a href=\"%4$s\" target=\"_blank\">Authorize.Net</a>."
 msgstr ""
 
 #: includes/admin/settings/class-settings-gateways.php:307
-msgid "The free version of Stripe includes an additional 2% processing fee in addition to Stripe's normal fees for one-time donations. This ensures we can fully support the plugin for the future. Upgrade to the premium Stripe add-on for no added fees."
+msgid "The Stripe payment gateway includes a 2% processing fee in addition to Stripe’s transaction fee. This ensures our ability to provide future support and updates for the plugin."
 msgstr ""
 
 #: includes/admin/settings/class-settings-gateways.php:323
@@ -4464,62 +4477,6 @@ msgstr ""
 #: build/formBuilderApp.js:1
 #: build/formBuilderRegistrars.js:1
 msgid "Label"
-msgstr ""
-
-#: includes/admin/settings/class-settings-gateways.php:588
-#: build/assets/dist/js/give-add-v2form.js:1
-#: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/assets/dist/js/give-edit-v2form.js:1
-#: build/campaignDetails.js:10
-msgid "Feature notice"
-msgstr ""
-
-#: includes/admin/settings/class-settings-gateways.php:593
-#: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/assets/dist/js/give-add-v2form.js:1
-#: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
-#: build/assets/dist/js/give-admin-event-tickets.js:4
-#: build/assets/dist/js/give-edit-v2form.js:1
-#: build/campaignDetails.js:10
-#: build/campaignListTable.js:4
-#: build/formBuilderApp.js:13
-msgid "Close dialog"
-msgstr ""
-
-#: includes/admin/settings/class-settings-gateways.php:610
-#: build/assets/dist/js/give-add-v2form.js:1
-#: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/assets/dist/js/give-edit-v2form.js:1
-#: build/campaignDetails.js:10
-msgid "What's new"
-msgstr ""
-
-#: includes/admin/settings/class-settings-gateways.php:613
-msgid "GiveWP 3.0 introduces an enhanced forms experience powered by the new Visual Donations Form Builder. However, we are still working on gateway compatibility with the new forms experience."
-msgstr ""
-
-#: includes/admin/settings/class-settings-gateways.php:620
-#: build/assets/dist/js/give-add-v2form.js:1
-#: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/assets/dist/js/give-edit-v2form.js:1
-#: build/campaignDetails.js:10
-msgid "Supported gateways"
-msgstr ""
-
-#: includes/admin/settings/class-settings-gateways.php:640
-#: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/campaignDetails.js:10
-#: build/formBuilderApp.js:13
-msgid "Got it"
-msgstr ""
-
-#: includes/admin/settings/class-settings-gateways.php:643
-#: build/assets/dist/js/give-add-v2form.js:1
-#: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/assets/dist/js/give-edit-v2form.js:1
-#: build/campaignDetails.js:10
-msgid "Read more on Add-ons and Gateways compatibility"
 msgstr ""
 
 #: includes/admin/settings/class-settings-general.php:32
@@ -5575,16 +5532,20 @@ msgstr ""
 msgid "API"
 msgstr ""
 
-#: includes/admin/tools/class-settings-data.php:43
+#: includes/admin/tools/class-settings-data.php:49
 msgid "Data"
 msgstr ""
 
-#: includes/admin/tools/class-settings-data.php:127
+#: includes/admin/tools/class-settings-data.php:152
 msgid "Database updates"
 msgstr ""
 
-#: includes/admin/tools/class-settings-data.php:128
+#: includes/admin/tools/class-settings-data.php:153
 msgid "Recount stats"
+msgstr ""
+
+#: includes/admin/tools/class-settings-data.php:157
+msgid "Orphaned donation forms"
 msgstr ""
 
 #: includes/admin/tools/class-settings-import.php:101
@@ -7889,6 +7850,7 @@ msgstr ""
 #: build/assets/dist/js/give-admin-subscriptions.js:4
 #: build/assets/dist/js/give-log-list-table-app.js:1
 #: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
 #: build/campaignBlocks.js:1
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDetails.js:10
@@ -8249,7 +8211,7 @@ msgid "Text ID within a group already exists."
 msgstr ""
 
 #: includes/class-notices.php:517
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:532
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:527
 msgid "Click here"
 msgstr ""
 
@@ -12945,7 +12907,7 @@ msgid "API Requests"
 msgstr ""
 
 #: includes/deprecated/deprecated-functions.php:1203
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:636
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:609
 msgid "Connect with Stripe"
 msgstr ""
 
@@ -13173,7 +13135,7 @@ msgstr ""
 
 #: includes/forms/functions.php:1290
 #: src/Campaigns/ListTable/Columns/GoalColumn.php:74
-#: src/DonationForms/V2/ListTable/Columns/GoalColumn.php:79
+#: src/DonationForms/V2/ListTable/Columns/GoalColumn.php:91
 #: src/EventTickets/ListTable/Columns/SalesAmountColumn.php:95
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/assets/dist/js/give-admin-donation-forms.js:4
@@ -13183,6 +13145,7 @@ msgstr ""
 #: build/assets/dist/js/give-admin-subscriptions.js:4
 #: build/assets/dist/js/give-log-list-table-app.js:1
 #: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
 msgid "of"
@@ -15203,6 +15166,98 @@ msgstr ""
 msgid "Total Refunds"
 msgstr ""
 
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:299
+#: build/assets/dist/js/give-admin-donation-forms.js:4
+#: build/campaignDetails.js:10
+msgid "Campaign ID"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:303
+msgid "Campaign title"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:306
+msgid "Campaign title is required"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:310
+msgid "Campaign status"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:314
+#: src/Campaigns/Factories/CampaignFactory.php:30
+msgid "Campaign short description"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:319
+msgid "Primary color for the campaign"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:323
+msgid "Secondary color for the campaign"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:327
+msgid "Campaign goal"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:328
+msgid "Must be a number"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:332
+msgid "Campaign goal progress"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:343
+msgid "Campaign goal type"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:347
+msgid "Default campaign form ID"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:351
+msgid "Campaign page ID"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:373
+msgid "Goal amount must be greater than 0"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:395
+msgid "Number of donations must be greater than 0"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:417
+msgid "Number of donors must be greater than 0"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:439
+msgid "Goal recurring amount must be greater than 0"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:461
+msgid "Number of recurring donations must be greater than 0"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:483
+msgid "Number of recurring donors must be greater than 0"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/RegisterDonationRoutes.php:172
+#: src/API/REST/V3/Routes/Donors/RegisterDonorRoutes.php:174
+msgid "You do not have permission to include sensitive data."
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/RegisterDonationRoutes.php:181
+msgid "You do not have permission to include anonymous donations."
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donors/RegisterDonorRoutes.php:183
+msgid "You do not have permission to include anonymous donors."
+msgstr ""
+
 #: src/BetaFeatures/Actions/RegisterSettings.php:29
 #: src/EventTickets/Actions/AddEventTicketsToDonationConfirmationPageDonationTotal.php:25
 msgid "Event Tickets"
@@ -15285,6 +15340,13 @@ msgstr ""
 msgid "%s donated %s"
 msgstr ""
 
+#: src/Campaigns/Blocks/CampaignDonations/resources/views/render.php:93
+#: src/Campaigns/Blocks/CampaignDonors/resources/views/render.php:96
+#: templates/shortcode-donor-wall.php:86
+#: build/assets/dist/js/admin-reports.js:1
+msgid "Anonymous"
+msgstr ""
+
 #: src/Campaigns/Blocks/CampaignDonations/resources/views/render.php:102
 #: src/Campaigns/Blocks/CampaignDonors/resources/views/render.php:113
 msgctxt "human-readable time difference"
@@ -15334,22 +15396,21 @@ msgid "Campaigns"
 msgstr ""
 
 #: src/Campaigns/CampaignsAdminPage.php:39
-#: src/Campaigns/Controllers/CampaignRequestController.php:38
-#: src/Campaigns/Controllers/CampaignRequestController.php:140
-#: src/Campaigns/Controllers/CampaignRequestController.php:201
+#: src/Campaigns/Controllers/CampaignRequestController.php:39
+#: src/Campaigns/Controllers/CampaignRequestController.php:141
+#: src/Campaigns/Controllers/CampaignRequestController.php:202
 msgid "Campaign not found"
 msgstr ""
 
-#: src/Campaigns/Factories/CampaignFactory.php:30
+#: src/Campaigns/Controllers/CampaignRequestController.php:273
+msgid "%s (copy)"
+msgstr ""
+
+#: src/Campaigns/Factories/CampaignFactory.php:29
 msgid "GiveWP Campaign"
 msgstr ""
 
 #: src/Campaigns/Factories/CampaignFactory.php:31
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:284
-msgid "Campaign short description"
-msgstr ""
-
-#: src/Campaigns/Factories/CampaignFactory.php:32
 msgid "Campaign long description"
 msgstr ""
 
@@ -15380,12 +15441,12 @@ msgid "No donations"
 msgstr ""
 
 #: src/Campaigns/ListTable/Columns/GoalColumn.php:81
-#: src/DonationForms/V2/ListTable/Columns/GoalColumn.php:86
+#: src/DonationForms/V2/ListTable/Columns/GoalColumn.php:98
 msgid "Goal achieved icon"
 msgstr ""
 
 #: src/Campaigns/ListTable/Columns/GoalColumn.php:82
-#: src/DonationForms/V2/ListTable/Columns/GoalColumn.php:87
+#: src/DonationForms/V2/ListTable/Columns/GoalColumn.php:99
 msgid "Goal achieved!"
 msgstr ""
 
@@ -15428,86 +15489,12 @@ msgstr ""
 msgid "Visit campaign page"
 msgstr ""
 
-#: src/Campaigns/Routes/DeleteCampaignListTable.php:113
+#: src/Campaigns/ListTable/Routes/DeleteCampaignListTable.php:113
 msgid "You don't have permission to delete Campaigns"
 msgstr ""
 
-#: src/Campaigns/Routes/GetCampaignsListTable.php:213
+#: src/Campaigns/ListTable/Routes/GetCampaignsListTable.php:217
 msgid "You don't have permission to view Campaigns"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:269
-#: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/campaignDetails.js:10
-msgid "Campaign ID"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:273
-msgid "Campaign title"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:276
-msgid "Campaign title is required"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:280
-msgid "Campaign status"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:289
-msgid "Primary color for the campaign"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:293
-msgid "Secondary color for the campaign"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:297
-msgid "Campaign goal"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:298
-msgid "Must be a number"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:302
-msgid "Campaign goal progress"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:313
-msgid "Campaign goal type"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:317
-msgid "Default campaign form ID"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:321
-msgid "Campaign page ID"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:343
-msgid "Goal amount must be greater than 0"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:365
-msgid "Number of donations must be greater than 0"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:387
-msgid "Number of donors must be greater than 0"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:409
-msgid "Goal recurring amount must be greater than 0"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:431
-msgid "Number of recurring donations must be greater than 0"
-msgstr ""
-
-#: src/Campaigns/Routes/RegisterCampaignRoutes.php:453
-msgid "Number of recurring donors must be greater than 0"
 msgstr ""
 
 #: src/DonationForms/Actions/ConvertConsentBlockToFieldsApi.php:38
@@ -15540,6 +15527,10 @@ msgstr ""
 
 #: src/DonationForms/Controllers/DonateController.php:222
 msgid "[%s] This payment gateway does not support recurring payments, please try selecting another payment gateway."
+msgstr ""
+
+#: src/DonationForms/Controllers/DonationFormsRequestController.php:27
+msgid "Form not found"
 msgstr ""
 
 #: src/DonationForms/DataTransferObjects/DonationFormGoalData.php:227
@@ -15703,7 +15694,7 @@ msgstr ""
 msgid "Upgraded"
 msgstr ""
 
-#: src/DonationForms/ViewModels/DonationFormViewModel.php:201
+#: src/DonationForms/ViewModels/DonationFormViewModel.php:196
 #: src/Onboarding/Setup/templates/index.html.php:252
 #: src/Onboarding/Setup/templates/index.html.php:253
 #: build/assets/dist/js/admin-onboarding-wizard.js:1
@@ -15712,7 +15703,7 @@ msgstr ""
 msgid "Recurring Donations"
 msgstr ""
 
-#: src/DonationForms/ViewModels/DonationFormViewModel.php:204
+#: src/DonationForms/ViewModels/DonationFormViewModel.php:199
 msgid "Counted"
 msgstr ""
 
@@ -15786,15 +15777,6 @@ msgstr ""
 #: src/Donations/ListTable/Columns/PaymentTypeColumn.php:70
 #: build/formBuilderRegistrars.js:1
 msgid "one-time"
-msgstr ""
-
-#: src/Donations/Routes/RegisterDonationRoutes.php:172
-#: src/Donors/Routes/RegisterDonorRoutes.php:174
-msgid "You do not have permission to include sensitive data."
-msgstr ""
-
-#: src/Donations/Routes/RegisterDonationRoutes.php:181
-msgid "You do not have permission to include anonymous donations."
 msgstr ""
 
 #: src/Donations/ValueObjects/DonationStatus.php:63
@@ -16004,10 +15986,6 @@ msgstr ""
 
 #: src/Donors/ListTable/Columns/LatestDonationColumn.php:37
 msgid "Latest Donation"
-msgstr ""
-
-#: src/Donors/Routes/RegisterDonorRoutes.php:183
-msgid "You do not have permission to include anonymous donors."
 msgstr ""
 
 #: src/Donors/ValueObjects/DonorType.php:32
@@ -17041,7 +17019,7 @@ msgid "Connect to Stripe"
 msgstr ""
 
 #: src/Onboarding/Setup/templates/index.html.php:112
-msgid "Stripe is one of the most popular payment gateways, and for good reason! Receive one-time and Recurring Donations (add-on) using many of the most popular payment methods. Note: the FREE version of Stripe includes an additional 2% fee for processing one-time donations. Remove the fee by installing and activating the premium Stripe add-on."
+msgid "Stripe is one of the most popular payment gateways, and for good reason! Receive one-time and Recurring Donations (add-on) using many of the most popular payment methods."
 msgstr ""
 
 #: src/Onboarding/Setup/templates/index.html.php:143
@@ -17581,7 +17559,7 @@ msgid "Sign up for PayPal"
 msgstr ""
 
 #: src/PaymentGateways/PayPalCommerce/AdminSettingFields.php:449
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:420
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:415
 msgid "Connected"
 msgstr ""
 
@@ -17598,7 +17576,7 @@ msgid "Connected for payments as"
 msgstr ""
 
 #: src/PaymentGateways/PayPalCommerce/AdminSettingFields.php:477
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:432
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:427
 msgid "Disconnect"
 msgstr ""
 
@@ -18712,7 +18690,7 @@ msgid "Accept Donations with Stripe"
 msgstr ""
 
 #: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:142
-msgid "You are using the Pro version of the GiveWP add-on which includes additional payment methods, zero additional fees, and premium support."
+msgid "You are using the Pro version of the GiveWP add-on, which includes additional connection options and premium support."
 msgstr ""
 
 #: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:150
@@ -18723,100 +18701,96 @@ msgstr ""
 msgid "Connect to the Stripe payment gateway using this section. Multiple Stripe accounts can be connected simultaneously. All donation forms will use the \"Default Account\" unless configured otherwise. To specify a different Stripe account for a form, configure the settings within the \"Stripe Account\" tab on the individual form edit screen."
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:219
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:214
 msgid "Add a New Stripe Account"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:306
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:301
 msgid "Account name:"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:317
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:312
 msgid "Account email:"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:330
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:325
 msgid "Account ID:"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:342
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:337
 msgid "Connection Method:"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:353
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:348
 msgid "Statement Descriptor:"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:359
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:354
 msgid "This is the text that appears on your donor's bank statements. This is typically the name of your website or organization. Click on this icon to read more about Stripe statement text requirements."
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:416
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:411
 msgid "Connection Status:"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:444
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:439
 #: src/PaymentGateways/Stripe/Admin/CustomizeAccountField.php:82
 msgid "Default Account"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:455
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:450
 msgid "Set as Default"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:477
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:472
 msgid "You are connected! Now this is important: Please configure your Stripe webhook to finalize the setup."
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:484
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:479
 msgid "In order for Stripe to function properly, you must add a new Stripe webhook endpoint. To do this please visit the <a href='https://dashboard.stripe.com/webhooks' target='_blank'>Webhooks Section of your Stripe Dashboard</a> and click the <strong>Add endpoint</strong> button and paste the following URL:"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:490
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:485
 msgid "Stripe webhooks are required so GiveWP can communicate properly with the payment gateway to confirm payment completion, renewals, and more."
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:527
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:522
 msgid "Give 2.7.0 introduces the ability to connect a single site to multiple Stripe accounts. To use this feature, you need to complete database updates. "
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:533
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:528
 msgid "to complete your pending database updates."
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:552
-msgid "NOTE: You are using the free Stripe payment gateway integration. This includes an additional 2%% fee for processing one-time donations. This fee is removed by activating the premium <a href=\"%1$s\" target=\"_blank\">Stripe add-on</a> and never applies to subscription donations made through the <a href=\"%2$s\" target=\"_blank\">Recurring Donations add-on</a>. <a href=\"%3$s\" target=\"_blank\">Learn More ></a>"
-msgstr ""
-
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:577
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:550
 msgid "No Stripe Accounts Connected"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:578
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:551
 msgid "Connect a New Stripe Account"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:584
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:557
 msgid "Connect an account to get started!"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:585
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:558
 msgid "Add a new account to customize the Stripe account used for this donation form."
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:653
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:626
 msgid "All payments go to the default account"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:654
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:627
 msgid "Stripe donations process through the account set above"
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:660
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:633
 msgid "You can set this globally (for all donation forms) or override the Stripe account per donation form."
 msgstr ""
 
-#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:664
+#: src/PaymentGateways/Stripe/Admin/AccountManagerSettingField.php:637
 msgid "This overrides the global default account setting for this donation form."
 msgstr ""
 
@@ -19789,11 +19763,6 @@ msgstr ""
 
 #: templates/shortcode-donor-wall.php:44
 msgid "Donor Avatar"
-msgstr ""
-
-#: templates/shortcode-donor-wall.php:86
-#: build/assets/dist/js/admin-reports.js:1
-msgid "Anonymous"
 msgstr ""
 
 #. translators: 1: amount of income raised 2: goal target amount.
@@ -21107,6 +21076,18 @@ msgstr ""
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
 #: build/formBuilderApp.js:13
+msgid "Close dialog"
+msgstr ""
+
+#: build/assets/dist/js/donor-dashboards-app.js:1
+#: build/assets/dist/js/give-add-v2form.js:1
+#: build/assets/dist/js/give-admin-donation-forms.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets.js:4
+#: build/assets/dist/js/give-edit-v2form.js:1
+#: build/campaignDetails.js:10
+#: build/campaignListTable.js:4
+#: build/formBuilderApp.js:13
 msgid "Close dialog icon"
 msgstr ""
 
@@ -21275,6 +21256,20 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-edit-v2form.js:1
 #: build/campaignDetails.js:10
+msgid "Feature notice"
+msgstr ""
+
+#: build/assets/dist/js/give-add-v2form.js:1
+#: build/assets/dist/js/give-admin-donation-forms.js:4
+#: build/assets/dist/js/give-edit-v2form.js:1
+#: build/campaignDetails.js:10
+msgid "What's new"
+msgstr ""
+
+#: build/assets/dist/js/give-add-v2form.js:1
+#: build/assets/dist/js/give-admin-donation-forms.js:4
+#: build/assets/dist/js/give-edit-v2form.js:1
+#: build/campaignDetails.js:10
 msgid "GiveWP 3.0 introduces an enhanced forms experience powered by the new Visual Donation Form Builder. The team is still working on add-on and gateway compatibility. If you need to use an add-on or gateway that isn't listed, use the \"%sAdd form%s\" option for now."
 msgstr ""
 
@@ -21289,6 +21284,13 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-edit-v2form.js:1
 #: build/campaignDetails.js:10
+msgid "Supported gateways"
+msgstr ""
+
+#: build/assets/dist/js/give-add-v2form.js:1
+#: build/assets/dist/js/give-admin-donation-forms.js:4
+#: build/assets/dist/js/give-edit-v2form.js:1
+#: build/campaignDetails.js:10
 msgid "Proceed with upgrade"
 msgstr ""
 
@@ -21297,6 +21299,13 @@ msgstr ""
 #: build/assets/dist/js/give-edit-v2form.js:1
 #: build/campaignDetails.js:10
 msgid "Proceed with the new form builder"
+msgstr ""
+
+#: build/assets/dist/js/give-add-v2form.js:1
+#: build/assets/dist/js/give-admin-donation-forms.js:4
+#: build/assets/dist/js/give-edit-v2form.js:1
+#: build/campaignDetails.js:10
+msgid "Read more on Add-ons and Gateways compatibility"
 msgstr ""
 
 #: build/assets/dist/js/give-add-v2form.js:1
@@ -21317,6 +21326,7 @@ msgstr ""
 #: build/assets/dist/js/give-admin-subscriptions.js:1
 #: build/assets/dist/js/give-log-list-table-app.js:1
 #: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
 #: build/campaignDetails.js:7
 #: build/campaignListTable.js:1
 msgid "No data"
@@ -21330,6 +21340,7 @@ msgstr ""
 #: build/assets/dist/js/give-admin-subscriptions.js:1
 #: build/assets/dist/js/give-log-list-table-app.js:1
 #: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
 #: build/campaignDetails.js:7
 #: build/campaignListTable.js:1
 msgid "Error details"
@@ -21343,6 +21354,7 @@ msgstr ""
 #: build/assets/dist/js/give-admin-subscriptions.js:1
 #: build/assets/dist/js/give-log-list-table-app.js:1
 #: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
 #: build/campaignDetails.js:7
 #: build/campaignListTable.js:1
 msgid "Additional context"
@@ -21460,6 +21472,7 @@ msgstr ""
 #: build/assets/dist/js/give-admin-subscriptions.js:4
 #: build/assets/dist/js/give-log-list-table-app.js:1
 #: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
 msgid "Current Page"
@@ -21554,6 +21567,12 @@ msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/campaignDetails.js:10
+#: build/formBuilderApp.js:13
+msgid "Got it"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donation-forms.js:4
+#: build/campaignDetails.js:10
 msgid "  Below are the donation forms to be edited."
 msgstr ""
 
@@ -21642,6 +21661,7 @@ msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/campaignDetails.js:10
+#: build/campaignListTable.js:4
 msgid "Duplicate"
 msgstr ""
 
@@ -22185,6 +22205,39 @@ msgstr ""
 
 #: build/assets/dist/js/give-migrations-list-table-app.js:1
 msgid "We strongly recommend you create a complete backup of your WordPress files and database prior to performing an update. We are not responsible for any misuse, deletions, white screens, fatal errors, or any other issue resulting from the use of this plugin."
+msgstr ""
+
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+msgctxt "Date format"
+msgid "MM/dd/yyyy 'at' h:mmaaa"
+msgstr ""
+
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+msgid "Date created"
+msgstr ""
+
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+msgid "Associate forms"
+msgstr ""
+
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+msgid "Associate forms with campaign"
+msgstr ""
+
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+msgid "Selected forms"
+msgstr ""
+
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+msgid "Select campaign"
+msgstr ""
+
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+msgid "Associate forms "
+msgstr ""
+
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+msgid "Loading donation forms"
 msgstr ""
 
 #: build/assets/dist/js/paypal-commerce.js:1
@@ -22915,7 +22968,7 @@ msgid "Your campaign is currently archived. You can view the campaign details bu
 msgstr ""
 
 #: build/campaignDetails.js:10
-msgid "Move to draft"
+msgid "Move to Active"
 msgstr ""
 
 #: build/campaignDetails.js:10
@@ -22972,6 +23025,10 @@ msgstr ""
 
 #: build/campaignDetails.js:10
 msgid "Loading campaign..."
+msgstr ""
+
+#: build/campaignListTable.js:4
+msgid "Are you sure you want to duplicate the following campaign: %s?"
 msgstr ""
 
 #: build/campaignListTable.js:4

@@ -303,7 +303,12 @@ final class FormFieldValidator
     }
     $urlParts = parse_url($value);
     if (isset($urlParts['host'])) {
-      $urlParts['host'] = idn_to_ascii($urlParts['host'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+      if (function_exists('idn_to_ascii')) {
+        $asciiHost = idn_to_ascii($urlParts['host'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+        if (false !== $asciiHost) {
+          $urlParts['host'] = $asciiHost;
+        }
+      }
       $value = (isset($urlParts['scheme']) ? $urlParts['scheme'] . '://' : '') .
                $urlParts['host'] .
                (isset($urlParts['path']) ? $urlParts['path'] : '');

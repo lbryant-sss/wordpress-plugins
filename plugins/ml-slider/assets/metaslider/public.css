@@ -92,6 +92,7 @@ body .metaslider .flexslider .flex-direction-nav li {
 }
 
 .metaslider .flex-pauseplay a {
+    box-sizing: border-box;
 	height: 30px;
 	width: 30px;
 }
@@ -122,11 +123,11 @@ body .metaslider .flexslider .flex-direction-nav li {
 }
 
 .metaslider.has-dots-onhover-navigation .flexslider .flex-control-paging {
-    opacity: 0;
-    transition: all .3s ease;
-}
-.metaslider.has-dots-onhover-navigation .flexslider .flex-control-paging:hover {
     opacity: 1;
+    transition: opacity .3s ease;
+}
+.metaslider.has-dots-onhover-navigation:hover .flexslider .flex-control-paging {
+    opacity: 1 !important;
 }
 
 .metaslider-flex.ms-theme-default .flex-next:focus {
@@ -231,7 +232,7 @@ body .metaslider .flexslider .flex-direction-nav li {
 .metaslider.has-onhover-arrows .flexslider .flex-direction-nav li a {
     opacity: 0;
 }
-.metaslider.has-onhover-arrows .flexslider .flex-direction-nav li a:hover {
+.metaslider.has-onhover-arrows:hover .flexslider .flex-direction-nav li a{
     opacity: 1;
 }
 

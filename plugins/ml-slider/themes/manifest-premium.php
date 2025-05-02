@@ -36,7 +36,7 @@ return array(
         'type' => 'premium',
         'supports' => array( 'flex' ),
         'description' => __( 'A dynamic slideshow theme that emphasizes the active slide by scaling it larger than the surrounding slides, creating a hero-like focal point that draws the viewer\'s attention.', 'ml-slider' ),
-        'instructions' => __( 'This is the Beta version of the Hero Theme. It should also be used with 100% Width and Carousel Mode disabled and Transition Effect set to Slide. Currently works on all slide types except External Image and Tiktok Videos.', 'ml-slider' )
+        'instructions' => __( 'This is the Beta version of the Hero Theme. It should also be used with 100% Width and Carousel Mode disabled, Transition Effect set to Slide and Center Align enabled. Currently works on all slide types except External Image and Tiktok Videos.', 'ml-slider' )
     ),
     'revelio' => array(
         'folder' => 'revelio',
@@ -60,6 +60,6 @@ return array(
         'type' => 'premium',
         'supports' => array( 'flex' ),
         'description' => __( 'A dynamic slideshow theme that emphasizes the active slide by using grayscale and opacity for the surrounding slides, creating a focal point that draws the viewer\'s attention.', 'ml-slider' ),
-        'instructions' => __( 'This is the Beta version of the Focus Theme. It should also be used with 100% Width and Carousel Mode disabled and Transition Effect set to Slide. Currently works on all slide types except External Image and Tiktok Videos.', 'ml-slider' )
+        'instructions' => __( 'This is the Beta version of the Focus Theme. It should also be used with 100% Width and Carousel Mode disabled, Transition Effect set to Slide and Center Align enabled. Currently works on all slide types except External Image and Tiktok Videos.', 'ml-slider' )
     ),
 );

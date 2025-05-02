@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, page builder, editor, gutenberg blocks
 Donate link: https://www.kadencewp.com/about-us/
 Requires at least: 6.4
 Tested up to: 6.8.0
-Stable tag: 3.5.5
+Stable tag: 3.5.6
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -174,16 +174,24 @@ Please report security bugs found in the Kadence Blocks plugin's source code thr
 
 == Changelog ==
 
+= 3.5.6 =
+Release Date: May 1st 2025
+* Update: Connect custom post category colors with relevant blocks (posts, post grid)
+* Enhancement: Improved design library navigation, filtering, and sorting.
+* Fix: Comma separated CC field not sending to multiple users.
+* Fix: Transparent Logo Reverts to Default Logo After Scrolling Back Up with Sticky Header Enabled.
+* Fix: Text alignemnt on frontend in table block.
+
 = 3.5.5 =
 Release Date: April 28th 2025
 * Fix: Added more safety checks to telemetry opt-ins/opt-outs.
 
 = 3.5.4 =
 Release Date: April 25th 2025
-* Fix: Button Block height when stacked vertically in section in some situations
-* Fix: Navigation (Adv) top left border radius for active state does not reflect
-* Fix: Video Popup padding for tablet and desktop is not reflecting the frontend
-* Update: Tooltips and Progress Bar (stars) Aria roles for accessibility
+* Fix: Button Block height when stacked vertically in section in some situations.
+* Fix: Navigation (Adv) top left border radius for active state does not reflect.
+* Fix: Video Popup padding for tablet and desktop is not reflecting the frontend.
+* Update: Tooltips and Progress Bar (stars) Aria roles for accessibility.
 
 = 3.5.3 =
 Release Date: 17th April 2025

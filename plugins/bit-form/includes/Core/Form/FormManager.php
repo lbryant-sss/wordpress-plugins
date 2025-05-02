@@ -424,17 +424,28 @@ class FormManager
       'image/jpeg'    => 'jpg',
       'image/svg+xml' => 'svg',
     ];
-    $data_uri = $blobLink;
-    $encoded_image = explode(',', $data_uri)[1];
-    $decoded_image = base64_decode($encoded_image);
-    $_upload_dir = FileHandler::getEntriesFileUploadDir($form_id, $entry_id);
-    FileHandler::createIndexFile($_upload_dir);
+    try {
+      if (!isset($imgTypes[$imgType])) {
+        throw new \InvalidArgumentException("Unsupported image type: $imgType");
+      }
+      $parts = explode(',', $blobLink, 2);
+      if (2 !== count($parts) || false === ($decoded_image = base64_decode($parts[1]))) {
+        throw new \RuntimeException('Invalid or corrupt signature data URI');
+      }
 
-    $filename = "{$entry_id}-{$fieldKey}.{$imgTypes[$imgType]}";
-    $fullPath = $_upload_dir . DIRECTORY_SEPARATOR . $filename;
-    file_put_contents($fullPath, $decoded_image);
+      $_upload_dir = FileHandler::getEntriesFileUploadDir($form_id, $entry_id);
+      FileHandler::createIndexFile($_upload_dir);
 
-    return $filename;
+      $filename = "{$entry_id}-{$fieldKey}.{$imgTypes[$imgType]}";
+      $fullPath = $_upload_dir . DIRECTORY_SEPARATOR . $filename;
+      if (false === file_put_contents($fullPath, $decoded_image)) {
+        throw new \RuntimeException("Failed to write image to $fullPath");
+      }
+      return $filename;
+    } catch (\Throwable $e) {
+      error_log("[Signature Error] Form: $form_id, Entry: $entry_id, Field: $fieldKey - " . $e->getMessage());
+      return 'signature-failed.png'; // or a default filename if appropriate
+    }
   }
 
   private function entryInsert($user_details)
@@ -953,6 +964,15 @@ class FormManager
       if (in_array($fieldKey, $repeaterFields)) {
         return $repeaterKey;
       }
+    }
+    return false;
+  }
+
+  public function isRepeaterField($fieldKey)
+  {
+    $repeatedFields = $this->getRepeaterFields();
+    if (array_key_exists($fieldKey, $repeatedFields)) {
+      return true;
     }
     return false;
   }

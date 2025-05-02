@@ -745,6 +745,29 @@ class MetaSlider_Slideshows
     }
 
     /**
+     * Method to get slideshows that uses legacy libraries
+     * 
+     * @return int
+     */
+    public function get_legacy_slideshows()
+    {
+        $slideshows = $this->get();
+        $count_sliders = 0;
+        foreach ($slideshows as $slideshow) {
+            if(isset($slideshow['id'])) {
+                $settings = get_post_meta($slideshow['id'], 'ml-slider_settings', true);
+                if (is_array($settings) && isset($settings['type'])) {
+                    $type = $settings['type'];
+                    if($type !== 'flex'){
+                        $count_sliders++;
+                    }
+                }
+            }
+        }
+        return $count_sliders;
+    }
+
+    /**
      * Method to build out a simple slideshow object
      *
      * @param object $slideshow - The slideshow object

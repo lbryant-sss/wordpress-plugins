@@ -369,7 +369,7 @@ class MetaSlider_Admin_Table extends WP_List_table
         $slideshow_id = $item['ID'];
         $pages = $this->get_posts_using_slideshow($slideshow_id);
         
-        if ($pages !== esc_html__('Not in use.', 'ml-slider')) {
+        if ($pages !== esc_html__('Not found.', 'ml-slider')) {
             return '<button class="open-modal button" data-id="' . esc_attr($slideshow_id) . '">'
                 . esc_html__('View Usage', 'ml-slider') . '</button>
                 <div class="modal-overlay" id="overlay-' . esc_attr($slideshow_id) . '" style="display: none;"></div>
@@ -377,12 +377,12 @@ class MetaSlider_Admin_Table extends WP_List_table
                     <div class="modal-content">
                         <span class="close-modal" data-id="' . esc_attr($slideshow_id) . '">&times;</span>
                         <h3 class="text-lg font-medium m-0 leading-6 text-gray-darkest">'
-                            . esc_html__('Pages Using This Slideshow', 'ml-slider') . '</h3>' 
+                            . esc_html__('Content Using This Slideshow', 'ml-slider') . '</h3>' 
                             . $pages . '
                     </div>
                 </div>';
         } else {
-            return esc_html__('Not in use.', 'ml-slider');
+            return esc_html__('Not found.', 'ml-slider');
         }
     }
     
@@ -442,7 +442,7 @@ class MetaSlider_Admin_Table extends WP_List_table
             $output .= "<h5>{$category}:</h5><ul>" . implode('', $items) . "</ul>";
         }
     
-        return empty($output) ? esc_html__('Not in use.', 'ml-slider') : $output;
+        return empty($output) ? esc_html__('Not found.', 'ml-slider') : $output;
     }          
 
     public function extra_tablenav( $which )

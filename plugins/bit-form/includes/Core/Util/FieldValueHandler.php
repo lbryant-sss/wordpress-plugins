@@ -389,62 +389,102 @@ final class FieldValueHandler
 
   public static function replaceRepeaterFieldValue($stringToReplaceField, $fieldValues, $formID)
   {
+    if (!is_string($stringToReplaceField) || empty($stringToReplaceField)) {
+      return $stringToReplaceField; // Return as-is if nothing to replace
+    }
+
     $formManager = FormManager::getInstance($formID);
     $formFields = $formManager->getFields();
 
+    // Find all placeholders like ${field_key}
     preg_match_all('/\$\{(.*?)\}/', $stringToReplaceField, $matches);
 
     if (empty($matches[1])) {
       return $stringToReplaceField;
     }
+    // Clean field data
+    $dataCleaning = self::removeEmptyValues($fieldValues);
 
+    $flatFieldData = self::restructureRepeaterData($dataCleaning, $formManager);
     // generate table for repeater fields
     foreach ($matches[1] as $fk) {
       $repeaterFieldKey = $fk;
-      $dataCleaning = self::removeEmptyValues($fieldValues);
-      $repeaterFieldData = self::getRepeaterFieldData($dataCleaning, $repeaterFieldKey);
-
-      if (isset($formFields[$repeaterFieldKey]['type']) && !empty($formFields[$repeaterFieldKey]['type']) && 'repeater' === $formFields[$repeaterFieldKey]['type']) {
-        $repeaterMarkup = self::repeaterFieldTable($repeaterFieldData, $formFields, $repeaterFieldKey);
+      $fieldType = isset($formFields[$repeaterFieldKey]['type']) && !empty($formFields[$repeaterFieldKey]['type']) ? $formFields[$repeaterFieldKey]['type'] : null;
+      if ('repeater' === $fieldType) {
+        $repeaterMarkup = self::repeaterFieldTable($dataCleaning[$repeaterFieldKey] ?? [], $formFields, $repeaterFieldKey);
         $stringToReplaceField = str_replace('${' . $fk . '}', $repeaterMarkup, $stringToReplaceField);
       } else {
-        if (!empty($repeaterFieldData)) {
-          $stringToReplaceField = str_replace('${' . $fk . '}', $repeaterFieldData, $stringToReplaceField);
-        }
+        $repeaterFieldData = self::safeFlatString($flatFieldData[$repeaterFieldKey] ?? '');
+        $stringToReplaceField = str_replace('${' . $fk . '}', $repeaterFieldData, $stringToReplaceField);
       }
     }
     return $stringToReplaceField;
   }
 
-  private static function getRepeaterFieldData($repeaterFieldData, $key)
+  /**
+ * Restructures repeater field data to maintain original structure while
+ * aggregating nested repeater values into top-level indexed arrays.
+ *
+ * @param array $data Original field data structure
+ * @return array Restructured data with aggregated arrays
+ */
+  private static function restructureRepeaterData(array $data, $formManagerInstance): array
   {
-    $values = [];
+    $result = $data;
 
-    // Decode any JSON strings in the array
-    foreach ($repeaterFieldData as $k => $v) {
-      if (is_string($v) && null !== json_decode($v, true)) {
-        $repeaterFieldData[$k] = json_decode($v, true);
+    foreach ($data as $topKey => $topValue) {
+      if ($formManagerInstance->isRepeaterField($topKey)) {
+        foreach ($topValue as $entryIndex => $entry) {
+          if (!is_array($entry)) {
+            continue;
+          }
+
+          foreach ($entry as $subKey => $subValue) {
+            // Handle nested arrays within entries
+            if (is_array($subValue)) {
+              $result[$subKey][$entryIndex] = $subValue;
+            } else {
+              $result[$subKey][$entryIndex] = $subValue;
+            }
+          }
+        }
       }
     }
 
-    // If the key exists in the main array
-    if (isset($repeaterFieldData[$key])) {
-      return $repeaterFieldData[$key];
+    return $result;
+  }
+
+  /**
+ * Safely converts any type of form value(Specially Repeater Field Value) to string.
+ *
+ * @param mixed $data
+ * @return string
+ */
+  public static function safeFlatString($data): string
+  {
+    if (is_array($data)) {
+      return implode(', ', array_map(function ($item) {
+        return is_array($item) ? '[' . implode(', ', array_map('strval', $item)) . ']' : self::safeFlatString($item);
+      }, $data));
     }
 
-    // Search recursively
-    $iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($repeaterFieldData));
-    foreach ($iterator as $k => $v) {
-      if ($k === $key) {
-        $values[] = $v;
-      }
+    if (is_object($data)) {
+      return method_exists($data, '__toString') ? (string) $data : (json_encode($data) ?: '');
     }
 
-    return count($values) > 1 ? implode(', ', $values) : (1 === count($values) ? $values[0] : null);
+    if (is_null($data)) {
+      return '';
+    }
+
+    return (string) $data;
   }
 
   private static function removeEmptyValues($fieldData)
   {
+    if (!is_array($fieldData)) {
+      return $fieldData;
+    }
+    // Remove empty values from the array
     return array_filter($fieldData, function ($value) {
       return !empty($value);
     });
@@ -452,14 +492,18 @@ final class FieldValueHandler
 
   private static function repeaterFieldTable($repeaterFieldData, $formFields, $repeaterFieldKey)
   {
+    if (!is_array($repeaterFieldData) || !isset($repeaterFieldData[0]) || !is_array($repeaterFieldData[0])) {
+      return ''; // Safely return empty if not a valid repeater structure
+    }
     $table = "<table style='font-family: arial, sans-serif; border-collapse: collapse; width: 100%;'>";
     $table .= '<tr>';
     $table .= '<th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">' . self::getLabel($formFields, $repeaterFieldKey) . '</th>';
     $table .= '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">';
     $table .= '<table style="width: 100%; border-collapse: collapse;">';
 
+    $headers = array_keys($repeaterFieldData[0]);
     $table .= '<tr>';
-    foreach (array_keys($repeaterFieldData[0]) as $fk) {
+    foreach ($headers as $fk) {
       $table .= '<th style="border: 1px solid #dddddd; padding: 8px; background-color: #f2f2f2;">' . self::getLabel($formFields, $fk) . '</th>';
     }
     $table .= '</tr>';

@@ -434,10 +434,16 @@ class MetaImageSlide extends MetaSlide
     /**
      * Return the HTML used to display this slide in the admin screen
      *
-     * @return string slide html
+     * @since 3.98 - Changed visibility
+     * 
+     * @return string|bool slide html
      */
-    protected function get_admin_slide()
+    public function get_admin_slide()
     {
+        // @since 3.98
+        if ( ! is_admin() && ! defined( 'REST_REQUEST' ) && ! defined( 'DOING_AJAX' ) ) {
+            return false;
+        }
 
         // get some slide settings
         $slide_label    = apply_filters("metaslider_image_slide_label", esc_html__("Image Slide", "ml-slider"), $this->slide, $this->settings);
@@ -818,10 +824,16 @@ class MetaImageSlide extends MetaSlide
 
         $html = $this->build_image_tag($attributes);
 
+        if ( !empty( $slide['link-alt'] ) ) {
+            $ariaLabel = esc_attr__( $slide['link-alt'], 'ml-slider' );
+        } else {
+            $ariaLabel = esc_attr__( 'View Slide Details', 'ml-slider' );
+        }
+
         $anchor_attributes = apply_filters('metaslider_flex_slider_anchor_attributes', array(
                 'href' => $slide['url'],
                 'target' => $slide['target'],
-                'aria-label' => $slide['link-alt'],
+                'aria-label' => $ariaLabel,
                 'class' => 'metaslider_image_link'
             ), $slide, $this->slider->ID);
 

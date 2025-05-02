@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bit Form 2.18.7\n"
+"Project-Id-Version: Bit Form 2.18.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bit-form\n"
 "Last-Translator: developer@bitcode.pro\n"
 "Language-Team: support@bitcode.pro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-26T15:14:45+00:00\n"
+"POT-Creation-Date: 2025-05-01T07:28:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: bit-form\n"
@@ -35,14 +35,6 @@ msgstr ""
 
 #. Author URI of the plugin
 msgid "https://www.bitapps.pro"
-msgstr ""
-
-#: bitforms.php:47
-msgid "bitforms requires PHP version 5.6."
-msgstr ""
-
-#: bitforms.php:48
-msgid "Error Activating"
 msgstr ""
 
 #: includes/Admin/AdminAjax.php:127
@@ -583,24 +575,24 @@ msgstr ""
 msgid "prepared query is empty"
 msgstr ""
 
-#: includes/Core/Form/FormManager.php:608
+#: includes/Core/Form/FormManager.php:619
 msgid "Sorry, Error occurred in saving form entry"
 msgstr ""
 
-#: includes/Core/Form/FormManager.php:614
+#: includes/Core/Form/FormManager.php:625
 msgid "Sorry, error occurred in logging form entry"
 msgstr ""
 
-#: includes/Core/Form/FormManager.php:680
+#: includes/Core/Form/FormManager.php:691
 msgid "Sorry, Error occured in saving form entry data"
 msgstr ""
 
-#: includes/Core/Form/FormManager.php:757
+#: includes/Core/Form/FormManager.php:768
 #: includes/Frontend/Ajax/FrontendAjax.php:183
 msgid "provided form entries does not exists"
 msgstr ""
 
-#: includes/Core/Form/FormManager.php:868
+#: includes/Core/Form/FormManager.php:879
 #: includes/Core/WorkFlow/WorkFlow.php:210
 #: includes/Core/WorkFlow/WorkFlow.php:294
 msgid "Entry Updated Successfully"

@@ -87,6 +87,77 @@ LOAD_SECRIPT;
     );
   }
 
+  public static function removeJsSingleLineComments($code)
+  {
+    $length = strlen($code);
+    $result = '';
+    $inString = false;
+    $inTemplate = false;
+    $inRegex = false;
+    $escapeNext = false;
+    $stringDelimiter = '';
+    $i = 0;
+
+    while ($i < $length) {
+      $char = $code[$i];
+      $nextChar = $i + 1 < $length ? $code[$i + 1] : '';
+
+      if ($escapeNext) {
+        $result .= $char;
+        $escapeNext = false;
+      } elseif ($inString) {
+        $result .= $char;
+        if ('\\' === $char) {
+          $escapeNext = true;
+        } elseif ($char === $stringDelimiter) {
+          $inString = false;
+        }
+      } elseif ($inTemplate) {
+        $result .= $char;
+        if ('\\' === $char) {
+          $escapeNext = true;
+        } elseif ('`' === $char) {
+          $inTemplate = false;
+        }
+      } elseif ($inRegex) {
+        $result .= $char;
+        if ('\\' === $char) {
+          $escapeNext = true;
+        } elseif ('/' === $char) {
+          $inRegex = false;
+        }
+      } else {
+        if ('"' === $char || "'" === $char) {
+          $inString = true;
+          $stringDelimiter = $char;
+          $result .= $char;
+        } elseif ('`' === $char) {
+          $inTemplate = true;
+          $result .= $char;
+        } elseif ('/' === $char) {
+          if ('/' === $nextChar) {
+            // Single-line comment found
+            while ($i < $length && "\n" !== $code[$i]) {
+              $i++;
+            }
+            continue; // skip until newline
+          } elseif ('*' === $nextChar) {
+            // Block comment start, just copy it (optional, depending on need)
+            $result .= $char;
+          } else {
+            // Assume division or regex
+            $result .= $char;
+          }
+        } else {
+          $result .= $char;
+        }
+      }
+      $i++;
+    }
+
+    return $result;
+  }
+
   /**
    * @method name : saveFile
    * @description : save js/css field to disk

@@ -144,6 +144,7 @@ class MetaSlider_Admin_Pages extends MetaSliderPlugin
             'deleted_language' => esc_html__("Slide deleted", "ml-slider"),
             'success_language' => esc_html__("Success", "ml-slider"),
             'copied_language' => esc_html__("Item was copied to your clipboard", "ml-slider"),
+            'creating_slideshow_language' => esc_html__("Creating slideshow...", "ml-slider"),
             'click_to_undo_language' => esc_html__("Press to undo", "ml-slider"),
             'ajaxurl' => admin_url('admin-ajax.php'),
             'update_image' => esc_html__("Select replacement image", "ml-slider"),
@@ -162,6 +163,8 @@ class MetaSlider_Admin_Pages extends MetaSliderPlugin
                 && $global_settings['newSlideOrder'] === 'first' 
                 ? esc_html( $global_settings['newSlideOrder'] ) : 'last',
             'tinymce' => array(), // Just initialize to add values later through JS files
+            'autoThemeConfig' => ! isset( $global_settings['autoThemeConfig'] ) 
+                || (bool) $global_settings['autoThemeConfig'] ? 1 : 0,
             'quickstart_slugs' => $this->quickstart_slugs(),
             'breakpoints' => $breakpoints,
             'tone' => esc_html__( 'Tone', 'ml-slider' ),

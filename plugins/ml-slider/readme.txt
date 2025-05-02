@@ -2,7 +2,7 @@
 Contributors: andergmartins, htmgarcia, publishpress, stevejburge, rochdesigns
 Tags: slider, video slider, image slider, carousel slider, gallery
 Requires at least: 5.0
-Stable tag: 3.97.0
+Stable tag: 3.98.0
 Requires PHP: 7.0
 Tested up to: 6.8
 License: GPLv2 or later
@@ -319,6 +319,41 @@ Yes, you can build Elementor slides and Beaver Builder slideshows. You can creat
 
 The format is based on [Keep a Changelog recommendations](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
+
+= [3.98.0] - Apr 30, 2025 =
+
+* ADDED: Allow to change slideshow settings through a theme, #1597;
+* ADDED: Message for Legacy users, #1575;
+* ADDED: Add responsive support to arrows, #1582;
+* ADDED: Add status messages in Quick Start > Drop files to upload or Select Files, #1621;
+* FIXED: Accessibility issues with the Base theme, #1525;
+* FIXED: Accessibility issues with the Clarity theme, #1526;
+* FIXED: Play/pause button has a different design depending the theme, #1536;
+* FIXED: Fix spacing for some caption options #1537;
+* FIXED: Italian, Spanish and French translation updates, #1484;
+* FIXED: Theme color customization headers sometimes have extra spacing, #1552;
+* FIXED: Should the "Hover" option work for the whole slides, #1573;
+* FIXED: Ask for email popup is closed unintentionally after creating a quickstart slideshow, #1559;
+* FIXED: Drag-and-drop slides reorder triggers an error when TinyMCE is disabled, #1560;
+* FIXED: Delay navigation on hover, #1563;
+* FIXED: wp_cache_delete problems, #1565;
+* FIXED: 2 accessibility bugs reported, #1566;
+* FIXED: Typo in Carousel items, #1567;
+* FIXED: Developer options are disabled for legacy libraries, #1574;  
+* FIXED: FlexSlider (Simply Dark): Slide caption overlaps with Play/Pause Text, #1580;
+* FIXED: FlexSlider (Base): Arrows (Visible On Hover) - Arrows are not displayed even when hovered on, #1586;
+* FIXED: The slide crop position does not update correctly unless the slideshow's width or height is changed., #1595;
+* FIXED: Adjust play/pause button in each theme, #1607;
+* FIXED: Captions are missing when choosing "Carousel Slideshow with Captions", #1611;
+* CHANGED: Axios to 1.8.2, #1376;
+* CHANGED: Revelio thumbnail doesn't need "Revelio Theme" in big text, #1623;
+* CHANGED: Add "Default" to extra default settings, #1543;
+* CHANGED: Update "Not in use", #1547;
+* CHANGED: Update 100% Width text, #1553;
+* CHANGED: Add back the Classic Editor button, #1554;
+* CHANGED: Device settings, #1555;
+* CHANGED: Hide Legacy options if not used, #1576;
+* REMOVED: slider-settings-legacy.php, #1504;
 
 = [3.97.0] - 21 Mar 2025 =
 
