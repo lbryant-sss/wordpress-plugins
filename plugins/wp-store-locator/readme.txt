@@ -3,7 +3,7 @@ Plugin URI: https://wpstorelocator.co
 Contributors: tijmensmit
 Tags: google maps, store locator, business locations, geocoding, stores, geo, zipcode locator, dealer locater, geocode, gmaps, google map, google map plugin, location finder, map tools, shop locator, wp google map
 Requires at least: 3.7
-Tested up to: 6.8.0
+Tested up to: 6.8.1
 Stable tag: 2.2.251
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html

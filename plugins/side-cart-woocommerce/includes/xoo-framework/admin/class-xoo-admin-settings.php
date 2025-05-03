@@ -67,12 +67,16 @@ class Xoo_Admin{
 			
 		}
 
-		add_action( 'admin_notices', array( $this, 'usage_data_notice' ) );
-		add_action( 'admin_init', array( $this, 'handle_usage_click_response' ) );
-		add_action( 'admin_init', array( $this, 'send_usage_data_timely' ) );
+		if( isset( $this->helper->helperArgs ) && !isset($this->helper->helperArgs['disable_usage']) ){
 
-		if( isset( $this->helper->helperArgs )  && $this->helper->helperArgs['pluginFile'] ){
-			register_deactivation_hook( $this->helper->helperArgs['pluginFile'] , array( $this, 'on_plugin_deactivate' ) );
+			add_action( 'admin_notices', array( $this, 'usage_data_notice' ) );
+			add_action( 'admin_init', array( $this, 'handle_usage_click_response' ) );
+			add_action( 'admin_init', array( $this, 'send_usage_data_timely' ) );
+
+			if( $this->helper->helperArgs['pluginFile'] ){
+				register_deactivation_hook( $this->helper->helperArgs['pluginFile'] , array( $this, 'on_plugin_deactivate' ) );
+			}
+
 		}
 		
 
@@ -83,42 +87,46 @@ class Xoo_Admin{
 
 		if( get_option( 'xoo_tracking_consent_'.$this->helper->slug ) !== false ) return;
 
-		$url = add_query_arg(array(
-			'xoo_usage_handle' 	=> 'yes', 
-			'xoo_slug' 			=> $this->helper->slug,
-			'_wpnonce' 			=> wp_create_nonce( 'xoo_usage_nonce' ), 
-		));
-
 		$pluginName = isset( $this->helper->helperArgs )  && $this->helper->helperArgs['pluginName'] ? $this->helper->helperArgs['pluginName'] : $this->helper->slug;
 
 		?>
-		<div class="notice notice-info" style="max-width: 1300px;">
-			<p><strong>[<?php echo $pluginName ?>] Help us improve!</strong> We'd love your permission to send anonymous, non-sensitive data (such as your WordPress version, plugin settings, etc.) to help us improve the plugin.<strong>. No personal information is collected ever</strong></p>
-				<a href="<?php echo esc_url( add_query_arg( 'xoo_allow', 'no', $url ) ); ?>" style="margin-right: 5px; text-decoration: none;">No, thanks</a>
-				<a href="<?php echo esc_url( add_query_arg( 'xoo_allow', 'yes', $url ) );  ?>" style="text-decoration: none;">Happy to help😄</a>
+		<div class="notice notice-info xoo-usage-consent" style="max-width: 1300px;">
+			<p><strong>[<?php echo $pluginName ?>] Help us improve!</strong> We'd love your permission to send anonymous, non-sensitive data (such as your WordPress version, plugin settings, etc.) to help us improve the plugin.<br><strong> No personal information is collected ever</strong></p>
+				<form method="post" action="" class="xoo-usage-consent">
+					<input type="checkbox" name="xoo_allow" value="yes" checked>
+					<input type="hidden" name="xoo_usage_handle" value="yes">
+					<input type="hidden" name="xoo_slug" value="<?php echo $this->helper->slug ?>">
+					<input type="hidden" name="_wpnonce" value="<?php echo wp_create_nonce( 'xoo_usage_nonce' ) ?>">
+					<button type="submit" class="button-small button">ok, dismiss notice</button>
+				</form>
 			</p>
 		</div>
+
+		<style type="text/css">
+			.xoo-usage-consent button{
+
+			}
+		</style>
+
 		<?php
 
 	}
 
 	public function handle_usage_click_response(){
 
-		if( !isset( $_GET['xoo_usage_handle'] ) ) return;
+		if( !isset( $_POST['xoo_usage_handle'] ) ) return;
 
-		$slug 		= sanitize_text_field( $_GET['xoo_slug'] );
-		$nonce 		= sanitize_text_field( $_GET['_wpnonce'] );
-		$response 	= sanitize_text_field( $_GET['xoo_allow'] );
+		$slug 		= sanitize_text_field( $_POST['xoo_slug'] );
+		$nonce 		= sanitize_text_field( $_POST['_wpnonce'] );
+		$response 	= sanitize_text_field( $_POST['xoo_allow'] );
 
 		if( $this->helper->slug !== $slug ) return;
 
-		if( !wp_verify_nonce( $_GET['_wpnonce'], 'xoo_usage_nonce' ) ) return;
+		if( !wp_verify_nonce( $_POST['_wpnonce'], 'xoo_usage_nonce' ) ) return;
 
 		update_option( 'xoo_tracking_consent_'.$this->helper->slug, $response );
 
-		wp_redirect( remove_query_arg( array( 'xoo_slug', '_wpnonce', 'xoo_allow', 'xoo_usage_handle' ) ) );
-
-		exit;
+		wp_redirect( remove_query_arg( 'xooisrandom' ) );
 
 	}
 
@@ -690,7 +698,7 @@ class Xoo_Admin{
 
 			if( $section_settings ){
 
-				$section_heading = '<span class="xoo-asc-head xoo-asc-'.$section_id.'">'.$section_data['title'].'</span>';
+				$section_heading = '<span id="'.$tab_id.'_'.$section_id.'" class="xoo-asc-head xoo-asc-'.$section_id.'">'.$section_data['title'].'</span>';
 
 				if( $section_data['desc'] ){
 					$section_heading .= '<span class="xoo-asc-desc">'.$section_data['desc'].'</span>';

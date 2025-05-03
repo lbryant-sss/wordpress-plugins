@@ -4,7 +4,7 @@ Contributors: eskapism, wpsimplehistory
 Donate link: https://simple-history.com/sponsor/?utm_source=wordpress_org&utm_medium=plugin_directory&utm_campaign=sponsorship&utm_content=readme_donate_link
 Tags: history, audit log, event log, user tracking, activity
 Tested up to: 6.8
-Stable tag: 5.9.0
+Stable tag: 5.10.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -307,6 +307,8 @@ For more information, see our support page [GDPR and Privacy: How Your Data is S
 7. A chart with some quick statistics is available, so you can see the number of events that has been logged each day.
    A simple way to see any uncommon activity, for example an increased number of logins or similar.
 
+8. Stats and summaries page that gives you a quick overview summary of your site's activity.
+
 ## Changelog
 
 ✨ If you find Simple History useful ✨
@@ -314,6 +316,32 @@ For more information, see our support page [GDPR and Privacy: How Your Data is S
 -   [Sponsor the plugin to keep it free.](https://simple-history.com/sponsor/?utm_source=wordpress_org&utm_medium=plugin_directory&utm_campaign=sponsorship&utm_content=readme_sponsor_footer)
 -   [Add a 5-star review so other users know it's good.](https://wordpress.org/support/plugin/simple-history/reviews/?filter=5)
 -   [Get the premium add-on for more features.](https://simple-history.com/add-ons/premium?utm_source=wordpress_org&utm_medium=plugin_directory&utm_campaign=documentation&utm_content=readme_doc_premium)
+
+### 5.10.0 (May 2025)
+
+🎯 This release improves performance, enhances the user interface, and adds several quality-of-life improvements to make Simple History more efficient and user-friendly.
+[Read the release post](https://simple-history.com/2025/simple-history-5-10-0-released/) for more details.
+
+**Added**
+
+-   Add option to include header row in CSV exports.
+-   Add URL-based search filters for easy bookmarking and sharing of search selections.
+-   Add option to view more events from the same user or for the same type of event.
+
+**Changed**
+
+-   Load icons from a separate CSS file for better cache busting.
+-   Make interface even clearer by hiding some promo boxes if [Premium](https://simple-history.com/add-ons/premium/?utm_source=wordpress_org&utm_medium=plugin_directory&utm_campaign=documentation&utm_content=readme_doc_premium) is active.
+-   Remove `server_http_user_agent` from user updates, user creation, user deletion. It is still available for user successful and failed logins. If support personal needs to know the user agent, the login event is the best place to find this. Note: if you need event more debug info, you can enable [Detective Mode](https://simple-history.com/support/detective-mode/?utm_source=wordpress_org&utm_medium=plugin_directory&utm_campaign=documentation&utm_content=readme_doc_detective_mode) or get the [Debug and Monitor add-on](https://simple-history.com/add-ons/debug-and-monitor/?utm_source=wordpress_org&utm_medium=plugin_directory&utm_campaign=documentation&utm_content=readme_doc_debug_monitor).
+-   Use priority 1 for `wp_login` action instead of default 10 for better compatibility with auth plugins like [Two Factor](https://wordpress.org/plugins/two-factor/).
+-   Improve performance of stats and summaries page.
+-   Refactor query `date_from` and `date_to` parsing so sending in format `Y-m-d` means start/end of day automatically.
+
+**Fixed**
+
+-   Add log level `notice` to the GUI filters.
+-   Remove duplicate `date_gmt` column from event details table.
+-   Misc internal improvements.
 
 ### 5.9.0 (April 2025)
 

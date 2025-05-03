@@ -22,7 +22,7 @@ class Xoo_Helper{
 
 	public function set_constants(){
 		$this->define( 'XOO_FW_URL', untrailingslashit(plugin_dir_url( XOO_FW_DIR .'/'.basename( XOO_FW_DIR ) ) ) );
-		$this->define( 'XOO_FW_VERSION', '1.4' );
+		$this->define( 'XOO_FW_VERSION', '1.5' );
 	}
 
 	public function define( $name, $value ){

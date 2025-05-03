@@ -3,7 +3,7 @@ Contributors:narinder-singh,satindersingh,coolplugins
 Donate link: https://paypal.me/CoolPlugins/10USD/
 Tags:timeline,elementor timeline,roadmap,history,horizontal timeline
 Requires at least:5.0
-Tested up to:6.7.2
+Tested up to:6.8.1
 Requires PHP:7.2
 Stable tag:1.6.7
 License:GPLv2 or later
@@ -114,11 +114,11 @@ You can show your stories, events, appointments, concerts, future & history happ
 For detailed help and support, visit our [support page](https://coolplugins.net/support/). 
 
 == Screenshots ==
-1.  Timeline Widget Demo Preview
+1.  Timeline Widget Vertical on both sides/ One-sided Layout Preview
 2.  Timeline Widget Horizontal Timeline configuration 
-3.  Timeline Widget Vertical on both sides/ One-sided Layout Preview
-4.  Add New Story Settings Preview.
-5.  Style Settings Preview
+3.  Add New Story Settings Preview.
+4.  Style Settings Preview
+5.  Timeline Widget Demo Preview
 
 == Frequently Asked Questions ==
 
@@ -192,9 +192,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 **Version 1.6.7 | 18 March 2025**
-- **Tested up to:** Elementor 3.28.0
-- **Tested up to:** Elementor Pro 3.28.0
-- **Tested up to:** WordPress 6.7.2
+- **Tested up to:** Elementor 3.28.0.
+- **Tested up to:** Elementor Pro 3.28.0.
+- **Tested up to:** WordPress 6.7.2.
 
 **Version 1.6.6 | 17 December 2024**
 - **Fixed:** Swiper styling issue with Elementor 3.26.0.

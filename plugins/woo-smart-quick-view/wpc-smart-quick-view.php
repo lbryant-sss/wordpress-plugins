@@ -3,23 +3,23 @@
 Plugin Name: WPC Smart Quick View for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: WPC Smart Quick View allows users to get a quick look of products without opening the product page.
-Version: 4.1.6
+Version: 4.1.7
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: woo-smart-quick-view
 Domain Path: /languages/
 Requires Plugins: woocommerce
 Requires at least: 4.0
-Tested up to: 6.7
+Tested up to: 6.8
 WC requires at least: 3.0
-WC tested up to: 9.6
+WC tested up to: 9.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSQ_VERSION' ) && define( 'WOOSQ_VERSION', '4.1.6' );
+! defined( 'WOOSQ_VERSION' ) && define( 'WOOSQ_VERSION', '4.1.7' );
 ! defined( 'WOOSQ_LITE' ) && define( 'WOOSQ_LITE', __FILE__ );
 ! defined( 'WOOSQ_FILE' ) && define( 'WOOSQ_FILE', __FILE__ );
 ! defined( 'WOOSQ_URI' ) && define( 'WOOSQ_URI', plugin_dir_url( __FILE__ ) );
@@ -258,7 +258,7 @@ if ( ! function_exists( 'woosq_init' ) ) {
 								$thumb_ids[] = $product_image;
 							}
 
-							if ( $product->is_type( 'variable' ) && ( $children = $product->get_visible_children() ) ) {
+							if ( apply_filters( 'woosq_get_variation_image', true ) && $product->is_type( 'variable' ) && ( $children = $product->get_visible_children() ) ) {
 								foreach ( $children as $child ) {
 									if ( ( $child_product = wc_get_product( $child ) ) && ( $child_product_image = $child_product->get_image_id() ) ) {
 										$thumb_ids[] = $child_product_image;
@@ -271,7 +271,7 @@ if ( ! function_exists( 'woosq_init' ) ) {
 									$thumb_ids[] = $product_image;
 								}
 
-								if ( $product->is_type( 'variable' ) && ( $children = $product->get_visible_children() ) ) {
+								if ( apply_filters( 'woosq_get_variation_image', true ) && $product->is_type( 'variable' ) && ( $children = $product->get_visible_children() ) ) {
 									foreach ( $children as $child ) {
 										if ( ( $child_product = wc_get_product( $child ) ) && ( $child_product_image = $child_product->get_image_id() ) ) {
 											$thumb_ids[] = $child_product_image;

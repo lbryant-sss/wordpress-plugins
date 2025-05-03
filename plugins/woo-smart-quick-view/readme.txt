@@ -2,9 +2,9 @@
 Contributors: wpclever
 Donate link: https://wpclever.net
 Tags: woocommerce, wpc, quickview, quick-view
-Tested up to: 6.7
-Version: 4.1.6
-Stable tag: 4.1.6
+Tested up to: 6.8
+Version: 4.1.7
+Stable tag: 4.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,6 +86,10 @@ Example:
 });`
 
 == Changelog ==
+
+= 4.1.7 =
+* Added: Filter hook 'woosq_get_variation_image'
+* Updated: Compatible with WP 6.8 & Woo 9.8
 
 = 4.1.6 =
 * Fixed: Optimized the code

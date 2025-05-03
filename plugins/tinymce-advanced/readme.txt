@@ -2,7 +2,7 @@
 Contributors: automattic, azaozz
 Tags: block editor, classic editor, editor, Gutenberg, formatting, tinymce, write
 Requires at least: 5.9
-Tested up to: 6.5
+Tested up to: 6.8
 Stable tag: 5.9.2
 Requires PHP: 5.6
 License: GPLv2

@@ -17,7 +17,7 @@ if ( is_array( $compatible_plugins ) ) :
 		<div class="akismet-compatible-plugins__content">
 			<p class="akismet-card__intro">
 				<?php
-				if ( $compatible_plugin_count === 0 ) {
+				if ( 0 === $compatible_plugin_count ) {
 					esc_html_e( 'Akismet works with other plugins to keep spam away.', 'akismet' );
 
 					/* translators: %s is a URL */
@@ -27,7 +27,20 @@ if ( is_array( $compatible_plugins ) ) :
 						esc_html__( 'See supported integrations', 'akismet' )
 					);
 				} else {
-					esc_html_e( 'These plugins you\'ve installed can be protected from spam by Akismet:', 'akismet' );
+					printf(
+						'<p>%s</p>',
+						esc_html__( 'Akismet works with other plugins to keep spam away.', 'akismet' )
+					);
+
+					printf(
+						'%s. %s.',
+						1 === $compatible_plugin_count
+							? esc_html__( 'The plugin you\'ve installed is compatible', 'akismet' )
+							: esc_html__( 'The plugins you\'ve installed are compatible', 'akismet' ),
+						1 === $compatible_plugin_count
+							? esc_html__( 'Follow the documentation link to get started', 'akismet' )
+							: esc_html__( 'Follow the documentation links to get started', 'akismet' )
+					);
 				}
 				?>
 			</p>
