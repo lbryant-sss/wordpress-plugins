@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( 'Not allowed' );
 
 $messageUpdate = 0;
 /* Update des paramètres */
-if( isset($_POST['action']) && $_POST['action'] == 'update_footer' && wp_verify_nonce($_POST['security-footer'], 'valid-footer') ) {
+if( isset($_POST['action']) && $_POST['action'] == 'update_settings' && wp_verify_nonce($_POST['security-settings'], 'valid-settings') ) {
    
     if( empty($_POST["wpmseo"]["enable_seo"]) ) { $_POST["wpmseo"]["enable_seo"] = 0; }
 
@@ -34,8 +34,8 @@ $paramSeo= get_option('wp_maintenance_settings_seo');
         <div class="wp-maintenance-tab-content wp-maintenance-tab-content-welcome" id="wp-maintenance-tab-content">
             
             <form method="post" action="" id="valide_settings" name="valide_settings">
-                <input type="hidden" name="action" value="update_footer" />
-                <?php wp_nonce_field('valid-footer', 'security-footer'); ?>
+                <input type="hidden" name="action" value="update_settings" />
+                <?php wp_nonce_field('valid-settings', 'security-settings'); ?>
 
                 <!-- ENABLE SEO -->
                 <div class="wp-maintenance-module-options-block">
