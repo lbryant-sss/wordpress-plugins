@@ -1387,7 +1387,7 @@ display:none;
     color: #000;
     position: absolute;            
     top: 5px;
-    right: 5px !important;
+    right: 0px !important;
     text-shadow: 0 0 0px #fff;
     -webkit-transition: all 0.5s ease 0s;
     -moz-transition: all 0.5s ease 0s;
@@ -3120,7 +3120,7 @@ a.mysticky-welcomebar-remove-date-schedule {
     #mystickymenu .mysticky-welcomebar-setting-content-right .px-wrap input#mysticky_welcomebar_triggersec{width: 100%; padding-right:50px;}
     .px-wrap {display: inline-flex; align-items: center;}
     .mysticky-collect-lead .mysticky-welcomebar-setting-content-right label span {padding: 4px 10px 4px 0;}
-    .mysticky-welcomebar-fixed-wrap {padding: 10px 0 !important;}
+    .mysticky-welcomebar-fixed-wrap {padding: 10px 15px !important;}
     .mysticky-welcomebar-poptin-content {font-size: 14px;}
     .msmenu-blockbox .stickymenu-box-button.settings-buttons #btn-config-disable { margin: 5px 0px;  padding: 0 17px;}
     .mysticky-welcomebar-preview-screen .mysticky-welcomebar-fixed .mysticky-coupon-btn a {padding: 0 10px; font-size: 10px; height: 24px;}
@@ -3648,3 +3648,4 @@ a.mysticky-welcomebar-remove-date-schedule {
 .mysticky-welcomebar-full-screen-preview .mysticky-welcomebar-fixed-wrap .mysticky-welcomebar-content {
 	flex: 1;
 }
+.mysticky-welcomebar-setting-wrap .wp-editor-tools.hide-if-no-js{display:none;}

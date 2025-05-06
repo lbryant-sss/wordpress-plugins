@@ -69,7 +69,7 @@
 		</div>
 
 		<script type="text/javascript">
-			var <?php echo esc_attr( $settings_field_id ); ?> = <?php echo json_encode( $rules_table_settings, JSON_UNESCAPED_UNICODE ); ?>;
+			var <?php echo esc_attr( $settings_field_id ); ?> = <?php echo json_encode( $rules_table_settings ); ?>;
 
 			document.addEventListener("DOMContentLoaded", function (event) {
 				document.querySelector('#mainform button[name="save"]').addEventListener("click", function (event) {

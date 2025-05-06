@@ -13,7 +13,7 @@
  * WC tested up to:      9.6
  * Requires at least:    4.7
  * Requires PHP:         5.3
- * Tested up to:         6.7
+ * Tested up to:         6.8
  *
  * @package OMAPI
  *

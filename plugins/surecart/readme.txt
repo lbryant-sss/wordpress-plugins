@@ -4,7 +4,7 @@ Donate link: https://surecart.com
 Tags: ecommerce plugin, online store, subscriptions, stripe, payments
 Requires at least: 6.6
 Tested up to: 6.8
-Stable tag: 3.8.0
+Stable tag: 3.8.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -305,6 +305,17 @@ Accessibility is a huge priority for the entire team building SureCart. As you k
 
 == Changelog ==
 
+= 3.8.1 - May 5th, 2025 =
+- New: Add quick link to invoice email template.
+- Fix: Custom amount text to actual amount in Instant checkout.
+- Fix: Content Designer link is redirecting to main site on multisite setup.
+- Fix: Fix issue with dynamic shortcode `{post_terms_sc_collection}` not working in Bricks Builder.
+- Fix: The `sc_login_redirect_url` filter does not work with login codes.
+- Fix: Typography settings not working for product list radio & checkbox filters.
+- Fix: Disabled manual payment method were previously appearing in upgrades.
+- Fix: Hide integrations menu item unless API is connected.
+- Fix: Upsell page countdown timer block shows html tags on frontend instead of rendering.
+
 = 3.8.0 - April 30th, 2025 =
 - New: “Dropdown” variant selector type.
 - New: Ability to resend order confirmation and invoice emails.
@@ -561,4 +572,3 @@ Accessibility is a huge priority for the entire team building SureCart. As you k
 - Improvement: Move SureCart admin menu to further up to help with navigation, due to the number of submenu items.
 
 Full changelog can be found here – [SureCart changelog](https://surecart.com/whats-new/)
-

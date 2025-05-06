@@ -21,11 +21,11 @@ class TimeOfTheDay extends AbstractCondition {
 	 */
 	public function __construct( int $priority = 10 ) {
 		$this->condition_id = self::CONDITION_ID;
-		$this->name         = __( 'Time of the day', 'flexible-shipping-rules' );
-		$this->group        = __( 'Destination & Time', 'flexible-shipping-rules' );
+		$this->name         = __( 'Time of the day', 'flexible-shipping' );
+		$this->group        = __( 'Destination & Time', 'flexible-shipping' );
 		$this->priority     = $priority;
 		$this->is_disabled  = true;
 
-		$this->name .= ' ' . __( '(PRO feature)', 'flexible-shipping-rules' );
+		$this->name .= ' ' . __( '(PRO feature)', 'flexible-shipping' );
 	}
 }

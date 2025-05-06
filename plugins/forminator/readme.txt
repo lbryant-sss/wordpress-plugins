@@ -22,8 +22,6 @@ Forminator’s drag and drop visual builder makes it easy to setup and add forms
 
 Level up immediately with exclusive Pro features like Stripe subscription forms, dynamic PDF generation, and easy geolocation & autocomplete. [Learn more about Pro](https://wpmudev.com/project/forminator-pro/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=forminator-readme-above-the-fold&utm_content=forminator_pro).
 
-[youtube https://www.youtube.com/watch?v=q2oBKNWTu5s&feature=youtu.be]
-
 ### Forminator Forms, Surveys, Quizzes, Polls, Calculations and More...
 - Forms - Custom forms for all your needs with as many fields as you like.
 - Polls - Interactive polls to collect users opinions, with lots of dynamic options and settings.
@@ -41,9 +39,7 @@ Level up immediately with exclusive Pro features like Stripe subscription forms,
 
 ### Accept Payments With Stripe and PayPal
 
-Start taking payments with Forminator. No Pro upgrade required! SCA compliant Stripe and PayPal come included. Just enter your publish keys to activate the Forminator payment module for both fixed and variable payments. Check out how it works in the video below:
-
-[youtube https://www.youtube.com/watch?v=hha0W-A1Kq8&feature=youtu.be]
+Start taking payments with Forminator. No Pro upgrade required! SCA compliant Stripe and PayPal come included. Just enter your publish keys to activate the Forminator payment module for both fixed and variable payments.
 
 ### Stripe Verified Partner
 
@@ -98,9 +94,7 @@ Who hasn't been roped into taking “IQ tests” and “figure out which Star Wa
 
 ### Collect Leads With Your Quizzes
 
-Looking to use your quizzes for more than just entertainment and a way to engage your audience? Forminator also allows you to collect participants' details (e.g., name, email, etc.) by integrating a lead generation form in your quiz. See how it works below:
-
-[youtube https://www.youtube.com/watch?v=17uR2HdDsKw&feature=youtu.be]
+Looking to use your quizzes for more than just entertainment and a way to engage your audience? Forminator also allows you to collect participants' details (e.g., name, email, etc.) by integrating a lead generation form in your quiz.
 
 ### Gutenberg Block
 
@@ -135,9 +129,7 @@ Looking to move existing forms over from CF7? Forminator’s Import Wizard allow
 
 ### Custom Login and Registration Forms
 
-Create and embed custom login and registration forms for your sites (or multisites!). Take L&R forms to the next level: choose from a range of form fields, and customize settings, style, and behavior. Learn more in the video below:
-
-[youtube https://www.youtube.com/watch?v=UdgSb-GwpSU&feature=youtu.be]
+Create and embed custom login and registration forms for your sites (or multisites!). Take L&R forms to the next level: choose from a range of form fields, and customize settings, style, and behavior.
 
 ### Multi-file Upload Field
 

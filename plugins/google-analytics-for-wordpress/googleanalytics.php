@@ -7,7 +7,7 @@
  * Author:              MonsterInsights
  * Author URI:          https://www.monsterinsights.com/lite/?utm_source=liteplugin&utm_medium=pluginheader&utm_campaign=authoruri&utm_content=7%2E0%2E0
  *
- * Version:             9.4.1
+ * Version:             9.5.1
  * Requires at least:   5.6.0
  * Requires PHP:        7.2
  *
@@ -71,7 +71,7 @@ final class MonsterInsights_Lite {
 	 * @access public
 	 * @var string $version Plugin version.
 	 */
-	public $version = '9.4.1';
+	public $version = '9.5.1';
 
 	/**
 	 * Plugin file.
@@ -262,9 +262,6 @@ final class MonsterInsights_Lite {
 			} else {
 				require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/load.php';
 			}
-
-			// Run hook to load MonsterInsights addons.
-			do_action( 'monsterinsights_load_plugins' ); // the updater class for each addon needs to be instantiated via `monsterinsights_updater`
 		}
 
 		return self::$instance;

@@ -56,7 +56,10 @@ class Simple_Author_Box_Helper
         '500px'         => '500px',
         'mastodont'     => 'Mastodon',
         'telegram'      => 'Telegram',
-        'phone'                    => 'Phone'
+        'tiktok'        => 'Tiktok',
+        'patreon'       => 'Patreon',
+        'bluesky'       => 'BlueSky',
+        'phone'         => 'Phone'
     );
 
     public static function get_themes()

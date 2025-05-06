@@ -2421,3 +2421,15 @@ if ( ! function_exists( 'monsterinsights_is_authed' ) ) {
 }
 // Prevents being redirected to Duplicator once plugin is installed through the onboarding wizard.
 add_filter( 'duplicator_disable_onboarding_redirect', '__return_true' );
+// Prevents being redirected to WP Consent once plugin is installed through the onboarding wizard.
+add_action( 'admin_init', 'monsterinsights_disable_wpconsent_onboarding_redirect', 10 );
+/**
+ * Disable WP Consent onboarding redirect if the plugin is active.
+ *
+ * @return void
+ */
+function monsterinsights_disable_wpconsent_onboarding_redirect() {
+	if ( is_plugin_active( 'wpconsent-cookies-banner-privacy-suite/wpconsent.php' ) ) {
+		delete_transient( 'wpconsent_onboarding_redirect' );
+	}
+}

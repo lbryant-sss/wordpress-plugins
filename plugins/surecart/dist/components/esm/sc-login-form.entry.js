@@ -71,7 +71,7 @@ const ScLogin = class {
     async submitCode() {
         try {
             this.loading = true;
-            const { verified } = (await apiFetch({
+            const { verified, redirect_url } = (await apiFetch({
                 method: 'POST',
                 path: 'surecart/v1/verification_codes/verify',
                 data: {
@@ -82,7 +82,12 @@ const ScLogin = class {
             if (!verified) {
                 throw { message: wp.i18n.__('Verification code is not valid. Please try again.', 'surecart') };
             }
-            window.location.reload();
+            if (redirect_url) {
+                window.location.replace(redirect_url);
+            }
+            else {
+                window.location.reload();
+            }
         }
         catch (e) {
             this.handleError(e);
@@ -142,7 +147,7 @@ const ScLogin = class {
     }
     render() {
         var _a, _b;
-        return (h("div", { key: 'a5dc72cbce20c6561b7f475f8f7357bc064cf99e', class: "login-form" }, h("sc-card", { key: '725f4531c1f40548faffb12fca0c4632df847e8e' }, !!this.error && (h("sc-alert", { key: 'bd75b6cd331a83456621cf4fec9c244b5ba5d354', open: true, type: "danger", closable: true, onScHide: () => (this.error = null) }, h("span", { key: '1d825ab9eedfaeadea9d260093165333d7bbbe05', slot: "title", innerHTML: (_a = this.error) === null || _a === void 0 ? void 0 : _a.message }), (((_b = this.error) === null || _b === void 0 ? void 0 : _b.additional_errors) || []).map(({ message }) => (h("div", { innerHTML: message }))))), this.renderInner()), this.loading && h("sc-block-ui", { key: '721665c3210a8a0a6546cac84e87a10aa15ba5b3', spinner: true, style: { 'zIndex': '9', '--sc-block-ui-opacity': '0.5' } })));
+        return (h("div", { key: '71f4707fc7c9ad69d9cb661f1da78c314c2e14e5', class: "login-form" }, h("sc-card", { key: 'b06af4b3c9cd134c9aed5be9db434710e8f1b774' }, !!this.error && (h("sc-alert", { key: 'd1c5523a781f1ee0a3440d4f0d405edb2e899806', open: true, type: "danger", closable: true, onScHide: () => (this.error = null) }, h("span", { key: 'c61933382d6729939dae9de281bd23e9e1668518', slot: "title", innerHTML: (_a = this.error) === null || _a === void 0 ? void 0 : _a.message }), (((_b = this.error) === null || _b === void 0 ? void 0 : _b.additional_errors) || []).map(({ message }) => (h("div", { innerHTML: message }))))), this.renderInner()), this.loading && h("sc-block-ui", { key: '29d1ab0ed6875a9924aa94a8fb5aa139598b47a4', spinner: true, style: { 'zIndex': '9', '--sc-block-ui-opacity': '0.5' } })));
     }
     static get watchers() { return {
         "step": ["handleStepChange"],

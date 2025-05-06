@@ -4,7 +4,7 @@ Tags: file manager, wordpress file manager, wp file manager, file manager pro, d
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 5.3.0
+Stable tag: 5.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -198,16 +198,15 @@ Here are some of the compelling reasons to install the Advanced File Manager plu
 * File editing for quick changes.
 
 
-### ☁️ **Cloud Storage Apps Integration with WordPress [Coming Soon]**
+### ☁️ **Cloud Storage Apps Integration with WordPress**
 
 Soon, you will be able to integrate your favorite cloud storage app with WordPress to manage files and document libraries. The list of cloud storage apps is as follows:
 
-* OneDrive
+* DropBox
 
-* Google Drive
+* OneDrive (Coming Soon)
 
-* Amazon Simple Storage Service (S3), etc.
-
+* Google Drive (Coming Soon)
 
 ### 🤝 **Compatibility** 
 
@@ -350,10 +349,16 @@ Yes, the plugin offers multilingual support, which makes it suitable for website
 
 
 == Changelog ==
+
+= 5.3.1 - May 05, 2025 =
+* Fixed compatibility issues with WordPress 6.8
+* Updated elFinder library to the latest version
+
 = 5.3.0 - March 03, 2025 =
 * New - Added Moono theme
 * Update - Some UI improvements
 * Fixed .svg sanitization issue
+* Security Fix - Stored Cross-Site Scripting via SVG File vulnerability reported by Wordfence(CVE-2024-13805).
 
 = 5.2.14 - Jan 15, 2025 =
 * Fixed .htaccess visibility issue

@@ -16,6 +16,7 @@ export declare class ScSubscriptionPayment {
     fetchPaymentMethods(): Promise<void>;
     handleSubmit(e: any): Promise<void>;
     renderLoading(): any;
+    currentPaymentMethodId(): string | PaymentMethod | ManualPaymentMethod;
     renderContent(): any;
     render(): any;
 }

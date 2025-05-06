@@ -29,9 +29,9 @@ if ( defined( 'FLEXIBLE_SHIPPING_PSR_NOT_PREFIXED' ) && FLEXIBLE_SHIPPING_PSR_NO
 		 */
 		public function __construct( $priority = 10 ) {
 			$this->condition_id = self::CONDITION_ID;
-			$this->name         = __( 'Price', 'flexible-shipping-rules' );
-			$this->description  = __( 'Shipping cost based on the cart total or package value', 'flexible-shipping-rules' );
-			$this->group        = __( 'Cart', 'flexible-shipping-rules' );
+			$this->name         = __( 'Price', 'flexible-shipping' );
+			$this->description  = __( 'Shipping cost based on the cart total or package value', 'flexible-shipping' );
+			$this->group        = __( 'Cart', 'flexible-shipping' );
 			$this->priority     = $priority;
 		}
 
@@ -88,17 +88,17 @@ if ( defined( 'FLEXIBLE_SHIPPING_PSR_NOT_PREFIXED' ) && FLEXIBLE_SHIPPING_PSR_NO
 					->add_class( 'wc_input_decimal' )
 					->add_class( 'hs-beacon-search' )
 					->add_class( 'parameter_min' )
-					->add_data( 'beacon_search', __( 'price is from', 'flexible-shipping-rules' ) )
-					->set_placeholder( __( 'min', 'flexible-shipping-rules' ) )
-					->set_label( __( 'is from', 'flexible-shipping-rules' ) ),
+					->add_data( 'beacon_search', __( 'price is from', 'flexible-shipping' ) )
+					->set_placeholder( __( 'min', 'flexible-shipping' ) )
+					->set_label( __( 'is from', 'flexible-shipping' ) ),
 				( new Field\InputNumberField() )
 					->set_name( self::MAX )
 					->add_class( 'wc_input_decimal' )
 					->add_class( 'hs-beacon-search' )
 					->add_class( 'parameter_max' )
-					->add_data( 'beacon_search', __( 'price to', 'flexible-shipping-rules' ) )
-					->set_placeholder( __( 'max', 'flexible-shipping-rules' ) )
-					->set_label( __( 'to', 'flexible-shipping-rules' ) )
+					->add_data( 'beacon_search', __( 'price to', 'flexible-shipping' ) )
+					->set_placeholder( __( 'max', 'flexible-shipping' ) )
+					->set_label( __( 'to', 'flexible-shipping' ) )
 					->add_data( 'suffix', get_woocommerce_currency_symbol() ),
 			];
 		}
@@ -118,9 +118,9 @@ if ( defined( 'FLEXIBLE_SHIPPING_PSR_NOT_PREFIXED' ) && FLEXIBLE_SHIPPING_PSR_NO
 		 */
 		public function __construct( $priority = 10 ) {
 			$this->condition_id = self::CONDITION_ID;
-			$this->name         = __( 'Price', 'flexible-shipping-rules' );
-			$this->description  = __( 'Shipping cost based on the cart total or package value', 'flexible-shipping-rules' );
-			$this->group        = __( 'Cart', 'flexible-shipping-rules' );
+			$this->name         = __( 'Price', 'flexible-shipping' );
+			$this->description  = __( 'Shipping cost based on the cart total or package value', 'flexible-shipping' );
+			$this->group        = __( 'Cart', 'flexible-shipping' );
 			$this->priority     = $priority;
 		}
 
@@ -177,17 +177,17 @@ if ( defined( 'FLEXIBLE_SHIPPING_PSR_NOT_PREFIXED' ) && FLEXIBLE_SHIPPING_PSR_NO
 					->add_class( 'wc_input_decimal' )
 					->add_class( 'hs-beacon-search' )
 					->add_class( 'parameter_min' )
-					->add_data( 'beacon_search', __( 'price is from', 'flexible-shipping-rules' ) )
-					->set_placeholder( __( 'min', 'flexible-shipping-rules' ) )
-					->set_label( __( 'is from', 'flexible-shipping-rules' ) ),
+					->add_data( 'beacon_search', __( 'price is from', 'flexible-shipping' ) )
+					->set_placeholder( __( 'min', 'flexible-shipping' ) )
+					->set_label( __( 'is from', 'flexible-shipping' ) ),
 				( new Field\InputNumberField() )
 					->set_name( self::MAX )
 					->add_class( 'wc_input_decimal' )
 					->add_class( 'hs-beacon-search' )
 					->add_class( 'parameter_max' )
-					->add_data( 'beacon_search', __( 'price to', 'flexible-shipping-rules' ) )
-					->set_placeholder( __( 'max', 'flexible-shipping-rules' ) )
-					->set_label( __( 'to', 'flexible-shipping-rules' ) )
+					->add_data( 'beacon_search', __( 'price to', 'flexible-shipping' ) )
+					->set_placeholder( __( 'max', 'flexible-shipping' ) )
+					->set_label( __( 'to', 'flexible-shipping' ) )
 					->add_data( 'suffix', get_woocommerce_currency_symbol() ),
 			];
 		}

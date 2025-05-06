@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'quadlayers/wp-whatsapp-chat',
-        'pretty_version' => 'v7.6.7',
-        'version' => '7.6.7.0',
-        'reference' => 'cf0fc1e56868abacbc11beaccb0a5f62a92d11f1',
+        'pretty_version' => 'v7.6.8',
+        'version' => '7.6.8.0',
+        'reference' => '2c40b8c7f910308e819609fc7be96318e2f17085',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'automattic/jetpack-assets' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => 'a21d376e1f956b94cbc1ce7cd99d14a5fdd060f2',
+            'reference' => '317bfcf3b79c1941633ee293473fb815ea15b662',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../jetpack_vendor/automattic/jetpack-assets',
             'aliases' => array(
@@ -24,7 +24,7 @@
         'automattic/jetpack-composer-plugin' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '65e2c7337c9fcfe194ef46b0f35b59ad7ccb0a22',
+            'reference' => 'd600dca3e511bbd2a1c4a49121186e3c4d4fec0d',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../automattic/jetpack-composer-plugin',
             'aliases' => array(
@@ -35,7 +35,7 @@
         'automattic/jetpack-constants' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '32218a91016dd0cd73f78f780a155abef692765e',
+            'reference' => 'beabd0881cb0ee45e0dafff325eaa48fb27178f9',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../jetpack_vendor/automattic/jetpack-constants',
             'aliases' => array(
@@ -46,7 +46,7 @@
         'automattic/jetpack-status' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => 'a7596b0e755428fcb68af03e14ae1b630c881c9b',
+            'reference' => '6b9f972a3ac56bbb5dfce1990dfc4289bdaf2f9d',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../jetpack_vendor/automattic/jetpack-status',
             'aliases' => array(
@@ -64,6 +64,41 @@
                 0 => '9999999-dev',
             ),
             'dev_requirement' => false,
+        ),
+        'franmastromarino/wp-plugin-feedback' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'a9d74330be65452c106dde40e7f940134af45909',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../franmastromarino/wp-plugin-feedback',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
+        'monolog/monolog' => array(
+            'pretty_version' => '2.x-dev',
+            'version' => '2.9999999.9999999.9999999-dev',
+            'reference' => 'cd82b5069148dd811ef54b4b92ce1b3aad84209b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../monolog/monolog',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'psr/log' => array(
+            'pretty_version' => '1.1.4',
+            'version' => '1.1.4.0',
+            'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/log',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'psr/log-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+            ),
         ),
         'quadlayers/wp-dashboard-widget-news' => array(
             'pretty_version' => 'dev-main',
@@ -112,7 +147,7 @@
         'quadlayers/wp-plugin-suggestions' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '3983f69cbea33743683c95cd26c97f03f540ca52',
+            'reference' => 'dfda294f6bdfa70e55a514a1c4729b316e3d8b80',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../jetpack_vendor/quadlayers/wp-plugin-suggestions',
             'aliases' => array(
@@ -123,7 +158,7 @@
         'quadlayers/wp-plugin-table-links' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'cadb59de7ce90b0e3b59174bfb7f52af556c7a66',
+            'reference' => '22bd6b20b40c7878c966eb57f45b1d9046728d6b',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../jetpack_vendor/quadlayers/wp-plugin-table-links',
             'aliases' => array(
@@ -132,9 +167,9 @@
             'dev_requirement' => false,
         ),
         'quadlayers/wp-whatsapp-chat' => array(
-            'pretty_version' => 'v7.6.7',
-            'version' => '7.6.7.0',
-            'reference' => 'cf0fc1e56868abacbc11beaccb0a5f62a92d11f1',
+            'pretty_version' => 'v7.6.8',
+            'version' => '7.6.8.0',
+            'reference' => '2c40b8c7f910308e819609fc7be96318e2f17085',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -2,7 +2,7 @@
 Tags: related posts, related, contextual related posts, similar posts, seo
 Contributors: webberzone, ajay
 Donate link: https://wzn.io/donate-crp
-Stable tag: 4.0.2
+Stable tag: 4.0.3
 Requires at least: 6.3
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -164,6 +164,13 @@ If you enable thumbnails, the plugin will try to find the correct thumbnail in t
 
 == Changelog ==
 
+= 4.0.3 =
+
+* Bug fixes:
+    * Shortcode attributes were not properly sanitized.
+    * Cache keys were not being generated correctly resulting in duplicate cache keys.
+    * Custom CSS styles were not loaded correctly when using the Related Posts Widget only.
+
 = 4.0.2 =
 
 * Enhancements:
@@ -208,5 +215,5 @@ For the changelog of earlier versions, please refer to the separate changelog.tx
 
 == Upgrade Notice ==
 
-= 4.0.2 =
+= 4.0.3 =
 Bugs fixed. Please read the changelog and the release post for more details.

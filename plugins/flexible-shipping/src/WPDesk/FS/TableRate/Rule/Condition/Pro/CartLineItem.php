@@ -23,11 +23,11 @@ class CartLineItem extends AbstractCondition {
 	 */
 	public function __construct( int $priority = 10 ) {
 		$this->condition_id = self::CONDITION_ID;
-		$this->name         = __( 'Cart line item', 'flexible-shipping-rules' );
-		$this->group        = __( 'Cart', 'flexible-shipping-rules' );
+		$this->name         = __( 'Cart line item', 'flexible-shipping' );
+		$this->group        = __( 'Cart', 'flexible-shipping' );
 		$this->priority     = $priority;
 		$this->is_disabled  = true;
 
-		$this->name .= ' ' . __( '(PRO feature)', 'flexible-shipping-rules' );
+		$this->name .= ' ' . __( '(PRO feature)', 'flexible-shipping' );
 	}
 }

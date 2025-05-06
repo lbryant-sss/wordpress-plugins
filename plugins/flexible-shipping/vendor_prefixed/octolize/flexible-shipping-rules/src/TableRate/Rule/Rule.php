@@ -82,15 +82,30 @@ class Rule
      */
     public function process_shipping_contents(ShippingContents $shipping_contents): ShippingContents
     {
+        $conditions_to_reorder = [];
+        $shipping_contents_count = count($shipping_contents->get_contents());
         if ($this->has_rule_conditions()) {
             foreach ($this->rule_settings[self::CONDITIONS] as $condition_settings_key => $condition_settings) {
                 if (isset($condition_settings[self::CONDITION_ID], $this->available_conditions[$condition_settings[self::CONDITION_ID]])) {
                     $condition = $this->available_conditions[$condition_settings[self::CONDITION_ID]];
                     $shipping_contents = $condition->process_shipping_contents($shipping_contents, $condition_settings);
+                    if (count($shipping_contents->get_contents()) === $shipping_contents_count) {
+                        $conditions_to_reorder[] = $condition_settings_key;
+                    }
+                    $shipping_contents_count = count($shipping_contents->get_contents());
                 }
             }
         }
+        $this->reorder_conditions_for_debug($conditions_to_reorder);
         return $shipping_contents;
+    }
+    private function reorder_conditions_for_debug(array $reorder_conditions): void
+    {
+        foreach ($reorder_conditions as $reorder_condition) {
+            $condition = $this->rule_settings[self::CONDITIONS][$reorder_condition];
+            unset($this->rule_settings[self::CONDITIONS][$reorder_condition]);
+            $this->rule_settings[self::CONDITIONS][$reorder_condition] = $condition;
+        }
     }
     /**
      * @param ShippingContents $shipping_contents .

@@ -20,9 +20,9 @@ require_once(NSL_PATH . '/compat.php');
 
 class NextendSocialLogin {
 
-    public static $version = '3.1.17';
+    public static $version = '3.1.18';
 
-    public static $nslPROMinVersion = '3.1.17';
+    public static $nslPROMinVersion = '3.1.18';
 
     public static $proxyPage = false;
 
@@ -196,14 +196,16 @@ class NextendSocialLogin {
             'embedded_login_form_button_style' => 'default',
             'embedded_login_form_layout'       => 'below',
 
-            'custom_actions'                        => '',
-            'custom_actions_button_style'           => 'default',
-            'custom_actions_button_layout'          => 'default',
-            'custom_actions_button_align'           => 'left',
-            'custom_actions_register'               => '',
-            'custom_actions_register_button_style'  => 'default',
-            'custom_actions_register_button_layout' => 'default',
-            'custom_actions_register_button_align'  => 'left',
+            'custom_actions'                          => '',
+            'custom_actions_button_style'             => 'default',
+            'custom_actions_button_layout'            => 'default',
+            'custom_actions_button_align'             => 'left',
+            'custom_actions_register'                 => '',
+            'custom_actions_register_button_style'    => 'default',
+            'custom_actions_register_button_layout'   => 'default',
+            'custom_actions_register_button_align'    => 'left',
+            'custom_actions_link_unlink'              => '',
+            'custom_actions_link_unlink_button_align' => 'left',
 
             'comment_login_button' => 'show',
             'comment_button_align' => 'left',

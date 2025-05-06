@@ -81,6 +81,13 @@ const ScSubscriptionPaymentMethod = class {
                 live_mode: (_b = this.subscription) === null || _b === void 0 ? void 0 : _b.live_mode,
             }),
         }));
+        // remove archived methods if the current payment method id is not the archived one.
+        this.manualPaymentMethods = this.manualPaymentMethods.filter(method => {
+            if ((method === null || method === void 0 ? void 0 : method.archived) && (method === null || method === void 0 ? void 0 : method.id) !== this.currentPaymentMethodId()) {
+                return false;
+            }
+            return true;
+        });
     }
     async deleteMethod(method) {
         const r = confirm(wp.i18n.__('Are you sure you want to remove this payment method?', 'surecart'));
@@ -162,12 +169,12 @@ const ScSubscriptionPaymentMethod = class {
     }
     render() {
         var _a;
-        return (h("sc-dashboard-module", { key: '8d937b71f84742d2278fbf33ea50889222835654', heading: this.heading || wp.i18n.__('Update Payment Method', 'surecart'), class: "subscription", error: this.error }, h("sc-button", { key: '15ad250980256f2e75b95a82201fe40a11fd34d6', slot: "end", type: "link", href: addQueryArgs(window.location.href, {
+        return (h("sc-dashboard-module", { key: 'ff20bdf6cf0e0db193260cee6349eb1460040646', heading: this.heading || wp.i18n.__('Update Payment Method', 'surecart'), class: "subscription", error: this.error }, h("sc-button", { key: '4c4ab1b3f78a00f1fa1a77209bb27678c69a73cf', slot: "end", type: "link", href: addQueryArgs(window.location.href, {
                 action: 'create',
                 model: 'payment_method',
                 ...(((_a = this.subscription) === null || _a === void 0 ? void 0 : _a.live_mode) === false ? { live_mode: false } : {}),
                 success_url: window.location.href,
-            }) }, h("sc-icon", { key: 'e9ad5763b95d50e0b578b1a1780c417398b14ea4', name: "plus", slot: "prefix" }), wp.i18n.__('Add New', 'surecart')), this.renderContent(), this.busy && h("sc-block-ui", { key: '88c88021ead6ff585220e813597105c154b0b429', spinner: true })));
+            }) }, h("sc-icon", { key: 'd1cc9365f2ed704049c03468e85e9325361ced3e', name: "plus", slot: "prefix" }), wp.i18n.__('Add New', 'surecart')), this.renderContent(), this.busy && h("sc-block-ui", { key: '8687c50f08d169d54543450c58f4cb2b9aedfb5a', spinner: true })));
     }
     get el() { return getElement(this); }
 };

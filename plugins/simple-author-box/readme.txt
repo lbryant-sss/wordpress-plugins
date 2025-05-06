@@ -4,7 +4,7 @@ Tags: author box, author profile, author social icons, author bio, guest author
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 6.8
-Stable tag: 2.55
+Stable tag: 2.56
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -53,6 +53,11 @@ Simple Author Box does not track, collect or process any user data. If you opt t
 
 
 == Changelog ==
+= 2.56 =
+* 2025-05-05
+* Updated Twitter icon to X
+* Added new icons for BlueSky, TikTok and Patreon
+
 = 2.55 =
 * 2025-04-15
 * fixed Simple Author Box Widget CSS issue

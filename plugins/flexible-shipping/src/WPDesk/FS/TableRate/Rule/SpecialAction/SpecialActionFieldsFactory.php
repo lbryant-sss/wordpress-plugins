@@ -62,7 +62,7 @@ class SpecialActionFieldsFactory implements FieldProvider {
 				->set_options( $this->get_special_action_options() )
 				->add_class( 'hs-beacon-search' )
 				->add_class( 'special-action' )
-				->add_data( 'beacon_search', __( 'special action', 'flexible-shipping-rules' ) ),
+				->add_data( 'beacon_search', __( 'special action', 'flexible-shipping' ) ),
 		);
 	}
 

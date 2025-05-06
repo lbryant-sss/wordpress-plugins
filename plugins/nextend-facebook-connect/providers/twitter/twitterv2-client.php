@@ -14,14 +14,15 @@ class NextendSocialProviderTwitterv2Client extends NextendSocialOauth2 {
     );
 
 
-    protected $endpointAuthorization = 'https://twitter.com/i/oauth2/authorize';
+    protected $endpointAuthorization = 'https://x.com/i/oauth2/authorize';
 
-    protected $endpointAccessToken = 'https://api.twitter.com/2/oauth2/token';
+    protected $endpointAccessToken = 'https://api.x.com/2/oauth2/token';
 
-    protected $endpointRestAPI = 'https://api.twitter.com/2/';
+    protected $endpointRestAPI = 'https://api.x.com/2/';
 
     protected $scopes = array(
         'users.read',
+        'users.email',
         'tweet.read'
     );
 

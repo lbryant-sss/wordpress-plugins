@@ -1,4 +1,4 @@
-/*! elementor - v3.29.0 - 28-04-2025 */
+/*! elementor - v3.29.0 - 05-05-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -10361,7 +10361,8 @@ var EVENTS_MAP = {
   FOLDER_CREATE: 'folder_create',
   QUOTA_BAR_CAPACITY: 'quota_bar_capacity',
   INSERT_APPLY_SETTINGS: 'insert_apply_settings',
-  UPGRADE_CLICKED: 'upgrade_clicked'
+  UPGRADE_CLICKED: 'upgrade_clicked',
+  PAGE_VIEWED: 'page_viewed'
 };
 var EventManager = exports.EventManager = /*#__PURE__*/function () {
   function EventManager() {
@@ -10385,6 +10386,15 @@ var EventManager = exports.EventManager = /*#__PURE__*/function () {
     key: "sendNewSaveTemplateClickedEvent",
     value: function sendNewSaveTemplateClickedEvent() {
       return this.sendEvent(EVENTS_MAP.NEW_SAVE_TEMPLATE_CLICKED, {
+        location: elementor.editorEvents.config.locations.templatesLibrary.library,
+        secondaryLocation: elementor.editorEvents.config.secondaryLocations.templateLibrary.saveModal,
+        trigger: elementor.editorEvents.config.triggers.click
+      });
+    }
+  }, {
+    key: "sendTemplateSavedEvent",
+    value: function sendTemplateSavedEvent() {
+      return this.sendEvent(EVENTS_MAP.TEMPLATE_SAVED, {
         location: elementor.editorEvents.config.locations.templatesLibrary.library,
         secondaryLocation: elementor.editorEvents.config.secondaryLocations.templateLibrary.saveModal,
         trigger: elementor.editorEvents.config.triggers.click
@@ -10482,7 +10492,7 @@ var EventManager = exports.EventManager = /*#__PURE__*/function () {
   }, {
     key: "sendPageViewEvent",
     value: function sendPageViewEvent(data) {
-      return this.sendEvent(EVENTS_MAP.UPGRADE_CLICKED, _objectSpread({
+      return this.sendEvent(EVENTS_MAP.PAGE_VIEWED, _objectSpread({
         page_loaded: data.location
       }, data));
     }
@@ -10600,7 +10610,7 @@ var TemplateLibraryManager = function TemplateLibraryManager() {
       template.set('preview_url', data.imageUrl);
     });
     this.handleKeydown = function (event) {
-      if (_this.isSelectAllShortcut(event) && _this.isCloudGridView()) {
+      if (_this.isSelectAllShortcut(event) && _this.isCloudGridView() && _this.isClickedInLibrary(event)) {
         event.preventDefault();
         _this.selectAllTemplates();
       }
@@ -10673,6 +10683,13 @@ var TemplateLibraryManager = function TemplateLibraryManager() {
   };
   this.isCloudGridView = function () {
     return 'cloud' === this.getFilter('source') && 'grid' === this.getViewSelection();
+  };
+  this.isClickedInLibrary = function (event) {
+    if (event.target === document.body) {
+      return true; // When the rename dialog is closed it sets the target to the body.
+    }
+    var libraryElement = document.getElementById('elementor-template-library-modal');
+    return libraryElement && event.target === libraryElement;
   };
   this.clearLastRemovedItems = function () {
     lastDeletedItems.clear();
@@ -10773,6 +10790,7 @@ var TemplateLibraryManager = function TemplateLibraryManager() {
             title: templateModel.get('title')
           },
           success: function success(response) {
+            templateModel.trigger('change:title');
             _this3.eventManager.sendTemplateRenameEvent({
               source: source
             });
@@ -10821,7 +10839,9 @@ var TemplateLibraryManager = function TemplateLibraryManager() {
     $inputArea.on('input', function (event) {
       event.preventDefault();
       var title = event.target.value.trim();
-      templateModel.set('title', title);
+      templateModel.set('title', title, {
+        silent: true
+      });
       dialog.getElements('ok').prop('disabled', !self.isTemplateTitleValid(title));
     });
     return dialog;
@@ -11080,12 +11100,12 @@ var TemplateLibraryManager = function TemplateLibraryManager() {
   };
   this.sendOnSavedTemplateSuccessEvent = function (formData) {
     if (_constants.SAVE_CONTEXTS.SAVE === formData.save_context) {
-      _this3.eventManager.sendNewSaveTemplateClickedEvent({
+      self.eventManager.sendTemplateSavedEvent({
         library_type: formData.source,
         template_type: formData.type
       });
     } else if ([_constants.SAVE_CONTEXTS.COPY, _constants.SAVE_CONTEXTS.MOVE].includes(formData.save_context)) {
-      _this3.eventManager.sendTemplateTransferEvent({
+      self.eventManager.sendTemplateTransferEvent({
         transfer_method: formData.save_context,
         template_type: formData.type,
         template_origin: formData.from_source,
@@ -11831,6 +11851,12 @@ module.exports = Marionette.ItemView.extend({
         message: __('Elementor Pro plans come with Cloud Templates.', 'elementor') + '<br>' + __('Upgrade now to re-use your templates on all the websites you’re working on.', 'elementor'),
         icon: "<i class=\"eicon-library-subscription-upgrade\" aria-hidden=\"true\" title=\"".concat(__('Upgrade now', 'elememntor'), "\"></i>"),
         button: "<a class=\"elementor-button e-accent\" href=\"https://go.elementor.com/go-pro-cloud-templates-cloud-tab\" target=\"_blank\">".concat(__('Upgrade now', 'elementor'), "</a>")
+      },
+      deactivated: {
+        title: __('Your library has been deactivated', 'elementor'),
+        message: __('This is because you don’t have an active subscription.', 'elementor') + '<br>' + __('Your templates are saved for 90 days from the day your subscription expires,', 'elementor') + '<br>' + __('then they’ll be gone forever.', 'elementor'),
+        icon: "<i class=\"eicon-library-subscription-upgrade\" aria-hidden=\"true\" title=\"".concat(__('Renew my subscription', 'elememntor'), "\"></i>"),
+        button: "<a class=\"elementor-button e-accent\" href=\"https://go.elementor.com/renew-license-cloud-templates-cloud-tab\" target=\"_blank\">".concat(__('Renew my subscription', 'elementor'), "</a>")
       }
     };
   },
@@ -11841,7 +11867,26 @@ module.exports = Marionette.ItemView.extend({
     if (!elementor.config.library_connect.is_connected) {
       return 'notConnected';
     }
+    if (this.isDeactivated()) {
+      return 'deactivated';
+    }
     return 'connectedNoQuota';
+  },
+  isDeactivated: function isDeactivated() {
+    var _elementorAppConfig$c;
+    var quota = (_elementorAppConfig$c = elementorAppConfig['cloud-library']) === null || _elementorAppConfig$c === void 0 ? void 0 : _elementorAppConfig$c.quota;
+    if (!quota) {
+      return false;
+    }
+    var _quota$currentUsage = quota.currentUsage,
+      currentUsage = _quota$currentUsage === void 0 ? 0 : _quota$currentUsage,
+      _quota$threshold = quota.threshold,
+      threshold = _quota$threshold === void 0 ? 0 : _quota$threshold,
+      _quota$subscriptionId = quota.subscriptionId,
+      subscriptionId = _quota$subscriptionId === void 0 ? '' : _quota$subscriptionId;
+    var isOverThreshold = currentUsage > threshold;
+    var hasNoSubscription = '' === subscriptionId;
+    return isOverThreshold && hasNoSubscription;
   },
   onRender: function onRender() {
     var _elementor$templates$;
@@ -12427,7 +12472,7 @@ var TemplateLibrarySaveTemplateView = Marionette.ItemView.extend({
       location: elementor.editorEvents.config.secondaryLocations.templateLibrary["".concat(context, "Modal")]
     });
     var context = this.getOption('context');
-    if (_constants.SAVE_CONTEXTS.SAVE === context && elementor.templates.hasCloudLibraryQuota()) {
+    if (_constants.SAVE_CONTEXTS.SAVE === context) {
       this.handleSaveAction();
     }
     if (_constants.SAVE_CONTEXTS.MOVE === context || _constants.SAVE_CONTEXTS.COPY === context) {
@@ -12489,6 +12534,7 @@ var TemplateLibrarySaveTemplateView = Marionette.ItemView.extend({
       this.$('.source-selections-input #local, .source-selections-input.local label').css('pointer-events', 'none');
     }
     this.$('.source-selections-input #cloud').prop('checked', false);
+    this.$('.source-selections-input #cloud').prop('disabled', true);
     this.ui.cloudFormInputs.addClass(stateClass);
     elementor.templates.eventManager.sendPageViewEvent({
       location: elementor.editorEvents.config.secondaryLocations.templateLibrary.saveModalSelectUpgrade
@@ -43172,10 +43218,20 @@ module.exports = {
       elType = _ref3$type === void 0 ? null : _ref3$type;
     return this.getAtomicElementTypes().includes(elType);
   },
-  isAtomicWidget: function isAtomicWidget(model) {
-    var _elementor$widgetsCac;
+  getWidgetCache: function getWidgetCache(model) {
     var elementType = 'widget' === model.get('elType') ? model.get('widgetType') : model.get('elType');
-    return !!((_elementor$widgetsCac = elementor.widgetsCache[elementType]) !== null && _elementor$widgetsCac !== void 0 && _elementor$widgetsCac.atomic_controls);
+    return elementor.widgetsCache[elementType];
+  },
+  isAtomicWidget: function isAtomicWidget(model) {
+    var widgetCache = this.getWidgetCache(model);
+    return !!(widgetCache !== null && widgetCache !== void 0 && widgetCache.atomic_props_schema);
+  },
+  getAtomicWidgetBaseStyles: function getAtomicWidgetBaseStyles(model) {
+    if (!this.isAtomicWidget(model)) {
+      return;
+    }
+    var widgetCache = this.getWidgetCache(model);
+    return widgetCache.base_styles;
   }
 };
 
@@ -50296,55 +50352,75 @@ var DivBlockView = BaseElementView.extend({
       onDropping: function onDropping(side, event) {
         event.stopPropagation();
 
-        // Triggering drag end manually, since it won't fired above iframe
+        // Triggering the drag end manually, since it won't fire above the iframe
         elementor.getPreviewView().onPanelElementDragEnd();
         var draggedView = elementor.channels.editor.request('element:dragged'),
-          draggingInSameParent = (draggedView === null || draggedView === void 0 ? void 0 : draggedView.parent) === _this3,
-          containerSelector = event.currentTarget.parentElement;
-        var $elements = jQuery(containerSelector).find('> .elementor-element');
-
-        // Exclude the dragged element from the indexing calculations.
-        if (draggingInSameParent) {
-          $elements = $elements.not(draggedView.$el);
-        }
-        var widgetsArray = Object.values($elements);
-        var newIndex = widgetsArray.indexOf(event.currentTarget);
-
-        // Plus one in order to insert it after the current target element.
-        if (_this3.shouldIncrementIndex(side)) {
-          newIndex++;
-        }
-
-        // User is sorting inside a Container.
-        if (draggedView) {
-          // Prevent the user from dragging a parent container into its own child container
-          var draggedId = draggedView.getContainer().id;
-          var currentTargetParentContainer = _this3.container;
-          while (currentTargetParentContainer) {
-            if (currentTargetParentContainer.id === draggedId) {
-              return;
-            }
-            currentTargetParentContainer = currentTargetParentContainer.parent;
-          }
-
-          // Reset the dragged element cache.
-          elementor.channels.editor.reply('element:dragged', null);
-          $e.run('document/elements/move', {
-            container: draggedView.getContainer(),
-            target: _this3.getContainer(),
-            options: {
-              at: newIndex
-            }
+          draggedElement = draggedView === null || draggedView === void 0 ? void 0 : draggedView.getContainer().view.el,
+          containerElement = event.currentTarget.parentElement,
+          elements = Array.from((containerElement === null || containerElement === void 0 ? void 0 : containerElement.querySelectorAll(':scope > .elementor-element')) || []),
+          targetIndex = elements.indexOf(event.currentTarget);
+        if (_this3.isPanelElement(draggedView, draggedElement)) {
+          _this3.onDrop(event, {
+            at: targetIndex
           });
           return;
         }
-
-        // User is dragging an element from the panel.
-        _this3.onDrop(event, {
-          at: newIndex
-        });
+        if (_this3.isParentElement(draggedView.getContainer().id)) {
+          return;
+        }
+        var selfIndex = elements.indexOf(draggedElement);
+        if (targetIndex === selfIndex) {
+          return;
+        }
+        var dropIndex = _this3.getDropIndex(containerElement, side, targetIndex, selfIndex);
+        _this3.moveDroppedItem(draggedView, dropIndex);
       }
     };
+  },
+  isPanelElement: function isPanelElement(draggedView, draggedElement) {
+    return !draggedView || !draggedElement;
+  },
+  isParentElement: function isParentElement(draggedId) {
+    var current = this.container;
+    while (current) {
+      if (current.id === draggedId) {
+        return true;
+      }
+      current = current.parent;
+    }
+    return false;
+  },
+  getDropIndex: function getDropIndex(container, side, index, selfIndex) {
+    var styles = window.getComputedStyle(container);
+    var isFlex = ['flex', 'inline-flex'].includes(styles.display);
+    var isFlexReverse = isFlex && ['column-reverse', 'row-reverse'].includes(styles.flexDirection);
+    var isRow = isFlex && ['row-reverse', 'row'].includes(styles.flexDirection);
+    var isRtl = elementorCommon.config.isRTL;
+    var isReverse = isRow ? isFlexReverse !== isRtl : isFlexReverse;
+
+    // The element should be placed BEFORE the current target
+    // if is reversed + side is bottom/right OR not is reversed + side is top/left
+    if (isReverse === this.draggingOnBottomOrRightSide(side)) {
+      if (-1 === selfIndex || selfIndex >= index - 1) {
+        return index;
+      }
+      return index > 0 ? index - 1 : 0;
+    }
+    if (0 <= selfIndex && selfIndex < index) {
+      return index;
+    }
+    return index + 1;
+  },
+  moveDroppedItem: function moveDroppedItem(draggedView, dropIndex) {
+    // Reset the dragged element cache.
+    elementor.channels.editor.reply('element:dragged', null);
+    $e.run('document/elements/move', {
+      container: draggedView.getContainer(),
+      target: this.getContainer(),
+      options: {
+        at: dropIndex
+      }
+    });
   },
   getEditButtons: function getEditButtons() {
     var elementData = elementor.getElementData(this.model),
@@ -50377,17 +50453,8 @@ var DivBlockView = BaseElementView.extend({
     }
     return editTools;
   },
-  shouldIncrementIndex: function shouldIncrementIndex(side) {
-    if (!this.draggingOnBottomOrRightSide(side)) {
-      return false;
-    }
-    return !this.emptyViewIsCurrentlyBeingDraggedOver();
-  },
   draggingOnBottomOrRightSide: function draggingOnBottomOrRightSide(side) {
     return ['bottom', 'right'].includes(side);
-  },
-  emptyViewIsCurrentlyBeingDraggedOver: function emptyViewIsCurrentlyBeingDraggedOver() {
-    return this.$el.find('> .elementor-empty-view > .elementor-first-add.elementor-html5dnd-current-element').length > 0;
   },
   /**
    * Toggle the `New Section` view when clicking the `add` button in the edit tools.
@@ -50425,8 +50492,9 @@ var DivBlockView = BaseElementView.extend({
     return [base].concat((0, _toConsumableArray2.default)(classes)).join(' ');
   },
   getBaseClass: function getBaseClass() {
-    var _this$options2;
-    return 'e-flexbox' === ((_this$options2 = this.options) === null || _this$options2 === void 0 || (_this$options2 = _this$options2.model) === null || _this$options2 === void 0 ? void 0 : _this$options2.getSetting('elType')) ? 'e-flexbox-base' : 'e-div-block-base';
+    var _this$options2, _Object$keys$;
+    var baseStyles = elementor.helpers.getAtomicWidgetBaseStyles((_this$options2 = this.options) === null || _this$options2 === void 0 ? void 0 : _this$options2.model);
+    return (_Object$keys$ = Object.keys(baseStyles !== null && baseStyles !== void 0 ? baseStyles : {})[0]) !== null && _Object$keys$ !== void 0 ? _Object$keys$ : '';
   }
 });
 module.exports = DivBlockView;
@@ -74506,7 +74574,7 @@ var __webpack_exports__ = {};
       };
     };
     var maybeAddFlexRowClass = function maybeAddFlexRowClass(container) {
-      if (!container) {
+      if (!container || container.classList.contains('e-grid')) {
         return;
       }
       var _placeholderContext2 = placeholderContext,
@@ -74557,21 +74625,28 @@ var __webpack_exports__ = {};
       $(targetElement)[insertMethod](elementsCache.$placeholder);
     };
     var insertGridRowPlaceholder = function insertGridRowPlaceholder() {
-      elementsCache.$placeholder.addClass('e-dragging-' + currentSide);
-      insertPlaceholderInsideElement();
+      var _placeholderContext3 = placeholderContext,
+        hasLogicalWrapper = _placeholderContext3.hasLogicalWrapper,
+        placeholderTarget = _placeholderContext3.placeholderTarget;
+
+      // If we want to use horizontal placeholders inside V3, then we should remove these 3 lines of the code.
+      if (!hasLogicalWrapper) {
+        elementsCache.$placeholder.addClass('e-dragging-' + currentSide);
+      }
+      insertPlaceholderInsideElement(placeholderTarget);
     };
     var insertFlexRowPlaceholder = function insertFlexRowPlaceholder() {
-      var _placeholderContext3 = placeholderContext,
-        $currentElement = _placeholderContext3.$currentElement,
-        isInnerContainer = _placeholderContext3.isInnerContainer;
+      var _placeholderContext4 = placeholderContext,
+        $currentElement = _placeholderContext4.$currentElement,
+        isInnerContainer = _placeholderContext4.isInnerContainer;
       var $target = isInnerContainer ? $currentElement.closest('.e-con') : $currentElement;
       insertPlaceholderOutsideElement($target[0]);
     };
     var insertDefaultPlaceholder = function insertDefaultPlaceholder() {
-      var _placeholderContext4 = placeholderContext,
-        placeholderTarget = _placeholderContext4.placeholderTarget,
-        hasLogicalWrapper = _placeholderContext4.hasLogicalWrapper,
-        isAtomicContainer = _placeholderContext4.isAtomicContainer;
+      var _placeholderContext5 = placeholderContext,
+        placeholderTarget = _placeholderContext5.placeholderTarget,
+        hasLogicalWrapper = _placeholderContext5.hasLogicalWrapper,
+        isAtomicContainer = _placeholderContext5.isAtomicContainer;
       if (hasLogicalWrapper || isAtomicContainer) {
         addLogicalAttributesToPlaceholder();
       }
@@ -74579,8 +74654,8 @@ var __webpack_exports__ = {};
     };
     var addLogicalAttributesToPlaceholder = function addLogicalAttributesToPlaceholder() {
       var PLACEHOLDER_HEIGHT = 10;
-      var _placeholderContext5 = placeholderContext,
-        placeholderTarget = _placeholderContext5.placeholderTarget;
+      var _placeholderContext6 = placeholderContext,
+        placeholderTarget = _placeholderContext6.placeholderTarget;
       var placeholder = elementsCache.$placeholder[0];
       placeholder.classList.add('is-logical');
       var styles = getComputedStyle(placeholderTarget);

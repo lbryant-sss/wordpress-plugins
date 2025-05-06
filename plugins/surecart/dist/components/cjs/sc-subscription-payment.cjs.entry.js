@@ -66,6 +66,13 @@ const ScSubscriptionPayment = class {
                 live_mode: (_b = this.subscription) === null || _b === void 0 ? void 0 : _b.live_mode,
             }),
         }));
+        // remove archived methods if the current payment method id is not the archived one.
+        this.manualPaymentMethods = this.manualPaymentMethods.filter(method => {
+            if ((method === null || method === void 0 ? void 0 : method.archived) && (method === null || method === void 0 ? void 0 : method.id) !== this.currentPaymentMethodId()) {
+                return false;
+            }
+            return true;
+        });
     }
     async handleSubmit(e) {
         var _a;
@@ -96,16 +103,19 @@ const ScSubscriptionPayment = class {
     renderLoading() {
         return (index.h(index.Fragment, null, index.h("sc-choice", { name: "loading", disabled: true }, index.h("sc-skeleton", { style: { width: '60px', display: 'inline-block' } }), index.h("sc-skeleton", { style: { width: '80px', display: 'inline-block' }, slot: "price" }), index.h("sc-skeleton", { style: { width: '120px', display: 'inline-block' }, slot: "description" })), index.h("sc-button", { type: "primary", full: true, submit: true, loading: true, busy: true }), !!this.backUrl && index.h("sc-button", { href: this.backUrl, full: true, loading: true, busy: true })));
     }
+    currentPaymentMethodId() {
+        var _a, _b, _c, _d, _e;
+        return ((_a = this.subscription) === null || _a === void 0 ? void 0 : _a.manual_payment)
+            ? (_b = this.subscription) === null || _b === void 0 ? void 0 : _b.manual_payment_method
+            : ((_d = (_c = this.subscription) === null || _c === void 0 ? void 0 : _c.payment_method) === null || _d === void 0 ? void 0 : _d.id) || ((_e = this.subscription) === null || _e === void 0 ? void 0 : _e.payment_method);
+    }
     renderContent() {
-        var _a, _b, _c, _d, _e, _f, _g, _h;
+        var _a, _b, _c;
         if (this.loading) {
             return this.renderLoading();
         }
         const modeMethods = this.paymentMethods.filter(method => { var _a; return (method === null || method === void 0 ? void 0 : method.live_mode) === ((_a = this.subscription) === null || _a === void 0 ? void 0 : _a.live_mode); });
         const hasNoPaymentMethods = (!((_a = this.paymentMethods) === null || _a === void 0 ? void 0 : _a.length) && !((_b = this.manualPaymentMethods) === null || _b === void 0 ? void 0 : _b.length)) || (((_c = this.paymentMethods) === null || _c === void 0 ? void 0 : _c.length) && !(modeMethods === null || modeMethods === void 0 ? void 0 : modeMethods.length));
-        const currentPaymentMethodId = ((_d = this.subscription) === null || _d === void 0 ? void 0 : _d.manual_payment)
-            ? (_e = this.subscription) === null || _e === void 0 ? void 0 : _e.manual_payment_method
-            : ((_g = (_f = this.subscription) === null || _f === void 0 ? void 0 : _f.payment_method) === null || _g === void 0 ? void 0 : _g.id) || ((_h = this.subscription) === null || _h === void 0 ? void 0 : _h.payment_method);
         if (hasNoPaymentMethods) {
             return (index.h(index.Fragment, null, index.h("sc-empty", { icon: "credit-card" }, wp.i18n.__('You have no saved payment methods.', 'surecart')), !!this.backUrl && (index.h("sc-button", { href: this.backUrl, full: true }, wp.i18n.__('Go Back', 'surecart')))));
         }
@@ -113,13 +123,13 @@ const ScSubscriptionPayment = class {
             var _a;
             if ((method === null || method === void 0 ? void 0 : method.live_mode) !== ((_a = this === null || this === void 0 ? void 0 : this.subscription) === null || _a === void 0 ? void 0 : _a.live_mode))
                 return null;
-            return (index.h("sc-choice", { checked: currentPaymentMethodId === (method === null || method === void 0 ? void 0 : method.id), name: "payment_method", value: method === null || method === void 0 ? void 0 : method.id }, index.h("sc-payment-method", { paymentMethod: method, full: true })));
+            return (index.h("sc-choice", { checked: this.currentPaymentMethodId() === (method === null || method === void 0 ? void 0 : method.id), name: "payment_method", value: method === null || method === void 0 ? void 0 : method.id }, index.h("sc-payment-method", { paymentMethod: method, full: true })));
         }), (this.manualPaymentMethods || []).map(method => {
-            return (index.h("sc-choice", { checked: currentPaymentMethodId === (method === null || method === void 0 ? void 0 : method.id), name: "payment_method", value: method === null || method === void 0 ? void 0 : method.id }, index.h("sc-manual-payment-method", { paymentMethod: method, showDescription: true })));
+            return (index.h("sc-choice", { checked: this.currentPaymentMethodId() === (method === null || method === void 0 ? void 0 : method.id), name: "payment_method", value: method === null || method === void 0 ? void 0 : method.id }, index.h("sc-manual-payment-method", { paymentMethod: method, showDescription: true })));
         }))), index.h("sc-button", { type: "primary", full: true, submit: true, loading: this.loading || this.busy, disabled: this.loading || this.busy }, wp.i18n.__('Update', 'surecart')), !!this.backUrl && (index.h("sc-button", { href: this.backUrl, full: true, loading: this.loading || this.busy, disabled: this.loading || this.busy }, wp.i18n.__('Go Back', 'surecart')))));
     }
     render() {
-        return (index.h("sc-dashboard-module", { key: 'b36b067fe53f870c482da572ebe8d1ceabc75610', heading: wp.i18n.__('Select a payment method', 'surecart'), class: "subscription-payment", error: this.error }, index.h("sc-form", { key: 'abf9f2a99540fe3e278924c49768622d2bd0f773', onScFormSubmit: e => this.handleSubmit(e) }, index.h("sc-card", { key: 'b772e2343296ec73a5ebc30e7301005bc5caf39a' }, this.renderContent())), this.busy && index.h("sc-block-ui", { key: '1d332cb4cd77df1aaf3109d4da64ccd7dddb5fc4' })));
+        return (index.h("sc-dashboard-module", { key: '23b5a655ca2997c1961411d72c1dd3468c689a4a', heading: wp.i18n.__('Select a payment method', 'surecart'), class: "subscription-payment", error: this.error }, index.h("sc-form", { key: '5f9ddadb8527708511599573383a546b0e968116', onScFormSubmit: e => this.handleSubmit(e) }, index.h("sc-card", { key: 'e143136e0e49ab75055cf000ff8bb173c1bed081' }, this.renderContent())), this.busy && index.h("sc-block-ui", { key: 'bcd1edd62854207e86cd0f663435e6b4f9b04401' })));
     }
 };
 ScSubscriptionPayment.style = ScSubscriptionPaymentStyle0;

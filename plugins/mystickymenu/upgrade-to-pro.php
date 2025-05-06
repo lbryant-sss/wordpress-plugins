@@ -27,159 +27,122 @@ $allowedTags = [
 
 $proURL = "https://go.premio.io/?edd_action=add_to_cart&download_id=2199&edd_options[price_id]=";
 
-$plans 	= [
-    '1_website' => [
-        '1_year' => [
-            'price' => 39,
-            'month' => 3.5,
-            'link' => $proURL."37",
-            'title' => esc_html__("1 year", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for 1 year", "mystickymenu"),
-        ],
-        '2_years' => [
-            'price' => 59,
-            'month' => 2.5,
-            'link' => $proURL."38",
-            'title' => esc_html__("2 years", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for 2 years", "mystickymenu"),
-        ],
-        'lifetime' => [
-            'price' => 119,
-            'month' => 0,
-            'link' => $proURL."39",
-            'title' => esc_html__("Lifetime", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for lifetime", "mystickymenu"),
-        ]
-    ],
-    '5_websites' => [
-        '1_year' => [
-            'price' => 89,
-            'month' => 7.5,
-            'link' => $proURL."40",
-            'title' => esc_html__("1 year", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for 1 year", "mystickymenu"),
-        ],
-        '2_years' => [
-            'price' => 139,
-            'month' => 6.0,
-            'link' => $proURL."41",
-            'title' => esc_html__("2 years", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for 2 years", "mystickymenu"),
-        ],
-        'lifetime' => [
-            'price' => 229,
-            'month' => 0,
-            'link' => $proURL."42",
-            'title' => esc_html__("Lifetime", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for lifetime", "mystickymenu")
-        ]
-    ],
-    '50_websites' => [
-        '1_year' => [
-            'price' => 149,
-            'month' => 12.5,
-            'link' => $proURL."43",
-            'title' => esc_html__("1 year", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for 1 year", "mystickymenu"),
-        ],
-        '2_years' => [
-            'price' => 229,
-            'month' => 9.6,
-            'link' => $proURL."44",
-            'title' => esc_html__("2 years", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for 2 years", "mystickymenu"),
-        ],
-        'lifetime' => [
-            'price' => 389,
-            'month' => 0,
-            'link' => $proURL."45",
-            'title' => esc_html__("Lifetime", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for lifetime", "mystickymenu")
-        ]
-    ],
-    '500_websites' => [
-        '1_year' => [
-            'price' => 279,
-            'month' => 23.5,
-            'link' => $proURL."46",
-            'title' => esc_html__("1 year", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for 1 year", "mystickymenu"),
-        ],
-        '2_years' => [
-            'price' => 419,
-            'month' => 17.5,
-            'link' => $proURL."47",
-            'title' => esc_html__("2 years", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for 2 years", "mystickymenu"),
-        ],
-        'lifetime' => [
-            'price' => 699,
-            'month' => 0,
-            'link' => $proURL."48",
-            'title' => esc_html__("Lifetime", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for lifetime", "mystickymenu")
-        ]
-    ],
-    '1000_websites' => [
-        '1_year' => [
-            'price' => 389,
-            'month' => 32.5,
-            'link' => $proURL."49",
-            'title' => esc_html__("1 year", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for 1 year", "mystickymenu"),
-        ],
-        '2_years' => [
-            'price' => 585,
-            'month' => 24.2,
-            'link' => $proURL."50",
-            'title' => esc_html__("2 years", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for 2 years", "mystickymenu"),
-        ],
-        'lifetime' => [
-            'price' => 959,
-            'month' => 0,
-            'link' => $proURL."51",
-            'title' => esc_html__("Lifetime", "mystickymenu"),
-            'mobile_title' => esc_html__("Updated and support for lifetime", "mystickymenu")
-        ]
-    ]
-];
-
 $options = [
     '1_year' => [
-        'title'     => esc_html__('1 Year', 'mystickymenu'),
+        'title' => esc_html__('1 Year', 'mystickymenu'),
         'plan_type' => esc_html__('Billed Yearly', 'mystickymenu'),
-        'postfix'   => esc_html__('/year', 'mystickymenu'),
-        'plans'     => []
+        'postfix'   => esc_html__('/Year', 'mystickymenu'),
+        'plans' => [
+            [
+                'price'     => 49,
+                'desc'      => '',
+                'month'     => esc_html__('Less than $4.1/mo', 'mystickymenu'),
+                'link'      => $proURL."52",
+                'websites'  => esc_html__('1 Website', 'mystickymenu')
+            ],[
+                'price'     => 109,
+                'desc'      => esc_html__('Save $136', 'mystickymenu'),
+                'month'     => esc_html__('Less than $9.1/mo', 'mystickymenu'),
+                'link'      => $proURL."55",
+                'websites'  => esc_html__('5 Websites', 'mystickymenu')
+            ],[
+                'price'     => 179,
+                'desc'      => esc_html__('Save $2,270', 'mystickymenu'),
+                'month'     => esc_html__('Less than $15/mo', 'mystickymenu'),
+                'link'      => $proURL."58",
+                'websites'  => esc_html__('50 Websites', 'mystickymenu')
+            ],[
+                'price'     => 349,
+                'desc'      => esc_html__('Save >95%', 'mystickymenu'),
+                'month'     => esc_html__('Less than $29.1/mo', 'mystickymenu'),
+                'link'      => $proURL."61",
+                'websites'  => esc_html__('500 Websites', 'mystickymenu')
+            ],[
+                'price'     => 479,
+                'desc'      => esc_html__('Save >95%', 'mystickymenu'),
+                'month'     => esc_html__('Less than $40/mo', 'mystickymenu'),
+                'link'      => $proURL."64",
+                'websites'  => esc_html__('1000 Websites', 'mystickymenu')
+            ]
+        ]
     ],
     '2_years' => [
-        'title'     => esc_html__('2 Year', 'mystickymenu'),
+        'title' => esc_html__('2 Year', 'mystickymenu'),
         'plan_type' => esc_html__('Billed Yearly after 2 Years', 'mystickymenu'),
-        'postfix'   => esc_html__('/2 year', 'mystickymenu'),
-        'plans'     => []
+        'postfix'   => esc_html__('/2 Years', 'mystickymenu'),
+        'plans' => [
+            [
+                'price'     => 69,
+                'desc'      => esc_html__('Save $29', 'mystickymenu'),
+                'month'     => esc_html__('Less than $2.9/mo', 'mystickymenu'),
+                'link'      => $proURL."53",
+                'websites'  => esc_html__('1 Website', 'mystickymenu')
+            ],[
+                'price'     => 169,
+                'desc'      => esc_html__('Save $321', 'mystickymenu'),
+                'month'     => esc_html__('Less than $7.1/mo', 'mystickymenu'),
+                'link'      => $proURL."56",
+                'websites'  => esc_html__('5 Websites', 'mystickymenu')
+            ],[
+                'price'     => 279,
+                'desc'      => esc_html__('Save $4,600+', 'mystickymenu'),
+                'month'     => esc_html__('Less than $11.7/mo', 'mystickymenu'),
+                'link'      => $proURL."59",
+                'websites'  => esc_html__('50 Websites', 'mystickymenu')
+            ],[
+                'price'     => 519,
+                'desc'      => esc_html__('Save >95%', 'mystickymenu'),
+                'month'     => esc_html__('Less than $21.7/mo', 'mystickymenu'),
+                'link'      => $proURL."62",
+                'websites'  => esc_html__('500 Websites', 'mystickymenu')
+            ],[
+                'price'     => 729,
+                'desc'      => esc_html__('Save >95%', 'mystickymenu'),
+                'month'     => esc_html__('Less than $30.5/mo', 'mystickymenu'),
+                'link'      => $proURL."65",
+                'websites'  => esc_html__('1000 Websites', 'mystickymenu')
+            ]
+        ]
     ],
     'lifetime' => [
-        'title'     => esc_html__('Lifetime', 'mystickymenu'),
+        'title' => esc_html__('Lifetime', 'mystickymenu'),
         'plan_type' => esc_html__('For Lifetime', 'mystickymenu'),
-        'postfix'   => esc_html__('/lifetime', 'mystickymenu'),
-        'plans'     => []
+        'postfix'   => esc_html__('/Lifetime', 'mystickymenu'),
+        'plans' => [
+            [
+                'price'     => 149,
+                'desc'      => esc_html__('Save $96', 'mystickymenu'),
+                'month'     => esc_html__('Lifetime License 🚀', 'mystickymenu'),
+                'link'      => $proURL."54",
+                'websites'  => esc_html__('1 Website', 'mystickymenu')
+            ],[
+                'price'     => 279,
+                'desc'      => esc_html__('Save $946', 'mystickymenu'),
+                'month'     => esc_html__('Lifetime License 🚀', 'mystickymenu'),
+                'link'      => $proURL."57",
+                'websites'  => esc_html__('5 Websites', 'mystickymenu')
+            ],[
+                'price'     => 479,
+                'desc'      => esc_html__('Save $10,000+', 'mystickymenu'),
+                'month'     => esc_html__('Lifetime License 🚀', 'mystickymenu'),
+                'link'      => $proURL."60",
+                'websites'  => esc_html__('50 Websites', 'mystickymenu')
+            ],[
+                'price'     => 869,
+                'desc'      => esc_html__('Save >95%', 'mystickymenu'),
+                'month'     => esc_html__('Lifetime License 🚀', 'mystickymenu'),
+                'link'      => $proURL."63",
+                'websites'  => esc_html__('500 Websites', 'mystickymenu')
+            ],[
+                'price'     => 1199,
+                'desc'      => esc_html__('Save >95%', 'mystickymenu'),
+                'month'     => esc_html__('Lifetime License 🚀', 'mystickymenu'),
+                'link'      => $proURL."66",
+                'websites'  => esc_html__('1000 Websites', 'mystickymenu')
+            ]
+        ]
     ]
 ];
-
-$websites = [1,5,50,500,1000];
-
-$count = 0;
-foreach ($plans as $key => $plan) {
-    $options['1_year']['plans'][$count] = $plans[$key]['1_year'];
-    $options['1_year']['plans'][$count]['websites'] = $websites[$count];
-    $options['2_years']['plans'][$count] = $plans[$key]['2_years'];
-    $options['2_years']['plans'][$count]['websites'] = $websites[$count];
-    if(isset($options['lifetime']) && isset($plans[$key]['lifetime'])) {
-        $options['lifetime']['plans'][$count] = $plans[$key]['lifetime'];
-        $options['lifetime']['plans'][$count]['websites'] = $websites[$count];
-    }
-    $count++;
-}
 
 $features = [
     [
@@ -268,7 +231,7 @@ $features = [
                         <div class="plan-row total-col-<?php echo esc_attr(count($options)) ?>">
                             <div class="plan-col first-col plan-data">
                                 <div class="plan-plugin-name">
-                                    <div class="plan-plugin-name">My Sticky Bar</div>
+                                    <div class="plugin-title">My Sticky Bar</div>
                                     <div class="chaty-powered-by">
                                         Powered by
                                         <a href="https://premio.io" target="_blank">
@@ -283,9 +246,7 @@ $features = [
                             if(!empty($options) && is_array($options)) {
                                 foreach ($options as $key=>$option) { ?>
                                     <div class="plan-col plan-detail plan-info" data-plan="<?php echo esc_attr($key) ?>">
-                                        <?php if($key == 'lifetime') { ?>
-                                            <span class="best-value">🎉 Best Value</span>
-                                        <?php } ?>
+                                        <span class="best-value"><?php echo esc_attr($option['plans']['0']['desc']) ?></span>
                                         <div class="app-plan-top">
                                             <div class="plan-name"><?php echo esc_attr($option['title']) ?></div>
                                             <div class="plan-price">
@@ -296,9 +257,8 @@ $features = [
                                             <?php if($key == 'lifetime') { ?>
                                                 <div class="plan-monthly">Lifetime License 🚀</div>
                                             <?php } else { ?>
-                                                <div class="plan-monthly">Less than $<span><?php echo esc_attr($option['plans']['0']['month']) ?></span>/mo</div>
+                                                <div class="plan-monthly"><span><?php echo esc_attr($option['plans']['0']['month']) ?></span></div>
                                             <?php } ?>
-                                            <div class="no-of-websites">Number of Websites</div>
                                             <div class="plan-selector">
                                                 <select class="website-list" data-plan="<?php echo esc_attr($key) ?>">
                                                     <?php foreach($option['plans'] as $planKey=>$plan) { ?>
@@ -323,15 +283,15 @@ $features = [
                         <div class="plan-row">
                             <div class="plan-col first-row">
                                 <?php if(!empty($feature['tooltip'])) { ?>
-                                    <a href="javascript:;" class="has-tooltip">
+                                    <div class="has-tooltip">
                                         <span class="table-text"><?php echo esc_attr($feature['title']); ?></span>
                                         <span class="table-tooltip">
-                                        <span class="table-tooltip-text">
-                                            <?php echo wp_kses($feature['tooltip'], $allowedTags); ?>
+                                            <span class="table-tooltip-text">
+                                                <?php echo wp_kses($feature['tooltip'], $allowedTags); ?>
+                                            </span>
+                                            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg"> <g opacity="0.5" clip-path="url(#clip0_1771_2646)"> <path d="M8.00016 14.9544C11.6821 14.9544 14.6668 11.9697 14.6668 8.28776C14.6668 4.60586 11.6821 1.62109 8.00016 1.62109C4.31826 1.62109 1.3335 4.60586 1.3335 8.28776C1.3335 11.9697 4.31826 14.9544 8.00016 14.9544Z" stroke="#747C97" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/> <path d="M8 10.9538V8.28711" stroke="#747C97" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/> <path d="M8 5.62109H8.00667" stroke="#747C97" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/> </g> <defs> <clipPath id="clip0_1771_2646"> <rect width="16" height="16" fill="white" transform="translate(0 0.287109)"/> </clipPath> </defs> </svg>
                                         </span>
-                                        <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg"> <g opacity="0.5" clip-path="url(#clip0_1771_2646)"> <path d="M8.00016 14.9544C11.6821 14.9544 14.6668 11.9697 14.6668 8.28776C14.6668 4.60586 11.6821 1.62109 8.00016 1.62109C4.31826 1.62109 1.3335 4.60586 1.3335 8.28776C1.3335 11.9697 4.31826 14.9544 8.00016 14.9544Z" stroke="#747C97" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/> <path d="M8 10.9538V8.28711" stroke="#747C97" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/> <path d="M8 5.62109H8.00667" stroke="#747C97" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/> </g> <defs> <clipPath id="clip0_1771_2646"> <rect width="16" height="16" fill="white" transform="translate(0 0.287109)"/> </clipPath> </defs> </svg>
-                                    </span>
-                                    </a>
+                                    </div>
                                 <?php } else { ?>
                                     <div class="no-tooltip">
                                         <?php echo esc_attr($feature['title']); ?>
@@ -379,9 +339,9 @@ $features = [
                                         <?php if($key == 'lifetime') { ?>
                                             <div class="plan-monthly">Lifetime License 🚀</div>
                                         <?php } else { ?>
-                                            <div class="plan-monthly">Less than $<span><?php echo esc_attr($option['plans']['0']['month']) ?></span>/mo</div>
+                                            <div class="plan-monthly"><span><?php echo esc_attr($option['plans']['0']['month']) ?></span></div>
                                         <?php } ?>
-                                        <div class="no-of-websites">Number of Websites</div>
+
                                         <div class="plan-selector">
                                             <select class="website-list" data-plan="<?php echo esc_attr($key) ?>">
                                                 <?php foreach($option['plans'] as $planKey=>$plan) { ?>
@@ -421,11 +381,11 @@ $features = [
         <div class="money-guaranteed">
             <p>
                 <span class="dashicons dashicons-yes"></span>
-                <?php esc_html_e("30 days money back guaranteed", 'chaty'); ?>
+                <?php esc_html_e("30 days money back guaranteed", 'mystickymenu'); ?>
             </p>
             <p>
                 <span class="dashicons dashicons-yes"></span>
-                <?php esc_html_e("The plugin will always keep working even if you don't renew your license", 'chaty'); ?>
+                <?php esc_html_e("The plugin will always keep working even if you don't renew your license", 'mystickymenu'); ?>
             </p>
             <div class="payments">
                 <img src="<?php echo esc_url(plugins_url('/images/payment.png', __FILE__)); ?>" alt="Payment" class="payment-img" />
@@ -630,13 +590,13 @@ The service is professional and helpful – you are taken step by step until the
                 $(document).on("change", ".website-list", function(){
                     if(pluginPlans[$(this).data('plan')] && pluginPlans[$(this).data('plan')]['plans'][$(this).val()]) {
                         let selectedPlan = pluginPlans[$(this).data('plan')]['plans'][$(this).val()];
-                        console.log(selectedPlan);
                         var planType = selectedPlan['plan_type'];
                         $(this).closest(".plan-info").find(".plan-monthly span").html(selectedPlan['month']);
                         $(this).closest(".plan-info").find(".plan-type").html(planType);
                         $(this).closest(".plan-info").find(".plan-price span").html("$"+selectedPlan['price']);
                         $(this).closest(".plan-info").find(".purchase-link").attr("href", selectedPlan['link']);
                         $(this).closest(".plan-info").find(".purchase-link").text(selectedPlan['btn_text']);
+                        $(this).closest(".plan-info").find(".best-value").html(selectedPlan['desc']);
                     }
                 });
             }

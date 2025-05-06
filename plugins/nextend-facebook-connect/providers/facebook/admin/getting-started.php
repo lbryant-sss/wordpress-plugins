@@ -2,7 +2,7 @@
 defined('ABSPATH') || die();
 /** @var $this NextendSocialProviderAdmin */
 
-$lastUpdated = '2024-09-24';
+$lastUpdated = '2025-05-05';
 
 $provider = $this->getProvider();
 ?>
@@ -30,11 +30,14 @@ $provider = $this->getProvider();
                 <li><?php printf(__('Navigate to %s', 'nextend-facebook-connect'), '<a href="https://developers.facebook.com/apps/" target="_blank">https://developers.facebook.com/apps/</a>'); ?></li>
                 <li><?php printf(__('Log in with your %s credentials if you are not logged in.', 'nextend-facebook-connect'), 'Facebook'); ?></li>
                 <li><?php printf(__('Click on the %1$s button.', 'nextend-facebook-connect'), '"<b>Create App</b>"'); ?></li>
-                <li><?php printf(__('%1$sOptional%2$s: choose a %3$s if you would like to. If you didn\'t choose a %3$s at this point, you will need to select it in step 23, before you start the %4$s! ', 'nextend-facebook-connect'), '<b>', '</b>', '"<b>Business portfolio</b>"', '"<b>Verification</b>"'); ?></li>
+                <li><?php printf(__('If presented with a modal, close it or click on the %1$s button again.', 'nextend-facebook-connect'), '"<b>Create App</b>"'); ?></li>
+                <li><?php printf(__('Fill the %1$s and %2$s fields. The specified app name will appear on your %3$s!', 'nextend-facebook-connect'), '"<b>App name</b>"', '"<b>App contact email</b>"', '<a href="https://developers.facebook.com/docs/facebook-login/permissions/overview/" target="_blank">Consent Screen</a>'); ?></li>
                 <li><?php printf(__('Click on the %1$s button and choose the %2$s option!', 'nextend-facebook-connect'), '"<b>Next</b>"', '"<b>Authenticate and request data from users with Facebook Login</b>"'); ?></li>
-                <li><?php printf(__('Click on the %1$s button and fill the %2$s and %3$s fields. The specified app name will appear on your %4$s!', 'nextend-facebook-connect'), '"<b>Next</b>"', '"<b>Add an app name</b>"', '"<b>App contact email</b>"', '<a href="https://developers.facebook.com/docs/facebook-login/permissions/overview/" target="_blank">Consent Screen</a>'); ?></li>
-                <li><?php printf(__('Click on the %1$s button, read the documents listed below the requirements then press the %2$s button.', 'nextend-facebook-connect'), '"<b>Next</b>"', '"<b>Create App</b>"'); ?></li>
+                <li><?php printf(__('%1$sOptional%2$s: choose a %3$s if you would like to. If you didn\'t choose a %3$s at this point, you will need to select it in step 26, before you start the %4$s!', 'nextend-facebook-connect'), '<b>', '</b>', '"<b>Business portfolio</b>"', '"<b>Verification</b>"'); ?></li>
+                <li><?php printf(__('Click on the %1$s button, read the documents listed below the requirements, then click %1$s again.', 'nextend-facebook-connect'), '"<b>Next</b>"'); ?></li>
+                <li><?php printf(__('Check the App details in the %1$s, and then press the %2$s button.', 'nextend-facebook-connect'), '"Overview"', '"<b>Go to dashboard</b>"'); ?></li>
                 <li><?php printf(__('Complete the security check if you are prompted with the modal.', 'nextend-facebook-connect')); ?></li>
+                <li><?php printf(__('You will end up in the %1$s. If you see a modal window appear, close it or click on %2$s.', 'nextend-facebook-connect'), '"Dashboard"', '"<b>Go to dashboard</b>"'); ?></li>
                 <li><?php printf(__('Click on the %1$s tab on the left side and then click on the %2$s button that appears next to the %3$s item.', 'nextend-facebook-connect'), '"<b>Use cases</b>"', '"<b>Customize</b>"', '"<b>Authenticate and request data from users with Facebook Login</b>"'); ?></li>
                 <li><?php printf(__('Below the %1$s section, find the %2$s permission and click on the %3$s button.', 'nextend-facebook-connect'), '"<b>Permissions</b>"', '"<b>email</b>"', '"<b>Add</b>"'); ?></li>
                 <li><?php printf(__('Press the %1$s option that you can find below the %2$s section.', 'nextend-facebook-connect'), '"<b>Settings</b>"', '"<b>Facebook Login</b>"'); ?></li>

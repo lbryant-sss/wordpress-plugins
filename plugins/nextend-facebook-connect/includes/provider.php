@@ -574,6 +574,26 @@ abstract class NextendSocialProvider extends NextendSocialProviderDummy {
         return $ID;
     }
 
+    /**
+     * Generates an escaped attribute string.
+     *
+     * @param array $atts The attribute name value pairs
+     *
+     * @return string.
+     * @see NSLDEV-678
+     */
+    private function getEscapeAttributesString(array $atts = []): string {
+        $attributes = '';
+        foreach ($atts as $attr => $value) {
+            if (is_scalar($value) && '' !== $value && false !== $value) {
+                $value      = ('href' === $attr) ? esc_url($value) : esc_attr($value);
+                $attributes .= ' ' . $attr . '="' . $value . '"';
+            }
+        }
+
+        return $attributes;
+    }
+
     public function getConnectButton($buttonStyle = 'default', $redirectTo = null, $trackerData = false, $labelType = 'login', $customLabel = false) {
         $arg = array();
         if (!empty($redirectTo)) {
@@ -615,12 +635,12 @@ abstract class NextendSocialProvider extends NextendSocialProviderDummy {
         }
 
         $defaultLinkAttributes = [
-            "href"             => esc_url(add_query_arg($arg, $this->getLoginUrl())),
+            "href"             => add_query_arg($arg, $this->getLoginUrl()),
             "rel"              => "nofollow",
-            "aria-label"       => esc_attr__($label),
+            "aria-label"       => __($label, 'nextend-facebook-connect'),
             "data-plugin"      => "nsl",
             "data-action"      => "connect",
-            "data-provider"    => esc_attr($this->getId()),
+            "data-provider"    => $this->getId(),
             "data-popupwidth"  => $this->getPopupWidth(),
             "data-popupheight" => $this->getPopupHeight()
 
@@ -638,15 +658,11 @@ abstract class NextendSocialProvider extends NextendSocialProviderDummy {
         $customLinkAttributes = apply_filters('nsl_connect_button_custom_attributes', $customLinkAttributes, $this);
         $allLinkAttributes    = array_merge($defaultLinkAttributes, $customLinkAttributes);
 
-        $buttonLinkOpeningTagStart = '<a';
-        $buttonLinkOpeningTagEnd   = '>';
-        foreach ($allLinkAttributes as $attribute => $value) {
-            $buttonLinkOpeningTagStart .= ' ' . $attribute . '="' . $value . '"';
-        }
-        $buttonLinkClosingTag = '</a>';
+        $buttonLinkOpeningTagStart = '<a' . $this->getEscapeAttributesString($allLinkAttributes) . '>';
+        $buttonLinkClosingTag      = '</a>';
 
 
-        return $buttonLinkOpeningTagStart . $buttonLinkOpeningTagEnd . $button . $buttonLinkClosingTag;
+        return $buttonLinkOpeningTagStart . $button . $buttonLinkClosingTag;
     }
 
     public function getLinkButton() {
@@ -661,13 +677,13 @@ abstract class NextendSocialProvider extends NextendSocialProviderDummy {
         }
 
         $defaultLinkAttributes = [
-            "href"             => esc_url(add_query_arg($args, $this->getLoginUrl())),
+            "href"             => add_query_arg($args, $this->getLoginUrl()),
             "rel"              => "nofollow",
-            "aria-label"       => esc_attr__($this->settings->get('link_label')),
+            "aria-label"       => __($this->settings->get('link_label'), 'nextend-facebook-connect'),
             "style"            => "text-decoration:none;display:inline-block;box-shadow:none;",
             "data-plugin"      => "nsl",
             "data-action"      => "link",
-            "data-provider"    => esc_attr($this->getId()),
+            "data-provider"    => $this->getId(),
             "data-popupwidth"  => $this->getPopupWidth(),
             "data-popupheight" => $this->getPopupHeight()
 
@@ -685,15 +701,11 @@ abstract class NextendSocialProvider extends NextendSocialProviderDummy {
         $customLinkAttributes = apply_filters('nsl_link_button_custom_attributes', $customLinkAttributes, $this);
         $allLinkAttributes    = array_merge($defaultLinkAttributes, $customLinkAttributes);
 
-        $buttonLinkOpeningTagStart = '<a';
-        $buttonLinkOpeningTagEnd   = '>';
-        foreach ($allLinkAttributes as $attribute => $value) {
-            $buttonLinkOpeningTagStart .= ' ' . $attribute . '="' . $value . '"';
-        }
-        $buttonLinkClosingTag = '</a>';
+        $buttonLinkOpeningTagStart = '<a' . $this->getEscapeAttributesString($allLinkAttributes) . '>';
+        $buttonLinkClosingTag      = '</a>';
 
 
-        return $buttonLinkOpeningTagStart . $buttonLinkOpeningTagEnd . $this->getDefaultButton($this->settings->get('link_label')) . $buttonLinkClosingTag;
+        return $buttonLinkOpeningTagStart . $this->getDefaultButton($this->settings->get('link_label')) . $buttonLinkClosingTag;
     }
 
     public function getUnLinkButton() {
@@ -708,13 +720,13 @@ abstract class NextendSocialProvider extends NextendSocialProviderDummy {
         }
 
         $defaultLinkAttributes = [
-            "href"          => esc_url(add_query_arg($args, $this->getLoginUrl())),
+            "href"          => add_query_arg($args, $this->getLoginUrl()),
             "rel"           => "nofollow",
-            "aria-label"    => esc_attr__($this->settings->get('unlink_label')),
+            "aria-label"    => __($this->settings->get('unlink_label'), 'nextend-facebook-connect'),
             "style"         => "text-decoration:none;display:inline-block;box-shadow:none;",
             "data-plugin"   => "nsl",
             "data-action"   => "unlink",
-            "data-provider" => esc_attr($this->getId())
+            "data-provider" => $this->getId()
 
         ];
 
@@ -730,15 +742,10 @@ abstract class NextendSocialProvider extends NextendSocialProviderDummy {
         $customLinkAttributes = apply_filters('nsl_unlink_button_custom_attributes', $customLinkAttributes, $this);
         $allLinkAttributes    = array_merge($defaultLinkAttributes, $customLinkAttributes);
 
-        $buttonLinkOpeningTagStart = '<a';
-        $buttonLinkOpeningTagEnd   = '>';
-        foreach ($allLinkAttributes as $attribute => $value) {
-            $buttonLinkOpeningTagStart .= ' ' . $attribute . '="' . $value . '"';
-        }
-        $buttonLinkClosingTag = '</a>';
+        $buttonLinkOpeningTagStart = '<a' . $this->getEscapeAttributesString($allLinkAttributes) . '>';
+        $buttonLinkClosingTag      = '</a>';
 
-
-        return $buttonLinkOpeningTagStart . $buttonLinkOpeningTagEnd . $this->getDefaultButton($this->settings->get('unlink_label')) . $buttonLinkClosingTag;
+        return $buttonLinkOpeningTagStart . $this->getDefaultButton($this->settings->get('unlink_label')) . $buttonLinkClosingTag;
     }
 
     public function redirectToLoginForm() {

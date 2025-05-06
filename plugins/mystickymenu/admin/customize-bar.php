@@ -134,12 +134,12 @@ if (defined('ABSPATH') === false) {
 					<div class="mysticky-welcomebar-setting-content-right">
 					<?php 
 						$settings = array(
-							'media_buttons' => false,
+							'media_buttons' => true,
 							'textarea_name' => 'mysticky_option_welcomebar[mysticky_welcomebar_bar_text]',
 							'tinymce'       => array(
 												'toolbar1'      => 'bold,italic,underline,separator,alignleft,aligncenter,alignright,separator,link,unlink',
 												'init_instance_callback' => 'function(editor){
-																			editor.on("keypress ExecCommand", function(){
+																			editor.on("input ExecCommand", function(){
 																				
 																				var content = tinymce.activeEditor.getContent();
 																				var mysticky_bar_text_val = content.replace(/(?:\r\n|\r|\n)/g, "<br />");
@@ -155,16 +155,6 @@ if (defined('ABSPATH') === false) {
 							'quicktags' => false,
 						);
 						wp_editor( stripslashes($welcomebar['mysticky_welcomebar_bar_text']), 'mysticky_bar_text', $settings ); 
-						// add more buttons to the html editor
-						function underline_tag_add_quicktags() {
-							if ( wp_script_is('quicktags') ){ ?>
-							<script type="text/javascript">
-								QTags.addButton( 'underline_tag', 'U', '<u>', '</u>', 'underline', 'underline', 20, '' );
-							</script>
-						<?php
-							}
-						}
-						add_action( 'admin_print_footer_scripts', 'underline_tag_add_quicktags' );    
 						?>						
 					</div>
 				</div>

@@ -1,4 +1,4 @@
-/*! elementor - v3.29.0 - 28-04-2025 */
+/*! elementor - v3.29.0 - 05-05-2025 */
 .elementor-control-unit-1 {
   width: 27px;
 }
@@ -6066,6 +6066,7 @@ label.elementor-template-library-order-label:hover {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  line-height: 27px;
 }
 #elementor-template-library-save-template-form .cloud-library-form-inputs .source-selections-input #cloud,
 #elementor-template-library-save-template-form .cloud-library-form-inputs .source-selections-input #local {

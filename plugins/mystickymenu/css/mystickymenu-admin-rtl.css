@@ -5041,3 +5041,4 @@ a.welcomebar-background-image {
 .mysticky-welcomebar-full-screen-preview .mysticky-welcomebar-fixed-wrap .mysticky-welcomebar-content {
 	flex: 1;
 }
+.mysticky-welcomebar-setting-wrap .wp-editor-tools.hide-if-no-js{display:none;}

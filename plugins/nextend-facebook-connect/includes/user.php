@@ -471,8 +471,6 @@ class NextendSocialUser {
             }
         }
 
-        update_user_option($user_id, 'default_password_nag', true, true);
-
         $this->provider->linkUserToProviderIdentifier($user_id, $this->getAuthUserData('id'), true);
 
         do_action('nsl_registration_store_extra_input', $user_id, $this->userExtraData);
@@ -558,7 +556,7 @@ class NextendSocialUser {
 
         $loginRestriction = NextendSocialLogin::$settings->get('login_restriction');
         if ($loginRestriction) {
-            $userOrError = apply_filters('authenticate', $user, $user->get('user_login'), null);
+            $userOrError = apply_filters('authenticate', $user, $user->get('user_login'), '');
             if (is_wp_error($userOrError)) {
                 Notices::addError($userOrError);
                 do_action('wp_login_failed', $user->get('user_login'), $userOrError);
@@ -572,7 +570,7 @@ class NextendSocialUser {
             /**
              * Other plugins use this hook to prevent log in
              */
-            $userOrError = apply_filters('wp_authenticate_user', $user, null);
+            $userOrError = apply_filters('wp_authenticate_user', $user, '');
             if (is_wp_error($userOrError)) {
                 Notices::addError($userOrError);
                 do_action('wp_login_failed', $user->get('user_login'), $userOrError);

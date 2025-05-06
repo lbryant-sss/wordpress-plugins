@@ -25,6 +25,7 @@
     "typography": {
       "fontSize": true,
       "lineHeight": true,
+      "__experimentalFontStyle": true,
       "__experimentalFontWeight": true
     },
     "color": {

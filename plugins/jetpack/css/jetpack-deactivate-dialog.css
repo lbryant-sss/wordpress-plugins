@@ -19,6 +19,30 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 
 https://github.com/thoughtbot/bourbon
 */
+/**
+ * $gray color functions:
+ *
+ *   color.adjust( $gray, $lightness: 10% )
+ *   color.adjust( $gray, $lightness: 20% )
+ *   color.adjust( $gray, $lightness: 30% )
+ *   color.adjust( $gray, $lightness: -10% )
+ *   color.adjust( $gray, $lightness: -20% )
+ *   color.adjust( $gray, $lightness: -30% )
+ *
+ * See wordpress.com/design-handbook/colors/ for more info.
+ */
+/**
+ * $gray color functions:
+ *
+ *   color.adjust( $gray, $lightness: 10% )
+ *   color.adjust( $gray, $lightness: 20% )
+ *   color.adjust( $gray, $lightness: 30% )
+ *   color.adjust( $gray, $lightness: -10% )
+ *   color.adjust( $gray, $lightness: -20% )
+ *   color.adjust( $gray, $lightness: -30% )
+ *
+ * See wordpress.com/design-handbook/colors/ for more info.
+ */
 #TB_window.jetpack-disconnect-modal {
   max-width: 635px;
   max-height: 600px;

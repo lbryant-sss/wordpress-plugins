@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Flexible Shipping plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flexible Shipping 6.0.0\n"
+"Project-Id-Version: Flexible Shipping 6.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-shipping\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-27T14:36:44+00:00\n"
+"POT-Creation-Date: 2025-05-05T08:24:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: flexible-shipping\n"
@@ -828,6 +828,7 @@ msgstr ""
 
 #: src/WPDesk/FS/Shipment/ModifyOrderTable.php:66
 #: src/WPDesk/FS/Shipment/ModifyOrderTable.php:73
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingCost.php:19
 msgid "Shipping"
 msgstr ""
 
@@ -1082,6 +1083,306 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:32
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:121
+#: src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:55
+#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/BasedOnOptions.php:20
+msgid "Price"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:33
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:122
+msgid "Shipping cost based on the cart total or package value"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:34
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:123
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/CartLineItem.php:27
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Item.php:25
+msgid "Cart"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:91
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:180
+msgid "price is from"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:92
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:181
+msgid "min"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:93
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:182
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:79
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:80
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:155
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:156
+msgid "is from"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:99
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:188
+msgid "price to"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:100
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:189
+msgid "max"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:101
+#: src/WPDesk/FS/TableRate/Rule/Condition/Price.php:190
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:87
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:88
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:163
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:164
+msgid "to"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/CartLineItem.php:26
+msgid "Cart line item"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/CartLineItem.php:31
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/DayOfTheWeek.php:29
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/DimensionalWeight.php:29
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Item.php:29
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/MaxDimension.php:30
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Product.php:31
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductCategory.php:31
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php:27
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionLength.php:27
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php:27
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldRange.php:21
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldValue.php:19
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockQuantity.php:22
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockStatus.php:19
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductTag.php:31
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingClass.php:29
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingCost.php:22
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/TimeOfTheDay.php:29
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/TotalOverallDimensions.php:31
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/UserRole.php:29
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Volume.php:29
+msgid "(PRO feature)"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/DayOfTheWeek.php:24
+msgid "Day of the week"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/DayOfTheWeek.php:25
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/TimeOfTheDay.php:25
+msgid "Destination & Time"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/DimensionalWeight.php:24
+msgid "Dimensional weight"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/DimensionalWeight.php:25
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/MaxDimension.php:26
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Product.php:26
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Product.php:27
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductCategory.php:27
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php:23
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionLength.php:23
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php:23
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldRange.php:17
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldValue.php:15
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockQuantity.php:18
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockStatus.php:15
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductTag.php:27
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingClass.php:25
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/TotalOverallDimensions.php:27
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Volume.php:25
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:34
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:110
+msgid "Product"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Item.php:24
+msgid "Item"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/MaxDimension.php:24
+msgid "Max dimension"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/MaxDimension.php:25
+msgid "Shipping cost based on the product's maximum dimension"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductCategory.php:26
+msgid "Product category"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php:21
+msgid "Height"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionHeight.php:22
+msgid "Shipping cost based on the product's height"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionLength.php:21
+msgid "Length"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionLength.php:22
+msgid "Shipping cost based on the product's length"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php:21
+msgid "Width"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductDimensionWidth.php:22
+msgid "Shipping cost based on the product's width"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldRange.php:15
+msgid "Field range"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldRange.php:16
+msgid "Shipping cost based on the product's field range"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldValue.php:13
+msgid "Field value"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductFieldValue.php:14
+msgid "Shipping cost based on the product's field value"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockQuantity.php:16
+msgid "Stock quantity"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockQuantity.php:17
+msgid "Shipping cost based on the product's stock quantity"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockStatus.php:13
+msgid "Stock status"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductStockStatus.php:14
+msgid "Shipping cost based on the product's stock status"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ProductTag.php:26
+msgid "Product tag"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingClass.php:24
+msgid "Shipping class"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingCost.php:17
+msgid "Shipping cost"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/ShippingCost.php:18
+msgid "Shipping cost based on current shipping cost"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/TimeOfTheDay.php:24
+msgid "Time of the day"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/TotalOverallDimensions.php:26
+msgid "Total overall dimensions"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/UserRole.php:24
+msgid "User Role"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/UserRole.php:25
+msgid "User"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Pro/Volume.php:24
+msgid "Volume"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:32
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:108
+#: src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:36
+#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/BasedOnOptions.php:20
+msgid "Weight"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:33
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:109
+msgid "Shipping cost based on the weight of the cart or package"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:78
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:154
+msgid "weight is from"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:86
+#: src/WPDesk/FS/TableRate/Rule/Condition/Weight.php:162
+msgid "weight to"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:69
+#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:70
+msgid "additional cost"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:71
+msgid "additional cost is"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:78
+#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:87
+msgid "additional cost per"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:79
+#: src/WPDesk/FS/TableRate/Rule/Cost/RuleAdditionalCostFieldsFactory.php:80
+msgid "per"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Cost/RuleCostFieldsFactory.php:50
+msgid "Cost per order"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Cost/RuleCostFieldsFactory.php:51
+msgid "rule cost is"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/Cost/RuleCostFieldsFactory.php:52
+msgid "Enter shipment cost for this rule."
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:37
+msgid "Weight-based shipping"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:38
+msgid "Shipping cost increases in line with the cart total weight."
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:56
+msgid "Price-based shipping"
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/PreconfiguredScenarios/PreconfiguredScenariosFactory.php:57
+msgid "Shipping cost decreases in line with the cart total. Free shipping once $300 threshold is reached."
+msgstr ""
+
+#: src/WPDesk/FS/TableRate/Rule/SpecialAction/SpecialActionFieldsFactory.php:65
+msgid "special action"
+msgstr ""
+
 #: src/WPDesk/FS/TableRate/ShippingMethod/CommonMethodSettings.php:39
 #: src/WPDesk/FS/TableRate/ShippingMethod/RateCalculator.php:368
 msgid "Free"
@@ -1255,8 +1556,8 @@ msgid "%1$s%2$s%3$s shipping method duplication error. Please try again later."
 msgstr ""
 
 #: src/WPDesk/FS/TableRate/ShippingMethod/Duplicate/DuplicateScript.php:68
-#: assets-src/rules-settings/js/components/rules-settings.js:480
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:501
+#: assets/js/rules-settings.js:132
 msgid "Duplicate"
 msgstr ""
 
@@ -1534,26 +1835,26 @@ msgid "Calculated rule cost: %1$s %2$s"
 msgstr ""
 
 #. Translators: items.
-#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:136
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:151
 msgid "   Matched items: %1$s"
 msgstr ""
 
 #. Translators: items costs.
-#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:138
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:153
 msgid "   Matched items cost: %1$d %2$s"
 msgstr ""
 
 #. Translators: items weight.
-#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:140
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:155
 msgid "   Matched items weight: %1$s"
 msgstr ""
 
-#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:141
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:156
 msgid "Rule costs:"
 msgstr ""
 
 #. Translators: rule number.
-#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:211
+#: vendor_prefixed/octolize/flexible-shipping-rules/src/TableRate/Rule/Rule.php:226
 msgid "Rule %1$s:"
 msgstr ""
 
@@ -1626,14 +1927,10 @@ msgid "Only .jpg, .png, .jpeg, .gif files are supported."
 msgstr ""
 
 #: vendor_prefixed/octolize/wp-betterdocs-beacon/src/BeaconOptions.php:30
-#: assets-src/rules-settings/js/components/rules-settings.js:548
-#: assets/js/rules-settings.js:101
 msgid "Sending"
 msgstr ""
 
 #: vendor_prefixed/octolize/wp-betterdocs-beacon/src/BeaconOptions.php:30
-#: assets-src/rules-settings/js/components/rules-settings.js:548
-#: assets/js/rules-settings.js:101
 msgid "Send"
 msgstr ""
 
@@ -2354,14 +2651,6 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/BasedOnOptions.php:20
-msgid "Price"
-msgstr ""
-
-#: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/BasedOnOptions.php:20
-msgid "Weight"
-msgstr ""
-
 #: vendor_prefixed/wpdesk/wp-wpdesk-fs-table-rate/src/CalculationMethodOptions.php:20
 msgid "Sum"
 msgstr ""
@@ -2444,6 +2733,7 @@ msgid "Before you proceed, please take 30 seconds to let us know what brought yo
 msgstr ""
 
 #: vendor_prefixed/wpdesk/wp-wpdesk-tracker-deactivation/src/WPDesk/Tracker/Deactivation/views/thickbox.php:99
+#: vendor_prefixed/wpdesk/wp-wpdesk-tracker/src/views/tracker-deactivate.php:126
 msgid "Submit &amp; Deactivate"
 msgstr ""
 
@@ -2549,249 +2839,302 @@ msgstr ""
 msgid "Flexible Shipping Free Shipping Notice"
 msgstr ""
 
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.jsx:104
+#: assets/js/rules-settings.js:132
+msgid "Ask me anything about Flexible Shipping rules settings."
+msgstr ""
+
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.jsx:107
+#: assets/js/rules-settings.js:132
+msgid "I can help you with configuration examples, JSON format, and more."
+msgstr ""
+
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.jsx:110
+#: assets/js/rules-settings.js:132
+msgid "You can also select one of initial prompts below"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.jsx:169
+#: assets-src/rules-settings/js/components/ai/use-chat.jsx:74
+#: assets/js/rules-settings.js:132
+msgid "Flexible Shipping AI assistant"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.jsx:174
+#: assets/js/rules-settings.js:132
+msgid "Start new conversation"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.jsx:186
+#: assets-src/rules-settings/js/components/preconfigured-scenarios-unavailable-modal.js:65
+#: assets/js/rules-settings.js:132
+msgid "Close"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.jsx:251
+#: assets/js/rules-settings.js:132
+msgid "AI can make mistakes. Octolize has access to the conversation held in this chat."
+msgstr ""
+
+#: assets-src/rules-settings/js/components/ai/rules-settings-block.jsx:26
+#: assets/js/rules-settings.js:132
+msgid "Recommended setup"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/ai/rules-settings-block.jsx:43
+#: assets/js/rules-settings.js:132
+msgid "Use this configuration"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/ai/rules-settings-block.jsx:55
+#: assets/js/rules-settings.js:132
+msgid "Hide JSON"
+msgstr ""
+
+#: assets-src/rules-settings/js/components/ai/rules-settings-block.jsx:55
+#: assets/js/rules-settings.js:132
+msgid "Show JSON"
+msgstr ""
+
 #: assets-src/rules-settings/js/components/html-woo-select.js:40
 #: assets-src/rules-settings/js/components/html-woo-select.js:241
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Enter 3 or more characters"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/html-woo-select.js:245
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "searching..."
 msgstr ""
 
 #: assets-src/rules-settings/js/components/html-woo-select.js:254
 #: assets-src/rules-settings/js/components/html-woo-select.js:260
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Value not found"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/html-woo-select.js:278
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Missing Id: %s"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:11
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "All scenarios"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:181
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Rules count in scenario: %1$s"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:182
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Read full description →"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:183
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Use scenario"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:219
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Select a ready-made scenario"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:220
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Select one of the pre-made and ready to use Flexible Shipping scenarios from our library. Pick the one which fits your needs, adjust it freely and have it all configured in no time!"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:221
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:244
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Please mind that saving the changes after using a ready-made scenario will overwrite the previously configured rules for this shipping method. However, not until the changes are saved, the prior setup is still in use."
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:243
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Use rules from scenario?"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:279
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Looking for different scenario? %1$sCheck our documentation →%2$s"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:284
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Select other scenario"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-modal.js:285
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Use selected scenario"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/preconfigured-scenarios-unavailable-modal.js:65
-#: assets/js/rules-settings.js:101
-msgid "Close"
-msgstr ""
-
-#: assets-src/rules-settings/js/components/rules-settings.js:336
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:360
+#: assets/js/rules-settings.js:132
 msgid "Invalid rules table config! JSON parse failed with message: %s"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:337
-#: assets-src/rules-settings/js/components/rules-settings.js:351
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:361
+#: assets-src/rules-settings/js/components/rules-settings.js:375
+#: assets/js/rules-settings.js:132
 msgid "Invalid rules table config!"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:359
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:383
+#: assets/js/rules-settings.js:132
 msgid "Rules table successfully pasted."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:368
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:391
+#: assets/js/rules-settings.js:132
 msgid "Rules table successfully imported."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:415
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:397
+#: assets/js/rules-settings.js:132
+msgid "Rules table successfully used."
+msgstr ""
+
+#: assets-src/rules-settings/js/components/rules-settings.js:436
+#: assets/js/rules-settings.js:132
 msgid "Conditions"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:416
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:437
+#: assets/js/rules-settings.js:132
 msgid "Costs"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:418
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:439
+#: assets/js/rules-settings.js:132
 msgid "Special action"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:442
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:463
+#: assets/js/rules-settings.js:132
 msgid "You can"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:445
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:466
+#: assets/js/rules-settings.js:132
 msgid "save time with AI ✦"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:445
-#: assets-src/rules-settings/js/components/rules-settings.js:449
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:466
+#: assets-src/rules-settings/js/components/rules-settings.js:470
+#: assets/js/rules-settings.js:132
 msgid "or"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:448
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:469
+#: assets/js/rules-settings.js:132
 msgid "add the first rule"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:449
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:470
+#: assets/js/rules-settings.js:132
 msgid "use one of the ready-made scenarios"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:458
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:479
+#: assets/js/rules-settings.js:132
 msgid "Add rule"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:464
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:485
+#: assets/js/rules-settings.js:132
 msgid "Selected rules:"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:472
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:493
+#: assets/js/rules-settings.js:132
 msgid "Delete"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:491
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:512
+#: assets/js/rules-settings.js:132
 msgid "Rules table"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:496
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:517
+#: assets/js/rules-settings.js:132
 msgid "Paste JSON from clipboard"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:506
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:522
+#: assets/js/rules-settings.js:132
 msgid "Import JSON file"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:512
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:527
+#: assets/js/rules-settings.js:132
 msgid "Save JSON file"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:516
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:531
+#: assets/js/rules-settings.js:132
 msgid "Use ready-made scenarios"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:525
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:549
+#: assets-src/rules-settings/js/components/rules-settings.js:558
+#: assets/js/rules-settings.js:132
 msgid "Save time with AI ✦"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:539
-#: assets/js/rules-settings.js:101
-msgid "AI Prompt"
-msgstr ""
-
-#: assets-src/rules-settings/js/components/rules-settings.js:573
-#: assets-src/rules-settings/js/components/rules-settings.js:580
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:607
+#: assets-src/rules-settings/js/components/rules-settings.js:614
+#: assets/js/rules-settings.js:132
 msgid "PRO Features"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:575
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:609
+#: assets/js/rules-settings.js:132
 msgid "Tick this checkbox to display the features and shipping cost calculation conditions coming with the plugin's PRO version."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:585
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:619
+#: assets/js/rules-settings.js:132
 msgid "Show the options available in the PRO version."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:589
-#: assets/js/rules-settings.js:101
+#: assets-src/rules-settings/js/components/rules-settings.js:623
+#: assets/js/rules-settings.js:132
 msgid "Learn more about PRO version →"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/single-condition.js:245
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "and"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/single-condition.js:247
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "When"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/validate_rules_table_config.js:15
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Rules table configuration is missing."
 msgstr ""
 
 #: assets-src/rules-settings/js/components/validate_rules_table_config.js:19
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Invalid conditions in rule."
 msgstr ""
 
 #: assets-src/rules-settings/js/components/validate_rules_table_config.js:28
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Additional costs are available only in the Flexible Shipping PRO plugin!"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/validate_rules_table_config.js:32
-#: assets/js/rules-settings.js:101
+#: assets/js/rules-settings.js:132
 msgid "Special actions are available only in the Flexible Shipping PRO plugin!"
 msgstr ""
 

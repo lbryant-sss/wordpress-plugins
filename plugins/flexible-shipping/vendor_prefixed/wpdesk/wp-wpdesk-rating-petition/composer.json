@@ -31,7 +31,7 @@
         ]
     },
     "extra": {
-        "text-domain": "wpdesk-rating-petition",
+        "text-domain": "wp-wpdesk-rating-petition",
         "translations-folder": "lang",
         "po-files": {
             "pl_PL": "pl_PL.po",

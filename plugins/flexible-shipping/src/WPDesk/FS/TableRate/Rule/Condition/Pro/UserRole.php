@@ -21,11 +21,11 @@ class UserRole extends AbstractCondition {
 	 */
 	public function __construct( int $priority = 10 ) {
 		$this->condition_id = self::CONDITION_ID;
-		$this->name         = __( 'User Role', 'flexible-shipping-rules' );
-		$this->group        = __( 'User', 'flexible-shipping-rules' );
+		$this->name         = __( 'User Role', 'flexible-shipping' );
+		$this->group        = __( 'User', 'flexible-shipping' );
 		$this->priority     = $priority;
 		$this->is_disabled  = true;
 
-		$this->name .= ' ' . __( '(PRO feature)', 'flexible-shipping-rules' );
+		$this->name .= ' ' . __( '(PRO feature)', 'flexible-shipping' );
 	}
 }

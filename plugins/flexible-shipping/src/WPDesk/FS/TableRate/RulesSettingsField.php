@@ -105,6 +105,8 @@ class RulesSettingsField {
 		$special_action_fields   = $this->get_special_actions_fields();
 		$preconfigured_scenarios = $this->get_preconfigured_scenarios();
 
+		$shop_settings = $this->get_shop_settings();
+
 		$is_pro_activated = defined( 'FLEXIBLE_SHIPPING_PRO_VERSION' );
 
 		$rules_table_settings = [
@@ -121,6 +123,7 @@ class RulesSettingsField {
 			'paste_available'         => true,
 			'ai_button_available'     => true,
 			'ai_button_url'           => 'https://octol.io/fs-rules-table-ai',
+			'shop_settings'           => $shop_settings,
 		];
 
 		$rules_table_settings = apply_filters( 'flexible-shipping/rules-table/settings', $rules_table_settings, $this->shipping_method_settings );
@@ -128,6 +131,17 @@ class RulesSettingsField {
 		include __DIR__ . '/views/shipping-method-settings-rules.php';
 
 		return ob_get_clean();
+	}
+
+	private function get_shop_settings() {
+		return [
+			'currency' => get_woocommerce_currency(),
+			'currency_symbol' => get_woocommerce_currency_symbol(),
+			'locale' => get_user_locale(),
+			'weight_unit' => get_option( 'woocommerce_weight_unit' ),
+			'dimension_unit' => get_option( 'woocommerce_dimension_unit' ),
+			'price_num_decimals' => wc_get_price_decimals(),
+		];
 	}
 
 	/**

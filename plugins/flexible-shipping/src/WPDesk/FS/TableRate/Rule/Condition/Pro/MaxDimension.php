@@ -21,12 +21,12 @@ class MaxDimension extends AbstractCondition {
 	 */
 	public function __construct( int $priority = 10 ) {
 		$this->condition_id = self::CONDITION_ID;
-		$this->name         = __( 'Max dimension', 'flexible-shipping-rules' );
-		$this->description  = __( 'Shipping cost based on the product\'s maximum dimension', 'flexible-shipping-rules' );
-		$this->group        = __( 'Product', 'flexible-shipping-rules' );
+		$this->name         = __( 'Max dimension', 'flexible-shipping' );
+		$this->description  = __( 'Shipping cost based on the product\'s maximum dimension', 'flexible-shipping' );
+		$this->group        = __( 'Product', 'flexible-shipping' );
 		$this->priority     = $priority;
 		$this->is_disabled  = true;
 
-		$this->name .= ' ' . __( '(PRO feature)', 'flexible-shipping-rules' );
+		$this->name .= ' ' . __( '(PRO feature)', 'flexible-shipping' );
 	}
 }

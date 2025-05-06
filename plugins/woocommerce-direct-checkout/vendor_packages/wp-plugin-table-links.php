@@ -13,6 +13,8 @@ if ( class_exists( 'QuadLayers\\WP_Plugin_Table_Links\\Load' ) ) {
 				array(
 					'text' => esc_html__( 'Premium', 'woocommerce-direct-checkout' ),
 					'url'  => QLWCDC_PREMIUM_SELL_URL,
+					'color' => 'green',
+					'target' => '_blank',
 				),
 				array(
 					'place' => 'row_meta',

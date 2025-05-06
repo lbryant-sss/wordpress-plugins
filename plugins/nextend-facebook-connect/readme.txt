@@ -3,8 +3,8 @@ Contributors: nextendweb
 Tags: social login, facebook, google, twitter, x, linkedin, register, login, social, nextend facebook connect, social sign in
 Donate link: https://www.facebook.com/nextendweb
 Requires at least: 4.9
-Tested up to: 6.7.1
-Stable tag: 3.1.17
+Tested up to: 6.8.1
+Stable tag: 3.1.18
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -124,6 +124,19 @@ Using the Pro Addon you can set where the login buttons should appear on the Reg
 4. The Settings page of the Facebook provider.
 
 == Changelog ==
+
+= 3.1.18 =
+* Improvement: [Google](https://nextendweb.com/nextend-social-login-docs/provider-google/#configuration) Getting Started updated.
+* Improvement: [Facebook](https://nextendweb.com/nextend-social-login-docs/provider-facebook/#configuration) Getting Started updated.
+* Fix: Fixed an issue where a null value was returned over the "authenticate" and "wp_authenticate_user" filters.
+* Fix: Updated domain for the Twitter/X v2 API.
+* Improvement: The email address can now be retrieved from the Twitter/X v2 API as well.
+
+* PRO: Fix: Fixed an issue where the "default_password_nag" was updated even if the user manually set the password ([Ask password on registration](https://nextendweb.com/nextend-social-login-docs/pro-settings/#ask-password)).
+* PRO: Improvement: Fixed a security vulnerability regarding the Apple provider.
+* PRO: Improvement: Added the ability to render the link/unlink buttons using the Custom Actions integration.
+* PRO: Improvement: [TikTok](https://nextendweb.com/nextend-social-login-docs/provider-tiktok/#configuration) Getting Started updated.
+
 
 = 3.1.17 =
 * Fix: PHP warnings in the Getting Started section of some providers

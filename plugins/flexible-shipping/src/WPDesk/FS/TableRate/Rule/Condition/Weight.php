@@ -29,9 +29,9 @@ if ( defined( 'FLEXIBLE_SHIPPING_PSR_NOT_PREFIXED' ) && FLEXIBLE_SHIPPING_PSR_NO
 		 */
 		public function __construct( $priority = 10 ) {
 			$this->condition_id = self::CONDITION_ID;
-			$this->name         = __( 'Weight', 'flexible-shipping-rules' );
-			$this->description  = __( 'Shipping cost based on the weight of the cart or package', 'flexible-shipping-rules' );
-			$this->group        = __( 'Product', 'flexible-shipping-rules' );
+			$this->name         = __( 'Weight', 'flexible-shipping' );
+			$this->description  = __( 'Shipping cost based on the weight of the cart or package', 'flexible-shipping' );
+			$this->group        = __( 'Product', 'flexible-shipping' );
 			$this->priority     = $priority;
 		}
 
@@ -75,17 +75,17 @@ if ( defined( 'FLEXIBLE_SHIPPING_PSR_NOT_PREFIXED' ) && FLEXIBLE_SHIPPING_PSR_NO
 					->add_class( 'wc_input_decimal' )
 					->add_class( 'hs-beacon-search' )
 					->add_class( 'parameter_min' )
-					->add_data( 'beacon_search', __( 'weight is from', 'flexible-shipping-rules' ) )
-					->set_placeholder( __( 'is from', 'flexible-shipping-rules' ) )
-					->set_label( __( 'is from', 'flexible-shipping-rules' ) ),
+					->add_data( 'beacon_search', __( 'weight is from', 'flexible-shipping' ) )
+					->set_placeholder( __( 'is from', 'flexible-shipping' ) )
+					->set_label( __( 'is from', 'flexible-shipping' ) ),
 				( new Field\InputNumberField() )
 					->set_name( self::MAX )
 					->add_class( 'wc_input_decimal' )
 					->add_class( 'hs-beacon-search' )
 					->add_class( 'parameter_max' )
-					->add_data( 'beacon_search', __( 'weight to', 'flexible-shipping-rules' ) )
-					->set_placeholder( __( 'to', 'flexible-shipping-rules' ) )
-					->set_label( __( 'to', 'flexible-shipping-rules' ) )
+					->add_data( 'beacon_search', __( 'weight to', 'flexible-shipping' ) )
+					->set_placeholder( __( 'to', 'flexible-shipping' ) )
+					->set_label( __( 'to', 'flexible-shipping' ) )
 					->add_data( 'suffix', get_option( 'woocommerce_weight_unit' ) ),
 			];
 		}
@@ -105,9 +105,9 @@ if ( defined( 'FLEXIBLE_SHIPPING_PSR_NOT_PREFIXED' ) && FLEXIBLE_SHIPPING_PSR_NO
 		 */
 		public function __construct( $priority = 10 ) {
 			$this->condition_id = self::CONDITION_ID;
-			$this->name         = __( 'Weight', 'flexible-shipping-rules' );
-			$this->description  = __( 'Shipping cost based on the weight of the cart or package', 'flexible-shipping-rules' );
-			$this->group        = __( 'Product', 'flexible-shipping-rules' );
+			$this->name         = __( 'Weight', 'flexible-shipping' );
+			$this->description  = __( 'Shipping cost based on the weight of the cart or package', 'flexible-shipping' );
+			$this->group        = __( 'Product', 'flexible-shipping' );
 			$this->priority     = $priority;
 		}
 
@@ -151,17 +151,17 @@ if ( defined( 'FLEXIBLE_SHIPPING_PSR_NOT_PREFIXED' ) && FLEXIBLE_SHIPPING_PSR_NO
 					->add_class( 'wc_input_decimal' )
 					->add_class( 'hs-beacon-search' )
 					->add_class( 'parameter_min' )
-					->add_data( 'beacon_search', __( 'weight is from', 'flexible-shipping-rules' ) )
-					->set_placeholder( __( 'is from', 'flexible-shipping-rules' ) )
-					->set_label( __( 'is from', 'flexible-shipping-rules' ) ),
+					->add_data( 'beacon_search', __( 'weight is from', 'flexible-shipping' ) )
+					->set_placeholder( __( 'is from', 'flexible-shipping' ) )
+					->set_label( __( 'is from', 'flexible-shipping' ) ),
 				( new Field\InputNumberField() )
 					->set_name( self::MAX )
 					->add_class( 'wc_input_decimal' )
 					->add_class( 'hs-beacon-search' )
 					->add_class( 'parameter_max' )
-					->add_data( 'beacon_search', __( 'weight to', 'flexible-shipping-rules' ) )
-					->set_placeholder( __( 'to', 'flexible-shipping-rules' ) )
-					->set_label( __( 'to', 'flexible-shipping-rules' ) )
+					->add_data( 'beacon_search', __( 'weight to', 'flexible-shipping' ) )
+					->set_placeholder( __( 'to', 'flexible-shipping' ) )
+					->set_label( __( 'to', 'flexible-shipping' ) )
 					->add_data( 'suffix', get_option( 'woocommerce_weight_unit' ) ),
 			];
 		}

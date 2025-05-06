@@ -387,6 +387,17 @@ class MonsterInsights_Rest_Routes {
 			'slug'      => 'insert-headers-and-footers',
 			'settings'  => admin_url('admin.php?page=wpcode-settings'),
 		);
+		// WP Consent
+		$parsed_addons['wpconsent'] = array(
+			'active'    => defined( 'WPCONSENT_VERSION' ),
+			'icon'      => plugin_dir_url( MONSTERINSIGHTS_PLUGIN_FILE ) . 'assets/images/plugins/plugin-wpconsent.png',
+			'title'     => 'WP Consent',
+			'excerpt'   => __( 'WP Consent is the easiest way to add a cookie consent banner to your WordPress website.' ),
+			'installed' => array_key_exists( 'wpconsent-cookies-banner-privacy-suite/wpconsent.php', $installed_plugins ),
+			'basename'  => 'wpconsent-cookies-banner-privacy-suite/wpconsent.php',
+			'slug'      => 'wpconsent-cookies-banner-privacy-suite',
+			'settings'  => admin_url( 'admin.php?page=wpconsent_dashboard' ),
+		);
 
 		// Duplicator
 		$parsed_addons['duplicator'] = array(
@@ -525,17 +536,6 @@ class MonsterInsights_Rest_Routes {
 		// Use the plugin dir name as the array key since AJAX activation in add-ons page won't work.
 		$parsed_addons['all-in-one-seo-pack'] = $parsed_addons['aioseo'];
 
-		// OptinMonster.
-		$parsed_addons['optinmonster'] = array(
-			'active'    => class_exists( 'OMAPI' ),
-			'icon'      => plugin_dir_url( MONSTERINSIGHTS_PLUGIN_FILE ) . 'assets/images/plugins/plugin-om.png',
-			'title'     => 'OptinMonster',
-			'excerpt'   => __( 'Instantly get more subscribers, leads, and sales with the #1 conversion optimization toolkit. Create high converting popups, announcement bars, spin a wheel, and more with smart targeting and personalization.', 'google-analytics-for-wordpress' ),
-			'installed' => array_key_exists( 'optinmonster/optin-monster-wp-api.php', $installed_plugins ),
-			'basename'  => 'optinmonster/optin-monster-wp-api.php',
-			'slug'      => 'optinmonster',
-			'settings'  => admin_url( 'admin.php?page=optin-monster-dashboard' ),
-		);
 		// WP Mail Smtp.
 		$parsed_addons['wp-mail-smtp'] = array(
 			'active'    => function_exists( 'wp_mail_smtp' ),

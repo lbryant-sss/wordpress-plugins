@@ -47,9 +47,9 @@ class RuleCostFieldsFactory implements FieldProvider {
 				->add_class( 'wc_input_decimal' )
 				->add_class( 'hs-beacon-search' )
 				->add_class( 'cost_per_order' )
-				->add_data( 'beacon_search', __( 'Cost per order', 'flexible-shipping-rules' ) )
-				->set_label( __( 'rule cost is', 'flexible-shipping-rules' ) )
-				->set_description_tip( __( 'Enter shipment cost for this rule.', 'flexible-shipping-rules' ) )
+				->add_data( 'beacon_search', __( 'Cost per order', 'flexible-shipping' ) )
+				->set_label( __( 'rule cost is', 'flexible-shipping' ) )
+				->set_description_tip( __( 'Enter shipment cost for this rule.', 'flexible-shipping' ) )
 				->add_data( 'suffix', get_woocommerce_currency_symbol() ),
 		);
 	}

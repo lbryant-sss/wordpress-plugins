@@ -2,7 +2,7 @@
 Contributors: optinmonster, griffinjt, smub
 Tags: marketing, popup, popups, optin, ecommerce
 Requires at least: 4.7.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.3
 Stable tag: 2.16.19
 License: GNU General Public License v2.0 or later

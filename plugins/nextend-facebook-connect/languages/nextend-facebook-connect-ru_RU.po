@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nextend-facebook-connect\n"
-"POT-Creation-Date: 2025-02-05 19:37+0100\n"
-"PO-Revision-Date: 2025-02-05 19:37+0100\n"
+"POT-Creation-Date: 2025-05-05 11:04+0200\n"
+"PO-Revision-Date: 2025-05-05 11:04+0200\n"
 "Last-Translator: \n"
 "Language-Team: nextend-facebook-connect\n"
 "Language: ru\n"
@@ -10,13 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
-"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_x:1,2c;esc_html_e\n"
+"X-Poedit-KeywordsList: "
+"__;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_x:1,2c;esc_html_e\n"
 "X-Poedit-Flags-xgettext: --no-location\n"
 "X-Poedit-SearchPath-0: nextend-social-login-pro\n"
 "X-Poedit-SearchPath-1: nextend-facebook-connect\n"
@@ -750,6 +748,9 @@ msgstr ""
 msgid "Default with bottom separator"
 msgstr ""
 
+msgid "Link/Unlink"
+msgstr ""
+
 msgid "No Connect button in Login form"
 msgstr ""
 
@@ -1332,10 +1333,13 @@ msgid "Log in with your %s credentials if you are not logged in."
 msgstr ""
 
 #, php-format
+msgid "If presented with a modal, close it or click on the %1$s button again."
+msgstr ""
+
+#, php-format
 msgid ""
-"%1$sOptional%2$s: choose a %3$s if you would like to. If you didn't choose a "
-"%3$s at this point, you will need to select it in step 23, before you start "
-"the %4$s! "
+"Fill the %1$s and %2$s fields. The specified app name will appear on your "
+"%3$s!"
 msgstr ""
 
 #, php-format
@@ -1344,17 +1348,28 @@ msgstr ""
 
 #, php-format
 msgid ""
-"Click on the %1$s button and fill the %2$s and %3$s fields. The specified "
-"app name will appear on your %4$s!"
+"%1$sOptional%2$s: choose a %3$s if you would like to. If you didn't choose a "
+"%3$s at this point, you will need to select it in step 26, before you start "
+"the %4$s!"
 msgstr ""
 
 #, php-format
 msgid ""
-"Click on the %1$s button, read the documents listed below the requirements "
-"then press the %2$s button."
+"Click on the %1$s button, read the documents listed below the requirements, "
+"then click %1$s again."
+msgstr ""
+
+#, php-format
+msgid "Check the App details in the %1$s, and then press the %2$s button."
 msgstr ""
 
 msgid "Complete the security check if you are prompted with the modal."
+msgstr ""
+
+#, php-format
+msgid ""
+"You will end up in the %1$s. If you see a modal window appear, close it or "
+"click on %2$s."
 msgstr ""
 
 #, php-format
@@ -1594,30 +1609,50 @@ msgstr ""
 #, php-format
 msgid ""
 "If you don't have a project yet, you'll need to create one. You can do this "
-"by clicking on the blue \"<b>%1$s</b>\" text on the right side!  ( If you "
-"already have a project, then in the top bar click on the name of your "
-"project instead, which will bring up a modal and click <b>\"%2$s\"</b>. )"
+"by clicking on the \"%1$s\" button (if you already have a project, then in "
+"the top bar click on the name of your project instead). This will bring up a "
+"modal, then click \"%2$s\"."
 msgstr ""
 
 #, php-format
-msgid "Name your project and then click on the \"<b>%1$s</b>\" button again!"
-msgstr ""
-
-msgid ""
-"Once you have a project, you'll end up in the dashboard. ( If earlier you "
-"have already had a Project, then make sure you select the created project in "
-"the top bar! )"
-msgstr ""
-
-#, php-format
-msgid "Click the “<b>%1$s</b>” button on the left hand side."
+msgid "Name your project and then click on the \"%s\" button again!"
 msgstr ""
 
 #, php-format
 msgid ""
-"Choose a <b>%1$s</b> according to your needs and press \"<b>%2$s</b>\". If "
-"you want to enable the social login with %3$s for any users with a %3$s "
-"account, then pick the \"%4$s\" option!"
+"Once you have a project, you may see a window where you can click \"%1$s\". "
+"If this is not the case, click on \"%2$s\" button again in the top bar, and "
+"select the newly made project. (If earlier you have already had a Project, "
+"then make sure you select the created project in the top bar!)"
+msgstr ""
+
+#, php-format
+msgid ""
+"Next, open the navigation menu (click on the burger icon, or press \".\" on "
+"your keyboard) and go to \"%1$s\" -> \"%2$s\"."
+msgstr ""
+
+#, php-format
+msgid "Click on the blue \"%s\" button."
+msgstr ""
+
+#, php-format
+msgid ""
+"Enter a name for your App to the \"%s\" field, which will appear as the name "
+"of the app asking for consent."
+msgstr ""
+
+#, php-format
+msgid ""
+"For the \"%s\" field, select an email address that users can use to contact "
+"you with questions about their consent."
+msgstr ""
+
+#, php-format
+msgid ""
+"Click on \"%1$s\", and for the \"%2$s\" choose a \"%3$s\" according to your "
+"needs and press \"%1$s\" again. If you want to enable the social login with "
+"%4$s for any users with a %4$s account, then pick the \"%5$s\" option!"
 msgstr ""
 
 #, php-format
@@ -1629,80 +1664,85 @@ msgstr ""
 
 #, php-format
 msgid ""
-"Enter a name for your App to the \"<b>%1$s</b>\" field, which will appear as "
-"the name of the app asking for consent."
+"For the \"%1$s\" enter an email address (you can set more than one) %2$s can "
+"use to notify you about changes to the project, and click \"%3$s\" once more."
+msgstr ""
+
+#, php-format
+msgid "Agree to the \"%1$s\", and click \"%2$s\"."
 msgstr ""
 
 #, php-format
 msgid ""
-"For the \"<b>%1$s</b>\" field, select an email address that users can use to "
-"contact you with questions about their consent."
+"You can review the information entered, and if all looks correct, click on "
+"the blue \"%s\" button."
 msgstr ""
 
 #, php-format
-msgid "Fill the %1$s field with the url of your homepage, probably: %2$s"
+msgid "Next, select the \"%s\" option from the left menu."
+msgstr ""
+
+#, php-format
+msgid "You can update the \"%1$s\" and \"%2$s\" here if needed."
+msgstr ""
+
+#, php-format
+msgid "Select an \"%s\"."
 msgstr ""
 
 #, php-format
 msgid ""
-"Enter your privacy policy and terms of service links into the %1$s and %2$s "
+"<b>Note:</b> After you upload a logo, you will need to submit your app for "
+"verification unless the app is configured for internal use only or has a "
+"publishing status of \"%1$s\"!"
+msgstr ""
+
+#, php-format
+msgid ""
+"Next, provide the appropriate links to the \"%1$s\", \"%2$s\" and \"%3$s\" "
 "fields."
 msgstr ""
 
 #, php-format
 msgid ""
-"Under the \"<b>%1$s</b>\" section press the \"<b>%2$s</b>\" button and  "
-"enter your domain name, probably: <b>%3$s</b> without subdomains!"
+"Under the \"%1$s\" section press the \"%2$s\" button and enter your domain "
+"name without subdomains, probably: %3$s"
+msgstr ""
+
+#, php-format
+msgid "Once you are done, click on the \"%s\" button."
 msgstr ""
 
 #, php-format
 msgid ""
-"At the \"<b>%1$s</b>\" section, enter an email address that %2$s can use to "
-"notify you about any changes to your project."
+"Next, select the \"%1$s\" option from the left menu, then click \"%2$s\"."
 msgstr ""
 
 #, php-format
-msgid ""
-"Press \"<b>%1$s</b>\" then press it again on the \"%2$s\", \"%3$s\" pages, "
-"too!"
+msgid "Choose \"%1$s\" as the \"%2$s\", and enter a name."
 msgstr ""
 
 #, php-format
-msgid ""
-"On the left side, click on the \"<b>%1$s</b>\" menu point, then click the "
-"\"<b>%2$s</b>\" button in the top bar."
+msgid "Under the \"%1$s\" section click \"%2$s\" and add the following URL:"
 msgstr ""
 
 #, php-format
-msgid "Choose the \"<b>%1$s</b>\" option."
-msgstr ""
-
-#, php-format
-msgid "Select the \"<b>%1$s</b>\" under Application type."
-msgstr ""
-
-#, php-format
-msgid "Enter a \"<b>%1$s</b>\" for your OAuth client ID."
-msgstr ""
-
-#, php-format
-msgid "Click on the \"<b>%1$s</b>\" button"
+msgid "Click on the \"%s\" button."
 msgstr ""
 
 #, php-format
 msgid ""
 "A modal should pop up with your credentials. If that doesn't happen, go to "
-"the %1$s in the left hand menu and select your app by clicking on its name "
-"and you'll be able to copy-paste the \"<b>%2$s</b>\" and \"<b>%3$s</b>\" "
-"from there."
+"the \"%1$s\" in the left hand menu and select your app by clicking on its "
+"name and you'll be able to copy-paste the \"%2$s\" and \"%3$s\" from there."
 msgstr ""
 
 #, php-format
 msgid ""
-"Currently your App is in %1$s mode, so only limited number of people can use "
-"it. To allow this App for any user with a Google Account, click on the "
-"\"%2$s\" option on the left side, then click the \"%3$s\" button under the "
-"\"%4$s\" section, and press the \"%5$s\" button. "
+"Currently, your App is in \"%1$s\" mode, so only limited number of people "
+"can use it. To allow this App for any user with a Google Account, click on "
+"the \"%2$s\" option on the left side, then click the \"%3$s\" button under "
+"the \"%4$s\" section, and press the \"%5$s\" button."
 msgstr ""
 
 msgid "Client ID"
@@ -3554,6 +3594,10 @@ msgid ""
 msgstr ""
 
 #, php-format
+msgid "Fill the %1$s field with the url of your homepage, probably: %2$s"
+msgstr ""
+
+#, php-format
 msgid "Choose the \"%1$s\" option at \"%2$s\"."
 msgstr ""
 
@@ -3731,6 +3775,14 @@ msgstr ""
 
 #, php-format
 msgid ""
+"Create a %1$s, and configure Nextend Social Login with it, in order to "
+"record a demo video that shows the complete end-to-end flow of the "
+"integration. This is required to be able to verify your %2$s. Once done, "
+"switch back to %3$s."
+msgstr ""
+
+#, php-format
+msgid ""
 "Find the %1$s section, and upload an image for the %2$s, update the %3$s if "
 "necessary, choose a %4$s, and add a %5$s"
 msgstr ""
@@ -3757,6 +3809,15 @@ msgstr ""
 #, php-format
 msgid ""
 "Next, for the %1$s field under the %2$s product, add the following URL: "
+msgstr ""
+
+#, php-format
+msgid ""
+"At the %1$s section, describe what purpose you are using the social login, "
+"and user data for. The %2$s for the %3$s social login on your website, to "
+"make the registration/login more straightforward and convenient. The "
+"requested scope(s) are used to retrieve user data in order to create or "
+"update a WordPress account on your website."
 msgstr ""
 
 #, php-format
@@ -3789,7 +3850,8 @@ msgstr ""
 msgid ""
 "Once your App is %1$s, you will be able to reveal the %2$s and %3$s by "
 "clicking on the eye icon next to these fields. You will need these "
-"credentials for the provider configuration."
+"credentials for the provider configuration.<br>%4$s Make sure to use the "
+"credentials of your %5$s!"
 msgstr ""
 
 #, php-format

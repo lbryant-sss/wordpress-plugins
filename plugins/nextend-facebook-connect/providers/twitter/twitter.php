@@ -286,6 +286,7 @@ class NextendSocialProviderTwitter extends NextendSocialProviderOAuth {
         $fields          = array(
             'id',
             'name',
+            'confirmed_email',
             'profile_image_url',
         );
         $extra_me_fields = apply_filters('nsl_twitter_sync_node_fields', array(), 'mev2');
@@ -384,7 +385,7 @@ class NextendSocialProviderTwitter extends NextendSocialProviderOAuth {
             case 'id':
                 return $this->authUserData['id'];
             case 'email':
-                return '';
+                return !empty($this->authUserData['confirmed_email']) ? $this->authUserData['confirmed_email'] : '';
             case 'name':
                 return $this->authUserData['name'];
             case 'username':
@@ -488,7 +489,7 @@ class NextendSocialProviderTwitter extends NextendSocialProviderOAuth {
         /**
          * V1: The email address (when) returned by the v1 API of Twitter / X is always verified
          *
-         * V2: The email address is not returned by the v2 API of Twitter / X , But the provider does enforce email verification
+         * V2: The email address (when) returned by the v2 API of Twitter / X is always verified
          *
          * So we can trust the account to be of the rightful owner in both cases
          */

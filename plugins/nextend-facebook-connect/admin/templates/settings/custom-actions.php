@@ -205,6 +205,45 @@ NextendSocialLoginAdmin::showProBox();
             </tr>
         <?php endif; ?>
 
+        <tr>
+            <?php
+            $actionsLabel     = __('Custom Actions', 'nextend-facebook-connect');
+            $loginLabelSuffix = ' (' . __('Link/Unlink', 'nextend-facebook-connect') . ')';
+            ?>
+            <th scope="row"><?php echo $actionsLabel . $loginLabelSuffix; ?></th>
+            <td>
+                <?php
+                $customActions = $settings->get('custom_actions_link_unlink');
+                ?>
+                <textarea rows="4" cols="53" name="custom_actions_link_unlink" id="custom_actions_link_unlink"<?php echo $attr; ?>><?php echo esc_textarea($customActions); ?></textarea>
+                <?php
+                $customActionNotices = '<p class="description">' . sprintf(__('%1$s Add your custom actions here. One action per line.', 'nextend-facebook-connect'), '<b>' . __('Usage:', "nextend-facebook-connect") . '</b>') . '</p>';
+                $customActionNotices .= '<p class="description">' . sprintf(__('%1$s The HTML of the social buttons will be added at the place where the action is fired.', 'nextend-facebook-connect'), '<b>' . __("Important:", "nextend-facebook-connect") . '</b>') . '</p>';
+                $customActionNotices .= '<p class="description">' . sprintf(__('If you %1$sexperience problems%2$s because of this feature, you can disable it by defining the %3$s constant.', 'nextend-facebook-connect'), '<a href="https://nextendweb.com/nextend-social-login-docs/global-settings-custom-actions/#custom-actions" target="_blank">', '</a>', '<code>NSL_DISABLE_CUSTOM_ACTIONS</code>') . '</p>';
+
+                echo $customActionNotices;
+                ?>
+            </td>
+        </tr>
+
+        <tr>
+            <th scope="row"><?php echo $buttonAlignmentLabel . $loginLabelSuffix; ?></th>
+            <td>
+                <fieldset>
+                    <label><input type="radio" name="custom_actions_link_unlink_button_align"
+                                  value="left" <?php if ($settings->get('custom_actions_link_unlink_button_align') == 'left') : ?> checked="checked" <?php endif; ?><?php echo $attr; ?>>
+                        <span><?php _e('Left', 'nextend-facebook-connect'); ?></span></label><br>
+                    <label><input type="radio" name="custom_actions_link_unlink_button_align"
+                                  value="center" <?php if ($settings->get('custom_actions_link_unlink_button_align') == 'center') : ?> checked="checked" <?php endif; ?><?php echo $attr; ?>>
+                        <span><?php _e('Center', 'nextend-facebook-connect'); ?></span></label><br>
+
+                    <label><input type="radio" name="custom_actions_link_unlink_button_align"
+                                  value="right" <?php if ($settings->get('custom_actions_link_unlink_button_align') == 'right') : ?> checked="checked" <?php endif; ?><?php echo $attr; ?>>
+                        <span><?php _e('Right', 'nextend-facebook-connect'); ?></span></label><br>
+                </fieldset>
+            </td>
+        </tr>
+
         </tbody>
     </table>
 <?php if ($isPRO): ?>

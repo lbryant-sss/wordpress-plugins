@@ -13,12 +13,12 @@ class ProductStockQuantity extends AbstractCondition {
 
 	public function __construct( int $priority = 10 ) {
 		$this->condition_id = self::CONDITION_ID;
-		$this->name         = __( 'Stock quantity', 'flexible-shipping-rules' );
-		$this->description  = __( 'Shipping cost based on the product\'s stock quantity', 'flexible-shipping-rules' );
-		$this->group        = __( 'Product', 'flexible-shipping-rules' );
+		$this->name         = __( 'Stock quantity', 'flexible-shipping' );
+		$this->description  = __( 'Shipping cost based on the product\'s stock quantity', 'flexible-shipping' );
+		$this->group        = __( 'Product', 'flexible-shipping' );
 		$this->priority     = $priority;
 		$this->is_disabled  = true;
 
-		$this->name .= ' ' . __( '(PRO feature)', 'flexible-shipping-rules' );
+		$this->name .= ' ' . __( '(PRO feature)', 'flexible-shipping' );
 	}
 }

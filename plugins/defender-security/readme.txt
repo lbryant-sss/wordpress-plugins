@@ -27,8 +27,6 @@ Plus, connect for free to WPMU DEV’s AntiBot Global Firewall to block harmful 
 
 Level up security immediately with exclusive Pro features like scheduled malware scanning, Safe Repair for suspicious files, and known WordPress vulnerability detection. [Learn more about Pro](https://wpmudev.com/project/wp-defender/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=defender-readme-above-the-fold&utm_content=wp_defender_pro).
 
-[youtube https://www.youtube.com/watch?v=3rBd7ea91V8]
-
 ### Security Recommendations
 
 Defender's one-click security hardening recommendations instantly adds layers of protection and security to your site.
@@ -73,8 +71,6 @@ Defender's malware scanner security checks for suspicious code and malware. It a
 ### Two-Factor Authentication (2FA) Security
 
 Easily add an extra layer of protection and security to your WordPress sites with Defender's two-factor authentication (2FA) features. Including: mobile app verification (Google Authenticator, Microsoft Authenticator, Authy), backup code generation, lost device emails, WooCommerce 2FA, Biometric Authentication (fingerprint/facial recognition), and Hardware Key Authentication (USB security keys). Easily prevent brute force attacks and login security vulnerabilities.
-
-[youtube https://www.youtube.com/watch?v=w9pfRCuT36Q]
 
 ### Login Protection
 

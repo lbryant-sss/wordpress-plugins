@@ -1083,6 +1083,7 @@ export interface VerificationCode {
     code: number;
     verified: boolean;
     verified_at: number | null;
+    redirect_url: string | null;
     created_at: number;
     updated_at: number;
 }
