@@ -3,8 +3,8 @@
  * Plugin Name: 1 Razorpay: Signup for FREE PG
  * Plugin URI: https://razorpay.com
  * Description: Razorpay Payment Gateway Integration for WooCommerce.Razorpay Welcome Back Offer: New to Razorpay? Sign up to enjoy FREE payments* of INR 2 lakh till March 31st! Transact before January 10th to grab the offer.
- * Version: 4.7.3
- * Stable tag: 4.7.3
+ * Version: 4.7.4
+ * Stable tag: 4.7.4
  * Author: Team Razorpay
  * WC tested up to: 9.1.2
  * Author URI: https://razorpay.com
@@ -1930,36 +1930,39 @@ EOT;
 
             $this->updateOrder($order, $success, $error, $razorpayPaymentId, null);
 
-            try
+            if ($success)
             {
-                // update order status in webhook table
-                $sessionKey = $this->getOrderSessionKey($orderId);
-                $razorpayOrderId = '';
-
-                if(get_transient($sessionKey))
+                try
                 {
-                    $razorpayOrderId = get_transient($sessionKey);
-                }
-                else
-                {
-                    $razorpayOrderId = $woocommerce->session->get($sessionKey);
-                }
+                    // update order status in webhook table
+                    $sessionKey = $this->getOrderSessionKey($orderId);
+                    $razorpayOrderId = '';
 
-                $wpdb->update(
-                    $wpdb->prefix . 'rzp_webhook_requests',
-                    array(
-                        'rzp_update_order_cron_status' => self::RZP_ORDER_PROCESSED_BY_CALLBACK
-                    ),
-                    array(
-                        'integration'   => self::RZP_INTEGRATION,
-                        'order_id'      => $orderId,
-                        'rzp_order_id'  => $razorpayOrderId
-                    )
-                );
-            }
-            catch (Exception $e)
-            {
-                rzpLogError("Failed to update order by callback in rzp_webhook_requests table: " . $e->getMessage());
+                    if(get_transient($sessionKey))
+                    {
+                        $razorpayOrderId = get_transient($sessionKey);
+                    }
+                    else
+                    {
+                        $razorpayOrderId = $woocommerce->session->get($sessionKey);
+                    }
+
+                    $wpdb->update(
+                        $wpdb->prefix . 'rzp_webhook_requests',
+                        array(
+                            'rzp_update_order_cron_status' => self::RZP_ORDER_PROCESSED_BY_CALLBACK
+                        ),
+                        array(
+                            'integration'   => self::RZP_INTEGRATION,
+                            'order_id'      => $orderId,
+                            'rzp_order_id'  => $razorpayOrderId
+                        )
+                    );
+                }
+                catch (Exception $e)
+                {
+                    rzpLogError("Failed to update order by callback in rzp_webhook_requests table: " . $e->getMessage());
+                }
             }
 
             $this->redirectUser($order);
@@ -3096,10 +3099,25 @@ EOT;
     /**
      * Create cron with 5 min interval
      **/
-    if (!wp_next_scheduled('rzp_webhook_exec_cron'))
+    try
     {
-        wp_schedule_event(time(), 'rzp_webhook_cron_interval', 'rzp_webhook_exec_cron');
-        rzpLogInfo("rzp_webhook_exec_cron cron created");
+        if (!wp_next_scheduled('rzp_webhook_exec_cron'))
+        {
+            wp_schedule_event(time(), 'rzp_webhook_cron_interval', 'rzp_webhook_exec_cron');
+            rzpLogInfo("rzp_webhook_exec_cron cron created");
+        }
+    }
+    catch (Exception $e)
+    {
+        $rzp = new WC_Razorpay();
+        $key_id = $rzp->getSetting('key_id');
+        $trackObject = $rzp->newTrackPluginInstrumentation($key_id, '');
+
+        $properties = [
+            'webhookCronCreationSuccess' => false
+        ];
+
+        $trackObject->rzpTrackDataLake('webhookCron.creation', $properties);
     }
 
     /**
@@ -3197,6 +3215,15 @@ EOT;
         {
             rzpLogInfo("Webhook table creation failed: ". $e->getMessage());
             delete_option('rzp_webhook_setup');
+            
+            $rzp = new WC_Razorpay();
+            $key_id = $rzp->getSetting('key_id');
+            $trackObject = $rzp->newTrackPluginInstrumentation($key_id, '');
+            $properties = [
+                'webhookCronTableSetupSuccess' => false
+            ];
+
+            $trackObject->rzpTrackDataLake('webhookCron.tableSetup', $properties);
         }
     }
 }

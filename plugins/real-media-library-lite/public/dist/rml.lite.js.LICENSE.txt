@@ -34,7 +34,8 @@ PERFORMANCE OF THIS SOFTWARE.
 /*! lil-uri - v0.3.1 - MIT License - https://github.com/lil-js/uri */
 
 /**!
- * Sortable
+ * Sortable 1.15.6
  * @author	RubaXa   <trash@rubaxa.org>
+ * @author	owenm    <owen23355@gmail.com>
  * @license MIT
  */

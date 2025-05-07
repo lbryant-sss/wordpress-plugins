@@ -5111,12 +5111,12 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 
 		$power_filename = AME_ROOT_DIR . '/includes/capabilities/cap-power.csv';
 		if ( is_file($power_filename) && is_readable($power_filename) ) {
-			// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fopen -- Should be fine, we only need read permissions.
+			//phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- Should be fine, we only need read permissions.
 			$csv = fopen($power_filename, 'r');
 			$firstLineSkipped = false;
 
 			while ($csv && !feof($csv)) {
-				$line = fgetcsv($csv, 1000, ';');
+				$line = fgetcsv($csv, 1000, ';', '"', '');
 				if ( !$firstLineSkipped ) {
 					$firstLineSkipped = true;
 					continue;

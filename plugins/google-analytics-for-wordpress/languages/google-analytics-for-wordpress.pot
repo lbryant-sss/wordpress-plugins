@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google Analytics for WordPress by MonsterInsights 9.5.1\n"
+"Project-Id-Version: Google Analytics for WordPress by MonsterInsights 9.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-analytics-for-wordpress-working-dir\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-05T16:25:55+00:00\n"
+"POT-Creation-Date: 2025-05-06T17:58:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0-alpha\n"
 "X-Domain: google-analytics-for-wordpress\n"
@@ -7033,6 +7033,7 @@ msgid "Cheatin&#8217; huh?"
 msgstr ""
 
 #: googleanalytics.php:400
+#, php-format
 msgid "Please %1$suninstall%2$s the MonsterInsights Lite Plugin. Your Pro version of MonsterInsights may not work as expected until the Lite version is uninstalled."
 msgstr ""
 
@@ -7057,6 +7058,7 @@ msgstr ""
 
 #. translators: Icon
 #: includes/admin/admin.php:92
+#, php-format
 msgid "%s AI Insights"
 msgstr ""
 
@@ -7067,6 +7069,7 @@ msgstr ""
 
 #. translators: Placeholder adds a svg icon
 #: includes/admin/admin.php:100
+#, php-format
 msgid "%s Conversations AI"
 msgstr ""
 
@@ -7174,6 +7177,7 @@ msgstr ""
 
 #. Translators: Placeholders add a link to the wordpress.org repository.
 #: includes/admin/admin.php:458
+#, php-format
 msgid "Please rate %1$sMonsterInsights%2$s on %3$s %4$sWordPress.org%5$s to help us spread the word. Thank you from the MonsterInsights team!"
 msgstr ""
 
@@ -7203,16 +7207,19 @@ msgstr ""
 
 #. Translators: Adds a link to retrieve the license.
 #: includes/admin/admin.php:533
+#, php-format
 msgid "Warning: No valid license key has been entered for MonsterInsights. You are currently not getting updates, and are not able to view reports. %1$sPlease click here to enter your license key and begin receiving updates and reports.%2$s"
 msgstr ""
 
 #. Translators: Adds a link to the license renewal.
 #: includes/admin/admin.php:545
+#, php-format
 msgid "Your license key for MonsterInsights has expired. %1$sPlease click here to renew your license key.%2$s"
 msgstr ""
 
 #. Translators: Adds a link to renew license.
 #: includes/admin/admin.php:554
+#, php-format
 msgid "Your network license key for MonsterInsights has expired. %1$sPlease click here to renew your license key.%2$s"
 msgstr ""
 
@@ -7226,32 +7233,38 @@ msgstr ""
 
 #. Translators: Placeholders add the PHP version, a link to the MonsterInsights blog and a line break.
 #: includes/admin/admin.php:580
+#, php-format
 msgid "Your site is running an outdated, insecure version of PHP (%1$s), which could be putting your site at risk for being hacked.%4$sWordPress stopped supporting your PHP version in April, 2019.%4$sUpdating PHP only takes a few minutes and will make your website significantly faster and more secure.%4$s%2$sLearn more about updating PHP%3$s"
 msgstr ""
 
 #. Translators: Placeholders add the PHP version, a link to the MonsterInsights blog and a line break.
 #: includes/admin/admin.php:583
+#, php-format
 msgid "Your site is running an outdated, insecure version of PHP (%1$s), which could be putting your site at risk for being hacked.%4$sWordPress stopped supporting your PHP version in November, 2019.%4$sUpdating PHP only takes a few minutes and will make your website significantly faster and more secure.%4$s%2$sLearn more about updating PHP%3$s"
 msgstr ""
 
 #. Translators: Placeholders add the PHP version, a link to the MonsterInsights blog and a line break.
 #: includes/admin/admin.php:586
+#, php-format
 msgid "Your site is running an outdated, insecure version of PHP (%1$s), which could be putting your site at risk for being hacked.%4$sWordPress is working towards discontinuing support for your PHP version.%4$sUpdating PHP only takes a few minutes and will make your website significantly faster and more secure.%4$s%2$sLearn more about updating PHP%3$s"
 msgstr ""
 
 #. Translators: Placeholders add links to the settings panel.
 #: includes/admin/admin.php:664
+#, php-format
 msgid "Important: You are currently using manual GA4 Measurement ID output. We highly recommend %1$sauthenticating with MonsterInsights%2$s so that you can access our new reporting area and take advantage of new MonsterInsights features."
 msgstr ""
 
 #. Translators: Placeholders add links to the settings panel.
 #: includes/admin/admin.php:669
+#, php-format
 msgid "Click %1$shere%2$s to reauthenticate to be able to access reports. For more information why this is required, see our %3$sblog post%4$s."
 msgstr ""
 
 #. Translators: Placeholders add a link to the MonsterInsights website.
 #: includes/admin/admin.php:716
 #: includes/admin/admin.php:768
+#, php-format
 msgid "%1$sGet MonsterInsights Pro%2$s"
 msgstr ""
 
@@ -7281,11 +7294,13 @@ msgstr ""
 
 #. Translators: Adds a link to the settings panel.
 #: includes/admin/admin.php:784
+#, php-format
 msgid "Warning: MonsterInsights found cross-domain settings in the custom code field and converted them to the new settings structure.  %1$sPlease click here to review and remove the code no longer needed.%2$s"
 msgstr ""
 
 #. translators: Placeholders add a link to an article.
 #: includes/admin/admin.php:861
+#, php-format
 msgid "Your Measurement Protocol API Secret is currently left blank. To see more advanced analytics please enter a Measurement API Secret. %1$sLearn how to find your API Secret%2$s."
 msgstr ""
 
@@ -7306,6 +7321,7 @@ msgid "Invalid site key."
 msgstr ""
 
 #: includes/admin/api-auth.php:91
+#, php-format
 msgid "You don't have the correct WordPress user permissions to authenticate into MonsterInsights. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
@@ -7315,25 +7331,30 @@ msgstr ""
 
 #: includes/admin/api-auth.php:114
 #: includes/admin/api-auth.php:122
+#, php-format
 msgid "Oops! There has been an error authenticating. Please try again in a few minutes. If the problem persists, please %1$scontact our support%2$s team."
 msgstr ""
 
 #: includes/admin/api-auth.php:290
+#, php-format
 msgid "You don't have the correct WordPress user permissions to re-authenticate into MonsterInsights. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
 #: includes/admin/api-auth.php:313
 #: includes/admin/api-auth.php:323
+#, php-format
 msgid "Oops! There was a problem while re-authenticating. Please try to complete the MonsterInsights %1$ssetup wizard%2$s again. If the problem persists, please %3$scontact our support%4$s team."
 msgstr ""
 
 #: includes/admin/api-auth.php:449
+#, php-format
 msgid "You don't have the correct user permissions to verify the MonsterInsights license you are trying to use. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
 #: includes/admin/api-auth.php:464
 #: includes/admin/api-auth.php:472
 #: includes/admin/api-auth.php:484
+#, php-format
 msgid "Please enter a valid license within the MonsterInsights settings panel. You can check your license by logging into your MonsterInsights account by %1$sclicking here%2$s."
 msgstr ""
 
@@ -7343,19 +7364,23 @@ msgstr ""
 
 #: includes/admin/api-auth.php:498
 #: includes/admin/api-auth.php:512
+#, php-format
 msgid "Oops! There has been an error while trying to verify your license. Please try again or contact our support team by %1$sclicking here%2$s."
 msgstr ""
 
 #: includes/admin/api-auth.php:549
+#, php-format
 msgid "You don't have the correct WordPress user permissions to deauthenticate into MonsterInsights. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
 #: includes/admin/api-auth.php:564
 #: includes/admin/api-auth.php:574
+#, php-format
 msgid "Could not disconnect as you are not currently authenticated properly. Please try to authenticate again with our MonsterInsights %1$ssetup wizard%2$s.  If you are still having problems, please %3$scontact our support%4$s team."
 msgstr ""
 
 #: includes/admin/api-auth.php:588
+#, php-format
 msgid "Could not disconnect your account, as you are not currently authenticated properly. Please try to authenticate again with our %1$sMonsterInsights setup wizard%2$s.  If you are still having problems, please %3$scontact our support%4$s team."
 msgstr ""
 
@@ -7368,6 +7393,7 @@ msgid "Successfully force deauthenticated."
 msgstr ""
 
 #: includes/admin/api-auth.php:609
+#, php-format
 msgid "Oops! There has been an error while trying to deauthenticate. Please try again. If the issue persists, please %1$scontact our support%2$s team."
 msgstr ""
 
@@ -7376,6 +7402,7 @@ msgid "Website & Google Analytics Timezone Mismatch"
 msgstr ""
 
 #: includes/admin/api-auth.php:827
+#, php-format
 msgid "We detected your Google Analytics property is set to a different timezone than your website. This may slightly impact your stats, especially when comparing day over day performance. You may want to adjust your website's time zone %1$shere%2$s."
 msgstr ""
 
@@ -7416,19 +7443,23 @@ msgid "Quick Feedback"
 msgstr ""
 
 #: includes/admin/class-monsterinsights-am-deactivation-survey.php:363
+#, php-format
 msgid "If you have a moment, please share why you are deactivating %s:"
 msgstr ""
 
 #: includes/admin/class-monsterinsights-am-deactivation-survey.php:378
+#, php-format
 msgid "Submit %s Deactivate"
 msgstr ""
 
 #: includes/admin/class-monsterinsights-am-deactivation-survey.php:379
+#, php-format
 msgid "Skip %s Deactivate"
 msgstr ""
 
 #. Translators: Placeholders are for links to fix the issue.
 #: includes/admin/common.php:508
+#, php-format
 msgid "MonsterInsights has detected that it's files are being blocked. This is usually caused by a adblock browser plugin (particularly uBlock Origin), or a conflicting WordPress theme or plugin. This issue only affects the admin side of MonsterInsights. To solve this, ensure MonsterInsights is whitelisted for your website URL in any adblock browser plugin you use. For step by step directions on how to do this, %1$sclick here%2$s. If this doesn't solve the issue (rare), send us a ticket %3$shere%2$s and we'll be happy to help diagnose the issue."
 msgstr ""
 
@@ -7442,11 +7473,13 @@ msgstr ""
 
 #. Translators: Placeholder is for the current PHP version.
 #: includes/admin/common.php:636
+#, php-format
 msgid "In the next major release of MonsterInsights we are planning to remove support for the version of PHP you are using (%s). This insecure version is no longer supported by WordPress itself, so you are already missing out on the latest features of WordPress along with critical updates for security and performance (modern PHP versions make websites much faster)."
 msgstr ""
 
 #. Translators: Placeholders add a link to an article.
 #: includes/admin/common.php:639
+#, php-format
 msgid "To ensure MonsterInsights and other plugins on your site continue to function properly, and avoid putting your site at risk, please take a few minutes to ask your website hosting provider to upgrade the version of PHP to a modern PHP version (7.2 or newer). We provide helpful templates for how to ask them %1$shere%2$s."
 msgstr ""
 
@@ -7460,6 +7493,7 @@ msgstr ""
 
 #. Translators: Placeholder is for the current WordPress version.
 #: includes/admin/common.php:662
+#, php-format
 msgid "In the next major release of MonsterInsights we are planning to remove support for the version of WordPress you are using (version %s). This version is several years out of date, and most plugins do not support this version anymore, so you could be missing out on critical updates for performance and security already!"
 msgstr ""
 
@@ -7469,6 +7503,7 @@ msgstr ""
 
 #. Translators: Placeholders add links to articles.
 #: includes/admin/common.php:666
+#, php-format
 msgid "To update, we recommend following this %1$sstep by step guide for updating WordPress%2$s from IsItWP and afterwards check out %3$sWhy You Should Always Use the Latest Version of WordPress%4$s on WPBeginner."
 msgstr ""
 
@@ -7518,11 +7553,13 @@ msgstr ""
 
 #: includes/admin/licensing/skin-legacy.php:93
 #: includes/admin/licensing/skin.php:94
+#, php-format
 msgid "There was an error installing the addon. Please try again. If you are still having issues, please %1$scontact our support%2$s team."
 msgstr ""
 
 #: includes/admin/licensing/skin-legacy.php:106
 #: includes/admin/licensing/skin.php:107
+#, php-format
 msgid "There was an error installing the addon, %1$s. Please try again. If you are still having issues, please %2$scontact our support%3$s team. "
 msgstr ""
 
@@ -7537,26 +7574,31 @@ msgstr ""
 
 #. Translators: Readable time to display
 #: includes/admin/notifications.php:315
+#, php-format
 msgid "%1$s ago"
 msgstr ""
 
 #. translators: 1: Percentage of audience, 2: Country.
 #: includes/admin/notifications/notification-audience.php:36
+#, php-format
 msgid "%1$s%% of Your Audience is From %2$s"
 msgstr ""
 
 #. translators: Placeholders add a link to an article.
 #: includes/admin/notifications/notification-audience.php:43
+#, php-format
 msgid "Is your site properly translated? By adding translated content specific to your audience you could gain big boosts in pageviews, time spent on page and a reduced bounce rate.<br><br>If you need help choosing a translation plugin to get you started take a look at %1$sthis article%2$s for the best options available."
 msgstr ""
 
 #. translators: Bounce rate.
 #: includes/admin/notifications/notification-bounce-rate.php:37
+#, php-format
 msgid "Your Website Bounce Rate is Higher Than %s"
 msgstr ""
 
 #. Translators: Bounce rate notification content.
 #: includes/admin/notifications/notification-bounce-rate.php:41
+#, php-format
 msgid "Your site's bounce rate is %1$s. Double check your site is working properly and be sure it loads quickly.  %2$sHere%3$s are some points to remember and steps to follow to get your bounce rates back to manageable levels."
 msgstr ""
 
@@ -7566,6 +7608,7 @@ msgstr ""
 
 #. Translators: Headline Analyzer notification content.
 #: includes/admin/notifications/notification-headline-analyzer.php:35
+#, php-format
 msgid "Try the %1$sMonsterInsights Headline Analyzer%2$s tool. We built it to help increase engagement and make your content get more traffic from search engines."
 msgstr ""
 
@@ -7614,21 +7657,25 @@ msgstr ""
 
 #. Translators: Mobile device notification title
 #: includes/admin/notifications/notification-mobile-device-high-traffic.php:33
+#, php-format
 msgid "Traffic From Mobile Devices is %s%%"
 msgstr ""
 
 #. Translators: Mobile device notification content
 #: includes/admin/notifications/notification-mobile-device-high-traffic.php:35
+#, php-format
 msgid "In the last 30 days, your site has received %s%% of traffic through a mobile or tablet device. Make sure your site is optimized for these visitors to maximize engagement."
 msgstr ""
 
 #. Translators: Mobile device notification title
 #: includes/admin/notifications/notification-mobile-device-low-traffic.php:31
+#, php-format
 msgid "Traffic From Mobile Devices %s%%"
 msgstr ""
 
 #. translators: Placeholders add a link to an article.
 #: includes/admin/notifications/notification-mobile-device-low-traffic.php:33
+#, php-format
 msgid "Traffic from mobile devices is considerably lower on your site compared to desktop devices. This could be an indicator that your site is not optimised for mobile devices.<br><br>Take a look now at %1$sshow your site looks%2$s on mobile and make sure all your content can be accessed correctly."
 msgstr ""
 
@@ -7642,11 +7689,13 @@ msgstr ""
 
 #. Translators: Returning visitors notification title
 #: includes/admin/notifications/notification-returning-visitors.php:35
+#, php-format
 msgid "Only %s%% of Your Visitors Return to Your Site"
 msgstr ""
 
 #. Translators: Returning visitors notification content
 #: includes/admin/notifications/notification-returning-visitors.php:37
+#, php-format
 msgid "Your site has received a low number of returning users over the past 30 days. Try a tool like %1$sOptinMonster%2$s to increase engagement."
 msgstr ""
 
@@ -7656,6 +7705,7 @@ msgstr ""
 
 #. translators: Placeholders add links to settings pages.
 #: includes/admin/notifications/notification-to-add-more-file-extensions.php:35
+#, php-format
 msgid "By default, MonsterInsights automatically tracks downloads of the following file extensions: doc, pdf, ppt, zip, xls, docx, pptx, and xlsx. You can easily add or remove extensions from that list in the %1$sEngagement settings%2$s of MonsterInsights.<br><br> You can view your Top Downloads report directly in the MonsterInsights %3$sPublishers report%4$s."
 msgstr ""
 
@@ -7669,6 +7719,7 @@ msgstr ""
 
 #. translators: Placeholders add a link to an article.
 #: includes/admin/notifications/notification-to-setup-affiliate-links.php:45
+#, php-format
 msgid "By tracking your affiliate links in Google Analytics, you can gather all the data you need to optimize your links for maximizing affiliate revenue. You can track affiliate link clicks on your website with little configuration needed.<br><br>%1$sIn this article%2$s, we’ll show you how to set up affiliate link tracking in WordPress."
 msgstr ""
 
@@ -7682,6 +7733,7 @@ msgstr ""
 
 #. Translators: Traffic dropping notification content
 #: includes/admin/notifications/notification-traffic-dropping.php:39
+#, php-format
 msgid "Your website traffic is decreasing and that’s a reason to take action now. Less traffic means less opportunities to make your brand known, make relationships and ultimately sell your service or product. <br><br>Follow the marketing hacks of %1$sthis article%2$s to start growing your traffic again."
 msgstr ""
 
@@ -7704,6 +7756,7 @@ msgstr ""
 
 #. translators: Placeholders add a link to an article.
 #: includes/admin/notifications/notification-upgrade-for-email-summaries.php:29
+#, php-format
 msgid "Wouldn’t it be easy if you could get your website’s performance report in your email inbox every week? With Email Summaries, you can view all your important stats in a simple report that’s delivered straight to your inbox. <br><br>You get an overview of your site's performance without logging in to WordPress or going through different analytics reports. %1$sUpgrade to MonsterInsights Pro%2$s to enable the Email Summaries feature."
 msgstr ""
 
@@ -7718,6 +7771,7 @@ msgstr ""
 
 #. translators: Placeholders add a link to the settings page.
 #: includes/admin/notifications/notification-upgrade-for-form-conversion.php:27
+#, php-format
 msgid "Track your website's form conversion rates by upgrading to %1$sMonsterInsights Pro%2$s."
 msgstr ""
 
@@ -7732,6 +7786,7 @@ msgstr ""
 
 #. translators: Placeholders add a link to the upgrade url.
 #: includes/admin/notifications/notification-upgrade-for-search-console.php:28
+#, php-format
 msgid "%1$sUpgrade to MonsterInsights Pro%2$s to see which keywords are driving traffic to your website so you can focus on what's working."
 msgstr ""
 
@@ -7752,11 +7807,13 @@ msgstr ""
 
 #. Translators: visitors notification title
 #: includes/admin/notifications/notification-visitors.php:36
+#, php-format
 msgid "See how %s Visitors Found Your Site!"
 msgstr ""
 
 #. Translators: visitors notification content
 #: includes/admin/notifications/notification-visitors.php:38
+#, php-format
 msgid "Your website has been visited by %s visitors in the past 30 days. Click the button below to view the full analytics report."
 msgstr ""
 
@@ -7770,6 +7827,7 @@ msgstr ""
 
 #. Translators: Placeholders make the text bold.
 #: includes/admin/pages/settings.php:102
+#, php-format
 msgid "If you are using an %1$sad blocker%2$s, please disable or whitelist the current page to load MonsterInsights correctly."
 msgstr ""
 
@@ -7799,20 +7857,24 @@ msgstr ""
 
 #. Translators: Placeholders add a link to the settings panel.
 #: includes/admin/reports/abstract-report.php:72
+#, php-format
 msgid "Please %1$senable the dashboard%2$s to see report data."
 msgstr ""
 
 #. Translators: Link tag starts with url and link tag ends.
 #: includes/admin/reports/abstract-report.php:76
+#, php-format
 msgid "Oops! The MonsterInsights dashboard has been disabled. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
 #: includes/admin/reports/abstract-report.php:90
+#, php-format
 msgid "Oops! We did not find an active MonsterInsights license. Please %1$scheck your license settings%2$s or %3$scontact our support team%4$s for help."
 msgstr ""
 
 #. Translators: Placeholders add a link to the settings panel.
 #: includes/admin/reports/abstract-report.php:108
+#, php-format
 msgid "Oops! We did not find a properly authenticated analytics account. Please %1$sauthenticate with Google%2$s to allow MonsterInsights to show you reports."
 msgstr ""
 
@@ -7830,11 +7892,13 @@ msgstr ""
 
 #. translators: Placeholders add a link to the Setup Wizard page.
 #: includes/admin/reports/abstract-report.php:364
+#, php-format
 msgid "You must be properly authenticated with MonsterInsights to use our reports. Please use our %1$ssetup wizard%2$s to get started."
 msgstr ""
 
 #. Translators: Placeholders add the license level and the report title.
 #: includes/admin/reports/abstract-report.php:464
+#, php-format
 msgid "You currently have a %1$s level license, but this report requires at least a %2$s level license to view the %3$s. Please upgrade to view this report."
 msgstr ""
 
@@ -7848,16 +7912,19 @@ msgstr ""
 
 #. Translators: License level and smiley.
 #: includes/admin/reports/abstract-report.php:486
+#, php-format
 msgid "Hey there! It looks like you've got the %1$s license installed on your site. That's awesome! %s"
 msgstr ""
 
 #. Translators: Placeholders add the report title and license level.
 #: includes/admin/reports/abstract-report.php:493
+#, php-format
 msgid "Do you want to access to %1$s reporting right now%2$s in your WordPress Dashboard? That comes with the %3$s level%4$s of our paid packages. You'll need to upgrade your license to get instant access."
 msgstr ""
 
 #. Translators: Placeholdes add links to the account area and a guide.
 #: includes/admin/reports/abstract-report.php:500
+#, php-format
 msgid "It's easy! To upgrade, navigate to %1$sMy Account%2$s on MonsterInsights.com, go to the licenses tab, and click upgrade. We also have a %3$sstep by step guide%4$s with pictures of this process."
 msgstr ""
 
@@ -7868,16 +7935,19 @@ msgstr ""
 
 #. Translators: Placeholder adds a smiley face.
 #: includes/admin/reports/abstract-report.php:509
+#, php-format
 msgid "Hey there! %s It looks like you've got the free version of MonsterInsights installed on your site. That's awesome!"
 msgstr ""
 
 #. Translators: Placeholders make the text bold, add the license level and add a link to upgrade.
 #: includes/admin/reports/abstract-report.php:516
+#, php-format
 msgid "Do you you want to access to %1$s reporting right now%2$s in your WordPress Dashboard? That comes with %3$s level%4$s of our paid packages. To get instant access, you'll want to buy a MonsterInsights license, which also gives you access to powerful addons, expanded reporting (including the ability to use custom date ranges), comprehensive tracking features (like UserID tracking) and access to our world-class support team."
 msgstr ""
 
 #. Translators: Placeholders make the text bold, add the license level and add a link to upgrade.
 #: includes/admin/reports/abstract-report.php:523
+#, php-format
 msgid "Upgrading is easy! To upgrade, navigate to %1$ssour pricing page%2$s, purchase the required license, and then follow the %3$sinstructions in the email receipt%4$s to upgrade. It only takes a few minutes to unlock the most powerful, yet easy to use analytics tracking system for WordPress."
 msgstr ""
 
@@ -7890,6 +7960,7 @@ msgid "Site Summary"
 msgstr ""
 
 #: includes/admin/review.php:127
+#, php-format
 msgid "Hey - we noticed you've been using %1$s for a while - that's great! Could you do us a BIG favor and give it a 5-star review on WordPress to help us spread the word and boost our motivation?"
 msgstr ""
 
@@ -7999,6 +8070,7 @@ msgid "See what your analytics software isn’t telling you with powerful UserFe
 msgstr ""
 
 #: includes/admin/routes.php:892
+#, php-format
 msgid "Oops! Please enter a valid Google Analytics 4 Measurement ID. %1$sLearn how to find your Measurement ID%2$s."
 msgstr ""
 
@@ -8011,10 +8083,12 @@ msgid "Please select a valid file to upload."
 msgstr ""
 
 #: includes/admin/routes.php:1026
+#, php-format
 msgid "Oops! You don not have permissions to view MonsterInsights reporting. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
 #: includes/admin/routes.php:1045
+#, php-format
 msgid "Oops! You cannot view MonsterInsights reports because you are not licensed. Please try again in a few minutes. If the issue continues, please %1$scontact our support%2$s team."
 msgstr ""
 
@@ -8024,20 +8098,24 @@ msgid "Add your license"
 msgstr ""
 
 #: includes/admin/routes.php:1060
+#, php-format
 msgid "Oops! We had a problem due to a license key error. Please try again in a few minutes. If the problem persists, please %1$scontact our support%2$s team."
 msgstr ""
 
 #: includes/admin/routes.php:1080
+#, php-format
 msgid "You need to authenticate into MonsterInsights before viewing reports. Please run our %1$ssetup wizard%2$s."
 msgstr ""
 
 #: includes/admin/routes.php:1092
+#, php-format
 msgid "Oops! We ran into a problem displaying this report. Please %1$scontact our support%2$s team if this issue persists."
 msgstr ""
 
 #: includes/admin/routes.php:1157
 #: includes/admin/routes.php:1501
 #: includes/admin/routes.php:1555
+#, php-format
 msgid "Oops! We encountered an error while generating your reports. Please wait a few minutes and try again. If the issue persists, please %1$scontact our support%2$s team."
 msgstr ""
 
@@ -8054,18 +8132,22 @@ msgid "Homepage"
 msgstr ""
 
 #: includes/admin/routes.php:1431
+#, php-format
 msgid "Oops! You don not have permissions to view or access Popular Posts. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
 #: includes/admin/routes.php:1454
+#, php-format
 msgid "Oops! We could not find a valid license key for MonsterInsights. Please %1$senter a valid license key%2$s to view this report."
 msgstr ""
 
 #: includes/admin/routes.php:1469
+#, php-format
 msgid "Oops! We could not find a valid license key. Please enter a valid license key to view this report. You can find your license by logging into your %1$sMonsterInsights account%2$s."
 msgstr ""
 
 #: includes/admin/routes.php:1489
+#, php-format
 msgid "You need to authenticate into MonsterInsights before viewing reports. Please complete the setup by going through our %1$ssetup wizard%2$s."
 msgstr ""
 
@@ -8176,6 +8258,7 @@ msgstr ""
 
 #. Translators: Placeholder gets replaced with the error message.
 #: includes/api-request.php:230
+#, php-format
 msgid "The firewall of your server is blocking outbound calls. Please contact your hosting provider to fix this issue. %s"
 msgstr ""
 
@@ -8184,19 +8267,23 @@ msgid "The firewall of your server is blocking outbound calls. Please contact yo
 msgstr ""
 
 #: includes/api-request.php:353
+#, php-format
 msgid "Oops! We encountered an error. Please wait a few minutes and try again. If the issue persists, please %1$scontact our support%2$s team."
 msgstr ""
 
 #: includes/api-request.php:364
+#, php-format
 msgid "Oops! We ran into a problem. Please try again in a few minutes. If the issue persists please %1$scontact our support%2$s team. Error: API returned a %3$s%4$s%5$s response."
 msgstr ""
 
 #: includes/api-request.php:378
 #: includes/api-request.php:393
+#, php-format
 msgid "Oops! We ran into a problem. Please try again in a few minutes. If the issue persists please %1$scontact our support%2$s team. Error: API returned a %3$s%4$d: %5$s%6$s"
 msgstr ""
 
 #: includes/api-request.php:412
+#, php-format
 msgid "Oops! We ran into a problem. Please try again in a few minutes. If the issue persists please %1$scontact our support%2$s team. Error: Improper API Request."
 msgstr ""
 
@@ -8219,21 +8306,25 @@ msgstr ""
 
 #: includes/compatibility-check.php:263
 #: includes/compatibility-check.php:314
+#, php-format
 msgid "Sorry, but your current version of PHP does not meet the minimum required version %1$s%2$s%3$s or newer to run MonsterInsights properly. For information on how to upgrade your PHP version, contact your web host. %4$sClick here to return to the Dashboard%5$s."
 msgstr ""
 
 #: includes/compatibility-check.php:278
 #: includes/compatibility-check.php:347
+#, php-format
 msgid "Sorry, but your WordPress version is not %1$s%2$s%3$s or newer. Please update your WordPress version and then activate MonsterInsights. For help on how to update your WordPress %4$sclick here%5$s."
 msgstr ""
 
 #. Translators: Placeholders add the hook name, plugin version and bold text.
 #: includes/deprecated.php:133
+#, php-format
 msgid "%1$s is %3$sdeprecated%4$s since MonsterInsights version %2$s!"
 msgstr ""
 
 #. Translators: Placeholders add the hook name, plugin version and bold text.
 #: includes/deprecated.php:190
+#, php-format
 msgid "%1$s is %3$sdeprecated%4$s since MonsterInsights version %2$s."
 msgstr ""
 
@@ -8251,6 +8342,7 @@ msgstr ""
 
 #. translators: %s - link to a site.
 #: includes/emails/templates/footer-default.php:45
+#, php-format
 msgid "Sent from %s"
 msgstr ""
 
@@ -8260,6 +8352,7 @@ msgstr ""
 
 #. Translators: %s is the link to the article where more details about tracking are listed.
 #: includes/frontend/frontend.php:273
+#, php-format
 msgid "To keep stats accurate, we do not load Google Analytics scripts for admin users. %1$sLearn More &raquo;%2$s"
 msgstr ""
 
@@ -11814,11 +11907,13 @@ msgid "Unknown Country"
 msgstr ""
 
 #: includes/helpers.php:1478
+#, php-format
 msgid "%1$sWe noticed you're using a caching plugin or caching from your hosting provider.%2$s Be sure to clear the cache to ensure the tracking appears on all pages and posts. %3$s(See this guide on how to clear cache)%4$s."
 msgstr ""
 
 #. Translators: The placeholders are for making the "We have detected multiple tracking codes" text bold & adding a link to support.
 #: includes/helpers.php:1541
+#, php-format
 msgid "%1$sWe have detected multiple tracking codes%2$s! You should remove non-MonsterInsights ones. If you need help finding them please %3$sread this article%4$s."
 msgstr ""
 
@@ -12072,6 +12167,7 @@ msgid "You already have MonsterInsights Pro installed."
 msgstr ""
 
 #: lite/includes/admin/connect.php:111
+#, php-format
 msgid "Oops! We could not automatically install an upgrade. Please install manually by visiting %1$smonsterinsights.com%2$s."
 msgstr ""
 
@@ -12090,6 +12186,7 @@ msgid "Please activate MonsterInsights Pro from your WordPress plugins page."
 msgstr ""
 
 #: lite/includes/admin/dashboard-widget.php:141
+#, php-format
 msgid "Your website analytics dashboard is not currently configured. Please use our %1$ssetup wizard%2$s to get started."
 msgstr ""
 
@@ -12123,6 +12220,7 @@ msgstr ""
 
 #. Translators: makes text bold.
 #: lite/includes/admin/helpers.php:78
+#, php-format
 msgid "%1$sBonus:%2$s You also get 50%% off discount for being a loyal MonsterInsights Lite user."
 msgstr ""
 
@@ -12273,6 +12371,7 @@ msgstr ""
 
 #. Translators: The eCommerce store currently active.
 #: lite/includes/admin/wp-site-health.php:352
+#, php-format
 msgid "We detected you are using %s but the MonsterInsights eCommerce addon is not active. Please install and activate to start tracking eCommerce data."
 msgstr ""
 
@@ -12302,6 +12401,7 @@ msgstr ""
 
 #. Translators: The error message received.
 #: lite/includes/admin/wp-site-health.php:428
+#, php-format
 msgid "Error message: %s"
 msgstr ""
 
@@ -12331,6 +12431,7 @@ msgstr ""
 
 #. Translators: The domain of the site is appended to the subject.
 #: lite/includes/emails/summaries.php:380
+#, php-format
 msgid "MonsterInsights Summary - %s"
 msgstr ""
 
@@ -12492,6 +12593,7 @@ msgstr ""
 #. translators: Placeholders adds wrapping span tags and links to settings page.
 #: lite/includes/emails/templates/footer-summaries-test.php:28
 #: lite/includes/emails/templates/footer-summaries.php:28
+#, php-format
 msgid "%1$sThis email was auto-genetrated and sent from MonsterInsights.%2$s Learn how to %3$s disable it%4$s."
 msgstr ""
 

@@ -1,16 +1,16 @@
 <?php
-// Cachebusters generated on 2025-04-14 10:16:02
+// Cachebusters generated on 2025-05-06 07:44:12
 return [
 	'src/public/dist/i18n-dependency-map-default-lite.json'=> '99914b932bd37a50b983c5e7c90ae93b',
 	'src/public/dist/i18n-dependency-map-default-pro.json'=> '99914b932bd37a50b983c5e7c90ae93b',
-	'src/public/dist/rml.css'=> '2b82185dea7b14a609842435e502163b',
-	'src/public/dist/rml.css.map'=> '9b914a9c090abc3956d2a63ef0079f0a',
-	'src/public/dist/rml.lite.js'=> '3651f005533c2ec2339740c04a41d997',
-	'src/public/dist/rml.lite.js.LICENSE.txt'=> '69955db1491bc6123566f02cf8bcb493',
-	'src/public/dist/rml.lite.js.map'=> '39164fc0d3039bae5903863ff428dbdb',
-	'src/public/dist/rml.pro.js'=> '2ce2d4c7e733c8d84801a81fe424bc08',
-	'src/public/dist/rml.pro.js.LICENSE.txt'=> '69955db1491bc6123566f02cf8bcb493',
-	'src/public/dist/rml.pro.js.map'=> 'e08e6c73e26899d4e79dd3b26abc8124',
+	'src/public/dist/rml.css'=> '5899a4920ba02ce96ad98d96764af170',
+	'src/public/dist/rml.css.map'=> 'ac5f870351e7d1555f2018415f0dfa20',
+	'src/public/dist/rml.lite.js'=> 'c8d4764119f8391178f263b35953ddd0',
+	'src/public/dist/rml.lite.js.LICENSE.txt'=> 'ebcfe48e908f2dfae4a8e7b29457221b',
+	'src/public/dist/rml.lite.js.map'=> '95875cd6b14a550b0bfe96724dbe6329',
+	'src/public/dist/rml.pro.js'=> '98d2a1a9840776551c7332806d886ae6',
+	'src/public/dist/rml.pro.js.LICENSE.txt'=> 'ebcfe48e908f2dfae4a8e7b29457221b',
+	'src/public/dist/rml.pro.js.map'=> 'c77ed688883f34579f18b98ede822f63',
 	'src/public/dist/rml_gutenberg.lite.js'=> '5398b12495e3228088bedb8f9de4edab',
 	'src/public/dist/rml_gutenberg.lite.js.map'=> '8d33a36dd952742b8b2d768aa578cc5c',
 	'src/public/dist/rml_gutenberg.lite.js.pot'=> '43b22b0ff1681d57cfabd31528efba0f',

@@ -3,8 +3,8 @@ Contributors: chriscct7, smub
 Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
 Tags: WordPress analytics, google analytics, analytics, google analytics dashboard, Website Analytics
 Requires at least: 5.6.0
-Tested up to: 6.8.0
-Stable tag: 9.5.1
+Tested up to: 6.8.1
+Stable tag: 9.5.2
 Requires PHP: 7.2
 License: GPL v3
 
@@ -121,6 +121,9 @@ MonsterInsights&reg; is a registered trademark of MonsterInsights LLC. When writ
 4. Want more features? <a href="https://www.monsterinsights.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion">Purchase MonsterInsights Pro</a>!
 
 == Changelog ==
+= 9.5.2: May 6, 2025 =
+- Fixed: Minor updates and bug fixes
+
 = 9.5.1: May 5, 2025 =
 - New: Support for Pinterest PPC conversion tracking
 - Fixed: Minor updates and bug fixes
