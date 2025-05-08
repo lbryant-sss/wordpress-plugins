@@ -41,7 +41,9 @@
                                         <div class="col-md-6">
                                             <div class="col-md-12 b2s-community-container">
                                                 <h4 class="b2s-bold"><?php esc_html_e('Couldn\'t find your answer?', 'blog2social') ?></h4>
-                                                <p class="b2s-gray-text"><?php echo sprintf(__('To get technical help, please create your account to access the Blog2Social support community to find more answers or to ask your question. (<a href="%s" target="_blank">Info</a>)', 'blog2social'), 'https://community.blog2social.com/register'); ?></p>
+                                                <p class="b2s-gray-text"><?php echo wp_kses(sprintf(__('To get technical help, please create your account to access the Blog2Social support community to find more answers or to ask your question. (<a href="%s" target="_blank">Info</a>)', 'blog2social'), 'https://community.blog2social.com/register'),
+                                                        array('a' => array('href' => array(), 'target' => array()))); 
+                                                        ?></p>
                                                 <br>
                                                 <?php
                                                 require_once B2S_PLUGIN_DIR . 'includes/Options.php';
@@ -69,7 +71,9 @@
                                                             <input type="password" id="b2s-community-password" autocomplete="new-password" name="password" placeholder="<?php esc_html_e('Create password', 'blog2social') ?>" class="form-control">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="checkbox" id="b2s-community-terms"><label for="b2s-community-terms"><?php echo sprintf(__('I agree to the <a href="%s" target="_blank">community rules</a>', 'blog2social'), 'https://community.blog2social.com/help#community_rules') ?></label>
+                                                            <input type="checkbox" id="b2s-community-terms"><label for="b2s-community-terms"><?php echo wp_kses(sprintf(__('I agree to the <a href="%s" target="_blank">community rules</a>', 'blog2social'), 'https://community.blog2social.com/help#community_rules'),
+                                                                    array('a' => array('href' => array(), 'target' => array())));
+                                                            ?></label>
                                                         </div>
                                                         <input class="btn btn-primary width-100" id="b2s-community-register" type="button" value="<?php esc_html_e('Create Account', 'blog2social') ?>" disabled="disabeld">
                                                     </div>
@@ -88,7 +92,9 @@
                                                 <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('community')) ?>" class="btn btn-success b2s-community-btn"><?php esc_html_e('Browse the Blog2Social support community', 'blog2social') ?></a>
                                                 <?php if ($registerdCommunity == false) { ?>
                                                     <br><br>
-                                                    <p><?php echo sprintf(__('<b>Already registered?</b> <a href="%s" target="_blank">Login to your support account</a> to ask questions or join the discussion.', 'blog2social'), 'https://community.blog2social.com/'); ?></p>
+                                                    <p><?php echo wp_kses(sprintf(__('<b>Already registered?</b> <a href="%s" target="_blank">Login to your support account</a> to ask questions or join the discussion.', 'blog2social'), 'https://community.blog2social.com/'),
+                                                            array('a' => array('href' => array(), 'target' => array())));
+                                                    ?></p>
                                                     <br>
                                                     <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('community_lostpw')) ?>"><?php esc_html_e('Forgot username or password?', 'blog2social') ?></a>
                                                 <?php } ?>

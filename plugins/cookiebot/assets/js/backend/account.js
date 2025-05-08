@@ -17,44 +17,47 @@ const createFormData = (action, data = {}) => {
 // Function to check scan status
 async function checkScanStatus(scanId) {
     try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 5000);
         const response = await fetch(`${API_BASE_URL}/scan/${scanId}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${authToken}`
-            }
+            },
+            signal: controller.signal
         });
 
-        const data = await response.json();
-
-        if (data.status === 'DONE') {
+        if (response.status === 200 || response.status === 201) {
+            const data = await response.json();
+            clearTimeout(timeout);
+            if (data.status === 'DONE') {
+                await fetch(cookiebot_account.ajax_url, {
+                    method: 'POST',
+                    body: createFormData('cookiebot_store_scan_details', {
+                        scan_id: scanId,
+                        scan_status: 'DONE'
+                    }),
+                    credentials: 'same-origin'
+                });
+                return;
+            }
+            // Store both scan ID and status
             await fetch(cookiebot_account.ajax_url, {
                 method: 'POST',
                 body: createFormData('cookiebot_store_scan_details', {
                     scan_id: scanId,
-                    scan_status: 'DONE'
+                    scan_status: 'IN_PROGRESS'
                 }),
                 credentials: 'same-origin'
             });
-            return;
         }
-
-        // Store both scan ID and status
-        await fetch(cookiebot_account.ajax_url, {
-            method: 'POST',
-            body: createFormData('cookiebot_store_scan_details', {
-                scan_id: scanId,
-                scan_status: 'IN_PROGRESS'
-            }),
-            credentials: 'same-origin'
-        });
-
         if (!response.ok) {
             await fetch(cookiebot_account.ajax_url, {
                 method: 'POST',
                 body: createFormData('cookiebot_store_scan_details', {
-                    scan_id: scanId,
+                    scan_id: scanId ? scanId : '',
                     scan_status: 'FAILED'
                 }),
                 credentials: 'same-origin'
@@ -123,7 +126,7 @@ const isAuthenticated = async () => {
                 body: createFormData('cookiebot_delete_auth_token'),
                 credentials: 'same-origin'
             });
-            if (!window.prevent_default) {
+            if (!window.prevent_default && canReload()) {
                 window.location.reload();
             }
         }
@@ -168,6 +171,32 @@ async function fetchConfigurationDetails(configId) {
     }
 }
 
+function canReload() {
+    const itemStr = localStorage.getItem('dashboard_reload');
+    const now = new Date();
+    const numTimes = 3;
+    const ttl = 30000;
+    let count = 0;
+
+    if (itemStr) {
+        const item = JSON.parse(itemStr);
+
+        if (now.getTime() < item.exp) {
+            if (item.count > numTimes) {
+                return false;
+            }
+            count = item.count + 1;
+        }
+    }
+
+    const item = {
+        count: count,
+        exp: now.getTime() + ttl,
+    }
+    localStorage.setItem('dashboard_reload', JSON.stringify(item));
+    return true;
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const ucApiCode = urlParams.get('uc_api_code');
@@ -210,10 +239,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }).then(r => r.json()).then(data => data.data);
 
                     if (!response.ok) throw new Error(`Auth failed: ${response.status}`);
-                    const newUrl = new URL(window.location.href);
-                    newUrl.searchParams.delete('uc_api_code');
-                    newUrl.searchParams.delete('is_new_user');
-                    window.location.href = newUrl;
+                    if (canReload()) {
+                        const newUrl = new URL(window.location.href);
+                        newUrl.searchParams.delete('uc_api_code');
+                        newUrl.searchParams.delete('is_new_user');
+                        window.location.href = newUrl;
+                    }
                     return;
                 } catch (error) {
                     console.error('Failed to process authentication:', error);
@@ -228,9 +259,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     body: createFormData('cookiebot_process_auth_code', { code: ucApiCode }),
                     credentials: 'same-origin'
                 });
-                const settingsUrl = window.location.protocol + '//' + window.location.hostname + '/wp-admin/admin.php?page=cookiebot_settings';
-                window.location.href = settingsUrl;
-                return;
+
+                if (canReload()) {
+                    const settingsUrl = window.location.protocol + '//' + window.location.hostname + '/wp-admin/admin.php?page=cookiebot_settings';
+                    window.location.href = settingsUrl;
+                    return;
+                }
             }
 
             // Add loading state
@@ -319,6 +353,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
 
                 // Now that we have a CBID, initiate the scan
+                const controller = new AbortController();
+                const timeout = setTimeout(() => controller.abort(), 5000);
                 const scanResponse = await fetch(`${API_BASE_URL}/scan`, {
                     method: 'POST',
                     headers: {
@@ -329,38 +365,36 @@ document.addEventListener('DOMContentLoaded', async () => {
                     body: JSON.stringify({
                         domains: [formattedDomain],
                         configuration_id: configData.configuration_id
-                    })
-                });
-
-                if (!scanResponse.ok) throw new Error(`Scan initiation failed: ${scanResponse.status}`);
-
-                const scanData = await scanResponse.json();
-
-                // Check for scan ID in different possible response structures
-                const scanId = scanData?.scan?.scan_id || scanData?.scan_id || scanData?.id;
-                if (!scanId) {
-                    console.error('Scan response structure:', scanData);
-                    throw new Error('No scan ID received in response');
-                }
-
-                // Store scan ID in WordPress without status initially
-                await fetch(cookiebot_account.ajax_url, {
-                    method: 'POST',
-                    body: createFormData('cookiebot_store_scan_details', {
-                        scan_id: scanId
                     }),
-                    credentials: 'same-origin'
+                    signal: controller.signal
                 });
 
-                // Start checking scan status
-                await checkScanStatus(scanId);
+                if (scanResponse.status === 200 || scanResponse.status === 201) {
+                    const scanData = await scanResponse.json();
+                    clearTimeout(timeout);
+                    const scanId = scanData?.scan?.scan_id || scanData?.scan_id || scanData?.id;
+                    if (!scanId) {
+                        console.error('Scan response structure:', scanData);
+                        throw new Error('No scan ID received in response');
+                    }
 
+                    // Store scan ID in WordPress without status initially
+                    await fetch(cookiebot_account.ajax_url, {
+                        method: 'POST',
+                        body: createFormData('cookiebot_store_scan_details', {
+                            scan_id: scanId ? scanId : ''
+                        }),
+                        credentials: 'same-origin'
+                    });
+
+                    // Start checking scan status
+                    await checkScanStatus(scanId);
+                }
                 // fetch configuration details 
                 await fetchConfigurationDetails(configData.configuration_id);
 
             } catch (error) {
                 console.error('Failed to create configuration:', error);
-                return;
             }
         } else {
             // If we already have a CBID, check if there's an ongoing scan
@@ -393,8 +427,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }).then(r => r.json()).then(data => data[0]);
 
-            if (!userData) throw new Error('No user data received');
-
             // Track account creation in Amplitude
             // window.trackAmplitudeEvent('Account Created');
 
@@ -406,10 +438,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }),
                 credentials: 'same-origin'
             }).then(r => r.json());
-
-            if (!userResponseData.success) {
-                throw new Error('Failed to store user data');
-            }
 
             // Store onboarding status separately
             await fetch(cookiebot_account.ajax_url, {
@@ -425,7 +453,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        if (userResponseData.data) {
+        if (userResponseData.data && canReload()) {
             const newUrl = new URL(window.location.href);
             newUrl.searchParams.delete('uc_api_code');
             window.location.href = newUrl;
@@ -457,7 +485,6 @@ document.getElementById('get-started-button')?.addEventListener('click', async (
     e.preventDefault();
     try {
         const callbackUrl = window.location.protocol + '//' + window.location.hostname + '/wp-admin/admin.php?page=cookiebot';
-        console.log('callbackUrl', `${API_BASE_URL}/auth/auth0/authorize?origin=wordpress_plugin&callback_domain=${encodeURIComponent(callbackUrl)}`);
         window.location.href = `${API_BASE_URL}/auth/auth0/authorize?origin=wordpress_plugin&callback_domain=${encodeURIComponent(callbackUrl)}`;
     } catch (error) {
         console.error('Failed to start authentication process:', error);

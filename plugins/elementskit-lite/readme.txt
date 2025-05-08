@@ -89,9 +89,9 @@ If you’re looking for a free Elementor addon, ElementsKit offers the best pack
 
 ✅[ **Social Icons** ](https://wpmet.com/plugin/elementskit/social-media/?utm_source=org&utm_medium=readme) - Displaying social media icons is super easy now.
 
-✅[**Blog Posts**](https://wpmet.com/plugin/elementskit/blog/?utm_source=org&utm_medium=readme) -  Display your blog posts more intelligently.
-
 ✅[ **Client Logo** ](https://wpmet.com/plugin/elementskit/client-logo/?utm_source=org&utm_medium=readme) - Showcase your client and sponsor logos with different styles.
+
+✅ [**Comparison Table**](https://wpmet.com/plugin/elementskit/comparison-table/?utm_source=org&utm_medium=readme): Easily compare and contrast different products, services, or options.
 
 ✅[ **Countdown Timer** ](https://wpmet.com/plugin/elementskit/countdown-timer/?utm_source=org&utm_medium=readme) -  It comes with various effects, styles, and formats.
 
@@ -103,7 +103,7 @@ If you’re looking for a free Elementor addon, ElementsKit offers the best pack
 
 ✅[ **Image Accordion** ](https://wpmet.com/plugin/elementskit/image-accordion/?utm_source=org&utm_medium=readme) - Display multiple images in a shortened format easily.
 
-✅[ **Image BoxWidget** ](https://wpmet.com/plugin/elementskit/image-box/?utm_source=org&utm_medium=readme) - Combine images with headlines, texts, and call-to-action buttons.
+✅[ **Image Box** ](https://wpmet.com/plugin/elementskit/image-box/?utm_source=org&utm_medium=readme) - Combine images with headlines, texts, and call-to-action buttons.
 
 ✅[ **Pie Chart** ](https://wpmet.com/plugin/elementskit/piechart/?utm_source=org&utm_medium=readme) - Create and style data pie charts on your web page within a short time.
 
@@ -121,11 +121,7 @@ If you’re looking for a free Elementor addon, ElementsKit offers the best pack
 
 ✅[ **Video** ](https://wpmet.com/plugin/elementskit/video/?utm_source=org&utm_medium=readme) -  Add playable videos to your page and style them nicely.
 
-✅[ **Post Tab** ](https://wpmet.com/plugin/elementskit/post-tab/?utm_source=org&utm_medium=readme) - Show popular blogs and recent posts in tabs as per the category.
-
 ✅[ **Category List** ](https://wpmet.com/plugin/elementskit/category-list/?utm_source=org&utm_medium=readme) - Organize and customize every section of each category in a list.
-
-✅[ **Post List** ](https://wpmet.com/plugin/elementskit/post-list/?utm_source=org&utm_medium=readme) -   Present your posts in a well-formatted list.
 
 ✅[ **Page List** ](https://wpmet.com/plugin/elementskit/page-list/?utm_source=org&utm_medium=readme) - Arrange and customize your list of pages in a horizontal or vertical layout.
 
@@ -139,8 +135,6 @@ If you’re looking for a free Elementor addon, ElementsKit offers the best pack
 
 ✅[ **Lottie** ](https://wpmet.com/plugin/elementskit/lottie/?utm_source=org&utm_medium=readme) - Export a JSON file or provide a URL to use amazing animations.
 
-✅[ **Post Grid** ](https://wpmet.com/plugin/elementskit/post-grid/?utm_source=org&utm_medium=readme) - Decorate your content, image, post, etc. in a group with different styles.
-
 ✅[ **TablePress** ](https://wpmet.com/plugin/elementskit/tablepress/?utm_source=org&utm_medium=readme) - Allows you to create and style nice responsive data tables.
 
 ✅[ **Back to Top** ](https://wpmet.com/plugin/elementskit/back-to-top/?utm_source=org&utm_medium=readme)- Add and customize the back-to-top button easily.
@@ -149,6 +143,11 @@ If you’re looking for a free Elementor addon, ElementsKit offers the best pack
 Experience a no-cost WordPress site header navigation functions like dropdown menu, hamburger menu, offcanvas menu. Also, customize header info items like logos, text, address, social icons and display a functional search bar.
 
 **<strong>Free Elementor Widgets for Header Styling</strong><br/>🔶 [ElementsKit Nav Menu](https://wpmet.com/plugin/elementskit/nav-menu/?utm_source=org&utm_medium=readme) 🔶 [Header Offcanvas](https://wpmet.com/plugin/elementskit/header-offcanvas/?utm_source=org&utm_medium=readme) 🔶 [Header Search](https://wpmet.com/plugin/elementskit/header-search/?utm_source=org&utm_medium=readme) 🔶[Header Info](https://wpmet.com/plugin/elementskit/header-info/?utm_source=org&utm_medium=readme) 🔶**
+
+### Blog Post Addon for Elementor
+Display and organize your blog posts in flexible blog layout options like grid, list, tab, etc. ElementsKit covers various blog post widgets that make it easy for visitors to navigate to your popular, related, or recent blog posts through an intuitive blog post structure.
+
+🔶 [**Blog Posts**](https://wpmet.com/plugin/elementskit/blog/?utm_source=org&utm_medium=readme) 🔶 [**Post Tab**](https://wpmet.com/plugin/elementskit/post-tab/?utm_source=org&utm_medium=readme) 🔶 [**Post List**](https://wpmet.com/plugin/elementskit/post-list/?utm_source=org&utm_medium=readme') 🔶 [**Post Grid**](https://wpmet.com/plugin/elementskit/post-grid/?utm_source=org&utm_medium=readme)
 
 ### Free Elementor Addon for Third-Party Form Styling
 If you're using a popular form builder plugin on your website, chances are the ElementsKit Elementor addon includes a dedicated form style widget for it. With a flexible, Elementor-like interface, you can easily customize various form types, including contact forms, suggestion forms, and newsletters.
@@ -163,7 +162,7 @@ This advanced Elementor addon offers some powerful modules in the free version.
 **🟢** [**ElementsKit Header and Footer Builder**](https://wpmet.com/plugin/elementskit/header-footer-builder/?utm_source=org&utm_medium=readme)
 Build and customize Elementor website header footer with a drag-and-drop interface. Enjoy features like **conditional display, sticky menus, off-canvas menus, WooCommerce carts,** etc, with Elementor header footer builder. [**ElementsKit**](https://wpmet.com/doc/header-footer-modules/?utm_source=org&utm_medium=readme) has versatile pre-designed templates for Elementor header footer.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lprqRBvKMQM?si=qrJHka3Qh-LLUurH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+https://www.youtube.com/watch?v=lprqRBvKMQM
 
 **🟢** [ **Elementor Megamenu builder** ](https://products.wpmet.com/megamenu/?utm_source=org&utm_medium=readme)
 Design multi-level WordPress mega menus with Elementor widgets, content, and visuals using [ **ElementsKit’s no-code Elementor mega menu builder**](https://wpmet.com/doc/mega-menu-module/?utm_source=org&utm_medium=readme). Create **horizontal or vertical menus** effortlessly, perfect for any niche, including e-commerce mega menu.

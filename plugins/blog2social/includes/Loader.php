@@ -1237,7 +1237,9 @@ class B2S_Loader {
             'LICENCE_RATE_LIMIT' => esc_html__('Your posting limit has been reached. Please upgrade your version or order an additional posting contingent for your premium version.', 'blog2social'), //since 7.3.5
             'NETWORK_RATE_DAILY_LIMIT' => esc_html__('Your daily posting limit for this network has been reached. Please try again tomorrow or upgrade your Addon for your premium version.', 'blog2social'), //since 7.3.5
             'NETWORK_RATE_LIMIT' => esc_html__('Your posting limit for this network has been reached. Please upgrade your Addon for your premium version.', 'blog2social'), //since 7.3.5
+            'NETWORK_APP_VERSION' => esc_html__('Please note that you need to update your app to the latest version to use this feature.', 'blog2social'), //since 8.4.1
             'LICENCE_NETWORK_UNLOOK' => esc_html__('Your network activation has expired. Please unlock this network for your licence.', 'blog2social')))); //since 7.5.0
+           
     }
 
     public function getToken() {
@@ -2065,7 +2067,7 @@ class B2S_Loader {
     public function initCaps() {
         global $wp_roles;
         if (!class_exists('WP_Roles')) {
-            wp_die(esc_html__('Blog2Social needs Wordpress Version 4.7.0 or higher.', 'blog2social') . ' ' . sprintf(__('<a href="%s" target="_blank">Please find more Information and help in our FAQ</a>', 'blog2social'), esc_url(B2S_Tools::getSupportLink('system'))) . ' ' . esc_html__('or', 'blog2social') . '  <a href="' . esc_url(admin_url("/plugins.php", "http")) . '/">' . esc_html__('back to install plugins', 'blog2social') . '</a>');
+            wp_die(esc_html__('Blog2Social needs Wordpress Version 4.7.0 or higher.', 'blog2social') . ' ' . esc_html(sprintf(__('<a href="%s" target="_blank">Please find more Information and help in our FAQ</a>', 'blog2social'), esc_url(B2S_Tools::getSupportLink('system')))) . ' ' . esc_html__('or', 'blog2social') . '  <a href="' . esc_url(admin_url("/plugins.php", "http")) . '/">' . esc_html__('back to install plugins', 'blog2social') . '</a>');
         }
         if (!isset($wp_roles)) {
             $wp_roles = new WP_Roles(); // @codingStandardsIgnoreLine
@@ -2086,7 +2088,12 @@ class B2S_Loader {
         $b2sCheckBefore = $b2sSystem->check('before');
         if (is_array($b2sCheckBefore)) {
             $b2sSystem->deactivatePlugin();
-            wp_die($b2sSystem->getErrorMessage($b2sCheckBefore) . ' ' . esc_html__('or', 'blog2social') . '  <a href="' . esc_url(admin_url("/plugins.php", "http")) . '/">' . esc_html__('back to install plugins', 'blog2social') . '</a>');
+            wp_die( wp_kses($b2sSystem->getErrorMessage($b2sCheckBefore), array(
+                'a' => array(
+                    'href' => array(),
+                    'target' => array()
+                )
+            )) . ' ' . esc_html__('or', 'blog2social') . '  <a href="' . esc_url(admin_url("/plugins.php", "http")) . '/">' . esc_html__('back to install plugins', 'blog2social') . '</a>');
         }
 
         global $wpdb;
@@ -2398,7 +2405,11 @@ class B2S_Loader {
 
         if (!$mySqlPermission) {
             $b2sSystem->deactivatePlugin();
-            wp_die($b2sSystem->getErrorMessage(array('dbTable' => false)) . ' ' . esc_html__('or', 'blog2social') . '  <a href="' . esc_url(admin_url("/plugins.php", "http")) . '/">' . esc_html__('back to install plugins', 'blog2social') . '</a>');
+            wp_die(wp_kses($b2sSystem->getErrorMessage(array('dbTable' => false)), array(
+                'a' => array(
+                    'href' => array(),
+                    'target' => array()
+                    ))) . ' ' . esc_html__('or', 'blog2social') . '  <a href="' . esc_url(admin_url("/plugins.php", "http")) . '/">' . esc_html__('back to install plugins', 'blog2social') . '</a>');
         }
 
         //Activate Social Meta Tags

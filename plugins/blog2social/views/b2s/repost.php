@@ -393,7 +393,9 @@ $metaSettings = get_option('B2S_PLUGIN_GENERAL_OPTIONS');
                 <img class="pull-right hidden-xs b2s-network-info-img-disabled" alt="<?php esc_attr_e('Torial') ?>" src="<?php echo esc_url(plugins_url('/assets/images/portale/14_flat.png', B2S_PLUGIN_FILE)) ?>">
                 <img class="pull-right hidden-xs b2s-network-info-img-disabled" alt="<?php esc_attr_e('Bloglovin') ?>" src="<?php echo esc_url(plugins_url('/assets/images/portale/16_flat.png', B2S_PLUGIN_FILE)) ?>">
             </div>
-            <p class="b2s-bold"><?php echo sprintf(__('Under <a href="%s">Network Settings</a> you define which network selection is used. <a href="%s" target="_blank">To create a network grouping.</a>', 'blog2social'), 'admin.php?page=blog2social-network', esc_url(B2S_Tools::getSupportLink('network_grouping'))) ?></p>
+            <p class="b2s-bold"><?php echo wp_kses(sprintf(__('Under <a href="%s">Network Settings</a> you define which network selection is used. <a href="%s" target="_blank">To create a network grouping.</a>', 'blog2social'), 'admin.php?page=blog2social-network', esc_url(B2S_Tools::getSupportLink('network_grouping'))),
+                array('a' => array('href' => array(), 'target' => array())));
+            ?></p>
             <h4><?php esc_html_e('Available networks', 'blog2social') ?></h4>
             <p class="b2s-bold"><?php esc_attr_e('Facebook (Profile & Seiten)') ?></p>
             <p class="b2s-bold"><?php esc_attr_e('Twitter (1 Profil)') ?></p>

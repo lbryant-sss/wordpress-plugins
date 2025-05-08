@@ -263,7 +263,13 @@ $isImagePro = (B2S_PLUGIN_USER_VERSION < 2) ? ' <span class="label label-success
                     <br>
                     <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('affiliate')); ?>" class="btn btn-success center-block"><?php esc_html_e('Upgrade to SMART and above', 'blog2social') ?></a>
                     <br>
-                    <center> <?php echo sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')); ?> </center>
+                    <center> <?php echo wp_kses(sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')), array(
+                        'a' => array(
+                            'href' => array(),
+                            'target' => array()
+                        )
+                    ));
+                         ?> </center>
                 <?php } ?>
             </div>
         </div>
@@ -298,11 +304,22 @@ $isImagePro = (B2S_PLUGIN_USER_VERSION < 2) ? ' <span class="label label-success
                     <span class="glyphicon glyphicon-ok glyphicon-success"></span> <?php esc_html_e('Share pure text messages and personal comments with your followers and readers.', 'blog2social') ?><br>
                     <span class="glyphicon glyphicon-ok glyphicon-success"></span> <?php esc_html_e('Use hashtags, @mentions, or emojis to share your feelings.', 'blog2social') ?><br>
                     <br>
-                    <?php echo sprintf(__('Learn more about how to share social media posts in the <a href="%s" target="_blank">social media posts guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('cc_info_faq'))); ?>
+                    <?php echo wp_kses(sprintf(__('Learn more about how to share social media posts in the <a href="%s" target="_blank">social media posts guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('cc_info_faq'))),
+                    array(
+                        'a' => array(
+                            'href' => array(),
+                            'target' => array()
+                        )
+                    )); ?>
                     <br>
                     <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('affiliate')); ?>" class="btn btn-success center-block"><?php esc_html_e('Upgrade to PRO and above', 'blog2social') ?></a>
                     <br>
-                    <center> <?php echo sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')); ?> </center>
+                    <center> <?php echo wp_kses(sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')), 
+                    array('a' => array(
+                        'href' => array(), 
+                        'target' => array()
+                        )
+                        )); ?> </center>
                 <?php } ?>
             </div>
         </div>
@@ -340,23 +357,37 @@ $isImagePro = (B2S_PLUGIN_USER_VERSION < 2) ? ' <span class="label label-success
                 <br>
                 <p><?php esc_html_e('Text posts enable you to share pure text messages and personal comments with your followers and readers. You can also customize your posts with individual hashtags, @mentions, or emojis.', 'blog2social') ?></p>
                 <h4><?php esc_html_e('You can share a text post on the following networks:', 'blog2social') ?></h4>
-                <p class="b2s-bold"><?php esc_attr_e('Facebook (Profile & Seiten)') ?></p>
-                <p class="b2s-bold"><?php esc_attr_e('Twitter (1 Profil)') ?></p>
-                <p class="b2s-bold"><?php esc_attr_e('LinkedIn') ?></p>
-                <p class="b2s-bold"><?php esc_attr_e('VKontakte (Profile & Seiten)') ?></p>
-                <p class="b2s-bold"><?php esc_attr_e('XING (Profile & Seiten)') ?></p>
-                <p class="b2s-bold"><?php esc_attr_e('Google Business Profile') ?></p>
-                <p class="b2s-bold"><?php esc_attr_e('Telegram') ?></p>
-                <p class="b2s-bold"><?php esc_attr_e('Torial') ?></p>
-                <p class="b2s-bold"><?php esc_attr_e('Tumblr') ?></p>
-                <p class="b2s-bold"><?php esc_attr_e('Bloglovin') ?></p>
-                <p class="b2s-bold"><?php esc_attr_e('Blogger') ?></p>
+                <p class="b2s-bold"><?php esc_html_e('Facebook (Profile & Seiten)') ?></p>
+                <p class="b2s-bold"><?php esc_html_e('Twitter (1 Profil)') ?></p>
+                <p class="b2s-bold"><?php esc_html_e('LinkedIn') ?></p>
+                <p class="b2s-bold"><?php esc_html_e('VKontakte (Profile & Seiten)') ?></p>
+                <p class="b2s-bold"><?php esc_html_e('XING (Profile & Seiten)') ?></p>
+                <p class="b2s-bold"><?php esc_html_e('Google Business Profile') ?></p>
+                <p class="b2s-bold"><?php esc_html_e('Telegram') ?></p>
+                <p class="b2s-bold"><?php esc_html_e('Torial') ?></p>
+                <p class="b2s-bold"><?php esc_html_e('Tumblr') ?></p>
+                <p class="b2s-bold"><?php esc_html_e('Bloglovin') ?></p>
+                <p class="b2s-bold"><?php esc_html_e('Blogger') ?></p>
                 <br>
-                <p><?php echo sprintf(__('Get more information on how to share a text post with hashtags, @mentions and emojis in the <a href="%s" target="_blank">social media posts guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('cc_text_post_info'))); ?></p>
+                <p><?php echo wp_kses(sprintf(__('Get more information on how to share a text post with hashtags, @mentions and emojis in the <a href="%s" target="_blank">social media posts guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('cc_text_post_info'))),
+                        array('a' => array(
+                            'href' => array(), 
+                            'target' => array()
+                        ))
+                        ); ?></p>
                 <br>
-                <p><?php echo sprintf(__('In the <a href="%s">Network Settings</a> you can define one or more network selections for your posts.', 'blog2social'), 'admin.php?page=blog2social-network'); ?>
+                <p><?php echo wp_kses(sprintf(__('In the <a href="%s">Network Settings</a> you can define one or more network selections for your posts.', 'blog2social'), 'admin.php?page=blog2social-network'),
+                        array('a' => array(
+                            'href' => array(), 
+                            'target' => array()
+                            ))); ?>
                     <br>
-                    <?php echo sprintf(__('More information on how to create a network selection in the guide <a href="%s" target="_blank">"How can I save a specific selection of networks?"</a>', 'blog2social'), esc_url(B2S_Tools::getSupportLink('network_grouping'))); ?></p>
+                    <?php echo wp_kses(sprintf(__('More information on how to create a network selection in the guide <a href="%s" target="_blank">"How can I save a specific selection of networks?"</a>', 'blog2social'), esc_url(B2S_Tools::getSupportLink('network_grouping'))),
+                        array('a' => array(
+                            'href' => array(), 
+                            'target' => array()
+                            )));
+                    ?></p>
             </div>
         </div>
     </div>
@@ -473,9 +504,19 @@ $isImagePro = (B2S_PLUGIN_USER_VERSION < 2) ? ' <span class="label label-success
                 <p class="b2s-bold"><?php esc_attr_e('Bloglovin') ?></p>
                 <p class="b2s-bold"><?php esc_attr_e('Blogger') ?></p>
                 <br>
-                <p><?php echo sprintf(__('In the <a href="%s">Network Settings</a> you can define network selections to select and save your most-used networks for specific posts or campaigns.', 'blog2social'), 'admin.php?page=blog2social-network'); ?>
+                <p><?php echo wp_kses(sprintf(__('In the <a href="%s">Network Settings</a> you can define network selections to select and save your most-used networks for specific posts or campaigns.', 'blog2social'), 'admin.php?page=blog2social-network'),
+                        array('a' => array(
+                            'href' => array(), 
+                            'target' => array()
+                            )));
+                    ?>
                     <br>
-                    <?php echo sprintf(__('More information on how to create a network selection in the guide <a href="%s" target="_blank">"How can I save a specific selection of networks?"</a>', 'blog2social'), esc_url(B2S_Tools::getSupportLink('network_grouping'))); ?></p>
+                    <?php echo wp_kses(sprintf(__('More information on how to create a network selection in the guide <a href="%s" target="_blank">"How can I save a specific selection of networks?"</a>', 'blog2social'), esc_url(B2S_Tools::getSupportLink('network_grouping'))),
+                        array('a' => array(
+                            'href' => array(), 
+                            'target' => array()
+                            )));
+                    ?></p>
             </div>
         </div>
     </div>

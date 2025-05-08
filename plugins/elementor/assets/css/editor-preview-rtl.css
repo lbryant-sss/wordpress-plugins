@@ -1,4 +1,4 @@
-/*! elementor - v3.29.0 - 05-05-2025 */
+/*! elementor - v3.29.0 - 07-05-2025 */
 .elementor-hidden {
   display: none;
 }
@@ -4447,8 +4447,8 @@ html.elementor-html {
 }
 .e-div-block-base:has(> .elementor-empty-view) > .elementor-empty-view,
 .e-flexbox-base:has(> .elementor-empty-view) > .elementor-empty-view {
-  min-height: 0;
   height: auto;
+  grid-row: 1/-1;
 }
 
 body.rtl .e-con.e-grid.e-con--row .elementor-widget-placeholder.e-dragging-right, body.rtl .e-con.e-grid.e-con--row > .e-con-inner .elementor-widget-placeholder.e-dragging-right {

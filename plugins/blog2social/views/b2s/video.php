@@ -143,7 +143,7 @@ $canUseVideoAddon = (defined('B2S_PLUGIN_ADDON_VIDEO') && !empty(B2S_PLUGIN_ADDO
                                         <?php } ?>
                                         <div class="col-md-9">
                                             <?php if (isset(B2S_PLUGIN_ADDON_VIDEO['is_trial']) && (int) B2S_PLUGIN_ADDON_VIDEO['is_trial'] == 1) { ?>
-                                                <h4><?php esc_html_e("Your free trial for the Video-Addon is valid until", 'blog2social') ?> <?php echo B2S_Util::getCustomDateFormat(B2S_PLUGIN_ADDON_VIDEO['trial_end_date'] . ' 00:00:00', substr(B2S_LANGUAGE, 0, 2), false) ?></h4>                                            
+                                                <h4><?php esc_html_e("Your free trial for the Video-Addon is valid until", 'blog2social') ?> <?php echo esc_html(B2S_Util::getCustomDateFormat(B2S_PLUGIN_ADDON_VIDEO['trial_end_date'] . ' 00:00:00', substr(B2S_LANGUAGE, 0, 2), false)) ?></h4>                                            
                                             <?php } else { ?>
                                                 <h4><?php esc_html_e("You used the Video-Addon", 'blog2social') ?></h4>                                            
                                             <?php } ?>
@@ -358,7 +358,7 @@ $canUseVideoAddon = (defined('B2S_PLUGIN_ADDON_VIDEO') && !empty(B2S_PLUGIN_ADDO
                 <b><?php esc_html_e('Best Time Scheduler', 'blog2social') ?></b>
                 <p><?php esc_html_e('Whenever you publish a post, only a fraction of your followers will actually see your post. Use the Blog2Social Best Times Scheduler to share your post at the best times for each social network. Get more outreach and extend the lifespan of your posts.', 'blog2social') ?></p>
                 <br>
-                <?php if (B2S_PLUGIN_USER_VERSION == 0) { ?>
+                <?php if (true) { ?>
                     <hr>
     <?php esc_html_e('With Blog2Social Premium you can:', 'blog2social') ?>
                     <br>
@@ -376,7 +376,9 @@ $canUseVideoAddon = (defined('B2S_PLUGIN_ADDON_VIDEO') && !empty(B2S_PLUGIN_ADDO
                     <br>
                     <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('affiliate')); ?>" class="btn btn-success center-block"><?php esc_html_e('Upgrade to SMART and above', 'blog2social') ?></a>
                     <br>
-                    <center> <?php echo sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')); ?> </center>
+                    <center> <?php echo wp_kses(sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')),
+                            array('a' => array('href' => array(), 'target' => array())));
+                        ?> </center>
 <?php } ?>
             </div>
         </div>

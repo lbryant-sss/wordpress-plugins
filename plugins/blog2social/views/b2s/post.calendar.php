@@ -419,7 +419,9 @@ $metaSettings = get_option('B2S_PLUGIN_GENERAL_OPTIONS');
                     <br>
                     <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('affiliate')); ?>" class="btn btn-success center-block"><?php esc_html_e('Upgrade to SMART and above', 'blog2social') ?></a>
                     <br>
-                    <center> <?php echo sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')); ?> </center>
+                    <center> <?php echo wp_kses(sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')),
+                            array('a' => array('href' => array(), 'target' => array())));
+                        ?> </center>
                 <?php } ?>
             </div>
         </div>

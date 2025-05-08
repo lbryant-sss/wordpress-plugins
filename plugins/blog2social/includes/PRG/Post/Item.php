@@ -12,6 +12,7 @@ class PRG_Post_Item {
     protected $searchPublishDate;
     protected $searchSchedDate;
     protected $searchPostTitle;
+    protected $searchPostStatus='';
     protected $userLang;
     public $currentPage = 0;
     public $type;

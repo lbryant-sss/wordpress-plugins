@@ -2,7 +2,7 @@
 Contributors: IntellyWP, Data443
 Tags: inline related posts, suggestions, similar posts, Zemanta, YARPP
 Requires at least: 3.6
-Tested up to: 6.6
+Tested up to: 6.8
 Requires PHP: 5.6
 Stable tag: trunk
 

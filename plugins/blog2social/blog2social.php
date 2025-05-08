@@ -7,7 +7,7 @@
  * Author: Blog2Social, Adenion
  * Text Domain: blog2social
  * Domain Path: /languages
- * Version: 8.4.1
+ * Version: 8.4.2
  * Requires at least: 6.2
  * Requires PHP: 7.4
  * Tested up to: 6.8    
@@ -15,7 +15,7 @@
  * License: GPLv3
  */
 
-define('B2S_PLUGIN_VERSION', '841');
+define('B2S_PLUGIN_VERSION', '842');
 define('B2S_PLUGIN_LANGUAGE', serialize(array('de_DE', 'en_US')));
 define('B2S_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('B2S_PLUGIN_URL', plugin_dir_url(__FILE__));

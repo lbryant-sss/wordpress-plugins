@@ -62,7 +62,7 @@
                                             <button class="btn b2s-font-bold btn-sm b2s-key-area-btn-submit"><?php esc_html_e('Submit', 'blog2social'); ?></button>
                                         </span>
                                     </div>
-                                    <a class="pull-left" target='_blank' href="<?php echo B2S_Tools::getSupportLink('faq_license_key'); ?>"><?php esc_html_e('Where do I find my license key?', 'blog2social'); ?></a>
+                                    <a class="pull-left" target='_blank' href="<?php echo esc_url(B2S_Tools::getSupportLink('faq_license_key')); ?>"><?php esc_html_e('Where do I find my license key?', 'blog2social'); ?></a>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
@@ -179,7 +179,7 @@
                         <br>
                         <p class="b2s-text-bold"><?php esc_html_e('Upgrade to Business to enhance your team\'s productivity and expand your social media reach.', 'blog2social') ?></p>
                         <br>
-                        <a href="<?php echo B2S_Tools::getSupportLink('pricing'); ?>" target="_blank" class="btn b2s-font-bold b2s-btn-premium-filled"><?php esc_html_e("Discover plans", "blog2social"); ?></a>
+                        <a href="<?php echo esc_url(B2S_Tools::getSupportLink('pricing')); ?>" target="_blank" class="btn b2s-font-bold b2s-btn-premium-filled"><?php esc_html_e("Discover plans", "blog2social"); ?></a>
                     </div>
                 </div>
             </div>

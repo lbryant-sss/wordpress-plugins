@@ -30,29 +30,15 @@ __( 'Settings', 'elementor' );
 __( 'local', 'elementor' );
 __( 'Classes', 'elementor' );
 __( 'Type class name', 'elementor' );
-// translators: %s is the plural label of the provider (e.g "Existing classes").
-__( 'Existing %s', 'elementor' );
-// translators: %s is the label of the new class.
-__( 'Create "%s"', 'elementor' );
-// translators: %s is the singular label of css class provider (e.g "CSS Class").
-__( 'Create a new %s', 'elementor' );
+__(
+					'You’ve reached the limit of 50 classes. Please remove an existing one to create a new class.',
+					'elementor'
+				);
 __( 'States', 'elementor' );
 __( 'Has style', 'elementor' );
 __( 'Remove', 'elementor' );
 __( 'Rename', 'elementor' );
 __( 'Open CSS Class Menu', 'elementor' );
-__( 'Margin', 'elementor' );
-__( 'Padding', 'elementor' );
-__( 'Width', 'elementor' );
-__( 'Height', 'elementor' );
-__( 'Min width', 'elementor' );
-__( 'Min height', 'elementor' );
-__( 'Max width', 'elementor' );
-__( 'Max height', 'elementor' );
-__( 'Visible', 'elementor' );
-__( 'Hidden', 'elementor' );
-__( 'Auto', 'elementor' );
-__( 'Overflow', 'elementor' );
 __( 'Word spacing', 'elementor' );
 __( 'None', 'elementor' );
 __( 'Capitalize', 'elementor' );
@@ -91,6 +77,18 @@ __( 'Italic', 'elementor' );
 __( 'Font style', 'elementor' );
 __( 'Font size', 'elementor' );
 __( 'Font family', 'elementor' );
+__( 'Margin', 'elementor' );
+__( 'Padding', 'elementor' );
+__( 'Width', 'elementor' );
+__( 'Height', 'elementor' );
+__( 'Min width', 'elementor' );
+__( 'Min height', 'elementor' );
+__( 'Max width', 'elementor' );
+__( 'Max height', 'elementor' );
+__( 'Visible', 'elementor' );
+__( 'Hidden', 'elementor' );
+__( 'Auto', 'elementor' );
+__( 'Overflow', 'elementor' );
 __( 'Z-index', 'elementor' );
 __( 'Static', 'elementor' );
 __( 'Relative', 'elementor' );
@@ -98,6 +96,7 @@ __( 'Absolute', 'elementor' );
 __( 'Fixed', 'elementor' );
 __( 'Sticky', 'elementor' );
 __( 'Position', 'elementor' );
+__( 'Anchor offset', 'elementor' );
 __( 'Right', 'elementor' );
 __( 'Left', 'elementor' );
 __( 'Left', 'elementor' );

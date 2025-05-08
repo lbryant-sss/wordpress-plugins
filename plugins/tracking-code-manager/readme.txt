@@ -2,7 +2,7 @@
 Contributors: IntellyWP, Data443
 Tags: track google ad, profit google ad, map google ads, deliver content by ad, UTM management
 Requires at least: 2.7
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 2.4.0
 Requires PHP: 5.6
 

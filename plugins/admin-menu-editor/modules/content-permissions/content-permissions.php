@@ -321,7 +321,11 @@ class ContentPermissionsEnforcer {
 		//Collect the post type capabilities that map to core meta capabilities like "edit_post".
 		add_action('registered_post_type', function ($postTypeName, $postType = null) {
 			foreach (self::RELEVANT_POST_META_CAPS as $cap) {
-				if ( isset($postType->cap->$cap) && !isset($this->supportedPostCapsToMetaCaps[$postType->cap->$cap]) ) {
+				if (
+					isset($postType->cap->$cap)
+					&& is_string($postType->cap->$cap)
+					&& !isset($this->supportedPostCapsToMetaCaps[$postType->cap->$cap])
+				) {
 					$this->supportedPostCapsToMetaCaps[$postType->cap->$cap] = $cap;
 				}
 			}

@@ -118,7 +118,7 @@ $mandantData = $navbar->getData();
                         <?php if (!$isVideo) { ?>
                             <div class="info b2s-text-bold b2s-text-xl"><?php esc_html_e('Title', 'blog2social') ?>: <?php echo esc_html(B2S_Util::getTitleByLanguage($postData->post_title, $userLang)); ?></div>
                             <?php if (!isset($_GET['b2sPostType'])) { ?>
-                                <p class="info hidden-xs"># <?php echo esc_html($postData->ID); ?>  | <?php echo (isset($postStatus[trim(strtolower($postData->post_status))]) ? esc_html($postStatus[trim(strtolower($postData->post_status))]) : '' ) . ' ' . esc_html__('on blog', 'blog2social') . ': ' . B2S_Util::getCustomDateFormat($postData->post_date, substr(B2S_LANGUAGE, 0, 2)); ?></p>
+                                <p class="info hidden-xs"># <?php echo esc_html($postData->ID); ?>  | <?php echo (isset($postStatus[trim(strtolower($postData->post_status))]) ? esc_html($postStatus[trim(strtolower($postData->post_status))]) : '' ) . ' ' . esc_html__('on blog', 'blog2social') . ': ' .esc_html(B2S_Util::getCustomDateFormat($postData->post_date, substr(B2S_LANGUAGE, 0, 2))); ?></p>
                                 <?php
                             }
                         } else {
@@ -138,7 +138,7 @@ $mandantData = $navbar->getData();
                                     ?>
                                     <br>
                                     <?php
-                                    echo sprintf(esc_html__('Uploaded by %s on %s', 'blog2social'), get_the_author_meta('display_name', $postData->post_author), B2S_Util::getCustomDateFormat($postData->post_date, substr(B2S_LANGUAGE, 0, 2)))
+                                    echo esc_html(sprintf(esc_html__('Uploaded by %s on %s', 'blog2social'), get_the_author_meta('display_name', $postData->post_author), B2S_Util::getCustomDateFormat($postData->post_date, substr(B2S_LANGUAGE, 0, 2))))
                                     ?>
                                 </div>
                             </div> 
@@ -148,7 +148,7 @@ $mandantData = $navbar->getData();
                             <div class="clearfix"></div>
                             <br>
                             <div class="info">
-                                <?php echo sprintf(esc_html__('This is your saved draft from %s', 'blog2social'), esc_html($draftDate));
+                                <?php echo esc_html(sprintf(esc_html__('This is your saved draft from %s', 'blog2social'), esc_html($draftDate)));
                                 ?>
                                 <a class="btn-link b2s-text-underline deleteDraftBtn" data-b2s-draft-id="<?php echo esc_attr($draftId) ?>"><?php esc_html_e('delete', 'blog2social') ?></a>
                             </div>
@@ -410,7 +410,7 @@ $mandantData = $navbar->getData();
                                             <input type="hidden" id="action" name="action" value="b2s_save_ship_data">
                                             <input type='hidden' id='post_id' name="post_id" value='<?php echo (int) esc_attr(sanitize_text_field($_GET['postId'])); ?>'>
                                             <input type='hidden' id='user_timezone' name="user_timezone" value="<?php echo esc_attr($userTimeZoneOffset); ?>">
-                                            <input type='hidden' id='user_timezone_text' name="user_timezone_text" value="<?php echo esc_attr('Time zone', 'blog2social') . ': (UTC ' . B2S_Util::humanReadableOffset($userTimeZoneOffset) . ') ' . esc_attr($userTimeZone) ?>">
+                                            <input type='hidden' id='user_timezone_text' name="user_timezone_text" value="<?php echo esc_attr('Time zone', 'blog2social') . ': (UTC ' . esc_attr(B2S_Util::humanReadableOffset($userTimeZoneOffset)) . ') ' . esc_attr($userTimeZone) ?>">
                                             <input type='hidden' id="default_titel" name="default_titel" value="<?php echo esc_attr(addslashes(B2S_Util::getTitleByLanguage($postData->post_title, $userLang))); ?>">
                                             <input type="hidden" id="b2sChangeOgMeta" name="change_og_meta" value="0">
                                             <input type="hidden" id="b2sRelayAccountData" name="relay_account_data" value="<?php echo esc_attr(base64_encode($relayAccountDataHtml)); ?>">
@@ -538,7 +538,14 @@ $mandantData = $navbar->getData();
                                                 <br>
                                                 <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('affiliate')); ?>" class="btn btn-success center-block"><?php esc_html_e('Upgrade to SMART and above', 'blog2social') ?></a>
                                                 <br>
-                                                <center> <?php echo sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')); ?> </center>
+                                                <center> <?php echo wp_kses(sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')),
+                                                    array(
+                                                        'a' => array(
+                                                            'href' => array(),
+                                                            'target' => array(),
+                                                        ),
+                                                    ));
+                                                    ?> </center>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -558,7 +565,14 @@ $mandantData = $navbar->getData();
                                             <br><br>
                                             <?php esc_html_e('This allows you to adjust your network selection at any time and save it by clicking on "Save network selection".', 'blog2social') ?>
                                             <br><br>
-                                            <span class="b2s-bold"><?php esc_html_e('Note: ', 'blog2social') ?></span><?php echo sprintf(__('To define and save more network selections for your posting purposes, you can use the option "Multiple Network collections" (Premium feature) to define <a href="%s" target="_blank">multiple network collections in the social networks section</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('network_mandant_collection'))); ?>
+                                            <span class="b2s-bold"><?php esc_html_e('Note: ', 'blog2social') ?></span><?php echo wp_kses(sprintf(__('To define and save more network selections for your posting purposes, you can use the option "Multiple Network collections" (Premium feature) to define <a href="%s" target="_blank">multiple network collections in the social networks section</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('network_mandant_collection'))),
+                                                array(
+                                                    'a' => array(
+                                                        'href' => array(),
+                                                        'target' => array(),
+                                                    ),
+                                                ));
+                                             ?>
                                         </div>
                                     </div>
                                 </div>
@@ -604,7 +618,9 @@ $mandantData = $navbar->getData();
                                                 <br>
                                                 <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('affiliate')); ?>" class="btn btn-success center-block"><?php esc_html_e('Upgrade to SMART and above', 'blog2social') ?></a>
                                                 <br>
-                                                <center> <?php echo sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')); ?> </center>
+                                                <center> <?php echo wp_kses(sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')),
+                                                    array('a' => array('target' => array(), 'href' => array())));
+                                                    ?> </center>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -650,7 +666,9 @@ $mandantData = $navbar->getData();
                                                 <br>
                                                 <a target="_blank" href="<?php echo esc_url(B2S_Tools::getSupportLink('affiliate')); ?>" class="btn btn-success center-block"><?php esc_html_e('Upgrade to SMART and above', 'blog2social') ?></a>
                                                 <br>
-                                                <center> <?php echo sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')); ?> </center>
+                                                <center> <?php echo wp_kses(sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')),
+                                                        array('a' => array('href' => array(), 'target' => array())));
+                                                    ?> </center>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -906,7 +924,15 @@ $mandantData = $navbar->getData();
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <?php echo sprintf(__('When you connect Blog2Social with your Instagram account, you might get a notification from Instagram that a server from Germany in the Cologne area is trying to access your account. This is a general security notification due to the fact that the Blog2Social server is located in this area. This is an automatic process that is necessary to establish a connection to Instagram. Rest assured, that this is a common and regular security notice to keep your account safe. <a href="%s" target="_blank">More information: How to connect with Instagram.</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('instagram_auth_faq'))); ?>
+                                                    <?php echo wp_kses(sprintf(__('When you connect Blog2Social with your Instagram account, you might get a notification from Instagram that a server from Germany in the Cologne area is trying to access your account. This is a general security notification due to the fact that the Blog2Social server is located in this area. This is an automatic process that is necessary to establish a connection to Instagram. Rest assured, that this is a common and regular security notice to keep your account safe. <a href="%s" target="_blank">More information: How to connect with Instagram.</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('instagram_auth_faq'))),
+                                                    array(
+                                                        'a' => array(
+                                                            'href' => array(),
+                                                            'target' => array()
+                                                            )
+                                                        )
+                                                    );
+                                                    ?>
                                                     <button class="btn btn-primary pull-right b2s-add-network-continue-btn"><?php esc_html_e('Continue', 'blog2social'); ?></button>
                                                 </div>
                                             </div>
@@ -934,7 +960,15 @@ $mandantData = $navbar->getData();
                                                     <?php esc_html_e('3. Blog2Social has the permission to publish your posts.', 'blog2social') ?>
                                                     <br>
                                                     <br>
-                                                    <?php echo sprintf(__('You will find more information and detailed instructions in the <a href="%s" target="_blank">Instagram Business guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('instagram_business_auth_faq'))); ?>
+                                                    <?php echo wp_kses(sprintf(__('You will find more information and detailed instructions in the <a href="%s" target="_blank">Instagram Business guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('instagram_business_auth_faq'))),
+                                                        array(
+                                                            'a' => array(
+                                                                'href' => array(),
+                                                                'target' => array()
+                                                                )
+                                                            )
+                                                        );
+                                                    ?>
                                                     <button class="btn btn-primary pull-right b2s-add-network-continue-btn"><?php esc_html_e('Continue', 'blog2social'); ?></button>
                                                 </div>
                                             </div>
@@ -953,7 +987,15 @@ $mandantData = $navbar->getData();
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <?php echo sprintf(__('Please make sure to log in with your account which manages your pages and <a href="%s" target="_blank">follow this guide to select all your pages</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('fb_page_auth'))); ?>
+                                                    <?php echo wp_kses(sprintf(__('Please make sure to log in with your account which manages your pages and <a href="%s" target="_blank">follow this guide to select all your pages</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('fb_page_auth'))),
+                                                        array(
+                                                            'a' => array(
+                                                                'href' => array(),
+                                                                'target' => array()
+                                                                )
+                                                            )
+                                                        );
+                                                    ?>
                                                     <button class="btn btn-primary pull-right b2s-add-network-continue-btn"><?php esc_html_e('Continue', 'blog2social'); ?></button>
                                                 </div>
                                             </div>
@@ -972,7 +1014,15 @@ $mandantData = $navbar->getData();
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <?php echo sprintf(__('Please make sure to log in with your account which manages your groups and <a href="%s" target="_blank">follow this guide to select all your groups</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('fb_group_auth'))); ?>
+                                                    <?php echo wp_kses(sprintf(__('Please make sure to log in with your account which manages your groups and <a href="%s" target="_blank">follow this guide to select all your groups</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('fb_group_auth'))),
+                                                        array(
+                                                            'a' => array(
+                                                                'href' => array(),
+                                                                'target' => array()
+                                                                )
+                                                            )
+                                                        );
+                                                    ?>
                                                     <button class="btn btn-primary pull-right b2s-add-network-continue-btn"><?php esc_html_e('Continue', 'blog2social'); ?></button>
                                                 </div>
                                             </div>

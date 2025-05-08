@@ -709,7 +709,7 @@ class Ajax_Post {
                 'lang' => trim(strtolower(substr(B2S_LANGUAGE, 0, 2))));
 
             foreach ($post['b2s'] as $networkAuthId => $data) {
-
+               
                 if (!isset($data['network_id'])) {
                     continue;
                 }
@@ -815,7 +815,7 @@ class Ajax_Post {
                 );
 
                 if (isset($post['is_video']) && (int) $post['is_video'] == 0) {
-                    if ((isset($data['post_format']) && (int) $data['post_format'] == 1) || (int) $data['network_id'] == 12 || (int) $data['network_id'] == 36) { //Case IG
+                    if ((isset($data['post_format']) && (int) $data['post_format'] == 1) || (int) $data['network_id'] == 12 || (int) $data['network_id'] == 36) { //Case IG + TK
                         $multi_images = array();
                         if (isset($data['multi_image_1']) && !empty($data['multi_image_1'])) {
                             array_push($multi_images, $data['multi_image_1']);
@@ -826,7 +826,7 @@ class Ajax_Post {
                         if (isset($data['multi_image_3']) && !empty($data['multi_image_3'])) {
                             array_push($multi_images, $data['multi_image_3']);
                         }
-                        if ((int) $data['network_id'] == 12) {
+                        if ((int) $data['network_id'] == 12 || (int) $data['network_id'] == 36) {
                             if (isset($data['multi_image_4']) && !empty($data['multi_image_4'])) {
                                 array_push($multi_images, $data['multi_image_4']);
                             }

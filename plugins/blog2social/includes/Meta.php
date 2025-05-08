@@ -253,7 +253,13 @@ class B2S_Meta {
                         echo '<meta property="og:image:alt" content="' . esc_attr($image_alt) . '"/>' . "\n";
                     }
 
-                    echo '<meta property="og:image" content="' . esc_url(apply_filters('b2s_og_meta_image', $image)) . '"/>' . "\n" . $size;
+                    echo '<meta property="og:image" content="' . esc_url(apply_filters('b2s_og_meta_image', $image)) . '"/>' . "\n" . wp_kses($size, array(
+                        'meta' => array(
+                            'property' => array(),
+                            'content' => array()
+                        )
+                        )
+                    );
                 } else {
                     echo '<meta name="twitter:image" content="' . esc_url(apply_filters('b2s_card_meta_image', $image)) . '"/>' . "\n";
                     if (!empty($image_alt)) {

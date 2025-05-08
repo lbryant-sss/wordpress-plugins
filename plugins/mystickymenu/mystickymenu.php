@@ -3,7 +3,7 @@
 Plugin Name: My Sticky Bar
 Plugin URI: https://premio.io/
 Description: Create a notification bar for your website with My Sticky Bar. You can customize the design, collect leads, and enjoy other advanced features. You can also make your menu sticky using My Sticky Bar.
-Version: 2.7.9
+Version: 2.8.0
 Author: Premio
 Author URI: https://premio.io/downloads/mystickymenu/
 Text Domain: mystickymenu
@@ -12,7 +12,7 @@ License: GPLv3
 */
 
 defined('ABSPATH') or die("Cannot access pages directly.");
-define('MYSTICKY_VERSION', '2.7.9');
+define('MYSTICKY_VERSION', '2.8.0');
 define('MYSTICKYMENU_URL', plugins_url('/', __FILE__));  // Define Plugin URL
 define('MYSTICKYMENU_PATH', plugin_dir_path(__FILE__));  // Define Plugin Directory Path
 
@@ -22,6 +22,8 @@ require_once("welcome-bar.php");
 if( is_admin() ) {
     //include_once 'class-review-box.php';
     include_once 'class-upgrade-box.php';
+    include_once 'class-email-signup.php';
+
 }
 
 class MyStickyMenuBackend
@@ -36,7 +38,6 @@ class MyStickyMenuBackend
 		add_action( 'admin_enqueue_scripts', array( $this, 'mysticky_admin_script' ) );
 		add_filter( 'plugin_action_links_mystickymenu/mystickymenu.php', array( $this, 'mystickymenu_settings_link' )  );
 		add_action( 'activated_plugin', array( $this, 'mystickymenu_activation_redirect' ) );
-		add_action( "wp_ajax_sticky_menu_update_status", array($this, 'sticky_menu_update_status'));
 	    add_action( "wp_ajax_mystickymenu_update_popup_status", array($this, 'mystickymenu_popup_status'));
 		add_action( 'admin_footer', array( $this, 'mystickymenu_deactivate' ) );
 		add_action( 'wp_ajax_mystickymenu_plugin_deactivate', array( $this, 'mystickymenu_plugin_deactivate' ) );
@@ -123,32 +124,7 @@ class MyStickyMenuBackend
 		wp_die(); 
 	}
 
-    public function sticky_menu_update_status() {
-        if(!empty($_REQUEST['nonce']) && wp_verify_nonce($_REQUEST['nonce'], 'myStickymenu_update_nonce')) {
-            $status = self::sanitize_options($_REQUEST['status']);
-            $email = self::sanitize_options($_REQUEST['email']);
-
-            update_option("mystickymenu_update_message", 2);
-
-            if($status == 1) {
-                $url = 'https://premioapps.com/premio/signup/email.php';
-				$apiParams = [
-					'plugin' => 'myStickymenu',
-					'email'  => $email,
-				];
-
-				// Signup Email for Chaty
-				$apiResponse = wp_safe_remote_post($url, ['body' => $apiParams, 'timeout' => 15, 'sslverify' => true]);
-
-				if (is_wp_error($apiResponse)) {
-					wp_safe_remote_post($url, ['body' => $apiParams, 'timeout' => 15, 'sslverify' => false]);
-				}
-
-				$response['status'] = 1;
-            }
-        }
-        die;
-    }
+ 
 	
 
 	public function mystickymenu_delete_contact_lead(){
@@ -306,10 +282,7 @@ class MyStickyMenuBackend
 	
 	public function mystickymenu_activation_redirect( $plugin) {
 		if( $plugin == plugin_basename( __FILE__ ) ) {
-		    $is_shown = get_option("mystickymenu_update_message");
-		    if($is_shown === false) {
-		        add_option("mystickymenu_update_message", 1);
-            }
+		     
             $option = get_option("mystickymenu_intro_box");
             if($option === false) {
                 add_option("mystickymenu_intro_box", "show");
@@ -504,9 +477,9 @@ class MyStickyMenuBackend
 		
 		require_once MYSTICKYMENU_PATH . 'help.php';	
 
-		$is_shown = get_option("mystickymenu_update_message");
-        if($is_shown == 1) {
-			include_once MYSTICKYMENU_PATH . '/update.php';
+		$is_shown = myStickyMenu_SIGNUP_CLASS::check_modal_status();
+        if($is_shown) {
+			include_once MYSTICKYMENU_PATH . 'admin/email-signup.php';
 			return;
 		} 	
 		
@@ -558,11 +531,11 @@ class MyStickyMenuBackend
 		$mysticky_options['mysticky_disable_at_search'] = isset($mysticky_options['mysticky_disable_at_search']) ? $mysticky_options['mysticky_disable_at_search'] : '';
 		$mysticky_options['mysticky_disable_at_404'] = isset($mysticky_options['mysticky_disable_at_404']) ? $mysticky_options['mysticky_disable_at_404'] : '';
 		
-        $is_shown = get_option("mystickymenu_update_message");
-        if($is_shown == 1) {
-			
-			include_once MYSTICKYMENU_PATH . '/update.php';
-		} else {
+        $is_shown = myStickyMenu_SIGNUP_CLASS::check_modal_status();
+        if($is_shown) {
+			include_once MYSTICKYMENU_PATH . 'admin/email-signup.php';
+			return;
+		}  else {
 
             $option = get_option("mystickymenu_intro_box");
             if($option == "show") {
@@ -1043,10 +1016,10 @@ class MyStickyMenuBackend
 	
 	public function mystickystickymenu_admin_welcomebar_page() {
 		require_once MYSTICKYMENU_PATH . 'help.php';
-
-		$is_shown = get_option("mystickymenu_update_message");
-        if($is_shown == 1) {
-			include_once MYSTICKYMENU_PATH . '/update.php';
+ 
+		$is_shown = myStickyMenu_SIGNUP_CLASS::check_modal_status();
+        if($is_shown) {
+			include_once MYSTICKYMENU_PATH . 'admin/email-signup.php';
 			return;
 		} 
 		
@@ -1239,9 +1212,9 @@ class MyStickyMenuBackend
 	public function mystickystickymenu_admin_new_welcomebar_page() {	
 		require_once MYSTICKYMENU_PATH . 'help.php';	
 		
-		$is_shown = get_option("mystickymenu_update_message");
-        if($is_shown == 1) {
-			include_once MYSTICKYMENU_PATH . '/update.php';
+		$is_shown = myStickyMenu_SIGNUP_CLASS::check_modal_status();
+        if($is_shown) {
+			include_once MYSTICKYMENU_PATH . 'admin/email-signup.php';
 			return;
 		} 
 		
@@ -1277,30 +1250,33 @@ class MyStickyMenuBackend
 	}
 	public function mystickymenu_admin_widget_analytics_page(){
 		
-		$is_shown = get_option("mystickymenu_update_message");
-        if($is_shown == 1) {
-			include_once MYSTICKYMENU_PATH . '/update.php';			
-		} else {
+		$is_shown = myStickyMenu_SIGNUP_CLASS::check_modal_status();
+        if($is_shown) {
+			include_once MYSTICKYMENU_PATH . 'admin/email-signup.php';
+			return;
+		}  else {
 			include('mystickymenu-admin-widgetanalytics.php');
 		}
 		require_once MYSTICKYMENU_PATH . 'help.php';
 	}
 	
 	public function mystickymenu_recommended_plugins() {
-		$is_shown = get_option("mystickymenu_update_message");
-        if($is_shown == 1) {
-			include_once MYSTICKYMENU_PATH . '/update.php';			
-		} else {
+		$is_shown = myStickyMenu_SIGNUP_CLASS::check_modal_status();
+        if($is_shown) {
+			include_once MYSTICKYMENU_PATH . 'admin/email-signup.php';
+			return;
+		}  else {
 			include_once 'recommended-plugins.php';
 		}
 		require_once MYSTICKYMENU_PATH . 'help.php';
 	}
 	
 	public function mystickymenu_admin_upgrade_to_pro() {
-        $is_shown = get_option("mystickymenu_update_message");
-        if($is_shown == 1) {
-			include_once MYSTICKYMENU_PATH . '/update.php';			
-		} else {
+		$is_shown = myStickyMenu_SIGNUP_CLASS::check_modal_status();
+        if($is_shown) {
+			include_once MYSTICKYMENU_PATH . 'admin/email-signup.php';
+			return;
+		}  else {
 		
 			$pro_url = "https://go.premio.io/checkount/?edd_action=add_to_cart&download_id=2199&edd_options[price_id]=";
 			?>
@@ -1643,9 +1619,9 @@ class MyStickyMenuBackend
 	public function mystickymenu_admin_leads_page(){
 		global $wpdb;
 		require_once MYSTICKYMENU_PATH . 'help.php';
-		$is_shown = get_option("mystickymenu_update_message");
-        if($is_shown == 1) {
-			include_once MYSTICKYMENU_PATH . '/update.php';
+		$is_shown = myStickyMenu_SIGNUP_CLASS::check_modal_status();
+        if($is_shown) {
+			include_once MYSTICKYMENU_PATH . 'admin/email-signup.php';
 			return;
 		} 	
 		$where_search = '';
