@@ -505,6 +505,12 @@ class Utils {
 		return self::getSnippetsURL( '/tags' );
 	}
 
+	public static function getShouldUseAiSitesWithTesting() {
+		$with_tests =  defined( 'KUBIO_INCLUDE_TEST_AI_SITES' ) && \KUBIO_INCLUDE_TEST_AI_SITES;
+		$is_ai_site_editor = defined( 'KUBIO_IS_AI_SITE_EDITOR' ) && \KUBIO_IS_AI_SITE_EDITOR;
+		$with_tests = $with_tests || $is_ai_site_editor;
+		return $with_tests;
+	}
 	public static function isDebug() {
 		return defined( 'KUBIO_DEBUG' ) && KUBIO_DEBUG;
 	}
@@ -512,6 +518,7 @@ class Utils {
 	public static function isCLI() {
 		return defined( 'WP_CLI' ) && WP_CLI;
 	}
+
 
 
 	/**
@@ -825,6 +832,9 @@ class Utils {
 		return null;
 	}
 
+	public static function getIsAISiteEditor() {
+		return defined('KUBIO_IS_AI_SITE_EDITOR') &&  \KUBIO_IS_AI_SITE_EDITOR;
+	}
 	public static function getPageTemplate( $post_id ) {
 		if ( ! $post_id ) {
 			return null;

@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, tarekht, zenaulislam, aslamhasi
 Tags: elementor, elementor addons, elementor widgets, elementor templates, addons, elementor slider, elementor page builder, mega menu, addons for elementor, post grid, elements, header footer builder
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 2.8.6
+Stable tag: 2.8.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -309,7 +309,7 @@ This simple twitter widget for WordPress is simple and easy to use, and it allow
 In HT Mega pro version, there are tons of extra widgets which will be of great help when designing your website.
 
 * 43 Categories / Template Sets
-* 760+ Block Templates
+* 800+ Block Templates
 * 30+ Pro Widgets
 * Cross Domain Copy Paste
 * Live Copy Paste
@@ -529,6 +529,18 @@ Visit [HasThemes](https://hasthemes.com/) for more details about HTML, Shopify a
 
 == Changelog ==
 
+= Version 2.8.7 - Date: 2025-05-08 =
+* Added: [Autivio – Automobile Services Template Kit](https://library.wphtmega.com/autivio-automobile-template).
+* Added: [Luxorefi – Hotel Booking Template Kit](https://library.wphtmega.com/luxorefi-hotel-booking-template/).
+* Added: [Donarix – Charity & Nonprofit Template Kit](https://library.wphtmega.com/donarix-charity-template/).
+* Fixed: WPML compatibility issue in Theme Builder
+* Fixed: Default SVG icon size issue in the News Ticker Widget.
+* Fixed: Default SVG icon color issue in the Search Widget.
+* Fixed: PHP warning in the Section Title Widget.
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
+* Tested: Compatibility with the latest version of WordPress.
+
 = Version 2.8.6 - Date: 2025-04-20 =
 * Fixed: Audio Player not working issue in Audio Player Widget.
 * Fixed: Global visibility issue of the Scroll To Top Button in the Scroll To Top Module.
@@ -537,11 +549,12 @@ Visit [HasThemes](https://hasthemes.com/) for more details about HTML, Shopify a
 * Tested: Compatibility with the latest version of WordPress.
 * Tested: Compatibility with the latest version of Elementor.
 
-= Version 2.8.5 - Date: 2025-04-8 =
-* Added: [Clenix Cleaning Service – Elementor Template Kit](https://library.wphtmega.com/clenix-cleaning-service-template/).
-* Added: [Legality Law Firm - Elementor Template Kit](https://library.wphtmega.com/legality-law-firm-template/).
-* Added: [Realsto Real Estate - Elementor Template Kit](https://library.wphtmega.com/realsto-real-estate-template/).
-* Added: [Dentipai Medical – Elementor Template Kit](https://library.wphtmega.com/dentipai-medical-template/).
+= Version 2.8.5 - Date: 2025-04-08 =
+* Added: [Clenix – Cleaning Service Template Kit](https://library.wphtmega.com/clenix-cleaning-service-template/).
+* Added: [Legality – Law Firm Template Kit](https://library.wphtmega.com/legality-law-firm-template/).
+* Added: [Realsto – Real Estate Template Kit](https://library.wphtmega.com/realsto-real-estate-template/).
+* Added: [Dentipai – Medical & Dental Template Kit](https://library.wphtmega.com/dentipai-medical-template/).
+
 * Added: Option to update the select field arrow icon in the Contact Form 7 widget.
 * Added: Option to add category border and border radius in the Post Carousel widget.
 * Added: Option to add a social media container border for Style Six in the Team Member widget.

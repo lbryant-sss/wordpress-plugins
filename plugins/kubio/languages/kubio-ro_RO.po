@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-10T08:06:01+03:00\n"
+"POT-Creation-Date: 2025-05-05T17:34:55+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: \n"
 "X-Generator: WP-CLI 2.11.0\n"
@@ -84,9 +84,9 @@ msgstr "Articole despre %s"
 #: build/block-library/blocks/page-title/index.php:50
 #: lib/integrations/third-party-themes/templates-importer.php:285
 #: lib/kubio-editor.php:160
-#: lib/src/Core/Activation.php:424
-#: lib/src/Core/Activation.php:608
-#: lib/src/Core/KubioFrontPageRevertNotice.php:545
+#: lib/src/Core/Activation.php:427
+#: lib/src/Core/Activation.php:611
+#: lib/src/Core/KubioFrontPageRevertNotice.php:556
 #: build/editor/index.js:21
 msgid "Blog"
 msgstr "Blog"
@@ -532,7 +532,7 @@ msgstr "Construiește mai inteligent și mai rapid cu Kubio AI"
 msgid "Unauthorized"
 msgstr "Neautorizat"
 
-#: lib/AI/api.php:700
+#: lib/AI/api.php:873
 #: lib/AI/SDApi/KubioCloudSDApi.php:75
 msgid "No image was generated"
 msgstr "Nu a fost generată nicio imagine"
@@ -873,25 +873,25 @@ msgstr "Răspunsul AI este invalid"
 msgid "AI response is invalid ( Empty response )"
 msgstr "Răspunsul AI este invalid (răspuns gol)"
 
-#: lib/api/colibri.php:84
-#: lib/api/colibri.php:145
+#: lib/api/colibri.php:107
+#: lib/api/colibri.php:168
 msgid "Zip Export not supported."
 msgstr "Exportul Zip nu este suportat."
 
-#: lib/api/colibri.php:98
+#: lib/api/colibri.php:121
 msgid "Bad screenshot."
 msgstr "Captură de ecran proastă."
 
-#: lib/api/colibri.php:103
-#: lib/api/colibri.php:163
+#: lib/api/colibri.php:126
+#: lib/api/colibri.php:186
 msgid "Bad name."
 msgstr "Nume greșit."
 
-#: lib/api/colibri.php:158
+#: lib/api/colibri.php:181
 msgid "No id."
 msgstr "Fără ID."
 
-#: lib/api/colibri.php:218
+#: lib/api/colibri.php:241
 msgid "Unable to open export file (archive) for writing."
 msgstr "Imposibil de deschis fișierul de export (arhivă) pentru scriere."
 
@@ -1270,6 +1270,7 @@ msgstr "Descriptor parte de șablon"
 #: lib/full-site-editing/template-parts.php:140
 #: lib/full-site-editing/templates.php:21
 #: lib/full-site-editing/templates.php:259
+#: build/editor/index.js:51
 #: build/wp-global-styles/index.js:3
 msgid "Theme"
 msgstr "Temă"
@@ -1377,11 +1378,11 @@ msgid "Kubio color %s"
 msgstr "Culoare Kubio %s"
 
 #: lib/integrations/third-party-themes/templates-importer.php:323
-#: lib/src/Core/Activation.php:491
-#: lib/src/Core/Activation.php:594
-#: lib/src/Core/KubioFrontPageRevertNotice.php:470
-#: lib/src/Core/KubioFrontPageRevertNotice.php:519
-#: lib/src/Core/KubioFrontPageRevertNotice.php:532
+#: lib/src/Core/Activation.php:494
+#: lib/src/Core/Activation.php:597
+#: lib/src/Core/KubioFrontPageRevertNotice.php:481
+#: lib/src/Core/KubioFrontPageRevertNotice.php:530
+#: lib/src/Core/KubioFrontPageRevertNotice.php:543
 msgid "Home"
 msgstr "Prima pagină"
 
@@ -1466,6 +1467,7 @@ msgid "Hero accent"
 msgstr "Accentul secțiunii principale"
 
 #: lib/kubio-editor.php:141
+#: build/ai/index.js:3
 msgid "About"
 msgstr "Despre"
 
@@ -1834,7 +1836,7 @@ msgstr "A apărut o eroare la apelarea serverului de licențe Kubio: <code>%1$s<
 msgid "Current license key was removed! Reason: %s"
 msgstr "Cheia de licență actuală a fost înlăturată! Motiv: %s"
 
-#: lib/src/Core/Activation.php:544
+#: lib/src/Core/Activation.php:547
 msgid "Primary menu"
 msgstr "Meniu principal"
 
@@ -1868,28 +1870,28 @@ msgstr "După ce instalezi constructorul Kubio, toate editările de pe site se v
 msgid " Please use the button below to open the Kubio editor."
 msgstr "Te rog folosește butonul de mai jos pentru a deschide editorul Kubio."
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:699
+#: lib/src/Core/KubioFrontPageRevertNotice.php:710
 msgid "Keep the new home page?"
 msgstr "Păstrezi noua pagină de start?"
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:703
+#: lib/src/Core/KubioFrontPageRevertNotice.php:714
 msgid " We created a new home page for you. If you don't like it you can restore your previous home page."
 msgstr "Am creat o nouă pagină de pornire pentru tine. Dacă nu îți place, poți restaura pagina ta de pornire anterioară."
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:707
+#: lib/src/Core/KubioFrontPageRevertNotice.php:718
 msgid "Yes, keep my new home page"
 msgstr "Da, păstrează-mi noua pagină de pornire"
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:710
+#: lib/src/Core/KubioFrontPageRevertNotice.php:721
 msgid "Restore my previous home page"
 msgstr "Restabilește pagina mea de start anterioară"
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:737
+#: lib/src/Core/KubioFrontPageRevertNotice.php:748
 #: build/editor/index.js:1
 msgid "Your previous home page was showing the most recent blog posts. Are you sure you want to restore your previous home page?"
 msgstr "Pagina ta de start anterioară afișa cele mai recente articole de pe blog. Ești sigur că vrei să-ți restaurezi pagina de start anterioară?"
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:739
+#: lib/src/Core/KubioFrontPageRevertNotice.php:750
 #: build/editor/index.js:1
 msgid "Are you sure you want to restore your previous home page?"
 msgstr "Ești sigur că vrei să-ți restaurezi pagina de start anterioară?"

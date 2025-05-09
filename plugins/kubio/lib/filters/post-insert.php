@@ -1,6 +1,7 @@
 <?php
 
 use Kubio\Core\Importer;
+use Kubio\Core\Utils;
 
 function kubio_rest_pre_insert_import_assets( $prepared_post ) {
 
@@ -28,3 +29,11 @@ function kubio_import_assets_filter() {
 }
 
 add_action( 'init', 'kubio_import_assets_filter' );
+
+//when in site editor mode disable import download
+add_filter('kubio/importer/skip-remote-file-import', function($result) {
+	if(Utils::getIsAISiteEditor()) {
+		return true;
+	}
+	return $result;
+}, 9);

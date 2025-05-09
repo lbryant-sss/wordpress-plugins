@@ -17,47 +17,44 @@ const createFormData = (action, data = {}) => {
 // Function to check scan status
 async function checkScanStatus(scanId) {
     try {
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 5000);
         const response = await fetch(`${API_BASE_URL}/scan/${scanId}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${authToken}`
-            },
-            signal: controller.signal
+            }
         });
 
-        if (response.status === 200 || response.status === 201) {
-            const data = await response.json();
-            clearTimeout(timeout);
-            if (data.status === 'DONE') {
-                await fetch(cookiebot_account.ajax_url, {
-                    method: 'POST',
-                    body: createFormData('cookiebot_store_scan_details', {
-                        scan_id: scanId,
-                        scan_status: 'DONE'
-                    }),
-                    credentials: 'same-origin'
-                });
-                return;
-            }
-            // Store both scan ID and status
+        const data = await response.json();
+
+        if (data.status === 'DONE') {
             await fetch(cookiebot_account.ajax_url, {
                 method: 'POST',
                 body: createFormData('cookiebot_store_scan_details', {
                     scan_id: scanId,
-                    scan_status: 'IN_PROGRESS'
+                    scan_status: 'DONE'
                 }),
                 credentials: 'same-origin'
             });
+            return;
         }
-        if (!response.ok) {
+
+        // Store both scan ID and status
+        await fetch(cookiebot_account.ajax_url, {
+            method: 'POST',
+            body: createFormData('cookiebot_store_scan_details', {
+                scan_id: scanId,
+                scan_status: 'IN_PROGRESS'
+            }),
+            credentials: 'same-origin'
+        });
+
+        if (response.status !== 200 && response.status !== 202 && response.status !== 404 || data.status === 'FAILED') {
             await fetch(cookiebot_account.ajax_url, {
                 method: 'POST',
                 body: createFormData('cookiebot_store_scan_details', {
-                    scan_id: scanId ? scanId : '',
+                    scan_id: scanId,
                     scan_status: 'FAILED'
                 }),
                 credentials: 'same-origin'
@@ -171,7 +168,7 @@ async function fetchConfigurationDetails(configId) {
     }
 }
 
-function canReload() {
+function canReload() {    
     const itemStr = localStorage.getItem('dashboard_reload');
     const now = new Date();
     const numTimes = 3;
@@ -180,15 +177,15 @@ function canReload() {
 
     if (itemStr) {
         const item = JSON.parse(itemStr);
-
+    
         if (now.getTime() < item.exp) {
             if (item.count > numTimes) {
-                return false;
+                return false;    
             }
             count = item.count + 1;
         }
     }
-
+    
     const item = {
         count: count,
         exp: now.getTime() + ttl,
@@ -243,7 +240,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         const newUrl = new URL(window.location.href);
                         newUrl.searchParams.delete('uc_api_code');
                         newUrl.searchParams.delete('is_new_user');
-                        window.location.href = newUrl;
+                        window.location.href = newUrl;    
                     }
                     return;
                 } catch (error) {
@@ -353,8 +350,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
 
                 // Now that we have a CBID, initiate the scan
-                const controller = new AbortController();
-                const timeout = setTimeout(() => controller.abort(), 5000);
                 const scanResponse = await fetch(`${API_BASE_URL}/scan`, {
                     method: 'POST',
                     headers: {
@@ -365,36 +360,36 @@ document.addEventListener('DOMContentLoaded', async () => {
                     body: JSON.stringify({
                         domains: [formattedDomain],
                         configuration_id: configData.configuration_id
-                    }),
-                    signal: controller.signal
+                    })
                 });
 
-                if (scanResponse.status === 200 || scanResponse.status === 201) {
-                    const scanData = await scanResponse.json();
-                    clearTimeout(timeout);
-                    const scanId = scanData?.scan?.scan_id || scanData?.scan_id || scanData?.id;
-                    if (!scanId) {
-                        console.error('Scan response structure:', scanData);
-                        throw new Error('No scan ID received in response');
-                    }
+                const scanData = await scanResponse.json();
 
-                    // Store scan ID in WordPress without status initially
-                    await fetch(cookiebot_account.ajax_url, {
-                        method: 'POST',
-                        body: createFormData('cookiebot_store_scan_details', {
-                            scan_id: scanId ? scanId : ''
-                        }),
-                        credentials: 'same-origin'
-                    });
-
-                    // Start checking scan status
-                    await checkScanStatus(scanId);
+                // Check for scan ID in different possible response structures
+                const scanId = scanData?.scan?.scan_id || scanData?.scan_id || scanData?.id;
+                if (!scanId) {
+                    console.error('Scan response structure:', scanData);
+                    throw new Error('No scan ID received in response');
                 }
+
+                // Store scan ID in WordPress without status initially
+                await fetch(cookiebot_account.ajax_url, {
+                    method: 'POST',
+                    body: createFormData('cookiebot_store_scan_details', {
+                        scan_id: scanId
+                    }),
+                    credentials: 'same-origin'
+                });
+
+                // Start checking scan status
+                await checkScanStatus(scanId);
+
                 // fetch configuration details 
                 await fetchConfigurationDetails(configData.configuration_id);
 
             } catch (error) {
                 console.error('Failed to create configuration:', error);
+                return;
             }
         } else {
             // If we already have a CBID, check if there's an ongoing scan

@@ -2,7 +2,7 @@
 
 use IlluminateAgnostic\Arr\Support\Arr;
 use Kubio\Core\Importer;
-
+use Kubio\Core\Utils;
 
 /**
  * @param WP_Block_Parser_Block $block

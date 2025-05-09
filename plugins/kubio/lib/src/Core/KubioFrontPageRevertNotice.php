@@ -23,17 +23,24 @@ class KubioFrontPageRevertNotice
         add_action('wp_ajax_kubio_front_page_revert_action', array($this, 'onKeepKubioFrontPage'));
         add_action('wp_ajax_kubio_restore_front_page', array($this, 'onRestoreUserFrontPage'));
         add_action('rest_api_init', array($this, 'initRestApi'));
-
     }
+
+
 
 	public function getFeatureIsEnabled() {
 		return apply_filters( 'kubio/front_page_revert_notice_is_enabled', false );
 	}
 
+	public function getThemeHasStarterContentKeySet() {
+		$stylesheet = get_stylesheet();
+		$value = Flags::get( "with_starter_content_$stylesheet", false );
+		return $value;
+	}
 
 	public function getIsFreshSite() {
-		$value = get_option( 'fresh_site' );
-		return $value;
+		$is_fresh_site = get_option( 'fresh_site' );
+		$is_starter_content = $this->getThemeHasStarterContentKeySet();
+		return $is_fresh_site || $is_starter_content;
 	}
     public function initRestApi() {
         $namespace = 'kubio/v1';
@@ -347,6 +354,10 @@ class KubioFrontPageRevertNotice
 
 	public function backupUserUsedStarterContentFrontpage() {
 		if(!$this->getShouldBackupData()) {
+			return;
+		}
+
+		if(!$this->getThemeHasStarterContentKeySet()) {
 			return;
 		}
 
@@ -805,7 +816,7 @@ class KubioFrontPageRevertNotice
                             })
 
                     }
-					debugger;
+
                     let keepButtons = document.querySelectorAll('.kubio-front-page-revert-notice__footer__keep, .kubio-front-page-revert-notice__header__close');
                     if (keepButtons.length > 0) {
 						[...keepButtons].forEach(button => {

@@ -2,14 +2,14 @@
 # This file is distributed under the GPL3+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Kubio 2.6.0\n"
+"Project-Id-Version: Kubio 2.6.1\n"
 "Report-Msgid-Bugs-To: support@kubiobuilder.com\n"
 "Last-Translator: Kubio <support@kubiobuilder.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-10T08:06:01+03:00\n"
+"POT-Creation-Date: 2025-05-05T17:34:55+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: kubio\n"
@@ -84,9 +84,9 @@ msgstr ""
 #: build/block-library/blocks/page-title/index.php:50
 #: lib/integrations/third-party-themes/templates-importer.php:285
 #: lib/kubio-editor.php:160
-#: lib/src/Core/Activation.php:424
-#: lib/src/Core/Activation.php:608
-#: lib/src/Core/KubioFrontPageRevertNotice.php:545
+#: lib/src/Core/Activation.php:427
+#: lib/src/Core/Activation.php:611
+#: lib/src/Core/KubioFrontPageRevertNotice.php:556
 #: build/editor/index.js:21
 msgid "Blog"
 msgstr ""
@@ -532,7 +532,7 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
-#: lib/AI/api.php:700
+#: lib/AI/api.php:873
 #: lib/AI/SDApi/KubioCloudSDApi.php:75
 msgid "No image was generated"
 msgstr ""
@@ -873,25 +873,25 @@ msgstr ""
 msgid "AI response is invalid ( Empty response )"
 msgstr ""
 
-#: lib/api/colibri.php:84
-#: lib/api/colibri.php:145
+#: lib/api/colibri.php:107
+#: lib/api/colibri.php:168
 msgid "Zip Export not supported."
 msgstr ""
 
-#: lib/api/colibri.php:98
+#: lib/api/colibri.php:121
 msgid "Bad screenshot."
 msgstr ""
 
-#: lib/api/colibri.php:103
-#: lib/api/colibri.php:163
+#: lib/api/colibri.php:126
+#: lib/api/colibri.php:186
 msgid "Bad name."
 msgstr ""
 
-#: lib/api/colibri.php:158
+#: lib/api/colibri.php:181
 msgid "No id."
 msgstr ""
 
-#: lib/api/colibri.php:218
+#: lib/api/colibri.php:241
 msgid "Unable to open export file (archive) for writing."
 msgstr ""
 
@@ -1270,6 +1270,7 @@ msgstr ""
 #: lib/full-site-editing/template-parts.php:140
 #: lib/full-site-editing/templates.php:21
 #: lib/full-site-editing/templates.php:259
+#: build/editor/index.js:51
 #: build/wp-global-styles/index.js:3
 msgid "Theme"
 msgstr ""
@@ -1377,11 +1378,11 @@ msgid "Kubio color %s"
 msgstr ""
 
 #: lib/integrations/third-party-themes/templates-importer.php:323
-#: lib/src/Core/Activation.php:491
-#: lib/src/Core/Activation.php:594
-#: lib/src/Core/KubioFrontPageRevertNotice.php:470
-#: lib/src/Core/KubioFrontPageRevertNotice.php:519
-#: lib/src/Core/KubioFrontPageRevertNotice.php:532
+#: lib/src/Core/Activation.php:494
+#: lib/src/Core/Activation.php:597
+#: lib/src/Core/KubioFrontPageRevertNotice.php:481
+#: lib/src/Core/KubioFrontPageRevertNotice.php:530
+#: lib/src/Core/KubioFrontPageRevertNotice.php:543
 msgid "Home"
 msgstr ""
 
@@ -1466,6 +1467,7 @@ msgid "Hero accent"
 msgstr ""
 
 #: lib/kubio-editor.php:141
+#: build/ai/index.js:3
 msgid "About"
 msgstr ""
 
@@ -1834,7 +1836,7 @@ msgstr ""
 msgid "Current license key was removed! Reason: %s"
 msgstr ""
 
-#: lib/src/Core/Activation.php:544
+#: lib/src/Core/Activation.php:547
 msgid "Primary menu"
 msgstr ""
 
@@ -1868,28 +1870,28 @@ msgstr ""
 msgid " Please use the button below to open the Kubio editor."
 msgstr ""
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:699
+#: lib/src/Core/KubioFrontPageRevertNotice.php:710
 msgid "Keep the new home page?"
 msgstr ""
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:703
+#: lib/src/Core/KubioFrontPageRevertNotice.php:714
 msgid " We created a new home page for you. If you don't like it you can restore your previous home page."
 msgstr ""
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:707
+#: lib/src/Core/KubioFrontPageRevertNotice.php:718
 msgid "Yes, keep my new home page"
 msgstr ""
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:710
+#: lib/src/Core/KubioFrontPageRevertNotice.php:721
 msgid "Restore my previous home page"
 msgstr ""
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:737
+#: lib/src/Core/KubioFrontPageRevertNotice.php:748
 #: build/editor/index.js:1
 msgid "Your previous home page was showing the most recent blog posts. Are you sure you want to restore your previous home page?"
 msgstr ""
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:739
+#: lib/src/Core/KubioFrontPageRevertNotice.php:750
 #: build/editor/index.js:1
 msgid "Are you sure you want to restore your previous home page?"
 msgstr ""
@@ -2313,7 +2315,16 @@ msgid "Kubio AI: %s"
 msgstr ""
 
 #: build/ai/index.js:3
+msgid "Articles"
+msgstr ""
+
+#: build/ai/index.js:3
 msgid "Generating site structure"
+msgstr ""
+
+#. translators: %s: category name
+#: build/ai/index.js:3
+msgid "Generating articles for %s category"
 msgstr ""
 
 #: build/ai/index.js:3
@@ -4033,6 +4044,7 @@ msgstr ""
 #: build/controls/index.js:19
 #: build/controls/index.js:21
 #: build/controls/index.js:37
+#: build/editor/index.js:51
 #: build/format-library/index.js:1
 msgid "Reset"
 msgstr ""
@@ -4290,7 +4302,6 @@ msgstr ""
 
 #: build/block-library/index.js:1
 #: build/controls/index.js:19
-#: build/controls/index.js:35
 msgid "Select image"
 msgstr ""
 
@@ -4312,6 +4323,7 @@ msgid "Add new"
 msgstr ""
 
 #: build/block-library/index.js:3
+#: build/editor/index.js:51
 msgid "Update"
 msgstr ""
 
@@ -5279,6 +5291,7 @@ msgstr ""
 #: build/block-library/index.js:21
 #: build/block-library/index.js:25
 #: build/block-library/index.js:29
+#: build/editor/index.js:51
 #: build/third-party-blocks/index.js:1
 #: build/wp-global-styles/index.js:1
 msgid "Width"
@@ -6322,6 +6335,7 @@ msgstr ""
 #: build/block-library/index.js:19
 #: build/block-library/index.js:29
 #: build/block-library/index.js:37
+#: build/editor/index.js:51
 msgid "Height"
 msgstr ""
 
@@ -6474,6 +6488,7 @@ msgid "Gallery Properties"
 msgstr ""
 
 #: build/block-library/index.js:19
+#: build/editor/index.js:51
 msgid "Manage images"
 msgstr ""
 
@@ -9160,10 +9175,12 @@ msgid "Custom size"
 msgstr ""
 
 #: build/controls/index.js:19
+#: build/editor/index.js:51
 msgid "Change background image"
 msgstr ""
 
 #: build/controls/index.js:19
+#: build/editor/index.js:51
 msgid "Remove image"
 msgstr ""
 
@@ -9287,10 +9304,6 @@ msgstr ""
 #: build/controls/index.js:35
 #: build/editor/index.js:35
 msgid "Finish"
-msgstr ""
-
-#: build/controls/index.js:35
-msgid "Open Media Library"
 msgstr ""
 
 #: build/controls/index.js:35
@@ -10585,6 +10598,7 @@ msgstr ""
 
 #: build/editor/index.js:7
 #: build/editor/index.js:15
+#: build/editor/index.js:51
 msgid "Save"
 msgstr ""
 
@@ -10714,6 +10728,10 @@ msgid "The media items like photos and videos are provided by %s"
 msgstr ""
 
 #: build/editor/index.js:17
+msgid "Tailoring page structure"
+msgstr ""
+
+#: build/editor/index.js:17
 #: build/editor/index.js:37
 msgid "Preparing page content"
 msgstr ""
@@ -10725,10 +10743,6 @@ msgstr ""
 
 #: build/editor/index.js:19
 msgid "Theme colors"
-msgstr ""
-
-#: build/editor/index.js:19
-msgid "Tailoring page structure"
 msgstr ""
 
 #: build/editor/index.js:19
@@ -10766,6 +10780,11 @@ msgstr ""
 
 #: build/editor/index.js:19
 msgid "Preparing site structure"
+msgstr ""
+
+#. translators: %s: category name
+#: build/editor/index.js:19
+msgid "Generating section for articles in %s category"
 msgstr ""
 
 #: build/editor/index.js:19
@@ -11656,6 +11675,78 @@ msgstr ""
 
 #: build/editor/index.js:51
 msgid "Try it free on a separate test site."
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Content was invalid, try again or contact a dev"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Updated generated site"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Could not save generated site"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Saving generated Ai Site"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Front Page Index"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Industry"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Language"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "What to save:"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Save for all themes with current style"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Saving content and menu"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Saving content, menu and header + inner header"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Saving header + inner header and hero accent if present"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "!!!!!!!!!!!!!!Careful, this is not intended in most cases. This will save a different hero accent for this front page index"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Save Generated AI Site"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Add Pexels URL"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Pexels URL"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Add Pexels URLs"
+msgstr ""
+
+#: build/editor/index.js:51
+msgid "Add new Image"
 msgstr ""
 
 #: build/editor/index.js:51

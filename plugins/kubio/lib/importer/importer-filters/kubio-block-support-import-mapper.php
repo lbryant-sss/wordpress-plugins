@@ -3,9 +3,10 @@
 
 use IlluminateAgnostic\Arr\Support\Arr;
 use Kubio\Core\Importer;
+use Kubio\Core\Utils;
 
 function kubio_apply_block_support_import_mapper_import_asset( $block, $url_attr, $id_attr = null ) {
-	if ( $url_attr ) {
+	if ( $url_attr  ) {
 		$url_value = Arr::get( $block->attrs, $url_attr );
 
 		if ( Importer::isValidURLORHasKubioPlaceholder( $url_value ) ) {

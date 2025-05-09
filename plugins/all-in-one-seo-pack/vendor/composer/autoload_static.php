@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit16bba9cbcafe20dcd558e0ad162b1e0d
+class ComposerStaticInit8d8e35975d2942c7e19579e62ab38440
 {
     public static $prefixLengthsPsr4 = array (
         'A' => 
@@ -195,6 +195,7 @@ class ComposerStaticInit16bba9cbcafe20dcd558e0ad162b1e0d
         'AIOSEO\\Plugin\\Common\\SearchStatistics\\Api\\Listener' => __DIR__ . '/../..' . '/app/Common/SearchStatistics/Api/Listener.php',
         'AIOSEO\\Plugin\\Common\\SearchStatistics\\Api\\Request' => __DIR__ . '/../..' . '/app/Common/SearchStatistics/Api/Request.php',
         'AIOSEO\\Plugin\\Common\\SearchStatistics\\Api\\TrustToken' => __DIR__ . '/../..' . '/app/Common/SearchStatistics/Api/TrustToken.php',
+        'AIOSEO\\Plugin\\Common\\SearchStatistics\\IndexStatus' => __DIR__ . '/../..' . '/app/Common/SearchStatistics/IndexStatus.php',
         'AIOSEO\\Plugin\\Common\\SearchStatistics\\KeywordRankTracker' => __DIR__ . '/../..' . '/app/Common/SearchStatistics/KeywordRankTracker.php',
         'AIOSEO\\Plugin\\Common\\SearchStatistics\\Notices' => __DIR__ . '/../..' . '/app/Common/SearchStatistics/Notices.php',
         'AIOSEO\\Plugin\\Common\\SearchStatistics\\SearchStatistics' => __DIR__ . '/../..' . '/app/Common/SearchStatistics/SearchStatistics.php',
@@ -436,10 +437,10 @@ class ComposerStaticInit16bba9cbcafe20dcd558e0ad162b1e0d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit16bba9cbcafe20dcd558e0ad162b1e0d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit16bba9cbcafe20dcd558e0ad162b1e0d::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit16bba9cbcafe20dcd558e0ad162b1e0d::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit16bba9cbcafe20dcd558e0ad162b1e0d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8d8e35975d2942c7e19579e62ab38440::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8d8e35975d2942c7e19579e62ab38440::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit8d8e35975d2942c7e19579e62ab38440::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit8d8e35975d2942c7e19579e62ab38440::$classMap;
 
         }, null, ClassLoader::class);
     }

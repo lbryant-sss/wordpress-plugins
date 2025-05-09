@@ -385,6 +385,7 @@ add_action(
 						'kubioAIParallelCalls'           => apply_filters( 'kubio/ai/parallel-calls', 5 ),
 						'showInternalFeatures'           => defined( '\KUBIO_INTERNAL' ) && \KUBIO_INTERNAL,
 						'sectionStylesTags'              => array( 'shadow', 'flat', 'outlined', 'rounded', 'minimal' ),
+						'kubio_is_ai_site_editor'		 => Utils::getIsAISiteEditor(),
 						'activatedOnStage2'              => Flags::getSetting( 'activatedOnStage2', false ),
 						'aiStage2'                       => Flags::getSetting( 'aiStage2', false ),
 						'advancedMode'                   => Flags::getSetting( 'advancedMode', true ),

@@ -2,7 +2,7 @@
 Contributors: techlabpro1
 Donate link:
 Tags: team, team showcase, team slider, team plugin, team members
-Stable tag: 5.0.3
+Stable tag: 5.0.4
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -100,15 +100,15 @@ With this team showcase WordPress plugin, you can add your team members easily f
 
 Team Plugin Elementor addon comes with four widgets: Grid Layouts, List Layouts, Slider Layouts, and Isotope Filter Layouts. Each widget provides various layouts and customization options to help you easily create engaging team pages using Elementor.
 
-Just drag and drop your chosen widget, tweak some settings, and your professional team page will be ready! 
+Just drag and drop your chosen widget, tweak some settings, and your professional team page will be ready!
 
 [Live Demo](https://radiustheme.net/plugins/team-elementor/)
 
-**Grid Layouts:** It enables you to show team members in a row-column arrangement. It contains total of 17 layout variations, which are entirely responsive and offer extensive customization options. 
+**Grid Layouts:** It enables you to show team members in a row-column arrangement. It contains total of 17 layout variations, which are entirely responsive and offer extensive customization options.
 
-**List Layouts:** Display team members in a vertical list using this List Layouts Elementor widget. It features 2 layout styles that enable you to display team members and their information in vertical (single row) or horizontal list format to enhance the visual appeal. 
+**List Layouts:** Display team members in a vertical list using this List Layouts Elementor widget. It features 2 layout styles that enable you to display team members and their information in vertical (single row) or horizontal list format to enhance the visual appeal.
 
-**Slider Layouts:** This widget displays team members in a carousel-style format with sliding animations to keep visitors engaged. It comes with toal 11 layout styles to showcase team members with modern transitions. 
+**Slider Layouts:** This widget displays team members in a carousel-style format with sliding animations to keep visitors engaged. It comes with toal 11 layout styles to showcase team members with modern transitions.
 
 **Isotope Filter Layouts:** This widget enables you to show team members appealingly. It also allows users to filter team members based on predefined categories concurrently. It contains 11 responsive layout styles with interactive filtering options.
 
@@ -244,6 +244,12 @@ If you like The Post Grid Plugin, then consider checking out our other WordPress
 09. Elementor Team Grid layout
 
 == Changelog ==
+
+= 5.0.4  ( May 08, 2025 ) =
+* Fixed: Post Meta issue.
+
+= 5.0.4  ( April 28, 2025 ) =
+* Fixed: User Role Permission issue.
 
 = 5.0.3  ( April 23, 2025 ) =
 * Fixed: Team designations, departments gutenberg issue.

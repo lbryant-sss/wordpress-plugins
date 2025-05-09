@@ -668,7 +668,7 @@ class HTMega_Elementor_Widget_Newsticker extends Widget_Base {
                                 ],
                             ],
                             'default' => [
-                                'size' => 30,
+                                'size' => '',
                             ],
                             'selectors' => [
                                 '{{WRAPPER}} .breaking-news-default .breaking-news-nav button i' => 'font-size: {{SIZE}}{{UNIT}};',

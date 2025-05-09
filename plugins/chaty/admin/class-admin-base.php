@@ -83,7 +83,7 @@ class CHT_Admin_Base
 
         add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts'], 99); 
 
-        add_action("wp_ajax_update_popup_status", [$this, 'update_popup_status']);
+        add_action("wp_ajax_chaty_update_popup_status", [$this, 'update_popup_status']);
         add_action("wp_ajax_update_channel_setting", [$this, 'update_channel_setting']);
 
         /*

@@ -10,6 +10,9 @@
         <key name="coming_soon_page"/>
     </key>
   </admin-texts>
+  <custom-types>
+    <custom-type translate="1">htmega_theme_builder</custom-type>
+  </custom-types>
   <elementor-widgets>
     <widget name="htmega-tab-addons">
       <fields>

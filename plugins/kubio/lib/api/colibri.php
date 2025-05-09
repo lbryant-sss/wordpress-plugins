@@ -68,6 +68,29 @@ add_action(
 				},
 			)
 		);
+
+		register_rest_route(
+			$namespace,
+			'/update-generated-ai-site-content',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_update_generated_ai_site_content',
+				'permission_callback' => function () {
+					return current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+		register_rest_route(
+			$namespace,
+			'/update-generated-ai-site-content-by-style',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_update_generated_ai_site_content_by_style',
+				'permission_callback' => function () {
+					return current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
 	}
 );
 
@@ -132,7 +155,7 @@ function kubio_save_block_snippet( WP_REST_Request $request ) {
 
 	if ( 200 !== $response_code ) {
 		$errorMessage = wp_remote_retrieve_body( $response );
-		wp_send_json_error( $errorMessage );
+		wp_send_json_error( $errorMessage , $response_code);
 	}
 
 	$body = wp_remote_retrieve_body( $response );
@@ -194,8 +217,8 @@ function kubio_update_block_snippet( WP_REST_Request $request ) {
 	$response_code = wp_remote_retrieve_response_code( $response );
 
 	if ( 200 !== $response_code ) {
-		$errorMessage = wp_remote_retrieve_body();
-		wp_send_json_error( $errorMessage );
+		$errorMessage = wp_remote_retrieve_body($response);
+		wp_send_json_error( $errorMessage, $response_code);
 	}
 
 	$body = wp_remote_retrieve_body( $response );
@@ -270,6 +293,7 @@ function kubio_create_snippet_zip( $path, $snippet, $screenshot_data, $global_da
 	return $zip;
 }
 
+
 /**
  * This function searches for attributes that hold media files and adds them to the $uploaded_files stack.
  *
@@ -310,6 +334,85 @@ function kubio_parse_blocks_for_media_id_atts_and_stack( $block, $uploaded_files
 	}
 
 	return $uploaded_files;
+}
+function kubio_update_generated_ai_site_content( WP_REST_Request $request) {
+
+	$params          = $request->get_param( 'params' );
+
+	$apiKey = Flags::get( 'kubio_cloud_api_key' );
+
+	$request_url = 	Utils::getCloudURL( '/api/generated-ai-sites/update-content' );
+
+
+	$response = wp_remote_post(
+		$request_url,
+		array(
+			'headers' => array(
+				'X-Authorization' => $apiKey,
+				'accept'          => 'application/json',
+				'content-type'    => 'application/json',
+			),
+			'body'    => json_encode(
+				array(
+					'params' => array_merge($params,
+						array(
+							'testing' => true
+						)
+					),
+				)
+			),
+		)
+	);
+
+	$response_code = wp_remote_retrieve_response_code( $response );
+
+	if ( 200 !== $response_code ) {
+		$errorMessage = wp_remote_retrieve_body($response);
+		wp_send_json_error( $errorMessage, $response_code );
+	}
+
+	$body = wp_remote_retrieve_body( $response );
+
+	wp_send_json_success( json_decode( $body ) );
+}
+function kubio_update_generated_ai_site_content_by_style( WP_REST_Request $request) {
+
+	$params          = $request->get_param( 'params' );
+
+	$apiKey = Flags::get( 'kubio_cloud_api_key' );
+
+	$request_url = 	Utils::getCloudURL( '/api/generated-ai-sites-by-style/update-content' );
+
+	$response = wp_remote_post(
+		$request_url,
+		array(
+			'headers' => array(
+				'X-Authorization' => $apiKey,
+				'accept'          => 'application/json',
+				'content-type'    => 'application/json',
+			),
+			'body'    => json_encode(
+				array(
+					'params' => array_merge($params,
+						array(
+							'testing' => true
+						)
+					),
+				)
+			),
+		)
+	);
+
+	$response_code = wp_remote_retrieve_response_code( $response );
+
+	if ( 200 !== $response_code ) {
+		$errorMessage = wp_remote_retrieve_body($response);
+		wp_send_json_error( $errorMessage, $response_code );
+	}
+
+	$body = wp_remote_retrieve_body( $response );
+
+	wp_send_json_success( json_decode( $body ) );
 }
 
 function kubio_get_installed_theme() {

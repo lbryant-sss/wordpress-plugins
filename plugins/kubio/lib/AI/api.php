@@ -3,7 +3,9 @@
 use IlluminateAgnostic\Arr\Support\Arr;
 use Kubio\Core\Importer;
 use Kubio\Flags;
-
+use Kubio\Ai\ShopContent;
+use Kubio\Ai\BlogContent;
+use Kubio\Core\Utils;
 
 add_action(
 	'rest_api_init',
@@ -123,6 +125,18 @@ add_action(
 			array(
 				'methods'             => 'POST',
 				'callback'            => 'kubio_ai_get_default_homepage_sections_summaries_by_anchor',
+				'permission_callback' => function () {
+					return current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+
+		register_rest_route(
+			$namespace,
+			'/ai/get-generated-data-stored-in-the-database',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_get_generated_data_stored_in_the_database',
 				'permission_callback' => function () {
 					return current_user_can( 'edit_theme_options' );
 				},
@@ -295,6 +309,149 @@ add_action(
 				},
 			)
 		);
+
+
+		register_rest_route(
+			$namespace,
+			'/ai/generate-blog-structure',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_get_blog_structure',
+				'permission_callback' => function () {
+					return  current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+		register_rest_route(
+			$namespace,
+			'/ai/generate-blog-structure-and-articles',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_get_blog_structure_and_articles',
+				'permission_callback' => function () {
+					return  current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+		register_rest_route(
+			$namespace,
+			'/ai/get-category-articles',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_get_category_articles',
+				'permission_callback' => function () {
+					return  current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+
+		register_rest_route(
+			$namespace,
+			'/ai/save-articles-for-category',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_save_articles_by_category',
+				'permission_callback' => function () {
+					return  current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+
+		register_rest_route(
+			$namespace,
+			'/ai/translate-site-structure',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_get_translate_site_structure',
+				'permission_callback' => function () {
+					return  current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+
+		// shop generation
+		register_rest_route(
+			$namespace,
+			'/ai/generate-shop-structure',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_get_shop_structure',
+				'permission_callback' => function () {
+					return  current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+
+		register_rest_route(
+			$namespace,
+			'/ai/check-shop-categories-exist',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_check_shop_categories_exist',
+				'permission_callback' => function () {
+					return  current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+		register_rest_route(
+			$namespace,
+			'/ai/get-category-products',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_get_category_products',
+				'permission_callback' => function () {
+					return  current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+
+		register_rest_route(
+			$namespace,
+			'/ai/save-products-for-category',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_save_products_by_category',
+				'permission_callback' => function () {
+					return  current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+		register_rest_route(
+			$namespace,
+			'/ai/save-products-categories',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_save_products_categories',
+				'permission_callback' => function () {
+					return  current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+
+		register_rest_route(
+			$namespace,
+			'/ai/check-pages-exist',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_check_pages_exist',
+				'permission_callback' => function () {
+					return  current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+
+		register_rest_route(
+			$namespace,
+			'/ai/check-categories-exist',
+			array(
+				'methods'             => 'POST',
+				'callback'            => 'kubio_ai_check_categories_exist',
+				'permission_callback' => function () {
+					return  current_user_can( 'edit_theme_options' );
+				},
+			)
+		);
+
 	}
 );
 
@@ -431,6 +588,22 @@ function kubio_ai_get_default_homepage_sections_summaries_by_anchor( WP_REST_Req
 		)
 	);
 }
+function kubio_ai_get_generated_data_stored_in_the_database( WP_REST_Request $request ) {
+	$with_tests = Utils::getShouldUseAiSitesWithTesting();
+	return kubio_ai_call_api(
+		'v1/get-generated-data-stored-in-the-database',
+		array(
+			'siteContext'              => Arr::get( $request, 'siteContext', array() ),
+			'pageContext'              => Arr::get( $request, 'pageContext', array() ),
+			'pageTitle'                => Arr::get( $request, 'pageTitle', array() ),
+			'rules'                    => Arr::get( $request, 'rules', array() ),
+			'theme'                    => Arr::get( $request, 'theme', null ),
+			'importDesignIndex'        => Arr::get( $request, 'importDesignIndex', null ),
+			'colorSchemeAndTypography' => Arr::get( $request, 'colorSchemeAndTypography', null ),
+			'testing'				   => $with_tests
+		)
+	);
+}
 
 
 function kubio_ai_get_page_section_content( WP_REST_Request $request ) {
@@ -453,7 +626,7 @@ function kubio_ai_get_page_section_content( WP_REST_Request $request ) {
 
 function kubio_ai_get_default_homepage_sections_used_images( WP_REST_Request $request ) {
 	return kubio_ai_call_api(
-		'v1/get-default-homepage-sections-used-images',
+		'v2/get-default-homepage-sections-used-images',
 		array(
 			'siteContext'       => Arr::get( $request, 'siteContext', array() ),
 			'theme'             => Arr::get( $request, 'theme', null ),
@@ -463,7 +636,7 @@ function kubio_ai_get_default_homepage_sections_used_images( WP_REST_Request $re
 }
 function kubio_ai_update_default_homepage_sections_used_images( WP_REST_Request $request ) {
 	return kubio_ai_call_api(
-		'v1/update-default-homepage-sections-used-images',
+		'v2/update-default-homepage-sections-used-images',
 		array(
 			'siteContext'       => Arr::get( $request, 'siteContext', array() ),
 			'theme'             => Arr::get( $request, 'theme', null ),
@@ -718,6 +891,221 @@ function kubio_ai_sd_image_from_text( WP_REST_Request $request ) {
 	}
 
 	return $images[0]['url'];
+}
+
+
+function kubio_ai_get_blog_structure( WP_REST_Request $request ) {
+
+	$response = kubio_ai_call_api(
+		'v1/generate-blog-structure',
+		array(
+			'siteContext' => Arr::get( $request, 'siteContext', array() ),
+			'pageContext' => Arr::get( $request, 'pageContext', array() ),
+			'pageTitle'   => Arr::get( $request, 'pageTitle', '' ),
+		)
+	);
+
+	return $response;
+}
+function kubio_ai_get_blog_structure_and_articles( WP_REST_Request $request ) {
+
+	$response = kubio_ai_call_api(
+		'v1/generate-blog-structure-and-articles',
+		array(
+			'siteContext' => Arr::get( $request, 'siteContext', array() ),
+			'pageContext' => Arr::get( $request, 'pageContext', array() ),
+			'pageTitle'   => Arr::get( $request, 'pageTitle', '' ),
+		)
+	);
+
+	return $response;
+}
+
+function kubio_ai_get_translate_site_structure( WP_REST_Request $request ) {
+
+	$response = kubio_ai_call_api(
+		'v1/translate-blog-site-structure',
+		array(
+			'siteContext' => Arr::get( $request, 'siteContext', array() ),
+			'pageContext' => Arr::get( $request, 'pageContext', array() ),
+			'pageTitle'   => Arr::get( $request, 'pageTitle', '' ),
+			'pages'       => Arr::get( $request, 'pages', array() ),
+		)
+	);
+
+	return $response;
+}
+
+function kubio_ai_get_category_articles( WP_REST_Request $request ) {
+
+	return kubio_ai_call_api(
+		'v1/generate-blog-articles',
+		array(
+			'siteContext'   => Arr::get( $request, 'siteContext', array() ),
+			'pageContext'   => Arr::get( $request, 'pageContext', array() ),
+			'pageTitle'     => Arr::get( $request, 'pageTitle', '' ),
+			'categoryTitle' => Arr::get( $request, 'categoryTitle', array() ),
+		)
+	);
+}
+
+function kubio_ai_save_articles_by_category( WP_REST_Request $request ) {
+	$category_id = Arr::get( $request, 'categoryID', 0 );
+	$articles    = Arr::get( $request, 'articles', array() );
+
+	$posts = BlogContent::save_articles_by_category(
+		$articles,
+		$category_id
+	);
+
+	return array(
+		'content' => $posts,
+	);
+}
+
+function kubio_ai_check_pages_exist( WP_REST_Request $request ) {
+
+	$pages = Arr::get( $request, 'pages', array() );
+
+	$existing_pages = array();
+	if ( ! empty( $pages ) ) {
+		foreach ( $pages as $page ) {
+			// get wp post by title
+			$post = get_page_by_title( $page, OBJECT, 'page' );
+
+			if ( $post ) {
+				$existing_pages[ $page ] = array(
+					'id'    => $post->ID,
+					'ID'    => $post->ID,
+
+					'title' => array(
+						'rendered' => $post->post_title,
+						'raw'      => $post->post_title,
+					),
+					'link'  => get_post_permalink( $post ),
+				);
+			}
+		}
+	}
+
+	return array(
+		'content' => $existing_pages,
+	);
+}
+
+function kubio_ai_check_categories_exist( WP_REST_Request $request ) {
+	$categories          = Arr::get( $request, 'categories', array() );
+	$taxonomy            = Arr::get(
+		$request,
+		'taxonomy',
+		'category'
+	);
+	$existing_categories = array();
+	if ( ! empty( $categories ) ) {
+		foreach ( $categories as $category ) {
+			// get wp category by title
+			$cat = get_term_by( 'name', $category, $taxonomy );
+
+			if ( $cat ) {
+				$existing_categories[ $category ] = array(
+					'id'    => $cat->term_id,
+					'name'  => $cat->name,
+					'link'  => get_term_link( $cat->term_id, $taxonomy ),
+					'title' => array(
+						'rendered' => $cat->name,
+						'raw'      => $cat->name,
+					),
+				);
+
+			}
+		}
+	}
+
+	return array(
+		'content' => $existing_categories,
+	);
+}
+
+function kubio_ai_check_shop_categories_exist( WP_REST_Request $request ) {
+	$categories          = Arr::get( $request, 'categories', array() );
+	$taxonomy            = Arr::get(
+		$request,
+		'taxonomy',
+		'product_cat'
+	);
+	$existing_categories = array();
+	if ( ! empty( $categories ) ) {
+		foreach ( $categories as $category ) {
+			// get wp category by title
+			$cat = get_term_by( 'name', $category, $taxonomy );
+
+			if ( $cat ) {
+				$existing_categories[ $category ] = array(
+					'id'    => $cat->term_id,
+					'name'  => $cat->name,
+					'link'  => get_term_link( $cat->term_id, $taxonomy ),
+					'title' => array(
+						'rendered' => $cat->name,
+						'raw'      => $cat->name,
+					),
+				);
+
+			}
+		}
+	}
+
+	return array(
+		'content' => $existing_categories,
+	);
+}
+
+function kubio_ai_get_shop_structure( WP_REST_Request $request ) {
+	return kubio_ai_call_api(
+		'v1/generate-shop-structure',
+		array(
+			'siteContext' => Arr::get( $request, 'siteContext', array() ),
+			'pageContext' => Arr::get( $request, 'pageContext', array() ),
+			'pageTitle'   => Arr::get( $request, 'pageTitle', array() ),
+		)
+	);
+}
+
+function kubio_ai_get_category_products( WP_REST_Request $request ) {
+
+	return kubio_ai_call_api(
+		'v1/generate-shop-products',
+		array(
+			'siteContext'   => Arr::get( $request, 'siteContext', array() ),
+			'pageContext'   => Arr::get( $request, 'pageContext', array() ),
+			'pageTitle'     => Arr::get( $request, 'pageTitle', array() ),
+			'categoryTitle' => Arr::get( $request, 'categoryTitle', array() ),
+		)
+	);
+}
+
+function kubio_ai_save_products_by_category( WP_REST_Request $request ) {
+	$category_id = Arr::get( $request, 'categoryID', 0 );
+	$products    = Arr::get( $request, 'products', array() );
+
+	$posts = ShopContent::save_products_by_category(
+		$products,
+		$category_id
+	);
+
+	return array(
+		'content' => $posts,
+	);
+}
+function kubio_ai_save_products_categories( WP_REST_Request $request ) {
+	$categories = Arr::get( $request, 'categories', 0 );
+
+	$posts = ShopContent::save_products_categories(
+		$categories
+	);
+
+	return array(
+		'content' => $posts,
+	);
 }
 
 

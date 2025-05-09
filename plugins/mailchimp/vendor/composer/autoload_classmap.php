@@ -8,7 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Mailchimp_Admin' => $baseDir . '/includes/class-mailchimp-admin.php',
-    'Mailchimp_Block_Form_Submission' => $baseDir . '/includes/class-mailchimp-block-form-submission.php',
     'Mailchimp_Data_Encryption' => $baseDir . '/includes/class-mailchimp-data-encryption.php',
+    'Mailchimp_Form_Submission' => $baseDir . '/includes/class-mailchimp-form-submission.php',
     'Mailchimp_List_Subscribe_Form_Blocks' => $baseDir . '/includes/blocks/class-mailchimp-list-subscribe-form-blocks.php',
 );

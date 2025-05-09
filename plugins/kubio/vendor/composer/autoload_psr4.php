@@ -21,4 +21,5 @@ return array(
     'IlluminateAgnostic\\Str\\' => array($vendorDir . '/pragmarx/ia-str/src'),
     'IlluminateAgnostic\\Arr\\Tests\\' => array($vendorDir . '/pragmarx/ia-arr/tests'),
     'IlluminateAgnostic\\Arr\\' => array($vendorDir . '/pragmarx/ia-arr/src'),
+    'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
 );

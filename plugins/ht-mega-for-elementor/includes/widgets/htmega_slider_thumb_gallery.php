@@ -34,7 +34,7 @@ class HTMega_Elementor_Widget_Slider_Thumb_Gallery extends Widget_Base {
         ];
     }
     public function get_keywords() {
-        return [ 'thumbnail gallery', 'slider thumbnail gallery widget', 'thumbnails gallery', 'htmega', 'ht mega' ];
+        return [ 'thumbnail gallery', 'slider thumbnail gallery widget', 'thumbnails gallery','gallery','slider','thumbnail', 'htmega', 'ht mega' ];
     }
 
     public function get_help_url() {

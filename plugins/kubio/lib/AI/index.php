@@ -28,6 +28,9 @@ function kubio_ai_set_key( $key ) {
 }
 
 require_once __DIR__ . '/utils.php';
+require_once __DIR__ . '/Blog/index.php';
+require_once __DIR__ . '/PostImage.php';
+require_once __DIR__ . '/Shop/ShopContent.php';
 require_once __DIR__ . '/SDApi/KubioImageManager.php';
 require_once __DIR__ . '/SDApi/KubioCloudSDApi.php';
 require_once __DIR__ . '/SDApi/KubioImageGenerate.php';

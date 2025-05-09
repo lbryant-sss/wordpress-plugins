@@ -1208,7 +1208,7 @@ class HTMega_Elementor_Widget_Section_Title extends Widget_Base {
 
             
         <?php
-        if($settings['htmega_section_title_font_backround'] == 'yes' || !empty($settings['section_advancetitle_rotate']['size']) ||  !empty($settings['section_advancetitle_x_position']['size']) || !empty($settings['section_advancetitle_y_position']['size'])){ 
+        if( isset( $settings['htmega_section_title_font_backround'] ) && $settings['htmega_section_title_font_backround'] == 'yes' || !empty($settings['section_advancetitle_rotate']['size']) ||  !empty($settings['section_advancetitle_x_position']['size']) || !empty($settings['section_advancetitle_y_position']['size'])){ 
             $css_print = "";
             if($settings['htmega_section_title_font_backround'] == 'yes'){
 
@@ -1216,9 +1216,9 @@ class HTMega_Elementor_Widget_Section_Title extends Widget_Base {
     
             }
 
-            $x_position = $settings['section_advancetitle_x_position']['size'] ? floatval( $settings['section_advancetitle_x_position']['size'] ) : 0;
-            $y_position = $settings['section_advancetitle_y_position']['size'] ? floatval( $settings['section_advancetitle_y_position']['size'] ) : 0;
-            $rotate = $settings['section_advancetitle_rotate']['size'] ? floatval( $settings['section_advancetitle_rotate']['size'] ) : 0;
+            $x_position = isset( $settings['section_advancetitle_x_position']['size'] ) ? floatval( $settings['section_advancetitle_x_position']['size'] ) : 0;
+            $y_position = isset( $settings['section_advancetitle_y_position']['size'] ) ? floatval( $settings['section_advancetitle_y_position']['size'] ) : 0;
+            $rotate = isset( $settings['section_advancetitle_rotate']['size'] ) ? floatval( $settings['section_advancetitle_rotate']['size'] ) : 0;
             
             if(!empty($rotate) ||  !empty($x_position) || !empty($y_position)){
                 $css_print.= ".{$sectionid} .section-advancetitle-txt { transform: translate({$x_position}px, {$y_position}px) rotate({$rotate}deg);}";

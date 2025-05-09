@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HT Mega – Absolute Addons for Elementor.\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-20 03:36+0000\n"
+"POT-Creation-Date: 2025-05-08 03:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.7.2; wp-6.8\n"
+"X-Loco-Version: 2.7.2; wp-6.8.1\n"
 "X-Domain: htmega-addons"
 
 #: includes/widgets/htmega_twitter_feed.php:1684
@@ -44,7 +44,7 @@ msgstr ""
 msgid " months ago"
 msgstr ""
 
-#: includes/class.htmega.php:306
+#: includes/class.htmega.php:313
 msgid " or greater of <strong>HT Mega Pro</strong> for seamless compatibility."
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr ""
 
 #. 1: Plugin name (HTMega Addons), 2: Required plugin name (Elementor), 3: Minimum required version
 #. 1: Plugin name (HTMega Addons), 2: Required component name (PHP), 3: Minimum required version
-#: includes/class.htmega.php:378 includes/class.htmega.php:393
+#: includes/class.htmega.php:385 includes/class.htmega.php:400
 #, php-format
 msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
 msgstr ""
@@ -592,14 +592,14 @@ msgstr ""
 msgid "9:00 AM to 6:30 PM"
 msgstr ""
 
-#: includes/class.htmega.php:356
+#: includes/class.htmega.php:363
 msgid ""
 "<strong>HTMEGA Addons for Elementor</strong> requires \"<strong>"
 "Elementor</strong>\" plugin to be active. Please activate Elementor to "
 "continue."
 msgstr ""
 
-#: includes/class.htmega.php:363
+#: includes/class.htmega.php:370
 msgid ""
 "<strong>HTMEGA Addons for Elementor</strong> requires \"<strong>"
 "Elementor</strong>\" plugin to be active. Please install the Elementor "
@@ -5030,7 +5030,7 @@ msgid ""
 "Pro )</span>"
 msgstr ""
 
-#: includes/class.htmega.php:235
+#: includes/class.htmega.php:242
 #: admin/include/templates/dashboard-widget.php:94
 #: admin/include/settings-panel/includes/templates/dashboard-general.php:59
 #: admin/include/settings-panel/includes/templates/dashboard-general.php:63
@@ -5249,15 +5249,15 @@ msgstr ""
 msgid "Element Space"
 msgstr ""
 
-#: includes/class.htmega.php:380 admin/include/templates_list.php:42
+#: includes/class.htmega.php:387 admin/include/templates_list.php:42
 msgid "Elementor"
 msgstr ""
 
-#: includes/class.htmega.php:357
+#: includes/class.htmega.php:364
 msgid "Elementor Activate Now"
 msgstr ""
 
-#: includes/class.htmega.php:365
+#: includes/class.htmega.php:372
 msgid "Elementor Install Now"
 msgstr ""
 
@@ -5614,7 +5614,7 @@ msgstr ""
 msgid "Facebook"
 msgstr ""
 
-#: includes/class.htmega.php:236
+#: includes/class.htmega.php:243
 msgid "Facebook Group"
 msgstr ""
 
@@ -6072,7 +6072,7 @@ msgstr ""
 msgid "Get Support"
 msgstr ""
 
-#: includes/class.htmega.php:410
+#: includes/class.htmega.php:417
 #: admin/include/templates/library/templates.php:71
 #: admin/include/settings-panel/includes/classes/Onboarding.php:66
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:186
@@ -6347,7 +6347,7 @@ msgstr ""
 msgid "Hexagon"
 msgstr ""
 
-#: includes/class.htmega.php:268
+#: includes/class.htmega.php:275
 msgid ""
 "Hi there! Thanks a lot for choosing HT Mega Elementor Addons to take your "
 "WordPress website to the next level."
@@ -6676,7 +6676,7 @@ msgstr ""
 msgid "HT Header & Footer"
 msgstr ""
 
-#: includes/class.htmega.php:265
+#: includes/class.htmega.php:272
 msgid "HT Mega"
 msgstr ""
 
@@ -6715,7 +6715,7 @@ msgstr ""
 msgid "HT WPForms"
 msgstr ""
 
-#: includes/class.htmega.php:379 includes/class.htmega.php:394
+#: includes/class.htmega.php:386 includes/class.htmega.php:401
 #: includes/widgets_control.php:40
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:25
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:26
@@ -6820,7 +6820,7 @@ msgstr ""
 msgid "https://your-link.com/register"
 msgstr ""
 
-#: includes/class.htmega.php:275
+#: includes/class.htmega.php:282
 msgid "I already did"
 msgstr ""
 
@@ -7645,7 +7645,7 @@ msgid ""
 "be deleted."
 msgstr ""
 
-#: includes/class.htmega.php:269
+#: includes/class.htmega.php:276
 msgid ""
 "It would be greatly appreciated if you consider giving us a review in "
 "WordPress. These reviews help us improve the plugin further and make it "
@@ -8980,7 +8980,7 @@ msgstr ""
 msgid "May"
 msgstr ""
 
-#: includes/class.htmega.php:273
+#: includes/class.htmega.php:280
 msgid "Maybe Later"
 msgstr ""
 
@@ -9809,7 +9809,7 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: includes/class.htmega.php:271
+#: includes/class.htmega.php:278
 msgid "Ok, you deserve it!"
 msgstr ""
 
@@ -10422,7 +10422,7 @@ msgstr ""
 msgid "Photoshop"
 msgstr ""
 
-#: includes/class.htmega.php:395
+#: includes/class.htmega.php:402
 msgid "PHP"
 msgstr ""
 
@@ -11039,7 +11039,7 @@ msgstr ""
 msgid "Random"
 msgstr ""
 
-#: includes/class.htmega.php:237
+#: includes/class.htmega.php:244
 msgid "Rate the plugin"
 msgstr ""
 
@@ -11886,7 +11886,7 @@ msgstr ""
 msgid "Set the active item index. Default 1"
 msgstr ""
 
-#: includes/class.htmega.php:407 includes/widgets/htmega_scroll_image.php:268
+#: includes/class.htmega.php:414 includes/widgets/htmega_scroll_image.php:268
 #: extensions/ht-builder/widgets/bl_post_archive.php:42
 #: extensions/ht-menu/menu/templates.php:40
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:44

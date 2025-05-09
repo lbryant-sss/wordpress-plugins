@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-10T08:06:01+03:00\n"
+"POT-Creation-Date: 2025-05-05T17:34:55+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: \n"
 "X-Generator: WP-CLI 2.11.0\n"
@@ -84,9 +84,9 @@ msgstr "Postagens sobre %s"
 #: build/block-library/blocks/page-title/index.php:50
 #: lib/integrations/third-party-themes/templates-importer.php:285
 #: lib/kubio-editor.php:160
-#: lib/src/Core/Activation.php:424
-#: lib/src/Core/Activation.php:608
-#: lib/src/Core/KubioFrontPageRevertNotice.php:545
+#: lib/src/Core/Activation.php:427
+#: lib/src/Core/Activation.php:611
+#: lib/src/Core/KubioFrontPageRevertNotice.php:556
 #: build/editor/index.js:21
 msgid "Blog"
 msgstr "Blog"
@@ -532,7 +532,7 @@ msgstr "Construa de forma mais inteligente e rápida com Kubio AI"
 msgid "Unauthorized"
 msgstr "Não autorizado"
 
-#: lib/AI/api.php:700
+#: lib/AI/api.php:873
 #: lib/AI/SDApi/KubioCloudSDApi.php:75
 msgid "No image was generated"
 msgstr "Nenhuma imagem foi gerada"
@@ -873,25 +873,25 @@ msgstr "A resposta de IA é inválida"
 msgid "AI response is invalid ( Empty response )"
 msgstr "A resposta da IA é inválida (resposta vazia)"
 
-#: lib/api/colibri.php:84
-#: lib/api/colibri.php:145
+#: lib/api/colibri.php:107
+#: lib/api/colibri.php:168
 msgid "Zip Export not supported."
 msgstr "Exportação Zip não suportada."
 
-#: lib/api/colibri.php:98
+#: lib/api/colibri.php:121
 msgid "Bad screenshot."
 msgstr "Captura de tela ruim."
 
-#: lib/api/colibri.php:103
-#: lib/api/colibri.php:163
+#: lib/api/colibri.php:126
+#: lib/api/colibri.php:186
 msgid "Bad name."
 msgstr "Nome ruim."
 
-#: lib/api/colibri.php:158
+#: lib/api/colibri.php:181
 msgid "No id."
 msgstr "Sem ID."
 
-#: lib/api/colibri.php:218
+#: lib/api/colibri.php:241
 msgid "Unable to open export file (archive) for writing."
 msgstr "Não é possível abrir o arquivo de exportação (arquivo) para escrita."
 
@@ -1270,6 +1270,7 @@ msgstr "Slug da parte do modelo"
 #: lib/full-site-editing/template-parts.php:140
 #: lib/full-site-editing/templates.php:21
 #: lib/full-site-editing/templates.php:259
+#: build/editor/index.js:51
 #: build/wp-global-styles/index.js:3
 msgid "Theme"
 msgstr "Tema"
@@ -1377,11 +1378,11 @@ msgid "Kubio color %s"
 msgstr "Cor Kubio %s"
 
 #: lib/integrations/third-party-themes/templates-importer.php:323
-#: lib/src/Core/Activation.php:491
-#: lib/src/Core/Activation.php:594
-#: lib/src/Core/KubioFrontPageRevertNotice.php:470
-#: lib/src/Core/KubioFrontPageRevertNotice.php:519
-#: lib/src/Core/KubioFrontPageRevertNotice.php:532
+#: lib/src/Core/Activation.php:494
+#: lib/src/Core/Activation.php:597
+#: lib/src/Core/KubioFrontPageRevertNotice.php:481
+#: lib/src/Core/KubioFrontPageRevertNotice.php:530
+#: lib/src/Core/KubioFrontPageRevertNotice.php:543
 msgid "Home"
 msgstr "Início"
 
@@ -1466,6 +1467,7 @@ msgid "Hero accent"
 msgstr "Acento da seção principal"
 
 #: lib/kubio-editor.php:141
+#: build/ai/index.js:3
 msgid "About"
 msgstr "Sobre"
 
@@ -1834,7 +1836,7 @@ msgstr "Ocorreu um erro ao chamar o Servidor de Licenças da Kubio: <code>%1$s</
 msgid "Current license key was removed! Reason: %s"
 msgstr "A chave de licença atual foi removida! Motivo: %s"
 
-#: lib/src/Core/Activation.php:544
+#: lib/src/Core/Activation.php:547
 msgid "Primary menu"
 msgstr "Menu principal"
 
@@ -1868,28 +1870,28 @@ msgstr "Após instalar o construtor Kubio, toda a edição do site será feita u
 msgid " Please use the button below to open the Kubio editor."
 msgstr "Por favor, use o botão abaixo para abrir o editor Kubio."
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:699
+#: lib/src/Core/KubioFrontPageRevertNotice.php:710
 msgid "Keep the new home page?"
 msgstr "Manter a nova página inicial?"
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:703
+#: lib/src/Core/KubioFrontPageRevertNotice.php:714
 msgid " We created a new home page for you. If you don't like it you can restore your previous home page."
 msgstr "Criamos uma nova página inicial para você. Se não gostar, você pode restaurar sua página inicial anterior."
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:707
+#: lib/src/Core/KubioFrontPageRevertNotice.php:718
 msgid "Yes, keep my new home page"
 msgstr "Sim, manter minha nova página inicial"
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:710
+#: lib/src/Core/KubioFrontPageRevertNotice.php:721
 msgid "Restore my previous home page"
 msgstr "Restaurar minha página inicial anterior"
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:737
+#: lib/src/Core/KubioFrontPageRevertNotice.php:748
 #: build/editor/index.js:1
 msgid "Your previous home page was showing the most recent blog posts. Are you sure you want to restore your previous home page?"
 msgstr "Sua página inicial anterior estava mostrando as postagens de blog mais recentes. Você tem certeza de que deseja restaurar sua página inicial anterior?"
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:739
+#: lib/src/Core/KubioFrontPageRevertNotice.php:750
 #: build/editor/index.js:1
 msgid "Are you sure you want to restore your previous home page?"
 msgstr "Tem certeza de que deseja restaurar sua página inicial anterior?"

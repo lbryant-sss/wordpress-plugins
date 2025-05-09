@@ -154,16 +154,19 @@ class Activation {
 		return CustomizerImporter::themeHasModifiedOptions();
 	}
 
-
-	private function shouldRestoreDeactivationBackup( Backup $backup ) {
+	public function getDeactivationBackupKey() {
 		$template   = get_stylesheet();
 		$identifier = Flags::getSetting( "deactivation_backup_key.{$template}", null );
+		return $identifier;
+	}
+
+	private function shouldRestoreDeactivationBackup( Backup $backup ) {
+		$identifier = $this->getDeactivationBackupKey();
 		return $identifier && $backup->hasBackup( $identifier );
 	}
 
 	private function restoreDeactivationBackup( Backup $backup ) {
-		$template   = get_stylesheet();
-		$identifier = Flags::getSetting( "deactivation_backup_key.{$template}", null );
+		$identifier = $this->getDeactivationBackupKey();
 		$status     = $backup->restoreBackup( $identifier );
 
 		if ( ! is_wp_error( $status ) ) {

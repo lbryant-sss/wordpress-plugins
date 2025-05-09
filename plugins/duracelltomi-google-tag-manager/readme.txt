@@ -4,8 +4,8 @@ Donate link: https://gtm4wp.com/
 Tags: google tag manager, tag manager, gtm, google, adwords, google adwords, google ads, adwords remarketing, google ads remarketing, remarketing, google analytics, analytics, facebook ads, facebook remarketing, facebook pixel, google optimize, personalisation
 Requires at least: 3.4.0
 Requires PHP: 7.4
-Tested up to: 6.7
-Stable tag: 1.20.3
+Tested up to: 6.8
+Stable tag: 1.21
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -224,9 +224,23 @@ to report micro conversions and/or to serve ads only to visitors who spend more 
 
 == Changelog ==
 
+= 1.21 =
+
+!!! WARNING !!!
+Significant change in WooCommerce integration!
+Check your template whether it supports must have hook: woocommerce_thankyou
+
+* Added: new WooCommerce option that allows you to fire the view_item event during page load of a variable product using parent product data.
+* Added: item_group_id parameter includes the parent ID of a variable product in WooCommerce
+* Added: GTM4WP_WPFILTER_GET_CSP_NONCE (PHP constant) / gtm4wp_get_csp_nonce WordPress filter to add nonce to script tags supporting Content Security Policy (CSP) setups
+* Updated: purchase event is now fired on the woocommerce_thankyou event. This will move execution time behind consent state checks in most cases making the purchase event working in more cases
+* Updated: GTM4WP_WPFILTER_EEC_ORDER_DATA / gtm4wp_eec_order_data WordPress filter now has a second parameter passing the whole WC_Order object to the filter after the $order_data parameter
+* Updated: no view_cart or begin_checkout events will be triggered from the backend if there are no products in the cart. This prevents wrong data collection with themes not properly supporting WooCommerce hooks
+* Fix: load_plugin_textdomain() related PHP notice on admin page
+
 = 1.20.3 =
 
-Fix: notice "_load_textdomain_just_in_time was called incorrectly" - WordPress 6.7 compatibility
+* Fix: notice "_load_textdomain_just_in_time was called incorrectly" - WordPress 6.7 compatibility
 
 = 1.20.2 =
 
@@ -911,6 +925,10 @@ Please report all bugs found in my plugin using the [contact form on my website]
 * First beta release
 
 == Upgrade Notice ==
+
+= 1.21 =
+
+Important update for WooCommerce users, please check the full changelog!
 
 = 1.20.3 =
 
