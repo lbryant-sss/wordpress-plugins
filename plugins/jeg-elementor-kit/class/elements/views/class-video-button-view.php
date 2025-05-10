@@ -72,7 +72,7 @@ class Video_Button_View extends View_Abstract {
 			isset( $video_metadata['height'] ) ? 'height=' . esc_attr( $video_metadata['height'] ) : '',
 			isset( $video_metadata['width'] ) ? 'width=' . esc_attr( $video_metadata['width'] ) : '',
 			( isset( $this->attribute['sg_video_hosted']['url'] ) && ! empty( $this->attribute['sg_video_hosted']['url'] ) ) ? 'src=' . esc_url( $this->attribute['sg_video_hosted']['url'] ) : '',
-			( isset( $this->attribute['sg_video_hosted_poster']['url'] ) && ! empty( $this->attribute['sg_video_hosted_poster']['url'] ) ) ? 'poster=' . esc_attr( $this->attribute['sg_video_hosted_poster']['url'] ) : ''
+			( isset( $this->attribute['sg_video_hosted_poster']['url'] ) && ! empty( $this->attribute['sg_video_hosted_poster']['url'] ) ) ? 'poster=' . esc_url( $this->attribute['sg_video_hosted_poster']['url'] ) : ''
 		);
 
 		$video   = '<video ' . esc_attr( $video_attr ) . '></video>';

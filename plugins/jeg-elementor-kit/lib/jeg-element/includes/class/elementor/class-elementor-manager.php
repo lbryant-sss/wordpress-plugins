@@ -33,13 +33,8 @@ class Elementor_Manager {
 		add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'editor_style' ) );
 		add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'editor_script' ) );
 
-		if ( defined( 'ELEMENTOR_VERSION' ) && version_compare( ELEMENTOR_VERSION, '3.5.0', '<' ) ) {
-			add_action( 'elementor/widgets/widgets_registered', array( $this, 'register_module' ) );
-			add_action( 'elementor/controls/controls_registered', array( $this, 'register_control' ) );
-		} else {
-			add_action( 'elementor/widgets/register', array( $this, 'register_module' ) );
-			add_action( 'elementor/controls/register', array( $this, 'register_control' ) );
-		}
+		add_action( 'elementor/widgets/register', array( $this, 'register_module' ) );
+		add_action( 'elementor/controls/register', array( $this, 'register_control' ) );
 	}
 
 	/**
@@ -69,11 +64,7 @@ class Elementor_Manager {
 		);
 
 		foreach ( $controls as $type => $classname ) {
-			if ( defined( 'ELEMENTOR_VERSION' ) && version_compare( ELEMENTOR_VERSION, '3.5.0', '<' ) ) {
-				\Elementor\Plugin::instance()->controls_manager->register_control( $type, new $classname() );
-			} else {
-				\Elementor\Plugin::instance()->controls_manager->register( new $classname() );
-			}
+			\Elementor\Plugin::instance()->controls_manager->register( new $classname() );
 		}
 	}
 
@@ -108,11 +99,7 @@ class Elementor_Manager {
 			if ( isset( $element['elementor'] ) ) {
 				$class = $element['elementor'];
 				if ( class_exists( $class ) ) {
-					if ( defined( 'ELEMENTOR_VERSION' ) && version_compare( ELEMENTOR_VERSION, '3.5.0', '<' ) ) {
-						$widgets_manager->register_widget_type( new $class() );
-					} else {
-						$widgets_manager->register( new $class() );
-					}
+					$widgets_manager->register( new $class() );
 				}
 			}
 		}

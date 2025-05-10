@@ -1,4 +1,4 @@
-# Copyright (C) 2024 advanced-popups
+# Copyright (C) 2025 advanced-popups
 # This file is distributed under the same license as the advanced-popups package.
 msgid ""
 msgstr ""

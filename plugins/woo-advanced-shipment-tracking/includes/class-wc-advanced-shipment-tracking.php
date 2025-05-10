@@ -230,14 +230,14 @@ class WC_Advanced_Shipment_Tracking_Actions {
 						esc_html( wp_create_nonce( 'delete-tracking-item' ) ),
 						sprintf(
 							/* translators: 1: shipping date, 2: source info */
-							__( 'Shipped on %1$s%2$s', 'woo-advanced-shipment-tracking' ),
+							__( 'Shipped on %1$s%2$s ', 'woo-advanced-shipment-tracking' ),
 							date_i18n( get_option( 'date_format' ), isset( $tracking_item['date_shipped'] ) ? $tracking_item['date_shipped'] : '' ),
 							( ! empty( $user_display ) )
 							? sprintf(
 								// translators: 1: user name, 2: source name
-								__( ' by %1$s%2$s', 'woo-advanced-shipment-tracking' ),
+								__( ' by %1$s%2$s ', 'woo-advanced-shipment-tracking' ),
 								esc_html( $user_display ),
-								! empty( $source_label ) ? sprintf( __( ' (Added via %s)', 'woo-advanced-shipment-tracking' ), esc_html( $source_label ) ) : ''
+								! empty( $source_label ) ? sprintf( __( ' (Added via %s) ', 'woo-advanced-shipment-tracking' ), esc_html( $source_label ) ) : ''
 							)
 							: ''
 						)
@@ -257,14 +257,14 @@ class WC_Advanced_Shipment_Tracking_Actions {
 						esc_attr( $order_id ),
 						sprintf(
 							/* translators: 1: shipping date, 2: source info */
-							__( 'Shipped on %1$s%2$s', 'woo-advanced-shipment-tracking' ),
+							__( 'Shipped on %1$s%2$s ', 'woo-advanced-shipment-tracking' ),
 							date_i18n( get_option( 'date_format' ), isset( $tracking_item['date_shipped'] ) ? $tracking_item['date_shipped'] : '' ),
 							( ! empty( $user_display ) )
 							? sprintf(
 								// translators: 1: user name, 2: source name
-								__( ' by %1$s%2$s', 'woo-advanced-shipment-tracking' ),
+								__( ' by %1$s%2$s ', 'woo-advanced-shipment-tracking' ),
 								esc_html( $user_display ),
-								! empty( $source_label ) ? sprintf( __( ' (Added via %s)', 'woo-advanced-shipment-tracking' ), esc_html( $source_label ) ) : ''
+								! empty( $source_label ) ? sprintf( __( ' (Added via %s) ', 'woo-advanced-shipment-tracking' ), esc_html( $source_label ) ) : ''
 							)
 							: ''
 						)
@@ -335,7 +335,7 @@ class WC_Advanced_Shipment_Tracking_Actions {
 				<?php 
 				/* translators: 1: shipping date */
 				$shipped_date = date_i18n( get_option( 'date_format' ), $item['date_shipped'] );
-				echo esc_html( sprintf( __( 'Shipped on %1s', 'woo-advanced-shipment-tracking' ), $shipped_date ) );
+				echo esc_html( sprintf( __( 'Shipped on %1s ', 'woo-advanced-shipment-tracking' ), $shipped_date ) );
 
 				// Check if there's a user ID associated with this tracking item
 				if ( isset( $item['user_id'] ) ) {
@@ -354,14 +354,14 @@ class WC_Advanced_Shipment_Tracking_Actions {
 						if ( ! empty( $item['source'] ) ) {
 							// Convert source to human-readable format (e.g., 'csv_upload' → 'Csv Upload')
 							$source_label = sprintf( 
-								__( ' (Added via %s)', 'woo-advanced-shipment-tracking' ), 
+								__( ' (Added via %s) ', 'woo-advanced-shipment-tracking' ), 
 								str_replace( '_', ' ', $item['source'] )
 							);
 						}
 
 						// Display "by John Doe (Added via Source)"
 						/* translators: 1: display name, 2: source text */
-						echo esc_html( sprintf( __( ' by %1s%2s', 'woo-advanced-shipment-tracking' ), $display_name, $source_label ) );
+						echo esc_html( sprintf( __( ' by %1s%2s ', 'woo-advanced-shipment-tracking' ), $display_name, $source_label ) );
 					}
 				}
 				?>
@@ -639,6 +639,52 @@ class WC_Advanced_Shipment_Tracking_Actions {
 			$src = wc_advanced_shipment_tracking()->plugin_dir_url() . 'assets/images/icon-default.png';
 		}
 		return $src;
+	}
+
+	/**
+	 * Order Tracking Save
+	 *
+	 * Function for saving tracking items
+	 */
+	public function save_meta_box( $post_id, $post ) {
+		
+		// Check the nonce.
+		if ( empty( $_POST['woocommerce_meta_nonce'] ) || ! wp_verify_nonce( wp_unslash( wc_clean( $_POST['woocommerce_meta_nonce'] ) ), 'woocommerce_save_data' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			return;
+		}
+		
+		$tracking_provider = isset( $_POST['tracking_provider'] ) ? wc_clean( $_POST['tracking_provider'] ) : '';
+		$tracking_number = isset( $_POST['tracking_number'] ) ? wc_clean( $_POST['tracking_number'] ) : '';
+		
+		if ( strlen( $tracking_number ) > 0 && '' != $tracking_provider ) {	
+			
+			$tracking_product_code = isset( $_POST['tracking_product_code'] ) ? wc_clean( $_POST['tracking_product_code'] ) : '';
+			$date_shipped = isset( $_POST['date_shipped'] ) ? wc_clean( $_POST['date_shipped'] ) : '';
+			$tracking_number = isset( $_POST['tracking_number'] ) ? wc_clean( $_POST['tracking_number'] ) : '';
+			$tracking_provider = isset( $_POST['tracking_provider'] ) ? wc_clean( $_POST['tracking_provider'] ) : '';
+			$order = new WC_Order($post_id);
+			
+			$args = array(
+				'tracking_provider'        => $tracking_provider,
+				'tracking_number'          => $tracking_number,
+				'tracking_product_code'    => $tracking_product_code,
+				'date_shipped'             => $date_shipped,
+			);
+			
+			$args = apply_filters( 'tracking_info_args', $args, $_POST, $post_id );
+			
+			if ( isset( $_POST['change_order_to_shipped'] ) ) {
+				if ( 'change_order_to_shipped' == $_POST['change_order_to_shipped'] ) {
+					$args['status_shipped'] = 1;														
+				} elseif ( 'change_order_to_partial_shipped' == $_POST['change_order_to_shipped'] ) {
+					$args['status_shipped'] = 2;	
+				}
+			} else {
+				$args['status_shipped'] = 0;
+			}
+			
+			$this->add_tracking_item( $post_id, $args );							
+		}
 	}
 	
 	/**

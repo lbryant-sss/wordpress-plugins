@@ -4,13 +4,13 @@
  * Plugin Name: Advanced Shipment Tracking for WooCommerce 
  * Plugin URI: https://www.zorem.com/products/woocommerce-advanced-shipment-tracking/ 
  * Description: Add shipment tracking information to your WooCommerce orders and provide customers with an easy way to track their orders. Shipment tracking Info will appear in customers accounts (in the order panel) and in WooCommerce order complete email. 
- * Version: 3.8.0
+ * Version: 3.8.1
  * Author: zorem
  * Author URI: https://www.zorem.com 
  * License: GPL-2.0+
  * License URI: 
  * Text Domain: woo-advanced-shipment-tracking 
- * WC tested up to: 9.8.1
+ * WC tested up to: 9.8.4
  * Requires Plugins: woocommerce
 */
 
@@ -21,7 +21,7 @@ class Zorem_Woocommerce_Advanced_Shipment_Tracking {
 	 *
 	 * @var string
 	 */
-	public $version = '3.8.0';
+	public $version = '3.8.1';
 	public $plugin_file;
 	public $plugin_path;
 	public $table;
@@ -216,6 +216,7 @@ class Zorem_Woocommerce_Advanced_Shipment_Tracking {
 		add_action( 'woocommerce_my_account_my_orders_actions', array( $this->actions, 'add_column_my_account_orders_ast_track_column' ), 10, 2 );
 
 		add_action( 'wp_ajax_wc_shipment_tracking_delete_item', array( $this->actions, 'meta_box_delete_tracking' ) );
+		add_action( 'woocommerce_process_shop_order_meta', array( $this->actions, 'save_meta_box' ), 0, 2 );
 		add_action( 'wp_ajax_wc_shipment_tracking_save_form', array( $this->actions, 'save_meta_box_ajax' ) );
 
 		add_action( 'wp_ajax_reassign_order_status', array( $this, 'reassign_order_status' ) );

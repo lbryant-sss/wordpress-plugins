@@ -187,8 +187,8 @@ class Element {
 					),
 				),
 				'selectors'   => array(
-					'{{WRAPPER}}:not(.e-transform) > .elementor-widget-container' => '-moz-transform: rotate({{SIZE}}deg); -webkit-transform: rotate({{SIZE}}deg); -o-transform: rotate({{SIZE}}deg); -ms-transform: rotate({{SIZE}}deg); transform: rotate({{SIZE}}deg);',
-					'{{WRAPPER}}.e-transform > .elementor-widget-container' => '--e-transform-rotateZ: {{SIZE}}deg;',
+					'{{WRAPPER}}:not(.e-transform)' . jkit_optimized_markup_class() => '-moz-transform: rotate({{SIZE}}deg); -webkit-transform: rotate({{SIZE}}deg); -o-transform: rotate({{SIZE}}deg); -ms-transform: rotate({{SIZE}}deg); transform: rotate({{SIZE}}deg);',
+					'{{WRAPPER}}.e-transform' . jkit_optimized_markup_class()       => '--e-transform-rotateZ: {{SIZE}}deg;',
 				),
 				'condition'   => array(
 					'_transform_rotate_popover!' => 'transform',
@@ -222,8 +222,8 @@ class Element {
 				'description' => esc_html__( 'The blur effect will be set on the widget container. Make sure to set background to transparent to see the blur effect.', 'jeg-elementor-kit' ),
 				'selectors'   => array(
 					/** `--jkit-option-enabled` is to prevent CSS rendered as an option that does not have a value */
-					'{{WRAPPER}}.elementor-widget .elementor-widget-container, {{WRAPPER}}.elementor-widget .elementor-widget-container > *' => 'position: relative; --jkit-option-enabled: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}}.elementor-widget .elementor-widget-container::before' => 'content: ""; width: 100%; height: 100%; position: absolute; left: 0; top: 0; -webkit-backdrop-filter: blur({{SIZE}}{{UNIT}}); backdrop-filter: blur({{SIZE}}{{UNIT}}); border-radius: inherit; background-color: inherit;',
+					'{{WRAPPER}}.elementor-widget' . jkit_optimized_markup_class() . ', {{WRAPPER}}.elementor-widget' . jkit_optimized_markup_class() . ' > *' => 'position: relative; --jkit-option-enabled: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}}.elementor-widget' . jkit_optimized_markup_class() . '::before' => 'content: ""; width: 100%; height: 100%; position: absolute; left: 0; top: 0; -webkit-backdrop-filter: blur({{SIZE}}{{UNIT}}); backdrop-filter: blur({{SIZE}}{{UNIT}}); border-radius: inherit; background-color: inherit;',
 				),
 			)
 		);

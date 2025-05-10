@@ -1256,7 +1256,7 @@ class WC_Advanced_Shipment_Tracking_Admin {
 				'status_shipped'	=> $status_shipped,
 			);
 			
-			$args['source'] = 'csv';
+			$args['source'] = __( ' csv ', 'woo-advanced-shipment-tracking' );
 
 			$tracking_item = $wast->add_tracking_item( $order_id, $args );
 

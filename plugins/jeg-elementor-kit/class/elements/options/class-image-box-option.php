@@ -180,7 +180,7 @@ class Image_Box_Option extends Option_Abstract {
 			'prefix_class' => 'jkit-equal-height-',
 			'selectors'    => array(
 				'custom' => array(
-					'{{WRAPPER}}.jkit-equal-height-enable, {{WRAPPER}}.jkit-equal-height-enable .elementor-widget-container, {{WRAPPER}}.jkit-equal-height-enable .jeg-elementor-kit.jkit-image-box, {{WRAPPER}}.jkit-equal-height-enable .jeg-elementor-kit.jkit-image-box .image-box-body .body-inner' => 'height: 100%;',
+					'{{WRAPPER}}.jkit-equal-height-enable, {{WRAPPER}}.jkit-equal-height-enable' . jkit_optimized_markup_class() . ', {{WRAPPER}}.jkit-equal-height-enable .jeg-elementor-kit.jkit-image-box, {{WRAPPER}}.jkit-equal-height-enable .jeg-elementor-kit.jkit-image-box .image-box-body .body-inner' => 'height: 100%;',
 				),
 			),
 			'dependency'   => array(

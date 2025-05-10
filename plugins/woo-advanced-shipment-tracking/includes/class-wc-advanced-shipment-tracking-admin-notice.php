@@ -61,7 +61,7 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 
 		if ( 'woocommerce-advanced-shipment-tracking' != $page ) {
 			// Shipping Integration Notice
-			add_action( 'admin_notices', array( $this, 'ast_admin_notice_shipping_integration' ) );
+			//add_action( 'admin_notices', array( $this, 'ast_admin_notice_shipping_integration' ) );
 			
 			// AST PRO Notice
 			add_action( 'admin_notices', array( $this, 'ast_pro_admin_notice' ) );
@@ -70,10 +70,10 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 			add_action( 'admin_notices', array( $this, 'ast_pro_trackship_notice' ) );
 
 			// AST free Review Notice
-			add_action( 'admin_notices', array( $this, 'ast_review_notice' ) );
+			//add_action( 'admin_notices', array( $this, 'ast_review_notice' ) );
 
 			// Customer Info Notice
-			add_action( 'admin_notices', array( $this, 'customer_info_notice' ) );
+			//add_action( 'admin_notices', array( $this, 'customer_info_notice' ) );
 		}
 
 		// AST PRO Notice
@@ -120,11 +120,11 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 			return;
 		}
 		
-		if ( get_option('ts4wc_notice_ignore_377') ) {
+		if ( get_option('ts4wc_notice_ignore_381') ) {
 			return;
 		}	
 
-		if ( !get_option( 'integration_notice_ignore_377' ) && !get_option('ast_pro_update_ignore_377') ) {
+		if ( !get_option( 'integration_notice_ignore_377' ) && !get_option('ast_pro_update_ignore_381') ) {
 			return;
 		}
 		
@@ -184,7 +184,7 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 			if (isset($_GET['nonce'])) {
 				$nonce = sanitize_text_field($_GET['nonce']);
 				if (wp_verify_nonce($nonce, 'ast_pro_dismiss_notice')) {
-					update_option('ts4wc_notice_ignore_377', 'true');
+					update_option('ts4wc_notice_ignore_381', 'true');
 				}
 			}
 		}
@@ -193,7 +193,7 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 			if (isset($_GET['nonce'])) {
 				$nonce = sanitize_text_field($_GET['nonce']);
 				if (wp_verify_nonce($nonce, 'ast_pro_dismiss_notice')) {
-					update_option('ast_pro_update_ignore_377', 'true');
+					update_option('ast_pro_update_ignore_381', 'true');
 				}
 			}
 		}
@@ -231,16 +231,7 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 	*/
 	public function ast_pro_admin_notice() {
 		
-		// Check if the date is past April 15, 2025
-		if ( strtotime( 'now' ) > strtotime( '2025-04-15' ) ) {
-			return;
-		}
-		
-		if ( get_option('ast_pro_update_ignore_377') ) {
-			return;
-		}
-
-		if ( $this->is_any_shipping_plugin_active() ) {
+		if ( get_option('ast_pro_update_ignore_381') ) {
 			return;
 		}
 		

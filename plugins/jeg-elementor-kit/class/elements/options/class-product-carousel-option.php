@@ -327,6 +327,31 @@ class Product_Carousel_Option extends Option_WooCommerce_Abstract {
 			'segment' => 'segment_content',
 			'default' => true,
 		);
+
+		$this->options['sg_content_title_heading'] = array(
+			'type'      => 'heading',
+			'title'     => esc_html__( 'Product Title', 'jeg-elementor-kit' ),
+			'segment'   => 'segment_content',
+			'separator' => 'before',
+		);
+
+		$this->options['sg_content_title_html_tag'] = array(
+			'type'    => 'select',
+			'title'   => esc_html__( 'Title HTML Tag', 'jeg-elementor-kit' ),
+			'default' => 'h2',
+			'segment' => 'segment_content',
+			'options' => array(
+				'h1'   => 'H1',
+				'h2'   => 'H2',
+				'h3'   => 'H3',
+				'h4'   => 'H4',
+				'h5'   => 'H5',
+				'h6'   => 'H6',
+				'div'  => 'div',
+				'span' => 'span',
+				'p'    => 'p',
+			),
+		);
 	}
 
 	/**

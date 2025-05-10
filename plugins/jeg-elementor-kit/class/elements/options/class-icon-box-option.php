@@ -264,7 +264,7 @@ class Icon_Box_Option extends Option_Abstract {
 			'prefix_class' => 'jkit-equal-height-',
 			'selectors'    => array(
 				'custom' => array(
-					'{{WRAPPER}}.jkit-equal-height-enable, {{WRAPPER}}.jkit-equal-height-enable .elementor-widget-container, {{WRAPPER}}.jkit-equal-height-enable .jeg-elementor-kit.jkit-icon-box, {{WRAPPER}}.jkit-equal-height-enable .jeg-elementor-kit.jkit-icon-box .jkit-icon-box-wrapper' => 'height: 100%;',
+					'{{WRAPPER}}.jkit-equal-height-enable, {{WRAPPER}}.jkit-equal-height-enable' . jkit_optimized_markup_class() . ', {{WRAPPER}}.jkit-equal-height-enable .jeg-elementor-kit.jkit-icon-box, {{WRAPPER}}.jkit-equal-height-enable .jeg-elementor-kit.jkit-icon-box .jkit-icon-box-wrapper' => 'height: 100%;',
 				),
 			),
 		);

@@ -2,9 +2,9 @@
 Contributors: Jegtheme
 Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
-Tested up to: 6.7.2
+Tested up to: 6.8.1
 Requires PHP: 7.0
-Stable tag: 2.6.12
+Stable tag: 2.6.13
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -88,6 +88,15 @@ Please make sure the WP Memory Limit on your site has set to 128 MB or greater. 
 https://elementor.com/help/requirements/ Also you can disable some widgets that you don't need from Jeg Elementor Kit > Elements dashboard to reduce memory usage.
 
 == Changelog ==
+
+= 2.6.13 - 09-05-2025 =
+* Improvement: Security issues
+* Improvement: Add HTML Tag Option for Product Title in Product Grid and Poduct Carousel widgets
+* Improvement: Remove Deprecated Function due to Elementor v3.5 Planned Deprecations
+* Improvement: Remove Deprecated Function due to Elementor v3.6 Planned Deprecations
+* Improvement: Add Support for the Elementor Optimized Markup Feature
+* Fix: Mega Menu not working in Breakpoints devices
+* Fix: Menu Dropwodn in Mobile Device not working when Nav Menu widget is set to Global Widget
 
 = 2.6.12 - 25-02-2025 =
 * Improvement: Capable to add HTML on review content in Testimonial widget

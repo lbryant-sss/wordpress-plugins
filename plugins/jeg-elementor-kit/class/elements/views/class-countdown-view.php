@@ -125,7 +125,7 @@ class Countdown_View extends View_Abstract {
 				$template = preg_replace( '~[\r\n\s]+~', ' ', $template );
 			}
 
-			$data['template'] = esc_attr( $template );
+			$data['template'] = base64_encode( $template );
 		}
 
 		return $data;

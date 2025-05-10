@@ -1288,4 +1288,15 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 			return $repeater->get_controls();
 		}
 	}
+
+	/**
+	 * Optimized Markup Features
+	 *
+	 * The Markup Optimization can be based on the website preference.
+	 *
+	 * @return bool
+	 */
+	public function has_widget_inner_wrapper(): bool {
+		return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+	}
 }

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WooCommerce Advanced Shipment Tracking\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-11 09:34+0000\n"
-"PO-Revision-Date: 2025-03-05 05:33+0000\n"
+"PO-Revision-Date: 2025-05-09 06:02+0000\n"
 "Language-Team: Norwegian (Bokmål)\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
@@ -14,20 +14,44 @@ msgstr ""
 "Last-Translator: \n"
 "Language: nb_NO"
 
+#: includes/class-wc-advanced-shipment-tracking.php:242
+#: includes/class-wc-advanced-shipment-tracking.php:269
+#: includes/class-wc-advanced-shipment-tracking.php:364
+#, php-format
+msgid " (Added via %s) "
+msgstr "(Lagt til via %s)"
+
+#. 1: user name, 2: source name
+#: includes/class-wc-advanced-shipment-tracking.php:240
+#: includes/class-wc-advanced-shipment-tracking.php:267
+#, php-format
+msgid " by %1$s%2$s "
+msgstr "av %1$s%2$s"
+
+#. 1: display name, 2: source text
+#: includes/class-wc-advanced-shipment-tracking.php:369
+#, php-format
+msgid " by %1s%2s "
+msgstr "av %1s%2s"
+
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1259
+msgid " csv "
+msgstr "csv-fil"
+
 #: includes/class-ast-integration-options.php:188
 msgid "3plwinner"
 msgstr "3 vinner"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:1895
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1757
 msgid "Add"
 msgstr "Legg til"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:2166
+#: includes/class-wc-advanced-shipment-tracking-admin.php:2028
 msgid "Add API Name alias"
 msgstr "Legg til API -alias"
 
-#: includes/views/admin_options_shipping_provider.php:37
-#: includes/views/admin_options_shipping_provider.php:97
+#: includes/views/admin_options_shipping_provider.php:34
+#: includes/views/admin_options_shipping_provider.php:105
 msgid "Add Custom Carrier"
 msgstr "Legg til tilpasset transportør"
 
@@ -43,25 +67,25 @@ msgstr ""
 "forsendelsessporing vises i kundekontoer (i bestillingspanelet) og i "
 "WooCommerce bestill fullstendig e-post."
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:1542
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1404
 msgid "Add Tracking"
 msgstr "Legg til sporing"
 
-#: includes/class-wc-advanced-shipment-tracking.php:353
+#: includes/class-wc-advanced-shipment-tracking.php:408
 #: includes/class-wc-advanced-shipment-tracking-settings.php:514
 msgid "Add Tracking - order\t"
 msgstr "Legg til sporing - bestill"
 
-#: includes/class-wc-advanced-shipment-tracking.php:347
-#: includes/class-wc-advanced-shipment-tracking.php:545
+#: includes/class-wc-advanced-shipment-tracking.php:403
+#: includes/class-wc-advanced-shipment-tracking.php:600
 msgid "Add Tracking Info"
 msgstr "Legg til sporingsinformasjon"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:706
+#: includes/class-wc-advanced-shipment-tracking-admin.php:723
 msgid "Add Tracking Order action"
 msgstr "Legg til handling for sporingsordre"
 
-#: includes/customizer/ast-customizer.php:488
+#: includes/customizer/ast-customizer.php:490
 msgid "Additional text after header"
 msgstr "Tilleggs tekst etter overskrift"
 
@@ -73,15 +97,15 @@ msgstr "Avansert forsendelsessporing for WooCommerce"
 msgid "AliExpress Dropshipping"
 msgstr "AliExpress Dropshipping"
 
-#: includes/views/admin_options_shipping_provider.php:51
+#: includes/views/admin_options_shipping_provider.php:52
 msgid "All Carriers Selected."
 msgstr "Alle operatører er valgt."
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:1643
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1505
 msgid "API aliases"
 msgstr "API-aliaser"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:730
+#: includes/class-wc-advanced-shipment-tracking-admin.php:747
 msgid "API Date Format"
 msgstr "API -datoformat"
 
@@ -89,47 +113,47 @@ msgstr "API -datoformat"
 msgid "Are you sure you want to delete this shipping carrier?"
 msgstr "Er du sikker på at du vil slette denne transportøren?"
 
-#: includes/customizer/ast-customizer.php:91
+#: includes/customizer/ast-customizer.php:93
 msgid "AST Customizer"
 msgstr "AST Customizer"
 
-#: includes/views/admin_options_settings.php:70
+#: includes/views/admin_options_settings.php:78
 msgid "Automated CSV Import through FTP/SFTP"
 msgstr "Automatisert CSV-import via FTP/SFTP"
 
-#: includes/customizer/ast-customizer.php:684
+#: includes/customizer/ast-customizer.php:686
 msgid "Available Placeholders:"
 msgstr "Tilgjengelige plassholdere:"
 
-#: includes/customizer/ast-customizer.php:528
+#: includes/customizer/ast-customizer.php:530
 msgid "Background color"
 msgstr "Bakgrunnsfarge"
 
-#: includes/customizer/ast-customizer.php:536
+#: includes/customizer/ast-customizer.php:538
 msgid "Border color"
 msgstr "Grensefarge"
 
-#: includes/customizer/ast-customizer.php:544
+#: includes/customizer/ast-customizer.php:546
 msgid "Border radius"
 msgstr "Kanteradius"
 
-#: includes/customizer/ast-customizer.php:592
+#: includes/customizer/ast-customizer.php:594
 msgid "Button color"
 msgstr "Knappefarge"
 
-#: includes/customizer/ast-customizer.php:600
+#: includes/customizer/ast-customizer.php:602
 msgid "Button font color"
 msgstr "Knapp skriftfarge"
 
-#: includes/customizer/ast-customizer.php:608
+#: includes/customizer/ast-customizer.php:610
 msgid "Button radius"
 msgstr "Knappens radius"
 
-#: includes/customizer/ast-customizer.php:580
+#: includes/customizer/ast-customizer.php:582
 msgid "Button size"
 msgstr "Knappstørrelse"
 
-#: includes/customizer/ast-customizer.php:570
+#: includes/customizer/ast-customizer.php:572
 msgid "Button text"
 msgstr "Knappetekst"
 
@@ -142,19 +166,19 @@ msgid "Cannot create existing order shipment tracking."
 msgstr ""
 "Kan ikke opprette eksisterende ordresendingsporing.\n"
 
-#: includes/views/admin_options_shipping_provider.php:164
+#: includes/views/admin_options_shipping_provider.php:172
 msgid "Carriers Added"
 msgstr "Transportører lagt til"
 
-#: includes/views/admin_options_shipping_provider.php:166
+#: includes/views/admin_options_shipping_provider.php:174
 msgid "Carriers Deleted"
 msgstr "Transportører slettet"
 
-#: includes/views/admin_options_shipping_provider.php:48
+#: includes/views/admin_options_shipping_provider.php:45
 msgid "carriers selected."
 msgstr "transportører valgt."
 
-#: includes/views/admin_options_shipping_provider.php:165
+#: includes/views/admin_options_shipping_provider.php:173
 msgid "Carriers Updated"
 msgstr "Operatører oppdatert"
 
@@ -179,11 +203,11 @@ msgid "Change status to shipped"
 msgstr ""
 "Endre status til sendt\n"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:732
+#: includes/class-wc-advanced-shipment-tracking-admin.php:749
 msgid "Choose for which Order status to display"
 msgstr "Velg hvilken bestillingsstatus du vil vise"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:731
+#: includes/class-wc-advanced-shipment-tracking-admin.php:748
 msgid ""
 "Choose the date format that you use when updating the shipment tracking API "
 "endpoint from external sources"
@@ -195,7 +219,7 @@ msgstr ""
 msgid "Choose the Shipped Date format"
 msgstr "Velg formatet Sendt dato"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:707
+#: includes/class-wc-advanced-shipment-tracking-admin.php:724
 msgid ""
 "Choose which Order Status in your store you would like to display Add the "
 "Tracking icon in the Order Actions menu."
@@ -203,11 +227,11 @@ msgstr ""
 "Velg hvilken bestillingsstatus i butikken du vil vise. Legg til "
 "sporingsikonet i menyen Ordrehandlinger."
 
-#: includes/views/admin_options_shipping_provider.php:48
+#: includes/views/admin_options_shipping_provider.php:45
 msgid "Click Here"
 msgstr "Klikk her"
 
-#: includes/class-wc-advanced-shipment-tracking.php:495
+#: includes/class-wc-advanced-shipment-tracking.php:550
 msgid "Completed"
 msgstr "fullført"
 
@@ -224,8 +248,8 @@ msgstr "CSV-import"
 msgid "CustomCat"
 msgstr "CustomCat"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:437
-#: includes/class-wc-advanced-shipment-tracking-admin.php:525
+#: includes/class-wc-advanced-shipment-tracking-admin.php:440
+#: includes/class-wc-advanced-shipment-tracking-admin.php:542
 msgid "Customize"
 msgstr "Tilpass"
 
@@ -238,7 +262,7 @@ msgstr ""
 msgid "Data saved successfully."
 msgstr "Data lagret."
 
-#: includes/class-wc-advanced-shipment-tracking.php:395
+#: includes/class-wc-advanced-shipment-tracking.php:450
 #: includes/class-wc-advanced-shipment-tracking-settings.php:571
 msgid "Date shipped:"
 msgstr "Dato sendt:"
@@ -247,11 +271,11 @@ msgstr "Dato sendt:"
 msgid "Dear Systems"
 msgstr "Kjære systemer"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:1665
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1527
 msgid "Delete"
 msgstr "Slett"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:910
+#: includes/class-wc-advanced-shipment-tracking-admin.php:938
 #: includes/class-wc-advanced-shipment-tracking-settings.php:144
 #: includes/class-wc-advanced-shipment-tracking-settings.php:162
 #: includes/class-wc-advanced-shipment-tracking-settings.php:216
@@ -266,7 +290,7 @@ msgid_plural "Delivered <span class=\"count\">(%s)</span>"
 msgstr[0] "Levert <span class=\"count\">(%s)</span>"
 msgstr[1] "Levert <span class=\"count\">(%s)</span>"
 
-#: includes/views/admin_options_shipping_provider.php:40
+#: includes/views/admin_options_shipping_provider.php:37
 msgid "Deselect All"
 msgstr "Opphev alle"
 
@@ -278,7 +302,7 @@ msgstr "DHL Shipping Tyskland for WooCommerce"
 msgid "Dianxiaomi"
 msgstr "Dianxiaomi"
 
-#: includes/customizer/ast-customizer.php:505
+#: includes/customizer/ast-customizer.php:507
 msgid "Display shipment status section"
 msgstr "Vis delen for forsendelsesstatus"
 
@@ -291,7 +315,7 @@ msgstr "Last ned eksempel csv"
 msgid "EasyPost"
 msgstr "EasyPost"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:1664
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1526
 msgid "Edit"
 msgstr "Redigere"
 
@@ -304,43 +328,43 @@ msgstr "Rediger transportør"
 msgid "EIZ"
 msgstr "EIZ"
 
-#: includes/customizer/ast-customizer.php:396
-#: includes/customizer/ast-customizer.php:397
-#: includes/customizer/ast-customizer.php:406
-#: includes/customizer/ast-customizer.php:450
-#: includes/customizer/ast-customizer.php:451
-#: includes/customizer/ast-customizer.php:628
+#: includes/customizer/ast-customizer.php:398
+#: includes/customizer/ast-customizer.php:399
+#: includes/customizer/ast-customizer.php:408
+#: includes/customizer/ast-customizer.php:452
+#: includes/customizer/ast-customizer.php:453
+#: includes/customizer/ast-customizer.php:630
 msgid "Email Content"
 msgstr "E-postinnhold"
 
-#: includes/customizer/ast-customizer.php:672
+#: includes/customizer/ast-customizer.php:674
 msgid "Email content"
 msgstr "E-postinnhold"
 
-#: includes/customizer/ast-customizer.php:710
+#: includes/customizer/ast-customizer.php:712
 msgid "Email Customizer"
 msgstr "E-posttilpasning"
 
-#: includes/customizer/ast-customizer.php:660
+#: includes/customizer/ast-customizer.php:662
 msgid "Email heading"
 msgstr "E-postoverskrift"
 
-#: includes/customizer/ast-customizer.php:649
+#: includes/customizer/ast-customizer.php:651
 msgid "Email Subject"
 msgstr "E-post Emne"
 
-#: includes/customizer/ast-customizer.php:635
+#: includes/customizer/ast-customizer.php:637
 #| msgid "Email Type"
 msgid "Email type"
 msgstr "E-posttype"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:1606
-#: includes/class-wc-advanced-shipment-tracking-admin.php:1680
-#: includes/views/admin_options_shipping_provider.php:36
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1468
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1542
+#: includes/views/admin_options_shipping_provider.php:33
 msgid "Enable Carriers"
 msgstr "Aktiver operatører"
 
-#: includes/customizer/ast-customizer.php:871
+#: includes/customizer/ast-customizer.php:873
 msgid "Enable email"
 msgstr "Aktiver e-post"
 
@@ -348,21 +372,35 @@ msgstr "Aktiver e-post"
 msgid "Enable Integration"
 msgstr "Aktiver integrasjon"
 
-#: includes/views/admin_options_shipping_provider.php:64
+#: includes/class-wc-advanced-shipment-tracking-admin.php:760
+msgid "Enable log"
+msgstr "Aktiver logg"
+
+#: includes/views/admin_options_shipping_provider.php:72
 #| msgid "Add Shipping Carriers"
 msgid "Enable Shipping Carriers"
 msgstr "Aktiver fraktselskaper"
+
+#: includes/class-wc-advanced-shipment-tracking-admin.php:761
+msgid ""
+"Enable this to log all incoming API requests and responses for the Shipment "
+"Tracking API in WooCommerce logs. Logs can be found under WooCommerce > "
+"Status > Logs."
+msgstr ""
+"Aktiver dette for å logge alle innkommende API-forespørsler og svar for "
+"forsendelsessporings-API-et i WooCommerce-logger. Logger finner du under "
+"WooCommerce > Status > Logger."
 
 #: includes/class-ast-integration-options.php:296
 msgid "eShipper"
 msgstr "eShipper"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:2058
-#: includes/class-wc-advanced-shipment-tracking-admin.php:2075
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1920
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1937
 msgid "Filter by shipping provider"
 msgstr "Filtrer etter fraktleverandør"
 
-#: includes/class-wc-advanced-shipment-tracking.php:404
+#: includes/class-wc-advanced-shipment-tracking.php:459
 #: includes/class-wc-advanced-shipment-tracking-settings.php:581
 msgid "Fulfill Order"
 msgstr "Oppfyll ordren"
@@ -389,7 +427,7 @@ msgstr ""
 "Hei der. vi tenkte du vil vite at forsendelsessporingen for den nylige "
 "bestillingen din fra {site_title} er oppdatert."
 
-#: includes/customizer/ast-customizer.php:335
+#: includes/customizer/ast-customizer.php:337
 msgid ""
 "Hi there. we thought you'd like to know that your recent order from "
 "{site_title} has been partially shipped."
@@ -404,12 +442,12 @@ msgid "hide details"
 msgstr ""
 "skjul detaljer\n"
 
-#: includes/customizer/ast-customizer.php:554
+#: includes/customizer/ast-customizer.php:556
 #| msgid "Display shipping provider image"
 msgid "Hide shipping provider image"
 msgstr "Vis leveringsbilde"
 
-#: includes/customizer/ast-customizer.php:469
+#: includes/customizer/ast-customizer.php:471
 #| msgid "Hide Tracking Header"
 msgid "Hide tracking header"
 msgstr "Skjul sporingsoverskrift"
@@ -419,7 +457,15 @@ msgstr "Skjul sporingsoverskrift"
 msgid "How to import \ttracking number from CSV files?"
 msgstr "Hvordan importere sporingsnummer fra CSV-filer?"
 
-#: includes/views/admin_options_shipping_provider.php:48
+#. Author URI of the plugin
+msgid "https://www.zorem.com"
+msgstr "https://www.zorem.com"
+
+#. URI of the plugin
+msgid "https://www.zorem.com/products/woocommerce-advanced-shipment-tracking/"
+msgstr "https://www.zorem.com/products/woocommerce-advanced-shipment-tracking/"
+
+#: includes/views/admin_options_shipping_provider.php:45
 msgid "if you want to select all carriers."
 msgstr "hvis du vil velge alle operatører."
 
@@ -460,7 +506,7 @@ msgstr ""
 "Hold umerket for sporingsinformasjonen som skal legges til eksisterende "
 "sporingsinformasjon som legges til bestillingene."
 
-#: includes/customizer/ast-customizer.php:586
+#: includes/customizer/ast-customizer.php:588
 msgid "Large"
 msgstr "Stor"
 
@@ -473,30 +519,24 @@ msgstr ""
 msgid "Linnworks"
 msgstr "Linnworks"
 
-#: includes/class-wc-advanced-shipment-tracking.php:334
-msgid "Mark as Completed?"
-msgstr ""
-"Markere som fullført?\n"
+#: includes/class-wc-advanced-shipment-tracking-admin.php:767
+msgid "Log will be added to WooCommerce > Status > "
+msgstr "Loggen vil bli lagt til WooCommerce > Status >"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:1551
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1413
 msgid "Mark as Shipped"
 msgstr "Merk som sendt"
-
-#: includes/class-wc-advanced-shipment-tracking.php:331
-msgid "Mark as Shipped?"
-msgstr ""
-"Marker som sendt?\n"
 
 #: includes/class-wc-advanced-shipment-tracking-settings.php:253
 msgid "Mark order as delivered"
 msgstr "Merk ordren som levert"
 
-#: includes/class-wc-advanced-shipment-tracking.php:520
+#: includes/class-wc-advanced-shipment-tracking.php:575
 msgid "Mark order as:"
 msgstr ""
 "Merk ordre som:\n"
 
-#: includes/customizer/ast-customizer.php:1087
+#: includes/customizer/ast-customizer.php:1089
 msgid "Mockup Order"
 msgstr "Mockup Order"
 
@@ -510,7 +550,7 @@ msgstr "Mockup Order"
 msgid "More Info"
 msgstr "Mer informasjon"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:2166
+#: includes/class-wc-advanced-shipment-tracking-admin.php:2028
 msgid "Multiple API names mapping is a pro features"
 msgstr "Kartlegging av flere API-navn er en profesjonell funksjon"
 
@@ -518,21 +558,21 @@ msgstr "Kartlegging av flere API-navn er en profesjonell funksjon"
 msgid "NetSuite Connector"
 msgstr "NetSuite-kobling"
 
-#: includes/customizer/ast-customizer.php:585
+#: includes/customizer/ast-customizer.php:587
 msgid "Normal"
 msgstr "Vanlig"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:750
+#: includes/class-wc-advanced-shipment-tracking-admin.php:778
 msgid "Opt in to get email notifications for security & feature updates"
 msgstr ""
 "Meld deg på for å motta e-postvarsler for sikkerhets- og "
 "funksjonsoppdateringer"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:756
+#: includes/class-wc-advanced-shipment-tracking-admin.php:784
 msgid "Opt in to share some basic WordPress environment info"
 msgstr "Velg å dele grunnleggende WordPress-miljøinformasjon"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:715
+#: includes/class-wc-advanced-shipment-tracking-admin.php:732
 msgid "Order Emails Display"
 msgstr "Bestill e-postvisning"
 
@@ -546,8 +586,8 @@ msgid "Order Statuses & Notifications"
 msgstr "Ordrestatuser og varsler"
 
 #. %1$s: Reaplce with tracking provider, %2$s: Reaplce with tracking number
-#: includes/class-wc-advanced-shipment-tracking.php:1190
-#: includes/class-wc-advanced-shipment-tracking.php:1269
+#: includes/class-wc-advanced-shipment-tracking.php:1219
+#: includes/class-wc-advanced-shipment-tracking.php:1312
 #, php-format
 #| msgid "Order was shipped with %s and tracking number is: %s"
 msgid "Order was shipped with %1$s and tracking number is: %2$s"
@@ -561,13 +601,13 @@ msgstr "Ordoro"
 msgid "ParcelForce"
 msgstr "ParcelForce"
 
-#: includes/class-wc-advanced-shipment-tracking.php:511
-#: includes/class-wc-advanced-shipment-tracking-admin.php:898
+#: includes/class-wc-advanced-shipment-tracking.php:566
+#: includes/class-wc-advanced-shipment-tracking-admin.php:926
 #: includes/class-wc-advanced-shipment-tracking-settings.php:283
 #: includes/class-wc-advanced-shipment-tracking-settings.php:315
-#: includes/customizer/ast-customizer.php:131
-#: includes/customizer/ast-customizer.php:367
-#: includes/customizer/ast-customizer.php:622
+#: includes/customizer/ast-customizer.php:133
+#: includes/customizer/ast-customizer.php:369
+#: includes/customizer/ast-customizer.php:624
 msgid "Partially Shipped"
 msgstr ""
 "delvis sendt\n"
@@ -580,7 +620,7 @@ msgid_plural "Partially Shipped <span class=\"count\">(%s)</span>"
 msgstr[0] "Delvis sendt <span class=\"count\">(%s)</span>"
 msgstr[1] "Delvis sendt <span class=\"count\">(%s)</span>"
 
-#: includes/views/admin_options_settings.php:61
+#: includes/views/admin_options_settings.php:60
 msgid "PayPal Tracking"
 msgstr "PayPal-sporing"
 
@@ -599,7 +639,7 @@ msgid "Please add shipping carriers from <a href=\"%s\">here</a>"
 msgstr "Legg til fraktselskaper <a href=\"%s\">herfra</a>"
 
 #. %s: search WooCommerce plugin link
-#: woocommerce-advanced-shipment-tracking.php:202
+#: woocommerce-advanced-shipment-tracking.php:201
 #, php-format
 msgid ""
 "Please install and activate %1$sWooCommerce%2$s for Advanced Shipment "
@@ -640,7 +680,8 @@ msgstr "QuickBooks Commerce (tidligere TradeGecko)"
 msgid "ReadyToShip"
 msgstr "Klar til å sendes"
 
-#: includes/views/admin_options_shipping_provider.php:31
+#: includes/views/admin_options_shipping_provider.php:47
+#: includes/views/admin_options_shipping_provider.php:57
 #| msgid "Delete Selected"
 msgid "Remove Selected"
 msgstr "Fjern valgte"
@@ -653,7 +694,7 @@ msgstr "Gi navnet \"Fullført\" ordrestatusmerke til \"Sendt\""
 msgid "Replace tracking information?"
 msgstr "Erstatte sporingsinformasjon?"
 
-#: includes/views/admin_options_shipping_provider.php:170
+#: includes/views/admin_options_shipping_provider.php:178
 #| msgid ""
 #| "Reset providers database, it will reset all your shipping provider "
 #| "\tdatabase"
@@ -673,17 +714,17 @@ msgstr "Royal Mail Klikk og slipp"
 msgid "Save & Close"
 msgstr "Lagre og lukk"
 
-#: includes/customizer/ast-customizer.php:157
+#: includes/customizer/ast-customizer.php:159
 msgid "Saved"
 msgstr "Lagret"
 
 #: includes/views/admin_options_shipping_provider.php:28
-#: includes/views/admin_options_shipping_provider.php:77
+#: includes/views/admin_options_shipping_provider.php:85
 #| msgid "Search by provider / country"
 msgid "Search by carrier / country"
 msgstr "Søk etter transportør/land"
 
-#: includes/views/admin_options_shipping_provider.php:39
+#: includes/views/admin_options_shipping_provider.php:36
 msgid "Select All"
 msgstr "Velg alle"
 
@@ -717,7 +758,7 @@ msgid "Shipment status changed to %s"
 msgstr "Sendingsstatus endret til% s"
 
 #: includes/class-wc-advanced-shipment-tracking.php:144
-#: includes/class-wc-advanced-shipment-tracking.php:243
+#: includes/class-wc-advanced-shipment-tracking.php:294
 #: includes/class-wc-advanced-shipment-tracking-admin.php:195
 #: includes/class-wc-advanced-shipment-tracking-admin.php:237
 msgid "Shipment Tracking"
@@ -727,13 +768,13 @@ msgstr "Sporing"
 msgid "Shipment Tracking API"
 msgstr "API for forsendelsessporing"
 
-#: includes/class-wc-advanced-shipment-tracking.php:495
-#: includes/class-wc-advanced-shipment-tracking-admin.php:542
+#: includes/class-wc-advanced-shipment-tracking.php:550
+#: includes/class-wc-advanced-shipment-tracking-admin.php:559
 #: includes/class-wc-advanced-shipment-tracking-settings.php:439
 #: templates/emails/fluid-tracking-info.php:102
 #: templates/emails/fluid-tracking-info.php:125
-#: includes/customizer/ast-customizer.php:127
-#: includes/customizer/ast-customizer.php:356
+#: includes/customizer/ast-customizer.php:129
+#: includes/customizer/ast-customizer.php:358
 msgid "Shipped"
 msgstr "Utsendt"
 
@@ -750,25 +791,33 @@ msgstr[1] "Sendt <span class=\"count\">(%s)</span>"
 msgid "Shipped on"
 msgstr "Sendes videre"
 
-#. 1: shipping date
-#: includes/class-wc-advanced-shipment-tracking.php:287
+#. 1: shipping date, 2: source info
+#: includes/class-wc-advanced-shipment-tracking.php:235
+#: includes/class-wc-advanced-shipment-tracking.php:262
 #, php-format
-msgid "Shipped on %s"
+msgid "Shipped on %1$s%2$s "
+msgstr "Sendt den %1$s%2$s"
+
+#. 1: shipping date
+#: includes/class-wc-advanced-shipment-tracking.php:340
+#, php-format
+#| msgid "Shipped on %s"
+msgid "Shipped on %1s "
 msgstr "Sendt %s"
 
 #: templates/myaccount/tracking-info.php:89
 msgid "Shipped on:"
 msgstr "Sendes på:"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:1505
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1367
 msgid "Shipped Order"
 msgstr "Sendt ordre"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:1903
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1765
 msgid "Shipping Carrier Already Added"
 msgstr "Frakttransportør allerede lagt til"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:1907
+#: includes/class-wc-advanced-shipment-tracking-admin.php:1769
 msgid "Shipping Carrier Not Found!"
 msgstr "Fant ikke fraktselskapet!"
 
@@ -778,13 +827,13 @@ msgstr "Fant ikke fraktselskapet!"
 msgid "Shipping Carriers"
 msgstr "Frakttransportører"
 
-#: includes/views/admin_options_shipping_provider.php:168
+#: includes/views/admin_options_shipping_provider.php:176
 #| msgid "Shipping providers database reset successfully."
 msgid "Shipping carriers database reset successfully."
 msgstr "Fraktselskapers database er tilbakestilt."
 
-#: includes/class-wc-advanced-shipment-tracking.php:366
-#: includes/class-wc-advanced-shipment-tracking.php:368
+#: includes/class-wc-advanced-shipment-tracking.php:421
+#: includes/class-wc-advanced-shipment-tracking.php:423
 #: includes/class-wc-advanced-shipment-tracking-settings.php:528
 #: includes/class-wc-advanced-shipment-tracking-settings.php:530
 msgid "Shipping Provider:"
@@ -822,17 +871,21 @@ msgstr "SimpleSell"
 msgid "Stamps.com"
 msgstr "Stamps.com"
 
-#: includes/views/admin_options_shipping_provider.php:38
+#: includes/views/admin_options_settings.php:69
+msgid "Stripe Tracking"
+msgstr "Stripe-sporing"
+
+#: includes/views/admin_options_shipping_provider.php:35
 msgid "Sync Carriers"
 msgstr "Synkroniser operatører"
 
-#: includes/views/admin_options_shipping_provider.php:154
-#: includes/views/admin_options_shipping_provider.php:172
+#: includes/views/admin_options_shipping_provider.php:162
+#: includes/views/admin_options_shipping_provider.php:180
 #| msgid "Sync Shipping Providers"
 msgid "Sync Shipping Carriers"
 msgstr "Synkroniser fraktselskaper"
 
-#: includes/views/admin_options_shipping_provider.php:162
+#: includes/views/admin_options_shipping_provider.php:170
 #| msgid ""
 #| "Syncing the shipping providers list add or updates the pre-set shipping "
 #| "providers and will not effect custom shipping providers."
@@ -853,7 +906,7 @@ msgstr ""
 msgid "This browser does not support HTML5."
 msgstr "Denne nettleseren støtter ikke HTML5."
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:716
+#: includes/class-wc-advanced-shipment-tracking-admin.php:733
 msgid ""
 "This option allows you to choose on which order status email you would like "
 "to display the tracking information"
@@ -861,40 +914,40 @@ msgstr ""
 "Dette alternativet lar deg velge hvilken e-post for ordrestatus du vil vise "
 "sporingsinformasjonen på"
 
-#: includes/class-wc-advanced-shipment-tracking.php:799
-#: includes/class-wc-advanced-shipment-tracking.php:824
-#: includes/class-wc-advanced-shipment-tracking.php:833
+#: includes/class-wc-advanced-shipment-tracking.php:837
+#: includes/class-wc-advanced-shipment-tracking.php:862
+#: includes/class-wc-advanced-shipment-tracking.php:871
 #: templates/emails/plain/fluid-tracking-info.php:34
 msgid "Track"
 msgstr "Sporing"
 
-#: includes/class-wc-advanced-shipment-tracking.php:274
+#: includes/class-wc-advanced-shipment-tracking.php:325
 msgid "Track Shipment"
 msgstr ""
 "Spor forsendelse\n"
 
-#: includes/customizer/ast-customizer.php:323
+#: includes/customizer/ast-customizer.php:325
 msgid "Track Your Order"
 msgstr "Spor din bestilling"
 
-#: includes/customizer/ast-customizer.php:514
+#: includes/customizer/ast-customizer.php:516
 msgid "Tracker type"
 msgstr "Tracker type"
 
-#: includes/customizer/ast-customizer.php:441
-#: includes/customizer/ast-customizer.php:564
+#: includes/customizer/ast-customizer.php:443
+#: includes/customizer/ast-customizer.php:566
 #| msgid "Track Button"
 msgid "Tracking Button"
 msgstr "Sporknapp"
 
-#: includes/customizer/ast-customizer.php:478
+#: includes/customizer/ast-customizer.php:480
 #| msgid "Tracking Header text"
 msgid "Tracking header text"
 msgstr ""
 "Sporing av overskriftstekst\n"
 
 #. %1$s: Reaplce with tracking provider, %2$s: Reaplce with tracking number
-#: includes/class-wc-advanced-shipment-tracking.php:756
+#: includes/class-wc-advanced-shipment-tracking.php:794
 #, php-format
 #| msgid ""
 #| "Tracking info was deleted for tracking provider %s with tracking number %s"
@@ -909,25 +962,25 @@ msgstr ""
 msgid "Tracking Number"
 msgstr "Sporingsnummer"
 
-#: includes/class-wc-advanced-shipment-tracking.php:362
+#: includes/class-wc-advanced-shipment-tracking.php:417
 #: includes/class-wc-advanced-shipment-tracking-settings.php:524
 msgid "Tracking number:"
 msgstr "Sporingsnummer:"
 
-#: includes/customizer/ast-customizer.php:387
-#: includes/customizer/ast-customizer.php:388
-#: includes/customizer/ast-customizer.php:414
-#: includes/customizer/ast-customizer.php:424
-#: includes/customizer/ast-customizer.php:433
-#: includes/customizer/ast-customizer.php:442
+#: includes/customizer/ast-customizer.php:389
+#: includes/customizer/ast-customizer.php:390
+#: includes/customizer/ast-customizer.php:416
+#: includes/customizer/ast-customizer.php:426
+#: includes/customizer/ast-customizer.php:435
+#: includes/customizer/ast-customizer.php:444
 msgid "Tracking Widget"
 msgstr "Sporingswidget"
 
-#: includes/views/admin_options_shipping_provider.php:51
+#: includes/views/admin_options_shipping_provider.php:54
 msgid "Undo"
 msgstr "Angre"
 
-#: includes/class-wc-advanced-shipment-tracking-admin.php:928
+#: includes/class-wc-advanced-shipment-tracking-admin.php:956
 #: includes/class-wc-advanced-shipment-tracking-settings.php:268
 #: includes/class-wc-advanced-shipment-tracking-settings.php:301
 #: includes/class-wc-advanced-shipment-tracking-settings.php:420
@@ -968,7 +1021,7 @@ msgid "WC Shipping"
 msgstr "WC-frakt"
 
 #. %s: replace with Partially Shipped order count
-#: woocommerce-advanced-shipment-tracking.php:505
+#: woocommerce-advanced-shipment-tracking.php:499
 #, php-format
 msgid ""
 "We detected %s orders that use the Delivered order status, You can reassign "
@@ -978,7 +1031,7 @@ msgstr ""
 "overføre disse bestillingene til en annen status"
 
 #. %s: replace with Partially Shipped order count
-#: woocommerce-advanced-shipment-tracking.php:487
+#: woocommerce-advanced-shipment-tracking.php:481
 #, php-format
 msgid ""
 "We detected %s orders that use the Partially Shipped order status, You can "
@@ -987,13 +1040,13 @@ msgstr ""
 "Vi oppdaget% s bestillinger som bruker statusen Delvis sendt. Du kan "
 "tilordne disse ordrene til en annen status"
 
-#: includes/customizer/ast-customizer.php:423
-#: includes/customizer/ast-customizer.php:461
+#: includes/customizer/ast-customizer.php:425
+#: includes/customizer/ast-customizer.php:463
 msgid "Widget Header"
 msgstr "Widget-overskrift"
 
-#: includes/customizer/ast-customizer.php:432
-#: includes/customizer/ast-customizer.php:499
+#: includes/customizer/ast-customizer.php:434
+#: includes/customizer/ast-customizer.php:501
 msgid "Widget Style"
 msgstr "Widget-stil"
 
@@ -1013,13 +1066,13 @@ msgstr "WooCommerce GLS-plugin fra Tehster"
 msgid "WooCommerce UPS Shipping"
 msgstr "WooCommerce UPS-frakt"
 
-#: includes/class-wc-advanced-shipment-tracking.php:396
+#: includes/class-wc-advanced-shipment-tracking.php:451
 #: includes/class-wc-advanced-shipment-tracking-settings.php:572
 #: includes/class-wc-advanced-shipment-tracking-settings.php:572
 msgid "Y-m-d"
 msgstr "Y-m-d"
 
-#: includes/customizer/ast-customizer.php:708
+#: includes/customizer/ast-customizer.php:710
 msgid "You are customizing"
 msgstr "Du tilpasser"
 
@@ -1027,11 +1080,11 @@ msgstr "Du tilpasser"
 msgid "You can upload only csv file."
 msgstr "Du kan bare laste opp csv-fil."
 
-#: includes/customizer/ast-customizer.php:334
+#: includes/customizer/ast-customizer.php:336
 msgid "Your Order is Partially Shipped"
 msgstr "Bestillingen din sendes delvis"
 
-#: includes/customizer/ast-customizer.php:333
+#: includes/customizer/ast-customizer.php:335
 msgid "Your {site_title} order is now partially shipped"
 msgstr ""
 "{Site_title} bestillingen din er nå delvis sendt\n"
@@ -1039,3 +1092,7 @@ msgstr ""
 #: includes/class-ast-integration-options.php:110
 msgid "Zenventory"
 msgstr "Zenventory"
+
+#. Author of the plugin
+msgid "zorem"
+msgstr "zorem"

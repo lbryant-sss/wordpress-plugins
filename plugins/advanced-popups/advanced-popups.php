@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Advanced Popups
  * Description:       Display high-converting newsletter popups, a cookie notice, or a notification with the light-weight yet feature-rich plugin.
- * Version:           1.2.1
+ * Version:           1.2.2
  * Author:            Code Supply Co.
  * Author URI:        https://codesupply.co
  * License:           GPL-2.0+

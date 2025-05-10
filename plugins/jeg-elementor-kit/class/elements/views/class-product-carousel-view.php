@@ -101,7 +101,8 @@ class Product_Carousel_View extends View_WooCommerce_Abstract {
 	 * Render Product Title
 	 */
 	public function render_title() {
-		return '<h2 class="product-title">' . get_the_title( $this->post ) . '</h2>';
+		$tag = \Elementor\Utils::validate_html_tag( $this->attribute['sg_content_title_html_tag'] );
+		return '<' . $tag . ' class="product-title">' . get_the_title( $this->post ) . '</' . $tag . '>';
 	}
 
 	/**

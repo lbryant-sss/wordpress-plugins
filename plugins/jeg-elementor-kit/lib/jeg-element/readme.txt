@@ -1,3 +1,6 @@
+== 1.1.3 ==
+- Improvement: Remove Deprecated Function due to Elementor v3.5 Planned Deprecations
+
 === 1.1.2 ===
 - Update author information
 - Fix element not rendered in divi builder
