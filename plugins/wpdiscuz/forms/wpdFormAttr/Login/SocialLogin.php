@@ -17,7 +17,7 @@ class SocialLogin
     private function __construct($options)
     {
         $this->generalOptions = $options;
-        add_action("init", [&$this, "requestHandler"]);
+        add_action("wpdiscuz_init", [&$this, "requestHandler"]);
         add_action("wpdiscuz_front_scripts", [&$this, "socialScripts"]);
         add_action("comment_main_form_bar_top", [&$this, "getButtons"]);
         add_action("comment_main_form_after_head", [&$this, "getAgreement"]);

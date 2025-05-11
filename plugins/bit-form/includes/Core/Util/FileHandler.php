@@ -369,7 +369,7 @@ final class FileHandler
             throw new \Exception("Failed to create index.php in $directory");
           }
         } catch (\Exception $e) {
-          error_log($e->getMessage()); // Log the error for debugging
+          Log::debug_log($e->getMessage()); // Log the error for debugging
         }
       }
     }

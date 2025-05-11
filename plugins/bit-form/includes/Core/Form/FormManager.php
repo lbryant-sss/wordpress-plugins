@@ -21,6 +21,7 @@ use BitCode\BitForm\Core\Util\FieldValueHandler;
 use BitCode\BitForm\Core\Util\FileHandler;
 use BitCode\BitForm\Core\Util\FrontendHelpers;
 use BitCode\BitForm\Core\Util\IpTool;
+use BitCode\BitForm\Core\Util\Log;
 use BitCode\BitForm\Core\WorkFlow\WorkFlow;
 use BitCode\BitForm\Core\WorkFlow\WorkFlowHandler;
 use WP_Error;
@@ -73,7 +74,7 @@ class FormManager
       }
     } else {
       // Log the error if needed
-      error_log('Error fetching form: ' . "Form Id = ($form_id)" . static::$form->get_error_message());
+      Log::debug_log('Error fetching form: ' . "Form Id = ($form_id)" . static::$form->get_error_message());
     }
   }
 
@@ -443,7 +444,7 @@ class FormManager
       }
       return $filename;
     } catch (\Throwable $e) {
-      error_log("[Signature Error] Form: $form_id, Entry: $entry_id, Field: $fieldKey - " . $e->getMessage());
+      Log::debug_log("[Signature Error] Form: $form_id, Entry: $entry_id, Field: $fieldKey - " . $e->getMessage());
       return 'signature-failed.png'; // or a default filename if appropriate
     }
   }

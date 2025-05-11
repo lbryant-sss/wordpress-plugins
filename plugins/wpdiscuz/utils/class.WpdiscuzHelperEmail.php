@@ -27,7 +27,7 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants
         $this->options = $options;
         $this->dbManager = $dbManager;
         $this->helper = $helper;
-        add_action("init", [&$this, "addSubscriptionRewriteRule"]);
+        add_action("wpdiscuz_init", [&$this, "addSubscriptionRewriteRule"]);
         add_action("wp_ajax_wpdAddSubscription", [&$this, "addSubscription"]);
         add_action("wp_ajax_nopriv_wpdAddSubscription", [&$this, "addSubscription"]);
         add_action("wp_ajax_wpdCheckNotificationType", [&$this, "checkNotificationType"]);

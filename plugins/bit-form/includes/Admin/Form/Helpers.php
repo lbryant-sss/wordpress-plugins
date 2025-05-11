@@ -409,6 +409,33 @@ LOAD_SECRIPT;
     return openssl_decrypt($cipherText, 'AES-256-CBC', BITFORMS_SECRET_KEY, OPENSSL_RAW_DATA, $iv);
   }
 
+  /**
+     * Sanitize user-provided HTML content by removing dangerous JS code
+     * while allowing all valid HTML/CSS.
+     *
+     * @param string $html Raw HTML from user input
+     * @return string Sanitized safe HTML
+     */
+  public static function sanitizeUserHTML(string $html): string
+  {
+    // Remove <script> tags entirely
+    $html = preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', '', $html);
+
+    // Remove event handler attributes (like onclick, onload, etc.)
+    $html = preg_replace_callback('/<[^>]+>/i', function ($matches) {
+      return preg_replace('/\s*on\w+\s*=\s*"[^"]*"/i', '', $matches[0]); // on*=""
+    }, $html);
+
+    $html = preg_replace_callback('/<[^>]+>/i', function ($matches) {
+      return preg_replace("/\s*on\w+\s*=\s*'[^']*'/i", '', $matches[0]); // on*=''
+    }, $html);
+
+    // Remove javascript: from href or src
+    $html = preg_replace('/(href|src)\s*=\s*([\'"])\s*javascript:[^\'"]*\2/i', '', $html);
+
+    return $html;
+  }
+
   public static function sanitizeUrlParam($param)
   {
     if (preg_match('/\.\.?\//', $param)) {

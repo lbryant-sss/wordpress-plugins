@@ -17,7 +17,7 @@ final class FieldValueHandler
     }
 
     if ($formID) {
-      $stringToReplaceField = self::replaceValueAllFields($stringToReplaceField, $fieldValues, $formID);
+      $stringToReplaceField = self::replaceValueOfBf_all_data($stringToReplaceField, $fieldValues, $formID);
       $stringToReplaceField = self::replaceRepeaterFieldValue($stringToReplaceField, $fieldValues, $formID);
     }
 
@@ -140,12 +140,12 @@ final class FieldValueHandler
     return $emailAddresses;
   }
 
-  public static function replaceSmartTagWithValue($fieldValues)
+  public static function replaceSmartTagWithValue($contentWithSmartTag)
   {
     $fieldPattern = '/(\${_[^{]*?)(?=\})}/';
-    $matchPattern = preg_match_all($fieldPattern, $fieldValues, $matchedField);
+    $matchPattern = preg_match_all($fieldPattern, $contentWithSmartTag, $matchedField);
     if (!$matchPattern) {
-      return $fieldValues;
+      return $contentWithSmartTag;
     }
 
     $ajaxRequest = false;
@@ -166,9 +166,9 @@ final class FieldValueHandler
       }
 
       $tagFieldValues = SmartTags::getSmartTagValue($fieldName, $ajaxRequest, $customValue);
-      $fieldValues = str_replace($value, $tagFieldValues, $fieldValues);
+      $contentWithSmartTag = str_replace($value, $tagFieldValues, $contentWithSmartTag);
     }
-    return $fieldValues;
+    return $contentWithSmartTag;
   }
 
   public static function isEmpty($val)
@@ -289,7 +289,7 @@ final class FieldValueHandler
     );
   }
 
-  public static function replaceValueAllFields($stringToReplaceField, $fieldValues, $formId)
+  public static function replaceValueOfBf_all_data($stringToReplaceField, $fieldValues, $formId)
   {
     // ${bf_all_fields.1}
     $pattern = '/\$\{bf_all_data\}/'; // Corrected escaping
@@ -396,8 +396,8 @@ final class FieldValueHandler
     $formManager = FormManager::getInstance($formID);
     $formFields = $formManager->getFields();
 
-    // Find all placeholders like ${field_key}
-    preg_match_all('/\$\{(.*?)\}/', $stringToReplaceField, $matches);
+    // Find all placeholders like ${field_key} example: ${b27-5}
+    preg_match_all('/\$\{(b\d+-\d+)\}/', $stringToReplaceField, $matches);
 
     if (empty($matches[1])) {
       return $stringToReplaceField;

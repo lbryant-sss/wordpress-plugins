@@ -2,7 +2,7 @@
 /*
  * Plugin Name: wpDiscuz
  * Description: #1 WordPress Comment Plugin. Innovative, modern and feature-rich comment system to supercharge your website comment section.
- * Version: 7.6.29
+ * Version: 7.6.30
  * Author: gVectors Team
  * Author URI: https://gvectors.com/
  * Plugin URI: https://wpdiscuz.com/
@@ -86,35 +86,42 @@ class WpdiscuzCore implements WpDiscuzConstants {
         wp_cookie_constants();
         self::$DEFAULT_COMMENT_TYPE = version_compare(get_bloginfo("version"), "5.5", ">=") ? "comment" : "";
         $this->dbManager            = new WpdiscuzDBManager();
-        $this->options              = new WpdiscuzOptions($this->dbManager);
-        $this->wpdiscuzForm         = new wpDiscuzForm($this->options, $this->version);
-        $this->helper               = new WpdiscuzHelper($this->options, $this->dbManager, $this->wpdiscuzForm);
-        $this->helperEmail          = new WpdiscuzHelperEmail($this->options, $this->dbManager, $this->helper);
-        $this->helperOptimization   = new WpdiscuzHelperOptimization($this->options, $this->dbManager, $this->helperEmail, $this->helper);
-        $this->helperAjax           = new WpdiscuzHelperAjax($this->options, $this->dbManager, $this->helper, $this->helperEmail, $this->wpdiscuzForm);
-        $this->helperUpload         = new WpdiscuzHelperUpload($this->options, $this->dbManager, $this->wpdiscuzForm, $this->helper);
-        $this->cache                = new WpdiscuzCache($this->options, $this->helper);
-        $this->requestUri           = !empty($_SERVER["REQUEST_URI"]) ? $_SERVER["REQUEST_URI"] : "";
+
+        register_activation_hook(__FILE__, [&$this, "registerJobs"]);
+        register_deactivation_hook(__FILE__, [&$this, "deregisterJobs"]);
+        register_activation_hook(__FILE__, [&$this, "pluginActivation"]);
+        add_filter("cron_schedules", [&$this, "setIntervals"]);
+        add_action("init", [&$this, "wpdiscuzTextDomain"], 10);
+        add_action("init", [&$this, "wpdiscuzInit"], 11);
+        add_action("init", [&$this, "wpdiscuzBlockInit"], 12);
+
+    }
+
+    public function wpdiscuzInit() {
+        $this->options            = new WpdiscuzOptions($this->dbManager);
+        $this->wpdiscuzForm       = new wpDiscuzForm($this->options, $this->version);
+        $this->helper             = new WpdiscuzHelper($this->options, $this->dbManager, $this->wpdiscuzForm);
+        $this->helperEmail        = new WpdiscuzHelperEmail($this->options, $this->dbManager, $this->helper);
+        $this->helperOptimization = new WpdiscuzHelperOptimization($this->options, $this->dbManager, $this->helperEmail, $this->helper);
+        $this->helperAjax         = new WpdiscuzHelperAjax($this->options, $this->dbManager, $this->helper, $this->helperEmail, $this->wpdiscuzForm);
+        $this->helperUpload       = new WpdiscuzHelperUpload($this->options, $this->dbManager, $this->wpdiscuzForm, $this->helper);
+        $this->cache              = new WpdiscuzCache($this->options, $this->helper);
+        $this->requestUri         = !empty($_SERVER["REQUEST_URI"]) ? $_SERVER["REQUEST_URI"] : "";
+
+        do_action("wpdiscuz_init");
 
         if ($this->options->thread_display["isLoadOnlyParentComments"]) {
             add_action("wp_ajax_wpdShowReplies", [&$this, "showReplies"]);
             add_action("wp_ajax_nopriv_wpdShowReplies", [&$this, "showReplies"]);
         }
 
-        register_activation_hook(__FILE__, [&$this, "pluginActivation"]);
-
-        /* CRON JOBS */
-        register_activation_hook(__FILE__, [&$this, "registerJobs"]);
-        register_deactivation_hook(__FILE__, [&$this, "deregisterJobs"]);
-        add_filter("cron_schedules", [&$this, "setIntervals"]);
         /* /CRON JOBS */
         add_action("wp_insert_site", [&$this, "addNewBlog"]);
         add_action("delete_blog", [&$this, "deleteBlog"]);
         add_action("wp", [&$this, "initCurrentPostType"]);
 
         add_action("admin_init", [&$this, "uninstall"], 1);
-        add_action("init", [&$this, "wpdiscuzTextDomain"]);
-        add_action("init", [&$this, "wpdiscuzBlockInit"]);
+
         add_action("admin_init", [&$this, "pluginNewVersion"], 1);
         add_action("admin_enqueue_scripts", [&$this, "backendFiles"], 100);
         add_action("wp_enqueue_scripts", [&$this, "frontendFiles"]);
@@ -257,7 +264,7 @@ class WpdiscuzCore implements WpDiscuzConstants {
 
     private function activateWpDiscuz() {
         $this->dbManager->dbCreateTables();
-        $this->pluginNewVersion();
+        //$this->pluginNewVersion();
     }
 
     public function wpdiscuzTextDomain() {
@@ -588,6 +595,7 @@ class WpdiscuzCore implements WpDiscuzConstants {
                 }
 
                 if ($isInRange || $highLevelUser) {
+                    $userAgent  = isset($_SERVER["HTTP_USER_AGENT"]) ? $_SERVER["HTTP_USER_AGENT"] : "";
                     $response   = [];
                     $commentarr = [
                         "comment_ID"           => $commentId,
@@ -601,7 +609,8 @@ class WpdiscuzCore implements WpDiscuzConstants {
                         "comment_parent"       => $comment->comment_parent,
                         "user_id"              => $comment->user_id,
                         "comment_author_IP"    => $comment->comment_author_IP,
-                        "comment_date_gmt"     => $comment->comment_date_gmt
+                        "comment_date_gmt"     => $comment->comment_date_gmt,
+                        "comment_agent"        => $userAgent
                     ];
 
 //	                remove_filter( 'wp_is_comment_flood', 'wp_check_comment_flood', 10);
@@ -620,9 +629,7 @@ class WpdiscuzCore implements WpDiscuzConstants {
 
                         $trimmedContent                = $this->helper->replaceCommentContentCode($trimmedContent);
                         $commentContent                = $this->helper->filterCommentText($trimmedContent);
-                        $userAgent                     = isset($_SERVER["HTTP_USER_AGENT"]) ? $_SERVER["HTTP_USER_AGENT"] : "";
                         $commentarr["comment_content"] = $commentContent;
-                        $commentarr["comment_agent"]   = $userAgent;
 
 
                         if (class_exists("Akismet") && method_exists('Akismet', 'auto_check_comment')) {
@@ -1321,7 +1328,6 @@ class WpdiscuzCore implements WpDiscuzConstants {
             $this->wpdiscuzOptionsJs["dataFilterCallbacks"] = [];
             $this->wpdiscuzOptionsJs["phraseFilters"]       = [];
             $this->wpdiscuzOptionsJs["scrollSize"]          = 32;
-            $this->wpdiscuzOptionsJs                        = apply_filters("wpdiscuz_js_options", $this->wpdiscuzOptionsJs, $this->options);
             $this->wpdiscuzOptionsJs["url"]                 = admin_url("admin-ajax.php");
             $this->wpdiscuzOptionsJs["customAjaxUrl"]       = plugins_url(WPDISCUZ_DIR_NAME . "/utils/ajax/wpdiscuz-ajax.php");
             $this->wpdiscuzOptionsJs["bubbleUpdateUrl"]     = rest_url("wpdiscuz/v1/update");
@@ -1329,6 +1335,7 @@ class WpdiscuzCore implements WpDiscuzConstants {
             $this->wpdiscuzOptionsJs["is_rate_editable"]    = isset($formGeneralOptions["is_rate_editable"]) ? $formGeneralOptions["is_rate_editable"] : 0;
             $this->wpdiscuzOptionsJs["menu_icon"]           = WPDISCUZ_DIR_URL . "/assets/img/plugin-icon/wpdiscuz-svg.svg";
             $this->wpdiscuzOptionsJs["menu_icon_hover"]     = WPDISCUZ_DIR_URL . "/assets/img/plugin-icon/wpdiscuz-svg_hover.svg";
+            $this->wpdiscuzOptionsJs                        = apply_filters("wpdiscuz_js_options", $this->wpdiscuzOptionsJs, $this->options);
             $loadQuill                                      = $this->options->form["richEditor"] === "both" || (!wp_is_mobile() && $this->options->form["richEditor"] === "desktop");
             $customCSSSlug                                  = "wpdiscuz-frontend-custom-css";
             $customFileName                                 = "style-custom";
@@ -1692,6 +1699,9 @@ class WpdiscuzCore implements WpDiscuzConstants {
      * merge old and new options
      */
     private function addNewOptions(&$options) {
+        if (!is_array($options)) {
+            $options = [];
+        }
         $options = array_merge($this->options->getDefaultOptions(), $options);
         $this->options->initOptions($options);
         $this->options->updateOptions();
@@ -1964,7 +1974,9 @@ class WpdiscuzCore implements WpDiscuzConstants {
                             $commentListArgs["user_votes"] = $this->dbManager->getUserVotes($comments, md5($this->helper->getRealIPAddr()));
                         }
                     }
-                    $response["comment_list"]      = wp_list_comments($commentListArgs, $comments);
+                    do_action("wpdiscuz_before_show_replies", $this->commentsArgs, $commentListArgs["current_user"]);
+                    $response["comment_list"] = wp_list_comments($commentListArgs, $comments);
+                    do_action("wpdiscuz_after_show_replies", $this->commentsArgs, $commentListArgs["current_user"]);
                     $response["callbackFunctions"] = [];
                     $response                      = apply_filters("wpdiscuz_ajax_callbacks", $response, $action = "wpdShowReplies");
                     wp_send_json_success($response);

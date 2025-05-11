@@ -2,6 +2,7 @@
 
 namespace Bitcode\BitForm\Core\Cryptography;
 
+use BitCode\BitForm\Core\Util\Log;
 use Exception;
 
 class SodiumCompat
@@ -10,7 +11,7 @@ class SodiumCompat
   {
     if (!class_exists('ParagonIE_Sodium_Compat')) {
       require ABSPATH . WPINC . '/sodium_compat/autoload.php';
-      error_log(class_exists('ParagonIE_Sodium_Compat') ? 'Found' : 'ParagonIE\Sodium\Compat not found');
+      Log::debug_log(class_exists('ParagonIE_Sodium_Compat') ? 'Found' : 'ParagonIE\Sodium\Compat not found');
     }
   }
 
@@ -60,7 +61,7 @@ class SodiumCompat
       $key
     );
     if (!is_string($plaintext)) {
-      error_log('Decryption failed');
+      Log::debug_log('Decryption failed');
     }
     return $plaintext;
   }

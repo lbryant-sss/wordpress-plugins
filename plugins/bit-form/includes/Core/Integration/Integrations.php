@@ -10,6 +10,7 @@ namespace BitCode\BitForm\Core\Integration;
 use BitCode\BitForm\Core\Database\FormEntryModel;
 use BitCode\BitForm\Core\Database\FormModel;
 use BitCode\BitForm\Core\Util\ApiResponse;
+use BitCode\BitForm\Core\Util\Log;
 use BitCode\BitForm\Core\Util\SmartTags;
 use BitCode\BitForm\Core\Util\Utilities;
 /**
@@ -214,7 +215,7 @@ final class Integrations
 
             $errorMsg = apply_filters('bitform_filter_integration_run_failure_message', __('Integration execution failed', 'bit-form'), $integrationID, $formID);
 
-            error_log('[+] Integration execution failed: ' . print_r($errorMsg, true));
+            Log::debug_log('[+] Integration execution failed: ' . print_r($errorMsg, true));
 
             $logResponse->apiResponse(
               $logID,

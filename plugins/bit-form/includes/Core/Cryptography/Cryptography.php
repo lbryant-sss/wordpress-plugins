@@ -2,6 +2,7 @@
 
 namespace BitCode\BitForm\Core\Cryptography;
 
+use BitCode\BitForm\Core\Util\Log;
 use WP_Error;
 
 class Cryptography
@@ -25,7 +26,7 @@ class Cryptography
       return base64_encode(self::getSodiumCompat()->compatEncrypt($message, $key));
     } catch (Exception $e) {
       // Handle the exception (e.g., log it, rethrow it, or return a meaningful error message)
-      error_log('Encryption failed: ' . $e->getMessage());
+      Log::debug_log('Encryption failed: ' . $e->getMessage());
       return new WP_Error('encryption_failed', __($e->getMessage(), 'bit-form'));
     }
   }
@@ -39,7 +40,7 @@ class Cryptography
       return self::getSodiumCompat()->compatDecrypt(base64_decode($message), $key);
     } catch (\Exception $e) {
       // Handle the exception
-      error_log('Decryption failed: ' . $e->getMessage());
+      Log::debug_log('Decryption failed: ' . $e->getMessage());
       return new WP_Error('decryption_failed', __($e->getMessage(), 'bit-form'));
     }
   }

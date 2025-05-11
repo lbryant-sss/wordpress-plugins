@@ -27,7 +27,7 @@ class wpDiscuzForm implements wpdFormConst
         $this->formPostRel = $options->formPostRel;
         SocialLogin::getInstance($this->options);
 
-        add_action("init", [&$this, "registerPostType"], 1);
+        add_action("wpdiscuz_init", [&$this, "registerPostType"], 1);
         add_action("admin_init", [&$this, "custoFormRoleCaps"], 999);
         add_action("admin_menu", [&$this, "addFormToAdminMenu"], 874);
         add_action("admin_enqueue_scripts", [&$this, "customFormAdminScripts"], 245);

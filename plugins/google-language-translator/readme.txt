@@ -5,7 +5,7 @@ Author: Translate AI Multilingual Solutions
 Author URI: https://gtranslate.io/?xyz=3167
 Tags: translate wordpress, translate, translator, translation, language, multi language
 Requires at least: 2.9
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 6.0.20
 
 Translate WordPress with Google Language Translator multilanguage plugin which allows to insert Google Translate widget anywhere on your website.

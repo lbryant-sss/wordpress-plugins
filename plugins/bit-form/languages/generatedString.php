@@ -1691,6 +1691,32 @@ $i18n_strings = array(
 
     'Generate new API key' => __('Generate new API key', 'bit-form'),
 
+    'Registration successfully done.' => __('Registration successfully done.', 'bit-form'),
+
+    'Activate Your Account' => __('Activate Your Account', 'bit-form'),
+
+    'Your account has been activated successfully.&nbsp;You can now login.' => __('Your account has been activated successfully.&nbsp;You can now login.', 'bit-form'),
+
+    'Your account is already activated!' => __('Your account is already activated!', 'bit-form'),
+
+    'Sorry! Your URL Is Invalid!!' => __('Sorry! Your URL Is Invalid!!', 'bit-form'),
+
+    'This Requested account has been rejected successfully.' => __('This Requested account has been rejected successfully.', 'bit-form'),
+
+    'Your account is pending for admin approval.' => __('Your account is pending for admin approval.', 'bit-form'),
+
+    'Your account is pending for admin approval. Please wait for admin approval.' => __('Your account is pending for admin approval. Please wait for admin approval.', 'bit-form'),
+
+    'New User Registration Request' => __('New User Registration Request', 'bit-form'),
+
+    'Your account has been rejected.' => __('Your account has been rejected.', 'bit-form'),
+
+    '<p>Your account has been rejected by admin.</p>' => __('<p>Your account has been rejected by admin.</p>', 'bit-form'),
+
+    'You have been successfully logged in.' => __('You have been successfully logged in.', 'bit-form'),
+
+    'We have e-mailed your password reset link!' => __('We have e-mailed your password reset link!', 'bit-form'),
+
     'Saved successfully.' => __('Saved successfully.', 'bit-form'),
 
     'Saving...' => __('Saving...', 'bit-form'),
@@ -3649,11 +3675,15 @@ $i18n_strings = array(
 
     'Invalid redirect page:' => __('Invalid redirect page:', 'bit-form'),
 
+    'Rejection Success redirect page:' => __('Rejection Success redirect page:', 'bit-form'),
+
     'Activation success' => __('Activation success', 'bit-form'),
 
     'Already activated account' => __('Already activated account', 'bit-form'),
 
     'Invalid activation key' => __('Invalid activation key', 'bit-form'),
+
+    'Reject Success Message' => __('Reject Success Message', 'bit-form'),
 
     'Field Mappping' => __('Field Mappping', 'bit-form'),
 
@@ -3672,6 +3702,10 @@ $i18n_strings = array(
     'select approval method' => __('select approval method', 'bit-form'),
 
     'Auto Login After Registration' => __('Auto Login After Registration', 'bit-form'),
+
+    'Customize Email templates' => __('Customize Email templates', 'bit-form'),
+
+    'Edit verification Messages/Redirect URL' => __('Edit verification Messages/Redirect URL', 'bit-form'),
 
     'User Meta Field Mappping' => __('User Meta Field Mappping', 'bit-form'),
 

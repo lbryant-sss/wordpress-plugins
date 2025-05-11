@@ -2,6 +2,7 @@
 
 namespace BitCode\BitForm\Frontend\Form\View;
 
+use BitCode\BitForm\Admin\Form\Helpers;
 use BitCode\BitForm\Core\Util\FieldValueHandler;
 use BitCode\BitForm\Core\Util\FrontendHelpers;
 
@@ -40,23 +41,10 @@ class FieldHelpers
     return '';
   }
 
-  public function renderHTMR($title)
+  public function renderHTMR($content)
   {
-    $allowed_html = wp_kses_allowed_html('post');
-
-    $allowed_html['iframe'] = [
-      'src'             => true,
-      'width'           => true,
-      'height'          => true,
-      'frameborder'     => true,
-      'allow'           => true,
-      'allowfullscreen' => true,
-      'title'           => true,
-      'style'           => true,
-    ];
-
-    $allowed_html['style'] = true;
-    return wp_kses($title, $allowed_html);
+    $safeContent = Helpers::sanitizeUserHTML($content);
+    return $safeContent;
   }
 
   public function getAtomicCls($element)

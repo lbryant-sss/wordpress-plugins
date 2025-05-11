@@ -1,13 +1,13 @@
 === Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder ===
 Plugin Name: Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder
-Version: 2.18.8
-Stable tag: 2.18.8
+Version: 2.18.9
+Stable tag: 2.18.9
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin 
 Tags: contact form, form, contact forms, forms, form builder
 Requires at least: 5.0
-Tested up to: 6.7.2
+Tested up to: 6.8.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -544,6 +544,15 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
+= 2.18.9 =
+*Release Date: 10 May, 2025*
+*Improvements:
+    1. Email Notifications: Added an option to send admin and user email notifications upon "Admin Review" status in WP Auth (User Registration).
+    2. HTML Rendering: Improved rendering of user-defined custom HTML in the HTML field and form field content.
+
+*Fix:
+    1. Fixed an issue where smart tags values were not visible in email and PDF templates.
+
 = 2.18.8 =
 *Release Date: 26 April, 2025*
 *Fix:
