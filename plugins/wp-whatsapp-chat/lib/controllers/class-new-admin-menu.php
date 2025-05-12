@@ -34,28 +34,6 @@ class New_Admin_Menu {
 			true
 		);
 
-		wp_register_style(
-			'qlwapp-new-admin-menu',
-			plugins_url( '/build/new-admin-menu/css/style.css', QLWAPP_PLUGIN_FILE ),
-			array(
-				'qlwapp-components',
-				'media-views',
-				'wp-components',
-			),
-			QLWAPP_PLUGIN_VERSION
-		);
-
-		wp_register_style(
-			'qlwapp-preview',
-			plugins_url( '/build/preview/css/style.css', QLWAPP_PLUGIN_FILE ),
-			array(
-				'qlwapp-components',
-				'media-views',
-				'wp-components',
-			),
-			QLWAPP_PLUGIN_VERSION
-		);
-
 		wp_localize_script(
 			'qlwapp-new-admin-menu',
 			'qlwappApiAdminMenu',
@@ -64,6 +42,18 @@ class New_Admin_Menu {
 				'QLWAPP_DISPLAY_POST_TYPES' => $entity_options->get_entries(),
 				'QLWAPP_DISPLAY_TAXONOMIES' => $entity_options->get_taxonomies(),
 			)
+		);
+
+		wp_register_style(
+			'qlwapp-new-admin-menu',
+			plugins_url( '/build/new-admin-menu/css/style.css', QLWAPP_PLUGIN_FILE ),
+			array(
+				'qlwapp-components',
+				'qlwapp-frontend',
+				'media-views',
+				'wp-components',
+			),
+			QLWAPP_PLUGIN_VERSION
 		);
 
 		wp_enqueue_editor();
@@ -102,7 +92,6 @@ class New_Admin_Menu {
 		wp_enqueue_media();
 		wp_enqueue_script( 'qlwapp-new-admin-menu' );
 		wp_enqueue_style( 'qlwapp-new-admin-menu' );
-		wp_enqueue_style( 'qlwapp-preview' );
 	}
 
 	public function add_menu() {

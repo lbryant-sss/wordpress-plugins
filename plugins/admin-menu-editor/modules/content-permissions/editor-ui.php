@@ -203,6 +203,8 @@ class ContentPermissionsMetaBox {
 			'adminLikeRoles'       => $this->getAdminLikeRoles(),
 		];
 		$cpeSettingsUrl = $this->settingsPageUrl . '#ame-content-permissions-section';
+		$cpeModulesUrl = $this->settingsPageUrl . '#ame-available-modules';
+
 		require __DIR__ . '/metabox-template.php';
 	}
 
@@ -300,6 +302,7 @@ class ContentPermissionsMetaBox {
 						'basic'      => _x('Basic', 'content permissions tab', 'admin-menu-editor'),
 						'advanced'   => _x('Advanced', 'content permissions tab', 'admin-menu-editor'),
 						'protection' => _x('Protection', 'content permissions tab', 'admin-menu-editor'),
+						'about'      => _x('About', 'content permissions tab', 'admin-menu-editor'),
 					],
 					'permissionOptions' => [
 						'allow'        => _x('Allow', 'content permissions: option label', 'admin-menu-editor'),

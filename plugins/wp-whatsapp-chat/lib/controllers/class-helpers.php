@@ -2,8 +2,6 @@
 
 namespace QuadLayers\QLWAPP\Controllers;
 
-use QuadLayers\QLWAPP\Models\Button as Models_Button;
-
 class Helpers {
 
 	protected static $instance;

@@ -10,7 +10,6 @@ class Contact extends CollectionEntity {
 	public $order             = 1;
 	public $active            = 1;
 	public $chat              = 1;
-	public $auto_open         = 0;
 	public $avatar            = 'https://www.gravatar.com/avatar/00000000000000000000000000000000';
 	public $type              = 'phone';
 	public $phone             = QLWAPP_PHONE_NUMBER;
@@ -23,7 +22,6 @@ class Contact extends CollectionEntity {
 	public $timeto   = '00:00';
 	public $timezone;
 	public $visibility = 'readonly';
-	public $timeout    = 'readonly';
 	public $timedays   = array();
 	public $display;
 

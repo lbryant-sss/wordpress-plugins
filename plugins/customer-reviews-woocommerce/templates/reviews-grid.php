@@ -72,7 +72,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					if ( 0 < $count_customer_videos ) {
 						// if there are videos, use the 1st one as a cover
 						$customer_images_html .= '<video preload="metadata" class="image-row-vid" src="' . esc_url( $customer_videos[$vid_idx] ) . '" data-crmedia="vid" data-crtitle="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $vid_idx + 1, $review->comment_author ) . '"></video>';
-						$customer_images_html .= '<img class="cr-comment-videoicon" src="' . plugin_dir_url( dirname( __FILE__ ) ) . 'img/video.svg" ';
+						$customer_images_html .= '<img class="cr-comment-videoicon" src="' . CR_Utils::cr_get_plugin_dir_url() . 'img/video.svg" ';
 						$customer_images_html .= 'alt="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $vid_idx + 1, $review->comment_author ) . '">';
 						$vid_idx++;
 						// add a video counter icon
@@ -115,14 +115,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<?php
 									echo esc_html( $author );
 									if( $country_code ) {
-										echo '<img src="' . plugin_dir_url( dirname( __FILE__ ) ) . 'img/flags/' . $country_code . '.svg" class="ivole-grid-country-icon" width="20" height="15" alt="' . $country_code . '">';
+										echo '<img src="' . CR_Utils::cr_get_plugin_dir_url() . 'img/flags/' . $country_code . '.svg" class="ivole-grid-country-icon" width="20" height="15" alt="' . $country_code . '">';
 									}
 									?>
 								</div>
 								<?php
 								if( 'yes' === get_option( 'woocommerce_review_rating_verification_label' ) && wc_review_is_from_verified_owner( $review->comment_ID ) ) {
 									echo '<div class="reviewer-verified">';
-									echo '<img class="cr-reviewer-verified" src="' . plugin_dir_url( dirname( __FILE__ ) ) . 'img/verified.svg' . '" alt="' . $verified_text . '" width="22" height="22" loading="lazy" />';
+									echo '<img class="cr-reviewer-verified" src="' . CR_Utils::cr_get_plugin_dir_url() . 'img/verified.svg' . '" alt="' . $verified_text . '" width="22" height="22" loading="lazy" />';
 									echo $verified_text;
 									echo '</div>';
 								} else {

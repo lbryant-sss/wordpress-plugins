@@ -3,8 +3,8 @@ Tags: widgets, blocks, contact form, blog, slider
 Requires at least: 4.2
 Tested up to: 6.8
 Requires PHP: 7.0.0
-Stable tag: 1.68.2
-Build time: 2025-05-03T15:59:16+01:00
+Stable tag: 1.68.3
+Build time: 2025-05-11T15:41:37+01:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis, alexgso
 Donate link: https://siteorigin.com/downloads/premium/
@@ -108,6 +108,13 @@ SiteOrigin Premium includes access to our professional email support service, pe
 The Widgets Bundle global interface is available at Plugins > SiteOrigin Widgets. Widgets can be enabled or disabled as needed. If a widget offers global settings, you can access those via the Settings button next to each applicable widget.
 
 == Changelog ==
+
+= 1.68.3 - 11 May 2025 =
+* Image Grid: Added gallery keyword support.
+* Simple Masonry: Fixed preloader visibility, removed incorrect type, and resolved potential TypeError.
+* Slider: Prevented empty overlay issues.
+* Widget Blocks: Fixed icon saving and keyword support.
+* General: Updated Installer submodule and performed bulk PHP CS improvements.
 
 = 1.68.2 - 03 May 2025 =
 * Icon Field: Fixed icon callback support to ensure proper rendering of custom icons.

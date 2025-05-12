@@ -49,25 +49,6 @@ class Entity_Visibility {
 			return $show;
 		}
 
-		// Post types entities.
-		if ( ! is_front_page() && is_singular() && isset( $wp_query->get_queried_object()->post_type ) ) {
-
-			if ( isset( $display['entries'][ $wp_query->get_queried_object()->post_type ]['ids'] ) && count( $display['entries'][ $wp_query->get_queried_object()->post_type ]['ids'] ) ) {
-				$show = ! $display['entries'][ $wp_query->get_queried_object()->post_type ]['include'];
-				if ( in_array( 'all', $display['entries'][ $wp_query->get_queried_object()->post_type ]['ids'] ) ) {
-					return ! $show;
-				}
-				if ( in_array( $wp_query->get_queried_object()->ID, $display['entries'][ $wp_query->get_queried_object()->post_type ]['ids'] ) ) {
-					$show = ! $show;
-				}
-				// backward compatibility for $post->post_name
-				if ( in_array( $wp_query->get_queried_object()->post_name, $display['entries'][ $wp_query->get_queried_object()->post_type ]['ids'] ) ) {
-					$show = ! $show;
-				}
-			}
-			return $show;
-		}
-
 		return $show;
 	}
 

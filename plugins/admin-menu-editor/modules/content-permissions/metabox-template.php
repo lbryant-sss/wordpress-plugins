@@ -7,6 +7,7 @@ use YahnisElsts\AdminMenuEditor\ContentPermissions\UserInterface\ContentPermissi
 /**
  * @var array $editorData Provided by the method that includes this template.
  * @var string $cpeSettingsUrl URL to the content permissions section on the settings page.
+ * @var string $cpeModulesUrl URL to the "Modules" section on the settings page.
  */
 
 $basicOptions = [
@@ -219,6 +220,38 @@ $basicOptions = [
 					</div>
 					<!-- /ko -->
 				</fieldset>
+			</div>
+
+			<div class="ame-cpe-tab ame-cpe-about-tab" data-bind="visible: activeTab().id === 'about'">
+				<ul>
+					<li><?php
+						echo esc_html_x(
+							'The "Content Permissions (AME)" box is part of the Admin Menu Editor plugin.',
+							'content permissions - about tab',
+							'admin-menu-editor'
+						);
+						?></li>
+					<li><?php
+						echo esc_html_x(
+							'Normally, only users who can access the menu editor can see this box.',
+							'content permissions - about tab',
+							'admin-menu-editor'
+						)
+						?></li>
+					<li><?php
+						//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+						printf(
+						/* translators: %1$s = URL to the "Modules" section on the plugin settings page, %2$s = module name */
+							__(
+								'If necessary, you can disable this box by going to the <a href="%1$s">Settings</a> tab and unchecking the "%2$s" option in the "Modules" section.',
+								'admin-menu-editor'
+							),
+							esc_url($cpeModulesUrl),
+							'Content Permissions' //Module names are currently not translatable.
+						);
+						//phpcs:enable
+						?></li>
+				</ul>
 			</div>
 		</div>
 	</div>

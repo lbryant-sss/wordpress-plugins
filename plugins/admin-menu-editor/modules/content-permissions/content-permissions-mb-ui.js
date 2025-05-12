@@ -26,6 +26,9 @@ var AmeContentPermissionsUi;
             }, {
                 id: 'protection',
                 title: translations.tabTitles.protection || 'Protection'
+            }, {
+                id: 'about',
+                title: translations.tabTitles.about || 'About'
             });
             this.actorSelector = new AmeActorSelector(AmeActors, false, false, 1);
             this.selectedActor = this.actorSelector.createActorObservable(ko);

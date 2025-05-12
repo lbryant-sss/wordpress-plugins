@@ -1050,7 +1050,7 @@ div.iv-comment-image img {
 div.ivole-summaryBox {
 	margin-bottom: 2rem;
 }
-.cr-histogramTable {
+.cr-summaryBox-wrap .cr-histogramTable {
 	margin-bottom: 0px;
 	border-collapse: collapse;
 	border: 0px;

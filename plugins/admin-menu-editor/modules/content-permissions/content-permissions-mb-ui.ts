@@ -61,6 +61,10 @@ namespace AmeContentPermissionsUi {
 				{
 					id: 'protection',
 					title: translations.tabTitles.protection || 'Protection'
+				},
+				{
+					id: 'about',
+					title: translations.tabTitles.about || 'About'
 				}
 			);
 

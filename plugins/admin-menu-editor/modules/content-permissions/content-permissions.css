@@ -457,6 +457,11 @@ fieldset[disabled] #ame-cpe-basic-actor-shortcuts a {
   color: #787c82;
 }
 
+.ame-cpe-about-tab ul {
+  list-style: disc inside;
+  margin: 0;
+}
+
 #ame-cpe-enforcement-disabled-notice {
   padding: 8px 12px;
   border: solid #bd8600;

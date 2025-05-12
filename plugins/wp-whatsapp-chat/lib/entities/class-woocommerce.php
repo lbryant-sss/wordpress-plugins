@@ -20,7 +20,6 @@ class WooCommerce extends SingleEntity {
 	public $timedays          = array();
 	public $timezone          = '';
 	public $visibility        = 'readonly';
-	public $timeout           = 'readonly';
 	public $animation_name    = '';
 	public $animation_delay   = '';
 	public $position_priority = 10;

@@ -530,6 +530,15 @@ $basicRoleListMarginLeft: 10px;
 
 //endregion
 
+//region About tab
+.ame-cpe-about-tab {
+	ul {
+		list-style: disc inside;
+		margin: 0;
+	}
+}
+//endregion
+
 #ame-cpe-enforcement-disabled-notice {
 	padding: 8px $cpeEdgeSpacing;
 	border: solid wpColor(yellow-40);

@@ -15,6 +15,8 @@ final class Plugin {
 
 		Admin_Menu_Routes_Library::instance();
 		Controllers\Helpers::instance();
+		Controllers\Frontend::instance();
+		Controllers\WooCommerce::instance();
 		Controllers\Components::instance();
 		if ( version_compare( $wp_version, '6.2', '<' ) ) {
 			Controllers\Admin_Menu::instance();
@@ -22,8 +24,6 @@ final class Plugin {
 			Controllers\New_Admin_Menu::instance();
 		}
 		Controllers\Admin_Menu_WooCommerce::instance();
-		Frontend::instance();
-		WooCommerce::instance();
 		add_action( 'admin_footer', array( __CLASS__, 'add_premium_css' ) );
 		do_action( 'qlwapp_init' );
 	}

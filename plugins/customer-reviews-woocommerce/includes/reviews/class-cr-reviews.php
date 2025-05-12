@@ -1595,6 +1595,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 				'comment' => $comment,
 				'args'    => $args,
 				'depth'   => $depth,
+				'cr_plugin_dir_url' => plugin_dir_url( dirname( dirname( __FILE__ ) ) )
 			),
 			'customer-reviews-woocommerce',
 			dirname( dirname( dirname( __FILE__ ) ) ) . '/templates/'

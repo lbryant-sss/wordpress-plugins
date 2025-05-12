@@ -13,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once 'class-base.php';
 require_once 'class-contact.php';
 require_once 'class-display-services.php';
+require_once 'class-frontend.php';
+require_once 'class-woocommerce.php';
 
 if ( class_exists( 'QLWAPP_PRO' ) ) {
 	$old = QLWAPP_PRO::instance();

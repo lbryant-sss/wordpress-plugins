@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 5.77.0
+Stable tag: 5.77.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -233,6 +233,9 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.77.1 =
+* Improvement: an error message when third-party plugins interfere with submission of reviews via on-site review forms
+* Improvement: removal of the 'plugin_dir_url' function from the template files to prevent an issue with broken links when templates are overridden in a child theme
 = 5.77.0 =
 * Improvement: the option 'No verification' is renamed to 'Self-hosted' with additional explanations provided in the plugin settings
 * Improvement: an improved message with information about XML feed(s) created in the background
