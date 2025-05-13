@@ -439,7 +439,7 @@ class ameFileLock {
 	}
 
 	//fopen() and flock() should be fine here because we only need read permissions.
-	//phpcs:disable WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_flock,WordPress.WP.AlternativeFunctions.file_system_read_fopen
+	//phpcs:disable WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_flock,WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 	public function acquire($timeout = null) {
 		if ( $this->handle !== null ) {
 			throw new RuntimeException('Cannot acquire a lock that is already held.');
@@ -1073,5 +1073,52 @@ class ameParsedKnockoutFormSubmission {
 			$this->fields,
 			self::SELECTED_ACTOR_FIELD
 		);
+	}
+}
+
+class ameLockedGlobalOption {
+	private $optionName;
+	private $lockFileName;
+	private $autoload;
+	/**
+	 * @var float|null
+	 */
+	private $lockTimeout;
+
+	/**
+	 * @param string $optionName
+	 * @param string $lockFileName
+	 * @param float|null $lockTimeout
+	 * @param bool|null $autoload
+	 */
+	public function __construct($optionName, $lockFileName, $lockTimeout = null, $autoload = null) {
+		$this->optionName = $optionName;
+		$this->lockFileName = $lockFileName;
+		$this->autoload = $autoload;
+		$this->lockTimeout = $lockTimeout;
+	}
+
+	public function get($defaultValue = null) {
+		if ( is_multisite() ) {
+			return get_site_option($this->optionName, $defaultValue);
+		} else {
+			return get_option($this->optionName, $defaultValue);
+		}
+	}
+
+	public function set($value) {
+		$lock = ameFileLock::create($this->lockFileName);
+
+		if ( $lock->acquire($this->lockTimeout) ) {
+			if ( is_multisite() ) {
+				update_site_option($this->optionName, $value);
+			} else {
+				update_option($this->optionName, $value, $this->autoload);
+			}
+			$lock->release();
+			return true;
+		}
+
+		return false;
 	}
 }

@@ -691,14 +691,14 @@ class PaymentRepository extends AbstractRepository implements PaymentRepositoryI
         $basedOnDate = $invoice ? 'created' : 'dateTime';
 
         if (!empty($criteria['dates'])) {
-            $whereAppointment1[] = "(DATE_FORMAT(p.{$basedOnDate}, '%Y-%m-%d %H:%i:%s') BETWEEN :paymentAppointmentFrom1 AND :paymentAppointmentTo1)";
-            $whereAppointment2[] = "(DATE_FORMAT(p.{$basedOnDate}, '%Y-%m-%d %H:%i:%s') BETWEEN :paymentAppointmentFrom2 AND :paymentAppointmentTo2)";
+            $whereAppointment1[] = "(p.{$basedOnDate} BETWEEN :paymentAppointmentFrom1 AND :paymentAppointmentTo1)";
+            $whereAppointment2[] = "(p.{$basedOnDate} BETWEEN :paymentAppointmentFrom2 AND :paymentAppointmentTo2)";
             $appointmentParams1[':paymentAppointmentFrom1'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
             $appointmentParams2[':paymentAppointmentFrom2'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
             $appointmentParams1[':paymentAppointmentTo1'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][1]);
             $appointmentParams2[':paymentAppointmentTo2'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][1]);
 
-            $whereEvent[] = "(DATE_FORMAT(p.{$basedOnDate}, '%Y-%m-%d %H:%i:%s') BETWEEN :paymentEventFrom AND :paymentEventTo)";
+            $whereEvent[] = "(p.{$basedOnDate} BETWEEN :paymentEventFrom AND :paymentEventTo)";
             $eventParams[':paymentEventFrom'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
             $eventParams[':paymentEventTo'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][1]);
         }
@@ -909,14 +909,14 @@ class PaymentRepository extends AbstractRepository implements PaymentRepositoryI
         $basedOnDate = $invoice ? 'created' : 'dateTime';
 
         if (!empty($criteria['dates'])) {
-            $whereAppointment1[] = "(DATE_FORMAT(p.{$basedOnDate}, '%Y-%m-%d %H:%i:%s') BETWEEN :paymentAppointmentFrom1 AND :paymentAppointmentTo1)";
-            $whereAppointment2[] = "(DATE_FORMAT(p.{$basedOnDate}, '%Y-%m-%d %H:%i:%s') BETWEEN :paymentAppointmentFrom2 AND :paymentAppointmentTo2)";
+            $whereAppointment1[] = "(p.{$basedOnDate} BETWEEN :paymentAppointmentFrom1 AND :paymentAppointmentTo1)";
+            $whereAppointment2[] = "(p.{$basedOnDate} BETWEEN :paymentAppointmentFrom2 AND :paymentAppointmentTo2)";
             $appointmentParams1[':paymentAppointmentFrom1'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
             $appointmentParams2[':paymentAppointmentFrom2'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
             $appointmentParams1[':paymentAppointmentTo1'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][1]);
             $appointmentParams2[':paymentAppointmentTo2'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][1]);
 
-            $whereEvent[] = "(DATE_FORMAT(p.{$basedOnDate}, '%Y-%m-%d %H:%i:%s') BETWEEN :paymentEventFrom AND :paymentEventTo)";
+            $whereEvent[] = "(p.{$basedOnDate} BETWEEN :paymentEventFrom AND :paymentEventTo)";
             $eventParams[':paymentEventFrom'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
             $eventParams[':paymentEventTo'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][1]);
         }

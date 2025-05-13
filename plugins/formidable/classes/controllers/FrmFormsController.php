@@ -1140,12 +1140,14 @@ class FrmFormsController {
 	 * @return array<string,string>
 	 */
 	public static function get_columns( $columns ) {
-		$columns['cb']         = '<input type="checkbox" />';
-		$columns['name']       = esc_html__( 'Form Title', 'formidable' );
-		$columns['entries']    = esc_html__( 'Entries', 'formidable' );
-		$columns['id']         = 'ID';
-		$columns['form_key']   = esc_html__( 'Key', 'formidable' );
-		$columns['shortcode']  = esc_html__( 'Actions', 'formidable' );
+		$columns['cb']       = '<input type="checkbox" />';
+		$columns['name']     = esc_html__( 'Form Title', 'formidable' );
+		$columns['entries']  = esc_html__( 'Entries', 'formidable' );
+		$columns['id']       = 'ID';
+		$columns['form_key'] = esc_html__( 'Key', 'formidable' );
+		if ( 'trash' !== FrmAppHelper::simple_get( 'form_type' ) ) {
+			$columns['shortcode'] = esc_html__( 'Actions', 'formidable' );
+		}
 		$columns['created_at'] = esc_html__( 'Date', 'formidable' );
 
 		add_screen_option(
@@ -1541,7 +1543,7 @@ class FrmFormsController {
 		if ( function_exists( 'akismet_http_post' ) ) {
 			include FrmAppHelper::plugin_path() . '/classes/views/frm-forms/spam-settings/akismet.php';
 		}
-		include FrmAppHelper::plugin_path() . '/classes/views/frm-forms/spam-settings/honeypot.php';
+		include FrmAppHelper::plugin_path() . '/classes/views/frm-forms/spam-settings/stopforumspam.php';
 		include FrmAppHelper::plugin_path() . '/classes/views/frm-forms/spam-settings/antispam.php';
 	}
 
@@ -3219,6 +3221,10 @@ class FrmFormsController {
 		if ( ! FrmAppHelper::is_admin() && $location !== 'header' && ! empty( $frm_vars['forms_loaded'] ) ) {
 			// load formidable js
 			wp_enqueue_script( 'formidable' );
+		}
+
+		if ( ! FrmAppHelper::is_admin() ) {
+			FrmHoneypot::maybe_print_honeypot_js();
 		}
 	}
 

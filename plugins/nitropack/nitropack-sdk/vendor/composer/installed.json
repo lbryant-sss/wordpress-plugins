@@ -7,25 +7,25 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:wpengine/np-httpclient.git",
-                "reference": "b12350fa4cb4f137e3b872b348bd8bb68d0df4e3"
+                "reference": "1fd4fd577d96710ba582b015a43169bb5658c9b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wpengine/np-httpclient/zipball/b12350fa4cb4f137e3b872b348bd8bb68d0df4e3",
-                "reference": "b12350fa4cb4f137e3b872b348bd8bb68d0df4e3",
+                "url": "https://api.github.com/repos/wpengine/np-httpclient/zipball/1fd4fd577d96710ba582b015a43169bb5658c9b6",
+                "reference": "1fd4fd577d96710ba582b015a43169bb5658c9b6",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "nitropack/url": "dev-master",
-                "php": "^5.6|^7.0|^8.0"
+                "php": "^7.4|^8.0"
             },
             "require-dev": {
                 "ext-pcntl": "*",
                 "ext-posix": "*",
                 "monolog/monolog": "^1.1|^2.0|^3.0"
             },
-            "time": "2025-03-17T08:38:39+00:00",
+            "time": "2025-04-30T11:13:12+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",

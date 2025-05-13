@@ -4,7 +4,7 @@ Donate link: https://profiles.wordpress.org/emrevona/
 Tags: cache, Optimize, performance, PageSpeed, core web vitals
 Requires at least: 3.3
 Tested up to: 6.8
-Stable tag: 1.3.6
+Stable tag: 1.3.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -116,6 +116,13 @@ Chinese Simplified (China), Chinese Traditional (Taiwan), Czech, Dutch (Belgium)
 18. Database Cleanup
 
 == Changelog ==
+
+= 1.3.7 =
+* <strong>[Improvement]</strong> Serve cached content via .htaccess rules instead of PHP when URLs include the fbclid query string
+* <strong>[FEATURE]</strong> Added support for Spanish (Chile) and Ukrainian languages
+* to update translation files
+* to fix PHP Fatal error: Uncaught TypeError: method_exists(): Argument #1 ($object_or_class) must be of type object|string, array given in cdn.php:383
+* <strong>[Improvement]</strong> Added specific handling for BunnyCDN 403 errors
 
 = 1.3.6 =
 * Prevented unnecessary cache deletion for pending comments marked as spam or moved to trash

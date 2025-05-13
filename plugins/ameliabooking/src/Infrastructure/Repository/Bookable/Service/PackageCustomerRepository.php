@@ -189,7 +189,7 @@ class PackageCustomerRepository extends AbstractRepository
         $params = [];
 
         if (!empty($criteria['purchased'])) {
-            $where[] = "(DATE_FORMAT(pc.purchased, '%Y-%m-%d %H:%i:%s') BETWEEN :purchasedFrom AND :purchasedTo)";
+            $where[] = "(pc.purchased BETWEEN :purchasedFrom AND :purchasedTo)";
 
             $params[':purchasedFrom'] = DateTimeService::getCustomDateTimeInUtc($criteria['purchased'][0]);
 
@@ -286,7 +286,7 @@ class PackageCustomerRepository extends AbstractRepository
         $where = [];
 
         if (!empty($criteria['purchased'])) {
-            $where[] = "(DATE_FORMAT(pc.purchased, '%Y-%m-%d %H:%i:%s') BETWEEN :purchasedFrom AND :purchasedTo)";
+            $where[] = "(pc.purchased BETWEEN :purchasedFrom AND :purchasedTo)";
 
             $params[':purchasedFrom'] = DateTimeService::getCustomDateTimeInUtc($criteria['purchased'][0]);
 

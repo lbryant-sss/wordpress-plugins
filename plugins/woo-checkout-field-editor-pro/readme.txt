@@ -3,9 +3,9 @@ Contributors: ThemeHigh
 Donate link: https://themehigh.com/
 Tags: Checkout  Manager, Checkout Field Editor, WooCommerce Checkout, WooCommerce Checkout Field, Custom fields
 Requires at least: 4.9
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.1.3
+Stable tag: 2.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,6 +124,8 @@ The Extra product options plugin is WPML compatible and it lets you create produ
     2.  Time Picker
     3.  Date Picker
     4.  Label
+
+    🆕 **👉 Note:** The Pro version  lets you add an extra checkout field type **Date Picker** when using Block Checkout.
    
 = ✅ POSITION SECTIONS AT 14 POSITIONS  = 
 Display sections at 14 different locations, offering greater flexibility in organizing your checkout page.
@@ -335,6 +337,11 @@ No, the free version does not support this feature. However, with the pro versio
 9. Locale override settings
 
 == Changelog ==
+= 2.1.4 =
+* Fixed shipping calculation issue when "Hide shipping costs until an address is entered" is enabled (WooCommerce 9.8+ compatibility).
+* Added WooCommerce 9.8 compatibility.
+* Added WordPress 6.8 compatibility.
+
 = 2.1.3 =
 * Improved the address fields functionality in the Checkout block.
 * Added WooCommerce 9.7 compatibility.

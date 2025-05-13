@@ -10,7 +10,7 @@ mix
   .less('assets/less/backend/amelia-booking.less', 'public/css/backend')
   .less('assets/less/external/vendor.less', 'public/css/frontend')
   .less('assets/less/external/quill.less', 'public/css/frontend')
-  .less('assets/less/frontend/amelia-booking.less', 'public/css/frontend/amelia-booking-1-2-23.css')
+  .less('assets/less/frontend/amelia-booking.less', 'public/css/frontend/amelia-booking-1-2-24.css')
   .less('assets/less/backend/elementor.less', 'public/css/frontend')
   .copyDirectory('assets/img', 'public/img')
   .copyDirectory('extensions/wpdt/assets/css', 'public/css/backend')

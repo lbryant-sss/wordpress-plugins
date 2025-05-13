@@ -2,9 +2,9 @@
 
 Contributors: yithemes
 Tags: yith, woocommerce compare, compare products, product compare, product comparison
-Requires at least: 6.5
-Tested up to: 6.7
-Stable tag: 2.48.0
+Requires at least: 6.6
+Tested up to: 6.8
+Stable tag: 3.0.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -72,6 +72,20 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 3. The settings of plugin
 
 == Changelog ==
+
+= 3.0.0 = Released on 12 May 2025
+
+* New: support for WordPress 6.8
+* New: plugin look & feel
+* New: layout for the compare button (checkbox)
+* New: preview bar for items in comparison
+* New: added compare button to WooCommerce grid blocks
+* Tweak: major refactoring of plugin's code
+* Update: YITH plugin framework
+* Dev: added yith_woocompare_button_classes filter
+* Dev: added yith_woocompare_should_show_preview_bar filter
+* Dev: added yith_woocompare_products_list filter
+* Dev: added yith_woocompare_cookie_value filter
 
 = 2.48.0 = Released on 20 March 2025
 

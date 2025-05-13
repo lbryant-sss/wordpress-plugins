@@ -224,7 +224,7 @@ jQuery(document).ready(function ($) {
           templateSelection: shortcodeTagTemplate,
         }),
         shortcodes_val = select2.val();
-      if (shortcodes_val.length > 0) {
+      if (shortcodes_val && shortcodes_val.length > 0) {
         nitroSelf.initial_settings.ajaxShortcodes.shortcodes = select2.val();
       } else {
         nitroSelf.initial_settings.ajaxShortcodes.shortcodes = [];

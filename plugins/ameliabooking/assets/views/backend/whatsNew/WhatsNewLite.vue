@@ -107,7 +107,7 @@
               {{ $root.labels.our_support_team }}
             </div>
 
-            <a class="am-whats-new-btn" href="https://tmsplugins.ticksy.com/submit/#100012870" target="_blank">
+            <a class="am-whats-new-btn" href="https://wpamelia.com/contact/" target="_blank">
               {{ $root.labels.contact_our_support }}
             </a>
 

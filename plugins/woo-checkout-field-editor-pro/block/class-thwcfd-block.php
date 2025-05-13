@@ -174,7 +174,12 @@ class THWCFD_Block {
                 if($remove_optional){
                     $field['optionalLabel'] = $field_set[$key]['label']?? $field['optionalLabel'];
                 }else{
-                    $field['optionalLabel'] = $field_set[$key]['label']? $field_set[$key]['label'].' (optional)' : $field['optionalLabel'];
+                    //$field['optionalLabel'] = $field_set[$key]['label']? $field_set[$key]['label'].' (optional)' : $field['optionalLabel'];
+                    $field['optionalLabel'] = !empty($field_set[$key]['label']) ? sprintf(
+                        /* translators: %s Field label. */
+                        __( '%s (optional)', 'woo-checkout-field-editor-pro' ),
+                        $field_set[$key]['label']
+                    ) : $field['optionalLabel'];
                 }
                 $field['required'] = $field_set[$key]['required'] ?? $field['required'];
                 

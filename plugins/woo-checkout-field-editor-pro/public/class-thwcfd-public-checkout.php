@@ -29,9 +29,17 @@ class THWCFD_Public_Checkout {
 			wp_enqueue_script('thwcfd-checkout-script');
 			wp_enqueue_style('thwcfd-checkout-style', THWCFD_ASSETS_URL_PUBLIC . 'css/thwcfd-public' . $suffix . '.css', [],THWCFD_VERSION);
 
+			$requires_address = get_option('woocommerce_shipping_cost_requires_address', 'no');
+			$address_required = ($requires_address === 'yes');
+			//$shipping_visible_after_adrs = (wc_string_to_bool(get_option('woocommerce_shipping_cost_requires_address', 'no')) && version_compare(THWCFD_Utils::get_wc_version(), '9.8.0', ">=")); 
+			$shipping_visible_after_adrs = (
+				$address_required && 
+				version_compare(THWCFD_Utils::get_wc_version(), '9.8.0', ">=")
+			);
 			$wcfd_var = array(
 				'is_override_required' => $this->is_override_required_prop(),
 				'is_wc_version_grt_9_x' => version_compare(THWCFD_Utils::get_wc_version(), '9.7.0', ">="),
+				'shipping_visible_after_adrs' => $shipping_visible_after_adrs,
 			);
 			wp_localize_script('thwcfd-checkout-script', 'thwcfd_public_var', $wcfd_var);
 		}
@@ -75,6 +83,11 @@ class THWCFD_Public_Checkout {
 		//Radio field required indicator fix
 		if(version_compare(THWCFD_Utils::get_wc_version(), '9.7.0', ">=")){
 			add_filter('woocommerce_form_field_radio', array($this, 'woo_form_field_radio'), 10, 4);
+		}
+		//Fix - `Hide shipping costs until an address is entered` options enabled shipping calculation not working from WC 9.8+ version 
+		if(version_compare(THWCFD_Utils::get_wc_version(), '9.8.0', ">=")){
+			add_filter('woocommerce_get_country_locale', array($this, 'modify_address_fields'),9);
+			add_filter('woocommerce_get_country_locale_default', array($this, 'make_address_fields_default'),9);
 		}
 		
 	}
@@ -177,6 +190,91 @@ class THWCFD_Public_Checkout {
 				if(isset($locale[$country])){
 					$locale[$country] = $this->prepare_country_locale($locale[$country]);
 				}
+			}
+		}
+		return $locale;
+	}
+
+	public function get_posted_value($key){
+		$value = isset($_POST[$key]) ? stripslashes($_POST[$key]) : '';
+
+		if(!$value){
+			$post_data = isset($_POST['post_data']) ? $_POST['post_data'] : '';
+
+			if($post_data){
+				parse_str($post_data, $post_data_arr);
+				$value = isset($post_data_arr[$key]) ? stripslashes($post_data_arr[$key]) : '';
+			}
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Modify address fields when `Hide shipping costs until an address is entered` option is enabled
+	 * Fix for WC 9.8+ version
+	 * @since 2.1.4
+	*/
+	public function modify_address_fields($locales) {
+		if (
+			! is_checkout() || 
+			! wc_string_to_bool(get_option('woocommerce_shipping_cost_requires_address', 'no')) || 
+			! $this->is_override_required_prop()
+		) {
+			return $locales;
+		}
+
+		$use_shipping_address = $this->get_posted_value('ship_to_different_address');
+		$prefix = $use_shipping_address ? 'shipping_' : 'billing_';
+		$option_key = $use_shipping_address ? 'wc_fields_shipping' : 'wc_fields_billing';
+		$field_set = get_option($option_key);
+		
+		if ( ! is_array($field_set) ) {
+			return $locales;
+		}
+		
+		$fields_to_check = ['address_1', 'postcode', 'city', 'state'];
+		foreach ( $locales as $country => &$locale ) {
+			foreach ( $fields_to_check as $field ) {
+					$field_key = $prefix . $field;
+					if(isset($locale[$field]['hidden']) && $locale[$field]['hidden']){
+						$locale[$field]['required'] = false;
+						continue;
+					}
+					$locale[$field]['required'] = isset($field_set[$field_key]['required'])
+						? (bool) $field_set[$field_key]['required']
+						: true;
+			}
+		}
+		return $locales;
+	}
+	
+	/**
+	 * Make address fields default when `Hide shipping costs until an address is entered` option is enabled
+	 * Fix for WC 9.8+ version
+	 * @since 2.1.4
+	 */
+	public function make_address_fields_default($locale) {
+		if (
+			! is_checkout() ||
+			! wc_string_to_bool(get_option('woocommerce_shipping_cost_requires_address', 'no')) ||
+			! $this->is_override_required_prop()
+		) {
+			return $locale;
+		}
+		$use_shipping_address = $this->get_posted_value('ship_to_different_address');
+		$prefix = $use_shipping_address ? 'shipping_' : 'billing_';
+		$option_key = $use_shipping_address ? 'wc_fields_shipping' : 'wc_fields_billing';
+		$fields = get_option($option_key);
+		if ( ! is_array($fields) ) {
+			return $locale;
+		}
+		$address_fields = ['address_1', 'postcode', 'city', 'state'];
+	
+		foreach ( $address_fields as $field ) {
+			$address_key = $prefix . $field;
+			if ( isset($fields[$address_key]['required']) ) {
+				$locale[$field]['required'] = (bool) $fields[$address_key]['required'];
 			}
 		}
 		return $locale;

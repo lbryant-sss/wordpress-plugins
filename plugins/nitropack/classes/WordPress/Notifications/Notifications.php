@@ -12,20 +12,17 @@ use NitroPack\WordPress\Settings\TestMode;
 class Notifications {
 	private static $instance = NULL;
 	public function __construct() {
+
+		add_action( 'admin_init', [ $this, 'move_existing_notices' ] );
 		add_action( 'admin_notices', [ $this, 'nitropack_admin_notices' ] );
-
 		/* Using 'init' because it fixes issue when get_home_url() in updateCurrentBlogConfig() is not found in multisites */
-		add_action( 'init', function () { 			
-		    add_action( 'plugins_loaded', [ $this, 'nitropack_plugin_notices' ] );
-		});
-
+		add_action( 'init', function () {
+			add_action( 'plugins_loaded', [ $this, 'nitropack_plugin_notices' ] );
+		} );
 		//ajax
 		add_action( 'wp_ajax_nitropack_safemode_notification', [ $this, 'nitropack_safemode_notification' ] );
-		add_action( 'wp_ajax_nitropack_dismiss_notification', [ $this, 'nitropack_dismiss_notification' ] );
-		//WC notice
-		add_action( 'wp_ajax_nitropack_dismiss_woocommerce_notice', [ $this, 'nitropack_dismiss_woocommerce_notice' ] );
-		//modal for non-optimized CPTs notice
-		add_action( 'wp_ajax_nitropack_dismiss_notice_forever', [ $this, 'nitropack_dismiss_notice_forever' ] );
+		add_action( 'wp_ajax_nitropack_dismiss_permanently_notification', [ $this, 'nitropack_dismiss_permanently_notification' ] );
+		add_action( 'wp_ajax_nitropack_dismiss_notification_by_transient', [ $this, 'nitropack_dismiss_notification_by_transient' ] );
 
 	}
 	public static function getInstance() {
@@ -35,6 +32,7 @@ class Notifications {
 
 		return self::$instance;
 	}
+
 	/**
 	 * Displays general admin notices for the NitroPack plugin in WordPress dashboard.
 	 *
@@ -115,8 +113,8 @@ class Notifications {
 
 		/* Sets a warning if the Test Mode is enabled. */
 		$smStatus = get_option( 'nitropack-safeModeStatus', "-1" );
-		if ( $smStatus === "-1" ){
-			$smStatus = TestMode::getInstance()->nitropack_safemode_status(true);
+		if ( $smStatus === "-1" ) {
+			$smStatus = TestMode::getInstance()->nitropack_safemode_status( true );
 		}
 		if ( $smStatus ) {
 			$safeModeMessage = __( 'Visitors are accessing your unoptimized pages. Make sure to disable it once you are done testing.', 'nitropack' );
@@ -254,7 +252,6 @@ class Notifications {
 			$webhookToken = esc_attr( get_option( 'nitropack-webhookToken' ) );
 			$blogId = get_current_blog_id();
 			$isConfigOutdated = ! nitropack_is_config_up_to_date();
-
 			if ( ! get_nitropack()->Config->exists() && ! get_nitropack()->updateCurrentBlogConfig( $siteId, $siteSecret, $blogId ) ) {
 				$errors[] = array(
 					'title' => esc_html__( "NitroPack static config file cannot be created", 'nitropack' ),
@@ -267,18 +264,14 @@ class Notifications {
 						'msg' => esc_html__( 'Please make sure that the /wp-content/config-nitropack/ directory is writable and refresh this page.', 'nitropack' ),
 					);
 				} else {
+
 					if ( ! $siteConfig ) {
 						nitropack_event( "update" );
 					} else {
 						$prevVersion = ! empty( $siteConfig["pluginVersion"] ) ? $siteConfig["pluginVersion"] : "1.1.4 or older";
 						nitropack_event( "update", null, array( "previous_version" => $prevVersion ) );
-
 						if ( empty( $siteConfig["pluginVersion"] ) || version_compare( $siteConfig["pluginVersion"], "1.4", "<" ) ) {
 							$nitropack_v1_3_notice_id = 'nitropack_upgrade_to_1_3';
-							if ( ! headers_sent() ) {
-								setcookie( "dismissed_notice_" . $nitropack_v1_3_notice_id, 1, time() + 3600 );
-							}
-							$_COOKIE[ "dismissed_notice_" . $nitropack_v1_3_notice_id ] = 1;
 						}
 					}
 				}
@@ -358,7 +351,7 @@ class Notifications {
 					}
 				}
 
-				if ( empty( $_COOKIE["nitropack_webhook_sync"] ) || !$siteConfig["webhookToken"]) {
+				if ( empty( $_COOKIE["nitropack_webhook_sync"] ) || ! $siteConfig["webhookToken"] ) {
 					if ( null !== $nitro = get_nitropack_sdk() ) {
 						try {
 							if ( ! headers_sent() ) {
@@ -393,11 +386,12 @@ class Notifications {
 					}
 				}
 			}
-			if ( isset( $nitropack_v1_3_notice_id ) && $this->nitropack_is_dismissed_notice( $nitropack_v1_3_notice_id ) ) {
+			if ( isset( $nitropack_v1_3_notice_id ) ) {
 				$warnings[] = array(
 					'title' => esc_html__( "NitroPack upgraded to 1.3", 'nitropack' ),
 					'msg' => esc_html__( 'Your new version of NitroPack has a new better way of recaching updated content. However, it is incompatible with the page relationships built by your previous version. Please invalidate your cache manually one-time so that content updates start working with the updated logic.', 'nitropack' ),
-					'dismissableId' => $nitropack_v1_3_notice_id,
+					'dismissibleId' => $nitropack_v1_3_notice_id,
+					'dismissBy' => 'option',
 				);
 			}
 
@@ -414,7 +408,6 @@ class Notifications {
 			'warning' => $warnings,
 			'info' => $infos
 		];
-
 
 		return $npPluginNotices;
 	}
@@ -435,7 +428,7 @@ class Notifications {
 		$components = new \NitroPack\WordPress\Settings\Components;
 		foreach ( $noticesArray as $type => $notices ) {
 			foreach ( $notices as $notice ) {
-				$components->render_notification( $notice['msg'], $type, $notice['title'], isset( $notice['actions'] ) ? $notice['actions'] : null, isset( $notice['classes'] ) ? $notice['classes'] : null, isset( $notice['dismissibleId'] ) ? $notice['dismissibleId'] : null );
+				$components->render_notification( $notice['msg'], $type, $notice['title'], isset( $notice['actions'] ) ? $notice['actions'] : null, isset( $notice['classes'] ) ? $notice['classes'] : null, isset( $notice['dismissibleId'] ) ? $notice['dismissibleId'] : null, isset( $notice['dismissBy'] ) ? $notice['dismissBy'] : null );
 			}
 		}
 		//render app notifications
@@ -465,7 +458,7 @@ class Notifications {
 				$msg = $notification['message_details']['message'];
 			}
 
-			$components->render_notification( $msg, $type, $title, '', [ 'app-notification' ], $notification['id'], $notification );
+			$components->render_notification( $msg, $type, $title, '', [ 'app-notification' ], $notification['id'], 'transient', $notification );
 		}
 	}
 	/**
@@ -487,22 +480,25 @@ class Notifications {
 			"cloudways" => array(
 				"name" => "Cloudways",
 				"helpUrl" => "https://support.nitropack.io/hc/en-us/articles/360060916674-Cloudways-Hosting-Configuration-for-NitroPack"
-			)
+			)		
 		);
 
 		$siteConfig = nitropack_get_site_config();
+
 		if ( $siteConfig && ! empty( $siteConfig["hosting"] ) && array_key_exists( $siteConfig["hosting"], $documentedHostingSetups ) ) {
+
 			$hostingInfo = $documentedHostingSetups[ $siteConfig["hosting"] ];
 			$showNotice = true;
-			if ( $siteConfig["hosting"] == "flywheel" && defined( "WP_CACHE" ) && WP_CACHE )
+			if ( $siteConfig["hosting"] == "flywheel" && defined( "WP_CACHE" ) && WP_CACHE ) {
 				$showNotice = false;
+			}
 
 			if ( $showNotice ) {
 				$components = new \NitroPack\WordPress\Settings\Components;
 				$components->render_notification( esc_html__( "Please follow the instructions in order to make sure that everything works correctly.", 'nitropack' ), 'info',
 					sprintf( esc_html__( 'It looks like you are hosted on %s', 'nitropack' ), $hostingInfo['name'] ),
 					'<a href="' . $hostingInfo["helpUrl"] . '" target="_blank" class="btn btn-info btn-ghost">' . esc_html__( 'Read Instructions', 'nitropack' ) . '</a>',
-					[ 'hosting-notice' ] );
+					[ 'hosting-notice' ], 'hosting-' . $siteConfig["hosting"], 'option' );
 			}
 		}
 	}
@@ -513,22 +509,73 @@ class Notifications {
 	private function nitropack_print_woocommerce_notice() {
 		if ( get_nitropack()->isConnected() ) {
 			if ( class_exists( 'WooCommerce' ) ) {
-				$wcOneTimeNotice = get_option( 'nitropack-wcNotice' );
+				$np_notices = get_option( 'nitropack-dismissed-notices', [] );
+				$woocommerce_notice = in_array( 'WooCommerce', $np_notices, true ) ? true : false;
 
-				if ( ! $wcOneTimeNotice ) {
+				if ( ! $woocommerce_notice ) {
 					$components = new \NitroPack\WordPress\Settings\Components;
 					$components->render_notification( __( 'Your <strong>account</strong>, <strong>cart</strong>, and <strong>checkout</strong> pages are automatically excluded from optimization.', 'nitropack' ),
 						'success',
 						esc_html__( 'WooCommerce detected', 'nitropack' ),
 						'<a class="btn btn-secondary" href="' . admin_url( 'admin.php?page=nitropack' ) . '">' . esc_html__( 'Settings', 'nitropack' ) . '</a>',
 						[ 'woocommerce-notice' ],
-						'nitropack_dismiss_woocommerce_notice' );
+						'WooCommerce', 'option' );
 				}
 			}
 		}
 	}
 
+	public function admin_bar_notices_counter() {
+		if ( ! $this->pass_notification_capabilities() )
+			return;
 
+		$notices = $this->nitropack_plugin_notices();
+		$numberOfPluginErrors = 0;
+		$numberOfPluginWarnings = 0;
+		$notificationCount = 0;
+		foreach ( array( "warning", "error", "info" ) as $type ) {
+
+			foreach ( $notices[ $type ] as $notice ) {
+		
+				if ( !empty($notice['dismissibleId']) ) {
+					switch ( $type ) {
+						case "error":
+							$numberOfPluginErrors++;
+							break;
+						case "warning":
+							$numberOfPluginWarnings++;
+							break;
+						case "info":
+							$notificationCount++;
+							break;
+					}
+				}
+
+			}
+		}
+		/* Notifications from the app */
+
+		$app_notifications = AppNotifications::getInstance();
+		foreach ( $app_notifications->get( 'system' ) as $notification ) {
+
+			if ( ! empty( $notification['id'] ) )
+				$notificationCount++;
+
+		}
+
+		$numberOfPluginIssues = $numberOfPluginErrors + $numberOfPluginWarnings;
+
+		if ( $numberOfPluginErrors > 0 ) {
+			$pluginStatus = 'error';
+		} else if ( $numberOfPluginWarnings > 0 ) {
+			$pluginStatus = 'warning';
+		} else {
+			$pluginStatus = 'ok';
+		}
+		$data = [ 'issues' => $numberOfPluginIssues, 'status' => $pluginStatus, 'errors' => $numberOfPluginErrors, 'warnings' => $numberOfPluginWarnings, 'notifications' => $notificationCount ];
+
+		return $data;
+	}
 	/**
 	 * Checks if the user has capabilities to manage options - administrators typically have this capability.
 	 * @return void|bool
@@ -550,17 +597,15 @@ class Notifications {
 		$this->test_mode_notification_html();
 		wp_die();
 	}
-	public function nitropack_is_dismissed_notice( $id ) {
-		return isset( $_COOKIE[ "dismissed_notice_" . $id ] );
-	}
-	/* Dissmiss notification by using set_transient -> temporary dismissal with auto-expiry */
-	public function nitropack_dismiss_notification() {
+	
+	/* Dismiss notification by using set_transient -> temporary dismissal with auto-expiry */
+	public function nitropack_dismiss_notification_by_transient() {
 		if ( ! $this->pass_notification_capabilities() ) {
 			wp_die( __( 'You do not have sufficient permissions.' ) );
 		}
 
-		if ( ! isset( $_POST ) ) {
-			return;
+		if ( empty( $_POST['notification_id'] ) ) {
+			wp_send_json_error( [ 'message' => __( 'Missing notification ID.' ) ] );
 		}
 
 		nitropack_verify_ajax_nonce( $_REQUEST );
@@ -576,36 +621,55 @@ class Notifications {
 		) );
 	}
 
-	/* Dissmiss permanent a notification by using update_option - db way */
-	public function nitropack_dismiss_woocommerce_notice() {
+	/**
+	 * Handles the dismissal of a notification permanently by updating nitropack-dismissed-notices option in the database.
+	 *
+	 * @return void Outputs a JSON response and terminates the script execution.
+	 */
+
+	public function nitropack_dismiss_permanently_notification() {
 		if ( ! $this->pass_notification_capabilities() ) {
-			wp_die( __( 'You do not have sufficient permissions.' ) );
+			wp_send_json_error( [ 'message' => __( 'You do not have sufficient permissions.' ) ] );
+		}
+
+		if ( empty( $_POST['notification_id'] ) ) {
+			wp_send_json_error( [ 'message' => __( 'Missing notification ID.' ) ] );
 		}
 
 		nitropack_verify_ajax_nonce( $_REQUEST );
-		$option = update_option( 'nitropack-wcNotice', 1 );
-		if ( $option ) {
-			nitropack_json_and_exit( array(
-				"type" => "success",
-			) );
-		} else {
-			nitropack_json_and_exit( array(
-				"type" => "error",
-			) );
+
+		$notification_id = sanitize_text_field( wp_unslash( $_POST['notification_id'] ) );
+		$notices = get_option( 'nitropack-dismissed-notices', [] );
+
+		if ( ! in_array( $notification_id, $notices, true ) ) {
+			$notices[] = $notification_id;
+			update_option( 'nitropack-dismissed-notices', $notices );
 		}
+
+		wp_send_json_success();
 	}
-	/* Dissmiss permanent a notification by using update_option - db way */
-	public function nitropack_dismiss_notice_forever() {
-		if ( ! $this->pass_notification_capabilities() ) {
-			wp_die( __( 'You do not have sufficient permissions.' ) );
+
+	/**
+	 * Moves existing dismissed notices to the new dismissed option as an array.
+	 *
+	 * Notices being migrated:
+	 * - `nitropack-wcNotice` (mapped to `WooCommerce`)
+	 * - `nitropack-noticeOptimizeCPT` (mapped to `OptimizeCPT`)
+	 *
+	 * @return void
+	 */
+
+	public function move_existing_notices() {
+		$existing_notices = [ 'nitropack-wcNotice' => 'WooCommerce', 'nitropack-noticeOptimizeCPT' => 'OptimizeCPT' ];
+		foreach ( $existing_notices as $notice => $new_notice ) {
+			if ( get_option( $notice ) ) {
+				$notices = get_option( 'nitropack-dismissed-notices', [] );
+				if ( ! in_array( $notice, $notices, true ) ) {
+					$notices[] = $new_notice;
+					update_option( 'nitropack-dismissed-notices', $notices );
+				}
+				delete_option( $notice );
+			}
 		}
-
-		nitropack_verify_ajax_nonce( $_REQUEST );
-
-		update_option( 'nitropack-noticeOptimizeCPT', 1 );
-
-		nitropack_json_and_exit( array(
-			"type" => "success",
-		) );
 	}
 }

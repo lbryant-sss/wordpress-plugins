@@ -1,4 +1,4 @@
-=== PublishPress Capabilities - User Role Editor, Access Permissions, Admin Menus ===
+=== PublishPress Capabilities - User Role Editor, Access Permissions, User Capabilities, Admin Menus ===
 
 Contributors: publishpress, kevinB, stevejburge, andergmartins, olatechpro
 Author: PublishPress
@@ -7,17 +7,17 @@ Tags: capabilities, permissions, admin menus, user roles, user role editor
 Requires at least: 5.5
 Requires PHP: 7.2.5
 Tested up to: 6.8
-Stable tag: 2.19.1
+Stable tag: 2.19.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-PublishPress Capabilities is the access control plugin. You can manage permissions, user roles, admin menus and more.
+PublishPress Capabilities is the access control plugin. You can manage user capabilities, permissions, user roles, admin menus and more.
 
 == Description ==
 
-PublishPress Capabilities is the access control plugin for WordPress. You can control all the capabilities and permissions on your WordPress site. We built this user role editor plugin so you have an EASY and POWERFUL way to manage users.
+PublishPress Capabilities is the access control plugin for WordPress. You can control all the capabilities and permissions on your WordPress site. We built this user role editor plugin so you have an easy and powerful way to manage user capabilities.
 
-You can use PublishPress Capabilities **manage all your WordPress user roles**, from Administrators and Editors to Authors, Contributors, Subscribers and custom roles. Each use role can have the exact capabilities that your site needs.
+You can use PublishPress Capabilities to **manage all your WordPress user roles**, from Administrators and Editors to Authors, Contributors, Subscribers and custom roles. Each user role can have the exact capabilities that your site needs.
 
 PublishPress Capabilities can clean up your post editing screen, admin area, and even the Profile screen. You can decide what authors see when they're writing posts. You can **hide any feature on the Gutenberg or Classic Editor screens**. You can remove items in the WordPress dashboard and inside user accounts screens.
 
@@ -65,7 +65,7 @@ PublishPress Capabilities enables you to add extra permissions to the taxonomies
 
 ## Feature 3. Editor Features ##
 
-PublishPress Capabilities has an option called "Editor Features" allows you to clean up the post editing screen. You can decide what users see when they're writing posts. You can hide anything on the Gutenberg or Classic Editor screens. You can hide boxes inside the sidebadd such Tags, Categories, or Excerpt. You can the "Publish" button. You can even hide the post title, body, or permalink. This is a great alternative to plugins such as Adminimize.
+PublishPress Capabilities has an option called "Editor Features" allows you to clean up the post editing screen. You can decide what users see when they're writing posts. You can hide anything on the Gutenberg or Classic Editor screens. You can hide boxes inside the sidebadr such Tags, Categories, or Excerpt. You can the "Publish" button. You can even hide the post title, body, or permalink. This is a great alternative to plugins such as Adminimize.
 
 [Click here to learn about hiding editor features](https://publishpress.com/knowledge-base/editor-features/).
 
@@ -178,7 +178,7 @@ PublishPress Capabilities is a user role editor that offers you the ability to b
 
 Changing permissions in WordPress can be a tricky task. It's possible to lock yourself or others out of some important features. So, we've built a way to keep your site safe.
 
-Every time you change your permissions, the PublishPress Capabilities plugin will automatically create a backup. If you make a mistake, go to the “Backup” menu link and click the “Restore” tab. Here you can browse through the most recent 20 automatic backups. The plugin also saves a backup from you first installed PublishPress Capabilities. And you can click the “Backup” tab to manually create backups.
+Every time you change your permissions, the PublishPress Capabilities plugin will automatically create a backup. If you make a mistake, go to the “Backup” menu link and click the “Restore” tab. Here you can browse through the most recent 20 automatic backups. The plugin also saves a backup from when you first installed PublishPress Capabilities. And you can click the “Backup” tab to manually create backups.
 
 Click the yellow “Restore Selected Roles” button and you'll be able to roll back to a previous version.
 
@@ -281,7 +281,7 @@ This approach works for the core Elementor plugin and can also be used for add-o
 
 The Pro version of PublishPress Capabilities allows you to block access to admin menu links in the Jetpack plugin. This is useful because Jetpack has limited options for managing who can access the admin screens and important features.
 
-Jetpack is a plugin built by Automattic, the company behind WordPress.com. This plugin offers many different services including backups, spam blocking, analytics, malware scans, contact forms, and more. PublishPress Capabilities can help you manage Jetpack permissisons.
+Jetpack is a plugin built by Automattic, the company behind WordPress.com. This plugin offers many different services including backups, spam blocking, analytics, malware scans, contact forms, and more. PublishPress Capabilities can help you manage Jetpack permissions.
 
 When you first install the Jetpack plugin, you'll see one top-level menu link, plus at least 2 sub-menus:
 
@@ -425,6 +425,17 @@ Fixed : Non-administrators with user editing capabilities could add new Administ
 Fixed : Security issue. Please update.
 
 == Changelog ==
+
+= 2.19.2 = - 12 May 2025 =
+  * Fixed : WooCommerce System Report button is hidden due to Admin Notices inclusion, #1372
+  * Update : Update admin-notices.css to match Future's notifications style and WordPress' native layout, #1373
+  * Fixed : Admin Notices always has a black background, #1359
+  * Fixed : Cannot assign manage_post_tags capability unless Permissions is active, #1375
+  * Fixed : Visibility Statuses column header for Set capability is misaligned, #1378
+  * Fixed : Mistake in german translation, #1365
+  * Fixed : Jumping tabs in Admin Notices, #1361
+  * Update : Update the plugin description, #1369
+  * Update : Capabilities 2.19.1 Translation Updates ES-FR-IT, #1360
 
 = 2.19.1 = - 25 Feb 2025 =
   * Fixed : Conflict with Gravity Forms, #1347

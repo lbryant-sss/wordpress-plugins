@@ -1173,7 +1173,8 @@ function nitropack_get_optimized_CPTs() {
 
 function nitropack_autooptimize_new_post_types_and_taxonomies() {
 	//start optimizing after the notice is shown
-	if ( ! get_option( 'nitropack-noticeOptimizeCPT' ) )
+	$notices = get_option('nitropack-dismissed-notices', []);
+	if ( ! $notices || ! in_array( 'OptimizeCPT', $notices ) )
 		return;
 	//check if the non-optimized CPTs are stored, if not store them
 	$nonCacheableObjectTypes = get_option( 'nitropack-nonCacheableObjectTypes' );
@@ -3691,44 +3692,7 @@ function nitropack_admin_bar_menu( $wp_admin_bar ) {
 	if ( nitropack_is_amp_page() )
 		return;
 	$notifications = get_nitropack()->Notifications;
-
-	$nitropackPluginNotices = $notifications->nitropack_plugin_notices();
-	$numberOfPluginErrors = 0;
-	$numberOfPluginWarnings = 0;
-	foreach ( array( "warning", "error" ) as $type ) {
-		foreach ( $nitropackPluginNotices[ $type ] as $notice ) {
-			if ( ! $notifications->nitropack_is_dismissed_notice( nitropack_get_notice_id( $notice['msg'] ) ) ) {
-				switch ( $type ) {
-					case "error":
-						$numberOfPluginErrors++;
-						break;
-					case "warning":
-						$numberOfPluginWarnings++;
-						break;
-				}
-			}
-
-		}
-	}
-	/* Notifications from the app */
-	$notificationCount = 0;
-	$app_notifications = NitroPack\WordPress\Notifications\AppNotifications::getInstance();
-	foreach ( $app_notifications->get( 'system' ) as $notification ) {
-		if ( ! $notifications->nitropack_is_dismissed_notice( $notification["id"] ) ) {
-			$notificationCount++;
-		}
-	}
-
-	$numberOfPluginIssues = $numberOfPluginErrors + $numberOfPluginWarnings;
-
-	if ( $numberOfPluginErrors > 0 ) {
-		$pluginStatus = 'error';
-	} else if ( $numberOfPluginWarnings > 0 ) {
-		$pluginStatus = 'warning';
-	} else {
-		$pluginStatus = 'ok';
-	}
-
+	$counter_data = $notifications->admin_bar_notices_counter();
 
 	if ( ! get_nitropack()->isConnected() ) {
 		$node = array(
@@ -3752,11 +3716,11 @@ function nitropack_admin_bar_menu( $wp_admin_bar ) {
 			)
 		);
 	} else {
-		$title = '&nbsp;&nbsp;<i style="" class="circle nitro nitro-status nitro-status-' . $pluginStatus . '" aria-hidden="true"></i>&nbsp;&nbsp;NitroPack';
-		if ( $pluginStatus != "ok" ) {
-			$title .= ' <span class="circle-with-text nitro-color-issues" id="nitro-total-issues-count">' . ( $numberOfPluginIssues + $notificationCount ) . '</span>';
-		} else if ( $notificationCount > 0 ) {
-			$title .= ' <span class="circle-with-text nitro-color-notification" id="nitro-total-issues-count">' . $notificationCount . '</span>';
+		$title = '&nbsp;&nbsp;<i style="" class="circle nitro nitro-status nitro-status-' . $counter_data['status'] . '" aria-hidden="true"></i>&nbsp;&nbsp;NitroPack';
+		if ( $counter_data['status'] != "ok" ) {
+			$title .= ' <span class="circle-with-text nitro-color-issues" id="nitro-total-issues-count">' . ( $counter_data['issues'] + $counter_data['notifications'] ) . '</span>';
+		} else if ( $counter_data['notifications'] > 0 ) {
+			$title .= ' <span class="circle-with-text nitro-color-notification" id="nitro-total-issues-count">' . $counter_data['notifications'] . '</span>';
 		}
 		$node = array(
 			'id' => 'nitropack-top-menu',
@@ -3768,8 +3732,8 @@ function nitropack_admin_bar_menu( $wp_admin_bar ) {
 		);
 
 		$settings_extra = '';
-		if ( $notificationCount ) {
-			$settings_extra .= ' <span class="circle-with-text nitro-color-notification" id="nitro-notification-issues-count">' . $notificationCount . '</span>';
+		if ( $counter_data['notifications'] ) {
+			$settings_extra .= ' <span class="circle-with-text nitro-color-notification" id="nitro-notification-issues-count">' . $counter_data['notifications'] . '</span>';
 		}
 		$wp_admin_bar->add_node( array(
 			'id' => 'nitropack-top-menu-settings',
@@ -3821,12 +3785,12 @@ function nitropack_admin_bar_menu( $wp_admin_bar ) {
 			);
 		}
 
-		if ( $pluginStatus != "ok" ) {
+		if ( $counter_data['status'] != "ok" ) {
 			$wp_admin_bar->add_node(
 				array(
 					'parent' => 'nitropack-top-menu',
 					'id' => 'optimizations-plugin-status',
-					'title' => 'Issues <span class="circle-with-text nitro-color-issues">' . $numberOfPluginIssues . '</span>',
+					'title' => 'Issues <span class="circle-with-text nitro-color-issues">' . $counter_data['issues'] . '</span>',
 					'href' => admin_url( 'admin.php?page=nitropack' ),
 					'meta' => array(
 						'class' => 'nitropack-plugin-status',
@@ -3995,16 +3959,7 @@ function get_date_midpoint( $endDate ) {
 	return ( time() + strtotime( $endDate ) ) / 2;
 }
 
-function nitropack_ignore_dismissed_notifications( $notifications, $type ) {
-	foreach ( $notifications as $key => $notification ) {
-		$display_time = get_transient( $notification['id'] );
-		if ( $display_time && time() < $display_time ) {
-			unset( $notifications[ $key ] );
-		}
-	}
 
-	return $notifications;
-}
 function initVariationCookies( $customVariationCookies ) {
 	$api = get_nitropack_sdk()->getApi();
 	try {

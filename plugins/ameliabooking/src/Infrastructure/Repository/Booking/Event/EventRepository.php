@@ -314,23 +314,23 @@ class EventRepository extends AbstractRepository implements EventRepositoryInter
 
         if (!empty($criteria['dates'])) {
             if (isset($criteria['dates'][0], $criteria['dates'][1])) {
-                $whereStart = "(DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') BETWEEN :eventFrom AND :eventTo)";
+                $whereStart = "(ep.periodStart BETWEEN :eventFrom AND :eventTo)";
                 $params[':eventFrom'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
                 $params[':eventTo']   = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][1]);
 
-                $whereEnd = "(DATE_FORMAT(ep.periodEnd, '%Y-%m-%d %H:%i:%s') BETWEEN :bookingFrom2 AND :bookingTo2)";
+                $whereEnd = "(ep.periodEnd BETWEEN :bookingFrom2 AND :bookingTo2)";
                 $params[':bookingFrom2'] = $params[':eventFrom'];
                 $params[':bookingTo2']   = $params[':eventTo'];
 
                 $where[] = "({$whereStart} OR {$whereEnd})";
             } elseif (isset($criteria['dates'][0])) {
-                $where[] = "(DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') >= :eventFrom)";
+                $where[] = "(ep.periodStart >= :eventFrom)";
                 $params[':eventFrom'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
             } elseif (isset($criteria['dates'][1])) {
-                $where[] = "(DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') <= :eventTo)";
+                $where[] = "(ep.periodStart <= :eventTo)";
                 $params[':eventTo'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][1]);
             } else {
-                $where[] = "(DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') > :eventFrom)";
+                $where[] = "(ep.periodStart > :eventFrom)";
                 $params[':eventFrom'] = DateTimeService::getNowDateTimeInUtc();
             }
         }
@@ -469,22 +469,23 @@ class EventRepository extends AbstractRepository implements EventRepositoryInter
 
         if (!empty($criteria['dates'])) {
             if (isset($criteria['dates'][0], $criteria['dates'][1])) {
-                $where[] = "((DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') BETWEEN :eventFrom1 AND :eventTo1)
-                OR (DATE_FORMAT(ep.periodEnd, '%Y-%m-%d %H:%i:%s') BETWEEN :eventFrom2 AND :eventTo2)
-                OR (:eventFrom3 BETWEEN DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') AND DATE_FORMAT(ep.periodEnd, '%Y-%m-%d %H:%i:%s'))
-                OR (:eventTo3  BETWEEN DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') AND DATE_FORMAT(ep.periodEnd, '%Y-%m-%d %H:%i:%s')))";
+                $where[] = "((ep.periodStart BETWEEN :eventFrom1 AND :eventTo1)
+                OR (ep.periodEnd BETWEEN :eventFrom2 AND :eventTo2)
+                OR (:eventFrom3 BETWEEN ep.periodStart AND ep.periodEnd)
+                OR (:eventTo3  BETWEEN ep.periodStart AND ep.periodEnd))";
 
                 $params[':eventFrom1'] = $params[':eventFrom2'] = $params[':eventFrom3'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
                 $params[':eventTo1']   = $params[':eventTo2']   = $params[':eventTo3']   = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][1]);
             } elseif (isset($criteria['dates'][0])) {
-                $where[] = "(DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') >= :eventFrom OR (DATE_FORMAT(ep.periodEnd, '%Y-%m-%d %H:%i:%s') >= :eventTo))";
+                $where[] = "(ep.periodStart >= :eventFrom OR (ep.periodEnd >= :eventTo))";
                 $params[':eventFrom'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
                 $params[':eventTo']   = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
             } elseif (isset($criteria['dates'][1])) {
-                $where[] = "(DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') <= :eventTo)";
+                $where[] = "(ep.periodStart <= :eventTo)";
+
                 $params[':eventTo'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][1]);
             } else {
-                $where[] = "(DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') > :eventFrom)";
+                $where[] = "(ep.periodStart > :eventFrom)";
                 $params[':eventFrom'] = DateTimeService::getNowDateTimeInUtc();
             }
         }
@@ -697,22 +698,26 @@ class EventRepository extends AbstractRepository implements EventRepositoryInter
 
         if (!empty($criteria['dates'])) {
             if (isset($criteria['dates'][0], $criteria['dates'][1])) {
-                $where[] = "((DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') BETWEEN :eventFrom1 AND :eventTo1)
-                OR (DATE_FORMAT(ep.periodEnd, '%Y-%m-%d %H:%i:%s') BETWEEN :eventFrom2 AND :eventTo2)
-                OR (:eventFrom3 BETWEEN DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') AND DATE_FORMAT(ep.periodEnd, '%Y-%m-%d %H:%i:%s'))
-                OR (:eventTo3  BETWEEN DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') AND DATE_FORMAT(ep.periodEnd, '%Y-%m-%d %H:%i:%s')))";
+                $where[] = "((ep.periodStart BETWEEN :eventFrom1 AND :eventTo1)
+                OR (ep.periodEnd BETWEEN :eventFrom2 AND :eventTo2)
+                OR (:eventFrom3 BETWEEN ep.periodStart AND ep.periodEnd)
+                OR (:eventTo3  BETWEEN ep.periodStart AND ep.periodEnd))";
 
                 $params[':eventFrom1'] = $params[':eventFrom2'] = $params[':eventFrom3'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
                 $params[':eventTo1']   = $params[':eventTo2']   = $params[':eventTo3']   = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][1]);
             } elseif (isset($criteria['dates'][0])) {
-                $where[] = "(DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') >= :eventFrom OR (DATE_FORMAT(ep.periodEnd, '%Y-%m-%d %H:%i:%s') >= :eventTo))";
+                $where[] = "(ep.periodStart >= :eventFrom OR (ep.periodEnd >= :eventTo))";
+
                 $params[':eventFrom'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
+
                 $params[':eventTo'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][0]);
             } elseif (isset($criteria['dates'][1])) {
-                $where[] = "(DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') <= :eventTo)";
+                $where[] = "(ep.periodStart <= :eventTo)";
+
                 $params[':eventTo'] = DateTimeService::getCustomDateTimeInUtc($criteria['dates'][1]);
             } else {
-                $where[] = "(DATE_FORMAT(ep.periodStart, '%Y-%m-%d %H:%i:%s') > :eventFrom)";
+                $where[] = "(ep.periodStart > :eventFrom)";
+
                 $params[':eventFrom'] = DateTimeService::getNowDateTimeInUtc();
             }
         }

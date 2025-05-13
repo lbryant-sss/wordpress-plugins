@@ -85,4 +85,14 @@
 			} 
 		});
 	}); 
+	//ACF toolbar buttons
+	if(acf && typeof acf.add_filter === 'function'){
+		acf.add_filter('wysiwyg_tinymce_settings', function(tinymce_editor, id){
+			if(tinymce_editor.toolbar1){
+				tinymce_editor.toolbar1 += ' ps2id_tinymce_custom_button_link ps2id_tinymce_custom_button_target';
+			}
+			return tinymce_editor;
+		});
+	}
+	//-----
 })();

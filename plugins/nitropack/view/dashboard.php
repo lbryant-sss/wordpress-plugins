@@ -335,7 +335,10 @@ $max_page_views = '10000'; ?>
     <!-- Go to app card End -->
   </div>
   <?php $notOptimizedCPTs = nitropack_filter_non_optimized();
-  if (!get_option('nitropack-noticeOptimizeCPT') && !empty($notOptimizedCPTs))  require_once NITROPACK_PLUGIN_DIR . 'view/modals/modal-not-optimized-CPT.php'; ?>
+  $notices = get_option('nitropack-dismissed-notices', []);
+  $optimizedCPT_notice = in_array( 'OptimizeCPT', $notices, true ) ? true  : false;
+  if (!$optimizedCPT_notice && !empty($notOptimizedCPTs))  require_once NITROPACK_PLUGIN_DIR . 'view/modals/modal-not-optimized-CPT.php'; ?>
+
 </div>
 <?php require_once NITROPACK_PLUGIN_DIR . 'view/modals/modal-unsaved-changes.php'; ?>
 <script>
