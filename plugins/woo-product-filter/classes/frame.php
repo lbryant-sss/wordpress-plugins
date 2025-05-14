@@ -537,7 +537,7 @@ class FrameWpf {
 	 */
 	public function isAdminPlugOptsPage() {
 		$page = ReqWpf::getVar('page');
-		if (is_admin() && !empty($page) && strpos($page, self::_()->getModule('adminmenu')->getMainSlug()) !== false) {
+		if (is_admin() && !empty($page) && is_string($page) && strpos($page, self::_()->getModule('adminmenu')->getMainSlug()) !== false) {
 			return true;
 		}
 		return false;

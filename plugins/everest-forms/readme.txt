@@ -337,6 +337,9 @@ Everest Forms comes with a set of robust spam protection features. You can easil
 
 Yes you can! Join in on our [GitHub repository](https://github.com/wpeverest/everest-forms/) :)
 
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/f788d7f0-ea8a-4fd5-bcae-81a5d09a476c)
 
 == Changelog ==
 

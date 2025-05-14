@@ -543,6 +543,10 @@ class WP_Members {
 			if ( 'pwd_link' != $key || 'login_error' != $key || 'shortcodes' != $key ) {
 				$this->{$key} = $val;
 			}
+			// @todo Check to make sure we don't have an invalid entry.
+			if ( 'cssurl' == $key ) {
+				$this->{$key} = ( 'https://' == $val || 'http://' == $val ) ? '' : $this->{$key};
+			}
 		}
 
 		// Load dependent files.
@@ -595,14 +599,6 @@ class WP_Members {
 		// Load dropins.
 		if ( $this->dropins ) {
 			$this->load_dropins();
-		}
-		
-		// Check for anything that we should stop execution for (currently just the default tos).
-		if ( 'display' == wpmem_get( 'tos', false, 'get' ) ) {
-			// If themes are not loaded, we don't need them.
-			$user_themes = ( ! defined( 'WP_USE_THEMES'  ) ) ? define( 'WP_USE_THEMES',  false  ) : '';
-			$this->load_default_tos();
-			die();
 		}
 	}
 	
@@ -681,6 +677,11 @@ class WP_Members {
 		if ( function_exists( 'wpmem_custom_translation_strings' ) ) {
 			add_filter( 'wpmem_fields', array( $this->forms, 'localize_fields' ), 9 );
 		}
+
+		if ( 'display' == wpmem_get( 'tos', false, 'get' ) ) {
+			add_filter( 'wpmem_after_init', array( $this, 'load_tos') );
+		}
+
 		/**
 		 * Fires after action and filter hooks load.
 		 *
@@ -748,6 +749,8 @@ class WP_Members {
 	 */
 	function load_constants() {
 		( ! defined( 'WPMEM_MOD_REG' ) ) ? define( 'WPMEM_MOD_REG', $this->mod_reg   ) : '';
+
+		// @todo these are deprecated as of PayPal extension version 0.9.9.1.
 		( ! defined( 'WPMEM_USE_EXP' ) ) ? define( 'WPMEM_USE_EXP', $this->use_exp   ) : '';
 		( ! defined( 'WPMEM_USE_TRL' ) ) ? define( 'WPMEM_USE_TRL', $this->use_trial ) : '';
 	}
@@ -774,7 +777,6 @@ class WP_Members {
 			include( $wpmem_pluggable );
 		}
 		
-		require_once $this->path . 'includes/vendor/rocketgeek-utilities/loader.php';
 		require_once $this->path . 'includes/class-wp-members-api.php';
 		require_once $this->path . 'includes/class-wp-members-clone-menus.php';
 		require_once $this->path . 'includes/class-wp-members-captcha.php';
@@ -802,9 +804,6 @@ class WP_Members {
 
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			require_once $this->path . 'includes/cli/class-wp-members-cli.php';
-			require_once $this->path . 'includes/cli/class-wp-members-cli-user.php';
-			require_once $this->path . 'includes/cli/class-wp-members-cli-settings.php';
-			require_once $this->path . 'includes/cli/class-wp-members-cli-db-tools.php';
 		}
 
 		require_once $this->path . 'includes/deprecated.php';
@@ -1971,6 +1970,27 @@ class WP_Members {
 	public function after_wpmem_loaded() {
 		if ( wpmem_is_enabled( 'act_link' ) ) {
 			$this->act_newreg = new WP_Members_Validation_Link;
+		}
+	}
+
+	/**
+	 * Loads the default TOS template. 
+	 * 
+	 * This is used to be part of the init routine, but after some changes
+	 * in recent versions, it needs to load after the $wpmem object is fully
+	 * initialized.  It is now hooked to wpmem_after_init as a separate
+	 * method.
+	 * 
+	 * @since 3.5.3
+	 * @todo  Deprecate in 3.6.0, obsolete by 3.7.0 (maybe earlier)
+	 */
+	public function load_tos() {
+		// Check for anything that we should stop execution for (currently just the default tos).
+		if ( 'display' == wpmem_get( 'tos', false, 'get' ) ) {
+			// If themes are not loaded, we don't need them.
+			$user_themes = ( ! defined( 'WP_USE_THEMES'  ) ) ? define( 'WP_USE_THEMES',  false  ) : '';
+			$this->load_default_tos();
+			die();
 		}
 	}
 

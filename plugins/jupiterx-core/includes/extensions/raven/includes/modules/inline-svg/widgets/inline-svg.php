@@ -262,11 +262,22 @@ class Inline_Svg extends Base_Widget {
 			}
 		}
 
+		// Security check: Validate URL and file extension
 		if ( ! filter_var( $svg['url'], FILTER_VALIDATE_URL ) || pathinfo( $svg['url'], PATHINFO_EXTENSION ) !== 'svg' ) {
 			return;
 		}
 
-		$svg     = file_get_contents( $svg['url'] ); //phpcs:ignore
+		// Security check: Get file content safely
+		$response = wp_remote_get( $svg['url'] );
+		if ( is_wp_error( $response ) ) {
+			return;
+		}
+
+		$svg_content = wp_remote_retrieve_body( $response );
+
+		// Sanitize SVG content
+		$svg_content = jupiterx_svg_sanitizer( $svg_content );
+
 		$classes = [ 'svg-wrapper' ];
 
 		if ( isset( $settings['aspect_ratio'] ) && 'yes' === $settings['aspect_ratio'] ) {
@@ -274,11 +285,11 @@ class Inline_Svg extends Base_Widget {
 		}
 
 		if ( ! isset( $settings['aspect_ratio'] ) || 'yes' !== $settings['aspect_ratio'] ) {
-			$svg = str_replace( '<svg', '<svg preserveAspectRatio="none" ', $svg );
+			$svg_content = str_replace( '<svg', '<svg preserveAspectRatio="none" ', $svg_content );
 		}
 
 		if ( isset( $settings['remove_inline_css'] ) && 'yes' === $settings['remove_inline_css'] ) {
-			$svg = preg_replace( '[style\s*?=\s*?"\s*?.*?\s*?"]', '', $svg );
+			$svg_content = preg_replace( '[style\s*?=\s*?"\s*?.*?\s*?"]', '', $svg_content );
 		}
 
 		if ( ! empty( $settings['link']['url'] ) ) {
@@ -287,7 +298,7 @@ class Inline_Svg extends Base_Widget {
 
 		// Check if custom-width is not set and SVG has no width, we set a default width for it.
 		if ( ! isset( $settings['custom_width'] ) || 'yes' !== $settings['custom_width'] ) {
-			$classes = $this->check_svg_width( $svg, $classes );
+			$classes = $this->check_svg_width( $svg_content, $classes );
 		}
 
 		$this->add_render_attribute(
@@ -301,7 +312,7 @@ class Inline_Svg extends Base_Widget {
 			<div class="jupiterx-inline-svg-wrapper" id="jupiterx-inline-svg-wrapper">
 				<?php echo $this->link_open; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<div <?php echo $this->get_render_attribute_string( 'inner_wrapper' ); ?>>
-					<?php Utils::print_unescaped_internal_string( $svg ); ?>
+					<?php Utils::print_unescaped_internal_string( $svg_content ); ?>
 				</div>
 				<?php echo $this->link_close; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</div>
@@ -325,4 +336,5 @@ class Inline_Svg extends Base_Widget {
 
 		return $classes;
 	}
+
 }

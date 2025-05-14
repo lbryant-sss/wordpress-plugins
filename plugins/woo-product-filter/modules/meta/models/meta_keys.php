@@ -1,7 +1,7 @@
 <?php
 class Meta_KeysModelWpf extends ModelWpf {
 	// meta_mode: 0-global, 1-filter
-	// meta_type: 0-text, 1-decimal, 2-int, 3-decimal+int, 7-array json, 8-serialised array, 9-list
+	// meta_type: 0-text, 1-decimal, 2-int, 3-decimal+int, 7-array json, 8-serialised array, 9-list, 5-list with custom separator
 	// key_size: for array count keys
 	// value_size: for text max lenght
 	// status: 1-calculated (global), 0-need calc, 2- lock, 9-don't recalc

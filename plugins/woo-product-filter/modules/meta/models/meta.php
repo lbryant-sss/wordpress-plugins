@@ -150,6 +150,8 @@ class MetaModelWpf extends ModelWpf {
 		
 		$maxCountProducts += 100;
 		DbWpf::query('SET session wait_timeout=600');
+		global $wpfMetaSeparator;
+		$wpfMetaSeparator = ',';
 
 		foreach ($keys as $key) {
 			$keyName = $key['meta_key'];
@@ -347,6 +349,7 @@ class MetaModelWpf extends ModelWpf {
 						case 3:
 							$query = "{$insert} val_int, val_dec ) SELECT post_id, {$selectType} {$keyId}, ROUND( CAST(meta_value AS DECIMAL(19,4))), CAST( meta_value AS DECIMAL( 19,4 ) ) {$from} {$whereMeta}";
 							break;
+						case 5:
 						case 7:
 						case 8:
 						case 9:
@@ -369,11 +372,15 @@ class MetaModelWpf extends ModelWpf {
 								$lastData     = count($data) - 1;
 								$insertValues = '';
 								foreach ($data as $k => $values) {
-									$valuesArr = ( 7 == $keyType ? $values['meta_value'] : @unserialize($values['meta_value']) );
+									if (5 == $keyType) {
+										$valuesArr = empty($values['meta_value']) ? false : explode($wpfMetaSeparator, $values['meta_value']);
+									} else {
+										$valuesArr = ( 7 == $keyType ? $values['meta_value'] : @unserialize($values['meta_value']) );
+									}
 									if (is_array($valuesArr)) {
 										$j++;
 										
-										if (9 == $keyType) {
+										if (9 == $keyType || 5 == $keyType) {
 											$insValues = $this->saveMetaList($keyId, $values['post_id'], $values['is_var'] , $valuesArr);
 										} else {
 											$insValues = $this->saveMetaArray($keyName, $keyId, $values['post_id'], $values['is_var'], $valuesArr);

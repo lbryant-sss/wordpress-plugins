@@ -1018,8 +1018,29 @@ class WP_Members_User {
 	 */
 	public function set_as_logged_in( $user_id ) {
 		$user = get_user_by( 'id', $user_id );
-		wp_set_current_user( $user_id, $user->user_login );
+		/**
+		 * Sets the WP auth cookie.
+		 *
+		 * May trigger the following WP filter/actions:
+		 * - auth_cookie_expiration
+		 * - secure_auth_cookie
+		 * - secure_logged_in_cookie
+		 * - set_auth_cookie
+		 * - set_logged_in_cookie
+		 * - send_auth_cookies
+		 *
+		 * @see https://developer.wordpress.org/reference/functions/wp_set_auth_cookie/
+		 */
 		wp_set_auth_cookie( $user_id, wpmem_get( 'rememberme', false, 'request' ) );
+		/**
+		 * Sets the user as logged in.
+		 *
+		 * May trigger the folloiwng WP filter/actions:
+		 * - set_current_user
+		 *
+		 * @see https://developer.wordpress.org/reference/functions/wp_set_current_user/
+		 */
+		wp_set_current_user( $user_id, $user->user_login );
 	}
 	
 	/**
@@ -1202,8 +1223,6 @@ class WP_Members_User {
 	 * @param string $set_date Formatted date should be MySQL timestamp, or simply YYYY-MM-DD.
 	 */
 	function set_user_product( $membership, $user_id = false, $set_date = false ) {
-
-		global $wpmem;
 		
 		$user_id = ( ! $user_id ) ? get_current_user_id() : $user_id;
 		
@@ -1211,12 +1230,12 @@ class WP_Members_User {
 		$prev_value = get_user_meta( $user_id, '_wpmem_products_' . $membership, true );
 
 		// Convert date to add.
-		$expiration_period = ( isset( $wpmem->membership->memberships[ $membership ]['expires'] ) ) ? $wpmem->membership->memberships[ $membership ]['expires'] : false;
+		$expiration_period = wpmem_get_expiration_period( $membership ); // Only needs to check if it's an expriation membership?
 		
 		$renew = ( $prev_value ) ? true : false;
 	
 		// If membership is an expiration product.
-		if ( is_array( $expiration_period ) ) {
+		if ( $expiration_period ) {
 			$new_value = wpmem_generate_membership_expiration_date( $membership, $user_id, $set_date, $prev_value, $renew );
 		} else {
 			$new_value = true;

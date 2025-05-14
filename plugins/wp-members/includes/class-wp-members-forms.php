@@ -60,6 +60,9 @@ class WP_Members_Forms {
 			$woo_reg_fields = ( $woo_reg_fields ) ? $woo_reg_fields : array();
 		}
 
+		// Establish $assembled_fields as an array explicitly.
+		$assembled_fields = array();
+
 		// Add new field array keys
 		foreach ( $fields as $key => $val ) {
 
@@ -290,9 +293,7 @@ class WP_Members_Forms {
 	 * @return string $str The field returned as a string.
 	 */
 	function create_form_field( $args ) {
-		
-		global $wpmem;
-		
+
 		// Set defaults for most possible $args.
 		$id          = ( isset( $args['id'] ) ) ? esc_attr( $args['id'] ) : esc_attr( $args['name'] );
 		$name        = esc_attr( $args['name'] );
@@ -486,26 +487,67 @@ class WP_Members_Forms {
 	 * @return string $label
 	 */
 	function create_form_label( $args ) {
-		global $wpmem;
+
+		$defaults = array( 
+			'meta_key'   => $args['meta_key'],
+			'label'      => $args['label'],
+			'type'       => $args['type'],
+			'class'      => ( isset( $args['class']    ) ) ? $args['class']    : false,
+			'id'         => ( isset( $args['id']       ) ) ? $args['id']       : false,
+			'required'   => ( isset( $args['required'] ) ) ? $args['required'] : false,
+			'req_mark '  => ( isset( $args['req_mark'] ) ) ? $args['req_mark'] : false,
+			'label_href' => ( isset( $args['label_href'] ) ) ? $args['label_href'] : false,
+		);
+
+		/**
+		 * Filter the form label args before assembly.
+		 * 
+		 * @since 3.5.3
+		 * 
+		 * @param  array  $args
+		 */
+		$args = apply_filters( 'wpmem_create_form_label_args', $defaults );
 		
-		$meta_key   = $args['meta_key'];
-		$label      = $args['label'];
-		$type       = $args['type'];
-		$class      = ( isset( $args['class']    ) ) ? $args['class']    : false;
-		$id         = ( isset( $args['id']       ) ) ? $args['id']       : false;
-		$required   = ( isset( $args['required'] ) ) ? $args['required'] : false;
-		$req_mark   = ( isset( $args['req_mark'] ) ) ? $args['req_mark'] : false;
-		
-		//$req_mark = ( ! $req_mark ) ? wpmem_get_text( 'register_req_mark' ) : '*';
-		
-		if ( ! $class ) {
-			$class = ( $type == 'password' || $type == 'email' || $type == 'url' ) ? 'text' : $type;
+		$req_mark = ( ! isset( $args['req_mark'] ) || ! $args['req_mark'] ) ? wpmem_get_text( 'register_req_mark' ) : $args['req_mark'];
+
+		$label_text = __( $args['label'], 'wp-members' );
+		if ( isset( $args['label_href'] ) && '' != $args['label_href'] ) {
+
+			// Adjust placeholders.
+			$label_text = str_replace( '%', '%s', $label_text );
+
+			/**
+			 * Filters the anchor tag.
+			 * 
+			 * @since 3.5.3
+			 * 
+			 * @param  array   $atts     An array of attributes for the <a> tag.
+			 * @param  string  $meta_key Meta key of the field.
+			 */
+			$tag_atts = apply_filters( 'wpmem_form_label_link', array ( 
+				'href'   => $args['label_href'],
+				'target' => '_blank',
+			), $args['meta_key'] );
+			
+			$anchor_tag = "<a ";
+			foreach ( $tag_atts as $attribute => $value ) {
+				$anchor_tag .= ( '' != $value ) ? esc_attr( $attribute ) . '="' . esc_attr( $value ) . '" ' : esc_attr( $attribute ) . ' ';
+			}
+			$anchor_tag .= ">";
+			
+			$label_text = sprintf( $label_text, $anchor_tag, '</a>' );
 		}
 		
-		$id = ( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
+		if ( ! $args['class'] ) {
+			$class = ( $args['type'] == 'password' || $args['type'] == 'email' || $args['type'] == 'url' ) ? 'text' : $args['type'];
+		} else {
+			$class = $args['class'];
+		}
+		
+		$id = ( $args['id'] ) ? ' id="' . esc_attr( $args['id'] ) . '"' : '';
 
-		$label = '<label for="' . esc_attr( $meta_key ) . '"' . $id . ' class="' . wpmem_sanitize_class( $class ) . '">' . __( $label, 'wp-members' );
-		$label = ( $required ) ? $label . $req_mark : $label;
+		$label = '<label for="' . esc_attr( $args['meta_key'] ) . '"' . $id . ' class="' . wpmem_sanitize_class( $class ) . '">' . wpmem_sanitize_field( $label_text, 'kses' );
+		$label = ( $args['required'] ) ? $label . wpmem_sanitize_field( $req_mark, 'kses' ) : $label;
 		$label = $label . '</label>';
 		
 		return $label;
@@ -1192,7 +1234,8 @@ class WP_Members_Forms {
 					'type'     => $field['type'], 
 					'class'    => $class, 
 					'required' => $field['required'], 
-					'req_mark' => $args['req_mark'] 
+					'req_mark' => $args['req_mark'],
+					'label_href' => ( isset( $field['label_href'] ) ) ? $field['label_href'] : false,
 				) );
 
 			} 
@@ -1346,7 +1389,7 @@ class WP_Members_Forms {
 					// @todo "checkbox_label" should be set already, check why it isn't.
 					if ( 'checkbox' == $field['type'] && isset( $field['checkbox_label'] ) && 1 == $field['checkbox_label'] ) {
 						$input = $input . ' <label for="' . $meta_key . '">' . $label . '</label>';
-						$fields[ $meta_key ]['label'] = $field['label'] = $label = '';
+						$label = ''; // @todo Overdoing it throws a "Automatic conversion of false to array is deprecated" error: $fields[ $meta_key ]['label'] = $field['label'] = $label = '';
 					}
 				}
 

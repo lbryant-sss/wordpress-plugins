@@ -1170,7 +1170,7 @@
 						if(mlist.length) {
 							switch (filterId) {
 								case 'wpfCategory':
-									preValue = filterName + '=' + (items['f_multi_logic'] == 'or' ? mlist.replace(/,/g, '|') : mlist);
+									preValue = filterName + (items['f_extend_parent_filtering'] ? '' : '_list') + '=' + (items['f_multi_logic'] == 'or' ? mlist.replace(/,/g, '|') : mlist);
 									break;
 								case 'wpfTags':
 								case 'wpfAttribute':

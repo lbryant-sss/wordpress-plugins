@@ -60,6 +60,7 @@ class Jupiterx_Woocommerce_Condition {
 				is_product_category() ||
 				is_shop() ||
 				is_product_tag() ||
+				is_tax( 'product_brand' ) ||
 				( is_tax() && strpos( $query->taxonomy, 'pa_' ) !== false )
 			)
 		) {
@@ -91,6 +92,17 @@ class Jupiterx_Woocommerce_Condition {
 			}
 
 			if ( is_product_tag( $condition[2][0] ) ) {
+				return true;
+			}
+		}
+
+		// Product brand archive.
+		if ( 'product_brand_archive' === $condition[1] ) {
+			if ( 'all' === $condition[2][0] && is_tax( 'product_brand' ) ) {
+				return true;
+			}
+
+			if ( is_tax( 'product_brand', $condition[2][0] ) ) {
 				return true;
 			}
 		}
@@ -143,6 +155,19 @@ class Jupiterx_Woocommerce_Condition {
 
 			// Certain tag selected.
 			if ( has_term( $condition[2][0], 'product_tag', $query->ID ) ) {
+				return true;
+			}
+		}
+
+		// Product Brands.
+		if ( 'in_product_brand' === $condition[1] ) {
+			// All brands selected.
+			if ( 'all' === $condition[2][0] && has_term( '', 'product_brand', $query->ID ) ) {
+				return true;
+			}
+
+			// Certain brand selected.
+			if ( has_term( $condition[2][0], 'product_brand', $query->ID ) ) {
 				return true;
 			}
 		}

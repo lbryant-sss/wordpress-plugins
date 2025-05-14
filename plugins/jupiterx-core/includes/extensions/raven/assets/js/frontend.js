@@ -159,6 +159,7 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
   var ajaxContentLoaded = false;
   var inactivityTimeout;
   var isUTMMatch;
+  var hasResetTimerRun = []; //used for after inactivity trigger to display popup only once per page load
 
   this.init = function () {
     var _popupTriggers$on_dat,
@@ -681,6 +682,11 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
     var _this7 = this;
 
     clearTimeout(inactivityTimeout);
+
+    if (hasResetTimerRun.includes(popupSettings.id)) {
+      return;
+    }
+
     this.removeEntranceAnimationClass();
     inactivityTimeout = setTimeout(function () {
       if (window.localStorage.getItem('jupiterx_popup_closed_permanently_' + popupId) === 'true' || window.localStorage.getItem('jupiterx_popup_closed_permanently_' + id) === 'true') {
@@ -688,6 +694,8 @@ window.jupiterxPopupSettings = function ($popup, settings, triggers) {
       }
 
       _this7.showPopup();
+
+      hasResetTimerRun.push(popupSettings.id);
     }, delay * 1000);
   };
 

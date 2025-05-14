@@ -912,11 +912,7 @@ if ( ! class_exists( 'Mega_Menu_Toggle_Blocks' ) ) :
 				$value_text = $value;
 			}
 
-			echo "<div class='mm-picker-container'>";
-			echo "    <input type='text' class='mm_colorpicker' name='toggle_blocks[{$block_id}][{$key}]' value='{$value}' />";
-			echo "    <div class='chosen-color'>{$value_text}</div>";
-			echo '</div>';
-
+			echo "<input type='text' class='mega-color-picker-input' name='toggle_blocks[{$block_id}][{$key}]' value='{$value}' />";
 		}
 
 

@@ -251,6 +251,7 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 			$next_id = $this->get_next_theme_id();
 
 			$copy['title'] = $copy['title'] . ' ' . __( 'Copy', 'megamenu' );
+			$copy['plugin_version'] = MEGAMENU_VERSION;
 
 			$new_theme_id = 'custom_theme_' . $next_id;
 
@@ -348,6 +349,7 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 			$new_theme     = $style_manager->get_default_theme();
 
 			$new_theme['title'] = "Custom {$next_id}";
+			$new_theme['plugin_version'] = MEGAMENU_VERSION;
 
 			$saved_themes[ $new_theme_id ] = $new_theme;
 
@@ -385,6 +387,7 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 				$saved_themes                  = max_mega_menu_get_themes();
 				$next_id                       = $this->get_next_theme_id();
 				$import['title']               = $import['title'] . ' ' . __( ' - Imported', 'megamenu' );
+				$import['plugin_version']      = MEGAMENU_VERSION;
 				$new_theme_id                  = 'custom_theme_' . $next_id;
 				$saved_themes[ $new_theme_id ] = $import;
 				max_mega_menu_save_themes( $saved_themes );
@@ -2770,11 +2773,13 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 						)
 					);
 
-					if ( ! defined( 'MEGAMENU_ENABLE_FLEX_CSS_OPTION' ) || MEGAMENU_ENABLE_FLEX_CSS_OPTION === false ) {
+					$plugin_version = $this->active_theme['plugin_version'];
+
+					if ( $plugin_version == NULL ) { // plugin version only started being stored in v3.6 onwards
 						unset($settings['general']['settings']['use_flex_css']);
 					}
 	
-					echo "<h2 class='nav-tab-wrapper'>";
+					echo "<nav class='nav-tab-wrapper'>";
 
 					$is_first = true;
 
@@ -2787,11 +2792,11 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 						$active = '';
 					}
 
-					echo "<a class='mega-tab nav-tab {$active}' data-tab='mega-tab-content-{$section_id}'>" . $section['title'] . '</a>';
+					echo "<a class='mega-tab {$active}' data-tab='mega-tab-content-{$section_id}'>" . $section['title'] . '</a>';
 
 				}
 
-					echo '</h2>';
+					echo '</nav>';
 
 					$is_first = true;
 
@@ -3203,10 +3208,7 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 				$value_text = $value;
 			}
 
-			echo "<div class='mm-picker-container'>";
-			echo "    <input type='text' class='mm_colorpicker' name='settings[$key]' value='" . esc_attr( $value ) . "' />";
-			echo "    <div class='chosen-color'>" . esc_html( $value_text ) . '</div>';
-			echo '</div>';
+			echo "<input type='text' class='mega-color-picker-input' name='settings[$key]' value='" . esc_attr( $value ) . "' />";
 
 		}
 

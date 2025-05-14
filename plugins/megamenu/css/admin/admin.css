@@ -2127,26 +2127,44 @@ body.toplevel_page_maxmegamenu .megamenu_right textarea.mega-export {
   margin-bottom: 10px;
   font-size: 0.9em;
 }
-body[class*=_page_maxmegamenu_] .megamenu_right h2.nav-tab-wrapper,
-body.toplevel_page_maxmegamenu .megamenu_right h2.nav-tab-wrapper {
+body[class*=_page_maxmegamenu_] .megamenu_right nav.nav-tab-wrapper,
+body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper {
   margin: 0;
+  display: inline-flex;
+  align-items: center;
+  align-content: center;
+  height: 64px;
+  gap: 30px;
+  width: 100%;
 }
-body[class*=_page_maxmegamenu_] .megamenu_right h2.nav-tab-wrapper a.nav-tab,
-body.toplevel_page_maxmegamenu .megamenu_right h2.nav-tab-wrapper a.nav-tab {
+body[class*=_page_maxmegamenu_] .megamenu_right nav.nav-tab-wrapper a.mega-tab,
+body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper a.mega-tab {
+  display: flex;
   cursor: pointer;
+  height: 100%;
+  align-content: center;
+  flex-wrap: wrap;
+  color: #444;
+  font-weight: 500;
+  font-size: 14px;
 }
 @media only screen and (max-width: 1200px) {
-  body[class*=_page_maxmegamenu_] .megamenu_right h2.nav-tab-wrapper a.nav-tab,
-  body.toplevel_page_maxmegamenu .megamenu_right h2.nav-tab-wrapper a.nav-tab {
+  body[class*=_page_maxmegamenu_] .megamenu_right nav.nav-tab-wrapper a.mega-tab,
+  body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper a.mega-tab {
     font-size: 12px;
   }
 }
-body[class*=_page_maxmegamenu_] .megamenu_right h2.nav-tab-wrapper a.nav-tab-active,
-body.toplevel_page_maxmegamenu .megamenu_right h2.nav-tab-wrapper a.nav-tab-active {
+body[class*=_page_maxmegamenu_] .megamenu_right nav.nav-tab-wrapper a.mega-tab:hover,
+body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper a.mega-tab:hover {
+  border-bottom: 3px solid #444;
+}
+body[class*=_page_maxmegamenu_] .megamenu_right nav.nav-tab-wrapper a.nav-tab-active,
+body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper a.nav-tab-active {
   background: white;
   position: relative;
   z-index: 1;
-  border-bottom: 1px solid white;
+  border-bottom: 3px solid #0073aa;
+  color: #0073aa;
 }
 body[class*=_page_maxmegamenu_] .megamenu_right h3.editing_theme,
 body.toplevel_page_maxmegamenu .megamenu_right h3.editing_theme {
@@ -2296,14 +2314,13 @@ body.toplevel_page_maxmegamenu .megamenu_right .menu_settings.menu_settings_menu
 }
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings.menu_settings_menu_themes td.mega-name,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings.menu_settings_menu_themes td.mega-name {
-  padding-left: 10px;
   font-size: 14px;
 }
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings.menu_settings_menu_themes h5,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings.menu_settings_menu_themes h5 {
   clear: both;
   font-size: 1.1em;
-  margin: 15px 0 0 10px;
+  margin: 15px 0 0 0;
   padding: 0;
 }
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings.menu_settings_tools label,
@@ -2467,7 +2484,7 @@ body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table textarea,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table input[type=text],
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table input[type=number],
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table select {
-  font-size: 11px;
+  font-size: 12px;
   min-height: 28px;
 }
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table select,
@@ -2493,7 +2510,8 @@ body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table input[name=e
 }
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table input[type=text],
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table input[type=text] {
-  width: 70px;
+  min-width: 70px;
+  field-sizing: content;
 }
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table input[type=text].wide,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table input[type=text].wide {
@@ -2551,7 +2569,6 @@ body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table td {
   position: relative;
   padding-bottom: 25px;
   padding-top: 15px;
-  border-top: 1px solid #DFDFDF;
 }
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table td.mega-name,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table td.mega-name {
@@ -2615,7 +2632,7 @@ body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table td.mega-nam
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table td.mega-value .mega-description,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table td.mega-name .mega-description,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table td.mega-value .mega-description {
-  font-size: 12px;
+  font-size: 13px;
   color: #777;
   line-height: 1.5em;
 }
@@ -2745,6 +2762,10 @@ body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table label.mega-t
   z-index: 1;
   border: 1px solid #ccc;
 }
+body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table label.mega-toggle_blocks .toggle-bar-designer .mega-blocks .block .block-settings .mega-custom-color-input-wrapper,
+body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table label.mega-toggle_blocks .toggle-bar-designer .mega-blocks .block .block-settings .mega-custom-color-input-wrapper {
+  float: right;
+}
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table label.mega-toggle_blocks .toggle-bar-designer .mega-blocks .mega-right .block .block-settings,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table label.mega-toggle_blocks .toggle-bar-designer .mega-blocks .mega-right .block .block-settings {
   left: auto;
@@ -2808,7 +2829,7 @@ body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table .mega-valida
 }
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table label span.mega-short-desc,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table label span.mega-short-desc {
-  font-size: 0.8em;
+  font-size: 10px;
   text-transform: uppercase;
   color: #777;
   display: block;
@@ -2844,9 +2865,7 @@ body.toplevel_page_maxmegamenu .megamenu_right .menu_settings .megamenu_submit {
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings div.mega-tab-content,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings div.mega-tab-content {
   position: relative;
-  top: -1px;
   clear: both;
-  border: 1px solid #ccc;
   float: left;
   width: 100%;
   padding: 0;

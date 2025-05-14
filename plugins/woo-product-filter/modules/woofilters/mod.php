@@ -157,7 +157,9 @@ class WoofiltersWpf extends ModuleWpf {
 			}
 			return $filters;
 		}, 99 );
-
+		if ( isset($_GET['type_aws']) && isset($_GET['aws_filter']) && $this->isFiltered(false) ) {
+			ReqWpf::clearVar('type_aws', 'get');
+		}
 
 		//Qi Addons For Elementor
 		add_filter( 'qi_addons_for_elementor_filter_query_params', array( $this, 'replaceArgsIfBuilderGridUsed') );
@@ -211,6 +213,7 @@ class WoofiltersWpf extends ModuleWpf {
 		if ( ! $this->isFiltered(false) ) {
 			return $ids;
 		}
+
 		$q = new WP_Query( DispatcherWpf::applyFilters( 'beforeFilterExistsTermsWithEmptyArgs', array(
 			'post_type'   => 'product',
 			'fields'      => 'ids',
@@ -915,6 +918,9 @@ class WoofiltersWpf extends ModuleWpf {
 
 		if ( ! empty( $data['pr_onsale'] ) ) {
 			$fields['post__in'] = array_merge( array( 0 ), wc_get_product_ids_on_sale() );
+			if ( class_exists( '\com\itthinx\woocommerce\search\engine\Query_Control' ) ) {
+				\com\itthinx\woocommerce\search\engine\Query_Control::do_pre_get_posts(false);
+			}
 		}
 		if ( ! empty( $data['pr_author'] ) ) {
 			$slugs = explode( '|', $data['pr_author'] );
@@ -1119,7 +1125,7 @@ class WoofiltersWpf extends ModuleWpf {
 							'include_children' => true,
 						);
 					}
-				} elseif ( ( strpos( $key, 'product_brand' ) === 0 || ( strpos( $key, 'wpf_filter_brand' ) === 0 && ! taxonomy_exists('pa_brand') ) ) && taxonomy_exists('product_brand') ) {
+				} elseif ( ( strpos( $key, 'product_brand' ) === 0 || ( strpos( $key, 'wpf_filter_brand' ) === 0 && ! taxonomy_exists('pa_brand') ) ) && taxonomy_exists('product_brand') && !is_admin() ) {
 					if ( ! empty( $param ) ) {
 						$idsOr      = explode( ',', $param );
 						$idsAnd     = explode( '|', $param );
@@ -4034,10 +4040,19 @@ class WoofiltersWpf extends ModuleWpf {
 				$existTerms[$name] = array_intersect_key($existTerms[$name], array_flip($rootTermIds));                    
 					
 				$maxLevel = 0;
+				$cache = array();
 				foreach ( $terms as $term ) {
 					$level    = 0;
 					$parentId = (int) $term['parent'];
+					if (isset($cache[$parentId])) {
+						continue;
+					}
+					$firstParent = $parentId;
 					while ( 0 !== $parentId ) {
+						if (isset($cache[$parentId])) {
+							$level += $cache[$parentId];
+							break;
+						}
 						++$level;
 						$found = false;
 						foreach ( $terms as $pt ) {
@@ -4051,6 +4066,7 @@ class WoofiltersWpf extends ModuleWpf {
 							break;
 						}
 					}
+					$cache[$firstParent] = $level;
 					$maxLevel = max($maxLevel, $level);
 				}
 					

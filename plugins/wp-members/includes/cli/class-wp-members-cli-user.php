@@ -110,7 +110,8 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			$accepted = array( 'pending', 'activated', 'deactivated' );
 
 			if ( ! in_array( $args[0], $accepted ) ) {
-				WP_CLI::error( 'Must include a user status from the following: pending|activated|deactivated' );
+				/* translators: do not translate "pending|activated|deactivated", these are the command values */
+				WP_CLI::error( __( 'Must include a user status from the following: pending|activated|deactivated', 'wp-members' ) );
 			}
 
 			switch ( $args[0] ) {
@@ -142,7 +143,8 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 				$formatter = new \WP_CLI\Formatter( $assoc_args, array( 'ID', 'username', 'email', 'status' ) );
 				$formatter->display_items( $list );
 			} else {
-				WP_CLI::line( 'Currently there are no ' . $status . ' users.' );
+				/* translators: %s is the placeholder for the user status value, do not remove it. */
+				WP_CLI::line( sprintf( __( 'Currently there are no %s users.', 'wp-members' ), $status ) );
 			}
 		}
 
@@ -190,7 +192,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			// is user by id, email, or login
 			$user = get_user_by( 'login', $args[0] );
 			if ( empty( $user ) || ! $user ) {
-				WP_CLI::error( 'User does not exist. Try wp user list' );
+				WP_CLI::error( __( 'User does not exist. Try wp user list', 'wp-members' ) );
 			}
 			$all  = ( isset( $assoc_args['all'] ) ) ? true : false;
 			$this->display_user_detail( $user, $all );
@@ -205,6 +207,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		 * @param          $all
 		 */
 		private function display_user_detail( $user, $all ) {
+			/* translators: %s is the placeholder for the user login name, do not remove it. */
 			WP_CLI::line( sprintf( __( 'User: %s', 'wp-members' ), $user->user_login ) );
 
 			$values = wpmem_user_data( $user->ID, $all );
@@ -231,11 +234,10 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		 * @since 3.3.5
 		 */
 		public function confirm( $args, $assoc_args ) {
-			global $wpmem;
 			$validation = $this->validate_user_id( $assoc_args['id'] );
 			if ( true === $validation ) {
 				wpmem_set_user_as_confirmed( $assoc_args['id'] );
-				WP_CLI::success( 'User confirmed' );
+				WP_CLI::success( __( 'User confirmed', 'wp-members' ) );
 			}
 		}
 		
@@ -245,8 +247,31 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			if ( is_array( $role ) ) {
 				
 			} else {
-				WP_CLI::line( __( 'User role: %s', 'wp-members' ), $role );
+				/* translators: %s is the placeholder for user role, do not remove it. */
+				WP_CLI::line( sprintf( __( 'User role: %s', 'wp-members' ), $role ) );
 			}
+		}
+
+		/**
+		 * @alias set-membership
+		 */
+		public function set_membership( $args, $assoc_args ) {
+
+			// is user by id, email, or login
+			$user_by = ( isset( $assoc_args['user_by'] ) ) ? $assoc_args['user_by'] : 'login';
+			$user = get_user_by( $user_by, $args[0] );
+			if ( empty( $user ) || ! $user ) {
+				WP_CLI::error( __( 'User does not exist. Try wp user list', 'wp-members' ) );
+			}
+
+			$membership = $assoc_args['key'];
+
+			$date = ( isset( $assoc_args['date'] ) ) ? $assoc_args['date'] : false;
+
+			wpmem_set_user_membership( $membership, $user->ID, $date );
+
+			/* translators: %s is the placeholder for membership and user id, do not remove it. */
+			WP_CLI::line( sprintf( __( 'Set %s membership for user %s', 'wp-members' ), $membership, $user->user_login ) );
 		}
 	}
 }

@@ -17,7 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WP_Members_Dialogs {
 	
 	function __construct() {
-		
+		if ( 1 == get_option( 'wpmem_legacy_dialogs' ) ) {
+			add_filter( 'wpmem_msg_defaults', array( $this, 'map_deprecated_dialogs' ), 10, 3 );
+		}
 	}
 	
 	/**
@@ -136,7 +138,7 @@ class WP_Members_Dialogs {
 			'reg_valid_email'      => esc_html__( 'You must enter a valid email address.', 'wp-members' ),
 			'reg_non_alphanumeric' => esc_html__( 'The username cannot include non-alphanumeric characters.', 'wp-members' ),
 			'reg_empty_username'   => esc_html__( 'Sorry, username is a required field', 'wp-members' ),
-			'reg_username_taken'   => esc_html__( 'Sorry, that username is taken, Please try another.', 'wp-members' ),
+			'reg_username_taken'   => esc_html__( 'Sorry, that username is taken. Please try another.', 'wp-members' ),
 			'reg_email_taken'      => esc_html__( 'Sorry, that email address already has an account. Please try another.', 'wp-members' ),
 			'reg_password_match'   => esc_html__( 'Passwords did not match.', 'wp-members' ),
 			'reg_email_match'      => esc_html__( 'Emails did not match.', 'wp-members' ),
@@ -378,7 +380,7 @@ class WP_Members_Dialogs {
 		 *
 		 * @param array An array of arguments to merge with defaults.
 		 */
-		$args = apply_filters_deprecated( 'wpmem_msg_args', array(''), '3.2.0', 'wpmem_dialogs' );
+		$args = apply_filters_deprecated( 'wpmem_msg_args', array(''), '3.3.0', 'wpmem_msg_defaults' );
 
 		/** This filter is documented in /includes/class-wp-members-admin-api.php */
 		$dialogs = apply_filters( 'wpmem_dialogs', get_option( 'wpmembers_dialogs' ) );
@@ -450,5 +452,28 @@ class WP_Members_Dialogs {
 		 * @param string $tag The tag of the message being displayed.
 		 */
 		return apply_filters( 'wpmem_msg_dialog', $str, $tag );
+	}
+
+	public function get_deprecated_dialogs() {
+		return array ( 
+			'user'             => 'reg_username_taken',
+			'email'            => 'reg_email_taken',
+			'editsuccess'      => 'profile_update',
+			'pwdchangerr'      => 'pwdchangerr',
+			'pwdchangesuccess' => 'pwdchangesuccess',
+			'pwdreseterr'      => 'pwdreseterr',
+			'pwdresetsuccess'  => 'pwdresetsuccess'
+		);
+	}
+
+	public function map_deprecated_dialogs( $defaults, $tag, $dialogs ) {
+
+		$deprecated_dialogs = $this->get_deprecated_dialogs();
+
+		if ( array_key_exists( $tag, $deprecated_dialogs ) ) {
+			$defaults['msg'] = wpmem_get_text( $deprecated_dialogs[ $tag ] );
+		}
+
+		return $defaults;
 	}
 }

@@ -114,21 +114,13 @@ jQuery(function($) {
 
                 var $response = $(response);
 
-                // initiate color picker fields
-                $(".mm_colorpicker", $response).spectrum({
-                    preferredFormat: "rgb",
-                    showInput: true,
-                    showAlpha: true,
-                    clickoutFiresChange: true,
-                    change: function(color) {
-                        if (color.getAlpha() === 0) {
-                            $(this).siblings('div.chosen-color').html('transparent');
-                        } else {
-                            $(this).siblings('div.chosen-color').html(color.toRgbString());
-                        }
-                    }
+                $('.mega-color-picker-input', $response).customColorPicker({ 
+                    defaultColor: '#DDDDDD', 
+                    showCssVarPalette: false,
+                    palette: $.isArray(megamenu_spectrum_settings.palette) ? megamenu_spectrum_settings.palette : [],
+                    onColorChange: function(colorString, inputElement) { }
                 });
-
+                
                 // initiate icon selector dropdowns
                 $('.icon_dropdown', $response).select2({
                   containerCssClass: 'tpx-select2-container select2-container-sm',

@@ -66,31 +66,17 @@ jQuery(function ($) {
         });
     }
     
-    $(".mm_colorpicker").spectrum({
-        preferredFormat: "rgb",
-        showInput: true,
-        showAlpha: true,
-        clickoutFiresChange: true,
-        showSelectionPalette: true,
-        showPalette: true,
-        palette: $.isArray(megamenu_spectrum_settings.palette) ? megamenu_spectrum_settings.palette : [],
-        localStorageKey: "maxmegamenu.themeeditor",
-        change: function(color) {
-            if (color.getAlpha() === 0) {
-                $(this).siblings('div.chosen-color').html('transparent');
-            } else {
-                $(this).siblings('div.chosen-color').html(color.toRgbString());
-            }
-        }
+    $('.mega-color-picker-input').customColorPicker({ 
+        defaultColor: '#DDDDDD', 
+        showCssVarPalette: false
     });
 
-    $(".mega-copy_color span").on('click', function() {
-        var from = $(this).parent().parent().children(":first").find("input");
-        var to = $(this).parent().parent().children(":last").find("input");
-
-        $(to).spectrum("set", from.val());
-        to.siblings('div.chosen-color').html(from.siblings('div.chosen-color').html());
+    $(".mega-copy_color").on('click', function() {
+        var from = $(this).prev().find('.mega-color-picker-input').customColorPicker('get');
+        var to = $(this).next().find(".mega-color-picker-input");
+        to.customColorPicker('set', from);
     })
+
 
     $(".confirm").on("click", function() {
         return confirm(megamenu_settings.confirm);

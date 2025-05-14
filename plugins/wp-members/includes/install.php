@@ -353,7 +353,6 @@ function wpmem_install_fields() {
 		array( 13, 'Biographical Info', 'description',       'textarea', 'n', 'n', 'y', 'profile'=>1 ),
 		array( 14, 'Password',          'password',          'password', 'n', 'n', 'n', 'profile'=>0 ),
 		array( 15, 'Confirm Password',  'confirm_password',  'password', 'n', 'n', 'n', 'profile'=>0 ),
-		array( 16, 'Terms of Service',  'tos',               'checkbox', 'n', 'n', 'n', 'agree', 'n', 'profile'=>0 ),
 	);
 	update_option( 'wpmembers_fields', $fields, false ); // using update_option to allow for forced update
 	return $fields;
@@ -416,6 +415,9 @@ function wpmem_upgrade_fields() {
  * @param array $settings
  */
 function wpmem_upgrade_style_setting( $settings ) {
+
+	$url = plugin_dir_url ( __DIR__ );
+
 	if ( 'generic-no-float' == $settings['select_style'] ) {
 		// This is the default style.
 		$settings['cssurl'] = '';
@@ -428,11 +430,17 @@ function wpmem_upgrade_style_setting( $settings ) {
 		} else {
 			// If it is from the selector but not default, set to "use_custom" and set the url.
 			// NOTE: Set select_style last because we're using the saved value to build the cssurl setting first.
-			$url = plugin_dir_url ( __DIR__ );
 			$settings['cssurl'] = trailingslashit( $url ) . 'assets/css/forms/' . $settings['select_style'] . '.min.css';
 			$settings['select_style'] = 'use_custom';
 		}
 	}
+
+	// Fix invalid style setting from previous upgrades (3.5.0 - 3.5.2)
+	if ( $settings['cssurl'] = trailingslashit( $url ) . 'assets/css/forms/default.min.css' || $settings['cssurl'] = trailingslashit( $url ) . 'assets/css/forms/default.css' ) {
+		$settings['cssurl'] = '';
+		$settings['select_style'] = 'default';
+	}
+
 	return $settings;
 }
 
@@ -701,7 +709,7 @@ class WP_Members_Installer {
 		global $wpmem;
 
 		$show_release_notes = true;
-		$release_notes_link = "https://rocketgeek.com/release-announcements/wp-members-3-5-2/";
+		$release_notes_link = "https://rocketgeek.com/release-announcements/wp-members-3-5-3/";
 
 		if ( 'new_install' == $wpmem->install_state ) {
 			$notice_heading = __( 'Thank you for installing WP-Members, the original WordPress membership plugin.', 'wp-members' );

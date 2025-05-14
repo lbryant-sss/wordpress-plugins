@@ -294,18 +294,20 @@ class JupiterX_Core_Condition_Manager {
 				'in_product_cat'          => esc_html__( 'In Product Category', 'jupiterx-core' ),
 				'in_product_cat_children' => esc_html__( 'In Child Product categories', 'jupiterx-core' ),
 				'in_product_tag'          => esc_html__( 'In Product Tags', 'jupiterx-core' ),
+				'in_product_brand'        => esc_html__( 'In Product Brands', 'jupiterx-core' ),
 				'product_by_author'       => esc_html__( 'Products By Author', 'jupiterx-core' ),
 			];
 		}
 
 		if ( 'product-archive' === $section ) {
 			return [
-				''                    => esc_html__( 'Select One', 'jupiterx-core' ),
-				'all_product_archive' => esc_html__( 'All Products Archive', 'jupiterx-core' ),
-				'shop_archive'        => esc_html__( 'Shop Page', 'jupiterx-core' ),
-				'woo_search'          => esc_html__( 'Search Results', 'jupiterx-core' ),
-				'product_cat_archive' => esc_html__( 'Products Categories', 'jupiterx-core' ),
-				'product_tag_archive' => esc_html__( 'Products Tags', 'jupiterx-core' ),
+				''                      => esc_html__( 'Select One', 'jupiterx-core' ),
+				'all_product_archive'   => esc_html__( 'All Products Archive', 'jupiterx-core' ),
+				'shop_archive'          => esc_html__( 'Shop Page', 'jupiterx-core' ),
+				'woo_search'            => esc_html__( 'Search Results', 'jupiterx-core' ),
+				'product_cat_archive'   => esc_html__( 'Products Categories', 'jupiterx-core' ),
+				'product_tag_archive'   => esc_html__( 'Products Tags', 'jupiterx-core' ),
+				'product_brand_archive' => esc_html__( 'Products Brands', 'jupiterx-core' ),
 			];
 		}
 
@@ -322,17 +324,19 @@ class JupiterX_Core_Condition_Manager {
 				'my-account-user'  => esc_html__( 'My Account Page', 'jupiterx-core' ),
 				'my-account-guest' => esc_html__( 'My Account Login Page', 'jupiterx-core' ),
 				'Products Archive' => [
-					'all_product_archive' => esc_html__( 'All Products Archive', 'jupiterx-core' ),
-					'shop_archive'        => esc_html__( 'Shop Page', 'jupiterx-core' ),
-					'woo_search'          => esc_html__( 'Search Results', 'jupiterx-core' ),
-					'product_cat_archive' => esc_html__( 'Products Categories', 'jupiterx-core' ),
-					'product_tag_archive' => esc_html__( 'Products Tags', 'jupiterx-core' ),
+					'all_product_archive'   => esc_html__( 'All Products Archive', 'jupiterx-core' ),
+					'shop_archive'          => esc_html__( 'Shop Page', 'jupiterx-core' ),
+					'woo_search'            => esc_html__( 'Search Results', 'jupiterx-core' ),
+					'product_cat_archive'   => esc_html__( 'Products Categories', 'jupiterx-core' ),
+					'product_tag_archive'   => esc_html__( 'Products Tags', 'jupiterx-core' ),
+					'product_brand_archive' => esc_html__( 'Products Brands', 'jupiterx-core' ),
 				],
 				'Products'        => [
 					'single_product'          => esc_html__( 'Products', 'jupiterx-core' ),
 					'in_product_cat'          => esc_html__( 'In Product Category', 'jupiterx-core' ),
 					'in_product_cat_children' => esc_html__( 'In Child Product categories', 'jupiterx-core' ),
 					'in_product_tag'          => esc_html__( 'In Product Tags', 'jupiterx-core' ),
+					'in_product_brand'        => esc_html__( 'In Product Brands', 'jupiterx-core' ),
 					'product_by_author'       => esc_html__( 'Products By Author', 'jupiterx-core' ),
 				],
 			];
@@ -452,7 +456,7 @@ class JupiterX_Core_Condition_Manager {
 				$list[ $post->label ][ "$post->name@by_author" ] = sprintf(
 					'%1$s %2$s',
 					$post->label,
-					esc_html( 'By Author', 'jupiterx-core' )
+					esc_html__( 'By Author', 'jupiterx-core' )
 				);
 			}
 		}
@@ -1278,6 +1282,17 @@ class JupiterX_Core_Condition_Manager {
 	}
 
 	/**
+	 * Return brands of products.
+	 *
+	 * @param string $value
+	 * @return void
+	 * @since 4.9.1
+	 */
+	private function woocommerce_in_product_brand( $value ) {
+		$this->get_terms( 'product_brand', $value );
+	}
+
+	/**
 	 * Return categories of products.
 	 *
 	 * @param string $value
@@ -1335,6 +1350,17 @@ class JupiterX_Core_Condition_Manager {
 	*/
 	private function woocommerce_product_tag_archive( $value ) {
 		$this->get_terms( 'product_tag', $value );
+	}
+
+	/**
+	 * Return brands of products
+	 *
+	 *@param string $value
+	 * @return void
+	 * @since 4.9.1
+	 */
+	private function woocommerce_product_brand_archive( $value ) {
+		$this->get_terms( 'product_brand', $value );
 	}
 }
 

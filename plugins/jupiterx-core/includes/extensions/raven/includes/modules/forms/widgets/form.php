@@ -869,6 +869,46 @@ class Form extends Base_Widget {
 			]
 		);
 
+		if ( ! is_admin() ) {
+			$this->add_control(
+				'convertkit_list',
+				[
+					'type' => Controls_Manager::HIDDEN,
+					'default' => '',
+				]
+			);
+		}
+
+		if ( ! is_admin() ) {
+			$this->add_control(
+				'drip_list',
+				[
+					'type' => Controls_Manager::HIDDEN,
+					'default' => '',
+				]
+			);
+		}
+
+		if ( ! is_admin() ) {
+			$this->add_control(
+				'mailerlite_list',
+				[
+					'type' => Controls_Manager::HIDDEN,
+					'default' => '',
+				]
+			);
+		}
+
+		if ( ! is_admin() ) {
+			$this->add_control(
+				'getresponse_list',
+				[
+					'type' => Controls_Manager::HIDDEN,
+					'default' => '',
+				]
+			);
+		}
+
 		$this->end_controls_section();
 	}
 

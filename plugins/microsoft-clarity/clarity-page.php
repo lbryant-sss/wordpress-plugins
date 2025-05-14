@@ -54,8 +54,8 @@ function clarity_section_iframe_callback() {
     }
 
 	?>
-    <div style="width:100%;padding-right:15px;margin-top:20px;box-sizing:border-box;">
-        <iframe sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-storage-access-by-user-activation" src="<?php echo $iframe_src ?>" width="100%" height="1300px" title="Microsoft Clarity" /> 
+    <div style="width:100%;height:100vh;padding-right:15px;margin-top:0px;box-sizing:border-box;">
+        <iframe sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-storage-access-by-user-activation" src="<?php echo $iframe_src ?>" width="100%" height="100%" title="Microsoft Clarity" /> 
     </div>
     <?php
 }

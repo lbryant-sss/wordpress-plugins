@@ -1372,6 +1372,25 @@ class WoofiltersViewWpf extends ViewWpf {
 			} else {
 				$setCurCat = true;
 			}
+		} else if (is_product() && $this->getFilterSetting($settings, 'f_set_product_category', false)) {
+			global $product;
+			if ($product) {
+				$terms = get_the_terms($product->get_id(), 'product_cat');
+				if ($terms) {
+					$prodCategories = array();
+					$isOne = ( 'multi' !== $type );
+					foreach ($terms as $term) {
+						$prodCategories[] = $term->term_id;
+						if ($isOne) {
+							break;
+						}
+					}
+					if (!empty($prodCategories)) {
+						$catSelected = array_merge($catSelected, $prodCategories);
+						$setCurCat = true;
+					}
+				}
+			}
 		}
 
 		$layout      = $this->getFilterLayout($settings, $filterSettings);
@@ -2750,40 +2769,40 @@ class WoofiltersViewWpf extends ViewWpf {
 		$wpfMeta              = true;
 		
 		$query = false;
-		if (class_exists('WooCommerceB2B') && FrameWpf::_()->getModule('options')->getModel()->get('use_wcb2b_prices') == 1) {
-			$user = wp_get_current_user();
+		if ( class_exists('WooCommerceB2B') && FrameWpf::_()->getModule('options')->getModel()->get('use_wcb2b_prices') == 1 ) {
+			$user   = wp_get_current_user();
 			$userId = $user ? $user->ID : 0;
-			if ($userId) {
+			if ( $userId ) {
 				$groupId = get_user_meta($userId, 'wcb2b_group', true);
-				if (!empty($groupId)) {
+				if ( ! empty($groupId) ) {
 					$metaId = $module->getMetaKeyId('wcb2b_product_group_prices');
-					if ($metaId) {
-						if (empty($dec)) {
+					if ( $metaId ) {
+						if ( empty($dec) ) {
 							$sql = "SELECT min( FLOOR( value{$taxSql} ) ) as wpfMinPrice, max( CEILING( value{$taxSql} ) ) as wpfMaxPrice ";
 						} else {
 							$sql = "SELECT min( ROUND( value{$taxSql}, {$dec} ) ) as wpfMinPrice, max( ROUND( value{$taxSql}, {$dec} ) ) as wpfMaxPrice";
 						}
 						$query = $sql . ' FROM ' . $listTable . ' AS wpf_temp ' .
 							' INNER JOIN @__meta_data pm ON (pm.product_id=wpf_temp.ID)' .
-							' INNER JOIN @__meta_values vm ON (vm.id=pm.val_id)'.
+							' INNER JOIN @__meta_values vm ON (vm.id=pm.val_id)' .
 							' WHERE pm.key_id=' . $metaId . ' AND vm.key_id=' . $metaId . " AND vm.key2='" . $groupId . "'";
 
 					}
 				}
 			}
 		}
-		if (empty($query)) {
-			foreach ($metas as $key) {
+		if ( empty($query) ) {
+			foreach ( $metas as $key ) {
 				$id = $module->getMetaKeyId($key);
-				if ($id) {
+				if ( $id ) {
 					$metaIds[] = $id;
 				} else {
 					$wpfMeta = false;
 					break;
 				}
 			}
-			if ($wpfMeta) {
-				if (empty($dec)) {
+			if ( $wpfMeta ) {
+				if ( empty($dec) ) {
 					$sql = "SELECT min( FLOOR( val_dec{$taxSql} ) ) as wpfMinPrice, max( CEILING( val_dec{$taxSql} ) ) as wpfMaxPrice ";
 				} else {
 					$sql = "SELECT min( ROUND( val_dec{$taxSql}, {$dec} ) ) as wpfMinPrice, max( ROUND( val_dec{$taxSql}, {$dec} ) ) as wpfMaxPrice";
@@ -2793,7 +2812,7 @@ class WoofiltersViewWpf extends ViewWpf {
 					WHERE key_id IN (' . implode( ',', $metaIds ) . ')';
 
 			} else {
-				if (empty($dec)) {
+				if ( empty($dec) ) {
 					$sql = "SELECT min( FLOOR( meta_value{$taxSql} ) ) as wpfMinPrice, max( CEILING( meta_value{$taxSql} ) ) as wpfMaxPrice ";
 				} else {
 					$sql = "SELECT min( ROUND( meta_value{$taxSql}, {$dec} ) ) as wpfMinPrice, max( ROUND( meta_value{$taxSql}, {$dec} ) ) as wpfMaxPrice";
@@ -2896,8 +2915,10 @@ class WoofiltersViewWpf extends ViewWpf {
 		$iconCollapsible = '<span class="wpfCollapsible">' . DispatcherWpf::applyFilters('getIconHtml', '+', 'categories_icon', $settings) . '</span>';
 		$collapseLevel   = $this->getFilterSetting($filter['settings'], 'f_collapse_level', false);
 
-		$openOneByOne = $this->getFilterSetting($settings['settings'], 'open_one_by_one');        
-
+		$openOneByOne                = $this->getFilterSetting($settings['settings'], 'open_one_by_one');        
+		$displayOnlyChildrenCategory = $this->getFilterSetting($settings['settings'], 'display_only_children_category');
+		$loadViaAjax = ( $openOneByOne && $displayOnlyChildrenCategory ) ? true : false;
+		
 		foreach ( $filterItemList as $filterItem ) {
 			if ( ! empty($excludeIds) && in_array($filterItem->term_id, $excludeIds) ) {
 				continue;
@@ -2962,7 +2983,7 @@ class WoofiltersViewWpf extends ViewWpf {
 						' data-img="' . $img . 
 						'"' . $addAttrs . '>' . $pre . $displayName . ' ' . $countHtml . '</option>';
 				}
-				if ( $hasChildren && ! $openOneByOne ) {
+				if ( $hasChildren && ! $loadViaAjax ) {
 					$tmpPre = ( $isHierarchical && ! $hideAllParent ) ? $pre . '&nbsp;&nbsp;&nbsp;' : $pre;
 					$html  .= $this->generateTaxonomyOptionsHtml($filterItem->children, $selectedElem, $filter, false, $tmpPre, false, $includeIds, $showedTerms, $countsTerms);
 				}

@@ -707,6 +707,46 @@ class Register extends Form {
 			]
 		);
 
+		if ( ! is_admin() ) {
+			$this->add_control(
+				'convertkit_list',
+				[
+					'type' => Controls_Manager::HIDDEN,
+					'default' => '',
+				]
+			);
+		}
+
+		if ( ! is_admin() ) {
+			$this->add_control(
+				'drip_list',
+				[
+					'type' => Controls_Manager::HIDDEN,
+					'default' => '',
+				]
+			);
+		}
+
+		if ( ! is_admin() ) {
+			$this->add_control(
+				'mailerlite_list',
+				[
+					'type' => Controls_Manager::HIDDEN,
+					'default' => '',
+				]
+			);
+		}
+
+		if ( ! is_admin() ) {
+			$this->add_control(
+				'getresponse_list',
+				[
+					'type' => Controls_Manager::HIDDEN,
+					'default' => '',
+				]
+			);
+		}
+
 		$this->end_controls_section();
 	}
 
@@ -827,35 +867,35 @@ class Register extends Form {
 				$maps        = [];
 				$unique_maps = $this->maps();
 				foreach ( $fields as $key => $field ) {
-					if ( in_array( $field['map_to'], $maps, true ) ) {
-						?>
+				if ( in_array( $field['map_to'], $maps, true ) ) {
+					?>
 							<div class="raven-flex-wrap raven-field-group elementor-alert elementor-alert-info elementor-column elementor-col-100">
-								<?php
-									echo esc_html(
-										/* translators: %s: map field */
-										sprintf( __( 'Just one field can be mapped to %s, please remove one.', 'jupiterx-core' ), esc_html( $unique_maps[ $field['map_to'] ] ) )
-									);
-									?>
+							<?php
+								echo esc_html(
+									/* translators: %s: map field */
+									sprintf( __( 'Just one field can be mapped to %s, please remove one.', 'jupiterx-core' ), esc_html( $unique_maps[ $field['map_to'] ] ) )
+								);
+								?>
 							</div>
 						<?php
 						continue;
 					}
 
-					// Convert {Site Name} to site title.
-					if ( $field['acceptance_text'] ) {
-						$site_title               = get_bloginfo( 'name' );
-						$field['acceptance_text'] = str_replace( '{Site Name}', $site_title, $field['acceptance_text'] );
+				// Convert {Site Name} to site title.
+				if ( $field['acceptance_text'] ) {
+					$site_title               = get_bloginfo( 'name' );
+					$field['acceptance_text'] = str_replace( '{Site Name}', $site_title, $field['acceptance_text'] );
 					}
 
-					if ( 'newsletter' === $field['map_to'] ) {
-						$field['_id'] = 'register_acceptance';
+				if ( 'newsletter' === $field['map_to'] ) {
+					$field['_id'] = 'register_acceptance';
 					}
 
-					Module::render_field( $this, $field );
-					$this->extra_fields( $field, $settings );
+				Module::render_field( $this, $field );
+				$this->extra_fields( $field, $settings );
 
-					if ( 'custom_meta' !== $field['map_to'] ) {
-						$maps[] = $field['map_to'];
+				if ( 'custom_meta' !== $field['map_to'] ) {
+					$maps[] = $field['map_to'];
 					}
 				}
 			?>

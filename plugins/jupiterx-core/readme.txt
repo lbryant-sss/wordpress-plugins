@@ -3,7 +3,7 @@ Contributors: artbees
 Tags: jupiter, jupiterx
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 4.8.12
+Stable tag: 4.9.1
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,6 +29,11 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+= 4.9.1 =
+* Fixed some security issues.
+* Fixed behavior of After inactivity trigger for popup.
+* Added Product brand to woocommerce condition.
+
 = 4.8.12 =
 * Fixed some security issues.
 * Fixed Author Box Widget in Simplicity Mode.

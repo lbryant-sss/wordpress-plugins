@@ -627,6 +627,9 @@ class Conditions_Logic {
 		}
 	}
 
+	/**
+	* @SuppressWarnings(CyclomaticComplexity)
+	*/
 	private function woocommerce() {
 		$case = $this->condition['conditionC'];
 
@@ -667,6 +670,9 @@ class Conditions_Logic {
 			case 'product_tag_archive':
 				$this->woocommerce_product_tag_archive();
 				break;
+			case 'product_brand_archive':
+				$this->woocommerce_product_brand_archive();
+				break;
 			case 'single_product':
 				$this->woocommerce_single_product();
 				break;
@@ -678,6 +684,9 @@ class Conditions_Logic {
 				break;
 			case 'in_product_tag':
 				$this->woocommerce_in_product_tag();
+				break;
+			case 'in_product_brand':
+				$this->woocommerce_in_product_brand();
 				break;
 			case 'product_by_author':
 				$this->woocommerce_product_by_author();
@@ -712,6 +721,21 @@ class Conditions_Logic {
 		}
 
 		$string = esc_html__( 'Product tag archive id', 'jupiterx-core' ) . ' #' . $this->condition['conditionD'][0];
+		$this->attach_comma_separator( $string );
+	}
+
+	/**
+	 * Convert product brand archive condition to proper string.
+	 *
+	 * @since 4.9.1
+	 */
+	private function woocommerce_product_brand_archive() {
+		if ( 'all' === $this->condition['conditionD'][0] ) {
+			$this->attach_comma_separator( esc_html__( 'Product brand archive', 'jupiterx-core' ) );
+			return;
+		}
+
+		$string = esc_html__( 'Product brand archive id', 'jupiterx-core' ) . ' #' . $this->condition['conditionD'][0];
 		$this->attach_comma_separator( $string );
 	}
 
@@ -772,6 +796,19 @@ class Conditions_Logic {
 		}
 
 		$string = esc_html__( 'Products by tag id', 'jupiterx-core' ) . ' #' . $this->condition['conditionD'][0];
+		$this->attach_comma_separator( $string );
+	}
+
+	/**
+	 * Convert products in brands condition to proper string.
+	 */
+	private function woocommerce_in_product_brand() {
+		if ( 'all' === $this->condition['conditionD'][0] ) {
+			$this->attach_comma_separator( esc_html__( 'All products by brand', 'jupiterx-core' ) );
+			return;
+		}
+
+		$string = esc_html__( 'Products by brand id', 'jupiterx-core' ) . ' #' . $this->condition['conditionD'][0];
 		$this->attach_comma_separator( $string );
 	}
 
