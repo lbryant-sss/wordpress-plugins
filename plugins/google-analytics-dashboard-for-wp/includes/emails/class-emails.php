@@ -655,6 +655,8 @@ class ExactMetrics_WP_Emails {
 			1   => trailingslashit( get_stylesheet_directory() ) . $template_dir,
 			10  => trailingslashit( get_template_directory() ) . $template_dir,
 			100 => trailingslashit( EXACTMETRICS_PLUGIN_DIR ) . 'includes/emails/templates',
+			200 => trailingslashit( EXACTMETRICS_PLUGIN_DIR ) . 'pro/includes/emails/templates',
+			300 => trailingslashit( EXACTMETRICS_PLUGIN_DIR ) . 'lite/includes/emails/templates',
 		);
 
 		$file_paths = apply_filters( 'exactmetrics_email_template_paths', $file_paths );

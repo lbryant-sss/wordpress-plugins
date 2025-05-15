@@ -24,7 +24,14 @@ if ( ! class_exists( 'YITH_WooCompare_Table' ) ) {
 		 *
 		 * @var string
 		 */
-		public $table_tempalte = 'yith-compare-table.php';
+		public $table_template = 'yith-compare-table.php';
+
+		/**
+		 * Name of the template being used to render template table
+		 *
+		 * @var string
+		 */
+		public $page_template = 'yith-compare-popup.php';
 
 		/**
 		 * Name of the template being used to render preview bar template
@@ -331,7 +338,7 @@ if ( ! class_exists( 'YITH_WooCompare_Table' ) ) {
 				)
 			);
 
-			wc_get_template( $this->table_tempalte, $args, '', YITH_WOOCOMPARE_TEMPLATE_PATH );
+			wc_get_template( $this->table_template, $args, '', YITH_WOOCOMPARE_TEMPLATE_PATH );
 		}
 
 		/**

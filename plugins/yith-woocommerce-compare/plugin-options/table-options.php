@@ -21,7 +21,7 @@ $options = array(
 		),
 		array(
 			'title'     => __( 'Table title', 'yith-woocommerce-compare' ),
-			'desc'      => __( 'Type the text for the table title.', 'yith-woocommerce-compare' ),
+			'desc'      => __( 'Enter the text for the table title.', 'yith-woocommerce-compare' ),
 			'id'        => 'yith_woocompare_table_text',
 			'default'   => __( 'Compare products', 'yith-woocommerce-compare' ),
 			'type'      => 'yith-field',
@@ -32,14 +32,14 @@ $options = array(
 			'id'   => 'yith_woocompare_table_image_end',
 		),
 		array(
-			'name' => __( 'Table Content', 'yith-woocommerce-compare' ),
+			'name' => __( 'Table content', 'yith-woocommerce-compare' ),
 			'type' => 'title',
 			'desc' => '',
 			'id'   => 'yith_woocompare_table_content',
 		),
 		array(
 			'name'      => __( 'In comparison table show:', 'yith-woocommerce-compare' ),
-			'desc'      => __( 'Select the fields to show in the comparison table and order them by drag&drop (WooCommerce attributes are also included)', 'yith-woocommerce-compare' ),
+			'desc'      => __( 'Select the fields to be displayed in the comparison table and arrange them by dragging and dropping (WooCommerce attributes are also included).', 'yith-woocommerce-compare' ),
 			'id'        => 'yith_woocompare_fields_attrs',
 			'default'   => 'all',
 			'type'      => 'yith-field',
@@ -47,7 +47,7 @@ $options = array(
 		),
 		array(
 			'title'     => __( 'Image format', 'yith-woocommerce-compare' ),
-			'desc'      => __( 'Choose if you want to use original image format, or create a thumbnail with specified size.', 'yith-woocommerce-compare' ),
+			'desc'      => __( 'Choose whether you want to use the original image format or create a thumbnail of a specified size.', 'yith-woocommerce-compare' ),
 			'id'        => 'yith_woocompare_table_image_format',
 			'default'   => 'thumb',
 			'type'      => 'yith-field',

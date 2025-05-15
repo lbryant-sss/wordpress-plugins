@@ -3,7 +3,7 @@ Contributors: Ibericode, DvanKooten, hchouhan, lapzor
 Donate link: https://www.mc4wp.com/contribute/#utm_source=wp-plugin-repo&utm_medium=mailchimp-for-wp&utm_campaign=donate-link
 Tags: mailchimp, subscribe, email, newsletter, form
 Requires at least: 4.6
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 4.10.3
 License: GPL-3.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -267,7 +267,7 @@ The plugin provides various filter and action hooks that allow you to modify or 
 
 - Improved anti-spam measures on the [custom form integration](https://www.mc4wp.com/kb/subscribe-mailchimp-custom-html-form/). If you are using the custom form integration (using the `mc4wp-subscribe` checkbox), please test your forms after upgrading and report any issues to us.
 - Improved anti-spam measures on all sign-up forms.
-- Remove unsupported filter hook from Gravity Forms integration. 
+- Remove unsupported filter hook from Gravity Forms integration.
 
 
 #### 4.9.14 - Jul 17, 2024
@@ -282,7 +282,7 @@ The plugin provides various filter and action hooks that allow you to modify or 
 - Fix issue with Composer classmap throwing a fatal error when an older version of Composer is already loaded.
 
 
-#### 4.9.12 - Apr 22, 2024 
+#### 4.9.12 - Apr 22, 2024
 
 - Fix last 10 Mailchimp lists not being pulled-in when having more than 10 lists.
 
@@ -302,7 +302,7 @@ The plugin provides various filter and action hooks that allow you to modify or 
 - General: Remove some unnecessary JavaScript now that browser support has caught up.
 
 
-#### 4.9.9 - Oct 3, 2023 
+#### 4.9.9 - Oct 3, 2023
 
 - Fix class "MC4WP_Usage_Tracking" not found error for WP Cron / WP CLI processes.
 
@@ -311,7 +311,7 @@ The plugin provides various filter and action hooks that allow you to modify or 
 
 - Remove the opt-in usage tracking functionality as we're not really using it for decision making anymore.
 - Add missing label element to the select element for setting the logging level.
-- Our JavaScript assets are now transpiled to support the same set of browsers as WordPress core. 
+- Our JavaScript assets are now transpiled to support the same set of browsers as WordPress core.
 This drops support for some very old browsers, but results in smaller bundle sizes for the supported set of browsers.
 - Update third-party JS dependencies to their latest versions.
 
@@ -363,7 +363,7 @@ This drops support for some very old browsers, but results in smaller bundle siz
 - When renewing lists, renew cached marketing permissions too.
 
 
-#### 4.9.0 - Jan 13, 2023 
+#### 4.9.0 - Jan 13, 2023
 
 - Removed deprecated filter hook `mc4wp_settings_cap`, use `mc4wp_admin_required_capability` instead.
 - Removed deprecated filter hook `mc4wp_merge_vars`, use `mc4wp_form_data` or `mc4wp_integration_data` instead.

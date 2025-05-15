@@ -100,16 +100,16 @@ if ( ! class_exists( 'YITH_WooCompare_Helper' ) ) {
 			$fields = array(
 				'title'         => __( 'Title', 'yith-woocommerce-compare' ),
 				'image'         => __( 'Image', 'yith-woocommerce-compare' ),
-				'add_to_cart'   => __( 'Add to Cart', 'yith-woocommerce-compare' ),
+				'add_to_cart'   => __( 'Add to cart', 'yith-woocommerce-compare' ),
 				'price'         => __( 'Price', 'yith-woocommerce-compare' ),
 				'rating'        => __( 'Rating', 'yith-woocommerce-compare' ),
 				'description'   => __( 'Description', 'yith-woocommerce-compare' ),
-				'sku'           => __( 'Sku', 'yith-woocommerce-compare' ),
+				'sku'           => __( 'SKU', 'yith-woocommerce-compare' ),
 				'stock'         => __( 'Availability', 'yith-woocommerce-compare' ),
 				'weight'        => __( 'Weight', 'yith-woocommerce-compare' ),
 				'dimensions'    => __( 'Dimensions', 'yith-woocommerce-compare' ),
 				'price_2'       => __( 'Repeat price', 'yith-woocommerce-compare' ),
-				'add_to_cart_2' => __( 'Repeat Add to Cart', 'yith-woocommerce-compare' ),
+				'add_to_cart_2' => __( 'Repeat Add to cart', 'yith-woocommerce-compare' ),
 			);
 
 			if ( $with_attr ) {

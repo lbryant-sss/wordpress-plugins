@@ -11,10 +11,10 @@ require_once dirname(dirname(dirname(__DIR__))) . '/includes/ultimate-blocks-sty
     extract($attributes);
 	return sprintf(
 		'<div class="ub-content-filter-panel%1$s%2$s" data-selectedFilters="%3$s">%4$s</div>',
-		isset($className) ? ' ' . $className : '', //1
+		isset($className) ? ' ' . esc_attr($className) : '', //1
 		$initiallyShow ? '' : ' ub-hide', //2
-		json_encode($selectedFilters), //3
-		$content //4
+		esc_attr(json_encode($selectedFilters)), //3
+		wp_kses_post($content) //4
 	);
 }
 

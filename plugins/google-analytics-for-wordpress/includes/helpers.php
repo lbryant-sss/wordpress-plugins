@@ -165,27 +165,35 @@ function monsterinsights_get_uuid() {
  *   Returns GA4 Session Id or NULL if cookie wasn't found.
  */
 function monsterinsights_get_browser_session_id( $measurement_id ) {
-
 	if ( ! is_string( $measurement_id ) ) {
 		return null;
 	}
-
 	// Cookie name example: '_ga_1YS1VWHG3V'.
 	$cookie_name = '_ga_' . str_replace( 'G-', '', $measurement_id );
-
 	if ( ! isset( $_COOKIE[ $cookie_name ] ) ) {
 		return null;
 	}
 
-	// Cookie value example: 'GS1.1.1659710029.4.1.1659710504.0'.
-	// Session Id:                  ^^^^^^^^^^.
 	$cookie = sanitize_text_field( $_COOKIE[ $cookie_name ] ); // phpcs:ignore WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___COOKIE
+	
+	// Check if it's GS2 format
+	// New format: 'GS2.1.s1747078634$o1$g1$t1747081074$j0$l0$h0'
+	// Session Id:        ^^^^^^^^^^ (1747078634)
+	if ( strpos( $cookie, 'GS2' ) === 0 ) {
+		// Extract the session ID (after 's' and before '$')
+		if ( preg_match( '/\.s(\d+)\$/', $cookie, $matches ) ) {
+			return $matches[1];
+		}
+		return null;
+	}
+	
+	// Handle original GS1 format
+	// Cookie value example: 'GS1.1.1659710029.4.1.1659710504.0'.
+	// Session Id:                  ^^^^^^^^^^. (1659710029)
 	$parts = explode( '.', $cookie );
-
 	if ( ! isset( $parts[2] ) ){
 		return null;
 	}
-
 	return $parts[2];
 }
 

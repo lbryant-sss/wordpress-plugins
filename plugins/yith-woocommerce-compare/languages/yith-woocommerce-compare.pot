@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the YITH WooCommerce Compare package.
 msgid ""
 msgstr ""
-"Project-Id-Version: YITH WooCommerce Compare 3.0.0\n"
+"Project-Id-Version: YITH WooCommerce Compare 3.0.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/yith-woocommerce-compare\n"
-"POT-Creation-Date: 2025-05-12 13:45:09+00:00\n"
+"POT-Creation-Date: 2025-05-14 18:27:16+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,6 @@ msgstr ""
 #: includes/class-yith-woocompare-helper.php:101
 #: includes/widgets/class-yith-woocompare-compare-widget.php:122
 #: includes/widgets/class-yith-woocompare-counter-widget.php:85
-#: widgets/class.yith-woocompare-widget.php:72
 msgid "Title"
 msgstr ""
 
@@ -141,19 +140,19 @@ msgstr ""
 msgid "Configure the options for the comparison tables displayed in your shop."
 msgstr ""
 
-#: includes/class-yith-woocompare-frontend.php:111
+#: includes/class-yith-woocompare-frontend.php:108
 msgid "Added to compare"
 msgstr ""
 
-#: includes/class-yith-woocompare-frontend.php:121 templates/compare.php:57
+#: includes/class-yith-woocompare-frontend.php:118 templates/compare.php:57
+#: templates/yith-compare-popup.php:46
 msgid "Product Comparison"
 msgstr ""
 
-#: includes/class-yith-woocompare-frontend.php:124
-#: includes/class-yith-woocompare-frontend.php:321
+#: includes/class-yith-woocompare-frontend.php:121
+#: includes/class-yith-woocompare-frontend.php:318
 #: includes/class-yith-woocompare-install.php:84
 #: plugin-options/general-options.php:40 templates/yith-compare-widget.php:51
-#: widgets/class.yith-woocompare-widget.php:55
 msgid "Compare"
 msgstr ""
 
@@ -162,7 +161,7 @@ msgid "Image"
 msgstr ""
 
 #: includes/class-yith-woocompare-helper.php:103
-msgid "Add to Cart"
+msgid "Add to cart"
 msgstr ""
 
 #: includes/class-yith-woocompare-helper.php:104
@@ -178,7 +177,7 @@ msgid "Description"
 msgstr ""
 
 #: includes/class-yith-woocompare-helper.php:107
-msgid "Sku"
+msgid "SKU"
 msgstr ""
 
 #: includes/class-yith-woocompare-helper.php:108
@@ -198,33 +197,38 @@ msgid "Repeat price"
 msgstr ""
 
 #: includes/class-yith-woocompare-helper.php:112
-msgid "Repeat Add to Cart"
+msgid "Repeat Add to cart"
 msgstr ""
 
-#: includes/class-yith-woocompare-table.php:179
+#: includes/class-yith-woocompare-table.php:186
 msgid "In stock"
 msgstr ""
 
-#: includes/class-yith-woocompare-table.php:279
+#: includes/class-yith-woocompare-table.php:286
 #: plugin-options/table-options.php:26 templates/compare.php:29
 msgid "Compare products"
 msgstr ""
 
-#: includes/class-yith-woocompare-table.php:380
+#: includes/class-yith-woocompare-table.php:387
 msgid "View comparison"
 msgstr ""
 
-#: includes/class-yith-woocompare-table.php:411 templates/compare.php:139
+#: includes/class-yith-woocompare-table.php:418 templates/compare.php:139
 #: templates/yith-compare-widget-item.php:15
 msgid "Remove"
 msgstr ""
+
+#: includes/shortcodes/class-yith-woocompare-counter-shortcode.php:48
+msgid "{{count}} product in compare"
+msgid_plural "{{count}} products in compare"
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/widgets/class-yith-woocompare-compare-widget.php:26
 msgid "The widget shows the list of products added to the comparison table."
 msgstr ""
 
 #: includes/widgets/class-yith-woocompare-compare-widget.php:32
-#: widgets/class.yith-woocompare-widget.php:27
 msgid "YITH WooCommerce Compare Widget"
 msgstr ""
 
@@ -341,11 +345,11 @@ msgid "Table title"
 msgstr ""
 
 #: plugin-options/table-options.php:24
-msgid "Type the text for the table title."
+msgid "Enter the text for the table title."
 msgstr ""
 
 #: plugin-options/table-options.php:35
-msgid "Table Content"
+msgid "Table content"
 msgstr ""
 
 #: plugin-options/table-options.php:41
@@ -354,8 +358,8 @@ msgstr ""
 
 #: plugin-options/table-options.php:42
 msgid ""
-"Select the fields to show in the comparison table and order them by "
-"drag&drop (WooCommerce attributes are also included)"
+"Select the fields to be displayed in the comparison table and arrange them "
+"by dragging and dropping (WooCommerce attributes are also included)."
 msgstr ""
 
 #: plugin-options/table-options.php:49
@@ -364,8 +368,8 @@ msgstr ""
 
 #: plugin-options/table-options.php:50
 msgid ""
-"Choose if you want to use original image format, or create a thumbnail with "
-"specified size."
+"Choose whether you want to use the original image format or create a "
+"thumbnail of a specified size."
 msgstr ""
 
 #: plugin-options/table-options.php:56
@@ -390,7 +394,7 @@ msgid "regenerate your thumbnails"
 msgstr ""
 
 #: templates/admin/fields/image-width.php:36
-msgid "Do you want to hard crop the image?"
+msgid "Force crop the image to this thumbnail size."
 msgstr ""
 
 #: templates/compare.php:87
@@ -416,16 +420,11 @@ msgid "No products added in the comparison table."
 msgstr ""
 
 #: templates/yith-compare-widget.php:39
-#: widgets/class.yith-woocompare-widget.php:54
 msgid "Clear all"
 msgstr ""
 
 #: templates/yith-compare-widget.php:53
 msgid "No products to compare"
-msgstr ""
-
-#: widgets/class.yith-woocompare-widget.php:23
-msgid "The widget shows the list of products added in the comparison table."
 msgstr ""
 
 #. Description of the plugin/theme
@@ -437,7 +436,7 @@ msgid ""
 "e-commerce shop on <strong>YITH</strong></a>."
 msgstr ""
 
-#: includes/class-yith-woocompare-frontend.php:126
+#: includes/class-yith-woocompare-frontend.php:123
 msgctxt "Label for popup close icon"
 msgid "Close"
 msgstr ""

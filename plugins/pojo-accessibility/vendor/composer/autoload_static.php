@@ -4,12 +4,16 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit3513a47a31bf797408f7007a18168dd1
+class ComposerStaticInit187fe099e9d61466a4247adc9ccc7f79
 {
     public static $prefixLengthsPsr4 = array (
         'F' => 
         array (
             'Firebase\\JWT\\' => 13,
+        ),
+        'E' => 
+        array (
+            'Elementor\\WPNotificationsPackage\\' => 33,
         ),
     );
 
@@ -17,6 +21,10 @@ class ComposerStaticInit3513a47a31bf797408f7007a18168dd1
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
+        'Elementor\\WPNotificationsPackage\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/elementor/wp-notifications-package/src',
         ),
     );
 
@@ -27,9 +35,9 @@ class ComposerStaticInit3513a47a31bf797408f7007a18168dd1
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit3513a47a31bf797408f7007a18168dd1::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit3513a47a31bf797408f7007a18168dd1::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit3513a47a31bf797408f7007a18168dd1::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit187fe099e9d61466a4247adc9ccc7f79::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit187fe099e9d61466a4247adc9ccc7f79::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit187fe099e9d61466a4247adc9ccc7f79::$classMap;
 
         }, null, ClassLoader::class);
     }

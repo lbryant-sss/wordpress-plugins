@@ -667,6 +667,7 @@ return array(
     'SureCart\\Integrations\\Elementor\\ElementorCoreBlockStylesService' => $baseDir . '/app/src/Integrations/Elementor/ElementorCoreBlockStylesService.php',
     'SureCart\\Integrations\\Elementor\\ElementorServiceProvider' => $baseDir . '/app/src/Integrations/Elementor/ElementorServiceProvider.php',
     'SureCart\\Integrations\\Elementor\\ReusableFormWidget' => $baseDir . '/app/src/Integrations/Elementor/ReusableFormWidget.php',
+    'SureCart\\Integrations\\HelpWidget\\Checklist' => $baseDir . '/app/src/Integrations/HelpWidget/Checklist.php',
     'SureCart\\Integrations\\HelpWidget\\HelpWidget' => $baseDir . '/app/src/Integrations/HelpWidget/HelpWidget.php',
     'SureCart\\Integrations\\HelpWidget\\HelpWidgetServiceProvider' => $baseDir . '/app/src/Integrations/HelpWidget/HelpWidgetServiceProvider.php',
     'SureCart\\Integrations\\IntegrationService' => $baseDir . '/app/src/Integrations/IntegrationService.php',

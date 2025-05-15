@@ -33,6 +33,6 @@ list( $width, $height, $crop ) = yith_plugin_fw_extract(
 
 	<label>
 		<input name="<?php echo esc_attr( $field_id ); ?>[crop]" id="<?php echo esc_attr( $field_id ); ?>-crop" type="checkbox" value="yes" <?php echo checked( yith_plugin_fw_is_true( $crop ) || 'on' === $crop ); ?> />
-		<?php esc_html_e( 'Do you want to hard crop the image?', 'yith-woocommerce-compare' ); ?>
+		<?php esc_html_e( 'Force crop the image to this thumbnail size.', 'yith-woocommerce-compare' ); ?>
 	</label>
 </div>

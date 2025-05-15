@@ -499,12 +499,15 @@ var YITH_WooCompare = /*#__PURE__*/function () {
         $tableWrapper = $('<div/>', {
           'class': 'yith-woocompare-table-wrapper'
         }),
+        $tableScrollWrapper = $('<div/>', {
+          'class': 'yith-woocompare-table-scroll-wrapper'
+        }),
         $tablePlaceholder = $('<div/>', {
           'id': 'yith-woocompare',
           'class': 'yith-woocompare-table-placeholder'
         });
-      $tableWrapper.append($tablePlaceholder);
-      $container.prepend($closeButton).append($tableWrapper).appendTo('body');
+      $tableScrollWrapper.prepend($closeButton).append($tablePlaceholder).appendTo($tableWrapper);
+      $container.append($tableWrapper).appendTo('body');
       $closeButton.on('click', function () {
         return _this8.closePopup();
       });

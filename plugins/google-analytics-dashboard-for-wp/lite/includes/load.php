@@ -10,12 +10,6 @@ add_action('init', function () {
 
 	if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
 
-
-		// Email summaries related classes
-		require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/emails/summaries-infoblocks.php';
-		require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/emails/summaries.php';
-		new ExactMetrics_Email_Summaries();
-
 		$overview_report = new ExactMetrics_Report_Overview();
 		ExactMetrics()->reporting->add_report( $overview_report );
 
@@ -54,6 +48,10 @@ add_action('init', function () {
 		$summaries = new ExactMetrics_Report_Summaries();
 		ExactMetrics()->reporting->add_report( $summaries );
 
+		// Email summaries related classes
+		require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/emails/summaries-infoblocks.php';
+		require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/emails/summaries.php';
+		new ExactMetrics_Email_Summaries();
 	}
 
 	if ( is_admin() ) {

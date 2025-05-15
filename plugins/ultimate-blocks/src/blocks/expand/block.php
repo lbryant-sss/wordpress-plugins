@@ -25,10 +25,17 @@ function ub_render_expand_portion_block($attributes, $content){
 		)
 	);
 
+	$filtered_content = apply_filters('ub_expand_portion_fade_content', $content, $attributes);
+
 	return sprintf(
-		'<div %1$s>%2$s<a class="ub-expand-toggle-button" style="%4$s">%3$s</a></div>',
+		'<div %1$s>
+			%2$s
+			<a class="ub-expand-toggle-button" style="%4$s" role="button">
+				%3$s
+			</a>
+		</div>',
 		$wrapper_attributes, // 1
-		$content, // 2
+		$filtered_content, // 2
 		$clickText, // 3
 		Ultimate_Blocks\includes\generate_css_string($toggle_button_styles) // 4
 	);
@@ -63,6 +70,7 @@ function ub_render_expand_block($attributes, $content, $block){
 
 	$padding = Ultimate_Blocks\includes\get_spacing_css( isset($block_attrs['padding']) ? $block_attrs['padding'] : array() );
 	$margin  = Ultimate_Blocks\includes\get_spacing_css( isset($block_attrs['margin']) ? $block_attrs['margin'] : array() );
+
 	$styles  = array(
 		'padding-top'        => isset($padding['top']) ? $padding['top'] : "",
 		'padding-left'       => isset($padding['left']) ? $padding['left'] : "",
@@ -75,6 +83,11 @@ function ub_render_expand_block($attributes, $content, $block){
 	);
 	$classNames = array('wp-block-ub-expand', 'ub-expand');
 
+	$pro_styles = apply_filters('ub_expand_styles', $styles, $block_attrs);
+
+	if(!empty($pro_styles)){
+		$styles = array_merge($styles, $pro_styles);
+	}
 
 	if (isset($className)) {
 		$classNames[] = $className;

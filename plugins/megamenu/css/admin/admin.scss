@@ -1875,6 +1875,9 @@ body.toplevel_page_maxmegamenu {
 	    clear: both;
 	}
 
+	.megamenu_wrap .megamenu_right .warning {
+		margin-bottom: 0;
+	}
 	.megamenu_wrap .fail {
 		border-left-color: $red;
 	}
@@ -1951,6 +1954,7 @@ body.toplevel_page_maxmegamenu {
 		}
 
 		nav.nav-tab-wrapper {
+			position: relative;
 		    margin: 0;
 			display: inline-flex;
 			align-items: center;
@@ -1968,13 +1972,14 @@ body.toplevel_page_maxmegamenu {
     			color: $text_grey;
 			    font-weight: 500;
 			    font-size: 14px;
+			    padding: 0 5px;
 
 			    @include tablet {
 			    	font-size: 12px;
 			    }
 
 			    &:hover {
-			    	border-bottom: 3px solid $text_grey;
+			    	color: $light_blue;
 			    }
 			}
 
@@ -1982,9 +1987,19 @@ body.toplevel_page_maxmegamenu {
 				background: white;
 			    position: relative;
 			    z-index: 1;
-			    border-bottom: 3px solid $light_blue;
 			    color: $light_blue;
 			}
+
+	        /* The sliding border element */
+	        .nav-tab-slider {
+	            position: absolute;
+	            bottom: 0;
+	            height: 3px;
+	            background-color: $light_blue;
+	            border-radius: 2px;
+	            transition: left 0.3s ease-out, width 0.3s ease-out;
+	            z-index: 1;
+	        }
 		}
 
 		h3.editing_theme {
@@ -2051,6 +2066,7 @@ body.toplevel_page_maxmegamenu {
 
 					a.nav-tab,
 					a.nav-tab-active {
+						cursor: pointer;
 						font-size: 12px;
 						font-weight: normal;
 						padding: 3px 5px;
@@ -2116,11 +2132,14 @@ body.toplevel_page_maxmegamenu {
 
 				.theme_selector {
 					margin-bottom: 20px;
-					float: left;
-					
+					font-size: 15px;
+					display: flex;
+					align-items: center;
+
 					select {
-						max-width: 500px;
-						font-size: 12px;
+						margin-left: 10px;
+						font-size: 14px;
+						border-color: black;
 					}
 				}
 
@@ -2131,7 +2150,7 @@ body.toplevel_page_maxmegamenu {
 
 					svg {
 						height: 30px;
-						border: 1px solid #7e8993;
+						border: 1px solid black;
 						border-radius: 3px;
 						box-sizing: border-box;
 					}
@@ -2364,14 +2383,6 @@ body.toplevel_page_maxmegamenu {
 					vertical-align: middle;
 				}
 
-				input.mega-setting-panel_width,
-				input.mega-setting-panel_inner_width {
-					width: 120px;
-				}
-				input.mega-setting-title {
-					width: 100px;
-				}
-
 				.wide input[type=text] {
 					width: 300px;
 				}
@@ -2469,6 +2480,7 @@ body.toplevel_page_maxmegamenu {
 					font-size: 13px;
 					color: #777;
 					line-height: 1.5em;
+					width: 80%;
 
 					p {
 						font-size: 12px;
@@ -2673,6 +2685,7 @@ body.toplevel_page_maxmegamenu {
 					    opacity: 0.5;
 					    margin-top: 6px;
 					    font-size: 16px;
+					    cursor: pointer;
 					}
 				}
 			}

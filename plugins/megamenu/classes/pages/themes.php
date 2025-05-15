@@ -761,28 +761,25 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 
 			<div class='theme_selector'>
 				<?php _e( 'Select theme to edit', 'megamenu' ); ?> <?php echo $this->theme_selector(); ?>
+
+				<div class='mega-ellipsis'>
+					<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">
+						<path d="M13 19h-2v-2h2v2zm0-6h-2v-2h2v2zm0-6h-2V5h2v2z"></path>
+					</svg>
+					<ul class='mega-ellipsis-content'>
+						<li class='mega-create-theme'><a href='<?php echo $create_url; ?>'><span class='dashicons dashicons-welcome-add-page'></span><?php _e( 'Add new theme', 'megamenu' ); ?></a></li>
+						<li class='mega-duplicate-theme'><a href='<?php echo $duplicate_url; ?>'><span class='dashicons dashicons-images-alt2'></span><?php _e( 'Duplicate theme', 'megamenu' ); ?></a></li>
+						<li class='mega-export-theme'><a href='<?php echo $export_url; ?>'><span class='dashicons dashicons-upload'></span><?php _e( 'Export theme', 'megamenu' ); ?></a></li>
+						<li class='mega-import-theme'><a href='<?php echo $import_url; ?>'><span class='dashicons dashicons-download'></span><?php _e( 'Import a theme', 'megamenu' ); ?></a></li>
+						<?php if ( $this->string_contains( $this->id, array( 'custom' ) ) ) : ?>
+							<li class='mega-delete-theme'><a class='delete confirm' href='<?php echo $delete_url; ?>'><span class='dashicons dashicons-trash'></span><?php _e( 'Delete theme', 'megamenu' ); ?></a></li>
+						<?php else : ?>
+							<li class='mega-revert-theme'><a class='confirm' href='<?php echo $revert_url; ?>'><span class='dashicons dashicons-update-alt'></span><?php _e( 'Revert theme', 'megamenu' ); ?></a></li>
+						<?php endif; ?>
+					</ul>
+				</div>
+
 			</div>
-
-			<div class='mega-ellipsis'>
-				<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">
-					<path d="M13 19h-2v-2h2v2zm0-6h-2v-2h2v2zm0-6h-2V5h2v2z"></path>
-				</svg>
-				<ul class='mega-ellipsis-content'>
-					<li class='mega-create-theme'><a href='<?php echo $create_url; ?>'><span class='dashicons dashicons-welcome-add-page'></span><?php _e( 'Add new theme', 'megamenu' ); ?></a></li>
-					<li class='mega-duplicate-theme'><a href='<?php echo $duplicate_url; ?>'><span class='dashicons dashicons-images-alt2'></span><?php _e( 'Duplicate theme', 'megamenu' ); ?></a></li>
-					<li class='mega-export-theme'><a href='<?php echo $export_url; ?>'><span class='dashicons dashicons-upload'></span><?php _e( 'Export theme', 'megamenu' ); ?></a></li>
-					<li class='mega-import-theme'><a href='<?php echo $import_url; ?>'><span class='dashicons dashicons-download'></span><?php _e( 'Import a theme', 'megamenu' ); ?></a></li>
-					<?php if ( $this->string_contains( $this->id, array( 'custom' ) ) ) : ?>
-						<li class='mega-delete-theme'><a class='delete confirm' href='<?php echo $delete_url; ?>'><span class='dashicons dashicons-trash'></span><?php _e( 'Delete theme', 'megamenu' ); ?></a></li>
-					<?php else : ?>
-						<li class='mega-revert-theme'><a class='confirm' href='<?php echo $revert_url; ?>'><span class='dashicons dashicons-update-alt'></span><?php _e( 'Revert theme', 'megamenu' ); ?></a></li>
-					<?php endif; ?>
-				</ul>
-			</div>
-
-			<h3 class='editing_theme'><?php echo __( 'Editing theme', 'megamenu' ) . ': ' . esc_html( $this->active_theme['title'] ); ?></h3>
-
-
 
 			<?php
 
@@ -1373,8 +1370,31 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 							'mega_panels'    => array(
 								'title'    => __( 'Mega Menus', 'megamenu' ),
 								'settings' => array(
-									'panel_background'     => array(
+									'panel_width'          => array(
 										'priority'    => 10,
+										'title'       => __( 'Panel Width', 'megamenu' ),
+										'description' => __( 'Configure the width of the sub menu.', 'megamenu' ),
+										'info'        => array(
+											__( "Set the Outer Width to 100vw for a full width sub menu", 'megamenu' ),
+											__( 'Set the Outer Width to 100% to make the sub menu the same width as the menu bar', 'megamenu' ),
+											__( 'Set the Outer Width to a jQuery selector (e.g. body, #container, .page) to align the sub menu with existing page element', 'megamenu' ),
+											"<a href='https://www.megamenu.com/documentation/adjust-sub-menu-width/' target='blank'>" . __( 'Documentation: Configuring the sub menu width', 'megamenu' ) . '</a>',
+										),
+										'settings'    => array(
+											array(
+												'title' => __( 'Outer Width', 'megamenu' ),
+												'type'  => 'freetext',
+												'key'   => 'panel_width',
+											),
+											array(
+												'title' => __( 'Inner Width', 'megamenu' ),
+												'type'  => 'freetext',
+												'key'   => 'panel_inner_width',
+											),
+										),
+									),
+									'panel_background'     => array(
+										'priority'    => 20,
 										'title'       => __( 'Panel Background', 'megamenu' ),
 										'description' => __( 'Set a background color for a whole sub menu.', 'megamenu' ),
 										'settings'    => array(
@@ -1392,28 +1412,6 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 												'title' => __( 'To', 'megamenu' ),
 												'type'  => 'color',
 												'key'   => 'panel_background_to',
-											),
-										),
-									),
-									'panel_width'          => array(
-										'priority'    => 20,
-										'title'       => __( 'Panel Width', 'megamenu' ),
-										'description' => __( 'Mega Panel width.', 'megamenu' ),
-										'info'        => array(
-											__( 'A 100% wide panel will only ever be as wide as the menu itself. For a fixed sub menu width set this to a pixel value.', 'megamenu' ),
-											__( 'Advanced: Enter a jQuery selector to synchronize the width and position of the sub menu with existing page element (e.g. body, #container, .page).', 'megamenu' ),
-											"<a href='https://www.megamenu.com/documentation/adjust-sub-menu-width/' target='blank'>" . __( 'Documentation: Configuring the sub menu width', 'megamenu' ) . '</a>',
-										),
-										'settings'    => array(
-											array(
-												'title' => __( 'Outer Width', 'megamenu' ),
-												'type'  => 'freetext',
-												'key'   => 'panel_width',
-											),
-											array(
-												'title' => __( 'Inner Width', 'megamenu' ),
-												'type'  => 'freetext',
-												'key'   => 'panel_inner_width',
 											),
 										),
 									),
@@ -2141,10 +2139,10 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 									'flyout_menu_width'   => array(
 										'priority'    => 20,
 										'title'       => __( 'Sub Menu Width', 'megamenu' ),
-										'description' => __( 'The width of each flyout menu. This must be a fixed pixel value.', 'megamenu' ),
+										'description' => __( 'The width of each flyout menu.', 'megamenu' ),
 										'info'        => array(
-											__( 'Set this value to the width of your longest menu item title to stop menu items wrapping onto 2 lines.', 'megamenu' ),
-											__( "Experimental: Set this value to 'auto' to use a flexible width.", 'megamenu' ),
+											__( "For a flexible sub menu width set this value to 'max-content'", 'megamenu' ),
+											__( "For a fixed sub menu width use a value such as 250px, 15rem, 10vw etc.", 'megamenu' ),
 										),
 										'settings'    => array(
 											array(
@@ -2773,9 +2771,9 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 						)
 					);
 
-					$plugin_version = $this->active_theme['plugin_version'];
+					
 
-					if ( $plugin_version == NULL ) { // plugin version only started being stored in v3.6 onwards
+					if ( ! $this->should_show_flex_option() ) { // plugin version only started being stored in v3.6 onwards
 						unset($settings['general']['settings']['use_flex_css']);
 					}
 	
@@ -2795,7 +2793,7 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 					echo "<a class='mega-tab {$active}' data-tab='mega-tab-content-{$section_id}'>" . $section['title'] . '</a>';
 
 				}
-
+					echo '<span class="nav-tab-slider"></span>';
 					echo '</nav>';
 
 					$is_first = true;
@@ -2945,6 +2943,25 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 
 			<?php
 
+		}
+
+		/**
+		 * 
+		 */
+		public function should_show_flex_option() {
+
+			$initial_version = get_option('megamenu_initial_version');
+
+			// always show the option for new installations of 3.6 onwards
+			if ( $initial_version && version_compare( $initial_version, '3.6', '>=' ) ) {
+				return true;
+			}
+
+			if ( defined( 'MEGAMENU_ENABLE_FLEX_CSS_OPTION' ) && MEGAMENU_ENABLE_FLEX_CSS_OPTION ) {
+				return true;
+			}
+
+			return false;
 		}
 
 

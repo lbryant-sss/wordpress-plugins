@@ -107,7 +107,7 @@ function ub_render_styled_box_block($attributes, $content, $block){
 
 			$renderedBlock .= sprintf(
 				'<div class="ub-feature">%1$s<p class="ub-feature-title" style="%4$s">%2$s</p><p class="ub-feature-body" style="%5$s">%3$s</p></div>',
-				$image[$i]['url'] === '' ? '' : sprintf('<img class="ub-feature-img" src="%1$s"/>', esc_url($image[$i]['url'])),
+				empty($image[$i]['url']) ? '' : sprintf('<img class="ub-feature-img" src="%1$s"/>', esc_url($image[$i]['url'])),
 				wp_kses_post($title[$i]),
 				wp_kses_post($text[$i]),
 				Ultimate_Blocks\includes\generate_css_string($title_styles),

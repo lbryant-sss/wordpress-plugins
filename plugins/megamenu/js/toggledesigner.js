@@ -116,11 +116,9 @@ jQuery(function($) {
 
                 $('.mega-color-picker-input', $response).customColorPicker({ 
                     defaultColor: '#DDDDDD', 
-                    showCssVarPalette: false,
-                    palette: $.isArray(megamenu_spectrum_settings.palette) ? megamenu_spectrum_settings.palette : [],
-                    onColorChange: function(colorString, inputElement) { }
+                    showCssVarPalette: false
                 });
-                
+
                 // initiate icon selector dropdowns
                 $('.icon_dropdown', $response).select2({
                   containerCssClass: 'tpx-select2-container select2-container-sm',

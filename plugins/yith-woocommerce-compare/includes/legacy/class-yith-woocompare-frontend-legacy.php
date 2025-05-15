@@ -60,6 +60,17 @@ if ( ! class_exists( 'YITH_WooCompare_Frontend_Legacy' ) ) {
 			$this->output_page();
 		}
 
+		/**
+		 * The URL of product comparison table
+		 *
+		 * @since 1.4.0
+		 * @param  bool | integer $product_id The product ID.
+		 * @return string The url to add the product in the comparison table.
+		 */
+		public function view_table_url( $product_id = false ) {
+			return $this->get_table_url( $product_id );
+		}
+
 		/* === METHODS MOVED TO LIST HANDLER === */
 
 		/**

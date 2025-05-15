@@ -3,7 +3,7 @@ Contributors: managewp, wpmudev
 Tags: links, broken links, internal link, external link, broken images
 Requires at least: 5.2
 Tested up to: 6.8
-Stable tag: 2.4.3
+Stable tag: 2.4.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,8 +197,20 @@ Nope. The plugin doesn’t modify your content. It just finds the broken links a
 = How can I report security issues or bugs? =
 We take plugin security incredibly seriously; if you have a bug or vulnerability to report, you can do so through the Patchstack Vulnerability Disclosure Program. It’s fast, easy, and you will be notified when the issue is fixed. [Report a vulnerability](https://patchstack.com/database/vdp/branda-white-labeling).
 
+== Screenshots ==
+
+1. Cloud Broken Link Checker
+2. Scheduled Broken Link Checker Scanning
+3. In plugin broken links summary dashboard
+4. Cloud Broken Link Checker Full Dashboard
+5. Local Broken Link Checker engine
+6. Local Broken Link Checker engine settings
 
 == Changelog ==
+
+= 2.4.4 =
+* Fix: Resolved issue where editing a link would get stuck in the Hub.
+* Fix: Updated the Hub link to correctly point to the BLC page within the Hub.
 
 = 2.4.3 =
 * Enhance: PHP 8.4 compatibility.

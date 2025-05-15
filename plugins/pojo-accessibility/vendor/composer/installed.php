@@ -3,13 +3,22 @@
         'name' => 'pojome/pojo-accessibility',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '35c752611e5ea93e05c450e6d5d934bb8c603f18',
+        'reference' => '3497463785bae24416f614ac2930db5c3fca4685',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => false,
     ),
     'versions' => array(
+        'elementor/wp-notifications-package' => array(
+            'pretty_version' => '1.2.0',
+            'version' => '1.2.0.0',
+            'reference' => 'dd25ca9dd79402c3bb51fab112aa079702eb165e',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../elementor/wp-notifications-package',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'firebase/php-jwt' => array(
             'pretty_version' => 'v6.10.0',
             'version' => '6.10.0.0',
@@ -22,7 +31,7 @@
         'pojome/pojo-accessibility' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '35c752611e5ea93e05c450e6d5d934bb8c603f18',
+            'reference' => '3497463785bae24416f614ac2930db5c3fca4685',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

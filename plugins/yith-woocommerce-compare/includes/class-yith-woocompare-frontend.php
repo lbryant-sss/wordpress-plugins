@@ -57,23 +57,20 @@ if ( ! class_exists( 'YITH_WooCompare_Frontend' ) ) {
 		 * @since 1.0.0
 		 */
 		public function enqueue_scripts() {
-
 			$min = ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '.min' : '';
 
 			// register needed dependencies.
 			wp_register_script( 'jquery-fixedheadertable', YITH_WOOCOMPARE_ASSETS_URL . 'js/jquery.dataTables.min.js', array( 'jquery' ), '1.10.18', true );
 			wp_register_script( 'jquery-fixedcolumns', YITH_WOOCOMPARE_ASSETS_URL . 'js/FixedColumns.min.js', array( 'jquery', 'jquery-fixedheadertable' ), '3.2.6', true );
 			wp_register_script( 'jquery-imagesloaded', YITH_WOOCOMPARE_ASSETS_URL . 'js/imagesloaded.pkgd.min.js', array( 'jquery' ), '3.1.8', true );
-			wp_register_script( 'yith_woocompare_owl', YITH_WOOCOMPARE_ASSETS_URL . 'js/owl.carousel.min.js', array( 'jquery' ), '2.0.0', true );
 
 			// Enqueue and add localize.
-			wp_register_script( 'yith-woocompare-main', YITH_WOOCOMPARE_ASSETS_URL . 'js/woocompare' . $min . '.js', array( 'jquery', 'jquery-fixedheadertable', 'jquery-fixedcolumns', 'jquery-imagesloaded', 'yith_woocompare_owl' ), YITH_WOOCOMPARE_VERSION, true );
+			wp_register_script( 'yith-woocompare-main', YITH_WOOCOMPARE_ASSETS_URL . 'js/woocompare' . $min . '.js', array( 'jquery', 'jquery-fixedheadertable', 'jquery-fixedcolumns', 'jquery-imagesloaded' ), YITH_WOOCOMPARE_VERSION, true );
 			wp_localize_script( 'yith-woocompare-main', 'yith_woocompare', $this->get_script_localize() );
 
 			// compare style.
 			wp_register_style( 'jquery-fixedheadertable-style', YITH_WOOCOMPARE_ASSETS_URL . 'css/jquery.dataTables.css', array(), '1.10.18', 'all' );
-			wp_register_style( 'yith_woocompare_owl_style', YITH_WOOCOMPARE_ASSETS_URL . 'css/owl.carousel.css', array(), '2.0.0', 'all' );
-			wp_enqueue_style( 'yith_woocompare_page', $this->stylesheet_url(), array( 'jquery-fixedheadertable-style', 'yith_woocompare_owl_style' ), YITH_WOOCOMPARE_VERSION, 'all' );
+			wp_enqueue_style( 'yith_woocompare_page', $this->stylesheet_url(), array( 'jquery-fixedheadertable-style' ), YITH_WOOCOMPARE_VERSION, 'all' );
 
 			// Widget.
 			wp_enqueue_style( 'yith-woocompare-widget', YITH_WOOCOMPARE_ASSETS_URL . 'css/widget.css', array(), YITH_WOOCOMPARE_VERSION );

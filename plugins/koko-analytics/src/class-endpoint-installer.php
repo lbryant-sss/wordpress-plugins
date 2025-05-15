@@ -70,11 +70,10 @@ EOT;
 
         $status  = wp_remote_retrieve_response_code($response);
         $headers = wp_remote_retrieve_headers($response);
-        if ($status !== 200 || ! isset($headers['Content-Type']) || ! str_contains($headers['Content-Type'], 'text/plain')) {
-            return false;
-        }
 
-        return true;
+        return $status == 200
+            && isset($headers['Content-Type'])
+            && str_contains($headers['Content-Type'], 'text/plain');
     }
 
     public function install(): bool
@@ -87,12 +86,10 @@ EOT;
 
         $file_name = $this->get_file_name();
 
-        // TODO: Verify contents? Or trust 200 OK response?
-
         /* Attempt to put the file into place if it does not exist already */
-        if (! file_exists($file_name)) {
-            $success = file_put_contents($file_name, $this->get_file_contents());
-            if (false === $success) {
+        if (! is_file($file_name)) {
+            $created = file_put_contents($file_name, $this->get_file_contents());
+            if (! $created) {
                 return false;
             }
         }
@@ -100,7 +97,9 @@ EOT;
         /* Send an HTTP request to the custom endpoint to see if it's working properly */
         $works = self::verify();
         if (! $works) {
-            unlink($file_name);
+            if (isset($created) && $created) {
+                unlink($file_name);
+            }
             return false;
         }
 

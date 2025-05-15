@@ -2049,6 +2049,10 @@ body.toplevel_page_maxmegamenu .megamenu_wrap .fail {
   line-height: 22px;
   clear: both;
 }
+body[class*=_page_maxmegamenu_] .megamenu_wrap .megamenu_right .warning,
+body.toplevel_page_maxmegamenu .megamenu_wrap .megamenu_right .warning {
+  margin-bottom: 0;
+}
 body[class*=_page_maxmegamenu_] .megamenu_wrap .fail,
 body.toplevel_page_maxmegamenu .megamenu_wrap .fail {
   border-left-color: #D0011B;
@@ -2129,6 +2133,7 @@ body.toplevel_page_maxmegamenu .megamenu_right textarea.mega-export {
 }
 body[class*=_page_maxmegamenu_] .megamenu_right nav.nav-tab-wrapper,
 body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper {
+  position: relative;
   margin: 0;
   display: inline-flex;
   align-items: center;
@@ -2136,6 +2141,7 @@ body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper {
   height: 64px;
   gap: 30px;
   width: 100%;
+  /* The sliding border element */
 }
 body[class*=_page_maxmegamenu_] .megamenu_right nav.nav-tab-wrapper a.mega-tab,
 body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper a.mega-tab {
@@ -2147,6 +2153,7 @@ body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper a.mega-tab {
   color: #444;
   font-weight: 500;
   font-size: 14px;
+  padding: 0 5px;
 }
 @media only screen and (max-width: 1200px) {
   body[class*=_page_maxmegamenu_] .megamenu_right nav.nav-tab-wrapper a.mega-tab,
@@ -2156,15 +2163,24 @@ body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper a.mega-tab {
 }
 body[class*=_page_maxmegamenu_] .megamenu_right nav.nav-tab-wrapper a.mega-tab:hover,
 body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper a.mega-tab:hover {
-  border-bottom: 3px solid #444;
+  color: #0073aa;
 }
 body[class*=_page_maxmegamenu_] .megamenu_right nav.nav-tab-wrapper a.nav-tab-active,
 body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper a.nav-tab-active {
   background: white;
   position: relative;
   z-index: 1;
-  border-bottom: 3px solid #0073aa;
   color: #0073aa;
+}
+body[class*=_page_maxmegamenu_] .megamenu_right nav.nav-tab-wrapper .nav-tab-slider,
+body.toplevel_page_maxmegamenu .megamenu_right nav.nav-tab-wrapper .nav-tab-slider {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  background-color: #0073aa;
+  border-radius: 2px;
+  transition: left 0.3s ease-out, width 0.3s ease-out;
+  z-index: 1;
 }
 body[class*=_page_maxmegamenu_] .megamenu_right h3.editing_theme,
 body.toplevel_page_maxmegamenu .megamenu_right h3.editing_theme {
@@ -2225,6 +2241,7 @@ body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings.menu_settings_men
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings.menu_settings_menu_locations .nav-tab-wrapper a.nav-tab-active,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings.menu_settings_menu_locations .nav-tab-wrapper a.nav-tab,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings.menu_settings_menu_locations .nav-tab-wrapper a.nav-tab-active {
+  cursor: pointer;
   font-size: 12px;
   font-weight: normal;
   padding: 3px 5px;
@@ -2286,12 +2303,15 @@ body.toplevel_page_maxmegamenu .megamenu_right .menu_settings.menu_settings_menu
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings.menu_settings_menu_themes .theme_selector,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings.menu_settings_menu_themes .theme_selector {
   margin-bottom: 20px;
-  float: left;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
 }
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings.menu_settings_menu_themes .theme_selector select,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings.menu_settings_menu_themes .theme_selector select {
-  max-width: 500px;
-  font-size: 12px;
+  margin-left: 10px;
+  font-size: 14px;
+  border-color: black;
 }
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings.menu_settings_menu_themes .mega-ellipsis,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings.menu_settings_menu_themes .mega-ellipsis {
@@ -2302,7 +2322,7 @@ body.toplevel_page_maxmegamenu .megamenu_right .menu_settings.menu_settings_menu
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings.menu_settings_menu_themes .mega-ellipsis svg,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings.menu_settings_menu_themes .mega-ellipsis svg {
   height: 30px;
-  border: 1px solid #7e8993;
+  border: 1px solid black;
   border-radius: 3px;
   box-sizing: border-box;
 }
@@ -2527,16 +2547,6 @@ body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table input[type=c
   height: 16px;
   vertical-align: middle;
 }
-body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table input.mega-setting-panel_width,
-body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table input.mega-setting-panel_inner_width,
-body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table input.mega-setting-panel_width,
-body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table input.mega-setting-panel_inner_width {
-  width: 120px;
-}
-body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table input.mega-setting-title,
-body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table input.mega-setting-title {
-  width: 100px;
-}
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table .wide input[type=text],
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table .wide input[type=text] {
   width: 300px;
@@ -2635,6 +2645,7 @@ body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table td.mega-valu
   font-size: 13px;
   color: #777;
   line-height: 1.5em;
+  width: 80%;
 }
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table td.mega-name .mega-description p,
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings table td.mega-value .mega-description p,
@@ -2848,6 +2859,7 @@ body.toplevel_page_maxmegamenu .megamenu_right .menu_settings table label.mega-c
   opacity: 0.5;
   margin-top: 6px;
   font-size: 16px;
+  cursor: pointer;
 }
 body[class*=_page_maxmegamenu_] .megamenu_right .menu_settings .row h5,
 body.toplevel_page_maxmegamenu .megamenu_right .menu_settings .row h5 {

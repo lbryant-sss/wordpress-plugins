@@ -1264,7 +1264,10 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 						'data-effect-speed'          => isset( $menu_settings['effect_speed'] ) ? $menu_settings['effect_speed'] : '200',
 						'data-effect-mobile'         => $effect_mobile,
 						'data-effect-speed-mobile'   => $effect_speed_mobile,
-						'data-panel-width'           => preg_match( '/^\d/', $menu_theme['panel_width'] ) !== 1 ? $menu_theme['panel_width'] : '',
+						'data-panel-width'           => (
+														    preg_match('/^\d/', $menu_theme['panel_width']) !== 1 || 
+														    preg_match('/^\d+(vw|vh|vmin|vmax)$/', $menu_theme['panel_width']) === 1
+														) ? $menu_theme['panel_width'] : '',
 						'data-panel-inner-width'     => substr( trim( $menu_theme['panel_inner_width'] ), -1 ) !== '%' ? $menu_theme['panel_inner_width'] : '',
 						'data-mobile-force-width'    => $mobile_force_width,
 						'data-second-click'          => $second_click,

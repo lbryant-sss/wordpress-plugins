@@ -14,32 +14,33 @@ function ub_query_post( $attributes ){
      */
     global $post;
 
+	$pro_query = apply_filters( 'ubpro_query_post_filter', array(), $attributes );
     $includedCategories = isset($attributes['categories']) && $attributes['categories'] != '' ? $attributes['categories'] :
                     (isset($attributes['categoryArray']) ?
                         join(',',array_map(function($c){return $c['id'];}, $attributes['categoryArray'])) : '');
 
     $excludedCategories = isset($attributes['excludedCategories']) ?
                 join(',',array_map(function($c){return $c['id'];}, $attributes['excludedCategories'])) : '';
-
-    /* Setup the query */
+	$page = isset($pro_query['page']) ? $pro_query['page'] : 1;
+	$post_type = isset($pro_query['postType']) ? $pro_query['postType'] : 'post';
+	/* Setup the query */
     $post_query = new WP_Query(
         array(
+			'paged' => $page,
             'posts_per_page' => $attributes['amountPosts'],
             'post_status' => 'publish',
             'order' => $attributes['order'],
             'orderby' => $attributes['orderBy'],
             'cat' => $includedCategories,
             'category__not_in' => $excludedCategories,
-            'offset' => $attributes['offset'],
-            'post_type' => 'post',
+            'post_type' => $post_type,
             'ignore_sticky_posts' => 1,
             'post__not_in' => array(absint($post->ID)), // Exclude the current post from the grid.
             'tag__in' => $attributes['tagArray'],
             'author__in' => $attributes['authorArray']
         )
     );
-
-    return $post_query;
+	return $post_query;
 
 }
 
@@ -49,12 +50,16 @@ function ub_render_post_grid_block( $attributes, $content, $block ){
 
     $post_query = ub_query_post( $attributes );
 
-    /* Start the loop */
+	/* Start the loop */
 
     $post_grid = '';
 	$block_attrs = $block->parsed_block['attrs'];
+	$taxonomy_position      = isset($attributes['taxonomyPosition']) ? $attributes['taxonomyPosition'] : "with-meta";
+
 
     if ( $post_query->have_posts() ) {
+		$total_pages = ceil($post_query->found_posts / $attributes['amountPosts']);
+		$pagination = apply_filters( 'ubpro_post_grid_pagination', '', $attributes, $total_pages );
 
         while ( $post_query->have_posts() ) {
             $post_query->the_post();
@@ -127,6 +132,17 @@ function ub_render_post_grid_block( $attributes, $content, $block ){
 				esc_attr( Ultimate_Blocks\includes\generate_css_string($styles) )
             );
 
+			$taxonomies = apply_filters( 'ubpro_post_grid_taxonomies', '', $attributes, $post_id );
+			if( !empty($taxonomies) && $taxonomy_position === 'above-title'){
+				$post_grid .= $taxonomies;
+			}
+
+			/* Wrap the header content */
+			if ( isset( $attributes['checkPostTitle'] ) && $attributes['checkPostTitle'] ) {
+				$post_grid .= sprintf(
+					'<div class="ub-block-post-grid-header-content">'
+				);
+			}
             $post_grid .= sprintf(
                 '<header class="ub-block-post-grid-header">'
             );
@@ -193,12 +209,16 @@ function ub_render_post_grid_block( $attributes, $content, $block ){
 					esc_attr( Ultimate_Blocks\includes\generate_css_string($styles) )
                 );
             }
-
+			if( !empty($taxonomies) && $taxonomy_position === 'with-meta'){
+				$post_grid .= $taxonomies;
+			}
             /* Close the header content */
             $post_grid .= sprintf(
                 '</header>'
             );
-
+			if ( isset( $attributes['checkPostTitle'] ) && $attributes['checkPostTitle'] ) {
+				$post_grid .= '</div>';
+			}
             /* Wrap the excerpt content */
             $post_grid .= sprintf(
                 '<div class="ub-block-post-grid-excerpt">'
@@ -338,9 +358,10 @@ function ub_render_post_grid_block( $attributes, $content, $block ){
 			'margin-right'  	=> !empty($margin['right']) ? $margin['right'] . " !important" : "",
 			'margin-bottom' 	=> !empty($margin['bottom']) ? $margin['bottom'] . " !important" : "",
 		);
+        $is_pagination = isset($attributes['pagination']) ? $attributes['pagination'] : false;
 
         $block_content = sprintf(
-            '<%1$s class="%2$s%5$s%6$s" style="%8$s"><div class="%3$s" style="%7$s">%4$s</div></%1$s>',
+            '<%1$s class="%2$s%5$s%6$s" style="%8$s"><div class="%3$s" style="%7$s">%4$s</div>%9$s</%1$s>',
             $section_tag,
             esc_attr( $class ),
             esc_attr( $grid_class ),
@@ -348,7 +369,8 @@ function ub_render_post_grid_block( $attributes, $content, $block ){
             esc_attr($is_equal_height),
 			$is_preserve_post_image_aspect_ratio,
 			esc_attr(Ultimate_Blocks\includes\generate_css_string($grid_styles)),
-			esc_attr(Ultimate_Blocks\includes\generate_css_string($wrapper_spacing_styles))
+			esc_attr(Ultimate_Blocks\includes\generate_css_string($wrapper_spacing_styles)),
+            $is_pagination ? $pagination : ""
         );
 
 		return $block_content;

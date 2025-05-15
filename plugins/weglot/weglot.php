@@ -9,7 +9,7 @@
 * Domain Path: /languages/
 * WC requires at least: 4.0
 * WC tested up to: 9.5
-* Version: 4.3.2
+* Version: 4.3.3
 */
 
 /**
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'WEGLOT_NAME', 'Weglot' );
 define( 'WEGLOT_SLUG', 'weglot-translate' );
 define( 'WEGLOT_OPTION_GROUP', 'group-weglot-translate' );
-define( 'WEGLOT_VERSION', '4.3.2' );
+define( 'WEGLOT_VERSION', '4.3.3' );
 define( 'WEGLOT_PHP_MIN', '5.6' );
 define( 'WEGLOT_BNAME', plugin_basename( __FILE__ ) );
 define( 'WEGLOT_DIR', __DIR__ );
@@ -48,6 +48,7 @@ define('WEGLOT_WOOCOMMERCE', false);
 if ( ! function_exists( 'is_plugin_active' ) ) {
 	include_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
+
 
 // Compatibility Yoast premium Redirection
 $dir_yoast = plugin_dir_path( __DIR__ ) . 'wordpress-seo';

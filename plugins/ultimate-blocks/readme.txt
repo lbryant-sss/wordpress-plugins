@@ -3,7 +3,7 @@ Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, 
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 3.3.0
+Stable tag: 3.3.1
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -149,6 +149,13 @@ That's it. You're done!
 3. Tabbed Content Block.
 
 == Changelog ==
+
+= 3.3.1 =
+
+* IMPROVE: Move set value in Rating Format in review block.
+* FIX: PHP warning.
+* FIX: Feature rating not working review block.
+* FIX: XXS issue in content filter block.
 
 = 3.3.0 =
 

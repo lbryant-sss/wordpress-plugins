@@ -38,8 +38,8 @@ a.compare.disabled:not(.added) {
 
 a.yith-woocompare-popup-close {
     position: absolute;
-    top: 40px;
-    right: 40px;
+    top: 20px;
+    right: 20px;
     font-size: 40px;
     width: 40px;
     color: #434343;
@@ -61,9 +61,15 @@ body.yith-woocompare-popup,
     color: #747373;
     background: none !important;
     margin: 0;
-    padding: 5%;
     max-height: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+body.yith-woocompare-popup,
+.yith-woocompare-table-scroll-wrapper {
+    position: relative;
+    padding: 5%;
 }
 
 body.yith-woocompare-popup #yith-woocompare {
@@ -361,6 +367,7 @@ table.compare-list  tr.price del {
 }
 #yith-woocompare-related .yith-woocompare-related-wrapper {
     position: relative;
+    background: #fff;
 }
 #yith-woocompare-related .related-products {
     padding: 0;
@@ -666,6 +673,10 @@ table.compare-list .yith-ywraq-add-to-quote {
 }
 
 @media( max-width: 768px ) {
+    div.DTFC_LeftBodyWrapper {
+        pointer-events: none;
+    }
+
     #yith-woocompare-preview-bar .container {
         gap: 15px;
     }
@@ -683,6 +694,12 @@ table.compare-list .yith-ywraq-add-to-quote {
 
     #yith-woocompare-preview-bar .compare-list li .image-wrap > a {
         height: auto;
+    }
+
+    #yith-woocompare table.compare-list thead th,
+    #yith-woocompare table.compare-list tfoot th,
+    #yith-woocompare table.compare-list tr .filler {
+        display: none;
     }
 }
 

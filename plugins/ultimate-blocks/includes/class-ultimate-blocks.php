@@ -1,5 +1,7 @@
 <?php
 
+use DotCamp\Promoter\Promotion;
+use DotCamp\Promoter\Promoter;
 use Ultimate_Blocks\includes\Editor_Data_Manager;
 use Ultimate_Blocks\includes\managers\Render_Assistant;
 use Ultimate_Blocks\includes\pro_manager\Pro_Manager;
@@ -63,6 +65,19 @@ class Ultimate_Blocks {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
+		$this->initialize_promoter();
+
+	}
+
+	/**
+	 * Initialize DotCamp promoter.
+	 *
+	 * @return void
+	 */
+	private function initialize_promoter()
+	{
+		$default_promotions = Promoter::generate_default_promotions(ULTIMATE_BLOCKS_PLUGIN_FILE, 'Ultimate Blocks', 'ultimate-blocks/ultimate-blocks.php');
+		Promoter::add_promotions($default_promotions, ULTIMATE_BLOCKS_PLUGIN_FILE);
 	}
 
 	/**
@@ -177,7 +192,7 @@ class Ultimate_Blocks {
 		Editor_Data_Manager::init();
 
 		// initialize pro manager
-		Pro_Manager::init();
+		$this->loader->add_action( 'init', Pro_Manager::class, 'init' );
 
 		// initialize saved styles manager
 		Saved_Styles_Manager::init();

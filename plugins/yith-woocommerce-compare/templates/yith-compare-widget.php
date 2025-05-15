@@ -53,3 +53,6 @@ defined( 'YITH_WOOCOMPARE' ) || exit; // Exit if accessed directly.
 		<span class="list_empty"><?php echo esc_html__( 'No products to compare', 'yith-woocommerce-compare' ); ?></span>
 	<?php endif; ?>
 </div>
+
+<?php
+wp_enqueue_script( 'yith-woocompare-main' );

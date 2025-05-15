@@ -1,7 +1,5 @@
 <?php
 
-use function Ultimate_Blocks\includes\is_undefined;
-
 /**
  * Handle Responsive control frontend.
  */

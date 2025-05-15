@@ -119,11 +119,14 @@ const ScAddress = class {
     /** Set the regions based on the country. */
     setRegions() {
         Promise.resolve().then(function () { return require('./data-2282167f.js'); }).then(module => {
-            var _a;
+            var _a, _b, _c;
             this.regions = (((_a = module === null || module === void 0 ? void 0 : module[this.address.country]) === null || _a === void 0 ? void 0 : _a[2]) || []).map(region => ({
                 value: region[1],
                 label: this.decodeHtmlEntities(region[0]),
             }));
+            if ((_c = (_b = window === null || window === void 0 ? void 0 : window.wp) === null || _b === void 0 ? void 0 : _b.hooks) === null || _c === void 0 ? void 0 : _c.applyFilters) {
+                this.regions = window.wp.hooks.applyFilters('surecart_address_regions', this.regions, this.address.country);
+            }
         });
     }
     componentWillLoad() {

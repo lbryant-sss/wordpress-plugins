@@ -216,15 +216,23 @@
 
         plugin.calculateDynamicSubmenuWidths = function(anchor) {
             // apply dynamic width and sub menu position (only to top level mega menus)
-            if (anchor.parent().hasClass("mega-menu-megamenu") && anchor.parent().parent().hasClass("max-mega-menu") && plugin.settings.panel_width && $(plugin.settings.panel_width).length > 0) {
+            if (anchor.parent().hasClass("mega-menu-megamenu") && anchor.parent().parent().hasClass("max-mega-menu") && plugin.settings.panel_width ) {
                 if (plugin.isDesktopView()) {
                     var submenu_offset = $menu.offset();
                     var target_offset = $(plugin.settings.panel_width).offset();
 
-                    anchor.siblings(".mega-sub-menu").css({
-                        width: $(plugin.settings.panel_width).outerWidth(),
-                        left: (target_offset.left - submenu_offset.left) + "px"
-                    });
+                    if ( plugin.settings.panel_width == '100vw' ) {
+                        target_offset = $('body').offset();
+
+                        anchor.siblings(".mega-sub-menu").css({
+                            left: (target_offset.left - submenu_offset.left) + "px"
+                        });
+                    } else if ( $(plugin.settings.panel_width).length > 0 ) {
+                        anchor.siblings(".mega-sub-menu").css({
+                            width: $(plugin.settings.panel_width).outerWidth(),
+                            left: (target_offset.left - submenu_offset.left) + "px"
+                        });
+                    }
                 } else {
                     anchor.siblings(".mega-sub-menu").css({
                         width: "",

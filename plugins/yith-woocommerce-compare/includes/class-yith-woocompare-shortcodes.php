@@ -23,7 +23,6 @@ if ( ! class_exists( 'YITH_WooCompare_Shortcodes' ) ) {
 		 */
 		protected static $supported = array(
 			'button',
-			'table',
 			'counter',
 		);
 
@@ -64,7 +63,7 @@ if ( ! class_exists( 'YITH_WooCompare_Shortcodes' ) ) {
 		 * @return string|bool Class name, or false on failure.
 		 */
 		protected static function get_class( $shortcode_id ) {
-			if ( ! in_array( $shortcode_id, self::$supported, true ) ) {
+			if ( ! in_array( $shortcode_id, static::$supported, true ) ) {
 				return false;
 			}
 

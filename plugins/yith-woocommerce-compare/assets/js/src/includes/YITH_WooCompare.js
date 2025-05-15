@@ -344,14 +344,19 @@ export default class YITH_WooCompare {
 			$tableWrapper = $( '<div/>', {
 				'class': 'yith-woocompare-table-wrapper'
 			}),
+			$tableScrollWrapper = $( '<div/>', {
+				'class': 'yith-woocompare-table-scroll-wrapper'
+			}),
 			$tablePlaceholder = $( '<div/>', {
 				'id': 'yith-woocompare',
 				'class': 'yith-woocompare-table-placeholder'
 			});
 
-		$tableWrapper.append( $tablePlaceholder );
-		$container
+		$tableScrollWrapper
 			.prepend( $closeButton )
+			.append( $tablePlaceholder )
+			.appendTo( $tableWrapper );
+		$container
 			.append( $tableWrapper )
 			.appendTo('body');
 

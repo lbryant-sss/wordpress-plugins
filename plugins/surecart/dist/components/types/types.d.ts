@@ -15,6 +15,7 @@ declare global {
             apiFetch: any;
             blocks: any;
             i18n: any;
+            hooks: any;
         };
         dataLayer: any;
         gtag: any;
