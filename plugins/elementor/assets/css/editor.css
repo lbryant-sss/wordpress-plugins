@@ -1,4 +1,4 @@
-/*! elementor - v3.29.0 - 07-05-2025 */
+/*! elementor - v3.29.0 - 15-05-2025 */
 .elementor-control-unit-1 {
   width: 27px;
 }
@@ -5238,13 +5238,13 @@ body.e-is-device-mode:not(.elementor-device-desktop) #elementor-preview-responsi
   border: var(--e-a-border);
   border-radius: 3px;
 }
-#elementor-template-library-templates[data-template-view=grid] #elementor-template-library-templates-container .elementor-template-library-template-view-grid:hover .elementor-template-library-template-preview {
+#elementor-template-library-templates[data-template-view=grid] #elementor-template-library-templates-container .elementor-template-library-template-view-grid:not([data-status=locked]):hover .elementor-template-library-template-preview {
   display: flex;
 }
-#elementor-template-library-templates[data-template-view=grid] #elementor-template-library-templates-container .elementor-template-library-template-view-grid:hover .elementor-template-library-card-footer .elementor-template-library-template-name {
+#elementor-template-library-templates[data-template-view=grid] #elementor-template-library-templates-container .elementor-template-library-template-view-grid:not([data-status=locked]):hover .elementor-template-library-card-footer .elementor-template-library-template-name {
   display: none;
 }
-#elementor-template-library-templates[data-template-view=grid] #elementor-template-library-templates-container .elementor-template-library-template-view-grid:hover .elementor-template-library-card-footer .elementor-template-library-template-card-footer-overlay {
+#elementor-template-library-templates[data-template-view=grid] #elementor-template-library-templates-container .elementor-template-library-template-view-grid:not([data-status=locked]):hover .elementor-template-library-card-footer .elementor-template-library-template-card-footer-overlay {
   display: flex !important;
 }
 #elementor-template-library-templates[data-template-view=grid] #elementor-template-library-templates-container .elementor-template-library-template-view-grid .elementor-template-library-template-thumbnail {
@@ -5303,10 +5303,10 @@ body.e-is-device-mode:not(.elementor-device-desktop) #elementor-preview-responsi
   flex-direction: column;
   justify-content: center;
   width: 65%;
+  align-items: start;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  align-items: start;
 }
 #elementor-template-library-templates[data-template-view=grid] #elementor-template-library-templates-container .elementor-template-library-template-view-grid.elementor-template-library-template-type-folder {
   flex-direction: row;
@@ -5792,6 +5792,16 @@ label.elementor-template-library-order-label:hover {
   align-items: center;
   gap: 8px;
 }
+.elementor-template-library-template-local .elementor-template-library-template-more > div.disabled,
+.elementor-template-library-template-cloud .elementor-template-library-template-more > div.disabled {
+  cursor: not-allowed;
+  color: var(--e-a-color-txt-disabled);
+}
+.elementor-template-library-template-local .elementor-template-library-template-more > div.disabled a,
+.elementor-template-library-template-cloud .elementor-template-library-template-more > div.disabled a {
+  color: var(--e-a-color-txt-disabled);
+  cursor: not-allowed;
+}
 .elementor-template-library-template-local .elementor-template-library-template-more a,
 .elementor-template-library-template-cloud .elementor-template-library-template-more a {
   color: var(--e-a-color-txt);
@@ -5882,6 +5892,15 @@ label.elementor-template-library-order-label:hover {
 .elementor-template-library-template-cloud:not(.elementor-template-library-template-view-grid) .elementor-template-library-template-controls > div {
   cursor: pointer;
   transition: color 0.5s;
+}
+.elementor-template-library-template-local .elementor-template-library-template-insert.disabled,
+.elementor-template-library-template-cloud:not(.elementor-template-library-template-view-grid) .elementor-template-library-template-insert.disabled {
+  color: #F5D0FE;
+}
+.elementor-template-library-template-local .elementor-template-library-template-insert.disabled:hover, .elementor-template-library-template-local .elementor-template-library-template-insert.disabled:focus,
+.elementor-template-library-template-cloud:not(.elementor-template-library-template-view-grid) .elementor-template-library-template-insert.disabled:hover,
+.elementor-template-library-template-cloud:not(.elementor-template-library-template-view-grid) .elementor-template-library-template-insert.disabled:focus {
+  cursor: not-allowed;
 }
 .elementor-template-library-template-local .elementor-template-library-template-insert i,
 .elementor-template-library-template-cloud:not(.elementor-template-library-template-view-grid) .elementor-template-library-template-insert i {

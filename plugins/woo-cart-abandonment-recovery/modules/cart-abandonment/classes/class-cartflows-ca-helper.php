@@ -257,6 +257,27 @@ class Cartflows_Ca_Helper {
 		return has_block( 'woocommerce/checkout', $post_id );
 	}
 
+	/**
+	 * Get plugin status
+	 *
+	 * @since x.x.x
+	 *
+	 * @param  string $plugin_init_file Plguin init file.
+	 * @return mixed
+	 */
+	public function get_plugin_status( $plugin_init_file ) {
+
+		$installed_plugins = get_plugins();
+
+		if ( ! isset( $installed_plugins[ $plugin_init_file ] ) ) {
+			return 'not-installed';
+		} elseif ( is_plugin_active( $plugin_init_file ) ) {
+			return 'active';
+		} else {
+			return 'inactive';
+		}
+	}
+
 }
 
 Cartflows_Ca_Helper::get_instance();

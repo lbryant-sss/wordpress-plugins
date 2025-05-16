@@ -135,6 +135,9 @@ class Cartflows_Ca_Tabs {
 			case WCF_ACTION_SETTINGS:
 				$active_settings = 'nav-tab-active';
 				break;
+			case WCF_ACTION_CARTFLOWS_PROMO:
+				$active_cartflows = 'nav-tab-active';
+				break;
 			case WCF_ACTION_REPORTS:
 				$active_reports = 'nav-tab-active';
 				break;
@@ -183,7 +186,30 @@ class Cartflows_Ca_Tabs {
             <?php _e( 'Follow-Up Emails', 'woo-cart-abandonment-recovery' ); ?>
         </a>
 
-			<?php
+		<?php
+
+		$is_cartflows_active = 'active' === Cartflows_Ca_Helper::get_instance()->get_plugin_status( 'cartflows/cartflows.php' );
+
+		if( ! $is_cartflows_active ) {
+			$url = add_query_arg( array(
+				'page' => WCF_CA_PAGE_NAME,
+				'action' => WCF_ACTION_CARTFLOWS_PROMO
+				), admin_url( '/admin.php' ) 
+			);
+		?>
+			<a 	
+				href="<?php echo $url; ?>"
+				class="nav-tab
+				<?php
+					if ( isset( $active_cartflows ) ) {
+							echo $active_cartflows;}
+				?>"
+			>
+				<?php _e( 'CartFlows', 'woo-cart-abandonment-recovery' ); ?>
+			</a>
+		<?php
+		}
+
 			$url = add_query_arg( array(
             'page' => WCF_CA_PAGE_NAME,
             'action' => WCF_ACTION_SETTINGS
@@ -346,6 +372,7 @@ class Cartflows_Ca_Tabs {
 				'Order-Status',
 				'Unsubscribed',
 				'Coupon-Code',
+				'Date',
 			)
 		);
 
@@ -367,6 +394,7 @@ class Cartflows_Ca_Tabs {
 						$data['order_status'],
 						$data['unsubscribed'] ? 'Yes' : 'No',
 						$data['coupon_code'],
+						gmdate( 'Y-m-d', strtotime( $data['time'] ) ),
 					)
 				)
 			);

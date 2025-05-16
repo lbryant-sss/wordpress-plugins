@@ -1,4 +1,4 @@
-/*! elementor - v3.29.0 - 07-05-2025 */
+/*! elementor - v3.29.0 - 15-05-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -8731,13 +8731,22 @@ var FormCode = function FormCode(_ref) {
     .replace(/^css\s*/i, '') // Remove "css" prefix if any, case-insensitive
     .replace(/selector/g, selector); // Replace `selector` with the actual selector
   };
+  var isElementorEditor = function isElementorEditor() {
+    return window.elementorFrontend;
+  };
   var insertStyleTag = function insertStyleTag(cssCode) {
+    if (!isElementorEditor()) {
+      return;
+    }
     var style = document.createElement('style');
     style.id = styleTagId.current;
     style.appendChild(document.createTextNode(cssCode));
     elementorFrontend.elements.$body[0].appendChild(style);
   };
   var removeStyleTag = function removeStyleTag() {
+    if (!isElementorEditor()) {
+      return;
+    }
     var styleTag = elementorFrontend.elements.$body[0].querySelector("#".concat(styleTagId.current));
     if (styleTag) {
       styleTag.remove();
@@ -12384,23 +12393,82 @@ var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runt
 var _promptActionSelection = _interopRequireDefault(__webpack_require__(/*! ../../../components/prompt-action-selection */ "../modules/ai/assets/js/editor/components/prompt-action-selection.js"));
 var _i18n = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 var _constants = __webpack_require__(/*! ../constants */ "../modules/ai/assets/js/editor/pages/form-media/constants/index.js");
-var imageTypes = Object.entries(_constants.IMAGE_PROMPT_CATEGORIES).map(function (_ref) {
-  var _ref2 = (0, _slicedToArray2.default)(_ref, 2),
-    key = _ref2[0],
-    label = _ref2[1].label;
+var _ui = __webpack_require__(/*! @elementor/ui */ "@elementor/ui");
+var _useIntroduction2 = _interopRequireDefault(__webpack_require__(/*! ../../../hooks/use-introduction */ "../modules/ai/assets/js/editor/hooks/use-introduction.js"));
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js"));
+var StyledNewChip = (0, _ui.styled)(_ui.Chip)(function () {
   return {
-    label: label,
-    value: key
+    '& .MuiChip-label': {
+      fontSize: '0.75rem',
+      fontWeight: 'normal'
+    }
   };
 });
+var showLabel = function showLabel(label, key, isViewed, markAsViewed) {
+  if (isViewed) {
+    return {
+      label: label,
+      value: key
+    };
+  }
+  return {
+    label: /*#__PURE__*/_react.default.createElement(_ui.Stack, {
+      direction: "row",
+      width: "100%",
+      justifyContent: "space-between",
+      alignItems: "center"
+    }, label, /*#__PURE__*/_react.default.createElement(StyledNewChip, {
+      label: "New",
+      color: "info",
+      variant: "standard",
+      size: "tiny"
+    })),
+    value: key,
+    onClick: function onClick() {
+      return markAsViewed();
+    }
+  };
+};
+var changeImageType = function changeImageType(e, props, markVectorAsViewed) {
+  if ('vector' === e.target.value) {
+    markVectorAsViewed();
+  }
+  if (props.onChange) {
+    props.onChange(e);
+  }
+};
 var ImageTypeSelect = function ImageTypeSelect(props) {
+  var _useIntroduction = (0, _useIntroduction2.default)('e-ai-image-vector-option'),
+    isVectorViewed = _useIntroduction.isViewed,
+    markVectorAsViewed = _useIntroduction.markAsViewed;
+  var imageTypesWithNewChip = Object.entries(_constants.IMAGE_PROMPT_CATEGORIES).map(function (_ref) {
+    var _ref2 = (0, _slicedToArray2.default)(_ref, 2),
+      key = _ref2[0],
+      label = _ref2[1].label;
+    if ('vector' === key) {
+      return showLabel(label, key, isVectorViewed, markVectorAsViewed);
+    }
+    return {
+      label: label,
+      value: key
+    };
+  });
   return /*#__PURE__*/_react.default.createElement(_promptActionSelection.default, (0, _extends2.default)({
-    options: imageTypes,
+    options: imageTypesWithNewChip,
     wrapperStyle: {
       width: '100%'
     },
     label: (0, _i18n.__)('Image type', 'elementor')
-  }, props));
+  }, props, {
+    onChange: function onChange(e) {
+      changeImageType(e, props, markVectorAsViewed);
+    }
+  }));
+};
+ImageTypeSelect.propTypes = {
+  onChange: _propTypes.default.func,
+  value: _propTypes.default.string,
+  disabled: _propTypes.default.bool
 };
 var _default = exports["default"] = ImageTypeSelect;
 
@@ -13096,7 +13164,7 @@ var IMAGE_PROMPT_CATEGORIES = exports.IMAGE_PROMPT_CATEGORIES = {
     }
   },
   vector: {
-    label: (0, _i18n.__)('Vector', 'elementor'),
+    label: (0, _i18n.__)('Vector / Logo', 'elementor'),
     subCategories: {
       '': (0, _i18n.__)('None', 'elementor'),
       'typographic-logo': (0, _i18n.__)('Typographic Logo', 'elementor'),

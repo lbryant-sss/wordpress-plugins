@@ -1,10 +1,10 @@
 === File Manager Pro - Filester ===
 Contributors: ninjateam
-Donate link: https://codecanyon.net/item/media-folders-manager-for-wordpress/21715379
+Donate link: https://ninjateam.org/wordpress-media-library-folders/
 Tags: file manager, wordpress file manager, wp file manager, files, download plugin
 Requires at least: 3.0
 Tested up to: 6.8
-Stable tag: 1.8.7
+Stable tag: 1.8.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Advanced File Manager and Code Editor. Best WordPress file manager without FTP a
 
 == Description ==
 
-Filester is a WP File Manager Pro plugin but you can download and use it completely for free. It comes with all the **premium features** of other WordPress advanced file manager plugins out there. 
+Filester is a WP File Manager Pro plugin, but you can download and use it completely for free. It comes with all the **premium features** of other WordPress advanced file manager plugins out there. 
 
 Filester helps you manage **WordPress configuration files**, while [FileBird](https://1.envato.market/FileBird-Folders-Plugin) allows you to manage/upload/download **media library folders**. 
 
@@ -89,7 +89,7 @@ Manual installation is easy and takes less than one minute.
 You’re done. Enjoy.
 
 == Frequently Asked Questions ==
-= Is it compatible with WordPress 6? = 
+= Is it compatible with WordPress 6.8? = 
 Definitely yes! We’re always up-to-date to give you the best experience in using our plugin.
 
 = Do all folders work the same way as they do in FTP client? =
@@ -111,121 +111,99 @@ Otherwise, feel free to reach us at [Ninja Team Support Center](https://ninjatea
 
 == Changelog ==
 
-= 1.8.7 =
-Dec 17, 2024 - Version 1.8.7
+= May 15, 2025 - Version 1.8.8 =
+- Improved: Prevent abuse via modified .htaccess file
+- Fixed: A critical vulnerability that allowed authenticated users to upload arbitrary files due to missing file type validation
+
+= Dec 17, 2024 - Version 1.8.7 =
 - Fixed: Security (CVE ID: CVE-2024-8066)
 
-= 1.8.6 =
-Nov 25, 2024 - Version 1.8.6
+= Nov 25, 2024 - Version 1.8.6 =
 - Fixed: Security
 
-= 1.8.5 =
-Nov 12, 2024 - Version 1.8.5
+= Nov 12, 2024 - Version 1.8.5 =
 - Fixed: Security
 
-= 1.8.4 =
-Aug 7, 2024 - Version 1.8.4
+= Aug 7, 2024 - Version 1.8.4 =
 - Fixed: Plugin missing .js / 403 error query
 
-= 1.8.3 =
-Aug 1, 2024 - Version 1.8.3
+= Aug 1, 2024 - Version 1.8.3 =
 - Fixed: Unauthorized modification of data due to a missing capability check
 
-= 1.8.2 =
-Dec 18, 2023 - Version 1.8.2
-- Updated: Elfinder library version 2.1.62 
+= Dec 18, 2023 - Version 1.8.2 =
+- Updated: Elfinder library to version 2.1.62
 
-= 1.8.1 =
-Sep 12, 2023 - Version 1.8.1
+= Sep 12, 2023 - Version 1.8.1 =
 - Fixed: Security for multisite
 
-= 1.8 =
-Sep 8, 2023 - Version 1.8
+= Sep 8, 2023 - Version 1.8 =
 - Fixed: Security issue
 
-= 1.7.6 =
-Jun 27, 2022 - Version 1.7.6
+= Jun 27, 2022 - Version 1.7.6 =
 - Added: Recommend plugins
 
-= 1.7.5 =
-Jun 20, 2022 - Version 1.7.5
+= Jun 20, 2022 - Version 1.7.5 =
 - Added: Recommend plugins
 
-= 1.7.4 =
-Dec 02, 2021 - Version 1.7.4
-- Fixed: conflict with plugin Nested Pages
+= Dec 2, 2021 - Version 1.7.4 =
+- Fixed: Conflict with plugin Nested Pages
 
-= 1.7.3 =
-Jul 08, 2021 - Version 1.7.3
-- Fixed: User Role Restrictions
+= Jul 8, 2021 - Version 1.7.3 =
+- Fixed: User role restrictions
 - Fixed: Image notification
 
-= 1.7.2 =
-Mar 25, 2021 - Version 1.7.2
-- Fixed: Small bug - Sorry you guys about that. And thanks for reporting.
-
-= 1.7.1 =
-Mar 25, 2021 - Version 1.7.1
+= Mar 25, 2021 - Version 1.7.2 =
 - Fixed: Small bug
 
-= 1.7 =
-Mar 25, 2021 - Version 1.7
+= Mar 25, 2021 - Version 1.7.1 =
+- Fixed: Small bug
+
+= Mar 25, 2021 - Version 1.7 =
 - Improved: UI
 - Fixed: Small bug
 
-= 1.6 =
-Mar 15, 2021 - Version 1.6.1
+= Mar 15, 2021 - Version 1.6.1 =
 - Fixed: Small bug
 
-= 1.6 =
-Feb 3, 2021 - Version 1.6
-- Added: Mime type logic for user roles
+= Feb 3, 2021 - Version 1.6 =
+- Added: MIME type logic for user roles
 - Added: URL field
-- Fixed: Images and pdf preview
+- Fixed: Image and PDF preview
 - Fixed: Some small bugs
 
-= 1.5.2 =
-Jan 11, 2021 - Version 1.5.2
-- Added: Add mime type for upload .xlsb and .xlsm files
-- Fixed: Work with WP old version
-- Fixed: Upload CSV file
+= Jan 11, 2021 - Version 1.5.2 =
+- Added: MIME type support for .xlsb and .xlsm files
+- Fixed: Compatibility with older WordPress versions
+- Fixed: CSV file upload
 
-= 1.5.1 =
-Dec 17, 2020 - Version 1.5.1
-- Updated: jQuery UI latest version
+= Dec 17, 2020 - Version 1.5.1 =
+- Updated: jQuery UI to latest version
 
-= 1.5 =
-Dec 10, 2020 - Version 1.5
-* Updated: ElFinder latest version 
-* Improved: Compatible with WordPress 5.6
+= Dec 10, 2020 - Version 1.5 =
+- Updated: Elfinder to latest version
+- Improved: Compatibility with WordPress 5.6
 
-= 1.4.1 =
-Aug 7, 2020 – Version 1.4.1
-* Fixed: Can not display in menu WordPress multisite
-* Fixed: Windows 10 theme not working in Linux server
+= Aug 7, 2020 - Version 1.4.1 =
+- Fixed: Display issue in WordPress multisite menu
+- Fixed: Windows 10 theme not working on Linux servers
 
-= 1.4 =
-Jul 2, 2020 – Version 1.4
-* Improved: Double click to open or preview file
-* Fixed: Some small bugs
+= Jul 2, 2020 - Version 1.4 =
+- Improved: Double-click to open or preview file
+- Fixed: Some small bugs
 
-= 1.3 =
-Jun 24, 2020 – Version 1.3
-* Improved: Style for icon
-* Fixed: Select languages
-* Fixed: Private CSS/JS
-* Fixed: Some small bugs
+= Jun 24, 2020 - Version 1.3 =
+- Improved: Icon styling
+- Fixed: Language selection
+- Fixed: Private CSS/JS handling
+- Fixed: Some small bugs
 
-= 1.2 =
-Jun 16, 2020 – Version 1.2
-* Fixed: Trash issue
-* Fixed: Some small bugs
+= Jun 16, 2020 - Version 1.2 =
+- Fixed: Trash issue
+- Fixed: Some small bugs
 
-= 1.1 =
-May 29, 2020 – Version 1.1
-* Fixed: Some small bugs
-* Improved: UI
+= May 29, 2020 - Version 1.1 =
+- Fixed: Some small bugs
+- Improved: UI
 
-= 1.0 =
-May 8, 2020 – Version 1.0
-* Version 1.0 Initial Release
+= May 8, 2020 - Version 1.0 =
+- Initial release

@@ -417,9 +417,11 @@
 			// if(defined('DONOTCACHEPAGE')){
 			// 	return array("DONOTCACHEPAGE <label>constant is defined as TRUE. It must be FALSE</label>", "error");
 			// }else 
-			
 
-			if(!get_option('permalink_structure')){
+
+			if(!preg_match("/^https/i", get_option("home")) && is_ssl()){
+				return array("Mismatch detected: Site is using HTTPS but the 'Home' URL is set to HTTP. <a target='_blank' href='https://www.wpfastestcache.com/tutorial/plugin-does-not-work-after-https-redirection/'>Please update your WordPress 'Home' URL to use HTTPS</a>", "error");
+			}else if(!get_option('permalink_structure')){
 				return array("You have to set <strong><u><a target='_blank' href='https://www.wpfastestcache.com/tutorial/how-to-change-default-permalink-in-wordpress/'>permalinks</a></u></strong>", "error");
 			}else if($res = $this->checkSuperCache($path, $htaccess)){
 				return $res;

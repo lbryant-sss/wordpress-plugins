@@ -47,6 +47,15 @@ class SchemaFactory {
 		return new IndexedArray($itemSchema, $label);
 	}
 
+	/**
+	 * @param Schema[] $schemas
+	 * @param string|null $label
+	 * @return Union
+	 */
+	public function union(array $schemas, $label = null) {
+		return new Union($schemas, $label);
+	}
+
 	public function cssColor($label = null) {
 		return (new Color($label))->orTransparent()->settingClassHint(CssPropertySetting::class);
 	}

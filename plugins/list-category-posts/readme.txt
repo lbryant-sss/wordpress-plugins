@@ -9,7 +9,7 @@ Stable tag: 0.91.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-List Category Posts allows you to list posts by category and many other parameters in a post, page or widget. You use the [catlist] shortcode to select which posts to show and how. There's tons of customizations available.
+Very customizable plugin to list posts by category (or tag, author and more) in a post, page or widget. It uses the [catlist] shortcode to select posts.
 
 == Description ==
 
@@ -24,7 +24,7 @@ The shortcode accepts a category name or id, the order in which you want the pos
 The `[catlist]` shortcode can be used as many times as needed with different arguments on each post/page.
 `[catlist id=1 numberposts=10]`
 
-There's an options page with only one option -for the moment-, new options will be implemented on demand (as long as they make sense). Right now the only global option is the `numberposts` parameter, to define a default number of posts to show for each instance (you can override this value by using the `numberposts` parameter in your shortcode).
+There's an options page with a few options, new options will be implemented on demand (as long as they make sense).
 
 **[Read the instructions](https://github.com/picandocodigo/List-Category-Posts/wiki)** to learn which parameters are available and how to use them.
 

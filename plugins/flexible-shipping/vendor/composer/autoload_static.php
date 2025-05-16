@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0d26d549f9c3b31002fe9720401e675c
+class ComposerStaticInitb90900ac200f7b50de07289ca893a7eb
 {
     public static $prefixLengthsPsr4 = array (
         'W' => 
@@ -538,6 +538,8 @@ class ComposerStaticInit0d26d549f9c3b31002fe9720401e675c
         'WPDesk\\FS\\Shipment\\ModifyOrderTable' => __DIR__ . '/../..' . '/src/WPDesk/FS/Shipment/ModifyOrderTable.php',
         'WPDesk\\FS\\Shipment\\ModifyStatuses' => __DIR__ . '/../..' . '/src/WPDesk/FS/Shipment/ModifyStatuses.php',
         'WPDesk\\FS\\Shipment\\SubscriptionsIntegration' => __DIR__ . '/../..' . '/src/WPDesk/FS/Shipment/SubscriptionsIntegration.php',
+        'WPDesk\\FS\\TableRate\\AI\\TrackerData' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/AI/TrackerData.php',
+        'WPDesk\\FS\\TableRate\\AI\\TrackerDataOnShippingMethodSaver' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/AI/TrackerDataOnShippingMethodSaver.php',
         'WPDesk\\FS\\TableRate\\Beacon' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Beacon.php',
         'WPDesk\\FS\\TableRate\\Beacon\\Beacon' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Beacon/Beacon.php',
         'WPDesk\\FS\\TableRate\\Beacon\\BeaconClickedAjax' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/Beacon/BeaconClickedAjax.php',
@@ -654,6 +656,8 @@ class ComposerStaticInit0d26d549f9c3b31002fe9720401e675c
         'WPDesk\\FS\\TableRate\\ShippingMethod\\SettingsDisplayPreparer' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/ShippingMethod/SettingsDisplayPreparer.php',
         'WPDesk\\FS\\TableRate\\ShippingMethod\\SettingsProcessor' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/ShippingMethod/SettingsProcessor.php',
         'WPDesk\\FS\\TableRate\\ShippingMethod\\SingleMethodSettings' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/ShippingMethod/SingleMethodSettings.php',
+        'WPDesk\\FS\\TableRate\\ShippingMethod\\Timestamps\\MethodTimestamps' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/ShippingMethod/Timestamps/MethodTimestamps.php',
+        'WPDesk\\FS\\TableRate\\ShippingMethod\\Timestamps\\TrackerData' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/ShippingMethod/Timestamps/TrackerData.php',
         'WPDesk\\FS\\TableRate\\ShippingMethodsIntegration\\Integration' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/ShippingMethodsIntegration/Integration.php',
         'WPDesk\\FS\\TableRate\\ShippingMethodsIntegration\\OrderMetaData' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/ShippingMethodsIntegration/OrderMetaData.php',
         'WPDesk\\FS\\TableRate\\ShippingMethodsIntegration\\SettingsFields' => __DIR__ . '/../..' . '/src/WPDesk/FS/TableRate/ShippingMethodsIntegration/SettingsFields.php',
@@ -684,9 +688,9 @@ class ComposerStaticInit0d26d549f9c3b31002fe9720401e675c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0d26d549f9c3b31002fe9720401e675c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0d26d549f9c3b31002fe9720401e675c::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit0d26d549f9c3b31002fe9720401e675c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb90900ac200f7b50de07289ca893a7eb::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb90900ac200f7b50de07289ca893a7eb::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitb90900ac200f7b50de07289ca893a7eb::$classMap;
 
         }, null, ClassLoader::class);
     }

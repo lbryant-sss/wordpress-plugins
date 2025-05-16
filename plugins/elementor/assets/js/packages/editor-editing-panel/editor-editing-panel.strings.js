@@ -139,6 +139,8 @@ __( 'Flex', 'elementor' );
 __( 'Flex', 'elementor' );
 __( 'In-blk', 'elementor' );
 __( 'Inline-block', 'elementor' );
+__( 'None', 'elementor' );
+__( 'None', 'elementor' );
 __( 'In-flx', 'elementor' );
 __( 'Inline-flex', 'elementor' );
 __( 'Display', 'elementor' );

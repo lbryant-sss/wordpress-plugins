@@ -1,4 +1,4 @@
-/*! elementor - v3.29.0 - 07-05-2025 */
+/*! elementor - v3.29.0 - 15-05-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -2756,7 +2756,8 @@ var AiPromotionInfotipWrapper = function AiPromotionInfotipWrapper(_ref) {
     placement = _ref.placement,
     offset = _ref.offset,
     mainActionText = _ref.mainActionText,
-    source = _ref.source;
+    source = _ref.source,
+    _onFocusOut = _ref.onFocusOut;
   var focusOutListener = (0, _focusOutListener.useFocusOutListener)();
   var _useIntroduction = (0, _useIntroduction2.default)("ai_get_started_introduction_".concat(controlType, "_").concat(source)),
     isViewed = _useIntroduction.isViewed,
@@ -2771,8 +2772,12 @@ var AiPromotionInfotipWrapper = function AiPromotionInfotipWrapper(_ref) {
   }, /*#__PURE__*/_react.default.createElement(_focusOutListener.FocusOutListener, {
     listener: focusOutListener,
     onFocusOut: function onFocusOut() {
-      markAsViewed();
-      unmountAction();
+      if (_onFocusOut) {
+        _onFocusOut();
+      } else {
+        markAsViewed();
+        unmountAction();
+      }
     }
   }, /*#__PURE__*/_react.default.createElement(_aiPromotionInfotip.default, {
     anchor: anchor,
@@ -2814,7 +2819,8 @@ AiPromotionInfotipWrapper.propTypes = {
   placement: PropTypes.string,
   offset: PropTypes.object,
   mainActionText: PropTypes.string,
-  source: PropTypes.string
+  source: PropTypes.string,
+  onFocusOut: PropTypes.func
 };
 var _default = exports["default"] = AiPromotionInfotipWrapper;
 
@@ -8697,6 +8703,7 @@ var _editorIntegration = __webpack_require__(/*! ./utils/editor-integration */ "
 var _api = __webpack_require__(/*! ./api */ "../modules/ai/assets/js/editor/api/index.js");
 var _requestsIds = __webpack_require__(/*! ./context/requests-ids */ "../modules/ai/assets/js/editor/context/requests-ids.js");
 var _applyAiTitlesToNavigatorBehaviour = _interopRequireDefault(__webpack_require__(/*! ./integration/navigator/apply-ai-titles-to-navigator-behaviour */ "../modules/ai/assets/js/editor/integration/navigator/apply-ai-titles-to-navigator-behaviour.js"));
+var _aiPromotion = __webpack_require__(/*! ./utils/ai-promotion */ "../modules/ai/assets/js/editor/utils/ai-promotion.js");
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2.default)(o), (0, _possibleConstructorReturn2.default)(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2.default)(t).constructor) : o.apply(t, e)); }
@@ -8755,6 +8762,11 @@ var Module = exports["default"] = /*#__PURE__*/function (_elementorModules$edi) 
     value: function onElementorInit() {
       elementor.hooks.addFilter('controls/base/behaviors', this.registerControlBehavior.bind(this));
       elementor.hooks.addFilter('navigator/layout/behaviors', this.registerNavigatorBehavior.bind(this));
+      $e.routes.on('run:after', function (component, route) {
+        if ('panel/global/settings-site-identity' === route) {
+          (0, _aiPromotion.addAiPromotionForSiteLogo)();
+        }
+      });
       window.addEventListener('hashchange', function (e) {
         if (e.newURL.includes('welcome-ai')) {
           var source = e.newURL.includes('welcome-ai-whats-new') ? 'whats-new' : 'connect';
@@ -9965,13 +9977,22 @@ var FormCode = function FormCode(_ref) {
     .replace(/^css\s*/i, '') // Remove "css" prefix if any, case-insensitive
     .replace(/selector/g, selector); // Replace `selector` with the actual selector
   };
+  var isElementorEditor = function isElementorEditor() {
+    return window.elementorFrontend;
+  };
   var insertStyleTag = function insertStyleTag(cssCode) {
+    if (!isElementorEditor()) {
+      return;
+    }
     var style = document.createElement('style');
     style.id = styleTagId.current;
     style.appendChild(document.createTextNode(cssCode));
     elementorFrontend.elements.$body[0].appendChild(style);
   };
   var removeStyleTag = function removeStyleTag() {
+    if (!isElementorEditor()) {
+      return;
+    }
     var styleTag = elementorFrontend.elements.$body[0].querySelector("#".concat(styleTagId.current));
     if (styleTag) {
       styleTag.remove();
@@ -13618,23 +13639,82 @@ var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runt
 var _promptActionSelection = _interopRequireDefault(__webpack_require__(/*! ../../../components/prompt-action-selection */ "../modules/ai/assets/js/editor/components/prompt-action-selection.js"));
 var _i18n = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 var _constants = __webpack_require__(/*! ../constants */ "../modules/ai/assets/js/editor/pages/form-media/constants/index.js");
-var imageTypes = Object.entries(_constants.IMAGE_PROMPT_CATEGORIES).map(function (_ref) {
-  var _ref2 = (0, _slicedToArray2.default)(_ref, 2),
-    key = _ref2[0],
-    label = _ref2[1].label;
+var _ui = __webpack_require__(/*! @elementor/ui */ "@elementor/ui");
+var _useIntroduction2 = _interopRequireDefault(__webpack_require__(/*! ../../../hooks/use-introduction */ "../modules/ai/assets/js/editor/hooks/use-introduction.js"));
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js"));
+var StyledNewChip = (0, _ui.styled)(_ui.Chip)(function () {
   return {
-    label: label,
-    value: key
+    '& .MuiChip-label': {
+      fontSize: '0.75rem',
+      fontWeight: 'normal'
+    }
   };
 });
+var showLabel = function showLabel(label, key, isViewed, markAsViewed) {
+  if (isViewed) {
+    return {
+      label: label,
+      value: key
+    };
+  }
+  return {
+    label: /*#__PURE__*/_react.default.createElement(_ui.Stack, {
+      direction: "row",
+      width: "100%",
+      justifyContent: "space-between",
+      alignItems: "center"
+    }, label, /*#__PURE__*/_react.default.createElement(StyledNewChip, {
+      label: "New",
+      color: "info",
+      variant: "standard",
+      size: "tiny"
+    })),
+    value: key,
+    onClick: function onClick() {
+      return markAsViewed();
+    }
+  };
+};
+var changeImageType = function changeImageType(e, props, markVectorAsViewed) {
+  if ('vector' === e.target.value) {
+    markVectorAsViewed();
+  }
+  if (props.onChange) {
+    props.onChange(e);
+  }
+};
 var ImageTypeSelect = function ImageTypeSelect(props) {
+  var _useIntroduction = (0, _useIntroduction2.default)('e-ai-image-vector-option'),
+    isVectorViewed = _useIntroduction.isViewed,
+    markVectorAsViewed = _useIntroduction.markAsViewed;
+  var imageTypesWithNewChip = Object.entries(_constants.IMAGE_PROMPT_CATEGORIES).map(function (_ref) {
+    var _ref2 = (0, _slicedToArray2.default)(_ref, 2),
+      key = _ref2[0],
+      label = _ref2[1].label;
+    if ('vector' === key) {
+      return showLabel(label, key, isVectorViewed, markVectorAsViewed);
+    }
+    return {
+      label: label,
+      value: key
+    };
+  });
   return /*#__PURE__*/_react.default.createElement(_promptActionSelection.default, (0, _extends2.default)({
-    options: imageTypes,
+    options: imageTypesWithNewChip,
     wrapperStyle: {
       width: '100%'
     },
     label: (0, _i18n.__)('Image type', 'elementor')
-  }, props));
+  }, props, {
+    onChange: function onChange(e) {
+      changeImageType(e, props, markVectorAsViewed);
+    }
+  }));
+};
+ImageTypeSelect.propTypes = {
+  onChange: _propTypes.default.func,
+  value: _propTypes.default.string,
+  disabled: _propTypes.default.bool
 };
 var _default = exports["default"] = ImageTypeSelect;
 
@@ -14330,7 +14410,7 @@ var IMAGE_PROMPT_CATEGORIES = exports.IMAGE_PROMPT_CATEGORIES = {
     }
   },
   vector: {
-    label: (0, _i18n.__)('Vector', 'elementor'),
+    label: (0, _i18n.__)('Vector / Logo', 'elementor'),
     subCategories: {
       '': (0, _i18n.__)('None', 'elementor'),
       'typographic-logo': (0, _i18n.__)('Typographic Logo', 'elementor'),
@@ -18983,6 +19063,64 @@ var AttachmentsTypesPropType = exports.AttachmentsTypesPropType = _propTypes.def
     previewGenerator: _propTypes.default.func
   })
 });
+
+/***/ }),
+
+/***/ "../modules/ai/assets/js/editor/utils/ai-promotion.js":
+/*!************************************************************!*\
+  !*** ../modules/ai/assets/js/editor/utils/ai-promotion.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.addAiPromotionForSiteLogo = void 0;
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+var _aiPromotionInfotipWrapper = _interopRequireDefault(__webpack_require__(/*! ../components/ai-promotion-infotip-wrapper */ "../modules/ai/assets/js/editor/components/ai-promotion-infotip-wrapper.js"));
+var _react2 = _interopRequireDefault(__webpack_require__(/*! elementor-utils/react */ "../assets/dev/js/utils/react.js"));
+var _editorIntegration = __webpack_require__(/*! ../utils/editor-integration */ "../modules/ai/assets/js/editor/utils/editor-integration.js");
+var _i18n = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+var addAiPromotionForSiteLogo = exports.addAiPromotionForSiteLogo = function addAiPromotionForSiteLogo() {
+  var siteLogoControl = document.querySelector('.elementor-control-site_logo');
+  if (!siteLogoControl) {
+    return;
+  }
+  var logoButton = siteLogoControl.querySelector('.e-ai-button');
+  if (!logoButton) {
+    return;
+  }
+  var rootElement = document.createElement('div');
+  document.body.append(rootElement);
+  var _getUiConfig = (0, _editorIntegration.getUiConfig)(),
+    colorScheme = _getUiConfig.colorScheme,
+    isRTL = _getUiConfig.isRTL;
+  var _ReactUtils$render = _react2.default.render(/*#__PURE__*/_react.default.createElement(_aiPromotionInfotipWrapper.default, {
+      anchor: logoButton,
+      header: (0, _i18n.__)('Create a unique logo with AI', 'elementor'),
+      contentText: (0, _i18n.__)('Ready to stand out? Let AI turn your vision or idea into a unique, professional vector or logo with just a click.', 'elementor'),
+      controlType: "site_logo_with_ai",
+      unmountAction: function unmountAction() {
+        unmount();
+        rootElement.remove();
+      },
+      clickAction: function clickAction() {
+        logoButton.click();
+      },
+      onFocusOut: function onFocusOut() {},
+      colorScheme: colorScheme,
+      isRTL: isRTL,
+      placement: "right",
+      mainActionText: (0, _i18n.__)('Give it a try', 'elementor'),
+      source: "site-settings"
+    }), rootElement),
+    unmount = _ReactUtils$render.unmount;
+  return true;
+};
 
 /***/ }),
 

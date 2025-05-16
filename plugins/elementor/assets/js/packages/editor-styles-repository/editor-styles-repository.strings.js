@@ -4,8 +4,6 @@ __( 'Class names can’t contain spaces.', 'elementor' );
 __( 'Class names can only use letters, numbers, dashes (-), and underscores (_).', 'elementor' );
 __( 'Double hyphens are reserved for custom properties.', 'elementor' );
 __( 'Class names can’t start with a hyphen followed by a number.', 'elementor' );
-__( 'Avoid using multiple dashes or underscores in a row.', 'elementor' );
-__( 'Class names can’t start or end with a dash or underscore.', 'elementor' );
 __( 'This name is reserved and can’t be used. Try something more specific.', 'elementor' );
 __( 'Class name is too short. Use at least 2 characters.', 'elementor' );
 __( 'This class name already exists. Please choose a unique name.', 'elementor' );

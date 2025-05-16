@@ -47,11 +47,11 @@ use WPDesk\FS\Integration\ExternalPluginAccess;
 use WPDesk\FS\Onboarding\TableRate\FinishOption;
 use WPDesk\FS\Onboarding\TableRate\Onboarding;
 use WPDesk\FS\Onboarding\TableRate\OptionAjaxUpdater;
-use WPDesk\FS\Onboarding\TableRate\PopupData;
 use WPDesk\FS\Plugin\PluginActivation;
 use WPDesk\FS\ProFeatures;
 use WPDesk\FS\ProVersion\ProVersionUpdateReminder;
 use WPDesk\FS\Shipment;
+use WPDesk\FS\TableRate\AI\TrackerDataOnShippingMethodSaver;
 use WPDesk\FS\TableRate\Beacon\Beacon;
 use WPDesk\FS\TableRate\Beacon\BeaconClickedAjax;
 use WPDesk\FS\TableRate\Beacon\BeaconDeactivationTracker;
@@ -320,6 +320,9 @@ class Flexible_Shipping_Plugin extends AbstractPlugin implements HookableCollect
 		$this->add_hookable( new ProFeatures\Tracker\AjaxTracker( $tracking_data ) );
 		$this->add_hookable( new ProFeatures\Tracker\Tracker( $tracking_data ) );
 
+		// Time tracking
+		$this->add_hookable( new \WPDesk\FS\TableRate\ShippingMethod\Timestamps\MethodTimestamps() );
+		$this->add_hookable( new \WPDesk\FS\TableRate\ShippingMethod\Timestamps\TrackerData() );
 
 		$this->add_hookable( new PluginActivation() );
 
@@ -415,6 +418,7 @@ class Flexible_Shipping_Plugin extends AbstractPlugin implements HookableCollect
 		$this->init_renderer();
 		$this->load_dependencies();
 		$this->init_tracker();
+		$this->init_ai();
 		$this->hooks();
 		$this->init_assets_url_on_rules_settings_field();
 		$this->init_checkout_blocks();
@@ -574,6 +578,12 @@ class Flexible_Shipping_Plugin extends AbstractPlugin implements HookableCollect
 			( new WPDesk_Flexible_Shipping_Tracker() )->hooks();
 			( new TrackerData() )->hooks();
 		} );
+
+	}
+
+	private function init_ai() {
+		( new TrackerDataOnShippingMethodSaver() )->hooks();
+		( new \WPDesk\FS\TableRate\AI\TrackerData() )->hooks();
 	}
 
 	/**

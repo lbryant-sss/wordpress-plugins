@@ -121,4 +121,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php endif; ?>
 
+	<?php if ( WCF_ACTION_CARTFLOWS_PROMO === $wcar_action ) : ?>
+		<?php
+		require_once CARTFLOWS_CART_ABANDONMENT_TRACKING_DIR . 'includes/cartflows-ca-cf-promotion-page.php';
+		?>
+	<?php endif; ?>
+
 </div>

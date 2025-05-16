@@ -2,7 +2,7 @@
 
 namespace YahnisElsts\AdminMenuEditor\Customizable\Schemas;
 
-abstract class Collection extends Schema {
+abstract class Collection extends CheckableSchema {
 	/**
 	 * @var Schema
 	 */
@@ -21,6 +21,14 @@ abstract class Collection extends Schema {
 		} else {
 			$this->keySchema = $keySchema;
 		}
+	}
+
+	public function min($minItems) {
+		return $this->addCheck('minItems', $minItems);
+	}
+
+	public function max($maxItems) {
+		return $this->addCheck('maxItems', $maxItems);
 	}
 
 	public function parse($value, $errors = null, $stopOnFirstError = false) {
@@ -54,6 +62,32 @@ abstract class Collection extends Schema {
 				} else {
 					$parsedValues[$parsedKey] = $parsedItem;
 				}
+			}
+		}
+
+		$itemCount = count($parsedValues);
+		foreach ($this->checks as $check) {
+			switch ($check['kind']) {
+				case 'minItems':
+					if ( $itemCount < $check['value'] ) {
+						$errors = self::addError(
+							$errors,
+							'min_items',
+							'Collection must have at least ' . $check['value'] . ' items'
+						);
+						$foundErrors = true;
+					}
+					break;
+				case 'maxItems':
+					if ( $itemCount > $check['value'] ) {
+						$errors = self::addError(
+							$errors,
+							'max_items',
+							'Collection must have at most ' . $check['value'] . ' items'
+						);
+						$foundErrors = true;
+					}
+					break;
 			}
 		}
 

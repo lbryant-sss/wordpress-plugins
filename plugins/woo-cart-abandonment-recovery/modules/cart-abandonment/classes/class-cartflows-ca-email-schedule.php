@@ -74,6 +74,11 @@ class Cartflows_Ca_Email_Schedule {
 
 		if ( filter_var( $email_data->email, FILTER_VALIDATE_EMAIL ) ) {
 			if ( ! $preview_email ) {
+				$cart_items = maybe_unserialize( $email_data->cart_contents );
+				if ( $this->cart_contains_out_of_stock_products( $cart_items ) ) {
+					return false;
+				}
+	
 				if ( ! $this->check_if_already_purchased_by_email_product_ids( $email_data, $email_data->cart_contents ) ) {
 					return false;
 				}
@@ -509,6 +514,29 @@ class Cartflows_Ca_Email_Schedule {
 			}
 
 			return $coupon_code;
+	}
+
+	/**
+	 * Check if cart contains out-of-stock products.
+	 *
+	 * @param array $cart_items Cart items array.
+	 * @return bool
+	 */
+	private function cart_contains_out_of_stock_products( $cart_items ) {
+		if ( empty( $cart_items ) || ! is_array( $cart_items ) ) {
+			return false;
+		}
+
+		foreach ( $cart_items as $cart_item ) {
+			$product_id = isset( $cart_item['variation_id'] ) && $cart_item['variation_id'] ? $cart_item['variation_id'] : $cart_item['product_id'];
+			$product    = wc_get_product( $product_id );
+
+			if ( ! $product || ! $product->is_in_stock() ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }

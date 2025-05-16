@@ -61,6 +61,10 @@ class StringSchema extends CheckableSchema {
 			return self::addError($errors, 'not_string', 'Value must be a string');
 		}
 
+		if ( is_array($value) ) {
+			return self::addError($errors, 'not_string', 'Value must be a string, not an array');
+		}
+
 		$convertedValue = strval($value);
 		$hasErrors = false;
 

@@ -250,6 +250,35 @@ class ameUtils {
 	}
 
 	/**
+	 * Get specific keys from each item of a collection.
+	 *
+	 * Notes:
+	 * - Collection indexes are preserved.
+	 * - Items that don't have any of the specified keys are ignored.
+	 *
+	 * @param iterable $collection An iterable collection of arrays or objects.
+	 * @param array $keys
+	 * @return array[] Array of arrays.
+	 */
+	public static function collectionPick($collection, array $keys) {
+		$result = array();
+		foreach ($collection as $index => $item) {
+			$values = array();
+			foreach ($keys as $key) {
+				if ( is_array($item) && array_key_exists($key, $item) ) {
+					$values[$key] = $item[$key];
+				} else if ( is_object($item) && property_exists($item, $key) ) {
+					$values[$key] = $item->$key;
+				}
+			}
+			if ( !empty($values) ) {
+				$result[$index] = $values;
+			}
+		}
+		return $result;
+	}
+
+	/**
 	 * Send HTTP caching headers.
 	 *
 	 * @param int|null $lastModified Unix timestamp for the last modification time.

@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 return [
 	'handle' => 'elementor-v2-editor-current-user',
 	'deps' => [
-		'elementor-v2-http',
+		'elementor-v2-http-client',
 		'elementor-v2-query',
 	],
 ];

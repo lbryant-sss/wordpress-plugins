@@ -1,4 +1,4 @@
-/*! elementor - v3.29.0 - 07-05-2025 */
+/*! elementor - v3.29.0 - 15-05-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -9755,7 +9755,15 @@ InsertTemplateHandler = Marionette.Behavior.extend({
   events: {
     'click @ui.insertButton': 'onInsertButtonClick'
   },
-  onInsertButtonClick: function onInsertButtonClick() {
+  onRender: function onRender() {
+    this.ui.insertButton.toggleClass('disabled', this.view.model.isLocked());
+  },
+  onInsertButtonClick: function onInsertButtonClick(e) {
+    if ('locked' === this.view.model.get('status')) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
     var args = {
       model: this.view.model
     };
@@ -11599,9 +11607,13 @@ module.exports = Backbone.Model.extend({
     thumbnail: '',
     url: '',
     export_link: '',
+    status: null,
     preview_url: null,
     generate_preview_url: null,
     tags: []
+  },
+  isLocked: function isLocked() {
+    return 'locked' === this.get('status');
   }
 });
 
@@ -13558,7 +13570,7 @@ var TemplateLibraryCollectionView = Marionette.CompositeView.extend({
     });
   },
   onHoverBulkAction: function onHoverBulkAction() {
-    if (this.hasFolderInBulkSelection()) {
+    if (this.hasFolderInBulkSelection() || this.hasLockedTemplatesInBulkSelection()) {
       this.ui.bulkMove.find('i').css('cursor', 'not-allowed');
       this.ui.bulkCopy.find('i').css('cursor', 'not-allowed');
     } else {
@@ -13567,7 +13579,7 @@ var TemplateLibraryCollectionView = Marionette.CompositeView.extend({
     }
   },
   onClickBulkMove: function onClickBulkMove() {
-    if (this.hasFolderInBulkSelection()) {
+    if (this.hasFolderInBulkSelection() || this.hasLockedTemplatesInBulkSelection()) {
       return;
     }
     $e.route('library/save-template', {
@@ -13583,8 +13595,15 @@ var TemplateLibraryCollectionView = Marionette.CompositeView.extend({
       return bulkSelectedItems.has(templateId) && 'folder' === type;
     });
   },
+  hasLockedTemplatesInBulkSelection: function hasLockedTemplatesInBulkSelection() {
+    var bulkSelectedItems = elementor.templates.getBulkSelectionItems();
+    return this.collection.some(function (model) {
+      var templateId = model.get('template_id');
+      return bulkSelectedItems.has(templateId) && model.isLocked();
+    });
+  },
   onClickBulkCopy: function onClickBulkCopy() {
-    if (this.hasFolderInBulkSelection()) {
+    if (this.hasFolderInBulkSelection() || this.hasLockedTemplatesInBulkSelection()) {
       return;
     }
     $e.route('library/save-template', {
@@ -13703,19 +13722,14 @@ TemplateLibraryTemplateCloudView = TemplateLibraryTemplateLocalView.extend({
       var data = this.model.toJSON();
       return {
         'data-template_id': data.template_id,
-        'data-type': data.type
+        'data-type': data.type,
+        'data-status': data.status
       };
     }
   },
   ui: function ui() {
     return _.extend(TemplateLibraryTemplateLocalView.prototype.ui.apply(this, arguments), {
-      toggleMore: '.elementor-template-library-template-more-toggle',
       previewImg: '.elementor-template-library-template-thumbnail img'
-    });
-  },
-  events: function events() {
-    return _.extend(TemplateLibraryTemplateLocalView.prototype.events.apply(this, arguments), {
-      'click @ui.toggleMore': 'onToggleMoreClick'
     });
   },
   modelEvents: _.extend({}, TemplateLibraryTemplateLocalView.prototype.modelEvents, {
@@ -13859,6 +13873,13 @@ var TemplateLibraryTemplateLocalView = TemplateLibraryTemplateView.extend({
   modelEvents: {
     'change:title': 'onTitleChange'
   },
+  handleLockedTemplate: function handleLockedTemplate() {
+    var isLocked = this.model.isLocked();
+    this.ui.renameButton.toggleClass('disabled', isLocked);
+    this.ui.moveButton.toggleClass('disabled', isLocked);
+    this.ui.copyButton.toggleClass('disabled', isLocked);
+    this.ui.exportButton.toggleClass('disabled', isLocked);
+  },
   onTitleChange: function onTitleChange() {
     var title = _.escape(this.model.get('title'));
     this.ui.titleCell.text(title);
@@ -13906,6 +13927,7 @@ var TemplateLibraryTemplateLocalView = TemplateLibraryTemplateView.extend({
   },
   onToggleMoreClick: function onToggleMoreClick(event) {
     event.stopPropagation();
+    this.handleLockedTemplate();
     this.ui.morePopup.show();
     elementor.templates.eventManager.sendPageViewEvent({
       location: elementor.editorEvents.config.secondaryLocations.templateLibrary.morePopup
@@ -13922,31 +13944,43 @@ var TemplateLibraryTemplateLocalView = TemplateLibraryTemplateView.extend({
         while (1) switch (_context.prev = _context.next) {
           case 0:
             event.stopPropagation();
-            _context.prev = 1;
-            _context.next = 4;
+            if (!_this2.model.isLocked()) {
+              _context.next = 3;
+              break;
+            }
+            return _context.abrupt("return");
+          case 3:
+            _context.prev = 3;
+            _context.next = 6;
             return elementor.templates.renameTemplate(_this2.model, {
               onConfirm: function onConfirm() {
                 return _this2.showToggleMoreLoader();
               }
             });
-          case 4:
-            _context.prev = 4;
+          case 6:
+            _context.prev = 6;
             _this2.hideToggleMoreLoader();
-            return _context.finish(4);
-          case 7:
+            return _context.finish(6);
+          case 9:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[1,, 4, 7]]);
+      }, _callee, null, [[3,, 6, 9]]);
     }))();
   },
   onMoveClick: function onMoveClick() {
+    if (this.model.isLocked()) {
+      return;
+    }
     $e.route('library/save-template', {
       model: this.model,
       context: _constants.SAVE_CONTEXTS.MOVE
     });
   },
   onCopyClick: function onCopyClick() {
+    if (this.model.isLocked()) {
+      return;
+    }
     $e.route('library/save-template', {
       model: this.model,
       context: _constants.SAVE_CONTEXTS.COPY
@@ -13954,6 +13988,9 @@ var TemplateLibraryTemplateLocalView = TemplateLibraryTemplateView.extend({
   },
   onExportClick: function onExportClick(e) {
     e.stopPropagation();
+    if (this.model.isLocked()) {
+      e.preventDefault();
+    }
   },
   showToggleMoreLoader: function showToggleMoreLoader() {
     this.ui.toggleMoreIcon.removeClass('eicon-ellipsis-h').addClass('eicon-loading eicon-animation-spin');

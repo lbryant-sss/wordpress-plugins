@@ -186,7 +186,9 @@ if (count($arrRestrictions) > 0) {
           <textarea name="can_upload_mime" id="can_upload_mime"
             class="njt-settting-width"><?php echo implode(",", !empty($arrRestrictions[$firstKeyRestrictions]['can_upload_mime']) ? $arrRestrictions[$firstKeyRestrictions]['can_upload_mime'] : array());?></textarea>
           <p class="description njt-settting-width">
-            <?php _e("Multiple separated by comma. If left empty, this means user can't upload any files. Eg: .php, .png, .css", NJT_FS_BN_DOMAIN); ?>
+            <?php _e("Multiple separated by comma. If left empty, this means user can't upload any files. Eg: .jpg, .png, .csv", NJT_FS_BN_DOMAIN); ?>
+            <br>
+            <?php _e("Note: For security reasons, non-admin users cannot upload files with the following extensions: .php, .htaccess, or mime types: text/x-php, text/php, text/plain", NJT_FS_BN_DOMAIN); ?>
           </p>
         </div>
       </td>

@@ -85,7 +85,8 @@ class Cartflows_Ca_Email_Templates {
 
 		$page = Cartflows_Ca_Helper::get_instance()->sanitize_text_filter( 'page', 'GET' );
 
-		if ( WCF_CA_PAGE_NAME !== $page && ! current_user_can( 'manage_woocommerce' ) ) {
+		// Return if the user is not on the required page or does not have the permission to view the page.
+		if ( WCF_CA_PAGE_NAME !== $page || ! current_user_can( 'manage_woocommerce' ) ) {
 			return;
 		}
 
@@ -204,6 +205,7 @@ class Cartflows_Ca_Email_Templates {
 		define( 'WCF_CA_EMAIL_SETTINGS_OPTION_GROUP', 'cartflows-cart-abandonment-email-settings' );
 
 		define( 'WCF_ACTION_EMAIL_TEMPLATES', 'email_tmpl' );
+		define( 'WCF_ACTION_CARTFLOWS_PROMO', 'cartflows' );
 
 		define( 'WCF_SUB_ACTION_ADD_EMAIL_TEMPLATES', 'add_email_tmpl' );
 		define( 'WCF_SUB_ACTION_EDIT_EMAIL_TEMPLATES', 'edit_email_tmpl' );
