@@ -255,8 +255,8 @@ if ( ! class_exists( 'Mega_Menu_Page' ) ) :
 
 			wp_enqueue_style( 'mega-menu-settings', MEGAMENU_BASE_URL . 'css/admin/admin.css', false, MEGAMENU_VERSION );
 
-			wp_enqueue_style( 'mega-colorpicker', MEGAMENU_BASE_URL . 'js/colorpicker/colorpicker.css', false, "1.0" );
-			wp_enqueue_script( 'mega-colorpicker', MEGAMENU_BASE_URL . 'js/colorpicker/colorpicker.js', array( 'jquery' ), "1.1" );
+			wp_enqueue_style( 'mega-colorpicker', MEGAMENU_BASE_URL . 'js/colorpicker/colorpicker.css', false, MEGAMENU_VERSION );
+			wp_enqueue_script( 'mega-colorpicker', MEGAMENU_BASE_URL . 'js/colorpicker/colorpicker.js', array( 'jquery' ), MEGAMENU_VERSION );
 
 
 			wp_localize_script(

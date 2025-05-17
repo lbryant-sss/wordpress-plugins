@@ -34,6 +34,13 @@
     <rule ref="WordPress.Security" />
 
     <rule ref="WordPress.Security.EscapeOutput">
+        <!--
+        Disable the requirement to escape exception messages.
+        Escaping should happen near the output, not at the source. And logs with escaped strings
+        are harder to read, making exceptions less useful for actual debugging.
+        -->
+        <exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped" />
+
 		<properties>
 			<property name="customEscapingFunctions" type="array">
 				<!-- Register a custom escaping function for WP_Error objects. -->

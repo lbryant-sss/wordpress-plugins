@@ -1,4 +1,4 @@
-  (function($) {
+        (function($) {
             // --- Helper Functions ---
             function hslToRgb(h, s, l) { /* ... (unchanged) ... */ 
                 let r, g, b;
@@ -203,9 +203,12 @@
                             } else if (inputValue.toLowerCase() === 'transparent') { 
                                 baseHexForHslState = rgbToHex(0,0,0); 
                                 alphaForHslState = 0;
-                            } else if (inputValue.toLowerCase().startsWith('rgba')) {
+                            } else if (inputValue.toLowerCase().startsWith('rgba') || inputValue.toLowerCase().startsWith('rgb(') ) {
                                 const parsedRgba = parseRgbaString(inputValue);
-                                if (parsedRgba) { baseHexForHslState = rgbToHex(parsedRgba.r, parsedRgba.g, parsedRgba.b); alphaForHslState = parsedRgba.a; }
+                                if (parsedRgba) { 
+                                    baseHexForHslState = rgbToHex(parsedRgba.r, parsedRgba.g, parsedRgba.b); 
+                                    alphaForHslState = parsedRgba.a; 
+                                }
                             } else if (inputValue.startsWith('#')) {
                                 const rgb = hexToRgb(inputValue);
                                 if (rgb) { baseHexForHslState = inputValue.toUpperCase(); alphaForHslState = 1.0;}
@@ -232,7 +235,8 @@
                                 let alphaStr = currentAlpha.toFixed(2); alphaStr = parseFloat(alphaStr).toString(); 
                                 return `rgba(${r}, ${g}, ${b}, ${alphaStr})`;
                             }
-                            return rgbToHex(r, g, b);
+                            // Default to RGB output for opaque colors
+                            return `rgb(${r}, ${g}, ${b})`; 
                         }
                         
                         function getVisualRgbaColor() { 
@@ -300,7 +304,7 @@
                                     else baseHexForPalette = instanceApi.currentSettings.defaultColor; 
                                 } else if (currentInputVal.toLowerCase() === 'transparent') {
                                     baseHexForPalette = instanceApi.currentSettings.defaultColor; 
-                                } else if (currentInputVal.toLowerCase().startsWith('rgba')) {
+                                } else if (currentInputVal.toLowerCase().startsWith('rgba') || currentInputVal.toLowerCase().startsWith('rgb(')) {
                                     const parsedRgba = parseRgbaString(currentInputVal);
                                     if (parsedRgba) baseHexForPalette = rgbToHex(parsedRgba.r, parsedRgba.g, parsedRgba.b);
                                 } else if (currentInputVal.startsWith('#')) {
@@ -319,6 +323,7 @@
                                             const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
                                             currentHslHue = hsl[0]; currentHslSaturation = hsl[1]; currentHslLightness = hsl[2];
                                         }
+                                        currentAlpha = 1.0; 
                                         handleColorSelectionChange(true); 
                                     });
                                 $paletteContainerElement.append($swatch);
@@ -408,7 +413,7 @@
                             _bindPickerInternalEvents();
                             $originalInput.data('picker-container-ref', $pickerContainer); 
                         }
-                        function _drawMainColorCanvas() { 
+                        function _drawMainColorCanvas() { /* ... (unchanged) ... */ 
                             if (!mainCtx || !mainCanvasEl || mainCanvasEl.width === 0 || mainCanvasEl.height === 0) return;
                             const width = mainCanvasEl.width; const height = mainCanvasEl.height;
                             mainCtx.clearRect(0,0,width,height);
@@ -438,7 +443,7 @@
                             for (let i = 0; i <= 360; i += 6) { gradient.addColorStop(i / 360, `hsl(${i}, 100%, 50%)`); }
                             hueCtx.fillStyle = gradient; hueCtx.fillRect(0, 0, width, height);
                             const indicatorX = currentHslHue * width; 
-                            $hueIndicator.css({ left: indicatorX + 'px', bottom: '-8px' }); 
+                            $hueIndicator.css({ left: indicatorX + 'px' }); 
                         }
                         
                         function handleColorSelectionChange(isCommittedChange = false) {

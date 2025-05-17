@@ -68,6 +68,10 @@
         flex-wrap: wrap;
         @include padding($container_padding_top, $container_padding_right, $container_padding_bottom, $container_padding_left);
 
+        @include desktop {
+            align-items: center;
+        }
+
         li.mega-menu-item {
             a.mega-menu-link {
                 display: flex;
@@ -317,13 +321,13 @@
             }
 
             @include desktop {
-                @if $menu_item_align == 'left' {
+                @if $menu_item_align != 'right' {
                     &:nth-child(1 of .mega-item-align-right) {
                         margin-left: auto;
                     }
                 }
 
-                @if $menu_item_align == 'right' {
+                @if $menu_item_align != 'left' {
                     &:nth-last-child(1 of .mega-item-align-float-left) {
                         margin-right: auto;
                     }
@@ -403,22 +407,25 @@
             }
         }
 
+        > li.mega-menu-grid > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu {
+            @if unit($panel_inner_width) == 'px' {
+                max-width: $panel_inner_width; /** Panel Width (Inner) **/
+                margin: 0 auto;
+            }
+
+            @if unit($panel_inner_width) == 'vw' {
+                max-width: $panel_inner_width; /** Panel Width (Inner) **/
+                margin: 0 auto;
+            }
+        }
+
         // sub menu items (grid)
         li.mega-menu-grid > ul.mega-sub-menu {
             flex-direction: column;
+            align-content: flex-start;
 
             > li.mega-menu-row {
                 width: 100%;
-
-                @if unit($panel_inner_width) == 'px' {
-                    max-width: $panel_inner_width; /** Panel Width (Inner) **/
-                    margin: 0 auto;
-                }
-
-                @if unit($panel_inner_width) == 'vw' {
-                    max-width: $panel_inner_width; /** Panel Width (Inner) **/
-                    margin: 0 auto;
-                } 
 
                 > ul.mega-sub-menu > li.mega-menu-column {
                     grid-column: span var(--span);

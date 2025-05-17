@@ -208,6 +208,9 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 
 == Changelog ==
 
+= 2.4.5 =
+* Fix: Patched a vulnerability issue.
+
 = 2.4.4 =
 * Fix: Resolved issue where editing a link would get stuck in the Hub.
 * Fix: Updated the Hub link to correctly point to the BLC page within the Hub.
@@ -218,7 +221,7 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 * Enhance: Add a new menu item to help you discover other free plugins by WPMU DEV and more
 
 = 2.4.2 =
-* Fix: Patched a vulnarability issue.
+* Fix: Patched a vulnerability issue.
 * Fix: Notice about _load_textdomain_just_in_time.
 
 = 2.4.1 =
