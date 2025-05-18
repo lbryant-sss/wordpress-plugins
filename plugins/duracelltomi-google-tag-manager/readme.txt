@@ -5,7 +5,7 @@ Tags: google tag manager, tag manager, gtm, google, adwords, google adwords, goo
 Requires at least: 3.4.0
 Requires PHP: 7.4
 Tested up to: 6.8
-Stable tag: 1.21
+Stable tag: 1.21.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -223,6 +223,12 @@ to report micro conversions and/or to serve ads only to visitors who spend more 
 6. Scroll tracking
 
 == Changelog ==
+
+= 1.21.1 =
+
+* Fix: undefined product_qty variable prevents add_to_cart in some cases. Thanks [diegoarda](https://github.com/diegoarda)
+* Fix: clarified that WebToffee integartion is only needed with the legacy 2.x product line
+* Fix: Reflected Cross-Site Scripting (XSS) with site search tracking. Thanks [godzeo](https://github.com/godzeo)!
 
 = 1.21 =
 
@@ -925,6 +931,10 @@ Please report all bugs found in my plugin using the [contact form on my website]
 * First beta release
 
 == Upgrade Notice ==
+
+= 1.21.1 =
+
+Bugfix release with an XSS fix
 
 = 1.21 =
 

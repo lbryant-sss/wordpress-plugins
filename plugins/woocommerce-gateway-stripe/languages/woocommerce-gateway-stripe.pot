@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WooCommerce Stripe Gateway plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Stripe Gateway 9.5.0\n"
+"Project-Id-Version: WooCommerce Stripe Gateway 9.5.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-gateway-stripe\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-13T14:52:25+00:00\n"
+"POT-Creation-Date: 2025-05-17T18:13:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: woocommerce-gateway-stripe\n"
@@ -93,7 +93,7 @@ msgid "Return to payments"
 msgstr ""
 
 #: includes/abstracts/abstract-wc-stripe-payment-gateway.php:138
-#: includes/payment-methods/class-wc-stripe-upe-payment-method.php:764
+#: includes/payment-methods/class-wc-stripe-upe-payment-method.php:763
 msgid "Save payment information to my account for future purchases."
 msgstr ""
 
@@ -327,6 +327,7 @@ msgstr ""
 msgid "Payment capture failed to complete with the following message: %s"
 msgstr ""
 
+#. translators: %s: the error message.
 #: includes/admin/class-wc-rest-stripe-orders-controller.php:217
 msgid "Unknown error"
 msgstr ""
@@ -426,112 +427,112 @@ msgid "Payment method description."
 msgstr ""
 
 #. translators: 1) HTML anchor open tag 2) HTML anchor closing tag
-#: includes/admin/class-wc-stripe-admin-notices.php:122
-#: includes/admin/class-wc-stripe-admin-notices.php:379
+#: includes/admin/class-wc-stripe-admin-notices.php:117
+#: includes/admin/class-wc-stripe-admin-notices.php:374
 msgid "WooCommerce Stripe Gateway legacy checkout experience will no longer be supported in a subsequent version of this plugin. Please %1$smigrate to the new checkout experience%2$s to access more payment methods and avoid disruptions. %3$sLearn more%4$s"
 msgstr ""
 
 #. translators: 1) HTML strong open tag 2) HTML strong closing tag
-#: includes/admin/class-wc-stripe-admin-notices.php:209
+#: includes/admin/class-wc-stripe-admin-notices.php:204
 msgid "%1$sTest mode active:%2$s All transactions are simulated. Customers can't make real purchases through Stripe."
 msgstr ""
 
 #. translators: 1) HTML anchor open tag 2) HTML anchor closing tag
-#: includes/admin/class-wc-stripe-admin-notices.php:223
+#: includes/admin/class-wc-stripe-admin-notices.php:218
 msgid "WooCommerce Stripe - We see that you had the \"Require 3D secure when applicable\" setting turned on. This setting is not available here anymore, because it is now replaced by Stripe Radar. You can learn more about it %1$shere%2$s "
 msgstr ""
 
 #. translators: 1) HTML anchor open tag 2) HTML anchor closing tag
-#: includes/admin/class-wc-stripe-admin-notices.php:234
+#: includes/admin/class-wc-stripe-admin-notices.php:229
 msgid "WooCommerce Stripe - We recently made changes to Stripe that may impact the appearance of your checkout. If your checkout has changed unexpectedly, please follow these %1$sinstructions%2$s to fix."
 msgstr ""
 
 #. translators: 1) int version 2) int version
-#: includes/admin/class-wc-stripe-admin-notices.php:248
+#: includes/admin/class-wc-stripe-admin-notices.php:243
 msgid "WooCommerce Stripe - The minimum PHP version required for this plugin is %1$s. You are running %2$s."
 msgstr ""
 
 #. translators: 1) int version 2) int version
-#: includes/admin/class-wc-stripe-admin-notices.php:259
+#: includes/admin/class-wc-stripe-admin-notices.php:254
 msgid "WooCommerce Stripe - This is the last version of the plugin compatible with WooCommerce %1$s. All future versions of the plugin will require WooCommerce %2$s or greater."
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:266
+#: includes/admin/class-wc-stripe-admin-notices.php:261
 msgid "WooCommerce Stripe - cURL is not installed."
 msgstr ""
 
 #. translators: 1) HTML anchor open tag 2) HTML anchor closing tag
-#: includes/admin/class-wc-stripe-admin-notices.php:281
+#: includes/admin/class-wc-stripe-admin-notices.php:276
 msgid "Stripe is almost ready. To get started, go to %1$syour settings%2$s and use the <strong>Configure Connection</strong> button to connect."
 msgstr ""
 
 #. translators: 1) HTML anchor open tag 2) HTML anchor closing tag
-#: includes/admin/class-wc-stripe-admin-notices.php:297
+#: includes/admin/class-wc-stripe-admin-notices.php:292
 msgid "Stripe is in test mode however your API keys may not be valid. Please go to %1$syour settings%2$s and use the <strong>Configure Connection</strong> button to reconnect."
 msgstr ""
 
 #. translators: 1) HTML anchor open tag 2) HTML anchor closing tag
-#: includes/admin/class-wc-stripe-admin-notices.php:312
+#: includes/admin/class-wc-stripe-admin-notices.php:307
 msgid "Stripe is in live mode however your API keys may not be valid. Please go to %1$syour settings%2$s and use the <strong>Configure Connection</strong> button to reconnect."
 msgstr ""
 
 #. translators: 1) HTML anchor open tag 2) HTML anchor closing tag
-#: includes/admin/class-wc-stripe-admin-notices.php:328
+#: includes/admin/class-wc-stripe-admin-notices.php:323
 msgid "Your customers cannot use Stripe on checkout, because we couldn't connect to your account. Please go to %1$syour settings%2$s and use the <strong>Configure Connection</strong> button to connect."
 msgstr ""
 
 #. translators: 1) HTML anchor open tag 2) HTML anchor closing tag
-#: includes/admin/class-wc-stripe-admin-notices.php:342
+#: includes/admin/class-wc-stripe-admin-notices.php:337
 msgid "Stripe is enabled, but a SSL certificate is not detected. Your checkout may not be secure! Please ensure your server has a valid %1$sSSL certificate%2$s."
 msgstr ""
 
 #. translators: 1) HTML anchor open tag 2) HTML anchor closing tag
-#: includes/admin/class-wc-stripe-admin-notices.php:354
+#: includes/admin/class-wc-stripe-admin-notices.php:349
 msgid "Stripe is now ready for Strong Customer Authentication (SCA) and 3D Secure 2! %1$sRead about SCA%2$s."
 msgstr ""
 
 #. translators: 1) HTML anchor open tag 2) HTML anchor closing tag
-#: includes/admin/class-wc-stripe-admin-notices.php:365
+#: includes/admin/class-wc-stripe-admin-notices.php:360
 msgid "Credentials used for the Stripe gateway have been changed. This might cause errors for existing customers and saved payment methods. %1$sClick here to learn more%2$s."
 msgstr ""
 
 #. translators: 1) HTML anchor open tag 2) HTML anchor closing tag
-#: includes/admin/class-wc-stripe-admin-notices.php:414
-#: includes/admin/class-wc-stripe-admin-notices.php:448
+#: includes/admin/class-wc-stripe-admin-notices.php:409
+#: includes/admin/class-wc-stripe-admin-notices.php:443
 msgid "Sofort is being deprecated as a standalone payment method by Stripe and will continue processing Sofort payments throughout 2023 only. %1$sLearn more%2$s."
 msgstr ""
 
 #. translators: 1) Payment method, 2) List of supported currencies
 #. translators: %1$s Payment method, %2$s List of supported currencies
-#: includes/admin/class-wc-stripe-admin-notices.php:422
-#: includes/admin/class-wc-stripe-admin-notices.php:456
+#: includes/admin/class-wc-stripe-admin-notices.php:417
+#: includes/admin/class-wc-stripe-admin-notices.php:451
 msgid "%1$s is enabled - it requires store currency to be set to %2$s<br>"
 msgstr ""
 
 #. translators: this is a text for a link pointing to the customer's payment method page
-#: includes/admin/class-wc-stripe-admin-notices.php:482
+#: includes/admin/class-wc-stripe-admin-notices.php:480
 msgid "Payment method page &rarr;"
 msgstr ""
 
 #. translators: this is a text for a link pointing to the customer's page on Stripe
-#: includes/admin/class-wc-stripe-admin-notices.php:490
+#: includes/admin/class-wc-stripe-admin-notices.php:488
 msgid "Stripe customer page &rarr;"
 msgstr ""
 
 #. translators: %1$s is the subscription ID. %2$s is a customer payment method page. %3$s is the customer's page on Stripe
-#: includes/admin/class-wc-stripe-admin-notices.php:495
+#: includes/admin/class-wc-stripe-admin-notices.php:493
 msgid "#%1$s: %2$s | %3$s<br/>"
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:502
+#: includes/admin/class-wc-stripe-admin-notices.php:500
 msgid "Some subscriptions are missing payment methods, <strong>preventing renewals</strong>. Share the payment method page link with the customer to update it or manually set the Stripe Payment Method ID meta field in the subscriptions details' \"Billing\" section to another from the customer's page on Stripe. Below are the last subscriptions affected and the links as mentioned earlier:<br />"
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:517
+#: includes/admin/class-wc-stripe-admin-notices.php:515
 msgid "Action failed. Please refresh the page and retry."
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:521
+#: includes/admin/class-wc-stripe-admin-notices.php:519
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
@@ -1578,8 +1579,8 @@ msgstr ""
 msgid "There was a problem setting up your webhooks, please try again later."
 msgstr ""
 
-#: includes/class-wc-stripe-api.php:213
-#: includes/class-wc-stripe-api.php:247
+#: includes/class-wc-stripe-api.php:227
+#: includes/class-wc-stripe-api.php:280
 msgid "There was a problem connecting to the Stripe API endpoint."
 msgstr ""
 
@@ -2767,7 +2768,7 @@ msgstr ""
 
 #: includes/payment-methods/class-wc-stripe-upe-payment-gateway.php:834
 #: includes/payment-methods/class-wc-stripe-upe-payment-method-blik.php:104
-#: includes/payment-methods/class-wc-stripe-upe-payment-method.php:658
+#: includes/payment-methods/class-wc-stripe-upe-payment-method.php:657
 msgid "An error was encountered when preparing the payment form. Please try again later."
 msgstr ""
 
@@ -3196,22 +3197,22 @@ msgstr ""
 msgid "WeChat Pay is a popular mobile payment and digital wallet service by WeChat in China."
 msgstr ""
 
-#: includes/payment-methods/class-wc-stripe-upe-payment-method.php:497
+#: includes/payment-methods/class-wc-stripe-upe-payment-method.php:496
 msgid "Pending activation"
 msgstr ""
 
 #. translators: %1: Payment method name
-#: includes/payment-methods/class-wc-stripe-upe-payment-method.php:500
+#: includes/payment-methods/class-wc-stripe-upe-payment-method.php:499
 msgid "%1$s won't be visible to your customers until you provide the required information. Follow the instructions Stripe has sent to your e-mail address."
 msgstr ""
 
 #. translators: %s: List of comma-separated currencies.
-#: includes/payment-methods/class-wc-stripe-upe-payment-method.php:509
+#: includes/payment-methods/class-wc-stripe-upe-payment-method.php:508
 msgid "In order to be used at checkout, the payment method requires the store currency to be set to one of: %s"
 msgstr ""
 
 #: build/upe-settings.js:1
-#: includes/payment-methods/class-wc-stripe-upe-payment-method.php:510
+#: includes/payment-methods/class-wc-stripe-upe-payment-method.php:509
 #: client/components/payment-method-missing-currency-pill/index.js:58
 msgid "Requires currency"
 msgstr ""
@@ -3260,6 +3261,7 @@ msgctxt "In failed SCA authentication for a pre-order."
 msgid "Your pre-order is now available, but payment cannot be completed automatically. %1$s"
 msgstr ""
 
+#. translators: 1) is a link to the payment re-authentication URL.
 #: templates/emails/failed-preorder-authentication.php:20
 msgid "Authorize the payment now &raquo;"
 msgstr ""
@@ -3889,12 +3891,12 @@ msgstr ""
 
 #: build/upe-settings.js:1
 #: client/settings/account-details/index.js:135
-msgid "Seems like the test API keys we've saved for you are no longer valid. If you recently updated them, use the <strong>Configure Connection</strong> button below to reconnect."
+msgid "We couldn't connect to your account, it seems like the test API keys we've saved for you are no longer valid. Please use the <strong>Configure connection</strong> button below to reconnect."
 msgstr ""
 
 #: build/upe-settings.js:1
 #: client/settings/account-details/index.js:139
-msgid "Seems like the live API keys we've saved for you are no longer valid. If you recently updated them, use the <strong>Configure Connection</strong> button below to reconnect."
+msgid "We couldn't connect to your account, it seems like the live API keys we've saved for you are no longer valid. Please use the <strong>Configure connection</strong> button below to reconnect."
 msgstr ""
 
 #: build/upe-settings.js:1
