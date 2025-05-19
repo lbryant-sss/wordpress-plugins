@@ -63,4 +63,19 @@ class SchemaFactory {
 	public function cssFont($label = null) {
 		return (new PlaceholderStruct($label))->settingClassHint(Font::class);
 	}
+
+	/**
+	 * Create a schema that takes a JSON string, parses it, and then validates the result
+	 * against another schema.
+	 *
+	 * @param Schema|null $valueSchema
+	 * @param string|null $label
+	 * @return JsonValue
+	 */
+	public function json($valueSchema = null, $label = null) {
+		if ( $valueSchema === null ) {
+			$valueSchema = new Anything();
+		}
+		return new JsonValue($valueSchema, $label);
+	}
 }

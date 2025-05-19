@@ -268,11 +268,16 @@ class Sidebar_Stats_Dropin extends Dropin {
 	protected function get_stats_and_summaries_link_html() {
 		$stats_page_url = Menu_Manager::get_admin_url_by_slug( 'simple_history_stats_page' );
 
+		// Bail if no stats page url (user has no access to stats page).
+		if ( empty( $stats_page_url ) ) {
+			return '';
+		}
+
 		ob_start();
 		?>
 		<p>
 			<a class="sh-PremiumFeaturesPostbox-button" href="<?php echo esc_url( $stats_page_url ); ?>">
-				<?php esc_html_e( 'View detailed stats & summaries', 'simple-history' ); ?>
+				<?php esc_html_e( 'See all History Insights', 'simple-history' ); ?>
 			</a>
 		</p>
 		<?php
@@ -289,7 +294,7 @@ class Sidebar_Stats_Dropin extends Dropin {
 		<div class="postbox sh-PremiumFeaturesPostbox">			
 			<div class="inside">
 				<h3 class="sh-PremiumFeaturesPostbox-title">
-					<?php esc_html_e( 'Stats & Insights', 'simple-history' ); ?>
+					<?php esc_html_e( 'History Insights', 'simple-history' ); ?>
 				</h3>
 
 				<?php

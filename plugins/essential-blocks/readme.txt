@@ -1,4 +1,4 @@
-=== Essential Blocks – Page Builder Gutenberg Blocks, Patterns & Templates ===
+=== Essential Blocks – AI-Powered Page Builder Gutenberg Blocks, Patterns & Templates ===
 Contributors: wpdevteam, re_enter_rupok, asif2bd, rahat89, priyomukul, jamilbd07, fencermonir, sumaiyasiddika
 Tags: Gutenberg, Block Editor, Gutenberg Templates, Gutenberg WooCommerce, Gutenberg Plugin
 Requires at least: 5.8
@@ -8,7 +8,7 @@ Stable tag: 5.4.0
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
-Gutenberg blocks library to create WordPress sites in the Gutenberg Block Editor – now with Write With AI – plus 60+ essential blocks, patterns, templates for WooCommerce, post grids & more!
+Power up the Gutenberg block editor with AI, 60+ essential blocks, patterns, templates, Woo blocks, post grids, with a robust WordPress block library!
 
 == Description ==
 Bring your creative visions to life with **[Essential Blocks for Gutenberg](https://essential-blocks.com/)**, the ultimate Gutenberg blocks library for WordPress default editor!

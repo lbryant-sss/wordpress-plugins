@@ -30,6 +30,8 @@ class Log_Query {
 	 *      @type string $messages Messages to include. Array or string with commaa separated in format "LoggerSlug:Message", e.g. "SimplePluginLogger:plugin_activated,SimplePluginLogger:plugin_deactivated". Default null = show all messages.
 	 *      @type int $user Single user ID as number. Default null.
 	 *      @type string $users User IDs, comma separated or array. Default null.
+	 *      @type boolean $include_sticky Include sticky events in the result set. Default false.
+	 *      @type boolean $only_sticky Only return sticky events. Default false.
 	 * }
 	 * @return array
 	 * @throws \InvalidArgumentException If invalid query type.
@@ -464,6 +466,37 @@ class Log_Query {
 		$page_rows_from = ( $args['paged'] * $args['posts_per_page'] ) - $args['posts_per_page'] + 1;
 		$page_rows_to = $page_rows_from + $log_rows_count - 1;
 
+		// Prepend sticky events to the result.
+		// Sticky events are added first in the result set and does not
+		// count towards the total found rows or modify pagination, etc.
+		if ( $args['include_sticky'] ) {
+			$sticky_events = $this->get_sticky_events();
+
+			if ( ! empty( $sticky_events ) ) {
+				$query_sticky_events = $this->query(
+					[
+						'post__in' => $sticky_events,
+					]
+				);
+
+				$sticky_log_rows = $query_sticky_events['log_rows'];
+
+				// Append sticky_appended=true to each event,
+				// so we on client side can differentiate between sticky events and other events.
+				$sticky_log_rows = array_map(
+					function ( $log_row ) {
+						$log_row->sticky_appended = true;
+
+						return $log_row;
+					},
+					$sticky_log_rows
+				);
+
+				// Prepend sticky events to the result, at the top.
+				$result_log_rows = array_merge( $sticky_log_rows, $result_log_rows );
+			}
+		}
+
 		// Create array to return.
 		// Add log rows to sub key 'log_rows' because meta info is also added.
 		$arr_return = [
@@ -694,6 +727,12 @@ class Log_Query {
 
 				// User ids, comma separated or array.
 				'users' => null,
+
+				// Should sticky events be included in the result set.
+				'include_sticky' => false,
+
+				// Only return sticky events.
+				'only_sticky' => false,
 
 			// Can also contain:
 			// logRowID
@@ -1013,12 +1052,12 @@ class Log_Query {
 	 * Swedish examples:
 	 *
 	 * Search phrase "tillägg uppdaterade":
-	 * - Should match logger "SimplePluginLogger", message key "plugin_updated", message "uppdaterade tillägget ”{plugin_name}” till {plugin_version} från {plugin_prev_version}"
-	 * - Should match logger "SimplePluginLogger", message key "plugin_bulk_updated", message "uppdaterade tillägget ”{plugin_name}” till {plugin_version} från {plugin_prev_version}"
+	 * - Should match logger "SimplePluginLogger", message key "plugin_updated", message "uppdaterade tillägget "{plugin_name}" till {plugin_version} från {plugin_prev_version}"
+	 * - Should match logger "SimplePluginLogger", message key "plugin_bulk_updated", message "uppdaterade tillägget "{plugin_name}" till {plugin_version} från {plugin_prev_version}"
 	 *
 	 * Search phrase "misslyckades logga in":
-	 * - Should match logger "SimpleUserLogger", message key "user_login_failed", message "misslyckades att logga in med användarnamnet ”{login}” (felaktigt lösenord angavs)"
-	 * - Should match logger "SimpleUserLogger", message key "user_unknown_login_failed", message "misslyckades att logga in med användarnamnet ”{failed_username}” (användarnamnet finns inte)"
+	 * - Should match logger "SimpleUserLogger", message key "user_login_failed", message "misslyckades att logga in med användarnamnet "{login}" (felaktigt lösenord angavs)"
+	 * - Should match logger "SimpleUserLogger", message key "user_unknown_login_failed", message "misslyckades att logga in med användarnamnet "{failed_username}" (användarnamnet finns inte)"
 	 *
 	 * @param string $searchstring Search string, for example "misslyckades logga in".
 	 * @return array<int,array> Array with logger and message that matched search string.
@@ -1297,6 +1336,14 @@ class Log_Query {
 			);
 		}
 
+		// If only_sticky is true, only return sticky events.
+		if ( ! empty( $args['only_sticky'] ) ) {
+			$inner_where[] = sprintf(
+				'id IN ( SELECT history_id FROM %1$s AS c WHERE c.key = \'_sticky\' )',
+				$contexts_table_name
+			);
+		}
+
 		/**
 		 * Filter the default boxes to output in the sidebar
 		 *
@@ -1472,5 +1519,27 @@ class Log_Query {
 	protected function is_valid_date_format( $date_string, $format = 'Y-m-d' ) {
 		$d = \DateTime::createFromFormat( $format, $date_string );
 		return $d && $d->format( $format ) === $date_string;
+	}
+
+	/**
+	 * Get all sticky events. Does not take user capability into account.
+	 *
+	 * @return array<int> Array of sticky event IDs.
+	 */
+	protected function get_sticky_events() {
+		global $wpdb;
+
+		$simple_history = Simple_History::get_instance();
+		$contexts_table = $simple_history->get_contexts_table_name();
+
+		$results = $wpdb->get_col(
+			$wpdb->prepare(
+				'SELECT history_id, value FROM %i WHERE `key` = %s',
+				$contexts_table,
+				'_sticky'
+			)
+		);
+
+		return $results;
 	}
 }

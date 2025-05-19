@@ -26,6 +26,10 @@ abstract class Schema {
 	 */
 	abstract public function parse($value, $errors = null, $stopOnFirstError = false);
 
+	public function __invoke($value) {
+		return $this->parse($value);
+	}
+
 	public function defaultValue($defaultValue) {
 		$this->defaultValueOption = Option::some($defaultValue);
 		if ( $defaultValue === null ) {
