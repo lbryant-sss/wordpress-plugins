@@ -4,7 +4,7 @@ Tags: author box, author profile, author social icons, author bio, guest author
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 6.8
-Stable tag: 2.56
+Stable tag: 2.57
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -53,6 +53,10 @@ Simple Author Box does not track, collect or process any user data. If you opt t
 
 
 == Changelog ==
+= 2.57 =
+* 2025-05-19
+* Fixed bug with social links formatting
+
 = 2.56 =
 * 2025-05-05
 * Updated Twitter icon to X

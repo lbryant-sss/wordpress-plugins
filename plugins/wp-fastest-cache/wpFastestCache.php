@@ -1491,7 +1491,7 @@ GNU General Public License for more details.
 
 
 				//for trash contents
-				if(preg_match("/\/\?p\=\d+/i", $permalink)){
+				if(preg_match("/\/\?(p|page_id)\=\d+/i", $permalink)){
 					$post = get_post($post_id);
 
 					$clone_post = clone $post;

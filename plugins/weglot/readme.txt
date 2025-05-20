@@ -4,7 +4,7 @@ Tags: translate, multilingual, language, translation, localization, multilingual
 Requires at least: 4.5
 Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 4.3.2
+Stable tag: 4.3.3
 License: GPLv2 or later
 URI: http://www.gnu.org/licenses/gpl-3.0.html
 

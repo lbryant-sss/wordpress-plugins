@@ -2,7 +2,7 @@
 Contributors: emrevona
 Donate link: https://profiles.wordpress.org/emrevona/
 Tags: cache, Optimize, performance, PageSpeed, core web vitals
-Requires at least: 3.3
+Requires at least: 5.3
 Tested up to: 6.8
 Stable tag: 1.3.7
 License: GPLv2 or later

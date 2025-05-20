@@ -139,13 +139,17 @@
                         let $textDisplayInput; 
                         let $swatchElement;    
                         let $swatchColorElement; 
+                        let $swatchTextIndicator; // Renamed from $swatchVarIndicator
                         const instanceApi = $originalInput.data('customColorPickerApi') || {}; 
 
                         if (!$originalInput.data('color-picker-enhanced')) {
                             const $wrapper = $('<div class="mega-custom-color-input-wrapper"></div>');
                             $swatchElement = $('<span class="mega-custom-color-input-swatch"></span>');
                             $swatchColorElement = $('<div class="mega-custom-color-input-swatch-color"></div>'); 
+                            $swatchTextIndicator = $('<span class="mega-swatch-text-indicator">VAR</span>'); // Create indicator with "VAR"
+                            $swatchColorElement.append($swatchTextIndicator); 
                             $swatchElement.append($swatchColorElement); 
+
                             $textDisplayInput = $('<input type="text" class="mega-color-picker-input-text">');
                             
                             const originalIdVal = $originalInput.attr('id');
@@ -162,10 +166,12 @@
                             $originalInput.data('color-picker-enhanced', true);
                             $originalInput.data('swatch-element', $swatchElement); 
                             $originalInput.data('swatch-color-element', $swatchColorElement); 
+                            $originalInput.data('swatch-text-indicator', $swatchTextIndicator); 
                             $originalInput.data('text-display-input', $textDisplayInput);
                         } else { 
                             $swatchElement = $originalInput.data('swatch-element');
                             $swatchColorElement = $originalInput.data('swatch-color-element');
+                            $swatchTextIndicator = $originalInput.data('swatch-text-indicator');
                             $textDisplayInput = $originalInput.data('text-display-input');
                         }
                         const $uiWrapper = $textDisplayInput.parent('.mega-custom-color-input-wrapper');
@@ -233,10 +239,9 @@
                             const [r, g, b] = hslToRgb(currentHslHue, currentHslSaturation, currentHslLightness);
                             if (currentAlpha < 1) {
                                 let alphaStr = currentAlpha.toFixed(2); alphaStr = parseFloat(alphaStr).toString(); 
-                                return `rgba(${r}, ${g}, ${b}, ${alphaStr})`;
+                                return `rgba(${r},${g},${b},${alphaStr})`; 
                             }
-                            // Default to RGB output for opaque colors
-                            return `rgb(${r}, ${g}, ${b})`; 
+                            return `rgb(${r},${g},${b})`; 
                         }
                         
                         function getVisualRgbaColor() { 
@@ -254,7 +259,7 @@
                                 [r, g, b] = hslToRgb(currentHslHue, currentHslSaturation, currentHslLightness);
                                 a = currentAlpha;
                             }
-                            return `rgba(${r}, ${g}, ${b}, ${a})`;
+                            return `rgba(${r},${g},${b},${a})`; 
                         }
                         
                         function _updateOpacitySliderBackground() {
@@ -269,7 +274,22 @@
                             const visualRgba = getVisualRgbaColor();
                             
                             if ($textDisplayInput) $textDisplayInput.val(outputStringForDisplay); 
-                            if ($swatchColorElement) $swatchColorElement.css('background-color', visualRgba); 
+                            
+                            if ($swatchColorElement) {
+                                if (isCssVarMode) {
+                                    $swatchColorElement.css({
+                                        'background-image': 'none', 
+                                        'background-color': '#f0f0f0' 
+                                    });
+                                    if ($swatchTextIndicator) $swatchTextIndicator.show();
+                                } else {
+                                    $swatchColorElement.css({
+                                        'background-image': 'none',
+                                        'background-color': visualRgba
+                                    });
+                                    if ($swatchTextIndicator) $swatchTextIndicator.hide();
+                                }
+                            }
 
                             if ($pickerContainer && $pickerContainer.is(':visible')) { 
                                 if ($previewColor) $previewColor.css('background-color', visualRgba);
@@ -413,7 +433,7 @@
                             _bindPickerInternalEvents();
                             $originalInput.data('picker-container-ref', $pickerContainer); 
                         }
-                        function _drawMainColorCanvas() { /* ... (unchanged) ... */ 
+                        function _drawMainColorCanvas() { 
                             if (!mainCtx || !mainCanvasEl || mainCanvasEl.width === 0 || mainCanvasEl.height === 0) return;
                             const width = mainCanvasEl.width; const height = mainCanvasEl.height;
                             mainCtx.clearRect(0,0,width,height);

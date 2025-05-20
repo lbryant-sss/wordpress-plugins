@@ -971,7 +971,7 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 									'use_flex_css'      => array(
 										'priority'    => 80,
 										'title'       => __( 'Use Flex CSS', 'megamenu' ),
-										'description' => __( 'Experimental: Use flexbox to style the menu. Default: Disabled.', 'megamenu' ),
+										'description' => __( 'Experimental: Use flexbox to style the menu. Testing purposes only. Default: Disabled.', 'megamenu' ),
 										'settings'    => array(
 											array(
 												'title' => __( 'Enabled', 'megamenu' ),

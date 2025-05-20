@@ -3,7 +3,7 @@ defined('_VALID_AI') or die('Direct Access to this location is not allowed.');
 
 aiPostboxOpen("id-help-jquery", "Small jQuery help", $closedArray, "100%", " show-always");
 
-$showHelp = ($isFreemiusMigration && $ai_fs->is_registered() && $ai_fs->is_tracking_allowed()) || $ai_fs->can_use_premium_code__premium_only();
+$showHelp = $isFreemiusMigration && (($ai_fs->is_registered() && $ai_fs->is_tracking_allowed()) || $ai_fs->can_use_premium_code__premium_only());
 
 if ($showHelp) { ?>
   <p>

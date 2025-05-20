@@ -10,6 +10,8 @@ class Action extends ConfigFields {
 	const PARSE_FLOAT = [self::class, 'parseFloat'];
 	const PARSE_BOOLEAN = [self::class, 'parseBoolean'];
 
+	protected $isActionRegistered = false;
+
 	public function __construct(ConfigFields $configOrBuilder) {
 		$this->action = $configOrBuilder->action;
 		$this->callback = $configOrBuilder->callback;
@@ -24,6 +26,11 @@ class Action extends ConfigFields {
 	}
 
 	public function register() {
+		if ( $this->isActionRegistered ) {
+			return $this;
+		}
+		$this->isActionRegistered = true;
+
 		//Register the AJAX handler(s).
 		$hookNames = ['wp_ajax_' . $this->action];
 		if ( !$this->mustBeLoggedIn ) {
@@ -39,6 +46,9 @@ class Action extends ConfigFields {
 			}
 			add_action($hook, [$this, 'processAjaxRequest']);
 		}
+
+		$this->registerForJsUse();
+
 		return $this;
 	}
 
@@ -222,6 +232,24 @@ class Action extends ConfigFields {
 		return $inputParams;
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getAction() {
+		return $this->action;
+	}
+
+	public function isNonceCheckEnabled() {
+		return $this->nonceCheckEnabled;
+	}
+
+	/**
+	 * @return string|null
+	 */
+	public function getRequiredRequestMethod() {
+		return $this->httpMethod;
+	}
+
 	//region Built-in parsers
 	public static function parseInt($value) {
 		$result = filter_var($value, FILTER_VALIDATE_INT);
@@ -252,6 +280,102 @@ class Action extends ConfigFields {
 			return new WP_Error('invalid_string', 'Must be a string, not ' . gettype($value) . '.');
 		}
 		return $value;
+	}
+	//endregion
+
+	//region JavaScript dependency
+	protected static $scriptHandle = 'ajaw-v2-ajax-action-wrapper';
+	protected static $scriptRegistered = false;
+	/**
+	 * @var array<string,Action>
+	 */
+	protected static $pendingActionsForJs = [];
+
+	protected function registerForJsUse() {
+		self::$pendingActionsForJs[$this->action] = $this;
+	}
+
+	public static function registerScript() {
+		if ( self::$scriptRegistered ) {
+			return;
+		}
+		self::$scriptRegistered = true;
+
+		//There could be multiple instances of this class, but we only need to register the script once.
+		$handle = self::$scriptHandle;
+		if ( !wp_script_is($handle, 'registered') ) {
+			wp_register_script(
+				$handle,
+				plugins_url('../js/ajax-wrapper.js', __FILE__),
+				['jquery'],
+				'20250518'
+			);
+		}
+
+		$script = sprintf('var wshAjawV2AjaxUrl = (%s);', wp_json_encode(admin_url('admin-ajax.php')));
+		$script .= self::generateActionJs();
+		wp_add_inline_script($handle, $script, 'after');
+
+		self::$pendingActionsForJs = [];
+
+		//Add a backup hook in case someone registers additional AJAX actions after the script
+		//is already registered.
+		add_action('admin_print_scripts', [self::class, 'outputRemainingActionsForJs'], 1000);
+	}
+
+	public function getRegisteredScriptHandle() {
+		if ( !self::$scriptRegistered ) {
+			self::registerScript();
+		}
+		return self::$scriptHandle;
+	}
+
+	protected static function generateActionJs() {
+		$actions = [];
+		foreach (self::$pendingActionsForJs as $action) {
+			$config = ['action' => $action->getAction()];
+			if ( $action->isNonceCheckEnabled() ) {
+				$config['nonce'] = wp_create_nonce($action->getAction());
+			}
+			$requiredMethod = $action->getRequiredRequestMethod();
+			if ( $requiredMethod !== null ) {
+				$config['requiredMethod'] = $requiredMethod;
+			}
+			$actions[] = $config;
+		}
+
+		$collection = [
+			'ajaxUrl' => admin_url('admin-ajax.php'),
+			'actions' => $actions,
+		];
+
+		return sprintf(
+			'if (AjawV2 && AjawV2.registerActions) { AjawV2.registerActions(%s); };',
+			wp_json_encode($collection)
+		);
+	}
+
+	/**
+	 * @internal Hook callbacks must be public but shouldn't be called directly.
+	 */
+	public static function outputRemainingActionsForJs() {
+		if ( empty(self::$pendingActionsForJs) || !self::$scriptRegistered ) {
+			return;
+		}
+
+		if ( wp_script_is(self::$scriptHandle, 'done') ) {
+			echo '<script type="text/javascript">';
+			//Generated JS should be safe and cannot be HTML-escaped anyway.
+			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo self::generateActionJs();
+			echo '</script>';
+		} else {
+			//The script is registered but not yet printed. For example, it could be queued for
+			//the footer. We can still add an inline script to it.
+			wp_add_inline_script(self::$scriptHandle, self::generateActionJs(), 'after');
+		}
+
+		self::$pendingActionsForJs = [];
 	}
 	//endregion
 }

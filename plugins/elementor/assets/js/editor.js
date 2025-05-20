@@ -1,4 +1,4 @@
-/*! elementor - v3.29.0 - 15-05-2025 */
+/*! elementor - v3.29.0 - 19-05-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -10370,7 +10370,8 @@ var EVENTS_MAP = {
   QUOTA_BAR_CAPACITY: 'quota_bar_capacity',
   INSERT_APPLY_SETTINGS: 'insert_apply_settings',
   UPGRADE_CLICKED: 'upgrade_clicked',
-  PAGE_VIEWED: 'page_viewed'
+  PAGE_VIEWED: 'page_viewed',
+  DELETION_UNDO: 'deletion_undo'
 };
 var EventManager = exports.EventManager = /*#__PURE__*/function () {
   function EventManager() {
@@ -10411,7 +10412,7 @@ var EventManager = exports.EventManager = /*#__PURE__*/function () {
   }, {
     key: "sendTemplateTransferEvent",
     value: function sendTemplateTransferEvent(data) {
-      return this.sendEvent(EVENTS_MAP.NEW_SAVE_TEMPLATE_CLICKED, _objectSpread({
+      return this.sendEvent(EVENTS_MAP.TEMPLATE_TRANSFER, _objectSpread({
         location: elementor.editorEvents.config.locations.templatesLibrary.library,
         secondaryLocation: elementor.editorEvents.config.secondaryLocations.templateLibrary.saveModal
       }, data));
@@ -10503,6 +10504,11 @@ var EventManager = exports.EventManager = /*#__PURE__*/function () {
       return this.sendEvent(EVENTS_MAP.PAGE_VIEWED, _objectSpread({
         page_loaded: data.location
       }, data));
+    }
+  }, {
+    key: "sendDeletionUndoEvent",
+    value: function sendDeletionUndoEvent(data) {
+      return this.sendEvent(EVENTS_MAP.DELETION_UNDO, _objectSpread({}, data));
     }
   }]);
 }();
@@ -11261,10 +11267,6 @@ var TemplateLibraryManager = function TemplateLibraryManager() {
     self.setFilter('source', args.source, true);
     self.setFilter('type', args.type, true);
     self.setFilter('subtype', args.subtype, true);
-    if (this.shouldShowCloudStateView(args.source)) {
-      self.layout.showCloudStateView();
-      return;
-    }
     self.showTemplates();
   };
   this.loadTemplates = function (onUpdate) {
@@ -11282,24 +11284,51 @@ var TemplateLibraryManager = function TemplateLibraryManager() {
       options.refresh = true;
     }
     this.setFilter('parent', null, query);
-    $e.data.get('library/templates', query, options).then(function (result) {
-      var _result$data;
-      var templates = 'cloud' === query.source ? result.data.templates.templates : result.data.templates;
-      templatesCollection = new TemplateLibraryCollection(templates);
-      if ((_result$data = result.data) !== null && _result$data !== void 0 && (_result$data = _result$data.templates) !== null && _result$data !== void 0 && _result$data.total) {
-        var _result$data2;
-        total = (_result$data2 = result.data) === null || _result$data2 === void 0 || (_result$data2 = _result$data2.templates) === null || _result$data2 === void 0 ? void 0 : _result$data2.total;
+    var loadTemplatesData = function loadTemplatesData() {
+      return $e.data.get('library/templates', query, options).then(function (result) {
+        var _result$data;
+        var templates = 'cloud' === query.source ? result.data.templates.templates : result.data.templates;
+        templatesCollection = new TemplateLibraryCollection(templates);
+        if ((_result$data = result.data) !== null && _result$data !== void 0 && (_result$data = _result$data.templates) !== null && _result$data !== void 0 && _result$data.total) {
+          var _result$data2;
+          total = (_result$data2 = result.data) === null || _result$data2 === void 0 || (_result$data2 = _result$data2.templates) === null || _result$data2 === void 0 ? void 0 : _result$data2.total;
+        }
+        if (result.data.config) {
+          config = result.data.config;
+        }
+        self.layout.hideLoadingView();
+        if (onUpdate) {
+          onUpdate();
+        }
+      }).finally(function () {
+        isLoading = false;
+      });
+    };
+    var handleCloudSource = function handleCloudSource() {
+      var _elementorAppConfig$c;
+      if ('undefined' === typeof ((_elementorAppConfig$c = elementorAppConfig['cloud-library']) === null || _elementorAppConfig$c === void 0 ? void 0 : _elementorAppConfig$c.quota)) {
+        return $e.components.get('cloud-library').utils.getQuotaConfig(true).then(function () {
+          if (self.shouldShowCloudStateView()) {
+            self.layout.showCloudStateView();
+            return;
+          }
+          return loadTemplatesData();
+        }).catch(function () {
+          self.layout.showCloudStateView();
+          isLoading = false;
+        });
       }
-      if (result.data.config) {
-        config = result.data.config;
+      if (self.shouldShowCloudStateView()) {
+        self.layout.showCloudStateView();
+        return;
       }
-      self.layout.hideLoadingView();
-      if (onUpdate) {
-        onUpdate();
-      }
-    }).finally(function () {
-      isLoading = false;
-    });
+      return loadTemplatesData();
+    };
+    if ('cloud' === query.source) {
+      handleCloudSource();
+    } else {
+      loadTemplatesData();
+    }
   };
   this.searchTemplates = function (data) {
     _this3.clearLastRemovedItems();
@@ -11434,10 +11463,6 @@ var TemplateLibraryManager = function TemplateLibraryManager() {
     self.setSourceSelection(templatesSource);
     self.setFilter('source', templatesSource, true);
     self.clearBulkSelectionItems();
-    if (this.shouldShowCloudStateView(templatesSource)) {
-      self.layout.showCloudStateView();
-      return;
-    }
     self.loadTemplates(function () {
       var templatesToShow = self.filterTemplates();
       self.layout.showTemplatesView(new TemplateLibraryCollection(templatesToShow));
@@ -11453,18 +11478,31 @@ var TemplateLibraryManager = function TemplateLibraryManager() {
     _this3.clearBulkSelectionItems();
     _this3.layout.handleBulkActionBarUi();
   };
-  this.shouldShowCloudStateView = function (source) {
-    if ('cloud' !== source) {
-      return false;
-    }
+  this.shouldShowCloudStateView = function () {
     if (!elementor.config.library_connect.is_connected) {
       return true;
     }
-    return !this.hasCloudLibraryQuota();
+    return !this.hasCloudLibraryQuota() || this.cloudLibraryIsDeactivated();
+  };
+  this.cloudLibraryIsDeactivated = function () {
+    var _elementorAppConfig$c2;
+    var quota = (_elementorAppConfig$c2 = elementorAppConfig['cloud-library']) === null || _elementorAppConfig$c2 === void 0 ? void 0 : _elementorAppConfig$c2.quota;
+    if (!quota) {
+      return false;
+    }
+    var _quota$currentUsage = quota.currentUsage,
+      currentUsage = _quota$currentUsage === void 0 ? 0 : _quota$currentUsage,
+      _quota$threshold = quota.threshold,
+      threshold = _quota$threshold === void 0 ? 0 : _quota$threshold,
+      _quota$subscriptionId = quota.subscriptionId,
+      subscriptionId = _quota$subscriptionId === void 0 ? '' : _quota$subscriptionId;
+    var isOverThreshold = currentUsage > threshold;
+    var hasSubscription = '' !== subscriptionId;
+    return isOverThreshold && !hasSubscription;
   };
   this.hasCloudLibraryQuota = function () {
-    var _elementorAppConfig$c, _elementorAppConfig$c2;
-    return 'undefined' !== typeof ((_elementorAppConfig$c = elementorAppConfig['cloud-library']) === null || _elementorAppConfig$c === void 0 ? void 0 : _elementorAppConfig$c.quota) && 0 < ((_elementorAppConfig$c2 = elementorAppConfig['cloud-library'].quota) === null || _elementorAppConfig$c2 === void 0 ? void 0 : _elementorAppConfig$c2.threshold) && elementor.helpers.hasPro();
+    var _elementorAppConfig$c3, _elementorAppConfig$c4;
+    return 'undefined' !== typeof ((_elementorAppConfig$c3 = elementorAppConfig['cloud-library']) === null || _elementorAppConfig$c3 === void 0 ? void 0 : _elementorAppConfig$c3.quota) && 0 < ((_elementorAppConfig$c4 = elementorAppConfig['cloud-library'].quota) === null || _elementorAppConfig$c4 === void 0 ? void 0 : _elementorAppConfig$c4.threshold);
   };
   this.addBulkSelectionItem = function (templateId) {
     bulkSelectedItems.add(parseInt(templateId));
@@ -11516,7 +11554,7 @@ var TemplateLibraryManager = function TemplateLibraryManager() {
               name: 'undo_bulk_delete',
               text: __('Undo', 'elementor'),
               callback: function callback() {
-                _this8.onUndoDelete();
+                _this8.onUndoDelete(isBulk);
               }
             }] : null;
             elementor.notifications.showToast({
@@ -11545,7 +11583,7 @@ var TemplateLibraryManager = function TemplateLibraryManager() {
       dialog.show();
     });
   };
-  this.onUndoDelete = function () {
+  this.onUndoDelete = function (isBulk) {
     var _this9 = this;
     return new Promise(function (resolve) {
       isLoading = true;
@@ -11574,6 +11612,9 @@ var TemplateLibraryManager = function TemplateLibraryManager() {
         }
       };
       elementorCommon.ajax.addRequest('bulk_undo_delete_items', ajaxOptions);
+      self.eventManager.sendDeletionUndoEvent({
+        is_bulk: isBulk
+      });
     });
   };
   this.triggerQuotaUpdate = function () {
@@ -11725,6 +11766,7 @@ module.exports = elementorModules.common.views.modal.Layout.extend({
     this.modalContent.show(new TemplateLibraryConnectView(args));
   },
   showCloudStateView: function showCloudStateView() {
+    elementor.templates.layout.hideLoadingView();
     this.modalContent.show(new TemplateLibraryCloudStateView());
   },
   showSaveTemplateView: function showSaveTemplateView(elementModel) {
@@ -11849,14 +11891,14 @@ module.exports = Marionette.ItemView.extend({
     'click @ui.button': 'onButtonClick'
   },
   modesStrings: function modesStrings() {
-    var _elementorAppConfig, _elementorAppConfig2, _elementorAppConfig3, _elementorAppConfig4;
+    var _elementorAppConfig$c, _elementorAppConfig, _elementorAppConfig$c2, _elementorAppConfig2, _elementorAppConfig3, _elementorAppConfig$c3, _elementorAppConfig4;
     var defaultIcon = this.getDefaultIcon();
     return {
       notConnected: {
-        title: (_elementorAppConfig = elementorAppConfig) === null || _elementorAppConfig === void 0 || (_elementorAppConfig = _elementorAppConfig['cloud-library']) === null || _elementorAppConfig === void 0 ? void 0 : _elementorAppConfig.library_connect_title,
-        message: (_elementorAppConfig2 = elementorAppConfig) === null || _elementorAppConfig2 === void 0 || (_elementorAppConfig2 = _elementorAppConfig2['cloud-library']) === null || _elementorAppConfig2 === void 0 ? void 0 : _elementorAppConfig2.library_connect_sub_title,
+        title: (_elementorAppConfig$c = (_elementorAppConfig = elementorAppConfig) === null || _elementorAppConfig === void 0 || (_elementorAppConfig = _elementorAppConfig['cloud-library']) === null || _elementorAppConfig === void 0 ? void 0 : _elementorAppConfig.library_connect_title_copy) !== null && _elementorAppConfig$c !== void 0 ? _elementorAppConfig$c : __('Connect to your Elementor account', 'elementor'),
+        message: (_elementorAppConfig$c2 = (_elementorAppConfig2 = elementorAppConfig) === null || _elementorAppConfig2 === void 0 || (_elementorAppConfig2 = _elementorAppConfig2['cloud-library']) === null || _elementorAppConfig2 === void 0 ? void 0 : _elementorAppConfig2.library_connect_sub_title_copy) !== null && _elementorAppConfig$c2 !== void 0 ? _elementorAppConfig$c2 : __('Then you can find all your templates in one convenient library.', 'elementor'),
         icon: defaultIcon,
-        button: "<a class=\"elementor-button e-primary\" href=\"".concat((_elementorAppConfig3 = elementorAppConfig) === null || _elementorAppConfig3 === void 0 || (_elementorAppConfig3 = _elementorAppConfig3['cloud-library']) === null || _elementorAppConfig3 === void 0 ? void 0 : _elementorAppConfig3.library_connect_url, "\" target=\"_blank\">").concat((_elementorAppConfig4 = elementorAppConfig) === null || _elementorAppConfig4 === void 0 || (_elementorAppConfig4 = _elementorAppConfig4['cloud-library']) === null || _elementorAppConfig4 === void 0 ? void 0 : _elementorAppConfig4.library_connect_button_text, "</a>")
+        button: "<a class=\"elementor-button e-primary\" href=\"".concat((_elementorAppConfig3 = elementorAppConfig) === null || _elementorAppConfig3 === void 0 || (_elementorAppConfig3 = _elementorAppConfig3['cloud-library']) === null || _elementorAppConfig3 === void 0 ? void 0 : _elementorAppConfig3.library_connect_url, "\" target=\"_blank\">").concat((_elementorAppConfig$c3 = (_elementorAppConfig4 = elementorAppConfig) === null || _elementorAppConfig4 === void 0 || (_elementorAppConfig4 = _elementorAppConfig4['cloud-library']) === null || _elementorAppConfig4 === void 0 ? void 0 : _elementorAppConfig4.library_connect_button_copy) !== null && _elementorAppConfig$c3 !== void 0 ? _elementorAppConfig$c3 : __('Connect', 'elementor'), "</a>")
       },
       connectedNoQuota: {
         title: __('It’s time to level up', 'elementor'),
@@ -11879,26 +11921,10 @@ module.exports = Marionette.ItemView.extend({
     if (!elementor.config.library_connect.is_connected) {
       return 'notConnected';
     }
-    if (this.isDeactivated()) {
+    if (elementor.templates.cloudLibraryIsDeactivated()) {
       return 'deactivated';
     }
     return 'connectedNoQuota';
-  },
-  isDeactivated: function isDeactivated() {
-    var _elementorAppConfig$c;
-    var quota = (_elementorAppConfig$c = elementorAppConfig['cloud-library']) === null || _elementorAppConfig$c === void 0 ? void 0 : _elementorAppConfig$c.quota;
-    if (!quota) {
-      return false;
-    }
-    var _quota$currentUsage = quota.currentUsage,
-      currentUsage = _quota$currentUsage === void 0 ? 0 : _quota$currentUsage,
-      _quota$threshold = quota.threshold,
-      threshold = _quota$threshold === void 0 ? 0 : _quota$threshold,
-      _quota$subscriptionId = quota.subscriptionId,
-      subscriptionId = _quota$subscriptionId === void 0 ? '' : _quota$subscriptionId;
-    var isOverThreshold = currentUsage > threshold;
-    var hasNoSubscription = '' === subscriptionId;
-    return isOverThreshold && hasNoSubscription;
   },
   onRender: function onRender() {
     var _elementor$templates$;
@@ -12574,6 +12600,7 @@ var TemplateLibrarySaveTemplateView = Marionette.ItemView.extend({
   onFormSubmit: function onFormSubmit(event) {
     var _this$templateHelpers3;
     event.preventDefault();
+    elementor.templates.eventManager.sendNewSaveTemplateClickedEvent();
     var formData = this.ui.form.elementorSerializeObject(),
       JSONParams = {
         remove: ['default']
@@ -35493,10 +35520,7 @@ var ContainerView = BaseElementView.extend({
    */
   saveAsTemplate: function saveAsTemplate() {
     $e.route('library/save-template', {
-      model: this.model,
-      onAfter: function onAfter() {
-        elementor.templates.eventManager.sendNewSaveTemplateClickedEvent();
-      }
+      model: this.model
     });
   },
   /**
@@ -50548,7 +50572,6 @@ module.exports = DivBlockView;
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
@@ -50559,9 +50582,6 @@ var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*!
 var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "../node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
 var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "../node_modules/@babel/runtime/helpers/inherits.js"));
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "../node_modules/@babel/runtime/helpers/defineProperty.js"));
-var hooks = _interopRequireWildcard(__webpack_require__(/*! ./hooks/ */ "../modules/cloud-library/assets/js/editor/hooks/index.js"));
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2.default)(o), (0, _possibleConstructorReturn2.default)(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2.default)(t).constructor) : o.apply(t, e)); }
 function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
 var Component = exports["default"] = /*#__PURE__*/function (_$e$modules$Component) {
@@ -50652,11 +50672,6 @@ var Component = exports["default"] = /*#__PURE__*/function (_$e$modules$Componen
       return this.promise;
     }
   }, {
-    key: "defaultHooks",
-    value: function defaultHooks() {
-      return this.importHooks(hooks);
-    }
-  }, {
     key: "defaultUtils",
     value: function defaultUtils() {
       return {
@@ -50666,106 +50681,6 @@ var Component = exports["default"] = /*#__PURE__*/function (_$e$modules$Componen
     }
   }]);
 }($e.modules.ComponentBase);
-
-/***/ }),
-
-/***/ "../modules/cloud-library/assets/js/editor/hooks/index.js":
-/*!****************************************************************!*\
-  !*** ../modules/cloud-library/assets/js/editor/hooks/index.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-var _ui = __webpack_require__(/*! ./ui/ */ "../modules/cloud-library/assets/js/editor/hooks/ui/index.js");
-Object.keys(_ui).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (key in exports && exports[key] === _ui[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _ui[key];
-    }
-  });
-});
-
-/***/ }),
-
-/***/ "../modules/cloud-library/assets/js/editor/hooks/ui/index.js":
-/*!*******************************************************************!*\
-  !*** ../modules/cloud-library/assets/js/editor/hooks/ui/index.js ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-Object.defineProperty(exports, "SetQuotaData", ({
-  enumerable: true,
-  get: function get() {
-    return _setQoutaData.SetQuotaData;
-  }
-}));
-var _setQoutaData = __webpack_require__(/*! ./set-qouta-data */ "../modules/cloud-library/assets/js/editor/hooks/ui/set-qouta-data.js");
-
-/***/ }),
-
-/***/ "../modules/cloud-library/assets/js/editor/hooks/ui/set-qouta-data.js":
-/*!****************************************************************************!*\
-  !*** ../modules/cloud-library/assets/js/editor/hooks/ui/set-qouta-data.js ***!
-  \****************************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.SetQuotaData = void 0;
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "../node_modules/@babel/runtime/helpers/classCallCheck.js"));
-var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "../node_modules/@babel/runtime/helpers/createClass.js"));
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "../node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "../node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
-var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "../node_modules/@babel/runtime/helpers/inherits.js"));
-function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2.default)(o), (0, _possibleConstructorReturn2.default)(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2.default)(t).constructor) : o.apply(t, e)); }
-function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-var SetQuotaData = exports.SetQuotaData = /*#__PURE__*/function (_$e$modules$hookUI$Be) {
-  function SetQuotaData() {
-    (0, _classCallCheck2.default)(this, SetQuotaData);
-    return _callSuper(this, SetQuotaData, arguments);
-  }
-  (0, _inherits2.default)(SetQuotaData, _$e$modules$hookUI$Be);
-  return (0, _createClass2.default)(SetQuotaData, [{
-    key: "getCommand",
-    value: function getCommand() {
-      return 'editor/documents/attach-preview';
-    }
-  }, {
-    key: "getId",
-    value: function getId() {
-      return 'cloud-library-set-quota-data';
-    }
-  }, {
-    key: "getConditions",
-    value: function getConditions() {
-      return elementor.config.library_connect.is_connected && elementor.helpers.hasPro();
-    }
-  }, {
-    key: "apply",
-    value: function apply() {
-      $e.components.get('cloud-library').utils.setQuotaConfig();
-    }
-  }]);
-}($e.modules.hookUI.Before);
 
 /***/ }),
 

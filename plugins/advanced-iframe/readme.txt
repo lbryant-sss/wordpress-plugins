@@ -1,10 +1,10 @@
 === Advanced iFrame ===
 Contributors: mdempfle
-Donate link: http://www.tinywebgallery.com
+Donate link: https://www.tinywebgallery.com
 Tags: iframe, embed, resize, shortcode, modify css
 Requires at least: 3.3
-Tested up to: 6.8
-Stable tag: 2025.3
+Tested up to: 6.8.1
+Stable tag: 2025.4
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -167,6 +167,11 @@ Use the Wordpress installer to update or simply overwrite all files from your pr
 If you have some radio elements empty after the update simply select the one you like and save again.
 
 == Changelog ==
+= 2025.4 =
+- New: Tested with WordPress 6.8.1
+- New: Updated Freemius SDK to 2.12.0 which improves compatibility with php 8.3 and 8.4
+- Fix: advanced-iframe-admin-advanced.php was saved with a wrong line ending. Now Unix (LF) is used like for all other files. On some systems the administration was not loaded properly.
+
 = 2025.3 =
 - New: OPT-IN users now get additional benefits: Additional sections on the help tab, exclusive coupons, monthly chance to win a free license.   
 - New: Additional help is now also available for OPT-IN users.

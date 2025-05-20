@@ -3,7 +3,7 @@
 * Plugin Name: Simple Author Box
 * Plugin URI: https://wpauthorbox.com/
 * Description: Adds a responsive author box with social icons on any post.
-* Version: 2.56
+* Version: 2.57
 * Author: WebFactory Ltd
 * Author URI: https://www.webfactoryltd.com/
 * Requires: 4.6

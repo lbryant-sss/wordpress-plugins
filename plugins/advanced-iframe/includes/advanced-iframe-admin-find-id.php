@@ -3,7 +3,7 @@ defined('_VALID_AI') or die('Direct Access to this location is not allowed.');
 
 aiPostboxOpen("id-help-id", __('How to find elements, ids and classes', 'advanced-iframe'), $closedArray, "100%", " show-always");
  
-$showHelp = ($isFreemiusMigration && $ai_fs->is_registered() && $ai_fs->is_tracking_allowed()) || $ai_fs->can_use_premium_code__premium_only();
+$showHelp = $isFreemiusMigration && (($ai_fs->is_registered() && $ai_fs->is_tracking_allowed()) || $ai_fs->can_use_premium_code__premium_only());
 if ($showHelp) {
 	echo '<p>';
 	_e('If you like to hide or modify elements you need to identify them in the page.', 'advanced-iframe');
