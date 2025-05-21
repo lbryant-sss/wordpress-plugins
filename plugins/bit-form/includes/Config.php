@@ -165,7 +165,7 @@ final class Config
     return [
       'app-setting' => [
         'title' => __('App Setting', self::SLUG),
-        'url'   => self::get('ADMIN_URL') . 'admin.php?page=bitform#/app-settings/recaptcha',
+        'url'   => self::get('ADMIN_URL') . 'admin.php?page=bitform#/app-settings/general',
       ],
       'doc-support' => [
         'title' => __('Doc & Support', self::SLUG),

@@ -27,6 +27,7 @@ use BitCode\BitForm\Core\Util\FileHandler;
 use BitCode\BitForm\Core\Util\FormDuplicateHelper;
 use BitCode\BitForm\Core\Util\HttpHelper;
 use BitCode\BitForm\Core\Util\IpTool;
+use BitCode\BitForm\Core\Util\Log;
 use BitCode\BitForm\Core\Util\Utilities;
 use BitCode\BitForm\Core\WorkFlow\WorkFlow;
 use BitCode\BitForm\Core\WorkFlow\WorkFlowHandler;
@@ -217,6 +218,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
     }
 
     $fields = wp_unslash($post->fields);
+    $fields = Helpers::replaceFieldsDefaultErrorMsg($fields);
     // $fields = $post->fields;
     $layout = wp_unslash($post->layout);
     $nestedLayout = isset($post->nestedLayouts) ? wp_unslash($post->nestedLayouts) : (object) [];
@@ -527,6 +529,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
 
     if (property_exists($post, 'fields') && null !== $post->fields && property_exists($post, 'layout') && $post->layout) {
       $fields = wp_unslash($post->fields);
+      $fields = Helpers::replaceFieldsDefaultErrorMsg($fields);
       $layout = wp_unslash($post->layout);
       $nestedLayout = wp_unslash($post->nestedLayouts);
       $formInfo = wp_unslash($post->formInfo);
@@ -2761,6 +2764,44 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
       return new WP_Error('empty_form', __('Form update failed.', 'bit-form'));
     } else {
       return true;
+    }
+  }
+
+  public function replaceAllFormsErrorMessagesByGlobalMessages()
+  {
+    try {
+      $formModel = new FormModel();
+      $allForms = $formModel->get(['id', 'form_content']);
+
+      foreach ($allForms as $form) {
+        // Decode form_content JSON to stdClass
+        $formContent = \json_decode($form->form_content);
+        $fields = $formContent->fields ?? null;
+        // If decode fails, skip to next
+        if (!$fields) {
+          Log::debug_log("Form ID {$form->id}: invalid JSON in form_content");
+          continue;
+        }
+
+        // Replace default error messages using your helper
+        $updatedFields = Helpers::replaceFieldsDefaultErrorMsg($fields);
+
+        $formContent->fields = $updatedFields;
+        // Encode back to JSON
+        $updatedContent = \json_encode($formContent);
+
+        if (false === $updatedContent) {
+          Log::debug_log("Form ID {$form->id}: JSON encoding failed");
+          continue;
+        }
+        // Update form content in DB
+        $formModel->update(
+          ['form_content' => $updatedContent],  // data to update
+          ['id' => $form->id]                   // condition for update
+        );
+      }
+    } catch (\Exception $e) {
+      Log::debug_log('Error in updateAllFormsErrorMessagesWithGlobalMessages', $e->getMessage());
     }
   }
 

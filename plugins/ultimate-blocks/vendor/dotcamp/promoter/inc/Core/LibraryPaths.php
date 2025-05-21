@@ -76,6 +76,16 @@ class LibraryPaths {
 	}
 
 	/**
+	 * Builds a file path with the appropriate directory separator.
+	 *
+	 * @param string $segments,... unlimited number of path segments
+	 * @return string Path
+	 */
+	function build_file_path(...$segments) {
+		return join(DIRECTORY_SEPARATOR, $segments);
+	}
+
+	/**
 	 * Library URL path.
 	 *
 	 * @param string $target_library_path Target library path relative to library root.

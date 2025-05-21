@@ -61,7 +61,7 @@ class Admin_Bar
 
       $submenu['bitform'][] = [__('All Forms' . $entriesCount, 'bit-form'), $capability, 'admin.php?page=bitform#/'];
       $submenu['bitform'][] = [__('Form Templates <span class="bf-template-new-badge">New</span>', 'bit-form'), $capability, 'admin.php?page=bitform#/form-templates'];
-      $submenu['bitform'][] = [__('App Settings', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/recaptcha'];
+      $submenu['bitform'][] = [__('App Settings', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/general'];
       $submenu['bitform'][] = [__('Integrations', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/integrations'];
       $submenu['bitform'][] = [__('SMTP', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/smtp'];
       $submenu['bitform'][] = [__('PDF Setting', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/pdf'];
@@ -106,7 +106,7 @@ class Admin_Bar
       'id'     => 'bitform-app-settings',
       'parent' => 'bitform',
       'title'  => 'App Settings',
-      'href'   => admin_url('admin.php?page=bitform#/app-settings/recaptcha'),
+      'href'   => admin_url('admin.php?page=bitform#/app-settings/general'),
     ]);
     $wp_admin_bar->add_node([
       'id'     => 'bitform-smtp',
@@ -305,6 +305,8 @@ class Admin_Bar
       $userMail[$key]['id'] = $value->ID;
       $userNames[$value->ID] = ['name' => $value->display_name, 'url' => get_edit_user_link($value->ID)];
     }
+
+    $appSettings = get_option('bitform_app_settings', (object)[]);
     $bits = [
       'configs'             => ['bf_separator' => BITFORMS_BF_SEPARATOR],
       'nonce'               => wp_create_nonce('bitforms_save'),
@@ -319,6 +321,7 @@ class Admin_Bar
       'allForms'            => is_wp_error($all_forms) ? null : $all_forms,
       'allPages'            => is_wp_error($this->getAllPages()) ? [] : $this->getAllPages(),
       'allFormSettings'     => count($allFormSettings) > 0 ? $allFormSettings : (object)[],
+      'appSettings'         => $appSettings,
       'userMail'            => !empty($userMail) ? $userMail : [],
       'user'                => (object) $userNames,
       'dateFormat'          => get_option('date_format'),

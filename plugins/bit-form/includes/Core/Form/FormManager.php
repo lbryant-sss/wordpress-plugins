@@ -176,7 +176,7 @@ class FormManager
     return $customJSCodes;
   }
 
-  public function getFormContentWithValue($defaultValues)
+  public function getFormContentWithValue($defaultValues = [])
   {
     $form_content = \json_decode(static::$form[0]->form_content);
     // this filter just use private purpose

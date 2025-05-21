@@ -2,40 +2,115 @@
 
 namespace BitCode\BitForm\Widgets;
 
-if (!defined('ABSPATH')) {
+use BitCode\BitForm\GlobalHelper;
+use Elementor\Controls_Manager;
+use Elementor\Widget_Base;
+
+if (!\defined('ABSPATH')) {
   exit;
 }
 
-class BitFormElementorWidget
+class BitFormElementorWidget extends Widget_Base
 {
-  public function __construct()
+  public function get_name()
   {
-    add_action('elementor/widgets/register', [$this, 'register_widgets']);
-    add_action('elementor/editor/after_save', [$this, 'clearElementorCache']);
-    add_action('update_option_elementor_css', [$this, 'clearElementorCache']);
+    return 'bitform-widget';
   }
 
-  public function register_widgets()
+  public function get_keywords()
   {
-    $this->enqueueAssets();
+    return [
+      'bitform',
+      'bitforms',
+      'form',
+      'bitform widget',
+      'form widget',
+      'contact forms',
+      'elementor form',
+      'bit form',
+      'form builder',
+      'shortcode',
+    ];
+  }
 
-    if (file_exists(BITFORMS_PLUGIN_DIR_PATH . 'includes/Widgets/BitFormWidget.php')) {
-      require_once BITFORMS_PLUGIN_DIR_PATH . 'includes/Widgets/BitFormWidget.php';
-      \Elementor\Plugin::instance()->widgets_manager->register(new BitFormWidget());
+  public function get_title()
+  {
+    return __('Bit Form', 'bit-form');
+  }
+
+  public function get_icon()
+  {
+    return 'eicon-form-horizontal';
+  }
+
+  public function get_script_depends()
+  {
+    return ['bitform-style'];
+  }
+
+  public function get_categories()
+  {
+    return ['general'];
+  }
+
+  protected function _register_controls()
+  {
+    $this->start_controls_section(
+      'section_bit_form',
+      [
+        'label' => __('Bit Form', 'bit-form'),
+      ]
+    );
+
+    $this->add_control(
+      'form_id',
+      [
+        'label'       => esc_html__('Select Forms', 'bit-form'),
+        'type'        => Controls_Manager::SELECT2,
+        'placeholder' => esc_html__('Select a Bitform', 'bit-form'),
+        'label_block' => true,
+        'multiple'    => false,
+        'options'     => GlobalHelper::getForms(),
+        'default'     => 0,
+        'render_type' => 'template',
+      ]
+    );
+
+    $this->end_controls_section();
+  }
+
+  /**
+   * Render widget output on the frontend.
+   *
+   * @return void
+   */
+  protected function render()
+  {
+    $settings = $this->get_settings_for_display();
+    $form_id = $settings['form_id'];
+
+    if (empty($form_id)) {
+      return;
     }
-  }
 
-  private function enqueueAssets()
-  {
-    // add_action('elementor/frontend/after_enqueue_styles', function () {
-    //   wp_enqueue_style('bitform-elementor-widget', BITFORMS_ASSET_URI . '/css/bitform-elementor-widget.css', [], '1.0.0');
-    // });
-  }
+    $css_path = BITFORMS_UPLOAD_BASE_URL . '/form-styles/bitform-' . $form_id . '-formid.css';
 
-  public function clearElementorCache()
-  {
-    if (class_exists('\Elementor\Plugin')) {
-      \Elementor\Plugin::$instance->files_manager->clear_cache();
+    wp_dequeue_style('bitform-style-css');
+
+    if (is_admin() && \Elementor\Plugin::$instance->editor->is_edit_mode()) {
+      echo "<link rel='stylesheet' id='bitform-style-css' href='{$css_path}' type='text/css' media='all' />";
+    } else {
+      wp_enqueue_style('bitform-style', $css_path, [], time());
+    }
+
+    $form_html = do_shortcode("[bitform id='$form_id']");
+
+    if (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
+      echo '<div class="bitform-preview">';
+      echo $form_html;
+      echo '</div>';
+    } else {
+      echo $form_html;
     }
   }
 }

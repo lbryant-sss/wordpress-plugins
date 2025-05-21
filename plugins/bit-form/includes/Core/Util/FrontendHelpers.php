@@ -223,6 +223,7 @@ final class FrontendHelpers
   public static function hasMultipleForms()
   {
     $bfUniqFormIds = self::getAllFormIdsInPage();
+    self::checkIsPageBuilder($_SERVER);
     $isPageBuilder = self::$isPageBuilder;
     $bfMultipleFormsExists = $isPageBuilder ? true : count($bfUniqFormIds) > 1;
     return $bfMultipleFormsExists;

@@ -12,10 +12,11 @@ use BitCode\BitForm\Core\Fallback\FormFallback;
 use BitCode\BitForm\Core\Form\FormHandler;
 use BitCode\BitForm\Core\Integration\Integrations;
 use BitCode\BitForm\Core\Util\FileDownloadProvider;
-use BitCode\BitForm\Core\Util\GutenBlockProvider;
 use BitCode\BitForm\Core\Util\Utilities;
 use BitCode\BitForm\Frontend\ConversationalFormView;
 use BitCode\BitForm\Frontend\StandaloneFormView;
+use BitCode\BitForm\Widgets\RegisterBitformBricksWidget;
+use BitCode\BitForm\Widgets\RegisterGutenBlock;
 
 class Hooks
 {
@@ -34,6 +35,10 @@ class Hooks
     add_action('init', [ConversationalFormView::class, 'conversationalFormView']);
     add_action('init', [StandaloneFormView::class, 'standaloneFormView']);
     add_action('wp_footer', [Hooks::class, 'updateBitFormVersion'], 9999, 0);
+
+    // Register the BitForm widget for Gutenberg, and Bricks Builder
+    add_action('init', [new RegisterGutenBlock(), 'register']);
+    add_action('init', [RegisterBitformBricksWidget::class, 'register_widgets'], 11);
 
     // modify data for telemetry
     add_filter(BITFORMS_PREFIX . 'telemetry_additional_data', [new BfAnalytics(), 'modifyTelemetryData'], 10, 1);
@@ -109,9 +114,9 @@ class Hooks
     if (Request::isPluginPage()) {
       (new FileDownloadProvider())->register();
     }
-    if (current_user_can('edit_posts')) {
-      (new GutenBlockProvider())->register();
-    }
+    // if (current_user_can('edit_posts')) {
+    // (new RegisterGutenBlock())->register();
+    // }
     include BITFORMS_PLUGIN_DIR_PATH . 'includes' . DIRECTORY_SEPARATOR . 'Frontend' . DIRECTORY_SEPARATOR . 'InitRoutes.php';
   }
 

@@ -2,7 +2,7 @@
 Contributors: thememylogin, jfarthing84
 Tags: login, register, password, branding, customize, widget, wp-login, wp-login.php
 Requires at least: 5.4
-Tested up to: 6.7.1
+Tested up to: 6.8.1
 Stable tag: trunk
 
 The ultimate login branding solution! Theme My Login offers matchless customization of your WordPress user experience!
@@ -58,6 +58,10 @@ Report bugs, suggest ideas and participate in development at [GitHub](https://gi
 
 
 == Changelog ==
+
+= 7.1.11 =
+* Reinstate missing message on lostpassword form
+* Convert get_title() to an abstract function on TML extension class
 
 = 7.1.10 =
 * Tested up to 6.7.1

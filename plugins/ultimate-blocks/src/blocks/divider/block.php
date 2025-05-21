@@ -22,7 +22,7 @@ function ub_render_divider_block($attributes, $_ ,$block){
 	$divider_style = array();
 	if ($orientation === 'horizontal') {
 		$divider_style['margin-top'] = isset($borderHeight) ? $borderHeight . 'px' : '';
-		$divider_style['margin-bottom'] = isset($borderHeight) ? $borderHeight . 'px' : '';
+		$divider_wrapper_style['margin-bottom'] = isset($borderHeight) ? $borderHeight . 'px' : '';
 	} else {
 		$divider_style['width'] = 'fit-content';
 		$divider_style['height'] = isset($lineHeight) ? $lineHeight : '';
@@ -33,7 +33,7 @@ function ub_render_divider_block($attributes, $_ ,$block){
 		$divider_wrapper_style['width'] = $divider_width;
 		$divider_wrapper_style['height'] = isset($borderHeight) ? $borderHeight . 'px': '';
 		$divider_style['margin-top'] = isset($borderHeight) ? $borderHeight . 'px': '';
-		$divider_style['margin-bottom'] = isset($borderHeight) ? $borderHeight . 'px': '';
+		$divider_wrapper_style['margin-bottom'] = isset($borderHeight) ? $borderHeight . 'px': '';
 	} else {
 		$divider_wrapper_style['width'] = $borderSize . "px";
 		$divider_wrapper_style['height'] = isset($lineHeight) ? $lineHeight	: '';

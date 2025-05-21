@@ -62,6 +62,7 @@ function wpa_add_honeypot_field(){
 	    '.et_pb_login_form form',			   // For Elementor login form
 	    'form.eael-login-form',				   // essential-addons login form
 	    'form#lostpasswordform',			   // Lost Password Form
+	    'form.lost_reset_password',            // Tutor Password Form
 	    
 
 	    // Comment forms

@@ -234,7 +234,7 @@ class Promoter {
 	 * @return Registry Initialized registry.
 	 */
 	private function initialize_registry() {
-		$core_configs = require $this->library_paths->dir_path( 'inc/Config/config_core.php' );
+		$core_configs = require $this->library_paths->dir_path($this->library_paths->build_file_path('inc', 'Config', 'config_core.php'));
 
 		return new Registry( new ArrayConfiguration( $core_configs ) );
 	}

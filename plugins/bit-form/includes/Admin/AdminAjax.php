@@ -14,6 +14,7 @@ use BitCode\BitForm\Core\Integration\Integrations;
 use BitCode\BitForm\Core\Util\IpTool;
 use BitCode\BitForm\Core\Util\MailConfig;
 use BitCode\BitForm\Core\Util\MetaBoxService;
+use BitCode\BitForm\Frontend\Form\FrontendFormManager;
 use WP_Error;
 
 class AdminAjax
@@ -68,6 +69,7 @@ class AdminAjax
     add_action('wp_ajax_bitforms_save_generel_settings', [$this, 'saveGenerelSettings']);
     add_action('wp_ajax_bitforms_get_form_entry_count', [$this, 'getFormEntryLabelAndCount']);
     add_action('wp_ajax_bitforms_save_payment_setting', [$this, 'savePaymentSettings']);
+    add_action('wp_ajax_bitforms_save_global_messages', [$this, 'saveGlobalMessages']);
 
     // form migrate code
     add_action('wp_ajax_bitforms_get_migrated_form_contents', [$this, 'migrateFormContents']);
@@ -104,6 +106,51 @@ class AdminAjax
 
     // telematry
     add_action('wp_ajax_bitforms_analytics_permission', [$this, 'telemetry']);
+
+    // get form html markup
+    add_action('wp_ajax_bitforms_get_form_html', [$this, 'getFormHtml']);
+  }
+
+  public function getFormHtml()
+  {
+    if (wp_verify_nonce(sanitize_text_field($_REQUEST['_ajax_nonce']), 'bitforms_save')) {
+      $formId = sanitize_text_field($_REQUEST['formID']);
+
+      $FrontendFormManager = new FrontendFormManager($formId);
+      $formContent = $FrontendFormManager->getFormContentWithValue();
+      $fields = $formContent->fields;
+      $layout = $formContent->layout;
+      $file = count($FrontendFormManager->getUploadFields()) > 0 ? $FrontendFormManager->getUploadFields() : false;
+      $html = $FrontendFormManager->formView($fields, $file);
+
+      if (file_exists(BITFORMS_CONTENT_DIR . DIRECTORY_SEPARATOR . 'form-styles')) {
+        $cssPath = BITFORMS_CONTENT_DIR . DIRECTORY_SEPARATOR . 'form-styles' . DIRECTORY_SEPARATOR . "bitform-{$formId}" . '.css';
+
+        if (file_exists($cssPath)) {
+          $getCss = file_get_contents($cssPath);
+        } else {
+          $getCss = '';
+        }
+      }
+
+      $data = [
+        'html'            => $html,
+        'css'             => $getCss,
+      ];
+
+      wp_send_json_success(
+        $data,
+        200
+      );
+    } else {
+      wp_send_json_error(
+        __(
+          'Token expired',
+          'bit-form'
+        ),
+        401
+      );
+    }
   }
 
   /**
@@ -1519,7 +1566,7 @@ class AdminAjax
   public function getGenerelSettings()
   {
     if (wp_verify_nonce(sanitize_text_field($_REQUEST['_ajax_nonce']), 'bitforms_save')) {
-      $data = get_option('bitform_app_config');
+      $data = get_option('bitform_app_config', (object) ['cache_plugin' => 0, 'delete_table' => 0]);
 
       if (is_wp_error($data)) {
         wp_send_json_error($data->get_error_message(), 411);
@@ -1552,6 +1599,34 @@ class AdminAjax
           $formHandler = FormHandler::getInstance();
           $formHandler->admin->updateGeneratedScriptPageIds();
         }
+        wp_send_json_success(__('Save successfully done'));
+      }
+    } else {
+      wp_send_json_error(
+        __(
+          'Token expired'
+        ),
+        401
+      );
+    }
+  }
+
+  public function saveGlobalMessages()
+  {
+    if (wp_verify_nonce(sanitize_text_field($_REQUEST['_ajax_nonce']), 'bitforms_save')) {
+      $inputJSON = file_get_contents('php://input');
+      $inputData = json_decode($inputJSON);
+
+      $appSettings = get_option('bitform_app_settings', (object) []);
+
+      $appSettings->globalMessages = $inputData;
+      $status = update_option('bitform_app_settings', $appSettings);
+      // delete_option('bitform_app_settings');
+      if (is_wp_error($status)) {
+        wp_send_json_error($status->get_error_message(), 411);
+      } else {
+        $formHandler = FormHandler::getInstance();
+        $formHandler->admin->replaceAllFormsErrorMessagesByGlobalMessages();
         wp_send_json_success(__('Save successfully done'));
       }
     } else {

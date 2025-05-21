@@ -445,4 +445,78 @@ LOAD_SECRIPT;
     $param = htmlspecialchars(trim($param), ENT_QUOTES, 'UTF-8');
     return sanitize_text_field($param);
   }
+
+  public static function replaceFieldsDefaultErrorMsg($fields)
+  {
+    try {
+      $appSettings = get_option('bitform_app_settings', (object) []);
+      if (!isset($appSettings->globalMessages) || !isset($appSettings->globalMessages->err)) {
+        return $fields;
+      }
+
+      $globalErrMsg = $appSettings->globalMessages->err;
+      $templateCache = []; // [type_errKey] => compiled template
+
+      foreach ($fields as $fieldKey => $field) {
+        if (!isset($field->err) || !is_object($field->err)) {
+          continue;
+        }
+
+        foreach ($field->err as $errKey => $errObj) {
+          if (!isset($errObj->dflt)) {
+            continue;
+          }
+
+          $cacheKey = $field->typ . '_' . $errKey;
+          $template = null;
+
+          // 1. Check Cache First
+          if (isset($templateCache[$cacheKey])) {
+            $template = $templateCache[$cacheKey];
+          } else {
+            // 2. Lookup from globalErrMsg
+            if (isset($globalErrMsg->{$field->typ}->{$errKey})) {
+              $template = $globalErrMsg->{$field->typ}->{$errKey};
+            } elseif (isset($globalErrMsg->{$errKey}) && !is_object($globalErrMsg->{$errKey})) {
+              $template = $globalErrMsg->{$errKey};
+            }
+
+            // 3. Cache it
+            if ($template) {
+              $templateCache[$cacheKey] = $template;
+            }
+          }
+
+          // 4. Apply Template if Found
+          if ($template) {
+            $finalMsg = self::replaceShortcodeInErrorMsg($template, $field);
+            // 5. Sanitize final output
+            $field->err->{$errKey}->dflt = wp_kses_post($finalMsg);
+          }
+        }
+
+        $fields->{$fieldKey} = $field;
+      }
+    } catch (Exception $e) {
+      Log::debug_log('Error In Replacing Fields Default Error messages: ' . $e->getMessage());
+    }
+    return $fields;
+  }
+
+  //replace shortcode in error message
+  public static function replaceShortcodeInErrorMsg($msg, $field)
+  {
+    $shortcodes = [
+      '${field.label}'          => isset($field->lbl) ? $field->lbl : '',
+      '${field.minimum}'        => isset($field->mn) ? $field->mn : '',
+      '${field.maximum}'        => isset($field->mx) ? $field->mx : '',
+      '${field.minimum_file}'   => isset($field->config->minFile) ? $field->config->minFile : '',
+      '${field.maximum_file}'   => isset($field->config->maxFile) ? $field->config->maxFile : '',
+      '${field.maximum_size}'   => isset($field->config->maxSize) ? $field->config->maxSize : '',
+      '${field.minimum_amount}' => isset($field->config->minValue) ? $field->config->minValue : '',
+      '${field.maximum_amount}' => isset($field->config->maxValue) ? $field->config->maxValue : '',
+    ];
+    $msg = str_replace(array_keys($shortcodes), array_values($shortcodes), $msg);
+    return $msg;
+  }
 }

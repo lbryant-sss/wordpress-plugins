@@ -3,7 +3,7 @@ Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, 
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 3.3.1
+Stable tag: 3.3.3
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -149,6 +149,20 @@ That's it. You're done!
 3. Tabbed Content Block.
 
 == Changelog ==
+
+= 3.3.3 =
+
+* Version bump for update failed issues.
+
+= 3.3.2 =
+
+* FIX: Divider spacing issue.
+* FIX: Icon control not showing in free version in button block.
+* FIX: Button block full size issue.
+* FIX: HTML showing in dashboard notice.
+* FIX: PHP deprecated warning in styled list block.
+* FIX: Promoter's config file path issue.
+* IMPROVE: Styled list layout.
 
 = 3.3.1 =
 

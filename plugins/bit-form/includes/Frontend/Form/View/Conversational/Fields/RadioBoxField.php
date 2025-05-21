@@ -90,6 +90,7 @@ RADIOBOXOPTIONS;
 
     //Other Option
     $optCount = property_exists($field, 'opt') ? count($field->opt) : 0;
+    $otherOptLbl = !empty($field->otherOptLbl) ? $field->otherOptLbl : __('Other...', 'bit-form');
     $inputPh = isset($field->otherInpPh) ? $field->otherInpPh : 'Other...';
     $inpReq = isset($field->valid->otherOptReq) ? ($field->valid->otherOptReq ? 'required' : '') : '';
     if (property_exists($field, 'addOtherOpt') && $field->addOtherOpt) {
@@ -126,7 +127,7 @@ RADIOBOXOPTIONS;
           {$fieldHelpers->getCustomAttributes('ct')}
           class="{$fieldHelpers->getConversationalCls('ct')} {$fieldHelpers->getCustomClasses('ct')}"
         >
-          Other..
+          {$otherOptLbl}
         </span>
       </label>
       <div data-oinp-wrp class="{$fieldHelpers->getConversationalCls('other-inp-wrp')}">

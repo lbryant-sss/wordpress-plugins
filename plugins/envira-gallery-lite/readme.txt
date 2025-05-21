@@ -2,7 +2,7 @@
 Contributors: enviragallery
 Tags: gallery, image gallery, photo gallery, best gallery plugin, wordpress gallery plugin
 Requires at least: 5.5.0
-Tested up to: 6.7.2
+Tested up to: 6.8.1
 Requires PHP: 7.0
 Stable tag: 1.10.0
 License: GNU General Public License v2.0 or later

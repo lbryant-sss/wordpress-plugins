@@ -168,29 +168,39 @@ function get_background_color_var(
  * @return string Sanitized HTML content.
  */
 function strip_xss( $html ) {
-	if ( ! $html ) {
-		return '';
-	}
+     if ( ! $html ) {
+          return '';
+     }
 
-	$dom = new \DOMDocument( '1.0', 'UTF-8' );
-	$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );
+     $dom = new \DOMDocument( '1.0', 'UTF-8' );
 
-	// Suppress errors due to malformed HTML.
-	@$dom->loadHTML( $html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+     // Use htmlspecialchars_decode instead of mb_convert_encoding
+     $html = htmlspecialchars_decode(htmlentities($html, ENT_QUOTES, 'UTF-8'));
 
-	$xpath = new \DOMXPath( $dom );
-	$elements = $xpath->query( '//*' );
+     // Suppress errors due to malformed HTML.
+     // Use defined constants or check if they exist
+     $options = 0;
+     if (defined('LIBXML_HTML_NOIMPLIED')) {
+          $options |= LIBXML_HTML_NOIMPLIED;
+     }
+     if (defined('LIBXML_HTML_NODEFDTD')) {
+          $options |= LIBXML_HTML_NODEFDTD;
+     }
+     @$dom->loadHTML( $html, $options );
 
-	foreach ( $elements as $element ) {
-		foreach ( $element->attributes as $attr ) {
-			if ( strpos( $attr->name, 'on' ) === 0 ) {
-				$element->removeAttribute( $attr->name );
-			}
-		}
-	}
-	$script_tags = $dom->getElementsByTagName( 'script' );
-	while ( $script_tags->length > 0 ) {
-		$script_tags->item( 0 )->parentNode->removeChild( $script_tags->item( 0 ) );
-	}
+     $xpath = new \DOMXPath( $dom );
+     $elements = $xpath->query( '//*' );
+
+     foreach ( $elements as $element ) {
+          foreach ( $element->attributes as $attr ) {
+               if ( strpos( $attr->name, 'on' ) === 0 ) {
+                    $element->removeAttributeNode( $attr );
+               }
+          }
+     }
+     $script_tags = $dom->getElementsByTagName( 'script' );
+     while ( $script_tags->length > 0 ) {
+          $script_tags->item( 0 )->parentNode->removeChild( $script_tags->item( 0 ) );
+     }
 	return $dom->saveHTML();
 }

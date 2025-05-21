@@ -6,7 +6,7 @@ const index = require('./index-8acc3c89.js');
 const index$1 = require('./index-fb76df07.js');
 const pageAlign = require('./page-align-5a2ab493.js');
 const price = require('./price-ca4a4318.js');
-const mutations = require('./mutations-747a9cc3.js');
+const mutations = require('./mutations-cad5b919.js');
 require('./currency-71fce0f0.js');
 require('./index-bcdafe6e.js');
 require('./utils-2e91d46c.js');

@@ -17,7 +17,7 @@ use BitCode\BitForm\Core\Hooks\Hooks;
 use BitCode\BitForm\Core\Util\Activation;
 use BitCode\BitForm\Core\Util\Deactivation;
 use BitCode\BitForm\Core\Util\Uninstallation;
-use BitCode\BitForm\Widgets\BitFormElementorWidget;
+use BitCode\BitForm\Widgets\RegisterBitFormElementorWidget;
 
 final class Plugin
 {
@@ -175,7 +175,7 @@ final class Plugin
   private function initWidgets()
   {
     if (defined('ELEMENTOR_VERSION')) {
-      new BitFormElementorWidget();
+      new RegisterBitFormElementorWidget();
     }
   }
 

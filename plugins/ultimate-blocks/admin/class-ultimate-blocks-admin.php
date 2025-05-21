@@ -643,12 +643,8 @@ class Ultimate_Blocks_Admin {
 			?>
 			<div class="UltimateBlocks-review-notice notice notice-info">
 				<p style="font-size: 14px;">
-					<?php
-					esc_html_e(
-						'Hey,<br> I noticed that you have been using <strong>Ultimate Blocks Plugin</strong> for a while now - that’s awesome! Could you please do me a BIG favor and <b>give it a 5-star rating on WordPress</b>? Just to help us spread the word and boost our motivation. <br>~ Imtiaz Rayhan<br>~ Lead Developer, Ultimate Blocks.',
-						'ultimate-blocks'
-					);
-					?>
+					Hey,<br> I noticed that you have been using <strong>Ultimate Blocks Plugin</strong> for a while now - that's awesome! Could you please do me a BIG favor and <b>give it a 5-star rating on WordPress</b>?
+					Just to help us spread the word and boost our motivation. <br>~ Imtiaz Rayhan<br>~ Lead Developer, Ultimate Blocks.
 				</p>
 				<ul>
 					<li><a style="margin-right: 5px; margin-bottom: 5px;" class="button-primary"

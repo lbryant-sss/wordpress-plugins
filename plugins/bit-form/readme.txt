@@ -1,7 +1,7 @@
 === Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder ===
 Plugin Name: Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder
-Version: 2.18.9
-Stable tag: 2.18.9
+Version: 2.19.0
+Stable tag: 2.19.0
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin 
@@ -544,6 +544,19 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
+= 2.19.0 =
+*Release Date: 20 May, 2025*
+*New:
+    1. Global validation messages: Added new settings under App Settings to globally customize validation error/invalid messages.
+    2. Bricks Builder Widget: Introduced the Bit Form widget for Bricks Builder, enabling easy form embedding.
+
+*Improvements:
+    1. "Other" Option Label: Added setting to customize the label of the "Other..." option in Checkbox and Radio fields.
+    2. Elementor & Gutenberg Widgets: Improved form rendering behavior when switching forms in the Bit Form selection dropdown.
+
+*Fix:
+    1. PayPal Integration: Resolved PayPal transaction ID mismatch issue.
+
 = 2.18.9 =
 *Release Date: 10 May, 2025*
 *Improvements:

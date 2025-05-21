@@ -2919,11 +2919,17 @@ $i18n_strings = array(
 
     'Global Settings' => __('Global Settings', 'bit-form'),
 
+    'Validation Error/Invalid Message' => __('Validation Error/Invalid Message', 'bit-form'),
+
     'Generate Token after page load to prevent conflict with cache plugins.' => __('Generate Token after page load to prevent conflict with cache plugins.', 'bit-form'),
 
     'Delete all data table when delete plugin.' => __('Delete all data table when delete plugin.', 'bit-form'),
 
     'Usage Reporting Opt In.' => __('Usage Reporting Opt In.', 'bit-form'),
+
+    'Edit Global Message (Type:' => __('Edit Global Message (Type:', 'bit-form'),
+
+    'Messages saved successfully.' => __('Messages saved successfully.', 'bit-form'),
 
     'App delete successfully.' => __('App delete successfully.', 'bit-form'),
 
@@ -3763,6 +3769,8 @@ $i18n_strings = array(
 
     'Create Form' => __('Create Form', 'bit-form'),
 
+    'General' => __('General', 'bit-form'),
+
     'CAPTCHA' => __('CAPTCHA', 'bit-form'),
 
     'Payments' => __('Payments', 'bit-form'),
@@ -3774,8 +3782,6 @@ $i18n_strings = array(
     'CPT' => __('CPT', 'bit-form'),
 
     'API' => __('API', 'bit-form'),
-
-    'General' => __('General', 'bit-form'),
 
     'View Name' => __('View Name', 'bit-form'),
 

@@ -242,7 +242,7 @@ function ub_render_button_block($attributes, $_, $block){
 	);
 	$styles .= Ultimate_Blocks\includes\generate_css_string($wrapper_padding);
     	$classes[] = 'orientation-button-' . esc_attr($orientation) . '';
-	$classes[] = $isFlexWrap ?? 'ub-flex-wrap';
+	$classes[] = $isFlexWrap ? 'ub-flex-wrap' : "";
 
     $block_attributes = get_block_wrapper_attributes(
             array(

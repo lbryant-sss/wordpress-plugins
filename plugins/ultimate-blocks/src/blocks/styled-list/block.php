@@ -184,7 +184,7 @@ function ub_render_styled_list_item_block($attributes, $contents, $block){
 
     	$padding 	= Ultimate_Blocks\includes\get_spacing_css( isset($block_attributes['padding']) ? $block_attributes['padding'] : array() );
 	$margin 	= Ultimate_Blocks\includes\get_spacing_css( isset($block_attributes['margin']) ? $block_attributes['margin'] : array() );
-	$iconData = Ultimate_Blocks_IconSet::generate_fontawesome_icon( $attributes['selectedIcon'] );
+	$iconData = !empty($attributes['selectedIcon'] ) ?  Ultimate_Blocks_IconSet::generate_fontawesome_icon( $attributes['selectedIcon'] ) : array();
 
 	$list_item_styles = array(
 		'padding-top'         			=> isset($padding['top']) ? esc_attr($padding['top']) : "",
@@ -200,12 +200,26 @@ function ub_render_styled_list_item_block($attributes, $contents, $block){
 		'--ub-list-item-icon-size' 		=> ( ( 4 + $attributes['iconSize'] ) / 10 ) . 'em',
 		'--ub-list-item-background-image' 	=> 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' . $iconData[0] . ' ' . $iconData[1] . '"><path fill="%23' . substr( $attributes['iconColor'], 1 ) . '" d="' . $iconData[2] . '"></path></svg>\')',
 	);
-
 	return sprintf(
-		'<li class="ub_styled_list_item" style="%1$s">%2$s%3$s</li>',
+		'<li class="ub_styled_list_item" style="%1$s">
+			<div class="ub_list_item_content">
+				<span class="ub_list_item_icon">
+					<svg width="%8$s" height="%8$s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %4$s %5$s">
+						<path fill="%6$s" d="%7$s"></path>
+					</svg>
+				</span>
+				<span class="ub_list_item_text">%2$s</span>
+			</div>
+			%3$s
+		</li>',
 		Ultimate_Blocks\includes\generate_css_string( $list_item_styles ), // 1
 		wp_kses_post($itemText), // 2
-		Ultimate_Blocks\includes\strip_xss($contents) // 3
+		Ultimate_Blocks\includes\strip_xss($contents), // 3
+		esc_attr($iconData[0]), // 4 - SVG width
+		esc_attr($iconData[1]), // 5 - SVG height
+		esc_attr($attributes['iconColor']), // 6 - Icon color
+		esc_attr($iconData[2]), // 7 - SVG path data
+		esc_attr(( ( 4 + $attributes['iconSize'] ) / 10 ) . 'em') // 8 - Icon size
 	);
 }
 
