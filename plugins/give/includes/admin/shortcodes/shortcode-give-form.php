@@ -125,4 +125,9 @@ class Give_Shortcode_Donation_Form extends Give_Shortcode_Generator {
 	}
 }
 
-new Give_Shortcode_Donation_Form();
+/**
+ * @since 4.3.0 use init action
+ */
+add_action( 'init', static function () {
+    new Give_Shortcode_Donation_Form();
+});

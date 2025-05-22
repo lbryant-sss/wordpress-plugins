@@ -3,8 +3,8 @@ Contributors: wpclever
 Donate link: https://wpclever.net
 Tags: woocommerce, wpc, quickview, quick-view
 Tested up to: 6.8
-Version: 4.1.7
-Stable tag: 4.1.7
+Version: 4.1.8
+Stable tag: 4.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,6 +86,9 @@ Example:
 });`
 
 == Changelog ==
+
+= 4.1.8 =
+* Updated: Allow shortcode in custom field
 
 = 4.1.7 =
 * Added: Filter hook 'woosq_get_variation_image'

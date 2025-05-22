@@ -3,8 +3,8 @@ Contributors: lord_viper, man4toman, parselearn, yazdaniwp, saeedfard, iehsanir
 Donate link: https://wp-parsi.com/support/
 Tags: shamsi, persian, jalali, date, woocommerce
 Requires at least: 5.3
-Tested up to: 6.7.1
-Stable tag: 5.1.5
+Tested up to: 6.8
+Stable tag: 5.1.6
 License: GPLv3
 
 Persian date support for WordPress
@@ -49,8 +49,12 @@ List of some features:
 
 == Changelog ==
 
+= 5.1.6 =
+* Some additional/unused options have been removed
+* The sponsors widget loading mechanism has been optimized 
+
 = 5.1.5 =
-Revert 'wpp_fix_post_time' and 'wpp_fix_post_date' to fix recent date time issue
+* Revert 'wpp_fix_post_time' and 'wpp_fix_post_date' to fix recent date time issue
 
 = 5.1.4 =
 * Fix NuSoap Required file Path

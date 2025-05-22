@@ -1,10 +1,9 @@
 <?php
 /**
  * Downgraded for PHP 7.2 compatibility. Do not edit.
- * #noinspection ALL
+ * @noinspection ALL
  */
-interface LocoArrayInterface extends ArrayAccess, Iterator, Countable, JsonSerializable { 
-public function getArrayCopy(); }
+interface LocoArrayInterface extends ArrayAccess, Iterator, Countable, JsonSerializable { }
 class LocoHeaders extends ArrayIterator implements LocoArrayInterface { 
 private /*array*/ $map = []; 
 public function __construct(array $raw = [] ){ if( $raw ){ $keys = array_keys( $raw ); $this->map = array_combine( array_map( 'strtolower', $keys ), $keys ); parent::__construct($raw); } } 

@@ -66,6 +66,7 @@ class Search_Console implements Wizard_Step {
 		);
 
 		$page         = Param::get( 'page', '', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_BACKTICK );
+		$page         = in_array( $page, [ 'rank-math-options-general', 'rank-math-analytics' ], true ) ? 'rank-math-options-general' : 'rank-math-wizard&step=analytics';
 		$activate_url = Admin_Helper::get_activate_url( admin_url( 'admin.php?analytics=1&page=' . $page ) );
 
 		$profile = wp_parse_args(

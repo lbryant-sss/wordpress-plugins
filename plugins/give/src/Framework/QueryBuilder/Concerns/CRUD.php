@@ -76,6 +76,14 @@ trait CRUD
     }
 
     /**
+     * @since 4.3.0
+     */
+    public function truncate()
+    {
+        DB::query('TRUNCATE TABLE ' . $this->getTable());
+    }
+
+    /**
      * Get results
      *
      * @since 2.19.0

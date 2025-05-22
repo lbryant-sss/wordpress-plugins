@@ -3,7 +3,7 @@
 Plugin Name: tarteaucitron.io
 Plugin URI: https://tarteaucitron.io/
 Description: Compliant and accessible cookie banner
-Version: 1.9.4
+Version: 1.9.5
 Text Domain: tarteaucitronjs
 Domain Path: /languages/
 Author: Amauri
@@ -53,6 +53,11 @@ function tac_sanitize($data, $rule) {
          break;
       case "widget":
          if (preg_match('#^[a-zA-Z0-9_\-\/]+$#', $data)) {
+            return $data;
+         }
+         break;
+      case "video":
+         if (preg_match('#^[a-zA-Z0-9_-]+$#', $data)) {
             return $data;
          }
          break;
@@ -109,7 +114,7 @@ function tarteaucitron_user_css_js() {
 
 add_action('wp_head', 'tarteaucitronForceLocale', 1);
 function tarteaucitronForceLocale() {
-    if (is_admin() || isset($_GET['fl_builder'])) {return;}
+    if (is_admin() || isset($_GET['fl_builder']) || tac_sanitize(get_option('tarteaucitronUUID'), 'uuid') == "") {return;}
 
     $domain = $_SERVER['SERVER_NAME'];
     
@@ -145,7 +150,7 @@ function _tarteaucitron_admin_bar_css() {
     add_filter( 'embed_oembed_html', 'tarteaucitronjs_oembed_dataparse', PHP_INT_MAX, 4 );
     function tarteaucitronjs_oembed_dataparse($cache, $url, $attr, $post_ID) {
         
-        if (is_admin() || isset($_GET['fl_builder']) || get_option('tarteaucitronShowWidget', 'visible') == 'invisible') {return $cache;}
+        if (is_admin() || isset($_GET['fl_builder']) || get_option('tarteaucitronShowWidget', 'visible') == 'invisible' || tac_sanitize(get_option('tarteaucitronUUID'), 'uuid') == "") {return $cache;}
         
         $url = esc_url($url);
         
@@ -155,12 +160,14 @@ function _tarteaucitron_admin_bar_css() {
             parse_str( parse_url( $url, PHP_URL_QUERY ), $youtube_args );
 
             if (isset($youtube_args['v']) && $youtube_args['v'] != "") {
-                return "<script>document.addEventListener('DOMContentLoaded', function() {(tarteaucitron.job = tarteaucitron.job || []).push('youtube');});</script><div class=\"youtube_player\" videoID=\"".$youtube_args['v']."\" width=\"100%\" height=\"100%\" style=\"height:50vw\" theme=\"light\" rel=\"0\" controls=\"1\" showinfo=\"1\" autoplay=\"0\"></div>";
+
+                $id = tac_sanitize($youtube_args['v'], 'video');
+                return "<script>document.addEventListener('DOMContentLoaded', function() {(tarteaucitron.job = tarteaucitron.job || []).push('youtube');});</script><div class=\"youtube_player\" videoID=\"".$id."\" width=\"100%\" height=\"100%\" style=\"height:50vw\" theme=\"light\" rel=\"0\" controls=\"1\" showinfo=\"1\" autoplay=\"0\"></div>";
             }
         }
 
         if (str_replace('www.', '', $url_parse['host']) == "vimeo.com") {
-            $id = substr(parse_url($url, PHP_URL_PATH), 1);
+            $id = tac_sanitize(substr(parse_url($url, PHP_URL_PATH), 1), 'video');
 
             if ($id != "") {
                 return "<script>document.addEventListener('DOMContentLoaded', function() {(tarteaucitron.job = tarteaucitron.job || []).push('vimeo');});</script><div class=\"vimeo_player\" videoID=\"".$id."\" width=\"100%\" height=\"100%\" style=\"height:50vw\"></div>";
@@ -169,7 +176,7 @@ function _tarteaucitron_admin_bar_css() {
 
         if (str_replace('www.', '', $url_parse['host']) == "dailymotion.com") {
             $array = explode("/", $url);
-            $id = end($array);
+            $id = tac_sanitize(end($array), 'video');
 
             if ($id != "") {
                 return "<script>document.addEventListener('DOMContentLoaded', function() {(tarteaucitron.job = tarteaucitron.job || []).push('dailymotion');});</script><div class=\"dailymotion_player\" videoID=\"".$id."\" width=\"100%\" height=\"100%\" style=\"height:50vw\" showinfo=\"1\" autoplay=\"0\"></div>";

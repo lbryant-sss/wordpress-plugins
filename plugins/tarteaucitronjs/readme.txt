@@ -32,6 +32,9 @@ Free for 7 days, licence required after the trial.
 
 == Changelog ==
 
+= 1.9.5 =
+* Fix a stored cross-site scripting potential issue
+
 = 1.9.4 =
 * Exclude the file from optimization plugins
 * Bump supported version

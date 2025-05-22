@@ -1,6 +1,6 @@
 === Better Find and Replace - AI-Powered Suggestions ===
 Contributors: codesolz, m.tuhin
-Tags: database, search replace, search, replace, find and replace 
+Tags: database, search replace, search, replace, search and replace, real-time replace, find, find and replace, gutenberg, block-editor, search replace elementor
 Donate link: https://codesolz.net/our-products/wordpress-plugin/real-time-auto-find-and-replace/?utm_source=wordpress.org&utm_medium=README_DONATE_BTN
 Requires at least: 4.0
 Tested up to: 6.8
@@ -8,7 +8,7 @@ Stable tag: 1.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Search and replace anything: text, images, URLs, code blocks, jQuery-Ajax loaded content in real time or Database. Advanced filters, no coding needed.
+Easily search and replace anything - text, images, URLs, code blocks or jQuery-Ajax content in real time or Database using filters, easy user-interface
 
 == Description ==
 
@@ -18,7 +18,7 @@ Search and replace anything: text, images, URLs, code blocks, jQuery-Ajax loaded
 
 Replace text or media in bulk with full support for serialized data, custom tables and dry-run previews. AI-powered suggestions help you rewrite or improve content instantly, making your edits smarter and faster.
 
-Easily swap images using drag-and-drop and auto-regenerate thumbnails. You can also update alt text, captions and metadata with the suggestion of AI for better SEO.
+Easily replace images using drag-and-drop and auto-regenerate thumbnails. You can also update or add  alt text, captions and metadata with the suggestion of AI for better SEO.
 
 Want to **change content without editing your database**? Use real-time masking to update text, links or HTML before the page loads — instantly and safely.
 
@@ -32,7 +32,7 @@ Built for developers, agencies and site owners who want fast, accurate control o
 * **Search and Replace Text** – Find and replace any text across your site, whether in static or dynamic content.
 * **Search and Replace Ajax/jQuery Content** – Works seamlessly with content loaded via Ajax or jQuery on the frontend.
 * **Find and Replace URLs** – Quickly search and replace outdated or incorrect URLs throughout your website.
-* **Replace Images and Attachment URLs** – Swap out image links and attachment URLs site-wide with precision.
+* **Replace Images and Attachment URLs** – Replace image links and attachment URLs site-wide with precision.
 * **Word Masking** – Mask specific words site-wide using flexible find and replace rules.
 * **Temporary Find-Replace Rules** – Create live, non-permanent replacements without altering your database.
 * **Edit Footer Credit** – Remove or update footer text without modifying HTML or database content.

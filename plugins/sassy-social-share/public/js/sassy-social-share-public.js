@@ -643,14 +643,7 @@ function heateorSssMoreSharingPopup(elem, postUrl, postTitle, twitterTitle){
 		title: "Xing",
 		redirect_url: "https://www.xing.com/spi/shares/new?cb=0&url=" + postUrl,
 		svg: '<svg focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="-6 -6 42 42"><path d="M 6 9 h 5 l 4 4 l -5 7 h -5 l 5 -7 z m 15 -4 h 5 l -9 13 l 4 8 h -5 l -4 -8 z" fill="#fff"></path> </svg>'
-	  },
-	  Yoolink: {
-	  	background_color:"#a2c538",
-		title: "Yoolink",
-		redirect_url: "http://auth.yoolink.to/authenticate/login?service=yoolink.to&landing_path=%2Faddorshare%3Furl_value%3D" + encodeURIComponent(postUrl) + "%26title%3D" + encodeURIComponent(postTitle),
-		svg: '<svg focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 32 32"><path fill="#fff" d="M16 4C9.37 4 4 9.373 4 16c0 6.628 5.372 12 12 12 6.626 0 12-5.372 12-12 0-6.627-5.374-12-12-12zm5.81 7.1c-.128.275-.346.655-.655 1.14l-3.694 5.942v4.908c0 .64-.14 1.118-.42 1.436a1.38 1.38 0 0 1-1.08.474c-.44 0-.8-.157-1.075-.47-.274-.313-.412-.794-.412-1.44v-4.91l-3.603-5.855c-.316-.528-.54-.94-.67-1.235-.13-.295-.197-.553-.197-.77 0-.36.133-.67.398-.93s.59-.39.98-.39c.41 0 .72.12.93.364.213.243.53.727.953 1.45l2.758 4.697 2.79-4.693c.17-.287.31-.53.423-.727.114-.198.24-.384.378-.556.14-.172.29-.305.46-.396.166-.09.37-.136.613-.136.376 0 .688.13.94.386.252.258.378.554.378.892 0 .275-.064.55-.19.823z"></path></svg>'
 	  }
-
 	};
 	var heateorSssMoreSharingServicesHtml = '<button id="heateor_sss_sharing_popup_close" class="close-button separated"><img src="'+ heateorSssCloseIconPath +'" /></button><div id="heateor_sss_sharing_more_content" data-href="'+ decodeURIComponent(postUrl) +'"><div class="filter"><svg aria-hidden="true" class="s-input-icon s-input-icon__search svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path fill="#666" d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z"></path></svg><input type="text" onkeyup="heateorSssFilterSharing(this.value.trim())" class="search"/></div><div class="all-services"><ul class="mini">';
 	for(var i in heateorSssMoreSharingServices){

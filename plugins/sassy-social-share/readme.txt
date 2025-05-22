@@ -3,8 +3,8 @@ Contributors: Heateor, kamirkhan, the_champ
 Donate link: https://www.heateor.com/donate/?action=Sassy+Social+Share
 Tags: social share, social sharing, social media, wordpress social share, share buttons, facebook share, facebook like, social share buttons, twitter tweet, whatsapp share, line share, gab share, gab social share, gab, parler share, parler social share, gettr, gettr share, gettr social share, mewe share, mewe social share, mewe, mastodon share, mastodon social share, mastodon, rutube share, rutube social share, rutube, google news, google news share, google news icon, RSS, RSS Feed, x, x share, yelp, google translate, Google maps, tiktok, Teams, flickr, threads, Gab, Gab share, Line, bluesky
 Requires at least: 2.5.0
-Tested up to: 6.8
-Stable tag: 3.3.74
+Tested up to: 6.8.1
+Stable tag: 3.3.75
 License: GPLv2 or later
 
 Slickest, Simplest and Optimized Share buttons. Facebook, X, Reddit, Pinterest, Whatsapp, Gab, Gettr and over 100 more.
@@ -22,7 +22,7 @@ This is the Simplest and Slickest Social Share plugin with optimized and great l
 * <a href="https://support.heateor.com/gdpr-and-our-plugins/">EU-GDPR Compliant</a>
 * Compatible with Gutenberg editor
 * Compatible with WPML and multilingual website
-* Compatible with myCRED (append myCRED referral ID at the end of the url being shared)
+* Compatible with myCRED (append myCRED referral ID at the end of the URL being shared)
 * Around **100 Social Sharing/Bookmarking** services
 * Social Media follow icons (Redirect website visitors to your Social Media pages)
 * Share counts are supported for Buffer, Reddit, Pinterest, Odnoklassniki, Fintel and Vkontakte
@@ -32,7 +32,7 @@ This is the Simplest and Slickest Social Share plugin with optimized and great l
 * Options to specify sharing icon background-color and logo color
 * Share counter customization options
 * Enable share count cache with option to control cache refresh time-frame
-* Enable/Disable vertical/floating sharing interface on mobile device
+* Enable/Disable vertical/floating social share bar on mobile device
 * **URL Shortening Service** integration
 * **Standard and Floating** layout for Social Share icons
 * **Customizable Target URL** for Social Sharing
@@ -123,6 +123,9 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 4. **Social Share Services**: Over 100 Social Share and Bookmarking services
 
 == Changelog ==
+= 3.3.75 [21 May 2025] =
+* [Improvement] Removed Yoolink from the social share networks
+
 = 3.3.74 [18 April 2025] =
 * [Security] Fixed an Open Redirect Vulnerability exposed in the Mastodon share in AMP
 * [Improvement] Compatible with WordPress 6.8
@@ -441,12 +444,12 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 [Bugfix] Sina Weibo share was not working
 [Bugfix] Facebook Messenger share was not working on mobile devices
 [Bugfix] "Search social networks" feature was not working at options page in admin area
-[Bugfix] bit.ly url shortener was not working
+[Bugfix] bit.ly URL shortener was not working
 [Improvement] Updated Facebook JS SDK to latest version 6.0
 [Improvement] Updated ClipBoard JS to latest version 2.0.6
 
 = 3.3.8 [1 March 2020] =
-[Bugfix] [Sassy_Follow_Icons] shortcode was not accepting "=" in the url of social networks. Now it can be used in encoded form.
+[Bugfix] [Sassy_Follow_Icons] shortcode was not accepting "=" in the URL of social networks. Now it can be used in encoded form.
 [Bugfix] Social Media Follow Icons were appearing broken in some cases
 [Improvement] Admin UI improvement
 [Improvement] Removed Wanelo, CiteULike and DZone from social share networks as these services are not functional anymore
@@ -526,7 +529,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 
 = 3.2.18 =
 * [Bugfix] Tumblr share stopped working
-* [Bugfix] Querystring parameter in the url was causing changes in the share counts for the webpage
+* [Bugfix] Querystring parameter in the URL was causing changes in the share counts for the webpage
 * [Improvement] Line share now works with the devices that doesn't support Line app
 * [Improvement] Removed Google+ from social share and social media follow icons
 * [Improvement] Removed white background from the slider arrow below the floating share icons
@@ -680,7 +683,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 * [New] Included Copy Link, Diaspora, Douban, Draugiem, Facebook Messenger, Google Classroom, Kik, Papaly, Polyvore, Refind, Skype, SMS, Trello, Viber and Telegram in sharing networks
 * [New] Added "Comment" icon in sharing networks to send users to comment form at the webpage
 * [New] Added search box above the social networks at options page in admin, to find the desired social networks easily
-* [New] Added option to append myCRED referral ID to the urls being shared
+* [New] Added option to append myCRED referral ID to the URLs being shared
 * [Improvement] Delicious share/bookmark counts are no longer supported, as Delicious bookmark count API is dead
 * [Improvement] Improved social share icons
 * [Bugfix] Twitter share count was not working in some cases
@@ -696,7 +699,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 * [Improvement] Share counts are now being rounded off to one decimal
 
 = 2.5.6 =
-* [Bugfix] Floating sharing icons were not picking up correct title and url at archive pages
+* [Bugfix] Floating sharing icons were not picking up correct title and URL at archive pages
 
 = 2.5.5 =
 * [Bugfix] Plugin "Settings" link at "Plugins" page in admin area was redirecting to wrong page
@@ -741,7 +744,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 = 2.4.2 =
 * [Bugfix] Facebook share counts were not appearing in some cases
 * [Bugfix] Shares specified in "Starting share count" option for individual posts/pages were not appearing at homepage
-* [Bugfix] Querystring variables were not being appended to the url being shared
+* [Bugfix] Querystring variables were not being appended to the URL being shared
 * [Bugfix] Border radius was not reverting to default when kept blank in "Theme Selection" section at sharing options page in admin area
 * [Improvement] "Share" was being displayed in total share counts for 0 shares, instead of "Shares"
 * [Improvement] Admin UI improvement
@@ -752,7 +755,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 * [Improvement] Admin UI improvement
 
 = 2.4 =
-* [Bugfix] Plugin was not picking the homepage url correctly if it was different from the WordPress installation directory
+* [Bugfix] Plugin was not picking the homepage URL correctly if it was different from the WordPress installation directory
 * [New] Included StockTwits and Instagram in sharing networks
 * [New] Included official Facebook share button in sharing networks
 
@@ -799,7 +802,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 * [New] Added option to specify time duration to refresh share count cache
 
 = 1.6 =
-* [Improvement] Improved bit.ly short url cache resulting in reduced page load time
+* [Improvement] Improved bit.ly short URL cache resulting in reduced page load time
 * [Improvement] Specified "heateor_sss_sharing_title" class name for the div containing title of sharing interface
 * [Improvement] Compatible with "Social Share myCRED Integration" add-on
 
@@ -846,7 +849,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 * [Improvement] CSS improvements
 
 = 1.6 =
-* [Improvement] Improved bit.ly short url cache resulting in reduced page load time
+* [Improvement] Improved bit.ly short URL cache resulting in reduced page load time
 * [Improvement] Specified "heateor_sss_sharing_title" class name for the div containing title of sharing interface
 * [Improvement] Compatible with "Social Share myCRED Integration" add-on
 
@@ -893,7 +896,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 * [New] Added option to disable/enable sharing on AMP pages
 
 = 2.4 =
-* [Bugfix] Plugin was not picking the homepage url correctly if it was different from the WordPress installation directory
+* [Bugfix] Plugin was not picking the homepage URL correctly if it was different from the WordPress installation directory
 * [New] Included StockTwits and Instagram in sharing networks
 * [New] Included official Facebook share button in sharing networks
 
@@ -904,7 +907,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 = 2.4.2 =
 * [Bugfix] Facebook share counts were not appearing in some cases
 * [Bugfix] Shares specified in "Starting share count" option for individual posts/pages were not appearing at homepage
-* [Bugfix] Querystring variables were not being appended to the url being shared
+* [Bugfix] Querystring variables were not being appended to the URL being shared
 * [Bugfix] Border radius was not reverting to default when kept blank in "Theme Selection" section at sharing options page in admin area
 * [Improvement] "Share" was being displayed in total share counts for 0 shares, instead of "Shares"
 * [Improvement] Admin UI improvement
@@ -951,7 +954,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 * [Bugfix] Plugin "Settings" link at "Plugins" page in admin area was redirecting to wrong page
 
 = 2.5.6 =
-* [Bugfix] Floating sharing icons were not picking up correct title and url at archive pages
+* [Bugfix] Floating sharing icons were not picking up correct title and URL at archive pages
 
 = 2.5.7 =
 * [Improvement] Horizontal sticky sharing bar is now responsive with auto-adjusting width according to device screen
@@ -965,7 +968,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 * [New] Included Copy Link, Diaspora, Douban, Draugiem, Facebook Messenger, Google Classroom, Kik, Papaly, Polyvore, Refind, Skype, SMS, Trello, Viber and Telegram in sharing networks
 * [New] Added "Comment" icon in sharing networks to send users to comment form at the webpage
 * [New] Added search box above the social networks at options page in admin, to find the desired social networks easily
-* [New] Added option to append myCRED referral ID to the urls being shared
+* [New] Added option to append myCRED referral ID to the URLs being shared
 * [Improvement] Delicious share/bookmark counts are no longer supported, as Delicious bookmark count API is dead
 * [Improvement] Improved social share icons
 * [Bugfix] Twitter share count was not working in some cases
@@ -1118,7 +1121,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 
 = 3.2.18 =
 * [Bugfix] Tumblr share stopped working
-* [Bugfix] Querystring parameter in the url was causing changes in the share counts for the webpage
+* [Bugfix] Querystring parameter in the URL was causing changes in the share counts for the webpage
 * [Improvement] Line share now works with the devices that doesn't support Line app
 * [Improvement] Removed Google+ from social share and social media follow icons
 * [Improvement] Removed white background from the slider arrow below the floating share icons
@@ -1198,7 +1201,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 [Bugfix] Pinterest Pin button was showing pin count even if share count was disabled from options
 
 = 3.3.8 [1 March 2020] =
-[Bugfix] [Sassy_Follow_Icons] shortcode was not accepting "=" in the url of social networks. Now it can be used in encoded form.
+[Bugfix] [Sassy_Follow_Icons] shortcode was not accepting "=" in the URL of social networks. Now it can be used in encoded form.
 [Bugfix] Social Media Follow Icons were appearing broken in some cases
 [Improvement] Admin UI improvement
 [Improvement] Removed Wanelo, CiteULike and DZone from social share networks as these services are not functional anymore
@@ -1207,7 +1210,7 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 [Bugfix] Sina Weibo share was not working
 [Bugfix] Facebook Messenger share was not working on mobile devices
 [Bugfix] "Search social networks" feature was not working at options page in admin area
-[Bugfix] bit.ly url shortener was not working
+[Bugfix] bit.ly URL shortener was not working
 [Improvement] Updated Facebook JS SDK to latest version 6.0
 [Improvement] Updated ClipBoard JS to latest version 2.0.6
 
@@ -1525,3 +1528,6 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 = 3.3.74 [18 April 2025] =
 * [Security] Fixed an Open Redirect Vulnerability exposed in the Mastodon share in AMP
 * [Improvement] Compatible with WordPress 6.8
+
+= 3.3.75 [21 May 2025] =
+* [Improvement] Removed Yoolink from the social share networks

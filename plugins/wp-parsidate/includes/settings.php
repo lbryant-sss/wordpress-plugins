@@ -381,7 +381,7 @@ function wpp_get_registered_settings() {
 				'std'     => 'disable',
 				'desc'    => __( "Display today's Jalali date in the WordPress admin bar.", 'wp-parsidate' ),
 			),
-			'sep_admin_bar_ate'   => array(
+			/*'sep_admin_bar_ate'   => array(
 				'id'   => 'sep_admin_bar_ate',
 				'type' => 'header',
 			),
@@ -400,7 +400,7 @@ function wpp_get_registered_settings() {
 				'options' => 'enable',
 				'std'     => 0,
 				'desc'    => __( "Don't worry about downloading website images and other files anymore, this option prevents users from right clicking", 'wp-parsidate' ),
-			),
+			),*/
 		) ),
 		'plugins' => apply_filters( 'wpp_plugins_compatibility_settings', array() ),
 	) );
