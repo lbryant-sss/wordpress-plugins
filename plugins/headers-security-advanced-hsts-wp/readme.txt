@@ -3,8 +3,8 @@ Contributors: unicorn03, unicorn07, erku, alexclassroom,
 Donate link: https://www.buymeacoffee.com/tentacleplugins
 Tags: headers security, hsts, headers, clickjacking, csp
 Requires at least: 4.7
-Tested up to: 6.8.0
-Stable tag: 5.0.43
+Tested up to: 6.8.1
+Stable tag: 5.0.44
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -333,14 +333,13 @@ This will cause the <a href="https://developers.cloudflare.com/cache/how-to/purg
 
 == Changelog ==
 
-= 5.0.43 =
+= 5.0.44 =
 I don't want to tell you what to do, but here's the thing: When you update the Headers Security Advanced & HSTS WP plugin, you don't just click a button, you enter a world of enhanced security and performance.
 
-With version 5.0.43, I have gone above and beyond to ensure that your experience is nothing short of exceptional. I have eliminated numerous bugs, improved annoying pixels, and updated the graphics in a sleek and modern way. The result? A plugin that not only looks great, but works even better.
+With version 5.0.44, I have gone above and beyond to ensure that your experience is nothing short of exceptional. I have eliminated numerous bugs, improved annoying pixels, and updated the graphics in a sleek and modern way. The result? A plugin that not only looks great, but works even better.
 
 But that's not all. This update brings seamless integration with the industry's leading security monitoring platforms-Sentry, Datadog, and Report URI. These integrations offer enhanced reporting capabilities, providing detailed information on content security policy (CSP) violations and improving site security.
 
-- New: Wordpress 6.8.0 compatibility 
-- Fixed: Fixed a critical error that occurred when enabling the “Enable preload” option due to an invalid string format in the printf function . The error generated an “Unknown format specifier” message. Now the string contains the correct format specifiers (%s), preventing further crashes;
+- New: Wordpress 6.8.1 compatibility 
 
-By updating to 5.0.43, you’re not just improving your site’s security – you’re optimizing it with the best tools available. Our goal is to provide you with the most beautiful, fastest, and most impressive plugin experience around. So, shall we get started? Hit "update" and step into a new era of security and performance with Headers Security Advanced & HSTS WP. Enjoy the upgrade!
+By updating to 5.0.44, you’re not just improving your site’s security – you’re optimizing it with the best tools available. Our goal is to provide you with the most beautiful, fastest, and most impressive plugin experience around. So, shall we get started? Hit "update" and step into a new era of security and performance with Headers Security Advanced & HSTS WP. Enjoy the upgrade!

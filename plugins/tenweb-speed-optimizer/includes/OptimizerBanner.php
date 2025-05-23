@@ -111,8 +111,10 @@ class OptimizerBanner
 
     private function AutoUpdateBanner()
     {
-        $this->enqueueAutoUpdateScripts();
-        require_once TENWEB_SO_PLUGIN_DIR . '/views/autoupdate_banner.php';
+        if (strtolower(TWO_SO_ORGANIZATION_NAME) == '10web') {
+            $this->enqueueAutoUpdateScripts();
+            require_once TENWEB_SO_PLUGIN_DIR . '/views/autoupdate_banner.php';
+        }
     }
 
     public static function two_set_autoupdate_from_banner()

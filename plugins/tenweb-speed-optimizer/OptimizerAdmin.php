@@ -782,6 +782,9 @@ class OptimizerAdmin
 
     public static function two_enqueue_admin_assets($hook_suffix)
     {
+        if ($hook_suffix === 'plugins.php' && strtolower(TWO_SO_ORGANIZATION_NAME) != '10web') {
+            wp_enqueue_script('two_update_white_label_js', TENWEB_SO_URL . '/assets/js/two_update_white_label.js', [ 'jquery' ], TENWEB_SO_VERSION);
+        }
         wp_register_style('two-open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800&display=swap');
 
         if ($hook_suffix == 'toplevel_page_two_settings_page') {
@@ -872,7 +875,7 @@ class OptimizerAdmin
                 '\TenWebOptimizer\OptimizerAdmin',
                 'settings_page',
             ],
-            strtolower(TWO_SO_ORGANIZATION_NAME) == '10web' ? TENWEB_SO_URL . '/assets/images/logo_green.svg' : '',
+            \TenWebOptimizer\OptimizerUtils::get_booster_icon(),
             30
         );
         add_submenu_page(

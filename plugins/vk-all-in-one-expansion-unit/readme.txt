@@ -81,6 +81,9 @@ e.g.
 
 == Changelog ==
 
+= 9.108.2 =
+[ Bug Fix ][ Share button ] Fixed share buttons from being displayed inside forms.
+
 = 9.108.1 =
 [ Bug Fix ][ Meta Description ] Refactor meta-description.php to improve excerpt support and sanitize function
 

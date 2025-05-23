@@ -45,13 +45,13 @@ $wsAmeFreeAutoloader = new YahnisElsts\AdminMenuEditor\AmeAutoloader([
 $wsAmeFreeAutoloader->register();
 require_once $thisDirectory . '/../customizables/constants.php';
 
-if ( file_exists($thisDirectory . '/../extras/pro-autoloader.php') ) {
-	require_once $thisDirectory . '/../extras/pro-autoloader.php';
-}
-
 require_once $thisDirectory . '/module.php';
 require_once $thisDirectory . '/persistent-module.php';
 require_once $thisDirectory . '/shortcodes.php';
+
+if ( file_exists($thisDirectory . '/../extras/pro-dependencies.php') ) {
+	require_once $thisDirectory . '/../extras/pro-dependencies.php';
+}
 
 if ( !class_exists('WPMenuEditor', false) ) {
 	require_once $thisDirectory . '/menu-editor-core.php';

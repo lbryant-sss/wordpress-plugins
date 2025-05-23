@@ -4192,7 +4192,7 @@ function ameOnDomReady() {
 					victims = _.difference(validActors, alwaysAllowedActors),
 					shouldHide;
 
-				//First, lets check who has access. Maybe this item is already hidden from the victims.
+				//First, let's check who has access. Maybe this item is already hidden from the victims.
 				shouldHide = _.some(victims, _.curry(actorCanAccessMenu, 2)(menuItem));
 
 				let keepEnabled = objectFillKeys(alwaysAllowedActors, true),

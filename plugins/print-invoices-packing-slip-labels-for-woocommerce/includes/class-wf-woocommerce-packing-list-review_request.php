@@ -52,6 +52,10 @@ class Wf_Woocommerce_Packing_List_Review_Request
 
 		add_action($this->activation_hook, array($this, 'on_activate'));
 		add_action($this->deactivation_hook, array($this, 'on_deactivate'));
+		add_action('init', array($this, 'wt_pklist_init_hooks'));
+	}
+	public function wt_pklist_init_hooks()
+	{
 
 		if ($this->check_condition()) /* checks the banner is active now */ {
 			$this->banner_message = sprintf(__('Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s %5$s. %6$s Less than a minute of your time will motivate us to keep doing what we do. We would really appreciate if you could take a moment to drop a quick review that motivate us to keep going.', 'print-invoices-packing-slip-labels-for-woocommerce'), '<b>', '</b>', '<b>', $this->plugin_title, '</b>', '<br />');

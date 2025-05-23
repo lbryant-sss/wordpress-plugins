@@ -2234,7 +2234,7 @@ class OptimizerUtils
                 \TenWebWpTransients\OptimizerTransients::set(TENWEB_PREFIX . '_plan_title', '', HOUR_IN_SECONDS);
             }
 
-            if (isset($response['response']['code'])) {
+            if (!is_wp_error($response) && isset($response['response']['code'])) {
                 \TenWebWpTransients\OptimizerTransients::set(TENWEB_PREFIX . '_subscription_response_code', (string) $response['response']['code'], HOUR_IN_SECONDS);
             }
         }
@@ -2931,5 +2931,20 @@ class OptimizerUtils
         }
 
         return $size;
+    }
+
+    public static function get_booster_icon()
+    {
+        if (defined('TENWEB_WHITELABEL_DIR') && is_dir(TENWEB_WHITELABEL_DIR . '/images')) {
+            $icon_dir = TENWEB_WHITELABEL_DIR . '/images';
+            $icons = scandir($icon_dir);
+
+            //return first element
+            if (isset($icons[2]) && $icons[2] != '.' && $icons != '..') {
+                return TENWEB_URL_WHITELABEL . '/images/' . $icons[2];
+            }
+        }
+
+        return strtolower(TWO_SO_ORGANIZATION_NAME) == '10web' ? TENWEB_SO_URL . '/assets/images/logo_green.svg' : '';
     }
 }
