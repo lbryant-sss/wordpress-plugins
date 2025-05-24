@@ -2,9 +2,9 @@
 Contributors: qodeinteractive
 Tags: elementor, elementor addons, elementor widgets, elementor elements, addons
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 1.8.9
+Stable tag: 1.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -342,6 +342,11 @@ From wordpress.org
 
 
 == Changelog ==
+
+= 1.9.0 - 23-05-2025 =
+- Updated Chart.js plugin to v4.4.8
+- Added 'Hide Pagination' option for sliders
+- Fixed template translation for 'Dual Image with Content' widget
 
 = 1.8.9 - 06-02-2025 =
 - Improved plugin security

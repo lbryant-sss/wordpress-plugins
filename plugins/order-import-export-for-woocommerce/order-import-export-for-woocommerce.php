@@ -6,12 +6,12 @@ Plugin URI: https://wordpress.org/plugins/order-import-export-for-woocommerce/
 Description: Export and Import Order detail including line items, From and To your WooCommerce Store.
 Author: WebToffee
 Author URI: https://www.webtoffee.com/product/woocommerce-order-coupon-subscription-export-import/
-Version: 2.6.1
+Version: 2.6.2
 Text Domain: order-import-export-for-woocommerce
 Domain Path: /languages
 Requires at least: 3.0
 Requires PHP: 5.6
-WC tested up to: 9.7.0
+WC tested up to: 9.8.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -48,7 +48,7 @@ if ( !defined( 'WT_IEW_DEBUG_BASIC_TROUBLESHOOT' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'WT_O_IEW_VERSION', '2.6.1' );
+define( 'WT_O_IEW_VERSION', '2.6.2' );
 
 /**
  * The code that runs during plugin activation.
@@ -143,9 +143,11 @@ if ( !get_option( 'wt_o_iew_is_active' ) ) {
 	activate_wt_import_export_for_woo_basic_order();
 }
 
-if ( get_option( 'wt_o_iew_is_active' ) ) {
-    run_wt_import_export_for_woo_basic_order();       
-}
+add_action( 'init', function() {
+    if ( get_option( 'wt_o_iew_is_active' ) ) {
+        run_wt_import_export_for_woo_basic_order();       
+    }
+} );
 
 /* Plugin page links */
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wt_oiew_plugin_action_links_basic_order' );
@@ -205,6 +207,11 @@ include_once plugin_dir_path( __FILE__ ) . 'includes/class-wf-orderimpexp-plugin
 
 
 include_once 'class-wt-order-review-request.php';
+
+// Load Common Helper Class (needed by non-apache-info)
+if ( ! class_exists( 'Wt_Import_Export_For_Woo_Basic_Common_Helper' ) ) {
+    require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wt-common-helper.php';
+}
 
 // Add dismissible server info for file restrictions
 include_once plugin_dir_path( __FILE__ ) . 'includes/class-wt-non-apache-info.php';

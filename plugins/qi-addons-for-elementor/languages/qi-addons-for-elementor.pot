@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Qi Addons for Elementor plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Qi Addons for Elementor 1.8.9\n"
+"Project-Id-Version: Qi Addons for Elementor 1.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/qi-addons-for-elementor\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-06T11:13:51+00:00\n"
+"POT-Creation-Date: 2025-05-23T10:12:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: qi-addons-for-elementor\n"
@@ -118,6 +118,7 @@ msgstr ""
 #: inc/shortcodes/charts/class-qiaddonsforelementor-doughnutandpiecharts-shortcode.php:349
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:652
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1453
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1478
 #: inc/shortcodes/dual-image-with-content/class-qiaddonsforelementor-dual-image-with-content-shortcode.php:177
 #: inc/shortcodes/graphs/class-qiaddonsforelementor-graphs-shortcode.php:203
 #: inc/shortcodes/helper.php:110
@@ -232,7 +233,7 @@ msgstr ""
 #: inc/shortcodes/cards-slider/class-qiaddonsforelementor-cards-slider-shortcode.php:205
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:387
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1190
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1644
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1669
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:215
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:476
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:769
@@ -492,7 +493,7 @@ msgstr ""
 #: inc/admin/inc/shortcodes/translators/elementor/class-qiaddonsforelementor-framework-elementor-translator.php:756
 #: inc/plugins/woocommerce/shortcodes/product-category-list/class-qiaddonsforelementor-product-category-list-shortcode.php:82
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:948
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1969
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1997
 #: inc/shortcodes/clients-list/class-qiaddonsforelementor-clients-list-shortcode.php:71
 #: inc/shortcodes/clients-list/class-qiaddonsforelementor-clients-list-shortcode.php:85
 #: inc/shortcodes/clients-slider/class-qiaddonsforelementor-clients-slider-shortcode.php:69
@@ -602,7 +603,7 @@ msgstr ""
 #: inc/shortcodes/banner/variations/in-box/helper.php:120
 #: inc/shortcodes/button/class-qiaddonsforelementor-button-shortcode.php:1178
 #: inc/shortcodes/charts/class-qiaddonsforelementor-doughnutandpiecharts-shortcode.php:351
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1455
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1480
 #: inc/shortcodes/countdown/class-qiaddonsforelementor-countdown-shortcode.php:228
 #: inc/shortcodes/graphs/class-qiaddonsforelementor-graphs-shortcode.php:205
 #: inc/shortcodes/image-gallery-masonry/class-qiaddonsforelementor-image-gallery-masonry-shortcode.php:152
@@ -907,8 +908,8 @@ msgid "Documentation"
 msgstr ""
 
 #: inc/admin/inc/admin-pages/sub-pages/widgets/templates/parts/no-woocommerce.php:12
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:573
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:583
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:593
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:603
 #: inc/plugins/woocommerce/shortcodes/add-to-cart-button/class-qiaddonsforelementor-add-to-cart-button-shortcode.php:34
 #: inc/plugins/woocommerce/shortcodes/product-category-list/class-qiaddonsforelementor-product-category-list-shortcode.php:43
 #: inc/plugins/woocommerce/shortcodes/product-list/class-qiaddonsforelementor-product-list-shortcode.php:44
@@ -1209,10 +1210,10 @@ msgstr ""
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:50
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:60
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:100
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:120
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:200
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:350
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:360
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:130
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:220
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:370
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:380
 #: inc/blog/shortcodes/blog-list/class-qiaddonsforelementor-blog-list-shortcode.php:44
 #: inc/blog/shortcodes/blog-slider/class-qiaddonsforelementor-blog-slider-shortcode.php:44
 #: inc/shortcodes/banner/class-qiaddonsforelementor-banner-shortcode.php:45
@@ -1239,25 +1240,26 @@ msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:40
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:90
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:130
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:140
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:150
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:160
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:170
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:180
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:190
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:200
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:210
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:220
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:270
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:280
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:230
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:240
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:290
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:300
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:310
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:320
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:330
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:400
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:340
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:350
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:420
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:440
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:450
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:460
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:470
 #: inc/shortcodes/cards-gallery/class-qiaddonsforelementor-cards-gallery-shortcode.php:38
 #: inc/shortcodes/device-carousel/class-qiaddonsforelementor-device-carousel-shortcode.php:45
 #: inc/shortcodes/device-slider/class-qiaddonsforelementor-device-slider-shortcode.php:45
@@ -1283,8 +1285,8 @@ msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:70
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:80
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:380
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:390
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:400
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:410
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:44
 #: inc/shortcodes/how-to/class-qiaddonsforelementor-how-to-shortcode.php:38
 #: inc/shortcodes/table-of-contents/class-qiaddonsforelementor-table-of-contents-shortcode.php:38
@@ -1308,11 +1310,12 @@ msgid "Content Menu"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:110
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:240
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:250
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:120
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:260
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:370
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:460
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:270
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:280
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:390
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:480
 #: inc/shortcodes/before-after/class-qiaddonsforelementor-before-after-shortcode.php:44
 #: inc/shortcodes/cards-slider/class-qiaddonsforelementor-cards-slider-shortcode.php:38
 #: inc/shortcodes/countdown/class-qiaddonsforelementor-countdown-shortcode.php:44
@@ -1327,54 +1330,62 @@ msgid "Showcase"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:119
-msgid "Data Table"
+msgid "Content Slider"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:129
-msgid "Divided Device Slider"
+msgid "Data Table"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:139
-msgid "Divided Showcase Carousel"
+msgid "Divided Device Slider"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:149
-msgid "Divided Slider Diverge"
+msgid "Divided Showcase Carousel"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:159
-msgid "Divided Slider Reveal"
+msgid "Divided Slider Diverge"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:169
-msgid "Fixed Project Slider"
+msgid "Divided Slider Reveal"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:179
-msgid "Flip Box"
+msgid "Dual Image Carousel"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:189
-msgid "Floating Item Showcase"
+msgid "Fixed Project Slider"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:199
-msgid "Google Map"
+msgid "Flip Box"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:209
-msgid "Horizontal Double Row Projects"
+msgid "Floating Item Showcase"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:219
-msgid "Hover-aware Slider"
+msgid "Google Map"
 msgstr ""
 
 #: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:229
+msgid "Horizontal Double Row Projects"
+msgstr ""
+
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:239
+msgid "Hover-aware Slider"
+msgstr ""
+
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:249
 msgid "Icon Progress Bar"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:230
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:250
 #: inc/shortcodes/charts/class-qiaddonsforelementor-doughnutandpiecharts-shortcode.php:38
 #: inc/shortcodes/counter/class-qiaddonsforelementor-counter-shortcode.php:44
 #: inc/shortcodes/graphs/class-qiaddonsforelementor-graphs-shortcode.php:38
@@ -1385,59 +1396,59 @@ msgstr ""
 msgid "Infographics"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:239
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:259
 msgid "Image Hotspots"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:249
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:269
 msgid "Image Marquee"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:259
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:279
 msgid "Interactive Info Images"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:269
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:289
 msgid "Interactive Project Carousel"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:279
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:299
 msgid "Intro Glitch Effect"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:289
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:309
 msgid "Intro Scrolling Images"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:299
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:319
 msgid "Intro Swipe Images"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:309
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:329
 msgid "MailChimp Form"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:310
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:430
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:330
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:450
 #: inc/plugins/contact-form-7/shortcodes/contact-form-7/class-qiaddonsforelementor-contact-form-7-shortcode.php:34
 #: inc/plugins/wp-forms/shortcodes/wp-forms/class-qiaddonsforelementor-wp-forms-shortcode.php:34
 msgid "Form Style"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:319
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:339
 msgid "News Ticker"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:329
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:349
 msgid "Numbered Slider"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:339
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:359
 msgid "Premium Button"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:340
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:410
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:360
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:430
 #: inc/shortcodes/accordion/class-qiaddonsforelementor-accordion-shortcode.php:44
 #: inc/shortcodes/animated-text/class-qiaddonsforelementor-animated-text-shortcode.php:38
 #: inc/shortcodes/blockquote/class-qiaddonsforelementor-blockquote-shortcode.php:49
@@ -1460,142 +1471,142 @@ msgstr ""
 msgid "Typography"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:349
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:369
 msgid "Pricing Slider"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:359
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:379
 msgid "Rating"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:369
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:389
 msgid "Rotating Image Tiles"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:379
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:399
 msgid "Social Links"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:389
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:409
 msgid "Social Share Buttons"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:399
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:419
 msgid "Stacked Item Scroll"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:409
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:429
 msgid "Text Gradient"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:419
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:439
 msgid "Textual Project Showcase"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:429
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:449
 msgid "Typeforms Form"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:439
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:459
 msgid "Vertical Circled Slider"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:449
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:469
 msgid "Vertical Project Reel"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:459
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:479
 msgid "Vertical Timeline"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:469
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:489
 msgid "Comments Template"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:470
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:481
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:492
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:503
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:514
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:525
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:536
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:547
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:558
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:593
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:604
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:615
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:626
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:637
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:648
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:659
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:490
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:501
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:512
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:523
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:534
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:545
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:556
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:567
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:578
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:613
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:624
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:635
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:646
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:657
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:668
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:679
 msgid "Theme Builder"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:480
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:500
 msgid "Featured Image"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:491
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:511
 msgid "Post Author"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:502
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:522
 msgid "Post Comments Number"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:513
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:533
 msgid "Post Content"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:524
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:544
 msgid "Post Date"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:535
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:555
 msgid "Post Navigation"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:546
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:566
 msgid "Post Terms"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:557
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:577
 msgid "Post Title"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:572
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:592
 msgid "Product Comparison"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:582
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:602
 msgid "Order Tracking Form"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:592
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:612
 msgid "Product Add To Cart"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:603
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:623
 msgid "Product Description"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:614
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:634
 msgid "Product Media"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:625
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:645
 msgid "Product Meta"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:636
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:656
 msgid "Product Price"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:647
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:667
 msgid "Product Rating"
 msgstr ""
 
-#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:658
+#: inc/admin/inc/shortcodes/promotion-shortcodes/helper.php:678
 msgid "Product Tabs"
 msgstr ""
 
@@ -1865,9 +1876,9 @@ msgstr ""
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1139
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1154
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1169
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2156
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2171
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2186
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2184
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2199
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2214
 #: inc/shortcodes/clients-list/class-qiaddonsforelementor-clients-list-shortcode.php:110
 #: inc/shortcodes/clients-list/class-qiaddonsforelementor-clients-list-shortcode.php:120
 #: inc/shortcodes/clients-list/class-qiaddonsforelementor-clients-list-shortcode.php:132
@@ -2239,8 +2250,8 @@ msgstr ""
 #: inc/shortcodes/call-to-action/class-qiaddonsforelementor-call-to-action-shortcode.php:63
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1116
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1128
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2133
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2145
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2161
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2173
 #: inc/shortcodes/countdown/class-qiaddonsforelementor-countdown-shortcode.php:53
 #: inc/shortcodes/counter/class-qiaddonsforelementor-counter-shortcode.php:55
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:63
@@ -3088,7 +3099,7 @@ msgstr ""
 #: inc/shortcodes/button/class-qiaddonsforelementor-button-shortcode.php:144
 #: inc/shortcodes/button/class-qiaddonsforelementor-button-shortcode.php:429
 #: inc/shortcodes/button/class-qiaddonsforelementor-button-shortcode.php:965
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1635
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1660
 #: inc/shortcodes/countdown/class-qiaddonsforelementor-countdown-shortcode.php:92
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:206
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:467
@@ -3171,7 +3182,7 @@ msgstr ""
 #: inc/shortcodes/cards-slider/class-qiaddonsforelementor-cards-slider-shortcode.php:238
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:436
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1241
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1689
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1714
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:263
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:531
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:790
@@ -3190,7 +3201,7 @@ msgstr ""
 #: inc/plugins/wp-forms/shortcodes/wp-forms/class-qiaddonsforelementor-wp-forms-shortcode.php:170
 #: inc/plugins/wp-forms/shortcodes/wp-forms/class-qiaddonsforelementor-wp-forms-shortcode.php:432
 #: inc/shortcodes/accordion/class-qiaddonsforelementor-accordion-shortcode.php:247
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1697
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1722
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:272
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:540
 msgid "Active"
@@ -3221,7 +3232,7 @@ msgstr ""
 #: inc/plugins/wp-forms/shortcodes/wp-forms/class-qiaddonsforelementor-wp-forms-shortcode.php:243
 #: inc/plugins/wp-forms/shortcodes/wp-forms/class-qiaddonsforelementor-wp-forms-shortcode.php:473
 #: inc/shortcodes/accordion/class-qiaddonsforelementor-accordion-shortcode.php:304
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1742
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1767
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:331
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:616
 msgid "Active End"
@@ -3234,7 +3245,7 @@ msgstr ""
 #: inc/shortcodes/accordion/class-qiaddonsforelementor-accordion-shortcode.php:312
 #: inc/shortcodes/button/class-qiaddonsforelementor-button-shortcode.php:308
 #: inc/shortcodes/button/class-qiaddonsforelementor-button-shortcode.php:593
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1750
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1775
 #: inc/shortcodes/countdown/class-qiaddonsforelementor-countdown-shortcode.php:215
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:339
 #: inc/shortcodes/faq/class-qiaddonsforelementor-faq-shortcode.php:624
@@ -3279,7 +3290,7 @@ msgstr ""
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1005
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1159
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1337
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1758
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1783
 #: inc/shortcodes/countdown/class-qiaddonsforelementor-countdown-shortcode.php:255
 #: inc/shortcodes/countdown/class-qiaddonsforelementor-countdown-shortcode.php:283
 #: inc/shortcodes/counter/class-qiaddonsforelementor-counter-shortcode.php:72
@@ -3901,26 +3912,26 @@ msgstr ""
 #: inc/plugins/woocommerce/shortcodes/product-list/class-qiaddonsforelementor-product-list-shortcode.php:83
 #: inc/plugins/woocommerce/shortcodes/product-slider/class-qiaddonsforelementor-product-slider-shortcode.php:85
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:883
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1907
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1935
 msgid "Query"
 msgstr ""
 
 #: inc/plugins/woocommerce/shortcodes/product-category-list/class-qiaddonsforelementor-product-category-list-shortcode.php:80
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:959
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1980
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2008
 msgid "Additional Params"
 msgstr ""
 
 #: inc/plugins/woocommerce/shortcodes/product-category-list/class-qiaddonsforelementor-product-category-list-shortcode.php:83
 #: inc/plugins/woocommerce/shortcodes/product-category-list/class-qiaddonsforelementor-product-category-list-shortcode.php:92
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1021
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2040
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2068
 msgid "Taxonomy IDs"
 msgstr ""
 
 #: inc/plugins/woocommerce/shortcodes/product-category-list/class-qiaddonsforelementor-product-category-list-shortcode.php:93
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1022
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2041
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2069
 msgid "Separate taxonomy IDs with commas"
 msgstr ""
 
@@ -4056,7 +4067,7 @@ msgstr ""
 #: inc/plugins/woocommerce/shortcodes/product-category-list/variations/info-side/info-side.php:32
 #: inc/shortcodes/call-to-action/class-qiaddonsforelementor-call-to-action-shortcode.php:135
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1153
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2170
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2198
 #: inc/shortcodes/icon-with-text/class-qiaddonsforelementor-icon-with-text-shortcode.php:131
 #: inc/shortcodes/info-cards/class-qiaddonsforelementor-info-cards-shortcode.php:304
 #: inc/shortcodes/interactive-link-showcase/class-qiaddonsforelementor-interactive-link-showcase-shortcode.php:239
@@ -4526,7 +4537,7 @@ msgstr ""
 #: inc/shortcodes/call-to-action/class-qiaddonsforelementor-call-to-action-shortcode.php:114
 #: inc/shortcodes/charts/class-qiaddonsforelementor-doughnutandpiecharts-shortcode.php:235
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1125
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2142
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2170
 #: inc/shortcodes/clients-list/class-qiaddonsforelementor-clients-list-shortcode.php:118
 #: inc/shortcodes/clients-slider/class-qiaddonsforelementor-clients-slider-shortcode.php:210
 #: inc/shortcodes/counter/class-qiaddonsforelementor-counter-shortcode.php:318
@@ -4564,7 +4575,7 @@ msgstr ""
 #: inc/shortcodes/call-to-action/class-qiaddonsforelementor-call-to-action-shortcode.php:154
 #: inc/shortcodes/charts/class-qiaddonsforelementor-doughnutandpiecharts-shortcode.php:256
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1168
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2185
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2213
 #: inc/shortcodes/clients-list/class-qiaddonsforelementor-clients-list-shortcode.php:140
 #: inc/shortcodes/clients-slider/class-qiaddonsforelementor-clients-slider-shortcode.php:232
 #: inc/shortcodes/counter/class-qiaddonsforelementor-counter-shortcode.php:339
@@ -4602,7 +4613,7 @@ msgstr ""
 #: inc/shortcodes/call-to-action/class-qiaddonsforelementor-call-to-action-shortcode.php:124
 #: inc/shortcodes/charts/class-qiaddonsforelementor-doughnutandpiecharts-shortcode.php:245
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1138
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2155
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2183
 #: inc/shortcodes/clients-list/class-qiaddonsforelementor-clients-list-shortcode.php:128
 #: inc/shortcodes/clients-slider/class-qiaddonsforelementor-clients-slider-shortcode.php:220
 #: inc/shortcodes/counter/class-qiaddonsforelementor-counter-shortcode.php:328
@@ -5951,16 +5962,19 @@ msgstr ""
 
 #: inc/shortcodes/call-to-action/class-qiaddonsforelementor-call-to-action-shortcode.php:95
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:653
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1454
 msgid "Below 1024px"
 msgstr ""
 
 #: inc/shortcodes/call-to-action/class-qiaddonsforelementor-call-to-action-shortcode.php:96
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:654
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1455
 msgid "Below 768px"
 msgstr ""
 
 #: inc/shortcodes/call-to-action/class-qiaddonsforelementor-call-to-action-shortcode.php:97
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:655
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1456
 msgid "Below 680px"
 msgstr ""
 
@@ -6336,13 +6350,13 @@ msgid "Legend Alignment"
 msgstr ""
 
 #: inc/shortcodes/charts/class-qiaddonsforelementor-doughnutandpiecharts-shortcode.php:350
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1454
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1479
 #: inc/shortcodes/graphs/class-qiaddonsforelementor-graphs-shortcode.php:204
 msgid "Start"
 msgstr ""
 
 #: inc/shortcodes/charts/class-qiaddonsforelementor-doughnutandpiecharts-shortcode.php:352
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1456
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1481
 #: inc/shortcodes/graphs/class-qiaddonsforelementor-graphs-shortcode.php:206
 msgid "End"
 msgstr ""
@@ -6580,59 +6594,59 @@ msgid "Enable Slider Pagination"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:914
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1935
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1963
 msgid "Posts per Page"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:924
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1945
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1973
 msgid "Order By"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:934
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1955
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1983
 msgid "Order"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:949
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1970
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1998
 msgid "Post IDs"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:950
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1004
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1971
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2024
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1999
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2052
 msgid "Taxonomy Slug"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:951
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1972
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2000
 msgid "Author Name"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:968
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1989
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2017
 msgid "Posts IDs"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:969
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1990
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2018
 msgid "Separate post IDs with commas"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:987
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2007
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2035
 msgid "Taxonomy"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1040
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2058
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2086
 msgid "Author Slug"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-list-shortcode.php:1113
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2130
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:2158
 msgid "Item Layout"
 msgstr ""
 
@@ -6782,72 +6796,77 @@ msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1441
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1466
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1487
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1507
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1524
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1567
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1625
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1636
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1645
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1665
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1682
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1491
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1512
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1532
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1549
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1592
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1650
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1661
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1670
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1690
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1698
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1718
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1735
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1707
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1715
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1723
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1743
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1751
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1759
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1782
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1810
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1760
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1768
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1776
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1784
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1807
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1837
 msgid "Slider Pagination Style"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1451
-msgid "Pagination Alignment"
+msgid "Hide Pagination"
 msgstr ""
 
 #: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1476
+msgid "Pagination Alignment"
+msgstr ""
+
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1501
 msgid "Enable Numbers"
 msgstr ""
 
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1494
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1519
 msgid "Numbers Color"
 msgstr ""
 
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1514
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1539
 msgid "Numbers Typography"
 msgstr ""
 
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1534
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1559
 msgid "Pagination Offset"
 msgstr ""
 
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1577
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1602
 msgid "Pagination Offset from Edge"
 msgstr ""
 
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1653
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1678
 msgid "Pagination Color"
 msgstr ""
 
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1672
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1697
 msgid "Pagination Border"
 msgstr ""
 
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1705
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1730
 msgid "Pagination Active Color"
 msgstr ""
 
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1725
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1750
 msgid "Pagination Active Border"
 msgstr ""
 
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1766
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1791
 msgid "Pagination Size"
 msgstr ""
 
-#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1789
+#: inc/shortcodes/class-qiaddonsforelementor-slider-shortcode.php:1814
 msgid "Space Between Bullets"
 msgstr ""
 
@@ -7950,7 +7969,7 @@ msgstr ""
 msgid "Step Size"
 msgstr ""
 
-#: inc/shortcodes/helper.php:158
+#: inc/shortcodes/helper.php:180
 msgid "Select"
 msgstr ""
 

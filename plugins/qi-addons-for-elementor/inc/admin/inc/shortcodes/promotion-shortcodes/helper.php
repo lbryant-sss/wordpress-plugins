@@ -114,6 +114,16 @@ if ( ! function_exists( 'qi_addons_for_elementor_promotion_shortcodes_list' ) ) 
 				'active'        => false,
 				'icon'          => 'qodef-custom-elementor-icon qi-addons-for-elementor-premium-content-menu',
 			),
+			'qi_addons_for_elementor_premium_content_slider' => array(
+				'base'          => 'content-slider',
+				'title'         => esc_html__( 'Content Slider', 'qi-addons-for-elementor' ),
+				'subcategory'   => esc_html__( 'Showcase', 'qi-addons-for-elementor' ),
+				'demo'          => 'https://qodeinteractive.com/qi-addons-for-elementor/content-slider/',
+				'documentation' => 'https://qodeinteractive.com/qi-addons-for-elementor/documentation/#content_slider',
+				'premium'       => true,
+				'active'        => false,
+				'icon'          => 'qodef-custom-elementor-icon qi-addons-for-elementor-premium-content-slider',
+			),
 			'qi_addons_for_elementor_premium_data_table'   => array(
 				'base'          => 'data-table',
 				'title'         => esc_html__( 'Data Table', 'qi-addons-for-elementor' ),
@@ -163,6 +173,16 @@ if ( ! function_exists( 'qi_addons_for_elementor_promotion_shortcodes_list' ) ) 
 				'premium'       => true,
 				'active'        => false,
 				'icon'          => 'qodef-custom-elementor-icon qi-addons-for-elementor-premium-divided-slider-reveal',
+			),
+			'qi_addons_for_elementor_premium_dual_image_carousel' => array(
+				'base'          => 'dual-image-carousel',
+				'title'         => esc_html__( 'Dual Image Carousel', 'qi-addons-for-elementor' ),
+				'subcategory'   => esc_html__( 'Creative', 'qi-addons-for-elementor' ),
+				'demo'          => 'https://qodeinteractive.com/qi-addons-for-elementor/dual-image-carousel/',
+				'documentation' => 'https://qodeinteractive.com/qi-addons-for-elementor/documentation/#dual-image-carousel',
+				'premium'       => true,
+				'active'        => false,
+				'icon'          => 'qodef-custom-elementor-icon qi-addons-for-elementor-premium-dual-image-carousel',
 			),
 			'qi_addons_for_elementor_premium_fixed_project_slider' => array(
 				'base'          => 'fixed-project-slider',

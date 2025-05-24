@@ -588,8 +588,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 			$atts['holder_classes'] = $this->get_holder_classes( $atts );
 			$atts['title']          = $this->get_modified_title( $atts );
 
-			// Check to prevent manual insertion of forbidden ids.
-			$atts['bottom_section'] = ! empty( $atts['bottom_section'] ) && isset( $allowed_template_ids[ $atts['bottom_section'] ] ) ? $atts['bottom_section'] : '';
+			$atts['bottom_section'] = qi_addons_for_elementor_check_elementor_template( $atts['bottom_section'], $allowed_template_ids );
 
 			return qi_addons_for_elementor_get_template_part( 'shortcodes/dual-image-with-content', 'templates/dual-image-with-content', '', $atts );
 		}

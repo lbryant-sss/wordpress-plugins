@@ -167,6 +167,13 @@ First check the questions mentioned in the FAQ tab inside the plugin settings pa
 
 == Changelog ==
 
+#####   Version 5.0.12 (2025-05-23)
+
+- Updated dependencies
+
+
+
+
 #####   Version 5.0.11 (2025-04-09)
 
 - Fix fatal error breaking plugin admin settings page

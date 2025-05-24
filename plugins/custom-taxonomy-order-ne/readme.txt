@@ -1,5 +1,5 @@
 === Custom Taxonomy Order ===
-Contributors: mpol
+Contributors: mpol, acusti, sunriseweb, mantish, eddy_boy, empiresafe, li-an, eric3d
 Tags: term order, category order, taxonomy order, order
 Requires at least: 4.1
 Tested up to: 6.8

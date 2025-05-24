@@ -11,7 +11,7 @@
  * Plugin name: Menu Icons
  * Plugin URI:  https://github.com/Codeinwp/wp-menu-icons
  * Description: Spice up your navigation menus with pretty icons, easily.
- * Version:     0.13.17
+ * Version:     0.13.18
  * Author:      ThemeIsle
  * Author URI:  https://themeisle.com
  * License:     GPLv2
@@ -29,7 +29,7 @@ final class Menu_Icons {
 
 	const DISMISS_NOTICE = 'menu-icons-dismiss-notice';
 
-	const VERSION = '0.13.17';
+	const VERSION = '0.13.18';
 
 	/**
 	 * Holds plugin data
@@ -113,6 +113,8 @@ final class Menu_Icons {
 				return array( 'om-editor', 'om-image-block' );
 			}
 		);
+
+		add_filter( 'themeisle_sdk_blackfriday_data', array( __CLASS__, 'add_black_friday_data' ) );
 	}
 
 
@@ -254,6 +256,33 @@ final class Menu_Icons {
 			<a href="<?php echo esc_url( $action_url ); ?>" class="notice-dismiss"></a>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Add Black Friday data.
+	 *
+	 * @param array $configs The configuration array for the loaded products.
+	 *
+	 * @return array
+	 */
+	public static function add_black_friday_data( $configs ) {
+		$config = $configs['default'];
+		$product_slug = basename(dirname(__FILE__));
+
+		// translators: %1$s - plugin name, %2$s - HTML tag, %3$s - discount, %4$s - HTML tag, %5$s - company name.
+		$message_template = __( 'Brought to you by the team behind %1$s— our biggest sale of the year is here: %2$sup to %3$s OFF%4$s on premium products from %5$s! Limited-time only.', 'menu-icons' );
+
+		$config['message']  = sprintf( $message_template, 'Menu Icons', '<strong>', '70%', '</strong>', '<strong>Themeisle</strong>' );
+		$config['sale_url'] = add_query_arg(
+			array(
+				'utm_term' => 'free',
+			),
+			tsdk_translate_link( tsdk_utmify( 'https://themeisle.link/all-bf', 'bfcm', 'menu-icons' ) )
+		);
+
+		$configs[ $product_slug ] = $config;
+
+		return $configs;
 	}
 }
 add_action( 'plugins_loaded', array( 'Menu_Icons', '_load' ) );

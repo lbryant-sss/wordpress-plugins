@@ -146,6 +146,28 @@ if ( ! function_exists( 'qi_addons_for_elementor_return_elementor_templates' ) )
 	}
 }
 
+if ( ! function_exists( 'qi_addons_for_elementor_check_elementor_template' ) ) {
+	/**
+	 * Function that checked id template is translated and in allowed array od ids
+	 */
+	function qi_addons_for_elementor_check_elementor_template( $template_id, $allowed_template_ids ) {
+		if ( qi_addons_for_elementor_framework_is_installed( 'wpml' ) ) {
+			global $sitepress;
+
+			if ( ! empty( $sitepress ) && ! empty( $sitepress->get_default_language() ) ) {
+				$template_id = apply_filters( 'wpml_object_id', $template_id, 'elementor_library', true, $sitepress->get_current_language() );
+			}
+		}
+
+		// Check to prevent manual insertion of forbidden ids.
+		$template_id = ! empty( $template_id ) && isset( $allowed_template_ids[ $template_id ] ) ? $template_id : '';
+
+		return $template_id;
+	}
+}
+
+
+
 if ( ! function_exists( 'qi_addons_for_elementor_generate_elementor_templates_control' ) ) {
 	/**
 	 * Function that adds Template Elementor Control

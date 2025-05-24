@@ -2,9 +2,9 @@
 Contributors: webtoffee
 Tags: woocommerce export orders, woocommerce import orders, advanced order export, coupon import export, woocommerce order import export
 Requires at least: 3.0
-Tested up to: 6.7.2
+Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.6.1
+Stable tag: 2.6.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,8 +30,8 @@ The following are functionalities offered by the basic version of the order impo
  &#128312; **Bulk Updates:** Bulk update WooCommerce orders and coupons.
  &#128312; **YITH Compatibility:** Compatible with YITH WooCommerce Order Tracking plugin.
  &#128312; **Export Filters:** Supports various export filters (order status, product, coupon, customer, date range) for order export to CSV.
- &#9989; Tested OK with WooCommerce 9.7.0
- &#9989; Tested OK with WordPress 6.7.2
+ &#9989; Tested OK with WooCommerce 9.8.5
+ &#9989; Tested OK with WordPress 6.8
  &#9989; Tested OK with PHP 8.3
 
 = Advanced Features for Seamless CSV Export and Import =
@@ -206,6 +206,12 @@ Yes.
 14. Exported coupon CSV
 
 == Changelog ==
+= 2.6.2 2025-05-23 =
+* [Compatibility] - Tested OK with WordPress 6.8
+* [Compatibility] - Tested OK with WooCommerce 9.8.5
+* [Fix] - Corrected shipping_items formatting in order export CSV to ensure backward compatibility.
+* [Fix] - Load plugin textdomain on 'init' to meet WordPress 6.7+ localization requirements.
+
 = 2.6.1 2025-03-19 =
 * [Fix] - Vulnerable to Server-Side Request Forgery.
 * [Fix] - Vulnerable to Arbitrary File Deletion.
@@ -615,8 +621,8 @@ Yes.
 
 == Upgrade Notice ==
 
-= 2.6.1 =
-* [Fix] - Vulnerable to Server-Side Request Forgery.
-* [Fix] - Vulnerable to Arbitrary File Deletion.
-* [Fix] - Vulnerable to PHP Object Injection.
-* [Fix] - Vulnerable to Directory Traversal.
+= 2.6.2 =
+* [Compatibility] - Tested OK with WordPress 6.8
+* [Compatibility] - Tested OK with WooCommerce 9.8.5
+* [Fix] - Corrected shipping_items formatting in order export CSV to ensure backward compatibility.
+* [Fix] - Load plugin textdomain on 'init' to meet WordPress 6.7+ localization requirements.

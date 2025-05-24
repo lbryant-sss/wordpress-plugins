@@ -424,39 +424,53 @@ class Wt_Import_Export_For_Woo_Basic_Order_Export {
         }
         
 
-        //shipping items is just product x qty under shipping method
-        $line_items_shipping = $order->get_items('shipping');
+		// Get shipping line items from the order
+		$line_items_shipping = $order->get_items('shipping');
 
-        foreach ($line_items_shipping as $item_id => $item) {
-            $item_meta = self::get_order_line_item_meta($item_id);
-            foreach ($item_meta as $key => $value) {
-                switch ($key) {
-                    case 'Items':
-           
-                    case 'method_id':
-                       
-                    case 'taxes':
-    
-                        if (is_object($value)){
-                            $value = $value->meta_value;
-                            $value = json_encode(Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_unserialize_safe($value));
+		foreach ($line_items_shipping as $item_id => $item) {
+			$meta = array();
 
-                        }
+			// Manually build the "Items" field by listing all order products with quantity
+			$items_array = array();
+			foreach ($order->get_items() as $line_item) {
+				$product = $line_item->get_product();
+				$product_name = $product ? $product->get_name() : $line_item->get_name(); // Fallback to item name if product object is unavailable
+				$qty = $line_item->get_quantity();
+				$items_array[] = $product_name . ' &times; ' . $qty; 
+			}
 
-                        if (is_array($value))
-                            $value = json_encode($value);
-                        $meta[$key] = $value;
-                        break;
-                }
-            }
-            foreach (array('Items','method_id', 'taxes') as $value) {
-                if (!isset($meta[$value])) {
-                    $meta[$value] = '';
-                }
-            }
-            $shipping_items[] = trim(implode('|', array('items:' . $meta['Items'],'method_id:' . $meta['method_id'], 'taxes:' . $meta['taxes'])));
-        }
+			// Concatenate all item strings into a single string for the Items field
+			$meta['Items'] = implode(', ', $items_array);
 
+			// Assign shipping method ID without wrapping in quotes
+			$meta['method_id'] = isset($item['method_id']) ? $item['method_id'] : '';
+
+			// Retrieve taxes from meta and serialize (match original format)
+			$taxes = $item->get_meta('taxes', true);
+			if (is_array($taxes) || is_object($taxes)) {
+				// Serialize arrays/objects into PHP serialized format
+				$meta['taxes'] = serialize($taxes);
+			} else {
+				// Use raw value if already a string
+				$meta['taxes'] = is_string($taxes) ? $taxes : '';
+			}
+
+			// Ensure all expected keys exist in the meta array
+			foreach (array('Items', 'method_id', 'taxes') as $value) {
+				if (!isset($meta[$value])) {
+					$meta[$value] = '';
+				}
+			}
+
+			// Concatenate the shipping meta into the expected export format
+			$shipping_items[] = trim(implode('|', array(
+				'items:' . $meta['Items'],
+				'method_id:' . $meta['method_id'],
+				'taxes:' . $meta['taxes']
+			)));
+		}
+
+        
         //get fee and total
         $fee_total = 0;
         $fee_tax_total = 0;

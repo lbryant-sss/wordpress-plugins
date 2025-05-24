@@ -4,7 +4,7 @@ Tags: database, search replace, search, replace, search and replace, real-time r
 Donate link: https://codesolz.net/our-products/wordpress-plugin/real-time-auto-find-and-replace/?utm_source=wordpress.org&utm_medium=README_DONATE_BTN
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -178,6 +178,13 @@ code block in find field*
 11. Media replacer
 
 == Changelog ==
+
+= Version: 1.7.3 ( May 23, 2025 ) =
+* **New PRO:** Snippet Manager – Create, edit, and manage reusable CSS & JS code snippets from the admin panel.
+* **New PRO:** Apply snippets conditionally to specific posts, pages, or custom post types with a visual list of where each snippet is used.
+* **New PRO:** Snippets are saved as physical files and loaded for better performance and compatibility.
+* **New PRO:** Supports both CSS and JS snippets with real-time page/post targeting.
+* **Improved:** Frontend only loads the exact snippets needed for the current page, reducing bloat.
 
 = Version: 1.7.2 ( May 16, 2025 ) =
 * **New:** ✨ AI-Powered Suggestions – Generate intelligent replacement suggestions using OpenAI.

@@ -12,7 +12,15 @@ Domain Path: /lang/
 
 
 Copyright 2011 - 2011  Drew Gourley
-Copyright 2013 - 2024  Marcel Pol   (marcel@timelord.nl)
+Copyright 2013 - 2025  Marcel Pol   (marcel@timelord.nl)
+Copyright 2015         acusti (Andrew Patton)
+Copyright 2015         sunriseweb
+Copyright 2015         mantish
+Copyright 2016         eddy_boy
+Copyright 2018         empiresafe
+Copyright 2020         li-an
+Copyright 2020         eric3d
+
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

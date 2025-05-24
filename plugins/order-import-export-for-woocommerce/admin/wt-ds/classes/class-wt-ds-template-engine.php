@@ -78,6 +78,13 @@ class Wt_Ds_Template_Engine {
 	protected $find_replace = array();
 
 	/**
+	 * Boolean attributes.
+	 *
+	 * @var array $boolean_attributes
+	 */
+	private static $boolean_attributes = array( 'checked', 'disabled', 'readonly', 'required', 'autofocus', 'multiple' );
+
+	/**
 	 *  Initiate the class
 	 *
 	 *  @param  string $prefix     Plugin specific prefix.
@@ -338,8 +345,7 @@ class Wt_Ds_Template_Engine {
 				}
 
 				// Boolean attributes.
-				$boolean_attributes = array( 'checked', 'disabled', 'readonly', 'required', 'autofocus', 'multiple' );
-				foreach ( $boolean_attributes as $attr ) {
+				foreach ( self::$boolean_attributes as $attr ) {
 					$this->add_bool_optional_attr( $node, 'data-bind-' . $attr );
 				}
 			}
@@ -358,6 +364,12 @@ class Wt_Ds_Template_Engine {
 				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				if ( preg_match( $regex, $node_value, $matches ) ) {
 					$attr_value = $this->render_variable_values( $matches[1] );
+
+					if ( ! in_array( $attribute->nodeName, self::$boolean_attributes, true ) && empty( $attr_value ) ) {
+						$attribute->ownerElement->removeAttribute( $attribute->nodeName );
+						continue;
+					}
+
 					// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 					$attribute->nodeValue = ( 'src' === $attribute->nodeName || 'href' === $attribute->nodeName ) ? esc_url( $attr_value ) : esc_attr( $attr_value );
 				} else {
@@ -534,8 +546,7 @@ class Wt_Ds_Template_Engine {
 		}
 
 		// Replace simplified boolean attributes with their full form.
-		$boolean_attributes = array( 'checked', 'disabled', 'readonly', 'required', 'autofocus', 'multiple' );
-		foreach ( $boolean_attributes as $attribute ) {
+		foreach ( self::$boolean_attributes as $attribute ) {
 			$inner_html = preg_replace(
 				'/(?<=\s|<|\b)' . $attribute . '(?=\s|>|\/)/i',
 				$attribute . '="' . $attribute . '"',

@@ -94,11 +94,15 @@ class Wbte_Ds {
 		$this->base_path = plugin_dir_path( __FILE__ );
 		$this->base_url  = plugin_dir_url( __FILE__ );
 
+		// Normalize paths for consistent handling across operating systems.
+		$wp_content_dir_normalized = wp_normalize_path( WP_CONTENT_DIR );
+		$base_path_normalized      = wp_normalize_path( $this->base_path );
+
 		// Preparing icon base path with respect to wp content directory.
-		$this->icon_base_path = str_replace( WP_CONTENT_DIR, '', $this->base_path . 'icons/' );
+		$this->icon_base_path = str_replace( $wp_content_dir_normalized, '', $base_path_normalized . 'icons/' );
 
 		// Preparing image base path with respect to wp content directory.
-		$this->img_base_path = str_replace( WP_CONTENT_DIR, '', $this->base_path . 'images/' );
+		$this->img_base_path = str_replace( $wp_content_dir_normalized, '', $base_path_normalized . 'images/' );
 
 		include_once $this->base_path . 'classes/class-wt-ds-template-engine.php';
 

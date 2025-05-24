@@ -33,7 +33,7 @@ class ComposerStaticInit36e5f80e2e1d4d29f112ceb45253b7e6
         ),
         'Doctrine\\Deprecations\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations',
+            0 => __DIR__ . '/..' . '/doctrine/deprecations/src',
         ),
         'Doctrine\\Common\\Collections\\' => 
         array (
@@ -56,8 +56,8 @@ class ComposerStaticInit36e5f80e2e1d4d29f112ceb45253b7e6
         'Doctrine\\Common\\Collections\\ExpressionBuilder' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/ExpressionBuilder.php',
         'Doctrine\\Common\\Collections\\ReadableCollection' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/ReadableCollection.php',
         'Doctrine\\Common\\Collections\\Selectable' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php',
-        'Doctrine\\Deprecations\\Deprecation' => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations/Deprecation.php',
-        'Doctrine\\Deprecations\\PHPUnit\\VerifyDeprecations' => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations/PHPUnit/VerifyDeprecations.php',
+        'Doctrine\\Deprecations\\Deprecation' => __DIR__ . '/..' . '/doctrine/deprecations/src/Deprecation.php',
+        'Doctrine\\Deprecations\\PHPUnit\\VerifyDeprecations' => __DIR__ . '/..' . '/doctrine/deprecations/src/PHPUnit/VerifyDeprecations.php',
         'FcfVendor\\Monolog\\Attribute\\AsMonologProcessor' => __DIR__ . '/../..' . '/vendor_prefixed/monolog/monolog/src/Monolog/Attribute/AsMonologProcessor.php',
         'FcfVendor\\Monolog\\DateTimeImmutable' => __DIR__ . '/../..' . '/vendor_prefixed/monolog/monolog/src/Monolog/DateTimeImmutable.php',
         'FcfVendor\\Monolog\\ErrorHandler' => __DIR__ . '/../..' . '/vendor_prefixed/monolog/monolog/src/Monolog/ErrorHandler.php',
