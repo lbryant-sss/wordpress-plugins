@@ -1,5 +1,7 @@
 <?php
 
+use YahnisElsts\AjaxActionWrapper\v2\Action;
+
 class amePluginVisibility extends amePersistentModule {
 	const HIDE_USAGE_NOTICE_FLAG = 'ws_ame_hide_pv_notice';
 
@@ -32,7 +34,7 @@ class amePluginVisibility extends amePersistentModule {
 	private static $lastInstance = null;
 
 	/**
-	 * @var Ajaw_v1_Action
+	 * @var Action
 	 */
 	private $dismissNoticeAction;
 
@@ -82,7 +84,7 @@ class amePluginVisibility extends amePersistentModule {
 
 		//Display a usage hint in our tab.
 		add_action('admin_notices', array($this, 'displayUsageNotice'));
-		$this->dismissNoticeAction = ajaw_v1_CreateAction('ws_ame_dismiss_pv_usage_notice')
+		$this->dismissNoticeAction = Action::builder('ws_ame_dismiss_pv_usage_notice')
 			->handler(array($this, 'ajaxDismissUsageNotice'))
 			->permissionCallback(array($this->menuEditor, 'current_user_can_edit_menu'))
 			->method('post')
@@ -509,7 +511,7 @@ class amePluginVisibility extends amePersistentModule {
 				'ame-lodash',
 				'ame-knockout',
 				'ame-actor-selector',
-				$this->dismissNoticeAction->getScriptHandle(),
+				$this->dismissNoticeAction->getRegisteredScriptHandle(),
 			)
 		);
 		wp_enqueue_script('ame-plugin-visibility');

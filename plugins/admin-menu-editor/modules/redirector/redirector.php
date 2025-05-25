@@ -14,6 +14,7 @@ use WP_User;
 use YahnisElsts\AdminMenuEditor\Options\Option;
 use YahnisElsts\AdminMenuEditor\Options\Some;
 use YahnisElsts\AdminMenuEditor\Options\None;
+use YahnisElsts\AjaxActionWrapper\v2\Action;
 
 class Module extends amePersistentModule {
 	const FILTER_PRIORITY = 1000000;
@@ -70,8 +71,8 @@ class Module extends amePersistentModule {
 		}
 
 		if ( is_admin() ) {
-			$this->searchUsersAction = ajaw_v1_CreateAction('ws-ame-rui-search-users')
-				->requiredParam('term')
+			$this->searchUsersAction = Action::builder('ws-ame-rui-search-users')
+				->requiredParam('term', Action::PARSE_STRING)
 				->method('get')
 				->permissionCallback([$this, 'userCanSearchUsers'])
 				->handler([$this, 'ajaxSearchUsers'])
@@ -325,7 +326,7 @@ class Module extends amePersistentModule {
 				'ame-actor-manager',
 				'ame-knockout-sortable',
 				'ame-lodash',
-				$this->searchUsersAction->getScriptHandle(),
+				$this->searchUsersAction->getRegisteredScriptHandle(),
 			]
 		);
 

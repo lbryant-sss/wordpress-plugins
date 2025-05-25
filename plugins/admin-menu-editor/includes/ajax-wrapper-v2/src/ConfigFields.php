@@ -40,4 +40,8 @@ abstract class ConfigFields {
 	 * @var callable|null
 	 */
 	protected $permissionCheckCallback = null;
+	/**
+	 * @var bool
+	 */
+	protected $jsAutoExposeEnabled = true;
 }

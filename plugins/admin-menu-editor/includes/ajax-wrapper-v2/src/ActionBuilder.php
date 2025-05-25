@@ -104,6 +104,24 @@ class ActionBuilder extends ConfigFields {
 		return $this;
 	}
 
+	/**
+	 * Disable the automatic exposure of the action to JavaScript.
+	 *
+	 * By default, registered actions are automatically exported to JavaScript and become
+	 * available via the `AjawV2.getAction()` method. Use `skipAutoExpose()` to disable that
+	 * behaviour for specific actions.
+	 *
+	 * This doesn't actively prevent the action from being used in JavaScript. It only
+	 * means that you will have to explicitly serialize the action metadata and pass it
+	 * to your JavaScript code.
+	 *
+	 * @return $this
+	 */
+	public function skipAutoExpose() {
+		$this->jsAutoExposeEnabled = false;
+		return $this;
+	}
+
 	public function build() {
 		if ( !is_callable($this->callback) ) {
 			throw new \LogicException('Callback must be set before building the action.');

@@ -47,7 +47,9 @@ class Action extends ConfigFields {
 			add_action($hook, [$this, 'processAjaxRequest']);
 		}
 
-		$this->registerForJsUse();
+		if ( $this->jsAutoExposeEnabled ) {
+			$this->registerForJsUse();
+		}
 
 		return $this;
 	}
@@ -250,6 +252,14 @@ class Action extends ConfigFields {
 		return $this->httpMethod;
 	}
 
+	/**
+	 * @param string $actionName
+	 * @return ActionBuilder
+	 */
+	public static function builder($actionName) {
+		return new ActionBuilder($actionName);
+	}
+
 	//region Built-in parsers
 	public static function parseInt($value) {
 		$result = filter_var($value, FILTER_VALIDATE_INT);
@@ -323,11 +333,32 @@ class Action extends ConfigFields {
 		add_action('admin_print_scripts', [self::class, 'outputRemainingActionsForJs'], 1000);
 	}
 
+	/**
+	 * Returns the handle of the JS script that provides the AjawV2 global object and
+	 * easy access to the registered AJAX actions.
+	 *
+	 * The script is registered on the first call to this method.
+	 *
+	 * @return string
+	 */
 	public function getRegisteredScriptHandle() {
 		if ( !self::$scriptRegistered ) {
 			self::registerScript();
 		}
 		return self::$scriptHandle;
+	}
+
+	/**
+	 * Alias for getRegisteredScriptHandle().
+	 *
+	 * @deprecated Use getRegisteredScriptHandle() instead as it makes it clear that the script
+	 *             gets registered on the first call.
+	 *
+	 * @noinspection PhpUnused -- Normally won't be used since it's deprecated.
+	 * @return string
+	 */
+	public function getScriptHandle() {
+		return $this->getRegisteredScriptHandle();
 	}
 
 	protected static function generateActionJs() {

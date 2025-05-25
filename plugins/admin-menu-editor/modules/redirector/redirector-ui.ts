@@ -66,7 +66,7 @@ namespace AmeRedirectorUi {
 		getId(): string {
 			return DefaultActorId;
 		},
-		isUser(): boolean {
+		isUser(): this is IAmeUser {
 			return false;
 		},
 		hasOwnCap(_: string): boolean | null {
@@ -147,7 +147,7 @@ namespace AmeRedirectorUi {
 						getId(): string {
 							return missingActorId;
 						},
-						isUser(): boolean {
+						isUser(): this is IAmeUser {
 							return false;
 						},
 						hasOwnCap(_: string): boolean | null {
@@ -969,15 +969,23 @@ jQuery(function ($) {
 			jQuery(element).autocomplete({
 				minLength: 2,
 				source: function (request: any, response:(results: any[]) => void) {
-					const action = AjawV1.getAction('ws-ame-rui-search-users');
+					const action = AjawV2.getAction('ws-ame-rui-search-users');
 					action.get(
 						{term: request.term},
 						function (results) {
-							//Filter received users.
-							if (options.filter) {
-								results = options.filter(results);
+							if (Array.isArray(results)) {
+								let resultsAsArray = results;
+								//Filter received users.
+								if (options.filter) {
+									resultsAsArray = options.filter(resultsAsArray);
+								}
+								response(resultsAsArray)
+							} else {
+								response([]);
+								if (console && console.warn) {
+									console.warn('Invalid response from the server (not an array):', results);
+								}
 							}
-							response(results)
 						},
 						function (error) {
 							response([]);
