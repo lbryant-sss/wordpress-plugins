@@ -58,7 +58,7 @@ if ( ! class_exists( 'CR_Local_Forms' ) ) :
 					$this->extra = '';
 				}
 				// delete media files uploaded with test reviews
-				if( self::TEST_FORM === $this->form_id ) {
+				if( self::TEST_FORM === $this->form_id && $this->items ) {
 					foreach( $this->items as $key => $item ) {
 						if( property_exists( $item, 'media' ) ) {
 							if( $item->media && is_array( $item->media ) ) {

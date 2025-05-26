@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HT Mega – Absolute Addons for Elementor.\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-08 03:29+0000\n"
+"POT-Creation-Date: 2025-05-25 08:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -1726,12 +1726,12 @@ msgstr ""
 #: includes/widgets/htmega_calendly.php:133
 #: includes/widgets/htmega_carousel.php:462
 #: includes/widgets/htmega_contact_form_seven.php:253
-#: includes/widgets/htmega_contact_form_seven.php:486
-#: includes/widgets/htmega_contact_form_seven.php:606
-#: includes/widgets/htmega_contact_form_seven.php:712
-#: includes/widgets/htmega_contact_form_seven.php:775
-#: includes/widgets/htmega_contact_form_seven.php:960
-#: includes/widgets/htmega_contact_form_seven.php:1048
+#: includes/widgets/htmega_contact_form_seven.php:501
+#: includes/widgets/htmega_contact_form_seven.php:621
+#: includes/widgets/htmega_contact_form_seven.php:727
+#: includes/widgets/htmega_contact_form_seven.php:790
+#: includes/widgets/htmega_contact_form_seven.php:975
+#: includes/widgets/htmega_contact_form_seven.php:1063
 #: includes/widgets/htmega_custom_event.php:343
 #: includes/widgets/htmega_gravity_forms.php:425
 #: includes/widgets/htmega_gravity_forms.php:595
@@ -2119,14 +2119,14 @@ msgstr ""
 #: includes/widgets/htmega_carousel.php:1357
 #: includes/widgets/htmega_carousel.php:1441
 #: includes/widgets/htmega_contact_form_seven.php:324
-#: includes/widgets/htmega_contact_form_seven.php:530
-#: includes/widgets/htmega_contact_form_seven.php:650
-#: includes/widgets/htmega_contact_form_seven.php:735
-#: includes/widgets/htmega_contact_form_seven.php:807
-#: includes/widgets/htmega_contact_form_seven.php:998
-#: includes/widgets/htmega_contact_form_seven.php:1060
-#: includes/widgets/htmega_contact_form_seven.php:1184
-#: includes/widgets/htmega_contact_form_seven.php:1218
+#: includes/widgets/htmega_contact_form_seven.php:545
+#: includes/widgets/htmega_contact_form_seven.php:665
+#: includes/widgets/htmega_contact_form_seven.php:750
+#: includes/widgets/htmega_contact_form_seven.php:822
+#: includes/widgets/htmega_contact_form_seven.php:1013
+#: includes/widgets/htmega_contact_form_seven.php:1075
+#: includes/widgets/htmega_contact_form_seven.php:1199
+#: includes/widgets/htmega_contact_form_seven.php:1233
 #: includes/widgets/htmega_countdown.php:534
 #: includes/widgets/htmega_countdown.php:546
 #: includes/widgets/htmega_countdown.php:795
@@ -2194,7 +2194,7 @@ msgstr ""
 #: includes/widgets/htmega_image_grid.php:225
 #: includes/widgets/htmega_image_grid.php:518
 #: includes/widgets/htmega_image_grid.php:577
-#: includes/widgets/htmega_image_magnifier.php:120
+#: includes/widgets/htmega_image_magnifier.php:190
 #: includes/widgets/htmega_image_masonry.php:223
 #: includes/widgets/htmega_image_masonry.php:512
 #: includes/widgets/htmega_image_masonry.php:580
@@ -2529,11 +2529,11 @@ msgstr ""
 #: includes/widgets/htmega_carousel.php:1365
 #: includes/widgets/htmega_carousel.php:1449
 #: includes/widgets/htmega_contact_form_seven.php:332
-#: includes/widgets/htmega_contact_form_seven.php:538
-#: includes/widgets/htmega_contact_form_seven.php:658
-#: includes/widgets/htmega_contact_form_seven.php:743
-#: includes/widgets/htmega_contact_form_seven.php:815
-#: includes/widgets/htmega_contact_form_seven.php:1006
+#: includes/widgets/htmega_contact_form_seven.php:553
+#: includes/widgets/htmega_contact_form_seven.php:673
+#: includes/widgets/htmega_contact_form_seven.php:758
+#: includes/widgets/htmega_contact_form_seven.php:830
+#: includes/widgets/htmega_contact_form_seven.php:1021
 #: includes/widgets/htmega_countdown.php:558
 #: includes/widgets/htmega_countdown.php:806
 #: includes/widgets/htmega_countdown.php:970
@@ -2592,7 +2592,7 @@ msgstr ""
 #: includes/widgets/htmega_image_grid.php:233
 #: includes/widgets/htmega_image_grid.php:526
 #: includes/widgets/htmega_image_grid.php:585
-#: includes/widgets/htmega_image_magnifier.php:128
+#: includes/widgets/htmega_image_magnifier.php:198
 #: includes/widgets/htmega_image_masonry.php:231
 #: includes/widgets/htmega_image_masonry.php:520
 #: includes/widgets/htmega_image_masonry.php:588
@@ -2956,6 +2956,10 @@ msgstr ""
 msgid "Box Option"
 msgstr ""
 
+#: includes/widgets/htmega_image_magnifier.php:158
+msgid "Box Radius"
+msgstr ""
+
 #: extensions/scroll-to-top/class.scroll-to-top.php:496
 #: extensions/scroll-to-top/class.scroll-to-top.php:569
 #: includes/widgets/htmega_accordion.php:621
@@ -2993,10 +2997,10 @@ msgstr ""
 #: includes/widgets/htmega_call_to_action.php:1098
 #: includes/widgets/htmega_call_to_action.php:1189
 #: includes/widgets/htmega_contact_form_seven.php:388
-#: includes/widgets/htmega_contact_form_seven.php:556
-#: includes/widgets/htmega_contact_form_seven.php:696
-#: includes/widgets/htmega_contact_form_seven.php:755
-#: includes/widgets/htmega_contact_form_seven.php:1019
+#: includes/widgets/htmega_contact_form_seven.php:571
+#: includes/widgets/htmega_contact_form_seven.php:711
+#: includes/widgets/htmega_contact_form_seven.php:770
+#: includes/widgets/htmega_contact_form_seven.php:1034
 #: includes/widgets/htmega_countdown.php:525
 #: includes/widgets/htmega_counter.php:276
 #: includes/widgets/htmega_counter.php:938
@@ -3017,7 +3021,8 @@ msgstr ""
 #: includes/widgets/htmega_image_grid.php:248
 #: includes/widgets/htmega_image_grid.php:496
 #: includes/widgets/htmega_image_grid.php:568
-#: includes/widgets/htmega_image_magnifier.php:142
+#: includes/widgets/htmega_image_magnifier.php:149
+#: includes/widgets/htmega_image_magnifier.php:212
 #: includes/widgets/htmega_image_masonry.php:246
 #: includes/widgets/htmega_image_masonry.php:490
 #: includes/widgets/htmega_image_masonry.php:571
@@ -3152,7 +3157,7 @@ msgstr ""
 
 #: includes/widgets/htmega_add_banner.php:611
 #: includes/widgets/htmega_button.php:13 includes/widgets/htmega_button.php:42
-#: includes/widgets/htmega_contact_form_seven.php:881
+#: includes/widgets/htmega_contact_form_seven.php:896
 #: includes/widgets/htmega_custom_event.php:379
 #: includes/widgets/htmega_double_button.php:105
 #: includes/widgets/htmega_double_button.php:192
@@ -3895,9 +3900,9 @@ msgstr ""
 #: includes/widgets/htmega_call_to_action.php:1144
 #: includes/widgets/htmega_carousel.php:574
 #: includes/widgets/htmega_carousel.php:777
-#: includes/widgets/htmega_contact_form_seven.php:1093
-#: includes/widgets/htmega_contact_form_seven.php:1166
-#: includes/widgets/htmega_contact_form_seven.php:1200
+#: includes/widgets/htmega_contact_form_seven.php:1108
+#: includes/widgets/htmega_contact_form_seven.php:1181
+#: includes/widgets/htmega_contact_form_seven.php:1215
 #: includes/widgets/htmega_countdown.php:686
 #: includes/widgets/htmega_countdown.php:748
 #: includes/widgets/htmega_countdown.php:921
@@ -4329,7 +4334,7 @@ msgid "Contact Form"
 msgstr ""
 
 #: includes/widgets/htmega_contact_form_seven.php:43
-#: includes/widgets/htmega_contact_form_seven.php:1243
+#: includes/widgets/htmega_contact_form_seven.php:1258
 msgid "Contact Form 7"
 msgstr ""
 
@@ -4710,7 +4715,7 @@ msgid "Custom Width"
 msgstr ""
 
 #: includes/widgets/htmega_contact_form_seven.php:396
-msgid "Customize Select Field Arrow Icon"
+msgid "Customize Select Field"
 msgstr ""
 
 #: includes/widgets/htmega_notify.php:128
@@ -5450,7 +5455,7 @@ msgstr ""
 msgid "Errors and Confirmation Style"
 msgstr ""
 
-#: includes/widgets/htmega_contact_form_seven.php:1158
+#: includes/widgets/htmega_contact_form_seven.php:1173
 msgid "Errors and Feedback Style"
 msgstr ""
 
@@ -5728,7 +5733,7 @@ msgstr ""
 msgid "Feed Limit"
 msgstr ""
 
-#: includes/widgets/htmega_contact_form_seven.php:1192
+#: includes/widgets/htmega_contact_form_seven.php:1207
 msgid "Feedback Style"
 msgstr ""
 
@@ -5805,8 +5810,8 @@ msgid "Flower"
 msgstr ""
 
 #: includes/widgets/htmega_caldera_form.php:390
-#: includes/widgets/htmega_contact_form_seven.php:480
-#: includes/widgets/htmega_contact_form_seven.php:705
+#: includes/widgets/htmega_contact_form_seven.php:495
+#: includes/widgets/htmega_contact_form_seven.php:720
 #: includes/widgets/htmega_data_table.php:1228
 #: includes/widgets/htmega_data_table.php:1448
 #: includes/widgets/htmega_gravity_forms.php:589
@@ -6283,8 +6288,8 @@ msgstr ""
 #: includes/widgets/htmega_carousel.php:1149
 #: includes/widgets/htmega_carousel.php:1243
 #: includes/widgets/htmega_contact_form_seven.php:226
-#: includes/widgets/htmega_contact_form_seven.php:586
-#: includes/widgets/htmega_contact_form_seven.php:898
+#: includes/widgets/htmega_contact_form_seven.php:601
+#: includes/widgets/htmega_contact_form_seven.php:913
 #: includes/widgets/htmega_gravity_forms.php:469
 #: includes/widgets/htmega_gravity_forms.php:668
 #: includes/widgets/htmega_imagemarker.php:927
@@ -6527,7 +6532,7 @@ msgstr ""
 #: includes/widgets/htmega_call_to_action.php:931
 #: includes/widgets/htmega_call_to_action.php:1137
 #: includes/widgets/htmega_carousel.php:770
-#: includes/widgets/htmega_contact_form_seven.php:1030
+#: includes/widgets/htmega_contact_form_seven.php:1045
 #: includes/widgets/htmega_countdown.php:1122
 #: includes/widgets/htmega_custom_event.php:192
 #: includes/widgets/htmega_custom_event.php:442
@@ -7964,7 +7969,7 @@ msgid "Label Typography"
 msgstr ""
 
 #: includes/widgets/htmega_caldera_form.php:82
-#: includes/widgets/htmega_contact_form_seven.php:767
+#: includes/widgets/htmega_contact_form_seven.php:782
 #: includes/widgets/htmega_gravity_forms.php:249
 #: includes/widgets/htmega_ninja_form.php:345
 #: includes/widgets/htmega_wpforms.php:338
@@ -8226,6 +8231,14 @@ msgstr ""
 msgid "Left-Right Position"
 msgstr ""
 
+#: includes/widgets/htmega_image_magnifier.php:122
+msgid "Lens Height"
+msgstr ""
+
+#: includes/widgets/htmega_image_magnifier.php:95
+msgid "Lens Width"
+msgstr ""
+
 #: includes/widgets/htmega_image_comparison.php:189
 msgid "Level Position"
 msgstr ""
@@ -8348,7 +8361,7 @@ msgstr ""
 msgid "Loading bar"
 msgstr ""
 
-#: includes/widgets/htmega_contact_form_seven.php:1074
+#: includes/widgets/htmega_contact_form_seven.php:1089
 msgid "Loading Spinner"
 msgstr ""
 
@@ -8681,10 +8694,10 @@ msgstr ""
 #: includes/widgets/htmega_carousel.php:1389
 #: includes/widgets/htmega_contact_form_seven.php:192
 #: includes/widgets/htmega_contact_form_seven.php:369
-#: includes/widgets/htmega_contact_form_seven.php:683
-#: includes/widgets/htmega_contact_form_seven.php:840
-#: includes/widgets/htmega_contact_form_seven.php:984
-#: includes/widgets/htmega_contact_form_seven.php:1225
+#: includes/widgets/htmega_contact_form_seven.php:698
+#: includes/widgets/htmega_contact_form_seven.php:855
+#: includes/widgets/htmega_contact_form_seven.php:999
+#: includes/widgets/htmega_contact_form_seven.php:1240
 #: includes/widgets/htmega_countdown.php:590
 #: includes/widgets/htmega_countdown.php:837
 #: includes/widgets/htmega_countdown.php:997
@@ -8727,7 +8740,7 @@ msgstr ""
 #: includes/widgets/htmega_image_comparison.php:119
 #: includes/widgets/htmega_image_grid.php:211
 #: includes/widgets/htmega_image_grid.php:357
-#: includes/widgets/htmega_image_magnifier.php:163
+#: includes/widgets/htmega_image_magnifier.php:233
 #: includes/widgets/htmega_image_masonry.php:204
 #: includes/widgets/htmega_image_masonry.php:327
 #: includes/widgets/htmega_image_masonry.php:414
@@ -9519,8 +9532,8 @@ msgstr ""
 #: includes/widgets/htmega_carousel.php:1112
 #: includes/widgets/htmega_carousel.php:1320
 #: includes/widgets/htmega_contact_form_seven.php:219
-#: includes/widgets/htmega_contact_form_seven.php:579
-#: includes/widgets/htmega_contact_form_seven.php:891
+#: includes/widgets/htmega_contact_form_seven.php:594
+#: includes/widgets/htmega_contact_form_seven.php:906
 #: includes/widgets/htmega_countdown.php:1027
 #: includes/widgets/htmega_custom_event.php:137
 #: includes/widgets/htmega_custom_event.php:392
@@ -9898,6 +9911,10 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
+#: includes/widgets/htmega_contact_form_seven.php:478
+msgid "Options Color"
+msgstr ""
+
 #: includes/widgets/htmega_data_table.php:565
 msgid "Options for number of Rows"
 msgstr ""
@@ -10052,9 +10069,9 @@ msgstr ""
 #: includes/widgets/htmega_carousel.php:1376
 #: includes/widgets/htmega_contact_form_seven.php:179
 #: includes/widgets/htmega_contact_form_seven.php:350
-#: includes/widgets/htmega_contact_form_seven.php:670
-#: includes/widgets/htmega_contact_form_seven.php:827
-#: includes/widgets/htmega_contact_form_seven.php:971
+#: includes/widgets/htmega_contact_form_seven.php:685
+#: includes/widgets/htmega_contact_form_seven.php:842
+#: includes/widgets/htmega_contact_form_seven.php:986
 #: includes/widgets/htmega_countdown.php:574
 #: includes/widgets/htmega_countdown.php:821
 #: includes/widgets/htmega_countdown.php:983
@@ -10095,7 +10112,7 @@ msgstr ""
 #: includes/widgets/htmega_image_grid.php:344
 #: includes/widgets/htmega_image_grid.php:431
 #: includes/widgets/htmega_image_grid.php:504
-#: includes/widgets/htmega_image_magnifier.php:151
+#: includes/widgets/htmega_image_magnifier.php:221
 #: includes/widgets/htmega_image_masonry.php:191
 #: includes/widgets/htmega_image_masonry.php:339
 #: includes/widgets/htmega_image_masonry.php:426
@@ -10441,7 +10458,7 @@ msgstr ""
 
 #: includes/widgets/htmega_caldera_form.php:235
 #: includes/widgets/htmega_contact_form_seven.php:295
-#: includes/widgets/htmega_contact_form_seven.php:636
+#: includes/widgets/htmega_contact_form_seven.php:651
 #: includes/widgets/htmega_gravity_forms.php:446
 #: includes/widgets/htmega_mailchimp_wp.php:278
 #: includes/widgets/htmega_ninja_form.php:545
@@ -10522,7 +10539,7 @@ msgstr ""
 msgid "Please select Contact Form"
 msgstr ""
 
-#: includes/widgets/htmega_contact_form_seven.php:1254
+#: includes/widgets/htmega_contact_form_seven.php:1269
 msgid "Please Select contact form."
 msgstr ""
 
@@ -11028,7 +11045,7 @@ msgstr ""
 msgid "Quote Image"
 msgstr ""
 
-#: includes/widgets/htmega_contact_form_seven.php:519
+#: includes/widgets/htmega_contact_form_seven.php:534
 msgid "Radio & Checkbox Color"
 msgstr ""
 
@@ -11426,7 +11443,7 @@ msgid "Right Top"
 msgstr ""
 
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:268
-msgid "Risk-Free, No Credit Card Required"
+msgid "Risk-Free, No Hidden Cost"
 msgstr ""
 
 #: extensions/floating-effects/class.floating-effects.php:239
@@ -12519,6 +12536,7 @@ msgstr ""
 msgid "Specify the starting time for the audio playback."
 msgstr ""
 
+#: includes/widgets/htmega_image_magnifier.php:78
 #: includes/widgets/htmega_scroll_image.php:395
 #: includes/widgets/htmega_scroll_navigation.php:253
 msgid "Speed"
@@ -12594,7 +12612,7 @@ msgstr ""
 #: includes/widgets/htmega_errorcontent.php:232
 #: includes/widgets/htmega_imagemarker.php:143
 #: includes/widgets/htmega_image_grid.php:46
-#: includes/widgets/htmega_image_magnifier.php:111
+#: includes/widgets/htmega_image_magnifier.php:181
 #: includes/widgets/htmega_image_masonry.php:54
 #: includes/widgets/htmega_inlinemenu.php:54
 #: includes/widgets/htmega_instagram.php:57
@@ -13313,12 +13331,12 @@ msgstr ""
 #: includes/widgets/htmega_call_to_action.php:821
 #: includes/widgets/htmega_call_to_action.php:1027
 #: includes/widgets/htmega_contact_form_seven.php:278
-#: includes/widgets/htmega_contact_form_seven.php:503
-#: includes/widgets/htmega_contact_form_seven.php:625
-#: includes/widgets/htmega_contact_form_seven.php:723
-#: includes/widgets/htmega_contact_form_seven.php:786
-#: includes/widgets/htmega_contact_form_seven.php:949
-#: includes/widgets/htmega_contact_form_seven.php:1037
+#: includes/widgets/htmega_contact_form_seven.php:518
+#: includes/widgets/htmega_contact_form_seven.php:640
+#: includes/widgets/htmega_contact_form_seven.php:738
+#: includes/widgets/htmega_contact_form_seven.php:801
+#: includes/widgets/htmega_contact_form_seven.php:964
+#: includes/widgets/htmega_contact_form_seven.php:1052
 #: includes/widgets/htmega_data_table.php:859
 #: includes/widgets/htmega_data_table.php:995
 #: includes/widgets/htmega_data_table.php:1280
@@ -13382,7 +13400,7 @@ msgstr ""
 msgid "Text Shadow"
 msgstr ""
 
-#: includes/widgets/htmega_contact_form_seven.php:568
+#: includes/widgets/htmega_contact_form_seven.php:583
 #: includes/widgets/htmega_ninja_form.php:726
 #: includes/widgets/htmega_quforms.php:562
 #: includes/widgets/htmega_wpforms.php:730
@@ -14636,8 +14654,8 @@ msgstr ""
 #: includes/widgets/htmega_carousel.php:672
 #: includes/widgets/htmega_carousel.php:937
 #: includes/widgets/htmega_carousel.php:1043
-#: includes/widgets/htmega_contact_form_seven.php:852
-#: includes/widgets/htmega_contact_form_seven.php:916
+#: includes/widgets/htmega_contact_form_seven.php:867
+#: includes/widgets/htmega_contact_form_seven.php:931
 #: includes/widgets/htmega_gravity_forms.php:683
 #: includes/widgets/htmega_imagemarker.php:905
 #: includes/widgets/htmega_image_comparison.php:471
@@ -14889,14 +14907,6 @@ msgstr ""
 
 #: includes/widgets/htmega_instagram.php:217
 msgid "Zoom Icon Type"
-msgstr ""
-
-#: includes/widgets/htmega_image_magnifier.php:88
-msgid "Zoom Label"
-msgstr ""
-
-#: includes/widgets/htmega_image_magnifier.php:78
-msgid "Zoomable"
 msgstr ""
 
 #: admin/include/class.diagnostic-data.php:503

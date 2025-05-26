@@ -393,7 +393,7 @@ class HTMega_Elementor_Widget_Contact_Form_Seven extends Widget_Base {
                     $this->add_control(
                         'input_select_field_appearance',
                         [
-                            'label' => esc_html__( 'Customize Select Field Arrow Icon', 'htmega-addons' ),
+                            'label' => esc_html__( 'Customize Select Field', 'htmega-addons' ),
                             'type' => Controls_Manager::SWITCHER,
                             'return_value' => 'yes',
                             'default' => 'no',
@@ -471,6 +471,21 @@ class HTMega_Elementor_Widget_Contact_Form_Seven extends Widget_Base {
                             ]
                         ]
                     );
+                    // options color
+                    $this->add_control(
+                        'select_appearance_options_color',
+                        [
+                            'label'     => esc_html__( 'Options Color', 'htmega-addons' ),
+                            'type'      => Controls_Manager::COLOR,
+                            'selectors' => [
+                                '{{WRAPPER}} .wpcf7-select option' => 'color: {{VALUE}};',
+                            ],
+                            'condition' =>[
+                                'input_select_field_appearance' => 'yes',
+                            ]
+                        ]
+                    );
+
                     $this->end_controls_tab();
 
                     // Hover Style Tab

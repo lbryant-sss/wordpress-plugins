@@ -73,35 +73,105 @@ class HTMega_Elementor_Widget_Image_Magnifier extends Widget_Base {
             );
 
             $this->add_control(
-                'zoomable',
+                'lens_speed',
                 [
-                    'label'        => __( 'Zoomable', 'htmega-addons' ),
-                    'type'         => Controls_Manager::SWITCHER,
-                    'return_value' => 'yes',
-                    'default'      =>'yes'
-                ]
-            );
-
-            $this->add_control(
-                'zoomlabel',
-                [
-                    'label' => __( 'Zoom Label', 'htmega-addons' ),
+                    'label' => __( 'Speed', 'htmega-addons' ),
                     'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'px' ],
                     'range' => [
                         'px' => [
-                            'min' => 1,
-                            'max' => 10,
+                            'min' => 50,
+                            'max' => 500,
+                            'step' => 10,
+                        ],
+                    ],
+                    'default' => [
+                        'size' => 200,
+                    ],
+                ]
+            );
+            $this->add_responsive_control(
+                'lens_width',
+                [
+                    'label' => __( 'Lens Width', 'htmega-addons' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 50,
+                            'max' => 500,
                             'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 5,
+                            'max' => 100,
                         ],
                     ],
                     'default' => [
                         'unit' => 'px',
-                        'size' => 2,
+                        'size' => 200,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .magnify-lens' => 'width: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
-            
+
+            $this->add_responsive_control(
+                'lens_height',
+                [
+                    'label' => __( 'Lens Height', 'htmega-addons' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 50,
+                            'max' => 500,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 5,
+                            'max' => 100,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 200,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .magnify-lens' => 'height: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+            $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                    'name' => 'lens_box_shadow',
+                    'label' => __( 'Box Shadow', 'htmega-addons' ),
+                    'selector' => '{{WRAPPER}} .magnify-lens',
+                    'separator' => 'before',
+                ]
+            );
+
+            $this->add_responsive_control(
+                'lens_border_radius',
+                [
+                    'label' => __( 'Box Radius', 'htmega-addons' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%' ],
+                    'default' => [
+                        'top' => 0,
+                        'right' => 0,
+                        'bottom' => 0,
+                        'left' => 0,
+                        'unit' => 'px',
+                        'isLinked' => true,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .magnify-lens' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
         $this->end_controls_section();
 
         // Style tab section
@@ -182,11 +252,10 @@ class HTMega_Elementor_Widget_Image_Magnifier extends Widget_Base {
         $magnifierimg_attr = [
             'id'                    => 'thumb-'. esc_attr( $id ),
             'src'                   => isset( $image_url[0] ) ? esc_url( $image_url[0] ) : $settings['magnifier_image']['url'],
-            'alt'                   => esc_attr( $settings['magnifier_image_size_size'] ),
-            'data-large-img-url'    => esc_url( $settings['magnifier_image']['url'] ),
-            'data-mode'             => 'inside',
-            'data-zoomable'         => ( 'yes' === $settings['zoomable'] ) ? 'true' : 'false',
-            'data-zoom'             => absint( $settings['zoomlabel']['size'] ),
+            'alt'                   => isset( $settings['magnifier_image']['alt'] ) ? esc_attr( $settings['magnifier_image']['alt'] ) : '',
+            'data-magnify-src'    => esc_url( $settings['magnifier_image']['url'] ),
+            'data-speed'             => absint( $settings['lens_speed']['size'] ),
+            'class'                 => 'zoom',
         ];
         $this->add_render_attribute( 'zoomimgattr', $magnifierimg_attr );
        
@@ -199,9 +268,7 @@ class HTMega_Elementor_Widget_Image_Magnifier extends Widget_Base {
             <script>
                 jQuery(document).ready(function($) {
                     'use strict';
-                    m.attach({
-                        thumb: '#thumb-<?php echo esc_js( $id ); ?>',
-                    });
+                    $('#thumb-<?php echo esc_attr( $id ); ?>').magnify();
                 });
             </script>
         <?php
@@ -209,4 +276,3 @@ class HTMega_Elementor_Widget_Image_Magnifier extends Widget_Base {
     }
 
 }
-

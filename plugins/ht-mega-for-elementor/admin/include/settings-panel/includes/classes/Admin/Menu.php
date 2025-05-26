@@ -265,7 +265,7 @@ class Menu {
                             'desc'  => __( 'No more Elementor limits!', 'htmega-addons' )
                         ],
                         'risk_free' => [
-                            'title' => __( 'Risk-Free, No Credit Card Required', 'htmega-addons' ),
+                            'title' => __( 'Risk-Free, No Hidden Cost', 'htmega-addons' ),
                             'desc'  => __( 'Try it for 30 days, cancel anytime.', 'htmega-addons' )
                         ],
                         'lifetime_access' => [

@@ -18,6 +18,10 @@ License: GPLv3
 
 Change Log
 
+Ad Inserter 2.8.3 - 2025-05-25
+- Added support to override dynamic blocks setting for each rotation
+- Few minor bug fixes, cosmetic changes and code improvements
+
 Ad Inserter 2.8.2 - 2025-04-12
 - Fix for ad blocking detection with AdBlock
 - Added support for any post tag list check
@@ -12180,6 +12184,21 @@ function ai_ad_label_code () {
   return $ad_label .= "\n";
 }
 
+
+function check_w3tc () {
+  if (!in_array ('w3-total-cache/w3-total-cache.php', get_option ('active_plugins'))) {
+    define ('AI_NO_W3TC', true);
+    if (!defined ('W3TC_DYNAMIC_SECURITY')) define ('W3TC_DYNAMIC_SECURITY', 'W3 Total Cache plugin not active');
+  }
+  if (!defined ('W3TC_DYNAMIC_SECURITY')) {
+    $string = AD_INSERTER_PLUGIN_DIR;
+    if (defined ('AUTH_KEY'))      $string .= AUTH_KEY;
+    if (defined ('LOGGED_IN_KEY')) $string .= LOGGED_IN_KEY;
+
+    define ('W3TC_DYNAMIC_SECURITY', md5 ($string));
+  }
+}
+
 function ai_php_enabled () {
   $php_enabled = !(defined ('DISALLOW_FILE_EDIT') && DISALLOW_FILE_EDIT) && !(defined ('DISALLOW_FILE_MODS') && DISALLOW_FILE_MODS);
   return apply_filters ('ai_php_enabled', $php_enabled);
@@ -12387,17 +12406,18 @@ if (($ai_wp_data [AI_WP_DEBUGGING] & AI_DEBUG_PROCESSING) != 0)
   ai_log ("AFTER LOAD GLOBALS: ". number_format (1000 * (microtime (true) - $start_time), 2)." ms");
 
 if (get_dynamic_blocks () == AI_DYNAMIC_BLOCKS_SERVER_SIDE_W3TC) {
-  if (!in_array ('w3-total-cache/w3-total-cache.php', get_option ('active_plugins'))) {
-    define ('AI_NO_W3TC', true);
-    if (!defined ('W3TC_DYNAMIC_SECURITY')) define ('W3TC_DYNAMIC_SECURITY', 'W3 Total Cache plugin not active');
-  }
-  if (!defined ('W3TC_DYNAMIC_SECURITY')) {
-    $string = AD_INSERTER_PLUGIN_DIR;
-    if (defined ('AUTH_KEY'))      $string .= AUTH_KEY;
-    if (defined ('LOGGED_IN_KEY')) $string .= LOGGED_IN_KEY;
+//  if (!in_array ('w3-total-cache/w3-total-cache.php', get_option ('active_plugins'))) {
+//    define ('AI_NO_W3TC', true);
+//    if (!defined ('W3TC_DYNAMIC_SECURITY')) define ('W3TC_DYNAMIC_SECURITY', 'W3 Total Cache plugin not active');
+//  }
+//  if (!defined ('W3TC_DYNAMIC_SECURITY')) {
+//    $string = AD_INSERTER_PLUGIN_DIR;
+//    if (defined ('AUTH_KEY'))      $string .= AUTH_KEY;
+//    if (defined ('LOGGED_IN_KEY')) $string .= LOGGED_IN_KEY;
 
-    define ('W3TC_DYNAMIC_SECURITY', md5 ($string));
-  }
+//    define ('W3TC_DYNAMIC_SECURITY', md5 ($string));
+//  }
+  check_w3tc ();
 }
 
 if ($ai_wp_data [AI_SERVER_SIDE_DETECTION] && !is_admin ()) {

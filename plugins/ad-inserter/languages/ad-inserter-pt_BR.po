@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Ad Inserter Pro\n"
-"POT-Creation-Date: 2025-01-30 01:14-0300\n"
-"PO-Revision-Date: 2025-01-30 01:25-0300\n"
+"POT-Creation-Date: 2025-05-02 04:43-0300\n"
+"PO-Revision-Date: 2025-05-02 04:51-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -10,123 +10,122 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: ad-inserter.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
 #. translators: %s: Ad Inserter
-#: ad-inserter.php:404
+#: ad-inserter.php:411
 #, php-format
 msgid "Caching disabled by %s settings"
 msgstr "Armazenamento em cache desativado pelas configurações do %s"
 
-#: ad-inserter.php:489
+#: ad-inserter.php:496
 msgctxt "Menu item"
 msgid "Debugging DEMO"
 msgstr "DEMONSTRAÇÃO de depuração"
 
-#: ad-inserter.php:506
+#: ad-inserter.php:513
 msgctxt "Menu item, to disable debugging"
 msgid "Disable Debugging"
 msgstr "Desativar depuração"
 
-#: ad-inserter.php:514
+#: ad-inserter.php:521
 msgctxt "Menu item, to label blocks"
 msgid "Label Blocks"
 msgstr "Blocos de rótulos"
 
-#: ad-inserter.php:521
+#: ad-inserter.php:528
 msgctxt "Menu item"
 msgid "Show Positions"
 msgstr "Mostrar posições"
 
-#: ad-inserter.php:607
+#: ad-inserter.php:614
 msgctxt "Menu item"
 msgid "Show HTML Tags"
 msgstr "Mostrar tags HTML"
 
-#: ad-inserter.php:614
+#: ad-inserter.php:621
 msgctxt "Menu item"
 msgid "Disable Insertion"
 msgstr "Desativar inserção"
 
-#: ad-inserter.php:623
+#: ad-inserter.php:630
 msgctxt "Menu item"
 msgid "Ad Blocking Status"
 msgstr "Status do bloqueio de anúncios"
 
-#: ad-inserter.php:630
+#: ad-inserter.php:637
 msgctxt "Menu item"
 msgid "Simulate Ad Blocking"
 msgstr "Simular bloqueio de anúncios"
 
-#: ad-inserter.php:641
+#: ad-inserter.php:648
 msgctxt "Menu item"
 msgid "Log Processing"
 msgstr "Processamento de registros"
 
-#: ad-inserter.php:648
+#: ad-inserter.php:655
 msgctxt "Menu item"
 msgid "Show Log"
 msgstr "Mostrar registro"
 
 #. translators: Debugging position name Before HTML element
-#: ad-inserter.php:1359
+#: ad-inserter.php:1366
 msgid "Before"
 msgstr "Antes"
 
 #. translators: Debugging position name After HTML element
-#: ad-inserter.php:1364
+#: ad-inserter.php:1371
 msgid "After"
 msgstr "Após"
 
 #. translators: Debugging position name Prepend content of HTML element (before the content of the HTML element)
-#: ad-inserter.php:1369 strings.php:107
+#: ad-inserter.php:1376 strings.php:107
 msgid "Prepend content"
 msgstr "Adicionar antes do conteúdo"
 
 #. translators: Debugging position name Append content of HTML element (after the content of the HTML element)
-#: ad-inserter.php:1374 strings.php:108
+#: ad-inserter.php:1381 strings.php:108
 msgid "Append content"
 msgstr "Adicionar após o conteúdo"
 
 #. translators: Debugging position name Replace content of HTML element
-#: ad-inserter.php:1379 strings.php:109
+#: ad-inserter.php:1386 strings.php:109
 msgid "Replace content"
 msgstr "Substituir conteúdo"
 
-#: ad-inserter.php:1384 strings.php:174
+#: ad-inserter.php:1391 strings.php:174
 msgid "Replace"
 msgstr "Substituir"
 
 #. translators: Debugging message when output buffering is enabled
-#: ad-inserter.php:1431
+#: ad-inserter.php:1438
 msgid "OUTPUT BUFFERING"
 msgstr "BUFFER DE SAÍDA"
 
 #. translators: Debugging position
-#: ad-inserter.php:1435
+#: ad-inserter.php:1442
 msgid "Above Header"
 msgstr "Acima do cabeçalho"
 
-#: ad-inserter.php:1496
+#: ad-inserter.php:1503
 msgid "CONTENT MARKER"
 msgstr "MARCADOR DE CONTEÚDO"
 
-#: ad-inserter.php:1769
+#: ad-inserter.php:1776
 msgctxt "Menu item"
 msgid "Log In"
 msgstr "Acessar"
 
 #. translators: %s: Ad Inserter
-#: ad-inserter.php:2189 ad-inserter.php:2192 ad-inserter.php:3773
+#: ad-inserter.php:2196 ad-inserter.php:2199 ad-inserter.php:3783
 #, php-format
 msgid "%s Settings"
 msgstr "Configurações do %s"
@@ -139,59 +138,59 @@ msgstr "Configurações do %s"
 #. $js = str_replace ('window.AI_ADB_STATUS_MESSAGE=5', '(jQuery("#ai-adb-status").text ("' . __('AD BLOCKING DETECTION COOKIES DELETED', 'ad-inserter') . '"))', $js);
 #. $js = str_replace ('window.AI_ADB_STATUS_MESSAGE=6', '(jQuery("#ai-adb-status").text ("' . __('AD BLOCKING DETECTED - NO ACTION', 'ad-inserter') . '"),jQuery("#ai-adb-bar").addClass ("adb-on"))', $js);
 #. translators: AD BLOCKING DETECTED, PAGE VIEWS: n - NO ACTION
-#: ad-inserter.php:2994
+#: ad-inserter.php:3001
 msgid "AD BLOCKING DETECTED, PAGE VIEWS"
 msgstr "BLOQUEIO DE ANÚNCIOS DETECTADO, VISUALIZAÇÕES DE PÁGINA"
 
-#: ad-inserter.php:2994
+#: ad-inserter.php:3001
 msgid "NO ACTION"
 msgstr "NENHUMA AÇÃO"
 
-#: ad-inserter.php:2995
+#: ad-inserter.php:3002
 msgid "AD BLOCKING DETECTED, COOKIE DETECTED - NO ACTION"
 msgstr "BLOQUEIO DE ANÚNCIOS DETECTADO, COOKIE DETECTADO - NENHUMA AÇÃO"
 
-#: ad-inserter.php:2996
+#: ad-inserter.php:3003
 msgid "AD BLOCKING DETECTED - ACTION"
 msgstr "BLOQUEIO DE ANÚNCIOS DETECTADO - AÇÃO"
 
-#: ad-inserter.php:2997
+#: ad-inserter.php:3004
 msgid "AD BLOCKING NOT DETECTED"
 msgstr "BLOQUEIO DE ANÚNCIOS NÃO DETECTADO"
 
-#: ad-inserter.php:2998
+#: ad-inserter.php:3005
 msgid "AD BLOCKING DETECTION COOKIES DELETED"
 msgstr "COOKIES DE DETECÇÃO DE BLOQUEIO DE ANÚNCIOS EXCLUÍDOS"
 
-#: ad-inserter.php:2999
+#: ad-inserter.php:3006
 msgid "AD BLOCKING DETECTED - NO ACTION"
 msgstr "BLOQUEIO DE ANÚNCIOS DETECTADO - NENHUMA AÇÃO"
 
-#: ad-inserter.php:3455
+#: ad-inserter.php:3465
 #, php-format
 msgid "Hey, you are now using %1$s %2$s block."
 msgid_plural "Hey, you are now using %1$s %2$s blocks."
 msgstr[0] "Ei, agora você está usando o bloco %1$s %2$s."
 msgstr[1] "Ei, agora você está usando os blocos %1$s %2$s."
 
-#: ad-inserter.php:3458
+#: ad-inserter.php:3468
 msgid "Please help me to solve a problem first"
 msgstr "Me ajude a resolver um problema primeiro"
 
-#: ad-inserter.php:3462
+#: ad-inserter.php:3472
 msgid "Maybe later"
 msgstr "Talvez mais tarde"
 
-#: ad-inserter.php:3467
+#: ad-inserter.php:3477
 #, php-format
 msgid "Hey, you are using %s and I hope you're happy with it."
 msgstr "Ei, você está usando o %s e espero que esteja satisfeito com ele."
 
-#: ad-inserter.php:3470
+#: ad-inserter.php:3480
 msgid "OK, but please help me with the settings first"
 msgstr "OK. Mas primeiro, me ajude com as configurações"
 
-#: ad-inserter.php:3483
+#: ad-inserter.php:3493
 msgid ""
 "Please take a moment to rate the plugin. When you rate it with 5 stars it's "
 "like saying 'Thank you'. Somebody will be happy."
@@ -199,7 +198,7 @@ msgstr ""
 "Dedique um momento para classificar o plugin. Quando você o classifica com 5 "
 "estrelas, é como se você estivesse dizendo “Obrigado”. Alguém ficará feliz."
 
-#: ad-inserter.php:3485
+#: ad-inserter.php:3495
 msgid ""
 "Positive reviews are a great incentive to fix bugs and to add new features "
 "for better monetization of your website."
@@ -207,34 +206,34 @@ msgstr ""
 "As avaliações positivas são um grande incentivo para corrigir erros e "
 "adicionar novos recursos para melhorar a monetização do seu site."
 
-#: ad-inserter.php:3491
+#: ad-inserter.php:3501
 msgid "Sure"
 msgstr "Claro"
 
 #. translators: 1: AMPforWP Plugin Manager, 2: Ad Inserter
 #. translators: 1: AMPforWP Plugin Manager, 2: Ad Inserter, 3, 4: HTML tags
-#: ad-inserter.php:3508 ad-inserter.php:3551
+#: ad-inserter.php:3518 ad-inserter.php:3561
 #, php-format
 msgid "Warning: %1$s %3$s disabled %4$s %2$s on AMP pages."
 msgstr "Atenção: %1$s %3$s desativou %4$s %2$s em páginas AMP."
 
 #. translators: 1: Ad Inserter, 2, 3: HTML tags
-#: ad-inserter.php:3515
+#: ad-inserter.php:3525
 #, php-format
 msgid "Warning: %1$s requires PHP 5.6 or newer. %2$s Please update! %3$s"
 msgstr "Atenção: %1$s requer o PHP 5.6 ou mais recente. %2$s Atualize! %3$s"
 
 #. translators: 1: Ad Inserter, 2, 3: HTML tags
-#: ad-inserter.php:3522
+#: ad-inserter.php:3532
 msgid "Error: plugin settings corrupt"
 msgstr "Erro: Configurações do plugin corrompidas"
 
-#: ad-inserter.php:3533
+#: ad-inserter.php:3543
 msgctxt "Menu item"
 msgid "Settings"
 msgstr "Configurações"
 
-#: ad-inserter.php:3566
+#: ad-inserter.php:3576
 msgid ""
 "Load settings page in safe mode to avoid collisions with other plugins or "
 "theme"
@@ -242,79 +241,79 @@ msgstr ""
 "Carregue a página de configurações no modo seguro para evitar conflitos com "
 "outros plugins ou temas"
 
-#: ad-inserter.php:3566
+#: ad-inserter.php:3576
 msgid "Safe mode"
 msgstr "Modo seguro"
 
 #. translators: %s: Ad Inserter
-#: ad-inserter.php:3661
+#: ad-inserter.php:3671
 #, php-format
 msgctxt "Meta box name"
 msgid "%s Individual Exceptions"
 msgstr "Exceções específicas do %s"
 
-#: ad-inserter.php:3690 ad-inserter.php:12655 class.php:2629
+#: ad-inserter.php:3700 ad-inserter.php:12666 class.php:2629
 #: includes/preview.php:2439 includes/preview.php:2484
-#: includes/preview.php:2521 settings.php:4926 strings.php:3 strings.php:210
+#: includes/preview.php:2521 settings.php:4911 strings.php:3 strings.php:210
 msgid "Block"
 msgstr "Bloco"
 
-#: ad-inserter.php:3691 includes/functions.php:4954 settings.php:4934
-#: settings.php:5026
+#: ad-inserter.php:3701 includes/functions.php:4967 settings.php:4919
+#: settings.php:5011
 msgid "Name"
 msgstr "Nome"
 
-#: ad-inserter.php:3694 settings.php:1382
+#: ad-inserter.php:3704 settings.php:1382
 msgid "Default insertion"
 msgstr "Inserção padrão"
 
-#: ad-inserter.php:3697
+#: ad-inserter.php:3707
 msgctxt "Page"
 msgid "For this"
 msgstr "Para esta"
 
-#: ad-inserter.php:3698
+#: ad-inserter.php:3708
 msgctxt "Post"
 msgid "For this"
 msgstr "Para este"
 
-#: ad-inserter.php:3710
+#: ad-inserter.php:3720
 msgctxt "Enabled/disabled on all"
 msgid "pages"
 msgstr "páginas"
 
-#: ad-inserter.php:3713
+#: ad-inserter.php:3723
 msgctxt "Enabled/disabled on all"
 msgid "posts"
 msgstr "posts"
 
-#: ad-inserter.php:3732 ad-inserter.php:3744 strings.php:180
+#: ad-inserter.php:3742 ad-inserter.php:3754 strings.php:180
 msgid "Enabled"
 msgstr "Ativado"
 
 #. translators: Menu items
-#: ad-inserter.php:3732 ad-inserter.php:3744 includes/functions.php:3211
-#: includes/functions.php:3574 strings.php:16
+#: ad-inserter.php:3742 ad-inserter.php:3754 includes/functions.php:3210
+#: includes/functions.php:3573 strings.php:16
 msgid "Disabled"
 msgstr "Desativado"
 
-#: ad-inserter.php:3734
+#: ad-inserter.php:3744
 msgid "No individual exceptions"
 msgstr "Nenhuma exceção específica"
 
 #. translators: Not enabled for pages or posts
-#: ad-inserter.php:3736
+#: ad-inserter.php:3746
 msgid "Not enabled for"
 msgstr "Não ativado para"
 
 #. translators: No individual exceptions enabled for pages or posts
-#: ad-inserter.php:3764
+#: ad-inserter.php:3774
 msgid "No block has individual exceptions enabled"
 msgstr "Nenhum bloco tem exceções específicas ativadas"
 
 #. translators: 1: Ad Inserter Settings (page), 2: Tag / Archive pages
 #. ;
-#: ad-inserter.php:3771
+#: ad-inserter.php:3781
 #, php-format
 msgid ""
 "Default insertion can be configured for each block on %1$s page - button "
@@ -323,11 +322,11 @@ msgstr ""
 "A inserção padrão pode ser configurada para cada bloco na página %1$s - "
 "botão ao lado da caixa de seleção %2$s."
 
-#: ad-inserter.php:3774 settings.php:1360
+#: ad-inserter.php:3784 settings.php:1360
 msgid "Tag / Archive pages"
 msgstr "Páginas de tag/arquivo"
 
-#: ad-inserter.php:3776
+#: ad-inserter.php:3786
 msgid ""
 "When individual exceptions for a block are enabled, a checkbox will be "
 "listed here to change default insertion for this post or page."
@@ -336,7 +335,7 @@ msgstr ""
 "seleção será listada aqui para alterar a inserção padrão para este post ou "
 "página."
 
-#: ad-inserter.php:3777
+#: ad-inserter.php:3787
 msgid ""
 "This way you can individually enable or disable blocks on specific posts or "
 "pages."
@@ -344,66 +343,66 @@ msgstr ""
 "Desta forma, você pode ativar ou desativar blocos individualmente em posts "
 "ou páginas específicas."
 
-#: ad-inserter.php:3779
+#: ad-inserter.php:3789
 #, php-format
 msgid "For more information check page %s"
 msgstr "Para mais informações, consulte a página %s"
 
 #. translators: Ad Inserter Exceptions documentation page
-#: ad-inserter.php:3781
+#: ad-inserter.php:3791
 msgid "Individual Exceptions"
 msgstr "Exceções específicas"
 
-#: ad-inserter.php:3827
+#: ad-inserter.php:3837
 msgid "STATIC PAGE"
 msgstr "PÁGINA ESTÁTICA"
 
-#: ad-inserter.php:3830
+#: ad-inserter.php:3840
 msgid "POST"
 msgstr "POST"
 
-#: ad-inserter.php:3833
+#: ad-inserter.php:3843
 msgid "HOMEPAGE"
 msgstr "PÁGINA INICIAL"
 
-#: ad-inserter.php:3836
+#: ad-inserter.php:3846
 msgid "CATEGORY PAGE"
 msgstr "PÁGINA DE CATEGORIA"
 
-#: ad-inserter.php:3839
+#: ad-inserter.php:3849
 msgid "SEARCH PAGE"
 msgstr "PÁGINA DE PESQUISA"
 
-#: ad-inserter.php:3842
+#: ad-inserter.php:3852
 msgid "ARCHIVE PAGE"
 msgstr "PÁGINA DE ARQUIVO"
 
-#: ad-inserter.php:3845
+#: ad-inserter.php:3855
 msgid "ERROR 404 PAGE"
 msgstr "PÁGINA DE ERRO 404"
 
-#: ad-inserter.php:3848
+#: ad-inserter.php:3858
 msgid "AJAX CALL"
 msgstr "CHAMADA AJAX"
 
-#: ad-inserter.php:3851
+#: ad-inserter.php:3861
 msgid "REST CALL"
 msgstr "CHAMADA REST"
 
-#: ad-inserter.php:3854
+#: ad-inserter.php:3864
 msgid "UNKNOWN PAGE TYPE"
 msgstr "TIPO DE PÁGINA DESCONHECIDO"
 
-#: ad-inserter.php:3871
+#: ad-inserter.php:3881
 msgid "Click to delete ad blocking detection cokies"
 msgstr "Clique para excluir os cookies de detecção de bloqueio de anúncios"
 
-#: ad-inserter.php:3872
+#: ad-inserter.php:3882
 msgid "AD BLOCKING STATUS UNKNOWN"
 msgstr "STATUS DO BLOQUEIO DE ANÚNCIOS DESCONHECIDO"
 
 #. translators: %s: AdSense Auto Ads
-#: ad-inserter.php:3901
+#: ad-inserter.php:3911
 #, php-format
 msgid ""
 "Code for %s detected - Code will automatically insert AdSense ads at optimal "
@@ -412,151 +411,151 @@ msgstr ""
 "Código para %s detectado - O código irá inserir automaticamente anúncios do "
 "AdSense nas posições ideais"
 
-#: ad-inserter.php:4053
+#: ad-inserter.php:4063
 msgid "Code for insertion"
 msgstr "Código para inserção"
 
-#: ad-inserter.php:4053
+#: ad-inserter.php:4063
 msgid "character"
 msgid_plural "characters"
 msgstr[0] "caractere"
 msgstr[1] "caracteres"
 
-#: ad-inserter.php:4074
+#: ad-inserter.php:4084
 msgid "Header code"
 msgstr "Código do cabeçalho"
 
-#: ad-inserter.php:4074
+#: ad-inserter.php:4084
 msgctxt "Header code"
 msgid "DISABLED"
 msgstr "DESATIVADO"
 
-#: ad-inserter.php:4074 ad-inserter.php:4345
+#: ad-inserter.php:4084 ad-inserter.php:4355
 msgid "character inserted"
 msgid_plural "characters inserted"
 msgstr[0] "caractere inserido"
 msgstr[1] "caracteres inseridos"
 
-#: ad-inserter.php:4094
+#: ad-inserter.php:4104
 msgid "Click to delete the cookie for the consents"
 msgstr "Clique para excluir o cookie dos consentimentos"
 
-#: ad-inserter.php:4099 ad-inserter.php:4354
+#: ad-inserter.php:4109 ad-inserter.php:4364
 msgid "UNFILTERED HTML DISABLED"
 msgstr "HTML NÃO FILTRADO DESATIVADO"
 
-#: ad-inserter.php:4345
+#: ad-inserter.php:4355
 msgid "Footer code"
 msgstr "Código do rodapé"
 
-#: ad-inserter.php:4345
+#: ad-inserter.php:4355
 msgctxt "Footer code"
 msgid "DISABLED"
 msgstr "DESATIVADO"
 
-#: ad-inserter.php:4359
+#: ad-inserter.php:4369
 msgid "JAVASCRIPT NOT WORKING"
 msgstr "O JAVASCRIPT NÃO ESTÁ FUNCIONANDO"
 
-#: ad-inserter.php:4359
+#: ad-inserter.php:4369
 msgid "NO JAVASCRIPT ERRORS"
 msgstr "NENHUM ERRO DE JAVASCRIPT"
 
-#: ad-inserter.php:4359
+#: ad-inserter.php:4369
 msgid "JAVASCRIPT ERRORS"
 msgstr "ERROS DE JAVASCRIPT"
 
 #. translators: %s: Ad Inserter
-#: ad-inserter.php:7840 ad-inserter.php:8175
+#: ad-inserter.php:7851 ad-inserter.php:8186
 #, php-format
 msgid "Invalid data received - %s settings not saved."
 msgstr "Dados recebidos inválidos - as configurações do %s não foram salvas."
 
-#: ad-inserter.php:7884
+#: ad-inserter.php:7895
 msgid "plugin settings imported"
 msgstr "configurações do plugin importadas"
 
-#: ad-inserter.php:7890
+#: ad-inserter.php:7901
 #, php-format
 msgid "blocks %d to %d"
 msgstr "blocos de %d a %d"
 
-#: ad-inserter.php:7910
+#: ad-inserter.php:7921
 #, php-format
 msgid "block %d settings imported"
 msgstr "configurações do bloco %d importadas"
 
 #. translators: %s: Ad Inserter
-#: ad-inserter.php:8142
+#: ad-inserter.php:8153
 #, php-format
 msgid "Error importing %s settings."
 msgstr "Erro ao importar as configurações do %s."
 
-#: ad-inserter.php:8143
+#: ad-inserter.php:8154
 msgid "Error importing settings for block"
 msgid_plural "Error importing settings for blocks:"
 msgstr[0] "Erro ao importar as configurações do bloco"
 msgstr[1] "Erro ao importar as configurações dos blocos:"
 
-#: ad-inserter.php:8171
+#: ad-inserter.php:8182
 msgid "Settings saved."
 msgstr "Configurações salvas."
 
-#: ad-inserter.php:8173
+#: ad-inserter.php:8184
 msgid "settings saved"
 msgstr "configurações salvas"
 
-#: ad-inserter.php:8195
+#: ad-inserter.php:8206
 msgid "Settings cleared."
 msgstr "Configurações redefinidas."
 
-#: ad-inserter.php:8197
+#: ad-inserter.php:8208
 msgid "settings cleared"
 msgstr "configurações redefinidas"
 
-#: ad-inserter.php:8582 ad-inserter.php:8584 ad-inserter.php:8607
+#: ad-inserter.php:8593 ad-inserter.php:8595 ad-inserter.php:8618
 #: settings.php:2417
 msgid "word"
 msgid_plural "words"
 msgstr[0] "palavra"
 msgstr[1] "palavras"
 
-#: ad-inserter.php:8621 ad-inserter.php:8748
+#: ad-inserter.php:8632 ad-inserter.php:8759
 msgid "HTML TAGS REMOVED"
 msgstr "TAGS HTML REMOVIDAS"
 
-#: ad-inserter.php:8827
+#: ad-inserter.php:8838
 msgid "BEFORE COMMENTS"
 msgstr "ANTES DOS COMENTÁRIOS"
 
-#: ad-inserter.php:8956
+#: ad-inserter.php:8967
 msgid "AFTER COMMENTS"
 msgstr "APÓS OS COMENTÁRIOS"
 
-#: ad-inserter.php:9033
+#: ad-inserter.php:9044
 msgid "BETWEEN COMMENTS"
 msgstr "ENTRE OS COMENTÁRIOS"
 
-#: ad-inserter.php:11829 ad-inserter.php:11930
+#: ad-inserter.php:11840 ad-inserter.php:11941
 msgctxt "category name"
 msgid "Uncategorized"
 msgstr "Sem categoria"
 
-#: ad-inserter.php:12235
+#: ad-inserter.php:12246
 msgid "requires WordPress 4.6 or newer"
 msgstr "requer o WordPress 4.6 ou mais recente"
 
-#: ad-inserter.php:12235
+#: ad-inserter.php:12246
 msgid "Please update!"
 msgstr "Atualizar!"
 
 #. translators: Opt-in message: Thank you for installing Ad Inserter (plugin name with HTML tags will be added)
-#: ad-inserter.php:12520
+#: ad-inserter.php:12531
 msgid "Thank you for installing"
 msgstr "Obrigado por instalar"
 
 #. translators: Opt-in message: %s: HTML tags
-#: ad-inserter.php:12522
+#: ad-inserter.php:12533
 #, php-format
 msgid ""
 "We would like to %s track its usage %s on your site. This is completely "
@@ -565,7 +564,7 @@ msgstr ""
 "Gostaríamos de %s rastrear o uso %s no seu site. Isso é completamente "
 "opcional e pode ser desativado a qualquer momento."
 
-#: ad-inserter.php:12524
+#: ad-inserter.php:12535
 msgid ""
 "We don't record any sensitive data, only information regarding the WordPress "
 "environment and plugin usage, which will help us to make improvements to the "
@@ -576,7 +575,7 @@ msgstr ""
 "no plugin."
 
 #. translators: Deactivation message: %s: HTML tags
-#: ad-inserter.php:12564
+#: ad-inserter.php:12575
 #, php-format
 msgid ""
 "Looking for %s Documentation, %s %s Common Settings, %s %s Quick Start %s or "
@@ -588,50 +587,50 @@ msgstr ""
 "seu tema? %s Nos informe %s e tentaremos ajudá-lo."
 
 #. translators: %s: Ad Inserter
-#: ad-inserter.php:12612
+#: ad-inserter.php:12623
 #, php-format
 msgid "%s block."
 msgstr "Bloco do %s."
 
 #. translators: widget title
-#: ad-inserter.php:12628 ad-inserter.php:12664
+#: ad-inserter.php:12639 ad-inserter.php:12675
 msgid "Processing log"
 msgstr "Registro de processamento"
 
 #. translators: widget title
-#: ad-inserter.php:12630 ad-inserter.php:12665
+#: ad-inserter.php:12641 ad-inserter.php:12676
 msgid "Dummy widget"
 msgstr "Widget fictício"
 
 #. translators: widget title
-#: ad-inserter.php:12632 ad-inserter.php:12663
+#: ad-inserter.php:12643 ad-inserter.php:12674
 msgid "Debugging tools"
 msgstr "Ferramentas de depuração"
 
 #. translators: block status (widget title)
-#: ad-inserter.php:12639
+#: ad-inserter.php:12650
 msgctxt "block"
 msgid "PAUSED"
 msgstr "PAUSADO"
 
-#: ad-inserter.php:12640
+#: ad-inserter.php:12651
 msgid "WIDGET DISABLED"
 msgstr "WIDGET DESATIVADO"
 
-#: ad-inserter.php:12641
+#: ad-inserter.php:12652
 msgid "Unknown block"
 msgstr "Bloco desconhecido"
 
-#: ad-inserter.php:12650 includes/functions.php:5825 settings.php:1412
+#: ad-inserter.php:12661 includes/functions.php:5838 settings.php:1412
 msgid "Title"
 msgstr "Título"
 
-#: ad-inserter.php:12672
+#: ad-inserter.php:12683
 msgctxt "Widget"
 msgid "Sticky"
 msgstr "Fixo"
 
-#: ad-inserter.php:12723
+#: ad-inserter.php:12734
 msgid ""
 "Ad Inserter can't be used while Ad Inserter Pro is active! To activate Ad "
 "Inserter you need to first deactivate Ad Inserter Pro."
@@ -640,7 +639,7 @@ msgstr ""
 "ativo! Para ativar o Ad Inserter, você precisa primeiro desativar o Ad "
 "Inserter Pro."
 
-#: ad-inserter.php:12724
+#: ad-inserter.php:12735
 msgid ""
 "<strong>WARNING</strong>: Please note that saving settings in Ad Inserter "
 "will clear all settings that are available only in the Pro version "
@@ -680,11 +679,11 @@ msgstr "Após o post"
 msgid "Between posts"
 msgstr "Entre os posts"
 
-#: class.php:2608 settings.php:2146 settings.php:4951
+#: class.php:2608 settings.php:2146 settings.php:4936
 msgid "Widget"
 msgstr "Widget"
 
-#: class.php:2613 settings.php:4949
+#: class.php:2613 settings.php:4934
 msgid "PHP function call"
 msgstr "Chamada de função PHP"
 
@@ -856,7 +855,7 @@ msgstr "Código"
 msgid "for block"
 msgstr "para o bloco"
 
-#: class.php:10492
+#: class.php:10501
 msgid ""
 "ERROR: class DOMDocument not found. Your webhost needs to install the DOM "
 "extension for PHP."
@@ -864,37 +863,37 @@ msgstr ""
 "ERRO: Classe “DOMDocument” não encontrada. Sua hospedagem precisa instalar a "
 "extensão DOM para PHP."
 
-#: includes/dst/dst.php:356
+#: includes/dst/dst.php:359
 msgid "Every minute"
 msgstr "A cada minuto"
 
-#: includes/dst/dst.php:361
+#: includes/dst/dst.php:364
 msgid "Once Weekly"
 msgstr "Uma vez por semana"
 
-#: includes/dst/dst.php:365
+#: includes/dst/dst.php:368
 msgid "Once Monthly"
 msgstr "Uma vez por mês"
 
-#: includes/dst/dst.php:369
+#: includes/dst/dst.php:372
 msgid "Twice Monthly"
 msgstr "Duas vezes por mês"
 
-#: includes/dst/dst.php:563
+#: includes/dst/dst.php:566
 msgid "No plugin data."
 msgstr "Nenhum dado do plugin."
 
-#: includes/dst/dst.php:935
+#: includes/dst/dst.php:938
 msgctxt "Button"
 msgid "Allow"
 msgstr "Permitir"
 
-#: includes/dst/dst.php:937
+#: includes/dst/dst.php:940
 msgctxt "Button"
 msgid "Do not allow"
 msgstr "Não permitir"
 
-#: includes/dst/dst.php:1165
+#: includes/dst/dst.php:1168
 msgid ""
 "Thank you for installing our plugin. We'd like your permission to track its "
 "usage on your site and subscribe you to our newsletter. This is completely "
@@ -904,7 +903,7 @@ msgstr ""
 "rastrear o uso dele no seu site e assinar o nosso boletim informativo. Isso "
 "é completamente opcional."
 
-#: includes/dst/dst.php:1166
+#: includes/dst/dst.php:1169
 msgid ""
 "We won't record any sensitive data, only information regarding the WordPress "
 "environment and plugin settings, which will help us to make improvements to "
@@ -914,7 +913,7 @@ msgstr ""
 "ambiente do WordPress e as configurações do plugin, que nos ajudarão a fazer "
 "melhorias no plugin."
 
-#: includes/dst/dst.php:1169
+#: includes/dst/dst.php:1172
 msgid ""
 "Thank you for installing our theme. We'd like your permission to track its "
 "usage on your site and subscribe you to our newsletter. This is completely "
@@ -924,7 +923,7 @@ msgstr ""
 "rastrear o uso do tema no seu site e assinar nosso boletim informativo. Isso "
 "é completamente opcional."
 
-#: includes/dst/dst.php:1170
+#: includes/dst/dst.php:1173
 msgid ""
 "We won't record any sensitive data, only information regarding the WordPress "
 "environment and theme settings, which will help us to make improvements to "
@@ -934,7 +933,7 @@ msgstr ""
 "ambiente do WordPress e as configurações do tema, que nos ajudarão a fazer "
 "melhorias no tema."
 
-#: includes/dst/dst.php:1178
+#: includes/dst/dst.php:1181
 msgid ""
 "Thank you for installing our plugin. We would like to track its usage on "
 "your site. This is completely optional."
@@ -942,7 +941,7 @@ msgstr ""
 "Agradecemos por você ter instalado nosso plugin. Queremos rastrear o uso "
 "dele no seu site. Isso é completamente opcional."
 
-#: includes/dst/dst.php:1179
+#: includes/dst/dst.php:1182
 msgid ""
 "We don't record any sensitive data, only information regarding the WordPress "
 "environment and plugin settings, which will help us to make improvements to "
@@ -952,7 +951,7 @@ msgstr ""
 "ambiente do WordPress e as configurações do plugin, que nos ajudarão a fazer "
 "melhorias no plugin."
 
-#: includes/dst/dst.php:1182
+#: includes/dst/dst.php:1185
 msgid ""
 "Thank you for installing our theme. We would like to track its usage on your "
 "site. This is completely optional."
@@ -960,7 +959,7 @@ msgstr ""
 "Agradecemos por você ter instalado nosso tema. Queremos rastrear o uso dele "
 "no seu site. Isso é completamente opcional."
 
-#: includes/dst/dst.php:1183
+#: includes/dst/dst.php:1186
 msgid ""
 "We don't record any sensitive data, only information regarding the WordPress "
 "environment and theme settings, which will help us to make improvements to "
@@ -970,7 +969,7 @@ msgstr ""
 "ambiente do WordPress e as configurações do tema, que nos ajudarão a fazer "
 "melhorias no tema."
 
-#: includes/dst/dst.php:1193
+#: includes/dst/dst.php:1196
 msgid ""
 "Thank you for opting in to tracking. Would you like to receive occasional "
 "news about this plugin, including details of new features and special offers?"
@@ -979,7 +978,7 @@ msgstr ""
 "notícias ocasionais sobre este plugin, incluindo detalhes dos novos recursos "
 "e ofertas especiais?"
 
-#: includes/dst/dst.php:1195
+#: includes/dst/dst.php:1198
 msgid ""
 "Thank you for opting in to tracking. Would you like to receive occasional "
 "news about this theme, including details of new features and special offers?"
@@ -988,11 +987,11 @@ msgstr ""
 "notícias ocasionais sobre este tema, incluindo detalhes dos novos recursos e "
 "ofertas especiais?"
 
-#: includes/dst/dst.php:1217
+#: includes/dst/dst.php:1220
 msgid "Sorry to see you go"
 msgstr "Lamentamos ver você partir"
 
-#: includes/dst/dst.php:1218
+#: includes/dst/dst.php:1221
 msgid ""
 "Before you deactivate the plugin, would you quickly give us your reason for "
 "doing so?"
@@ -1000,69 +999,69 @@ msgstr ""
 "Antes de desativar o plugin, você poderia nos informar rapidamente o motivo "
 "da desativação?"
 
-#: includes/dst/dst.php:1220
+#: includes/dst/dst.php:1223
 msgid "Set up is too difficult"
 msgstr "A configuração é muito difícil"
 
-#: includes/dst/dst.php:1221
+#: includes/dst/dst.php:1224
 msgid "Lack of documentation"
 msgstr "Falta de documentação"
 
-#: includes/dst/dst.php:1222
+#: includes/dst/dst.php:1225
 msgid "Not the features I wanted"
 msgstr "Não tem os recursos que eu estava procurando"
 
-#: includes/dst/dst.php:1223
+#: includes/dst/dst.php:1226
 msgid "Doesn't work"
 msgstr "Não funciona"
 
-#: includes/dst/dst.php:1224
+#: includes/dst/dst.php:1227
 msgid "Found a better plugin"
 msgstr "Encontrei um plugin melhor"
 
-#: includes/dst/dst.php:1225
+#: includes/dst/dst.php:1228
 msgid "Installed by mistake"
 msgstr "Foi instalado por engano"
 
-#: includes/dst/dst.php:1226
+#: includes/dst/dst.php:1229
 msgid "Just testing"
 msgstr "Apenas testando"
 
-#: includes/dst/dst.php:1227
+#: includes/dst/dst.php:1230
 msgid "Only required temporarily"
 msgstr "Precisei apenas temporariamente"
 
-#: includes/dst/dst.php:1228
+#: includes/dst/dst.php:1231
 msgid "Don't show this form again"
 msgstr "Não mostrar este formulário novamente"
 
-#: includes/dst/dst.php:1230
+#: includes/dst/dst.php:1233
 msgid "Details (optional)"
 msgstr "Detalhes (opcional)"
 
-#: includes/dst/dst.php:1231
+#: includes/dst/dst.php:1234
 msgid "This information will greatly help us to improve the plugin."
 msgstr "Essas informações irão nos ajudar muito a melhorar o plugin."
 
-#: includes/dst/dst.php:1232
+#: includes/dst/dst.php:1235
 msgid "Goodbye!"
 msgstr "Até mais!"
 
-#: includes/dst/dst.php:1275
+#: includes/dst/dst.php:1278
 msgid "Submitting form"
 msgstr "Enviando formulário"
 
-#: includes/dst/dst.php:1414
+#: includes/dst/dst.php:1417
 msgctxt "Button"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: includes/dst/dst.php:1414
+#: includes/dst/dst.php:1417
 msgctxt "Button"
 msgid "Just Deactivate"
 msgstr "Apenas desativar"
 
-#: includes/dst/dst.php:1414
+#: includes/dst/dst.php:1417
 msgctxt "Button"
 msgid "Submit and Deactivate"
 msgstr "Enviar e desativar"
@@ -1078,7 +1077,7 @@ msgid "Reset"
 msgstr "Redefinir"
 
 #: includes/editor.php:6 includes/placeholders.php:353
-#: includes/preview.php:2428 settings.php:4121 strings.php:240 strings.php:299
+#: includes/preview.php:2428 settings.php:4108 strings.php:240 strings.php:299
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1213,16 +1212,16 @@ msgstr "Rastrear impressões e cliques para este bloco"
 msgid " - global tracking disabled"
 msgstr " - rastreamento global desativado"
 
-#: includes/functions.php:624 includes/functions.php:5464
-#: includes/functions.php:5743
+#: includes/functions.php:624 includes/functions.php:5477
+#: includes/functions.php:5756
 msgid "Generate PDF report"
 msgstr "Gerar relatório PDF"
 
-#: includes/functions.php:631 includes/functions.php:5460
+#: includes/functions.php:631 includes/functions.php:5473
 msgid "Generate CSV report"
 msgstr "Gerar relatório CSV"
 
-#: includes/functions.php:638 includes/functions.php:5739
+#: includes/functions.php:638 includes/functions.php:5752
 msgid "Open public report"
 msgstr "Abrir relatório público"
 
@@ -1400,13 +1399,13 @@ msgstr "Abrir link em uma nova aba"
 msgid "New tab"
 msgstr "Nova aba"
 
-#: includes/functions.php:1086 includes/functions.php:3363
-#: includes/functions.php:3379
+#: includes/functions.php:1086 includes/functions.php:3362
+#: includes/functions.php:3378
 msgid "Tracking is globally disabled"
 msgstr "O rastreamento está desativado globalmente"
 
-#: includes/functions.php:1090 includes/functions.php:3367
-#: includes/functions.php:3383
+#: includes/functions.php:1090 includes/functions.php:3366
+#: includes/functions.php:3382
 msgid "Tracking for this block is disabled"
 msgstr "O rastreamento deste bloco está desativado"
 
@@ -1414,9 +1413,9 @@ msgstr "O rastreamento deste bloco está desativado"
 msgid "Double click to toggle controls in public reports"
 msgstr "Clique duas vezes para alternar os controles nos relatórios públicos"
 
-#: includes/functions.php:1103 includes/functions.php:4649
-#: includes/functions.php:5766 settings.php:4041 settings.php:4077
-#: settings.php:4138 strings.php:255
+#: includes/functions.php:1103 includes/functions.php:4662
+#: includes/functions.php:5779 settings.php:4028 settings.php:4064
+#: settings.php:4125 strings.php:255
 msgid "Loading..."
 msgstr "Carregando..."
 
@@ -1434,51 +1433,51 @@ msgstr ""
 "Atualizar automaticamente os dados do intervalo selecionado a cada 60 "
 "segundos"
 
-#: includes/functions.php:1131 includes/functions.php:9348
+#: includes/functions.php:1131 includes/functions.php:9375
 msgid "Load data for last month"
 msgstr "Carregar dados do último mês"
 
-#: includes/functions.php:1131 includes/functions.php:9348
+#: includes/functions.php:1131 includes/functions.php:9375
 msgid "Last Month"
 msgstr "Último mês"
 
-#: includes/functions.php:1134 includes/functions.php:9351
+#: includes/functions.php:1134 includes/functions.php:9378
 msgid "Load data for this month"
 msgstr "Carregar dados para este mês"
 
-#: includes/functions.php:1134 includes/functions.php:9351
+#: includes/functions.php:1134 includes/functions.php:9378
 msgid "This Month"
 msgstr "Este mês"
 
-#: includes/functions.php:1137 includes/functions.php:9354
+#: includes/functions.php:1137 includes/functions.php:9381
 msgid "Load data for this year"
 msgstr "Carregar dados para este ano"
 
-#: includes/functions.php:1137 includes/functions.php:9354
+#: includes/functions.php:1137 includes/functions.php:9381
 msgid "This Year"
 msgstr "Este ano"
 
-#: includes/functions.php:1140 includes/functions.php:9357
+#: includes/functions.php:1140 includes/functions.php:9384
 msgid "Load data for the last 15 days"
 msgstr "Carregar dados dos últimos 15 dias"
 
-#: includes/functions.php:1143 includes/functions.php:9360
+#: includes/functions.php:1143 includes/functions.php:9387
 msgid "Load data for the last 30 days"
 msgstr "Carregar dados dos últimos 30 dias"
 
-#: includes/functions.php:1146 includes/functions.php:9363
+#: includes/functions.php:1146 includes/functions.php:9390
 msgid "Load data for the last 90 days"
 msgstr "Carregar dados dos últimos 90 dias"
 
-#: includes/functions.php:1149 includes/functions.php:9366
+#: includes/functions.php:1149 includes/functions.php:9393
 msgid "Load data for the last 180 days"
 msgstr "Carregar dados dos últimos 180 dias"
 
-#: includes/functions.php:1152 includes/functions.php:9369
+#: includes/functions.php:1152 includes/functions.php:9396
 msgid "Load data for the last 365 days"
 msgstr "Carregar dados dos últimos 365 dias"
 
-#: includes/functions.php:1162 includes/functions.php:9379
+#: includes/functions.php:1162 includes/functions.php:9406
 msgid "Load data for the selected range"
 msgstr "Carregar dados para o intervalo selecionado"
 
@@ -1561,7 +1560,7 @@ msgstr "Países"
 msgid "Cities"
 msgstr "Cidades"
 
-#: includes/functions.php:1290 includes/functions.php:5394
+#: includes/functions.php:1290 includes/functions.php:5407
 msgid "Toggle country editor"
 msgstr "Alternar editor de países"
 
@@ -1569,7 +1568,7 @@ msgstr "Alternar editor de países"
 msgid "Toggle city editor"
 msgstr "Alternar editor de cidades"
 
-#: includes/functions.php:1297 includes/functions.php:5397
+#: includes/functions.php:1297 includes/functions.php:5410
 msgid "Comma separated country ISO Alpha-2 codes"
 msgstr "Códigos ISO Alpha-2 dos países separados por vírgula"
 
@@ -1740,131 +1739,131 @@ msgstr ""
 "Atenção: %s A chave de licença da MaxMind não está definida. %s Cadastre-se "
 "em uma conta do GeoLite2 %s e crie a chave de licença."
 
-#: includes/functions.php:3134
+#: includes/functions.php:3133
 msgid "Geolocation"
 msgstr "Geolocalização"
 
-#: includes/functions.php:3138 settings.php:4938
+#: includes/functions.php:3137 settings.php:4923
 msgid "Exceptions"
 msgstr "Exceções"
 
-#: includes/functions.php:3143
+#: includes/functions.php:3142
 msgid "Multisite"
 msgstr "Multisite"
 
-#: includes/functions.php:3148 settings.php:4944
+#: includes/functions.php:3147 settings.php:4929
 msgid "Tracking"
 msgstr "Rastreamento"
 
 #. translators: %d: days, hours, minutes
-#: includes/functions.php:3188
+#: includes/functions.php:3187
 #, php-format
 msgid "Scheduled in %d days %d hours %d minutes"
 msgstr "Agendado em %d dias %d horas %d minutos"
 
 #. translators: %s: HTML dash separator, %d: days, hours, minutes, &mdash; is HTML code for long dash separator
-#: includes/functions.php:3197
+#: includes/functions.php:3196
 #, php-format
 msgid "Active %s expires in %d days %d hours %d minutes"
 msgstr "Ativo %s expira em %d dias %d horas %d minutos"
 
-#: includes/functions.php:3201
+#: includes/functions.php:3200
 msgid "Expired"
 msgstr "Expirado"
 
-#: includes/functions.php:3209
+#: includes/functions.php:3208
 msgid "fallback"
 msgstr "alternativo"
 
-#: includes/functions.php:3210
+#: includes/functions.php:3209
 msgid "Block to be used when scheduling expires"
 msgstr "Bloco a ser usado quando o agendamento expirar"
 
-#: includes/functions.php:3225
+#: includes/functions.php:3224
 msgid "Start date"
 msgstr "Data de início"
 
-#: includes/functions.php:3225
+#: includes/functions.php:3224
 msgid "Enter date in format yyyy-mm-dd"
 msgstr "Digite a data no formato aaaa-mm-dd"
 
-#: includes/functions.php:3225
+#: includes/functions.php:3224
 msgid "empty means every day as defined by hours and days in week"
 msgstr ""
 "vazio significa todos os dias, conforme definido pelas horas e dias da semana"
 
-#: includes/functions.php:3226
+#: includes/functions.php:3225
 msgid "Start time"
 msgstr "Hora de início"
 
-#: includes/functions.php:3226
+#: includes/functions.php:3225
 msgid "Enter time in format hh:mm:ss, empty means 00:00:00"
 msgstr "Digite a hora no formato hh:mm:ss. Vazio significa 00:00:00"
 
-#: includes/functions.php:3227 settings.php:1679 settings.php:1694
+#: includes/functions.php:3226 settings.php:1679 settings.php:1694
 #: settings.php:1816 settings.php:2415
 msgid "and"
 msgstr "e"
 
-#: includes/functions.php:3228
+#: includes/functions.php:3227
 msgid "End date"
 msgstr "Data de término"
 
-#: includes/functions.php:3229
+#: includes/functions.php:3228
 msgid "End time"
 msgstr "Hora de término"
 
-#: includes/functions.php:3232
+#: includes/functions.php:3231
 msgid "Select wanted days in week"
 msgstr "Selecionar os dias desejados na semana"
 
-#: includes/functions.php:3249
+#: includes/functions.php:3248
 msgid "Load in iframe"
 msgstr "Carregar em iframe"
 
-#: includes/functions.php:3253 includes/placeholders.php:388 settings.php:1277
+#: includes/functions.php:3252 includes/placeholders.php:388 settings.php:1277
 #: settings.php:2442
 msgid "Width"
 msgstr "Largura"
 
-#: includes/functions.php:3254
+#: includes/functions.php:3253
 msgid "iframe width, empty means full width (100%)"
 msgstr "largura do iframe, vazio significa largura total (100%)"
 
-#: includes/functions.php:3260 includes/placeholders.php:383 settings.php:1283
+#: includes/functions.php:3259 includes/placeholders.php:383 settings.php:1283
 #: settings.php:2446
 msgid "Height"
 msgstr "Altura"
 
-#: includes/functions.php:3261
+#: includes/functions.php:3260
 msgid "iframe height, empty means adjust it to iframe content height"
 msgstr ""
 "altura do iframe, vazio significa ajustá-lo à altura do conteúdo do iframe"
 
-#: includes/functions.php:3268
+#: includes/functions.php:3267
 msgid "Ad label in iframe"
 msgstr "Rótulo do anúncio no iframe"
 
-#: includes/functions.php:3273
+#: includes/functions.php:3272
 msgid "Preview iframe code"
 msgstr "Pré-visualizar o código do iframe"
 
-#: includes/functions.php:3273 includes/preview.php:2437 settings.php:1312
+#: includes/functions.php:3272 includes/preview.php:2437 settings.php:1312
 #: settings.php:3302
 msgid "Preview"
 msgstr "Pré-visualização"
 
-#: includes/functions.php:3289 settings.php:4945
+#: includes/functions.php:3288 settings.php:4930
 msgid "Limits"
 msgstr "Limites"
 
-#: includes/functions.php:3294 includes/functions.php:7596
-#: includes/functions.php:7640 includes/functions.php:7705 settings.php:2597
+#: includes/functions.php:3293 includes/functions.php:7623
+#: includes/functions.php:7667 includes/functions.php:7732 settings.php:2597
 msgid "Ad Blocking"
 msgstr "Bloqueio de anúncios"
 
 #. translators: 1, 2 and 3, 4: HTML tags
-#: includes/functions.php:3305
+#: includes/functions.php:3304
 #, php-format
 msgid ""
 "%1$s WARNING: %2$s %3$s No wrapping %4$s style has no wrapping code needed "
@@ -1874,7 +1873,7 @@ msgstr ""
 "invólucro necessário para o rastreamento!"
 
 #. translators: 1, 2, 4, 5: HTML tags, 3: Scroll with the content, 6: Above header
-#: includes/functions.php:3314
+#: includes/functions.php:3313
 #, php-format
 msgid ""
 "%1$s WARNING: %2$s vertical position %3$s needs %4$s Output buffering %5$s "
@@ -1883,27 +1882,27 @@ msgstr ""
 "%1$s ATENÇÃO: %2$sA posição vertical %3$s precisa do %4$s buffer de saída "
 "%5$s ativado e inserção automática %6$s!"
 
-#: includes/functions.php:3387
+#: includes/functions.php:3386
 msgid "Click fraud protection is globally disabled"
 msgstr "A proteção contra fraude por cliques está desativada globalmente"
 
-#: includes/functions.php:3401
+#: includes/functions.php:3400
 msgid "General limits"
 msgstr "Limites gerais"
 
-#: includes/functions.php:3407 includes/functions.php:3419
-#: includes/functions.php:3504
+#: includes/functions.php:3406 includes/functions.php:3418
+#: includes/functions.php:3503
 msgid "Current value"
 msgstr "Valor atual"
 
-#: includes/functions.php:3426 includes/functions.php:3436
-#: includes/functions.php:3455 includes/functions.php:3465
-#: includes/functions.php:3511 includes/functions.php:3520
-#: includes/functions.php:3538 includes/functions.php:3547 settings.php:2327
+#: includes/functions.php:3425 includes/functions.php:3435
+#: includes/functions.php:3454 includes/functions.php:3464
+#: includes/functions.php:3510 includes/functions.php:3519
+#: includes/functions.php:3537 includes/functions.php:3546 settings.php:2327
 msgid "Max"
 msgstr "Máximo"
 
-#: includes/functions.php:3427
+#: includes/functions.php:3426
 msgid ""
 "Maximum number of impressions for this block. Empty means no general "
 "impression limit."
@@ -1911,66 +1910,66 @@ msgstr ""
 "Número máximo de impressões para este bloco. Vazio significa que não há "
 "limite geral de impressões."
 
-#: includes/functions.php:3429 includes/functions.php:3439
-#: includes/functions.php:3514 includes/functions.php:3523
+#: includes/functions.php:3428 includes/functions.php:3438
+#: includes/functions.php:3513 includes/functions.php:3522
 msgid "impression"
 msgid_plural "impressions"
 msgstr[0] "impressão"
 msgstr[1] "impressões"
 
-#: includes/functions.php:3437
+#: includes/functions.php:3436
 msgid ""
 "Maximum number of impressions per time period. Empty means no time limit."
 msgstr ""
 "Número máximo de impressões por período de tempo. Vazio significa que não há "
 "limite de tempo."
 
-#: includes/functions.php:3443 includes/functions.php:3472
-#: includes/functions.php:3527 includes/functions.php:3554
-#: includes/functions.php:5680
+#: includes/functions.php:3442 includes/functions.php:3471
+#: includes/functions.php:3526 includes/functions.php:3553
+#: includes/functions.php:5693
 msgid "per"
 msgstr "por"
 
-#: includes/functions.php:3444 includes/functions.php:3473
+#: includes/functions.php:3443 includes/functions.php:3472
 msgid "Time period in days. Empty means no time limit."
 msgstr "Período de tempo em dias. Vazio significa que não há limite de tempo."
 
-#: includes/functions.php:3446 includes/functions.php:3475
-#: includes/functions.php:3530 includes/functions.php:3557
-#: includes/functions.php:3689 includes/functions.php:5683
-#: includes/functions.php:5693 strings.php:230 strings.php:231 strings.php:232
+#: includes/functions.php:3445 includes/functions.php:3474
+#: includes/functions.php:3529 includes/functions.php:3556
+#: includes/functions.php:3688 includes/functions.php:5696
+#: includes/functions.php:5706 strings.php:230 strings.php:231 strings.php:232
 #: strings.php:233 strings.php:234 strings.php:235
 msgid "day"
 msgid_plural "days"
 msgstr[0] "dia"
 msgstr[1] "dias"
 
-#: includes/functions.php:3456
+#: includes/functions.php:3455
 msgid ""
 "Maximum number of clicks on this block. Empty means no general click limit."
 msgstr ""
 "Número máximo de cliques neste bloco. Vazio significa que não há limite "
 "geral de cliques."
 
-#: includes/functions.php:3458 includes/functions.php:3468
-#: includes/functions.php:3541 includes/functions.php:3550
-#: includes/functions.php:5680 includes/functions.php:7983
+#: includes/functions.php:3457 includes/functions.php:3467
+#: includes/functions.php:3540 includes/functions.php:3549
+#: includes/functions.php:5693 includes/functions.php:8010
 msgid "click"
 msgid_plural "clicks"
 msgstr[0] "clique"
 msgstr[1] "cliques"
 
-#: includes/functions.php:3466
+#: includes/functions.php:3465
 msgid "Maximum number of clicks per time period. Empty means no time limit."
 msgstr ""
 "Número máximo de cliques por período de tempo. Vazio significa que não há "
 "limite de tempo."
 
-#: includes/functions.php:3491
+#: includes/functions.php:3490
 msgid "Individual visitor limits"
 msgstr "Limite de visitantes específicos"
 
-#: includes/functions.php:3495 includes/functions.php:3497
+#: includes/functions.php:3494 includes/functions.php:3496
 msgid ""
 "When specified number of clicks on this block for a visitor will be reached "
 "in the specified time period, all blocks that have click fraud protection "
@@ -1983,11 +1982,11 @@ msgstr ""
 "visitante durante o período de tempo definido nas configurações gerais do "
 "plugin."
 
-#: includes/functions.php:3497
+#: includes/functions.php:3496
 msgid "Trigger click fraud protection"
 msgstr "Acionar proteção contra fraudes por clique"
 
-#: includes/functions.php:3512
+#: includes/functions.php:3511
 msgid ""
 "Maximum number of impressions of this block for each visitor. Empty means no "
 "impression limit."
@@ -1995,7 +1994,7 @@ msgstr ""
 "Número máximo de impressões deste bloco para cada visitante. Vazio significa "
 "que não há limite de impressões."
 
-#: includes/functions.php:3521
+#: includes/functions.php:3520
 msgid ""
 "Maximum number of impressions per time period for each visitor. Empty means "
 "no impression limit per time period for visitors."
@@ -2004,8 +2003,8 @@ msgstr ""
 "significa que não há limite de impressões por período de tempo para os "
 "visitantes."
 
-#: includes/functions.php:3528 includes/functions.php:3555
-#: includes/functions.php:5683
+#: includes/functions.php:3527 includes/functions.php:3554
+#: includes/functions.php:5696
 msgid ""
 "Time period in days. Use decimal value (with decimal point) for shorter "
 "periods. Empty means no time limit."
@@ -2013,7 +2012,7 @@ msgstr ""
 "Período de tempo em dias. Use o valor decimal (com casa decimal) para "
 "períodos mais curtos. Vazio significa que não há limite de tempo."
 
-#: includes/functions.php:3539
+#: includes/functions.php:3538
 msgid ""
 "Maximum number of clicks on this block for each visitor. Empty means no "
 "click limit."
@@ -2021,7 +2020,7 @@ msgstr ""
 "Número máximo de cliques neste bloco para cada visitante. Vazio significa "
 "que não há limite de cliques."
 
-#: includes/functions.php:3548 includes/functions.php:5680
+#: includes/functions.php:3547 includes/functions.php:5693
 msgid ""
 "Maximum number of clicks per time period for each visitor. Empty means no "
 "click limit per time period for visitors."
@@ -2030,44 +2029,44 @@ msgstr ""
 "significa que não há limite de cliques por período de tempo para os "
 "visitantes."
 
-#: includes/functions.php:3572
+#: includes/functions.php:3571
 msgid "Fallback"
 msgstr "Alternativo"
 
-#: includes/functions.php:3573
+#: includes/functions.php:3572
 msgid "Block to be used when a limit is reached"
 msgstr "Bloco a ser usado quando um limite for atingido"
 
-#: includes/functions.php:3597
+#: includes/functions.php:3596
 msgid "Ad blocking detection is disabled"
 msgstr "A detecção de bloqueio de anúncios está desativada"
 
-#: includes/functions.php:3598
+#: includes/functions.php:3597
 msgid "When ad blocking is detected"
 msgstr "Quando o bloqueio de anúncios for detectado"
 
-#: includes/functions.php:3607
+#: includes/functions.php:3606
 msgid "replacement"
 msgstr "substituição"
 
-#: includes/functions.php:3608
+#: includes/functions.php:3607
 msgid "Block to be shown when ad blocking is detected"
 msgstr "Bloco a ser exibido quando o bloqueio de anúncios for detectado"
 
-#: includes/functions.php:3609
+#: includes/functions.php:3608
 msgctxt "replacement"
 msgid "None"
 msgstr "Nenhuma"
 
-#: includes/functions.php:3626 includes/functions.php:9629
+#: includes/functions.php:3625 includes/functions.php:9656
 msgid "Close button"
 msgstr "Botão \"Fechar\""
 
-#: includes/functions.php:3680
+#: includes/functions.php:3679
 msgid "Auto close after"
 msgstr "Fechar automaticamente após"
 
-#: includes/functions.php:3681
+#: includes/functions.php:3680
 msgid ""
 "Time in seconds in which the ad will automatically close. Leave empty to "
 "disable auto closing."
@@ -2075,11 +2074,11 @@ msgstr ""
 "Tempo em segundos em que o anúncio será fechado automaticamente. Deixe em "
 "branco para desativar o fechamento automático."
 
-#: includes/functions.php:3686
+#: includes/functions.php:3685
 msgid "Don't show for"
 msgstr "Não mostrar para"
 
-#: includes/functions.php:3687
+#: includes/functions.php:3686
 msgid ""
 "Time in days in which closed ad will not be shown again. Use decimal value "
 "(with decimal point) for shorter time period or leave empty to show it again "
@@ -2090,11 +2089,11 @@ msgstr ""
 "ou deixe em branco para mostrar o anúncio novamente quando a página for "
 "recarregada."
 
-#: includes/functions.php:3709 includes/functions.php:3715
+#: includes/functions.php:3708 includes/functions.php:3714
 msgid "Delay showing for"
 msgstr "Atrasar a exibição para"
 
-#: includes/functions.php:3710
+#: includes/functions.php:3709
 msgid ""
 "Time in ms before the code is inserted (and ad displayed). Leave empty to "
 "insert the code without any additional delay."
@@ -2102,7 +2101,7 @@ msgstr ""
 "Tempo em milissegundos antes que o código seja inserido (e o anúncio "
 "exibido). Deixe em branco para inserir o código, sem nenhum atraso adicional."
 
-#: includes/functions.php:3716
+#: includes/functions.php:3715
 msgid ""
 "Number of pageviews before the code is inserted (and ad displayed). Leave "
 "empty to insert the code for the first pageview."
@@ -2111,19 +2110,19 @@ msgstr ""
 "anúncio exibido). Deixe em branco para inserir o código na primeira "
 "visualização de página."
 
-#: includes/functions.php:3718 includes/functions.php:3725
+#: includes/functions.php:3717 includes/functions.php:3724
 msgid "pageview"
 msgid_plural "pageviews"
 msgstr[0] "visualização de página"
 msgstr[1] "visualizações de página"
 
-#: includes/functions.php:3722
+#: includes/functions.php:3721
 msgid "Show every"
 msgid_plural "Show every"
 msgstr[0] "Mostrar a cada"
 msgstr[1] "Mostrar a cada"
 
-#: includes/functions.php:3723
+#: includes/functions.php:3722
 msgid ""
 "Number of pageviews to insert the code again. Leave empty to insert the code "
 "for every pageview."
@@ -2131,216 +2130,216 @@ msgstr ""
 "Número de visualizações de página para inserir o código novamente. Deixe em "
 "branco para inserir o código a cada visualização de página."
 
-#: includes/functions.php:3749
+#: includes/functions.php:3748
 msgid "Check reCAPTCHA score"
 msgstr "Verificar a pontuação do reCAPTCHA"
 
-#: includes/functions.php:3755
+#: includes/functions.php:3754
 msgid "Wait for user interaction"
 msgstr "Aguardar interação do usuário"
 
-#: includes/functions.php:3760 settings.php:1036
+#: includes/functions.php:3759 settings.php:1036
 msgid "Lazy loading"
 msgstr "Carregamento lento"
 
-#: includes/functions.php:3763
+#: includes/functions.php:3762
 msgid "Manual loading"
 msgstr "Carregamento manual"
 
-#: includes/functions.php:3782
+#: includes/functions.php:3781
 msgid "Protected"
 msgstr "Protegido"
 
-#: includes/functions.php:3786
+#: includes/functions.php:3785
 msgid "Sticky ad with scrolling space below"
 msgstr "Anúncio fixo com espaço de rolagem abaixo"
 
-#: includes/functions.php:3787
+#: includes/functions.php:3786
 msgid "Sticky"
 msgstr "Fixo"
 
-#: includes/functions.php:3789
+#: includes/functions.php:3788
 msgid "Height of the scrolling space below the ad"
 msgstr "Altura do espaço de rolagem abaixo do anúncio"
 
-#: includes/functions.php:3885
+#: includes/functions.php:3884
 msgid "IP address blocked"
 msgid_plural "IP addresses blocked"
 msgstr[0] "Endereço IP bloqueado"
 msgstr[1] "Endereços IP bloqueados"
 
-#: includes/functions.php:3888 includes/functions.php:3937
+#: includes/functions.php:3887 includes/functions.php:3936
 msgid "No IP address blocked"
 msgstr "Nenhum endereço IP bloqueado"
 
-#: includes/functions.php:3950
+#: includes/functions.php:3949
 msgid "Blocked IP address"
 msgstr "Endereço IP bloqueado"
 
-#: includes/functions.php:3950
+#: includes/functions.php:3949
 msgid "Country"
 msgstr "País"
 
-#: includes/functions.php:3950
+#: includes/functions.php:3949
 msgid "Time to expiration"
 msgstr "Tempo até a expiração"
 
-#: includes/functions.php:3952 strings.php:237
+#: includes/functions.php:3951 strings.php:237
 msgid "Delete"
 msgstr "Excluir"
 
-#: includes/functions.php:3967
+#: includes/functions.php:3966
 msgid "Delete IP address"
 msgstr "Excluir endereço IP"
 
-#: includes/functions.php:4119
+#: includes/functions.php:4118
 msgid "Toggle plugin settings"
 msgstr "Alternar as configurações do plugin"
 
-#: includes/functions.php:4534
+#: includes/functions.php:4547
 msgid "CONNECTED"
 msgstr "CONECTADO"
 
-#: includes/functions.php:4535
+#: includes/functions.php:4548
 msgid "Disconnect website"
 msgstr "Desconectar o site"
 
-#: includes/functions.php:4551
+#: includes/functions.php:4564
 msgid "MANAGED BY"
 msgstr "GERENCIADO POR"
 
-#: includes/functions.php:4572
+#: includes/functions.php:4585
 msgid "Remote management"
 msgstr "Gerenciamento remoto"
 
-#: includes/functions.php:4576
+#: includes/functions.php:4589
 msgid "Allow to connect and manage plugin settings"
 msgstr "Permitir a conexão e o gerenciamento das configurações do plugin"
 
-#: includes/functions.php:4578
+#: includes/functions.php:4591
 msgid "String to allow plugin management. Clear to reset to default value."
 msgstr ""
 "String para permitir o gerenciamento do plugin. Limpar para redefinir para o "
 "valor padrão."
 
-#: includes/functions.php:4586
+#: includes/functions.php:4599
 msgid "Check remote IP address"
 msgstr "Verificar o endereço IP remoto"
 
-#: includes/functions.php:4590
+#: includes/functions.php:4603
 msgid "Check IP address of remote management website"
 msgstr "Verificar o endereço IP do site de gerenciamento remoto"
 
-#: includes/functions.php:4592
+#: includes/functions.php:4605
 msgid "Allowed IP addresses of remote management websites"
 msgstr "Endereços IP permitidos de sites de gerenciamento remoto"
 
-#: includes/functions.php:4615
+#: includes/functions.php:4628
 #, php-format
 msgid "Manage %s on other websites"
 msgstr "Gerenciar %s em outros sites"
 
-#: includes/functions.php:4630
+#: includes/functions.php:4643
 msgid "Add website"
 msgstr "Adicionar site"
 
-#: includes/functions.php:4634
+#: includes/functions.php:4647
 msgid "Rearrange website order"
 msgstr "Reorganizar a ordem do site"
 
-#: includes/functions.php:4638
+#: includes/functions.php:4651
 msgid "Cancel changes"
 msgstr "Cancelar alterações"
 
-#: includes/functions.php:4642
+#: includes/functions.php:4655
 msgid "Save changes"
 msgstr "Salvar alterações"
 
-#: includes/functions.php:4771 includes/functions.php:4774
-#: includes/functions.php:4777 includes/functions.php:4782
+#: includes/functions.php:4784 includes/functions.php:4787
+#: includes/functions.php:4790 includes/functions.php:4795
 msgid "Invalid data received from"
 msgstr "Dados inválidos recebidos de"
 
-#: includes/functions.php:4781 includes/functions.php:4785
+#: includes/functions.php:4794 includes/functions.php:4798
 msgid "Error connecting to"
 msgstr "Erro ao conectar com"
 
-#: includes/functions.php:4781
+#: includes/functions.php:4794
 msgid "No data received"
 msgstr "Nenhum dado recebido"
 
-#: includes/functions.php:4826
+#: includes/functions.php:4839
 msgid "Error saving websites"
 msgstr "Erro ao salvar os sites"
 
-#: includes/functions.php:4866
+#: includes/functions.php:4879
 msgid "Can't connect to itself"
 msgstr "Não é possível se conectar a si mesmo"
 
-#: includes/functions.php:4917
+#: includes/functions.php:4930
 msgid "Connect website"
 msgstr "Conectar o site"
 
-#: includes/functions.php:4921
+#: includes/functions.php:4934
 msgid "Delete website"
 msgstr "Excluir o site"
 
-#: includes/functions.php:4937
+#: includes/functions.php:4950
 msgid "Key"
 msgstr "Chave"
 
-#: includes/functions.php:4955
+#: includes/functions.php:4968
 msgid "Address"
 msgstr "Endereço"
 
-#: includes/functions.php:4968
+#: includes/functions.php:4981
 msgid "No website configured"
 msgstr "Nenhum site configurado"
 
-#: includes/functions.php:4969
+#: includes/functions.php:4982
 msgid "No website matches search keywords"
 msgstr "Nenhum site corresponde às palavras-chave da pesquisa"
 
-#: includes/functions.php:5189
+#: includes/functions.php:5202
 msgid "No custom report configured"
 msgstr "Nenhum relatório personalizado configurado"
 
-#: includes/functions.php:5199
+#: includes/functions.php:5212
 msgid "Custom report"
 msgstr "Relatório personalizado"
 
-#: includes/functions.php:5212
+#: includes/functions.php:5225
 msgid "Toggle report"
 msgstr "Alternar relatório"
 
-#: includes/functions.php:5258 includes/functions.php:7595
-#: includes/functions.php:7639
+#: includes/functions.php:5271 includes/functions.php:7622
+#: includes/functions.php:7666
 msgid "No version"
 msgstr "Nenhuma versão"
 
-#: includes/functions.php:5318
+#: includes/functions.php:5331
 #, php-format
 msgid "This product includes GeoLite2 data created by %s"
 msgstr "Este produto inclui dados GeoLite2 criados por %s"
 
-#: includes/functions.php:5320
+#: includes/functions.php:5333
 #, php-format
 msgid "Create and manage %s MaxMind license key %s"
 msgstr "Criar e gerenciar %s chave de licença da MaxMind %s"
 
-#: includes/functions.php:5331
+#: includes/functions.php:5344
 msgid "IP geolocation database"
 msgstr "Banco de dados de geolocalização por IP"
 
-#: includes/functions.php:5334
+#: includes/functions.php:5347
 msgid "Select IP geolocation database."
 msgstr "Selecione o banco de dados de geolocalização por IP."
 
-#: includes/functions.php:5345
+#: includes/functions.php:5358
 msgid "Automatic database updates"
 msgstr "Atualizações automáticas do banco de dados"
 
-#: includes/functions.php:5348
+#: includes/functions.php:5361
 msgid ""
 "Automatically download and update free GeoLite2 IP geolocation database by "
 "MaxMind"
@@ -2348,19 +2347,19 @@ msgstr ""
 "Baixar e atualizar automaticamente o banco de dados gratuito de "
 "geolocalização de IP GeoLite2 do MaxMind"
 
-#: includes/functions.php:5356
+#: includes/functions.php:5369
 msgid "MaxMind license key"
 msgstr "Chave de licença do MaxMind"
 
-#: includes/functions.php:5359
+#: includes/functions.php:5372
 msgid "Enter license key obtained from MaxMind"
 msgstr "Digite a chave de licença recebida do MaxMind"
 
-#: includes/functions.php:5365
+#: includes/functions.php:5378
 msgid "Database"
 msgstr "Banco de dados"
 
-#: includes/functions.php:5368
+#: includes/functions.php:5381
 msgid ""
 "Absolute path starting with '/' or relative path to the MaxMind database file"
 msgstr ""
@@ -2368,24 +2367,24 @@ msgstr ""
 "banco de dados do MaxMind"
 
 #. translators: %d: group number
-#: includes/functions.php:5386
+#: includes/functions.php:5399
 #, php-format
 msgid "Group %d"
 msgstr "Grupo %d"
 
-#: includes/functions.php:5392
+#: includes/functions.php:5405
 msgid "countries"
 msgstr "países"
 
-#: includes/functions.php:5428
+#: includes/functions.php:5441
 msgid "Toggle custom reports"
 msgstr "Alternar relatórios personalizados"
 
-#: includes/functions.php:5445
+#: includes/functions.php:5458
 msgid "Toggle pageview statistics"
 msgstr "Alternar estatísticas de visualizações de páginas"
 
-#: includes/functions.php:5453
+#: includes/functions.php:5466
 msgid ""
 "Enable impression and click tracking. You also need to enable tracking for "
 "each block you want to track."
@@ -2393,29 +2392,29 @@ msgstr ""
 "Ativar o rastreamento de impressões e cliques. Você também precisa ativar o "
 "rastreamento para cada bloco que quiser rastrear."
 
-#: includes/functions.php:5472
+#: includes/functions.php:5485
 msgid "Tracking settings and pageview statistics"
 msgstr ""
 "Configurações de rastreamento e estatísticas de visualizações de páginas"
 
-#: includes/functions.php:5473
+#: includes/functions.php:5486
 msgctxt "ad blocking detection"
 msgid "TRACKING NOT ENABLED"
 msgstr "RASTREAMENTO NÃO ATIVADO"
 
-#: includes/functions.php:5489
+#: includes/functions.php:5502
 msgid "Internal"
 msgstr "Interno"
 
-#: includes/functions.php:5493
+#: includes/functions.php:5506
 msgid "Track impressions and clicks with internal tracking and statistics"
 msgstr "Rastrear impressões e cliques com estatísticas e rastreamento interno"
 
-#: includes/functions.php:5498
+#: includes/functions.php:5511
 msgid "External"
 msgstr "Externo"
 
-#: includes/functions.php:5502
+#: includes/functions.php:5515
 msgid ""
 "Track impressions and clicks with Google Analytics or Matomo (needs tracking "
 "code installed)"
@@ -2423,29 +2422,29 @@ msgstr ""
 "Rastrear impressões e cliques com o Google Analytics ou Matomo (é preciso "
 "instalar o código de rastreamento)"
 
-#: includes/functions.php:5507
+#: includes/functions.php:5520
 msgid "Track Pageviews"
 msgstr "Rastreamento de visualizações de página"
 
-#: includes/functions.php:5513
+#: includes/functions.php:5526
 msgid "Track Pageviews by Device (as configured for viewports)"
 msgstr ""
 "Rastrear visualizações de página por dispositivo (conforme configurado nas "
 "janelas de visualização)"
 
-#: includes/functions.php:5523
+#: includes/functions.php:5536
 msgid "Track for Logged in Users"
 msgstr "Rastreamento de usuários conectados"
 
-#: includes/functions.php:5529
+#: includes/functions.php:5542
 msgid "Track impressions and clicks from logged in users"
 msgstr "Rastrear impressões e cliques de usuários conectados"
 
-#: includes/functions.php:5539
+#: includes/functions.php:5552
 msgid "Click Detection"
 msgstr "Detecção de cliques"
 
-#: includes/functions.php:5545
+#: includes/functions.php:5558
 msgid ""
 "Standard method detects clicks only on banners with links, Advanced method "
 "can detect clicks on any kind of ads, but it is slightly less accurate"
@@ -2454,11 +2453,11 @@ msgstr ""
 "avançado pode detectar cliques em qualquer tipo de anúncio, mas é um pouco "
 "menos preciso"
 
-#: includes/functions.php:5573
+#: includes/functions.php:5586
 msgid "Report header image"
 msgstr "Imagem do cabeçalho do relatório"
 
-#: includes/functions.php:5576
+#: includes/functions.php:5589
 msgid ""
 "Image or logo to be displayed in the header of the statistics report. "
 "Absolute path starting with '/' or relative path to the image file. Clear to "
@@ -2468,15 +2467,15 @@ msgstr ""
 "Caminho absoluto começando com “ / ” ou caminho relativo para o arquivo de "
 "imagem. Limpar para redefinir para a imagem padrão."
 
-#: includes/functions.php:5577 strings.php:267
+#: includes/functions.php:5590 strings.php:267
 msgid "Select or upload header image"
 msgstr "Selecionar ou enviar a imagem do cabeçalho"
 
-#: includes/functions.php:5582
+#: includes/functions.php:5595
 msgid "Report header title"
 msgstr "Título do cabeçalho do relatório"
 
-#: includes/functions.php:5585
+#: includes/functions.php:5598
 msgid ""
 "Title to be displayed in the header of the statistics report. Text or HTML "
 "code, clear to reset to default text."
@@ -2484,11 +2483,11 @@ msgstr ""
 "Título a ser exibido no cabeçalho do relatório de estatísticas. Texto ou "
 "código HTML, limpar para redefinir para o texto padrão."
 
-#: includes/functions.php:5590
+#: includes/functions.php:5603
 msgid "Report header description"
 msgstr "Descrição do cabeçalho do relatório"
 
-#: includes/functions.php:5593
+#: includes/functions.php:5606
 msgid ""
 "Description to be displayed in the header of the statistics report. Text or "
 "HTML code, clear to reset to default text."
@@ -2496,11 +2495,11 @@ msgstr ""
 "Descrição a ser exibida no cabeçalho do relatório de estatísticas. Texto ou "
 "código HTML, limpar para redefinir o texto padrão."
 
-#: includes/functions.php:5598
+#: includes/functions.php:5611
 msgid "Report footer"
 msgstr "Rodapé do relatório"
 
-#: includes/functions.php:5601
+#: includes/functions.php:5614
 msgid ""
 "Text to be displayed in the footer of the statistics report. Clear to reset "
 "to default text."
@@ -2508,21 +2507,21 @@ msgstr ""
 "Texto a ser exibido no rodapé do relatório de estatísticas. Limpar para "
 "redefinir para o texto padrão."
 
-#: includes/functions.php:5606
+#: includes/functions.php:5619
 msgid "Public report key"
 msgstr "Chave pública do relatório"
 
-#: includes/functions.php:5609
+#: includes/functions.php:5622
 msgid "String to generate unique report IDs. Clear to reset to default value."
 msgstr ""
 "String para gerar IDs de relatório únicos. Limpar para redefinir para o "
 "valor padrão."
 
-#: includes/functions.php:5624
+#: includes/functions.php:5637
 msgid "Event category"
 msgstr "Categoria do evento"
 
-#: includes/functions.php:5627
+#: includes/functions.php:5640
 msgid ""
 "Category name used for external tracking events. You can use tags to get the "
 "event, the number or the name of the block that caused the event."
@@ -2530,11 +2529,11 @@ msgstr ""
 "Nome da categoria usada para eventos de rastreamento externo. Você pode usar "
 "tags para receber o evento, o número ou o nome do bloco que causou o evento."
 
-#: includes/functions.php:5632
+#: includes/functions.php:5645
 msgid "Event action"
 msgstr "Ação do evento"
 
-#: includes/functions.php:5635
+#: includes/functions.php:5648
 msgid ""
 "Action name used for external tracking events. You can use tags to get the "
 "event, the number or the name of the block that caused the event."
@@ -2542,11 +2541,11 @@ msgstr ""
 "Nome da ação usada para eventos de rastreamento externo. Você pode usar tags "
 "para receber o evento, o número ou o nome do bloco que causou o evento."
 
-#: includes/functions.php:5640
+#: includes/functions.php:5653
 msgid "Event label"
 msgstr "Rótulo do evento"
 
-#: includes/functions.php:5643
+#: includes/functions.php:5656
 msgid ""
 "Label name used for external tracking events. You can use tags to get the "
 "event, the number or the name of the block that caused the event."
@@ -2554,25 +2553,25 @@ msgstr ""
 "Nome do rótulo usado para eventos de rastreamento externo. Você pode usar "
 "tags para receber o evento, o número ou o nome do bloco que causou o evento."
 
-#: includes/functions.php:5666
+#: includes/functions.php:5679
 msgid "Click fraud protection"
 msgstr "Proteção contra fraude por cliques"
 
-#: includes/functions.php:5670
+#: includes/functions.php:5683
 msgid "Globally enable click fraud protection for selected blocks."
 msgstr ""
 "Ativar globalmente a proteção contra fraude por cliques para blocos "
 "selecionados."
 
-#: includes/functions.php:5676
+#: includes/functions.php:5689
 msgid "Global visitor limits"
 msgstr "Limites globais para visitantes"
 
-#: includes/functions.php:5690
+#: includes/functions.php:5703
 msgid "Protection time"
 msgstr "Tempo de proteção"
 
-#: includes/functions.php:5693
+#: includes/functions.php:5706
 msgid ""
 "Time period in days in which blocks with enabled click fraud protection will "
 "be hidden. Use decimal value (with decimal point) for shorter periods."
@@ -2581,134 +2580,134 @@ msgstr ""
 "cliques ativada serão ocultados. Use o valor decimal (com casa decimal) para "
 "períodos mais curtos."
 
-#: includes/functions.php:5699
+#: includes/functions.php:5712
 msgid "Block IP address"
 msgstr "Bloquear endereço IP"
 
-#: includes/functions.php:5704
+#: includes/functions.php:5717
 msgid "Block visitor's IP address when protection is activated"
 msgstr "Bloquear o endereço IP do visitante quando a proteção estiver ativada"
 
-#: includes/functions.php:5706
+#: includes/functions.php:5719
 msgid "Click to show blocked IP addresses"
 msgstr "Clique para mostrar os endereços IP bloqueados"
 
-#: includes/functions.php:5735
+#: includes/functions.php:5748
 msgid "Toggle report statistics"
 msgstr "Alternar estatísticas do relatório"
 
-#: includes/functions.php:5749 strings.php:248
+#: includes/functions.php:5762 strings.php:248
 msgid "Delete report"
 msgstr "Excluir relatório"
 
-#: includes/functions.php:5753
+#: includes/functions.php:5766
 msgid "Add report"
 msgstr "Adicionar relatório"
 
-#: includes/functions.php:5759
+#: includes/functions.php:5772
 msgid "Custom reports"
 msgstr "Relatórios personalizados"
 
-#: includes/functions.php:5796
+#: includes/functions.php:5809
 msgid "Are you sure you want to clear all exceptions for block"
 msgstr "Tem certeza de que deseja limpar todas as exceções do bloco"
 
-#: includes/functions.php:5797
+#: includes/functions.php:5810
 msgid "Clear all exceptions for block"
 msgstr "Limpar todas as exceções do bloco"
 
-#: includes/functions.php:5812
+#: includes/functions.php:5825
 msgid "Are you sure you want to clear all exceptions?"
 msgstr "Tem certeza de que deseja limpar todas as exceções?"
 
-#: includes/functions.php:5813
+#: includes/functions.php:5826
 msgid "Clear all exceptions for all blocks"
 msgstr "Limpar todas as exceções de todos os blocos"
 
-#: includes/functions.php:5825 settings.php:4372 settings.php:5028
+#: includes/functions.php:5838 settings.php:4357 settings.php:5013
 msgid "Type"
 msgstr "Tipo"
 
-#: includes/functions.php:5844 includes/functions.php:5845
+#: includes/functions.php:5857 includes/functions.php:5858
 msgid "View"
 msgstr "Ver"
 
-#: includes/functions.php:5846 includes/functions.php:5860
-#: includes/functions.php:5864 includes/placeholders.php:352
-#: includes/preview.php:2819 settings.php:1555 settings.php:4127
+#: includes/functions.php:5859 includes/functions.php:5873
+#: includes/functions.php:5877 includes/placeholders.php:352
+#: includes/preview.php:2819 settings.php:1555 settings.php:4114
 msgid "Edit"
 msgstr "Editar"
 
-#: includes/functions.php:5892
+#: includes/functions.php:5905
 msgid "Are you sure you want to clear all exceptions for"
 msgstr "Tem certeza de que deseja limpar todas as exceções para"
 
-#: includes/functions.php:5893
+#: includes/functions.php:5906
 msgid "Clear all exceptions for"
 msgstr "Limpar todas as exceções para"
 
-#: includes/functions.php:5911
+#: includes/functions.php:5924
 msgid "No exceptions"
 msgstr "Sem exceções"
 
 #. translators: %s: Ad Inserter Pro
-#: includes/functions.php:5922
+#: includes/functions.php:5935
 #, php-format
 msgid "%s options for network blogs"
 msgstr "Opções do %s para blogs da rede"
 
 #. translators: %s: Ad Inserter Pro
-#: includes/functions.php:5927
+#: includes/functions.php:5940
 #, php-format
 msgid "Enable %s widgets for sub-sites"
 msgstr "Ativar os widgets do %s para subsites"
 
-#: includes/functions.php:5927
+#: includes/functions.php:5940
 msgid "Widgets"
 msgstr "Widgets"
 
-#: includes/functions.php:5932
+#: includes/functions.php:5945
 msgid "Enable PHP code processing for sub-sites"
 msgstr "Ativar o processamento de código PHP para subsites"
 
-#: includes/functions.php:5932
+#: includes/functions.php:5945
 msgid "PHP Processing"
 msgstr "Processamento de PHP"
 
 #. translators: %s: Ad Inserter Pro
-#: includes/functions.php:5937
+#: includes/functions.php:5950
 #, php-format
 msgid "Enable %s block exceptions in post/page editor for sub-sites"
 msgstr "Ativar exceções do bloco do %s no editor de post/página para subsites"
 
-#: includes/functions.php:5937
+#: includes/functions.php:5950
 msgid "Post/Page exceptions"
 msgstr "Exceções de post/página"
 
 #. translators: %s: Ad Inserter Pro
-#: includes/functions.php:5942
+#: includes/functions.php:5955
 #, php-format
 msgid "Enable %s settings page for sub-sites"
 msgstr "Ativar a página de configurações do %s para subsites"
 
-#: includes/functions.php:5942
+#: includes/functions.php:5955
 msgid "Settings page"
 msgstr "Página de configurações"
 
 #. translators: %s: Ad Inserter Pro
-#: includes/functions.php:5947
+#: includes/functions.php:5960
 #, php-format
 msgid "Enable %s settings of main site to be used for all blogs"
 msgstr ""
 "Ativar as configurações do %s no site principal, para que sejam usadas em "
 "todos os blogs"
 
-#: includes/functions.php:5947
+#: includes/functions.php:5960
 msgid "Main site settings used for all blogs"
 msgstr "Configurações do site principal, usadas para todos os blogs"
 
 #. translators: %s: Ad Inserter Pro
-#: includes/functions.php:5952
+#: includes/functions.php:5965
 #, php-format
 msgid "Show link to %s settings page for each site on the Sites page"
 msgstr ""
@@ -2716,16 +2715,16 @@ msgstr ""
 "de sites"
 
 #. translators: %s: Ad Inserter Pro
-#: includes/functions.php:5952
+#: includes/functions.php:5965
 #, php-format
 msgid "Show link to %s on the Sites page"
 msgstr "Mostrar link para o %s na página de sites"
 
-#: includes/functions.php:5965 settings.php:3162
+#: includes/functions.php:5978 settings.php:3162
 msgid "Ad Blocking Detection"
 msgstr "Detecção de bloqueio de anúncios"
 
-#: includes/functions.php:5971
+#: includes/functions.php:5984
 msgid ""
 "Standard method is reliable but should be used only if Advanced method does "
 "not work. Advanced method recreates files used for detection with random "
@@ -2737,7 +2736,7 @@ msgstr ""
 "nomes aleatórios; no entanto, ele pode não funcionar se os scripts na pasta "
 "de envio não estiverem acessíveis publicamente"
 
-#: includes/functions.php:5994 settings.php:3478
+#: includes/functions.php:6007 settings.php:3478
 msgid ""
 "Enable Debugger widget and code insertion debugging (blocks, positions, "
 "tags, processing) by url parameters for non-logged in users. Enable this "
@@ -2752,175 +2751,175 @@ msgstr ""
 "diagnosticar problemas. Para administradores conectados, a depuração está "
 "sempre ativada."
 
-#: includes/functions.php:5996 settings.php:3480
+#: includes/functions.php:6009 settings.php:3480
 msgid "Remote debugging"
 msgstr "Depuração remota"
 
-#: includes/functions.php:7117 includes/functions.php:7228
-#: includes/functions.php:7254
+#: includes/functions.php:7144 includes/functions.php:7255
+#: includes/functions.php:7281
 msgid "AD BLOCKING"
 msgstr "BLOQUEIO DE ANÚNCIOS"
 
-#: includes/functions.php:7118 includes/functions.php:7161
-#: includes/functions.php:7222 includes/functions.php:7255
+#: includes/functions.php:7145 includes/functions.php:7188
+#: includes/functions.php:7249 includes/functions.php:7282
 msgid "BLOCK INSERTED BUT NOT VISIBLE"
 msgstr "BLOCO INSERIDO, MAS NÃO VISÍVEL"
 
-#: includes/functions.php:7121 includes/functions.php:7221
-#: includes/functions.php:7261
+#: includes/functions.php:7148 includes/functions.php:7248
+#: includes/functions.php:7288
 msgid "NO AD BLOCKING"
 msgstr "SEM BLOQUEIO DE ANÚNCIOS"
 
-#: includes/functions.php:7160 includes/functions.php:7167
+#: includes/functions.php:7187 includes/functions.php:7194
 msgid "AD BLOCKING REPLACEMENT"
 msgstr "SUBSTITUIÇÃO DO BLOQUEIO DE ANÚNCIOS"
 
-#: includes/functions.php:7403 includes/functions.php:7704
+#: includes/functions.php:7430 includes/functions.php:7731
 msgid "Pageviews"
 msgstr "Visualizações de página"
 
-#: includes/functions.php:7422
+#: includes/functions.php:7449
 #, php-format
 msgid "All statistics data for block %s deleted"
 msgstr "Todos os dados de estatísticas do bloco %s foram excluídos"
 
-#: includes/functions.php:7424
+#: includes/functions.php:7451
 #, php-format
 msgid "statistics for block %d deleted"
 msgstr "as estatísticas do bloco %d foram excluídas"
 
-#: includes/functions.php:7428
+#: includes/functions.php:7455
 #, php-format
 msgid "Statistics data between %s and %s deleted"
 msgstr "Os dados de estatísticas entre %s e %s foram excluídos"
 
-#: includes/functions.php:7430
+#: includes/functions.php:7457
 #, php-format
 msgid "statistics for block %d between %s and %s deleted"
 msgstr "as estatísticas do bloco %d, entre %s e %s foram excluídas"
 
-#: includes/functions.php:7595 includes/functions.php:7639
+#: includes/functions.php:7622 includes/functions.php:7666
 msgctxt "Version"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: includes/functions.php:7595 includes/functions.php:7639
+#: includes/functions.php:7622 includes/functions.php:7666
 msgctxt "Times"
 msgid "DISPLAYED"
 msgstr "EXIBIDO"
 
-#: includes/functions.php:7596 includes/functions.php:7640
-#: includes/functions.php:7645
+#: includes/functions.php:7623 includes/functions.php:7667
+#: includes/functions.php:7672
 msgctxt "Times"
 msgid "BLOCKED"
 msgstr "BLOQUEADO"
 
-#: includes/functions.php:7704
+#: includes/functions.php:7731
 msgid "Impressions"
 msgstr "Impressões"
 
-#: includes/functions.php:7705 includes/functions.php:7706
-#: includes/functions.php:7960
+#: includes/functions.php:7732 includes/functions.php:7733
+#: includes/functions.php:7987
 msgid "Clicks"
 msgstr "Cliques"
 
-#: includes/functions.php:7706
+#: includes/functions.php:7733
 msgid "events"
 msgstr "eventos"
 
-#: includes/functions.php:7707
+#: includes/functions.php:7734
 msgid "Ad Blocking Share"
 msgstr "Compartilhamento de bloqueio de anúncios"
 
 #. translators: CTR as Click Through Rate
-#: includes/functions.php:7707 includes/functions.php:7966
+#: includes/functions.php:7734 includes/functions.php:7993
 msgid "CTR"
 msgstr "CTR"
 
-#: includes/functions.php:7806
+#: includes/functions.php:7833
 msgid "Date"
 msgstr "Data"
 
-#: includes/functions.php:7979
+#: includes/functions.php:8006
 msgid "pageviews"
 msgid_plural "pageviews"
 msgstr[0] "visualização de página"
 msgstr[1] "visualizações de página"
 
-#: includes/functions.php:7979
+#: includes/functions.php:8006
 msgid "impressions"
 msgid_plural "impressions"
 msgstr[0] "impressão"
 msgstr[1] "impressões"
 
-#: includes/functions.php:7983
+#: includes/functions.php:8010
 msgid "event"
 msgid_plural "events"
 msgstr[0] "evento"
 msgstr[1] "eventos"
 
-#: includes/functions.php:8077
+#: includes/functions.php:8104
 msgctxt "Pageviews / Impressions"
 msgid "Average"
 msgstr "Média"
 
-#: includes/functions.php:8098
+#: includes/functions.php:8125
 msgctxt "Ad Blocking / Clicks"
 msgid "Average"
 msgstr "Média"
 
-#: includes/functions.php:8122
+#: includes/functions.php:8149
 msgctxt "Ad Blocking Share / CTR"
 msgid "Average"
 msgstr "Média"
 
-#: includes/functions.php:8140
+#: includes/functions.php:8167
 msgid "No chart configured."
 msgstr "Nenhum gráfico configurado."
 
-#: includes/functions.php:8283 includes/functions.php:8294
+#: includes/functions.php:8310 includes/functions.php:8321
 #, php-format
 msgid "File %s missing."
 msgstr "Arquivo %s ausente."
 
-#: includes/functions.php:8453 strings.php:215
+#: includes/functions.php:8480 strings.php:215
 #, php-format
 msgid "%s Report"
 msgstr "Relatório de %s"
 
-#: includes/functions.php:9179
+#: includes/functions.php:9206
 msgid "for last month"
 msgstr "no último mês"
 
-#: includes/functions.php:9184
+#: includes/functions.php:9211
 msgid "for this month"
 msgstr "para este mês"
 
-#: includes/functions.php:9189
+#: includes/functions.php:9216
 msgid "for this year"
 msgstr "para este ano"
 
-#: includes/functions.php:9194
+#: includes/functions.php:9221
 msgid "for the last 15 days"
 msgstr "nos últimos 15 dias"
 
-#: includes/functions.php:9199
+#: includes/functions.php:9226
 msgid "for the last 30 days"
 msgstr "nos últimos 30 dias"
 
-#: includes/functions.php:9204
+#: includes/functions.php:9231
 msgid "for the last 90 days"
 msgstr "nos últimos 90 dias"
 
-#: includes/functions.php:9209
+#: includes/functions.php:9236
 msgid "for the last 180 days"
 msgstr "nos últimos 180 dias"
 
-#: includes/functions.php:9214
+#: includes/functions.php:9241
 msgid "for the last 365 days"
 msgstr "nos últimos 365 dias"
 
-#: includes/functions.php:9283
+#: includes/functions.php:9310
 msgid "Unknown report"
 msgstr "Relatório desconhecido"
 
@@ -2948,7 +2947,7 @@ msgstr "Fechar editor de espaço reservado"
 msgid "Placeholder"
 msgstr "Espaço reservado"
 
-#: includes/placeholders.php:362 settings.php:1114 settings.php:5029
+#: includes/placeholders.php:362 settings.php:1114 settings.php:5014
 msgid "Size"
 msgstr "Tamanho"
 
@@ -3518,7 +3517,7 @@ msgstr ""
 "calculada automaticamente. Deixe todos os campos de compartilhamento vazios "
 "para que as opções tenham compartilhamentos iguais."
 
-#: settings.php:424 settings.php:2279 settings.php:4940
+#: settings.php:424 settings.php:2279 settings.php:4925
 msgid "Scheduling"
 msgstr "Agendamento"
 
@@ -3575,7 +3574,7 @@ msgstr "Abrir editor visual de HTML"
 msgid "Clear block"
 msgstr "Limpar bloco"
 
-#: settings.php:941 settings.php:4824
+#: settings.php:941 settings.php:4809
 msgid "Copy block"
 msgstr "Copiar bloco"
 
@@ -3755,7 +3754,7 @@ msgstr ""
 msgid "Enable insertion on posts"
 msgstr "Ativar inserção em posts"
 
-#: settings.php:1329 settings.php:3920
+#: settings.php:1329 settings.php:3907
 msgid "Posts"
 msgstr "Posts"
 
@@ -3769,7 +3768,7 @@ msgstr ""
 "página estática ou página inicial do tema (as posições disponíveis podem "
 "depender dos ganchos usados pelo tema)"
 
-#: settings.php:1334 settings.php:3922
+#: settings.php:1334 settings.php:3909
 msgid "Homepage"
 msgstr "Pagina inicial"
 
@@ -3778,7 +3777,7 @@ msgid "Enable insertion on category blog pages (including sub-pages)"
 msgstr ""
 "Ativar inserção nas páginas do blog por categoria (incluindo subpáginas)"
 
-#: settings.php:1339 settings.php:3923
+#: settings.php:1339 settings.php:3910
 msgid "Category pages"
 msgstr "Páginas de categoria"
 
@@ -3786,7 +3785,7 @@ msgstr "Páginas de categoria"
 msgid "Enable insertion on static pages"
 msgstr "Ativar inserção em páginas estáticas"
 
-#: settings.php:1350 settings.php:3921
+#: settings.php:1350 settings.php:3908
 msgid "Static pages"
 msgstr "Páginas estáticas"
 
@@ -3794,7 +3793,7 @@ msgstr "Páginas estáticas"
 msgid "Enable insertion on search blog pages"
 msgstr "Ativar inserção nas páginas de pesquisa do blog"
 
-#: settings.php:1355 settings.php:3925
+#: settings.php:1355 settings.php:3912
 msgid "Search pages"
 msgstr "Páginas de pesquisa"
 
@@ -4256,8 +4255,8 @@ msgstr "Alternar editor de URLs"
 
 #: settings.php:2029
 msgid ""
-"Comma separated urls (page addresses) starting with / after domain name (e."
-"g. /permalink-url, use only when you need to taget a specific url not "
+"Comma separated urls (page addresses) starting with / after domain name "
+"(e.g. /permalink-url, use only when you need to taget a specific url not "
 "accessible by other means). You can also use partial urls with * (/url-"
 "start*. *url-pattern*, *url-end)"
 msgstr ""
@@ -4348,7 +4347,7 @@ msgstr ""
 msgid "Enable shortcode for manual insertion of this block in posts and pages"
 msgstr "Ativar shortcode para inserção manual deste bloco em posts e páginas"
 
-#: settings.php:2158 settings.php:4950
+#: settings.php:2158 settings.php:4935
 msgid "Shortcode"
 msgstr "Shortcode"
 
@@ -5290,216 +5289,216 @@ msgstr ""
 msgid "Disable translation"
 msgstr "Desativar tradução"
 
-#: settings.php:3908
+#: settings.php:3895
 msgid "Available positions for current theme"
 msgstr "Posições disponíveis para o tema atual"
 
-#: settings.php:3909
+#: settings.php:3896
 msgid "Error checking pages"
 msgstr "Erro ao verificar páginas"
 
-#: settings.php:3912
+#: settings.php:3899
 msgid "Toggle theme checker for available positions for automatic insertion"
 msgstr ""
 "Alternar verificador de tema para posições disponíveis para inserção "
 "automática"
 
-#: settings.php:3912
+#: settings.php:3899
 msgctxt "Button"
 msgid "Check"
 msgstr "Verificar"
 
-#: settings.php:3919
+#: settings.php:3906
 msgid "Position"
 msgstr "Posição"
 
-#: settings.php:3924
+#: settings.php:3911
 msgid "Archive pages"
 msgstr "Páginas de arquivo"
 
-#: settings.php:3983
+#: settings.php:3970
 msgid ""
 "Position not available because output buffering (tab [*]) is not enabled"
 msgstr ""
 "Posição não disponível, porque o buffer de saída (aba [*]) não está ativado"
 
-#: settings.php:3986 strings.php:263
+#: settings.php:3973 strings.php:263
 msgid "Position not checked yet"
 msgstr "Posição ainda não verificada"
 
-#: settings.php:4022
+#: settings.php:4009
 msgid "Toggle active/all blocks"
 msgstr "Alternar entre blocos ativos/todos"
 
-#: settings.php:4027 strings.php:250
+#: settings.php:4014 strings.php:250
 msgid "Rearrange block order"
 msgstr "Reorganizar a ordem dos blocos"
 
-#: settings.php:4033
+#: settings.php:4020
 msgid "Save new block order"
 msgstr "Salvar nova ordem dos blocos"
 
-#: settings.php:4059
+#: settings.php:4046
 msgid "Toggle active/all ad units"
 msgstr "Alternar entre blocos de anúncios ativos/todos"
 
-#: settings.php:4063
+#: settings.php:4050
 msgid "Reload AdSense ad units"
 msgstr "Recarregar blocos de anúncios do AdSense"
 
-#: settings.php:4067
+#: settings.php:4054
 msgid "Clear authorization to access AdSense account"
 msgstr "Revogar autorização para acessar a conta do AdSense"
 
-#: settings.php:4071 settings.php:5114 settings.php:5161 strings.php:258
+#: settings.php:4058 settings.php:5099 settings.php:5146 strings.php:258
 msgid "Google AdSense Homepage"
 msgstr "Página inicial do Google AdSense"
 
-#: settings.php:4092
+#: settings.php:4079
 msgid "Switch to physical ads.txt file"
 msgstr "Alternar para arquivo \"ads.txt\" físico"
 
-#: settings.php:4093
+#: settings.php:4080
 msgid "Switch to virtual ads.txt file"
 msgstr "Alternar para arquivo \"ads.txt\" virtual"
 
 #. translators: %s: ads.txt
-#: settings.php:4113
+#: settings.php:4100
 #, php-format
 msgid "Open %s"
 msgstr "Abrir %s"
 
-#: settings.php:4121
+#: settings.php:4108
 msgid "Reload ads.txt file"
 msgstr "Recarregar arquivo ads.txt"
 
-#: settings.php:4127 settings.php:5226
+#: settings.php:4114 settings.php:5211
 msgid "Save"
 msgstr "Salvar"
 
 #. translators: %s: Ad Inserter
-#: settings.php:4307
+#: settings.php:4292
 #, php-format
 msgid "ads.txt file: %s virtual ads.txt file"
 msgstr "arquivo ads.txt: %s arquivo ads.txt virtual"
 
-#: settings.php:4312 settings.php:4332 strings.php:236
+#: settings.php:4297 settings.php:4317 strings.php:236
 msgid "Warning"
 msgstr "Atenção"
 
 #. translators: %s: Ad Inserter
-#: settings.php:4312
+#: settings.php:4297
 #, php-format
 msgid "%s virtual file ads.txt not found"
 msgstr "Arquivo virtual “ads.txt” do %s não encontrado"
 
-#: settings.php:4320
+#: settings.php:4305
 msgid "IMPORTANT"
 msgstr "IMPORTANTE"
 
-#: settings.php:4320
+#: settings.php:4305
 msgid "ads.txt file must be placed on the root domain"
 msgstr "o arquivo ads.txt deve ser colocado no domínio raiz"
 
-#: settings.php:4325
+#: settings.php:4310
 msgid "ads.txt file"
 msgstr "arquivo \"ads.txt\""
 
-#: settings.php:4325
+#: settings.php:4310
 msgid "NOT WRITABLE"
 msgstr "NÃO GRAVÁVEL"
 
-#: settings.php:4332
+#: settings.php:4317
 #, php-format
 msgid "file %s not found"
 msgstr "arquivo %s não encontrado"
 
-#: settings.php:4342
+#: settings.php:4327
 msgid "Account IDs found in blocks but not present in the ads.txt file"
 msgstr ""
 "IDs da conta encontrados nos blocos, mas não presentes no arquivo ads.txt"
 
 #. translators: %s: Ad Inserter
-#: settings.php:4348
+#: settings.php:4333
 #, php-format
 msgid "%s virtual ads.txt file"
 msgstr "Arquivo virtual \"ads.txt\" do %s"
 
-#: settings.php:4370
+#: settings.php:4355
 msgid "Advertising system"
 msgstr "Sistema de publicidade"
 
-#: settings.php:4371
+#: settings.php:4356
 msgid "Account ID"
 msgstr "ID da conta"
 
-#: settings.php:4373
+#: settings.php:4358
 msgid "Certification authority ID"
 msgstr "ID da autoridade de certificação"
 
-#: settings.php:4388
+#: settings.php:4373
 msgid "Account ID found in block and present in ads.txt"
 msgstr "ID da conta encontrado no bloco e presente no arquivo ads.txt"
 
-#: settings.php:4392
+#: settings.php:4377
 msgid "Account ID found in block but not present in ads.txt"
 msgstr "ID da conta encontrado no bloco, mas não presente no arquivo ads.txt"
 
-#: settings.php:4821
+#: settings.php:4806
 msgid "Preview block"
 msgstr "Pré-visualização do bloco"
 
-#: settings.php:4828
+#: settings.php:4813
 msgid "Pause block"
 msgstr "Pausar bloco"
 
-#: settings.php:4837 settings.php:4884 settings.php:4931
+#: settings.php:4822 settings.php:4869 settings.php:4916
 msgid "Add to custom report"
 msgstr "Adicionar ao relatório personalizado"
 
-#: settings.php:4936
+#: settings.php:4921
 msgid "Automatic insertion"
 msgstr "Inserção automática"
 
 #. translators: %s HTML tags
-#: settings.php:4937 settings.php:6337
+#: settings.php:4922 settings.php:6310
 msgid "PHP code processing"
 msgstr "Processamento de código PHP"
 
-#: settings.php:4939
+#: settings.php:4924
 msgid "Device detection"
 msgstr "Detecção de dispositivos"
 
-#: settings.php:4964
+#: settings.php:4949
 msgid "No active block"
 msgstr "Nenhum bloco ativo"
 
-#: settings.php:4965
+#: settings.php:4950
 msgid "No block matches search keywords"
 msgstr "Nenhum bloco corresponde às palavras-chave de pesquisa"
 
-#: settings.php:5025
+#: settings.php:5010
 msgid "Ad unit"
 msgstr "Bloco de anúncio"
 
-#: settings.php:5027
+#: settings.php:5012
 msgid "Slot ID"
 msgstr "ID do espaço"
 
-#: settings.php:5053
+#: settings.php:5038
 msgid "Copy AdSense code"
 msgstr "Copiar código do AdSense"
 
-#: settings.php:5056
+#: settings.php:5041
 msgid "Preview AdSense ad"
 msgstr "Pré-visualizar anúncio do AdSense"
 
-#: settings.php:5059
+#: settings.php:5044
 msgid "Get AdSense code"
 msgstr "Obter código do AdSense"
 
 #. translators: %s: HTML tags
-#: settings.php:5091
+#: settings.php:5076
 #, php-format
 msgid ""
 "Please %s clear authorization %s with the button %s above and once again "
@@ -5508,22 +5507,22 @@ msgstr ""
 "%s Limpar autorização %s com o botão %s acima e autorizar novamente o acesso "
 "à sua conta do AdSense."
 
-#: settings.php:5110
+#: settings.php:5095
 msgid "AdSense Integration"
 msgstr "Integração com o AdSense"
 
-#: settings.php:5112
+#: settings.php:5097
 msgid "AdSense Integration - Step 2"
 msgstr "Integração com o AdSense - Etapa 2"
 
 #. translators: %s: HTML tags
-#: settings.php:5118
+#: settings.php:5103
 #, php-format
 msgid "Authorize %s to access your AdSense account."
 msgstr "Autorizar o %s a acessar sua conta do AdSense."
 
 #. translators: %s: HTML tags
-#: settings.php:5119
+#: settings.php:5104
 #, php-format
 msgid ""
 "If you get error, can't access ad units or would like to use own Google API "
@@ -5535,13 +5534,13 @@ msgstr ""
 "IDs de API %s para inserir o ID do cliente e o segredo do cliente."
 
 #. translators: %s: HTML tags
-#: settings.php:5121
+#: settings.php:5106
 #, php-format
 msgid "Now you can authorize %s to access your AdSense account. "
 msgstr "Agora você pode autorizar o %s a acessar sua conta do AdSense. "
 
 #. translators: %s: HTML tags
-#: settings.php:5122
+#: settings.php:5107
 #, php-format
 msgid ""
 "If you get error %s invalid client %s click on the button %s Clear and "
@@ -5551,24 +5550,24 @@ msgstr ""
 "retornar à Etapa 1 %s para inserir novamente o ID do cliente e o segredo do "
 "cliente."
 
-#: settings.php:5138
+#: settings.php:5123
 msgid "Use own API IDs"
 msgstr "Usar os próprios IDs de API"
 
-#: settings.php:5140
+#: settings.php:5125
 msgid "Clear and return to Step 1"
 msgstr "Limpar e retornar à Etapa 1"
 
-#: settings.php:5144
+#: settings.php:5129
 msgid "Authorize"
 msgstr "Autorizar"
 
-#: settings.php:5160
+#: settings.php:5145
 msgid "AdSense Integration - Step 1"
 msgstr "Integração com o AdSense - Etapa 1"
 
 #. translators: %s: Ad Inserter
-#: settings.php:5164
+#: settings.php:5149
 #, php-format
 msgid ""
 "Here can %s list configured AdSense ad units and get code for AdSense ads. "
@@ -5582,13 +5581,13 @@ msgstr ""
 "API do Google para receber o ID do cliente e o segredo do cliente."
 
 #. translators: %s: HTML tags
-#: settings.php:5173
+#: settings.php:5158
 #, php-format
 msgid "Go to %s Google APIs and Services console %s"
 msgstr "Acesse o %s console de APIs e serviços do Google %s"
 
 #. translators: %1: Ad Inserter, 2, 3: HTML tags
-#: settings.php:5174
+#: settings.php:5159
 #, php-format
 msgid ""
 "Create %1$s project - if the project and IDs are already created click on "
@@ -5598,7 +5597,7 @@ msgstr ""
 "em %2$s Credenciais %3$s na barra lateral e vá para a etapa 21"
 
 #. translators: %s: HTML tags
-#: settings.php:5175
+#: settings.php:5160
 #, php-format
 msgid ""
 "Click on project selection and then click on the %s NEW PROJECT %s button to "
@@ -5608,13 +5607,13 @@ msgstr ""
 "%s para criar um novo projeto"
 
 #. translators: 1: Ad Inserter, 2, 3: HTML tags
-#: settings.php:5176
+#: settings.php:5161
 #, php-format
 msgid "Enter %1$s for project name and click on the %2$s Create %3$s button"
 msgstr "Digite %1$s para o nome do projeto e clique no botão %2$s Criar %3$s"
 
 #. translators: %s: HTML tags
-#: settings.php:5177
+#: settings.php:5162
 #, php-format
 msgid ""
 "Click on project selection, wait for the project to be created and then and "
@@ -5624,25 +5623,25 @@ msgstr ""
 "selecione %s como o projeto atual"
 
 #. translators: %s: HTML tags
-#: settings.php:5178
+#: settings.php:5163
 #, php-format
 msgid "Click on %s ENABLE APIS AND SERVICES %s"
 msgstr "Clique em %s ATIVAR APIS E SERVIÇOS %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5179
+#: settings.php:5164
 #, php-format
 msgid "Search for adsense and enable %s"
 msgstr "Pesquise por Adsense e ative %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5180
+#: settings.php:5165
 #, php-format
 msgid "Click on %s CREATE CREDENTIALS %s"
 msgstr "Clique em %s CRIAR CREDENCIAIS %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5181
+#: settings.php:5166
 #, php-format
 msgid "For %s Which API are you using? %s select %s AdSense Management API %s"
 msgstr ""
@@ -5650,7 +5649,7 @@ msgstr ""
 "AdSense %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5182
+#: settings.php:5167
 #, php-format
 msgid "For %s Where will you be calling the API from? %s select %s Other UI %s"
 msgstr ""
@@ -5658,20 +5657,20 @@ msgstr ""
 "usuário %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5183
+#: settings.php:5168
 #, php-format
 msgid "For %s What data will you be accessing? %s select %s User data %s"
 msgstr ""
 "Para %s Quais dados você vai acessar? %s selecione %s Dados do usuário %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5184
+#: settings.php:5169
 #, php-format
 msgid "Click on %s What credentials do I need? %s"
 msgstr "Clique em %s Quais credenciais eu preciso? %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5185
+#: settings.php:5170
 #, php-format
 msgid ""
 "When %s Set up OAuth consent screen %s window is displayed select %s Setup "
@@ -5681,14 +5680,14 @@ msgstr ""
 "selecione %s Configurar tela de consentimento %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5186
+#: settings.php:5171
 #, php-format
 msgid "For %s User Type %s select %s External %s and click on %s CREATE %s"
 msgstr ""
 "Para %s Tipo de usuário %s, selecione %s Externo %s e clique em %s CRIAR %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5187
+#: settings.php:5172
 #, php-format
 msgid ""
 "For %s App name %s enter %s and for %s User support email %s select your "
@@ -5698,7 +5697,7 @@ msgstr ""
 "usuário %s, selecione o endereço de e-mail da sua conta do Google"
 
 #. translators: %s: HTML tags
-#: settings.php:5188
+#: settings.php:5173
 #, php-format
 msgid ""
 "For %s Developer contact information %s enter your email address and click "
@@ -5708,7 +5707,7 @@ msgstr ""
 "mail e clique em %s SALVAR E CONTINUAR %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5189
+#: settings.php:5174
 #, php-format
 msgid ""
 "Click again on %s SAVE AND CONTINUE %s and then click on %s ADD USERS %s and "
@@ -5718,7 +5717,7 @@ msgstr ""
 "ADICIONAR USUÁRIOS %s e adicione o endereço de e-mail da sua conta do Google"
 
 #. translators: %s: HTML tags
-#: settings.php:5190
+#: settings.php:5175
 #, php-format
 msgid ""
 "Click again on %s SAVE AND CONTINUE %s and then on %s BACK TO DASHBOARD %s"
@@ -5727,7 +5726,7 @@ msgstr ""
 "PAINEL %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5191
+#: settings.php:5176
 #, php-format
 msgid ""
 "Create an OAuth 2.0 client ID: For %s OAuth 2.0 client ID %s name enter %s "
@@ -5737,7 +5736,7 @@ msgstr ""
 "digite %s Cliente do Ad Inserter %s e, em seguida, clique em %s ATUALIZAR %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5192
+#: settings.php:5177
 #, php-format
 msgid "Click on %s Create OAuth client ID %s and then click on %s DONE %s"
 msgstr ""
@@ -5745,7 +5744,7 @@ msgstr ""
 "CONCLUÍDO %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5193
+#: settings.php:5178
 #, php-format
 msgid ""
 "Click on %s Ad Inserter client %s to get %s Client ID %s and %s Client "
@@ -5754,101 +5753,100 @@ msgstr ""
 "Clique em %s Cliente do Ad Inserter %s para obter o %s ID do cliente %s e o "
 "%s segredo do cliente %s"
 
-#: settings.php:5194
+#: settings.php:5179
 msgid "Copy them to the appropriate fields below"
 msgstr "Copie-os para os campos correspondentes abaixo"
 
-#: settings.php:5200
+#: settings.php:5185
 msgid "Client ID"
 msgstr "ID do cliente"
 
-#: settings.php:5203
+#: settings.php:5188
 msgid "Enter Client ID"
 msgstr "Digite o ID do cliente"
 
-#: settings.php:5208
+#: settings.php:5193
 msgid "Client secret"
 msgstr "Segredo do cliente"
 
-#: settings.php:5211
+#: settings.php:5196
 msgid "Enter Client secret"
 msgstr "Digite o segredo do cliente"
 
-#: settings.php:5221
+#: settings.php:5206
 msgid "Use default API IDs"
 msgstr "Usar IDs de API padrão"
 
-#: settings.php:5323
+#: settings.php:5308
 msgid "All posts"
 msgstr "Todos os posts"
 
-#: settings.php:5324
+#: settings.php:5309
 msgid "All static pages"
 msgstr "Todas as páginas estáticas"
 
-#: settings.php:5642
+#: settings.php:5627
 msgid "exceptions cleared"
 msgstr "exceções excluídas"
 
-#: settings.php:5650
+#: settings.php:5635
 #, php-format
 msgid "exceptions for post \"%s\" cleared"
 msgstr "exceções do post “%s” excluídas"
 
-#: settings.php:5662
+#: settings.php:5647
 #, php-format
 msgid "exceptions for block %d cleared"
 msgstr "exceções do bloco %d excluídas"
 
-#: settings.php:5770
+#: settings.php:5755
 #, php-format
 msgid "statistics for block %d cleared"
 msgstr "estatísticas do bloco %d excluídas"
 
-#: settings.php:5774
+#: settings.php:5759
 msgid "statistics cleared"
 msgstr "estatísticas excluídas"
 
-#: settings.php:5908 settings.php:5913 settings.php:6187 settings.php:6221
-#: settings.php:6238 settings.php:6256
+#: settings.php:5893 settings.php:5898 settings.php:6171 settings.php:6200
+#: settings.php:6214 settings.php:6230
 msgid "Join to AdManager"
 msgstr "Se junte ao AdManager"
 
-#: settings.php:5922 settings.php:5936
+#: settings.php:5907 settings.php:5921
 msgid "Blank ad blocks? Looking for AdSense alternative?"
 msgstr ""
 "Blocos de anúncios em branco? \n"
 "Procurando por uma alternativa ao AdSense?"
 
-#: settings.php:5927 settings.php:5941 settings.php:6189 settings.php:6214
-#: settings.php:6240 settings.php:6241 settings.php:6249
+#: settings.php:5912 settings.php:5926 settings.php:6173 settings.php:6195
+#: settings.php:6216 settings.php:6217 settings.php:6225
 msgid "Looking for AdSense alternative?"
 msgstr "Procurando por uma alternativa ao AdSense?"
 
-#: settings.php:5953
+#: settings.php:5938
 msgid "Try Infolinks Ads with Adsense or Media.net ads"
 msgstr ""
 "Experimente os anúncios do Infolinks com AdSense ou anúncios do Media.net"
 
-#: settings.php:5958 settings.php:6186 settings.php:6209 settings.php:6237
-#: settings.php:6267
+#: settings.php:5943
 msgid "Use Infolinks ads with Adsense to earn more"
 msgstr "Usar anúncios do Infolinks com o Adsense para ganhar mais"
 
-#: settings.php:5970 settings.php:5975 settings.php:6196 settings.php:6205
-#: settings.php:6234 settings.php:6261
-msgid "Best AdSense Alternative"
-msgstr "A melhor alternativa ao AdSense"
+#: settings.php:5955 settings.php:5960 settings.php:6178 settings.php:6187
+#: settings.php:6211 settings.php:6235
+msgid "Grow Revenue Today"
+msgstr "Aumente sua receita hoje"
 
-#: settings.php:5987 settings.php:5992 settings.php:6004 settings.php:6009
+#: settings.php:5972 settings.php:5977 settings.php:5989 settings.php:5994
 msgid "Maximize Revenue"
 msgstr "Maximizar a receita"
 
-#: settings.php:6031 settings.php:6081
+#: settings.php:6016 settings.php:6066
 msgid "Support plugin development"
 msgstr "Apoiar o desenvolvimento do plugin"
 
-#: settings.php:6036 settings.php:6082
+#: settings.php:6021 settings.php:6067
 msgid ""
 "If you like Ad Inserter and have a moment, please help me spread the word by "
 "reviewing the plugin on WordPres"
@@ -5856,12 +5854,12 @@ msgstr ""
 "Se você estiver satisfeito com o “Ad Inserter” e tiver um tempinho, me ajude "
 "a divulgá-lo avaliando o plugin no WordPres"
 
-#: settings.php:6036
+#: settings.php:6021
 msgctxt "Review Ad Inserter"
 msgid "Review"
 msgstr "Avaliar"
 
-#: settings.php:6041
+#: settings.php:6026
 msgid ""
 "If you like Ad Inserter and have a moment, please help me spread the word by "
 "rating the plugin on WordPres"
@@ -5869,12 +5867,12 @@ msgstr ""
 "Se você estiver satisfeito com o “Ad Inserter” e tiver um tempinho, me ajude "
 "a divulgá-lo classificando o plugin no WordPres"
 
-#: settings.php:6041
+#: settings.php:6026
 msgctxt "Rate Ad Inserter"
 msgid "Rate"
 msgstr "Classificar"
 
-#: settings.php:6046
+#: settings.php:6031
 msgid ""
 "Support free Ad Inserter development. If you are making money with Ad "
 "Inserter consider donating some small amount. Even 1 dollar counts. Thank "
@@ -5884,16 +5882,16 @@ msgstr ""
 "dinheiro com o Ad Inserter, considere a possibilidade de doar uma pequena "
 "quantia. Até mesmo 1 dólar conta. Obrigado!"
 
-#: settings.php:6046
+#: settings.php:6031
 msgid "Donate"
 msgstr "Doar"
 
-#: settings.php:6053 settings.php:6097
+#: settings.php:6038 settings.php:6082
 msgid "Average rating of the plugin - Thank you!"
 msgstr "Classificação média do plugin - Obrigado!"
 
 #. translators: %s: Ad Inserter, HTML tags
-#: settings.php:6064
+#: settings.php:6049
 #, php-format
 msgid ""
 "You've been using %s for a while now, and I hope you're happy with it. "
@@ -5909,24 +5907,24 @@ msgstr ""
 "adicionar novos recursos para melhorar a monetização do seu site. Quando "
 "você o avalia com 5 estrelas, é como se dissesse “Obrigado”."
 
-#: settings.php:6082
+#: settings.php:6067
 msgid "Review"
 msgstr "Avaliar"
 
-#: settings.php:6086
+#: settings.php:6071
 msgid "Ad Inserter on Twitter"
 msgstr "Ad Inserter no Twitter"
 
-#: settings.php:6087
+#: settings.php:6072
 msgid "Ad Inserter on Facebook"
 msgstr "Ad Inserter no Facebook"
 
-#: settings.php:6090
+#: settings.php:6075
 msgid "Follow Ad Inserter"
 msgstr "Seguir o Ad Inserter"
 
 #. translators: %s: HTML tags
-#: settings.php:6117
+#: settings.php:6102
 #, php-format
 msgid ""
 "Need help with %s settings? %s Check %s Quick Start, %s %s Code Editing %s "
@@ -5936,7 +5934,7 @@ msgstr ""
 "Início rápido, %s %s Edição de código %s e %s Configurações comuns %s"
 
 #. translators: %s: HTML tags
-#: settings.php:6129
+#: settings.php:6114
 #, php-format
 msgid ""
 "%s New to %s AdSense? %s %s %s Connect your site %s - %s In-feed ads, %s %s "
@@ -5946,7 +5944,7 @@ msgstr ""
 "%s %s Anúncios automáticos, %s %s Anúncios AMP %s"
 
 #. translators: %s: HTML tags
-#: settings.php:6146
+#: settings.php:6131
 #, php-format
 msgid ""
 "Become an %s affiliate %s for Ad Inserter Pro and earn commission for each "
@@ -5956,7 +5954,7 @@ msgstr ""
 "compra que você nos indicar"
 
 #. translators: %s: HTML tags
-#: settings.php:6153
+#: settings.php:6138
 #, php-format
 msgid ""
 "Ads are not showing? Check %s troubleshooting guide %s to find out how to "
@@ -5966,7 +5964,7 @@ msgstr ""
 "problemas %s para saber como diagnosticar e corrigir o problema."
 
 #. translators: %s: HTML tags
-#: settings.php:6157
+#: settings.php:6142
 #, php-format
 msgid ""
 "If you need any kind of help or support, please do not hesitate to open a "
@@ -5975,71 +5973,66 @@ msgstr ""
 "Se você precisar de qualquer tipo de ajuda ou suporte, não hesite em abrir "
 "um tópico no %s fórum de suporte. %s"
 
-#: settings.php:6184 settings.php:6262 settings.php:6268
+#: settings.php:6169 settings.php:6236 settings.php:6241
 msgid "A/B testing - Track ad impressions and clicks"
 msgstr "Testes A/B - Acompanhe as impressões e os cliques nos anúncios"
 
-#: settings.php:6185 settings.php:6195 settings.php:6260 settings.php:6276
+#: settings.php:6170 settings.php:6177 settings.php:6234 settings.php:6249
 msgid "Code preview with visual CSS editor"
 msgstr "Pré-visualização do código com o editor visual de CSS"
 
-#: settings.php:6191 settings.php:6204 settings.php:6280
+#: settings.php:6175 settings.php:6186 settings.php:6253
 msgid "Ad blocking detection and content protection"
 msgstr "Detecção de bloqueio de anúncios e proteção de conteúdo"
 
-#: settings.php:6192 settings.php:6193 settings.php:6219 settings.php:6220
-#: settings.php:6230 settings.php:6231 settings.php:6254 settings.php:6255
-msgid "Maximize Your Ad Revenue"
-msgstr "Maximize sua receita com anúncios"
-
-#: settings.php:6210
+#: settings.php:6191
 msgid "Insert ads on AMP pages"
 msgstr "Inserir anúncios em páginas AMP"
 
-#: settings.php:6236 settings.php:6253 settings.php:6288
+#: settings.php:6213 settings.php:6229 settings.php:6261
 msgid "Stop invalid traffic with reCAPTCHA v3 score check"
 msgstr ""
 "Bloquear o tráfego inválido com a verificação de pontuação do reCAPTCHA v3"
 
-#: settings.php:6296
+#: settings.php:6269
 msgid "Looking for Pro Ad Management plugin?"
 msgstr "Procurando por um plugin de gerenciamento de anúncios profissional?"
 
-#: settings.php:6297
+#: settings.php:6270
 msgid "To Optimally Monetize your WordPress website?"
 msgstr "Para monetizar de forma eficiente seu site WordPress?"
 
-#: settings.php:6298
+#: settings.php:6271
 #, php-format
 msgid "Different license types starting from %s"
 msgstr "Diferentes tipos de licença a partir de %s"
 
 #. translators: %s HTML tags
-#: settings.php:6301
+#: settings.php:6274
 #, php-format
 msgid "%s AdSense Integration %s"
 msgstr "%s Integração com o AdSense %s"
 
 #. translators: %s HTML tags
-#: settings.php:6302
+#: settings.php:6275
 #, php-format
 msgid "Syntax highlighting %s editor %s"
 msgstr "Destaque de sintaxe no %s editor %s"
 
 #. translators: %s HTML tags
-#: settings.php:6303
+#: settings.php:6276
 #, php-format
 msgid "%s Code preview %s with visual CSS editor"
 msgstr "%s Pré-visualização do código %s com o editor visual de CSS"
 
 #. translators: %s HTML tags
-#: settings.php:6304
+#: settings.php:6277
 msgid "Simple user interface - all settings on a single page"
 msgstr ""
 "Interface de usuário simples - todas as configurações em uma única página"
 
 #. translators: %s HTML tags
-#: settings.php:6305
+#: settings.php:6278
 #, php-format
 msgid ""
 "%s Automatic insertion %s before or after post / content / %s paragraph %s / "
@@ -6049,31 +6042,31 @@ msgstr ""
 "%s/imagem/resumo"
 
 #. translators: %s HTML tags
-#: settings.php:6306
+#: settings.php:6279
 #, php-format
 msgid "%s Automatic insertion %s between posts on blog pages"
 msgstr "%s Inserção automática %s entre posts nas páginas do blog"
 
 #. translators: %s HTML tags
-#: settings.php:6307
+#: settings.php:6280
 #, php-format
 msgid "%s Automatic insertion %s before, between and after comments"
 msgstr "%s Inserção automática %s antes, entre e após os comentários"
 
 #. translators: %s HTML tags
-#: settings.php:6308
+#: settings.php:6281
 #, php-format
 msgid "%s Automatic insertion %s after %s or before %s tag"
 msgstr "%s Inserção automática %s após %s ou antes da tag %s"
 
 #. translators: %s HTML tags
-#: settings.php:6309
+#: settings.php:6282
 #, php-format
 msgid "Automatic insertion at %s custom hook positions %s"
 msgstr "Inserção automática em %s posições de gancho personalizado %s"
 
 #. translators: %s HTML tags
-#: settings.php:6310
+#: settings.php:6283
 #, php-format
 msgid ""
 "Insertion %s before or after any HTML element on the page %s (using CSS "
@@ -6083,19 +6076,19 @@ msgstr ""
 "seletores CSS)"
 
 #. translators: %s HTML tags
-#: settings.php:6311
+#: settings.php:6284
 #, php-format
 msgid "%s Insertion exceptions %s for individual posts and pages"
 msgstr "%s Exceções na inserção %s para posts e páginas específicos"
 
 #. translators: %s HTML tags
-#: settings.php:6312
+#: settings.php:6285
 #, php-format
 msgid "%s Manual insertion: %s widgets, shortcodes, PHP function call"
 msgstr "%s Inserção manual: %s widgets, shortcodes, chamada de função PHP"
 
 #. translators: %s HTML tags
-#: settings.php:6313
+#: settings.php:6286
 #, php-format
 msgid ""
 "%s Sticky ads %s with optional close button (ads stay fixed when the page "
@@ -6105,7 +6098,7 @@ msgstr ""
 "permanecem fixos quando a página rola)"
 
 #. translators: %s HTML tags
-#: settings.php:6314
+#: settings.php:6287
 #, php-format
 msgid "%s Background ads %s with one or left and right background images"
 msgstr ""
@@ -6113,14 +6106,14 @@ msgstr ""
 "fundo à esquerda e à direita"
 
 #. translators: %s HTML tags
-#: settings.php:6315
+#: settings.php:6288
 #, php-format
 msgid "%s Sticky sidebar ads %s (stick to the screen or to the content)"
 msgstr ""
 "%s Anúncios fixos na barra lateral %s (ficam fixos na tela ou no conteúdo)"
 
 #. translators: %s HTML tags
-#: settings.php:6316
+#: settings.php:6289
 #, php-format
 msgid "%s Sticky ad animations %s (fade, slide, turn, flip, zoom)"
 msgstr ""
@@ -6128,7 +6121,7 @@ msgstr ""
 "zoom)"
 
 #. translators: %s HTML tags
-#: settings.php:6317
+#: settings.php:6290
 #, php-format
 msgid ""
 "%s Sticky ad trigger %s (page scroll in %% or px, HTML element becomes "
@@ -6138,7 +6131,7 @@ msgstr ""
 "HTML fica visível)"
 
 #. translators: %s HTML tags
-#: settings.php:6318
+#: settings.php:6291
 #, php-format
 msgid ""
 "%s Sticky (fixed) widgets %s (sidebar does not move when the page scrolls)"
@@ -6146,13 +6139,13 @@ msgstr ""
 "%s Widgets fixos %s (a barra lateral não se move quando a página é rolada)"
 
 #. translators: %s HTML tags
-#: settings.php:6319
+#: settings.php:6292
 #, php-format
 msgid "Block %s alignment and style %s customizations"
 msgstr "Personalizações de %s alinhamento e estilo %s do bloco"
 
 #. translators: %s HTML tags
-#: settings.php:6320
+#: settings.php:6293
 #, php-format
 msgid ""
 "%s Clearance %s options to avoid insertion near images or headers (AdSense "
@@ -6162,7 +6155,7 @@ msgstr ""
 "cabeçalhos (TOS do AdSense)"
 
 #. translators: %s HTML tags
-#: settings.php:6321
+#: settings.php:6294
 #, php-format
 msgid ""
 "Options to %s disable insertion %s on Ajax calls, 404 error pages or in RSS "
@@ -6172,26 +6165,26 @@ msgstr ""
 "ou em feeds RSS"
 
 #. translators: %s HTML tags
-#: settings.php:6322
+#: settings.php:6295
 #, php-format
 msgid "%s Ad rotation %s (works also with caching)"
 msgstr "%s Rotação de anúncios %s (também funciona com armazenamento em cache)"
 
 #. translators: %s HTML tags
-#: settings.php:6323
+#: settings.php:6296
 #, php-format
 msgid "Ad rotation %s optimization based on CTR %s"
 msgstr ""
 "%s Otimização com base na taxa de cliques (CTR) %s da rotação de anúncios"
 
 #. translators: %s HTML tags
-#: settings.php:6324
+#: settings.php:6297
 #, php-format
 msgid "Create, edit and check %s ads.txt %s file"
 msgstr "Criar, editar e verificar o arquivo %s ads.txt %s"
 
 #. translators: %s HTML tags
-#: settings.php:6325
+#: settings.php:6298
 #, php-format
 msgid ""
 "Ad impression and click %s tracking %s (works also with Javascript ads like "
@@ -6201,64 +6194,64 @@ msgstr ""
 "anúncios Javascript, como o AdSense)"
 
 #. translators: %s HTML tags
-#: settings.php:6326
+#: settings.php:6299
 #, php-format
 msgid "Internal or external %s tracking %s (via Google Analytics or Matomo)"
 msgstr ""
 "%s Rastreamento %s interno ou externo (através do Google Analytics ou Matomo)"
 
 #. translators: %s HTML tags
-#: settings.php:6327
+#: settings.php:6300
 #, php-format
 msgid "%s Public web reports %s for clients, export to PDF"
 msgstr "%s Relatórios públicos na web %s para clientes, exportação para PDF"
 
 #. translators: %s HTML tags
-#: settings.php:6328
+#: settings.php:6301
 #, php-format
 msgid "Support for %s A/B testing %s"
 msgstr "Compatível com %s testes A/B %s"
 
 #. translators: %s HTML tags
-#: settings.php:6329
+#: settings.php:6302
 #, php-format
 msgid "Frequency capping - %s limit impressions or clicks %s"
 msgstr "Limitação de frequência - %s limita as impressões ou os cliques %s"
 
 #. translators: %s HTML tags
-#: settings.php:6330
+#: settings.php:6303
 #, php-format
 msgid "Click fraud %s protection %s"
 msgstr "%s Proteção %s contra fraude por cliques"
 
 #. translators: %s HTML tags
-#: settings.php:6331
+#: settings.php:6304
 #, php-format
 msgid "Stop invalid traffic with %s reCAPTCHA score check %s"
 msgstr ""
 "Bloquear o tráfego inválido com a %s verificação de pontuação do reCAPTCHA %s"
 
 #. translators: %s HTML tags
-#: settings.php:6332
+#: settings.php:6305
 #, php-format
 msgid "Support for %s GDPR consent cookie checks %s"
 msgstr ""
 "Compatibilidade com %s verificações de consentimento de cookies do GDPR %s"
 
 #. translators: %s HTML tags
-#: settings.php:6333
+#: settings.php:6306
 #, php-format
 msgid "Support for %s lazy loading %s"
 msgstr "Suporte para %s carregamento lento %s"
 
 #. translators: %s HTML tags
-#: settings.php:6334
+#: settings.php:6307
 #, php-format
 msgid "Support for ads on %s AMP pages %s"
 msgstr "Compatível com anúncios em %s páginas AMP %s"
 
 #. translators: %s HTML tags
-#: settings.php:6335
+#: settings.php:6308
 #, php-format
 msgid "Support for contextual %s Amazon Native Shopping Ads %s (responsive)"
 msgstr ""
@@ -6266,39 +6259,39 @@ msgstr ""
 "(responsivo)"
 
 #. translators: %s HTML tags
-#: settings.php:6336
+#: settings.php:6309
 msgid "Custom CSS class name for wrapping divs to avoid ad blockers"
 msgstr ""
 "Nome da classe CSS personalizada para as divs de invólucro para evitar "
 "bloqueadores de anúncios"
 
 #. translators: %s HTML tags
-#: settings.php:6338
+#: settings.php:6311
 #, php-format
 msgid "%s Banner %s code generator"
 msgstr "Gerador de código de %s Banner %s"
 
 #. translators: %s HTML tags
-#: settings.php:6339
+#: settings.php:6312
 #, php-format
 msgid "Support for %s header and footer %s code"
 msgstr "Compatível com código de %s cabeçalho e rodapé %s"
 
 #. translators: %s HTML tags
-#: settings.php:6340
+#: settings.php:6313
 msgid "Support for Google Analytics, Matomo or any other web analytics code"
 msgstr ""
 "Compatível com o Google Analytics, Matomo ou qualquer outro código de "
 "análise da web"
 
 #. translators: %s HTML tags
-#: settings.php:6341
+#: settings.php:6314
 #, php-format
 msgid "Desktop, tablet and phone server-side %s device detection %s"
 msgstr "%s Detecção de dispositivos desktop, tablet e smartphone %s na página"
 
 #. translators: %s HTML tags
-#: settings.php:6342
+#: settings.php:6315
 #, php-format
 msgid "Client-side %s mobile device detection %s (works with caching)"
 msgstr ""
@@ -6306,7 +6299,7 @@ msgstr ""
 "armazenamento em cache)"
 
 #. translators: %s HTML tags
-#: settings.php:6343
+#: settings.php:6316
 #, php-format
 msgid ""
 "%s Ad blocking detection %s - popup message, ad replacement, content "
@@ -6316,13 +6309,13 @@ msgstr ""
 "anúncios, proteção de conteúdo"
 
 #. translators: %s HTML tags
-#: settings.php:6344
+#: settings.php:6317
 #, php-format
 msgid "%s Ad blocking statistics %s"
 msgstr "%s Estatísticas de bloqueio de anúncios %s"
 
 #. translators: %s HTML tags
-#: settings.php:6345
+#: settings.php:6318
 #, php-format
 msgid ""
 "%s Black/White-list %s categories, tags, taxonomies, users, post IDs, urls, "
@@ -6332,7 +6325,7 @@ msgstr ""
 "IDs de posts, URLs, referenciadores, sistemas operacionais, navegadores"
 
 #. translators: %s HTML tags
-#: settings.php:6346
+#: settings.php:6319
 #, php-format
 msgid ""
 "%s Black/White-list %s IP addresses or countries (works also with caching)"
@@ -6341,25 +6334,25 @@ msgstr ""
 "com armazenamento em cache)"
 
 #. translators: %s HTML tags
-#: settings.php:6347
+#: settings.php:6320
 #, php-format
 msgid "%s Multisite options %s to limit settings on the sites"
 msgstr "%s Opções multisite %s para limitar as configurações nos sites"
 
 #. translators: %s HTML tags
-#: settings.php:6348
+#: settings.php:6321
 #, php-format
 msgid "%s Import/Export %s block or plugin settings"
 msgstr "%s Importar/exportar %s configurações dos blocos ou plugins"
 
 #. translators: %s HTML tags
-#: settings.php:6349
+#: settings.php:6322
 #, php-format
 msgid "%s Insertion scheduling %s with fallback option"
 msgstr "%s Agendamento de inserções %s com opção alternativa"
 
 #. translators: %s HTML tags
-#: settings.php:6350
+#: settings.php:6323
 #, php-format
 msgid "Country-level %s GEO targeting %s (works also with caching)"
 msgstr ""
@@ -6367,13 +6360,13 @@ msgstr ""
 "cache)"
 
 #. translators: %s HTML tags
-#: settings.php:6351
+#: settings.php:6324
 #, php-format
 msgid "Simple troubleshooting with many %s debugging functions %s"
 msgstr "Solução de problemas simples com muitas %s funções de depuração %s"
 
 #. translators: %s HTML tags
-#: settings.php:6352
+#: settings.php:6325
 #, php-format
 msgid "%s Visualization %s of inserted blocks or ads for easier placement"
 msgstr ""
@@ -6381,7 +6374,7 @@ msgstr ""
 "posicionamento"
 
 #. translators: %s HTML tags
-#: settings.php:6353
+#: settings.php:6326
 #, php-format
 msgid "%s Visualization %s of available positions for automatic ad insertion"
 msgstr ""
@@ -6389,7 +6382,7 @@ msgstr ""
 "anúncios"
 
 #. translators: %s HTML tags
-#: settings.php:6354
+#: settings.php:6327
 #, php-format
 msgid ""
 "%s Visualization %s of HTML tags for easier ad placement between paragraphs"
@@ -6398,7 +6391,7 @@ msgstr ""
 "parágrafos"
 
 #. translators: %s HTML tags
-#: settings.php:6355
+#: settings.php:6328
 #, php-format
 msgid "%s Clipboard support %s to easily copy blocks or settings"
 msgstr ""
@@ -6406,17 +6399,17 @@ msgstr ""
 "configurações"
 
 #. translators: %s HTML tags
-#: settings.php:6356
+#: settings.php:6329
 msgid "No ads on the settings page"
 msgstr "Sem anúncios na página de configurações"
 
 #. translators: %s HTML tags
-#: settings.php:6357
+#: settings.php:6330
 msgid "Premium support"
 msgstr "Suporte premium"
 
 #. translators: %s HTML tags
-#: settings.php:6360
+#: settings.php:6333
 #, php-format
 msgid ""
 "Ad Inserter Pro is a complete all-in-one ad management plugin for WordPress "
@@ -6445,93 +6438,93 @@ msgstr ""
 "existentes serão preservadas)."
 
 #. translators: %s HTML tags
-#: settings.php:6373
+#: settings.php:6346
 #, php-format
 msgid "Looking for %s Pro Ad Management plugin? %s"
 msgstr ""
 "Procurando por um plugin de %s gerenciamento de anúncios profissional? %s"
 
 #. translators: %s HTML tags
-#: settings.php:6378
+#: settings.php:6351
 msgid "Ads between posts"
 msgstr "Anúncios entre posts"
 
 #. translators: %s HTML tags
-#: settings.php:6379
+#: settings.php:6352
 msgid "Ads between comments"
 msgstr "Anúncios entre comentários"
 
 #. translators: %s HTML tags
-#: settings.php:6380
+#: settings.php:6353
 msgid "Support via email"
 msgstr "Suporte por e-mail"
 
 #. translators: %s HTML tags
-#: settings.php:6386
+#: settings.php:6359
 #, php-format
 msgid "%s Sticky positions %s"
 msgstr "%s Posições fixas %s"
 
 #. translators: %s HTML tags
-#: settings.php:6387
+#: settings.php:6360
 #, php-format
 msgid "%s Limit insertions %s"
 msgstr "%s Limitar inserções %s"
 
 #. translators: %s HTML tags
-#: settings.php:6388
+#: settings.php:6361
 #, php-format
 msgid "%s Clearance %s options"
 msgstr "Opções de %s Limpeza %s"
 
 #. translators: %s HTML tags
-#: settings.php:6394
+#: settings.php:6367
 msgid "Ad rotation"
 msgstr "Rotação de anúncios"
 
 #. translators: %s HTML tags
-#: settings.php:6395
+#: settings.php:6368
 #, php-format
 msgid "%s A/B testing %s"
 msgstr "%s Teste A/B %s"
 
 #. translators: %s HTML tags
-#: settings.php:6396
+#: settings.php:6369
 #, php-format
 msgid "%s Ad tracking %s"
 msgstr "%s Rastreamento de anúncios %s"
 
 #. translators: %s HTML tags
-#: settings.php:6402
+#: settings.php:6375
 #, php-format
 msgid "Support for %s AMP pages %s"
 msgstr "Suporte para %s páginas AMP %s"
 
 #. translators: %s HTML tags
-#: settings.php:6403
+#: settings.php:6376
 #, php-format
 msgid "%s Ad blocking detection %s"
 msgstr "%s Detecção de bloqueio de anúncios %s"
 
 #. translators: %s HTML tags
-#: settings.php:6404
+#: settings.php:6377
 #, php-format
 msgid "%s Mobile device detection %s"
 msgstr "%s Detecção de dispositivo móvel %s"
 
 #. translators: %s HTML tags
-#: settings.php:6411
+#: settings.php:6384
 msgid "64 code blocks"
 msgstr "64 blocos de código"
 
 #. translators: %s HTML tags
-#: settings.php:6412
+#: settings.php:6385
 #, php-format
 msgid "%s GEO targeting %s"
 msgstr "%s Segmentação por GEO %s"
 
 #. translators: %s HTML tags
-#: settings.php:6413
+#: settings.php:6386
 #, php-format
 msgid "%s Scheduling %s"
 msgstr "%s Agendamento %s"
@@ -7480,6 +7473,12 @@ msgid ""
 msgstr ""
 "Gerenciamento de anúncios com muitos recursos avançados de publicidade para "
 "inserir anúncios nas posições ideais"
+
+#~ msgid "Best AdSense Alternative"
+#~ msgstr "A melhor alternativa ao AdSense"
+
+#~ msgid "Maximize Your Ad Revenue"
+#~ msgstr "Maximize sua receita com anúncios"
 
 #~ msgid "Impression and Click Tracking"
 #~ msgstr "Rastreamento de impressões e cliques"

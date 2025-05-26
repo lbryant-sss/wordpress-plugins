@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Customer Reviews for WooCommerce 5.77.0\n"
+"Project-Id-Version: Customer Reviews for WooCommerce 5.78.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/customer-reviews-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-04T20:44:40+00:00\n"
+"POT-Creation-Date: 2025-05-25T23:33:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: customer-reviews-woocommerce\n"
@@ -124,6 +124,7 @@ msgstr ""
 #: includes/analytics/class-cr-reminders-log.php:397
 #: includes/reminders/class-cr-manual.php:370
 #: includes/settings/class-cr-settings-emails.php:113
+#: includes/settings/class-cr-settings-review-discount.php:959
 #: includes/settings/class-cr-settings-review-reminder.php:1225
 #: templates/cr-review-form.php:114
 #: templates/cr-review-form.php:116
@@ -287,23 +288,23 @@ msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:938
 #: includes/blocks/class-cr-reviews-grid.php:1064
-#: includes/reviews/class-cr-reviews.php:1673
+#: includes/reviews/class-cr-reviews.php:1704
 #: templates/cr-review-form.php:31
 msgid "Add a review"
 msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:1072
-#: includes/reviews/class-cr-reviews.php:1616
+#: includes/reviews/class-cr-reviews.php:1617
 msgid "Sort reviews"
 msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:1074
-#: includes/reviews/class-cr-reviews.php:1618
+#: includes/reviews/class-cr-reviews.php:1619
 msgid "Most Recent"
 msgstr ""
 
 #: includes/blocks/class-cr-all-reviews.php:1077
-#: includes/reviews/class-cr-reviews.php:1622
+#: includes/reviews/class-cr-reviews.php:1623
 msgid "Most Helpful"
 msgstr ""
 
@@ -490,9 +491,9 @@ msgstr ""
 #: includes/emails/class-cr-email-coupon.php:179
 #: includes/emails/class-cr-email.php:457
 #: includes/emails/class-cr-email.php:498
-#: includes/emails/class-cr-wtsap.php:413
-#: includes/emails/class-cr-wtsap.php:674
-#: includes/emails/class-cr-wtsap.php:691
+#: includes/emails/class-cr-wtsap.php:422
+#: includes/emails/class-cr-wtsap.php:692
+#: includes/emails/class-cr-wtsap.php:709
 #: includes/reminders/class-cr-local-forms.php:382
 msgid "Jane"
 msgstr ""
@@ -501,16 +502,16 @@ msgstr ""
 #: includes/emails/class-cr-email-coupon.php:180
 #: includes/emails/class-cr-email.php:458
 #: includes/emails/class-cr-email.php:499
-#: includes/emails/class-cr-wtsap.php:414
-#: includes/emails/class-cr-wtsap.php:675
-#: includes/emails/class-cr-wtsap.php:692
+#: includes/emails/class-cr-wtsap.php:423
+#: includes/emails/class-cr-wtsap.php:693
+#: includes/emails/class-cr-wtsap.php:710
 #: includes/reminders/class-cr-local-forms.php:383
 msgid "Doe"
 msgstr ""
 
 #: includes/emails/class-cr-email-coupon.php:155
 #: includes/emails/class-cr-email.php:459
-#: includes/emails/class-cr-wtsap.php:676
+#: includes/emails/class-cr-wtsap.php:694
 msgid "Jane Doe"
 msgstr ""
 
@@ -527,24 +528,24 @@ msgstr ""
 msgid "An error occurred when sending the discount coupon %s to the customer by email."
 msgstr ""
 
-#: includes/emails/class-cr-email-func.php:147
+#: includes/emails/class-cr-email-func.php:148
 msgid "CR: %1$s cannot be included in a review invitation because it is related to one of the prohibited categories of products. If you would like to send review invitations for this product, please set the 'Verified Reviews' option to 'Self-hosted' in the <a href=\"%2$s\">settings</a>."
 msgstr ""
 
-#: includes/emails/class-cr-email-func.php:547
+#: includes/emails/class-cr-email-func.php:549
 #: includes/emails/class-cr-email.php:467
-#: includes/emails/class-cr-wtsap.php:420
-#: includes/emails/class-cr-wtsap.php:435
-#: includes/emails/class-cr-wtsap.php:701
+#: includes/emails/class-cr-wtsap.php:429
+#: includes/emails/class-cr-wtsap.php:444
+#: includes/emails/class-cr-wtsap.php:719
 #: includes/reminders/class-cr-local-forms.php:390
 msgid "Item 1 Test"
 msgstr ""
 
-#: includes/emails/class-cr-email-func.php:552
+#: includes/emails/class-cr-email-func.php:554
 #: includes/emails/class-cr-email.php:469
-#: includes/emails/class-cr-wtsap.php:421
-#: includes/emails/class-cr-wtsap.php:440
-#: includes/emails/class-cr-wtsap.php:706
+#: includes/emails/class-cr-wtsap.php:430
+#: includes/emails/class-cr-wtsap.php:449
+#: includes/emails/class-cr-wtsap.php:724
 #: includes/reminders/class-cr-local-forms.php:395
 msgid "Item 2 Test"
 msgstr ""
@@ -620,12 +621,12 @@ msgid "Error: could not save the secret key to DB. Please try again."
 msgstr ""
 
 #: includes/emails/class-cr-email.php:446
-#: includes/emails/class-cr-wtsap.php:401
+#: includes/emails/class-cr-wtsap.php:410
 msgid "CR: A review invitation cannot be sent because the order does not contain any products for which review reminders are enabled in the settings."
 msgstr ""
 
 #: includes/emails/class-cr-email.php:450
-#: includes/emails/class-cr-wtsap.php:403
+#: includes/emails/class-cr-wtsap.php:412
 msgid "Error: the order does not contain any products for which review reminders are enabled in the settings."
 msgstr ""
 
@@ -710,7 +711,7 @@ msgid "CR: a review reminder was cancelled because the order was cancelled."
 msgstr ""
 
 #: includes/emails/class-cr-wtsap.php:171
-#: includes/emails/class-cr-wtsap.php:486
+#: includes/emails/class-cr-wtsap.php:495
 msgid "Error: order %s does not exist"
 msgstr ""
 
@@ -718,66 +719,66 @@ msgstr ""
 msgid "Error: an option to limit review reminders is enabled in the settings"
 msgstr ""
 
-#: includes/emails/class-cr-wtsap.php:406
+#: includes/emails/class-cr-wtsap.php:415
 msgid "Error: invalid order ID"
 msgstr ""
 
-#: includes/emails/class-cr-wtsap.php:646
+#: includes/emails/class-cr-wtsap.php:664
 msgid "Discount coupon %s has been successfully sent to the customer by WhatsApp."
 msgstr ""
 
-#: includes/emails/class-cr-wtsap.php:655
+#: includes/emails/class-cr-wtsap.php:673
 msgid "An error occurred when sending the discount coupon %1$s to the customer by WhatsApp. Error: %2$s."
 msgstr ""
 
-#: includes/emails/class-cr-wtsap.php:664
+#: includes/emails/class-cr-wtsap.php:682
 msgid "An error occurred when sending the discount coupon %s to the customer by WhatsApp."
 msgstr ""
 
-#: includes/emails/class-cr-wtsap.php:776
+#: includes/emails/class-cr-wtsap.php:794
 msgid "A test message has been successfully sent by WhatsApp to %s."
 msgstr ""
 
-#: includes/emails/class-cr-wtsap.php:784
+#: includes/emails/class-cr-wtsap.php:802
 msgid "An error occurred when sending a test message by WhatsApp: %1$s; %2$s"
 msgstr ""
 
-#: includes/emails/class-cr-wtsap.php:790
+#: includes/emails/class-cr-wtsap.php:808
 msgid "An error occurred when sending a test message by WhatsApp: %s"
 msgstr ""
 
-#: includes/emails/class-cr-wtsap.php:801
+#: includes/emails/class-cr-wtsap.php:819
 msgid "An error occurred when sending a test message by WhatsApp."
 msgstr ""
 
 #. translators: please keep %1$s, %2$s, and %3$s in the translation - they will be replaced with the counts of products
-#: includes/google/class-cr-admin-menu-product-feed.php:68
+#: includes/google/class-cr-admin-menu-product-feed.php:65
 msgid "XML Product Feed for Google Shopping is being generated in background - products %1$s to %2$s out of %3$s."
 msgstr ""
 
-#: includes/google/class-cr-admin-menu-product-feed.php:77
-#: includes/google/class-cr-admin-menu-product-feed.php:100
+#: includes/google/class-cr-admin-menu-product-feed.php:74
+#: includes/google/class-cr-admin-menu-product-feed.php:97
 msgid "Update progress"
 msgstr ""
 
 #. translators: please keep %1$s, %2$s, and %3$s in the translation - they will be replaced with the counts of products
-#: includes/google/class-cr-admin-menu-product-feed.php:91
+#: includes/google/class-cr-admin-menu-product-feed.php:88
 msgid "XML Product Review Feed for Google Shopping is being generated in background - reviews %1$s to %2$s out of %3$s."
 msgstr ""
 
-#: includes/google/class-cr-admin-menu-product-feed.php:108
+#: includes/google/class-cr-admin-menu-product-feed.php:105
 msgid "XML Feeds might not be created correctly because WP Cron is disabled"
 msgstr ""
 
-#: includes/google/class-cr-admin-menu-product-feed.php:118
+#: includes/google/class-cr-admin-menu-product-feed.php:115
 msgid "Integration with Google Services"
 msgstr ""
 
-#: includes/google/class-cr-admin-menu-product-feed.php:119
+#: includes/google/class-cr-admin-menu-product-feed.php:116
 msgid "Google"
 msgstr ""
 
-#: includes/google/class-cr-admin-menu-product-feed.php:184
+#: includes/google/class-cr-admin-menu-product-feed.php:181
 #: includes/google/class-cr-product-feed-reviews.php:31
 #: includes/reviews/class-cr-admin-menu-reviews.php:51
 #: includes/reviews/class-cr-admin-menu-reviews.php:52
@@ -790,11 +791,11 @@ msgstr ""
 msgid "Reviews"
 msgstr ""
 
-#: includes/google/class-cr-admin-menu-product-feed.php:192
+#: includes/google/class-cr-admin-menu-product-feed.php:189
 msgid "Select a category"
 msgstr ""
 
-#: includes/google/class-cr-admin-menu-product-feed.php:193
+#: includes/google/class-cr-admin-menu-product-feed.php:190
 msgid "Select a field"
 msgstr ""
 
@@ -2270,7 +2271,7 @@ msgstr ""
 
 #: includes/reminders/class-cr-local-forms.php:183
 #: includes/reviews/class-cr-custom-questions.php:450
-#: includes/reviews/class-cr-reviews.php:1669
+#: includes/reviews/class-cr-reviews.php:1700
 #: includes/settings/class-cr-settings-forms-rating.php:64
 #: includes/settings/class-cr-settings-forms-rating.php:161
 #: blocks/build/reviews-grid/index.js:12
@@ -3044,11 +3045,11 @@ msgstr ""
 msgid "Error: the file(s) is too large"
 msgstr ""
 
-#: includes/reviews/class-cr-reviews.php:1626
+#: includes/reviews/class-cr-reviews.php:1627
 msgid "Highest Rating"
 msgstr ""
 
-#: includes/reviews/class-cr-reviews.php:1629
+#: includes/reviews/class-cr-reviews.php:1630
 msgid "Lowest Rating"
 msgstr ""
 
@@ -3238,7 +3239,7 @@ msgstr ""
 
 #: includes/settings/class-cr-settings-discount-tiers.php:72
 #: includes/settings/class-cr-settings-email-template.php:591
-#: includes/settings/class-cr-settings-review-discount.php:740
+#: includes/settings/class-cr-settings-review-discount.php:773
 msgid "Photos/videos uploaded"
 msgstr ""
 
@@ -3409,7 +3410,6 @@ msgstr ""
 #: includes/settings/class-cr-settings-review-discount.php:42
 #: includes/settings/class-cr-settings-review-discount.php:90
 #: includes/settings/class-cr-settings-review-discount.php:96
-#: includes/settings/class-cr-settings-review-discount.php:644
 msgid "Review for Discount"
 msgstr ""
 
@@ -3618,7 +3618,7 @@ msgid "Email Color 2"
 msgstr ""
 
 #: includes/settings/class-cr-settings-email-template.php:594
-#: includes/settings/class-cr-settings-review-discount.php:743
+#: includes/settings/class-cr-settings-review-discount.php:776
 msgid "Simulate sending of different coupons depending on how many photos/videos a customer attached to their review. This field can be changed without saving changes."
 msgstr ""
 
@@ -4196,7 +4196,7 @@ msgid "Incentivized Review Badge"
 msgstr ""
 
 #: includes/settings/class-cr-settings-review-discount.php:106
-#: includes/settings/class-cr-settings-review-discount.php:836
+#: includes/settings/class-cr-settings-review-discount.php:869
 msgid "Display a badge next to reviews for which customers received discount coupons. Disclosing incentivized reviews helps build trust between customers and your business. It can also be a legal requirement in some jurisdictions."
 msgstr ""
 
@@ -4287,24 +4287,40 @@ msgid "A channel for sending discount coupons to customers. For example, by emai
 msgstr ""
 
 #. translators: %d is a special symbol that will be replaced with the count of uploaded media files
-#: includes/settings/class-cr-settings-review-discount.php:824
+#: includes/settings/class-cr-settings-review-discount.php:857
 msgid "Coupons are not enabled in any of the discount tiers for reviews with %d uploaded media file(s)"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-discount.php:830
+#: includes/settings/class-cr-settings-review-discount.php:863
 msgid "Please re-save settings and try again"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-discount.php:841
+#: includes/settings/class-cr-settings-review-discount.php:874
 msgid "Customize label of the incentivized review badge"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-discount.php:877
+#: includes/settings/class-cr-settings-review-discount.php:910
 msgid "Incentivized Badge Label"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-discount.php:897
+#: includes/settings/class-cr-settings-review-discount.php:930
 msgid "Reviewer received an unconditional discount coupon on future purchases"
+msgstr ""
+
+#: includes/settings/class-cr-settings-review-discount.php:939
+msgid "Aggregated review form"
+msgstr ""
+
+#: includes/settings/class-cr-settings-review-discount.php:940
+msgid "Reviews submitted via aggregated review forms"
+msgstr ""
+
+#: includes/settings/class-cr-settings-review-discount.php:944
+msgid "On-site review form"
+msgstr ""
+
+#: includes/settings/class-cr-settings-review-discount.php:945
+msgid "Reviews submitted via on-site review forms"
 msgstr ""
 
 #: includes/settings/class-cr-settings-review-extensions.php:37

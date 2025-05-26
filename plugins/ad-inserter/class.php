@@ -3675,8 +3675,32 @@ abstract class ai_CodeBlock extends ai_BaseCodeBlock {
         $version_times = array ();
         $version_scheduling = array ();
         $version_groups = array ();
+        $rotation_dynamic_blocks = $dynamic_blocks;
 
         foreach ($rotate_parameters as $index => $rotate_parameter) {
+          if (isset ($rotate_parameter ['rotate'])) {
+            $rotate_options = explode (',', str_replace (' ', '', strtolower ($rotate_parameter ['rotate'])));
+            foreach ($rotate_options as $rotate_option) {
+              switch ($rotate_option) {
+                case 'unique':
+                  $unique = true;
+                  break;
+                case 'server-side':
+                  $rotation_dynamic_blocks = AI_DYNAMIC_BLOCKS_SERVER_SIDE;
+                  break;
+                case 'server-side-w3tc':
+                  $rotation_dynamic_blocks = AI_DYNAMIC_BLOCKS_SERVER_SIDE_W3TC;
+                  break;
+                case 'client-side-show':
+                  $rotation_dynamic_blocks = AI_DYNAMIC_BLOCKS_CLIENT_SIDE_SHOW;
+                  break;
+                case 'client-side-insert':
+                  $rotation_dynamic_blocks = AI_DYNAMIC_BLOCKS_CLIENT_SIDE_INSERT;
+                  break;
+              }
+            }
+          }
+
           if ((isset ($rotate_parameter ['code']) && trim ($rotate_parameter ['code']) != '')) {
             switch (strtolower ($rotate_parameter ['code'])) {
               case 'prepend':
@@ -3761,7 +3785,7 @@ abstract class ai_CodeBlock extends ai_BaseCodeBlock {
               $version_scheduling []= $option_scheduling ? trim ($option ['scheduling']) : - 1;
             }
 
-          if (isset ($option ['rotate']) && strtolower ($option ['rotate']) == 'unique') $unique = true;
+//          if (isset ($option ['rotate']) && strtolower ($option ['rotate']) == 'unique') $unique = true;
         }
 
         if ($unique && !isset ($ai_wp_data [AI_ROTATION_SEED])) {
@@ -3855,11 +3879,17 @@ abstract class ai_CodeBlock extends ai_BaseCodeBlock {
         }
 
         if ($times) {
-          if ($dynamic_blocks != AI_DYNAMIC_BLOCKS_CLIENT_SIDE_SHOW && $dynamic_blocks != AI_DYNAMIC_BLOCKS_CLIENT_SIDE_INSERT) $dynamic_blocks = AI_DYNAMIC_BLOCKS_CLIENT_SIDE_SHOW;
+          if ($rotation_dynamic_blocks != AI_DYNAMIC_BLOCKS_CLIENT_SIDE_SHOW && $rotation_dynamic_blocks != AI_DYNAMIC_BLOCKS_CLIENT_SIDE_INSERT) $rotation_dynamic_blocks = AI_DYNAMIC_BLOCKS_CLIENT_SIDE_SHOW;
           $ai_wp_data [AI_CLIENT_SIDE_ROTATION] = true;
         }
 
-        $rotation_dynamic_blocks = $dynamic_blocks;
+        if ($rotation_dynamic_blocks == AI_DYNAMIC_BLOCKS_SERVER_SIDE_W3TC) {
+          if (!defined ('W3TC_DYNAMIC_SECURITY')) {
+            check_w3tc ();
+          }
+          if (defined ('AI_NO_W3TC')) $rotation_dynamic_blocks = AI_DYNAMIC_BLOCKS_SERVER_SIDE;
+        }
+
         if ($ai_wp_data [AI_FORCE_SERVERSIDE_CODE] || ($rotation_dynamic_blocks == AI_DYNAMIC_BLOCKS_CLIENT_SIDE_SHOW || $rotation_dynamic_blocks == AI_DYNAMIC_BLOCKS_CLIENT_SIDE_INSERT) && $ai_wp_data [AI_WP_AMP_PAGE]) $rotation_dynamic_blocks = AI_DYNAMIC_BLOCKS_SERVER_SIDE;
 
         $groups_marker = "#<span data-ai-groups=\"([^\"]+?)\"></span>#";

@@ -120,7 +120,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 			add_action( 'woocommerce_before_single_product', array( $this, 'custom_avatars' ) );
 			add_filter( 'cr_review_form_before_comment', array( 'CR_Custom_Questions', 'review_form_questions' ) );
 			add_action( 'wp_insert_comment', array( 'CR_Custom_Questions', 'submit_onsite_questions' ) );
-			add_action( 'comment_post', array( $this, 'clear_trustbadge_cache' ), 10, 3 );
+			add_action( 'comment_post', array( $this, 'action_after_review_added' ), 10, 3 );
 			add_action( 'cr_review_form_rating', array( 'CR_Custom_Questions', 'review_form_rating' ) );
 			// standard WooCommerce review template
 			add_action( 'woocommerce_review_after_comment_text', array( $this, 'display_incentivized_badge' ), 8 );
@@ -1308,7 +1308,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 				$output .= '<div class="cr-comment-image-top">';
 				if ( 1 === $pics_prepared[$i][4] ) {
 					// video
-					$output .= '<video class="cr-comment-image-top-item" preload="metadata" data-slide="' . $i . '" src="' . $pics_prepared[$i][0] . '"></video>';
+					$output .= '<video class="cr-comment-image-top-item" preload="metadata" data-slide="' . $i . '" src="' . $pics_prepared[$i][0] . '#t=0.1"></video>';
 					$output .= '<img class="cr-comment-videoicon" src="' . plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'img/video.svg" ';
 					$output .= 'alt="' . esc_attr( $pics_prepared[$i][5] ) . '">';
 				} else {
@@ -1635,7 +1635,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 		<?php
 	}
 
-	public function clear_trustbadge_cache( $comment_id, $comment_approved, $commentdata ) {
+	public function action_after_review_added( $comment_id, $comment_approved, $commentdata ) {
 		if (
 			$commentdata &&
 			is_array( $commentdata ) &&
@@ -1644,6 +1644,36 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 		) {
 			// clear store stats for Trust Badges
 			delete_option( 'ivole_store_stats' );
+
+			// check if a review for discount needs to be triggered
+			$review_meta = get_comment_meta( $comment_id, '', false );
+			$review_from_aggregated = false;
+			if ( $review_meta && is_array( $review_meta ) ) {
+				$review_meta = array_keys( $review_meta );
+				$aggregated_form_meta = array(
+					'ivole_order',
+					'ivole_order_priv',
+					'ivole_order_unve',
+					'ivole_order_locl'
+				);
+				if ( array_intersect( $review_meta, $aggregated_form_meta ) ) {
+					$review_from_aggregated = true;
+				}
+			}
+			if ( ! $review_from_aggregated ) {
+				$customer_email = isset( $commentdata['comment_author_email'] ) ? $commentdata['comment_author_email'] : '';
+				if ( $customer_email ) {
+					$ec = new CR_Email_Coupon( 0 );
+					$ec->maybe_send_coupon(
+						$comment_id, // id of the review
+						0, // count of media files uploaded with the review
+						'onsite', // scenario when a review is submitted via an on-site review form
+						$customer_email, // email of the reviewer
+						get_user_by( 'email', $customer_email ), // WordPress user ID
+						isset( $commentdata['comment_author'] ) ? $commentdata['comment_author'] : '' // name of the reviewer
+					);
+				}
+			}
 		}
 	}
 

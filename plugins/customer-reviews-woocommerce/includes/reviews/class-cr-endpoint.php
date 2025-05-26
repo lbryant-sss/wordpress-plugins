@@ -533,7 +533,7 @@ if ( ! class_exists( 'CR_Endpoint' ) ) :
 						return new WP_REST_Response( '', 200 );
 					}
 					// send a coupon to the customer
-					$coupon = CR_Discount_Tiers::get_coupon( $media_count_total );
+					$coupon = CR_Discount_Tiers::get_coupon( $media_count_total, 'aggregated' );
 					if ( $coupon['is_enabled'] ) {
 						//qTranslate integration
 						$lang = $order->get_meta( '_user_language', true );

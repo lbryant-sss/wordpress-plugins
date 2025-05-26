@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, tarekht, zenaulislam, aslamhasi
 Tags: elementor, elementor addons, elementor widgets, elementor templates, addons, elementor slider, elementor page builder, mega menu, addons for elementor, post grid, elements, header footer builder
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 2.8.7
+Stable tag: 2.8.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -528,6 +528,15 @@ Visit [HasThemes](https://hasthemes.com/) for more details about HTML, Shopify a
 
 
 == Changelog ==
+
+= Version 2.8.8 - Date: 2025-05-26 =
+* Added: [Seavia – Yacht Boat Rental Template Kit](https://library.wphtmega.com/seavia-yacht-boat-rental-template/).
+* Added: Select options Color option in Contact Form 7 Widget.
+* Added: Magnifier lens height/width, box shadow, and border radius options in the Image Magnifier Widget.
+* Fixed: Issue with the magnifier not working properly in the Image Magnifier Widget.
+* Fixed: Default SVG icon color and size issues in the Panel Slider Widget.
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
 
 = Version 2.8.7 - Date: 2025-05-08 =
 * Added: [Autivio – Automobile Services Template Kit](https://library.wphtmega.com/autivio-automobile-template).

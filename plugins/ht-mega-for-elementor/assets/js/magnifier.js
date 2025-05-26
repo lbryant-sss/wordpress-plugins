@@ -1,662 +1,343 @@
-/**
-* Magnifier.js is a Javascript library enabling magnifying glass effect on an images.
-*
-* Features
-*
-* Zoom in / out functionality using mouse wheel
-* Setting options via Javascript or data attributes
-* Magnified image can be displayed in the lens itself or outside of it in a wrapper
-* Attachment to multiple images with single call
-* Attachment of user defined functions for thumbnail entering, moving and leaving and image zooming events
-* Display loading text while the large image is being loaded, and switch to lens once its loaded
-*
-* Magnifier.js uses Event.js as a cross-browser event handling wrapper, which is available at
-* Github and JSClasses.org:
-*
-* Github - https://github.com/mark-rolich/Event.js
-* JS Classes - http://www.jsclasses.org/package/212-JavaScript-Handle-events-in-a-browser-independent-manner.html
-*
-* Works in Chrome, Firefox, Safari, IE 7, 8, 9 & 10.
-*
-* @author Mark Rolich <mark.rolich@gmail.com>
-*/
-;var Magnifier = function (evt, options) {
-    "use strict";
+/*!
+ * jQuery Magnify Plugin v2.3.3 by T. H. Doan (https://thdoan.github.io/magnify/)
+ * Based on http://thecodeplayer.com/walkthrough/magnifying-glass-for-images-using-jquery-and-css3
+ *
+ * jQuery Magnify by T. H. Doan is licensed under the MIT License.
+ * Read a copy of the license in the LICENSE file or at https://choosealicense.com/licenses/mit/
+ */
 
-    var gOptions = options || {},
-        curThumb = null,
-        curData = {
-            x: 0,
-            y: 0,
-            w: 0,
-            h: 0,
-            lensW: 0,
-            lensH: 0,
-            lensBgX: 0,
-            lensBgY: 0,
-            largeW: 0,
-            largeH: 0,
-            largeL: 0,
-            largeT: 0,
-            zoom: 2,
-            zoomMin: 1.1,
-            zoomMax: 5,
-            mode: 'outside',
-            largeWrapperId: (gOptions.largeWrapper !== undefined)
-                ? (gOptions.largeWrapper.id || null)
-                : null,
-            status: 0,
-            zoomAttached: false,
-            zoomable: (gOptions.zoomable !== undefined)
-                ? gOptions.zoomable
-                : false,
-            onthumbenter: (gOptions.onthumbenter !== undefined)
-                ? gOptions.onthumbenter
-                : null,
-            onthumbmove: (gOptions.onthumbmove !== undefined)
-                ? gOptions.onthumbmove
-                : null,
-            onthumbleave: (gOptions.onthumbleave !== undefined)
-                ? gOptions.onthumbleave
-                : null,
-            onzoom: (gOptions.onzoom !== undefined)
-                ? gOptions.onzoom
-                : null
-        },
-        pos = {
-            t: 0,
-            l: 0,
-            x: 0,
-            y: 0
-        },
-        gId = 0,
-        status = 0,
-        curIdx = '',
-        curLens = null,
-        curLarge = null,
-        gZoom = (gOptions.zoom !== undefined)
-                    ? gOptions.zoom
-                    : curData.zoom,
-        gZoomMin = (gOptions.zoomMin !== undefined)
-                    ? gOptions.zoomMin
-                    : curData.zoomMin,
-        gZoomMax = (gOptions.zoomMax !== undefined)
-                    ? gOptions.zoomMax
-                    : curData.zoomMax,
-        gMode = gOptions.mode || curData.mode,
-        data = {},
-        inBounds = false,
-        isOverThumb = 0,
-        getElementsByClass = function (className) {
-            var list = [],
-                elements = null,
-                len = 0,
-                pattern = '',
-                i = 0,
-                j = 0;
-
-            if (document.getElementsByClassName) {
-                list = document.getElementsByClassName(className);
-            } else {
-                elements = document.getElementsByTagName('*');
-                len = elements.length;
-                pattern = new RegExp("(^|\\s)" + className + "(\\s|$)");
-
-                for (i, j; i < len; i += 1) {
-                    if (pattern.test(elements[i].className)) {
-                        list[j] = elements[i];
-                        j += 1;
-                    }
-                }
-            }
-
-            return list;
-        },
-        $ = function (selector) {
-            var idx = '',
-                type = selector.charAt(0),
-                result = null;
-
-            if (type === '#' || type === '.') {
-                idx = selector.substr(1, selector.length);
-            }
-
-            if (idx !== '') {
-                switch (type) {
-                case '#':
-                    result = document.getElementById(idx);
-                    break;
-                case '.':
-                    result = getElementsByClass(idx);
-                    break;
-                }
-            }
-
-            return result;
-        },
-        createLens = function (thumb, idx) {
-            var lens = document.createElement('div');
-
-            lens.id = idx + '-lens';
-            lens.className = 'magnifier-loader';
-
-            thumb.parentNode.appendChild(lens);
-        },
-        updateLensOnZoom = function () {
-            curLens.style.left = pos.l + 'px';
-            curLens.style.top = pos.t + 'px';
-            curLens.style.width = curData.lensW + 'px';
-            curLens.style.height = curData.lensH + 'px';
-            curLens.style.backgroundPosition = '-' + curData.lensBgX + 'px -' +
-                                                curData.lensBgY + 'px';
-
-            curLarge.style.left = '-' + curData.largeL + 'px';
-            curLarge.style.top = '-' + curData.largeT + 'px';
-            curLarge.style.width = curData.largeW + 'px';
-            curLarge.style.height = curData.largeH + 'px';
-        },
-        updateLensOnLoad = function (idx, thumb, large, largeWrapper) {
-            var lens = $('#' + idx + '-lens'),
-                textWrapper = null;
-
-            if (data[idx].status === 1) {
-                textWrapper = document.createElement('div');
-                textWrapper.className = 'magnifier-loader-text';
-                lens.className = 'magnifier-loader hidden';
-
-                textWrapper.appendChild(document.createTextNode('Loading...'));
-                lens.appendChild(textWrapper);
-            } else if (data[idx].status === 2) {
-                lens.className = 'magnifier-lens hidden';
-                lens.removeChild(lens.childNodes[0]);
-                lens.style.background = 'url(' + thumb.src + ') no-repeat 0 0 scroll';
-
-                large.id = idx + '-large';
-                large.style.width = data[idx].largeW + 'px';
-                large.style.height = data[idx].largeH + 'px';
-                large.className = 'magnifier-large hidden';
-
-                if (data[idx].mode === 'inside') {
-                    lens.appendChild(large);
-                } else {
-                    largeWrapper.appendChild(large);
-                }
-            }
-
-            lens.style.width = data[idx].lensW + 'px';
-            lens.style.height = data[idx].lensH + 'px';
-        },
-        getMousePos = function () {
-            var xPos = pos.x - curData.x,
-                yPos = pos.y - curData.y,
-                t    = 0,
-                l    = 0;
-
-            inBounds = (
-                xPos < 0 ||
-                yPos < 0 ||
-                xPos > curData.w ||
-                yPos > curData.h
-            )
-                ? false
-                : true;
-
-            l = xPos - (curData.lensW / 2);
-            t = yPos - (curData.lensH / 2);
-
-            if (curData.mode !== 'inside') {
-                if (xPos < curData.lensW / 2) {
-                    l = 0;
-                }
-
-                if (yPos < curData.lensH / 2) {
-                    t = 0;
-                }
-
-                if (xPos - curData.w + (curData.lensW / 2) > 0) {
-                    l = curData.w - (curData.lensW + 2);
-                }
-
-                if (yPos - curData.h + (curData.lensH / 2) > 0) {
-                    t = curData.h - (curData.lensH + 2);
-                }
-            }
-
-            pos.l = Math.round(l);
-            pos.t = Math.round(t);
-
-            curData.lensBgX = pos.l + 1;
-            curData.lensBgY = pos.t + 1;
-
-            if (curData.mode === 'inside') {
-                curData.largeL = Math.round(xPos * (curData.zoom - (curData.lensW / curData.w)));
-                curData.largeT = Math.round(yPos * (curData.zoom - (curData.lensH / curData.h)));
-            } else {
-                curData.largeL = Math.round(curData.lensBgX * curData.zoom * (curData.largeWrapperW / curData.w));
-                curData.largeT = Math.round(curData.lensBgY * curData.zoom * (curData.largeWrapperH / curData.h));
-            }
-        },
-        zoomInOut = function (e) {
-            var delta = (e.wheelDelta > 0 || e.detail < 0) ? 0.1 : -0.1,
-                handler = curData.onzoom,
-                multiplier = 1,
-                w = 0,
-                h = 0;
-
-            if (e.preventDefault) {
+(function($) {
+    $.fn.magnify = function(oOptions) {
+      // Default options
+      oOptions = $.extend({
+        'src': '',
+        'speed': 100,
+        'timeout': -1,
+        'touchBottomOffset': 0,
+        'finalWidth': null,
+        'finalHeight': null,
+        'magnifiedWidth': null,
+        'magnifiedHeight': null,
+        'limitBounds': false,
+        'mobileCloseEvent': 'touchstart',
+        'afterLoad': function(){}
+      }, oOptions);
+  
+      var $that = this, // Preserve scope
+        $html = $('html'),
+  
+        // Initiate
+        init = function(el) {
+          var $image = $(el),
+            $anchor = $image.closest('a'),
+            oDataAttr = {};
+  
+          // Get data attributes
+          for (var i in oOptions) {
+            oDataAttr[i] = $image.attr('data-magnify-' + i.toLowerCase());
+          }
+  
+          // Disable zooming if no valid large image source
+          var sZoomSrc = oDataAttr['src'] || oOptions['src'] || $anchor.attr('href') || '';
+          if (!sZoomSrc) return;
+  
+          var $container,
+            $lens,
+            nImageWidth,
+            nImageHeight,
+            nMagnifiedWidth,
+            nMagnifiedHeight,
+            nLensWidth,
+            nLensHeight,
+            nBoundX = 0,
+            nBoundY = 0,
+            nPosX, nPosY,     // Absolute cursor position
+            nX, nY,           // Relative cursor position
+            oContainerOffset, // Relative to document
+            oImageOffset,     // Relative to container
+            // Get true offsets
+            getOffset = function() {
+              var o = $container.offset();
+              // Store offsets from container border to image inside
+              // NOTE: .offset() does NOT take into consideration image border and padding.
+              oImageOffset = {
+                'top': ($image.offset().top-o.top) + parseInt($image.css('border-top-width')) + parseInt($image.css('padding-top')),
+                'left': ($image.offset().left-o.left) + parseInt($image.css('border-left-width')) + parseInt($image.css('padding-left'))
+              };
+              o.top += oImageOffset['top'];
+              o.left += oImageOffset['left'];
+              return o;
+            },
+            // Hide the lens
+            hideLens = function() {
+              if ($lens.is(':visible')) $lens.fadeOut(oOptions['speed'], function() {
+                $html.removeClass('magnifying').trigger('magnifyend'); // Reset overflow-x
+              });
+            },
+            moveLens = function(e) {
+              // Reinitialize if image initially hidden
+              if (!nImageHeight) {
+                refresh();
+                return;
+              }
+              if (e) {
                 e.preventDefault();
-            }
-
-            e.returnValue = false;
-
-            curData.zoom = Math.round((curData.zoom + delta) * 10) / 10;
-
-            if (curData.zoom >= curData.zoomMax) {
-                curData.zoom = curData.zoomMax;
-            } else if (curData.zoom >= curData.zoomMin) {
-                curData.lensW = Math.round(curData.w / curData.zoom);
-                curData.lensH = Math.round(curData.h / curData.zoom);
-
-                if (curData.mode === 'inside') {
-                    w = curData.w;
-                    h = curData.h;
-                } else {
-                    w = curData.largeWrapperW;
-                    h = curData.largeWrapperH;
-                    multiplier = curData.largeWrapperW / curData.w;
-                }
-
-                curData.largeW = Math.round(curData.zoom * w);
-                curData.largeH = Math.round(curData.zoom * h);
-
-                getMousePos();
-                updateLensOnZoom();
-
-                if (handler !== null) {
-                    handler({
-                        thumb: curThumb,
-                        lens: curLens,
-                        large: curLarge,
-                        x: pos.x,
-                        y: pos.y,
-                        zoom: Math.round(curData.zoom * multiplier * 10) / 10,
-                        w: curData.lensW,
-                        h: curData.lensH
-                    });
-                }
-            } else {
-                curData.zoom = curData.zoomMin;
-            }
-        },
-        onThumbEnter = function () {
-            curData = data[curIdx];
-            curLens = $('#' + curIdx + '-lens');
-
-            if (curData.status === 2) {
-                curLens.className = 'magnifier-lens';
-
-                if (curData.zoomAttached === false) {
-                    if (curData.zoomable !== undefined && curData.zoomable === true) {
-                        evt.attach('mousewheel', curLens, zoomInOut);
-
-                        if (window.addEventListener) {
-                            curLens.addEventListener('DOMMouseScroll', function (e) {
-                                zoomInOut(e);
-                            });
-                        }
-                    }
-
-                    curData.zoomAttached = true;
-                }
-
-                curLarge = $('#' + curIdx + '-large');
-                curLarge.className = 'magnifier-large';
-            } else if (curData.status === 1) {
-                curLens.className = 'magnifier-loader';
-            }
-        },
-        onThumbLeave = function () {
-            if (curData.status > 0) {
-                var handler = curData.onthumbleave;
-
-                if (handler !== null) {
-                    handler({
-                        thumb: curThumb,
-                        lens: curLens,
-                        large: curLarge,
-                        x: pos.x,
-                        y: pos.y
-                    });
-                }
-
-                if (curLens.className.indexOf('hidden') === -1) {
-                    curLens.className += ' hidden';
-                    curThumb.className = curData.thumbCssClass;
-
-                    if (curLarge !== null) {
-                        curLarge.className += ' hidden';
-                    }
-                }
-            }
-        },
-        move = function () {
-            if (status !== curData.status) {
-                onThumbEnter();
-            }
-
-            if (curData.status > 0) {
-                curThumb.className = curData.thumbCssClass + ' opaque';
-
-                if (curData.status === 1) {
-                    curLens.className = 'magnifier-loader';
-                } else if (curData.status === 2) {
-                    curLens.className = 'magnifier-lens';
-                    curLarge.className = 'magnifier-large';
-                    curLarge.style.left = '-' + curData.largeL + 'px';
-                    curLarge.style.top = '-' + curData.largeT + 'px';
-                }
-
-                curLens.style.left = pos.l + 'px';
-                curLens.style.top = pos.t + 'px';
-                curLens.style.backgroundPosition = '-' +
-                                                curData.lensBgX + 'px -' +
-                                                curData.lensBgY + 'px';
-
-                var handler = curData.onthumbmove;
-
-                if (handler !== null) {
-                    handler({
-                        thumb: curThumb,
-                        lens: curLens,
-                        large: curLarge,
-                        x: pos.x,
-                        y: pos.y
-                    });
-                }
-            }
-
-            status = curData.status;
-        },
-        setThumbData = function (thumb, thumbData) {
-            var thumbBounds = thumb.getBoundingClientRect(),
-                w = 0,
-                h = 0;
-
-            thumbData.x = thumbBounds.left;
-            thumbData.y = thumbBounds.top;
-            thumbData.w = Math.round(thumbBounds.right - thumbData.x);
-            thumbData.h = Math.round(thumbBounds.bottom - thumbData.y);
-
-            thumbData.lensW = Math.round(thumbData.w / thumbData.zoom);
-            thumbData.lensH = Math.round(thumbData.h / thumbData.zoom);
-
-            if (thumbData.mode === 'inside') {
-                w = thumbData.w;
-                h = thumbData.h;
-            } else {
-                w = thumbData.largeWrapperW;
-                h = thumbData.largeWrapperH;
-            }
-
-            thumbData.largeW = Math.round(thumbData.zoom * w);
-            thumbData.largeH = Math.round(thumbData.zoom * h);
-        };
-
-    this.attach = function (options) {
-        if (options.thumb === undefined) {
-            throw {
-                name: 'Magnifier error',
-                message: 'Please set thumbnail',
-                toString: function () {return this.name + ": " + this.message; }
-            };
-        }
-
-        var thumb = $(options.thumb),
-            i = 0;
-
-        if (thumb.length !== undefined) {
-            for (i; i < thumb.length; i += 1) {
-                options.thumb = thumb[i];
-                this.set(options);
-            }
-        } else {
-            options.thumb = thumb;
-            this.set(options);
-        }
-    };
-
-    this.setThumb = function (thumb) {
-        curThumb = thumb;
-    };
-
-    this.set = function (options) {
-        if (data[options.thumb.id] !== undefined) {
-            curThumb = options.thumb;
-            return false;
-        }
-
-        var thumbObj    = new Image(),
-            largeObj    = new Image(),
-            thumb       = options.thumb,
-            idx         = thumb.id,
-            zoomable    = null,
-            largeUrl    = null,
-            largeWrapper = (
-                $('#' + options.largeWrapper) ||
-                $('#' + thumb.getAttribute('data-large-img-wrapper')) ||
-                $('#' + curData.largeWrapperId)
-            ),
-            zoom = options.zoom || thumb.getAttribute('data-zoom') || gZoom,
-            zoomMin = options.zoomMin || thumb.getAttribute('data-zoom-min') || gZoomMin,
-            zoomMax = options.zoomMax || thumb.getAttribute('data-zoom-max') || gZoomMax,
-            mode = options.mode || thumb.getAttribute('data-mode') || gMode,
-            onthumbenter = (options.onthumbenter !== undefined)
-                        ? options.onthumbenter
-                        : curData.onthumbenter,
-            onthumbleave = (options.onthumbleave !== undefined)
-                        ? options.onthumbleave
-                        : curData.onthumbleave,
-            onthumbmove = (options.onthumbmove !== undefined)
-                        ? options.onthumbmove
-                        : curData.onthumbmove,
-            onzoom = (options.onzoom !== undefined)
-                        ? options.onzoom
-                        : curData.onzoom;
-
-        if (options.large === undefined) {
-            largeUrl = (options.thumb.getAttribute('data-large-img-url') !== null)
-                            ? options.thumb.getAttribute('data-large-img-url')
-                            : options.thumb.src;
-        } else {
-            largeUrl = options.large;
-        }
-
-        if (largeWrapper === null && mode !== 'inside') {
-            throw {
-                name: 'Magnifier error',
-                message: 'Please specify large image wrapper DOM element',
-                toString: function () {return this.name + ": " + this.message; }
-            };
-        }
-
-        if (options.zoomable !== undefined) {
-            zoomable = options.zoomable;
-        } else if (thumb.getAttribute('data-zoomable') !== null) {
-            zoomable = (thumb.getAttribute('data-zoomable') === 'true');
-        } else if (curData.zoomable !== undefined) {
-            zoomable = curData.zoomable;
-        }
-
-        if (thumb.id === '') {
-            idx = thumb.id = 'magnifier-item-' + gId;
-            gId += 1;
-        }
-
-        createLens(thumb, idx);
-
-        data[idx] = {
-            zoom: zoom,
-            zoomMin: zoomMin,
-            zoomMax: zoomMax,
-            mode: mode,
-            zoomable: zoomable,
-            thumbCssClass: thumb.className,
-            zoomAttached: false,
-            status: 0,
-            largeUrl: largeUrl,
-            largeWrapperId: mode === 'outside' ? largeWrapper.id : null,
-            largeWrapperW: mode === 'outside' ? largeWrapper.offsetWidth : null,
-            largeWrapperH: mode === 'outside' ? largeWrapper.offsetHeight : null,
-            onzoom: onzoom,
-            onthumbenter: onthumbenter,
-            onthumbleave: onthumbleave,
-            onthumbmove: onthumbmove
-        };
-
-        evt.attach('mouseover', thumb, function (e, src) {
-            if (curData.status !== 0) {
-                onThumbLeave();
-            }
-
-            curIdx = src.id;
-            curThumb = src;
-
-            onThumbEnter(src);
-
-            setThumbData(curThumb, curData);
-
-            pos.x = e.clientX;
-            pos.y = e.clientY;
-
-            getMousePos();
-            move();
-
-            var handler = curData.onthumbenter;
-
-            if (handler !== null) {
-                handler({
-                    thumb: curThumb,
-                    lens: curLens,
-                    large: curLarge,
-                    x: pos.x,
-                    y: pos.y
+                // Save last coordinates in case we need to call this function directly (required when
+                // updating magnifiedWidth/magnifiedHeight while the lens is visible).
+                nPosX = e.pageX || e.originalEvent.touches[0].pageX;
+                nPosY = e.pageY || e.originalEvent.touches[0].pageY;
+                $image.data('lastPos', {
+                  'x': nPosX,
+                  'y': nPosY
                 });
-            }
-        }, false);
-
-        evt.attach('mousemove', thumb, function (e, src) {
-            isOverThumb = 1;
-        });
-
-        evt.attach('load', thumbObj, function () {
-            data[idx].status = 1;
-
-            setThumbData(thumb, data[idx]);
-            updateLensOnLoad(idx);
-
-            evt.attach('load', largeObj, function () {
-                data[idx].status = 2;
-                updateLensOnLoad(idx, thumb, largeObj, largeWrapper);
-            });
-
-            largeObj.src = data[idx].largeUrl;
-        });
-
-        thumbObj.src = thumb.src;
-    };
-
-    evt.attach('mousemove', document, function (e) {
-        pos.x = e.clientX;
-        pos.y = e.clientY;
-
-        getMousePos();
-
-        if (inBounds === true) {
-            move();
-        } else {
-            if (isOverThumb !== 0) {
-                onThumbLeave();
-            }
-
-            isOverThumb = 0;
-        }
-    }, false);
-
-    evt.attach('scroll', window, function () {
-        if (curThumb !== null) {
-            setThumbData(curThumb, curData);
-        }
-    });
-};
-
-
-/**
-* Unifies event handling across browsers
-*
-* - Allows registering and unregistering of event handlers
-* - Injects event object and involved DOM element to listener
-*
-* @author Mark Rolich <mark.rolich@gmail.com>
-*/
-var Event = function () {
-    "use strict";
-    this.attach = function (evtName, element, listener, capture) {
-        var evt         = '',
-            useCapture  = (capture === undefined) ? true : capture,
-            handler     = null;
-
-        if (window.addEventListener === undefined) {
-            evt = 'on' + evtName;
-            handler = function (evt, listener) {
-                element.attachEvent(evt, listener);
-                return listener;
+              } else {
+                nPosX = $image.data('lastPos').x;
+                nPosY = $image.data('lastPos').y;
+              }
+              // x/y coordinates of the mouse pointer or touch point. This is the position of
+              // .magnify relative to the document.
+              //
+              // We deduct the positions of .magnify from the mouse or touch positions relative to
+              // the document to get the mouse or touch positions relative to the container.
+              nX = nPosX - oContainerOffset['left'],
+              nY = (nPosY - oContainerOffset['top']) - oOptions['touchBottomOffset'];
+              // Toggle magnifying lens
+              if (!$lens.is(':animated')) {
+                if (nX>nBoundX && nX<nImageWidth-nBoundX && nY>nBoundY && nY<nImageHeight-nBoundY) {
+                  if ($lens.is(':hidden')) {
+                    $html.addClass('magnifying').trigger('magnifystart'); // Hide overflow-x while zooming
+                    $lens.fadeIn(oOptions['speed']);
+                  }
+                } else {
+                  hideLens();
+                }
+              }
+              if ($lens.is(':visible')) {
+                // Move the magnifying lens with the mouse
+                var sBgPos = '';
+                if (nMagnifiedWidth && nMagnifiedHeight) {
+                  // Change the background position of .magnify-lens according to the position of
+                  // the mouse over the .magnify-image image. This allows us to get the ratio of
+                  // the pixel under the mouse pointer with respect to the image and use that to
+                  // position the large image inside the magnifying lens.
+                  var nRatioX = -Math.round(nX/nImageWidth*nMagnifiedWidth-nLensWidth/2),
+                    nRatioY = -Math.round(nY/nImageHeight*nMagnifiedHeight-nLensHeight/2);
+                  if (oOptions['limitBounds']) {
+                    // Enforce bounds to ensure only image is visible in lens
+                    var nBoundRight = -Math.round((nImageWidth-nBoundX)/nImageWidth*nMagnifiedWidth-nLensWidth/2),
+                      nBoundBottom = -Math.round((nImageHeight-nBoundY)/nImageHeight*nMagnifiedHeight-nLensHeight/2);
+                    // Left and right edges
+                    if (nRatioX>0) nRatioX = 0;
+                    else if (nRatioX<nBoundRight) nRatioX = nBoundRight;
+                    // Top and bottom edges
+                    if (nRatioY>0) nRatioY = 0;
+                    else if (nRatioY<nBoundBottom) nRatioY = nBoundBottom;
+                  }
+                  sBgPos = nRatioX + 'px ' + nRatioY + 'px';
+                }
+                // Now the lens moves with the mouse. The logic is to deduct half of the lens's
+                // width and height from the mouse coordinates to place it with its center at the
+                // mouse coordinates. If you hover on the image now, you should see the magnifying
+                // lens in action.
+                $lens.css({
+                  'top': Math.round(nY-nLensHeight/2) + oImageOffset['top'] + 'px',
+                  'left': Math.round(nX-nLensWidth/2) + oImageOffset['left'] + 'px',
+                  'background-position': sBgPos
+                });
+              }
             };
-        } else {
-            evt = evtName;
-            handler = function (evt, listener, useCapture) {
-                element.addEventListener(evt, listener, useCapture);
-                return listener;
-            };
-        }
-
-        return handler.apply(element, [evt, function (ev) {
-            var e   = ev || event,
-                src = e.srcElement || e.target;
-
-            listener(e, src);
-        }, useCapture]);
+  
+          // Data attributes have precedence over options object
+          if (!isNaN(+oDataAttr['speed'])) oOptions['speed'] = +oDataAttr['speed'];
+          if (!isNaN(+oDataAttr['timeout'])) oOptions['timeout'] = +oDataAttr['timeout'];
+          if (!isNaN(+oDataAttr['finalWidth'])) oOptions['finalWidth'] = +oDataAttr['finalWidth'];
+          if (!isNaN(+oDataAttr['finalHeight'])) oOptions['finalHeight'] = +oDataAttr['finalHeight'];
+          if (!isNaN(+oDataAttr['magnifiedWidth'])) oOptions['magnifiedWidth'] = +oDataAttr['magnifiedWidth'];
+          if (!isNaN(+oDataAttr['magnifiedHeight'])) oOptions['magnifiedHeight'] = +oDataAttr['magnifiedHeight'];
+          if (oDataAttr['limitBounds']==='true') oOptions['limitBounds'] = true;
+          if (typeof window[oDataAttr['afterLoad']]==='function') oOptions.afterLoad = window[oDataAttr['afterLoad']];
+  
+          // Implement touch point bottom offset only on mobile devices
+          if (/\b(Android|BlackBerry|IEMobile|iPad|iPhone|Mobile|Opera Mini)\b/.test(navigator.userAgent)) {
+            if (!isNaN(+oDataAttr['touchBottomOffset'])) oOptions['touchBottomOffset'] = +oDataAttr['touchBottomOffset'];
+          } else {
+            oOptions['touchBottomOffset'] = 0;
+          }
+  
+          // Save any inline styles for resetting
+          $image.data('originalStyle', $image.attr('style'));
+  
+          // Activate magnification:
+          // 1. Try to get large image dimensions
+          // 2. Proceed only if able to get large image dimensions OK
+  
+          // [1] Calculate the native (magnified) image dimensions. The zoomed version is only shown
+          // after the native dimensions are available. To get the actual dimensions we have to create
+          // this image object.
+          var elZoomImage = new Image();
+          $(elZoomImage).on({
+            'load': function() {
+              // [2] Got image dimensions OK.
+  
+              // Fix overlap bug at the edges during magnification
+              $image.css('display', 'block');
+              // Create container div if necessary
+              if (!$image.parent('.magnify').length) {
+                $image.wrap('<div class="magnify"></div>');
+              }
+              $container = $image.parent('.magnify');
+              // Create the magnifying lens div if necessary
+              if ($image.prev('.magnify-lens').length) {
+                $container.children('.magnify-lens').css('background-image', 'url(\'' + sZoomSrc + '\')');
+              } else {
+                $image.before('<div class="magnify-lens loading" style="background:url(\'' + sZoomSrc + '\') 0 0 no-repeat"></div>');
+              }
+              $lens = $container.children('.magnify-lens');
+              // Remove the "Loading..." text
+              $lens.removeClass('loading');
+              // Cache dimensions and offsets for improved performance
+              // NOTE: This code is inside the load() function, which is important. The width and
+              // height of the object would return 0 if accessed before the image is fully loaded.
+              nImageWidth = oOptions['finalWidth'] || $image.width();
+              nImageHeight = oOptions['finalHeight'] || $image.height();
+              nMagnifiedWidth = oOptions['magnifiedWidth'] || elZoomImage.width;
+              nMagnifiedHeight = oOptions['magnifiedHeight'] || elZoomImage.height;
+              nLensWidth = $lens.width();
+              nLensHeight = $lens.height();
+              oContainerOffset = getOffset(); // Required by refresh()
+              // Set zoom boundaries
+              if (oOptions['limitBounds']) {
+                nBoundX = (nLensWidth/2) / (nMagnifiedWidth/nImageWidth);
+                nBoundY = (nLensHeight/2) / (nMagnifiedHeight/nImageHeight);
+              }
+              // Enforce non-native large image size?
+              if (nMagnifiedWidth!==elZoomImage.width || nMagnifiedHeight!==elZoomImage.height) {
+                $lens.css('background-size', nMagnifiedWidth + 'px ' + nMagnifiedHeight + 'px');
+              }
+              // Store zoom dimensions for mobile plugin
+              $image.data('zoomSize', {
+                'width': nMagnifiedWidth,
+                'height': nMagnifiedHeight
+              });
+              // Store mobile close event for mobile plugin
+              $container.data('mobileCloseEvent', oDataAttr['mobileCloseEvent'] || oOptions['mobileCloseEvent']);
+              // Clean up
+              elZoomImage = null;
+              // Execute callback
+              oOptions.afterLoad();
+              // Simulate a lens move to update positioning if magnifiedWidth/magnifiedHeight is
+              // updated while the lens is visible
+              if ($lens.is(':visible')) moveLens();
+              // Handle mouse movements
+              $container.off().on({
+                'mousemove touchmove': moveLens,
+                'mouseenter': function() {
+                  // Need to update offsets here to support accordions
+                  oContainerOffset = getOffset();
+                },
+                'mouseleave': hideLens
+              });
+  
+              // Prevent magnifying lens from getting "stuck"
+              if (oOptions['timeout']>=0) {
+                $container.on('touchend', function() {
+                  setTimeout(hideLens, oOptions['timeout']);
+                });
+              }
+              // Ensure lens is closed when tapping outside of it
+              $('body').not($container).on('touchstart', hideLens);
+  
+              // Support image map click-throughs while zooming
+              var sUsemap = $image.attr('usemap');
+              if (sUsemap) {
+                var $map = $('map[name=' + sUsemap.slice(1) + ']');
+                // Image map needs to be on the same DOM level as image source
+                $image.after($map);
+                $container.click(function(e) {
+                  // Trigger click on image below lens at current cursor position
+                  if (e.clientX || e.clientY) {
+                    $lens.hide();
+                    var elPoint = document.elementFromPoint(
+                        e.clientX || e.originalEvent.touches[0].clientX,
+                        e.clientY || e.originalEvent.touches[0].clientY
+                      );
+                    if (elPoint.nodeName==='AREA') {
+                      elPoint.click();
+                    } else {
+                      // Workaround for buggy implementation of elementFromPoint()
+                      // See https://bugzilla.mozilla.org/show_bug.cgi?id=1227469
+                      $('area', $map).each(function() {
+                        var a = $(this).attr('coords').split(',');
+                        if (nX>=a[0] && nX<=a[2] && nY>=a[1] && nY<=a[3]) {
+                          this.click();
+                          return false;
+                        }
+                      });
+                    }
+                  }
+                });
+              }
+  
+              if ($anchor.length) {
+                // Make parent anchor inline-block to have correct dimensions
+                $anchor.css('display', 'inline-block');
+                // Disable parent anchor if it's sourcing the large image
+                if ($anchor.attr('href') && !(oDataAttr['src'] || oOptions['src'])) {
+                  $anchor.click(function(e) {
+                    e.preventDefault();
+                  });
+                }
+              }
+  
+            },
+            'error': function() {
+              // Clean up
+              elZoomImage = null;
+            }
+          });
+  
+          elZoomImage.src = sZoomSrc;
+        }, // END init()
+  
+        // Simple debounce
+        nTimer = 0,
+        refresh = function() {
+          clearTimeout(nTimer);
+          nTimer = setTimeout(function() {
+            $that.destroy();
+            $that.magnify(oOptions);
+          }, 100);
+        };
+  
+      /**
+       * Public Methods
+       */
+  
+      // Turn off zoom and reset to original state
+      this.destroy = function() {
+        this.each(function() {
+          var $this = $(this),
+            $lens = $this.prev('div.magnify-lens'),
+            sStyle = $this.data('originalStyle');
+          if ($this.parent('div.magnify').length && $lens.length) {
+            if (sStyle) $this.attr('style', sStyle);
+            else $this.removeAttr('style');
+            $this.unwrap();
+            $lens.remove();
+          }
+        });
+        // Unregister event handler
+        $(window).off('resize', refresh);
+        return $that;
+      }
+  
+      // Handle window resizing
+      $(window).resize(refresh);
+  
+      return this.each(function() {
+        // Initiate magnification powers
+        init(this);
+      });
+  
     };
-
-    this.detach = function (evtName, element, listener, capture) {
-        var evt         = '',
-            useCapture  = (capture === undefined) ? true : capture;
-
-        if (window.removeEventListener === undefined) {
-            evt = 'on' + evtName;
-            element.detachEvent(evt, listener);
-        } else {
-            evt = evtName;
-            element.removeEventListener(evt, listener, useCapture);
-        }
-    };
-
-    this.stop = function (evt) {
-        evt.cancelBubble = true;
-
-        if (evt.stopPropagation) {
-            evt.stopPropagation();
-        }
-    };
-
-    this.prevent = function (evt) {
-        if (evt.preventDefault) {
-            evt.preventDefault();
-        } else {
-            evt.returnValue = false;
-        }
-    };
-};
-
-// Create object
-var evt = new Event(),
-m = new Magnifier(evt);
+  }(jQuery));

@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 5.77.1
+Stable tag: 5.78.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -233,6 +233,11 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.78.0 =
+* New feature: an option to send discount coupons to customers who posted reviews using on-site review forms
+* Improvement: additional information in error messages about invalid phone numbers for WhatsApp review invitations
+* Improvement: visibility of video thumbnails on iPhones in the 'Customer Images' section
+* Bug fix: a message with information about the progress of  XML feeds creation was not displayed in some scenarios
 = 5.77.1 =
 * Improvement: an error message when third-party plugins interfere with submission of reviews via on-site review forms
 * Improvement: removal of the 'plugin_dir_url' function from the template files to prevent an issue with broken links when templates are overridden in a child theme

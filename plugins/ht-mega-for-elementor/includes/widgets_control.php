@@ -43,7 +43,20 @@ class HTMega_Widgets_Control{
         );
     }
     public function init_widgets(){
-            
+        // Only check if Elementor is loaded
+        if (!did_action('elementor/loaded')) {
+            return;
+        }
+
+        // Check maintenance mode
+        if (!is_admin()) {
+            $maintenance_mode = get_option('elementor_maintenance_mode_mode');
+            if ($maintenance_mode && $maintenance_mode !== 'disabled' && !\Elementor\Plugin::$instance->editor->is_edit_mode()) {
+                if (!current_user_can('edit_posts')) {
+                    return;
+                }
+            }
+        }
         $widget_list = $this->get_widget_list();
         $widgets_manager = \Elementor\Plugin::instance()->widgets_manager;
         //Get registered settings
