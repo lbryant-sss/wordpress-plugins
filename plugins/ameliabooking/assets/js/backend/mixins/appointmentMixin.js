@@ -136,6 +136,7 @@ export default {
         dateTimeSlots: [],
         calendarTimeSlots: [],
         occupiedTimeSlots: [],
+        bookedTimeSlots: {},
         loadedDates: {},
         extrasTotalPrice: 0,
         serviceTotalPrice: 0,

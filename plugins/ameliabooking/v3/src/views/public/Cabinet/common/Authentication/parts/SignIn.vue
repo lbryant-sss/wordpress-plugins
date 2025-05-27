@@ -35,6 +35,24 @@
       </div>
     </div>
 
+    <!-- Social Buttons -->
+    <div v-if="(settings.socialLogin.googleLoginEnabled && settings.general.googleClientId) || (settings.socialLogin.facebookLoginEnabled && settings.socialLogin.facebookCredentialsEnabled)">
+      <div class="am-asi__social-wrapper">
+        <am-social-button
+            :provider="socialProvider"
+            @social-action="onSignupSocial"
+        />
+      </div>
+
+      <!-- Social Divider -->
+      <div class="am-asi__social-divider">
+        <span class="par-sm">{{ amLabels.or_enter_details_below }}</span>
+      </div>
+      <!-- /Social Divider -->
+
+    </div>
+    <!-- /Social Buttons -->
+
     <el-form
       ref="authFormRef"
       :model="infoFormData"
@@ -90,6 +108,7 @@ import {
   markRaw,
   onBeforeMount,
 } from 'vue'
+import VueAuthenticate from 'vue-authenticate'
 
 // * Import from Vuex
 import { useStore } from 'vuex'
@@ -103,6 +122,7 @@ import { useResponsiveClass } from '../../../../../../assets/js/common/responsiv
 import { useColorTransparency } from '../../../../../../assets/js/common/colorManipulation'
 import { useRemoveUrlParameter, useUrlQueryParams, useUrlQueryParam } from '../../../../../../assets/js/common/helper'
 import { useDisableAuthorizationHeader } from '../../../../../../assets/js/public/panel'
+import { SocialAuthOptions } from '../../../../../../assets/js/admin/socialAuthOptions'
 import {
   useParsedCustomPricing,
   useFrontendEmployee,
@@ -120,6 +140,8 @@ import { useOutlookSync } from "../../../../../../assets/js/common/integrationOu
 import { useZoomUsers } from "../../../../../../assets/js/common/integrationZoom";
 import { useStripeSync } from "../../../../../../assets/js/common/integrationStripe";
 import { useAppleSync } from "../../../../../../assets/js/common/integrationApple";
+import AmSocialButton from "../../../../../common/FormFields/AmSocialButton.vue";
+import {settings} from "../../../../../../plugins/settings";
 
 // * Plugin Licence
 let licence = inject('licence')
@@ -172,6 +194,91 @@ let passwordIcon = {
   template: `<IconComponent icon="password"></IconComponent>`
 }
 
+let socialProvider = ref('')
+const VueAuthenticateInstance = VueAuthenticate.factory(httpClient, SocialAuthOptions)
+
+/********
+ * Google Sign in *
+ ********/
+function onSignupSocial({ provider, credentials }) {
+  store.commit('setLoading', true)
+  const socialCheckUrl = `/users/authentication/${provider}`
+  const data = {}
+  socialProvider = provider
+  data.cabinetType = cabinetType.value
+
+  if (provider === 'facebook') {
+    data.redirectUri = VueAuthenticateInstance.options.providers[provider].redirectUri
+    VueAuthenticateInstance.options.providers[provider].url = `${socialCheckUrl}`
+    store.commit('setLoading', false)
+    VueAuthenticateInstance.authenticate(provider, data).then((response) => {
+      infoFormData.value.email = response.data.data.user.email
+      setResponseData(response)
+    }).catch((error) => {
+      if (!VueAuthenticateInstance.isAuthenticated()) {
+        authError.value = true
+        authErrorMessage.value = 'User is not authenticated.'
+        store.commit('setLoading', false)
+      }
+      if (error.response?.data) {
+        authError.value = true
+        authErrorMessage.value = error.response.data.message
+      }
+      store.commit('setLoading', false)
+    })
+  }
+
+  if (provider === 'google') {
+    data.code = credentials
+    httpClient.post(`${socialCheckUrl}`, data).then(response => {
+      infoFormData.value.email = response.data.data.user.email
+      setResponseData(response)
+    }).catch((error) => {
+      if (!('data' in error.response.data) && 'message' in error.response.data) {
+        authError.value = true
+        authErrorMessage.value = error.response.data.message
+        return
+      }
+
+      if ('invalid_credentials' in error.response.data.data) {
+        authError.value = true
+        authErrorMessage.value = amLabels.value.invalid_credentials
+      }
+    }).finally(() => {
+      store.commit('setLoading', false)
+    })
+  }
+}
+
+function setResponseData(response) {
+  if ('token' in response.data.data) {
+    vueCookies.set('ameliaToken', response.data.data.token, amSettings.roles[cabinetType.value + 'Cabinet']['tokenValidTime'], null, null, true)
+    vueCookies.set('ameliaUserEmail', response.data.data.user.email, amSettings.roles[cabinetType.value + 'Cabinet']['tokenValidTime'], null, null, true)
+
+    store.commit('auth/setToken', response.data.data.token)
+  }
+
+  if ('user' in response.data.data && response.data.data.user.type === 'provider') {
+    setEmployee(response)
+  }
+  store.commit('auth/setProfile', response.data.data.user)
+  if (response.data.data.user.timeZone) {
+    store.commit('cabinet/setTimeZone', response.data.data.user.timeZone)
+  }
+  store.commit('auth/setAuthenticated', true)
+  let tokenValidTime = cabinetType.value === 'customer'
+      ? amSettings.roles.customerCabinet.tokenValidTime * 1000
+      : amSettings.roles.providerCabinet.tokenValidTime * 1000
+
+  if (tokenValidTime > 0 && tokenValidTime < 1814400000) {
+    setTimeout(
+        () => {
+          store.dispatch('auth/logout')
+        },
+        tokenValidTime
+    )
+  }
+}
 /********
  * Form *
  ********/
@@ -219,7 +326,7 @@ let signInFormConstruction = ref({
     props: {
       itemName: 'email',
       label: amLabels.value.email_or_username,
-      iconStart: markRaw(emailIcon),
+      prefixIcon: markRaw(emailIcon),
       placeholder: '',
       class: 'am-asi__item'
     }
@@ -231,7 +338,7 @@ let signInFormConstruction = ref({
       itemType: 'password',
       showPassword: true,
       label: amLabels.value.password,
-      iconStart: markRaw(passwordIcon),
+      prefixIcon: markRaw(passwordIcon),
       placeholder: '',
       class: 'am-asi__item'
     }
@@ -264,6 +371,83 @@ function useAuthenticateUser (cookieToken, changePass) {
     useAuthenticate(urlToken, true, false, changePass)
   } else {
     useAuthenticate('', false, true, false)
+  }
+}
+
+function setEmployee (response) {
+  let employee = {
+    id: response.data.data.user.id,
+    firstName: response.data.data.user.firstName,
+    lastName: response.data.data.user.lastName,
+    email: response.data.data.user.email,
+    phone: response.data.data.user.phone,
+    countryPhoneIso: response.data.data.user.countryPhoneIso,
+    googleCalendar: {
+      id: 'id' in response.data.data.user.googleCalendar ? response.data.data.user.googleCalendar.id : null,
+      calendarId: response.data.data.user.googleCalendar.calendarId ? response.data.data.user.googleCalendar.calendarId : '',
+      token: 'token' in response.data.data.user.googleCalendar ? response.data.data.user.googleCalendar.token : null,
+    },
+    outlookCalendar: {
+      id: 'id' in response.data.data.user.outlookCalendar ? response.data.data.user.outlookCalendar.id : null,
+      calendarId: response.data.data.user.outlookCalendar.calendarId ? response.data.data.user.outlookCalendar.calendarId : '',
+      token: 'token' in response.data.data.user.outlookCalendar ? response.data.data.user.outlookCalendar.token : null,
+    },
+    appleCalendarId: response.data.data.user.appleCalendarId ? response.data.data.user.appleCalendarId : '',
+    stripeConnect: response.data.data.user.stripeConnect,
+    zoomUserId: response.data.data.user.zoomUserId ? response.data.data.user.zoomUserId : '',
+    locationId: response.data.data.user.locationId,
+    pictureFullPath: response.data.data.user.pictureFullPath,
+    pictureThumbPath: response.data.data.user.pictureThumbPath,
+    description: response.data.data.user.description,
+    weekDayList: response.data.data.user.weekDayList,
+    specialDayList: response.data.data.user.specialDayList,
+    dayOffList: response.data.data.user.dayOffList,
+    serviceList: response.data.data.user.serviceList,
+  }
+
+  employee.serviceList.forEach(employeeService => {
+    useParsedCustomPricing(employeeService)
+  })
+
+  if (store.getters['entities/getReady']) {
+    store.commit('entities/setEmployees', [JSON.parse(JSON.stringify(employee))])
+
+    employee.serviceList = useFrontendEmployeeServiceList(store, employee.serviceList)
+  }
+
+  store.commit('employee/setEmployee', useFrontendEmployee(store, employee))
+
+  store.commit(
+      'auth/setOutlookCalendars',
+      response.data.data.user.outlookCalendar?.calendarList ? response.data.data.user.outlookCalendar.calendarList : []
+  )
+
+  store.commit(
+      'auth/setGoogleCalendars',
+      response.data.data.user.googleCalendar?.calendarList ? response.data.data.user.googleCalendar.calendarList : []
+  )
+
+  if (amSettings.appleCalendar &&
+      !licence.isLite &&
+      !licence.isStarter
+  ) {
+    useAppleSync(store)
+  }
+
+  if (amSettings.payments.stripe.enabled &&
+      amSettings.payments.stripe.connect.enabled &&
+      !licence.isLite &&
+      !licence.isStarter &&
+      !licence.isBasic
+  ) {
+    useStripeSync(store)
+  }
+
+  if (amSettings.zoom.enabled &&
+      !licence.isLite &&
+      !licence.isStarter
+  ) {
+    useZoomUsers(store)
   }
 }
 
@@ -308,81 +492,7 @@ function useAuthenticate (tokenValue, isUrlToken, checkIfWpUser, changePass) {
     }
 
     if ('user' in response.data.data && response.data.data.user.type === 'provider') {
-      let employee = {
-        id: response.data.data.user.id,
-        firstName: response.data.data.user.firstName,
-        lastName: response.data.data.user.lastName,
-        email: response.data.data.user.email,
-        phone: response.data.data.user.phone,
-        countryPhoneIso: response.data.data.user.countryPhoneIso,
-        googleCalendar: {
-          id: 'id' in response.data.data.user.googleCalendar ? response.data.data.user.googleCalendar.id : null,
-          calendarId: response.data.data.user.googleCalendar.calendarId ? response.data.data.user.googleCalendar.calendarId : '',
-          token: 'token' in response.data.data.user.googleCalendar ? response.data.data.user.googleCalendar.token : null,
-        },
-        outlookCalendar: {
-          id: 'id' in response.data.data.user.outlookCalendar ? response.data.data.user.outlookCalendar.id : null,
-          calendarId: response.data.data.user.outlookCalendar.calendarId ? response.data.data.user.outlookCalendar.calendarId : '',
-          token: 'token' in response.data.data.user.outlookCalendar ? response.data.data.user.outlookCalendar.token : null,
-        },
-        appleCalendarId: response.data.data.user.appleCalendarId ? response.data.data.user.appleCalendarId : '',
-        employeeAppleCalendar: response.data.data.user.employeeAppleCalendar ? response.data.data.user.employeeAppleCalendar : null,
-        stripeConnect: response.data.data.user.stripeConnect,
-        zoomUserId: response.data.data.user.zoomUserId ? response.data.data.user.zoomUserId : '',
-        locationId: response.data.data.user.locationId,
-        pictureFullPath: response.data.data.user.pictureFullPath,
-        pictureThumbPath: response.data.data.user.pictureThumbPath,
-        description: response.data.data.user.description,
-        weekDayList: response.data.data.user.weekDayList,
-        specialDayList: response.data.data.user.specialDayList,
-        dayOffList: response.data.data.user.dayOffList,
-        serviceList: response.data.data.user.serviceList,
-      }
-
-      employee.serviceList.forEach(employeeService => {
-        useParsedCustomPricing(employeeService)
-      })
-
-      if (store.getters['entities/getReady']) {
-        store.commit('entities/setEmployees', [JSON.parse(JSON.stringify(employee))])
-
-        employee.serviceList = useFrontendEmployeeServiceList(store, employee.serviceList)
-      }
-
-      store.commit('employee/setEmployee', useFrontendEmployee(store, employee))
-
-      store.commit(
-        'auth/setOutlookCalendars',
-        response.data.data.user.outlookCalendar?.calendarList ? response.data.data.user.outlookCalendar.calendarList : []
-      )
-
-      store.commit(
-        'auth/setGoogleCalendars',
-        response.data.data.user.googleCalendar?.calendarList ? response.data.data.user.googleCalendar.calendarList : []
-      )
-
-      if (amSettings.appleCalendar &&
-        !licence.isLite &&
-        !licence.isStarter
-      ) {
-        useAppleSync(store)
-      }
-
-      if (amSettings.payments.stripe.enabled &&
-        amSettings.payments.stripe.connect.enabled &&
-        !licence.isLite &&
-        !licence.isStarter &&
-        !licence.isBasic
-      ) {
-        useStripeSync(store)
-      }
-
-      if (amSettings.zoom.enabled &&
-        !licence.isLite &&
-        !licence.isStarter
-      ) {
-        useZoomUsers(store)
-      }
+      setEmployee(response)
     }
 
     if (useUrlQueryParam('token')) {
@@ -390,6 +500,10 @@ function useAuthenticate (tokenValue, isUrlToken, checkIfWpUser, changePass) {
     }
 
     store.commit('auth/setProfile', response.data.data.user)
+
+    if (!response.data.data.user.countryPhoneIso && amSettings.general.phoneDefaultCountryCode && amSettings.general.phoneDefaultCountryCode !== 'auto') {
+      store.commit('auth/setProfileCountryPhoneIso', amSettings.general.phoneDefaultCountryCode)
+    }
 
     if (response.data.data.user.timeZone) {
       store.commit('cabinet/setTimeZone', response.data.data.user.timeZone)
@@ -473,7 +587,6 @@ onMounted(() => {
     store.commit('setLoading', false)
   }
 })
-
 /*************
  * Customize *
  *************/
@@ -541,6 +654,52 @@ export default {
     * {
       font-family: var(--am-font-family), sans-serif;
       box-sizing: border-box;
+    }
+
+    &__social-wrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      margin: 8px 0 24px;
+      gap: 8px;
+
+      .am-social-signin {
+        &__google {
+          #g_id_onload {
+            display: none;
+          }
+          .g_id_signin {
+            width: 64px;
+          }
+        }
+      }
+    }
+
+    &__social-divider {
+      align-items: center;
+      display: flex;
+      margin-bottom: 24px;
+
+      // Before & After
+      &:before,
+      &:after {
+        background: var(--shade-250, #D1D5D7);
+        content: '';
+        height: 1px;
+        width: 100%;
+      }
+
+      span {
+        flex: none;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        color: var(--shade-500, #808A90);
+        margin-left: 8px;
+        margin-right: 8px;
+      }
     }
 
     &__top {
@@ -650,24 +809,6 @@ export default {
         line-height: 1.6;
         color: var(--am-c-primary);
         cursor: pointer;
-      }
-    }
-
-    .am-input-wrapper .am-input__default.is-icon-start {
-      .el-input {
-        &__prefix {
-          left: 8px;
-
-          i {
-            font-size: 30px;
-          }
-        }
-
-        &__suffix {
-          i {
-            font-size: 18px;
-          }
-        }
       }
     }
   }

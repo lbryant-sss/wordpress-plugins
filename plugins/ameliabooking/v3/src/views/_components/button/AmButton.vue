@@ -1,6 +1,6 @@
 <template>
   <button
-    :id="id"
+    v-bind="bindProps"
     class="am-button"
     :disabled="disabled || loading"
     :autofocus="autofocus"
@@ -62,8 +62,7 @@ import { computed, ref, inject } from "vue";
  */
 const props = defineProps({
   id: {
-    type: String,
-    default: ''
+    type: String
   },
   customClass: {
     type: String,
@@ -152,6 +151,14 @@ const props = defineProps({
     }
   }
 })
+
+// Create filtered properties
+const bindProps = computed(() => {
+  const filterObj = {...props};
+  const arrayProp = ['id'];
+
+  return Object.fromEntries(Object.entries(filterObj).filter(([key]) => arrayProp.includes(key)));
+});
 
 /**
  * Component emits

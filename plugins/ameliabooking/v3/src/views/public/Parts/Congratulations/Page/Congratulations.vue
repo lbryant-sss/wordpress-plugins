@@ -4,6 +4,7 @@
       <img
         v-if="props.booked.type !== 'event'"
         :src="props.baseUrls.wpAmeliaPluginURL+'/v3/src/assets/img/congratulations/congratulations.svg'"
+        :alt="props.labels.congratulations"
       >
 
       <p v-if="props.booked.type !== 'event'" class="am-congrats__main-heading">

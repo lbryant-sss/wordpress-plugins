@@ -14,8 +14,7 @@
       <AmInput
         v-model="formData.name"
         :placeholder="amLabels.enter_event_name"
-      >
-      </AmInput>
+      />
     </el-form-item>
     <!-- /Event Name -->
 
@@ -52,8 +51,7 @@
     >
       <AmInput
         v-model="formData.customLocation"
-      >
-      </AmInput>
+      />
     </el-form-item>
     <!-- /Custom Location -->
 
@@ -89,6 +87,7 @@
         v-model="isOrganizer"
         :disabled="formData.organizerId && formData.organizerId !== store.getters['auth/getProfile'].id"
         :active-text="amLabels.event_organizer"
+        :aria-label="amLabels.event_organizer"
         @change="toggleOrganizer"
       />
       <el-tooltip
@@ -115,9 +114,10 @@
         multiple
         :allow-create="true"
         :placeholder="amLabels.event_tags_select_or_create"
+        :filter-method="filterTags"
       >
         <AmOption
-          v-for="(entity, index) in tags"
+          v-for="(entity, index) in filteredTags"
           :key="index"
           :value="entity.name"
           :label="entity.name"
@@ -131,6 +131,7 @@
       <AmSwitch
         v-model="formData.notifyParticipants"
         :active-text="amLabels.notify_attendees"
+        :aria-label="amLabels.notify_attendees"
       />
       <el-tooltip
         effect="dark"
@@ -193,6 +194,21 @@ const amSettings = inject('settings')
 let locations = ref(store.getters['entities/getLocations'])
 
 let tags = ref(store.getters['entities/getTags'])
+
+let queryTags = ref('')
+function filterTags (query) {
+  queryTags.value = query.toLowerCase()
+}
+
+let filteredTags = computed(() => {
+  if (queryTags.value) {
+    return tags.value.filter((tag) => {
+      return tag.name.toLowerCase().includes(queryTags.value)
+    })
+  }
+
+  return tags.value
+})
 
 // * Form Reference
 let detailsFormRef = ref(null)

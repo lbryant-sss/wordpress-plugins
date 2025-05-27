@@ -42,6 +42,11 @@ class CustomerBookingRepository extends AbstractRepository implements CustomerBo
     {
         $data = $entity->toArray();
 
+        $couponId = !empty($data['coupon']) ? $data['coupon']['id'] : null;
+        if (!$couponId && !empty($data['couponId'])) {
+            $couponId = $data['couponId'];
+        }
+
         $params = [
             ':appointmentId'   => $data['appointmentId'],
             ':customerId'      => $data['customerId'],
@@ -49,7 +54,7 @@ class CustomerBookingRepository extends AbstractRepository implements CustomerBo
             ':price'           => $data['price'],
             ':tax'             => !empty($data['tax']) ? json_encode($data['tax']) : null,
             ':persons'         => $data['persons'],
-            ':couponId'        => !empty($data['coupon']) ? $data['coupon']['id'] : null,
+            ':couponId'        => $couponId,
             ':token'           => $data['token'],
             ':customFields'    => $data['customFields'] && json_decode($data['customFields']) !== false ?
                 $data['customFields'] : null,

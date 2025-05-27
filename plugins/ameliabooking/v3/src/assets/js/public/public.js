@@ -106,6 +106,21 @@ if (window.ameliaShortcodeDataTriggered !== undefined) {
         if (externalButtons.length > 0 && externalButtons[0] !== null && typeof externalButtons[0] !== 'undefined') {
           clearInterval(externalButtonsLoading)
 
+          // * Detect if form loaded from redirection
+          if ('ameliaCache' in window && window.ameliaCache.length && window.ameliaCache[0]) {
+            let cacheData = JSON.parse(window.ameliaCache[0])
+            if (cacheData &&
+              'request' in cacheData &&
+              'form' in cacheData.request &&
+              'shortcode' in cacheData.request.form &&
+              'trigger' in cacheData.request.form.shortcode &&
+              cacheData.request.form.shortcode.trigger &&
+              parseInt(cacheData.request.form.shortcode.counter) === parseInt(shortCodeData.counter)
+            ) {
+              shortCodeData.isRestored = true
+            }
+          }
+
           // * vue creation
           createAmelia(shortCodeData)
 
@@ -114,15 +129,28 @@ if (window.ameliaShortcodeDataTriggered !== undefined) {
             btn.style.pointerEvents = 'none'
           })
 
+          // Create a timeout to prevent buttons from being permanently disabled
+          let componentLoadTimeout
+
           let componentsLoaded = setInterval(() => {
             if (isMounted.value) {
               clearInterval(componentsLoaded)
+              clearTimeout(componentLoadTimeout)
               // * Made the buttons visible because amelia components are fully loaded
               externalButtons.forEach(btn => {
                 btn.style.removeProperty('pointer-events')
               })
             }
           }, 250)
+
+          // Safety timeout - if components don't load within 12 seconds, enable buttons anyway
+          componentLoadTimeout = setTimeout(() => {
+            clearInterval(componentsLoaded)
+            console.warn('Amelia components loading timeout')
+            externalButtons.forEach(btn => {
+              btn.style.removeProperty('pointer-events')
+            })
+          }, 12000)
         }
       }, 250)
     } else {
@@ -244,30 +272,6 @@ function createAmelia(shortcodeData) {
   let data = 'ameliaCache' in window && window.ameliaCache.length && window.ameliaCache[0]
     ? JSON.parse(window.ameliaCache[0])
     : null
-
-  if (!shortcodeData.hasApiCall &&
-    (shortcodeData.triggered_form === 'sbsNew' || shortcodeData.triggered_form === 'cbf') &&
-    window.ameliaShortcodeData.filter(i => i.triggered_form === 'sbsNew' || i.triggered_form === 'cbf').length === 0 &&
-    window.ameliaShortcodeDataTriggered.filter(
-      i => i.trigger && !i.in_dialog && (i.triggered_form === 'sbsNew' || i.triggered_form === 'cbf')
-    ).length === window.ameliaShortcodeDataTriggered.filter(
-      i => i.triggered_form === 'sbsNew' || i.triggered_form === 'cbf'
-    ).length
-  ) {
-    shortcodeData.hasApiCall = true
-  } else if (!shortcodeData.hasApiCall &&
-    (shortcodeData.triggered_form === 'elf' || shortcodeData.triggered_form === 'ecf') &&
-    window.ameliaShortcodeData.filter(i => i.triggered_form === 'elf' || i.triggered_form === 'ecf').length === 0 &&
-    window.ameliaShortcodeDataTriggered.filter(
-      i => i.trigger && !i.in_dialog && (i.triggered_form === 'elf' || i.triggered_form === 'ecf')
-    ).length === window.ameliaShortcodeDataTriggered.filter(
-      i => i.triggered_form === 'elf' || i.triggered_form === 'ecf'
-    ).length
-  ) {
-    shortcodeData.hasApiCall = true
-  } else if (['sbsNew', 'cbf', 'elf', 'ecf'].indexOf(shortcodeData.triggered_form) === -1) {
-    shortcodeData.hasApiCall = true
-  }
 
   app
     .component('StepFormWrapper', StepFormWrapper)

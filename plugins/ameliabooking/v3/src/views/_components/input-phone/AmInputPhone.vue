@@ -166,7 +166,8 @@ let cssVars = computed(() => {
     height: 40px;
     display: flex;
     flex-direction: row;
-    border: 1px solid var(--am-c-ph-inp-border);
+    border: none;
+    box-shadow: 0 0 0 1px var(--am-c-ph-inp-border);
     border-radius: 6px;
 
     &__select {

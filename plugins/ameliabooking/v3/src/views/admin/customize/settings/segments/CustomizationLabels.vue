@@ -51,7 +51,7 @@
                         v-model="labelObj.labels[label][lang]"
                         size="small"
                         @input="updateLabelObject"
-                      ></AmInput>
+                      />
                     </div>
                   </div>
                 </div>

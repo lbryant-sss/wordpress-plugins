@@ -16,7 +16,7 @@
           class="am-fcil__filter-item"
           :class="filterClassWidth.search"
         >
-          <AmInput v-model="searchFilter" :placeholder="labelsDisplay('filter_input')" :icon-start="iconSearch"></AmInput>
+          <AmInput v-model="searchFilter" :placeholder="labelsDisplay('filter_input')" :prefix-icon="iconSearch"/>
         </div>
         <div
           v-if="amCustomize.cbf.categoryItemsList.options.filterEmployee.visibility && !licence.isLite"

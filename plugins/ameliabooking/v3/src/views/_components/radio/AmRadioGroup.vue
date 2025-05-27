@@ -15,10 +15,9 @@
 </template>
 
 <script setup>
-import {computed, ref, toRefs} from "vue";
+import { computed, ref, toRefs } from "vue";
 
 const props = defineProps({
-
   modelValue: {
     type: [String, Number, Boolean]
   },
@@ -37,6 +36,16 @@ const props = defineProps({
     type: String
   },
   fill: {
+    type: String
+  },
+  validateEvent: {
+    type: Boolean,
+    default: true
+  },
+  ariaLabel: {
+    type: String
+  },
+  id: {
     type: String
   },
 })

@@ -66,10 +66,11 @@
                   :fit-input-width="true"
                   :popper-class="'am-csd__filter-employees'"
                   :disabled="slotsAreLoading"
+                  :filter-method="filterEmployee"
                   @change="changeFilter"
                 >
                   <AmOption
-                    v-for="provider in props.employees"
+                    v-for="provider in filteredEmployees"
                     :key="provider.id"
                     :value="provider.id"
                     :label="`${provider.firstName} ${provider.lastName}`"
@@ -102,10 +103,11 @@
                   :placeholder="`${amLabels.package_select_location}...`"
                   :fit-input-width="true"
                   :disabled="slotsAreLoading"
+                  :filter-method="filterLocation"
                   @change="changeFilter"
                 >
                   <AmOption
-                    v-for="location in props.locations"
+                    v-for="location in filteredLocations"
                     :key="location.id"
                     :value="location.id"
                     :label="location.name"
@@ -244,6 +246,34 @@ let props = defineProps({
     type: Object,
     required: true
   }
+})
+
+// * Filter Employees and Locations
+let queryEmployeeLower = ref('')
+function filterEmployee (query) {
+  queryEmployeeLower.value = query.toLowerCase()
+}
+let filteredEmployees = computed(() => {
+  if (queryEmployeeLower.value) {
+    return props.employees.filter(item => {
+      const fullName = `${item.firstName} ${item.lastName}`.toLowerCase()
+      return fullName.includes(queryEmployeeLower.value)
+    })
+  }
+  return props.employees
+})
+
+let queryLocationLower = ref('')
+function filterLocation (query) {
+  queryLocationLower.value = query.toLowerCase()
+}
+let filteredLocations = computed(() => {
+  if (queryLocationLower.value) {
+    return props.locations.filter(item => {
+      return item.name.toLowerCase().includes(queryLocationLower.value)
+    })
+  }
+  return props.locations
 })
 
 let amLabels = inject('amLabels')
@@ -949,7 +979,7 @@ export default {
               align-items: center;
               flex: 1;
               position: relative;
-              font-size: var(--am-fs-input);
+              font-size: var(--am-fs-inp);
               min-width: 0;
             }
 

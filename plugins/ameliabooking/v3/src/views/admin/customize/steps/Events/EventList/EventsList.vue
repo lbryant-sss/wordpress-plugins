@@ -19,7 +19,7 @@
             <AmInput
               v-model="eventSearch"
               :placeholder="`${labelsDisplay('event_search')}...`"
-              :icon-start="iconSearch"
+              :prefix-icon="iconSearch"
             />
           </div>
           <div class="am-els__filters-menu__btn">

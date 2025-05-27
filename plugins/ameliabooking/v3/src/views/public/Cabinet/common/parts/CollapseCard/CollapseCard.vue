@@ -98,7 +98,7 @@
               <el-popover
                 v-if="props.reservation.type === 'appointment' ? amSettings.roles.allowWriteAppointments : true"
                 ref="editRef"
-                v-model:visible="editPopVisible"
+                :visible="editPopVisible"
                 :persistent="false"
                 :show-arrow="false"
                 :width="'auto'"
@@ -186,7 +186,7 @@
               <el-popover
                 v-if="props.reservation.cancelable || (amSettings.roles.allowCustomerReschedule && props.reservation.reschedulable)"
                 ref="editRef"
-                v-model:visible="editPopVisible"
+                :visible="editPopVisible"
                 :persistent="false"
                 :show-arrow="false"
                 :width="'auto'"
@@ -319,7 +319,7 @@
               <!-- GoogleMeet Link -->
               <div v-if="props.googleMeetLink" class="am-cc__data link">
                 <span class="am-icon-link"></span>
-                <a class="am-cc__data-text link" :href="props.googleMeetLink" target="_blank">
+                <a class="am-cc__data-text link" :href="props.googleMeetLink" target="_blank" tabindex="-1">
                   {{ amLabels.google_meet_link }}
                 </a>
               </div>
@@ -328,7 +328,7 @@
               <!-- Microsoft Teams Link -->
               <div v-if="props.microsoftTeamsLink" class="am-cc__data link">
                 <span class="am-icon-link"></span>
-                <a class="am-cc__data-text link" :href="props.microsoftTeamsLink" target="_blank">
+                <a class="am-cc__data-text link" :href="props.microsoftTeamsLink" target="_blank" tabindex="-1">
                   {{ amLabels.microsoft_teams_link }}
                 </a>
               </div>
@@ -337,7 +337,7 @@
               <!-- Zoom Link -->
               <div v-if="props.zoomLink" class="am-cc__data link">
                 <span class="am-icon-link"></span>
-                <a class="am-cc__data-text link" :href="props.zoomLink" target="_blank">
+                <a class="am-cc__data-text link" :href="props.zoomLink" target="_blank" tabindex="-1">
                   {{ amLabels.zoom_link }}
                 </a>
               </div>
@@ -346,7 +346,7 @@
               <!-- Lesson Space Link -->
               <div v-if="props.lessonSpaceLink" class="am-cc__data link">
                 <span class="am-icon-link"></span>
-                <a class="am-cc__data-text link" :href="props.lessonSpaceLink" target="_blank">
+                <a class="am-cc__data-text link" :href="props.lessonSpaceLink" target="_blank" tabindex="-1">
                   {{ amLabels.lesson_space_link }}
                 </a>
               </div>
@@ -417,7 +417,9 @@
                   v-if="props.location.address"
                   class="am-cc__data-text"
                   :href="`https://maps.google.com/?q=${props.location.address}`"
-                  target="_blank">
+                  target="_blank"
+                  tabindex="-1"
+                >
                     {{ props.location.name }}
                 </a>
                 <span v-else class="am-cc__data-text">
@@ -719,8 +721,8 @@ let cssVars = computed(() => {
     '--am-font-family': amFonts.value.fontFamily,
 
     // css properties
-    '--am-rad-input': '6px',
-    '--am-fs-input': '15px',
+    '--am-rad-inp': '6px',
+    '--am-fs-inp': '15px',
   }
 })
 </script>

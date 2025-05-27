@@ -1,5 +1,26 @@
 <template>
   <div class="am-fs__main-content am-fs__info">
+
+    <!-- Social Buttons -->
+    <div v-if="!licence.isLite && !licence.isStarter">
+      <div class="am-fs__info-social-wrapper">
+        <div class="am-fs__info-social-wrapper__label">
+          {{ labelsDisplay('auto_fill_your_details') }}
+        </div>
+        <div class="am-fs__info-social-wrapper__social-buttons">
+          <img :src="baseUrls.wpAmeliaPluginURL + '/v3/src/assets/img/icons/google.svg'">
+          <img :src="baseUrls.wpAmeliaPluginURL + '/v3/src/assets/img/icons/facebook.svg'">
+        </div>
+      </div>
+
+      <!-- Social Divider -->
+      <div class="am-fs__info-social-divider">
+        <span class="par-sm">{{ labelsDisplay('or_enter_details_below') }}</span>
+      </div>
+      <!-- /Social Divider -->
+    </div>
+    <!-- Social Buttons -->
+
     <el-form
       ref="infoFormRef"
       :model="infoFormData"
@@ -28,6 +49,11 @@ let amLabels = inject('labels')
 
 let pageRenderKey = inject('pageRenderKey')
 let amCustomize = inject('customize')
+
+// * Plugin Licence
+let licence = inject('licence')
+
+let baseUrls = inject('baseUrls')
 
 // * Label computed function
 function labelsDisplay (label) {
@@ -132,6 +158,61 @@ export default {
     }
 
     &__info {
+      &-social-wrapper {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 24px;
+        gap: 24px;
+
+        &__label {
+          font-weight: 500;
+          font-size: 15px;
+        }
+
+        &__social-buttons {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          gap: 24px;
+
+          img {
+            border: 1px solid #D1D5D7;
+            padding: 8px;
+            border-radius: 4px;
+            height: 40px;
+            width: 40px;
+          }
+        }
+      }
+
+      &-social-divider {
+        align-items: center;
+        display: flex;
+        margin-bottom: 24px;
+
+        // Before & After
+        &:before,
+        &:after {
+          background: var(--shade-250, #D1D5D7);
+          content: '';
+          height: 1px;
+          width: 100%;
+        }
+
+        span {
+          flex: none;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+          color: var(--shade-500, #808A90);
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
       &-form {
         display: flex;
         flex-wrap: wrap;

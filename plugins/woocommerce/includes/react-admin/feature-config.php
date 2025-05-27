@@ -47,7 +47,6 @@ if ( ! function_exists( 'wc_admin_get_feature_config' ) ) {
 			'add-to-cart-with-options-stepper-layout' => true,
 			'blockified-add-to-cart' => false,
 			'disable-core-profiler-fallback' => true,
-			'reactify-classic-payments-settings' => true,
 		);
 	}
 }

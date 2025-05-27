@@ -333,67 +333,6 @@ export default {
   // capai - cabinet-panel-appointment-item
   .am-capei-atti {
 
-    // Tabs
-    .el-tabs {
-      &__header {
-        margin: 0 0 15px;
-      }
-
-      &__nav {
-        &-wrap {
-          &:after {
-            background-color: var(--am-c-capai-text-op10);
-          }
-
-          &.is-scrollable {
-            padding: 0 24px;
-          }
-        }
-
-        &-next,
-        &-prev {
-          color: var(--am-c-capai-text);
-          top: 11px;
-        }
-      }
-
-      &__active-bar {
-        background-color: var(--am-c-capai-primary);
-      }
-
-      &__item {
-        padding: 0 20px;
-        line-height: 40px;
-
-        &:nth-child(2) {
-          padding-left: 0;
-        }
-
-        &:last-child {
-          padding-right: 0;
-        }
-
-        &.is-focus {
-          color: var(--am-c-capai-text);
-
-          &.is-active {
-            color: var(--am-c-capai-primary);
-
-            &:focus {
-              &:not(:active) {
-                box-shadow: none;
-              }
-            }
-          }
-        }
-      }
-
-      &__content {
-        overflow: unset;
-        position: static;
-      }
-    }
-
     // Customer
     &-customer {
       &__name {

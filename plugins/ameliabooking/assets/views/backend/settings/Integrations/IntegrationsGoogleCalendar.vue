@@ -65,7 +65,23 @@
         </el-form-item>
         <!-- /Redirect URI -->
 
+        <div class="am-setting-box am-switch-box">
+        <!-- Calendar Enabled -->
+        <el-row type="flex" align="middle" :gutter="24">
+          <el-col :span="19">
+            {{ $root.labels.google_calendar }}
+          </el-col>
+          <el-col :span="5" class="align-right">
+            <el-switch
+              v-model="settings.calendarEnabled"
+              active-text=""
+              inactive-text=""
+            >
+            </el-switch>
+          </el-col>
+        </el-row>
 
+        <div v-if="settings.calendarEnabled" style="margin-top: 10px">
         <el-collapse>
           <el-collapse-item class="am-setting-box">
             <template slot="title">
@@ -408,6 +424,8 @@
           </el-select>
         </el-form-item>
         <!-- /Maximum Number Of Events Returned -->
+        </div>
+        </div>
 
       </el-form>
       <!-- /Form -->

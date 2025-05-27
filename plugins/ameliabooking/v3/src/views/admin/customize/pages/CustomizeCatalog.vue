@@ -182,7 +182,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import './src/assets/scss/common/reset/reset';
+@import '../../../../../src/assets/scss/common/reset/reset';
 
 :root {
   // Colors
@@ -226,9 +226,9 @@ export default {
   // -h- height
   // -fs- font size
   // -rad- border radius
-  --am-h-input: 40px;
-  --am-fs-input: 15px;
-  --am-rad-input: 6px;
+  --am-h-inp: 40px;
+  --am-fs-inp: 15px;
+  --am-rad-inp: 6px;
   --am-fs-label: 15px;
   --am-fs-btn: 15px;
 
@@ -295,7 +295,7 @@ export default {
               align-items: center;
               flex: 1;
               position: relative;
-              font-size: var(--am-fs-input);
+              font-size: var(--am-fs-inp);
               min-width: 0;
               color: var(--am-c-main-text);
             }

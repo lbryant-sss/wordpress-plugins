@@ -25,7 +25,7 @@
         </div>
         <div class="am-setting__inner">
           <p>{{amLabels.font_family}}</p>
-          <AmInput v-model="amCustomize.fonts.customFontFamily" @input="updateFontFamily"></AmInput>
+          <AmInput v-model="amCustomize.fonts.customFontFamily" @input="updateFontFamily"/>
         </div>
       </div>
     </transition>

@@ -137,7 +137,7 @@
                   v-if="
                     entitiesReady &&
                     sidebarVisibility &&
-                    (shortcodeData.cabinetType === 'customer' ? pageKey !== 'profile' && customizedOptions.timeZone.visibility : true)
+                    timeZoneSelectVisibility
                   "
                 />
                 <MenuSlideDialog
@@ -264,6 +264,12 @@ provide('containerWidth', containerWidth)
 // * Root Settings
 const amSettings = inject('settings')
 
+let pageKey = ref(
+  shortcodeData.value.appointments || !shortcodeData.value.events
+    ? 'appointments'
+    : 'events'
+)
+
 // * Customize
 const amCustomize = computed(() => {
   return amSettings.customizedData && originKey.value in amSettings.customizedData
@@ -340,6 +346,16 @@ let customizedOptions = computed(() => {
   if (pageKey.value === 'packages')
     return amCustomize.value.packagesList.options
   return amCustomize.value[pageKey.value].options
+})
+
+let timeZoneSelectVisibility = computed(() => {
+  let key = pageKey.value
+
+  if (cabinetType.value === 'customer') {
+    return key !== 'profile' ? customizedOptions.value.timeZone.visibility : true
+  }
+
+  return key === 'appointments' || key === 'events' ? customizedOptions.value.timeZone.visibility : true
 })
 
 // * Mobile menu
@@ -455,12 +471,6 @@ store.dispatch('entities/getEntities', {
 
 // * Data loaded
 let ready = computed(() => store.getters['getReady'])
-
-let pageKey = ref(
-  shortcodeData.value.appointments || !shortcodeData.value.events
-    ? 'appointments'
-    : 'events'
-)
 
 // * Panel Fluid Pages
 let pagesObj = ref({
@@ -655,6 +665,7 @@ let cssVars = computed(() => {
     '--am-c-main-bgr': amColors.value.colorMainBgr,
     '--am-c-main-heading-text': amColors.value.colorMainHeadingText,
     '--am-c-main-text': amColors.value.colorMainText,
+    '--am-c-main-text-op10': useColorTransparency(amColors.value.colorMainText, 0.1),
     '--am-c-sb-bgr': amColors.value.colorSbBgr,
     '--am-c-sb-text': amColors.value.colorSbText,
     '--am-c-inp-bgr': amColors.value.colorInpBgr,
@@ -696,8 +707,8 @@ let cssVars = computed(() => {
     '--am-font-family': amFonts.value.fontFamily,
 
     // css properties
-    '--am-rad-input': '6px',
-    '--am-fs-input': '15px',
+    '--am-rad-inp': '6px',
+    '--am-fs-inp': '15px',
     // -mw- max width
     // -brad- border-radius
     '--am-mw-main': sidebarVisibility.value
@@ -781,9 +792,9 @@ export default {
   // -h- height
   // -fs- font size
   // -rad- border radius
-  --am-h-input: 40px;
-  --am-fs-input: 15px;
-  --am-rad-input: 6px;
+  --am-h-inp: 40px;
+  --am-fs-inp: 15px;
+  --am-rad-inp: 6px;
   --am-fs-label: 15px;
   --am-fs-btn: 15px;
 
@@ -827,6 +838,92 @@ export default {
           transition-delay: 1s;
         }
 
+        // overrides for element plus components
+        // tabs
+        .el-tabs {
+          display: flex;
+          flex-direction: column-reverse;
+          gap: 16px 0;
+
+          &__nav {
+            gap: 0 40px;
+
+            &-wrap {
+              &:after {
+                background-color: var(--am-c-main-text-op10);
+              }
+
+              &.is-scrollable {
+                padding: 0 24px;
+              }
+            }
+
+            &-next,
+            &-prev {
+              color: var(--am-c-main-text);
+              top: 11px;
+            }
+          }
+
+          &__active-bar {
+            background-color: var(--am-c-primary);
+          }
+
+          &__item {
+            padding: 0;
+            line-height: 40px;
+            color: var(--am-c-main-text);
+            transition: color 0.2s ease-in-out;
+
+            &:nth-child(2) {
+              padding-left: 0;
+            }
+
+            &:last-child {
+              padding-right: 0;
+            }
+
+            &.is-active {
+              color: var(--am-c-primary);
+            }
+
+            &:focus-visible {
+              box-shadow: none;
+            }
+
+            &:hover {
+              color: var(--am-c-primary);
+            }
+
+            &.is-focus {
+              color: var(--am-c-main-text);
+
+              &.is-active {
+                color: var(--am-c-primary);
+              }
+            }
+          }
+
+          &__content {
+            overflow: unset;
+            position: static;
+          }
+        }
+
+        // collapse
+        .el-collapse-item {
+          &__wrap {
+            overflow: visible;
+          }
+
+          &__header {
+            border: none;
+            font-size: var(--am-fs-label);
+            line-height: 1.6;
+            height: unset;
+          }
+        }
+
         * {
           font-family: var(--am-font-family), sans-serif;
           box-sizing: border-box;
@@ -834,7 +931,7 @@ export default {
       }
     }
 
-    // cap - cabinet panel
+    // cap - cabinet panel for inner elements
     .am-cap {
       &__header {
         display: flex;
@@ -858,8 +955,9 @@ export default {
 
       .el-form-item {
         &__label {
-          display: flex;
+          display: inline-flex;
           align-items: center;
+          justify-content: flex-start;
           gap: 4px;
         }
       }
@@ -900,7 +998,7 @@ export default {
             align-items: center;
             flex: 1;
             position: relative;
-            font-size: var(--am-fs-input);
+            font-size: var(--am-fs-inp);
             min-width: 0;
           }
 

@@ -489,6 +489,7 @@ let cssVars = computed(() => {
     '--am-c-main-bgr': amColors.value.colorMainBgr,
     '--am-c-main-heading-text': amColors.value.colorMainHeadingText,
     '--am-c-main-text': amColors.value.colorMainText,
+    '--am-c-main-text-op10': useColorTransparency(amColors.value.colorMainText, 0.1),
     '--am-c-sb-bgr': amColors.value.colorSbBgr,
     '--am-c-sb-text': amColors.value.colorSbText,
     '--am-c-inp-bgr': amColors.value.colorInpBgr,
@@ -508,8 +509,8 @@ let cssVars = computed(() => {
     '--am-font-family': amFonts.value.fontFamily,
 
     // css properties
-    '--am-rad-input': '6px',
-    '--am-fs-input': '15px',
+    '--am-rad-inp': '6px',
+    '--am-fs-inp': '15px',
     // -mw- max width
     // -brad- border-radius
     '--am-mw-main': sidebarVisibility.value ? sidebarCollapsed.value ? '858px' : '1024px' : '520px',
@@ -576,6 +577,92 @@ export default {
           transition-delay: 1s;
         }
 
+        // overrides for element plus components
+        // tabs
+        .el-tabs {
+          display: flex;
+          flex-direction: column-reverse;
+          gap: 16px 0;
+
+          &__nav {
+            gap: 0 40px;
+
+            &-wrap {
+              &:after {
+                background-color: var(--am-c-main-text-op10);
+              }
+
+              &.is-scrollable {
+                padding: 0 24px;
+              }
+            }
+
+            &-next,
+            &-prev {
+              color: var(--am-c-main-text);
+              top: 11px;
+            }
+          }
+
+          &__active-bar {
+            background-color: var(--am-c-primary);
+          }
+
+          &__item {
+            padding: 0;
+            line-height: 40px;
+            color: var(--am-c-main-text);
+            transition: color 0.2s ease-in-out;
+
+            &:nth-child(2) {
+              padding-left: 0;
+            }
+
+            &:last-child {
+              padding-right: 0;
+            }
+
+            &.is-active {
+              color: var(--am-c-primary);
+            }
+
+            &:focus-visible {
+              box-shadow: none;
+            }
+
+            &:hover {
+              color: var(--am-c-primary);
+            }
+
+            &.is-focus {
+              color: var(--am-c-main-text);
+
+              &.is-active {
+                color: var(--am-c-primary);
+              }
+            }
+          }
+
+          &__content {
+            overflow: unset;
+            position: static;
+          }
+        }
+
+        // collapse
+        .el-collapse-item {
+          &__wrap {
+            overflow: visible;
+          }
+
+          &__header {
+            border: none;
+            font-size: var(--am-fs-label);
+            line-height: 1.6;
+            height: unset;
+          }
+        }
+
         * {
           font-family: var(--am-font-family);
           box-sizing: border-box;
@@ -623,7 +710,7 @@ export default {
             align-items: center;
             flex: 1;
             position: relative;
-            font-size: var(--am-fs-input);
+            font-size: var(--am-fs-inp);
             min-width: 0;
           }
 

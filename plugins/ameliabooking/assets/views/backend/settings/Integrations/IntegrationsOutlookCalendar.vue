@@ -3,17 +3,6 @@
   <!-- Integration Outlook Calendar -->
   <el-form :model="settings" ref="settings" label-position="top" @submit.prevent="onSubmit">
 
-    <!-- SSL Alert -->
-    <el-alert
-        v-if="showSSLAlert"
-        type="warning"
-        show-icon
-        title=""
-        :description="$root.labels.outlook_ssl_warning"
-        :closable="false"
-    />
-    <!-- /SSL Alert -->
-
     <!-- Client ID -->
     <el-form-item :label="$root.labels.outlook_client_id + ':'">
       <el-row :gutter="24">
@@ -71,6 +60,70 @@
     </el-form-item>
     <!-- /Redirect URI -->
 
+    <div class="am-setting-box am-switch-box">
+      <!-- Mail API Enabled -->
+      <el-row type="flex" align="middle" :gutter="24">
+        <el-col :span="19">
+          {{ $root.labels.outlook_mail_api }}
+        </el-col>
+        <el-col :span="5" class="align-right">
+          <el-switch
+            v-model="settings.mailEnabled"
+            active-text=""
+            inactive-text=""
+          >
+          </el-switch>
+        </el-col>
+      </el-row>
+
+      <div :gutter="24" v-if="settings.mailEnabled" style="margin-top: 10px">
+        <!-- Outlook Connect Button -->
+        <el-button
+          class="am-outlook-calendar-button"
+          :class="{ 'connected': settings.token, 'disabled': !settings.clientSecret || !settings.clientID }"
+          type="primary"
+          :disabled="!settings.clientSecret || !settings.clientID"
+          :loading="outlookLoading"
+          @click="settings.token ? disconnectFromOutlookAccount() : (!outlookCredSaved ? saveCredAndConnectToOutlookAccount() : connectToOutlookAccount())"
+        >
+          <div class="am-outlook-calendar-button-image">
+            <img class="" :src="$root.getUrl + 'public/img/outlook-calendar.png'"/>
+          </div>
+          <span class="am-outlook-calendar-button-text">
+            {{ !settings.token ? $root.labels.outlook_sign_in : $root.labels.outlook_sign_out }}
+          </span>
+        </el-button>
+      </div>
+    </div>
+
+    <div class="am-setting-box am-switch-box">
+      <!-- Calendar API Enabled -->
+    <el-row type="flex" align="middle" :gutter="24">
+      <el-col :span="19">
+        {{ $root.labels.outlook_calendar }}
+      </el-col>
+      <el-col :span="5" class="align-right">
+        <el-switch
+          v-model="settings.calendarEnabled"
+          active-text=""
+          inactive-text=""
+        >
+        </el-switch>
+      </el-col>
+    </el-row>
+
+    <div v-if="settings.calendarEnabled" style="margin-top: 10px">
+    <!-- SSL Alert -->
+    <el-alert
+      v-if="showSSLAlert"
+      type="warning"
+      show-icon
+      title=""
+      :description="$root.labels.outlook_ssl_warning"
+      :closable="false"
+    />
+    <!-- /SSL Alert -->
+
     <!-- Title & Description -->
     <el-collapse>
       <el-collapse-item class="am-setting-box">
@@ -85,7 +138,7 @@
                 <label slot="label">
                   {{ $root.labels.event_title }}:
                   <el-tooltip placement="top">
-                    <div slot="content" v-html="$root.labels.event_title_tooltip"></div>
+                    <div slot="content" v-html="$root.labels.event_title_tooltip_outlook"></div>
                     <i class="el-icon-question am-tooltip-icon"></i>
                   </el-tooltip>
                 </label>
@@ -98,7 +151,7 @@
                 <label slot="label">
                   {{ $root.labels.event_description }}:
                   <el-tooltip placement="top">
-                    <div slot="content" v-html="$root.labels.event_description_tooltip"></div>
+                    <div slot="content" v-html="$root.labels.event_description_tooltip_outlook"></div>
                     <i class="el-icon-question am-tooltip-icon"></i>
                   </el-tooltip>
                 </label>
@@ -158,7 +211,7 @@
                 <label slot="label">
                   {{ $root.labels.event_title }}:
                   <el-tooltip placement="top">
-                    <div slot="content" v-html="$root.labels.event_title_tooltip"></div>
+                    <div slot="content" v-html="$root.labels.event_title_tooltip_outlook"></div>
                     <i class="el-icon-question am-tooltip-icon"></i>
                   </el-tooltip>
                 </label>
@@ -171,7 +224,7 @@
                 <label slot="label">
                   {{ $root.labels.event_description }}:
                   <el-tooltip placement="top">
-                    <div slot="content" v-html="$root.labels.event_description_tooltip"></div>
+                    <div slot="content" v-html="$root.labels.event_description_tooltip_outlook"></div>
                     <i class="el-icon-question am-tooltip-icon"></i>
                   </el-tooltip>
                 </label>
@@ -368,7 +421,8 @@
       </el-select>
     </el-form-item>
     <!-- /Maximum Number Of Events Returned -->
-
+    </div>
+    </div>
   </el-form>
   <!-- /Integration Outlook Calendar -->
 
@@ -395,6 +449,8 @@
           maximumNumberOfEventsReturned: [50, 100, 200, 500, 999]
         },
         settings: this.outlookCalendar,
+        outlookLoading: false,
+        outlookCredSaved: false,
         activeTab: 'appointments'
       }
     },
@@ -405,6 +461,10 @@
       }
     },
 
+    mounted () {
+      this.outlookCredSaved = this.settings.clientID && this.settings.clientSecret
+    },
+
     methods: {
       onChangeAddAttendees () {
         if (this.settings.addAttendees === false) {
@@ -412,7 +472,52 @@
         }
       },
 
-      openDialog(name) {
+      saveCredAndConnectToOutlookAccount () {
+        this.outlookLoading = true
+
+        this.$http.post(
+          `${this.$root.getAjaxUrl}/settings`,
+          {outlookCalendar: {clientID: this.settings.clientID, clientSecret: this.settings.clientSecret, mailEnabled: true}}
+        ).then(() => {
+          this.connectToOutlookAccount()
+        }).catch((e) => {
+          this.outlookLoading = false
+
+          this.notify(this.$root.labels.error, e.message, 'error')
+        })
+      },
+
+      connectToOutlookAccount () {
+        this.outlookLoading = true
+
+        if (this.settings.clientID && this.settings.clientSecret) {
+          this.$http.get(`${this.$root.getAjaxUrl}/outlook/authorization/url/0`)
+            .then(response => {
+              window.location.href = response.data.data.authUrl
+            })
+            .catch(e => {
+              this.outlookLoading = false
+
+              this.notify(this.$root.labels.error, e.message, 'error')
+            })
+        }
+      },
+
+      disconnectFromOutlookAccount () {
+        this.outlookLoading = true
+
+        this.$http.post(
+          `${this.$root.getAjaxUrl}/outlook/disconnect/0`
+        ).then(() => {
+          this.settings.token = null
+        }).catch(e => {
+          this.notify(this.$root.labels.error, e.message, 'error')
+        }).finally(() => {
+          this.outlookLoading = false
+        })
+      },
+
+      openDialog (name) {
         this.$emit('openDialog', name)
       },
 

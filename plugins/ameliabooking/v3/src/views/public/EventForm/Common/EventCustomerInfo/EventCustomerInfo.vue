@@ -4,7 +4,7 @@
     class="am-elfci"
     :class="props.globalClass"
   >
-    <template v-if="!loading">
+    <div v-show="!loading">
       <div
         v-if="(paymentError && instantBooking) || (paymentError && isWaitingAvailable)"
         class="am-elfci__error"
@@ -17,6 +17,37 @@
         >
         </AmAlert>
       </div>
+
+      <div v-if="authError" class="am-elfci__error">
+        <AmAlert
+            type="error"
+            :title="authErrorMessage"
+            :show-icon="true"
+            :closable="true"
+        >
+        </AmAlert>
+      </div>
+
+      <!-- Social Buttons -->
+      <div v-if="(settings.socialLogin.googleLoginEnabled && settings.general.googleClientId && !store.getters['customerInfo/getLoggedUser']) || (settings.socialLogin.facebookLoginEnabled && settings.socialLogin.facebookCredentialsEnabled && !store.getters['customerInfo/getLoggedUser'])">
+        <div class="am-elfci__social-wrapper">
+          <div class="am-elfci__social-wrapper__label">
+            {{amLabels.auto_fill_your_details}}
+          </div>
+          <am-social-button
+            :provider="socialProvider"
+            @social-action="onSignupSocial"
+          />
+        </div>
+
+        <!-- Social Divider -->
+        <div class="am-elfci__social-divider">
+          <span class="par-sm">{{ amLabels.or_enter_details_below }}</span>
+        </div>
+        <!-- /Social Divider -->
+
+      </div>
+      <!-- /Social Buttons -->
 
       <el-form
         ref="infoFormRef"
@@ -41,13 +72,14 @@
         <template v-for="(item, index) in eventCustomFieldsArray" :key="index">
           <component
             :is="infoFormConstruction[`cf${item.id}`].template"
+            v-if="checkCustomerCustomFieldVisibility(item)"
             ref="customFieldsCollectorRefs"
             v-model="infoFormData[`cf${item.id}`]"
             v-bind="infoFormConstruction[`cf${item.id}`].props"
           ></component>
         </template>
       </el-form>
-    </template>
+    </div>
 
     <div v-show="!loading">
       <PaymentOnSite
@@ -84,7 +116,9 @@ import {
   onMounted,
   nextTick,
   watchEffect,
+  watch
 } from 'vue'
+import VueAuthenticate from 'vue-authenticate'
 
 // * Form Fields Templates
 import { formFieldsTemplates } from '../../../../../assets/js/common/formFieldsTemplates.js'
@@ -101,6 +135,9 @@ import { usePrepaidPrice } from "../../../../../assets/js/common/appointments";
 import AmAlert from "../../../../_components/alert/AmAlert.vue";
 import useAction from "../../../../../assets/js/public/actions";
 import {settings} from "../../../../../plugins/settings";
+import httpClient from "../../../../../plugins/axios";
+import AmSocialButton from "../../../../common/FormFields/AmSocialButton.vue";
+import {SocialAuthOptions} from "../../../../../assets/js/admin/socialAuthOptions";
 
 let props = defineProps({
   globalClass: {
@@ -120,6 +157,21 @@ const store = useStore()
 store.dispatch('customerInfo/requestCurrentUserData')
 // filter custom fields
 store.dispatch('customFields/filterEventCustomFields')
+
+watch(
+    () => store.getters['customerInfo/getLoggedUser'],
+    (newValue, oldValue) => {
+      if (newValue) {
+        let customer = store.getters['customerInfo/getCustomer']
+
+        store.commit('customFields/populateCustomerCustomFields', customer)
+
+        if (customer.customFields.includes('datepicker')) {
+          refreshDatePickerValue.value = true
+        }
+      }
+    }
+)
 
 // * Loading State
 let loading = computed(() => store.getters['getLoading'])
@@ -222,6 +274,9 @@ let refCFPlaceholders = ref({})
 
 // * InitInfoStep hook - adding coupon
 let couponCode = ref('')
+
+// * Form field date picker needs refresh
+let refreshDatePickerValue = ref(false)
 
 // * Form data
 let infoFormData = ref({
@@ -381,6 +436,15 @@ Object.keys(customFields.value).forEach((fieldKey) => {
     }
   }
 
+  if (customFields.value[fieldKey].type === 'checkbox' || customFields.value[fieldKey].type === 'radio') {
+    infoFormConstruction.value[fieldKey].props.options = infoFormConstruction.value[fieldKey].props.options.map((option) => {
+      return {
+        ...option,
+        value: option.label
+      }
+    })
+  }
+
   if (customFields.value[fieldKey].type === 'text-area') {
     infoFormConstruction.value[fieldKey].props = {
       ...infoFormConstruction.value[fieldKey].props,
@@ -398,7 +462,8 @@ Object.keys(customFields.value).forEach((fieldKey) => {
   if (customFields.value[fieldKey].type === 'datepicker') {
     infoFormConstruction.value[fieldKey].props = {
       ...infoFormConstruction.value[fieldKey].props,
-      ...{weekStartsFromDay: amSettings.wordpress.startOfWeek}
+      ...{weekStartsFromDay: amSettings.wordpress.startOfWeek},
+      refreshValue: refreshDatePickerValue
     }
   }
 })
@@ -482,7 +547,7 @@ onMounted(() => {
 
 // * Submit Form
 function submitForm() {
-  store.commit('setLoading', true)
+  // store.commit('setLoading', true)
   footerButtonReset()
 
   // Trim inputs
@@ -521,19 +586,20 @@ function submitForm() {
         }
       }
     } else {
-      store.commit('setLoading', false)
+      // store.commit('setLoading', false)
       let fieldElement
-      allFieldsRefs.value.some(el => {
-        if (el.shouldShowError === true) {
-          fieldElement = el.formItemRef
-          return el.shouldShowError === true
+
+      infoFormRef.value.fields.some(el => {
+        if (el.validateState === 'error') {
+          fieldElement = el.$el
+          return el.validateState === 'error'
         }
       })
 
-      let phoneField = allFieldsRefs.value.find(el => el.prop === 'phone')
+      let phoneField = infoFormRef.value.fields.find(el => el.prop === 'phone')
+      infoFormConstruction.value.phone.props.phoneError = !!(phoneField && phoneField.validateState === 'error')
 
-      infoFormConstruction.value.phone.props.phoneError = !!(phoneField && phoneField.shouldShowError && phoneField.validateMessage)
-
+      // * Scroll to first error
       useScrollTo(infoFormWrapperRef.value, fieldElement, 0, 300)
       return false
     }
@@ -553,6 +619,34 @@ function callPaymentError (msg) {
   store.commit('payment/setError', msg)
 }
 
+let visibilityFlags = ref({})
+
+function checkCustomerCustomFieldVisibility (cf) {
+  if (cf.saveType === 'customer') {
+    let customerCustomFields = store.getters['customerInfo/getCustomer'].customFields
+
+    if (!customerCustomFields || !(cf.id in JSON.parse(customerCustomFields))) {
+      return true
+    }
+
+    if (visibilityFlags.value[cf.id]) {
+      return visibilityFlags.value[cf.id]
+    }
+
+    switch (cf.type) {
+      case 'checkbox':
+      case 'file':
+        visibilityFlags.value[cf.id] = !cf.saveFirstChoice && customFields.value['cf' + cf.id].value !== []
+        return visibilityFlags.value[cf.id]
+      default:
+        visibilityFlags.value[cf.id] = !cf.saveFirstChoice && customFields.value['cf' + cf.id].value !== ''
+        return visibilityFlags.value[cf.id]
+    }
+  }
+
+  return true
+}
+
 // * Responsive - Container Width
 let cWidth = inject('containerWidth')
 let dWidth = inject('dialogWidth')
@@ -562,6 +656,43 @@ let componentWidth = computed(() => {
 })
 
 let responsiveClass = computed(() => useResponsiveClass(componentWidth.value))
+
+let socialProvider = ref('')
+const VueAuthenticateInstance = VueAuthenticate.factory(httpClient, SocialAuthOptions)
+// * Facebook Sign in error alert
+let authError = ref(false)
+let authErrorMessage = ref('')
+
+function onSignupSocial({ provider, credentials }) {
+  const socialCheckUrl = `/users/authentication/${provider}`
+  const data = {}
+  socialProvider = provider
+
+  if (provider === 'google') {
+    data.code = credentials
+    httpClient.post(`${socialCheckUrl}`, data).then(response => {
+      setDataFromSocialLogin(response.data.data.user)
+    })
+  }
+  if (provider === 'facebook') {
+    VueAuthenticateInstance.options.providers[provider].url = `${socialCheckUrl}`
+    VueAuthenticateInstance.authenticate(provider, data).then((response) => {
+      setDataFromSocialLogin(response.data.data.user)
+    }).catch((error) => {
+      if (!VueAuthenticateInstance.isAuthenticated()) {
+        authError.value = true
+        authErrorMessage.value = 'User is not authenticated.'
+        store.commit('setLoading', false)
+      }
+    })
+  }
+}
+
+function setDataFromSocialLogin(data) {
+  infoFormData.value.firstName = data.firstName
+  infoFormData.value.lastName = data.lastName
+  infoFormData.value.email = data.email
+}
 </script>
 
 <script>
@@ -580,6 +711,79 @@ export default {
     * {
       box-sizing: border-box;
       word-break: break-word;
+    }
+
+    &__social-wrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      margin: 8px 0 24px;
+      gap: 24px;
+
+      .am-social-signin {
+        &__google {
+          #g_id_onload {
+            display: none;
+          }
+          .g_id_signin {
+            width: 64px;
+          }
+        }
+      }
+
+      &__label {
+        font-weight: 500;
+        font-size: 15px;
+        color: var(--black, #04080B);
+      }
+
+      &-button {
+        display: flex;
+        gap: 8px;
+        padding: 8px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+        flex: 1 1 0;
+        height: 40px;
+        box-sizing: border-box;
+        border: 1px solid $shade-250;
+        background: var(--white, #FFF);
+        cursor: pointer;
+        width: 100%;
+        max-width: 100%;
+        box-shadow: 0 2px 2px 0 rgba(14, 25, 32, 0.03);
+        color: var(--black, #04080B);
+        font-size: 15px;
+        font-weight: 500;
+      }
+    }
+
+    &__social-divider {
+      align-items: center;
+      display: flex;
+      margin-bottom: 24px;
+
+      // Before & After
+      &:before,
+      &:after {
+        background: var(--shade-250, #D1D5D7);
+        content: '';
+        height: 1px;
+        width: 100%;
+      }
+
+      span {
+        flex: none;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        color: var(--shade-500, #808A90);
+        margin-left: 8px;
+        margin-right: 8px;
+      }
     }
 
     &__main {

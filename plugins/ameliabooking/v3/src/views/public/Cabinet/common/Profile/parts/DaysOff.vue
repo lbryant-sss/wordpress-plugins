@@ -110,8 +110,7 @@
           >
             <AmInput
               v-model="dayOffFormData.name"
-            >
-            </AmInput>
+            />
           </el-form-item>
 
           <el-form-item

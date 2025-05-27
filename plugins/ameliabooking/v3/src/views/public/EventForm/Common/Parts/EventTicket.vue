@@ -1,7 +1,7 @@
 <template>
   <div
     class="am-ct"
-    :class="[{ 'am-readonly': props.readOnly }, responsiveClass]"
+    :class="[{ 'am-readonly': props.readonly }, responsiveClass]"
     :style="cssVars"
   >
     <div class="am-ct__info">
@@ -22,21 +22,20 @@
     </div>
     <div
       class="am-ct__action"
-      :class="[{ 'am-readonly': props.readOnly }, responsiveClass]"
+      :class="[{ 'am-readonly': props.readonly }, responsiveClass]"
     >
       <p v-if="componentWidth > 500" class="am-ct__action-price">
         {{ useFormattedPrice(props.ticket.price) }}
       </p>
       <AmInputNumber
-        v-if="!props.readOnly"
+        v-if="!props.readonly"
         v-model="spots"
         size="small"
         :min="0"
         :max="selectedEvent.bringingAnyone ? spotsLimitation : 1"
         :disabled="disableSelection"
         @change="updateSpots"
-      >
-      </AmInputNumber>
+      />
     </div>
   </div>
 </template>
@@ -74,7 +73,7 @@ const props = defineProps({
   extraPeople: {
     type: Number,
   },
-  readOnly: {
+  readonly: {
     type: Boolean,
     default: false,
   },

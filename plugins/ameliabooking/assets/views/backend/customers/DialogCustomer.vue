@@ -29,183 +29,205 @@
       <!-- Form -->
       <el-form :model="customer" ref="customer" :rules="rules" label-position="top" @submit.prevent="onSubmit">
 
-        <!-- First Name -->
-        <el-form-item :label="$root.labels.first_name+ ':'" prop="firstName">
-          <el-input v-model="customer.firstName" auto-complete="off" @input="clearValidation()" @change="trimProperty(customer, 'firstName')"></el-input>
-        </el-form-item>
 
-        <!-- Last Name -->
-        <el-form-item :label="$root.labels.last_name + ':'" prop="lastName">
-          <el-input v-model="customer.lastName" auto-complete="off" @input="clearValidation()" @change="trimProperty(customer, 'lastName')"></el-input>
-        </el-form-item>
+        <el-tabs v-model="customerTabs"> <!--@tab-click="handleTabClick"-->
 
-        <!-- Email -->
-        <el-form-item :label="$root.labels.email + ':'" prop="email" :error="errors.email">
-          <el-input
-              v-model="customer.email"
-              auto-complete="off"
-              :placeholder="$root.labels.email_placeholder"
-              @input="clearValidation()"
-          >
-          </el-input>
-        </el-form-item>
+          <el-tab-pane :label="$root.labels.details" name="details">
+            <!-- First Name -->
+            <el-form-item :label="$root.labels.first_name+ ':'" prop="firstName">
+              <el-input v-model="customer.firstName" auto-complete="off" @input="clearValidation()" @change="trimProperty(customer, 'firstName')"></el-input>
+            </el-form-item>
 
-        <!-- WP User -->
-        <el-form-item label="placeholder">
-          <label slot="label">
-            {{ $root.labels.wp_user }}:
-            <el-tooltip placement="top">
-              <div slot="content" v-html="$root.labels.wp_user_customer_tooltip"></div>
-              <i class="el-icon-question am-tooltip-icon"></i>
-            </el-tooltip>
-          </label>
-          <el-select
-              v-model="customer.externalId"
-              ref="wpUser"
-              filterable
-              clearable
-              :placeholder="$root.labels.select_wp_user"
-              @change="clearValidation()"
-          >
-            <div class="am-drop">
-              <div class="am-drop-create-item" @click="selectCreateNewWPUser" v-if="(customer && customer.email)">
-                {{ $root.labels.create_new }}
-              </div>
-              <el-option
-                  :class="{'hidden' : item.value === 0}"
-                  v-for="item in formOptions.wpUsers"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
+            <!-- Last Name -->
+            <el-form-item :label="$root.labels.last_name + ':'" prop="lastName">
+              <el-input v-model="customer.lastName" auto-complete="off" @input="clearValidation()" @change="trimProperty(customer, 'lastName')"></el-input>
+            </el-form-item>
+
+            <!-- Email -->
+            <el-form-item :label="$root.labels.email + ':'" prop="email" :error="errors.email">
+              <el-input
+                  v-model="customer.email"
+                  auto-complete="off"
+                  :placeholder="$root.labels.email_placeholder"
+                  @input="clearValidation()"
               >
-              </el-option>
-            </div>
-          </el-select>
-        </el-form-item>
+              </el-input>
+            </el-form-item>
 
-        <!-- Phone -->
-        <el-form-item :label="$root.labels.phone + ':'">
-          <phone-input
-              :countryPhoneIso="customer.countryPhoneIso"
-              :savedPhone="customer.phone"
-              @phoneFormatted="phoneFormatted"
-          >
-          </phone-input>
-        </el-form-item>
+            <!-- WP User -->
+            <el-form-item label="placeholder">
+              <label slot="label">
+                {{ $root.labels.wp_user }}:
+                <el-tooltip placement="top">
+                  <div slot="content" v-html="$root.labels.wp_user_customer_tooltip"></div>
+                  <i class="el-icon-question am-tooltip-icon"></i>
+                </el-tooltip>
+              </label>
+              <el-select
+                  v-model="customer.externalId"
+                  ref="wpUser"
+                  filterable
+                  clearable
+                  :placeholder="$root.labels.select_wp_user"
+                  @change="clearValidation()"
+              >
+                <div class="am-drop">
+                  <div class="am-drop-create-item" @click="selectCreateNewWPUser" v-if="(customer && customer.email)">
+                    {{ $root.labels.create_new }}
+                  </div>
+                  <el-option
+                      :class="{'hidden' : item.value === 0}"
+                      v-for="item in formOptions.wpUsers"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                  >
+                  </el-option>
+                </div>
+              </el-select>
+            </el-form-item>
 
-        <!-- Notification Language -->
-        <el-form-item
-          v-if="!(usedLanguages.length === 1 && usedLanguages[0] === $root.settings.wordpress.locale)"
-          label="placeholder"
-        >
-          <label slot="label">
-            {{ $root.labels.notification_language }}:
-            <el-tooltip placement="top">
-              <div slot="content" v-html="$root.labels.wp_customer_lang_tooltip" :style="{maxWidth: '312px'}"></div>
-              <i class="el-icon-question am-tooltip-icon"></i>
-            </el-tooltip>
-          </label>
-          <el-select
-            class="select-languages"
-            :placeholder="$root.labels.language"
-            v-model="customer.language"
-            clearable
-            filterable
-          >
-            <template slot="prefix">
-              <img class="select-languages-flag" :src="getLanguageFlag(customer.language)">
-            </template>
+            <!-- Phone -->
+            <el-form-item :label="$root.labels.phone + ':'">
+              <phone-input
+                  :countryPhoneIso="customer.countryPhoneIso"
+                  :savedPhone="customer.phone"
+                  @phoneFormatted="phoneFormatted"
+              >
+              </phone-input>
+            </el-form-item>
 
-            <el-option
-              v-for="(lang, index) in usedLanguages"
-              :key="index"
-              :label="getLanguageLabel(lang)"
-              :value="lang"
+            <!-- Notification Language -->
+            <el-form-item
+                v-if="!(usedLanguages.length === 1 && usedLanguages[0] === $root.settings.wordpress.locale)"
+                label="placeholder"
             >
+              <label slot="label">
+                {{ $root.labels.notification_language }}:
+                <el-tooltip placement="top">
+                  <div slot="content" v-html="$root.labels.wp_customer_lang_tooltip" :style="{maxWidth: '312px'}"></div>
+                  <i class="el-icon-question am-tooltip-icon"></i>
+                </el-tooltip>
+              </label>
+              <el-select
+                  class="select-languages"
+                  :placeholder="$root.labels.language"
+                  v-model="customer.language"
+                  clearable
+                  filterable
+              >
+                <template slot="prefix">
+                  <img class="select-languages-flag" :src="getLanguageFlag(customer.language)">
+                </template>
+
+                <el-option
+                    v-for="(lang, index) in usedLanguages"
+                    :key="index"
+                    :label="getLanguageLabel(lang)"
+                    :value="lang"
+                >
               <span>
                 <img class="option-languages-flag" :src="getLanguageFlag(lang)">
                 {{ getLanguageLabel(lang) }}
               </span>
-            </el-option>
-          </el-select>
-        </el-form-item>
+                </el-option>
+              </el-select>
+            </el-form-item>
 
-        <!-- Gender -->
-        <el-form-item :label="$root.labels.gender + ':'">
-          <el-select
-              v-model="customer.gender"
-              placeholder=""
-              clearable
-              @change="clearValidation()"
-          >
-            <el-option
-                v-for="item in formOptions.genders"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-            >
-            </el-option>
-          </el-select>
-        </el-form-item>
+            <!-- Gender -->
+            <el-form-item :label="$root.labels.gender + ':'">
+              <el-select
+                  v-model="customer.gender"
+                  placeholder=""
+                  clearable
+                  @change="clearValidation()"
+              >
+                <el-option
+                    v-for="item in formOptions.genders"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                >
+                </el-option>
+              </el-select>
+            </el-form-item>
 
-        <!-- Date of Birth -->
-        <el-form-item :label="$root.labels.date_of_birth + ':'">
-          <v-date-picker
-            v-model="customer.birthday"
-            @input="clearValidation()"
-            mode='single'
-            popover-visibility="focus"
-            popover-direction="top"
-            tint-color='#1A84EE'
-            :show-day-popover=false
-            :input-props='{
+            <!-- Date of Birth -->
+            <el-form-item :label="$root.labels.date_of_birth + ':'">
+              <v-date-picker
+                  v-model="customer.birthday"
+                  @input="clearValidation()"
+                  mode='single'
+                  popover-visibility="focus"
+                  popover-direction="top"
+                  tint-color='#1A84EE'
+                  :show-day-popover=false
+                  :input-props='{
               class: "el-input__inner",
               placeholder: $root.labels.select_date_of_birth
              }'
-            :is-expanded=false
-            :formats="vCalendarFormats"
-          >
-          </v-date-picker>
-          <span
-            v-if="customer.birthday"
-            class="am-v-date-picker-suffix el-input__suffix-inner"
-            @click="customer.birthday = null"
-          >
+                  :is-expanded=false
+                  :formats="vCalendarFormats"
+              >
+              </v-date-picker>
+              <span
+                  v-if="customer.birthday"
+                  class="am-v-date-picker-suffix el-input__suffix-inner"
+                  @click="customer.birthday = null"
+              >
             <i class="el-select__caret el-input__icon el-icon-circle-close"></i>
           </span>
-        </el-form-item>
+            </el-form-item>
 
-        <div class="am-customer-activity" v-if="customer.countAppointmentBookings > 0 || customer.countEventBookings > 0">
-          <span class="am-customer-activity-title">{{ $root.labels.customer_activity + ':' }}</span>
-          <div class="align-left">
-            <div class="am-customer-activity-box" v-if="customer.countAppointmentBookings > 0">
-              <span>{{ $root.labels.appointments }}: {{customer.countAppointmentBookings}}</span>
-              <el-button size="small" @click="showCustomerActivity('appointments')">
-                {{ $root.labels.view_appointments }}
-              </el-button>
+            <div class="am-customer-activity" v-if="customer.countAppointmentBookings > 0 || customer.countEventBookings > 0">
+              <span class="am-customer-activity-title">{{ $root.labels.customer_activity + ':' }}</span>
+              <div class="align-left">
+                <div class="am-customer-activity-box" v-if="customer.countAppointmentBookings > 0">
+                  <span>{{ $root.labels.appointments }}: {{customer.countAppointmentBookings}}</span>
+                  <el-button size="small" @click="showCustomerActivity('appointments')">
+                    {{ $root.labels.view_appointments }}
+                  </el-button>
+                </div>
+                <div class="am-customer-activity-box" v-if="customer.countEventBookings > 0">
+                  <span>{{ $root.labels.events_booked }}: {{customer.countEventBookings}}</span>
+                  <el-button size="small" @click="showCustomerActivity('events')">
+                    {{ $root.labels.view_events }}
+                  </el-button>
+                </div>
+              </div>
             </div>
-            <div class="am-customer-activity-box" v-if="customer.countEventBookings > 0">
-              <span>{{ $root.labels.events_booked }}: {{customer.countEventBookings}}</span>
-              <el-button size="small" @click="showCustomerActivity('events')">
-                {{ $root.labels.view_events }}
-              </el-button>
-            </div>
-          </div>
-        </div>
 
-        <div class="am-divider"></div>
+            <div class="am-divider"></div>
 
-        <!-- Note -->
-        <el-form-item :label="$root.labels.note_internal + ':'">
-          <el-input
-              type="textarea"
-              :autosize="{ minRows: 4, maxRows: 6}"
-              placeholder=""
-              v-model="customer.note"
-              @input="clearValidation()"
-          >
-          </el-input>
-        </el-form-item>
+            <!-- Note -->
+            <el-form-item :label="$root.labels.note_internal + ':'">
+              <el-input
+                  type="textarea"
+                  :autosize="{ minRows: 4, maxRows: 6}"
+                  placeholder=""
+                  v-model="customer.note"
+                  @input="clearValidation()"
+              >
+              </el-input>
+            </el-form-item>
+
+          </el-tab-pane>
+
+          <el-tab-pane :label="$root.labels.custom_fields" name="customFields" v-if="customerCustomFields && customerCustomFields.length">
+
+            <customer-custom-fields
+              :customer="customer"
+              :customFields="customerCustomFields"
+              entityType="customer"
+              @clearValidation="clearValidation"
+            >
+            </customer-custom-fields>
+
+          </el-tab-pane>
+
+        </el-tabs>
+
+
       </el-form>
     </div>
 
@@ -274,10 +296,12 @@
   import imageMixin from '../../../js/common/mixins/imageMixin'
   import dateMixin from '../../../js/common/mixins/dateMixin'
   import notifyMixin from '../../../js/backend/mixins/notifyMixin'
+  import customFieldMixin from '../../../js/common/mixins/customFieldMixin'
   import helperMixin from '../../../js/backend/mixins/helperMixin'
+  import CustomerCustomFields from '../parts/CustomerCustomFields.vue'
 
   export default {
-    mixins: [imageMixin, dateMixin, notifyMixin, helperMixin],
+    mixins: [imageMixin, dateMixin, notifyMixin, helperMixin, customFieldMixin],
 
     props: {
       customer: null
@@ -285,6 +309,8 @@
 
     data () {
       return {
+        customerTabs: 'details',
+        customerCustomFields: null,
         languagesData: [],
         usedLanguages: [],
         dialogLoading: true,
@@ -336,11 +362,11 @@
       if (!this.usedLanguages.includes(this.customer.language)) {
         this.customer.language = this.$root.settings.wordpress.locale
       }
+      this.getLanguagesData()
     },
 
     mounted () {
       this.inlineSVG()
-      this.getLanguagesData()
     },
 
     methods: {
@@ -353,10 +379,11 @@
       getLanguagesData () {
         this.$http.get(`${this.$root.getAjaxUrl}/entities`, {
           params: this.getAppropriateUrlParams({
-            types: ['settings']
+            types: ['settings', 'custom_fields']
           })
         }).then((response) => {
           this.languagesData = response.data.data.settings.languages
+          this.customerCustomFields = response.data.data.customFields.filter(cf => cf.saveType === 'customer')
         }).catch((e) => {
           console.log(e.message)
         })
@@ -398,6 +425,10 @@
           customer.translations = JSON.stringify({ 'defaultLanguage': customer.language })
         } else {
           customer.translations = null
+        }
+
+        if (customer.customFields) {
+          customer.customFields = JSON.stringify(this.customer.customFields)
         }
 
         return customer
@@ -444,6 +475,7 @@
     },
 
     components: {
+      CustomerCustomFields,
       PhoneInput,
       DialogActions
     }

@@ -58,6 +58,39 @@
           ></ProfileSkeleton>
         </el-tab-pane>
 
+        <!-- Customer Custom Fields -->
+        <el-tab-pane
+          v-if="Object.keys(customFields).length"
+          :label="amLabels.custom_fields"
+          name="third"
+        >
+          <template v-if="!loading">
+            <el-form
+              ref="customFieldsFormRef"
+              :model="customFieldsForm"
+              :rules="customFieldsFormRules"
+              label-position="top"
+              class="am-capei-att-cf__form"
+              :class="responsiveClass"
+            >
+              <template v-for="cf in Object.values(customFields)" :key="cf.id">
+                <component
+                  :is="cfFormConstruction[cf.id]?.template"
+                  v-if="cf.id in customFieldsForm"
+                  v-model="customFieldsForm[cf.id]"
+                  v-bind="cfFormConstruction[cf.id]?.props"
+                />
+              </template>
+            </el-form>
+          </template>
+          <ProfileSkeleton
+            v-else
+            :count="Object.keys(customFields).length"
+            :page-width="pageWidth"
+          ></ProfileSkeleton>
+        </el-tab-pane>
+        <!-- /Customer Custom Fields -->
+
         <el-tab-pane
           class="am-capi__tabs-item"
           :label="amLabels.password_tab"
@@ -195,6 +228,7 @@ onMounted(() => {
   nextTick(() => {
     pageWidth.value = pageContainer.value.offsetWidth
   })
+  setInitCustomerCustomFields()
 })
 
 let responsiveClass = computed(() => {
@@ -364,7 +398,7 @@ let infoFormConstruction = ref({
       label: amLabels.value.date_of_birth,
       placeholder: amLabels.value.enter_date_of_birth,
       clearable: true,
-      readOnly: false,
+      readonly: false,
       class: computed(() => `am-capi__item am-capi__item-birthday ${responsiveClass.value}`),
     }
   }
@@ -614,6 +648,127 @@ function deleteProfile () {
   })
 }
 
+/**
+ * * Customer custom fields form
+ */
+
+// Refs and reactive objects
+const customFieldsFormRef = ref(null)
+const customFieldsForm = reactive({})
+const customFieldsFormRules = reactive({})
+const cfFormConstruction = reactive({})
+const customFields = reactive({})
+
+function setCustomerCustomFieldsFormData(field, id, savedValue) {
+  customFieldsForm[id] = savedValue ?? ''
+}
+
+function setCustomerCustomFieldsFormConstruction(field, id) {
+  cfFormConstruction[id] = {
+    template: formFieldsTemplates[field.type],
+    props: {
+      id,
+      itemName: id.toString(),
+      label: field.label,
+      options: field.options,
+      class: `am-capei-att-cf__item am-cf-width-${field.width}`,
+    },
+  }
+
+  if (field.type === 'text-area') {
+    cfFormConstruction[id].props.itemType = 'textarea'
+  }
+
+  if (field.type === 'datepicker') {
+    cfFormConstruction[id].props.weekStartsFromDay = amSettings.wordpress.startOfWeek
+  }
+
+  if (field.type === 'file') {
+    let profileId =  store.getters['auth/getProfile'] ? store.getters['auth/getProfile'].id : null
+    cfFormConstruction[id].props = {
+      ...cfFormConstruction[id].props,
+      ...{
+        btnLabel: amLabels.value.upload_file_here,
+        isUpload: true,
+        bookingId: profileId,
+        source: 'cabinet-customer'
+      },
+    }
+  }
+}
+
+function setCustomerCustomFieldsFormRules(field) {
+  customFieldsFormRules[field.id] = [
+    {
+      message: amLabels.value.required_field,
+      required: field.required,
+      trigger: ['submit', 'change'],
+    },
+  ]
+}
+
+function setInitCustomerCustomFields() {
+  const allFields = store.getters['entities/getCustomFields']
+  const savedCustomFields = JSON.parse(store.getters['auth/getProfile'].customFields || '{}')
+
+  allFields
+    .filter(field => field.saveType === 'customer' && field.type !== 'content')
+    .sort((a, b) => a.position - b.position)
+    .forEach(field => {
+      const { position, id } = field
+      const savedValue = savedCustomFields[id]?.value
+
+      customFields[position] = {
+        ...field,
+        value: savedValue ?? (field.type === 'checkbox' || field.type === 'file' ? [] : ''),
+      }
+
+      setCustomerCustomFieldsFormData(field, id, customFields[position].value)
+      setCustomerCustomFieldsFormConstruction(field, id)
+      setCustomerCustomFieldsFormRules(field)
+    })
+}
+
+function saveCustomerCustomFields() {
+  customFieldsFormRef.value.validate((valid) => {
+    if (valid) {
+      const user = store.getters['auth/getProfile']
+      const customFieldData = {}
+
+      // Build full custom field data structure
+      for (const id in customFields) {
+        const field = customFields[id]
+        const value = customFieldsForm[field.id]
+        customFieldData[field.id] = {
+          label: field.label,
+          type: field.type,
+          value: typeof value === 'string' ? value.trim() : value,
+        }
+      }
+
+      const updatedUser = {
+        ...user,
+        customFields: JSON.stringify(customFieldData),
+      }
+
+      store.commit('setLoading', true)
+
+      httpClient.post(
+          `/users/${cabinetType.value}s/${user.id}`,
+          updatedUser,
+          useAuthorizationHeaderObject(store)
+      ).finally(() => {
+        store.commit('setLoading', false)
+        successMessage.value = amLabels.value.profile_data_success
+        alertVisibility.value = true
+      })
+    } else {
+      return false
+    }
+  })
+}
+provide('saveCustomerCustomFields', saveCustomerCustomFields)
+
 // * Colors
 let amColors = inject('amColors')
 
@@ -642,67 +797,6 @@ export default {
     &__inner {
       display: block;
       padding: 16px 32px;
-    }
-
-    // Tabs
-    .el-tabs {
-      &__header {
-        margin: 0 0 15px;
-      }
-
-      &__nav {
-        &-wrap {
-          &:after {
-            background-color: var(--am-c-capi-text-op10);
-          }
-
-          &.is-scrollable {
-            padding: 0 24px;
-          }
-        }
-
-        &-next,
-        &-prev {
-          color: var(--am-c-capi-text);
-          top: 11px;
-        }
-      }
-
-      &__active-bar {
-        background-color: var(--am-c-capi-primary);
-      }
-
-      &__item {
-        padding: 0 20px;
-        line-height: 40px;
-
-        &:nth-child(2) {
-          padding-left: 0;
-        }
-
-        &:last-child {
-          padding-right: 0;
-        }
-
-        &.is-focus {
-          color: var(--am-c-capi-text);
-
-          &.is-active {
-            color: var(--am-c-capi-primary);
-
-            &:focus {
-              &:not(:active) {
-                box-shadow: none;
-              }
-            }
-          }
-        }
-      }
-
-      &__content {
-        overflow: unset;
-        position: static;
-      }
     }
 
     &__form {
@@ -734,7 +828,7 @@ export default {
             &-birthday {
               .el-input__inner {
                 color: transparent !important;
-                text-shadow: 0 0 0 var(--am-input-c-text);
+                text-shadow: 0 0 0 var(--am-c-inp-text);
                 cursor: pointer;
               }
             }

@@ -1,5 +1,9 @@
 <template>
-  <div class="am-cat__sidemenu" :style="cssVars">
+  <div
+    role="navigation"
+    class="am-cat__sidemenu"
+    :style="cssVars"
+  >
     <div class="am-cat__sidemenu-item__wrapper">
       <div
         v-for="(item, index) in menuItems"
@@ -146,7 +150,6 @@ export default {
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;
-          overflow: hidden;
           text-align: center;
           font-size: 14px;
           font-weight: 500;
@@ -160,7 +163,6 @@ export default {
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;
-          overflow: hidden;
           text-align: center;
           color: var(--am-c-csm-text-op80);
           text-decoration: none;

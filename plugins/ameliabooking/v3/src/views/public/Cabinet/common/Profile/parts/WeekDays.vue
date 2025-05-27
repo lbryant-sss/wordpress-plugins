@@ -16,6 +16,7 @@
         <AmSwitch
           v-model="weekDay.enabled"
           size="small"
+          :aria-label="weekDays[weekDayIndex].label"
         />
       </div>
 

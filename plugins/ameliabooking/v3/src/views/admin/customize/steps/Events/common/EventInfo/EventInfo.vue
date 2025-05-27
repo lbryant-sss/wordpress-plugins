@@ -102,7 +102,7 @@
               :capacity="selectedEvent.maxCustomCapacity"
               :extra-people="selectedEvent.maxExtraPeople"
               :customized-labels="customLabels"
-              :read-only="true"
+              :readonly="true"
             />
           </template>
         </el-tab-pane>

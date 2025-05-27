@@ -120,7 +120,7 @@ function userfeedback_activate_plugin(){
 		);
 	}
 	activate_plugin( $basename, '', false, true );
-	
+
 	wp_send_json_success();
 	wp_die();
 }
@@ -246,7 +246,7 @@ function userfeedback_get_plugins()
 		'slug'      => 'instagram-feed',
 		'settings'  => admin_url('admin.php?page=sbi-settings'),
 	);
-	
+
 	// Smash Balloon (Facebook)
 	$plugins['smash-balloon-facebook'] = array(
 		'active'    => defined('CFFVER'),
@@ -258,7 +258,7 @@ function userfeedback_get_plugins()
 		'slug'      => 'custom-facebook-feed',
 		'settings'  => admin_url('admin.php?page=cff-setup'),
 	);
-	
+
 	// Smash Balloon (YouTube)
 	$plugins['smash-balloon-youtube'] = array(
 		'active'    => defined('SBYVER'),
@@ -270,7 +270,7 @@ function userfeedback_get_plugins()
 		'slug'      => 'feeds-for-youtube',
 		'settings'  => admin_url('admin.php?page=sby-feed-builder'),
 	);
-	
+
 	// Smash Balloon (Twitter)
 	$plugins['smash-balloon-twitter'] = array(
 		'active'    => defined('CTF_VERSION'),
@@ -282,7 +282,7 @@ function userfeedback_get_plugins()
 		'slug'      => 'custom-twitter-feeds',
 		'settings'  => admin_url('admin.php?page=ctf-feed-builder'),
 	);
-	
+
 	// TrustPulse
 	$plugins['trustpulse'] = array(
 		'active'    => defined('TRUSTPULSE_PLUGIN_VERSION'),
@@ -294,7 +294,7 @@ function userfeedback_get_plugins()
 		'slug'      => 'trustpulse-api',
 		'settings'  => admin_url('admin.php?page=trustpulse'),
 	);
-	
+
 	// SearchWP
 	$plugins['searchwp'] = array(
 		'active'    => defined('SEARCHWP_LIVE_SEARCH_VERSION'),
@@ -306,7 +306,7 @@ function userfeedback_get_plugins()
 		'slug'      => 'searchwp-live-ajax-search',
 		'settings'  => admin_url('admin.php?page=searchwp-live-search'),
 	);
-	
+
 	// AffiliateWP
 	$plugins['affiliatewp'] = array(
 		'active'    => class_exists('AffiliateWP_Requirements_Check'),
@@ -319,7 +319,7 @@ function userfeedback_get_plugins()
 		'settings'  => admin_url('admin.php?page=searchwp-live-search'),
 		'redirect'  => 'https://affiliatewp.com',
 	);
-	
+
 	// WP Simple Pay
 	$plugins['wpsimplepay'] = array(
 		'active'    => defined('SIMPLE_PAY_VERSION'),
@@ -331,7 +331,7 @@ function userfeedback_get_plugins()
 		'slug'      => 'stripe',
 		'settings'  => admin_url('edit.php?post_type=simple-pay&page=simpay_settings'),
 	);
-	
+
 	// Sugar Calendar
 	$plugins['sugarcalendar'] = array(
 		'active'    => class_exists('Sugar_Calendar\\Requirements_Check'),
@@ -343,7 +343,7 @@ function userfeedback_get_plugins()
 		'slug'      => 'sugar-calendar-lite',
 		'settings'  => admin_url('admin.php?page=sugar-calendar'),
 	);
-	
+
 	// Charitable
 	$plugins['charitable'] = array(
 		'active'    => class_exists( 'Charitable' ),
@@ -355,7 +355,7 @@ function userfeedback_get_plugins()
 		'slug'      => 'charitable',
 		'settings'  => admin_url('admin.php?page=charitable'),
 	);
-	
+
 	// WPCode
 	$plugins['wpcode'] = array(
 		'active'    => function_exists( 'WPCode' ),
@@ -367,7 +367,7 @@ function userfeedback_get_plugins()
 		'slug'      => 'insert-headers-and-footers',
 		'settings'  => admin_url('admin.php?page=wpcode-settings'),
 	);
-	
+
 	// Duplicator
 	$plugins['duplicator'] = array(
 		'active'    => defined( 'DUPLICATOR_VERSION' ),
@@ -390,7 +390,7 @@ function userfeedback_get_plugins()
 		'basename'  => 'pushengage/main.php',
 		'slug'      => 'pushengage',
 	);
-	
+
 	// Uncanny Automator
 	$plugins['uncanny-automator'] = array(
 		'active'    => function_exists('automator_get_recipe_id'),
@@ -401,6 +401,39 @@ function userfeedback_get_plugins()
 		'basename'  => 'uncanny-automator/uncanny-automator.php',
 		'slug'      => 'uncanny-automator',
 		'setup_complete'      => (bool) get_option('automator_reporting', false),
+	);
+
+	// Microsoft Clarity
+	$plugins['microsoft-clarity'] = array(
+		'active'    => function_exists('clarity_on_activation'),
+		'icon'      => plugin_dir_url(USERFEEDBACK_PLUGIN_FILE) . 'assets/img/plugins/microsoft-clarity.png',
+		'title'     => 'Microsoft Clarity',
+		'excerpt'   => __('See session recordings and advanced segmentation to improve your website’s performance. Works automatically with UserFeedback.', 'userfeedback'),
+		'installed' => array_key_exists('microsoft-clarity/clarity.php', $installed_plugins),
+		'basename'  => 'microsoft-clarity/clarity.php',
+		'slug'      => 'microsoft-clarity',
+	);
+
+	// Envira Gallery
+	$plugins['envira-gallery-lite'] = array(
+		'active'    => function_exists('envira_gallery'),
+		'icon'      => plugin_dir_url(USERFEEDBACK_PLUGIN_FILE) . 'assets/img/plugins/plugin-envira-gallery-leaf.png',
+		'title'     => 'Envira Gallery',
+		'excerpt'   => __('Create stunning, fast galleries to display your photos, videos, and more on your website. Works great with UserFeedback.', 'userfeedback'),
+		'installed' => array_key_exists('envira-gallery-lite/envira-gallery-lite.php', $installed_plugins),
+		'basename'  => 'envira-gallery-lite/envira-gallery-lite.php',
+		'slug'      => 'envira-gallery-lite',
+	);
+
+	// Pretty Links
+	$plugins['pretty-link'] = array(
+		'active'    => class_exists( 'PrliBaseController' ),
+		'icon'      => plugin_dir_url(USERFEEDBACK_PLUGIN_FILE) . 'assets/img/plugins/icon-prettylinks.svg',
+		'title'     => 'Pretty Links',
+		'excerpt'   => __('Automatically monetize your website content with affiliate links added automatically to your content.', 'userfeedback'),
+		'installed' => array_key_exists('pretty-link/pretty-link.php', $installed_plugins),
+		'basename'  => 'pretty-link/pretty-link.php',
+		'slug'      => 'pretty-link',
 	);
 
 	wp_send_json($plugins);

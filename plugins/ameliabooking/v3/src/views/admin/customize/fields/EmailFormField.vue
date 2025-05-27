@@ -16,7 +16,7 @@
       name="email"
       type="text"
       :placeholder="labelsDisplay('enter_email')"
-    ></AmInput>
+    />
   </el-form-item>
   <!-- /Email -->
 </template>

@@ -3,6 +3,7 @@
     class="am-fs__main"
     :style="cssVars"
     :class="responsiveClass"
+    role="main"
   >
     <div class="am-fs__main-inner">
       <slot name="header"></slot>

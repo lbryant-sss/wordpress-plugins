@@ -1,7 +1,7 @@
 <template>
   <el-popover
     ref="editRef"
-    v-model:visible="editPopVisible"
+    :visible="editPopVisible"
     :persistent="false"
     :show-arrow="false"
     :width="'auto'"
@@ -127,10 +127,8 @@ let amLabels = inject('amLabels')
 
 let editPopVisible = ref(false)
 
-function clickItem (e) {
-  e.stopPropagation()
-
-  editPopVisible.value= !editPopVisible.value
+function clickItem () {
+  editPopVisible.value = true
 }
 
 function editItem () {

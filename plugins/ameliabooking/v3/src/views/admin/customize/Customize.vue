@@ -12,11 +12,10 @@
           {'am-customize__capc-panel': pageRenderKey === 'capc' && pagesType === 'panel'},
           {'am-customize__capc-auth': pageRenderKey === 'capc' && pagesType === 'auth'}
         ]"
-        style="justify-content: space-between"
       >
         <div
           v-if="!licence.isBasic && !licence.isStarter && !licence.isLite && pageRenderKey !== 'capc' && pageRenderKey !== 'cape'"
-          style="display: flex; align-items: center"
+          class="am-customize__fs-flow__inner"
         >
           <div class="am-customize__fs-flow__label">
             {{amLabels.steps}}:
@@ -34,7 +33,7 @@
         <!-- Cabinet select for page type -->
         <div
           v-if="!licence.isLite && (pageRenderKey === 'capc' || pageRenderKey === 'cape')"
-          style="display: flex; align-items: center"
+          class="am-customize__fs-flow__inner"
         >
           <div class="am-customize__fs-flow__label">
             {{amLabels.steps}}:
@@ -453,9 +452,9 @@ export default {
   // -h- height
   // -fs- font size
   // -rad- border radius
-  --am-h-input: 40px;
-  --am-fs-input: 15px;
-  --am-rad-input: 6px;
+  --am-h-inp: 40px;
+  --am-fs-inp: 15px;
+  --am-rad-inp: 6px;
   --am-fs-label: 15px;
   --am-fs-btn: 15px;
 
@@ -472,6 +471,7 @@ export default {
       display: flex;
       flex-direction: row;
       align-items: center;
+      justify-content: space-between;
 
       &.am-customize__capc-panel {
         max-width: 1024px;
@@ -481,9 +481,16 @@ export default {
         max-width: 400px;
       }
 
+      &__inner {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
       .am-select-wrapper {
         max-width: 180px;
-        margin-left: 10px;
+        width: 100%;
+        flex: 0 0 180px;
       }
     }
   }

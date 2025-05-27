@@ -280,8 +280,6 @@ function saveTimeOut () {
   timeOutFormRef.value.validate((valid) => {
     if (valid) {
       emits('close')
-    } else {
-      console.log(111)
     }
   })
 }

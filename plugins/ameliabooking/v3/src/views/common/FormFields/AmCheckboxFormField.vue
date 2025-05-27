@@ -15,7 +15,7 @@
         v-for="(option, i) in props.options"
         :key="i"
         :label="option.label"
-        :value="option.id"
+        :value="option.value"
       />
     </AmCheckboxGroup>
   </el-form-item>

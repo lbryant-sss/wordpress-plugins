@@ -88,6 +88,7 @@
               v-model="period.periodServiceList"
               :placeholder="`${amLabels.all_services}`"
               multiple
+              clearable
             >
               <AmOption
                 v-for="entity in services"
@@ -110,6 +111,7 @@
               v-model="period.periodLocationList"
               :placeholder="`${amLabels.all_locations}`"
               multiple
+              clearable
             >
               <AmOption
                 v-for="entity in locations"
@@ -339,8 +341,6 @@ function savePeriod () {
   periodFormRef.value.validate((valid) => {
     if (valid) {
       emits('close')
-    } else {
-      console.log(111)
     }
   })
 }
@@ -501,6 +501,7 @@ export default {
           display: flex;
           justify-content: flex-end;
           padding: 16px 24px;
+          gap: 16px;
           background-color: var(--am-c-csd-bgr);
 
           &.am-rw-400 {

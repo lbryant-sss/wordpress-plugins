@@ -18,7 +18,7 @@
       type="email"
       :placeholder="amLabels.enter_email"
       :disabled="props.loggedInUser"
-    ></AmInput>
+    />
   </el-form-item>
   <!-- /Email -->
 </template>

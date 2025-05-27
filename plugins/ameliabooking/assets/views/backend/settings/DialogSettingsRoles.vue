@@ -737,6 +737,27 @@
             </div>
             <!-- /Booking Time Slots will depend on the service duration -->
 
+            <!-- Booking Over Existing Appointment -->
+            <div class="am-setting-box am-switch-box">
+              <el-row type="flex" align="middle" :gutter="24">
+                <el-col :span="20">
+                  {{ $root.labels.allow_admin_book_over_app }}
+                  <el-tooltip placement="top">
+                    <div slot="content" v-html="$root.labels.allow_admin_book_over_app_tooltip"></div>
+                    <i class="el-icon-question am-tooltip-icon"></i>
+                  </el-tooltip>
+                </el-col>
+                <el-col :span="4" class="align-right">
+                  <el-switch
+                    v-model="settings.allowAdminBookOverApp"
+                    active-text=""
+                    inactive-text=""
+                  ></el-switch>
+                </el-col>
+              </el-row>
+            </div>
+            <!-- /Booking Over Existing Appointment -->
+
           </el-tab-pane>
           <!-- /Admin -->
 

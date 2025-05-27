@@ -47,11 +47,9 @@ let stepsArray = inject('stepsArray')
  *************/
 
 const {
-  nextStep,
   footerButtonReset,
   footerButtonClicked
 } = inject('changingStepsFunctions', {
-  nextStep: () => {},
   footerButtonReset: () => {},
   footerButtonClicked: {
     value: false

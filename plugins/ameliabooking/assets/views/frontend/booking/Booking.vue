@@ -406,6 +406,7 @@
         calendar: '',
         calendarTimeSlots: {},
         occupiedTimeSlots: {},
+        bookedTimeSlots: {},
         calendarVisible: false,
         customer: {
           name: '',

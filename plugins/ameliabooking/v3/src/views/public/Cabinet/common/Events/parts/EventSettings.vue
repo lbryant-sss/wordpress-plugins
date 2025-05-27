@@ -67,8 +67,7 @@
             <AmInput
               v-model="settingsFormData.generalRedirectUrlAfterAppointment"
               :placeholder="amSettings.general.redirectUrlAfterAppointment"
-            >
-            </AmInput>
+            />
           </el-form-item>
         </div>
       </el-collapse-item>
@@ -126,8 +125,7 @@
               <AmInput
                 v-model="settingsFormData.paymentsPaymentLinksRedirectUrl"
                 :placeholder="amSettings.payments.paymentLinks.redirectUrl"
-              >
-              </AmInput>
+              />
             </el-form-item>
           </div>
 

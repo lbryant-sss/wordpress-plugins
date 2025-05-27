@@ -1,7 +1,7 @@
 === WooCommerce ===
 Contributors: automattic, woocommerce, mikejolley, jameskoster, claudiosanches, rodrigosprimo, peterfabian1000, vedjain, jamosova, obliviousharmony, konamiman, sadowski, wpmuguru, royho, barryhughes-1, claudiulodro, tiagonoronha, ryelle, levinmedia, aljullu, nerrad, joshuawold, assassinateur, haszari, mppfeiffer, nielslange, opr18, ralucastn, tjcafferkey, danielwrobert, patriciahillebrandt, albarin, dinhtungdu, imanish003, karolmanijak, sunyatasattva, alexandrelara, gigitux, danieldudzic, samueljseay, alexflorisca, opr18, tarunvijwani, pauloarromba, saadtarhi, bor0, kloon, coreymckrill, jorgeatorres, leifsinger, neosinner
 Tags: online store, ecommerce, shop, shopping cart, sell online
-Requires at least: 6.6
+Requires at least: 6.7
 Tested up to: 6.8
 Requires PHP: 7.4
 Stable tag: 9.8.5
@@ -173,6 +173,13 @@ WooCommerce comes with some sample data you can use to see how products look; im
 
 **WooCommerce**
 
+* Fix - Better gateway details error handling in the new Payments Settings page. [#58112](https://github.com/woocommerce/woocommerce/pull/58112)
+* Fix - Fix an issue where a duplicate “Select an industry” label is shown. [#58132](https://github.com/woocommerce/woocommerce/pull/58132)
+* Fix - Fix degraded settings pages UI when certain features are disabled. [#58112](https://github.com/woocommerce/woocommerce/pull/58112)
+* Fix - Fix deprecation warning when passing null to explode() [#58037](https://github.com/woocommerce/woocommerce/pull/58037)
+* Fix - Fix new Payments Settings page compatibility with extensions filtering the available payment methods. [#58112](https://github.com/woocommerce/woocommerce/pull/58112)
+* Fix - Fix payments tasks compatibility with extensions filtering the available payment methods. [#58112](https://github.com/woocommerce/woocommerce/pull/58112)
+* Fix - Remove the testing step if the country is UAE or Singapore in the NOX In-Context. We can not create a test account for those countries. [#58112](https://github.com/woocommerce/woocommerce/pull/58112)
 * Fix - Improve styling for variation selector pills. [#57059](https://github.com/woocommerce/woocommerce/pull/57059)
 * Fix - Switched the endpoint of the iAPI's `woocommerce` store to `cart/add-item` and `cart/update-item`. [#56117](https://github.com/woocommerce/woocommerce/pull/56117)
 * Fix - Add 'id' attribute for fields of type 'single_select_country'. [#57247](https://github.com/woocommerce/woocommerce/pull/57247)
@@ -329,6 +336,7 @@ WooCommerce comes with some sample data you can use to see how products look; im
 * Fix - When using local pickup during block checkout, persist the correct shipping address to the order. [#55968](https://github.com/woocommerce/woocommerce/pull/55968)
 * Fix - Workaround for a bug present in WP 6.6's Interactivity API. It can be removed once Woo doesn't need to support WP 6.6 anymore. [#56154](https://github.com/woocommerce/woocommerce/pull/56154)
 * Fix - `wc_get_gallery_image_html`: prevent errors when retrieving image attributes. [#57090](https://github.com/woocommerce/woocommerce/pull/57090)
+* Add - Mark the test account step as completed when presenting the success step state [#58112](https://github.com/woocommerce/woocommerce/pull/58112)
 * Add - Add product preview modal on marketplace pages. [#56678](https://github.com/woocommerce/woocommerce/pull/56678)
 * Add - Add: ProductFilters services to power the new filter blocks and product filtering and in general. [#52403](https://github.com/woocommerce/woocommerce/pull/52403)
 * Add - Add a search_sku_or_name argument to the REST API products endpoint [#57494](https://github.com/woocommerce/woocommerce/pull/57494)
@@ -376,9 +384,13 @@ WooCommerce comes with some sample data you can use to see how products look; im
 * Add - Product Gallery: Display real images in Editor if available [#56561](https://github.com/woocommerce/woocommerce/pull/56561)
 * Add - Product Gallery: force the mobile layout so the Thumbnails are rendered below the main image [#56063](https://github.com/woocommerce/woocommerce/pull/56063)
 * Add - Product Specifications: Add settings to control the visibility of weight/dimensions/attribute. [#57387](https://github.com/woocommerce/woocommerce/pull/57387)
-* Add - Remove core profiler free features fallback system with gradual rollout to ensure efficient partnership changes handling. [#56104](https://github.com/woocommerce/woocommerce/pull/56104)
 * Add - Restrict blueprint imports to coming soon mode [#57344](https://github.com/woocommerce/woocommerce/pull/57344)
 * Add - Show a notification when there is a mismatch in WooCommerce.com connection URL [#56327](https://github.com/woocommerce/woocommerce/pull/56327)
+* Update - Form updates to validation rules and styling fixes for offline payment method forms. [#58157](https://github.com/woocommerce/woocommerce/pull/58157)
+* Update - Removing subheading from offline payments management page. [#58157](https://github.com/woocommerce/woocommerce/pull/58157)
+* Update - Update MailPoet and Klaviyo variant assignment to 50/50 split. This change updates the visibility configuration for MailPoet and Klaviyo plugins to create an equal 50/50 split in visibility, replacing the previous 70/30 split configuration. [#58071](https://github.com/woocommerce/woocommerce/pull/58071)
+* Update - Update minimum supported WordPress version to 6.7 [#58219](https://github.com/woocommerce/woocommerce/pull/58219)
+* Update - Updates viva.com support and docs URLs in our payment suggestions. [#58112](https://github.com/woocommerce/woocommerce/pull/58112)
 * Update - Marketplace: update in app banner link targets. [#57771](https://github.com/woocommerce/woocommerce/pull/57771)
 * Update - Accept the "created_via" param to the "POST /orders" endpoint. [#57225](https://github.com/woocommerce/woocommerce/pull/57225)
 * Update - Added `__nextHasNoMarginBottom` prop to various WordPress components and updated styling to support WordPress 6.7+ margin style changes. [#56257](https://github.com/woocommerce/woocommerce/pull/56257)
@@ -453,6 +465,9 @@ WooCommerce comes with some sample data you can use to see how products look; im
 * Update - Updates to tracking event upon payment method selection. [#57829](https://github.com/woocommerce/woocommerce/pull/57829)
 * Update - Update tooltips on the Payments Settings page to work on click instead of hover [#57856](https://github.com/woocommerce/woocommerce/pull/57856)
 * Update - Use only wp options table for saving WooCommerce email type - email editor post association [#57532](https://github.com/woocommerce/woocommerce/pull/57532)
+* Dev - CI: remove release-checks jobs [#58235](https://github.com/woocommerce/woocommerce/pull/58235)
+* Dev - Introduce a new /clean endpoint and update the server implementation for other steps. [#58068](https://github.com/woocommerce/woocommerce/pull/58068)
+* Dev - Remove the feature flag and bake in the new Payments Settings page. [#58153](https://github.com/woocommerce/woocommerce/pull/58153)
 * Dev - Added saveAdminPage e2e util [#57316](https://github.com/woocommerce/woocommerce/pull/57316)
 * Dev - Add email preview usage tracking [#57636](https://github.com/woocommerce/woocommerce/pull/57636)
 * Dev - Blocks: fix integration test framework. [#57458](https://github.com/woocommerce/woocommerce/pull/57458)
@@ -551,6 +566,7 @@ WooCommerce comes with some sample data you can use to see how products look; im
 * Tweak - Update Product Brands template name from 'Taxonomy Product Brand' to 'Products by Brand' [#57904](https://github.com/woocommerce/woocommerce/pull/57904)
 * Tweak - Update settings page design  * Lighter background color * Button style changes * Removed activity, finish setup, and help buttons [#55943](https://github.com/woocommerce/woocommerce/pull/55943)
 * Tweak - Update some queries for better linter compliance. [#57691](https://github.com/woocommerce/woocommerce/pull/57691)
+* Performance - Improve how available variations are fetched in ProductAvailabilityUtils and introduce has_available_variations function. [#58185](https://github.com/woocommerce/woocommerce/pull/58185)
 * Performance - Added caching to Tax Onboarding Task. [#56089](https://github.com/woocommerce/woocommerce/pull/56089)
 * Performance - Avoid initializing block pattern PHP classes unnecessarily in the frontend [#56642](https://github.com/woocommerce/woocommerce/pull/56642)
 * Performance - Cache order counts for use in the admin [#54034](https://github.com/woocommerce/woocommerce/pull/54034)
@@ -568,6 +584,7 @@ WooCommerce comes with some sample data you can use to see how products look; im
 * Performance - Use a simplified query to generate the options in the months filter dropdown on the Orders list table. [#55510](https://github.com/woocommerce/woocommerce/pull/55510)
 * Performance - Use as_has_scheduled_action() if function exists when scheduling DraftOrders clean up. [#56532](https://github.com/woocommerce/woocommerce/pull/56532)
 * Performance - WooCommerce status widget on dashboard now loads async [#56039](https://github.com/woocommerce/woocommerce/pull/56039)
+* Enhancement - List Square as a recommended provider for merchants selling offline in supported regions. [#58070](https://github.com/woocommerce/woocommerce/pull/58070)
 * Enhancement - Add "Filter by sales channel" to the admin Orders page. [#57273](https://github.com/woocommerce/woocommerce/pull/57273)
 * Enhancement - Add $email_object to the woocommerce_email_preview_placeholders filter [#57272](https://github.com/woocommerce/woocommerce/pull/57272)
 * Enhancement - Add permission validation for import steps [#57294](https://github.com/woocommerce/woocommerce/pull/57294)

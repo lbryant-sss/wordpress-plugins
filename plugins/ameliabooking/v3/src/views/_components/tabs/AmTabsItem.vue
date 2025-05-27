@@ -11,7 +11,6 @@
 </template>
 
 <script setup>
-import {onUpdated, getCurrentInstance} from "vue";
 
 /**
  * Component Props
@@ -36,10 +35,6 @@ const props = defineProps({
     default: false
   }
 })
-
-// const instance = getCurrentInstance()
-// instance.parent.emit('tab-nav-update')
-// console.log(instance.parent)
 </script>
 
 <script>

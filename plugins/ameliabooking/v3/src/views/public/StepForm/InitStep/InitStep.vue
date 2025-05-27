@@ -3,6 +3,7 @@
     v-if="loaded"
     class="am-fs__init"
     :class="[props.globalClass, {'am-oxvisible': (bringingAnyoneVisibility || packagesVisibility)}]"
+    tabindex="0"
   >
     <el-form
       ref="initFormRef"

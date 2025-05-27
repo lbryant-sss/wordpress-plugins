@@ -284,6 +284,7 @@ export default {
       vueCookies.remove('ameliaToken')
       commit('setAuthenticated', false)
       commit('setLoggedOut', true)
+      localStorage.removeItem('vue-authenticate.vueauth_token')
 
       try {
         httpClient.post(

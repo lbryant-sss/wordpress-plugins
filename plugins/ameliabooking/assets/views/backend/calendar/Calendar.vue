@@ -1027,6 +1027,8 @@
           }
         }
 
+        eventInDroppedTime = this.$root.settings.roles.allowAdminBookOverApp && this.$root.settings.role === 'admin' ? [] : eventInDroppedTime
+
         // If one of the conditions is not satisfied revert event on the past position
         if (!this.canWriteAppointments(draggedEvent.employeeId) || droppedInPast || !droppedInWorkingHours || droppedInBreak || eventInDroppedTime.length !== 0 || droppedOutSchedule || droppedInAppointment) {
           if (droppedInPast) {

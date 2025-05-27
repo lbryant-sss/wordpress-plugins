@@ -10,6 +10,7 @@
       <Am-Switch
         v-model="recurringFormData.enabled"
         :disabled="!periods.length || !periods[0].startDate || !periods[0].endDate"
+        :aria-label="amLabels.event_recurring_check"
       />
     </div>
 
@@ -68,7 +69,6 @@
           class="am-capei-recurr__form-item"
         >
           <AmRadio
-            :label="'each'"
             :value="'each'"
           >
             {{ amLabels.recurrence_each }}
@@ -84,6 +84,7 @@
             :disabled="recurringFormData.monthlyRepeat === 'on' || props.recurringUntil !== null"
             :format="momentDateFormat()"
             :lang="localLanguage"
+            :placeholder="amLabels.select_date"
           />
         </el-form-item>
 
@@ -92,7 +93,6 @@
           class="am-capei-recurr__form-item"
         >
           <AmRadio
-            :label="'on'"
             :value="'on'"
           >
             {{ amLabels.recurrence_on }}
@@ -147,6 +147,7 @@
           :format="momentDateFormat()"
           :lang="localLanguage"
           :disabled-date="isDisabledRecurringUntil"
+          :placeholder="amLabels.select_date"
         />
       </el-form-item>
       <!-- /Repeat range -->

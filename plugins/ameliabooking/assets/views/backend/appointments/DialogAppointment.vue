@@ -493,6 +493,7 @@
                       :key="item.time"
                       :label="getFrontedFormattedTime(item.time + ':00')"
                       :value="item"
+                      v-html="getSlotLabel(item)"
                     >
                     </el-option>
                   </el-select>
@@ -816,6 +817,7 @@
       :getParsedEntity="getParsedEntity"
       @errorCallback="errorCallback"
       @validationTabFailCallback="validationTabFailCallback"
+      @closeSaveConfirmation="closeSaveConfirmation"
       :haveSaveConfirmation="haveSaveConfirmation"
       :hasIcons="true"
 
@@ -831,7 +833,7 @@
         haveRemove: $root.settings.capabilities.canDelete === true,
         haveRemoveEffect: false,
         haveDuplicate: haveDuplicate,
-        haveSaveWarning: isPriceChanged() ? false : (isExistingAppointment() || (this.activeRecurring && this.enabledRecurring))
+        haveSaveWarning: isPriceChanged() ? false : (isExistingAppointment() || isFullAppointment() || isIntersectedAppointment() || (this.activeRecurring && this.enabledRecurring))
       }"
 
       :buttonText="isPriceChanged() ? {
@@ -988,7 +990,10 @@
 
       return {
         saveConfirmMessage: null,
+        requiredDuration: 0,
         existingAppointmentAcknowledged: false,
+        fullAppointmentAcknowledged: false,
+        intersectedAppointmentAcknowledged: false,
         calendarNavigating: false,
         slotsIndexCounter: 0,
         startDateTime: null,
@@ -1377,6 +1382,10 @@
         let $this = this
 
         this.existingAppointmentAcknowledged = false
+        this.fullAppointmentAcknowledged = false
+        this.intersectedAppointmentAcknowledged = false
+
+        this.saveConfirmMessage = ''
 
         let selectedDateString = this.getStringFromDate(this.appointment.selectedDate)
 
@@ -1552,6 +1561,12 @@
       },
 
       getParsedEntity (createPaymentLinks) {
+        this.existingAppointmentAcknowledged = false
+        this.fullAppointmentAcknowledged = false
+        this.intersectedAppointmentAcknowledged = false
+
+        this.saveConfirmMessage = ''
+
         let bookings = []
 
         if (this.packageCustomer !== null && this.appointment.id) {
@@ -1778,8 +1793,6 @@
       },
 
       handleCustomerChange () {
-        let duration = this.appointment.duration
-
         this.setServiceExtrasForCustomers(false)
         this.handleBookingDurationChange()
         this.setPrice()
@@ -1787,8 +1800,7 @@
         this.setBookingCustomFields()
         this.addCustomFieldsValidationRules()
 
-        if (this.mounted && ((this.options.entities.resources && this.options.entities.resources.length) > 0 ||
-          duration !== this.appointment.duration)) {
+        if (this.mounted) {
           this.getTimeSlots(this.updateCalendar)
         }
 
@@ -1836,7 +1848,7 @@
         this.setSelectedExtrasCount()
         this.setDuration()
 
-        if (this.mounted && (this.options.entities.resources.length > 0 || duration !== this.appointment.duration)) {
+        if (this.mounted) {
           this.getTimeSlots(this.updateCalendar)
         }
       },
@@ -2206,7 +2218,7 @@
                 : (this.appointment.selectedDate && this.appointment.selectedPeriod && this.appointment.selectedPeriod.time ? moment(this.getBookingStart(), 'YYYY-MM-DD HH:mm').subtract('1', 'days').format('YYYY-MM-DD HH:mm') : null),
               endDateTime: this.endDateTime,
               page: 'appointments',
-              persons: this.packageCustomer ? 1 : persons
+              persons: this.packageCustomer || !persons ? 1 : persons
             })
           })
             .then(response => {
@@ -2216,6 +2228,12 @@
                 return
               }
 
+              this.requiredDuration = response.data.data.duration
+
+              this.existingAppointmentAcknowledged = false
+              this.fullAppointmentAcknowledged = false
+              this.intersectedAppointmentAcknowledged = false
+
               let converting =
                 this.selectedTimeZone === 'UTC' &&
                 (
@@ -2223,10 +2241,24 @@
                   (this.$root.settings.role === 'provider' && this.isCabinet)
                 )
 
-              callback(
-                converting ? this.getConvertedTimeSlots(response.data.data.slots) : response.data.data.slots,
-                converting ? this.getConvertedTimeSlots(response.data.data.occupied) : response.data.data.occupied
-              )
+              this.appointment.bookedTimeSlots = {}
+
+              let availableSlots = converting
+                ? this.getConvertedTimeSlots(response.data.data.slots)
+                : response.data.data.slots
+
+              let occupiedSlots = converting
+                ? this.getConvertedTimeSlots(response.data.data.occupied)
+                : response.data.data.occupied
+
+              if (appointment.providerId) {
+                this.setBookedTimeSlots(availableSlots, availableSlots, false)
+
+                this.setBookedTimeSlots(occupiedSlots, availableSlots, true)
+              }
+
+              callback(availableSlots, occupiedSlots)
+
               this.dialogLoading = false
               this.loadingTimeSlots = false
             })
@@ -2241,6 +2273,10 @@
         this.calendarNavigating = false
 
         this.existingAppointmentAcknowledged = false
+        this.fullAppointmentAcknowledged = false
+        this.intersectedAppointmentAcknowledged = false
+
+        this.saveConfirmMessage = ''
 
         this.dateChange()
       },
@@ -2261,10 +2297,12 @@
               selectedPeriodExists = true
             }
 
-            timeSlots.push({
-              'time': key,
-              'employees': dateTimeSlots[key]
-            })
+            if (key !== '24:00') {
+              timeSlots.push({
+                'time': key,
+                'employees': dateTimeSlots[key]
+              })
+            }
           })
 
           if (!selectedPeriodExists) {
@@ -2296,26 +2334,6 @@
         }
       },
 
-      isExistingAppointment () {
-        if (this.appointment.selectedDate && this.appointment.selectedPeriod && this.appointment.selectedPeriod.time) {
-          let selectedDateString = this.getStringFromDate(this.appointment.selectedDate)
-
-          if (selectedDateString in this.appointment.calendarTimeSlots &&
-            this.appointment.selectedPeriod.time in this.appointment.calendarTimeSlots[selectedDateString]
-          ) {
-            for (let i = 0; i < this.appointment.calendarTimeSlots[selectedDateString][this.appointment.selectedPeriod.time].length; i++) {
-              if (this.appointment.calendarTimeSlots[selectedDateString][this.appointment.selectedPeriod.time][i][0] === this.appointment.providerId &&
-                this.appointment.calendarTimeSlots[selectedDateString][this.appointment.selectedPeriod.time][i].length > 2
-              ) {
-                return true
-              }
-            }
-          }
-        }
-
-        return false
-      },
-
       isPriceChanged () {
         let priceChanged = false
         let paymentLinksEnabled = this.$root.settings.payments && this.$root.settings.payments.paymentLinks ? this.$root.settings.payments.paymentLinks.enabled : false
@@ -2343,11 +2361,222 @@
         return priceChanged
       },
 
+      isExistingAppointment () {
+        let selectedDateString = this.appointment.selectedDate
+          ? this.getStringFromDate(this.appointment.selectedDate)
+          : null
+
+        return this.appointment.serviceId &&
+          this.appointment.providerId &&
+          this.appointment.selectedPeriod &&
+          this.appointment.selectedPeriod.time &&
+          (!this.savedAppointment || (this.savedAppointment.providerId !== this.appointment.providerId) || (this.savedAppointment.bookingStart !== selectedDateString + ' ' + this.appointment.selectedPeriod.time + ':00')) &&
+          selectedDateString &&
+          selectedDateString in this.appointment.bookedTimeSlots &&
+          this.appointment.selectedPeriod.time in this.appointment.bookedTimeSlots[selectedDateString].onTimeFree
+      },
+
+      isFullAppointment () {
+        let selectedDateString = this.appointment.selectedDate
+          ? this.getStringFromDate(this.appointment.selectedDate)
+          : null
+
+        return this.appointment.serviceId &&
+          this.appointment.providerId &&
+          this.appointment.selectedPeriod &&
+          this.appointment.selectedPeriod.time &&
+          (!this.savedAppointment || (this.savedAppointment.providerId !== this.appointment.providerId) || (this.savedAppointment.bookingStart !== selectedDateString + ' ' + this.appointment.selectedPeriod.time + ':00')) &&
+          selectedDateString &&
+          selectedDateString in this.appointment.bookedTimeSlots &&
+          (
+            this.appointment.selectedPeriod.time in this.appointment.bookedTimeSlots[selectedDateString].onTimeFull ||
+            this.appointment.selectedPeriod.time in this.appointment.bookedTimeSlots[selectedDateString].duringTime
+          )
+      },
+
+      isIntersectedAppointment () {
+        let selectedDateString = this.appointment.selectedDate
+          ? this.getStringFromDate(this.appointment.selectedDate)
+          : null
+
+        let isIntersected = false
+
+        if (this.appointment.serviceId &&
+          this.appointment.providerId &&
+          this.appointment.selectedPeriod &&
+          this.appointment.selectedPeriod.time &&
+          (!this.savedAppointment || (this.savedAppointment.providerId !== this.appointment.providerId) || (this.savedAppointment.bookingStart !== selectedDateString + ' ' + this.appointment.selectedPeriod.time + ':00')) &&
+          selectedDateString in this.appointment.bookedTimeSlots
+        ) {
+          let appointmentStart = this.getStringTimeInSeconds(this.appointment.selectedPeriod.time) / 60
+
+          if (appointmentStart + this.requiredDuration <= 1440) {
+            let appointmentEnd = appointmentStart + this.requiredDuration
+
+            let bookedSlot = 0
+
+            let keys = ['onTimeFree', 'onTimeFull']
+
+            keys.forEach((key) => {
+              Object.keys(this.appointment.bookedTimeSlots[selectedDateString][key]).forEach((bookedTimeString) => {
+                bookedSlot = this.getStringTimeInSeconds(bookedTimeString) / 60
+
+                if (bookedSlot > appointmentStart && bookedSlot < appointmentEnd) {
+                  isIntersected = true
+                }
+              })
+            })
+          } else {
+            let nextSelectedDateString = moment(selectedDateString + ' ' + this.appointment.selectedPeriod.time).add(1, 'days').format('YYYY-MM-DD')
+
+            if (nextSelectedDateString in this.appointment.bookedTimeSlots) {
+              let appointmentEnd = appointmentStart + this.requiredDuration - 1440
+
+              let bookedSlot = 0
+
+              let keys = ['onTimeFree', 'onTimeFull']
+
+              keys.forEach((key) => {
+                Object.keys(this.appointment.bookedTimeSlots[nextSelectedDateString][key]).forEach((bookedTimeString) => {
+                  bookedSlot = this.getStringTimeInSeconds(bookedTimeString) / 60
+
+                  if (bookedSlot < appointmentEnd) {
+                    isIntersected = true
+                  }
+                })
+              })
+            }
+          }
+        }
+
+        return isIntersected
+      },
+
+      getSlotLabel (item) {
+        let suffix = ''
+
+        if (this.appointment.providerId && this.appointment.selectedDate) {
+          let selectedDateString = this.getStringFromDate(this.appointment.selectedDate)
+
+          if (selectedDateString in this.appointment.bookedTimeSlots &&
+            (
+              item.time in this.appointment.bookedTimeSlots[selectedDateString].onTimeFree ||
+              item.time in this.appointment.bookedTimeSlots[selectedDateString].onTimeFull ||
+              item.time in this.appointment.bookedTimeSlots[selectedDateString].duringTime
+            )
+          ) {
+            suffix = ' <span style="float: right; font-style: italic;">' + this.$root.labels.booked + '</span>'
+          }
+        }
+
+        return this.getFrontedFormattedTime(item.time + ':00') + suffix
+      },
+
+      setBookedTimeSlots (targetSlots, availableSlots, parsedOccupied) {
+        let bookedKey = parsedOccupied ? 'onTimeFull' : 'onTimeFree'
+
+        let isSameDay = true
+
+        let appointmentStart = 0
+
+        let appointmentEnd = 0
+
+        let inspectedSlot = 0
+
+        Object.keys(targetSlots).forEach((dateString) => {
+          Object.keys(targetSlots[dateString]).forEach((timeString) => {
+            targetSlots[dateString][timeString].filter(i => i.length > 2).forEach((slot) => {
+              appointmentStart = this.getStringTimeInSeconds(timeString) / 60
+
+              isSameDay = appointmentStart + slot[4] <= 1440
+
+              appointmentEnd = isSameDay ? appointmentStart + slot[4] : appointmentStart + slot[4] - 1440
+
+              if (!(dateString in this.appointment.bookedTimeSlots)) {
+                this.appointment.bookedTimeSlots[dateString] = {
+                  onTimeFull: {},
+                  onTimeFree: {},
+                  duringTime: {}
+                }
+              }
+
+              if (!(timeString in this.appointment.bookedTimeSlots[dateString][bookedKey])) {
+                this.appointment.bookedTimeSlots[dateString][bookedKey][timeString] = true
+              }
+
+              if (dateString in availableSlots) {
+                Object.keys(availableSlots[dateString]).forEach((inspectedTimeString) => {
+                  inspectedSlot = this.getStringTimeInSeconds(inspectedTimeString) / 60
+
+                  if (inspectedSlot > appointmentStart && inspectedSlot < (isSameDay ? appointmentEnd : 1440) &&
+                    !(inspectedTimeString in this.appointment.bookedTimeSlots[dateString].duringTime)
+                  ) {
+                    this.appointment.bookedTimeSlots[dateString].duringTime[inspectedTimeString] = true
+                  }
+                })
+              }
+
+              if (isSameDay) {
+                return
+              }
+
+              let nextDateString = moment(dateString + ' ' + timeString).add(1, 'days').format('YYYY-MM-DD')
+
+              if (!(nextDateString in this.appointment.bookedTimeSlots)) {
+                this.appointment.bookedTimeSlots[nextDateString] = {
+                  onTimeFull: {},
+                  onTimeFree: {},
+                  duringTime: {}
+                }
+              }
+
+              if (nextDateString in availableSlots) {
+                Object.keys(availableSlots[nextDateString]).forEach((inspectedTimeString) => {
+                  inspectedSlot = this.getStringTimeInSeconds(inspectedTimeString) / 60
+
+                  if (inspectedSlot < appointmentEnd &&
+                    !(inspectedTimeString in this.appointment.bookedTimeSlots[nextDateString].duringTime)
+                  ) {
+                    this.appointment.bookedTimeSlots[nextDateString].duringTime[inspectedTimeString] = true
+                  }
+                })
+              }
+            })
+          })
+        })
+      },
+
+      closeSaveConfirmation () {
+        this.existingAppointmentAcknowledged = false
+        this.fullAppointmentAcknowledged = false
+        this.intersectedAppointmentAcknowledged = false
+
+        this.saveConfirmMessage = ''
+      },
+
       haveSaveConfirmation () {
         if (this.isExistingAppointment() && !this.existingAppointmentAcknowledged) {
           this.existingAppointmentAcknowledged = true
+          this.fullAppointmentAcknowledged = true
+          this.intersectedAppointmentAcknowledged = true
 
           this.saveConfirmMessage = this.$root.labels.group_booking_message
+
+          return true
+        } else if (this.isFullAppointment() && !this.fullAppointmentAcknowledged) {
+          this.existingAppointmentAcknowledged = true
+          this.fullAppointmentAcknowledged = true
+          this.intersectedAppointmentAcknowledged = true
+
+          this.saveConfirmMessage = this.$root.labels.over_booking_message
+
+          return true
+        } else if (this.isIntersectedAppointment() && !this.intersectedAppointmentAcknowledged) {
+          this.existingAppointmentAcknowledged = true
+          this.fullAppointmentAcknowledged = true
+          this.intersectedAppointmentAcknowledged = true
+
+          this.saveConfirmMessage = this.$root.labels.over_booking_message
 
           return true
         }

@@ -89,6 +89,15 @@ function setFormConstruction(field, id) {
     }
   }
 
+  if (field.type === 'checkbox' || field.type === 'radio') {
+    cfFormConstruction.value[id].props.options = cfFormConstruction.value[id].props.options.map((option) => {
+      return {
+        ...option,
+        value: option.label,
+      }
+    })
+  }
+
   if (field.type === 'text-area') {
     cfFormConstruction.value[id].props = {
       ...cfFormConstruction.value[id].props,
@@ -99,7 +108,12 @@ function setFormConstruction(field, id) {
   if (field.type === 'file' && bookingId) {
     cfFormConstruction.value[id].props = {
       ...cfFormConstruction.value[id].props,
-      ...{ btnLabel: amLabels.value.upload_file_here, isUpload: false, bookingId: bookingId },
+      ...{
+        btnLabel: amLabels.value.upload_file_here,
+        isUpload: false,
+        bookingId: bookingId,
+        source: 'cabinet-provider'
+      },
     }
   }
 

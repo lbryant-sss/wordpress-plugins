@@ -115,8 +115,7 @@
               :min="0"
               :max="extra.maxQuantity"
               @change="changeExtraQuantity(extra, extraIndex, item)"
-            >
-            </AmInputNumber>
+            />
           </div>
         </div>
 

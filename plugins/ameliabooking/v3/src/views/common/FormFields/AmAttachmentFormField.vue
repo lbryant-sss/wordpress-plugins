@@ -25,7 +25,7 @@
     <p v-for="(fileInfo, index) in props.modelValue" :key="index">
       <a
         :key="index"
-        :href="ajaxUrl + '/fields/' + props.id + '/' + props.bookingId + '/' + index + '&source=cabinet-provider'"
+        :href="ajaxUrl + '/fields/' + props.id + '/' + props.bookingId + '/' + index + '&source=' + props.source"
         target="_blank"
       >
         {{ fileInfo.name }}
@@ -78,6 +78,10 @@ let props = defineProps({
   },
   btnLabel: {
     type: String
+  },
+  source: {
+    type: String,
+    default: 'cabinet-provider'
   }
 })
 

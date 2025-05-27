@@ -2,59 +2,80 @@
   <!-- Date Picker -->
   <el-popover
     ref="popoverRef"
-    v-model:visible="visible"
+    :visible="visible"
     popper-class="am-popover-calendar"
     placement="bottom"
-    :width="checkScreen ? 320 : 320"
+    :width="'100%'"
     :popper-style="cssPopVars"
     :disabled="props.disabled"
     :persistent="props.persistent"
+    :show-arrow="false"
+    trigger="click"
     @after-enter="reRenderCalendar"
   >
     <template #reference>
       <AmInput
         v-model="selectedDate"
         class="am-dp__input"
+        :class="{'am-dp__input-focused': visible}"
         :disabled="props.disabled"
-        :icon-start="IconCalendar"
-        :read-only="props.readOnly"
+        :prefix-icon="calendarIcon"
+        :readonly="props.readonly"
         :clearable="props.clearable"
         :placeholder="inputPlaceholder"
+        :aria-label="ariaLabel"
         @click="selectCalendar"
         @clear="clearCalendar"
         @keypress.prevent
-      ></AmInput>
+      />
     </template>
-    <div class="am-dp__wrapper" :style="cssVars">
+    <div class="am-dp__wrapper">
       <FullCalendar
         ref="popCalendarRef"
         v-click-outside="onClickOutside"
         class="am-dp"
-        :am-mobile="checkScreen"
         :options="options"
-      ></FullCalendar>
+      />
     </div>
   </el-popover>
   <!-- /Date Picker -->
 </template>
 
 <script setup>
+// * Libraries
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import allLocales from "@fullcalendar/core/locales-all";
-import { shortLocale } from "../../../plugins/settings";
-import { onBeforeMount, onMounted, computed, inject, ref, nextTick } from "vue";
-import { useColorTransparency } from "../../../assets/js/common/colorManipulation";
-import AmInput from "../input/AmInput";
-import IconCalendar from '../icons/IconCalendar.vue'
-import { getFrontedFormattedDate } from "../../../assets/js/common/date";
 import moment from "moment";
+
+// * Import from Vue
+import {
+  onBeforeMount,
+  onMounted,
+  computed,
+  inject,
+  ref,
+  nextTick,
+  watch,
+} from "vue";
+
+// * Sttings
+import { shortLocale } from "../../../plugins/settings";
+
+// * Composables
+import { useColorTransparency } from "../../../assets/js/common/colorManipulation";
+import { getFrontedFormattedDate } from "../../../assets/js/common/date";
+
+// * _components
+import AmInput from "../input/AmInput";
+import IconComponent from "../icons/IconComponent.vue";
+
+// * Import from Element Plus
 import { ClickOutside as vClickOutside } from "element-plus";
 
 /**
  * Component Props
- * @type {Readonly<ExtractPropTypes<{}>>}
  */
 const props = defineProps({
   initialView: {
@@ -97,22 +118,26 @@ const props = defineProps({
     type: [String, Number],
     default: 1
   },
+  refreshValue: {
+    type: Boolean,
+    default: false
+  },
   clearable: {
     type: Boolean,
     default: false
   },
-  readOnly: {
+  readonly: {
     type: Boolean,
     default: true
+  },
+  ariaLabel: {
+    type: String,
+    default: 'date picker'
   }
 })
 
 let popoverRef = ref(null)
 let popCalendarRef = ref(null)
-
-// Container Width
-let cWidth = inject('containerWidth', 0)
-let checkScreen = computed(() => cWidth.value < 560 || (cWidth.value - 240 < 520))
 
 const emits = defineEmits([
   'selectedDate',
@@ -128,11 +153,25 @@ let selectedDate = ref('')
 let minimumDate = ref(null)
 let maximumDate = ref(null)
 
+// * Icons
+let calendarIcon = {
+  components: { IconComponent },
+  template: `<IconComponent icon='calendar'/>`,
+}
+
 function selectCalendar () {
   if (!props.disabled) {
-    visible.value = !visible.value
+    visible.value = true
   }
 }
+
+watch(() => props.refreshValue, (newValue) => {
+  if (newValue) {
+    selectedDate.value = getFrontedFormattedDate(
+        props.existingDate ? moment(props.existingDate).format('YYYY-MM-DD') : ''
+    )
+  }
+})
 
 const options = ref({
   initialDate: props.calendarMinimumDate ? moment(props.calendarMinimumDate, 'YYYY-MM-DD HH:mm').toDate() : null,
@@ -283,29 +322,15 @@ let amColors = inject('amColors',  {
 
 let cssPopVars = computed(() => {
   return {
-    '--am-c-date-picker-bgr': amColors.value.colorMainBgr,
-    '--am-c-date-picker-border': amColors.value.colorMainBgr,
-  }
-})
-
-let cssVars = computed(() => {
-  return {
-    '--am-c-advsc-text': amColors.value.colorMainText,
-    '--am-c-advsc-text-op60': useColorTransparency(amColors.value.colorMainText, 0.6),
-    '--am-c-advsc-btn-border': amColors.value.colorBtnSec,
-    '--am-c-advsc-btn-border-op60': useColorTransparency(amColors.value.colorBtnSec, 0.6),
-    '--am-c-cal-init': amColors.value.colorCalCell,
-    '--am-c-cal-init-text': amColors.value.colorCalCellText,
-    '--am-c-cal-init-op10': useColorTransparency(amColors.value.colorCalCell, 0.1),
-    '--am-c-cal-init-op20': useColorTransparency(amColors.value.colorCalCell, 0.2),
-    '--am-c-cal-init-op60': useColorTransparency(amColors.value.colorCalCell, 0.6),
-    '--am-c-cal-selected': amColors.value.colorCalCellSelected,
-    '--am-c-cal-selected-text': amColors.value.colorCalCellSelectedText,
-    '--am-c-cal-selected-op80': useColorTransparency(amColors.value.colorCalCellSelected, 0.8),
-    '--am-c-cal-disabled': amColors.value.colorCalCellDisabled,
-    '--am-c-cal-disabled-text': amColors.value.colorCalCellDisabledText,
-    '--am-c-cal-disabled-op10': useColorTransparency(amColors.value.colorCalCellDisabled, 0.1),
-    '--am-c-cal-disabled-op60': useColorTransparency(amColors.value.colorCalCellDisabled, 0.4),
+    // dpf - date picker full / nije omrazeni dpf filter iz auta :)
+    '--am-c-primary': amColors.value.colorPrimary,
+    '--am-c-primary-op80': useColorTransparency(amColors.value.colorPrimary, 0.8),
+    '--am-c-dpf-bgr': amColors.value.colorDropBgr,
+    '--am-c-dpf-border': amColors.value.colorDropBorder,
+    '--am-c-dpf-text': amColors.value.colorDropText,
+    '--am-c-dpf-text-op60': useColorTransparency(amColors.value.colorDropText, 0.6),
+    '--am-c-dpf-text-op20': useColorTransparency(amColors.value.colorDropText, 0.2),
+    '--am-c-dpf-text-op10': useColorTransparency(amColors.value.colorDropText, 0.1),
   }
 })
 
@@ -336,21 +361,19 @@ $amCalClass: am-dp;
     margin-bottom: 4px;
 
     &__wrapper {
-      --am-fs-advsc: 15px;
-      --am-ln-advsc: 1.6;
+      --am-fs-dpf: 15px;
       --am-c-advsc-text: var(--am-c-main-text);
       // Calendar cell
-      --am-c-advsc-cell-bgr: transparent;
-      --am-c-advsc-cell-border: transparent;
-      --am-c-advsc-cell-text: var(--am-c-cal-init-text);
-      // Slot
-      --am-fs-asdvsc-slot: 15px;
-      --am-c-advsc-slot-text: var(--am-c-cal-init-text);
-      --am-rad-advsc-slot: 4px;
+      --am-c-dpf-cell-bgr: transparent;
+      --am-c-dpf-cell-border: transparent;
+      --am-c-dpf-cell-text: var(--am-c-dpf-text);
+
       * {
         font-family: var(--am-font-family);
         box-sizing: border-box;
       }
+
+      // element animation
       & > div {
         $count: 5;
         @for $i from 0 through $count {
@@ -387,20 +410,20 @@ $amCalClass: am-dp;
 
             &-title {
               font-size: 20px;
-              color: var(--am-c-advsc-text);
+              color: var(--am-c-dpf-text);
             }
 
             &-chunk {
               .fc-button {
                 background-color: transparent;
                 border: none;
-                //border-color: var(--am-c-advsc-btn-border-op60);
-                color: var(--am-c-advsc-btn-border);
+                color: var(--am-c-dpf-text);
                 padding: 2px 4px;
                 margin: 0 4px;
+                transition: color 0.3s ease-in-out;
 
                 &:hover {
-                  color: var(--am-c-advsc-btn-border-op60);
+                  color: var(--am-c-dpf-text-op60);
                 }
 
                 &:focus {
@@ -424,22 +447,24 @@ $amCalClass: am-dp;
               &-cell {
                 font-size: 16px;
                 line-height: 1.5;
-                color: var(--am-c-advsc-text);
+                color: var(--am-c-dpf-text);
                 padding: 4px 6px;
 
                 .fc-col-header-cell-cushion {
-                  font-size: var(--am-fs-advsc);
+                  font-size: var(--am-fs-dpf);
                   text-transform: initial;
                   text-decoration: none;
                   line-height: 1;
                   letter-spacing: 0;
-                  color: var(--am-c-advsc-text);
+                  color: var(--am-c-dpf-text);
                   padding: 6px 0;
                   white-space: nowrap;
                 }
               }
               &-weekend {
-                color: #D1D5D7;
+                .fc-col-header-cell-cushion {
+                  color: var(--am-c-dpf-text);
+                }
               }
             }
           }
@@ -454,40 +479,44 @@ $amCalClass: am-dp;
               position: relative;
               border: none;
               padding: 4px 6px;
+
               // Calendar today day
               &.fc-day-today {
                 position: relative;
                 background: none;
+
                 // Calendar cell state
                 &.#{$amCalClass} {
                   // Selected cell
                   &__dayGridMonth-selected {
                     .fc-daygrid-day-frame {
-                      background-color: var(--am-c-advsc-cell-bgr);
-                      border-color: var(--am-c-advsc-cell-border);
+                      background-color: var(--am-c-dpf-cell-bgr);
+                      border-color: var(--am-c-dpf-cell-border);
                       &:after {
-                        background-color: var(--am-c-advsc-cell-text);
+                        background-color: var(--am-c-dpf-cell-text);
                       }
                     }
                   }
+
                   // Disabled cell
                   &__dayGridMonth-disabled {
                     .fc-daygrid-day {
                       &-frame {
-                        --am-c-advsc-cell-bgr: var(--am-c-cal-disabled-op10);
-                        --am-c-advsc-cell-border: transparent;
+                        --am-c-dpf-cell-bgr: var(--am-c-dpf-text-op10);
+                        --am-c-dpf-cell-border: transparent;
                         &:hover {
-                          --am-c-advsc-cell-bgr: var(--am-c-cal-disabled-op10);
-                          --am-c-advsc-cell-border: transparent;
+                          --am-c-dpf-cell-bgr: var(--am-c-dpf-text-op10);
+                          --am-c-dpf-cell-border: transparent;
                           cursor: not-allowed;
                         }
                       }
                       &-number {
-                        --am-c-advsc-cell-text: var(--am-c-cal-disabled-text);
+                        --am-c-dpf-cell-text: var(--am-c-dpf-text-op60);
                       }
                     }
                   }
                 }
+
                 .fc-daygrid-day-frame {
                   // Today marker - dot
                   &:after {
@@ -499,41 +528,51 @@ $amCalClass: am-dp;
                     width: 4px;
                     height: 4px;
                     border-radius: 50%;
-                    background-color: var(--am-c-advsc-cell-text);
+                    background-color: var(--am-c-primary);
                   }
                 }
               }
+
               // Calendar cell state
               &.#{$amCalClass} {
                 // Disabled cell
                 &__dayGridMonth-disabled {
                   .fc-daygrid-day {
                     &-frame {
-                      --am-c-advsc-cell-bgr: var(--am-c-cal-disabled-op10);
-                      --am-c-advsc-cell-border: transparent;
+                      --am-c-dpf-cell-bgr: var(--am-c-dpf-text-op10);
+                      --am-c-dpf-cell-border: transparent;
                       &:hover {
-                        --am-c-advsc-cell-bgr: var(--am-c-cal-disabled-op10);
-                        --am-c-advsc-cell-border: transparent;
+                        --am-c-dpf-cell-bgr: var(--am-c-dpf-text-op10);
+                        --am-c-dpf-cell-border: transparent;
                         cursor: not-allowed;
                       }
                     }
                     &-number {
-                      --am-c-advsc-cell-text: var(--am-c-cal-disabled-text);
+                      --am-c-dpf-cell-text: var(--am-c-dpf-text-op60);
                     }
                   }
                 }
+
                 // Selected cell
                 &__dayGridMonth-selected {
                   .fc-daygrid-day-frame {
-                    --am-c-advsc-cell-text: var(--am-c-cal-selected-text);
-                    --am-c-advsc-cell-bgr: var(--am-c-cal-selected);
-                    --am-c-advsc-cell-border: var(--am-c-cal-selected);
+                    --am-c-dpf-cell-text: var(--am-c-dpf-bgr);
+                    --am-c-dpf-cell-bgr: var(--am-c-primary);
+                    --am-c-dpf-cell-border: var(--am-c-primary);
                     &:hover {
-                      --am-c-advsc-cell-bgr: var(--am-c-cal-selected-op80);
-                      --am-c-advsc-cell-border: var(--am-c-cal-selected-op80);
+                      --am-c-dpf-cell-bgr: var(--am-c-primary-op80);
+                      --am-c-dpf-cell-border: var(--am-c-primary-op80);
+                    }
+                  }
+
+                  // Not current month days
+                  &.fc-day-other {
+                    .fc-daygrid-day-top {
+                      opacity: 1;
                     }
                   }
                 }
+
                 // Weekend days cell
                 &__dayGridMonth-weekend {
                   .fc-daygrid-day {
@@ -545,12 +584,10 @@ $amCalClass: am-dp;
                         cursor: not-allowed;
                       }
                     }
-                    &-number {
-                      color: #D1D5D7;
-                    }
                   }
                 }
               }
+
               // Calendar inner cell items
               .fc-daygrid-day {
                 // Calendar inner cell wrapper
@@ -561,31 +598,26 @@ $amCalClass: am-dp;
                   min-height: auto;
                   top: 2px;
                   left: 4px;
-                  background-color: var(--am-c-advsc-cell-bgr);
-                  border: 1px solid var(--am-c-advsc-cell-border);
+                  background-color: var(--am-c-dpf-cell-bgr);
+                  border: 1px solid var(--am-c-dpf-cell-border);
                   border-radius: 4px;
                   cursor: pointer;
                   &:hover {
-                    --am-c-advsc-cell-bgr: var(--am-c-cal-init-op20);
-                    --am-c-advsc-cell-border: var(--am-c-cal-init);
+                    --am-c-dpf-cell-bgr: var(--am-c-dpf-text);
+                    --am-c-dpf-cell-text: var(--am-c-dpf-bgr);
+                    --am-c-dpf-cell-border: var(--am-c-dpf-text);
                     transition: all 0.3s ease-in-out;
                   }
                 }
+
                 // Calendar date slot availability wrapper
                 &-bg {
                   .fc-bg-event {
                     background: none;
                     opacity: 1;
-                    // Calendar date slot availability
-                    /*.#{$amCalClass}__slot-wrapper {
-                      position: absolute;
-                      width: 100%;
-                      bottom: 0;
-                      left: 0;
-                      background-color: rgba($primary-color, 0.3);
-                    }*/
                   }
                 }
+
                 // Inner cell date wrapper
                 &-top {
                   position: absolute;
@@ -593,54 +625,27 @@ $amCalClass: am-dp;
                   left: 50%;
                   transform: translate(-50%, -50%);
                 }
+
                 // Inner cell date holder
                 &-number {
-                  color: var(--am-c-advsc-cell-text);
+                  color: var(--am-c-dpf-cell-text);
                   line-height: 1;
                   padding: 0;
                   white-space: nowrap;
                   text-decoration: none;
                 }
               }
+
+              // Not current month days
+              &.fc-day-other {
+                .fc-daygrid-day-top {
+                  opacity: 0.7;
+                }
+              }
             }
           }
         }
       }
-    }
-
-    // Mobile Calendar cell
-    &[am-mobile=true] {
-      //&.fc {
-      //  &-theme-standard {
-      //    td.#{$amCalClass} {
-      //      // Month view
-      //      &__dayGridMonth {
-      //        // Calendar cell TODO
-      //        &-cell {
-      //          padding: 3px;
-      //          .fc-daygrid-day {
-      //            &-frame {
-      //              width: calc(100% - 6px);
-      //              height: calc(100% - 4px);
-      //            }
-      //          }
-      //        }
-      //      }
-      //    }
-      //
-      //    .fc-toolbar-title {
-      //      font-size: 18px;
-      //    }
-      //
-      //    .fc-toolbar-chunk .fc-button {
-      //      padding: 0.2em 0.3em;
-      //
-      //      .fc-icon {
-      //        font-size: 1.25em;
-      //      }
-      //    }
-      //  }
-      //}
     }
   }
 }
@@ -649,19 +654,10 @@ $amCalClass: am-dp;
   z-index: 999999999 !important;
   &.el-popover.el-popper {
     min-width: auto;
-    background-color: var(--am-c-date-picker-bgr);
-    border-color: var(--am-c-date-picker-border);
-    //box-shadow: 0 2px 12px 0 var(--am-c-rsm-text-op10);
-    padding: 5px;
-
-    &.is-light {
-      & .el-popper__arrow {
-        &::before {
-          background-color: var(--am-c-date-picker-bgr);
-          border-color: var(--am-c-date-picker-bgr);
-        }
-      }
-    }
+    background-color: var(--am-c-dpf-bgr);
+    border-color: var(--am-c-dpf-border);
+    padding: 12px;
+    max-width: 460px;
   }
 
   @include am-dp-block;
@@ -669,12 +665,8 @@ $amCalClass: am-dp;
 
 @mixin am-dp-input-block {
   .am-dp__input {
-    .am-input__default {
-      i.el-input {
-        &__clear {
-          font-size: 14px;
-        }
-      }
+    &-focused {
+      pointer-events: none;
     }
   }
 }

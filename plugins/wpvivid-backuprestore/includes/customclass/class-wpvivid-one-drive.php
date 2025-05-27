@@ -910,9 +910,9 @@ class WPvivid_one_drive extends WPvivid_Remote
         $this -> current_file_size = filesize($local_file);
         $this -> current_file_name = basename($local_file);
 
-        $wpvivid_plugin->wpvivid_log->WriteLog('Check if the server already has the same name file.','notice');
+        //$wpvivid_plugin->wpvivid_log->WriteLog('Check if the server already has the same name file.','notice');
 
-        $this->delete_file_by_name($this->options['path'],basename($local_file));
+        //$this->delete_file_by_name($this->options['path'],basename($local_file));
 
         $file_size=filesize($local_file);
 

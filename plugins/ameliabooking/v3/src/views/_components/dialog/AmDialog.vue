@@ -3,6 +3,7 @@
     ref="amDialogRef"
     v-model="model"
     :modal-class="`am-dialog-popup ${props.modalClass}`"
+    :class="props.customClass"
     :title="props.title"
     :width="props.width"
     :fullscreen="props.fullscreen"
@@ -10,7 +11,6 @@
     :modal="props.modal"
     :append-to-body="props.appendToBody"
     :lock-scroll="props.lockScroll"
-    :custom-class="props.customClass"
     :open-delay="props.openDelay"
     :close-delay="props.closeDelay"
     :close-on-click-modal="props.closeOnClickModal"
@@ -20,12 +20,13 @@
     :center="props.center"
     :destroy-on-close="props.destroyOnClose"
     :close-icon="props.closeIcon"
+    :style="props.customStyles"
     @close="emits('close')"
     @open="emits('open')"
     @closed="emits('closed')"
     @opened="emits('opened')"
   >
-    <template #title>
+    <template #header>
       <span v-if="title" class="am-dialog__title">{{ title }}</span>
       <slot v-else name="title" />
     </template>
@@ -38,7 +39,14 @@
 
 <script setup>
 import AmeliaIconClose from '../icons/IconClose.vue'
-import {toRefs, computed, ref, onMounted, onUpdated} from "vue";
+
+// * Import from Vue
+import {
+  toRefs,
+  computed,
+  ref,
+  onMounted
+} from "vue";
 
 /**
  * Component Props
@@ -133,24 +141,11 @@ const props = defineProps({
 
 const amDialogRef = ref(null)
 
-onUpdated(() => {
-  setStyles()
-})
-
 onMounted(() => {
   if (props.usedForShortcode) {
     amDialogRef.value.rendered = true
   }
-  setStyles()
 })
-
-function setStyles () {
-  if (props.customStyles) {
-    Object.keys(props.customStyles).forEach(p => {
-      amDialogRef.value.style[p] = props.customStyles[p]
-    })
-  }
-}
 
 /**
  * Component Emits
@@ -184,6 +179,26 @@ export default {
     max-width: var(--el-dialog-width, 50%);
     width: 100%;
     margin: var(--el-dialog-margin-top,15vh) auto 50px;
+    padding: 0;
+
+    .el-dialog {
+      &__header {
+        padding: 16px;
+      }
+
+      &__headerbtn {
+        width: auto;
+        height: auto;
+      }
+
+      &__body {
+        padding: 16px;
+      }
+
+      &__footer {
+        padding: 16px;
+      }
+    }
   }
 }
 </style>

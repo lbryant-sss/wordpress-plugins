@@ -205,6 +205,11 @@ let starterLabelsTreatment = deepMerge(
           'incl_tax',
         ],
       },
+      infoStep: {
+        social: [
+          'remove'
+        ]
+      },
       paymentStep: {
         summarySegment: [
           'summary_recurrence',
@@ -247,6 +252,11 @@ let starterLabelsTreatment = deepMerge(
           'remove',
         ],
       },
+      customerInfo: {
+        social: [
+          'remove'
+        ]
+      },
       payment: {
         summarySegment: [
           'total_tax_colon',
@@ -288,6 +298,11 @@ let starterLabelsTreatment = deepMerge(
           'event_tickets',
           'event_ticket'
         ]
+      },
+      signIn: {
+        social: [
+          'remove'
+        ]
       }
     },
     ecf: {
@@ -304,6 +319,11 @@ let starterLabelsTreatment = deepMerge(
         ],
         tabTickets: [
           'remove',
+        ]
+      },
+      customerInfo: {
+        social: [
+          'remove'
         ]
       },
       payment: {

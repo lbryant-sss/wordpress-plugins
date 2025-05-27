@@ -19,7 +19,7 @@
           :min="options.min"
           :max="options.max"
           :class="responsiveClass"
-        ></AmInputNumber>
+        />
       </div>
     </div>
   </div>

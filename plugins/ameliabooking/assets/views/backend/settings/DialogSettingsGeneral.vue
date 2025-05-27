@@ -87,7 +87,7 @@
         </div>
 
         <!-- Include Buffer Time In Time Slot -->
-        <div :class="licenceClass('starter')" class="am-setting-box am-switch-box">
+        <div v-if="settings.serviceDurationAsSlot" :class="licenceClass('starter')" class="am-setting-box am-switch-box">
           <el-row type="flex" align="middle" :gutter="24">
             <el-col :span="16">
               {{ $root.labels.buffer_time_in_slot }}

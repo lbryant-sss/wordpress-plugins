@@ -1,5 +1,10 @@
 <template>
-  <div ref="paymentStepRef" :class="props.globalClass" :style="cssVars">
+  <div
+    ref="paymentStepRef"
+    :class="props.globalClass"
+    :style="cssVars"
+    tabindex="0"
+  >
     <div v-show="ready && !loading" class="am-fs__payments">
       <div class="am-fs__payments-heading">
         <div v-if="paymentError" class="am-fs__payments-error">
@@ -47,6 +52,7 @@
               <img
                 v-if="available"
                 :src="baseUrls.wpAmeliaPluginURL + '/v3/src/assets/img/icons/' + paymentsBtn.find(item => item.key === gateway).value.name"
+                :alt="gateway"
               >
               <div>
                 <p>{{ paymentsBtn.find(item => item.key === gateway).value.text }}</p>
@@ -157,8 +163,6 @@ const componentTypes = {
   package: markRaw(PackageInfo),
   cart: markRaw(CartInfo)
 }
-
-const shortcodeData = inject('shortcodeData')
 
 let paymentError = computed(() => store.getters['booking/getError'])
 

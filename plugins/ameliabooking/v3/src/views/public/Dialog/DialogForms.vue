@@ -13,7 +13,6 @@ import {
   ref,
   inject,
   computed,
-  watch,
   onMounted,
   watchEffect,
   provide
@@ -44,14 +43,10 @@ provide('dialogWrapperWidth', dialogWrapperWidth)
 let dialogVisibility = ref(false)
 provide('formDialogVisibility', dialogVisibility)
 
-let isRestored = ref(false)
+let isRestored = computed(() => 'isRestored' in shortcodeData.value ? shortcodeData.value.isRestored : false)
 
 let externalButtons = shortcodeData.value.trigger_type && shortcodeData.value.trigger_type === 'class' ? [...document.getElementsByClassName(shortcodeData.value.trigger)]
   : [document.getElementById(shortcodeData.value.trigger)]
-
-function isDataRestored (res) {
-  isRestored.value = res
-}
 
 let resizeAfter = ref(100)
 
@@ -74,8 +69,8 @@ externalButtons.forEach(btn => {
   })
 })
 
-watch(isRestored, (current) => {
-  if(current) {
+watchEffect(() => {
+  if(isRestored.value) {
     externalButtons.forEach(btn => {
       btn.dispatchEvent(new Event('click'))
     })
@@ -93,7 +88,12 @@ function updateVH() {
 
 window.addEventListener('resize', updateVH)
 
+// * Global flag for determination when component is fully loaded (used for Amelia popup)
+let isMounted = inject('isMounted')
+
 onMounted(() => {
+  isMounted.value = true
+
   useRenderAction(
     'renderPopup',
     {
@@ -147,7 +147,7 @@ watchEffect(() => {
 
 <script>
 export default {
-  name: "EventsListFormWrapper"
+  name: "AmeliaDialogForms",
 }
 </script>
 
@@ -163,7 +163,7 @@ export default {
     :width="dialogWrapperWidth"
     @closed="resetDialogState"
   >
-    <component :is="formList[shortcodeData.triggered_form]" @is-restored="isDataRestored"></component>
+    <component :is="formList[shortcodeData.triggered_form]"></component>
   </AmDialog>
 </template>
 

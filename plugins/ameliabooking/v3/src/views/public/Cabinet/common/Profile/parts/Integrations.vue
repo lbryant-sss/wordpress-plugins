@@ -47,7 +47,7 @@
     <!-- Apple Calendar -->
     <div v-if="amSettings.appleCalendar" class="am-caedo__apple">
       <AmCollapse>
-        <AmCollapseItem :side="true" :delay="500" ref="appleVisibility">
+        <AmCollapseItem ref="appleVisibility" :side="true" :delay="500">
           <template #heading>
             {{ amLabels.apple_calendar_personal }}
           </template>
@@ -70,7 +70,7 @@
                 <AmInput
                   v-model="appleCalendarPersonal.appSpecificPassword"
                   type="password"
-                  :showPassword="true"
+                  :show-password="true"
                   :disabled="isEmployeeConnectedToPersonalAppleCalendar"
                   :placeholder="amLabels.apple_app_specific_password"
                 />
@@ -377,13 +377,13 @@ let employeeDataFormConstruction = ref({
     props: {
       itemName: 'appleId',
       label: amLabels.apple_calendar,
-      placeholder: '',
+      placeholder: amLabels.apple_calendar_placeholder,
       class: computed(() => `am-caepif__item ${props.responsiveClass}`),
       disabled: false,
       clearable: computed(() => !isEmployeeConnectedToPersonalAppleCalendar.value),
       options: computed(() => appleCalendarOptions.value),
       loading: computed(() => store.getters['auth/getAppleLoading']),
-      loadingIcon: 'loading',
+      loadingText: 'Loading...',
     },
   },
 })
@@ -481,10 +481,9 @@ function useEmployeeAppleDisconnect (store) {
     }
 
     .am-google-calendar-button {
-      padding: 0;
+      padding: 0 2px 0 30px;
       height: 40px;
       border: 1px solid #747775 !important;
-      margin: inherit;
       background-color: #ffffff !important;
       -webkit-border-radius: 1px;
       border-radius: 1px;
@@ -504,6 +503,7 @@ function useEmployeeAppleDisconnect (store) {
       text-align: center;
       vertical-align: middle;
       white-space: nowrap;
+      margin: 0;
 
       &:hover {
         box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
@@ -527,6 +527,8 @@ function useEmployeeAppleDisconnect (store) {
 
     .am-outlook-button {
       position: relative;
+      padding-left: 30px;
+      padding-right: 2px;
 
       .am-outlook-img {
         position: absolute;

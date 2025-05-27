@@ -25,6 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function userfeedback_admin_menu() {
 
 	$menu_slug = 'userfeedback_surveys';
+	$new_indicator = '<span class="userfeedback-menu-new-indicator">&nbsp;' . __( 'NEW!', 'userfeedback' ) . '</span>';
 
 	// Add main Menu Item
 	add_menu_page(
@@ -61,7 +62,7 @@ function userfeedback_admin_menu() {
 	add_submenu_page(
 		$menu_slug,
 		__( 'Heatmaps', 'userfeedback' ),
-		__( 'Heatmaps', 'userfeedback' ),
+		__( 'Heatmaps', 'userfeedback' ) . $new_indicator,
 		'manage_options',
 		'userfeedback_heatmaps',
 		'userfeedback_heatmaps_page'
@@ -109,7 +110,7 @@ function userfeedback_admin_menu() {
 		'userfeedback_smtp',
 		'userfeedback_smtp_page'
 	);
-	
+
 	// About Us
 	add_submenu_page(
 		$menu_slug,
@@ -118,7 +119,16 @@ function userfeedback_admin_menu() {
 		'manage_options',
 		$settings_submenu_base . '#/about'
 	);
-	
+
+	// Growth Tools
+	add_submenu_page(
+		$menu_slug,
+		__( 'Growth Tools', 'userfeedback' ),
+		__( 'Growth Tools', 'userfeedback' ),
+		'manage_options',
+		$settings_submenu_base . '#/growth-tools'
+	);
+
 	// Suggest a Feature
 	add_submenu_page(
 		$menu_slug,
@@ -127,7 +137,7 @@ function userfeedback_admin_menu() {
 		'manage_options',
 		userfeedback_get_url( 'admin-menu', '', 'https://www.userfeedback.com/suggest-feature/' )
 	);
-	
+
 	if ( ! userfeedback_is_pro_version() ) {
 		add_submenu_page(
 			$menu_slug,
@@ -144,7 +154,7 @@ function userfeedback_admin_menu() {
  * Register admin bar menu items for UserFeedback.
  *
  * @since 1.3.0
- * 
+ *
  * @param $admin_bar
  * @return void
  */

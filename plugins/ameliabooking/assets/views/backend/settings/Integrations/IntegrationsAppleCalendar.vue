@@ -81,7 +81,7 @@
                 <label slot="label">
                   {{ $root.labels.event_title }}:
                   <el-tooltip placement="top">
-                    <div slot="content" v-html="$root.labels.event_title_tooltip"></div>
+                    <div slot="content" v-html="$root.labels.event_title_tooltip_apple"></div>
                     <i class="el-icon-question am-tooltip-icon"></i>
                   </el-tooltip>
                 </label>
@@ -94,7 +94,7 @@
                 <label slot="label">
                   {{ $root.labels.event_description }}:
                   <el-tooltip placement="top">
-                    <div slot="content" v-html="$root.labels.event_description_tooltip"></div>
+                    <div slot="content" v-html="$root.labels.event_description_tooltip_apple"></div>
                     <i class="el-icon-question am-tooltip-icon"></i>
                   </el-tooltip>
                 </label>
@@ -157,7 +157,7 @@
                 <label slot="label">
                   {{ $root.labels.event_title }}:
                   <el-tooltip placement="top">
-                    <div slot="content" v-html="$root.labels.event_title_tooltip"></div>
+                    <div slot="content" v-html="$root.labels.event_title_tooltip_apple"></div>
                     <i class="el-icon-question am-tooltip-icon"></i>
                   </el-tooltip>
                 </label>
@@ -170,7 +170,7 @@
                 <label slot="label">
                   {{ $root.labels.event_description }}:
                   <el-tooltip placement="top">
-                    <div slot="content" v-html="$root.labels.event_description_tooltip"></div>
+                    <div slot="content" v-html="$root.labels.event_description_tooltip_apple"></div>
                     <i class="el-icon-question am-tooltip-icon"></i>
                   </el-tooltip>
                 </label>

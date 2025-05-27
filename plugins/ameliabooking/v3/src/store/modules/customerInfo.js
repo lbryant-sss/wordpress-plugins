@@ -19,7 +19,8 @@ export default {
     loading: false,
     customers: [],
     customersIds: [],
-    wpUsers: []
+    wpUsers: [],
+    customFields: null
   }),
 
   getters: {
@@ -55,6 +56,10 @@ export default {
       return state.translations.defaultLanguage
     },
 
+    getCustomerCustomFields (state) {
+      return state.customFields
+    },
+
     getCustomerBirthday (state) {
       return state.birthday
     },
@@ -80,7 +85,8 @@ export default {
         email: state.email,
         phone: state.phone,
         countryPhoneIso : state.countryPhoneIso,
-        loggedUser: state.loggedUser
+        loggedUser: state.loggedUser,
+        customFields: state.customFields
       }
     },
 
@@ -113,6 +119,7 @@ export default {
         gender: state.gender,
         birthday: state.birthday,
         note: state.note,
+        customFields: state.customFields,
       }
     }
   },
@@ -174,6 +181,7 @@ export default {
       state.email = payload.email
       state.phone = payload.phone || ''
       state.countryPhoneIso = payload.countryPhoneIso || ''
+      state.customFields = payload.customFields || ''
     },
 
     setAllData (state, payload) {
@@ -185,6 +193,7 @@ export default {
       state.phone = payload.phone
       state.countryPhoneIso = payload.countryPhoneIso
       state.loggedUser = payload.loggedUser
+      state.customFields = payload.customFields
     },
 
     setCustomer (state, payload) {
@@ -199,6 +208,7 @@ export default {
       state.gender = payload.gender
       state.birthday = payload.birthday
       state.note = payload.note
+      state.customFields = payload.customFields
     },
 
     setLoading (state, payload) {
@@ -290,6 +300,7 @@ export default {
         gender: '',
         birthday: '',
         note: '',
+        customFields: null
       })
     }
   }

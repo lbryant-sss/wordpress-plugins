@@ -15,7 +15,7 @@
       v-model="infoFormData.lastName"
       name="lastName"
       :placeholder="labelsDisplay('enter_last_name')"
-    ></AmInput>
+    />
   </el-form-item>
   <!-- /Last Name -->
 </template>

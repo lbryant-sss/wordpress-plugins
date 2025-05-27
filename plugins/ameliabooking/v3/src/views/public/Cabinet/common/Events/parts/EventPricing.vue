@@ -60,7 +60,10 @@
         <div class="am-capei-price__block-header__text">
           {{ amLabels.deposit_enabled }}
         </div>
-        <Am-Switch v-model="pricingFormData.depositEnabled" />
+        <Am-Switch
+          v-model="pricingFormData.depositEnabled"
+          :aria-label="amLabels.deposit_enabled"
+        />
       </div>
 
       <template v-if="pricingFormData.depositEnabled">
@@ -128,6 +131,7 @@
         <AmSwitch
           v-model="pricingFormData.customPricing"
           :disabled="event.bookings && event.bookings.length > 0"
+          :aria-label="amLabels.custom_pricing_enabled"
           @change="changeCustomPricing"
         />
       </div>
@@ -180,7 +184,11 @@
             <el-form-item
               :label="props.pageWidth < 546 ? `${amLabels.name}:` : ''"
             >
-              <AmInput v-model="ticket.name" :disabled="!ticket.enabled" />
+              <AmInput
+                v-model="ticket.name"
+                :disabled="!ticket.enabled"
+                :aria-label="amLabels.name"
+              />
             </el-form-item>
           </div>
 
@@ -197,6 +205,7 @@
                 v-model="ticket.price"
                 :disabled="!ticket.enabled"
                 :is-money="true"
+                :aria-label="amLabels.price"
               />
             </el-form-item>
           </div>
@@ -215,9 +224,8 @@
               <AmInputNumber
                 v-model="ticket.spots"
                 :min="1"
-                :disabled="
-                  !ticket.enabled || pricingFormData.maxCustomCapacityEnabled
-                "
+                :disabled="!ticket.enabled || pricingFormData.maxCustomCapacityEnabled"
+                :aria-label="amLabels.spots"
               />
             </el-form-item>
           </div>
@@ -291,7 +299,10 @@
           <div class="am-capei-price__block-header__text">
             {{ amLabels.pricing_by_date_enabled }}
           </div>
-          <AmSwitch v-model="pricingFormData.customTicketsRangesEnabled" />
+          <AmSwitch
+            v-model="pricingFormData.customTicketsRangesEnabled"
+            :aria-label="amLabels.pricing_by_date_enabled"
+          />
         </div>
 
         <div
@@ -313,6 +324,8 @@
                 placeholder="Pick a day"
                 :lang="localLanguage"
                 :disabled-date="isInBookingRange"
+                :start-placeholder="amLabels.start_date"
+                :end-placeholder="amLabels.end_date"
               />
               <AmButton
                 category="secondary"
@@ -323,6 +336,7 @@
                   components: { IconComponent },
                   template: `<IconComponent icon='bucket'/>`,
                 }"
+                :aria-label="amLabels.delete"
                 @click="removeTicketsRange(rangeIndex)"
               />
             </el-form-item>
@@ -358,7 +372,11 @@
                 <el-form-item
                   :label="props.pageWidth < 546 ? `${amLabels.name}:` : ''"
                 >
-                  <AmInput v-model="ticket.name" :disabled="true" />
+                  <AmInput
+                    v-model="ticket.name"
+                    :disabled="true"
+                    :aria-label="amLabels.name"
+                  />
                 </el-form-item>
               </div>
 
@@ -373,6 +391,7 @@
                   <AmInput
                     v-model="ticketRange.tickets[index].price"
                     :is-money="true"
+                    :aria-label="amLabels.price"
                   />
                 </el-form-item>
               </div>
@@ -407,7 +426,10 @@
         <div class="am-capei-price__block-header__text">
           {{ amLabels.event_close_after_min }}
         </div>
-        <AmSwitch v-model="pricingFormData.closeAfterMinEnabled" />
+        <AmSwitch
+          v-model="pricingFormData.closeAfterMinEnabled"
+          :aria-label="amLabels.event_close_after_min"
+        />
       </div>
 
       <div
@@ -427,8 +449,8 @@
             { 'am-w-50': props.pageWidth > 545 },
           ]"
         >
-          <AmRadio label="off">{{ amLabels.event_close_min_total }}</AmRadio>
-          <AmRadio label="on">{{ amLabels.event_close_min_bookings }}</AmRadio>
+          <AmRadio :value="false">{{ amLabels.event_close_min_total }}</AmRadio>
+          <AmRadio :value="true">{{ amLabels.event_close_min_bookings }}</AmRadio>
         </AmRadioGroup>
 
         <el-form-item
@@ -459,7 +481,10 @@
         <div class="am-capei-price__block-header__text">
           {{ amLabels.limit_extra_people }}
         </div>
-        <AmSwitch v-model="pricingFormData.maxExtraPeopleEnabled" />
+        <AmSwitch
+          v-model="pricingFormData.maxExtraPeopleEnabled"
+          :aria-label="amLabels.limit_extra_people"
+        />
       </div>
 
       <div

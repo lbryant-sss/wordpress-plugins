@@ -16,6 +16,8 @@
           :back-btn-visibility="backBtnVisibility"
           :cart-btn-visibility="cartBtnVisibility"
           :cart-items-number="cartItemsNumber"
+          role="navigation"
+          aria-label="Navigation Controls"
           @go-back="goBack"
           @go-to-cart="goToCart"
         ></Header>
@@ -25,9 +27,15 @@
         <div
           :class="[{'am-tablet': pageWidth <= 678}, {'am-mobile': pageWidth < 450}]"
           class="am-fcis__header-top"
+          role="region"
+          aria-label="Service Information"
         >
           <div class="am-fcis__header-text">
-            <span class="am-fcis__header-name">
+            <span
+              class="am-fcis__header-name"
+              role="heading"
+              aria-level="1"
+            >
               {{service.name}}
             </span>
             <div
@@ -445,7 +453,10 @@
       ref="ameliaContainer"
       class="am-empty"
     >
-      <img :src="baseUrls.wpAmeliaPluginURL+'/v3/src/assets/img/am-empty-booking.svg'">
+      <img
+        :src="baseUrls.wpAmeliaPluginURL+'/v3/src/assets/img/am-empty-booking.svg'"
+        :alt="preselected.show !== 'packages' ? amLabels.no_services_employees : amLabels.no_package_services"
+      >
       <div class="am-empty__heading">
         {{ amLabels.oops }}
       </div>
@@ -700,6 +711,8 @@ function goBack() {
 let showCart = ref(false)
 
 function goToCart () {
+  store.commit('booking/setShownCart', false)
+
   useRemoveLastCartItem(store)
 
   showCart.value = true
@@ -778,9 +791,7 @@ function selectServicePackage(pack) {
 // * Shortcode
 const preselected = computed(() => store.getters['entities/getPreselected'])
 
-let backBtnVisibility = computed(() => {
-  return amEntities.value.services.length !== 1 && preselected.value.service.length !== 1
-})
+let backBtnVisibility = ref(amEntities.value.services.length !== 1 && preselected.value.service.length !== 1)
 
 let stepName = ref('')
 provide('stepName', stepName)

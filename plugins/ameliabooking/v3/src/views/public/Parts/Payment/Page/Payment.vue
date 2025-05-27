@@ -61,6 +61,7 @@
             <img
               v-if="available"
               :src="`${baseUrls.wpAmeliaPluginURL}/v3/src/assets/img/icons/${gateway === 'mollie' || gateway === 'wc' ? 'stripe' : gateway}.svg`"
+              :alt="gateway"
             >
             <div>
               <p>{{ paymentsBtnText.filter(item => item.key === gateway)[0].text }}</p>

@@ -2,12 +2,15 @@
   <div class="am-radio-wrapper">
     <el-radio
       ref="amRadio"
+      v-model="model"
       class="am-radio"
-      :class="[`am-checkbox__${size}`]"
+      :class="[`am-radio__${props.size}`]"
+      :value="props.value"
+      :label="props.label"
+      :disabled="props.disabled"
+      :border="props.border"
+      :name="props.name"
       :style="{...cssVars}"
-      :disabled="disabled"
-      :label="label"
-      :name="name"
       @change="(e) => $emit('change', e)"
     >
       <slot name="default"></slot>
@@ -16,11 +19,38 @@
 </template>
 
 <script setup>
+// * Composables
 import { useColorTransparency } from '../../../assets/js/common/colorManipulation';
 
-import { computed, ref, inject } from "vue";
+// * Import from Vue
+import {
+  computed,
+  ref,
+  inject, toRefs
+} from "vue";
 
-defineProps({
+/**
+ * Component Props
+ * */
+const props = defineProps({
+  modelValue: {
+    type: [String, Number, Boolean]
+  },
+  value: {
+    type: [String, Number, Boolean]
+  },
+  label: {
+    // * the label of Radio. If there's no value, label will act as value
+    type: [String, Number, Boolean]
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  border: {
+    type: Boolean,
+    default: false
+  },
   size: {
     type: String,
     default: 'default',
@@ -28,16 +58,9 @@ defineProps({
       return ['default', 'medium', 'small'].includes(value)
     }
   },
-  disabled: {
-    type: Boolean,
-    default: false
-  },
   name: {
     type: String,
     default: ''
-  },
-  label: {
-    type: [String, Number, Boolean]
   },
   style: {
     type: Object,
@@ -50,13 +73,20 @@ defineProps({
 /**
  * Component Emits
  * */
-defineEmits(['change'])
+const emits = defineEmits(['change', 'update:modelValue'])
 
 /**
  * Component model
  */
+let { modelValue } = toRefs(props)
+let model = computed({
+  get: () => modelValue.value,
+  set: (val) => {
+    emits('update:modelValue', val)
+  }
+})
 
-const amRadio = ref()
+const amRadio = ref(null)
 
 // * Color Vars
 let amColors = inject('amColors', ref({
@@ -135,8 +165,6 @@ const cssVars = computed(() => {
         display: flex;
         align-items: center;
         align-self: flex-start;
-        //--am-c-radio-bgr: var(--am-c-btn-prim-text);
-
 
         // After
         &:after {
@@ -145,12 +173,12 @@ const cssVars = computed(() => {
 
         // Checked
         &.is-checked {
-          --am-c-radio-bgr: var(--am-c-btn-prim);
+          --am-c-radio-bgr: var(--am-c-primary);
           --am-c-radio-border: var(--am-c-primary);
           --am-c-radio-text: var(--am-c-main-bgr);
 
           &:hover {
-            --am-c-radio-bgr: var(--am-c-btn-prim);
+            --am-c-radio-bgr: var(--am-c-primary);
           }
 
           // Disabled
@@ -177,7 +205,6 @@ const cssVars = computed(() => {
 
       // Selected Label
       .el-radio__input.is-checked:not(.is-disabled) + .el-radio__label {
-        //color: var(--am-c-inp-text);
         margin-right: 8px;
       }
 
@@ -188,7 +215,7 @@ const cssVars = computed(() => {
         .el-radio__inner {
           border: 1px solid var(--am-c-radio-border);
           box-shadow: inset 0 1px 1px rgba(20, 35, 61, 0.11);
-          background: var(--am-c-btn-prim);
+          background: var(--am-c-primary);
         }
       }
 

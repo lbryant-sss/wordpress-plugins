@@ -48,7 +48,7 @@ import { computed, ref } from "vue";
  */
 const props = defineProps({
   id: {
-    type: [Number, String],
+    type: [String, Number],
     default: 0
   },
   modelValue: {
@@ -214,7 +214,7 @@ function onRemove (removedFile, arrayOfFiles) {
 
       &__btn {
         width: 100%;
-        margin: 0 0 8px;
+        margin: 0;
 
         &.is-disabled {
           cursor: not-allowed;

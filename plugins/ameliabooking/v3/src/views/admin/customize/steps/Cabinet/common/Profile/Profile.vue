@@ -281,7 +281,7 @@ let infoFormConstruction = computed(() => {
         label: labelsDisplay('date_of_birth'),
         placeholder: labelsDisplay('enter_date_of_birth'),
         clearable: true,
-        readOnly: false,
+        readonly: false,
         class: `am-capi__item ${responsiveClass.value}`,
       }
     }

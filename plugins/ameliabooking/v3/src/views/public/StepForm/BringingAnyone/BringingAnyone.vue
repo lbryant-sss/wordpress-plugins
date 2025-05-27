@@ -2,31 +2,71 @@
   <div
     class="am-fs__bringing"
     :class="[
-      (!props.inPopup && checkScreen) ? 'am-fs__bringing-full-mobile': !props.inPopup ? 'am-fs__bringing-full':'',
-      {'am-fs__bringing-full-mobile-s':mobileS}
+      !props.inPopup && checkScreen
+        ? 'am-fs__bringing-full-mobile'
+        : !props.inPopup
+        ? 'am-fs__bringing-full'
+        : '',
+      { 'am-fs__bringing-full-mobile-s': mobileS },
     ]"
     :style="cssVars"
+    :tabindex="!props.inPopup ? 0 : -1"
   >
     <div class="am-fs__bringing-main">
-      <div v-if="props.inPopup && headingVisibility" class="am-fs__bringing-heading">
-        {{amLabels.bringing_anyone_title}}
+      <div
+        v-if="props.inPopup && headingVisibility"
+        class="am-fs__bringing-heading"
+        :aria-label="amLabels.bringing_anyone_title"
+      >
+        {{ amLabels.bringing_anyone_title }}
       </div>
       <div class="am-fs__bringing-content">
-          <span class="am-fs__bringing-content-left">
-            <span class="am-icon-users"></span>
-            <span class="am-fs__bringing-content-text">{{amSettings.appointments.bringingAnyoneLogic === 'additional' ? amLabels.bringing_people : amLabels.bringing_people_total}}</span>
+        <span class="am-fs__bringing-content-left">
+          <span class="am-icon-users"></span>
+          <span
+            class="am-fs__bringing-content-text"
+            :aria-label="
+              amSettings.appointments.bringingAnyoneLogic === 'additional'
+                ? amLabels.bringing_people
+                : amLabels.bringing_people_total
+            "
+          >
+            {{
+              amSettings.appointments.bringingAnyoneLogic === 'additional'
+                ? amLabels.bringing_people
+                : amLabels.bringing_people_total
+            }}
           </span>
-        <AmInputNumber v-model="persons" :min="options.min" :max="options.max" size="small"></AmInputNumber>
+        </span>
+        <AmInputNumber
+          v-model="persons"
+          :min="options.min"
+          :max="options.max"
+          size="small"
+        />
       </div>
-      <div v-if="infoVisibility" class="am-fs__bringing-message">
-        {{amSettings.appointments.bringingAnyoneLogic === 'additional' ? amLabels.add_people : amLabels.add_people_total}}
+      <div
+        v-if="infoVisibility"
+        class="am-fs__bringing-message"
+        :aria-label="
+          amSettings.appointments.bringingAnyoneLogic === 'additional'
+            ? amLabels.add_people
+            : amLabels.add_people_total
+        "
+      >
+        {{
+          amSettings.appointments.bringingAnyoneLogic === 'additional'
+            ? amLabels.add_people
+            : amLabels.add_people_total
+        }}
       </div>
     </div>
 
     <!-- Packages Popup -->
-    <PackagesPopup @continue-with-service="packagesVisibility = false"></PackagesPopup>
+    <PackagesPopup
+      @continue-with-service="packagesVisibility = false"
+    ></PackagesPopup>
     <!--/ Packages Popup -->
-
   </div>
 </template>
 
@@ -38,34 +78,36 @@ import {
   inject,
   watchEffect,
   provide,
-  onMounted
-} from "vue";
-import { useStore } from "vuex";
+  onMounted,
+} from 'vue'
+import { useStore } from 'vuex'
 
-import AmInputNumber from "../../../_components/input-number/AmInputNumber.vue";
-import PackagesPopup from "../PakagesStep/parts/PackagesPopup";
+import AmInputNumber from '../../../_components/input-number/AmInputNumber.vue'
+import PackagesPopup from '../PakagesStep/parts/PackagesPopup'
 
-import { useColorTransparency } from "../../../../assets/js/common/colorManipulation";
-import { useCapacity } from "../../../../assets/js/common/appointments";
+import { useColorTransparency } from '../../../../assets/js/common/colorManipulation'
+import { useCapacity } from '../../../../assets/js/common/appointments'
 
 let props = defineProps({
   globalClass: {
     type: String,
-    default: ''
+    default: '',
   },
   inPopup: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 
 // Container Width
 let cWidth = inject('containerWidth', 0)
-let checkScreen = computed(() => cWidth.value < 560 || (cWidth.value > 560 && cWidth.value < 640))
+let checkScreen = computed(
+  () => cWidth.value < 560 || (cWidth.value > 560 && cWidth.value < 640)
+)
 let mobileS = computed(() => cWidth.value < 340)
 
 // * Store
-const store = useStore();
+const store = useStore()
 
 // * Short code
 const shortcodeData = inject('shortcodeData')
@@ -77,7 +119,9 @@ const amSettings = inject('settings')
 const localLanguage = inject('localLanguage')
 
 // * if local lang is in settings lang
-let langDetection = computed(() => amSettings.general.usedLanguages.includes(localLanguage.value))
+let langDetection = computed(() =>
+  amSettings.general.usedLanguages.includes(localLanguage.value)
+)
 
 // * Labels
 const globalLabels = inject('labels')
@@ -86,23 +130,33 @@ const globalLabels = inject('labels')
 const amCustomize = inject('amCustomize')
 
 // * Package
-let packagesOptions = computed(() => store.getters['entities/filteredPackages'](
+let packagesOptions = computed(() =>
+  store.getters['entities/filteredPackages'](
     store.getters['booking/getSelection']
-))
+  )
+)
 
 let packagesVisibility = ref(false)
 provide('packagesVisibility', packagesVisibility)
 
-
 // * Computed labels
 let amLabels = computed(() => {
-  let computedLabels = reactive({...globalLabels})
+  let computedLabels = reactive({ ...globalLabels })
 
-  if (amSettings.customizedData && amSettings.customizedData.sbsNew && amSettings.customizedData.sbsNew.bringingAnyone.translations) {
-    let customizedLabels = amSettings.customizedData.sbsNew.bringingAnyone.translations
-    Object.keys(customizedLabels).forEach(labelKey => {
-      if (customizedLabels[labelKey][localLanguage.value] && langDetection.value) {
-        computedLabels[labelKey] = customizedLabels[labelKey][localLanguage.value]
+  if (
+    amSettings.customizedData &&
+    amSettings.customizedData.sbsNew &&
+    amSettings.customizedData.sbsNew.bringingAnyone.translations
+  ) {
+    let customizedLabels =
+      amSettings.customizedData.sbsNew.bringingAnyone.translations
+    Object.keys(customizedLabels).forEach((labelKey) => {
+      if (
+        customizedLabels[labelKey][localLanguage.value] &&
+        langDetection.value
+      ) {
+        computedLabels[labelKey] =
+          customizedLabels[labelKey][localLanguage.value]
       } else if (customizedLabels[labelKey].default) {
         computedLabels[labelKey] = customizedLabels[labelKey].default
       }
@@ -111,17 +165,24 @@ let amLabels = computed(() => {
   return computedLabels
 })
 
-let headingVisibility = amCustomize ? amCustomize.bringingAnyone.options.heading.visibility : true
-let infoVisibility = amCustomize ? amCustomize.bringingAnyone.options.info.visibility : true
+let headingVisibility = amCustomize
+  ? amCustomize.bringingAnyone.options.heading.visibility
+  : true
+let infoVisibility = amCustomize
+  ? amCustomize.bringingAnyone.options.info.visibility
+  : true
 
 // * Step functionality
-let { nextStep, footerButtonReset, footerButtonClicked } = inject('changingStepsFunctions', {
-  nextStep: () => {},
-  footerButtonReset: () => {},
-  footerButtonClicked: {
-    value: false
+let { nextStep, footerButtonReset, footerButtonClicked } = inject(
+  'changingStepsFunctions',
+  {
+    nextStep: () => {},
+    footerButtonReset: () => {},
+    footerButtonClicked: {
+      value: false,
+    },
   }
-})
+)
 
 let options = computed(() => {
   if (props.inPopup) {
@@ -138,24 +199,30 @@ let options = computed(() => {
 
 let persons = computed({
   get: () => {
-    return store.getters['booking/getBookingPersons'] - (amSettings.appointments.bringingAnyoneLogic === 'additional' ? 1 : 0)
+    return (
+      store.getters['booking/getBookingPersons'] -
+      (amSettings.appointments.bringingAnyoneLogic === 'additional' ? 1 : 0)
+    )
   },
   set: (val) => {
     store.commit('booking/setBookingPersons', val)
-  }
+  },
 })
-
 
 if (!props.inPopup) {
   onMounted(() => {
-    if (!props.inPopup && packagesOptions.value.length && shortcodeData.value.show !== 'services') {
+    if (
+      !props.inPopup &&
+      packagesOptions.value.length &&
+      shortcodeData.value.show !== 'services'
+    ) {
       packagesVisibility.value = true
     }
   })
 
   // * Watching when footer button was clicked
   watchEffect(() => {
-    if(footerButtonClicked.value) {
+    if (footerButtonClicked.value) {
       footerButtonReset()
       nextStep()
     }
@@ -163,14 +230,19 @@ if (!props.inPopup) {
 }
 
 // * Global colors
-let amColors = inject('amColors');
+let amColors = inject('amColors')
 let cssVars = computed(() => {
   return {
-    '--am-bringing-color-border': useColorTransparency(amColors.value.colorMainText, 0.25),
-    '--am-bringing-color-text-opacity60': useColorTransparency(amColors.value.colorMainText, 0.6),
+    '--am-bringing-color-border': useColorTransparency(
+      amColors.value.colorMainText,
+      0.25
+    ),
+    '--am-bringing-color-text-opacity60': useColorTransparency(
+      amColors.value.colorMainText,
+      0.6
+    ),
   }
 })
-
 </script>
 
 <script>
@@ -183,16 +255,14 @@ export default {
     stepSelectedData: [],
     finished: false,
     selected: false,
-  }
+  },
 }
 </script>
 
 <style lang="scss">
 @mixin bringing-anyone-block {
   .am-fs {
-
     &__bringing {
-
       &-full {
         padding: 16px 32px;
 
@@ -289,19 +359,20 @@ export default {
           margin: 20px 0;
           color: var(--am-c-ps-text-op60);
 
-          &:before, &:after{
-            content: "";
+          &:before,
+          &:after {
+            content: '';
             flex: 1 1;
             border-bottom: 1px solid var(--am-c-ps-text-op20);
             margin: auto;
           }
 
           &:before {
-            margin-right: 10px
+            margin-right: 10px;
           }
 
           &:after {
-            margin-left: 10px
+            margin-left: 10px;
           }
         }
 
@@ -315,7 +386,7 @@ export default {
 
           &-mobile {
             &.am-button.am-button--medium {
-              --am-fs-btn: 12px
+              --am-fs-btn: 12px;
             }
           }
         }

@@ -2,7 +2,7 @@
   <el-popover
     v-if="stripeProvider && stripeProvider.id && stripeProvider.completed"
     ref="stripeConnectRef"
-    v-model:visible="stripeConnectPopVisible"
+    :visible="stripeConnectPopVisible"
     :persistent="false"
     :show-arrow="false"
     :width="'auto'"
@@ -43,7 +43,7 @@
   <el-popover
     v-else-if="stripeProvider && stripeProvider.id && !stripeProvider.completed"
     ref="stripeConnectRef"
-    v-model:visible="stripeConnectPopVisible"
+    :visible="stripeConnectPopVisible"
     :persistent="false"
     :show-arrow="false"
     :width="'auto'"
@@ -84,7 +84,7 @@
   <el-popover
     v-else
     ref="stripeConnectRef"
-    v-model:visible="stripeConnectPopVisible"
+    :visible="stripeConnectPopVisible"
     :persistent="false"
     :show-arrow="false"
     :width="'auto'"

@@ -19,7 +19,7 @@
       :style="{width: !sidebarCollapsed ? '240px' : '72px', paddingBottom: `${sidebarFooterHeight + 16}px` }"
     >
       <template #step-list>
-        <div class="am-fs-sb__step-wrapper">
+        <div class="am-fs-sb__step-wrapper" tabindex="0">
           <template v-if="stepsArray[stepIndex] !== congratulationsStep || !amSettings.general.addToCalendar || (booked && booked.data.length === 0)">
             <div
               v-for="step in sidebarSteps"
@@ -125,6 +125,7 @@
             <a
               v-if="amSettings.company.phone && footerCustomizeOptions.phone"
               class="am-fs-sb__support-email"
+              :aria-label="`Company phone: ${amSettings.company.phone}`"
               :href="`tel:${amSettings.company.phone}`"
             >
               <template v-if="!sidebarCollapsed">
@@ -137,6 +138,7 @@
             <a
               v-if="amSettings.company.email && footerCustomizeOptions.email"
               class="am-fs-sb__support-email"
+              :aria-label="`Company email: ${amSettings.company.email}`"
               :href="`mailto:${amSettings.company.email}`"
             >
               <template v-if="!sidebarCollapsed">
@@ -170,7 +172,7 @@
         <MainContentHeader :sidebar-visible="sidebarVisibility" :ready="ready"></MainContentHeader>
       </template>
       <template #step>
-        <component :is="stepsArray[stepIndex]" global-class="am-fs__main-content"></component>
+        <component :is="stepsArray[stepIndex]" global-class="am-fs__main-content" :show-cart="props.showCart && stepsArray[stepIndex] === dateTimeStep"></component>
       </template>
       <template #footer>
         <MainContentFooter
@@ -195,7 +197,11 @@
   </div>
   <template v-else>
     <div class="am-no-services">
-      <img :src="baseUrls.wpAmeliaPluginURL+'/v3/src/assets/img/am-empty-booking.svg'" style="margin-top: 10px;">
+      <img
+        :src="baseUrls.wpAmeliaPluginURL+'/v3/src/assets/img/am-empty-booking.svg'"
+        style="margin-top: 10px;"
+        :alt="amLabels.no_services_employees"
+      >
       <h1>{{amLabels.oops}}</h1>
       <h3>{{amLabels.no_services_employees}}</h3>
       <p>{{amLabels.add_services_employees}}</p>
@@ -311,7 +317,7 @@ onMounted(() => {
 const amSettings = inject('settings')
 
 // * Customize
-const amCustomize = amSettings.customizedData ? amSettings.customizedData.sbsNew : defaultCustomizeSettings.sbsNew
+const amCustomize = (amSettings.customizedData && amSettings.customizedData.sbsNew) ? amSettings.customizedData.sbsNew : defaultCustomizeSettings.sbsNew
 if (amCustomize) {
   provide('amCustomize', amCustomize)
 }
@@ -473,7 +479,7 @@ let cart = useCart(store)
 let amLabels = computed(() => {
   let computedLabels = reactive({...labels})
 
-  if (amSettings.customizedData) {
+  if (amSettings.customizedData && amSettings.customizedData.sbsNew) {
     Object.keys(amSettings.customizedData.sbsNew).forEach(stepKey => {
       if (stepKey !== 'colors' && amSettings.customizedData.sbsNew[stepKey].translations) {
         let customizedLabels = amSettings.customizedData.sbsNew[stepKey].translations
@@ -494,7 +500,7 @@ provide('amLabels', amLabels)
 
 let footerLabels = computed(() => {
   let customLabels = {}
-  if (amSettings.customizedData) {
+  if (amSettings.customizedData && amSettings.customizedData.sbsNew) {
     let customizedLabels = amSettings.customizedData.sbsNew[stepsArray.value[stepIndex.value].key] ?
       amSettings.customizedData.sbsNew[stepsArray.value[stepIndex.value].key].translations :
       null
@@ -514,7 +520,9 @@ let footerLabels = computed(() => {
 
 let primFooterBtnType = computed(() => {
   let btnType = 'filled'
-  if (amSettings.customizedData && amSettings.customizedData.sbsNew[stepsArray.value[stepIndex.value].key]) {
+  if (amSettings.customizedData &&
+      amSettings.customizedData.sbsNew &&
+      amSettings.customizedData.sbsNew[stepsArray.value[stepIndex.value].key]) {
     btnType = amSettings.customizedData.sbsNew[stepsArray.value[stepIndex.value].key].options.primaryFooterButton.buttonType
   }
 
@@ -529,6 +537,7 @@ let secFooterBtnType = computed(() => {
   let btnType = 'text'
   if (
     amSettings.customizedData &&
+    amSettings.customizedData.sbsNew &&
     amSettings.customizedData.sbsNew[stepsArray.value[stepIndex.value].key] &&
     amSettings.customizedData.sbsNew[stepsArray.value[stepIndex.value].key].options.secondaryFooterButton
   ) {
@@ -539,7 +548,7 @@ let secFooterBtnType = computed(() => {
 })
 
 let addToCartBtnType = computed(() => {
-  if (amSettings.customizedData && amSettings.customizedData.sbsNew['cartStep']) {
+  if (amSettings.customizedData && amSettings.customizedData.sbsNew && amSettings.customizedData.sbsNew['cartStep']) {
     return amSettings.customizedData.sbsNew['cartStep'].options['addToCart'].buttonType
   }
 
@@ -547,7 +556,7 @@ let addToCartBtnType = computed(() => {
 })
 
 let backToCartBtnType = computed(() => {
-  if (amSettings.customizedData && amSettings.customizedData.sbsNew['cartStep']) {
+  if (amSettings.customizedData && amSettings.customizedData.sbsNew && amSettings.customizedData.sbsNew['cartStep']) {
     return amSettings.customizedData.sbsNew['cartStep'].options['backToCart'].buttonType
   }
 
@@ -556,7 +565,7 @@ let backToCartBtnType = computed(() => {
 
 function dedicatedStepLabel (labelKey, stepKey) {
   let customLabel = ''
-  if (amSettings.customizedData) {
+  if (amSettings.customizedData && amSettings.customizedData.sbsNew) {
     let customizedLabels =  amSettings.customizedData.sbsNew[stepKey] ?
       amSettings.customizedData.sbsNew[stepKey].translations :
       null
@@ -1398,7 +1407,7 @@ function backToCart () {
 
 // * Colors block
 let amColors = computed(() => {
-  return amSettings.customizedData ? amSettings.customizedData.sbsNew.colors : defaultCustomizeSettings.sbsNew.colors
+  return (amSettings.customizedData && amSettings.customizedData.sbsNew) ? amSettings.customizedData.sbsNew.colors : defaultCustomizeSettings.sbsNew.colors
 })
 provide('amColors', amColors);
 
@@ -1528,9 +1537,9 @@ export default {
   // -h- height
   // -fs- font size
   // -rad- border radius
-  --am-h-input: 40px;
-  --am-fs-input: 15px;
-  --am-rad-input: 6px;
+  --am-h-inp: 40px;
+  --am-fs-inp: 15px;
+  --am-rad-inp: 6px;
   --am-fs-label: 15px;
   --am-fs-btn: 15px;
 
@@ -1596,7 +1605,7 @@ export default {
               align-items: center;
               flex: 1;
               position: relative;
-              font-size: var(--am-fs-input);
+              font-size: var(--am-fs-inp);
               min-width: 0;
               color: var(--am-c-main-text);
             }

@@ -4,9 +4,13 @@
     :style="cssVars"
     class="am-fs__main-content am-fs__congrats"
     :class="[{'am-fs-sb-atc' : checkScreen}, props.globalClass]"
+    tabindex="0"
   >
     <div class="am-fs__congrats-main">
-      <img :src="baseUrls.wpAmeliaPluginURL+'/v3/src/assets/img/congratulations/congratulations.svg'">
+      <img
+        :src="baseUrls.wpAmeliaPluginURL+'/v3/src/assets/img/congratulations/congratulations.svg'"
+        :alt="amLabels.congratulations"
+      >
       <p class="am-fs__congrats-main-heading">
         {{ amLabels.congratulations }}
       </p>

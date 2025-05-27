@@ -1,5 +1,5 @@
 <template>
-  <div :style="cssVars">
+  <div :style="cssVars" role="complementary">
     <slot name="step-list"></slot>
     <slot name="support-info"></slot>
   </div>

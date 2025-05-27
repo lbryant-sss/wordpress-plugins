@@ -53,7 +53,7 @@ class UserFeedback_Results {
 				'permission_callback' => array( $this, 'view_results_permission_check' ),
 			)
 		);
-		
+
 		register_rest_route(
 			'userfeedback/v1',
 			'/surveys/(?P<id>\w+)/responses/trash',
@@ -74,7 +74,7 @@ class UserFeedback_Results {
 				)
 			)
 		);
-		
+
 		register_rest_route(
 			'userfeedback/v1',
 			'/surveys/(?P<id>\w+)/responses/restore',
@@ -95,7 +95,7 @@ class UserFeedback_Results {
 				)
 			)
 		);
-		
+
 		register_rest_route(
 			'userfeedback/v1',
 			'/surveys/(?P<id>\w+)/responses',
@@ -134,9 +134,9 @@ class UserFeedback_Results {
 				'id' => $survey_id
 			)
 		)->select( array( 'title', 'status', 'impressions', 'questions', 'type' ) );
-		
+
 		$survey = $survey_query->single();
-		
+
 		if ( 'nps' === $survey->type ) {
 			$where_conditions = array( 'survey_id' => $survey_id );
 
@@ -144,7 +144,7 @@ class UserFeedback_Results {
 			if ( empty( $from_date ) && empty( $to_date ) ) {
 				$today = new DateTime();
 				$todayFormatted = $today->format('Y-m-d');
-	
+
 				$dateBefore30Days = new DateTime();
 				$dateBefore30Days->modify('-30 days');
 				$dateBefore30DaysFormatted = $dateBefore30Days->format('Y-m-d');
@@ -152,7 +152,7 @@ class UserFeedback_Results {
 				$from_date = $dateBefore30DaysFormatted;
 				$to_date = $todayFormatted;
 			}
-			
+
 			if ( ! empty( $from_date ) ) {
 				$where_conditions[] = array(
 					'DATE(submitted_at)',
@@ -168,7 +168,7 @@ class UserFeedback_Results {
 					$to_date,
 				);
 			}
-			
+
 			$responses = UserFeedback_Response::where( $where_conditions )
 				->select( array( 'id', 'survey_id', 'answers', 'submitted_at', 'status' ) )
 				->get();
@@ -340,14 +340,14 @@ class UserFeedback_Results {
 			$detractors = 0;
 			$passives = 0;
 			$promoters = 0;
-	
+
 			foreach ($responses as $item) {
 				if (!isset($item->answers[0]->value)) {
 					continue;
 				}
-	
+
 				$value = $item->answers[0]->value;
-	
+
 				if ($value >= 1 && $value <= 6) {
 					$detractors++;
 				} elseif ($value >= 7 && $value <= 8) {
@@ -356,23 +356,23 @@ class UserFeedback_Results {
 					$promoters++;
 				}
 			}
-	
+
 			// Calculate percentages and round to 2 decimal places
 			$detractorsPercentage = floor(($detractors / $totalCount) * 100);
 			$passivesPercentage = floor(($passives / $totalCount) * 100);
 			$promotersPercentage = floor(($promoters / $totalCount) * 100);
-	
+
 			return array(
-				'detractor' => $detractorsPercentage, 
-				'passive' => $passivesPercentage, 
+				'detractor' => $detractorsPercentage,
+				'passive' => $passivesPercentage,
 				'promoter' => $promotersPercentage,
 				'nps' => floor($promotersPercentage - $detractorsPercentage),
 			);
 		}
 
 		return array(
-			'detractor' => 0, 
-			'passive' => 0, 
+			'detractor' => 0,
+			'passive' => 0,
 			'promoter' => 0,
 			'nps' => 'N/A',
 		);
@@ -386,8 +386,8 @@ class UserFeedback_Results {
 	public function view_results_permission_check() {
 		return current_user_can( 'userfeedback_view_results' );
 	}
-	
-	
+
+
 	/**
 	 * Validate response ids callback
 	 *
@@ -413,6 +413,11 @@ class UserFeedback_Results {
 		$start_date = $request->get_param( 'start_date' );
 		$end_date   = $request->get_param( 'end_date' );
 		$survey_id  = $request->get_param( 'survey_id' );
+		$orderby    = $request->get_param( 'orderby' );
+		$order      = $request->get_param( 'order' );
+
+		$orderby = empty( $orderby ) ? 'created_at' : $orderby;
+		$order   = empty( $order ) ? 'desc' : $order;
 
 		$start_date = $start_date ? new DateTime( $start_date ) : ( new DateTime() )->modify( '-7 days' )->setTime( 0, 0 );
 
@@ -493,7 +498,7 @@ class UserFeedback_Results {
 		$surveys_query->select( array( 'title', 'type', 'status', 'created_at' ) )
 			->with_count( array( 'responses' ) )
 			->with_count_where( 'responses', $where_config, 'range_responses_count' )
-			->sort( 'id', 'desc' );
+			->sort( $orderby, $order );
 
 		return new WP_REST_Response(
 			array(
@@ -615,8 +620,8 @@ class UserFeedback_Results {
 
 		return new WP_REST_Response( $responses );
 	}
-	
-	
+
+
 	/**
 	 * Trash responses
 	 *
@@ -642,7 +647,7 @@ class UserFeedback_Results {
 		$responses = UserFeedback_Response::restore($response_ids);
 		return new WP_REST_Response( $responses );
 	}
-	
+
 	/**
 	 * Delete responses by Id
 	 *

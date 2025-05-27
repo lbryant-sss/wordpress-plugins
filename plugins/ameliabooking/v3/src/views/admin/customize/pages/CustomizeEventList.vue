@@ -290,7 +290,7 @@ let cssVars = computed(() => {
     '--am-c-scroll-op30': useColorTransparency(amColors.value.colorPrimary, 0.3),
     '--am-c-scroll-op10': useColorTransparency(amColors.value.colorPrimary, 0.1),
 
-    '--am-rad-input': '6px',
+    '--am-rad-inp': '6px',
 
     '--am-mb-dialog': '300px'
   }
@@ -342,9 +342,9 @@ export default {
   // -h- height
   // -fs- font size
   // -rad- border radius
-  --am-h-input: 40px;
-  --am-fs-input: 15px;
-  --am-rad-input: 6px;
+  --am-h-inp: 40px;
+  --am-fs-inp: 15px;
+  --am-rad-inp: 6px;
   --am-fs-label: 15px;
   --am-fs-btn: 15px;
 

@@ -13,6 +13,7 @@
       size="micro"
       type="plain"
       category="secondary"
+      aria-label="Previous step"
       :disabled="props.loading"
       @click="previousStep"
     ></AmButton>

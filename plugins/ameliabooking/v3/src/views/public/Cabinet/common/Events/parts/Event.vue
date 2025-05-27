@@ -216,56 +216,58 @@ function duplicateEvent () {
   )
 }
 
-function validateSave() {
+async function validateSave() {
   let validData = true
 
-  eventDetailsRef.value?.detailsFormRef.validate((valid) => {
-    if (!valid) {
-      activeTab.value = 'details'
-
-      validData = false
-    }
-  })
-
-  if (!validData) {
-    return
-  }
-
-  eventPeriodsRef.value?.periodsFormRef.validate((valid) => {
-    if (!valid) {
-      activeTab.value = 'periods'
-
-      validData = false
-    }
-  })
-
-  if (!validData) {
-    return
-  }
-
-  if (store.getters['event/getRecurringEnabled']) {
-    eventRecurringRef.value?.recurringFormRef.validate((valid) => {
+  // Validate details form
+  await new Promise((resolve) => {
+    eventDetailsRef.value?.detailsFormRef.validate((valid) => {
       if (!valid) {
-        activeTab.value = 'recurring'
-
+        activeTab.value = 'details'
         validData = false
       }
+      resolve()
     })
-  }
+  })
 
-  if (!validData) {
-    return
-  }
+  if (!validData) return
 
-  validateCalendarConflict(
-    (haveConflict) => {
-      if (haveConflict) {
-        conflictPopUpVisible.value = true
-      } else {
-        validateFollowingUpdate()
+  // Validate periods form
+  await new Promise((resolve) => {
+    eventPeriodsRef.value?.periodsFormRef.validate((valid) => {
+      if (!valid) {
+        activeTab.value = 'periods'
+        validData = false
       }
+      resolve()
+    })
+  })
+
+  if (!validData) return
+
+  // Validate recurring form if enabled
+  if (store.getters['event/getRecurringEnabled']) {
+    await new Promise((resolve) => {
+      eventRecurringRef.value?.recurringFormRef.validate((valid) => {
+        if (!valid) {
+          activeTab.value = 'recurring'
+          validData = false
+        }
+        resolve()
+      })
+    })
+
+    if (!validData) return
+  }
+
+  // All validations passed, now check calendar conflicts
+  validateCalendarConflict((haveConflict) => {
+    if (haveConflict) {
+      conflictPopUpVisible.value = true
+    } else {
+      validateFollowingUpdate()
     }
-  )
+  })
 }
 
 function saveEvent(updateFollowing) {
@@ -402,66 +404,6 @@ export default {
   // am    - amelia
   // capei - cabinet-panel-event-item
   .am-capei {
-    // Tabs
-    .el-tabs {
-      &__header {
-        margin: 0 0 15px;
-      }
-
-      &__nav {
-        &-wrap {
-          &:after {
-            background-color: var(--am-c-capei-text-op10);
-          }
-
-          &.is-scrollable {
-            padding: 0 24px;
-          }
-        }
-
-        &-next,
-        &-prev {
-          color: var(--am-c-capei-text);
-          top: 11px;
-        }
-      }
-
-      &__active-bar {
-        background-color: var(--am-c-capei-primary);
-      }
-
-      &__item {
-        padding: 0 20px;
-        line-height: 40px;
-
-        &:nth-child(2) {
-          padding-left: 0;
-        }
-
-        &:last-child {
-          padding-right: 0;
-        }
-
-        &.is-focus {
-          color: var(--am-c-capei-text);
-
-          &.is-active {
-            color: var(--am-c-capei-primary);
-
-            &:focus {
-              &:not(:active) {
-                box-shadow: none;
-              }
-            }
-          }
-        }
-      }
-
-      &__content {
-        overflow: unset;
-        position: static;
-      }
-    }
 
     // Divider
     .am-divider {

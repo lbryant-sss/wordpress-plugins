@@ -983,6 +983,28 @@
               </el-input-number>
             </el-form-item>
 
+            <!-- Stripe capabilities -->
+            <el-form-item
+              v-show="settings.stripe.enabled && settings.stripe.connect.enabled"
+            >
+              <label slot="label">
+                {{ $root.labels.use_capabilities }}:
+                <el-tooltip placement="top">
+                  <div slot="content" v-html="$root.labels.use_capabilities_tooltip"></div>
+                  <i class="el-icon-question am-tooltip-icon"></i>
+                </el-tooltip>
+              </label>
+              <el-select v-model="settings.stripe.connect.capabilities" multiple>
+                <el-option
+                  v-for="item in [{value: 'transfers', label: $root.labels.use_transfers_payment}, {value: 'card_payments', label: $root.labels.use_card_payment}]"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                >
+                </el-option>
+              </el-select>
+            </el-form-item>
+
             <LicenceBlock :licence="'pro'"></LicenceBlock>
             </div>
           </el-collapse-item>

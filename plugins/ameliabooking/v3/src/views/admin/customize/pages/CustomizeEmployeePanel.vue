@@ -486,8 +486,8 @@ let cssVars = computed(() => {
     '--am-font-family': amFonts.value.fontFamily,
 
     // css properties
-    '--am-rad-input': '6px',
-    '--am-fs-input': '15px',
+    '--am-rad-inp': '6px',
+    '--am-fs-inp': '15px',
     // -mw- max width
     // -brad- border-radius
     '--am-mw-main': sidebarVisibility.value ? sidebarCollapsed.value ? '858px' : '1024px' : '520px',
@@ -601,7 +601,7 @@ export default {
             align-items: center;
             flex: 1;
             position: relative;
-            font-size: var(--am-fs-input);
+            font-size: var(--am-fs-inp);
             min-width: 0;
           }
 

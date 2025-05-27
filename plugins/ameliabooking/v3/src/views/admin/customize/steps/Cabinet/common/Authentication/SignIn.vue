@@ -23,6 +23,21 @@
       </div>
     </div>
 
+    <!-- Social Buttons -->
+    <div v-if="!licence.isLite && !licence.isStarter">
+      <div class="am-asi__social-wrapper">
+        <img :src="baseUrls.wpAmeliaPluginURL + '/v3/src/assets/img/icons/google.svg'" height="36">
+        <img :src="baseUrls.wpAmeliaPluginURL + '/v3/src/assets/img/icons/facebook.svg'" height="36">
+      </div>
+      <!-- /Social Buttons -->
+
+      <!-- Social Divider -->
+      <div class="am-asi__social-divider">
+        <span class="par-sm">{{ labelsDisplay('or_enter_details_below') }}</span>
+      </div>
+    </div>
+    <!-- /Social Divider -->
+
     <el-form
       ref="authFormRef"
       :model="infoFormData"
@@ -80,6 +95,8 @@ import { formFieldsTemplates } from '../../../../../../../assets/js/common/formF
 import AmButton from '../../../../../../_components/button/AmButton.vue'
 import AmAlert from '../../../../../../_components/alert/AmAlert.vue'
 import IconComponent from "../../../../../../_components/icons/IconComponent.vue";
+import {settings} from "../../../../../../../plugins/settings";
+import AmSocialButton from "../../../../../../common/FormFields/AmSocialButton.vue";
 
 // * Customize
 let amCustomize = inject('customize')
@@ -90,6 +107,11 @@ let amLabels = inject('labels')
 
 let pageRenderKey = inject('pageRenderKey')
 let stepName = inject('stepName')
+
+// * Plugin Licence
+let licence = inject('licence')
+
+let baseUrls = inject('baseUrls')
 
 // * Label computed function
 function labelsDisplay (label) {
@@ -154,7 +176,7 @@ let signInFormConstruction = ref({
     props: {
       itemName: 'email',
       label: computed(() => labelsDisplay('email_or_username')),
-      iconStart: markRaw(emailIcon),
+      prefixIcon: markRaw(emailIcon),
       placeholder: '',
       class: 'am-asi__item'
     }
@@ -166,7 +188,7 @@ let signInFormConstruction = ref({
       itemType: 'password',
       showPassword: true,
       label: computed(() => labelsDisplay('password')),
-      iconStart: markRaw(passwordIcon),
+      prefixIcon: markRaw(passwordIcon),
       placeholder: '',
       class: 'am-asi__item'
     }
@@ -286,6 +308,47 @@ export default {
       }
     }
 
+    &__social-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 8px 0 24px;
+      gap: 24px;
+
+      img {
+        border: 1px solid #D1D5D7;
+        padding: 4px;
+        border-radius: 4px;
+      }
+    }
+
+    &__social-divider {
+      align-items: center;
+      display: flex;
+      margin-bottom: 24px;
+
+      // Before & After
+      &:before,
+      &:after {
+        background: var(--shade-250, #D1D5D7);
+        content: '';
+        height: 1px;
+        width: 100%;
+      }
+
+      span {
+        flex: none;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        color: var(--shade-500, #808A90);
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+    }
+
     &__header {
       font-size: 24px;
       font-weight: 500;
@@ -349,24 +412,6 @@ export default {
         line-height: 1.6;
         color: var(--am-c-primary);
         cursor: pointer;
-      }
-    }
-
-    .am-input-wrapper .am-input__default.is-icon-start {
-      .el-input {
-        &__prefix {
-          left: 8px;
-
-          i {
-            font-size: 30px;
-          }
-        }
-
-        &__suffix {
-          i {
-            font-size: 18px;
-          }
-        }
       }
     }
   }

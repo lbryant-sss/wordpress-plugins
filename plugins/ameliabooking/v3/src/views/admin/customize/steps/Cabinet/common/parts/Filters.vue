@@ -60,6 +60,7 @@
               :collapse-tags="true"
               size="small"
               :popper-class="'am-filter-select-popper'"
+              clearable
               @change="changeFilters"
             >
               <AmOption
@@ -69,13 +70,6 @@
                 :label="entity.firstName ? (entity.firstName + ' ' + entity.lastName) : entity.name"
               />
             </AmSelect>
-            <span
-              v-if="filterParams[param.name].length > 0"
-              class='am-capf__clear'
-              @click="clearFilter(param.name)"
-            >
-              <span class="am-icon-close"></span>
-            </span>
           </span>
         </template>
       </div>
@@ -280,11 +274,6 @@ function datesChanged (val) {
 }
 
 function changeFilters () {
-  emits('changeFilters', filterParams.value)
-}
-
-function clearFilter (name) {
-  filterParams.value[name] = []
   emits('changeFilters', filterParams.value)
 }
 

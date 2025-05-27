@@ -25,7 +25,7 @@
           :start="getFrontedFormattedTime(appointment.bookingStart.split(' ')[1].slice(0, 5))"
           :name="store.getters['entities/getService'](appointment.serviceId).name"
           :employee="appointmentEmployee(appointment.provider.id)"
-          :customers="appointment.bookings.filter(i => i.status !== 'rejected' && i.status !== 'canceled').map(i => i.customer)"
+          :customers="appointmentCustomers(appointment)"
           :price="getPrice(appointment)"
           :duration="useAppointmentDuration(store, appointment)"
           :periods="[]"
@@ -269,6 +269,19 @@ function rescheduling (data) {
 
 function appointmentEmployee(id) {
   return store.getters['entities/getEmployee'](id)
+}
+
+function appointmentCustomers(appointment) {
+  return appointment.bookings
+    .filter((b) => b.status !== 'rejected' && b.status !== 'canceled')
+    .map((b) => {
+      if ('info' in b && b.info) {
+        let customer = 'customer' in b ? b.customer : {}
+        return Object.assign(customer, JSON.parse(b.info))
+      } else {
+        return b.customer
+      }
+    })
 }
 
 // * Customized form data

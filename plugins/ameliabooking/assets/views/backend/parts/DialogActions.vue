@@ -130,7 +130,7 @@
             <el-col :span="2">
             <el-button
               v-if="showSaveConfirmation"
-              @click="showSaveConfirmation = false"
+              @click="closeMessage()"
               class="am-dialog-action-close"
               size="small"
               icon="el-icon-close"
@@ -357,6 +357,12 @@
 
       closeDialog () {
         this.$parent.$emit('closeDialog')
+      },
+
+      closeMessage () {
+        this.showSaveConfirmation = false
+
+        this.$emit('closeSaveConfirmation')
       },
 
       onSubmit (applyGlobally) {

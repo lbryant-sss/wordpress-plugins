@@ -3,11 +3,13 @@
     v-if="!empty"
     ref="ameliaContainer"
     class="am-fcl"
+    role="main"
     :style="cssVars"
   >
     <template v-for="category in categoriesList" :key="category.id">
       <div
         class="am-fcl__item"
+        role="group"
         :class="itemWidth"
       >
         <div class="am-fcl__item-inner">
@@ -79,7 +81,10 @@
     ref="ameliaContainer"
     class="am-empty"
   >
-    <img :src="baseUrls.wpAmeliaPluginURL+'/v3/src/assets/img/am-empty-booking.svg'">
+    <img
+      :src="baseUrls.wpAmeliaPluginURL+'/v3/src/assets/img/am-empty-booking.svg'"
+      :alt="preselected.show !== 'packages' ? amLabels.no_services_employees : amLabels.no_package_services"
+    >
     <div class="am-empty__heading">
       {{ amLabels.oops }}
     </div>

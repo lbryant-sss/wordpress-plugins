@@ -336,67 +336,6 @@ export default {
         }
       }
     }
-
-    // Tabs
-    .el-tabs {
-      &__header {
-        margin: 0 0 15px;
-      }
-
-      &__nav {
-        &-wrap {
-          &:after {
-            background-color: var(--am-c-caep-text-op10);
-          }
-
-          &.is-scrollable {
-            padding: 0 24px;
-          }
-        }
-
-        &-next,
-        &-prev {
-          color: var(--am-c-caep-text);
-          top: 11px;
-        }
-      }
-
-      &__active-bar {
-        background-color: var(--am-c-caep-primary);
-      }
-
-      &__item {
-        padding: 0 20px;
-        line-height: 40px;
-
-        &:nth-child(2) {
-          padding-left: 0;
-        }
-
-        &:last-child {
-          padding-right: 0;
-        }
-
-        &.is-focus {
-          color: var(--am-c-caep-text);
-
-          &.is-active {
-            color: var(--am-c-caep-primary);
-
-            &:focus {
-              &:not(:active) {
-                box-shadow: none;
-              }
-            }
-          }
-        }
-      }
-
-      &__content {
-        overflow: unset;
-        position: static;
-      }
-    }
   }
 }
 

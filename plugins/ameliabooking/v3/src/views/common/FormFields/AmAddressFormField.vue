@@ -10,50 +10,24 @@
       <span class="am-ff__item-label" v-html="props.label" />
     </template>
     <!-- Address Field -->
-    <div :class="{'am-input-wrapper' : googleMapsLoaded}">
-      <div v-if="googleMapsLoaded()">
-        <div class="el-input el-input--default am-input am-input__default">
-          <vue-google-autocomplete
-            :id="`amelia-address-autocomplete-${props.itemName}`"
-            ref="addressCustomFields"
-            types=""
-            classname="el-input__inner"
-            placeholder=""
-            @change="setAddressCF($event)"
-          >
-          </vue-google-autocomplete>
-        </div>
-      </div>
-      <AmInput
-        v-else
-        v-model="model"
-        placeholder=""
-      >
-      </AmInput>
-    </div>
+    <AmAddressInput
+      :id="props.itemName"
+      v-model="model"
+    />
     <!-- /Address Field -->
   </el-form-item>
 </template>
 
 <script setup>
-// * _components
-import AmInput from '../../_components/input/AmInput.vue'
-
-// * Vue Google Maps Autocomplete
-import VueGoogleAutocomplete from 'vue-google-autocomplete'
+// * Components
+import AmAddressInput  from "../../_components/address-input/AmAddressInput.vue";
 
 // * Import from Vue
 import {
   computed,
   ref,
   toRefs,
-  onMounted
 } from "vue";
-
-// * Import from Vuex
-import { useStore } from "vuex";
-
-let store = useStore()
 
 // * Form Item Props
 let props = defineProps({
@@ -91,24 +65,6 @@ let model = computed({
     emits('update:modelValue', val)
   }
 })
-
-let addressCustomFields = ref()
-
-onMounted(() => {
-  if (model.value && addressCustomFields.value) {
-    addressCustomFields.value.update(model.value)
-  }
-})
-
-function googleMapsLoaded () {
-  return window.google && store.state.settings.general.gMapApiKey
-}
-
-function setAddressCF (val) {
-  if (typeof val === 'string') {
-    emits('update:modelValue', val)
-  }
-}
 
 // * Form Item Reference
 let formFieldRef = ref(null)

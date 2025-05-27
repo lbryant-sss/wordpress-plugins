@@ -482,7 +482,7 @@ export default {
               align-items: center;
               flex: 1;
               position: relative;
-              font-size: var(--am-fs-input);
+              font-size: var(--am-fs-inp);
               min-width: 0;
             }
 

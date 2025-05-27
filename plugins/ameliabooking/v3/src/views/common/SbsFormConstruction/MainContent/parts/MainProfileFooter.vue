@@ -19,12 +19,12 @@
           {{displayLabels('delete_profile')}}
         </AmButton>
       </div>
-      <div v-if="display === 'first'">
+      <div v-if="display === 'first' || display === 'third'">
         <AmButton
           :type="props.saveFooterButton"
           :size="props.parentWidth <= 360 ? 'small' : 'default'"
           :disabled="loading"
-          @click="saveProfileChanges()"
+          @click="display === 'first' ? saveProfileChanges() : saveCustomerCustomFields()"
         >
           {{displayLabels('save_changes')}}
         </AmButton>
@@ -104,6 +104,7 @@ const amSettings = inject('settings')
 // * Injected Functions
 let deleteProfileDialog = inject('deleteProfileDialog', ref(false))
 let saveProfileChanges = inject('saveProfileChanges', () => {})
+let saveCustomerCustomFields = inject('saveCustomerCustomFields', () => {})
 let changeProfilePassword = inject('changeProfilePassword', () => {})
 
 // * Colors

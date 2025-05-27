@@ -59,6 +59,15 @@ function useBookingData (store, formData, mandatoryJson = false, paymentData = {
 
   let customFields = {}
 
+  let customerCustomFields = {}
+
+  let bookableTypeCustomFields = bookableType !== 'event' ? store.getters['entities/getCustomFields'] : store.getters['customFields/getFilteredCustomFieldsArray']
+
+  let allCustomFields = bookableTypeCustomFields.reduce((acc, field) => {
+    acc[field.id] = field
+    return acc
+  }, {})
+
   let availableCustomFields = bookableType !== 'event' ? store.getters['booking/getAvailableCustomFields'] : store.getters['customFields/getCustomFields']
 
   let attachments = bookableType !== 'event' ? store.getters['booking/getAttachments'] : {}
@@ -120,6 +129,13 @@ function useBookingData (store, formData, mandatoryJson = false, paymentData = {
     }
   }
 
+  for (let key in customFields) {
+    if (allCustomFields[key].saveType === "customer") {
+      customerCustomFields[key] = customFields[key]
+      delete customFields[key]
+    }
+  }
+
   let deposit = bookableType !== 'event' ? !store.getters['booking/getPaymentDeposit'] : !store.getters['payment/getPaymentDeposit']
 
   let componentProps = formData ? {
@@ -171,6 +187,7 @@ function useBookingData (store, formData, mandatoryJson = false, paymentData = {
           countryPhoneIso: bookableType !== 'event' ? store.getters['booking/getCustomerCountryPhoneIso'] : store.getters['customerInfo/getCustomerCountryPhoneIso'],
           externalId: bookableType !== 'event' ? store.getters['booking/getCustomerExternalId'] : store.getters['customerInfo/getCustomerExternalId'],
           translations: store.getters['booking/getCustomerTranslations'],
+          customFields: customerCustomFields,
         }
       }
     ],

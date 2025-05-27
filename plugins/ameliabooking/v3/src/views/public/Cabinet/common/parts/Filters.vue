@@ -24,7 +24,8 @@
         :lang="localLanguage"
         :class="['am-capf__menu-datepicker', props.responsiveClass]"
         :popper-class="'am-capf__menu-datepicker-popper'"
-        :custom-input-display="true"
+        :start-placeholder="amLabels.start_date"
+        :end-placeholder="amLabels.end_date"
       />
       <template v-if="!props.empty && filterCustomizeVisibility && filterVisibility">
         <AmButton
@@ -33,6 +34,7 @@
           custom-class="am-capf__menu-btn"
           size="small"
           category="primary"
+          :aria-label="amLabels.filters"
           :type="customizedOptions.filterBtn ? customizedOptions.filterBtn.buttonType : 'filled'"
           @click="filtersMenuVisibility = !filtersMenuVisibility"
         >
@@ -56,6 +58,7 @@
               :id="`am-select-${name}`"
               v-model="selection[name]"
               :multiple="name !== 'customers' && name !== 'events'"
+              :loading="name !== 'customers' && name !== 'events' ? false : loadingInput[name]"
               remote
               clearable
               :filterable="name === 'customers' || name === 'events'"
@@ -75,13 +78,6 @@
                 :label="entity.firstName ? (entity.firstName + ' ' + entity.lastName) : entity.name"
               />
             </AmSelect>
-            <span
-              v-if="selection[name].length > 0"
-              class='am-capf__clear'
-              @click="clearFilter(name)"
-            >
-              <span class="am-icon-close"></span>
-            </span>
           </span>
         </template>
       </div>
@@ -164,6 +160,12 @@ let ready = computed(() => store.getters['entities/getReady'])
 // * Loading
 let loading = computed(() => store.getters['getLoading'])
 
+// * Loading input data
+let loadingInput = ref({
+  customers: false,
+  events: false,
+})
+
 let objectRecognition = computed(() => props.stepKey === 'packages' ? 'packagesList' : props.stepKey )
 
 // * Data in shortcode
@@ -240,7 +242,7 @@ let selection = ref({
   customers: computed({
     get: () => store.getters['cabinetFilters/getCustomers'],
     set: (val) => {
-      store.commit('cabinetFilters/setCustomers', val)
+      store.commit('cabinetFilters/setCustomers', val ? val : [])
     }
   }),
   services: computed({
@@ -270,7 +272,7 @@ let selection = ref({
   events: computed({
     get: () => store.getters['cabinetFilters/getEvents'],
     set: (val) => {
-      store.commit('cabinetFilters/setEvents', val)
+      store.commit('cabinetFilters/setEvents', val ? val : [])
     }
   })
 })
@@ -317,8 +319,10 @@ function loadDefault () {
 }
 
 function searchCustomers(val = '', customers = []) {
+  loadingInput.value.customers = true
   if (customers.length) {
     store.dispatch('cabinetFilters/injectCustomerOptions', customers)
+    loadingInput.value.customers = false
 
     return
   }
@@ -341,6 +345,8 @@ function searchCustomers(val = '', customers = []) {
           if (store.getters['auth/getPreloadedCustomers'].length === 0) {
             store.commit('auth/setPreloadedCustomers', result)
           }
+
+          loadingInput.value.customers = false
         }
       )
     },
@@ -349,8 +355,10 @@ function searchCustomers(val = '', customers = []) {
 }
 
 function searchEvents(val = '', events = []) {
+  loadingInput.value.events = true
   if (events.length) {
     store.dispatch('cabinetFilters/injectEventsOptions', events)
+    loadingInput.value.events = false
 
     return
   }
@@ -371,17 +379,13 @@ function searchEvents(val = '', events = []) {
             'cabinetFilters/injectEventsOptions',
             result
           )
+
+          loadingInput.value.events = false
         }
       )
     },
     500
   )
-}
-
-function clearFilter (name) {
-  let string = name.charAt(0).toUpperCase() + name.slice(1)
-  store.commit(`cabinetFilters/set${string}`, [])
-  emits('changeFilters')
 }
 
 let customizedOptions = computed(() => {
@@ -586,54 +590,12 @@ export default {
 
         &-datepicker {
           &.am-rw- {
-            &420 {
-              display: flex;
-              width: 100%;
-              max-width: 100%;
-              flex-direction: column;
-              height: auto;
-            }
-          }
-
-          .el-input {
-            &__prefix {
-              font-size: 24px;
-              color: var(--am-c-capf-text);
-            }
-
-            &__inner {
-              font-weight: 500;
-              font-size: 14px;
-              color: var(--am-c-capf-text);
-              padding-left: 40px !important;
-
-              &::placeholder {
-                color: var(--am-c-capf-text);
+            &400 {
+              .el-date-editor.el-date-editor--daterange {
+                &.el-input__wrapper {
+                  height: 48px;
+                }
               }
-            }
-          }
-
-          .el-range {
-            &-editor {
-              height: 32px;
-              padding-left: 10px !important;
-              width: 100%
-            }
-
-            &__icon {
-              font-size: 24px;
-              color: var(--am-c-capf-text);
-            }
-
-            &-input {
-              font-size: 14px;
-              font-weight: 500;
-              color: var(--am-c-capf-text);
-              background-color: transparent;
-            }
-
-            &-separator {
-              color: var(--am-c-capf-text);
             }
           }
         }

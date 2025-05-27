@@ -42,6 +42,20 @@ export default {
     setAllData (state, payoad) {
       // state.customFieldsArray = payoad.customFieldsArray
       state.customFields = payoad.customFields
+    },
+
+    populateCustomerCustomFields (state, payload) {
+      let customerCustomFields = payload.customFields
+        ? JSON.parse(payload.customFields) : {}
+      let populateAvailableCustomFields = state.customFields
+
+      for (let id in customerCustomFields) {
+        if (populateAvailableCustomFields.hasOwnProperty('cf' + id)) {
+          populateAvailableCustomFields['cf' + id].value = customerCustomFields[id].value
+        }
+      }
+
+      state.customFields = populateAvailableCustomFields
     }
   },
 
@@ -51,7 +65,7 @@ export default {
       let filteredCustomFieldsArr = []
       let customFields = {}
       rootGetters['eventEntities/getCustomFields'].forEach(c => {
-        if (c.events.find(event => event.id === parseInt(eventId)) || c.allEvents) {
+        if (c.events.find(event => event.id === parseInt(eventId)) || c.allEvents || c.saveType === 'customer') {
           filteredCustomFieldsArr.push(c)
 
           customFields[`cf${c.id}`] = {
@@ -61,7 +75,9 @@ export default {
             position: c.position,
             options: c.options,
             required: c.required,
-            width: c.width
+            width: c.width,
+            saveFirstChoice: c.saveFirstChoice,
+            saveType: c.saveType
           }
 
           switch (c.type) {

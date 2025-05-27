@@ -39,20 +39,41 @@ function useAmount (entity, coupon, entityTax, subTotal, includedTaxInTotal) {
   }
 }
 
+function getAllColumn (type) {
+  switch (type) {
+    case ('service'):
+      return 'allServices'
+
+    case ('extra'):
+      return 'allExtras'
+
+    case ('event'):
+      return 'allEvents'
+
+    case ('package'):
+      return 'allPackages'
+  }
+}
+
 function useTaxVisibility (store, id, type) {
+  let allColumn = getAllColumn(type)
+
   let amSettings = store.getters['getSettings']
+
   let tax = useEntityTax(store, id, type)
 
   if (!amSettings.payments.taxes.enabled) {
     return false
   }
 
-  return !!tax?.[`${type}List`].length
+  return (tax && tax[allColumn]) || !!tax?.[`${type}List`].length
 }
 
 function useEntityTax (store, entityId, entityType) {
+  let allColumn = getAllColumn(entityType)
+
   let tax = store.getters[entityType !== 'event' ? 'entities/getTaxes' : 'eventEntities/getTaxes'].find(
-    t => t[entityType + 'List'].find(s => s.id === entityId)
+    t => t[allColumn] || t[entityType + 'List'].find(s => s.id === entityId)
   )
 
   return tax && typeof tax !== 'undefined' && ('status' in tax ? tax.status === 'visible' : true) ? tax : null

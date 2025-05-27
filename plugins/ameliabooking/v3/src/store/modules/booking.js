@@ -17,6 +17,7 @@ export default {
           phone: '',
           countryPhoneIso : '',
           translations: null,
+          customFields: null,
         },
         customFields: {},
         customerId: 0,
@@ -51,6 +52,7 @@ export default {
     payPalActions: null,
     appointmentsIndex: 0,
     currentCartItem: null,
+    shownCart: false,
     appointments: [
       {
         packageId: null,
@@ -284,6 +286,10 @@ export default {
       return state.appointment.bookings[0].customer.translations
     },
 
+    getCustomerCustomFields (state) {
+      return state.appointment.bookings[0].customer.customFields
+    },
+
     getAvailableCustomFields (state) {
       return state.appointment.bookings[0].customFields
     },
@@ -368,6 +374,10 @@ export default {
       return state.currentCartItem
     },
 
+    getShownCart (state) {
+      return state.shownCart
+    },
+
     getCartItemIndex (state) {
       return state.appointmentsIndex
     },
@@ -400,6 +410,10 @@ export default {
 
     setCurrentCartItem (state, payload) {
       state.currentCartItem = payload
+    },
+
+    setShownCart (state, payload) {
+      state.shownCart = payload
     },
 
     setCartItemIndex (state, payload) {
@@ -539,8 +553,21 @@ export default {
         .duration = payload
     },
 
-    setAvailableCustomFields (state, payload) {
-      state.appointment.bookings[0].customFields = payload
+    setAvailableCustomFields(state, payload) {
+      let customFields = state.appointment.bookings[0].customer?.customFields
+      let populateAvailableCustomFields = { ...payload }
+
+      if (state.appointment.bookings[0].customer?.id && customFields) {
+        let customerCustomFields = JSON.parse(customFields)
+
+        for (let id in customerCustomFields) {
+          if (populateAvailableCustomFields.hasOwnProperty(id)) {
+            populateAvailableCustomFields[id].value = customerCustomFields[id].value
+          }
+        }
+      }
+
+      state.appointment.bookings[0].customFields = populateAvailableCustomFields
     },
 
     setBookableType (state, payload) {
@@ -614,6 +641,10 @@ export default {
 
     setCustomerTranslations (state, payload) {
       state.appointment.bookings[0].customer.translations = payload
+    },
+
+    setCustomerCustomFields (state, payload) {
+      state.appointment.bookings[0].customer.customFields = payload
     },
 
     setAttachment (state, payload) {

@@ -11,11 +11,12 @@
     :step="step"
     :step-strictly="stepStrictly"
     :precision="precision"
+    :readonly="readonly"
     :disabled="disabled"
     :controls="controls"
     :controls-position="controlsPosition"
     :name="name"
-    :label="label"
+    :aria-label="ariaLabel"
     :place-holder="placeHolder"
     @blur="(e) => $emit('blur', e)"
     @focus="(e) => $emit('focus', e)"
@@ -24,76 +25,94 @@
 </template>
 
 <script setup>
-import { ref, toRefs, inject, computed } from 'vue';
-import { useColorTransparency } from "../../../assets/js/common/colorManipulation";
+// * Import from Vue
+import {
+  ref,
+  toRefs,
+  inject,
+  computed
+} from 'vue'
+
+// * Composables
+import { useColorTransparency } from '../../../assets/js/common/colorManipulation'
 
 /**
  * Component Props
  */
 const props = defineProps({
   id: {
-    type: String
+    type: String,
   },
   modelValue: {
     type: Number,
   },
   min: {
     type: Number,
-    required: true
+    required: true,
   },
   max: {
     type: Number,
-    default: Infinity
+    default: Infinity,
   },
   step: {
     type: Number,
-    default: 1
+    default: 1,
   },
   stepStrictly: {
     type: Boolean,
-    default: false
+    default: false,
   },
   precision: {
-    type: Number
+    type: Number,
   },
   size: {
     type: String,
     default: 'default',
     validator(value) {
       return ['default', 'medium', 'small'].includes(value)
-    }
+    },
+  },
+  readonly: {
+    type: Boolean,
+    default: false,
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   controls: {
     type: Boolean,
-    default: true
+    default: true,
   },
   controlsPosition: {
     // right
     type: String,
-    default: ''
   },
   name: {
     type: String,
-    default: ''
+    default: '',
   },
-  label: {
+  ariaLabel: {
     type: String,
-    default: ''
+    default: 'input-number',
   },
   placeHolder: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
 
 /**
  * Component Emits
  * */
-const emits = defineEmits(['change', 'visible-change', 'clear', 'blur', 'focus', 'update:modelValue'])
+const emits = defineEmits([
+  'change',
+  'visible-change',
+  'clear',
+  'blur',
+  'focus',
+  'update:modelValue',
+])
 
 /**
  * Component model
@@ -103,7 +122,7 @@ let model = computed({
   get: () => modelValue.value,
   set: (val) => {
     emits('update:modelValue', val)
-  }
+  },
 })
 
 /**
@@ -112,38 +131,53 @@ let model = computed({
 const amInputNumber = ref(null)
 
 // * Colors
-let amColors = inject('amColors', ref({
-  colorPrimary: '#1246D6',
-  colorSuccess: '#019719',
-  colorError: '#B4190F',
-  colorWarning: '#CCA20C',
-  colorMainBgr: '#FFFFFF',
-  colorMainHeadingText: '#33434C',
-  colorMainText: '#1A2C37',
-  colorSbBgr: '#17295A',
-  colorSbText: '#FFFFFF',
-  colorInpBgr: '#FFFFFF',
-  colorInpBorder: '#D1D5D7',
-  colorInpText: '#1A2C37',
-  colorInpPlaceHolder: '#1A2C37',
-  colorDropBgr: '#FFFFFF',
-  colorDropBorder: '#D1D5D7',
-  colorDropText: '#0E1920',
-  colorBtnPrim: '#265CF2',
-  colorBtnPrimText: '#FFFFFF',
-  colorBtnSec: '#1A2C37',
-  colorBtnSecText: '#FFFFFF',
-}))
+let amColors = inject(
+  'amColors',
+  ref({
+    colorPrimary: '#1246D6',
+    colorSuccess: '#019719',
+    colorError: '#B4190F',
+    colorWarning: '#CCA20C',
+    colorMainBgr: '#FFFFFF',
+    colorMainHeadingText: '#33434C',
+    colorMainText: '#1A2C37',
+    colorSbBgr: '#17295A',
+    colorSbText: '#FFFFFF',
+    colorInpBgr: '#FFFFFF',
+    colorInpBorder: '#D1D5D7',
+    colorInpText: '#1A2C37',
+    colorInpPlaceHolder: '#1A2C37',
+    colorDropBgr: '#FFFFFF',
+    colorDropBorder: '#D1D5D7',
+    colorDropText: '#0E1920',
+    colorBtnPrim: '#265CF2',
+    colorBtnPrimText: '#FFFFFF',
+    colorBtnSec: '#1A2C37',
+    colorBtnSecText: '#FFFFFF',
+  })
+)
 let cssVars = computed(() => {
   return {
-  '--am-c-inp-number-bgr': amColors.value.colorInpBgr,
-  '--am-c-inp-number-border': amColors.value.colorInpBorder,
-  '--am-c-inp-number-text': amColors.value.colorInpText,
-  '--am-c-inp-number-text-op10': useColorTransparency(amColors.value.colorInpText, 0.1),
-  '--am-c-inp-number-text-op03': useColorTransparency(amColors.value.colorInpText, 0.03),
-  '--am-c-inp-number-text-op40': useColorTransparency(amColors.value.colorInpText, 0.4),
-  '--am-c-inp-number-text-op60': useColorTransparency(amColors.value.colorInpText, 0.6),
-  '--am-c-inp-number-placeholder': amColors.value.colorInpPlaceHolder,
+    '--am-c-inp-number-bgr': amColors.value.colorInpBgr,
+    '--am-c-inp-number-border': amColors.value.colorInpBorder,
+    '--am-c-inp-number-text': amColors.value.colorInpText,
+    '--am-c-inp-number-text-op10': useColorTransparency(
+      amColors.value.colorInpText,
+      0.1
+    ),
+    '--am-c-inp-number-text-op03': useColorTransparency(
+      amColors.value.colorInpText,
+      0.03
+    ),
+    '--am-c-inp-number-text-op40': useColorTransparency(
+      amColors.value.colorInpText,
+      0.4
+    ),
+    '--am-c-inp-number-text-op60': useColorTransparency(
+      amColors.value.colorInpText,
+      0.6
+    ),
+    '--am-c-inp-number-placeholder': amColors.value.colorInpPlaceHolder,
   }
 })
 </script>
@@ -155,8 +189,8 @@ let cssVars = computed(() => {
     --am-c-inp-number-border: var(--am-c-inp-border);
     --am-c-inp-number-text: var(--am-c-inp-text);
     --am-c-inp-number-placeholder: var(--am-c-inp-placeholder);
-    --am-rad-inp-number: var(--am-rad-input);
-    --am-fs-inp-number: var(--am-fs-input);
+    --am-rad-inp-number: var(--am-rad-inp);
+    --am-fs-inp-number: var(--am-fs-inp);
 
     &__default {
       --am-input-number-height: 40px;
@@ -176,28 +210,45 @@ let cssVars = computed(() => {
 
   .el-input-number {
     .el-input {
-      &__inner {
+      &__wrapper {
         height: var(--am-input-number-height);
+        border: none;
+        border-radius: var(--am-rad-inp-number);
+        background-color: var(--am-c-inp-number-bgr);
+        box-shadow: 0 0 0 1px var(--am-c-inp-number-border);
+        padding: var(--am-input-number-padding);
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+
+        &.is-focus {
+          --am-c-inp-number-border: var(--am-c-primary);
+        }
+      }
+
+      &__inner {
         font-size: var(--am-fs-inp-number);
         line-height: 1.6;
         color: var(--am-c-inp-number-text);
-        border: 1px solid var(--am-c-inp-number-border);
-        border-radius: var(--am-rad-inp-number);
-        background-color: var(--am-c-inp-number-bgr);
-        padding: var(--am-input-number-padding) !important;
+        border: none;
+        background: none;
+        padding: 0;
         margin: 0;
         max-width: 100%;
 
-        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        &::-webkit-input-placeholder {
+          /* Chrome/Opera/Safari */
           color: var(--am-c-inp-number-placeholder);
         }
-        &::-moz-placeholder { /* Firefox 19+ */
+        &::-moz-placeholder {
+          /* Firefox 19+ */
           color: var(--am-c-inp-number-placeholder);
         }
-        &:-ms-input-placeholder { /* IE 10+ */
+        &:-ms-input-placeholder {
+          /* IE 10+ */
           color: var(--am-c-inp-number-placeholder);
         }
-        &:-moz-placeholder { /* Firefox 18- */
+        &:-moz-placeholder {
+          /* Firefox 18- */
           color: var(--am-c-inp-number-placeholder);
         }
       }
@@ -211,7 +262,8 @@ let cssVars = computed(() => {
       border-left-color: transparent;
     }
 
-    &__decrease, &__increase {
+    &__decrease,
+    &__increase {
       background-color: transparent;
 
       &:hover {
@@ -219,6 +271,10 @@ let cssVars = computed(() => {
           color: var(--am-c-inp-number-text);
           border-radius: 4px;
           background-color: var(--am-c-inp-number-text-op10);
+        }
+
+        ~ .el-input:not(.is-disabled) .el-input__wrapper {
+          --am-c-inp-number-border: var(--am-c-primary);
         }
       }
 
@@ -234,7 +290,7 @@ let cssVars = computed(() => {
         color: var(--am-c-inp-number-text-op40);
       }
 
-      .el-input__inner {
+      .el-input__wrapper {
         background-color: var(--am-c-inp-number-text-op03);
         color: var(--am-c-inp-number-text-op60);
       }

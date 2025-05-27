@@ -7,7 +7,10 @@
       <div class="am-capei-waiting__header-text">
         {{ amLabels.events_show_waiting_list_booking_full }}
       </div>
-      <Am-Switch v-model="waitingListFormData.enabled" />
+      <Am-Switch
+        v-model="waitingListFormData.enabled"
+        :aria-label="amLabels.events_show_waiting_list_booking_full"
+      />
     </div>
 
     <!-- WaitingList form -->
@@ -48,7 +51,10 @@
         <div class="am-capei-waiting__header-text">
           {{ amLabels.limit_extra_people }}
         </div>
-        <Am-Switch v-model="waitingListFormData.maxExtraPeopleEnabled" />
+        <Am-Switch
+          v-model="waitingListFormData.maxExtraPeopleEnabled"
+          :aria-label="amLabels.limit_extra_people"
+        />
       </div>
 
       <el-form-item

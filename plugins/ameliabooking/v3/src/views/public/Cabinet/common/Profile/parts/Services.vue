@@ -1,7 +1,11 @@
 <template>
   <div>
     <div>
-      <AmInput v-model="searchFilter" :icon-start="iconSearch"></AmInput>
+      <AmInput
+        v-model="searchFilter"
+        :prefix-icon="iconSearch"
+        aria-label="Search"
+      />
     </div>
 
   <el-collapse
@@ -25,6 +29,12 @@
               activeCategoryIndex = `category_${category.id}`
             }"
             @change="(val) => toggleCategoryServices(val, category)"
+            @keydown.enter="(e) => {
+              e.stopPropagation()
+              activeCategoryIndex = `category_${category.id}`
+              categoriesCheckbox[category.id] = !categoriesCheckbox[category.id]
+              toggleCategoryServices(categoriesCheckbox[category.id], category)
+            }"
           />
           <div class="am-caes__category-header__text">
             {{ category.name }}
@@ -50,6 +60,12 @@
                   activeServiceIndex = `service_${service.id}`
                 }"
                 @change="changeCategoryState(category)"
+                @keydown.enter="(e) => {
+                  e.stopPropagation()
+                  activeServiceIndex = `service_${service.id}`
+                  employee.serviceList[category.id][service.id].enabled = !employee.serviceList[category.id][service.id].enabled
+                  changeCategoryState(category)
+                }"
               />
               <div class="am-caes__service-header__text">
                 {{ service.name }}
@@ -89,6 +105,7 @@
                 class="am-caes__service-content__inner"
                 :min="employee.serviceList[category.id][service.id].minCapacity"
                 size="small"
+                :aria-label="amLabels.maximum_capacity"
               />
             </div>
             <!-- /Maximum Capacity -->
@@ -124,6 +141,7 @@
                   v-model="item.price"
                   class="am-caes__service-content__inner"
                   placeholder=""
+                  :aria-label="amLabels.price"
                   size="small"
                   :is-money="true"
                 />
@@ -194,7 +212,7 @@ let categories = computed(() => {
   })
 })
 
-let activeCategoryIndex = computed(() => categories.value.length === 1 ? 'category_' + categories.value[0].id : null)
+let activeCategoryIndex = ref(categories.value.length === 1 ? 'category_' + categories.value[0].id : null)
 
 let activeServiceIndex = ref(0)
 
@@ -208,7 +226,7 @@ function changeCategoryState(category) {
   categoriesCheckbox.value[category.id] = enabledServices.length !== 0;
 }
 
-function toggleCategoryServices(value, category) {
+function  toggleCategoryServices(value, category) {
   category.serviceList.forEach(s => {
     store.commit('employee/setServiceEnabled', {
       categoryId: category.id,
@@ -363,9 +381,10 @@ export default {
           line-height: 1.333333;
           color: var(--am-c-main-text);
           background-color: var(--am-c-caes-inp-bgr-op03);
-          padding: 4px 8px;
-          border: 1px solid var(--am-c-inp-border);
+          padding: 6px 12px;
+          border: none;
           border-radius: 6px;
+          box-shadow: 0 0 0 1px var(--am-c-inp-border);
           cursor: not-allowed;
         }
       }

@@ -1,37 +1,37 @@
 <template>
-  <div
-    class="am-time-select__wrapper"
-    :class="parentClass"
-    :style="cssVars"
-  >
+  <div class="am-time-select__wrapper" :class="parentClass" :style="cssVars">
     <el-time-select
-      :id="id"
+      :id="props.id"
       ref="amTimeSelect"
       v-model="model"
       class="am-time-select"
       :class="[
         `am-time-select--${size}`,
-        { 'am-time-select--disabled': disabled },
+        {'am-time-select--disabled': disabled },
+        {'am-time-select--prefix': props.prefixIcon },
+        {'am-time-select--suffix': props.suffixIcon || (props.clearIcon && pross.clearable)},
         props.class,
       ]"
-      :disabled="disabled"
-      :placeholder="placeholder"
-      :append-to-body="appendToBody"
-      :clear-icon="clearIcon"
-      :clearable="clearable"
-      :editable="editable"
-      :name="name"
-      :popper-class="`am-time-select__popper${popperClass ? ' ' + popperClass : popperClass}`"
-      :prefix-icon="prefixIcon"
-      :suffix-icon="suffixIcon"
-      :end="end"
-      :max-time="maxTime"
-      :min-time="minTime"
-      :start="start"
-      :step="step"
-      :format="format"
-    >
-    </el-time-select>
+      :disabled="props.disabled"
+      :placeholder="props.placeholder"
+      :clear-icon="props.clearIcon"
+      :clearable="props.clearable"
+      :editable="props.editable"
+      :name="props.name"
+      :popper-class="`am-time-select__popper${
+        props.popperClass ? ' ' + props.popperClass : props.popperClass
+      }`"
+      :prefix-icon="props.prefixIcon"
+      :suffix-icon="props.suffixIcon"
+      :end="props.end"
+      :max-time="props.maxTime"
+      :min-time="props.minTime"
+      :start="props.start"
+      :step="props.step"
+      :format="props.format"
+      :include-end-time="props.includeEndTime"
+      :effect="props.effect"
+    />
   </div>
 </template>
 
@@ -54,7 +54,7 @@ const props = defineProps({
   },
   id: {
     type: String,
-    default: ''
+    default: '',
   },
   disabled: {
     type: Boolean,
@@ -68,6 +68,10 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  includeEndTime: {
+    type: Boolean,
+    default: false,
+  },
   size: {
     // default / medium / small / mini / micro
     type: String,
@@ -80,29 +84,15 @@ const props = defineProps({
     type: String,
     default: '',
   },
-  start: {
-    type: String,
-    default: '',
-  },
-  end: {
-    type: String,
-    default: '',
-  },
-  step: {
-    type: String,
-    default: '',
-  },
-  minTime: {
-    type: String,
-    default: '',
-  },
-  maxTime: {
-    type: String,
-    default: '',
-  },
   name: {
     type: String,
-    default: '',
+  },
+  effect: {
+    type: String,
+    default: 'light',
+    validator(value) {
+      return ['dark', 'light'].includes(value)
+    },
   },
   prefixIcon: {
     type: [String, Object, Function],
@@ -125,9 +115,29 @@ const props = defineProps({
       template: `<IconComponent icon="close"/>`,
     }),
   },
-  appendToBody: {
-    type: Boolean,
-    default: true,
+  start: {
+    type: String,
+    default: '',
+  },
+  end: {
+    type: String,
+    default: '',
+  },
+  step: {
+    type: String,
+    default: '',
+  },
+  minTime: {
+    type: String,
+    default: '',
+  },
+  maxTime: {
+    type: String,
+    default: '',
+  },
+  format: {
+    type: String,
+    default: 'HH:mm',
   },
   popperClass: {
     type: String,
@@ -139,11 +149,7 @@ const props = defineProps({
   },
   parentClass: {
     type: String,
-    default: ''
-  },
-  format: {
-    type: String,
-    default: 'HH:mm',
+    default: '',
   },
 })
 
@@ -168,20 +174,6 @@ const model = computed({
  * Component Refs
  * */
 const amTimeSelect = ref(null)
-
-onMounted(() => {
-  amTimeSelect.value.select.popperPaneRef.style.setProperty('--am-c-option-bgr', amColors.value.colorDropBgr)
-  amTimeSelect.value.select.popperPaneRef.style.setProperty('--am-c-option-border', amColors.value.colorDropBorder)
-  amTimeSelect.value.select.popperPaneRef.style.setProperty('--am-c-option-text', amColors.value.colorDropText)
-  amTimeSelect.value.select.popperPaneRef.style.setProperty('--am-c-option-text-op65', useColorTransparency(amColors.value.colorDropText, 0.65))
-  amTimeSelect.value.select.popperPaneRef.style.setProperty('--am-c-option-text-op50', useColorTransparency(amColors.value.colorDropText, 0.50))
-  amTimeSelect.value.select.popperPaneRef.style.setProperty('--am-c-option-hover', useColorTransparency(amColors.value.colorDropText, 0.1))
-  amTimeSelect.value.select.popperPaneRef.style.setProperty('--am-c-option-selected', amColors.value.colorPrimary)
-  amTimeSelect.value.select.popperPaneRef.style.setProperty('--am-c-option-selected-op10', useColorTransparency(amColors.value.colorPrimary, 0.1))
-  amTimeSelect.value.select.popperPaneRef.style.setProperty('--am-c-option-img-bgr', amColors.value.colorSuccess)
-  amTimeSelect.value.select.popperPaneRef.style.setProperty('--am-c-option-img-text', amColors.value.colorMainBgr)
-  amTimeSelect.value.select.popperPaneRef.style.setProperty('--am-font-family', amFonts.value.fontFamily)
-})
 
 // * Font Vars
 let amFonts = inject(
@@ -225,28 +217,27 @@ let amColors = inject(
 // * Css Variables
 let cssVars = computed(() => {
   return {
-    '--am-c-timeselect-bgr': amColors.value.colorInpBgr,
-    '--am-c-timeselect-border': amColors.value.colorInpBorder,
-    '--am-c-timeselect-text': amColors.value.colorInpText,
-    '--am-c-timeselect-placeholder': amColors.value.colorInpPlaceHolder,
-    '--am-c-timeselect-shadow': useColorTransparency(
-      amColors.value.colorInpText,
-      0.05
-    ),
-    '--am-c-timeselect-text-op60': useColorTransparency(
-      amColors.value.colorInpText,
-      0.6
-    ),
-    '--am-c-timeselect-text-op40': useColorTransparency(
-      amColors.value.colorInpText,
-      0.4
-    ),
-    '--am-c-timeselect-text-op10': useColorTransparency(
-      amColors.value.colorInpText,
-      0.03
-    ),
+    '--am-c-timeselect-shadow': useColorTransparency(amColors.value.colorInpText, 0.05),
+    '--am-c-timeselect-text-op60': useColorTransparency(amColors.value.colorInpText, 0.6),
+    '--am-c-timeselect-text-op40': useColorTransparency(amColors.value.colorInpText, 0.4),
+    '--am-c-timeselect-text-op10': useColorTransparency(amColors.value.colorInpText, 0.03),
     '--am-font-family': amFonts.value.fontFamily,
   }
+})
+
+onMounted(() => {
+  const popperWrapper = document.querySelector("[id^='el-popper-container']");
+  popperWrapper.style.setProperty('--am-c-option-bgr', amColors.value.colorDropBgr)
+  popperWrapper.style.setProperty('--am-c-option-border', amColors.value.colorDropBorder)
+  popperWrapper.style.setProperty('--am-c-option-text', amColors.value.colorDropText)
+  popperWrapper.style.setProperty('--am-c-option-text-op65', useColorTransparency(amColors.value.colorDropText, 0.65))
+  popperWrapper.style.setProperty('--am-c-option-text-op50', useColorTransparency(amColors.value.colorDropText, 0.50))
+  popperWrapper.style.setProperty('--am-c-option-hover', useColorTransparency(amColors.value.colorDropText, 0.1))
+  popperWrapper.style.setProperty('--am-c-option-selected', amColors.value.colorPrimary)
+  popperWrapper.style.setProperty('--am-c-option-selected-op10', useColorTransparency(amColors.value.colorPrimary, 0.1))
+  popperWrapper.style.setProperty('--am-c-option-img-bgr', amColors.value.colorSuccess)
+  popperWrapper.style.setProperty('--am-c-option-img-text', amColors.value.colorMainBgr)
+  popperWrapper.style.setProperty('--am-font-family', amFonts.value.fontFamily)
 })
 </script>
 
@@ -263,9 +254,9 @@ let cssVars = computed(() => {
     --am-c-timeselect-border: var(--am-c-inp-border);
     --am-c-timeselect-text: var(--am-c-inp-text);
     --am-c-timeselect-placeholder: var(--am-c-inp-placeholder);
-    --am-rad-timeselect: var(--am-rad-input);
-    --am-fs-timeselect: var(--am-fs-input);
-    --am-h-timeselect: var(--am-h-input);
+    --am-rad-timeselect: var(--am-rad-inp);
+    --am-fs-timeselect: var(--am-fs-inp);
+    --am-h-timeselect: var(--am-h-inp);
     --am-padd-timeselect: 8px 12px;
     width: 100%;
 
@@ -277,96 +268,125 @@ let cssVars = computed(() => {
     // Size - default / medium / small / mini / micro
     &--default {
       --am-h-timeselect: 40px;
-      --am-padd-timeselect: 8px 24px 8px 12px;
     }
     &--medium {
       --am-h-timeselect: 36px;
-      --am-padd-timeselect: 6px 24px 6px 10px;
     }
     &--small {
       --am-h-timeselect: 32px;
-      --am-padd-timeselect: 4px 24px 4px 10px;
     }
     &--mini {
       --am-h-timeselect: 28px;
-      --am-padd-timeselect: 2px 24px 2px 8px;
     }
     &--micro {
       --am-h-timeselect: 24px;
-      --am-padd-timeselect: 0 24px 0 8px;
     }
 
     // Disabled
     &--disabled {
       --am-c-timeselect-bgr: var(--am-c-timeselect-text-op10);
       --am-c-timeselect-text: var(--am-c-timeselect-text-op60);
+      cursor: not-allowed;
+    }
+
+    // Prefix / Suffix
+    &--prefix {
+      --am-padd-timeselect: 0 12px 0 8px;
+
+      &.am-time-select--suffix {
+        --am-padd-timeselect: 0 8px;
+      }
+    }
+
+    &--suffix {
+      --am-padd-timeselect: 0 8px 0 12px;
     }
 
     // Input
-    .el-input {
-      .el-icon {
-        font-size: 18px;
-        color: var(--am-c-timeselect-placeholder);
-
-        &.el-input__prefix-icon {
-          font-size: 22px;
-        }
+    .el-select {
+      // Visual presentation of input
+      &__wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0 6px;
+        height: var(--am-h-timeselect);
+        min-height: 24px;
+        background-color: var(--am-c-timeselect-bgr);
+        border-radius: var(--am-rad-timeselect);
+        border: none;
+        box-shadow: 0 0 0 1px var(--am-c-timeselect-border);
+        padding: var(--am-padd-timeselect);
       }
 
-      &__inner {
+      // Input
+      &__input {
         width: 100%;
-        height: var(--am-h-timeselect) !important;
-        min-height: auto;
+        height: 100%;
+        min-height: 24px;
         font-size: var(--am-fs-timeselect);
         font-weight: 400;
-        line-height: 1.6;
+        line-height: 24px;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
         color: var(--am-c-timeselect-text);
-        border: 1px solid var(--am-c-timeselect-border);
-        border-radius: var(--am-rad-timeselect);
-        background-color: var(--am-c-timeselect-bgr) !important;
-        padding: var(--am-padd-timeselect);
-        box-shadow: 0 2px 2px var(--am-c-timeselect-shadow);
+        border: none;
+        border-radius: 0;
+        background: none;
+        padding: 0;
+        box-shadow: none;
 
-        &::-webkit-input-placeholder {
-          /* Chrome/Opera/Safari */
+        // Placeholder
+        &::placeholder {
+          color: var(--am-c-timeselect-placeholder);
+          opacity: 1; /* Ensures it’s not transparent */
+        }
+        &::-webkit-input-placeholder { /* Chrome, Safari */
           color: var(--am-c-timeselect-placeholder);
         }
-        &::-moz-placeholder {
-          /* Firefox 19+ */
+        &:-moz-placeholder { /* Firefox 4-18 */
           color: var(--am-c-timeselect-placeholder);
+          opacity: 1;
         }
-        &:-ms-input-placeholder {
-          /* IE 10+ */
+        &::-moz-placeholder { /* Firefox 19+ */
           color: var(--am-c-timeselect-placeholder);
+          opacity: 1;
         }
-        &:-moz-placeholder {
-          /* Firefox 18- */
+        &:-ms-input-placeholder { /* IE 10-11 */
           color: var(--am-c-timeselect-placeholder);
-        }
-
-        &:hover:not(:focus):not(:active) {
-          --am-c-timeselect-border: var(--am-c-timeselect-text-op40);
-        }
-
-        &:focus,
-        &:active {
-          --am-c-timeselect-border: var(--am-c-primary);
-          border-color: var(--am-c-timeselect-border) !important;
         }
       }
 
-      // validation icon
-      &__suffix {
-        .el-input__validateIcon {
-          display: none;
+      // Visual presentation of input value
+      &__selected-item {
+        &.is-transparent {
+          --am-c-timeselect-text: var(--am-c-timeselect-text-placeholder);
+        }
+
+        span {
+          font-size: var(--am-fs-timeselect);
+          line-height: 24px;
+          font-weight: 400;
+          color: var(--am-c-timeselect-text);
         }
       }
 
-      &__prefix {
-        left: 8px;
+      // Prefix and Suffix icon
+      &__prefix, &__suffix {
+        .el-icon {
+          width: auto;
+          height: auto;
+        }
+
+        [class^='am-icon'] {
+          font-size: 24px;
+          line-height: 1;
+          color: var(--am-c-timeselect-text)
+        }
+
+        .am-icon-arrow-up, .am-icon-close {
+          font-size: 18px;
+        }
       }
     }
   }
@@ -386,7 +406,7 @@ let cssVars = computed(() => {
   --am-ff-timeselect-option: var(--am-font-family);
   background-color: var(--am-c-option-bgr) !important;
 
-  &.el-select__popper.el-popper[role=tooltip] {
+  &.el-select__popper.el-popper[role='tooltip'] {
     background-color: transparent;
     border-color: var(--am-c-option-border);
     overflow: hidden;
@@ -421,7 +441,8 @@ let cssVars = computed(() => {
       margin: var(--am-mar-timeselect-option) !important;
       white-space: normal;
 
-      &:hover, &.hover {
+      &:hover,
+      &.hover {
         --am-c-timeselect-option-bgr: var(--am-c-option-hover);
       }
 

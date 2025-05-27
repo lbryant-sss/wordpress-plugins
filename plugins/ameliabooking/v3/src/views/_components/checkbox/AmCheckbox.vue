@@ -2,17 +2,24 @@
 
   <div class="am-checkbox-wrapper" :style="cssVars">
     <el-checkbox
+      :id="props.id"
       ref="amCheckbox"
       v-model="model"
-      :checked="checked"
+      :value="props.value"
+      :label="props.label"
+      :true-value="props.trueValue"
+      :false-value="props.falseValue"
+      :disabled="props.disabled"
+      :border="props.border"
+      :name="props.name"
+      :checked="props.checked"
+      :indeterminate="props.indeterminate"
+      :validate-event="props.validateEvent"
+      :tabindex="props.tabindex"
+      :aria-controls="props.ariaControls"
       :class="[`am-checkbox__${size}`]"
-      :false-label="falseLabel"
-      :indeterminate="indeterminate"
-      :disabled="disabled"
-      :label="label"
-      :name="name"
-      :true-label="trueLabel"
       class="am-checkbox"
+      :aria-label="props.label"
       @change="(e) => $emit('change', e)"
     >
       <template v-if="label && !$slots.default">{{ label }}</template>
@@ -33,6 +40,31 @@ const props = defineProps({
   modelValue: {
     type: [String, Number, Boolean]
   },
+  value: {
+    // ** value of the Checkbox when used inside a checkbox-group
+    type: [String, Number, Boolean, Object]
+  },
+  label: {
+    // ** label of the Checkbox when used inside a checkbox-group. If there's no value, label will act as value
+    type: [String, Number, Boolean, Object]
+  },
+  trueValue: {
+    // ** value of the Checkbox if it's checked
+    type: [String, Number]
+  },
+  falseValue: {
+    // ** value of the Checkbox if it's unchecked
+    type: [String, Number]
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  border: {
+    // ** whether to add a border around Checkbox
+    type: Boolean,
+    default: false
+  },
   size: {
     type: String,
     default: 'default',
@@ -40,34 +72,35 @@ const props = defineProps({
       return ['default', 'medium', 'small'].includes(value)
     }
   },
-  disabled: {
-    type: Boolean,
-    default: false
-  },
   name: {
     type: String,
     default: ''
-  },
-  label: {
-    type: [String, Number, Boolean, Object]
-  },
-  trueLabel: {
-    type: [String, Number],
-  },
-  falseLabel: {
-    type: [String, Number],
-  },
-  border: {
-    type: Boolean,
-    default: false
   },
   checked: {
     type: Boolean,
     default: false
   },
   indeterminate: {
+    // ** Set indeterminate state, only responsible for style control
     type: Boolean,
     default: false
+  },
+  validateEvent: {
+    // ** whether to trigger form validation
+    type: Boolean,
+    default: true
+  },
+  tabindex: {
+    // ** input tabindex
+    type: [String, Number],
+  },
+  id: {
+    // ** input id
+    type: String,
+  },
+  ariaControls: {
+    // ** same as aria-controls, takes effect when indeterminate is true
+    type: String,
   },
 })
 
@@ -99,8 +132,8 @@ let amColors = inject('amColors',{})
 let cssVars = computed(() => {
   return {
     '--am-c-checkbox-text-op60': useColorTransparency(amColors.value.colorInpText, 0.6),
-    '--am-c-checkbox-btn-op80': useColorTransparency(amColors.value.colorBtnPrim, 0.8),
-    '--am-c-checkbox-btn-op60': useColorTransparency(amColors.value.colorBtnPrim, 0.6),
+    '--am-c-checkbox-btn-op80': useColorTransparency(amColors.value.colorPrimary, 0.8),
+    '--am-c-checkbox-btn-op60': useColorTransparency(amColors.value.colorPrimary, 0.6),
     '--am-c-checkbox-btn-dsb-op60': useColorTransparency(amColors.value.colorInpBgr, 0.6),
   }
 })
@@ -114,7 +147,7 @@ let cssVars = computed(() => {
     // -rad-  border radius
     // -bgr   background
     --am-c-checkbox-bgr: var(--am-c-inp-bgr);
-    --am-c-checkbox-bgr-checked: var(--am-c-btn-prim);
+    --am-c-checkbox-bgr-checked: var(--am-c-primary);
     --am-c-checkbox-border: var(--am-c-inp-border);
     --am-c-checkbox-text: var(--am-c-main-text);
     --am-c-checkbox-inp-text: var(--am-c-main-bgr);
@@ -158,11 +191,11 @@ let cssVars = computed(() => {
 
           &.is-indeterminate.is-checked {
             .el-checkbox__inner {
-              --am-c-checkbox-border: var(--am-c-btn-prim);
+              --am-c-checkbox-border: var(--am-c-primary);
               --am-c-checkbox-bgr: var(--am-c-inp-bgr);
 
               &:before {
-                background-color: var(--am-c-btn-prim);
+                background-color: var(--am-c-primary);
                 transform: scale(1) translate(-50%, -50%);
                 top: 50%;
                 left: 50%;

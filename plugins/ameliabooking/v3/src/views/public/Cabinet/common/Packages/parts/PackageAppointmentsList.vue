@@ -26,6 +26,7 @@
         :size="'micro'"
         :category="'secondary'"
         icon-only
+        :aria-label="amLabels.back_btn"
         @click="goBack"
       ></AmButton>
       <span>
@@ -104,7 +105,7 @@
       @tab-click="selectService"
     >
       <el-tab-pane
-        v-for="serviceId in Object.keys(props.data.services)"
+        v-for="serviceId in servicesOrderInPackage"
         :key="serviceId"
         :name="serviceId"
       >
@@ -212,7 +213,7 @@ import {
   inject,
   provide,
   onMounted,
-  defineComponent, reactive
+  reactive
 } from "vue";
 
 // * Import from Vuex
@@ -269,16 +270,22 @@ let store = useStore()
 // * Global settings
 let amSettings = computed(() => store.getters['getSettings'])
 
-let arrowLeft = defineComponent({
+let arrowLeft = {
   components: {IconComponent},
   template: `<IconComponent icon="arrow-left"></IconComponent>`
-})
+}
 
 let { selectedPackageCustomerId } = inject('packageSelection')
 
 let selectedPackage = computed(() => {
   return store.getters['entities/getPackage'](props.data.packageData.id)
 })
+
+let servicesOrderInPackage = computed(() =>
+  selectedPackage.value.bookable
+    .filter(item => props.data.services[item.service.id])
+    .map(item => item.service.id.toString())
+)
 
 let bookable = computed(() => selectedPackage.value.bookable.find(i => parseInt(i.service.id) === parseInt(selectedServiceId.value)))
 let selectedEmployee = ref(null)
@@ -419,7 +426,7 @@ let targetAppointment = ref(null)
 let slotsParams = ref(null)
 
 onMounted(() => {
-  selectedServiceId.value = Object.keys(props.data.services)[0]
+  selectedServiceId.value = servicesOrderInPackage.value[0]
 })
 
 function getPurchasedCount (purchaseServiceData, id, type) {
@@ -746,72 +753,6 @@ export default {
     }
 
     &__service {
-      .el-tabs {
-        &__header {
-          margin: 0 0 15px;
-        }
-
-        &__content {
-          position: static;
-          overflow: unset;
-        }
-
-        &__nav-wrap {
-          &.is-scrollable {
-            padding: 0 20px;
-
-            &::after {
-              width: calc(100% - 40px);
-              left: 20px;
-            }
-
-            .el-tabs__nav-prev, .el-tabs__nav-next {
-              display: flex;
-              height: 100%;
-              align-items: center;
-
-              i {
-                color: var(--am-c-cappa-text);
-              }
-            }
-          }
-
-          &::after {
-            background-color: var(--am-c-cappa-text-op20);
-          }
-        }
-
-        &__active-bar {
-          background-color: var(--am-c-cappa-primary);
-        }
-
-        &__item {
-          padding: 0 20px;
-          line-height: 40px;
-          color: var(--am-c-cappa-text);
-
-          &:nth-child(2) {
-            padding-left: 0;
-          }
-
-          &:last-child {
-            padding-right: 0;
-          }
-
-          &.is-active {
-            color: var(--am-c-cappa-primary);
-
-            .am-cappa__service-heading {
-              color: var(--am-c-cappa-primary);
-            }
-          }
-
-          &:focus.is-active.is-focus:not(:active) {
-            box-shadow: none;
-          }
-        }
-      }
-
       &-heading {
         font-size: 15px;
         font-weight: 500;

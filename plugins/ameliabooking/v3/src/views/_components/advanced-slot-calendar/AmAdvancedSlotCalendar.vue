@@ -4,33 +4,57 @@
       v-show="headerMonthOptions.length && calendarStartDate"
       class="am-advsc__header"
       :class="[
-        {'am-advsc__header-mobile': checkScreen},
-        {'am-advsc__header-mobile-s': mobileS}
+        { 'am-advsc__header-mobile': checkScreen },
+        { 'am-advsc__header-mobile-s': mobileS },
       ]"
     >
-      <AmSelect v-model="calMonth" size="medium" @change="changeMonth(calYear + '-' + calMonth)">
+      <AmSelect
+        v-model="calMonth"
+        size="medium"
+        aria-label="month selection"
+        @change="changeMonth(calYear + '-' + calMonth)"
+      >
         <AmOption
           v-for="month in headerMonthOptions"
           v-show="month.available"
           :key="month.value"
           :value="month.value"
           :label="month.label"
-        >
-        </AmOption>
+        />
       </AmSelect>
-      <AmSelect v-model="calYear" size="medium" @change="changeYear()">
+      <AmSelect
+        v-model="calYear"
+        size="medium"
+        aria-label="year selection"
+        @change="changeYear()"
+      >
         <AmOption
           v-for="year in headerYearOption"
           :key="year"
           :value="year"
           :label="year"
-        >
-        </AmOption>
+        />
       </AmSelect>
 
       <AmButtonGroup>
-        <AmButton category="secondary" type="plain" size="medium" icon-only :icon="AmIconArrowLeft" @click="prevMonth"></AmButton>
-        <AmButton category="secondary" type="plain" size="medium" icon-only :icon="AmIconArrowRight" @click="nextMonth"></AmButton>
+        <AmButton
+          aria-label="previous month"
+          category="secondary"
+          type="plain"
+          size="medium"
+          icon-only
+          :icon="AmIconArrowLeft"
+          @click="prevMonth"
+        />
+        <AmButton
+          aria-label="next month"
+          category="secondary"
+          type="plain"
+          size="medium"
+          icon-only
+          :icon="AmIconArrowRight"
+          @click="nextMonth"
+        />
       </AmButtonGroup>
     </div>
 
@@ -43,12 +67,19 @@
         <AmOption
           v-for="item in calendarServiceDurations"
           :key="item.duration"
-          :label="useSecondsToDuration(item.duration, amLabels.h, amLabels.min) + (item.priceLabel === '' ? '' : '(' + item.priceLabel + ')' + taxText)"
+          :label="
+            useSecondsToDuration(item.duration, amLabels.h, amLabels.min) +
+            (item.priceLabel === ''
+              ? ''
+              : '(' + item.priceLabel + ')' + taxText)
+          "
           :value="item.duration"
         >
           <AmOptionTemplate1
             :identifier="item.duration"
-            :label="useSecondsToDuration(item.duration, amLabels.h, amLabels.min)"
+            :label="
+              useSecondsToDuration(item.duration, amLabels.h, amLabels.min)
+            "
             :price-string="`${item.priceLabel} ${taxText}`"
             icon-string="clock"
           ></AmOptionTemplate1>
@@ -78,23 +109,52 @@
       </div>
       <div class="am-advsc__slots">
         <div
-          v-for="slot in useSortedTimeStrings([...new Set(calendarEventSlots.concat(props.showBusySlots ? calendarEventBusySlots : []))])"
+          v-for="slot in useSortedTimeStrings([
+            ...new Set(
+              calendarEventSlots.concat(
+                props.showBusySlots ? calendarEventBusySlots : []
+              )
+            ),
+          ])"
           :key="slot"
           class="am-advsc__slots-item"
           :class="[
-            {'am-advsc__slots-item__selected': calendarEventSlot === slot},
-            {'am-advsc__slots-item-mobile': checkScreen},
-            {'am-advsc__slots-item-disabled': (calendarEventBusySlots.includes(slot) && props.showBusySlots && !calendarEventSlots.includes(slot))}
+            { 'am-advsc__slots-item__selected': calendarEventSlot === slot },
+            { 'am-advsc__slots-item-mobile': checkScreen },
+            {
+              'am-advsc__slots-item-disabled':
+                calendarEventBusySlots.includes(slot) &&
+                props.showBusySlots &&
+                !calendarEventSlots.includes(slot),
+            },
           ]"
-          @click="(props.showBusySlots && calendarEventBusySlots.includes(slot) && !calendarEventSlots.includes(slot)) ? null:slotSelected(slot)"
+          @click="
+            props.showBusySlots &&
+            calendarEventBusySlots.includes(slot) &&
+            !calendarEventSlots.includes(slot)
+              ? null
+              : slotSelected(slot)
+          "
         >
           <div class="am-advsc__slots-item__inner">
-            {{ `${getFrontedFormattedTime(slot)} ${ props.endTime ? ' - ' + getFrontedFormattedTime(addSeconds(slot, calendarSlotDuration)) : '' }` }}
+            {{
+              `${getFrontedFormattedTime(slot)} ${
+                props.endTime
+                  ? ' - ' +
+                    getFrontedFormattedTime(
+                      addSeconds(slot, calendarSlotDuration)
+                    )
+                  : ''
+              }`
+            }}
           </div>
         </div>
       </div>
     </div>
-    <div v-if="isDateSelected && !calendarEventSlots.length" style="text-align: center">
+    <div
+      v-if="isDateSelected && !calendarEventSlots.length"
+      style="text-align: center"
+    >
       {{ props.labelSlotsSelected }}
     </div>
   </div>
@@ -106,16 +166,16 @@ import moment from 'moment'
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import allLocales from "@fullcalendar/core/locales-all";
+import allLocales from '@fullcalendar/core/locales-all'
 
 // * Import _components
-import AmSelect from '../select/AmSelect.vue';
-import AmOption from '../select/AmOption.vue';
-import AmButtonGroup from '../button/AmButtonGroup';
-import AmButton from '../button/AmButton.vue';
-import AmIconArrowRight from '../icons/IconArrowRight.vue';
-import AmIconArrowLeft from '../icons/IconArrowLeft.vue';
-import AmOptionTemplate1 from '../../_components/select/parts/AmOptionTemplate1.vue';
+import AmSelect from '../select/AmSelect.vue'
+import AmOption from '../select/AmOption.vue'
+import AmButtonGroup from '../button/AmButtonGroup'
+import AmButton from '../button/AmButton.vue'
+import AmIconArrowRight from '../icons/IconArrowRight.vue'
+import AmIconArrowLeft from '../icons/IconArrowLeft.vue'
+import AmOptionTemplate1 from '../../_components/select/parts/AmOptionTemplate1.vue'
 
 // * Import from Vue
 import {
@@ -125,8 +185,8 @@ import {
   inject,
   computed,
   watch,
-  onMounted
-} from "vue";
+  onMounted,
+} from 'vue'
 
 // * Composables
 import {
@@ -135,12 +195,12 @@ import {
   getFrontedFormattedDate,
   addSeconds,
   getFirstDayOfWeek,
-  useSecondsToDuration
-} from "../../../assets/js/common/date";
-import { shortLocale } from "../../../plugins/settings.js";
-import { useColorTransparency } from "../../../assets/js/common/colorManipulation";
-import { useScrollTo } from "../../../assets/js/common/scrollElements.js";
-import { useSortedTimeStrings } from "../../../assets/js/common/helper.js";
+  useSecondsToDuration,
+} from '../../../assets/js/common/date'
+import { shortLocale } from '../../../plugins/settings.js'
+import { useColorTransparency } from '../../../assets/js/common/colorManipulation'
+import { useScrollTo } from '../../../assets/js/common/scrollElements.js'
+import { useSortedTimeStrings } from '../../../assets/js/common/helper.js'
 
 /**
  * Component Props
@@ -149,82 +209,82 @@ import { useSortedTimeStrings } from "../../../assets/js/common/helper.js";
 const props = defineProps({
   initialView: {
     type: String,
-    default: 'dayGridMonth'
+    default: 'dayGridMonth',
   },
   weekDaysVisibility: {
     type: Boolean,
-    default: true
+    default: true,
   },
   weekDaysEnabled: {
     type: Boolean,
-    default: true
+    default: true,
   },
   notMultiple: {
     type: Boolean,
-    default: true
+    default: true,
   },
   calendarMinimumDate: {
     type: String,
-    default: ''
+    default: '',
   },
   calendarMaximumDate: {
     type: String,
-    default: ''
+    default: '',
   },
   id: {
     type: Number,
-    default: 0
+    default: 0,
   },
   serviceId: {
     type: Number,
-    default: 0
+    default: 0,
   },
   date: {
     type: String,
-    default: ''
+    default: '',
   },
   endTime: {
     type: Boolean,
-    default: true
+    default: true,
   },
   timeZone: {
     type: Boolean,
-    default: true
+    default: true,
   },
   showBusySlots: {
     type: Boolean,
-    default: false
+    default: false,
   },
   labelSlotsSelected: {
     type: String,
-    default: ''
+    default: '',
   },
   nestedItem: {
     type: Object,
     default: () => {
       return {
-        inCollapse: false
+        inCollapse: false,
       }
-    }
+    },
   },
   busyness: {
     type: Object,
     default: () => {
       return {}
-    }
+    },
   },
   taxVisibility: {
     type: Boolean,
-    default: false
+    default: false,
   },
   taxLabel: {
     type: String,
-    default: ''
+    default: '',
   },
   taxLabelIncl: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
 
 let slotsWrapper = ref(null)
@@ -232,10 +292,14 @@ let containerWrapper = inject('formWrapper', ref(null))
 
 // timeZoneString: this.$root.settings.general.showClientTimeZone ? Intl.DateTimeFormat().resolvedOptions().timeZone : this.$root.settings.wordpress.timezone
 const amSettings = inject('settings')
-let timeZoneString = ref(amSettings.general.showClientTimeZone ? Intl.DateTimeFormat().resolvedOptions().timeZone : amSettings.wordpress.timezone)
+let timeZoneString = ref(
+  amSettings.general.showClientTimeZone
+    ? Intl.DateTimeFormat().resolvedOptions().timeZone
+    : amSettings.wordpress.timezone
+)
 
 let taxText = computed(() => {
-  if(props.taxVisibility) {
+  if (props.taxVisibility) {
     if (amSettings.payments.taxes.excluded) {
       return props.taxLabel
     } else {
@@ -247,7 +311,7 @@ let taxText = computed(() => {
 })
 
 // * Calendar Reference
-const advCalendarRef = ref(null);
+const advCalendarRef = ref(null)
 
 let isDateSelected = ref(false)
 
@@ -267,15 +331,15 @@ let headerMonthOptions = ref([])
 let calYear = ref(1)
 let headerYearOption = reactive([])
 
-function selectDuration (duration) {
+function selectDuration(duration) {
   emits('selectedDuration', duration)
 }
 
-function getYearMonthString () {
+function getYearMonthString() {
   return moment(advCalendarRef.value.getApi().getDate()).format('YYYY-MM')
 }
 
-function getHeaderMonths (year) {
+function getHeaderMonths(year) {
   let minimumDate = moment(props.calendarMinimumDate, 'YYYY-MM-DD HH:mm')
 
   let maximumDate = moment(props.calendarMaximumDate, 'YYYY-MM-DD HH:mm')
@@ -286,30 +350,42 @@ function getHeaderMonths (year) {
     let monthString = i < 10 ? '0'.concat(i.toString()) : i.toString()
 
     let monthStartDate = moment(year + '-' + monthString + '-01', 'YYYY-MM-DD')
-    let monthEndDate = moment(year + '-' + monthString + '-01', 'YYYY-MM-DD').endOf('month')
+    let monthEndDate = moment(
+      year + '-' + monthString + '-01',
+      'YYYY-MM-DD'
+    ).endOf('month')
 
     availableMonths.push({
       value: monthString,
       label: months[i - 1],
-      available: minimumDate.isSameOrBefore(monthEndDate) && maximumDate.isSameOrAfter(monthStartDate)
+      available:
+        minimumDate.isSameOrBefore(monthEndDate) &&
+        maximumDate.isSameOrAfter(monthStartDate),
     })
   }
 
   return availableMonths
 }
 
-function changeYear () {
+function changeYear() {
   let availableMonths = getHeaderMonths(calYear.value)
 
-  advCalendarRef.value.getApi().gotoDate(
-    calYear.value + '-' + availableMonths.filter(i => i.available)[0].value + '-01'
-  )
+  advCalendarRef.value
+    .getApi()
+    .gotoDate(
+      calYear.value +
+        '-' +
+        availableMonths.filter((i) => i.available)[0].value +
+        '-01'
+    )
 
   emits('changedMonth', getYearMonthString())
 }
 
-function changeMonth () {
-  advCalendarRef.value.getApi().gotoDate(calYear.value + '-' + calMonth.value + '-01')
+function changeMonth() {
+  advCalendarRef.value
+    .getApi()
+    .gotoDate(calYear.value + '-' + calMonth.value + '-01')
 
   emits('changedMonth', getYearMonthString())
 }
@@ -326,15 +402,12 @@ function nextMonth() {
   emits('changedMonth', getYearMonthString())
 }
 
-function renderedMonth (data) {
-  emits(
-    'renderedMonth',
-    {
-      start: moment(data.start).format('YYYY-MM-DD'),
-      end: moment(data.end).format('YYYY-MM-DD'),
-      yearMonth: getYearMonthString()
-    }
-  )
+function renderedMonth(data) {
+  emits('renderedMonth', {
+    start: moment(data.start).format('YYYY-MM-DD'),
+    end: moment(data.end).format('YYYY-MM-DD'),
+    yearMonth: getYearMonthString(),
+  })
 }
 
 let calendarStartDate = inject('calendarStartDate')
@@ -347,17 +420,17 @@ const options = ref({
   headerToolbar: false,
   views: {
     dayGridMonth: {},
-    dayGridWeek: {}
+    dayGridWeek: {},
   },
   slotLabelFormat: {
     hour: 'numeric',
     minute: '2-digit',
-    hour12: false
+    hour12: false,
   },
   eventTimeFormat: {
     hour: 'numeric',
     minute: '2-digit',
-    hour12: false
+    hour12: false,
   },
   aspectRatio: 1.45,
   firstDay: getFirstDayOfWeek(),
@@ -376,11 +449,13 @@ const options = ref({
   events: inject('calendarEvents'),
   datesSet: renderedMonth,
   locales: allLocales,
-  locale: shortLocale
+  locale: shortLocale,
 })
 
 let cWidth = inject('containerWidth', 0)
-let checkScreen = computed(() => cWidth.value < 560 || (cWidth.value > 560 && cWidth.value < 640))
+let checkScreen = computed(
+  () => cWidth.value < 560 || (cWidth.value > 560 && cWidth.value < 640)
+)
 let mobileS = computed(() => cWidth.value < 340)
 
 const emits = defineEmits([
@@ -412,15 +487,15 @@ let slotsHeading = ref(props.date ? getFrontedFormattedDate(props.date) : '')
  * @param data
  * @returns {string[]}
  */
-function calendarDayHeaderClassBuilder (data) {
-  let classCollector = [`am-advsc__${data.view.type}-header-cell`];
+function calendarDayHeaderClassBuilder(data) {
+  let classCollector = [`am-advsc__${data.view.type}-header-cell`]
 
   // * Week days class
   if (data.date.getDay() === 0 || data.date.getDay() === 6) {
-    classCollector.push(`am-advsc__${data.view.type}-header-weekend`);
+    classCollector.push(`am-advsc__${data.view.type}-header-weekend`)
   }
 
-  return classCollector;
+  return classCollector
 }
 
 watch(calendarStartDate, () => {
@@ -434,30 +509,40 @@ watch(calendarStartDate, () => {
  * @param data
  * @returns {*[]}
  */
-function calendarDayClassBuilder (data) {
-  let classCollector = [`am-advsc__${data.view.type}-cell`];
+function calendarDayClassBuilder(data) {
+  let classCollector = [`am-advsc__${data.view.type}-cell`]
 
   // * Week days class
-  if (!props.weekDaysEnabled && (data.date.getDay() === 0 || data.date.getDay() === 6)) {
-    classCollector.push(`am-advsc__${data.view.type}-weekend`);
+  if (
+    !props.weekDaysEnabled &&
+    (data.date.getDay() === 0 || data.date.getDay() === 6)
+  ) {
+    classCollector.push(`am-advsc__${data.view.type}-weekend`)
   }
 
   // * Determine which day has slots => [] - no slots || [...] has slots
-  let eventIdentifier = options.value.events.filter((item) => moment(item.start).format('YYYY-MM-DD') === moment(data.date).format('YYYY-MM-DD'));
+  let eventIdentifier = options.value.events.filter(
+    (item) =>
+      moment(item.start).format('YYYY-MM-DD') ===
+      moment(data.date).format('YYYY-MM-DD')
+  )
 
   // TODO - this condition should be refactorized after implementation in the system
   // * Disabled class
-  if ((eventIdentifier.length && 'slotsAvailable' in eventIdentifier[0].extendedProps && !eventIdentifier[0].extendedProps.slotsAvailable) ||
-      !eventIdentifier.length
+  if (
+    (eventIdentifier.length &&
+      'slotsAvailable' in eventIdentifier[0].extendedProps &&
+      !eventIdentifier[0].extendedProps.slotsAvailable) ||
+    !eventIdentifier.length
   ) {
-    classCollector.push(`am-advsc__${data.view.type}-disabled`);
+    classCollector.push(`am-advsc__${data.view.type}-disabled`)
   }
 
   if (props.date && props.date === moment(data.date).format('YYYY-MM-DD')) {
     classCollector.push(`am-advsc__${data.view.type}-selected`)
   }
 
-  return classCollector;
+  return classCollector
 }
 
 /**
@@ -470,7 +555,7 @@ function calendarDayClassBuilder (data) {
 let calEvtClicked = ref(false)
 
 // * this function must be removed and its content should be placed inside the calendarDateClick function after releasing the event calendar
-function calendarDateClickFunctionality (data) {
+function calendarDateClickFunctionality(data) {
   const advCalendar = advCalendarRef.value.getApi()
   let advCalendarNode = advCalendarRef.value.$el
 
@@ -495,20 +580,36 @@ function calendarDateClickFunctionality (data) {
   } else {
     isDateSelected.value = true
 
-    if (calendarEventSlot.value && !calendarEventSlots.value.includes(calendarEventSlot.value)) {
+    if (
+      calendarEventSlot.value &&
+      !calendarEventSlots.value.includes(calendarEventSlot.value)
+    ) {
       calendarEventSlot.value = calendarEventSlots.value[0]
       emits('selectedTime', calendarEventSlot.value)
-    } else if (calendarEventSlot.value && calendarEventSlots.value.includes(calendarEventSlot.value)) {
+    } else if (
+      calendarEventSlot.value &&
+      calendarEventSlots.value.includes(calendarEventSlot.value)
+    ) {
     } else if (calendarEventSlots.value.length) {
       calendarEventSlot.value = calendarEventSlots.value[0]
       emits('selectedTime', calendarEventSlot.value)
     }
 
-    slotsHeading.value = (data.dateStr ? getFrontedFormattedDate(data.dateStr) : data.dateStr) + (calendarEventSlots.value.includes(calendarEventSlot.value)  ? ' - ' + getFrontedFormattedTime(calendarEventSlot.value) : '')
+    slotsHeading.value =
+      (data.dateStr ? getFrontedFormattedDate(data.dateStr) : data.dateStr) +
+      (calendarEventSlots.value.includes(calendarEventSlot.value)
+        ? ' - ' + getFrontedFormattedTime(calendarEventSlot.value)
+        : '')
 
     if (advCalendarNode.querySelectorAll(`.${selectedDayClass}`).length) {
-      for (let i = 0; i < advCalendarNode.querySelectorAll(`.${selectedDayClass}`).length; i++) {
-        advCalendarNode.querySelectorAll(`.${selectedDayClass}`)[i].classList.remove(selectedDayClass)
+      for (
+        let i = 0;
+        i < advCalendarNode.querySelectorAll(`.${selectedDayClass}`).length;
+        i++
+      ) {
+        advCalendarNode
+          .querySelectorAll(`.${selectedDayClass}`)
+          [i].classList.remove(selectedDayClass)
       }
     }
 
@@ -518,22 +619,41 @@ function calendarDateClickFunctionality (data) {
 
     if (iOS()) {
       setTimeout(() => {
-        if (containerWrapper.value && calendarEventSlots.value.length && slotsWrapper.value) {
-          useScrollTo(containerWrapper.value, slotsWrapper.value, 20, 300, props.nestedItem)
+        if (
+          containerWrapper.value &&
+          calendarEventSlots.value.length &&
+          slotsWrapper.value
+        ) {
+          useScrollTo(
+            containerWrapper.value,
+            slotsWrapper.value,
+            20,
+            300,
+            props.nestedItem
+          )
         }
       }, 500)
     } else {
-      if (containerWrapper.value && calendarEventSlots.value.length && slotsWrapper.value) {
-        useScrollTo(containerWrapper.value, slotsWrapper.value, 20, 300, props.nestedItem)
+      if (
+        containerWrapper.value &&
+        calendarEventSlots.value.length &&
+        slotsWrapper.value
+      ) {
+        useScrollTo(
+          containerWrapper.value,
+          slotsWrapper.value,
+          20,
+          300,
+          props.nestedItem
+        )
       }
     }
   }
 
-
   let selectedSlot = {
     reference: 'slot',
     position: 1,
-    value: ''
+    value: '',
   }
   selectedSlot.value = slotsHeading.value ? `${slotsHeading.value}` : ''
   if (!props.notMultiple && props.date) {
@@ -544,9 +664,9 @@ function calendarDateClickFunctionality (data) {
 }
 
 // * this function had to return to its previous state after event calendar release
-function calendarDateClick (data) {
+function calendarDateClick(data) {
   setTimeout(() => {
-    if (iOS()){
+    if (iOS()) {
       if (calEvtClicked.value) {
         calendarDateClickFunctionality(data)
         calEvtClicked.value = false
@@ -557,25 +677,26 @@ function calendarDateClick (data) {
   }, 300)
 }
 
-
 function iOS() {
-  return [
+  return (
+    [
       'iPad Simulator',
       'iPhone Simulator',
       'iPod Simulator',
       'iPad',
       'iPhone',
-      'iPod'
-    ].includes(navigator.platform)
+      'iPod',
+    ].includes(navigator.platform) ||
     // iPad on iOS 13 detection
-    || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+    (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+  )
 }
 
 /**
  * Click on Event handler
  * @param eventData
  */
-function calendarEventClick (eventData) {
+function calendarEventClick(eventData) {
   calEvtClicked.value = true
   emits('selectedDate', moment(eventData.event.start).format('YYYY-MM-DD'))
 }
@@ -585,43 +706,45 @@ function calendarEventClick (eventData) {
  * @param eventCalendarData
  * @returns {{html: string}}
  */
-function calendarEventContent (eventCalendarData) {
+function calendarEventContent(eventCalendarData) {
+  let eventContent
 
-   let eventContent;
+  const slotsAvailablePercentage =
+    props.busyness[moment(eventCalendarData.event.start).format('YYYY-MM-DD')]
 
-   const slotsAvailablePercentage = props.busyness[moment(eventCalendarData.event.start).format('YYYY-MM-DD')];
+  eventContent = `<div class="am-advsc__slot-wrapper" style="height: ${slotsAvailablePercentage}%"></div>`
 
-   eventContent = `<div class="am-advsc__slot-wrapper" style="height: ${slotsAvailablePercentage}%"></div>`
-
-  return {html: eventContent}
+  return { html: eventContent }
 }
 
 const { sidebarDataCollector } = inject('sidebarStepsFunctions', {
-  sidebarDataCollector: () => {}
+  sidebarDataCollector: () => {},
 })
 
 // * Click on slot
-function slotSelected (slot) {
+function slotSelected(slot) {
   if (calendarChangeSideBar.value) {
     let selectedSlot = {
       reference: 'slot',
       // position will depend on fields order
       position: 1,
-      value: ''
+      value: '',
     }
 
-    selectedSlot.value = !slotsHeading.value.includes(' - ') ?
-      slotsHeading.value + ' - ' + getFrontedFormattedTime(slot) :
-      slotsHeading.value.split(' - ')[0] + ' - ' + getFrontedFormattedTime(slot)
+    selectedSlot.value = !slotsHeading.value.includes(' - ')
+      ? slotsHeading.value + ' - ' + getFrontedFormattedTime(slot)
+      : slotsHeading.value.split(' - ')[0] +
+        ' - ' +
+        getFrontedFormattedTime(slot)
 
     slotsHeading.value = selectedSlot.value
 
     if (!props.notMultiple && props.date) {
-      selectedSlot.reference = 'package-slot ' + props.id + ' ' + props.serviceId
+      selectedSlot.reference =
+        'package-slot ' + props.id + ' ' + props.serviceId
     }
 
     sidebarDataCollector(selectedSlot)
-
   }
 
   calendarEventSlot.value = slot
@@ -629,17 +752,21 @@ function slotSelected (slot) {
   emits('selectedTime', slot)
 }
 
-window.addEventListener('resize', resize);
+window.addEventListener('resize', resize)
 // * resize function
 function resize() {
   if (advCalendarRef.value) {
-    advCalendarRef.value.options.aspectRatio = mobileS.value ? 1 : checkScreen.value ? 1.2 : 1.45
+    advCalendarRef.value.options.aspectRatio = mobileS.value
+      ? 1
+      : checkScreen.value
+      ? 1.2
+      : 1.45
     advCalendarRef.value.getApi().render()
   }
 }
 
 // * Color Vars
-let amColors = inject('amColors',  {
+let amColors = inject('amColors', {
   amColors: {
     value: {
       colorPrimary: '#1246D6',
@@ -668,28 +795,52 @@ let amColors = inject('amColors',  {
       colorBtnPrimText: '#FFFFFF',
       colorBtnSec: '#1A2C37',
       colorBtnSecText: '#FFFFFF',
-    }
-  }
+    },
+  },
 })
 
 const cssVars = computed(() => {
   return {
-    '--am-c-advsc-bgr-op10': useColorTransparency(amColors.value.colorMainText, 0.1),
+    '--am-c-advsc-bgr-op10': useColorTransparency(
+      amColors.value.colorMainText,
+      0.1
+    ),
     '--am-c-cal-init': amColors.value.colorCalCell,
     '--am-c-cal-init-text': amColors.value.colorCalCellText,
-    '--am-c-cal-init-op10': useColorTransparency(amColors.value.colorCalCell, 0.1),
-    '--am-c-cal-init-op20': useColorTransparency(amColors.value.colorCalCell, 0.2),
-    '--am-c-cal-init-op30': useColorTransparency(amColors.value.colorCalCell, 0.3),
-    '--am-c-cal-init-op60': useColorTransparency(amColors.value.colorCalCell, 0.6),
+    '--am-c-cal-init-op10': useColorTransparency(
+      amColors.value.colorCalCell,
+      0.1
+    ),
+    '--am-c-cal-init-op20': useColorTransparency(
+      amColors.value.colorCalCell,
+      0.2
+    ),
+    '--am-c-cal-init-op30': useColorTransparency(
+      amColors.value.colorCalCell,
+      0.3
+    ),
+    '--am-c-cal-init-op60': useColorTransparency(
+      amColors.value.colorCalCell,
+      0.6
+    ),
 
     '--am-c-cal-selected': amColors.value.colorCalCellSelected,
     '--am-c-cal-selected-text': amColors.value.colorCalCellSelectedText,
-    '--am-c-cal-selected-op80': useColorTransparency(amColors.value.colorCalCellSelected, 0.8),
+    '--am-c-cal-selected-op80': useColorTransparency(
+      amColors.value.colorCalCellSelected,
+      0.8
+    ),
 
     '--am-c-cal-disabled': amColors.value.colorCalCellDisabled,
     '--am-c-cal-disabled-text': amColors.value.colorCalCellDisabledText,
-    '--am-c-cal-disabled-op10': useColorTransparency(amColors.value.colorCalCellDisabled, 0.1),
-    '--am-c-cal-disabled-op60': useColorTransparency(amColors.value.colorCalCellDisabled, 0.4),
+    '--am-c-cal-disabled-op10': useColorTransparency(
+      amColors.value.colorCalCellDisabled,
+      0.1
+    ),
+    '--am-c-cal-disabled-op60': useColorTransparency(
+      amColors.value.colorCalCellDisabled,
+      0.4
+    ),
   }
 })
 
@@ -718,22 +869,37 @@ onBeforeMount(() => {
   calYear.value = year
 })
 
-onMounted( () => {
+onMounted(() => {
   if (advCalendarRef.value) {
-    advCalendarRef.value.options.aspectRatio = mobileS.value ? 1 : checkScreen.value ? 1.2 : 1.45
+    advCalendarRef.value.options.aspectRatio = mobileS.value
+      ? 1
+      : checkScreen.value
+      ? 1.2
+      : 1.45
   }
 
-  if (containerWrapper.value && calendarEventSlots.value.length && slotsWrapper.value) {
-    let calendarHeight = advCalendarRef.value ? (advCalendarRef.value.getApi().el.offsetHeight + 25) : 20
-    useScrollTo(containerWrapper.value, slotsWrapper.value, calendarHeight, 300, props.nestedItem)
+  if (
+    containerWrapper.value &&
+    calendarEventSlots.value.length &&
+    slotsWrapper.value
+  ) {
+    let calendarHeight = advCalendarRef.value
+      ? advCalendarRef.value.getApi().el.offsetHeight + 25
+      : 20
+    useScrollTo(
+      containerWrapper.value,
+      slotsWrapper.value,
+      calendarHeight,
+      300,
+      props.nestedItem
+    )
   }
 })
-
 </script>
 
 <script>
 export default {
-  name: "AmAdvancedCalendar"
+  name: 'AmAdvancedCalendar',
 }
 </script>
 
@@ -767,7 +933,11 @@ $amCalClass: am-advsc;
         $count: 5;
         @for $i from 0 through $count {
           &:nth-child(#{$i + 1}) {
-            animation: 600ms cubic-bezier(.45,1,.4,1.2) #{$i*100}ms am-animation-slide-up;
+            animation: 600ms
+              cubic-bezier(0.45, 1, 0.4, 1.2)
+              #{$i *
+              100}ms
+              am-animation-slide-up;
             animation-fill-mode: both;
           }
         }
@@ -795,7 +965,9 @@ $amCalClass: am-advsc;
       margin-top: 10px;
     }
 
-    table, tr, th {
+    table,
+    tr,
+    th {
       background-color: transparent;
     }
 
@@ -807,7 +979,8 @@ $amCalClass: am-advsc;
           }
         }
 
-        th, td {
+        th,
+        td {
           border: none;
         }
 
@@ -819,7 +992,7 @@ $amCalClass: am-advsc;
               &-cell {
                 font-size: 16px;
                 line-height: 1.5;
-                color: #8C959A;
+                color: #8c959a;
                 padding: 4px 6px;
                 .fc-col-header-cell-cushion {
                   font-size: var(--am-fs-advsc);
@@ -834,7 +1007,7 @@ $amCalClass: am-advsc;
               }
 
               &-weekend {
-                color: #D1D5D7;
+                color: #d1d5d7;
               }
             }
           }
@@ -960,7 +1133,7 @@ $amCalClass: am-advsc;
                     }
 
                     &-number {
-                      color: #D1D5D7;
+                      color: #d1d5d7;
                     }
                   }
                 }
@@ -1029,7 +1202,7 @@ $amCalClass: am-advsc;
     }
 
     // Mobile Calendar cell
-    &[am-mobile=true] {
+    &[am-mobile='true'] {
       &.fc {
         &-theme-standard {
           td.#{$amCalClass} {
@@ -1051,7 +1224,7 @@ $amCalClass: am-advsc;
       }
     }
     // Mobile S (<340px) Calendar cell
-    &[am-mobile-s=true] {
+    &[am-mobile-s='true'] {
       &.fc {
         &-theme-standard {
           height: 230px;
@@ -1134,7 +1307,11 @@ $amCalClass: am-advsc;
         $count: 1000;
         @for $i from 0 through $count {
           &:nth-child(#{$i + 1}) {
-            animation: 600ms cubic-bezier(.45,1,.4,1.2) #{$i*100}ms am-animation-slide-up;
+            animation: 600ms
+              cubic-bezier(0.45, 1, 0.4, 1.2)
+              #{$i *
+              100}ms
+              am-animation-slide-up;
             animation-fill-mode: both;
           }
         }
@@ -1164,7 +1341,8 @@ $amCalClass: am-advsc;
           cursor: pointer;
         }
 
-        &-mobile { // TODO - for time view
+        &-mobile {
+          // TODO - for time view
           padding: 0 4px;
           --am-fs-asdvsc-slot: 12px;
 

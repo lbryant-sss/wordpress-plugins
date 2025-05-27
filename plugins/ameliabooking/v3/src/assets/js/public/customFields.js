@@ -16,7 +16,10 @@ function useCustomFields (store) {
   })
 
   Object.values(store.getters['entities/getCustomFields']).forEach(customField => {
-    if (customField.services.map(service => service.id).filter(serviceId => servicesIds.includes(parseInt(serviceId))).length || customField.allServices) {
+    if (customField.services.map(service => service.id).filter(serviceId => servicesIds.includes(parseInt(serviceId))).length ||
+        customField.allServices ||
+        customField.saveType === 'customer'
+    ) {
       serviceCustomFields[customField.id] = {
         label: customField.label,
         type: customField.type

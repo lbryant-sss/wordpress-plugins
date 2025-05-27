@@ -122,6 +122,22 @@
           </el-tab-pane>
           <!-- /Marketing -->
 
+          <!-- Social Login -->
+          <el-tab-pane
+              v-if="notInLicence() ? licenceVisible() : true"
+              :label="$root.labels.social_login"
+              name="socialLogin"
+          >
+            <LicenceBlockHeader/>
+
+            <social-login
+              :class="licenceClassDisabled()"
+              ref="socialLogin"
+              :social-login="socialLoginSettings"
+            />
+          </el-tab-pane>
+          <!-- /Social Login -->
+
           <!-- Lesson Space -->
           <el-tab-pane
             v-if="notInLicence('starter') ? licenceVisible() : true"
@@ -174,9 +190,11 @@
   import Marketing from './Integrations/IntegrationsMarketing.vue'
   import LessonSpace from './Integrations/IntegrationsLessonSpace.vue'
   import AppleCalendar from "./Integrations/IntegrationsAppleCalendar.vue";
+  import SocialLogin from "./Integrations/SocialLogin.vue";
 
   export default {
     components: {
+      SocialLogin,
       AppleCalendar,
       GoogleCalendar,
       OutlookCalendar,
@@ -187,6 +205,10 @@
     },
 
     props: {
+      outlookSignedIn: {
+        type: Boolean,
+        default: false
+      },
       googleCalendar: {
         type: Object
       },
@@ -213,6 +235,9 @@
       },
       lessonSpace: {
         type: Object
+      },
+      socialLogin: {
+        type: Object
       }
     },
 
@@ -232,7 +257,16 @@
         facebookPixelSettings: Object.assign({}, this.facebookPixel),
         googleTagSettings: Object.assign({}, this.googleTag),
         webHooksSettings: this.webHooks.map((webHook) => webHook),
-        activeTab: this.notInLicence() ? 'marketing' : 'googleCalendar'
+        activeTab: this.notInLicence() ? 'marketing' : 'googleCalendar',
+        socialLoginSettings: Object.assign({}, this.socialLogin)
+      }
+    },
+
+    mounted () {
+      if (this.outlookSignedIn) {
+        this.activeTab = 'outlookCalendar'
+      } else {
+        this.activeTab = this.notInLicence() ? 'marketing' : 'googleCalendar'
       }
     },
 
@@ -245,7 +279,16 @@
         this.$emit('closeDialogSettingsIntegrations')
       },
 
-      onSubmit () {
+      async onSubmit () {
+        let socialLoginValid = true
+        if (this.$refs.socialLogin && typeof this.$refs.socialLogin.validate === 'function') {
+          socialLoginValid = await this.$refs.socialLogin.validate()
+        }
+
+        if (!socialLoginValid) {
+          return
+        }
+
         ['facebookPixelSettings', 'googleAnalyticsSettings', 'googleTagSettings'].forEach((vendor) => {
           ['appointment', 'package', 'event'].forEach((type) => {
             switch (vendor) {
@@ -265,6 +308,11 @@
           })
         })
 
+        this.outlookCalendarSettings.mailEnabled = !!(this.outlookCalendarSettings.clientID &&
+          this.outlookCalendarSettings.clientSecret &&
+          this.outlookCalendarSettings.mailEnabled &&
+          this.outlookCalendarSettings.token)
+
         this.$emit('closeDialogSettingsIntegrations')
         this.$emit('updateSettings', {
           'googleCalendar': this.googleCalendarSettings,
@@ -275,7 +323,8 @@
           'facebookPixel': this.facebookPixelSettings,
           'googleAnalytics': this.googleAnalyticsSettings,
           'googleTag': this.googleTagSettings,
-          'lessonSpace': this.lessonSpaceSettings
+          'lessonSpace': this.lessonSpaceSettings,
+          'socialLogin': this.socialLoginSettings
         })
       }
     }

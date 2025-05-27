@@ -2217,6 +2217,13 @@ let defaultTranslations = {
           info_step: null
         }
       },
+      social: {
+        name: globalLabels.social_login,
+        labels: {
+          auto_fill_your_details: null,
+          or_enter_details_below: null,
+        }
+      },
       input: {
         name: globalLabels.input_fields,
         labels: {
@@ -2639,6 +2646,13 @@ let defaultTranslations = {
         name: globalLabels.step_title,
         labels: {
           event_customer_info: null
+        }
+      },
+      social: {
+        name: globalLabels.social_login,
+        labels: {
+          auto_fill_your_details: null,
+          or_enter_details_below: null
         }
       },
       input: {
@@ -3202,6 +3216,12 @@ let defaultTranslations = {
           enter_credentials: null
         }
       },
+      social: {
+        name: globalLabels.social_login,
+        labels: {
+          or_enter_details_below: null,
+        }
+      },
       input: {
         name: globalLabels.input_fields,
         labels: {
@@ -3297,6 +3317,12 @@ let defaultTranslations = {
         labels: {
           welcome_back: null,
           enter_credentials: null
+        }
+      },
+      social: {
+        name: globalLabels.social_login,
+        labels: {
+          or_enter_details_below: null,
         }
       },
       input: {
@@ -3532,6 +3558,13 @@ let defaultTranslations = {
         name: globalLabels.step_title,
         labels: {
           event_customer_info: null
+        }
+      },
+      social: {
+        name: globalLabels.social_login,
+        labels: {
+          auto_fill_your_details: null,
+          or_enter_details_below: null,
         }
       },
       input: {

@@ -29,6 +29,7 @@
     :before-change="beforeChange"
     :border-color="borderColor"
     :inline-prompt="inlinePrompt"
+    :aria-label="ariaLabel"
     @change="(e) => emits('change', e)"
   >
   </el-switch>
@@ -82,19 +83,15 @@ const props = defineProps({
   },
   activeColor: {
     type: String,
-    default: ''
   },
   inactiveColor: {
     type: String,
-    default: ''
   },
   activeText: {
     type: String,
-    default: ''
   },
   inactiveText: {
     type: String,
-    default: ''
   },
   activeValue: {
     type: [Boolean, String, Number],
@@ -106,19 +103,15 @@ const props = defineProps({
   },
   activeIconClass: {
     type: String,
-    default: ''
   },
   inactiveIconClass: {
     type: String,
-    default: ''
   },
   activeIcon: {
     type: String,
-    default: ''
   },
   inactiveIcon: {
     type: String,
-    default: ''
   },
   beforeChange: {
     type: [Function, Boolean],
@@ -126,7 +119,6 @@ const props = defineProps({
   },
   borderColor: {
     type: String,
-    default: ''
   },
   inlinePrompt: {
     type: Boolean,
@@ -134,11 +126,12 @@ const props = defineProps({
   },
   parentClass: {
     type: String,
-    default: ''
   },
   class: {
     type: String,
-    default: ''
+  },
+  ariaLabel: {
+    type: String,
   },
 })
 
@@ -192,9 +185,9 @@ const amColors = inject('amColors', ref({
 // * CSS Variables
 const cssVars = computed(() => {
   return {
-    '--am-c-switch-bgr-active': amColors.value.colorBtnPrim,
+    '--am-c-switch-bgr-active': amColors.value.colorPrimary,
     '--am-c-switch-bgr-inactive': amColors.value.colorInpBorder,
-    '--am-c-switch-action': amColors.value.colorBtnPrimText,
+    '--am-c-switch-action': amColors.value.colorMainBgr,
     '--am-c-switch-text': amColors.value.colorMainText,
   }
 })
@@ -212,17 +205,16 @@ const cssVars = computed(() => {
     &-wrapper {
       display: inline-flex;
     }
-
+    //
     &.is-checked {
       --am-c-switch-bgr: var(--am-c-switch-bgr-active);
 
       .el-switch {
-        &__action {
-          margin-left: calc(-1px - 16px)
+        &__core {
+          background-color: var(--am-c-switch-bgr-active);
         }
       }
     }
-
     .el-switch {
       &__core {
         border: 1px solid var(--am-c-switch-bgr);

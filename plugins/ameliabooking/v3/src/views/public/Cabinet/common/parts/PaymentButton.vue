@@ -2,7 +2,7 @@
   <el-popover
     v-if="usePaymentFromCustomerPanel(props.reservation, props.bookable.settings)"
     ref="payRef"
-    v-model:visible="payPopVisible"
+    :visible="payPopVisible"
     :persistent="false"
     :show-arrow="false"
     :popper-class="'am-cc__popper'"
@@ -48,7 +48,6 @@ import {
   ref,
   computed,
   inject,
-  defineComponent,
 } from "vue";
 
 // * Import from Vuex
@@ -105,10 +104,10 @@ let paymentButtonLoader = computed(() => {
   return store.getters['cabinet/getPaymentLinkLoader']
 })
 
-let arrowDown = defineComponent({
+let arrowDown = {
   components: {IconComponent},
   template: `<IconComponent icon="arrow-down"></IconComponent>`
-})
+}
 
 let payPopVisible = ref(false)
 
@@ -160,8 +159,8 @@ let cssVars = computed(() => {
     '--am-font-family': amFonts.value.fontFamily,
 
     // css properties
-    '--am-rad-input': '6px',
-    '--am-fs-input': '15px',
+    '--am-rad-inp': '6px',
+    '--am-fs-inp': '15px',
   }
 })
 </script>

@@ -211,7 +211,6 @@ export default {
       commit('params/setParams', rootGetters['shortcodeParams/getShortcodeParams'], {root: true})
 
       let serverData = {
-        loadEvents: payload.loadEvents,
         types: payload.types
       }
 
@@ -268,20 +267,23 @@ export default {
 
         commit(
           `set${ent.charAt(0).toUpperCase()}${ent.slice(1)}`,
-          ent === 'customFields' ? payload.entities['customFields'].sort(function(a, b) {
-            return ((a['position'] < b['position']) ? -1 : ((a['position'] > b['position']) ? 1 : 0));
-          }) : payload.entities[ent]
+          ent === 'customFields'
+            ? payload.entities['customFields'].sort((a, b) => {
+              if (a['saveType'] === b['saveType']) {
+                return a['position'] - b['position']
+              }
+              return a['saveType'].localeCompare(b['saveType'])
+            })
+            : payload.entities[ent]
         )
       })
 
       commit('setReady', true, { root: true })
 
-      if (payload.loadEvents) {
-        if (getters['getEventsDisplay']) {
-          dispatch('requestEvents', getters['getEventsDisplay'])
-        } else {
-          dispatch('requestEvents')
-        }
+      if (getters['getEventsDisplay']) {
+        dispatch('requestEvents', getters['getEventsDisplay'])
+      } else {
+        dispatch('requestEvents')
       }
     },
 
@@ -385,6 +387,7 @@ export default {
         if (payload === 'upcoming') {
           commit('setUpcomingLoading', false)
         } else {
+          commit('setUpcomingLoading', false)
           commit('setLoading', false, { root: true })
         }
       })

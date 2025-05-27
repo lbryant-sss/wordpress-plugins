@@ -14,6 +14,36 @@
         >
         </AmAlert>
       </div>
+
+      <div v-if="authError" class="am-fs__info-error">
+        <AmAlert
+            type="error"
+            :title="authErrorMessage"
+            :show-icon="true"
+            :closable="true"
+        >
+        </AmAlert>
+      </div>
+
+      <!-- Social Buttons -->
+      <div v-if="(settings.socialLogin.googleLoginEnabled && settings.general.googleClientId && !loggedInUser) || (settings.socialLogin.facebookLoginEnabled && settings.socialLogin.facebookCredentialsEnabled && !loggedInUser)">
+        <div class="am-fs__info-social-wrapper">
+          <div class="am-fs__info-social-wrapper__label">
+            {{amLabels.auto_fill_your_details}}
+          </div>
+          <am-social-button
+              :provider="socialProvider"
+              @social-action="onSignupSocial"
+          />
+        </div>
+
+        <!-- Social Divider -->
+        <div class="am-fs__info-social-divider">
+          <span class="par-sm">{{ amLabels.or_enter_details_below }}</span>
+        </div>
+        <!-- /Social Divider -->
+      </div>
+      <!-- /Social Buttons -->
     <el-form
       ref="infoFormRef"
       :model="infoFormData"
@@ -38,7 +68,7 @@
       <template v-if="availableCustomFields && allCustomFields">
         <el-form-item
           v-for="(cf, index) in allCustomFields"
-          v-show="cf.id in availableCustomFields"
+          v-show="cf.id in availableCustomFields && checkCustomerCustomFieldVisibility(cf)"
           :id="'am-cf-' + cf.id"
           :ref="el => customFieldsRefs[index] = el"
           :key="index"
@@ -89,27 +119,12 @@
           <!-- /types - [input, text-area] -->
 
           <!-- Address Field -->
-          <div v-if="cf.type === 'address'" :class="{'am-input-wrapper' : googleMapsLoaded}">
-            <div v-if="googleMapsLoaded()">
-              <div class="el-input el-input--default am-input am-input__default">
-                  <vue-google-autocomplete
-                    :id="'amelia-address-autocomplete-'+cf.id"
-                    ref="addressCustomFields"
-                    classname="el-input__inner"
-                    types=""
-                    placeholder=""
-                    @change="setAddressCF($event, cf.id)"
-                  >
-                  </vue-google-autocomplete>
-              </div>
-            </div>
-            <AmInput
-              v-else
+          <template v-if="cf.type === 'address'">
+            <AmAddressInput
+              :id="`amelia-address-autocomplete-${cf.id}`"
               v-model="infoFormData['cf' + cf.id]"
-              placeholder=""
-            >
-            </AmInput>
-          </div>
+            />
+          </template>
           <!-- /Address Field -->
 
           <!-- type - date-picker-full -->
@@ -146,7 +161,7 @@
               v-for="(option, i) in cf.options"
               :key="i"
               :label="option.label"
-              :value="option.id"
+              :value="option.label"
             />
           </AmRadioGroup>
           <!-- /type - radio -->
@@ -160,7 +175,7 @@
               v-for="(option, i) in cf.options"
               :key="i"
               :label="option.label"
-              :value="option.id"
+              :value="option.label"
             />
           </AmCheckBoxGroup>
           <!-- /type - checkbox -->
@@ -227,6 +242,7 @@ import AmRadio from "../../../_components/radio/AmRadio.vue";
 import AmDatePickerFull from "../../../_components/date-picker-full/AmDatePickerFull.vue";
 import AmSelect from "../../../_components/select/AmSelect.vue";
 import AmOption from "../../../_components/select/AmOption.vue";
+import AmAddressInput from "../../../_components/address-input/AmAddressInput.vue";
 
 import PaymentOnSite from "../../Parts/Payment/PaymentOnSite.vue";
 import PaymentWc from "../../Parts/Payment/PaymentWc.vue";
@@ -245,15 +261,18 @@ import {
   nextTick
 } from "vue";
 import { useStore } from "vuex";
+import VueAuthenticate from "vue-authenticate";
 import { settings } from "../../../../plugins/settings";
 import { usePrepaidPrice, usePaymentError } from "../../../../assets/js/common/appointments";
 import { useScrollTo } from "../../../../assets/js/common/scrollElements";
 import { saveStats, useAppointmentBookingData } from "../../../../assets/js/public/booking";
 import { useCustomFields } from "../../../../assets/js/public/customFields";
-import VueGoogleAutocomplete from 'vue-google-autocomplete'
 import useAction from "../../../../assets/js/public/actions";
 import { useElementSize } from "@vueuse/core";
 import { useCartHasItems } from "../../../../assets/js/public/cart";
+import httpClient from "../../../../plugins/axios";
+import AmSocialButton from "../../../common/FormFields/AmSocialButton.vue";
+import {SocialAuthOptions} from "../../../../assets/js/admin/socialAuthOptions";
 
 let props = defineProps({
   globalClass: {
@@ -323,16 +342,6 @@ let { removePaymentsStep } = inject('removePaymentsStep', {
 
 function callPaymentError (msg) {
   usePaymentError(store, msg)
-}
-
-function googleMapsLoaded () {
-  return window.google && settings.general.gMapApiKey
-}
-
-function setAddressCF (input, cfId) {
-  if (typeof input === 'string') {
-    infoFormData.value['cf' + cfId] = input
-  }
 }
 
 let paymentError = computed(() => store.getters['booking/getError'])
@@ -520,7 +529,6 @@ function submitForm() {
       null,
       null
   )
-
   infoFormRef.value.validate((valid) => {
     if (valid) {
       phoneError.value = false
@@ -538,21 +546,61 @@ function submitForm() {
         }
       }
     } else {
+      // * Scroll to the first error field
       let fieldElement
-      allFieldsRefs.value.some(el => {
-        if (el.shouldShowError === true) {
-          fieldElement = el.formItemRef
-          return el.shouldShowError === true
+
+      infoFormRef.value.fields.some((el) => {
+        if (el.validateState === 'error') {
+          fieldElement = el.$el
+          return el.validateState === 'error'
         }
       })
 
-      let phoneField = allFieldsRefs.value.find(el => el.prop === 'phone')
-      phoneError.value = !!(phoneField && phoneField.shouldShowError && phoneField.validateMessage)
+      let phoneField = infoFormRef.value.fields.find(el => el.prop === 'phone')
+      phoneError.value = !!(phoneField && phoneField.validateState === 'error')
 
       useScrollTo(infoFormWrapperRef.value, fieldElement, 20, 300)
       return false
     }
   })
+}
+
+let socialProvider = ref('')
+const VueAuthenticateInstance = VueAuthenticate.factory(httpClient, SocialAuthOptions)
+
+// * Facebook Sign in error alert
+let authError = ref(false)
+let authErrorMessage = ref('')
+
+function onSignupSocial({ provider, credentials }) {
+  const socialCheckUrl = `/users/authentication/${provider}`
+  const data = {}
+  socialProvider = provider
+
+  if (provider === 'google') {
+    data.code = credentials
+    httpClient.post(`${socialCheckUrl}`, data).then(response => {
+      setDataFromSocialLogin(response.data.data.user)
+    })
+  }
+  if (provider === 'facebook') {
+    VueAuthenticateInstance.options.providers[provider].url = `${socialCheckUrl}`
+    VueAuthenticateInstance.authenticate(provider, data).then((response) => {
+     setDataFromSocialLogin(response.data.data.user)
+    }).catch((error) => {
+      if (!VueAuthenticateInstance.isAuthenticated()) {
+        authError.value = true
+        authErrorMessage.value = 'User is not authenticated.'
+        store.commit('setLoading', false)
+      }
+    })
+  }
+}
+
+function setDataFromSocialLogin(data) {
+  infoFormData.value.firstName = data.firstName
+  infoFormData.value.lastName = data.lastName
+  infoFormData.value.email = data.email
 }
 
 // * Watching when footer button was clicked
@@ -561,6 +609,34 @@ watchEffect(() => {
     submitForm()
   }
 })
+
+let visibilityFlags = ref({})
+
+function checkCustomerCustomFieldVisibility (cf) {
+  if (cf.saveType === 'customer' && loggedInUser.value && store.state.booking.appointment.bookings[0].customer.customFields) {
+    let customerCustomFields = store.state.booking.appointment.bookings[0].customer.customFields
+
+    if (!(cf.id in JSON.parse(customerCustomFields))) {
+      return true
+    }
+
+    if (visibilityFlags.value[cf.id]) {
+      return visibilityFlags.value[cf.id]
+    }
+
+    switch (cf.type) {
+      case 'checkbox':
+      case 'file':
+        visibilityFlags.value[cf.id] = !cf.saveFirstChoice && availableCustomFields.value[cf.id].value !== []
+        return visibilityFlags.value[cf.id]
+      default:
+        visibilityFlags.value[cf.id] = !cf.saveFirstChoice && availableCustomFields.value[cf.id].value !== ''
+        return visibilityFlags.value[cf.id]
+    }
+  }
+
+  return true
+}
 
 let addressCustomFields = ref([])
 
@@ -689,6 +765,57 @@ export default {
           am-animation-slide-up;
         animation-fill-mode: both;
         margin-bottom: 10px;
+      }
+
+      &-social-wrapper {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 24px;
+        gap: 24px;
+
+        .am-social-signin {
+          &__google {
+            #g_id_onload {
+              display: none;
+            }
+            .g_id_signin {
+              width: 64px;
+            }
+          }
+        }
+
+        &__label {
+          font-weight: 500;
+          font-size: 15px;
+        }
+      }
+
+      &-social-divider {
+        align-items: center;
+        display: flex;
+        margin-bottom: 24px;
+
+        // Before & After
+        &:before,
+        &:after {
+          background: var(--shade-250, #D1D5D7);
+          content: '';
+          height: 1px;
+          width: 100%;
+        }
+
+        span {
+          flex: none;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+          color: var(--shade-500, #808A90);
+          margin-left: 8px;
+          margin-right: 8px;
+        }
       }
 
       &-form {

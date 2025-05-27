@@ -57,7 +57,7 @@ export default {
       }
 
       &:first-child:last-child {
-        border-radius: var(--am-rad-input);
+        border-radius: var(--am-rad-inp);
       }
 
       &:not(:first-child):not(:last-child) {

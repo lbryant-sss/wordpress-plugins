@@ -266,6 +266,7 @@
               :notifications="settings.notifications"
               :ics="settings.ics"
               :employees="employees"
+              :outlookEnabled="!!(settings.outlookCalendar.clientID && settings.outlookCalendar.clientSecret && settings.outlookCalendar.mailEnabled && settings.outlookCalendar.token)"
           >
           </dialog-settings-notifications>
         </el-dialog>
@@ -331,6 +332,7 @@
               @closeDialogSettingsIntegrations="dialogSettingsIntegrations = false"
               @updateSettings="updateSettings"
               @openDialog="openDialogCombinedPlaceholders"
+              :outlookSignedIn="outlookSignedIn"
               :googleCalendar="settings.googleCalendar"
               :outlookCalendar="settings.outlookCalendar"
               :apple-calendar="settings.appleCalendar"
@@ -340,6 +342,7 @@
               :googleAnalytics="settings.googleAnalytics"
               :googleTag="settings.googleTag"
               :webHooks="settings.webHooks"
+              :social-login="settings.socialLogin"
           >
           </dialog-settings-integrations>
         </el-dialog>
@@ -647,6 +650,7 @@
         dialogSettingsApiKeys: false,
         dialogSettingsRoles: false,
         dialogSettingsAppointments: false,
+        outlookSignedIn: false,
         fetched: false,
         customFields: [],
         categories: [],
@@ -670,9 +674,39 @@
 
     mounted () {
       this.inlineSVG()
+
+      this.outlookCalendarSync()
     },
 
     methods: {
+      outlookCalendarSync () {
+        let queryParams = this.getUrlQueryParams(window.location.href)
+
+        if (queryParams['code'] && queryParams['type']) {
+          this.$http.post(`${this.$root.getAjaxUrl}/outlook/authorization/token`, {
+            'authCode': queryParams['code'],
+            'userId': 0
+          }).then(() => {
+            let redirectURL = this.removeURLParameter(window.location.href, 'code')
+            redirectURL = this.removeURLParameter(redirectURL, 'state')
+            redirectURL = this.removeURLParameter(redirectURL, 'type')
+            history.pushState(null, null, redirectURL + '#/settings')
+
+            this.settings.outlookCalendar.token = true
+            this.settings.outlookCalendar.mailEnabled = true
+
+            this.outlookSignedIn = true
+
+            this.updateSettings({'outlookCalendar': this.settings.outlookCalendar})
+
+            this.showDialogSettingsIntegrations()
+          }).catch(e => {
+            console.log(e.response.data.message)
+            this.notify(this.$root.labels.error, e.response.data.message.split('.')[0], 'error')
+          })
+        }
+      },
+
       getCombinedPlaceholders () {
         if (this.combinedPlaceholderName === 'groupAppointmentPlaceholder') {
           return [

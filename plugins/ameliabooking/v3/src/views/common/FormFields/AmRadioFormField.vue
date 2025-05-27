@@ -13,7 +13,7 @@
         v-for="(option, i) in props.options"
         :key="i"
         :label="option.label"
-        :value="option.id"
+        :value="option.value"
       />
     </AmRadioGroup>
   </el-form-item>

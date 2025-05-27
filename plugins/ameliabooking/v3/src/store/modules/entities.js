@@ -197,7 +197,10 @@ function setEntities ({ commit, rootState }, entities, types, licence, showHidde
     commit(
       'set' + ent.charAt(0).toUpperCase() + ent.slice(1),
       ent === 'customFields' ? entities['customFields'].sort(function(a, b) {
-        return ((a['position'] < b['position']) ? -1 : ((a['position'] > b['position']) ? 1 : 0));
+        if (a['saveType'] === b['saveType']) {
+          return a['position'] - b['position']
+        }
+        return a['saveType'].localeCompare(b['saveType'])
       }) : entities[ent]
     )
   })

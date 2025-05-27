@@ -92,10 +92,10 @@
               <span>{{ `${labelsDisplay('coupon')}:` }}</span>
             </template>
             <AmInput
-                v-model="couponFormData.coupon"
-                size="small"
-                :icon-start="IconCoupon"
-            ></AmInput>
+              v-model="couponFormData.coupon"
+              size="small"
+              :prefix-icon="IconCoupon"
+            />
           </el-form-item>
           <AmButton size="small">
             {{ labelsDisplay('add_coupon_btn') }}

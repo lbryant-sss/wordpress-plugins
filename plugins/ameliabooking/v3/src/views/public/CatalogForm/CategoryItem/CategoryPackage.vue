@@ -8,10 +8,12 @@
     :content-class="`am-fcip__content ${scrollVisibility ? '' : 'no-scroll'}`"
     :style="cssVars"
   >
-    <template v-if="preselected.package.length !== 1" #header>
+    <template v-if="backBtnVisibility" #header>
       <Header
         :btn-string="amLabels.back_btn"
         :btn-type="customizedOptions.backBtn.buttonType"
+        role="presentation"
+        aria-label="Back"
         @go-back="goBack"
       ></Header>
     </template>
@@ -19,9 +21,15 @@
       <div
         :class="[{'am-tablet': pageWidth <= 678}, {'am-mobile': pageWidth < 450}]"
         class="am-fcip__header-top"
+        role="region"
+        aria-label="Package Information"
       >
         <div class="am-fcip__header-text">
-          <span class="am-fcip__header-name">
+          <span
+            class="am-fcip__header-name"
+            role="heading"
+            aria-level="1"
+          >
             <span>
               {{pack.name}}
             </span>
@@ -79,7 +87,7 @@
       >
         <div class="am-fcip__mini-info">
           <div
-            v-if="preselected.package.length !== 1 && customizedOptions.packageCategory.visibility && category"
+            v-if="catNameVisibility"
             class="am-fcip__mini-info__inner"
           >
             <span class="am-icon-folder"></span>
@@ -371,7 +379,10 @@
     ref="ameliaContainer"
     class="am-empty"
   >
-    <img :src="baseUrls.wpAmeliaPluginURL+'/v3/src/assets/img/am-empty-booking.svg'">
+    <img
+      :src="baseUrls.wpAmeliaPluginURL+'/v3/src/assets/img/am-empty-booking.svg'"
+      :alt="amLabels.no_package_services"
+    >
     <div class="am-empty__heading">
       {{ amLabels.oops }}
     </div>
@@ -450,6 +461,8 @@ let store = useStore()
 const shortcodeData = inject('shortcodeData')
 const preselected = computed(() => store.getters['entities/getPreselected'])
 
+let backBtnVisibility = ref(preselected.value.package.length !== 1)
+
 // * Entities
 let amEntities = inject('amEntities')
 
@@ -475,6 +488,8 @@ let categorySelected = inject('categorySelected')
 let category = computed(() => {
   return amEntities.value.categories.find(item => item.id === categorySelected.value)
 })
+
+let catNameVisibility = ref(preselected.value.package.length !== 1 && customizedOptions.value.packageCategory.visibility && category)
 
 // * Selected package
 let pack = computed(() => {

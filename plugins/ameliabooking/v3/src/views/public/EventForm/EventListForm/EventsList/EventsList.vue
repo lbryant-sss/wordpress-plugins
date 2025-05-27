@@ -18,11 +18,15 @@
       class="am-els__filters"
     >
       <div v-if="ready" class="am-els__filters-top">
-        <div class="am-els__filters-search">
+        <div
+          class="am-els__filters-search"
+          role="search"
+        >
           <AmInput
             v-model="eventSearch"
+            :aria-label="amLabels.event_search"
             :placeholder="`${amLabels.event_search}...`"
-            :icon-start="iconSearch"
+            :prefix-icon="iconSearch"
           />
         </div>
         <div class="am-els__filters-menu__btn">
@@ -31,6 +35,7 @@
             :icon-only="cWidth <= 500"
             custom-class="am-els__filters-menu__btn-inner"
             category="secondary"
+            :aria-label="amLabels.event_filters"
             :type="customizedOptions.filterBtn.buttonType"
             @click="filtersMenuVisibility = !filtersMenuVisibility"
           >
@@ -56,10 +61,12 @@
               v-model="tagFilter"
               filterable
               clearable
+              :aria-label="amLabels.event_type"
               :placeholder="amLabels.event_type"
+              :filter-method="filterQueryTag"
             >
               <AmOption
-                v-for="(tag, index) in tags"
+                v-for="(tag, index) in filteredTags"
                 :key="index"
                 :class="`am-els-tag__${tag.name.replace(/\s+/g, '')}`"
                 :value="tag.name"
@@ -78,9 +85,11 @@
               filterable
               clearable
               :placeholder="amLabels.event_location"
+              :aria-label="amLabels.event_location"
+              :filter-method="filterQueryLocation"
             >
               <AmOption
-                v-for="location in locations"
+                v-for="location in filteredLocations"
                 :key="location.id"
                 :class="`am-els-location__${location.id}`"
                 :value="location.id"
@@ -98,7 +107,7 @@
               :presistant="false"
               :disabled="false"
               @selected-date="(dateString) => {store.commit('params/setDates', [dateString])}"
-            ></AmDatePickerFull>
+            />
           </div>
         </div>
       </Transition>
@@ -369,6 +378,21 @@ let tagFilter = computed({
   }
 })
 
+let queryTags = ref('')
+function filterQueryTag (query) {
+  queryTags.value = query.toLowerCase()
+}
+
+let filteredTags = computed(() => {
+  if (queryTags.value) {
+    return tags.value.filter((tag) => {
+      return tag.name.toLowerCase().includes(queryTags.value)
+    })
+  }
+
+  return tags.value
+})
+
 let locationFilter = computed({
   get: () => {
     return store.getters['params/getLocationIdParam']
@@ -376,6 +400,21 @@ let locationFilter = computed({
   set: (val) => {
     store.commit('params/setLocationIdParam', val)
   }
+})
+
+let queryLocation = ref('')
+function filterQueryLocation (query) {
+  queryLocation.value = query.toLowerCase()
+}
+
+let filteredLocations = computed(() => {
+  if (queryLocation.value) {
+    return locations.value.filter((location) => {
+      return location.name.toLowerCase().includes(queryLocation.value)
+    })
+  }
+
+  return locations.value
 })
 
 let dateFilter = computed(() => {

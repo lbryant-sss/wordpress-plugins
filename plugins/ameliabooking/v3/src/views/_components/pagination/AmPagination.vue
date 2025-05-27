@@ -153,11 +153,8 @@ let cssVars = computed(() => {
     // -rad-  border radius
     // -fs-   font size
     // -bgr   background
-    //--am-c-pagination-bgr: var(--am-c-card-bgr);
-    //--am-c-pagination-text: var(--am-c-card-text);
-    //--am-c-pagination-border: var(--am-c-card-bgr);
-    //--am-c-pagination-active: var(--am-c-primary);
-    //--am-rad-pagination: var(--am-rad-input);
+
+
 
     display: flex;
     align-items: center;

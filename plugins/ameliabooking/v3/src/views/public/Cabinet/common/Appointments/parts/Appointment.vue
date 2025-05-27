@@ -19,6 +19,7 @@
         {{ errorMessage }}
       </template>
     </AmAlert>
+
     <el-tabs v-model="activeTab">
       <!-- Details -->
       <el-tab-pane :label="amLabels.details" name="details">
@@ -709,76 +710,104 @@ function getAmount(serviceId, bookings) {
 }
 
 function validateSave() {
-  let validData = ref(true)
-
-  appointmentCustomFieldsRef.value?.customFieldsFormRef.validate((valid) => {
-    if (!valid) {
-      activeTab.value = 'customFields'
-      validData.value = false
+  // Create promises for each validation
+  const customFieldsPromise = new Promise((resolve) => {
+    if (appointmentCustomFieldsRef.value?.customFieldsFormRef) {
+      appointmentCustomFieldsRef.value.customFieldsFormRef.validate((valid) => {
+        if (!valid) {
+          activeTab.value = 'customFields'
+          resolve(false)
+        } else {
+          resolve(true)
+        }
+      })
+    } else {
+      resolve(true) // No custom fields form, so consider it valid
     }
   })
 
-  appointmentCustomersRef.value?.customersFormRef.validate((valid) => {
-    if (!valid || !store.getters['customerInfo/getCustomersIds'].length) {
-      activeTab.value = 'customers'
-      validData.value = false
+  const customersPromise = new Promise((resolve) => {
+    if (appointmentCustomersRef.value?.customersFormRef) {
+      appointmentCustomersRef.value.customersFormRef.validate((valid) => {
+        if (!valid || !store.getters['customerInfo/getCustomersIds'].length) {
+          activeTab.value = 'customers'
+          resolve(false)
+        } else {
+          resolve(true)
+        }
+      })
+    } else {
+      resolve(true) // No customers form, so consider it valid
     }
   })
 
-  appointmentDetailsRef.value?.detailsFormRef.validate((valid) => {
-    if (
-      !valid &&
-      (!store.getters['appointment/getServiceId'] ||
-        !store.getters['appointment/getStartDate'] ||
-        !store.getters['appointment/getStartTime'])
-    ) {
-      activeTab.value = 'details'
-      validData.value = false
+  const detailsPromise = new Promise((resolve) => {
+    if (appointmentDetailsRef.value?.detailsFormRef) {
+      appointmentDetailsRef.value.detailsFormRef.validate((valid) => {
+        if (!valid ||
+          !store.getters['appointment/getServiceId'] ||
+          !store.getters['appointment/getStartDate'] ||
+          !store.getters['appointment/getStartTime']) {
+          activeTab.value = 'details'
+          resolve(false)
+        } else {
+          resolve(true)
+        }
+      })
+    } else {
+      resolve(true) // No details form, so consider it valid
     }
   })
 
-  if (validData.value === false) {
-    return
-  }
+  // Wait for all validations to complete
+  Promise.all([customFieldsPromise, customersPromise, detailsPromise])
+    .then((results) => {
+      // If any validation failed, stop here
+      if (results.includes(false)) {
+        return
+      }
 
-  capacityWarning.value =
-    store.getters['appointment/getBookings']
-      .filter(i => i.status !== 'canceled' && i.status !== 'rejected')
-      .map((i) => i.persons)
-      .reduce((accumulator, currentValue) => {
-        return accumulator + currentValue
-      }, 0) > service.value.maxCapacity
-      ? amLabels.value.select_max_customer_count_warning +
-      ' ' +
-      service.value.maxCapacity
-      : ''
+      // Continue with capacity check
+      capacityWarning.value =
+        store.getters['appointment/getBookings']
+          .filter(i => i.status !== 'canceled' && i.status !== 'rejected')
+          .map((i) => i.persons)
+          .reduce((accumulator, currentValue) => {
+            return accumulator + currentValue
+          }, 0) > service.value.maxCapacity
+          ? amLabels.value.select_max_customer_count_warning +
+          ' ' +
+          service.value.maxCapacity
+          : ''
 
-  if (capacityWarning.value) {
-    activeTab.value = 'customers'
+      // Check capacity warning
+      if (capacityWarning.value) {
+        activeTab.value = 'customers'
+        return
+      }
 
-    return
-  }
+      // Check for payment links
+      let paymentLinksEnabled = amSettings.payments.paymentLinks && amSettings.payments.paymentLinks.enabled
 
-  let paymentLinksEnabled = amSettings.payments.paymentLinks && amSettings.payments.paymentLinks.enabled
+      let serviceSettings = service.value.settings ? JSON.parse(service.value.settings) : null
 
-  let serviceSettings = service.value.settings ? JSON.parse(service.value.settings) : null
+      if (serviceSettings &&
+        'payments' in serviceSettings &&
+        'paymentLinks' in serviceSettings.payments
+      ) {
+        paymentLinksEnabled = serviceSettings.payments.paymentLinks.enabled
+      }
 
-  if (serviceSettings &&
-    'payments' in serviceSettings &&
-    'paymentLinks' in serviceSettings.payments
-  ) {
-    paymentLinksEnabled = serviceSettings.payments.paymentLinks.enabled
-  }
-
-  if (savedAppointment.value &&
-    paymentLinksEnabled &&
-    getAmount(store.getters['appointment/getServiceId'], store.getters['appointment/getBookings']) >
-    getAmount(savedAppointment.value.serviceId, savedAppointment.value.bookings)
-  ) {
-    amountChanged.value = true
-  } else {
-    saveAppointment(false)
-  }
+      if (savedAppointment.value &&
+        paymentLinksEnabled &&
+        getAmount(store.getters['appointment/getServiceId'], store.getters['appointment/getBookings']) >
+        getAmount(savedAppointment.value.serviceId, savedAppointment.value.bookings)
+      ) {
+        amountChanged.value = true
+      } else {
+        saveAppointment(false)
+      }
+    })
 }
 
 function saveAppointment(createPaymentLinks) {
@@ -1011,67 +1040,6 @@ export default {
   // am    - amelia
   // capai - cabinet-panel-appointment-item
   .am-capai {
-
-    // Tabs
-    .el-tabs {
-      &__header {
-        margin: 0 0 15px;
-      }
-
-      &__nav {
-        &-wrap {
-          &:after {
-            background-color: var(--am-c-capai-text-op10);
-          }
-
-          &.is-scrollable {
-            padding: 0 24px;
-          }
-        }
-
-        &-next,
-        &-prev {
-          color: var(--am-c-capai-text);
-          top: 11px;
-        }
-      }
-
-      &__active-bar {
-        background-color: var(--am-c-capai-primary);
-      }
-
-      &__item {
-        padding: 0 20px;
-        line-height: 40px;
-
-        &:nth-child(2) {
-          padding-left: 0;
-        }
-
-        &:last-child {
-          padding-right: 0;
-        }
-
-        &.is-focus {
-          color: var(--am-c-capai-text);
-
-          &.is-active {
-            color: var(--am-c-capai-primary);
-
-            &:focus {
-              &:not(:active) {
-                box-shadow: none;
-              }
-            }
-          }
-        }
-      }
-
-      &__content {
-        overflow: unset;
-        position: static;
-      }
-    }
 
     // Customer
     &-customer {

@@ -31,7 +31,7 @@
             <AmInput
               v-model="eventSearch"
               :placeholder="`${labelsDisplay('event_search')}...`"
-              :icon-start="iconSearch"
+              :prefix-icon="iconSearch"
               size="small"
             />
           </div>

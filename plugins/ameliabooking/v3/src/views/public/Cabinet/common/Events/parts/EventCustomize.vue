@@ -10,7 +10,7 @@
 
     <AmRadioGroup v-model="colorType">
       <el-form-item class="am-capei-custef__item">
-        <AmRadio :label="1">
+        <AmRadio :value="1">
           {{ amLabels.event_colors_preset }}:
         </AmRadio>
         <div class="am-capei-custef__colors">
@@ -34,12 +34,13 @@
         </div>
       </el-form-item>
       <el-form-item class="am-capei-custef__item">
-        <AmRadio :label="2">
+        <AmRadio :value="2">
           {{ amLabels.event_colors_custom }}:
         </AmRadio>
         <el-color-picker
           v-model="eventCustomizeForm.color"
           :disabled="colorType === 1"
+          :aria-label="amLabels.event_colors_custom"
         />
       </el-form-item>
       <el-form-item class="am-capei-custef__item">

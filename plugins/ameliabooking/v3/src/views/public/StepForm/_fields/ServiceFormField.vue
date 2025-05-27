@@ -25,6 +25,7 @@
       :tax-label="`+${amLabels.total_tax_colon}`"
       :tax-label-incl="amLabels.incl_tax"
       :tax-visible="props.taxVisible"
+      :aria-label="amLabels.select_service"
       @change="changeService"
     ></AmAdvancedSelect>
     <AmSelect
@@ -34,10 +35,12 @@
       :filterable="props.filterable"
       :popper-class="'am-service-dropdown'"
       :placeholder="amLabels.select_service"
+      :aria-label="amLabels.select_service"
+      :filter-method="filterService"
       @change="changeOnlyService"
     >
       <AmOption
-        v-for="service in serviceOptions"
+        v-for="service in filteredServices"
         :key="service.id"
         :value="service.id"
         :label="service.name"
@@ -64,7 +67,6 @@
             </span>
           </span>
         </div>
-
       </AmOption>
     </AmSelect>
   </el-form-item>
@@ -72,7 +74,7 @@
 
 <script setup>
 import { useStore } from "vuex";
-import { computed, inject, reactive } from "vue";
+import { computed, inject, reactive, ref } from "vue";
 import AmSelect from '../../../_components/select/AmSelect'
 import AmOption from '../../../_components/select/AmOption'
 import AmAdvancedSelect from '../../../_components/advanced-select/AmAdvancedSelect'
@@ -125,7 +127,7 @@ let initFormData = inject('initFormData')
 
 // * Service select props
 let advSelectProps = reactive({
-  expandTrigger: checkScreen.value ? 'click':'hover',
+  expandTrigger: checkScreen.value ? 'click': 'hover',
   multiple: false,
   checkStrictly: false,
   emitPath: true,
@@ -163,6 +165,23 @@ let taxServicesOptions = computed(() => {
   }
 
   return arr
+})
+
+// * Filter service
+let queryLower = ref('')
+
+function filterService (query) {
+  queryLower.value = query.toLowerCase()
+}
+
+let filteredServices = computed(() => {
+  if (queryLower.value) {
+    return serviceOptions.value.filter((item) => {
+      return item.name.toLowerCase().includes(queryLower.value)
+    })
+  }
+
+  return serviceOptions.value
 })
 
 /**

@@ -27,7 +27,7 @@
       }"
     >
       <template #step-list>
-        <div class="am-fs-sb__step-wrapper">
+        <div class="am-fs-sb__step-wrapper" tabindex="0">
           <template
             v-if="
               ready &&
@@ -184,6 +184,7 @@
             <a
               v-if="amSettings.company.phone && footerCustomizeOptions.phone"
               class="am-fs-sb__support-email"
+              :aria-label="`Company phone: ${amSettings.company.phone}`"
               :href="`tel:${amSettings.company.phone}`"
             >
               <template v-if="!sidebarCollapsed">
@@ -196,6 +197,7 @@
             <a
               v-if="amSettings.company.email && footerCustomizeOptions.email"
               class="am-fs-sb__support-email"
+              :aria-label="`Company email: ${amSettings.company.email}`"
               :href="`mailto:${amSettings.company.email}`"
             >
               <template v-if="!sidebarCollapsed">
@@ -283,6 +285,7 @@
           baseUrls.wpAmeliaPluginURL + '/v3/src/assets/img/am-empty-booking.svg'
         "
         style="margin-top: 10px"
+        :alt="amLabels.no_services_employees"
       />
       <div class="am-no-services-oops">{{ amLabels.oops }}</div>
       <div class="am-no-services-text">
@@ -310,6 +313,7 @@
           baseUrls.wpAmeliaPluginURL + '/v3/src/assets/img/am-empty-booking.svg'
         "
         style="margin-top: 10px"
+        :alt="amLabels.no_package_services"
       />
       <div>{{ amLabels.oops }}</div>
       <div>{{ amLabels.no_package_services }}</div>
@@ -382,13 +386,7 @@ import {
   useGoToCartStep,
 } from '../../../assets/js/public/cart'
 
-// * Emits
-const emits = defineEmits(['isRestored'])
-
 let formDialogVisibility = inject('formDialogVisibility', ref(true))
-
-// * Global flag for determination when component is fully loaded (used for Amelia popup)
-let isMounted = inject('isMounted')
 
 // * Plugin Licence
 let licence = inject('licence')
@@ -433,15 +431,13 @@ onMounted(() => {
     null,
     null
   )
-
-  isMounted.value = true
 })
 
 // * Root Settings
 const amSettings = inject('settings')
 
 // * Customize
-const amCustomize = amSettings.customizedData
+const amCustomize = (amSettings.customizedData && amSettings.customizedData.sbsNew)
   ? amSettings.customizedData.sbsNew
   : defaultCustomizeSettings.sbsNew
 if (amCustomize) {
@@ -650,8 +646,6 @@ watch(ready, (current) => {
       }
 
       isRestored.value = true
-      emits('isRestored', isRestored.value)
-
       stepIndex.value = index
     }
   }
@@ -675,7 +669,7 @@ store.dispatch(
       'taxes',
     ],
     licence: licence,
-    loadEntities: shortcodeData.value.hasApiCall,
+    loadEntities: shortcodeData.value.hasApiCall || shortcodeData.value.in_dialog,
     showHidden: false,
     isPanel: false,
   }
@@ -723,7 +717,7 @@ let cart = useCart(store)
 let amLabels = computed(() => {
   let computedLabels = reactive({ ...labels })
 
-  if (amSettings.customizedData) {
+  if (amSettings.customizedData && amSettings.customizedData.sbsNew) {
     Object.keys(amSettings.customizedData.sbsNew).forEach((stepKey) => {
       if (
         stepKey !== 'colors' &&
@@ -752,7 +746,7 @@ provide('amLabels', amLabels)
 
 let footerLabels = computed(() => {
   let customLabels = {}
-  if (amSettings.customizedData) {
+  if (amSettings.customizedData && amSettings.customizedData.sbsNew) {
     let customizedLabels = amSettings.customizedData.sbsNew[
       stepsArray.value[stepIndex.value].key
     ]
@@ -781,6 +775,7 @@ let primFooterBtnType = computed(() => {
   let btnType = 'filled'
   if (
     amSettings.customizedData &&
+    amSettings.customizedData.sbsNew &&
     amSettings.customizedData.sbsNew[stepsArray.value[stepIndex.value].key]
   ) {
     btnType =
@@ -799,6 +794,7 @@ let secFooterBtnType = computed(() => {
   let btnType = 'text'
   if (
     amSettings.customizedData &&
+    amSettings.customizedData.sbsNew &&
     amSettings.customizedData.sbsNew[stepsArray.value[stepIndex.value].key] &&
     amSettings.customizedData.sbsNew[stepsArray.value[stepIndex.value].key]
       .options.secondaryFooterButton
@@ -814,6 +810,7 @@ let secFooterBtnType = computed(() => {
 let addToCartBtnType = computed(() => {
   if (
     amSettings.customizedData &&
+    amSettings.customizedData.sbsNew &&
     amSettings.customizedData.sbsNew['cartStep']
   ) {
     return amSettings.customizedData.sbsNew['cartStep'].options['addToCart']
@@ -826,6 +823,7 @@ let addToCartBtnType = computed(() => {
 let backToCartBtnType = computed(() => {
   if (
     amSettings.customizedData &&
+    amSettings.customizedData.sbsNew &&
     amSettings.customizedData.sbsNew['cartStep']
   ) {
     return amSettings.customizedData.sbsNew['cartStep'].options['backToCart']
@@ -837,7 +835,7 @@ let backToCartBtnType = computed(() => {
 
 function dedicatedStepLabel(labelKey, stepKey) {
   let customLabel = ''
-  if (amSettings.customizedData) {
+  if (amSettings.customizedData && amSettings.customizedData.sbsNew) {
     let customizedLabels = amSettings.customizedData.sbsNew[stepKey]
       ? amSettings.customizedData.sbsNew[stepKey].translations
       : null
@@ -1568,7 +1566,7 @@ function backToCart() {
 
 // * Colors block
 let amColors = computed(() => {
-  return amSettings.customizedData
+  return (amSettings.customizedData && amSettings.customizedData.sbsNew)
     ? amSettings.customizedData.sbsNew.colors
     : defaultCustomizeSettings.sbsNew.colors
 })
@@ -1709,9 +1707,9 @@ onMounted(() => {
   // -h- height
   // -fs- font size
   // -rad- border radius
-  --am-h-input: 40px;
-  --am-fs-input: 15px;
-  --am-rad-input: 6px;
+  --am-h-inp: 40px;
+  --am-fs-inp: 15px;
+  --am-rad-inp: 6px;
   --am-fs-label: 15px;
   --am-fs-btn: 15px;
 
@@ -1778,7 +1776,7 @@ onMounted(() => {
               align-items: center;
               flex: 1;
               position: relative;
-              font-size: var(--am-fs-input);
+              font-size: var(--am-fs-inp);
               min-width: 0;
               color: var(--am-c-main-text);
             }

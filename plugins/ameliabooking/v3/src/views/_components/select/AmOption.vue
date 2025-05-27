@@ -88,11 +88,11 @@ const amSelectOption = ref(null)
       margin: var(--am-mar-select-option) !important;
       white-space: normal;
 
-      &:hover, &.hover {
+      &:hover, &.is-hovering {
         --am-c-select-option-bgr: var(--am-c-option-hover);
       }
 
-      &.selected {
+      &.is-selected {
         --am-c-select-option-text: var(--am-c-option-selected);
       }
 

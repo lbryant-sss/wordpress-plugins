@@ -65,11 +65,11 @@ function getDefaultEvent() {
     customTicketsRanges: [],
 
     closeAfterMinEnabled: false,
-    closeAfterMin: null,
-    closeAfterMinBookings: 'off',
+    closeAfterMin: 1,
+    closeAfterMinBookings: false,
 
     maxExtraPeopleEnabled: false,
-    maxExtraPeople: null,
+    maxExtraPeople: 0,
 
     color: '#1788FB',
     show: true,

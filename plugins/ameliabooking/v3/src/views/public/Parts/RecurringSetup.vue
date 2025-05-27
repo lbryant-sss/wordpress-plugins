@@ -6,7 +6,11 @@
     </template>
     <p>{{ amLabels.repeat_every }}:</p>
     <div class="am-fs__rs-every">
-      <AmInputNumber v-model="repeatInterval" :min="1" :max="100"></AmInputNumber>
+      <AmInputNumber
+        v-model="repeatInterval"
+        :min="1"
+        :max="100"
+      />
       <AmSelect
         v-model="repeatType"
         :disabled="props.service.recurringCycle !== 'all'"
@@ -52,8 +56,8 @@
         <AmRadioGroup
           v-model="occurrenceType"
         >
-          <AmRadio label="On">{{ amLabels.recurrence_on }}</AmRadio>
-          <AmRadio label="After">{{ amLabels.recurrence_after }}</AmRadio>
+          <AmRadio value="On">{{ amLabels.recurrence_on }}</AmRadio>
+          <AmRadio value="After">{{ amLabels.recurrence_after }}</AmRadio>
         </AmRadioGroup>
       </div>
       <div class="am-fs__rs-ends-options">
@@ -70,8 +74,7 @@
             :disabled="occurrenceType !== 'After'"
             :min="1"
             :max="100"
-          >
-          </AmInputNumber>
+          />
           <span>{{ ` ${amLabels.occurrences}` }}</span>
         </div>
       </div>
@@ -342,16 +345,6 @@ export default {
         line-height: 20px;
         /* $shade-500 */
         color: var(--am-c-rs-text-op60);
-      }
-
-      .am-input__default.is-icon-start i {
-        height: auto;
-        width: auto;
-
-        span {
-          font-size: 24px;
-          line-height: 1;
-        }
       }
 
       &-every {

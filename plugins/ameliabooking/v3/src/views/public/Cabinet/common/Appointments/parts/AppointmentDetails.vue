@@ -16,9 +16,10 @@
         clearable
         filterable
         :placeholder="`${amLabels.select_service_category}`"
+        :filter-method="filterCategory"
       >
         <AmOption
-          v-for="entity in categories"
+          v-for="entity in queryFilteredCategories"
           :key="entity.id"
           :value="entity.id"
           :label="entity.name"
@@ -40,9 +41,10 @@
         clearable
         filterable
         :placeholder="`${amLabels.select_service}`"
+        :filter-method="filterService"
       >
         <AmOption
-          v-for="entity in services"
+          v-for="entity in queryFilteredServices"
           :key="entity.id"
           :value="entity.id"
           :label="entity.name"
@@ -70,10 +72,11 @@
         clearable
         filterable
         :placeholder="`${amLabels.select_location}`"
+        :filter-method="filterLocation"
         @change="changedSlotCondition"
       >
         <AmOption
-          v-for="entity in locations"
+          v-for="entity in queryFilteredLocations"
           :key="entity.id"
           :value="entity.id"
           :label="entity.name"
@@ -131,7 +134,6 @@
         :format="momentDateFormat()"
         :placeholder="amLabels.select_date"
         :clearable="true"
-        :size="'default'"
         :lang="localLanguage"
         :disabled="!appointmentFormData.serviceId"
         :disabled-date="(date, monthOrYear) => {return props.isDisabledDate(date, null, true, monthOrYear)}"
@@ -155,7 +157,6 @@
         :placeholder="`${amLabels.select_time}`"
         :disabled="!appointmentFormData.startDate"
         prefix-icon="clock"
-        prefix-icon-color="var(--am-c-select-placeholder)"
         @change="selectTime"
       >
         <AmOption
@@ -196,8 +197,7 @@
       <AmInput
         v-model="appointmentFormData.internalNotes"
         :type="'textarea'"
-      >
-      </AmInput>
+      />
     </el-form-item>
     <!-- /Internal Notes -->
   </el-form>
@@ -395,6 +395,21 @@ let categories = ref(
   )
 )
 
+let queryCategory = ref('')
+function filterCategory (query) {
+  queryCategory.value = query.toLowerCase()
+}
+
+let queryFilteredCategories = computed(() => {
+  if (queryCategory.value) {
+    return categories.value.filter((category) => {
+      return category.name.toLowerCase().includes(queryCategory.value)
+    })
+  }
+
+  return categories.value
+})
+
 // * Services
 let filteredServices = computed(
   () => store.getters['entities/filteredServices'](
@@ -412,6 +427,20 @@ let services = ref(
     }
   )
 )
+
+let queryService = ref('')
+function filterService (query) {
+  queryService.value = query.toLowerCase()
+}
+let queryFilteredServices = computed(() => {
+  if (queryService.value) {
+    return services.value.filter((service) => {
+      return service.name.toLowerCase().includes(queryService.value)
+    })
+  }
+
+  return services.value
+})
 
 let detachedService = computed(() => {
   return store.getters['appointment/getId'] &&
@@ -438,6 +467,20 @@ let locations = ref(
     }
   )
 )
+
+let queryLocation = ref('')
+function filterLocation (query) {
+  queryLocation.value = query.toLowerCase()
+}
+let queryFilteredLocations = computed(() => {
+  if (queryLocation.value) {
+    return locations.value.filter((location) => {
+      return location.name.toLowerCase().includes(queryLocation.value)
+    })
+  }
+
+  return locations.value
+})
 
 let detachedLocation = computed(() => {
   return store.getters['appointment/getId'] &&
@@ -573,11 +616,6 @@ defineExpose({
           align-self: unset;
           line-height: 1;
           padding: 0;
-        }
-
-        .el-input__prefix {
-          left: 4px;
-          font-size: 25px;
         }
 
         .el-form-item__error {

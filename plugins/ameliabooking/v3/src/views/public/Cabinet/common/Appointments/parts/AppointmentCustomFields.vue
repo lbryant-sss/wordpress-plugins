@@ -169,6 +169,15 @@ function setFormConstruction(index, field) {
     }
   }
 
+  if (field.type === 'checkbox' || field.type === 'radio') {
+    cfFormConstruction.value[index][field.id].props.options = cfFormConstruction.value[index][field.id].props.options.map((option) => {
+      return {
+        ...option,
+        value: option.label,
+      }
+    })
+  }
+
   if (field.type === 'text-area') {
     cfFormConstruction.value[index][field.id].props = {
       ...cfFormConstruction.value[index][field.id].props,

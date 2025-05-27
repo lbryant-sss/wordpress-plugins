@@ -33,15 +33,23 @@
       <div class="am-fcil__filter">
         <div
           v-if="customizedOptions.searchInput.visibility"
+          role="search"
+          :aria-label="amLabels.filter_input"
           class="am-fcil__filter-item"
           :class="filterClassWidth.search"
         >
-          <AmInput v-model="searchFilter" :placeholder="amLabels.filter_input" :icon-start="iconSearch"></AmInput>
+          <AmInput
+            v-model="searchFilter"
+            :placeholder="amLabels.filter_input"
+            :prefix-icon="iconSearch"
+          />
         </div>
         <Transition name="slide-fade">
           <div
             v-if="shortcodeData.employee.length !== 1 && amEntities.employees.length > 1 && customizedOptions.filterEmployee.visibility && filterMobileMenu && !licence.isLite"
             class="am-fcil__filter-item"
+            role="search"
+            :aria-label="amLabels.filter_employee"
             :class="filterClassWidth.employee"
           >
             <AmSelect
@@ -49,10 +57,12 @@
               clearable
               filterable
               :placeholder="amLabels.filter_employee"
+              :aria-label="amLabels.filter_employee"
+              :filter-method="filterEmployee"
               :fit-input-width="true"
             >
               <AmOption
-                v-for="employee in amEntities.employees"
+                v-for="employee in filteredEmployees"
                 :key="employee.id"
                 :value="employee.id"
                 :label="`${employee.firstName} ${employee.lastName}`"
@@ -65,6 +75,8 @@
           <div
             v-if="shortcodeData.location.length !== 1 && amEntities.locations.length > 1 && customizedOptions.filterLocation.visibility && filterMobileMenu && !licence.isLite && !licence.isStarter"
             class="am-fcil__filter-item"
+            role="search"
+            :aria-label="amLabels.filter_location"
             :class="filterClassWidth.location"
           >
             <AmSelect
@@ -72,10 +84,12 @@
               clearable
               filterable
               :placeholder="amLabels.filter_location"
+              :aria-label="amLabels.filter_location"
               :fit-input-width="true"
+              :filter-method="filterLocation"
             >
               <AmOption
-                v-for="location in amEntities.locations"
+                v-for="location in filteredLocations"
                 :key="location.id"
                 :value="location.id"
                 :label="location.name"
@@ -109,6 +123,8 @@
         </Transition>
         <div
           v-if="!preselected.show && customizedOptions.filterButtons.visibility && categoryPackages.length !== 0 && categoryServices.length !== 0 && !useCartHasItems(store)"
+          role="search"
+          aria-label="Filter Buttons"
           class="am-fcil__filter-item"
           :class="filterClassWidth.buttons"
         >
@@ -156,7 +172,11 @@
       ></SideMenu>
     </template>
     <template #heading>
-      <div class="am-fcil__heading">
+      <div
+        role="heading"
+        aria-level="2"
+        class="am-fcil__heading"
+      >
         {{ headingStringRender }}
       </div>
     </template>
@@ -166,6 +186,7 @@
         <div
           v-for="item in categoryPackages"
           :key="item.id"
+          role="group"
           class="am-fcil__item"
           :class="{'am-mobile': containerWidth < 481}"
         >
@@ -678,6 +699,37 @@ let sideMenuVisibility = computed(() => {
 
 // * Entities
 let amEntities = inject('amEntities')
+
+// * Filtered employees
+let queryEmployeeLower = ref('')
+function filterEmployee (query) {
+  queryEmployeeLower.value = query.toLowerCase()
+}
+let filteredEmployees = computed(() => {
+  if (queryEmployeeLower.value) {
+    return amEntities.value.employees.filter(item => {
+      const fullName = `${item.firstName} ${item.lastName}`.toLowerCase()
+      return fullName.includes(queryEmployeeLower.value)
+    })
+  }
+
+  return amEntities.value.employees
+})
+
+// * Filtered Locations
+let queryLocationLower = ref('')
+function filterLocation (query) {
+  queryLocationLower.value = query.toLowerCase()
+}
+let filteredLocations = computed(() => {
+  if (queryLocationLower.value) {
+    return amEntities.value.locations.filter(item => {
+      return item.name.toLowerCase().includes(queryLocationLower.value)
+    })
+  }
+
+  return amEntities.value.locations
+})
 
 // * Cart button
 let cartBtnVisibility = computed(() => useCartStep(store) && useCartHasItems(store) > 0)

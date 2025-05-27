@@ -25,11 +25,22 @@
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
-                :disabled="$root.licence.isLite ? item.value === 'mailgun' || item.value === 'smtp' : false"
+                :disabled="$root.licence.isLite ? item.value === 'mailgun' || item.value === 'smtp' : ($root.licence.isStarter ? item.value === 'outlook' : false)"
             >
             </el-option>
           </el-select>
         </el-form-item>
+
+        <!-- Outlook Mailer Alert -->
+        <el-alert
+          v-if="settings.mailService === 'outlook' && !outlookEnabled"
+          type="warning"
+          show-icon
+          title=""
+          :description="$root.labels.outlook_email_warning"
+          :closable="false"
+        />
+        <!-- /Outlook Mailer Alert -->
 
         <!-- SMTP Host -->
         <el-form-item
@@ -587,6 +598,10 @@
     mixins: [licenceMixin, imageMixin, helperMixin],
 
     props: {
+      outlookEnabled: {
+        type: Boolean,
+        default: false
+      },
       notifications: {
         type: Object
       },
@@ -626,6 +641,10 @@
             {
               label: this.$root.labels.mailgun,
               value: 'mailgun'
+            },
+            {
+              label: this.$root.labels.outlook_mail_api,
+              value: 'outlook'
             }
           ],
           smtpSecureOptions: [

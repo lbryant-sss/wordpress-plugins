@@ -90,10 +90,10 @@
               <span>{{ `${labelsDisplay('coupon')}:` }}</span>
             </template>
             <AmInput
-                v-model="couponFormData.coupon"
-                size="small"
-                :icon-start="IconCoupon"
-            ></AmInput>
+              v-model="couponFormData.coupon"
+              size="small"
+              :prefix-icon="IconCoupon"
+            />
           </el-form-item>
 
           <AmButton size="small">
@@ -136,7 +136,6 @@ import IconCoupon from '../../../../_components/icons/IconCoupon.vue'
 import { computed, inject, ref } from 'vue'
 import {useColorTransparency} from "../../../../../assets/js/common/colorManipulation";
 import { useFormattedPrice } from '../../../../../assets/js/common/formatting'
-import {defaultCustomizeSettings} from "../../../../../assets/js/common/defaultCustomize";
 
 // * Plugin Licence
 let licence = inject('licence')
@@ -418,18 +417,6 @@ export default {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-        }
-      }
-
-      .am-icon-coupon {
-        /* $shade-900 */
-        color: var(--am-c-inp-text);
-        font-size: 20px;
-      }
-
-      .am-input {
-        input {
-          padding-left : 32px;
         }
       }
 

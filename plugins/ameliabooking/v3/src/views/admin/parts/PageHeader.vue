@@ -218,11 +218,15 @@ $fontFamily: 'Roboto', sans-serif;
 
       .el-dialog {
         &__header {
-          padding-right: 36px;
+          padding: 16px 36px 16px 16px;
         }
 
         &__body {
           display: none;
+        }
+
+        &__footer {
+          padding: 16px;
         }
       }
 
@@ -282,6 +286,10 @@ $fontFamily: 'Roboto', sans-serif;
         line-height: 1.333333;
         color: $am-black;
         margin-right: 8px;
+      }
+
+      .am-select-wrapper {
+        min-width: 226px;
       }
     }
 

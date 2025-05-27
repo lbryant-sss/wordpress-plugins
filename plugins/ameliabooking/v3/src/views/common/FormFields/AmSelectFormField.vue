@@ -15,6 +15,8 @@
       :prefix-icon="props.prefixIcon"
       :placeholder="props.placeholder"
       :disabled="props.disabled"
+      :loading="props.loading"
+      :loading-text="props.loadingText"
     >
       <AmOption
         v-for="(option, i) in props.options"
@@ -41,7 +43,7 @@ import {
 // * Form Item Props
 let props = defineProps({
   modelValue: {
-    type: [String, Array, Object, Number],
+    type: [String, Array, Object, Number, null],
     required: true
   },
   itemName: {
@@ -73,7 +75,15 @@ let props = defineProps({
   disabled: {
     type: Boolean,
     default: false
-  }
+  },
+  loading: {
+    type: Boolean,
+    default: false
+  },
+  loadingText: {
+    type: String,
+    default: 'Loading...'
+  },
 })
 
 // * Define Emits

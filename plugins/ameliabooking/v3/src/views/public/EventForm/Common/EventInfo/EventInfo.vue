@@ -104,7 +104,7 @@
               :capacity="!isWaitingList ? selectedEvent.maxCustomCapacity : selectedEvent.maxCustomCapacity ? waitingListOptions.maxCapacity : null"
               :extra-people="!isWaitingList ? selectedEvent.maxExtraPeople : waitingListOptions.maxExtraPeopleEnabled ? waitingListOptions.maxExtraPeople : null"
               :customized-labels="amLabels"
-              :read-only="true"
+              :readonly="true"
             />
           </template>
         </el-tab-pane>

@@ -48,3 +48,11 @@ body.userfeedback_page #wpcontent{
 .userfeedback-recommended-plugin a {
     margin-right: 5px;
 }
+
+.userfeedback-menu-new-indicator {
+    position: absolute;
+    padding-left: 2px;
+    color: #f18200;
+    vertical-align: super;
+    font-size: 9px;
+}

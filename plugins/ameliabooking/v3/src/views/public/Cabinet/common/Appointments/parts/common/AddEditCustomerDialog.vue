@@ -31,23 +31,57 @@
     </AmAlert>
 
     <!-- Content -->
-    <el-form
-      v-if="!loading"
-      ref="customerFormRef"
-      :model="customerFormData"
-      :rules="customerFormRules"
-      label-position="top"
-      class="am-cap-aec__form"
-    >
-      <template v-for="(field, key) in customerFormConstruction" :key="key">
-        <component
-          :is="field.template"
-          v-bind="field.props"
-          v-model="customerFormData[key]"
-          v-model:countryPhoneIso="field.countryPhoneIso"
-        />
-      </template>
-    </el-form>
+    <el-tabs v-if="!loading" v-model="activeTab">
+      <el-tab-pane
+        class="am-cap__tabs-item"
+        :label="amLabels.details"
+        name="details"
+      >
+        <el-form
+          ref="customerFormRef"
+          :model="customerFormData"
+          :rules="customerFormRules"
+          label-position="top"
+          class="am-cap-aec__form"
+        >
+          <template v-for="(field, key) in customerFormConstruction" :key="key">
+            <component
+              :is="field.template"
+              v-bind="field.props"
+              v-model="customerFormData[key]"
+              v-model:countryPhoneIso="field.countryPhoneIso"
+            />
+          </template>
+        </el-form>
+
+      </el-tab-pane>
+      <el-tab-pane
+        v-if="Object.keys(customFields).length"
+        class="am-cap__tabs-item"
+        :label="amLabels.custom_fields"
+        name="customFields"
+      >
+        <template v-if="!loading">
+          <el-form
+            ref="customFieldsFormRef"
+            :model="customFieldsForm"
+            label-position="top"
+            class="am-cap-aec__form"
+            :class="responsiveClass"
+          >
+            <template v-for="id in Object.keys(customFields)" :key="id">
+              <component
+                :is="cfFormConstruction[id]?.template"
+                v-if="id in customFieldsForm"
+                v-model="customFieldsForm[id]"
+                v-bind="cfFormConstruction[id]?.props"
+              />
+            </template>
+          </el-form>
+        </template>
+
+      </el-tab-pane>
+    </el-tabs>
     <Skeleton v-else></Skeleton>
     <!-- /Content -->
 
@@ -76,7 +110,7 @@ import { useStore } from 'vuex'
 import moment from 'moment'
 
 // * Import from Vue
-import { ref, inject, computed, markRaw } from 'vue'
+import {ref, inject, computed, markRaw, reactive, watchEffect} from 'vue'
 
 // * Import from Libraries
 import httpClient from "../../../../../../../plugins/axios";
@@ -122,6 +156,8 @@ let amLabels = inject('amLabels')
 
 // * Store
 const store = useStore()
+
+let activeTab = ref('details')
 
 // * Alert block
 let alertContainer = ref(null)
@@ -251,7 +287,7 @@ let customerFormConstruction = ref({
       label: amLabels.value.first_name_colon,
       placeholder: amLabels.value.enter_first_name,
       class: computed(() => `am-cap-aec__form-item ${props.responsiveClass}`),
-      iconStart: markRaw({
+      prefixIcon: markRaw({
         components: { IconComponent },
         template: `<IconComponent icon="user"/>`,
       }),
@@ -264,7 +300,7 @@ let customerFormConstruction = ref({
       label: amLabels.value.last_name_colon,
       placeholder: amLabels.value.enter_last_name,
       class: computed(() => `am-cap-aec__form-item ${props.responsiveClass}`),
-      iconStart: markRaw({
+      prefixIcon: markRaw({
         components: { IconComponent },
         template: `<IconComponent icon="user"/>`,
       }),
@@ -277,7 +313,7 @@ let customerFormConstruction = ref({
       label: amLabels.value.email_colon,
       placeholder: amLabels.value.enter_email,
       class: computed(() => `am-cap-aec__form-item ${props.responsiveClass}`),
-      iconStart: markRaw({
+      prefixIcon: markRaw({
         components: { IconComponent },
         template: `<IconComponent icon="email"/>`,
       }),
@@ -299,7 +335,15 @@ let customerFormConstruction = ref({
       label: amLabels.value.phone_colon,
       placeholder: amLabels.value.enter_phone,
       defaultCode: computed(
-        () => store.getters['customerInfo/getCustomerCountryPhoneIso'] || ''
+        () => {
+          if (store.getters['customerInfo/getCustomerCountryPhoneIso']) {
+            return store.getters['customerInfo/getCustomerCountryPhoneIso']
+          } else if (amSettings.general.phoneDefaultCountryCode && amSettings.general.phoneDefaultCountryCode !== 'auto') {
+            return amSettings.general.phoneDefaultCountryCode
+          } else {
+            return ''
+          }
+        }
       ),
       phoneError: computed(() => phoneError.value),
       whatsAppLabel: amLabels.value.whatsapp_opt_in_text,
@@ -356,7 +400,7 @@ let customerFormConstruction = ref({
       label: amLabels.value.date_of_birth,
       placeholder: amLabels.value.enter_date_of_birth,
       clearable: true,
-      readOnly: false,
+      readonly: false,
       class: computed(() => `am-cap-aec__form-item ${props.responsiveClass}`),
     },
   },
@@ -381,12 +425,28 @@ let loading = computed(() => store.getters['customerInfo/getLoading'])
 function saveCustomer() {
   customerFormRef.value.validate((valid) => {
     if (!valid) {
+      activeTab.value = 'details'
       return
     }
 
     store.commit('customerInfo/setLoading', true)
 
     let customer = useBackendCustomer(store)
+
+    const customFieldData = {}
+
+    // Build full custom field data structure
+    for (const id in customFields) {
+      const field = customFields[id]
+      const value = customFieldsForm[id]
+      customFieldData[id] = {
+        label: field.label,
+        type: field.type,
+        value: typeof value === 'string' ? value.trim() : value,
+      }
+    }
+
+    customer.customFields = JSON.stringify(customFieldData)
 
     httpClient.post(
       '/users/customers' + (customer.id ? '/' + customer.id : ''),
@@ -414,6 +474,81 @@ function saveCustomer() {
   })
 }
 
+/**
+ * * Customer custom fields form
+ */
+
+watchEffect(() => {
+  if (customerId.value !== null) {
+    setInitCustomerCustomFields()
+  }
+})
+
+// Refs and reactive objects
+const customFieldsFormRef = ref(null)
+const customFieldsForm = reactive({})
+const cfFormConstruction = reactive({})
+const customFields = reactive({})
+
+function setCustomerCustomFieldsFormConstruction(field, id) {
+  cfFormConstruction[id] = {
+    template: formFieldsTemplates[field.type],
+    props: {
+      id,
+      itemName: id.toString(),
+      label: field.label,
+      options: field.options,
+      class: `am-cap-aec-cf__item am-cf-width-${field.width}`,
+    },
+  }
+
+  if (field.type === 'text-area') {
+    cfFormConstruction[id].props.itemType = 'textarea'
+  }
+
+  if (field.type === 'datepicker') {
+    cfFormConstruction[id].props.weekStartsFromDay = amSettings.wordpress.startOfWeek
+  }
+
+  if (field.type === 'file') {
+    let profileId =  store.getters['auth/getProfile'] ? store.getters['auth/getProfile'].id : null
+    cfFormConstruction[id].props = {
+      ...cfFormConstruction[id].props,
+      ...{
+        btnLabel: amLabels.value.upload_file_here,
+        isUpload: true,
+        bookingId: profileId,
+        source: 'cabinet-customer'
+      },
+    }
+  }
+}
+
+function setInitCustomerCustomFields() {
+  const allFields = store.getters['entities/getCustomFields']
+
+  const savedCustomFields = computed(() => {
+    const customFields = store.getters['customerInfo/getCustomerCustomFields']
+    return customFields ? JSON.parse(customFields) : null;
+  })
+
+  allFields
+    .filter(field => field.saveType === 'customer' && field.type !== 'content')
+    .forEach(field => {
+      const { id } = field
+      const savedValue = (customerId.value && savedCustomFields.value) ? savedCustomFields.value[id]?.value : null
+
+      customFields[id] = {
+        ...field,
+        value: savedValue ?? (field.type === 'checkbox' || field.type === 'file' ? [] : ''),
+      }
+
+      customFieldsForm[id] = customFields[id].value ?? ''
+
+      setCustomerCustomFieldsFormConstruction(field, id)
+    })
+}
+
 // * Colors
 let amColors = inject('amColors')
 // * CSS Variables
@@ -434,6 +569,20 @@ let cssVars = computed(() => {
     padding: 0;
     display: flex;
     flex-direction: column;
+
+    // Tabs
+    .el-tabs {
+      display: flex;
+      flex-direction: column-reverse;
+      flex-grow: 1;
+      min-height: 0;
+      overflow: auto;
+
+      &__header {
+        padding: 0 24px;
+        margin-bottom: 24px;
+      }
+    }
 
     .el-skeleton {
       padding: 24px;
@@ -518,6 +667,19 @@ let cssVars = computed(() => {
         &::-webkit-scrollbar-track {
           border-radius: 6px;
           background: var(--am-c-scroll-op10);
+        }
+      }
+
+      &-cf__item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-bottom: 0;
+
+        .el-form-item__content {
+          display: flex;
+          align-items: center;
+          gap: 8px;
         }
       }
     }

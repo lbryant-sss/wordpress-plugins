@@ -2,24 +2,24 @@
 # This file is distributed under the same license as the WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce 9.9.0-beta.1\n"
+"Project-Id-Version: WooCommerce 9.9.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-12T16:27:50+00:00\n"
+"POT-Creation-Date: 2025-05-23T16:58:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce\n"
 
 #. Plugin Name of the plugin
 #: woocommerce.php
-#: includes/admin/class-wc-admin-menus.php:99
+#: includes/admin/class-wc-admin-menus.php:97
 #: includes/admin/class-wc-admin-setup-wizard.php:353
 #: includes/admin/class-wc-admin-setup-wizard.php:446
-#: includes/admin/class-wc-admin.php:321
+#: includes/admin/class-wc-admin.php:337
 #: includes/admin/helper/views/html-oauth-start.php:21
 #: includes/class-wc-order.php:2022
 #: includes/class-wc-order.php:2023
@@ -9321,15 +9321,15 @@ msgid_plural "Orders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/abstracts/abstract-wc-payment-gateway.php:218
+#: includes/abstracts/abstract-wc-payment-gateway.php:217
 msgid "Return to payments"
 msgstr ""
 
-#: includes/abstracts/abstract-wc-payment-gateway.php:622
+#: includes/abstracts/abstract-wc-payment-gateway.php:621
 msgid "Use a new payment method"
 msgstr ""
 
-#: includes/abstracts/abstract-wc-payment-gateway.php:654
+#: includes/abstracts/abstract-wc-payment-gateway.php:653
 msgid "Save to account"
 msgstr ""
 
@@ -9411,15 +9411,15 @@ msgid "Available on backorder"
 msgstr ""
 
 #: includes/abstracts/abstract-wc-settings-api.php:832
-#: includes/admin/class-wc-admin-menus.php:451
-#: includes/admin/class-wc-admin-settings.php:769
+#: includes/admin/class-wc-admin-menus.php:449
+#: includes/admin/class-wc-admin-settings.php:765
 #: includes/admin/meta-boxes/views/html-product-attribute-inner.php:72
 #: assets/client/admin/product-editor/index.js:2
 msgid "Select all"
 msgstr ""
 
 #: includes/abstracts/abstract-wc-settings-api.php:832
-#: includes/admin/class-wc-admin-settings.php:769
+#: includes/admin/class-wc-admin-settings.php:765
 #: includes/admin/meta-boxes/views/html-product-attribute-inner.php:73
 msgid "Select none"
 msgstr ""
@@ -9486,7 +9486,6 @@ msgstr ""
 #: includes/admin/importers/class-wc-product-csv-importer-controller.php:799
 #: includes/admin/list-tables/class-wc-admin-list-table-coupons.php:85
 #: includes/admin/meta-boxes/views/html-variation-admin.php:445
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:141
 #: includes/admin/settings/class-wc-settings-shipping.php:455
 #: includes/admin/settings/views/html-admin-page-shipping-zone-methods.php:81
 #: includes/admin/settings/views/html-keys-edit.php:28
@@ -9592,6 +9591,7 @@ msgstr ""
 #: includes/admin/class-wc-admin-api-keys-table-list.php:190
 #: includes/admin/settings/views/html-keys-edit.php:113
 #: src/Internal/Admin/Orders/MetaBoxes/OrderAttribution.php:50
+#: src/Internal/Admin/Settings/PaymentProviders/PaymentGateway.php:102
 #: src/Internal/Traits/OrderAttributionMeta.php:319
 msgid "Unknown"
 msgstr ""
@@ -10495,7 +10495,7 @@ msgid "WooCommerce Endpoint"
 msgstr ""
 
 #: includes/admin/class-wc-admin-customize.php:77
-#: includes/admin/class-wc-admin-menus.php:420
+#: includes/admin/class-wc-admin-menus.php:418
 #: includes/admin/settings/class-wc-settings-advanced.php:307
 #: includes/class-wc-query.php:159
 msgid "Lost password"
@@ -10590,7 +10590,7 @@ msgid "Loading network orders"
 msgstr ""
 
 #: includes/admin/class-wc-admin-dashboard.php:497
-#: includes/admin/class-wc-admin-menus.php:196
+#: includes/admin/class-wc-admin-menus.php:194
 #: includes/admin/class-wc-admin-webhooks-table-list.php:51
 #: includes/admin/list-tables/class-wc-admin-list-table-orders.php:125
 #: includes/admin/meta-boxes/views/html-product-data-variations.php:83
@@ -10909,7 +10909,7 @@ msgstr ""
 msgid "Sale"
 msgstr ""
 
-#: includes/admin/class-wc-admin-menus.php:105
+#: includes/admin/class-wc-admin-menus.php:103
 #: includes/admin/importers/class-wc-product-csv-importer-controller.php:856
 #: includes/admin/meta-boxes/class-wc-meta-box-product-data.php:103
 #: includes/admin/views/html-admin-page-product-export.php:89
@@ -10920,20 +10920,20 @@ msgstr ""
 msgid "Attributes"
 msgstr ""
 
-#: includes/admin/class-wc-admin-menus.php:113
+#: includes/admin/class-wc-admin-menus.php:111
 #: includes/react-admin/connect-existing-pages.php:31
 msgid "Reports"
 msgstr ""
 
-#: includes/admin/class-wc-admin-menus.php:115
+#: includes/admin/class-wc-admin-menus.php:113
 msgid "Sales reports"
 msgstr ""
 
-#: includes/admin/class-wc-admin-menus.php:125
+#: includes/admin/class-wc-admin-menus.php:123
 msgid "WooCommerce settings"
 msgstr ""
 
-#: includes/admin/class-wc-admin-menus.php:126
+#: includes/admin/class-wc-admin-menus.php:124
 #: includes/admin/views/html-admin-page-status-report.php:698
 #: includes/class-wc-install.php:2329
 #: includes/react-admin/connect-existing-pages.php:35
@@ -10968,36 +10968,36 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: includes/admin/class-wc-admin-menus.php:196
+#: includes/admin/class-wc-admin-menus.php:194
 msgid "WooCommerce status"
 msgstr ""
 
 #. translators: %s: extensions count
-#: includes/admin/class-wc-admin-menus.php:216
+#: includes/admin/class-wc-admin-menus.php:214
 #, php-format
 msgid "Extensions %s"
 msgstr ""
 
-#: includes/admin/class-wc-admin-menus.php:217
-#: includes/admin/class-wc-admin-menus.php:227
+#: includes/admin/class-wc-admin-menus.php:215
+#: includes/admin/class-wc-admin-menus.php:225
 msgid "WooCommerce extensions"
 msgstr ""
 
-#: includes/admin/class-wc-admin-menus.php:269
+#: includes/admin/class-wc-admin-menus.php:267
 #: includes/class-wc-post-types.php:476
 msgctxt "Admin menu name"
 msgid "Orders"
 msgstr ""
 
-#: includes/admin/class-wc-admin-menus.php:404
+#: includes/admin/class-wc-admin-menus.php:402
 msgid "WooCommerce endpoints"
 msgstr ""
 
-#: includes/admin/class-wc-admin-menus.php:455
+#: includes/admin/class-wc-admin-menus.php:453
 msgid "Add to menu"
 msgstr ""
 
-#: includes/admin/class-wc-admin-menus.php:489
+#: includes/admin/class-wc-admin-menus.php:487
 msgid "Visit Store"
 msgstr ""
 
@@ -11055,13 +11055,13 @@ msgstr ""
 
 #: includes/admin/class-wc-admin-notices.php:266
 #: includes/admin/class-wc-admin-status.php:310
-#: includes/emails/class-wc-email.php:1243
-#: src/Internal/Features/FeaturesController.php:1621
+#: includes/emails/class-wc-email.php:1241
+#: src/Internal/Features/FeaturesController.php:1615
 msgid "Action failed. Please refresh the page and retry."
 msgstr ""
 
 #: includes/admin/class-wc-admin-notices.php:282
-#: includes/emails/class-wc-email.php:1247
+#: includes/emails/class-wc-email.php:1245
 msgid "You don&#8217;t have permission to do this."
 msgstr ""
 
@@ -11620,8 +11620,8 @@ msgstr ""
 
 #: includes/admin/class-wc-admin-profile.php:74
 #: includes/admin/class-wc-admin-profile.php:134
-#: includes/admin/class-wc-admin-settings.php:729
-#: includes/admin/class-wc-admin-settings.php:760
+#: includes/admin/class-wc-admin-settings.php:725
+#: includes/admin/class-wc-admin-settings.php:756
 #: includes/admin/class-wc-admin-setup-wizard.php:505
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:86
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:158
@@ -11828,75 +11828,75 @@ msgstr ""
 msgid "Taxes by date"
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:105
+#: includes/admin/class-wc-admin-settings.php:101
 msgid "Your settings have been saved."
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:167
+#: includes/admin/class-wc-admin-settings.php:163
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:168
+#: includes/admin/class-wc-admin-settings.php:164
 msgid "Item moved up"
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:169
+#: includes/admin/class-wc-admin-settings.php:165
 msgid "Item moved down"
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:170
+#: includes/admin/class-wc-admin-settings.php:166
 msgid "Selecting no country / region to sell to prevents from completing the checkout. Continue anyway?"
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:622
+#: includes/admin/class-wc-admin-settings.php:618
 msgid "The settings of this image size have been disabled because its values are being overwritten by a filter."
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:634
+#: includes/admin/class-wc-admin-settings.php:630
 msgid "Hard crop?"
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:665
+#: includes/admin/class-wc-admin-settings.php:661
 msgid "Select a page&hellip;"
 msgstr ""
 
 #. translators: 1: page name 2: page ID
-#: includes/admin/class-wc-admin-settings.php:679
+#: includes/admin/class-wc-admin-settings.php:675
 #: includes/class-wc-ajax.php:2064
 #: assets/client/admin/settings-editor/index.js:2
 #, php-format,js-format
 msgid "%1$s (ID: %2$s)"
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:696
+#: includes/admin/class-wc-admin-settings.php:692
 msgid "Search for a page&hellip;"
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:729
+#: includes/admin/class-wc-admin-settings.php:725
 #: includes/admin/class-wc-admin-setup-wizard.php:505
 msgid "Choose a country / region&hellip;"
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:759
+#: includes/admin/class-wc-admin-settings.php:755
 msgid "Choose countries / regions&hellip;"
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:778
+#: includes/admin/class-wc-admin-settings.php:774
 #: includes/wc-formatting-functions.php:1546
 msgid "Day(s)"
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:779
+#: includes/admin/class-wc-admin-settings.php:775
 #: includes/wc-formatting-functions.php:1547
 msgid "Week(s)"
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:780
+#: includes/admin/class-wc-admin-settings.php:776
 #: includes/wc-formatting-functions.php:1548
 msgid "Month(s)"
 msgstr ""
 
-#: includes/admin/class-wc-admin-settings.php:781
+#: includes/admin/class-wc-admin-settings.php:777
 #: includes/wc-formatting-functions.php:1549
 msgid "Year(s)"
 msgstr ""
@@ -11946,7 +11946,6 @@ msgstr ""
 
 #: includes/admin/class-wc-admin-setup-wizard.php:246
 #: assets/client/admin/chunks/4317.js:1
-#: assets/client/admin/chunks/payment-recommendations.js:1
 #: assets/client/admin/chunks/settings-payments-main.js:1
 #: assets/client/admin/chunks/shipping-recommendations.js:1
 #: assets/client/admin/onboarding/index.js:2
@@ -12109,7 +12108,7 @@ msgstr ""
 #: includes/admin/class-wc-admin-setup-wizard.php:786
 #: includes/admin/class-wc-admin-setup-wizard.php:826
 #: src/Admin/API/Plugins.php:452
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:406
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:390
 #: assets/client/admin/chunks/homescreen.js:1
 #: assets/client/admin/data/index.js:2
 msgid "Jetpack"
@@ -12462,7 +12461,7 @@ msgid "WooCommerce Admin icon"
 msgstr ""
 
 #: includes/admin/class-wc-admin-setup-wizard.php:1931
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:242
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:226
 msgid "Mailchimp"
 msgstr ""
 
@@ -12495,8 +12494,8 @@ msgid "Facebook icon"
 msgstr ""
 
 #: includes/admin/class-wc-admin-setup-wizard.php:1946
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:170
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:178
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:154
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:162
 #: assets/client/admin/chunks/homescreen.js:1
 #: assets/client/admin/data/index.js:2
 msgid "Facebook for WooCommerce"
@@ -12991,34 +12990,34 @@ msgstr[1] ""
 msgid "<a href='%s'>More information</a>"
 msgstr ""
 
-#: includes/admin/class-wc-admin.php:220
+#: includes/admin/class-wc-admin.php:236
 #: src/Internal/Admin/EmailPreview/EmailPreviewRestController.php:246
 msgid "Invalid email type."
 msgstr ""
 
-#: includes/admin/class-wc-admin.php:236
+#: includes/admin/class-wc-admin.php:252
 msgid "There was an error rendering the email preview. This doesn't affect actual email delivery. Please contact the extension author for assistance."
 msgstr ""
 
-#: includes/admin/class-wc-admin.php:283
+#: includes/admin/class-wc-admin.php:299
 msgid "There was an error rendering the email preview."
 msgstr ""
 
 #. translators: 1: WooCommerce 2:: five stars
-#: includes/admin/class-wc-admin.php:320
+#: includes/admin/class-wc-admin.php:336
 #, php-format
 msgid "If you like %1$s please leave us a %2$s rating. A huge thanks in advance!"
 msgstr ""
 
-#: includes/admin/class-wc-admin.php:322
+#: includes/admin/class-wc-admin.php:338
 msgid "five star"
 msgstr ""
 
-#: includes/admin/class-wc-admin.php:322
+#: includes/admin/class-wc-admin.php:338
 msgid "Thanks :)"
 msgstr ""
 
-#: includes/admin/class-wc-admin.php:331
+#: includes/admin/class-wc-admin.php:347
 msgid "Thank you for selling with WooCommerce."
 msgstr ""
 
@@ -13225,7 +13224,7 @@ msgstr ""
 #: includes/widgets/class-wc-widget-brand-thumbnails.php:210
 #: src/Internal/Admin/Orders/ListTable.php:652
 #: src/Internal/Admin/Orders/ListTable.php:1798
-#: src/Internal/Features/FeaturesController.php:1576
+#: src/Internal/Features/FeaturesController.php:1570
 #: assets/client/admin/chunks/2304.js:1
 #: assets/client/admin/components/index.js:2
 #: assets/client/admin/email-editor/index.js:1
@@ -13354,8 +13353,8 @@ msgstr ""
 
 #: includes/admin/helper/class-wc-helper.php:1107
 #: includes/admin/helper/class-wc-helper.php:1231
-#: src/Internal/Admin/Settings/Utils.php:365
-#: src/Internal/Admin/Settings/Utils.php:405
+#: src/Internal/Admin/Settings/Utils.php:380
+#: src/Internal/Admin/Settings/Utils.php:420
 msgid "Unknown error"
 msgstr ""
 
@@ -14605,7 +14604,7 @@ msgstr ""
 #: includes/emails/class-wc-email-customer-refunded-order.php:335
 #: includes/emails/class-wc-email-failed-order.php:215
 #: includes/emails/class-wc-email-new-order.php:243
-#: includes/emails/class-wc-email.php:1016
+#: includes/emails/class-wc-email.php:1014
 #: includes/shipping/flat-rate/includes/settings-flat-rate.php:65
 #: includes/shipping/flat-rate/includes/settings-flat-rate.php:77
 #: includes/shipping/legacy-flat-rate/includes/settings-flat-rate.php:92
@@ -14670,10 +14669,8 @@ msgstr ""
 msgid "Toggle featured"
 msgstr ""
 
-#. Translators: %s Payment gateway name.
 #: includes/admin/list-tables/class-wc-admin-list-table-products.php:305
 #: includes/admin/settings/class-wc-settings-emails.php:494
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:230
 #: includes/admin/settings/class-wc-settings-shipping.php:340
 #: includes/admin/views/html-bulk-edit-product.php:276
 #: includes/admin/views/html-bulk-edit-product.php:310
@@ -14687,9 +14684,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#. Translators: %s Payment gateway name.
 #: includes/admin/list-tables/class-wc-admin-list-table-products.php:307
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:233
 #: includes/admin/settings/class-wc-settings-shipping.php:341
 #: includes/admin/views/html-bulk-edit-product.php:277
 #: includes/admin/views/html-bulk-edit-product.php:311
@@ -16323,7 +16318,7 @@ msgstr ""
 #: includes/admin/settings/class-wc-settings-emails.php:827
 #: includes/admin/settings/views/html-admin-page-shipping-zone-methods.php:104
 #: includes/admin/settings/views/html-keys-edit.php:131
-#: includes/admin/views/html-admin-settings.php:84
+#: includes/admin/views/html-admin-settings.php:83
 #: src/Internal/Admin/Logging/Settings.php:436
 #: templates/myaccount/form-edit-account.php:92
 #: assets/client/admin/chunks/settings-payments-bacs.js:1
@@ -16384,7 +16379,6 @@ msgstr ""
 
 #: includes/admin/meta-boxes/views/html-variation-admin.php:113
 #: includes/admin/settings/class-wc-settings-emails.php:494
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:140
 #: includes/admin/settings/views/html-admin-page-shipping-zone-methods.php:80
 #: includes/admin/views/html-admin-page-status-report.php:806
 #: src/Internal/ProductDownloads/ApprovedDirectories/Admin/Table.php:202
@@ -17519,7 +17513,7 @@ msgid "WooCommerce.com"
 msgstr ""
 
 #: includes/admin/settings/class-wc-settings-advanced.php:57
-#: src/Internal/Features/FeaturesController.php:405
+#: src/Internal/Features/FeaturesController.php:407
 msgid "Blueprint (beta)"
 msgstr ""
 
@@ -17685,10 +17679,8 @@ msgid "Endpoint for the \"My account &rarr; Addresses\" page."
 msgstr ""
 
 #: includes/admin/settings/class-wc-settings-advanced.php:298
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:49
 #: includes/class-wc-query.php:150
 #: includes/wc-account-functions.php:110
-#: assets/client/admin/chunks/settings-payments-offline.js:1
 #: assets/client/admin/wp-admin-scripts/settings-embed.js:2
 msgid "Payment methods"
 msgstr ""
@@ -17887,7 +17879,7 @@ msgstr ""
 #: includes/emails/class-wc-email-customer-refunded-order.php:291
 #: includes/emails/class-wc-email-failed-order.php:178
 #: includes/emails/class-wc-email-new-order.php:206
-#: includes/emails/class-wc-email.php:988
+#: includes/emails/class-wc-email.php:986
 #, php-format
 msgid "Available placeholders: %s"
 msgstr ""
@@ -18016,10 +18008,7 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
-#. Translators: %s Payment gateway name.
 #: includes/admin/settings/class-wc-settings-emails.php:508
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:216
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:220
 #: assets/client/admin/chunks/4317.js:1
 #: assets/client/admin/chunks/multichannel-marketing.js:1
 #: assets/client/admin/chunks/settings-payments-main.js:1
@@ -18287,82 +18276,9 @@ msgstr ""
 msgid "Integration"
 msgstr ""
 
-#: includes/admin/settings/class-wc-settings-payment-gateways-react.php:77
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:28
+#: includes/admin/settings/class-wc-settings-payment-gateways.php:76
 msgctxt "Settings tab label"
 msgid "Payments"
-msgstr ""
-
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:139
-#: includes/wc-account-functions.php:265
-msgid "Method"
-msgstr ""
-
-#. Translators: %s Payment gateway name.
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:181
-#, php-format
-msgid "Move the \"%s\" payment method up"
-msgstr ""
-
-#. Translators: %s Payment gateway name.
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:181
-#: assets/client/admin/chunks/customizable-dashboard.js:1
-msgid "Move up"
-msgstr ""
-
-#. Translators: %s Payment gateway name.
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:182
-#, php-format
-msgid "Move the \"%s\" payment method down"
-msgstr ""
-
-#. Translators: %s Payment gateway name.
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:182
-#: assets/client/admin/chunks/customizable-dashboard.js:1
-msgid "Move down"
-msgstr ""
-
-#. Translators: %s Payment gateway name.
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:212
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:223
-#, php-format
-msgid "Set up the \"%s\" payment method"
-msgstr ""
-
-#. Translators: %s Payment gateway name.
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:212
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:223
-#: src/Admin/Features/OnboardingTasks/Tasks/WooCommercePayments.php:102
-#: assets/client/admin/app/index.js:2
-#: assets/client/admin/chunks/4317.js:1
-#: assets/client/admin/chunks/multichannel-marketing.js:1
-#: assets/client/admin/embed/index.js:2
-msgid "Finish setup"
-msgstr ""
-
-#. Translators: %s Payment gateway name.
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:216
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:220
-#, php-format
-msgid "Manage the \"%s\" payment method"
-msgstr ""
-
-#. Translators: %s Payment gateway name.
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:230
-#, php-format
-msgid "The \"%s\" payment method is currently enabled"
-msgstr ""
-
-#. Translators: %s Payment gateway name.
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:233
-#, php-format
-msgid "The \"%s\" payment method is currently disabled"
-msgstr ""
-
-#. translators: %s: URL to WooCommerce marketplace
-#: includes/admin/settings/class-wc-settings-payment-gateways.php:272
-#, php-format
-msgid "Visit the <a href=\"%s\" id=\"settings-other-payment-methods\" style=\"text-decoration: underline;\">Official WooCommerce Marketplace</a> to find additional payment providers."
 msgstr ""
 
 #: includes/admin/settings/class-wc-settings-products.php:67
@@ -23756,8 +23672,7 @@ msgstr ""
 
 #: includes/class-wc-privacy.php:124
 #: src/Admin/Features/Blueprint/Exporters/ExportWCPaymentGateways.php:76
-#: src/Internal/Admin/Settings/PaymentsController.php:77
-#: src/Internal/Admin/WcPayWelcomePage.php:94
+#: src/Internal/Admin/Settings/PaymentsController.php:67
 #: assets/client/admin/chunks/homescreen.js:1
 msgid "Payments"
 msgstr ""
@@ -23996,12 +23911,12 @@ msgstr ""
 msgid "Error: Delivery URL returned response code: %s"
 msgstr ""
 
-#: includes/class-woocommerce.php:1227
+#: includes/class-woocommerce.php:1226
 msgid "You have installed a development version of WooCommerce which requires files to be built and minified. From the plugin directory, run <code>pnpm install</code> and then <code>pnpm --filter='@woocommerce/plugin-woocommerce' build</code> to build and minify assets."
 msgstr ""
 
 #. translators: 1: URL of WordPress.org Repository 2: URL of the GitHub Repository release page
-#: includes/class-woocommerce.php:1230
+#: includes/class-woocommerce.php:1229
 #, php-format
 msgid "Or you can download a pre-built version of the plugin from the <a href=\"%1$s\">WordPress.org repository</a> or by visiting <a href=\"%2$s\">the releases page in the GitHub repository</a>."
 msgstr ""
@@ -24571,7 +24486,7 @@ msgstr ""
 #: includes/emails/class-wc-email-customer-refunded-order.php:294
 #: includes/emails/class-wc-email-failed-order.php:181
 #: includes/emails/class-wc-email-new-order.php:209
-#: includes/emails/class-wc-email.php:991
+#: includes/emails/class-wc-email.php:989
 #: includes/gateways/bacs/class-wc-gateway-bacs.php:105
 #: includes/gateways/cheque/class-wc-gateway-cheque.php:74
 #: includes/gateways/cod/class-wc-gateway-cod.php:99
@@ -24586,7 +24501,7 @@ msgstr ""
 #: includes/emails/class-wc-email-customer-refunded-order.php:296
 #: includes/emails/class-wc-email-failed-order.php:183
 #: includes/emails/class-wc-email-new-order.php:211
-#: includes/emails/class-wc-email.php:993
+#: includes/emails/class-wc-email.php:991
 msgid "Enable this email notification"
 msgstr ""
 
@@ -24603,7 +24518,7 @@ msgstr ""
 #: includes/emails/class-wc-email-customer-invoice.php:203
 #: includes/emails/class-wc-email-failed-order.php:196
 #: includes/emails/class-wc-email-new-order.php:224
-#: includes/emails/class-wc-email.php:997
+#: includes/emails/class-wc-email.php:995
 #: assets/client/admin/wp-admin-scripts/email-editor-integration.js:2
 msgid "Subject"
 msgstr ""
@@ -24612,7 +24527,7 @@ msgstr ""
 #: includes/emails/class-wc-email-customer-invoice.php:211
 #: includes/emails/class-wc-email-failed-order.php:204
 #: includes/emails/class-wc-email-new-order.php:232
-#: includes/emails/class-wc-email.php:1005
+#: includes/emails/class-wc-email.php:1003
 msgid "Email heading"
 msgstr ""
 
@@ -24622,7 +24537,7 @@ msgstr ""
 #: includes/emails/class-wc-email-customer-refunded-order.php:332
 #: includes/emails/class-wc-email-failed-order.php:212
 #: includes/emails/class-wc-email-new-order.php:240
-#: includes/emails/class-wc-email.php:1013
+#: includes/emails/class-wc-email.php:1011
 msgid "Additional content"
 msgstr ""
 
@@ -24632,7 +24547,7 @@ msgstr ""
 #: includes/emails/class-wc-email-customer-refunded-order.php:333
 #: includes/emails/class-wc-email-failed-order.php:213
 #: includes/emails/class-wc-email-new-order.php:241
-#: includes/emails/class-wc-email.php:1014
+#: includes/emails/class-wc-email.php:1012
 msgid "Text to appear below the main email content."
 msgstr ""
 
@@ -24642,7 +24557,7 @@ msgstr ""
 #: includes/emails/class-wc-email-customer-refunded-order.php:341
 #: includes/emails/class-wc-email-failed-order.php:221
 #: includes/emails/class-wc-email-new-order.php:249
-#: includes/emails/class-wc-email.php:1022
+#: includes/emails/class-wc-email.php:1020
 msgid "Email type"
 msgstr ""
 
@@ -24652,7 +24567,7 @@ msgstr ""
 #: includes/emails/class-wc-email-customer-refunded-order.php:343
 #: includes/emails/class-wc-email-failed-order.php:223
 #: includes/emails/class-wc-email-new-order.php:251
-#: includes/emails/class-wc-email.php:1024
+#: includes/emails/class-wc-email.php:1022
 msgid "Choose which format of email to send."
 msgstr ""
 
@@ -25057,93 +24972,93 @@ msgstr ""
 msgid "Congratulations on the sale."
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1044
+#: includes/emails/class-wc-email.php:1042
 msgid "Cc(s)"
 msgstr ""
 
 #. translators: %s: admin email
-#: includes/emails/class-wc-email.php:1047
+#: includes/emails/class-wc-email.php:1045
 msgid "Enter Cc recipients (comma-separated) for this email."
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1061
+#: includes/emails/class-wc-email.php:1059
 msgid "Bcc(s)"
 msgstr ""
 
 #. translators: %s: admin email
-#: includes/emails/class-wc-email.php:1064
+#: includes/emails/class-wc-email.php:1062
 msgid "Enter Bcc recipients (comma-separated) for this email."
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1077
+#: includes/emails/class-wc-email.php:1075
 msgid "Plain text"
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1080
+#: includes/emails/class-wc-email.php:1078
 msgid "HTML"
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1081
+#: includes/emails/class-wc-email.php:1079
 msgid "Multipart"
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1146
+#: includes/emails/class-wc-email.php:1144
 msgid "Could not write to template file."
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1193
+#: includes/emails/class-wc-email.php:1191
 msgid "Template file copied to theme."
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1224
+#: includes/emails/class-wc-email.php:1222
 msgid "Template file deleted from theme."
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1272
+#: includes/emails/class-wc-email.php:1270
 msgid "Return to emails"
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1305
+#: includes/emails/class-wc-email.php:1303
 msgid "HTML template"
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1306
+#: includes/emails/class-wc-email.php:1304
 msgid "Plain text template"
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1330
+#: includes/emails/class-wc-email.php:1328
 msgid "Delete template file"
 msgstr ""
 
 #. translators: %s: Path to template file
-#: includes/emails/class-wc-email.php:1336
+#: includes/emails/class-wc-email.php:1334
 #, php-format
 msgid "This template has been overridden by your theme and can be found in: %s."
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1369
+#: includes/emails/class-wc-email.php:1367
 msgid "Copy file to theme"
 msgstr ""
 
 #. translators: 1: Path to template file 2: Path to theme folder
-#: includes/emails/class-wc-email.php:1375
+#: includes/emails/class-wc-email.php:1373
 #, php-format
 msgid "To override and edit this email template copy %1$s to your theme folder: %2$s."
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1383
+#: includes/emails/class-wc-email.php:1381
 msgid "File was not found."
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1407
+#: includes/emails/class-wc-email.php:1405
 msgid "View template"
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1408
+#: includes/emails/class-wc-email.php:1406
 msgid "Hide template"
 msgstr ""
 
-#: includes/emails/class-wc-email.php:1422
+#: includes/emails/class-wc-email.php:1420
 msgid "Are you sure you want to delete this template file?"
 msgstr ""
 
@@ -31349,6 +31264,10 @@ msgstr ""
 msgid "Log out"
 msgstr ""
 
+#: includes/wc-account-functions.php:265
+msgid "Method"
+msgstr ""
+
 #: includes/wc-account-functions.php:282
 #: includes/wc-account-functions.php:430
 #: src/StoreApi/Utilities/PaymentUtils.php:27
@@ -32162,7 +32081,7 @@ msgstr ""
 #. translators: 1: wc_load_cart 2: woocommerce_init
 #. translators: 1: class::method 2: plugins_loaded
 #: includes/wc-core-functions.php:2636
-#: src/Internal/Features/FeaturesController.php:785
+#: src/Internal/Features/FeaturesController.php:777
 #, php-format
 msgid "%1$s should not be called before the %2$s action."
 msgstr ""
@@ -32739,7 +32658,7 @@ msgid "Filter by"
 msgstr ""
 
 #: includes/widgets/class-wc-widget-layered-nav.php:82
-#: src/Blocks/BlockTypes/ProductFilterAttribute.php:361
+#: src/Blocks/BlockTypes/ProductFilterAttribute.php:362
 #: assets/client/admin/product-editor/index.js:2
 #: assets/client/blocks/product-filter-attribute.js:1
 msgid "Attribute"
@@ -34136,7 +34055,6 @@ msgstr ""
 #: patterns/heading-with-three-columns-of-content-with-link.php:12
 #: src/Internal/Admin/Notes/WooCommercePayments.php:122
 #: assets/client/admin/chunks/4317.js:1
-#: assets/client/admin/chunks/payment-recommendations.js:1
 #: assets/client/admin/chunks/shipping-recommendations.js:1
 #: assets/client/admin/product-editor/index.js:2
 #: assets/client/admin/wp-admin-scripts/settings-embed.js:2
@@ -35027,7 +34945,7 @@ msgstr ""
 msgid "Sorry, you cannot manage these options."
 msgstr ""
 
-#: src/Admin/API/Options.php:311
+#: src/Admin/API/Options.php:310
 #: src/Admin/API/Settings.php:146
 msgid "Array of options with associated values."
 msgstr ""
@@ -36620,13 +36538,13 @@ msgid "Create advertising campaigns and reach one billion global users with TikT
 msgstr ""
 
 #: src/Admin/Features/MarketingRecommendations/DefaultMarketingRecommendations.php:112
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:179
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:163
 msgid "List products and create ads on Facebook and Instagram."
 msgstr ""
 
 #: src/Admin/Features/MarketingRecommendations/DefaultMarketingRecommendations.php:128
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:211
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:430
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:195
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:414
 msgid "Create and send purchase follow-up emails, newsletters, and promotional campaigns straight from your dashboard."
 msgstr ""
 
@@ -36635,7 +36553,7 @@ msgid "Send targeted campaigns, recover abandoned carts and more with Mailchimp.
 msgstr ""
 
 #: src/Admin/Features/MarketingRecommendations/DefaultMarketingRecommendations.php:162
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:266
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:250
 msgid "Grow and retain customers with intelligent, impactful email and SMS marketing automation and a consolidated view of customer interactions."
 msgstr ""
 
@@ -36704,43 +36622,43 @@ msgstr ""
 msgid "Task is not a subclass of `Task`"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/TaskLists.php:148
+#: src/Admin/Features/OnboardingTasks/TaskLists.php:139
 msgid "Get ready to start selling"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/TaskLists.php:162
+#: src/Admin/Features/OnboardingTasks/TaskLists.php:153
 #: assets/client/admin/app/index.js:2
 #: assets/client/admin/embed/index.js:2
 msgid "Things to do next"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/TaskLists.php:263
+#: src/Admin/Features/OnboardingTasks/TaskLists.php:254
 msgid "Task list ID already exists"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/TaskLists.php:283
+#: src/Admin/Features/OnboardingTasks/TaskLists.php:274
 msgid "Task list ID does not exist"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/TaskLists.php:453
+#: src/Admin/Features/OnboardingTasks/TaskLists.php:444
 msgctxt "Admin menu name"
 msgid "Home"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/Tasks/AdditionalPayments.php:45
+#: src/Admin/Features/OnboardingTasks/Tasks/AdditionalPayments.php:42
 msgid "Set up additional payment options"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/Tasks/AdditionalPayments.php:57
+#: src/Admin/Features/OnboardingTasks/Tasks/AdditionalPayments.php:54
 #: src/Admin/Features/OnboardingTasks/Tasks/Payments.php:45
 msgid "Choose payment providers and enable payment methods at checkout."
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/Tasks/AdditionalPayments.php:69
+#: src/Admin/Features/OnboardingTasks/Tasks/AdditionalPayments.php:66
 #: src/Admin/Features/OnboardingTasks/Tasks/Appearance.php:61
 #: src/Admin/Features/OnboardingTasks/Tasks/Marketing.php:81
 #: src/Admin/Features/OnboardingTasks/Tasks/Payments.php:57
-#: src/Admin/Features/OnboardingTasks/Tasks/WooCommercePayments.php:93
+#: src/Admin/Features/OnboardingTasks/Tasks/WooCommercePayments.php:95
 msgid "2 minutes"
 msgstr ""
 
@@ -36880,17 +36798,25 @@ msgstr ""
 msgid "Discover ways of extending your store with a tour of the Woo Marketplace"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/Tasks/WooCommercePayments.php:41
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:526
+#: src/Admin/Features/OnboardingTasks/Tasks/WooCommercePayments.php:43
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:510
 msgid "Get paid with WooPayments"
 msgstr ""
 
-#: src/Admin/Features/OnboardingTasks/Tasks/WooCommercePayments.php:65
+#: src/Admin/Features/OnboardingTasks/Tasks/WooCommercePayments.php:67
 msgid "You're only one step away from getting paid. Verify your business details to start managing transactions with WooPayments."
 msgstr ""
 
+#: src/Admin/Features/OnboardingTasks/Tasks/WooCommercePayments.php:104
+#: assets/client/admin/app/index.js:2
+#: assets/client/admin/chunks/4317.js:1
+#: assets/client/admin/chunks/multichannel-marketing.js:1
+#: assets/client/admin/embed/index.js:2
+msgid "Finish setup"
+msgstr ""
+
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:58
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3005
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2955
 #: assets/client/admin/chunks/wcpay-payment-welcome-page.js:2
 msgid "Affirm"
 msgstr ""
@@ -36900,33 +36826,33 @@ msgid "Affirm’s tailored Buy Now Pay Later programs remove price as a barrier,
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:87
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3039
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2989
 msgid "Afterpay"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:88
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3040
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2990
 msgid "Afterpay allows customers to receive products immediately and pay for purchases over four installments, always interest-free."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:117
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2386
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2336
 msgid "Airwallex Payments"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:118
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2387
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2337
 msgid "Boost international sales and save on FX fees. Accept 60+ local payment methods including Apple Pay and Google Pay."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:130
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2971
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2921
 #: assets/client/admin/chunks/wcpay-payment-welcome-page.js:2
 msgid "Amazon Pay"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:131
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2972
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2922
 msgid "Enable a familiar, fast checkout for hundreds of millions of active Amazon customers globally."
 msgstr ""
 
@@ -36947,33 +36873,33 @@ msgid "The Eway extension for WooCommerce allows you to take credit card payment
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:216
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3137
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3087
 msgid "Klarna Checkout"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:217
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:241
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3105
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3055
 msgid "Choose the payment that you want, pay now, pay later or slice it. No credit card numbers, no passwords, no worries."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:240
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3104
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3054
 msgid "Klarna Payments"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:309
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2473
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2423
 msgid "Mollie"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:310
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2474
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2424
 msgid "Effortless payments by Mollie: Offer global and local payment methods, get onboarded in minutes, and supported in your language."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:348
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2506
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2456
 msgid "Payfast"
 msgstr ""
 
@@ -36982,7 +36908,7 @@ msgid "The Payfast extension for WooCommerce enables you to accept payments by C
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:362
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2640
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2590
 msgid "Payoneer Checkout"
 msgstr ""
 
@@ -36991,12 +36917,12 @@ msgid "Payoneer Checkout is the next generation of payment processing platforms,
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:383
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2673
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2623
 msgid "Paystack"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:384
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2674
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2624
 msgid "Paystack helps African merchants accept one-time and recurring payments online with a modern, safe, and secure payment gateway."
 msgstr ""
 
@@ -37009,8 +36935,8 @@ msgid "Enable PayU’s exclusive plugin for WooCommerce to start accepting payme
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:415
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2572
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2606
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2522
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2556
 #: assets/client/admin/chunks/wcpay-payment-welcome-page.js:2
 msgid "PayPal Payments"
 msgstr ""
@@ -37020,19 +36946,19 @@ msgid "Safe and secure payments using credit cards or your customer's PayPal acc
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:583
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2771
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2721
 #: assets/client/admin/chunks/homescreen.js:1
 #: assets/client/admin/data/index.js:2
 msgid "Razorpay"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:584
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2772
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2722
 msgid "The official Razorpay extension for WooCommerce allows you to accept credit cards, debit cards, netbanking, wallet, and UPI payments."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:601
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2804
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2754
 #: assets/client/admin/chunks/core-profiler.js:1
 msgid "Square"
 msgstr ""
@@ -37046,24 +36972,24 @@ msgid " Stripe"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:653
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2839
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2789
 msgid "Accept debit and credit cards in 135+ currencies, methods such as Alipay, and one-touch checkout with Apple Pay."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:751
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2447
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2397
 msgid "Mercado Pago"
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:752
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2448
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2398
 msgid "Set up your payment methods and accept credit and debit cards, cash, bank transfers and money from your Mercado Pago account. Offer safe and secure payments with Latin America’s leading processor."
 msgstr ""
 
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:786
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:828
 #: src/Admin/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:863
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:272
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:256
 #: src/Internal/Admin/WCPayPromotion/DefaultPromotions.php:28
 #: src/Internal/Admin/WCPayPromotion/DefaultPromotions.php:40
 #: assets/client/admin/app/index.js:2
@@ -37133,7 +37059,7 @@ msgstr ""
 msgid "The metaboxhidden_product meta from the user metas."
 msgstr ""
 
-#: src/Admin/Features/ProductDataViews/Init.php:114
+#: src/Admin/Features/ProductDataViews/Init.php:84
 msgid "All Products ( new )"
 msgstr ""
 
@@ -37947,7 +37873,7 @@ msgid "Minimal"
 msgstr ""
 
 #. translators:  {{label}} is the label of the active filter item.
-#: src/Blocks/BlockTypes/ProductFilterActive.php:60
+#: src/Blocks/BlockTypes/ProductFilterActive.php:61
 msgid "Remove filter: {{label}}"
 msgstr ""
 
@@ -38022,7 +37948,7 @@ msgid "Rating: {{label}}"
 msgstr ""
 
 #. translators: %1$d is referring to rating value. Example: Rated 4 out of 5.
-#: src/Blocks/BlockTypes/ProductFilterRating.php:189
+#: src/Blocks/BlockTypes/ProductFilterRating.php:190
 #, php-format
 msgid "Rated %1$d out of 5"
 msgstr ""
@@ -38737,7 +38663,7 @@ msgstr ""
 msgid "Locations outside all other zones"
 msgstr ""
 
-#: src/Blocks/Utils/ProductAvailabilityUtils.php:33
+#: src/Blocks/Utils/ProductAvailabilityUtils.php:32
 #: templates/single-product/add-to-cart/variable.php:32
 msgid "This product is currently out of stock and unavailable."
 msgstr ""
@@ -39178,7 +39104,7 @@ msgid "This tool will reset the cached values used in WooCommerce Analytics. If 
 msgstr ""
 
 #: src/Internal/Admin/Analytics.php:190
-#: src/Internal/Features/FeaturesController.php:246
+#: src/Internal/Features/FeaturesController.php:248
 #: assets/client/admin/app/index.js:2
 msgid "Analytics"
 msgstr ""
@@ -40877,209 +40803,209 @@ msgstr ""
 msgid "No pending reviews"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:39
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:38
 msgid "Get the basics"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:49
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:70
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:81
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:48
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:69
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:80
 msgid "Grow your store"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:59
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:58
 msgid "Reach out to customers"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:128
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:151
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:112
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:135
 #: assets/client/admin/chunks/homescreen.js:1
 #: assets/client/admin/data/index.js:2
 msgid "Google for WooCommerce"
 msgstr ""
 
 #. translators: 1: opening product link tag. 2: closing link tag
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:131
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:115
 #, php-format
 msgid "Drive sales with %1$sGoogle for WooCommerce%2$s"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:152
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:136
 msgid "Reach more shoppers and drive sales for your store. Integrate with Google to list your products for free and launch paid ad campaigns."
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:158
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:142
 msgid "Multichannel for WooCommerce"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:159
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:143
 msgid "Sync your sales data across platforms and manage everything from a unified dashboard."
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:171
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:155
 msgid "List products and create ads on Facebook and Instagram with <a href=\"https://woocommerce.com/products/facebook/\">Facebook for WooCommerce</a>"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:186
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:203
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:170
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:187
 #: assets/client/admin/chunks/homescreen.js:1
 #: assets/client/admin/data/index.js:2
 msgid "Pinterest for WooCommerce"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:187
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:171
 msgid "Get your products in front of Pinners searching for ideas and things to buy."
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:204
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:188
 msgid "Get your products in front of Pinterest users searching for ideas and things to buy. Get started with Pinterest and make your entire product catalog browsable."
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:210
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:429
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:194
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:413
 #: assets/client/admin/chunks/homescreen.js:1
 #: assets/client/admin/data/index.js:2
 msgid "MailPoet"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:227
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:211
 msgid "Meta Ads & Pixel for WooCommerce"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:228
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:558
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:212
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:542
 msgid "Sync your store catalog, set up pixel tracking, and run targeted ad campaigns."
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:243
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:227
 msgid "Send targeted campaigns, recover abandoned carts and much more with Mailchimp."
 msgstr ""
 
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:233
 #: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:249
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:265
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:570
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:554
 #: assets/client/admin/chunks/multichannel-marketing.js:1
 #: assets/client/admin/wp-admin-scripts/marketing-coupons.js:2
 msgid "Klaviyo"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:250
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:572
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:234
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:556
 msgid "Grow and retain customers with email, SMS, automations, and a consolidated view of customer interactions."
 msgstr ""
 
 #. translators: 1: opening product link tag. 2: closing link tag
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:276
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:260
 #, php-format
 msgid "Accept credit cards and other popular payment methods with %1$sWooPayments%2$s"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:332
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:316
 #: assets/client/admin/chunks/shipping-recommendations.js:1
 msgid "WooCommerce Shipping"
 msgstr ""
 
 #. translators: 1: opening product link tag. 2: closing link tag
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:336
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:320
 #, php-format
 msgid "Print shipping labels with %1$sWooCommerce Shipping%2$s"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:392
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:376
 #: assets/client/admin/chunks/4317.js:1
 msgid "WooCommerce Tax"
 msgstr ""
 
 #. translators: 1: opening product link tag. 2: closing link tag
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:396
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:380
 #, php-format
 msgid "Get automated sales tax with %1$sWooCommerce Tax%2$s"
 msgstr ""
 
 #. translators: 1: opening product link tag. 2: closing link tag
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:410
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:394
 #, php-format
 msgid "Enhance speed and security with %1$sJetpack%2$s"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:436
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:492
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:420
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:476
 #: assets/client/admin/chunks/homescreen.js:1
 #: assets/client/admin/data/index.js:2
 msgid "TikTok for WooCommerce"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:439
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:423
 msgid "Grow your online sales by promoting your products on TikTok to over one billion monthly active users around the world."
 msgstr ""
 
 #. translators: 1: opening product link tag. 2: closing link tag
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:496
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:480
 #, php-format
 msgid "Create ad campaigns and reach one billion global users with %1$sTikTok for WooCommerce%2$s"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:528
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:512
 msgid "Securely accept payments and manage payment activity straight from your store's dashboard"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:534
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:518
 msgid "Save on shipping with WooCommerce Shipping"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:536
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:520
 msgid "Print discounted USPS, UPS, and DHL labels."
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:541
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:525
 msgid "Boost content creation with Jetpack AI Assistant"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:543
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:527
 msgid "Save time on content creation — unlock high-quality blog posts and pages using AI."
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:549
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:533
 msgid "Showcase your products with Pinterest"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:551
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:535
 msgid "Get your products in front of a highly engaged audience."
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:556
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:540
 msgid "Grow your business with Facebook and Instagram"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:563
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:547
 msgid "Reach your customers with MailPoet"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:565
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:549
 msgid "Send purchase follow-up emails, newsletters, and promotional campaigns."
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:577
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:561
 msgid "Create ad campaigns with TikTok"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:579
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:563
 msgid "Create advertising campaigns and reach one billion global users."
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:584
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:568
 msgid "Drive sales with Google for WooCommerce"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:586
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:570
 msgid "Reach millions of active shoppers across Google with free product listings and ads."
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:591
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:575
 msgid "Get automated tax rates with WooCommerce Tax"
 msgstr ""
 
-#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:593
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:577
 msgid "Automatically calculate how much sales tax should be collected – by city, country, or state."
 msgstr ""
 
@@ -41118,40 +41044,40 @@ msgstr ""
 msgid "Database date field considered for Revenue and Orders reports"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders.php:471
-#: src/Internal/Admin/Settings/PaymentProviders.php:538
+#: src/Internal/Admin/Settings/PaymentProviders.php:494
+#: src/Internal/Admin/Settings/PaymentProviders.php:561
 msgid "Invalid suggestion ID."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders.php:581
+#: src/Internal/Admin/Settings/PaymentProviders.php:604
 msgid "Wallets & Express checkouts"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders.php:582
+#: src/Internal/Admin/Settings/PaymentProviders.php:605
 msgid "Allow shoppers to fast-track the checkout process with express options like Apple Pay and Google Pay."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders.php:587
+#: src/Internal/Admin/Settings/PaymentProviders.php:610
 msgid "Buy Now, Pay Later"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders.php:588
+#: src/Internal/Admin/Settings/PaymentProviders.php:611
 msgid "Offer flexible payment options to your shoppers."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders.php:593
+#: src/Internal/Admin/Settings/PaymentProviders.php:616
 msgid "Crypto Payments"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders.php:594
+#: src/Internal/Admin/Settings/PaymentProviders.php:617
 msgid "Offer cryptocurrency payment options to your shoppers."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders.php:599
+#: src/Internal/Admin/Settings/PaymentProviders.php:622
 msgid "Payment Providers"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders.php:600
+#: src/Internal/Admin/Settings/PaymentProviders.php:623
 msgid "Give your shoppers additional ways to pay."
 msgstr ""
 
@@ -41172,240 +41098,262 @@ msgstr ""
 #: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:124
 #: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:145
 #: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:166
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:194
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:221
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:248
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:193
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:215
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:242
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:269
 msgid "ISO3166 alpha-2 country code. Defaults to the stored providers business location country code."
 msgstr ""
 
 #: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:104
 #: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:173
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:201
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:228
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:255
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:282
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:322
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:222
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:249
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:276
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:303
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:343
 msgid "The upmost entry point from where the merchant entered the onboarding flow."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:276
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:316
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:297
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:337
 msgid "Where from in the onboarding flow this request was triggered."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:681
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:742
 #: src/Internal/Admin/Settings/PaymentsRestController.php:375
 msgid "The location argument must be a string."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:692
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:753
 #: src/Internal/Admin/Settings/PaymentsRestController.php:386
 msgid "The location argument must be a valid ISO3166 alpha-2 country code."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:763
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:824
 msgid "The general state of the onboarding process."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:769
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:830
 msgid "Whether the onboarding process is started."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:775
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:836
 msgid "Whether the onboarding process is completed."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:781
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:842
 msgid "Whether the onboarding process is in test mode."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:787
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:848
 msgid "Whether WooPayments is in dev mode."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:795
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:856
 msgid "The onboarding steps."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:803
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:864
 msgid "The unique identifier for the step."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:809
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:870
 msgid "The relative path of the step to use for frontend navigation."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:815
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:876
 msgid "The steps that are required to be completed before this step."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:824
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:885
 msgid "The current status of the step."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:835
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:896
 msgid "Errors list for the step."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:844
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:905
 msgid "The available actions for the step."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:850
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:911
 msgid "Action to signal the step start."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:857
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:918
 msgid "Action to save step information in the database."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:864
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:925
 msgid "Action to check the step status."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:871
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:932
 msgid "Action to signal the step completion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:878
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:939
+msgid "Action to clean the step progress."
+msgstr ""
+
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:946
 msgid "Action to authorize the WPCOM connection."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:885
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:953
 msgid "Action to initialize a test account."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:892
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:960
 msgid "Action to create or resume an embedded KYC session."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:899
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:967
 msgid "Action to finish an embedded KYC session."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:906
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:974
 msgid "Action to use as a fallback when dealing with errors with the embedded KYC."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:915
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:983
 msgid "Various contextual data for the step to use."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:924
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:992
 msgid "Various contextual data for the onboarding process to use."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:942
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:1010
 msgid "The action type to determine how to use the URL."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:949
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsRestController.php:1017
 msgid "The URL to use for the action."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:159
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:869
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:186
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1318
 msgid "Invalid onboarding step ID."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:336
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:663
 msgid "Invalid onboarding step data."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:364
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:691
 msgid "Save action not supported for the onboarding step ID."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:468
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:798
 msgid "A test account is already set up."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:475
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:811
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:817
 msgid "An account is already set up. Reset the onboarding first."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:501
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:847
 msgid "An unexpected error happened while initializing the test account."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:525
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:886
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:982
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1087
+msgid "Received an unexpected response from the platform."
+msgstr ""
+
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:895
 msgid "Failed to initialize the test account."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:570
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:943
 msgid "An unexpected error happened while creating the KYC session."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:594
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:991
 msgid "Failed to get the KYC session data."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:638
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1007
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1112
+msgid "A live account is set up. Reset the onboarding first."
+msgstr ""
+
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1048
 msgid "An unexpected error happened while finalizing the KYC session."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:662
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1096
 msgid "Failed to finish the KYC session."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:705
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1152
 msgid "An unexpected error happened while resetting onboarding."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:729
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1176
 msgid "Failed to reset onboarding."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:774
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1221
 msgid "An unexpected error happened while disabling the test account."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:798
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1245
 msgid "Failed to disable the test account."
 msgstr ""
 
 #. translators: %s: WooPayments.
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:825
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1274
 #, php-format
 msgid "The %s extension is not active."
 msgstr ""
 
 #. translators: %s: WooPayments.
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:835
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1284
 #, php-format
 msgid "The %s extension is not up-to-date. Please update to the latest version and try again."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:844
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1293
 msgid "Another onboarding action is already in progress. Please wait for it to finish."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:876
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1325
 msgid "Onboarding step requirements are not met."
 msgstr ""
 
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1332
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "There are environment or store setup issues which are blocking progress. Please resolve them to proceed."
+msgstr ""
+
 #. translators: %s: The required key that is missing.
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1105
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1567
 #, php-format
 msgid "The onboarding step is missing required entries: %s"
 msgstr ""
 
 #. translators: %s: The invalid step ID.
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1110
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1572
 #, php-format
 msgid "The onboarding step ID is invalid: %s"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:1531
+#: src/Internal/Admin/Settings/PaymentProviders/WooPayments/WooPaymentsService.php:2029
 msgid "Failed to get onboarding fields data."
 msgstr ""
 
-#: src/Internal/Admin/Settings/Payments.php:123
+#: src/Internal/Admin/Settings/Payments.php:131
 #: assets/client/admin/wp-admin-scripts/settings-embed.js:2
 msgid "Take offline payments"
 msgstr ""
 
-#: src/Internal/Admin/Settings/Payments.php:124
+#: src/Internal/Admin/Settings/Payments.php:132
 msgid "Accept payments offline using multiple different methods. These can also be used to test purchases."
 msgstr ""
 
@@ -41509,274 +41457,283 @@ msgstr ""
 msgid "The corresponding plugin details of the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:669
-#: src/Internal/Admin/Settings/PaymentsRestController.php:996
-msgid "The type of the plugin."
+#: src/Internal/Admin/Settings/PaymentsRestController.php:674
+msgid "The type of the containing entity. Generally this is a regular plugin but it can also be a non-standard entity like a theme or a must-user plugin."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:675
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1002
-msgid "The slug of the plugin."
+#: src/Internal/Admin/Settings/PaymentsRestController.php:680
+msgid "The slug of the containing entity."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:681
+#: src/Internal/Admin/Settings/PaymentsRestController.php:686
 msgid "The plugin main file. This is a relative path to the plugins directory."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:692
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1013
-msgid "The status of the plugin."
-msgstr ""
-
-#: src/Internal/Admin/Settings/PaymentsRestController.php:700
-msgid "The URL of the provider image."
+#: src/Internal/Admin/Settings/PaymentsRestController.php:697
+msgid "The status of the containing entity."
 msgstr ""
 
 #: src/Internal/Admin/Settings/PaymentsRestController.php:705
-msgid "The URL of the provider icon (square aspect ratio - 72px by 72px)."
+msgid "The URL of the provider image."
 msgstr ""
 
 #: src/Internal/Admin/Settings/PaymentsRestController.php:710
+msgid "The URL of the provider icon (square aspect ratio - 72px by 72px)."
+msgstr ""
+
+#: src/Internal/Admin/Settings/PaymentsRestController.php:715
 msgid "Links for the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:718
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1038
+#: src/Internal/Admin/Settings/PaymentsRestController.php:723
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1043
 msgid "The type of the link."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:724
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1044
+#: src/Internal/Admin/Settings/PaymentsRestController.php:729
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1049
 msgid "The URL of the link."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:733
+#: src/Internal/Admin/Settings/PaymentsRestController.php:738
 msgid "The general state of the provider with regards to it's payments processing."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:737
+#: src/Internal/Admin/Settings/PaymentsRestController.php:742
 msgid "Whether the provider is enabled for use on checkout."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:743
+#: src/Internal/Admin/Settings/PaymentsRestController.php:748
 msgid "Whether the provider has a payments processing account connected."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:749
+#: src/Internal/Admin/Settings/PaymentsRestController.php:754
 msgid "Whether the provider needs setup."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:755
+#: src/Internal/Admin/Settings/PaymentsRestController.php:760
 msgid "Whether the provider is in test mode for payments processing."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:761
+#: src/Internal/Admin/Settings/PaymentsRestController.php:766
 msgid "Whether the provider is in dev mode. Having this true usually leads to forcing test payments. "
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:769
+#: src/Internal/Admin/Settings/PaymentsRestController.php:774
 msgid "The management details of the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:778
+#: src/Internal/Admin/Settings/PaymentsRestController.php:783
 msgid "The link to the settings page for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:784
+#: src/Internal/Admin/Settings/PaymentsRestController.php:789
 msgid "The URL to the settings page for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:796
+#: src/Internal/Admin/Settings/PaymentsRestController.php:801
 msgid "Onboarding-related details for the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:800
+#: src/Internal/Admin/Settings/PaymentsRestController.php:805
 msgid "The type of onboarding process the provider supports."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:806
+#: src/Internal/Admin/Settings/PaymentsRestController.php:811
 msgid "The state of the onboarding process."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:816
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1177
+#: src/Internal/Admin/Settings/PaymentsRestController.php:821
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1182
 msgid "The start/continue onboarding link for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:822
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1183
+#: src/Internal/Admin/Settings/PaymentsRestController.php:827
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1188
 msgid "The URL to start/continue onboarding for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:832
+#: src/Internal/Admin/Settings/PaymentsRestController.php:837
 msgid "The list of recommended payment methods details for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:837
+#: src/Internal/Admin/Settings/PaymentsRestController.php:842
 msgid "The details for a recommended payment method."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:843
+#: src/Internal/Admin/Settings/PaymentsRestController.php:848
 msgid "The unique identifier for the payment method."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:849
+#: src/Internal/Admin/Settings/PaymentsRestController.php:854
 msgid "The sort order of the payment method."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:855
+#: src/Internal/Admin/Settings/PaymentsRestController.php:860
 msgid "Whether the payment method should be recommended as enabled or not."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:861
+#: src/Internal/Admin/Settings/PaymentsRestController.php:866
 msgid "Whether the payment method should be required (and force-enabled) or not."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:867
+#: src/Internal/Admin/Settings/PaymentsRestController.php:872
 msgid "The title of the payment method. Does not include HTML tags."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:873
+#: src/Internal/Admin/Settings/PaymentsRestController.php:878
 msgid "The description of the payment method. It can contain basic HTML."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:879
+#: src/Internal/Admin/Settings/PaymentsRestController.php:884
 msgid "The URL of the payment method icon or a base64-encoded SVG image."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:890
+#: src/Internal/Admin/Settings/PaymentsRestController.php:895
 msgid "The tags associated with the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:896
+#: src/Internal/Admin/Settings/PaymentsRestController.php:901
 msgid "Tag associated with the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:902
+#: src/Internal/Admin/Settings/PaymentsRestController.php:907
 msgid "The suggestion ID matching this provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:914
+#: src/Internal/Admin/Settings/PaymentsRestController.php:919
 msgid "The link to mark the suggestion as attached. This should be called when an extension is installed."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:920
+#: src/Internal/Admin/Settings/PaymentsRestController.php:925
 msgid "The URL to attach the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:928
+#: src/Internal/Admin/Settings/PaymentsRestController.php:933
 msgid "The link to hide the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:934
+#: src/Internal/Admin/Settings/PaymentsRestController.php:939
 msgid "The URL to hide the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:954
+#: src/Internal/Admin/Settings/PaymentsRestController.php:959
 msgid "A suggestion with full details."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:960
+#: src/Internal/Admin/Settings/PaymentsRestController.php:965
 msgid "The unique identifier for the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:966
+#: src/Internal/Admin/Settings/PaymentsRestController.php:971
 msgid "The priority of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:972
+#: src/Internal/Admin/Settings/PaymentsRestController.php:977
 msgid "The type of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:978
+#: src/Internal/Admin/Settings/PaymentsRestController.php:983
 msgid "The title of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:984
+#: src/Internal/Admin/Settings/PaymentsRestController.php:989
 msgid "The description of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1021
-msgid "The URL of the image."
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1001
+msgid "The type of the plugin."
+msgstr ""
+
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1007
+msgid "The slug of the plugin."
+msgstr ""
+
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1018
+msgid "The status of the plugin."
 msgstr ""
 
 #: src/Internal/Admin/Settings/PaymentsRestController.php:1026
+msgid "The URL of the image."
+msgstr ""
+
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1031
 msgid "The URL of the icon (square aspect ratio)."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1053
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1060
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1058
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1065
 msgid "The tags associated with the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1066
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1071
 msgid "The category of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1082
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1087
 msgid "The active incentive for the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1088
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1093
 msgid "The incentive unique ID. This ID needs to be used for incentive dismissals."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1094
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1099
 msgid "The incentive promo ID. This ID need to be fed into the onboarding flow."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1100
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1105
 msgid "The incentive title. It can contain stylistic HTML."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1106
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1111
 msgid "The incentive description. It can contain stylistic HTML."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1112
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1117
 msgid "The short description of the incentive. It can contain stylistic HTML."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1118
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1123
 msgid "The call to action label for the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1124
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1129
 msgid "The URL to the terms and conditions for the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1130
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1135
 msgid "The badge label for the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1136
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1141
 msgid "The dismissals list for the incentive. Each dismissal entry includes a context and a timestamp. The `all` entry means the incentive was dismissed for all contexts."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1145
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1150
 msgid "Context ID in which the incentive was dismissed."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1150
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1155
 msgid "Unix timestamp representing when the incentive was dismissed."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1163
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1168
 msgid "The link to dismiss the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1169
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1174
 msgid "The URL to dismiss the incentive."
 msgstr ""
 
 #. translators: 1: the endpoint relative URL, 2: error code, 3: error message
-#: src/Internal/Admin/Settings/Utils.php:362
+#: src/Internal/Admin/Settings/Utils.php:377
 #, php-format
 msgid "REST request GET %1$s failed with: (%2$s) %3$s"
 msgstr ""
 
 #. translators: 1: the endpoint relative URL, 2: error code, 3: error message
-#: src/Internal/Admin/Settings/Utils.php:402
+#: src/Internal/Admin/Settings/Utils.php:417
 #, php-format
 msgid "REST request POST %1$s failed with: (%2$s) %3$s"
 msgstr ""
@@ -41786,131 +41743,131 @@ msgstr ""
 msgid "Shipping Label"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2419
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2369
 msgid "Antom"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2420
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2370
 msgid "Your trusted payments partner in Asia and around the world."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2507
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2457
 msgid "The Payfast extension for WooCommerce enables you to accept payments by Credit Card and EFT via one of South Africa's most popular payment gateways. No setup fees or monthly subscription costs. Selecting this extension will configure your store to use South African rands as the selected currency."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2540
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2490
 msgid "Paymob"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2541
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2491
 msgid "Paymob is a leading payment gateway in the Middle East and Africa. Accept payments online and in-store with Paymob."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2573
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2523
 msgid "PayPal Payments lets you offer PayPal, Venmo (US only), Pay Later options and more."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2607
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2557
 msgid "Safe and secure payments using your customer's PayPal account."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2641
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2591
 msgid "Payoneer Checkout is the next generation of payment processing platforms, giving merchants around the world the solutions and direction they need to succeed in today's hyper-competitive global market."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2706
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2656
 msgid "Paytrail"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2707
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2657
 msgid "Accept all popular payment methods for Finnish B2C and B2B customers"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2738
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2688
 msgid "PayU India"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2739
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2689
 msgid "Enable PayU's exclusive plugin for WooCommerce to start accepting payments in 100+ payment methods available in India including credit cards, debit cards, UPI, & more!"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2805
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2755
 msgid "Securely accept credit and debit cards with one low rate, no surprise fees (custom rates available). Sell in store and track sales and inventory in one place."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2838
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2788
 msgid "Stripe"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2872
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2822
 msgid "Tilopay"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2873
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2823
 msgid "Accept credit and debit cards on your WooCommerce store with advanced features like partial refunds, full/partial captures, and 3D Secure security."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2905
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2855
 msgid "Viva.com Smart Checkout"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2906
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2856
 msgid "A European payments solution that allows you to accept payments in over 25 countries and multiple currencies."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2937
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2887
 msgid "Accept payments with Woo"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2938
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2888
 msgid "Credit/debit cards, Apple Pay, Google Pay, and more."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3006
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:2956
 msgid "Affirm's tailored Buy Now Pay Later programs remove price as a barrier, turning browsers into buyers, increasing average order value, and expanding your customer base."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3072
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3022
 msgid "Clearpay"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3073
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3023
 msgid "Clearpay allows customers to receive products immediately and pay for purchases over four installments, always interest-free."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3138
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3088
 msgid "A full checkout experience embedded on your site that includes all popular payment methods (Pay Now, Pay Later, Financing, Installments)."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3169
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3119
 msgid "Helio Pay"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3170
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3120
 msgid "Effortlessly accept cryptocurrency payments in your store."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3201
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3151
 msgid "MONEI"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3202
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3152
 msgid "Accept Cards, Apple Pay, Google Pay, Bizum, PayPal, and many more payment methods in your store."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3249
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3199
 msgid "Billie"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3250
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3200
 msgid "Billie is the leading provider of Buy Now, Pay Later payment methods for B2B stores."
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3299
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3249
 msgid "GoCardless"
 msgstr ""
 
-#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3300
+#: src/Internal/Admin/Suggestions/PaymentExtensionSuggestions.php:3250
 msgid "Accept Direct Debit, ACH Pull, and open baking payments."
 msgstr ""
 
@@ -42482,152 +42439,144 @@ msgstr ""
 msgid "Admin Order Note"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:247
+#: src/Internal/Features/FeaturesController.php:249
 msgid "Enable WooCommerce Analytics"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:255
+#: src/Internal/Features/FeaturesController.php:257
 msgid "New product editor"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:256
+#: src/Internal/Features/FeaturesController.php:258
 msgid "Try the new product editor (Beta)"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:266
+#: src/Internal/Features/FeaturesController.php:268
 msgid "⚠ This feature is compatible with WordPress version 6.2 or higher."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:276
+#: src/Internal/Features/FeaturesController.php:278
 msgid "Cart & Checkout Blocks"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:277
+#: src/Internal/Features/FeaturesController.php:279
 msgid "Optimize for faster checkout"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:282
+#: src/Internal/Features/FeaturesController.php:284
 msgid "Rate limit Checkout"
 msgstr ""
 
 #. translators: %s is the URL to the rate limiting documentation.
-#: src/Internal/Features/FeaturesController.php:285
+#: src/Internal/Features/FeaturesController.php:287
 #, php-format
 msgid "Enables rate limiting for Checkout place order and Store API /checkout endpoint. To further control this, refer to <a href=\"%s\" target=\"_blank\">rate limiting documentation</a>."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:294
+#: src/Internal/Features/FeaturesController.php:296
 #: assets/client/admin/chunks/4317.js:1
 msgid "Marketplace"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:295
+#: src/Internal/Features/FeaturesController.php:297
 msgid "New, faster way to find extensions and themes for your WooCommerce store"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:307
+#: src/Internal/Features/FeaturesController.php:309
 msgid "Order Attribution"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:308
+#: src/Internal/Features/FeaturesController.php:310
 msgid "Enable this feature to track and credit channels and campaigns that contribute to orders on your site"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:318
+#: src/Internal/Features/FeaturesController.php:320
 msgid "Site visibility badge"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:319
+#: src/Internal/Features/FeaturesController.php:321
 msgid "Enable the site visibility badge in the WordPress admin bar"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:330
+#: src/Internal/Features/FeaturesController.php:332
 msgid "HPOS Full text search indexes"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:331
+#: src/Internal/Features/FeaturesController.php:333
 msgid "Create and use full text search indexes for orders. This feature only works with high-performance order storage."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:341
+#: src/Internal/Features/FeaturesController.php:343
 msgid "HPOS Data Caching"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:342
+#: src/Internal/Features/FeaturesController.php:344
 msgid "Enable order data caching in the datastore. This feature only works with high-performance order storage."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:353
+#: src/Internal/Features/FeaturesController.php:355
 msgid "Remote Logging"
 msgstr ""
 
 #. translators: %1$s: opening link tag, %2$s: closing link tag
-#: src/Internal/Features/FeaturesController.php:356
+#: src/Internal/Features/FeaturesController.php:358
 #, php-format
 msgid "Allow WooCommerce to send error logs and non-sensitive diagnostic data to help improve WooCommerce. This feature requires %1$susage tracking%2$s to be enabled."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:379
+#: src/Internal/Features/FeaturesController.php:381
 msgid "⚠ Usage tracking must be enabled to use remote logging."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:386
+#: src/Internal/Features/FeaturesController.php:388
 msgid "Email improvements"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:387
+#: src/Internal/Features/FeaturesController.php:389
 msgid "Enable modern email design for transactional emails"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:406
+#: src/Internal/Features/FeaturesController.php:408
 msgid "Enable blueprint to import and export settings in bulk"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:425
-msgid "Payments Settings (beta)"
-msgstr ""
-
-#: src/Internal/Features/FeaturesController.php:426
-msgid "Enable the new payments settings experience"
-msgstr ""
-
-#: src/Internal/Features/FeaturesController.php:435
+#: src/Internal/Features/FeaturesController.php:427
 msgid "Block Email Editor (alpha)"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:436
+#: src/Internal/Features/FeaturesController.php:428
 msgid "Enable the block-based email editor for transactional emails. <a href=\"https://github.com/woocommerce/woocommerce/discussions/52897#discussioncomment-11630256\" target=\"_blank\">Learn more</a>"
 msgstr ""
 
 #. translators: 1: class::method 2: before_woocommerce_init
-#: src/Internal/Features/FeaturesController.php:660
+#: src/Internal/Features/FeaturesController.php:652
 #, php-format
 msgid "%1$s should be called inside the %2$s action."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:944
-#: src/Internal/Features/FeaturesController.php:969
+#: src/Internal/Features/FeaturesController.php:936
+#: src/Internal/Features/FeaturesController.php:961
 msgid "Features"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:971
+#: src/Internal/Features/FeaturesController.php:963
 msgid "Start using new features that are being progressively rolled out to improve the store management experience."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:1012
+#: src/Internal/Features/FeaturesController.php:1004
 msgid "Experimental features"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:1014
+#: src/Internal/Features/FeaturesController.php:1006
 msgid "These features are either experimental or incomplete, enable them at your own risk!"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:1087
+#: src/Internal/Features/FeaturesController.php:1079
 msgid "WooCommerce Admin has been disabled"
 msgstr ""
 
 #. translators: 1: line break tag.
-#: src/Internal/Features/FeaturesController.php:1091
+#: src/Internal/Features/FeaturesController.php:1083
 #, php-format
 msgid ""
 "%1$s This navigation will soon become unavailable while we make necessary improvements.\n"
@@ -42635,56 +42584,56 @@ msgid ""
 msgstr ""
 
 #. translators: 1: line break tag, 2: open link to WordPress update link, 3: close link tag.
-#: src/Internal/Features/FeaturesController.php:1103
+#: src/Internal/Features/FeaturesController.php:1095
 #, php-format
 msgid "%1$s %2$sUpdate WordPress to enable the new navigation%3$s"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:1307
+#: src/Internal/Features/FeaturesController.php:1301
 msgid "WooCommerce has detected that some of your active plugins are incompatible with currently enabled WooCommerce features. Please <a>review the details</a>."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:1350
+#: src/Internal/Features/FeaturesController.php:1344
 msgid "You are viewing active plugins that are incompatible with currently enabled WooCommerce features."
 msgstr ""
 
 #. translators: %s is a feature name.
-#: src/Internal/Features/FeaturesController.php:1353
+#: src/Internal/Features/FeaturesController.php:1347
 #, php-format
 msgid "You are viewing the active plugins that are incompatible with the '%s' feature."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:1359
+#: src/Internal/Features/FeaturesController.php:1353
 #, php-format
 msgid "<a href='%1$s'>View all plugins</a> - <a href='%2$s'>Manage WooCommerce features</a>"
 msgstr ""
 
 #. translators: %s = printable plugin name
-#: src/Internal/Features/FeaturesController.php:1445
+#: src/Internal/Features/FeaturesController.php:1439
 #, php-format
 msgid "⚠ This plugin is incompatible with the enabled WooCommerce feature '%s', it shouldn't be activated."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:1451
+#: src/Internal/Features/FeaturesController.php:1445
 #, php-format
 msgid "⚠ This plugin is incompatible with the enabled WooCommerce features '%1$s' and '%2$s', it shouldn't be activated."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:1458
+#: src/Internal/Features/FeaturesController.php:1452
 #, php-format
 msgid "⚠ This plugin is incompatible with the enabled WooCommerce features '%1$s', '%2$s' and %3$d more, it shouldn't be activated."
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:1465
+#: src/Internal/Features/FeaturesController.php:1459
 msgid "Manage WooCommerce features"
 msgstr ""
 
-#: src/Internal/Features/FeaturesController.php:1570
+#: src/Internal/Features/FeaturesController.php:1564
 msgid "Incompatible with WooCommerce features"
 msgstr ""
 
 #. translators: %s = name of a WooCommerce feature
-#: src/Internal/Features/FeaturesController.php:1572
+#: src/Internal/Features/FeaturesController.php:1566
 #, php-format
 msgid "Incompatible with '%s'"
 msgstr ""
@@ -46787,7 +46736,6 @@ msgstr ""
 
 #: assets/client/admin/app/index.js:2
 #: assets/client/admin/chunks/activity-panels-setup.js:2
-#: assets/client/admin/chunks/payment-recommendations.js:1
 #: assets/client/admin/chunks/shipping-recommendations.js:1
 msgid "opens in a new tab"
 msgstr ""
@@ -47761,7 +47709,6 @@ msgid "Try one of the alternative payment providers."
 msgstr ""
 
 #: assets/client/admin/chunks/4317.js:1
-#: assets/client/admin/chunks/payment-recommendations.js:1
 msgid "Visit the {{Link}}Official WooCommerce Marketplace{{/Link}} to find additional payment providers."
 msgstr ""
 
@@ -48244,13 +48191,11 @@ msgid "Hide this list"
 msgstr ""
 
 #: assets/client/admin/chunks/4317.js:1
-#: assets/client/admin/chunks/payment-recommendations.js:1
 #: assets/client/admin/chunks/shipping-recommendations.js:1
 msgid "Task List Options"
 msgstr ""
 
 #: assets/client/admin/chunks/4317.js:1
-#: assets/client/admin/chunks/payment-recommendations.js:1
 #: assets/client/admin/chunks/shipping-recommendations.js:1
 msgid "Hide this"
 msgstr ""
@@ -50238,6 +50183,14 @@ msgid "Section title"
 msgstr ""
 
 #: assets/client/admin/chunks/customizable-dashboard.js:1
+msgid "Move up"
+msgstr ""
+
+#: assets/client/admin/chunks/customizable-dashboard.js:1
+msgid "Move down"
+msgstr ""
+
+#: assets/client/admin/chunks/customizable-dashboard.js:1
 msgid "Remove block"
 msgstr ""
 
@@ -52003,18 +51956,6 @@ msgstr ""
 msgid "No posts yet"
 msgstr ""
 
-#: assets/client/admin/chunks/payment-recommendations.js:1
-msgid "There was a problem hiding the \"Additional ways to get paid\" card."
-msgstr ""
-
-#: assets/client/admin/chunks/payment-recommendations.js:1
-msgid "Recommended payment providers"
-msgstr ""
-
-#: assets/client/admin/chunks/payment-recommendations.js:1
-msgid "We recommend adding one of the following payment extensions to your store. The extension will be installed and activated for you when you click \"Get started\"."
-msgstr ""
-
 #: assets/client/admin/chunks/settings-payments-bacs.js:1
 msgid "Edit bank account"
 msgstr ""
@@ -52241,11 +52182,11 @@ msgid "Reset account"
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Plugin was successfully deactivated."
+msgid "The provider plugin was successfully deactivated."
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Failed to deactivate the plugin."
+msgid "Failed to deactivate the provider plugin."
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
@@ -52535,6 +52476,10 @@ msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
 msgid "Try Again"
+msgstr ""
+
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "An error occurred while creating your test account. Please try again."
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1

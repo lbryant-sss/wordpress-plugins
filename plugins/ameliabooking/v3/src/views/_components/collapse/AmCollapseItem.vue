@@ -16,7 +16,9 @@
         {'am-collapse-item__heading-side' : contentVisibility && props.side},
         props.headingClass
       ]"
+      :tabindex="props.side ? 0 : undefined"
       @click="toggleContentHeading"
+      @keydown.enter="toggleContentHeading"
     >
       <slot name="heading"></slot>
       <div v-if="props.side && partsVisibility" class="am-collapse-item__trigger am-collapse-item__trigger-side">
@@ -40,7 +42,13 @@
         <slot></slot>
       </div>
     </template>
-    <div v-if="partsVisibility && !props.side" class="am-collapse-item__trigger" @click="toggleContentButton">
+    <div
+      v-if="partsVisibility && !props.side"
+      class="am-collapse-item__trigger"
+      :tabindex="partsVisibility && !props.side ? 0 : -1"
+      @click="toggleContentButton"
+      @keydown.enter="toggleContentButton"
+    >
       <span class="am-collapse-item__trigger-label">
         <slot v-if="!contentVisibility && !props.buttonClosed.length" name="button-closed"></slot>
         <template v-if="!contentVisibility && props.buttonClosed.length">
@@ -202,6 +210,7 @@ let amColors = inject('amColors', ref({
 let cssVars = computed(() => {
   return {
     '--am-c-collapse-text-op80': useColorTransparency(amColors.value.colorMainText, 0.8),
+    '--am-c-collapse-text-op10': useColorTransparency(amColors.value.colorMainText, 0.1),
     '--am-delay-collapse': `${props.delay}ms`,
   }
 })
@@ -268,6 +277,14 @@ $collapseContentHeight: v-bind('collapseHeight.h');
       cursor: var(--am-pointer-collapse);
       transition-delay: var(--am-delay-collapse);
 
+      &:focus {
+        border-color: var(--am-c-collapse-text-op80);
+
+        & + .am-collapse-item__content {
+          border-color: var(--am-c-collapse-text-op80);
+        }
+      }
+
       &-side {
         transition-delay: 0ms;
       }
@@ -328,6 +345,14 @@ $collapseContentHeight: v-bind('collapseHeight.h');
       border-top: none;
       border-radius: 0 0 8px 8px;
       cursor: pointer;
+
+      &:focus {
+        background-color: var(--am-c-collapse-text-op10);
+
+        .am-collapse-item__trigger-label {
+          color: var(--am-c-collapse-text-op80);
+        }
+      }
 
       &-side {
         border: none

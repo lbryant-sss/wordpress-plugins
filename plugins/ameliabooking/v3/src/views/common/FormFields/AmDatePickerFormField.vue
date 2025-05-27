@@ -13,9 +13,10 @@
       :persistent="false"
       :disabled="false"
       :clearable="props.clearable"
-      :read-only="props.readOnly"
+      :readonly="props.readonly"
       :week-starts-from-day="props.weekStartsFromDay"
       :input-placeholder="props.placeholder"
+      :refresh-value="props.refreshValue"
       @selected-date="(dateString) => { selectedDatePickerValue(dateString) }"
       @clear-date="clearDate"
     />
@@ -65,9 +66,13 @@ let props = defineProps({
     type: Boolean,
     default: false
   },
-  readOnly: {
+  readonly: {
     type: Boolean,
     default: true
+  },
+  refreshValue: {
+    type: Boolean,
+    default: false
   }
 })
 

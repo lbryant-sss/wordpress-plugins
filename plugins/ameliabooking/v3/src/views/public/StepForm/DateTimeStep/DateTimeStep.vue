@@ -3,6 +3,7 @@
     ref="dateTimeRef"
     class="am-fs-dt__calendar"
     :class="[props.globalClass, {'am-oxvisible': (recurringPopupVisibility || packagesVisibility)}]"
+    tabindex="0"
   >
     <div v-if="limitPerEmployeeError" ref="limitError" class="am-fs__payments-error" >
       <AmAlert
@@ -116,6 +117,10 @@ let props = defineProps({
   globalClass: {
     type: String,
     default: ''
+  },
+  showCart: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -425,6 +430,10 @@ function getDurations () {
 }
 
 onMounted(() => {
+  if (props.showCart && !store.getters['booking/getShownCart']) {
+    return
+  }
+
   service = store.getters['entities/getService'](
     cartItem.value.serviceId
   )

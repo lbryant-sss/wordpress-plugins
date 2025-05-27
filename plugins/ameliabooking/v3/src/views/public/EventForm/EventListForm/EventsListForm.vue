@@ -9,6 +9,7 @@
     ref="ameliaContainer"
     class="am-elf"
     :style="cssVars"
+    role="main"
   >
       <!-- Events List -->
       <EventsList />
@@ -115,12 +116,6 @@ const eventTickets = markRaw(EventTickets)
 const eventCustomerInfo = markRaw(EventCustomerInfo)
 const eventPayment = markRaw(EventPayment)
 const eventCongratulations = markRaw(EventCongratulations)
-
-// * Emits
-const emits = defineEmits(['isRestored'])
-
-// * Global flag for determination when component is fully loaded (used for Amelia popup)
-let isMounted = inject('isMounted')
 
 // * Dynamic height
 let dynamicVh = ref(0)
@@ -347,8 +342,7 @@ store.dispatch(
       'customFields',
       'taxes',
     ],
-    loadEvents: !shortcodeData.value.in_dialog && !store.getters['getRestoring'],
-    loadEntities: shortcodeData.value.hasApiCall
+    loadEntities: shortcodeData.value.hasApiCall || shortcodeData.value.in_dialog,
   }
 )
 
@@ -386,8 +380,6 @@ onMounted(() => {
   useAction(store, {containerWidth}, 'ContainerWidth', 'event', null, null)
 
   updateVH()
-
-  isMounted.value = true
 })
 
 function onCloseEventDialog () {
@@ -466,8 +458,6 @@ onMounted(() => {
 
       stepIndex.value = index
       popupVisible.value = true
-
-      emits('isRestored', true)
     }
 })
 
@@ -569,7 +559,7 @@ let cssVars = computed(() => {
     '--am-c-scroll-op30': useColorTransparency(amColors.value.colorPrimary, 0.3),
     '--am-c-scroll-op10': useColorTransparency(amColors.value.colorPrimary, 0.1),
 
-    '--am-rad-input': '6px',
+    '--am-rad-inp': '6px',
 
     // -mb- margin bottom
     '--am-mb-dialog': '300px'
@@ -645,9 +635,9 @@ export default {
   // -h- height
   // -fs- font size
   // -rad- border radius
-  --am-h-input: 40px;
-  --am-fs-input: 15px;
-  --am-rad-input: 6px;
+  --am-h-inp: 40px;
+  --am-fs-inp: 15px;
+  --am-rad-inp: 6px;
   --am-fs-label: 15px;
   --am-fs-btn: 15px;
 
@@ -658,61 +648,63 @@ export default {
 .amelia-v2-booking {
   /* Event list dialog */
   // el - event list
-  &.am-dialog-el {
+  &.am-dialog-el.am-dialog-popup {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 99999999 !important;
 
     .el-dialog {
-      // am - amelia
-      // mb - margin bottom
-      margin-bottom: var(--am-mb-dialog);
-      border-radius: 8px;
-      overflow: hidden;
-      background-color: var(--am-c-main-bgr);
+      .el-dialog {
+        // am - amelia
+        // mb - margin bottom
+        margin-bottom: var(--am-mb-dialog);
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: var(--am-c-main-bgr);
 
-      @media only screen and (max-width: 768px) {
-        margin-top: 0;
-      }
-
-      * {
-        box-sizing: border-box;
-        font-family: var(--am-font-family), sans-serif;
-        word-break: break-word;
-      }
-
-      &__header {
-        padding: 0;
-      }
-
-      &__headerbtn {
-        top: 8px;
-        right: 12px;
-        background: transparent !important;
-        padding: 0;
-
-        &:active {
-          position: absolute;
-          border: none;
-          outline: 0;
+        @media only screen and (max-width: 768px) {
+          margin-top: 0;
         }
-      }
 
-      &__close {
-        width: 12px;
-        height: 12px;
-
-        .am-icon-close:before {
-          color: var(--am-c-main-text);
+        * {
+          box-sizing: border-box;
+          font-family: var(--am-font-family), sans-serif;
+          word-break: break-word;
         }
-      }
 
-      &__body {
-        padding: 0;
-      }
+        &__header {
+          padding: 0;
+        }
 
-      &__footer {
-        display: none;
-        padding: 0;
+        &__headerbtn {
+          top: 8px;
+          right: 12px;
+          background: transparent !important;
+          padding: 0;
+
+          &:active {
+            position: absolute;
+            border: none;
+            outline: 0;
+          }
+        }
+
+        &__close {
+          width: 12px;
+          height: 12px;
+
+          .am-icon-close:before {
+            color: var(--am-c-main-text);
+          }
+        }
+
+        &__body {
+          padding: 0;
+        }
+
+        &__footer {
+          display: none;
+          padding: 0;
+        }
       }
     }
   }

@@ -35,6 +35,7 @@ function setCurrentUser (store, user) {
   store.commit('booking/setCustomerId', user.id)
   store.commit('booking/setCustomerExternalId', user.externalid)
   store.commit('booking/setCustomerTranslations', user.translations)
+  store.commit('booking/setCustomerCustomFields', user.customFields)
 }
 
 export {

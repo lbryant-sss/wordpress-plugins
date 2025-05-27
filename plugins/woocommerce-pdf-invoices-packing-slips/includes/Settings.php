@@ -84,8 +84,11 @@ class Settings {
 		// schedule yearly reset numbers
 		add_action( 'wpo_wcpdf_schedule_yearly_reset_numbers', array( $this, 'yearly_reset_numbers' ) );
 
-		// Apply settings sections.
-		add_action( 'wpo_wcpdf_init_documents', array( $this, 'update_documents_settings_sections' ), 999 );
+		// Apply categories to document settings.
+		add_action( 'wpo_wcpdf_init_documents', array( $this, 'update_documents_settings_categories' ), 999 );
+
+		// Apply categories to general settings.
+		add_filter( 'wpo_wcpdf_settings_fields_general', array( $this, 'update_general_settings_categories' ), 999, 5 );
 	}
 
 	public function menu() {
@@ -136,21 +139,21 @@ class Settings {
 	 */
 	public function user_settings_capability() {
 		$manage_woocommerce = 'manage_woocommerce';
-		
+
 		// Get the default capability
 		$default_capability = apply_filters( 'wpo_wcpdf_settings_default_user_capability', $manage_woocommerce );
 		$default_capability = ( empty( $default_capability ) || ! is_string( $default_capability ) ) ? $manage_woocommerce : $default_capability;
-		
+
 		// Get the list of capabilities
 		$capabilities = (array) apply_filters( 'wpo_wcpdf_settings_user_role_capabilities', array( $default_capability ) );
-		
+
 		// Loop through the list
 		foreach ( $capabilities as $capability ) {
 			if ( is_string( $capability ) && current_user_can( $capability ) ) {
 				return $capability;
 			}
 		}
-		
+
 		// Fallback
 		return ! empty( $default_capability ) ? $default_capability : $manage_woocommerce;
 	}
@@ -517,19 +520,25 @@ class Settings {
 	 */
 	public function get_common_document_settings(): array {
 		return array(
-			'paper_size'         => $this->general_settings['paper_size'] ?? '',
-			'font_subsetting'    => isset( $this->general_settings['font_subsetting'] ) || ( defined( "DOMPDF_ENABLE_FONTSUBSETTING" ) && DOMPDF_ENABLE_FONTSUBSETTING === true ),
-			'header_logo'        => $this->general_settings['header_logo'] ?? '',
-			'header_logo_height' => $this->general_settings['header_logo_height'] ?? '',
-			'vat_number'         => $this->general_settings['vat_number'] ?? '',
-			'coc_number'         => $this->general_settings['coc_number'] ?? '',
-			'shop_name'          => $this->general_settings['shop_name'] ?? '',
-			'shop_phone_number'  => $this->general_settings['shop_phone_number'] ?? '',
-			'shop_address'       => $this->general_settings['shop_address'] ?? '',
-			'footer'             => $this->general_settings['footer'] ?? '',
-			'extra_1'            => $this->general_settings['extra_1'] ?? '',
-			'extra_2'            => $this->general_settings['extra_2'] ?? '',
-			'extra_3'            => $this->general_settings['extra_3'] ?? '',
+			'paper_size'              => $this->general_settings['paper_size'] ?? '',
+			'font_subsetting'         => isset( $this->general_settings['font_subsetting'] ) || ( defined( "DOMPDF_ENABLE_FONTSUBSETTING" ) && DOMPDF_ENABLE_FONTSUBSETTING === true ),
+			'header_logo'             => $this->general_settings['header_logo'] ?? '',
+			'header_logo_height'      => $this->general_settings['header_logo_height'] ?? '',
+			'vat_number'              => $this->general_settings['vat_number'] ?? '',
+			'coc_number'              => $this->general_settings['coc_number'] ?? '',
+			'shop_name'               => $this->general_settings['shop_name'] ?? '',
+			'shop_phone_number'       => $this->general_settings['shop_phone_number'] ?? '',
+			'shop_address_line_1'     => $this->general_settings['shop_address_line_1'] ?? '',
+			'shop_address_line_2'     => $this->general_settings['shop_address_line_2'] ?? '',
+			'shop_address_country'    => $this->general_settings['shop_address_country'] ?? '',
+			'shop_address_state'      => $this->general_settings['shop_address_state'] ?? '',
+			'shop_address_city'       => $this->general_settings['shop_address_city'] ?? '',
+			'shop_address_postcode'   => $this->general_settings['shop_address_postcode'] ?? '',
+			'shop_address_additional' => $this->general_settings['shop_address_additional'] ?? '',
+			'footer'                  => $this->general_settings['footer'] ?? '',
+			'extra_1'                 => $this->general_settings['extra_1'] ?? '',
+			'extra_2'                 => $this->general_settings['extra_2'] ?? '',
+			'extra_3'                 => $this->general_settings['extra_3'] ?? '',
 		);
 	}
 
@@ -965,12 +974,12 @@ class Settings {
 
 	public function yearly_reset_action_is_scheduled() {
 		$is_scheduled = false;
-		
+
 		if ( ! function_exists( '\\as_get_scheduled_actions' ) ) {
 			wcpdf_log_error( 'Action Scheduler function not available. Cannot check if the yearly numbering reset is scheduled.', 'critical' );
 			return $is_scheduled;
 		}
-		
+
 		$scheduled_actions = \as_get_scheduled_actions( array(
 			'hook'   => 'wpo_wcpdf_schedule_yearly_reset_numbers',
 			'status' => \ActionScheduler_Store::STATUS_PENDING,
@@ -1057,24 +1066,28 @@ class Settings {
 	 *
 	 * @return void
 	 */
-	public function update_documents_settings_sections(): void {
+	public function update_documents_settings_categories(): void {
 		$documents = WPO_WCPDF()->documents->get_documents( 'all' );
 
 		foreach ( $documents as $document ) {
 			foreach ( $document->output_formats as $output_format ) {
-				add_filter( "wpo_wcpdf_settings_fields_documents_{$document->get_type()}_{$output_format}", array( $this, 'apply_settings_categories' ), 999 );
+				add_filter(
+					"wpo_wcpdf_settings_fields_documents_{$document->get_type()}_{$output_format}",
+					array( $this, 'apply_document_settings_categories' ),
+					999
+				);
 			}
 		}
 	}
 
 	/**
-	 * Apply settings categories to the settings fields.
+	 * Apply categories to documents settings fields.
 	 *
 	 * @param array  $settings_fields
 	 *
 	 * @return array
 	 */
-	public function apply_settings_categories( array $settings_fields ): array {
+	public function apply_document_settings_categories( array $settings_fields ): array {
 		$current_filter = explode( '_', current_filter() );
 		$output_format  = end( $current_filter );
 		$document_type  = prev( $current_filter );
@@ -1084,10 +1097,51 @@ class Settings {
 			return $settings_fields;
 		}
 
-		$settings_categories = is_callable( array( $document, 'get_settings_categories' ) ) ? $document->get_settings_categories( $output_format ) : array();
+		$settings_categories = is_callable( array( $document, 'get_settings_categories' ) )
+			? $document->get_settings_categories( $output_format )
+			: array();
 
 		// Return if no category found!
 		if ( empty( $settings_categories ) ) {
+			return $settings_fields;
+		}
+
+		return $this->apply_setting_categories( $settings_fields, $settings_categories );
+	}
+
+	/**
+	 * Apply categories to general settings.
+	 *
+	 * @param array $settings_fields
+	 * @param string $page
+	 * @param string $option_group
+	 * @param string $option_name
+	 * @param SettingsGeneral $general_settings
+	 *
+	 * @return array
+	 */
+	public function update_general_settings_categories( array $settings_fields, string $page, string $option_group, string $option_name, \WPO\IPS\Settings\SettingsGeneral $general_settings ): array {
+		$settings_categories = is_callable( array( $general_settings, 'get_settings_categories' ) )
+			? $general_settings->get_settings_categories()
+			: array();
+
+		if ( empty( $settings_categories ) ) {
+			return $settings_fields;
+		}
+
+		return $this->apply_setting_categories( $settings_fields, $settings_categories );
+	}
+
+	/**
+	 * Apply categories to settings fields.
+	 *
+	 * @param array $settings_fields
+	 * @param array $settings_categories
+	 *
+	 * @return array
+	 */
+	public function apply_setting_categories( array $settings_fields, array $settings_categories ): array {
+		if ( empty( $settings_fields ) || empty( $settings_categories ) ) {
 			return $settings_fields;
 		}
 

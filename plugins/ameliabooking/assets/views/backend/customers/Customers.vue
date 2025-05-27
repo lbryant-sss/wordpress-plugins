@@ -582,6 +582,10 @@
               if (cusItem.translations) {
                 cusItem.language = JSON.parse(cusItem.translations).defaultLanguage
               }
+
+              if (cusItem.customFields) {
+                cusItem.customFields = JSON.parse(cusItem.customFields)
+              }
             })
 
             this.customers = customers

@@ -1,32 +1,35 @@
 <template>
   <el-form
-      ref="couponFormRef"
-      :rules="rules"
-      :model="couponFormData"
+    ref="couponFormRef"
+    :rules="rules"
+    :model="couponFormData"
   >
     <div
-        class="am-fs__coupon"
-        :class="{'am-fs__coupon-mobile-s':mobileS}"
-        :style="cssVars"
+      class="am-fs__coupon"
+      :class="{'am-fs__coupon-mobile-s': mobileS}"
+      :style="cssVars"
     >
-      <el-form-item :prop="'coupon'" class="am-fs__coupon-form-item">
+      <el-form-item
+        :prop="'coupon'"
+        class="am-fs__coupon-form-item"
+      >
         <template #label>
           <span>{{ `${amLabels.coupon}:` }}</span>
         </template>
         <AmInput
-            v-model="couponFormData.coupon"
-            size="small"
-            :class="{'am-fs__coupon-invalid': coupon.limit === 0}"
-            :icon-start="IconCoupon"
-            :icon-end="coupon.code && (coupon.discount || coupon.deduction) ? (coupon.limit === 0 ? IconInfoReverse :  IconCheck) : ''"
-            @input="clearValidation"
-            @change="changeCoupon"
-            @keydown.enter="(e) => {e.preventDefault()}"
-        ></AmInput>
+          v-model="couponFormData.coupon"
+          size="small"
+          :class="{'am-fs__coupon-invalid': coupon.limit === 0}"
+          :prefix-icon="couponIcon"
+          :suffix-icon="validateIcon"
+          @input="clearValidation"
+          @change="changeCoupon"
+          @keydown.enter="(e) => {e.preventDefault()}"
+        />
       </el-form-item>
       <AmButton
-          size="small"
-          @click="validate"
+        size="small"
+        @click="validate"
       >
         {{ amLabels.add_coupon_btn }}
       </AmButton>
@@ -62,9 +65,7 @@
 <script setup>
 import AmInput from '../../../../_components/input/AmInput.vue'
 import AmButton from '../../../../_components/button/AmButton.vue'
-import IconCoupon from '../../../../_components/icons/IconCoupon.vue'
-import IconCheck from '../../../../_components/icons/IconCheck.vue'
-import IconInfoReverse from '../../../../_components/icons/IconInfoReverse.vue'
+import IconComponent from "../../../../_components/icons/IconComponent.vue";
 
 // * Import from Vue
 import {
@@ -72,9 +73,6 @@ import {
   computed,
   onMounted, ref
 } from 'vue'
-
-// * Axios
-import httpClient from '../../../../../plugins/axios'
 
 // * Composables
 import { useColorTransparency } from '../../../../../assets/js/common/colorManipulation.js'
@@ -101,6 +99,12 @@ let props = defineProps({
 })
 
 let coupon = computed(() => store.getters['coupon/getCoupon'])
+
+// * Coupon icon
+let couponIcon = {
+  components: {IconComponent},
+  template: `<IconComponent icon="coupon" />`
+}
 
 // * Computed labels
 let amLabels = inject('amLabels')
@@ -155,16 +159,32 @@ onMounted(() => {
 
 const emits = defineEmits(['couponApplied'])
 
+let validateIcon = ref('')
+
 function clearValidation () {
   let err = store.getters['coupon/getError']
   if (err) {
     store.commit('coupon/setError', '')
   }
+  validateIcon.value = ''
   couponFormRef.value.clearValidate()
 }
 
 function validate () {
-  validateCoupon(store, () => {emits('couponApplied')})
+  validateCoupon(store, () => {
+    let couponNew = store.getters['coupon/getCoupon']
+    if (couponNew.code && (couponNew.discount || couponNew.deduction)) {
+      if (couponNew.limit === 0) {
+        validateIcon.value = 'info-reverse'
+      } else {
+        validateIcon.value = 'check'
+      }
+    } else {
+      validateIcon.value = ''
+    }
+
+    emits('couponApplied')
+  })
 }
 
 let cWidth = inject('containerWidth', 0)
@@ -190,12 +210,12 @@ export default {
 <style lang="scss">
 .amelia-v2-booking {
   #amelia-container {
-
     .am-coupon-limit {
       background-color: var(--am-c-coupon-primary-op10);
       border: 1px solid var(--am-c-coupon-primary-op40);
       border-radius: 8px;
       padding: 10px;
+      margin-top: 5px;
 
       &-col {
         display: flex;
@@ -248,61 +268,33 @@ export default {
       white-space: nowrap;
       align-items: center;
 
-      .am-icon-info-reverse, .am-icon-check {
-        font-size: 18px;
-      }
-
-      .am-icon-info-reverse {
-        /* $red-900 */
-        color: var(--am-c-error);
-      }
-
-      .am-icon-check {
-        /* $green-900 */
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background-color: var(--am-c-success);
-        border-radius: 50%;
-        color: var(--am-c-inp-bgr);
-
-        &:before {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-      }
-
-      .am-icon-coupon {
-        /* $shade-900 */
-        color: var(--am-c-inp-text);
-        font-size: 20px;
-      }
-
-      .am-input {
-        input, input:active, input:focus {
-          padding-left : 32px;
-        }
-      }
-
-      & > span {
-        margin-right: 3px
-      }
-
       &-invalid {
-        input {
-          border: 1.5px solid var(--am-c-error);
+        .am-input .el-input__wrapper {
+          box-shadow: 0 0 0 1px var(--am-c-error);
         }
       }
 
-      &-mobile-s {
-        display: flex;
-        flex-direction: column;
-      }
-    }
+      .am-input .el-input__wrapper {
+        .am-icon-info-reverse, .am-icon-check {
+          font-size: 18px;
+        }
 
-   .am-fs__coupon {
+        .am-icon-info-reverse {
+          color: var(--am-c-error);
+        }
+
+        .am-icon-check {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+          height: 20px;
+          background-color: var(--am-c-success);
+          border-radius: 50%;
+          color: var(--am-c-inp-bgr);
+        }
+      }
+
       .el-form-item {
         display: flex;
         gap: 5px;
@@ -312,6 +304,15 @@ export default {
         .el-form-item__error {
           width: 100%;
           text-align: center;
+        }
+      }
+
+      &-mobile-s {
+        display: flex;
+        flex-direction: column;
+
+        .am-button {
+          width: 100%;
         }
       }
     }
@@ -327,7 +328,6 @@ export default {
 
       & span:nth-child(2) {
         font-weight: 500;
-        /* $green-900 */
         color: var(--am-c-success);
       }
     }

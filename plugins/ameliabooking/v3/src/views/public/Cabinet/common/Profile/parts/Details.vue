@@ -64,7 +64,7 @@
 
 <script setup>
 // * Import from Vue
-import { computed, ref, inject, onBeforeMount } from 'vue'
+import {computed, ref, inject, onBeforeMount} from 'vue'
 
 // * Import from Vuex
 import { useStore } from 'vuex'
@@ -198,7 +198,7 @@ let employeeInfoFormConstruction = ref({
       itemName: 'firstName',
       label: amLabels.first_name_colon,
       placeholder: amLabels.enter_first_name,
-      class: computed(() => `am-caepif__item ${props.responsiveClass}`),
+      class: computed(() => `am-caepif__item ${props.responsiveClass}`)
     },
   },
   lastName: {

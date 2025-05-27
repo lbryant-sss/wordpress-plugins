@@ -57,11 +57,6 @@ import useAction from '../../../assets/js/public/actions'
 import { useAvailableCategories } from '../../../assets/js/public/catalog'
 import { useRenderAction } from '../../../assets/js/public/renderActions'
 
-const emits = defineEmits(['isRestored'])
-
-// * Global flag for determination when component is fully loaded (used for Amelia popup)
-let isMounted = inject('isMounted')
-
 // * Plugin Licence
 let licence = inject('licence')
 
@@ -100,7 +95,6 @@ onMounted(() => {
   useAction(store, {}, 'ViewContent', 'appointment', null, null)
 
   resize()
-  isMounted.value = true
 
   useRenderAction('scrollForm', {
     offsetFromTop,
@@ -133,7 +127,7 @@ store.dispatch('entities/getEntities', {
     'taxes',
   ],
   licence: licence,
-  loadEntities: shortcodeData.value.hasApiCall,
+  loadEntities: shortcodeData.value.hasApiCall || shortcodeData.value.in_dialog,
   showHidden: false,
   isPanel: false,
 })
@@ -364,7 +358,6 @@ watch(ready, (current) => {
       nextTick(() => {
         pageIndex.value = pagesArray.value.length - 1
         categorySelected.value = store.state.booking.appointment.categoryId
-        emits('isRestored', restore.value)
       })
     }
   }
@@ -508,9 +501,9 @@ export default {
   // -h- height
   // -fs- font size
   // -rad- border radius
-  --am-h-input: 40px;
-  --am-fs-input: 15px;
-  --am-rad-input: 6px;
+  --am-h-inp: 40px;
+  --am-fs-inp: 15px;
+  --am-rad-inp: 6px;
   --am-fs-label: 15px;
   --am-fs-btn: 15px;
 
@@ -547,6 +540,7 @@ export default {
         border-radius: 8px;
         box-shadow: none;
 
+        // Form
         .el-form {
           &-item {
             display: block;
@@ -574,7 +568,7 @@ export default {
               align-items: center;
               flex: 1;
               position: relative;
-              font-size: var(--am-fs-input);
+              font-size: var(--am-fs-inp);
               min-width: 0;
               color: var(--am-c-main-text);
             }
@@ -595,6 +589,32 @@ export default {
     }
 
     @include empty-state;
+  }
+}
+
+// General popup styles
+.am-dialog-popup.amelia-v2-booking.amelia-v2-booking-dialog {
+  .el-dialog {
+    .el-dialog {
+      &__header {
+        padding: 0;
+      }
+
+      &__headerbtn {
+        width: 19px;
+        height: 19px;
+        top: 16px;
+        right: 16px;
+      }
+
+      &__body {
+        padding: 0;
+
+        #amelia-container {
+          margin: 0 auto;
+        }
+      }
+    }
   }
 }
 </style>

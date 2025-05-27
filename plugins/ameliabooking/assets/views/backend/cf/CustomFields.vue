@@ -15,62 +15,114 @@
 
       <div class="am-customize am-section">
         <!-- Custom Fields -->
-        <div>
+        <el-tabs v-model="customFieldsTab"  @tab-click="handleTabClick">
+          <el-tab-pane :label="$root.labels.bookings" name="bookings">
+            <div>
 
-          <!-- Custom Fields -->
-          <div class="am-custom-fields" id="qweqwe">
+              <!-- Custom Fields -->
+              <div class="am-custom-fields" id="qweqwe">
 
-            <!-- Spinner -->
-            <div class="am-spinner am-section" v-show="!fetched || !options.fetched">
-              <img :src="$root.getUrl + 'public/img/spinner.svg'"/>
-            </div>
+                <!-- Spinner -->
+                <div class="am-spinner am-section" v-show="!fetched || !options.fetched">
+                  <img :src="$root.getUrl + 'public/img/spinner.svg'"/>
+                </div>
 
-            <!-- Empty State -->
-            <EmptyState
-              :visible="fetched && options.fetched && customFields.length === 0"
-              :licence="'basic'"
-              :title="$root.labels.no_custom_fields_yet"
-              :description="$root.labels.click_add_custom_field"
-            >
-            </EmptyState>
-
-            <!-- Custom Fields List -->
-            <div class="am-custom-fields-list" v-show="fetched && options.fetched && customFields.length > 0">
-
-              <!-- Checkbox send all custom fields -->
-              <el-checkbox
-                v-model="separateCustomFields"
-                style="padding-bottom: 20px"
-                @change="saveSendAllCustomFields()"
-              >
-                {{ $root.labels.send_custom_fields_separately }}
-                <el-tooltip placement="top">
-                  <div slot="content" v-html="$root.labels.send_custom_fields_tooltip"></div>
-                  <i class="el-icon-question am-tooltip-icon"></i>
-                </el-tooltip>
-              </el-checkbox>
-
-              <!-- Custom Field Component -->
-              <draggable v-model="customFields" :options="draggableOptions" @end="dropCustomField">
-                <custom-field
-                  v-for="customField in customFields"
-                  :key="customField.id"
-                  :customField="customField"
-                  :events="options.entities.events"
-                  :categories="options.entities.categories"
-                  :services="options.entities.services"
-                  :passed-used-languages="options.settings.general.usedLanguages"
-                  :languages-data="languagesData"
-                  @deleteCustomField="deleteCustomField"
-                  @updateCustomField="updateCustomField"
-                  @usedLanguagesUpdated="updateUsedLanguages"
+                <!-- Empty State -->
+                <EmptyState
+                    :visible="fetched && options.fetched && customFields.length === 0"
+                    :licence="'basic'"
+                    :title="$root.labels.no_custom_fields_yet"
+                    :description="$root.labels.click_add_custom_field"
                 >
-                </custom-field>
-              </draggable>
+                </EmptyState>
+
+                <!-- Custom Fields List -->
+                <div class="am-custom-fields-list" v-show="fetched && options.fetched && customFields.length > 0">
+
+                  <!-- Checkbox send all custom fields -->
+                  <el-checkbox
+                      v-model="separateCustomFields"
+                      style="padding-bottom: 20px"
+                      @change="saveSendAllCustomFields()"
+                  >
+                    {{ $root.labels.send_custom_fields_separately }}
+                    <el-tooltip placement="top">
+                      <div slot="content" v-html="$root.labels.send_custom_fields_tooltip"></div>
+                      <i class="el-icon-question am-tooltip-icon"></i>
+                    </el-tooltip>
+                  </el-checkbox>
+
+                  <!-- Custom Field Component -->
+                  <draggable v-model="customFields" :options="draggableOptions" @end="dropCustomField">
+                    <custom-field
+                        v-for="customField in customFields"
+                        :key="customField.id"
+                        :customField="customField"
+                        :events="options.entities.events"
+                        :categories="options.entities.categories"
+                        :services="options.entities.services"
+                        :passed-used-languages="options.settings.general.usedLanguages"
+                        :languages-data="languagesData"
+                        @deleteCustomField="deleteCustomField"
+                        @updateCustomField="updateCustomField"
+                        @usedLanguagesUpdated="updateUsedLanguages"
+                    >
+                    </custom-field>
+                  </draggable>
+
+                </div>
+
+              </div>
 
             </div>
+          </el-tab-pane>
+          <el-tab-pane :label="$root.labels.customer" name="customer">
+            <div>
 
-          </div>
+              <!-- Custom Fields -->
+              <div class="am-custom-fields" id="qweqwe">
+
+                <!-- Spinner -->
+                <div class="am-spinner am-section" v-show="!fetched || !options.fetched">
+                  <img :src="$root.getUrl + 'public/img/spinner.svg'"/>
+                </div>
+
+                <!-- Empty State -->
+                <EmptyState
+                  :visible="fetched && options.fetched && customerCustomFields.length === 0"
+                  :licence="'basic'"
+                  :title="$root.labels.no_custom_fields_yet"
+                  :description="$root.labels.click_add_custom_field"
+                >
+                </EmptyState>
+
+                <!-- Custom Fields List -->
+                <div class="am-custom-fields-list" v-show="fetched && options.fetched && customerCustomFields.length > 0">
+
+                  <!-- Custom Field Component -->
+                  <draggable v-model="customerCustomFields" :options="draggableOptions" @end="dropCustomField">
+                    <custom-field
+                      v-for="customField in customerCustomFields"
+                      :key="customField.id"
+                      :customField="customField"
+                      :passed-used-languages="options.settings.general.usedLanguages"
+                      :languages-data="languagesData"
+                      :custom-fields-tab="customFieldsTab"
+                      @deleteCustomField="deleteCustomField"
+                      @updateCustomField="updateCustomField"
+                      @usedLanguagesUpdated="updateUsedLanguages"
+                    >
+                    </custom-field>
+                  </draggable>
+
+                </div>
+
+              </div>
+
+            </div>
+          </el-tab-pane>
+        </el-tabs>
+        <div>
 
           <!-- Dialog Custom Fields -->
           <transition name="slide">
@@ -141,8 +193,6 @@
 
     </div>
 
-<!--    <dialog-new-customize></dialog-new-customize>-->
-
   </div>
 </template>
 
@@ -157,7 +207,6 @@
   import imageMixin from '../../../js/common/mixins/imageMixin'
   import entitiesMixin from '../../../js/common/mixins/entitiesMixin'
   import stashMixin from '../../../js/backend/mixins/stashMixin'
-  // import DialogNewCustomize from '../parts/DialogNewCustomize.vue'
 
   export default {
     components: {
@@ -179,9 +228,12 @@
 
     data () {
       return {
+        customFieldsTab: 'bookings',
+        saveTypeArray: 'customFields',
         separateCustomFields: false,
         buttonNewItems: false,
         customFields: [],
+        customerCustomFields: [],
         draggableOptions: {
           handle: '.am-drag-handle',
           animation: 150
@@ -223,11 +275,16 @@
     },
 
     methods: {
+      handleTabClick () {
+        this.saveTypeArray = this.customFieldsTab === 'bookings' ? 'customFields' : 'customerCustomFields'
+      },
+
       getCustomFields (inlineSVG) {
         this.fetched = false
         this.$http.get(`${this.$root.getAjaxUrl}/fields`)
           .then(response => {
-            let customFields = response.data.data.customFields
+            let customFields = response.data.data.customFields.filter(cf => cf.saveType === 'bookings')
+            let customerCustomFields = response.data.data.customFields.filter(cf => cf.saveType === 'customer')
 
             let eventsIds = this.options.entities.events.map(event => event.id)
 
@@ -238,6 +295,7 @@
             })
 
             this.customFields = customFields
+            this.customerCustomFields = customerCustomFields
 
             this.fetched = true
             if (inlineSVG) {
@@ -278,8 +336,8 @@
       dropCustomField (e) {
         if (e.newIndex !== e.oldIndex) {
           let $this = this
-          this.customFields.forEach((customField) => {
-            customField.position = $this.customFields.indexOf(customField) + 1
+          this[this.saveTypeArray].forEach((customField) => {
+            customField.position = $this[this.saveTypeArray].indexOf(customField) + 1
           })
 
           this.updateCustomFieldsPositions()
@@ -292,12 +350,12 @@
           .then(() => {
             this.notify(this.$root.labels.success, this.$root.labels.custom_fields_deleted, 'success')
 
-            let index = this.customFields.indexOf(customField)
-            this.customFields.splice(index, 1)
+            let index = this[this.saveTypeArray].indexOf(customField)
+            this[this.saveTypeArray].splice(index, 1)
 
             // Update custom fields positions
-            for (let i = 0; i < this.customFields.length; i++) {
-              this.customFields[i].position = i + 1
+            for (let i = 0; i < this[this.saveTypeArray].length; i++) {
+              this[this.saveTypeArray][i].position = i + 1
             }
             this.updateCustomFieldsPositions()
             this.fetched = true
@@ -308,12 +366,12 @@
       },
 
       updateCustomField (customField) {
-        let index = this.customFields.findIndex(field => field.id === customField.id)
+        let index = this[this.saveTypeArray].findIndex(field => field.id === customField.id)
 
         let $this = this
-        this.customFields[index].options.forEach((option, optionIndex) => {
-          if ($this.customFields[index].options[optionIndex].deleted === true) {
-            $this.customFields[index].options.splice(optionIndex, 1)
+        this[this.saveTypeArray][index].options.forEach((option, optionIndex) => {
+          if ($this[this.saveTypeArray][index].options[optionIndex].deleted === true) {
+            $this[this.saveTypeArray][index].options.splice(optionIndex, 1)
           } else {
             $this.$set(option, 'id', typeof customField.options[optionIndex].id !== 'undefined' ? customField.options[optionIndex].id : null)
             $this.$set(option, 'edited', false)
@@ -335,11 +393,13 @@
           id: null,
           label: '',
           options: [],
-          position: this.customFields.length + 1,
+          position: this[this.saveTypeArray].length + 1,
           required: true,
           services: [],
           type: type,
-          width: 50
+          width: 50,
+          saveType: this.customFieldsTab,
+          saveFirstChoice: false
         }
 
         this.$http.post(`${this.$root.getAjaxUrl}/fields`, {
@@ -347,7 +407,7 @@
         }).then((response) => {
           this.notify(this.$root.labels.success, this.$root.labels.custom_fields_added, 'success')
           this.fetched = true
-          this.customFields.push(response.data.data.customField)
+          this[this.saveTypeArray].push(response.data.data.customField)
           this.updateStashEntities({})
         }).catch(e => {
           this.notify(this.$root.labels.error, e.message, 'error')
@@ -356,7 +416,7 @@
 
       updateCustomFieldsPositions () {
         this.$http.post(`${this.$root.getAjaxUrl}/fields/positions`, {
-          customFields: this.customFields
+          customFields: this[this.saveTypeArray]
         }).then(response => {
           this.updateStashEntities({})
         }).catch(() => {

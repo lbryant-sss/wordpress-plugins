@@ -202,17 +202,23 @@ export default {
        isValidEmail: true,
        blogPosts: [],
        changelog: {
-         version: '8.2.1',
+         version: '8.3.1',
          starter: {
            feature: [
+             'Implemented option "Allow admin to book over an existing appointment"'
            ],
            improvement: [
+             'WCAG compliance for frontend forms',
+             'Updated CustomerBookingRepository so that it accepts couponId directly'
            ],
            translations: [
            ],
            bugfix: [
-             'Fixed issue with time slots that include buffer times spanning two days, particularly around midnight',
-             'Fixed issue with adding blocked customers to events'
+             'Fixed issue with customers resetting password when employee panel disabled',
+             'Fixed issue with phone country code when creating customers in the Employee panel',
+             'Fixed issue with payment status when service/appointment has more than one extras',
+             'Fixed issue with Amelia Popup',
+             'Fixed issue with payment status in CSV files of attendees',
            ],
            other: [
              'Other small bug fixes and stability improvements'
@@ -220,17 +226,22 @@ export default {
          },
          basic: {
            feature: [
+             'Social (Facebook and Google) Login/Signup including for frontend forms',
+             'Customer Custom Fields - save data related to specific customer'
            ],
            improvement: [
+             'Updated Outlook SMTP Integration to Support Modern Authentication',
+             'Updated logic to automatically assign tax to new services, events, or packages when the \'All services/events/packages\' option is selected'
            ],
            translations: [
              'Updated French translation'
            ],
            bugfix: [
-             'Fixed issue with the Step by step form when Google is connected and different timezones',
-             'Fixed issue with canceled appointments and booking new with different location',
-             'Fixed issue with Stripe 3D Secure payments',
-             'Fixed issue with deleting an employee added as Organizer to an event'
+             'Fixed issue with recurring appointments and extras on invoices',
+             'Fixed issue with events filters on the booking forms and recurring events',
+             'Fixed issue with tooltips in Outlook/Apple Integrations - event title and description',
+             'Fixed issue with Invoices and event with tickets when 100% coupon is used',
+             'Fixed issue with Mollie and cache / cacheRepository when booking events with coupons'
            ],
            other: [
            ]
@@ -243,7 +254,9 @@ export default {
            translations: [
            ],
            bugfix: [
-             'Fixed issue with WooCommerce order details when recurring/cart appointments updated'
+             'Fixed issue with services order in packages on the Customer panel',
+             "Fixed issue with Extras info on Cart when price isn't multiplied",
+             'Fixed issue with expanded info on the Cart step'
            ],
            other: [
            ]

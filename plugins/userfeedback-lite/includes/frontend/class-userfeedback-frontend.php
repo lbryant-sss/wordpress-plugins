@@ -407,7 +407,7 @@ class UserFeedback_Frontend
 
 	/**
 	 * Process individual rules with logic handling like the JavaScript function.
-	 * 
+	 *
 	 * @param array $rules Array of rules to process (AND or OR rules).
 	 * @return array Array of booleans for each rule.
 	 */
@@ -415,7 +415,7 @@ class UserFeedback_Frontend
 		$result = [];
 
 		global $post, $current_user;
-		
+
 		$user_roles = $current_user->roles;
 
 		foreach ($rules as $rule) {
@@ -443,134 +443,134 @@ class UserFeedback_Frontend
 					}
 					break;
 				}
-			
+
 				case 'page_type': {
 					$page_type = userfeedback_get_type_of_page();
 
 					$result[] = isset($page_type) && $value === $page_type;
 					break;
 				}
-			
+
 				case 'page_or_post_is': {
 					$post_id = (is_singular()) ? $post->ID : false;
 
 					$result[] = isset($post_id) && $value === $post_id;
 					break;
 				}
-			
+
 				case 'page_or_post_is_not': {
 					$post_id = (is_singular()) ? $post->ID : false;
 
 					$result[] = isset($post_id) && $value !== $post_id;
 					break;
 				}
-			
+
 				case 'post_type_is': {
 					$post_type = (is_singular()) ? get_post_type() : false;
 
 					$result[] = isset($post_type) && $value === $post_type;
 					break;
 				}
-			
+
 				case 'post_type_is_not': {
 					$post_type = (is_singular()) ? get_post_type() : false;
-					
+
 					$result[] = isset($post_type) && $value !== $post_type;
 					break;
 				}
-			
+
 				case 'taxonomy_is': {
 					$taxonomy = userfeedback_get_taxonomy();
 
 					$result[] = isset($taxonomy) && $value === $taxonomy;
 					break;
 				}
-			
+
 				case 'taxonomy_is_not': {
 					$taxonomy = userfeedback_get_taxonomy();
 
 					$result[] = isset($taxonomy) && $value !== $taxonomy;
 					break;
 				}
-			
+
 				case 'taxonomy_term_is': {
 					$taxonomy_term = userfeedback_get_term();
 
 					$result[] = isset($taxonomy_term) && $value === $taxonomy_term;
 					break;
 				}
-			
+
 				case 'taxonomy_term_is_not': {
 					$taxonomy_term = userfeedback_get_term();
 
 					$result[] = isset($taxonomy_term) && $value !== $taxonomy_term;
 					break;
 				}
-			
+
 				case 'referrer': {
 					$referrer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 
 					$result[] = isset($referrer) && (strpos($referrer, $value) !== false || strpos($value, $referrer) !== false);
 					break;
 				}
-			
+
 				case 'page_url_is': {
 					$current_url = userfeedback_get_current_url();
 
 					$result[] = isset($current_url) && strpos($current_url, $value) !== false;
 					break;
 				}
-			
+
 				case 'page_url_is_not': {
 					$current_url = userfeedback_get_current_url();
 
 					$result[] = isset($current_url) && strpos($current_url, $value) === false;
 					break;
 				}
-			
+
 				case 'page_url_contains': {
 					$current_url = userfeedback_get_current_url();
 
 					$result[] = strpos($current_url, $value) !== false;
 					break;
 				}
-			
+
 				case 'page_url_not_contains': {
 					$current_url = userfeedback_get_current_url();
 
 					$result[] = strpos($current_url, $value) === false;
 					break;
 				}
-				
+
 				case 'user_role': {
 					$result[] = in_array($value, $user_roles, true);
 					break;
 				}
-		
+
 				case 'cookie_exist': {
 					$cookie_name = $value;
 					$result[] = isset($_COOKIE[$cookie_name]);
 					break;
 				}
-		
+
 				case 'cookie_not_exist': {
 					$cookie_name = $value;
 					$result[] = !isset($_COOKIE[$cookie_name]);
 					break;
 				}
-		
+
 				case 'query_parameter_contains': {
 					$query_param = $value;
 					$result[] = isset($_GET[$query_param]) && !empty($_GET[$query_param]);
 					break;
 				}
-		
+
 				case 'query_parameter_not_contains': {
 					$query_param = $value;
 					$result[] = !isset($_GET[$query_param]);
 					break;
 				}
-		
+
 				case 'query_parameter_regex': {
 					$pattern = $value;
 					$found = false;
@@ -583,20 +583,20 @@ class UserFeedback_Frontend
 					$result[] = $found;
 					break;
 				}
-		
+
 				default:
 					// Handle unknown logic cases if needed
 					break;
 			}
 		}
-		
+
 
 		return $result;
 	}
 
 	/**
 	 * Main function to filter and return all matched surveys based on the rules.
-	 * 
+	 *
 	 * @param array $surveys Array of surveys.
 	 * @return array Array of all matching surveys.
 	 */
@@ -608,7 +608,7 @@ class UserFeedback_Frontend
 				continue;
 			}
 			$settings = $survey->settings;
-	
+
 			if (!isset($settings->targeting) || !is_object($settings->targeting)) {
 				continue;
 			}
@@ -619,7 +619,7 @@ class UserFeedback_Frontend
 				$matchedSurveys[] = $survey;
 				continue;
 			}
-	
+
 			if (!isset($targeting->page_rules) || !is_array($targeting->page_rules)) {
 				continue;
 			}
@@ -627,14 +627,14 @@ class UserFeedback_Frontend
 
 			$andRules = [];
 			$orRules = [];
-			
+
 			foreach ($rules as $index => $rule) {
 				$nextRule = isset($rules[$index + 1]) ? $rules[$index + 1] : false;
 
 				if (
 					(
 						empty($rule->operator) && $nextRule && isset($nextRule->operator) && $nextRule->operator === '||'
-					) 
+					)
 					||
 					(
 						isset($rule->operator) && $rule->operator === '||'
@@ -688,7 +688,9 @@ class UserFeedback_Frontend
 			->sort('id', 'desc')
 			->get();
 
-		$surveys = $this->filter_surveys_by_advanced_targeting( $surveys );
+		$surveys = $this->filter_surveys_by_advanced_targeting(
+			$this->filter_surveys_by_geo_restrictions( $surveys )
+		);
 
 		$surveys = array_map(
 			function ($survey) {
@@ -704,7 +706,7 @@ class UserFeedback_Frontend
 					foreach ($thank_you_config->conditions as &$condition) {
 						if (isset($condition->page->id)) {
 							$page_id = $condition->page->id;
-	
+
 							if ('publish' == get_post_status($page_id)) {
 								$condition->redirect_url = get_permalink($page_id);
 							}
@@ -719,6 +721,76 @@ class UserFeedback_Frontend
 		);
 
 		return $surveys;
+	}
+
+	/**
+	 * Filters an array of survey objects based on their geographic restrictions.
+	 *
+	 * This function iterates through each survey in the provided array and checks if it has
+	 * geo-targeting settings. If geo-targeting is enabled and set to 'select' specific
+	 * countries, it extracts the country codes and applies a filter hook
+	 * 'userfeedback_survey_show_in_country' to determine if the survey should be shown
+	 * based on the user's location (determined by the hook). Surveys without valid
+	 * geo-targeting settings are always included in the returned array.
+	 * 
+	 * @since 1.6.0
+	 *
+	 * @param array $surveys An array of survey objects. Each survey object is expected
+	 * to potentially have a 'settings' property which is an object,
+	 * and that 'settings' object may have a 'geo_targeting' property
+	 * (also an object) containing targeting information.
+	 *
+	 * @return array An array containing only the surveys that should be displayed based
+	 * on their geo-targeting restrictions (or those without restrictions).
+	 */
+	public function filter_surveys_by_geo_restrictions( $surveys ) {
+		if ( ! is_array( $surveys ) ) {
+			return $surveys;
+		}
+
+		return array_filter( $surveys, function ( $survey ) {
+			$should_match = true;
+	
+			if (
+				! isset( $survey->settings ) ||
+				! is_object( $survey->settings ) ||
+				! isset( $survey->settings->geo_targeting ) ||
+				! is_object( $survey->settings->geo_targeting )
+			) {
+				return $should_match;
+			}
+	
+			$geo_targeting = $survey->settings->geo_targeting;
+	
+			if (
+				isset( $geo_targeting->target ) &&
+				$geo_targeting->target === 'select' &&
+				is_array( $geo_targeting->countries )
+			) {
+				$country_codes = array_map(
+					function( $country ) {
+						return strtolower( $country->value );
+					},
+					array_filter( $geo_targeting->countries, function( $country ) {
+						return (
+							is_object( $country ) &&
+							isset( $country->value ) &&
+							! empty( $country->value )
+						);
+					} )
+				);
+
+				$should_match = apply_filters(
+					'userfeedback_survey_show_in_country',
+					true,
+					array(
+						'target_countries' => $country_codes
+					)
+				);
+			}
+	
+			return $should_match;
+		} );
 	}
 
 	/**
@@ -772,12 +844,12 @@ class UserFeedback_Frontend
 						$font_url,
 						array(),
 						userfeedback_get_asset_version()
-					); 
+					);
 					echo "<style>.userfeedback-widget * {
 						font-family: '{$userfeedback_settings['widget_font']['family']}' !important;
 					}</style>";
 				}
-				
+
 			},
 			20
 		);
@@ -809,7 +881,7 @@ class UserFeedback_Frontend
 		add_filter( 'script_loader_tag', function ( $tag, $handle ) {
 			if (
 				in_array(
-					$handle, 
+					$handle,
 					array(
 						'userfeedback-frontend-vendors',
 						'userfeedback-frontend-common'
@@ -819,7 +891,7 @@ class UserFeedback_Frontend
 			) {
 				return str_replace( ' src', ' defer src', $tag );
 			}
-		
+
 			return $tag;
 		}, 10, 2 );
 	}
@@ -843,7 +915,7 @@ class UserFeedback_Frontend
 		add_filter( 'script_loader_tag', function ( $tag, $handle ) {
 			if (
 				in_array(
-					$handle, 
+					$handle,
 					array(
 						'userfeedback-frontend-widget'
 					),
@@ -852,7 +924,7 @@ class UserFeedback_Frontend
 			) {
 				return str_replace( ' src', ' defer src', $tag );
 			}
-		
+
 			return $tag;
 		}, 10, 2 );
 	}
@@ -924,6 +996,7 @@ class UserFeedback_Frontend
 					'disable_all_surveys' => userfeedback_disable_all_surveys(),
 					'show_specific_survey' => userfeedback_show_specific_survey(),
 					'is_singular' => is_singular(),
+					'is_clarity_active' => function_exists( 'clarity_on_activation' ),
 				)
 			);
 

@@ -8,6 +8,7 @@
         :type="btnType"
         :size="btnSize"
         @click="goBack"
+        @keydown.enter="goBack"
       >
         {{props.btnString}}
       </AmButton>
@@ -20,6 +21,7 @@
         {{props.cartItemsNumber}}
       </span>
       <AmButton
+        aria-label="Go to cart button"
         category="secondary"
         :type="btnType"
         :size="btnSize"

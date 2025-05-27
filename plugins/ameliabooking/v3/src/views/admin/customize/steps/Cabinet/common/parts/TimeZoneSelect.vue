@@ -3,6 +3,7 @@
     v-model="timeZoneSelection"
     :filterable="true"
     :placeholder="useCurrentTimeZone()"
+    prefix-icon="globe-watch"
   >
     <AmOption
       v-for="(timeZone, index) in timeZones"

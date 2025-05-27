@@ -2,9 +2,9 @@
 Contributors: wpvivid
 Tags: duplicate, clone, migrate, staging, backup
 Requires at least: 4.5
-Tested up to: 6.8
+Tested up to: 6.8.1
 Requires PHP: 5.3
-Stable tag: 0.9.115
+Stable tag: 0.9.116
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -97,6 +97,9 @@ Yes, absolutely. Whenever you need help, start a thread on the [support forum](h
 Yes, we do. Here are the guides for [migrating your site to a new host](https://wpvivid.com/get-started-transfer-site.html), [creating a manual backup](https://wpvivid.com/get-started-create-a-manual-backup.html), [restoring your site from a backup](https://wpvivid.com/get-started-restore-site.html), and more on [our docs page](https://wpvivid.com/documents).
 
 == Changelog ==
+= 0.9.116 =
+- Fixed: Backup to OneDrive might fail in some cases.
+- Successfully tested with WordPress 6.8.1.
 = 0.9.115 =
 - Successfully tested with WordPress 6.8.
 = 0.9.114 =
@@ -653,6 +656,7 @@ Yes, we do. Here are the guides for [migrating your site to a new host](https://
 - Initial release of the plugin. Now you see it.
 
 == Upgrade Notice ==
-Latest version 0.9.115:
-= 0.9.115 =
-- Successfully tested with WordPress 6.8.
+Latest version 0.9.116:
+= 0.9.116 =
+- Fixed: Backup to OneDrive might fail in some cases.
+- Successfully tested with WordPress 6.8.1.

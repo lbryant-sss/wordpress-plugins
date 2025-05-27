@@ -2,8 +2,8 @@
 
 if (!defined('ABSPATH') && !defined('MCDATAPATH')) exit;
 
-if (!class_exists('BVProtectRequest_V593')) :
-class BVProtectRequest_V593 {
+if (!class_exists('BVProtectRequest_V602')) :
+class BVProtectRequest_V602 {
 	public $ip;
 	public $host = '';
 	public $uri;
@@ -19,8 +19,8 @@ class BVProtectRequest_V593 {
 	public $raw_body = '';
 	public $files;
 	public $respcode;
-	public $status = BVProtectRequest_V593::STATUS_ALLOWED;
-	public $category = BVProtectRequest_V593::CATEGORY_NORMAL;
+	public $status = BVProtectRequest_V602::STATUS_ALLOWED;
+	public $category = BVProtectRequest_V602::CATEGORY_NORMAL;
 
 	public $wp_user;
 
@@ -46,7 +46,7 @@ class BVProtectRequest_V593 {
 	const CATEGORY_GLOBAL_BOT_BLOCKED = 90;
 
 	public function __construct($ip_header, $config) {
-		$this->ip = BVProtectUtils_V593::getIP($ip_header);
+		$this->ip = BVProtectUtils_V602::getIP($ip_header);
 		$this->timestamp = time();
 		$this->get_params = $_GET; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$this->cookies = $_COOKIE;
@@ -124,7 +124,7 @@ class BVProtectRequest_V593 {
 
 		if ($this->can_decode_json) {
 			if ($this->getContentType() === "application/json" && !empty($this->raw_body)) {
-				$_json_params = BVProtectUtils_V593::safeDecodeJSON($this->raw_body,
+				$_json_params = BVProtectUtils_V602::safeDecodeJSON($this->raw_body,
 						true, $this->max_json_decode_depth);
 				if (isset($_json_params)) {
 					$this->json_params['JSON'] = $_json_params;
@@ -135,15 +135,15 @@ class BVProtectRequest_V593 {
 
 	public static function blacklistedCategories() {
 		return array(
-			BVProtectRequest_V593::CATEGORY_BOT_BLOCKED,
-			BVProtectRequest_V593::CATEGORY_COUNTRY_BLOCKED,
-			BVProtectRequest_V593::CATEGORY_USER_BLACKLISTED,
-			BVProtectRequest_V593::CATEGORY_GLOBAL_BOT_BLOCKED
+			BVProtectRequest_V602::CATEGORY_BOT_BLOCKED,
+			BVProtectRequest_V602::CATEGORY_COUNTRY_BLOCKED,
+			BVProtectRequest_V602::CATEGORY_USER_BLACKLISTED,
+			BVProtectRequest_V602::CATEGORY_GLOBAL_BOT_BLOCKED
 		);
 	}
 
 	public static function whitelistedCategories() {
-		return array(BVProtectRequest_V593::CATEGORY_WHITELISTED);
+		return array(BVProtectRequest_V602::CATEGORY_WHITELISTED);
 	}
 
 	public function setRespCode($code) {

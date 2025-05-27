@@ -1182,7 +1182,8 @@
                       <!-- Service -->
                       <el-col :lg="5" :sm="9">
                         <p class="am-col-title">{{ $root.labels.service }}:</p>
-                        <h4>
+                        <h4 v-if="tax.allServices">{{$root.labels.all_services}}</h4>
+                        <h4 v-else>
                           {{tax.serviceList.length > 0 ? (tax.serviceList[0].name) : ''}}
                           <br>
                           <span>
@@ -1201,7 +1202,8 @@
                       <!-- Extra -->
                       <el-col :lg="5" :sm="9">
                         <p class="am-col-title">{{ $root.labels.extra }}:</p>
-                        <h4>
+                        <h4 v-if="tax.allExtras">{{$root.labels.all_extras}}</h4>
+                        <h4 v-else>
                           {{tax.extraList.length > 0 ? (tax.extraList[0].name) : ''}}
                           <br>
                           <span>
@@ -1220,7 +1222,8 @@
                       <!-- Package -->
                       <el-col :lg="5" :sm="9">
                         <p class="am-col-title">{{ $root.labels.package }}:</p>
-                        <h4>
+                        <h4 v-if="tax.allPackages">{{$root.labels.all_packages}}</h4>
+                        <h4 v-else>
                           {{tax.packageList.length > 0 ? (tax.packageList[0].name) : ''}}
                           <br>
                           <span>
@@ -1239,7 +1242,8 @@
                       <!-- Event -->
                       <el-col :lg="5" :sm="9">
                         <p class="am-col-title">{{ $root.labels.event }}:</p>
-                        <h4>
+                        <h4 v-if="tax.allEvents">{{$root.labels.all_events}}</h4>
+                        <h4 v-else>
                           {{tax.eventList.length > 0 ? (tax.eventList[0].name) : ''}}
                           <br>
                           <span>
@@ -2354,7 +2358,7 @@ export default {
             tax[type + 'List'].forEach((item, itemIndex) => {
               let entity = this.options.entities[type + 's'].find(i => i.id === item.id)
 
-              if (typeof entity !== undefined && entity) {
+              if (typeof entity !== 'undefined' && entity) {
                 this.taxes[taxIndex][type + 'List'][itemIndex] = entity
               }
             })

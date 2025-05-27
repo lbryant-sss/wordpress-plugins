@@ -2,6 +2,7 @@
   <div
     class="am-cat__wrapper"
     :class="wrapperClass"
+    role="main"
   >
     <div
       ref="catHeader"
