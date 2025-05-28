@@ -678,7 +678,7 @@
         };
 
         plugin.reverseRightAlignedItems = function() {
-            if ( ! $("body").hasClass("rtl") && $menu.hasClass("mega-menu-horizontal") ) {
+            if ( ! $("body").hasClass("rtl") && $menu.hasClass("mega-menu-horizontal") && $menu.css("display") !== 'flex' ) {
                 $menu.append($menu.children("li.mega-item-align-right").get().reverse());
             }
         };

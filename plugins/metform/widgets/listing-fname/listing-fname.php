@@ -11,6 +11,10 @@ Class MetForm_Input_Listing_Fname extends Widget_Base{
     public function get_name() {
 		return 'mf-listing-fname';
     }
+
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_first_name';
+	}
     
 	public function get_title() {
 		return esc_html__( 'First Name (Listing)', 'metform' );

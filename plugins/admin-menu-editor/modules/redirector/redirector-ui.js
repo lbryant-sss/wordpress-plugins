@@ -18,20 +18,20 @@ var AmeRedirectorUi;
     class AbstractTriggerDictionary {
     }
     const DefaultActorId = 'special:default';
-    const defaultActor = {
+    const defaultActor = new class {
         getDisplayName() {
             return 'Default';
-        },
+        }
         getId() {
             return DefaultActorId;
-        },
+        }
         isUser() {
             return false;
-        },
+        }
         hasOwnCap(_) {
             return null;
         }
-    };
+    }();
     class Redirect {
         constructor(properties, actorProvider = null) {
             this.actorId = properties.actorId;
@@ -75,20 +75,20 @@ var AmeRedirectorUi;
                         console.warn('Redirect constructor - Actor not found: ', this.actorId);
                     }
                     const missingActorId = this.actorId;
-                    this.actor = {
+                    this.actor = new class {
                         getDisplayName() {
                             return 'Missing role or user';
-                        },
+                        }
                         getId() {
                             return missingActorId;
-                        },
+                        }
                         isUser() {
                             return false;
-                        },
+                        }
                         hasOwnCap(_) {
                             return null;
                         }
-                    };
+                    }();
                 }
             }
             this.actorTypeNoun = ko.pureComputed(() => {

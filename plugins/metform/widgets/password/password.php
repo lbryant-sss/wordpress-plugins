@@ -15,6 +15,10 @@ Class MetForm_Input_Password extends Widget_Base{
 	public function get_title() {
 		return esc_html__( 'Password', 'metform' );
 	}
+
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_password';
+	}
 	
 	public function show_in_panel() {
         return 'metform-form' == get_post_type();

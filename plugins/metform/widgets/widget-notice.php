@@ -8,8 +8,6 @@ trait Widget_Notice{
      */
     public function insert_pro_message()
     {
-
-        return;
         
         if(!class_exists('\MetForm_Pro\Plugin')){
             $this->start_controls_section(
@@ -31,7 +29,7 @@ trait Widget_Notice{
                         ],
                     ],
                     'default' => '1',
-                    'description' => '<span class="ekit-widget-pro-feature"> Get the  <a href="https://wpmet.com/metform-pricing" target="_blank">Pro version</a> for more awesome elements and powerful modules.</span>',
+                    'description' => '<span class="mf-widget-pro-feature"> Get the  <a href="https://wpmet.com/plugin/metform/pricing/" target="_blank">Pro version</a> for more awesome elements and powerful modules.</span>',
                 ]
             );
 

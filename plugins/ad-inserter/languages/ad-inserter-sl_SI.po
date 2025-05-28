@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ad Inserter 2.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ad-inserter\n"
-"POT-Creation-Date: 2025-01-26 17:49:30+00:00\n"
-"PO-Revision-Date: 2025-01-26 18:57+0100\n"
+"POT-Creation-Date: 2025-05-26 15:36:38+00:00\n"
+"PO-Revision-Date: 2025-05-26 17:41+0200\n"
 "Last-Translator: Igor Funa <info@adinserter.pro>\n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -14,150 +14,150 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && "
 "n%100<=4 ? 2 : 3);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.6\n"
 
 #. translators: %s: Ad Inserter
-#: ad-inserter.php:405
+#: ad-inserter.php:416
 msgid "Caching disabled by %s settings"
 msgstr "Predpomnjenje onemogočeno zaradi nastavitev %s"
 
-#: ad-inserter.php:490
+#: ad-inserter.php:501
 msgctxt "Menu item"
 msgid "Debugging DEMO"
 msgstr "DEMO Razhroščevanje"
 
-#: ad-inserter.php:507
+#: ad-inserter.php:518
 msgctxt "Menu item, to disable debugging"
 msgid "Disable Debugging"
 msgstr "Onemogoči Razhroščevanje"
 
-#: ad-inserter.php:515
+#: ad-inserter.php:526
 msgctxt "Menu item, to label blocks"
 msgid "Label Blocks"
 msgstr "Označi bloke"
 
-#: ad-inserter.php:522
+#: ad-inserter.php:533
 msgctxt "Menu item"
 msgid "Show Positions"
 msgstr "Pokaži položaje"
 
-#: ad-inserter.php:608
+#: ad-inserter.php:619
 msgctxt "Menu item"
 msgid "Show HTML Tags"
 msgstr "Pokaži HTML značke"
 
-#: ad-inserter.php:615
+#: ad-inserter.php:626
 msgctxt "Menu item"
 msgid "Disable Insertion"
 msgstr "Onemogoči vstavljanje"
 
-#: ad-inserter.php:624
+#: ad-inserter.php:635
 msgctxt "Menu item"
 msgid "Ad Blocking Status"
 msgstr "Status blokiranja oglasov"
 
-#: ad-inserter.php:631
+#: ad-inserter.php:642
 msgctxt "Menu item"
 msgid "Simulate Ad Blocking"
 msgstr "Simuliraj blokiranje oglasov"
 
-#: ad-inserter.php:642
+#: ad-inserter.php:653
 msgctxt "Menu item"
 msgid "Log Processing"
 msgstr "Beleži procesiranje"
 
-#: ad-inserter.php:649
+#: ad-inserter.php:660
 msgctxt "Menu item"
 msgid "Show Log"
 msgstr "Pokaži beležko"
 
 #. translators: Debugging position name Before HTML element
-#: ad-inserter.php:1360
+#: ad-inserter.php:1371
 msgid "Before"
 msgstr "Pred"
 
 #. translators: Debugging position name After HTML element
-#: ad-inserter.php:1365
+#: ad-inserter.php:1376
 msgid "After"
 msgstr "Za"
 
 #. translators: Debugging position name Prepend content of HTML element (before
 #. the content of the HTML element)
-#: ad-inserter.php:1370 strings.php:107
+#: ad-inserter.php:1381 strings.php:107
 msgid "Prepend content"
 msgstr "Dodaj pred vsebino"
 
 #. translators: Debugging position name Append content of HTML element (after
 #. the content of the HTML element)
-#: ad-inserter.php:1375 strings.php:108
+#: ad-inserter.php:1386 strings.php:108
 msgid "Append content"
 msgstr "Dodaj za vsebino"
 
 #. translators: Debugging position name Replace content of HTML element
-#: ad-inserter.php:1380 strings.php:109
+#: ad-inserter.php:1391 strings.php:109
 msgid "Replace content"
 msgstr "Nadomesti vsebino"
 
 #. translators: Debugging position name Replace HTML element
-#: ad-inserter.php:1385 strings.php:174
+#: ad-inserter.php:1396 strings.php:174
 msgid "Replace"
 msgstr "Nadomesti"
 
 #. translators: Debugging message when output buffering is enabled
-#: ad-inserter.php:1432
+#: ad-inserter.php:1443
 msgid "OUTPUT BUFFERING"
 msgstr "PREDPOMNJENJE IZHODA"
 
 #. translators: Debugging position
-#: ad-inserter.php:1436
+#: ad-inserter.php:1447
 msgid "Above Header"
 msgstr "Nad Glavo"
 
-#: ad-inserter.php:1497
+#: ad-inserter.php:1508
 msgid "CONTENT MARKER"
 msgstr "OZNAČEVALEC VSEBINE"
 
-#: ad-inserter.php:1770
+#: ad-inserter.php:1781
 msgctxt "Menu item"
 msgid "Log In"
 msgstr "Prijava"
 
 #. translators: %s: Ad Inserter
-#: ad-inserter.php:2190 ad-inserter.php:2193 ad-inserter.php:3774
+#: ad-inserter.php:2201 ad-inserter.php:2204 ad-inserter.php:3788
 msgid "%s Settings"
 msgstr "%s Nastavitve"
 
 #. translators: AD BLOCKING DETECTED, PAGE VIEWS: n - NO ACTION
-#: ad-inserter.php:2995
+#: ad-inserter.php:3006
 msgid "AD BLOCKING DETECTED, PAGE VIEWS"
 msgstr "ZAZNANO BLOKIRANJE OGLASOV, OGLEDI STRANI"
 
-#: ad-inserter.php:2995
+#: ad-inserter.php:3006
 msgid "NO ACTION"
 msgstr "NI AKCIJE"
 
-#: ad-inserter.php:2996
+#: ad-inserter.php:3007
 msgid "AD BLOCKING DETECTED, COOKIE DETECTED - NO ACTION"
 msgstr "ZAZNANO BLOKIRANJE OGLASOV, ZAZNAN PIŠKOTEK, NI AKCIJE"
 
-#: ad-inserter.php:2997
+#: ad-inserter.php:3008
 msgid "AD BLOCKING DETECTED - ACTION"
 msgstr "ZAZNANO BLOKIRANJE OGLASOV - AKCIJA"
 
-#: ad-inserter.php:2998
+#: ad-inserter.php:3009
 msgid "AD BLOCKING NOT DETECTED"
 msgstr "BLOKIRANJE OGLASOV NI ZAZNANO"
 
-#: ad-inserter.php:2999
+#: ad-inserter.php:3010
 msgid "AD BLOCKING DETECTION COOKIES DELETED"
 msgstr "PIŠKOTKI ZA ZAZNAVANJE BLOKIRANJA OGLASOV POBRISANI"
 
-#: ad-inserter.php:3000
+#: ad-inserter.php:3011
 msgid "AD BLOCKING DETECTED - NO ACTION"
 msgstr "ZAZNANO BLOKIRANJE OGLASOV - NI AKCIJE"
 
 #. Translators: 1: number of blocks, 2: Ad Inserter
-#: ad-inserter.php:3456
+#: ad-inserter.php:3470
 msgid "Hey, you are now using %1$s %2$s block."
 msgid_plural "Hey, you are now using %1$s %2$s blocks."
 msgstr[0] "Hej, trenutno uporabljate %1$s %2$s blok."
@@ -165,24 +165,24 @@ msgstr[1] "Hej, trenutno uporabljate %1$s %2$s bloka."
 msgstr[2] "Hej, trenutno uporabljate %1$s %2$s bloke."
 msgstr[3] "Hej, trenutno uporabljate %1$s %2$s blokov."
 
-#: ad-inserter.php:3459
+#: ad-inserter.php:3473
 msgid "Please help me to solve a problem first"
 msgstr "Najprej mi, prosim, pomagajte rešiti problem"
 
-#: ad-inserter.php:3463
+#: ad-inserter.php:3477
 msgid "Maybe later"
 msgstr "Mogoče kasneje"
 
 #. Translators: %s: Ad Inserter
-#: ad-inserter.php:3468
+#: ad-inserter.php:3482
 msgid "Hey, you are using %s and I hope you're happy with it."
 msgstr "Hej, uporabljate %s in upam, da ste zadovoljni z njim."
 
-#: ad-inserter.php:3471
+#: ad-inserter.php:3485
 msgid "OK, but please help me with the settings first"
 msgstr "V redu, ampak najprej mi, prosim, pomagajte pri nastavitvah"
 
-#: ad-inserter.php:3484
+#: ad-inserter.php:3498
 msgid ""
 "Please take a moment to rate the plugin. When you rate it with 5 stars it's "
 "like saying 'Thank you'. Somebody will be happy."
@@ -190,7 +190,7 @@ msgstr ""
 "Prosimo, vzemite si čas in ocenite vtičnik. Ko ga ocenite s 5-imi zvezdicami "
 "je kot bi rekli 'Hvala'. Nekdo bo vsesel."
 
-#: ad-inserter.php:3486
+#: ad-inserter.php:3500
 msgid ""
 "Positive reviews are a great incentive to fix bugs and to add new features "
 "for better monetization of your website."
@@ -198,33 +198,33 @@ msgstr ""
 "Pozitivne ocene so velika vzpodbuda za odpravo hroščev in dodajanje novih "
 "funkcij za boljšo monetizacijo vašega spletnega mesta."
 
-#: ad-inserter.php:3492
+#: ad-inserter.php:3506
 msgid "Sure"
 msgstr "Seveda"
 
 #. translators: 1: AMPforWP Plugin Manager, 2: Ad Inserter
 #. translators: 1: AMPforWP Plugin Manager, 2: Ad Inserter, 3, 4: HTML tags
-#: ad-inserter.php:3509 ad-inserter.php:3552
+#: ad-inserter.php:3523 ad-inserter.php:3566
 msgid "Warning: %1$s %3$s disabled %4$s %2$s on AMP pages."
 msgstr "Opozorilo: %1$s %3$s je onemogočil %4$s %2$s na AMP straneh."
 
 #. translators: 1: Ad Inserter, 2, 3: HTML tags
-#: ad-inserter.php:3516
+#: ad-inserter.php:3530
 msgid "Warning: %1$s requires PHP 5.6 or newer. %2$s Please update! %3$s"
 msgstr ""
 "Opozorilo: %1$s yahteva PHP 5.6 ali novejši. %2$s Prosimo, posodobite! %3$s"
 
 #. translators: 1: Ad Inserter, 2, 3: HTML tags
-#: ad-inserter.php:3523
+#: ad-inserter.php:3537
 msgid "Error: plugin settings corrupt"
 msgstr "Napaka: okvarjene nastavitve vtičnika"
 
-#: ad-inserter.php:3534
+#: ad-inserter.php:3548
 msgctxt "Menu item"
 msgid "Settings"
 msgstr "Nastavitve"
 
-#: ad-inserter.php:3567
+#: ad-inserter.php:3581
 msgid ""
 "Load settings page in safe mode to avoid collisions with other plugins or "
 "theme"
@@ -232,85 +232,85 @@ msgstr ""
 "Naložite stran z nastavitvami v varnem načinu za preprečitev konfliktov z "
 "drugimi vtičniki ali temo"
 
-#: ad-inserter.php:3567
+#: ad-inserter.php:3581
 msgid "Safe mode"
 msgstr "Varni način"
 
 #. translators: %s: Ad Inserter
-#: ad-inserter.php:3662
+#: ad-inserter.php:3676
 msgctxt "Meta box name"
 msgid "%s Individual Exceptions"
 msgstr "Posamezne Izjeme za %s"
 
-#: ad-inserter.php:3691 ad-inserter.php:12656 class.php:2629
+#: ad-inserter.php:3705 ad-inserter.php:12687 class.php:2629
 #: includes/preview.php:2439 includes/preview.php:2484
-#: includes/preview.php:2521 settings.php:4926 strings.php:3 strings.php:210
+#: includes/preview.php:2521 settings.php:4911 strings.php:3 strings.php:210
 msgid "Block"
 msgstr "Blok"
 
-#: ad-inserter.php:3692 includes/functions-test-20241129.php:4966
+#: ad-inserter.php:3706 includes/functions-test-20241129.php:4966
 #: includes/functions-test-transients.php:4967 includes/functions-test.php:4967
-#: includes/functions.php:4954 settings.php:4934 settings.php:5026
+#: includes/functions.php:4967 settings.php:4919 settings.php:5011
 msgid "Name"
 msgstr "Ime"
 
-#: ad-inserter.php:3695 settings.php:1382
+#: ad-inserter.php:3709 settings.php:1382
 msgid "Default insertion"
 msgstr "Privzeto vstavljanje"
 
 #. translators: For this post or page
-#: ad-inserter.php:3698
+#: ad-inserter.php:3712
 msgctxt "Page"
 msgid "For this"
 msgstr "Za to"
 
-#: ad-inserter.php:3699
+#: ad-inserter.php:3713
 msgctxt "Post"
 msgid "For this"
 msgstr "Za ta"
 
-#: ad-inserter.php:3711
+#: ad-inserter.php:3725
 msgctxt "Enabled/disabled on all"
 msgid "pages"
 msgstr "straneh"
 
-#: ad-inserter.php:3714
+#: ad-inserter.php:3728
 msgctxt "Enabled/disabled on all"
 msgid "posts"
 msgstr "prispevkih"
 
-#: ad-inserter.php:3733 ad-inserter.php:3745 strings.php:180
+#: ad-inserter.php:3747 ad-inserter.php:3759 strings.php:180
 msgid "Enabled"
 msgstr "Omogočeno"
 
 #. translators: Menu items
-#: ad-inserter.php:3733 ad-inserter.php:3745
+#: ad-inserter.php:3747 ad-inserter.php:3759
 #: includes/functions-check-now.php:2402
 #: includes/functions-test-20241129.php:3226
 #: includes/functions-test-20241129.php:3589
 #: includes/functions-test-transients.php:3227
 #: includes/functions-test-transients.php:3590 includes/functions-test.php:3227
-#: includes/functions-test.php:3590 includes/functions.php:3211
-#: includes/functions.php:3574 strings.php:16
+#: includes/functions-test.php:3590 includes/functions.php:3210
+#: includes/functions.php:3573 strings.php:16
 msgid "Disabled"
 msgstr "Onemogočeno"
 
-#: ad-inserter.php:3735
+#: ad-inserter.php:3749
 msgid "No individual exceptions"
 msgstr "Ni posameznih izjem"
 
 #. translators: Not enabled for pages or posts
-#: ad-inserter.php:3737
+#: ad-inserter.php:3751
 msgid "Not enabled for"
 msgstr "Ni omogočeno za"
 
 #. translators: No individual exceptions enabled for pages or posts
-#: ad-inserter.php:3765
+#: ad-inserter.php:3779
 msgid "No block has individual exceptions enabled"
 msgstr "Noben blok nima omogočenih posameznih izjem"
 
 #. translators: 1: Ad Inserter Settings (page), 2: Tag / Archive pages
-#: ad-inserter.php:3772
+#: ad-inserter.php:3786
 msgid ""
 "Default insertion can be configured for each block on %1$s page - button "
 "next to %2$s checkbox."
@@ -318,11 +318,11 @@ msgstr ""
 "Privzeto vstavljanje se lahko nastavi za vsak blok na strani %1$s - gumb "
 "poleg kljukice za vklop %2$s."
 
-#: ad-inserter.php:3775 settings.php:1360
+#: ad-inserter.php:3789 settings.php:1360
 msgid "Tag / Archive pages"
 msgstr "Strani oznak / arhiva"
 
-#: ad-inserter.php:3777
+#: ad-inserter.php:3791
 msgid ""
 "When individual exceptions for a block are enabled, a checkbox will be "
 "listed here to change default insertion for this post or page."
@@ -330,7 +330,7 @@ msgstr ""
 "Ko so posamezne izjeme za blok vključene, se bo tukaj izpisala kljukica za "
 "spremembo privzetega vstavljanja za ta prispevek ali stran."
 
-#: ad-inserter.php:3778
+#: ad-inserter.php:3792
 msgid ""
 "This way you can individually enable or disable blocks on specific posts or "
 "pages."
@@ -338,65 +338,65 @@ msgstr ""
 "Na ta način lahko posamezno omogočite ali onemogočite blok na določenem "
 "prispevku ali strani."
 
-#: ad-inserter.php:3780
+#: ad-inserter.php:3794
 msgid "For more information check page %s"
 msgstr "Za več informacij poglejte stran %s"
 
 #. translators: Ad Inserter Exceptions documentation page
-#: ad-inserter.php:3782
+#: ad-inserter.php:3796
 msgid "Individual Exceptions"
 msgstr "Posamezne Izjeme"
 
-#: ad-inserter.php:3828
+#: ad-inserter.php:3842
 msgid "STATIC PAGE"
 msgstr "STATIČNA STRAN"
 
-#: ad-inserter.php:3831
+#: ad-inserter.php:3845
 msgid "POST"
 msgstr "PRISPEVEK"
 
-#: ad-inserter.php:3834
+#: ad-inserter.php:3848
 msgid "HOMEPAGE"
 msgstr "DOMAČA STRAN"
 
-#: ad-inserter.php:3837
+#: ad-inserter.php:3851
 msgid "CATEGORY PAGE"
 msgstr "STRAN KATEGORIJE"
 
-#: ad-inserter.php:3840
+#: ad-inserter.php:3854
 msgid "SEARCH PAGE"
 msgstr "STRAN ISKANJE"
 
-#: ad-inserter.php:3843
+#: ad-inserter.php:3857
 msgid "ARCHIVE PAGE"
 msgstr "STRAN ARHIVA"
 
-#: ad-inserter.php:3846
+#: ad-inserter.php:3860
 msgid "ERROR 404 PAGE"
 msgstr "STRAN NAPAKA 404"
 
-#: ad-inserter.php:3849
+#: ad-inserter.php:3863
 msgid "AJAX CALL"
 msgstr "AJAX KLIC"
 
-#: ad-inserter.php:3852
+#: ad-inserter.php:3866
 msgid "REST CALL"
 msgstr "KLIC REST"
 
-#: ad-inserter.php:3855
+#: ad-inserter.php:3869
 msgid "UNKNOWN PAGE TYPE"
 msgstr "NEZNAN TIP STRANI"
 
-#: ad-inserter.php:3872
+#: ad-inserter.php:3886
 msgid "Click to delete ad blocking detection cokies"
 msgstr "Klikni za brisanje piškotkov za zaznavanje blokiranja oglasov"
 
-#: ad-inserter.php:3873
+#: ad-inserter.php:3887
 msgid "AD BLOCKING STATUS UNKNOWN"
 msgstr "NEZNAN STATUS BLOKIRANJA OGLASOV"
 
 #. translators: %s: AdSense Auto Ads
-#: ad-inserter.php:3902
+#: ad-inserter.php:3916
 msgid ""
 "Code for %s detected - Code will automatically insert AdSense ads at optimal "
 "positions"
@@ -404,11 +404,11 @@ msgstr ""
 "Zaznana koda za %s - Koda bo samodejno vstavila oglase AdSense na optimalne "
 "položaje"
 
-#: ad-inserter.php:4054
+#: ad-inserter.php:4068
 msgid "Code for insertion"
 msgstr "Koda za vstavljanje"
 
-#: ad-inserter.php:4054
+#: ad-inserter.php:4068
 msgid "character"
 msgid_plural "characters"
 msgstr[0] "znak"
@@ -416,16 +416,16 @@ msgstr[1] "znaka"
 msgstr[2] "znaki"
 msgstr[3] "znakov"
 
-#: ad-inserter.php:4075
+#: ad-inserter.php:4089
 msgid "Header code"
 msgstr "Koda v glavi"
 
-#: ad-inserter.php:4075
+#: ad-inserter.php:4089
 msgctxt "Header code"
 msgid "DISABLED"
 msgstr "ONEMOGOČENA"
 
-#: ad-inserter.php:4075 ad-inserter.php:4346
+#: ad-inserter.php:4089 ad-inserter.php:4360
 msgid "character inserted"
 msgid_plural "characters inserted"
 msgstr[0] "znak vstavljen"
@@ -433,58 +433,58 @@ msgstr[1] "znaka vstavljena"
 msgstr[2] "znaki vstavljeni"
 msgstr[3] "znakov vstavljenih"
 
-#: ad-inserter.php:4095
+#: ad-inserter.php:4109
 msgid "Click to delete the cookie for the consents"
 msgstr "Klikni za brisanje piškotka za soglasja"
 
-#: ad-inserter.php:4100 ad-inserter.php:4355
+#: ad-inserter.php:4114 ad-inserter.php:4369
 msgid "UNFILTERED HTML DISABLED"
 msgstr "NEFILTRIRANI HTML ONEMOGOČEN"
 
-#: ad-inserter.php:4346
+#: ad-inserter.php:4360
 msgid "Footer code"
 msgstr "Koda v nogi"
 
-#: ad-inserter.php:4346
+#: ad-inserter.php:4360
 msgctxt "Footer code"
 msgid "DISABLED"
 msgstr "ONEMOGOČENA"
 
-#: ad-inserter.php:4360
+#: ad-inserter.php:4374
 msgid "JAVASCRIPT NOT WORKING"
 msgstr "JAVASCRIPT NE DELA"
 
-#: ad-inserter.php:4360
+#: ad-inserter.php:4374
 msgid "NO JAVASCRIPT ERRORS"
 msgstr "BREZ JAVASCRIPT NAPAK"
 
-#: ad-inserter.php:4360
+#: ad-inserter.php:4374
 msgid "JAVASCRIPT ERRORS"
 msgstr "JAVASCRIPT NAPAKE"
 
 #. translators: %s: Ad Inserter
-#: ad-inserter.php:7841 ad-inserter.php:8176
+#: ad-inserter.php:7856 ad-inserter.php:8191
 msgid "Invalid data received - %s settings not saved."
 msgstr "Prejeti neveljavni podatki - nastavitve %s niso shranjene."
 
-#: ad-inserter.php:7885
+#: ad-inserter.php:7900
 msgid "plugin settings imported"
 msgstr "nastavitve vtičnika uvožene"
 
-#: ad-inserter.php:7891
+#: ad-inserter.php:7906
 msgid "blocks %d to %d"
 msgstr "bloki %d do %d"
 
-#: ad-inserter.php:7911
+#: ad-inserter.php:7926
 msgid "block %d settings imported"
 msgstr "nastavitve bloka %d uvožene"
 
 #. translators: %s: Ad Inserter
-#: ad-inserter.php:8143
+#: ad-inserter.php:8158
 msgid "Error importing %s settings."
 msgstr "Napaka pri uvozu %s nastavitev."
 
-#: ad-inserter.php:8144
+#: ad-inserter.php:8159
 msgid "Error importing settings for block"
 msgid_plural "Error importing settings for blocks:"
 msgstr[0] "Napaka pri uvozu nastavitev za blok"
@@ -492,24 +492,24 @@ msgstr[1] "Napaka pri uvozu nastavitev za bloka:"
 msgstr[2] "Napaka pri uvozu nastavitev za bloke:"
 msgstr[3] "Napaka pri uvozu nastavitev za bloke:"
 
-#: ad-inserter.php:8172
+#: ad-inserter.php:8187
 msgid "Settings saved."
 msgstr "Nastavitve shranjene."
 
-#: ad-inserter.php:8174
+#: ad-inserter.php:8189
 msgid "settings saved"
 msgstr "nastavitve shranjene"
 
-#: ad-inserter.php:8196
+#: ad-inserter.php:8211
 msgid "Settings cleared."
 msgstr "Nastavitve ponastavljene."
 
-#: ad-inserter.php:8198
+#: ad-inserter.php:8213
 msgid "settings cleared"
 msgstr "nastavitve ponastavljene"
 
 #. Translators: Post/Static page must have between X and Y words
-#: ad-inserter.php:8583 ad-inserter.php:8585 ad-inserter.php:8608
+#: ad-inserter.php:8598 ad-inserter.php:8600 ad-inserter.php:8623
 #: settings.php:2417
 msgid "word"
 msgid_plural "words"
@@ -518,43 +518,43 @@ msgstr[1] "besedi"
 msgstr[2] "besede"
 msgstr[3] "besed"
 
-#: ad-inserter.php:8622 ad-inserter.php:8749
+#: ad-inserter.php:8637 ad-inserter.php:8764
 msgid "HTML TAGS REMOVED"
 msgstr "HTML ZNAČKE ODSTRANJENE"
 
-#: ad-inserter.php:8828
+#: ad-inserter.php:8843
 msgid "BEFORE COMMENTS"
 msgstr "PRED KOMENTARJI"
 
-#: ad-inserter.php:8957
+#: ad-inserter.php:8972
 msgid "AFTER COMMENTS"
 msgstr "PO KOMETARJIH"
 
-#: ad-inserter.php:9034
+#: ad-inserter.php:9049
 msgid "BETWEEN COMMENTS"
 msgstr "MED KOMENTARJI"
 
-#: ad-inserter.php:11830 ad-inserter.php:11931
+#: ad-inserter.php:11845 ad-inserter.php:11946
 msgctxt "category name"
 msgid "Uncategorized"
 msgstr "Nekategorizirano"
 
-#: ad-inserter.php:12236
+#: ad-inserter.php:12266
 msgid "requires WordPress 4.6 or newer"
 msgstr "potrebuje WordPress 4.6 ali novejši"
 
-#: ad-inserter.php:12236
+#: ad-inserter.php:12266
 msgid "Please update!"
 msgstr "Prosimo, posodobite!"
 
 #. translators: Opt-in message: Thank you for installing Ad Inserter (plugin
 #. name with HTML tags will be added)
-#: ad-inserter.php:12521
+#: ad-inserter.php:12552
 msgid "Thank you for installing"
 msgstr "Hvala za namestitev vtičnika"
 
 #. translators: Opt-in message: %s: HTML tags
-#: ad-inserter.php:12523
+#: ad-inserter.php:12554
 msgid ""
 "We would like to %s track its usage %s on your site. This is completely "
 "optional and can be disabled at any time."
@@ -562,7 +562,7 @@ msgstr ""
 "Radi bi %s sledili njegovi uporabi %s na vašem spletnem mestu. To je povsem "
 "izbirno in se lahko izključi kadarkoli."
 
-#: ad-inserter.php:12525
+#: ad-inserter.php:12556
 msgid ""
 "We don't record any sensitive data, only information regarding the WordPress "
 "environment and plugin usage, which will help us to make improvements to the "
@@ -572,7 +572,7 @@ msgstr ""
 "uporabe vtičnika, kar nam bo omogočilo izdelavo izboljšav za vtičnik."
 
 #. translators: Deactivation message: %s: HTML tags
-#: ad-inserter.php:12565
+#: ad-inserter.php:12596
 msgid ""
 "Looking for %s Documentation, %s %s Common Settings, %s %s Quick Start %s or "
 "help for %s AdSense ads? %s The plugin doesn't work with your theme? %s Let "
@@ -583,52 +583,52 @@ msgstr ""
 "nam %s in poskušali vam bomo pomagati."
 
 #. translators: %s: Ad Inserter
-#: ad-inserter.php:12613
+#: ad-inserter.php:12644
 msgid "%s block."
 msgstr "%s blok."
 
 #. translators: widget title
-#: ad-inserter.php:12629 ad-inserter.php:12665
+#: ad-inserter.php:12660 ad-inserter.php:12696
 msgid "Processing log"
 msgstr "Dnevnik procesiranja"
 
 #. translators: widget title
-#: ad-inserter.php:12631 ad-inserter.php:12666
+#: ad-inserter.php:12662 ad-inserter.php:12697
 msgid "Dummy widget"
 msgstr "Prazen gradnik"
 
 #. translators: widget title
-#: ad-inserter.php:12633 ad-inserter.php:12664
+#: ad-inserter.php:12664 ad-inserter.php:12695
 msgid "Debugging tools"
 msgstr "Orodja za razhroščevanje"
 
 #. translators: block status (widget title)
-#: ad-inserter.php:12640
+#: ad-inserter.php:12671
 msgctxt "block"
 msgid "PAUSED"
 msgstr "USTAVLJEN"
 
-#: ad-inserter.php:12641
+#: ad-inserter.php:12672
 msgid "WIDGET DISABLED"
 msgstr "GRADNIK ONEMOGOČEN"
 
-#: ad-inserter.php:12642
+#: ad-inserter.php:12673
 msgid "Unknown block"
 msgstr "Neznan blok"
 
-#: ad-inserter.php:12651 includes/functions-check-now.php:3262
+#: ad-inserter.php:12682 includes/functions-check-now.php:3262
 #: includes/functions-test-20241129.php:5453
 #: includes/functions-test-transients.php:5454 includes/functions-test.php:5454
-#: includes/functions.php:5825 settings.php:1412
+#: includes/functions.php:5838 settings.php:1412
 msgid "Title"
 msgstr "Naslov"
 
-#: ad-inserter.php:12673
+#: ad-inserter.php:12704
 msgctxt "Widget"
 msgid "Sticky"
 msgstr "Lepljiv"
 
-#: ad-inserter.php:12724
+#: ad-inserter.php:12755
 msgid ""
 "Ad Inserter can't be used while Ad Inserter Pro is active! To activate Ad "
 "Inserter you need to first deactivate Ad Inserter Pro."
@@ -637,7 +637,7 @@ msgstr ""
 "aktiven! Za aktivacijo vtičnika Ad Inserter morate najprej onemogočiti Ad "
 "Inserter Pro."
 
-#: ad-inserter.php:12725
+#: ad-inserter.php:12756
 msgid ""
 "<strong>WARNING</strong>: Please note that saving settings in Ad Inserter "
 "will clear all settings that are available only in the Pro version "
@@ -676,11 +676,11 @@ msgstr "Za prispevkom"
 msgid "Between posts"
 msgstr "Med prispevki"
 
-#: class.php:2608 settings.php:2146 settings.php:4951
+#: class.php:2608 settings.php:2146 settings.php:4936
 msgid "Widget"
 msgstr "Gradnik"
 
-#: class.php:2613 settings.php:4949
+#: class.php:2613 settings.php:4934
 msgid "PHP function call"
 msgstr "Klic PHP funkcije"
 
@@ -731,12 +731,12 @@ msgctxt "viewports"
 msgid "ALL"
 msgstr "VSI"
 
-#: class.php:3017 class.php:3058 class.php:4914 strings.php:294
+#: class.php:3017 class.php:3058 class.php:4944 strings.php:294
 msgctxt "Block"
 msgid "HIDDEN"
 msgstr "SKRIT"
 
-#: class.php:3065 class.php:4917 strings.php:293
+#: class.php:3065 class.php:4947 strings.php:293
 msgctxt "Block"
 msgid "VISIBLE"
 msgstr "VIDEN"
@@ -756,94 +756,94 @@ msgctxt "Block"
 msgid "FALLBACK CODE"
 msgstr "REZERVNA KODA"
 
-#: class.php:3963 class.php:4061
+#: class.php:3993 class.php:4091
 msgid "ACTIVATED GROUPS"
 msgstr "AKTIVNE SKUPINE"
 
 #. translators: %s: NO CODE FOR INSERTION ON NORMAL/AMP PAGES
-#: class.php:4187
+#: class.php:4217
 msgid "NO CODE FOR INSERTION ON %s PAGES"
 msgstr "NI KODE ZA VSTAVLJANJE NA %s STRANEH"
 
 #. translators: %s: NO CODE FOR INSERTION ON NORMAL/AMP PAGES
-#: class.php:4189
+#: class.php:4219
 msgid "NORMAL"
 msgstr "NAVADNIH"
 
-#: class.php:4585
+#: class.php:4615
 msgid "start='%s' end='%s' days='%s' type='%s'"
 msgstr "začetek='%s' konec='%s' dnevi='%s' tip='%s'"
 
-#: class.php:4593
+#: class.php:4623
 msgid "parameters='%s' type='%s'"
 msgstr "parametri='%s' tip='%s'"
 
-#: class.php:4595
+#: class.php:4625
 msgid "cookies='%s' type='%s'"
 msgstr "piškotki='%s' tip='%s'"
 
 #. translators: %s: list parameters and type
-#: class.php:4597
+#: class.php:4627
 msgid "referers='%s' type='%s'"
 msgstr "napotitelji='%s' tip='%s'"
 
 #. translators: %s: list parameters and type
-#: class.php:4599
+#: class.php:4629
 msgid "clients='%s' type='%s'"
 msgstr "odjemalci='%s' tip='%s'"
 
 #. translators: %s: list parameters and type
-#: class.php:4796
+#: class.php:4826
 msgid "countries='%s' type='%s'"
 msgstr "države='%s' tip='%s'"
 
 #. translators: %s: list parameters and type
-#: class.php:4798
+#: class.php:4828
 msgid "ip addresses='%s' type='%s'"
 msgstr "ip naslovi='%s' tip='%s'"
 
-#: class.php:4914 class.php:4917
+#: class.php:4944 class.php:4947
 msgid "viewport='%s' type='%s'"
 msgstr "pogled='%s' tip='%s'"
 
-#: class.php:5052 strings.php:295
+#: class.php:5082 strings.php:295
 msgctxt "alternative block"
 msgid "FALLBACK"
 msgstr "REZERVA"
 
-#: class.php:5718 strings.php:287
+#: class.php:5748 strings.php:287
 msgid "BEFORE"
 msgstr "PRED"
 
-#: class.php:5726 strings.php:289
+#: class.php:5756 strings.php:289
 msgid "PREPEND CONTENT"
 msgstr "DODAJ PRED VSEBINO"
 
-#: class.php:5730 strings.php:290
+#: class.php:5760 strings.php:290
 msgid "APPEND CONTENT"
 msgstr "DODAJ ZA VSEBINO"
 
-#: class.php:5734 strings.php:291
+#: class.php:5764 strings.php:291
 msgid "REPLACE CONTENT"
 msgstr "NADOMESTI VSEBINO"
 
-#: class.php:5738 strings.php:292
+#: class.php:5768 strings.php:292
 msgid "REPLACE ELEMENT"
 msgstr "NADOMESTI ELEMENT"
 
-#: class.php:5749 strings.php:288
+#: class.php:5779 strings.php:288
 msgid "AFTER"
 msgstr "ZA"
 
-#: class.php:5818 includes/preview.php:2484 includes/preview.php:2521
+#: class.php:5848 includes/preview.php:2484 includes/preview.php:2521
 msgid "Code"
 msgstr "Koda"
 
-#: class.php:5821
+#: class.php:5851
 msgid "for block"
 msgstr "za blok"
 
-#: class.php:10492
+#: class.php:10531
 msgid ""
 "ERROR: class DOMDocument not found. Your webhost needs to install the DOM "
 "extension for PHP."
@@ -862,7 +862,7 @@ msgid "Reset"
 msgstr "Ponastavi"
 
 #: includes/editor.php:6 includes/placeholders.php:353
-#: includes/preview.php:2428 settings.php:4121 strings.php:240 strings.php:299
+#: includes/preview.php:2428 settings.php:4108 strings.php:240 strings.php:299
 msgid "Cancel"
 msgstr "Prekliči"
 
@@ -1024,14 +1024,14 @@ msgstr " - globalno sledenje onemogočeno"
 #: includes/functions-test-transients.php:622
 #: includes/functions-test-transients.php:5139 includes/functions-test.php:622
 #: includes/functions-test.php:5139 includes/functions.php:624
-#: includes/functions.php:5464 includes/functions.php:5743
+#: includes/functions.php:5477 includes/functions.php:5756
 msgid "Generate PDF report"
 msgstr "Generiraj PDF poročilo"
 
 #: includes/functions-check-now.php:497
 #: includes/functions-test-20241129.php:637
 #: includes/functions-test-transients.php:636 includes/functions-test.php:636
-#: includes/functions.php:638 includes/functions.php:5739
+#: includes/functions.php:638 includes/functions.php:5752
 msgid "Open public report"
 msgstr "Odpri javno poročilo"
 
@@ -1198,8 +1198,8 @@ msgstr "Sproži animacijo samo enkrat"
 #: includes/functions-test-transients.php:3379
 #: includes/functions-test-transients.php:3395 includes/functions-test.php:1084
 #: includes/functions-test.php:3379 includes/functions-test.php:3395
-#: includes/functions.php:1086 includes/functions.php:3363
-#: includes/functions.php:3379
+#: includes/functions.php:1086 includes/functions.php:3362
+#: includes/functions.php:3378
 msgid "Tracking is globally disabled"
 msgstr "Sledenje je globalno onemogočeno"
 
@@ -1212,8 +1212,8 @@ msgstr "Sledenje je globalno onemogočeno"
 #: includes/functions-test-transients.php:3383
 #: includes/functions-test-transients.php:3399 includes/functions-test.php:1088
 #: includes/functions-test.php:3383 includes/functions-test.php:3399
-#: includes/functions.php:1090 includes/functions.php:3367
-#: includes/functions.php:3383
+#: includes/functions.php:1090 includes/functions.php:3366
+#: includes/functions.php:3382
 msgid "Tracking for this block is disabled"
 msgstr "Sledenje za ta blok je onemogočeno"
 
@@ -1230,8 +1230,8 @@ msgstr "Dvojni klik za preklop kontrol v javnih poročilih"
 #: includes/functions-test-transients.php:1101
 #: includes/functions-test-transients.php:4662 includes/functions-test.php:1101
 #: includes/functions-test.php:4662 includes/functions.php:1103
-#: includes/functions.php:4649 includes/functions.php:5766 settings.php:4041
-#: settings.php:4077 settings.php:4138 strings.php:255
+#: includes/functions.php:4662 includes/functions.php:5779 settings.php:4028
+#: settings.php:4064 settings.php:4125 strings.php:255
 msgid "Loading..."
 msgstr "Nalagam..."
 
@@ -1259,7 +1259,7 @@ msgstr "Samodejna osvežitev podatkov za izbrano obdobje vsakih 60 sekund"
 #: includes/functions-test-transients.php:1129
 #: includes/functions-test-transients.php:8798 includes/functions-test.php:1129
 #: includes/functions-test.php:8797 includes/functions.php:1131
-#: includes/functions.php:9348
+#: includes/functions.php:9375
 msgid "Load data for last month"
 msgstr "Naloži podatke za zadnji mesec"
 
@@ -1269,7 +1269,7 @@ msgstr "Naloži podatke za zadnji mesec"
 #: includes/functions-test-transients.php:1129
 #: includes/functions-test-transients.php:8798 includes/functions-test.php:1129
 #: includes/functions-test.php:8797 includes/functions.php:1131
-#: includes/functions.php:9348
+#: includes/functions.php:9375
 msgid "Last Month"
 msgstr "Zadnji Mesec"
 
@@ -1279,7 +1279,7 @@ msgstr "Zadnji Mesec"
 #: includes/functions-test-transients.php:1132
 #: includes/functions-test-transients.php:8801 includes/functions-test.php:1132
 #: includes/functions-test.php:8800 includes/functions.php:1134
-#: includes/functions.php:9351
+#: includes/functions.php:9378
 msgid "Load data for this month"
 msgstr "Naloži podatke za ta mesec"
 
@@ -1289,7 +1289,7 @@ msgstr "Naloži podatke za ta mesec"
 #: includes/functions-test-transients.php:1132
 #: includes/functions-test-transients.php:8801 includes/functions-test.php:1132
 #: includes/functions-test.php:8800 includes/functions.php:1134
-#: includes/functions.php:9351
+#: includes/functions.php:9378
 msgid "This Month"
 msgstr "Ta Mesec"
 
@@ -1299,7 +1299,7 @@ msgstr "Ta Mesec"
 #: includes/functions-test-transients.php:1135
 #: includes/functions-test-transients.php:8804 includes/functions-test.php:1135
 #: includes/functions-test.php:8803 includes/functions.php:1137
-#: includes/functions.php:9354
+#: includes/functions.php:9381
 msgid "Load data for this year"
 msgstr "Naloži podatke za to leto"
 
@@ -1309,7 +1309,7 @@ msgstr "Naloži podatke za to leto"
 #: includes/functions-test-transients.php:1135
 #: includes/functions-test-transients.php:8804 includes/functions-test.php:1135
 #: includes/functions-test.php:8803 includes/functions.php:1137
-#: includes/functions.php:9354
+#: includes/functions.php:9381
 msgid "This Year"
 msgstr "To Leto"
 
@@ -1319,7 +1319,7 @@ msgstr "To Leto"
 #: includes/functions-test-transients.php:1138
 #: includes/functions-test-transients.php:8807 includes/functions-test.php:1138
 #: includes/functions-test.php:8806 includes/functions.php:1140
-#: includes/functions.php:9357
+#: includes/functions.php:9384
 msgid "Load data for the last 15 days"
 msgstr "Naloži podatke za zadnjih 15 dni"
 
@@ -1329,7 +1329,7 @@ msgstr "Naloži podatke za zadnjih 15 dni"
 #: includes/functions-test-transients.php:1141
 #: includes/functions-test-transients.php:8810 includes/functions-test.php:1141
 #: includes/functions-test.php:8809 includes/functions.php:1143
-#: includes/functions.php:9360
+#: includes/functions.php:9387
 msgid "Load data for the last 30 days"
 msgstr "Naloži podatke za zadnjih 30 dni"
 
@@ -1339,7 +1339,7 @@ msgstr "Naloži podatke za zadnjih 30 dni"
 #: includes/functions-test-transients.php:1144
 #: includes/functions-test-transients.php:8813 includes/functions-test.php:1144
 #: includes/functions-test.php:8812 includes/functions.php:1146
-#: includes/functions.php:9363
+#: includes/functions.php:9390
 msgid "Load data for the last 90 days"
 msgstr "Naloži podatke za zadnjih 90 dni"
 
@@ -1349,7 +1349,7 @@ msgstr "Naloži podatke za zadnjih 90 dni"
 #: includes/functions-test-transients.php:1147
 #: includes/functions-test-transients.php:8816 includes/functions-test.php:1147
 #: includes/functions-test.php:8815 includes/functions.php:1149
-#: includes/functions.php:9366
+#: includes/functions.php:9393
 msgid "Load data for the last 180 days"
 msgstr "Naloži podatke za zadnjih 180 dni"
 
@@ -1359,7 +1359,7 @@ msgstr "Naloži podatke za zadnjih 180 dni"
 #: includes/functions-test-transients.php:1150
 #: includes/functions-test-transients.php:8819 includes/functions-test.php:1150
 #: includes/functions-test.php:8818 includes/functions.php:1152
-#: includes/functions.php:9369
+#: includes/functions.php:9396
 msgid "Load data for the last 365 days"
 msgstr "Naloži podatke za zadnjih 365 dni"
 
@@ -1369,7 +1369,7 @@ msgstr "Naloži podatke za zadnjih 365 dni"
 #: includes/functions-test-transients.php:1160
 #: includes/functions-test-transients.php:8829 includes/functions-test.php:1160
 #: includes/functions-test.php:8828 includes/functions.php:1162
-#: includes/functions.php:9379
+#: includes/functions.php:9406
 msgid "Load data for the selected range"
 msgstr "Naloži podatke za izbrano obdobje"
 
@@ -1501,7 +1501,7 @@ msgstr "Mesta"
 #: includes/functions-test-transients.php:1288
 #: includes/functions-test-transients.php:5085 includes/functions-test.php:1288
 #: includes/functions-test.php:5085 includes/functions.php:1290
-#: includes/functions.php:5394
+#: includes/functions.php:5407
 msgid "Toggle country editor"
 msgstr "Preklopi urejevalnik držav"
 
@@ -1518,7 +1518,7 @@ msgstr "Preklopi urejevalnik mest"
 #: includes/functions-test-transients.php:1295
 #: includes/functions-test-transients.php:5088 includes/functions-test.php:1295
 #: includes/functions-test.php:5088 includes/functions.php:1297
-#: includes/functions.php:5397
+#: includes/functions.php:5410
 msgid "Comma separated country ISO Alpha-2 codes"
 msgstr "Z vejico ločene ISO Alpha-2 kode držav"
 
@@ -1727,28 +1727,28 @@ msgstr "Opozorilo: %s MaxMind IP geolocijska podatkovna baza ni najdena."
 #: includes/functions-check-now.php:2331
 #: includes/functions-test-20241129.php:3149
 #: includes/functions-test-transients.php:3150 includes/functions-test.php:3150
-#: includes/functions.php:3134
+#: includes/functions.php:3133
 msgid "Geolocation"
 msgstr "Geolokacija"
 
 #: includes/functions-check-now.php:2335
 #: includes/functions-test-20241129.php:3153
 #: includes/functions-test-transients.php:3154 includes/functions-test.php:3154
-#: includes/functions.php:3138 settings.php:4938
+#: includes/functions.php:3137 settings.php:4923
 msgid "Exceptions"
 msgstr "Izjeme"
 
 #: includes/functions-check-now.php:2340
 #: includes/functions-test-20241129.php:3158
 #: includes/functions-test-transients.php:3159 includes/functions-test.php:3159
-#: includes/functions.php:3143
+#: includes/functions.php:3142
 msgid "Multisite"
 msgstr "Multisite"
 
 #: includes/functions-check-now.php:2345
 #: includes/functions-test-20241129.php:3163
 #: includes/functions-test-transients.php:3164 includes/functions-test.php:3164
-#: includes/functions.php:3148 settings.php:4944
+#: includes/functions.php:3147 settings.php:4929
 msgid "Tracking"
 msgstr "Sledenje"
 
@@ -1756,7 +1756,7 @@ msgstr "Sledenje"
 #: includes/functions-check-now.php:2376
 #: includes/functions-test-20241129.php:3203
 #: includes/functions-test-transients.php:3204 includes/functions-test.php:3204
-#: includes/functions.php:3188
+#: includes/functions.php:3187
 msgid "Scheduled in %d days %d hours %d minutes"
 msgstr "Planirano v %d dneh %d urah %d minutah"
 
@@ -1765,21 +1765,21 @@ msgstr "Planirano v %d dneh %d urah %d minutah"
 #: includes/functions-check-now.php:2385
 #: includes/functions-test-20241129.php:3212
 #: includes/functions-test-transients.php:3213 includes/functions-test.php:3213
-#: includes/functions.php:3197
+#: includes/functions.php:3196
 msgid "Active %s expires in %d days %d hours %d minutes"
 msgstr "Aktivno %s poteče v %d dneh %d urah %d minutah"
 
 #: includes/functions-check-now.php:2389
 #: includes/functions-test-20241129.php:3216
 #: includes/functions-test-transients.php:3217 includes/functions-test.php:3217
-#: includes/functions.php:3201
+#: includes/functions.php:3200
 msgid "Expired"
 msgstr "Poteklo"
 
 #: includes/functions-check-now.php:2397
 #: includes/functions-test-20241129.php:3242
 #: includes/functions-test-transients.php:3243 includes/functions-test.php:3243
-#: includes/functions.php:3227 settings.php:1679 settings.php:1694
+#: includes/functions.php:3226 settings.php:1679 settings.php:1694
 #: settings.php:1816 settings.php:2415
 msgid "and"
 msgstr "in"
@@ -1787,28 +1787,28 @@ msgstr "in"
 #: includes/functions-check-now.php:2400
 #: includes/functions-test-20241129.php:3224
 #: includes/functions-test-transients.php:3225 includes/functions-test.php:3225
-#: includes/functions.php:3209
+#: includes/functions.php:3208
 msgid "fallback"
 msgstr "rezerva"
 
 #: includes/functions-check-now.php:2401
 #: includes/functions-test-20241129.php:3225
 #: includes/functions-test-transients.php:3226 includes/functions-test.php:3226
-#: includes/functions.php:3210
+#: includes/functions.php:3209
 msgid "Block to be used when scheduling expires"
 msgstr "Blok, ki se bo uporabil, ko urnik poteče"
 
 #: includes/functions-check-now.php:2426
 #: includes/functions-test-20241129.php:3264
 #: includes/functions-test-transients.php:3265 includes/functions-test.php:3265
-#: includes/functions.php:3249
+#: includes/functions.php:3248
 msgid "Load in iframe"
 msgstr "Naloži v iframe-u"
 
 #: includes/functions-check-now.php:2430
 #: includes/functions-test-20241129.php:3268
 #: includes/functions-test-transients.php:3269 includes/functions-test.php:3269
-#: includes/functions.php:3253 includes/placeholders.php:388 settings.php:1277
+#: includes/functions.php:3252 includes/placeholders.php:388 settings.php:1277
 #: settings.php:2442
 msgid "Width"
 msgstr "Širina"
@@ -1816,14 +1816,14 @@ msgstr "Širina"
 #: includes/functions-check-now.php:2431
 #: includes/functions-test-20241129.php:3269
 #: includes/functions-test-transients.php:3270 includes/functions-test.php:3270
-#: includes/functions.php:3254
+#: includes/functions.php:3253
 msgid "iframe width, empty means full width (100%)"
 msgstr "širina iframe-a, prazno pomeni polna širina (100%)"
 
 #: includes/functions-check-now.php:2437
 #: includes/functions-test-20241129.php:3275
 #: includes/functions-test-transients.php:3276 includes/functions-test.php:3276
-#: includes/functions.php:3260 includes/placeholders.php:383 settings.php:1283
+#: includes/functions.php:3259 includes/placeholders.php:383 settings.php:1283
 #: settings.php:2446
 msgid "Height"
 msgstr "Višina"
@@ -1831,7 +1831,7 @@ msgstr "Višina"
 #: includes/functions-check-now.php:2438
 #: includes/functions-test-20241129.php:3276
 #: includes/functions-test-transients.php:3277 includes/functions-test.php:3277
-#: includes/functions.php:3261
+#: includes/functions.php:3260
 msgid "iframe height, empty means adjust it to iframe content height"
 msgstr ""
 "Višina iframe-a, prazno pomeni poravnavo glede na višino vsebine iframe-a"
@@ -1839,21 +1839,21 @@ msgstr ""
 #: includes/functions-check-now.php:2445
 #: includes/functions-test-20241129.php:3283
 #: includes/functions-test-transients.php:3284 includes/functions-test.php:3284
-#: includes/functions.php:3268
+#: includes/functions.php:3267
 msgid "Ad label in iframe"
 msgstr "Oznaka oglasa v iframe-u"
 
 #: includes/functions-check-now.php:2450
 #: includes/functions-test-20241129.php:3288
 #: includes/functions-test-transients.php:3289 includes/functions-test.php:3289
-#: includes/functions.php:3273
+#: includes/functions.php:3272
 msgid "Preview iframe code"
 msgstr "Predpreglej kodo iframe"
 
 #: includes/functions-check-now.php:2450
 #: includes/functions-test-20241129.php:3288
 #: includes/functions-test-transients.php:3289 includes/functions-test.php:3289
-#: includes/functions.php:3273 includes/preview.php:2437 settings.php:1312
+#: includes/functions.php:3272 includes/preview.php:2437 settings.php:1312
 #: settings.php:3302
 msgid "Preview"
 msgstr "Predogled"
@@ -1861,7 +1861,7 @@ msgstr "Predogled"
 #: includes/functions-check-now.php:2464
 #: includes/functions-test-20241129.php:3304
 #: includes/functions-test-transients.php:3305 includes/functions-test.php:3305
-#: includes/functions.php:3289 settings.php:4945
+#: includes/functions.php:3288 settings.php:4930
 msgid "Limits"
 msgstr "Omejitve"
 
@@ -1876,9 +1876,9 @@ msgstr "Omejitve"
 #: includes/functions-test-transients.php:7192
 #: includes/functions-test-transients.php:7256 includes/functions-test.php:3310
 #: includes/functions-test.php:7169 includes/functions-test.php:7192
-#: includes/functions-test.php:7256 includes/functions.php:3294
-#: includes/functions.php:7596 includes/functions.php:7640
-#: includes/functions.php:7705 settings.php:2597
+#: includes/functions-test.php:7256 includes/functions.php:3293
+#: includes/functions.php:7623 includes/functions.php:7667
+#: includes/functions.php:7732 settings.php:2597
 msgid "Ad Blocking"
 msgstr "Blokiranje Oglasov"
 
@@ -1886,7 +1886,7 @@ msgstr "Blokiranje Oglasov"
 #: includes/functions-check-now.php:2478
 #: includes/functions-test-20241129.php:3320
 #: includes/functions-test-transients.php:3321 includes/functions-test.php:3321
-#: includes/functions.php:3305
+#: includes/functions.php:3304
 msgid ""
 "%1$s WARNING: %2$s %3$s No wrapping %4$s style has no wrapping code needed "
 "for tracking!"
@@ -1899,7 +1899,7 @@ msgstr ""
 #: includes/functions-check-now.php:2487
 #: includes/functions-test-20241129.php:3329
 #: includes/functions-test-transients.php:3330 includes/functions-test.php:3330
-#: includes/functions.php:3314
+#: includes/functions.php:3313
 msgid ""
 "%1$s WARNING: %2$s vertical position %3$s needs %4$s Output buffering %5$s "
 "enabled and automatic insertion %6$s!"
@@ -1910,7 +1910,7 @@ msgstr ""
 #: includes/functions-check-now.php:2554
 #: includes/functions-test-20241129.php:3402
 #: includes/functions-test-transients.php:3403 includes/functions-test.php:3403
-#: includes/functions.php:3387
+#: includes/functions.php:3386
 msgid "Click fraud protection is globally disabled"
 msgstr "Zaščita pred goljufijo s kliki je globalno onemogočena"
 
@@ -1922,7 +1922,7 @@ msgstr "Največje število klikov na časovno enoto ni definirano"
 #: includes/functions-check-now.php:2572
 #: includes/functions-test-20241129.php:3416
 #: includes/functions-test-transients.php:3417 includes/functions-test.php:3417
-#: includes/functions.php:3401
+#: includes/functions.php:3400
 msgid "General limits"
 msgstr "Splošne omejitve"
 
@@ -1936,8 +1936,8 @@ msgstr "Splošne omejitve"
 #: includes/functions-test-transients.php:3435
 #: includes/functions-test-transients.php:3520 includes/functions-test.php:3423
 #: includes/functions-test.php:3435 includes/functions-test.php:3520
-#: includes/functions.php:3407 includes/functions.php:3419
-#: includes/functions.php:3504
+#: includes/functions.php:3406 includes/functions.php:3418
+#: includes/functions.php:3503
 msgid "Current value"
 msgstr "Trenutna vrednost"
 
@@ -1972,18 +1972,18 @@ msgstr "Trenutna vrednost"
 #: includes/functions-test.php:3452 includes/functions-test.php:3471
 #: includes/functions-test.php:3481 includes/functions-test.php:3527
 #: includes/functions-test.php:3536 includes/functions-test.php:3554
-#: includes/functions-test.php:3563 includes/functions.php:3426
-#: includes/functions.php:3436 includes/functions.php:3455
-#: includes/functions.php:3465 includes/functions.php:3511
-#: includes/functions.php:3520 includes/functions.php:3538
-#: includes/functions.php:3547 settings.php:2327
+#: includes/functions-test.php:3563 includes/functions.php:3425
+#: includes/functions.php:3435 includes/functions.php:3454
+#: includes/functions.php:3464 includes/functions.php:3510
+#: includes/functions.php:3519 includes/functions.php:3537
+#: includes/functions.php:3546 settings.php:2327
 msgid "Max"
 msgstr "Največ"
 
 #: includes/functions-check-now.php:2598
 #: includes/functions-test-20241129.php:3442
 #: includes/functions-test-transients.php:3443 includes/functions-test.php:3443
-#: includes/functions.php:3427
+#: includes/functions.php:3426
 msgid ""
 "Maximum number of impressions for this block. Empty means no general "
 "impression limit."
@@ -2006,9 +2006,9 @@ msgstr ""
 #: includes/functions-test-transients.php:3530
 #: includes/functions-test-transients.php:3539 includes/functions-test.php:3445
 #: includes/functions-test.php:3455 includes/functions-test.php:3530
-#: includes/functions-test.php:3539 includes/functions.php:3429
-#: includes/functions.php:3439 includes/functions.php:3514
-#: includes/functions.php:3523
+#: includes/functions-test.php:3539 includes/functions.php:3428
+#: includes/functions.php:3438 includes/functions.php:3513
+#: includes/functions.php:3522
 msgid "impression"
 msgid_plural "impressions"
 msgstr[0] "prikaz"
@@ -2019,7 +2019,7 @@ msgstr[3] "prikazov"
 #: includes/functions-check-now.php:2608
 #: includes/functions-test-20241129.php:3452
 #: includes/functions-test-transients.php:3453 includes/functions-test.php:3453
-#: includes/functions.php:3437
+#: includes/functions.php:3436
 msgid ""
 "Maximum number of impressions per time period. Empty means no time limit."
 msgstr ""
@@ -2044,9 +2044,9 @@ msgstr ""
 #: includes/functions-test-transients.php:5355 includes/functions-test.php:3459
 #: includes/functions-test.php:3488 includes/functions-test.php:3543
 #: includes/functions-test.php:3570 includes/functions-test.php:5355
-#: includes/functions.php:3443 includes/functions.php:3472
-#: includes/functions.php:3527 includes/functions.php:3554
-#: includes/functions.php:5680
+#: includes/functions.php:3442 includes/functions.php:3471
+#: includes/functions.php:3526 includes/functions.php:3553
+#: includes/functions.php:5693
 msgid "per"
 msgstr "na"
 
@@ -2055,8 +2055,8 @@ msgstr "na"
 #: includes/functions-test-20241129.php:3488
 #: includes/functions-test-transients.php:3460
 #: includes/functions-test-transients.php:3489 includes/functions-test.php:3460
-#: includes/functions-test.php:3489 includes/functions.php:3444
-#: includes/functions.php:3473
+#: includes/functions-test.php:3489 includes/functions.php:3443
+#: includes/functions.php:3472
 msgid "Time period in days. Empty means no time limit."
 msgstr "Časovno obdobje v dneh. Prazno pomeni brez časovnih omejitev."
 
@@ -2085,10 +2085,10 @@ msgstr "Časovno obdobje v dneh. Prazno pomeni brez časovnih omejitev."
 #: includes/functions-test.php:3491 includes/functions-test.php:3546
 #: includes/functions-test.php:3573 includes/functions-test.php:3705
 #: includes/functions-test.php:5358 includes/functions-test.php:5368
-#: includes/functions.php:3446 includes/functions.php:3475
-#: includes/functions.php:3530 includes/functions.php:3557
-#: includes/functions.php:3689 includes/functions.php:5683
-#: includes/functions.php:5693 strings.php:230 strings.php:231 strings.php:232
+#: includes/functions.php:3445 includes/functions.php:3474
+#: includes/functions.php:3529 includes/functions.php:3556
+#: includes/functions.php:3688 includes/functions.php:5696
+#: includes/functions.php:5706 strings.php:230 strings.php:231 strings.php:232
 #: strings.php:233 strings.php:234 strings.php:235
 msgid "day"
 msgid_plural "days"
@@ -2100,7 +2100,7 @@ msgstr[3] "dni"
 #: includes/functions-check-now.php:2627
 #: includes/functions-test-20241129.php:3471
 #: includes/functions-test-transients.php:3472 includes/functions-test.php:3472
-#: includes/functions.php:3456
+#: includes/functions.php:3455
 msgid ""
 "Maximum number of clicks on this block. Empty means no general click limit."
 msgstr ""
@@ -2128,10 +2128,10 @@ msgstr ""
 #: includes/functions-test-transients.php:7501 includes/functions-test.php:3474
 #: includes/functions-test.php:3484 includes/functions-test.php:3557
 #: includes/functions-test.php:3566 includes/functions-test.php:5355
-#: includes/functions-test.php:7501 includes/functions.php:3458
-#: includes/functions.php:3468 includes/functions.php:3541
-#: includes/functions.php:3550 includes/functions.php:5680
-#: includes/functions.php:7983
+#: includes/functions-test.php:7501 includes/functions.php:3457
+#: includes/functions.php:3467 includes/functions.php:3540
+#: includes/functions.php:3549 includes/functions.php:5693
+#: includes/functions.php:8010
 msgid "click"
 msgid_plural "clicks"
 msgstr[0] "klik"
@@ -2142,7 +2142,7 @@ msgstr[3] "klikov"
 #: includes/functions-check-now.php:2637
 #: includes/functions-test-20241129.php:3481
 #: includes/functions-test-transients.php:3482 includes/functions-test.php:3482
-#: includes/functions.php:3466
+#: includes/functions.php:3465
 msgid "Maximum number of clicks per time period. Empty means no time limit."
 msgstr ""
 "Največje število klikov na časovno enoto. Prazno pomeni brez časovnih "
@@ -2151,7 +2151,7 @@ msgstr ""
 #: includes/functions-check-now.php:2662
 #: includes/functions-test-20241129.php:3506
 #: includes/functions-test-transients.php:3507 includes/functions-test.php:3507
-#: includes/functions.php:3491
+#: includes/functions.php:3490
 msgid "Individual visitor limits"
 msgstr "Omejitve posameznih obiskovalcev"
 
@@ -2160,8 +2160,8 @@ msgstr "Omejitve posameznih obiskovalcev"
 #: includes/functions-test-20241129.php:3512
 #: includes/functions-test-transients.php:3511
 #: includes/functions-test-transients.php:3513 includes/functions-test.php:3511
-#: includes/functions-test.php:3513 includes/functions.php:3495
-#: includes/functions.php:3497
+#: includes/functions-test.php:3513 includes/functions.php:3494
+#: includes/functions.php:3496
 msgid ""
 "When specified number of clicks on this block for a visitor will be reached "
 "in the specified time period, all blocks that have click fraud protection "
@@ -2176,14 +2176,14 @@ msgstr ""
 #: includes/functions-check-now.php:2668
 #: includes/functions-test-20241129.php:3512
 #: includes/functions-test-transients.php:3513 includes/functions-test.php:3513
-#: includes/functions.php:3497
+#: includes/functions.php:3496
 msgid "Trigger click fraud protection"
 msgstr "Sproži zaščito pred goljufijo s kliki"
 
 #: includes/functions-check-now.php:2683
 #: includes/functions-test-20241129.php:3527
 #: includes/functions-test-transients.php:3528 includes/functions-test.php:3528
-#: includes/functions.php:3512
+#: includes/functions.php:3511
 msgid ""
 "Maximum number of impressions of this block for each visitor. Empty means no "
 "impression limit."
@@ -2194,7 +2194,7 @@ msgstr ""
 #: includes/functions-check-now.php:2692
 #: includes/functions-test-20241129.php:3536
 #: includes/functions-test-transients.php:3537 includes/functions-test.php:3537
-#: includes/functions.php:3521
+#: includes/functions.php:3520
 msgid ""
 "Maximum number of impressions per time period for each visitor. Empty means "
 "no impression limit per time period for visitors."
@@ -2210,8 +2210,8 @@ msgstr ""
 #: includes/functions-test-transients.php:3571
 #: includes/functions-test-transients.php:5358 includes/functions-test.php:3544
 #: includes/functions-test.php:3571 includes/functions-test.php:5358
-#: includes/functions.php:3528 includes/functions.php:3555
-#: includes/functions.php:5683
+#: includes/functions.php:3527 includes/functions.php:3554
+#: includes/functions.php:5696
 msgid ""
 "Time period in days. Use decimal value (with decimal point) for shorter "
 "periods. Empty means no time limit."
@@ -2222,7 +2222,7 @@ msgstr ""
 #: includes/functions-check-now.php:2710
 #: includes/functions-test-20241129.php:3554
 #: includes/functions-test-transients.php:3555 includes/functions-test.php:3555
-#: includes/functions.php:3539
+#: includes/functions.php:3538
 msgid ""
 "Maximum number of clicks on this block for each visitor. Empty means no "
 "click limit."
@@ -2235,8 +2235,8 @@ msgstr ""
 #: includes/functions-test-20241129.php:5354
 #: includes/functions-test-transients.php:3564
 #: includes/functions-test-transients.php:5355 includes/functions-test.php:3564
-#: includes/functions-test.php:5355 includes/functions.php:3548
-#: includes/functions.php:5680
+#: includes/functions-test.php:5355 includes/functions.php:3547
+#: includes/functions.php:5693
 msgid ""
 "Maximum number of clicks per time period for each visitor. Empty means no "
 "click limit per time period for visitors."
@@ -2247,28 +2247,28 @@ msgstr ""
 #: includes/functions-check-now.php:2745
 #: includes/functions-test-20241129.php:3613
 #: includes/functions-test-transients.php:3614 includes/functions-test.php:3614
-#: includes/functions.php:3598
+#: includes/functions.php:3597
 msgid "When ad blocking is detected"
 msgstr "Ko je blokiranje oglasov zaznano"
 
 #: includes/functions-check-now.php:2754
 #: includes/functions-test-20241129.php:3622
 #: includes/functions-test-transients.php:3623 includes/functions-test.php:3623
-#: includes/functions.php:3607
+#: includes/functions.php:3606
 msgid "replacement"
 msgstr "nadomestek"
 
 #: includes/functions-check-now.php:2755
 #: includes/functions-test-20241129.php:3623
 #: includes/functions-test-transients.php:3624 includes/functions-test.php:3624
-#: includes/functions.php:3608
+#: includes/functions.php:3607
 msgid "Block to be shown when ad blocking is detected"
 msgstr "Blok, ki naj bo prikazan, ko je zaznano blokiranje oglasov"
 
 #: includes/functions-check-now.php:2756
 #: includes/functions-test-20241129.php:3624
 #: includes/functions-test-transients.php:3625 includes/functions-test.php:3625
-#: includes/functions.php:3609
+#: includes/functions.php:3608
 msgctxt "replacement"
 msgid "None"
 msgstr "Noben"
@@ -2278,22 +2278,22 @@ msgstr "Noben"
 #: includes/functions-test-20241129.php:9056
 #: includes/functions-test-transients.php:3642
 #: includes/functions-test-transients.php:9048 includes/functions-test.php:3642
-#: includes/functions-test.php:9047 includes/functions.php:3626
-#: includes/functions.php:9629
+#: includes/functions-test.php:9047 includes/functions.php:3625
+#: includes/functions.php:9656
 msgid "Close button"
 msgstr "Gumb Zapri"
 
 #: includes/functions-check-now.php:2825
 #: includes/functions-test-20241129.php:3695
 #: includes/functions-test-transients.php:3696 includes/functions-test.php:3696
-#: includes/functions.php:3680
+#: includes/functions.php:3679
 msgid "Auto close after"
 msgstr "Ssamodejno zapri po"
 
 #: includes/functions-check-now.php:2826
 #: includes/functions-test-20241129.php:3696
 #: includes/functions-test-transients.php:3697 includes/functions-test.php:3697
-#: includes/functions.php:3681
+#: includes/functions.php:3680
 msgid ""
 "Time in seconds in which the ad will automatically close. Leave empty to "
 "disable auto closing."
@@ -2305,14 +2305,14 @@ msgstr ""
 #: includes/functions-check-now.php:2831
 #: includes/functions-test-20241129.php:3701
 #: includes/functions-test-transients.php:3702 includes/functions-test.php:3702
-#: includes/functions.php:3686
+#: includes/functions.php:3685
 msgid "Don't show for"
 msgstr "Ne prikaži"
 
 #: includes/functions-check-now.php:2832
 #: includes/functions-test-20241129.php:3702
 #: includes/functions-test-transients.php:3703 includes/functions-test.php:3703
-#: includes/functions.php:3687
+#: includes/functions.php:3686
 msgid ""
 "Time in days in which closed ad will not be shown again. Use decimal value "
 "(with decimal point) for shorter time period or leave empty to show it again "
@@ -2328,15 +2328,15 @@ msgstr ""
 #: includes/functions-test-20241129.php:3730
 #: includes/functions-test-transients.php:3725
 #: includes/functions-test-transients.php:3731 includes/functions-test.php:3725
-#: includes/functions-test.php:3731 includes/functions.php:3709
-#: includes/functions.php:3715
+#: includes/functions-test.php:3731 includes/functions.php:3708
+#: includes/functions.php:3714
 msgid "Delay showing for"
 msgstr "Zakasni prikaz za"
 
 #: includes/functions-check-now.php:2853
 #: includes/functions-test-20241129.php:3731
 #: includes/functions-test-transients.php:3732 includes/functions-test.php:3732
-#: includes/functions.php:3716
+#: includes/functions.php:3715
 msgid ""
 "Number of pageviews before the code is inserted (and ad displayed). Leave "
 "empty to insert the code for the first pageview."
@@ -2351,8 +2351,8 @@ msgstr ""
 #: includes/functions-test-20241129.php:3740
 #: includes/functions-test-transients.php:3734
 #: includes/functions-test-transients.php:3741 includes/functions-test.php:3734
-#: includes/functions-test.php:3741 includes/functions.php:3718
-#: includes/functions.php:3725
+#: includes/functions-test.php:3741 includes/functions.php:3717
+#: includes/functions.php:3724
 msgid "pageview"
 msgid_plural "pageviews"
 msgstr[0] "ogled strani"
@@ -2364,7 +2364,7 @@ msgstr[3] "ogledov strani"
 #: includes/functions-check-now.php:2859
 #: includes/functions-test-20241129.php:3737
 #: includes/functions-test-transients.php:3738 includes/functions-test.php:3738
-#: includes/functions.php:3722
+#: includes/functions.php:3721
 msgid "Show every"
 msgid_plural "Show every"
 msgstr[0] "Prikaži vsak"
@@ -2375,7 +2375,7 @@ msgstr[3] "Prikaži vsakih"
 #: includes/functions-check-now.php:2860
 #: includes/functions-test-20241129.php:3738
 #: includes/functions-test-transients.php:3739 includes/functions-test.php:3739
-#: includes/functions.php:3723
+#: includes/functions.php:3722
 msgid ""
 "Number of pageviews to insert the code again. Leave empty to insert the code "
 "for every pageview."
@@ -2386,7 +2386,7 @@ msgstr ""
 #: includes/functions-check-now.php:2879
 #: includes/functions-test-20241129.php:3775
 #: includes/functions-test-transients.php:3776 includes/functions-test.php:3776
-#: includes/functions.php:3760 settings.php:1036
+#: includes/functions.php:3759 settings.php:1036
 msgid "Lazy loading"
 msgstr "Leno nalaganje"
 
@@ -2394,35 +2394,35 @@ msgstr "Leno nalaganje"
 #: includes/functions-check-now.php:2936
 #: includes/functions-test-20241129.php:5008
 #: includes/functions-test-transients.php:5009 includes/functions-test.php:5009
-#: includes/functions.php:5318
+#: includes/functions.php:5331
 msgid "This product includes GeoLite2 data created by %s"
 msgstr "Ta izdelek vsebuje %s GeoLite2 podatke"
 
 #: includes/functions-check-now.php:2947
 #: includes/functions-test-20241129.php:5021
 #: includes/functions-test-transients.php:5022 includes/functions-test.php:5022
-#: includes/functions.php:5331
+#: includes/functions.php:5344
 msgid "IP geolocation database"
 msgstr "Podatkovna baza za IP geolokacijo"
 
 #: includes/functions-check-now.php:2950
 #: includes/functions-test-20241129.php:5024
 #: includes/functions-test-transients.php:5025 includes/functions-test.php:5025
-#: includes/functions.php:5334
+#: includes/functions.php:5347
 msgid "Select IP geolocation database."
 msgstr "Izberite podatkovno bazo za IP geolokacijo."
 
 #: includes/functions-check-now.php:2961
 #: includes/functions-test-20241129.php:5035
 #: includes/functions-test-transients.php:5036 includes/functions-test.php:5036
-#: includes/functions.php:5345
+#: includes/functions.php:5358
 msgid "Automatic database updates"
 msgstr "Samodejna posodobitev podatkovne baze"
 
 #: includes/functions-check-now.php:2964
 #: includes/functions-test-20241129.php:5038
 #: includes/functions-test-transients.php:5039 includes/functions-test.php:5039
-#: includes/functions.php:5348
+#: includes/functions.php:5361
 msgid ""
 "Automatically download and update free GeoLite2 IP geolocation database by "
 "MaxMind"
@@ -2433,14 +2433,14 @@ msgstr ""
 #: includes/functions-check-now.php:2972
 #: includes/functions-test-20241129.php:5055
 #: includes/functions-test-transients.php:5056 includes/functions-test.php:5056
-#: includes/functions.php:5365
+#: includes/functions.php:5378
 msgid "Database"
 msgstr "Podatkovna baza"
 
 #: includes/functions-check-now.php:2975
 #: includes/functions-test-20241129.php:5058
 #: includes/functions-test-transients.php:5059 includes/functions-test.php:5059
-#: includes/functions.php:5368
+#: includes/functions.php:5381
 msgid ""
 "Absolute path starting with '/' or relative path to the MaxMind database file"
 msgstr ""
@@ -2451,21 +2451,21 @@ msgstr ""
 #: includes/functions-check-now.php:2993
 #: includes/functions-test-20241129.php:5076
 #: includes/functions-test-transients.php:5077 includes/functions-test.php:5077
-#: includes/functions.php:5386
+#: includes/functions.php:5399
 msgid "Group %d"
 msgstr "Skupina %d"
 
 #: includes/functions-check-now.php:2999
 #: includes/functions-test-20241129.php:5082
 #: includes/functions-test-transients.php:5083 includes/functions-test.php:5083
-#: includes/functions.php:5392
+#: includes/functions.php:5405
 msgid "countries"
 msgstr "države"
 
 #: includes/functions-check-now.php:3044
 #: includes/functions-test-20241129.php:5127
 #: includes/functions-test-transients.php:5128 includes/functions-test.php:5128
-#: includes/functions.php:5453
+#: includes/functions.php:5466
 msgid ""
 "Enable impression and click tracking. You also need to enable tracking for "
 "each block you want to track."
@@ -2494,28 +2494,28 @@ msgstr "NI OMOGOČENO"
 #: includes/functions-check-now.php:3076
 #: includes/functions-test-20241129.php:5163
 #: includes/functions-test-transients.php:5164 includes/functions-test.php:5164
-#: includes/functions.php:5489
+#: includes/functions.php:5502
 msgid "Internal"
 msgstr "Notranje"
 
 #: includes/functions-check-now.php:3080
 #: includes/functions-test-20241129.php:5167
 #: includes/functions-test-transients.php:5168 includes/functions-test.php:5168
-#: includes/functions.php:5493
+#: includes/functions.php:5506
 msgid "Track impressions and clicks with internal tracking and statistics"
 msgstr "Sledi prikazom in klikom z notranjim sledenjem in statistiko"
 
 #: includes/functions-check-now.php:3085
 #: includes/functions-test-20241129.php:5172
 #: includes/functions-test-transients.php:5173 includes/functions-test.php:5173
-#: includes/functions.php:5498
+#: includes/functions.php:5511
 msgid "External"
 msgstr "Zunanje"
 
 #: includes/functions-check-now.php:3089
 #: includes/functions-test-20241129.php:5176
 #: includes/functions-test-transients.php:5177 includes/functions-test.php:5177
-#: includes/functions.php:5502
+#: includes/functions.php:5515
 msgid ""
 "Track impressions and clicks with Google Analytics or Matomo (needs tracking "
 "code installed)"
@@ -2526,42 +2526,42 @@ msgstr ""
 #: includes/functions-check-now.php:3094
 #: includes/functions-test-20241129.php:5181
 #: includes/functions-test-transients.php:5182 includes/functions-test.php:5182
-#: includes/functions.php:5507
+#: includes/functions.php:5520
 msgid "Track Pageviews"
 msgstr "Sledi Ogledom Strani"
 
 #: includes/functions-check-now.php:3100
 #: includes/functions-test-20241129.php:5187
 #: includes/functions-test-transients.php:5188 includes/functions-test.php:5188
-#: includes/functions.php:5513
+#: includes/functions.php:5526
 msgid "Track Pageviews by Device (as configured for viewports)"
 msgstr "Sledi Ogledom Strani po Napravah (kot so nastavljene za poglede)"
 
 #: includes/functions-check-now.php:3110
 #: includes/functions-test-20241129.php:5197
 #: includes/functions-test-transients.php:5198 includes/functions-test.php:5198
-#: includes/functions.php:5523
+#: includes/functions.php:5536
 msgid "Track for Logged in Users"
 msgstr "Sledi za Prijavljene Upor."
 
 #: includes/functions-check-now.php:3116
 #: includes/functions-test-20241129.php:5203
 #: includes/functions-test-transients.php:5204 includes/functions-test.php:5204
-#: includes/functions.php:5529
+#: includes/functions.php:5542
 msgid "Track impressions and clicks from logged in users"
 msgstr "Sledi prikazom in klikom neprijavljenih uporabnikov"
 
 #: includes/functions-check-now.php:3126
 #: includes/functions-test-20241129.php:5213
 #: includes/functions-test-transients.php:5214 includes/functions-test.php:5214
-#: includes/functions.php:5539
+#: includes/functions.php:5552
 msgid "Click Detection"
 msgstr "Zaznavanje klikov"
 
 #: includes/functions-check-now.php:3132
 #: includes/functions-test-20241129.php:5219
 #: includes/functions-test-transients.php:5220 includes/functions-test.php:5220
-#: includes/functions.php:5545
+#: includes/functions.php:5558
 msgid ""
 "Standard method detects clicks only on banners with links, Advanced method "
 "can detect clicks on any kind of ads, but it is slightly less accurate"
@@ -2572,28 +2572,28 @@ msgstr ""
 #: includes/functions-check-now.php:3151
 #: includes/functions-test-20241129.php:5340
 #: includes/functions-test-transients.php:5341 includes/functions-test.php:5341
-#: includes/functions.php:5666
+#: includes/functions.php:5679
 msgid "Click fraud protection"
 msgstr "Zaščita pred goljufijo s kliki"
 
 #: includes/functions-check-now.php:3155
 #: includes/functions-test-20241129.php:5344
 #: includes/functions-test-transients.php:5345 includes/functions-test.php:5345
-#: includes/functions.php:5670
+#: includes/functions.php:5683
 msgid "Globally enable click fraud protection for selected blocks."
 msgstr "Globalno omogočite zaščito pred goljufijo s kliki za izbrane bloke."
 
 #: includes/functions-check-now.php:3161
 #: includes/functions-test-20241129.php:5364
 #: includes/functions-test-transients.php:5365 includes/functions-test.php:5365
-#: includes/functions.php:5690
+#: includes/functions.php:5703
 msgid "Protection time"
 msgstr "Čas zaščite"
 
 #: includes/functions-check-now.php:3162
 #: includes/functions-test-20241129.php:5367
 #: includes/functions-test-transients.php:5368 includes/functions-test.php:5368
-#: includes/functions.php:5693
+#: includes/functions.php:5706
 msgid ""
 "Time period in days in which blocks with enabled click fraud protection will "
 "be hidden. Use decimal value (with decimal point) for shorter periods."
@@ -2605,7 +2605,7 @@ msgstr ""
 #: includes/functions-check-now.php:3181
 #: includes/functions-test-20241129.php:5247
 #: includes/functions-test-transients.php:5248 includes/functions-test.php:5248
-#: includes/functions.php:5573
+#: includes/functions.php:5586
 msgid "Report header image"
 msgstr "Slika v glavi poročila"
 
@@ -2622,21 +2622,21 @@ msgstr ""
 #: includes/functions-check-now.php:3185
 #: includes/functions-test-20241129.php:5251
 #: includes/functions-test-transients.php:5252 includes/functions-test.php:5252
-#: includes/functions.php:5577 strings.php:267
+#: includes/functions.php:5590 strings.php:267
 msgid "Select or upload header image"
 msgstr "Izberi ali naloži sliko glave"
 
 #: includes/functions-check-now.php:3190
 #: includes/functions-test-20241129.php:5256
 #: includes/functions-test-transients.php:5257 includes/functions-test.php:5257
-#: includes/functions.php:5582
+#: includes/functions.php:5595
 msgid "Report header title"
 msgstr "Naslov v glavi poročila"
 
 #: includes/functions-check-now.php:3193
 #: includes/functions-test-20241129.php:5259
 #: includes/functions-test-transients.php:5260 includes/functions-test.php:5260
-#: includes/functions.php:5585
+#: includes/functions.php:5598
 msgid ""
 "Title to be displayed in the header of the statistics report. Text or HTML "
 "code, clear to reset to default text."
@@ -2647,14 +2647,14 @@ msgstr ""
 #: includes/functions-check-now.php:3198
 #: includes/functions-test-20241129.php:5264
 #: includes/functions-test-transients.php:5265 includes/functions-test.php:5265
-#: includes/functions.php:5590
+#: includes/functions.php:5603
 msgid "Report header description"
 msgstr "Opis v glavi poročila"
 
 #: includes/functions-check-now.php:3201
 #: includes/functions-test-20241129.php:5267
 #: includes/functions-test-transients.php:5268 includes/functions-test.php:5268
-#: includes/functions.php:5593
+#: includes/functions.php:5606
 msgid ""
 "Description to be displayed in the header of the statistics report. Text or "
 "HTML code, clear to reset to default text."
@@ -2665,14 +2665,14 @@ msgstr ""
 #: includes/functions-check-now.php:3206
 #: includes/functions-test-20241129.php:5272
 #: includes/functions-test-transients.php:5273 includes/functions-test.php:5273
-#: includes/functions.php:5598
+#: includes/functions.php:5611
 msgid "Report footer"
 msgstr "Noga poročila"
 
 #: includes/functions-check-now.php:3209
 #: includes/functions-test-20241129.php:5275
 #: includes/functions-test-transients.php:5276 includes/functions-test.php:5276
-#: includes/functions.php:5601
+#: includes/functions.php:5614
 msgid ""
 "Text to be displayed in the footer of the statistics report. Clear to reset "
 "to default text."
@@ -2683,14 +2683,14 @@ msgstr ""
 #: includes/functions-check-now.php:3214
 #: includes/functions-test-20241129.php:5280
 #: includes/functions-test-transients.php:5281 includes/functions-test.php:5281
-#: includes/functions.php:5606
+#: includes/functions.php:5619
 msgid "Public report key"
 msgstr "Ključ za javno poročilo"
 
 #: includes/functions-check-now.php:3217
 #: includes/functions-test-20241129.php:5283
 #: includes/functions-test-transients.php:5284 includes/functions-test.php:5284
-#: includes/functions.php:5609
+#: includes/functions.php:5622
 msgid "String to generate unique report IDs. Clear to reset to default value."
 msgstr ""
 "Niz za ustvaritev unikatnega IDja poročila. Pobrišite za ponastavitev na "
@@ -2699,35 +2699,35 @@ msgstr ""
 #: includes/functions-check-now.php:3249
 #: includes/functions-test-20241129.php:5424
 #: includes/functions-test-transients.php:5425 includes/functions-test.php:5425
-#: includes/functions.php:5796
+#: includes/functions.php:5809
 msgid "Are you sure you want to clear all exceptions for block"
 msgstr "Ali ste prepričani, da želite pobrisati vse izjeme za blok"
 
 #: includes/functions-check-now.php:3250
 #: includes/functions-test-20241129.php:5425
 #: includes/functions-test-transients.php:5426 includes/functions-test.php:5426
-#: includes/functions.php:5797
+#: includes/functions.php:5810
 msgid "Clear all exceptions for block"
 msgstr "Pobriši vse izjeme za blok"
 
 #: includes/functions-check-now.php:3257
 #: includes/functions-test-20241129.php:5440
 #: includes/functions-test-transients.php:5441 includes/functions-test.php:5441
-#: includes/functions.php:5812
+#: includes/functions.php:5825
 msgid "Are you sure you want to clear all exceptions?"
 msgstr "Ali ste prepričani, da želite pobrisati vse izjeme?"
 
 #: includes/functions-check-now.php:3257
 #: includes/functions-test-20241129.php:5441
 #: includes/functions-test-transients.php:5442 includes/functions-test.php:5442
-#: includes/functions.php:5813
+#: includes/functions.php:5826
 msgid "Clear all exceptions for all blocks"
 msgstr "Pobriši vse izjeme za vse bloke"
 
 #: includes/functions-check-now.php:3262
 #: includes/functions-test-20241129.php:5453
 #: includes/functions-test-transients.php:5454 includes/functions-test.php:5454
-#: includes/functions.php:5825 settings.php:4372 settings.php:5028
+#: includes/functions.php:5838 settings.php:4357 settings.php:5013
 msgid "Type"
 msgstr "Vrsta"
 
@@ -2736,8 +2736,8 @@ msgstr "Vrsta"
 #: includes/functions-test-20241129.php:5473
 #: includes/functions-test-transients.php:5473
 #: includes/functions-test-transients.php:5474 includes/functions-test.php:5473
-#: includes/functions-test.php:5474 includes/functions.php:5844
-#: includes/functions.php:5845
+#: includes/functions-test.php:5474 includes/functions.php:5857
+#: includes/functions.php:5858
 msgid "View"
 msgstr "Poglej"
 
@@ -2750,30 +2750,30 @@ msgstr "Poglej"
 #: includes/functions-test-transients.php:5489
 #: includes/functions-test-transients.php:5493 includes/functions-test.php:5475
 #: includes/functions-test.php:5489 includes/functions-test.php:5493
-#: includes/functions.php:5846 includes/functions.php:5860
-#: includes/functions.php:5864 includes/placeholders.php:352
-#: includes/preview.php:2819 settings.php:1555 settings.php:4127
+#: includes/functions.php:5859 includes/functions.php:5873
+#: includes/functions.php:5877 includes/placeholders.php:352
+#: includes/preview.php:2819 settings.php:1555 settings.php:4114
 msgid "Edit"
 msgstr "Uredi"
 
 #: includes/functions-check-now.php:3311
 #: includes/functions-test-20241129.php:5520
 #: includes/functions-test-transients.php:5521 includes/functions-test.php:5521
-#: includes/functions.php:5892
+#: includes/functions.php:5905
 msgid "Are you sure you want to clear all exceptions for"
 msgstr "Ali ste prepričani, da želite pobrisati vse izjeme za"
 
 #: includes/functions-check-now.php:3312
 #: includes/functions-test-20241129.php:5521
 #: includes/functions-test-transients.php:5522 includes/functions-test.php:5522
-#: includes/functions.php:5893
+#: includes/functions.php:5906
 msgid "Clear all exceptions for"
 msgstr "Pobriši vse izjeme za"
 
 #: includes/functions-check-now.php:3325
 #: includes/functions-test-20241129.php:5539
 #: includes/functions-test-transients.php:5540 includes/functions-test.php:5540
-#: includes/functions.php:5911
+#: includes/functions.php:5924
 msgid "No exceptions"
 msgstr "Brez izjem"
 
@@ -2781,7 +2781,7 @@ msgstr "Brez izjem"
 #: includes/functions-check-now.php:3336
 #: includes/functions-test-20241129.php:5550
 #: includes/functions-test-transients.php:5551 includes/functions-test.php:5551
-#: includes/functions.php:5922
+#: includes/functions.php:5935
 msgid "%s options for network blogs"
 msgstr "%s izbire za omrežne bloge"
 
@@ -2789,28 +2789,28 @@ msgstr "%s izbire za omrežne bloge"
 #: includes/functions-check-now.php:3341
 #: includes/functions-test-20241129.php:5555
 #: includes/functions-test-transients.php:5556 includes/functions-test.php:5556
-#: includes/functions.php:5927
+#: includes/functions.php:5940
 msgid "Enable %s widgets for sub-sites"
 msgstr "Omogoči %s gradnik za pod-spletišča"
 
 #: includes/functions-check-now.php:3341
 #: includes/functions-test-20241129.php:5555
 #: includes/functions-test-transients.php:5556 includes/functions-test.php:5556
-#: includes/functions.php:5927
+#: includes/functions.php:5940
 msgid "Widgets"
 msgstr "Gradniki"
 
 #: includes/functions-check-now.php:3346
 #: includes/functions-test-20241129.php:5560
 #: includes/functions-test-transients.php:5561 includes/functions-test.php:5561
-#: includes/functions.php:5932
+#: includes/functions.php:5945
 msgid "Enable PHP code processing for sub-sites"
 msgstr "Omogoči procesiranje PHP kode za pod-spletišča"
 
 #: includes/functions-check-now.php:3346
 #: includes/functions-test-20241129.php:5560
 #: includes/functions-test-transients.php:5561 includes/functions-test.php:5561
-#: includes/functions.php:5932
+#: includes/functions.php:5945
 msgid "PHP Processing"
 msgstr "PHP Procesiranje"
 
@@ -2818,7 +2818,7 @@ msgstr "PHP Procesiranje"
 #: includes/functions-check-now.php:3351
 #: includes/functions-test-20241129.php:5565
 #: includes/functions-test-transients.php:5566 includes/functions-test.php:5566
-#: includes/functions.php:5937
+#: includes/functions.php:5950
 msgid "Enable %s block exceptions in post/page editor for sub-sites"
 msgstr ""
 "Omogoči %s izjeme blokov v urejevalniku prispevkov/strani za pod-spletišča"
@@ -2826,7 +2826,7 @@ msgstr ""
 #: includes/functions-check-now.php:3351
 #: includes/functions-test-20241129.php:5565
 #: includes/functions-test-transients.php:5566 includes/functions-test.php:5566
-#: includes/functions.php:5937
+#: includes/functions.php:5950
 msgid "Post/Page exceptions"
 msgstr "Izjeme prispevkov/strani"
 
@@ -2834,14 +2834,14 @@ msgstr "Izjeme prispevkov/strani"
 #: includes/functions-check-now.php:3356
 #: includes/functions-test-20241129.php:5570
 #: includes/functions-test-transients.php:5571 includes/functions-test.php:5571
-#: includes/functions.php:5942
+#: includes/functions.php:5955
 msgid "Enable %s settings page for sub-sites"
 msgstr "Omogoči nastavitveno stran %s za pod-spletišča"
 
 #: includes/functions-check-now.php:3356
 #: includes/functions-test-20241129.php:5570
 #: includes/functions-test-transients.php:5571 includes/functions-test.php:5571
-#: includes/functions.php:5942
+#: includes/functions.php:5955
 msgid "Settings page"
 msgstr "Stran z nastavitvami"
 
@@ -2849,28 +2849,28 @@ msgstr "Stran z nastavitvami"
 #: includes/functions-check-now.php:3361
 #: includes/functions-test-20241129.php:5575
 #: includes/functions-test-transients.php:5576 includes/functions-test.php:5576
-#: includes/functions.php:5947
+#: includes/functions.php:5960
 msgid "Enable %s settings of main site to be used for all blogs"
 msgstr "Omogoči %s nastavitve glavnega spletišča za uporabo na vseh blogih"
 
 #: includes/functions-check-now.php:3361
 #: includes/functions-test-20241129.php:5575
 #: includes/functions-test-transients.php:5576 includes/functions-test.php:5576
-#: includes/functions.php:5947
+#: includes/functions.php:5960
 msgid "Main site settings used for all blogs"
 msgstr "Nastavitve glavnega spletišča uporabljene na vseh blogih"
 
 #: includes/functions-check-now.php:3372
 #: includes/functions-test-20241129.php:5593
 #: includes/functions-test-transients.php:5594 includes/functions-test.php:5594
-#: includes/functions.php:5965 settings.php:3162
+#: includes/functions.php:5978 settings.php:3162
 msgid "Ad Blocking Detection"
 msgstr "Zaznavanje Blokiranja Oglasov"
 
 #: includes/functions-check-now.php:3378
 #: includes/functions-test-20241129.php:5599
 #: includes/functions-test-transients.php:5600 includes/functions-test.php:5600
-#: includes/functions.php:5971
+#: includes/functions.php:5984
 msgid ""
 "Standard method is reliable but should be used only if Advanced method does "
 "not work. Advanced method recreates files used for detection with random "
@@ -2891,8 +2891,8 @@ msgstr ""
 #: includes/functions-test-transients.php:6855
 #: includes/functions-test-transients.php:6881 includes/functions-test.php:6744
 #: includes/functions-test.php:6855 includes/functions-test.php:6881
-#: includes/functions.php:7117 includes/functions.php:7228
-#: includes/functions.php:7254
+#: includes/functions.php:7144 includes/functions.php:7255
+#: includes/functions.php:7281
 msgid "AD BLOCKING"
 msgstr "BLOKIRANJE OGLASOV"
 
@@ -2907,9 +2907,9 @@ msgstr "BLOKIRANJE OGLASOV"
 #: includes/functions-test-transients.php:6849
 #: includes/functions-test-transients.php:6882 includes/functions-test.php:6745
 #: includes/functions-test.php:6788 includes/functions-test.php:6849
-#: includes/functions-test.php:6882 includes/functions.php:7118
-#: includes/functions.php:7161 includes/functions.php:7222
-#: includes/functions.php:7255
+#: includes/functions-test.php:6882 includes/functions.php:7145
+#: includes/functions.php:7188 includes/functions.php:7249
+#: includes/functions.php:7282
 msgid "BLOCK INSERTED BUT NOT VISIBLE"
 msgstr "BLOK VSTAVLJEN, VENDAR NI VIDEN"
 
@@ -2922,8 +2922,8 @@ msgstr "BLOK VSTAVLJEN, VENDAR NI VIDEN"
 #: includes/functions-test-transients.php:6848
 #: includes/functions-test-transients.php:6888 includes/functions-test.php:6748
 #: includes/functions-test.php:6848 includes/functions-test.php:6888
-#: includes/functions.php:7121 includes/functions.php:7221
-#: includes/functions.php:7261
+#: includes/functions.php:7148 includes/functions.php:7248
+#: includes/functions.php:7288
 msgid "NO AD BLOCKING"
 msgstr "NI BLOKIRANJA OGLASOV"
 
@@ -2932,8 +2932,8 @@ msgstr "NI BLOKIRANJA OGLASOV"
 #: includes/functions-test-20241129.php:6801
 #: includes/functions-test-transients.php:6787
 #: includes/functions-test-transients.php:6794 includes/functions-test.php:6787
-#: includes/functions-test.php:6794 includes/functions.php:7160
-#: includes/functions.php:7167
+#: includes/functions-test.php:6794 includes/functions.php:7187
+#: includes/functions.php:7194
 msgid "AD BLOCKING REPLACEMENT"
 msgstr "NADOMESTEK V PRIMERU BLOKIRANJA OGLASOV"
 
@@ -2942,8 +2942,8 @@ msgstr "NADOMESTEK V PRIMERU BLOKIRANJA OGLASOV"
 #: includes/functions-test-20241129.php:7262
 #: includes/functions-test-transients.php:6976
 #: includes/functions-test-transients.php:7255 includes/functions-test.php:6976
-#: includes/functions-test.php:7255 includes/functions.php:7403
-#: includes/functions.php:7704
+#: includes/functions-test.php:7255 includes/functions.php:7430
+#: includes/functions.php:7731
 msgid "Pageviews"
 msgstr "Ogledi strani"
 
@@ -2952,8 +2952,8 @@ msgstr "Ogledi strani"
 #: includes/functions-test-20241129.php:7198
 #: includes/functions-test-transients.php:7168
 #: includes/functions-test-transients.php:7191 includes/functions-test.php:7168
-#: includes/functions-test.php:7191 includes/functions.php:7595
-#: includes/functions.php:7639
+#: includes/functions-test.php:7191 includes/functions.php:7622
+#: includes/functions.php:7666
 msgctxt "Version"
 msgid "Unknown"
 msgstr "Neznana"
@@ -2963,8 +2963,8 @@ msgstr "Neznana"
 #: includes/functions-test-20241129.php:7198
 #: includes/functions-test-transients.php:7168
 #: includes/functions-test-transients.php:7191 includes/functions-test.php:7168
-#: includes/functions-test.php:7191 includes/functions.php:7595
-#: includes/functions.php:7639
+#: includes/functions-test.php:7191 includes/functions.php:7622
+#: includes/functions.php:7666
 msgctxt "Times"
 msgid "DISPLAYED"
 msgstr "PRIKAZANO"
@@ -2974,8 +2974,8 @@ msgstr "PRIKAZANO"
 #: includes/functions-test-20241129.php:7198
 #: includes/functions-test-transients.php:7168
 #: includes/functions-test-transients.php:7191 includes/functions-test.php:7168
-#: includes/functions-test.php:7191 includes/functions.php:5258
-#: includes/functions.php:7595 includes/functions.php:7639
+#: includes/functions-test.php:7191 includes/functions.php:5271
+#: includes/functions.php:7622 includes/functions.php:7666
 msgid "No version"
 msgstr "Brez različice"
 
@@ -2987,8 +2987,8 @@ msgstr "Brez različice"
 #: includes/functions-test-transients.php:7192
 #: includes/functions-test-transients.php:7196 includes/functions-test.php:7169
 #: includes/functions-test.php:7192 includes/functions-test.php:7196
-#: includes/functions.php:7596 includes/functions.php:7640
-#: includes/functions.php:7645
+#: includes/functions.php:7623 includes/functions.php:7667
+#: includes/functions.php:7672
 msgctxt "Times"
 msgid "BLOCKED"
 msgstr "BLOKIRANO"
@@ -2996,7 +2996,7 @@ msgstr "BLOKIRANO"
 #: includes/functions-check-now.php:4429
 #: includes/functions-test-20241129.php:7262
 #: includes/functions-test-transients.php:7255 includes/functions-test.php:7255
-#: includes/functions.php:7704
+#: includes/functions.php:7731
 msgid "Impressions"
 msgstr "Prikazi"
 
@@ -3009,22 +3009,22 @@ msgstr "Prikazi"
 #: includes/functions-test-transients.php:7257
 #: includes/functions-test-transients.php:7478 includes/functions-test.php:7256
 #: includes/functions-test.php:7257 includes/functions-test.php:7478
-#: includes/functions.php:7705 includes/functions.php:7706
-#: includes/functions.php:7960
+#: includes/functions.php:7732 includes/functions.php:7733
+#: includes/functions.php:7987
 msgid "Clicks"
 msgstr "Kliki"
 
 #: includes/functions-check-now.php:4431
 #: includes/functions-test-20241129.php:7264
 #: includes/functions-test-transients.php:7257 includes/functions-test.php:7257
-#: includes/functions.php:7706
+#: includes/functions.php:7733
 msgid "events"
 msgstr "dogodki"
 
 #: includes/functions-check-now.php:4432
 #: includes/functions-test-20241129.php:7265
 #: includes/functions-test-transients.php:7258 includes/functions-test.php:7258
-#: includes/functions.php:7707
+#: includes/functions.php:7734
 msgid "Ad Blocking Share"
 msgstr "Delež blokiranja oglasov"
 
@@ -3034,15 +3034,15 @@ msgstr "Delež blokiranja oglasov"
 #: includes/functions-test-20241129.php:7491
 #: includes/functions-test-transients.php:7258
 #: includes/functions-test-transients.php:7484 includes/functions-test.php:7258
-#: includes/functions-test.php:7484 includes/functions.php:7707
-#: includes/functions.php:7966
+#: includes/functions-test.php:7484 includes/functions.php:7734
+#: includes/functions.php:7993
 msgid "CTR"
 msgstr "CTR"
 
 #: includes/functions-check-now.php:4574
 #: includes/functions-test-20241129.php:7504
 #: includes/functions-test-transients.php:7497 includes/functions-test.php:7497
-#: includes/functions.php:7979
+#: includes/functions.php:8006
 msgid "pageviews"
 msgid_plural "pageviews"
 msgstr[0] "ogled strani"
@@ -3053,7 +3053,7 @@ msgstr[3] "ogledov strani"
 #: includes/functions-check-now.php:4574
 #: includes/functions-test-20241129.php:7504
 #: includes/functions-test-transients.php:7497 includes/functions-test.php:7497
-#: includes/functions.php:7979
+#: includes/functions.php:8006
 msgid "impressions"
 msgid_plural "impressions"
 msgstr[0] "prikaz"
@@ -3064,7 +3064,7 @@ msgstr[3] "prikazov"
 #: includes/functions-check-now.php:4578
 #: includes/functions-test-20241129.php:7508
 #: includes/functions-test-transients.php:7501 includes/functions-test.php:7501
-#: includes/functions.php:7983
+#: includes/functions.php:8010
 msgid "event"
 msgid_plural "events"
 msgstr[0] "dogodek"
@@ -3075,7 +3075,7 @@ msgstr[3] "dogodkov"
 #: includes/functions-check-now.php:4673
 #: includes/functions-test-20241129.php:7603
 #: includes/functions-test-transients.php:7596 includes/functions-test.php:7596
-#: includes/functions.php:8077
+#: includes/functions.php:8104
 msgctxt "Pageviews / Impressions"
 msgid "Average"
 msgstr "Povprečni"
@@ -3083,7 +3083,7 @@ msgstr "Povprečni"
 #: includes/functions-check-now.php:4694
 #: includes/functions-test-20241129.php:7624
 #: includes/functions-test-transients.php:7617 includes/functions-test.php:7617
-#: includes/functions.php:8098
+#: includes/functions.php:8125
 msgctxt "Ad Blocking / Clicks"
 msgid "Average"
 msgstr "Povprečno"
@@ -3091,7 +3091,7 @@ msgstr "Povprečno"
 #: includes/functions-check-now.php:4718
 #: includes/functions-test-20241129.php:7648
 #: includes/functions-test-transients.php:7641 includes/functions-test.php:7641
-#: includes/functions.php:8122
+#: includes/functions.php:8149
 msgctxt "Ad Blocking Share / CTR"
 msgid "Average"
 msgstr "Povprečni"
@@ -3101,63 +3101,63 @@ msgstr "Povprečni"
 #: includes/functions-check-now.php:5335
 #: includes/functions-test-20241129.php:7964
 #: includes/functions-test-transients.php:7957 includes/functions-test.php:7957
-#: includes/functions.php:8453 strings.php:215
+#: includes/functions.php:8480 strings.php:215
 msgid "%s Report"
 msgstr "%s Poročilo"
 
 #: includes/functions-check-now.php:5241
 #: includes/functions-test-20241129.php:8654
 #: includes/functions-test-transients.php:8647 includes/functions-test.php:8646
-#: includes/functions.php:9179
+#: includes/functions.php:9206
 msgid "for last month"
 msgstr "za zadnji mesec"
 
 #: includes/functions-check-now.php:5246
 #: includes/functions-test-20241129.php:8659
 #: includes/functions-test-transients.php:8652 includes/functions-test.php:8651
-#: includes/functions.php:9184
+#: includes/functions.php:9211
 msgid "for this month"
 msgstr "za ta mesec"
 
 #: includes/functions-check-now.php:5251
 #: includes/functions-test-20241129.php:8664
 #: includes/functions-test-transients.php:8657 includes/functions-test.php:8656
-#: includes/functions.php:9189
+#: includes/functions.php:9216
 msgid "for this year"
 msgstr "za to leto"
 
 #: includes/functions-check-now.php:5256
 #: includes/functions-test-20241129.php:8669
 #: includes/functions-test-transients.php:8662 includes/functions-test.php:8661
-#: includes/functions.php:9194
+#: includes/functions.php:9221
 msgid "for the last 15 days"
 msgstr "za zadnjih 15 dni"
 
 #: includes/functions-check-now.php:5261
 #: includes/functions-test-20241129.php:8674
 #: includes/functions-test-transients.php:8667 includes/functions-test.php:8666
-#: includes/functions.php:9199
+#: includes/functions.php:9226
 msgid "for the last 30 days"
 msgstr "za zadnjih 30 dni"
 
 #: includes/functions-check-now.php:5266
 #: includes/functions-test-20241129.php:8679
 #: includes/functions-test-transients.php:8672 includes/functions-test.php:8671
-#: includes/functions.php:9204
+#: includes/functions.php:9231
 msgid "for the last 90 days"
 msgstr "za zadnjih 90 dni"
 
 #: includes/functions-check-now.php:5271
 #: includes/functions-test-20241129.php:8684
 #: includes/functions-test-transients.php:8677 includes/functions-test.php:8676
-#: includes/functions.php:9209
+#: includes/functions.php:9236
 msgid "for the last 180 days"
 msgstr "za zadnjih 180 dni"
 
 #: includes/functions-check-now.php:5276
 #: includes/functions-test-20241129.php:8689
 #: includes/functions-test-transients.php:8682 includes/functions-test.php:8681
-#: includes/functions.php:9214
+#: includes/functions.php:9241
 msgid "for the last 365 days"
 msgstr "za zadnjih 365 dni"
 
@@ -3210,7 +3210,7 @@ msgstr ""
 #: includes/functions-test-transients.php:629
 #: includes/functions-test-transients.php:5135 includes/functions-test.php:629
 #: includes/functions-test.php:5135 includes/functions.php:631
-#: includes/functions.php:5460
+#: includes/functions.php:5473
 msgid "Generate CSV report"
 msgstr "Generiraj CSV poročilo"
 
@@ -3416,73 +3416,73 @@ msgstr ""
 
 #: includes/functions-test-20241129.php:3240
 #: includes/functions-test-transients.php:3241 includes/functions-test.php:3241
-#: includes/functions.php:3225
+#: includes/functions.php:3224
 msgid "Start date"
 msgstr "Začetni datum"
 
 #: includes/functions-test-20241129.php:3240
 #: includes/functions-test-transients.php:3241 includes/functions-test.php:3241
-#: includes/functions.php:3225
+#: includes/functions.php:3224
 msgid "Enter date in format yyyy-mm-dd"
 msgstr "Vnesite datum v formatu yyyy-mm-dd"
 
 #: includes/functions-test-20241129.php:3240
 #: includes/functions-test-transients.php:3241 includes/functions-test.php:3241
-#: includes/functions.php:3225
+#: includes/functions.php:3224
 msgid "empty means every day as defined by hours and days in week"
 msgstr "prazno pomeni vsak dan kot določeno z urami in dnevi v tednu"
 
 #: includes/functions-test-20241129.php:3241
 #: includes/functions-test-transients.php:3242 includes/functions-test.php:3242
-#: includes/functions.php:3226
+#: includes/functions.php:3225
 msgid "Start time"
 msgstr "Začetni čas"
 
 #: includes/functions-test-20241129.php:3241
 #: includes/functions-test-transients.php:3242 includes/functions-test.php:3242
-#: includes/functions.php:3226
+#: includes/functions.php:3225
 msgid "Enter time in format hh:mm:ss, empty means 00:00:00"
 msgstr "Vnesite čas v formatu hh:mm:ss, prazno pomeni 00:00:00"
 
 #: includes/functions-test-20241129.php:3243
 #: includes/functions-test-transients.php:3244 includes/functions-test.php:3244
-#: includes/functions.php:3228
+#: includes/functions.php:3227
 msgid "End date"
 msgstr "Končni datum"
 
 #: includes/functions-test-20241129.php:3244
 #: includes/functions-test-transients.php:3245 includes/functions-test.php:3245
-#: includes/functions.php:3229
+#: includes/functions.php:3228
 msgid "End time"
 msgstr "Končni čas"
 
 #: includes/functions-test-20241129.php:3247
 #: includes/functions-test-transients.php:3248 includes/functions-test.php:3248
-#: includes/functions.php:3232
+#: includes/functions.php:3231
 msgid "Select wanted days in week"
 msgstr "Izberite želene dneve v tednu"
 
 #: includes/functions-test-20241129.php:3587
 #: includes/functions-test-transients.php:3588 includes/functions-test.php:3588
-#: includes/functions.php:3572
+#: includes/functions.php:3571
 msgid "Fallback"
 msgstr "Rezerva"
 
 #: includes/functions-test-20241129.php:3588
 #: includes/functions-test-transients.php:3589 includes/functions-test.php:3589
-#: includes/functions.php:3573
+#: includes/functions.php:3572
 msgid "Block to be used when a limit is reached"
 msgstr "Blok, ki naj bo prikazan, ko je dosežena meja"
 
 #: includes/functions-test-20241129.php:3612
 #: includes/functions-test-transients.php:3613 includes/functions-test.php:3613
-#: includes/functions.php:3597
+#: includes/functions.php:3596
 msgid "Ad blocking detection is disabled"
 msgstr "Zaznavanje blokiranja oglasov je onemogočeno"
 
 #: includes/functions-test-20241129.php:3725
 #: includes/functions-test-transients.php:3726 includes/functions-test.php:3726
-#: includes/functions.php:3710
+#: includes/functions.php:3709
 msgid ""
 "Time in ms before the code is inserted (and ad displayed). Leave empty to "
 "insert the code without any additional delay."
@@ -3492,50 +3492,50 @@ msgstr ""
 
 #: includes/functions-test-20241129.php:3764
 #: includes/functions-test-transients.php:3765 includes/functions-test.php:3765
-#: includes/functions.php:3749
+#: includes/functions.php:3748
 msgid "Check reCAPTCHA score"
 msgstr "Preveri reCAPTCHA rezultat"
 
 #: includes/functions-test-20241129.php:3770
 #: includes/functions-test-transients.php:3771 includes/functions-test.php:3771
-#: includes/functions.php:3755
+#: includes/functions.php:3754
 msgid "Wait for user interaction"
 msgstr "Čakaj na interakcijo uporabnika"
 
 #: includes/functions-test-20241129.php:3778
 #: includes/functions-test-transients.php:3779 includes/functions-test.php:3779
-#: includes/functions.php:3763
+#: includes/functions.php:3762
 msgid "Manual loading"
 msgstr "Ročno nalaganje"
 
 #: includes/functions-test-20241129.php:3797
 #: includes/functions-test-transients.php:3798 includes/functions-test.php:3798
-#: includes/functions.php:3782
+#: includes/functions.php:3781
 msgid "Protected"
 msgstr "Zaščiten"
 
 #: includes/functions-test-20241129.php:3801
 #: includes/functions-test-transients.php:3802 includes/functions-test.php:3802
-#: includes/functions.php:3786
+#: includes/functions.php:3785
 msgid "Sticky ad with scrolling space below"
 msgstr "Lepljiv oglas s prostorom za pomik spodaj"
 
 #. Translators: Sticky ad
 #: includes/functions-test-20241129.php:3802
 #: includes/functions-test-transients.php:3803 includes/functions-test.php:3803
-#: includes/functions.php:3787
+#: includes/functions.php:3786
 msgid "Sticky"
 msgstr "Lepljiv"
 
 #: includes/functions-test-20241129.php:3804
 #: includes/functions-test-transients.php:3805 includes/functions-test.php:3805
-#: includes/functions.php:3789
+#: includes/functions.php:3788
 msgid "Height of the scrolling space below the ad"
 msgstr "Višina prostora za pomikanje pod oglasom"
 
 #: includes/functions-test-20241129.php:3898
 #: includes/functions-test-transients.php:3899 includes/functions-test.php:3899
-#: includes/functions.php:3885
+#: includes/functions.php:3884
 msgid "IP address blocked"
 msgid_plural "IP addresses blocked"
 msgstr[0] "blokiran IP naslov"
@@ -3547,80 +3547,80 @@ msgstr[3] "blokiranih IP naslovov"
 #: includes/functions-test-20241129.php:3950
 #: includes/functions-test-transients.php:3902
 #: includes/functions-test-transients.php:3951 includes/functions-test.php:3902
-#: includes/functions-test.php:3951 includes/functions.php:3888
-#: includes/functions.php:3937
+#: includes/functions-test.php:3951 includes/functions.php:3887
+#: includes/functions.php:3936
 msgid "No IP address blocked"
 msgstr "Noben IP naslov ni blokiran"
 
 #: includes/functions-test-20241129.php:3963
 #: includes/functions-test-transients.php:3964 includes/functions-test.php:3964
-#: includes/functions.php:3950
+#: includes/functions.php:3949
 msgid "Blocked IP address"
 msgstr "Blokirani IP naslovi"
 
 #: includes/functions-test-20241129.php:3963
 #: includes/functions-test-transients.php:3964 includes/functions-test.php:3964
-#: includes/functions.php:3950
+#: includes/functions.php:3949
 msgid "Country"
 msgstr "Država"
 
 #: includes/functions-test-20241129.php:3963
 #: includes/functions-test-transients.php:3964 includes/functions-test.php:3964
-#: includes/functions.php:3950
+#: includes/functions.php:3949
 msgid "Time to expiration"
 msgstr "Čas do poteka"
 
 #: includes/functions-test-20241129.php:3965
 #: includes/functions-test-transients.php:3966 includes/functions-test.php:3966
-#: includes/functions.php:3952 strings.php:237
+#: includes/functions.php:3951 strings.php:237
 msgid "Delete"
 msgstr "Pobriši"
 
 #: includes/functions-test-20241129.php:3980
 #: includes/functions-test-transients.php:3981 includes/functions-test.php:3981
-#: includes/functions.php:3967
+#: includes/functions.php:3966
 msgid "Delete IP address"
 msgstr "Briši IP naslov"
 
 #: includes/functions-test-20241129.php:4132
 #: includes/functions-test-transients.php:4133 includes/functions-test.php:4133
-#: includes/functions.php:4119
+#: includes/functions.php:4118
 msgid "Toggle plugin settings"
 msgstr "Preklopite nastavitve vtičnika"
 
 #: includes/functions-test-20241129.php:4546
 #: includes/functions-test-transients.php:4547 includes/functions-test.php:4547
-#: includes/functions.php:4534
+#: includes/functions.php:4547
 msgid "CONNECTED"
 msgstr "POVEZAN"
 
 #: includes/functions-test-20241129.php:4547
 #: includes/functions-test-transients.php:4548 includes/functions-test.php:4548
-#: includes/functions.php:4535
+#: includes/functions.php:4548
 msgid "Disconnect website"
 msgstr "Razveži spletno mesto"
 
 #: includes/functions-test-20241129.php:4563
 #: includes/functions-test-transients.php:4564 includes/functions-test.php:4564
-#: includes/functions.php:4551
+#: includes/functions.php:4564
 msgid "MANAGED BY"
 msgstr "UPRAVLJAN S STRANI"
 
 #: includes/functions-test-20241129.php:4584
 #: includes/functions-test-transients.php:4585 includes/functions-test.php:4585
-#: includes/functions.php:4572
+#: includes/functions.php:4585
 msgid "Remote management"
 msgstr "Oddaljeno upravljanje"
 
 #: includes/functions-test-20241129.php:4588
 #: includes/functions-test-transients.php:4589 includes/functions-test.php:4589
-#: includes/functions.php:4576
+#: includes/functions.php:4589
 msgid "Allow to connect and manage plugin settings"
 msgstr "Dovoli povezavo in upravljanje z nastavitvami vtičnika"
 
 #: includes/functions-test-20241129.php:4590
 #: includes/functions-test-transients.php:4591 includes/functions-test.php:4591
-#: includes/functions.php:4578
+#: includes/functions.php:4591
 msgid "String to allow plugin management. Clear to reset to default value."
 msgstr ""
 "Niz za dovolitev upravjanja z vtičnikom. Pobrišite za ponastavitev na "
@@ -3628,50 +3628,50 @@ msgstr ""
 
 #: includes/functions-test-20241129.php:4598
 #: includes/functions-test-transients.php:4599 includes/functions-test.php:4599
-#: includes/functions.php:4586
+#: includes/functions.php:4599
 msgid "Check remote IP address"
 msgstr "Preveri oddaljeni IP naslov"
 
 #: includes/functions-test-20241129.php:4602
 #: includes/functions-test-transients.php:4603 includes/functions-test.php:4603
-#: includes/functions.php:4590
+#: includes/functions.php:4603
 msgid "Check IP address of remote management website"
 msgstr "Preveri IP naslov oddaljenega spletnega mesta za upravljanje"
 
 #: includes/functions-test-20241129.php:4604
 #: includes/functions-test-transients.php:4605 includes/functions-test.php:4605
-#: includes/functions.php:4592
+#: includes/functions.php:4605
 msgid "Allowed IP addresses of remote management websites"
 msgstr "Dovoljeni IP naslovi oddaljenih spletnih mest za upravljanje"
 
 #. Translators: %s: Ad Inserter Pro
 #: includes/functions-test-20241129.php:4627
 #: includes/functions-test-transients.php:4628 includes/functions-test.php:4628
-#: includes/functions.php:4615
+#: includes/functions.php:4628
 msgid "Manage %s on other websites"
 msgstr "Upravljajte %s na drugih spletnih mestih"
 
 #: includes/functions-test-20241129.php:4642
 #: includes/functions-test-transients.php:4643 includes/functions-test.php:4643
-#: includes/functions.php:4630
+#: includes/functions.php:4643
 msgid "Add website"
 msgstr "Dodaj spletno mesto"
 
 #: includes/functions-test-20241129.php:4646
 #: includes/functions-test-transients.php:4647 includes/functions-test.php:4647
-#: includes/functions.php:4634
+#: includes/functions.php:4647
 msgid "Rearrange website order"
 msgstr "Preuredi vrstni red spletnih mest"
 
 #: includes/functions-test-20241129.php:4650
 #: includes/functions-test-transients.php:4651 includes/functions-test.php:4651
-#: includes/functions.php:4638
+#: includes/functions.php:4651
 msgid "Cancel changes"
 msgstr "Prekliči spremembe"
 
 #: includes/functions-test-20241129.php:4654
 #: includes/functions-test-transients.php:4655 includes/functions-test.php:4655
-#: includes/functions.php:4642
+#: includes/functions.php:4655
 msgid "Save changes"
 msgstr "Shrani spremembe"
 
@@ -3684,9 +3684,9 @@ msgstr "Shrani spremembe"
 #: includes/functions-test-transients.php:4790
 #: includes/functions-test-transients.php:4795 includes/functions-test.php:4784
 #: includes/functions-test.php:4787 includes/functions-test.php:4790
-#: includes/functions-test.php:4795 includes/functions.php:4771
-#: includes/functions.php:4774 includes/functions.php:4777
-#: includes/functions.php:4782
+#: includes/functions-test.php:4795 includes/functions.php:4784
+#: includes/functions.php:4787 includes/functions.php:4790
+#: includes/functions.php:4795
 msgid "Invalid data received from"
 msgstr "Prejeti neveljavni podatki od"
 
@@ -3694,87 +3694,87 @@ msgstr "Prejeti neveljavni podatki od"
 #: includes/functions-test-20241129.php:4797
 #: includes/functions-test-transients.php:4794
 #: includes/functions-test-transients.php:4798 includes/functions-test.php:4794
-#: includes/functions-test.php:4798 includes/functions.php:4781
-#: includes/functions.php:4785
+#: includes/functions-test.php:4798 includes/functions.php:4794
+#: includes/functions.php:4798
 msgid "Error connecting to"
 msgstr "Napaka pri povezovanju na"
 
 #: includes/functions-test-20241129.php:4793
 #: includes/functions-test-transients.php:4794 includes/functions-test.php:4794
-#: includes/functions.php:4781
+#: includes/functions.php:4794
 msgid "No data received"
 msgstr "Nobenih podatkov ni bilo prejetih"
 
 #: includes/functions-test-20241129.php:4838
 #: includes/functions-test-transients.php:4839 includes/functions-test.php:4839
-#: includes/functions.php:4826
+#: includes/functions.php:4839
 msgid "Error saving websites"
 msgstr "Napaka pri shranjevanju spletnih mest"
 
 #: includes/functions-test-20241129.php:4878
 #: includes/functions-test-transients.php:4879 includes/functions-test.php:4879
-#: includes/functions.php:4866
+#: includes/functions.php:4879
 msgid "Can't connect to itself"
 msgstr "Ne morem se povezati nase"
 
 #: includes/functions-test-20241129.php:4929
 #: includes/functions-test-transients.php:4930 includes/functions-test.php:4930
-#: includes/functions.php:4917
+#: includes/functions.php:4930
 msgid "Connect website"
 msgstr "Pveži spletno mesto"
 
 #: includes/functions-test-20241129.php:4933
 #: includes/functions-test-transients.php:4934 includes/functions-test.php:4934
-#: includes/functions.php:4921
+#: includes/functions.php:4934
 msgid "Delete website"
 msgstr "Izbriši spletno mesto"
 
 #: includes/functions-test-20241129.php:4949
 #: includes/functions-test-transients.php:4950 includes/functions-test.php:4950
-#: includes/functions.php:4937
+#: includes/functions.php:4950
 msgid "Key"
 msgstr "Ključ"
 
 #: includes/functions-test-20241129.php:4967
 #: includes/functions-test-transients.php:4968 includes/functions-test.php:4968
-#: includes/functions.php:4955
+#: includes/functions.php:4968
 msgid "Address"
 msgstr "Naslov"
 
 #: includes/functions-test-20241129.php:4980
 #: includes/functions-test-transients.php:4981 includes/functions-test.php:4981
-#: includes/functions.php:4968
+#: includes/functions.php:4981
 msgid "No website configured"
 msgstr "Nobeno spletno mesto ni nastavljeno"
 
 #: includes/functions-test-20241129.php:4981
 #: includes/functions-test-transients.php:4982 includes/functions-test.php:4982
-#: includes/functions.php:4969
+#: includes/functions.php:4982
 msgid "No website matches search keywords"
 msgstr "Nobeno spletno mesto ne ustreza iskalnim ključnim besedam"
 
 #. Translators: %s HTML tags
 #: includes/functions-test-20241129.php:5010
 #: includes/functions-test-transients.php:5011 includes/functions-test.php:5011
-#: includes/functions.php:5320
+#: includes/functions.php:5333
 msgid "Create and manage %s MaxMind license key %s"
 msgstr "Ustvarite in upravljajte z %s MaxMind licenčnim ključem %s"
 
 #: includes/functions-test-20241129.php:5046
 #: includes/functions-test-transients.php:5047 includes/functions-test.php:5047
-#: includes/functions.php:5356
+#: includes/functions.php:5369
 msgid "MaxMind license key"
 msgstr "MaxMind licenčni ključ"
 
 #: includes/functions-test-20241129.php:5049
 #: includes/functions-test-transients.php:5050 includes/functions-test.php:5050
-#: includes/functions.php:5359
+#: includes/functions.php:5372
 msgid "Enter license key obtained from MaxMind"
 msgstr "Vnesite licenčni ključ, ki ste ga dobili od MaxMind"
 
 #: includes/functions-test-20241129.php:5250
 #: includes/functions-test-transients.php:5251 includes/functions-test.php:5251
-#: includes/functions.php:5576
+#: includes/functions.php:5589
 msgid ""
 "Image or logo to be displayed in the header of the statistics report. "
 "Absolute path starting with '/' or relative path to the image file. Clear to "
@@ -3786,13 +3786,13 @@ msgstr ""
 
 #: includes/functions-test-20241129.php:5298
 #: includes/functions-test-transients.php:5299 includes/functions-test.php:5299
-#: includes/functions.php:5624
+#: includes/functions.php:5637
 msgid "Event category"
 msgstr "Kategorija dogodka"
 
 #: includes/functions-test-20241129.php:5301
 #: includes/functions-test-transients.php:5302 includes/functions-test.php:5302
-#: includes/functions.php:5627
+#: includes/functions.php:5640
 msgid ""
 "Category name used for external tracking events. You can use tags to get the "
 "event, the number or the name of the block that caused the event."
@@ -3802,13 +3802,13 @@ msgstr ""
 
 #: includes/functions-test-20241129.php:5306
 #: includes/functions-test-transients.php:5307 includes/functions-test.php:5307
-#: includes/functions.php:5632
+#: includes/functions.php:5645
 msgid "Event action"
 msgstr "Akcija dogodka"
 
 #: includes/functions-test-20241129.php:5309
 #: includes/functions-test-transients.php:5310 includes/functions-test.php:5310
-#: includes/functions.php:5635
+#: includes/functions.php:5648
 msgid ""
 "Action name used for external tracking events. You can use tags to get the "
 "event, the number or the name of the block that caused the event."
@@ -3818,13 +3818,13 @@ msgstr ""
 
 #: includes/functions-test-20241129.php:5314
 #: includes/functions-test-transients.php:5315 includes/functions-test.php:5315
-#: includes/functions.php:5640
+#: includes/functions.php:5653
 msgid "Event label"
 msgstr "Oznaka dogodka"
 
 #: includes/functions-test-20241129.php:5317
 #: includes/functions-test-transients.php:5318 includes/functions-test.php:5318
-#: includes/functions.php:5643
+#: includes/functions.php:5656
 msgid ""
 "Label name used for external tracking events. You can use tags to get the "
 "event, the number or the name of the block that caused the event."
@@ -3834,32 +3834,32 @@ msgstr ""
 
 #: includes/functions-test-20241129.php:5350
 #: includes/functions-test-transients.php:5351 includes/functions-test.php:5351
-#: includes/functions.php:5676
+#: includes/functions.php:5689
 msgid "Global visitor limits"
 msgstr "Globalne omejitve obiskovalca"
 
 #: includes/functions-test-20241129.php:5373
 #: includes/functions-test-transients.php:5374 includes/functions-test.php:5374
-#: includes/functions.php:5699
+#: includes/functions.php:5712
 msgid "Block IP address"
 msgstr "Blokiraj IP naslov"
 
 #: includes/functions-test-20241129.php:5378
 #: includes/functions-test-transients.php:5379 includes/functions-test.php:5379
-#: includes/functions.php:5704
+#: includes/functions.php:5717
 msgid "Block visitor's IP address when protection is activated"
 msgstr "Blokiraj obiskovalčev IP naslov, ko je aktivirana zaščita"
 
 #: includes/functions-test-20241129.php:5380
 #: includes/functions-test-transients.php:5381 includes/functions-test.php:5381
-#: includes/functions.php:5706
+#: includes/functions.php:5719
 msgid "Click to show blocked IP addresses"
 msgstr "Kliknite za prikaz blokiranih IP naslovov"
 
 #. translators: %s: Ad Inserter Pro
 #: includes/functions-test-20241129.php:5580
 #: includes/functions-test-transients.php:5581 includes/functions-test.php:5581
-#: includes/functions.php:5952
+#: includes/functions.php:5965
 msgid "Show link to %s settings page for each site on the Sites page"
 msgstr ""
 "Pokaži povezavo na %s stran z nastavitvami za vsako spletišče na strani "
@@ -3868,13 +3868,13 @@ msgstr ""
 #. translators: %s: Ad Inserter Pro
 #: includes/functions-test-20241129.php:5580
 #: includes/functions-test-transients.php:5581 includes/functions-test.php:5581
-#: includes/functions.php:5952
+#: includes/functions.php:5965
 msgid "Show link to %s on the Sites page"
 msgstr "Pokaži povezavo na %s na strani Spletišča"
 
 #: includes/functions-test-20241129.php:5622
 #: includes/functions-test-transients.php:5623 includes/functions-test.php:5623
-#: includes/functions.php:5994 settings.php:3478
+#: includes/functions.php:6007 settings.php:3478
 msgid ""
 "Enable Debugger widget and code insertion debugging (blocks, positions, "
 "tags, processing) by url parameters for non-logged in users. Enable this "
@@ -3891,37 +3891,37 @@ msgstr ""
 
 #: includes/functions-test-20241129.php:5624
 #: includes/functions-test-transients.php:5625 includes/functions-test.php:5625
-#: includes/functions.php:5996 settings.php:3480
+#: includes/functions.php:6009 settings.php:3480
 msgid "Remote debugging"
 msgstr "Oddaljeno razhroščevanje"
 
 #: includes/functions-test-20241129.php:7002
 #: includes/functions-test-transients.php:6995 includes/functions-test.php:6995
-#: includes/functions.php:7422
+#: includes/functions.php:7449
 msgid "All statistics data for block %s deleted"
 msgstr "Vsi podatki o statistiki za blok %s pobrisani"
 
 #: includes/functions-test-20241129.php:7004
 #: includes/functions-test-transients.php:6997 includes/functions-test.php:6997
-#: includes/functions.php:7424
+#: includes/functions.php:7451
 msgid "statistics for block %d deleted"
 msgstr "podatki o statistiki za blok %d pobrisani"
 
 #: includes/functions-test-20241129.php:7008
 #: includes/functions-test-transients.php:7001 includes/functions-test.php:7001
-#: includes/functions.php:7428
+#: includes/functions.php:7455
 msgid "Statistics data between %s and %s deleted"
 msgstr "Podatki o statistiki med %s in %s pobrisani"
 
 #: includes/functions-test-20241129.php:7010
 #: includes/functions-test-transients.php:7003 includes/functions-test.php:7003
-#: includes/functions.php:7430
+#: includes/functions.php:7457
 msgid "statistics for block %d between %s and %s deleted"
 msgstr "podatki o statistiki za blok %d med %s in %s pobrisani"
 
 #: includes/functions-test-20241129.php:7364
 #: includes/functions-test-transients.php:7357 includes/functions-test.php:7357
-#: includes/functions.php:7806
+#: includes/functions.php:7833
 msgid "Date"
 msgstr "Datum"
 
@@ -3929,8 +3929,8 @@ msgstr "Datum"
 #: includes/functions-test-20241129.php:7815
 #: includes/functions-test-transients.php:7797
 #: includes/functions-test-transients.php:7808 includes/functions-test.php:7797
-#: includes/functions-test.php:7808 includes/functions.php:8283
-#: includes/functions.php:8294
+#: includes/functions-test.php:7808 includes/functions.php:8310
+#: includes/functions.php:8321
 msgid "File %s missing."
 msgstr "Datoteka %s ni najdena."
 
@@ -3950,56 +3950,56 @@ msgstr ""
 "Sprožilna vrednost: pomik strani v %, pomik strani v px ali element s "
 "selektorjem se pomakne izven zaslona"
 
-#: includes/functions.php:5189
+#: includes/functions.php:5202
 msgid "No custom report configured"
 msgstr "Nobeno poročilo po meri ni nastavljeno"
 
-#: includes/functions.php:5199
+#: includes/functions.php:5212
 msgid "Custom report"
 msgstr "Poročilo po meri"
 
-#: includes/functions.php:5212
+#: includes/functions.php:5225
 msgid "Toggle report"
 msgstr "Preklopi poročilo"
 
-#: includes/functions.php:5428
+#: includes/functions.php:5441
 msgid "Toggle custom reports"
 msgstr "Preklopi poročila po meri"
 
-#: includes/functions.php:5445
+#: includes/functions.php:5458
 msgid "Toggle pageview statistics"
 msgstr "Preklopi statistiko ogleda strani"
 
-#: includes/functions.php:5472
+#: includes/functions.php:5485
 msgid "Tracking settings and pageview statistics"
 msgstr "Nastavitve sledenja in statistike ogledov strani"
 
-#: includes/functions.php:5473
+#: includes/functions.php:5486
 msgctxt "ad blocking detection"
 msgid "TRACKING NOT ENABLED"
 msgstr "SLEDENJE NI OMOGOČENO"
 
-#: includes/functions.php:5735
+#: includes/functions.php:5748
 msgid "Toggle report statistics"
 msgstr "Preklopi statistiko poročila"
 
-#: includes/functions.php:5749 strings.php:248
+#: includes/functions.php:5762 strings.php:248
 msgid "Delete report"
 msgstr "Izbriši poročilo"
 
-#: includes/functions.php:5753
+#: includes/functions.php:5766
 msgid "Add report"
 msgstr "Dodaj poročilo"
 
-#: includes/functions.php:5759
+#: includes/functions.php:5772
 msgid "Custom reports"
 msgstr "Poročila po meri"
 
-#: includes/functions.php:8140
+#: includes/functions.php:8167
 msgid "No chart configured."
 msgstr "Noben grafikon ni nastavljen"
 
-#: includes/functions.php:9283
+#: includes/functions.php:9310
 msgid "Unknown report"
 msgstr "Neznano poročilo"
 
@@ -4027,7 +4027,7 @@ msgstr "Zapri urejevalnik polnila"
 msgid "Placeholder"
 msgstr "Polnilo"
 
-#: includes/placeholders.php:362 settings.php:1114 settings.php:5029
+#: includes/placeholders.php:362 settings.php:1114 settings.php:5014
 msgid "Size"
 msgstr "Velikost"
 
@@ -4581,7 +4581,7 @@ msgstr ""
 "eno različico ni določen bo izračunan samodejno. Pustite vsa polja za deleže "
 "prazne za enakomerno porazdelitev deležev različic."
 
-#: settings.php:424 settings.php:2279 settings.php:4940
+#: settings.php:424 settings.php:2279 settings.php:4925
 msgid "Scheduling"
 msgstr "Urnik"
 
@@ -4638,7 +4638,7 @@ msgstr "Odpri vizualni HTML urejevalnik"
 msgid "Clear block"
 msgstr "Počisti blok"
 
-#: settings.php:941 settings.php:4824
+#: settings.php:941 settings.php:4809
 msgid "Copy block"
 msgstr "Kopiraj blok"
 
@@ -4817,7 +4817,7 @@ msgstr ""
 msgid "Enable insertion on posts"
 msgstr "Omogoči vstavljanje na prispevkih"
 
-#: settings.php:1329 settings.php:3920
+#: settings.php:1329 settings.php:3907
 msgid "Posts"
 msgstr "Prispevki"
 
@@ -4831,7 +4831,7 @@ msgstr ""
 "podstraneh), statična stran ali domača stran teme (razpoložljivi položaji so "
 "lahko odvisni od ročic, ki jih tema uporablja)"
 
-#: settings.php:1334 settings.php:3922
+#: settings.php:1334 settings.php:3909
 msgid "Homepage"
 msgstr "Domača stran"
 
@@ -4839,7 +4839,7 @@ msgstr "Domača stran"
 msgid "Enable insertion on category blog pages (including sub-pages)"
 msgstr "Omogoči vstavljanje na straneh kategorij (vključno s podstranmi)"
 
-#: settings.php:1339 settings.php:3923
+#: settings.php:1339 settings.php:3910
 msgid "Category pages"
 msgstr "Strani kategorij"
 
@@ -4847,7 +4847,7 @@ msgstr "Strani kategorij"
 msgid "Enable insertion on static pages"
 msgstr "Omogoči vstavljanje na statičnih straneh"
 
-#: settings.php:1350 settings.php:3921
+#: settings.php:1350 settings.php:3908
 msgid "Static pages"
 msgstr "Statične strani"
 
@@ -4855,7 +4855,7 @@ msgstr "Statične strani"
 msgid "Enable insertion on search blog pages"
 msgstr "Omogoči vstavljanje na iskalnih straneh"
 
-#: settings.php:1355 settings.php:3925
+#: settings.php:1355 settings.php:3912
 msgid "Search pages"
 msgstr "Iskalne strani"
 
@@ -5311,8 +5311,8 @@ msgstr "Preklopi urejevalnik url-jev"
 
 #: settings.php:2029
 msgid ""
-"Comma separated urls (page addresses) starting with / after domain name (e."
-"g. /permalink-url, use only when you need to taget a specific url not "
+"Comma separated urls (page addresses) starting with / after domain name "
+"(e.g. /permalink-url, use only when you need to taget a specific url not "
 "accessible by other means). You can also use partial urls with * (/url-"
 "start*. *url-pattern*, *url-end)"
 msgstr ""
@@ -5401,7 +5401,7 @@ msgid "Enable shortcode for manual insertion of this block in posts and pages"
 msgstr ""
 "Omogočite kratko kodo za ročno vstavljanje tega bloka v prispevke in strani"
 
-#: settings.php:2158 settings.php:4950
+#: settings.php:2158 settings.php:4935
 msgid "Shortcode"
 msgstr "Kratka koda"
 
@@ -6309,210 +6309,210 @@ msgstr ""
 msgid "Disable translation"
 msgstr "Onemogoči prevod"
 
-#: settings.php:3908
+#: settings.php:3895
 msgid "Available positions for current theme"
 msgstr "Razpoložljivi položaji za trenutno temo"
 
-#: settings.php:3909
+#: settings.php:3896
 msgid "Error checking pages"
 msgstr "Napaka pri preverjanju strani"
 
-#: settings.php:3912
+#: settings.php:3899
 msgid "Toggle theme checker for available positions for automatic insertion"
 msgstr ""
 "Preklopi preverjanje teme za razpoložljive položaje za samodejno vstavljanje"
 
-#: settings.php:3912
+#: settings.php:3899
 msgctxt "Button"
 msgid "Check"
 msgstr "Preveri"
 
-#: settings.php:3919
+#: settings.php:3906
 msgid "Position"
 msgstr "Položaj"
 
-#: settings.php:3924
+#: settings.php:3911
 msgid "Archive pages"
 msgstr "Strani arhiva"
 
-#: settings.php:3983
+#: settings.php:3970
 msgid ""
 "Position not available because output buffering (tab [*]) is not enabled"
 msgstr ""
 "Položaj ni na razpolago ker predpomnjenje izhoda (zavihek [*]) ni omogočeno"
 
-#: settings.php:3986 strings.php:263
+#: settings.php:3973 strings.php:263
 msgid "Position not checked yet"
 msgstr "Položaj še ni bil preverjen"
 
-#: settings.php:4022
+#: settings.php:4009
 msgid "Toggle active/all blocks"
 msgstr "Preklopi aktive/vse bloke"
 
-#: settings.php:4027 strings.php:250
+#: settings.php:4014 strings.php:250
 msgid "Rearrange block order"
 msgstr "Preuredi vrstni red blokov"
 
-#: settings.php:4033
+#: settings.php:4020
 msgid "Save new block order"
 msgstr "Shrani vrstni red blokov"
 
-#: settings.php:4059
+#: settings.php:4046
 msgid "Toggle active/all ad units"
 msgstr "Preklopi aktivne/vse oglasne enote"
 
-#: settings.php:4063
+#: settings.php:4050
 msgid "Reload AdSense ad units"
 msgstr "Ponovno naloži oglasne enote AdSense"
 
-#: settings.php:4067
+#: settings.php:4054
 msgid "Clear authorization to access AdSense account"
 msgstr "Odstrani avtorizacijo za dostop do računa AdSense"
 
-#: settings.php:4071 settings.php:5114 settings.php:5161 strings.php:258
+#: settings.php:4058 settings.php:5099 settings.php:5146 strings.php:258
 msgid "Google AdSense Homepage"
 msgstr "Google AdSense Domača Stran"
 
-#: settings.php:4092
+#: settings.php:4079
 msgid "Switch to physical ads.txt file"
 msgstr "Preklopi na fizično datoteko ads.txt"
 
-#: settings.php:4093
+#: settings.php:4080
 msgid "Switch to virtual ads.txt file"
 msgstr "Preklopi na navidezno datoteko ads.txt"
 
 #. translators: %s: ads.txt
-#: settings.php:4113
+#: settings.php:4100
 msgid "Open %s"
 msgstr "Odpri %s"
 
-#: settings.php:4121
+#: settings.php:4108
 msgid "Reload ads.txt file"
 msgstr "Ponovno naloži datoteko ads.txt"
 
-#: settings.php:4127 settings.php:5226
+#: settings.php:4114 settings.php:5211
 msgid "Save"
 msgstr "Shrani"
 
 #. translators: %s: Ad Inserter
-#: settings.php:4307
+#: settings.php:4292
 msgid "ads.txt file: %s virtual ads.txt file"
 msgstr "datoteka ads.txt: %s navidezna datoteka ads.txt"
 
-#: settings.php:4312 settings.php:4332 strings.php:236
+#: settings.php:4297 settings.php:4317 strings.php:236
 msgid "Warning"
 msgstr "Opozorilo"
 
 #. translators: %s: Ad Inserter
-#: settings.php:4312
+#: settings.php:4297
 msgid "%s virtual file ads.txt not found"
 msgstr "%s navidezna datoteka ads.txt ni najdena"
 
-#: settings.php:4320
+#: settings.php:4305
 msgid "IMPORTANT"
 msgstr "POMEMBNO"
 
-#: settings.php:4320
+#: settings.php:4305
 msgid "ads.txt file must be placed on the root domain"
 msgstr "Datoteka ads.txt mora biti nameščena na korensko domeno"
 
-#: settings.php:4325
+#: settings.php:4310
 msgid "ads.txt file"
 msgstr "datoteka ads.txt"
 
-#: settings.php:4325
+#: settings.php:4310
 msgid "NOT WRITABLE"
 msgstr "NI ZAPISLJIVO"
 
-#: settings.php:4332
+#: settings.php:4317
 msgid "file %s not found"
 msgstr "datoteka %s ni najdena"
 
-#: settings.php:4342
+#: settings.php:4327
 msgid "Account IDs found in blocks but not present in the ads.txt file"
 msgstr ""
 "IDji računov najdeni v blokih, vendar pa niso prisotni v datoteki ads.txt"
 
 #. translators: %s: Ad Inserter
-#: settings.php:4348
+#: settings.php:4333
 msgid "%s virtual ads.txt file"
 msgstr "%s navidezna datoteka ads.txt"
 
-#: settings.php:4370
+#: settings.php:4355
 msgid "Advertising system"
 msgstr "Oglaševalski sistem"
 
-#: settings.php:4371
+#: settings.php:4356
 msgid "Account ID"
 msgstr "ID Računa"
 
-#: settings.php:4373
+#: settings.php:4358
 msgid "Certification authority ID"
 msgstr "ID organa za potrjevanje"
 
-#: settings.php:4388
+#: settings.php:4373
 msgid "Account ID found in block and present in ads.txt"
 msgstr "ID računa najden v bloku in prisoten v datoteki ads.txt"
 
-#: settings.php:4392
+#: settings.php:4377
 msgid "Account ID found in block but not present in ads.txt"
 msgstr "ID računa najden v bloku, vendar ni prisoten v datoteki ads.txt"
 
-#: settings.php:4821
+#: settings.php:4806
 msgid "Preview block"
 msgstr "Predogled bloka"
 
-#: settings.php:4828
+#: settings.php:4813
 msgid "Pause block"
 msgstr "Ustavite blok"
 
-#: settings.php:4837 settings.php:4884 settings.php:4931
+#: settings.php:4822 settings.php:4869 settings.php:4916
 msgid "Add to custom report"
 msgstr "Dodaj k poročilu po meri"
 
-#: settings.php:4936
+#: settings.php:4921
 msgid "Automatic insertion"
 msgstr "Samodejno vstavljanje"
 
 #. translators: %s HTML tags
-#: settings.php:4937 settings.php:6337
+#: settings.php:4922 settings.php:6310
 msgid "PHP code processing"
 msgstr "Procesiranje PHP kode"
 
-#: settings.php:4939
+#: settings.php:4924
 msgid "Device detection"
 msgstr "Zaznavanje naprave"
 
-#: settings.php:4964
+#: settings.php:4949
 msgid "No active block"
 msgstr "Noben aktiven blok"
 
-#: settings.php:4965
+#: settings.php:4950
 msgid "No block matches search keywords"
 msgstr "Noben blok ne ustreza iskalnim ključnim besedam"
 
-#: settings.php:5025
+#: settings.php:5010
 msgid "Ad unit"
 msgstr "Enota"
 
-#: settings.php:5027
+#: settings.php:5012
 msgid "Slot ID"
 msgstr "ID mesta"
 
-#: settings.php:5053
+#: settings.php:5038
 msgid "Copy AdSense code"
 msgstr "Kopiraj kodo AdSense"
 
-#: settings.php:5056
+#: settings.php:5041
 msgid "Preview AdSense ad"
 msgstr "Predogled oglasa AdSense"
 
-#: settings.php:5059
+#: settings.php:5044
 msgid "Get AdSense code"
 msgstr "Pridobi kodo AdSense"
 
 #. translators: %s: HTML tags
-#: settings.php:5091
+#: settings.php:5076
 msgid ""
 "Please %s clear authorization %s with the button %s above and once again "
 "authorize access to your AdSense account."
@@ -6520,21 +6520,21 @@ msgstr ""
 "Prosimo, %s odstranite avtorizacijo %s z gumbom %s zgoraj in še enkrat "
 "avtorizirajte dostop do vašega računa AdSense."
 
-#: settings.php:5110
+#: settings.php:5095
 msgid "AdSense Integration"
 msgstr "Integracija AdSense"
 
-#: settings.php:5112
+#: settings.php:5097
 msgid "AdSense Integration - Step 2"
 msgstr "Integracija AdSense - Korak 2"
 
 #. translators: %s: HTML tags
-#: settings.php:5118
+#: settings.php:5103
 msgid "Authorize %s to access your AdSense account."
 msgstr "Avtorizirajte %s za dostop do vašega AdSense računa."
 
 #. translators: %s: HTML tags
-#: settings.php:5119
+#: settings.php:5104
 msgid ""
 "If you get error, can't access ad units or would like to use own Google API "
 "IDs click on the button %s Use own API IDs %s to enter Client ID and Client "
@@ -6545,12 +6545,12 @@ msgstr ""
 "je %s za vnos podatkov ID Odjemalca in Skrivnost Odjemalca."
 
 #. translators: %s: HTML tags
-#: settings.php:5121
+#: settings.php:5106
 msgid "Now you can authorize %s to access your AdSense account. "
 msgstr "Zdaj lahko avtorizirate %s za dostop do vašega AdSense računa. "
 
 #. translators: %s: HTML tags
-#: settings.php:5122
+#: settings.php:5107
 msgid ""
 "If you get error %s invalid client %s click on the button %s Clear and "
 "return to Step 1 %s to re-enter Client ID and Client Secret."
@@ -6558,24 +6558,24 @@ msgstr ""
 "Če se pojavi napaka %s neveljaven odjemalec %s, kliknite na gumb %s Odstrani "
 "in se vrni na Korak 1 %s za ponoven vnos ID odjemalca in Skrivnost Odjemalca."
 
-#: settings.php:5138
+#: settings.php:5123
 msgid "Use own API IDs"
 msgstr "Uporabi lastne API ID-je"
 
-#: settings.php:5140
+#: settings.php:5125
 msgid "Clear and return to Step 1"
 msgstr "Odstrani in se vrni na Korak 1"
 
-#: settings.php:5144
+#: settings.php:5129
 msgid "Authorize"
 msgstr "Avtoriziraj"
 
-#: settings.php:5160
+#: settings.php:5145
 msgid "AdSense Integration - Step 1"
 msgstr "Integracija AdSense - Korak 1"
 
 #. translators: %s: Ad Inserter
-#: settings.php:5164
+#: settings.php:5149
 msgid ""
 "Here can %s list configured AdSense ad units and get code for AdSense ads. "
 "To do this you need to authorize %s to access your AdSense account. The "
@@ -6588,12 +6588,12 @@ msgstr ""
 "Odjemalca in Skrivnost Odjemalca."
 
 #. translators: %s: HTML tags
-#: settings.php:5173
+#: settings.php:5158
 msgid "Go to %s Google APIs and Services console %s"
 msgstr "Pojdite na %s konzolo Google API-ji in Storitve %s"
 
 #. translators: %1: Ad Inserter, 2, 3: HTML tags
-#: settings.php:5174
+#: settings.php:5159
 msgid ""
 "Create %1$s project - if the project and IDs are already created click on "
 "the %2$s Credentials %3$s in the sidebar and go to step 21"
@@ -6602,7 +6602,7 @@ msgstr ""
 "%2$s Pooblastila %3$s v stranski vrstici in pojdite na korak 21"
 
 #. translators: %s: HTML tags
-#: settings.php:5175
+#: settings.php:5160
 msgid ""
 "Click on project selection and then click on the %s NEW PROJECT %s button to "
 "create a new project"
@@ -6611,12 +6611,12 @@ msgstr ""
 "ustvaritev novega projekta"
 
 #. translators: 1: Ad Inserter, 2, 3: HTML tags
-#: settings.php:5176
+#: settings.php:5161
 msgid "Enter %1$s for project name and click on the %2$s Create %3$s button"
 msgstr "Vnesite %1$s za ime projekta in kliknite na gumb %2$s Ustvari %3$s"
 
 #. translators: %s: HTML tags
-#: settings.php:5177
+#: settings.php:5162
 msgid ""
 "Click on project selection, wait for the project to be created and then and "
 "select %s as the current project"
@@ -6625,44 +6625,44 @@ msgstr ""
 "izberite %s kot trenutni projekt"
 
 #. translators: %s: HTML tags
-#: settings.php:5178
+#: settings.php:5163
 msgid "Click on %s ENABLE APIS AND SERVICES %s"
 msgstr "Klinkite na %s OMOGOČI API-je IN STORITVE %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5179
+#: settings.php:5164
 msgid "Search for adsense and enable %s"
 msgstr "Poiščite adsense in omogočite %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5180
+#: settings.php:5165
 msgid "Click on %s CREATE CREDENTIALS %s"
 msgstr "Klinkite na %s USTVARI POOBLASTILA %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5181
+#: settings.php:5166
 msgid "For %s Which API are you using? %s select %s AdSense Management API %s"
 msgstr "Za %s Kateri API uporabljate? %s izberite %s AdSense Management API %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5182
+#: settings.php:5167
 msgid "For %s Where will you be calling the API from? %s select %s Other UI %s"
 msgstr "Za %s Od kod boste klicali API-je? %s izberite %s Drugi UI %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5183
+#: settings.php:5168
 msgid "For %s What data will you be accessing? %s select %s User data %s"
 msgstr ""
 "Za %s Do katerih podatkov boste dostopali? %s izberite %s Uporabniški "
 "podatki %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5184
+#: settings.php:5169
 msgid "Click on %s What credentials do I need? %s"
 msgstr "Kliknite na %s Kakšna pooblastila potrebujem? %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5185
+#: settings.php:5170
 msgid ""
 "When %s Set up OAuth consent screen %s window is displayed select %s Setup "
 "Consent Screen %s"
@@ -6671,13 +6671,13 @@ msgstr ""
 "Nastavite Zaslon za Soglasje %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5186
+#: settings.php:5171
 msgid "For %s User Type %s select %s External %s and click on %s CREATE %s"
 msgstr ""
 "Za %s Tip Uporabnika %s izberite %s Zunanji %s in kliknite na %s USTVARI %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5187
+#: settings.php:5172
 msgid ""
 "For %s App name %s enter %s and for %s User support email %s select your "
 "Google account email address"
@@ -6686,7 +6686,7 @@ msgstr ""
 "vaš email naslov Google računa"
 
 #. translators: %s: HTML tags
-#: settings.php:5188
+#: settings.php:5173
 msgid ""
 "For %s Developer contact information %s enter your email address and click "
 "on %s SAVE AND CONTINUE %s"
@@ -6695,7 +6695,7 @@ msgstr ""
 "na %s SHRANI IN NADALJUJ %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5189
+#: settings.php:5174
 msgid ""
 "Click again on %s SAVE AND CONTINUE %s and then click on %s ADD USERS %s and "
 "add your Google account email address"
@@ -6704,7 +6704,7 @@ msgstr ""
 "UPORABNIKE %s in dodajte email naslov vašga Google računa"
 
 #. translators: %s: HTML tags
-#: settings.php:5190
+#: settings.php:5175
 msgid ""
 "Click again on %s SAVE AND CONTINUE %s and then on %s BACK TO DASHBOARD %s"
 msgstr ""
@@ -6712,7 +6712,7 @@ msgstr ""
 "NADZORNO PLOŠČO %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5191
+#: settings.php:5176
 msgid ""
 "Create an OAuth 2.0 client ID: For %s OAuth 2.0 client ID %s name enter %s "
 "Ad Inserter client %s and then click on %s REFRESH %s"
@@ -6721,14 +6721,14 @@ msgstr ""
 "vnestite %s Ad Inserter odjemalec %s in potem kliknite na %s OSVEŽI %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5192
+#: settings.php:5177
 msgid "Click on %s Create OAuth client ID %s and then click on %s DONE %s"
 msgstr ""
 "Kliknite na %s Ustvarite OAuth ID odjemalca %s in potem kliknite na %s "
 "OPRAVLJENO %s"
 
 #. translators: %s: HTML tags
-#: settings.php:5193
+#: settings.php:5178
 msgid ""
 "Click on %s Ad Inserter client %s to get %s Client ID %s and %s Client "
 "secret %s"
@@ -6736,95 +6736,94 @@ msgstr ""
 "Kliknite na %s Ad Inserter odjemalcec, %s da bi dobili %s ID odjemalca %s in "
 "%s Skrivnost odjemalca %s"
 
-#: settings.php:5194
+#: settings.php:5179
 msgid "Copy them to the appropriate fields below"
 msgstr "Skopirajte ju na ustrezni polji spodaj"
 
-#: settings.php:5200
+#: settings.php:5185
 msgid "Client ID"
 msgstr "ID odjemalca"
 
-#: settings.php:5203
+#: settings.php:5188
 msgid "Enter Client ID"
 msgstr "Vnesite ID odjemalca"
 
-#: settings.php:5208
+#: settings.php:5193
 msgid "Client secret"
 msgstr "Skrivnost odjemalca"
 
-#: settings.php:5211
+#: settings.php:5196
 msgid "Enter Client secret"
 msgstr "Vnesite Skrivnost odjemalca"
 
-#: settings.php:5221
+#: settings.php:5206
 msgid "Use default API IDs"
 msgstr "Uporabi privzete API ID-je"
 
-#: settings.php:5323
+#: settings.php:5308
 msgid "All posts"
 msgstr "Vsi prispevki"
 
-#: settings.php:5324
+#: settings.php:5309
 msgid "All static pages"
 msgstr "Vse statične strani"
 
-#: settings.php:5642
+#: settings.php:5627
 msgid "exceptions cleared"
 msgstr "izjeme pobrisane"
 
-#: settings.php:5650
+#: settings.php:5635
 msgid "exceptions for post \"%s\" cleared"
 msgstr "izjeme za prispevek \"%s\" pobrisane"
 
-#: settings.php:5662
+#: settings.php:5647
 msgid "exceptions for block %d cleared"
 msgstr "izjeme za blok %d pobrisane"
 
-#: settings.php:5770
+#: settings.php:5755
 msgid "statistics for block %d cleared"
 msgstr "podatki o statistiki za blok %d pobrisani"
 
-#: settings.php:5774
+#: settings.php:5759
 msgid "statistics cleared"
 msgstr "statistika pobrisana"
 
-#: settings.php:5908 settings.php:5913 settings.php:6187 settings.php:6221
-#: settings.php:6238 settings.php:6256
+#: settings.php:5893 settings.php:5898 settings.php:6171 settings.php:6200
+#: settings.php:6214 settings.php:6230
 msgid "Join to AdManager"
 msgstr "Pridruži se AdManager-ju"
 
-#: settings.php:5922 settings.php:5936
+#: settings.php:5907 settings.php:5921
 msgid "Blank ad blocks? Looking for AdSense alternative?"
 msgstr "Prazni oglasni bloki? Iščete alternativo za AdSense?"
 
-#: settings.php:5927 settings.php:5941 settings.php:6189 settings.php:6214
-#: settings.php:6240 settings.php:6241 settings.php:6249
+#: settings.php:5912 settings.php:5926 settings.php:6173 settings.php:6195
+#: settings.php:6216 settings.php:6217 settings.php:6225
 msgid "Looking for AdSense alternative?"
 msgstr "Iščete alternativo za AdSense?"
 
-#: settings.php:5953
+#: settings.php:5938
 msgid "Try Infolinks Ads with Adsense or Media.net ads"
 msgstr "Poskusite oglase Infolinks z oglasi AdSense ali Media.net"
 
-#: settings.php:5958 settings.php:6186 settings.php:6209 settings.php:6237
-#: settings.php:6267
+#: settings.php:5943
 msgid "Use Infolinks ads with Adsense to earn more"
 msgstr "Uporabite oglase Infolinks z AdSense za večji zaslužek"
 
-#: settings.php:5970 settings.php:5975 settings.php:6196 settings.php:6205
-#: settings.php:6234 settings.php:6261
-msgid "Best AdSense Alternative"
-msgstr "Najboljša alternativa za AdSense"
+#: settings.php:5955 settings.php:5960 settings.php:6178 settings.php:6187
+#: settings.php:6211 settings.php:6235
+msgid "Grow Revenue Today"
+msgstr "Povečajte Prihodke še Danes"
 
-#: settings.php:5987 settings.php:5992 settings.php:6004 settings.php:6009
+#: settings.php:5972 settings.php:5977 settings.php:5989 settings.php:5994
 msgid "Maximize Revenue"
 msgstr "Povečajte Prihodek"
 
-#: settings.php:6031 settings.php:6081
+#: settings.php:6016 settings.php:6066
 msgid "Support plugin development"
 msgstr "Podprite razvoj vtičnika"
 
-#: settings.php:6036 settings.php:6082
+#: settings.php:6021 settings.php:6067
 msgid ""
 "If you like Ad Inserter and have a moment, please help me spread the word by "
 "reviewing the plugin on WordPres"
@@ -6832,12 +6831,12 @@ msgstr ""
 "Če vam je Ad Inserter všeč in imate trenutek časa, mi prosim pomagajte "
 "razširiti novico z mnenjem o vtičniku na WordPress-u"
 
-#: settings.php:6036
+#: settings.php:6021
 msgctxt "Review Ad Inserter"
 msgid "Review"
 msgstr "Ocenite"
 
-#: settings.php:6041
+#: settings.php:6026
 msgid ""
 "If you like Ad Inserter and have a moment, please help me spread the word by "
 "rating the plugin on WordPres"
@@ -6845,12 +6844,12 @@ msgstr ""
 "Če vam je Ad Inserter všeč in imate trenutek časa, mi prosim pomagajte "
 "razširiti novico z oceno vtičnika na WordPress-u"
 
-#: settings.php:6041
+#: settings.php:6026
 msgctxt "Rate Ad Inserter"
 msgid "Rate"
 msgstr "Ocenite"
 
-#: settings.php:6046
+#: settings.php:6031
 msgid ""
 "Support free Ad Inserter development. If you are making money with Ad "
 "Inserter consider donating some small amount. Even 1 dollar counts. Thank "
@@ -6859,16 +6858,16 @@ msgstr ""
 "Podprite razvoj brezplačnega Ad Inserter-ja. Če služite denar z Ad Inserter-"
 "jem razmislite o donaciji manjšega zneska. Tudi 1 evro šteje. Hvala!"
 
-#: settings.php:6046
+#: settings.php:6031
 msgid "Donate"
 msgstr "Donirajte"
 
-#: settings.php:6053 settings.php:6097
+#: settings.php:6038 settings.php:6082
 msgid "Average rating of the plugin - Thank you!"
 msgstr "Povprečna ocena vtičnika - Hvala!"
 
 #. translators: %s: Ad Inserter, HTML tags
-#: settings.php:6064
+#: settings.php:6049
 msgid ""
 "You've been using %s for a while now, and I hope you're happy with it. "
 "Positive %s reviews %s are a great way to show your appreciation for my "
@@ -6883,24 +6882,24 @@ msgstr ""
 "monetizacijo vašega spletnega mesta. Ko ga ocenite s 5-imi zvezdicami je kot "
 "bi rekli 'Hvala'."
 
-#: settings.php:6082
+#: settings.php:6067
 msgid "Review"
 msgstr "Ocena"
 
-#: settings.php:6086
+#: settings.php:6071
 msgid "Ad Inserter on Twitter"
 msgstr "Ad Inserter na Twitter-ju"
 
-#: settings.php:6087
+#: settings.php:6072
 msgid "Ad Inserter on Facebook"
 msgstr "Ad Inserter na Facebook-u"
 
-#: settings.php:6090
+#: settings.php:6075
 msgid "Follow Ad Inserter"
 msgstr "Sledi Ad Inserter-ju"
 
 #. translators: %s: HTML tags
-#: settings.php:6117
+#: settings.php:6102
 msgid ""
 "Need help with %s settings? %s Check %s Quick Start, %s %s Code Editing %s "
 "and %s Common Settings %s pages"
@@ -6909,7 +6908,7 @@ msgstr ""
 "Urejanje Kode, %s %s Pogoste Nastavitve %s"
 
 #. translators: %s: HTML tags
-#: settings.php:6129
+#: settings.php:6114
 msgid ""
 "%s New to %s AdSense? %s %s %s Connect your site %s - %s In-feed ads, %s %s "
 "Auto ads, %s %s AMP ads %s"
@@ -6918,7 +6917,7 @@ msgstr ""
 "viru, %s %s Samodejni oglasi, %s %s AMP oglasi %s"
 
 #. translators: %s: HTML tags
-#: settings.php:6146
+#: settings.php:6131
 msgid ""
 "Become an %s affiliate %s for Ad Inserter Pro and earn commission for each "
 "purchase you refer to us"
@@ -6927,7 +6926,7 @@ msgstr ""
 "nakup, ki nam ga posredujete"
 
 #. translators: %s: HTML tags
-#: settings.php:6153
+#: settings.php:6138
 msgid ""
 "Ads are not showing? Check %s troubleshooting guide %s to find out how to "
 "diagnose and fix the problem."
@@ -6936,7 +6935,7 @@ msgstr ""
 "navodili za diagnozo in rešitvami za težave."
 
 #. translators: %s: HTML tags
-#: settings.php:6157
+#: settings.php:6142
 msgid ""
 "If you need any kind of help or support, please do not hesitate to open a "
 "thread on the %s support forum. %s"
@@ -6944,66 +6943,61 @@ msgstr ""
 "Če potrebujete kakršno koli pomoč ali podporo ne oklevajte in odprite novo "
 "nit na %s podpornem forumu. %s"
 
-#: settings.php:6184 settings.php:6262 settings.php:6268
+#: settings.php:6169 settings.php:6236 settings.php:6241
 msgid "A/B testing - Track ad impressions and clicks"
 msgstr "A/B testiranje - Sledi prikazom in klikom"
 
-#: settings.php:6185 settings.php:6195 settings.php:6260 settings.php:6276
+#: settings.php:6170 settings.php:6177 settings.php:6234 settings.php:6249
 msgid "Code preview with visual CSS editor"
 msgstr "Predogled kode z vizualnim CSS urejevalnikom"
 
-#: settings.php:6191 settings.php:6204 settings.php:6280
+#: settings.php:6175 settings.php:6186 settings.php:6253
 msgid "Ad blocking detection and content protection"
 msgstr "Zaznavanje blokiranja oglasov in zaščita vsebine"
 
-#: settings.php:6192 settings.php:6193 settings.php:6219 settings.php:6220
-#: settings.php:6230 settings.php:6231 settings.php:6254 settings.php:6255
-msgid "Maximize Your Ad Revenue"
-msgstr "Povečajte Vaš Prihodek od Oglasov"
-
-#: settings.php:6210
+#: settings.php:6191
 msgid "Insert ads on AMP pages"
 msgstr "Vstavite oglase na AMP straneh"
 
-#: settings.php:6236 settings.php:6253 settings.php:6288
+#: settings.php:6213 settings.php:6229 settings.php:6261
 msgid "Stop invalid traffic with reCAPTCHA v3 score check"
 msgstr "Ustavite neveljaven promet s preverjanjem reCAPTCHA v3 rezultata"
 
-#: settings.php:6296
+#: settings.php:6269
 msgid "Looking for Pro Ad Management plugin?"
 msgstr "Iščete Pro vtičnik za Upravljanje z Oglasi?"
 
-#: settings.php:6297
+#: settings.php:6270
 msgid "To Optimally Monetize your WordPress website?"
 msgstr "Za optimalno monetizacijo vašega WordPress spletnega mesta?"
 
 #. Translators: %s: price of Ad Inserter Pro
-#: settings.php:6298
+#: settings.php:6271
 msgid "Different license types starting from %s"
 msgstr "Različni tipi licenc začenši od %s"
 
 #. translators: %s HTML tags
-#: settings.php:6301
+#: settings.php:6274
 msgid "%s AdSense Integration %s"
 msgstr "%s Integracija AdSense %s"
 
 #. translators: %s HTML tags
-#: settings.php:6302
+#: settings.php:6275
 msgid "Syntax highlighting %s editor %s"
 msgstr "%s Urejevalnik %s s poudarjanjem sintakse"
 
 #. translators: %s HTML tags
-#: settings.php:6303
+#: settings.php:6276
 msgid "%s Code preview %s with visual CSS editor"
 msgstr "%s Predogled kode %s z vizualnim CSS urejevalnikom"
 
 #. translators: %s HTML tags
-#: settings.php:6304
+#: settings.php:6277
 msgid "Simple user interface - all settings on a single page"
 msgstr "Preprost uporabniški vmesnik - vse nastavitve na eni strani"
 
 #. translators: %s HTML tags
-#: settings.php:6305
+#: settings.php:6278
 msgid ""
 "%s Automatic insertion %s before or after post / content / %s paragraph %s / "
 "image / excerpt"
@@ -7012,27 +7006,27 @@ msgstr ""
 "%s / sliko / izvlečkom"
 
 #. translators: %s HTML tags
-#: settings.php:6306
+#: settings.php:6279
 msgid "%s Automatic insertion %s between posts on blog pages"
 msgstr "%s Samodejno vstavljanje %s med prispevki na straneh bloga"
 
 #. translators: %s HTML tags
-#: settings.php:6307
+#: settings.php:6280
 msgid "%s Automatic insertion %s before, between and after comments"
 msgstr "%s Samodejno vstavljanje %s pred, med in po kometarjih"
 
 #. translators: %s HTML tags
-#: settings.php:6308
+#: settings.php:6281
 msgid "%s Automatic insertion %s after %s or before %s tag"
 msgstr "%s Samodejno vstavljanje %s za %s ali pred %s začko"
 
 #. translators: %s HTML tags
-#: settings.php:6309
+#: settings.php:6282
 msgid "Automatic insertion at %s custom hook positions %s"
 msgstr "Samodejno vstavljanje na %s položajih ročic po meri %s"
 
 #. translators: %s HTML tags
-#: settings.php:6310
+#: settings.php:6283
 msgid ""
 "Insertion %s before or after any HTML element on the page %s (using CSS "
 "selectors)"
@@ -7041,17 +7035,17 @@ msgstr ""
 "selektorjev)"
 
 #. translators: %s HTML tags
-#: settings.php:6311
+#: settings.php:6284
 msgid "%s Insertion exceptions %s for individual posts and pages"
 msgstr "%s Izjeme vstavljanja %s za individualne prispevke in strani"
 
 #. translators: %s HTML tags
-#: settings.php:6312
+#: settings.php:6285
 msgid "%s Manual insertion: %s widgets, shortcodes, PHP function call"
 msgstr "%s Ročno vstavljanje: %s gradniki, kratke kode in klic PHP funkcije"
 
 #. translators: %s HTML tags
-#: settings.php:6313
+#: settings.php:6286
 msgid ""
 "%s Sticky ads %s with optional close button (ads stay fixed when the page "
 "scrolls)"
@@ -7060,24 +7054,24 @@ msgstr ""
 "se stran pomika)"
 
 #. translators: %s HTML tags
-#: settings.php:6314
+#: settings.php:6287
 msgid "%s Background ads %s with one or left and right background images"
 msgstr "%s Oglasi v ozdaju %s z eno ali levo in desno sliko ozadja"
 
 #. translators: %s HTML tags
-#: settings.php:6315
+#: settings.php:6288
 msgid "%s Sticky sidebar ads %s (stick to the screen or to the content)"
 msgstr ""
 "%s Lepljivi oglasi v stranski vrstici %s (lepljivi na zaslon ali vsebino)"
 
 #. translators: %s HTML tags
-#: settings.php:6316
+#: settings.php:6289
 msgid "%s Sticky ad animations %s (fade, slide, turn, flip, zoom)"
 msgstr ""
 "%s Animacije lepljivih oglasov %s (uveni, drsaj, obrni, prekucni, približaj)"
 
 #. translators: %s HTML tags
-#: settings.php:6317
+#: settings.php:6290
 msgid ""
 "%s Sticky ad trigger %s (page scroll in %% or px, HTML element becomes "
 "visible)"
@@ -7086,7 +7080,7 @@ msgstr ""
 "postane viden)"
 
 #. translators: %s HTML tags
-#: settings.php:6318
+#: settings.php:6291
 msgid ""
 "%s Sticky (fixed) widgets %s (sidebar does not move when the page scrolls)"
 msgstr ""
@@ -7094,12 +7088,12 @@ msgstr ""
 "strani)"
 
 #. translators: %s HTML tags
-#: settings.php:6319
+#: settings.php:6292
 msgid "Block %s alignment and style %s customizations"
 msgstr "%s Poravnave in slogi %s bloka po meri"
 
 #. translators: %s HTML tags
-#: settings.php:6320
+#: settings.php:6293
 msgid ""
 "%s Clearance %s options to avoid insertion near images or headers (AdSense "
 "TOS)"
@@ -7107,7 +7101,7 @@ msgstr ""
 "%s Izogibanje %s vstavljanja oglasov zraven slik ali naslovov (AdSense TOS)"
 
 #. translators: %s HTML tags
-#: settings.php:6321
+#: settings.php:6294
 msgid ""
 "Options to %s disable insertion %s on Ajax calls, 404 error pages or in RSS "
 "feeds"
@@ -7116,22 +7110,22 @@ msgstr ""
 "virih"
 
 #. translators: %s HTML tags
-#: settings.php:6322
+#: settings.php:6295
 msgid "%s Ad rotation %s (works also with caching)"
 msgstr "%s Rotacija oglasov %s (deluje tudi s predpomnjenjem)"
 
 #. translators: %s HTML tags
-#: settings.php:6323
+#: settings.php:6296
 msgid "Ad rotation %s optimization based on CTR %s"
 msgstr "Optimizacija vrtenja oglasov %s glede na CTR %s"
 
 #. translators: %s HTML tags
-#: settings.php:6324
+#: settings.php:6297
 msgid "Create, edit and check %s ads.txt %s file"
 msgstr "Ustvari, urejaj in preveri datoteko %s ads.txt %s"
 
 #. translators: %s HTML tags
-#: settings.php:6325
+#: settings.php:6298
 msgid ""
 "Ad impression and click %s tracking %s (works also with Javascript ads like "
 "AdSense)"
@@ -7140,91 +7134,91 @@ msgstr ""
 "AdSense)"
 
 #. translators: %s HTML tags
-#: settings.php:6326
+#: settings.php:6299
 msgid "Internal or external %s tracking %s (via Google Analytics or Matomo)"
 msgstr "Notranje ali zunanje %s sledenje %s (prek Google Analytics ali Matomo)"
 
 #. translators: %s HTML tags
-#: settings.php:6327
+#: settings.php:6300
 msgid "%s Public web reports %s for clients, export to PDF"
 msgstr "%s Javna spletna poročila %s za stranke, izvoz v PDF"
 
 #. translators: %s HTML tags
-#: settings.php:6328
+#: settings.php:6301
 msgid "Support for %s A/B testing %s"
 msgstr "Podpora za %s A/B testiranje %s"
 
 #. translators: %s HTML tags
-#: settings.php:6329
+#: settings.php:6302
 msgid "Frequency capping - %s limit impressions or clicks %s"
 msgstr "Omejevanje frekvence - %s omejite prikaze ali klike %s"
 
 #. translators: %s HTML tags
-#: settings.php:6330
+#: settings.php:6303
 msgid "Click fraud %s protection %s"
 msgstr "%s Zaščita %s pred goljufijo s kliki"
 
 #. translators: %s HTML tags
-#: settings.php:6331
+#: settings.php:6304
 msgid "Stop invalid traffic with %s reCAPTCHA score check %s"
 msgstr "Ustavite neveljaven promet s preverjanjem %s reCAPTCHA rezultata %s"
 
 #. translators: %s HTML tags
-#: settings.php:6332
+#: settings.php:6305
 msgid "Support for %s GDPR consent cookie checks %s"
 msgstr "Podpora za %s preverjanja piškotkov za GDPR privolitev %s"
 
 #. translators: %s HTML tags
-#: settings.php:6333
+#: settings.php:6306
 msgid "Support for %s lazy loading %s"
 msgstr "Podpora za %s leno nalaganje %s"
 
 #. translators: %s HTML tags
-#: settings.php:6334
+#: settings.php:6307
 msgid "Support for ads on %s AMP pages %s"
 msgstr "Podpora za oglase na %s AMP straneh %s"
 
 #. translators: %s HTML tags
-#: settings.php:6335
+#: settings.php:6308
 msgid "Support for contextual %s Amazon Native Shopping Ads %s (responsive)"
 msgstr "Podpora za kontekstualne %s Amazon Native Shopping Ads %s (odzivni)"
 
 #. translators: %s HTML tags
-#: settings.php:6336
+#: settings.php:6309
 msgid "Custom CSS class name for wrapping divs to avoid ad blockers"
 msgstr ""
 "Ime CSS razreda za div za ovijanje po meri za izogibanje blokiranju oglasov"
 
 #. translators: %s HTML tags
-#: settings.php:6338
+#: settings.php:6311
 msgid "%s Banner %s code generator"
 msgstr "Generator kode za %s pasice %s"
 
 #. translators: %s HTML tags
-#: settings.php:6339
+#: settings.php:6312
 msgid "Support for %s header and footer %s code"
 msgstr "Podpora za kodo v %s glavi in nogi %s"
 
 #. translators: %s HTML tags
-#: settings.php:6340
+#: settings.php:6313
 msgid "Support for Google Analytics, Matomo or any other web analytics code"
 msgstr ""
 "Podpora za Google Analytics, Matomo ali katerokoli drugo spletno analitiko"
 
 #. translators: %s HTML tags
-#: settings.php:6341
+#: settings.php:6314
 msgid "Desktop, tablet and phone server-side %s device detection %s"
 msgstr ""
 "%s Zaznava namizne, tablične in telefonske naprave %s na strani strani "
 "strežnika"
 
 #. translators: %s HTML tags
-#: settings.php:6342
+#: settings.php:6315
 msgid "Client-side %s mobile device detection %s (works with caching)"
 msgstr "%s Zaznava mobilne naprave %s (deluje s predpomnjenjem)"
 
 #. translators: %s HTML tags
-#: settings.php:6343
+#: settings.php:6316
 msgid ""
 "%s Ad blocking detection %s - popup message, ad replacement, content "
 "protection"
@@ -7233,12 +7227,12 @@ msgstr ""
 "vsebine"
 
 #. translators: %s HTML tags
-#: settings.php:6344
+#: settings.php:6317
 msgid "%s Ad blocking statistics %s"
 msgstr "%s Statistika blokiranja oglasov %s"
 
 #. translators: %s HTML tags
-#: settings.php:6345
+#: settings.php:6318
 msgid ""
 "%s Black/White-list %s categories, tags, taxonomies, users, post IDs, urls, "
 "referrers, operating systems, browsers"
@@ -7247,75 +7241,75 @@ msgstr ""
 "prispevkov, url-jev, napotiteljev, operacijskih sistemov, brskalnikov"
 
 #. translators: %s HTML tags
-#: settings.php:6346
+#: settings.php:6319
 msgid ""
 "%s Black/White-list %s IP addresses or countries (works also with caching)"
 msgstr ""
 "%s Črni/Beli seznam %s IP naslovov ali držav (deluje tudi s predpomnjenjem)"
 
 #. translators: %s HTML tags
-#: settings.php:6347
+#: settings.php:6320
 msgid "%s Multisite options %s to limit settings on the sites"
 msgstr "%s Multisite možnosti %s za omejitev nastavitev na spletiščih"
 
 #. translators: %s HTML tags
-#: settings.php:6348
+#: settings.php:6321
 msgid "%s Import/Export %s block or plugin settings"
 msgstr "%s Uvoz/Izvoz %s nastavitve bloka ali vtičnika"
 
 #. translators: %s HTML tags
-#: settings.php:6349
+#: settings.php:6322
 msgid "%s Insertion scheduling %s with fallback option"
 msgstr "%s Urnik vstavljanja %s z možnostjo rezerve"
 
 #. translators: %s HTML tags
-#: settings.php:6350
+#: settings.php:6323
 msgid "Country-level %s GEO targeting %s (works also with caching)"
 msgstr "%s GEO ciljanje na ravni države %s (deluje tudi s predpomnjenjem)"
 
 #. translators: %s HTML tags
-#: settings.php:6351
+#: settings.php:6324
 msgid "Simple troubleshooting with many %s debugging functions %s"
 msgstr ""
 "Preprosto odpravljanje napak z veliko %s funkcijami za razhroščevanje %s"
 
 #. translators: %s HTML tags
-#: settings.php:6352
+#: settings.php:6325
 msgid "%s Visualization %s of inserted blocks or ads for easier placement"
 msgstr ""
 "%s Vizualizacija %s vstavljenih blokov ali oglasov za enostavno umeščanje"
 
 #. translators: %s HTML tags
-#: settings.php:6353
+#: settings.php:6326
 msgid "%s Visualization %s of available positions for automatic ad insertion"
 msgstr ""
 "%s Vizualizacija %s razpoložljivih položajev za samodejno vstavljanje oglasov"
 
 #. translators: %s HTML tags
-#: settings.php:6354
+#: settings.php:6327
 msgid ""
 "%s Visualization %s of HTML tags for easier ad placement between paragraphs"
 msgstr ""
 "%s Vizualizacija %s HTML značk za enostavno vstavljanje oglasov med odstavki"
 
 #. translators: %s HTML tags
-#: settings.php:6355
+#: settings.php:6328
 msgid "%s Clipboard support %s to easily copy blocks or settings"
 msgstr ""
 "%s Podpora za odložišče %s za enostavno kopiranje blokov ali nastavitev"
 
 #. translators: %s HTML tags
-#: settings.php:6356
+#: settings.php:6329
 msgid "No ads on the settings page"
 msgstr "Stran z nastavitvami brez oglasov"
 
 #. translators: %s HTML tags
-#: settings.php:6357
+#: settings.php:6330
 msgid "Premium support"
 msgstr "Vrhunska podpora"
 
 #. translators: %s HTML tags
-#: settings.php:6360
+#: settings.php:6333
 msgid ""
 "Ad Inserter Pro is a complete all-in-one ad management plugin for WordPress "
 "website with many advertising features to automatically insert adverts on "
@@ -7342,82 +7336,82 @@ msgstr ""
 "bodo ohranile)."
 
 #. translators: %s HTML tags
-#: settings.php:6373
+#: settings.php:6346
 msgid "Looking for %s Pro Ad Management plugin? %s"
 msgstr "Iščete Pro vtičnik za %s Upravljanje z Oglasi? %s"
 
 #. translators: %s HTML tags
-#: settings.php:6378
+#: settings.php:6351
 msgid "Ads between posts"
 msgstr "Oglasi med prispevki"
 
 #. translators: %s HTML tags
-#: settings.php:6379
+#: settings.php:6352
 msgid "Ads between comments"
 msgstr "Oglasi med komentarji"
 
 #. translators: %s HTML tags
-#: settings.php:6380
+#: settings.php:6353
 msgid "Support via email"
 msgstr "Podpora prek elektronske pošte"
 
 #. translators: %s HTML tags
-#: settings.php:6386
+#: settings.php:6359
 msgid "%s Sticky positions %s"
 msgstr "%s Lepljivi položaji %s"
 
 #. translators: %s HTML tags
-#: settings.php:6387
+#: settings.php:6360
 msgid "%s Limit insertions %s"
 msgstr "%s Omeji vstavljanja %s"
 
 #. translators: %s HTML tags
-#: settings.php:6388
+#: settings.php:6361
 msgid "%s Clearance %s options"
 msgstr "Možnosti %s izogibanja %s"
 
 #. translators: %s HTML tags
-#: settings.php:6394
+#: settings.php:6367
 msgid "Ad rotation"
 msgstr "Vrtenje oglasov"
 
 #. translators: %s HTML tags
-#: settings.php:6395
+#: settings.php:6368
 msgid "%s A/B testing %s"
 msgstr "%s A/B testiranje %s"
 
 #. translators: %s HTML tags
-#: settings.php:6396
+#: settings.php:6369
 msgid "%s Ad tracking %s"
 msgstr "%s Sledenje oglasom %s"
 
 #. translators: %s HTML tags
-#: settings.php:6402
+#: settings.php:6375
 msgid "Support for %s AMP pages %s"
 msgstr "Podpora za %s AMP strani %s"
 
 #. translators: %s HTML tags
-#: settings.php:6403
+#: settings.php:6376
 msgid "%s Ad blocking detection %s"
 msgstr "%s Zaznavanje blokiranja oglasov %s"
 
 #. translators: %s HTML tags
-#: settings.php:6404
+#: settings.php:6377
 msgid "%s Mobile device detection %s"
 msgstr "%s Zaznavanje mobilne naprave %s"
 
 #. translators: %s HTML tags
-#: settings.php:6411
+#: settings.php:6384
 msgid "64 code blocks"
 msgstr "64 kodnih blokov"
 
 #. translators: %s HTML tags
-#: settings.php:6412
+#: settings.php:6385
 msgid "%s GEO targeting %s"
 msgstr "%s GEO ciljanje %s"
 
 #. translators: %s HTML tags
-#: settings.php:6413
+#: settings.php:6386
 msgid "%s Scheduling %s"
 msgstr "%s Urnik %s"
 
@@ -8352,6 +8346,12 @@ msgid ""
 msgstr ""
 "Upravljanje z oglasi z veliko naprednimi funkcijami za vstavljanje oglasov "
 "na optimalna mesta"
+
+#~ msgid "Best AdSense Alternative"
+#~ msgstr "Najboljša alternativa za AdSense"
+
+#~ msgid "Maximize Your Ad Revenue"
+#~ msgstr "Povečajte Vaš Prihodek od Oglasov"
 
 #~ msgctxt "Block name"
 #~ msgid "Default"

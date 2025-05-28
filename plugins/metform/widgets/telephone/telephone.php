@@ -12,6 +12,11 @@ Class MetForm_Input_Telephone extends Widget_Base{
 		return 'mf-telephone';
     }
     
+
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_telephone';
+	}
+
 	public function get_title() {
 		return esc_html__( 'Telephone', 'metform' );
 	}

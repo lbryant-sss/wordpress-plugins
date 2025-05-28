@@ -11,7 +11,11 @@ Class MetForm_Input_Switch extends Widget_Base{
     public function get_name() {
 		return 'mf-switch';
     }
-    
+
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_toggle';
+	}
+
 	public function get_title() {
 		return esc_html__( 'Switch', 'metform' );
 	}

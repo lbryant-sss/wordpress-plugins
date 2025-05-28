@@ -2,7 +2,7 @@
 Contributors: seedprod, smub, andreamk
 Tags: backup, database backup, wordpress backup, cloud backup, migration
 Requires at least: 5.3
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.4
 Stable tag: 1.5.12
 License: GPLv2

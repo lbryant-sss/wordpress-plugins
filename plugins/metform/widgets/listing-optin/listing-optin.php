@@ -11,6 +11,10 @@ Class MetForm_Input_Listing_Optin extends Widget_Base{
     public function get_name() {
 		return 'mf-listing-optin';
     }
+
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_opt_in_listing';
+	}
     
 	public function get_title() {
 		return esc_html__( 'Opt in ( Listing )', 'metform' );

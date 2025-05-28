@@ -59,20 +59,20 @@ namespace AmeRedirectorUi {
 	}
 
 	const DefaultActorId = 'special:default';
-	const defaultActor: IAmeActor = {
+	const defaultActor: IAmeActor = new class implements IAmeActor {
 		getDisplayName(): string {
 			return 'Default';
-		},
+		}
 		getId(): string {
 			return DefaultActorId;
-		},
+		}
 		isUser(): this is IAmeUser {
 			return false;
-		},
+		}
 		hasOwnCap(_: string): boolean | null {
 			return null;
 		}
-	}
+	}();
 
 	export class Redirect {
 		protected static inputCounter: number = 0
@@ -140,20 +140,23 @@ namespace AmeRedirectorUi {
 					}
 
 					const missingActorId = this.actorId;
-					this.actor = {
+					this.actor = new class implements IAmeActor {
 						getDisplayName(): string {
 							return 'Missing role or user';
-						},
+						}
+
 						getId(): string {
 							return missingActorId;
-						},
+						}
+
 						isUser(): this is IAmeUser {
 							return false;
-						},
+						}
+
 						hasOwnCap(_: string): boolean | null {
 							return null;
 						}
-					}
+					}();
 				}
 			}
 

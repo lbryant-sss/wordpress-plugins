@@ -149,18 +149,18 @@ abstract class Route {
 		if ( $this->method_exists_in_current_class( $method_args ) ) {
 			$config['args'] = $this->{$method_args}();
 		}
-		$config['consumes'] =[ 'application/json' ];
-		if (  $this->method_exists_in_current_class( $method . '_consumes' ) ) {
+		$config['consumes'] = [ 'application/json' ];
+		if ( $this->method_exists_in_current_class( $method . '_consumes' ) ) {
 			$config['consumes'] = $this->{$method . '_consumes'}();
 		}
 		$config['produces'] = [ 'application/json' ];
-		if (  $this->method_exists_in_current_class( $method . '_produces' ) ) {
+		if ( $this->method_exists_in_current_class( $method . '_produces' ) ) {
 			$config['produces'] = $this->{$method . '_produces'}();
 		}
-		if (  $this->method_exists_in_current_class( $method . '_summary' ) ) {
+		if ( $this->method_exists_in_current_class( $method . '_summary' ) ) {
 			$config['summary'] = $this->{$method . '_summary'}();
 		}
-		if (  $this->method_exists_in_current_class( $method . '_description' ) ) {
+		if ( $this->method_exists_in_current_class( $method . '_description' ) ) {
 			$config['description'] = $this->{$method . '_description'}();
 		}
 		return $config;
@@ -225,7 +225,7 @@ abstract class Route {
 		$class_name = get_class( $this );
 		try {
 			$reflection = new ReflectionClass( $class_name );
-		} catch( \ReflectionException $e ) {
+		} catch ( \ReflectionException $e ) {
 			return false;
 		}
 		if ( ! $reflection->hasMethod( $method ) ) {
@@ -394,7 +394,11 @@ abstract class Route {
 	}
 
 	public function verify_nonce_and_capability( $nonce = '', $name = '', $capability = 'manage_options' ) {
-		$this->verify_nonce( $nonce, $name );
+		$valid = $this->verify_nonce( $nonce, $name );
+
+		if ( is_wp_error( $valid ) ) {
+			return $valid;
+		}
 
 		if ( ! current_user_can( $capability ) ) {
 			return $this->respond_error_json([

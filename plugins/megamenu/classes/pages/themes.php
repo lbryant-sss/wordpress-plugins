@@ -3033,13 +3033,7 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 
 			$value = $this->active_theme[ $key ];
 
-			$saved_settings = get_option( 'megamenu_settings' );
-
-			$css_type = 'standard';
-
-			if ( isset( $saved_settings['css_type'] ) ) {
-				$css_type = $saved_settings['css_type'];
-			}
+			$use_flex_css = $this->active_theme[ 'use_flex_css' ];
 			?>
 
 			<select name='settings[<?php echo $key; ?>]'>
@@ -3047,7 +3041,7 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 				<option value='center' <?php selected( $value, 'center' ); ?>><?php _e( 'Center', 'megamenu' ); ?></option>
 				<option value='right' <?php selected( $value, 'right' ); ?>><?php _e( 'Right', 'megamenu' ); ?></option>
 
-				<?php if ($key == 'menu_item_align' && $css_type == 'flex'): ?>
+				<?php if ($key == 'menu_item_align' && $use_flex_css == 'on'): ?>
 					<option value='space-around' <?php selected( $value, 'space-around' ); ?>><?php _e( 'space-around', 'megamenu' ); ?></option>
 					<option value='space-between' <?php selected( $value, 'space-between' ); ?>><?php _e( 'space-between', 'megamenu' ); ?></option>
 					<option value='space-evenly' <?php selected( $value, 'space-evenly' ); ?>><?php _e( 'space-evenly', 'megamenu' ); ?></option>

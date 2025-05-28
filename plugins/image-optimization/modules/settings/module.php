@@ -7,6 +7,7 @@ use ImageOptimization\Classes\Module_Base;
 use ImageOptimization\Modules\Settings\{
 	Banners\One_Million_Installs_Banner,
 	Banners\Sale_Banner,
+	Banners\Birthday_Banner,
 	Classes\Settings,
 };
 
@@ -61,6 +62,15 @@ class Module extends Module_Base {
 				'type' => 'string',
 				'default' => 'all',
 			],
+			'help_videos' => [
+				'type' => 'object',
+				'show_in_rest' => [
+					'schema' => [
+						'type' => 'object',
+						'additionalProperties' => true,
+					],
+				],
+			]
 		];
 	}
 
@@ -87,6 +97,7 @@ class Module extends Module_Base {
 		?>
 		<?php Sale_Banner::get_banner( 'https://go.elementor.com/io-bf-banner/' ); ?>
 		<?php One_Million_Installs_Banner::get_banner( 'https://go.elementor.com/io-1m-banner-upgrade/' ); ?>
+		<?php Birthday_Banner::get_banner( 'https://go.elementor.com/io-b-day-banner' ); ?>
 
 		<!-- The hack required to wrap WP notifications -->
 		<div class="wrap">

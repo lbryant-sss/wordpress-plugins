@@ -25,7 +25,7 @@ final class Plugin {
 
     public function version()
     {
-        return '3.9.8';
+        return '3.9.9';
     }
 
     public function package_type()
@@ -456,6 +456,7 @@ final class Plugin {
     public function edit_view_scripts()
     {
         wp_enqueue_style('metform-ui', $this->public_url() . 'assets/css/metform-ui.css', false, $this->version());
+        wp_enqueue_style('metform-icon', $this->public_url() . 'assets/mf-icon/mf-icon.css', false, $this->version());
         wp_enqueue_style('metform-admin-style', $this->public_url() . 'assets/css/admin-style.css', false, null);
 
         wp_enqueue_script('metform-ui', $this->public_url() . 'assets/js/ui.min.js', [], $this->version(), true);

@@ -17,6 +17,10 @@ Class MetForm_Input_Simple_Captcha extends Widget_Base{
     public function get_name() {
 		return 'mf-simple-captcha';
     }
+
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_simple_captcha';
+	}
     
 	public function get_title() {
 		return esc_html__( 'Simple Captcha', 'metform' );

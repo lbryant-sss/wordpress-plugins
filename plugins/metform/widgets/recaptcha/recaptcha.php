@@ -8,6 +8,10 @@ Class MetForm_Input_Recaptcha extends Widget_Base{
     public function get_name() {
 		return 'mf-recaptcha';
     }
+
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_recaptcha';
+	}
     
 	public function get_title() {
 		return esc_html__( 'reCAPTCHA', 'metform' );
@@ -127,7 +131,7 @@ Class MetForm_Input_Recaptcha extends Widget_Base{
 					<div
 						class="g-recaptcha <?php echo esc_attr( $mf_recaptcha_class_name ); ?>"
 						id="g-recaptcha"
-						data-sitekey="<?php echo esc_attr( $recaptcha_key_v2 ); ?>"
+						data-sitekey="<?php echo esc_attr($recaptcha_key_v2 != '') ? $recaptcha_key_v2  : 'dummy'; ?>"
 						<?php if ( !$is_edit_mode ): ?>
 							data-callback="handleReCAPTCHA_${this.state.recaptcha_uid}"
 							data-expired-callback="handleReCAPTCHA_${this.state.recaptcha_uid}"

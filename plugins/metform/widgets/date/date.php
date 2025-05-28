@@ -19,6 +19,10 @@ Class MetForm_Input_Date extends Widget_Base{
     public function get_name() {
 		return 'mf-date';
     }
+
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_date';
+	}
     
 	public function get_title() {
 		return esc_html__( 'Date', 'metform' );

@@ -11,6 +11,10 @@ Class MetForm_Input_File_Upload extends Widget_base{
     public function get_name() {
 		return 'mf-file-upload';
     }
+
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_file_upload';
+	}
     
 	public function get_title() {
 		return esc_html__( 'File Upload', 'metform' );

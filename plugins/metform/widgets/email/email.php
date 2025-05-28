@@ -16,6 +16,11 @@ class MetForm_Input_Email extends widget_base
 		return 'mf-email';
 	}
 
+	public function get_icon()
+	{
+		return 'mf-widget-icon icon-metform_email';
+	}
+
 	public function get_title()
 	{
 		return esc_html__('Email', 'metform');

@@ -21,6 +21,10 @@ class Widget_Met_Form extends Widget_Base {
 	public function get_name() {
 		return 'metform';
     }
+
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_favicon';
+	}
     
 	public function get_title() {
 		return esc_html__( 'MetForm', 'metform' );

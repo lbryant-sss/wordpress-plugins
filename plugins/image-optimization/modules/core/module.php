@@ -6,6 +6,7 @@ use ImageOptimization\Modules\Optimization\{
 	Rest\Cancel_Bulk_Optimization,
 	Rest\Optimize_Bulk,
 };
+use ImageOptimization\Modules\Settings\Classes\Settings;
 use ImageOptimization\Modules\Backups\Rest\{
 	Restore_All,
 	Remove_Backups,
@@ -233,6 +234,7 @@ class Module extends Module_Base {
 				'subscriptionEmail' => $connect_email ? $connect_email : null,
 				'showResetButton' => $show_reset,
 				'maxFileSize' => Validate_Image::get_max_file_size(),
+				'helpVideos' => Settings::get( Settings::HELP_VIDEOS ),
 
 				'wpRestNonce' => wp_create_nonce( 'wp_rest' ),
 				'disconnect' => wp_create_nonce( 'wp_rest' ),
@@ -310,6 +312,40 @@ class Module extends Module_Base {
 	}
 
 	/**
+	 * Renders the Bulk Optimization link on the media pages.
+	 *
+	 * @return void
+	 */
+	public function add_bulk_optimization_links(): void {
+		$page_url = add_query_arg(
+			[ 'page' => 'image-optimization-bulk-optimization' ],
+			admin_url( 'upload.php' )
+		);
+
+		?>
+		<script>
+			document.addEventListener( 'DOMContentLoaded', function () {
+				// Grid media is rendered by JS, so the timeout is required
+				setTimeout( () => {
+					const targetButton = document.querySelector( '.filter-items .actions input[type=submit]' ) ||
+						document.querySelector( '.media-toolbar-secondary .select-mode-toggle-button' );
+
+					if ( targetButton ) {
+						const link = document.createElement('a');
+
+						link.href = '<?php echo esc_js( $page_url ); ?>';
+						link.innerText = '<?php echo esc_js( __( 'Bulk Optimization', 'image-optimization' ) ); ?>';
+						link.className = 'button is-primary image-optimizer__button image-optimizer__button--pink';
+
+						targetButton.insertAdjacentElement( 'afterend', link );
+					}
+				}, 100 )
+			} );
+		</script>
+		<?php
+	}
+
+	/**
 	 * Module constructor.
 	 */
 	public function __construct() {
@@ -347,6 +383,10 @@ class Module extends Module_Base {
 			add_action('admin_enqueue_scripts', function () {
 				$this->enqueue_scripts();
 			});
+
+			if ( Utils::is_media_page() ) {
+				add_action( 'admin_enqueue_scripts', [ $this, 'add_bulk_optimization_links' ] );
+			}
 		});
 	}
 }

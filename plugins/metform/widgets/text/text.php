@@ -13,6 +13,10 @@ Class MetForm_Input_Text extends Widget_Base{
 		return 'mf-text';
     }
 
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_text';
+	}
+
 	public function get_title() {
 		return esc_html__( 'Text', 'metform' );
 	}

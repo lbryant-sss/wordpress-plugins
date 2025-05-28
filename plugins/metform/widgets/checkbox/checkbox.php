@@ -20,6 +20,10 @@ Class MetForm_Input_Checkbox extends Widget_Base{
     public function get_name() {
 		return 'mf-checkbox';
     }
+
+	public function get_icon() {
+        return 'mf-widget-icon icon-metform_checkbox';
+    }
     
 	public function get_title() {
 		return esc_html__( 'Checkbox', 'metform' );

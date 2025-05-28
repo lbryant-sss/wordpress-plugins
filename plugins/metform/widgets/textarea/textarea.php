@@ -12,6 +12,10 @@ Class MetForm_Input_Textarea extends Widget_Base{
     public function get_name() {
 		return 'mf-textarea';
     }
+
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_text_area';
+	}
     
 	public function get_title() {
 		return esc_html__( 'Textarea', 'metform' );

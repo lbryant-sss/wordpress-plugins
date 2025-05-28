@@ -68,6 +68,7 @@ Class Manifest{
 		require_once plugin_dir_path(__FILE__) . 'gdpr-consent/gdpr-consent.php';
 		require_once plugin_dir_path(__FILE__) . 'recaptcha/recaptcha.php';
 		require_once plugin_dir_path(__FILE__) . 'simple-captcha/simple-captcha.php';
+		require_once plugin_dir_path(__FILE__) . 'simple-message/simple-message.php';
 		require_once plugin_dir_path(__FILE__) . 'rating/rating.php';
 		require_once plugin_dir_path(__FILE__) . 'file-upload/file-upload.php';
 		require_once plugin_dir_path(__FILE__) . 'summary/summary.php';
@@ -101,6 +102,7 @@ Class Manifest{
 		\Elementor\Plugin::instance()->widgets_manager->register( new \Elementor\MetForm_Input_Gdpr_Consent() );
 		\Elementor\Plugin::instance()->widgets_manager->register( new \Elementor\MetForm_Input_Recaptcha() );
 		\Elementor\Plugin::instance()->widgets_manager->register( new \Elementor\MetForm_Input_Simple_Captcha() );
+		\Elementor\Plugin::instance()->widgets_manager->register( new \Elementor\MetForm_Simple_Message() );
 		\Elementor\Plugin::instance()->widgets_manager->register( new \Elementor\MetForm_Input_Rating() );
 		\Elementor\Plugin::instance()->widgets_manager->register( new \Elementor\MetForm_Input_File_Upload() );		
 		\Elementor\Plugin::instance()->widgets_manager->register( new \Elementor\MetForm_Input_Summary() );			

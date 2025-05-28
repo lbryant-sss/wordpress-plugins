@@ -11,6 +11,10 @@ Class MetForm_Input_Range extends Widget_Base{
     public function get_name() {
 		return 'mf-range';
     }
+
+	public function get_icon() {
+		return 'mf-widget-icon icon-metform_range_slider';
+	}
     
 	public function get_title() {
 		return esc_html__( 'Range Slider', 'metform' );

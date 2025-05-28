@@ -758,7 +758,7 @@ class Action
             }
         }
 
-        $this->form_settings['entry_title'] = (isset($this->form_settings['entry_title']) ? $this->form_settings['entry_title'] : 'Entry # [mf_id]');
+        $this->form_settings['entry_title'] = (!empty($this->form_settings['entry_title']) ? $this->form_settings['entry_title'] : 'Entry # [mf_id]');
 
         $update = array(
             'ID' => $this->entry_id,
@@ -833,6 +833,10 @@ class Action
         }else{
             $body = "<html><body><h2 style='text-align: center;'>" . get_the_title($this->form_id) . "</h2><h4 style='text-align: center;'>" . $body . "</h4>" . "</body></html>";
         }
+
+        // body will be in the filter hook 
+
+        $body = apply_filters('metform_confirmation_user_email_body', $body, $this->form_id, $form_data, $file_info, $this->form_settings);
 
         $headers = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";

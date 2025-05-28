@@ -147,6 +147,7 @@
                                     <input type="checkbox" value="1" name="enable_user_notification" class="mf-admin-control-input mf-form-user-enable">
                                     <span><?php esc_html_e('Confirmation mail to user :', 'metform'); ?></span>
                                 </label>
+                                <?php do_action('after_confirmation_mail_to_user_switch'); ?>
                                 <span class='mf-input-help'><?php esc_html_e('Want to send a submission copy to user by email? Active this one.', 'metform'); ?><strong><?php esc_html_e('The form must have at least one Email widget and it should be required.', 'metform'); ?></strong></span>
                             </div>
 

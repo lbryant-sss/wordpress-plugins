@@ -51,7 +51,8 @@ class Base{
     }
     
 	public function formpicker_enqueue_scripts_editor() {
-        if ( is_preview() || \Elementor\Plugin::$instance->preview->is_preview_mode() ) {
+
+        if ( is_preview() || \Elementor\Plugin::$instance->preview->is_preview_mode() || ( class_exists('ReduxFramework') && get_stylesheet() == 'itfirm' ) ) {  //for itfirm theme the preview mode is not working, that is why for compatibility we are adding this condition
 		    wp_enqueue_script( 'metform-js-formpicker-control-editor',  self::get_url() . 'assets/js/form-picker-editor.js', [], \MetForm\Plugin::instance()->version() );
         }
     }

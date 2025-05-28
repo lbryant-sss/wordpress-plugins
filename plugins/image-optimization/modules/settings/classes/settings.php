@@ -20,6 +20,7 @@ class Settings {
 	public const BACKUP_ORIGINAL_IMAGES_OPTION_NAME = 'image_optimizer_original_images';
 	public const CUSTOM_SIZES_OPTION_NAME = 'image_optimizer_custom_sizes';
 	public const SUPPORT_BIG_FILES = 'image_optimizer_support_big_files';
+	public const HELP_VIDEOS = 'image_optimizer_help_videos';
 
 	/**
 	 * Returns plugin settings data by option name typecasted to an appropriate data type.

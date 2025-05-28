@@ -3,7 +3,7 @@
  * Plugin Name: Image Optimizer - Compress, Resize and Optimize Images
  * Description: Automatically resize, optimize, and convert images to WebP and AVIF. Compress images in bulk or on upload to boost your WordPress site performance.
  * Plugin URI: https://go.elementor.com/wp-repo-description-tab-io-product-page/
- * Version: 1.6.6
+ * Version: 1.6.7
  * Author: Elementor.com
  * Author URI: https://go.elementor.com/author-uri-io/
  * Text Domain: image-optimization
@@ -17,12 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'IMAGE_OPTIMIZATION_VERSION', '1.6.6' );
-define( 'IMAGE_OPTIMIZATION_PATH', plugin_dir_path( __FILE__ ) );
-define( 'IMAGE_OPTIMIZATION_URL', plugins_url( '/', __FILE__ ) );
+define( 'IMAGE_OPTIMIZATION_VERSION', '1.6.7' );
+define( 'IMAGE_OPTIMIZATION_FILE', __FILE__ );
+define( 'IMAGE_OPTIMIZATION_PATH', plugin_dir_path( IMAGE_OPTIMIZATION_FILE ) );
+define( 'IMAGE_OPTIMIZATION_URL', plugins_url( '/', IMAGE_OPTIMIZATION_FILE ) );
 define( 'IMAGE_OPTIMIZATION_ASSETS_PATH', IMAGE_OPTIMIZATION_PATH . 'assets/' );
 define( 'IMAGE_OPTIMIZATION_ASSETS_URL', IMAGE_OPTIMIZATION_URL . 'assets/' );
-define( 'IMAGE_OPTIMIZATION_PLUGIN_FILE', basename( __FILE__ ) );
+define( 'IMAGE_OPTIMIZATION_PLUGIN_FILE', basename( IMAGE_OPTIMIZATION_FILE ) );
 
 register_deactivation_hook(
 	__FILE__,
@@ -46,22 +47,8 @@ final class ImageOptimization {
 	 * @access public
 	 */
 	public function __construct() {
-		// Load translation
-		add_action( 'plugins_loaded', [ $this, 'i18n' ] );
-
 		// Init Plugin
 		add_action( 'plugins_loaded', [ $this, 'init' ], -11 );
-	}
-
-	/**
-	 * Load plugin localization files.
-	 *
-	 * Fired by `plugins_loaded` action hook.
-	 *
-	 * @access public
-	 */
-	public function i18n() {
-		load_plugin_textdomain( 'image-optimization' );
 	}
 
 	/**
@@ -145,14 +132,28 @@ final class ImageOptimization {
 		return $output;
 	}
 
+	/**
+	 * The check is strictly based on the action scheduler requirements that needs JSON partial matching to work
+	 * with action queries.
+	 *
+	 * @return bool
+	 */
 	public function is_db_json_supported(): bool {
 		global $wpdb;
 
-		$result = $wpdb->query("
-			SELECT JSON_EXTRACT('[1, 2]', '$[1]');
-		");
+		$db_server_info = is_callable( array( $wpdb, 'db_server_info' ) ) ? $wpdb->db_server_info() : $wpdb->db_version();
 
-		return false !== $result;
+		if ( false !== strpos( $db_server_info, 'MariaDB' ) ) {
+			$supports_json = version_compare(
+				PHP_VERSION_ID >= 80016 ? $wpdb->db_version() : preg_replace( '/[^0-9.].*/', '', str_replace( '5.5.5-', '', $db_server_info ) ),
+				'10.2',
+				'>='
+			);
+		} else {
+			$supports_json = version_compare( $wpdb->db_version(), '5.7', '>=' );
+		}
+
+		return (bool) $supports_json;
 	}
 
 	/**

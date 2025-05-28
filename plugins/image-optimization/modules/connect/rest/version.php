@@ -33,6 +33,17 @@ class Version extends Route_Base {
 	}
 
 	public function GET( WP_REST_Request $request ) {
+		$valid = $this->verify_nonce_and_capability(
+			$request->get_param( self::NONCE_NAME ),
+			self::NONCE_NAME
+		);
+
+		if ( is_wp_error( $valid ) ) {
+			return $this->respond_error_json( [
+				'message' => $valid->get_error_message(),
+				'code' => 'forbidden',
+			] );
+		}
 
 		try {
 			return $this->respond_success_json([

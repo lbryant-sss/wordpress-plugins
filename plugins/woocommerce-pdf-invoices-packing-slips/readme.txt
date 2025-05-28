@@ -5,7 +5,7 @@ Tags: woocommerce, pdf, ubl, invoices, packing slips
 Requires at least: 4.4
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 4.5.1
+Stable tag: 4.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,6 +106,12 @@ There's a setting on the Advanced tab of the settings page that allows you to to
 6. Set shop name, address, header logo, etc.
 
 == Changelog ==
+
+= 4.5.2 (2025-05-27) =
+- Tweak: Suppress log entries for missing font files that are expected and not required
+- Fix: Support for `{state_code}` in shop address formatting
+- Fix: Restore `wpo_wcpdf_shop_address` hook for compatibility
+- Fix: Missing support for placeholders like `{city_upper}` in shop address formatting
 
 = 4.5.1 (2025-05-26) =
 - Fix: Shop address not shown in documents when historical settings are enabled

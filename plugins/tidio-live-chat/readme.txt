@@ -3,7 +3,7 @@ Contributors: tytus-tytus, lucastidio, marcingwizdala, kkopaczyktidio, ksladek, 
 Tags: free live chat, live chat, chat, chatbot, livechat, tidio, widget, zendesk, mailchimp, messenger
 Requires at least: 4.7
 Tested up to: 6.8
-Stable tag: 6.0.27
+Stable tag: 6.0.28
 Requires PHP: 7.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -137,6 +137,7 @@ See all available pricing options on our [website](https://www.tidio.com/pricing
 - Filters for new Lyro Knowledge tab
 - Historical conversations as data source
 - Sort direction in Smart Views tickets
+- First person perspective styling
 
 == Installation ==
 
@@ -201,6 +202,10 @@ Tidio offers six language versions: English, French, German, Spanish, Italian, a
 
 
 == Changelog ==
+
+= 6.0.28 =
+
+- Update description
 
 = 6.0.27 =
 
