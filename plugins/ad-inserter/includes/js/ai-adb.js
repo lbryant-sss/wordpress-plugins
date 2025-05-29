@@ -383,7 +383,7 @@ ai_adb_detection_type = function (n) {
         return "12 300x250 js";
         break;
       case 13:
-        return "12 300x250 img";       // not used
+        return "13 googlesyndication";
         break;
       case 14:
         return "14 quantserve.com";
@@ -756,6 +756,38 @@ function ai_adb_get_script (ai_adb_script, ai_adb_action) {
 
   head.appendChild (script);
 };
+
+const ai_fetch_adb = async () => {
+  try {
+      const response = await fetch (b64d ('aHR0cHM6Ly9wYWdlYWQyLmdvb2dsZXN5bmRpY2F0aW9uLmNvbS9wYWdlYWQvanMvYWRzYnlnb29nbGUuanM='), {
+          method: 'HEAD',
+          cache: 'no-cache',
+          credentials: 'same-origin'
+      });
+
+      if (!response.ok) {
+          return false;
+      }
+
+      const contentLength = response.headers.get ('Content-Length');
+      if (!contentLength) {
+          return false;
+      }
+
+      return true;
+  } catch (error) {
+      return false;
+  }
+};
+
+if (document.querySelector (b64d ("I2FpLWFkYi1ncw==")) != null) {
+  window.addEventListener ('load', async () => {
+     const fetchStatus = await ai_fetch_adb ();
+     if (!fetchStatus) {
+       ai_adb_detected (13);
+     } else ai_adb_undetected (13);
+  });
+}
 
 window.addEventListener ('load', (event) => {
 

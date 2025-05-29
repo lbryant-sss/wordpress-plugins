@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: Ad Inserter
-Version: 2.8.2
+Version: 2.8.3
 Description: Ad management with many advanced advertising features to insert ads at optimal positions
 Author: Igor Funa
 Author URI: http://igorfuna.com/
@@ -3107,6 +3107,9 @@ function ai_adb_code () {
 function ai_adb_external_scripts () {
   $code = '';
 
+  if (!defined ('AI_ADB_NO_GOOGLESYNDICATION')) {
+    $code .= '<object id="ai-adb-gs"></object>' . "\n";
+  }
   if (!defined ('AI_ADB_NO_GOOGLE_ANALYTICS')) {
     $code .= '<object id="ai-adb-ga" data="https://www.google-analytics.com/analytics.js" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";
   }

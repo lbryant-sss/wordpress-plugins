@@ -1,5 +1,13 @@
 == Changelog ==
 
+= 5.3.59 =
+
+* Updated the URL for requesting the trial plugin installation so that it is now protected with a nonce. A big thank you to truonghuuphuc and the Patchstack team for identifying this issue.
+
+= 5.3.58 =
+
+* Fixed an error in the file validation module.
+
 = 5.3.57 =
 
 * We made a minor enhancement to the equation processing logic to ensure compatibility with legacy browsers.

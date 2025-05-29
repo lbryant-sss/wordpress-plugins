@@ -143,7 +143,7 @@ Premium plugins include a full year of free updates and dedicated one-to-one pre
 
 #### MAINTAINED & SUPPORTED BY MELAPRESS
 
-Melapress develops high-quality WordPress management and security plugins such as Melapress Login Security, CAPTCHA 4WP, and WP 2FA.
+Melapress develops high-quality WordPress management and security plugins such as Melapress Login Security, WP 2F, and Melapress Role Editor.
 
 Browse our list of [WordPress security and administration plugins](https://melapress.com/?utm_source=wp+repo&utm_medium=repo+link&utm_campaign=wordpress_org&utm_content=wsal) to see how our plugins can help you better manage and improve the security and administration of your WordPress websites and users.
 

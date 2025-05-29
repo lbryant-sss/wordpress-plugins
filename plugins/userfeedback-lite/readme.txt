@@ -1,7 +1,7 @@
 === User Feedback - Create Interactive Feedback Form, User Surveys, and Polls in Seconds  ===
 Contributors: chriscct7, smub
 Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
-Tags: analytics,feedback,surveys,user feedback, website feedback,insights
+Tags: analytics,feedback,surveys,user feedback, website feedback,heatmaps
 Requires at least: 5.9.0
 Tested Up To: 6.8.1
 Stable tag: 1.6.0
@@ -49,19 +49,24 @@ We want to help small businesses compete against the big guys. That's why we don
 * Powerful Reporting - See feedback and results in realtime, right inside your WordPress Dashboard
 * Unlimited Surveys - Create an unlimited number of user feedback surveys on your website
 * Unlimited Questions - Ask any number of questions inside each survey
+* Heatmaps - Visually see exactly what your users are clicking and focusing with device and UTM filtering 
+* Net Promoter Scores &reg; and Reports - Use our beautiful custom report to see feedback sorted by passives, promoters, and detractors 
 * Question types - Use text boxes, radio buttons, checkboxes, star ratings to collect feedback
 * Page Level targeting - Specify surveys to run on your entire site or certain pages like your posts
 * Device targeting -  Launch surveys for specific devices like mobile, desktop, or tablet for feedback
 * Conditional Logic - Display surveys automatically to users who have not completed a specific survey
 * Time based Targeting - Run user feedback surveys during certain dates or times or schedule in the future
+* Advanced Targeting - Cookie based survey targeting, URL based, and more options for power users
 * Question Templates - Use our 20+ prebuilt templates to collect feedback instantly for all types of situations and websites
 * Notifications - Send user feedback responses instantly to your team for immediate action or follow up
 * MonsterInsights Integration - Automatically works with Google Analytics and MonsterInsights so you can segment survey takers
 * Branding and Customization - Add your logo and colors to match your website's branding standards
-* Customized Confirmations - Customize thank you message or redirect users to a special page
+* Customized Confirmations - Customize thank you message or redirect users to a specific page page
 * Required Fields and Random Answers - Ensure all of your questions are answered fully
 * Data / Export - Analyze your results offline with our CSV export
-* Shortcodes - Embed a survey on a page or pop-up to collect in-the-moment feedback.
+* Geo Restricted Surveys - Easily limit surveys to a specific country to improve relevance
+* Shortcodes - Embed a survey on a page or pop-up to collect in-the-moment feedback
+* AI Summaries - Summarize verbatim feedback with actionable insights with a single click 
 * Have an idea for something else? Let us know and we'll build it!
 
 After reading this full feature list, you can probably imagine how powerful our UserFeedback will be for getting new insights to start optimizing your website engagement in no time.
@@ -115,6 +120,7 @@ For documentation, tutorials, FAQ and videos check out: [UserFeedback Documentat
 
 == Changelog ==
 = 1.6.0: May 26, 2025 =
+- New: Geo Restrictions! Display surveys based on your visitors' location
 - Fixed: Minor updates and bug fixes
 
 = 1.5.2: April 11, 2025 =

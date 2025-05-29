@@ -63,7 +63,7 @@ For any other queries, feedback, or if you simply want to get in touch with us, 
 
 #### MAINTAINED & SUPPORTED BY MELAPRESS
 
-Melapress develops high-quality WordPress management and security plugins such as Melapress Login Security, CAPTCHA 4WP, and WP Activity Log; the #1 user-rated activity log plugin for WordPress.
+Melapress develops high-quality WordPress management and security plugins such as Melapress Login Security, Melapress Role Editor, and WP Activity Log; the #1 user-rated activity log plugin for WordPress.
 
 Browse our list of [WordPress security and administration plugins](https://melapress.com/?utm_source=wp+repo&utm_medium=repo+link&utm_campaign=wordpress_org&utm_content=wp2fa) to see how our plugins can help you better manage and improve the security and administration of your WordPress websites and users.
     
