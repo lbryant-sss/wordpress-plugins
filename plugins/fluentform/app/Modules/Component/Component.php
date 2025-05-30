@@ -623,32 +623,33 @@ class Component
         $stepText = apply_filters('fluentform/step_string', $stepText);
 
         $data = [
-            'ajaxUrl'               => admin_url('admin-ajax.php'),
-            'forms'                 => [],
-            'step_text'             => $stepText,
-            'is_rtl'                => is_rtl(),
-            'date_i18n'             => self::getDatei18n(),
-            'pro_version'           => (defined('FLUENTFORMPRO_VERSION')) ? FLUENTFORMPRO_VERSION : false,
-            'fluentform_version'    => FLUENTFORM_VERSION,
-            'force_init'            => false,
-            'stepAnimationDuration' => 350,
-            'upload_completed_txt'  => __('100% Completed', 'fluentform'),
-            'upload_start_txt'      => __('0% Completed', 'fluentform'),
-            'uploading_txt'         => __('Uploading', 'fluentform'),
-            'choice_js_vars'        => [
+            'ajaxUrl'                       => admin_url('admin-ajax.php'),
+            'forms'                         => [],
+            'step_text'                     => $stepText,
+            'is_rtl'                        => is_rtl(),
+            'date_i18n'                     => self::getDatei18n(),
+            'pro_version'                   => (defined('FLUENTFORMPRO_VERSION')) ? FLUENTFORMPRO_VERSION : false,
+            'fluentform_version'            => FLUENTFORM_VERSION,
+            'force_init'                    => false,
+            'stepAnimationDuration'         => 350,
+            'upload_completed_txt'          => __('100% Completed', 'fluentform'),
+            'upload_start_txt'              => __('0% Completed', 'fluentform'),
+            'uploading_txt'                 => __('Uploading', 'fluentform'),
+            'choice_js_vars'                => [
                 'noResultsText'  => __('No results found', 'fluentform'),
                 'loadingText'    => __('Loading...', 'fluentform'),
                 'noChoicesText'  => __('No choices to choose from', 'fluentform'),
                 'itemSelectText' => __('Press to select', 'fluentform'),
                 'maxItemText'    => __('Only %%maxItemCount%% options can be added', 'fluentform'),
             ],
-            'input_mask_vars'       => [
+            'input_mask_vars'               => [
                 'clearIfNotMatch' => false,
             ],
-            'nonce'                 => wp_create_nonce(),
-            'form_id'               => $form_id,
-            'step_change_focus'     => true,
-            'has_cleantalk'         => \FluentForm\App\Modules\Form\CleanTalkHandler::isCleantalkActivated()
+            'nonce'                         => wp_create_nonce(),
+            'form_id'                       => $form_id,
+            'step_change_focus'             => true,
+            'has_cleantalk'                 => \FluentForm\App\Modules\Form\CleanTalkHandler::isCleantalkActivated(),
+            'pro_payment_script_compatible' => Helper::isProPaymentScriptCompatible(),
         ];
     
         $data = apply_filters_deprecated(
@@ -1193,6 +1194,8 @@ class Component
             'net_promoter_score',
             'featured_image',
         ];
+        $advancedFields = apply_filters('fluentform/fields_requiring_advanced_script', $advancedFields);
+        
         if ($formBuilder->conditions || array_intersect($formBuilder->fieldLists, $advancedFields)) {
             wp_enqueue_script('fluentform-advanced');
         }

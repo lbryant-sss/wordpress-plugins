@@ -1,13 +1,13 @@
 === Embed Plus for YouTube Gallery, Livestream and Lazy Loading with Facades ===
 Contributors: embedplus
 Plugin Name: Embed Plus for YouTube Gallery, Livestream and Lazy Loading with Facades
-Tags: youtube gallery, youtube wordpress plugin, channel gallery, playlist gallery, defer css javascript, youtube channel, youtube live stream, lazy load, facade
+Tags: youtube, youtube gallery, youtube live stream, lazy load, youtube channel
 Requires at least: 4.5
 Tested up to: 6.8
-Stable tag: 14.2.2
+Stable tag: 14.2.3
 License: GPLv3 or later
 
-A multi-featured plugin to embed YouTube in WordPress. Embed a responsive video, YouTube channel gallery, playlist gallery, YouTube livestream. Defer JavaScript
+A multi-featured plugin to embed YouTube in WordPress. Embed a video, YouTube channel gallery, playlist, or YouTube livestream. Defer JavaScript too!
 
 == Description ==
 
@@ -42,7 +42,6 @@ This plugin helps you easily manage the growing complexity of YouTube embedding.
 
 The settings page has plenty of default options that you can automatically apply to your embedded YouTube video, gallery, and/or live stream:
 
-* Modest branding - hide YouTube logo while playing (note that the YouTube watermark is shown instead)
 * Turn on/off all annotations by default
 * Automatically center all your videos
 * Automatically start playing your videos
@@ -63,7 +62,6 @@ Customizations can be also made to each YouTube embed by adding more to the link
 * cc_load_policy - Set this to 1 to turn on closed captioning (or 0 to leave them off). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&cc_load_policy=1"`
 * iv_load_policy - Set this to 3 to turn off annotations (or 1 to show them). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&iv_load_policy=3"`
 * loop - Set this to 1 to loop the video (or 0 to not loop). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&loop=1"`
-* modestbranding - Set this to 1 to remove the YouTube logo while playing (or 0 to show the logo). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&modestbranding=1"`
 * rel - Set this to 0 to only show related videos from the same channel as the current video (or 1 to show videos from any channel). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&rel=0"`
 * showinfo - Set this to 0 to hide the video title and other info (or 1 to show it). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&showinfo=0"` (YouTube/Google has deprecated this feature)
 * fs - Set this to 0 to hide the fullscreen button (or 1 to show it). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&fs=0"`
@@ -120,7 +118,6 @@ See more details after installing. Enjoy!
 * cc_load_policy - Set this to 1 to turn on closed captioning (or 0 to leave them off). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&cc_load_policy=1"`
 * iv_load_policy - Set this to 3 to turn off annotations (or 1 to show them). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&iv_load_policy=3"`
 * loop - Set this to 1 to loop the video (or 0 to not loop). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&loop=1"`
-* modestbranding - Set this to 1 to remove the YouTube logo while playing (or 0 to show the logo). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&modestbranding=1"`
 * rel - Set this to 0 to only show related videos from the same channel as the current video (or 1 to show videos from any channel). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&rel=0"`
 * showinfo - Set this to 0 to hide the video title and other info (or 1 to show it). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&showinfo=0"` (YouTube/Google has deprecated this feature)
 * fs - Set this to 0 to hide the fullscreen button (or 1 to show it). Example: `"https://www.youtube.com/watch?v=quwebVjAEJA&fs=0"`
@@ -185,6 +182,9 @@ Assuming you already have the EmbedPlus plugin active, you can embed a YouTube s
 9. Embed Plus for YouTube Plugin Screenshot 9: Optional YouTube channel subscription button above gallery thumbnails
 
 == Changelog ==
+
+= Embed Plus for YouTube Plugin 14.2.3 =
+* This version removes the modest branding option which has been deprecated by Google. Also, pro users can experiment with the beta feature for filtering out YouTube Shorts from galleries.
 
 = Embed Plus for YouTube Plugin 14.2.2 =
 * This version cleans up outdated code and is tested for WordPress 6.8 compatibility.

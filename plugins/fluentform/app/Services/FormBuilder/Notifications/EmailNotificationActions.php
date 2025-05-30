@@ -106,19 +106,22 @@ class EmailNotificationActions
     private function getAttachments($emailData, $formData, $entry, $form)
     {
         $emailAttachments = [];
-        if (! empty($emailData['attachments']) && is_array($emailData['attachments'])) {
+
+        $uploadDir = wp_upload_dir();
+
+        if (!empty($emailData['attachments']) && is_array($emailData['attachments'])) {
             $attachments = [];
             foreach ($emailData['attachments'] as $name) {
                 $fileUrls = ArrayHelper::get($formData, $name);
                 if ($fileUrls && is_array($fileUrls)) {
                     foreach ($fileUrls as $url) {
-                        $filePath = str_replace(
-                            site_url(''),
-                            wp_normalize_path(untrailingslashit(ABSPATH)),
-                            $url
-                        );
-                        if (file_exists($filePath)) {
-                            $attachments[] = $filePath;
+                        if (strpos($url, $uploadDir['baseurl']) === 0) {
+                            $relativePath = str_replace($uploadDir['baseurl'], '', $url);
+                            $filePath = wp_normalize_path($uploadDir['basedir'] . $relativePath);
+
+                            if (file_exists($filePath)) {
+                                $attachments[] = $filePath;
+                            }
                         }
                     }
                 }
@@ -126,16 +129,14 @@ class EmailNotificationActions
             $emailAttachments = $attachments;
         }
         $mediaAttachments = ArrayHelper::get($emailData, 'media_attachments');
-        if (! empty($mediaAttachments) && is_array($mediaAttachments)) {
+        if (!empty($mediaAttachments) && is_array($mediaAttachments)) {
             $attachments = [];
             foreach ($mediaAttachments as $file) {
                 $fileUrl = ArrayHelper::get($file, 'url');
-                if ($fileUrl) {
-                    $filePath = str_replace(
-                        site_url(''),
-                        wp_normalize_path(untrailingslashit(ABSPATH)),
-                        $fileUrl
-                    );
+                if ($fileUrl && strpos($fileUrl, $uploadDir['baseurl']) === 0) {
+                    $relativePath = str_replace($uploadDir['baseurl'], '', $fileUrl);
+                    $filePath = wp_normalize_path($uploadDir['basedir'] . $relativePath);
+
                     if (file_exists($filePath)) {
                         $attachments[] = $filePath;
                     }

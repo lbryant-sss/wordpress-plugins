@@ -116,7 +116,7 @@ class AdminAjax
     if (wp_verify_nonce(sanitize_text_field($_REQUEST['_ajax_nonce']), 'bitforms_save')) {
       $formId = sanitize_text_field($_REQUEST['formID']);
 
-      $FrontendFormManager = new FrontendFormManager($formId);
+      $FrontendFormManager = FrontendFormManager::getInstance($formId);
       $formContent = $FrontendFormManager->getFormContentWithValue();
       $fields = $formContent->fields;
       $layout = $formContent->layout;

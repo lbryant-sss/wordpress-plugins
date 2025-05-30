@@ -88,7 +88,7 @@ REDOBTN;
       <input
         type="text"
         {$name}
-        class="d-none {$rowID}-signature-fld"
+        class="d-none {$rowID}-signature-fld bf-signature-hidden-input"
         {$req}
         value=""
       />

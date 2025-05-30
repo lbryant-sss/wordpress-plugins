@@ -2,6 +2,7 @@
 
 namespace FluentForm\App\Services\FormBuilder;
 
+use FluentForm\App\Models\SubmissionMeta;
 use FluentForm\App\Modules\Form\FormDataParser;
 use FluentForm\App\Modules\Form\FormFieldsParser;
 use FluentForm\App\Services\Browser\Browser;
@@ -234,7 +235,7 @@ class ShortCodeParser
                 $isHtml
             );
         }
-    
+
         static::$store['inputs'][$key] = apply_filters_deprecated(
             'fluentform_response_render_' . $field['element'],
             [
@@ -256,7 +257,7 @@ class ShortCodeParser
             $isHtml
         );
     }
-    
+
     protected static function getFormLabelData($key)
     {
         if (is_null(static::$formFields)) {
@@ -282,7 +283,7 @@ class ShortCodeParser
         if(empty($inputLabel)){
             $inputLabel = ArrayHelper::get(ArrayHelper::get(static::$formFields, $key, []), 'admin_label', '');
         }
-        return $inputLabel;
+        return apply_filters('fluentform/input_label_shortcode', $inputLabel, $key, static::getForm());
     }
 
     protected static function getUserData($key)
@@ -370,6 +371,8 @@ class ShortCodeParser
         }
         if ('admin_view_url' == $key) {
             return admin_url('admin.php?page=fluent_forms&route=entries&form_id=' . $entry->form_id . '#/entries/' . $entry->id);
+        } elseif ('entry_uid_link' == $key) {
+            return static::getEntryUidLink($entry);
         } elseif (false !== strpos($key, 'meta.')) {
             $metaKey = substr($key, strlen('meta.'));
             $data = Helper::getSubmissionMeta($entry->id, $metaKey);
@@ -497,7 +500,14 @@ class ShortCodeParser
                 $feedId = end($exploded);
                 $chatGPT = new \FluentFormPro\classes\Chat\ChatFieldController(wpFluentForm());
                 if ($chatGPT->api->isApiEnabled()) {
-                    return $chatGPT->chatGPTSubmissionMessageHandler($formId, $feedId, static::getInstance());
+                    $entry = static::getEntry();
+                    $lastResponse = SubmissionMeta::retrieve("chat_gpt_response_{$feedId}", $entry->id);
+                    if (!$lastResponse) {
+                        $response = $chatGPT->chatGPTSubmissionMessageHandler($formId, $feedId, static::getInstance());
+                        SubmissionMeta::persist($entry->id, "chat_gpt_response_{$feedId}", $response, $formId);
+                        return $response;
+                    }
+                    return $lastResponse;
                 }
             }
             return '';
@@ -602,6 +612,39 @@ class ShortCodeParser
     public static function getInputs()
     {
         return static::$store['original_inputs'];
+    }
+
+    /**
+     * Get the entry UID link for a submission
+     *
+     * @param object $entry
+     * @return string
+     */
+    protected static function getEntryUidLink($entry)
+    {
+        // Check if entry already has the entry_uid_link property
+        if (isset($entry->entry_uid_link)) {
+            return $entry->entry_uid_link;
+        }
+
+        // Check if front-end entry view is enabled for this form
+        $frontEndSettings = Helper::getFormMeta($entry->form_id, 'front_end_entry_view', []);
+        if (ArrayHelper::get($frontEndSettings, 'status') !== 'yes') {
+            return '';
+        }
+
+        // Get the UID hash from submission meta
+        $meta = wpFluent()->table('fluentform_submission_meta')
+            ->where('response_id', $entry->id)
+            ->where('meta_key', '_entry_uid_hash')
+            ->first();
+
+        if (!$meta || !$meta->value) {
+            return '';
+        }
+
+        // Generate the link
+        return site_url('?ff_entry=1&hash=' . $meta->value);
     }
 
     public static function resetData()

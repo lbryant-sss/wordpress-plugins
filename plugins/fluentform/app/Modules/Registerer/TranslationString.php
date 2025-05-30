@@ -943,6 +943,9 @@ class TranslationString
             'Click to reset the settings if any quiz inputs name has been changed from the editor' => __('Click to reset the settings if any quiz inputs name has been changed from the editor', 'fluentform'),
             '%s Quiz Settings' => __('%s Quiz Settings', 'fluentform'),
             'This will permanently reset the quiz settings. Continue?' => __('This will permanently reset the quiz settings. Continue?', 'fluentform'),
+            'Only Submitter or Admin Can View' => __('Only Submitter or Admin Can View', 'fluentform'),
+            'Enable Restriction' => __('Enable Restriction', 'fluentform'),
+            'Prevents search engines from indexing' => __('Prevents search engines from indexing', 'fluentform'),
         );
         $i18n = wp_parse_args($i18n, self::getSettingsCommonI18n());
         return apply_filters('fluentform/form_settings_i18n', $i18n);

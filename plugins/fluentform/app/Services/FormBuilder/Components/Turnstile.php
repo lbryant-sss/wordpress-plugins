@@ -49,6 +49,9 @@ class Turnstile extends BaseComponent
                 FLUENTFORM_VERSION,
                 true
             );
+
+            // for WP Rocket compatibility
+            wp_script_add_data('turnstile', 'data-cfasync', 'false');
         }
 
         $appearance = esc_attr(ArrayHelper::get($turnstile, 'appearance', 'always'));

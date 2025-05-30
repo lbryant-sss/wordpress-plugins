@@ -75,7 +75,7 @@ class FluentFormAsyncRequest
             'nonce' => wp_create_nonce($this->action),
         );
 
-        $url = add_query_arg($queryArgs, admin_url( 'admin-ajax.php' ));
+        $url = add_query_arg($queryArgs, Helper::getAjaxUrl());
         wp_remote_post(esc_url_raw($url), $args);
     }
 

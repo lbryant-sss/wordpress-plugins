@@ -329,10 +329,10 @@ function ub_render_how_to_block($attributes, $_, $block)
 		'<div class="ub_howto-yield" style="' .
 			(
 				($finalImageWidth > 0) ?
-				'--ub-howto-image-width: ' . $finalImageWidth . 'px;' .
+				'--ub-howto-image-width: ' . esc_attr($finalImageWidth) . 'px;' .
 				(($finalImageFloat === 'left') ? '--ub-howto-image-padding-right: 10px;' : '--ub-howto-image-padding-right: 0px;') .
 				(($finalImageFloat === 'right') ? '--ub-howto-image-padding-left: 10px;' : '--ub-howto-image-padding-left: 0px;') .
-				(($finalImageFloat !== 'none') ? '--ub-howto-image-float: ' . $finalImageFloat . ';' : '--ub-howto-image-float: none;') :
+				(($finalImageFloat !== 'none') ? '--ub-howto-image-float: ' . esc_attr($finalImageFloat) . ';' : '--ub-howto-image-float: none;') :
 				''
 			)
 			. '"><' . esc_attr($secondLevelTag) . '>' . wp_kses_post($resultIntro) . '</' . esc_attr($secondLevelTag) . '>' .

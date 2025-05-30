@@ -29,14 +29,14 @@ final class FrontendAjax
     add_action('wp_ajax_nopriv_bitforms_before_submit_validate', [$this, 'beforeSubmittedValidate']);
     add_action('wp_ajax_nopriv_bitforms_trigger_workflow', [$this, 'triggerWorkFlow']);
     add_action('wp_ajax_bitforms_trigger_workflow', [$this, 'triggerWorkFlow']);
-    add_action('wp_ajax_bitforms_onload_added_field', [$this, 'addHiddenField']);
-    add_action('wp_ajax_nopriv_bitforms_onload_added_field', [$this, 'addHiddenField']);
+    add_action('wp_ajax_bitforms_onload_added_field_and_property', [$this, 'addHiddenFieldAndProperty']);
+    add_action('wp_ajax_nopriv_bitforms_onload_added_field_and_property', [$this, 'addHiddenFieldAndProperty']);
   }
 
   public function beforeSubmittedValidate()
   {
     $form_id = str_replace('bitforms_', '', $_POST['bitforms_id']);
-    $FrontendFormManager = new FrontendFormManager($form_id);
+    $FrontendFormManager = FrontendFormManager::getInstance($form_id);
     $FrontendFormManager->fieldNameReplaceOfPost();
     $validateStatus = $FrontendFormManager->beforeSubmittedValidate();
     if (is_wp_error($validateStatus)) {
@@ -50,7 +50,7 @@ final class FrontendAjax
   {
     \ignore_user_abort();
     $form_id = str_replace('bitforms_', '', $_POST['bitforms_id']);
-    $FrontendFormManager = new FrontendFormManager($form_id);
+    $FrontendFormManager = FrontendFormManager::getInstance($form_id);
     $submitSatus = $FrontendFormManager->handleSubmission();
     if (is_wp_error($submitSatus)) {
       do_action('bitform_submit_error', $form_id, $submitSatus);
@@ -68,7 +68,7 @@ final class FrontendAjax
     $entryToken = sanitize_text_field($_REQUEST['entryToken']);
     $GLOBALS['bf_entry_id'] = $entryId;
     if (Helpers::validateEntryTokenAndUser($entryToken, $entryId) || FrontendHelpers::is_current_user_can_access($form_id, 'entryEditAccess')) {
-      $FrontendFormManager = new FrontendFormManager($form_id);
+      $FrontendFormManager = FrontendFormManager::getInstance($form_id);
       $updateStatus = $FrontendFormManager->handleUpdateEntry();
       if (is_wp_error($updateStatus)) {
         do_action('bitform_update_error', $form_id, $updateStatus);
@@ -94,7 +94,7 @@ final class FrontendAjax
         'value' => $tokens['t_identity'],
       ]
     ];
-    $frontendFormManger = new FrontendFormManager($formId);
+    $frontendFormManger = FrontendFormManager::getInstance($formId);
     if ($frontendFormManger->isHoneypotActive()) {
       $time = time();
       $honeypodFldName = Helpers::honeypotEncryptedToken("_bitforms_{$formId}_{$time}_");
@@ -106,7 +106,17 @@ final class FrontendAjax
     return $fields;
   }
 
-  public function addHiddenField()
+  public function hiddenPropeties($formId)
+  {
+    $properties = [];
+    $properties[] = [
+      'name'  => 'nonce',
+      'value' => wp_create_nonce('bitforms_' . $formId),
+    ];
+    return $properties;
+  }
+
+  public function addHiddenFieldAndProperty()
   {
     \ignore_user_abort();
     $request = file_get_contents('php://input');
@@ -116,7 +126,8 @@ final class FrontendAjax
         wp_send_json_error('Form Id not found', 400);
       } else {
         $fields = $this->hiddenFields($data->formId);
-        wp_send_json_success(['hidden_fields'=>$fields]);
+        $properties = $this->hiddenPropeties($data->formId);
+        wp_send_json_success(['hidden_fields'=>$fields, 'hidden_properties'=>$properties]);
       }
     }
   }

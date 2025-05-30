@@ -13,6 +13,14 @@ Use CAPTCHA to stop spam and allow customers & users to interact with your websi
 
 == Description ==
 
+#### IMPORTANT NOTICE
+
+CAPTCHA 4WP has been acquired by WPKube. [Read the announcement](https://melapress.com/captcha-4-wp-plugin-acquired-by-wpkube/) for more information.
+
+A new update of the plugin, version 7.6.0, will be released during the second week of June. This will be the last update developed and released by us, Melapress, before handing over the plugin. The new update has a number new and exciting features, and also a lot of improvements and bug fixes.
+
+Thank you for everyone who has used and supported CAPTCHA 4WP.
+
 ### A free and easy-to-use CAPTCHA plugin for WordPress
 
 Protect your WordPress forms and login pages from spam and automated attacks with [CAPTCHA 4WP](https://melapress.com/wordpress-captcha/?utm_source=wp+repo&utm_medium=repo+link&utm_campaign=wordpress_org&utm_content=c4wp). Choose from multiple ReCAPTCHA versions and strike the right balance between security and user experience.

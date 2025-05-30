@@ -33,6 +33,7 @@ final class FrontendFormManager extends FormManager
   private $_form_id;
   private $_work_flows;
   private $_conf_messages;
+  private static $_instance = [];
 
   // private $_has_upload = false;
   public function __construct($form_id, $shortCodeCounter = null)
@@ -43,6 +44,17 @@ final class FrontendFormManager extends FormManager
     $this->_form_identifier .= !empty($shortCodeCounter) ? "_$shortCodeCounter" : '';
     $this->_form_token = wp_create_nonce('bitforms_' . $form_id);
     $this->_form_id = $form_id;
+  }
+
+  public static function getInstance($form_id, $shortCodeCounter = null)
+  {
+    $key = $form_id . ':' . ($shortCodeCounter ?? 'default');
+
+    if (!isset(self::$_instance[$key])) {
+      self::$_instance[$key] = new self($form_id, $shortCodeCounter);
+    }
+
+    return self::$_instance[$key];
   }
 
   public function getFormIdentifier()
@@ -215,7 +227,6 @@ final class FrontendFormManager extends FormManager
             } elseif (isset($result['success'])) {
               $redirectPage = $result['redirectPage'];
               $regSuccMsg = $result['message'];
-              $newNonce = wp_create_nonce('bitforms_' . $this->_form_id);
             }
           } else {
             if (!$result['success']) {
@@ -282,14 +293,12 @@ final class FrontendFormManager extends FormManager
       if (!empty($regSuccMsg) && isset($saveResponse['dflt_message'])) {
         $saveResponse['message'] = $regSuccMsg;
       }
+      $saveResponse['new_nonce'] = wp_create_nonce('bitforms_' . $this->_form_id);
 
       $saveResponse = IntegrationHandler::maybeSetCronForIntegration($saveResponse, 'create');
       $entryId = $saveResponse['entry_id'];
 
       $responseMsg = is_array($saveResponse) && !empty($saveResponse) ? $saveResponse : __('Form Submitted Successfully', 'bit-form');
-      if (isset($newNonce)) {
-        $responseMsg['new_nonce'] = $newNonce;
-      }
       $_POST = [];
       $responseMsg['entry_id'] = $entryId;
       return $responseMsg;
@@ -330,7 +339,6 @@ final class FrontendFormManager extends FormManager
             } elseif (isset($result['success'])) {
               $redirectPage = $result['redirectPage'];
               $regSuccMsg = $result['message'];
-              $newNonce = wp_create_nonce('bitforms_' . $this->_form_id);
             }
           } else {
             if (!$result['success']) {
@@ -385,13 +393,12 @@ final class FrontendFormManager extends FormManager
       if (!empty($regSuccMsg) && isset($updateResponse['dflt_message'])) {
         $updateResponse['message'] = $regSuccMsg;
       }
+      $updateResponse['new_nonce'] = wp_create_nonce('bitforms_' . $this->_form_id);
       $updateResponse = IntegrationHandler::maybeSetCronForIntegration($updateResponse, 'create');
       $entryId = $updateResponse['entry_id'];
 
       $responseMsg = is_array($updateResponse) && !empty($updateResponse) ? $updateResponse : __('Entry Update Successfully', 'bit-form');
-      if (isset($newNonce)) {
-        $responseMsg['new_nonce'] = $newNonce;
-      }
+
       $_POST = [];
       $responseMsg['entry_id'] = $entryId;
       return $responseMsg;

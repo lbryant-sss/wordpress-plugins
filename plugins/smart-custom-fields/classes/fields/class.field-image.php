@@ -54,6 +54,8 @@ class Smart_Custom_Fields_Field_Image extends Smart_Custom_Fields_Field_Base {
 
 		$hide_class = 'hide';
 		$image      = $btn_remove;
+		$image_src  = null;
+		$image_alt  = '';
 		if ( $value ) {
 			// Usually, $value is attachment ID.
 			// If a customized, for example, $value is not an ID,
@@ -95,7 +97,7 @@ class Smart_Custom_Fields_Field_Image extends Smart_Custom_Fields_Field_Base {
 			esc_attr( SCF_Config::PREFIX . 'upload-image' ),
 			esc_attr( $hide_class ),
 			esc_attr( $this->get( 'size' ) ),
-			$image,
+			wp_kses_post( $image ),
 			esc_attr( $name ),
 			esc_attr( $value ),
 			disabled( true, $disabled, false )

@@ -98,6 +98,8 @@ class SubmissionController extends Controller
     {
         try {
             $submission::remove([$submissionId]);
+	        do_action( 'fluentform/submission_deleted', $submissionId );;
+
             return $this->sendSuccess([
                 'message' => __('Selected submission successfully deleted Permanently', 'fluentform'),
             ]);

@@ -179,7 +179,7 @@ final class FieldValueHandler
     return false;
   }
 
-  public static function formatFieldValueForMail($fields, $fieldValues)
+  public static function formatFieldValueForMail($fields, $fieldValues = [])
   {
     $formattedFldValues = $fieldValues;
     $file_upload_types = Helpers::$file_upload_types;
@@ -309,7 +309,7 @@ final class FieldValueHandler
 
   private static function bindFormData($formFields, $formData, $formId)
   {
-    $entryID = $formData['entry_id'];
+    $entryID = isset($formData['entry_id']) ? $formData['entry_id'] : null;
     $encryptDirectory = Helpers::getEncryptedEntryId($entryID);
 
     $uploadPath = $formId . DIRECTORY_SEPARATOR . $encryptDirectory;

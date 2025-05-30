@@ -3,7 +3,7 @@ Contributors: joelcj91,duckdev
 Tags: 404, not found, 404 redirect, seo redirect, custom 404 page
 Donate link: https://www.paypal.me/JoelCJ
 Requires at least: 3.5
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 3.1.4
 Requires PHP: 5.6
 License: GPLv2 or later

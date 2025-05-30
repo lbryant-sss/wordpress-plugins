@@ -1109,6 +1109,11 @@ class Helper
             $form
         );
     }
+
+    public static function getAjaxUrl()
+    {
+        return apply_filters('fluentform/ajax_url', admin_url('admin-ajax.php'));
+    }
     
     public static function getDefaultDateTimeFormatForMoment()
     {
@@ -1178,6 +1183,20 @@ class Helper
         } else {
             return version_compare(FLUENTFORMPRO_VERSION, FLUENTFORM_MINIMUM_PRO_VERSION, '>=') ;
         }
+    }
+
+    /**
+     * Determine pro payment script is compatible or not
+     * Script is compatible if pro version is greater than or equal to 6.0.4
+     *
+     * @return bool
+     */
+    public static function isProPaymentScriptCompatible()
+    {
+        if (self::hasPro()) {
+            return version_compare(FLUENTFORMPRO_VERSION, '6.0.4', '>=') ;
+        }
+        return false;
     }
 
     public static function hasPro()

@@ -146,13 +146,20 @@ function ub_single_button_parse($b) {
 	$pro_link_styles = apply_filters('ubpro_button_link_styles', array(), $b);
 	$link_style .= Ultimate_Blocks\includes\generate_css_string($pro_link_styles);
 
+	// Initialize default values
+	$button_color = !empty($buttonColor) ? $buttonColor : '';
+	$button_text_color = !empty($buttonTextColor) ? $buttonTextColor : '';
+	$button_hover_color = !empty($buttonHoverColor) ? $buttonHoverColor : '';
+	$button_text_hover_color = !empty($buttonTextHoverColor) ? $buttonTextHoverColor : '';
+	$button_is_transparent = !empty($buttonIsTransparent) ? $buttonIsTransparent : false;
+
 	$style_vars = [
-		'--ub-button-background-color'			=> $buttonIsTransparent ? 'transparent' : esc_attr($buttonColor),
-		'--ub-button-color'						=> $buttonIsTransparent ? esc_attr($buttonColor) : esc_attr($buttonTextColor),
-		'--ub-button-border'					=> $buttonIsTransparent ? '3px solid ' . esc_attr($buttonColor) : 'none',
-		'--ub-button-hover-background-color'	=> $buttonIsTransparent ? '' : esc_attr($buttonHoverColor),
-		'--ub-button-hover-color'				=> $buttonIsTransparent ? esc_attr($buttonHoverColor) : esc_attr($buttonTextHoverColor),
-		'--ub-button-hover-border'				=> $buttonIsTransparent ? '3px solid ' . esc_attr($buttonHoverColor) : 'none',
+		'--ub-button-background-color'          => $button_is_transparent ? 'transparent' : esc_attr($button_color),
+		'--ub-button-color'                     => $button_is_transparent ? esc_attr($button_color) : esc_attr($button_text_color),
+		'--ub-button-border'                    => $button_is_transparent ? '3px solid ' . esc_attr($button_color) : 'none',
+		'--ub-button-hover-background-color'    => $button_is_transparent ? '' : esc_attr($button_hover_color),
+		'--ub-button-hover-color'               => $button_is_transparent ? esc_attr($button_hover_color) : esc_attr($button_text_hover_color),
+		'--ub-button-hover-border'              => $button_is_transparent ? '3px solid ' . esc_attr($button_hover_color) : 'none',
 	];
 	$link_style .= Ultimate_Blocks\includes\generate_css_string($style_vars);
 

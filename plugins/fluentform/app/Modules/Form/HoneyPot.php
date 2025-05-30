@@ -2,6 +2,7 @@
 
 namespace FluentForm\App\Modules\Form;
 
+use FluentForm\App\Helpers\Helper;
 use FluentForm\Framework\Foundation\Application;
 use FluentForm\Framework\Helpers\ArrayHelper;
 
@@ -19,7 +20,7 @@ class HoneyPot
         if (!$this->isEnabled($form->id)) {
             return;
         }
-    
+
         $fieldName = $this->getFieldName($form->id);
         $fieldId = 'ff_' . $form->id . '_item_sf' ;
         $labels = ['Newsletter', 'Updates', 'Contact', 'Subscribe', 'Notify'];
@@ -44,17 +45,20 @@ class HoneyPot
         </div>
         <?php
     }
-    
+
     public function verify($insertData, $requestData, $formId)
     {
-        if (!$this->isEnabled($formId)) {
+        if (!$this->isEnabled($formId) || (
+                Helper::isConversionForm($formId) &&
+                ArrayHelper::isTrue($requestData, 'isFFConversational')
+            )) {
             return;
         }
 
         $honeyPotName = $this->getFieldName($formId);
 
         if (
-                !ArrayHelper::exists($requestData, $honeyPotName) &&
+                !ArrayHelper::exists($requestData, $honeyPotName) ||
                 !empty(ArrayHelper::get($requestData, $honeyPotName))
         ) {
             wp_send_json(
@@ -66,14 +70,14 @@ class HoneyPot
         }
         return;
     }
-    
+
     public function isEnabled($formId = false)
     {
         $option = get_option('_fluentform_global_form_settings');
         $status = 'yes' == ArrayHelper::get($option, 'misc.honeypotStatus');
         return apply_filters('fluentform/honeypot_status', $status, $formId);
     }
-    
+
     private function getFieldName($formId)
     {
         $honeyPotName = 'item_' . $formId . '__fluent_sf';

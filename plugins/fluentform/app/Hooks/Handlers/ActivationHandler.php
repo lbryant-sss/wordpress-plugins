@@ -206,6 +206,5 @@ class ActivationHandler
         if (!wp_next_scheduled($emailReportHookName)) {
             wp_schedule_event(time(), 'daily', $emailReportHookName);
         }
-
     }
 }

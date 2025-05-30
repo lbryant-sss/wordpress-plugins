@@ -68,6 +68,7 @@ return function ($file) {
             'Use fluentform/loaded instead of fluentform-loaded.'
         );
         do_action('fluentform/loaded', $app);
+        
     });
 
     fluentformLoadFile('Services/FluentConversational/plugin.php');

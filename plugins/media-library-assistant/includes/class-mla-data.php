@@ -2806,9 +2806,9 @@ class MLAData {
 	 */
 	public static function mla_parse_xmp_metadata( $file_name, $file_offset ) {
 //error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata( {$file_name}, {$file_offset} ) ", 0 );
-		$chunksize = 16384;			
+		$chunksize = 16384; // 524288 65536 16384;			
 		$xmp_chunk = file_get_contents( $file_name, true, NULL, $file_offset, $chunksize );
-//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata( {$file_offset} ) chunk = \r\n" . MLAData::mla_hex_dump( $xmp_chunk ), 0 );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata( {$file_offset} ) chunk = \r\n" . MLAData::mla_hex_dump( $xmp_chunk, 0, 32, 0 ), 0 );
 
 		// If necessary and possible, advance the $xmp_chunk through the file until it contains the start tag
 		if ( false === ( $start_tag = strpos( $xmp_chunk, '<x:xmpmeta' ) ) && ( $chunksize == strlen( $xmp_chunk ) ) ) {
@@ -2847,12 +2847,58 @@ class MLAData {
 			return NULL;
 		}
 
-		$xmp_string = "<?xml version='1.0'?>\n" . substr($xmp_chunk, $start_tag, ( $end_tag + 12 ) - $start_tag );
+		$xmp_string = "<?xml version='1.0'?>\n" . substr( $xmp_chunk, $start_tag, ( $end_tag + 12 ) - $start_tag );
 //error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_string = " . var_export( $xmp_string, true ), 0 );
 //error_log( __LINE__ . "  MLAData::mla_parse_xmp_metadata xmp_string = \r\n" . MLAData::mla_hex_dump( $xmp_string ), 0 );
 
 		$results = MLAData::mla_parse_xml_string( $xmp_string );
 //error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata results = " . var_export( $results, true ), 0 );
+		return $results;
+	}
+
+	/**
+	 * Decode AVIF boxes
+	 * 
+	 * @since 3.27
+	 *
+	 * @param	string	full path and file name
+	 */
+	public static function mla_parse_avif_metadata( $path ) {
+		$properties = array();
+		
+		set_error_handler( 'MLAData::mla_metadata_error_handler' );
+		try {
+			$im = new imagick( $path );
+			$properties = $im->getImageProperties("exif:*");
+		} catch ( Throwable $e ) { // PHP 7
+			$exception = $e;
+			$tmpfile_metadata = NULL;
+		} catch ( Exception $e ) { // PHP 5
+			$exception = $e;
+			$tmpfile_metadata = NULL;
+		}
+		restore_error_handler();
+	
+		if ( ! empty( $exception ) ) {
+			MLAData::$mla_metadata_errors[] = sprintf( '%1$d ERROR: (%2$s) %3$s', __LINE__, $exception->getCode(), $exception->getMessage() );
+		}
+	
+		// Combine exceptions with PHP notice/warning/error messages
+		if ( ! empty( MLAData::$mla_metadata_errors ) ) {
+			$results['mla_avif_exif_errors'] = MLAData::$mla_metadata_errors;
+			MLACore::mla_debug_add( __LINE__ . ' ' . __( 'ERROR', 'media-library-assistant' ) . ': ' . '$results[mla_avif_exif_errors] = ' . var_export( $results['mla_avif_exif_errors'], true ), MLACore::MLA_DEBUG_CATEGORY_ANY );
+			MLAData::$mla_metadata_errors = array();
+		}
+
+		MLACore::mla_debug_add( __LINE__ . " MLAData::mla_parse_avif_metadata( {$path} ) properties = " . var_export( $properties, true ), MLACore::MLA_DEBUG_CATEGORY_METADATA );
+
+		$results['mla_avif_exif'] = array();
+		foreach ( $properties as $raw_name => $value ) {
+			$name = substr( $raw_name, 5 );
+//error_log( __LINE__ . "  MLAData::mla_parse_avif_metadata( {$name } ) value dump = \r\n" . MLAData::mla_hex_dump( $value, 128 ), 0 );
+			$results['mla_avif_exif'][ $name ] = $value;
+		}
+		
 		return $results;
 	}
 
@@ -3925,24 +3971,24 @@ class MLAData {
 	private static function _convert_webp_exif_metadata( $raw_exif, $width = 1, $height = 1 ) {
 
 		if ( ! class_exists( 'Imagick' ) ) {
-			return array();
+			//return array();  //v3.27
 		}
 		
 		// Container for metadata and any errors
 		$results = array();
 		
-		// Create an Imagick object with plain white canvas
-		$img = new Imagick();
-		$img->newImage( $width, $height, new ImagickPixel('white') );
-		$img->setImageFormat('jpeg');
-
-		// Get the image "file contents"
-		$image_blob = $img->getImageBlob();
-		$image_length = strlen( $image_blob );
-//error_log( "MLM image_blob ( {$image_length} ) = " . var_export( MLAData::mla_hex_dump( $image_blob, 2048, 32, 0 ), true ), 0 );
-
 		set_error_handler( 'MLAData::mla_metadata_error_handler' );
 		try {
+			// Create an Imagick object with plain white canvas
+			$img = new Imagick();
+			$img->newImage( $width, $height, new ImagickPixel('white') );
+			$img->setImageFormat('jpeg');
+	
+			// Get the image "file contents"
+			$image_blob = $img->getImageBlob();
+			$image_length = strlen( $image_blob );
+//error_log( "MLM image_blob ( {$image_length} ) = " . var_export( MLAData::mla_hex_dump( $image_blob, 2048, 32, 0 ), true ), 0 );
+	
 			$file_path = plugin_dir_path( __FILE__ ) . 'exif.jpg';
 	
 			if ( file_exists( $file_path ) ) {
@@ -4411,6 +4457,24 @@ class MLAData {
 				$exif_data = $results['mla_exif_metadata'];
 			} // exif_read_data
 
+			// Extract EXIF metadata from AVIF files
+			if ( !empty( $size['mime'] ) && 'image/avif' === $size['mime'] ) {
+				$mla_avif_metadata = self::mla_parse_avif_metadata( $path );
+
+				if ( NULL === $mla_avif_metadata ) {
+					$mla_avif_metadata = array();
+				}
+
+				if ( !empty( $mla_avif_metadata['mla_avif_exif'] ) ) {
+					$results['mla_exif_metadata'] = $mla_avif_metadata['mla_avif_exif'];
+					$exif_data = $results['mla_exif_metadata'];
+				}
+					
+				if ( !empty( $mla_avif_metadata['mla_avif_exif_errors'] ) ) {
+					$results['mla_exif_errors'] = $mla_avif_metadata['mla_avif_exif_errors'];
+				}
+			}
+			
 			// Extract IHDR and tEXt metadata from PNG files
 			if ( !empty( $size['mime'] ) && 'image/png' === $size['mime'] ) {
 				$results['mla_png_metadata'] = self::mla_parse_png_metadata( $path );

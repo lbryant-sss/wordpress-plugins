@@ -276,6 +276,20 @@ class AjaxEndpoints
             $baseProcessor->recalculatePaidTotal();
         }
 
+        $shouldRunActions = ArrayHelper::get($transactionData, 'should_run_actions', 'no');
+
+        if (
+            $changingStatus &&
+            $newStatus === 'paid' &&
+            $shouldRunActions === 'yes'
+        ) {
+            do_action(
+                'fluentform/run_actions_after_update_transaction_as_paid',
+                $newStatus,
+                $oldTransaction
+            );
+        }
+
         wp_send_json_success([
             'message' => __('Successfully updated data', 'fluentform')
         ], 200);

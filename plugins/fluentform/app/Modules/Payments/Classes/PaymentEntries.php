@@ -77,6 +77,9 @@ class PaymentEntries
         if ($paymentStatus = ArrayHelper::get($_REQUEST, 'payment_statuses')) {
             $paymentsQuery = $paymentsQuery->where('fluentform_transactions.status', sanitize_text_field($paymentStatus));
         }
+        if ($paymentTypes = ArrayHelper::get($_REQUEST, 'payment_types')) {
+            $paymentsQuery = $paymentsQuery->where('fluentform_transactions.transaction_type', sanitize_text_field($paymentTypes));
+        }
         if ($paymentMethods = ArrayHelper::get($_REQUEST, 'payment_methods')) {
             $paymentsQuery = $paymentsQuery->where('fluentform_transactions.payment_method', sanitize_text_field($paymentMethods));
         }
@@ -198,6 +201,27 @@ class PaymentEntries
 
     public function getFilters()
     {
+        $transactionTypes = wpFluent()->table('fluentform_transactions')
+            ->select('transaction_type')
+            ->groupBy('transaction_type')
+            ->get();
+        // Define transaction type labels
+        $transactionTypeLabels = [
+            'onetime'      => __('Charge', 'fluentform'),
+            'refund'       => __('Refund', 'fluentform'),
+            'subscription' => __('Subscription', 'fluentform'),
+            'renewal'      => __('Renewal', 'fluentform')
+        ];
+        
+        $formattedTransactionTypes = [];
+        foreach ($transactionTypes as $type) {
+            $label = ArrayHelper::get($transactionTypeLabels, $type->transaction_type, ucfirst($type->transaction_type));
+            $formattedTransactionTypes[] = [
+                'value' => $label,
+                'key' => $type->transaction_type
+            ];
+        }
+        
         $statuses = wpFluent()->table('fluentform_transactions')
             ->select('status')
             ->groupBy('status')
@@ -242,11 +266,12 @@ class PaymentEntries
                 $formattedMethods[] = ['value' => ucfirst($method->payment_method), 'key' => $method->payment_method];
             }
         }
-
+        
         wp_send_json_success([
-            'available_statuses'   => $formattedStatuses,
-            'available_forms'      => $formattedForms,
-            'available_methods'    => array_filter($formattedMethods),
+            'available_payment_types' => $formattedTransactionTypes,
+            'available_statuses'      => $formattedStatuses,
+            'available_forms'         => $formattedForms,
+            'available_methods'       => array_filter($formattedMethods),
         ]);
 
     }

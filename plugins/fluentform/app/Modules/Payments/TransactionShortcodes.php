@@ -70,6 +70,7 @@ class TransactionShortcodes
 
                 if ($atts['type'] == 'subscriptions') {
                     $html .= $subscriptionsHtml;
+                    return $html;
                 } else {
                     $withTitleHtml = '<div class="ff_transactions_wrapper">';
                     if (!empty($viewConfig['transactions_title'])) {

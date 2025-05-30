@@ -931,7 +931,7 @@ header.vff-header svg.f-logo {
   margin-bottom: 20px;
 }
 
-.vff .field-sectionbreak,
+.vff .field-sectionbreak.q_form_layout_default,
 .vff .field-submit {
   max-width: 920px;
 }
@@ -1029,7 +1029,7 @@ header.vff-header svg.f-logo {
 */
 
 @media only screen and (min-width: 1440px) {
-  .vff .field-sectionbreak,
+  .vff .field-sectionbreak.q_form_layout_default,
   .vff .field-submit {
     max-width: 960px;
   }
@@ -1042,7 +1042,7 @@ header.vff-header svg.f-logo {
 }
 
 @media only screen and (min-width: 1920px) {
-  .vff .field-sectionbreak,
+  .vff .field-sectionbreak.q_form_layout_default,
   .vff .field-submit {
     max-width: 1160px;
   }

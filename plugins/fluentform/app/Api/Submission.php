@@ -229,7 +229,7 @@ class Submission
             ->whereIn('submission_id', $submissionIds);
 
         if ($args['statuses']) {
-            $query->whereIn('status', $args['statuses']);
+            $query->whereIn('fluentform_subscriptions.status', $args['statuses']);
         }
 
         if ($args['form_title']) {

@@ -621,7 +621,7 @@ add_action('wp', function () use ($app) {
             );
             wp_localize_script('fluent_forms_global', 'fluent_forms_global_var', [
                 'fluent_forms_admin_nonce' => wp_create_nonce('fluent_forms_admin_nonce'),
-                'ajaxurl'                  => admin_url('admin-ajax.php'),
+                'ajaxurl'                  => Helper::getAjaxUrl(),
                 'global_search_active'     => apply_filters('fluentform/global_search_active', 'yes'),
                 'rest'                     => Helper::getRestInfo()
             ]);

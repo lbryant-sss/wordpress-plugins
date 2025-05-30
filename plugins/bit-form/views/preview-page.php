@@ -33,6 +33,40 @@ if (!defined('ABSPATH') && !defined('BITFORMS_ASSET_URI')) {
     width: min(961px, 95%);
     margin-block: 100px;
   }
+
+  .bf-dummy-filler-btn {
+    position: fixed;
+    /* changed from sticky to fixed */
+    top: 15px;
+    right: 15px;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    z-index: 1000;
+  }
+
+  .bf-dummy-filler-btn:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+
+  .bf-dummy-filler-btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+  }
   </style>
   <?php
  $formUpdateVersion = get_option('bit-form_form_update_version');
@@ -42,7 +76,7 @@ $cssUrl = BITFORMS_UPLOAD_BASE_URL . '/form-styles/bitform-' . $formID . '.css?b
   <?php
 $customCssSubPath = '/form-styles/bitform-custom-' . $formID . '.css';
 ?>
-  <?php if(file_exists(BITFORMS_CONTENT_DIR . $customCssSubPath)) : ?>
+  <?php if (file_exists(BITFORMS_CONTENT_DIR . $customCssSubPath)) : ?>
   <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $customCssSubPath) ?>" />
   <?php endif; ?>
 
@@ -55,6 +89,7 @@ $customCssSubPath = '/form-styles/bitform-custom-' . $formID . '.css';
 </head>
 
 <body>
+  <button type="button" class="bf-dummy-filler-btn">Fill dummy data</button>
   <?php echo $formHTML?>
 
   <script>
@@ -84,6 +119,7 @@ function readable_filesize($bytes, $decimals = 2)
       <?php echo readable_filesize(filesize(BITFORMS_CONTENT_DIR . '/form-styles/bitform-' . $formID . '.css')); ?>
     </div>
   </div>
+  <script src="<?php echo BITFORMS_ASSET_URI . '/bit-fake-filler.min.js?bfv=' . $formUpdateVersion ?>"></script>
 </body>
 
 </html>

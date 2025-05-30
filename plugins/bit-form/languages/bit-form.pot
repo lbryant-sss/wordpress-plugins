@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bit Form 2.19.0\n"
+"Project-Id-Version: Bit Form 2.19.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bit-form\n"
 "Last-Translator: developer@bitcode.pro\n"
 "Language-Team: support@bitcode.pro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-20T11:40:47+00:00\n"
+"POT-Creation-Date: 2025-05-29T07:07:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: bit-form\n"
@@ -207,7 +207,7 @@ msgstr ""
 #: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:257
 #: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:335
 #: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:403
-#: includes/Frontend/Form/FrontendFormManager.php:517
+#: includes/Frontend/Form/FrontendFormManager.php:524
 msgid "Token expired"
 msgstr ""
 
@@ -431,7 +431,7 @@ msgstr ""
 
 #: includes/Admin/Form/AdminFormHandler.php:2074
 #: includes/Admin/Form/AdminFormHandler.php:2149
-#: includes/Frontend/Form/FrontendFormManager.php:310
+#: includes/Frontend/Form/FrontendFormManager.php:319
 msgid "Entries id is invalid"
 msgstr ""
 
@@ -465,7 +465,7 @@ msgstr ""
 
 #: includes/Admin/Form/AdminFormHandler.php:2154
 #: includes/Admin/Form/AdminFormHandler.php:2221
-#: includes/Frontend/Form/FrontendFormManager.php:515
+#: includes/Frontend/Form/FrontendFormManager.php:522
 msgid "Form does not exist"
 msgstr ""
 
@@ -594,7 +594,7 @@ msgid "Sorry, Error occured in saving form entry data"
 msgstr ""
 
 #: includes/Core/Form/FormManager.php:769
-#: includes/Frontend/Ajax/FrontendAjax.php:184
+#: includes/Frontend/Ajax/FrontendAjax.php:195
 msgid "provided form entries does not exists"
 msgstr ""
 
@@ -1031,11 +1031,11 @@ msgstr ""
 
 #: includes/Core/WorkFlow/WorkFlow.php:209
 #: includes/Core/WorkFlow/WorkFlow.php:293
-#: includes/Frontend/Form/FrontendFormManager.php:289
+#: includes/Frontend/Form/FrontendFormManager.php:301
 msgid "Form Submitted Successfully"
 msgstr ""
 
-#: includes/Frontend/Ajax/FrontendAjax.php:169
+#: includes/Frontend/Ajax/FrontendAjax.php:180
 msgid "provided form does not exists"
 msgstr ""
 
@@ -1051,76 +1051,76 @@ msgstr ""
 msgid "#%s no. Form is not active"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:391
+#: includes/Frontend/Form/FrontendFormManager.php:400
 msgid "Entry Update Successfully"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:429
+#: includes/Frontend/Form/FrontendFormManager.php:436
 msgid "Token verification failed"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:455
+#: includes/Frontend/Form/FrontendFormManager.php:462
 msgid "You are already logged in"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:504
+#: includes/Frontend/Form/FrontendFormManager.php:511
 msgid "Please submit form with valid fields"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:528
-#: includes/Frontend/Form/FrontendFormManager.php:564
+#: includes/Frontend/Form/FrontendFormManager.php:535
+#: includes/Frontend/Form/FrontendFormManager.php:571
 msgid "Please verify reCAPTCHA"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:575
+#: includes/Frontend/Form/FrontendFormManager.php:582
 msgid "Please verify hCaptcha"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:609
+#: includes/Frontend/Form/FrontendFormManager.php:616
 msgid "hCaptcha verification failed"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:620
-#: includes/Frontend/Form/FrontendFormManager.php:650
+#: includes/Frontend/Form/FrontendFormManager.php:627
+#: includes/Frontend/Form/FrontendFormManager.php:657
 msgid "Please verify Cloudflare Turnstile Captcha"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:640
+#: includes/Frontend/Form/FrontendFormManager.php:647
 msgid "Cloudflare Turnstile Validation Error: "
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:703
+#: includes/Frontend/Form/FrontendFormManager.php:710
 msgid "Sorry!! Entry limit exceeded"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:717
+#: includes/Frontend/Form/FrontendFormManager.php:724
 msgid "Sorry!! You have already submitted"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:776
+#: includes/Frontend/Form/FrontendFormManager.php:783
 msgid "within %s to %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:789
+#: includes/Frontend/Form/FrontendFormManager.php:796
 msgid "%s to %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:795
-#: includes/Frontend/Form/FrontendFormManager.php:798
+#: includes/Frontend/Form/FrontendFormManager.php:802
+#: includes/Frontend/Form/FrontendFormManager.php:805
 msgid "Form is available %s From %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:796
-#: includes/Frontend/Form/FrontendFormManager.php:799
+#: includes/Frontend/Form/FrontendFormManager.php:803
+#: includes/Frontend/Form/FrontendFormManager.php:806
 msgid "Form is available %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:801
+#: includes/Frontend/Form/FrontendFormManager.php:808
 msgid "Form is available on %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:814
-#: includes/Frontend/Form/FrontendFormManager.php:826
+#: includes/Frontend/Form/FrontendFormManager.php:821
+#: includes/Frontend/Form/FrontendFormManager.php:833
 msgid "Sorry!! Your IP address is %s, Blocked from submitting the form"
 msgstr ""
 

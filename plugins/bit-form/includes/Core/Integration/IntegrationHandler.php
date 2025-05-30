@@ -245,7 +245,7 @@ final class IntegrationHandler
   public static function updatedHiddenFieldValue($formID)
   {
     $hiddenFields = [];
-    $frontendFormManger = new FrontendFormManager($formID);
+    $frontendFormManger = FrontendFormManager::getInstance($formID);
 
     if ($frontendFormManger->isHoneypotActive()) {
       $str = '_bitform' . '_' . $formID . '_' . time() . '_';
@@ -286,6 +286,9 @@ final class IntegrationHandler
     }
     if ('update' === $opType && isset($workFlowReturnedData['updatedData'])) {
       $responseData['updatedData'] = $workFlowReturnedData['updatedData'];
+    }
+    if (isset($workFlowReturnedData['new_nonce'])) {
+      $responseData['new_nonce'] = $workFlowReturnedData['new_nonce'];
     }
     if (!isset($workFlowReturnedData['triggerData'])) {
       return $responseData;

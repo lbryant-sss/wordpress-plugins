@@ -200,6 +200,7 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 == Changelog ==
 
 = 3.27 =
+* New: EXIF metadata is extracted and available for AVIF files; requires ImageMagick version 7.0.25 or later and Imagick PHP support.
 * New: For the `[mla_gallery]` shortcode, **the `meta_date_key` parameter supports simple date searches and the `date_query` using any custom field instead of the Uploaded on date.** More information in the Settings/Media Library Assistant Documentation tab.
 * Fix: When Polylang is active, correct a defect in preserving terms for untranslated taxonomies during the Bulk "Map IPTC/EXIF/WP metadata" action.
 * Fix: For the "MLA Taxonomy Archive Redirect" example plugin (v1.01), correct defect preventing AJAX operations from running to completion.

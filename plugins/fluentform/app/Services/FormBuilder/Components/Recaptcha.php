@@ -49,9 +49,16 @@ class Recaptcha extends BaseComponent
 
         if ('v3_invisible' == $apiVersion) {
             if (!wp_script_is('google-recaptcha')) {
+                $apiUrl = 'https://www.google.com/recaptcha/api.js?render=' . $siteKey;
+
+                $locale = apply_filters('fluentform/recaptcha_lang', '');
+                if ($locale) {
+                    $apiUrl .= '&hl=' . $locale;
+                }
+
                 wp_enqueue_script(
                     'google-recaptcha',
-                    'https://www.google.com/recaptcha/api.js?render=' . $siteKey,
+                    $apiUrl,
                     [],
                     FLUENTFORM_VERSION,
                     true
@@ -85,9 +92,16 @@ class Recaptcha extends BaseComponent
         }
 
         if (!wp_script_is('google-recaptcha')) {
+            $apiUrl = 'https://www.google.com/recaptcha/api.js?render=explicit';
+
+            $locale = apply_filters('fluentform/recaptcha_lang', '');
+            if ($locale) {
+                $apiUrl .= '&hl=' . $locale;
+            }
+
             wp_enqueue_script(
                 'google-recaptcha',
-                'https://www.google.com/recaptcha/api.js?render=explicit',
+                $apiUrl,
                 [],
                 FLUENTFORM_VERSION,
                 true

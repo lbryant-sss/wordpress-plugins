@@ -81,7 +81,7 @@ final class FrontendFormHandler
     $formUpdateVersion = get_option('bit-form_form_update_version');
     if ($formID) {
       $formIDs[] = $formID;
-      $FrontendFormManager = new FrontendFormManager($formID, 1);
+      $FrontendFormManager = FrontendFormManager::getInstance($formID, 1);
       $formInfo = $FrontendFormManager->getFormInfo();
       $FormIdentifier = esc_js($FrontendFormManager->getFormIdentifier());
       $formContent = $FrontendFormManager->getFormContentWithValue($this->getValuesFromQueryParams());
@@ -125,7 +125,7 @@ final class FrontendFormHandler
       }
       foreach ($bfFrontendFormIds as $index => $formId) {
         $shortCodeCounter = $index + 1;
-        $FrontendFormManager = new FrontendFormManager($formId, $shortCodeCounter);
+        $FrontendFormManager = FrontendFormManager::getInstance($formId, $shortCodeCounter);
         $formInfo = $FrontendFormManager->getFormInfo();
         $FormIdentifier = esc_js($FrontendFormManager->getFormIdentifier());
         $formContent = $FrontendFormManager->getFormContentWithValue($this->getValuesFromQueryParams());
@@ -251,7 +251,7 @@ final class FrontendFormHandler
 
   private function triggerWorkflowOnLoad($formID, $shortCodeCounter, $fields, $workFlowRunType = 'create')
   {
-    $FrontendFormManager = new FrontendFormManager($formID, $shortCodeCounter);
+    $FrontendFormManager = FrontendFormManager::getInstance($formID, $shortCodeCounter);
     $previousValue = $this->getValuesFromQueryParams();
     $formContent = $FrontendFormManager->getFormContentWithValue($previousValue);
     if (!empty($formContent->workFlowExist)) {
@@ -273,7 +273,7 @@ final class FrontendFormHandler
 
   private function executeOnUserInput($formID, $shortCodeCounter, $fields)
   {
-    $FrontendFormManager = new FrontendFormManager($formID, $shortCodeCounter);
+    $FrontendFormManager = FrontendFormManager::getInstance($formID, $shortCodeCounter);
     $previousValue = $this->getValuesFromQueryParams();
     $formContent = $FrontendFormManager->getFormContentWithValue($previousValue);
     $customCodesExist = strpos(FrontEndScriptGenerator::getCustomCodes($formID)['JavaScript'], 'bfVars');
@@ -344,7 +344,7 @@ final class FrontendFormHandler
     FrontendHelpers::setBfFrontendFormIds($formID);
     $bfFrontendFormIds = FrontendHelpers::$bfFrontendFormIds;
     $shortCodeCounter = count($bfFrontendFormIds);
-    $FrontendFormManager = new FrontendFormManager($formID, $shortCodeCounter);
+    $FrontendFormManager = FrontendFormManager::getInstance($formID, $shortCodeCounter);
 
     if (!$FrontendFormManager->checkStatus()) {
       return  sprintf(__('#%s no. Form is not active', 'bit-form'), $formID);

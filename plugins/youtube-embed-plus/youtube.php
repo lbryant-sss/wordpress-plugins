@@ -2,8 +2,8 @@
 /*
   Plugin Name: Embed Plus for YouTube Gallery, Livestream and Lazy Loading with Facades
   Plugin URI: https://www.embedplus.com/dashboard/pro-easy-video-analytics.aspx?ref=plugin
-  Description: The best YouTube embed plugin. Embed a YouTube channel gallery, playlist gallery, YouTube live stream. Lite embeds with defer JavaScript and facade options
-  Version: 14.2.2
+  Description: A multi-featured plugin to embed YouTube in WordPress. Embed a video, YouTube channel gallery, playlist, or YouTube livestream. Defer JavaScript too!
+  Version: 14.2.3
   Author: Embed Plus for YouTube Plugin Team
   Author URI: https://www.embedplus.com
   Requires at least: 4.5
@@ -35,7 +35,7 @@ class YouTubePrefs
 
     public static $folder_name = 'youtube-embed-plus';
     public static $curltimeout = 30;
-    public static $version = '14.2.2';
+    public static $version = '14.2.3';
     public static $opt_version = 'version';
     public static $optembedwidth = null;
     public static $optembedheight = null;
@@ -52,7 +52,6 @@ class YouTubePrefs
     public static $opt_cc_lang_pref = 'cc_lang_pref';
     public static $opt_iv_load_policy = 'iv_load_policy';
     public static $opt_loop = 'loop';
-    public static $opt_modestbranding = 'modestbranding';
     public static $opt_rel = 'rel';
     public static $opt_fs = 'fs';
     public static $opt_playsinline = 'playsinline';
@@ -198,7 +197,6 @@ class YouTubePrefs
             self::$opt_cc_lang_pref,
             self::$opt_iv_load_policy,
             self::$opt_loop,
-            self::$opt_modestbranding,
             self::$opt_rel,
             self::$opt_fs,
             self::$opt_playsinline,
@@ -1830,7 +1828,6 @@ class YouTubePrefs
         $_cc_lang_pref = '';
         $_iv_load_policy = 1;
         $_loop = 0;
-        $_modestbranding = 0;
         $_rel = 1;
         $_fs = 1;
         $_theme = 'dark';
@@ -1915,7 +1912,6 @@ class YouTubePrefs
             $_cc_lang_pref = self::tryget($arroptions, self::$opt_cc_lang_pref, $_cc_lang_pref);
             $_iv_load_policy = self::tryget($arroptions, self::$opt_iv_load_policy, 1);
             $_loop = self::tryget($arroptions, self::$opt_loop, 0);
-            $_modestbranding = self::tryget($arroptions, self::$opt_modestbranding, 0);
             $_rel = self::tryget($arroptions, self::$opt_rel, 1);
             $_fs = self::tryget($arroptions, self::$opt_fs, 1);
             $_playsinline = self::tryget($arroptions, self::$opt_playsinline, 0);
@@ -2000,7 +1996,6 @@ class YouTubePrefs
             self::$opt_cc_lang_pref => $_cc_lang_pref,
             self::$opt_iv_load_policy => $_iv_load_policy,
             self::$opt_loop => $_loop,
-            self::$opt_modestbranding => $_modestbranding,
             self::$opt_rel => $_rel,
             self::$opt_fs => $_fs,
             self::$opt_playsinline => $_playsinline,
@@ -3157,7 +3152,7 @@ class YouTubePrefs
         $new_pointer_content = '<h3>' . __('New Update') . '</h3>'; // ooopointer
 
         $new_pointer_content .= '<p>'; // ooopointer
-        $new_pointer_content .= 'This version cleans up outdated code and is tested for WordPress 6.8 compatibility for both the free and <a target=_blank href="' . self::$epbase . '/dashboard/pro-easy-video-analytics.aspx?ref=frompointer">Pro</a> versions of the plugin.';
+        $new_pointer_content .= 'This version removes the modest branding option which has been deprecated by Google. Also, <a target=_blank href="' . self::$epbase . '/dashboard/pro-easy-video-analytics.aspx?ref=frompointer">pro</a> users can experiment with the beta feature for filtering out YouTube Shorts from galleries.';
         if (!empty(self::$alloptions[self::$opt_pro]) && strlen(trim(self::$alloptions[self::$opt_pro])) > 0)
         {
             $new_pointer_content .= ' <strong>Important message to Pro users</strong>: From version 11.7 onward, you must <a href="https://www.embedplus.com/youtube-pro/download/?prokey=' . esc_attr(self::$alloptions[self::$opt_pro]) . '" target="_blank">download the separate plugin here</a> to regain your Pro features. All your settings will automatically migrate after installing the separate Pro download. Thank you for your support and patience during this transition.';
@@ -3522,10 +3517,6 @@ class YouTubePrefs
                                 <label for="<?php echo self::$opt_loop; ?>"><?php _e('<b class="chktitle">Looping:</b> Loop all your videos. Note: this feature is incompatible with the "hide related videos" feature.') ?></label>
                             </p>
                             <p>
-                                <input name="<?php echo self::$opt_modestbranding; ?>" id="<?php echo self::$opt_modestbranding; ?>" <?php checked($all[self::$opt_modestbranding], 1); ?> type="checkbox" class="checkbox">
-                                <label for="<?php echo self::$opt_modestbranding; ?>"><?php _e('<b class="chktitle">Modest Branding:</b> No YouTube logo will be shown on the control bar.  Instead, as required by YouTube, the logo will only show as a watermark when the video is paused/stopped.') ?></label>
-                            </p>
-                            <p>
                                 <label>
                                     <b class="chktitle">Related Videos:</b>
                                     Show or hide related and recommended videos at the end of playback.
@@ -3548,7 +3539,7 @@ class YouTubePrefs
                             </p>
                             <p>
                                 <input name="<?php echo self::$opt_color; ?>" id="<?php echo self::$opt_color; ?>" <?php checked($all[self::$opt_color], 'red'); ?> type="checkbox" class="checkbox">
-                                <label for="<?php echo self::$opt_color; ?>"><?php _e('<b class="chktitle">Red Progress Bar:</b> Use the red progress bar (uncheck to use a white progress bar). Note: Using white will disable the modestbranding option.') ?></label>
+                                <label for="<?php echo self::$opt_color; ?>"><?php _e('<b class="chktitle">Red Progress Bar:</b> Use the red progress bar (uncheck to use a white progress bar).') ?></label>
                             </p>
                             <p>
                                 <input name="<?php echo self::$opt_defaultdims; ?>" id="<?php echo self::$opt_defaultdims; ?>" <?php checked($all[self::$opt_defaultdims], 1); ?> type="checkbox" class="checkbox">                        
@@ -4375,10 +4366,9 @@ class YouTubePrefs
                         _e("<li><strong>cc_load_policy</strong> - Set this to 1 to turn on closed captioning (or 0 to leave them off). <em>Example: http://www.youtube.com/watch?v=quwebVjAEJA<strong>&cc_load_policy=1</strong></em> </li>");
                         _e("<li><strong>iv_load_policy</strong> - Set this to 3 to turn off annotations (or 1 to show them). <em>Example: http://www.youtube.com/watch?v=quwebVjAEJA<strong>&iv_load_policy=3</strong></em> </li>");
                         _e("<li><strong>loop</strong> - Set this to 1 to loop the video (or 0 to not loop). <em>Example: http://www.youtube.com/watch?v=quwebVjAEJA<strong>&loop=1</strong></em> </li>");
-                        _e("<li><strong>modestbranding</strong> - Set this to 1 to remove the YouTube logo while playing (or 0 to show the logo). <em>Example: http://www.youtube.com/watch?v=quwebVjAEJA<strong>&modestbranding=1</strong></em> </li>");
                         _e("<li><strong>rel</strong> - Set this to 0 to not show related videos at the end of playing (or 1 to show them). <em>Example: http://www.youtube.com/watch?v=quwebVjAEJA<strong>&rel=0</strong></em> </li>");
                         _e("<li><strong>fs</strong> - Set this to 0 to hide the fullscreen button (or 1 to show it). <em>Example: http://www.youtube.com/watch?v=quwebVjAEJA<strong>&fs=0</strong></em> </li>");
-                        _e("<li><strong>color</strong> - Set this to 'white' to make the player have a white progress bar (or 'red' for a red progress bar). Note: Using white will disable the modestbranding option. <em>Example: http://www.youtube.com/watch?v=quwebVjAEJA<strong>&color=white</strong></em> </li>");
+                        _e("<li><strong>color</strong> - Set this to 'white' to make the player have a white progress bar (or 'red' for a red progress bar). <em>Example: http://www.youtube.com/watch?v=quwebVjAEJA<strong>&color=white</strong></em> </li>");
                         _e("<li><strong>controls</strong> - Set this to 0 to completely hide the video controls (or 1 to show it). <em>Example: http://www.youtube.com/watch?v=quwebVjAEJA<strong>&controls=0</strong></em> </li>");
                         _e("<li><strong>playsinline</strong> - Set this to 1 to allow videos play inline with the page on iOS browsers. (Set to 0 to have iOS launch videos in fullscreen instead). <em>Example: http://www.youtube.com/watch?v=quwebVjAEJA<strong>&playsinline=1</strong></em> </li>");
                         _e("<li><strong>origin</strong> - Set this to 1 to add the 'origin' parameter for extra JavaScript security. <em>Example: http://www.youtube.com/watch?v=quwebVjAEJA<strong>&origin=1</strong></em> </li>");
@@ -4451,11 +4441,6 @@ class YouTubePrefs
                             </div>
                         </div>
                         <p><?php _e('Note: Since the YouTube player is loaded in its own iframe from YouTube\'s servers, browser restrictions prevent this plugin from directly deferring the JS inside the iframe. However, if you upgrade to Pro, you can use the lazy loading feature <a href="#jumpupgrade">described here &raquo;</a> to further improve your page speeds or try out facade mode.', 'youtube-embed-plus'); ?></p>
-                        <!--                        <div style="width: 50%">
-                                                    <div class="epyt-fitvid">
-                                                        <iframe allow="encrypted-media" allowfullscreen="" src="https://www.youtube-nocookie.com/embed/?autoplay=0&amp;cc_load_policy=0&amp;iv_load_policy=1&amp;loop=0&amp;modestbranding=0&amp;fs=1&amp;playsinline=0&amp;controls=1&amp;color=red&amp;rel=1&amp;autohide=2&amp;theme=dark&amp;"></iframe>
-                                                    </div>
-                                                </div>-->
                     </section>
 
                     <div class="save-changes-follow"> <?php self::save_changes_button(isset($_POST[$ytprefs_submitted]) && $_POST[$ytprefs_submitted] == 'Y'); ?> </div>
@@ -4969,7 +4954,6 @@ class YouTubePrefs
         $new_options[self::$opt_cc_load_policy] = self::postchecked(self::$opt_cc_load_policy) ? 1 : 0;
         $new_options[self::$opt_iv_load_policy] = self::postchecked(self::$opt_iv_load_policy) ? 1 : 3;
         $new_options[self::$opt_loop] = self::postchecked(self::$opt_loop) ? 1 : 0;
-        $new_options[self::$opt_modestbranding] = self::postchecked(self::$opt_modestbranding) ? 1 : 0;
         $new_options[self::$opt_fs] = self::postchecked(self::$opt_fs) ? 1 : 0;
         $new_options[self::$opt_playsinline] = self::postchecked(self::$opt_playsinline) ? 1 : 0;
         $new_options[self::$opt_origin] = self::postchecked(self::$opt_origin) ? 1 : 0;
@@ -5284,7 +5268,6 @@ class YouTubePrefs
         $messages = array();
         try
         {
-            $input[self::$opt_modestbranding] = intval($input[self::$opt_modestbranding]);
             $input[self::$opt_responsive] = intval($input[self::$opt_responsive]);
             $input[self::$opt_responsive_all] = intval($input[self::$opt_responsive_all]);
             $input[self::$opt_defer_js] = intval($input[self::$opt_defer_js]);
@@ -5323,7 +5306,6 @@ class YouTubePrefs
         $result = array();
         $default = array(
             self::$opt_rel => 1,
-            self::$opt_modestbranding => 0,
             self::$opt_responsive => 0,
             self::$opt_responsive_all => 0,
             self::$opt_defer_js => 0,
@@ -5542,10 +5524,6 @@ class YouTubePrefs
                                         </span>
                                     </label>
                                 </div>
-                            </div>
-                            <div class="ytprefs-ob-setting yob-single yob-gallery yob-standalone yob-live">
-                                <input value="1" name="<?php echo self::$opt_modestbranding; ?>" id="<?php echo self::$opt_modestbranding; ?>" <?php checked($all[self::$opt_modestbranding], 1); ?> type="checkbox" class="checkbox">
-                                <label for="<?php echo self::$opt_modestbranding; ?>"><?php _e('<b class="chktitle">Modest Branding:</b> No YouTube logo will be shown on the control bar.  Instead, as required by YouTube, the logo will only show as a watermark when the video is paused/stopped.') ?></label>
                             </div>
                             <div class="ytprefs-ob-setting yob-single yob-gallery yob-standalone yob-live">
                                 <input value="1" name="<?php echo self::$opt_responsive; ?>" id="<?php echo self::$opt_responsive; ?>" <?php checked($all[self::$opt_responsive], 1); ?> type="checkbox" class="checkbox">

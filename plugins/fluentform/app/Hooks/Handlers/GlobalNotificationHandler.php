@@ -100,6 +100,7 @@ class GlobalNotificationHandler
         $scheduler = $this->app['fluentFormAsyncRequest'];
         
         foreach ($enabledFeeds as $feed) {
+            $feed = apply_filters('fluentform/integration_feed_before_parse', $feed, $insertId, $formData, $form);
             // We will decide if this feed will run on async or sync
             $integrationKey = ArrayHelper::get($feedKeys, $feed['meta_key']);
 

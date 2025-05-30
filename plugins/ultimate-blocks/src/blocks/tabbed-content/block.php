@@ -116,6 +116,14 @@ function ub_render_tabbed_content_block($attributes, $contents, $block){
     $mobileTabStyle = substr($mobileTabDisplay, 0, strlen($mobileTabDisplay) - 3);
     $tabletTabStyle = substr($tabletTabDisplay, 0, strlen($tabletTabDisplay) - 3);
 
+    if(!empty($mobileTabStyle)){
+		$mobileTabStyle = esc_attr($mobileTabStyle);
+    }
+    if(!empty($tabletTabStyle)){
+		$tabletTabStyle = esc_attr($tabletTabStyle);
+    }
+
+
 	$tab_buttons_wrapper_styles = array(
 		'justify-content' => $attributes['tabsAlignment'] === 'center' ? 'center' : 'flex-' . ($attributes['tabsAlignment'] === 'left' ? 'start' : 'end'),
 	);
@@ -144,7 +152,7 @@ function ub_render_tabbed_content_block($attributes, $contents, $block){
 		$blockName, // 3
 		($tabVertical ? ' vertical-holder' : ''), // 4
 		(isset($className) ? ' ' . esc_attr($className) : ''), // 5
-		(isset($align) ? ' align' . $align : ''), // 6
+		(isset($align) ? ' align' . esc_attr($align) : ''), // 6
 		($mobileTabDisplay !== 'accordion' ? ' ' . $blockName . '-' . $mobileTabStyle . '-holder-mobile' : ''), // 7
 		($tabletTabDisplay !== 'accordion' ? ' ' . $blockName . '-' . $tabletTabStyle . '-holder-tablet' : ''), // 8
 		($blockID === '' ? '' : ' id="ub-tabbed-content-' . esc_attr($blockID) . '"'), // 9

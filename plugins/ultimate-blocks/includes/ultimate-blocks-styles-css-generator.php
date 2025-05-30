@@ -161,46 +161,52 @@ function get_background_color_var(
 		return "";
 	}
 }
+
 /**
  * Strip XSS from HTML content.
+ *
+ * This function is created for escaping content because WordPress custom functions
+ * (like wp_kses) escape SVG elements as well and remove them. This provides a safer
+ * alternative that preserves SVG content while still removing potentially harmful scripts.
  *
  * @param string $html - The HTML content to sanitize.
  * @return string Sanitized HTML content.
  */
 function strip_xss( $html ) {
-     if ( ! $html ) {
-          return '';
-     }
+	if ( ! $html ) {
+		return '';
+	}
 
-     $dom = new \DOMDocument( '1.0', 'UTF-8' );
+	$dom = new \DOMDocument( '1.0', 'UTF-8' );
+	$html = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body>' . htmlspecialchars_decode(htmlentities($html, ENT_QUOTES, 'UTF-8')) . '</body></html>';
 
-     // Use htmlspecialchars_decode instead of mb_convert_encoding
-     $html = htmlspecialchars_decode(htmlentities($html, ENT_QUOTES, 'UTF-8'));
+	// Suppress errors due to malformed HTML.
+	@$dom->loadHTML( $html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
 
-     // Suppress errors due to malformed HTML.
-     // Use defined constants or check if they exist
-     $options = 0;
-     if (defined('LIBXML_HTML_NOIMPLIED')) {
-          $options |= LIBXML_HTML_NOIMPLIED;
-     }
-     if (defined('LIBXML_HTML_NODEFDTD')) {
-          $options |= LIBXML_HTML_NODEFDTD;
-     }
-     @$dom->loadHTML( $html, $options );
+	$xpath = new \DOMXPath( $dom );
+	$elements = $xpath->query( '//*' );
 
-     $xpath = new \DOMXPath( $dom );
-     $elements = $xpath->query( '//*' );
+	foreach ( $elements as $element ) {
+		foreach ( $element->attributes as $attr ) {
+			if ( strpos( $attr->name, 'on' ) === 0 ) {
+				$element->removeAttribute( $attr->name );
+			}
+		}
+	}
+	$script_tags = $dom->getElementsByTagName( 'script' );
+	while ( $script_tags->length > 0 ) {
+		$script_tags->item( 0 )->parentNode->removeChild( $script_tags->item( 0 ) );
+	}
 
-     foreach ( $elements as $element ) {
-          foreach ( $element->attributes as $attr ) {
-               if ( strpos( $attr->name, 'on' ) === 0 ) {
-                    $element->removeAttributeNode( $attr );
-               }
-          }
-     }
-     $script_tags = $dom->getElementsByTagName( 'script' );
-     while ( $script_tags->length > 0 ) {
-          $script_tags->item( 0 )->parentNode->removeChild( $script_tags->item( 0 ) );
-     }
-	return $dom->saveHTML();
+	// Extract only the body content
+	$body = $dom->getElementsByTagName('body')->item(0);
+	$html_content = '';
+
+	if ($body && $body->childNodes) {
+		foreach ($body->childNodes as $node) {
+			$html_content .= $dom->saveHTML($node);
+		}
+	}
+
+	return $html_content;
 }

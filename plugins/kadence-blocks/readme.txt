@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, page builder, editor, gutenberg blocks
 Donate link: https://www.kadencewp.com/about-us/
 Requires at least: 6.4
 Tested up to: 6.8.1
-Stable tag: 3.5.8
+Stable tag: 3.5.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -174,6 +174,15 @@ Please report security bugs found in the Kadence Blocks plugin's source code thr
 
 == Changelog ==
 
+= 3.5.9 =
+Release Date: 29th May 2025
+* Fix: Icon size preview for the Infobox block.
+* Update: Default aria-label for Search block input field.
+* Fix: Image file size for the image block default settings.
+* Fix: Mosaic (pro) gallery items accessibility issue.
+* Fix: Mosaic (pro) gallery default row height and reset.
+* Fix: Gallery fluid carousel overflow issue when gutter set.
+
 = 3.5.8 =
 Release Date: 15th May 2025
 * Add: Image border radius to post grid/carousel block.
@@ -185,6 +194,7 @@ Release Date: 15th May 2025
 * Fix: Advanced header max width limited to 600px.
 * Fix: Vector block alignment when inside a section.
 * Fix: Circular progress bar alignment and max-width fixes.
+* Fix: Overflow issue in some mega menus.
 
 = 3.5.7 =
 Release Date: May 5th 2025

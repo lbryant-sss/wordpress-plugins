@@ -3,7 +3,7 @@ Contributors: virgial
 Tags: notification,notify,user,e-mail,switch
 Requires at least: 4.0.0
 Donate link:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TYG56SLWNG42N
-Tested up to: 6.6.2
+Tested up to: 6.8.1
 Stable tag: 1.8.6
 Requires PHP: 7.4
 License: GPLv2 or later

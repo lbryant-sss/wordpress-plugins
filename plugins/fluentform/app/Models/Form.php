@@ -202,16 +202,7 @@ class Form extends Model
             'fluentform/forms_default_settings',
             $defaultSettings
         );
-    
-        $defaultSettings = apply_filters_deprecated(
-            'fluentform_create_default_settings',
-            [
-                $defaultSettings
-            ],
-            FLUENTFORM_FRAMEWORK_UPGRADE,
-            'fluentform/create_default_settings',
-            'Use fluentform/create_default_settings instead of fluentform_create_default_settings.'
-        );
+        
 
         return apply_filters(
             'fluentform/create_default_settings',
@@ -249,8 +240,9 @@ class Form extends Model
 
     public static function remove($formId)
     {
-        static::where('id', $formId)->delete();
+        do_action('fluentform/before_form_delete', $formId);
 
+        static::where('id', $formId)->delete();
         Submission::where('form_id', $formId)->delete();
         SubmissionMeta::where('form_id', $formId)->delete();
         EntryDetails::where('form_id', $formId)->delete();
@@ -278,5 +270,7 @@ class Form extends Model
             } catch (\Exception $e) {
             }
         }
+
+        do_action('fluentform/after_form_delete', $formId);
     }
 }
