@@ -30,6 +30,7 @@ function swpm_save_edit_pp_buy_now_new_button_data() {
     $disable_funding_card = isset($_POST['pp_buy_now_new_disable_funding_card']) ? sanitize_text_field($_POST['pp_buy_now_new_disable_funding_card']) : '';
     $disable_funding_credit = isset($_POST['pp_buy_now_new_disable_funding_credit']) ? sanitize_text_field($_POST['pp_buy_now_new_disable_funding_credit']) : '';
     $disable_funding_venmo = isset($_POST['pp_buy_now_new_disable_funding_venmo']) ? sanitize_text_field($_POST['pp_buy_now_new_disable_funding_venmo']) : '';
+    $redirect_to_paid_reg_link_after_payment = isset($_POST['redirect_to_paid_reg_link_after_payment']) ? sanitize_text_field($_POST['redirect_to_paid_reg_link_after_payment']) : '';
 
     //Process form submission
     if (isset($_REQUEST['swpm_pp_buy_now_new_save_submit'])) {
@@ -62,6 +63,8 @@ function swpm_save_edit_pp_buy_now_new_button_data() {
         add_post_meta($button_id, 'pp_buy_now_new_disable_funding_card', $disable_funding_card);
         add_post_meta($button_id, 'pp_buy_now_new_disable_funding_credit', $disable_funding_credit);
         add_post_meta($button_id, 'pp_buy_now_new_disable_funding_venmo', $disable_funding_venmo);
+
+	    add_post_meta($button_id, 'redirect_to_paid_reg_link_after_payment', $redirect_to_paid_reg_link_after_payment);
 
         add_post_meta($button_id, 'return_url', trim(sanitize_text_field($_REQUEST['return_url'])));
 
@@ -104,6 +107,8 @@ function swpm_save_edit_pp_buy_now_new_button_data() {
         update_post_meta($button_id, 'pp_buy_now_new_disable_funding_card', $disable_funding_card);
         update_post_meta($button_id, 'pp_buy_now_new_disable_funding_credit', $disable_funding_credit);
         update_post_meta($button_id, 'pp_buy_now_new_disable_funding_venmo', $disable_funding_venmo);
+
+        update_post_meta($button_id, 'redirect_to_paid_reg_link_after_payment', $redirect_to_paid_reg_link_after_payment);
 
         update_post_meta($button_id, 'return_url', trim(sanitize_text_field($_REQUEST['return_url'])));
 
@@ -149,7 +154,7 @@ function render_save_edit_pp_buy_now_new_button_interface($bt_opts, $is_edit_mod
         <div class="inside">
 
             <form id="pp_buy_now_new_button_config_form" method="post">
-                <input type="hidden" name="button_type" value="<?php echo $bt_opts['button_type']; ?>">
+                <input type="hidden" name="button_type" value="<?php echo esc_attr($bt_opts['button_type']); ?>">
                 <?php if (!$is_edit_mode) { ?>
                     <input type="hidden" name="swpm_button_type_selected" value="1">
                 <?php } ?>
@@ -159,7 +164,7 @@ function render_save_edit_pp_buy_now_new_button_interface($bt_opts, $is_edit_mod
                         <tr valign="top">
                             <th scope="row"><?php _e('Button ID', 'simple-membership'); ?></th>
                             <td>
-                                <input type="text" size="10" name="button_id" value="<?php echo $bt_opts['button_id']; ?>" readonly required />
+                                <input type="text" size="10" name="button_id" value="<?php echo esc_attr($bt_opts['button_id']); ?>" readonly required />
                                 <p class="description"><?php _e('This is the ID of this payment button. It is automatically generated for you and it cannot be changed.', 'simple-membership') ?></p>
                             </td>
                         </tr>
@@ -167,7 +172,7 @@ function render_save_edit_pp_buy_now_new_button_interface($bt_opts, $is_edit_mod
                     <tr valign="top">
                         <th scope="row"><?php _e('Button Title', 'simple-membership'); ?></th>
                         <td>
-                            <input type="text" size="50" name="button_name" value="<?php echo ($is_edit_mode ? $bt_opts['button_name'] : ''); ?>" required />
+                            <input type="text" size="50" name="button_name" value="<?php echo ($is_edit_mode ? esc_attr($bt_opts['button_name']) : ''); ?>" required />
                             <p class="description"><?php _e('Give this membership payment button a name. Example: Gold membership payment.', 'simple-membership') ?></p>
                         </td>
                     </tr>
@@ -229,7 +234,7 @@ function render_save_edit_pp_buy_now_new_button_interface($bt_opts, $is_edit_mod
                     <tr valign="top">
                         <th scope="row"><?php _e('Payment Amount', 'simple-membership'); ?></th>
                         <td>
-                            <input type="number" min="0" step="0.01" size="10" name="payment_amount" value="<?php echo ($is_edit_mode ? $bt_opts['payment_amount'] : ''); ?>" required />
+                            <input type="number" min="0" step="0.01" size="10" name="payment_amount" value="<?php echo ($is_edit_mode ? esc_attr($bt_opts['payment_amount']) : ''); ?>" required />
                             <p class="description"><?php _e('Enter payment amount. Example values: 9.90 or 25.00 or 299.90 etc (do not enter currency symbol).', 'simple-membership'); ?></p>
                         </td>
                     </tr>
@@ -314,11 +319,33 @@ function render_save_edit_pp_buy_now_new_button_interface($bt_opts, $is_edit_mod
                         </td>
                     </tr>
 
+	                <?php
+	                    $redirect_to_paid_reg_link_after_payment = isset($bt_opts['redirect_to_paid_reg_link_after_payment']) && !empty($bt_opts['redirect_to_paid_reg_link_after_payment']) ? ' checked' : '';
+	                ?>
+
+                    <tr valign="top">
+                        <th scope="row"><?php _e( 'Redirect to Paid Registration Link', 'simple-membership'); ?></th>
+                        <td>
+                            <input type="checkbox" name="redirect_to_paid_reg_link_after_payment" value="1" <?php echo esc_attr($redirect_to_paid_reg_link_after_payment) ?> />
+                            <p class="description">
+				                <?php _e('Enable this option to automatically redirect the user to the unique paid registration link after a successful payment. ', 'simple-membership') ?>
+                                <a href="https://simple-membership-plugin.com/automatically-redirect-users-to-the-paid-registration-link-after-payment/" target="_blank"><?php _e('Read this documentation', 'simple-membership') ?></a>
+                                <?php _e(' to learn how it works.', 'simple-membership') ?>
+                            </p>
+                        </td>
+                    </tr>
+
                     <tr valign="top">
                         <th scope="row"><?php _e('Return URL', 'simple-membership'); ?></th>
                         <td>
-                            <input type="text" size="100" name="return_url" value="<?php echo ($is_edit_mode ? $bt_opts['return_url'] : ''); ?>" />
+                            <input type="text" size="100" name="return_url" value="<?php echo ($is_edit_mode ? esc_url_raw($bt_opts['return_url']) : ''); ?>" />
                             <p class="description"><?php _e('This is the URL the user will be redirected to after a successful payment. Enter the URL of your Thank You page here.', 'simple-membership') ?></p>
+
+                            <?php if ($redirect_to_paid_reg_link_after_payment) { ?>
+                                <p class="description">
+                                    <strong><?php esc_attr_e('Note: ', 'simple-membership'); ?></strong> <?php esc_attr_e("The 'Redirect to Paid Registration Link' option is enabled for this button. Unregistered users will be redirected to the paid registration page after completing payment.", 'simple-membership'); ?>
+                                </p>
+                            <?php } ?>
                         </td>
                     </tr>
 
@@ -382,6 +409,7 @@ function swpm_edit_pp_buy_now_new_button() {
         'pp_buy_now_new_disable_funding_card' => get_post_meta($button_id, 'pp_buy_now_new_disable_funding_card', true),
         'pp_buy_now_new_disable_funding_credit' => get_post_meta($button_id, 'pp_buy_now_new_disable_funding_credit', true),
         'pp_buy_now_new_disable_funding_venmo' => get_post_meta($button_id, 'pp_buy_now_new_disable_funding_venmo', true),
+        'redirect_to_paid_reg_link_after_payment' => get_post_meta($button_id, 'redirect_to_paid_reg_link_after_payment', true),
         'return_url' => get_post_meta($button_id, 'return_url', true),
     );
 

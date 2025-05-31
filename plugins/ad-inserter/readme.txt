@@ -6,10 +6,10 @@ Tags: ads, adsense, amp, ad rotation, ad manager
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.8.2
+Stable tag: 2.8.3
 License: GPLv3
 
-Manage Google AdSense, Media.net, Amazon banners, ads.txt, ad rotation, sticky widgets, AMP ads, DFP, tracking, AdSense header and footer code
+Manage Google AdSense, banners, ads.txt, ad rotation, sticky widgets, AMP ads, DFP, tracking, header and footer code
 
 == Description ==
 

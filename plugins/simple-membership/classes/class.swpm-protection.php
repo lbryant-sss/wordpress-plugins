@@ -115,4 +115,53 @@ class SwpmProtection extends SwpmProtectionBase {
         }
 	}
 
+	/**
+	 * Apply protection to a post by post-id.
+	 *
+	 * @param int $post_id The post id to apply protection on.
+	 * @param array $allowed_levels List of membership level ids that will be allowed to access this post. Leave empty to not apply allowance to none.
+	 * @param string $post_type Default 'post'. The type of post i.e. post, page, attachment, comment, category etc.
+	 *
+	 * @return void
+	 */
+	public static function apply_protection_to_post(int $post_id, array $allowed_levels = array(), string $post_type = 'post') {
+		// Apply protection to the given post.
+        $protection = SwpmProtection::get_instance();
+        $applied_protection = $protection->apply(array($post_id), $post_type);
+        $applied_protection->save();        
+
+		if (!empty($allowed_levels)){
+            // Ensure the SwpmPermission class is loaded.
+            if ( ! class_exists( SwpmPermission::class ) ) {
+                require_once SIMPLE_WP_MEMBERSHIP_PATH . 'classes/class.swpm-permission.php';
+            }
+
+            // Loop through each allowed level and apply the permission accordingly for the content.
+            foreach ( $allowed_levels as $level_id ) {
+                $permission_instance = SwpmPermission::get_instance( intval( $level_id ) );
+                $applied_protection = $permission_instance->apply( array( $post_id ), $post_type );
+                $applied_protection->save();
+            }
+		}
+	}
+
+	/**
+	 * Apply protection to posts by an array of post-ids.
+	 *
+	 * @param array $post_ids List post ids to apply protection on.
+	 * @param array $allowed_levels List of membership level ids that will be allowed to access these posts. Leave empty to not apply allowance to none.
+	 * @param string $post_type Default 'post'. The type of post i.e. post, page, attachment, comment, category etc.
+	 *
+	 * @return void
+	 */
+	public static function apply_protection_to_posts(array $post_ids, array $allowed_levels = array(), string $post_type = 'post'){
+		if (empty($post_ids)){
+			return;
+		}
+
+		foreach ($post_ids as $post_id) {
+			self::apply_protection_to_post( (int) $post_id,  $allowed_levels, $post_type);
+		}
+	}
+
 }

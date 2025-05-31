@@ -71,6 +71,9 @@ function swpm_render_new_edit_stripe_sca_subscription_button_interface( $opts, $
 		}
 		return $out;
 	}
+
+	$button_type = isset($_REQUEST['button_type']) ? sanitize_text_field($_REQUEST['button_type']) : '';
+
 	?>
 
 <div class="swpm-orange-box">
@@ -85,13 +88,13 @@ function swpm_render_new_edit_stripe_sca_subscription_button_interface( $opts, $
 		<div class="inside">
 			<table class="form-table" width="100%" border="0" cellspacing="0" cellpadding="6">
 				<?php if ( ! $edit ) { ?>
-				<input type="hidden" name="button_type" value="<?php echo sanitize_text_field( $_REQUEST['button_type'] ); ?>">
+				<input type="hidden" name="button_type" value="<?php echo esc_attr( $button_type ); ?>">
 				<input type="hidden" name="swpm_button_type_selected" value="1">
 				<?php } else { ?>
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Button ID' , 'simple-membership'); ?></th>
 					<td>
-						<input type="text" size="10" name="button_id" value="<?php echo $opts['button_id']; ?>" readonly required />
+						<input type="text" size="10" name="button_id" value="<?php echo esc_attr($opts['button_id']); ?>" readonly required />
 						<p class="description"><?php _e('This is the ID of this payment button. It is automatically generated for you and it cannot be changed.', 'simple-membership') ?></p>
 					</td>
 				</tr>
@@ -99,7 +102,7 @@ function swpm_render_new_edit_stripe_sca_subscription_button_interface( $opts, $
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Button Title' , 'simple-membership'); ?></th>
 					<td>
-						<input type="text" size="50" name="button_name" value="<?php echo ( $edit ? $opts['button_title'] : '' ); ?>" required />
+						<input type="text" size="50" name="button_name" value="<?php echo ( $edit ? esc_attr($opts['button_title']) : '' ); ?>" required />
 						<p class="description"><?php _e('Give this membership payment button a name. Example: Gold membership payment', 'simple-membership') ?></p>
 					</td>
 				</tr>
@@ -117,7 +120,7 @@ function swpm_render_new_edit_stripe_sca_subscription_button_interface( $opts, $
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Stripe Price/API ID' , 'simple-membership'); ?></th>
 					<td>
-						<input type="text" name="stripe_plan_id" value="<?php echo ( $edit ? $opts['stripe_plan_id'][0] : '' ); ?>" required />
+						<input type="text" name="stripe_plan_id" value="<?php echo ( $edit ? esc_attr($opts['stripe_plan_id'][0]) : '' ); ?>" required />
 						<p class="description">
 							<?php _e('ID of the plan that you want subscribers to be assigned to. You can get more details in the', 'simple-membership') ?>
 							<a href="https://simple-membership-plugin.com/sca-compliant-stripe-subscription-button/" target="_blank"><?php _e('documentation', 'simple-membership') ?></a>.
@@ -242,11 +245,33 @@ function swpm_render_new_edit_stripe_sca_subscription_button_interface( $opts, $
                     </td>
                 </tr>
 
+				<?php
+				    $redirect_to_paid_reg_link_after_payment = isset( $opts['redirect_to_paid_reg_link_after_payment'][0] ) && !empty($opts['redirect_to_paid_reg_link_after_payment'][0]) ? true : false;
+				?>
+
+                <tr valign="top">
+                    <th scope="row"><?php _e( 'Redirect to Paid Registration Link', 'simple-membership'); ?></th>
+                    <td>
+                        <input type="checkbox" name="redirect_to_paid_reg_link_after_payment" value="1" <?php echo esc_attr( $edit && $redirect_to_paid_reg_link_after_payment ? 'checked' : '' ); ?> />
+						<p class="description">
+							<?php _e('Enable this option to automatically redirect the user to the unique paid registration link after a successful payment. ', 'simple-membership') ?>
+							<a href="https://simple-membership-plugin.com/automatically-redirect-users-to-the-paid-registration-link-after-payment/" target="_blank"><?php _e('Read this documentation', 'simple-membership') ?></a>
+							<?php _e(' to learn how it works.', 'simple-membership') ?>
+						</p>
+                    </td>
+                </tr>
+
                 <tr valign="top">
 					<th scope="row"><?php _e( 'Return URL' , 'simple-membership'); ?></th>
 					<td>
-						<input type="text" size="100" name="return_url" value="<?php echo ( $edit ? $opts['return_url'][0] : '' ); ?>" />
-						<p class="description"><?php _e('This is the URL the user will be redirected to after a successful payment. Enter the URL of your Thank You page here.', 'simple-membership') ?></p>
+						<input type="text" size="100" name="return_url" value="<?php echo ( $edit ? esc_url_raw($opts['return_url'][0]) : '' ); ?>" />
+                        <p class="description"><?php _e('This is the URL the user will be redirected to after a successful payment. Enter the URL of your Thank You page here.', 'simple-membership') ?></p>
+
+						<?php if ($redirect_to_paid_reg_link_after_payment) { ?>
+							<p class="description">
+								<strong><?php esc_attr_e('Note: ', 'simple-membership'); ?></strong> <?php esc_attr_e("The 'Redirect to Paid Registration Link' option is enabled for this button. Unregistered users will be redirected to the paid registration page after completing payment.", 'simple-membership'); ?>
+							</p>
+						<?php } ?>
 					</td>
 				</tr>
 
@@ -261,7 +286,7 @@ function swpm_render_new_edit_stripe_sca_subscription_button_interface( $opts, $
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Button Image URL' , 'simple-membership'); ?></th>
 					<td>
-						<input type="text" size="100" name="button_image_url" value="<?php echo ( $edit ? $opts['button_image_url'][0] : '' ); ?>" />
+						<input type="text" size="100" name="button_image_url" value="<?php echo ( $edit ? esc_url_raw($opts['button_image_url'][0]) : '' ); ?>" />
 						<p class="description"><?php _e('If you want to customize the look of the button using an image then enter the URL of the image.', 'simple-membership') ?></p>
 					</td>
 				</tr>
@@ -355,6 +380,7 @@ function swpm_save_edit_stripe_sca_subscription_button_data() {
 		update_post_meta( $button_id, 'stripe_collect_address', isset( $_POST['collect_address'] ) ? '1' : '' );
 		update_post_meta( $button_id, 'stripe_automatic_tax', isset( $_POST['automatic_tax'] ) ? '1' : '' );
 		update_post_meta( $button_id, 'allow_promotion_codes', isset( $_POST['allow_promotion_codes'] ) ? '1' : '' );
+		update_post_meta( $button_id, 'redirect_to_paid_reg_link_after_payment', isset( $_POST['redirect_to_paid_reg_link_after_payment'] ) ? '1' : '' );
 
 		//API details
 		$stripe_test_secret_key = isset( $_POST['stripe_test_secret_key'] ) ? sanitize_text_field( stripslashes ( $_POST['stripe_test_secret_key'] ) ) : '';

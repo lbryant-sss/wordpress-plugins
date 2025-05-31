@@ -77,7 +77,6 @@ function swpm_render_pp_buy_now_new_button_sc_output($button_code, $args) {
     $btn_sizes = array( 'small' => 25, 'medium' => 35, 'large' => 45, 'xlarge' => 55 );
     $btn_height = isset( $btn_sizes[ $btn_height ] ) ? $btn_sizes[ $btn_height ] : 35;
 
-    $return_url = get_post_meta($button_id, 'return_url', true);
     $txn_success_message = __('Transaction completed successfully!', 'simple-membership');
 
     /**********************
@@ -232,17 +231,32 @@ function swpm_render_pp_buy_now_new_button_sc_output($button_code, $args) {
                             // Successful transaction -> Show confirmation or thank you message
                             console.log('Capture-order API call to PayPal completed successfully.');
 
-                            //Redirect to the Thank you page URL if it is set.
-                            return_url = '<?php echo esc_url_raw($return_url); ?>';
+                            //Redirect to the Thank you page or Registration page URL if it is set.
+                            const return_url = response_data.redirect_url || '';
                             if( return_url ){
-                                //redirect to the Thank you page URL.
+                                //redirect to the URL.
                                 console.log('Redirecting to the Thank you page URL: ' + return_url);
                                 window.location.href = return_url;
                                 return;
                             } else {
                                 //No return URL is set. Just show a success message.
+                                //Important Note: any alert message will block the normal PayPal popup window flow. So we want to show the message on the page instead of using alert.
                                 txn_success_msg = '<?php echo esc_attr($txn_success_message); ?>';
-                                alert(txn_success_msg);
+                                const swpm_btn_wrapper_div = document.getElementById('<?php echo esc_js($swpm_button_wrapper_id); ?>');
+                                if (swpm_btn_wrapper_div) {
+                                    // Remove any previous message if it exists
+                                    const old_msg_div = swpm_btn_wrapper_div.querySelector('.swpm-ppcp-txn-success-message');
+                                    if (old_msg_div) old_msg_div.remove();
+
+                                    // Create new message div
+                                    const new_msg_div = document.createElement('div');
+                                    new_msg_div.className = 'swpm-ppcp-txn-success-message';
+                                    new_msg_div.textContent = txn_success_msg;
+
+                                    //Insert the message div before the button.
+                                    const firstChild = swpm_btn_wrapper_div.firstChild;
+                                    swpm_btn_wrapper_div.insertBefore(new_msg_div, firstChild);
+                                }
                             }
 
                         } else if (error_detail?.issue === "INSTRUMENT_DECLINED") {

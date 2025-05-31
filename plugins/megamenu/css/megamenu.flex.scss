@@ -312,22 +312,22 @@
                 }
             }
 
-            &.mega-item-align-right {
-                order: 1;
-            }
-
-            &.mega-item-align-float-left {
-                order: -1;
-            }
-
             @include desktop {
                 @if $menu_item_align != 'right' {
+                    &.mega-item-align-right {
+                        order: 1;
+                    }
+
                     &:nth-child(1 of .mega-item-align-right) {
                         margin-left: auto;
                     }
                 }
 
                 @if $menu_item_align != 'left' {
+                    &.mega-item-align-float-left {
+                        order: -1;
+                    }
+
                     &:nth-last-child(1 of .mega-item-align-float-left) {
                         margin-right: auto;
                     }

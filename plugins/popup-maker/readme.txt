@@ -5,9 +5,9 @@ Plugin URI: https://wppopupmaker.com/?utm_campaign=readme&utm_medium=referral&ut
 Donate link:
 Tags:  marketing, popup, popups, optin, conversion
 Requires at least: 4.9
-Tested up to: 6.8.0
+Tested up to: 6.8.1
 Requires PHP: 5.6
-Stable tag: 1.20.4
+Stable tag: 1.20.5
 License: GPLv2 or later
 License URI:  http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,13 +21,11 @@ Want to boost sales & marketing efforts? Using popups are a great way to increas
 
 Transform your WordPress site into a conversion powerhouse! Create targeted campaigns using popups, exit-intent forms, slide-ins, and smart banners to skyrocket your revenue and build your email list faster than ever.
 
-> <hr />
 > **We switched to Popup Maker for our popups and couldn't be happier.**
 >
 > "We recommend it to all our clients too. Popup Maker is an essential piece of our website for maximizing growing our email list, increasing sales conversions, and guiding users with strategic calls to action. Great support too."
 >
 > ~ **Chris Badgett, LifterLMS CEO**
-> <hr />
 
 <h4>🔥 Ready to get started?</h4>
 
@@ -239,6 +237,11 @@ For the latest updates and release information:
 * Join our [community](https://wppopupmaker.com/community/) for important release announcements and discussions
 * Visit our [changelog](https://wppopupmaker.com/changelog/) for detailed version history
 * View our [complete development changelog](https://github.com/PopupMaker/Popup-Maker/blob/master/CHANGELOG.md)
+
+= 1.20.5 - 2025-05-30 =
+
+-   Security: Fix potential XSS for custom HTML based popups.
+
 
 = 1.20.4 - 2025-01-29 =
 

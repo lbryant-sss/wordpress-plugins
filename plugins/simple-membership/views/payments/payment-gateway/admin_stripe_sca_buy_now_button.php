@@ -5,7 +5,8 @@
 add_action( 'swpm_create_new_button_for_stripe_sca_buy_now', 'swpm_create_new_stripe_sca_buy_now_button' );
 
 function swpm_create_new_stripe_sca_buy_now_button() {
-
+	$button_type = isset($_REQUEST['button_type']) ? sanitize_text_field($_REQUEST['button_type']) : '';
+	
 	//Test for PHP v5.6.0 or show error and don't show the remaining interface.
 	if ( version_compare( PHP_VERSION, '5.6.0' ) < 0 ) {
 		//This server can't handle Stripe library
@@ -27,7 +28,7 @@ function swpm_create_new_stripe_sca_buy_now_button() {
 	<div class="inside">
 
 		<form id="stripe_button_config_form" method="post">
-			<input type="hidden" name="button_type" value="<?php echo sanitize_text_field( $_REQUEST['button_type'] ); ?>">
+			<input type="hidden" name="button_type" value="<?php echo esc_attr( $button_type ); ?>">
 			<input type="hidden" name="swpm_button_type_selected" value="1">
 
 			<table class="form-table" width="100%" border="0" cellspacing="0" cellpadding="6">
@@ -171,7 +172,19 @@ function swpm_create_new_stripe_sca_buy_now_button() {
 							<?php echo '<a href="https://simple-membership-plugin.com/applying-discount-coupon-or-promotion-codes-to-stripe-payment-buttons/" target="_blank">' . __('Learn more', 'simple-membership') . '</a>.'; ?>
 						</p>
 					</td>
-				</tr>				
+				</tr>
+
+                <tr valign="top">
+                    <th scope="row"><?php _e( 'Redirect to Paid Registration Link', 'simple-membership'); ?></th>
+                    <td>
+                        <input type="checkbox" name="redirect_to_paid_reg_link_after_payment" value="1" />
+						<p class="description">
+							<?php _e('Enable this option to automatically redirect the user to the unique paid registration link after a successful payment. ', 'simple-membership') ?>
+							<a href="https://simple-membership-plugin.com/automatically-redirect-users-to-the-paid-registration-link-after-payment/" target="_blank"><?php _e('Read this documentation', 'simple-membership') ?></a>
+							<?php _e(' to learn how it works.', 'simple-membership') ?>
+						</p>
+                    </td>
+                </tr>
 
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Return URL' , 'simple-membership'); ?></th>
@@ -260,6 +273,9 @@ function swpm_save_new_stripe_sca_buy_now_button_data() {
 
 		$allow_promotion_codes = isset($_REQUEST['allow_promotion_codes']) ? sanitize_text_field( $_REQUEST['allow_promotion_codes'] ) : '';
 		add_post_meta( $button_id, 'allow_promotion_codes', $allow_promotion_codes );
+
+		$redirect_to_paid_reg_link_after_payment = isset($_REQUEST['redirect_to_paid_reg_link_after_payment']) ? sanitize_text_field( $_REQUEST['redirect_to_paid_reg_link_after_payment'] ) : '';
+		add_post_meta( $button_id, 'redirect_to_paid_reg_link_after_payment', $redirect_to_paid_reg_link_after_payment );
 				
 		add_post_meta( $button_id, 'stripe_collect_address', isset( $_POST['collect_address'] ) ? '1' : '' );
 		add_post_meta( $button_id, 'stripe_automatic_tax', isset( $_POST['automatic_tax'] ) ? '1' : '' );
@@ -310,6 +326,13 @@ function swpm_edit_stripe_sca_buy_now_button() {
 		$allow_promotion_codes = '';
 	}
 
+	$redirect_to_paid_reg_link_after_payment = get_post_meta( $button_id, 'redirect_to_paid_reg_link_after_payment', true );
+	if ( $redirect_to_paid_reg_link_after_payment == '1' ) {
+		$redirect_to_paid_reg_link_after_payment = 'checked';
+	} else {
+		$redirect_to_paid_reg_link_after_payment = '';
+	}
+
 	$stripe_test_secret_key      = get_post_meta( $button_id, 'stripe_test_secret_key', true );
 	$stripe_test_publishable_key = get_post_meta( $button_id, 'stripe_test_publishable_key', true );
 	$stripe_live_secret_key      = get_post_meta( $button_id, 'stripe_live_secret_key', true );
@@ -342,21 +365,21 @@ function swpm_edit_stripe_sca_buy_now_button() {
 	<div class="inside">
 
 		<form id="stripe_button_config_form" method="post">
-			<input type="hidden" name="button_type" value="<?php echo $button_type; ?>">
+			<input type="hidden" name="button_type" value="<?php echo esc_attr($button_type); ?>">
 
 			<table class="form-table" width="100%" border="0" cellspacing="0" cellpadding="6">
 
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Button ID','simple-membership' ); ?></th>
 					<td>
-						<input type="text" size="10" name="button_id" value="<?php echo $button_id; ?>" readonly required />
+						<input type="text" size="10" name="button_id" value="<?php echo esc_attr($button_id); ?>" readonly required />
 						<p class="description"><?php _e('This is the ID of this payment button. It is automatically generated for you and it cannot be changed.', 'simple-membership') ?></p>
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Button Title','simple-membership' ); ?></th>
 					<td>
-						<input type="text" size="50" name="button_name" value="<?php echo $button->post_title; ?>" required />
+						<input type="text" size="50" name="button_name" value="<?php echo esc_attr($button->post_title); ?>" required />
 						<p class="description"><?php _e('Give this membership payment button a name. Example: Gold membership payment', 'simple-membership') ?></p>
 					</td>
 				</tr>
@@ -372,7 +395,7 @@ function swpm_edit_stripe_sca_buy_now_button() {
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Payment Amount','simple-membership' ); ?></th>
 					<td>
-						<input type="text" size="6" name="payment_amount" value="<?php echo $payment_amount; ?>" required />
+						<input type="text" size="6" name="payment_amount" value="<?php echo esc_attr($payment_amount); ?>" required />
 						<p class="description"><?php _e('Enter payment amount. Example values: 10.00 or 19.50 or 299.95 etc (do not put currency symbol).', 'simple-membership') ?></p>
 					</td>
 				</tr>
@@ -424,7 +447,7 @@ function swpm_edit_stripe_sca_buy_now_button() {
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Use Global API Keys Settings' ,'simple-membership'); ?></th>
 					<td>
-						<input type="checkbox" name="stripe_use_global_keys" value="1" <?php echo $use_global_keys ? ' checked' : ''; ?> />
+						<input type="checkbox" name="stripe_use_global_keys" value="1" <?php echo esc_attr($use_global_keys) ? ' checked' : ''; ?> />
 						<p class="description"><?php _e( 'Use API keys from <a href="admin.php?page=simple_wp_membership_payments&tab=payment_settings&subtab=ps_stripe" target="_blank">Payment Settings</a> tab.','simple-membership' ); ?></p>
 					</td>
 				</tr>
@@ -432,28 +455,28 @@ function swpm_edit_stripe_sca_buy_now_button() {
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Test Publishable Key' ,'simple-membership'); ?></th>
 					<td>
-						<input type="text" size="50" name="stripe_test_publishable_key" value="<?php echo $stripe_test_publishable_key; ?>" required />
+						<input type="text" size="50" name="stripe_test_publishable_key" value="<?php echo esc_attr($stripe_test_publishable_key); ?>" required />
 						<p class="description"><?php _e('Enter your Stripe test publishable key.', 'simple-membership') ?></p>
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Test Secret Key','simple-membership' ); ?></th>
 					<td>
-						<input type="text" size="50" name="stripe_test_secret_key" value="<?php echo $stripe_test_secret_key; ?>" required />
+						<input type="text" size="50" name="stripe_test_secret_key" value="<?php echo esc_attr($stripe_test_secret_key); ?>" required />
 						<p class="description"><?php _e('Enter your Stripe test secret key.', 'simple-membership') ?></p>
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Live Publishable Key','simple-membership' ); ?></th>
 					<td>
-						<input type="text" size="50" name="stripe_live_publishable_key" value="<?php echo $stripe_live_publishable_key; ?>" required />
+						<input type="text" size="50" name="stripe_live_publishable_key" value="<?php echo esc_attr($stripe_live_publishable_key); ?>" required />
 						<p class="description"><?php _e('Enter your Stripe live publishable key.', 'simple-membership') ?></p>
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Live Secret Key','simple-membership' ); ?></th>
 					<td>
-						<input type="text" size="50" name="stripe_live_secret_key" value="<?php echo $stripe_live_secret_key; ?>" required />
+						<input type="text" size="50" name="stripe_live_secret_key" value="<?php echo esc_attr($stripe_live_secret_key); ?>" required />
 						<p class="description"><?php _e('Enter your Stripe live secret key.', 'simple-membership') ?></p>
 					</td>
 				</tr>
@@ -489,14 +512,32 @@ function swpm_edit_stripe_sca_buy_now_button() {
 							<?php echo '<a href="https://simple-membership-plugin.com/applying-discount-coupon-or-promotion-codes-to-stripe-payment-buttons/" target="_blank">' . __('Learn more', 'simple-membership') . '</a>.'; ?>
 						</p>
 					</td>
-				</tr>				
+				</tr>
+
+                <tr valign="top">
+					<th scope="row"><?php _e( 'Redirect to Paid Registration Link', 'simple-membership'); ?></th>
+					<td>
+						<input type="checkbox" name="redirect_to_paid_reg_link_after_payment" value="1" <?php echo esc_attr($redirect_to_paid_reg_link_after_payment) ?> />
+						<p class="description">
+							<?php _e('Enable this option to automatically redirect the user to the unique paid registration link after a successful payment. ', 'simple-membership') ?>
+							<a href="https://simple-membership-plugin.com/automatically-redirect-users-to-the-paid-registration-link-after-payment/" target="_blank"><?php _e('Read this documentation', 'simple-membership') ?></a>
+							<?php _e(' to learn how it works.', 'simple-membership') ?>
+						</p>
+					</td>
+				</tr>
 
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Return URL','simple-membership' ); ?></th>
 					<td>
 						<input type="text" size="100" name="return_url" value="<?php echo esc_url_raw($return_url); ?>" />
 						<p class="description"><?php _e('This is the URL the user will be redirected to after a successful payment. Enter the URL of your Thank You page here.', 'simple-membership') ?></p>
-					</td>
+
+						<?php if ($redirect_to_paid_reg_link_after_payment) { ?>
+							<p class="description">
+								<strong><?php esc_attr_e('Note: ', 'simple-membership'); ?></strong> <?php esc_attr_e("The 'Redirect to Paid Registration Link' option is enabled for this button. Unregistered users will be redirected to the paid registration page after completing payment.", 'simple-membership'); ?>
+							</p>
+						<?php } ?>
+                    </td>
 				</tr>
 
 				<tr valign="top">
@@ -568,7 +609,9 @@ function swpm_edit_stripe_sca_buy_now_button_data() {
 		update_post_meta( $button_id, 'payment_currency', sanitize_text_field( $_REQUEST['payment_currency'] ) );
 
 		update_post_meta( $button_id, 'allow_promotion_codes', isset( $_POST['allow_promotion_codes'] ) ? '1' : '' );
-		
+
+		update_post_meta( $button_id, 'redirect_to_paid_reg_link_after_payment', isset( $_POST['redirect_to_paid_reg_link_after_payment'] ) ? '1' : '' );
+
 		$stripe_test_secret_key = isset( $_POST['stripe_test_secret_key'] ) ? sanitize_text_field( stripslashes ( $_POST['stripe_test_secret_key'] ) ) : '';
 		$stripe_test_publishable_key = isset( $_POST['stripe_test_publishable_key'] ) ? sanitize_text_field( stripslashes ( $_POST['stripe_test_publishable_key'] ) ) : '';	
 

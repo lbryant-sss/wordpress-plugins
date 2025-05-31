@@ -213,19 +213,34 @@ function swpm_render_pp_subscription_new_button_sc_output($button_code, $args) {
 
                             //console.log( 'Response from the server: ' + JSON.stringify( response ) );
                             if ( response.success ) {
-                                //Redirect to the Thank you page URL if it is set.
-                                return_url = '<?php echo esc_url_raw($return_url); ?>';
+
+                                //Redirect to the Thank you page or Registration page URL if it is set.
+                                const return_url = response.redirect_url || '';
                                 if( return_url ){
-                                    //redirect to the Thank you page URL.
+                                    //redirect to the URL.
                                     console.log('Redirecting to the Thank you page URL: ' + return_url);
                                     window.location.href = return_url;
                                     return;
                                 }
 
                                 //No return URL is set. Just show a success message.
+                                //Important Note: any alert message will block the normal PayPal popup window flow. So we want to show the message on the page instead of using alert.
                                 txn_success_msg = '<?php echo esc_attr($txn_success_message); ?>';
-                                
-                                alert(txn_success_msg);
+                                const swpm_btn_wrapper_div = document.getElementById('<?php echo esc_js($swpm_button_wrapper_id); ?>');
+                                if (swpm_btn_wrapper_div) {
+                                    // Remove any previous message if it exists
+                                    const old_msg_div = swpm_btn_wrapper_div.querySelector('.swpm-ppcp-txn-success-message');
+                                    if (old_msg_div) old_msg_div.remove();
+
+                                    // Create new message div
+                                    const new_msg_div = document.createElement('div');
+                                    new_msg_div.className = 'swpm-ppcp-txn-success-message';
+                                    new_msg_div.textContent = txn_success_msg;
+
+                                    //Insert the message div before the button.
+                                    const firstChild = swpm_btn_wrapper_div.firstChild;
+                                    swpm_btn_wrapper_div.insertBefore(new_msg_div, firstChild);
+                                }
 
                                 // Trigger a event on subscription complete 
                                 document.dispatchEvent(new Event('swpm_paypal_subscriptions_complete'));
