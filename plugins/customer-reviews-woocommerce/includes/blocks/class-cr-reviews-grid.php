@@ -292,6 +292,7 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 				}
 			}
 
+			$shop_page_id = wc_get_page_id( 'shop' );
 			$shop_page_ids = CR_Reviews_List_Table::get_shop_page();
 			$args_s = null;
 			if( true === $attributes['shop_reviews'] ) {

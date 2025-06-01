@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 5.78.0
+Stable tag: 5.78.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -188,7 +188,7 @@ https://www.youtube.com/watch?v=VCLsYu4wp8M
 1. Make sure that WooCommerce plugin is installed and activated. If it is not installed, please install [WooCommerce](https://wordpress.org/plugins/woocommerce/). Our plugin will not work without WooCommerce.
 2. Upload the plugin files to the `/wp-content/plugins` directory, or install the plugin through the WordPress 'Plugins' screen directly.
 3. Activate the plugin through the 'Plugins' screen in WordPress
-4. Go the Reviews > Settings in WordPress admin area to configure the plugin
+4. Go to the Reviews > Settings in WordPress admin area to configure the plugin
 
 == Frequently Asked Questions ==
 
@@ -233,6 +233,10 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.78.1 =
+* Improvement: CSS rules to improve compatibility with different browsers
+* Improvement: visibility of video thumbnails on iPhones
+* Bug fix: undefined variable warning in the Reviews Grid shortcode
 = 5.78.0 =
 * New feature: an option to send discount coupons to customers who posted reviews using on-site review forms
 * Improvement: additional information in error messages about invalid phone numbers for WhatsApp review invitations

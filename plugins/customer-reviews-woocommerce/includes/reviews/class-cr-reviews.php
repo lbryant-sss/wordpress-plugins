@@ -1382,7 +1382,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 				if ( 1 === $pics_prepared[$i][4] ) {
 					// video
 					$output .= '<div class="cr-ajax-reviews-video">';
-					$output .= '<video preload="metadata" data-slide="' . $i . '" src="' . $pics_prepared[$i][0] . '"></video>';
+					$output .= '<video preload="metadata" data-slide="' . $i . '" src="' . $pics_prepared[$i][0] . '#t=0.1"></video>';
 					$output .= '<img class="cr-comment-videoicon" src="' . plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'img/video.svg" ';
 					$output .= 'alt="' . esc_attr( $pics_prepared[$i][5] ) . '">';
 					$output .= '</div>';
@@ -1411,7 +1411,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 				$output = '<div class="cr-ajax-reviews-slide-nav">';
 				if ( 1 === $pics_prepared[$i][4] ) {
 					// video
-					$output .= '<video preload="metadata" data-slide="' . $i . '" src="' . $pics_prepared[$i][0] . '"></video>';
+					$output .= '<video preload="metadata" data-slide="' . $i . '" src="' . $pics_prepared[$i][0] . '#t=0.1"></video>';
 					$output .= '<img class="cr-comment-videoicon" src="' . plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'img/video.svg" ';
 					$output .= 'alt="' . esc_attr( $pics_prepared[$i][5] ) . '">';
 				} else {

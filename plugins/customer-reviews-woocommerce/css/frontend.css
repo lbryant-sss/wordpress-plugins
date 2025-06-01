@@ -25,6 +25,7 @@ p.cr-comment-video-text { margin-bottom: 0.5em; font-size: 0.9em; }
 	border: 1px solid #e4e1e3;
 	filter: brightness(100%);
 	box-sizing: content-box;
+	position: relative;
 }
 .cr-comment-image-top:hover {
 	filter: brightness(95%);

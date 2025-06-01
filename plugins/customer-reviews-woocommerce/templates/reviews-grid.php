@@ -71,7 +71,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$counter_icons_html = '';
 					if ( 0 < $count_customer_videos ) {
 						// if there are videos, use the 1st one as a cover
-						$customer_images_html .= '<video preload="metadata" class="image-row-vid" src="' . esc_url( $customer_videos[$vid_idx] ) . '" data-crmedia="vid" data-crtitle="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $vid_idx + 1, $review->comment_author ) . '"></video>';
+						$customer_images_html .= '<video preload="metadata" class="image-row-vid" src="' . esc_url( $customer_videos[$vid_idx] ) . '#t=0.1" data-crmedia="vid" data-crtitle="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $vid_idx + 1, $review->comment_author ) . '"></video>';
 						$customer_images_html .= '<img class="cr-comment-videoicon" src="' . CR_Utils::cr_get_plugin_dir_url() . 'img/video.svg" ';
 						$customer_images_html .= 'alt="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $vid_idx + 1, $review->comment_author ) . '">';
 						$vid_idx++;
@@ -84,7 +84,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						$pic_idx++;
 					}
 					for( $j=$vid_idx; $j < $count_customer_videos; $j++ ) {
-						$customer_images_html .= '<video preload="metadata" class="image-row-vid image-row-vid-none" src="' . esc_url( $customer_videos[$j] )  . '" data-crmedia="vid" data-crtitle="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $vid_idx + 1, $review->comment_author ) . '"></video>';
+						$customer_images_html .= '<video preload="metadata" class="image-row-vid image-row-vid-none" src="' . esc_url( $customer_videos[$j] )  . '#t=0.1" data-crmedia="vid" data-crtitle="' . sprintf( __( 'Video #%1$d from %2$s', 'customer-reviews-woocommerce' ), $vid_idx + 1, $review->comment_author ) . '"></video>';
 					}
 					for( $j=$pic_idx; $j < $count_customer_images; $j++ ) {
 						$customer_images_html .= '<img class="image-row-img image-row-img-none" src="' . esc_url( $customer_images[$j] ) . '" alt="' . sprintf( __( 'Image #%1$d from ', 'customer-reviews-woocommerce' ), $j+1 ) . $review->comment_author . '" data-crmedia="pic">';
