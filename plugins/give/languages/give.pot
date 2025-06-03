@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Give - Donation Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Give - Donation Plugin 4.3.0\n"
+"Project-Id-Version: Give - Donation Plugin 4.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/givewp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-21T20:11:48+00:00\n"
+"POT-Creation-Date: 2025-06-02T14:22:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: give\n"
@@ -80,7 +80,7 @@ msgstr ""
 
 #: blocks/donor-wall/class-give-donor-wall.php:164
 #: includes/admin/shortcodes/shortcode-give-donor-wall.php:99
-#: includes/donors/class-give-donor-wall.php:218
+#: includes/donors/class-give-donor-wall.php:217
 #: build/adminBlocks.js:1
 #: build/formBuilderRegistrars.js:1
 msgid "Read more"
@@ -88,7 +88,7 @@ msgstr ""
 
 #: blocks/donor-wall/class-give-donor-wall.php:168
 #: includes/admin/shortcodes/shortcode-give-donor-wall.php:106
-#: includes/donors/class-give-donor-wall.php:219
+#: includes/donors/class-give-donor-wall.php:218
 #: build/adminBlocks.js:1
 msgid "Load more"
 msgstr ""
@@ -3268,7 +3268,6 @@ msgid "Something went wrong. SendWP was not installed correctly."
 msgstr ""
 
 #: includes/admin/payments/actions.php:36
-#: includes/admin/payments/actions.php:379
 #: includes/admin/payments/actions.php:403
 #: includes/admin/payments/actions.php:461
 #: includes/admin/payments/actions.php:485
@@ -3285,6 +3284,10 @@ msgstr ""
 
 #: includes/admin/payments/actions.php:122
 msgid "Error creating new donor."
+msgstr ""
+
+#: includes/admin/payments/actions.php:379
+msgid "You do not have permission to delete payments."
 msgstr ""
 
 #: includes/admin/payments/class-payments-table.php:279
@@ -15894,11 +15897,11 @@ msgstr ""
 msgid "Visit campaign page"
 msgstr ""
 
-#: src/Campaigns/ListTable/Routes/DeleteCampaignListTable.php:113
+#: src/Campaigns/ListTable/Routes/DeleteCampaignListTable.php:114
 msgid "You don't have permission to delete Campaigns"
 msgstr ""
 
-#: src/Campaigns/ListTable/Routes/GetCampaignsListTable.php:217
+#: src/Campaigns/ListTable/Routes/GetCampaignsListTable.php:222
 msgid "You don't have permission to view Campaigns"
 msgstr ""
 
@@ -16054,8 +16057,8 @@ msgstr ""
 msgid "%s must be a valid subscription period.  Valid periods are: %s"
 msgstr ""
 
-#: src/DonationForms/V2/Endpoints/Endpoint.php:48
-msgid "You dont have the right permissions to view Donation Forms"
+#: src/DonationForms/V2/Endpoints/Endpoint.php:51
+msgid "You don't have permission to view forms"
 msgstr ""
 
 #: src/DonationForms/V2/Endpoints/FormActions.php:82
@@ -16146,7 +16149,11 @@ msgstr ""
 msgid "You don't have permission to edit Donations"
 msgstr ""
 
-#: src/Donations/Endpoints/Endpoint.php:63
+#: src/Donations/Endpoints/DonationActions.php:110
+msgid "You don't have permission to delete Donations"
+msgstr ""
+
+#: src/Donations/Endpoints/Endpoint.php:67
 msgid "You don't have permission to view Donations"
 msgstr ""
 
@@ -16372,13 +16379,12 @@ msgstr ""
 msgid "Donor not found"
 msgstr ""
 
-#: src/Donors/Endpoints/DeleteDonor.php:69
-msgid "You don't have permission to edit Donors"
+#: src/Donors/Endpoints/DeleteDonor.php:71
+msgid "You don't have permission to delete Donors"
 msgstr ""
 
-#: src/Donors/Endpoints/Endpoint.php:62
-#: src/Subscriptions/Endpoints/Endpoint.php:62
-msgid "You dont have the right permissions to view Donors"
+#: src/Donors/Endpoints/Endpoint.php:66
+msgid "You don't have permission to view Donors"
 msgstr ""
 
 #: src/Donors/ListTable/Columns/DonationCountColumn.php:65
@@ -19495,8 +19501,16 @@ msgstr ""
 msgid "If enabled, this option will add a honeypot security measure to all donation forms"
 msgstr ""
 
+#: src/Subscriptions/Endpoints/Endpoint.php:66
+msgid "You don't have permission to view Subscriptions"
+msgstr ""
+
 #: src/Subscriptions/Endpoints/SubscriptionActions.php:79
 msgid "You don't have permission to edit Subscriptions"
+msgstr ""
+
+#: src/Subscriptions/Endpoints/SubscriptionActions.php:105
+msgid "You don't have permission to delete Subscription"
 msgstr ""
 
 #: src/Subscriptions/ListTable/Columns/BillingPeriodColumn.php:35

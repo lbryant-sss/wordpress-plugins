@@ -5,7 +5,7 @@ Tags: Google Analytics, Related Posts, sitemap, Facebook Page Plugin, OG tags
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 9.108.2.2
+Stable tag: 9.109.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,13 @@ e.g.
 2. This is an example of SNS cooperation setting screen.
 
 == Changelog ==
+
+= 9.109.0 =
+[ Specification Change ][ Share button ] Modified to display by default on posts when using a block theme.
+[ Specification Change ][ Share button ] Modified to hidden by default on page.
+[ Specification Change ][ Share button ] Remove Pocket share button.
+[ Specification Change ][ Post Type Manager ] Allow using the same taxonomy slug across multiple custom post types with automatic synchronization of hierarchical settings.
+[ Bug Fix ] Fixed the PHP error on the Activation Settings page that occurred when the language setting was not Japanese.
 
 = 9.108.2 =
 [ Bug Fix ][ Share button ] Fixed share buttons from being displayed inside forms.

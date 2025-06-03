@@ -68,7 +68,7 @@ function veu_get_sns_options_default() {
 		'enableSnsBtns'               => true,
 		'snsBtn_exclude_post_types'   => array(
 			'post' => false,
-			'page' => false,
+			'page' => true,
 		),
 		'snsBtn_position'             => array(
 			'before' => false,
@@ -83,7 +83,6 @@ function veu_get_sns_options_default() {
 		'useTwitter'                  => true,
 		'useBluesky'                  => true,
 		'useHatena'                   => true,
-		'usePocket'                   => true,
 		'useLine'                     => true,
 		'useCopy'                     => true,
 		'entry_count'                 => 'get',
@@ -91,7 +90,6 @@ function veu_get_sns_options_default() {
 	);
 	// In case of block theme
 	if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
-		$default_options['enableSnsBtns']  = false;
 		$default_options['enableFollowMe'] = false;
 	}
 	return apply_filters( 'vkExUnit_sns_options_default', $default_options );
@@ -247,7 +245,6 @@ function vkExUnit_sns_options_validate( $input ) {
 	$output['useTwitter']                  = ( isset( $input['useTwitter'] ) && $input['useTwitter'] == 'true' );
 	$output['useBluesky']                  = ( isset( $input['useBluesky'] ) && $input['useBluesky'] == 'true' );
 	$output['useHatena']                   = ( isset( $input['useHatena'] ) && $input['useHatena'] == 'true' );
-	$output['usePocket']                   = ( isset( $input['usePocket'] ) && $input['usePocket'] == 'true' );
 	$output['useCopy']                     = ( isset( $input['useCopy'] ) && $input['useCopy'] == 'true' );
 	$output['useLine']                     = ( isset( $input['useLine'] ) && $input['useLine'] == 'true' );
 	$output['entry_count']                 = ! empty( $input['entry_count'] ) ? esc_attr( $input['entry_count'] ) : '';

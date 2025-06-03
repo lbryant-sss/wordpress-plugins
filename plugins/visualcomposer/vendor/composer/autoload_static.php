@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit38b070a52c415eb80e39901dbf69d673
+class ComposerStaticInit70616533dd5a8664273b2bbf59ce7171
 {
     public static $prefixLengthsPsr4 = array (
         'V' => 
@@ -297,7 +297,6 @@ class ComposerStaticInit38b070a52c415eb80e39901dbf69d673
         'VisualComposer\\Modules\\Vendors\\Plugins\\WooCommerceStripeController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/Plugins/WooCommerceStripeController.php',
         'VisualComposer\\Modules\\Vendors\\Plugins\\WpFormsController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/Plugins/WpFormsController.php',
         'VisualComposer\\Modules\\Vendors\\Plugins\\WpJobsManagerController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/Plugins/WpJobsManagerController.php',
-        'VisualComposer\\Modules\\Vendors\\Plugins\\WpbakeryController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/Plugins/WpbakeryController.php',
         'VisualComposer\\Modules\\Vendors\\Plugins\\WpmlController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/Plugins/WpmlController.php',
         'VisualComposer\\Modules\\Vendors\\Plugins\\YoastController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/Plugins/YoastController.php',
         'VisualComposer\\Modules\\Vendors\\Themes\\GeneratePressController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/Themes/GeneratePressController.php',
@@ -311,9 +310,9 @@ class ComposerStaticInit38b070a52c415eb80e39901dbf69d673
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit38b070a52c415eb80e39901dbf69d673::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit38b070a52c415eb80e39901dbf69d673::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit38b070a52c415eb80e39901dbf69d673::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit70616533dd5a8664273b2bbf59ce7171::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit70616533dd5a8664273b2bbf59ce7171::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit70616533dd5a8664273b2bbf59ce7171::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -19,6 +19,7 @@ return array(
     'NinjaTables\\App\\Hooks\\Handlers\\EditorBlockHandler' => $baseDir . '/app/Hooks/Handlers/EditorBlockHandler.php',
     'NinjaTables\\App\\Hooks\\Handlers\\ExportHandler' => $baseDir . '/app/Hooks/Handlers/ExportHandler.php',
     'NinjaTables\\App\\Hooks\\Handlers\\NinjaTableAdminHandler' => $baseDir . '/app/Hooks/Handlers/NinjaTableAdminHandler.php',
+    'NinjaTables\\App\\Hooks\\Handlers\\NoticeHandler' => $baseDir . '/app/Hooks/Handlers/NoticeHandler.php',
     'NinjaTables\\App\\Hooks\\Handlers\\PreviewHandler' => $baseDir . '/app/Hooks/Handlers/PreviewHandler.php',
     'NinjaTables\\App\\Hooks\\Handlers\\PublicDataHandler' => $baseDir . '/app/Hooks/Handlers/PublicDataHandler.php',
     'NinjaTables\\App\\Hooks\\Handlers\\StyleHandler' => $baseDir . '/app/Hooks/Handlers/StyleHandler.php',

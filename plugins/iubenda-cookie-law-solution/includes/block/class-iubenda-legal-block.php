@@ -221,7 +221,7 @@ class Iubenda_Legal_Block {
 	private function force_append_legal_block_in_footer() {
 		$footer = $this->get_footer_from_database();
 
-		if ( $footer ) {
+		if ( ! empty( $footer ) ) {
 			$footer->post_content = $this->insert_iub_block_shortcode_into_footer( $footer->post_content );
 
 			$this->update_the_footer_into_database( $footer );
@@ -324,8 +324,14 @@ class Iubenda_Legal_Block {
 				// Unregister the default footer block.
 				$block_registry->unregister( $block_name );
 
+				// Footer content.
+				$footer_content = iub_array_get( $block, 'content' );
+				if ( empty( $footer_content ) ) {
+					continue;
+				}
+
 				// Attach Iubenda legal block in footer content.
-				$block['content'] = $this->insert_iub_block_shortcode_into_footer( iub_array_get( $block, 'content' ) );
+				$block['content'] = $this->insert_iub_block_shortcode_into_footer( $footer_content );
 
 				// Register footer after attached Iubenda legal block on it.
 				$block_registry->register( $block_name, $block );

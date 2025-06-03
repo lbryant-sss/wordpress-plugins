@@ -282,7 +282,6 @@ return array(
     'VisualComposer\\Modules\\Vendors\\Plugins\\WooCommerceStripeController' => $baseDir . '/visualcomposer/Modules/Vendors/Plugins/WooCommerceStripeController.php',
     'VisualComposer\\Modules\\Vendors\\Plugins\\WpFormsController' => $baseDir . '/visualcomposer/Modules/Vendors/Plugins/WpFormsController.php',
     'VisualComposer\\Modules\\Vendors\\Plugins\\WpJobsManagerController' => $baseDir . '/visualcomposer/Modules/Vendors/Plugins/WpJobsManagerController.php',
-    'VisualComposer\\Modules\\Vendors\\Plugins\\WpbakeryController' => $baseDir . '/visualcomposer/Modules/Vendors/Plugins/WpbakeryController.php',
     'VisualComposer\\Modules\\Vendors\\Plugins\\WpmlController' => $baseDir . '/visualcomposer/Modules/Vendors/Plugins/WpmlController.php',
     'VisualComposer\\Modules\\Vendors\\Plugins\\YoastController' => $baseDir . '/visualcomposer/Modules/Vendors/Plugins/YoastController.php',
     'VisualComposer\\Modules\\Vendors\\Themes\\GeneratePressController' => $baseDir . '/visualcomposer/Modules/Vendors/Themes/GeneratePressController.php',

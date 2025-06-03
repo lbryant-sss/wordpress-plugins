@@ -47,6 +47,7 @@ class ComposerStaticInite2cc3f91f264b6c9d64346c5247abaa6
         'NinjaTables\\App\\Hooks\\Handlers\\EditorBlockHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/EditorBlockHandler.php',
         'NinjaTables\\App\\Hooks\\Handlers\\ExportHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/ExportHandler.php',
         'NinjaTables\\App\\Hooks\\Handlers\\NinjaTableAdminHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/NinjaTableAdminHandler.php',
+        'NinjaTables\\App\\Hooks\\Handlers\\NoticeHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/NoticeHandler.php',
         'NinjaTables\\App\\Hooks\\Handlers\\PreviewHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/PreviewHandler.php',
         'NinjaTables\\App\\Hooks\\Handlers\\PublicDataHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/PublicDataHandler.php',
         'NinjaTables\\App\\Hooks\\Handlers\\StyleHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/StyleHandler.php',

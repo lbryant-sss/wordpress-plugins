@@ -59,6 +59,10 @@ For documentation click here: [https://data443.atlassian.net/servicedesk/custome
 
 == Frequently Asked Questions ==
 
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/45c54496-f99c-4a70-9774-f9dcfbc770b9)
+
 = Why should I use this plugin? =
 
 Because it will increase the page views on your site, improving engagement and reducing your bounce rate.

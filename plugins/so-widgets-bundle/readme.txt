@@ -3,8 +3,8 @@ Tags: widgets, blocks, contact form, blog, slider
 Requires at least: 4.2
 Tested up to: 6.8
 Requires PHP: 7.0.0
-Stable tag: 1.68.3
-Build time: 2025-05-11T15:41:37+01:00
+Stable tag: 1.68.5
+Build time: 2025-06-02T21:07:27+01:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis, alexgso
 Donate link: https://siteorigin.com/downloads/premium/
@@ -108,6 +108,19 @@ SiteOrigin Premium includes access to our professional email support service, pe
 The Widgets Bundle global interface is available at Plugins > SiteOrigin Widgets. Widgets can be enabled or disabled as needed. If a widget offers global settings, you can access those via the Settings button next to each applicable widget.
 
 == Changelog ==
+
+= 1.68.5 - 02 June 2025 =
+* Blog: Fixed JavaScript (JS) and Cascading Style Sheets (CSS) not outputting in Block Editor preview.
+* Blog Portfolio: Fixed sizing issue in Block Editor preview.
+* TinyMCE Form Field: Prevented potential TypeError.
+* Elementor: Improved dark mode styling, resolved misaligned checkbox checkmark placement, and fixed widget JS not being enqueued and preview not being flagged.
+
+= 1.68.4 - 20 May 2025 =
+* Blog Alternate: Fixed mobile spacing issue.
+* Toggle Field: Adjusted toggle text to 11px, decreased size, and aligned toggle switch style and spacing with Page Builder (PB).
+* Widget Block Icons: Refactored icon setup logic to centralize and simplify code, ensuring consistent handling of SVG and image icons.
+* Widget Blocks: Added inline SVG icons.
+* General: Updated Installer submodule.
 
 = 1.68.3 - 11 May 2025 =
 * Image Grid: Added gallery keyword support.
