@@ -101,8 +101,7 @@ class B2S_Tools {
         $check = false;
         $blogUrl = get_option('home');
         global $wpdb;
-        $sql = "SELECT token,state_url FROM {$wpdb->prefix}b2s_user WHERE blog_user_id = %d";
-        $result = $wpdb->get_results($wpdb->prepare($sql, B2S_PLUGIN_BLOG_USER_ID));
+        $result = $wpdb->get_results($wpdb->prepare("SELECT token,state_url FROM {$wpdb->prefix}b2s_user WHERE blog_user_id = %d", B2S_PLUGIN_BLOG_USER_ID));
         if (is_array($result) && !empty($result) && isset($result[0]->token)) {
             if (isset($result[0]->state_url) && (int) $result[0]->state_url != 1) {
                 $checkBlogUrl = json_decode(B2S_Api_Post::post(B2S_PLUGIN_API_ENDPOINT, array('action' => 'getBlogUrl', 'token' => $result[0]->token, 'blog_url' => strtolower($blogUrl), 'state_url' => (int) $result[0]->state_url)));
@@ -133,22 +132,22 @@ class B2S_Tools {
                     $getTimeForPage = in_array($k, $allowPage) ? true : false;
                     $getTimeForGroup = in_array($k, $allowGroup) ? true : false;
                     if ($getTimeForPage) {
-                        $endProfile = date("H:i", strtotime('-30 minutes', strtotime($endProfile . ':00')));   //-30min
+                        $endProfile = wp_date("H:i", strtotime('-30 minutes', strtotime($endProfile . ':00')),  new DateTimeZone(date_default_timezone_get()));   //-30min
                     }
                     if ($getTimeForGroup) {
-                        $endProfile = date("H:i", strtotime('-30 minutes', strtotime($endProfile . ':00')));   //-30min
+                        $endProfile = wp_date("H:i", strtotime('-30 minutes', strtotime($endProfile . ':00')), new DateTimeZone(date_default_timezone_get()));   //-30min
                     }
                     $endProfile = (strpos($endProfile, ':') === false) ? $endProfile . ':00' : $endProfile;
                     $startProfle = (strpos($v[0], ':') === false) ? $v[0] . ':00' : $v[0];
-                    $dateTime = date('Y-m-d ' . B2S_Util::getRandomTime($startProfle, $endProfile) . ':00');
+                    $dateTime = wp_date('Y-m-d ' . B2S_Util::getRandomTime($startProfle, $endProfile) . ':00',null, new DateTimeZone(date_default_timezone_get()));
                     //Profile
-                    $userTimes[$k][0] = date($slug, strtotime($dateTime));
+                    $userTimes[$k][0] = wp_date($slug, strtotime($dateTime), new DateTimeZone(date_default_timezone_get()));
                     //Page
                     $dateTime = ($getTimeForPage) ? strtotime('+30 minutes', strtotime($dateTime)) : strtotime($dateTime);
-                    $userTimes[$k][1] = ($getTimeForPage) ? date($slug, $dateTime) : "";
+                    $userTimes[$k][1] = ($getTimeForPage) ? wp_date($slug, $dateTime, new DateTimeZone(date_default_timezone_get())) : "";
                     //Group
                     $dateTime = strtotime('+30 minutes', $dateTime);
-                    $userTimes[$k][2] = ($getTimeForGroup) ? date($slug, $dateTime) : "";
+                    $userTimes[$k][2] = ($getTimeForGroup) ? wp_date($slug, $dateTime, new DateTimeZone(date_default_timezone_get())) : "";
                 }
             }
         }
@@ -605,15 +604,13 @@ class B2S_Tools {
         }
         $user = get_user_by('id', $user_id);
         global $wpdb;
-        $sql = $wpdb->prepare("SELECT token FROM `{$wpdb->prefix}b2s_user` WHERE `blog_user_id` = %d", $user->data->ID);
-        $userExist = $wpdb->get_row($sql);
+        $userExist = $wpdb->get_row($wpdb->prepare("SELECT token FROM `{$wpdb->prefix}b2s_user` WHERE `blog_user_id` = %d", $user->data->ID));
         if (empty($userExist) || !isset($userExist->token)) {
             $postData = array('action' => 'getToken', 'blog_user_id' => $user->data->ID, 'blog_url' => get_option('home'), 'email' => $user->data->user_email, 'is_multisite' => is_multisite());
             $result = json_decode(B2S_Tools::getToken($postData));
             if (isset($result->result) && (int) $result->result == 1 && isset($result->token)) {
                 $state_url = (isset($result->state_url)) ? (int) $result->state_url : 0;
-                $sqlInsertToken = $wpdb->prepare("INSERT INTO `{$wpdb->prefix}b2s_user` (`token`, `blog_user_id`,`register_date`,`state_url`) VALUES (%s,%d,%s,%d);", $result->token, (int) $user->data->ID, date('Y-m-d H:i:s'), $state_url);
-                $wpdb->query($sqlInsertToken);
+                $wpdb->query($wpdb->prepare("INSERT INTO `{$wpdb->prefix}b2s_user` (`token`, `blog_user_id`,`register_date`,`state_url`) VALUES (%s,%d,%s,%d);", $result->token, (int) $user->data->ID, wp_date('Y-m-d H:i:s', null, new DateTimeZone(date_default_timezone_get())), $state_url));
                 return $result->token;
             } else {
                 return false;
@@ -793,6 +790,19 @@ class B2S_Tools {
         return $array;
     }
 
+    public static function sanitize_array_textarea($array = array()) {
+        if (is_array($array) && !empty($array)) {
+            foreach ($array as $key => &$value) {
+                if (is_array($value)) {
+                    $value = self::sanitize_array_textarea($value);
+                } else {
+                    $value = sanitize_textarea_field($value);
+                }
+            }
+        }
+        return $array;
+    }
+
     public static function esc_html_array($array = array(), $kses = array()) {
         if (is_array($array) && !empty($array)) {
             foreach ($array as $key => &$value) {
@@ -809,8 +819,7 @@ class B2S_Tools {
     public static function hasUserMadePost($user_id) {
 
         global $wpdb;
-        $sql = "SELECT id FROM {$wpdb->prefix}b2s_posts WHERE blog_user_id = %d";
-        $posts = $wpdb->get_results($wpdb->prepare($sql, $user_id), ARRAY_A);
+        $posts = $wpdb->get_results($wpdb->prepare("SELECT id FROM {$wpdb->prefix}b2s_posts WHERE blog_user_id = %d", $user_id), ARRAY_A);
         if (isset($posts) && is_array($posts) && !empty($posts)) {
             return true;
         }
@@ -820,8 +829,7 @@ class B2S_Tools {
     public static function hasUserConnectedNetwork($user_id) {
 
         global $wpdb;
-        $sql = "SELECT id FROM {$wpdb->prefix}b2s_posts_network_details WHERE owner_blog_user_id = %d";
-        $networks = $wpdb->get_results($wpdb->prepare($sql, $user_id), ARRAY_A);
+        $networks = $wpdb->get_results($wpdb->prepare("SELECT id FROM {$wpdb->prefix}b2s_posts_network_details WHERE owner_blog_user_id = %d", $user_id), ARRAY_A);
         if (isset($networks) && is_array($networks) && !empty($networks)) {
             return true;
         }

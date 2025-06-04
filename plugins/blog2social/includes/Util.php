@@ -14,23 +14,23 @@ class B2S_Util {
 
     public static function getUTCForDate($date, $userTimezone) {
         $utcTime = strtotime($date) + ($userTimezone * 3600);
-        return date('Y-m-d H:i:s', $utcTime);
+        return wp_date('Y-m-d H:i:s', $utcTime, new DateTimeZone(date_default_timezone_get()));
     }
 
     public static function getLocalDate($userTimezone, $lang = 'en') {
         $ident = ($lang == 'de') ? 'd.m.Y H:i' : 'Y/m/d g:i a';
         $localTime = strtotime(gmdate('Y-m-d H:i:s')) + ($userTimezone * 3600);
-        return date($ident, $localTime);
+        return wp_date($ident, $localTime, new DateTimeZone(date_default_timezone_get()));
     }
 
     public static function getbyIdentLocalDate($userTimezone, $ident = "Y-m-d H:i:s") {
         $localTime = strtotime(gmdate('Y-m-d H:i:s')) + ($userTimezone * 3600);
-        return date($ident, $localTime);
+        return wp_date($ident, $localTime, new DateTimeZone(date_default_timezone_get()));
     }
 
     public static function getCustomLocaleDateTime($userTimezone, $ident = "Y-m-d H:i:s") {
         $localTime = strtotime(gmdate('Y-m-d H:i:s')) + ($userTimezone * 3600);
-        return date($ident, $localTime);
+        return wp_date($ident, $localTime, new DateTimeZone(date_default_timezone_get()));
     }
 
     public static function getVersion($version = 000) {
@@ -70,7 +70,7 @@ class B2S_Util {
         $letters = '0123456789ABCDEF';
         $color = '#';
         for ($i = 0; $i < 6; $i++) {
-            $color .= $letters[rand(0, 15)];
+            $color .= $letters[wp_rand(0, 15)];
         }
         return $color;
     }
@@ -103,10 +103,10 @@ class B2S_Util {
         }
         if ($optionUserTimeFormat == 0) {
             $ident = 'd.m.Y ' . (($time) ? 'H:i' : '');
-            return date($ident, strtotime($dateTime)) . (($time && $lang == 'de') ? ' ' . __('clock', 'blog2social') : '');
+            return wp_date($ident, strtotime($dateTime), new DateTimeZone(date_default_timezone_get())) . (($time && $lang == 'de') ? ' ' . __('clock', 'blog2social') : '');
         } else {
             $ident = 'Y/m/d ' . (($time) ? 'g:i a' : '');
-            return date($ident, strtotime($dateTime));
+            return wp_date($ident, strtotime($dateTime), new DateTimeZone(date_default_timezone_get()));
         }
     }
 
@@ -132,16 +132,16 @@ class B2S_Util {
             libxml_use_internal_errors(true); // Yeah if you are so worried about using @ with warnings
             $hasHashtag = strpos($url, '#');
             if ($hasHashtag == false || $hasHashtag <= 0) {
-                $url = $url . ((parse_url($url, PHP_URL_QUERY) ? '&' : '?') . 'no_cache=1');  //nocache
+                $url = $url . ((wp_parse_url($url, PHP_URL_QUERY) ? '&' : '?') . 'no_cache=1');  //nocache
             } else {
                 $subUrl = explode('#', $url);
                 if (isset($subUrl[0]) && isset($subUrl[1])) {
-                    $url = $subUrl[0] . ((parse_url($subUrl[0], PHP_URL_QUERY) ? '&' : '?') . 'no_cache=1');
+                    $url = $subUrl[0] . ((wp_parse_url($subUrl[0], PHP_URL_QUERY) ? '&' : '?') . 'no_cache=1');
                     for ($i = 1; $i < count($subUrl); $i++) {
                         $url .= '#' . $subUrl[$i];
                     }
                 } else {
-                    $url = $url . ((parse_url($url, PHP_URL_QUERY) ? '&' : '?') . 'no_cache=1');  //nocache
+                    $url = $url . ((wp_parse_url($url, PHP_URL_QUERY) ? '&' : '?') . 'no_cache=1');  //nocache
                 }
             }
             $html = self::b2sFileGetContents($url, true);
@@ -170,7 +170,7 @@ class B2S_Util {
         $getTags = array('title', 'description', 'image', 'image_alt_text');
         $param = array();
         libxml_use_internal_errors(true); // Yeah if you are so worried about using @ with warnings
-        $postUrl = $postUrl . ((parse_url($postUrl, PHP_URL_QUERY) ? '&' : '?') . 'no_cache=1');  //nocache
+        $postUrl = $postUrl . ((wp_parse_url($postUrl, PHP_URL_QUERY) ? '&' : '?') . 'no_cache=1');  //nocache
         $html = self::b2sFileGetContents($postUrl);
         if (!empty($html) && $html !== false) {
 //Search rist OG Parameter
@@ -205,11 +205,20 @@ class B2S_Util {
     }
 
     private static function b2sFileGetContents($url, $extern = false) {
-        $args = array(
-            'timeout' => '15',
-            'redirection' => '5',
-            'user-agent' => "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0"
+        
+        $wpVersion = get_bloginfo('version');
+        $pluginVersion = $version = implode('.', str_split((string) B2S_PLUGIN_VERSION));
+        $ua = sprintf(
+                'Blog2SocialBot/1.0 (WP/%s; Plugin/%s; +https://en.blog2social.com/bot-info; bot@blog2social.com)',
+                $wpVersion,
+                $pluginVersion
         );
+
+        $args = array(
+            'timeout' => 15,
+            'redirection' => '5',
+            'user-agent' => $ua);
+
         $response = wp_safe_remote_get($url, $args);
         if (!is_wp_error($response)) {
             return wp_remote_retrieve_body($response);
@@ -315,15 +324,16 @@ class B2S_Util {
     }
 
     public static function getImagesByPostId($postId = 0, $forceFeaturedImage = true, $postContent = '', $postUrl = '', $network = false, $postLang = 'en') {
+        
         $matches = array();
         $homeUrl = get_site_url();
-        $scheme = parse_url($homeUrl, PHP_URL_SCHEME);
+        $scheme = wp_parse_url($homeUrl, PHP_URL_SCHEME);
         $attachment_id = get_post_thumbnail_id($postId);
         $featuredImage = wp_get_attachment_url($attachment_id);
         $image_alt = get_post_meta($attachment_id, '_wp_attachment_image_alt', true);
         if ($forceFeaturedImage && $featuredImage != false && !empty($featuredImage)) {
             $ext = pathinfo(
-                    parse_url($featuredImage, PHP_URL_PATH),
+                    wp_parse_url($featuredImage, PHP_URL_PATH),
                     PATHINFO_EXTENSION
             );
             if (!in_array($ext, array('jpg', 'png', 'webp', 'gif'))) {
@@ -394,7 +404,7 @@ class B2S_Util {
 
     public static function prepareContent($postId = 0, $postContent = '', $postUrl = '', $allowHtml = '<p><h1><h2><br><i><b><a><img>', $allowEmoji = true, $postLang = 'en') {
         $homeUrl = get_site_url();
-        $scheme = parse_url($homeUrl, PHP_URL_SCHEME);
+        $scheme = wp_parse_url($homeUrl, PHP_URL_SCHEME);
         $postContent = html_entity_decode($postContent, ENT_COMPAT, 'UTF-8');
         $postContent = self::getFullContent($postId, $postContent, $postUrl, $postLang);
         $postContent = B2S_Util::clean_html($postContent);
@@ -407,7 +417,7 @@ class B2S_Util {
         if ($allowHtml !== false) {
             $prepareContent = preg_replace("/(<[\/]*)strong(>)/", "$1b$2", $prepareContent);
             $prepareContent = preg_replace("/(<[\/]*)em(>)/", "$1i$2", $prepareContent);
-            $tempContent = preg_replace('/(?:[ \t]*(?:\n|\r\n?)){2,}/', "\n", trim(strip_tags($prepareContent, $allowHtml)));
+            $tempContent = preg_replace('/(?:[ \t]*(?:\n|\r\n?)){2,}/', "\n", trim(wp_strip_all_tags($prepareContent, $allowHtml)));
             if (preg_match_all('%<img.*?src=[\"\'](.*?)[\"\'].*?/>%', $tempContent, $matches)) {
                 foreach ($matches[1] as $key => $imgUrl) {
                     if ($imgUrl == false) {
@@ -433,7 +443,7 @@ class B2S_Util {
             }
             return $tempContent;
         }
-        return preg_replace('/(?:[ \t]*(?:\n|\r\n?)){3,}/', "\n\n", trim(strip_tags($prepareContent)));
+        return preg_replace('/(?:[ \t]*(?:\n|\r\n?)){3,}/', "\n\n", trim(wp_strip_all_tags($prepareContent)));
     }
 
     public static function cleanHtmlAttr($postContent) {
@@ -448,20 +458,42 @@ class B2S_Util {
         return preg_replace('/\[.*?(?=\])\]/s', '', $postContent);
     }
 
+
     public static function getFullContent($postId = 0, $postContent = '', $postUrl = '', $postLang = 'en') {
+
         $postLang = ($postLang === false) ? 'en' : trim(strtolower($postLang));
 //isset settings allow shortcode
         if (get_option('B2S_PLUGIN_USER_ALLOW_SHORTCODE_' . get_current_user_id()) !== false) {
+  
 //check is shortcode in content
             if (preg_match('/\[(.*?)\]/s', $postContent)) {
 //check has crawled content from frontend
+             
                 $dbContent = get_option('B2S_PLUGIN_POST_CONTENT_' . $postId);
+              
                 if ($dbContent !== false) {
                     return $dbContent;
                 } else {
 //crawl content from frontend
+                   
                     $postUrl = add_query_arg(array('b2s_get_full_content' => 1, 'no_cache' => 1, 'lang' => $postLang), $postUrl);
-                    $wpB2sGetFullContent = wp_remote_get($postUrl, array('timeout' => 11)); //slot 11 seconds         
+                    $wpVersion = get_bloginfo('version');
+                    $pluginVersion = implode('.', str_split((string) B2S_PLUGIN_VERSION));
+
+                    $ua = sprintf(
+                            'Blog2SocialBot/1.0 (WP/%s; Plugin/%s; +https://en.blog2social.com/bot-info; bot@blog2social.com)',
+                            $wpVersion,
+                            $pluginVersion
+                    );
+
+                    $args = array(
+                        'timeout' => '11',
+                        'redirection' => '5',
+                        'user-agent' => $ua
+                    );
+
+                    $wpB2sGetFullContent = wp_remote_get($postUrl, $args); //slot 11 seconds       
+            
                     if (is_array($wpB2sGetFullContent) && !is_wp_error($wpB2sGetFullContent)) {
 //get crwaled content from db - hide cache by get_options
                         global $wpdb;
@@ -481,7 +513,7 @@ class B2S_Util {
         if (!empty($url)) {
             $hostlength = 0;
             $pathlength = 0;
-            $parsedurl = parse_url($url);
+            $parsedurl = wp_parse_url($url);
             if (isset($parsedurl["host"]) && !empty($parsedurl["host"])) {
                 $hostlength = strlen($parsedurl["host"]);
             }
@@ -538,9 +570,9 @@ class B2S_Util {
         $endH = $endparts[0];
         $endMin = strlen($endparts[1]) == 1 ? '0' . $endparts[1] : $endparts[1];
 
-        $rand = rand((int) ($startH . $startMin), (int) ($endH . $endMin));
+        $rand = wp_rand((int) ($startH . $startMin), (int) ($endH . $endMin));
         if ($rand == NULL) {
-            return date('H:00');
+            return wp_date('H:00', null, new DateTimeZone(date_default_timezone_get()));
         }
         if (strlen($rand) == 3) {
             $rand = '0' . $rand;
@@ -555,7 +587,7 @@ class B2S_Util {
     public static function getTimeByLang($time, $lang = 'de') {
         $time = substr('0' . $time, -2);
         $slug = ($lang == 'en') ? 'h:i a' : 'H:i';
-        return date($slug, strtotime(date('Y-m-d ' . $time . ':00:00')));
+        return wp_date($slug, strtotime(wp_date('Y-m-d ' . $time . ':00:00', null, new DateTimeZone(date_default_timezone_get()))), new DateTimeZone(date_default_timezone_get()));
     }
 
     public static function getExcerpt($text, $count = 400, $max = false, $add = false) {
@@ -652,7 +684,7 @@ class B2S_Util {
         $regex = "#(<!--:[a-z]{2}-->|<!--:-->|\[:[a-z]{2}\]|\[:\]|\{:[a-z]{2}\}|\{:\})#ism";
         $blocks = preg_split($regex, $title, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
         if (count($blocks) <= 1) {//no language is encoded in the $text, the most frequent case
-            return strip_tags($title);
+            return wp_strip_all_tags($title);
         }
         $result = array();
         $current_lang = false;
@@ -690,7 +722,7 @@ class B2S_Util {
             }
         }
         foreach ($result as $l => $text) {
-            $result[$l] = trim(strip_tags($text));
+            $result[$l] = trim(wp_strip_all_tags($text));
         }
 
         if (!isset($found[$postLang])) {
@@ -701,7 +733,7 @@ class B2S_Util {
             }
         }
 
-        return strip_tags($result[$postLang]);
+        return wp_strip_all_tags($result[$postLang]);
     }
 
     public static function createTimezoneList($selected = '', $region = 2047) { //DateTimeZone::ALL == 2047  >=PHP 5.5.3 constant not set
@@ -779,7 +811,7 @@ class B2S_Util {
 
     public static function addUrlParameter($url = '', $parameter = array()) {
         $add = '&';
-        if (!parse_url($url, PHP_URL_QUERY)) {
+        if (!wp_parse_url($url, PHP_URL_QUERY)) {
             $add = '?';
         }
         foreach ($parameter as $key => $value) {

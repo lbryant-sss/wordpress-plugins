@@ -5,7 +5,7 @@ $wpUserData = wp_get_current_user();
 $meta = B2S_Meta::getInstance();
 $generalOptions = get_option('B2S_PLUGIN_GENERAL_OPTIONS');
 $b2sActive = $meta->is_b2s_active();
-$showYoast = (sanitize_text_field(wp_unslash($_GET['page'])) == 'blog2social-settings' && $meta->is_yoast_seo_active() && $b2sActive) ? 'block' : 'none';
+$showYoast = (sanitize_text_field(wp_unslash(isset($_GET['page'])? $_GET['page'] : "")) == 'blog2social-settings' && $meta->is_yoast_seo_active() && $b2sActive) ? 'block' : 'none';
 $showAioseop = ($meta->is_aioseop_active() && $b2sActive) ? 'block' : 'none';
 $showWebdaos = ($meta->is_webdados_active() && $b2sActive) ? 'block' : 'none';
 $getPages = unserialize(B2S_PLUGIN_PAGE_TITLE);
@@ -17,7 +17,7 @@ if ($autoPostCon !== false && is_array($autoPostCon) && isset($autoPostCon['coun
     $userTimeZone = ($optionUserTimeZone !== false) ? $optionUserTimeZone : get_option('timezone_string');
     $userTimeZoneOffset = (empty($userTimeZone)) ? get_option('gmt_offset') : B2S_Util::getOffsetToUtcByTimeZone($userTimeZone);
     $current_utc_datetime = gmdate('Y-m-d H:i:s');
-    $current_user_date = date('Y-m-d', strtotime(B2S_Util::getUTCForDate($current_utc_datetime, $userTimeZoneOffset)));
+    $current_user_date = wp_date('Y-m-d', strtotime(B2S_Util::getUTCForDate($current_utc_datetime, $userTimeZoneOffset)),  new DateTimeZone(date_default_timezone_get()));
     $con = unserialize(B2S_PLUGIN_AUTO_POST_LIMIT);
     $autoPostLimit = ($autoPostCon['count'] == $con[B2S_PLUGIN_USER_VERSION] && $current_user_date == $autoPostCon['last_call_date']) ? 'block' : 'none';
 }
@@ -69,7 +69,9 @@ $hideFinalTrailModal = $options->_getOption('hide_final_trail');
 <div class="panel panel-group b2s-server-connection-fail" style="display: none;">
     <div class="panel-body">
         <span class="glyphicon glyphicon-remove glyphicon-danger"></span> 
-        <?php echo wp_kses(sprintf(__('The connection to the server failed. Please try again! You can find more information and solutions in the <a href="%s" target="_blank">guide for server connection</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('connection_guide'))),
+        <?php echo wp_kses(sprintf(
+               // translators: %s is a link
+            __('The connection to the server failed. Please try again! You can find more information and solutions in the <a href="%s" target="_blank">guide for server connection</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('connection_guide'))),
             array(
                 'a' => array(
                     'href' => array(),
@@ -119,7 +121,9 @@ $hideFinalTrailModal = $options->_getOption('hide_final_trail');
         <br>
         <?php esc_html_e('Please make sure that you only use one plugin for setting meta tags so that the networks can display the link preview of your post correctly.', 'blog2social'); ?>
         <br>
-        <?php echo wp_kses(sprintf(__('You will find a checklist for setting Open Graph tags in the <a href="%s" target="_blank">Open Graph Tag guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('yoast_warning_og_guide'))),
+        <?php echo wp_kses(sprintf(
+            // translators: %s is a link
+            __('You will find a checklist for setting Open Graph tags in the <a href="%s" target="_blank">Open Graph Tag guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('yoast_warning_og_guide'))),
             array(
                 'a' => array(
                     'href' => array(),
@@ -165,7 +169,9 @@ $hideFinalTrailModal = $options->_getOption('hide_final_trail');
                 if ((int) $_GET['deletedPostsNumber'] == 0) {
                     esc_html_e('No posts found', 'blog2social');
                 } else {
-                    echo wp_kses(sprintf(__('Deleted %s posts', 'blog2social'), (int) $_GET['deletedPostsNumber']),
+                    echo wp_kses(sprintf(
+                        // translators: %s num of posts
+                        __('Deleted %s posts', 'blog2social'), (int) $_GET['deletedPostsNumber']),
                         array(
                             'a' => array(
                                 'href' => array(),
@@ -264,7 +270,9 @@ $hideFinalTrailModal = $options->_getOption('hide_final_trail');
 </div>
 <div class="panel panel-group b2s-user-app-alert b2s-user-apps-permission-premium" style="display: none;">
     <div class="panel-body">
-        <span class="glyphicon glyphicon-remove glyphicon-danger"></span> <?php echo wp_kses(sprintf(__('To connect more Twitter apps with your Twitter accounts, please upgrade your current Blog2Social license or get a Twitter app add-on to your current license <a href="%s">Login with your Blog2Social account and continue to booking.</a>', esc_url(B2S_Tools::getSupportLink('addon_apps'))), 'blog2social'),
+        <span class="glyphicon glyphicon-remove glyphicon-danger"></span> <?php echo wp_kses(sprintf(
+               // translators: %s is a link
+            __('To connect more Twitter apps with your Twitter accounts, please upgrade your current Blog2Social license or get a Twitter app add-on to your current license <a href="%s">Login with your Blog2Social account and continue to booking.</a>', 'blog2social'), esc_url(B2S_Tools::getSupportLink('addon_apps'))),
             array('a' => array(
                 'href' => array(),
                 'target' => '_blank')
@@ -275,7 +283,9 @@ $hideFinalTrailModal = $options->_getOption('hide_final_trail');
 </div>
 <div class="panel panel-group b2s-user-app-alert b2s-user-apps-permission-free" style="display: none;">
     <div class="panel-body">
-        <span class="glyphicon glyphicon-remove glyphicon-danger"></span> <?php echo wp_kses(sprintf(__('You have no more open app slots for this network. <a href="%s">Upgrade to a premium license to purchase additional slots.</a>', esc_url(B2S_Tools::getSupportLink('affiliate'))), 'blog2social'),
+        <span class="glyphicon glyphicon-remove glyphicon-danger"></span> <?php echo wp_kses(sprintf(
+            // translators: %s is a link
+            __('You have no more open app slots for this network. <a href="%s">Upgrade to a premium license to purchase additional slots.</a>',  'blog2social'), esc_url(B2S_Tools::getSupportLink('affiliate'))),
             array('a' => array(
                 'href' => array(),
                 'target' => '_blank')
@@ -332,7 +342,9 @@ if (!B2S_System::isblockedArea('B2S_MENU_MODUL_RATING', B2S_PLUGIN_ADMIN)) {
         <div class="panel panel-group b2s-notice">
             <div class="panel-body">
                 <h2 style="margin-top:0;font-size:20px;"><?php esc_html_e('RATE IT!', 'blog2social'); ?></h2>
-                <p> <?php echo wp_kses(sprintf(__("Hi, we noticed you just shared your %s. blog post with Blog2Social - that's awesome! Could you please do us a favor and give it a 5-star rating on WordPress? Just to help us spread the word and boost our motivation.", 'blog2social'), B2S_Rating::count()),
+                <p> <?php echo wp_kses(sprintf(
+                    // translators: %s num of shared post
+                    __("Hi, we noticed you just shared your %s. blog post with Blog2Social - that's awesome! Could you please do us a favor and give it a 5-star rating on WordPress? Just to help us spread the word and boost our motivation.", 'blog2social'), B2S_Rating::count()),
                     array('a' => array(
                         'href' => array(),
                         'target' => '_blank')
@@ -551,7 +563,7 @@ if (isset($_GET['page']) && !empty($_GET['page']) && !in_array($_GET['page'], un
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"> <img src="<?php echo esc_url(plugins_url('/assets/images/b2s@32.png', B2S_PLUGIN_FILE)); ?>" alt="blog2social"> <?php esc_html_e('We updated our Privacy Policy', 'blog2social') ?></h4>
+                <h4 class="modal-title"> <img src="<?php echo esc_url(plugins_url('/assets/images/b2s_32.png', B2S_PLUGIN_FILE)); ?>" alt="blog2social"> <?php esc_html_e('We updated our Privacy Policy', 'blog2social') ?></h4>
             </div>
             <div class="modal-body b2s-scroll-modal-body b2s-modal-privacy-policy-scroll-content">
                 <p>
@@ -612,7 +624,7 @@ if (isset($_GET['page']) && !empty($_GET['page']) && !in_array($_GET['page'], un
     </div>
 </div>
 
-<?php if (defined("B2S_PLUGIN_TRAIL_END") && strtotime(date('Y-m-d H:i:s', (strtotime('-7 day', strtotime(B2S_PLUGIN_TRAIL_END))))) < strtotime(gmdate('Y-m-d H:i:s')) && strtotime(B2S_PLUGIN_TRAIL_END) >= strtotime(gmdate('Y-m-d H:i:s')) && !$hide7DayTrail) { ?>
+<?php if (defined("B2S_PLUGIN_TRAIL_END") && strtotime(wp_date('Y-m-d H:i:s', (strtotime('-7 day', strtotime(B2S_PLUGIN_TRAIL_END))),  new DateTimeZone(date_default_timezone_get()))) < strtotime(gmdate('Y-m-d H:i:s')) && strtotime(B2S_PLUGIN_TRAIL_END) >= strtotime(gmdate('Y-m-d H:i:s')) && !$hide7DayTrail) { ?>
     <?php
     $now = time();
     $your_date = strtotime(B2S_PLUGIN_TRAIL_END);
@@ -627,7 +639,9 @@ if (isset($_GET['page']) && !empty($_GET['page']) && !in_array($_GET['page'], un
                     <br>
                     <div class="row b2s-d-flex">
                         <div class="col-md-6 col-sm-12">
-                            <h2 class="b2s-bold"><?php echo esc_html(sprintf(__('Your test licence expires in %d days.', 'blog2social'), $trial_days)); ?></h2>
+                            <h2 class="b2s-bold"><?php echo esc_html(sprintf(
+                                // translators: %s is expiration in days
+                                __('Your test licence expires in %d days.', 'blog2social'), $trial_days)); ?></h2>
                             <span><?php esc_html_e('While you\'re enjoying the trial, there is so much more that Blog2Social has to offer. Please upgrade to keep access to your premium features and benefit from:', 'blog2social'); ?></span>
                             <br>
                             <ul class="b2s-header-trial-modal-list">
@@ -736,7 +750,7 @@ if (isset($_GET['page']) && !empty($_GET['page']) && !in_array($_GET['page'], un
                             <label for="b2s-ass-auth-email-other"> <?php esc_html_e('Use different email for verification', 'blog2social') ?></label>
                         </div>
                         <div class="pull-right"> 
-                            <button id="b2s-ass-auth-step1-btn" data-url="<?php esc_html_e(B2S_PLUGIN_SERVER_URL . '/auth/assistini.php?b2s_token=' . B2S_PLUGIN_TOKEN . '&sprache=' . substr(B2S_LANGUAGE, 0, 2)); ?>" data-auth-title="<?php echo esc_attr('Assistini Authorization', 'blog2social'); ?>" class="btn b2s-ass-btn"><?php esc_html_e('Send verification code', 'blog2social') ?></button>
+                            <button id="b2s-ass-auth-step1-btn" data-url="<?php echo esc_html(B2S_PLUGIN_SERVER_URL . '/auth/assistini.php?b2s_token=' . B2S_PLUGIN_TOKEN . '&sprache=' . substr(B2S_LANGUAGE, 0, 2)); ?>" data-auth-title="<?php echo esc_attr('Assistini Authorization', 'blog2social'); ?>" class="btn b2s-ass-btn"><?php esc_html_e('Send verification code', 'blog2social') ?></button>
                         </div>
                     </div>
                     <div class="b2s-ass-auth-step-3-content" style="display:none;">

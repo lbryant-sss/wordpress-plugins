@@ -174,11 +174,12 @@ class B2S_Meta {
     }
 
     private function getUrl() {
+    
         $url = home_url();
         if (!is_home()) {
-            $parts = parse_url($url);
+            $parts = wp_parse_url($url);
             if (is_array($parts) && isset($parts['scheme']) && isset($parts['host'])) {
-                $url = esc_url_raw($parts['scheme'] . '://' . $parts['host'] . $_SERVER['REQUEST_URI']);
+                $url = esc_url_raw(wp_unslash($parts['scheme'] . '://' . $parts['host'] . isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : ''));
             }
         }
         echo '<meta property="og:url" content="' . esc_url(apply_filters('b2s_og_meta_url', $url)) . '"/>' . "\n";

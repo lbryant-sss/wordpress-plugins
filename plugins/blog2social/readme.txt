@@ -1,12 +1,12 @@
 ===Blog2Social: Social Media Auto Post & Scheduler===
-Contributors: Blog2Social, pr-gateway
+Contributors: Blog2Social, miaadenion
 Requires PHP: 5.5.3
 Tags: social media tool, social media automation, auto-post, social media plugin, auto repost
 Donate link: https://paypal.me/adenion
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 8.4.2
+Stable tag: 8.4.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -263,16 +263,19 @@ To get started with the basics of Blog2Social and maybe find some useful tips an
 
 
 == Screenshots ==
-1. Schedule uniquely tailored posts for different dates and times to maximize engagement.
-2. Schedule posts recurrently. Select the duration in weeks, months or create your own repeated scheduling.
-3. Blog2Social automatically adds Open Graph and Twitter Card tags to your blog posts to optimize your blog posts shareability on social networks.
-4. Define and save your own time settings for each connected profile, page or group.
-5. Automatically share your new and updated blog posts on social media. 
-6. Share and schedule relevant third-party content.
-7. Keep track of your shared posts and scheduling plan with the Social Media Calendar.
+1. Automatically share your new and updated blog posts on social media.
+2. Set the function to automatically post from your blog to social media to suit your needs.
+3. Set which information from your blog posts should be used in your social media posts.
+4. Keep track of your shared posts and scheduling plan with the Social Media Calendar.
+5. Schedule uniquely tailored posts for different dates and times to maximize engagement.
+6. Schedule posts recurrently. Select the duration in weeks, months or create your own repeated scheduling.
+7. Blog2Social automatically adds Open Graph tags to your blog posts to optimize your blog posts shareability on social networks.
+8. Connect to a variety of accounts on over 20 social networks and set your best times to post.
 
 
 == Changelog ==
+= 8.4.3 =
+Usability Optimization
 = 8.4.2 =
 Usability Optimization
 = 8.4.1 =
@@ -355,6 +358,8 @@ Bugfix: Autoposting
 Publish and share videos
 
 == Upgrade Notice ==
+= 8.4.3 =
+Usability Optimization
 = 8.4.2 =
 Usability Optimization
 = 8.4.1 =

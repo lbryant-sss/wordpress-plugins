@@ -17,7 +17,7 @@ $getPage = (isset($_GET['page']) && !empty($_GET['page'])) ? sanitize_text_field
                         <?php } else { ?>
                             <div class="col-md-2 del-padding-left">
                                 <a class="" href="admin.php?page=blog2social">
-                                    <img class="img-responsive b2s-img-logo" src="<?php echo esc_url(plugins_url('/assets/images/b2s@64.png', B2S_PLUGIN_FILE)); ?>" alt="logo">
+                                    <img class="img-responsive b2s-img-logo" src="<?php echo esc_url(plugins_url('/assets/images/b2s_64.png', B2S_PLUGIN_FILE)); ?>" alt="logo">
                                 </a>
                             </div> 
                             <div class="col-md-10 del-padding-left">
@@ -123,7 +123,9 @@ $getPage = (isset($_GET['page']) && !empty($_GET['page'])) ? sanitize_text_field
                                             <?php
                                             $dailyLimit = ((int) $licenceCond['open_daily_post_quota'] <= 0) ? '' : 'b2s-info-display-none';
                                             ?>
-                                            <h3 class="b2s-h3 b2s-current-licence-open-daily-post-quota-sidebar-info b2s-color-red b2s-margin-0 b2s-text-underline <?php echo esc_html($dailyLimit); ?> b2s-text-bold"><?php echo esc_html(sprintf(__('Daily Limit of %d posts reached!', 'blog2social'), esc_html($licenceCond['total_daily_post_quota']))); ?></h3>
+                                            <h3 class="b2s-h3 b2s-current-licence-open-daily-post-quota-sidebar-info b2s-color-red b2s-margin-0 b2s-text-underline <?php echo esc_html($dailyLimit); ?> b2s-text-bold"><?php echo esc_html(sprintf(
+                                                // translators: %s post limit number
+                                                __('Daily Limit of %d posts reached!', 'blog2social'), esc_html($licenceCond['total_daily_post_quota']))); ?></h3>
                                             <?php
                                         }
                                     }
@@ -166,7 +168,9 @@ $getPage = (isset($_GET['page']) && !empty($_GET['page'])) ? sanitize_text_field
                                             <?php
                                             $dailyLimit = ((int) $networkCond->open_daily_post_quota <= 0) ? '' : 'b2s-info-display-none';
                                             ?>
-                                            <h3 class="b2s-h3 b2s-current-network-open-daily-post-quota-sidebar-info b2s-color-red b2s-margin-0 b2s-text-underline <?php echo esc_html($dailyLimit); ?> b2s-text-bold"><?php echo esc_html(sprintf(__('Daily Limit of %d X posts reached!', 'blog2social'), esc_html($networkCond->total_daily_post_quota))); ?></h3>
+                                            <h3 class="b2s-h3 b2s-current-network-open-daily-post-quota-sidebar-info b2s-color-red b2s-margin-0 b2s-text-underline <?php echo esc_html($dailyLimit); ?> b2s-text-bold"><?php echo esc_html(sprintf(
+                                                // translators: %s is dayly post limit
+                                                __('Daily Limit of %d X posts reached!', 'blog2social'), esc_html($networkCond->total_daily_post_quota))); ?></h3>
                                             <?php
                                         }
                                     }
@@ -224,6 +228,8 @@ $getPage = (isset($_GET['page']) && !empty($_GET['page'])) ? sanitize_text_field
                                 <?php
                                 global $wpdb;
                                 $sql = "SELECT COUNT(posts.`post_id`) FROM `{$wpdb->prefix}b2s_posts` posts WHERE (posts.`sched_date` = '0000-00-00 00:00:00' OR (posts.`sched_type` = 3 AND posts.`publish_date` != '0000-00-00 00:00:00')) AND posts.`post_for_approve`= 0  AND posts.`publish_error_code` != '' AND posts.`hide` = 0";
+                                //No unprepared User Input
+                                // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
                                 $res = $wpdb->get_var($sql);
                                 ?>
                                 <i class="glyphicon glyphicon-exclamation-sign glyphicon-success"></i> <a href="admin.php?page=blog2social-notice" class="b2s-sidebar-menu-item <?php echo (($getPage == 'blog2social-notice') ? ' b2s-text-bold' : '') ?>"><?php esc_html_e("Notifications", "blog2social") ?></a> <?php echo ($res > 0 ? '<span class="label label-warning">' . esc_html($res) . '</span>' : "") ?>

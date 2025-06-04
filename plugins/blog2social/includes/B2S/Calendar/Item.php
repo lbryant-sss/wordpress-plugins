@@ -531,8 +531,10 @@ class B2S_Calendar_Item {
         if (!empty($error) && isset($this->errorTextList[$error])) {
             if ($this->network_id == 12 && $error == 'DEFAULT') {
                 if ($this->network_type == 0) {
+                    // translators: %s is a link
                     $this->errorText = sprintf(__('The post cannot be published due to changes on the Instagram interface. More information in the <a href="%s" target="_blank">Instagram guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('instagram_error_private')));
                 } else {
+                    // translators: %s is a link
                     $this->errorText = sprintf(__('Your post could not be posted. More information in this <a href="%s" target="_blank">Instagram troubleshoot checklist</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('instagram_error_business')));
                 }
             } else {
@@ -591,7 +593,7 @@ class B2S_Calendar_Item {
             "post_type" => $this->getPostType(),
             "avatar" => $this->getAvatar(),
             "author" => $this->getAuthor(),
-            "start" => (($this->getSchedDate() != null && (int) $this->getSchedDate() > 0) ? date("Y-m-d H:i:s", $this->getSchedDate()) : (($this->getPublishDate() != null && (int) $this->getPublishDate() > 0) ? date("Y-m-d H:i:s", $this->getPublishDate()) : date("Y-m-d H:i:s"))),
+            "start" => (($this->getSchedDate() != null && (int) $this->getSchedDate() > 0) ?  wp_date("Y-m-d H:i:s", $this->getSchedDate(), new DateTimeZone(date_default_timezone_get())) : (($this->getPublishDate() != null && (int) $this->getPublishDate() > 0) ?  wp_date("Y-m-d H:i:s", $this->getPublishDate(), new DateTimeZone(date_default_timezone_get())) :  wp_date("Y-m-d H:i:s", null,new DateTimeZone(date_default_timezone_get())))),
             "color" => $this->getColor(),
             "network_name" => $this->getNetworkName(),
             "network_id" => $this->getNetworkId(),

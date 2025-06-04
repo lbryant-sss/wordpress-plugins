@@ -248,7 +248,9 @@ class B2S_PostBox {
                             <div class="b2s-meta-box-modal-body">
                               <p>
                            ' . esc_html__('Share your blog posts with the Auto Poster: Your blog posts will be shared automatically on your social media channels as soon as you publish or update a new post. You can also choose to autopost scheduled blog posts as soon as they are published.', 'blog2social');
-        $content .= ' ' . sprintf(__('<a target="_blank" href="%s">Learn how to set up auto posting for your blog posts</a>', 'blog2social'), esc_url(B2S_Tools::getSupportLink('auto_poster_m')));
+        $content .= ' ' . sprintf(
+            // translators: %s is a link
+            __('<a target="_blank" href="%s">Learn how to set up auto posting for your blog posts</a>', 'blog2social'), esc_url(B2S_Tools::getSupportLink('auto_poster_m')));
 
         if (B2S_PLUGIN_USER_VERSION == 0) {
             $content .= '<hr>
@@ -269,7 +271,9 @@ class B2S_PostBox {
                                 <br>
                                 <a target="_blank" href="' . esc_url(B2S_Tools::getSupportLink('affiliate')) . '" class="b2s-btn b2s-btn-success b2s-center-block b2s-btn-none-underline">' . esc_html__('Upgrade to SMART and above', 'blog2social') . '</a><br>
 
-                                ' . ((!get_option('B2S_PLUGIN_DISABLE_TRAIL')) ? '<center>' . sprintf(__('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')) . '</center>' : '');
+                                ' . ((!get_option('B2S_PLUGIN_DISABLE_TRAIL')) ? '<center>' . sprintf(
+                                    // translators: %s is a link
+                                    __('or <a target="_blank" href="%s">start with free 30-days-trial of Blog2Social Premium</a> (no payment information needed)', 'blog2social'), esc_url('https://service.blog2social.com/trial')) . '</center>' : '');
         }
         $content .= '</p>
                             </div>
@@ -315,7 +319,9 @@ class B2S_PostBox {
                                     <img class="pull-left hidden-xs b2s-img-network" alt="' . esc_attr('Google Business Profile') . '" src="' . esc_url(plugins_url('/assets/images/portale/18_flat.png', B2S_PLUGIN_FILE)) . '">
                                 </div>
                                 <br>
-                                <p class="b2s-bold">' . sprintf(__('Under <a href="%s">Network Settings</a> you can define which network selection is used. <a href="%s" target="_blank">Create a network selection.</a>', 'blog2social'), 'admin.php?page=blog2social-network', esc_url(B2S_Tools::getSupportLink('network_grouping'))) . '</p>
+                                <p class="b2s-bold">' . sprintf(
+                                     // translators: %s is a link
+                                    __('Under <a href="%1$s">Network Settings</a> you can define which network selection is used. <a href="%2$s" target="_blank">Create a network selection.</a>', 'blog2social'), 'admin.php?page=blog2social-network', esc_url(B2S_Tools::getSupportLink('network_grouping'))) . '</p>
                                 <h4>' . esc_html__('Available networks', 'blog2social') . '</h4>
                                 <span class="b2s-bold">' . esc_html('Facebook (Profile & Seiten)') . '</span><br>
                                 <span class="b2s-bold">' . esc_html('Twitter (1 Profil)') . '</span><br>
@@ -337,7 +343,7 @@ class B2S_PostBox {
                     </div>
                 <select class="b2s-w-100" id="b2s-post-meta-box-profil-dropdown" name="b2s-post-meta-box-profil-dropdown">';
         foreach ($mandant as $k => $m) {
-            $content .= '<option value="' . esc_attr($m->id) . '" ' . (((int) $m->id == (int) $selectedProfileId) ? 'selected' : '') . '>' . esc_html((($m->id == 0) ? __($m->name, 'blog2social') : $m->name)) . '</option>';
+            $content .= '<option value="' . esc_attr($m->id) . '" ' . (((int) $m->id == (int) $selectedProfileId) ? 'selected' : '') . '>' . esc_html((($m->id == 0) ? __("My Profile", 'blog2social') : $m->name)) . '</option>';
             $profilData = (isset($auth->{$m->id}) && isset($auth->{$m->id}[0]) && !empty($auth->{$m->id}[0])) ? json_encode($auth->{$m->id}) : '';
             $authContent .= "<input type='hidden' id='b2s-post-meta-box-profil-data-" . esc_attr($m->id) . "' name='b2s-post-meta-box-profil-data-" . esc_attr($m->id) . "' value='" . base64_encode($profilData) . "'/>";
         }

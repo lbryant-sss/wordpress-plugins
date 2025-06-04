@@ -375,6 +375,17 @@ class easyFancyBox { // phpcs:ignore
 				);
 			}
 		}
+
+		// Add translation strings for Fancybox and helpers.
+		$efb_i18n = array(
+			'close' => __( 'Close', 'easy-fancybox' ),
+			'next'  => __( 'Next', 'easy-fancybox' ),
+			'prev'  => __( 'Previous', 'easy-fancybox' ),
+			'startSlideshow' => __( 'Start slideshow', 'easy-fancybox' ),
+			'toggleSize'     => __( 'Toggle size', 'easy-fancybox' ),
+		);
+		wp_localize_script( 'jquery-fancybox', 'efb_i18n', $efb_i18n );
+		wp_localize_script( 'jquery-fancybox-buttons', 'efb_i18n', $efb_i18n );
 	}
 
 	/**

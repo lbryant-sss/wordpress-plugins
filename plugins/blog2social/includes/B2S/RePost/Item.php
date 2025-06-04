@@ -84,13 +84,17 @@ class B2S_RePost_Item {
         $content .= $this->getChosenPostAuthorData();
         $content .= '<br>';
         $content .= '<input type="checkbox" name="b2s-re-post-favorites-active" id="b2s-re-post-favorites-active" value="1">';
-        $content .= '<label for="b2s-re-post-favorites-active"> ' . sprintf(__('include <a href="%s" target="_blank">favorites posts</a> only', 'blog2social'), 'admin.php?page=blog2social-favorites') . ' </label>';
+        $content .= '<label for="b2s-re-post-favorites-active"> ' . sprintf(
+             // translators: %s is a link
+            __('include <a href="%s" target="_blank">favorites posts</a> only', 'blog2social'), 'admin.php?page=blog2social-favorites') . ' </label>';
         $content .= '<br>';
         $content .= '<input type="checkbox" name="b2s-re-post-images-active" id="b2s-re-post-images-active" value="1">';
         $content .= '<label for="b2s-re-post-images-active"> ' . esc_html__('include posts with images only', 'blog2social') . ' </label>';
         $content .= '<br>';
         $content .= '<input type="checkbox" name="b2s-re-post-already-planed-active" id="b2s-re-post-already-planed-active" value="1">';
-        $content .= '<label for="b2s-re-post-already-planed-active"> ' . sprintf(esc_html__('only posts that have been shared no more than %s times', 'blog2social'), '<input type="number" name="b2s-re-post-already-planed-count" class="b2s-re-post-number-input" value="1" min="1" max="50">') . ' </label>';
+        $content .= '<label for="b2s-re-post-already-planed-active"> ' . sprintf(
+            // translators: %s input field
+            esc_html__('only posts that have been shared no more than %s times', 'blog2social'), '<input type="number" name="b2s-re-post-already-planed-count" class="b2s-re-post-number-input" value="1" min="1" max="50">') . ' </label>';
         $content .= '</div>';
         $content .= '</div>';
 
@@ -211,7 +215,7 @@ class B2S_RePost_Item {
                 <select class="b2s-w-100" id="b2s-re-post-profil-dropdown" name="b2s-re-post-profil-dropdown">';
 
             foreach ($mandant as $k => $m) {
-                $content .= '<option value="' . esc_attr($m->id) . '" ' . (((int) $m->id == (int) $mandantId) ? 'selected' : '') . '>' . esc_html((($m->id == 0) ? __($m->name, 'blog2social') : $m->name)) . '</option>';
+                $content .= '<option value="' . esc_attr($m->id) . '" ' . (((int) $m->id == (int) $mandantId) ? 'selected' : '') . '>' . esc_html((($m->id == 0) ? __("My Profile", 'blog2social') : $m->name)) . '</option>';
                 $profilData = (isset($auth->{$m->id}) && isset($auth->{$m->id}[0]) && !empty($auth->{$m->id}[0])) ? json_encode($auth->{$m->id}) : '';
                 $authContent .= "<input type='hidden' name='b2s-re-post-profil-data-" . esc_attr($m->id) . "' id='b2s-re-post-profil-data-" . esc_attr($m->id) . "' value='" . base64_encode($profilData) . "'/>";
             }

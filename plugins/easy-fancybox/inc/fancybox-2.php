@@ -314,7 +314,7 @@ fb_'.$key.'_sections.each(function(){jQuery(this).find(fb_'.$key.'_select).attr(
 	$fb_handler .= '};';
 
 	// Replace TitleFromAlt shortcode.
-	$fb_handler = str_replace( '"{{titleFromAlt}}"', 'function(){var alt=DOMPurify.sanitize(this.element.find(\'img\').attr(\'alt\'));this.inner.find(\'img\').attr(\'alt\',alt);this.title=this.title||alt;}', $fb_handler );
+	$fb_handler = str_replace( '"{{titleFromAlt}}"', 'function(){var alt=DOMPurify.sanitize(this.element.find(\'img\').attr(\'alt\'));this.inner.find(\'img\').attr(\'alt\',alt);this.title=DOMPurify.sanitize(this.title)||alt;}', $fb_handler );
 
 	// Replace PDF embed shortcodes.
 	if ( ! empty( get_option('fancybox_enablePDF') ) && ! empty( get_option('fancybox_PDFonStart', '{{object}}') ) ) {

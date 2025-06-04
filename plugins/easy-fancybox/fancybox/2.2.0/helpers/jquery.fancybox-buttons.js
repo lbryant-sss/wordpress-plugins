@@ -22,7 +22,13 @@
 		defaults : {
 			skipSingle : false, // disables if gallery contains single image
 			position   : 'top', // 'top' or 'bottom'
-			tpl        : '<div id="fancybox-buttons"><ul><li><a class="btnPrev" title="Previous" href="javascript:;"></a></li><li><a class="btnPlay" title="Start slideshow" href="javascript:;"></a></li><li><a class="btnNext" title="Next" href="javascript:;"></a></li><li><a class="btnToggle" title="Toggle size" href="javascript:;"></a></li><li><a class="btnClose" title="Close" href="javascript:;"></a></li></ul></div>'
+			tpl        : '<div id="fancybox-buttons"><ul>' +
+				`<li><a class="btnPrev" title="${(window.efb_i18n && window.efb_i18n.prev) || 'Previous'}" href="javascript:;"></a></li>` +
+				`<li><a class="btnPlay" title="${(window.efb_i18n && window.efb_i18n.startSlideshow) || 'Start slideshow'}" href="javascript:;"></a></li>` +
+				`<li><a class="btnNext" title="${(window.efb_i18n && window.efb_i18n.next) || 'Next'}" href="javascript:;"></a></li>` +
+				`<li><a class="btnToggle" title="${(window.efb_i18n && window.efb_i18n.toggleSize) || 'Toggle size'}" href="javascript:;"></a></li>` +
+				`<li><a class="btnClose" title="${(window.efb_i18n && window.efb_i18n.close) || 'Close'}" href="javascript:;"></a></li>` +
+				'</ul></div>'
 		},
 
 		list : null,

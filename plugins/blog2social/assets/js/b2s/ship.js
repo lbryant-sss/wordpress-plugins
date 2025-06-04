@@ -1053,9 +1053,22 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                                     defaultTime: today, //'current',
                                     snapToStep: true
                                 });
+
                                 jQuery(".b2s-post-item-details-release-input-date").datepicker().on('changeDate', function (e) {
                                     checkSchedDateTime(jQuery(this).attr('data-network-auth-id'));
+                                    var dataNetworkAuthId= jQuery(this).attr('data-network-auth-id');
+                                    var count =  jQuery(this).attr('data-network-count');
+                                    var maxValue = get3YearsMax('date', dataNetworkAuthId, count);
+
+                                    if(maxValue){
+                                        jQuery('.b2s-network-tos-sched-max-values-alert[data-network-auth-id="' + dataNetworkAuthId + '"]').show();
+                                        jQuery(this).datepicker('update', maxValue);
+                                        return;
+                                    }
+
+                                    jQuery('.b2s-network-tos-sched-max-values-alert[data-network-auth-id="' + dataNetworkAuthId + '"]').hide();
                                 });
+
                                 jQuery('.b2s-post-item-details-release-input-time').timepicker().on('changeTime.timepicker', function (e) {
                                     checkSchedDateTime(jQuery(this).attr('data-network-auth-id'));
                                 });
@@ -2741,7 +2754,7 @@ jQuery("#b2sNetworkSent").validate({
         if (checkImageByImageNetworks() == false) {
             return false;
         }
-
+       
         var userDate = new Date();
         var pubDate = userDate.getFullYear() + "-" + padDate(userDate.getMonth() + 1) + "-" + padDate(userDate.getDate()) + " " + padDate(userDate.getHours()) + ":" + padDate(userDate.getMinutes()) + ":" + padDate(userDate.getSeconds());
         jQuery('#publish_date').val(pubDate);
@@ -5580,10 +5593,84 @@ jQuery(document).on('click', '.b2s-user-network-settings-post-format-new, img.b2
    
 });
 
+jQuery(document).on('change', '.b2s-post-item-details-release-input-times, .b2s-post-item-details-release-input-select-timespan', function () {
 
+    var dataNetworkAuthId= jQuery(this).attr('data-network-auth-id');
+    var count=  jQuery(this).attr('data-network-count');
 
+     if(jQuery(this).hasClass('b2s-post-item-details-release-input-times')){
 
+        var maxValue= get3YearsMax('times', dataNetworkAuthId, count);
+    }
 
+    if(jQuery(this).hasClass('b2s-post-item-details-release-input-select-timespan')){
 
+        var maxValue= get3YearsMax('timespan', dataNetworkAuthId, count);
+    }
 
+    if(maxValue){
+        
+        jQuery('.b2s-network-tos-sched-max-values-alert[data-network-auth-id="' + dataNetworkAuthId + '"]').show();
+        jQuery(this).val(maxValue);
+        return;
+    }
+     jQuery('.b2s-network-tos-sched-max-values-alert[data-network-auth-id="' + dataNetworkAuthId + '"]').hide();
+});
 
+function get3YearsMax(type, dataNetworkAuthId, count) {
+
+    var times= jQuery('[name="b2s[' + dataNetworkAuthId + '][duration_time][' + count + ']"]').val();      
+    var timespan = jQuery('[name="b2s[' + dataNetworkAuthId + '][select_timespan][' + count + ']"]').val();
+    var startDateStr = jQuery('[name="b2s[' + dataNetworkAuthId + '][date][' + count + ']"]').val();
+    var startTimeStr = jQuery('[name="b2s[' + dataNetworkAuthId + '][time][' + count + ']"]').val();
+    var startDateStr= startDateStr + " " + startTimeStr;
+ 
+    const nowDate = new Date();
+
+    const futureDate = new Date(nowDate);
+    futureDate.setFullYear(futureDate.getFullYear() + 3);
+
+    const [datePart, timePart] = startDateStr.split(' ');
+    const [day, month, year] = datePart.split('.');
+    const [hour, minute] = timePart.split(':');
+    const startDate = new Date(year, month - 1, day, hour, minute);
+
+    var startOffset= startDate - nowDate;
+
+    //keep 1 day margin
+    var daysTotal= (timespan * times)-1;
+
+    var totalRangeInMs= startOffset + (daysTotal * 24 * 60 * 60 * 1000);
+
+    var maxRangeInMs= futureDate - nowDate;
+ 
+     if(totalRangeInMs > maxRangeInMs){
+
+        var maxValue=1;
+
+        if(type=='times'){
+
+            return Math.floor(maxRangeInMs / ((24 * 60 * 60 * 1000)*timespan));
+        }
+
+        if(type=="timespan"){
+
+            return Math.floor(maxRangeInMs / ((24 * 60 * 60 * 1000)*times));
+        }
+
+        if(type=="date"){
+        
+            var totalMilliseconds= daysTotal * 24 * 60 * 60 * 1000;
+            futureDate.setTime(futureDate.getTime() - totalMilliseconds);
+          
+            const day = String(futureDate.getDate()).padStart(2, '0');
+            const month = String(futureDate.getMonth() + 1).padStart(2, '0'); // months are 0-indexed
+            const year = futureDate.getFullYear();
+        
+            return `${day}.${month}.${year}`;
+          
+        }
+
+    }
+
+}

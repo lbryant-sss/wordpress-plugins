@@ -91,7 +91,7 @@
 			selectedOpts = $.extend(selectedOpts, ret);
 		}
 
-		title = selectedOpts.title || (obj.nodeName ? $(obj).attr('title') : obj.title) || '';
+		title = DOMPurify.sanitize(selectedOpts.title || (obj.nodeName ? $(obj).attr('title') : obj.title) || '');
 
 		if (obj.nodeName && !selectedOpts.orig) {
 			selectedOpts.orig = $(obj).find("img:first").length ? $(obj).find("img:first") : $(obj);
@@ -1252,11 +1252,11 @@
 
 		outer.append(
 			content = $('<div id="fancybox-content"></div>'),
-			close = $('<a id="fancybox-close" title="Close" class="fancy-ico" href="javascript:;"></a>'),
+			close = $(`<a id="fancybox-close" title="${(window.efb_i18n && window.efb_i18n.close) || 'Close'}" class="fancy-ico" href="javascript:;"></a>`),
 			title = $('<div id="fancybox-title"></div>'),
 
-			nav_left = $('<a id="fancybox-left" title="Previous" href="javascript:;"><span class="fancy-ico" id="fancybox-left-ico"></span></a>'),
-			nav_right = $('<a id="fancybox-right" title="Next" href="javascript:;"><span class="fancy-ico" id="fancybox-right-ico"></span></a>')
+			nav_left = $(`<a id="fancybox-left" title="${(window.efb_i18n && window.efb_i18n.prev) || 'Previous'}" href="javascript:;"><span class="fancy-ico" id="fancybox-left-ico"></span></a>`),
+			nav_right = $(`<a id="fancybox-right" title="${(window.efb_i18n && window.efb_i18n.next) || 'Next'}" href="javascript:;"><span class="fancy-ico" id="fancybox-right-ico"></span></a>`)
 		);
 
 		close.on('click',$.fancybox.close);

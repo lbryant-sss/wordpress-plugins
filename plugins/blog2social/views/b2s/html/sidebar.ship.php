@@ -16,7 +16,7 @@ $isVideo = (isset($_GET['isVideo']) && (int) $_GET['isVideo'] == 1) ? true : fal
                         <?php } else { ?>
                             <div class="col-md-2 del-padding-left">
                                 <a class="" href="admin.php?page=blog2social">
-                                    <img class="img-responsive b2s-img-logo" src="<?php echo esc_url(plugins_url('/assets/images/b2s@64.png', B2S_PLUGIN_FILE)); ?>" alt="logo">
+                                    <img class="img-responsive b2s-img-logo" src="<?php echo esc_url(plugins_url('/assets/images/b2s_64.png', B2S_PLUGIN_FILE)); ?>" alt="logo">
                                 </a>
                             </div> 
                             <div class="col-md-10 del-padding-left">
@@ -123,7 +123,9 @@ $isVideo = (isset($_GET['isVideo']) && (int) $_GET['isVideo'] == 1) ? true : fal
                                                 <?php
                                                 $dailyLimit = ((int) $licenceCond['open_daily_post_quota'] <= 0) ? '' : 'b2s-info-display-none';
                                                 ?>
-                                                <h3 class="b2s-h3 b2s-current-licence-open-daily-post-quota-sidebar-info b2s-color-red b2s-margin-0 b2s-text-underline <?php echo esc_html($dailyLimit); ?> b2s-text-bold"><?php echo esc_html(sprintf(__('Daily Limit of %d posts reached!', 'blog2social'), esc_html($licenceCond['total_daily_post_quota']))); ?></h3>
+                                                <h3 class="b2s-h3 b2s-current-licence-open-daily-post-quota-sidebar-info b2s-color-red b2s-margin-0 b2s-text-underline <?php echo esc_html($dailyLimit); ?> b2s-text-bold"><?php echo esc_html(sprintf(
+                                                    // translators: %s daly limit of posts
+                                                    __('Daily Limit of %d posts reached!', 'blog2social'), esc_html($licenceCond['total_daily_post_quota']))); ?></h3>
                                                 <?php
                                             }
                                         }
@@ -167,7 +169,9 @@ $isVideo = (isset($_GET['isVideo']) && (int) $_GET['isVideo'] == 1) ? true : fal
                                             <?php
                                             $dailyLimit = ((int) $networkCond->open_daily_post_quota <= 0) ? '' : 'b2s-info-display-none';
                                             ?>
-                                            <h3 class="b2s-h3 b2s-current-network-open-daily-post-quota-sidebar-info b2s-color-red b2s-margin-0 b2s-text-underline <?php echo esc_html($dailyLimit); ?> b2s-text-bold"><?php echo esc_html(sprintf(__('Daily Limit of %d X posts reached!', 'blog2social'), esc_html($networkCond->total_daily_post_quota))); ?></h3>
+                                            <h3 class="b2s-h3 b2s-current-network-open-daily-post-quota-sidebar-info b2s-color-red b2s-margin-0 b2s-text-underline <?php echo esc_html($dailyLimit); ?> b2s-text-bold"><?php echo esc_html(sprintf(
+                                                // translators: %s daly limit of posts
+                                                __('Daily Limit of %d X posts reached!', 'blog2social'), esc_html($networkCond->total_daily_post_quota))); ?></h3>
                                             <?php
                                         }
                                     }

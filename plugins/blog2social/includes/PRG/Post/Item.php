@@ -73,11 +73,15 @@ class PRG_Post_Item {
                 AND $postTypes
 		ORDER BY `" . $order . "` " . $sortType . " 
                 LIMIT " . (($this->currentPage - 1) * B2S_PLUGIN_POSTPERPAGE) . "," . B2S_PLUGIN_POSTPERPAGE;
+            //No unprepared User Input
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
             $this->postData = $wpdb->get_results($sqlPosts);
             $sqlPostsTotal = "SELECT COUNT(*)
 		FROM `$wpdb->posts`
 		WHERE $addSearchType $addSearchAuthorId $addSearchPostTitle $addNotAdmin
                 AND $postTypes";
+            //No unprepared User Input
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
             $this->postTotal = $wpdb->get_var($sqlPostsTotal);
         }
     }

@@ -88,7 +88,7 @@ class B2S_RePost_Save {
                 $selectedTwitterProfile = (isset($twitter) && !empty($twitter)) ? (int) $twitter : '';
                 if (((int) $value->networkId != 2 && (int) $value->networkId != 45) || (((int) $value->networkId == 2 || (int) $value->networkId == 45) && (empty($selectedTwitterProfile) || ((int) $selectedTwitterProfile == (int) $value->networkAuthId)))) {
                     $schedDate = $this->getPostDateTime($startDate, $settings, $value->networkAuthId);
-                    $schedDateUtc = date('Y-m-d H:i:s', strtotime(B2S_Util::getUTCForDate($schedDate, ($this->userTimezone * -1))));
+                    $schedDateUtc =  wp_date('Y-m-d H:i:s', strtotime(B2S_Util::getUTCForDate($schedDate, ($this->userTimezone * -1))), new DateTimeZone(date_default_timezone_get()));
                     $shareApprove = (isset($value->instant_sharing) && (int) $value->instant_sharing == 1) ? 1 : 0;
                     $defaultPostData = $this->defaultPostData;
                     if ((int) $value->networkId == 1 || (int) $value->networkId == 3 || (int) $value->networkId == 19) {
@@ -106,7 +106,7 @@ class B2S_RePost_Save {
                         }
                     }
 
-                    $count = $this->saveShareData($schedData, $value->networkId, $value->networkType, $value->networkAuthId, $shareApprove, strip_tags($value->networkUserName), $schedDate, $schedDateUtc);
+                    $count = $this->saveShareData($schedData, $value->networkId, $value->networkType, $value->networkAuthId, $shareApprove, wp_strip_all_tags($value->networkUserName), $schedDate, $schedDateUtc);
                     $schedPostCount = $schedPostCount + $count;
                 }
             }
@@ -277,7 +277,7 @@ class B2S_RePost_Save {
                 }
             } else {
                 if ($networkId == 4) {
-                    $postData['custom_title'] = strip_tags($this->title);
+                    $postData['custom_title'] = wp_strip_all_tags($this->title);
                     $postData['content'] = $this->contentHtml;
                     if ($this->allowHashTag) {
                         if (is_array($this->keywords) && !empty($this->keywords)) {
@@ -294,7 +294,7 @@ class B2S_RePost_Save {
                         if ($this->allowHashTag) {
                             $postData['content'] .= $this->getHashTagsString();
                         }
-                        $postData['custom_title'] = strip_tags($this->title);
+                        $postData['custom_title'] = wp_strip_all_tags($this->title);
                     } else {
                         return false;
                     }
@@ -302,7 +302,7 @@ class B2S_RePost_Save {
 
                 if ($networkId == 7) {
                     if ($this->imageUrl !== false) {
-                        $postData['custom_title'] = strip_tags($this->title);
+                        $postData['custom_title'] = wp_strip_all_tags($this->title);
                     } else {
                         return false;
                     }
@@ -311,7 +311,7 @@ class B2S_RePost_Save {
                 if ($networkId == 36) {
                     if ($this->imageUrl !== false) {
                         $postData['content'] = (isset($this->setPreFillText[$networkType][$networkId])) ? B2S_Util::getExcerpt($this->content, (int) $this->setPreFillText[$networkType][$networkId], (isset($this->setPreFillTextLimit[$networkType][$networkId]) ? (int) $this->setPreFillTextLimit[$networkType][$networkId] : false)) : $this->content;
-                        $postData['custom_title'] = strip_tags($this->title);
+                        $postData['custom_title'] = wp_strip_all_tags($this->title);
                     } else {
                         return false;
                     }
@@ -320,7 +320,7 @@ class B2S_RePost_Save {
 
                 if ($networkId == 8) {
                     $postData['content'] = (isset($this->setPreFillText[$networkType][$networkId])) ? B2S_Util::getExcerpt($this->content, (int) $this->setPreFillText[$networkType][$networkId], (int) $this->setPreFillTextLimit[$networkType][$networkId]) : $this->content;
-                    $postData['custom_title'] = strip_tags($this->title);
+                    $postData['custom_title'] = wp_strip_all_tags($this->title);
                 }
 
                 if ($networkId == 9 || $networkId == 16) {
@@ -343,7 +343,7 @@ class B2S_RePost_Save {
                 }
 
                 if ($networkId == 11 || $networkId == 14) {
-                    $postData['custom_title'] = strip_tags($this->title);
+                    $postData['custom_title'] = wp_strip_all_tags($this->title);
                     $postData['content'] = $this->contentHtml;
                 }
 
@@ -358,13 +358,13 @@ class B2S_RePost_Save {
                 }
 
                 if ($networkId == 13 || $networkId == 15) {
-                    $postData['content'] = strip_tags($this->title);
+                    $postData['content'] = wp_strip_all_tags($this->title);
                 }
 
                 if ($networkId == 21) {
                     if ($this->imageUrl !== false) {
                         $postData['content'] = (isset($this->setPreFillText[$networkType][$networkId])) ? B2S_Util::getExcerpt($this->content, (int) $this->setPreFillText[$networkType][$networkId], (isset($this->setPreFillTextLimit[$networkType][$networkId]) ? (int) $this->setPreFillTextLimit[$networkType][$networkId] : false)) : $this->content;
-                        $postData['custom_title'] = strip_tags($this->title);
+                        $postData['custom_title'] = wp_strip_all_tags($this->title);
                         if ($this->allowHashTag) {
                             if (is_array($this->keywords) && !empty($this->keywords)) {
                                 foreach ($this->keywords as $tag) {
@@ -379,7 +379,7 @@ class B2S_RePost_Save {
 
                 if ($networkId == 38 || $networkId == 39) {
                     $postData['content'] = (isset($this->setPreFillText[$networkType][$networkId])) ? B2S_Util::getExcerpt($this->content, (int) $this->setPreFillText[$networkType][$networkId], (isset($this->setPreFillTextLimit[$networkType][$networkId]) ? (int) $this->setPreFillTextLimit[$networkType][$networkId] : false)) : $this->content;
-                    $postData['custom_title'] = strip_tags($this->title);
+                    $postData['custom_title'] = wp_strip_all_tags($this->title);
                 }
             }
 
@@ -422,8 +422,7 @@ class B2S_RePost_Save {
         global $wpdb;
         $schedPostCount = 0;
         if ($this->userVersion >= 3) {
-            $sqlGetData = $wpdb->prepare("SELECT `data` FROM `{$wpdb->prefix}b2s_posts_network_details` WHERE `network_auth_id` = %d", (int) $network_auth_id);
-            $dataString = $wpdb->get_var($sqlGetData);
+            $dataString = $wpdb->get_var($wpdb->prepare("SELECT `data` FROM `{$wpdb->prefix}b2s_posts_network_details` WHERE `network_auth_id` = %d", (int) $network_auth_id));
             if ($dataString !== NULL && !empty($dataString)) {
                 $networkAuthData = unserialize($dataString);
                 if (!empty($shareData['url']) && $networkAuthData != false && is_array($networkAuthData) && isset($networkAuthData['url_parameter'][0]['querys']) && !empty($networkAuthData['url_parameter'][0]['querys'])) {
@@ -463,7 +462,7 @@ class B2S_RePost_Save {
                     'post_id' => $this->postId,
                     'blog_user_id' => $this->blogUserId,
                     'user_timezone' => $this->userTimezone,
-                    'publish_date' => date('Y-m-d H:i:s', strtotime(B2S_Util::getUTCForDate(gmdate('Y-m-d H:i:s'), $this->userTimezone * (-1)))),
+                    'publish_date' =>  wp_date('Y-m-d H:i:s', strtotime(B2S_Util::getUTCForDate(gmdate('Y-m-d H:i:s'), $this->userTimezone * (-1))), new DateTimeZone(date_default_timezone_get())),
                     'publish_error_code' => 'DEPRECATED_NETWORK_8',
                     'network_details_id' => $networkDetailsId), array('%d', '%d', '%s', '%s', '%s', '%d'));
             } else {
@@ -492,8 +491,7 @@ class B2S_RePost_Save {
 
     public function deletePostsByBlogPost($blogPostId = 0) {
         global $wpdb;
-        $getSchedData = $wpdb->prepare("SELECT id as b2sPostId FROM {$wpdb->prefix}b2s_posts WHERE post_id = %d AND b.sched_type = %d AND b.publish_date = %s AND b.hide = %d", (int) $blogPostId, 5, "0000-00-00 00:00:00", 0);
-        $schedDataResult = $wpdb->get_results($getSchedData);
+        $schedDataResult = $wpdb->get_results( $wpdb->prepare("SELECT id as b2sPostId FROM {$wpdb->prefix}b2s_posts WHERE post_id = %d AND b.sched_type = %d AND b.publish_date = %s AND b.hide = %d", (int) $blogPostId, 5, "0000-00-00 00:00:00", 0));
         $delete_scheds = array();
         foreach ($schedDataResult as $k => $value) {
             array_push($delete_scheds, $value->b2sPostId);

@@ -67,7 +67,10 @@ class B2S_AutoPost_Item {
         $content .= '<input type="hidden" class="b2s-autopost-m-show-modal" value="' . ((isset($optionAutoPost['active'])) ? '0' : '1') . '">';
         $content .= '<input type="hidden" class="b2s-autopost-a-show-modal" value="' . ((isset($optionAutoPostImport['active'])) ? '0' : '1') . '">';
         $content .= '<div class="panel panel-group b2s-auto-post-own-general-warning"><div class="panel-body">';
-        $content .= '<span class="glyphicon glyphicon-exclamation-sign glyphicon-warning"></span> ' . sprintf(__('Posts for Facebook Profiles will be shown on your "Site & Blog Content" navigation bar in the "Instant Sharing" tab. To share the post on your Facebook Profile just click on the "Share" button next to your post. More information in the <a href="%s" target="_blank">Instant Sharing guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('facebook_instant_sharing')));
+       
+        $content .= '<span class="glyphicon glyphicon-exclamation-sign glyphicon-warning"></span> ' . sprintf(
+             // translators: %s is a link
+            __('Posts for Facebook Profiles will be shown on your "Site & Blog Content" navigation bar in the "Instant Sharing" tab. To share the post on your Facebook Profile just click on the "Share" button next to your post. More information in the <a href="%s" target="_blank">Instant Sharing guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('facebook_instant_sharing')));
         $content .= '</div>';
         $content .= '</div>';
         $content .= '<h4 class="b2s-auto-post-header">' . esc_html__('Autoposter', 'blog2social') . '</h4><a target="_blank" href="' . esc_url(B2S_Tools::getSupportLink('auto_post_manuell')) . '">Info</a>';
@@ -270,7 +273,7 @@ class B2S_AutoPost_Item {
             $content = '<div class="row"><div class="col-md-3 b2s-auto-post-profile"><label for="b2s-auto-post-profil-dropdown">' . esc_html__('Select network collection:', 'blog2social') . '</label>
                 <select class="b2s-w-100" id="b2s-auto-post-profil-dropdown" name="b2s-auto-post-profil-dropdown">';
             foreach ($mandant as $k => $m) {
-                $content .= '<option value="' . esc_attr($m->id) . '" ' . (((int) $m->id == (int) $mandantId) ? 'selected' : '') . '>' . esc_html((($m->id == 0) ? __($m->name, 'blog2social') : $m->name)) . '</option>';
+                $content .= '<option value="' . esc_attr($m->id) . '" ' . (((int) $m->id == (int) $mandantId) ? 'selected' : '') . '>' . esc_html((($m->id == 0) ? __("My Profile", 'blog2social') : $m->name)) . '</option>';
                 $profilData = (isset($auth->{$m->id}) && isset($auth->{$m->id}[0]) && !empty($auth->{$m->id}[0])) ? json_encode($auth->{$m->id}) : '';
                 $authContent .= "<input type='hidden' id='b2s-auto-post-profil-data-" . esc_attr($m->id) . "' value='" . base64_encode($profilData) . "'/>";
             }

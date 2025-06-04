@@ -49,13 +49,20 @@ trait WpContext {
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return int|null The home page ID.
+	 * @return int|false The home page ID.
 	 */
 	public function getHomePageId() {
+		static $homeId = null;
+		if ( null !== $homeId ) {
+			return $homeId;
+		}
+
 		$pageShowOnFront = ( 'page' === get_option( 'show_on_front' ) );
 		$pageOnFrontId   = get_option( 'page_on_front' );
 
-		return $pageShowOnFront && $pageOnFrontId ? (int) $pageOnFrontId : null;
+		$homeId = $pageShowOnFront && $pageOnFrontId ? (int) $pageOnFrontId : false;
+
+		return $homeId;
 	}
 
 	/**
@@ -215,7 +222,7 @@ trait WpContext {
 		$postId = apply_filters( 'aioseo_get_post_id', $postId );
 
 		// We need to check these conditions and cannot always return get_post() because we'll return the first post on archive pages (dynamic homepage, term pages, etc.).
-		// https://github.com/awesomemotive/aioseo/issues/2419
+
 		if (
 			$this->isScreenBase( 'post' ) ||
 			$postId ||

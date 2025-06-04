@@ -144,9 +144,9 @@
 				image   : '<img class="fancybox-image" src="{href}" alt="" />',
 				iframe  : '<iframe id="fancybox-frame{rnd}" name="fancybox-frame{rnd}" class="fancybox-iframe" frameborder="0" vspace="0" hspace="0" allow="autoplay; encrypted-media;"' + (IE ? ' allowtransparency="true"' : '') + '></iframe>',
 				error   : '<p class="fancybox-error">{error}</p>',
-				close   : '<a title="{close}" class="fancybox-item fancybox-close" href="javascript:;"></a>',
-				next    : '<a title="{next}" class="fancybox-nav fancybox-next" href="javascript:;"><span></span></a>',
-				prev    : '<a title="{prev}" class="fancybox-nav fancybox-prev" href="javascript:;"><span></span></a>',
+				close   : `<a title="${DOMPurify.sanitize((window.efb_i18n && window.efb_i18n.close) || 'Close')}" class="fancybox-item fancybox-close" href="javascript:;"></a>`,
+				next    : `<a title="${DOMPurify.sanitize((window.efb_i18n && window.efb_i18n.next) || 'Next')}" class="fancybox-nav fancybox-next" href="javascript:;"><span></span></a>`,
+				prev    : `<a title="${DOMPurify.sanitize((window.efb_i18n && window.efb_i18n.prev) || 'Previous')}" class="fancybox-nav fancybox-prev" href="javascript:;"><span></span></a>`,
 				loading : '<div id="fancybox-loading"><div></div></div>'
 			},
 
@@ -158,9 +158,9 @@
 					ajax    : 'An AJAX error occurred.<br/>Please contact the site administrator.',
 					href    : 'Missing media target URL.<br/>Please contact the site administrator.',
 				},
-				close : 'Close',
-				next  : 'Next',
-				prev  : 'Previous'
+				close : (window.efb_i18n && window.efb_i18n.close) || 'Close',
+				next  : (window.efb_i18n && window.efb_i18n.next)  || 'Next',
+				prev  : (window.efb_i18n && window.efb_i18n.prev)  || 'Previous'
 			},
 
 			// Properties for each animation type
@@ -278,10 +278,15 @@
 					if (isQuery(element)) {
 						obj = {
 							href    : element.data('fancybox-href') || element.attr('href'),
-							title   : $('<div/>').text( element.data('fancybox-title') || element.attr('title') || '' ).html(),
+							title   : $('<div/>').text(DOMPurify.sanitize(
+								element.is('img') ? element.attr('title') : element.find('img').attr('title') || ''
+							)).html(),
 							isDom   : true,
 							element : element
 						};
+						console.log( element.find('img') );
+						console.log('title: ');
+						console.log( element.find('img').attr('title') );
 
 						if ($.metadata) {
 							$.extend(true, obj, element.metadata());
@@ -293,7 +298,7 @@
 				}
 
 				href  = opts.href  || obj.href || (isString(element) ? element : null);
-				title = opts.title !== undefined ? opts.title : obj.title || '';
+				title = DOMPurify.sanitize(opts.title !== undefined ? opts.title : obj.title || '');
 
 				content = opts.content || obj.content;
 				type    = content ? 'html' : (opts.type  || obj.type);
@@ -1981,7 +1986,7 @@
 				return;
 			}
 
-			title = $('<div class="fancybox-title fancybox-title-' + type + '-wrap">' + text + '</div>');
+			title = $('<div class="fancybox-title fancybox-title-' + type + '-wrap">' + DOMPurify.sanitize(text) + '</div>');
 
 			switch (type) {
 				case 'inside':

@@ -4,10 +4,10 @@
  * Plugin Name:Blog2Social: Social Media Auto Post & Scheduler
  * Plugin URI: https://www.blog2social.com
  * Description:Auto publish, schedule & share posts on social media: Facebook, X, XING, LinkedIn, Instagram, ... crosspost to pages & groups
- * Author: Blog2Social, Adenion
+ * Author: Blog2Social, miaadenion
  * Text Domain: blog2social
  * Domain Path: /languages
- * Version: 8.4.2
+ * Version: 8.4.3
  * Requires at least: 6.2
  * Requires PHP: 7.4
  * Tested up to: 6.8    
@@ -15,7 +15,7 @@
  * License: GPLv3
  */
 
-define('B2S_PLUGIN_VERSION', '842');
+define('B2S_PLUGIN_VERSION', '843');
 define('B2S_PLUGIN_LANGUAGE', serialize(array('de_DE', 'en_US')));
 define('B2S_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('B2S_PLUGIN_URL', plugin_dir_url(__FILE__));
@@ -75,13 +75,15 @@ function uninstallPlugin() {
         global $wpdb;
         if (is_multisite()) {
             $sql = "SELECT blog_id FROM {$wpdb->base_prefix}blogs";
+           
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
             $blog_ids = $wpdb->get_results($sql, ARRAY_A);
             if (is_array($blog_ids) && !empty($blog_ids)) {
                 $union = "";
                 foreach ($blog_ids as $key => $blog_data) {
                     $blog_prefix = $wpdb->get_blog_prefix($blog_data['blog_id']);
                     if (!empty($blog_prefix)) {
-                        $existsTable = $wpdb->get_results('SHOW TABLES LIKE "' . $blog_prefix . 'b2s_user"');
+                        $existsTable = $wpdb->get_results($wpdb->prepare('SHOW TABLES LIKE %s', $blog_prefix . 'b2s_user"'), ARRAY_A);
                         if (is_array($existsTable) && !empty($existsTable)) {
                             if (!empty($union)) {
                                 $union .= " UNION ALL ";
@@ -91,7 +93,9 @@ function uninstallPlugin() {
                     }
                 }
                 if (!empty($union)) {
+                    
                     $sql = "SELECT * FROM ( " . $union . " ) as all_tokens";
+                    // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
                     $data = $wpdb->get_results($sql, ARRAY_A);
                     if (!empty($data) && is_array($data)) {
                         require_once (plugin_dir_path(__FILE__) . 'includes/B2S/Api/Post.php');
@@ -100,7 +104,9 @@ function uninstallPlugin() {
                 }
             }
         } else {
+            
             $sql = "SELECT token,blog_user_id FROM `{$wpdb->prefix}b2s_user`";
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
             $data = $wpdb->get_results($sql, ARRAY_A);
             if (!empty($data) && is_array($data)) {
                 require_once (plugin_dir_path(__FILE__) . 'includes/B2S/Api/Post.php');
