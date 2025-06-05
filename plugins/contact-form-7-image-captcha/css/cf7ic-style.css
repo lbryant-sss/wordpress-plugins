@@ -19,6 +19,7 @@
 span.captcha-image > label {
   display: inline-block !important;
   position: relative;
+  width: 30px !important;
 }
 
 /* Hide radio */

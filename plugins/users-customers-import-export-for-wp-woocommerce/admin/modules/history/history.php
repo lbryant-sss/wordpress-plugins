@@ -261,7 +261,7 @@ class Wt_Import_Export_For_Woo_Basic_History
 						$ext = strtolower(end($ext_arr));
 						
 						if ($ext === 'log') {
-							$log_file_path = Wt_Import_Export_For_Woo_Basic_Log::get_file_path($safe_filename);
+							$log_file_path = Wt_Import_Export_For_Woo_Basic_Log::get_file_path($log_file_name);
 							
 							// Validate the final path is within allowed directory
 							$real_path = realpath($log_file_path);
@@ -532,7 +532,7 @@ class Wt_Import_Export_For_Woo_Basic_History
 			'msgs'=>array(
 				'sure'=>__('Are you sure?'),
 			)
-		);
+		); 
 		wp_localize_script($this->module_id, 'wt_iew_history_basic_params', $params); 
             }
 	}
@@ -765,28 +765,28 @@ class Wt_Import_Export_For_Woo_Basic_History
 	*/
 	public function download_file()
 	{
-		if(isset($_GET['wt_iew_log_download']))
-		{ 
-			if(Wt_Iew_Sh::check_write_access(WT_IEW_PLUGIN_ID_BASIC)) /* check nonce and role */
-			{
-				$file_name = (isset($_GET['file']) ? sanitize_file_name(wp_unslash($_GET['file'])) : '');
-				if($file_name != "")
-				{
-					// Validate file extension
+		if(isset($_GET['wt_iew_log_download'])) { 
+
+			if(Wt_Iew_Sh::check_write_access(WT_IEW_PLUGIN_ID_BASIC)) { /* check nonce and role */
+			
+				$file_name = (isset($_GET['file']) ? sanitize_text_field(wp_unslash($_GET['file'])) : '');
+				if($file_name != "") {
+
 					$file_arr = explode(".", $file_name);
 					$file_ext = strtolower(end($file_arr));
-					if($file_ext === 'log') /* Only allowed files. */
-					{
+					if($file_ext === 'log') { /* Only allowed files. */
+					
 						// Get base log directory path
 						$file_path = Wt_Import_Export_For_Woo_Basic_Log::get_file_path($file_name);
 						$file_path = realpath($file_path);
-
+						
 						// Get the allowed log directory and its real path
 						$log_dir = WP_CONTENT_DIR.'/webtoffee_iew_log';
 						$real_log_dir = realpath($log_dir);
 						
 						// Validate the file is within allowed directory
 						if($file_path && $real_log_dir && strpos($file_path, $real_log_dir) === 0 && file_exists($file_path)) {
+
 							// Disable error display and logging
 							ini_set('display_errors', 0);
 							ini_set('error_reporting', 0);

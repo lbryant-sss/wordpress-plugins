@@ -217,7 +217,7 @@ class Feedback {
 			),
 		);
 
-		if ( defined( 'PREMIUM_PRO_ADDONS_VERSION' ) ) {
+		if ( Helper_Functions::check_papro_version() ) {
 			$data['deactivated_plugin']['papro'] =  'PAPRO: ' . PREMIUM_PRO_ADDONS_VERSION . get_option('papro_license_key', false);
 		}
 

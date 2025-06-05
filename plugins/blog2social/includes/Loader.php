@@ -676,11 +676,11 @@ class B2S_Loader {
             if (!isset($_POST['wp-preview']) || (isset($_POST['wp-preview']) && sanitize_text_field(wp_unslash($_POST['wp-preview'])) != 'dopreview')) {
                 if (isset($_POST['post_ID']) && (int) $_POST['post_ID'] > 0) {
 
-                    if (!isset($_POST['b2s-meta-box-nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['b2s-meta-box-nonce'])), 'b2s_security_nonce')){       
+                    /*if (!isset($_POST['b2s-meta-box-nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['b2s-meta-box-nonce'])), 'b2s_security_nonce')){       
                         echo wp_json_encode(array('result' => false, 'error' => 'nonce'));
                         wp_die();
                         return;
-                    }
+                    }*/
 
                     //Gutenberg WP V5.0 - B2S V5.1.0 optimization
                     if (!isset($_POST['post_title']) || !isset($_POST['content'])) {

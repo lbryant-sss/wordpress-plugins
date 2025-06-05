@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: YITH WooCommerce Ajax Product filter\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yith-woocommerce-"
 "ajax-product-filter\n"
-"POT-Creation-Date: 2025-03-19 15:10:18+00:00\n"
+"POT-Creation-Date: 2025-06-04 13:48:32+00:00\n"
 "PO-Revision-Date: 2019-06-06 10:16+0200\n"
 "Last-Translator: Caner Öncel <caneroncel@gmail.com>\n"
 "Language-Team: Caner Öncel <caneroncel@gmail.com>\n"
@@ -639,13 +639,13 @@ msgctxt ""
 msgid "Clear All"
 msgstr ""
 
-#: includes/class-yith-wcan-install.php:194
+#: includes/class-yith-wcan-install.php:204
 msgctxt "[ADMIN] Name of default preset that is installed with the plugin"
 msgid "Default preset"
 msgstr ""
 
 #. translators: 1. Taxonomy name.
-#: includes/class-yith-wcan-install.php:455
+#: includes/class-yith-wcan-install.php:481
 #, fuzzy
 msgctxt "[ADMIN] Name of default taxonomy filter created by plugin"
 msgid "Filter by %s"

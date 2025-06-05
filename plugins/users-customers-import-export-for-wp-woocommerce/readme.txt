@@ -2,9 +2,9 @@
 Contributors: webtoffee
 Tags: import customers, export customers, import users from csv, export users to csv, import export
 Requires at least: 3.0.1
-Tested up to: 6.7.2
+Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.6.3
+Stable tag: 2.6.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,8 +28,8 @@ You can import or export user/customer data using CSV files. This helps effortle
 &#128312; **Export Guest Users** - Include data of WooCommerce guest customers (users who bought products from the site without creating an account)
 &#128312; **Export Specific Users** - Search by username or email while exporting with auto-suggestions of email addresses and names in export data fields for quick filtering.
 
-&#9989; Tested OK with WordPress 6.7.2
-&#9989; Tested OK with WooCommerce 9.7.0
+&#9989; Tested OK with WordPress 6.8
+&#9989; Tested OK with WooCommerce 9.8.5
 &#9989; Tested OK with PHP 8.3
 
 == How Does Wordpress User Import Export Plugin Work? ==
@@ -218,6 +218,11 @@ Please refer the article on how to <a href="https://www.webtoffee.com/refresh-wo
 
 
 == Changelog ==
+
+= 2.6.4 2025-06-04 =
+* [Fix] - Load plugin textdomain on 'init' to meet WordPress 6.7+ localization requirements.
+* [Compatibility] - Tested OK with WordPress 6.8
+* [Compatibility] - Tested OK with WooCommerce 9.8.5
 
 = 2.6.3 2025-03-21 =
 * [Fix] - Vulnerable to Server-Side Request Forgery.
@@ -543,8 +548,7 @@ Please refer the article on how to <a href="https://www.webtoffee.com/refresh-wo
 
 == Upgrade Notice ==
 
-= 2.6.3 =
-* [Fix] - Vulnerable to Server-Side Request Forgery.
-* [Fix] - Vulnerable to Arbitrary File Deletion.
-* [Fix] - Vulnerable to PHP Object Injection.
-* [Fix] - Vulnerable to Directory Traversal
+= 2.6.4  =
+* [Fix] - Load plugin textdomain on 'init' to meet WordPress 6.7+ localization requirements.
+* [Compatibility] - Tested OK with WordPress 6.8
+* [Compatibility] - Tested OK with WooCommerce 9.8.5

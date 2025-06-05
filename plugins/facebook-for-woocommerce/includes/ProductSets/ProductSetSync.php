@@ -14,6 +14,7 @@ defined( 'ABSPATH' ) || exit;
 
 use WooCommerce\Facebook\RolloutSwitches;
 use WooCommerce\Facebook\Utilities\Heartbeat;
+use WC_Facebookcommerce_Utils;
 
 /**
  * The product set sync handler.
@@ -63,7 +64,7 @@ class ProductSetSync {
 				return;
 			}
 
-			$wc_category = get_term( $term_id, self::WC_PRODUCT_CATEGORY_TAXONOMY );
+			$wc_category       = get_term( $term_id, self::WC_PRODUCT_CATEGORY_TAXONOMY );
 			$fb_product_set_id = $this->get_fb_product_set_id( $wc_category );
 			if ( ! empty( $fb_product_set_id ) ) {
 				$this->update_fb_product_set( $wc_category, $fb_product_set_id );
@@ -103,6 +104,12 @@ class ProductSetSync {
 	 */
 	public function sync_all_product_sets() {
 		try {
+			$flag_name = '_wc_facebook_for_woocommerce_product_sets_sync_flag';
+			if ( 'yes' === get_transient( $flag_name ) ) {
+				return;
+			}
+			set_transient( $flag_name, 'yes', DAY_IN_SECONDS - 1 );
+
 			if ( ! $this->is_sync_enabled() ) {
 				return;
 			}
@@ -160,8 +167,8 @@ class ProductSetSync {
 	}
 
 	protected function build_fb_product_set_data( $wc_category ) {
-		$wc_category_name          = get_term_field( 'name', $wc_category, self::WC_PRODUCT_CATEGORY_TAXONOMY );
-		$wc_category_description   = get_term_field( 'description', $wc_category, self::WC_PRODUCT_CATEGORY_TAXONOMY );
+		$wc_category_name          = WC_Facebookcommerce_Utils::clean_string( get_term_field( 'name', $wc_category, self::WC_PRODUCT_CATEGORY_TAXONOMY ) );
+		$wc_category_description   = WC_Facebookcommerce_Utils::clean_string( get_term_field( 'description', $wc_category, self::WC_PRODUCT_CATEGORY_TAXONOMY ) );
 		$wc_category_url           = get_term_link( $wc_category, self::WC_PRODUCT_CATEGORY_TAXONOMY );
 		$wc_category_thumbnail_id  = get_term_meta( $wc_category, 'thumbnail_id', true );
 		$wc_category_thumbnail_url = wp_get_attachment_image_src( $wc_category_thumbnail_id );

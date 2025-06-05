@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb4631e7ae4a2f6a3795a92a813440087
+class ComposerStaticInit5b8fa284bf852263974f1227edb89665
 {
     public static $files = array (
         'f4d10ed4b7b76c603a1641a8e07ede95' => __DIR__ . '/../..' . '/includes/admin/admin-notices.php',
@@ -30,14 +30,16 @@ class ComposerStaticInitb4631e7ae4a2f6a3795a92a813440087
         'Mailchimp_Data_Encryption' => __DIR__ . '/../..' . '/includes/class-mailchimp-data-encryption.php',
         'Mailchimp_Form_Submission' => __DIR__ . '/../..' . '/includes/class-mailchimp-form-submission.php',
         'Mailchimp_List_Subscribe_Form_Blocks' => __DIR__ . '/../..' . '/includes/blocks/class-mailchimp-list-subscribe-form-blocks.php',
+        'Mailchimp_User_Sync' => __DIR__ . '/../..' . '/includes/admin/class-mailchimp-user-sync.php',
+        'Mailchimp_User_Sync_Background_Process' => __DIR__ . '/../..' . '/includes/class-mailchimp-user-sync-backgroud-process.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb4631e7ae4a2f6a3795a92a813440087::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb4631e7ae4a2f6a3795a92a813440087::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb4631e7ae4a2f6a3795a92a813440087::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5b8fa284bf852263974f1227edb89665::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5b8fa284bf852263974f1227edb89665::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit5b8fa284bf852263974f1227edb89665::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -18,6 +18,9 @@ License: GPLv3
 
 Change Log
 
+Ad Inserter 2.8.3 - 2025-06-04
+- Few minor bug fixes, cosmetic changes and code improvements
+
 Ad Inserter 2.8.3 - 2025-05-25
 - Added support to override dynamic blocks setting for each rotation
 - Few minor bug fixes, cosmetic changes and code improvements
@@ -3123,7 +3126,8 @@ function ai_adb_external_scripts () {
     $code .= '<object id="ai-adb-qu" data="https://secure.quantserve.com/quant.js" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";
   }
   if (!defined ('AI_ADB_NO_DUMMYIMAGE')) {
-    $code .= '<object id="ai-adb-di" data="https://dummyimage.com/468x60/0044FF/969697.png?text=banner-ads" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";
+//    $code .= '<object id="ai-adb-di" data="https://dummyimage.com/468x60/0044FF/969697.png?text=banner-ads" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;"></object>' . "\n";
+    $code .= '<img id="ai-adb-di" src="https://dummyimage.com/468x60/0044FF/969697.png?text=banner-ads" style="position:absolute; z-index: -100; top: -1000px; left: -1000px; visibility: hidden;">' . "\n";
   }
 
   return $code;
@@ -3298,7 +3302,7 @@ function add_footer_inline_scripts () {
         }
       }
 
-      if ($ai_wp_data [AI_STICK_TO_THE_CONTENT] || $ai_wp_data [AI_ANIMATION]) {
+      if ($ai_wp_data  [AI_STICK_TO_THE_CONTENT] || $ai_wp_data [AI_ANIMATION]) {
         echo ai_get_js ('ai-sticky-data');
         if ($inline_js) {
           echo ai_get_js ('ai-sticky');

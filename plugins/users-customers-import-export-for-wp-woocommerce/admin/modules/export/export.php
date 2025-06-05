@@ -777,7 +777,15 @@ if (!class_exists('Wt_Import_Export_For_Woo_Basic_Export')) {
 							$export_dir = realpath(WP_CONTENT_DIR.'/webtoffee_export');
 						
 							// Verify file is within allowed export directory
-							if($file_path && $export_dir && strpos($file_path, $export_dir) === 0 && file_exists($file_path) && is_file($file_path)) { /* check existence of file and verify path */ 
+							if($file_path && $export_dir && strpos($file_path, $export_dir) === 0 && file_exists($file_path) && is_file($file_path)) { /* check existence of file and verify path */ 	
+							// Disable error display and logging
+								ini_set('display_errors', 0);
+								ini_set('error_reporting', 0);	
+								// Clean ALL output buffers							
+								while ( ob_get_level() > 0 ) {
+									@ob_end_clean();
+								}
+								@ob_start();								
 								header('Pragma: public');
 								header('Expires: 0');
 								header('Cache-Control: must-revalidate, post-check=0, pre-check=0');

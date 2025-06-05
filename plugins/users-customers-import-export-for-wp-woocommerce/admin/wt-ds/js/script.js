@@ -119,6 +119,24 @@ var wbte_uimpexp_checkboxes = {
 wbte_uimpexp_checkboxes.Set();
 
 /**
+ *  Help widget
+ */
+var wbte_uimpexp_help_widget={
+	Set:function() {
+		jQuery(document).on('click', function (e) {
+			var widget = jQuery('.wbte_uimpexp_help-widget');
+			var checkbox = jQuery('#wt_ds_help-widget_hidden_checkbox');
+
+			if (checkbox.is(':checked') && !widget.has(e.target).length && !widget.is(e.target)) {
+			  checkbox.prop('checked', false);
+			}
+		});
+	}
+};
+
+wbte_uimpexp_help_widget.Set();
+
+/**
  *  Popup creator
  */
 var wbte_uimpexp_popup={

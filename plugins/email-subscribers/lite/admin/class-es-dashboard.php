@@ -15,47 +15,14 @@ if ( ! class_exists( 'ES_Dashboard' ) ) {
 	class ES_Dashboard {
 
 		public function show() {
-			$source         = 'es_dashboard';
-			$override_cache = true;
-			$days           = 60;
-			$args           = array(
-				'days' => $days,
-			);
-			$reports_data   = ES_Reports_Data::get_dashboard_reports_data( $source, $override_cache, $args );
-
-			/*Dashboard new blocks data & arguments*/
 			$args = array(
-				'status'        => array(
-					IG_ES_CAMPAIGN_STATUS_IN_ACTIVE,
-					IG_ES_CAMPAIGN_STATUS_ACTIVE,
-				),
-				'order_by_column' => 'ID',
-				'limit' => '5',
-				'order' => 'DESC',
+				'days' => 60,
 			);
-			$campaigns = ES()->campaigns_db->get_campaigns($args);
+			$dashboard_data = ES_Dashboard_Controller::get_dashboard_data( $args );
 
-			$audience_activity = $this->get_audience_activities();
-
-			$forms_args = array(
-				'order_by_column' => 'ID',
-				'limit' => '2',
-				'order' => 'DESC',
-			);
-			$forms = ES()->forms_db->get_forms($forms_args);
-			$lists = array_slice(array_reverse(ES()->lists_db->get_lists()), 0, 2);
-			/*End*/
-			
-			
 			ES_Admin::get_view(
 				'dashboard/dashboard',
-				array(
-					'campaigns' => $campaigns,
-					'audience_activity' => $audience_activity,
-					'forms' => $forms,
-					'lists' => $lists,
-					'dashboard_kpi' => $reports_data
-				)
+				$dashboard_data
 			);
 		}
 
@@ -68,15 +35,17 @@ if ( ! class_exists( 'ES_Dashboard' ) ) {
 				return 0;
 			}
 
-			$page           = 'es_dashboard';
+			//$page           = 'es_dashboard';
 			$days           = ig_es_get_request_data( 'days' );
 			$list_id        = ig_es_get_request_data( 'list_id' );
 			$args           = array(
 				'list_id' => $list_id,
 				'days'    => $days,
+				'page'    => 'es_dashboard',
+				'override_cache' => true
 			);
-			$override_cache = true;
-			$reports_data   = ES_Reports_Data::get_dashboard_reports_data( $page, $override_cache, $args );
+			//$override_cache = true;
+			$reports_data   = ES_Dashboard_Controller::get_subscribers_stats( $args );
 			ob_start();
 			ES_Admin::get_view(
 				'dashboard/subscribers-stats',
@@ -90,21 +59,7 @@ if ( ! class_exists( 'ES_Dashboard' ) ) {
 			wp_send_json_success( $response );
 		}
 
-		public function get_audience_activities() {
-			$recent_activities_args = array(
-				'limit'    => 5,
-				'order_by' => 'updated_at',
-				'order'    => 'DESC',
-				'type' => array(
-					IG_CONTACT_SUBSCRIBE,
-					IG_CONTACT_UNSUBSCRIBE
-				)
-			);
-			$recent_actions    = ES()->actions_db->get_actions( $recent_activities_args );
-			$recent_activities = $this->prepare_activities_from_actions( $recent_actions );
-			
-			return $recent_activities;
-		}
+		
 
 		public function prepare_activities_from_actions( $actions ) {
 			$activities = array();

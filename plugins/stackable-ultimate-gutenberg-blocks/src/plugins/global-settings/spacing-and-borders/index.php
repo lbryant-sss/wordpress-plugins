@@ -21,6 +21,7 @@ if ( ! class_exists( 'Stackable_Global_Spacing_And_Borders' ) ) {
   		function __construct() {
 			// Register our settings.
 			add_action( 'register_stackable_global_settings', array( $this, 'register_spacing_and_borders' ) );
+			add_action( 'stackable_early_version_upgraded',  array( $this, 'migrate_spacing_and_borders_schema_changes' ), 10, 2 );
 
 			if ( is_frontend() ) {
 
@@ -39,6 +40,7 @@ if ( ! class_exists( 'Stackable_Global_Spacing_And_Borders' ) ) {
 		 */
 		public function register_spacing_and_borders() {
 			$four_range_properties = Stackable_Global_Settings::get_four_range_properties();
+			$string_four_range_properties = Stackable_Global_Settings::get_string_four_range_properties();
 			$string_properties = Stackable_Global_Settings::get_string_properties();
 			$number_properties = Stackable_Global_Settings::get_number_properties();
 
@@ -54,24 +56,24 @@ if ( ! class_exists( 'Stackable_Global_Spacing_And_Borders' ) ) {
 							'properties' => array(
 								'container-border-style' => $string_properties,
 								'container-border-width' => $four_range_properties,
-								'container-border-radius' => $four_range_properties,
+								'container-border-radius' => $string_four_range_properties,
 								'container-box-shadow' => $string_properties,
-								'container-padding' => $four_range_properties,
+								'container-padding' => $string_four_range_properties,
 
 								'block-background-border-style' => $string_properties,
 								'block-background-border-width' => $four_range_properties,
-								'block-background-border-radius' => $four_range_properties,
+								'block-background-border-radius' => $string_four_range_properties,
 								'block-background-box-shadow' => $string_properties,
-								'block-background-padding' => $four_range_properties,
+								'block-background-padding' => $string_four_range_properties,
 
-								'block-margin-bottom' => $number_properties,
+								'block-margin-bottom' => $string_properties,
 
 								'column-margin' => $number_properties,
-								'columns-column-gap' => $number_properties,
-								'columns-row-gap' => $number_properties,
+								'columns-column-gap' => $string_properties,
+								'columns-row-gap' => $string_properties,
 
 								'image-drop-shadow' => $string_properties,
-								'image-border-radius' => $four_range_properties,
+								'image-border-radius' => $string_four_range_properties,
 							)
 						)
 					),
@@ -113,6 +115,68 @@ if ( ! class_exists( 'Stackable_Global_Spacing_And_Borders' ) ) {
 			$classes[] = 'stk-has-design-system-spacing-and-borders';
 			return $classes;
 		}
+
+		public function migrate_spacing_and_borders_schema_changes( $old_version, $new_version ) {
+			if ( empty( $old_version ) || version_compare( $old_version, "3.16.0", ">=" ) ) {
+				return;
+			}
+
+			$option_name = 'stackable_global_spacing_and_borders';
+			$settings = get_option( $option_name );
+
+			if ( empty( $settings ) || ! is_array( $settings ) ) {
+				return;
+			}
+
+			$number_to_string_properties = [
+				'block-margin-bottom',
+				'columns-column-gap',
+				'columns-row-gap',
+			];
+
+			$four_range_to_string_properties = [
+				'container-border-radius',
+				'container-padding',
+				'block-background-border-radius',
+				'block-background-padding',
+				'image-border-radius',
+			];
+
+			$updated = false;
+
+			// Migrate number_properties to string_properties
+			foreach ( $number_to_string_properties as $property ) {
+				if ( isset( $settings[ $property ] ) && is_array( $settings[ $property ] ) ) {
+					foreach ( $settings[ $property ] as $key => $value ) {
+						if ( is_numeric( $value ) ) {
+							$settings[ $property ][ $key ] = strval( $value );
+							$updated = true;
+						}
+					}
+				}
+			}
+
+			// Migrate four_range_properties to string_four_range_properties
+			foreach ( $four_range_to_string_properties as $property ) {
+				if ( isset( $settings[ $property ] ) && is_array( $settings[ $property ] ) ) {
+					foreach ( $settings[ $property ] as $viewport => $sides ) {
+						if ( is_array( $sides ) ) {
+							foreach ( $sides as $side => $value ) {
+								if ( is_numeric( $value ) ) {
+									$settings[ $property ][ $viewport ][ $side ] = strval( $value );
+									$updated = true;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			if ( $updated ) {
+				update_option( $option_name, $settings );
+			}
+		}
+
 	}
 
 	new Stackable_Global_Spacing_And_Borders();

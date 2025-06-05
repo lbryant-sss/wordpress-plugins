@@ -11,4 +11,6 @@ return array(
     'Mailchimp_Data_Encryption' => $baseDir . '/includes/class-mailchimp-data-encryption.php',
     'Mailchimp_Form_Submission' => $baseDir . '/includes/class-mailchimp-form-submission.php',
     'Mailchimp_List_Subscribe_Form_Blocks' => $baseDir . '/includes/blocks/class-mailchimp-list-subscribe-form-blocks.php',
+    'Mailchimp_User_Sync' => $baseDir . '/includes/admin/class-mailchimp-user-sync.php',
+    'Mailchimp_User_Sync_Background_Process' => $baseDir . '/includes/class-mailchimp-user-sync-backgroud-process.php',
 );

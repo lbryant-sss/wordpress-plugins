@@ -7,7 +7,7 @@ $selective_refresh =  'refresh';
 	$wp_customize->add_section(
 		'features_setting', array(
 			'title' => esc_html__( 'Features Section', 'clever-fox' ),
-			'priority' => 5,
+			'priority' => 6,
 			'panel' => 'webique_frontpage_sections',
 		)
 	);

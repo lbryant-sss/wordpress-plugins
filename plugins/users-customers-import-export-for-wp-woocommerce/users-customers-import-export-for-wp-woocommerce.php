@@ -5,10 +5,10 @@
   Description: Export and Import User/Customers details From and To your WordPress/WooCommerce.
   Author: WebToffee
   Author URI: https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/
-  Version: 2.6.3
+  Version: 2.6.4
   Text Domain: users-customers-import-export-for-wp-woocommerce
   Domain Path: /languages
-  WC tested up to: 9.7.0
+  WC tested up to: 9.8.5
   Requires at least: 3.0
   Requires PHP: 5.6
   License: GPLv3
@@ -48,7 +48,7 @@ if (!defined('WT_IEW_DEBUG_BASIC_TROUBLESHOOT')) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('WT_U_IEW_VERSION', '2.6.3');
+define('WT_U_IEW_VERSION', '2.6.4');
 
 /**
  * The code that runs during plugin activation.
@@ -113,9 +113,12 @@ if (!get_option('wt_u_iew_is_active')) {
     activate_wt_import_export_for_woo_basic_user();
 }
 
-if (get_option('wt_u_iew_is_active')) {
-    run_wt_import_export_for_woo_basic_user();
-}
+add_action('init', function () {
+    if (get_option('wt_u_iew_is_active')) {
+        run_wt_import_export_for_woo_basic_user();
+    }
+});
+
 
 /* Plugin page links */
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'wt_uiew_plugin_action_links_basic_user');
@@ -176,6 +179,11 @@ if (!function_exists('wt_users_customers_imex_plugin_screen_update_js')) {
 include_once plugin_dir_path(__FILE__) . 'includes/class-wt-userimport-uninstall-feedback.php';
 
 include_once 'user_import_export_review_request.php';
+
+// Load Common Helper Class (needed by non-apache-info)
+if ( ! class_exists( 'Wt_Import_Export_For_Woo_Basic_Common_Helper' ) ) {
+    require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wt-common-helper.php';
+}
 
 // Add dismissible server info for file restrictions
 include_once plugin_dir_path(__FILE__) . 'includes/class-wt-non-apache-info.php';
@@ -295,6 +303,7 @@ function wt_user_imp_exp_basic_migrate_serialized_data_to_json() {
                     
                 // Check if data is serialized
                 if (is_serialized($row['data'])) {
+                    require_once plugin_dir_path(__FILE__) . 'helpers/class-wt-common-helper.php';
                     $unserialized_data = Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_unserialize_safe($row['data']);
                     if ($unserialized_data !== false) {
                         $json_data = wp_json_encode($unserialized_data);

@@ -656,7 +656,7 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 		)
 	);
 	
-	$wp_customize->add_setting( 'platform_reviews', 
+	$wp_customize->add_setting( 'application_platforms', 
 		array(
 		 'sanitize_callback' => 'webique_repeater_sanitize',
 		 // 'transport'         => $selective_refresh,
@@ -667,7 +667,7 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 
 	$wp_customize->add_control( 
 		new Webique_Repeater( $wp_customize, 
-		'platform_reviews', 
+		'application_platforms', 
 			array(
 				'label'   => esc_html__('Platforms','clever-fox'),
 				'section' => 'footer_sponsors_section',

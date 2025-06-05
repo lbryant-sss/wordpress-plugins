@@ -340,13 +340,26 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
 		}
                
         if (!empty($data['user_details']['user_pass'])) {
-            $is_wordpress_password = false;
-            if ( strlen($data['user_details']['user_pass']) === 34 && strpos( $data['user_details']['user_pass'], '$P$B') === 0){
-                $is_wordpress_password = true;
-            }
-            $password = ($is_wordpress_password) ? $data['user_details']['user_pass'] : wp_hash_password(str_replace("'", "\'",$data['user_details']['user_pass']));
-
+            // Store the raw password (from CSV) into a variable for processing
+            $raw_pass = $data['user_details']['user_pass'];
+            // Flag to indicate whether the password was system-generated
             $password_generated = false;
+        
+            // Initialize a flag to identify already hashed passwords
+            $is_hashed_password = false;
+
+            // Check if it's a native WordPress hash format ($P$... typically 34 characters)
+            if (strlen($raw_pass) === 34 && strpos($raw_pass, '$P$') === 0) {
+                $is_hashed_password = true;
+            }
+        
+            // Check if it's a bcrypt hash (exported via plugin, possibly with $wp$ prefix)
+            // Accepts patterns like: $2y$, $2a$, $2b$, with or without a $wp prefix
+            if (preg_match('/^(?:\$wp)?\$2[aby]\$.{56}$/', $raw_pass)) {
+                $is_hashed_password = true;
+            }
+        
+            $password = $is_hashed_password ? $raw_pass : wp_hash_password($raw_pass);
         } else {
             $password = wp_generate_password(12, true);
             $password_generated = true;            
@@ -571,9 +584,12 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
                 wp_update_user($user_data);
             }
             $is_wordpress_password = false;
-            if ( strlen($data['user_details']['user_pass']) === 34 && strpos( $data['user_details']['user_pass'], '$P$B') === 0){
+
+            // 2.6.4 - Hashed password with $wp$ prefix will also be considered as WordPress password.
+            if ( strlen( $data['user_details']['user_pass'] ) === 34 && 0 === strpos( $data['user_details']['user_pass'], '$P$B' ) || 0 === strpos( $data['user_details']['user_pass'], '$wp$' ) ) {
                 $is_wordpress_password = true;
             }
+
             if ($is_wordpress_password && isset($data['user_details']['user_pass']) && !empty($data['user_details']['user_pass'])) {
                 $password = $data['user_details']['user_pass'];
                 $user_data = array_merge($user_data, array('user_login' => $wp_user_object->user_login, 'user_email' => ( $email_updated ) ? $customer_email : $wp_user_object->user_email, 'user_url' =>$wp_user_object->user_url));                
