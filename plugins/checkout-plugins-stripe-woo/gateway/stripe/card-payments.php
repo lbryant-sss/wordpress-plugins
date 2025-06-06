@@ -59,6 +59,21 @@ class Card_Payments extends Abstract_Payment_Gateway {
 	public function __construct() {
 		parent::__construct();
 
+		add_action( 'init', [ $this, 'init_gateway' ] );
+
+		add_filter( 'woocommerce_payment_successful_result', [ $this, 'modify_successful_payment_result' ], 999, 2 );
+		add_action( 'wc_ajax_cpsw_verify_payment_intent', [ $this, 'verify_intent' ] );
+		add_filter( 'woocommerce_payment_complete_order_status', [ $this, 'cpsw_payment_complete_order_status' ], 10, 3 );
+	}
+
+	/**
+	 * Initializes the gateway.
+	 *
+	 * Sets up the gateway's properties and settings.
+	 *
+	 * @since 1.11.0
+	 */
+	public function init_gateway() {
 		$this->method_title       = __( 'Stripe Card Processing', 'checkout-plugins-stripe-woo' );
 		$this->method_description = __( 'Accepts payments via Credit/Debit Cards', 'checkout-plugins-stripe-woo' );
 		$this->has_fields         = true;
@@ -76,10 +91,6 @@ class Card_Payments extends Abstract_Payment_Gateway {
 		$this->capture_method       = $this->get_option( 'charge_type' );
 		$this->allowed_cards        = empty( $this->get_option( 'allowed_cards' ) ) ? [ 'mastercard', 'visa', 'diners', 'discover', 'amex', 'jcb', 'unionpay' ] : $this->get_option( 'allowed_cards' );
 		$this->statement_descriptor = $this->clean_statement_descriptor( $this->get_option( 'statement_descriptor' ) );
-
-		add_filter( 'woocommerce_payment_successful_result', [ $this, 'modify_successful_payment_result' ], 999, 2 );
-		add_action( 'wc_ajax_cpsw_verify_payment_intent', [ $this, 'verify_intent' ] );
-		add_filter( 'woocommerce_payment_complete_order_status', [ $this, 'cpsw_payment_complete_order_status' ], 10, 3 );
 	}
 
 	/**

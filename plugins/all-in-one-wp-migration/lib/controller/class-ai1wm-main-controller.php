@@ -726,19 +726,19 @@ class Ai1wm_Main_Controller {
 		);
 
 		$upload_limit_text = sprintf(
-			/* translators: 1: Max upload file size. */
+			/* translators: 1: Max upload file size */
 			__(
 				'Your file exceeds the <strong>%1$s</strong> upload limit set by your host.<br />%2$s<br />%3$s',
 				'all-in-one-wp-migration'
 			),
 			esc_html( ai1wm_size_format( wp_max_upload_size() ) ),
 			sprintf(
-				/* translators: Link to Unlimited extension. */
+				/* translators: Link to Unlimited Extension */
 				__( 'Our <a href="%s" target="_blank">Unlimited Extension</a> bypasses this!', 'all-in-one-wp-migration' ),
 				'https://servmask.com/products/unlimited-extension?utm_source=file-import&utm_medium=plugin&utm_campaign=ai1wm'
 			),
 			sprintf(
-				/* translators: Link to how to article. */
+				/* translators: Link to how to article */
 				__( 'If you prefer a manual fix, follow our step-by-step guide on <a href="%s" target="_blank">raising your upload limit</a>.', 'all-in-one-wp-migration' ),
 				'https://help.servmask.com/2018/10/27/how-to-increase-maximum-upload-file-size-in-wordpress/'
 			)
@@ -800,18 +800,18 @@ class Ai1wm_Main_Controller {
 				/* translators: Disk space to free up. */
 				'out_of_disk_space'                   => __( 'Not enough disk space.<br /> Free up %s before restoring.', 'all-in-one-wp-migration' ),
 				'file_too_large'                      => sprintf(
-					/* translators: 1: Link to Unlimited extension, 2: Link to how to article. */
+					/* translators: 1: Link to Unlimited Extension, 2: Link to how to article */
 					__(
 						'Your file exceeds the upload limit set by your host web server.<br />%1$s<br />%2$s',
 						'all-in-one-wp-migration'
 					),
 					sprintf(
-						/* translators: Link to Unlimited extension. */
+						/* translators: Link to Unlimited Extension */
 						__( 'Our <a href="%s" target="_blank">Unlimited Extension</a> bypasses this!', 'all-in-one-wp-migration' ),
 						'https://servmask.com/products/unlimited-extension?utm_source=file-upload-webserver&utm_medium=plugin&utm_campaign=ai1wm'
 					),
 					sprintf(
-						/* translators: Link to how to article. */
+						/* translators: Link to how to article */
 						__( 'If you prefer a manual fix, follow our step-by-step guide on <a href="%s" target="_blank">raising your upload limit</a>.', 'all-in-one-wp-migration' ),
 						'https://help.servmask.com/2018/10/27/how-to-increase-maximum-upload-file-size-in-wordpress/'
 					)
@@ -826,9 +826,9 @@ class Ai1wm_Main_Controller {
 
 				// Backups
 				'want_to_delete_this_file'            => __( 'Are you sure you want to delete this backup?', 'all-in-one-wp-migration' ),
-				'unlimited'                           => __( 'Backup restore requires the Unlimited extension. <a href="https://servmask.com/products/unlimited-extension" target="_blank">Get it here</a>', 'all-in-one-wp-migration' ),
+				'unlimited'                           => __( 'Backup restore requires the Unlimited Extension. <a href="https://servmask.com/products/unlimited-extension" target="_blank">Get it here</a>', 'all-in-one-wp-migration' ),
 				'restore_from_file'                   => sprintf(
-					/* translators: 1: Link to Unlimited extension. */
+					/* translators: 1: Link to Unlimited Extension */
 					__( '"Restore" functionality is available in our <a href="%s" target="_blank">Unlimited Extension</a>.<br /> If you would rather go the manual route, you can still restore by downloading your backup and using "Import from file".', 'all-in-one-wp-migration' ),
 					'https://servmask.com/products/unlimited-extension?utm_source=restore-from-file&utm_medium=plugin&utm_campaign=ai1wm'
 				),

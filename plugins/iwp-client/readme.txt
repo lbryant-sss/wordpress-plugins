@@ -2,8 +2,8 @@
 Contributors: infinitewp, amritanandh, rajkuppus
 Tags: admin, administration, amazon, api, authentication, automatic, dashboard, dropbox, events, integration, manage, multisite, multiple, notification, performance, s3, security, seo, stats, tracking, infinitewp, updates, backup, restore, iwp, infinite
 Requires at least: 3.1
-Tested up to: 6.7.2
-Stable tag: 1.13.2
+Tested up to: 6.8.1
+Stable tag: 1.13.3
 
 Install this plugin on unlimited sites and manage them all from a central dashboard.
 This plugin communicates with your InfiniteWP Admin Panel.
@@ -47,6 +47,9 @@ Credits: [Vladimir Prelovac](http://prelovac.com/vladimir) for his worker plugin
 5. One-click updates
 
 == Changelog ==
+
+= 1.13.3 - June 5th 2025 =
+* Fix: Multicall limit reached for multical php db backup for the large site for few users.
 
 = 1.13.2 - Feb 17th 2025 =
 * Fix: MySQL DB Dump was not functioning when the database host was specified as localhost:3306

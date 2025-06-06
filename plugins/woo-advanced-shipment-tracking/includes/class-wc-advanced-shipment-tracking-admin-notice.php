@@ -67,7 +67,7 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 			add_action( 'admin_notices', array( $this, 'ast_pro_admin_notice' ) );
 			
 			// Trackship Notice
-			add_action( 'admin_notices', array( $this, 'ast_pro_trackship_notice' ) );
+			// add_action( 'admin_notices', array( $this, 'ast_pro_trackship_notice' ) );
 
 			// AST free Review Notice
 			//add_action( 'admin_notices', array( $this, 'ast_review_notice' ) );
@@ -122,9 +122,9 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 		
 		if ( get_option('ts4wc_notice_ignore_381') ) {
 			return;
-		}	
-
-		if ( !get_option( 'integration_notice_ignore_377' ) && !get_option('ast_pro_update_ignore_381') ) {
+		}
+		
+		if ( !get_option('ast_pro_update_ignore_382') ) {
 			return;
 		}
 		
@@ -193,7 +193,7 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 			if (isset($_GET['nonce'])) {
 				$nonce = sanitize_text_field($_GET['nonce']);
 				if (wp_verify_nonce($nonce, 'ast_pro_dismiss_notice')) {
-					update_option('ast_pro_update_ignore_381', 'true');
+					update_option('ast_pro_update_ignore_382', 'true');
 				}
 			}
 		}
@@ -231,7 +231,7 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 	*/
 	public function ast_pro_admin_notice() {
 		
-		if ( get_option('ast_pro_update_ignore_381') ) {
+		if ( get_option('ast_pro_update_ignore_382') ) {
 			return;
 		}
 		
@@ -269,10 +269,10 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 		</style>
 		<div class="notice updated notice-success ast-dismissable-notice">
 			<a href="<?php esc_html_e( $dismissable_url ); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
-			<h2>🚀 Upgrade to Automate Your Shipping Workflow! 🎉</h2>
-			<p>Streamline your fulfillment process with the <strong>Advanced Shipment Tracking Pro</strong> and save time on daily shipping tasks. Automate the order fulfillment with integration with <strong>20+ shipping services</strong>, and manage all shipments in Woo from a centralized dashboard.</p>
+			<h2>🚀 Upgrade to AST PRO & Automate Your Shipping Workflow!</h2>
+			<p>Streamline your fulfillment process with Advanced Shipment Tracking PRO and save hours on daily shipping tasks. Automate tracking, integrate with 20+ shipping services, and manage all shipments from a centralized dashboard—right inside WooCommerce.</p>
 			
-			<p><strong>Get 20% Off*!</strong> Use code <strong>ASTPRO20</strong> at checkout.</p>
+			<p><strong>🎉 Get 20% Off*!</strong> Use code <strong>ASTPRO20</strong> at checkout.</p>
 			<a class="button-primary ast_notice_btn" target="blank" href="https://www.zorem.com/product/woocommerce-advanced-shipment-tracking/">Upgrade Now</a>
 			<a class="button-primary ast_notice_btn" href="<?php esc_html_e( $dismissable_url ); ?>">Dismiss</a>
 			<p><strong>★</strong> for new customers only</p>

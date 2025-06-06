@@ -185,6 +185,7 @@ export interface Bump {
     filter_match_type: 'all' | 'any' | 'none';
     filters: any;
     metadata: any;
+    rendered_description: string;
     name: string;
     percent_off: number;
     price: string | Price;

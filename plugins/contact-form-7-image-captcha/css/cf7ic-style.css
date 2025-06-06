@@ -19,14 +19,15 @@
 span.captcha-image > label {
   display: inline-block !important;
   position: relative;
-  width: 30px !important;
+  width: auto !important;
 }
 
 /* Hide radio */
 .captcha-image svg {
   padding: 5px;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
+  box-sizing: border-box;
 }
 
 .captcha-image label>input+svg {

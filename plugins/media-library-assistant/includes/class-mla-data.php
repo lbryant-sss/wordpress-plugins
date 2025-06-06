@@ -911,7 +911,7 @@ class MLAData {
 				$result['value'] = $name;
 			}
 
-			if ( !empty( $tail ) ) {
+			if ( ! empty( $tail ) ) {
 				$match_count = preg_match( '/((text|single|export|unpack|array|multi|commas|raw|attr|url|kbmb|timestamp|date|fraction|substr|str_replace|match|extract|replace))(\((.*)\)$)*/', $tail, $matches );
 				if ( 1 == $match_count ) {
 					if ( ! empty( $matches[4] ) ) {
@@ -1328,7 +1328,7 @@ class MLAData {
 	 */
 	private static function _expand_terms( $value, $post_id ) {
 		$taxonomy = $value['value'];
-		$field = !empty( $value['qualifier'] ) ? $value['qualifier'] : 'name';
+		$field = ! empty( $value['qualifier'] ) ? $value['qualifier'] : 'name';
 
 		// Look for compound taxonomy.slug notation
 		$matches = explode( '.', $taxonomy );
@@ -1647,7 +1647,7 @@ class MLAData {
 					} else {
 						// Look for a custom field match
 						$meta_value = get_metadata( 'post', $parent_id, $value['value'], false );
-						if ( !empty( $meta_value ) ) {
+						if ( ! empty( $meta_value ) ) {
 							$parent_value = $meta_value;
 						}
 					}
@@ -2518,7 +2518,7 @@ class MLAData {
 		$namespace_arrays = array();
 		$metadata_source = '';
 		if ( isset( $levels[1] ) && isset( $levels[1]['values'] ) ) {
-			if ( isset( $levels[1]['values']['rdf:RDF'] ) && !empty( $levels[1]['values']['rdf:RDF']['rdf:Description'] ) ) {
+			if ( isset( $levels[1]['values']['rdf:RDF'] ) && ! empty( $levels[1]['values']['rdf:RDF']['rdf:Description'] ) ) {
 				if ( is_array( $levels[1]['values']['rdf:RDF']['rdf:Description'] ) ) {
 					/*
 					 * XMP parsing
@@ -2864,8 +2864,18 @@ class MLAData {
 	 * @param	string	full path and file name
 	 */
 	public static function mla_parse_avif_metadata( $path ) {
+		if ( !class_exists( 'MLAAVIF', false ) ) {
+			require_once( MLA_PLUGIN_PATH . 'includes/class-mla-data-avif.php' );
+		}
+
+		$results = MLAAVIF::mla_extract_AVIF_metadata( $path );
+		MLACore::mla_debug_add( __LINE__ . ' mla_extract_AVIF_metadata() = ' . var_export( $results, true ), MLACore::MLA_DEBUG_CATEGORY_ANY );
+	
+		return $results;
+
+		// NOTHING BELOW THIS LINE IS EXECUTED	
 		$properties = array();
-		
+
 		set_error_handler( 'MLAData::mla_metadata_error_handler' );
 		try {
 			$im = new imagick( $path );
@@ -2980,7 +2990,7 @@ class MLAData {
 		
 		// Find and parse the iHDR chunk
 		$chunk_header = self::mla_parse_png_chunk_header( $file_chunk, 8 );
-		if ( !empty( $chunk_header['type'] ) && ( 'IHDR' === $chunk_header['type'] ) && ( 13 === $chunk_header['length'] ) ) {
+		if ( ! empty( $chunk_header['type'] ) && ( 'IHDR' === $chunk_header['type'] ) && ( 13 === $chunk_header['length'] ) ) {
 			$chunk_header['offset'] = 8;
 			$chunk_list[] = $chunk_header;
 			$ihdr = substr( $file_chunk, 8+8, 13 );
@@ -3047,9 +3057,9 @@ class MLAData {
 		$file_chunk = file_get_contents( $file_name, true, NULL, $file_offset, $chunksize );
 //error_log( __LINE__ . " MLAData::mla_parse_png_metadata( {$file_offset} ) chunk = \r\n" . MLAData::mla_hex_dump( $file_chunk, 1024 ), 0 );
 
-		while ( !empty( $file_chunk ) ) {
+		while ( ! empty( $file_chunk ) ) {
 			$chunk_header = self::mla_parse_png_chunk_header( $file_chunk, 0 );
-			if ( !empty( $chunk_header['type'] ) ) {
+			if ( ! empty( $chunk_header['type'] ) ) {
 				$chunk_header['offset'] = $file_offset;
 				$chunk_list[] = $chunk_header;
 
@@ -3068,7 +3078,7 @@ class MLAData {
 //error_log( __LINE__ . " MLAData::mla_parse_png_metadata( {$file_offset} ) chunk = \r\n" . MLAData::mla_hex_dump( $file_chunk, 1024 ), 0 );
 		}
 
-		if ( !empty( $chunk_list ) ) {
+		if ( ! empty( $chunk_list ) ) {
 			//$metadata['chunk_list'] = $chunk_list;
 		}
 		
@@ -3958,17 +3968,18 @@ class MLAData {
 	}
 
 	/**
-	 * Convert .webp EXIF chunk data to a proper EXIF array
+	 * Convert raw EXIF chunk data to a proper EXIF array
 	 * 
 	 * @since 3.07
 	 *
 	 * @param	string	raw EXIF chunk data.
-	 * @param	integer	optinoal. Image width.
-	 * @param	integer	optinoal. Image height.
+	 * @param	integer	optional. Image width.
+	 * @param	integer	optional. Image height.
 	 *
 	 * @return	array	Meta data variables, including 'audio' and 'video'
 	 */
-	private static function _convert_webp_exif_metadata( $raw_exif, $width = 1, $height = 1 ) {
+	public static function mla_convert_raw_exif_metadata( $raw_exif, $width = 1, $height = 1 ) {
+//error_log( __LINE__ . " MLAData::mla_convert_raw_exif_metadata( $width, $height ) raw_exif = " . var_export( MLAData::mla_hex_dump( $raw_exif, 2048, 32, 0 ), true ), 0 );
 
 		if ( ! class_exists( 'Imagick' ) ) {
 			//return array();  //v3.27
@@ -4011,6 +4022,7 @@ class MLAData {
 			
 			$exif_length = 2 + strlen( $raw_exif );
 			$APP1_section  = chr( 0xFF ) . chr( 0xE1 ) . chr( intdiv( $exif_length, 256 ) ) . chr( $exif_length % 256 ) . $raw_exif;
+//error_log( __LINE__ . " MLAData::mla_convert_raw_exif_metadata() APP1_section = " . var_export( MLAData::mla_hex_dump( $APP1_section, 2048, 32, 0 ), true ), 0 );
 			if ( false === fwrite( $file_handle, $APP1_section ) ) {
 				$error_info = error_get_last();
 				MLAData::$mla_metadata_errors[] = sprintf( '%1$d ERROR: fwrite APP1 $error_info = "%2$s".', __LINE__, var_export( $error_info, true ) );
@@ -4023,15 +4035,15 @@ class MLAData {
 			}
 	
 //$tmpfile_content = file_get_contents( $file_path );
-//error_log( __LINE__ . " _convert_webp_exif_metadata() tmpfile_content = " . var_export( MLAData::mla_hex_dump( $tmpfile_content, 2048, 32, 0 ), true ), 0 );
+//error_log( __LINE__ . " mla_convert_raw_exif_metadata() tmpfile_content = " . var_export( MLAData::mla_hex_dump( $tmpfile_content, 2048, 32, 0 ), true ), 0 );
 
 			fclose( $file_handle );
 	
 			$tmpfile_metadata = self::mla_fetch_attachment_image_metadata( 0, $file_path );
-//error_log( __LINE__ . " _convert_webp_exif_metadata() tmpfile_metadata = " . var_export( $tmpfile_metadata, true ), 0 );
+//error_log( __LINE__ . " MLAData::mla_convert_raw_exif_metadata() tmpfile_metadata = " . var_export( $tmpfile_metadata, true ), 0 );
 			
 			// Put errors back in the shared variable for processing below
-			if ( !empty( $tmpfile_metadata['mla_exif_errors'] ) ) {
+			if ( ! empty( $tmpfile_metadata['mla_exif_errors'] ) ) {
 				MLAData::$mla_metadata_errors = $tmpfile_metadata['mla_exif_errors'];
 			}
 			
@@ -4051,18 +4063,18 @@ class MLAData {
 	
 		// Combine exceptions with PHP notice/warning/error messages
 		if ( ! empty( MLAData::$mla_metadata_errors ) ) {
-			$results['mla_webp_exif_errors'] = MLAData::$mla_metadata_errors;
-			MLACore::mla_debug_add( __LINE__ . ' ' . __( 'ERROR', 'media-library-assistant' ) . ': ' . '$results[mla_webp_exif_errors] = ' . var_export( $results['mla_webp_exif_errors'], true ), MLACore::MLA_DEBUG_CATEGORY_ANY );
+			$results['errors'] = MLAData::$mla_metadata_errors;
+			MLACore::mla_debug_add( __LINE__ . ' ' . __( 'ERROR', 'media-library-assistant' ) . ': ' . '$results[mla_webp_exif_errors] = ' . var_export( $results['errors'], true ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 			MLAData::$mla_metadata_errors = array();
 		}
 
 		if ( isset( $tmpfile_metadata['mla_exif_metadata'] ) ) {
-			$results['mla_webp_exif_metadata'] = $tmpfile_metadata['mla_exif_metadata'];
+			$results['exif_metadata'] = $tmpfile_metadata['mla_exif_metadata'];
 		} else {
-			$results['mla_webp_exif_metadata'] = array();
+			$results['exif_metadata'] = array();
 		}
 
-//error_log( __LINE__ . " _convert_webp_exif_metadata() results = " . var_export( $results, true ), 0 );
+//error_log( __LINE__ . " mla_convert_raw_exif_metadata() results = " . var_export( $results, true ), 0 );
 		return $results;
 	}
 
@@ -4116,21 +4128,21 @@ class MLAData {
 				$height = 1;
 			}
 
-			$exif_array = self::_convert_webp_exif_metadata( $data['riff']['WEBP']['EXIF'][0]['data'], $width, $height );
+			$exif_array = self::mla_convert_raw_exif_metadata( $data['riff']['WEBP']['EXIF'][0]['data'], $width, $height );
 //error_log( __LINE__ . " mla_fetch_attachment_id3_metadata( {$post_id} ) exif_array = " . var_export( $exif_array, true ), 0 );
 
 			// Replace the exif.jpg values with the original webp file values
-			$exif_array['mla_webp_exif_metadata']['FileName'] = $data['filename'];
-			$exif_array['mla_webp_exif_metadata']['FileDateTime'] = (integer) filectime( $path ); // Date uploaded
-			$exif_array['mla_webp_exif_metadata']['FileSize'] = $data['filesize'];
-			$exif_array['mla_webp_exif_metadata']['MimeType'] = $data['mime_type'];
-			$exif_array['mla_webp_exif_metadata']['COMPUTED']['IsColor'] = 1;
+			$exif_array['exif_metadata']['FileName'] = $data['filename'];
+			$exif_array['exif_metadata']['FileDateTime'] = (integer) filectime( $path ); // Date uploaded
+			$exif_array['exif_metadata']['FileSize'] = $data['filesize'];
+			$exif_array['exif_metadata']['MimeType'] = $data['mime_type'];
+			$exif_array['exif_metadata']['COMPUTED']['IsColor'] = 1;
 
 			// Add this data to the ID3 data
-			$data['mla_webp_exif_metadata'] = $exif_array['mla_webp_exif_metadata'];
+			$data['mla_webp_exif_metadata'] = $exif_array['exif_metadata'];
 			
-			if ( isset( $exif_array['mla_webp_exif_errors'] ) ) {
-				$data['mla_webp_exif_errors'] = $exif_array['mla_webp_exif_errors'];
+			if ( isset( $exif_array['errors'] ) ) {
+				$data['mla_webp_exif_errors'] = $exif_array['errors'];
 			}
 		}
 
@@ -4258,7 +4270,7 @@ class MLAData {
 		}
 
 		$id3_metadata = self::mla_fetch_attachment_id3_metadata( $post_id );
-		if ( !empty( $id3_metadata ) && !isset( $id3_metadata['error'] ) ) {
+		if ( ! empty( $id3_metadata ) && !isset( $id3_metadata['error'] ) ) {
 			$text .= self::_compose_metadata_array( $id3_metadata, 'id3', ':' );
 		}
 
@@ -4377,7 +4389,7 @@ class MLAData {
 				} // ! empty
 			} // iptcparse
 
-			if ( is_callable( 'exif_read_data' ) && !empty( $size[2] ) && in_array( $size[2], array( IMAGETYPE_JPEG, IMAGETYPE_TIFF_II, IMAGETYPE_TIFF_MM ) ) ) {
+			if ( is_callable( 'exif_read_data' ) && ! empty( $size[2] ) && in_array( $size[2], array( IMAGETYPE_JPEG, IMAGETYPE_TIFF_II, IMAGETYPE_TIFF_MM ) ) ) {
 				set_error_handler( 'MLAData::mla_metadata_error_handler' );
 				try {
 					$exception = NULL;
@@ -4458,25 +4470,25 @@ class MLAData {
 			} // exif_read_data
 
 			// Extract EXIF metadata from AVIF files
-			if ( !empty( $size['mime'] ) && 'image/avif' === $size['mime'] ) {
+			if ( ! empty( $size['mime'] ) && 'image/avif' === $size['mime'] ) {
 				$mla_avif_metadata = self::mla_parse_avif_metadata( $path );
 
 				if ( NULL === $mla_avif_metadata ) {
 					$mla_avif_metadata = array();
 				}
 
-				if ( !empty( $mla_avif_metadata['mla_avif_exif'] ) ) {
+				if ( ! empty( $mla_avif_metadata['mla_avif_exif'] ) ) {
 					$results['mla_exif_metadata'] = $mla_avif_metadata['mla_avif_exif'];
 					$exif_data = $results['mla_exif_metadata'];
 				}
 					
-				if ( !empty( $mla_avif_metadata['mla_avif_exif_errors'] ) ) {
+				if ( ! empty( $mla_avif_metadata['mla_avif_exif_errors'] ) ) {
 					$results['mla_exif_errors'] = $mla_avif_metadata['mla_avif_exif_errors'];
 				}
 			}
 			
 			// Extract IHDR and tEXt metadata from PNG files
-			if ( !empty( $size['mime'] ) && 'image/png' === $size['mime'] ) {
+			if ( ! empty( $size['mime'] ) && 'image/png' === $size['mime'] ) {
 				$results['mla_png_metadata'] = self::mla_parse_png_metadata( $path );
 
 				if ( NULL === $results['mla_png_metadata'] ) {
@@ -4485,14 +4497,14 @@ class MLAData {
 			}
 			
 			// Extract EXIF metadata from WebP files
-			if ( !empty( $size['mime'] ) && 'image/webp' === $size['mime'] ) {
+			if ( ! empty( $size['mime'] ) && 'image/webp' === $size['mime'] ) {
 				$id3_metadata = self::mla_fetch_attachment_id3_metadata( $post_id );
 
-				if ( !empty( $id3_metadata['mla_webp_exif_metadata'] ) ) {
+				if ( ! empty( $id3_metadata['mla_webp_exif_metadata'] ) ) {
 					$results['mla_exif_metadata'] = $id3_metadata['mla_webp_exif_metadata'];
 					$exif_data = $results['mla_exif_metadata'];
 					
-					if ( !empty( $id3_metadata['mla_webp_exif_errors'] ) ) {
+					if ( ! empty( $id3_metadata['mla_webp_exif_errors'] ) ) {
 					$results['mla_exif_errors'] = $id3_metadata['mla_webp_exif_errors'];
 					}
 				}
@@ -4905,7 +4917,7 @@ class MLAData {
 		$post_data = MLAQuery::mla_fetch_attachment_metadata( $post_id );
 		
 		// Check for updates from "mla_mapping_updates" filters
-		if ( !empty( $new_meta[0x80000000] ) ) {
+		if ( ! empty( $new_meta[0x80000000] ) ) {
 			$message = $new_meta[0x80000000];
 			unset( $new_meta[0x80000000] );
 		} else {
@@ -4943,7 +4955,7 @@ class MLAData {
 			if ( '_' === $meta_key[0] ) {
 				$old_meta_value = get_post_meta( $post_id, $meta_key );
 
-				if ( !empty( $old_meta_value ) ) {
+				if ( ! empty( $old_meta_value ) ) {
 					if ( is_array( $old_meta_value ) ) {
 						if ( count( $old_meta_value ) == 1 ) {
 							$old_meta_value = maybe_unserialize( current( $old_meta_value ) );

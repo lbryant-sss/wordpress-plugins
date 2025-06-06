@@ -4,7 +4,7 @@ Tags: Contact Form 7, Spam, CAPTCHA, GDPR, WPForms
 Requires at least: 4.7
 Requires PHP: 7.0
 Tested up to: 6.8
-Stable tag: 3.3.25
+Stable tag: 3.3.26
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -148,6 +148,9 @@ If the styling does not look right, you may need to clear your browser cache. If
 3. PRO plugin
 
 == Changelog ==
+
+= 3.3.26 [06/05/2025] =
+* Same size for icons
 
 = 3.3.25 [06/04/2025] =
 * Fix CSS issue

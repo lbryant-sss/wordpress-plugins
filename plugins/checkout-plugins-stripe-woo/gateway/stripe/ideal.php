@@ -42,6 +42,17 @@ class Ideal extends Local_Gateway {
 	 */
 	public function __construct() {
 		parent::__construct();
+		add_action( 'init', [ $this, 'init_gateway' ] );
+	}
+
+	/**
+	 * Initializes the gateway.
+	 *
+	 * Sets up the gateway's properties and settings.
+	 *
+	 * @since 1.11.0
+	 */
+	public function init_gateway() {
 		$this->method_title       = __( 'iDEAL', 'checkout-plugins-stripe-woo' );
 		$this->method_description = $this->method_description();
 		$this->has_fields         = true;

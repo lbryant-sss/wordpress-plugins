@@ -1058,7 +1058,7 @@ class IWP_MMB_Backup_Multicall extends IWP_MMB_Core
 			$this_prefix = $wpdb->esc_like($wpdb->base_prefix);
 			$tables = $wpdb->get_results('SHOW TABLES LIKE "'.$this_prefix.'%"', ARRAY_N);
 			
-		$max_row_limit = 10;
+		$max_row_limit = 150;
 		if(defined('IWP_PHP_DB_ROWS') && (is_int(IWP_PHP_DB_ROWS) || is_string(IWP_PHP_DB_ROWS))){
 			if(IWP_PHP_DB_ROWS > $max_row_limit ){
 				$max_row_limit = IWP_PHP_DB_ROWS;

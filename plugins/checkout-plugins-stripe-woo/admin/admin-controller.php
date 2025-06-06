@@ -228,6 +228,11 @@ class Admin_Controller {
 	 */
 	public function initialize_warnings() {
 
+		if ( ! array_key_exists( 'cartflows/cartflows.php', get_plugins() ) && isset( $_GET['page'] ) && 'wc-settings' === $_GET['page'] && isset( $_GET['tab'] ) && 'cpsw_api_settings' === $_GET['tab'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			// Notice to promote cartflows.
+			Notice::add_custom( 'promote_cartflows', 'notice-info promote-cartflows-notice', $this->promote_cartflows_notice() );
+		}
+
 		if ( Helper::is_woo_active() && false === $this->is_stripe_connected() ) {
 			// Notice to connect the website to stripe for accepting the payments via orders.
 			Notice::add_custom( 'connect_stripe_notice', 'notice-info mega-notice', $this->connect_stripe_notice(), true );
@@ -2553,6 +2558,49 @@ class Admin_Controller {
 			),
 			$this->get_stripe_connect_url(),
 			__( 'Connect Stripe Account', 'checkout-plugins-stripe-woo' ),
+		);
+
+		return $output;
+	}
+
+	/**
+	 * Display notice for promoting cartflows.
+	 *
+	 * @since x.x.x
+	 *
+	 * @return string
+	 */
+	public function promote_cartflows_notice() {
+		$stripe_path = esc_url( CPSW_URL . 'admin/assets/images/stripe.png' );
+		$link_path   = esc_url( CPSW_URL . 'admin/assets/images/link.png' );
+		$cf_path     = esc_url( CPSW_URL . 'admin/assets/images/cartflows.png' );
+
+		$output = sprintf(
+			'
+			<div class="promote_cf_card">
+				<div class="promote_cf_icons">
+					<div class="promote_cf_icon">
+						<img src="%1$s" alt="Stripe Logo">
+					</div>
+					<img src="%2$s" alt="connect">
+					<div class="promote_cf_icon">
+						<img src="%3$s" alt="CartFlows Logo">
+					</div>
+				</div>
+				<div class="promote_cf_content">
+					<div class="promote_cf_title">%4$s</div>
+					<div class="promote_cf_description">%5$s</div>
+				</div>
+				<a href="%6$s" class="promote_cf_button" >%7$s</a>
+			</div>
+			',
+			$stripe_path,
+			$link_path,
+			$cf_path,
+			__( 'Install and Activate CartFlows', 'checkout-plugins-stripe-woo' ),
+			__( 'Create Checkout, Upsell/Downsell and Thank you pages and build marketing funnels with ease.', 'checkout-plugins-stripe-woo' ),
+			wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=cartflows' ), 'install-plugin_cartflows' ),
+			__( 'Install CartFlows', 'checkout-plugins-stripe-woo' ),
 		);
 
 		return $output;

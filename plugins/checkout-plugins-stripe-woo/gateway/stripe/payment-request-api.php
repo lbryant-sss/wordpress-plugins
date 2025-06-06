@@ -50,6 +50,26 @@ class Payment_Request_Api extends Card_Payments {
 	 * Constructor
 	 */
 	public function __construct() {
+		add_action( 'init', [ $this, 'init_gateway' ] );
+
+		add_filter( 'cpsw_payment_request_localization', [ $this, 'localize_product_data' ] );
+		add_action( 'wc_ajax_cpsw_payment_request_checkout', [ $this, 'ajax_checkout' ] );
+		add_action( 'wc_ajax_cpsw_get_cart_details', [ $this, 'ajax_get_cart_details' ] );
+		add_action( 'wc_ajax_cpsw_add_to_cart', [ $this, 'ajax_add_to_cart' ] );
+		add_action( 'wc_ajax_cpsw_selected_product_data', [ $this, 'ajax_selected_product_data' ] );
+		add_action( 'wc_ajax_cpsw_update_shipping_address', [ $this, 'ajax_update_shipping_address' ] );
+		add_action( 'wc_ajax_cpsw_update_shipping_option', [ $this, 'ajax_update_shipping_option' ] );
+
+	}
+
+	/**
+	 * Initializes the gateway.
+	 *
+	 * Sets up the gateway's properties and settings.
+	 *
+	 * @since 1.11.0
+	 */
+	public function init_gateway() {
 		$settings               = Helper::get_gateway_settings();
 		$this->express_checkout = $settings['express_checkout_enabled'];
 		if ( 'yes' !== $this->express_checkout || 'yes' !== $settings['enabled'] ) {
@@ -79,16 +99,6 @@ class Payment_Request_Api extends Card_Payments {
 		}
 
 		add_action( $checkout_page_action, [ $this, 'payment_request_button' ], $checkout_page_priority );
-
-		add_filter( 'cpsw_payment_request_localization', [ $this, 'localize_product_data' ] );
-
-		add_action( 'wc_ajax_cpsw_payment_request_checkout', [ $this, 'ajax_checkout' ] );
-		add_action( 'wc_ajax_cpsw_get_cart_details', [ $this, 'ajax_get_cart_details' ] );
-		add_action( 'wc_ajax_cpsw_add_to_cart', [ $this, 'ajax_add_to_cart' ] );
-		add_action( 'wc_ajax_cpsw_selected_product_data', [ $this, 'ajax_selected_product_data' ] );
-		add_action( 'wc_ajax_cpsw_update_shipping_address', [ $this, 'ajax_update_shipping_address' ] );
-		add_action( 'wc_ajax_cpsw_update_shipping_option', [ $this, 'ajax_update_shipping_option' ] );
-
 	}
 
 	/**
@@ -849,15 +859,15 @@ class Payment_Request_Api extends Card_Payments {
 		$shipping_address          = filter_input_array(
 			INPUT_POST,
 			[
-				'country'   => FILTER_SANITIZE_STRING,
-				'state'     => FILTER_SANITIZE_STRING,
-				'postcode'  => FILTER_SANITIZE_STRING,
-				'city'      => FILTER_SANITIZE_STRING,
-				'address'   => FILTER_SANITIZE_STRING,
-				'address_2' => FILTER_SANITIZE_STRING,
+				'country'   => FILTER_DEFAULT,
+				'state'     => FILTER_DEFAULT,
+				'postcode'  => FILTER_DEFAULT,
+				'city'      => FILTER_DEFAULT,
+				'address'   => FILTER_DEFAULT,
+				'address_2' => FILTER_DEFAULT,
 			]
 		);
-		$product_view_options      = filter_input_array( INPUT_POST, [ 'is_product_page' => FILTER_SANITIZE_STRING ] );
+		$product_view_options      = filter_input_array( INPUT_POST, [ 'is_product_page' => FILTER_VALIDATE_BOOLEAN ] );
 		$should_show_itemized_view = ! isset( $product_view_options['is_product_page'] ) ? true : filter_var( $product_view_options['is_product_page'], FILTER_VALIDATE_BOOLEAN );
 		$data                      = $this->get_shipping_options( $shipping_address, $should_show_itemized_view );
 		/* Translators: %1$1s class name, %2$2s function name  */
@@ -883,7 +893,7 @@ class Payment_Request_Api extends Card_Payments {
 
 		WC()->cart->calculate_totals();
 
-		$product_view_options      = filter_input_array( INPUT_POST, [ 'is_product_page' => FILTER_SANITIZE_STRING ] );
+		$product_view_options      = filter_input_array( INPUT_POST, [ 'is_product_page' => FILTER_DEFAULT ] );
 		$should_show_itemized_view = ! isset( $product_view_options['is_product_page'] ) ? true : filter_var( $product_view_options['is_product_page'], FILTER_VALIDATE_BOOLEAN );
 
 		$data           = [];

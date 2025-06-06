@@ -2,7 +2,7 @@
 /*
 Plugin Name: Advanced iFrame
 Plugin URI: https://wordpress.org/plugins/advanced-iframe/
-Version: 2025.4
+Version: 2025.5
 Text Domain: advanced-iframe
 Domain Path: /languages
 Author: Michael Dempfle
@@ -31,7 +31,7 @@ define('AIP_IMGURL', AIP_URL . 'img');
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-$aiVersion = '2025.4';
+$aiVersion = '2025.5';
 // check $aiJsSize
 
 $cons_advancediFrame = null; 
@@ -1533,8 +1533,8 @@ if (function_exists('ai_fs')) {
           foreach ($matches[0] as $hit) {
             // check if the user has the capability unfiltered_html and is therefore allowed to use the custom and onload shortcode attribute.
             if (!current_user_can('unfiltered_html')) {
-              while ($content != $filterContent) {
-			    $filterContent = $content;
+              while ($content != $filteredContent) {
+			    $filteredContent = $content;
 			    $content = $this->filterAttribute('onload', $hit, $content);
 			    $content = $this->filterAttribute('custom', $hit, $content);
 			    $content = $this->filterAttribute('include_html', $hit, $content);

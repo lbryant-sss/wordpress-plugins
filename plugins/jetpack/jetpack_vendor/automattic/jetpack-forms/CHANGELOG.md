@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-06-05
+### Added
+- Add "undo" to all action snackbars in Inbox. [#43787]
+
+### Changed
+- Remove `is_admin` fencing for menu registration and move Forms down on submenu order. [#43755]
+- Make emails clickable in Inbox. [#43771]
+- Indicate when no files were uploaded to field with a dash. [#43770]
+- Migrate form field blocks to use new inner label, input, option, and options blocks. [#43765]
+- Update package dependencies. [#43766]
+
+## [1.0.0] - 2025-06-03
+### Added
+- Forms: Add events for integrations toggling and card expansion. [#43716]
+
+### Changed
+- Update package dependencies. [#43718] [#43734]
+
 ## [0.56.0] - 2025-06-02
 ### Added
 - Add tracking pixel to form submission emails to know if emails are being opened (no user info is sent). [#43629]
@@ -36,20 +54,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.55.0] - 2025-05-26
 ### Added
-- Forms: Add Create Form button to dashboard header. [#43529]
-- Forms: Add feature filter flags and code for moving submenu item from Feedback > Forms responses to Jetpack > Forms. [#43295]
-- Forms: Add Integration screen content. [#43530]
-- Forms: Add integration tab with feature flag. [#43502]
+- Add "Create Form" button to dashboard header. [#43529]
+- Add feature filter flags and code for moving submenu item from Feedback > Forms responses to Jetpack > Forms. [#43295]
+- Add Integration screen content. [#43530]
+- Add integration tab with feature flag. [#43502]
 
 ### Changed
-- Forms: Address styles design on integrations tabs and modal. [#43576]
+- Address styles design on integrations tabs and modal. [#43576]
 - Update package dependencies. [#43516] [#43578]
 
 ### Fixed
-- Fixed admin notice showing on all screens instead of only forms classic view. [#43582]
-- Forms: Apply max-width on Salesforce ID input. [#43543]
-- Forms: Fix Akismet spam URL. [#43542]
-- Forms: Remove the ability to upload multiple files at using the same file upload field. This field is not yet released. [#43555]
+- Apply maximum width on Salesforce ID input. [#43543]
+- Ensure admin notice on classic view does not show on all screens. [#43582]
+- Fix Akismet spam URL. [#43542]
+- Remove the ability to upload multiple files at using the same file upload field. This field is not yet released. [#43555]
 
 ## [0.54.0] - 2025-05-19
 ### Added
@@ -1142,6 +1160,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a new jetpack/forms package [#28409]
 - Added a public load_contact_form method for initializing the contact form module. [#28416]
 
+[1.1.0]: https://github.com/automattic/jetpack-forms/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/automattic/jetpack-forms/compare/v0.56.0...v1.0.0
 [0.56.0]: https://github.com/automattic/jetpack-forms/compare/v0.55.0...v0.56.0
 [0.55.0]: https://github.com/automattic/jetpack-forms/compare/v0.54.0...v0.55.0
 [0.54.0]: https://github.com/automattic/jetpack-forms/compare/v0.53.0...v0.54.0

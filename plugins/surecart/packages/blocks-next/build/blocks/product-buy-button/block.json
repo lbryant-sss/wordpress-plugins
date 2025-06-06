@@ -140,8 +140,7 @@
   ],
   "style": [
     "surecart-wp-button",
-    "surecart-spinner",
-    "file:./style-index.css"
+    "surecart-spinner"
   ],
   "viewScriptModule": [
     "@surecart/checkout",

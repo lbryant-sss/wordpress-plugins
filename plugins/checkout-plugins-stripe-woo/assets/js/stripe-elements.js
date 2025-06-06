@@ -9,6 +9,7 @@
 	const defaultCards = cpsw_global_settings.default_cards;
 	const homeURL = cpsw_global_settings.get_home_url;
 	const stripeLocalized = cpsw_global_settings.stripe_localized;
+	const isUserLoggedIn = cpsw_global_settings.is_user_logged_in;
 
 	if ( '' === pubKey || ( 'live' === mode && ! cpsw_global_settings.is_ssl ) ) {
 		return;
@@ -340,16 +341,16 @@
 
 	paymentElementOptions.fields = {
 		billingDetails: {
-			name: getBillingDetails().name ? 'never' : 'auto',
-			email: getBillingDetails().email ? 'never' : 'auto',
-			phone: getBillingDetails().phone ? 'never' : 'auto',
+			name: getBillingDetails()?.name ? 'never' : 'auto',
+			email: getBillingDetails()?.email ? 'never' : 'auto',
+			phone: getBillingDetails()?.phone ? 'never' : 'auto',
 			address: {
-				country: getBillingDetails().address?.country ? 'never' : 'never',
-				line1: getBillingDetails().address?.line1 ? 'never' : 'auto',
-				line2: getBillingDetails().address?.line2 ? 'never' : 'auto',
-				city: getBillingDetails().address?.city ? 'never' : 'auto',
-				state: getBillingDetails().address?.state ? 'never' : 'auto',
-				postalCode: getBillingDetails().address?.postal_code ? 'never' : 'never',
+				country: getBillingDetails()?.address?.country ? 'never' : 'auto',
+				line1: getBillingDetails()?.address?.line1 ? 'never' : 'auto',
+				line2: getBillingDetails()?.address?.line2 ? 'never' : 'auto',
+				city: getBillingDetails()?.address?.city ? 'never' : 'auto',
+				state: getBillingDetails()?.address?.state ? 'never' : 'auto',
+				postalCode: getBillingDetails()?.address?.postal_code ? 'never' : 'auto',
 			},
 		},
 	};
@@ -362,7 +363,6 @@
 	const elementsForPayment = stripe.elements( paymentElementSettings );
 	// Create an instance of the Payment Element
 	const paymentElement = elementsForPayment.create( 'payment', paymentElementOptions );
-
 	// If Payment element is not loaded, show error message
 	paymentElement.on( 'loaderror', ( event ) => {
 		if ( event.error ) {
@@ -551,11 +551,33 @@
 					window.scrollTo( { top: 0, behavior: 'smooth' } );
 					return false;
 				}
+				let billingDetails = getBillingDetails();
+
+				// Check if the URL contains 'pay_for_order'
+				if ( window.location.href.includes( 'pay_for_order' ) ) {
+					const orderpayBillingCountry = cpsw_global_settings.order_pay_country;
+
+					// Initialize billingDetails if it's null
+					if ( ! billingDetails ) {
+						billingDetails = {
+							address: {},
+						};
+					}
+
+					// Ensure the address object exists
+					if ( ! billingDetails.address ) {
+						billingDetails.address = {};
+					}
+
+					// Assign the country
+					billingDetails.address.country = orderpayBillingCountry;
+				}
+
 				elements.submit();
 				stripe.createPaymentMethod( {
 					elements: elementsForPayment,
 					params: {
-						billing_details: $( 'form.woocommerce-checkout' ).length ? getBillingDetails() : currentUserBilling,
+						billing_details: $( 'form.woocommerce-checkout' ).length || window.location.href.includes( 'pay_for_order' ) ? billingDetails : currentUserBilling,
 					},
 				} ).then( function( result ) {
 					$( '.woocommerce-error' ).remove();
@@ -653,18 +675,47 @@
 				} );
 				break;
 			case 'cpsw_klarna':
+				let billingDetails = getBillingDetails();
+
+				// Check if the URL contains 'pay_for_order'
+				if ( window.location.href.includes( 'pay_for_order' ) ) {
+					const orderpayBillingCountry = cpsw_global_settings.order_pay_country;
+
+					// Initialize billingDetails if it's null
+					if ( ! billingDetails ) {
+						billingDetails = {
+							address: {},
+						};
+					}
+
+					// Ensure the address object exists
+					if ( ! billingDetails.address ) {
+						billingDetails.address = {};
+					}
+
+					// Assign the country
+					billingDetails.address.country = orderpayBillingCountry;
+				}
+				const returnURL = homeURL + redirectURL;
 				stripe.confirmKlarnaPayment( clientSecret, {
 					payment_method: {
-						billing_details: getBillingDetails(),
+						billing_details: billingDetails,
 					},
-					return_url: homeURL + redirectURL,
+					return_url: returnURL,
 				} ).then( function( result ) {
 					if ( result.error ) {
+						let errorMessage = result.error.message;
+						if ( window.location.href.includes( 'pay_for_order' ) ) {
+							if ( result.error.code === 'parameter_missing' && result.error.param === 'billing_details[email]' ) {
+								errorMessage = cpsw_global_settings.klarna_email_missing_message;
+							}
+						}
+
 						// Show error to your customer (e.g., insufficient funds)
 						$( '.woocommerce-error' ).remove();
 						wcCheckoutForm.unblock();
 						logError( result.error );
-						$( '.woocommerce-notices-wrapper:first-child' ).html( '<div class="woocommerce-error cpsw-errors">' + getStripeLocalizedMessage( result.error.code, result.error.message ) + '</div>' ).show();
+						$( '.woocommerce-notices-wrapper:first-child' ).html( '<div class="woocommerce-error cpsw-errors">' + getStripeLocalizedMessage( result.error.code, errorMessage ) + '</div>' ).show();
 						window.scrollTo( { top: 0, behavior: 'smooth' } );
 						wcCheckoutForm.removeClass( 'processing' );
 					}
@@ -935,11 +986,13 @@
 	}
 
 	function hideShowSepaIBAN() {
-		const isSavedSepaIBAN = ( 'new' === $( "input[name='wc-cpsw_sepa-payment-token']:checked" ).val() ) ? false : true;
-		if ( ! isSavedSepaIBAN ) {
-			$( '.cpsw_stripe_sepa_payment_form' ).fadeIn();
-		} else {
-			$( '.cpsw_stripe_sepa_payment_form' ).fadeOut();
+		if ( $( "input[name='wc-cpsw_sepa-payment-token']" ).length > 0 ) {
+			const isSavedSepaIBAN = ( 'new' === $( "input[name='wc-cpsw_sepa-payment-token']:checked" ).val() ) ? false : true;
+			if ( ! isSavedSepaIBAN ) {
+				$( '.cpsw_stripe_sepa_payment_form' ).fadeIn();
+			} else {
+				$( '.cpsw_stripe_sepa_payment_form' ).fadeOut();
+			}
 		}
 	}
 
@@ -1014,6 +1067,23 @@
 	}
 
 	const processingSubmit = function( e ) {
+		const wcCheckoutForm = $( 'form.woocommerce-checkout' );
+		// Check if the selected gateway is Klarna, it's a pay for order page, user is not logged in, and order pay email is set
+		if ( selectedGateway() === 'cpsw_klarna' &&
+			window.location.href.includes( 'pay_for_order' ) &&
+			isUserLoggedIn !== '1' &&
+			cpsw_global_settings.order_pay_email ) {
+			e.preventDefault();
+			$( '.woocommerce-error' ).remove();
+			$( 'form.woocommerce-checkout' ).unblock();
+			$( '.woocommerce-notices-wrapper:first-child' )
+				.html( '<div class="woocommerce-error cpsw-errors">' + cpsw_global_settings.klarna_login_message + '</div>' )
+				.show();
+			window.scrollTo( { top: 0, behavior: 'smooth' } );
+			wcCheckoutForm.removeClass( 'processing' );
+			return false;
+		}
+
 		if ( ( 'yes' === cpsw_global_settings.is_cart_amount_zero || $( 'form#order_review' ).length || $( 'form#add_payment_method' ).length ) && 'cpsw_sepa' === selectedGateway() && ! isSepaSaveCardChosen() && '' === paymentMethodSepa ) {
 			e.preventDefault();
 			createStripePaymentMethod();

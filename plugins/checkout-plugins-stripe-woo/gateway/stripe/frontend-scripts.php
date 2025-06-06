@@ -101,20 +101,26 @@ class Frontend_Scripts {
 		// Get the current Cart Total.
 		$cart_total = WC()->cart->total;
 
+		if ( is_wc_endpoint_url( 'order-pay' ) ) {
+			$order_id   = get_query_var( 'order-pay' );
+			$order      = wc_get_order( $order_id );
+			$cart_total = $order->get_total();
+		}
+
 		wp_localize_script(
 			$this->prefix . 'stripe-elements',
 			'cpsw_global_settings',
 			[
-				'public_key'                  => $public_key,
-				'cpsw_version'                => CPSW_VERSION,
-				'inline_cc'                   => Helper::get_setting( 'inline_cc', 'cpsw_stripe' ),
-				'is_ssl'                      => is_ssl(),
-				'mode'                        => Helper::get_payment_mode(),
-				'ajax_url'                    => admin_url( 'admin-ajax.php' ),
-				'js_nonce'                    => wp_create_nonce( 'cpsw_js_error_nonce' ),
-				'allowed_cards'               => Helper::get_setting( 'allowed_cards', 'cpsw_stripe' ),
-				'stripe_localized'            => Helper::get_localized_messages(),
-				'default_cards'               => [
+				'public_key'                   => $public_key,
+				'cpsw_version'                 => CPSW_VERSION,
+				'inline_cc'                    => Helper::get_setting( 'inline_cc', 'cpsw_stripe' ),
+				'is_ssl'                       => is_ssl(),
+				'mode'                         => Helper::get_payment_mode(),
+				'ajax_url'                     => admin_url( 'admin-ajax.php' ),
+				'js_nonce'                     => wp_create_nonce( 'cpsw_js_error_nonce' ),
+				'allowed_cards'                => Helper::get_setting( 'allowed_cards', 'cpsw_stripe' ),
+				'stripe_localized'             => Helper::get_localized_messages(),
+				'default_cards'                => [
 					'mastercard' => __( 'MasterCard', 'checkout-plugins-stripe-woo' ),
 					'visa'       => __( 'Visa', 'checkout-plugins-stripe-woo' ),
 					'amex'       => __( 'American Express', 'checkout-plugins-stripe-woo' ),
@@ -123,11 +129,11 @@ class Frontend_Scripts {
 					'diners'     => __( 'Diners Club', 'checkout-plugins-stripe-woo' ),
 					'unionpay'   => __( 'UnionPay', 'checkout-plugins-stripe-woo' ),
 				],
-				'not_allowed_string'          => __( 'is not allowed', 'checkout-plugins-stripe-woo' ),
-				'get_home_url'                => get_home_url(),
-				'current_user_billing'        => $this->get_current_user_billing_details(),
-				'changing_payment_method'     => $this->is_changing_payment_method_for_subscription(),
-				'sepa_options'                => [
+				'not_allowed_string'           => __( 'is not allowed', 'checkout-plugins-stripe-woo' ),
+				'get_home_url'                 => get_home_url(),
+				'current_user_billing'         => $this->get_current_user_billing_details(),
+				'changing_payment_method'      => $this->is_changing_payment_method_for_subscription(),
+				'sepa_options'                 => [
 					'supportedCountries' => [ 'SEPA' ],
 					'placeholderCountry' => WC()->countries->get_base_country(),
 					'style'              => [
@@ -137,7 +143,7 @@ class Frontend_Scripts {
 						],
 					],
 				],
-				'payment_element_settings'    => [
+				'payment_element_settings'     => [
 					'appearance'            => [
 						'theme' => Helper::get_setting( 'appearance', 'cpsw_stripe_element' ),
 					],
@@ -147,7 +153,7 @@ class Frontend_Scripts {
 					'paymentMethodTypes'    => Helper::get_available_gateways(),
 					'paymentMethodCreation' => 'manual',
 				],
-				'payment_element_options'     => [
+				'payment_element_options'      => [
 					'layout'  => [
 						'type'             => Helper::get_setting( 'layout', 'cpsw_stripe_element' ),
 						'defaultCollapsed' => false,
@@ -157,10 +163,16 @@ class Frontend_Scripts {
 						'googlePay' => 'never',
 					],
 				],
-				'savecard_supported_gateways' => Helper::$savecard_supported_gateways,
-				'is_cart_amount_zero'         => $cart_total > 0 ? 'no' : 'yes',
-				'empty_sepa_iban_message'     => __( 'Please enter a IBAN number to proceed.', 'checkout-plugins-stripe-woo' ),
-				'empty_bank_message'          => __( 'Please select a bank to proceed.', 'checkout-plugins-stripe-woo' ),
+				'savecard_supported_gateways'  => Helper::$savecard_supported_gateways,
+				'is_cart_amount_zero'          => $cart_total > 0 ? 'no' : 'yes',
+				'empty_sepa_iban_message'      => __( 'Please enter a IBAN number to proceed.', 'checkout-plugins-stripe-woo' ),
+				'empty_bank_message'           => __( 'Please select a bank to proceed.', 'checkout-plugins-stripe-woo' ),
+				'order_pay_country'            => $this->get_orderpay_billing_details()['country'],
+				'order_pay_email'              => $this->get_orderpay_billing_details()['email'],
+				'is_user_logged_in'            => is_user_logged_in(),
+				/* translators: %1$s and %2$s are opening and closing HTML anchor tags */
+				'klarna_login_message'         => sprintf( __( 'Login required for Klarna payment. Use order email to %1$slogin%2$s.', 'checkout-plugins-stripe-woo' ), '<a href="' . wc_get_page_permalink( 'myaccount' ) . '">', '</a>' ),
+				'klarna_email_missing_message' => __( 'Email address is missing for Klarna payment. Please contact store owner to update billing details for this order.', 'checkout-plugins-stripe-woo' ),
 			]
 		);
 
@@ -294,6 +306,44 @@ class Frontend_Scripts {
 			'for_payment_request_button' => $filtered_wallets,
 			'for_express_checkout'       => $payment_methods,
 		];
+	}
+
+	/**
+	 * Get billing details for order-pay page
+	 *
+	 * @since x.x.x
+	 *
+	 * @return array
+	 */
+	public function get_orderpay_billing_details() {
+		$billing_details = [
+			'country' => '',
+			'email'   => '',
+		];
+	
+		if ( is_wc_endpoint_url( 'order-pay' ) ) {
+			$order_id = get_query_var( 'order-pay' );
+			$order    = wc_get_order( $order_id );
+	
+			if ( $order ) {
+				$billing_details['country'] = $order->get_billing_country();
+				$billing_details['email']   = $order->get_billing_email();
+	
+				// Check if billing country is available.
+				if ( ! $billing_details['country'] ) {
+					// Try to get the billing country from the customer session.
+					$customer                   = WC()->customer;
+					$billing_details['country'] = $customer ? $customer->get_billing_country() : null;
+	
+					// If still not available, use the store's base country as fallback.
+					if ( ! $billing_details['country'] ) {
+						$billing_details['country'] = WC()->countries->get_base_country();
+					}
+				}
+			}
+		}
+	
+		return $billing_details;
 	}
 	
 }

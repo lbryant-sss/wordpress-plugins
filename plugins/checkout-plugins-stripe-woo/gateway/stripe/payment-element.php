@@ -69,6 +69,21 @@ class Payment_Element extends Abstract_Payment_Gateway {
 	public function __construct() {
 		parent::__construct();
 
+		add_action( 'init', [ $this, 'init_gateway' ] );
+
+		add_action( 'admin_init', [ $this, 'add_notice' ] );
+		add_filter( 'woocommerce_payment_successful_result', [ $this, 'modify_successful_payment_result' ], 999, 2 );
+		add_action( 'wc_ajax_' . $this->id . '_verify_payment_intent', [ $this, 'verify_intent' ] );
+	}
+
+	/**
+	 * Initializes the gateway.
+	 *
+	 * Sets up the gateway's properties and settings.
+	 *
+	 * @since 1.11.0
+	 */
+	public function init_gateway() {
 		$this->method_title       = __( 'Stripe Options', 'checkout-plugins-stripe-woo' );
 		$this->method_description = $this->method_description();
 		$this->has_fields         = true;
@@ -84,10 +99,6 @@ class Payment_Element extends Abstract_Payment_Gateway {
 		$this->order_button_text    = $this->get_option( 'order_button_text' );
 		$this->enable_saved_cards   = $this->get_option( 'enable_saved_cards' );
 		$this->statement_descriptor = $this->clean_statement_descriptor( $this->get_option( 'statement_descriptor' ) );
-
-		add_action( 'admin_init', [ $this, 'add_notice' ] );
-		add_filter( 'woocommerce_payment_successful_result', [ $this, 'modify_successful_payment_result' ], 999, 2 );
-		add_action( 'wc_ajax_' . $this->id . '_verify_payment_intent', [ $this, 'verify_intent' ] );
 	}
 
 	/**

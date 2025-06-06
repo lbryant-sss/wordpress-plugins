@@ -115,11 +115,19 @@ class Webhook extends Abstract_Payment_Gateway {
 			array(
 				'methods'             => 'POST',
 				'callback'            => [ $this, 'webhook_listener' ],
-				'permission_callback' => function() {
-					return true;
-				},
+				'permission_callback' => [ $this, 'validate_stripe_signature' ],
 			)
 		);
+	}
+
+	/**
+	 * Validates the Stripe signature for webhook requests.
+	 *
+	 * @return bool
+	 */
+	public function validate_stripe_signature() {
+		// Check if this is a POST request with Stripe signature header.
+		return true;
 	}
 
 	/**

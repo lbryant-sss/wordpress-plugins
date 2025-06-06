@@ -3,7 +3,7 @@
  * Plugin Name:  WP Image CAPTCHA
  * Plugin URI:   https://wpimagecaptcha.com/
  * Description:  Adds an image CAPTCHA to your "Contact Form 7" and "WPForms" forms.
- * Version:      3.3.25
+ * Version:      3.3.26
  * Author:       WP Image CAPTCHA
  * Author URI:   https://wpimagecaptcha.com/
  * License:      GNU General Public License v2

@@ -224,7 +224,8 @@ class AdvancedIframeHelper {
     $queryString = trim($querySplit[0], "&");
     $qSplit = explode("&", $queryString);
     $cleanedParams = array_filter($qSplit, function ($var) {
-      return !AdvancedIframeHelper::ai_endsWith($var, "=");
+	  // valid params to not end with = AND have only one =
+	  return !(AdvancedIframeHelper::ai_endsWith($var, "=") && substr_count($var, '=') === 1);
     });
 
     $newQuery = implode("&", $cleanedParams);

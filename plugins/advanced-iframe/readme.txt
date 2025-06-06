@@ -4,7 +4,7 @@ Donate link: https://www.tinywebgallery.com
 Tags: iframe, embed, resize, shortcode, modify css
 Requires at least: 3.3
 Tested up to: 6.8.1
-Stable tag: 2025.4
+Stable tag: 2025.5
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -167,6 +167,10 @@ Use the Wordpress installer to update or simply overwrite all files from your pr
 If you have some radio elements empty after the update simply select the one you like and save again.
 
 == Changelog ==
+= 2025.5 =
+- Fix: == at the end of src caused the whole parameter to be removed. Now this is supported
+- Fix: filteredContent variable was not defined properly. Now it is.  
+
 = 2025.4 =
 - New: Tested with WordPress 6.8.1
 - New: Updated Freemius SDK to 2.12.0 which improves compatibility with php 8.3 and 8.4

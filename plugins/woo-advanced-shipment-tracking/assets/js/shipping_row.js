@@ -1183,43 +1183,6 @@ jQuery( ".ud-checkbox li" ).on("click", function (e) {
 	}
 });
 
-jQuery(document).on("click", ".integration_settings", function(){
-	var nonce = jQuery( '#integrations_settings_form_nonce' ).val();
-	var integration_id = jQuery(this).data('iid');
-	var ajax_data = {
-		action: 'integration_settings_slideout',
-		security: nonce,
-		integration_id: integration_id,	
-	};
-
-	jQuery("#integrations_content").block({
-		message: null,
-		overlayCSS: {
-			background: "#fff",
-			opacity: .6
-		}	
-	});
-
-	jQuery.ajax({
-		url: ajaxurl,
-		data: ajax_data,
-		type: 'POST',
-		//dataType:"json",	
-		success: function(response) {
-			jQuery("#integrations_content").unblock();
-			jQuery(".integration_settings_popup").html(response);
-			jQuery('.integration_settings_popup').slideOutForm();
-		},
-		error: function(response) {
-			console.log(response);
-		}
-	});	
-});
-
-jQuery(document).on("click", ".integration_slidout_close", function(){
-	jQuery('.integration_settings_popup').slideInForm();	
-});
-
 /* zorem_snackbar jquery */
 (function( $ ){
 	$.fn.ast_snackbar = function(msg) {

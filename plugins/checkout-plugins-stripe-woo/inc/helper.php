@@ -712,8 +712,12 @@ class Helper {
 
 					} else {
 						// Ensure only the business's currency is used outside EEA, UK, or Switzerland.
-						$klarna_currency = [ $klarna_supported_countries[ $country ] ];
-						$klarna_country  = [ $country ];
+						if ( array_key_exists( $country, $klarna_supported_countries ) ) {
+							$klarna_currency = [ $klarna_supported_countries[ $country ] ];
+						} else {
+							$klarna_currency = [];
+						}
+						$klarna_country = [ $country ];
 					}
 				}
 

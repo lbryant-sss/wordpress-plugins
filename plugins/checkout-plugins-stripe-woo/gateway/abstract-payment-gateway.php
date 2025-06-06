@@ -108,7 +108,7 @@ abstract class Abstract_Payment_Gateway extends WC_Payment_Gateway {
 	public function add_gateway_class( $methods ) {
 		array_unshift( $methods, $this );
 
-		// Select gateways based on element type selected on settings. 
+		// Select gateways based on element type selected on settings.
 		if ( is_admin() && isset( $_GET['page'] ) && 'wc-settings' === $_GET['page'] && ! isset( $_GET['section'] ) ) { // phpcs:disable WordPress.Security.NonceVerification.Recommended
 			if ( 'payment' !== Helper::get_setting( 'cpsw_element_type' ) ) {
 				// Loop through the $methods array to find and remove the gateway with the key 'cpsw_stripe_element'.
@@ -347,6 +347,9 @@ abstract class Abstract_Payment_Gateway extends WC_Payment_Gateway {
 		}
 
 		if ( 'yes' === $captured ) {
+
+			Logger::info( 'Response Status: ' . isset( $response->status ) ? $response->status : 'No Status received' );
+
 			/**
 			 * Charge can be captured but in a pending state. Payment methods
 			 * that are asynchronous may take couple days to clear. Webhook will
@@ -354,6 +357,8 @@ abstract class Abstract_Payment_Gateway extends WC_Payment_Gateway {
 			 */
 			if ( 'pending' === $response->status || 'processing' === $response->status ) {
 				$order_stock_reduced = $order->get_meta( '_order_stock_reduced', true );
+
+				Logger::info( 'Order Stock Reduced: ' . $order_stock_reduced );
 
 				if ( ! $order_stock_reduced ) {
 					wc_reduce_stock_levels( $order_id );
@@ -366,8 +371,14 @@ abstract class Abstract_Payment_Gateway extends WC_Payment_Gateway {
 				$order->update_status( 'on-hold', sprintf( __( 'Stripe charge awaiting payment: %1$s. %2$s', 'checkout-plugins-stripe-woo' ), $response->id, $others_info ) );
 			}
 
+			$should_save_order_again = true;
+
 			if ( 'succeeded' === $response->status ) {
 				if ( $order->has_status( [ 'pending', 'failed', 'on-hold' ] ) ) {
+					Logger::info( 'Payment Completed: ' . $response->id );
+
+					$should_save_order_again = false;
+
 					$order->payment_complete( $response->id );
 				}
 
@@ -395,7 +406,15 @@ abstract class Abstract_Payment_Gateway extends WC_Payment_Gateway {
 			$order->update_status( 'on-hold', $order_info );
 		}
 
-		if ( is_callable( [ $order, 'save' ] ) ) {
+		Logger::info( 'Skipping the Save order if it is already saved for: ' . $response->id . 'Is skipped: ' . $should_save_order_again );
+
+		/**
+		 * Re-save the order only if it is allowed.
+		 *
+		 * Reason: $order->payment_complete() internally calls the $order->save function.
+		 * Modified this to solve the reducing the duplicate stock issue. Trial & Error.
+		 */
+		if ( $should_save_order_again && is_callable( [ $order, 'save' ] ) ) {
 			$order->save();
 		}
 
@@ -569,7 +588,7 @@ abstract class Abstract_Payment_Gateway extends WC_Payment_Gateway {
 			esc_attr( $icon['id'] . '-icon' ),
 			esc_attr( $icon['alt'] ),
 			esc_attr( $icon['width'] )
-		);      
+		);
 
 		return apply_filters( 'cpsw_payment_icons', $icon_image );
 	}
@@ -677,7 +696,7 @@ abstract class Abstract_Payment_Gateway extends WC_Payment_Gateway {
 					$payment_method_type = $response->payment_method_details->type;
 				}
 			}
-			
+
 			$source_name = 'cpsw_stripe' === $this->id ? $payment_method_type : $response->payment_method_details->type;
 
 			$order->add_order_note( __( 'Payment Status: ', 'checkout-plugins-stripe-woo' ) . ucfirst( $response->status ) . ', ' . __( 'Source: Payment is Completed via ', 'checkout-plugins-stripe-woo' ) . ucfirst( $source_name ) );

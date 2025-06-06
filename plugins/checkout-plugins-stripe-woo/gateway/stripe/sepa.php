@@ -57,13 +57,29 @@ class Sepa extends Local_Gateway {
 	 */
 	public function __construct() {
 		parent::__construct();
+		add_action( 'init', [ $this, 'init_gateway' ] );
 
+		add_action( 'wc_ajax_' . $this->id . '_verify_payment_intent', [ $this, 'verify_intent' ] );
+		add_action( 'woocommerce_payment_token_class', [ $this, 'modify_token_class' ], 15, 2 );
+		add_filter( 'woocommerce_payment_methods_list_item', [ $this, 'get_saved_payment_methods_list' ], 10, 2 );
+		add_filter( 'woocommerce_payment_successful_result', [ $this, 'modify_successful_payment_result' ], 999, 2 );
+	}
+
+	/**
+	 * Initializes the SEPA gateway.
+	 *
+	 * Sets up the gateway's properties and settings.
+	 *
+	 * @since 1.11.0
+	 */
+	public function init_gateway() {
 		$this->method_title       = __( 'SEPA', 'checkout-plugins-stripe-woo' );
 		$this->method_description = $this->method_description();
-		$this->has_fields         = true;
+	
+		$this->has_fields = true;
 		$this->init_supports();
 		$this->maybe_init_subscriptions();
-
+	
 		$this->init_form_fields();
 		$this->init_settings();
 		// get_option should be called after init_form_fields().
@@ -74,11 +90,6 @@ class Sepa extends Local_Gateway {
 		$this->company_name         = $this->get_option( 'company_name' );
 		$this->statement_descriptor = $this->clean_statement_descriptor( $this->get_option( 'statement_descriptor' ) );
 		$this->payment_conform      = true;
-
-		add_action( 'wc_ajax_' . $this->id . '_verify_payment_intent', [ $this, 'verify_intent' ] );
-		add_action( 'woocommerce_payment_token_class', [ $this, 'modify_token_class' ], 15, 2 );
-		add_filter( 'woocommerce_payment_methods_list_item', [ $this, 'get_saved_payment_methods_list' ], 10, 2 );
-		add_filter( 'woocommerce_payment_successful_result', [ $this, 'modify_successful_payment_result' ], 999, 2 );
 	}
 
 	/**

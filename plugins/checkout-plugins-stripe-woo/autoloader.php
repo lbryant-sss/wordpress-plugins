@@ -71,27 +71,55 @@ class CPSW_Loader {
 	 * @param string $class class name.
 	 */
 	public function autoload( $class ) {
-		if ( 0 !== strpos( $class, __NAMESPACE__ ) ) {
+		if ( 0 !== strpos( $class, __NAMESPACE__ . '\\' ) ) {
 			return;
 		}
-
+	
+		// Reject invalid characters to prevent injection.
+		if ( preg_match( '/[^a-zA-Z0-9_\\\\]/', $class ) ) {
+			return;
+		}
+	
 		$class_to_load = $class;
-
+	
+		// Normalize class name to file path.
 		$filename = strtolower(
 			preg_replace(
-				[ '/^' . __NAMESPACE__ . '\\\/', '/([a-z])([A-Z])/', '/_/', '/\\\/' ],
+				[ '/^' . preg_quote( __NAMESPACE__, '/' ) . '\\\\/', '/([a-z])([A-Z])/', '/_/', '/\\\\/' ],
 				[ '', '$1-$2', '-', DIRECTORY_SEPARATOR ],
 				$class_to_load
 			)
 		);
-
+	
 		$file = CPSW_DIR . $filename . '.php';
-
-		// if the file redable, include it.
-		if ( is_readable( $file ) ) {
-			require_once $file;
+	
+		$real_file = realpath( $file );
+		$real_base = realpath( CPSW_DIR );
+	
+		// Validate path, check existence, and load.
+		if (
+			$real_file &&
+			$real_base &&
+			strpos( $real_file, $real_base ) === 0 &&
+			is_readable( $real_file ) &&
+			file_exists( $real_file ) &&
+			! class_exists( $class, false )
+		) {
+			/**
+			 * Reason for adding an ignore rule:
+			 * 
+			 * This code is designed to safely include class files in a WordPress plugin.
+			 * It uses a controlled autoloader to ensure that only classes within the plugin's namespace are loaded.
+			 * The file path is constructed from a known base directory (CPSW_DIR) and the class name,
+			 * ensuring that it cannot be manipulated to include arbitrary files.
+			 * The use of realpath() ensures that the file exists and is within the expected directory.
+			 * The class is only loaded if it does not already exist, preventing multiple inclusions.
+			 */
+			// phpcs:ignore Squiz.Commenting.InlineComment.InvalidEndChar
+			require_once $real_file; // nosemgrep: audit.php.lang.security.file.inclusion-arg
 		}
 	}
+	
 
 	/**
 	 * Constructor
@@ -104,9 +132,10 @@ class CPSW_Loader {
 
 		spl_autoload_register( [ $this, 'autoload' ] );
 		if ( ! class_exists( '\Stripe\Stripe' ) ) {
-			require_once 'lib/stripe-php/init.php';
+			require_once 'lib/vendor/stripe-php/init.php';
 		}
-		$this->setup_classes();
+
+		add_action( 'init', [ $this, 'setup_classes' ] ); // Moved here.
 		add_action( 'plugins_loaded', [ $this, 'load_classes' ] );
 		add_filter( 'plugin_action_links_' . CPSW_BASE, [ $this, 'action_links' ] );
 		add_action( 'before_woocommerce_init', [ $this, 'compatibility_declaration' ] );

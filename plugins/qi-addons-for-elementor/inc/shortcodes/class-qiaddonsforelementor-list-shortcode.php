@@ -97,25 +97,26 @@ abstract class QiAddonsForElementor_List_Shortcode extends QiAddonsForElementor_
 				$field_type    = 'hidden';
 				$default_value = array_keys( $masonry_images_proportion )[0];
 			}
-
-			$this->set_option(
-				array(
-					'field_type'    => $field_type,
-					'name'          => 'masonry_images_proportion',
-					'title'         => esc_html__( 'Image Proportions', 'qi-addons-for-elementor' ),
-					'options'       => $masonry_images_proportion,
-					'default_value' => $default_value,
-					'group'         => $group,
-					'dependency'    => array(
-						'show' => array(
-							'behavior' => array(
-								'values'        => 'masonry',
-								'default_value' => 'columns',
+			if ( empty( $exclude_option ) || ! in_array( 'masonry_images_proportion', $exclude_option, true ) ) {
+				$this->set_option(
+					array(
+						'field_type'    => $field_type,
+						'name'          => 'masonry_images_proportion',
+						'title'         => esc_html__( 'Image Proportions', 'qi-addons-for-elementor' ),
+						'options'       => $masonry_images_proportion,
+						'default_value' => $default_value,
+						'group'         => $group,
+						'dependency'    => array(
+							'show' => array(
+								'behavior' => array(
+									'values'        => 'masonry',
+									'default_value' => 'columns',
+								),
 							),
 						),
-					),
-				)
-			);
+					)
+				);
+			}
 		}
 
 		if ( empty( $exclude_option ) || ! in_array( 'images_proportion', $exclude_option, true ) ) {

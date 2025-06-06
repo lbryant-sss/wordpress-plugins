@@ -45,7 +45,7 @@ class Onboarding {
 			return;
 		}
 
-		$this->admin_controller = Admin_Controller::get_instance();
+		add_action( 'init', [ $this, 'load_classes' ] ); // Moved here.
 
 		add_action( 'admin_menu', [ $this, 'admin_menus' ] );
 		add_action( 'admin_init', [ $this, 'setup_wizard' ] );
@@ -58,6 +58,15 @@ class Onboarding {
 		add_action( 'wp_ajax_cpsw_onboarding_exit', [ $this, 'cpsw_onboarding_exit' ] );
 		add_action( 'admin_init', [ $this, 'hide_notices' ] );
 		add_action( 'admin_bar_menu', [ $this, 'admin_bar_icon' ], 999 );
+	}
+
+	/**
+	 * Sets up base classes.
+	 *
+	 * @return void
+	 */
+	public function load_classes() {
+		$this->admin_controller = Admin_Controller::get_instance();
 	}
 
 	/**
@@ -390,8 +399,8 @@ class Onboarding {
 			return;
 		}
 
-		$cpsw_hide_notice   = filter_input( INPUT_GET, 'cpsw-hide-notice', FILTER_SANITIZE_STRING );
-		$_cpsw_notice_nonce = filter_input( INPUT_GET, '_cpsw_notice_nonce', FILTER_SANITIZE_STRING );
+		$cpsw_hide_notice   = isset( $_GET['cpsw-hide-notice'] ) ? sanitize_text_field( $_GET['cpsw-hide-notice'] ) : '';
+		$_cpsw_notice_nonce = isset( $_GET['_cpsw_notice_nonce'] ) ? sanitize_text_field( $_GET['_cpsw_notice_nonce'] ) : '';
 
 		if ( $cpsw_hide_notice && $_cpsw_notice_nonce && wp_verify_nonce( sanitize_text_field( wp_unslash( $_cpsw_notice_nonce ) ), 'cpsw_hide_notices_nonce' ) ) {
 			$this->update_connect_with_stripe_status( 'skipped' );
