@@ -705,7 +705,7 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 		$logo_color = '#fff';
 		$html = '';
 		if ( isset( $instance['type'] ) && $instance['type'] == 'standard' && isset( $instance['hor_alignment'] ) && $instance['hor_alignment'] == "center" ) {
-			$html .= '<style>div.heateor_sss_follow_ul{width:100%;text-align:center;}.widget_heateor_sss_follow div.heateor_sss_follow_ul a{float:none!important;display:inline-block;}</style>';
+			$html .= '<style>div.heateor_sss_follow_ul{width:100%;text-align:center}div.heateor_sss_follow_ul a,div.heateor_sss_follow_ul span{float:none}</style>';
 		}
 		if ( isset( $instance['hide_mobile_sharing'] ) && $instance['vertical_screen_width'] != '' ) {
 			$html .= '<style>@media screen and (max-width:' . $instance['vertical_screen_width'] . 'px) {.heateor_sss_floating_follow_icons_container{display:none!important}}</style>';

@@ -87,7 +87,8 @@ https://www.youtube.com/watch?v=WT8ngVYlJ_0&list=PLNypD600o6nK_5QYh--5K6B0ObmgVt
     <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/image-slider/" target="_blank">Image Slider</a> - Easily adjustable sliders for displaying images in a number of exciting ways</li>
     <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/masonry-image-gallery/" target="_blank">Masonry Image Gallery</a> - Compose compelling galleries with masonry layouts</li>
     <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/pinterest-image-gallery/" target="_blank">Pinterest Image Gallery</a> - Easily create striking pinterest-styled galleries</li>
-    <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/" target="_blank">Dual Image with Content </a> - Eye-catching two-image sections with some additional content</li>
+    <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/dual-image-with-content/" target="_blank">Dual Image with Content </a> - Eye-catching two-image sections with some additional content</li>
+    <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/content-slider/" target="_blank">Content Slider </a> - Easily create fully adjustable image and textual content slider presentations</li>
 </ul>
 
 <h4>Creative Addons:</h4>
