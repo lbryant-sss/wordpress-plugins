@@ -63,7 +63,6 @@ class MLAAVIF {
 		$height = 1;
 
 		foreach( $boxes as $box ) {
-//error_log( __LINE__ . "  MLAAVIF::parseHeifBoxes box = " . var_export( $box, true ), 0 );
 			if ( 'meta' === $box['type'] ) {
 				foreach( $box['children'] as $child ) {
 					switch( $child['type'] ) {
@@ -91,22 +90,17 @@ class MLAAVIF {
 			}
 		}
 		
-//error_log( __LINE__ . "  MLAAVIF::parseHeifBoxes ilocItems = " . var_export( $ilocItems, true ), 0 );
-//error_log( __LINE__ . "  MLAAVIF::parseHeifBoxes infeEntries = " . var_export( $infeEntries, true ), 0 );
-//error_log( __LINE__ . "  MLAAVIF::parseHeifBoxes item_properties = " . var_export( $item_properties, true ), 0 );
-//error_log( __LINE__ . "  MLAAVIF::parseHeifBoxes width = " . var_export( $width, true ), 0 );
-//error_log( __LINE__ . "  MLAAVIF::parseHeifBoxes height = " . var_export( $height, true ), 0 );
-
 		$exif = self::extractItemsByType( $fp, $ilocItems, $infeEntries, 'exif' );
 		if ( ! empty( $exif ) ) {
-//error_log( __LINE__ . "  MLAAVIF::parseHeifBoxes exif item_id = " . var_export( $exif['item_id'], true ), 0 );
-//error_log( __LINE__ . "  MLAAVIF::parseHeifBoxes exif name = " . var_export( $exif['name'], true ), 0 );
-//error_log( __LINE__ . "  MLAAVIF::parseHeifBoxes exif type = " . var_export( $exif['type'], true ), 0 );
-//error_log( __LINE__ . "  MLAAVIF::parseHeifBoxes exif dump = \r\n" . MLAData::mla_hex_dump( $exif['binary'], 0, 32, 0 ), 0 );
-
 			// AVIF raw data has an unknown 4-byte prefix
 			$exif_array = MLAData::mla_convert_raw_exif_metadata( substr( $exif['binary'], 4 ), $width, $height );
-//error_log( __LINE__ . " MLAAVIF::parseHeifBoxes exif_array = " . var_export( $exif_array, true ), 0 );
+
+			// Replace the exif.jpg values with the original avif file values
+			$exif_array['exif_metadata']['FileName'] = pathinfo( $filepath, PATHINFO_BASENAME );
+			$exif_array['exif_metadata']['FileDateTime'] = (integer) filectime( $filepath ); // Date uploaded
+			$exif_array['exif_metadata']['FileSize'] = filesize( $filepath );
+			$exif_array['exif_metadata']['MimeType'] = 'image/avif';
+			$exif_array['exif_metadata']['COMPUTED']['IsColor'] = 1;
 		} else {
 			$exif_array = array();
 		}
@@ -315,14 +309,6 @@ class MLAAVIF {
 	 * @param	string  box payload
 	 *
 	 * @return	array	box descriptor(s)
- 00
- 00 00 00
- 44
- 00
- 00 02
- 00 01
- 00 00// data_reference_index?
- 00 01 00 00 01 b4 00 01 74 2f 00 02 00 00 00 01 00 01 75 e3 00 00 00 ee
 	 */
 	private static function parseIlocBox( string $data ) {
 //error_log( __LINE__ . "  MLAAVIF::parseIlocBox data dump = \r\n" . MLAData::mla_hex_dump( $data, 0, 32, 0 ), 0 );
@@ -611,11 +597,6 @@ class MLAAVIF {
 	 * @param	resource file pointer
 	 * @param	array    box descriptor
 	 *
-00 
-00 00 00 
-00 00 
-00 01 00 01 05 01 02 03 84 85
-
 	 * @return	array	box descriptor(s)
 	 */
 	private static function parseIpmaBox( $fp, $ipmaBox ) {

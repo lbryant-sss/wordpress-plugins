@@ -467,20 +467,14 @@ class WP_Members_Shortcodes {
 
 		if ( isset( $sanitized_args['key'] ) && isset( $sanitized_args['value'] ) ) {
 			// If by meta key.
-			global $wpdb;
-			$user_count = $wpdb->get_var( $wpdb->prepare(
-				"SELECT COUNT(*) FROM $wpdb->usermeta WHERE meta_key = %s AND meta_value = %s",
-				$sanitized_args['key'],
-				$sanitized_args['value']
-			) );
+			$user_count = wpmem_get_user_count_by_meta( $sanitized_args['key'], $sanitized_args['value'] );
 		} else {
 			// If no meta, it's a total count.
-			$users = count_users();
-			$user_count = ( isset( $sanitized_args['role'] ) ) ? $users['avail_roles'][ $sanitized_args['role'] ] : $users['total_users'];
+			$user_count = ( isset( $sanitized_args['role'] ) ) ? wpmem_get_user_count_by_role( $sanitized_args['role'] ) : wpmem_get_user_count_by_role( 'all' );
 		}
 
 		// Assemble the output and return.
-		$content = ( isset( $sanitized_args['label'] ) ) ? $sanitized_args['label'] . ' ' . $user_count : $content . ' ' . $user_count;
+		$content = ( isset( $sanitized_args['label'] ) ) ? $sanitized_args['label'] . ' ' . intval( $user_count ) : wp_kses_post( $content ) . ' ' . intval( $user_count );
 		return do_shortcode( $content );
 	}
 
@@ -971,7 +965,7 @@ class WP_Members_Shortcodes {
 			$content = ( isset( $sanitized_atts['clickable'] ) && ( true == $sanitized_atts['clickable'] || 'true' == $sanitized_atts['clickable'] ) ) ? make_clickable( $content ) : $content;
 		
 			// Display field label?
-			$content = ( isset( $fields[ $field ] ) && isset( $sanitized_atts['label'] ) && ( true == $sanitized_atts['label'] ) ) ? $fields[ $field ]['label'] . ": " . $content : $content;
+			$content = ( isset( $fields[ $field ] ) && isset( $sanitized_atts['label'] ) && ( true == $sanitized_atts['label'] ) ) ? wpmem_get_field_label( $field ) . ": " . $content : $content;
 		}
 		
 		/**

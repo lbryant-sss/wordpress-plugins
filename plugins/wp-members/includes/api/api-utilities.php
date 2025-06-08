@@ -369,3 +369,42 @@ function wpmem_upload_dir() {
         'wpmem_user_files_dir' => $wpmem_user_files_dir
     );
 }
+
+/**
+ * Reads a csv file to a keyed array.
+ * 
+ * @since 3.5.4
+ * 
+ * @todo If using $cols args, must use non-BOM UTF-8 encoding, otherwise the first row fails.
+ * 
+ * @param  string  $file  The file path (absolute).
+ * @param  array   $cols  If the file does not have a header row, an array to key it by (optional).
+ */
+function wpmem_csv_to_array( $file, $cols = false ) {
+	
+	// Get rows into array.
+	$f = fopen( $file, 'r' );
+	while ( ( $line = fgetcsv( $f ) ) !== FALSE ) {
+		//$line is an array of the csv elements
+		$rows[] = $line;
+	}
+	fclose( $f );
+	
+	// If first row is header row of column names.
+	if ( ! $cols ) {
+		$cols = array_shift( $rows );
+	}
+
+	// Clean the header if BOM.
+	foreach( $cols as $h ) {
+		$cleaned_head[] = preg_replace( "/[^\w\d]/", "", esc_attr( $h ) );
+	}
+
+	// Build our array for return.
+	$csv = array();
+	foreach( $rows as $row ) {
+		$csv[] = array_combine( $cleaned_head, $row );
+	}
+
+	return $csv;
+}

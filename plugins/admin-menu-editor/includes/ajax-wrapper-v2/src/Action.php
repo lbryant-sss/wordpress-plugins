@@ -2,9 +2,10 @@
 
 namespace YahnisElsts\AjaxActionWrapper\v2;
 
+use JsonSerializable;
 use WP_Error;
 
-class Action extends ConfigFields {
+class Action extends ConfigFields implements JsonSerializable {
 	const PARSE_STRING = [self::class, 'parseString'];
 	const PARSE_INT = [self::class, 'parseInt'];
 	const PARSE_FLOAT = [self::class, 'parseFloat'];
@@ -293,7 +294,7 @@ class Action extends ConfigFields {
 	}
 	//endregion
 
-	//region JavaScript dependency
+	//region JavaScript API and serialization
 	protected static $scriptHandle = 'ajaw-v2-ajax-action-wrapper';
 	protected static $scriptRegistered = false;
 	/**
@@ -318,7 +319,7 @@ class Action extends ConfigFields {
 				$handle,
 				plugins_url('../js/ajax-wrapper.js', __FILE__),
 				['jquery'],
-				'20250518'
+				'20250527'
 			);
 		}
 
@@ -334,7 +335,7 @@ class Action extends ConfigFields {
 	}
 
 	/**
-	 * Returns the handle of the JS script that provides the AjawV2 global object and
+	 * Get the handle of the JS script that provides the AjawV2 global object and
 	 * easy access to the registered AJAX actions.
 	 *
 	 * The script is registered on the first call to this method.
@@ -351,11 +352,11 @@ class Action extends ConfigFields {
 	/**
 	 * Alias for getRegisteredScriptHandle().
 	 *
+	 * @return string
 	 * @deprecated Use getRegisteredScriptHandle() instead as it makes it clear that the script
 	 *             gets registered on the first call.
 	 *
 	 * @noinspection PhpUnused -- Normally won't be used since it's deprecated.
-	 * @return string
 	 */
 	public function getScriptHandle() {
 		return $this->getRegisteredScriptHandle();
@@ -364,15 +365,7 @@ class Action extends ConfigFields {
 	protected static function generateActionJs() {
 		$actions = [];
 		foreach (self::$pendingActionsForJs as $action) {
-			$config = ['action' => $action->getAction()];
-			if ( $action->isNonceCheckEnabled() ) {
-				$config['nonce'] = wp_create_nonce($action->getAction());
-			}
-			$requiredMethod = $action->getRequiredRequestMethod();
-			if ( $requiredMethod !== null ) {
-				$config['requiredMethod'] = $requiredMethod;
-			}
-			$actions[] = $config;
+			$actions[] = $action->serializeForJs(false);
 		}
 
 		$collection = [
@@ -384,6 +377,22 @@ class Action extends ConfigFields {
 			'if (AjawV2 && AjawV2.registerActions) { AjawV2.registerActions(%s); };',
 			wp_json_encode($collection)
 		);
+	}
+
+	protected function serializeForJs($includeAjaxUrl = true) {
+		$config = ['action' => $this->getAction()];
+		if ( $this->isNonceCheckEnabled() ) {
+			$config['nonce'] = wp_create_nonce($this->getAction());
+		}
+		$requiredMethod = $this->getRequiredRequestMethod();
+		if ( $requiredMethod !== null ) {
+			$config['requiredMethod'] = $requiredMethod;
+		}
+
+		if ( $includeAjaxUrl ) {
+			$config['ajaxUrl'] = admin_url('admin-ajax.php');
+		}
+		return $config;
 	}
 
 	/**
@@ -407,6 +416,42 @@ class Action extends ConfigFields {
 		}
 
 		self::$pendingActionsForJs = [];
+	}
+
+	/**
+	 * Serialize an associative array of Action objects in a form that can be JSON-encoded
+	 * and passed to JavaScript.
+	 *
+	 * You can then use AjawV2.createActionMap() to deserialize that data into a JavaScript
+	 * object with the same keys as the input array (or, optionally, with a subset of the keys
+	 * if you use AjawV2.createStrictActionMap()). Each value in the output object will be
+	 * an AjaxAction object that can be used to perform the action.
+	 *
+	 * @param array<string,Action> $actions
+	 * @return array
+	 */
+	public static function serializeActionMap($actions) {
+		$actionSettings = [];
+		foreach ($actions as $key => $action) {
+			if ( !($action instanceof Action) ) {
+				throw new \InvalidArgumentException(sprintf(
+					'Expected an instance of %s, got %s.',
+					self::class,
+					is_object($action) ? get_class($action) : gettype($action)
+				));
+			}
+			$actionSettings[$key] = $action->serializeForJs(false);
+		}
+		return [
+			'ajaxUrl' => admin_url('admin-ajax.php'),
+			'actions' => $actionSettings,
+		];
+	}
+
+	/** @noinspection PhpLanguageLevelInspection */
+	#[\ReturnTypeWillChange]
+	public function jsonSerialize() {
+		return $this->serializeForJs(true);
 	}
 	//endregion
 }

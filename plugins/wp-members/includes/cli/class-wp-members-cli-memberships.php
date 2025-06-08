@@ -3,40 +3,60 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 
 	class WP_Members_CLI_Memberships {
 
+		function __construct() {
+			// Need the admin api for some CLI commands.
+			global $wpmem;
+			require_once $wpmem->path . 'includes/admin/api.php';
+		}
+
 		/**
-		 * CLI command to get membership counts.
+		 * CLI command to list memberships on the site.
 		 * @since 3.5.3
 		 */
 		public function list( $args, $assoc_args ) {
             $memberships = wpmem_get_memberships();
 			if ( empty( $memberships ) ) {
-				WP_CLI::line( __( 'There are no memberships created for this site', 'wp-members' ) );
+				WP_CLI::line( 'There are no memberships created for this site' );
 			} else {
 				foreach ( $memberships as $membership ) {
 					 $list[] = array(
 						 'name' => $membership['title'],
-						 'slug' => $membership['name'],
+						 'meta (slug)' => $membership['name'],
 					 );
 				}
 
-				WP_CLI::line( __( 'WP-Members memberships:', 'wp-members' ) );
-				$formatter = new \WP_CLI\Formatter( $assoc_args, array( 'name', 'slug' ) );
+				WP_CLI::line( 'WP-Members memberships:' );
+				$formatter = new \WP_CLI\Formatter( $assoc_args, array( 'name', 'meta (slug)' ) );
 				$formatter->display_items( $list );
 			}
 		}
 
 		/**
-		 * Get membership counts
+		 * Get membership counts.
+		 *
+		 * ## OPTIONS
+		 *
+		 * [<meta>]
+		 * : The meta key (slug) of the membership to get data for (gets all memberships by default)
+		 *
+		 * [--type=<active|expired>]
+		 * : Get only active or expired membership count.
+		 * 
+		 * [--all] 
+		 * : Gets all membership count.
+		 *
+		 * @since 3.5.3
+		 * @subcommand list-count
 		 */
 		public function list_count( $args, $assoc_args ) {
 
 			if ( empty( $args ) && ! isset( $assoc_args['all'] ) && ! isset( $assoc_args['type'] ) ) {
 				$count_type = "all";
 			} else {
-				if ( isset( $assoc_args['all'] ) ) {
-					$count_type = "all";
-				} else {
+				if ( isset( $assoc_args['type'] ) ) {
 					$count_type = $assoc_args['type'];
+				} else {
+					$count_type = "all";
 				}
 			}
 
@@ -46,7 +66,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 
 					$memberships = wpmem_get_memberships();
 					if ( empty( $memberships ) ) {
-						WP_CLI::error( __( 'No memberships exist for this site', 'wp-members' ) );
+						WP_CLI::error( 'No memberships exist for this site' );
 					}
 
 					// Is this "all" as in "all memberships" or "all" as in "all counts of an individual membership"?
@@ -58,11 +78,10 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 						$expired_count = wpmem_get_membership_count( $membership['name'], 'expired' );
 						$total_count   = wpmem_get_membership_count( $membership['name'] );
 
-						/* translators: %s is the placeholder for the name of the membership, do not remove it. */
-						WP_CLI::line( sprintf( __( 'Counts for "%s" membership:', 'wp-members' ), $membership['title'] ) );
-						WP_CLI::line( __( 'Active: ', 'wp-members' ) . $active_count );
-						WP_CLI::line( __( 'Expired: ', 'wp-members' ) . $expired_count );
-						WP_CLI::line( __( 'Total: ', 'wp-members' ) . $total_count );
+						WP_CLI::line( sprintf( 'Counts for "%s" membership:', $membership['title'] ) );
+						WP_CLI::line( 'Active: ' . $active_count );
+						WP_CLI::line( 'Expired: ' . $expired_count );
+						WP_CLI::line( 'Total: ' . $total_count );
 
 					} else {
 
@@ -80,7 +99,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 							);
 						}
 		
-						WP_CLI::line( __( 'WP-Members membership counts:', 'wp-members' ) );
+						WP_CLI::line( 'WP-Members membership counts:' );
 						$formatter = new \WP_CLI\Formatter( $assoc_args, array( 'Membership', 'Active', 'Expired', 'Total' ) );
 						$formatter->display_items( $list );
 					}
@@ -92,7 +111,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 					$memberships = wpmem_get_memberships();
 
 					if ( empty( $memberships ) ) {
-						WP_CLI::error( __( 'No memberships exist for this site', 'wp-members' ) );
+						WP_CLI::error( 'No memberships exist for this site' );
 					}
 
 					$membership = $args[0];
@@ -105,33 +124,87 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			}
 		}
 
-		public function list_active( $args, $assoc_args ) {
-			
-			
-		}
-
+		/**
+		 * Adds a membership to a user.
+		 * 
+		 * ## OPTIONS
+		 * 
+		 * <membership_meta_key> 
+		 * : The meta key (slug) of the membership to add to the user.
+		 * 
+		 * [--id=<user>]
+		 * : The ID of the user to add the membership to.
+		 * 
+		 * [--login=<user>]
+		 * : The login of the user to add the membership to.
+		 * 
+		 * [--email=<user>]
+		 * : The email of the user to add the membership to.
+		 * 
+		 * [--date=<YYYY-MM-DD>] 
+		 * : The expiration date (optional, if excluded, the default time period will be set).
+		 * 
+		 * @since 3.5.3
+		 * @since 3.5.4 Added expiration date.
+		 */
 		public function add( $args, $assoc_args ) {
-
+			$date = ( isset( $assoc_args['date'] ) ) ? $assoc_args['date'] : false;
+			$user = wpmem_cli_get_user( $assoc_args );
+			wpmem_set_user_membership( $args[0], $user->ID, $date );
+			WP_CLI::success( sprintf( '%s membership added to %s', $args[0], $user->user_email ) );
 		}
 
+		/**
+		 * Updates a membership for a user.
+		 * 
+		 * ## OPTIONS
+		 * 
+		 * <membership_meta_key> 
+		 * : The meta key (slug) of the membership to update.
+		 * 
+		 * [--date=<YYYY-MM-DD>]
+		 * : The expiration date (optional, if excluded, the default time period will be set).
+		 * 
+		 * [--id=<user>]
+		 * : The ID of the user to update.
+		 * 
+		 * [--login=<user>]
+		 * : The login of the user to udpate.
+		 * 
+		 * [--email=<user>]
+		 * : The email of the user to update.
+		 * 
+		 * @since 3.5.3
+		 */
+		public function update( $args, $assoc_args ) {
+			$user = wpmem_cli_get_user( $assoc_args );
+			wpmem_set_user_membership( $args[0], $user->ID, $assoc_args['date'] );
+			WP_CLI::success( sprintf( '%s membership update for %s', $args[0], $user->user_email ) );			
+		}
+
+		/**
+		 * Removes a membership to a user.
+		 * 
+		 * ## OPTIONS
+		 * 
+		 * <membership_meta_key> 
+		 * : The meta key (slug) of the membership to remove from the user.
+		 * 
+		 * [--id=<user>]
+		 * : The ID of the user to remove the membership from.
+		 * 
+		 * [--login=<user>]
+		 * : The login of the user to remove the membership from.
+		 * 
+		 * [--email=<user>]
+		 * : The email of the user to remove the membership from.
+		 * 
+		 * @since 3.5.3
+		 */
 		public function remove( $args, $assoc_args ) {
-			$membership = $args[0];
-
-			if ( isset( $assoc_args['ID'] ) ) {
-				$user_id = $assoc_args['ID'];
-			} elseif ( isset( $assoc_args['login'] ) ) {
-				$user = get_user_by( 'login', $assoc_args['login'] );
-				$user_id = $user->ID;
-			} elseif ( isset( $assoc_args['email'] ) ) {
-				$user = get_user_by( 'email', $assoc_args['email'] );
-				$user_id = $user->ID;
-			} else {
-				WP_CLI::error( __( 'No valid user data from inputs', 'wp-members' ) );
-			}
-
-			wpmem_remove_user_membership( $membership, $user_id );
-
-			WP_CLI::line( sprintf( __( '%s membership removed from %s', 'wp-members' ), $membership, $user_id ) );
+			$user = wpmem_cli_get_user( $assoc_args );
+			wpmem_remove_user_membership( $args[0], $user );
+			WP_CLI::success( sprintf( '%s membership removed from %s', $args[0], $user->user_email ) );
 		}
 	}
 }

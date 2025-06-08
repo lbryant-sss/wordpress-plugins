@@ -191,12 +191,61 @@ function wpmem_get_user_view_link( $name, $view, $meta_key, $meta_value, $compar
 	$show = sanitize_text_field( wpmem_get( 'show', '', 'get' ) );
 	$url = 'users.php?action=show&show=' . $view;
 	$class = ( $show == $view ) ? ' class="current"' : ''; 
-	$count = wpmem_get_user_view_count( $view, $meta_key, $meta_value, $compare, $expires );
+	
+	// Count is stored in a transient (see "if" condition below).
+	$count = get_transient( 'wpmem_user_counts_' . $view );
+	
+	// If the transient is not already set.
+	if ( false === $count ) {
+
+		// Get the count
+		$count = wpmem_get_user_count_by_meta( $meta_key, $meta_value, $compare, $expires );
+		
+		// Save it in a transient
+		$transient_expires = $expires; // Value in seconds, 1 day: ( 60 * 60 * 24 );
+		set_transient( 'wpmem_user_counts_' . $view, $count, $transient_expires );
+	}
+
+	/**
+	 * Filters the user view link args.
+	 * 
+	 * @since 3.5.4
+	 * 
+	 * @param  array  $args
+	 * @param  string $name
+	 */
+	$args = apply_filters( 'wpmem_user_view_link_args', array( 
+		'url'   => $url,
+		'class' => $class,
+		'name'  => $name,
+		'count' => $count,
+	), $name );
+
 	return sprintf(
 		'<a href="%s" %s>%s <span class="count">(%d)</span></a>',
-		esc_url( $url ),
-		$class,
-		$name,
-		$count
+		esc_url( $args['url'] ),
+		esc_attr( $args['class'] ),
+		esc_html( $args['name'] ),
+		intval( $args['count'] )
 	);
+}
+
+/**
+ * @todo could use some additional error messaging and testing.
+ */
+function wpmem_cli_get_user( $assoc_args ) {
+
+	if ( isset( $assoc_args['id'] ) ) {
+		$user_id = $assoc_args['id'];
+		$user = get_user_by( 'ID', $assoc_args['id'] );
+	} elseif ( isset( $assoc_args['login'] ) ) {
+		$user = get_user_by( 'login', $assoc_args['login'] );
+	} elseif ( isset( $assoc_args['email'] ) ) {
+		$user = get_user_by( 'email', $assoc_args['email'] );
+	}
+	if ( $user ) {
+		return $user;
+	}
+	WP_CLI::error( __( 'No valid user data from inputs', 'wp-members' ) );
+
 }

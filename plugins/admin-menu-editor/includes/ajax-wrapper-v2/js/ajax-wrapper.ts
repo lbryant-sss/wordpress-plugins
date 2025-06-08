@@ -23,54 +23,58 @@ namespace AjawV2 {
 			success?: SuccessCallback,
 			error?: ErrorCallback,
 			method?: RequestMethod
-		) {
-			if (typeof method === 'undefined') {
-				method = this.requiredMethod || 'POST';
-			}
-
-			if (this.requiredMethod && this.requiredMethod !== method) {
-				throw new Error(`Unsupported request method. This action requires ${this.requiredMethod}, got ${method}`);
-			}
-
-			params['action'] = this.action;
-			if (this.nonce) {
-				params['_ajax_nonce'] = this.nonce;
-			}
-
-			return jQuery.ajax(
-				this.ajaxUrl,
-				{
-					method: method,
-					data: params,
-					success: function (data, textStatus, jqXHR) {
-						if (success) {
-							success(data, textStatus, jqXHR);
+		): JQueryXHR {
+			return this.ajax({
+				method: method,
+				data: params,
+				success: function (data, textStatus, jqXHR) {
+					if (success) {
+						success(data, textStatus, jqXHR);
+					}
+				},
+				error: function (jqXHR: JQueryXHR, textStatus, errorThrown) {
+					if (error) {
+						let data: unknown = jqXHR.responseText;
+						if (typeof jqXHR['responseJSON'] !== 'undefined') {
+							data = jqXHR['responseJSON'];
 						}
-					},
-					error: function (jqXHR: JQueryXHR, textStatus, errorThrown) {
-						if (error) {
-							let data: unknown = jqXHR.responseText;
-							if (typeof jqXHR['responseJSON'] !== 'undefined') {
-								data = jqXHR['responseJSON'];
-							}
 
-							const parsedError = WpJsonError.tryParse(jqXHR);
-							if (parsedError) {
-								data = parsedError;
-							}
-
-							error(data, textStatus, jqXHR, errorThrown);
+						const parsedError = WpJsonError.tryParse(jqXHR);
+						if (parsedError) {
+							data = parsedError;
 						}
+
+						error(data, textStatus, jqXHR, errorThrown);
 					}
 				}
-			);
+			});
 		}
 
-		public post(params: RequestParams, success?: SuccessCallback, error?: ErrorCallback) {
+		public ajax(settings?: JQueryAjaxSettings): JQueryXHR {
+			settings = {
+				method: this.requiredMethod || 'POST',
+				...settings
+			};
+			if (this.requiredMethod && this.requiredMethod !== settings.method) {
+				throw new Error(`Unsupported request method. This action requires ${this.requiredMethod}, got ${settings.method}`);
+			}
+
+			const defaultParams: RequestParams = {
+				'action': this.action
+			};
+			if (this.nonce) {
+				defaultParams['_ajax_nonce'] = this.nonce;
+			}
+			settings.data = settings.data ? {...defaultParams, ...settings.data} : defaultParams;
+
+			return jQuery.ajax(this.ajaxUrl, settings);
+		}
+
+		public post(params: RequestParams, success?: SuccessCallback, error?: ErrorCallback): JQueryXHR {
 			return this.request(params, success, error, 'POST');
 		}
 
-		public get(params: RequestParams, success?: SuccessCallback, error?: ErrorCallback) {
+		public get(params: RequestParams, success?: SuccessCallback, error?: ErrorCallback): JQueryXHR {
 			return this.request(params, success, error, 'GET');
 		}
 	}
@@ -157,6 +161,21 @@ namespace AjawV2 {
 		for (const actionAlias in config.actions) {
 			if (config.actions.hasOwnProperty(actionAlias)) {
 				actionMap[actionAlias] = createAction(config.actions[actionAlias], config.ajaxUrl);
+			}
+		}
+		return actionMap;
+	}
+
+	export function createStrictActionMap<T extends readonly string[]>(
+		config: ActionMapConfig,
+		keys: T
+	): { [K in T[number]]: AjaxAction } {
+		const actionMap = {} as { [K in T[number]]: AjaxAction };
+		for (const key of keys) {
+			if (config.actions.hasOwnProperty(key)) {
+				actionMap[key as T[number]] = createAction(config.actions[key], config.ajaxUrl);
+			} else {
+				throw new Error(`Action "${key}" is not defined in the action map configuration.`);
 			}
 		}
 		return actionMap;

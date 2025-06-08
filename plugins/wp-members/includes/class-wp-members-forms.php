@@ -510,32 +510,10 @@ class WP_Members_Forms {
 		
 		$req_mark = ( ! isset( $args['req_mark'] ) || ! $args['req_mark'] ) ? wpmem_get_text( 'register_req_mark' ) : $args['req_mark'];
 
-		$label_text = __( $args['label'], 'wp-members' );
 		if ( isset( $args['label_href'] ) && '' != $args['label_href'] ) {
-
-			// Adjust placeholders.
-			$label_text = str_replace( '%', '%s', $label_text );
-
-			/**
-			 * Filters the anchor tag.
-			 * 
-			 * @since 3.5.3
-			 * 
-			 * @param  array   $atts     An array of attributes for the <a> tag.
-			 * @param  string  $meta_key Meta key of the field.
-			 */
-			$tag_atts = apply_filters( 'wpmem_form_label_link', array ( 
-				'href'   => $args['label_href'],
-				'target' => '_blank',
-			), $args['meta_key'] );
-			
-			$anchor_tag = "<a ";
-			foreach ( $tag_atts as $attribute => $value ) {
-				$anchor_tag .= ( '' != $value ) ? esc_attr( $attribute ) . '="' . esc_attr( $value ) . '" ' : esc_attr( $attribute ) . ' ';
-			}
-			$anchor_tag .= ">";
-			
-			$label_text = sprintf( $label_text, $anchor_tag, '</a>' );
+			$label_text_escd = $this->apply_label_link( $args['meta_key'], $args );
+		} else {
+			$label_text_escd = esc_html( __( $args['label'], 'wp-members' ) );
 		}
 		
 		if ( ! $args['class'] ) {
@@ -544,15 +522,15 @@ class WP_Members_Forms {
 			$class = $args['class'];
 		}
 		
-		$id = ( $args['id'] ) ? ' id="' . esc_attr( $args['id'] ) . '"' : '';
+		$id_escd = ( $args['id'] ) ? ' id="' . esc_attr( $args['id'] ) . '"' : '';
 
-		$label = '<label for="' . esc_attr( $args['meta_key'] ) . '"' . $id . ' class="' . wpmem_sanitize_class( $class ) . '">' . wpmem_sanitize_field( $label_text, 'kses' );
-		$label = ( $args['required'] ) ? $label . wpmem_sanitize_field( $req_mark, 'kses' ) : $label;
+		$label = '<label for="' . esc_attr( $args['meta_key'] ) . '"' . $id_escd . ' class="' . wpmem_sanitize_class( $class ) . '">' . $label_text_escd;
+		$label = ( $args['required'] ) ? $label . $req_mark : $label; // $req_mark text is escaped in wpmem_get_text() and then wrapped with html tag.
 		$label = $label . '</label>';
 		
 		return $label;
 	}
-	
+		
 	/**
 	 * Uploads file from the user.
 	 *
@@ -1783,7 +1761,11 @@ class WP_Members_Forms {
 							$tos_link_text = $this->get_tos_link( $field, 'woo' );
 						}
 
-						$label = ( 'tos' == $meta_key ) ? $tos_link_text : __( $field['label'], 'wp-members' );
+						if ( isset( $field['label_href'] ) ) {
+							$label = $wpmem->forms->apply_label_link( $meta_key, $field );
+						} else {
+							$label = ( 'tos' == $meta_key ) ? $tos_link_text : esc_html__( $field['label'], 'wp-members' );
+						}
 
 						$val = esc_attr( wpmem_get( $meta_key, '' ) ); // ( isset( $_POST[ $meta_key ] ) ) ? esc_attr( $_POST[ $meta_key ] ) : '';
 						$val = ( ! $_POST && $field['checked_default'] ) ? $field['checked_value'] : $val;
@@ -1811,7 +1793,7 @@ class WP_Members_Forms {
 
 						$row_before = ( $is_woo ) ? '<p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">' : '<p>';
 						$label  = '<label for="' . $meta_key . '">' . __( $field['label'], 'wp-members' ) . $req . '</label>';
-						$label .= ( 'multicheckbox' == $field['type'] ) ? '<br />' : '';
+						$label .= ( 'multicheckbox' == $field['type'] || 'radio' == $field['type'] ) ? '<br />' : '';
 
 						// determine the field type and generate accordingly...
 
@@ -1970,6 +1952,8 @@ class WP_Members_Forms {
 
 			if ( ! $field['native'] && ! in_array( $meta_key, $exclude ) ) {
 
+				$label = wpmem_get_field_label( $meta_key );
+
 				$req = ( $field['required'] ) ? ' <span class="description">' . wpmem_get_text( 'wp_form_required' ) . '</span>' : '';
 
 				$class = ( 'radio'    == $field['type'] 
@@ -1977,7 +1961,7 @@ class WP_Members_Forms {
 						|| 'date'     == $field['type'] ) ? '' : ' class="form-field" ';
 				echo '<tr' . $class . '>
 					<th scope="row">
-						<label for="' . $meta_key . '">' . __( $field['label'], 'wp-members' ) . $req . '</label>
+						<label for="' . esc_attr( $meta_key ) . '">' . $label . $req . '</label>
 					</th>
 					<td>';
 
@@ -2364,6 +2348,36 @@ class WP_Members_Forms {
 
 	function set_reg_form_showing( $value ) {
 		$this->reg_form_showing = $value;
+	}
+
+	/**
+	 * Applies the label link if there is a label_href val in the args.
+	 * @since 3.5.4
+	 */
+	function apply_label_link( $meta_key, $args ) {
+		// Adjust placeholders.
+		$label_text = str_replace( '%', '%s', esc_html( __( $args['label'], 'wp-members' ) ) );
+
+		/**
+		 * Filters the anchor tag.
+		 * 
+		 * @since 3.5.3
+		 * 
+		 * @param  array   $atts     An array of attributes for the <a> tag.
+		 * @param  string  $meta_key Meta key of the field.
+		 */
+		$tag_atts = apply_filters( 'wpmem_form_label_link', array ( 
+			'href'   => $args['label_href'],
+			'target' => '_blank',
+		), $meta_key );
+		
+		$anchor_tag = "<a ";
+		foreach ( $tag_atts as $attribute => $value ) {
+			$anchor_tag .= ( '' != $value ) ? esc_attr( $attribute ) . '="' . esc_attr( $value ) . '" ' : esc_attr( $attribute ) . ' ';
+		}
+		$anchor_tag .= ">";
+		
+		return sprintf( $label_text, $anchor_tag, '</a>' );
 	}
 
 } // End of WP_Members_Forms class.

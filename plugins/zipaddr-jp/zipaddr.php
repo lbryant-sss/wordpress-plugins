@@ -22,6 +22,7 @@ function zipaddr_jp_change($output, $opt=""){
 	$sysid[12]="TieredWorks, tieredworks";
 	$sysid[13]="Forminator,  forminator";
 	$sysid[14]="booking-package,bookingpackage";
+	$sysid[15]="YubinBango,";
 	$sysid[99]="###other###, tricks";
 //
 	$contf7= strpos($output, 'wpcf7-form');       //Contact Form 7
@@ -40,10 +41,12 @@ function zipaddr_jp_change($output, $opt=""){
 	$tieredw=strpos($output, 'SF-contact');       //TieredWorks
 	$formina=strpos($output, 'forminator-label'); //Forminator
 	$bookpak=strpos($output, 'id="booking-package"'); //booking-package
+	$yubingo=strpos($output, 'h-adr');            //YubinBango
 	$yubin=  strpos($output, '郵便番号');
 //フォームの自動判定
 	$sid= "";
-		 if( $contf7 !==false ) $sid= 1;
+		 if( $yubingo!==false ) $sid= 15;
+	else if( $contf7 !==false ) $sid= 1;
 	else if( $mwform !==false ) $sid= 2;
 	else if( $trustf !==false ) $sid= 3;
 	else if( $ninjaf !==false ){$sid= 4; $sys_dyna="1";}

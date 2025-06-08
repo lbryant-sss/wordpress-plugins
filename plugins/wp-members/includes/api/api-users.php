@@ -1053,7 +1053,7 @@ function wpmem_get_user_obj( $user ) {
  */
 function wpmem_get_users_by_meta( $meta, $value = "EXISTS" ) {
 	$args  = array( 'fields' => array( 'ID' ), 'meta_key' => esc_sql( $meta ) );
-	if ( false === $value ) {
+	if ( false == $value ) {
 		$args['meta_value'] = '';
 		$args['meta_compare'] = 'NOT EXISTS';
 	} elseif ( "EXISTS" == $value ) {
@@ -1104,6 +1104,20 @@ function wpmem_get_activated_users() {
  */
 function wpmem_get_deactivated_users() {
 	return wpmem_get_users_by_meta( 'active', 0 );
+}
+
+/**
+ * Gets a list of all confirmed users.
+ *
+ * @since 3.5.4
+ * 
+ * @todo meta is a timestamp, so could add a "get all since date" process by looping
+ *       through the results and checking the date.
+ *
+ * @return array $users An array of users IDs who have the meta key active=0
+ */
+function wpmem_get_confirmed_users() {
+	return wpmem_get_users_by_meta( '_wpmem_user_confirmed', 'EXISTS' );
 }
 
 /**
@@ -1212,32 +1226,60 @@ function wpmem_get_users( $args = array( 'fields' => 'ID' ), $type = 'array' ) {
 }
 
 /**
- * Returns a count for custom user view for Users > All Users.
+ * Gets a count of users.
  * 
  * @since 3.4.5
  * @since 3.5.3 Now in the main API (previously admin API)
- * 
- * @param  string  $view         Custom view slug
- * @param  string  $meta_key     Meta key the view is filtered by (needed for count)
- * @param  string  $meta_value   Value of the meta key for the view (needed for count)
- * @param  string  $compare      Comparison operator (optional, default "=")
- * @param  int     $expires      Expiration of the count transient in seconds (optional, default = 60)
+ * @since 3.5.4 Revamped.
+ *  
+ * @param  mixed  $args
  */
-function wpmem_get_user_view_count( $view, $meta_key, $meta_value, $compare = '=', $expires = 60 ) {
-	global $wpdb;
-	// Count is stored in a transient (see "if" condition below).
-	$count = get_transient( 'wpmem_user_counts_' . $view );
-	// If the transient is not already set.
-	if ( false === $count ) {
+function wpmem_user_count( $args = 'all' ) {
+	if ( is_array( $args ) && isset( $args['meta_key'] ) ) {
+		// This is a meta query.
+		$compare = ( isset( $args['compare'] ) ) ? $args['compare'] : '=';
+		return wpmem_get_user_count_by_meta( $args['meta_key'], $args['meta_value'], $compare );
+	} else {
+		switch ( $args ) {
+			case 'active':
+				return count( wpmem_get_activated_users() );
+				break;
+			
+			case 'deactivated':
+				return count( wpmem_get_deactivated_users() );
+				break;
 
-		// Get the count
-		$count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM " . $wpdb->usermeta . " WHERE meta_key=%s AND meta_value " . esc_sql( $compare ) . " \"%s\"", $meta_key, $meta_value ) );
+			case 'pending':
+				return count( wpmem_get_pending_users() );
+				break;
 
-		// Save it in a transient
-		$transient_expires = $expires; // Value in seconds, 1 day: ( 60 * 60 * 24 );
-		set_transient( 'wpmem_user_counts_' . $view, $count, $transient_expires );
+			case 'confirmed':
+				return wpmem_get_user_count_by_meta( '_wpmem_user_confirmed', '0', '>' );
+				break;
+
+			case 'notconfirmed':
+				return ( count_users() ) - ( wpmem_get_user_count_by_meta( '_wpmem_user_confirmed', '0', '>' ) );
+				break;
+				
+			default:
+				return wpmem_get_user_count_by_role( $args );
+				break;
+		}
 	}
-	// Return the count, either new or transient.
-	return $count;
+}
+
+function wpmem_get_user_count_by_meta( $meta_key, $meta_value, $compare = '=' ) {
+	global $wpdb;
+	return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM " . $wpdb->usermeta . " WHERE meta_key=%s AND meta_value " . esc_sql( $compare ) . " \"%s\"", $meta_key, $meta_value ) );
+}
+
+/**
+ * Gets a count of users by role.
+ * 
+ * @since 3.5.4
+ */
+function wpmem_get_user_count_by_role( $role ) {
+	$users = count_users();
+	return ( 'all' == $role ) ? $users['avail_roles'][ $role ] : $users['total_users'];
 }
 // End of file.

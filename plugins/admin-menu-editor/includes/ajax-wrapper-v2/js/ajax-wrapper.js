@@ -9,17 +9,7 @@ var AjawV2;
             this.requiredMethod = requiredMethod;
         }
         request(params = {}, success, error, method) {
-            if (typeof method === 'undefined') {
-                method = this.requiredMethod || 'POST';
-            }
-            if (this.requiredMethod && this.requiredMethod !== method) {
-                throw new Error(`Unsupported request method. This action requires ${this.requiredMethod}, got ${method}`);
-            }
-            params['action'] = this.action;
-            if (this.nonce) {
-                params['_ajax_nonce'] = this.nonce;
-            }
-            return jQuery.ajax(this.ajaxUrl, {
+            return this.ajax({
                 method: method,
                 data: params,
                 success: function (data, textStatus, jqXHR) {
@@ -41,6 +31,23 @@ var AjawV2;
                     }
                 }
             });
+        }
+        ajax(settings) {
+            settings = {
+                method: this.requiredMethod || 'POST',
+                ...settings
+            };
+            if (this.requiredMethod && this.requiredMethod !== settings.method) {
+                throw new Error(`Unsupported request method. This action requires ${this.requiredMethod}, got ${settings.method}`);
+            }
+            const defaultParams = {
+                'action': this.action
+            };
+            if (this.nonce) {
+                defaultParams['_ajax_nonce'] = this.nonce;
+            }
+            settings.data = settings.data ? { ...defaultParams, ...settings.data } : defaultParams;
+            return jQuery.ajax(this.ajaxUrl, settings);
         }
         post(params, success, error) {
             return this.request(params, success, error, 'POST');
@@ -108,6 +115,19 @@ var AjawV2;
         return actionMap;
     }
     AjawV2.createActionMap = createActionMap;
+    function createStrictActionMap(config, keys) {
+        const actionMap = {};
+        for (const key of keys) {
+            if (config.actions.hasOwnProperty(key)) {
+                actionMap[key] = createAction(config.actions[key], config.ajaxUrl);
+            }
+            else {
+                throw new Error(`Action "${key}" is not defined in the action map configuration.`);
+            }
+        }
+        return actionMap;
+    }
+    AjawV2.createStrictActionMap = createStrictActionMap;
     const registeredActions = {};
     function registerActions(collection) {
         for (const actionConfig of collection.actions) {
