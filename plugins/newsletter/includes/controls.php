@@ -1038,6 +1038,7 @@ class NewsletterControls {
      * - icon: the font awesome icon name (fa-xxx)
      * - style: the CSS style
      * - data: free data associated to the button click ($controls->button_data) for example to pass the element ID from a list of elements
+     * - confirm: false to no show an alert, true to show the "want to proceed?" question or a string to show that exact message
      *
      * @param string $action
      * @param string $label
@@ -1067,14 +1068,19 @@ class NewsletterControls {
         if (!empty($attrs['data'])) {
             $onclick .= "this.form.btn.value='" . esc_attr(esc_js($attrs['data'])) . "';";
         }
-        if (isset($attrs['confirm'])) {
-            if (is_string($attrs['confirm'])) {
-                $onclick .= "if (!confirm('" . esc_attr(esc_js($attrs['confirm'])) . "')) return false;";
-            } elseif ($attrs['confirm'] === true) {
-                $onclick .= "if (!confirm('" . esc_attr(esc_js(__('Proceed?', 'newsletter'))) . "')) return false;";
-            }
+
+        $confirm = $attrs['confirm'] ?? false;
+
+        if ($confirm === true || is_string($confirm) && empty($confirm)) {
+            $confirm = __('Proceed?', 'newsletter');
         }
+
+        if ($confirm) {
+            $onclick .= "if (!confirm('" . esc_attr(esc_js($confirm)) . "')) return false;";
+        }
+
         echo ' onclick="', esc_attr($onclick), '"';
+
         if (!empty($attrs['title'])) {
             echo ' title="', esc_attr($attrs['title']), '"';
         }
@@ -1082,6 +1088,7 @@ class NewsletterControls {
             echo ' style="', esc_attr($attrs['style']), '"';
         }
         echo '>';
+
         if (!empty($attrs['icon'])) {
             echo '<i class="fas ', esc_attr($attrs['icon']), '"></i>';
             if (!empty($label)) {
@@ -1256,12 +1263,12 @@ class NewsletterControls {
         }
     }
 
-    function button_confirm($action, $label, $message = true, $data = '') {
-        $this->btn($action, $label, ['data' => $data, 'confirm' => $message]);
+    function button_confirm($action, $label, $confirm = true, $data = '') {
+        $this->btn($action, $label, ['data' => $data, 'confirm' => $confirm]);
     }
 
-    function button_confirm_secondary($action, $label, $message = true, $data = '') {
-        $this->btn($action, $label, ['data' => $data, 'confirm' => $message, 'secondary' => true]);
+    function button_confirm_secondary($action, $label, $confirm = true, $data = '') {
+        $this->btn($action, $label, ['data' => $data, 'confirm' => $confirm, 'secondary' => true]);
     }
 
     /**

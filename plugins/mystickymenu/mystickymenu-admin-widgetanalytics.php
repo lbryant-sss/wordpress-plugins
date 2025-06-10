@@ -76,7 +76,7 @@ if (defined('ABSPATH') === false) {
 }
 
 .mystickymenu-widgetanalytic-body .px-7.py-8.flex-1 h2.mystickymenu-widgetanalytic-heading span{
-	color: #3C85F7;
+	color: #6558F5;
 	font-size: 48px;
 	font-weight: 800;
 }
@@ -160,12 +160,12 @@ if (defined('ABSPATH') === false) {
 	text-align:center;	
 	font-weight: 400;
     border-radius: 0.5rem;
-    background-color: #3c85f7;
+    background-color: #6558F5;
     color: #fff;    
     text-decoration-line: none;    
     line-height: 1.25rem;
 	--tw-drop-shadow: drop-shadow(0px 9px 7px rgba60 133 247 /0.37%));
-	border: 1px solid #3c85f7;
+	border: 1px solid #6558F5;
 }
 
 .mystickymenu-widgetanalytic-body ul li img{

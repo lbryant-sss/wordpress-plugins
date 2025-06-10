@@ -41,6 +41,7 @@ Represents a payment processed by the Square API.
 | `teamMemberId` | `?string` | Optional | An optional ID of the [TeamMember](entity:TeamMember) associated with taking the payment.<br>**Constraints**: *Maximum Length*: `192` | getTeamMemberId(): ?string | setTeamMemberId(?string teamMemberId): void |
 | `refundIds` | `?(string[])` | Optional | A list of `refund_id`s identifying refunds for the payment. | getRefundIds(): ?array | setRefundIds(?array refundIds): void |
 | `riskEvaluation` | [`?RiskEvaluation`](../../doc/models/risk-evaluation.md) | Optional | Represents fraud risk information for the associated payment.<br><br>When you take a payment through Square's Payments API (using the `CreatePayment`<br>endpoint), Square evaluates it and assigns a risk level to the payment. Sellers<br>can use this information to determine the course of action (for example,<br>provide the goods/services or refund the payment). | getRiskEvaluation(): ?RiskEvaluation | setRiskEvaluation(?RiskEvaluation riskEvaluation): void |
+| `terminalCheckoutId` | `?string` | Optional | An optional ID for a Terminal checkout that is associated with the payment. | getTerminalCheckoutId(): ?string | setTerminalCheckoutId(?string terminalCheckoutId): void |
 | `buyerEmailAddress` | `?string` | Optional | The buyer's email address.<br>**Constraints**: *Maximum Length*: `255` | getBuyerEmailAddress(): ?string | setBuyerEmailAddress(?string buyerEmailAddress): void |
 | `billingAddress` | [`?Address`](../../doc/models/address.md) | Optional | Represents a postal address in a country.<br>For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses). | getBillingAddress(): ?Address | setBillingAddress(?Address billingAddress): void |
 | `shippingAddress` | [`?Address`](../../doc/models/address.md) | Optional | Represents a postal address in a country.<br>For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses). | getShippingAddress(): ?Address | setShippingAddress(?Address shippingAddress): void |
@@ -51,6 +52,8 @@ Represents a payment processed by the Square API.
 | `receiptUrl` | `?string` | Optional | The URL for the payment's receipt.<br>The field is only populated for COMPLETED payments.<br>**Constraints**: *Maximum Length*: `255` | getReceiptUrl(): ?string | setReceiptUrl(?string receiptUrl): void |
 | `deviceDetails` | [`?DeviceDetails`](../../doc/models/device-details.md) | Optional | Details about the device that took the payment. | getDeviceDetails(): ?DeviceDetails | setDeviceDetails(?DeviceDetails deviceDetails): void |
 | `applicationDetails` | [`?ApplicationDetails`](../../doc/models/application-details.md) | Optional | Details about the application that took the payment. | getApplicationDetails(): ?ApplicationDetails | setApplicationDetails(?ApplicationDetails applicationDetails): void |
+| `isOfflinePayment` | `?bool` | Optional | Whether or not this payment was taken offline. | getIsOfflinePayment(): ?bool | setIsOfflinePayment(?bool isOfflinePayment): void |
+| `offlinePaymentDetails` | [`?OfflinePaymentDetails`](../../doc/models/offline-payment-details.md) | Optional | Details specific to offline payments. | getOfflinePaymentDetails(): ?OfflinePaymentDetails | setOfflinePaymentDetails(?OfflinePaymentDetails offlinePaymentDetails): void |
 | `versionToken` | `?string` | Optional | Used for optimistic concurrency. This opaque token identifies a specific version of the<br>`Payment` object. | getVersionToken(): ?string | setVersionToken(?string versionToken): void |
 
 ## Example (as JSON)
@@ -62,11 +65,11 @@ Represents a payment processed by the Square API.
   "updated_at": "updated_at4",
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   },
   "tip_money": {
     "amount": 190,
-    "currency": "ZMK"
+    "currency": "TWD"
   }
 }
 ```

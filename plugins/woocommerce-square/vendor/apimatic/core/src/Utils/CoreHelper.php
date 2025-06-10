@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Core\Utils;
 
 use Core\Types\Sdk\CoreFileWrapper;
+use DateTime;
 use InvalidArgumentException;
+use JsonSerializable;
+use stdClass;
 
 class CoreHelper
 {
@@ -85,6 +88,20 @@ class CoreHelper
     }
 
     /**
+     * Check if provided value is null or empty.
+     *
+     * @param $value mixed Value to be checked.
+     * @return bool True if given value is empty of null.
+     */
+    public static function isNullOrEmpty($value): bool
+    {
+        if (is_string($value) && $value == '0') {
+            return false;
+        }
+        return empty($value);
+    }
+
+    /**
      * Check if all the given value or values are present in the provided list.
      *
      * @param mixed $value        Value to be checked, could be scalar, array, 2D array, etc.
@@ -149,5 +166,134 @@ class CoreHelper
             return $osFamily;
         }
         return $osFamily . '-' . call_user_func($functionName, 'r');
+    }
+
+    /**
+     * Return base64 encoded string for given username and password, prepended with Basic substring.
+     */
+    public static function getBasicAuthEncodedString(string $username, string $password): string
+    {
+        if ($username == '' || $password == '') {
+            return '';
+        }
+        return 'Basic ' . base64_encode("$username:$password");
+    }
+
+    /**
+     * Return the accessToken prepended with Bearer substring.
+     */
+    public static function getBearerAuthString(string $accessToken): string
+    {
+        if ($accessToken == '') {
+            return '';
+        }
+        return 'Bearer ' . $accessToken;
+    }
+
+    /**
+     * Prepare a mixed typed value or array into a readable form.
+     *
+     * @param mixed $value Any mixed typed value.
+     * @param bool $exportBoolAsString Should export boolean values as string? Default: true
+     * @param bool $castAsString Should cast the output into string? Default: false
+     *
+     * @return mixed A valid readable instance to be sent in form/query.
+     */
+    public static function prepareValue(
+        $value,
+        bool $exportBoolAsString = true,
+        bool $castAsString = false
+    ) {
+        if (is_null($value)) {
+            return null;
+        }
+
+        if (is_bool($value)) {
+            return $exportBoolAsString ? var_export($value, true) : $value;
+        }
+
+        return $castAsString ? (string) $value : self::prepareCollectedValues($value, $exportBoolAsString);
+    }
+
+    /**
+     * Prepare a mixed typed value or array into a readable form.
+     *
+     * @param mixed $value Any mixed typed value.
+     * @param bool $exportBoolAsString Should export boolean values as string? Default: true
+     *
+     * @return mixed A valid readable instance to be sent in form/query.
+     */
+    private static function prepareCollectedValues($value, bool $exportBoolAsString)
+    {
+        $selfCaller = function ($v) use ($exportBoolAsString) {
+            return self::prepareValue($v, $exportBoolAsString);
+        };
+
+        if (is_array($value)) {
+            // recursively calling this function to resolve all types in any array
+            return array_map($selfCaller, $value);
+        }
+
+        if ($value instanceof JsonSerializable) {
+            $modelArray = $value->jsonSerialize();
+            // recursively calling this function to resolve all types in any model
+            return array_map($selfCaller, $modelArray instanceof stdClass ? [] : $modelArray);
+        }
+
+        return $value;
+    }
+
+    /**
+     * Converts the properties to a human-readable string representation.
+     *
+     * Sample output:
+     *
+     * $prefix [$properties:key: $properties:value, $processedProperties]
+     */
+    public static function stringify(
+        string $prefix,
+        array $properties,
+        string $processedProperties = ''
+    ): string {
+        $formattedProperties = array_map([self::class, 'stringifyProperty'], array_keys($properties), $properties);
+        if (!empty($processedProperties)) {
+            $formattedProperties[] = substr($processedProperties, strpos($processedProperties, '[') + 1, -1);
+        }
+
+        $formattedPropertiesString = implode(', ', array_filter($formattedProperties));
+        return ltrim("$prefix [$formattedPropertiesString]");
+    }
+
+    /**
+     * Converts the provided key value pair into a human-readable string representation.
+     */
+    private static function stringifyProperty($key, $value)
+    {
+        if (is_null($value)) {
+            return null; // Skip null values
+        }
+
+        $value = self::handleNonConvertibleTypes($value);
+        $value = is_array($value) ? self::stringify('', $value) : self::prepareValue($value, true, true);
+
+        if (is_string($key)) {
+            return "$key: $value";
+        }
+
+        // Skip keys representation for numeric keys (i.e. non associative arrays)
+        return $value;
+    }
+
+    private static function handleNonConvertibleTypes($value)
+    {
+        if ($value instanceof stdClass) {
+            return (array) $value;
+        }
+
+        if ($value instanceof DateTime) {
+            return DateHelper::toRfc3339DateTime($value);
+        }
+
+        return $value;
     }
 }

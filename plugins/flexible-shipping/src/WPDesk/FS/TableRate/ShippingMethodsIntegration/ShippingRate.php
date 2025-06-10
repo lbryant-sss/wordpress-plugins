@@ -54,10 +54,19 @@ class ShippingRate implements Hookable {
 	 * @return array
 	 */
 	public function remove_canceled_rates( $rates ) {
+		if ( ! is_array( $rates ) ) {
+
+			return $rates;
+		}
 		$meta_key = self::FS_CANCEL;
 		return array_filter(
 			$rates,
 			function ( $rate ) use ( $meta_key ) {
+				if ( ! is_object( $rate ) || ! method_exists( $rate, 'get_meta_data' ) ) {
+
+					return true;
+				}
+
 				return ! ( $rate->get_meta_data()[ $meta_key ] ?? false );
 			}
 		);

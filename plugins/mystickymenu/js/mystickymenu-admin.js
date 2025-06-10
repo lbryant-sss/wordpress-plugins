@@ -348,19 +348,22 @@
 			$( 'textarea[name="mysticky_option_welcomebar[mysticky_welcomebar_bar_text]"]' ).trigger( 'change keyup click' );
 		} );
 		
-		/* Static Text */
-		var mysticky_bar_text_val = $( 'textarea[name="mysticky_option_welcomebar[mysticky_welcomebar_bar_text]"]' ).val().replace(/(?:\r\n|\r|\n)/g, '<br />');
-		mysticky_bar_text_val = mysticky_bar_text_val.replace(/(?:onchange|onclick|onmouseover|onmouseout|onkeydown|onload\onerror|alert)/g, '');
-		$( '.mysticky-welcomebar-content p.mysticky-welcomebar-static_text' ).html( mysticky_bar_text_val );
-		$( 'textarea[name="mysticky_option_welcomebar[mysticky_welcomebar_bar_text]"]' ).on( 'change keyup click', function(){
-			
-			var mysticky_bar_text_val = $( this ).val().replace(/(?:\r\n|\r|\n)/g, '<br />');
+		if($( 'textarea[name="mysticky_option_welcomebar[mysticky_welcomebar_bar_text]"]' ).length > 0){
+			/* Static Text */
+			var mysticky_bar_text_val = $( 'textarea[name="mysticky_option_welcomebar[mysticky_welcomebar_bar_text]"]' ).val().replace(/(?:\r\n|\r|\n)/g, '<br />');
 			mysticky_bar_text_val = mysticky_bar_text_val.replace(/(?:onchange|onclick|onmouseover|onmouseout|onkeydown|onload\onerror|alert)/g, '');
 			$( '.mysticky-welcomebar-content p.mysticky-welcomebar-static_text' ).html( mysticky_bar_text_val );
-			$('.mysticky-welcomebar-fixed .mysticky-welcomebar-content p.mysticky-welcomebar-static_text').css('color', $('#mysticky_welcomebar_bgtxtcolor').val() );
-			$( '.mysticky-welcomebar-fixed p.mysticky-welcomebar-static_text' ).css( 'font-size', $('#mysticky_welcomebar_fontsize').val() + 'px' );
-			
-		} );
+			$( 'textarea[name="mysticky_option_welcomebar[mysticky_welcomebar_bar_text]"]' ).on( 'change keyup click', function(){
+				
+				var mysticky_bar_text_val = $( this ).val().replace(/(?:\r\n|\r|\n)/g, '<br />');
+				mysticky_bar_text_val = mysticky_bar_text_val.replace(/(?:onchange|onclick|onmouseover|onmouseout|onkeydown|onload\onerror|alert)/g, '');
+				$( '.mysticky-welcomebar-content p.mysticky-welcomebar-static_text' ).html( mysticky_bar_text_val );
+				$('.mysticky-welcomebar-fixed .mysticky-welcomebar-content p.mysticky-welcomebar-static_text').css('color', $('#mysticky_welcomebar_bgtxtcolor').val() );
+				$( '.mysticky-welcomebar-fixed p.mysticky-welcomebar-static_text' ).css( 'font-size', $('#mysticky_welcomebar_fontsize').val() + 'px' );
+				
+			} );
+		}
+		
 		/* Sliding Text */
 		$( document ).on( 'change keyup click', 'input[name="mysticky_option_welcomebar[mysticky_welcomebar_slider_text][]"]' , function(){
 			var sliding_text = '';

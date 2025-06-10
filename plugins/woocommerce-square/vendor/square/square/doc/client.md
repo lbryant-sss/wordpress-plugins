@@ -5,7 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2024-03-20'` |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2025-01-23'` |
 | `customUrl` | `string` | Sets the base URL requests are made to. Defaults to `https://connect.squareup.com`<br>*Default*: `'https://connect.squareup.com'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
 | `timeout` | `int` | Timeout for API calls in seconds.<br>*Default*: `60` |
@@ -30,8 +30,8 @@ $client = SquareClientBuilder::init()
             'AccessToken'
         )
     )
-    ->squareVersion('2024-03-20')
-    ->environment('production')
+    ->squareVersion('2025-01-23')
+    ->environment(Environment::PRODUCTION)
     ->customUrl('https://connect.squareup.com')
     ->build();
 ```
@@ -53,6 +53,7 @@ require_once "vendor/autoload.php";
 
 use Square\SquareClientBuilder;
 use Square\Authentication\BearerAuthCredentialsBuilder;
+use Square\Environment;
 
 $client = SquareClientBuilder::init()
     ->bearerAuthCredentials(
@@ -60,7 +61,9 @@ $client = SquareClientBuilder::init()
             'AccessToken'
         )
     )
-    ->squareVersion('2024-03-20')
+    ->squareVersion('2025-01-23')
+    ->environment(Environment::PRODUCTION)
+    ->customUrl('https://connect.squareup.com')
     ->build();
 
 $apiResponse = $client->getLocationsApi()->listLocations();
@@ -101,6 +104,7 @@ The gateway for the SDK. This class acts as a factory for the Apis and also hold
 | getDevicesApi() | Gets DevicesApi |
 | getDisputesApi() | Gets DisputesApi |
 | getEmployeesApi() | Gets EmployeesApi |
+| getEventsApi() | Gets EventsApi |
 | getGiftCardsApi() | Gets GiftCardsApi |
 | getGiftCardActivitiesApi() | Gets GiftCardActivitiesApi |
 | getInventoryApi() | Gets InventoryApi |

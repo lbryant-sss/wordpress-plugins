@@ -34,7 +34,7 @@
 			<table class="mystickymenu-widgets-lists">
 				<thead>
 					<tr>
-						<th style="text-align: left;padding: 0 0 0 20px !important;"><?php esc_html_e( 'Status', 'mystickymenu');?></th>
+						<th style="text-align: center; padding: 4px !important;"><?php esc_html_e( 'Status', 'mystickymenu');?></th>
 						<th style="width:66%;text-align: left;padding: 0 0 0 30px !important;"><?php esc_html_e( 'Bars', 'mystickymenu');?></th>
 						<th><?php esc_html_e( 'Quick Action', 'mystickymenu');?></th>
 					</tr>
@@ -42,7 +42,7 @@
 				<tbody>
 					<?php if(isset($stickymenus_widgets) && !empty($stickymenus_widgets)) : ?>
 					<tr id="stickymenu-widget-0">
-						<td style="text-align: left;padding: 0 0 0 20px !important;">
+						<td style="text-align: center; padding: 4px !important;">
 							<label class="mysticky-welcomebar-switch welcombar-status-switch">
 								<input type="checkbox" data-id="0" class="mystickymenu-widget-enabled" name ="mystickymenu-widget-enabled" data-id = "0" id = "mystickymenu-widget-enabled-0" value="1" <?php checked( $widget_status, 1 ); ?> />
 								<span class="slider round"></span>
@@ -190,7 +190,16 @@
 							$poptin_url = admin_url('admin.php?page=install-poptin-plugin');
 						}
 						?>
-						<label class="stickymenu-box-button settings-buttons"><a class="btn btn-poptin-popups" href="<?php echo esc_url($poptin_url);?>" target="_blank">Create Your First Popup</a></label>
+						<label class="stickymenu-box-button settings-buttons"><a class="btn btn-poptin-popups" href="<?php echo esc_url($poptin_url);?>" target="_blank">
+
+							<?php 
+								if(get_option('poptin_id', false) != false){
+									echo esc_html_e("Create Your Popup","mystickymenu");
+								}else{
+								    echo esc_html_e("Create Your First Popup","mystickymenu");
+								}
+							?>
+						</a></label>
 					</div>
 					
 				</div>

@@ -926,7 +926,7 @@ class QiAddonsForElementor_Framework_Elementor_Translator {
 		if ( ! empty( $widgets ) ) {
 			foreach ( $widgets as $widget_key => $widget_value ) {
 
-				$widget_help_url = $widget_value['demo'];
+				$widget_help_url = isset( $widget_value['demo'] ) ? $widget_value['demo'] : '';
 
 				$widget_help_url_params = array(
 					'utm_source'   => strtolower( str_replace( ' ', '-', $widget_value['title'] ) ) . '-widget',

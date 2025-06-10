@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb90900ac200f7b50de07289ca893a7eb
+class ComposerStaticInit5c50ed722e0271919dbfd72cf23b76b6
 {
     public static $prefixLengthsPsr4 = array (
         'W' => 
@@ -148,6 +148,12 @@ class ComposerStaticInitb90900ac200f7b50de07289ca893a7eb
         'FSVendor\\Octolize\\Brand\\UpsellingBox\\ShippingMethodAndConstantDisplayStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/wp-octolize-brand-assets/src/Brand/UpsellingBox/ShippingMethodAndConstantDisplayStrategy.php',
         'FSVendor\\Octolize\\Brand\\UpsellingBox\\ShippingMethodInstanceShouldShowStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/wp-octolize-brand-assets/src/Brand/UpsellingBox/ShippingMethodInstanceShouldShowStrategy.php',
         'FSVendor\\Octolize\\Brand\\UpsellingBox\\ShippingMethodShouldShowStrategy' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/wp-octolize-brand-assets/src/Brand/UpsellingBox/ShippingMethodShouldShowStrategy.php',
+        'FSVendor\\Octolize\\Csat\\Csat' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/wp-csat-petition/src/Csat.php',
+        'FSVendor\\Octolize\\Csat\\CsatCode' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/wp-csat-petition/src/CsatCode.php',
+        'FSVendor\\Octolize\\Csat\\CsatCodeFromFile' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/wp-csat-petition/src/CsatCodeFromFile.php',
+        'FSVendor\\Octolize\\Csat\\CsatCodeFromString' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/wp-csat-petition/src/CsatCodeFromString.php',
+        'FSVendor\\Octolize\\Csat\\CsatOption' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/wp-csat-petition/src/CsatOption.php',
+        'FSVendor\\Octolize\\Csat\\CsatOptionDependedOnShippingMethod' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/wp-csat-petition/src/CsatOptionDependedOnShippingMethod.php',
         'FSVendor\\Octolize\\Onboarding\\Field\\Html' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/wp-onboarding/src/Onboarding/Field/Html.php',
         'FSVendor\\Octolize\\Onboarding\\Onboarding' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/wp-onboarding/src/Onboarding/Onboarding.php',
         'FSVendor\\Octolize\\Onboarding\\OnboardingAjax' => __DIR__ . '/../..' . '/vendor_prefixed/octolize/wp-onboarding/src/Onboarding/OnboardingAjax.php',
@@ -496,6 +502,7 @@ class ComposerStaticInitb90900ac200f7b50de07289ca893a7eb
         'WPDesk\\FS\\AdvertMetabox\\ProPluginAdvertMetabox' => __DIR__ . '/../..' . '/src/WPDesk/FS/AdvertMetabox/ProPluginAdvertMetabox.php',
         'WPDesk\\FS\\Blocks\\FreeShipping\\FreeShippingBlock' => __DIR__ . '/../..' . '/src/WPDesk/FS/Blocks/FreeShipping/FreeShippingBlock.php',
         'WPDesk\\FS\\Blocks\\FreeShipping\\FreeShippingStoreEndpointData' => __DIR__ . '/../..' . '/src/WPDesk/FS/Blocks/FreeShipping/FreeShippingStoreEndpointData.php',
+        'WPDesk\\FS\\Csat\\CsatOptionDependedOnShippingMethodAndAiUsage' => __DIR__ . '/../..' . '/src/WPDesk/FS/Csat/CsatOptionDependedOnShippingMethodAndAiUsage.php',
         'WPDesk\\FS\\Helpers\\FlexibleShippingMethodsChecker' => __DIR__ . '/../..' . '/src/WPDesk/FS/Helpers/FlexibleShippingMethodsChecker.php',
         'WPDesk\\FS\\Helpers\\ShippingMethod' => __DIR__ . '/../..' . '/src/WPDesk/FS/Helpers/ShippingMethod.php',
         'WPDesk\\FS\\Helpers\\WooSettingsPageChecker' => __DIR__ . '/../..' . '/src/WPDesk/FS/Helpers/WooSettingsPageChecker.php',
@@ -688,9 +695,9 @@ class ComposerStaticInitb90900ac200f7b50de07289ca893a7eb
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb90900ac200f7b50de07289ca893a7eb::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb90900ac200f7b50de07289ca893a7eb::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb90900ac200f7b50de07289ca893a7eb::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5c50ed722e0271919dbfd72cf23b76b6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5c50ed722e0271919dbfd72cf23b76b6::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit5c50ed722e0271919dbfd72cf23b76b6::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -240,7 +240,6 @@ class Flexible_Shipping_Plugin extends AbstractPlugin implements HookableCollect
 			);
 		}
 
-
 		$this->add_hookable( new WPDesk_Flexible_Shipping_Shorcode_Unit_Weight() );
 		$this->add_hookable( new WPDesk_Flexible_Shipping_Shorcode_Unit_Dimension() );
 
@@ -348,6 +347,15 @@ class Flexible_Shipping_Plugin extends AbstractPlugin implements HookableCollect
 		// Upgrade onboarding
 		$this->add_hookable( new WPDesk\FS\Plugin\UpgradeOnboarding( $this->plugin_info ) );
 
+		// CSAT
+		$this->add_hookable(
+			new FSVendor\Octolize\Csat\Csat(
+				new \WPDesk\FS\Csat\CsatOptionDependedOnShippingMethodAndAiUsage( 'csat_flexible_shipping_ai', 'flexible_shipping_single' ),
+				new \FSVendor\Octolize\Csat\CsatCodeFromFile( __DIR__ . '/views/csat.php' ),
+				'woocommerce_after_settings_shipping',
+				new \FSVendor\WPDesk\ShowDecision\WooCommerce\ShippingMethodInstanceStrategy( new \WC_Shipping_Zones(), 'flexible_shipping_single' )
+			)
+		);
 	}
 
 	/**

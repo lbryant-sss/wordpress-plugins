@@ -115,7 +115,6 @@ return array(
     'VisualComposer\\Modules\\Editors\\Attributes\\PageDesignOptions\\Controller' => $baseDir . '/visualcomposer/Modules/Editors/Attributes/PageDesignOptions/Controller.php',
     'VisualComposer\\Modules\\Editors\\Attributes\\Url\\Controller' => $baseDir . '/visualcomposer/Modules/Editors/Attributes/Url/Controller.php',
     'VisualComposer\\Modules\\Editors\\Attributes\\WpEditor' => $baseDir . '/visualcomposer/Modules/Editors/Attributes/WpEditor.php',
-    'VisualComposer\\Modules\\Editors\\Backend\\EditorController' => $baseDir . '/visualcomposer/Modules/Editors/Backend/EditorController.php',
     'VisualComposer\\Modules\\Editors\\Backend\\SaveSetEditorController' => $baseDir . '/visualcomposer/Modules/Editors/Backend/SaveSetEditorController.php',
     'VisualComposer\\Modules\\Editors\\DataAjax\\Controller' => $baseDir . '/visualcomposer/Modules/Editors/DataAjax/Controller.php',
     'VisualComposer\\Modules\\Editors\\DataAjax\\PostDataController' => $baseDir . '/visualcomposer/Modules/Editors/DataAjax/PostDataController.php',

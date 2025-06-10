@@ -4,7 +4,7 @@ Tags: online store, ecommerce, shop, shopping cart, sell online
 Requires at least: 6.7
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 9.8.5
+Stable tag: 9.9.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -169,12 +169,12 @@ WooCommerce comes with some sample data you can use to see how products look; im
 
 == Changelog ==
 
-= 9.9.2 2025-06-04 =
+= 9.9.3 2025-06-09 =
 
 **WooCommerce**
 
-* Fix - Fix fatal error when WC_Email child class doesn't set template_html [#58487](https://github.com/woocommerce/woocommerce/pull/58487)
-* Fix - Fix the order count cache refresh hook and scheduling [#58535](https://github.com/woocommerce/woocommerce/pull/58535)
+* Fix - Remove order status validation for order count cache [#58586](https://github.com/woocommerce/woocommerce/pull/58586)
+* Fix - Revert "unsupported_theme_title_filter" Id parameter typing. [#58574](https://github.com/woocommerce/woocommerce/pull/58574)
 
 
 [See changelog for all versions](https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/changelog.txt).

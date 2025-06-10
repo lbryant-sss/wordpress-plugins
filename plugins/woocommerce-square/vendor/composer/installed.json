@@ -2,35 +2,36 @@
     "packages": [
         {
             "name": "apimatic/core",
-            "version": "0.3.3",
-            "version_normalized": "0.3.3.0",
+            "version": "0.3.14",
+            "version_normalized": "0.3.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apimatic/core-lib-php.git",
-                "reference": "984123c831598fc31749d194aa044cd46f227d29"
+                "reference": "c3eaad6cf0c00b793ce6d9bee8b87176247da582"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apimatic/core-lib-php/zipball/984123c831598fc31749d194aa044cd46f227d29",
-                "reference": "984123c831598fc31749d194aa044cd46f227d29",
+                "url": "https://api.github.com/repos/apimatic/core-lib-php/zipball/c3eaad6cf0c00b793ce6d9bee8b87176247da582",
+                "reference": "c3eaad6cf0c00b793ce6d9bee8b87176247da582",
                 "shasum": ""
             },
             "require": {
-                "apimatic/core-interfaces": "~0.1.0",
+                "apimatic/core-interfaces": "~0.1.5",
                 "apimatic/jsonmapper": "^3.1.1",
                 "ext-curl": "*",
                 "ext-dom": "*",
                 "ext-json": "*",
                 "ext-libxml": "*",
                 "php": "^7.2 || ^8.0",
-                "php-jsonpointer/php-jsonpointer": "^3.0.2"
+                "php-jsonpointer/php-jsonpointer": "^3.0.2",
+                "psr/log": "^1.1.4 || ^2.0.0 || ^3.0.0"
             },
             "require-dev": {
-                "phan/phan": "5.4.2",
+                "phan/phan": "5.4.5",
                 "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
                 "squizlabs/php_codesniffer": "^3.5"
             },
-            "time": "2023-10-26T06:52:40+00:00",
+            "time": "2025-02-27T06:03:30+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -52,29 +53,29 @@
             ],
             "support": {
                 "issues": "https://github.com/apimatic/core-lib-php/issues",
-                "source": "https://github.com/apimatic/core-lib-php/tree/0.3.3"
+                "source": "https://github.com/apimatic/core-lib-php/tree/0.3.14"
             },
             "install-path": "../apimatic/core"
         },
         {
             "name": "apimatic/core-interfaces",
-            "version": "0.1.2",
-            "version_normalized": "0.1.2.0",
+            "version": "0.1.5",
+            "version_normalized": "0.1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apimatic/core-interfaces-php.git",
-                "reference": "183214195a79784c382a446795c46ca8c1f43cc1"
+                "reference": "b4f1bffc8be79584836f70af33c65e097eec155c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apimatic/core-interfaces-php/zipball/183214195a79784c382a446795c46ca8c1f43cc1",
-                "reference": "183214195a79784c382a446795c46ca8c1f43cc1",
+                "url": "https://api.github.com/repos/apimatic/core-interfaces-php/zipball/b4f1bffc8be79584836f70af33c65e097eec155c",
+                "reference": "b4f1bffc8be79584836f70af33c65e097eec155c",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
             },
-            "time": "2023-04-04T06:40:52+00:00",
+            "time": "2024-05-09T06:32:07+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -98,23 +99,23 @@
             ],
             "support": {
                 "issues": "https://github.com/apimatic/core-interfaces-php/issues",
-                "source": "https://github.com/apimatic/core-interfaces-php/tree/0.1.2"
+                "source": "https://github.com/apimatic/core-interfaces-php/tree/0.1.5"
             },
             "install-path": "../apimatic/core-interfaces"
         },
         {
             "name": "apimatic/jsonmapper",
-            "version": "3.1.2",
-            "version_normalized": "3.1.2.0",
+            "version": "3.1.6",
+            "version_normalized": "3.1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apimatic/jsonmapper.git",
-                "reference": "6673a946c21f2ceeec0cb60d17541c11a22bc79d"
+                "reference": "c6cc21bd56bfe5d5822bbd08f514be465c0b24e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apimatic/jsonmapper/zipball/6673a946c21f2ceeec0cb60d17541c11a22bc79d",
-                "reference": "6673a946c21f2ceeec0cb60d17541c11a22bc79d",
+                "url": "https://api.github.com/repos/apimatic/jsonmapper/zipball/c6cc21bd56bfe5d5822bbd08f514be465c0b24e7",
+                "reference": "c6cc21bd56bfe5d5822bbd08f514be465c0b24e7",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +126,7 @@
                 "phpunit/phpunit": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0",
                 "squizlabs/php_codesniffer": "^3.0.0"
             },
-            "time": "2023-06-08T04:27:10+00:00",
+            "time": "2024-11-28T09:15:32+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -155,7 +156,7 @@
             "support": {
                 "email": "mehdi.jaffery@apimatic.io",
                 "issues": "https://github.com/apimatic/jsonmapper/issues",
-                "source": "https://github.com/apimatic/jsonmapper/tree/3.1.2"
+                "source": "https://github.com/apimatic/jsonmapper/tree/3.1.6"
             },
             "install-path": "../apimatic/jsonmapper"
         },
@@ -287,33 +288,86 @@
             "install-path": "../php-jsonpointer/php-jsonpointer"
         },
         {
-            "name": "square/square",
-            "version": "35.1.0.20240320",
-            "version_normalized": "35.1.0.20240320",
+            "name": "psr/log",
+            "version": "1.1.4",
+            "version_normalized": "1.1.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/square/square-php-sdk.git",
-                "reference": "c58dd0cb96e20821d5f4516c08b96f93798b58ea"
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/square/square-php-sdk/zipball/c58dd0cb96e20821d5f4516c08b96f93798b58ea",
-                "reference": "c58dd0cb96e20821d5f4516c08b96f93798b58ea",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
                 "shasum": ""
             },
             "require": {
-                "apimatic/core": "~0.3.0",
-                "apimatic/core-interfaces": "~0.1.0",
+                "php": ">=5.3.0"
+            },
+            "time": "2021-05-03T11:20:27+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
+            },
+            "install-path": "../psr/log"
+        },
+        {
+            "name": "square/square",
+            "version": "40.0.0.20250123",
+            "version_normalized": "40.0.0.20250123",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/square/square-php-sdk.git",
+                "reference": "4c8c88afbafb476a3e3f5751c987674874361ca9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/square/square-php-sdk/zipball/4c8c88afbafb476a3e3f5751c987674874361ca9",
+                "reference": "4c8c88afbafb476a3e3f5751c987674874361ca9",
+                "shasum": ""
+            },
+            "require": {
+                "apimatic/core": "~0.3.12",
+                "apimatic/core-interfaces": "~0.1.5",
                 "apimatic/unirest-php": "^4.0.0",
                 "ext-json": "*",
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "phan/phan": "5.4.2",
+                "phan/phan": "5.4.5",
                 "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
                 "squizlabs/php_codesniffer": "^3.5"
             },
-            "time": "2024-03-20T17:08:02+00:00",
+            "time": "2025-01-23T16:01:43+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -341,7 +395,7 @@
             ],
             "support": {
                 "issues": "https://github.com/square/square-php-sdk/issues",
-                "source": "https://github.com/square/square-php-sdk/tree/35.1.0.20240320"
+                "source": "https://github.com/square/square-php-sdk/tree/40.0.0.20250123"
             },
             "install-path": "../square/square"
         }

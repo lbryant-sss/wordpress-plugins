@@ -12,7 +12,7 @@ or error messages.
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `wageSetting` | [`?WageSetting`](../../doc/models/wage-setting.md) | Optional | An object representing a team member's wage information. | getWageSetting(): ?WageSetting | setWageSetting(?WageSetting wageSetting): void |
+| `wageSetting` | [`?WageSetting`](../../doc/models/wage-setting.md) | Optional | Represents information about the overtime exemption status, job assignments, and compensation<br>for a [team member](../../doc/models/team-member.md). | getWageSetting(): ?WageSetting | setWageSetting(?WageSetting wageSetting): void |
 | `errors` | [`?(Error[])`](../../doc/models/error.md) | Optional | The errors that occurred during the request. | getErrors(): ?array | setErrors(?array errors): void |
 
 ## Example (as JSON)
@@ -34,20 +34,22 @@ or error messages.
         },
         "job_title": "Manager",
         "pay_type": "SALARY",
-        "weekly_hours": 40
+        "weekly_hours": 40,
+        "job_id": "job_id2"
       },
       {
         "hourly_rate": {
-          "amount": 1200,
+          "amount": 2000,
           "currency": "USD"
         },
         "job_title": "Cashier",
         "pay_type": "HOURLY",
         "annual_rate": {
           "amount": 232,
-          "currency": "SBD"
+          "currency": "NIO"
         },
-        "weekly_hours": 98
+        "weekly_hours": 98,
+        "job_id": "job_id2"
       }
     ],
     "team_member_id": "-3oZQKPKVk6gUXU_V5Qa",
@@ -57,13 +59,13 @@ or error messages.
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

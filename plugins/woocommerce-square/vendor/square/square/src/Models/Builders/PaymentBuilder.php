@@ -15,7 +15,9 @@ use Square\Models\DeviceDetails;
 use Square\Models\DigitalWalletDetails;
 use Square\Models\ExternalPaymentDetails;
 use Square\Models\Money;
+use Square\Models\OfflinePaymentDetails;
 use Square\Models\Payment;
+use Square\Models\ProcessingFee;
 use Square\Models\RiskEvaluation;
 use Square\Models\SquareAccountDetails;
 
@@ -37,7 +39,7 @@ class PaymentBuilder
     }
 
     /**
-     * Initializes a new payment Builder object.
+     * Initializes a new Payment Builder object.
      */
     public static function init(): self
     {
@@ -46,6 +48,8 @@ class PaymentBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -55,6 +59,8 @@ class PaymentBuilder
 
     /**
      * Sets created at field.
+     *
+     * @param string|null $value
      */
     public function createdAt(?string $value): self
     {
@@ -64,6 +70,8 @@ class PaymentBuilder
 
     /**
      * Sets updated at field.
+     *
+     * @param string|null $value
      */
     public function updatedAt(?string $value): self
     {
@@ -73,6 +81,8 @@ class PaymentBuilder
 
     /**
      * Sets amount money field.
+     *
+     * @param Money|null $value
      */
     public function amountMoney(?Money $value): self
     {
@@ -82,6 +92,8 @@ class PaymentBuilder
 
     /**
      * Sets tip money field.
+     *
+     * @param Money|null $value
      */
     public function tipMoney(?Money $value): self
     {
@@ -91,6 +103,8 @@ class PaymentBuilder
 
     /**
      * Sets total money field.
+     *
+     * @param Money|null $value
      */
     public function totalMoney(?Money $value): self
     {
@@ -100,6 +114,8 @@ class PaymentBuilder
 
     /**
      * Sets app fee money field.
+     *
+     * @param Money|null $value
      */
     public function appFeeMoney(?Money $value): self
     {
@@ -109,6 +125,8 @@ class PaymentBuilder
 
     /**
      * Sets approved money field.
+     *
+     * @param Money|null $value
      */
     public function approvedMoney(?Money $value): self
     {
@@ -118,6 +136,8 @@ class PaymentBuilder
 
     /**
      * Sets processing fee field.
+     *
+     * @param ProcessingFee[]|null $value
      */
     public function processingFee(?array $value): self
     {
@@ -127,6 +147,8 @@ class PaymentBuilder
 
     /**
      * Sets refunded money field.
+     *
+     * @param Money|null $value
      */
     public function refundedMoney(?Money $value): self
     {
@@ -136,6 +158,8 @@ class PaymentBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -145,6 +169,8 @@ class PaymentBuilder
 
     /**
      * Sets delay duration field.
+     *
+     * @param string|null $value
      */
     public function delayDuration(?string $value): self
     {
@@ -154,6 +180,8 @@ class PaymentBuilder
 
     /**
      * Sets delay action field.
+     *
+     * @param string|null $value
      */
     public function delayAction(?string $value): self
     {
@@ -172,6 +200,8 @@ class PaymentBuilder
 
     /**
      * Sets delayed until field.
+     *
+     * @param string|null $value
      */
     public function delayedUntil(?string $value): self
     {
@@ -181,6 +211,8 @@ class PaymentBuilder
 
     /**
      * Sets source type field.
+     *
+     * @param string|null $value
      */
     public function sourceType(?string $value): self
     {
@@ -190,6 +222,8 @@ class PaymentBuilder
 
     /**
      * Sets card details field.
+     *
+     * @param CardPaymentDetails|null $value
      */
     public function cardDetails(?CardPaymentDetails $value): self
     {
@@ -199,6 +233,8 @@ class PaymentBuilder
 
     /**
      * Sets cash details field.
+     *
+     * @param CashPaymentDetails|null $value
      */
     public function cashDetails(?CashPaymentDetails $value): self
     {
@@ -208,6 +244,8 @@ class PaymentBuilder
 
     /**
      * Sets bank account details field.
+     *
+     * @param BankAccountPaymentDetails|null $value
      */
     public function bankAccountDetails(?BankAccountPaymentDetails $value): self
     {
@@ -217,6 +255,8 @@ class PaymentBuilder
 
     /**
      * Sets external details field.
+     *
+     * @param ExternalPaymentDetails|null $value
      */
     public function externalDetails(?ExternalPaymentDetails $value): self
     {
@@ -226,6 +266,8 @@ class PaymentBuilder
 
     /**
      * Sets wallet details field.
+     *
+     * @param DigitalWalletDetails|null $value
      */
     public function walletDetails(?DigitalWalletDetails $value): self
     {
@@ -235,6 +277,8 @@ class PaymentBuilder
 
     /**
      * Sets buy now pay later details field.
+     *
+     * @param BuyNowPayLaterDetails|null $value
      */
     public function buyNowPayLaterDetails(?BuyNowPayLaterDetails $value): self
     {
@@ -244,6 +288,8 @@ class PaymentBuilder
 
     /**
      * Sets square account details field.
+     *
+     * @param SquareAccountDetails|null $value
      */
     public function squareAccountDetails(?SquareAccountDetails $value): self
     {
@@ -253,6 +299,8 @@ class PaymentBuilder
 
     /**
      * Sets location id field.
+     *
+     * @param string|null $value
      */
     public function locationId(?string $value): self
     {
@@ -262,6 +310,8 @@ class PaymentBuilder
 
     /**
      * Sets order id field.
+     *
+     * @param string|null $value
      */
     public function orderId(?string $value): self
     {
@@ -271,6 +321,8 @@ class PaymentBuilder
 
     /**
      * Sets reference id field.
+     *
+     * @param string|null $value
      */
     public function referenceId(?string $value): self
     {
@@ -280,6 +332,8 @@ class PaymentBuilder
 
     /**
      * Sets customer id field.
+     *
+     * @param string|null $value
      */
     public function customerId(?string $value): self
     {
@@ -289,6 +343,8 @@ class PaymentBuilder
 
     /**
      * Sets employee id field.
+     *
+     * @param string|null $value
      */
     public function employeeId(?string $value): self
     {
@@ -298,6 +354,8 @@ class PaymentBuilder
 
     /**
      * Sets team member id field.
+     *
+     * @param string|null $value
      */
     public function teamMemberId(?string $value): self
     {
@@ -306,7 +364,18 @@ class PaymentBuilder
     }
 
     /**
+     * Unsets team member id field.
+     */
+    public function unsetTeamMemberId(): self
+    {
+        $this->instance->unsetTeamMemberId();
+        return $this;
+    }
+
+    /**
      * Sets refund ids field.
+     *
+     * @param string[]|null $value
      */
     public function refundIds(?array $value): self
     {
@@ -316,6 +385,8 @@ class PaymentBuilder
 
     /**
      * Sets risk evaluation field.
+     *
+     * @param RiskEvaluation|null $value
      */
     public function riskEvaluation(?RiskEvaluation $value): self
     {
@@ -324,7 +395,20 @@ class PaymentBuilder
     }
 
     /**
+     * Sets terminal checkout id field.
+     *
+     * @param string|null $value
+     */
+    public function terminalCheckoutId(?string $value): self
+    {
+        $this->instance->setTerminalCheckoutId($value);
+        return $this;
+    }
+
+    /**
      * Sets buyer email address field.
+     *
+     * @param string|null $value
      */
     public function buyerEmailAddress(?string $value): self
     {
@@ -334,6 +418,8 @@ class PaymentBuilder
 
     /**
      * Sets billing address field.
+     *
+     * @param Address|null $value
      */
     public function billingAddress(?Address $value): self
     {
@@ -343,6 +429,8 @@ class PaymentBuilder
 
     /**
      * Sets shipping address field.
+     *
+     * @param Address|null $value
      */
     public function shippingAddress(?Address $value): self
     {
@@ -352,6 +440,8 @@ class PaymentBuilder
 
     /**
      * Sets note field.
+     *
+     * @param string|null $value
      */
     public function note(?string $value): self
     {
@@ -361,6 +451,8 @@ class PaymentBuilder
 
     /**
      * Sets statement description identifier field.
+     *
+     * @param string|null $value
      */
     public function statementDescriptionIdentifier(?string $value): self
     {
@@ -370,6 +462,8 @@ class PaymentBuilder
 
     /**
      * Sets capabilities field.
+     *
+     * @param string[]|null $value
      */
     public function capabilities(?array $value): self
     {
@@ -379,6 +473,8 @@ class PaymentBuilder
 
     /**
      * Sets receipt number field.
+     *
+     * @param string|null $value
      */
     public function receiptNumber(?string $value): self
     {
@@ -388,6 +484,8 @@ class PaymentBuilder
 
     /**
      * Sets receipt url field.
+     *
+     * @param string|null $value
      */
     public function receiptUrl(?string $value): self
     {
@@ -397,6 +495,8 @@ class PaymentBuilder
 
     /**
      * Sets device details field.
+     *
+     * @param DeviceDetails|null $value
      */
     public function deviceDetails(?DeviceDetails $value): self
     {
@@ -406,6 +506,8 @@ class PaymentBuilder
 
     /**
      * Sets application details field.
+     *
+     * @param ApplicationDetails|null $value
      */
     public function applicationDetails(?ApplicationDetails $value): self
     {
@@ -414,7 +516,31 @@ class PaymentBuilder
     }
 
     /**
+     * Sets is offline payment field.
+     *
+     * @param bool|null $value
+     */
+    public function isOfflinePayment(?bool $value): self
+    {
+        $this->instance->setIsOfflinePayment($value);
+        return $this;
+    }
+
+    /**
+     * Sets offline payment details field.
+     *
+     * @param OfflinePaymentDetails|null $value
+     */
+    public function offlinePaymentDetails(?OfflinePaymentDetails $value): self
+    {
+        $this->instance->setOfflinePaymentDetails($value);
+        return $this;
+    }
+
+    /**
      * Sets version token field.
+     *
+     * @param string|null $value
      */
     public function versionToken(?string $value): self
     {
@@ -432,7 +558,7 @@ class PaymentBuilder
     }
 
     /**
-     * Initializes a new payment object.
+     * Initializes a new Payment object.
      */
     public function build(): Payment
     {

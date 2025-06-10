@@ -24,6 +24,7 @@ use Square\Apis\CustomerSegmentsApi;
 use Square\Apis\DevicesApi;
 use Square\Apis\DisputesApi;
 use Square\Apis\EmployeesApi;
+use Square\Apis\EventsApi;
 use Square\Apis\GiftCardActivitiesApi;
 use Square\Apis\GiftCardsApi;
 use Square\Apis\InventoryApi;
@@ -92,6 +93,8 @@ class SquareClient implements ConfigurationInterface
 
     private $employees;
 
+    private $events;
+
     private $giftCards;
 
     private $giftCardActivities;
@@ -155,16 +158,14 @@ class SquareClient implements ConfigurationInterface
     public function __construct(array $config = [])
     {
         $this->config = array_merge(ConfigurationDefaults::_ALL, CoreHelper::clone($config));
-        $this->bearerAuthManager = new BearerAuthManager(
-            $this->config['accessToken'] ?? ConfigurationDefaults::ACCESS_TOKEN
-        );
+        $this->bearerAuthManager = new BearerAuthManager($this->config);
         $this->validateConfig();
         $this->client = ClientBuilder::init(new HttpClient(Configuration::init($this)))
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
             ->apiCallback($this->config['httpCallback'] ?? null)
             ->userAgent(
-                'Square-PHP-SDK/35.1.0.20240320 ({api-version}) {engine}/{engine-version} ({os-' .
+                'Square-PHP-SDK/40.0.0.20250123 ({api-version}) {engine}/{engine-version} ({os-' .
                 'info}) {detail}'
             )
             ->userAgentConfig(
@@ -319,7 +320,7 @@ class SquareClient implements ConfigurationInterface
      */
     public function getSdkVersion(): string
     {
-        return '35.1.0.20240320';
+        return '40.0.0.20250123';
     }
 
     /**
@@ -529,6 +530,17 @@ class SquareClient implements ConfigurationInterface
             $this->employees = new EmployeesApi($this->client);
         }
         return $this->employees;
+    }
+
+    /**
+     * Returns Events Api
+     */
+    public function getEventsApi(): EventsApi
+    {
+        if ($this->events == null) {
+            $this->events = new EventsApi($this->client);
+        }
+        return $this->events;
     }
 
     /**

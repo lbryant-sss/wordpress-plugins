@@ -60,6 +60,36 @@ class ListPaymentsRequest implements \JsonSerializable
     private $limit = [];
 
     /**
+     * @var array
+     */
+    private $isOfflinePayment = [];
+
+    /**
+     * @var array
+     */
+    private $offlineBeginTime = [];
+
+    /**
+     * @var array
+     */
+    private $offlineEndTime = [];
+
+    /**
+     * @var array
+     */
+    private $updatedAtBeginTime = [];
+
+    /**
+     * @var array
+     */
+    private $updatedAtEndTime = [];
+
+    /**
+     * @var string|null
+     */
+    private $sortField;
+
+    /**
      * Returns Begin Time.
      * Indicates the start of the time range to retrieve payments for, in RFC 3339 format.
      * The range is determined using the `created_at` field for each Payment.
@@ -140,7 +170,7 @@ class ListPaymentsRequest implements \JsonSerializable
 
     /**
      * Returns Sort Order.
-     * The order in which results are listed by `Payment.created_at`:
+     * The order in which results are listed by `ListPaymentsRequest.sort_field`:
      * - `ASC` - Oldest to newest.
      * - `DESC` - Newest to oldest (default).
      */
@@ -154,7 +184,7 @@ class ListPaymentsRequest implements \JsonSerializable
 
     /**
      * Sets Sort Order.
-     * The order in which results are listed by `Payment.created_at`:
+     * The order in which results are listed by `ListPaymentsRequest.sort_field`:
      * - `ASC` - Oldest to newest.
      * - `DESC` - Newest to oldest (default).
      *
@@ -167,7 +197,7 @@ class ListPaymentsRequest implements \JsonSerializable
 
     /**
      * Unsets Sort Order.
-     * The order in which results are listed by `Payment.created_at`:
+     * The order in which results are listed by `ListPaymentsRequest.sort_field`:
      * - `ASC` - Oldest to newest.
      * - `DESC` - Newest to oldest (default).
      */
@@ -402,6 +432,220 @@ class ListPaymentsRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Is Offline Payment.
+     * Whether the payment was taken offline or not.
+     */
+    public function getIsOfflinePayment(): ?bool
+    {
+        if (count($this->isOfflinePayment) == 0) {
+            return null;
+        }
+        return $this->isOfflinePayment['value'];
+    }
+
+    /**
+     * Sets Is Offline Payment.
+     * Whether the payment was taken offline or not.
+     *
+     * @maps is_offline_payment
+     */
+    public function setIsOfflinePayment(?bool $isOfflinePayment): void
+    {
+        $this->isOfflinePayment['value'] = $isOfflinePayment;
+    }
+
+    /**
+     * Unsets Is Offline Payment.
+     * Whether the payment was taken offline or not.
+     */
+    public function unsetIsOfflinePayment(): void
+    {
+        $this->isOfflinePayment = [];
+    }
+
+    /**
+     * Returns Offline Begin Time.
+     * Indicates the start of the time range for which to retrieve offline payments, in RFC 3339
+     * format for timestamps. The range is determined using the
+     * `offline_payment_details.client_created_at` field for each Payment. If set, payments without a
+     * value set in `offline_payment_details.client_created_at` will not be returned.
+     *
+     * Default: The current time.
+     */
+    public function getOfflineBeginTime(): ?string
+    {
+        if (count($this->offlineBeginTime) == 0) {
+            return null;
+        }
+        return $this->offlineBeginTime['value'];
+    }
+
+    /**
+     * Sets Offline Begin Time.
+     * Indicates the start of the time range for which to retrieve offline payments, in RFC 3339
+     * format for timestamps. The range is determined using the
+     * `offline_payment_details.client_created_at` field for each Payment. If set, payments without a
+     * value set in `offline_payment_details.client_created_at` will not be returned.
+     *
+     * Default: The current time.
+     *
+     * @maps offline_begin_time
+     */
+    public function setOfflineBeginTime(?string $offlineBeginTime): void
+    {
+        $this->offlineBeginTime['value'] = $offlineBeginTime;
+    }
+
+    /**
+     * Unsets Offline Begin Time.
+     * Indicates the start of the time range for which to retrieve offline payments, in RFC 3339
+     * format for timestamps. The range is determined using the
+     * `offline_payment_details.client_created_at` field for each Payment. If set, payments without a
+     * value set in `offline_payment_details.client_created_at` will not be returned.
+     *
+     * Default: The current time.
+     */
+    public function unsetOfflineBeginTime(): void
+    {
+        $this->offlineBeginTime = [];
+    }
+
+    /**
+     * Returns Offline End Time.
+     * Indicates the end of the time range for which to retrieve offline payments, in RFC 3339
+     * format for timestamps. The range is determined using the
+     * `offline_payment_details.client_created_at` field for each Payment. If set, payments without a
+     * value set in `offline_payment_details.client_created_at` will not be returned.
+     *
+     * Default: The current time.
+     */
+    public function getOfflineEndTime(): ?string
+    {
+        if (count($this->offlineEndTime) == 0) {
+            return null;
+        }
+        return $this->offlineEndTime['value'];
+    }
+
+    /**
+     * Sets Offline End Time.
+     * Indicates the end of the time range for which to retrieve offline payments, in RFC 3339
+     * format for timestamps. The range is determined using the
+     * `offline_payment_details.client_created_at` field for each Payment. If set, payments without a
+     * value set in `offline_payment_details.client_created_at` will not be returned.
+     *
+     * Default: The current time.
+     *
+     * @maps offline_end_time
+     */
+    public function setOfflineEndTime(?string $offlineEndTime): void
+    {
+        $this->offlineEndTime['value'] = $offlineEndTime;
+    }
+
+    /**
+     * Unsets Offline End Time.
+     * Indicates the end of the time range for which to retrieve offline payments, in RFC 3339
+     * format for timestamps. The range is determined using the
+     * `offline_payment_details.client_created_at` field for each Payment. If set, payments without a
+     * value set in `offline_payment_details.client_created_at` will not be returned.
+     *
+     * Default: The current time.
+     */
+    public function unsetOfflineEndTime(): void
+    {
+        $this->offlineEndTime = [];
+    }
+
+    /**
+     * Returns Updated at Begin Time.
+     * Indicates the start of the time range to retrieve payments for, in RFC 3339 format.  The
+     * range is determined using the `updated_at` field for each Payment.
+     */
+    public function getUpdatedAtBeginTime(): ?string
+    {
+        if (count($this->updatedAtBeginTime) == 0) {
+            return null;
+        }
+        return $this->updatedAtBeginTime['value'];
+    }
+
+    /**
+     * Sets Updated at Begin Time.
+     * Indicates the start of the time range to retrieve payments for, in RFC 3339 format.  The
+     * range is determined using the `updated_at` field for each Payment.
+     *
+     * @maps updated_at_begin_time
+     */
+    public function setUpdatedAtBeginTime(?string $updatedAtBeginTime): void
+    {
+        $this->updatedAtBeginTime['value'] = $updatedAtBeginTime;
+    }
+
+    /**
+     * Unsets Updated at Begin Time.
+     * Indicates the start of the time range to retrieve payments for, in RFC 3339 format.  The
+     * range is determined using the `updated_at` field for each Payment.
+     */
+    public function unsetUpdatedAtBeginTime(): void
+    {
+        $this->updatedAtBeginTime = [];
+    }
+
+    /**
+     * Returns Updated at End Time.
+     * Indicates the end of the time range to retrieve payments for, in RFC 3339 format.  The
+     * range is determined using the `updated_at` field for each Payment.
+     */
+    public function getUpdatedAtEndTime(): ?string
+    {
+        if (count($this->updatedAtEndTime) == 0) {
+            return null;
+        }
+        return $this->updatedAtEndTime['value'];
+    }
+
+    /**
+     * Sets Updated at End Time.
+     * Indicates the end of the time range to retrieve payments for, in RFC 3339 format.  The
+     * range is determined using the `updated_at` field for each Payment.
+     *
+     * @maps updated_at_end_time
+     */
+    public function setUpdatedAtEndTime(?string $updatedAtEndTime): void
+    {
+        $this->updatedAtEndTime['value'] = $updatedAtEndTime;
+    }
+
+    /**
+     * Unsets Updated at End Time.
+     * Indicates the end of the time range to retrieve payments for, in RFC 3339 format.  The
+     * range is determined using the `updated_at` field for each Payment.
+     */
+    public function unsetUpdatedAtEndTime(): void
+    {
+        $this->updatedAtEndTime = [];
+    }
+
+    /**
+     * Returns Sort Field.
+     */
+    public function getSortField(): ?string
+    {
+        return $this->sortField;
+    }
+
+    /**
+     * Sets Sort Field.
+     *
+     * @maps sort_field
+     */
+    public function setSortField(?string $sortField): void
+    {
+        $this->sortField = $sortField;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -414,31 +658,49 @@ class ListPaymentsRequest implements \JsonSerializable
     {
         $json = [];
         if (!empty($this->beginTime)) {
-            $json['begin_time']  = $this->beginTime['value'];
+            $json['begin_time']            = $this->beginTime['value'];
         }
         if (!empty($this->endTime)) {
-            $json['end_time']    = $this->endTime['value'];
+            $json['end_time']              = $this->endTime['value'];
         }
         if (!empty($this->sortOrder)) {
-            $json['sort_order']  = $this->sortOrder['value'];
+            $json['sort_order']            = $this->sortOrder['value'];
         }
         if (!empty($this->cursor)) {
-            $json['cursor']      = $this->cursor['value'];
+            $json['cursor']                = $this->cursor['value'];
         }
         if (!empty($this->locationId)) {
-            $json['location_id'] = $this->locationId['value'];
+            $json['location_id']           = $this->locationId['value'];
         }
         if (!empty($this->total)) {
-            $json['total']       = $this->total['value'];
+            $json['total']                 = $this->total['value'];
         }
         if (!empty($this->last4)) {
-            $json['last_4']      = $this->last4['value'];
+            $json['last_4']                = $this->last4['value'];
         }
         if (!empty($this->cardBrand)) {
-            $json['card_brand']  = $this->cardBrand['value'];
+            $json['card_brand']            = $this->cardBrand['value'];
         }
         if (!empty($this->limit)) {
-            $json['limit']       = $this->limit['value'];
+            $json['limit']                 = $this->limit['value'];
+        }
+        if (!empty($this->isOfflinePayment)) {
+            $json['is_offline_payment']    = $this->isOfflinePayment['value'];
+        }
+        if (!empty($this->offlineBeginTime)) {
+            $json['offline_begin_time']    = $this->offlineBeginTime['value'];
+        }
+        if (!empty($this->offlineEndTime)) {
+            $json['offline_end_time']      = $this->offlineEndTime['value'];
+        }
+        if (!empty($this->updatedAtBeginTime)) {
+            $json['updated_at_begin_time'] = $this->updatedAtBeginTime['value'];
+        }
+        if (!empty($this->updatedAtEndTime)) {
+            $json['updated_at_end_time']   = $this->updatedAtEndTime['value'];
+        }
+        if (isset($this->sortField)) {
+            $json['sort_field']            = $this->sortField;
         }
         $json = array_filter($json, function ($val) {
             return $val !== null;

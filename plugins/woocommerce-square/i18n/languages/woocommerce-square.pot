@@ -2,10 +2,10 @@
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Square 4.9.2\n"
+"Project-Id-Version: WooCommerce Square 4.9.3\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/woocommerce-square\n"
-"POT-Creation-Date: 2025-05-27 15:42:43+00:00\n"
+"POT-Creation-Date: 2025-06-09 14:39:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -188,7 +188,7 @@ msgid ""
 msgstr ""
 
 #: includes/Admin/Rest/WC_REST_Square_Credit_Card_Payment_Settings_Controller.php:134
-#: includes/Gateway.php:715
+#: includes/Gateway.php:733
 msgid ""
 "This setting only applies to the Apple Pay button. When Google Pay is "
 "available, the Google Pay button will always have the \"Buy with\" button "
@@ -478,63 +478,79 @@ msgstr ""
 msgid "Start sync"
 msgstr ""
 
-#: includes/Admin.php:148
+#: includes/Admin.php:155
 msgid "Inventory tracking is disabled for this product"
 msgstr ""
 
-#: includes/Admin.php:149 includes/Handlers/Products.php:244
+#: includes/Admin.php:156 includes/Handlers/Products.php:244
 msgid "Synced with Square"
 msgstr ""
 
-#: includes/Admin.php:150
+#: includes/Admin.php:157
 msgid "Managed by Square"
 msgstr ""
 
-#: includes/Admin.php:151
+#: includes/Admin.php:158
 msgid "Fetch stock from Square"
 msgstr ""
 
-#: includes/Admin.php:152
+#: includes/Admin.php:159
 msgid "Sync inventory"
 msgstr ""
 
-#: includes/Admin.php:153
+#: includes/Admin.php:160
 msgid "Sync stock from Square"
 msgstr ""
 
-#: includes/Admin.php:199 includes/Sync/Records/Record.php:208
+#: includes/Admin.php:161
+msgid "Attribute name is too long, maximum allowed are 65 characters"
+msgstr ""
+
+#: includes/Admin.php:162
+msgid "Too many attributes, maximum allowed are 6."
+msgstr ""
+
+#: includes/Admin.php:163
+msgid "Too many attribute values, maximum allowed are 250"
+msgstr ""
+
+#: includes/Admin.php:164
+msgid "Too many variations, maximum allowed are 250."
+msgstr ""
+
+#: includes/Admin.php:210 includes/Sync/Records/Record.php:208
 msgid "Resolved"
 msgstr ""
 
-#: includes/Admin.php:200
+#: includes/Admin.php:211
 msgid "No records found"
 msgstr ""
 
-#: includes/Admin.php:201
+#: includes/Admin.php:212
 msgid "Skipped"
 msgstr ""
 
-#: includes/Admin.php:202
+#: includes/Admin.php:213
 msgid "Updated"
 msgstr ""
 
-#: includes/Admin.php:203
+#: includes/Admin.php:214
 msgid "Imported"
 msgstr ""
 
-#: includes/Admin.php:205
+#: includes/Admin.php:216
 msgid "Enable to fetch inventory changes from Square"
 msgstr ""
 
-#: includes/Admin.php:206
+#: includes/Admin.php:217
 msgid "Enable to push inventory changes to Square"
 msgstr ""
 
-#: includes/Admin.php:209
+#: includes/Admin.php:220
 msgid "Inventory is fetched from Square periodically and updated in WooCommerce"
 msgstr ""
 
-#: includes/Admin.php:212
+#: includes/Admin.php:223
 #. translators: Placeholders: %1$s - <strong> tag, %2$s - </strong> tag
 msgid ""
 "Inventory is %1$salways fetched from Square%2$s periodically to account for "
@@ -1105,7 +1121,7 @@ msgstr ""
 
 #: includes/Framework/PaymentGateway/ApplePay/Payment_Gateway_Apple_Pay_Admin.php:103
 #: includes/Framework/PaymentGateway/Payment_Gateway.php:1183
-#: includes/Gateway.php:705
+#: includes/Gateway.php:723
 msgid "Enable / Disable"
 msgstr ""
 
@@ -1366,8 +1382,8 @@ msgstr ""
 #: includes/Gateway/Cash_App_Pay_Gateway.php:183
 #: includes/Gateway/Cash_App_Pay_Gateway.php:1236
 #: includes/Gateway/Digital_Wallet.php:145 includes/Gateway/Gift_Card.php:369
-#: includes/Gateway/Payment_Form.php:220 includes/Gateway.php:312
-#: includes/Gateway.php:1043
+#: includes/Gateway/Payment_Form.php:220 includes/Gateway.php:330
+#: includes/Gateway.php:1061 includes/Gateway.php:1141
 msgid "An error occurred, please try again or try an alternate form of payment."
 msgstr ""
 
@@ -1725,7 +1741,7 @@ msgid "%1$s Refund Failed: %2$s"
 msgstr ""
 
 #: includes/Framework/PaymentGateway/Payment_Gateway.php:2644
-#: includes/Gateway/Cash_App_Pay_Gateway.php:647 includes/Gateway.php:1204
+#: includes/Gateway/Cash_App_Pay_Gateway.php:647 includes/Gateway.php:1236
 #. translators: Placeholders: %s - payment gateway title (such as
 #. Authorize.net, Braintree, etc)
 msgid "%s Order completely refunded."
@@ -2273,12 +2289,12 @@ msgstr ""
 msgid "Pay securely using Cash App Pay."
 msgstr ""
 
-#: includes/Gateway/Cash_App_Pay_Gateway.php:494 includes/Gateway.php:536
+#: includes/Gateway/Cash_App_Pay_Gateway.php:494 includes/Gateway.php:554
 #. translators: %s maximum refund date.
 msgid "Refunds must be made within %s of the original payment date."
 msgstr ""
 
-#: includes/Gateway/Cash_App_Pay_Gateway.php:518 includes/Gateway.php:560
+#: includes/Gateway/Cash_App_Pay_Gateway.php:518 includes/Gateway.php:578
 msgid ""
 "Could not find original transaction tender. Please refund this transaction "
 "from your Square dashboard."
@@ -2484,29 +2500,29 @@ msgstr ""
 msgid "No payment token exists for this ID."
 msgstr ""
 
-#: includes/Gateway.php:639
+#: includes/Gateway.php:657
 msgid "Customer Profiles"
 msgstr ""
 
-#: includes/Gateway.php:640
+#: includes/Gateway.php:658
 msgid ""
 "Check to enable tokenization and allow customers to securely save their "
 "payment details for future checkout."
 msgstr ""
 
-#: includes/Gateway.php:678
+#: includes/Gateway.php:696
 msgid "UnionPay"
 msgstr ""
 
-#: includes/Gateway.php:699
+#: includes/Gateway.php:717
 msgid "Digital Wallet Settings"
 msgstr ""
 
-#: includes/Gateway.php:700
+#: includes/Gateway.php:718
 msgid "Take payments on your store with Apple Pay and Google Pay."
 msgstr ""
 
-#: includes/Gateway.php:707
+#: includes/Gateway.php:725
 #. translators: Placeholders: %1$s - <a> tag, %2$s - </a> tag
 msgid ""
 "Allow customers to pay with Apple Pay or Google Pay from your Product, Cart "
@@ -2514,45 +2530,45 @@ msgid ""
 "our %1$sdocumentation%2$s."
 msgstr ""
 
-#: includes/Gateway.php:710
+#: includes/Gateway.php:728
 msgid "Enable digital wallets"
 msgstr ""
 
-#: includes/Gateway.php:714
+#: includes/Gateway.php:732
 msgid "Button Type"
 msgstr ""
 
-#: includes/Gateway.php:716
+#: includes/Gateway.php:734
 msgid "Select which text is displayed on the digital wallet buttons."
 msgstr ""
 
-#: includes/Gateway.php:728
+#: includes/Gateway.php:746
 msgid "Apple Pay Button Color"
 msgstr ""
 
-#: includes/Gateway.php:729
+#: includes/Gateway.php:747
 msgid "Select the color of the Apple Pay button."
 msgstr ""
 
-#: includes/Gateway.php:741
+#: includes/Gateway.php:759
 msgid "Google Pay Button Color"
 msgstr ""
 
-#: includes/Gateway.php:742
+#: includes/Gateway.php:760
 msgid "Select the color of the Google Pay button."
 msgstr ""
 
-#: includes/Gateway.php:753
+#: includes/Gateway.php:771
 msgid "Hide Digital Wallet Buttons"
 msgstr ""
 
-#: includes/Gateway.php:754
+#: includes/Gateway.php:772
 msgid ""
 "Select any digital wallet buttons you don't want to be displayed on your "
 "store."
 msgstr ""
 
-#: includes/Gateway.php:1099
+#: includes/Gateway.php:1117
 msgid ""
 "Your cart contains a Square Gift Card product which can only be purchased "
 "using the Square payment gateway."

@@ -3,7 +3,7 @@ Contributors: cbutlerjr
 Tags: membership, registration, login, authentication, restriction
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 3.5.3
+Stable tag: 3.5.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 The original WordPress membership plugin with content restriction, user login, custom registration fields, user profiles, and more.
@@ -135,6 +135,9 @@ WP-Members 3.5.4 is a feature update release. It fixes some minor bugs and adds 
 
 * Bug fix for register form field label links.
 * Bug fix that causes [wpmem_field] shortcode option to be reset when setting other settings or updating.
+* Bug fix for maintaining [wpmem_field] shortcode setting on upgrade from pre-3.5.x version.
+* Bug fix for updating stylesheet settings, especially if upgrading from pre-3.5.x version.
+* Deprecated `$wpmem->select_style`.  This is part of the custom stylesheet settings/options, but is no longer needed.  Using only `$wpmem->cssurl` going forward will make upgrading easier for those who use a custom stylesheet.  This change should be transparent for all upgrades.
 * Add additional form support for form field label links (native WP reg, WC forms, dashboard profile, [wpmem_field] shortcode).
 * New API functions for user counts: `wpmem_user_count()`, `wpmem_get_user_count_by_meta()`, `wpmem_get_user_count_by_role()`.
 * New API function for import: `wpmem_csv_to_array()`.

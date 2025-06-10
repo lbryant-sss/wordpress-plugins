@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ14_8_a_1
+class ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ14_8_a_3
 {
     public static $files = array (
         '3773ef3f09c37da5478d578e32b03a4b' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/jetpack-assets/actions.php',
@@ -40,6 +40,7 @@ class ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ14_8_a_1
     public static $classMap = array (
         'AhoCorasick\\MultiStringMatcher' => __DIR__ . '/..' . '/wikimedia/aho-corasick/src/MultiStringMatcher.php',
         'AhoCorasick\\MultiStringReplacer' => __DIR__ . '/..' . '/wikimedia/aho-corasick/src/MultiStringReplacer.php',
+        'Automattic\\Block_Delimiter' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/block-delimiter/src/class-block-delimiter.php',
         'Automattic\\Jetpack\\A8c_Mc_Stats' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/jetpack-a8c-mc-stats/src/class-a8c-mc-stats.php',
         'Automattic\\Jetpack\\Account_Protection\\Account_Protection' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/jetpack-account-protection/src/class-account-protection.php',
         'Automattic\\Jetpack\\Account_Protection\\Config' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/jetpack-account-protection/src/class-config.php',
@@ -546,9 +547,9 @@ class ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ14_8_a_1
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ14_8_a_1::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ14_8_a_1::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ14_8_a_1::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ14_8_a_3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ14_8_a_3::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ14_8_a_3::$classMap;
 
         }, null, ClassLoader::class);
     }

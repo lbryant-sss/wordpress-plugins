@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit70616533dd5a8664273b2bbf59ce7171
+class ComposerStaticInitf114ef5e52cc0e99a74b51db8c5c7454
 {
     public static $prefixLengthsPsr4 = array (
         'V' => 
@@ -130,7 +130,6 @@ class ComposerStaticInit70616533dd5a8664273b2bbf59ce7171
         'VisualComposer\\Modules\\Editors\\Attributes\\PageDesignOptions\\Controller' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/Attributes/PageDesignOptions/Controller.php',
         'VisualComposer\\Modules\\Editors\\Attributes\\Url\\Controller' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/Attributes/Url/Controller.php',
         'VisualComposer\\Modules\\Editors\\Attributes\\WpEditor' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/Attributes/WpEditor.php',
-        'VisualComposer\\Modules\\Editors\\Backend\\EditorController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/Backend/EditorController.php',
         'VisualComposer\\Modules\\Editors\\Backend\\SaveSetEditorController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/Backend/SaveSetEditorController.php',
         'VisualComposer\\Modules\\Editors\\DataAjax\\Controller' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/DataAjax/Controller.php',
         'VisualComposer\\Modules\\Editors\\DataAjax\\PostDataController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/DataAjax/PostDataController.php',
@@ -310,9 +309,9 @@ class ComposerStaticInit70616533dd5a8664273b2bbf59ce7171
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit70616533dd5a8664273b2bbf59ce7171::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit70616533dd5a8664273b2bbf59ce7171::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit70616533dd5a8664273b2bbf59ce7171::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf114ef5e52cc0e99a74b51db8c5c7454::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf114ef5e52cc0e99a74b51db8c5c7454::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf114ef5e52cc0e99a74b51db8c5c7454::$classMap;
 
         }, null, ClassLoader::class);
     }

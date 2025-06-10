@@ -972,13 +972,6 @@ return array (
       'make' => true,
       'singleton' => true,
     ),
-    'EditorsBackendEditorController' => 
-    array (
-      'name' => 'EditorsBackendEditorController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Backend\\EditorController',
-      'make' => true,
-      'singleton' => true,
-    ),
     'EditorsBackendSaveSetEditorController' => 
     array (
       'name' => 'EditorsBackendSaveSetEditorController',

@@ -3,7 +3,7 @@
 Plugin Name: My Sticky Bar
 Plugin URI: https://premio.io/
 Description: Create a notification bar for your website with My Sticky Bar. You can customize the design, collect leads, and enjoy other advanced features. You can also make your menu sticky using My Sticky Bar.
-Version: 2.8.1
+Version: 2.8.2
 Author: Premio
 Author URI: https://premio.io/downloads/mystickymenu/
 Text Domain: mystickymenu
@@ -12,9 +12,10 @@ License: GPLv3
 */
 
 defined('ABSPATH') or die("Cannot access pages directly.");
-define('MYSTICKY_VERSION', '2.8.1');
+define('MYSTICKY_VERSION', '2.8.2');
 define('MYSTICKYMENU_URL', plugins_url('/', __FILE__));  // Define Plugin URL
 define('MYSTICKYMENU_PATH', plugin_dir_path(__FILE__));  // Define Plugin Directory Path
+define('MYSTICKYMENU_BASE', plugin_basename(__FILE__));
 
 require_once("mystickymenu-fonts.php");
 require_once("welcome-bar.php");
@@ -23,6 +24,7 @@ if( is_admin() ) {
     //include_once 'class-review-box.php';
     include_once 'class-upgrade-box.php';
     include_once 'class-email-signup.php';
+    include_once 'class-help.php';
 
 }
 
@@ -36,7 +38,7 @@ class MyStickyMenuBackend
 		add_action( 'admin_init', array( $this, 'mysticky_load_transl') );
 		add_action( 'admin_init', array( $this, 'mysticky_default_options' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'mysticky_admin_script' ) );
-		add_filter( 'plugin_action_links_mystickymenu/mystickymenu.php', array( $this, 'mystickymenu_settings_link' )  );
+		add_filter( 'plugin_action_links_'.MYSTICKYMENU_BASE, array( $this, 'mystickymenu_settings_link' )  );
 		add_action( 'activated_plugin', array( $this, 'mystickymenu_activation_redirect' ) );
 	    add_action( "wp_ajax_mystickymenu_update_popup_status", array($this, 'mystickymenu_popup_status'));
 		add_action( 'admin_footer', array( $this, 'mystickymenu_deactivate' ) );
@@ -52,6 +54,7 @@ class MyStickyMenuBackend
 		add_action( 'wp_ajax_mystickymenu_review_box', [$this, "mystickymenu_review_box"]);
 		add_action( 'wp_ajax_mystickymenu_review_box_message', [$this, "mystickymenu_review_box_message"]);
 		add_action( 'admin_init' , [$this, 'check_for_redirection']);
+ 
 	}
 	
 	
@@ -253,7 +256,7 @@ class MyStickyMenuBackend
 				'url' => site_url(),
 				'name' => $user_name,
 				'message' => $post_message,
-				'plugin' => "MSE",
+				'plugin' => "My Sticky Bar",
 				'type' => "Need Help",
 			);
 
@@ -268,13 +271,16 @@ class MyStickyMenuBackend
 			$response['error'] = 1;
 			$response['errors'] = $errorArray;
 		}
-		echo json_encode($response);
+		wp_send_json($response);
 		wp_die();
 	}
 	
 	
 	public function mystickymenu_settings_link($links){
 		$settings_link = '<a href="admin.php?page=my-stickymenu-welcomebar">Settings</a>';
+		
+		$links['need_help'] = '<a href="https://wordpress.org/support/plugin/mystickymenu/" target="_blank">'.__( 'Need help?', 'mystickymenu' ).'</a>';
+			
 		$links['go_pro'] = '<a href="'. admin_url("admin.php?page=my-stickymenu-upgrade&type=upgrade").'" style="color: #FF5983; font-weight: bold; display: inline-block; border: solid 1px #FF5983; border-radius: 4px; padding: 0 5px;">'.__( 'Upgrade', 'stars-testimonials' ).'</a>';
 		array_unshift($links, $settings_link);
 		return $links;
@@ -474,8 +480,7 @@ class MyStickyMenuBackend
 	}
 
 	public function create_admin_page(){
-		
-		require_once MYSTICKYMENU_PATH . 'help.php';	
+		 
 
 		$is_shown = myStickyMenu_SIGNUP_CLASS::check_modal_status();
         if($is_shown) {
@@ -946,7 +951,7 @@ class MyStickyMenuBackend
 								_e('<span class="description"><strong>Except for this pages:</strong> </span>', 'mystickymenu');
 						
 								printf(
-									'<input type="text" size="26" class="mystickymenu_normal_text" id="mysticky_enable_at_pages" name="mysticky_option_name[mysticky_enable_at_pages]" value="%s"  /> ',  
+									'<input disabled type="text" size="26" class="mystickymenu_normal_text" id="mysticky_enable_at_pages" name="mysticky_option_name[mysticky_enable_at_pages]" value="%s"  /> ',
 									isset( $mysticky_options['mysticky_enable_at_pages'] ) ? esc_attr( $mysticky_options['mysticky_enable_at_pages']) : '' 
 								); 
 								
@@ -960,7 +965,7 @@ class MyStickyMenuBackend
 								_e('<span class="description"><strong>Except for this posts:</strong> </span>', 'mystickymenu');
 						
 								printf(
-									'<input type="text" size="26" class="mystickymenu_normal_text" id="mysticky_enable_at_posts" name="mysticky_option_name[mysticky_enable_at_posts]" value="%s" /> ',  
+									'<input disabled type="text" size="26" class="mystickymenu_normal_text" id="mysticky_enable_at_posts" name="mysticky_option_name[mysticky_enable_at_posts]" value="%s" /> ',
 									isset( $mysticky_options['mysticky_enable_at_posts'] ) ? esc_attr( $mysticky_options['mysticky_enable_at_posts']) : '' 
 								); 
 								
@@ -1014,8 +1019,7 @@ class MyStickyMenuBackend
 	}
 	
 	
-	public function mystickystickymenu_admin_welcomebar_page() {
-		require_once MYSTICKYMENU_PATH . 'help.php';
+	public function mystickystickymenu_admin_welcomebar_page() { 
  
 		$is_shown = myStickyMenu_SIGNUP_CLASS::check_modal_status();
         if($is_shown) {
@@ -1209,8 +1213,7 @@ class MyStickyMenuBackend
 		require_once MYSTICKYMENU_PATH . 'mystickymenu-review-popup.php';
 	}
 	
-	public function mystickystickymenu_admin_new_welcomebar_page() {	
-		require_once MYSTICKYMENU_PATH . 'help.php';	
+	public function mystickystickymenu_admin_new_welcomebar_page() {	 
 		
 		$is_shown = myStickyMenu_SIGNUP_CLASS::check_modal_status();
         if($is_shown) {
@@ -1256,8 +1259,7 @@ class MyStickyMenuBackend
 			return;
 		}  else {
 			include('mystickymenu-admin-widgetanalytics.php');
-		}
-		require_once MYSTICKYMENU_PATH . 'help.php';
+		} 
 	}
 	
 	public function mystickymenu_recommended_plugins() {
@@ -1267,8 +1269,7 @@ class MyStickyMenuBackend
 			return;
 		}  else {
 			include_once 'recommended-plugins.php';
-		}
-		require_once MYSTICKYMENU_PATH . 'help.php';
+		} 
 	}
 	
 	public function mystickymenu_admin_upgrade_to_pro() {
@@ -1297,8 +1298,7 @@ class MyStickyMenuBackend
 			</div>
 			<?php
 		}
-		
-		require_once MYSTICKYMENU_PATH . 'help.php';
+		 
 	}
 		
 	public function mysticky_default_options() {
@@ -1617,8 +1617,7 @@ class MyStickyMenuBackend
 	 * */
 
 	public function mystickymenu_admin_leads_page(){
-		global $wpdb;
-		require_once MYSTICKYMENU_PATH . 'help.php';
+		global $wpdb; 
 		$is_shown = myStickyMenu_SIGNUP_CLASS::check_modal_status();
         if($is_shown) {
 			include_once MYSTICKYMENU_PATH . 'admin/email-signup.php';
@@ -1663,7 +1662,7 @@ class MyStickyMenuBackend
 	
 			<?php 
 				if ( isset($_REQUEST['search-contact']) && $_REQUEST['search-contact'] != '' ) {
-					$where_search = "WHERE contact_name like '%" . $_REQUEST['search-contact'] . "%' OR contact_email like '%".$_REQUEST['search-contact']."%' OR contact_phone like '%".$_REQUEST['search-contact']."%'";
+					$where_search = "WHERE contact_name like '%" . $_REQUEST['search-contact'] . "%' OR contact_email like '%".$_REQUEST['search-contact']."%' OR contact_phone like '%".$_REQUEST['search-contact']."%' OR widget_name like '%".$_REQUEST['search-contact']."%' ";
 				}
 			?>
 			<div>					
@@ -1682,7 +1681,7 @@ class MyStickyMenuBackend
 						<input type="hidden" name="page" value='my-sticky-menu-leads'/>
 						<p class="search-box">
 							<label class="screen-reader-text" for="post-search-input"><?php esc_html_e( 'Search', 'mystickymenu');?></label>
-							<input type="search" id="post-search-input" name="search-contact" value="<?php echo (isset($_GET['search-contact']) && $_GET['search-contact'] != '') ? esc_attr($_GET['search-contact']) : ''; ?>">
+							<input type="search" id="post-search-input" name="search-contact" value="<?php echo (isset($_GET['search-contact']) && $_GET['search-contact'] != '') ? esc_attr($_GET['search-contact']) : ''; ?>"  placeholder="Search by name, email, phone, widget name">
 							<input type="submit" id="search-submit" class="button" value="<?php esc_html_e( 'Search', 'mystickymenu');?>">
 						</p>								
 					</form>
@@ -1710,13 +1709,23 @@ class MyStickyMenuBackend
 						$query 				= "SELECT * FROM " . $table_name  ." {$where_search} ORDER BY ID DESC LIMIT {$offset}, {$items_per_page}";
 						$result         	= $wpdb->get_results( $query );
 						$total_page         = ceil($total / $items_per_page);
+					 
 						if($result){
 
-							foreach ( $result as $res ) { ?>
+							foreach ( $result as $res ) {  ?>
+							
 								<tr>
 									<td><input id="cb-select-80" class="cb-select-blk" type="checkbox" name="delete_message[]" value="<?php echo esc_attr($res->ID);?>"></td>
-									<td><a href="<?php echo admin_url( 'admin.php?page=my-sticky-menu-leads&id=' . $res->ID );?>"><?php echo esc_html($res->ID);?></a></td>
-									<td><a href="<?php echo admin_url( 'admin.php?page=my-sticky-menu-leads&id=' . $res->ID );?>"><?php echo esc_html($res->widget_name);?></a></td>
+									<td><?php echo esc_html($res->ID);?></td>
+									
+									<td>
+										<?php if($res->widget_id !== NULL): ?>
+										<a target="_blank" href="<?php echo admin_url( 'admin.php?page=my-stickymenu-welcomebar&widget=' . $res->widget_id . '&isedit=1' );?>"><?php echo esc_html($res->widget_name);?></a>
+										<?php else: ?>
+											<?php echo esc_html($res->widget_name);?>
+										<?php endif; ?>
+									</td>
+
 									<td><?php echo esc_html($res->contact_name);?></td>
 									<td><?php echo esc_html($res->contact_email);?></td>
 									<td><?php echo esc_html($res->contact_phone);?></td>
@@ -1734,7 +1743,7 @@ class MyStickyMenuBackend
 							<?php }
 						} else { ?>
 							<tr>
-								<td colspan="8" align="center">
+								<td colspan="9" align="center">
 									<p class="mystickymenu-no-contact"> <?php esc_html_e('No Contact Form Leads Found!','mystickymenu');?>
 									</p>
 								</td>
@@ -2229,6 +2238,7 @@ class MyStickyMenuFrontend
 					}
 				}
 
+				$params["widget_id"]  = esc_sql( sanitize_text_field($element_widget_no));
 				$params["widget_name"]  = esc_sql( sanitize_text_field($element_widget_name));
 				$params["message_date"] = date('Y-m-d H:i:s');
 				$params["contact_email"] = (isset($params["contact_email"]) && $params["contact_email"] != '' ) ? sanitize_email($params["contact_email"]) : '';
@@ -2271,11 +2281,12 @@ function mystickymenu_activate() {
 	if ($wpdb->get_var("show tables like '$contact_lists_table'") != $contact_lists_table) {
 
 		$contact_lists_table_sql = "CREATE TABLE $contact_lists_table (
-			ID int(11) NOT NULL AUTO_INCREMENT,
+			ID int(11) NOT NULL AUTO_INCREMENT, 
+			widget_id INT(11) NULL,
 			contact_name varchar(255) NULL,
 			contact_phone varchar(255) NULL,
 			contact_email varchar(255) NULL,
-			widget_name varchar(255) NULL,
+			widget_name varchar(255) NULL, 
 			page_link varchar(522) NULL,
 			message_date DATETIME NOT NULL default '0000-00-00 00:00:00',
 			PRIMARY KEY  (ID)
@@ -2299,6 +2310,7 @@ function mystickymenu_admin_init(){
 
 		$contact_lists_table_sql = "CREATE TABLE $contact_lists_table (
 			ID int(11) NOT NULL AUTO_INCREMENT,
+			widget_id INT(11) NULL,
 			contact_name varchar(255) NULL,
 			contact_phone varchar(255) NULL,
 			contact_email varchar(255) NULL,
@@ -2309,6 +2321,25 @@ function mystickymenu_admin_init(){
 		) $charset_collate;";
 		dbDelta($contact_lists_table_sql);
 	}
+
+	if(get_option('msb_cl_widget_id_exists', false) == false){ 
+		// Check if the column already exists
+ 
+		$column_exists = $wpdb->get_results(
+			$wpdb->prepare(
+				"SHOW COLUMNS FROM $contact_lists_table LIKE %s",
+				'widget_id'
+			)
+		);
+
+		if (empty($column_exists)) {  
+			update_option('msb_cl_widget_id_exists', true);
+			$wpdb->query(
+				"ALTER TABLE $contact_lists_table ADD COLUMN widget_id INT(11) NULL AFTER ID"
+			);
+		}
+	}
+	
 }
 
 function mystickymenu_change_menu_text() {

@@ -35,12 +35,44 @@ Represents a response from an update request containing the updated `TeamMember`
     "phone_number": "+14159283333",
     "reference_id": "reference_id_1",
     "status": "ACTIVE",
-    "updated_at": "2021-06-15T17:38:05Z"
+    "updated_at": "2021-06-15T17:38:05Z",
+    "wage_setting": {
+      "created_at": "2021-06-11T22:55:45Z",
+      "is_overtime_exempt": true,
+      "job_assignments": [
+        {
+          "annual_rate": {
+            "amount": 3000000,
+            "currency": "USD"
+          },
+          "hourly_rate": {
+            "amount": 1443,
+            "currency": "USD"
+          },
+          "job_id": "FjS8x95cqHiMenw4f1NAUH4P",
+          "job_title": "Manager",
+          "pay_type": "SALARY",
+          "weekly_hours": 40
+        },
+        {
+          "hourly_rate": {
+            "amount": 1200,
+            "currency": "USD"
+          },
+          "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+          "job_title": "Cashier",
+          "pay_type": "HOURLY"
+        }
+      ],
+      "team_member_id": "1yJlHapkseYnNPETIU1B",
+      "updated_at": "2021-06-11T22:55:45Z",
+      "version": 1
+    }
   },
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

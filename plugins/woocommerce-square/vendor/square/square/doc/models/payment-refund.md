@@ -27,6 +27,7 @@ the original payment and the amount of money refunded.
 | `createdAt` | `?string` | Optional | The timestamp of when the refund was created, in RFC 3339 format.<br>**Constraints**: *Maximum Length*: `32` | getCreatedAt(): ?string | setCreatedAt(?string createdAt): void |
 | `updatedAt` | `?string` | Optional | The timestamp of when the refund was last updated, in RFC 3339 format.<br>**Constraints**: *Maximum Length*: `32` | getUpdatedAt(): ?string | setUpdatedAt(?string updatedAt): void |
 | `teamMemberId` | `?string` | Optional | An optional ID of the team member associated with taking the payment.<br>**Constraints**: *Maximum Length*: `192` | getTeamMemberId(): ?string | setTeamMemberId(?string teamMemberId): void |
+| `terminalRefundId` | `?string` | Optional | An optional ID for a Terminal refund. | getTerminalRefundId(): ?string | setTerminalRefundId(?string terminalRefundId): void |
 
 ## Example (as JSON)
 
@@ -46,12 +47,28 @@ the original payment and the amount of money refunded.
         "exp_month": 228,
         "exp_year": 68
       },
-      "entry_method": "entry_method8"
+      "entry_method": "entry_method8",
+      "auth_result_code": "auth_result_code0"
+    },
+    "cash_details": {
+      "seller_supplied_money": {
+        "amount": 36,
+        "currency": "MKD"
+      },
+      "change_back_money": {
+        "amount": 78,
+        "currency": "XBD"
+      }
+    },
+    "external_details": {
+      "type": "type6",
+      "source": "source0",
+      "source_id": "source_id8"
     }
   },
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   }
 }
 ```

@@ -90,6 +90,13 @@ var $ = jQuery,
   },
   removeHierarchyFromString = function removeHierarchyFromString(value) {
     return value.replace(/^(.*>)([^>]+)$/, '$2').replace('&amp;', '&').trim();
+  },
+  keys = {
+    esc: 27,
+    enter: 32,
+    space: 13,
+    up: 38,
+    down: 40
   };
 
 ;// CONCATENATED MODULE: ./assets/js/admin-filters/modules/ajax.js

@@ -25,7 +25,7 @@
       </div>
 
       <div class="am-payment-details">
-        <el-row v-if="payments[0].invoiceNumber" class="am-payment-details-row">
+        <el-row v-if="payments[0].invoiceNumber && !$root.licence.isLite && !$root.licence.isStarter" class="am-payment-details-row">
           <h4>{{ $root.labels.invoice_number + ': #' + payments[0].invoiceNumber }}</h4>
         </el-row>
 
@@ -128,7 +128,7 @@
             <p>{{ $root.labels[(finance.multipleBookings ? 'bookings' : (modalData.bookableType === 'appointment' ? 'service' : modalData.bookableType)) + '_price'] }}</p>
             <p v-if="modalData.bookableType !== 'package' && modalData.bookableType !== 'event'">{{ $root.labels.extras }}</p>
             <p v-if="modalData.bookableType !== 'package' && modalData.bookableType !== 'event'">{{ $root.labels.subtotal }}</p>
-            <p>{{ $root.labels.discount_amount }}</p>
+            <p v-if="finance.discountTotal">{{ $root.labels.discount_amount }}</p>
             <p v-if="finance.tax">{{ $root.labels.tax }}</p>
             <p v-if="payments.filter(p => (p.wcOrderId && p.wcItemTaxValue)).length > 0">{{ $root.labels.tax }} (Woo)</p>
             <p v-if="!showPaidSeparate()">{{ $root.labels.paid }}</p>
@@ -143,7 +143,7 @@
             <p class="am-semi-strong">{{ getFormattedPrice(finance.bookablePriceTotal) }}</p>
             <p v-if="modalData.bookableType !== 'package' && modalData.bookableType !== 'event'" class="am-semi-strong">{{ getFormattedPrice(finance.extrasPriceTotal) }}</p>
             <p v-if="modalData.bookableType !== 'package' && modalData.bookableType !== 'event'" class="am-semi-strong">{{ getFormattedPrice(finance.subTotal) }}</p>
-            <p class="am-semi-strong">{{ getFormattedPrice(finance.discountTotal > finance.subTotal ? finance.subTotal : finance.discountTotal ) }}</p>
+            <p v-if="finance.discountTotal" class="am-semi-strong">{{ getFormattedPrice(finance.discountTotal > finance.subTotal ? finance.subTotal : finance.discountTotal ) }}</p>
             <p v-if="finance.tax" class="am-semi-strong">{{ getFormattedPrice(finance.tax) }}</p>
             <p v-if="payments.filter(p => (p.wcOrderId && p.wcItemTaxValue)).length > 0" class="am-semi-strong">{{ getFormattedPrice(finance.wcTax) }}</p>
             <p class="am-semi-strong" v-if="!showPaidSeparate()">{{ getFormattedPrice(finance.paidRemaining + finance.paidDeposit) }}</p>

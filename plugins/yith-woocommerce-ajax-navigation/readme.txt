@@ -4,7 +4,7 @@ Contributors: yithemes
 Tags: shop filter, Ajax product filter, product filter, woocommerce product filter, woocommerce filter
 Requires at least: 6.6
 Tested up to: 6.8
-Stable tag: 5.11.0
+Stable tag: 5.11.1
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -157,6 +157,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 14. Gutenberg block
 
 == Changelog ==
+
+= 5.11.1 - Released on 9 June 2025 =
+
+* Tweak: make sure that get_filter_terms AJAX call returns items with a format that will allow them preserve original sorting when converted back from JSON to JS object
 
 = 5.11.0 - Released on 4 June 2025 =
 

@@ -1,6 +1,7 @@
 .my-sticky-bar_page_my-stickymenu-new-welcomebar .mystickymenu-new-widget-wrap {
-    margin: 20px auto !important;
+    margin-top: 50px !important;
 }
+ 
 .toplevel_page_my-stickymenu-welcomebar #wpcontent, .toplevel_page_my-stickymenu-welcomebar #wpfoote {
     margin-left: 140px;
 }
@@ -124,15 +125,19 @@ label.mysticky-welcomebar-switch {
 .mysticky-welcomebar-switch .slider:before {
     width: 16px;
     height: 16px;
-    top: 2px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .mysticky-welcomebar-switch input:checked + .slider:before {
-    transform: translateX(16px);
+    transform: translate(16px, -50%);
 }
 
 .mysticky-welcomebar-form {
     background-color: #FBFAFF;
-    padding-top: 90px;
+    margin-top: 90px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 20px;
 }
 
 .mysticky-welcomebar-expirydate .dashicons {
@@ -443,7 +448,8 @@ ul.poptin-ul li::before {
 }
 div.mysticky-welcomebar-preview-wrap {
     position: sticky;
-    top: 110px;
+    top: 110px; 
+    overflow: hidden;
 }
 div.mysticky-welcomebar-setting-right {
     width: 100%;
@@ -509,6 +515,14 @@ div.mysticky-welcomebar-preview-wrap.mysticky-welcomebar-full-screen-preview-bod
 
 .msm-bgbox .stickymenu-box-button {
     padding: 0;
+}
+
+.my-sticky-bar_page_my-stickymenu-settings #wpcontent {
+	padding-right: 20px;
+}
+
+#post-search-input{
+    width: 300px;
 }
 
 /* Responsive Code */
@@ -595,8 +609,19 @@ div.mysticky-welcomebar-preview-wrap.mysticky-welcomebar-full-screen-preview-bod
     .mysticky-welcomebar-setting-content-right.absolute {
         left: 230px;
     }
+    .contactus-tab-option.msm-bgbox {
+        margin-bottom: 16px;
+    }
 }
 
+@media only screen and (max-width: 1024px) {
+    .mystickybar-header.mystickybar-logo img {
+        max-width: 100px;
+    }
+    .x-color-wrap {
+        margin-top: 10px;
+    }
+}
 @media only screen and (max-width: 992px) {
     .mystickybar-header {
         left: 36px;
@@ -606,4 +631,137 @@ div.mysticky-welcomebar-preview-wrap.mysticky-welcomebar-full-screen-preview-bod
         margin-left: 36px !important;
         padding-left: 0;
     }
+}
+
+@media only screen and (max-width: 768px) {
+   .toplevel_page_my-stickymenu-welcomebar #wpcontent, .toplevel_page_my-stickymenu-welcomebar #wpfoote {
+        margin-left: 0 !important; 
+    }
+    .save-button-container .mobile-text {
+        display: none;
+    }
+ 
+    #mystickybar-widget-body-tab {
+        flex-direction: column;
+    }
+    section.mystickybar-widget-tabs-content .mystickybar-preview-section {
+        width: 100%;
+    }
+    .poptin-left {
+        float: unset;
+        width: 100%;
+    }
+    .poptin-right {
+        float: left;
+        width: 100%;
+    }
+
+    .wp-picker-container .wp-color-result.button { 
+        min-height: 40px !important;
+    }
+    .mysticky-welcomebar-setting-content-right {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: start;
+    }
+    .mystickymenu-country-button, .mystickymenu-country-inputs select {
+        width: 100%;
+        max-width: 250px;
+    }
+      .mystickybar-header {
+        left: 0;
+        top: 0 !important;
+        flex-direction: column;
+        height: auto;
+        padding: 16px;
+    }
+    
+    .mysticky-custom-fields-tooltip p {
+        max-width: 150px;
+    }
+    .mysticky-welcomebar-setting-content-right.absolute {
+        position: absolute;
+        left: 129px;
+        display: inline-block;
+        width: 100px !important;
+    }
+    .mystickymenu-country-inputs { 
+        width: 100% !important;
+    }
+    .mysticky-welcomebar-form{
+        margin-top: 150px;
+    }
+    div.mysticky-welcomebar-full-screen-preview {
+        top: 20px;
+        left: 20px !important;
+        right: 20px !important;
+        bottom: 20px !important;
+    }
+}
+
+
+@media only screen and (max-width: 576px) {
+   
+    .recent-lead-table {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .recent-lead-table table {
+        width: 100%;
+        border-collapse: collapse; 
+    }
+    .contactus-tab-option.msm-bgbox {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .contactus-tab-option-left {
+        flex-direction: column;
+    }
+     
+    .mystickymenu-tab-documentation.msm-bgbox .flex.align-middle.gap-x-px {
+        flex-direction: column;
+    }
+    .mystickymenu-new-widget-row ul li {
+        width: 100%;
+    }
+    #mystickymenu-select, #mysticky_class_selector {
+        width: 100% !important;
+        margin: 7px;
+    }
+    .mystickymenu-content-section.sticky-class-sec td {
+        width: 100%;
+    }
+    input[type=checkbox]:checked::before { 
+        content: "";
+        width: 16px !important;
+        height: 16px !important; 
+    }
+    .mystickymenu-content-section input[type="number"] {
+        max-width: 100% !important;
+        width: 100% !important;
+        min-height: auto !important;
+    }
+  
+    .mystickymenu-input-section ul.mystickymenu-input-multicheckbox li { 
+        width: 32%;
+    }
+    #mystickymenu p.submit {
+        float: unset;
+        text-align: center;
+    }
+    .button.button-secondary.confirm {
+        float: unset !important;
+    }
+    .mysticky-hideformreset {
+        text-align: center;
+    }
+    .myStickymenu-review {
+        text-align: center;
+    }
+    .save-button-container .mobile-text {
+        display: none;
+    }
+ 
 }

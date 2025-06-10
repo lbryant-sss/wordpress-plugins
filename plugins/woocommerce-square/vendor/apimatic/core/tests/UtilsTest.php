@@ -2,7 +2,11 @@
 
 namespace Core\Tests;
 
+use Core\Tests\Mocking\Other\Customer;
 use Core\Tests\Mocking\Other\MockClass;
+use Core\Tests\Mocking\Other\Order;
+use Core\Tests\Mocking\Other\Person;
+use Core\Tests\Mocking\Types\MockFileWrapper;
 use Core\Utils\CoreHelper;
 use Core\Utils\DateHelper;
 use Core\Utils\XmlDeserializer;
@@ -11,6 +15,7 @@ use DateTime;
 use Exception;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 class UtilsTest extends TestCase
 {
@@ -182,6 +187,147 @@ class UtilsTest extends TestCase
         $this->assertEquals("false", CoreHelper::convertToNullableString("false"));
     }
 
+    public function testToStringWithInheritanceAndNesting()
+    {
+        $customer = new Customer();
+        $customer->name = 'John Doe';
+        $customer->email = 'john.doe@example.com';
+        $customer->additionalProperties = [
+            'age' => 21
+        ];
+
+        $orderA = new Order();
+        $orderA->orderId = 345;
+
+        $orderB = new Order();
+        $orderB->orderId = 567;
+        $orderB->sender = $customer;
+
+        $order = new Order();
+        $order->orderId = 123;
+        $order->similarOrders = [$orderA, $orderB];
+        $order->sender = $customer;
+        $order->total = 250.75;
+        $order->delivered = true;
+
+        $expected = 'Order [orderId: 123, sender: Customer [email: john.doe@example.com, ' .
+            'name: John Doe, additionalProperties: [age: 21]], similarOrders: [Order [orderId: 345], ' .
+            'Order [orderId: 567, sender: Customer [email: john.doe@example.com, name: John Doe, ' .
+            'additionalProperties: [age: 21]]]], total: 250.75, delivered: true]';
+
+        $this->assertEquals($expected, $order);
+    }
+
+    public function testToStringWithFileType()
+    {
+        $fileWrapper = MockFileWrapper::createFromPath('some\path\test.txt', 'text/plain', 'My Text');
+
+        $person = new Person();
+        $person->additionalProperties = [
+            'file' => $fileWrapper
+        ];
+
+        $expected = 'Person [additionalProperties: [file: MockFileWrapper [realFilePath: some\path\test.txt,' .
+            ' mimeType: text/plain, filename: My Text]]]';
+
+        $this->assertEquals($expected, $person);
+    }
+
+    public function testToStringWithStdClass()
+    {
+        $object = new stdClass();
+        $object->name = "John";
+        $object->age = 30;
+
+        $person = new Person();
+        $person->additionalProperties = [
+            'stdClass' => $object,
+            'stdClassArray' => [$object, $object],
+            'stdClassMap' => ['keyA' => $object, 'keyB' => $object]
+        ];
+
+        $expected = 'Person [additionalProperties: [stdClass: [name: John, age: 30], stdClassArray: ' .
+            '[[name: John, age: 30], [name: John, age: 30]], stdClassMap: [keyA: [name: John, age: 30], ' .
+            'keyB: [name: John, age: 30]]]]';
+
+        $this->assertEquals($expected, $person);
+    }
+
+    public function testToStringWithDateTime()
+    {
+        $date = DateHelper::fromSimpleDate('2024-01-17');
+
+        $person = new Person();
+        $person->additionalProperties = [
+            'date' => $date,
+            'dateArray' => [$date, $date],
+            'dateMap' => ['keyA' => $date, 'keyB' => $date]
+        ];
+
+        $expected = 'Person [additionalProperties: [date: 2024-01-17T00:00:00+00:00, dateArray: ' .
+            '[2024-01-17T00:00:00+00:00, 2024-01-17T00:00:00+00:00], dateMap: [keyA: 2024-01-17T00:00:00+00:00,' .
+            ' keyB: 2024-01-17T00:00:00+00:00]]]';
+
+        $this->assertEquals($expected, $person);
+    }
+
+    public function testCoreHelperStringify()
+    {
+        $expectedStringNotation = 'Model [prop1: true, prop2: 90, prop3: my string 3, prop4: [23, 24.4]]';
+
+        $this->assertEquals($expectedStringNotation, CoreHelper::stringify(
+            'Model',
+            [
+                'prop1' => true,
+                'prop2' => 90,
+                'prop3' => 'my string 3',
+                'prop4' => [23, 24.4]
+            ]
+        ));
+    }
+
+    public function testCoreHelperStringifyWithProcessedProperties()
+    {
+        $expectedStringNotation = 'Model [prop1: true, prop2: 90, prop3: my string 1, ' .
+            'parentProp1: 1.1, parentProp2: some string, additionalProperties: ' .
+            '[additional1: [A, B, false, true], additional2: other string, additional3: false]]';
+
+        $processedProperties = CoreHelper::stringify(
+            'Parent',
+            [
+                'parentProp1' => 1.1,
+                'parentProp2' => 'some string',
+                'additionalProperties' =>
+                    [
+                        'additional1' => [ 'A', 'B', false, true ],
+                        'additional2' => 'other string',
+                        'additional3' => false,
+                    ]
+            ]
+        );
+
+        $this->assertEquals($expectedStringNotation, CoreHelper::stringify(
+            'Model',
+            [
+                'prop1' => true,
+                'prop2' => 90,
+                'prop3' => 'my string 1'
+            ],
+            $processedProperties
+        ));
+    }
+
+    public function testIsNullOrEmpty()
+    {
+        $this->assertTrue(CoreHelper::isNullOrEmpty(0));
+        $this->assertTrue(CoreHelper::isNullOrEmpty([]));
+        $this->assertTrue(CoreHelper::isNullOrEmpty(''));
+        $this->assertTrue(CoreHelper::isNullOrEmpty(null));
+        $this->assertTrue(CoreHelper::isNullOrEmpty(false));
+        $this->assertFalse(CoreHelper::isNullOrEmpty('0'));
+        $this->assertFalse(CoreHelper::isNullOrEmpty('some value'));
+    }
+
     public function testOsInfo()
     {
         $expected = PHP_OS_FAMILY . '-' . php_uname('r');
@@ -197,6 +343,30 @@ class UtilsTest extends TestCase
     public function testDisabledOsVersion()
     {
         $this->assertEquals(PHP_OS_FAMILY, CoreHelper::getOsInfo(PHP_OS_FAMILY, 'unknown_func'));
+    }
+
+    public function testBasicAuthEncodedString()
+    {
+        $expected = 'Basic dXNlcm5hbWU6X1BhNTV3MHJk';
+        $this->assertEquals($expected, CoreHelper::getBasicAuthEncodedString('username', '_Pa55w0rd'));
+    }
+
+    public function testEmptyBasicAuthEncodedString()
+    {
+        $this->assertEmpty(CoreHelper::getBasicAuthEncodedString('', '_Pa55w0rd'));
+        $this->assertEmpty(CoreHelper::getBasicAuthEncodedString('username', ''));
+        $this->assertEmpty(CoreHelper::getBasicAuthEncodedString('', ''));
+    }
+
+    public function testBearerAuthString()
+    {
+        $expected = 'Bearer my-token';
+        $this->assertEquals($expected, CoreHelper::getBearerAuthString('my-token'));
+    }
+
+    public function testEmptyBearerAuthString()
+    {
+        $this->assertEmpty(CoreHelper::getBearerAuthString(''));
     }
 
     public function testFromSimpleDateFailure()
@@ -301,6 +471,12 @@ class UtilsTest extends TestCase
             null], DateHelper::toSimpleDate2DArray($res));
     }
 
+    public function testFromSimpleDateStringTimeInfo()
+    {
+        $date = DateHelper::fromSimpleDate('2024-01-16');
+        $this->assertEquals(strtotime('2024-01-16'), $date->getTimestamp());
+    }
+
     public function testFromRFC1123DateString()
     {
         $this->assertNull(DateHelper::fromRfc1123DateTimeMapOfArray(null));
@@ -321,6 +497,21 @@ class UtilsTest extends TestCase
             ['key1' => new DateTime("2021-09-31"), 'key2' => new DateTime("2021-09-30")],
             ['keyA' => null, 'keyB' => new DateTime("2021-09-29")],
             null], $res);
+    }
+
+    public function testAddingTimezoneInRFC3339DateString()
+    {
+        $date = DateHelper::fromRfc3339DateTime("2021-10-01T00:00:00");
+        $this->assertEquals("2021-10-01T00:00:00+00:00", DateHelper::toRfc3339DateTime($date));
+
+        $date = DateHelper::fromRfc3339DateTime("2021-10-01T00:00:00Z");
+        $this->assertEquals("2021-10-01T00:00:00+00:00", DateHelper::toRfc3339DateTime($date));
+
+        $date = DateHelper::fromRfc3339DateTime("2021-10-01T00:00:00+01:00");
+        $this->assertEquals("2021-09-30T23:00:00+00:00", DateHelper::toRfc3339DateTime($date));
+
+        $date = DateHelper::fromRfc3339DateTime("2021-10-01T00:00:00-01:00");
+        $this->assertEquals("2021-10-01T01:00:00+00:00", DateHelper::toRfc3339DateTime($date));
     }
 
     public function testFromRFC3339DateString()

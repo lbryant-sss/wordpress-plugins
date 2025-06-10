@@ -190,48 +190,6 @@ class EntityService
                 $services->getItem($appointment->getServiceId()->getValue());
 
             $appointment->setService($providerService);
-
-            if ($lastIndex) {
-                /** @var Appointment $previousAppointment */
-                $previousAppointment = $appointments->getItem($lastIndex);
-
-                if ((
-                        $previousAppointment->getLocationId() && $appointment->getLocationId() ?
-                        $previousAppointment->getLocationId()->getValue() === $appointment->getLocationId()->getValue() : true
-                    ) &&
-                    $previousAppointment->getProviderId()->getValue() === $appointment->getProviderId()->getValue() &&
-                    $previousAppointment->getServiceId()->getValue() === $appointment->getServiceId()->getValue() &&
-                    $providerService->getMaxCapacity()->getValue() === 1 &&
-                    $appointment->getBookingStart()->getValue()->format('H:i') !== '00:00' &&
-                    $previousAppointment->getBookingEnd()->getValue()->format('Y-m-d H:i') ===
-                    $appointment->getBookingStart()->getValue()->format('Y-m-d H:i')
-
-                ) {
-
-                    $continuousAppointments[$appointment->getBookingStart()->getValue()->format('Y-m-d')]
-                    [$appointment->getBookingStart()->getValue()->format('H:i')] = [];
-
-                    if (empty($continuousAppointmentsProviders[$appointment->getBookingStart()->getValue()->format('Y-m-d')][$appointment->getProviderId()->getValue()])) {
-                        $continuousAppointmentsProviders[$appointment->getBookingStart()->getValue()->format('Y-m-d')][$appointment->getProviderId()->getValue()] = 1;
-                    } else {
-                        $continuousAppointmentsProviders[$appointment->getBookingStart()->getValue()->format('Y-m-d')][$appointment->getProviderId()->getValue()]++;
-                    }
-
-                    $previousAppointment->setBookingEnd(
-                        new DateTimeValue(
-                            DateTimeService::getCustomDateTimeObject(
-                                $appointment->getBookingEnd()->getValue()->format('Y-m-d H:i:s')
-                            )
-                        )
-                    );
-
-                    $appointments->deleteItem($index);
-                } else {
-                    $lastIndex = $index;
-                }
-            } else {
-                $lastIndex = $index;
-            }
         }
 
         return [$continuousAppointments, $continuousAppointmentsProviders];

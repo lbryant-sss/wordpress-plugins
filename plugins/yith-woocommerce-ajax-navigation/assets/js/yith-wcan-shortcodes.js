@@ -90,6 +90,13 @@ var $ = jQuery,
   },
   removeHierarchyFromString = function removeHierarchyFromString(value) {
     return value.replace(/^(.*>)([^>]+)$/, '$2').replace('&amp;', '&').trim();
+  },
+  keys = {
+    esc: 27,
+    enter: 32,
+    space: 13,
+    up: 38,
+    down: 40
   };
 
 ;// CONCATENATED MODULE: ./assets/js/shortcodes/modules/yith-wcan-filter.js
@@ -519,7 +526,9 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
     key: "_initTemplate",
     value: function _initTemplate() {
       var $mainSpan = $('<div/>', {
-          "class": 'yith-wcan-dropdown closed'
+          "class": 'yith-wcan-dropdown closed',
+          'aria-label': this.$originalSelect.attr('aria-label'),
+          tabindex: 0
         }),
         $labelSpan = $('<div/>', {
           "class": 'dropdown-label',
@@ -582,14 +591,23 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
     key: "_initActions",
     value: function _initActions() {
       var _this$$_main,
-        _this$$_search,
-        _this = this;
-      var self = this;
-
+        _this$$_main$on,
+        _this = this,
+        _this$$_search;
       // main open event
-      (_this$$_main = this.$_main) === null || _this$$_main === void 0 ? void 0 : _this$$_main.on('click', function (ev) {
+      (_this$$_main = this.$_main) === null || _this$$_main === void 0 ? void 0 : (_this$$_main$on = _this$$_main.on('click', function (ev) {
         ev.stopPropagation();
-        self.toggleDropdown();
+        _this.toggleDropdown();
+      })) === null || _this$$_main$on === void 0 ? void 0 : _this$$_main$on.on('keypress', function (ev) {
+        if (!Object.values(keys).includes(ev.keyCode)) {
+          return;
+        }
+        ev.preventDefault();
+        if ([keys.enter, keys.up].includes(ev.keyCode)) {
+          _this.toggleDropdown();
+        } else if (keys.esc === ev.keyCode) {
+          _this.closeDropdown();
+        }
       });
       this.$_dropdown.on('click', function (ev) {
         ev.stopPropagation();
@@ -605,23 +623,24 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
       });
 
       // select event
-      this.$_items.on('change', ':input', function () {
-        var $li = $(this).closest('li'),
+      this.$_items.on('change', ':input', function (ev) {
+        var $li = $(ev.target).closest('li'),
           value = $li.data('value'),
           isActive = false;
-        if ($li.hasClass('disabled') && !self.isValueSelected(value)) {
+        if ($li.hasClass('disabled') && !_this.isValueSelected(value)) {
           return false;
         }
         $li.toggleClass('active');
         isActive = $li.hasClass('active');
-        self._changeItemStatus(value, isActive);
+        _this._changeItemStatus(value, isActive);
+        return false;
       });
       this.$_items.on('click', 'li:not(.checkbox) a', function (ev) {
-        var $li = $(this).closest('li'),
+        var $li = $(ev.target).closest('li'),
           value = $li.data('value'),
           isActive = false;
         ev.preventDefault();
-        if ($li.hasClass('disabled') && !self.isValueSelected(value)) {
+        if ($li.hasClass('disabled') && !_this.isValueSelected(value)) {
           return false;
         }
         $li.toggleClass('active');
@@ -629,10 +648,11 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
         if (isActive) {
           $li.siblings().removeClass('active');
         }
-        self._changeItemStatus(value, isActive);
+        _this._changeItemStatus(value, isActive);
+        return false;
       });
       this.$_items.on('click', 'label > a', function (ev) {
-        var input = $(this).parent().find(':input');
+        var input = $(ev.target).parent().find(':input');
         ev.preventDefault();
         if (input.is('[type="radio"]') || input.is('[type="checkbox"]')) {
           input.prop('checked', !input.prop('checked'));
@@ -645,7 +665,7 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
         if (selfOriginated) {
           return;
         }
-        self.updateLabel();
+        _this.updateLabel();
       });
 
       // close dropdown on external click; do this handler only once for any dropdown in the page
@@ -689,11 +709,11 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
   }, {
     key: "_closeOtherDropdowns",
     value: function _closeOtherDropdowns() {
-      var self = this,
-        dropdowns = $(document).find('select.enhanced').filter(function (i, select) {
-          var $el = $(select);
-          return !!$el.data('dropdown') && !$el.is(self.$originalSelect);
-        });
+      var _this2 = this;
+      var dropdowns = $(document).find('select.enhanced').filter(function (i, select) {
+        var $el = $(select);
+        return !!$el.data('dropdown') && !$el.is(_this2.$originalSelect);
+      });
       dropdowns.each(function () {
         $(this).data('dropdown').closeDropdown();
       });
@@ -725,7 +745,7 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
     key: "getItems",
     value: function () {
       var _getItems = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(search) {
-        var _this2 = this;
+        var _this3 = this;
         var $options, items, perPage;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
@@ -736,7 +756,7 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
                   var t = $(el),
                     value = t.val(),
                     label = t.html();
-                  _this2._items.push({
+                  _this3._items.push({
                     value: value,
                     label: label
                   });
@@ -766,7 +786,7 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
   }, {
     key: "getMatchingElements",
     value: function getMatchingElements(search) {
-      var _this3 = this;
+      var _this4 = this;
       var matchingElements = this._items,
         promise;
       promise = new Promise(function (resolve) {
@@ -778,9 +798,9 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
         }) : matchingElements;
 
         // then retrieve additional items
-        if (_this3.options.getElements) {
+        if (_this4.options.getElements) {
           // we're expecting key => value pairs
-          _this3.options.getElements.call(_this3, search).then(function (retrievedElements) {
+          _this4.options.getElements.call(_this4, search).then(function (retrievedElements) {
             if (retrievedElements) {
               // reformat retrieved array
               retrievedElements = Object.keys(retrievedElements).reduce(function (a, i) {
@@ -798,10 +818,10 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
               // merge found results with options
               matchingElements = [].concat(_toConsumableArray(matchingElements), _toConsumableArray(retrievedElements));
             }
-            resolve(_this3._formatItems(matchingElements));
+            resolve(_this4._formatItems(matchingElements));
           });
         } else {
-          resolve(_this3._formatItems(matchingElements));
+          resolve(_this4._formatItems(matchingElements));
         }
       });
       return promise;
@@ -811,7 +831,7 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
   }, {
     key: "_formatItems",
     value: function _formatItems(items) {
-      var _this4 = this;
+      var _this5 = this;
       var indexes = [];
 
       // remove duplicates and sort array of results
@@ -822,8 +842,8 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
           indexes.push(value);
 
           // checks if select has a related option.
-          if (!_this4.getOptionByValue(value).length) {
-            _this4.$originalSelect.append("<option class=\"filter-item\" value=\"".concat(value, "\">").concat(label, "</option>"));
+          if (!_this5.getOptionByValue(value).length) {
+            _this5.$originalSelect.append("<option class=\"filter-item\" value=\"".concat(value, "\">").concat(label, "</option>"));
           }
 
           // add item to final array of elements.
@@ -843,7 +863,8 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
         option = this.getOptionByValue(value),
         $item = $('<li/>', {
           'data-value': value,
-          "class": option.length ? option.attr('class') : ''
+          "class": option.length ? option.attr('class') : '',
+          tabindex: 0
         }),
         $anchor;
       if (option.length) {
@@ -858,11 +879,26 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
         href: option.length ? option.data('filter_url') : '#',
         html: label,
         rel: 'nofollow',
-        'data-title': option.length ? option.data('title') : ''
+        'data-title': option.length ? option.data('title') : '',
+        tabindex: -1
+      });
+      $item.on('keypress', function (ev) {
+        if (!Object.values(keys).includes(ev === null || ev === void 0 ? void 0 : ev.keyCode)) {
+          return;
+        }
+        ev.preventDefault();
+        if ([keys.space, keys.enter].includes(ev === null || ev === void 0 ? void 0 : ev.keyCode)) {
+          $anchor.click();
+        } else if (keys.next === ev.keyCode) {
+          $item.next().focus();
+        } else if (keys.prev === ev.keyCode) {
+          $item.prev().focus();
+        }
       });
       if (this.multiple) {
         var $checkbox = $('<input/>', {
             type: 'checkbox',
+            tabindex: -1,
             value: value
           }),
           $label = $('<label>');
@@ -887,20 +923,20 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
     key: "_populateItems",
     value: function _populateItems() {
       var _this$$_search3,
-        _this5 = this;
+        _this6 = this;
       var search = (_this$$_search3 = this.$_search) !== null && _this$$_search3 !== void 0 && _this$$_search3.length ? this.$_search.val() : false;
       return this.getItems(search).then(function (items) {
-        _this5._emptyItems();
-        _this5._hideLoadMore();
-        _this5.$_items.append(items.map(function (_ref3) {
+        _this6._emptyItems();
+        _this6._hideLoadMore();
+        _this6.$_items.append(items.map(function (_ref3) {
           var label = _ref3.label,
             value = _ref3.value;
-          return _this5._generateItem(value, label);
+          return _this6._generateItem(value, label);
         }));
-        _this5.$originalSelect.trigger('yith_wcan_dropdown_updated');
-        _this5.needsRefresh = false;
-        if (_this5.paginate && _this5.hasMore) {
-          _this5._showLoadMore();
+        _this6.$originalSelect.trigger('yith_wcan_dropdown_updated');
+        _this6.needsRefresh = false;
+        if (_this6.paginate && _this6.hasMore) {
+          _this6._showLoadMore();
         }
       });
     }
@@ -910,13 +946,13 @@ var YITH_WCAN_Dropdown = /*#__PURE__*/function () {
     key: "loadNextPage",
     value: function () {
       var _loadNextPage = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var _this6 = this;
+        var _this7 = this;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
               this.paginate = false;
               this._populateItems().then(function () {
-                _this6.hasMore = false;
+                _this7.hasMore = false;
               });
             case 2:
             case "end":
@@ -1208,7 +1244,7 @@ var YITH_WCAN_Preset = /*#__PURE__*/function () {
 
           // reset active filters.
           self.activeFilters = false;
-          self.maybeFilter($filter);
+          self.maybeFilter($currentFilter);
           self.maybeToggleClearAllFilters();
           self.maybeToggleClearFilter($currentFilter);
         };

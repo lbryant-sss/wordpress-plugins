@@ -97,17 +97,17 @@
               <span>{{ getFormattedPrice(getBookingSubtotal(booking)) }}</span>
             </el-col>
 
-            <el-col :span="14" class="align-right">
+            <el-col v-if="getBookingDiscount(booking)" :span="14" class="align-right">
               {{ $root.labels.discount_amount }}:
             </el-col>
-            <el-col :span="10" class="align-right">
+            <el-col v-if="getBookingDiscount(booking)" :span="10" class="align-right">
               {{ getFormattedPrice((discount = getBookingDiscount(booking)) > (subtotal = getBookingSubtotal(booking)) ? subtotal : discount) }}
             </el-col>
 
-            <el-col :span="14" class="align-right">
+            <el-col v-if="booking.taxTotalPrice" :span="14" class="align-right">
               {{ $root.labels.tax }}:
             </el-col>
-            <el-col :span="10" class="align-right">
+            <el-col v-if="booking.taxTotalPrice" :span="10" class="align-right">
               {{ getFormattedPrice(booking.taxTotalPrice) }}
             </el-col>
 

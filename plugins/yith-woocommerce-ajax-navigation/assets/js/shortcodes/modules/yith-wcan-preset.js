@@ -159,7 +159,7 @@ export default class YITH_WCAN_Preset {
 				// reset active filters.
 				self.activeFilters = false;
 
-				self.maybeFilter( $filter );
+				self.maybeFilter( $currentFilter );
 				self.maybeToggleClearAllFilters();
 				self.maybeToggleClearFilter( $currentFilter );
 			};

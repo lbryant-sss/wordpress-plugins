@@ -47,9 +47,9 @@ a:active, a:focus, li:focus, li:active {
     text-decoration: none !important;
     box-shadow: none !important;
     -webkit-tap-highlight-color: transparent !important;
-    -webkit-user-select: none; / Chrome/Safari /
-    -moz-user-select: none; / Firefox /
-    -ms-user-select: none; / IE10+ /
+    -webkit-user-select: none;  
+    -moz-user-select: none;  
+    -ms-user-select: none;  
     user-select: none;
 }
 
@@ -570,7 +570,16 @@ div#slider.ui-slider {
     border-radius: 2px;
     position: relative;
 }
-
+div#slider.ui-slider:after {
+    content: "";
+    background-color: #DCE2E2;
+    height: 2px;
+    position: absolute;
+    left: 100%;
+    display: block;
+    width: 24px;
+    z-index: -1;
+}
 .mystickymenu-content-section .ui-state-active, .ui-widget-content .ui-state-active {
     color: #454545;
 }
@@ -582,6 +591,11 @@ div#slider.ui-slider {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
     border: 0;
     position: absolute;
+    cursor: pointer;
+    font-weight: 700;
+}
+#mystickymenu #custom-handle:hover{
+    color: red;
 }
 .sticky-header-menu {
     text-align: center;
@@ -636,8 +650,8 @@ div#slider.ui-slider {
 	box-shadow: 0 0 6px #ccc;
 	padding: 12px;
 	margin: 20px auto 0 auto;
-	width: 100%;
-	max-width: 776px;
+	width: calc(100% - 20px);
+	max-width: 10;
 	background: #fff url(../images/new_widget_bg.png) no-repeat left bottom;
 	background-size: auto 100%;
 	font-family: 'Lato', sans-serif;
@@ -675,7 +689,7 @@ a.new-upgrade-button {
 }
 .mystickymenu-new-widget-row ul li {
 	width: 33.33%;
-	padding: 10px 10px 0px;
+	padding: 10px 20px 0px;
 	margin-bottom: 0;
 }
 .mystickymenu-feature {
@@ -706,7 +720,7 @@ a.new-upgrade-button {
 	font-family: 'Lato', sans-serif;
 	font-style: normal;
 	font-weight: 700;
-	font-size: 13px;
+	font-size: 16px;
 	line-height: 18px;
 	color: #1e1e1e;
 }
@@ -1373,7 +1387,7 @@ a.rpt_tooltip span.intool b {
 }
 
 .rpt_4_plans a.rpt_tooltip > span.intool {
-    margin-right: 0
+    margin-right: 0;
 }
 
 .rpt_5_plans a.rpt_tooltip > span.intool {
@@ -2686,7 +2700,9 @@ padding:8px 0; background:#DFE6ED; text-align:center; line-height:20px;}
 
 
 
-
+.mysticky-stickymenu-header-title {
+	margin-top: 20px;
+}
 .mysticky-stickymenu-header-title h3{
 	color:#1d2327;
 	display: inline-block;
@@ -4706,6 +4722,7 @@ a.welcomebar-background-image {
     line-height: 20px;
     font-size: 14px;
     font-family: 'Poppins';
+    cursor: pointer;
 }
 .welcomebar-minimise-screen-btn{
     border: 1px solid #00000047;
@@ -4715,13 +4732,14 @@ a.welcomebar-background-image {
     line-height: 20px;
     font-size: 14px;
     font-family: 'Poppins';
+    cursor: pointer;
 }
-.mysticky-welcomebar-full-screen-preview .mysticky-welcomebar-preview-screen{
+.mysticky-welcomebar-full-screen-preview .mysticky-welcomebar-preview-screen {
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-.welcomebar-error {
-  border: 1px solid red !important;
 }
-
+.welcomebar-error {
+    border: 1px solid red !important;
+}
 
 
 /*15-02-2024*/
@@ -4742,22 +4760,26 @@ a.welcomebar-background-image {
     border-radius: 4px;
     z-index: 5;
 }
+
 .mysticky-welcomebar-hover-effect-border1:hover:before {
     transition: all 0.1s 0.2s ease;
     height: 29px;
     z-index: 99;
 }
+
 .mysticky-welcomebar-hover-effect-border1:hover:after {
     transition: all 0.1s ease;
     height: 29px;
     z-index: 99;
 }
+
 .mysticky-welcomebar-hover-effect-border1 a:before,
 .mysticky-welcomebar-hover-effect-border1 a:after {
     position: absolute;
     content: "";
     z-index: 0 !important;
 }
+
 .mysticky-welcomebar-hover-effect-border1 a:before {
     right: 0;
     top: 0;
@@ -4765,21 +4787,25 @@ a.welcomebar-background-image {
     height: 2px;
     transition: all 0.1s 0.1s ease;
 }
+
 .mysticky-welcomebar-hover-effect-border1 a:after {
     right: 0;
     bottom: 0;
     width: 100%;
     height: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-border1 a:hover:before {
-    width: 100%;    
+    width: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-border2 a {
     position: relative;
     display: block;
     width: 100%;
     height: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-border2:before,
 .mysticky-welcomebar-hover-effect-border2:after {
     position: absolute;
@@ -4788,19 +4814,24 @@ a.welcomebar-background-image {
     transition: all 0.3s ease;
     border-radius: 4px;
 }
+
 .mysticky-welcomebar-hover-effect-border2:before {
     width: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-border2:after {
     width: 0%;
     height: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-border2:hover:before {
     height: 29px;
 }
+
 .mysticky-welcomebar-hover-effect-border2:hover:after {
     width: 63px;
 }
+
 .mysticky-welcomebar-hover-effect-border2 a:before,
 .mysticky-welcomebar-hover-effect-border2 a:after {
     position: absolute;
@@ -4810,26 +4841,32 @@ a.welcomebar-background-image {
     transition: all 0.3s ease;
     z-index: 0 !important;
 }
+
 .mysticky-welcomebar-hover-effect-border2 a:before {
     width: 2px;
     height: 0%;
 }
+
 .mysticky-welcomebar-hover-effect-border2 a:after {
     width: 0%;
     height: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-border2 a:hover:before {
     height: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-border2 a:hover:after {
-    width: 100%; 
+    width: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-border3 a {
     position: relative;
     display: block;
     width: 100%;
     height: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-border3:before,
 .mysticky-welcomebar-hover-effect-border3:after {
     position: absolute;
@@ -4837,20 +4874,25 @@ a.welcomebar-background-image {
     left: 8px;
     transition: all 0.3s ease;
 }
+
 .mysticky-welcomebar-hover-effect-border3:before {
     height: 14px;
     width: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-border3:after {
     width: 14px;
     height: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-border3:hover:before {
     height: 29px;
 }
+
 .mysticky-welcomebar-hover-effect-border3:hover:after {
     width: 63px;
 }
+
 .mysticky-welcomebar-hover-effect-border3 a:before,
 .mysticky-welcomebar-hover-effect-border3 a:after {
     position: absolute;
@@ -4860,26 +4902,32 @@ a.welcomebar-background-image {
     transition: all 0.3s ease;
     z-index: 0 !important;
 }
+
 .mysticky-welcomebar-hover-effect-border3 a:before {
     width: 2px;
     height: 50%;
 }
+
 .mysticky-welcomebar-hover-effect-border3 a:after {
     width: 12px;
     height: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-border3 a:hover:before {
     height: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-border3 a:hover:after {
     width: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-border4 a {
     position: relative;
     display: block;
     width: 100%;
     height: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-border4:before,
 .mysticky-welcomebar-hover-effect-border4:after {
     position: absolute;
@@ -4888,20 +4936,25 @@ a.welcomebar-background-image {
     bottom: 20px;
     transition: all 0.3s ease;
 }
+
 .mysticky-welcomebar-hover-effect-border4:before {
     height: 14px;
     width: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-border4:after {
     width: 14px;
     height: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-border4:hover:before {
     height: 29px;
 }
+
 .mysticky-welcomebar-hover-effect-border4:hover:after {
     width: 64px;
 }
+
 .mysticky-welcomebar-hover-effect-border4 a:before,
 .mysticky-welcomebar-hover-effect-border4 a:after {
     position: absolute;
@@ -4910,17 +4963,21 @@ a.welcomebar-background-image {
     top: 0;
     transition: all 0.3s ease;
 }
+
 .mysticky-welcomebar-hover-effect-border4 a:before {
     width: 2px;
     height: 50%;
 }
+
 .mysticky-welcomebar-hover-effect-border4 a:after {
     width: 20%;
     height: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-border4 a:hover:before {
     height: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-border4 a:hover:after {
     width: 100%;
 }
@@ -4928,6 +4985,7 @@ a.welcomebar-background-image {
 .mysticky-welcomebar-hover-effect-fill1 a {
     z-index: 1;
 }
+
 .mysticky-welcomebar-hover-effect-fill1 a:after {
     position: absolute;
     content: "";
@@ -4937,15 +4995,19 @@ a.welcomebar-background-image {
     right: 0;
     z-index: -1;
 }
+
 .mysticky-welcomebar-hover-effect-fill1 a:hover:after {
     width: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-fill1 a:active {
     top: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-fill2 a {
     z-index: 1;
 }
+
 .mysticky-welcomebar-hover-effect-fill2 a:after {
     position: absolute;
     content: "";
@@ -4957,18 +5019,22 @@ a.welcomebar-background-image {
     z-index: -1;
     transition: all 0.3s ease;
 }
+
 .mysticky-welcomebar-hover-effect-fill2 a:hover:after {
     right: auto;
     left: 0;
     width: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-fill2 a:active {
     top: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-fill3 a {
     border: 0px solid #000;
     z-index: 1;
 }
+
 .mysticky-welcomebar-hover-effect-fill3 a:after {
     position: absolute;
     content: "";
@@ -4979,16 +5045,20 @@ a.welcomebar-background-image {
     z-index: -1;
     transition: all 0.3s ease;
 }
+
 .mysticky-welcomebar-hover-effect-fill3 a:hover:after {
     top: 0;
     height: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-fill3 a:active {
     top: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-fill4 a {
     z-index: 1;
 }
+
 .mysticky-welcomebar-hover-effect-fill4 a:after {
     position: absolute;
     content: "";
@@ -4999,18 +5069,22 @@ a.welcomebar-background-image {
     z-index: -1;
     transition: all 0.3s ease;
 }
+
 .mysticky-welcomebar-hover-effect-fill4 a:hover:after {
     top: auto;
     bottom: 0;
     height: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-fill4 a:active {
     top: 2px;
 }
+
 .mysticky-welcomebar-hover-effect-fill5 a {
     border: 0px solid #000;
     z-index: 3;
 }
+
 .mysticky-welcomebar-hover-effect-fill5 a:after {
     position: absolute;
     content: "";
@@ -5021,10 +5095,12 @@ a.welcomebar-background-image {
     z-index: -1;
     transition: all 0.3s ease;
 }
+
 .mysticky-welcomebar-hover-effect-fill5 a:hover:after {
     right: 0;
     width: 100%;
 }
+
 .mysticky-welcomebar-hover-effect-fill5 a:active {
     top: 2px;
 }
@@ -5036,9 +5112,19 @@ a.welcomebar-background-image {
 .mysticky-welcomebar-preview-screen .mysticky-welcomebar-fixed-wrap .mysticky-welcomebar-content {
     flex: unset;
 }
+
 .mysticky-welcomebar-preview-screen .mysticky-welcomebar-fixed:not(.mysticky-welcomebar-timer-active):not(.mysticky-welcomebar-collectlead-active) .mysticky-welcomebar-content,
 .mysticky-welcomebar-full-screen-preview .mysticky-welcomebar-fixed.mysticky-welcomebar-collectlead-active .mysticky-welcomebar-content,
 .mysticky-welcomebar-full-screen-preview .mysticky-welcomebar-fixed-wrap .mysticky-welcomebar-content {
-	flex: 1;
+    flex: 1;
 }
-.mysticky-welcomebar-setting-wrap .wp-editor-tools.hide-if-no-js{display:none;}
+
+.mysticky-welcomebar-setting-wrap .wp-editor-tools.hide-if-no-js {
+    display: none;
+}
+.sticky-header-content {
+    padding-bottom: 70px;
+}
+p.mystickymenu-no-contact {
+    font-size: 18px;
+}

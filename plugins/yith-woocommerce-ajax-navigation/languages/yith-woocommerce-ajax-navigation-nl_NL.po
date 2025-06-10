@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: YITH WooCommerce Ajax Product Filter\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yith-woocommerce-"
 "ajax-product-filter\n"
-"POT-Creation-Date: 2025-06-04 13:48:32+00:00\n"
+"POT-Creation-Date: 2025-06-09 09:45:51+00:00\n"
 "PO-Revision-Date: 2021-02-12 13:32:05+0000\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -381,6 +381,36 @@ msgstr "Kleur swatches"
 msgctxt "[Admin] Filter edit form"
 msgid "Label"
 msgstr "Label"
+
+#: includes/class-yith-wcan-filters-factory.php:153
+msgctxt "[Admin] Filter edit form"
+msgid "Name"
+msgstr "Naam"
+
+#: includes/class-yith-wcan-filters-factory.php:154
+msgctxt "[Admin] Filter edit form"
+msgid "Name (numeric)"
+msgstr ""
+
+#: includes/class-yith-wcan-filters-factory.php:155
+msgctxt "[Admin] Filter edit form"
+msgid "Slug"
+msgstr "Slug"
+
+#: includes/class-yith-wcan-filters-factory.php:156
+msgctxt "[Admin] Filter edit form"
+msgid "Term count"
+msgstr "Telling termen"
+
+#: includes/class-yith-wcan-filters-factory.php:157
+msgctxt "[Admin] Filter edit form"
+msgid "Term order"
+msgstr "Volgorde termen"
+
+#: includes/class-yith-wcan-filters-factory.php:158
+msgctxt "[Admin] Filter edit form"
+msgid "Drag & drop"
+msgstr ""
 
 #: plugin-options/filter-options.php:51
 msgctxt "[Admin] Filter edit form"
@@ -1796,22 +1826,6 @@ msgstr "Filters resetten"
 #~ msgctxt "[Admin] Filter edit form"
 #~ msgid "Order by"
 #~ msgstr "Sorteren op"
-
-#~ msgctxt "[Admin] Filter edit form"
-#~ msgid "Name"
-#~ msgstr "Naam"
-
-#~ msgctxt "[Admin] Filter edit form"
-#~ msgid "Slug"
-#~ msgstr "Slug"
-
-#~ msgctxt "[Admin] Filter edit form"
-#~ msgid "Term count"
-#~ msgstr "Telling termen"
-
-#~ msgctxt "[Admin] Filter edit form"
-#~ msgid "Term order"
-#~ msgstr "Volgorde termen"
 
 #~ msgctxt "[Admin] Filter edit form"
 #~ msgid "Order type"
